@@ -1,7 +1,8 @@
-# Maintainer: Jerome Leclanche <jerome@leclan.ch>
+# Maintainer: johnnybash <georgpfahler@wachenzell.org>
+# Contributor: Jerome Leclanche <jerome@leclan.ch>
 
 pkgname=lximage-qt
-pkgver=0.4.0
+pkgver=0.5.0
 pkgrel=1
 pkgdesc="The LXQt image viewer"
 arch=("i686" "x86_64")
@@ -12,7 +13,7 @@ depends=("pcmanfm-qt")
 makedepends=("cmake" "qt5-tools")
 install="$pkgname.install"
 source=("http://downloads.lxqt.org/$pkgname/$pkgver/$pkgname-$pkgver.tar.xz")
-sha256sums=("11abc99b0946e6254aad42cb3e29349dc6199879be0728418e7bc81200d59730")
+sha256sums=("bd67b8b81a25d8ecd858787af87bc97256f15821ff4f1bb3efcfd214e2929066")
 
 
 build() {
