@@ -1,0 +1,18 @@
+pkgbase = dmenux-git
+	pkgdesc = fork of dmenu patched with XFT, quiet, x & y, token, fuzzy matching, follow focus, tab nav, filter and full mouse support.
+	pkgver = 3bef1c4
+	pkgrel = 1
+	url = https://github.com/lvitals/dmenux
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	depends = libxinerama
+	depends = libxft
+	provides = dmenu
+	conflicts = dmenu
+	source = git://github.com/lvitals/dmenux
+	md5sums = SKIP
+
+pkgname = dmenux-git
+
