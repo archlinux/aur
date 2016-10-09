@@ -1,0 +1,19 @@
+pkgbase = snap-dna-git
+	pkgdesc = Scalable Nucleotide Alignment Program
+	pkgver = v0.15.r199.ea6690f
+	pkgrel = 1
+	url = http://snap.cs.berkeley.edu/
+	arch = i686
+	arch = x86_64
+	arch = armv7h
+	license = apache
+	makedepends = git
+	depends = zlib
+	depends = gcc-libs
+	provides = snap-dna
+	conflicts = snap-dna
+	source = snap-dna::git+https://github.com/amplab/snap
+	md5sums = SKIP
+
+pkgname = snap-dna-git
+
