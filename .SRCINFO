@@ -1,15 +1,18 @@
 pkgbase = dscreen-git
 	pkgdesc = A DBus wrapper for xscreensaver
 	pkgver = 0.1.0.r0.g659af0c
-	pkgrel = 1
+	pkgrel = 3
 	url = https://github.com/fmorgner/dscreen.git
 	arch = any
 	license = BSD
 	makedepends = python-setuptools
 	makedepends = git
 	depends = python-gobject
+	depends = python-dbus
 	source = dscreen-git::git+https://github.com/fmorgner/dscreen.git
+	source = 0001_dscreen-git_remove-requires.patch
 	md5sums = SKIP
+	md5sums = 1a562230bd3ae650ef33c40658634cd8
 
 pkgname = dscreen-git
 

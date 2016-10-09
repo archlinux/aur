@@ -2,7 +2,7 @@
 
 pkgname=('dscreen-git')
 pkgver=0.1.0.r0.g659af0c
-pkgrel=2
+pkgrel=3
 pkgdesc="A DBus wrapper for xscreensaver"
 arch=('any')
 url="https://github.com/fmorgner/dscreen.git"
