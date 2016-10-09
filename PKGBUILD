@@ -8,8 +8,8 @@ pkgdesc="redshift-gtk rewrite with C++/Qt"
 arch=('x86_64' 'i686')
 url="https://github.com/Chemrat/redshift-qt"
 license=('MIT')
-depends=('redshift')
-makedepends=('qt5-base')
+depends=('redshift' 'qt5-base')
+makedepends=('git')
 optdepends=()
 provides=('redshift-qt')
 conflicts=('redshift-qt')
@@ -33,6 +33,7 @@ package() {
   cd "$_pkgname"
   install -Dm755 redshift-qt $pkgdir/usr/bin/redshift-qt
   install -Dm644 $srcdir/redshift-qt.desktop $pkgdir/usr/share/applications/redshift-qt.desktop
+  install -Dm644 COPYING $pkgdir/usr/share/licenses/$pkgname/COPYING
 }
 
 # vim:set ts=2 sw=2 et:
