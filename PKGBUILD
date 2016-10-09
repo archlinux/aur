@@ -22,10 +22,12 @@ install=$pkgname.install
 _channel=unstable
 source=("google-chrome-${_channel}_${pkgver}_amd64.deb::https://dl.google.com/linux/direct/google-chrome-${_channel}_current_amd64.deb"
         "$url/browser/privacy/eula_text.html"
-        'google-chrome-unstable.sh')
+        'google-chrome-unstable.sh'
+		'StartupWMClass_and_GNOME3-context-menu.patch')
 md5sums=('8373f51fa04217cf7c15f16baa9271b5'
          'SKIP'
-         '11b55a3fec7279db32b63e3a0b97dc01')
+         '11b55a3fec7279db32b63e3a0b97dc01'
+		 '12ad81f7e06457c9fa7e2536d32f2bd0')
 
 ## Previous build (also see: /var/cache/pacman/pkg/google-chrome-dev-*):
 #source[0]='http://mirror.glendaleacademy.org/chrome/pool/main/g/google-chrome-unstable/google-chrome-unstable_55.0.2873.0-1_amd64.deb'
@@ -51,10 +53,14 @@ package() {
   # License
   install -Dm644 eula_text.html "$pkgdir"/usr/share/licenses/google-chrome-$_channel/eula_text.html
 
-  msg2 "Fixing Chrome icon resolution..."
-  sed -i "/Exec=/i\StartupWMClass=Google-chrome-$_channel" "$pkgdir"/usr/share/applications/google-chrome-$_channel.desktop
+  #msg2 "Fixing Chrome icon resolution..."
+  #sed -i "/Exec=/i\StartupWMClass=Google-chrome-$_channel" "$pkgdir"/usr/share/applications/google-chrome-$_channel.desktop
 
-  msg2 "Removing unnecessities (e.g. Debian Cron job)..."
+  msg2 "Fixing Chrome icon resolution and GNOME 3 context menu..."
+  cd "$pkgdir"
+  patch -p0 -i "$srcdir"/StartupWMClass_and_GNOME3-context-menu.patch
+
+  msg2 "Removing Debian Cron job and duplicate product logos..."
   rm -r "$pkgdir"/etc/cron.daily/ "$pkgdir"/opt/google/chrome-$_channel/cron/
   rm "$pkgdir"/opt/google/chrome-$_channel/product_logo_*.png
 }
