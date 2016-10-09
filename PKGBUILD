@@ -6,19 +6,16 @@ _py_pkgver="0.2-5" # the official version has a hyphen
 pkgrel=2
 pkgdesc="Generic Python BUFR file reader based on ECMWF BUFR library"
 arch=('i686' 'x86_64')
-url="http://pypi.python.org/pypi/python-bufr/"
+url="https://github.com/pytroll/python-bufr"
 license=('GPL3')
 depends=('python2')
 makedepends=('python2-numpy' 'libbufr-ecmwf')
 options=(!emptydirs)
-source=(http://python-bufr.googlecode.com/files/${_py_pkgname}-${_py_pkgver}.tar.gz)
-md5sums=('db8c5c5198b166e38c76aa8e78972cd1')
-sha1sums=('9bfb2f9ed5af15721506f18621ac3c57d2410500')
-sha256sums=('883f3e1aa8a2900b17c216fc2ce04154b40ee297f7bc1dbbd6794d95ad244101')
-
+source=(https://github.com/pytroll/python-bufr/archive/v0.2-5.tar.gz)
+md5sums=('78cb04b43e61d7c097a0b8f8c805ab3f')
 
 build() {
-  cd "$srcdir/$_py_pkgname-$_py_pkgver"
+  cd "$srcdir/$_py_pkgname-$_py_pkgver/bufr"
 
   # We enforce this to be a strictly python2 package
   sed -i -e "s|^#![ ]*/usr/bin/python$|#!/usr/bin/python2|" \
@@ -29,7 +26,7 @@ build() {
 }
 
 package() {
-  cd "$srcdir/$_py_pkgname-$_py_pkgver"
+  cd "$srcdir/$_py_pkgname-$_py_pkgver/bufr"
   python2 setup.py install --root="$pkgdir/" --optimize=1
 }
 
