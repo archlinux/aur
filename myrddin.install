@@ -1,0 +1,3 @@
+post_install() {
+    echo "NOTE: vim support files installed to /usr/share/myrddin/vim"
+}
