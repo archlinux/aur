@@ -3,7 +3,7 @@
 
 pkgname=upmpdcli
 pkgver=1.2.7
-pkgrel=1
+pkgrel=2
 pkgdesc="A UPnP Media Renderer front-end for the Music Player Daemon (MPD)"
 arch=('i686' 'x86_64' 'armv7h')
 url="http://www.lesbonscomptes.com/upmpdcli/"
