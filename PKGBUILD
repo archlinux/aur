@@ -22,10 +22,12 @@ install=$pkgname.install
 _channel=stable
 source=("google-chrome-${_channel}_${pkgver}_amd64.deb::https://dl.google.com/linux/direct/google-chrome-${_channel}_current_amd64.deb"
         "$url/browser/privacy/eula_text.html"
-        'google-chrome-stable.sh')
+        'google-chrome-stable.sh'
+		'StartupWMClass_and_GNOME3-context-menu.patch')
 md5sums=('8e29b422e075ddb36a7d0c54264c11ab'
          'SKIP'
-         '99fa93d5e7fb5d622cef0f9621f3ffa3')
+         '99fa93d5e7fb5d622cef0f9621f3ffa3'
+		 'c28d84561b994b8a0aeae3d6e12265c4')
 
 package() {
   msg2 "Extracting the data.tar.xz..."
@@ -47,13 +49,14 @@ package() {
   # License
   install -Dm644 eula_text.html "$pkgdir"/usr/share/licenses/google-chrome/eula_text.html
 
-  msg2 "Fixing Chrome icon resolution..."
-  sed -i "/Exec=/i\StartupWMClass=google-chrome" "$pkgdir"/usr/share/applications/google-chrome.desktop
+  #msg2 "Fixing Chrome icon resolution..."
+  #sed -i "/Exec=/i\StartupWMClass=google-chrome" "$pkgdir"/usr/share/applications/google-chrome.desktop
 
-  msg2 "Fixing permissions of documentation folder..."
-  chmod 755 "$pkgdir"/usr/share/doc/google-chrome-$_channel/
+  msg2 "Fixing Chrome icon resolution and GNOME 3 context menu..."
+  cd "$pkgdir"
+  patch -p0 -i "$srcdir"/StartupWMClass_and_GNOME3-context-menu.patch
 
-  msg2 "Removing unnecessities (e.g. Debian Cron job)..."
+  msg2 "Removing Debian Cron job and duplicate product logos..."
   rm -r "$pkgdir"/etc/cron.daily/ "$pkgdir"/opt/google/chrome/cron/
   rm "$pkgdir"/opt/google/chrome/product_logo_*.png
 }
