@@ -1,0 +1,18 @@
+pkgbase = checkmails
+	pkgdesc = System tray unread mail checker using IMAP protocol
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://sourceforge.net/projects/checkmails
+	arch = any
+	license = GPL3
+	depends = tktray
+	depends = python-pillow
+	depends = python-crypto
+	depends = gettext
+	depends = desktop-file-utils
+	depends = libnotify
+	source = checkmails-1.0.0.tar.gz::https://sourceforge.net/projects/checkmails/files/1.0.0/checkmails-1.0.0.tar.gz/download
+	md5sums = 978beb7b636b50e2660feab1d37f33a3
+
+pkgname = checkmails
+
