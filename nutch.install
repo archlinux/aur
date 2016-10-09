@@ -1,0 +1,32 @@
+print_core_message() {
+  cat <<EOT
+To use the nutch restful API
+which you really do not HAVE to do
+as the software can just be run
+by itself you will have to 
+Start the nutch service first!
+  $ sudo systemctl restart nutch
+This basically runs
+  nutch nutchserver
+but generates java home first
+EOT
+}
+
+install_nutch_user() {
+  if ! getent group nutch >/dev/null; then
+    groupadd -g 115 nutch
+  fi
+  if ! getent passwd nutch >/dev/null; then
+    useradd -c 'Apache Nutch user' -u 115 -g nutch -d '/opt/nutch' -s /bin/bash nutch
+    passwd -l nutch >/dev/null
+  fi
+}
+
+post_install() {
+  print_core_message
+  install_nutch_user
+}
+
+post_upgrade() {
+  post_install $1
+}

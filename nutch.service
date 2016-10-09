@@ -1,0 +1,14 @@
+[Unit]
+Description=Nutch open source web crawler
+After=network.target
+
+[Service]
+Type=simple
+User=nutch
+Group=nutch
+PrivateTmp=true
+WorkingDirectory=/opt/nutch
+ExecStart=/opt/nutch/bin/StartNutchServer.bash
+
+[Install]
+WantedBy=multi-user.target

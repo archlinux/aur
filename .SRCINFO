@@ -1,0 +1,23 @@
+pkgbase = nutch
+	pkgdesc = Highly extensible and scalable open source web crawler software project.
+	pkgver = 2.3.1
+	pkgrel = 1
+	url = https://nutch.apache.org/
+	install = nutch.install
+	arch = any
+	license = Apache
+	makedepends = apache-ant
+	depends = java-runtime-headless>=8
+	options = !strip
+	source = https://archive.apache.org/dist/nutch/2.3.1/apache-nutch-2.3.1-src.tar.gz
+	source = nutch.service
+	source = https://archive.apache.org/dist/nutch/2.3.1/apache-nutch-2.3.1-src.tar.gz.asc
+	source = StartNutchServer.bash
+	validpgpkeys = DB7B5199121C08A5C8F4052B3A4717F048BAEBF6
+	sha512sums = 6abae11990f4bd6c71e06105e05c976fcc67e2829387863f052a66492e538fbe41ca095c891ca726c0b85c6ff27d153f89cb40fcb73830d48fd1de706179055f
+	sha512sums = 75833fa0f9768d87a05117f66f47fbdb5ab0269660f17ed325a4ce127d12b8c6dd6dda6ea3f562ddd2928330d736da62c3d4a6bfd42430b8632b38f577cfce3b
+	sha512sums = e0f0b587c4a5759181779cb5721fde83479dd31387aa76b0e377c486eb46e94290b35299670eea2bf8bea5c2d5ce312328994604d55cb5f6458f3d8eb563a262
+	sha512sums = dd8b89087eb33e32faea757bf22556aa0e31c200f74953dfa1b1251429a2d7a5c84f6ce1294b1c7560fe26d87833d581d07df346297b3fb003dae3e7408017ad
+
+pkgname = nutch
+
