@@ -1,8 +1,8 @@
 pkgbase = bumprace
-	pkgdesc = Arcade Game. You've to get from the start to the finish line without crashing into deadly blocks.
+	pkgdesc = Arcade Game. You've got to get from the start to the finish line without crashing into deadly blocks.
 	pkgver = 1.5.5
 	pkgrel = 1
-	url = http://www.linux-games.com/penguin-command/
+	url = http://www.linux-games.com/bumprace
 	arch = x86_64
 	arch = i686
 	license = GPL2
