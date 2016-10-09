@@ -4,7 +4,7 @@
 
 pkgname=librime
 pkgver=1.2.9
-pkgrel=2
+pkgrel=3
 epoch=1
 pkgdesc="Rime input method engine"
 arch=('i686' 'x86_64')
