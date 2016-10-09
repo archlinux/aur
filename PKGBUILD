@@ -8,7 +8,7 @@ pkgver=0.9.42
 pkgrel=9
 pkgdesc="Extra profiles for firejail"
 arch=('any')
-url="https://aur.archlinux.org/packages/firejail-extras/"
+url="https://github.com/chiraag-nataraj/firejail-profiles"
 license=('GPL2')
 source=("git+https://github.com/chiraag-nataraj/firejail-profiles.git"
         "darktable.profile" 
