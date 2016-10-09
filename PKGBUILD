@@ -1,9 +1,9 @@
-# Maintainer David Adler <d dot adler aet posteo dot de>
+# Maintainer: David Adler <d dot adler aet posteo dot de>
 
 _pkgname=gnucap
 pkgname=$_pkgname-git
 pkgver=20160724.r115.geb4b865
-pkgrel=1
+pkgrel=2
 pkgdesc="GNU Circuit Analysis Package (autotools branch)"
 arch=('i686' 'x86_64')
 url="http://gnucap.org/"
