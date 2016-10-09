@@ -1,4 +1,5 @@
 # Maintainer: spider-mario <spidermario@free.fr>
+# Contributor: Josef Hopfgartner <josef@netzagentur.at>
 pkgname=composer-git
 pkgver=2.0rc1.16.gf2dd64e
 epoch=1
