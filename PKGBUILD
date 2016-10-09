@@ -2,8 +2,8 @@
 
 pkgbase=snes9x-git
 pkgname=('snes9x-git' 'snes9x-gtk-git')
-pkgver=1.53.r301.gf388fac
-pkgrel=3
+pkgver=1.53.r330.g2d0c3cf
+pkgrel=1
 pkgdesc="Port of the Snes9x emulator (git version). Includes Gtk version."
 arch=('i686' 'x86_64')
 url="http://www.snes9x.com/"
@@ -25,6 +25,8 @@ pkgver() {
 build() {
 
   cd ${pkgbase}/unix
+  # work around problems with automake & cvs
+  touch configure
   ./configure --prefix=/usr --enable-netplay
   make
 
