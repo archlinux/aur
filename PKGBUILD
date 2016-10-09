@@ -1,7 +1,7 @@
 # Maintainer: Afri 5chdn <aur@cach.co>
 
 pkgname=solidity-git
-pkgver=v0.4.0.r59.gf52634a
+pkgver=v0.4.3.git.8572664
 pkgrel=1
 pkgdesc="The Solidity Contract-Oriented Programming Language (Including solc, lllc; from latest unstable git version)"
 arch=('i686' 'x86_64')
@@ -40,7 +40,7 @@ provides=(
 
 pkgver() {
   cd ${pkgname%-git}
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  echo "v`grep -m1 "PROJECT\_VERSION" CMakeLists.txt | sed 's/[[:alpha:]|\_|(|[:space:]|)|\"]//g'`.git.`git log --pretty=format:%h -n 1`"
 }
 
 build() {
