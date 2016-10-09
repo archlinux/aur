@@ -3,6 +3,10 @@
 ## [Unreleased]
 Nothing to report...
 
+## [2.05] - 2016.10.09
+### **Fixes**
+- Fixed incorrect parameter check for printer from the commandline
+
 ## [2.04] - 2016.08.23
 ### **Fixes**
 - Added more checks to sshprint commandline arguments
@@ -52,7 +56,8 @@ Nothing to report...
 ### Fixed
 - Fix regex in select printer dialog.
 
-[Unreleased]: https://github.com/hv15/sshprint/compare/2.04...HEAD
+[Unreleased]: https://github.com/hv15/sshprint/compare/2.05...HEAD
+[2.05]: https://github.com/hv15/sshprint/compare/2.04...2.05
 [2.04]: https://github.com/hv15/sshprint/compare/2.03...2.04
 [2.03]: https://github.com/hv15/sshprint/compare/2.02...2.03
 [2.02]: https://github.com/hv15/sshprint/compare/2.01...2.02
