@@ -1,19 +1,19 @@
 # Maintainer: Leo Schwarz (evotopid) <mail@leoschwarz.com>
 pkgname=kanjistrokeorders-ttf
-pkgver=4.000
+pkgver=4.001
 pkgrel=1
 pkgdesc="Kanji stroke order font"
 arch=(any)
 depends=(fontconfig xorg-font-utils)
 url="http://www.nihilist.org.uk/"
-source=("http://www.nihilist.org.uk/KanjiStrokeOrders_v4.000.zip")
-sha256sums=('192064dcd9e1c91fdd8de7d92dafa755297dfe256c11f068152dd702c89917eb')
+source=("http://www.nihilist.org.uk/KanjiStrokeOrders_v4.001.zip")
+sha256sums=('b93212ef8bde171050294df2220355a2d9258362a1369c749175e7d4e177eb0d')
 license=('BSD')
 
 
 install=$pkgname.install
 
 package() {
-    install -D -m644 KanjiStrokeOrders_v4.000.ttf "${pkgdir}/usr/share/fonts/TTF/kanjistrokeorders.ttf"
+    install -D -m644 KanjiStrokeOrders_v4.001.ttf "${pkgdir}/usr/share/fonts/TTF/kanjistrokeorders.ttf"
     install -D -m644 copyright.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
