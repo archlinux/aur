@@ -7,14 +7,14 @@
 
 _pkgname=ardour
 pkgname="${_pkgname}5"
-pkgver=5.3
+pkgver=5.4
 pkgrel=1
 pkgdesc="A multichannel hard disk recorder and digital audio workstation"
 arch=('i686' 'x86_64')
 url="http://ardour.org/"
 license=('GPL')
 depends=('aubio' 'cwiid' 'gtkmm' 'liblo' 'liblrdf' 'libltc' 'lilv' 'suil'
-         'rubberband' 'taglib')
+         'rubberband' 'taglib' 'fluidsynth')
 makedepends=('git' 'python2' 'boost' 'cppunit' 'doxygen' 'graphviz' 'itstool')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
