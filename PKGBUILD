@@ -1,10 +1,10 @@
 # Contributor: Graziano Giuliani <graziano.giuliani@gmail.com>
 pkgname=gadap
 pkgver=2.0
-pkgrel=2
+pkgrel=3
 pkgdesc="OPeNDAP access of in situ data." 
 arch=("i686" "x86_64")
-url="http://www.iges.org/grads/gadoc/supplibs.html"
+url="http://cola.gmu.edu/grads/gadoc/supplibs.html"
 depends=('libdap')
 options=('staticlibs')
 license=('custom')
