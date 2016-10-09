@@ -1,14 +1,14 @@
 # Maintainer: Hugo Osvaldo Barrera <hugo@barrera.io>
 
 pkgname=ttf-typicons
-pkgver=2.0.4
-pkgrel=2
+pkgver=2.0.8
+pkgrel=1
 depends=('fontconfig' 'xorg-font-utils')
 pkgdesc="Free-to-use vector icons embedded."
 arch=('any')
 license=("CC BY-SA 3.0")
-source=(https://github.com/stephenhutchings/typicons.font/archive/v${pkgver}.zip)
-md5sums=('47168ddac4ed5fbea104e58fdea9b8cb')
+source=(https://github.com/stephenhutchings/typicons.font/archive/${pkgver}.tar.gz)
+md5sums=('2402605eb15c7f8e63ab5cedb49b530f')
 url="http://typicons.com/"
 
 package() {

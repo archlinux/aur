@@ -1,13 +1,14 @@
 pkgbase = ttf-typicons
 	pkgdesc = Free-to-use vector icons embedded.
-	pkgver = 2.0.4
-	pkgrel = 2
+	pkgver = 2.0.8
+	pkgrel = 1
 	url = http://typicons.com/
 	arch = any
 	license = CC BY-SA 3.0
 	depends = fontconfig
 	depends = xorg-font-utils
-	source = https://github.com/stephenhutchings/typicons.font/archive/v2.0.4.zip
+	source = https://github.com/stephenhutchings/typicons.font/archive/2.0.8.tar.gz
+	md5sums = 2402605eb15c7f8e63ab5cedb49b530f
 
 pkgname = ttf-typicons
 
