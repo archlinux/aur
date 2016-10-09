@@ -5,29 +5,29 @@
 
 pkgname=firejail-extras
 pkgver=0.9.42
-pkgrel=10
+pkgrel=11
 pkgdesc="Extra profiles for firejail"
 arch=('any')
 url="https://github.com/chiraag-nataraj/firejail-profiles"
 license=('GPL2')
 source=("git+https://github.com/chiraag-nataraj/firejail-profiles.git"
-
+        "git+https://github.com/triceratops1/fe.git"
         )
 
 sha256sums=( 'SKIP'
-
+             'SKIP'
 )
 
 sha512sums=( 'SKIP'
-
+             'SKIP'
 )
 
 sha224sums=( 'SKIP'
-
+             'SKIP'
 )
 
 sha384sums=( 'SKIP'
-
+             'SKIP'
 )
 
 
@@ -38,6 +38,7 @@ sha384sums=( 'SKIP'
 
 
 package() {
+
 	cd "${srcdir}"
 
         rm   ${srcdir}/firejail-profiles/firefox.profile
@@ -46,17 +47,19 @@ package() {
         rm   ${srcdir}/firejail-profiles/skype.profile
 
 	mkdir -p "${pkgdir}/etc/firejail"
-        
 
-	for file in ${srcdir}/*.profile
+
+	for file in ${srcdir}/fe/*.profile
 	do
 		install -D -m644 "${file}" "${pkgdir}/etc/firejail/"
 	done
 
 	for file in ${srcdir}/firejail-profiles/*.profile
 	do
-		install -D -m644 "${file}" "${pkgdir}/etc/firejail/"
-                sed -i 's/.kde/.kde4/g' *.profile
-                sed -i 's/openshot/openshot-qt/g' *.profile
+	
+install -D -m644 "${file}" "${pkgdir}/etc/firejail/"
+
+                sed -i 's/.kde/.kde4/g'  ${srcdir}/firejail-profiles/*.profile
+                sed -i 's/openshot/openshot-qt/g'  ${srcdir}/firejail-profiles/*.profile
 	done
 }
