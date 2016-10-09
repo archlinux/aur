@@ -1,0 +1,23 @@
+pkgbase = photofiltrelx-git
+	pkgdesc = Simple but featureful editor. Built for casual graphic editing and performance.
+	pkgver = 1.0.r10.g587f8fc
+	pkgrel = 1
+	url = http://photofiltre-lx.org/
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = imagemagick
+	depends = desktop-file-utils
+	depends = graphicsmagick
+	depends = hicolor-icon-theme
+	depends = qt5-base
+	provides = photofiltrelx
+	conflicts = photofiltrelx
+	source = git+https://github.com/PhotoFiltre-LX/photofiltrelx.git
+	source = photofiltrelx.desktop
+	sha256sums = SKIP
+	sha256sums = 76ab31a371e3c04e0a2bb7d08ddc6289183ac42f19cbbaaea74e3eb2bba9fb2f
+
+pkgname = photofiltrelx-git
+
