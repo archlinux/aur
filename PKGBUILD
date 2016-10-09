@@ -13,7 +13,7 @@ source=(hannari.zip::https://github.com/qothr/cabinet/blob/master/hannari.zip?ra
 md5sums=('77b42a9edf5c43e3968f1d6ac87bfea7')
 
 package() {
-  cd "${pkgdir}"
+  cd ${srcdir}
   install -dm755 "${pkgdir}"/usr/share/fonts/OTF
   install -m644 Hannari.otf "${pkgdir}"/usr/share/fonts/OTF/
 
