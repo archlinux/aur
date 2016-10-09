@@ -14,11 +14,11 @@ noextract=(LICENSE)
 md5sums=('94a736491b24519ac504e8d7fa7ac7e8' SKIP)
 
 package() {
+  install -d "${pkgdir}/usr/share/licenses/${pkgname}/"
+  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/"
+
   cd ${srcdir}
   install -dm755 "${pkgdir}"/usr/share/fonts/OTF
   install -m644 FontopoORIENTAL.otf "${pkgdir}"/usr/share/fonts/OTF/
 
-  cd ${pkgdir}
-  install -d "${pkgdir}/usr/share/licenses/${pkgname}/"
-  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
