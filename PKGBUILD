@@ -3,9 +3,9 @@
 pkgname=bumprace
 pkgver=1.5.5
 pkgrel=1
-pkgdesc="Arcade Game. You've to get from the start to the finish line without crashing into deadly blocks."
+pkgdesc="Arcade Game. You've got to get from the start to the finish line without crashing into deadly blocks."
 arch=('x86_64' 'i686')
-url="http://www.linux-games.com/penguin-command/"
+url="http://www.linux-games.com/bumprace"
 license=('GPL2')
 depends=('sdl' 'libjpeg-turbo' 'sdl_mixer' 'sdl_image')
 source=("https://bitbucket.org/karlb/$pkgname/get/$pkgver.tar.gz")
