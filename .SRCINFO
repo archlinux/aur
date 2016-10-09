@@ -1,9 +1,8 @@
 pkgbase = ttf-spionic
 	pkgdesc = A public domain Greek font (Ionic)
 	pkgver = 19990210
-	pkgrel = 1
+	pkgrel = 2
 	url = http://rosetta.reltech.org/TC/fonts/
-	install = ttf-spionic.install
 	arch = any
 	license = custom
 	depends = fontconfig

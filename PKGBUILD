@@ -2,13 +2,12 @@
 
 pkgname=ttf-spionic
 pkgver=19990210
-pkgrel=1
+pkgrel=2
 pkgdesc='A public domain Greek font (Ionic)'
 arch=('any')
 url='http://rosetta.reltech.org/TC/fonts/'
 license=('custom') # Non-commercial
 depends=('fontconfig' 'xorg-fonts-encodings' 'xorg-font-utils')
-install='ttf-spionic.install'
 source=('http://rosetta.reltech.org/TC/fonts/windows/SPIONIC_.TTF')
 md5sums=('179d07182ab44a911770fe6c2563fc52')
 
