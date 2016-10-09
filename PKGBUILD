@@ -2,7 +2,7 @@
 
 pkgname='profile-sync-daemon-git'
 _pkgname='profile-sync-daemon'
-pkgver=r645.b4ea839
+pkgver=r648.18955ef
 pkgrel=1
 pkgdesc='Syncs browser profiles to tmpfs reducing SSD/HDD calls and speeding-up browsers.'
 arch=('any')
@@ -16,14 +16,12 @@ provides=('profile-sync-daemon')
 _branch='master'
 #_branch='unstable'
 source=("git://github.com/graysky2/profile-sync-daemon#branch=$_branch")
-backup=('etc/psd.conf')
 install=psd.install
 sha256sums=('SKIP')
 
 pkgver() {
 	cd "$srcdir/$_pkgname"
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-	#echo $(git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g').$_branch
 }
 
 prepare() {
