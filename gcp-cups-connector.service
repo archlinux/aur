@@ -1,7 +1,8 @@
 [Unit]
 Description=gcp-cups-connector startup script
 Requires=org.cups.cupsd.service
-After=network.target org.cups.cupsd.service
+After=network-online.target org.cups.cupsd.service
+Wants=network-online.target
 
 [Service]
 Type=simple
