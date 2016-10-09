@@ -5,7 +5,7 @@
 
 pkgname=firejail-extras
 pkgver=0.9.42
-pkgrel=11
+pkgrel=12
 pkgdesc="Extra profiles for firejail"
 arch=('any')
 url="https://github.com/chiraag-nataraj/firejail-profiles"
@@ -53,13 +53,19 @@ package() {
 	do
 		install -D -m644 "${file}" "${pkgdir}/etc/firejail/"
 	done
+                sed -i 's/.kde/.kde4/g'  ${srcdir}/firejail-profiles/*.profile
+                sed -i 's/openshot/openshot-qt/g'  ${srcdir}/firejail-profiles/*.profile
+                sed -i 's/.kde4/kde/g'  ${srcdir}/firejail-profiles/kdenlive.profile
+                sed -i 's/.kde4/kde/g'  ${srcdir}/firejail-profiles/kdenlive.profile
+                sed -i 's/private-binkdenlivekdenlive_render,/private-bin kdenlive,kdenlive_render,/g'  ${srcdir}/firejail-profiles/kdenlive.profile
+
+
 
 	for file in ${srcdir}/firejail-profiles/*.profile
 	do
 	
 install -D -m644 "${file}" "${pkgdir}/etc/firejail/"
 
-                sed -i 's/.kde/.kde4/g'  ${srcdir}/firejail-profiles/*.profile
-                sed -i 's/openshot/openshot-qt/g'  ${srcdir}/firejail-profiles/*.profile
+
 	done
 }
