@@ -23,11 +23,11 @@ _channel=stable
 source=("google-chrome-${_channel}_${pkgver}_amd64.deb::https://dl.google.com/linux/direct/google-chrome-${_channel}_current_amd64.deb"
         "$url/browser/privacy/eula_text.html"
         'google-chrome-stable.sh'
-		'StartupWMClass_and_GNOME3-context-menu.patch')
+        'StartupWMClass-and-GNOME3-context-menu.patch')
 md5sums=('8e29b422e075ddb36a7d0c54264c11ab'
          'SKIP'
          '99fa93d5e7fb5d622cef0f9621f3ffa3'
-		 'c28d84561b994b8a0aeae3d6e12265c4')
+         'c28d84561b994b8a0aeae3d6e12265c4')
 
 package() {
   msg2 "Extracting the data.tar.xz..."
@@ -54,7 +54,7 @@ package() {
 
   msg2 "Fixing Chrome icon resolution and GNOME 3 context menu..."
   cd "$pkgdir"
-  patch -p0 -i "$srcdir"/StartupWMClass_and_GNOME3-context-menu.patch
+  patch -p0 -i "$srcdir"/StartupWMClass-and-GNOME3-context-menu.patch
 
   msg2 "Removing Debian Cron job and duplicate product logos..."
   rm -r "$pkgdir"/etc/cron.daily/ "$pkgdir"/opt/google/chrome/cron/
