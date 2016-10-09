@@ -1,6 +1,6 @@
 pkgname=mingw-w64-openjpeg2
 pkgver=2.1.2
-pkgrel=1
+pkgrel=2
 arch=(any)
 pkgdesc="An open source JPEG 2000 codec, version ${pkgver} (mingw-w64)"
 license=("custom: BSD")
@@ -8,10 +8,23 @@ depends=(mingw-w64-libpng mingw-w64-lcms2)
 makedepends=(mingw-w64-cmake)
 options=(staticlibs !strip !buildflags)
 url="https://www.openjpeg.org"
-source=("https://github.com/uclouvain/openjpeg/archive/v$pkgver.tar.gz")
-md5sums=('40a7bfdcc66280b3c1402a0eb1a27624')
+source=("https://github.com/uclouvain/openjpeg/archive/v$pkgver.tar.gz"
+"0001-fix-install-for-dlls.all.patch"
+"0003-versioned-dlls.mingw.patch"
+"0005-sock-jpip.all.patch")
+md5sums=('40a7bfdcc66280b3c1402a0eb1a27624'
+         'c71b7576d88fdd7613f318297cb0c8be'
+         'f8fd65a4d5b1dfc219b648325d33b389'
+         'f4f5174de862b6803702d6eaa83da4da')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
+
+prepare() {
+  cd openjpeg-$pkgver
+  patch -p1 -i ${srcdir}/0001-fix-install-for-dlls.all.patch
+  patch -p1 -i ${srcdir}/0003-versioned-dlls.mingw.patch
+  patch -p1 -i ${srcdir}/0005-sock-jpip.all.patch
+}
 
 build() {
 	cd openjpeg-$pkgver
@@ -23,10 +36,6 @@ build() {
       -DCMAKE_BUILD_TYPE=Release \
       -DBUILD_DOC=OFF \
       -DBUILD_TESTING=OFF \
-      -DBUILD_CODEC=OFF \
-      -DBUILD_JP3D=ON \
-      -DBUILD_JPIP=OFF \
-      -DBUILD_JPWL=ON \
       -DBUILD_SHARED_LIBS=OFF \
       ..
     make
@@ -37,12 +46,7 @@ build() {
       -DCMAKE_BUILD_TYPE=Release \
       -DBUILD_DOC=OFF \
       -DBUILD_TESTING=OFF \
-      -DBUILD_CODEC=ON \
-      -DBUILD_JP3D=ON \
-      -DBUILD_JPIP=OFF \
-      -DBUILD_JPWL=ON \
       -DBUILD_PKGCONFIG_FILES=ON \
-      -DBUILD_MJ2=ON \
       ..
     make
     popd
