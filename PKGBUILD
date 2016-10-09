@@ -9,7 +9,7 @@ license=('custom')
 arch=('any')
 depends=('fontconfig' 'xorg-font-utils')
 install=$pkgname.install
-source=(hannari.zip::http://typingart.net/fontdata/hannari.zip)
+source=(hannari.zip::https://github.com/qothr/cabinet/blob/master/hannari.zip?raw=true)
 md5sums=('77b42a9edf5c43e3968f1d6ac87bfea7')
 
 package() {
