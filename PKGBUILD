@@ -1,18 +1,16 @@
 # Maintainer: Graziano Giuliani <graziano.giuliani@gmail.com>
 pkgname=python2-pycoast
 _py_pkgname=pycoast # The pypi package name
-pkgver="0.5.2"
-pkgrel=3
+pkgver="0.5.5"
+pkgrel=1
 pkgdesc="Writing of coastlines, borders and rivers to images in Python"
 arch=('any')
 url="https://pypi.python.org/pypi/pycoast"
 license=('GPL3')
 depends=('python2')
 options=(!emptydirs)
-source=(https://pycoast.googlecode.com/files/${_py_pkgname}-${pkgver}.tar.gz
-        http://www.soest.hawaii.edu/pwessel/gshhg/gshhg-shp-2.3.3.zip)
-md5sums=('eb11a3cef098b5cedccd9cca0df86b4b'
-         '4ead17caa77743c9c644c5ae32b455d2')
+source=(https://pypi.python.org/packages/7e/dc/d5ec745fe441729ed14f0fd8ebca7a67bf1b035358d52400dda362dd3d4d/pycoast-0.5.5.tar.gz
+        http://www.soest.hawaii.edu/pwessel/gshhg/gshhg-shp-2.3.6.zip)
 
 build() {
   cd "$srcdir/$_py_pkgname-$pkgver"
@@ -37,3 +35,5 @@ package() {
 }
 
 # vim:set ts=2 sw=2 et:
+md5sums=('e0b6633538d0ff6c213ec63efae417eb'
+         'f2ab44f82d31edbe67e9651216695372')
