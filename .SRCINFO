@@ -1,6 +1,6 @@
 pkgbase = xdgmenumaker
 	pkgdesc = xdgmenumaker creates generating menus using xdg information for blackbox, compizboxmenu, fluxbox, icewm, jwm, pekwm and windowmaker.
-	pkgver = 0.9
+	pkgver = 1.1
 	pkgrel = 1
 	url = https://github.com/gapan/xdgmenumaker
 	arch = any
@@ -11,8 +11,8 @@ pkgbase = xdgmenumaker
 	depends = python-gobject
 	depends = python-xdg
 	optdepends = txt2tags: for manpages
-	source = https://github.com/gapan/xdgmenumaker/archive/0.9.tar.gz
-	sha512sums = 802a11cafefc3ab8e411685da04a9687b33b57efe67a93b42de43d95039489dca5fe110d6642995b241d382e1b2ee65e06a0bd548ae31ed5d1aeb243dd96c645
+	source = https://github.com/gapan/xdgmenumaker/archive/1.1.tar.gz
+	sha512sums = df104e5580f9f1ff7505ef606d2ff5cde7413755becd60378a7f9c74faca77c6c1a7be5f9b2251f7e7e1290960549aeddaccb79eb1fc936cd85de59546e4b5e0
 
 pkgname = xdgmenumaker
 
