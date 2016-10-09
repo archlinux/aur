@@ -40,7 +40,7 @@ provides=(
 
 pkgver() {
   cd ${pkgname%-git}
-  echo "v`grep -m1 "PROJECT\_VERSION" CMakeLists.txt | sed 's/[[:alpha:]|\_|(|[:space:]|)|\"]//g'`.git.`git log --pretty=format:%h -n 1`"
+  echo "v`grep -m1 "PROJECT\_VERSION" CMakeLists.txt | tr -cd '[[:digit:]].'`.git.`git log --pretty=format:%h -n 1`"
 }
 
 build() {
