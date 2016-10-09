@@ -1,0 +1,12 @@
+[Desktop Entry]
+Version=1.5.0.2
+GenericName[en_US]=ShadowCoin
+GenericName=ShadowCoin
+Name[en_US]=ShadowCoin Desktop Wallet
+Name=ShadowCoin Desktop Wallet
+Exec=shadowcoin %u
+Icon=shadowcoin
+Categories=Application;Network;
+Terminal=false
+Type=Application
+MimeType=x-scheme-handler/shadowcoin;
