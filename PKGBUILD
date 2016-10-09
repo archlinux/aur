@@ -8,7 +8,7 @@ pkgdesc="A UPnP Media Renderer front-end for the Music Player Daemon (MPD)"
 arch=('i686' 'x86_64' 'armv7h')
 url="http://www.lesbonscomptes.com/upmpdcli/"
 license=('GPL2')
-depends=('libmpdclient' 'libupnpp>=0.15.1')
+depends=('libmpdclient' 'libupnpp>=0.15.1' 'libmicrohttpd' 'jsoncpp')
 optdepends=('python2: OpenHome Radio Service')
 install=upmpdcli.install
 source=(http://www.lesbonscomptes.com/upmpdcli/downloads/$pkgname-$pkgver.tar.gz)
