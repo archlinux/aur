@@ -4,7 +4,7 @@
 
 pkgname=seafile-client
 pkgver=5.1.4
-pkgrel=1
+pkgrel=2
 pkgdesc="GUI client for synchronizing your local files with seafile server"
 arch=('i686' 'x86_64')
 url="https://github.com/haiwen/seafile-client/"
