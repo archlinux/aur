@@ -2,13 +2,13 @@
 # Note: My first PKGBUILD ever, bare with me :) I have been inpired a lot in other PKGBUILDs, like google-chrome's one.
 
 pkgname=google-webdesigner
-pkgver=1.6.0.0429
-pkgrel=3
+pkgver=1.6.3.1004
+pkgrel=4
 pkgdesc="Create engaging, interactive HTML5-based designs and motion graphics that can run on any device."
 arch=('x86_64')
 url="https://www.google.com/webdesigner"
 license=('custom:webdesigner')
-depends=('gtk2' 'libudev.so.0' 'gconf')
+depends=('gtk2' 'libudev0-shim' 'gconf')
 optdepends=()
 provides=("google-webdesigner=${pkgver}")
 options=('!emptydirs' '!strip')
