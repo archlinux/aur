@@ -16,7 +16,7 @@ md5sums=(SKIP)
 
 pkgver() {
   cd "$srcdir"/"${pkgname%-git}"
-  printf %s "$(date -I -ud "$(git log -1 --format=%ci)" | sed 's/-/_/g')"
+  printf %s "$(date -I -ud "$(git log -1 --format=%ci)" | sed 's/-//g')"
 }
 
 build() {
