@@ -2,30 +2,29 @@
 # Contributor: Alexej Magura <agm2819*gmail*>
 
 pkgname=freebsd-manpages
-pkgver=10.1
+pkgver=10.3
 pkgrel=1
-_debrel=RC1
 pkgdesc="Manual pages for GNU/kFreeBSD systems"
 arch=('any')
 url="http://packages.debian.org/sid/freebsd-manpages"
 license=('BSD')
 #depends=('')
 makedepends=('deb2targz')
-source=("http://mirrors.kernel.org/debian/pool/main/f/$pkgname/${pkgname}_${pkgver}~${_debrel}-${pkgrel}_all.deb")
-md5sums=('8da58a53256f853d03b3bdefc81b8976')
+source=("http://mirrors.kernel.org/debian/pool/main/f/$pkgname/${pkgname}_${pkgver}-${pkgrel}_all.deb")
+md5sums=('cf2410ba9c9e98e0ee74676fdeab4f5f')
 
 
 prepare () {
 
     cd "$srcdir"
 
-    deb2targz "${pkgname}_${pkgver}~${_debrel}-${pkgrel}_all.deb"
+    deb2targz "${pkgname}_${pkgver}-${pkgrel}_all.deb"
 
     [[ -d "$pkgname-$pkgver" ]] && rm -r "$pkgname-$pkgver"
 
     ! [[ -d "$pkgname-$pkgver" ]] && mkdir "$pkgname-$pkgver"
 
-    tar -C "$pkgname-$pkgver" -xJf "${pkgname}_${pkgver}~${_debrel}-${pkgrel}_all.tar.xz"
+    tar -C "$pkgname-$pkgver" -xJf "${pkgname}_${pkgver}-${pkgrel}_all.tar.xz"
 
 }
 
