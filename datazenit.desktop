@@ -1,0 +1,11 @@
+[Desktop Entry]
+Categories=Development;
+Exec=/usr/bin/datazenit %f
+Icon=datazenit
+Terminal=false
+Type=Application
+StartupWMClass=datazenit
+Name=Datazenit
+Comment=Cross-platform MySQL and PostgreSQL GUI
+Categories=Development;
+StartupNotify=true
