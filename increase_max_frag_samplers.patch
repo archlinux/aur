@@ -1,0 +1,16 @@
+@@ -, +, @@ 
+---
+ dlls/wined3d/wined3d_private.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+--- a/dlls/wined3d/wined3d_private.h	
++++ a/dlls/wined3d/wined3d_private.h	
+@@ -180,7 +180,7 @@ void wined3d_rb_free(void *ptr) DECLSPEC_HIDDEN;
+ #define MAX_STREAM_OUT              4
+ #define MAX_STREAMS                 16
+ #define MAX_TEXTURES                8
+-#define MAX_FRAGMENT_SAMPLERS       16
++#define MAX_FRAGMENT_SAMPLERS       32
+ #define MAX_VERTEX_SAMPLERS         4
+ #define MAX_COMBINED_SAMPLERS       (MAX_FRAGMENT_SAMPLERS + MAX_VERTEX_SAMPLERS)
+ #define MAX_ACTIVE_LIGHTS           8
+-- 

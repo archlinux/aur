@@ -10,7 +10,7 @@
 
 pkgname=wine-gaming-nine
 pkgver=1.9.20
-pkgrel=1
+pkgrel=2
 
 _pkgbasever=${pkgver/rc/-rc}
 _winesrcdir="wine-patched-staging-$_pkgbasever"
@@ -19,7 +19,8 @@ source=("https://github.com/wine-compholio/wine-patched/archive/staging-$_pkgbas
         "https://github.com/sarnex/wine-d3d9-patches/archive/wine-d3d9-$_pkgbasever.tar.gz"
         30-win32-aliases.conf
         heap_perf.patch
-        keybindings.patch
+        increase_max_frag_samplers.patch
+	keybindings.patch
         steam.patch
         wbemprox_query_v2.patch
         )
@@ -27,6 +28,7 @@ sha1sums=('1322112de8dee5111647ab3ac285afc5ca6fcce9'
 	  'dd43f92fc8911f728526d8a557d19ffcc1aadafc'
           '023a5c901c6a091c56e76b6a62d141d87cce9fdb'
           '0f4ac455436d5714a2cf0b537ed25f4fa5c1a7fd'
+	  'a84456790932fb2e7bb75ddeac86fd45b7c09e79'
           'f3febb8836f38320742a546c667106608d4c4395'
           '74aae040fde9ff3c9e8da9c840557e87afdbc3a0'
           '644e141125a9f2407e64d23c85ec84a691c7caae'
@@ -133,6 +135,7 @@ prepare()
     patch -p1 < "$srcdir/wine-d3d9-patches-wine-d3d9-$_pkgbasever/wine-d3d9.patch"
     patch -p1 < ../steam.patch
     patch -p1 < ../heap_perf.patch
+    patch -p1 < ../increase_max_frag_samplers.patch
     patch -p1 < ../wbemprox_query_v2.patch
 
     patch -p1 -R < ../keybindings.patch
