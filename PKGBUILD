@@ -1,20 +1,23 @@
 # Maintainer: Rudy Matela <rudy@matela.com.br>
 pkgname=nfdump
-pkgver=1.6.13
+pkgver=1.6.15
 pkgrel=1
 pkgdesc="A set of tools to collect and process netflow data."
 arch=('i686' 'x86_64')
-url="http://nfdump.sourceforge.net/"
+url="https://github.com/phaag/nfdump/"
 license=('BSD')
 depends=('glibc')
-makedepends=('flex' 'bison')
-source=("http://downloads.sourceforge.net/nfdump/$pkgname-$pkgver.tar.gz")
-md5sums=('f5e916049aec1b531c63303b92270d42')
+makedepends=('flex' 'bison' 'rrdtool')
+source=("https://github.com/phaag/nfdump/archive/v1.6.15.tar.gz")
+md5sums=('6f52c01099a2a74e451ebfb17bf92da8')
 
 build() {
 	cd "$srcdir/$pkgname-$pkgver"
 
-	./configure --prefix=/usr
+	./configure --prefix=/usr \
+	  --enable-nfprofile \
+	  --enable-nftrack \
+	  --enable-sflow
 	make
 }
 
