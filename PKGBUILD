@@ -9,7 +9,7 @@ arch=('i686' 'x86_64')
 url="https://mega.nz/#sync"
 license=('custom')
 depends=('qt5-base' 'hicolor-icon-theme' 'c-ares' 'crypto++' 'curl' 'libuv' 'libsodium')
-makedepends=('qt5-tools' 'qtchooser' 'lsb-release')
+makedepends=('qt5-tools' 'lsb-release')
 optdepends=("nautilus-megasync: for integration with nautilus")
 provides=("megasync=${pkgver}")
 conflicts=('megatools' 'megasync')
