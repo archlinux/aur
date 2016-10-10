@@ -2,8 +2,8 @@
 # Contributor: Zhengyu Xu <xzy3186@gmail.com>
 
 pkgname=insync
-pkgver=1.3.10
-_pkgver=36104
+pkgver=1.3.12
+_pkgver=36116
 pkgrel=1
 pkgdesc="An unofficial Google Drive client that runs on Linux, with support for various desktops"
 url="https://www.insynchq.com/downloads"
@@ -16,8 +16,8 @@ source=('insync.service')
 source_i686=("http://s.insynchq.com/builds/${pkgname}_${pkgver}.${_pkgver}-trusty_i386.deb")
 source_x86_64=("http://s.insynchq.com/builds/${pkgname}_${pkgver}.${_pkgver}-trusty_amd64.deb")
 sha256sums=('995d9131bd454015ff11414d002b8927b7397835969e27061008264c0c5f225d')
-sha256sums_i686=('0952ec3156357a9c28d35da3b1f6e9b6611a4fed9e834fc0f98f348102d36981')
-sha256sums_x86_64=('fa9b6481c9a6ce7ecf3b9e0667ace4ee8d5367eea3ef1b3474e404d53a051d63')
+sha256sums_i686=('b0c27926de2fea42c07c92285cd96c2936e449cab37c38a354a81a94b5d9298e')
+sha256sums_x86_64=('750f1bfa381e1019b7320af24b43d800c95a737968ee15d4d174dd9f4ac6f5a2')
 
 package() {
    tar xvf data.tar.gz
