@@ -11,7 +11,7 @@ url="http://code.google.com/p/ogre-paged"
 license=('MIT')
 makedepends=('ogre-1.8' 'boost' 'cmake')
 provides=('ogre-pagedgeometry')
-source=(http://ogre-paged.googlecode.com/files/ogre-paged-${pkgver}.tar.gz)
+source=(https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/ogre-paged/ogre-paged-${pkgver}.tar.gz)
 sha512sums=('48e8efb6b9bd7b38d8513a06473260b0f6a4829b18a27b4aea21319373ae1d6c41bc1d26bb6e1ec2473041cc8a4f5e833a02863b6599750a27d72c9581f7c3e4')
 
 build() {
