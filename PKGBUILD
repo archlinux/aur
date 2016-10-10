@@ -2,7 +2,7 @@
 
 pkgname=photini-git
 pkgver=v2016.10.0.r0.g4cc4454c
-pkgrel=1
+pkgrel=2
 pkgdesc='An easy to use digital photograph metadata (EXIF, IPTC, XMP) editing application'
 arch=('any')
 url='https://github.com/jim-easterbrook/Photini'
@@ -15,8 +15,8 @@ python2-sip
 )
 optdepends=(
 'python2-flickrapi: Upload to Flickr'
-'gdata-python-client: Upload to Picasa'
-'gphoto: access to camera'
+'python2-gdata: Upload to Picasa'
+'gphoto2: access to camera'
 )
 makedepends=(git python2)
 source=('git://github.com/jim-easterbrook/Photini.git')
