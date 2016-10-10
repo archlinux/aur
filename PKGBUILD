@@ -11,8 +11,10 @@ license=('LGPL')
 depends=('kio')
 makedepends=('extra-cmake-modules' 'kdoctools' 'python')
 groups=('kf5')
-source=("http://download.kde.org/stable/frameworks/${pkgver%.*}/${pkgname}-${pkgver}.tar.xz")
-md5sums=('7423235fa03d3c4179a7154e7efdd48e')
+source=("http://download.kde.org/stable/frameworks/${pkgver%.*}/${pkgname}-${pkgver}.tar.xz"{,.sig})
+md5sums=('7423235fa03d3c4179a7154e7efdd48e'
+         'SKIP')
+validpgpkeys=(53E6B47B45CEA3E0D5B7457758D0EE648A48B3BB) # David Faure <faure@kde.org>
 
 prepare() {
   mkdir -p build
