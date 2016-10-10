@@ -1,0 +1,13 @@
+pkgbase = mcidasv-bin
+	pkgdesc = free, open source software for 3D geophysical data analysis and visualization
+	pkgver = 2.5.0
+	pkgrel = 1
+	url = http://www.ssec.wisc.edu/mcidas/software/v/
+	arch = x86_64
+	license = GPL3
+	depends = java-environment
+	source = http://www.ssec.wisc.edu/mcidas/software/v/stable/1.6/McIDAS-V_1.6_linux_x86-64_installer.sh
+	sha512sums = 8b579859119baff43467763b9b516b48f39275152991d67574140134c8a1aba4d785822244e1bf466c1919ebd8ea0d6abb025f443b157c9f93b142bd3764f44a
+
+pkgname = mcidasv-bin
+
