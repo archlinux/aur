@@ -2,10 +2,11 @@
 # Contributor: Stuart Mumford <stuart at cadair dot com>
 # Contributor: Maximilian Berger <snowdragon92 at gmail dot com>
 pkgname=paraview-bin
+_pkgname=paraview
 _PkgName=ParaView
 _pkgver=5.1.2
 pkgver=${_pkgver/-/.}
-pkgrel=1
+pkgrel=2
 pkgdesc="ParaView is an open-source, multi-platform data analysis and visualization application"
 arch=('x86_64')
 url="http://www.paraview.org/"
@@ -24,4 +25,7 @@ package() {
   # Install license
   install -Dm644 "License_v1.2.txt" \
     "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+
+  # Remove old libstdc++
+  rm "${pkgdir}/usr/lib/${_pkgname}-${pkgver:0:3}/"libstdc++.so.*
 }
