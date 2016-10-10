@@ -97,8 +97,8 @@ build() {
   # Please note that incremental compilation implies that you
   # are reusing your src directory!
   make
-  make html
-  make pdf
+  #make html
+  #make pdf
 }
 
 package_emacs-gtk2() {
