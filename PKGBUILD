@@ -1,6 +1,6 @@
 # Maintainer: Arthur Vuillard <arthur@hashbang.fr>
 pkgname=postgresql-multicorn
-pkgver=1.3.2
+pkgver=1.3.3
 pkgrel=1
 pkgdesc="Python Wrapper for Postgresql 9.2+ Foreign Data Wrapper"
 url="http://multicorn.org/"
@@ -16,7 +16,7 @@ source=(
     "https://github.com/Kozea/${_github_name}/archive/${_github_tag}.zip"
 )
 
-md5sums=('676ffb530dd4299602d3d6d699eb6095')
+md5sums=('19fe00cf55cb1d9876d122627262e794')
 
 build(){
     cd ${srcdir}/${_github_name}-${pkgver}
