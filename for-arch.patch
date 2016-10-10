@@ -1,5 +1,5 @@
---- vmware-vsphere-cli-distrib/bin/vmware-uninstall-vSphere-CLI.pl	2012-07-13 04:42:55.000000000 +0400
-+++ vmware-vsphere-cli-distrib1/vmware-install.pl	2013-04-25 15:10:01.398219700 +0400
+--- vmware-install.pl.orig	2016-10-05 16:22:21.214845710 +0100
++++ bin/vmware-uninstall-vSphere-CLI.pl	2016-10-10 14:40:27.453829269 +0100
 @@ -766,7 +766,7 @@
  # Constants
  my $cInstallerFileName = 'vmware-install.pl';
@@ -27,12 +27,12 @@
      my $dst_loc = $dst_dir . '/' . $file;
      if (-l $dst_loc) {
        install_symlink(readlink($dst_loc), $src_loc);
-@@ -2181,25 +2181,25 @@
+@@ -2198,35 +2198,31 @@
  sub install_content_vicli_perl {
     my %patch;
     my $shipped_ssl_version = '0.9.8';
 -   my $installed_ssl_version = '0';
-+   my $installed_ssl_version = '1.0.0';
++   my $installed_ssl_version = '1.0.2';
     my $minimum_ssl_version = '0.9.7';
 -   my $ssleay_installed = 0;
 +   my $ssleay_installed = 1;
@@ -50,10 +50,10 @@
     my $libxml_perl_installed = 1;
  
 -   my $e2fsprogs_installed = 0;
+-   my $e2fsprogs_version = '0';
 +   my $e2fsprogs_installed = 1;
-    my $e2fsprogs_version = '0';
--   my $minimum_e2fsprogs_version = '1.38';
-+   my $minimum_e2fsprogs_version = '1.42';
++   my $e2fsprogs_version = '1.43';
+    my $minimum_e2fsprogs_version = '1.38';
     my $e2fsprogs_devel_installed = 0;
     my $internet_available = 0;
 -   my $install_rhel55_local = 0;
@@ -61,7 +61,17 @@
  
     my $vicliName = vmware_product_name();
     if ($] < 5.008) {
-@@ -2608,16 +2608,16 @@
+       error($vicliName . " requires Perl version 5.8 or later.\n\n");
+    }
+ 
+-   unless(direct_command("perldoc -V 2> /dev/null")) {
+-      print wrap("warning: " . $vicliName . " requires Perldoc.\n Please install perldoc.\n\n");
+-   }
+-
+    if ( file_name_exist("/etc/redhat-release")) {
+       my $msg = "This " . vmware_product_name() . " installer includes precompiled Perl modules for RHEL.\n"
+                 . "Answering yes will install the precompiled modules, and answering no will install from CPAN.\n"
+@@ -2704,16 +2700,16 @@
  
        undef %patch;
        if ($] >= 5.010 && ( -e "./lib/5.10/$module->{'path'}/lib" ) )  {
@@ -82,35 +92,69 @@
        }
  
        if ($] < 5.010) {
-@@ -2736,21 +2736,21 @@
+@@ -2776,7 +2772,7 @@
+ 
+   my $previous = $gOption{'default'};
+   $gOption{'default'} = 0;
+-  show_EULA();
++  #show_EULA();
+   $gOption{'default'} = $previous;
+ 
+   if ((check_disk_space('.', '/usr/lib')) < 0) {
+@@ -2846,29 +2842,25 @@
    db_add_answer('LIBDIR', $libdir);
  
    # Install a symlink for ESXCLI, which is in the library
 -  install_symlink("$libdir/bin/esxcli/esxcli", "$bindir/esxcli");
-+  install_symlink("/lib/vmware-vcli/bin/esxcli/esxcli", "$bindir/esxcli");
++  install_symlink("/usr/lib/vmware-vcli/bin/esxcli/esxcli", "$bindir/esxcli");
+   # Install a symlink for DCLI, which is in the library
+-  install_symlink("$libdir/bin/vmware-dcli/dcli", "$bindir/dcli");
+-  safe_chmod(755, "$bindir/esxcli");
+-  safe_chmod(755, "$bindir/dcli");
++  install_symlink("/usr/lib/vmware-vcli/bin/vmware-dcli/dcli", "$bindir/dcli");
  
    # Install a symlink for VCLI
 -  if ( "$rootdir/bin" ne "/usr/bin") {
 -     install_bin_symlink('./bin', "$rootdir/bin");
 -     install_symlink("$libdir/bin/esxcli/esxcli", "/usr/bin/esxcli");
+-     install_symlink("$libdir/bin/vmware-dcli/dcli", "/usr/bin/dcli");
 +  if ( "$rootdir/bin" ne "../../pkg/vmware-vcli/usr/bin") {
 +     install_bin_symlink('./bin', "/bin");
-+     install_symlink("/lib/vmware-vcli/bin/esxcli/esxcli", "../../pkg/vmware-vcli/usr/bin/esxcli");
++     install_symlink("/usr/lib/vmware-vcli/bin/esxcli/esxcli", "esxcli");
++     install_symlink("/usr/lib/vmware-vcli/bin/vmware-dcli/dcli", "dcli");
+      # Making esxcli and dcli executable
+-	 safe_chmod(755, "/usr/bin/esxcli");
+-     safe_chmod(755, "/usr/bin/dcli");
    }
  
    # Install a symlink to make /lib point to the correct library
    # based on the architecture of our system
    if (is64BitUserLand()) {
 -     install_symlink("$libdir/lib64", "$libdir/lib");
-+     install_symlink("/lib/vmware-vcli/lib64", "$libdir/lib");
++     install_symlink("/usr/lib/vmware-vcli/lib64", "$libdir/lib");
    }
    else {
 -     install_symlink("$libdir/lib32", "$libdir/lib");
-+     install_symlink("/lib/vmware-vcli/lib32", "$libdir/lib");
++     install_symlink("/usr/lib/vmware-vcli/lib32", "$libdir/lib");
    }
  
    # Make sure that, in particular, libvmacore.so's exec text permission needs
-@@ -3742,9 +3742,9 @@
+@@ -2879,12 +2871,12 @@
+   }
+ 
+   # Install vSphere SDK for Perl content excluding "apps"
+-  $docdir = $rootdir . '/share/doc/vmware-vcli';
++  $docdir = $rootdir . '/usr/share/doc/vmware-vcli';
+   install_dir('./doc', $docdir, \%patch, 0x1);
+   db_add_answer('DOCDIR', $docdir);
+ 
+   # Install resxtop man files
+-  $mandir = "$rootdir/share/man/man1";
++  $mandir = "$rootdir/usr/share/man/man1";
+   undef %patch;
+   install_dir('./man', $mandir, \%patch, 0x1);
+ 
+@@ -3860,9 +3852,9 @@
       error($chk_msg);
     }
  

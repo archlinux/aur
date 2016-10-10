@@ -1,0 +1,4 @@
+post_install() {
+  echo "==> You must read and accept the VMware End User License Agreement
+==> /usr/share/doc/vmware-vcli/EULA before using this software"
+}
