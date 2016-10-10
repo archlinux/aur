@@ -2,7 +2,7 @@
 
 pkgname=profanity-git
 _pkgname=profanity
-pkgver=4515.3a3933e
+pkgver=4737.d485588
 pkgrel=1
 pkgdesc="A console based jabber client."
 arch=('i686' 'x86_64')
