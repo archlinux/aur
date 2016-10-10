@@ -4,13 +4,12 @@ pkgname=livewallpaper
 pkgver=0.5.0
 pkgrel=1
 pkgdesc="OpenGL powered animated wallpapers with configuration utility, autostart, and application indicator."
-arch=(any)
+arch=('x86_64' 'i686')
 url="https://launchpad.net/livewallpaper"
 license=('GPL3')
-makedepends=('intltool' 'xcftools' 'cmake')
-depends=('libgl' 'libpeas' 'libx11'
-        'python' 'python-numpy' 'python-cairo' 'python-opengl'
-        'gtk3' 'gobject-introspection' 'libappindicator-gtk3')
+makedepends=('intltool' 'xcftools' 'cmake' 'vala')
+depends=('libpeas' 'glew' 'upower' 'libappindicator-gtk3' 'gobject-introspection'
+        'python' 'python-cairo' 'python-opengl')
 
 provides=('livewallpaper' 'livewallpaper-indicator' 'livewallpaper-config')
 source=(https://launchpad.net/livewallpaper/0.5/0.5.0/+download/livewallpaper-0.5.0.tar.gz)
@@ -19,7 +18,17 @@ install=livewallpaper.install
 
 prepare() {
     cd "$srcdir/$pkgname-$pkgver"
+
+    # Add inexisting folder
     sed -i '/add_subdirectory(debian)/d' CMakeLists.txt
+    # Disable doc generation (needs gtk-doc)
+    sed -i '/add_subdirectory(doc)/d' CMakeLists.txt
+    # Please use python3
+    sed -i '1i #!/usr/bin/python3'          plugins/circles/circles.py
+    sed -i '1i #!/usr/bin/python3'          plugins/photoslide/photoslide.py
+    # Fix old API
+    sed -i -e 's/fromstring/frombytes/g'    plugins/photoslide/photoslide.py
+    sed -i -e 's/tostring/tobytes/g'        plugins/photoslide/photoslide.py
 }
 
 build() {
