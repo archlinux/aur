@@ -1,18 +1,20 @@
-# Contributor: xRemaLx <anton.komolov@gmail.com>
+# Contributor: John D Jones III AKA jnbek <jnbek1972 -_AT_- g m a i l -_Dot_- com>
+# Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-safe-isa'
-_pkgname='Safe-Isa'
-pkgver='1.000004'
+pkgver='1.000005'
 pkgrel='1'
-pkgdesc="Safe::Isa - Call isa, can, does and DOES safely on things that may not be objects"
+pkgdesc="Call isa, can, does and DOES safely on things that may not be objects"
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
-depends=('perl>=5.8.1')
-makedepends=('perl-extutils-makemaker>=6.59')
-url='http://search.cpan.org/dist/Safe-Isa'
-source=("http://search.cpan.org/CPAN/authors/id/E/ET/ETHER/${_pkgname}-${pkgver}.tar.gz")
-sha512sums=('6d48d3a7b1aa29f836028588be04e2e729234e57871d431780e5fb9129831806e39ded47ecbd3a3c454337d04db6a3f1d056fd00d1cb2954b59930a41c20f6aa')
+depends=('perl>=5.006')
+makedepends=()
+url='https://metacpan.org/release/Safe-Isa'
+source=('http://search.cpan.org/CPAN/authors/id/E/ET/ETHER/Safe-Isa-1.000005.tar.gz')
+md5sums=('398246c348f404dbfc4e89dab2cbc02a')
+sha512sums=('5b3fc6503dc85eb20306af5eb5b10d36a1e0d1e7cd2ff0ee361857d581e8550a194647bdbbb7fedb40b808f36afc004c51e934b62616e73ac282562dda76308e')
+_distdir="Safe-Isa-1.000005"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
@@ -21,21 +23,21 @@ build() {
       PERL_MB_OPT="--installdirs vendor --destdir '$pkgdir'" \
       MODULEBUILDRC=/dev/null
 
-    cd "${srcdir}/${_pkgname}-${pkgver}"
+    cd "$srcdir/$_distdir"
     /usr/bin/perl Makefile.PL
     make
   )
 }
 
 check() {
-  cd "${srcdir}/${_pkgname}-${pkgver}"
+  cd "$srcdir/$_distdir"
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""
     make test
   )
 }
 
 package() {
-  cd "${srcdir}/${_pkgname}-${pkgver}"
+  cd "$srcdir/$_distdir"
   make install
 
   find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
