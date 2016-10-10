@@ -39,12 +39,12 @@ build() {
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
-  
+
   make DESTDIR="$pkgdir" install
-  
+
   mkdir -p "$pkgdir/usr/share/thumbnailers"
   cp ../gnome-xcf-thumbnailer.thumbnailer "$pkgdir/usr/share/thumbnailers"
-  
+
   install -m755 -d "$pkgdir/usr/share/gconf/schemas"
   gconf-merge-schema "$pkgdir/usr/share/gconf/schemas/${pkgname}.schemas" \
     --domain gnome-xcf-thumbnailer "$pkgdir/usr/share/$pkgname/${pkgname}.sc"
