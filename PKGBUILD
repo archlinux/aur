@@ -4,13 +4,14 @@
 pkgbase=linux-bcache-git
 _srcname=linux-4.7.0
 pkgver=4.7.0
-pkgrel=1
+pkgrel=1.1
 arch=('i686' 'x86_64')
 url="https://github.com/alyptik/linux-bcache-git"
 license=('GPL3')
 makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc' 'elfutils' 'git')
 options=('!strip')
-source=('change-default-console-loglevel.patch'
+source=("${srcdir}/${_srcname}::https://evilpiepirate.org/git/linux-bcache.git#branch=bcache-dev"
+        'change-default-console-loglevel.patch'
         # standard config files for mkinitcpio ramdisk
         'linux.preset'
         # the main kernel config files
@@ -28,7 +29,7 @@ _kernelname=${pkgbase#linux}
 
 prepare() {
   # Clone kernel bcache-dev kernel repository.
-  git clone -b bcache-dev "https://evilpiepirate.org/git/linux-bcache.git" "${srcdir}/${_srcname}"
+  #git clone -b bcache-dev "https://evilpiepirate.org/git/linux-bcache.git" "${srcdir}/${_srcname}"
 
   cd "${srcdir}/${_srcname}"
 
@@ -45,7 +46,6 @@ prepare() {
 
   if [ "${CARCH}" = "x86_64" ]; then
     cat "${srcdir}/config.x86_64" > ./.config
-    #cat  "/@media/microSDXC/arch-aur/linux-surfacepro3/sp3.config" > ./.config
   else
     cat "${srcdir}/config" > ./.config
   fi
@@ -61,16 +61,22 @@ prepare() {
   # don't run depmod on 'make install'. We'll do this ourselves in packaging
   sed -i '2iexit 0' scripts/depmod.sh
 
-  # get kernel version
-  make prepare
-
   # load configuration
   # Configure the kernel. Replace the line below with one of your choice.
   #make menuconfig # CLI menu for configuration
   #make xconfig # X-based configuration
-  make oldconfig # using old config from previous kernel version
+  #make oldconfig # using old config from previous kernel version
   # ... or manually edit .config
   #make nconfig # new CLI menu for configuration
+  printf '\n \033[32m %s \033[0m ' "[Run interactive nconfig? (Y/n)]"; read -r; echo
+  case $REPLY in
+          [Yy]*|'') make nconfig ;; # new CLI menu for configuration
+          [Nn]*) printf ' \033[31m %s \n\033[0m ' "Continuing..."; make olddefconfig ;;
+          *) printf ' \033[31m %s \n\033[0m ' "Invalid input..."; return 1 ;;
+  esac
+
+  # get kernel version
+  make prepare
 
   # rewrite configuration
   yes "" | make config >/dev/null
