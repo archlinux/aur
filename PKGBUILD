@@ -2,7 +2,7 @@
 # Based on UMS PKGBUILD
 
 pkgname=ums-headless
-pkgver=6.5.0
+pkgver=6.5.1
 pkgrel=1
 pkgdesc="Universal Media Server: a DLNA-compliant UPnP Media Server for headless systems. Build based on Java 8."
 arch=('i686' 'x86_64' 'armv7h' 'aarch64' 'armv6h' 'arm')
@@ -22,9 +22,9 @@ backup=(opt/ums/UMS.conf \
 source=("http://downloads.sourceforge.net/project/unimediaserver/Official%20Releases/Linux/UMS-$pkgver-Java8.tgz"
         'ums.desktop'
         'ums.service')
-sha256sums=('2cd160f446dc6a248cc7c9683f016f9cdeb988198bb8704adcfbfa5e547fbd38'
+sha256sums=('cadfd435915e3ef5c506bbbd81c49ec5811522ebc405779974f013ee94f3adcb'
             '0cdadbabef215b6539e56755147a8f626d9f1fadfb85e2e5b7f7f1b66f1cdef9'
-            'e9709c58a909b79062604425e18e0ab7a8ee5d7b823fb481dcc9269b02fcc4a7')
+            '6444b0ad9a61c1f7d450d79497bbdd80d5b6d2da893550cd7260e6e233c8d886')
 
 package() {
   mkdir -p $pkgdir/opt/ums
