@@ -1,4 +1,4 @@
-pkgbase = backports-patched
+pkgbase = backports-patched-bcma
 	pkgdesc = Backports provides drivers released on newer kernels backported for usage on older kernels. Patched flavor (for bcma chipsets)
 	pkgver = 4.4.2_1
 	pkgrel = 7
@@ -16,5 +16,5 @@ pkgbase = backports-patched
 	sha256sums = a979e194c2ed9fdfca092a448e626d85c5af0e4de5ad993c0967afd15af01285
 	sha256sums = 65c92cb5a4aa2de5a2d7a5c40b9dedc3e0c20548d4d837e2c69f51f4b7f87644
 
-pkgname = backports-patched
+pkgname = backports-patched-bcma
 

@@ -8,7 +8,7 @@ _runkernver=$(uname -r)
 _shortkernver=${_runkernver%.*}
 _kernelname=${_runkernver##*-}
 
-pkgname=backports-patched
+pkgname=backports-patched-bcma
 pkgver=4.4.2_1
 #pkgver=20160324
 _upver="${pkgver//_/-}"
