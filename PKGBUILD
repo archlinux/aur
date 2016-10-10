@@ -8,7 +8,7 @@ url="http://www.r3broot.gsi.de"
 license=('unknown')
 groups=()
 fairsoftver=may16p1-1
-fairrootver=v-16.06a-1
+fairrootver=v-16.06a
 makedepends=('cmake'
 	'clang'
 	'bison'
