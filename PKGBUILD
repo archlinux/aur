@@ -3,8 +3,8 @@
 
 _pkgname=libhttpseverywhere
 pkgname="$_pkgname-git"
-pkgrel=2
-pkgver=94+gdeecaf2
+pkgrel=3
+pkgver=95+ga07a685
 pkgdesc="library to use HTTPSEverywhere in desktop applications"
 arch=('i686' 'x86_64')
 url="https://github.com/grindhold/libhttpseverywhere/"
@@ -26,7 +26,7 @@ prepare() {
 	patch -N -p1 -i "$srcdir/meson.patch"
 	mkdir -p "$srcdir/$_pkgname/build"
 	cd "$srcdir/$_pkgname/build"
-	meson --prefix "$pkgdir/usr" --libdir "lib" ..
+	meson --prefix "/usr" --libdir "lib" ..
 }
 build() {
 	cd "$srcdir/$_pkgname/build"
@@ -35,6 +35,5 @@ build() {
 
 package() {
 	cd "$srcdir/$_pkgname/build"
-	ninja install
-	rm -rf "$pkgdir/share/devhelp"
+	DESTDIR="$pkgdir/" ninja install
 }
