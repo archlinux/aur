@@ -1,0 +1,25 @@
+--- backports-4.4.2-1/drivers/bcma/driver_gpio.c.orig	2016-10-09 22:05:57.603802400 -0400
++++ backports-4.4.2-1/drivers/bcma/driver_gpio.c	2016-10-10 01:53:40.329751497 -0400
+@@ -188,7 +188,7 @@
+ 	chip->direction_input	= bcma_gpio_direction_input;
+ 	chip->direction_output	= bcma_gpio_direction_output;
+ 	chip->owner		= THIS_MODULE;
+-	chip->dev		= bcma_bus_get_host_dev(bus);
++	chip->parent		= bcma_bus_get_host_dev(bus);
+ #if IS_BUILTIN(CONFIG_OF)
+ 	if (cc->core->bus->hosttype == BCMA_HOSTTYPE_SOC)
+ 		chip->of_node	= cc->core->dev.of_node;
+--- backports-4.4.2-1/net/wireless/core.h.orig	2016-10-10 02:01:45.180408277 -0400
++++ backports-4.4.2-1/net/wireless/core.h	2016-10-10 02:02:16.822698568 -0400
+@@ -102,6 +102,11 @@
+ 	struct wiphy wiphy __aligned(NETDEV_ALIGN);
+ };
+ 
++static inline int nla_put_u64(struct sk_buff *skb, int attrtype, u64 value)
++{
++	return nla_put(skb, attrtype, sizeof(u64), &value);
++}
++
+ static inline
+ struct cfg80211_registered_device *wiphy_to_rdev(struct wiphy *wiphy)
+ {

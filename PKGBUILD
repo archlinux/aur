@@ -1,0 +1,197 @@
+# Maintainer: Tony Lambiris <tony@critialstack.com>
+
+#TODO: Investigate empty dir - /usr/lib/modules/3.12.9-2-ARCH/
+#TODO: Document and finish automation for patching and config
+#TODO: Add config (from makepkg.d only) for downloading most recent snapshot (include logic in pkgver() function)
+
+_runkernver=$(uname -r)
+_shortkernver=${_runkernver%.*}
+_kernelname=${_runkernver##*-}
+
+pkgname=backports-patched
+pkgver=4.4.2_1
+#pkgver=20160324
+_upver="${pkgver//_/-}"
+pkgrel=7
+pkgdesc='Backports provides drivers released on newer kernels backported for usage on older kernels. Patched flavor (for bcma chipsets)'
+url='https://backports.wiki.kernel.org/index.php/Main_Page'
+arch=('i686' 'x86_64')
+license=('GPL')
+depends=('linux')
+
+# Assocative array for different forks like linux-ck, linux-grsec
+declare -A linfork
+linfork["ARCH"]=''
+linfork["macbook"]='-macbook'
+linfork["grsec"]='-grsec'
+linfork["ck"]='-ck'
+makedepends=('linux-api-headers' "linux-headers${linfork[${_kernelname}]}>=$_shortkernver")
+
+optdepends=('backports-frag+ack: wl-frag+ack patch')
+install=backports.install
+# Stable and rc? TODO: Check with rc :D | Double %% cuts to the first, single % cuts to the last
+source=("http://www.kernel.org/pub/linux/kernel/projects/backports/stable/v${_upver%-*}/backports-${_upver}.tar.xz"
+		"bcma.patch")
+# Snapshot:
+#source=("http://www.kernel.org/pub/linux/kernel/projects/backports/${pkgver:0:4}/${pkgver:4:2}/${pkgver:6:2}/backports-${pkgver}.tar.xz")
+sha256sums=('a979e194c2ed9fdfca092a448e626d85c5af0e4de5ad993c0967afd15af01285'
+            '65c92cb5a4aa2de5a2d7a5c40b9dedc3e0c20548d4d837e2c69f51f4b7f87644')
+
+# Check for daily pkgver eg. 20370718
+date -d "$pkgver" > /dev/null 2>&1
+if [[ $? == 0 ]]; then
+  source=("http://www.kernel.org/pub/linux/kernel/projects/backports/${pkgver:0:4}/${pkgver:4:2}/${pkgver:6:2}/backports-${pkgver}.tar.xz")
+  sha256sums=('b361951f6dedfd36a335c6d0177d1d2ba9fed83e35d4e61b7e70e97fe19a03eb')
+fi
+
+_extramodules=extramodules-${_shortkernver}-${_kernelname}
+_kernver=$(cat /usr/lib/modules/${_extramodules}/version) # TODO make this a lower boundary and utilize in reality pacman to get freshest paths. Or make it for specific kernels. Or multiply it over specific kernels ? :3
+
+_cfgdir="/etc/makepkg.d/${pkgname}/"
+_patchdir="${_cfgdir}/patches/"
+
+countdown() {
+  local i
+  for ((i=$1; i>=1; i--)); do
+    [[ ! -e /proc/$$ ]] && exit
+    echo -ne "\rPress [i] to start interactive config in $i second(s) "
+    sleep 1
+  done
+}
+
+prepare() {
+  cd "${srcdir}/backports-${_upver}"
+
+  # add bcma patches
+  patch -p1 -i "${srcdir}/bcma.patch"
+
+  # modprobe -l dropped in kmod
+  sed 's:modprobe -l \([^ )`]*\):find /usr/lib/modules/*/kernel -name "\1.ko*" | sed "s|.*/kernel||":' -i scripts/*
+  sed 's:\$(MODPROBE) -l \([^ )`]*\):find /usr/lib/modules/*/kernel -name "\1.ko*" | sed "s|.*/kernel||":' -i Makefile
+
+  # rfkill.h does not use compat-3.1.h # TODO : IS THIS RLY NEEDED ?
+  #echo '#define br_port_exists(dev) (dev->priv_flags & IFF_BRIDGE_PORT)' >> net/wireless/core.h
+
+  # Patch time!
+  # WARNING - PART BELOW IS UNTESTED: current format - 00-name for cfgfile (to export variables) and 12-3-name for patches (3 stands for -p3)
+  if [ -d "${_cfgdir}" ]; then
+    _CFGLIST=$(ls -1 "${_cfgdir}" | awk ' /^[0-9][0-9]-.*/ {print "source '${_cfgdir}'"$0";"}')
+    eval $_CFGLIST
+    unset _CFGLIST
+    if [ -d "${_patchdir}" ]; then
+      _PATCHLIST=$(ls -1 "${_patchdir}" | awk ' /^[0-9][0-9]-[0-9]-.*/ {print $0}')
+      for _patch in $_PATCHLIST; do
+        msg "Merging patch: ${_patch}"
+        patch -p${_patch:3:1} -i ${_patchdir}/${_patch}
+      done
+      unset _PATCHLIST
+    fi
+  fi
+
+  # Patch for sane install
+cd "${srcdir}/backports-${_upver}"
+patch -p0 <<'EOF'
+--- Makefile.real	2013-07-13 18:50:46.000000000 +0200
++++ Makefile.real.fixed	2013-07-28 01:52:51.922779881 +0200
+@@ -87,14 +87,6 @@
+ 	@$(MAKE) -C $(KLIB_BUILD) M=$(BACKPORT_PWD)			\
+ 		INSTALL_MOD_DIR=$(KMODDIR) $(KMODPATH_ARG)		\
+ 		modules_install
+-	@./scripts/blacklist.sh $(KLIB)/ $(KLIB)/$(KMODDIR)
+-	@./scripts/compress_modules.sh $(KLIB)/$(KMODDIR)
+-	@./scripts/check_depmod.sh
+-	@/sbin/depmod -a
+-	@./scripts/update-initramfs.sh $(KLIB)
+-	@echo
+-	@echo Your backported driver modules should be installed now.
+-	@echo Reboot.
+ 	@echo
+
+ .PHONY: modules_install
+EOF
+
+}
+
+build() {
+  cd "${srcdir}/backports-${_upver}"
+  # unset _selected_drivers # WARNING! DEBUGGING UNSET - MAKE SURE THAT THIS LINE IS COMMENTED
+  # Get config - not in prepare beause interactive part is using cc
+  if [ -n "${_selected_drivers}" ]; then
+    msg "Defconfig(s) detected"
+  else # TODO: else if not that try showing up dialog menu with checkboxes based on available defconfigs ;)
+    warning "Config undetected"
+    # Check for dialog
+    if [ ! -e /usr/bin/dialog ]; then
+      error "Cannot fallback to interactive config - dialog package not installed"
+      false
+    fi
+    # WAIT 10s FOR INTEACTIVE PART - PRESS I FOR INTERACTIVE CONFIG
+    tty -s # Checks if user input is accesssible, otherwise fail
+    countdown 10 & countdown_pid=$!
+    read -s -n 1 -t 10 ikey || true
+    kill -s SIGHUP $countdown_pid
+    echo -e -n "\n"
+    [[ "$ikey" =~ ^[iI]$ ]] || false
+    # BEGIN INTERACTIVE PART TODO: ADD OLDCONFIG OPTION WITH FILE SELECT
+    cfgway=$(dialog --keep-tite --backtitle "$pkgname" --no-items --radiolist 'Choose method to configure' 0 0 0 'defconfig' off 'menuconfig' off 2>&1 >/dev/tty)
+    msg2 "Chosen to configure with \"${cfgway}\""
+    case "$cfgway" in
+      defconfig)
+        for i in $(ls ./defconfigs/); do
+          list_opts+=("$i" "off")
+        done
+        echo "${list_opts[*]}"
+        _selected_drivers=( $(dialog --keep-tite --backtitle "$pkgname" --no-items --checklist 'Choose driver groups to compile' 0 0 0 ${list_opts[*]} 2>&1 >/dev/tty) )
+        msg2 "Selected drivers groups: ${_selected_drivers[*]}"
+        ;;
+      menuconfig)
+        make menuconfig
+        ;;
+      "")
+        error "Nothing selected!\nPerhaps You used [enter] instead of [space] to select menu item?"
+        false
+        ;;
+      *)
+        echo Break out from the PKGBUILD
+        false
+        ;;
+    esac
+    # END OF THE INTERACTIVE PART
+  fi
+
+  if [[ -n "$_selected_drivers" ]]; then #THIS means that defconfigs are used! actual config has to be generated here!!
+    # Workaround - create slapped together defconfig "user" http://i.imgur.com/axyrOZH.jpg
+    (
+      cd ./defconfigs/
+      warning "Creating slapped together defconfig 'user'"
+      cat ${_selected_drivers[*]} | sort -u
+      cat ${_selected_drivers[*]} | sort -u > user
+    )
+
+    # Temporary disabled until resolved
+    # make ${_selected_drivers[*]/#/defconfig-}
+    make defconfig-user # Temporary solution
+
+    msg "» ${_selected_drivers[*]} «" # CONVERT TO MESSAGE AND ONLY IF VAR IS -n
+  fi
+
+  # Actual build
+  msg "Starting actual build"
+  make KLIB=/usr/lib/modules/"${_kernver}" # should be make modules
+}
+
+package() {
+  cd "${srcdir}/backports-${_upver}"
+  mkdir ${pkgdir}/usr/
+  make INSTALL_MOD_PATH="${pkgdir}/usr" KMODDIR=../"${_extramodules}" install
+  find "${pkgdir}" -name '*.ko' -exec gzip -9 {} \;
+
+  #install -d "${pkgdir}"/usr/bin
+  #install scripts/*{enable,load} "${pkgdir}"/usr/bin
+
+  #install -d "${pkgdir}"/usr/lib/compat-drivers
+  #install scripts/modlib.sh "${pkgdir}"/usr/lib/compat-drivers
+
+  # Preparation for future
+  install -d "${pkgdir}"/etc/makepkg.d/"${pkgname}"/patches
+}
