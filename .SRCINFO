@@ -1,0 +1,14 @@
+pkgbase = cutmp3
+	pkgdesc = Edit mp3 (and mp2) files without quality loss
+	pkgver = 3.0.1
+	pkgrel = 1
+	url = http://www.puchalla-online.de/cutmp3.html
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = readline
+	source = http://www.puchalla-online.de/cutmp3-3.0.1.tar.bz2
+	md5sums = SKIP
+
+pkgname = cutmp3
+
