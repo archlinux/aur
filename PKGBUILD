@@ -1,14 +1,15 @@
 # Maintainer: Phillipe Smith <phillipe@archlinux.com.br>
 pkgname=astah-community
 _pkgname=${pkgname/-/_}
-pkgver=7.0.0
+pkgver=7.1.0
 _pkgver=${pkgver//./_}
-pkgrel=2
-_pkgrel=846701
+pkgrel=1
+_pkgrel=f2c212
 pkgdesc="Lightweight, easy-to-use, and free UML2.x modeler"
 arch=("any")
 license=("custom")
 depends=("java-runtime")
+makedepends=("shared-mime-info" "gtk-update-icon-cache" "desktop-file-utils")
 provides=("$_pkgname")
 conflicts=("$_pkgname" "astah-professional")
 install="${pkgname}.install"
@@ -18,13 +19,14 @@ source=("http://cdn.astah.net/downloads/${pkgname}-${_pkgver}-${_pkgrel}.zip"
         "${_pkgname}.xml"
         "${_pkgname}.png"
         "astah_splash_community.png"
-	"LICENSE")
-md5sums=("24ac9f33bf45a2a592d3f7571437b031"
-         "e374756203ba7e4a52309cbe38208683"
-         "d821b7726b61ce1c15ef84e31c0c0505"
-         "b20ec64a7e6b1ad395c6eed7e8a851b7"
-         "95e5566bcef2eb2f7ee5a8ec99eae8af"
-         "3b5f3a3c4e453544e9c665c7950960fc")
+        "LICENSE")
+
+md5sums=('b77ae6bf4ca2b4fb626d58f1260cc54b'
+         'e374756203ba7e4a52309cbe38208683'
+         'd821b7726b61ce1c15ef84e31c0c0505'
+         'b20ec64a7e6b1ad395c6eed7e8a851b7'
+         '95e5566bcef2eb2f7ee5a8ec99eae8af'
+         '3b5f3a3c4e453544e9c665c7950960fc')
 
 package() {         
     install -Dm755 $srcdir/$_pkgname/astah $pkgdir/usr/bin/astah || return 1
