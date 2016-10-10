@@ -4,7 +4,7 @@
 pkgname=qt5-quick1
 pkgver=5.7.0
 _pkgver=5.7.0
-pkgrel=2
+pkgrel=4
 arch=('i686' 'x86_64')
 url='http://qt-project.org/'
 pkgdesc='Qt Declarative is provided for Qt 4 compatibility'
