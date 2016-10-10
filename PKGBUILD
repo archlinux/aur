@@ -1,14 +1,18 @@
 # Maintainer: Piotr Rogoża <piotr dot r dot public at gmail dot com>
-# Contributor: Piotr Rogoża <piotr dot r dot public at gmail dot com>
 
 pkgname=photini-git
-pkgver=15.01.1.r12.g4614fd0f
+pkgver=v2016.10.0.r0.g4cc4454c
 pkgrel=1
 pkgdesc='An easy to use digital photograph metadata (EXIF, IPTC, XMP) editing application'
 arch=('any')
 url='https://github.com/jim-easterbrook/Photini'
 license=('GPL')
-depends=(libgexiv2 pyqt python2-appdirs python2-gobject2)
+depends=(
+libgexiv2
+python2-appdirs
+python2-gobject2
+python2-sip
+)
 optdepends=(
 'python2-flickrapi: Upload to Flickr'
 'gdata-python-client: Upload to Picasa'
