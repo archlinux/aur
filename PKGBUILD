@@ -45,7 +45,7 @@ prepare() {
 	export SIMPATH=/opt/fairsoft/${fairsoftver}
 
 	cd ${srcdir}
-	patch -Np0 -i ${startdir}/fix_return.patch
+#	patch -Np0 -i ${startdir}/fix_return.patch
 
 	cd ${srcdir}/FairRoot-v-${pkgver}
 
