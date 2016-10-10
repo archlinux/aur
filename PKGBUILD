@@ -5,8 +5,9 @@
 
 _pkgname=libevhtp
 pkgname="${_pkgname}"-seafile
-pkgver=1.2.11
+pkgver=1.2.9
 pkgrel=1
+epoch=1
 pkgdesc="A more flexible replacement for libevent's httpd API. [Built for seafile]"
 arch=('i686' 'x86_64' 'armv5te' 'armv6h' 'armv7h')
 url="https://github.com/ellzey/libevhtp"
@@ -16,7 +17,7 @@ makedepends=('cmake')
 provides=('libevhtp')
 conflicts=('libevhtp')
 source=("${_pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
-sha256sums=('0e60ef0b75c9e0351d18e015c9a688a70d9c66d2ca3f6a44a7da7153e11e067d')
+sha256sums=('6a45125dab5211be5e0b6098b6d100f4aebe84dc6b80a9ce7211885fb3c4a97c')
 
 build () {
     cd "${srcdir}/${_pkgname}-${pkgver}"
