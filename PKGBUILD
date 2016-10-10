@@ -1,7 +1,7 @@
 # Maintainer: Oguz Bektas <xorond@gmail.com>
 
 pkgname=passtrust
-pkgver=1.2
+pkgver=1.3
 pkgrel=1
 arch=('any')
 pkgdesc="A Ruby-based tool that converts a simple passphrase into a secure password"
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('ruby' 'xclip')
 makedepends=('ruby-bundler')
 source=("${url}/archive/v${pkgver}.tar.gz")
-sha512sums=('ad748c57a2338a440ea3215d394de46731f464338063bcc456e16be4c0794b94ebb3f273ff76fceba3d9b374a770bd55dc182dc71e060c387f3a19a72a0e7c21')
+sha512sums=('c53c29208682b138566cf837c5cfdd5f127ac70237c0cd7b7753312adc372a135ec1951856fe811fb453da6b7f686c7876f05a108d67395e7fc2e3475f894670')
 
 package() {
   cd ${pkgname}-${pkgver}
