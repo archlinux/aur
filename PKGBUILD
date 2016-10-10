@@ -1,8 +1,8 @@
 # Maintainer: Forest Crossman <cyrozap at gmail dot com>
 
 pkgname=digilent.adept.runtime
-pkgver=2.16.1
-pkgrel=2
+pkgver=2.16.5
+pkgrel=1
 pkgdesc="The Adept Runtime consists of the shared libraries, firmware images, and configuration files necessary to communicate with Digilent's devices."
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url="https://reference.digilentinc.com/digilent_adept_2"
@@ -11,14 +11,17 @@ depends=('libusb')
 conflicts=('libftd2xx')
 options=('!strip')
 backup=('etc/digilent-adept.conf' 'etc/ld.so.conf.d/digilent-adept-libraries.conf' 'etc/udev/rules.d/52-digilent-usb.rules')
-source_armv6h=("https://cloud.digilentinc.com/Software/Adept2/${pkgname}_${pkgver}-armhf.deb")
+#source_armv6h=("https://files.digilent.com/Software/Adept2+Runtime/${pkgver}/${pkgname}_${pkgver}-armhf.deb")
+# Unfortunately, Digilent has not yet released the new version of the runtime for ARM, so in the meantime I've
+# manually set the URL for the ARM version of this package.
+source_armv6h=("https://cloud.digilentinc.com/Software/Adept2/${pkgname}_2.16.1-armhf.deb")
 source_armv7h=($source_armv6h)
-source_i686=("https://cloud.digilentinc.com/Software/Adept2/${pkgname}_${pkgver}-2_i386.deb")
-source_x86_64=("https://cloud.digilentinc.com/Software/Adept2/${pkgname}_${pkgver}-2_amd64.deb")
+source_i686=("https://files.digilent.com/Software/Adept2+Runtime/${pkgver}/${pkgname}_${pkgver}-i386.deb")
+source_x86_64=("https://files.digilent.com/Software/Adept2+Runtime/${pkgver}/${pkgname}_${pkgver}-amd64.deb")
 sha256sums_armv6h=('ac71ead5d05bd7e5018b33c32d2779fa5e12136c366cc7f6cbe0d70e09f9c107')
 sha256sums_armv7h=($sha256sums_armv6h)
-sha256sums_i686=('c693fe2eebe96ea4f6977a0ffbebd02e2f6eeea530df28865b4f5e590c70012e')
-sha256sums_x86_64=('510a3c36c8931673cbe4fd6bee39a0b7edbc962b7796aff1b39f0a4f07712e3a')
+sha256sums_i686=('fbd776ede8373654b8d5c0867964ae2d5fcf3dd2765d51d47ee116e388234e37')
+sha256sums_x86_64=('fa8b695a61baeb07f65cf6d754e859fd47861cf9d57ce2000f0267e59c2e7926')
 
 package() {
   # Extract
