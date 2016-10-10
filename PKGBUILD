@@ -22,8 +22,8 @@ _localmodcfg=
 #pkgbase=linux-mainline               # Build stock -ARCH kernel
 pkgbase=linux-nvme       # Build kernel with a different name
 _srcname=linux-4.8
-_patchname=
-pkgver=4.8
+_patchname=patch-4.8.1
+pkgver=4.8.1
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
@@ -31,7 +31,7 @@ license=('GPL2')
 makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc' 'elfutils')
 options=('!strip')
 source=("https://cdn.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
-        #"https://cdn.kernel.org/pub/linux/kernel/v4.x/testing/${_patchname}.xz"
+        "https://cdn.kernel.org/pub/linux/kernel/v4.x/${_patchname}.xz"
         #"https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.sign"
         #"https://www.kernel.org/pub/linux/kernel/v4.x/testing/${_patchname}.sign"
         # the main kernel config files
@@ -43,7 +43,8 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
 	'nvmepatch3-V4.patch'
 	'change-default-console-loglevel.patch')
 sha256sums=('3e9150065f193d3d94bcf46a1fe9f033c7ef7122ab71d75a7fb5a2f0c9a7e11a'
-            '749b19cac625284ba6abae2d3932465b64d41d0274a3c070ca2c556779bb2078'
+            '79c7bda5b4ac4dee7791f34448464f7aa74d498f80df6e1e5ab73f96c5baea41'
+	    '749b19cac625284ba6abae2d3932465b64d41d0274a3c070ca2c556779bb2078'
             '7d2bb66458b57d4df497ebb15a4ac130d08a0c084ae7845d0fe791a194efdb8e'
             'f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c'
             '45a2b0344a5bea44e6e2a803238eb24223aff42c3c03ea6957cf6373b3bb5f6c'
