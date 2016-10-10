@@ -5,8 +5,8 @@
 
 pkgbase=linux-macbook       # Build kernel with a different name
 _kernelname=-macbook
-_srcname=linux-4.7
-pkgver=4.7.6
+_srcname=linux-4.8
+pkgver=4.8
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
@@ -27,17 +27,17 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         'intel-pstate-backport.patch'
         'change-default-console-loglevel.patch')
 
-sha256sums=('5190c3d1209aeda04168145bf50569dc0984f80467159b1dc50ad731e3285f10'
+sha256sums=('3e9150065f193d3d94bcf46a1fe9f033c7ef7122ab71d75a7fb5a2f0c9a7e11a'
             'SKIP'
-            '2e425c268076c3b186107edf9045e0910088699e077282b5187efb5edf2b8836'
+            '79705983331f05944c826219ac117df77923730677aa0a32f7829ad261c0d33b'
             'SKIP'
-            '55083afe584da6218b7db9ce1b7c3c20aef6f31f8c55b53864bcf7d45eb81b26'
-            '64e99c3339734f7d58e390d71a4dde706640cb0bca857ac4e637b962d50a010d'
+            'b1e2f9183b050048d2a29bb8856130b851f0ff7e08778aeaf313e79d933ee68c'
+            'd39fcf2f583286daabc61bf824e8171cef62ff6221127e776971f871a62e7d30'
             'f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c'
             'bb8af32880059e681396a250d8e78f600f248da8ad4f0e76d7923badb5ee8b42'
             '4d4a622733c2ba742256f369c32a1e98fc216966589f260c7457d299dbb55971'
             '09189eb269a9fd16898cf90a477df23306236fb897791e8d04e5a75d5007bbff'
-            '7094cbcfd657dbc1c17721d4f248f9f98511d803bc4be6d66637388801afdebc'
+            'c0a25b413bc542472868c63318213dfe788beeece750d15f7ff1568aca8968ec'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99')
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
@@ -50,7 +50,7 @@ prepare() {
   cd "${srcdir}/${_srcname}"
 
   # add upstream patch
-  patch -p1 -i "${srcdir}/patch-${pkgver}"
+  #patch -p1 -i "${srcdir}/patch-${pkgver}"
 
   # add latest fixes from stable queue, if needed
   # http://git.kernel.org/?p=linux/kernel/git/stable/stable-queue.git
