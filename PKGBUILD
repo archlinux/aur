@@ -1,6 +1,6 @@
 # Maintainer: Fabien JUIF <fabien.juif@gmail.com>
 pkgname=superpowers
-pkgver=2.0.0
+pkgver=3.0.0
 pkgrel=1
 pkgdesc="2D+3D game making for indies."
 arch=('x86_64')
@@ -8,7 +8,7 @@ url="http://superpowers-html5.com/"
 license=('ISC')
 depends=('nodejs' 'gtk2' 'libxtst' 'python' 'alsa-lib' 'libnotify' 'gcc-libs-multilib' 'gconf' 'nss')
 source=("https://github.com/superpowers/superpowers-app/releases/download/v${pkgver}/superpowers-v${pkgver}-linux-x64.zip")
-md5sums=('c2ecd72de6f7d4bd18208a386ced9af2')
+md5sums=('74b8b8836657363da71a493793136035')
 
 package() {
   mkdir -p "${pkgdir}/opt"
