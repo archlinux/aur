@@ -22,7 +22,6 @@ depends=('linux')
 # Assocative array for different forks like linux-ck, linux-grsec
 declare -A linfork
 linfork["ARCH"]=''
-linfork["macbook"]='-macbook'
 linfork["grsec"]='-grsec'
 linfork["ck"]='-ck'
 makedepends=('linux-api-headers' "linux-headers${linfork[${_kernelname}]}>=$_shortkernver")

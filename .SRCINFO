@@ -8,7 +8,7 @@ pkgbase = backports-patched-bcma
 	arch = x86_64
 	license = GPL
 	makedepends = linux-api-headers
-	makedepends = linux-headers-macbook>=4.8
+	makedepends = linux-headers>=4.8
 	depends = linux
 	optdepends = backports-frag+ack: wl-frag+ack patch
 	source = http://www.kernel.org/pub/linux/kernel/projects/backports/stable/v4.4.2/backports-4.4.2-1.tar.xz
