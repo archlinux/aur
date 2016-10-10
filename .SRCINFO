@@ -20,7 +20,7 @@ pkgbase = r3broot-git
 	options = staticlibs
 	options = libtool
 	options = !strip
-	source = r3broot-git::git+https://github.com/R3BRootGroup/R3BRoot#dev
+	source = r3broot-git::git+https://github.com/R3BRootGroup/R3BRoot#branch=dev
 	source = r3broot.install
 	md5sums = SKIP
 	md5sums = 29d9cea27a2cf33f7dfd028447f300d1
