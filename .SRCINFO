@@ -1,0 +1,17 @@
+pkgbase = python-mal-git
+	pkgdesc = MyAnimeList command line interface
+	pkgver = r97.f614507
+	pkgrel = 1
+	url = http://manoel.tk/MAL/
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = python
+	depends = python-requests
+	depends = python-appdirs
+	depends = python-decorating
+	source = git+https://github.com/ryukinix/mal.git#commit=f614507
+	md5sums = SKIP
+
+pkgname = python-mal-git
+
