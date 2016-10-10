@@ -3,7 +3,7 @@
 
 pkgname=pingendo
 pkgver=0.33.1
-pkgrel=2
+pkgrel=3
 pkgdesc="An WYSIWYG HTML5 editor focused on Bootstrap UI"
 arch=('i686' 'x86_64')
 url="http://pingendo.com"
@@ -19,8 +19,8 @@ depends=('nss'
 optdepends=('libnotify: Adds desktop notifications')
 options=('!strip')
 makedepends=('unzip')
-source_i686=("http://pingendo.com/electron/${pkgname}-linux-i686.zip")
-source_x86_64=("http://pingendo.com/electron/${pkgname}-linux-x86_64.zip")
+source_i686=("http://download.pingendo.com/v3/${pkgname}-linux-i686.zip")
+source_x86_64=("http://download.pingendo.com/v3/${pkgname}-linux-x86_64.zip")
 source=("pingendo.desktop")
 sha512sums=('f247bf6a2115ecef6e7bd10029657e6d72c5e1057cc9ea6f4a6081670e3de3ec02c574bbcc820edc88ef486f13b89ea22ed0d61479b65b07eda03af0947e39f1')
 sha512sums_i686=('0bf0f2078b6282acf4696bcd49cc417023ef34bff1e11dde2acecb96cfba5579c345561de3eb481b476e720ed468a8f3d05b8e0d949355217a97f520c664aa08')
