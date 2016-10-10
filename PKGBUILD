@@ -4,7 +4,7 @@
 pkgbase=artwork-maia
 pkgname=('artwork-maia' 'maia-icon-theme' 'plasma5-themes-maia' 'sddm-maia-theme' 'maia-wallpaper')
 pkgrel=1
-_gitcommit=f6718cd9c383adb77af54b694c47efa4d581f5b5
+_gitcommit=a91f54cb344f8e92595b2df1915e09e19c97fd0f
 pkgver=$(echo ${_gitcommit} | cut -c1-7)
 url='https://github.com/manjaro/artwork-maia/'
 arch=('any')
@@ -12,7 +12,7 @@ license=('LGPL')
 makedepends=('phonon-qt5-gstreamer' 'extra-cmake-modules' 'plasma-framework')
 
 source=("$url/archive/$_gitcommit.tar.gz")
-sha256sums=('59e258d85157ac8a14760466d2a7a5fc1abce1729e113c22e92a40af60c69f21')
+sha256sums=('7eaa00fc0e72b59f7c4d3e8ed77a396574f13091ed3246b56b44e5e26b52f5bc')
 
 prepare() {
   mv $srcdir/artwork-maia-$_gitcommit $srcdir/maia
