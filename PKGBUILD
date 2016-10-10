@@ -9,7 +9,7 @@ make_option="-j${ncpu}"
 
 _pkgname=retroshare
 pkgname=${_pkgname}-git-no-sqlcipher
-pkgver=0.6.1.r162.g7cd31aa
+pkgver=0.6.1.r183.g4e48005
 pkgrel=1
 pkgdesc="Serverless encrypted instant messenger with filesharing, chatgroups, e-mail."
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
