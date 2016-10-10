@@ -1,7 +1,7 @@
 # Maintainer: Tony Lambiris <tony@criticalstack.com>
 
 pkgname=osquery-git
-pkgver=1.8.2.r172.g65f41d3
+pkgver=2.0.0.r6.gd1240f0
 pkgrel=1
 epoch=
 pkgdesc="SQL powered operating system instrumentation, monitoring, and analytics."
@@ -13,7 +13,7 @@ depends=('asio' 'audit' 'aws-sdk-cpp-git' 'boost' 'boost-libs' 'clang' 'cmake'
 		 'doxygen' 'gflags' 'git' 'google-glog' 'lsb-release' 'make' 'python'
 		 'python-jinja' 'python-pip' 'sleuthkit' 'snappy' 'thrift' 'yara')
 makedepends=('python-jinja' 'python-psutil' 'python-pexpect' 'rocksdb-lite'
-			 'cpp-netlib' 'magic' 'unzip' 'wget')
+			 'benchmark' 'cpp-netlib' 'magic' 'unzip' 'wget')
 checkdepends=()
 optdepends=()
 provides=()
