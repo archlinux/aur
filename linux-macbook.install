@@ -14,8 +14,9 @@ cat <<-EOF
 	in /etc/default/grub and then ran the following command as root:
 	grub-mkconfig -o /boot/grub/grub.cfg
 
-	Create /etc/tmpfiles.d/wakeup.conf with the contents:
-	w /proc/acpi/wakeup - - - - LID0
+	Install rc-local from the AUR and add the following to /etc/rc.local:
+	awk '$3 ~ "enabled" {print $1}' /proc/acpi/wakeup | xargs -I{} echo "{}" > /proc/acpi/wakeup
+	echo LID0 > /proc/acpi/wakeup
 
 EOF
 }
