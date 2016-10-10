@@ -1,13 +1,13 @@
 pkgbase = terbilang
 	pkgdesc = Number-To-Text / Number-To-Words converter utility for Bahasa Indonesia or Indonesian Rupiah (IDR) currency.
-	pkgver = 1.4
-	pkgrel = 5
+	pkgver = 1.5
+	pkgrel = 1
 	url = https://github.com/yadieet/c-programming-examples/tree/master/terbilang
 	arch = x86_64
 	license = GPL3
 	depends = gmp
-	source = terbilang-1.4.c::https://raw.githubusercontent.com/yadieet/c-programming-examples/84a629a7512e2c862d0b9cb6632e711cf64b5761/terbilang/terbilang.c
-	sha256sums = 2fecfd89a6de12b4db0faf165fb4852893534288c741cce1cd6cbbea28f3ba06
+	source = terbilang-1.5.c::https://raw.githubusercontent.com/yadieet/c-programming-examples/4eb46f3f438362a08a0f47be4a283799d2bee19f/terbilang/terbilang.c
+	sha256sums = 2a694fd4bd926c7cc872c4b54090bb4ff6c2fa27723d500e267ce7a5c99f9a0f
 
 pkgname = terbilang
 
