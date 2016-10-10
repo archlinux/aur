@@ -1,6 +1,7 @@
 # Maintainer: HabarNam <habarnam@gmail.com>
-pkgname=orion-git # '-bzr', '-git', '-hg' or '-svn'
-pkgver=r238.46ce6ae
+# Improvements by: hamzadis <adis@hamzadis.com>
+pkgname=orion-git 
+pkgver=r245.98c9217
 pkgrel=1
 pkgdesc="QML/C++-written desktop client for Twitch.tv"
 arch=('x86_64' 'x86')
@@ -22,7 +23,7 @@ source=('git+https://github.com/alamminsalo/orion.git'
 
 noextract=()
 sha256sums=('SKIP'
-            'a0bb773176dd7ec448ecd5702da9c32b35da27ea3070b23496fe51abb15d8d44')
+            '18d7d2da72a83e5228fa210961fe78d28eda65e680b5887d13ae369e3fed503c')
 
 pkgver() {
 	cd "$srcdir/${pkgname%-git}"
@@ -38,11 +39,11 @@ build() {
 }
 
 package() {
-    mkdir -p "$pkgdir/usr/share/icons"
+    mkdir -p "$pkgdir/usr/share/icons/hicolor/scalable/apps/"
     mkdir -p "$pkgdir/usr/share/applications"
     mkdir -p "$pkgdir/usr/bin"
 
-	cp "$srcdir/${pkgname%-git}/orion.svg" "$pkgdir/usr/share/icons/" 
+	cp "$srcdir/${pkgname%-git}/orion.svg" "$pkgdir/usr/share/icons/hicolor/scalable/apps/"
 	cp "./Orion.desktop" "$pkgdir/usr/share/applications/"
 	cp "$srcdir/${pkgname%-git}/orion" "$pkgdir/usr/bin/" 
 }

@@ -2,7 +2,7 @@
 Version=1.0
 Type=Application
 Name=Orion
-Icon=/usr/share/icons/orion.svg 
+Icon=orion
 Exec=/usr/bin/orion
 Comment=Seek and watch streams on Twitch
 Categories=Games;
