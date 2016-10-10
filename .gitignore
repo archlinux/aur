@@ -1,0 +1,8 @@
+# Pacman folders
+pkg
+src
+
+# Archives
+*.zip
+*.tgz
+*.pkg.*
