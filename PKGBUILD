@@ -4,7 +4,7 @@
 pkgname=gcr-nogtk
 pkgver=3.20.0
 pkgrel=2
-pkgdesc="A library for bits of crypto UI and parsing"
+pkgdesc="A library for bits of crypto UI and parsing (without GTK)"
 arch=(i686 x86_64)
 url="https://git.gnome.org/browse/gcr"
 license=('GPL2')
