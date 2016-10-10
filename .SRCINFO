@@ -1,0 +1,17 @@
+pkgbase = nvidia-led
+	pkgdesc = Awesome effects for NVIDIA GeForce GTX LEDs
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/Madh93/nvidia-led
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = git
+	depends = nvidia-utils>=331.38
+	provides = nvidia-led
+	conflicts = nvidia-led
+	source = https://github.com/Madh93/nvidia-led/archive/v1.0.0.tar.gz
+	md5sums = SKIP
+
+pkgname = nvidia-led
+
