@@ -26,7 +26,7 @@ backup=()
 options=('!emptydirs' 'staticlibs' 'libtool' '!strip')
 install=r3broot.install
 changelog=
-source=("${pkgname}::git+https://github.com/R3BRootGroup/R3BRoot"
+source=("${pkgname}::git+https://github.com/R3BRootGroup/R3BRoot#dev"
 	'r3broot.install'
 	)
 noextract=()
