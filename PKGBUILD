@@ -2,13 +2,13 @@
 
 pkgname=poltroon
 pkgver=0.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="An AUR agent for that prioritizes managing batches of packages."
 arch=('x86_64' 'i686')
 url="https://github.com/ginabythebay/poltroon"
 license=('MIT')
 depends=('pacman')
-makedepends=('go>=1.7 make')
+makedepends=('go>=1.7 make go-bindata>=3.0.7')
 options=('!strip' '!emptydirs')
 source=("https://github.com/ginabythebay/$pkgname/archive/v$pkgver.tar.gz")
 sha256sums=('5ee3825234c0f6d6daff320a2a49df9490de1e804b50aeea309764f1228b03a5')

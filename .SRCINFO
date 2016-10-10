@@ -1,12 +1,12 @@
 pkgbase = poltroon
 	pkgdesc = An AUR agent for that prioritizes managing batches of packages.
 	pkgver = 0.0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ginabythebay/poltroon
 	arch = x86_64
 	arch = i686
 	license = MIT
-	makedepends = go>=1.7 make
+	makedepends = go>=1.7 make go-bindata>=3.0.7
 	depends = pacman
 	options = !strip
 	options = !emptydirs
