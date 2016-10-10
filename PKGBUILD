@@ -8,6 +8,8 @@ pkgdesc="Synchronize CalDAV and CardDAV."
 arch=('any')
 url="https://vdirsyncer.readthedocs.org/"
 license=('MIT')
+replaces=('python2-vdirsyncer')
+provides=('python2-vdirsyncer')
 depends=('python-click' 'python-setuptools'
          'python-requests-toolbelt' 'python-atomicwrites'
          'python-click-threading' 'python-click-log')
