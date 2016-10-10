@@ -15,7 +15,7 @@ pkgbase = ghetto-skype-git
 	source = ghetto-skype.desktop
 	source = ghetto-skype
 	md5sums = SKIP
-	md5sums = d64f8096b45034b1af93134cfdaaeece
+	md5sums = 76db516a8d7b95e6e12470ce3584850e
 	md5sums = fd5e7e49294ee8dc3a171f882ce60a70
 
 pkgname = ghetto-skype-git

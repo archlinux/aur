@@ -17,7 +17,7 @@ source=("${pkgname}::git+https://github.com/stanfieldr/ghetto-skype.git"
         'ghetto-skype.desktop'
         'ghetto-skype')
 md5sums=('SKIP'
-         'd64f8096b45034b1af93134cfdaaeece'
+         '44aa5d2772bedba2598dbd46b0b0b4f4'
          'fd5e7e49294ee8dc3a171f882ce60a70')
 
 pkgver() {

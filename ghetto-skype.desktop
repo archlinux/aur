@@ -2,9 +2,8 @@
 Type=Application
 Name=Ghetto-Skype
 Comment=Ghetto-Skype Internet Messaging
-Icon=ghetto-skype.png
+Icon=ghetto-skype
 Exec=ghetto-skype %U
-NoDisplay=false
-Categories=Network;
-StartupNotify=false
+Categories=Network;InstantMessaging;
+StartupNotify=true
 Terminal=false
