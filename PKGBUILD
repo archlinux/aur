@@ -5,6 +5,7 @@ pkgver=1.0.0
 pkgrel=1
 pkgdesc="Castilian dictionary written using Qt5"
 arch=(i686 x86_64)
+conflicts=('qrae-git')
 url="https://github.com/javierllorente/qdc/"
 license=('GPL' 'GPL3')
 depends=('hicolor-icon-theme' 'qt5-webkit')
