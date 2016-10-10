@@ -1,3 +1,7 @@
+pre_remove() {
+    rm -f /usr/lib/gtk-3.0/3.0.0/immodules.cache
+}
+
 post_install() {
-    printf 'Use GTK_CSD=1 to enable the CSD where the CSD can be used\n'
+    printf 'Set the environment GTK_CSD=1 to enable the CSD\n'
 }
