@@ -1,6 +1,6 @@
 pkgbase = fairroot
 	pkgdesc = Analysis framework based on root provided by GSI/FAIR.
-	pkgver = 15.11d
+	pkgver = 16.06a
 	pkgrel = 1
 	url = http://fairroot.gsi.de
 	install = fairroot.install
@@ -19,10 +19,10 @@ pkgbase = fairroot
 	options = staticlibs
 	options = libtool
 	options = !strip
-	source = https://github.com/FairRootGroup/FairRoot/archive/v-15.11d.tar.gz
+	source = https://github.com/FairRootGroup/FairRoot/archive/v-16.06a.tar.gz
 	source = fairroot.install
 	source = fix_return.patch
-	md5sums = a5e2cc964e653ef086e9614b7b014e82
+	md5sums = 83ecc7f45b74200b0ddc52c640921138
 	md5sums = d2d2d7b11b308120382fba7e32c5268a
 	md5sums = 7eecd47253b1f005d4da59ddcfa28eed
 
