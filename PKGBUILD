@@ -1,14 +1,14 @@
 # Maintainer: CyrIng <labs[at]cyring[dot]fr>
 # Contributor: CyrIng <labs[at]cyring[dot]fr>
 pkgname=corefreq-git
-pkgver=1.3.1
+pkgver=1.4
 pkgrel=1
-pkgdesc="CoreFreq, the Processor software with a kernel module to monitor cores activity."
+pkgdesc="CoreFreq, a processor monitoring software with a kernel module inside."
 arch=('x86_64')
 url='http://github.com/cyring/CoreFreq'
 license=('GPL2')
 depends=('dkms')
-makedepends=('git')
+makedepends=('git' 'linux-headers')
 source=('git+https://github.com/cyring/CoreFreq.git')
 md5sums=('SKIP')
 install=${pkgname}.install
