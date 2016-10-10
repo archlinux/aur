@@ -2,13 +2,14 @@
 
 pkgname=('dscreen-git')
 pkgver=0.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A DBus wrapper for xscreensaver"
 arch=('any')
 url="https://github.com/fmorgner/dscreen.git"
 license=('BSD')
 makedepends=('python-setuptools' 'git')
-depends=('python-gobject' 'python-dbus')
+depends=('python-gobject'
+         'python-dbus')
 source=('dscreen-git::git+https://github.com/fmorgner/dscreen.git'
         '0001_dscreen-git_remove-requires.patch')
 md5sums=('SKIP'
@@ -31,7 +32,7 @@ build() {
 
 package() {
   cd "$srcdir/$pkgname"
-  PIP_CONFIG_FILE=/dev/null pip install --isolated --root="$pkgdir" --ignore-installed --no-deps .
+  python setup.py install --optimize=1 --root=${pkgdir}
   install -m755 -d "${pkgdir}/usr/share/licenses/dscreen/"
   install -m644 LICENSE "${pkgdir}/usr/share/licenses/dscreen/"
 }
