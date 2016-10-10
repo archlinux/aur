@@ -6,7 +6,6 @@ pkgrel=1
 pkgdesc="MonoOSC is a project in two part, a library write in CSharp (C#) to use the OpenSuse Build Service (OBS) planed to propose at
 MonoDevelop team and a second part will be a nice GUI who use the library."
 url="monoosc.sourceforge.net"
-makedepends=('bsdtar')
 depends=('syntaxhighlighting' 'monoobsframework' 'rpmspecmanager' 'wget' 'mono')
 arch=('i686' 'x86_64')
 license=('GPL3')
