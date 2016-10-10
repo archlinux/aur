@@ -3,7 +3,7 @@
 pkgname=imgp-git
 _pkgname=imgp
 _pkgauthor=jarun
-pkgver=117.8412063
+pkgver=132.ccbf0d3
 pkgrel=1
 pkgdesc="Resize or rotate JPEG and PNG images."
 arch=('any')
