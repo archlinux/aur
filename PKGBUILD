@@ -1,7 +1,7 @@
 # Contributor: Stéphane Gaudreault <stephane@archlinux.org>, Graziano Giuliani <graziano.giuliani@gmail.com>
 # Maintainer : Liviu-Cristian Mirea-Ghiban <liviu.mirea@wecodepixels.com>
 pkgname=python-pygrib
-pkgver=2.0.0
+pkgver=2.0.1
 pkgrel=1
 pkgdesc="Python module for reading and writing GRIB (editions 1 and 2) files."
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ url="https://github.com/jswhit/pygrib"
 license=('MIT')
 depends=('python-pyproj' 'jasper' 'python-numpy' 'grib_api')
 source=(https://pypi.python.org/packages/source/p/pygrib/pygrib-${pkgver}.tar.gz)
-md5sums=('0b1c150216af0b2afd7281fe2cd35483')
+md5sums=('e9ae04cb987992691b388b16be53214a')
 
 build() {
   cd "${srcdir}/pygrib-${pkgver}"
