@@ -1,7 +1,7 @@
 # Maintainer: Christian Hesse <mail@eworm.de>
 
 pkgname=paccache
-pkgver=0.1.21
+pkgver=0.1.22
 pkgrel=1
 pkgdesc='serve pacman cache and redirect via avahi service'
 arch=('i686' 'x86_64')
@@ -17,7 +17,7 @@ install=paccache.install
 backup=('etc/pacredir.conf' 'etc/pacman.d/paccache')
 validpgpkeys=('BD84DE71F493DF6814B0167254EDC91609BC9183')
 source=("http://www.eworm.de/download/${pkgname}/${pkgname}-${pkgver}.tar.xz"{,.asc})
-sha256sums=('15e5bef1d4ed02021ab28133b2e24666c6f424604aadc52f27c6e12aa5894b46'
+sha256sums=('cb8626583d0e1bca9b0c612299fa0714258343e74f3ac7fbd939ad9f5fda5cd2'
             'SKIP')
 
 build() {
