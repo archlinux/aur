@@ -8,7 +8,7 @@
 
 pkgname=prosody-hg
 pkgrel=1
-pkgver=0.10.r7690+.861a747e441b+
+pkgver=0.10.r7691+.a5ad858f3a93+
 pkgver() {
   cd "$srcdir/$pkgname"
   printf "0.10.r%s.%s" "$(hg identify -n)" "$(hg identify -i)"
