@@ -1,8 +1,9 @@
-# Maintainer: FadeMind <fademind@gmail.com>
+# Maintainer: Icaro Perseo <icaroperseo[at]protonmail[dot]com>
+# Contributor: FadeMind <fademind@gmail.com>
 
 pkgname=papirus-icon-theme-kde
-_commit=1a0e221 # 7 digits
-pkgver=20160819
+_commit=f02c721 # 7 digits
+pkgver=20161008
 pkgrel=1
 pkgdesc="Papirus icon theme for KDE"
 url="https://github.com/PapirusDevelopmentTeam/${pkgname}"
@@ -23,3 +24,5 @@ pkgver() {
 package() {
     make -C "${pkgname}" install DESTDIR="$pkgdir"
 }
+
+# vim:set ts=2 sw=2 cc=80 et:
