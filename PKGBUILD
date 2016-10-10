@@ -4,7 +4,7 @@
 
 pkgname=docker-experimental-bin
 pkgver=1.12.2_rc3
-pkgrel=1
+pkgrel=2
 pkgdesc='Pack, ship and run any application as a lightweight container, using official binaries'
 arch=('x86_64')
 url='https://www.docker.com/'
@@ -16,6 +16,7 @@ optdepends=('btrfs-progs: btrfs backend support'
             'lxc: lxc backend support')
 options=('!strip')
 install=$pkgname.install
+provides=('docker')
 source=(
   "https://experimental.docker.com/builds/Linux/x86_64/docker-latest.tgz"
   "https://experimental.docker.com/builds/Linux/x86_64/docker-latest.tgz.sha256"
@@ -28,6 +29,10 @@ md5sums=('SKIP'
 
 version() {
   cut -d' ' -f 3 docker-latest.tgz.sha256 |sed 's#docker-\(.*\)-\(.*\).tgz#\1_\2#'
+}
+
+prepare() {
+  sed -i 's/\(dockerd\)/\1 -s overlay/' docker-master/contrib/init/systemd/docker.service
 }
 
 build() {
