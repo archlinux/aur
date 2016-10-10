@@ -11,10 +11,14 @@ arch=('i686' 'x86_64')
 license=('GPL3')
 source_x86_64=("http://download.opensuse.org/repositories/home:/surfzoid/Fedora_20/x86_64/MonoOSC-1.0.2.1-44.3.x86_64.rpm")
 source_i386=("http://download.opensuse.org/repositories/home:/surfzoid/Fedora_20/i686/MonoOSC-1.0.2.1-44.3.i686.rpm")
-
+if test "$CARCH" == x86_64; then
+  _arch_=x86_64
+else
+ _arch_=i686
+fi
 md5sums_x86_64=("0a1ce6559f401228d3107be2a6579f6f")
 md5sums_i386=("66c75626571a4a2de9637e2a2549f3c6")
 
 package() {
-	bsdtar -C "${pkgdir}" -xf "${srcdir}/MonoOSC-1.0.2.1-44.3.*.rpm"
+	bsdtar -C "${pkgdir}" -xf "${srcdir}/MonoOSC-1.0.2.1-44.3.${_arch_}.rpm"
 }
