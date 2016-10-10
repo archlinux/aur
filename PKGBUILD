@@ -4,7 +4,7 @@
 pkgbase=linux-surfacepro3-rt
 _srcname=linux-4.8
 pkgver=4.8
-pkgrel=1.55
+pkgrel=1.6
 arch=('i686' 'x86_64')
 url="https://github.com/alyptik/linux-surfacepro3-rt"
 license=('GPL2')
@@ -19,7 +19,7 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         #"https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.xz"
         #"https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.sign"
         # the main kernel config files
-        'config' 'config.x86_64'
+        'config' 'config.x86_64' 'config.sp3'
         # standard config files for mkinitcpio ramdisk
         'linux.preset'
         'change-default-console-loglevel.patch'
@@ -46,6 +46,7 @@ sha256sums=('3e9150065f193d3d94bcf46a1fe9f033c7ef7122ab71d75a7fb5a2f0c9a7e11a'
             'SKIP'
             '0fcd0b22fe9ec58ba41b81b463f68d619b6898a5c405fb26c85237a183240371'
             '577a3c4c211e6946fb8c1448d6a325861b41c8c8660203ae7d63a58f3af0d279'
+            '5909eb52b6549da7054fc07a9e7142ddb307f0582128dad125e4553bfa8286c4'
             'f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
             '3a4722981f689225a0ad550e45d829fcc3ca29d4258df3c6c989a916199e1c08'
@@ -70,6 +71,7 @@ validpgpkeys=(
               '8D633C480C2247466051B7ADE314F17E08EF006D' # Joey Pabalinas
              )
 multitouch='y'
+sp3config='y'
 
 _kernelname=${pkgbase#linux}
 
@@ -81,15 +83,15 @@ prepare() {
   #  patch -p1 -i "${srcdir}/${i}"
   #done
 
-  # Add RT patches
-  xzcat "${srcdir}/patch-${pkgver}-rt1.patch.xz" | patch -p1
-  #xzcat "${srcdir}/patch-${pkgver}-rt1.patch.xz" | patch -p1 -F3
-  #xzcat "${srcdir}/patches-${pkgver}-rt1.tar.xz" | patch -p1
-
   # Add personal patches
   for i in block.patch btrfs.patch init.patch kconfig.patch xattr.patch xfs.patch; do
     patch -p1 -i "${srcdir}/${i}"
   done
+
+  # Add RT patches
+  xzcat "${srcdir}/patch-${pkgver}-rt1.patch.xz" | patch -p1
+  #xzcat "${srcdir}/patch-${pkgver}-rt1.patch.xz" | patch -p1 -F3
+  #xzcat "${srcdir}/patches-${pkgver}-rt1.tar.xz" | patch -p1
 
   # add upstream patch
   #patch -p1 -i "${srcdir}/patch-${pkgver}"
@@ -100,14 +102,14 @@ prepare() {
   # set DEFAULT_CONSOLE_LOGLEVEL to 4 (same value as the 'quiet' kernel param)
   # remove this when a Kconfig knob is made available by upstream
   # (relevant patch sent upstream: https://lkml.org/lkml/2011/7/26/227)
-  patch -p1 -i "${srcdir}/change-default-console-loglevel.patch"
+  #patch -p1 -i "${srcdir}/change-default-console-loglevel.patch"
 
   # This patch disables some wireless optimisations which cause trouble on Surface devices.
   patch -p1 -i "${srcdir}/wifi.patch"
 
   # This patch adds multitouch support for the surface pro 3
   # keyboard cover.
-  if [[ $multitouch = 'y' ]]; then
+  if [[ $multitouch != 'n' ]]; then
     patch -p1 -i "${srcdir}/multitouch.patch"
   fi
 
@@ -117,7 +119,8 @@ prepare() {
   patch -p1 -i "${srcdir}/touchscreen_multitouch_fixes2.patch"
 
   if [ "${CARCH}" = "x86_64" ]; then
-    cat "${srcdir}/config.x86_64" > ./.config
+    ## Set sp3config='y' to use the personal config as a base
+    [[ "$sp3config" != 'n' ]] && cat "${srcdir}/config.sp3" >./.config || cat "${srcdir}/config.x86_64" >./.config
   else
     cat "${srcdir}/config" > ./.config
   fi
@@ -141,10 +144,10 @@ prepare() {
   #make olddefconfia # Use current kernel configuration
   # ... or manually edit .config
 
-  printf '\n \033[32m %s \033[0m ' "[Run make nconfig? (Y/n)]"; read -r; echo
+  printf '\n \033[32m %s \033[0m ' "[Run interactive nconfig? (Y/n)]"; read -r; echo
   case $REPLY in
           [Yy]*|'') make nconfig ;; # new CLI menu for configuration
-          [Nn]*) printf ' \033[31m %s \n\033[0m ' "Continuing..."; make oldconfig ;;
+          [Nn]*) printf ' \033[31m %s \n\033[0m ' "Continuing..."; make olddefconfig ;;
           *) printf ' \033[31m %s \n\033[0m ' "Invalid input..."; return 1 ;;
   esac
 
