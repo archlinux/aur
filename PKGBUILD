@@ -11,8 +11,8 @@
 # Orginally based on a Debian Squeeze package
 _pkgname=zoneminder
 pkgname=zoneminder
-pkgver=1.29.0
-pkgrel=2
+pkgver=1.30.0
+pkgrel=1
 pkgdesc='Capture, analyse, record and monitor video security cameras'
 arch=( i686 x86_64 mips64el arm armv7h )
 backup=( etc/zm.conf )
@@ -47,7 +47,7 @@ source=(
     zoneminder-tmpfile.conf
     zm_rtp_ctrl.h.quick_fix_for_gcc6.diff
 )
-sha256sums=('78c32c0cd969bc5e29ed030000ebec5c3a26cccb31fac08257a9f12781f1295c'
+sha256sums=('0a7378835398a720f2b5ef7723415cf5cba9170cf72753631916b30d9f8160a2'
             'ff7382b38ac07dadead0ad4d583e3dbcf8da4aaa06b76d048ee334f69f95db67'
             '043d77a995553c533d62f48db4b719d29cf6c7074f215d866130e97be57ed646'
             'cc8af737c3c07750fc71317c81999376e4bbb39da883780164a8747b3d7c95a7'
@@ -56,7 +56,7 @@ sha256sums=('78c32c0cd969bc5e29ed030000ebec5c3a26cccb31fac08257a9f12781f1295c'
      
 build() {
     cd $srcdir/ZoneMinder-$pkgver
-    patch src/zm_rtp_ctrl.h ../zm_rtp_ctrl.h.quick_fix_for_gcc6.diff
+    # patch src/zm_rtp_ctrl.h ../zm_rtp_ctrl.h.quick_fix_for_gcc6.diff
 
     # ZM_PERL_SUBPREFIX=/lib/perl5 flag added to force Perl modules
     # to /usr/lib/perl5/ on non i686 architectures
