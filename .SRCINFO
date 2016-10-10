@@ -1,0 +1,22 @@
+pkgbase = xournal-gtk3-git
+	pkgdesc = Notetaking and sketching application
+	pkgver = 0.4.7.g953b0e1
+	pkgrel = 1
+	url = https://github.com/dmgerman/xournal
+	arch = x86_64
+	arch = i686
+	license = GPL2
+	makedepends = git
+	makedepends = gettext
+	depends = goocanvas
+	depends = poppler-glib>=0.14.0
+	depends = hicolor-icon-theme
+	optdepends = ghostscript: Import PS/PDF files as bitmap backgrounds
+	provides = xournal
+	conflicts = xournal
+	conflicts = xournalpp-svn
+	source = git+git://github.com/dmgerman/xournal.git#branch=gtk3
+	md5sums = SKIP
+
+pkgname = xournal-gtk3-git
+
