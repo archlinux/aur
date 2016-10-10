@@ -2,13 +2,9 @@
 # Contributer: fleischie
 # Contributer: auk
 
-## will rename by AUR mod
-# pkgname=hyper
-_pkgname=hyper
-
-pkgname=hyperterm
+pkgname=hyper
 pkgver=0.8.1
-pkgrel=2
+pkgrel=1
 epoch=
 pkgdesc="A terminal built on web technologies"
 arch=('any')
@@ -21,16 +17,14 @@ checkdepends=()
 optdepends=()
 provides=()
 
-## will uncomment these when an AUR mod renames this package. I can't push this
-## with the new name. Have to have it done manually.
-# conflicts=('hyperterm')
-# replaces=('hyperterm')
+conflicts=('hyperterm')
+replaces=('hyperterm')
 backup=()
 options=()
 install=
 changelog=
 source=(
-    "https://github.com/zeit/$_pkgname/archive/${pkgver}.tar.gz"
+    "https://github.com/zeit/$pkgname/archive/${pkgver}.tar.gz"
     "https://raw.githubusercontent.com/zeit/art/master/hyper/mark/Hyper-Mark-120%403x.png"
     "Hyper.desktop"
 )
@@ -41,17 +35,17 @@ md5sums=('bf5575c5bcf8cbedcdf4d7118128c2cd'
 validpgpkeys=()
 
 prepare() {
-    cd "$_pkgname-$pkgver"
+    cd "$pkgname-$pkgver"
     npm install
 }
 
 build() {
-    cd "$_pkgname-$pkgver"
+    cd "$pkgname-$pkgver"
     npm run pack
 }
 
 package() {
-    cd "$_pkgname-$pkgver"
+    cd "$pkgname-$pkgver"
 
     _appdir="/usr/lib/$pkgname"
     _libinstall="${pkgdir}${_appdir}"
