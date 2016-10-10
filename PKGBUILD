@@ -6,17 +6,17 @@
 _pkgbase=nginx-mainline
 pkgbase=${_pkgbase}-addons
 pkgname=("${pkgbase}" "${_pkgbase}-full")
-pkgver=1.11.3
-pkgrel=2
+pkgver=1.11.4
+pkgrel=1
 pkgdesc='Lightweight HTTP server and IMAP/POP3 proxy server, mainline release'
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url='http://nginx.org'
 license=('custom')
-makedepends=('hardening-wrapper' 'geoip' 'leiningen' 'java-environment-openjdk>=8' 'luajit')
+makedepends=('hardening-wrapper' 'geoip' 'leiningen' 'java-environment-openjdk>=8' 'luajit' 'libbrotli')
 source=($url/download/nginx-$pkgver.tar.gz
         service
         logrotate)
-md5sums=('18275c1daa39c5fac12e56c34907d45b'
+md5sums=('92666d60410f429ddbdb10060369a480'
          'ce9a06bcaf66ec4a3c4eb59b636e0dfd'
          '3441ce77cdd1aab6f0ab7e212698a8a7')
 
@@ -28,7 +28,7 @@ addons=(
   'builtin stream - ngx_stream_module.so'
   'builtin mail - ngx_mail_module.so'
   'github fancyindex aperezdc/ngx-fancyindex ngx_http_fancyindex_module.so'
-  'github brotli google/ngx_brotli ngx_http_brotli_static_module.so:ngx_http_brotli_filter_module.so'
+  #'github brotli google/ngx_brotli ngx_http_brotli_static_module.so:ngx_http_brotli_filter_module.so libbrotli'
   'github headers-more openresty/headers-more-nginx-module ngx_http_headers_more_filter_module.so'
   'github ct grahamedgecombe/nginx-ct ngx_http_ssl_ct_module.so:ngx_ssl_ct_module.so'
   'github auth-pam stogh/ngx_http_auth_pam_module ngx_http_auth_pam_module.so'
