@@ -1,7 +1,7 @@
 # Maintainer: TingPing <tingping@tingping.se>
 
 pkgname=hexchat-theme-manager
-pkgver=2.12.1
+pkgver=2.12.2
 pkgrel=1
 pkgdesc='A simple application to manage HexChat themes'
 arch=('i686' 'x86_64')
@@ -10,13 +10,14 @@ license=('GPL')
 depends=('mono' 'hexchat')
 makedepends=('monodevelop')
 source=("https://dl.hexchat.net/hexchat/hexchat-$pkgver.tar.xz")
-sha256sums=('5201b0c6d17dcb8c2cb79e9c39681f8e052999ba8f7b5986d5c1e7dc68fa7c6b')
+sha256sums=('6dad783f37aac32a8301a12d498af7a74900f011aec4e77bb378ae9797a3ccf6')
 
 build() {
   cd "hexchat-$pkgver"
 
-  # This builds more than necessary but oh well
-  ./configure --prefix=/usr --with-theme-manager \
+  # This builds more than necessary, TODO: fix upstream
+  ./configure --prefix=/usr --with-theme-manager --disable-libnotify \
+    --disable-libproxy --disable-openssl --disable-libcanberra \
     --disable-gtkfe --disable-plugin --disable-dbus --disable-nls
   make
 }
@@ -24,17 +25,9 @@ build() {
 package() {
   cd "hexchat-$pkgver"
 
-  # TODO: Fix this upstream
-
-  pushd data/misc
   make install DESTDIR="$pkgdir"
-  popd
 
-  pushd src/htm
-  make install DESTDIR="$pkgdir"
-  popd
-
-  rm -r "$pkgdir/usr/share/appdata"
-  rm "$pkgdir/usr/share/applications/hexchat.desktop"
+  # Translations are always built, TODO: fix upstream
+  rm -r "$pkgdir/usr/share/locale"
 }
 

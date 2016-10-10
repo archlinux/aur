@@ -1,6 +1,6 @@
 pkgbase = hexchat-theme-manager
 	pkgdesc = A simple application to manage HexChat themes
-	pkgver = 2.12.1
+	pkgver = 2.12.2
 	pkgrel = 1
 	url = https://hexchat.github.io
 	arch = i686
@@ -9,8 +9,8 @@ pkgbase = hexchat-theme-manager
 	makedepends = monodevelop
 	depends = mono
 	depends = hexchat
-	source = https://dl.hexchat.net/hexchat/hexchat-2.12.1.tar.xz
-	sha256sums = 5201b0c6d17dcb8c2cb79e9c39681f8e052999ba8f7b5986d5c1e7dc68fa7c6b
+	source = https://dl.hexchat.net/hexchat/hexchat-2.12.2.tar.xz
+	sha256sums = 6dad783f37aac32a8301a12d498af7a74900f011aec4e77bb378ae9797a3ccf6
 
 pkgname = hexchat-theme-manager
 
