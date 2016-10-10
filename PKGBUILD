@@ -1,116 +1,168 @@
-# Maintainer: Alain Kalker <a {dot} c {dot} kalker "at" gmail {dot} com>
+# Maintainer:  Chris Severance aur.severach aATt spamgourmet dott com
+# Contributor: Alain Kalker <a {dot} c {dot} kalker "at" gmail {dot} com>
 # Contributor: Allan McRae <allan@archlinux.org>
 
 # toolchain build order: linux-api-headers->glibc->binutils->gcc->binutils->glibc
 # NOTE: libtool requires rebuilt with each new gcc version
 
-pkgname='gcc46-multilib'
-pkgver=4.6.4
+set -u
+_pkgver='4.6'
+pkgname="gcc${_pkgver//\./}-multilib"
+pkgver="${_pkgver}.4"
 pkgrel=4
-_ver=${pkgver%.*}
-pkgdesc="The GNU Compiler Collection for multilib (4.6.x)"
+#_ver=${pkgver%.*}
+pkgdesc="The GNU Compiler Collection for multilib (${_pkgver}.x)"
 arch=('x86_64')
+url='http://gcc.gnu.org'
 license=('GPL' 'LGPL' 'FDL' 'custom')
-url="http://gcc.gnu.org"
-makedepends=('binutils>=2.24' 'libmpc' 'cloog' 'ppl' 'lib32-glibc>=2.14')
-conflicts=('gcc46') # Package from AUR
-provides=('gcc46')
+depends=('zlib')
+makedepends=('binutils>=2.24' 'libmpc' 'cloog' 'ppl')
+makedepends+=('lib32-glibc>=2.14' 'texinfo')
+provides=("gcc${_pkgver//\./}") # no version as it is completely contained in the name
+conflicts=("gcc${_pkgver//\./}")
 options=('staticlibs' '!libtool' '!emptydirs')
-source=(ftp://gcc.gnu.org/pub/gcc/releases/gcc-${pkgver}/gcc-${pkgver}.tar.bz2
-	gcc-hash-style-both.patch)
-md5sums=('b407a3d1480c11667f293bfb1f17d1a4'
-         '4df25b623799b148a0703eaeec8fdf3f')
+source=(
+  "ftp://gcc.gnu.org/pub/gcc/releases/gcc-${pkgver}/gcc-${pkgver}.tar.bz2"
+  'gcc-hash-style-both.patch'
+  'gcc.texi.49.patch'
+)
+sha256sums=('35af16afa0b67af9b8eb15cafb76d2bc5f568540552522f5dc2c88dd45d977e8'
+            '3492332fa78b545ff46c2b5293d17c63c122be6f8f6fa4798864b7d4572b0024'
+            '93b8865cb61f455df807de90f852dc488753d4309d7a1d8f7e7f1a4efe37ffa4')
+PKGEXT='.pkg.tar.gz'
 
-
-if [ -n "${_snapshot}" ]; then
+if [ -n "${_snapshot:-}" ]; then
   _basedir="gcc-${_snapshot}"
 else
   _basedir="gcc-${pkgver}"
 fi
 
-build() {
-  cd ${srcdir}/${_basedir}
+prepare() {
+  set -u
+  cd "${_basedir}"
 
   # "Add" ppl-0.11 compatibility
-  sed -i "/ppl_minor_version=/s#10#11#" configure
+  sed -i -e '/ppl_minor_version=/s#10#11#' 'configure'
 
   # Do not install libiberty
-  sed -i 's/install_to_$(INSTALL_DEST) //' libiberty/Makefile.in
+  sed -i -e 's/install_to_$(INSTALL_DEST) //' 'libiberty/Makefile.in'
 
   # Do not run fixincludes
-  sed -i 's@\./fixinc\.sh@-c true@' gcc/Makefile.in
+  sed -i -e 's@\./fixinc\.sh@-c true@' 'gcc/Makefile.in'
+
+  # Update gcc.texi to gcc49 version, needed as of texinfo>=6.3 and possibly texinfo=6.2
+  patch -p0 -c < "${srcdir}/gcc.texi.49.patch"
 
   #if [ "${CARCH}" = "x86_64" ]; then
-  #  : patch -Np1 -i ${srcdir}/gcc_pure64.patch
+  #  : patch -Np1 -i "${srcdir}/gcc_pure64.patch"
   #fi
-  patch -Np0 -i ${srcdir}/gcc-hash-style-both.patch
+  patch -Np0 -i "${srcdir}/gcc-hash-style-both.patch"
+
+  echo "${pkgver}" > 'gcc/BASE-VER'
 
   # Doesn't like FORTIFY_SOURCE
-  CPPFLAGS=${CPPFLAGS//-D_FORTIFY_SOURCE=?/}
-  export CPPFLAGS
+  export CPPFLAGS="${CPPFLAGS//-D_FORTIFY_SOURCE=?/}"
 
   # Doesn't like -fstack-protector-strong
-  CFLAGS=${CFLAGS//-fstack-protector-strong/-fstack-protector}
-  export CFLAGS
-  CXXFLAGS=${CXXFLAGS//-fstack-protector-strong/-fstack-protector}
-  export CXXFLAGS
+  export CFLAGS="${CFLAGS//-fstack-protector-strong/-fstack-protector}"
+  export CXXFLAGS="${CXXFLAGS//-fstack-protector-strong/-fstack-protector}"
 
-  echo ${pkgver} > gcc/BASE-VER
+  rm -rf 'gcc-build'
+  mkdir 'gcc-build'
+  cd 'gcc-build'
 
-  cd ${srcdir}
-  mkdir gcc-build && cd gcc-build
+  # The following options are one per line, mostly sorted so they are easy to diff compare to other gcc packages.
+  ../configure \
+    --build="${CHOST}" \
+    --disable-libssp \
+    --disable-libstdcxx-pch \
+    --disable-libunwind-exceptions \
+    --enable-multilib \
+    --disable-werror \
+    --enable-__cxa_atexit \
+    --enable-checking='release' \
+    --enable-clocale='gnu' \
+    --enable-cloog-backend='isl' \
+    --enable-gnu-unique-object \
+    --enable-gold \
+    --enable-languages='c,c++,fortran' \
+    --enable-ld='default' \
+    --enable-libstdcxx-time \
+    --enable-linker-build-id \
+    --enable-lto \
+    --enable-plugin \
+    --enable-shared \
+    --enable-threads='posix' \
+    --enable-version-specific-runtime-libs \
+    --infodir='/usr/share/info' \
+    --libdir='/usr/lib' \
+    --libexecdir='/usr/lib' \
+    --mandir='/usr/share/man' \
+    --program-suffix="-${_pkgver}" \
+    --with-bugurl='https://bugs.archlinux.org/' \
+    --with-fpmath='sse' \
+    --with-plugin-ld='ld.gold' \
+    --with-ppl \
+    --with-system-zlib \
+    --prefix='/usr'
+#    CXX='g++-4.9' CC='gcc-4.9'
 
-  ${srcdir}/${_basedir}/configure --prefix=/usr \
-      --libdir=/usr/lib --libexecdir=/usr/lib \
-      --mandir=/usr/share/man --infodir=/usr/share/info \
-      --with-bugurl=https://bugs.archlinux.org/ \
-      --enable-languages=c,c++,fortran \
-      --enable-shared --enable-threads=posix \
-      --with-system-zlib --enable-__cxa_atexit \
-      --disable-libunwind-exceptions --enable-clocale=gnu \
-      --disable-libstdcxx-pch --enable-libstdcxx-time \
-      --enable-gnu-unique-object --enable-linker-build-id \
-      --with-ppl --enable-cloog-backend=isl \
-      --enable-lto --enable-gold --enable-ld=default \
-      --enable-plugin --with-plugin-ld=ld.gold \
-      --enable-multilib --disable-libssp \
-      --enable-checking=release --with-fpmath=sse --disable-werror \
-      --program-suffix=-${pkgver} --enable-version-specific-runtime-libs 
-  make
+  set +u
+}
+
+build() {
+  set -u
+  cd "${_basedir}/gcc-build"
+
+  local _nproc="$(nproc)"; _nproc=$((_nproc>8?8:_nproc))
+  #LD_PRELOAD='/usr/lib/libstdc++.so' \\
+  make -s -j "${_nproc}"
+
+  set +u
+}
+
+_fn_check() {
+  set -u
+  cd "${_basedir}/gcc-build"
 
   # increase stack size to prevent test failures
   # http://gcc.gnu.org/bugzilla/show_bug.cgi?id=31827
-  # ulimit -s 32768
+  ulimit -s 32768
 
   # do not abort on error as some are "expected"
-  # make -k check || true
-  # ${srcdir}/${_basedir}/contrib/test_summary
+  make -k check || :
+  "${srcdir}/${_basedir}/contrib/test_summary"
+  set +u
 }
 
 # Used the same package() as gcc45 (AUR).
-package()
-{
-  cd ${srcdir}/gcc-build
+package() {
+  set -u
+  cd "${_basedir}/gcc-build"
 
-  make -j1 DESTDIR=${pkgdir} install
+  #LD_PRELOAD='/usr/lib/libstdc++.so' \\
+  make -s -j1 DESTDIR="${pkgdir}" install
 
-  if [ "${CARCH}" = "x86_64" ]; then
+  if [ "${CARCH}" = 'x86_64' ]; then
     ## Move conflicting libraries
-    _gccbasedir=${pkgdir}/usr/lib/gcc/x86_64-unknown-linux-gnu
-    mv ${_gccbasedir}/lib32/* ${_gccbasedir}/${pkgver}/32/
-    mv ${_gccbasedir}/lib64/* ${_gccbasedir}/${pkgver}/
-    rmdir ${_gccbasedir}/{lib32,lib64}
+    local _gccbasedir="${pkgdir}/usr/lib/gcc/${CHOST}"
+    mv "${_gccbasedir}/lib32"/* "${_gccbasedir}/${pkgver}/32/"
+    mv "${_gccbasedir}/lib64"/* "${_gccbasedir}/${pkgver}/"
+    rmdir "${_gccbasedir}"/{lib32,lib64}
   fi
-  
+
   ## Lazy way of dealing with conflicting man and info pages and locales...
-  rm -rf ${pkgdir}/usr/share/
+  rm -rf "${pkgdir}/usr/share/"
 
   ## Symlink to minor version
-  for tool in {,x86_64-unknown-linux-gnu-}{c++,g++,gcc,gfortran} cpp gcov; do
-    ln -s ${tool}-${pkgver} ${pkgdir}/usr/bin/${tool}-${_ver}
-  done
+  #local _tool
+  #for _tool in {,"${CHOST}-"}{c++,g++,gcc,gfortran} 'cpp' 'gcov'; do
+  #  ln -s "${_tool}-${pkgver}" "${pkgdir}/usr/bin/${_tool}-${_pkgver}"
+  #done
 
-  install -Dm644 ${srcdir}/gcc-${pkgver}/COPYING.RUNTIME \
-    ${pkgdir}/usr/share/licenses/$pkgname/RUNTIME.LIBRARY.EXCEPTION
+  # Install Runtime Library Exception
+  install -Dpm644 '../COPYING.RUNTIME' \
+    "${pkgdir}/usr/share/licenses/${pkgname}/RUNTIME.LIBRARY.EXCEPTION" || :
+  set +u
 }
-
+set +u
