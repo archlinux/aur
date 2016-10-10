@@ -1,7 +1,7 @@
 #Maintainer: Jose Moruno <sniferl4bs@gmail.com>
 pkgname="mpis"
-pkgver="0.2a"
-pkgrel="1.1"
+pkgver="v1.0"
+pkgrel="2.0"
 pkgdesc="Script allows to configure the system, install some applications for a regular work day thinked in developers, 
 gamers,and more."
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ depends=("python3")
 makedepends=("python-setuptools")
 options=(!emptydirs)
 source=("https://github.com/KernelPanicBlog/MPIS/archive/${pkgver}.tar.gz")
-md5sums=("24fe3d1681275e4e833e3e0ef5b34a5d")
+md5sums=("bdf4a892ed7eb9755332865eb01ab910")
 
 package() {
   cd "$srcdir/MPIS-${pkgver}"
