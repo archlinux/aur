@@ -1,6 +1,6 @@
 pkgbase = xrectsel
 	pkgdesc = print the geometry of a rectangular screen region
-	pkgver = 0.3.1
+	pkgver = 0.3.2
 	pkgrel = 1
 	url = https://github.com/lolilolicon/xrectsel
 	arch = i686
@@ -10,8 +10,8 @@ pkgbase = xrectsel
 	makedepends = automake
 	depends = libx11
 	conflicts = ffcast<1:2.2.0
-	source = https://github.com/lolilolicon/xrectsel/archive/0.3.1.tar.gz
-	md5sums = e62966f6ddbd82780a2ab2d2d94bfebb
+	source = https://github.com/lolilolicon/xrectsel/archive/0.3.2.tar.gz
+	sha256sums = 1b4b928bb7270e0531467c1e7f93322c784c7c0dedc13d1d5e53034417fde785
 
 pkgname = xrectsel
 
