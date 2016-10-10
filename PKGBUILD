@@ -4,7 +4,7 @@
 
 pkgname=docker-experimental-bin
 pkgver=1.12.2_rc3
-pkgrel=2
+pkgrel=3
 pkgdesc='Pack, ship and run any application as a lightweight container, using official binaries'
 arch=('x86_64')
 url='https://www.docker.com/'
@@ -32,7 +32,7 @@ version() {
 }
 
 prepare() {
-  sed -i 's/\(dockerd\)/\1 -s overlay/' docker-master/contrib/init/systemd/docker.service
+  sed -i 's/\(dockerd\)/\1 -s overlay2/' docker-master/contrib/init/systemd/docker.service
 }
 
 build() {
