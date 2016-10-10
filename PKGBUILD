@@ -19,15 +19,17 @@ url='http://gcc.gnu.org'
 license=('GPL' 'LGPL' 'FDL' 'custom')
 depends=('zlib')
 makedepends=('binutils>=2.24' 'libmpc' 'doxygen')
-makedepends+=('cloog')
+makedepends+=('cloog' 'texinfo')
 checkdepends=('dejagnu' 'inetutils')
 options=('!emptydirs' 'staticlibs' '!libtool')
 source=(
   "ftp://gcc.gnu.org/pub/gcc/releases/gcc-${pkgver}/gcc-${pkgver}.tar.bz2"
-  "gcc-4.9-fix-build-with-gcc-6.patch"
+  'gcc-4.9-fix-build-with-gcc-6.patch'
+  'gcc.texi.49.patch'
 )
 sha256sums=('22fb1e7e0f68a63cee631d85b20461d1ea6bda162f03096350e38c8d427ecf23'
-            'd775a053fad367f5490111038fde7c875b4e842919d2d197f95b915e1ae562a9')
+            'd775a053fad367f5490111038fde7c875b4e842919d2d197f95b915e1ae562a9'
+            '93b8865cb61f455df807de90f852dc488753d4309d7a1d8f7e7f1a4efe37ffa4')
 PKGEXT='.pkg.tar.gz'
 
   _basedir="gcc-${pkgver}"
@@ -43,6 +45,9 @@ prepare() {
 
   # fix build with GCC 6
   patch -p1 < "${srcdir}/gcc-4.9-fix-build-with-gcc-6.patch"
+
+  # Update gcc.texi to gcc49 version, needed as of texinfo>=6.3 and possibly texinfo=6.2
+  patch -p0 -c < "${srcdir}/gcc.texi.49.patch"
 
   # Arch Linux installs x86_64 libraries /lib
   case "${CARCH}" in
@@ -106,6 +111,7 @@ prepare() {
     --with-system-zlib \
     --prefix='/usr'
 #    CXX='g++-4.9' CC='gcc-4.9'
+
   set +u
 }
 
@@ -140,6 +146,7 @@ package() {
   set -u
   cd "${_basedir}/gcc-build"
 
+  #LD_PRELOAD='/usr/lib/libstdc++.so' \\
   make -s -j1 DESTDIR="${pkgdir}" install
 
   ## Lazy way of dealing with conflicting man and info pages and locales...
@@ -147,7 +154,10 @@ package() {
   find "${pkgdir}/" -name '*iberty*' | xargs rm
 
   # Move potentially conflicting stuff to version specific subdirectory
-  mv "${pkgdir}/usr/lib/gcc/${CHOST}"/lib*/ "${pkgdir}/usr/lib/gcc/${CHOST}/${pkgver}/" || : # Not needed for 32 bit compile
+  case "${CARCH}" in
+  'x86_64') mv "${pkgdir}/usr/lib/gcc/${CHOST}"/lib*/ "${pkgdir}/usr/lib/gcc/${CHOST}/${pkgver}/" ;;
+  esac
+  #mv ${pkgdir}/usr/lib/lib* "${pkgdir}/usr/lib/gcc/${CHOST}/${pkgver}/"
 
   # Install Runtime Library Exception
   install -Dpm644 '../COPYING.RUNTIME' \
