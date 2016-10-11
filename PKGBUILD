@@ -1,5 +1,5 @@
 pkgname=mingw-w64-agrum
-pkgver=0.9.2
+pkgver=0.9.3
 pkgrel=1
 pkgdesc="C++ Bayesian networks library (mingw-w64)"
 license=('GPL')
@@ -15,7 +15,6 @@ _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 prepare() {
   cd agrum-$pkgver
-  sed -i "49i#include <cmath>" src/agrum/core/math/chi2.cpp
 }
 
 build() {
@@ -23,8 +22,8 @@ build() {
   for _arch in ${_architectures}; do
     mkdir -p build-${_arch} && pushd build-${_arch}
     ${_arch}-cmake \
-      -DCMAKE_BUILD_TYPE=Release \
-      ../src
+      -DBUILD_PYTHON=OFF \
+      ..
     make
     popd
   done
