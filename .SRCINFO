@@ -1,6 +1,6 @@
 pkgbase = rocksdb-lite
 	pkgdesc = Embedded key-value store for fast storage (lite version)
-	pkgver = 4.9
+	pkgver = 4.11.2
 	pkgrel = 1
 	url = http://rocksdb.org
 	arch = i686
@@ -14,8 +14,8 @@ pkgbase = rocksdb-lite
 	depends = snappy
 	depends = gcc-libs
 	conflicts = rocksdb
-	source = https://github.com/facebook/rocksdb/archive/rocksdb-4.9.zip
-	sha256sums = 31beaca347531440e816293c244f03d32154040f6d5beddf8045d06829053f36
+	source = https://github.com/facebook/rocksdb/archive/rocksdb-4.11.2.zip
+	sha256sums = 8b134583fc94886808b793e595ca8138a433cc985bce9cc3d35c65b004dd5b55
 
 pkgname = rocksdb-lite
 
