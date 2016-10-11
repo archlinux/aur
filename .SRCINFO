@@ -1,6 +1,6 @@
 pkgbase = gxkb
 	pkgdesc = X11 keyboard indicator and switcher
-	pkgver = 0.7.7
+	pkgver = 0.7.8
 	pkgrel = 1
 	url = https://zen-tools.github.io/gxkb
 	arch = i686
@@ -8,8 +8,8 @@ pkgbase = gxkb
 	license = GPL2
 	depends = libxklavier
 	depends = libwnck
-	source = https://github.com/zen-tools/gxkb/archive/v0.7.7.tar.gz
-	md5sums = 7b547114e97fe59d435f03fbafa74762
+	source = https://github.com/zen-tools/gxkb/archive/v0.7.8.tar.gz
+	md5sums = b709892a108875f83e17d48ab47a47b6
 
 pkgname = gxkb
 
