@@ -11,8 +11,8 @@ _language_gfm2_ver=0.92.2
 _language_liquid_ver=0.5.1
 
 pkgname=${_pkgname}-editor-${_version}
-_pkgrel=5
-_pkgver=1.11.0
+_pkgrel=0
+_pkgver=1.12.0
 pkgver="${_pkgver}.beta${_pkgrel}.m${_language_gfm2_ver}"
 _ver=$_pkgver-beta${_pkgrel}
 pkgrel=1
@@ -30,7 +30,7 @@ source=("${_pkgname}-${_pkgver}-${_version}${_pkgrel}.tar.gz::$url/archive/v${_p
 "${_pkgname}-${_version}.desktop"
 "${_pkgname}-${_version}"
 "about-beta.patch")
-sha256sums=('d0c80165eb5d94c3edec7fa17a3ae137d146e899c80140b1ed8f6d668456c0ee'
+sha256sums=('4405fd80b10f63fd260e1b15b69974b6ac0d0bda2483a91a85cc7dc882a244b3'
             'b76bdecbf42456c66c029b4f9c75cb8acde389119e1e4a29de2980443703d752'
             'c62faaf2f50cddb1a834ccb33c95724076d2859c88baac7d9d676bc9c3afc8c6'
             '230563ed327833351d448e152ab8b146d2d2b7bdac42c7d39eef966b96b862fc'
