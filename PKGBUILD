@@ -1,9 +1,9 @@
 # Maintainer: Bidossessi Sodonon
 
 pkgname=odoo
-pkgver=9.0c
-_pkgsubver=20160827
-pkgrel=10
+pkgver=10.0
+_pkgsubver=20161011
+pkgrel=1
 pkgdesc="Web-based Open Source Business Apps"
 url=http://odoo.com/
 arch=('any')
@@ -67,7 +67,7 @@ optdepends=(
 )
 
 source=(
-  "http://nightly.odoo.com/9.0/nightly/src/${pkgname}_${pkgver}.${_pkgsubver}.tar.gz"
+  "http://nightly.odoo.com/10.0/nightly/src/${pkgname}_${pkgver}.${_pkgsubver}.tar.gz"
   odoo.confd
   odoo.service
   odoo.conf
@@ -87,7 +87,7 @@ package()
   install -Dm 644 ${srcdir}/odoo.service ${pkgdir}/usr/lib/systemd/system/odoo.service
   install -Dm 644 ${srcdir}/odoo.conf ${pkgdir}/etc/odoo/odoo.conf
 }
-md5sums=('af8466742e63d62921764a83454e3b35'
+md5sums=('25585cc022055aee8bf80caaaaf9f91a'
          '742fa9ad94a92ac2aa910197a26af4e8'
          '00314ef227c9075767d0165527de9841'
          '0c205f95168a60d140411cce4e173eb8')
