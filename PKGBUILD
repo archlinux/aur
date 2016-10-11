@@ -1,21 +1,22 @@
-# Maintainer: Fredrik Haikarainen <fredrik.haikarainen@gmail.com>
+# Maintainer:  Marcin (CTRL) Wieczorek <marcin@marcin.co>
+# Contributor: Fredrik Haikarainen <fredrik.haikarainen@gmail.com>
+
 pkgname=light-git
-pkgver=v0.9.r1.g8dfe104
+pkgver=1.0.r0.g9681c72
 pkgrel=1
 pkgdesc='Program to easily change brightness on backlight-controllers.'
-arch=('any')
+arch=('i686' 'x86_64')
 url="https://github.com/haikarainen/light"
 license=('GPL3')
 makedepends=('git' 'help2man')
-conflicts=('lightscript' 'light')
-provides=('lightscript' 'light')
-replaces=('lightscript')
+conflicts=('light')
+provides=('light')
 source=('git+https://github.com/haikarainen/light.git')
 md5sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/light"
-  git describe --long | sed -r 's/([^-]*-g)/r\1/;s/-/./g'
+  git describe --tags --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build(){
