@@ -158,11 +158,6 @@ build() {
   unset CFLAGS
   unset CXXFLAGS
 
-  if [[ -z "$_piver" ]]; then
-    echo "Set a pi version to build the associated sdk"
-    exit -1
-  fi
-
   local _srcdir="${srcdir}/${_source_package_name}"
   local _bindir="${_srcdir}"
   local _basedir="${_srcdir}/qtbase"
