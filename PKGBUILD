@@ -3,8 +3,8 @@
 
 pkgname=compton-conf
 pkgver=0.2.0
-pkgrel=1
-pkgdesc='A graphical configuration tool for Compton X composite manager. Qt5 UI.'
+pkgrel=2
+pkgdesc='A graphical configuration tool for Compton X composite manager'
 arch=('i686' 'x86_64')
 url='https://github.com/lxde/compton-conf'
 license=('LGPL2.1')
@@ -15,12 +15,16 @@ provides=("${pkgname}=${pkgver}")
 conflicts=("${pkgname}-git")
 
 source=(
-	"${pkgname}-${pkgver}.tar.gz::https://github.com/lxde/${pkgname}/archive/${pkgver}.tar.gz"
+	"https://downloads.lxqt.org/${pkgname}/${pkgver}/${pkgname}-${pkgver}.tar.xz"{,.asc}
 	'desktop_entry.patch'
 )
-sha512sums=(
-	'8a386b936877ce516433e71329ae8e2531fec3b22e76f71b3d6fb16bbfa920bf0c508218001b0060b50e7b709746e96f4c50af8debc02b363035874e63301b6e'
-	'1874fd90bb791542440c444d7809a03f651045f2acde7db194d309f67c75d81cacf656912f4b4837fade265994737522a0b51b347fc930296ce6ce70051b020e'
+validpgpkeys=(
+	'7C733BA5F585AAD669E4D23A42C9C8D3AF5EA5E3' # Alf Gaida
+)
+sha256sums=(
+	'56d5f15ec024a8657e4b8cc4305fd12f90f8b1cce60f445bc4644c91d599df68'
+	'SKIP' # GPG signature
+	'c5ba13d98faae4efe2ec4a5aff8def3a35fae4f2762a6395847ae8734964d5e3'
 )
 
 prepare() {
