@@ -1,46 +1,53 @@
-3993,4014c3993,4014
-<     if [[ "$DO_SVN" != "yes" || "$USE_VISIT_FILE" == "yes" ]] ; then
-<         #
-<         # Unzip the file, provided a gzipped file exists.
-<         #
-<         if [[ -f ${VISIT_FILE} ]] ; then
-<            info "Unzipping/untarring ${VISIT_FILE} . . ."
-<            uncompress_untar ${VISIT_FILE}
-<            if [[ $? != 0 ]] ; then
-<               warn \
-< "Unable to untar ${VISIT_FILE}.  Corrupted file or out of space on device?"
-<               return 1
-<            fi
-<         elif [[ -f ${VISIT_FILE%.*} ]] ; then
-<            info "Unzipping ${VISIT_FILE%.*} . . ."
-<            $TAR xf ${VISIT_FILE%.*}
-<            if [[ $? != 0 ]] ; then
-<               warn  \
-< "Unable to untar ${VISIT_FILE%.*}.  Corrupted file or out of space on device?"
-<               return 1
-<            fi
-<         fi
-<     fi
----
-> #    if [[ "$DO_SVN" != "yes" || "$USE_VISIT_FILE" == "yes" ]] ; then
-> #        #
-> #        # Unzip the file, provided a gzipped file exists.
-> #        #
-> #        if [[ -f ${VISIT_FILE} ]] ; then
-> #           info "Unzipping/untarring ${VISIT_FILE} . . ."
-> #           uncompress_untar ${VISIT_FILE}
-> #           if [[ $? != 0 ]] ; then
-> #              warn \
-> #"Unable to untar ${VISIT_FILE}.  Corrupted file or out of space on device?"
-> #              return 1
-> #           fi
-> #        elif [[ -f ${VISIT_FILE%.*} ]] ; then
-> #           info "Unzipping ${VISIT_FILE%.*} . . ."
-> #           $TAR xf ${VISIT_FILE%.*}
-> #           if [[ $? != 0 ]] ; then
-> #              warn  \
-> #"Unable to untar ${VISIT_FILE%.*}.  Corrupted file or out of space on device?"
-> #              return 1
-> #           fi
-> #        fi
-> #    fi
+--- build_visit2_11_0.orig	2016-09-24 12:53:02.084527748 +0200
++++ build_visit2_11_0	2016-09-24 12:54:30.911401672 +0200
+@@ -4079,28 +4079,28 @@
+ 
+ function build_visit
+ {
+-    if [[ "$DO_SVN" != "yes" || "$USE_VISIT_FILE" == "yes" ]] ; then
+-        #
+-        # Unzip the file, provided a gzipped file exists.
+-        #
+-        if [[ -f ${VISIT_FILE} ]] ; then
+-            info "Unzipping/untarring ${VISIT_FILE} . . ."
+-            uncompress_untar ${VISIT_FILE}
+-            if [[ $? != 0 ]] ; then
+-                warn \
+-                    "Unable to untar ${VISIT_FILE}.  Corrupted file or out of space on device?"
+-                return 1
+-            fi
+-        elif [[ -f ${VISIT_FILE%.*} ]] ; then
+-            info "Unzipping ${VISIT_FILE%.*} . . ."
+-            $TAR xf ${VISIT_FILE%.*}
+-            if [[ $? != 0 ]] ; then
+-                warn  \
+-                    "Unable to untar ${VISIT_FILE%.*}.  Corrupted file or out of space on device?"
+-                return 1
+-            fi
+-        fi
+-    fi
++    #if [[ "$DO_SVN" != "yes" || "$USE_VISIT_FILE" == "yes" ]] ; then
++        ##
++        ## Unzip the file, provided a gzipped file exists.
++        ##
++        #if [[ -f ${VISIT_FILE} ]] ; then
++            #info "Unzipping/untarring ${VISIT_FILE} . . ."
++            #uncompress_untar ${VISIT_FILE}
++            #if [[ $? != 0 ]] ; then
++                #warn \
++                    #"Unable to untar ${VISIT_FILE}.  Corrupted file or out of space on device?"
++                #return 1
++            #fi
++        #elif [[ -f ${VISIT_FILE%.*} ]] ; then
++            #info "Unzipping ${VISIT_FILE%.*} . . ."
++            #$TAR xf ${VISIT_FILE%.*}
++            #if [[ $? != 0 ]] ; then
++                #warn  \
++                    #"Unable to untar ${VISIT_FILE%.*}.  Corrupted file or out of space on device?"
++                #return 1
++            #fi
++        #fi
++    #fi
+ 
+     #
+     # Set up the config-site file, which gives configure the information it
