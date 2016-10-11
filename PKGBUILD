@@ -3,13 +3,14 @@
 
 _pkgname="python-glob2"
 pkgname="${_pkgname}-git"
-pkgver=20151103
+pkgver=20160728
 pkgrel=1
 pkgdesc="An extended version of Python's builtin glob module that can capture patterns and supports recursive wildcards"
 arch=('any')
 url="https://github.com/miracle2k/python-glob2"
 license=('BSD')
-depends=('python' 'python2' 'git')
+depends=('python' 'python2')
+makedepends=('git' 'python-setuptools' 'python2-setuptools')
 provides=(${_pkgname})
 conflicts=(${_pkgname})
 
