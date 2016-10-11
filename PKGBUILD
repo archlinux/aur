@@ -2,12 +2,12 @@
 
 pkgname=terbilang
 pkgver=2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Number-To-Text / Number-To-Words  converter utility for Bahasa Indonesia or Indonesian Rupiah (IDR) currency."
 url="https://github.com/yadieet/c-programming-examples/tree/master/terbilang"
 license=('GPL3')
-source=("terbilang-$pkgver.$pkgrel.c::https://raw.githubusercontent.com/yadieet/c-programming-examples/3d73403bb8e65a3d7559cde975806309a853a3ab/terbilang/terbilang.c")
-sha256sums=('58f2e63d53c4fb6d641224e6961085e3c7d71b52ceb39a336e02165b0ef5d416')
+source=("terbilang-$pkgver.$pkgrel.c::https://raw.githubusercontent.com/yadieet/c-programming-examples/c6c2b98d13bbe2b7a9216056c29fb34c54d2455c/terbilang/terbilang.c")
+sha256sums=('effdbeda28e28ffaa5d7bc2fd8fda1f46965c7effc8f6fe2a3280bd9ecc4fcf9')
 arch=('x86_64')
 depends=('gmp')
 
