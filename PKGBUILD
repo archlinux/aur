@@ -3,7 +3,7 @@
 pkgname=cqrlog-git
 _pkgname=cqrlog
 _authorname=ok2cqr
-pkgver=1.9.0
+pkgver=2.0.2
 pkgrel=1
 pkgdesc="An advanced ham radio logger using MariaDB - GIT version."
 arch=('i686' 'x86_64')
@@ -20,7 +20,7 @@ optdepends=('winkeydaemon: usb cw xmit'
 	    'masterscp: supercheckpartial files'
 	    'cty: country files'
 	    'bigcty: contest version country files'
-	    'hamlibs: rig control'
+	    'hamlib: rig control'
 	    'trustedqsl: upload logs'
  	    'hamradio-menus: XDG compliant menuing'
 	    'xplanet: gui location'
@@ -45,7 +45,9 @@ prepare() {
 	git clone "$srcdir/$_pkgname" "$srcdir/$_gitname-build"
 
 	cd "$srcdir/$_gitname-build"
-	sed -i 's/--ws=gtk2 src/--lazarusdir=\/usr\/lib\/lazarus --ws=gtk2 src/g' Makefile
+#	sed -i 's/--ws=gtk2 src/--lazarusdir=\/usr\/lib\/lazarus --ws=gtk2 src/g' Makefile
+	sed -i 's/--ws=gtk2 --pcp=$(tmpdir)\/.lazarus src/--lazarusdir=\/usr\/lib\/lazarus --ws=gtk2 src/g' Makefile
+	sed -i 's/--ws=gtk2 --pcp=$(tmpdir)\/.lazarus src/--lazarusdir=\/usr\/lib\/lazarus --ws=gtk2 --pcp=$(tmpdir)\/.lazarus src/g' Makefile
 }
 
 build() {
