@@ -1,6 +1,6 @@
 pkgbase = osvr-rendermanager-git
 	pkgdesc = TW, ATW and high performance rendering with OpenGL and GLES
-	pkgver = v00_06_52.r48.g0e515eb
+	pkgver = v00_06_52.r50.gfd38a16
 	pkgrel = 1
 	url = https://github.com/sensics/OSVR-RenderManager
 	arch = i686

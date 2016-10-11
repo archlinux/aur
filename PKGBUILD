@@ -1,5 +1,5 @@
 pkgname=osvr-rendermanager-git
-pkgver=v00_06_52.r48.g0e515eb
+pkgver=v00_06_52.r50.gfd38a16
 pkgrel=1
 pkgdesc="TW, ATW and high performance rendering with OpenGL and GLES"
 arch=(i686 x86_64)
@@ -66,7 +66,6 @@ package() {
   make DESTDIR="$pkgdir/" install
   install -d "$pkgdir"/usr/share/osvrcore/sample-configs/
   cp -ra "$srcdir"/osvr-rendermanager/installer/* "$pkgdir"/usr/share/osvrcore/sample-configs/
-  install -m 0644 "$srcdir"/osvr_server_config.HDK20ExtendedLandscape.archlinux.json "$pkgdir"/usr/share/osvrcore/sample-configs/osvr_server_config.HDK20ExtendedLandscape.archlinux.json
 }
 
 # vim:set ts=2 sw=2 et:
