@@ -1,0 +1,15 @@
+pkgbase = termplot
+	pkgdesc = Terminal-based mathematical function plotter
+	pkgver = 0.2
+	pkgrel = 1
+	url = http://qriollo.github.io
+	install = .INSTALL
+	arch = i686
+	arch = x86_64
+	makedepends = git
+	makedepends = gcc
+	source = termplot::git+https://github.com/gciruelos/termplot.git
+	md5sums = SKIP
+
+pkgname = termplot
+
