@@ -1,6 +1,6 @@
 # Maintainer: Marcel Campello Ferreira <marcel.campello.ferreira@gmail.com>
 pkgname=neo4j-community
-pkgver=3.0.4
+pkgver=3.0.6
 pkgrel=1
 pkgdesc='A fully transactional graph database implemented in Java'
 arch=(any)
@@ -19,9 +19,9 @@ source=(http://dist.neo4j.org/neo4j-community-$pkgver-unix.tar.gz
         neo4j.install
         neo4j.service
         neo4j-tmpfile.conf)
-sha256sums=('e1da51163eb18380623788eabea34dfe23ee21c99deca4e7922094b0d242e805'
-            'b7fb14ff6df37dc43a31c8d7e731fc93986a9550c23ce7721370f24e3abfe292'
-            '6f8ea979dddb8a617fd6c7df6d7a9e30e0f4ec3968b97938c5c541ace1866ebf'
+sha256sums=('efeab41183e9e5fa94a2d396c65ea93a24e9f105cb3b5f0d0a8e42fb709f4660'
+            'dc94f5d51ed73fdb4fbbc32b5d479dd22de40fb0fcca7e9a8cc5e864e3d8f7fc'
+            '71ef1d3c9d981cb27c95aa9f0d59e7adca0c6b7431a0e5a39540625a977fe18f'
             '3c4f3daea1623a5bc4c56d87ff4d76ff4737722eb730e2f9b65a0980bf3633a3'
             'cf3148bd65ddc06f5ca8cf2ad37013d2e1aa561c5759e4b295f361465e603928'
             'e1311352e05b1e698599b91883141b938ceb418abd7e6bc11cc964854f0a21e1')
