@@ -4,12 +4,9 @@ _version=arch
 _fusurl="https://github.com/fusion809"
 _language_patch2_url="${_fusurl}/language-patch2"
 
-# Module Versions
-_electron_ver=0.36.12
-
 pkgname=${_pkgname}-editor-${_version}
-_atomver=1.10.2
-pkgver=1.10.2.aa1.6.2.db0.8.9.fu0.12.0.la0.9.1.lg0.92.2.li1.18.3.ll0.5.1.lp1.0.0.lu0.38.1.t2.4.2
+_atomver=1.11.0
+pkgver=1.11.0.aa1.6.2.db0.8.9.fu0.12.0.la0.9.2.lg0.92.2.li1.18.3.ll0.5.1.lp1.0.0.lu0.38.2.t2.4.2
 pkgrel=1
 pkgdesc="Hackable text editor for the 21st Century, built using web technologies, with some extra packages for Arch Linux package development pre-installed."
 arch=('x86_64' 'i686')
@@ -37,7 +34,7 @@ source=("${_pkgname}-${_atomver}.tar.gz::${_url}/atom/archive/v${_atomver}.tar.g
 "atom.desktop"
 "theme.patch"
 "about-arch.patch")
-md5sums=('ea511e7a2f8c9fac6bc2062e52435cd9'
+md5sums=('a43f37b84237b174783ce4cd5b78c8ee'
          'SKIP'
          'SKIP'
          'SKIP'
@@ -51,7 +48,7 @@ md5sums=('ea511e7a2f8c9fac6bc2062e52435cd9'
          'SKIP'
          '74cc026d4104072dadb2733745f1b268'
          '367f71ad1cfc2e03e97a48d2e32995fb'
-         '23a0d25e1759dc5bd0e6f7101fd8ea70'
+         'df5504a024e1aadb9e4147a510d34e6c'
          'ae16bb627ec10bde20c7093d4be18131')
 
 pkgver() {
@@ -129,20 +126,41 @@ prepare() {
 build() {
   cd "$srcdir/${_pkgname}-${_atomver}"
   export PYTHON=/usr/bin/python2
-  until ./script/build --build-dir "$srcdir/atom-build"; do :; done
+  until ./script/build; do :; done
 }
 
 package() {
   cd "$srcdir/${_pkgname}-${_atomver}"
 
-  script/grunt install --build-dir "$srcdir/atom-build" --install-dir "$pkgdir/usr"
+  _ver=$(cat package.json | grep version | sed 's/version//g' | sed 's/://g' | sed 's/ //g' |  sed 's/"//g' | sed 's/,//g')
 
-  install -Dm755 $srcdir/${_pkgname} "$pkgdir/usr/bin/${_pkgname}"
-  install -Dm644 $srcdir/${_pkgname}.desktop "$pkgdir/usr/share/applications/${_pkgname}.desktop"
-  install -Dm644 resources/app-icons/stable/png/1024.png "$pkgdir/usr/share/pixmaps/atom.png"
-  install -Dm644 LICENSE.md "$pkgdir/usr/share/licenses/$pkgname/LICENSE.md"
+  _arch=amd64
+  if [ "${CARCH}" = "i686" ]; then
+  _arch=i386
+  fi
+  install -dm755 ${pkgdir}/usr/bin
+  install -dm755 ${pkgdir}/usr/share/${_pkgname}
+  install -dm755 ${pkgdir}/usr/share/applications
+  install -dm755 ${pkgdir}/usr/share/licenses/$pkgname
+  install -dm755 ${pkgdir}/usr/share/pixmaps
 
-  install -Dm644 $srcdir/mydict/en_AU* "${pkgdir}/usr/share/atom/resources/app.asar.unpacked/node_modules/spellchecker/vendor/hunspell_dictionaries"
+  cp -r out/${_pkgname}-${_ver}-${_arch}/* ${pkgdir}/usr/share/${_pkgname}/
+  mv ${pkgdir}/usr/share/${_pkgname}/atom.png ${pkgdir}/usr/share/pixmaps/${_pkgname}.png
+  mv ${pkgdir}/usr/share/${_pkgname}/LICENSE ${pkgdir}/usr/share/licenses/$pkgname/LICENSE
+  install -Dm755 $srcdir/${_pkgname} ${pkgdir}/usr/bin/${_pkgname}
+  install -Dm644 $srcdir/${_pkgname}.desktop ${pkgdir}/usr/share/applications/${_pkgname}.desktop
+  rm ${pkgdir}/usr/share/${_pkgname}/resources/app/atom.sh
+  rm -rf ${pkgdir}/usr/share/${_pkgname}/resources/app.asar.unpacked/resources
+  ln -sf "/usr/share/${_pkgname}/resources/app/apm/node_modules/.bin/apm" "${pkgdir}/usr/bin/apm-${_version}"
 
-  find . -name "package.json" -exec sed -i -e "s|$srcdir/${_pkgname}-${_atomver}/apm|/usr/share/atom/resources/app/apm|g" '{}' +
+  find "$pkgdir" \
+    -name "*.a" -exec rm '{}' \; \
+    -or -name "*.bat" -exec rm '{}' \; \
+    -or -name "benchmark" -prune -exec rm -r '{}' \; \
+    -or -name "doc" -prune -exec rm -r '{}' \; \
+    -or -name "html" -prune -exec rm -r '{}' \; \
+    -or -name "man" -prune -exec rm -r '{}' \; \
+    -or -path "*/less/gradle" -prune -exec rm -r '{}' \; \
+    -or -path "*/task-lists/src" -prune -exec rm -r '{}' \; \
+    -or -name "package.json" -exec sed -i -e "s|${srcdir}/atom-${_ver}/apm|/usr/share/${_pkgname}/resources/app/apm|g" '{}' +
 }
