@@ -1,13 +1,14 @@
 # Maintainer: Julian Orth <ju.orth@gmail.com>
 
 pkgname=spotblock-git
-pkgver=r9.a9fc6e2
+pkgver=r13.9a46e40
 pkgrel=1
 pkgdesc='A spotify ad blocker'
 arch=('i686' 'x86_64')
 url='https://github.com/mahkoh/spotblock'
 license=('GPL3')
 depends=('libsystemd' 'libpulse')
+makedepends=('cmake')
 source=("$pkgname::git+https://github.com/mahkoh/spotblock")
 md5sums=('SKIP')
 
