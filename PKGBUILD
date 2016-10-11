@@ -2,7 +2,7 @@
 
 pkgname=cura-engine-noarcus-git
 pkgver=3b8ad5e
-pkgrel=2
+pkgrel=3
 pkgdesc="A C++ console application for 3D printing GCode generation. It's called by Repetier Host and/or other applications. No libArcus or Protobuf needed for that version, and it could be only used as command-line tool."
 arch=(i686 x86_64 arm)
 url="https://github.com/Ultimaker/CuraEngine.git"
