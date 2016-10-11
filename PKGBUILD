@@ -5,7 +5,7 @@
 #pkgbase=linux               # Build stock -ARCH kernel
 pkgbase=linux-ice       # Build kernel with a different name
 _srcname=linux-4.6
-pkgver=4.6.5
+pkgver=4.6.7
 pkgrel=1
 _toipatch=tuxonice-for-linux-head-4.6.0-rc4-2016-04-21.patch
 arch=('i686' 'x86_64')
@@ -29,7 +29,7 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
 
 sha256sums=('a93771cd5a8ad27798f22e9240538dfea48d3a2bf2a6a6ab415de3f02d25d866'
             'SKIP'
-            '857df33f085a0116b9d2322ffe3b23d5b7d8c4898427d79f68108a653e84910c'
+            'e06e9f84571856b02eb5c1d399e120a7ae8d618e4b444009dd53c9ca8f89fa11'
             'SKIP'
             '02e8b02e8cd10aa059917a489a9663e7f66bdf12c5ae8a1e0369bb2862da6b68'
             'd59014b8f887c6aa9488ef5ff9bc5d4357850a979f3ff90a2999bbe24e5c6e15'
