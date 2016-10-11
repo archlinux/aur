@@ -11,7 +11,9 @@ pkgbase = anax
 	depends = boost
 	provides = anax
 	conflicts = anax
+	source = patchfile
 	source = anax::git+https://github.com/miguelmartin75/anax.git
+	md5sums = SKIP
 	md5sums = SKIP
 
 pkgname = anax

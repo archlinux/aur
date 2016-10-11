@@ -14,8 +14,8 @@ provides=("$pkgname")
 conflicts=("$pkgname")
 backup=()
 options=()
-source=("$pkgname::git+https://github.com/miguelmartin75/anax.git")
-md5sums=('SKIP')
+source=("patchfile" "$pkgname::git+https://github.com/miguelmartin75/anax.git")
+md5sums=('SKIP' 'SKIP')
 
 pkgver() {
   cd "$srcdir/$pkgname"
@@ -30,10 +30,14 @@ build() {
   rm -fr build
   mkdir build 
   cd build
-  cmake .. -DBUILD_SHARED_LIBS=false -DBUILD_DOCS=true
+  cmake .. -DBUILD_SHARED_LIBS=false -DBUILD_DOCS=true -DCMAKE_INSTALL_PREFIX=/usr
 }
 
 package() {
   cd "$srcdir/$pkgname/build"
   make DESTDIR="$pkgdir/" install
+  cd "$srcdir" 
+  patch -Np0 -i patchfile
+  mkdir -p $pkgdir/usr/lib/cmake/anax
+  cp $pkgname/cmake/Modules/Findanax.cmake $pkgdir/usr/lib/cmake/anax/
 }
