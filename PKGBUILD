@@ -8,7 +8,7 @@ pkgrel=1
 pkgdesc="An extended version of Python's builtin glob module that can capture patterns and supports recursive wildcards"
 arch=('any')
 url="https://github.com/miracle2k/python-glob2"
-license=('BSD')
+license=('custom')
 depends=('python' 'python2')
 makedepends=('git' 'python-setuptools' 'python2-setuptools')
 provides=(${_pkgname})
@@ -37,5 +37,5 @@ package() {
     python2 ./setup.py install --root="$pkgdir/" --optimize=1
     python ./setup.py install --root="$pkgdir/" --optimize=1
 
-    install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
+    install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
