@@ -1,9 +1,6 @@
-From 5cb3786d107bdea372ab45e6c35f882fd867d5e0 Mon Sep 17 00:00:00 2001
-From: Vittorio Giovara <vittorio.giovara@savoirfairelinux.com>
-Date: Mon, 9 Jun 2014 14:20:55 -0400
-Subject: [PATCH 1/1] ssl_sock: add gnutls backend
-
 Copyright (c) 2014-2016 Savoir-faire Linux Inc.
+
+ssl_sock: add gnutls backend
 
 This backend is mutually exclusive with the OpenSSL one, but completely
 compatible, and conformant to the PJSIP API. Also avoids any license issues
@@ -18,21 +15,33 @@ Vittorio Giovara <vittorio.giovara@savoirfairelinux.com>
 Philippe Proulx <philippe.proulx@savoirfairelinux.com> and
 Adrien Béraud <adrien.beraud@savoirfairelinux.com>
 on behalf of Savoir-faire Linux.
+
+ .../aconfigure                                     |  184 +-
+ .../aconfigure.ac                                  |  101 +-
+ .../pjlib/build/Makefile                           |    3 +-
+ .../pjlib/include/pj/compat/os_auto.h.in           |    3 +
+ .../pjlib/include/pj/config.h                      |   14 +-
+ .../pjlib/include/pj/ssl_sock.h                    |    5 +
+ .../pjlib/src/pj/ssl_sock_common.c                 |    5 +
+ .../pjlib/src/pj/ssl_sock_gtls.c                   | 2887 ++++++++++++++++++++
+ .../pjlib/src/pj/ssl_sock_ossl.c                   |    6 +-
+ .../pjmedia/src/pjmedia/transport_srtp.c           |    6 +-
+ 10 files changed, 3147 insertions(+), 67 deletions(-)
 ---
 diff --git a/aconfigure b/aconfigure
-index 83fc5d7..8654c54 100755
+index 78601ca..3589f5a 100755
 --- a/aconfigure
 +++ b/aconfigure
-@@ -637,6 +637,8 @@ ac_no_opencore_amrnb
+@@ -640,6 +640,8 @@ ac_no_opencore_amrnb
  libcrypto_present
  libssl_present
  openssl_h_present
 +libgnutls_present
 +gnutls_h_present
  ac_no_ssl
- ac_libyuv_ldflags
- ac_libyuv_cflags
-@@ -1469,8 +1471,8 @@ Optional Features:
+ ac_webrtc_ldflags
+ ac_webrtc_cflags
+@@ -1491,8 +1493,8 @@ Optional Features:
                            package and samples location using IPPROOT and
                            IPPSAMPLES env var or with --with-ipp and
                            --with-ipp-samples options
@@ -43,7 +52,7 @@ index 83fc5d7..8654c54 100755
    --disable-opencore-amr  Exclude OpenCORE AMR support from the build
                            (default: autodetect)
  
-@@ -7644,33 +7646,160 @@ fi
+@@ -7826,33 +7828,160 @@ fi
  
  # Check whether --enable-ssl was given.
  if test "${enable_ssl+set}" = set; then :
@@ -218,7 +227,7 @@ index 83fc5d7..8654c54 100755
  $as_echo_n "checking for ERR_load_BIO_strings in -lcrypto... " >&6; }
  if ${ac_cv_lib_crypto_ERR_load_BIO_strings+:} false; then :
    $as_echo_n "(cached) " >&6
-@@ -7710,7 +7839,7 @@ if test "x$ac_cv_lib_crypto_ERR_load_BIO_strings" = xyes; then :
+@@ -7892,7 +8021,7 @@ if test "x$ac_cv_lib_crypto_ERR_load_BIO_strings" = xyes; then :
    libcrypto_present=1 && LIBS="-lcrypto $LIBS"
  fi
  
@@ -227,7 +236,7 @@ index 83fc5d7..8654c54 100755
  $as_echo_n "checking for SSL_library_init in -lssl... " >&6; }
  if ${ac_cv_lib_ssl_SSL_library_init+:} false; then :
    $as_echo_n "(cached) " >&6
-@@ -7750,22 +7879,23 @@ if test "x$ac_cv_lib_ssl_SSL_library_init" = xyes; then :
+@@ -7932,22 +8061,23 @@ if test "x$ac_cv_lib_ssl_SSL_library_init" = xyes; then :
    libssl_present=1 && LIBS="-lssl $LIBS"
  fi
  
@@ -262,15 +271,15 @@ index 83fc5d7..8654c54 100755
  if test "${with_opencore_amrnb+set}" = set; then :
    withval=$with_opencore_amrnb; as_fn_error $? "This option is obsolete and replaced by --with-opencore-amr=DIR" "$LINENO" 5
 diff --git a/aconfigure.ac b/aconfigure.ac
-index 179dfac..588ef7b 100644
+index 3c80efa..808fd07 100644
 --- a/aconfigure.ac
 +++ b/aconfigure.ac
-@@ -1512,38 +1512,77 @@ fi
+@@ -1566,38 +1566,77 @@ fi
  
  dnl # Include SSL support
  AC_SUBST(ac_no_ssl)
 -AC_ARG_ENABLE(ssl,
--	      AC_HELP_STRING([--disable-ssl],
+-	      AS_HELP_STRING([--disable-ssl],
 -			     [Exclude SSL support the build (default: autodetect)])
 -	      ,
 -	      [
@@ -286,7 +295,7 @@ index 179dfac..588ef7b 100644
 -                    LDFLAGS="$LDFLAGS -L$with_ssl/lib"
 -                    AC_MSG_RESULT([Using SSL prefix... $with_ssl])
 +AC_ARG_ENABLE([ssl],
-+              AC_HELP_STRING([--enable-ssl[=backend]],
++              AS_HELP_STRING([--enable-ssl[=backend]],
 +                             [Select 'gnutls' or 'openssl' (default) to provide SSL support (autodetect)]),
 +              [ if test "x$enableval" = "xgnutls"; then
 +                    [ssl_backend="gnutls"]
@@ -375,7 +384,7 @@ index 179dfac..588ef7b 100644
  dnl # Obsolete option --with-opencore-amrnb
  AC_ARG_WITH(opencore-amrnb,
 diff --git a/pjlib/build/Makefile b/pjlib/build/Makefile
-index 1e64950..e650a31 100644
+index 1e64950..529e0ff 100644
 --- a/pjlib/build/Makefile
 +++ b/pjlib/build/Makefile
 @@ -35,7 +35,7 @@ export PJLIB_OBJS += $(OS_OBJS) $(M_OBJS) $(CC_OBJS) $(HOST_OBJS) \
@@ -388,10 +397,10 @@ index 1e64950..e650a31 100644
  export PJLIB_CFLAGS += $(_CFLAGS)
  export PJLIB_CXXFLAGS += $(_CXXFLAGS)
 diff --git a/pjlib/include/pj/compat/os_auto.h.in b/pjlib/include/pj/compat/os_auto.h.in
-index 18df2bf..9295740 100644
+index 849bd09..a6f7767 100644
 --- a/pjlib/include/pj/compat/os_auto.h.in
 +++ b/pjlib/include/pj/compat/os_auto.h.in
-@@ -206,6 +206,9 @@
+@@ -209,6 +209,9 @@
  #ifndef PJ_HAS_SSL_SOCK
  #undef PJ_HAS_SSL_SOCK
  #endif
@@ -402,10 +411,10 @@ index 18df2bf..9295740 100644
  
  #endif	/* __PJ_COMPAT_OS_AUTO_H__ */
 diff --git a/pjlib/include/pj/config.h b/pjlib/include/pj/config.h
-index 1f4408e..f1c5cec 100644
+index 9909b33..7d2c689 100644
 --- a/pjlib/include/pj/config.h
 +++ b/pjlib/include/pj/config.h
-@@ -855,13 +855,15 @@
+@@ -855,13 +861,15 @@
  
  /**
   * Enable secure socket. For most platforms, this is implemented using
@@ -423,12 +432,12 @@ index 1f4408e..f1c5cec 100644
  
  
 diff --git a/pjlib/include/pj/ssl_sock.h b/pjlib/include/pj/ssl_sock.h
-index 1682bda..749b49f 100644
+index b698131..ed39fa6 100644
 --- a/pjlib/include/pj/ssl_sock.h
 +++ b/pjlib/include/pj/ssl_sock.h
-@@ -181,6 +181,11 @@ typedef struct pj_ssl_cert_info {
-     } subj_alt_name;		    /**< Subject alternative
- 					 name extension		*/
+@@ -184,6 +184,11 @@ typedef struct pj_ssl_cert_info {
+     pj_str_t raw;		    /**< Raw certificate in PEM format, only
+ 					 available for remote certificate. */
  
 +    struct {
 +        unsigned    cnt;        /**< # of entry     */
@@ -439,10 +448,10 @@ index 1682bda..749b49f 100644
  
  
 diff --git a/pjlib/src/pj/ssl_sock_common.c b/pjlib/src/pj/ssl_sock_common.c
-index 913efee..ac7f683 100644
+index 9cbfef7..9e43ddf 100644
 --- a/pjlib/src/pj/ssl_sock_common.c
 +++ b/pjlib/src/pj/ssl_sock_common.c
-@@ -34,7 +34,12 @@ PJ_DEF(void) pj_ssl_sock_param_default(pj_ssl_sock_param *param)
+@@ -35,7 +35,12 @@ PJ_DEF(void) pj_ssl_sock_param_default(pj_ssl_sock_param *param)
      param->async_cnt = 1;
      param->concurrency = -1;
      param->whole_data = PJ_TRUE;
@@ -457,13 +466,13 @@ index 913efee..ac7f683 100644
  #endif
 diff --git a/pjlib/src/pj/ssl_sock_gtls.c b/pjlib/src/pj/ssl_sock_gtls.c
 new file mode 100644
-index 0000000..6864740
+index 0000000..37bcaba
 --- /dev/null
 +++ b/pjlib/src/pj/ssl_sock_gtls.c
-@@ -0,0 +1,2865 @@
+@@ -0,0 +1,2887 @@
 +/* $Id$ */
 +/*
-+ * Copyright (C) 2014-2015 Savoir-faire Linux. (http://www.savoirfairelinux.com)
++ * Copyright (C) 2014-2016 Savoir-faire Linux. (https://www.savoirfairelinux.com)
 + *
 + * This program is free software; you can redistribute it and/or modify
 + * it under the terms of the GNU General Public License as published by
@@ -605,6 +614,7 @@ index 0000000..6864740
 +    pj_pool_t            *pool;
 +    pj_ssl_sock_t        *parent;
 +    pj_ssl_sock_param     param;
++    pj_ssl_sock_param     newsock_param;
 +    pj_ssl_cert_t        *cert;
 +
 +    pj_ssl_cert_info      local_cert_info;
@@ -2259,7 +2269,7 @@ index 0000000..6864740
 +    PJ_UNUSED_ARG(src_addr_len);
 +
 +    /* Create new SSL socket instance */
-+    status = pj_ssl_sock_create(ssock_parent->pool, &ssock_parent->param,
++    status = pj_ssl_sock_create(ssock_parent->pool, &ssock_parent->newsock_param,
 +                                &ssock);
 +    if (status != PJ_SUCCESS)
 +        goto on_return;
@@ -3095,20 +3105,40 @@ index 0000000..6864740
 +    return PJ_ENOTSUP;
 +}
 +
-+
 +/**
 + * Starts asynchronous socket accept() operations on this secure socket.
 + */
 +PJ_DEF(pj_status_t) pj_ssl_sock_start_accept (pj_ssl_sock_t *ssock,
++                          pj_pool_t *pool,
++                          const pj_sockaddr_t *localaddr,
++                          int addr_len)
++{
++    return pj_ssl_sock_start_accept2(ssock, pool, localaddr, addr_len,
++                         &ssock->param);
++}
++
++/**
++ * Starts asynchronous socket accept() operations on this secure socket.
++ */
++PJ_DEF(pj_status_t) pj_ssl_sock_start_accept2 (pj_ssl_sock_t *ssock,
 +                                              pj_pool_t *pool,
 +                                              const pj_sockaddr_t *localaddr,
-+                                              int addr_len)
++                                              int addr_len,
++                                              const pj_ssl_sock_param *newsock_param)
 +{
 +    pj_activesock_cb asock_cb;
 +    pj_activesock_cfg asock_cfg;
 +    pj_status_t status;
 +
 +    PJ_ASSERT_RETURN(ssock && pool && localaddr && addr_len, PJ_EINVAL);
++
++    /* Verify new socket parameters */
++    if (newsock_param->grp_lock != ssock->param.grp_lock ||
++        newsock_param->sock_af != ssock->param.sock_af ||
++        newsock_param->sock_type != ssock->param.sock_type)
++    {
++        return PJ_EINVAL;
++    }
 +
 +    /* Create socket */
 +    status = pj_sock_socket(ssock->param.sock_af, ssock->param.sock_type, 0,
@@ -3167,6 +3197,7 @@ index 0000000..6864740
 +        goto on_error;
 +
 +    /* Start accepting */
++    pj_ssl_sock_param_copy(pool, &ssock->newsock_param, newsock_param);
 +    status = pj_activesock_start_accept(ssock->asock, pool);
 +    if (status != PJ_SUCCESS)
 +        goto on_error;
@@ -3327,7 +3358,7 @@ index 0000000..6864740
 +
 +#endif /* PJ_HAS_SSL_SOCK */
 diff --git a/pjlib/src/pj/ssl_sock_ossl.c b/pjlib/src/pj/ssl_sock_ossl.c
-index 40a5a1e..9237898 100644
+index 1e276ab..1661ac9 100644
 --- a/pjlib/src/pj/ssl_sock_ossl.c
 +++ b/pjlib/src/pj/ssl_sock_ossl.c
 @@ -32,8 +32,10 @@
@@ -3344,7 +3375,7 @@ index 40a5a1e..9237898 100644
  #define THIS_FILE		"ssl_sock_ossl.c"
  
 diff --git a/pjmedia/src/pjmedia/transport_srtp.c b/pjmedia/src/pjmedia/transport_srtp.c
-index ac74cb8..026d3a8 100644
+index 27daff3..d7f044f 100644
 --- a/pjmedia/src/pjmedia/transport_srtp.c
 +++ b/pjmedia/src/pjmedia/transport_srtp.c
 @@ -30,7 +30,8 @@
@@ -3357,7 +3388,7 @@ index ac74cb8..026d3a8 100644
  #  include <openssl/rand.h>
  
  /* Suppress compile warning of OpenSSL deprecation (OpenSSL is deprecated
-@@ -1098,7 +1099,8 @@ static pj_status_t generate_crypto_attr_value(pj_pool_t *pool,
+@@ -1113,7 +1114,8 @@ static pj_status_t generate_crypto_attr_value(pj_pool_t *pool,
  	    key_ok = PJ_TRUE;
  
  
