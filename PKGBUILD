@@ -13,12 +13,12 @@ source=("$pkgname::git+https://github.com/mahkoh/spotblock")
 md5sums=('SKIP')
 
 pkgver() {
-	cd "$pkgname"
+    cd "$pkgname"
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-	cd "$pkgname"
+    cd "$pkgname"
     mkdir build
     cd build
     cmake -DCMAKE_BUILD_TYPE=RELEASE -DCMAKE_INSTALL_PREFIX=/usr ..
@@ -26,6 +26,6 @@ build() {
 }
 
 package() {
-	cd "$pkgname/build"
+    cd "$pkgname/build"
     make DESTDIR="$pkgdir/" install
 }
