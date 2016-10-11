@@ -69,7 +69,7 @@ package() {
   install -D -m 755 unix/ttf2lff "${pkgdir}/usr/bin/ttf2lff"
 
   mkdir -p "${pkgdir}/usr/share/librecad"
-  cp -r unix/resources/{library,patterns,fonts,qm} "${pkgdir}/usr/share/librecad"
+  cp -r unix/resources/{library,patterns,fonts,qm,plugins} "${pkgdir}/usr/share/librecad"
 
   install -D -m 644 "${srcdir}/librecad.desktop" "${pkgdir}/usr/share/applications/librecad.desktop"
   install -D -m 644 librecad/res/main/librecad.png "${pkgdir}/usr/share/pixmaps/librecad.png"
