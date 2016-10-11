@@ -1,4 +1,5 @@
 # Maintainer: mickele <mimocciola____at____yahoo____dot____com>
+# Contributor: Damien Flament <damien.flament____at____gmx____dot____com>
 # Contributor: Ilmari Repo <ilmari____at____gmail____dot____com> (librecad-svn PKGBUILD)
 # Contributor: GazJ Gary James <garyjames82____at____gmail____ dot____com> (CADuntu PKGBUILD)
 
