@@ -1,11 +1,12 @@
 pkgbase = spotblock-git
 	pkgdesc = A spotify ad blocker
-	pkgver = r1.2628a12
+	pkgver = r13.9a46e40
 	pkgrel = 1
 	url = https://github.com/mahkoh/spotblock
 	arch = i686
 	arch = x86_64
 	license = GPL3
+	makedepends = cmake
 	depends = libsystemd
 	depends = libpulse
 	source = spotblock-git::git+https://github.com/mahkoh/spotblock
