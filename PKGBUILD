@@ -50,8 +50,10 @@ prepare() {
 build() {
   msg "Starting make..."
   cd "${srcdir}/${_gitname}"
-  export CPPFLAGS="-std=c++0x"
-  qmake-qt4 librecad.pro
+  qmake-qt5 -r librecad.pro \
+    QMAKE_CFLAGS="${CFLAGS}" \
+    QMAKE_CXXFLAGS="${CXXFLAGS}"
+
   make
 }
 
