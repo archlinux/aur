@@ -2,11 +2,11 @@
 # Contributor: Arto Puranen <purcher@gmail.com>
 
 pkgname=arno-iptables-firewall
-pkgver=2.0.1f
+pkgver=2.0.1g
 pkgrel=1
 pkgdesc="A secure stateful firewall for both single and multi-homed machine"
 arch=('any')
-url="http://rocky.eld.leidenuniv.nl/joomla/"
+url="https://github.com/arno-iptables-firewall/aif/"
 license=('GPL')
 depends=('iptables' 'iproute2')
 makedepends=('patch')
@@ -29,7 +29,7 @@ backup=(etc/${pkgname}/firewall.conf
         etc/${pkgname}/plugins/transparent-proxy.conf)
 source=(http://rocky.eld.leidenuniv.nl/$pkgname/${pkgname}_${pkgver}.tar.gz
         ${pkgname}.patch)
-sha256sums=('198848b8241b31f8498b43517af13879f55e00d17edfc6647ca48b43af2789a9'
+sha256sums=('0bafd85ddc235752250eaec0c7fdb21e530912483f6807a97f86158ed2d301f7'
             'fbac95bced8565b00f5ff7b403579b1aaf7d386deb61c0f4a9acf50408a8200d')
 
 package() {
