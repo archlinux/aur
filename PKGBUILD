@@ -4,9 +4,9 @@
 
 _pkgname=compton-conf
 pkgname=${_pkgname}-git
-pkgver=0.1.0.38.g438435c
-pkgrel=3
-pkgdesc='A graphical configuration tool for Compton X composite manager. Qt5 UI. Development version.'
+pkgver=0.2.0.1.g5c09fc1
+pkgrel=1
+pkgdesc='A graphical configuration tool for Compton X composite manager. Development version.'
 arch=('i686' 'x86_64')
 url='https://github.com/lxde/compton-conf'
 license=('LGPL2.1')

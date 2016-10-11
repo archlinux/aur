@@ -1,7 +1,7 @@
 pkgbase = compton-conf-git
-	pkgdesc = A graphical configuration tool for Compton X composite manager. Qt5 UI. Development version.
-	pkgver = 0.1.0.38.g438435c
-	pkgrel = 3
+	pkgdesc = A graphical configuration tool for Compton X composite manager. Development version.
+	pkgver = 0.2.0.1.g5c09fc1
+	pkgrel = 1
 	url = https://github.com/lxde/compton-conf
 	arch = i686
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = compton-conf-git
 	makedepends = liblxqt
 	depends = qt5-base
 	depends = libconfig
-	provides = compton-conf=0.1.0.38.g438435c
+	provides = compton-conf=0.2.0.1.g5c09fc1
 	conflicts = compton-conf
 	source = git+https://github.com/lxde/compton-conf.git
 	source = desktop_entry.patch
