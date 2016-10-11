@@ -5,7 +5,7 @@
 
 pkgname=bin32-pcsxr-git
 pkgver=r1662.fc378b6
-pkgrel=1
+pkgrel=2
 pkgdesc="A Sony PlayStation emulator based on the PCSX-df Project (32-bit)"
 arch=('x86_64')
 url="http://pcsxr.codeplex.com/"
@@ -15,6 +15,7 @@ makedepends=('gcc-multilib' 'intltool' 'sdl2' 'lib32-mesa' 'git')
 optdepends=('lib32-libpulse: Pulseaudio support')
 provides=("pcsxr")
 conflicts=("pcsxr" "pcsxr-git" 'pcsx-df')
+replaces=("bin32-pcsxr-svn")
 options=('!libtool')
 source=("git+https://git01.codeplex.com/pcsxr")
 sha256sums=('SKIP')
