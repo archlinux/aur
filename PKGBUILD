@@ -2,7 +2,7 @@
 
 pkgname=('python-heatclient'
          'python2-heatclient')
-pkgver='0.9.0'
+pkgver='1.5.0'
 pkgrel='1'
 pkgdesc='Python client library for Heat'
 arch=('any')
@@ -10,8 +10,8 @@ url='https://launchpad.net/python-heatclient'
 license=('Apache')
 makedepends=('python-setuptools'
              'python2-setuptools')
-source=("https://pypi.python.org/packages/source/${pkgname:0:1}/${pkgname}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('3a393de49239c3e6a82e2ce819684f262cb6f48ec70542d1d3dfb7aa690c7574')
+source=("https://github.com/openstack/python-heatclient/archive/${pkgver}.tar.gz")
+sha256sums=('c67c75547636552afd28a6788d5adb54de926663361fdf63126ea9b7db831178')
 
 package_python-heatclient()
 {
