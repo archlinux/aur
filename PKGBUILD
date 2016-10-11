@@ -1,7 +1,7 @@
 # Maintainer: lolilolicon <lolilolicon@gmail.com>
 
 _name=FFcast
-_ver=2.4.6
+_ver=2.4.7
 pkgname=ffcast
 epoch=1
 pkgver=${_ver//-/}
@@ -14,7 +14,7 @@ depends=('bash>=4.3' xorg-xdpyinfo xorg-xprop xorg-xwininfo xrectsel)
 optdepends=('ffmpeg: for png rec' 'imagemagick: for trim')
 makedepends=(autoconf automake perl)
 source=("https://github.com/lolilolicon/$_name/archive/$_ver.tar.gz")
-sha256sums=('c36ac54ef2a7b977a7981a91f7636eadc3ac864153abef9c0671a39ac3a09335')
+sha256sums=('f03d03141aaa6fb6786ecef786849287aac417a689b5e01b821bca691fc075c0')
 
 prepare() {
   cd "$_name-$_ver"
