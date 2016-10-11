@@ -17,7 +17,7 @@ _ver=rhel7-wmesa
 _url="http://visit.ilight.com/svn/${_pkgname}/trunk/releases/${pkgver}"
 source=("${_url}/${_pkgname}${_pkgver}.linux-x86_64-${_ver}.tar.gz"
         "${_url}/${_pkgname}-install${_pkgver}"
-        'visit-bin.sh'
+        'visit.sh'
         'visit-libs.patch')
 noextract=("${_pkgname}${_pkgver}.linux-x86_64-${_ver}.tar.gz")
 sha256sums=('5735ed3f6a269151a029b8904199a405aee14cf6b41d075f9ddc5982814db33c'
@@ -39,7 +39,7 @@ package() {
   patch "${pkgdir}/opt/visit/bin/frontendlauncher" < "${srcdir}/visit-libs.patch"
 
   # Install script to set $PATH
-  install -Dm755 visit-bin.sh "${pkgdir}/etc/profile.d/visit-bin.sh"
+  install -Dm755 visit.sh "${pkgdir}/etc/profile.d/visit.sh"
 
   # Fix permissions
   chown -R root:root "${pkgdir}/opt/${_pkgname}"
