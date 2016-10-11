@@ -33,27 +33,22 @@ pkgver() {
   git describe --tags | sed -e 's/-/_/g'
 }
 
-build() {
+prepare() {
   cd "${srcdir}"
   msg "Connecting to GIT server...."
 
-  if [ -d ${_gitname}/.git ] ; then
-    cd "${_gitname}"
-
-    # Change remote url to anongit
-    if [ -z $( git branch -v | grep anongit ) ] ; then
-        git remote set-url origin ${_gitroot}
-    fi
-    
-    git pull origin master
+  if [[ -d ${_gitname} ]] ; then
+    cd "${_gitname}" && git pull origin master
     msg "The local files are updated."
   else
     git clone ${_gitroot} ${_gitname}
   fi
 
   msg "GIT checkout done or server timeout"
-  msg "Starting make..."
+}
 
+build() {
+  msg "Starting make..."
   cd "${srcdir}/${_gitname}"
   export CPPFLAGS="-std=c++0x"
   qmake-qt4 librecad.pro
