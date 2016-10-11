@@ -6,6 +6,7 @@ pkgdesc='Modern communication, full privacy.'
 arch=('x86_64')
 url='https://wire.com/'
 license=('GPL3')
+conflicts=('wire-desktop')
 depends=('bash-completion' 'desktop-file-utils' 'gconf' 'git' 'glibc' 'gtk2' 'gvfs' 'hicolor-icon-theme'
          'libcap' 'libgcrypt' 'libgcrypt15' 'libnotify' 'libsystemd' 'libudev0' 'libxtst' 'nss' 'xdg-utils')
 source_x86_64=("https://wire-app.wire.com/linux/wire_${pkgver}_amd64.deb")
