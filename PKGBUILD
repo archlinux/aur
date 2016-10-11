@@ -2,13 +2,14 @@
 
 pkgname=kexi
 pkgver=3.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A visual database applications creator"
 arch=(i686 x86_64)
 url="http://www.kexi-project.org/"
 license=(GPL2)
-depends=(kdb kreport ktexteditor qt5-webkit)
-makedepends=(extra-cmake-modules python qt5-tools breeze-icons marble libmariadbclient postgresql)
+depends=(kdb kreport ktexteditor breeze-icons)
+makedepends=(extra-cmake-modules python qt5-tools marble libmariadbclient postgresql qt5-webkit)
+optdepends=('qt5-webkit: Web browser plugin')
 conflicts=(calligra-kexi)
 replaces=(calligra-kexi)
 groups=(calligra)
