@@ -8,7 +8,7 @@
 _attempt_fix=0
 
 pkgname=google-earth
-pkgver=7.1.7.2600
+pkgver=7.1.7.2606
 pkgrel=1
 pkgdesc="A 3D interface to view satellite images of Earth and other objects"
 arch=('i686' 'x86_64')
