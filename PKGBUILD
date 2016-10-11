@@ -19,13 +19,13 @@ backup=()
 options=()
 install=
 changelog=
-source=('LibreCAD::git://github.com/LibreCAD/LibreCAD.git' 'librecad.desktop')
+_gitname='LibreCAD'
+_gitroot="https://github.com/${_gitname}/${_gitname}.git"
+source=("${_gitname}::git://github.com/${_gitname}/${_gitname}.git" 'librecad.desktop')
 noextract=()
 md5sums=('SKIP' '19dcb83a3fcdb3752439095b118ac6d3')
 validpgpkeys=()
 
-_gitroot="https://github.com/LibreCAD/LibreCAD.git"
-_gitname="LibreCAD"
 
 pkgver() {
   cd "${srcdir}/${_gitname}"
