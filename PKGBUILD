@@ -8,7 +8,7 @@
 
 pkgname=monodevelop-git
 _pkgname=monodevelop
-pkgver=r46792
+pkgver=r46834
 _branch="master"
 pkgrel=1
 pkgdesc="An IDE primarily designed for C# and other .NET languages - built from git sources. WARNING: building this package will require you to download >500 MB worth of data."
