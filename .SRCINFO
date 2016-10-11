@@ -1,6 +1,6 @@
 pkgbase = osquery-git
 	pkgdesc = SQL powered operating system instrumentation, monitoring, and analytics.
-	pkgver = 2.0.0.r6.gd1240f0
+	pkgver = 2.0.0.r8.gfa0e15a
 	pkgrel = 1
 	url = https://osquery.io
 	arch = any
