@@ -4,8 +4,8 @@
 
 pkgname=wxlua-svn
 _pkgname=wxlua
-pkgver=251
-pkgrel=2
+pkgver=252
+pkgrel=1
 pkgdesc="A set of bindings to the wxWidgets library for the Lua programming language - svn version"
 arch=('i686' 'x86_64')
 url="http://wxlua.sourceforge.net"
@@ -14,9 +14,10 @@ depends=('desktop-file-utils' 'wxgtk' 'webkitgtk2' 'lua52')
 makedepends=('subversion' 'cmake')
 provides=('wxlua' 'wxstedit')
 conflicts=('wxlua' 'wxstedit')
-install="wxlua.install"
-source=("wxlua::svn+http://svn.code.sf.net/p/wxlua/svn/trunk")
-md5sums=('SKIP')
+source=("wxlua::svn+http://svn.code.sf.net/p/wxlua/svn/trunk"
+        "wxlstate.patch")
+md5sums=('SKIP'
+         'd4bdd1ccbb3a33abf4e7e33776811038')
 
 pkgver() {
   cd "$srcdir/$_pkgname"
@@ -24,14 +25,18 @@ pkgver() {
   printf "%s" "${ver//[[:alpha:]]}"
 }
 
-build() {
+prepare() {
   cd "$srcdir/$_pkgname/wxLua/"
 
   # wxstedit doc folder fix
   sed -i 's|doc/|share/&|' modules/wxstedit/CMakeLists.txt
 
   # fix segfault
-  svn patch ../../../wxlstate.patch
+  svn patch "$srcdir/wxlstate.patch"
+}
+
+build() {
+  cd "$srcdir/$_pkgname/wxLua/"
 
   cd build
   cmake .. -DCMAKE_INSTALL_PREFIX=/usr \
@@ -63,7 +68,7 @@ package() {
 
   # license
   install -Dm 644 ../docs/licence.txt \
-    "$pkgdir/usr/share/licenses/wxlua/LICENSE"
+    "$pkgdir/usr/share/licenses/${pkgname}/LICENSE"
 }
 
 # vim:set ts=2 sw=2 et:
