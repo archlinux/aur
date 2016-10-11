@@ -1,7 +1,7 @@
 pkgbase = certcheck-git
 	pkgdesc = CLI tool to check x.509 cert validity on a set of TLS/SSL servers
 	pkgver = 1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/2ion/certcheck
 	arch = any
 	license = GPL
@@ -12,7 +12,7 @@ pkgbase = certcheck-git
 	depends = python-terminaltables
 	provides = certcheck
 	conflicts = certcheck
-	source = FOLDER::git+https://github.com/2ion/certcheck.git#branch=master
+	source = certcheck::git+https://github.com/2ion/certcheck.git#branch=master
 	md5sums = SKIP
 
 pkgname = certcheck-git

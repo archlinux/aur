@@ -1,6 +1,6 @@
 pkgname=certcheck-git
 pkgver=1
-pkgrel=1
+pkgrel=2
 pkgdesc="CLI tool to check x.509 cert validity on a set of TLS/SSL servers"
 arch=(any)
 url="https://github.com/2ion/certcheck"
@@ -9,7 +9,7 @@ depends=('python>=3.2' python-pyopenssl python-termcolor python-terminaltables)
 makedepends=(git)
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-source=('FOLDER::git+https://github.com/2ion/certcheck.git#branch=master')
+source=('certcheck::git+https://github.com/2ion/certcheck.git#branch=master')
 md5sums=('SKIP')
 
 pkgver() {
