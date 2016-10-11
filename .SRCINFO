@@ -1,0 +1,18 @@
+pkgbase = asciidocfx
+	pkgdesc = Asciidoc Editor and Toolchain written with JavaFX 8
+	pkgver = 1.5.0
+	pkgrel = 1
+	url = http://asciidocfx.com/
+	arch = any
+	license = Apache
+	makedepends = maven>=3.3.9
+	makedepends = java-environment-openjdk=8
+	depends = java-environment=8
+	depends = java-openjfx>=8.u76
+	source = https://github.com/asciidocfx/AsciidocFX/archive/v1.5.0.tar.gz
+	source = asciidocfx
+	sha256sums = 8e31e7f8ca9fb40045273557089dd3580097bc99fea8904b6d471d12865f8c0e
+	sha256sums = a7b4491ff8d379519c5085b9779c613695c2be941f3473422d69cefbdb9d3d95
+
+pkgname = asciidocfx
+

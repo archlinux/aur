@@ -1,0 +1,14 @@
+#!/bin/sh
+BASEDIR=/usr/share/java/asciidocfx
+for name in $BASEDIR/lib/*.jar; do
+  CP=$CP:$name
+done
+
+exec /usr/bin/java -cp $CP -Duser.language=en -Duser.country=US -XX:+UseG1GC \
+  -Dapp.name="asciidocfx" \
+  -Dapp.pid="$$" \
+  -Dapp.repo="$BASEDIR/lib" \
+  -Dapp.home="$BASEDIR" \
+  -Dbasedir="$BASEDIR" \
+  com.kodcu.boot.AppStarter \
+  "$@"
