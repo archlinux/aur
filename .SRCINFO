@@ -1,6 +1,6 @@
 pkgbase = linux-bcache-git
 	pkgver = 4.7.0
-	pkgrel = 1.1
+	pkgrel = 1.2
 	url = https://github.com/alyptik/linux-bcache-git
 	arch = i686
 	arch = x86_64
@@ -13,13 +13,14 @@ pkgbase = linux-bcache-git
 	makedepends = elfutils
 	makedepends = git
 	options = !strip
-	source = /linux-4.7.0::https://evilpiepirate.org/git/linux-bcache.git#branch=bcache-dev
+	source = /linux-4.7.0::git+https://evilpiepirate.org/git/linux-bcache.git#branch=bcache-dev
 	source = change-default-console-loglevel.patch
 	source = linux.preset
 	source = config
 	source = config.x86_64
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 8D633C480C2247466051B7ADE314F17E08EF006D
+	sha256sums = SKIP
 	sha256sums = 1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99
 	sha256sums = 66f38f7c5da412714230d8736ca58d351117968630b093a50f75884161c47652
 	sha256sums = 0e22f8e6086b91b3b5f7d59375879431332f2f3d187d6124d82f6837b4ac3894

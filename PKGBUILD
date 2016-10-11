@@ -4,19 +4,20 @@
 pkgbase=linux-bcache-git
 _srcname=linux-4.7.0
 pkgver=4.7.0
-pkgrel=1.1
+pkgrel=1.2
 arch=('i686' 'x86_64')
 url="https://github.com/alyptik/linux-bcache-git"
 license=('GPL3')
 makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc' 'elfutils' 'git')
 options=('!strip')
-source=("${srcdir}/${_srcname}::https://evilpiepirate.org/git/linux-bcache.git#branch=bcache-dev"
+source=("${srcdir}/${_srcname}::git+https://evilpiepirate.org/git/linux-bcache.git#branch=bcache-dev"
         'change-default-console-loglevel.patch'
         # standard config files for mkinitcpio ramdisk
         'linux.preset'
         # the main kernel config files
         'config' 'config.x86_64')
-sha256sums=('1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
+sha256sums=('SKIP'
+            '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
             '66f38f7c5da412714230d8736ca58d351117968630b093a50f75884161c47652'
             '0e22f8e6086b91b3b5f7d59375879431332f2f3d187d6124d82f6837b4ac3894'
             '652ca340be5ea4fb36c0f69c457448ffcce96be0e32b48f9bf7ea5a77b3160c3')
