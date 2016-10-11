@@ -7,8 +7,10 @@ pkgrel=1
 install=.INSTALL
 pkgdesc="Terminal-based mathematical function plotter"
 arch=('i686' 'x86_64')
-url="http://qriollo.github.io"
+depends=('ncurses')
+url="https://github.com/gciruelos/termplot"
 makedepends=('git' 'gcc')
+makedepend
 source=('termplot::git+https://github.com/gciruelos/termplot.git')
 md5sums=('SKIP')
 
