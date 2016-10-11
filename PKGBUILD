@@ -3,7 +3,7 @@
 pkgname=termplot
 binname=termplot
 pkgver=0.2
-pkgrel=1
+pkgrel=2
 install=.INSTALL
 pkgdesc="Terminal-based mathematical function plotter"
 arch=('i686' 'x86_64')

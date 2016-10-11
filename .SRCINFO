@@ -1,7 +1,7 @@
 pkgbase = termplot
 	pkgdesc = Terminal-based mathematical function plotter
 	pkgver = 0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/gciruelos/termplot
 	install = .INSTALL
 	arch = i686
