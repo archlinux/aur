@@ -1,0 +1,15 @@
+post_install()
+{
+    echo
+    echo "Run \`systemctl enable btrfs-sxbackup@subvolume.timer' for daily backups."
+    echo
+    echo "For example, for a root source-subvolume:"
+    echo
+    echo "    btrfs-sxbackup init / destination-subvolume"
+    echo "    systemctl enable btrfs-sxbackup@-.timer"
+}
+
+post_upgrade()
+{
+    post_install "$1"
+}

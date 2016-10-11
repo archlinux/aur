@@ -3,7 +3,7 @@
 
 pkgname=btrfs-sxbackup
 pkgver=0.6.10
-pkgrel=2
+pkgrel=3
 pkgdesc="Incremental btrfs snapshot backups with push/pull support via SSH"
 arch=('any')
 url="https://github.com/masc3d/btrfs-sxbackup"
@@ -19,6 +19,8 @@ optdepends=('openssh: for remote push/pull'
             's-nail: email notifications')
 provides=('btrfs-sxbackup')
 conflicts=('python-btrfs-sxbackup')
+
+install=${pkgname}.install
 
 source=(https://github.com/masc3d/btrfs-sxbackup/archive/${pkgver}.tar.gz
         ${pkgname}@.service
