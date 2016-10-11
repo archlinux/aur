@@ -2,7 +2,7 @@
 # Contributor: Harley Laue <losinggeneration@gmail.com>
 pkgname=zerobrane-studio
 pkgver=1.40
-pkgrel=1
+pkgrel=2
 pkgdesc="A lightweight Lua-based IDE for Lua"
 arch=(any)
 url="http://studio.zerobrane.com/"
@@ -12,7 +12,6 @@ makedepends=('cmake')
 provides=('zerobrane-studio')
 conflicts=('zerobrane-studio-git')
 optdepends=('love: to debug love programs')
-install=zerobrane-studio.install
 _github_user="pkulchenko"
 _github_project="ZeroBraneStudio"
 _github_rev="5a2af99"
@@ -23,12 +22,15 @@ md5sums=('e0137f3b2c96ef6e9832beb3142fc73e'
          '3bb356b8549b60352e8ab36b9a6d9a92'
          '73636b0c87d0412e316e7ad58151e70d')
 
-build() {
+prepare() {
   cd "$srcdir/$_github_user-$_github_project-$_github_rev"
 
   patch -p1 < "$srcdir/zbstudio.patch"
+}
 
-  cd build
+build() {
+  cd "$srcdir/$_github_user-$_github_project-$_github_rev/build"
+
   cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=RelWithDebInfo \
         -DLUA_EXECUTABLE=/usr/bin/lua5.2
 
