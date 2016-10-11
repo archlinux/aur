@@ -1,8 +1,8 @@
 # Maintainer: Thomas Gläßle <t_glaessleATgmxDOTnet>
 
 pkgname=madx-dev
-pkgver=5.02.10
-pkgrel=3
+pkgver=5.02.11
+pkgrel=1
 pkgdesc="Accelerator Optics simulation code, latest development release"
 url="http://cern.ch/mad"
 license=("custom")
@@ -14,17 +14,14 @@ arch=('x86_64')
 
 
 tarball=madx-src.tgz
-sources=madx-${pkgver}
+extract=madx-${pkgver}
 
-source=("http://madx.web.cern.ch/madx/releases/${pkgver}/${tarball}"
-        setupGNU.cmake.patch)
-md5sums=('317ebc91175e851e35ffb9b79ef81edf'
-         'b0d47db22fb4b24ff5b30d58f3d35b6f')
+source=("http://madx.web.cern.ch/madx/releases/${pkgver}/${tarball}")
+md5sums=('5b5b71a7a296978db1ea71f4399a9ee5')
 
 prepare() {
-    cd ${srcdir}/${sources}
+    cd ${srcdir}/${extract}
     find . -name '._*' -print0 | xargs -0 -r rm
-    patch -p0 <../setupGNU.cmake.patch
 
     mkdir -p ${srcdir}/build
     cd ${srcdir}/build
@@ -39,7 +36,7 @@ prepare() {
         -DBINARY_POSTFIX=_dev \
         -DCMAKE_BUILD_TYPE=RelWithDebInfo \
         -DCMAKE_INSTALL_RPATH='$ORIGIN' \
-        ${srcdir}/${sources}
+        ${srcdir}/${extract}
 }
 
 build() {
@@ -58,6 +55,6 @@ package() {
     # resolve conflict with 'ndiff' from package 'nmap':
     mv ${pkgdir}/usr/bin/n{,um}diff
 
-    cd ${srcdir}/${sources}
+    cd ${srcdir}/${extract}
     install -D -m644 License.txt ${pkgdir}/usr/share/licenses/${pkgname}/license.txt
 }
