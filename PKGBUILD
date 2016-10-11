@@ -18,10 +18,10 @@ optdepends=('rdiff-backup: rdiff backups'
 source=('git+https://0xacab.org/riseuplabs/backupninja.git')
 md5sums=('SKIP')
 backup=('etc/backupninja.conf')
-pkgver() {
-    cd $_pkgname
-    git describe --long | sed 's/^backupninja-//;s/\([^-]*-g\)/r\1/;s/-/./g'
-}
+# pkgver() {
+#     cd $_pkgname
+#     git describe --long | sed 's/^backupninja-//;s/\([^-]*-g\)/r\1/;s/-/./g'
+# }
 
 build() {
     cd "$srcdir/$_pkgname"
