@@ -2,7 +2,7 @@
 
 pkgbase=decred
 pkgname=('dcrd' 'dcrticketbuyer' 'dcrwallet')
-pkgver=0.4.0
+pkgver=0.5.1
 pkgrel=1
 arch=('i686' 'x86_64')
 makedepends=('git' 'glide' 'go')
@@ -11,11 +11,11 @@ url="https://decred.org"
 license=('ISC')
 options=('!strip' '!emptydirs')
 source=(dcrd-$pkgver.tar.gz::https://codeload.github.com/decred/dcrd/tar.gz/v$pkgver
-        dcrticketbuyer-$pkgver::git+https://github.com/decred/dcrticketbuyer#commit=736f3fbd3c26ada655f37d6d42b307798d345186
+        dcrticketbuyer-$pkgver::https://codeload.github.com/decred/dcrticketbuyer/tar.gz/v$pkgver
         dcrwallet-$pkgver.tar.gz::https://codeload.github.com/decred/dcrwallet/tar.gz/v$pkgver)
-sha256sums=('648791a98d37f75f395920c8b42fb813bbc92db7f1b9e9acdf409dea6c091b55'
-            'SKIP'
-            '13be89e0800d404ca492b72fcfe1ad58b758a538a758b50ad77c09815cd509cc')
+sha256sums=('8e8bb391467ba8374158ea7398b92d70c3da3bb612d3be78f3bd23054c719c01'
+            '4199bac454c01d4e2b48199cbcf11fca71c7f982b3a3ef63536ffac096a1dd20'
+            '5f854a9e49e6fc2a02e55135a6cb15b19b13326980e0bd182a1ba5bd5eacf9c7')
 
 prepare() {
   export GOPATH="$srcdir"
