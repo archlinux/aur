@@ -1,6 +1,6 @@
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=pdfgrep-git
-pkgver=1.4.1.r57.gbbf8f05
+pkgver=1.4.1.r84.gcfbd65c
 pkgrel=1
 epoch=
 pkgdesc="A commandline utility to search text in PDF files."
@@ -9,12 +9,12 @@ url="https://gitlab.com/pdfgrep/pdfgrep/commits/master"
 url="https://pdfgrep.org/"
 license=('GPL')
 groups=()
-depends=('poppler')
-makedepends=('git')
+depends=('poppler' 'libgcrypt')
+makedepends=('git' 'asciidoc')
 optdepends=()
 checkdepends=()
 provides=()
-conflicts=()
+conflicts=('pdfgrep')
 replaces=()
 backup=()
 options=()
