@@ -65,7 +65,7 @@ makedepends=('kmod' 'inetutils' 'bc' 'libelf')
 options=('!strip')
 _ckpatchversion=5
 _ckpatchname="patch-4.7-ck${_ckpatchversion}"
-_muqssversion=108
+_muqssversion=110
 _muqsspatch="4.7-sched-MuQSS_$_muqssversion"
 _gcc_patch='enable_additional_cpu_optimizations_for_gcc_v4.9+_kernel_v3.15+.patch'
 _bfqpath='http://algo.ing.unimo.it/people/paolo/disk_sched/patches/4.7.0-v8r3'
@@ -94,7 +94,7 @@ sha256sums=('5190c3d1209aeda04168145bf50569dc0984f80467159b1dc50ad731e3285f10'
             'SKIP'
             'b1019b88cbced3eced1fe0a908eaac061282f39c559eaa3ea0fd3ee1b089e17e'
             'SKIP'
-            '132b8b23bc4cdadec63291d65665b73e2d8c0e61e1d3523788da20e0b176d197'
+            '5c00e969024c41addc0bf344948bbe9346d55ff880da4ccf0cd25d0f29b24f77'
             '43af3622958b540e9812f5a165072537422c79b49581bba2ba058beca589e72a'
             '2bf031f11b4ea0a9a11876a28836b777fa055be38908fc5101f622bdeb27e72d'
             '2b3ebf5446aa3cac279842ca00bc1f2d6b7ff1766915282c201d763dbf6ca07e'
