@@ -1,0 +1,18 @@
+[Desktop Entry]
+Comment=nteract: Interactive literate coding notebook
+Exec=/opt/nteract-linux-x64/nteract
+GenericName[en_US]=nteract
+GenericName=nteract
+Icon=/opt/nteract-linux-x64/resources/app/static/icon.png
+MimeType=
+Name[en_US]=nteract
+Name=nteract
+Path=/opt/nteract-linux-x64/
+StartupNotify=true
+Terminal=false
+Type=Application
+X-DBUS-ServiceName=
+X-DBUS-StartupType=
+X-KDE-SubstituteUID=false
+X-KDE-Username=
+Categories=Science;Development;
