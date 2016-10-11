@@ -11,7 +11,7 @@ arch=('any')
 
 depends=("insync" "thunar" "thunarx-python")
 source=("${pkgname}-${pkgver}.deb::http://s.insynchq.com/builds/insync-thunar_1.3.12.36116-precise_all.deb")
-sha256sums=("9453be041f51e8966d290d7788f1b39b")
+sha256sums=("17df2a2a4f1431d97636a968742c48a0e8fcda401a251d29631c7234cc0d7a59")
 noextract=("${pkgname}-${pkgver}.deb")
 
 package() {
