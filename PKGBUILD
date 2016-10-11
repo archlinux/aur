@@ -3,13 +3,13 @@
 
 pkgname=screencloud
 pkgver=1.3.1
-pkgrel=4
+pkgrel=5
 pkgdesc="Easy to use screenshot sharing application."
 arch=('i686' 'x86_64')
 url="https://github.com/olav-st/screencloud"
 license=('GPL2')
 makedepends=('cmake' 'qt5-tools')
-depends=('quazip' 'pythonqt-qt5' 'qt5-x11extras' 'xdg-utils' 'hicolor-icon-theme')
+depends=('quazip' 'pythonqt' 'qt5-x11extras' 'xdg-utils' 'hicolor-icon-theme')
 optdepends=('python-crypto: required for SFTP support')
 options=('strip' 'docs' 'libtool' '!staticlibs' 'emptydirs' 'zipman' 'purge' '!optipng' '!upx' '!debug' '!emptydirs')
 install="${pkgname}".install
