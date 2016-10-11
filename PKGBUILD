@@ -1,4 +1,4 @@
-# $Id: PKGBUILD 273528 2016-08-09 06:20:41Z alucryd $
+# $Id: PKGBUILD 277554 2016-10-02 14:20:03Z alucryd $
 # Maintainer: Jan Koppe <post@jankoppe.de>
 #
 # This package is a modified version of extra/ffmpeg with --enable-decklink
@@ -9,15 +9,15 @@
 # Contributor: Paul Mattal <paul@archlinux.org>
 
 pkgname=ffmpeg-decklink
-pkgver=3.1.2
-pkgrel=1
+pkgver=3.1.4
+pkgrel=2
 epoch=1
 pkgdesc='Complete solution to record, convert and stream audio and video'
 arch=('i686' 'x86_64')
 url='http://ffmpeg.org/'
 license=('GPL3')
-depends=('alsa-lib' 'bzip2' 'decklink' 'fontconfig' 'fribidi' 'gmp' 'gnutls' 'gsm' 'lame'
-         'libass' 'libavc1394' 'libbluray' 'libiec61883' 'libmodplug'
+depends=('alsa-lib' 'bzip2' 'decklink' 'fontconfig' 'fribidi' 'gmp' 'gnutls' 'gsm' 'jack'
+         'lame' 'libass' 'libavc1394' 'libbluray' 'libiec61883' 'libmodplug'
          'libpulse' 'libsoxr' 'libssh' 'libtheora' 'libva' 'libvdpau' 'libwebp'
          'netcdf' 'opencore-amr' 'openjpeg' 'opus' 'schroedinger' 'sdl' 'speex'
          'v4l-utils' 'xvidcore' 'zlib'
@@ -29,10 +29,8 @@ provides=('libavcodec.so' 'libavdevice.so' 'libavfilter.so' 'libavformat.so'
           'libavresample.so' 'libavutil.so' 'libpostproc.so' 'libswresample.so'
           'libswscale.so')
 conflicts=('ffmpeg')
-source=(http://ffmpeg.org/releases/ffmpeg-${pkgver}.tar.bz2{,.asc})
-validpgpkeys=('FCF986EA15E6E293A5644F10B4322F04D67658D8')
-sha256sums=('62eb8d810b93c1ffc23739c0824a91eabfe5e7be81fab34ce740736a110b70f7'
-            'SKIP')
+source=(http://ffmpeg.org/releases/ffmpeg-${pkgver}.tar.bz2)
+sha256sums=('7c99df75a4dc12d22c0f1ed11d0acf98cac1f8b5fe7a7434344b167f810bcbfa')
 
 build() {
   cd ffmpeg-${pkgver}
