@@ -2,7 +2,7 @@
 
 _pkgname=libui
 pkgname=${_pkgname}-git
-pkgver=r1914.84b392d
+pkgver=alpha3.1.r169.g86c4485
 pkgrel=1
 pkgdesc='A portable GUI library for C'
 arch=('i686' 'x86_64')
@@ -16,17 +16,24 @@ source=("$pkgname::git://github.com/andlabs/libui.git")
 md5sums=('SKIP')
 
 pkgver() {
-  cd $pkgname
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  cd "$pkgname"
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
   cd $pkgname
+  mkdir -p build
+  cd build
+  cmake ..
   make
 }
 
 package() {
   cd $pkgname
   mkdir -p $pkgdir/usr/{lib,include}
-  make DESTDIR="$pkgdir/" install
+  install build/out/libui.so ${pkgdir}/usr/lib/
+  install build/out/libui.so.0 ${pkgdir}/usr/lib/
+  install ui.h ${pkgdir}/usr/include/
+  install ui_unix.h ${pkgdir}/usr/include/
+  install uitable.h ${pkgdir}/usr/include/
 }
