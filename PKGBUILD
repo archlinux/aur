@@ -1,4 +1,6 @@
-# Maintainer: asator <aaron@duckpond.com>
+# Maintainer: Dimitrios Vogiatzis <me@dimtree.net>
+# Contributor: asator <aaron@duckpond.com>
+
 _pkgname="python-glob2"
 pkgname="${_pkgname}-git"
 pkgver=20151103
