@@ -4,7 +4,7 @@
 
 pkgbase=linux-lts-userns
 _srcname=linux-4.4
-pkgver=4.4.23
+pkgver=4.4.24
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
@@ -24,7 +24,7 @@ source=(https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.{xz,sign}
 # https://www.kernel.org/pub/linux/kernel/v4.x/sha256sums.asc
 sha256sums=('401d7c8fef594999a460d10c72c5a94e9c2e1022f16795ec51746b0d165418b2'
             'SKIP'
-            '0592b15bb78879ffa72933c71b8b11787a7b4560ea33b8ba8b421df034ee74c8'
+            '10a083229253e7f781496a077913d8666c156c6900f4f735542fb15030339eef'
             'SKIP'
             'b11702727b1503e5a613946790978481d34d8ecc6870337fadd3ce1ef084a8e2'
             '68c7296ff2f5f55d69e83aa4d20f925df740b1eb1e6bdb0f13e8a170360ed09f'
