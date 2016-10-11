@@ -2,7 +2,7 @@
 
 pkgname=mactelnet
 pkgver=0.4.4
-pkgrel=1
+pkgrel=2
 pkgdesc='A linux console tool for connecting to MikroTik RouterOS devices via their ethernet address'
 arch=('i686' 'x86_64')
 license=('GPL')
@@ -17,6 +17,7 @@ build() {
 	./autogen.sh
 	./configure \
 		--prefix=/usr \
+		--sbindir=/usr/bin \
 		--sysconfdir=/etc
 
 	make
