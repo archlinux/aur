@@ -1,7 +1,7 @@
 # Maintainer: nightsense <nightsense at protonmail dot ch>
 
 pkgname=pacping
-pkgver=1.1
+pkgver=2.0
 pkgrel=1
 pkgdesc="Compare response times of Arch Linux mirrors"
 arch=('any')
