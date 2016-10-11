@@ -2,8 +2,8 @@
 
 pkgname=cura-engine-noarcus-git
 pkgver=3b8ad5e
-pkgrel=3
-pkgdesc="A C++ console application for 3D printing GCode generation. It's called by Repetier Host and/or other applications. No libArcus or Protobuf needed for that version, and it could be only used as command-line tool."
+pkgrel=4
+pkgdesc="A C++ console application for 3D printing GCode generation. No libArcus or Protobuf needed for that version, and it could be only used as command-line tool."
 arch=(i686 x86_64 arm)
 url="https://github.com/Ultimaker/CuraEngine.git"
 license=(GPL)
@@ -39,11 +39,11 @@ pkgver() {
 
 build4git() {
     cd "${srcdir}/${pkgname}"
-    # add version
-    sed -i -e "s|add_definitions[ \t]*([ \t]*-DVERSION=.*||" CMakeLists.txt
-    echo "add_definitions( -DVERSION=\"git-$(pkgver)\" )" >> CMakeLists.txt
-    # patch default folder
-    sed -i -e "s|loadJSON[ \t]*([ \t]*\"fdmprinter.json|loadJSON(\"/usr/share/${pkgname}/fdmprinter.json|" src/main.cpp
+    # add version // doesn't work with actual version
+    #sed -i -e "s|add_definitions[ \t]*([ \t]*-DVERSION=.*||" CMakeLists.txt
+    #echo "add_definitions( -DVERSION=\"git-$(pkgver)\" )" >> CMakeLists.txt
+    # patch default folder // cancelled, doesn't work with actual version
+    #sed -i -e "s|loadJSON[ \t]*([ \t]*\"fdmprinter.json|loadJSON(\"/usr/share/${pkgname}/fdmprinter.json|" src/main.cpp
 
     mkdir -p build
     cd build
@@ -65,7 +65,8 @@ package4git() {
     mkdir -p ${pkgdir}/usr/bin/
     cp build/CuraEngine ${pkgdir}/usr/bin/
     mkdir -p ${pkgdir}/usr/share/${pkgname}/
-    cp "${srcdir}/cura-git/resources/definitions/fdmprinter.def.json" ${pkgdir}/usr/share/${pkgname}/
+    cp -r resources ${pkgdir}/usr/share/${pkgname}/
+    cp -r "${srcdir}/cura-git/resources/*" ${pkgdir}/usr/share/${pkgname}/resources
 }
 
 package4release() {
