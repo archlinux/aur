@@ -1,18 +1,18 @@
 # Maintainer: Bruno Nova <brunomb.nova@gmail.com>
 pkgname=nautilus-admin
-pkgver=0.2.2
+pkgver=0.2.3
 pkgrel=1
 pkgdesc="Extension for Nautilus to do administrative operations"
 arch=('any')
 url="https://github.com/brunonova/$pkgname"
 license=('GPL3')
-depends=('nautilus' 'python-nautilus' 'polkit' 'gconf')
+depends=('nautilus' 'python-nautilus' 'polkit')
 makedepends=('cmake>=2.6' 'gettext')
 optdepends=('gedit: to use the "Edit as Administrator" action'
             'gnome-terminal: to use the "Run as Administrator" action')
 install="$pkgname.install"
 source=("https://github.com/brunonova/$pkgname/releases/download/v$pkgver/${pkgname}_$pkgver.tar.xz")
-md5sums=('f5bc99533aa75f3d5ee3b7ca8a7cd9df')
+md5sums=('1897a0ea24b2eb17e711b98d3f82e48c')
 
 build() {
 	cd "$srcdir"
