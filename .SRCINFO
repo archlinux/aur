@@ -1,0 +1,31 @@
+pkgbase = wire-desktop-bin
+	pkgdesc = Modern communication, full privacy.
+	pkgver = 2.11.2661
+	pkgrel = 1
+	url = https://wire.com/
+	arch = x86_64
+	license = GPL3
+	depends = bash-completion
+	depends = desktop-file-utils
+	depends = gconf
+	depends = git
+	depends = glibc
+	depends = gtk2
+	depends = gvfs
+	depends = hicolor-icon-theme
+	depends = libcap
+	depends = libgcrypt
+	depends = libgcrypt15
+	depends = libnotify
+	depends = libsystemd
+	depends = libudev0
+	depends = libxtst
+	depends = nss
+	depends = xdg-utils
+	optdepends = libgnome-keyring
+	optdepends = lsb-release
+	source_x86_64 = https://wire-app.wire.com/linux/wire_2.11.2661_amd64.deb
+	sha256sums_x86_64 = 1ddccb710fb04a62c876c71df23aa36c64ce5d25525da53041ca587bb20e1a19
+
+pkgname = wire-desktop-bin
+
