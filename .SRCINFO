@@ -1,0 +1,14 @@
+pkgbase = nodejs-yarn
+	pkgdesc = Fast, reliable, and secure dependency management.
+	pkgver = 0.15.1
+	pkgrel = 1
+	url = http://yarnpkg.com
+	arch = any
+	license = BSD
+	depends = nodejs
+	noextract = yarnpkg-0.15.1.tgz
+	source = http://registry.npmjs.org/yarnpkg/-/yarnpkg-0.15.1.tgz
+	sha256sums = fc93a937956678ba1657adb9cd65208223cd49eff3e2060e670cfc29c0337002
+
+pkgname = nodejs-yarn
+
