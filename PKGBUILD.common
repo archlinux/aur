@@ -1,7 +1,7 @@
 # Maintainer: Michael Spradling <mike@mspradling.com>
 # Contributor: Daniel Albers <daniel@lbe.rs>
 
-pkgver=16.2.4rc1
+pkgver=16.2.4rc2
 _pkgver=16.2.4
 pkgrel=1
 arch=(i686 x86_64)
@@ -37,6 +37,7 @@ _configure_args="--prefix=/usr \
   --enable-dynamic-cats-backends \
   --enable-dynamic-storage-backends \
   --enable-acl \
+  --enable-ndmp \
   --enable-xattr \
   --enable-scsi-crypto \
   --enable-lmdb \

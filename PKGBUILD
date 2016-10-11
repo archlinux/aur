@@ -25,5 +25,5 @@ pkgname=("${pkgbase}-common"
 source=("http://download.bareos.org/bareos/release/16.2/Debian_8.0/bareos_${_pkgver}.orig.tar.gz"
         "PKGBUILD.common")
 
-sha256sums=('920196b9e07044a99c2a9146bc90ddec9c3820839b20a0b38d72c4a4aaaa0f7a'
-            '7c0ddad01de8194b5e5dfd3c7ad13439a65966452c74c7a528566e3398c9f9c4')
+sha256sums=('584aea278ab6548bef958e383036a13e4bfff6b0355d2cfd2e4e30268b63cb47'
+            '03a4d2325bc0e18886d6d77a17611d70647573aa8134113c968c168f4840a936')
