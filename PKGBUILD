@@ -1,7 +1,7 @@
 #Maintainer: M0Rf30
 
 pkgname=openbazaard
-pkgver=0.2.1
+pkgver=0.2.2
 pkgrel=1
 pkgdesc="Server daemon for communication between client and OpenBazaar network"
 arch=(any)
@@ -71,7 +71,7 @@ msg2 "Python2 bytecode generation"
   rm -rf $pkgdir/var/lib/${pkgname}/{.git*,.eslint*,.travis*}
 }
 
-md5sums=('cd20444eaf5b4068422f61db5856aea4'
+md5sums=('5ef8f34155d9e871297821b964e85cb5'
          'df247302f02ad1af79e009fa75ced4bc'
          '7949d40abcd8bdaee27ff670d5b6c1c7'
          '3dccb27e5df2324880fde3f1b0972a2c')
