@@ -2,24 +2,16 @@
 # Maintainer: Ainola
 
 pkgname=scudcloud
-pkgver=1.31
-pkgrel=2
+pkgver=1.33
+pkgrel=1
 pkgdesc="A Slack client for Linux"
 arch=('any')
 url="https://github.com/raelgc/scudcloud"
 license=('MIT')
 depends=('python' 'python-setuptools' 'python-dbus' 'python-pyqt4' 'hunspell-en')
 groups=('messaging')
-source=("https://github.com/raelgc/scudcloud/archive/v${pkgver}.tar.gz"
-        'fix-message-editing.patch')
-sha256sums=('3503390731ae18fad36fc6af26bfb81e2987e289b67649b881e19d7a211095d1'
-            '5c4c8d6846c51b7b1f2e0c3ad165aaf112975c8f9208b6d1b261b5613537cf68')
-
-prepare(){
-    # Fixes message editing until pushed officially
-    # See https://github.com/raelgc/scudcloud/issues/459
-    patch -d "${pkgname}-${pkgver}" -p1 < fix-message-editing.patch
-}
+source=("https://github.com/raelgc/scudcloud/archive/v${pkgver}.tar.gz")
+sha256sums=('474ee71040ae36899cc34a00c174612d286f47f8aaa1a4c66d69ece12d839c4f')
 
 package() {
     cd "${pkgname}-${pkgver}"
