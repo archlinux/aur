@@ -3,8 +3,8 @@
 # Contributor: Brenton Horne <brentonhorne77@gmail.com>
 
 pkgname=rodeo
-pkgver=2.4.3
-pkgrel=1
+pkgver=2.4.2
+pkgrel=2
 pkgdesc="A data science IDE for Python"
 url='https://www.yhat.com/products/rodeo'
 arch=('x86_64')
