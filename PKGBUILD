@@ -1,7 +1,7 @@
 # Maintainer: Crotok <crotok [at] mailbox [dot] org>
 
 pkgname=streamstudio-bin
-pkgver=2.9.9.5
+pkgver=2.9.9.6
 pkgrel=1
 pkgdesc="Provide a popcorntime clone for streaming movies directly from T411, Cpasbien, Songza, Twitch, Piratebay, Youtube and Dailymotion"
 arch=('x86_64' 'i686')
@@ -13,7 +13,7 @@ provides=('streamstudio')
 conflicts=('streamstudio')
 options=('!strip')
 install="streamstudio.install"
-sha256sums=('5461ef8772d97d7777b321fa022ebcc986f48800e448b7f22431d2fc55490ca3'
+sha256sums=('443db793bd052bbf2bd8c146b61144d75a12ff7ce600ddd838447ce7fd8d0fbe'
             'c6b4c4d002b1e16692ce861ef80b37946b047bf8243e0fcb450235d66ea79f90'
             '4dc8715a81bfd1297f99b3e5f41f9f50936bbf7779b9bc4ef9231261053b76ea')
 
