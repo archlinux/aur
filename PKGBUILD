@@ -2,21 +2,20 @@
 
 pkgname=boomaga
 name=Boomaga
-pkgver=0.7.1
+pkgver=0.8.0
 pkgrel=1
-pkgdesc="is a virtual printer for viewing a document before printing it out using the physical printer"
+pkgdesc="Is a virtual printer for viewing a document before printing it out using the physical printer"
 arch=('i686' 'x86_64')
-url="http://opendesktop.org/content/show.php/Boomaga?content=156779&PHPSESSID=6a26cbb183629b8e10911b98dc4a631a"
+url="https://www.linux-apps.com/p/1152844/"
 license=('LGPL')
-categories=()
 depends=('kdebase-runtime' 'ghostscript' 'snappy' 'poppler>=0.26.5')
 makedepends=('cmake' 'gcc')
 options=(!emptydirs)
-#source=("http://opendesktop.org/CONTENT/content-files/156779-${pkgname}-${pkgver}.tar.bz2")
-#source="https://github.com/Boomaga/${pkgname}/archive/v${pkgver}.tar.gz"
-source="${pkgname}-${pkgver}.tar.gz::https://github.com/Boomaga/${pkgname}/archive/v${pkgver}.tar.gz" 
 
-md5sums=('725715dcced52e976b743196cee4243c')
+source=(https://github.com/Boomaga/${pkgname}/archive/v${pkgver}.tar.gz)
+#source="${pkgname}-${pkgver}.tar.gz::https://github.com/Boomaga/${pkgname}/archive/v${pkgver}.tar.gz" 
+
+md5sums=('9055f2dbd3fa5eb058f6b33784140672')
 
 build() {
    cd $srcdir/$pkgname-$pkgver
