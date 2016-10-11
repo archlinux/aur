@@ -1,9 +1,9 @@
 # Maintainer: ValHue <vhuelamo at gmail dot com>
 # https://github.com/ValHue/AUR-PKGBUILDs
-
+#
 _pkgname="ojo"
 pkgname="${_pkgname}-bzr"
-pkgver=r125
+pkgver=r134
 pkgrel=1
 pkgdesc="A fast and good-looking image viewer"
 arch=('i686' 'x86_64')
@@ -14,9 +14,8 @@ makedepends=('bzr' 'desktop-file-utils')
 optdepends=()
 conflicts=()
 provides=('ojo')
-install="${pkgname}.install"
 source=("${_pkgname}::bzr+http://bazaar.launchpad.net/~peterlevi/ojo/master/")
-md5sums=('SKIP')
+sha256sums=('SKIP')
 
 pkgver() {
     cd "${_pkgname}"
@@ -33,3 +32,5 @@ package() {
     python2 setup.py install --root="${pkgdir}"
     rm -rf "${pkgdir}/usr/share/doc"
 }
+
+# vim:set ts=4 sw=2 ft=sh et:
