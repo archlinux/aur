@@ -35,8 +35,8 @@ md5sums=('e84f5d51ea3545c131d1794f89f6464a'
          'SKIP'
          'SKIP'
          'SKIP')
-md5sums_i686=('cc02daa74d1b81daf44326a25460a88b')
-md5sums_x86_64=('e6356f9bb99d9019ee0a156f9331beb8')
+md5sums_i686=('61c0b9466e2c0805c764aa8865e7866f')
+md5sums_x86_64=('0026cac93221ebf8282299f29aeb96d8')
 
 _instdir=/opt/google/earth/free/
 

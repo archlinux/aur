@@ -34,9 +34,9 @@ pkgbase = google-earth
 	md5sums = SKIP
 	md5sums = SKIP
 	source_i686 = google-earth-stable_7.1.7.2606_i386.deb::https://dl.google.com/earth/client/current/google-earth-stable_current_i386.deb
-	md5sums_i686 = cc02daa74d1b81daf44326a25460a88b
+	md5sums_i686 = 61c0b9466e2c0805c764aa8865e7866f
 	source_x86_64 = google-earth-stable_7.1.7.2606_amd64.deb::https://dl.google.com/earth/client/current/google-earth-stable_current_amd64.deb
-	md5sums_x86_64 = e6356f9bb99d9019ee0a156f9331beb8
+	md5sums_x86_64 = 0026cac93221ebf8282299f29aeb96d8
 
 pkgname = google-earth
 
