@@ -10,11 +10,12 @@ license=('GPL2')
 depends=('perl')
 changelog=
 install="${pkgname}.install"
-source=( http://userpages.uni-koblenz.de/~krienke/ftp/noarch/${pkgname}/${pkgname}.pl )
+source=("http://userpages.uni-koblenz.de/~krienke/ftp/noarch/${pkgname}/${pkgname}-${pkgver}.tar.gz")
 noextract=(${pkgname}.pl)
-sha256sums=('378a6305edb9397978e60b7908a85dd8c2546f2808cb845552d5e4a8ba9baab3')
+sha256sums=('bb4fab8d4bedee1250762940b9f5d20fc7ac29fb2b5e9767c6af0a0955aa6bbe')
 
 package() {
+  cd "${srcdir}/${pkgname}"
   install -o root -g root -m 755 -D ${pkgname}.pl "$pkgdir/usr/bin/${pkgname}.pl" 
 }
 
