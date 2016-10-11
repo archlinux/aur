@@ -2,14 +2,12 @@
 
 pkgname=intel-xdk
 pkgver=3619
-pkgrel=1
-_rpmver=2.0-0
+pkgrel=2
 pkgdesc='Cross-platform mobile and IoT development environment'
 arch=('i686' 'x86_64')
 url='https://software.intel.com/en-us/intel-xdk'
 license=('custom')
 depends=('libudev0' 'libnotify' 'gconf')
-makedepends=('rpmextract')
 
 source=('intel-xdk' 'intel-xdk.desktop')
 md5sums=('f7438a93f7691901ac17ea39b3fbb6a8' '34d9c2b87221acf10812ab1150357dc9')
@@ -28,12 +26,11 @@ _base="xdk_web_linux${_arch:-64}"
 source+=("https://appcenter.html5tools-software.intel.com/api/v3.0/redirect/updates/xdk/${_base}_master_${pkgver}.tgz")
 
 package() {
-  cd "${srcdir}/${_base}/rpm"
-  rpmextract.sh "${pkgname}-${pkgver}-${_rpmver}.${_carch}.rpm"
+  mkdir -p "${pkgdir}/opt/intel/XDK" "${pkgdir}/usr/bin" "${pkgdir}/usr/share/applications" "${pkgdir}/usr/share/licenses/${pkgname}"
 
-  mkdir -p "${pkgdir}/opt/intel" "${pkgdir}/usr/bin" "${pkgdir}/usr/share/applications" "${pkgdir}/usr/share/licenses/${pkgname}"
+  cd "${srcdir}/${_base}_${pkgver}/rpm"
+  tar xf "${pkgname}-${pkgver}.0.0.tgz" -C "${pkgdir}/opt/intel/XDK"
 
-  cp -r opt/intel/XDK "${pkgdir}/opt/intel/"
   rm -f "${pkgdir}/opt/intel/XDK/libudev.so.0"
   install -m755 "${srcdir}/intel-xdk" "${pkgdir}/usr/bin/"
   install -m644 "${srcdir}/intel-xdk.desktop" "${pkgdir}/usr/share/applications/"
