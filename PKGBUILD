@@ -6,7 +6,7 @@
 
 _pkgbase=vlc
 pkgname=vlc-nox
-pkgver=2.2.3
+pkgver=2.2.4
 pkgrel=1
 pkgdesc="A multi-platform MPEG, VCD/DVD, and DivX player (without X support)"
 arch=('i686' 'x86_64')
@@ -57,7 +57,7 @@ options=('!emptydirs')
 install=${_pkgbase}.install
 source=("http://download.videolan.org/${_pkgbase}/${pkgver}/${_pkgbase}-${pkgver}.tar.xz"
         "lua53_compat.patch")
-md5sums=('ecbc65be549e5cc83e4cbe0129e66dcd'
+md5sums=('55666c9898f658c7fcca12725bf7dd1b'
          '96d3b346d9149ffb1b430066dfb6249a')
 
 prepare() {
@@ -79,6 +79,7 @@ build() {
               --disable-qt \
               --disable-skins2 \
               --disable-rpath \
+              --disable-projectm \
               --enable-faad \
               --enable-nls \
               --enable-lirc \
