@@ -10,7 +10,6 @@ arch=('i686' 'x86_64')
 depends=('ncurses')
 url="https://github.com/gciruelos/termplot"
 makedepends=('git' 'gcc')
-makedepend
 source=('termplot::git+https://github.com/gciruelos/termplot.git')
 md5sums=('SKIP')
 
