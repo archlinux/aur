@@ -2,7 +2,7 @@
 
 pkgname=tagspaces
 pkgver=2.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="TagSpaces is an open source personal data manager. It helps you organize files with tags on every platform."
 arch=("i686" "x86_64")
 url="http://tagspaces.org"
@@ -14,7 +14,13 @@ source=("${pkgname}-${pkgver}.tar.gz::https://github.com/${pkgname}/${pkgname}/a
 prepare() {
   # create desktop file and run script
   gendesk -f -n --pkgname ${pkgname} --pkgdesc "${pkgdesc}" --exec="${pkgname}"
-  echo "cd /opt/${pkgname}/data/ && electron ." > ${pkgname}
+  cat << EOF > "${pkgname}"
+#!/bin/bash
+
+cd /opt/${pkgname}/data/
+electron .
+EOF
+
 }
 
 build() {
