@@ -62,11 +62,11 @@ build () {
 
 package4git() {
     cd "${srcdir}/${pkgname}"
-    mkdir -p ${pkgdir}/usr/bin/
-    cp build/CuraEngine ${pkgdir}/usr/bin/
+    mkdir -p "${pkgdir}"/usr/bin/
+    cp build/CuraEngine "${pkgdir}"/usr/bin/
     mkdir -p ${pkgdir}/usr/share/${pkgname}/
-    cp -r resources ${pkgdir}/usr/share/${pkgname}/
-    cp -r "${srcdir}/cura-git/resources/*" ${pkgdir}/usr/share/${pkgname}/resources
+    cp -r resources "${pkgdir}"/usr/share/"${pkgname}"/
+    cp -r "${srcdir}"/cura-git/resources/* "${pkgdir}"/usr/share/${pkgname}/resources
 }
 
 package4release() {
