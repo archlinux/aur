@@ -1,7 +1,7 @@
 pkgbase = crashplan
 	pkgdesc = An online/offsite backup solution
 	pkgver = 4.8.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.crashplan.com
 	install = crashplan.install
 	arch = i686
@@ -9,7 +9,7 @@ pkgbase = crashplan
 	license = custom
 	makedepends = cpio
 	depends = bash
-	depends = java-runtime-headless
+	depends = java-runtime-headless>=8
 	optdepends = java-runtime: For Crashplan GUI
 	optdepends = gtk2: For Crashplan GUI
 	backup = opt/crashplan/bin/run.conf
