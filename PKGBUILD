@@ -1,8 +1,8 @@
 # Maintainer: M0Rf30
 
 pkgname=h5ai
-pkgver=0.28.1
-pkgrel=3
+pkgver=0.29.0
+pkgrel=1
 arch=(any)
 pkgdesc="A modern file indexer for HTTP web servers with focus on your files"
 url="http://larsjung.de/h5ai/"
@@ -28,4 +28,4 @@ package() {
     cp -r _${pkgname} ${pkgdir}/$webapps/${pkgname}
 }
 
-md5sums=('d99b2d43102e23f52eb0c645a5a3b3dc')
+md5sums=('dd44880a4353bec140ded7fdec0ac3ce')
