@@ -30,7 +30,7 @@ validpgpkeys=()
 pkgver() {
   cd "${srcdir}/${_gitname}"
   
-  sed -e "s|-|_|g" <<< $(git describe --tags)
+  git describe --tags | sed -e 's/-/_/g'
 }
 
 build() {
