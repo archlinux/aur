@@ -10,13 +10,13 @@ url='https://github.com/mailhog/MailHog'
 makedepends=('systemd')
 
 source_i686=("https://github.com/mailhog/MailHog/releases/download/${pkgver}/MailHog_linux_386")
-md5sums_i686=('e1b738e87318f3fd72bd58994090e308')
+md5sums_i686=('e7c74067f74470c03d2e3ad4f9fda7d9')
 
 source_x86_64=("https://github.com/mailhog/MailHog/releases/download/${pkgver}/MailHog_linux_amd64")
-md5sums_x86_64=('3e6f167e5c398d0220dd001f0aad7a85')
+md5sums_x86_64=('6602fd7f69276e7efba310362e958133')
 
 source=("mailhog.service")
-md5sums=('9392d6c6fe29668d100fc3bb38bd93dd')
+md5sums=('fbe281034608abdbf8ce5c9527bbf6a8')
 
 package_mailhog-bin() {
     cd ${srcdir}
