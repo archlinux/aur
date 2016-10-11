@@ -6,7 +6,7 @@
 # https://github.com/michaellass/AUR
 
 pkgname=eagle
-pkgver=7.6.0
+pkgver=7.7.0
 pkgrel=1
 pkgdesc="A powerful suite for schematic capture and printed circuit board design (aka eaglecad)"
 arch=('i686' 'x86_64')
@@ -30,8 +30,8 @@ source_i686=($pkgname-$pkgver.run::ftp://ftp.cadsoft.de/$pkgname/program/${pkgve
 sha256sums=('86307352ad81aa0dee0dfe58ab6799b06200d489a8f6cef77845e772202d20a6'
             '0e38128c87ad72b692e16d5be75b7b21182e4e89caeadfc2bb285588c060176c'
             '293ef717030e171903ba555a5c698e581f056d2a33884868018ab2af96a94a06')
-sha256sums_i686=('0f3469e201a192161e0c7f95d3f12a5e51b6d2bd88d00c57a00e00fb3853dc3b')
-sha256sums_x86_64=('1a794c90b7fc37180c3a9e45904559083e4479bf91f0f7db02ab6799db74acf2')
+sha256sums_i686=('e19fbf364d777039373f57cc97add12c535acf38a7babfff612ff673ae31ca99')
+sha256sums_x86_64=('2f5b1c51d4794d1dd3c16a2e17914237f202a2fb1825a800c43ac08bb9b1aca1')
 
 package() {
   cd "$srcdir"
