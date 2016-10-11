@@ -1,7 +1,7 @@
 # Maintainer: Quey-Liang Kao <s101062801@m101.nthu.edu.tw>
 
 pkgname=openscap
-pkgver=1.2.9
+pkgver=1.2.10
 pkgrel=1
 pkgdesc="Open Source Security Compliance Solution"
 
@@ -18,20 +18,18 @@ depends=('swig' 'python' 'acl' 'libcap' 'curl' 'libgcrypt' 'libxml2' 'libxslt'
          'libldap' 'pcre' 'bzip2' 'procps-ng' 'gconf' 'perl' 'perl-xml-parser' 'perl-xml-xpath')
 
 optdepends=()
-source=("https://github.com/OpenSCAP/openscap/releases/download/$pkgver/$pkgname-$pkgver.tar.gz"
-        "fails_and_fix.patch"
-        "xpath.patch")
-md5sums=('6a07b94d2d92dfec2818556ca117147a'
-         '7882c8b0010db0920d1cabbd2aabcc07'
-         '6dc765fcfba0e5c4ee277635d58584e2')
+source=("https://github.com/OpenSCAP/openscap/releases/download/$pkgver/$pkgname-$pkgver.tar.gz")
+md5sums=('e9a6c329d97dd687c1ec52070aabb4d0')
 
 prepare() {
 	cd "$pkgname-$pkgver"
 
 	# This is for Red Hat/Fedora family, we don't need it.
 	sed -e "s/^.*default_cpe.*$/\\\/" -i $srcdir/$pkgname-$pkgver/tests/API/XCCDF/Makefile.am
-	patch -f -p1 -i "$srcdir/fails_and_fix.patch"
-	patch -f -p2 -i "$srcdir/xpath.patch"
+
+	# The upstream has fixed some of the issues, but more check needed
+	# patch -f -p1 -i "$srcdir/fails_and_fix.patch"
+	# patch -f -p2 -i "$srcdir/xpath.patch"
 }
 
 build() {
