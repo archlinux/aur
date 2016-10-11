@@ -2,22 +2,15 @@
 # Contributor: David Vogt <dave at winged dot ch>
 
 pkgname=rst2ctags
-pkgver=0.1.4
-pkgrel=2
+pkgver=0.1.5
+pkgrel=1
 pkgdesc="A simple script to help create ctags-compatible tag files for the sections within a reStructuredText document"
 arch=('any')
 depends=('python2')
 url="https://github.com/jszakmeister/rst2ctags"
 license=('BSD')
 source=($pkgname-$pkgver.tar.gz::https://codeload.github.com/jszakmeister/$pkgname/tar.gz/v$pkgver)
-sha256sums=('80519b443c07804364812035d3ea9105b051abe169f78afc938806c4414a39b2')
-
-prepare() {
-  cd "$srcdir/$pkgname-$pkgver"
-
-  msg2 'Fixing Python version...'
-  sed -i -e 's,^#!/usr/bin/env python,#!/usr/bin/env python2,' rst2ctags.py
-}
+sha256sums=('6dc874684e04a81101ff2eda5341354f1b3134503d2d0153c1ee12e0beb6ff84')
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
