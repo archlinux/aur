@@ -1,0 +1,26 @@
+pkgbase = python-sunpy-git
+	pkgdesc = Python library for solar physics
+	pkgver = 0.8.dev
+	pkgrel = 1
+	url = http://www.sunpy.org/
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = git
+	depends = python
+	depends = python-astropy
+	depends = python-numpy
+	depends = python-scipy
+	depends = python-matplotlib
+	depends = python-suds
+	depends = python-pandas
+	depends = python-beautifulsoup4
+	depends = python-sqlalchemy
+	provides = python-sunpy
+	conflicts = python-sunpy
+	options = !emptydirs
+	source = git+https://github.com/sunpy/sunpy
+	md5sums = SKIP
+
+pkgname = python-sunpy-git
+
