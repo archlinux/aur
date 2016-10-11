@@ -3,7 +3,7 @@
 # Maintainer: Jorge Barroso <jorge.barroso.11 at gmail dot com>
 
 pkgname=purple-whatsapp-git
-pkgver=0.9.0
+pkgver=0.8.3.73.g07ed931
 pkgrel=1
 pkgdesc="WhatsApp protocol implementation for libpurple (pidgin)"
 arch=('i686' 'x86_64')
