@@ -65,7 +65,7 @@ package4git() {
     mkdir -p ${pkgdir}/usr/bin/
     cp build/CuraEngine ${pkgdir}/usr/bin/
     mkdir -p ${pkgdir}/usr/share/${pkgname}/
-    cp "${srcdir}/cura-git/resources/settings/fdmprinter.json" ${pkgdir}/usr/share/${pkgname}/
+    cp "${srcdir}/cura-git/resources/definitions/fdmprinter.def.json" ${pkgdir}/usr/share/${pkgname}/
 }
 
 package4release() {
