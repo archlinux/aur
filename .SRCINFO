@@ -1,7 +1,7 @@
 pkgbase = displaymanager-slim-openrc
 	pkgdesc = OpenRC dm init script with support for slim login manager
 	pkgver = 20161011
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/manjaro/packages-openrc
 	install = displaymanager.install
 	arch = any
@@ -15,7 +15,6 @@ pkgbase = displaymanager-slim-openrc
 	optdepends = dbus-openrc: dbus initscript
 	optdepends = slim: slim login manager
 	provides = displaymanager-openrc
-	conflicts = systemd-sysvcompat
 	conflicts = displaymanager-openrc
 	replaces = displaymanager-openrc
 	backup = etc/conf.d/xdm

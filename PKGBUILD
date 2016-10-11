@@ -2,7 +2,7 @@
 
 pkgname=('displaymanager-slim-openrc')
 pkgver=20161011
-pkgrel=1
+pkgrel=2
 pkgdesc="OpenRC dm init script with support for slim login manager"
 depends=('openrc' 'xorg-server' 'xorg-xinit' 'udev-openrc')
 optdepends=('consolekit-openrc: consolekit initscript'
@@ -14,7 +14,7 @@ license=('GPL2')
 groups=('openrc-desktop')
 provides=('displaymanager-openrc')
 replaces=('displaymanager-openrc')
-conflicts=('systemd-sysvcompat' 'displaymanager-openrc')
+conflicts=('displaymanager-openrc')
 backup=('etc/conf.d/xdm')
 install=displaymanager.install
 _url="https://raw.githubusercontent.com/gentoo/gentoo/master"
