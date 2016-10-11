@@ -1,10 +1,9 @@
-# Maintainer: Yunhui Fu <yhfudev@gmail.com>
+# Maintainer: Artem Grunichev <gluk@umbrosia.ru>
 
 pkgname=cura-engine-noarcus-git
 pkgver=3b8ad5e
-pkgrel=1
-pkgdesc="A C++ console application for 3D printing GCode generation. It's called by 
-Repetier Host and/or other applications. No libArcus or Protobuf needed for that version, and it could be only used as command-line tool."
+pkgrel=2
+pkgdesc="A C++ console application for 3D printing GCode generation. It's called by Repetier Host and/or other applications. No libArcus or Protobuf needed for that version, and it could be only used as command-line tool."
 arch=(i686 x86_64 arm)
 url="https://github.com/Ultimaker/CuraEngine.git"
 license=(GPL)
