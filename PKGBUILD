@@ -48,12 +48,18 @@ prepare() {
 }
 
 build() {
-  msg "Starting make..."
+  msg "Building ${_gitname}..."
   cd "${srcdir}/${_gitname}"
   qmake-qt5 -r librecad.pro \
     QMAKE_CFLAGS="${CFLAGS}" \
     QMAKE_CXXFLAGS="${CXXFLAGS}"
 
+  make
+
+  msg "Building ${_gitname} plugins"
+
+  cd plugins
+  qmake-qt5
   make
 }
 
