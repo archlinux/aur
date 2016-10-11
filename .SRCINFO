@@ -1,9 +1,9 @@
 pkgbase = light
 	pkgdesc = Program to easily change brightness on backlight-controllers.
 	pkgver = 1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/haikarainen/light
-	arch = i386
+	arch = i686
 	arch = x86_64
 	license = GPL3
 	makedepends = help2man
