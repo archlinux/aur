@@ -3,11 +3,7 @@
 # try 3 times only
 i=1
 while [ $i -le 3 ]; do
-	if curl --connect-timeout 2 -s www.google.com > /dev/null ; then
-		break
-	fi
-
-	if curl --connect-timeout 2 -s www.baidu.com > /dev/null ; then
+	if curl --connect-timeout 2 -s www.bing.com > /dev/null ; then
 		break
 	fi
 
