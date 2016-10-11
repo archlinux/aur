@@ -2,4 +2,3 @@
 *.pkg.tar.xz
 src
 pkg
-update.sh
