@@ -4,22 +4,33 @@
 
 pkgname=evince-no-gnome
 _pkgname=evince
-pkgver=3.20.1
-pkgrel=2
+pkgver=3.22.1
+pkgrel=1
 pkgdesc="GTK3 document viewer, complete features, no gnome dependencies"
 url="https://wiki.gnome.org/Apps/Evince"
 arch=('i686' 'x86_64')
 license=('GPL')
 depends=('gtk3' 'libgxps' 'libspectre' 'poppler-glib' 'djvulibre' 'gsettings-desktop-schemas' 'libarchive' 'gst-plugins-base-libs')
-makedepends=('itstool' 'texlive-bin' 'gobject-introspection' 'intltool' 'docbook-xsl' 'python' 'gtk-doc')
+makedepends=('itstool' 'texlive-bin' 'gobject-introspection' 'intltool' 'docbook-xsl' 'python' 'gtk-doc' 'gnome-common')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}" "evince-light")
 options=('!emptydirs')
-source=("https://download.gnome.org/sources/${_pkgname}/${pkgver:0:4}/${_pkgname}-$pkgver.tar.xz")
-md5sums=('eb05ece124d93d057211643b7ebdb145')
+_commit=ca4868faa3ecc2e4f4962f86820e090682502274 # tags/3.22.1^0
+source=("git://git.gnome.org/evince#commit=$_commit")
+md5sums=('SKIP')
 
+pkgver() {
+cd ${_pkgname}
+git describe --tags | sed 's/-/+/g'
+}
+
+prepare() {
+cd ${_pkgname}
+NOCONFIGURE=1 ./autogen.sh
+}
+ 
 build() {
-cd ${_pkgname}-$pkgver
+cd ${_pkgname}
 BROWSER_PLUGIN_DIR=/usr/lib/epiphany/plugins \
 
 ./configure --prefix=/usr \
@@ -50,6 +61,6 @@ make
 }
 
 package() {
-cd ${_pkgname}-$pkgver
+cd ${_pkgname}
 make DESTDIR="$pkgdir" install
 }
