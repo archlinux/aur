@@ -1,13 +1,13 @@
 # Maintainer: Michael Schubert <mschu.dev at gmail>
 pkgname=gnome-shell-extension-web-search-dialog-git
 _pkgname=web-search-dialog
-pkgver=r119.8467ee7
+pkgver=r125.462aebf
 pkgrel=1
 pkgdesc="Search the web directly from Gnome Shell"
 arch=('any')
 url="https://extensions.gnome.org/extension/549/web-search-dialog/"
 license=('GPL3')
-depends=('gnome-shell<3.17')
+depends=('gnome-shell')
 makedepends=('git')
 install='gschemas.install'
 source=("git+https://github.com/awamper/web-search-dialog")
@@ -21,8 +21,7 @@ pkgver() {
 package() {
   cd "$srcdir/$_pkgname"
 
-  for i in $(find -type f)
-    do
-        install -Dm 644 $i $pkgdir/usr/share/gnome-shell/extensions/web_search_dialog@awamper.gmail.com/$i
-    done
+  for i in $(find -type f); do
+    install -Dm 644 $i $pkgdir/usr/share/gnome-shell/extensions/web_search_dialog@awamper.gmail.com/$i
+  done
 }
