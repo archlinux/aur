@@ -6,7 +6,7 @@
 pkgname=mutter-hide-legacy-decorations
 _pkgname=mutter
 pkgver=3.20.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A window manager for GNOME (with a little hack to hide the window decorations on maximized legacy applications)"
 url="https://git.gnome.org/browse/mutter"
 arch=(i686 x86_64)
@@ -16,7 +16,8 @@ depends=(clutter dconf gobject-introspection-runtime gsettings-desktop-schemas
          libxkbcommon-x11 gnome-settings-daemon libgudev)
 makedepends=(intltool gobject-introspection)
 replaces=('mutter-wayland' 'mutter')
-provides=('mutter')
+conflicts=('mutter-wayland' 'mutter')
+provides=("mutter=${pkgver}")
 groups=(gnome)
 options=(!emptydirs)
 
