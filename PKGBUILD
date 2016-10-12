@@ -6,7 +6,7 @@
 
 pkgname=plymouth
 pkgver=0.9.2
-pkgrel=11
+pkgrel=12
 pkgdesc="A graphical boot splash screen with kernel mode-setting support"
 url="http://www.freedesktop.org/wiki/Software/Plymouth/"
 
@@ -49,7 +49,7 @@ md5sums=('ff420994deb7ea203df678df92e7ab7d'
          '1430ae2ec501d600f8f6771454dc9bbe'
          '870ea3e63c6989e2badf79d1fbafa914'
          'a3cfc30df846b2d7057a29e7fbe8733a'
-         '96479348503e18d3375bab8ef97c6b5e'
+         'f803c315739f46128b99232d64c268ca'
          '006847d16b852c7a50ee2f241fd9647e'
          '78340207f7391c682601b1b36baed14d'
          '672ad913e2383483bcb4599a0a6bee48'
@@ -68,7 +68,7 @@ prepare() {
 
 build() {
 	cd "$srcdir"/${pkgname}-${pkgver}
-	
+
 	LDFLAGS="$LDFLAGS -ludev" ./configure --prefix=/usr \
 		--exec-prefix=/usr \
 		--sysconfdir=/etc \
@@ -97,13 +97,13 @@ package() {
 
   make DESTDIR="$pkgdir" install
 
-  install -Dm644 "$srcdir/arch-logo.png"             	"$pkgdir/usr/share/plymouth/arch-logo.png"
+  install -Dm644 "$srcdir/arch-logo.png" "$pkgdir/usr/share/plymouth/arch-logo.png"
 
   install -Dm644 "$srcdir/plymouth.encrypt_hook" "$pkgdir/usr/lib/initcpio/hooks/plymouth-encrypt"
   install -Dm644 "$srcdir/plymouth.encrypt_install" "$pkgdir/usr/lib/initcpio/install/plymouth-encrypt"
   install -Dm644 "$srcdir/plymouth.initcpio_hook" "$pkgdir/usr/lib/initcpio/hooks/plymouth"
   install -Dm644 "$srcdir/plymouth.initcpio_install" "$pkgdir/usr/lib/initcpio/install/plymouth"
- 
+
   for i in {gdm,sddm,lxdm,slim,lightdm}-plymouth.service; do
     install -Dm644 "$srcdir/$i" "$pkgdir/usr/lib/systemd/system/$i"
   done
