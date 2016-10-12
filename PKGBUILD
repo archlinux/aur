@@ -2,7 +2,7 @@
 
 pkgbase=evince
 pkgname=evince-light
-pkgver=3.22.0
+pkgver=3.22.1
 pkgrel=1
 pkgdesc="GNOME document viewer, built with minimal dependencies"
 url="https://wiki.gnome.org/Apps/Evince"
@@ -23,7 +23,7 @@ makedepends=('itstool' 'intltool' 'python')
 provides=("${pkgbase}")
 conflicts=("${pkgbase}")
 source=("http://ftp.gnome.org/pub/GNOME/sources/${pkgbase}/${pkgver%.*}/${pkgbase}-${pkgver}.tar.xz")
-sha256sums=('22ebabf890057e8b43020ffdebdbb57d6a586beba031838f0f0c8a596c479d46')
+sha256sums=('f3d439db3b5a5745d26175d615a71dffa1535235b1e3aa0b85d397ea33ab231c')
 
 build()
 {
