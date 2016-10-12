@@ -5,7 +5,7 @@
 
 pkgname=caelum-ogre1.8
 pkgver=0.6.1
-pkgrel=3
+pkgrel=4
 pkgdesc="Library for OGRE targeted to help create nice-looking atmospheric effects. Built against OGRE 1.8."
 arch=('i686' 'x86_64')
 url="http://www.ogre3d.org/tikiwiki/Caelum"
