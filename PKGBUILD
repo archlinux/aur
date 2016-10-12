@@ -2,7 +2,7 @@
 
 pkgname=riakts
 pkgver=1.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Distributed NoSQL key/value store optimized for time series data'
 arch=('i686' 'x86_64')
 license=('APACHE')
@@ -43,15 +43,20 @@ package() {
   ln -s /opt/$pkgname/log "$pkgdir/var/log/riak"
   ln -s /opt/$pkgname/etc "$pkgdir/etc/riak"
 
-  echo "/opt/$pkgname/bin/riak \"\$@\"" > "$pkgdir/usr/bin/riak"
+  local sb="#!/bin/sh
+# -*- tab-width:4;indent-tabs-mode:nil -*-
+# ex: ts=4 sw=4 et
+"
+
+  echo "$sb/opt/$pkgname/bin/riak \"\$@\"" > "$pkgdir/usr/bin/riak"
   chmod 755 "$pkgdir/usr/bin/riak"
-  echo "/opt/$pkgname/bin/riak-admin \"\$@\"" > "$pkgdir/usr/bin/riak-admin"
+  echo "$sb/opt/$pkgname/bin/riak-admin \"\$@\"" > "$pkgdir/usr/bin/riak-admin"
   chmod 755 "$pkgdir/usr/bin/riak-admin"
-  echo "/opt/$pkgname/bin/riak-debug \"\$@\"" > "$pkgdir/usr/bin/riak-debug"
+  echo "$sb/opt/$pkgname/bin/riak-debug \"\$@\"" > "$pkgdir/usr/bin/riak-debug"
   chmod 755 "$pkgdir/usr/bin/riak-debug"
-  echo "/opt/$pkgname/bin/riak-shell \"\$@\"" > "$pkgdir/usr/bin/riak-shell"
+  echo "$sb/opt/$pkgname/bin/riak-shell \"\$@\"" > "$pkgdir/usr/bin/riak-shell"
   chmod 755 "$pkgdir/usr/bin/riak-shell"
-  echo "/opt/$pkgname/bin/search-cmd \"\$@\"" > "$pkgdir/usr/bin/search-cmd"
+  echo "$sb/opt/$pkgname/bin/search-cmd \"\$@\"" > "$pkgdir/usr/bin/search-cmd"
   chmod 755 "$pkgdir/usr/bin/search-cmd"
 
   cp -R "doc/man" "$pkgdir/usr/share"
