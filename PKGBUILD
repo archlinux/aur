@@ -3,7 +3,7 @@
 # Maintainer: Joermungand <joermungand at gmail dot com>
 
 pkgname=shuriken-git
-pkgver=0.5.1.r8.gbfecbac
+pkgver=0.5.1.r19.ge8ebbd3
 pkgrel=1
 pkgdesc="An open source beat slicer"
 url="https://rock-hopper.github.io/shuriken"
@@ -14,7 +14,6 @@ makedepends=('automake' 'libtool' 'pkg-config' 'jack')
 optdepends=('jack: A low-latency audio server')
 provides=("${pkgname%-*}")
 conflicts=("${pkgname%-*}")
-install="${pkgname%-*}.install"
 source=("${pkgname%-*}"::"git://github.com/rock-hopper/${pkgname%-*}.git"
         "${pkgname%-*}.desktop"
         "${pkgname%-*}.png")
