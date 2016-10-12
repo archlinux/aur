@@ -1,0 +1,15 @@
+pkgbase = dotbro
+	pkgdesc = Simple yet effective dotfiles manager
+	pkgver = 0.2.0
+	pkgrel = 1
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	makedepends = git
+	provides = dotbro=0.2.0
+	source = dotbro::git+https://github.com/hypnoglow/dotbro#tag=v0.2.0
+	md5sums = SKIP
+
+pkgname = dotbro
+
