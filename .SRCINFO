@@ -1,18 +1,20 @@
 pkgbase = gjacktransport
 	pkgdesc = graphical slider for controlling JACK Transport
-	pkgver = 0.5.3
+	pkgver = 0.6.4
 	pkgrel = 1
 	url = http://gjacktransport.sourceforge.net/
 	install = gjacktransport.install
 	arch = i686
 	arch = x86_64
 	license = GPL
-	depends = lash
 	depends = intltool
+	depends = gtk2
+	depends = jack
+	optdepends = lash: LASH Audio Session Handler support
 	backup = etc/gjackclockrc
 	backup = etc/gjacktransportrc
-	source = http://downloads.sourceforge.net/project/gjacktransport/gjacktransport/v0.5/gjacktransport-0.5.3.tar.gz
-	md5sums = 9d87f1d499a805236206fdba9d30a2fa
+	source = http://downloads.sourceforge.net/project/gjacktransport/gjacktransport/v0.6/gjacktransport-0.6.4.tar.gz
+	md5sums = 96102577be683f32732bf368a6f44c06
 
 pkgname = gjacktransport
 

@@ -2,24 +2,25 @@
 # Contributor: SpepS <dreamspepser at yahoo dot it>
 
 pkgname=gjacktransport
-pkgver=0.5.3
+pkgver=0.6.4
 pkgrel=1
 pkgdesc="graphical slider for controlling JACK Transport"
 arch=('i686' 'x86_64')
 url="http://gjacktransport.sourceforge.net/"
 license=('GPL')
-depends=('lash' 'intltool')
+depends=('intltool' 'gtk2' 'jack')
+optdepends=('lash: LASH Audio Session Handler support')
 backup=('etc/gjackclockrc' 'etc/gjacktransportrc')
 install="$pkgname.install"
-source=("http://downloads.sourceforge.net/project/$pkgname/$pkgname/v0.5/$pkgname-$pkgver.tar.gz")
-md5sums=('9d87f1d499a805236206fdba9d30a2fa')
+source=("http://downloads.sourceforge.net/project/$pkgname/$pkgname/v0.6/$pkgname-$pkgver.tar.gz")
+md5sums=('96102577be683f32732bf368a6f44c06')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
   
   ./configure \
-	--prefix="/usr" \
-	--sysconfdir="/etc/"
+	  --prefix="/usr" \
+	  --sysconfdir="/etc/"
   make
 }
 
