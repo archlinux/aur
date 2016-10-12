@@ -11,7 +11,7 @@ _language_gfm2_ver=0.92.2
 _language_liquid_ver=0.5.1
 
 pkgname=${_pkgname}-editor-${_version}
-pkgver=1.12.0.dev.a1.6.2.l0.5.1.m0.92.2.c29931
+pkgver=1.13.0.dev.a1.6.2.l0.5.1.m0.92.2.c30158
 pkgrel=1
 pkgdesc='Hackable text editor for the 21st Century, based on web technologies and built from the latest git source code'
 arch=('x86_64' 'i686')
