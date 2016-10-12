@@ -71,6 +71,6 @@ build() {
 #}
 
 package() {
-	cd "$srcdir/${pkgname%-git}"
+	install "$srcdir/${pkgname%-git}"
 	#make DESTDIR="$pkgdir/" install
 }
