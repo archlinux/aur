@@ -13,7 +13,7 @@ pkgbase = lmao
 	makedepends = doxygen
 	depends = glibc
 	source = http://www.matthias-ernst.eu/malbolge/lmao.tar.gz
-	md5sums = ae8c433f5be105d8b0b60e68c3e606d6
+	md5sums = f860b67267a47dfdaaeb582a0caa0120
 
 pkgname = lmao
 
