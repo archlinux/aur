@@ -4,7 +4,7 @@
 # Contributor: Addict7 <nicolasfloquet@gmail.com>
  
 pkgname=geany-plugins-git
-pkgver=1.27.0.17.g6122e13
+pkgver=1.28.0
 pkgrel=1
 pkgdesc='Various plugins for Geany'
 arch=('x86_64' 'i686')
@@ -16,7 +16,7 @@ optdepends=('hspell: hebrew spell checker')
 install="$pkgname.install"
 provides=('geany-plugins')
 conflicts=('geany-plugins-svn' 'geany-plugins')
-source=('git://github.com/geany/geany-plugins.git')
+source=('https://github.com/geany/geany-plugins/archive/$pkgver.tar.gz')
 md5sums=('SKIP')
  
 pkgver() {
