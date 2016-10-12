@@ -6,13 +6,13 @@ pkgver=2
 pkgrel=1
 pkgdesc='colort[int] - adjust colors by values.'
 arch=('i686' 'x86_64')
-url="https://github.com/gnotclub/${_pkgname}"
+url="https://github.com/neeasade/${_pkgname}"
 license=('custom:Unlicense')
 depends=()
 makedepends=('git')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
-source=("git://github.com/gnotclub/${_pkgname}.git")
+source=("git://github.com/neeasade/${_pkgname}.git")
 md5sums=('SKIP')
 
 pkgver() {
