@@ -2,7 +2,7 @@
 pkgname=okimfpsdrv
 pkgver=1.5.0
 _pkgver=1.5-0
-pkgrel=2
+pkgrel=3
 arch=('i686' 'x86_64')
 pkgdesc="Scanner drivers OKI multifunctional printers"
 url="http://www.oki.co.uk/support/printer/printer-drivers"
@@ -10,22 +10,21 @@ license=('custom')
 backup=('usr/lib/okimfpdrv/device.conf')
 depends=('libusb' 'python2')
 optdepends=('netpbm: support for additional output formats')
-# http://www.oki.co.uk/support/printer/printer-drivers/
+# The driver may need to be be downloaded manually from:
+#   http://www.oki.co.uk/support/printer/printer-drivers/ 
+#
+# 1. select the printer
+# 2. select Linux drivers and Utilities
+# 3. download either "Scanner Driver (Red Hat i386)" or "Scanner Driver (Red Hat x86_64)"
 source=("okiscand.service")
-source_i686=("${pkgname}-${_pkgver}-i686.zip::http://www.oki.co.uk/Includes/Pages/FileDownload.aspx?id=tcm:122-156523")
-source_x86_64=("${pkgname}-${_pkgver}-x86_64.zip::http://www.oki.co.uk/Includes/Pages/FileDownload.aspx?id=tcm:122-156524")
+source_i686=("http://www.oki.com/uk/printing/download/okimfpsdrv-${_pkgver}.i386_30363.rpm")
+source_x86_64=("http://www.oki.com/uk/printing/download/okimfpsdrv-${_pkgver}.x86_64_30377.rpm")
 md5sums=('0164a329e93405806dcf20700b01008d')
-md5sums_i686=('090fed6956f8647a6eb099d6f22bddab')
-md5sums_x86_64=('3d8b6d8ff7a52e7e83429406856216bc')
-
-if [ "$CARCH" = "x86_64" ];  then
-  _package="$pkgname-${_pkgver}.x86_64.rpm"
-else
-   _package="$pkgname-${_pkgver}.i386.rpm"
-fi
+md5sums_i686=('571fb2e41943a2ad6985ab723c9df104')
+md5sums_x86_64=('cf362a4a66c71b82e832937892c0670e')
 
 package() {
-  bsdtar -x -f "$srcdir/${_package}/${_package}" -C "$pkgdir"
+  bsdtar -x -f "$srcdir"/*.rpm -C "$pkgdir"
 
   # fix for the Arch linux directory structure
   [ "$CARCH" = "x86_64" ] && mv "$pkgdir/usr/lib64" "$pkgdir/usr/lib"
@@ -55,5 +54,10 @@ package() {
 
   # touch the config file, so it is tracked by pacman
   touch "$pkgdir/usr/lib/okimfpdrv/device.conf"
+
+  # move the assistant applet desktop file from autostart to applications
+  mkdir -p "$pkgdir/usr/share/applications/"
+  mv "$pkgdir/etc/xdg/autostart/okimfp-assistant-applet.desktop" "$pkgdir/usr/share/applications/"
+  rm -r "$pkgdir/etc/xdg"
 }
 
