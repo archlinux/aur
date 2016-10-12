@@ -1,3 +1,15 @@
+2016-10-12 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
+  * 2.1.5.4-1:
+    Fixed regression of LoginLimiterDelay being falsely ignored on non-ASF 2FA accounts.
+    Misc code improvements, optimizations and bugfixes.
+  * 2.1.5.3:
+    Added !redeem^ command.
+    Improved AcceptGifts - ASF now redeems gifts via request to Steam network (and not Steam community like previously).
+    Fixed ultra-rare issue of ASF causing official steam client disconnection due to broken LoginID calculation done by Steam on some Linux OSes.
+    Fixed HandleOfflineMessages not working with non-precise system clock (ASF will now allow up to 1 hour of difference between system time and Steam time, previously it was 1 minute).
+    Fixed a possible ASF crash in !ownsall when one or more of the bots were not connected.
+    Hopefully fixed ultra-rare ASF network deadlock as reported in #318.
+    General code improvements, optimizations and bugfixes.
 2016-08-29 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
   * 2.1.4.5-1:
     Added !ownsall command.
