@@ -13,7 +13,7 @@
 pkgname=sudo-masochist
 _sudover=1.8.18p1
 pkgver=${_sudover/p/.p}
-pkgrel=2
+pkgrel=3
 pkgdesc="Sudo with a lot of extra insults"
 arch=('i686' 'x86_64')
 url="https://www.sudo.ws/sudo/"
