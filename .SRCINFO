@@ -1,0 +1,17 @@
+pkgbase = nexttool-svn
+	pkgdesc = Communication tool for the LEGO Mindstorms NXT programmable brick
+	pkgver = r654
+	pkgrel = 1
+	url = http://bricxcc.sourceforge.net/utilities.html
+	arch = i686
+	arch = x86_64
+	license = MPL
+	makedepends = subversion
+	makedepends = fpc
+	depends = libusb-compat
+	provides = nexttool
+	source = svn+https://svn.code.sf.net/p/bricxcc/code/
+	md5sums = SKIP
+
+pkgname = nexttool-svn
+
