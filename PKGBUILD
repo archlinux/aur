@@ -2,7 +2,7 @@
 
 _pkgbase=quodlibet
 pkgname=exfalso
-pkgver=3.7.0
+pkgver=3.7.1
 pkgrel=1
 pkgdesc="GTK+ audio tag editor"
 arch=('any')
@@ -15,7 +15,7 @@ conflicts=('quodlibet')
 _base_src=""
 _base_url=""
 source=("https://bitbucket.org/lazka/${_pkgbase}-files/raw/default/releases/${_pkgbase}-${pkgver}.tar.gz"{,.sig})
-sha256sums=('326be5ea5a2033017d2b944f44ee6c488037c976cee904ebcd82adf472f30e81' 'SKIP')
+sha256sums=('1d96b1f401aa59f4800156abe63d3901f2a9979b5c9604af66ebf634c96cfc68' 'SKIP')
 validpgpkeys=('0EBF782C5D53F7E5FB02A66746BD761F7A49B0EC') # Christoph Reiter
 
 build () {
