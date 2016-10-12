@@ -1,21 +1,20 @@
 pkgname=skypeforlinux
-pkgver=1.3.0.0
+pkgver=1.10.0.1
 pkgrel=1
 pkgdesc="Skype for Linux WebRTC Alpha"
 arch=(x86_64 i686)
 url="https://www.skype.com/"
 license=(custom)
 depends=(electron libgnome-keyring)
-makedepends=(npm python2)
+makedepends=(asar npm python2)
 source=(https://repo.skype.com/deb/pool/main/s/$pkgname/${pkgname}_${pkgver}_amd64.deb
         $pkgname.sh)
-sha256sums=('b5de0f0e21d5a22cc7997ede56e24926960d96eaac2069b478ccdf0347a34821'
+sha256sums=('99670120f4090a5ad06835cc25190dfc19eacd3ff1e71802fa0a55f50585e4ec'
             '0aca67c5c2cd1be1e7b7a2d2f126cdf0310f8a85985c1aba31540fcc2892eafa')
 
 prepare() {
   tar -xf data.tar.xz
-  npm install asar
-  "$srcdir/node_modules/.bin/asar" extract usr/share/skypeforlinux/resources/app.asar skypeforlinux
+  asar extract usr/share/skypeforlinux/resources/app.asar skypeforlinux
   rm -r skypeforlinux/node_modules
 }
 
@@ -43,8 +42,10 @@ package() {
       -or -name "*.gypi" -prune -exec rm -r '{}' \; \
       -or -name "*.mk" -prune -exec rm -r '{}' \; \
       -or -name "*Makefile" -prune -exec rm -r '{}' \; \
+      -or -name "bin" -prune -exec rm -r '{}' \; \
       -or -name "doc" -prune -exec rm -r '{}' \; \
       -or -name "example" -prune -exec rm -r '{}' \; \
+      -or -name "nan" -prune -exec rm -r '{}' \; \
       -or -name "obj.target" -prune -exec rm -r '{}' \; \
       -or -name "script" -prune -exec rm -r '{}' \; \
       -or -name "src" -prune -exec rm -r '{}' \; \

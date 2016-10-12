@@ -1,18 +1,19 @@
 pkgbase = skypeforlinux
 	pkgdesc = Skype for Linux WebRTC Alpha
-	pkgver = 1.3.0.0
+	pkgver = 1.10.0.1
 	pkgrel = 1
 	url = https://www.skype.com/
 	arch = x86_64
 	arch = i686
 	license = custom
+	makedepends = asar
 	makedepends = npm
 	makedepends = python2
 	depends = electron
 	depends = libgnome-keyring
-	source = https://repo.skype.com/deb/pool/main/s/skypeforlinux/skypeforlinux_1.3.0.0_amd64.deb
+	source = https://repo.skype.com/deb/pool/main/s/skypeforlinux/skypeforlinux_1.10.0.1_amd64.deb
 	source = skypeforlinux.sh
-	sha256sums = b5de0f0e21d5a22cc7997ede56e24926960d96eaac2069b478ccdf0347a34821
+	sha256sums = 99670120f4090a5ad06835cc25190dfc19eacd3ff1e71802fa0a55f50585e4ec
 	sha256sums = 0aca67c5c2cd1be1e7b7a2d2f126cdf0310f8a85985c1aba31540fcc2892eafa
 
 pkgname = skypeforlinux
