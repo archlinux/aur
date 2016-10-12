@@ -7,12 +7,13 @@
 _pkgname=cairo
 pkgname=cairo-infinality-ultimate-with-colored-emoji
 pkgver=1.14.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Cairo vector graphics library (patched with support for colored emoji and infinality)"
 arch=(i686 x86_64)
 license=('LGPL' 'MPL')
 url="http://cairographics.org/"
-depends=('libpng' 'libxrender' 'libxext' 'fontconfig' 'pixman>=0.28.0' 'glib2' 'mesa' 'libgl' 'lzo')
+# requires libGL + libEGL - all libgl variants (mesa, nvidia-xxx-libgl/nvidia-utils) provide libEGL
+depends=('libpng' 'libxrender' 'libxext' 'fontconfig' 'pixman' 'glib2' 'libgl' 'lzo')
 makedepends=('mesa-libgl' 'librsvg' 'gtk2' 'poppler-glib' 'libspectre' 'gtk-doc' 'valgrind' 'git')
              # for the test suite:
              #'ttf-dejavu' 'gsfonts' 'xorg-server-xvfb' ) # 'libdrm')
