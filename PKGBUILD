@@ -1,7 +1,7 @@
 # Maintainer: RainMark rain.by.zhou@gmail.com
 pkgname=openkeeper-cli
 pkgver=2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Netkeeper for Linux Desktop."
 arch=("x86_64" "i686")
 url="https://github.com/Eventide/openkeeper-cli"
@@ -18,9 +18,9 @@ build() {
 
 package() {
 	cd "$srcdir/$pkgname-$pkgver"
-	mkdir -p "$pkgdir/usr/bin"
+	mkdir -p "$pkgdir/usr/sbin"
 	mkdir -p "$pkgdir/usr/share/openkeeper"
 	install -m 755 dialnetkeeper/dialnetkeeper "$pkgdir/usr/bin"
-	install -m 755 ok ok-* "$pkgdir/usr/bin"
+	install -m 755 ok ok-* "$pkgdir/usr/sbin"
 	install -m 644 pppoe.conf pap-secrets "$pkgdir/usr/share/openkeeper"
 }
