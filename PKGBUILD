@@ -5,8 +5,8 @@ _fusurl="https://github.com/fusion809"
 _language_patch2_url="${_fusurl}/language-patch2"
 
 pkgname=${_pkgname}-editor-${_version}
-_atomver=1.11.0
-pkgver=1.11.0.aa1.6.2.db0.8.9.fu0.12.0.la0.9.2.lg0.92.2.li1.18.3.ll0.5.1.lp1.0.0.lu0.38.2.t2.4.2
+_atomver=1.11.1
+pkgver=1.11.1.aa1.6.2.db0.8.9.fu0.12.0.la0.9.2.lg0.92.2.li1.18.3.ll0.5.1.lp1.0.0.lu0.38.2.t2.4.2
 pkgrel=1
 pkgdesc="Hackable text editor for the 21st Century, built using web technologies, with some extra packages for Arch Linux package development pre-installed."
 arch=('x86_64' 'i686')
@@ -34,7 +34,7 @@ source=("${_pkgname}-${_atomver}.tar.gz::${_url}/atom/archive/v${_atomver}.tar.g
 "atom.desktop"
 "theme.patch"
 "about-arch.patch")
-md5sums=('a43f37b84237b174783ce4cd5b78c8ee'
+md5sums=('c96d0f2d93d586b15d8eb58ba4fe5112'
          'SKIP'
          'SKIP'
          'SKIP'
