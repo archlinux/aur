@@ -1,13 +1,13 @@
 # Maintainer: BlackEagle < ike DOT devolder AT gmail DOT com >
 
 pkgname=opera-beta-ffmpeg-codecs
-pkgver=53.0.2785.101
+pkgver=54.0.2840.27
 pkgrel=1
 pkgdesc="additional support for proprietary codecs for opera-beta"
 arch=('i686' 'x86_64')
 url="https://ffmpeg.org/"
 license=('LGPL2.1')
-depends=('glibc')
+depends=('gcc-libs' 'zlib')
 makedepends=(
   'gtk2' 'libexif' 'libpulse' 'libxss' 'ninja' 'nss' 'pciutils' 'python2'
   'xdg-utils'
@@ -15,15 +15,18 @@ makedepends=(
 options=('!strip')
 source=(
   "https://commondatastorage.googleapis.com/chromium-browser-official/chromium-$pkgver.tar.xz"
+  'chromium-last-commit-position-r1.patch'
 )
-sha256sums=('edc55ed74b11064251be35ee89cfd8d6c7055c607d35135c41246c6735c4aee0')
+sha256sums=('75e195afbb9f0c3e69b637ef4fa34ba7e5b3e62e871ba1b60638d9e9c5eee088'
+            'd3dc397956a26ec045e76c25c57a1fac5fc0acff94306b2a670daee7ba15709e')
 
 
 prepare() {
   cd "$srcdir/chromium-$pkgver"
 
   # Use Python 2
-  find . -name '*.py' -exec sed -i -r 's|/usr/bin/python$|&2|g' {} +
+  find . -name '*.py' -exec sed -r 's|/usr/bin/python$|&2|g' -i {} +
+  find . -name '*.py' -exec sed -r 's|/usr/bin/env python$|&2|g' -i {} +
   # There are still a lot of relative calls which need a workaround
   [[ -d "$srcdir/python2-path" ]] && rm -rf "$srcdir/python2-path"
   mkdir "$srcdir/python2-path"
@@ -32,6 +35,8 @@ prepare() {
   # chromium 46 gives an error about a missing file
   # workaround create empty
   touch chrome/test/data/webui/i18n_process_css_test.html
+
+  patch -p1 -i "$srcdir/chromium-last-commit-position-r1.patch"
 }
 
 build() {
@@ -39,26 +44,18 @@ build() {
 
   export PATH="$srcdir/python2-path:$PATH"
 
-  build/gyp_chromium \
-    --depth=. \
-    -Dclang=0 \
-    -Duse_gnome_keyring=0 \
-    -Duse_gconf=0 \
-    -Dlinux_use_bundled_binutils=0 \
-    -Dlinux_use_bundled_gold=0 \
-    -Dlinux_use_gold_flags=0 \
-    -Dsysroot='' \
-    -Dcomponent=shared_library \
-    -Dffmpeg_branding=ChromeOS
+  local args="ffmpeg_branding=\"ChromeOS\" proprietary_codecs=true enable_hevc_demuxing=true use_gconf=false use_gio=false use_gnome_keyring=false use_kerberos=false use_cups=false use_sysroot=false use_gold=false linux_use_bundled_binutils=false fatal_linker_warnings=false treat_warnings_as_errors=false is_clang=false is_component_build=true is_debug=false symbol_level=0"
+  python2 tools/gn/bootstrap/bootstrap.py -v --gn-gen-args "$args"
+  out/Release/gn gen out/Release -v --args="$args" --script-executable=/usr/bin/python2
 
-  ninja -C out/Release ffmpeg
+  ninja -C out/Release -v media
 }
 
 package() {
   cd "$srcdir/chromium-$pkgver"
 
-  install -Dm644 out/Release/lib/libffmpeg.so \
-    "$pkgdir/usr/lib/opera-beta/lib_extra/libffmpeg.so"
+  install -Dm644 out/Release/libffmpeg.so \
+    "$pkgdir/usr/lib/opera-developer/lib_extra/libffmpeg.so"
 }
 
 # vim:set ts=2 sw=2 et:
