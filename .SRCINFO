@@ -1,0 +1,26 @@
+pkgbase = libresonic
+	pkgdesc = Media streaming software
+	pkgver = 6.0.1
+	pkgrel = 1
+	url = https://github.com/Libresonic/libresonic
+	install = libresonic.install
+	arch = any
+	license = GPL
+	depends = bash
+	depends = java-environment
+	conflicts = subsonic
+	conflicts = subsonic-kang
+	conflicts = subsonic-kang-git
+	conflicts = subsonic-beta
+	noextract = libresonic-v${pkgver}.war
+	backup = opt/libresonic/subsonic.properties
+	backup = etc/conf.d/libresonic.conf
+	source = http://prdownloads.sourceforge.net/subsonic/subsonic-6.0-standalone.tar.gz
+	source = https://github.com/Libresonic/libresonic/releases/download/v6.0.1/libresonic-v6.0.1.war
+	source = libresonic.service
+	sha256sums = df14d05e3b52f07486782e3e16922688968c95b0c8cc4987941bc3b9cea7872b
+	sha256sums = 52413b38ffb4e035f2d450faadc1cc52d5bd7bc65e9cd9223696a728d3ac9fba
+	sha256sums = 8d2ceae3cd0e14aeef9efd3281813dd4c0db411b950cbea6c4caf48a793dedce
+
+pkgname = libresonic
+
