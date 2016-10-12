@@ -2,9 +2,9 @@
 # Contributor: Michael Carlberg <c@rlberg.se>
 _pkgname=lemonbuddy
 pkgname="${_pkgname}-git"
-pkgver=2.0.0
-pkgrel=1
-pkgdesc="A fast and easy-to-use status bar"
+pkgver=2.0.0.rbeta.0.g593e5af
+pkgrel=2
+pkgdesc="A fast and easy-to-use tool for Lemonbar"
 arch=("i686" "x86_64")
 url="https://github.com/jaagr/lemonbuddy"
 license=("MIT")
@@ -14,7 +14,7 @@ optdepends=("alsa-lib: volume module support"
             "wireless_tools: network module support"
             "jsoncpp: i3 module support"
             "i3ipc-glib-git: i3 module support")
-makedepends=("cmake" "pkg-config" "clang" "glibc" "boost" "xcb-proto")
+makedepends=("cmake" "python2" "pkg-config" "clang" "glibc" "boost")
 provides=("lemonbuddy")
 conflicts=("lemonbuddy")
 source=("${_pkgname}::git+${url}.git")
