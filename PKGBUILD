@@ -12,7 +12,7 @@ source=("https://github.com/fralonra/zrandr/archive/${pkgver}.tar.gz")
 md5sums=('b37bc326887793bc64e42abc3550e97e')
 
 package() {
-  cd "$srcdir/$pkgname/zrandr"
+  cd "$srcdir/$pkgname-$pkgver/zrandr"
 
   install -Dm644 zrandr.desktop -t "$pkgdir/usr/share/applications/"
   install -Dm644 zrandr.py -t "$pkgdir/usr/share/zrandr/"
