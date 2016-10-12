@@ -11,7 +11,7 @@
 
 
 pkgname=sudo-masochist
-_sudover=1.8.18
+_sudover=1.8.18p1
 pkgver=${_sudover/p/.p}
 pkgrel=2
 pkgdesc="Sudo with a lot of extra insults"

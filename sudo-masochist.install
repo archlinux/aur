@@ -8,6 +8,7 @@ post_install() {
   printf "  # Don't forget to add 'Defaults !lecture,tty_tickets,insults' to your sudoers file. #\n"
   printf "  # Type your sudo password wrong and it will make you cry.                           #\n"
   printf "  # Also, reinstall every now and again im adding insults all the time.               #\n"
+  printf "  # After the first time your sudoers file won't be moved again, so rebuild often.    #\n"
   printf "  #####################################################################################\n"
 }
 
