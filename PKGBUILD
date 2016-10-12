@@ -2,10 +2,10 @@
 # Contributor: ant32 <antreimer@gmail.com>
 # Contributor: Renato Silva <br.renatosilva@gmail.com>
 pkgname=mingw-w64-glib2
-pkgver=2.48.2
+pkgver=2.50.1
 pkgrel=1
 arch=(any)
-pkgdesc="Common C routines used by GTK+ and other libs (mingw-w64)"
+pkgdesc="Low level core library (mingw-w64)"
 depends=(mingw-w64-gettext mingw-w64-zlib mingw-w64-libffi mingw-w64-pcre mingw-w64-freetype2)
 makedepends=(mingw-w64-configure python)
 license=("LGPL")
@@ -13,15 +13,13 @@ options=(!strip !buildflags staticlibs !emptydirs)
 url="http://www.gtk.org/"
 source=("http://ftp.gnome.org/pub/GNOME/sources/glib/${pkgver%.*}/glib-$pkgver.tar.xz"
 "0001-Use-CreateFile-on-Win32-to-make-sure-g_unlink-always.patch"
-"0003-g_abort.all.patch"
 "0004-glib-prefer-constructors-over-DllMain.patch"
 "0027-no_sys_if_nametoindex.patch"
 "0028-inode_directory.patch"
 "revert-warn-glib-compile-schemas.patch"
 "use-pkgconfig-file-for-intl.patch")
-sha256sums=('f25e751589cb1a58826eac24fbd4186cda4518af772806b666a3f91f66e6d3f4'
+sha256sums=('2ef87a78f37c1eb5b95f4cc95efd5b66f69afad9c9c0899918d04659cf6df7dd'
             'ef81e82e15fb3a71bad770be17fe4fea3f4d9cdee238d6caa39807eeea5da3e3'
-            '1b24cc928f69f73599f83269a7b3eb7bf7efbe114109251e6765053a1e1f4cd6'
             '7b099af0c562f397458542482d6d1debe437f220762aa2ed94b2e6c4d43dd8a6'
             '5cb481295ff86c2802030984d8b2bf6a3b1dcd5e5fe7b0be68b22d9116305837'
             'f7f06a90156fe0a308412512c359072922f7f0d19dd4bed30d863db18e48940b'
@@ -33,7 +31,6 @@ _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 prepare() {
   cd glib-$pkgver
   patch -Np1 -i .."/0001-Use-CreateFile-on-Win32-to-make-sure-g_unlink-always.patch"
-  patch -Np1 -i .."/0003-g_abort.all.patch"
   patch -Np1 -i ../0004-glib-prefer-constructors-over-DllMain.patch
   patch -Np1 -i ../"0027-no_sys_if_nametoindex.patch"
   patch -Np1 -i ../"0028-inode_directory.patch"
@@ -70,7 +67,6 @@ package() {
 		find "$pkgdir/usr/${_arch}" -name '*.exe' -exec ${_arch}-strip {} \;
 		find "$pkgdir/usr/${_arch}" -name '*.dll' -exec ${_arch}-strip --strip-unneeded {} \;
 		find "$pkgdir/usr/${_arch}" -name '*.a' -o -name '*.dll' | xargs ${_arch}-strip -g
-		rm "$pkgdir/usr/${_arch}/bin/"{glib-{gettextize,mkenums},gdbus-codegen}
 		rm -r "$pkgdir/usr/${_arch}/lib/charset.alias"
 		rm -r "$pkgdir/static"
   done
