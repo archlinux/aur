@@ -2,14 +2,14 @@
 # https://github.com/ValHue/AUR-PKGBUILDs
 #
 pkgname="ojo"
-pkgver="0.1.0r134"
-pkgrel="1"
+pkgver="0.1.0.r134"
+pkgrel="2"
 pkgdesc="A fast and good-looking image viewer"
 arch=('i686' 'x86_64')
 url="http://launchpad.net/~ojo"
 license=('GPL3')
 depends=('hicolor-icon-theme' 'python2' 'pyexiv2')
-makedepends=('desktop-file-utils')
+makedepends=('desktop-file-utils' 'python2-distutils-extra')
 optdepends=()
 conflicts=('ojo-bzr')
 provides=('ojo')

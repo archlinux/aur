@@ -1,12 +1,13 @@
 pkgbase = ojo
 	pkgdesc = A fast and good-looking image viewer
-	pkgver = 0.1.0r134
-	pkgrel = 1
+	pkgver = 0.1.0.r134
+	pkgrel = 2
 	url = http://launchpad.net/~ojo
 	arch = i686
 	arch = x86_64
 	license = GPL3
 	makedepends = desktop-file-utils
+	makedepends = python2-distutils-extra
 	depends = hicolor-icon-theme
 	depends = python2
 	depends = pyexiv2
