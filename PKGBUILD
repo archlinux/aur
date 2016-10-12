@@ -1,7 +1,7 @@
 # Maintainer: epitron <chris@ill-logic.com>
 pkgname="gitless"
 pkgver=0.8.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A scientifically proven easier-to-use git interface"
 arch=("any")
 url="http://gitless.com/"
@@ -18,6 +18,6 @@ sha256sums=(
 
 package() {
   cd ${srcdir}/${pkgname}-${pkgver}
-  patch -p1 < ../../versionless-deps.patch
+  patch -p1 < ${srcdir}/versionless-deps.patch
   python setup.py install --root=${pkgdir} --optimize=1
 }

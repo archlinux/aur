@@ -1,7 +1,7 @@
 pkgbase = gitless
 	pkgdesc = A scientifically proven easier-to-use git interface
 	pkgver = 0.8.3
-	pkgrel = 1
+	pkgrel = 2
 	url = http://gitless.com/
 	arch = any
 	license = GPL
