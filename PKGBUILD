@@ -7,8 +7,8 @@ url="http://pyscaffold.readthedocs.org/"
 arch=(any)
 license=('BSD')
 makedepends=('python-setuptools-scm' 'python2-setuptools-scm' 'python-six' 'python2-six' 'python-pbr' 'python2-pbr')
-source=("https://github.com/blue-yonder/pyscaffold/archive/v${pkgver}.tar.gz")
-sha1sums=('902824ec215b7c94c9dfe19ff853d0f69fc7f662')
+source=("pyscaffold-${pkgver}::git+https://github.com/blue-yonder/pyscaffold.git#tag=v${pkgver}")
+md5sums=('SKIP')
 
 build() {
   cp -r "${srcdir}"/pyscaffold-$pkgver "${srcdir}"/pyscaffold-$pkgver-py2
