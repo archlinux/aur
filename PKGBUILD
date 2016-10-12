@@ -61,7 +61,7 @@ pkgver() {
 
 prepare() {
 	cd "$srcdir/${pkgname%-git}"
-	patch -p1 -i "$srcdir/${pkgname%-git}.patch"
+	#patch -p1 -i "$srcdir/${pkgname%-git}.patch"
 }
 
 build() {
