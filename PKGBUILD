@@ -26,7 +26,7 @@
 
 # Maintainer: binaryplease <binaryplease@gmail.com>
 pkgname=fluxion-git
-pkgver=0.0.0
+pkgver=1.0.0
 pkgrel=1
 pkgdesc="Fluxion is a remake of linset by vk496 with less bugs and more features."
 arch=('x86_64' 'i686')
@@ -50,13 +50,10 @@ md5sums=('SKIP')
 
 pkgver() {
 	cd "$srcdir/${pkgname%-git}"
-
-
-# Git, tags available
-	printf "%s" "$(git describe --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
-
+#Git, tags available
+	#printf "%s" "$(git describe --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
 # Git, no tags available
-	#printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
