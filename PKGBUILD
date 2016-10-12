@@ -49,7 +49,7 @@ md5sums=('SKIP')
 # a description of each element in the source array.
 
 pkgver() {
-	cd "$srcdir/${pkgname%-VCS}"
+	cd "$srcdir/${pkgname%-git}"
 
 
 # Git, tags available
@@ -60,23 +60,23 @@ pkgver() {
 }
 
 prepare() {
-	cd "$srcdir/${pkgname%-VCS}"
-	patch -p1 -i "$srcdir/${pkgname%-VCS}.patch"
+	cd "$srcdir/${pkgname%-git}"
+	patch -p1 -i "$srcdir/${pkgname%-git}.patch"
 }
 
 build() {
-	cd "$srcdir/${pkgname%-VCS}"
+	cd "$srcdir/${pkgname%-git}"
 	./autogen.sh
 	./configure --prefix=/usr
 	make
 }
 
 check() {
-	cd "$srcdir/${pkgname%-VCS}"
+	cd "$srcdir/${pkgname%-git}"
 	make -k check
 }
 
 package() {
-	cd "$srcdir/${pkgname%-VCS}"
+	cd "$srcdir/${pkgname%-git}"
 	make DESTDIR="$pkgdir/" install
 }
