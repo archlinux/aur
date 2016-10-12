@@ -15,7 +15,9 @@ makedepends=('git' 'cmake' 'pkg-config' 'boost')
 source=("$pkgname::git+$url.git#tag=v${pkgver}"
   "git+$cpp/libclangmm.git"
   "git+$ghub/eidheim/tiny-process-library")
-sha1sums=('SKIP' 'SKIP' 'SKIP')
+sha1sums=('SKIP'
+          'SKIP'
+          'SKIP')
 
 pkgver() {
   cd "${srcdir}/${pkgname}"
