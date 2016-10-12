@@ -8,7 +8,7 @@ pkgdesc="A simple RFC 865-compliant QOTD (quote of the day) daemon."
 arch=('any')
 url="https://gitlab.com/ammongit/$_pkgname"
 license=('GPL')
-depends=('glibc')
+depends=()
 makedepends=('git' 'gcc' 'ghostscript' 'gzip')
 optdepends=()
 provides=("$_pkgname")
@@ -34,4 +34,4 @@ package() {
 	install -D -m644 LICENSE "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
 }
 
-# vim: set ft=sh noet:
+# vim: set sw=4 ts=4 noet:
