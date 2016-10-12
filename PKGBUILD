@@ -2,7 +2,7 @@
 
 _pkgname=scilab
 pkgname=scilab-git
-pkgver=6.0.0.beta.2.r173.gd784e47
+pkgver=6.0.0.beta.2.r240.g7703c347
 pkgrel=1
 pkgdesc='A scientific software package for numerical computations'
 arch=('i686' 'x86_64')
@@ -14,7 +14,7 @@ depends=('suitesparse>=4.4.1'  'arpack' 'fftw' 'eigen'
          'hdf5'
          'java-runtime>=8'
          'beanshell' 'eclipse-ecj' 'java-flexdock>=1.2.4' 'fop-hyph'
-         'java-freehep-vectorgraphics' 'jeuclid-core' 'jgraphx>=2.0.0.1' 'javahelp2'
+         'jeuclid-core' 'jgraphx>=2.0.0.1' 'javahelp2'
          'saxon-he' 'jlatexmath-fop>=1.0.3' 'jrosetta>=1.0.4' 'jgoodies-looks' 'java-qdox'
          'java-skinlf' 'java-testng' 'xalan-java' 'docbook-xsl'
          'jogl>=2.3.2' 'java-batik>=1.8')
@@ -67,6 +67,7 @@ build() {
     --with-umfpack \
     --with-fftw \
     --without-modelica \
+    --without-emf \
     --with-install-help-xml \
     --enable-build-help \
     --enable-build-localization \
