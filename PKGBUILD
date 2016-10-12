@@ -2,10 +2,10 @@
 # Author: horst3180 @ deviantart
 
 pkgname=vertex-themes-git
-pkgver=r571.20160404
+pkgver=r589.20161009
 pkgrel=1
-pkgdesc='Vertex Gtk2, Gtk3, Metacity, Xfwm, Cinnamon and GNOME Shell themes (GNOME 3.20 version)'
-_gnomever=3.20
+pkgdesc='Vertex Gtk2, Gtk3, Metacity, Xfwm, Cinnamon and GNOME Shell themes (GNOME 3.22 version)'
+_gnomever=3.22
 arch=('any')
 url='http://horst3180.deviantart.com/art/Vertex-Theme-470663601'
 license=('GPL3')
