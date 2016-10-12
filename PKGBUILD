@@ -2,20 +2,19 @@
 # Contributor: Michael Carlberg <c@rlberg.se>
 _pkgname=lemonbuddy
 pkgname="${_pkgname}-git"
-pkgver=1.4.6
+pkgver=2.0.0
 pkgrel=1
-pkgdesc="A fast and easy-to-use tool for Lemonbar"
+pkgdesc="A fast and easy-to-use status bar"
 arch=("i686" "x86_64")
 url="https://github.com/jaagr/lemonbuddy"
 license=("MIT")
-depends=("bash" "libxcb")
+depends=("libxft" "xcb-util-wm")
 optdepends=("alsa-lib: volume module support"
             "libmpdclient: mpd module support"
             "wireless_tools: network module support"
-            "libsigc++: i3 module support"
             "jsoncpp: i3 module support"
             "i3ipc-glib-git: i3 module support")
-makedepends=("cmake" "pkg-config" "clang" "glibc" "boost")
+makedepends=("cmake" "pkg-config" "clang" "glibc" "boost" "xcb-proto")
 provides=("lemonbuddy")
 conflicts=("lemonbuddy")
 source=("${_pkgname}::git+${url}.git")
@@ -23,7 +22,7 @@ md5sums=("SKIP")
 
 pkgver() {
   cd "$_pkgname" || exit
-  git describe --long --tags | sed "s/-/.r/;s/-/./"
+  git describe --long --tags | sed "s/-/.r/;s/-/./g"
 }
 
 prepare() {
