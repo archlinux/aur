@@ -1,5 +1,5 @@
 diff --git a/include/ClientGUI.py b/include/ClientGUI.py
-index 830b3aa..8f50075 100755
+index 8451548..d11ebd2 100755
 --- a/include/ClientGUI.py
 +++ b/include/ClientGUI.py
 @@ -174,7 +174,7 @@ class FrameGUI( ClientGUITopLevelWindows.FrameThatResizes ):
@@ -21,10 +21,10 @@ index 830b3aa..8f50075 100755
                      
                      time_waited = 0
 diff --git a/include/HydrusConstants.py b/include/HydrusConstants.py
-index 2cf7e68..1c3ce60 100755
+index f7eed65..7d110bb 100755
 --- a/include/HydrusConstants.py
 +++ b/include/HydrusConstants.py
-@@ -3,33 +3,21 @@ import sys
+@@ -3,27 +3,12 @@ import sys
  
  # dirs
  
@@ -46,24 +46,15 @@ index 2cf7e68..1c3ce60 100755
 -        
 -    
 -BIN_DIR = os.path.join( BASE_DIR, 'bin' )
+-HELP_DIR = os.path.join( BASE_DIR, 'help' )
+-INCLUDE_DIR = os.path.join( BASE_DIR, 'include' )
+-STATIC_DIR = os.path.join( BASE_DIR, 'static' )
 +BASE_DIR = os.path.expanduser("~/.local/share/hydrus")
 +
 +BIN_DIR = "/opt/hydrus/bin"
- DB_DIR = os.path.join( BASE_DIR, 'db' )
- SERVER_FILES_DIR = os.path.join( DB_DIR, 'server_files' )
- CLIENT_UPDATES_DIR = os.path.join( DB_DIR, 'client_updates' )
- SERVER_UPDATES_DIR = os.path.join( DB_DIR, 'server_updates' )
--HELP_DIR = os.path.join( BASE_DIR, 'help' )
 +HELP_DIR = "/opt/hydrus/help"
- INCLUDE_DIR = os.path.join( BASE_DIR, 'include' )
--STATIC_DIR = os.path.join( BASE_DIR, 'static' )
++INCLUDE_DIR = "/opt/hydrus/include"
 +STATIC_DIR = "/opt/hydrus/static"
  
--#
-+try:
-+    os.makedirs(DB_DIR)
-+except os.error:
-+    pass
+ #
  
- PLATFORM_WINDOWS = False
- PLATFORM_OSX  = False
