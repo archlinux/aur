@@ -27,7 +27,7 @@ source=(https://www.sudo.ws/sudo/dist/sudo-$_sudover.tar.gz{,.sig}
         sudo.pam
         git+http://bitbucket.org/NextHendrix/sudo-masochist)
 
-sha256sums=('8519e99e97fa51ac50fca2030e76f9aa5195f543ae2d15107753f4e4c4e3be13'
+sha256sums=('e5a0471c721281a693025bbde33ebd9d3db43245d83ab8516bbfc23980379434'
             'SKIP'
             'd1738818070684a5d2c9b26224906aad69a4fea77aabd960fc2675aee2df1fa2'
             'SKIP')
