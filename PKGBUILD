@@ -2,7 +2,7 @@
 
 pkgname=ida-demo
 _pkgname=${pkgname/-/}
-pkgver=6.9
+pkgver=6.95
 _pkgver=${pkgver/./}
 pkgrel=2
 pkgdesc="IDA is a multi-processor disassembler and debugger"
@@ -12,8 +12,7 @@ url="https://www.hex-rays.com/products/ida/"
 depends_i686=('qt4')
 depends_x86_64=('lib32-qt4')
 source=("https://out7.hex-rays.com/files/${_pkgname}${_pkgver}_linux.tgz")
-sha1sums=('3bdf6706520f1ff04dd88e2c2f467f3090e8e6ea')
-install='ida-demo.install'
+sha1sums=('356887e8f12fadda2b3c569328f74a6229d31d6e')
 
 package() {
 	mkdir ${pkgdir}/opt/
