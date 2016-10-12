@@ -1,0 +1,15 @@
+pkgbase = vim-ycm-latex-semantic-completer-git
+	pkgdesc = A Latex Completer for YouCompleteMe
+	pkgver = 11.352e18d
+	pkgrel = 1
+	url = https://github.com/Cocophotos/vim-ycm-latex-semantic-completer
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = vim-youcompleteme-git
+	conflicts = vim-ycm-latex-semantic-completer
+	source = git+https://github.com/Cocophotos/vim-ycm-latex-semantic-completer.git
+	sha256sums = SKIP
+
+pkgname = vim-ycm-latex-semantic-completer-git
+
