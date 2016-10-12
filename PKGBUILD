@@ -1,8 +1,8 @@
 # Maintainer: Steven Noonan <steven@uplinklabs.net>
 
 pkgbase=linux-ec2
-_srcname=linux-4.7
-pkgver=4.7.3
+_srcname=linux-4.8
+pkgver=4.8.1
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://git.uplinklabs.net/snoonan/projects/archlinux/ec2/ec2-packages.git/tree/linux-ec2"
@@ -17,14 +17,16 @@ source=("http://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         'config.i686' 'config.x86_64'
         # standard config files for mkinitcpio ramdisk
         'linux.preset'
+        '0001-xhci-demote-annoying-warning.patch'
         )
-sha256sums=('5190c3d1209aeda04168145bf50569dc0984f80467159b1dc50ad731e3285f10'
+sha256sums=('3e9150065f193d3d94bcf46a1fe9f033c7ef7122ab71d75a7fb5a2f0c9a7e11a'
             'SKIP'
-            '826b96e794d325abf430e8d6c3279a21e97e3ec321a3962b9dd6966693b14d88'
+            '79c7bda5b4ac4dee7791f34448464f7aa74d498f80df6e1e5ab73f96c5baea41'
             'SKIP'
             'SKIP'
             'SKIP'
-            '7460d523b7c5af4d7dcd87236ec708c70511a62cd54c400dc8b770e8c79cbfcb')
+            '7460d523b7c5af4d7dcd87236ec708c70511a62cd54c400dc8b770e8c79cbfcb'
+            '4fc90b07eb212f00132cdde0a5318b1c89c51c97c0af3dcc32c494f4b06000f3')
 
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linux Torvalds
@@ -46,6 +48,7 @@ prepare() {
 
   # add latest fixes from stable queue, if needed
   # http://git.kernel.org/?p=linux/kernel/git/stable/stable-queue.git
+  patch -Np1 -i "${srcdir}/0001-xhci-demote-annoying-warning.patch"
 
   cp -L "${srcdir}/config.${CARCH}" .config
 
