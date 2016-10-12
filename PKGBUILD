@@ -36,8 +36,8 @@ build() {
 package() {
   cd "$srcdir/$pkgname/build"
   make DESTDIR="$pkgdir/" install
-  cd "$srcdir" 
+  cd $srcdir
   patch -Np0 -i patchfile
   mkdir -p $pkgdir/usr/lib/cmake/anax
-  cp $pkgname/cmake/Modules/Findanax.cmake $pkgdir/usr/lib/cmake/anax/
+  cp $pkgname/cmake/Modules/Findanax.cmake $pkgdir/usr/lib/cmake/anax/anaxConfig.cmake
 }
