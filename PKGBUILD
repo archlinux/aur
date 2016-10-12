@@ -1,12 +1,14 @@
 # Maintainer: Bartosz Slawianowski <me2.legion at gmail dot com>
 pkgname=audiothumbs-frameworks-git
-pkgver=r3.7e1b206
+pkgver=r5.d10c667
 pkgrel=1
 pkgdesc="Plugin for KDE file managers (Dolphin and Konqueror) to preview cover arts embedded in audio (MP3, FLAC, OGG, M4A) files tags as thumbnails."
 arch=('i686' 'x86_64')
 url="https://github.com/eplightning/audiothumbs-frameworks"
 depends=('taglib' 'kio')
 makedepends=('extra-cmake-modules' 'git' 'flac')
+provides=('audiothumbs-frameworks')
+conflicts=('audiothumbs-frameworks')
 source=("git://github.com/eplightning/audiothumbs-frameworks.git")
 license=('LGPL')
 md5sums=('SKIP')
@@ -25,7 +27,7 @@ build() {
   cmake ../audiothumbs-frameworks \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DLIB_INSTALL_DIR=lib \
+    -DKDE_INSTALL_LIBDIR=lib \
     -DKDE_INSTALL_USE_QT_SYS_PATHS=ON
   make
 }
