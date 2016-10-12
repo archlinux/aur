@@ -2,13 +2,13 @@
 pkgname=gnome-shell-extension-services-systemd-git
 _pkgname=${pkgname%-git}
 
-pkgver=r43.2dc03c0
+pkgver=r44.40eb58e
 pkgrel=1
 pkgdesc="Toggle systemd services on/off from a menu in the gnome shell top panel"
 arch=('any')
 url="https://github.com/petres/gnome-shell-extension-services-systemd"
 license=('GPL3')
-depends=('gnome-shell<3.21')
+depends=('gnome-shell')
 makedepends=('git')
 source=("git+https://github.com/petres/gnome-shell-extension-services-systemd")
 _gitfolder="services-systemd@abteil.org"
