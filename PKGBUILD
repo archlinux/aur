@@ -50,16 +50,13 @@ md5sums=('SKIP')
 
 pkgver() {
 	cd "$srcdir/${pkgname%-git}"
-#Git, tags available
-	#printf "%s" "$(git describe --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
-# Git, no tags available
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
-prepare() {
-	cd "$srcdir/${pkgname%-git}"
+#prepare() {
+	#cd "$srcdir/${pkgname%-git}"
 	#patch -p1 -i "$srcdir/${pkgname%-git}.patch"
-}
+#}
 
 build() {
 	cd "$srcdir/${pkgname%-git}"
@@ -75,5 +72,5 @@ build() {
 
 package() {
 	cd "$srcdir/${pkgname%-git}"
-	make DESTDIR="$pkgdir/" install
+	#make DESTDIR="$pkgdir/" install
 }
