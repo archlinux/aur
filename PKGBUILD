@@ -1,20 +1,20 @@
 
 
 #build() {
-  #cd "$srcdir/${pkgname%-git}"
-  #autoreconf --force --install --symlink
-  #./configure --prefix=/usr
-  #make
+#cd "$srcdir/${pkgname%-git}"
+#autoreconf --force --install --symlink
+#./configure --prefix=/usr
+#make
 #}
 
 #check() {
-  #cd "$srcdir/${pkgname%-git}"
-  #make -k check
+#cd "$srcdir/${pkgname%-git}"
+#make -k check
 #}
 
 #package() {
-  #cd "$srcdir/${pkgname%-git}"
-  #make DESTDIR="$pkgdir/" install
+#cd "$srcdir/${pkgname%-git}"
+#make DESTDIR="$pkgdir/" install
 #}
 
 
@@ -49,28 +49,29 @@ md5sums=('SKIP')
 # a description of each element in the source array.
 
 pkgver() {
-	cd "$srcdir/${pkgname%-git}"
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+		cd "$srcdir/${pkgname%-git}"
+		printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 #prepare() {
-	#cd "$srcdir/${pkgname%-git}"
-	#patch -p1 -i "$srcdir/${pkgname%-git}.patch"
+#cd "$srcdir/${pkgname%-git}"
+#patch -p1 -i "$srcdir/${pkgname%-git}.patch"
 #}
 
 build() {
-	cd "$srcdir/${pkgname%-git}"
-	#./autogen.sh
-	#./configure --prefix=/usr
-	#make
+		cd "$srcdir/${pkgname%-git}"
+		#./autogen.sh
+		#./configure --prefix=/usr
+		#make
 }
 
 #check() {
-	#cd "$srcdir/${pkgname%-git}"
-	#make -k check
+#cd "$srcdir/${pkgname%-git}"
+#make -k check
 #}
 
 package() {
-	install "$srcdir/${pkgname%-git}"
-	#make DESTDIR="$pkgdir/" install
+		# cd "$_pkgname"
+		install "$srcdir/${pkgname%-git}"
+		install -Dm755 $_pkgname "$pkgdir/usr/bin/$_pkgname"
 }
