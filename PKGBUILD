@@ -1,6 +1,6 @@
 # Maintainer: Grant Hames-Morgan <nthmorgan at gmail dot com>
 pkgname=marp
-pkgver=0.0.8
+pkgver=0.0.9
 pkgrel=1
 pkgdesc="Markdown presentation writer, powered by Electron"
 arch=('x86_64' 'i686')
@@ -10,9 +10,9 @@ depends=('gtk2' 'xdg-utils')
 
 # Package
 source_x86_64=("${url}/releases/download/v${pkgver}/${pkgver}-Marp-linux-x64.tar.gz")
-md5sums_x86_64=('bfdb8ed0f137d1f3f0d34dda96dc6611')
+md5sums_x86_64=('af4efdb840564380f1a9f528b6cc240d')
 source_i686=("${url}/releases/download/v${pkgver}/${pkgver}-Marp-linux-ia32.tar.gz")
-md5sums_i686=('bb508a0f4dfe7d3ed924f066a7992b97')
+md5sums_i686=('8a056e543d2494441f313a027547cfb7')
 
 # Icon and desktop file
 source=(
