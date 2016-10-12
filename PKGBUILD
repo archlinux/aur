@@ -5,7 +5,7 @@
 pkgname=trustedqsl
 __pkgname=tqsl
 pkgver=2.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc="QSO log signing data for the ARRL Logbook of The World (LoTW)"
 arch=('i686' 'x86_64')
 url="http://lotw.arrl.org/"
