@@ -1,14 +1,14 @@
 # Maintainer: Martin Weinelt <hexa@darmstadt.ccc.de>
  
 pkgname=quaternion-git
-pkgver=d9a77f0
+pkgver=v0.0.1.59.g211b334
 pkgrel=1
 pkgdesc="Qt5-based IM client for the Matrix protocol"
 arch=('any')
 url="https://github.com/Fxrh/Quaternion"
 license=('LGPL')
 depends=('qt5-base' 'qt5-declarative' 'qt5-quickcontrols')
-makedepends=('git')
+makedepends=('git cmake make')
 provides=('quaternion')
 conflicts=('quaternion')
 source=('quaternion-git::git+https://github.com/fxrh/quaternion.git')
