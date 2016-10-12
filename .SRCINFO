@@ -1,0 +1,17 @@
+pkgbase = sch_cake
+	pkgdesc = The CAKE scheduler, bufferbloat.net
+	pkgver = 0.1
+	pkgrel = 1
+	url = bufferbloat.net
+	install = sch_cake.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = linux-headers
+	depends = linux
+	provides = sch_cake
+	source = git+https://github.com/dtaht/sch_cake.git
+	md5sums = SKIP
+
+pkgname = sch_cake
+
