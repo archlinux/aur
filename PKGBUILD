@@ -3,7 +3,7 @@
 pkgname=mingw-w64-gtk3
 pkgver=3.22.1
 pkgrel=1
-pkgdesc='GObject-based multi-platform GUI toolkit (v3) (mingw-w64)'
+pkgdesc='GObject-based multi-platform GUI toolkit (mingw-w64)'
 arch=(any)
 url='http://www.gtk.org'
 install="${pkgname}.install"
