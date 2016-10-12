@@ -1,7 +1,7 @@
 pkgname=mingw-w64-gtk2
 pkgver=2.24.31
 pkgrel=1
-pkgdesc="GTK+ is a multi-platform toolkit (v2) (mingw-w64)"
+pkgdesc="GObject-based multi-platform GUI toolkit (legacy) (mingw-w64)"
 arch=(any)
 url="http://www.gtk.org"
 license=("LGPL")
