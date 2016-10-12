@@ -8,12 +8,11 @@ pkgbase = bearlibterminal-hg
 	license = MIT
 	makedepends = mercurial
 	makedepends = cmake
-	depends = sfml-git
 	provides = bearlibterminal
 	source = bearlibterminal-hg::hg+https://bitbucket.org/cfyzium/bearlibterminal
 	source = __init__.py
 	md5sums = SKIP
-	md5sums = SKIP
+	md5sums = aae060316f7a787665ef85e53a7cfd38
 
 pkgname = bearlibterminal-hg
 

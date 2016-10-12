@@ -2,16 +2,15 @@
 
 pkgname=bearlibterminal-hg
 pkgver=r346.ec58820886ab
-pkgrel=1
+pkgrel=2
 pkgdesc='BearLibTerminal is a library that creates a terminal-like window facilitating flexible textual output and uncomplicated input processing.'
 arch=('i686' 'x86_64')
 url='http://foo.wyrd.name/en:bearlibterminal'
 license=('MIT')
-depends=('sfml-git')
 makedepends=('mercurial' 'cmake')
 provides=('bearlibterminal')
 source=('bearlibterminal-hg::hg+https://bitbucket.org/cfyzium/bearlibterminal' '__init__.py')
-md5sums=('SKIP' 'SKIP')
+md5sums=('SKIP' 'aae060316f7a787665ef85e53a7cfd38')
 
 pkgver() {
     cd "$pkgname"
