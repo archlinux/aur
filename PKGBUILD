@@ -7,7 +7,7 @@ arch=('x86_64' 'i686')
 url="https://github.com/deltaxflux/fluxion"
 license=('GNU')
 #depends=('readline' 'ncurses')
-makedepends=('git' 'aircrack-ng' 'gawk' 'bully' 'curl' 'dhcp' 'hostapd' 'iwconfig' 'lighttpd' 'macchanger' 'mdk3' 'nmap' 'openssl' 'php-cgi' 'pyrit' 'python' 'reaver' 'rfkill' 'unzip' 'xterm' 'zenity' 'binutils')
+makedepends=('git' 'aircrack-ng' 'gawk' 'bully' 'curl' 'dhcp' 'hostapd' 'wireless_tools' 'lighttpd' 'macchanger' 'mdk3' 'nmap' 'openssl' 'php-cgi' 'pyrit' 'python' 'reaver' 'rfkill' 'unzip' 'xterm' 'zenity' 'binutils')
 #provides=("${pkgname%-git}")
 #conflicts=("${pkgname%-git}")
 #source=("${pkgname%-git}::git+git://git.code.sf.net/p/abook/git#branch=master")
