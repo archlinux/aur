@@ -1,7 +1,7 @@
 # Maintainer: Rhinoceros <https://aur.archlinux.org/account/rhinoceros>
 
 pkgname=vim-diffchar
-pkgver=6.2
+pkgver=6.3
 pkgrel=1
 pkgdesc="Improve vim's diff mode, by finding exact differences between lines, character by character"
 arch=('any')
@@ -10,8 +10,8 @@ license=('unknown')
 depends=('vim')
 groups=('vim-plugins')
 install=vimdoc.install
-source=("$pkgname-$pkgver.zip::http://www.vim.org/scripts/download_script.php?src_id=24319")
-sha256sums=('4e24267f8c9510365b5ee2e70e873e78ea0bcdc88e69eb21ec612180998cfdf3')
+source=("$pkgname-$pkgver.zip::http://www.vim.org/scripts/download_script.php?src_id=24623")
+sha256sums=('ce48efb5a10372940ed87920de33e5041521d79e684497e896b14e70f8a447ba')
 
 prepare() {
   rm doc/tags
