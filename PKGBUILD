@@ -8,7 +8,7 @@ pkgdesc="Solver for package dependencies"
 arch=('x86_64' 'i686' 'armv6h' 'armv7h')
 url="http://potassco.sourceforge.net/"
 license=('GPL3')
-depends=('clasp>=2.1.3' 'gringo>=4.2.1')
+depends=('clasp>=2.1.3' 'clingo>=5.0.0')
 conflicts=('aspcud-svn')
 makedepends=('boost' 'cmake' 're2c')
 source=(
