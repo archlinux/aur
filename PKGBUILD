@@ -1,15 +1,15 @@
 # Maintainer: Jan Koppe <post@jankoppe.de>
 
-_npmname=yarnpkg
+_npmname=yarn
 _npmver=0.15.1
 pkgname=yarn
 pkgver=0.15.1
-pkgrel=2
+pkgrel=3
 pkgdesc='Fast, reliable, and secure dependency management.'
 arch=(any)
 url='http://yarnpkg.com'
 license=('BSD')
-depends=('npm' 'python')
+depends=('npm')
 source=('LICENSE')
 sha256sums=('3992e4db1e3af655b0413667c9e7089757154d46a36a94659f35fc090fdcf15a')
 
