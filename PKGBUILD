@@ -25,6 +25,7 @@ package_python-pyscaffold() {
 
   cd "${srcdir}/pyscaffold-$pkgver"
   python setup.py install --root=${pkgdir}
+  rm -r ${pkgdir}/usr/share/pyscaffold/docs
 }
 
 package_python2-pyscaffold() {
@@ -32,5 +33,7 @@ package_python2-pyscaffold() {
 
   cd "${srcdir}/pyscaffold-$pkgver"
   python2 setup.py install --root=${pkgdir}
+  rm -r ${pkgdir}/usr/share/pyscaffold/docs
+  mv ${pkgdir}/usr/bin/putup ${pkgdir}/usr/bin/putup2
 }
 
