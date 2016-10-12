@@ -7,7 +7,7 @@ pkgdesc="A PyQt front end for xrandr"
 arch=('any')
 url="https://github.com/fralonra/zrandr"
 license=('GPL')
-depends=('xrandr' 'python' 'python-pyqt4')
+depends=('xorg-xrandr' 'python' 'python-pyqt4')
 source=("https://github.com/fralonra/zrandr/archive/${pkgver}.tar.gz")
 md5sums=('b37bc326887793bc64e42abc3550e97e')
 
