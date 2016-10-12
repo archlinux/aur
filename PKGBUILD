@@ -1,24 +1,22 @@
 # Maintainer: Jan Koppe <post@jankoppe.de>
 
-_npmname=yarn
-_npmver=0.15.1
 pkgname=yarn
-pkgver=0.15.1
-pkgrel=3
+pkgver=0.15.0
+pkgrel=1
 pkgdesc='Fast, reliable, and secure dependency management.'
 arch=(any)
 url='http://yarnpkg.com'
 license=('BSD')
-depends=('npm')
-source=('LICENSE')
-sha256sums=('3992e4db1e3af655b0413667c9e7089757154d46a36a94659f35fc090fdcf15a')
+depends=('nodejs')
+source=("https://github.com/yarnpkg/yarn/releases/download/v$pkgver/yarn-v$pkgver.tar.gz")
+sha256sums=('93a8083bd4989d3f7c05fcf57dfe232e00a35a09e48354b9316d2bc43f74b51b')
 
-package() {
-  mkdir -p "$pkgdir/usr/share/licenses/yarn"
-  cp "$srcdir/LICENSE" "$pkgdir/usr/share/licenses/yarn/LICENSE"
-  cd "$srcdir"
-  local _npmdir="$pkgdir/usr/lib/node_modules/"
-  mkdir -p "$_npmdir"
-  cd "$_npmdir"
-  npm install --user root -g --prefix "$pkgdir/usr" $_npmname@$_npmver
+package() { 
+  install -dm755  "$pkgdir"/usr/lib/node_modules/yarn
+  cp -R "$srcdir"/dist/* "$pkgdir"/usr/lib/node_modules/yarn
+  
+  install -dm755 "$pkgdir"/usr/bin
+  ln -s /usr/lib/node_modules/yarn/bin/yarn.js "$pkgdir"/usr/bin/yarn
+  
+  install -Dm644 "$srcdir"/dist/LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }

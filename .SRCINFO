@@ -1,13 +1,13 @@
 pkgbase = yarn
 	pkgdesc = Fast, reliable, and secure dependency management.
-	pkgver = 0.15.1
-	pkgrel = 3
+	pkgver = 0.15.0
+	pkgrel = 1
 	url = http://yarnpkg.com
 	arch = any
 	license = BSD
-	depends = npm
-	source = LICENSE
-	sha256sums = 3992e4db1e3af655b0413667c9e7089757154d46a36a94659f35fc090fdcf15a
+	depends = nodejs
+	source = https://github.com/yarnpkg/yarn/releases/download/v0.15.0/yarn-v0.15.0.tar.gz
+	sha256sums = 93a8083bd4989d3f7c05fcf57dfe232e00a35a09e48354b9316d2bc43f74b51b
 
 pkgname = yarn
 
