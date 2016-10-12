@@ -6,30 +6,37 @@
 _pkgbase=gdm
 pkgbase=gdm-plymouth
 pkgname=(gdm-plymouth libgdm-plymouth)
-pkgver=3.20.1
+pkgver=3.22.0+1+g3d2aa55
 pkgrel=1
 pkgdesc="Gnome Display Manager with Plymouth support."
 arch=(i686 x86_64)
 license=(GPL)
 url="http://www.gnome.org"
-depends=('plymouth' 'gnome-shell>=3.20.0' 'gnome-shell<3.21.0' 'gnome-session' 'upower' 'xorg-xrdb' 'xorg-server' 'xorg-server-xwayland' 'xorg-xhost')
-makedepends=(itstool intltool yelp-tools gobject-introspection)
+depends=('plymouth' 'gnome-shell>=3.22.0' 'gnome-shell<3.25.0' 'gnome-session' 'upower' 'xorg-xrdb' 'xorg-server' 'xorg-server-xwayland' 'xorg-xhost')
+makedepends=('intltool' 'yelp-tools' 'gobject-introspection' 'git')
 checkdepends=('check')
-source=(http://ftp.gnome.org/pub/gnome/sources/$_pkgbase/${pkgver:0:4}/$_pkgbase-$pkgver.tar.xz
-	0002-Xsession-Don-t-start-ssh-agent-by-default.patch)
-sha256sums=('10a2512fc8455a3e60e61907a8419ae7dfba9e7ea80cfb7e2ffa746eb165789f'
+_commit=3d2aa559a4a7decc8b6568de6b41cf9f94170613
+source=("git://git.gnome.org/gdm#commit=$_commit"
+	"0002-Xsession-Don-t-start-ssh-agent-by-default.patch")
+sha256sums=('SKIP'
             '63f99db7623f078e390bf755350e5793db8b2c4e06622caf42eddc63cd39ecca')
 
+pkgver() {
+  cd $_pkgbase
+  git describe --tags | sed 's/-/+/g'
+}
+
 prepare() {
-  cd $_pkgbase-$pkgver
+  cd $_pkgbase
 
   patch -Np1 -i ../0002-Xsession-Don-t-start-ssh-agent-by-default.patch
 
   AUTOPOINT='intltoolize --automake -c' autoreconf -fi
+  NOCONFIGURE=1 ./autogen.sh
 }
 
 build() {
-  cd $_pkgbase-$pkgver
+  cd $_pkgbase
   ./configure \
     --prefix=/usr \
     --sbindir=/usr/bin \
@@ -50,13 +57,13 @@ build() {
     --with-systemd \
     --with-default-pam-config=arch
 
-  sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0 /g' -e 's/    if test "$export_dynamic" = yes && test -n "$export_dynamic_flag_spec"; then/      func_append compile_command " -Wl,-O1,--as-needed"\n      func_append finalize_command " -Wl,-O1,--as-needed"\n\0/' libtool
+  sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
 
   make
 }
 
 check() {
-  cd $_pkgbase-$pkgver
+  cd $_pkgbase
   make check
 }
 
@@ -71,7 +78,7 @@ package_gdm-plymouth() {
   groups=(gnome)
   install=gdm-plymouth.install
 
-  cd $_pkgbase-$pkgver
+  cd $_pkgbase
   make DESTDIR="$pkgdir" install
 
   chmod 711 "$pkgdir/var/log/gdm"
@@ -89,7 +96,7 @@ package_libgdm-plymouth() {
   conflicts=("libgdm")
   install=libgdm-plymouth.install
 
-  cd $_pkgbase-$pkgver
+  cd $_pkgbase
   make -C libgdm DESTDIR="$pkgdir" install
   install -Dm644 "$srcdir/org.gnome.login-screen.gschema.xml" \
     "$pkgdir/usr/share/glib-2.0/schemas/org.gnome.login-screen.gschema.xml"
