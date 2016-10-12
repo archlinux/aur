@@ -35,7 +35,7 @@ pkgbase = osquery-git
 	depends = thrift
 	depends = yara
 	backup = etc/osquery/osquery.conf
-	source = osquery-git::git+https://github.com/facebook/osquery
+	source = osquery-git::git+https://github.com/facebook/osquery#commit=fa0e15ae1090fcf676d15bfed6c803e8a015d52c
 	source = osqueryd.conf.d
 	source = osqueryd.service
 	source = arch-linux.patch

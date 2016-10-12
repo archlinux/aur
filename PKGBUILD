@@ -23,7 +23,8 @@ backup=('etc/osquery/osquery.conf')
 options=()
 install=
 changelog=
-source=("${pkgname}::git+https://github.com/facebook/osquery"
+_gitcommit="fa0e15ae1090fcf676d15bfed6c803e8a015d52c"
+source=("${pkgname}::git+https://github.com/facebook/osquery#commit=${_gitcommit}"
 		"osqueryd.conf.d"
 		"osqueryd.service"
 		"arch-linux.patch")
