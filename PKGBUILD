@@ -1,8 +1,9 @@
 # Maintainer: Thor77 <thor77 at thor77 dot org>
+# Contributor (backup): Thomas Fanninger <thomas at fanninger dot at>
 
 pkgname=linx-server
 pkgver=1.2.4
-pkgrel=2
+pkgrel=3
 pkgdesc='Self-hosted file/code/media sharing website '
 arch=('i686' 'x86_64' 'arm')
 url='https://github.com/andreimarcu/linx-server'
@@ -10,6 +11,7 @@ license=('GPL')
 install=linx-server.install
 options=('!strip')
 noextract=('linx-server')
+backup=('etc/webapps/linx-server/config.ini')
 
 source=('linx-server.service' 'config.ini')
 md5sums=('ff2e46fa6491fb58f24294e037092799' '8c2fe5caef5e0477d0da15cc0d947337')
