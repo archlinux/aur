@@ -9,7 +9,7 @@
 
 _pkgname=synergy
 pkgname=$_pkgname-git
-pkgver=20160926.r2586.db9181b
+pkgver=20161011.r2692.a6ff907
 pkgrel=1
 pkgdesc='Share a single mouse and keyboard between multiple computers'
 url='http://synergy-foss.org'
@@ -83,9 +83,6 @@ package() {
   # Install manfiles
   install -Dm644 doc/${_pkgname}c.man "$pkgdir/usr/share/man/man1/${_pkgname}c.1"
   install -Dm644 doc/${_pkgname}s.man "$pkgdir/usr/share/man/man1/${_pkgname}s.1"
-
-  # Plugin
-  install -Dm644 bin/plugins/libns.so "$pkgdir/usr/lib/$_pkgname/libns.so"
 
   # Install desktop/icon stuff
   install -Dm644 res/$_pkgname.ico "$pkgdir/usr/share/icons/$_pkgname.ico"
