@@ -11,7 +11,6 @@ url="http://lxqt.org"
 license=("GPL2")
 depends=("libfm-qt")
 makedepends=("cmake" "qt5-tools")
-install="$pkgname.install"
 source=("https://downloads.lxqt.org/$pkgname/$pkgver/$pkgname-$pkgver.tar.xz"{,.asc})
 sha256sums=("bd67b8b81a25d8ecd858787af87bc97256f15821ff4f1bb3efcfd214e2929066" "SKIP")
 validpgpkeys=('7C733BA5F585AAD669E4D23A42C9C8D3AF5EA5E3')
