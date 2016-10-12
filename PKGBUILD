@@ -1,13 +1,16 @@
 # Maintainer: Olivier Mehani <shtrom-aur@ssji.net>
 pkgname=pdfsizeopt-git
 pkgver=r263.cba29b4
-pkgrel=1
+pkgrel=2
 pkgdesc="PDF file size optimizer"
 arch=(any)
 url="https://github.com/pts/pdfsizeopt"
 license=('GPL2')
 groups=()
 depends=("python2>=2.4" "ghostscript>=8.61" "sam2p" "tif22pnm")
+provides=(pdfsizeopt)
+conflicts=(pdfsizeopt-svn)
+replaces=(pdfsizeopt-svn)
 makedepends=('subversion')
 optdepends=("multivalent-pdf-tools: to optimise cross reference table and object serialisation [use --use-multivalent=true]"
             "pngout: to optimise the size of PNG parts [use --use-jbig2=true]"
