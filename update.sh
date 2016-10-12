@@ -14,12 +14,12 @@ if [ $newver != $oldver ]; then
     echo "Resetting release to 1."
     sed -i "5s/.*/pkgrel=1/" PKGBUILD
   fi
-  sed -i "14s/.*/$(makepkg --geninteg)/" PKGBUILD
+  sed -i "15s/.*/$(makepkg --geninteg)/" PKGBUILD
 fi
 
 makepkg --printsrcinfo > .SRCINFO
 
-#git add PKGBUILD
-#git add .SRCINFO
-#git commit -m 'automated version bump'
-#git push
+git add PKGBUILD
+git add .SRCINFO
+git commit -m 'automated version bump'
+git push
