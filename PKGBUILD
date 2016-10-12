@@ -68,10 +68,10 @@ build() {
 	#make
 }
 
-check() {
-	cd "$srcdir/${pkgname%-git}"
-	make -k check
-}
+#check() {
+	#cd "$srcdir/${pkgname%-git}"
+	#make -k check
+#}
 
 package() {
 	cd "$srcdir/${pkgname%-git}"
