@@ -1,7 +1,7 @@
 # Maintainer: Clemens Brunner <clemens dot brunner at gmail dot com>
 pkgname=nbc
 pkgver=1.2.1.r4
-pkgrel=2
+pkgrel=3
 pkgdesc="Next Byte Codes (NBC) compiler"
 arch=('i686' 'x86_64')
 url="http://bricxcc.sourceforge.net/nbc/"
