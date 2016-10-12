@@ -63,9 +63,9 @@ prepare() {
 
 build() {
 	cd "$srcdir/${pkgname%-git}"
-	./autogen.sh
-	./configure --prefix=/usr
-	make
+	#./autogen.sh
+	#./configure --prefix=/usr
+	#make
 }
 
 check() {
