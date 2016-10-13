@@ -2,7 +2,7 @@
 
 pkgname=sidef
 pkgver=2.32
-pkgrel=1
+pkgrel=2
 pkgdesc="A modern object-oriented programming language."
 arch=('any')
 url="https://github.com/trizen/${pkgname}"
@@ -17,7 +17,7 @@ sha256sums=('1812ed4c112256a8c3b608eb61547351905d53f881e97297634b78487b1134f0')
 package() {
     cd "$pkgname-$pkgver"
 
-    perl Makefile.PL DESTDIR="$pkgdir" INSTALLDIRS=vendor
+    perl Makefile.PL DESTDIR="$pkgdir" INSTALLDIRS=vendor INSTALLVENDORSCRIPT="/usr/bin"
     make &&
     make test &&
     make install
