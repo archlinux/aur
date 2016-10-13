@@ -1,7 +1,7 @@
 # Maintainer: Giancarlo Razzolini <grazzolini@gmail.com>
 pkgname=mkinitcpio-tinyssh
 pkgver=0.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Archlinux mkinitcpio hook to install and enable the tinyssh daemon in early userspace"
 arch=('any')
 url="https://github.com/grazzolini/mkinitcpio-tinyssh"
@@ -20,4 +20,5 @@ sha512sums=('16f5f2c09bdcf53a7a63011630c6ce03c73db724a3bed52145e53a9d4dc818878af
 package() {
   install -Dm644 "$srcdir/$pkgname-$pkgver/tinyssh_hook"      "$pkgdir/usr/lib/initcpio/hooks/tinyssh"
   install -Dm644 "$srcdir/$pkgname-$pkgver/tinyssh_install"   "$pkgdir/usr/lib/initcpio/install/tinyssh"
+  install -Dm644 "$srcdir/$pkgname-$pkgver/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
