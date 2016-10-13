@@ -2,7 +2,8 @@
 # Original AUR3 package by: Libernux <dutchman55@gmx.com>
 pkgname="brother-dcp150c"
 pkgver="1.0.1"
-pkgrel=1
+pkgrel=2
+_brotherrel=1 # pkgrel for the download url
 pkgdesc="LPR and CUPS driver for the Brother DCP150C"
 arch=('i686' 'x86_64')
 url="http://solutions.brother.com/linux/en_us/"
@@ -10,8 +11,8 @@ license=('custom:brother commercial license')
 depends=('cups')
 install="$pkgname.install"
 source=(
-	"http://www.brother.com/pub/bsc/linux/dlf/dcp150clpr-$pkgver-$pkgrel.i386.rpm"
-	"http://www.brother.com/pub/bsc/linux/dlf/dcp150ccupswrapper-$pkgver-$pkgrel.i386.rpm"
+	"http://www.brother.com/pub/bsc/linux/dlf/dcp150clpr-$pkgver-${_brotherrel}.i386.rpm"
+	"http://www.brother.com/pub/bsc/linux/dlf/dcp150ccupswrapper-$pkgver-${_brotherrel}.i386.rpm"
 	'cupswrapper-license.txt'
 	'lpr-license.txt'
 )
@@ -52,10 +53,19 @@ prepare() {
 	fi
 #  /etc/printcap is managed by cups
 	rm `find $srcdir -type f -name 'setupPrintcap*'`
+
+	# !!!ATTENTION!!!
+	# This setting might not be right for you if you print on letter-sized (US) paper.
+	# Printing on A4 wasn't centered for me, and manually tweaking the printable area didn't have
+	# any effect (I did select A4 paper size in the printing dialog).
+	# The only fix I could find is changing the PaperType like below. I don't have a `letter`
+	# paper, so I don't know how this affects those who do.
+	# If this breaks something for you or you have a better solution, please leave a comment.
+	sed -i "s/PaperType=Letter/PaperType=A4/" "${srcdir}/usr/share/brother/Printer/dcp150c/inf/brdcp150crc"
 }
 package() {
-	cp -R $srcdir/usr $pkgdir
-	if [ -d $srcdir/opt ]; then cp -R $srcdir/opt $pkgdir; fi
-	install -m 644 -D cupswrapper-license.txt $pkgdir/usr/share/licenses/${pkgname}/cupswrapper-licence.txt
-	install -m 644 -D lpr-license.txt $pkgdir/usr/share/licenses/${pkgname}/lpr-licence.txt
+	cp -R "${srcdir}/usr" "$pkgdir"
+	if [ -d "${srcdir}/opt" ]; then cp -R "${srcdir}/opt" "$pkgdir"; fi
+	install -m 644 -D cupswrapper-license.txt "$pkgdir/usr/share/licenses/${pkgname}/cupswrapper-licence.txt"
+	install -m 644 -D lpr-license.txt "$pkgdir/usr/share/licenses/${pkgname}/lpr-licence.txt"
 }
