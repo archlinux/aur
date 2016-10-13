@@ -1,0 +1,8 @@
+[Unit]
+Description=caps2esc
+
+[Service]
+ExecStart=/usr/bin/nice -n -20 /usr/bin/caps2esc
+
+[Install]
+WantedBy=multi-user.target
