@@ -66,7 +66,8 @@ backup_week_day_number=6 # Saturday
 number_of_daily_retention_days=14 # Daily backups for the last 14 days.
 number_of_weekly_retention_days=56 # Weekly backups for the last 2 month.
 number_of_monthly_retention_days=365 # Monthly backups for the last year.
-backup_command='rsync --recursive --delete --perms --executability --owner --group --times --devices --specials --acls --links --super --whole-file --force --protect-args --hard-links --max-delete=1 --progress --human-readable --itemize-changes --verbose "$source_path" "$target_file_path" && tar --dereference --create --verbose --gzip --file "${target_file_path}.tar.gz" "$target_file_path" && rm --recursive --verbose "$target_file_path"'
+target_file_extension='.tar.gz'
+backup_command='rsync --recursive --delete --perms --executability --owner --group --times --devices --specials --acls --links --super --whole-file --force --protect-args --hard-links --max-delete=1 --progress --human-readable --itemize-changes --verbose "$source_path" "$target_file_path" && tar --dereference --create --verbose --gzip --file "${target_file_path}${target_file_extension}" "$target_file_path" && rm --recursive --verbose "$target_file_path"'
 # Folder to delete is the last command line argument.
 cleanup_command='rm --recursive --verbose'
 verbose=false
@@ -87,16 +88,16 @@ for source_path in "${!source_target_mappings[@]}"; do
     target_file_path="${target_path}/${daily_target_path}${target_daily_file_name}"
     if [[ "$month_day_number" == "$backup_month_day_number" ]]; then
         target_file_path="${target_path}/${monthly_target_path}${target_monthly_file_name}"
-        ln --symbolic --force "$target_file_path" \
-            "${target_path}/${daily_target_path}${target_daily_file_name}"
+        ln --symbolic --force "${target_file_path}${target_file_extension}" \
+            "${target_path}/${daily_target_path}${target_daily_file_name}${target_file_extension}"
         if [[ "$week_day_number" == "$backup_week_day_number" ]]; then
-            ln --symbolic --force "$target_file_path" \
-                "${target_path}/${daily_target_path}${target_weekly_file_name}"
+            ln --symbolic --force "${target_file_path}${target_file_extension}" \
+                "${target_path}/${daily_target_path}${target_weekly_file_name}${target_file_extension}"
         fi
     elif [[ "$week_day_number" == "$backup_week_day_number" ]]; then
         target_file_path="${target_path}/${weekly_target_path}${target_weekly_file_name}"
-        ln --symbolic --force "$target_file_path" \
-            "${target_path}/${daily_target_path}${target_daily_file_name}"
+        ln --symbolic --force "${target_file_path}${target_file_extension}" \
+            "${target_path}/${daily_target_path}${target_daily_file_name}${target_file_extension}"
     fi
     mkdir --parents "$(dirname "$target_file_path")"
     if $verbose; then
