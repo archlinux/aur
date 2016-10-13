@@ -2,7 +2,7 @@
 
 pkgname=python-libdesktop-git
 _pkgname=libdesktop
-pkgver=r29.1193c2f
+pkgver=r32.660fdcc
 pkgrel=1
 pkgdesc="OS and desktop integration made easy."
 arch=('any')
@@ -10,6 +10,7 @@ url="https://github.com/bharadwaj-raju/libdesktop"
 license=('MIT')
 depends=('python')
 makedepends=('git')
+optdepends=("pygtk" "python-pyqt4" "python-pyqt5" "python-gobject")
 options=(!emptydirs)
 source=("git+https://github.com/bharadwaj-raju/libdesktop")
 md5sums=(SKIP)
