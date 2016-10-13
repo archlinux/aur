@@ -7,7 +7,7 @@
 set -u
 _pkgname='relax-and-recover'
 pkgname="${_pkgname}-git"
-pkgver=1.18.r44.g4a82c29
+pkgver=1.19.r2.g28199db
 pkgrel=1
 pkgdesc='bootable Linux disaster recovery, formerly rear'
 arch=('any')
@@ -17,7 +17,7 @@ depends=('lsb-release' 'iproute2' 'parted' 'util-linux' 'cpio' 'mingetty' 'gawk'
 optdepends=( 'nfs-utils: to save images to NFS shares'
              'cdrkit: to create ISO images'
              'syslinux: to create bootable media')
-makedepends=('git' 'asciidoc' 'xmlto')
+makedepends=('git' 'asciidoc' 'xmlto' 'sed' 'bash')
 provides=("${_pkgname}=${pkgver%%.r*}")
 conflicts=("${_pkgname}")
 replaces=('rear')
