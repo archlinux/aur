@@ -86,7 +86,7 @@ for source_path in "${!source_target_mappings[@]}"; do
         grep '^[^ ]+' --only-matching --extended-regexp)"
     target_file_path="${target_path}/${daily_target_path}${target_daily_file_name}"
     if [[ "$month_day_number" == "$backup_month_day_number" ]]; then
-        target_file_path="${target_path}/${daily_target_path}${target_monthly_file_name}"
+        target_file_path="${target_path}/${monthly_target_path}${target_monthly_file_name}"
         ln --symbolic --force "$target_file_path" \
             "${target_path}/${daily_target_path}${target_daily_file_name}"
         if [[ "$week_day_number" == "$backup_week_day_number" ]]; then
@@ -94,7 +94,7 @@ for source_path in "${!source_target_mappings[@]}"; do
                 "${target_path}/${daily_target_path}${target_weekly_file_name}"
         fi
     elif [[ "$week_day_number" == "$backup_week_day_number" ]]; then
-        target_file_path="${target_path}/${daily_target_path}${target_weekly_file_name}"
+        target_file_path="${target_path}/${weekly_target_path}${target_weekly_file_name}"
         ln --symbolic --force "$target_file_path" \
             "${target_path}/${daily_target_path}${target_daily_file_name}"
     fi
