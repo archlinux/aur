@@ -6,7 +6,6 @@ _version=beta
 
 # Versions
 _about_url="https://github.com/fusion809/about"
-_about_arch_ver=1.6.2
 _language_gfm2_ver=0.92.2
 _language_liquid_ver=0.5.1
 
@@ -26,7 +25,6 @@ makedepends=('git' 'npm')
 conflicts=('atom-editor-beta-bin' 'atom-editor-beta-arch')
 install=atom.install
 source=("${_pkgname}-${_pkgver}-${_version}${_pkgrel}.tar.gz::$url/archive/v${_pkgver}-${_version}${_pkgrel}.tar.gz"
-"about-arch-${_about_arch_ver}.tar.gz::$_about_url/archive/v${_about_arch_ver}.tar.gz"
 "${_pkgname}-${_version}.desktop"
 "${_pkgname}-${_version}"
 "about-beta.patch")
@@ -42,25 +40,12 @@ prepare() {
   sed -i -e "/exception-reporting/d" \
 	       -e "/metrics/d" \
          -e "s/\"language-gfm\": \".*\",/\"language-gfm2\": \"${_language_gfm2_ver}\",\n    \"language-liquid\": \"${_language_liquid_ver}\",/g" \
-         -e "s/\"about\": \".*\"/\"about-arch\": \"${_about_arch_ver}\"/g" \
          package.json
 
 	chmod 755 -R package.json
 
   sed -i -e 's@node script/bootstrap@node script/bootstrap --no-quiet@g' \
   ./script/build
-
-  if ! [[ -d node_modules ]]; then
-    mkdir -p node_modules
-  else
-    rm -rf node_modules/about-arch
-  fi
-
-  mv $srcdir/about-${_about_arch_ver} $srcdir/about-arch
-  mv $srcdir/about-arch node_modules
-  cd node_modules/about-arch
-  patch -Np1 -i $srcdir/about-beta.patch
-  cd -
 
 	sed -i -e "s/<%=Desc=%>/$pkgdesc/g" ${srcdir}/${_pkgname}-${_version}.desktop
 }
