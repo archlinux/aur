@@ -1,6 +1,6 @@
 pkgbase = vivaldi-widevine
 	pkgdesc = A browser plugin designed for the viewing of premium video content, standalone for vivaldi
-	pkgver = 1.4.8.893
+	pkgver = 1.4.8.903
 	pkgrel = 1
 	epoch = 1
 	url = http://www.google.com/chrome
@@ -13,8 +13,8 @@ pkgbase = vivaldi-widevine
 	sha256sums = e93c01576427cad9099f2cf0df0be70d0a2cc0a3a66c743318b2138aa7c4ed93
 	source_i686 = http://mirror.retrosnub.co.uk/apt/google/pool/main/g/google-chrome-stable/google-chrome-stable_48.0.2564.116-1_i386.deb
 	sha256sums_i686 = 7401ad3698a28bf2b45e350fd2b941c44cb51dbb3f87b0e7dd1a2da72c42f594
-	source_x86_64 = https://dl.google.com/linux/deb/pool/main/g/google-chrome-stable/google-chrome-stable_53.0.2785.143-1_amd64.deb
-	sha256sums_x86_64 = 7829c424b8051a499f928ca9b5591dd02e027e73585e730feeed9114fde91758
+	source_x86_64 = https://dl.google.com/linux/deb/pool/main/g/google-chrome-stable/google-chrome-stable_54.0.2840.59-1_amd64.deb
+	sha256sums_x86_64 = 51101b9aeb30eb04e09f44c2ea3ece8b8d1a735d23acff02d0ad7f77721e4e7e
 
 pkgname = vivaldi-widevine
 
