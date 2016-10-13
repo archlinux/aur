@@ -124,8 +124,8 @@ prepare() {
 
   # Apply the ivb patches
   cd $pkgname
-  patch -Np1 -i ../patch-$pkgver-ivb.patch
-  patch -Np1 -i ../patch_temp_constants.patch
+  patch -Np1 -i $srcdir/patch-$pkgver-ivb.patch
+  patch -Np1 -i $srcdir/patch_temp_constants.patch
 }
 
 build() {
