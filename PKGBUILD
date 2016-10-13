@@ -3,7 +3,7 @@
 
 pkgbase=python-acme
 pkgname=('python-acme' 'python2-acme')
-pkgver=0.9.1
+pkgver=0.9.2
 pkgrel=1
 pkgdesc="ACME protocol implementation in Python"
 arch=('any')
@@ -17,26 +17,26 @@ makedepends=('python-setuptools' 'python2-setuptools' 'python-pyasn1' 'python2-p
              'python-mock' 'python2-mock')
 checkdepends=('python-nose' 'python2-nose')
 source=("https://pypi.io/packages/source/a/acme/acme-$pkgver.tar.gz")
-sha512sums=('214e4b8c63afa9fd45baca52ee50c11add12a4c9bdfd04b495faaf1ad57d8683661892c57ea66278cbc78b1c07e1d4adbc53b289a9b743c783dfd61a74bc961a')
+sha512sums=('7c9b3318a0c60c66feb057f21d6200792cb5a3fc03cf089dcc6f02be101e12865fdc3398e0b023ed57a701a54f36e046d5dc12c41e897a741b15459f84914495')
 
 prepare() {
   cp -a acme-$pkgver{,-py2}
 }
 
 build() {
-  cd "$srcdir/acme-$pkgver"
+  cd "$srcdir"/acme-$pkgver
   python setup.py build
 
-  cd "$srcdir/acme-$pkgver-py2"
+  cd "$srcdir"/acme-$pkgver-py2
   python2 setup.py build
 }
 
 check() {
-  cd "$srcdir/acme-$pkgver"
-  nosetests3
+  cd "$srcdir"/acme-$pkgver
+  python setup.py nosetests
 
-  cd "$srcdir/acme-$pkgver-py2"
-  nosetests2
+  cd "$srcdir"/acme-$pkgver-py2
+  python2 setup.py nosetests
 }
 
 package_python-acme() {
@@ -45,7 +45,7 @@ package_python-acme() {
            'python-six' 'python-werkzeug' 'python-mock')
 
   cd acme-$pkgver
-  python setup.py install --root="${pkgdir}" --optimize=1
+  python setup.py install --root="$pkgdir" --optimize=1
 }
 
 package_python2-acme() {
@@ -54,7 +54,7 @@ package_python2-acme() {
            'python2-six' 'python2-werkzeug' 'python2-mock')
 
   cd acme-$pkgver-py2
-  python2 setup.py install --root="${pkgdir}" --optimize=1
+  python2 setup.py install --root="$pkgdir" --optimize=1
 
   mv "$pkgdir"/usr/bin/jws{,2}
 }
