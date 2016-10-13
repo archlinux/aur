@@ -5,16 +5,16 @@
 
 pkgname=mutter-hide-legacy-decorations
 _pkgname=mutter
-pkgver=3.20.3
-pkgrel=2
+pkgver=3.22.1
+pkgrel=1
 pkgdesc="A window manager for GNOME (with a little hack to hide the window decorations on maximized legacy applications)"
 url="https://git.gnome.org/browse/mutter"
 arch=(i686 x86_64)
 license=(GPL)
-depends=(clutter dconf gobject-introspection-runtime gsettings-desktop-schemas
+depends=(dconf gobject-introspection-runtime gsettings-desktop-schemas
          libcanberra startup-notification zenity libsm gnome-desktop upower
-         libxkbcommon-x11 gnome-settings-daemon libgudev)
-makedepends=(intltool gobject-introspection)
+         libxkbcommon-x11 gnome-settings-daemon libgudev libinput)
+makedepends=(intltool gobject-introspection git gnome-common)
 replaces=('mutter-wayland' 'mutter')
 conflicts=('mutter-wayland' 'mutter')
 provides=("mutter=${pkgver}")
@@ -22,27 +22,41 @@ groups=(gnome)
 options=(!emptydirs)
 
 
-source=("https://download.gnome.org/sources/$_pkgname/${pkgver:0:4}/$_pkgname-$pkgver.tar.xz"
+_commit=f63bb024fa72887b845c8cfb6c06d5338f35f4dd  # tags/3.22.1^0
+source=("git://git.gnome.org/mutter#commit=$_commit"
         "hideTitlebar.patch")
 
-sha256sums=('142c5271df4bde968c725ed09026173292c07b4dd7ba75f19c4b14fc363af916'
+sha256sums=('SKIP'
             'ec1a0f5f98213c340e907761e72fc3e22cb9c8ff503c6c234a4a41aac4ec7ac4')
 
+pkgver() {
+  cd $_pkgname
+  git describe --tags | sed 's/-/+/g'
+}
+
+prepare() {
+  cd $_pkgname
+  NOCONFIGURE=1 ./autogen.sh
+}
 
 build() {
-  cd "$_pkgname-$pkgver"
+  cd "$_pkgname"
+
   patch -p1 -i $srcdir/hideTitlebar.patch
+
   ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var \
       --libexecdir=/usr/lib/$_pkgname --disable-static \
-      --disable-schemas-compile --enable-compile-warnings=minimum
+      --disable-schemas-compile --enable-compile-warnings=minimum \
+      --enable-gtk-doc
 
   #https://bugzilla.gnome.org/show_bug.cgi?id=655517
-  sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
+  sed -e 's/ -shared / -Wl,-O1,--as-needed\0/g' \
+      -i {.,cogl,clutter}/libtool
 
   make
 }
 
 package() {
-  cd "$_pkgname-$pkgver"
+  cd "$_pkgname"
   make DESTDIR="$pkgdir" install
 }
