@@ -1,0 +1,17 @@
+pkgbase = neovim-project
+	pkgdesc = Organize and navigate projects of files (like an ide/buffer explorer)
+	pkgver = 1.4.1
+	pkgrel = 1
+	url = http://www.vim.org/scripts/script.php?script_id=69
+	install = nvim-doc.install
+	arch = any
+	groups = neovim-plugins
+	license = custom
+	depends = neovim
+	source = neovim-project.tar.gz::http://www.vim.org/scripts/download_script.php?src_id=6273
+	source = LICENSE
+	sha256sums = 6e0c60cb2782d8232182124b0b617fdb6f1e1fcf0259273ce717940976d0b097
+	sha256sums = e5cf201d8687c2b7752dc10a24810ec29f7bec1dfab0b3f03cde3e9909cddc0f
+
+pkgname = neovim-project
+
