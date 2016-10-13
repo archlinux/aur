@@ -4,7 +4,7 @@
 # Based on package by: Denis Saintilma <1068des@gmail.com>
 
 pkgname=plexpy
-pkgver=1.4.13
+pkgver=1.4.14
 pkgrel=1
 pkgdesc="A Python based monitoring and tracking tool for Plex Media Server."
 arch=('any')
@@ -18,7 +18,7 @@ install='plexpy.install'
 source=("$pkgname-$pkgver.tar.gz::https://github.com/JonnyWong16/plexpy/archive/v$pkgver.tar.gz" 
         'plexpy.service'
         'plexpy.install')
-sha256sums=('5d4cd7c4f6514cf6890f8039ad67ecd40598c0edcb8e8ad641de53bf7059db52'
+sha256sums=('2f1762b894eb92b498caa86f92a3846231ba1dcdfb836cf7ea8a72e45c93e795'
             '3f07ceae4c5a5c78b21af0ca9b3478f7a3bc7bb6f152021e05bf39c9a7155a78'
             '93d8bc219acc2781f14d832443bc226a4fa6cc751f5ecf5cac5a407187c69160')
 
