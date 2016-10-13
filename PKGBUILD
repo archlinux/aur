@@ -1,34 +1,26 @@
 # Contributor: Sapphira Armageddos <shadowkyogre@aim.com>
+
+_upstream=qarithmancy
+
 pkgname=qarithmancy-git
-pkgver=20130111
+pkgver=0.1.4
 pkgrel=1
 pkgdesc="Comprehensive numerology application using PyQt"
-arch='any'
+arch=('any')
 url="https://github.com/ShadowKyogre/QArithmancy"
 license=('GPL')
 depends=('pyqt' 'python-dateutil')
-source=()
-md5sums=() #generate with 'makepkg -g'
+source=("${pkgname}::git://github.com/ShadowKyogre/${_upstream}.git")
+md5sums=(SKIP) #generate with 'makepkg -g'
 
-_gitroot=git://github.com/ShadowKyogre/QArithmancy.git
-_gitname=QArithmancy
-
-
-build() {
-  cd "${srcdir}"
-  if test -d QArithmancy;then
-    cd QArithmancy
-    git pull
-  else
-    git clone ${_gitroot} --depth=1
-    cd QArithmancy
-  fi
-  python3 ./setup.py build
+pkgver() {
+  cd "$pkgname"
+  git describe --tags | sed -r 's/([^-]*-g)/r\1/;s/-/./g'
 }
 
 package()
 {
-  cd "${srcdir}/QArithmancy"
+  cd "${srcdir}/${pkgname}"
   python3 ./setup.py install --root="$pkgdir"
 }
 
