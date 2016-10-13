@@ -1,19 +1,17 @@
 # Maintainer: XavierCLL <xavier.corredor.llano (a) gmail.com>
 
 pkgname=insync-dolphin
-pkgver=1.3.8.36087
+pkgver=1.3.12.36116
 pkgrel=1
 pkgdesc="Dolphin integration for insync (kf5)"
 url="https://www.insynchq.com/downloads"
 license=('custom:insync')
 options=(!strip)
 arch=('any')
-
 depends=("insync" "dolphin")
 source=("${pkgname}-${pkgver}.deb::http://s.insynchq.com/builds/${pkgname}_${pkgver}-precise_all.deb")
-sha256sums=('51d8dfbd8240859938aac803c5b8f1e0377bd33e7ea80932f8c0238851c2fafc')
+sha256sums=('9f5f961814ae728a01fa6d36db584b21bff568fc74fbbaca5b5425f5ddb57b58')
 noextract=("${pkgname}-${pkgver}.deb")
-install=$pkgname.install
 
 package() {
    cd $srcdir
