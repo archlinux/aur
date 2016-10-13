@@ -1,13 +1,12 @@
 # Maintainer: Guillaume ALAUX <guillaume at alaux dot net>
 # Contributor: James Bulmer <nekinie@gmail.com>
-# Sources available at https://github.com/galaux/arch_kafka
 pkgname=kafka
 # You can change this for one of the Scala version upstream has already built
 # against as explained on https://kafka.apache.org/downloads.html
 # but do not remove the Scala jar as the Kafka tarball is compiled against it
 # and __not__ against the one from the Scala package
 _scalaver=2.11
-_appver=0.9.0.1
+_appver=0.10.0.1
 pkgver=${_scalaver}_${_appver}
 _pkgver=${pkgver/_/-}
 pkgrel=1
@@ -16,14 +15,18 @@ arch=('any')
 url='https://kafka.apache.org/'
 license=('Apache')
 depends=('java-runtime' 'zookeeper')
-backup=(etc/kafka/consumer.properties
+backup=(etc/kafka/connect-console-sink.properties
+        etc/kafka/connect-console-source.properties
+        etc/kafka/connect-distributed.properties
+        etc/kafka/connect-file-sink.properties
+        etc/kafka/connect-file-source.properties
+        etc/kafka/connect-log4j.properties
+        etc/kafka/connect-standalone.properties
+        etc/kafka/consumer.properties
         etc/kafka/log4j.properties
         etc/kafka/producer.properties
         etc/kafka/server.properties
-        etc/kafka/test-log4j.properties
-        etc/kafka/tools-log4j.properties
-        etc/zookeeper/zookeeper-kafka/zoo.cfg
-        etc/zookeeper/zookeeper-kafka/log4j.properties)
+        etc/kafka/tools-log4j.properties)
 install=install_kafka.sh
 
 _apache_cgi="http://www.apache.org/dyn/closer.cgi"
@@ -35,7 +38,7 @@ source=(${_closest}/${_app_path}
         systemd_sysusers.d_kafka.conf
         systemd_tmpfiles.d_kafka.conf)
 
-sha256sums=('db28f4d5a9327711013c26632baed8e905ce2f304df89a345f25a6dfca966c7a'
+sha256sums=('2d73625aeddd827c9e92eefb3c727a78455725fbca4361c221eaa05ae1fab02d'
             '00780ee4cea3bb7a282a548f41b8964d5e392776f9d687ebea89cd49ed5742e3'
             'e1a5ad12c4f0873740f4c34817bd6733a9b1541c68f2bb3aab3ac1be591f1fde'
             'dc1f3f94662339bcfb5cd4d058c06431f0e3d37e59f8c66a870e8fb02d9b5079'
@@ -63,15 +66,20 @@ package() {
 
   ln -s /etc/${pkgname} "${pkgdir}${_app_home}/config"
 
-  cp -r bin/kafka-* "${pkgdir}${_app_home}/bin/"
+  cp -r bin/kafka-* bin/connect-* "${pkgdir}${_app_home}/bin/"
   rm -rf "${pkgdir}${_app_home}/bin/windows"
   sed -i "s|\$(dirname \$0)|${_app_home}/bin|" "${pkgdir}"${_app_home}/bin/*
   for b in "${pkgdir}"${_app_home}/bin/*; do
     bname=$(basename $b)
     ln -s ${_app_home}/bin/${bname} "${pkgdir}/usr/bin/${bname}"
   done
-  install bin/zookeeper-shell.sh "${pkgdir}${_app_home}/bin/zookeeper-shell.sh"
-  ln -s ${_app_home}/bin/zookeeper-shell.sh "${pkgdir}/usr/bin/kafka-zookeeper-shell.sh"
+  # Do not exist in package Zookeeper, so let's ship them
+  for b in shell security-migration; do
+    install bin/zookeeper-${b}.sh \
+      "${pkgdir}${_app_home}/bin/zookeeper-${b}.sh"
+    ln -s ${_app_home}/bin/zookeeper-${b}.sh \
+      "${pkgdir}/usr/bin/kafka-zookeeper-${b}.sh"
+  done
   ln -s ../../java/zookeeper/zookeeper.jar \
     "${pkgdir}/usr/share/java/${pkgname}/zookeeper.jar"
 
