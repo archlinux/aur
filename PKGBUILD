@@ -18,7 +18,8 @@ depends=('lua-lpeg'
          'lua-filesystem'
          'fontconfig'
          'icu'
-         'harfbuzz>=1.2.6')
+         'harfbuzz>=1.2.6'
+         'ttf-gentium-plus')
 
 pkgver() {
     cd "$srcdir/${pkgname%-git}"
