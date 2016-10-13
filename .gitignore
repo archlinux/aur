@@ -1,3 +1,4 @@
 v*.tar.gz
 mkinitcpio-ppp-*-any.pkg.tar.xz
 mkinitcpio-ppp-*.src.tar.gz
+mkinitcpio-ppp-*.tar.gz
