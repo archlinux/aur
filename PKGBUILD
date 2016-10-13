@@ -15,7 +15,7 @@ _language_unix_shell_ver=0.38.2
 _language_vala_modern_ver=0.3.2
 
 pkgname=${_pkgname}-editor-${_version}
-pkgver=1.13.0.dev.i1.18.3.l0.5.1.m0.92.2.p1.0.0.u0.38.2.v0.3.2.c30158
+pkgver=1.13.0.dev.i1.18.3.l0.5.1.m0.92.2.p1.0.0.u0.38.2.v0.3.2.c30160
 pkgrel=1
 pkgdesc='Hackable text editor for the 21st Century, based on web technologies - git channel.'
 arch=('x86_64' 'i686')
@@ -36,7 +36,7 @@ pkgver() {
   cd $srcdir/$_pkgname
   _basever=$(cat package.json | grep version | sed 's/version//g' | sed 's/://g' | sed 's/ //g' |  sed 's/"//g' | sed 's/,//g' | sed 's/-/./g')
   _commitno=$(git rev-list --count HEAD)
-  printf "${_basever}.l${_language_liquid_ver}.m${_language_gfm2_ver}.u${_language_unix_shell_ver}.c${_commitno}"
+  printf "${_basever}.i${_language_ini_desktop_ver}.l${_language_liquid_ver}.m${_language_gfm2_ver}.p${_language_patch2_ver}.u${_language_unix_shell_ver}.v${_language_vala_modern_ver}.c${_commitno}"
 }
 
 prepare() {
@@ -49,7 +49,7 @@ prepare() {
          -e "s/\"language-gfm\": \".*\",/\"language-gfm2\": \"${_language_gfm2_ver}\",\n    \"language-ini-desktop\": \"${_language_ini_desktop_ver}\",\n    \"language-liquid\": \"${_language_liquid_ver}\",\n    \"language-patch2\": \"${_language_patch2_ver}\",/g" \
          -e "s/\"language-shellscript\": \".*\",/\"language-unix-shell\": \"${_language_unix_shell_ver}\",\n    \"language-vala-modern\": \"${_language_vala_modern_ver}\",/g" \
          package.json
-         
+
 	chmod 755 -R package.json
 
   sed -i -e 's@node script/bootstrap@node script/bootstrap --no-quiet@g' \
