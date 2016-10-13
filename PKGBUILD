@@ -5,15 +5,19 @@ _pkgname=atom
 _version=git
 
 # Module Versions
-_about_url="https://github.com/fusion809/about"
-_about_arch_ver=1.6.2
+_fus_url="https://github.com/fusion809"
 _language_gfm2_ver=0.92.2
+_language_ini_desktop_ver=1.18.3
 _language_liquid_ver=0.5.1
+_language_patch2_url="${_fus_url}/language-patch2"
+_language_patch2_ver=1.0.0
+_language_unix_shell_ver=0.38.2
+_language_vala_modern_ver=0.3.2
 
 pkgname=${_pkgname}-editor-${_version}
-pkgver=1.13.0.dev.a1.6.2.l0.5.1.m0.92.2.c30158
+pkgver=1.13.0.dev.i1.18.3.l0.5.1.m0.92.2.p1.0.0.u0.38.2.v0.3.2.c30158
 pkgrel=1
-pkgdesc='Hackable text editor for the 21st Century, based on web technologies and built from the latest git source code'
+pkgdesc='Hackable text editor for the 21st Century, based on web technologies - git channel.'
 arch=('x86_64' 'i686')
 url="https://github.com/${_pkgname}/${_pkgname}"
 license=('MIT')
@@ -22,13 +26,9 @@ optdepends=('gvfs: file deletion support')
 makedepends=('git' 'npm')
 install=${_pkgname}-${_version}.install
 source=("git+${url}.git"
-"about-arch-${_about_arch_ver}.tar.gz::$_about_url/archive/v${_about_arch_ver}.tar.gz"
-"about-git.patch"
 "${_pkgname}-${_version}.desktop"
 "${_pkgname}-${_version}")
 sha256sums=('SKIP'
-            'b76bdecbf42456c66c029b4f9c75cb8acde389119e1e4a29de2980443703d752'
-            '8fd5c1f23ec4110ab339d2c8c4305c6d0e9f11f7f6ddc80f3c45ca990691ac43'
             'b172e3f81eb42eeb1ad6ef70300c33a79a2015110ea87c413b5857c9694d10e9'
             '542c10ffb540bd91a441682867517a02a959a20625293f72f33fab71cd3602be')
 
@@ -36,35 +36,24 @@ pkgver() {
   cd $srcdir/$_pkgname
   _basever=$(cat package.json | grep version | sed 's/version//g' | sed 's/://g' | sed 's/ //g' |  sed 's/"//g' | sed 's/,//g' | sed 's/-/./g')
   _commitno=$(git rev-list --count HEAD)
-  printf "${_basever}.a${_about_arch_ver}.l${_language_liquid_ver}.m${_language_gfm2_ver}.c${_commitno}"
+  printf "${_basever}.l${_language_liquid_ver}.m${_language_gfm2_ver}.u${_language_unix_shell_ver}.c${_commitno}"
 }
 
 prepare() {
 	cd "$srcdir/${_pkgname}"
 
-  # Remove exception-reporting/metrics (priv concerns)
-  # Replace language-gfm with language-gfm2 and language-liquid (provides syntax-highlighting for Liquid/HTML in GFM docs)
   sed -i -e "/exception-reporting/d" \
 	       -e "/metrics/d" \
-         -e "s/\"language-gfm\": \".*\",/\"language-gfm2\": \"${_language_gfm2_ver}\",\n    \"language-liquid\": \"${_language_liquid_ver}\",/g" \
-         -e "s/\"about\": \".*\"/\"about-arch\": \"${_about_arch_ver}\"/g" \
+         -e "/\"dependencies\": {/a \
+            \"language-patch2\": \"${_language_patch2_url}\"," \
+         -e "s/\"language-gfm\": \".*\",/\"language-gfm2\": \"${_language_gfm2_ver}\",\n    \"language-ini-desktop\": \"${_language_ini_desktop_ver}\",\n    \"language-liquid\": \"${_language_liquid_ver}\",\n    \"language-patch2\": \"${_language_patch2_ver}\",/g" \
+         -e "s/\"language-shellscript\": \".*\",/\"language-unix-shell\": \"${_language_unix_shell_ver}\",\n    \"language-vala-modern\": \"${_language_vala_modern_ver}\",/g" \
          package.json
-
+         
 	chmod 755 -R package.json
 
   sed -i -e 's@node script/bootstrap@node script/bootstrap --no-quiet@g' \
   ./script/build || die "Fail fixing verbosity of script/build"
-
-  if ! [[ -d node_modules ]]; then
-    mkdir -p node_modules
-  else
-    rm -rf node_modules/about-arch
-  fi
-
-  mv $srcdir/about-${_about_arch_ver} $srcdir/about-arch
-  mv $srcdir/about-arch node_modules
-  cd node_modules/about-arch
-  patch -Np1 < $srcdir/about-git.patch
 
   sed -i -e "s/<%=Desc=%>/$pkgdesc/g" ${srcdir}/${_pkgname}-${_version}.desktop
 }
