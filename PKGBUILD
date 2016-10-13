@@ -8,7 +8,7 @@
 _basename=wine
 pkgname=wine-ivb
 pkgver=1.9.11
-pkgrel=1
+pkgrel=2
 
 _pkgbasever=${pkgver/rc/-rc}
 
@@ -122,8 +122,8 @@ prepare() {
 
   # Apply the ivb patches
   cd $pkgname
-  patch -Np1 -i ../patch-$pkgver-ivb.patch
-  patch -Np1 -i ../patch_temp_constants.patch
+  patch -Np1 -i $srcdir/patch-$pkgver-ivb.patch
+  patch -Np1 -i $srcdir/patch_temp_constants.patch
 }
 
 build() {
