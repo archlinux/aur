@@ -25,7 +25,7 @@
 set -u
 _pkgname='phing'
 pkgname="php-${_pkgname}"
-pkgver='2.15.0'
+pkgver='2.15.2'
 pkgrel='1'
 pkgdesc='PHP project build system based on Apache Ant'
 arch=('any')
@@ -42,7 +42,7 @@ source=("http://pear.phing.info/get/phing-${pkgver}.tgz")
 #source=("phing-large-${pkgver}.tgz::http://www.phing.info/get/${_pkgname}-${pkgver}.tgz")
 # Trying to compile phpoffice. This would become an addon. php-phing-foo
 #source+=('git://github.com/domain51/Phing_d51PearPkg2Task.git')
-sha256sums=('008ff15073fecffc7999b71f74e37540aed02ff43d9af03008f3206f216839ae')
+sha256sums=('57b2e0760ee0072851a3a871cece62b1fc2fb7add52251129651b4a85f53c294')
 
 prepare() {
   set -u
