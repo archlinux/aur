@@ -1,0 +1,26 @@
+pkgbase = wire-desktop-git
+	pkgdesc = Modern communication, full privacy.
+	pkgver = 2.11.2661.r1.ga433bf2
+	pkgrel = 1
+	url = https://wire.com/
+	arch = x86_64
+	arch = i686
+	license = GPL3
+	makedepends = npm
+	makedepends = nodejs-grunt-cli
+	makedepends = gendesk
+	makedepends = python2
+	depends = nss
+	depends = alsa-lib
+	depends = libxss
+	depends = gconf
+	depends = gtk2
+	depends = libxtst
+	provides = wire-desktop
+	conflicts = wire-desktop-bin
+	conflicts = wire-desktop
+	source = git://github.com/wireapp/wire-desktop.git
+	sha256sums = SKIP
+
+pkgname = wire-desktop-git
+
