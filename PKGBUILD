@@ -1,6 +1,6 @@
 pkgname=mono-addins-git
 _pkgname=mono-addins
-pkgver=1.3
+pkgver=1.3.1
 pkgrel=1
 pkgdesc="Generic framework for creating extensible applications, and for creating libraries which extend those applications."
 arch=(i686 x86_64)
