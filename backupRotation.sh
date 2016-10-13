@@ -92,7 +92,7 @@ for source_path in "${!source_target_mappings[@]}"; do
             "${target_path}/${daily_target_path}${target_daily_file_name}${target_file_extension}"
         if [[ "$week_day_number" == "$backup_week_day_number" ]]; then
             ln --symbolic --force "${target_file_path}${target_file_extension}" \
-                "${target_path}/${daily_target_path}${target_weekly_file_name}${target_file_extension}"
+                "${target_path}/${weekly_target_path}${target_weekly_file_name}${target_file_extension}"
         fi
     elif [[ "$week_day_number" == "$backup_week_day_number" ]]; then
         target_file_path="${target_path}/${weekly_target_path}${target_weekly_file_name}"
