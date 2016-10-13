@@ -1,0 +1,30 @@
+diff -r -U2 gosmore.orig/jni/gosmore.cpp gosmore.new/jni/gosmore.cpp
+--- gosmore.orig/jni/gosmore.cpp	2016-10-13 16:58:04.000000000 +0200
++++ gosmore.new/jni/gosmore.cpp	2016-10-13 16:53:46.000000000 +0200
+@@ -3482,7 +3482,13 @@
+   #endif
+   #ifdef USE_GPSD
+-  gps_data_t *gpsData = gps_open ("127.0.0.1", "2947");
++  
++  // Changed according to http://wiki.openstreetmap.org/wiki/Talk:Gosmore#Bug:_wont_build_on_Ubuntu_12.04_.28and_later_versions.29
++  // gps_data_t *gpsData = gps_open ("127.0.0.1", "2947");
++  gps_data_t* gpsData;
++  gps_open ("127.0.0.1", "2947", gpsData);
++  
+   if (gpsData) {
+-    gps_set_raw_hook (gpsData, GpsMove);
++    // Changed according to http://wiki.openstreetmap.org/wiki/Talk:Gosmore#Bug:_wont_build_on_Ubuntu_12.04_.28and_later_versions.29
++    // gps_set_raw_hook (gpsData, GpsMove);
+     #if GPSD_API_MAJOR_VERSION <= 3
+     gps_query (gpsData, "w+x\n");
+@@ -3490,6 +3496,9 @@
+     gps_stream (gpsData, WATCH_ENABLE, NULL);
+     #endif
++    // Changed according to http://wiki.openstreetmap.org/wiki/Talk:Gosmore#Bug:_wont_build_on_Ubuntu_12.04_.28and_later_versions.29
++    // gpsSockTag = gdk_input_add (gpsData->gps_fd, GDK_INPUT_READ,
++      // (GdkInputFunction) gps_poll, gpsData);
+     gpsSockTag = gdk_input_add (gpsData->gps_fd, GDK_INPUT_READ,
+-      (GdkInputFunction) gps_poll, gpsData);
++      (GdkInputFunction) gps_read, gpsData);
+     
+     gtk_box_pack_start (GTK_BOX (hbox), followGPSr, FALSE, FALSE, 5);

@@ -1,0 +1,27 @@
+pkgbase = gosmore-svn
+	pkgdesc = A router and viewer of OpenStreetMap XML data such as the whole planet.osm or other osm files from Geofabrik.
+	pkgver = latest_date20140317+svn33033
+	pkgrel = 2
+	epoch = 1
+	url = http://wiki.openstreetmap.org/wiki/Gosmore
+	arch = i686
+	arch = x86_64
+	arch = arm
+	arch = arm64
+	license = custom:Public Domain
+	makedepends = make
+	makedepends = subversion
+	depends = gpsd>=2.9
+	depends = gtk2
+	depends = libcurl-gnutls
+	depends = libxml2
+	provides = gosmore=latest_date20140317+svn33033
+	conflicts = gosmore
+	replaces = gosmore<=latest_date20140317+svn33033
+	source = gosmore::svn+http://svn.openstreetmap.org/applications/rendering/gosmore
+	source = gosmore.gpsd_version_2.9_and_newer.patch
+	sha256sums = SKIP
+	sha256sums = b1aa8bae4927d7b06005e11f6b7b56b839c1523164d572d5f3083498e349b00c
+
+pkgname = gosmore-svn
+
