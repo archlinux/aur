@@ -1,0 +1,17 @@
+pkgbase = neovim-supertab
+	pkgdesc = A Neovim plugin that allows you to use the tab key to do all insert completion.
+	pkgver = 2.1
+	pkgrel = 1
+	url = https://github.com/ervandew/supertab
+	install = nvim-doc.install
+	arch = any
+	groups = neovim-plugins
+	license = BSD
+	depends = neovim
+	source = https://github.com/ervandew/supertab/archive/2.1.tar.gz
+	source = LICENSE
+	md5sums = 8c9fd74e228521f64221b91e1a54abfe
+	md5sums = a232f3fa724b2e52e1678adcc84f67bb
+
+pkgname = neovim-supertab
+
