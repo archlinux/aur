@@ -2,9 +2,9 @@
 pkgdesc='CUDA backend for Torch7 Neural Network Package'
 pkgname='torch7-cunn-git'
 pkgver=r555.612dda4
-pkgrel=1
+pkgrel=2
 makedepends=('cmake' 'git')
-depends=('torch7-git>=r819')
+depends=('torch7-git>=r819' 'cuda')
 conflicts=('torch7-cunn')
 provides=('torch7-cunn')
 arch=('x86_64' 'i686')
