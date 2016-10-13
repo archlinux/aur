@@ -1,0 +1,19 @@
+pkgbase = neovim-taglist
+	pkgdesc = A source code browser plugin for Neovim
+	pkgver = 46
+	pkgrel = 1
+	url = http://neovim-taglist.sourceforge.net/
+	install = nvim-doc.install
+	arch = any
+	groups = neovim-plugins
+	license = custom
+	makedepends = unzip
+	depends = neovim
+	depends = ctags
+	source = neovim-taglist-46.zip::http://www.vim.org/scripts/download_script.php?src_id=19574
+	source = license.txt
+	sha256sums = 524e2a7001d1cf23449c443293b6e21aa654a1a238a52b6edce7f12d0cd98ba1
+	sha256sums = 4689a6d3ed3bca186ab8fea8360f32fdbb84f84c82fb21698390202efa7b7d19
+
+pkgname = neovim-taglist
+
