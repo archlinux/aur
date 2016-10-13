@@ -10,7 +10,7 @@ url="http://anonscm.debian.org/cgit/d-i/console-setup.git/"
 license=('GPL2')
 depends=('perl')
 source=("http://ftp.de.debian.org/debian/pool/main/c/console-setup/console-setup_${pkgver}.tar.xz")
-sha512sums=('659c83f329ab5a317b88f5c17c166863d50b2df63bfdc910be14b7e4759ee1ab19f90b02cedac1c11af87af98043906c22dc52aa9f34896535c3b91a7efb73c4')
+sha512sums=('8cb4d1ecba3196f29eebbcf53d29e797788d93362cb970681e8a5d728fc5fa40f1ec756306bf30b7a024ee4ec77f656d280a65e68c3fe719ff8729c97e3fed6d')
 
 package() {
   cd console-setup-${pkgver}
