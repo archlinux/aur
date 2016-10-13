@@ -27,5 +27,9 @@ src:
 .SRCINFO: PKGBUILD
 	mksrcinfo
 
+src/pvr.hts/pvr.hts/addon.xml.in: .${PKG}.git
+
+PKGBUILD: src/pvr.hts/pvr.hts/addon.xml.in
+
 %: %.in
 	m4 $< > $*
