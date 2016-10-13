@@ -1,7 +1,8 @@
 # Maintainer: Franco Masotti <franco dot masotti at student dot unife dot it>
+# Contributor: Franco Masotti <franco dot masotti at student dot unife dot it>
 pkgname=swish-cplint
 pkgver=r8.13b29c6
-pkgrel=3
+pkgrel=4
 pkgdesc="SWI-Prolog for SHaring: a SWI-Prolog web IDE integrated with the cplint suite"
 arch=('x86_64')
 url="https://github.com/friguzzi/swish"
@@ -47,5 +48,6 @@ package() {
     cp -r swish/* ${pkgdir}/usr/share/${pkgname}
     install -D -m644 swish/LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
     install -D -m644 ${startdir}/${pkgname}.service "${pkgdir}/usr/lib/systemd/system/${pkgname}.service"
+    install -D -m644 ${startdir}/${pkgname}.conf "${pkgdir}/usr/lib/tmpfiles.d/${pkgname}.conf"
     ln -s /usr/share/${pkgname}/run.sh ${pkgdir}/usr/bin/${pkgname}
 }

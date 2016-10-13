@@ -1,7 +1,7 @@
 pkgbase = swish-cplint
 	pkgdesc = SWI-Prolog for SHaring: a SWI-Prolog web IDE integrated with the cplint suite
 	pkgver = r8.13b29c6
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/friguzzi/swish
 	install = .INSTALL
 	arch = x86_64

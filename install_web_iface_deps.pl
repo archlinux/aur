@@ -23,15 +23,16 @@
  *
  */
 
+/* Package directory will be the default one */
 :- initialization main.
 
-/* Solve problem with the matrix package. */
 install:-
-        pack_install(aleph, [interactive(false)]),
-        pack_install(auc, [interactive(false)]),
-        pack_install(real, [interactive(false)]),
-        pack_install(matrix, [interactive(false)]),
-        pack_install(cplint, [interactive(false)]).
+        pack_install(aleph, [url('https://github.com/friguzzi/aleph.git'),interactive(false)]),
+        pack_install(auc, [url('https://github.com/friguzzi/auc.git'),interactive(false)]),
+        pack_install(real, [url('http://stoics.org.uk/~nicos/sware/packs/real/real-2.0.tgz'),interactive(false)]),
+        pack_install(matrix, [url('https://github.com/friguzzi/matrix.git'),interactive(false)]),
+        pack_install(cplint, [url('https://github.com/friguzzi/cplint.git'),interactive(false)]),
+        pack_install('rserve_client', [url('https://github.com/JanWielemaker/rserve_client.git'),interactive(false)]).
 
 main:-
         catch(install, E, (print_message(error, E), fail)),

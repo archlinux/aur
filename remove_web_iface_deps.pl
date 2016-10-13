@@ -30,7 +30,8 @@ remove:-
         pack_remove(auc),
         pack_remove(real),
         pack_remove(matrix),
-        pack_remove(cplint).
+        pack_remove(cplint),
+        pack_remove('rserve_client').
 
 main:-
         catch(remove, E, (print_message(error, E), fail)),

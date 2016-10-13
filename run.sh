@@ -24,16 +24,67 @@
 
 # This is the file called from the /usr/bin/swish-cplint symlink
 
-# Since it's a dameon, it should be able to :
-#   start
-#   stop
-#   (restart)
-
 pid_file="/run/swish-cplint.pid"
+installed_file="/home/swish/installed"
+deps_installer="/home/swish/install_web_iface_deps.pl"
+user="swish"
+group="swish"
 
-if [ "$UID" -eq 0 ]; then
+help()
+{
+    cat<<-EOF
+swish-cplint [OPTION]
+SWI-Prolog for SHaring: a SWI-Prolog web IDE integrated with the cplint suite
+
+The first time swish-cplint is executed, all SWI Prolog dependencies will be 
+installed.
+
+Only a single option is permitted.
+    -h      print this help
+    -k      kill swish-cplint
+    -s      start swish-cplint
+
+Exit status:
+ 0  if OK,
+ 1  some error occurred.
+
+Full documentation at: <https://github.com/friguzzi/swish>
+and at: <https://github.com/friguzzi/cplint>
+EOF
+}
+
+kill()
+{
+    # kill action only if process exists.
+    if [ -f "$pid_file" ]; then
+        pid=$(cat "$pid_file")
+        ps -q $pid > /dev/null
+        if [ $? -eq 0 ]; then
+            kill -s SIGTERM $pid
+        fi
+    fi
+}
+
+initialize()
+{
+    if [ -f "$installed_file" ]; then
+        :
+    else
+        printf "This may take a while.\n"
+        $deps_installer
+        if [ $? -eq 0 ]; then
+            echo "true" > "$installed_file"
+        else
+            printf "Install web dependencies error\n"
+            exit 1
+        fi
+    fi
+}
+
+start()
+{
     {
-        (exec swipl --quiet -f /usr/share/swish-cplint/run.pl) &
+        ( initialize && exec swipl --quiet -f /usr/share/swish-cplint/run.pl ) &
         pid="$!"
     } 1>/dev/null 2>/dev/null
 
@@ -45,7 +96,24 @@ if [ "$UID" -eq 0 ]; then
         exit 1
     fi
 
-else
-    printf "User must be root\n"
-    exit 1
-fi
+}
+
+main()
+{
+    if [ "$(id -un)" == "$user" ] && [ "$(id -gn)" == "$group" ]; then
+        :
+    else
+        printf "User and group must be swish\n"
+        exit 1
+    fi
+
+    getopts ":is" opt "$@"
+    case "$opt" in
+        h) help ;;
+        k) kill ;;
+        s) start ;;
+        ?) help ;;
+    esac
+}
+
+main "$@"
