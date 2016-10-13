@@ -22,9 +22,9 @@ provides=('pidgin' 'finch' 'libpurple')
 conflicts=('pidgin' 'pidgin-msn' 'pidin-light-msn' 'finch' 'libpurple')
 options=('!libtool')
 install='pidgin-light.install'
-source=('http://downloads.sourceforge.net/project/pidgin/Pidgin/$pkgver/pidgin-$pkgver.tar.bz2' )
+source=("http://downloads.sourceforge.net/project/pidgin/Pidgin/${pkgver}/pidgin-${pkgver}.tar.bz2" )
 
-sha512sums=('f2ae211341fc77efb9945d40e9932aa535cdf3a6c8993fe7919fca8cc1c04007')
+sha512sums=('d6a9bb8075b475e5204d730075b432ca0f1cb91b6337f98e506587132581e6928a826b47e0b94fb9eaedc79c5be0a8237c4671fc26dba97dedad1adb74c9abfa')
 
 build() {
 
