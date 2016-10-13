@@ -2,7 +2,7 @@
 # Maintainer: Johannes Löthberg <johannes@kyriasis.com>
 
 pkgname=pacman-contrib-git
-pkgver=r21.3093437
+pkgver=r26.8effb41
 pkgrel=1
 pkgdesc='pacman contributions (Git version)'
 url=https://git.archlinux.org/pacman-contrib.git
@@ -22,6 +22,7 @@ build() {
   cd ${pkgname%-*}
   ./autogen.sh
   ./configure --prefix=/usr --sysconfdir=/etc \
+    --localstatedir=/var --enable-git-version \
     --with-vim-dir=/usr/share/vim/vimfiles
   make V=1
 }
