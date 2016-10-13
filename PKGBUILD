@@ -10,7 +10,7 @@
 
 pkgname=keepassx-reboot
 pkgver=2.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A reboot with keepasshttp of an OpenSource password safe which helps you to manage your passwords in an easy and secure way"
 arch=('i686' 'x86_64')
 url="https://github.com/keepassxreboot/keepassx"
@@ -35,7 +35,7 @@ build() {
         -DCMAKE_INSTALL_BINDIR=/usr/bin \
         -DCMAKE_INSTALL_LIBDIR=/usr/lib \
         -DCMAKE_VERBOSE_MAKEFILE=OFF \
-        -DWITH_GUI_TESTS=ON \
+        -DWITH_GUI_TESTS=OFF \
         -DCMAKE_BUILD_TYPE=Release ..
     make
 }
