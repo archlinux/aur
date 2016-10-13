@@ -1,7 +1,7 @@
 # Maintainer: Timothy Redaelli <timothy.redaelli@gmail.com>
 
 pkgname=opentimestamps-client-git
-pkgver=0.2.2.r18.gb085f8f
+pkgver=0.2.3.r8.g892e8378
 pkgrel=1
 pkgdesc="Command-line tool to create and validate timestamp proofs with the OpenTimestamps protocol"
 arch=(any)
@@ -25,7 +25,7 @@ package() {
   python -O -m compileall "${pkgdir}/${_python_site}/otsclient"
 
   install -Dm755 ots "$pkgdir/usr/bin/ots"
-  install -Dm755 git-gpg-wrapper "$pkgdir/usr/share/$pkgname/ots-git-gpg-wrapper"
+  install -Dm755 ots-git-gpg-wrapper "$pkgdir/usr/share/$pkgname/ots-git-gpg-wrapper"
   printf '%s\n' "#!/bin/sh" "/usr/share/$pkgname/ots-git-gpg-wrapper --gpg-program /usr/bin/gpg -- \"\$@\"" > "$pkgdir/usr/bin/ots-git-gpg-wrapper.sh"
   chmod 755 "$pkgdir/usr/bin/ots-git-gpg-wrapper.sh"
 }
