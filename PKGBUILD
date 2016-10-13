@@ -2,17 +2,16 @@
 
 pkgname=awf-git
 _pkgname=awf
-pkgver=v1.3.0.r0.g191e428
+pkgver=v1.3.1.r3.g8a579e6
 pkgrel=1
-pkgdesc="A theme preview application for gtk2 and gtk3"
-arch=(i686 x86_64)
-url="https://github.com/valr/awf"
-license=("GPL")
-depends=("gtk2" "gtk3" "hicolor-icon-theme")
-makedepends=("git")
+pkgdesc='A theme preview application for gtk2 and gtk3'
+arch=('i686' 'x86_64')
+url='https://github.com/valr/awf'
+license=('GPL')
+depends=('gtk2' 'gtk3' 'hicolor-icon-theme')
+makedepends=('git')
 source=("$pkgname"::'git+https://github.com/valr/awf.git')
-md5sums=("SKIP")
-install=awf.install
+md5sums=('SKIP')
 
 pkgver() {
   cd "${srcdir}/${pkgname}"
