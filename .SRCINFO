@@ -1,11 +1,11 @@
 pkgbase = gmvault-git
 	pkgdesc = Backup and restore your gmail account at will.
-	pkgver = 20150420
-	pkgrel = 3
+	pkgver = 20160431
+	pkgrel = 1
 	url = http://gmvault.org
 	arch = any
 	license = GPL
-	makedepends = setuptools
+	makedepends = python2-setuptools
 	makedepends = git
 	depends = python2
 	depends = python2-logbook

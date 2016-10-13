@@ -1,13 +1,13 @@
 # Maintainer: jstoik1 <joshstoik at gmail dot com>
 pkgname=gmvault-git
-pkgver=20150420
-pkgrel=3
+pkgver=20160431
+pkgrel=1
 pkgdesc="Backup and restore your gmail account at will."
 arch=(any)
 url="http://gmvault.org"
 license=('GPL')
 depends=('python2' 'python2-logbook' 'python2-gdata' 'python2-imapclient' 'python2-chardet')
-makedepends=('setuptools' 'git')
+makedepends=('python2-setuptools' 'git')
 conflicts=('gmvault')
 provides=('gmvault')
 source=('gmvault::git+git://github.com/gaubert/gmvault.git' 'use-python2.patch')
