@@ -9,7 +9,7 @@ pkgbase = neovim-a
 	license = custom
 	depends = neovim
 	source = a.vim::http://www.vim.org/scripts/download_script.php?src_id=7218
-	source = alternate::http://www.vim.org/scripts/download_script.php?src_id=6347
+	source = alternate.txt::http://www.vim.org/scripts/download_script.php?src_id=6347
 	source = LICENSE
 	sha256sums = 4c3de319e3047ffba3384ed59bcfff6fabaf1073b50ee9d3855a03b3a7db42e0
 	sha256sums = a8fb8daabeee00b7a5c22b65f76dc0758b3e5fcfb95297235ec3ce102bdc4eb3

@@ -15,7 +15,7 @@ depends=('neovim')
 groups=('neovim-plugins')
 install=nvim-doc.install
 source=("a.vim::http://www.vim.org/scripts/download_script.php?src_id=$_scriptid"
-        "alternate::http://www.vim.org/scripts/download_script.php?src_id=$_docid"
+        "alternate.txt::http://www.vim.org/scripts/download_script.php?src_id=$_docid"
         "LICENSE")
 sha256sums=('4c3de319e3047ffba3384ed59bcfff6fabaf1073b50ee9d3855a03b3a7db42e0'
             'a8fb8daabeee00b7a5c22b65f76dc0758b3e5fcfb95297235ec3ce102bdc4eb3'
