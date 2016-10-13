@@ -1,0 +1,19 @@
+pkgbase = neovim-a
+	pkgdesc = alternate files in Neovim quickly (.c -> .h etc)
+	pkgver = 2.18
+	pkgrel = 1
+	url = http://www.vim.org/scripts/script.php?script_id=31
+	install = nvim-doc.install
+	arch = any
+	groups = neovim-plugins
+	license = custom
+	depends = neovim
+	source = a.vim::http://www.vim.org/scripts/download_script.php?src_id=7218
+	source = alternate::http://www.vim.org/scripts/download_script.php?src_id=6347
+	source = LICENSE
+	sha256sums = 4c3de319e3047ffba3384ed59bcfff6fabaf1073b50ee9d3855a03b3a7db42e0
+	sha256sums = a8fb8daabeee00b7a5c22b65f76dc0758b3e5fcfb95297235ec3ce102bdc4eb3
+	sha256sums = fa5cd5adcfc6a34910fc9f580b7d9a31b1c7ff958268c24f58fb0e9664c60246
+
+pkgname = neovim-a
+
