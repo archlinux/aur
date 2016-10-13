@@ -2,7 +2,7 @@
 
 pkgname=google-glog-git
 pkgver=r212.0472b91
-pkgrel=1
+pkgrel=2
 pkgdesc="Logging library for C++, compiled with cmake"
 arch=('i686' 'x86_64')
 license=('custom:BSD3')
@@ -10,6 +10,7 @@ url='https://github.com/google/glog'
 depends=('gcc-libs')
 makedepends=('make' 'gcc' 'git')
 conflicts=('google-glog')
+provides=('google-glog')
 source=(
     #"glog-$pkgver::https://github.com/google/glog/archive/v$pkgver.tar.gz"
     "${pkgname}::git+https://github.com/google/glog.git"
@@ -33,7 +34,7 @@ build4git() {
     cd "${srcdir}/${pkgname}"
     mkdir -p build
     cd build
-    cmake -DCMAKE_BUILD_TYPE=Release -DBUILD_EXAMPLES=OFF ..
+    cmake -DCMAKE_BUILD_TYPE=Release -DBUILD_EXAMPLES=OFF -DBUILD_SHARED_LIBS=ON -DBUILD_STATIC_LIBS=OFF ..
     make
 }
 
@@ -56,4 +57,6 @@ package() {
     install -Dm644 ${srcdir}/${pkgname}/COPYING "$pkgdir/usr/share/licenses/$pkgname/COPYING"
 }
 
-md5sums=('SKIP')
+md5sums=(
+    'SKIP'
+    )
