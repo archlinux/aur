@@ -1,5 +1,5 @@
 pkgbase = plasma-wallpaper-neon-particles-bzr
-	pkgdesc = Terminal emulator that supports tabs and grids (bzr trunk developmental version)
+	pkgdesc = Plasma Wallpaper Neon Particles from Ivan Safonov
 	pkgver = 0.1.7
 	pkgrel = 1
 	url = https://code.launchpad.net/~ivan-safonov/+junk/plasma-wallpaper-neon-particles
