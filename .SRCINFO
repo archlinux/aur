@@ -1,0 +1,15 @@
+pkgbase = neovim-doxygentoolkit
+	pkgdesc = This script simplify doxygen documentation in C/C++
+	pkgver = 0.2.13
+	pkgrel = 1
+	url = http://www.vim.org/scripts/script.php?script_id=987
+	install = nvim-doc.install
+	arch = any
+	groups = neovim-plugins
+	license = GPL
+	depends = neovim
+	source = DoxygenToolkit.vim::http://www.vim.org/scripts/download_script.php?src_id=14064
+	md5sums = 669e14133afa26b2b72c48a9315d8f7d
+
+pkgname = neovim-doxygentoolkit
+
