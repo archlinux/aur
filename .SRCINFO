@@ -6,7 +6,7 @@ pkgbase = poltroon
 	arch = x86_64
 	arch = i686
 	license = MIT
-	makedepends = go>=1.7 make go-bindata>=3.0.7
+	makedepends = go>=1.7 make go-bindata>=3.0.7 libunistring>=0.9.6-2 gcc
 	depends = pacman
 	options = !strip
 	options = !emptydirs
