@@ -1,28 +1,28 @@
-# Maintainer: Xiao-Long Chen <chenxiaolong@cxl.epac.to>
+# Maintainer:  Marcin (CTRL) Wieczorek <marcin@marcin.co>
+# Contributor: Xiao-Long Chen <chenxiaolong@cxl.epac.to>
 
 pkgname=java-commons-collections
-pkgver=4.0
+pkgver=4.1
 pkgrel=1
 pkgdesc='Implementations of common collections'
-arch=(i686 x86_64)
+arch=('any')
 url='http://commons.apache.org/collections/'
-license=(apache)
+license=('APACHE')
 depends=(java-runtime)
 makedepends=(apache-ant junit)
 source=("http://www.apache.org/dist/commons/collections/source/commons-collections4-${pkgver}-src.tar.gz")
-md5sums=('d0f1e679725945eaf3e2f0c0a33532a5')
-sha512sums=('3e9ea6325878a288f5127e6135155436d26b862235d57aaf6ca2dcda6e72b12a9fce3e207a48f9f1bb1781237a026843dc1d0116b1a0c5859581d41868725ac6')
+sha512sums=('c5666f41b68c9fdba3731730595616b16f98579c077cf047f421a46729b5a65476a8707125a2c0b0c6c024ca94df8c2633123bd99e705149fcb1afadcd3bf68b')
 
 build() {
-  cd "commons-collections4-${pkgver}-src"
+  cd "${srcdir}/commons-collections4-${pkgver}-src"
 
   ant jar
 }
 
 package() {
-  cd "commons-collections4-${pkgver}-src/target/"
+  cd "${srcdir}/commons-collections4-${pkgver}-src/"
 
   install -dm755 "${pkgdir}/usr/share/java/commons-collections/"
-  install -m644 commons-collections4-${pkgver}-SNAPSHOT.jar \
-    "${pkgdir}/usr/share/java/commons-collections/commons-collections4.jar"
+  install -D -m644 "LICENSE.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.txt"
+  install -m644 "target/commons-collections4-${pkgver}.jar" "${pkgdir}/usr/share/java/commons-collections/commons-collections4.jar"
 }
