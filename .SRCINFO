@@ -1,0 +1,16 @@
+pkgbase = neovim-workspace
+	pkgdesc = Neovim workspace manager plugin for managing groups of files
+	pkgver = 1.0b1
+	pkgrel = 1
+	url = http://www.vim.org/scripts/script.php?script_id=1410
+	install = nvim-doc.install
+	arch = any
+	groups = neovim-plugins
+	license = unknown
+	makedepends = unzip
+	depends = neovim
+	source = neovim-workspace-pkgver.tar.gz::http://www.vim.org/scripts/download_script.php?src_id=4812
+	sha256sums = 757b12ae378fae74f7d43dfdffc95111f0bc280a62e1ddf429cb3f302044db1f
+
+pkgname = neovim-workspace
+
