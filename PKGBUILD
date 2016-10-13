@@ -1,7 +1,7 @@
 # Maintainer: Giancarlo Razzolini <grazzolini@gmail.com>
 pkgname=mkinitcpio-ddns
 pkgver=0.0.2
-pkgrel=3
+pkgrel=4
 pkgdesc="This hook provides dynamic dns capabilities to the initramfs. It is meant for use with mkinitcpio-netconf or mkinitcpio-ppp for remote unlocking the luks root partition over the internet"
 arch=('any')
 url="https://github.com/grazzolini/mkinitcpio-ddns"
@@ -18,4 +18,5 @@ sha256sums=('b16f81f121f05c3985fa2f45679def7d6cf97b65690fac43c3f56f4f06d8411f'
 package() {
   install -Dm644 "$srcdir/$pkgname-$pkgver/ddns_hook"      "$pkgdir/usr/lib/initcpio/hooks/ddns"
   install -Dm644 "$srcdir/$pkgname-$pkgver/ddns_install"   "$pkgdir/usr/lib/initcpio/install/ddns"
+  install -Dm644 "$srcdir/$pkgname-$pkgver/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
