@@ -27,7 +27,6 @@ pkgbase = google-chrome
 	depends = xdg-utils
 	optdepends = kdebase-kdialog: needed for file dialogs in KDE
 	optdepends = ttf-liberation: fix fonts for some PDFs
-	provides = pepper-flash
 	options = !emptydirs
 	options = !strip
 	source = google-chrome-stable_54.0.2840.59_amd64.deb::https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
@@ -37,7 +36,7 @@ pkgbase = google-chrome
 	md5sums = 278c8970650c320e270480e63eba4e1d
 	md5sums = SKIP
 	md5sums = 99fa93d5e7fb5d622cef0f9621f3ffa3
-	md5sums = c28d84561b994b8a0aeae3d6e12265c4
+	md5sums = 19714f87c63cabfeb0ea8950c452a02b
 
 pkgname = google-chrome
 

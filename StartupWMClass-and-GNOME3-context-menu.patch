@@ -5,7 +5,7 @@ diff -ur usr/share/applications/google-chrome.desktop usr-patched/share/applicat
  Comment[zh_CN]=访问互联网
  Comment[zh_HK]=連線到網際網路
  Comment[zh_TW]=連線到網際網路
-+StartupWMClass=google-chrome
++StartupWMClass=Google-chrome
  Exec=/usr/bin/google-chrome-stable %U
  Terminal=false
  Icon=google-chrome
@@ -17,12 +17,12 @@ diff -ur usr/share/applications/google-chrome.desktop usr-patched/share/applicat
 +
 +[Desktop Action new-window]
 +Name=New Window
-+StartupWMClass=google-chrome
++StartupWMClass=Google-chrome
 +Exec=/usr/bin/google-chrome-stable
 +
 +[Desktop Action new-private-window]
 +Name=New Private Window
-+StartupWMClass=google-chrome
++StartupWMClass=Google-chrome
 +Exec=/usr/bin/google-chrome-stable --incognito
  
  [NewWindow Shortcut Group]

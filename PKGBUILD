@@ -16,7 +16,6 @@ depends=('alsa-lib' 'desktop-file-utils' 'flac' 'gconf' 'gnome-themes-standard' 
          'ttf-font' 'xdg-utils')
 optdepends=('kdebase-kdialog: needed for file dialogs in KDE'
             'ttf-liberation: fix fonts for some PDFs')
-provides=('pepper-flash')
 options=('!emptydirs' '!strip')
 install=$pkgname.install
 _channel=stable
@@ -27,7 +26,7 @@ source=("google-chrome-${_channel}_${pkgver}_amd64.deb::https://dl.google.com/li
 md5sums=('278c8970650c320e270480e63eba4e1d'
          'SKIP'
          '99fa93d5e7fb5d622cef0f9621f3ffa3'
-         'c28d84561b994b8a0aeae3d6e12265c4')
+         '19714f87c63cabfeb0ea8950c452a02b')
 
 package() {
   msg2 "Extracting the data.tar.xz..."
@@ -50,7 +49,7 @@ package() {
   install -Dm644 eula_text.html "$pkgdir"/usr/share/licenses/google-chrome/eula_text.html
 
   #msg2 "Fixing Chrome icon resolution..."
-  #sed -i "/Exec=/i\StartupWMClass=google-chrome" "$pkgdir"/usr/share/applications/google-chrome.desktop
+  #sed -i "/Exec=/i\StartupWMClass=Google-chrome" "$pkgdir"/usr/share/applications/google-chrome.desktop
 
   msg2 "Fixing Chrome icon resolution and GNOME 3 context menu..."
   cd "$pkgdir"
