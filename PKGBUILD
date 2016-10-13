@@ -2,13 +2,13 @@
 
 pkgname=cereal
 pkgver=1.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc='A C++11 library for serialization'
 arch=('i686' 'x86_64')
 url='https://github.com/USCiLab/cereal'
 license=('BSD')
 depends=('')
-makedepends=('boost' 'cmake')
+makedepends=('boost' 'cmake' 'gcc-multilib')
 source=("cereal-${pkgver}.tar.gz::https://github.com/USCiLab/cereal/archive/v${pkgver}.tar.gz")
 sha256sums=('7d321c22ea1280b47ddb06f3e9702fcdbb2910ff2f3df0a2554804210714434e')
 
