@@ -1,5 +1,5 @@
-# Contributor: Matheus de Alcantara <matheus.de.alcantara@gmail.com>
 # Maintainer: Brenton Horne <brentonhorne77 at gmail dot com>
+# Contributor: Matheus de Alcantara <matheus.de.alcantara@gmail.com>
 
 _pkgname=atom
 _version=beta
