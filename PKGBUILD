@@ -1,23 +1,22 @@
 # Maintainer: Pier Luigi Fiorini <pierluigi.fiorini@gmail.com>
 
 pkgname=fluid-git
-pkgver=20160719.4bc8253
+pkgver=20161002.783a2e6
 pkgrel=1
 pkgdesc="Components for Qt Quick applications"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
-url='http://hawaiios.org'
-license=('LGPL')
-depends=('qt5-quickcontrols' 'qt5-quickcontrols2' 'qt5-graphicaleffects' 'qt5-svg')
-makedepends=('git' 'gdb' 'extra-cmake-modules')
+url='http://liri.io'
+license=('MPL2')
+depends=('qt5-quickcontrols2' 'qt5-graphicaleffects' 'qt5-svg')
+makedepends=('git' 'extra-cmake-modules')
 conflicts=('fluid')
 replaces=('fluid')
 provides=('fluid')
-groups=('hawaii-git')
-options=('debug')
+groups=('liri-git')
 
-_gitroot="git://github.com/hawaii-desktop/fluid.git"
-_gitbranch=master
-_gitname=$pkgname
+_gitroot="git://github.com/lirios/fluid.git"
+_gitbranch=develop
+_gitname=fluid
 source=(${_gitname}::${_gitroot}#branch=${_gitbranch})
 md5sums=('SKIP')
 
@@ -28,17 +27,18 @@ pkgver() {
 
 prepare() {
 	mkdir -p build
+	pushd ${_gitname} >/dev/null
+	./scripts/fetch_icons.sh
+	popd >/dev/null
 }
 
 build() {
 	cd build
 	cmake ../${_gitname} \
 		-DCMAKE_INSTALL_PREFIX=/usr \
-		-DLIB_INSTALL_DIR=lib \
-		-DLIBEXEC_INSTALL_DIR=lib \
-		-DQML_INSTALL_DIR=lib/qt/qml \
-		-DKDE_INSTALL_USE_QT_SYS_PATHS=ON \
-		-DCMAKE_BUILD_TYPE=RelWithDebInfo
+		-DCMAKE_BUILD_TYPE=Release \
+		-DKDE_INSTALL_LIBDIR=lib \
+		-DKDE_INSTALL_LIBEXECDIR=lib
 	make
 }
 
