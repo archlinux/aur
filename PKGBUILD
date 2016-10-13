@@ -1,6 +1,6 @@
 # Maintainer: Giancarlo Razzolini <grazzolini@gmail.com>
 pkgname=tinyssh-convert-git
-pkgver=r12.3cd028e
+pkgver=r91.c4c839c
 pkgrel=2
 pkgdesc="converter for ed25519 keys from OpenSSH to TinySSH format"
 arch=('x86_64' 'i686')
@@ -25,4 +25,5 @@ build() {
 package() {
 	cd "$srcdir/${pkgname%-git}"
         install -Dm 755 ${pkgname%-git} $pkgdir/usr/bin/${pkgname%-git}
+        install -Dm644 LICENSE $pkgdir/usr/share/licenses/${pkgname%-git}/LICENSE
 }
