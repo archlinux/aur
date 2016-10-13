@@ -1,0 +1,16 @@
+pkgbase = neovim-vcscommand
+	pkgdesc = Neovim version control system integration plugin
+	pkgver = 1.99.47
+	pkgrel = 1
+	url = http://www.vim.org/scripts/script.php?script_id=90
+	install = nvim-doc.install
+	arch = any
+	groups = neovim-plugins
+	license = MIT
+	depends = neovim
+	replaces = neovim-vsccommand
+	source = vcscommand.zip::http://www.vim.org/scripts/download_script.php?src_id=$_scriptid
+	sha256sums = 1d3c451df38110c2c5a9ce977978449d29497ee36576a4ac454a0a4c5f6ddb4b
+
+pkgname = neovim-vcscommand
+
