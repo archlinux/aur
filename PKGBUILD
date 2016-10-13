@@ -1,7 +1,7 @@
 # Maintainer: Giancarlo Razzolini <grazzolini@gmail.com>
 pkgname=mkinitcpio-utils
 pkgver=0.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Collection of Archlinux mkinitcpio utilities performing various tasks"
 arch=('any')
 url="https://github.com/grazzolini/mkinitcpio-utils"
@@ -18,4 +18,5 @@ package() {
   install -Dm644 "$srcdir/$pkgname-$pkgver/README.md"                           "$pkgdir/usr/share/$pkgname/README.md"
   install -Dm644 "$srcdir/$pkgname-$pkgver/initcpio/hooks/encryptssh"           "$pkgdir/usr/lib/initcpio/hooks/encryptssh"
   install -Dm644 "$srcdir/$pkgname-$pkgver/initcpio/install/encryptssh"         "$pkgdir/usr/lib/initcpio/install/encryptssh"
+  install -Dm644 "$srcdir/$pkgname-$pkgver/LICENSE"                             "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
