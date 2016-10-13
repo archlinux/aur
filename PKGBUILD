@@ -6,24 +6,17 @@
 #   at the moment, hence no integrity for now.
 
 pkgname=manager.io
-pkgver=15.5.61
+pkgver=16.10.26
 pkgrel=1
 pkgdesc="Manager is free accounting software for small business."
 arch=('i686' 'x86_64')
 url="http://www.manager.io"
-depends=('mono' 'gtk-sharp-2' 'webkit-sharp')
-source=("http://download.manager.io/Manager.deb")
-md5sums=('SKIP')
-
-pkgver() {
-  zcat control.tar.gz | grep -a 'Version:' | cut -d ' ' -f 2
-}
+source=("manager-v${pkgver}.deb::https://mngr.s3.amazonaws.com/Manager.deb")
 
 package() {
   msg2 "Extracting the data.tar.gz"
   tar -xf data.tar.xz -C "${pkgdir}/"
-  sed -i 's#/usr/bin/cli#/usr/bin/mono#' "${pkgdir}/opt/manager-accounting/manager-accounting"
-  mkdir -p "${pkgdir}/usr/bin"
-  ln -s '/opt/manager-accounting/manager-accounting' "${pkgdir}/usr/bin/manager-accounting"
 }
+
+md5sums=('5804e0e7d79328601cda439c21d71e46')
 
