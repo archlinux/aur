@@ -5,16 +5,21 @@ _pkgname=atom
 _version=beta
 
 # Versions
-_about_url="https://github.com/fusion809/about"
+_fus_url="https://github.com/fusion809"
 _language_gfm2_ver=0.92.2
+_language_ini_desktop_ver=1.18.3
 _language_liquid_ver=0.5.1
+_language_patch2_url="${_fus_url}/language-patch2"
+_language_patch2_ver=1.0.0
+_language_unix_shell_ver=0.38.2
+_language_vala_modern_ver=0.3.2
 
 pkgname=${_pkgname}-editor-${_version}
 _pkgrel=1
 _pkgver=1.12.0
 pkgver="${_pkgver}.beta${_pkgrel}.m${_language_gfm2_ver}"
 _ver=$_pkgver-beta${_pkgrel}
-pkgrel=1
+pkgrel=2
 pkgdesc='Hackable text editor for the 21st Century, built using web technologies on the Electron framework - Beta channel.'
 arch=('x86_64' 'i686')
 url="https://github.com/${_pkgname}/${_pkgname}"
@@ -26,20 +31,20 @@ conflicts=('atom-editor-beta-bin' 'atom-editor-beta-arch')
 install=atom.install
 source=("${_pkgname}-${_pkgver}-${_version}${_pkgrel}.tar.gz::$url/archive/v${_pkgver}-${_version}${_pkgrel}.tar.gz"
 "${_pkgname}-${_version}.desktop"
-"${_pkgname}-${_version}"
-"about-beta.patch")
+"${_pkgname}-${_version}")
 sha256sums=('44f19af4187f149db00f681a45cf525489432382413f39e999a5b3163b0116dc'
-            'b76bdecbf42456c66c029b4f9c75cb8acde389119e1e4a29de2980443703d752'
             'c62faaf2f50cddb1a834ccb33c95724076d2859c88baac7d9d676bc9c3afc8c6'
-            '230563ed327833351d448e152ab8b146d2d2b7bdac42c7d39eef966b96b862fc'
-            'f0af112075822a7163a5f9be7a096524fbdd4c39f1c56c6913b3f9f99aea0491')
+            '230563ed327833351d448e152ab8b146d2d2b7bdac42c7d39eef966b96b862fc')
 
 prepare() {
 	cd "$srcdir/${_pkgname}-${_pkgver}-${_version}${_pkgrel}"
 
   sed -i -e "/exception-reporting/d" \
 	       -e "/metrics/d" \
-         -e "s/\"language-gfm\": \".*\",/\"language-gfm2\": \"${_language_gfm2_ver}\",\n    \"language-liquid\": \"${_language_liquid_ver}\",/g" \
+         -e "/\"dependencies\": {/a \
+            \"language-patch2\": \"${_language_patch2_url}\"," \
+         -e "s/\"language-gfm\": \".*\",/\"language-gfm2\": \"${_language_gfm2_ver}\",\n    \"language-ini-desktop\": \"${_language_ini_desktop_ver}\",\n    \"language-liquid\": \"${_language_liquid_ver}\",\n    \"language-patch2\": \"${_language_patch2_ver}\",/g" \
+         -e "s/\"language-shellscript\": \".*\",/\"language-unix-shell\": \"${_language_unix_shell_ver}\",\n    \"language-vala-modern\": \"${_language_vala_modern_ver}\",/g" \
          package.json
 
 	chmod 755 -R package.json
