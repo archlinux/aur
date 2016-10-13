@@ -1,0 +1,17 @@
+pkgbase = neovim-surround
+	pkgdesc = Provides mappings to easily delete, change, and add paired "surroundings"
+	pkgver = 2.1
+	pkgrel = 1
+	url = https://github.com/tpope/vim-surround
+	install = nvim-doc.install
+	arch = any
+	groups = neovim-plugins
+	license = custom:vim
+	depends = neovim
+	source = neovim-surround-2.1.tar.gz::https://github.com/tpope/vim-surround/archive/v2.1.tar.gz
+	source = license.txt
+	sha256sums = e8fdc95650e0c3ca61890f6607a21dd01e763a0f2d177f15547afd0adb83ec73
+	sha256sums = 446c67d93c43addf076fe103a71844c2d875d478f82186436567dd221f2652f3
+
+pkgname = neovim-surround
+
