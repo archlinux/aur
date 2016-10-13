@@ -4,7 +4,7 @@
 
 pkgbase=certbot
 pkgname=certbot-user
-pkgver=0.9.1
+pkgver=0.9.2
 pkgrel=1
 pkgdesc="Let’s Encrypt certbot running as certbot user rather than root, with either standalone or webroot mode."
 arch=('any')
@@ -25,17 +25,10 @@ source=("https://pypi.io/packages/source/c/${pkgbase}/${pkgbase}-${pkgver}.tar.g
 validpgpkeys=('148C30F6F7E429337A72D992B00B9CC82D7ADF2C'
               '1B41B758F9A78C7F444C20FA3E5B4152E3ADB1FD'
               'A2CFB51FA275A7286234E7B24D17C995CD9775F2')
-md5sums=('b2442a8c09da8f61feca31a8a235f751'
+md5sums=('a4601e0d82ae3997fca079c971b7be4c'
          'SKIP'
          '3d2a709a3ef1a2183d3b1fb159631eec'
          'bcdf4204508da91cde42ae6f5550f0e5')
-
-prepare() {
-    # Fix test data
-    for filename in cert chain fullchain privkey; do
-        ln -sf ../../archive/sample-renewal/${filename}1.pem certbot-$pkgver/certbot/tests/testdata/live/sample-renewal/$filename.pem
-    done
-}
 
 build() {
     cd "${srcdir}"/${pkgbase}-${pkgver}
