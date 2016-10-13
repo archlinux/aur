@@ -4,13 +4,13 @@
 # Contributor: Dave Reisner <dreisner@archlinux.org>
 # Contributor: Tom Gundersen <teg@jklm.no>
 
-_spkgrel=3
+_spkgrel=4
 _repo=http://mirror.netcologne.de/archlinux/core/os
 
 pkgbase=eudev-systemdcompat
 pkgname=('eudev-systemd' 'libeudev-systemd')
 pkgver=231
-pkgrel=9
+pkgrel=10
 arch=('i686' 'x86_64')
 license=('GPL2')
 url="http://www.freedesktop.org/wiki/Software/systemd"
@@ -19,10 +19,10 @@ source_i686=("$_repo/i686/libsystemd-$pkgver-${_spkgrel}-i686.pkg.tar.xz"
 source_x86_64=("$_repo/x86_64/libsystemd-$pkgver-${_spkgrel}-x86_64.pkg.tar.xz"
         "$_repo/x86_64/systemd-$pkgver-${_spkgrel}-x86_64.pkg.tar.xz"
         "gummibootx64.efi")
-md5sums_i686=('1b3fa9059c12eba0bec92cb16435e20d'
-              'dcb3c973314fb38b968869d4b169c4bc')
-md5sums_x86_64=('a4e2fbd6645aacf4bba5aafa9a220c68'
-                '6d09efd13c1f16a7227e77c56af0d4e9'
+md5sums_i686=('e33f8c03adec815f9bece11ce623ed78'
+              'bcbec1e89db4a7a142f860cd6479ff4d')
+md5sums_x86_64=('f4ca6c04596a14fa720ce536a2aaf3ab'
+                '54ea61ad80b4929c1a98121ef93793c4'
                 'ef357b701d67fa39355cbc1c3b9d5afd')
 
 package_eudev-systemd() {
