@@ -57,9 +57,9 @@ daily_target_path='daily/'
 weekly_target_path='weekly/'
 monthly_target_path='monthly/'
 target_monthly_file_name="$(date +'%m-%Y')"
-target_weekly_file_name="$(date +'%V sav. %m-%Y')"
+target_weekly_file_name="$(date +'%V.week-%m-%Y')"
 target_daily_file_name="$(date +'%d-%m-%Y')"
-backup_month_day_number=1
+backup_month_day_number=6
 backup_week_day_number=6 # Saturday
 number_of_daily_retention_days=14 # Daily backups for the last 14 days.
 number_of_weekly_retention_days=56 # Weekly backups for the last 2 month.
@@ -82,12 +82,19 @@ week_day_umber="$(date +'%u')"
 for source_path in "${!source_target_mappings[@]}"; do
     target_path="$(echo "${source_target_mappings[$source_path]}" | \
         grep '^[^ ]+' --only-matching --extended-regexp)"
+    target_file_path="${target_path}/${daily_target_path}${target_daily_file_name}"
     if [[ "$month_day_number" == "$backup_month_day_number" ]]; then
         target_file_path="${target_path}/${daily_target_path}${target_monthly_file_name}"
+        ln --symbolic --force "$target_file_path" \
+            "${target_path}/${daily_target_path}${target_daily_file_name}"
+        if [[ "$week_day_number" == "$backup_week_day_number" ]]; then
+            ln --symbolic --force "$target_file_path" \
+                "${target_path}/${daily_target_path}${target_weekly_file_name}"
+        fi
     elif [[ "$week_day_number" == "$backup_week_day_number" ]]; then
         target_file_path="${target_path}/${daily_target_path}${target_weekly_file_name}"
-    else
-        target_file_path="${target_path}/${daily_target_path}${target_daily_file_name}"
+        ln --symbolic --force "$target_file_path" \
+            "${target_path}/${daily_target_path}${target_daily_file_name}"
     fi
     mkdir --parents "$(dirname "$target_file_path")"
     if $verbose; then
