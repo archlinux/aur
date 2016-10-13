@@ -4,7 +4,7 @@
 # Contributor: Andres Perera <aepd87@gmail.com>
 
 pkgname=pacman-git
-pkgver=5.0.0
+pkgver=5.0.1.84.gad27aa3
 pkgrel=1
 pkgdesc="A library-based package manager with dependency support. git version."
 arch=('i686' 'x86_64')
@@ -42,7 +42,6 @@ build() {
     --with-ldconfig=/usr/bin/ldconfig
 
   make
-  make -C contrib
 }
 
 check() {
@@ -66,22 +65,14 @@ package() {
       ;;
   esac
 
-  # contrib
-  make DESTDIR="$pkgdir" -C contrib install
-
-  install -Dm644 "contrib/PKGBUILD.vim" "$pkgdir/usr/share/vim/vimfiles/syntax/PKGBUILD.vim"
-  install -dm755 "$pkgdir/usr/share/vim/vimfiles/ftdetect"
-  echo "au BufNewFile,BufRead PKGBUILD set filetype=PKGBUILD" \
-    >"$pkgdir/usr/share/vim/vimfiles/ftdetect/PKGBUILD.vim"
-
   # install completion files
   rm -r "$pkgdir/etc/bash_completion.d"
-  install -Dm644 contrib/bash_completion "$pkgdir/usr/share/bash-completion/completions/pacman"
+  install -Dm644 scripts/completion/bash_completion "$pkgdir/usr/share/bash-completion/completions/pacman"
   for f in makepkg pacman-key; do
     ln -s pacman "$pkgdir/usr/share/bash-completion/completions/$f"
   done
 
-  install -Dm644 contrib/zsh_completion $pkgdir/usr/share/zsh/site-functions/_pacman
+  install -Dm644 scripts/completion/zsh_completion $pkgdir/usr/share/zsh/site-functions/_pacman
 }
 
 # vim: set ts=2 sw=2 et:
