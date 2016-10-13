@@ -1,7 +1,7 @@
 # $Id: PKGBUILD 114490 2014-07-01 16:45:29Z spupykin $
 # Maintainer: fdev31 <fdev31@gmail.com>
 
-pkgname=vfsm
+pkgname=visualfsm
 pkgver=0.5.26
 pkgrel=1
 pkgdesc="A Visual Structure from Motion System"
