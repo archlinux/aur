@@ -80,7 +80,7 @@ fi
 # region controller
 # Get current month and week day number
 month_day_number="$(date +'%d')"
-week_day_umber="$(date +'%u')"
+week_day_number="$(date +'%u')"
 for source_path in "${!source_target_mappings[@]}"; do
     target_path="$(echo "${source_target_mappings[$source_path]}" | \
         grep '^[^ ]+' --only-matching --extended-regexp)"
