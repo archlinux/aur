@@ -1,0 +1,8 @@
+post_install() {
+	echo " >> mkinitcpio-gpg-encrypt - READ ME!"
+	echo " >> The hook is a superset of \"encrypt\""
+	echo " >> Replace the \"encrypt\" hook with \"gpg-encrypt\""
+	echo " >> Export private/shadow keys to /etc/private.gpg"
+	echo ""
+	echo " >> If the key file given ends with .gpg, the hook will try do decrypt it"
+}
