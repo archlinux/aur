@@ -1,0 +1,17 @@
+pkgbase = plasma-wallpaper-neon-particles-bzr
+	pkgdesc = Terminal emulator that supports tabs and grids (bzr trunk developmental version)
+	pkgver = 0.1.7
+	pkgrel = 1
+	url = https://code.launchpad.net/~ivan-safonov/+junk/plasma-wallpaper-neon-particles
+	arch = any
+	license = GPL
+	makedepends = cmake
+	makedepends = bzr
+	depends = plasma-workspace
+	provides = plasma-wallpaper-neon-particles-bzr
+	conflicts = plasma-wallpaper-neon-particles
+	source = plasma-wallpaper-neon-particles::bzr+https://code.launchpad.net/~ivan-safonov/+junk/plasma-wallpaper-neon-particles
+	md5sums = SKIP
+
+pkgname = plasma-wallpaper-neon-particles-bzr
+
