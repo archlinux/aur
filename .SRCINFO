@@ -3,7 +3,7 @@
 pkgbase = google-glog-git
 	pkgdesc = Logging library for C++, compiled with cmake
 	pkgver = r212.0472b91
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/google/glog
 	arch = i686
 	arch = x86_64
