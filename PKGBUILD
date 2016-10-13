@@ -2,7 +2,7 @@
 
 pkgname=opera-beta-ffmpeg-codecs
 pkgver=54.0.2840.27
-pkgrel=1
+pkgrel=2
 pkgdesc="additional support for proprietary codecs for opera-beta"
 arch=('i686' 'x86_64')
 url="https://ffmpeg.org/"
@@ -55,7 +55,7 @@ package() {
   cd "$srcdir/chromium-$pkgver"
 
   install -Dm644 out/Release/libffmpeg.so \
-    "$pkgdir/usr/lib/opera-developer/lib_extra/libffmpeg.so"
+    "$pkgdir/usr/lib/opera-beta/lib_extra/libffmpeg.so"
 }
 
 # vim:set ts=2 sw=2 et:
