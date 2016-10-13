@@ -8,7 +8,7 @@
 
 pkgname=paraview
 pkgver=5.1.2
-pkgrel=2
+pkgrel=3
 pkgdesc='Parallel Visualization Application using VTK'
 arch=('i686' 'x86_64')
 url='http://www.paraview.org'
@@ -20,16 +20,20 @@ optdepends=('python2-matplotlib: Needed to support equation rendering using Math
 	        'python2-numpy: Needed for using some filters such as "Python Calculator"')
 source=("http://paraview.org/files/v${pkgver:0:3}/ParaView-v${pkgver}.tar.gz"
 	    'paraview_32bit.patch'
-	    'paraview-desktop.patch')
+	    'paraview-desktop.patch'
+	    'vtk_hdf5_internal.patch')
 sha1sums=('449f104090b1fa84d1ee4b852dbfc6269cba9db4'
 	  'c25134330c582371e1009b51445cdb435144b53f'
-	  'd7da23daca34cd015294c4d2f702cdc4a81f0853')
+	  'd7da23daca34cd015294c4d2f702cdc4a81f0853'
+	  'cbadaa87cd775d1edb1dbc1db4dedb9f3cdc4fd5')
 
 prepare() {
   cd "${srcdir}/ParaView-v${pkgver}"
   patch -p1 -i ../paraview_32bit.patch
   
   patch -p1 -i ../paraview-desktop.patch
+  
+  patch -p1 -i ../vtk_hdf5_internal.patch
 
   rm -rf "${srcdir}/build"
   mkdir "${srcdir}/build"
@@ -84,6 +88,8 @@ build() {
    ../ParaView-v${pkgver}
 
    make
+   
+   #sed -i 's/share\/cmake\/hdf5/share\/cmake\/hdf5_paraview/g' VTK/ThirdParty/hdf5/vtkhdf5/cmake_install.cmake
 }
 
 package() {
