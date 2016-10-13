@@ -1,11 +1,12 @@
 pkgbase = plasma-wallpaper-neon-particles-bzr
 	pkgdesc = Plasma Wallpaper Neon Particles from Ivan Safonov
 	pkgver = 0.1.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://code.launchpad.net/~ivan-safonov/+junk/plasma-wallpaper-neon-particles
 	arch = any
 	license = GPL
 	makedepends = cmake
+	makedepends = extra-cmake-modules
 	makedepends = bzr
 	depends = plasma-workspace
 	provides = plasma-wallpaper-neon-particles-bzr

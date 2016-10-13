@@ -3,13 +3,13 @@
 pkgname='plasma-wallpaper-neon-particles-bzr'
 _pkgname="${pkgname%-bzr}"
 pkgver='0.1.7'
-pkgrel=1
+pkgrel=2
 pkgdesc='Plasma Wallpaper Neon Particles from Ivan Safonov'
 arch=('any')
 url='https://code.launchpad.net/~ivan-safonov/+junk/plasma-wallpaper-neon-particles'
 license=('GPL')
 depends=('plasma-workspace')
-makedepends=('cmake' 'bzr')
+makedepends=('cmake' 'extra-cmake-modules' 'bzr')
 provides=("${pkgname}")
 conflicts=("${_pkgname}")
 source=("${_pkgname}::bzr+https://code.launchpad.net/~ivan-safonov/+junk/${_pkgname}")
