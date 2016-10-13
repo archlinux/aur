@@ -1,0 +1,15 @@
+pkgbase = neovim-indent-object
+	pkgdesc = Text objects based on indent levels
+	pkgver = 1.1.2
+	pkgrel = 1
+	url = http://www.vim.org/scripts/script.php?script_id=3037
+	install = nvim-doc.install
+	arch = any
+	groups = neovim-plugins
+	license = MIT
+	depends = neovim
+	source = neovim-indent-object-1.1.2.tar.gz::https://github.com/michaeljsmith/vim-indent-object/tarball/1.1.2
+	sha256sums = 8fa0e3f117d666c28fe4ab7128096c056fe1cc2c3347e2d5da95eff92d96ca78
+
+pkgname = neovim-indent-object
+
