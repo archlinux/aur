@@ -7,7 +7,7 @@
 
 pkgname=neovim-nerdcommenter
 pkgver=2.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A Neovim plugin that allows for easy commenting of code for many filetypes'
 url='https://github.com/scrooloose/nerdcommenter'
 arch=('any')
@@ -18,7 +18,7 @@ install=nvim-doc.install
 source=(${pkgname}-${pkgver}.tar.gz::https://github.com/scrooloose/nerdcommenter/archive/${pkgver}.tar.gz
         LICENSE)
 sha512sums=('ec389cd3f6f1f2093debe2e2d5a09573324d9f8459b4f6c3528bf7b46f9b84fad08718e140be6d39bb8c990778de89fda7f9bb06704c1ea6ff319e6ac431fcdd'
-            '1b4064171fa88f41d05e3d1d1c14ceb8a5cb4cca9e6f08f7e267d7740b7d65e4765cb56f0ccf3765ee9c85654559d2d7726d71516b890b0174b68e6cc62ef421')
+            'fb6575315a22516e29ad414c8e0c9074e0e18a5361ce746524d938e0bf329f7b742b66dc43cfba138f69534d747507e2983b34149d7c66bd4ae2e1b435e37034')
 
 package() {
   cd ${pkgname#neovim-}-${pkgver}
