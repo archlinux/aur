@@ -1,0 +1,43 @@
+diff --git a/ewsresource.cpp b/ewsresource.cpp
+index 4c87df8..fa4e3ba 100644
+--- a/ewsresource.cpp
++++ b/ewsresource.cpp
+@@ -890,9 +890,9 @@ void EwsResource::itemSendRequestFinished(KJob *job)
+     itemSent(item, TransportSucceeded);
+ }
+
+-#ifdef HAVE_SEPARATE_MTA_RESOURCE
+ void EwsResource::sendMessage(QString id, QByteArray content)
+ {
++#ifdef HAVE_SEPARATE_MTA_RESOURCE
+     EwsCreateItemRequest *req = new EwsCreateItemRequest(mEwsClient, this);
+
+     EwsItem item;
+@@ -903,8 +903,10 @@ void EwsResource::sendMessage(QString id, QByteArray content)
+     req->setProperty("requestId", id);
+     connect(req, &EwsCreateItemRequest::finished, this, &EwsResource::messageSendRequestFinished);
+     req->start();
++#endif
+ }
+
++#ifdef HAVE_SEPARATE_MTA_RESOURCE
+ void EwsResource::messageSendRequestFinished(KJob *job)
+ {
+     QString id = job->property("requestId").toString();
+diff --git a/ewsresource.h b/ewsresource.h
+index 1b4cd01..04fe5bf 100644
+--- a/ewsresource.h
++++ b/ewsresource.h
+@@ -115,11 +115,11 @@ private Q_SLOTS:
+     void globalTagChangeFinished(KJob *job);
+     void globalTagsRetrievalFinished(KJob *job);
+     void adjustInboxRemoteIdFetchFinished(KJob *job);
+-#ifdef HAVE_SEPARATE_MTA_RESOURCE
+ public Q_SLOTS:
+     Q_SCRIPTABLE void sendMessage(QString id, QByteArray content);
+ Q_SIGNALS:
+     Q_SCRIPTABLE void messageSent(QString id, QString error);
++#ifdef HAVE_SEPARATE_MTA_RESOURCE
+ private Q_SLOTS:
+     void messageSendRequestFinished(KJob *job);
+ #endif

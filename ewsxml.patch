@@ -1,0 +1,12 @@
+diff -Naur akonadi-ews-0.8.0/ewsclient/ewsxml.cpp-orig akonadi-ews-0.8.0/ewsclient/ewsxml.cpp
+--- akonadi-ews-0.8.0/ewsclient/ewsxml.cpp-orig	2016-07-19 10:00:14.743552518 -0400
++++ akonadi-ews-0.8.0/ewsclient/ewsxml.cpp	2016-07-19 10:00:25.990593383 -0400
+@@ -235,7 +235,7 @@
+         reader.skipCurrentElement();
+         return false;
+     }
+-    int i;
++    int i = 0;
+     QVector<QString>::const_iterator it;
+     for (it = items.cbegin(); it != items.cend(); it++, i++) {
+         if (text == *it) {
