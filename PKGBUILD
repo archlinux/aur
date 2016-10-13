@@ -1,7 +1,7 @@
 # Maintainer: Giancarlo Razzolini <grazzolini@gmail.com>
 pkgname=mkinitcpio-chkcryptoboot
 pkgver=0.0.5
-pkgrel=2
+pkgrel=3
 pkgdesc="This hook checks for a modified bootloader code, in an encrypted boot setup, and warns the user to not enter his root device password"
 arch=('any')
 url="https://github.com/grazzolini/mkinitcpio-chkcryptoboot"
@@ -19,5 +19,6 @@ package() {
   install -Dm644 "$srcdir/$pkgname-$pkgver/chkcryptoboot.conf"	   "$pkgdir/etc/default/chkcryptoboot.conf"
   install -Dm644 "$srcdir/$pkgname-$pkgver/chkcryptoboot_hook"      "$pkgdir/usr/lib/initcpio/hooks/chkcryptoboot"
   install -Dm644 "$srcdir/$pkgname-$pkgver/chkcryptoboot_install"   "$pkgdir/usr/lib/initcpio/install/chkcryptoboot"
-  install -Dm755 "${srcdir}/$pkgname-$pkgver"/chkcryptoboot-profilealert.sh "${pkgdir}"/etc/profile.d/chkcryptoboot-profilealert.sh
+  install -Dm755 "$srcdir/$pkgname-$pkgver"/chkcryptoboot-profilealert.sh "${pkgdir}"/etc/profile.d/chkcryptoboot-profilealert.sh
+  install -Dm644 "$srcdir/$pkgname-$pkgver/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
