@@ -1,13 +1,13 @@
 # Maintainer: jstoik1 <joshstoik at gmail dot com>
 pkgname=jpegrescan-git
 pkgver=20150822
-pkgrel=1
+pkgrel=2
 pkgdesc="Losslessly shrink any JPEG file."
 arch=(any)
 url="https://github.com/kud/jpegrescan"
 license=('GPL')
 depends=('perl-file-slurp' 'libjpeg-turbo')
-makedepends=('setuptools' 'git')
+makedepends=('git')
 source=('jpegrescan::git+git://github.com/kud/jpegrescan.git')
 sha512sums=('SKIP')
 
