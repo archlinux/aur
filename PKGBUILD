@@ -6,7 +6,7 @@
 set -u
 _pkgname='progress'
 pkgname="${_pkgname}-git"
-pkgver=0.13.r0.g8a61b10
+pkgver=0.13.1.r0.gf6894b8
 pkgrel=1
 _srcdir="${_pkgname}"
 pkgdesc='Shows running coreutils basic commands and displays stats'
