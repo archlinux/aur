@@ -1,13 +1,14 @@
 # Maintainer: Devin Christensen <quixoten at gmail dot com>
 pkgname=powerline-fonts-git
 pkgver=r100.a44abd0
-pkgrel=2
+pkgrel=3
 pkgdesc="Powerline fonts for X11 and the console"
 arch=('any')
 url='https://github.com/powerline/fonts'
 license=('CPL')
 depends=(fontconfig xorg-font-utils )
 makedepends=('git')
+provides=(ttf-hack)
 conflicts=(
   monaco-powerline-font-git
   otf-droid-sans-mono-powerline-git
