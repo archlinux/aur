@@ -9,7 +9,7 @@ url="http://www.mono-project.com/Mono.Addins/"
 depends=('gtk-sharp-2'  'mono')
 makedepends=('git' 'pkgconfig')
 options=('!makeflags')
-provides=('mono-addins=1.3')
+provides=('mono-addins=1.3.1')
 source=(git://github.com/mono/mono-addins.git)
 md5sums=('SKIP')
 
