@@ -2,7 +2,7 @@
 
 _pkgname=sidef
 pkgname=sidef-git
-pkgver=2.32
+pkgver=2.32.12.g96afafe
 pkgrel=1
 pkgdesc="A modern object-oriented programming language. (-git version)"
 arch=('any')
@@ -31,7 +31,7 @@ package() {
     #./Build test
     #./Build install --install_path script=/usr/bin
 
-    perl Makefile.PL DESTDIR="$pkgdir" INSTALLDIRS=vendor
+    perl Makefile.PL DESTDIR="$pkgdir" INSTALLDIRS=vendor INSTALLVENDORSCRIPT="/usr/bin"
     make &&
     make test &&
     make install
