@@ -1,0 +1,31 @@
+pkgbase = networkmanager-applet-git
+	pkgdesc = Applet for managing network connections
+	pkgver = 1.1.0.r3820.ga5f3e6e
+	pkgrel = 1
+	url = http://www.gnome.org/projects/NetworkManager/
+	install = networkmanager-applet-git.install
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	license = LGPL2.1
+	makedepends = intltool
+	makedepends = gobject-introspection
+	depends = networkmanager-git
+	depends = gtk3
+	depends = iso-codes
+	depends = libsecret
+	depends = notification-daemon
+	depends = libnotify
+	depends = adwaita-icon-theme
+	depends = mobile-broadband-provider-info
+	provides = network-manager-applet
+	provides = nm-connection-editor
+	provides = libnm-gtk
+	conflicts = nm-connection-editor
+	conflicts = network-manager-applet
+	options = !libtool
+	source = git://git.gnome.org/network-manager-applet
+	md5sums = SKIP
+
+pkgname = networkmanager-applet-git
+
