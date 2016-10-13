@@ -1,9 +1,9 @@
 # Maintainer: Giancarlo Razzolini <grazzolini@gmail.com>
 pkgname=esekeyd
 pkgver=1.2.7
-pkgrel=1
+pkgrel=2
 pkgdesc="ESE Key Daemon is a multimedia keyboard daemon for Linux."
-arch=('any')
+arch=('i686' 'x86_64')
 url="http://freecode.com/projects/esekeyd"
 license=('GPL')
 depends=('glibc')
