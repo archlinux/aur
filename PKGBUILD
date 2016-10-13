@@ -3,7 +3,7 @@
 
 pkgname=sile-git
 pkgdesc='Modern typesetting system inspired by TeX'
-pkgver=0.9.4.r31.ga3fbeec
+pkgver=0.9.4.r85.g22ad9c4
 _branch='master'
 pkgrel=1
 arch=(any)
