@@ -1,0 +1,23 @@
+pkgbase = neovim-airline
+	pkgver = 1.0
+	pkgrel = 1
+	arch = any
+	groups = neovim-plugins
+	license = MIT
+	makedepends = git
+	source = neovim-airline::git://github.com/vim-airline/vim-airline.git#tag=v0.8
+	source = neovim-airline-themes::git://github.com/vim-airline/vim-airline-themes.git#commit=5a6453c
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = neovim-airline
+	pkgdesc = Lean & mean statusline/tabline for Neovim
+	url = https://github.com/vim-airline/vim-airline
+	install = nvim-doc.install
+	depends = neovim
+	depends = neovim-airline-themes
+
+pkgname = neovim-airline-themes
+	pkgdesc = Themes for neovim-airline
+	depends = neovim-airline
+
