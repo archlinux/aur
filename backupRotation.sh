@@ -45,7 +45,7 @@
 
 # account        default : gmail
 # endregion
-# region default options 
+# region default options
 # Example:
 # declare -A source_target_mappings=(
 #     ['SOURCE_URL1']='TARGET_URL1 RECIPIENT_E_MAIL_ADDRESS' \
@@ -59,7 +59,9 @@ monthly_target_path='monthly/'
 target_monthly_file_name="$(date +'%m-%Y')"
 target_weekly_file_name="$(date +'%V.week-%m-%Y')"
 target_daily_file_name="$(date +'%d-%m-%Y')"
-backup_month_day_number=6
+# Should be in range 1 till 28
+backup_month_day_number=1
+# Should be in range 1 till 7
 backup_week_day_number=6 # Saturday
 number_of_daily_retention_days=14 # Daily backups for the last 14 days.
 number_of_weekly_retention_days=56 # Weekly backups for the last 2 month.
