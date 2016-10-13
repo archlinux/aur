@@ -1,0 +1,15 @@
+pkgbase = dracnmap-git
+	pkgdesc = Dracnmap is an open source program which is using to exploit the network and gathering information with nmap help.
+	pkgver = 1
+	pkgrel = 1
+	url = https://github.com/Screetsec/Dracnmap.git
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = nmap
+	conflicts = dracnmap
+	source = dracnmap-git::git+https://github.com/Screetsec/Dracnmap.git
+	md5sums = SKIP
+
+pkgname = dracnmap-git
+
