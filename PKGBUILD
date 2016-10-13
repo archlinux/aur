@@ -3,7 +3,7 @@
 
 pkgname=arxlibertatis-git
 _installname=arx
-pkgver=1.1.2+r6979.g96cd0b6
+pkgver=1.1.2+r7538.gef39441
 pkgrel=1
 pkgdesc='Cross-platform port of Arx Fatalis, a first-person fantasy RPG (executables only; latest git revision)'
 url='http://arx-libertatis.org/'
@@ -13,7 +13,7 @@ depends=('sdl2' 'zlib' 'boost-libs' 'glm' 'freetype2' 'openal' 'glew')
 optdepends=('arxfatalis-data-gog: game data from GOG.com installer'
             'arxfatalis-data-copy: game data from existing win32 installation'
             'arxfatalis-data-demo: game data from official freeware demo'
-            'qt: enable built-in crash handler (Qt5 version; recompile needed)'
+            'qt5-base: enable built-in crash handler (Qt5 version; recompile needed)'
             'qt4: enable built-in crash handler (Qt4 version; recompile needed)'
             'gdb: generate detailed crash reports')
 makedepends=('git' 'cmake' 'boost')
