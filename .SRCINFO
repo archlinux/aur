@@ -1,7 +1,7 @@
 pkgbase = sidef
 	pkgdesc = A modern object-oriented programming language.
 	pkgver = 2.32
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/trizen/sidef
 	arch = any
 	license = GPLv3
