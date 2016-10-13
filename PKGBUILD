@@ -5,7 +5,7 @@ _pkgname=jre
 pkgname=jre-devel
 _major=9
 #_minor=1
-_build=139
+_build=140
 _pkgver=$_major
 pkgver=${_major}b${_build}
 #_pkgver=${_major}u${_minor}
@@ -48,8 +48,8 @@ source_i686=("http://www.java.net/download/java/jdk${_major}/archive/${_build}/b
 source_x86_64=("http://www.java.net/download/java/jdk${_major}/archive/${_build}/binaries/${_pkgname}-${_pkgver}-ea+${_build}_linux-x64_bin.tar.gz")
 md5sums=('855a74ddead31f8b30943ac1a7d3a7a6'
          'f09947a67691a2d78d20a3885889981c')
-md5sums_i686=('ef31b38575954508c1ab924bf042d46c')
-md5sums_x86_64=('0b74c820aadf6e90967be75492552157')
+md5sums_i686=('c6a8b1c5d67cf29a9a6e43061910b8f8')
+md5sums_x86_64=('ba078f7a10744335abd9996ff209fd5d')
 
 package() {
     cd ${_pkgname}-${_major}
