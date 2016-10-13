@@ -12,7 +12,7 @@ makedepends=('git')
 optdepends=('subliminal-git: subtitles support' 'libnotify')
 provides=('magmatv-git')
 conflicts=('magmatv')
-source=('magmatv::git+https://gitlab.com/frangor/magmatv.git#branch=dev')
+source=('magmatv::git+https://gitlab.com/MagmaTV/magmatv.git#branch=dev')
 sha256sums=('SKIP')
 
 pkgver() {
