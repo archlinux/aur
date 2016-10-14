@@ -1,0 +1,16 @@
+pkgbase = razer_blade_14_2016_acpi_fix-git
+	pkgdesc = ACPI firmware fix for the Razer Blade 14 2016
+	pkgver = 8.b309883
+	pkgrel = 1
+	url = https://github.com/m4ng0squ4sh/razer_blade_14_2016_acpi_fix
+	arch = x86_64
+	arch = i686
+	license = GPLv2
+	makedepends = git
+	makedepends = cpio
+	makedepends = iasl
+	source = git+https://github.com/m4ng0squ4sh/razer_blade_14_2016_acpi_fix.git
+	md5sums = SKIP
+
+pkgname = razer_blade_14_2016_acpi_fix-git
+
