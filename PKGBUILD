@@ -2,7 +2,7 @@
 
 pkgname=mingw-w64-libepoxy
 pkgver=1.3.1
-pkgrel=2
+pkgrel=3
 pkgdesc="A library for handling OpenGL function pointer management for you (mingw-w64)"
 arch=(any)
 url="https://github.com/anholt/libepoxy"
@@ -34,9 +34,9 @@ package() {
   for _arch in ${_architectures}; do
     cd "build-${_arch}"
     make DESTDIR="$pkgdir" install
-    find "$pkgdir/usr/${_arch}" -name '*.exe' -o -name '*.bat' -o -name '*.def' -o -name '*.exp' -o -name '*.manifest' | xargs -rtl1 rm
-    find "$pkgdir/usr/${_arch}" -name '*.dll' | xargs -rtl1 ${_arch}-strip --strip-unneeded
-    find "$pkgdir/usr/${_arch}" -name '*.a' | xargs -rtl1 ${_arch}-strip -g
+    find "$pkgdir/usr/${_arch}" -name '*.exe' | xargs -rtL1 ${_arch}-strip
+    find "$pkgdir/usr/${_arch}" -name '*.dll' | xargs -rtL1 ${_arch}-strip --strip-unneeded
+    find "$pkgdir/usr/${_arch}" -name '*.a' -o -name '*.dll' | xargs -rtL1 ${_arch}-strip -g
     cd ..
   done
 }
