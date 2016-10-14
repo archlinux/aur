@@ -17,7 +17,6 @@ pkgver() {
 
 prepare() {
     cd "${srcdir}/${_pkgname}/b2sum"
-    sed -i "s# -fopenmp##" makefile
     make clean
 }
 
