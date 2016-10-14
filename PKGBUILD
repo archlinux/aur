@@ -1,8 +1,8 @@
 # Maintainer: Arnoud Willemsen <mail@lynthium.com>
 
 pkgname='clevo-xsm-wmi'
-pkgver='1.0'
-_pkgtag='5cf92bdd3e55'
+pkgver='1.1'
+_pkgtag='6bfe9fe44e04'
 pkgrel=1
 pkgdesc='A reverse engineering driver for the Clevo laptop models backlight keyboard.'
 arch=('i686' 'x86_64')
@@ -45,4 +45,4 @@ package() {
     mkdir -p "${pkgdir}/etc/modules-load.d"
     echo "clevo-xsm-wmi" > "${pkgdir}/etc/modules-load.d/clevo-xsm-wmi.conf"
 }
-sha256sums=('fb53def256440eed85c34788099dfc70b45e3d856f5dce425f145eeb2e016407')
+sha256sums=('43e7eadbec5cf0d92d10bb1fd511a77cb4a11a7fa29f3a2df33dacbeb65c5f09')
