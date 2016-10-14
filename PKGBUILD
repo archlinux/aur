@@ -2,7 +2,7 @@
 
 pkgbase=python-vine
 pkgname=('python-vine' 'python2-vine')
-pkgver=1.1.2
+pkgver=1.1.3
 pkgrel=1
 pkgdesc="Promises, promises, promises"
 arch=('any')
