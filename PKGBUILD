@@ -1,6 +1,6 @@
 pkgname=b2sum-git
 _pkgname=BLAKE2
-pkgver=57.cb0506c
+pkgver=72.c314fb4
 pkgrel=1
 pkgdesc="Computes the BLAKE2 (BLAKE2b or -s, -bp, -sp) cryptographic hash of a given file."
 arch=('i686' 'x86_64')
