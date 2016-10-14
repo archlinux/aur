@@ -1,6 +1,7 @@
 #!/bin/sh
+# Maintainer: Nissar Chababy <funilrys at outlook dot com>
 # Contributor: Jonas Heinrich <onny@project-insanity.org>
-# Maintainer: Jorge Barroso <jorge.barroso.11 at gmail dot com>
+# Ex-Maintainer: Jorge Barroso <jorge.barroso.11 at gmail dot com>
 
 pkgname=purple-whatsapp-git
 pkgver=0.8.3.73.g07ed931
