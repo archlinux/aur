@@ -7,14 +7,12 @@ pkgdesc="Historical copy of the base applications module of KDE 1, adapted to co
 arch=('i686' 'x86_64')
 url="https://github.com/KDE/kde1-kdebase"
 license=("GPL2")
-depends=("qt1" "kde1-kdelibs" "libjpeg" "libtiff") # TODO : Fill
+groups=("kde1")
+depends=("qt1" "kde1-kdelibs" "libjpeg" "libtiff" "perl")
+makedepends=("cmake")
 _commit="07492489711904daf165c633549883000a71295a"
 source=("https://github.com/KDE/$pkgname/archive/$_commit.zip")
 sha256sums=('8f2f84b941af1b018ae4a86d41e6ff3a7e952254cfae32bc959c797fe49ae128')
-
-prepare() {
-  cd $srcdir/$pkgname-$_commit
-}
 
 build() {
   cd $srcdir/$pkgname-$_commit
