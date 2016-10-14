@@ -1,13 +1,16 @@
 # Maintainer: Levente Polyak <anthraxx[at]archlinux[dot]org>
 
 pkgname=pwndbg-git
-pkgver=0.0.0.430.9905d43
+pkgver=2016.09.22.465.b7c0fe8
 pkgrel=1
 pkgdesc='Makes debugging with GDB suck less'
 url='https://github.com/pwndbg/pwndbg'
 arch=('any')
 license=('MIT')
 depends=('python-capstone' 'python-unicorn' 'python-pycparser' 'python-psutil' 'python-ptrace' 'python-pyelftools' 'python-six')
+optdepends=('checksec: checksec command support'
+            'ropper: ropper command support'
+            'ropgadget: ropgadget command support')
 makedepends=('git')
 provides=('pwndbg')
 conflicts=('pwndbg')
@@ -17,7 +20,7 @@ sha512sums=('SKIP')
 pkgver() {
   cd ${pkgname}
   printf "%s.%s.%s" \
-    "0.0.0" \
+    "$(git tag -l|sort -V -r|head -n1)" \
     "$(git rev-list --count HEAD)" \
     "$(git rev-parse --short HEAD)"
 }
