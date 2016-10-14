@@ -24,8 +24,8 @@
 # under /usr/include/pd-l2ork.
 
 pkgname=purr-data
-pkgver=20160731.r2816.2e3d9e0
-pkgrel=2
+pkgver=20161014.r2963.2392d4b
+pkgrel=1
 pkgdesc="Jonathan Wilkes' nw.js variant of Pd-L2Ork (git version)"
 url="https://git.purrdata.net/jwilkes/purr-data"
 arch=('i686' 'x86_64')
@@ -44,19 +44,17 @@ conflicts=('pd-l2ork' 'pd-l2ork-git')
 install=purr-data.install
 options=('!makeflags')
 source=("$pkgname::git+https://git.purrdata.net/aggraef/purr-data.git#branch=release"
-	"Gem-pix_colorclassify.patch"
 	"RTcmix-pd-LCPLAY-stabilize.patch")
 md5sums=('SKIP'
-         '33dc1880e38ac8dbc7aa5075bfe49abd'
          '39c53063dc18681f29b12c08d9c453aa')
 # nw.js sdk binaries
 nwjsname=nwjs-sdk
-nwjsver=0.15.4
+nwjsver=0.17.6
 source_common="http://dl.nwjs.io/v$nwjsver/$nwjsname-v$nwjsver-linux"
 source_i686=("$source_common-ia32.tar.gz")
 source_x86_64=("$source_common-x64.tar.gz")
-md5sums_i686=('ab052c9580d9e9016cdd720f8f832337')
-md5sums_x86_64=('53d2c4fa98eae97b57e33a8ae49a0612')
+md5sums_i686=('5d878e8849c54e758884b285307e5955')
+md5sums_x86_64=('2a01edf88ed2f60ec1e0abf91ef2ce0c')
 
 if [ "$CARCH" = "i686" ]; then
   _arch="ia32"
@@ -86,8 +84,7 @@ prepare() {
   rm -rf pd/nw/nw
   cp -a $srcdir/$nwjsname-v$nwjsver-linux-$_arch pd/nw/nw
   # make the sources compile with gcc 6.1+
-  cd $srcdir/$pkgname/Gem && patch -Np1 < $srcdir/Gem-pix_colorclassify.patch
-  cd $srcdir/$pkgname/l2ork_addons/rtcmix-in-pd && patch -Np1 < $srcdir/RTcmix-pd-LCPLAY-stabilize.patch
+  cd $srcdir/$pkgname/externals/rtcmix-in-pd && patch -Np1 < $srcdir/RTcmix-pd-LCPLAY-stabilize.patch
 }
 
 build() {
