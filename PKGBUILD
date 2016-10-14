@@ -1,7 +1,7 @@
 # Maintainer: heapifyman <heapifyman@gmail.com>
 pkgname=maven-bash-completion-git
 pkgdesc="Bash completion script for maven"
-pkgver=r160.e27e290
+pkgver=r171.106b6ca
 pkgrel=1
 arch=('any')
 url="https://github.com/juven/${pkgname%-git}"
