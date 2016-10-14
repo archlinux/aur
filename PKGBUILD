@@ -1,8 +1,8 @@
 # Maintainer: Gina White <ginabytheabay@gmail.com>
 
 pkgname=poltroon
-pkgver=0.0.2
-pkgrel=3
+pkgver=0.1.0
+pkgrel=1
 pkgdesc="An AUR agent for that prioritizes managing batches of packages."
 arch=('x86_64' 'i686')
 url="https://github.com/ginabythebay/poltroon"
@@ -11,7 +11,7 @@ depends=('pacman')
 makedepends=('go>=1.7 make go-bindata>=3.0.7 libunistring>=0.9.6-2 gcc')
 options=('!strip' '!emptydirs')
 source=("https://github.com/ginabythebay/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('5ee3825234c0f6d6daff320a2a49df9490de1e804b50aeea309764f1228b03a5')
+sha256sums=('0a728594aa7466a3d9ceeac87871025725ab4e380beef0455bd389efa1e16104')
 
 _gourl=github.com/ginabythebay/poltroon
 
