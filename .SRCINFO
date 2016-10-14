@@ -1,6 +1,6 @@
 pkgbase = ffcast
 	pkgdesc = run command on rectangular screen regions, e.g. screenshot, screencast
-	pkgver = 2.4.7
+	pkgver = 2.4.8
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/lolilolicon/FFcast
@@ -16,8 +16,8 @@ pkgbase = ffcast
 	depends = xrectsel
 	optdepends = ffmpeg: for png rec
 	optdepends = imagemagick: for trim
-	source = https://github.com/lolilolicon/FFcast/archive/2.4.7.tar.gz
-	sha256sums = f03d03141aaa6fb6786ecef786849287aac417a689b5e01b821bca691fc075c0
+	source = https://github.com/lolilolicon/FFcast/archive/2.4.8.tar.gz
+	sha256sums = a9bf54ad581d1174a432a50dbcadd0829fe86df6572937597ef2583c91c511bb
 
 pkgname = ffcast
 
