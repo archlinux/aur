@@ -1,13 +1,14 @@
 # Maintainer: David Parrish <daveparrish@tutanota.com>
 
 pkgname=diffutils-git
-pkgver=3.3.r46.g5a48551
+pkgver=3.5.r7.g84387b8
 pkgrel=1
 pkgdesc='Utility programs used for creating patch files'
 arch=('i686' 'x86_64')
 url='http://www.gnu.org/software/diffutils'
 license=('GPL3')
 depends=('libsigsegv')
+makedepends=('gperf')
 provides=('diffutils')
 conflicts=('diffutils')
 source=("${pkgname}::git+git://git.savannah.gnu.org/diffutils.git")
