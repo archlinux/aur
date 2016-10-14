@@ -1,7 +1,7 @@
 # Maintainer: Dustin Falgout <dustin@antergos.com>
 
 pkgname=lightdm-webkit2-greeter
-pkgver=2.1.4
+pkgver=2.1.5
 pkgrel=1
 pkgdesc="A webkit2 greeter for LightDM"
 arch=('i686' 'x86_64')
@@ -14,14 +14,12 @@ provides=('lightdm-webkit-greeter' 'lightdm-webkit-theme-antergos')
 conflicts=('lightdm-webkit-greeter' 'lightdm-webkit-theme-antergos')
 replaces=('lightdm-webkit-greeter' 'lightdm-webkit-theme-antergos')
 backup=("etc/lightdm/${pkgname}.conf")
-install='greeter.install'
-md5sums=('5e1a2f99216724a5ddb38ff60ed51a45')
+md5sums=('eda7626d463c80e0dbb81a679b124911')
 
 build() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
 
-	LIBS+="-ljavascriptcoregtk-4.0" \
-		./autogen.sh \
+	./autogen.sh \
 			--prefix=/usr \
 			--sysconfdir=/etc \
 			--libexecdir=/usr/lib/lightdm \
