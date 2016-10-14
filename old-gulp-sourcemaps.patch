@@ -1,0 +1,12 @@
+diff -rupN a/package.json b/package.json
+--- a/package.json	2016-10-13 15:00:01.376937983 -0700
++++ b/package.json	2016-10-13 15:01:48.217986937 -0700
+@@ -64,7 +64,7 @@
+     "gulp-rename": "^1.2.0",
+     "gulp-replace": "^0.5.4",
+     "gulp-shell": "^0.5.2",
+-    "gulp-sourcemaps": "^1.6.0",
++    "gulp-sourcemaps": "1.7.3",
+     "gulp-tsb": "^2.0.1",
+     "gulp-tslint": "^4.3.0",
+     "gulp-uglify": "^2.0.0",
