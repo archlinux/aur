@@ -1,7 +1,7 @@
 # Maintainerb
 # Contributor: Daniel Cardenas <thecubeisalie@gmail.com>
 pkgname=turboprint
-pkgver=2.39
+pkgver=2.40
 _realpkgver=${pkgver}-1
 pkgrel=1
 pkgdesc="High-quality printer driver system for Linux"
@@ -24,8 +24,8 @@ source_x86_64+=("http://www.turboprint.info/tp2/${pkgname}-${_realpkgver}.x86_64
 md5sums=('e3c504b2c1b7deb01d03fde710b117d7'
          '60a1754b2abd30e75e51acd9576cda43'
          '4965b03fdb3c57282f74b0d79a66c6ef')
-md5sums_i686=('d5b45932e4be8d277c31308f6ff21bbc')
-md5sums_x86_64=('a9b2071a47a3bd1a292cef55ea8a0c99')
+md5sums_i686=('cf37916b5aa048a6c524e63dbad5ffb4')
+md5sums_x86_64=('775506a50c1faf6cb7b7d55312f3c3b4')
 
 build() {
   [ -f "${srcdir}/${pkgname}-${_realpkgver}.${_arch}.tar" ] && bsdtar -xf "${srcdir}/${pkgname}-${_realpkgver}.${_arch}.tar"
