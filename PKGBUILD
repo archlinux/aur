@@ -2,21 +2,21 @@
 
 _pkgname=lxqt-build-tools
 pkgname=$_pkgname-git
-pkgver=r200.46d8398
+pkgver=0.1.0
 pkgrel=1
 pkgdesc='Tools to build LXQt and components maintained by the project.'
 arch=('any')
 url='https://github.com/lxde/lxqt-build-tools'
-license=('LGPL')
-makedepends=('git' 'cmake' "qt5-"{base,tools,x11extras} 'libqtxdg-git' 'kwindowsystem')
+license=('BSD')
+makedepends=('git' 'cmake')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
-source=("git+https://github.com/lxde/lxqt-build-tools.git#branch=make-it-work")
+source=("git+https://github.com/lxde/lxqt-build-tools.git")
 sha256sums=("SKIP")
 
 pkgver() {
   cd "$_pkgname"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  git describe --always | sed "s/-/./g"
 }
 
 build() {
@@ -29,4 +29,6 @@ build() {
 package() {
   cd build
   make DESTDIR="$pkgdir" install
+
+  install -D -m644 $srcdir/$_pkgname/BSD-3-Clause $pkgdir/usr/share/licenses/$pkgname/LICENSE
 }
