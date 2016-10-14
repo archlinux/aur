@@ -5,7 +5,7 @@
 
 pkgname=flexget-git
 _pkgname=Flexget
-pkgver=2.3.37.r11135.d53232f
+pkgver=2.3.45.r11178.a8b98c7
 pkgrel=1
 
 pkgdesc="Automate downloading or processing content (torrents, podcasts, etc.) from different sources like RSS-feeds, html-pages, various sites and more."
@@ -54,7 +54,7 @@ optdepends=('python2-guppy: for memusage plugin' #AUR#
             )
 makedepends=('python2-paver'
              'python2-setuptools'
-             'npm'
+             'yarn'
              'bower'
              'gulp'
              )
@@ -87,7 +87,7 @@ prepare() {
 
 build() {
   cd "${_pkgname}"/flexget/ui
-  npm install
+  yarn
   XDG_CONFIG_HOME="${_srcdir}" bower --config.analytics=false install
   XDG_CONFIG_HOME="${_srcdir}" gulp
 }
