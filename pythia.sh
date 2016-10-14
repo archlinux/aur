@@ -1,4 +1,8 @@
 # /etc/profile.d/pythia.sh
 export PYTHIA8=/usr
 export PYTHIA8DATA=$PYTHIA8/share/Pythia8/xmldoc
-export PYTHONPATH=$PYTHONPATH:/usr/lib
+if [ $PYTHONPATH ]; then
+    export PYTHONPATH=$PYTHONPATH:/usr/lib/pythia8
+else
+    export PYTHONPATH=/usr/lib/pythia8
+fi
