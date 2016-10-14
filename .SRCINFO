@@ -54,6 +54,7 @@ pkgbase = xorg-server-git
 	makedepends = libunwind
 	makedepends = git
 	makedepends = xfont2-git
+	makedepends = wayland-protocols
 	source = git://anongit.freedesktop.org/xorg/xserver
 	source = xvfb-run
 	source = xvfb-run.1
