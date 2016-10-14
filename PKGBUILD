@@ -1,5 +1,5 @@
 pkgname='dwt-git'
-pkgver=0.6.0.r3.g62d9270
+pkgver=0.6.0.r10.g96ef00c
 pkgrel=1
 pkgdesc='Simple no-frills terminal emulator based on VTE - Git build'
 license=('MIT')
@@ -8,6 +8,7 @@ source=("${pkgname}::git+${url}.git")
 sha1sums=('SKIP')
 arch=('i686' 'x86_64' 'arm')
 depends=('vte3')
+makedepends=('python-docutils')
 options=('strip' 'zipman')
 provides=('dwt')
 conflicts=('dwt')
