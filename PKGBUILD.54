@@ -17,7 +17,9 @@ depends=('gtk2' 'nss' 'alsa-lib' 'xdg-utils' 'bzip2' 'libevent' 'libxss'
          'speech-dispatcher' 'pciutils' 'libpulse' 'harfbuzz' 'libsecret'
          'libvpx' 'perl' 'perl-file-basedir' 'desktop-file-utils'
          'hicolor-icon-theme')
-makedepends=('python2' 'gperf' 'yasm' 'mesa' 'ninja' 'clang')
+makedepends=('python2' 'gperf' 'yasm' 'mesa' 'ninja' 'python2-jinja'
+             'python2-markupsafe' 'python2-ply' 'python2-beautifulsoup4'
+             'python2-html5lib')
 optdepends=('kdebase-kdialog: needed for file dialogs in KDE'
             'gnome-keyring: for storing passwords in GNOME keyring'
             'kwallet: for storing passwords in KWallet')
@@ -27,11 +29,13 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/$pkgn
         chromium-launcher-$_launcher_ver.tar.gz::https://github.com/foutrelis/chromium-launcher/archive/v$_launcher_ver.tar.gz
         chromium.desktop
         chromium-52.0.2743.116-unset-madv_free.patch
+        chromium-53.0.2785.92-last-commit-position.patch
         chromium-widevine.patch)
 sha256sums=('df89c284b0109566acc6a5a1a84d94a5ab0509cc3a86a31299a50328991edcde'
             '8b01fb4efe58146279858a754d90b49e5a38c9a0b36a1f84cbb7d12f92b84c28'
             '028a748a5c275de9b8f776f97909f999a8583a4b77fd1cd600b4fc5c0c3e91e9'
             '3b3aa9e28f29e6f539ed1c7832e79463b13128863a02e9c6fecd16c30d61c227'
+            '9502a4d7e825a21ae63cced5715e5f06d983033b623cd41d94d1e38a70f29310'
             'd6fdcb922e5a7fbe15759d39ccc8ea4225821c44d98054ce0f23f9d1f00c9808')
 
 # Google API keys (see http://www.chromium.org/developers/how-tos/api-keys)
@@ -46,7 +50,7 @@ _google_default_client_secret=0ZChLK6AxeA3Isu96MkwqDR4
 # instructions on how to build the toolchain from source don't work that well
 # (at least not from within the Chromium 39 source tree).
 # https://sites.google.com/a/chromium.org/dev/nativeclient/pnacl/building-pnacl-components-for-distribution-packagers
-_build_nacl=1
+_build_nacl=0
 _nacl="false"
 if [[ $CARCH == i686 ]]; then
   _build_nacl=0
@@ -54,7 +58,8 @@ if [[ $CARCH == i686 ]]; then
 fi
 
 prepare() {
-  _system_libs=(
+  # These are few system libraries that can be safely used
+  local _system_libs=(
     'bzip2'
     'flac'
     'harfbuzz'
@@ -63,15 +68,149 @@ prepare() {
     'libjpeg'
     'libpng'
     'libvpx'
+    'libwebp'
+    'libxml'
+    'libxslt'
+    're2'
     'snappy'
     'yasm'
     'zlib'
   )
 
-  cd "$srcdir/$pkgname-$pkgver"
+  # List of required bundled libraries
+  local _keeplibs=(
+    'base/third_party/dmg_fp'
+    'base/third_party/dynamic_annotations'
+    'base/third_party/icu'
+    'base/third_party/libevent'
+    'base/third_party/nspr'
+    'base/third_party/superfasthash' 
+    'base/third_party/symbolize' 
+    'base/third_party/valgrind' 
+    'base/third_party/xdg_mime' 
+    'base/third_party/xdg_user_dirs' 
+    'breakpad/src/third_party/curl' 
+    'buildtools/third_party/libc++' 
+    'buildtools/third_party/libc++abi' 
+    'chrome/third_party/mozilla_security_manager' 
+    'courgette/third_party' 
+    'native_client/src/third_party/dlmalloc' 
+    'native_client/src/third_party/valgrind' 
+    'net/third_party/mozilla_security_manager' 
+    'net/third_party/nss' 
+    'third_party/WebKit' 
+    'third_party/adobe' 
+    'third_party/analytics' 
+    'third_party/angle' 
+    'third_party/angle/src/common/third_party/numerics' 
+    'third_party/angle/src/third_party/compiler' 
+    'third_party/angle/src/third_party/libXNVCtrl' 
+    'third_party/angle/src/third_party/murmurhash' 
+    'third_party/angle/src/third_party/trace_event' 
+    'third_party/boringssl' 
+    'third_party/brotli' 
+    'third_party/cacheinvalidation' 
+    'third_party/catapult' 
+    'third_party/catapult/third_party/polymer'
+    'third_party/catapult/third_party/py_vulcanize' 
+    'third_party/catapult/third_party/py_vulcanize/third_party/rcssmin' 
+    'third_party/catapult/third_party/py_vulcanize/third_party/rjsmin' 
+    'third_party/catapult/tracing/third_party/d3' 
+    'third_party/catapult/tracing/third_party/gl-matrix' 
+    'third_party/catapult/tracing/third_party/jszip' 
+    'third_party/catapult/tracing/third_party/mannwhitneyu' 
+    'third_party/ced'
+    'third_party/cld_2' 
+    'third_party/cld_3'
+    'third_party/cros_system_api' 
+    'third_party/cython/python_flags.py' 
+    'third_party/devscripts' 
+    'third_party/dom_distiller_js'
+    'third_party/ffmpeg' 
+    'third_party/fips181' 
+    'third_party/flac' 
+    'third_party/flatbuffers'
+    'third_party/flot' 
+    'third_party/google_input_tools' 
+    'third_party/google_input_tools/third_party/closure_library' 
+    'third_party/google_input_tools/third_party/closure_library/third_party/closure' 
+    'third_party/harfbuzz-ng' 
+    'third_party/hunspell' 
+    'third_party/iccjpeg' 
+    'third_party/icu' 
+    'third_party/jstemplate' 
+    'third_party/khronos' 
+    'third_party/leveldatabase' 
+    'third_party/libXNVCtrl' 
+    'third_party/libaddressinput' 
+    'third_party/libjingle' 
+    'third_party/libjpeg_turbo' 
+    'third_party/libphonenumber' 
+    'third_party/libpng' 
+    'third_party/libsecret' 
+    'third_party/libsrtp' 
+    'third_party/libudev' 
+    'third_party/libusb' 
+    'third_party/libvpx' 
+    'third_party/libvpx/source/libvpx/third_party/x86inc' 
+    'third_party/libwebm' 
+    'third_party/libwebp' 
+    'third_party/libxml' 
+    'third_party/libxml/chromium' 
+    'third_party/libxslt' 
+    'third_party/libyuv' 
+    'third_party/lss' 
+    'third_party/lzma_sdk' 
+    'third_party/mesa'
+    'third_party/mesa' 
+    'third_party/modp_b64' 
+    'third_party/mt19937ar' 
+    'third_party/openh264' 
+    'third_party/openmax_dl' 
+    'third_party/opus' 
+    'third_party/ots' 
+    'third_party/pdfium' 
+    'third_party/pdfium/third_party/agg23' 
+    'third_party/pdfium/third_party/base' 
+    'third_party/pdfium/third_party/bigint' 
+    'third_party/pdfium/third_party/freetype' 
+    'third_party/pdfium/third_party/lcms2-2.6' 
+    'third_party/pdfium/third_party/libjpeg' 
+    'third_party/pdfium/third_party/libopenjpeg20' 
+    'third_party/pdfium/third_party/libpng16'
+    'third_party/pdfium/third_party/libtiff'
+    'third_party/pdfium/third_party/zlib_v128' 
+    'third_party/polymer' 
+    'third_party/protobuf' 
+    'third_party/protobuf/third_party/six'
+    'third_party/protobuf/third_party/six' 
+    'third_party/qcms' 
+    'third_party/re2' 
+    'third_party/sfntly'
+    'third_party/skia'
+    'third_party/smhasher'
+    'third_party/snappy' 
+    'third_party/speech-dispatcher' 
+    'third_party/sqlite' 
+    'third_party/tcmalloc' 
+    'third_party/usb_ids' 
+    'third_party/usrsctp' 
+    'third_party/web-animations-js' 
+    'third_party/webdriver' 
+    'third_party/webrtc' 
+    'third_party/widevine' 
+    'third_party/woff2' 
+    'third_party/x86inc' 
+    'third_party/xdg-utils' 
+    'third_party/yasm' 
+    'third_party/yasm/run_yasm.py'
+    'third_party/zlib' 
+    'third_party/zlib/google' 
+    'url/third_party/mozilla'
+    'v8/src/third_party/valgrind'
+  )
 
-  # https://groups.google.com/a/chromium.org/d/topic/chromium-packagers/9JX1N2nf4PU/discussion
-  touch chrome/test/data/webui/i18n_process_css_test.html
+  cd "$srcdir/$pkgname-$pkgver"
 
   # Enable support for the Widevine CDM plugin
   # libwidevinecdm.so is not included, but can be copied over from Chrome
@@ -82,6 +221,9 @@ prepare() {
   # Disable MADV_FREE (if set by glibc)
   # https://bugzilla.redhat.com/show_bug.cgi?id=1361157
   patch -Np1 -i ../chromium-52.0.2743.116-unset-madv_free.patch
+
+  # Disable last_commit_position as we don't build from git repository
+  patch -Np1 -i ../chromium-53.0.2785.92-last-commit-position.patch
 
   # Use Python 2
   find . -name '*.py' -exec sed -i -r 's|/usr/bin/python$|&2|g' {} +
@@ -98,8 +240,17 @@ prepare() {
     #python2 tools/clang/scripts/update.py
   fi
 
-  # Use system libraries
-  python2 build/linux/unbundle/replace_gn_files.py --system-libraries ${_use_system[@]}
+  # Remove bundled and switch to system libraries (where possible)
+  python2 build/linux/unbundle/remove_bundled_libraries.py \
+    --do-remove "${_keeplibs[@]}"
+  python2 build/linux/unbundle/replace_gn_files.py \
+    --system-libraries "${_use_system[@]}"
+
+  # Another inexplicable hacks
+  rm -rf third_party/{jinja2,markupsafe,ply}
+  ln -s /usr/lib/python2.7/site-packages/jinja2 third_party/jinja2
+  ln -s /usr/lib/python2.7/site-packages/markupsafe third_party/markupsafe
+  ln -s /usr/lib/python2.7/site-packages/ply third_party/ply
 
   # Use the file at run time instead of effectively compiling it in.
   sed 's|//third_party/usb_ids/usb.ids|/usr/share/hwdata/usb.ids|g' -i device/usb/BUILD.gn
