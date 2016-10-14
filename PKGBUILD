@@ -31,15 +31,13 @@ sha1sums=('449f104090b1fa84d1ee4b852dbfc6269cba9db4'
 
 prepare() {
   cd "${srcdir}/ParaView-v${pkgver}"
+
   patch -p1 -i ../paraview_32bit.patch
-
   patch -p1 -i ../paraview-desktop.patch
-
   patch -p1 -i ../vtk_hdf5_internal.patch
 
   rm -rf "${srcdir}/build"
-  mkdir "${srcdir}/build"
-  cd "${srcdir}/build"
+  mkdir -p "${srcdir}/build"
 }
 
 build() {
