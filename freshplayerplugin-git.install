@@ -1,8 +1,0 @@
-post_install() {
-  /usr/bin/printf -- \
-" ------------------------------------------------------------
-    Warning! This package requires the pepper flash plugin
-  that is available in one of the packages in the optdepends
-        array! It will not work without one of those!
- ------------------------------------------------------------"
-}
