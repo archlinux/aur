@@ -1,14 +1,14 @@
 # Maintainer: grufo <madmurphy333@gmail.com>
 
 pkgname=libconfini
-pkgver=1.0
+pkgver=1.1
 pkgrel=1
 pkgdesc='Yet another INI parser'
 arch=('i686' 'x86_64')
 url="https://madmurphy.github.io/libconfini/"
 license=("GPL")
 source=("https://github.com/madmurphy/${pkgname}/archive/${pkgver}-${pkgrel}.tar.gz")
-md5sums=('cbc8c08ca3a6772d0d2b10b3b035d662')
+md5sums=('fe8aa1904c12ed6b8413f04e0777396b')
 
 prepare() {
 
