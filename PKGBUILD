@@ -1,10 +1,10 @@
 # Maintainer: Arnoud Willemsen <mail@lynthium.com>
 
 pkgname='clevo-xsm-wmi'
-pkgver='0.8'
-_pkgtag='ac1cf19e290b'
+pkgver='1.0'
+_pkgtag='5cf92bdd3e55'
 pkgrel=1
-pkgdesc='A reverse engineering driver for the Clevo SM series backlight keyboard. (And P150EM, P750ZM, P750DM(-G), P770DM(-G) models)'
+pkgdesc='A reverse engineering driver for the Clevo laptop models backlight keyboard.'
 arch=('i686' 'x86_64')
 license=('GPL')
 url='https://bitbucket.org/lynthium/clevo-xsm-wmi'
@@ -45,4 +45,4 @@ package() {
     mkdir -p "${pkgdir}/etc/modules-load.d"
     echo "clevo-xsm-wmi" > "${pkgdir}/etc/modules-load.d/clevo-xsm-wmi.conf"
 }
-sha256sums=('0948133273d088a8610cac85d06287022cc847da7570d6d9d3f1f906352d569c')
+sha256sums=('fb53def256440eed85c34788099dfc70b45e3d856f5dce425f145eeb2e016407')
