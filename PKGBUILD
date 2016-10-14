@@ -7,7 +7,7 @@
 # Special thanks to Nareto for moving the compile from the .install to the PKGBUILD
 
 pkgname=sagemath-git
-pkgver=7.4.beta6.r0.gc5dadf9
+pkgver=7.4.rc1.r0.g3a83086
 pkgrel=1
 pkgdesc="Open Source Mathematics Software, free alternative to Magma, Maple, Mathematica, and Matlab"
 arch=(i686 x86_64)
@@ -33,19 +33,18 @@ makedepends=(cython2 boost ratpoints symmetrica fflas-ffpack python2-jinja coin-
 conflicts=(sagemath)
 provides=(sagemath sage-mathematics)
 source=("git://git.sagemath.org/sage.git#branch=develop" 
-        anal.h env.patch clean.patch skip-check.patch cython-sys-path.patch is-package-installed.patch package.patch
+        anal.h env.patch skip-check.patch cython-sys-path.patch is-package-installed.patch package.patch
         disable-fes.patch jupyter-path.patch test-optional.patch python-2.7.11.patch ecm-7.patch
         increase-rtol.patch sagemath-singular4.patch)
 md5sums=('SKIP'
          'a906a180d198186a39820b0a2f9a9c63'
-         '82c631307ed666042f93875220cc2988'
-         '34fa3af30eca3cf554fc411d7c16cb3e'
+         'b902f9e21dd13c2c9efea4803f003501'
          '17771a1e59e14535cc837a189d3cb8a7'
          '1fc960b3c64ed407a991ee26c222a689'
          '5dca842e4440e4ef235ae18c1b1f20e3'
          '9ba81f717ffd4e20b8b2f2a318307488'
          'a40b32a7b5d83379745b538be85064c8'
-         'f3c2264ec392d717a82e61e53d085b73'
+         'e618d534f42428e298e12b1aa94c1a31'
          'cdcabd475b80afe0534a5621e972736e'
          'ef927896f2071b442b1d07d7e69f5f3a'
          'e4a91dcedbc5e617919e5a9bf1310f24'
@@ -70,8 +69,6 @@ prepare(){
   sed -e 's|png12|png|' -i src/module_list.py
 # set env variables
   patch -p0 -i ../env.patch
-# don't try to remove installed files
-  patch -p0 -i ../clean.patch
 # skip checking build status
   patch -p0 -i ../skip-check.patch
 # supress warning about GAP install dir
@@ -104,7 +101,6 @@ prepare(){
   sed -e 's|cython {OPT}|cython2 {OPT}|' -e 's|python setup.py|python2 setup.py|' -i src/sage/misc/cython.py
   sed -e 's|exec ipython|exec ipython2|' -e 's|cygdb|cygdb2|' -i src/bin/sage
   sed -e "s|'cython'|'cython2'|" -i src/bin/sage-cython
-  sed -e 's|python -c|python2 -c|' -i src/Makefile
 
 # copy required private PARI header
   mkdir -p src/pari
@@ -118,9 +114,6 @@ build() {
   export SAGE_LOCAL="/usr"
   export SAGE_SRC="$PWD"
   export CC=gcc
-
-  make sage/libs/pari/auto_gen.pxi
-  make sage/ext/interpreters/__init__.py
 
   python2 setup.py build
 }

@@ -1,7 +1,7 @@
 --- src/sage/repl/ipython_kernel/install.py.orig	2015-10-23 19:23:39.728456590 +0000
 +++ src/sage/repl/ipython_kernel/install.py	2015-10-23 19:24:00.965018978 +0000
 @@ -13,8 +13,7 @@
-     SAGE_ROOT, SAGE_DOC, SAGE_LOCAL, SAGE_EXTCODE,
+     SAGE_DOC, SAGE_LOCAL, SAGE_EXTCODE,
      SAGE_VERSION
  )
 -from jupyter_core.paths import ENV_JUPYTER_PATH
@@ -10,15 +10,6 @@
  
  
  class SageKernelSpec(object):
-@@ -151,7 +151,7 @@
-              '{connection_file}']
-         """
-         return [
--            os.path.join(SAGE_ROOT, 'sage'),
-+            os.path.join(SAGE_ROOT, 'bin', 'sage'),
-             '--python',
-             '-m', 'sage.repl.ipython_kernel',
-             '-f', '{connection_file}',
 @@ -208,7 +208,7 @@
              sage: spec._symlink_resources()    # not tested
          """
