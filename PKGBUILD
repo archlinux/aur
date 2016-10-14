@@ -1,4 +1,5 @@
-# Maintainer: M0Rf30
+# Maintainer: Nissar Chababy <funilrys at outlook dot com>
+# Ex-Maintainer: M0Rf30
 # Contributor: Carlos RH Ruiz <ruizh.cj@gmail.com>
 
 pkgname=pam-face-authentication
