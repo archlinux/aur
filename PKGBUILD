@@ -3,40 +3,31 @@
 # Contributor: dimino jeremie <jeremie@dimino.org>
 
 pkgname=proofgeneral
-pkgver=4.2
-pkgrel=2
+pkgver=4.4
+pkgrel=1
 pkgdesc='Generic interface for proof assistants.'
 arch=('i686' 'x86_64')
 license=('GPL')
-url='http://proofgeneral.inf.ed.ac.uk/'
+url='https://proofgeneral.github.io/'
 depends=('emacs>=24.3')
 install="${pkgname}.install"
-source=("http://proofgeneral.inf.ed.ac.uk/releases/ProofGeneral-${pkgver}.tgz"
-  "Makefile.patch")
+source=("https://github.com/ProofGeneral/PG/archive/v${pkgver}.tar.gz")
 
-md5sums=('c9f7eac10ed7a04c96b90abcbf964427'
-         'e8a2c065a928f641564174c1342cfa60')
-sha256sums=('3567b68077798396ccd55c501b7ea7bd2c4d6300e4c74ff609dc19837d050b27'
-            '13c927009152da17ac5b91abc76e45190e60928a1df1e8b202df9390842c9931')
-sha512sums=('102c56a1bc113439b1fa8aa10efe571d47d68b344d3489fe18ca3bdbf8828bb31fd2302a68a4bd639c59c429d41e82e5d933abddd3444781cb0e8a603db432ab'
-            '6ad406d0528db5dc9db47c6f25fc8280d91a31619450c574f7a65018577cccbb0f67c726e14db62d9d6816d1d3868cb72ea85999496115f79664495a44854f09')
+md5sums=('4a80e31f88cb22d7caa6f28ba83dcc06')
+sha256sums=('1ba236d81768a87afa0287f49d4b2223097bc61d180468cbd997d46ab6132e7e')
+sha512sums=('8be7f78b61a225fa4770698bbbb251424a0afe093efc3229f74f3a764317dc8cc00a72cb29e751f755dc5fdab59983906c9185f7828a1644a87d160265f12061')
 
 build() {
-  cd ProofGeneral
+  cd "$srcdir/PG-${pkgver}"
 
   make clean
   chmod +x isar/isartags
-
-  patch -p2 < "${srcdir}/Makefile.patch"
-
-  sed -i 's,phox/\*,,' Makefile
-  sed -i 's,phox,,' Makefile
 
   make
 }
 
 package() {
-  cd ProofGeneral
+  cd "$srcdir/PG-${pkgver}"
 
   make PREFIX=${pkgdir}/usr install -j1
 }

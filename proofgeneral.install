@@ -3,7 +3,7 @@ post_install() {
 ==> Put this in your $HOME/.emacs file to enable ProofGeneral mode
 ==> in emacs.
 
-    (load-file "/usr/share/emacs/site-lisp/ProofGeneral/generic/proof-site.el")
+    (load "/usr/share/emacs/site-lisp/ProofGeneral/generic/proof-site")
 EOF
 }
 
