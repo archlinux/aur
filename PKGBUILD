@@ -1,4 +1,5 @@
-# Maintainer: Justin Dray <justin@dray.be>
+# Maintainer: Nissar Chababy <funilrys at outlook dot com>
+# Ex-Maintainer: Justin Dray <justin@dray.be>
 # Contributor: Josh McGee <josh.s.mcgee@gmail.com>
 # Contributor: Earnestly <zibeon@gmail.com>
 
