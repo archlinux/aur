@@ -1,9 +1,9 @@
 # CPAN Name  : MooseX::Getopt
-# Contributor: Anton Leontiev <bunder /at/ t-25.ru>
-# Generator  : CPANPLUS::Dist::Arch 1.30
+# Contributor: Anton Leontiev <scileont /at/ gmail.com>
+# Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname=perl-moosex-getopt
-pkgver=0.68
+pkgver=0.71
 pkgrel=1
 pkgdesc='A Moose role for processing command line options'
 arch=('any')
@@ -28,9 +28,9 @@ checkdepends=(
 	'perl-test-trap'
 	'perl-test-warnings'
 	'perl-namespace-autoclean')
-source=(http://search.cpan.org/CPAN/authors/id/E/ET/ETHER/MooseX-Getopt-0.68.tar.gz)
+source=(http://search.cpan.org/CPAN/authors/id/E/ET/ETHER/MooseX-Getopt-0.71.tar.gz)
 options=(!emptydirs)
-md5sums=('9016a352e86b8235a4578b2b86105b45')
+md5sums=('7ac31336c49315143b27c856e10862b0')
 
 sanitize() {
 	unset PERL5LIB PERL_MM_OPT PERL_MB_OPT PERL_LOCAL_LIB_ROOT
@@ -38,20 +38,20 @@ sanitize() {
 }
 
 build() {
-	cd MooseX-Getopt-0.68
+	cd MooseX-Getopt-0.71
 	sanitize
 	perl Build.PL --installdirs vendor --destdir "$pkgdir"
 	perl Build
 }
 
 check() {
-	cd MooseX-Getopt-0.68
+	cd MooseX-Getopt-0.71
 	sanitize
 	perl Build test
 }
 
 package() {
-	cd MooseX-Getopt-0.68
+	cd MooseX-Getopt-0.71
 	sanitize
 	perl Build install
 	find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
