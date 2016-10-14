@@ -1,4 +1,5 @@
-# Maintainer: Antonio Rojas <arojas@archlinux.org>
+# Maintainer: Nissar Chababy <funilrys at outlook dot com>
+# Ex-Maintainer: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=keneric
 pkgver=0.3
@@ -20,6 +21,7 @@ prepare() {
 }
 
 build() {
+    ''
   cd build
   cmake ../$pkgname-$pkgver \
     -DCMAKE_BUILD_TYPE=Release \
