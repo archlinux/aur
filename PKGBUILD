@@ -45,9 +45,9 @@ build() {
 
   # flags to enable system libs
   # add PROTOBUF when http://www.vtk.org/Bug/view.php?id=13656 gets fixed
-  local cmake_system_flags=""
+  local VTK_USE_SYSTEM_LIB=""
   for lib in EXPAT FREETYPE GLEW JPEG LIBXML2 OGGTHEORA PNG TIFF ZLIB; do
-    cmake_system_flags+="-DVTK_USE_SYSTEM_${lib}:BOOL=ON "
+    VTK_USE_SYSTEM_LIB+="-DVTK_USE_SYSTEM_${lib}:BOOL=ON "
   done
 
   # enable when http://paraview.org/Bug/view.php?id=12852 gets fixed:
@@ -73,7 +73,7 @@ build() {
     -DVTK_QT_VERSION=5 \
     -DVTK_RENDERING_BACKEND:STRING=OpenGL2 \
     -DVTK_USE_SYSTEM_HDF5:BOOL=OFF \
-    ${cmake_system_flags} \
+    ${VTK_USE_SYSTEM_LIB} \
     ../ParaView-v${pkgver}
 
   make
