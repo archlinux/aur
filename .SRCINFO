@@ -1,7 +1,7 @@
 pkgbase = cylon
 	pkgdesc = Updates, Maintenance, backup and system checks in a menu driven Bash script
-	pkgver = 2.2
-	pkgrel = 1
+	pkgver = 2.3
+	pkgrel = 2
 	url = https://github.com/gavinlyonsrepo/cylon
 	arch = any
 	license = GPL
@@ -14,8 +14,9 @@ pkgbase = cylon
 	optdepends = bleachbit: used for system clean
 	optdepends = gnu-netcat: used for checking network
 	optdepends = ccrypt: used for encrypting
-	source = https://github.com/gavinlyonsrepo/cylon/archive/2.2.tar.gz
-	md5sums = dc164e42ad8cc49008f3c0d705dc676a
+	optdepends = rsync: used for backup
+	source = https://github.com/gavinlyonsrepo/cylon/archive/2.3.tar.gz
+	md5sums = b3a4977ddd244dc41c3d1105b9736f7f
 
 pkgname = cylon
 

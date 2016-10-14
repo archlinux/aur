@@ -1,8 +1,8 @@
 # Maintainer: gavin lyons <glyons66@hotmail.com>
 # https://github.com/gavinlyonsrepo/cylon
 pkgname=cylon
-pkgver=2.2
-pkgrel=1
+pkgver=2.3
+pkgrel=2
 pkgdesc="Updates, Maintenance, backup and system checks in a menu driven Bash script"
 arch=('any')
 url="https://github.com/gavinlyonsrepo/cylon"
@@ -17,9 +17,10 @@ optdepends=(
   'bleachbit: used for system clean'
   'gnu-netcat: used for checking network'
   'ccrypt: used for encrypting'
+  'rsync: used for backup'
 )
 source=("https://github.com/gavinlyonsrepo/cylon/archive/$pkgver.tar.gz")
-md5sums=('dc164e42ad8cc49008f3c0d705dc676a')
+md5sums=('b3a4977ddd244dc41c3d1105b9736f7f')
 
 package() {
 	cd "$srcdir/${pkgname}-${pkgver}"
