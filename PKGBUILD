@@ -50,7 +50,7 @@ build() {
     VTK_USE_SYSTEM_LIB+="-DVTK_USE_SYSTEM_${lib}:BOOL=ON "
   done
 
-    cmake \
+  cmake \
     -DBUILD_SHARED_LIBS:BOOL=ON \
     -DBUILD_TESTING:BOOL=OFF \
     -DCMAKE_BUILD_TYPE=Release \
