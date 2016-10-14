@@ -1,11 +1,11 @@
 # Maintainer: StoneCold <forumi0721[at]gmail[dot]com>
 
 pkgname=("qemu-user-static-deb")
-pkgver=2.6
-pkgrel=3.1
-_postfix=2.6+dfsg-3.1
+pkgver=2.6+dfsg_3.1~bpo8+1
+pkgrel=1
+_postfix=2.6+dfsg-3.1~bpo8+1
 pkgdesc="A generic and open source processor emulator which achieves a good emulation speed by using dynamic translation, statically linked."
-arch=("i686" "x86_64" "arm" "armv6h" "armv7h")
+arch=("i686" "x86_64" "arm" "armv6h" "armv7h" "aarch64")
 url="http://wiki.qemu.org/Index.html"
 license=("GPL2" "LGPL2.1")
 provides=("qemu-user-static" "qemu-static")
@@ -33,6 +33,11 @@ case "${CARCH}" in
 		;;
 	"armv7h")
 		_deb="qemu-user-static_${_postfix}_armhf.deb"
+		source+=("http://ftp.debian.org/debian/pool/main/q/qemu/${_deb}")
+		md5sums+=("SKIP")
+		;;
+	"aarch64")
+		_deb="qemu-user-static_${_postfix}_arm64.deb"
 		source+=("http://ftp.debian.org/debian/pool/main/q/qemu/${_deb}")
 		md5sums+=("SKIP")
 		;;
