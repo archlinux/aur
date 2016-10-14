@@ -1,6 +1,6 @@
 # Maintainer: Jordyn Carattini <onlinecloud1@gmail.com>
 pkgname="shsession-git"
-pkgver=r8.a59f220
+pkgver=r9.5d9ecea
 pkgrel=1
 pkgdesc="A lightweight session manager written in bash."
 url="https://github.com/jcjordyn130/shsession"

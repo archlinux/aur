@@ -1,6 +1,6 @@
 pkgbase = shsession-git
 	pkgdesc = A lightweight session manager written in bash.
-	pkgver = r8.a59f220
+	pkgver = r9.5d9ecea
 	pkgrel = 1
 	url = https://github.com/jcjordyn130/shsession
 	arch = any
