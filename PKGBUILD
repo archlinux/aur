@@ -20,6 +20,7 @@ function pkgver() {
 function package() {
 
 	cd "$pkgname"
-	install -vd "$pkgdir/usr/lib"
-	cp -vr * "$pkgdir/usr/lib"
+	install -vd "$pkgdir/usr/lib" "$pkgdir/usr/share/licenses/$pkgname"
+	cp -vr */ "$pkgdir/usr/lib"
+	cp -v LICENSE.md "$pkgdir/usr/share/licenses/$pkgname"
 }
