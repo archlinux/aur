@@ -1,4 +1,5 @@
-# Maintainer: Xiao-Long Chen <chenxiaolong@cxl.epac.to>
+# Maintainer: Nissar Chababy <funilrys at outlook dot com>
+# Ex-Maintainer: Xiao-Long Chen <chenxiaolong@cxl.epac.to>
 
 pkgname=mod_nss
 pkgver=1.0.14
@@ -19,7 +20,7 @@ source=("https://fedorahosted.org/released/mod_nss/mod_nss-${pkgver}.tar.gz")
 sha512sums=('8f3279280c019f71b926bbebdcf619bfb3a91ea23ad64193e54bae2a97eba75fe7571597e6a2e34bd702b499d100f75bf38f82f9840822fef42acaa3b205b183')
 
 prepare() {
-    cd "${pkgname}-${pkgver}"    
+    cd "${pkgname}-${pkgver}"
     # Update timestamps to avoid regeneration
     touch nss_expr_*.[chyl]
 }
