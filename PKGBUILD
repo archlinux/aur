@@ -1,6 +1,6 @@
 # Maintainer: Tristelune  <tristelune at archlinux dot info>
 pkgname=libupnpp
-pkgver=0.14.1
+pkgver=0.15.0
 pkgrel=1
 pkgdesc="A C++ wrapper for libupnp - used with upmpdcli or upplay"
 url="http://www.lesbonscomptes.com/upplay/downloads.html"
@@ -8,7 +8,7 @@ arch=('x86_64' 'i686')
 license=('GPL2')
 depends=('libupnp' 'expat' 'curl')
 source=("http://www.lesbonscomptes.com/upmpdcli/downloads/${pkgname}-${pkgver}.tar.gz")
-md5sums=('2092635a6681447a696cb2e945d51b8a')
+md5sums=('c6c99d91d3ce370c8dae18954699c41b')
          
 
 build(){
