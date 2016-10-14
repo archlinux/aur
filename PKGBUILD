@@ -2,7 +2,7 @@
 # Contributor:
 
 pkgname=photofiltrelx-git
-pkgver=1.0.r10.g587f8fc
+pkgver=1.0.1.r2.gf898c80
 pkgrel=1
 pkgdesc="Simple but featureful editor. Built for casual graphic editing and performance."
 arch=('i686' 'x86_64')
