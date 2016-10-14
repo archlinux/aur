@@ -1,6 +1,6 @@
 pkgname=mingw-w64-gtk2
 pkgver=2.24.31
-pkgrel=1
+pkgrel=2
 pkgdesc="GObject-based multi-platform GUI toolkit (legacy) (mingw-w64)"
 arch=(any)
 url="http://www.gtk.org"
@@ -47,9 +47,11 @@ package() {
   for _arch in ${_architectures}; do
     cd "build-${_arch}"
     make DESTDIR="$pkgdir" install
-    find "$pkgdir/usr/${_arch}" -name '*.exe' -o -name '*.bat' -o -name '*.def' -o -name '*.exp' -o -name '*.manifest' | xargs -rtl1 rm
-    find "$pkgdir/usr/${_arch}" -name '*.dll' | xargs -rtl1 ${_arch}-strip --strip-unneeded
-    find "$pkgdir/usr/${_arch}" -name '*.a' | xargs -rtl1 ${_arch}-strip -g
+    find "$pkgdir/usr/${_arch}" -name '*.exe' | xargs -rtL1 ${_arch}-strip
+    find "$pkgdir/usr/${_arch}" -name '*.dll' | xargs -rtL1 ${_arch}-strip --strip-unneeded
+    find "$pkgdir/usr/${_arch}" -name '*.a' -o -name '*.dll' | xargs -rtL1 ${_arch}-strip -g
+    rm "$pkgdir/usr/${_arch}/bin/gtk-update-icon-cache.exe"
+    rm "$pkgdir/usr/${_arch}/lib/"*.def
     rm -r "$pkgdir/usr/${_arch}/etc"
     rm -r "$pkgdir/usr/${_arch}/share/gtk-2.0"
     cd ..
