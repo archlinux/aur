@@ -1,7 +1,7 @@
 # Maintainer: Tristelune <tristelune@archlinux.info>
 
 pkgname=qtspell
-pkgver=0.8.1
+pkgver=0.8.2
 pkgrel=1
 pkgdesc="Spell checking for Qt text widgets"
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ makedepends=('cmake' 'qt4')
 source=(
   "https://github.com/manisandro/qtspell/releases/download/${pkgver}/${pkgname}-${pkgver}.tar.xz"
 )
-sha256sums=('5d316d654ce9177d3fc92c90cff3297098e9a433711867dacd57382cdccfbd83')
+sha256sums=('4f8b902b5da39ce532e532f9ec4916d03d623baf6e46a9b0c4afce76800c40e0')
 
 build() {
   cd "$pkgname-$pkgver"
