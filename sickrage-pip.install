@@ -4,21 +4,28 @@ post_install() {
   mkdir /opt/sickrage || return 1
   chown -R sickrage:sickrage /opt/sickrage || return 1
   sudo -u sickrage virtualenv2 /opt/sickrage || return 1
-  sudo -u sickrage /opt/sickrage/bin/pip2 install sickrage lxml pyopenssl || exit 1
+  sudo -u sickrage /opt/sickrage/bin/pip2 install sickrage lxml pyopenssl || return 1
   echo "==> Start and enable sickrage.service. Then visit http://localhost:8081/"
 }
 
 post_upgrade() {
-  sudo -u sickrage /opt/sickrage/bin/pip2 install --upgrade sickrage lxml pyopenssl || exit 1
-}
-
-pre_remove() {
-  sudo -u sickrage /opt/sickrage/bin/pip2 uninstall --yes $(/opt/sickrage/bin/pip2 list | awk '{ print $1 }') || exit 1
-  systemctl stop sickrage.service || exit 1
-  sudo -u sickrage virtualenv2 --clear --no-download --no-wheel --no-pip /opt/sickrage || exit 1
+  if [ -d /opt/sickrage ]; then
+    sudo -u sickrage /opt/sickrage/bin/pip2 install --upgrade sickrage lxml pyopenssl || return 1
+  else
+    post_install $1
+  fi
 }
 
 post_remove() {
+  if [ -d /opt/sickrage ]; then
+    sudo -u sickrage /opt/sickrage/bin/pip2 uninstall --yes $(/opt/sickrage/bin/pip2 list | awk '{ print $1 }') || return 1
+    systemctl --quiet is-active sickrage.service
+    if [ $? -eq 0 ]; then
+      systemctl stop sickrage.service
+    fi
+    sudo -u sickrage virtualenv2 --clear --no-download --no-wheel --no-pip /opt/sickrage || return 1
+  fi
+
   echo "==> Some files in /opt/sickrage may not have been removed."
 
   # Do not delete the 'sickrage' user automatically. It may still own files.
