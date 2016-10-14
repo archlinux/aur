@@ -16,21 +16,54 @@ backup=('etc/algernon/serverconf.lua'
 source=("git://github.com/xyproto/algernon#tag=$pkgver")
 md5sums=('SKIP')
 install='algernon.install'
+_gourl=github.com/xyproto/algernon
 
 prepare() {
-  cd "$pkgname"
+  export GOROOT=/usr/lib/go
 
+  msg2 "Prepare build enviroment"
+  rm -rf build
+  mkdir -p build/go
+  cd build/go
+
+  for f in "$GOROOT/"*; do
+    ln -s "$f"
+  done
+
+  rm pkg
+  mkdir pkg
+  cd pkg
+
+  for f in "$GOROOT/pkg/"*; do
+    ln -s "$f"
+  done
+
+  export GOROOT="$srcdir/build/go"
+  export GOPATH="$srcdir/build"
+
+  export DESTPATH="$GOPATH/src/$_gourl"
+  mkdir -p "$DESTPATH"
+
+  rm -rf $DESTPATH
+  mv "$srcdir/$pkgname" "$(dirname $DESTPATH)"
+
+  # Glide
+  msg2 "Download dependencies with Glide"
+  cd "$GOPATH/src/$_gourl"
+  glide update
   glide install
 }
 
 build() {
-  cd "$pkgname"
+  cd "$GOPATH/src/$_gourl"
 
-  go build
+  msg2 "Build application"
+  go fix
+  go build -x
 }
 
 package() {
-  cd "$pkgname"
+  cd "$GOPATH/src/$_gourl"
 
   install -Dm755 algernon "$pkgdir/usr/bin/algernon"
   install -Dm644 system/algernon.service "$pkgdir/usr/lib/systemd/system/algernon.service"
