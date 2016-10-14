@@ -2,7 +2,7 @@
 
 pkgname=linthesia
 pkgver=0.4.3
-pkgrel=4
+pkgrel=5
 pkgdesc="A game of playing music. A fork of Synthesia"
 arch=('i686' 'x86_64')
 url="http://linthesia.sourceforge.net/"
@@ -16,7 +16,7 @@ sha256sums=('SKIP' '7953b732355bae0417d2eaff421a46d786201f104db289caa291a6a36f6f
 
 build() {
     cd "$srcdir/code"
-    patch -p1 -i "$srcdir/0000-TextWriter-ptr-compare.patch"
+    patch -p1 -i "$srcdir/0000-TextWriter.patch"
 	patch -p1 -i "$srcdir/0001-Makefile-CXXFLAGS.patch"
     make GRAPHDIR="/usr/share/linthesia/graphics"
     cd "$srcdir/code/extra"
