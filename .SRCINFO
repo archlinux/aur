@@ -1,7 +1,7 @@
 pkgbase = powernet-mib
 	pkgdesc = American Power Conversion PowerNet-MIB
 	pkgver = 4.19
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.apc.com/us/en/tools/download/index.cfm
 	arch = any
 	license = custom
