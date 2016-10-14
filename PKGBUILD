@@ -1,6 +1,6 @@
 # Maintainer: Chromaryu <knight.ryu12@gmail.com>
 pkgname=libxmp-git
-pkgver=libxmp.4.4.0.r59.g6d1fa98
+pkgver=libxmp.4.4.1.r3.gf573488
 pkgrel=1
 pkgdesc="Library that supports over 90 module formats (Amiga, Atari, ..)"
 arch=('i686' 'x86_64')
