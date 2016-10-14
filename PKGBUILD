@@ -2,7 +2,7 @@
 
 pkgname=kde1-kdelibs
 pkgver=1.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Historical copy of the libraries module of KDE 1, adapted to compile on modern systems (circa. 2016)"
 arch=('i686' 'x86_64')
 url="https://github.com/KDE/kde1-kdelibs"
@@ -11,8 +11,15 @@ groups=("kde1")
 depends=("qt1" "libpng" "libjpeg-turbo" "libtiff")
 makedepends=("cmake")
 _commit="98b923b0a56423c6de5c5f2f68f457249b3e3cf6"
-source=("https://github.com/KDE/$pkgname/archive/$_commit.zip")
-sha256sums=('be19075ccddb1141267cc445a3025ebb4654d0dc4e928580c571f16c699c59a6')
+source=("https://github.com/KDE/$pkgname/archive/$_commit.zip"
+        "KDE1Macros.patch")
+sha256sums=('be19075ccddb1141267cc445a3025ebb4654d0dc4e928580c571f16c699c59a6'
+            'd7adbb94ba65fc0d37c5e8ad4975a2c550562dae9131ff23086507a17d4cdba9')
+
+prepare() {
+  cd $srcdir/$pkgname-$_commit
+  patch -p1 cmake/KDE1Macros.cmake < $srcdir/KDE1Macros.patch
+}
 
 build() {
   cd $srcdir/$pkgname-$_commit
