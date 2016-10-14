@@ -7,7 +7,7 @@
 
 pkgbase=handbrake-git
 pkgname=('handbrake-gtk-git' 'handbrake-cli-git')
-pkgver=r7550
+pkgver=r7552
 pkgrel=1
 pkgdesc="Multiplatform, multithreaded DVD to MPEG-4/H264/Theora converter"
 arch=('i686' 'x86_64')
@@ -53,7 +53,7 @@ package_handbrake-gtk-git() {
   pkgdesc="Multiplatform, multithreaded DVD to MPEG-4/H264/Theora converter (GUI version)"
   depends=('gtk3' 'dbus-glib' 'gst-plugins-base-libs' 'jansson'
 	   'libnotify' 'libsamplerate' 'libx264' 'libtheora' 'lame'
-	   'libass')
+	   'libass' 'libgudev')
   optdepends=('gst-plugins-bad: For Preview Window'
               'gst-plugins-good: For Preview Window'
               'gst-plugins-ugly: For Preview Window'
