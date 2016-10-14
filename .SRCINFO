@@ -6,6 +6,7 @@ pkgbase = libconfini
 	arch = i686
 	arch = x86_64
 	license = GPL
+	makedepends = intltool
 	source = https://github.com/madmurphy/libconfini/archive/1.1-1.tar.gz
 	md5sums = fe8aa1904c12ed6b8413f04e0777396b
 

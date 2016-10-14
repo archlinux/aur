@@ -7,6 +7,7 @@ pkgdesc='Yet another INI parser'
 arch=('i686' 'x86_64')
 url="https://madmurphy.github.io/libconfini/"
 license=("GPL")
+makedepends=('intltool')
 source=("https://github.com/madmurphy/${pkgname}/archive/${pkgver}-${pkgrel}.tar.gz")
 md5sums=('fe8aa1904c12ed6b8413f04e0777396b')
 
