@@ -1,0 +1,17 @@
+pkgbase = gnome-shell-extension-zorin-tray
+	pkgdesc = Various settings and changes for the panel in Zorin Desktop.
+	pkgver = 1.0.2
+	pkgrel = 1
+	url = http://zorinos.com/
+	install = gnome-shell-extension-zorin-tray.install
+	arch = i686
+	arch = x86_64
+	license = GPL-2+
+	depends = gnome-shell
+	options = !emptydirs
+	options = !strip
+	source = http://ppa.launchpad.net/zorinos/stable/ubuntu/pool/main/g/gnome-shell-extension-zorin-tray/gnome-shell-extension-zorin-tray_1.0.2_all.deb
+	md5sums = 87d8a77da6502b45ca1358d849a28a7c
+
+pkgname = gnome-shell-extension-zorin-tray
+
