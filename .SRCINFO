@@ -1,14 +1,14 @@
 pkgbase = monav-light-git
 	pkgdesc = A lightweight and platform independent offline routing software that works on pre-processed OpenStreetMap data and uses JSON for input and output.
 	pkgver = 0.1+git489ef8f
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/M4rtinK/monav-light/
 	arch = i686
 	arch = x86_64
 	license = GPL3
 	makedepends = git
 	makedepends = qt5-base
-	makedepends = qt5-tools
+	depends = qt5-base
 	provides = monav-light=0.1+git489ef8f
 	provides = monav-client
 	provides = monav

@@ -3,7 +3,7 @@
 _pkgname='monav-light'
 pkgname="${_pkgname}-git"
 pkgver=0.1+git489ef8f
-pkgrel=2
+pkgrel=3
 pkgdesc="A lightweight and platform independent offline routing software that works on pre-processed OpenStreetMap data and uses JSON for input and output."
 url='https://github.com/M4rtinK/monav-light/'
 arch=('i686' 'x86_64')
@@ -13,13 +13,17 @@ backup=(
 )
 
 depends=(
+  'qt5-base'
+  ### The following are needed by the preprocessor:
+  # 'bzip2'
+  # 'libxml2'
   # 'mapnik'
+  # 'protobuf'
 )
 
 makedepends=(
   'git'
   'qt5-base'
-  'qt5-tools'
 )
 
 optdepends=(
