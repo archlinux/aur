@@ -1,0 +1,13 @@
+pkgbase = systemd-guest-user
+	pkgdesc = A simple implementation of guest user
+	pkgver = 5.cb2b466
+	pkgrel = 1
+	url = https://github.com/kalterfive/systemd-guest-user
+	arch = any
+	license = GPL3
+	depends = systemd
+	source = systemd-guest-user::git://github.com/kalterfive/systemd-guest-user
+	md5sums = SKIP
+
+pkgname = systemd-guest-user
+
