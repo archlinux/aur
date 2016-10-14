@@ -1,4 +1,5 @@
 # Maintainer:  Oliver Goethel <deezy>
+# Contributor: eolianoe eolianoe <eolianoe [at] gmail [DoT] com>
 # Contributor: George Eleftheriou <eleftg>
 # Contributor: Mathias Anselmann <mathias.anselmann@gmail.com>
 # Contributor: Stéphane Gaudreault <stephane@archlinux.org>
@@ -8,7 +9,7 @@
 
 pkgname=paraview
 pkgver=5.1.2
-pkgrel=4
+pkgrel=5
 pkgdesc='Parallel Visualization Application using VTK'
 arch=('i686' 'x86_64')
 url='http://www.paraview.org'
