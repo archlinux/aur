@@ -1,11 +1,11 @@
-# $Id$
-# Maintainer: Balló György <ballogyor+arch at gmail dot com>
+# Maintainer: Brenton Horne <brentonhorne77 at gmail dot com>
+# Contributor: Balló György <ballogyor+arch at gmail dot com>
 
 pkgname=mate-tweak
-pkgver=16.10.4
+pkgver=16.10.5
 _umsver=16.10.7
 pkgrel=1
-pkgdesc="Tweak tool for MATE, a fork of MintDesktop"
+pkgdesc="Tweak tool for MATE, a fork of MintDesktop - GTK3 version."
 arch=('any')
 url="https://bitbucket.org/ubuntu-mate/mate-tweak"
 license=('GPL')
@@ -21,7 +21,7 @@ optdepends=('mate-applet-dock: for Mutiny panel layout'
 source=("$pkgname-$pkgver.tar.gz::https://bitbucket.org/ubuntu-mate/$pkgname/get/$pkgver.tar.gz"
         "https://launchpad.net/ubuntu/+archive/primary/+files/ubuntu-mate-settings_$_umsver.tar.xz"
         "fix-mutiny-fresh.patch")
-sha256sums=('474a4ee963554650f963223430a7e5d7e4d08e8ef00f4a7c76dc4515a2f181fe'
+sha256sums=('dac113407663ee2660a3d304e07dc2b762c5ac493a2db7ef34609d4d153308fe'
             'bf0046befe9b8704e5b9972fc86da3847b0b458b72a186f8ebf5d7b30ee591ac'
             'ac2ade84a532486c50245a176d370f0815330f13df07fd62e133afe0383db5fc')
 
