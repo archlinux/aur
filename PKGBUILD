@@ -2,7 +2,7 @@
 
 pkgname=mingw-w64-gtk3
 pkgver=3.22.1
-pkgrel=1
+pkgrel=2
 pkgdesc='GObject-based multi-platform GUI toolkit (mingw-w64)'
 arch=(any)
 url='http://www.gtk.org'
@@ -36,7 +36,10 @@ build() {
     export PKG_CONFIG_FOR_BUILD="pkg-config"
     mkdir -p "build-${_arch}"
     cd "build-${_arch}"
-    ${_arch}-configure --enable-win32-backend --disable-cups
+    ${_arch}-configure \
+      --enable-broadway-backend \
+      --enable-win32-backend \
+      --disable-cups
     make
     cd ..
   done
@@ -47,9 +50,10 @@ package() {
   for _arch in ${_architectures}; do
     cd "build-${_arch}"
     make DESTDIR="$pkgdir" install
-    find "$pkgdir/usr/${_arch}" -name '*.exe' -o -name '*.bat' -o -name '*.def' -o -name '*.exp' -o -name '*.manifest' | xargs -rtl1 rm
-    find "$pkgdir/usr/${_arch}" -name '*.dll' | xargs -rtl1 ${_arch}-strip --strip-unneeded
-    find "$pkgdir/usr/${_arch}" -name '*.a' | xargs -rtl1 ${_arch}-strip -g
+    find "$pkgdir/usr/${_arch}" -name '*.exe' | xargs -rtL1 ${_arch}-strip
+    find "$pkgdir/usr/${_arch}" -name '*.dll' | xargs -rtL1 ${_arch}-strip --strip-unneeded
+    find "$pkgdir/usr/${_arch}" -name '*.a' -o -name '*.dll' | xargs -rtL1 ${_arch}-strip -g
+    rm "$pkgdir/usr/${_arch}/lib/"*.def
     rm -r "$pkgdir/usr/${_arch}/etc"
     rm -r "$pkgdir/usr/${_arch}/share/man"
     cd ..
