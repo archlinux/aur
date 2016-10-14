@@ -3,7 +3,6 @@ pkgbase = create_ap-git
 	pkgver = r211.64d06fb
 	pkgrel = 1
 	url = https://github.com/oblique/create_ap
-	install = create_ap-git.install
 	arch = any
 	license = BSD
 	makedepends = git

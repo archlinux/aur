@@ -14,7 +14,6 @@ depends=('bash' 'hostapd' 'iproute2' 'iw' 'dnsmasq'
 optdepends=('haveged: boost low entropy')
 makedepends=('git')
 backup=('usr/lib/systemd/system/create_ap.service')
-install=create_ap-git.install
 source=("git+https://github.com/oblique/create_ap")
 sha256sums=('SKIP')
 
