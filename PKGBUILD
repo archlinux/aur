@@ -44,14 +44,12 @@ build() {
   cd "${srcdir}/build"
 
   # flags to enable system libs
-  # add PROTOBUF when http://www.vtk.org/Bug/view.php?id=13656 gets fixed
+  # add PROTOBUF when https://gitlab.kitware.com/paraview/paraview/issues/13656 gets fixed
   local VTK_USE_SYSTEM_LIB=""
   for lib in EXPAT FREETYPE GLEW JPEG LIBXML2 OGGTHEORA PNG TIFF ZLIB; do
     VTK_USE_SYSTEM_LIB+="-DVTK_USE_SYSTEM_${lib}:BOOL=ON "
   done
 
-  # enable when http://paraview.org/Bug/view.php?id=12852 gets fixed:
-  #-DCMAKE_SKIP_RPATH:BOOL=YES \
     cmake \
     -DBUILD_SHARED_LIBS:BOOL=ON \
     -DBUILD_TESTING:BOOL=OFF \
