@@ -1,7 +1,7 @@
 # Maintainer: richli <rich at dranek dot com>
 
 pkgname=python-h5netcdf
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=1
 pkgdesc="Pythonic interface to netCDF4 via h5py"
 arch=('any')
@@ -11,7 +11,7 @@ depends=('python-h5py')
 makedepends=('python-setuptools')
 checkdepends=('python-netcdf4' 'python-pytest')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/shoyer/h5netcdf/archive/v${pkgver}.tar.gz")
-md5sums=('d0ef7440d3e897db087ccbf94498b568')
+md5sums=('61cf88e0d4e9113c3f565f228739bc5c')
 
 build() {
     cd "$srcdir/h5netcdf-${pkgver}"

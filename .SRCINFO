@@ -1,6 +1,6 @@
 pkgbase = python-h5netcdf
 	pkgdesc = Pythonic interface to netCDF4 via h5py
-	pkgver = 0.3.0
+	pkgver = 0.3.1
 	pkgrel = 1
 	url = https://github.com/shoyer/h5netcdf
 	arch = any
@@ -9,8 +9,8 @@ pkgbase = python-h5netcdf
 	checkdepends = python-pytest
 	makedepends = python-setuptools
 	depends = python-h5py
-	source = python-h5netcdf-0.3.0.tar.gz::https://github.com/shoyer/h5netcdf/archive/v0.3.0.tar.gz
-	md5sums = d0ef7440d3e897db087ccbf94498b568
+	source = python-h5netcdf-0.3.1.tar.gz::https://github.com/shoyer/h5netcdf/archive/v0.3.1.tar.gz
+	md5sums = 61cf88e0d4e9113c3f565f228739bc5c
 
 pkgname = python-h5netcdf
 
