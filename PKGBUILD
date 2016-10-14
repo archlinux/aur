@@ -30,6 +30,7 @@ package() {
     install -dm755 "${pkgdir}/usr/bin"
     install -dm755 "${pkgdir}/usr/share"
     install -dm755 "${pkgdir}/usr/share/${_pkgname}/"
+    install -dm755 "${pkgdir}/usr/share/${_pkgname}/dontpanic/"
     install -dm755 "${pkgdir}/usr/share/${_pkgname}/static/"
     install -dm755 "${pkgdir}/usr/share/${_pkgname}/views/"
     install -dm755 "${pkgdir}/usr/share/man/man1/"
@@ -38,6 +39,12 @@ package() {
     for _file in *.py
     do
 	install -D -m 644 ${_file} "${pkgdir}/usr/share/${_pkgname}/"
+    done
+
+    cd  "${srcdir}/${_pkgname}/src/dontpanic/"
+    for _file in *.py
+    do
+	install -D -m 644 ${_file} "${pkgdir}/usr/share/${_pkgname}/dontpanic/"
     done
 
     cd "${srcdir}/${_pkgname}/src/static/"
