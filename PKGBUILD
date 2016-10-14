@@ -3,40 +3,50 @@
 # Maintainer: Ian Hernández <ihernandezs@openmailbox.org>
 
 _pkgbase=nautilus
+pkgbase=nautilus-typeahead
 pkgname=(nautilus-typeahead libnautilus-extension-typeahead)
-pkgbase=$pkgname
-pkgver=3.20.1
+pkgver=3.22.0.1+22+gd72934b
 pkgrel=1
-pkgdesc="GNOME file manager - Patched to bring back the 'typeahead find' feature"
+pkgdesc="Default file manager for GNOME - Patched to bring back the 'typeahead find' feature"
+url="https://wiki.gnome.org/Apps/Nautilus"
 arch=(i686 x86_64)
 license=(GPL)
-depends=(libexif gnome-desktop exempi gvfs desktop-file-utils dconf 
-         libtracker-sparql nautilus-sendto)
-makedepends=(intltool gobject-introspection python packagekit python2)
-url="http://www.gnome.org"
-options=('!emptydirs')
-source=(http://download.gnome.org/sources/$_pkgbase/${pkgver:0:4}/$_pkgbase-$pkgver.tar.xz
-        translation-de.patch
+depends=(libexif gnome-desktop exempi gvfs dconf libtracker-sparql nautilus-sendto gnome-autoar)
+makedepends=(intltool gobject-introspection python packagekit python2 gnome-common git gtk-doc)
+options=(!emptydirs)
+_commit=d72934b3f94dfd7eb109a60bd0b262c4f9cd7ed4
+_libgd=752f65e91ea0d9a2ee8a2d21343bbd97bd0d038a
+source=("git://git.gnome.org/nautilus#commit=$_commit"
+        "git://git.gnome.org/libgd#commit=$_libgd"
         nautilus-restore-typeahead.patch)
-sha256sums=('f2a907b994026412a7ed7c8145d4ab4f886ac87e780353b967473305a35e81e8'
-            '564799623f8910208cef1e0ed583cfd049e98f9c71e15c56924f6c8452ab192b'
-            '034d2b5e97ec920120d88fa4d28efca047d326e069c39e2e1757f363c765eb87')
+sha256sums=('SKIP'
+            'SKIP'
+            '78a2df9012f2c448a07365e7adb3c1f6058427e8453b4b003e0f68f69a563379')
 
 prepare() {
-  cd $_pkgbase-$pkgver
+  cd $_pkgbase
+
+  git submodule init
+  git config --local submodule.libgd.url "$srcdir/libgd"
+  git submodule update
+
   patch -p1 -i ../nautilus-restore-typeahead.patch
-  patch -Np0 -i ../translation-de.patch
-  autoreconf -f -i
+  NOCONFIGURE=1 ./autogen.sh
+}
+
+pkgver() {
+  cd $_pkgbase
+  git describe --tags | sed 's/-/+/g'
 }
 
 build() {
-  cd $_pkgbase-$pkgver
+  cd $_pkgbase
   ./configure --prefix=/usr --sysconfdir=/etc \
       --localstatedir=/var --disable-static \
       --libexecdir=/usr/lib/nautilus \
       --disable-update-mimedb \
       --disable-schemas-compile \
-      --disable-selinux
+      --disable-selinux --enable-gtk-doc
   sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
   make
 }
@@ -48,16 +58,12 @@ package_nautilus-typeahead() {
   provides=(nautilus)
   groups=(gnome)
 
-  cd $_pkgbase-$pkgver
+  cd $_pkgbase
   make DESTDIR="$pkgdir" install
 
 ### Split libnautilus-extension
-  cd ..
-  mkdir -p n-e/usr/{lib,share}
-  mv "$pkgdir"/usr/include n-e/usr
-  mv "$pkgdir"/usr/lib/{girepository-1.0,pkgconfig} n-e/usr/lib
-  mv "$pkgdir"/usr/lib/libnautilus-extension.so* n-e/usr/lib
-  mv "$pkgdir"/usr/share/{gir-1.0,gtk-doc} n-e/usr/share
+  make DESTDIR="$pkgdir" -C libnautilus-extension uninstall
+  make DESTDIR="$pkgdir" -C docs/reference/libnautilus-extension uninstall
 }
 
 package_libnautilus-extension-typeahead() {
@@ -66,5 +72,7 @@ package_libnautilus-extension-typeahead() {
   provides=(libnautilus-extension)
   depends=(gtk3)
 
-  mv n-e/* "$pkgdir"
+  cd $_pkgbase
+  make DESTDIR="$pkgdir" -C libnautilus-extension install
+  make DESTDIR="$pkgdir" -C docs/reference/libnautilus-extension install
 }
