@@ -19,15 +19,15 @@ depends=('qt5-tools' 'qt5-x11extras'  'qt5-xmlpatterns'
         )
 makedepends=('cmake' 'mesa' 'gcc-fortran')
 optdepends=('python2-matplotlib: Needed to support equation rendering using MathText markup language'
-	        'python2-numpy: Needed for using some filters such as "Python Calculator"')
+            'python2-numpy: Needed for using some filters such as "Python Calculator"')
 source=("http://paraview.org/files/v${pkgver:0:3}/ParaView-v${pkgver}.tar.gz"
-	    'paraview_32bit.patch'
-	    'paraview-desktop.patch'
-	    'vtk_hdf5_internal.patch')
+        'paraview_32bit.patch'
+        'paraview-desktop.patch'
+        'vtk_hdf5_internal.patch')
 sha1sums=('449f104090b1fa84d1ee4b852dbfc6269cba9db4'
-	  'c25134330c582371e1009b51445cdb435144b53f'
-	  'd7da23daca34cd015294c4d2f702cdc4a81f0853'
-	  'cbadaa87cd775d1edb1dbc1db4dedb9f3cdc4fd5')
+          'c25134330c582371e1009b51445cdb435144b53f'
+          'd7da23daca34cd015294c4d2f702cdc4a81f0853'
+          'cbadaa87cd775d1edb1dbc1db4dedb9f3cdc4fd5')
 
 prepare() {
   cd "${srcdir}/ParaView-v${pkgver}"
@@ -52,46 +52,46 @@ build() {
     cmake_system_flags+="-DVTK_USE_SYSTEM_${lib}:BOOL=ON "
   done
 
-   # flags to use python2 instead of python which is 3.x.x on archlinux
-   local cmake_system_python_flags="-DPYTHON_EXECUTABLE:PATH=/usr/bin/python2 \
-   	 -DPYTHON_INCLUDE_DIR:PATH=/usr/include/python2.7 -DPYTHON_LIBRARY:PATH=/usr/lib/libpython2.7.so"
+  # flags to use python2 instead of python which is 3.x.x on archlinux
+  local cmake_system_python_flags="-DPYTHON_EXECUTABLE:PATH=/usr/bin/python2 \
+    -DPYTHON_INCLUDE_DIR:PATH=/usr/include/python2.7 -DPYTHON_LIBRARY:PATH=/usr/lib/libpython2.7.so"
 
-   # flags to use ffmpeg2.8
-   local ffmpeg_compat_flags="-DFFMPEG_INCLUDE_DIR:PATH=/usr/include/ \
-   	 -DFFMPEG_avcodec_LIBRARY=/usr/lib/libavcodec.so \
-   	 -DFFMPEG_avformat_LIBRARY=/usr/lib/libavformat.so \
-   	 -DFFMPEG_avutil_LIBRARY=/usr/lib/libavutil.so \
-   	 -DFFMPEG_swscale_LIBRARY=/usr/lib/libswscale.so"
+  # flags to use ffmpeg2.8
+  local ffmpeg_compat_flags="-DFFMPEG_INCLUDE_DIR:PATH=/usr/include/ \
+    -DFFMPEG_avcodec_LIBRARY=/usr/lib/libavcodec.so \
+    -DFFMPEG_avformat_LIBRARY=/usr/lib/libavformat.so \
+    -DFFMPEG_avutil_LIBRARY=/usr/lib/libavutil.so \
+    -DFFMPEG_swscale_LIBRARY=/usr/lib/libswscale.so"
 
-   # enable when http://paraview.org/Bug/view.php?id=12852 gets fixed:
-   #-DCMAKE_SKIP_RPATH:BOOL=YES \
-   cmake \
-   -DBUILD_SHARED_LIBS:BOOL=ON \
-   -DBUILD_TESTING:BOOL=OFF \
-   -DCMAKE_BUILD_TYPE=Release \
-   -DCMAKE_C_COMPILER=mpicc \
-   -DCMAKE_CXX_COMPILER=mpicxx \
-   -DCMAKE_INSTALL_PREFIX:PATH=/usr \
-   -DCMAKE_VERBOSE_MAKEFILE:BOOL=OFF \
-   -DPARAVIEW_ENABLE_FFMPEG:BOOL=ON \
-   -DPARAVIEW_ENABLE_PYTHON:BOOL=ON \
-   -DPARAVIEW_USE_MPI:BOOL=ON \
-   -DPARAVIEW_USE_VISITBRIDGE:BOOL=ON \
-   -DPARAVIEW_QT_VERSION=5 \
-   -DVTK_QT_VERSION=5 \
-   -DQT_HELP_GENERATOR:FILEPATH=/usr/bin/qhelpgenerator \
-   -DQT_QMAKE_EXECUTABLE=qmake-qt5 \
-   -DVISIT_BUILD_READER_CGNS:BOOL=OFF \
-   -DVTK_RENDERING_BACKEND:STRING=OpenGL2 \
-   -DVTK_USE_SYSTEM_HDF5:BOOL=OFF \
-   ${cmake_system_flags} \
-   ${cmake_system_python_flags} \
-   ${ffmpeg_compat_flags} \
-   ../ParaView-v${pkgver}
+  # enable when http://paraview.org/Bug/view.php?id=12852 gets fixed:
+  #-DCMAKE_SKIP_RPATH:BOOL=YES \
+    cmake \
+    -DBUILD_SHARED_LIBS:BOOL=ON \
+    -DBUILD_TESTING:BOOL=OFF \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_C_COMPILER=mpicc \
+    -DCMAKE_CXX_COMPILER=mpicxx \
+    -DCMAKE_INSTALL_PREFIX:PATH=/usr \
+    -DCMAKE_VERBOSE_MAKEFILE:BOOL=OFF \
+    -DPARAVIEW_ENABLE_FFMPEG:BOOL=ON \
+    -DPARAVIEW_ENABLE_PYTHON:BOOL=ON \
+    -DPARAVIEW_USE_MPI:BOOL=ON \
+    -DPARAVIEW_USE_VISITBRIDGE:BOOL=ON \
+    -DPARAVIEW_QT_VERSION=5 \
+    -DVTK_QT_VERSION=5 \
+    -DQT_HELP_GENERATOR:FILEPATH=/usr/bin/qhelpgenerator \
+    -DQT_QMAKE_EXECUTABLE=qmake-qt5 \
+    -DVISIT_BUILD_READER_CGNS:BOOL=OFF \
+    -DVTK_RENDERING_BACKEND:STRING=OpenGL2 \
+    -DVTK_USE_SYSTEM_HDF5:BOOL=OFF \
+    ${cmake_system_flags} \
+    ${cmake_system_python_flags} \
+    ${ffmpeg_compat_flags} \
+    ../ParaView-v${pkgver}
 
-   make
+  make
 
-   #sed -i 's/share\/cmake\/hdf5/share\/cmake\/hdf5_paraview/g' VTK/ThirdParty/hdf5/vtkhdf5/cmake_install.cmake
+  #sed -i 's/share\/cmake\/hdf5/share\/cmake\/hdf5_paraview/g' VTK/ThirdParty/hdf5/vtkhdf5/cmake_install.cmake
 }
 
 package() {
