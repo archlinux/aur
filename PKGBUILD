@@ -9,6 +9,7 @@ pkgdesc="Open-source DNS benchmark utility"
 arch=(any)
 url="http://code.google.com/p/namebench/"
 license=(Apache)
+makedepends=(git)
 depends=(python2-dnspython python2-httplib2 python2-simplejson python2-jinja
          python2-graphy)
 optdepends=('tk: gui')
