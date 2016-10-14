@@ -1,4 +1,5 @@
 *
 !.gitignore
 !PKGBUILD
+!slack-desktop.install
 !.SRCINFO

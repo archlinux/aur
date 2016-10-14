@@ -3,7 +3,7 @@
 # Contributor: Kyle Manna <kyle(at)kylemanna(dot)com>
 
 pkgname=slack-desktop
-pkgver=2.1.2
+pkgver=2.2.1
 pkgrel=1
 pkgdesc="Slack Desktop (Beta) for Linux"
 arch=('i686' 'x86_64')
@@ -12,10 +12,12 @@ license=('custom')
 depends=('alsa-lib' 'expat' 'gconf' 'gtk2' 'gvfs' 'hunspell' 'hunspell-en' 'libgcrypt' 'libgnome-keyring' 'libnotify' 'libxss' 'libxtst' 'xdg-utils')
 optdepends=('gnome-keyring')
 
-source_x86_64=("https://downloads.slack-edge.com/linux_releases/${pkgname}-${pkgver}-amd64.deb")
-source_i686=("https://downloads.slack-edge.com/linux_releases/${pkgname}-${pkgver}-i386.deb")
+install='slack-desktop.install'
 
-sha256sums_x86_64=('46576dbe929d4d60d0311056c0268d22dfaa58edc6774ce8a7e61873414bbf2e')
+source_x86_64=("https://downloads.slack-edge.com/linux_releases/${pkgname}-${pkgver}-amd64.deb")
+source_i686=("https://downloads.slack-edge.com/linux_releases/${pkgname}-2.1.2-i386.deb")
+
+sha256sums_x86_64=('4de55687aeb2e87dde60f3f76fdc8b48457c7417e268112f1d9b52ab665d08f4')
 sha256sums_i686=('cc9660d95f5ce765c18b35191e2475d6bd272affc6d47f176759cc202910ddb4')
 
 package() {
