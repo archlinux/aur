@@ -1,17 +1,16 @@
+# Maintainer: mitts <mittens2001@opmbx.org>
+
 pkgname=mopidy-local-images
-pkgver=0.3.3
-pkgrel=2
+pkgver=1.0.0
+pkgrel=1
 pkgdesc="Mopidy local library proxy extension for handling embedded album art"
 arch=('any')
 url="https://github.com/tkem/mopidy-local-images"
 license=('APACHE')
-depends=(
-  'python2' 
-  'mopidy>=0.19'
-  'python2-uritools>=1.0'
-)
+depends=('python2-pykka>=1.1.0' 'mopidy>=1.1.0' 'python2-uritools>=1.0')
 makedepends=('python2' 'python2-setuptools')
 source=("https://github.com/tkem/mopidy-local-images/archive/v${pkgver}.tar.gz")
+md5sums=('5b209aa86a9598710cd892d2947538a9')
 
 package() {
     cd "${srcdir}/mopidy-local-images-${pkgver}"
@@ -21,5 +20,3 @@ package() {
 }
 
 # vim:set ts=2 sw=2 et:
-      
-md5sums=('1bc4b305b61465003ccdfec2e9d10463')
