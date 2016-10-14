@@ -7,14 +7,12 @@ pkgdesc="Historical copy of the libraries module of KDE 1, adapted to compile on
 arch=('i686' 'x86_64')
 url="https://github.com/KDE/kde1-kdelibs"
 license=("GPL2" "LGPL2")
-depends=("qt1") # TODO : Fill
+groups=("kde1")
+depends=("qt1" "libpng" "libjpeg-turbo" "libtiff")
+makedepends=("cmake")
 _commit="98b923b0a56423c6de5c5f2f68f457249b3e3cf6"
 source=("https://github.com/KDE/$pkgname/archive/$_commit.zip")
 sha256sums=('be19075ccddb1141267cc445a3025ebb4654d0dc4e928580c571f16c699c59a6')
-
-prepare() {
-  cd $srcdir/$pkgname-$_commit
-}
 
 build() {
   cd $srcdir/$pkgname-$_commit
