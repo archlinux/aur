@@ -1,0 +1,28 @@
+post_install() {
+  systemd-sysusers sickrage.conf
+  systemd-tmpfiles --create sickgear.conf
+  mkdir /opt/sickrage || return 1
+  chown -R sickrage:sickrage /opt/sickrage || return 1
+  sudo -u sickrage virtualenv2 /opt/sickrage || return 1
+  sudo -u sickrage /opt/sickrage/bin/pip2 install sickrage lxml pyopenssl || exit 1
+  echo "==> Start and enable sickrage.service. Then visit http://localhost:8081/"
+}
+
+post_upgrade() {
+  sudo -u sickrage /opt/sickrage/bin/pip2 install --upgrade sickrage lxml pyopenssl || exit 1
+}
+
+pre_remove() {
+  sudo -u sickrage /opt/sickrage/bin/pip2 uninstall --yes $(/opt/sickrage/bin/pip2 list | awk '{ print $1 }') || exit 1
+  systemctl stop sickrage.service || exit 1
+  sudo -u sickrage virtualenv2 --clear --no-download --no-wheel --no-pip /opt/sickrage || exit 1
+}
+
+post_remove() {
+  echo "==> Some files in /opt/sickrage may not have been removed."
+
+  # Do not delete the 'sickrage' user automatically. It may still own files.
+  # If 'sickrage' is the only user in group 'sickrage', then the group will also be deleted.
+  echo "==> To delete the 'sickrage' user, run as root: userdel --force sickrage"
+}
+
