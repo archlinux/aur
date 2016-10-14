@@ -2,7 +2,7 @@
 
 pkgname=deployer
 pkgver=3.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A deployment tool written in PHP with support for popular frameworks out of the box."
 arch=('any')
 url="http://deployer.org/"
@@ -14,7 +14,7 @@ sha256sums=('SKIP')
 
 prepare() {
     cd "${srcdir}/${pkgname}"
-    composer install
+    composer install --prefer-dist --no-dev
 }
 
 build() {
