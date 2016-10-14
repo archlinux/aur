@@ -16,7 +16,7 @@ source=("http://home.thep.lu.se/~torbjorn/pythia8/$_pkgid.tgz"
         "pythia.sh"
         "shared_lib.patch")
 sha256sums=('1ea21c01d70f6ddf58457ed18405d89193f07152466ee925ca5102da1abcd08d'
-            '8e3a205fd3fbe8d833ca8377a418a4f2083a4e274c32b93ba295cb3335fb4225'
+            'c4ddcb356c7b003e83b2ef6a9aed3e682e6a95698a6a591847eaaa2441aa882f'
             'fdbcb895d3506d10f8983ee15afbf1c5947905a4ead95384eb55fd682dfe4c82')
 _srcpath=$srcdir/$_pkgid
 
