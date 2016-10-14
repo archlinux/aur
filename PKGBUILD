@@ -56,13 +56,6 @@ build() {
   local cmake_system_python_flags="-DPYTHON_EXECUTABLE:PATH=/usr/bin/python2 \
     -DPYTHON_INCLUDE_DIR:PATH=/usr/include/python2.7 -DPYTHON_LIBRARY:PATH=/usr/lib/libpython2.7.so"
 
-  # flags to use ffmpeg2.8
-  local ffmpeg_compat_flags="-DFFMPEG_INCLUDE_DIR:PATH=/usr/include/ \
-    -DFFMPEG_avcodec_LIBRARY=/usr/lib/libavcodec.so \
-    -DFFMPEG_avformat_LIBRARY=/usr/lib/libavformat.so \
-    -DFFMPEG_avutil_LIBRARY=/usr/lib/libavutil.so \
-    -DFFMPEG_swscale_LIBRARY=/usr/lib/libswscale.so"
-
   # enable when http://paraview.org/Bug/view.php?id=12852 gets fixed:
   #-DCMAKE_SKIP_RPATH:BOOL=YES \
     cmake \
@@ -86,7 +79,6 @@ build() {
     -DVTK_USE_SYSTEM_HDF5:BOOL=OFF \
     ${cmake_system_flags} \
     ${cmake_system_python_flags} \
-    ${ffmpeg_compat_flags} \
     ../ParaView-v${pkgver}
 
   make
