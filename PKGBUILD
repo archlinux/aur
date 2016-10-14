@@ -75,8 +75,6 @@ build() {
     ../ParaView-v${pkgver}
 
   make
-
-  #sed -i 's/share\/cmake\/hdf5/share\/cmake\/hdf5_paraview/g' VTK/ThirdParty/hdf5/vtkhdf5/cmake_install.cmake
 }
 
 package() {
