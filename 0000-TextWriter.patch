@@ -1,0 +1,21 @@
+diff -ra -U3 a/src/TextWriter.cpp b/src/TextWriter.cpp
+--- a/src/TextWriter.cpp	2016-10-14 15:43:47.264744000 -0500
++++ b/src/TextWriter.cpp	2016-10-14 15:52:09.558097860 -0500
+@@ -62,7 +62,7 @@
+     fontname = STRING(fontname << " " << in_size);
+     Pango::FontDescription* font_desc = new Pango::FontDescription(fontname);
+     Glib::RefPtr<Pango::Font> ret = Gdk::GL::Font::use_pango_font(*font_desc, 0, 128, list_start);
+-    if (ret == 0)
++    if (!ret)
+       throw LinthesiaError("An error ocurred while trying to use use_pango_font() with "
+                            "font '" + fontname + "'");
+ 
+@@ -100,7 +100,7 @@
+   glPopMatrix();
+ 
+   // TODO: Should probably delete these on shutdown.
+-  //glDeleteLists(1000, 128);
++  glDeleteLists(1000, 128);
+ 
+   return tw;
+ }

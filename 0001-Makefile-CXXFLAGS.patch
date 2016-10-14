@@ -1,0 +1,24 @@
+diff -ra -U3 a/src/libmidi/Makefile b/src/libmidi/Makefile
+--- a/src/libmidi/Makefile	2016-10-14 15:35:27.884724000 -0500
++++ b/src/libmidi/Makefile	2016-10-14 15:39:39.681401308 -0500
+@@ -1,7 +1,7 @@
+ # -*- mode: makefile-gmake; coding: utf-8 -*-
+ 
+ CXX = g++
+-CXXFLAGS = -I . -I .. -ansi -Wall
++CXXFLAGS = -I . -I .. -ansi -Wall -O2 -fPIC
+ TARGET = libmidi.a
+ 
+ all: $(TARGET)
+diff -ra -U3 a/src/Makefile b/src/Makefile
+--- a/src/Makefile	2016-10-14 15:35:27.978057000 -0500
++++ b/src/Makefile	2016-10-14 15:39:30.234734267 -0500
+@@ -3,7 +3,7 @@
+ GRAPHDIR?=../graphics
+ 
+ CXX = g++
+-CXXFLAGS =  -I . -I libmidi -ggdb -Wall -ansi
++CXXFLAGS =  -I . -I libmidi -ggdb -Wall -ansi -O2 -std=c++11 -fPIC
+ CXXFLAGS += `pkg-config --cflags gtkmm-2.4 gconfmm-2.6 gtkglextmm-1.2 alsa` -DGRAPHDIR="\"$(GRAPHDIR)\""
+ LDFLAGS = `pkg-config --libs gtkmm-2.4 gconfmm-2.6 gtkglextmm-1.2 alsa`
+ TARGET = linthesia
