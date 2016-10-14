@@ -1,0 +1,19 @@
+pkgbase = shsession-git
+	pkgdesc = A lightweight session manager written in bash.
+	pkgver = r8.a59f220
+	pkgrel = 1
+	url = https://github.com/jcjordyn130/shsession
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = bash
+	depends = coreutils
+	optdepends = pygtk: for the gui session controller
+	optdepends = python: for the gui session controller
+	optdepends = pm-utils: for the default suspend and hibernate commands
+	optdepends = systemd: for the default poweroff and reboot commaands
+	source = git://github.com/jcjordyn130/shsession.git
+	sha512sums = SKIP
+
+pkgname = shsession-git
+
