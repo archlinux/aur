@@ -1,11 +1,11 @@
 # Maintainer: Chris Warrick <aur@chriswarrick.com>
 # Contributor: shmilee <echo c2htaWxlZS56anVAZ21haWwuY29tCg==|base64 -d>
 pkgbase=python-nikola
-_pynameweb=Nikola
-_pyname=nikola
+_pyname=Nikola
+_pynamel=nikola
 pkgname=('python-nikola' 'python-nikola-doc')
 pkgver=7.8.1
-pkgrel=1
+pkgrel=2
 pkgdesc='A modular, fast, simple, static website generator.'
 arch=('any')
 url='https://getnikola.com/'
@@ -16,7 +16,7 @@ makedepends=('python' 'python-doit' 'python-pygments' 'python-pillow'
              'python-yapsy>=1.11.223' 'python-pyrss2gen' 'python-dateutil' 'python-logbook'
              'python-blinker' 'python-natsort' 'python-setuptools'
              'python-requests' 'python-husl' 'python-piexif')
-source=("https://pypi.io/packages/source/N/Nikola/${_pynameweb}-${pkgver}.tar.gz")
+source=("https://pypi.io/packages/source/N/Nikola/${_pyname}-${pkgver}.tar.gz")
 md5sums=('0fa90c14d2fa8a839b59e3248e1cc92c')
 
 build() {
@@ -45,7 +45,7 @@ package_python-nikola() {
   conflicts=('python-nikola-git')
   cd "${srcdir}/${_pyname}-${pkgver}"
   python3 setup.py install --prefix=/usr --root="${pkgdir}" --optimize=1
-  ln -s ${_pyname} "${pkgdir}/usr/bin/${_pyname}3"
+  ln -s ${_pynamel} "${pkgdir}/usr/bin/${_pynamel}3"
   rm -rf "${pkgdir}/usr/share"
 }
 
