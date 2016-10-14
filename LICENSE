@@ -1,0 +1,163 @@
+AMERICAN POWER CONVERSION CORPORATION - SOFTWARE LICENSE AGREEMENT
+
+This software license agreement (the “agreement”) is a legal agreement between American Power Conversion
+Corporation as the “licensor” (hereafter referred to as APC) and you (hereafter referred to as the “customer”) for
+the APC software accompanying this agreement.
+By downloading, installing, loading, copying, or otherwise using the software, you represent that one of the
+following is true:
+• You have been authorized to accept these terms on behalf of the customer (the entity on whose behalf you
+represent that you are authorized to act).
+• You intend to be personally bound to the terms of this agreement as the customer.
+If you accept these terms as a representative of an entity on whose behalf you are authorized to act, you may use
+the software only on behalf of such entity. If you intend to be personally bound, use of the software is limited to your
+personal use.
+If you are not authorized to accept these terms on behalf of a company or other entity, and you do not intend to be
+personally bound, APC will not license the software.
+Installation or use of the software in violation of the terms of this agreement is a violation of U.S. and international
+copyright laws and conventions.
+If third-party software is provided with the APC software, that third-party software is not subject to the terms of this
+license agreement. The license agreement of that third-party software defines the responsibilities of the customer
+and licensor with regard to that software.
+
+1. GRANT OF LICENSE
+APC hereby agrees to grant and customer agrees to accept a non-exclusive and non-transferable license to use
+the software, subject to the terms and conditions of this agreement. The software is owned and copyrighted by
+American Power Conversion Corporation or its suppliers. As a customer, your license confers no ownership of or
+title to the software and does not constitute a sale of any right in the software. APC retains all proprietary rights and
+title to the software and any modifications.
+The customer is not permitted to rent, lease, grant a security interest in, or otherwise transfer rights to the software,
+or remove or alter any trademark, logo, copyright or other proprietary notices, legends, symbols or labels in the
+software.
+
+2. RIGHT TO USE
+The software is licensed for use only by the number of users and/or on the number of servers or workstations
+described in this “Right to Use” section of this agreement or in any related invoice.
+The customer may use this software in one of the following ways, whichever is applicable to this software:
+• On a single file server powered by an APC UPS for serving any computer and related peripheral devices
+connected with that single file server
+• On one or more computers powered by the same APC UPS
+• To support a web server, which may be connected to a varying but unlimited number of workstations or
+computers on one or more networks.
+• To support any licensed copy of the PowerNet Agent.
+
+3. RIGHT TO COPY
+The customer may make copies of the software for the following purposes only:
+• The customer may make one copy of the software for archival or backup purposes.
+• The customer may make additional copies of the software and documentation only when essential for the
+authorized and intended use of the software as described in this agreement and/or in the documentation
+accompanying the software.
+Any and all copies, including any archival copy, must include the APC copyright notice and any other proprietary
+notices that are included with the licensed software, and are fully subject to the terms of this agreement.
+The customer may not redistribute the software or make copies with the intent to redistribute.
+
+4. RESTRICTIONS
+The customer is not permitted to do any of the following:
+• Reverse assemble, reverse compile, or otherwise attempt to create the source code from the software.
+• Create derivative works of the software or any portion thereof.
+• Localize or translate the software or its documentation, without the prior written consent of APC.
+• Publish or provide any results of benchmark tests run on the software to a third party without the prior written
+consent of APC.
+
+5. DURATION AND TERMINATION OF THIS AGREEMENT
+This license shall continue so long as the customer uses the software in compliance with the agreement. If the
+customer breaches any of its obligations, this license shall terminate, and the customer agrees to destroy or return
+all copies of the software and all materials provided for or with the software upon notification and demand by APC.
+The customer can terminate the agreement at any time by destroying or returning to APC all copies of the software
+and documentation.
+
+6. LIMITED WARRANTY
+The APC limited warranty is for a period of ninety (90) days from the time the customer receives the software.
+APC warrants during the limited warranty period that the software will function materially as described in the
+accompanying software user documentation and that any medium upon which the software is delivered will be free
+from defects in material and workmanship when given normal, proper and intended usage.
+This warranty does not apply in any of the following circumstances:
+• If the software is used on a machine or operating system other than the machines and versions of operating
+systems specified in the documentation.
+• If the software is subjected to misuse, neglect, accident, or exposure to environmental conditions beyond
+those specified in the documentation.
+• If a version of the software is used that does not include all updates available from APC.
+• If the software has been modified.
+APC does not warrant that use of the software will be uninterrupted or error free, nor that program errors will be
+corrected.
+APC’s sole responsibility and customer’s sole remedy under this warranty is, at APC’s option, to repair or replace
+all or any portions of the software, or to refund any license fee paid. This limited warranty is valid only if APC
+receives written notice within the ninety-day warranty period.
+
+7. LIMITATION OF WARRANTIES AND LIABILITY
+EXCEPT AS EXPRESSLY SET FORTH IN SECTION 6 HEREIN ENTITLED “LIMITED WARRANTY”, (i) APC
+SHALL HAVE NO LIABILITY TO THE CUSTOMER OR ANY THIRD PARTY FOR THE SOFTWARE, INCLUDING
+ANY LIABILITY FOR NEGLIGENCE; (ii) APC MAKES AND THE CUSTOMER RECEIVES NO WARRANTIES,
+EXPRESS, IMPLIED, STATUTORY, OR IN ANY OTHER PROVISION OF THIS AGREEMENT OR ANY OTHER
+COMMUNICATION; AND (iii) APC SPECIFICALLY DISCLAIMS ANY WARRANTY OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE, TITLE AND NON-INFRINGEMENT.
+IN NO EVENT SHALL APC BE LIABLE TO THE CUSTOMER FOR ANY CONSEQUENTIAL, INDIRECT,
+SPECIAL, MULTIPLE OR INCIDENTAL DAMAGES, EVEN IF APC HAS BEEN ADVISED OF THE POSSIBILITY
+OF SUCH POTENTIAL LOSS OR DAMAGE.
+SOME STATES OR JURISDICTIONS DO NOT ALLOW THE EXCLUSION OF IMPLIED WARRANTIES OR
+LIMITATION OF INCIDENTAL OR CONSEQUENTIAL DAMAGES, SO THE ABOVE LIMITATION OR
+EXCLUSION MIGHT NOT APPLY TO YOU. HOWEVER, TO THE FULL EXTENT PERMITTED BY APPLICABLE
+LAW, THE DURATION OF STATUTORILY REQUIRED WARRANTIES, IF ANY, SHALL BE LIMITED TO THE
+WARRANTY PERIOD OF 90 DAYS.
+NO DEALER, AGENT, EMPLOYEE, OR CUSTOMER OF APC IS AUTHORIZED TO MAKE ANY
+MODIFICATIONS, EXTENSIONS, OR ADDITIONS TO THIS LIMITED WARRANTY. The cumulative liability of
+APC to the customer for all claims relating to the software shall not exceed the total amount of any and all license
+fees paid to 
+
+8. NO WARRANTY UNDER HAZARDOUS HIGH-RISK, OR LIFE-THREATENING CONDITIONS
+The software is not fault-tolerant and is not designed, manufactured or intended for use or resale as control
+equipment in hazardous environments requiring fail-safe performance, such as in the operation of nuclear facilities,
+aircraft navigation or communication systems, air traffic control, direct life support machines, or weapons systems,
+in which the failure of the software could lead directly to death, personal injury, or severe physical or environmental
+damage. Accordingly, APC and its suppliers specifically disclaim any express or implied warranty of fitness for such
+hazardous, high-risk, or life-threatening activities.
+
+9. USE OF TECHNICAL INFORMATION RELATED TO CUSTOMER SUPPORT
+The customer agrees that APC may use technical information that the customer provides while receiving technical/
+customer support services. APC may use such information for its own business purposes, including product
+support and development, but agrees not to use such information in any form that might identify the customer.
+
+10. TRANSFER RESTRICTIONS
+This agreement, the license granted hereunder, the software and any modifications thereto may not be assigned
+or in any way transferred without the prior written consent of APC.
+
+11. LANGUAGE AND JURISDICTION OF THE AGREEMENT
+The original of this agreement has been written in English. The parties hereto waive any statute, law, or regulation
+that might provide an alternative law or forum or to have this agreement written in any language other than English.
+Any translation of this agreement to a language other than English is provided only for the convenience of the
+customer and is not the legally binding version of the agreement.
+The terms of this agreement shall be construed in accordance with the substantive laws of the Commonwealth of
+Massachusetts, United States of America, without giving effect to the principles of conflict or choice of law of such
+commonwealth. APC and Customer exclude the United Nations Convention on Contracts for the International Sale
+of Goods from this agreement.
+
+12. U.S. GOVERNMENT RESTRICTED RIGHTS LEGEND
+The software and documentation are “commercial items” as that term is defined in 48 C.F.R. 2.101 (October 1995)
+consisting of “commercial computer software” and “commercial computer software documentation” as such terms
+are used in 48 C.F.R. 227.7202-1, 227.7202-3 and 227.7202-4 (June 1995). If the customer is the U.S.
+Government or any agency or department thereof, the software and documentation are licensed only as a
+commercial item, and with only those rights as are granted to all other end users pursuant to the terms and
+conditions of this agreement. Licensor is American Power Conversion Corporation, P.0. Box 278, 132 Fairgrounds
+Rd., West Kingston, RI 02892, U.S.A.
+
+13. EXPORT CONTROLS
+None of the software or underlying information or technology may be downloaded or otherwise exported or re-
+exported to any of the following:
+• Into (or to a national or resident of) any country to which the U.S. has embargoed goods.
+• To anyone on the U.S. Treasury Department’s list of Specially Designated Nationals.
+• To anyone on the U.S. Commerce Department’s Table of Denial Orders.
+By downloading or using the software, the customer agrees to the foregoing and represents and warrants that it is
+not located in, under the control of, or a national or resident of any such country or on any such list.
+The customer is responsible for complying with any local laws in its jurisdiction that might impact its right to import,
+export or use the software, and represents that it has complied with any regulations or registration procedures
+required by applicable law to make this license enforceable.
+
+
+AMERICAN POWER CONVERSION CORPORATION
+CORPORATE HEADQUARTERS:
+132 Fairgrounds Road
+P.O. Box 278
+West Kingston, RI 02892
+United States of America
+Telephone: 401-789-5735
+Toll Free (US and Canada): 800-800-4272
+
