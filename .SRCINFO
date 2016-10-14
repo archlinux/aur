@@ -1,7 +1,7 @@
 pkgbase = dontpanic-latest
 	pkgdesc = Dontpanic is a python app to look for any movie or serie and watch them in 'streaming'. It looks like popcorntime, but doesn't depend of a centralized api.
 	pkgver = 1.7
-	pkgrel = 1
+	pkgrel = 2
 	url = http://3hg.toile-libre.org/dontpanic/index.html
 	arch = any
 	license = GPL3
