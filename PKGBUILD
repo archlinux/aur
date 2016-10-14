@@ -9,11 +9,11 @@ url='http://kde-apps.org/content/show.php/?content=174485'
 license=(GPL)
 depends=(kio)
 makedepends=(extra-cmake-modules)
-source=("http://kde-apps.org/CONTENT/content-files/174485-$pkgname-$pkgver.tar.gz" stripPicture kenerickrita.desktop kenericblend.desktop)
-md5sums=('29cc6c23fef1c766c409b35d51628dce'
-         'c9f4461d011bdcaea3807a2ca4d73ed5'
-         '52eb5908aa2414c490853312b6f71a81'
-         '723f0d5769a5e35019ba5892ce72f265')
+source=("https://dl.opendesktop.org/api/files/download/id/1460971625/174485-$pkgname-$pkgver.tar.gz" stripPicture kenerickrita.desktop kenericblend.desktop)
+sha512sums=('0c57621d3b74df9f059e10b217e2c471628ed69eed432f97026b39dc58e822721d69873fe8302e138d95538621820b851068d6dc6760cccbfb4a1f0b2a6682f7'
+         '8facba2194ff3677c652afaa559eb1e4f143d077a7202c454c950d409d6d378da85577f1dc5c2fd0e47937bf95f2b50f8659cdd5929cdea7a920c7b514618a29'
+         '9528a47faff250df9dd9ad6da699fc98aba77d7bc6e398f62aabf5a0c5ef2ae2d442438febe06f05b70258d12ae985fd8f99280e4b5ad44a5a79c4976e8e4b57'
+         '4460fd5523a4a50f824b3c6759786882470376416f75e826bd51c843b5ce8d211125e855e56c0b4cec2dc05ed530df2b2dd1eef6807d5e18b7c7cce289c0d37e')
 
 prepare() {
   mkdir -p build
