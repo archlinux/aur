@@ -50,10 +50,6 @@ build() {
     cmake_system_flags+="-DVTK_USE_SYSTEM_${lib}:BOOL=ON "
   done
 
-  # flags to use python2 instead of python which is 3.x.x on archlinux
-  local cmake_system_python_flags="-DPYTHON_EXECUTABLE:PATH=/usr/bin/python2 \
-    -DPYTHON_INCLUDE_DIR:PATH=/usr/include/python2.7 -DPYTHON_LIBRARY:PATH=/usr/lib/libpython2.7.so"
-
   # enable when http://paraview.org/Bug/view.php?id=12852 gets fixed:
   #-DCMAKE_SKIP_RPATH:BOOL=YES \
     cmake \
@@ -66,17 +62,18 @@ build() {
     -DCMAKE_VERBOSE_MAKEFILE:BOOL=OFF \
     -DPARAVIEW_ENABLE_FFMPEG:BOOL=ON \
     -DPARAVIEW_ENABLE_PYTHON:BOOL=ON \
+    -DPARAVIEW_PYTHON_VERSION=2 \
     -DPARAVIEW_QT_VERSION=5 \
     -DPARAVIEW_USE_MPI:BOOL=ON \
     -DPARAVIEW_USE_VISITBRIDGE:BOOL=ON \
     -DQT_HELP_GENERATOR:FILEPATH=/usr/bin/qhelpgenerator \
     -DQT_QMAKE_EXECUTABLE=qmake-qt5 \
     -DVISIT_BUILD_READER_CGNS:BOOL=OFF \
+    -DVTK_PYTHON_VERSION=2 \
     -DVTK_QT_VERSION=5 \
     -DVTK_RENDERING_BACKEND:STRING=OpenGL2 \
     -DVTK_USE_SYSTEM_HDF5:BOOL=OFF \
     ${cmake_system_flags} \
-    ${cmake_system_python_flags} \
     ../ParaView-v${pkgver}
 
   make
