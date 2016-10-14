@@ -11,7 +11,8 @@ makedepends=('go' 'git' 'glide')
 optdepends=('redis: For using the Redis database backend'
             'mariadb: For using the MariaDB/MySQL database backend'
             'postgresql: For using the PostgreSQL database backend')
-backup=('etc/algernon/serverconf.lua')
+backup=('etc/algernon/serverconf.lua'
+        'usr/lib/systemd/system/algernon.service')
 source=("git://github.com/xyproto/algernon#tag=$pkgver")
 md5sums=('SKIP')
 install='algernon.install'
