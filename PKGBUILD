@@ -3,7 +3,7 @@
 _pkgname=idos-timetable-data-inprop-mhd-michalovce
 pkgname="${_pkgname}-latest"
 epoch=0
-pkgver=2016_8_17
+pkgver=2016_10_10
 pkgrel=1
 pkgdesc="Michalovce public transport data for the IDOS timetable browser, data provided by INPROP."
 arch=(any)
