@@ -2,7 +2,7 @@
 
 pkgname=kde1-kdebase
 pkgver=1.1.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Historical copy of the base applications module of KDE 1, adapted to compile on modern systems (circa. 2016)"
 arch=('i686' 'x86_64')
 url="https://github.com/KDE/kde1-kdebase"
@@ -10,9 +10,9 @@ license=("GPL2")
 groups=("kde1")
 depends=("qt1" "kde1-kdelibs" "libjpeg" "libtiff" "perl")
 makedepends=("cmake")
-_commit="07492489711904daf165c633549883000a71295a"
+_commit="a55cc8cc2ba9a24f08174e311798b791148165ca"
 source=("https://github.com/KDE/$pkgname/archive/$_commit.zip")
-sha256sums=('8f2f84b941af1b018ae4a86d41e6ff3a7e952254cfae32bc959c797fe49ae128')
+sha256sums=('66c3106845ed04ee788f0087b9f9b1dcc51dc5d9c7356ad4f4035201409daf0b')
 
 #prepare() {
 #  cd $srcdir/$pkgname-$_commit
