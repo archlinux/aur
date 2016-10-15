@@ -1,15 +1,16 @@
 # Maintainer: Timo Sarawinski <t.sarawinski@gmail.com>
 
 pkgbase=linux-baytrail48 
-_srcname=linux-4.8.1
+_srcname=linux-4.8.1-baytrail
+_gitver=60cacd661dacfd0a7c4aa6f82d11f1c1664e70ad
 pkgver=4.8.1
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
 license=('GPL2')
 makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc' 'libelf')
 options=('!strip')
-source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
+source=("${_srcname}.tar.gz::https://github.com/muhviehstah/linux-4.8.1-baytrail/archive/${_gitver}.tar.gz"
         'config' 'config.x86_64'
         'linux-baytrail48.preset'
         'change-default-console-loglevel.patch'
@@ -22,9 +23,9 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
 	'tpm_crb-fix-crb_req_canceled-behavior.patch'
         )
 
-sha256sums=('e641157b9f3608660a947c9124f195f86900779598b46c43f7b17c19527c9865'
-	    'f58f0047d906391d62d20595fc425b9fd4937e76f92199af27217fceb1646254'
-	    '52ac8d67a2810e83b1b75d191a8b12f65bed1cd57e165d7d6ee0b97124a9c318'
+sha256sums=('47c255a475276ad6e62ea7f54c53dc44e48211aecbdcbff31bea7b44d1425d74'
+	    '60921720cdcd2ff3fc754eebbba795af52b61d681a0541ad492a606bed309f58' 
+	    '8d6c3f830301355e6732595f56c63b73b4275fe70f76b321c663297dc8e2c798' 
             'faa6f9259870f11d8fb8846b25186c86107262bc38c325b96e9e5f08d428b307'
 	    '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
             'a9e8b1a5754604544b70591c4ddb9687c47bbe606efd169248377ec37ff56277'
@@ -39,7 +40,7 @@ sha256sums=('e641157b9f3608660a947c9124f195f86900779598b46c43f7b17c19527c9865'
 _kernelname=${pkgbase#linux}
 
 prepare() {
-  cd "${srcdir}/${_srcname}"
+  cd "${srcdir}/${_srcname}-${_gitver}"
 
   # add upstream patch
 
@@ -96,20 +97,20 @@ prepare() {
 }
 
 build() {
-  cd "${srcdir}/${_srcname}"
+  cd "${srcdir}/${_srcname}-${_gitver}"
 
   make ${MAKEFLAGS} LOCALVERSION= bzImage modules
 }
 
 _package() {
-  pkgdesc="The ${pkgbase/linux/Linux} with baytrail freeze fixes kernel and modules"
+  pkgdesc="The ${pkgbase/linux/Linux} with baytrail freeze fixes and integrated RTL8723BS WIFI driver + kernel and modules"
   [ "${pkgbase}" = "linux" ] && groups=('base')
   depends=('coreutils' 'linux-firmware' 'kmod' 'mkinitcpio>=0.7')
   optdepends=('crda: to set the correct wireless channels of your country')
   backup=("etc/mkinitcpio.d/${pkgbase}.preset")
   install=linux-baytrail48.install
 
-  cd "${srcdir}/${_srcname}"
+  cd "${srcdir}/${_srcname}-${_gitver}"
 
   KARCH=x86
 
@@ -159,7 +160,7 @@ _package-headers() {
 
   install -dm755 "${pkgdir}/usr/lib/modules/${_kernver}"
 
-  cd "${srcdir}/${_srcname}"
+  cd "${srcdir}/${_srcname}-${_gitver}"
   install -D -m644 Makefile \
     "${pkgdir}/usr/lib/modules/${_kernver}/build/Makefile"
   install -D -m644 kernel/Makefile \
@@ -285,7 +286,7 @@ _package-headers() {
 _package-docs() {
   pkgdesc="Kernel hackers manual - HTML documentation that comes with the ${pkgbase/linux/Linux} kernel with baytrail freeze fixes"
 
-  cd "${srcdir}/${_srcname}"
+  cd "${srcdir}/${_srcname}-${_gitver}"
 
   mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build"
   cp -al Documentation "${pkgdir}/usr/lib/modules/${_kernver}/build"
