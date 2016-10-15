@@ -14,7 +14,7 @@ replaces=(smartgithg)
 _pkgver=${pkgver//\./_}
 # folder within tar.gz archive
 _pkgfolder=${pkgname}
-source=(https://www.syntevo.com/downloads/${pkgname}/${pkgname}-linux-${_pkgver}.tar.gz
+source=(https://www.syntevo.com/static/smart/download/${pkgname}/${pkgname}-linux-${_pkgver}.tar.gz
         smartgit.desktop)
 install="smartgit.install"
 sha1sums=('b324d2b9d70260c48ac58b9f488a9cc3a7b3c4c8'
