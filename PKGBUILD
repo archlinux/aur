@@ -4,15 +4,15 @@
 
 pkgname=schedtoold
 pkgver=0.3
-pkgrel=10
+pkgrel=11
 pkgdesc="Simple daemon to renice/nice and change priorities of processes while running them."
 depends=('bash' 'schedtool')
 arch=('i686' 'x86_64' 'armv7h')
 license=('GPL')
-source=(http://www.darav.de/$pkgname-$pkgver.tar.bz2 \
+source=(http://web.archive.org/web/20160407010156/http://www.darav.de/$pkgname-$pkgver.tar.bz2 \
 	schedtoold.patch schedtoold.conf schedtoold schedtoold.service utils.patch segv.patch
 )
-url="http://www.darav.de/schedtoold.html"
+url="https://web.archive.org/web/20160407010156/http://www.darav.de/schedtoold.html"
 md5sums=('c8f1d73c0f0d0b3dba005d2853f2cfa4'
          'b449800d8f99d6acb83b2255eaed6166'
          '2f095a0e26a341c99e0425ce58dd3b90'
