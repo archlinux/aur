@@ -7,3 +7,4 @@
 !chromium-widevine-r1.patch
 !BUILD.gn
 !unset-madv_free.patch
+!minizip.patch

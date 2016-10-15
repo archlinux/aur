@@ -19,7 +19,7 @@ _debug_mode=0          # Build in debug mode.
 ## -- Package and components information -- ##
 ##############################################
 pkgname=chromium-dev
-pkgver=55.0.2882.4
+pkgver=55.0.2883.11
 _launcher_ver=3
 pkgrel=1
 pkgdesc="The open-source project behind Google Chrome (Dev Channel)"
@@ -85,8 +85,9 @@ source=( #"https://gsdview.appspot.com/chromium-browser-official/chromium-${pkgv
         'https://raw.githubusercontent.com/gentoo/gentoo/master/www-client/chromium/files/chromium-system-ffmpeg-r4.patch'
         'https://raw.githubusercontent.com/gentoo/gentoo/master/www-client/chromium/files/chromium-system-jinja-r14.patch'
         # Misc Patches
-        "https://raw.githubusercontent.com/sjnewbury/gentoo-playground/master/www-client/chromium/files/enable_vaapi_on_linux-55.diff"
-        'minizip.patch::http://pastebin.com/raw/QCqSDam5'
+        "https://raw.githubusercontent.com/saiarcot895/chromium-ubuntu-build/0507ec8f882295901bc33dba58260b6f87b4dfd8/debian/patches/enable_vaapi_on_linux.diff"
+        'https://raw.githubusercontent.com/saiarcot895/chromium-ubuntu-build/0507ec8f882295901bc33dba58260b6f87b4dfd8/debian/patches/specify-max-resolution.patch'
+        'minizip.patch'
         'unset-madv_free.patch'
         # Patch from crbug (chromium bugtracker)
         'chromium-widevine-r1.patch'
@@ -100,8 +101,9 @@ sha256sums=( #"$(curl -sL https://gsdview.appspot.com/chromium-browser-official/
             'e3c474dbf3822a0be50695683bd8a2c9dfc82d41c1524a20b4581883c0c88986'
             'a9cb08fbac8ffcf6371edd7ab67833efd42c5b92938f1e2e7922d1d22d226db8'
             # Misc Patches
-            'b75e10dc053a2723c3d4b11ec340991d6fe5b666d30c3f5322f8dd5798766c4f'
-            'c1131b4f969d4ff20208aa26bada30b75752c1c18853a2aa41d40901f53c8f31'
+            'd45827fe84a3fa3d55da7f9c3241f9b5b4d309b4d16e61cc121be3c8aa92553b'
+            '025042ac038ea5fdaabc91e67b13a410d2cacd9afc2d74f89b36fdf2388d4afc'
+            '95ba939b9372e533ecbcc9ca034f3e9fc6621d3bddabb57c4d092ea69fa6c840'
             '3b3aa9e28f29e6f539ed1c7832e79463b13128863a02e9c6fecd16c30d61c227'
             # Patch from crbug (chromium bugtracker)
             '0d537830944814fe0854f834b5dc41dc5fc2428f77b2ad61d4a5e76b0fe99880'
@@ -387,9 +389,12 @@ prepare() {
   patch -p1 -i "${srcdir}/chromium-system-jinja-r14.patch"
 
   # Misc Patches:
-  patch -p1 -i "${srcdir}/enable_vaapi_on_linux-55.diff"
+  patch -p1 -i "${srcdir}/enable_vaapi_on_linux.diff"
+  patch -p1 -i "${srcdir}/specify-max-resolution.patch"
   # Fix paths.
-  sed 's|/usr/lib64/va/drivers|/usr/lib/dri|g' -i content/common/sandbox_linux/bpf_gpu_policy_linux.cc
+  sed -e 's|x86_64-linux-gnu/||g' \
+      -e 's|i386-linux-gnu/||g' \
+      -i content/common/sandbox_linux/bpf_gpu_policy_linux.cc
 
   patch -p1 -i "${srcdir}/minizip.patch"
   patch -p1 -i "${srcdir}/unset-madv_free.patch"
