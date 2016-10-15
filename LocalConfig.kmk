@@ -1,0 +1,31 @@
+# do not build test cases
+VBOX_WITH_TESTCASES :=
+VBOX_WITH_TESTSUITE :=
+VBOX_WITH_VALIDATIONKIT :=
+
+# archlinux path
+VBOX_WITH_ORIGIN :=
+VBOX_PATH_APP_PRIVATE_ARCH := /usr/lib/virtualbox
+VBOX_PATH_SHARED_LIBS := $(VBOX_PATH_APP_PRIVATE_ARCH)
+VBOX_WITH_RUNPATH := $(VBOX_PATH_APP_PRIVATE_ARCH)
+VBOX_PATH_APP_PRIVATE := /usr/share/virtualbox
+VBOX_PATH_APP_DOCS := /usr/share/doc/virtualbox
+VBOX_PATH_PACKAGE_DOCS := $(VBOX_PATH_APP_DOCS)
+VBOX_BLD_PYTHON = python2
+VBOX_JAVA_HOME = /usr/lib/jvm/java-7-openjdk
+
+# do not fail on warning
+VBOX_GCC_WERR =
+VBOX_GCC_WARN =
+
+# fix gsoap missing zlib include and produce errors with --as-needed
+VBOX_GSOAP_CXX_LIBS := gsoapssl++ z
+
+# use system xorg
+VBOX_USE_SYSTEM_XORG_HEADERS = 1
+
+# no update request. update are handled via pacman
+VBOX_WITH_UPDATE_REQUEST := 0
+
+# do not build additions
+VBOX_WITH_ADDITIONS :=
