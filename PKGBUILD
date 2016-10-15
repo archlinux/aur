@@ -6,7 +6,7 @@
 
 pkgname=compiz
 pkgver=0.9.13.0
-pkgrel=7
+pkgrel=8
 pkgdesc="Composite manager for Aiglx and Xgl, with plugins and CCSM"
 arch=('i686' 'x86_64')
 url="https://launchpad.net/compiz"
@@ -22,18 +22,20 @@ source=("https://launchpad.net/${pkgname}/${pkgver:0:6}/${pkgver}/+download/${pk
         "focus-prevention-disable.patch"
         "gtk-extents.patch"
         "trailfocus-fix.patch"
-        "3981_3980.diff")
+        "reverse-unity-config.patch"
+        "metacity322-branch-rollup.patch")
 sha256sums=('f08eb54d578be559e3e723f3fe4291a56f5c96b2fdfb9c9e74ebb6596a1ca702'
             'f4897590b0f677ba34767a29822f8f922a750daf66e8adf47be89f7c2550cf4b'
             '16ddb6311ce42d958505e21ca28faae5deeddce02cb558d55e648380274ba4d9'
             '01e94ac52cd39eb5462a8505c7df61c7b14b05159de64f8700dfadb524bdb2ce'
-            '36781e0eebdb6f0b4b29bb69e9aa342688e48ea0a6fb14dff60e00a3cf74815d')
+            '97778fde6eff779e10a03f5c03f26ffdda8bdb89091956fee19ce84d7d8c9ef9'
+            '4deb954e539853ab5297d0603b1dd7ce72361425d7d88e4e49c9351d91bf0a91')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
 
-  # Reverse Ubuntu specific configuration patches
-  patch -Rp1 -i "${srcdir}/3981_3980.diff"
+  # Reverse Unity specific configuration patches
+  patch -p1 -i "${srcdir}/reverse-unity-config.patch"
 
   # Fix decorator start command
   sed -i 's/exec \\"${COMPIZ_BIN_PATH}compiz-decorator\\"/exec \/usr\/bin\/compiz-decorator/g' plugins/decor/decor.xml.in
@@ -50,6 +52,9 @@ prepare() {
 
   # Fix ambiguous function call in trailfocus plugin
   patch -p1 -i "${srcdir}/trailfocus-fix.patch"
+
+  # Metacity 3.22 support
+  patch -p1 -i "${srcdir}/metacity322-branch-rollup.patch"
 }
 
 build() {
