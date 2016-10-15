@@ -1,0 +1,15 @@
+pkgbase = texlive-pgfopts
+	pkgdesc = LaTeX package options with pgfkeys
+	pkgver = 2.1a
+	pkgrel = 1
+	url = https://www.ctan.org/pkg/pgfopts?lang=en
+	install = texlive-pgfopts.install
+	arch = any
+	license = custom
+	depends = texlive-core
+	depends = texlive-latexextra
+	source = http://mirrors.ctan.org/install/macros/latex/contrib/pgfopts.tds.zip
+	sha256sums = eb38d68b79bd379ef93af83f9a16ef694a47b30044b74e70bcbeb64b6fcf7ce6
+
+pkgname = texlive-pgfopts
+
