@@ -2,7 +2,7 @@
 
 pkgname=kde1-kdelibs
 pkgver=1.1.2
-pkgrel=3
+pkgrel=4
 pkgdesc="Historical copy of the libraries module of KDE 1, adapted to compile on modern systems (circa. 2016)"
 arch=('i686' 'x86_64')
 url="https://github.com/KDE/kde1-kdelibs"
@@ -10,9 +10,9 @@ license=("GPL2" "LGPL2")
 groups=("kde1")
 depends=("qt1" "libpng" "libjpeg-turbo" "libtiff")
 makedepends=("cmake")
-_commit="045c89f8a71d521897bb6ac2447f0d396c2d1016"
+_commit="ca9e8f0f2806ca5879ca3dccac1ca2cb5feab6fa"
 source=("https://github.com/KDE/$pkgname/archive/$_commit.zip")
-sha256sums=('7270c0e1d5fc55643a1faabae0003a6a1b39ade5ce6465d8965fe2bc3acd4409')
+sha256sums=('75caeda268519aab31dfc94ea889ec2599185cb1febff8ff358e810b58348a20')
 
 #prepare() {
 #  cd $srcdir/$pkgname-$_commit
