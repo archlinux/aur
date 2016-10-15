@@ -1,5 +1,5 @@
 pkgname=go-ethereum
-pkgver=1.4.17
+pkgver=1.4.18
 pkgrel=1
 pkgdesc="Ethereum Go Client (CLI) - compiled from source"
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ url="https://github.com/ethereum/go-ethereum"
 license=('GPL')
 source=($pkgname-$pkgver.tar.gz::https://codeload.github.com/ethereum/$pkgname/tar.gz/v$pkgver
         git+https://github.com/ethereum/go-ethereum.wiki)
-sha256sums=('0587a3ebeae87cc88365f26f817ab1d5bf0fdbd9f9cb2fc9babb3a4c64ba5fc4'
+sha256sums=('a584b52f432c4171ce3c00ee0742d44ec3dd78796d6f7bb8e4b82f6b3cfa707b'
             'SKIP')
 options=('!emptydirs')
 
