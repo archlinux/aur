@@ -1,6 +1,6 @@
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=libavlbst-git
-pkgver=1.0.1.r11.gad33847
+pkgver=2.0.0.r15.b318af7
 pkgrel=1
 epoch=
 pkgdesc="General purpose AVL binary search tree library."
@@ -25,11 +25,13 @@ md5sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/$pkgname"
-  git describe --tags | sed -E 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
+  printf "%s.r%s.%s" "$(git describe --tags | sed -E 's/^v//;s/([^-]*-g)/r\1/;s/-/./g')" \
+                    "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
   cd "$srcdir/$pkgname"
+  ./configure
   make
 }
 
