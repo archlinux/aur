@@ -1,0 +1,27 @@
+--- unsquash-4.c	2014-03-09 06:31:59.000000000 +0100
++++ unsquash-4.c.1	2016-10-15 11:41:12.914245961 +0200
+@@ -31,9 +31,9 @@
+ int read_fragment_table_4(long long *directory_table_end)
+ {
+ 	int res, i;
+-	int bytes = SQUASHFS_FRAGMENT_BYTES(sBlk.s.fragments);
+-	int  indexes = SQUASHFS_FRAGMENT_INDEXES(sBlk.s.fragments);
+-	long long fragment_table_index[indexes];
++	size_t bytes = SQUASHFS_FRAGMENT_BYTES(sBlk.s.fragments);
++	size_t indexes = SQUASHFS_FRAGMENT_INDEXES(sBlk.s.fragments);
++	long long *fragment_table_index;
+ 
+ 	TRACE("read_fragment_table: %d fragments, reading %d fragment indexes "
+ 		"from 0x%llx\n", sBlk.s.fragments, indexes,
+@@ -44,6 +44,11 @@
+ 		return TRUE;
+ 	}
+ 
++	fragment_table_index = malloc(indexes*sizeof(long long));
++	if(fragment_table_index == NULL)
++		EXIT_UNSQUASH("read_fragment_table: failed to allocate "
++			"fragment table index\n");
++
+ 	fragment_table = malloc(bytes);
+ 	if(fragment_table == NULL)
+ 		EXIT_UNSQUASH("read_fragment_table: failed to allocate "

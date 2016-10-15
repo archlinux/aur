@@ -6,15 +6,17 @@
 pkgname=sasquatch
 _origpkgname=squashfs-tools
 pkgver=4.3
-pkgrel=5
+pkgrel=6
 pkgdesc="Tools for squashfs, a highly compressed read-only filesystem for Linux."
 url="https://github.com/devttys0/sasquatch"
 license=("GPL")
 arch=('i686' 'x86_64')
 depends=('gzip' 'zlib' 'lzo' 'xz' 'lz4')
-makedepends=('gcc49')
-source=('git+https://github.com/devttys0/sasquatch')
-sha256sums=('SKIP')
+makedepends=('gcc5')
+source=('git+https://github.com/devttys0/sasquatch'
+	'read_fragment_table_n_stack_overflow-fix.patch')
+sha256sums=('SKIP'
+	'120c2d208085129235bf998b1c22abee19db26120a98174b9beb5edd7b9c84e9')
 
 build() {
     cd ${srcdir}/sasquatch/ 
@@ -23,7 +25,10 @@ build() {
     cd squashfs4.3
     patch -p0 < ../patches/patch0.txt
     cd squashfs-tools
-    CC=gcc-4.9 make
+    patch -p0 -i "${srcdir}/read_fragment_table_n_stack_overflow-fix.patch"
+    export CC=gcc-5
+    export CXX=g++-5
+    make
    # INSTALL_DIR="${pkgdir}"/usr/bin CC=gcc-4.9 make -j5 
 }
 
