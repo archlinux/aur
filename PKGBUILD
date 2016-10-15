@@ -4,9 +4,9 @@
 
 _pkgname=vokoscreen
 pkgname=${_pkgname}-git
-pkgver=2.5.0.11.g6f8da2f
-pkgrel=2
-pkgdesc='An easy to use screencast creator. Qt5 UI. Development version.'
+pkgver=2.5.0.39.g19b4d68
+pkgrel=1
+pkgdesc='An easy to use screencast creator. Development version.'
 arch=('i686' 'x86_64')
 url='http://linuxecke.volkoh.de/vokoscreen/vokoscreen.html'
 license=('GPL2')
