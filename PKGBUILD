@@ -1,15 +1,15 @@
 # Maintainer: Christopher Arndt <aur -at- chrisarndt -dot- de>
 
 pkgname=('pipdeptree')
-pkgver='0.6.0'
+pkgver='0.7.0'
 pkgrel=1
 pkgdesc="Command line utility to show dependency tree of Python packages"
 url="https://github.com/naiquevin/pipdeptree"
 depends=('python-pip')
 license=('MIT')
 arch=('any')
-source=("https://pypi.python.org/packages/source/p/${pkgname}/${pkgname}-${pkgver}.tar.gz")
-md5sums=('48293e697281a53a16b23c2d95e596a6')
+source=("https://pypi.python.org/packages/8b/41/85ad719f8e7f76764d2da84c4cd23b50d7639728bb12b0e5ffe405f6e4e0/${pkgname}-${pkgver}.tar.gz")
+md5sums=('688330de5d4c854578933b8ff928c457')
 
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
