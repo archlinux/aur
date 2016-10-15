@@ -17,6 +17,7 @@ depends_x86_64=(
 	'lib32-libxinerama'
 	'lib32-libxrender'
 	'lib32-libjpeg6-turbo'
+  'lib32-libxtst'
   'libxtst')
 depends_i686=(
 	'fontconfig'
