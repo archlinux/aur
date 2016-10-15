@@ -4,33 +4,30 @@
 # PF ver   : wangjiezhe <wangjiezhe AT yandex DOT com>
 
 _pkgname=r8168
+_kernver=$(pacman -Q linux-pf | sed -r 's#.* ([0-9]+\.[0-9]+).*#\1#')
 pkgname=r8168-pf
-pkgver=8.042
-pkgrel=7
+pkgver=8.043.01
+pkgrel=1
 pkgdesc="A kernel module for Realtek 8168 network cards(pf kernel)"
 url="http://www.realtek.com.tw"
 license=("GPL")
 arch=('i686' 'x86_64')
-depends=('glibc' 'linux-pf')
+depends=('glibc' "linux-pf>=$_kernver" "linux-pf<${_kernver/.*}.$(expr ${_kernver/*.} + 1)")
 makedepends=('linux-pf-headers')
 install=$_pkgname.install
 source=("$_pkgname-$pkgver.tar.gz"::"https://github.com/mtorromeo/r8168/archive/$pkgver.tar.gz"
-       "linux-4.5.patch"
-       "linux-4.7.patch")
-sha256sums=('9dd8ae22115bcbef98c15b0b1e2160300cce3129ef7e0485d7e577188ba3fcc2'
-            'e05a4bccf28beecc97db246064a5fe80d1303476b76086bd262c9c8db82b2e6e'
-            'bbdc817278b17a1803c74228eaccbddb347ae92424a9a6cc92a68946f5392969')
+       "linux-4.5.patch")
+sha256sums=('517ec3fe3c4d25476f6b7b2bd59c3dee548b8dddfe96d2bbc58f65859155142e'
+            'e05a4bccf28beecc97db246064a5fe80d1303476b76086bd262c9c8db82b2e6e')
+
+KERNEL_VERSION=$(cat /usr/lib/modules/extramodules-$_kernver-pf/version)
 
 prepare() {
         cd "$_pkgname-$pkgver"
         patch -p1 -i ../linux-4.5.patch
-        patch -p1 -i ../linux-4.7.patch
 }
 
 build() {
-        _kernver=$(pacman -Q linux-pf | sed -r 's#.* ([0-9]+\.[0-9]+).*#\1#')
-        KERNEL_VERSION=$(cat /usr/lib/modules/extramodules-$_kernver-pf/version)
-
         cd "$_pkgname-$pkgver"
 
         # avoid using the Makefile directly -- it doesn't understand
@@ -42,9 +39,6 @@ build() {
 }
 
 package() {
-        _kernver=$(pacman -Q linux-pf | sed -r 's#.* ([0-9]+\.[0-9]+).*#\1#')
-        depends=("linux-pf>=$_kernver" "linux-pf<${_kernver/.*}.$(expr ${_kernver/*.} + 1)")
-        KERNEL_VERSION=$(cat /usr/lib/modules/extramodules-$_kernver-pf/version)
         msg "Kernel = $KERNEL_VERSION"
 
         cd "$_pkgname-$pkgver"
