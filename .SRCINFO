@@ -1,0 +1,51 @@
+pkgbase = linux-baytrail47
+	pkgver = 4.7.7
+	pkgrel = 1
+	url = http://www.kernel.org/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = xmlto
+	makedepends = docbook-xsl
+	makedepends = kmod
+	makedepends = inetutils
+	makedepends = bc
+	makedepends = libelf
+	options = !strip
+	source = linux-baytrail-4.7.7.tar.gz::https://github.com/muhviehstah/linux-4.7.7-baytrail/archive/33c0259b09e7a7eba8a452ad0a6db90038d89012.tar.gz
+	source = config
+	source = config.x86_64
+	source = linux.preset
+	source = change-default-console-loglevel.patch
+	source = baytrailfix1.patch
+	source = baytrailfix2.patch
+	source = baytrailfix3.patch
+	source = baytrailfix4.patch
+	source = baytrailfix5.patch
+	sha256sums = 93887e2c55dfe3f209a649c528f0d7fb17bfedec84b4dacaaae8fc221b3ba101
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = linux-baytrail47
+	pkgdesc = The Linux-baytrail47 kernel and modules
+	install = linux.install
+	depends = coreutils
+	depends = linux-firmware
+	depends = kmod
+	depends = mkinitcpio>=0.7
+	optdepends = crda: to set the correct wireless channels of your country
+	backup = etc/mkinitcpio.d/linux-baytrail47.preset
+
+pkgname = linux-baytrail47-headers
+	pkgdesc = Header files and scripts for building modules for Linux-baytrail47 kernel
+
+pkgname = linux-baytrail47-docs
+	pkgdesc = Kernel hackers manual - HTML documentation that comes with the Linux-baytrail47 kernel
+
