@@ -2,7 +2,7 @@
 # Contributer: Michael Taboada <michael@2mb.solutions>
 _pkgname=horseshoes
 pkgname=horseshoes-git
-pkgver=1.0.2
+pkgver=1.0.3
 pkgrel=1
 pkgdesc="Audio only game of horseshoes."
 arch=('any')
