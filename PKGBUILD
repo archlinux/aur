@@ -5,7 +5,7 @@
 # Contributor: Guillem Rieu <guillemr@gmx.net>
 pkgname=ocamlnet
 pkgver=4.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A library for Web and Internet programming in OCaml"
 arch=('i686' 'x86_64')
 url="http://projects.camlcity.org/projects/ocamlnet.html"
@@ -19,7 +19,7 @@ md5sums=('cc8b3434119e51b0e855b33a687e9c4b')
 
 build(){
   cd "$srcdir/$pkgname-$pkgver"
-  ./configure -enable-gnutls -enable-gssapi -enable-pcre
+  ./configure -enable-gnutls -enable-gssapi -enable-pcre -bindir /usr/bin
 
   # You also could configure to add some more support,
   # if you have installed the according modules:
