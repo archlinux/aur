@@ -1,6 +1,6 @@
 pkgbase = webkit2gtk-unstable
 	pkgdesc = GTK+ Web content engine library
-	pkgver = 2.14.0
+	pkgver = 2.14.1
 	pkgrel = 1
 	url = http://webkitgtk.org/
 	arch = i686
@@ -13,6 +13,7 @@ pkgbase = webkit2gtk-unstable
 	makedepends = gtk-doc
 	makedepends = cmake
 	makedepends = python
+	makedepends = python2
 	depends = libxt
 	depends = libxslt
 	depends = enchant
@@ -31,8 +32,8 @@ pkgbase = webkit2gtk-unstable
 	provides = webkit2gtk
 	conflicts = webkit2gtk
 	options = !emptydirs
-	source = http://webkitgtk.org/releases/webkitgtk-2.14.0.tar.xz
-	sha256sums = 0513ad836c624a3d24bdf1a99f4b4aead984ab6684150bc70f16db651590ea0a
+	source = http://webkitgtk.org/releases/webkitgtk-2.14.1.tar.xz
+	sha256sums = 2e2d76c328de65bed6e0e4f096b2720a366654b27fc1af0830ece90bc4b7ceb5
 
 pkgname = webkit2gtk-unstable
 
