@@ -1,7 +1,7 @@
 # Maintainer: Swift Geek <swifgeek  google c m>
 
 pkgname=sdr-j-dabreceiver
-pkgver=0.994
+pkgver=0.997
 pkgrel=0
 pkgdesc="The DAB decoding software (SDR-J)"
 arch=('x86_64')
@@ -12,7 +12,7 @@ conflicts=('dabstick-radio')
 replaces=('dabstick-radio')
 makedepends=('cmake')
 source=("https://github.com/JvanKatwijk/sdr-j-dab/archive/V${pkgver}.tar.gz")
-md5sums=('28ac6cb65ce53d37e86f36cdae8ede54')
+md5sums=('45133eab902bd1b0084d9cca9c20b5a3')
 
 build() {
   export CFLAGS="${CFLAGS} -Wno-unused" # Tons of unnecessary warnings, breaking terminal output :D
