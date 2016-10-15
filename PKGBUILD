@@ -1,5 +1,5 @@
 pkgname=amule-git
-pkgver=2.4.0.r10389.f9aac98
+pkgver=2.3.2.r8.20f3a3b
 pkgrel=1
 pkgdesc='Client for the eD2k and Kad networks'
 arch=(i686 x86_64)
@@ -36,22 +36,24 @@ sha256sums=(SKIP
 pkgver() {
   cd amule/
 
-  printf %s.r%s.%s $(grep '#define VERSION' src/include/common/ClientVersion.h |
-    cut -d \" -f2) $(git rev-list --count HEAD) $(git rev-parse --short HEAD)
+  git describe | sed 's/-/.r/; s/-g/./'
 }
 
 prepare() {
   cd amule/
 
-  sed -i s/configure.in/configure.ac/ $srcdir/configure_ignore_gdlib-config_garbage.diff
+  cp $srcdir/amule.png ./
+  sed -i s/amule.xpm/amule.png/ Makefile.am
 
   patch -Np1 < $srcdir/aMule-cas-datadir.patch
+  sed -i 's\/usr/share/fonts/corefonts/times.ttf\/usr/share/fonts/TTF/DejaVuSerif.ttf\
+    s\/share/cas/\/share/amule/cas/\' src/utils/cas/configfile.c
+
+  sed -i s/configure.in/configure.ac/ $srcdir/configure_ignore_gdlib-config_garbage.diff
   patch -Np1 < $srcdir/configure_ignore_gdlib-config_garbage.diff
+
   patch -Np1 < $srcdir/use_xdg-open_as_preview_default.diff
   patch -Np1 < $srcdir/version_check.diff
-
-  sed -i 's\/usr/share/fonts/corefonts/times.ttf\/usr/share/fonts/TTF/DejaVuSerif.ttf\;
-    s\/share/cas/\/share/amule/cas/\' src/utils/cas/configfile.c
 }
 
 build() {
@@ -86,9 +88,6 @@ package() {
   cd amule/
 
   make DESTDIR=$pkgdir install
-
-  rm $pkgdir/usr/share/pixmaps/amule.xpm
-  install -m644 $srcdir/amule.png $pkgdir/usr/share/pixmaps/
 
   install -m644 *.txt docs/{*.dia,AUTHORS,COPYING,README.*} README* $pkgdir/usr/share/doc/amule/
 
