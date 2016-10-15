@@ -24,7 +24,7 @@ post_remove() {
   fi
   sudo -u sickrage virtualenv2 --clear --no-download --no-wheel --no-pip /opt/sickrage
 
-  echo "==> Some files in /opt/sickrage may not have been removed."
+  echo -e "\n==> Some files in /opt/sickrage may not have been removed.\n"
 
   # Do not delete the 'sickrage' user automatically. It may still own files.
   # If 'sickrage' is the only user in group 'sickrage', then the group will also be deleted.
