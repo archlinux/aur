@@ -1,0 +1,20 @@
+pkgbase = workcraft-git
+	pkgdesc = A framework for interpreted graph models including petri nets and STGs
+	pkgver = 3.1.2
+	pkgrel = 1
+	url = http://www.workcraft.org/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = java-environment
+	depends = java-runtime
+	provides = workcraft
+	conflicts = workcraft
+	source = git+https://github.com/tuura/workcraft.git
+	source = workcraft_start.sh
+	md5sums = SKIP
+	md5sums = 48f63dfedeeaac4dd8ccde2d2822fefc
+
+pkgname = workcraft-git
+
