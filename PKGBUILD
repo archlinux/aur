@@ -3,13 +3,13 @@
 _pkgbase=pacmanlogviewer
 pkgname=$_pkgbase-qt5
 pkgver=1.3.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Inspect pacman log file."
 arch=('i686' 'x86_64')
-url=('https://opendesktop.org/content/show.php?content=150484')
+url='https://www.linux-apps.com/content/show.php/Pacman+Log+Viewer?content=150484'
 license=('GPL')
 depends=('qt5-base')
-source=("http://qt-apps.org/CONTENT/content-files/150484-$_pkgbase-$pkgver.tar.gz")
+source=("https://dl.opendesktop.org/api/files/download/id/1466643430/150484-$_pkgbase-$pkgver.tar.gz")
 provides=("$_pkgbase")
 replaces=("$_pkgbase")
 conflicts=("$_pkgbase")
