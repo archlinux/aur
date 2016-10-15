@@ -2,7 +2,7 @@
 # Contributor: Eric Bélanger <eric@archlinux.org>
 
 pkgname=webkit2gtk-unstable
-pkgver=2.14.0
+pkgver=2.14.1
 pkgrel=1
 pkgdesc="GTK+ Web content engine library"
 arch=('i686' 'x86_64')
@@ -19,7 +19,7 @@ options=('!emptydirs')
 
 # webkitgtk's signature scheme (sha1-file-as-pgp-message) is bananas and not supported
 source=(http://webkitgtk.org/releases/webkitgtk-${pkgver}.tar.xz)
-sha256sums=('0513ad836c624a3d24bdf1a99f4b4aead984ab6684150bc70f16db651590ea0a')
+sha256sums=('2e2d76c328de65bed6e0e4f096b2720a366654b27fc1af0830ece90bc4b7ceb5')
 
 provides=('webkit2gtk')
 conflicts=('webkit2gtk')
