@@ -1,0 +1,12 @@
+[Unit]
+Description=Download and set as wallpaper the picture of the day from Nasa.
+Wants=network-online.target
+After=network.target network-online.target
+
+[Service]
+Type=oneshot
+ExecStart=/opt/nasa-pod.sh
+
+[Install]
+WantedBy=default.target
+
