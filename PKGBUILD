@@ -3,7 +3,7 @@
 pkgname=needrestart
 url=https://github.com/liske/needrestart
 pkgdesc='Restart daemons after library updates.'
-pkgver=2.6
+pkgver=2.9
 pkgrel=1
 source=("needrestart-${pkgver}.tar.gz::https://github.com/liske/needrestart/archive/v${pkgver}.tar.gz")
 arch=(any)
@@ -14,6 +14,7 @@ depends=(perl-module-find
          perl-proc-processtable
          perl-sort-naturally
          perl-module-scandeps
+         perl-libintl-perl
 )
 
 build() {
@@ -31,4 +32,4 @@ package() {
 	make DESTDIR="${pkgdir}" install
 }
 
-sha256sums=('c97be4ffce10cdaac6fae29b94eace41be35967caaa346c0da1deca7a8c797a8')
+sha256sums=('812c9594a5a262524f354f2290d8f9cd623004b30222aaeb37faa8cc911bd89f')
