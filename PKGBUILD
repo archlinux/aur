@@ -1,5 +1,5 @@
-# $Id: PKGBUILD 189868 2016-09-17 14:37:19Z seblu $
-# Maintainer: Sébastien "Seblu" Luttringer
+# Maintainer: Karol 'Kenji Takahashi' Woźniak <kenji.sx>
+# Contributor: Sébastien "Seblu" Luttringer
 # Contributor: Ionut Biru <ibiru@archlinux.org>
 
 pkgname=virtualbox-headless
@@ -9,8 +9,8 @@ pkgdesc='Powerful x86 virtualization for enterprise as well as home use. Headles
 arch=('i686' 'x86_64')
 url='http://virtualbox.org'
 license=('GPL' 'custom')
-depends=('libxml2' 'libxpv' 'libpng' 'python2')
-makedepends=('iasl' 'libxslt' 'cdrkit' 'libidl2' 'libvpx' 'libpulse' 'device-mapper' 'libvncserver' 'gsoap')
+depends=('libxml2' 'libvpx' 'libpng' 'python2')
+makedepends=('iasl' 'libxslt' 'cdrkit' 'libidl2' 'libpulse' 'device-mapper' 'libvncserver' 'gsoap')
 makedepends_x86_64=('gcc-multilib' 'lib32-glibc')
 optdepends=('vde2: Virtual Distributed Ethernet support'
             'net-tools: Host-only or bridged networking support'
