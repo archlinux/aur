@@ -2,7 +2,7 @@
 pkgname=8723bs-git-dkms
 _pkgname=${pkgname%-*}
 _pkgbase=8723bs
-pkgver=bd6f846
+pkgver=9ea0240
 pkgrel=1
 pkgdesc="RTL8723BS WIFI driver working on baytrail tablets DKMS version"
 url="http://www.realtek.com.tw/"
