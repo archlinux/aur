@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Zerocoin
+Comment=The Zerocoin Cryptocurrency
+Exec=/usr/bin/zcoin-qt
+Terminal=false
+Icon=zcoin
+Categories=Network
