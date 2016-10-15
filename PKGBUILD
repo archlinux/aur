@@ -2,7 +2,7 @@
 
 pkgname=nasa-pod
 pkgver=1
-pkgrel=1
+pkgrel=2
 pkgdesc="Systemd service and timer for fetching Nasa's picture of the day and setting it as wallpaper in Gnome."
 license=('MIT')
 arch=('x86_64' 'i686')
