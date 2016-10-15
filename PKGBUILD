@@ -1,7 +1,7 @@
 # Maintainer: Uncle Hunto <unclehunto äτ ÝãΗ00 Ð0τ ÇÖΜ>
 
 pkgname=bitcoin-gui-git
-pkgver=v0.12.1.r0.g9779e1e
+pkgver=v0.13.0.r116.g4ed2627
 pkgrel=1
 pkgdesc='Bitcoind, bitcoin-cli, bitcoin-tx, and bitcoin-qt, most recent stable branch, w/GUI and wallet'
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ makedepends=('boost' 'libevent' 'qt5-base' 'qt5-tools' 'qrencode' 'protobuf')
 provides=('bitcoin-daemon' 'bitcoin-cli' 'bitcoin-qt' 'bitcoin-tx')
 conflicts=('bitcoin-daemon' 'bitcoin-cli' 'bitcoin-qt' 'bitcoin-tx')
 install=bitcoin-qt.install
-source=('git+https://github.com/bitcoin/bitcoin.git#branch=0.12'
+source=('git+https://github.com/bitcoin/bitcoin.git#branch=0.13'
 				'bitcoin-qt.install')
 sha256sums=('SKIP'
             'ebf7090ca1202e2c2ccd1aa5bb03e6ac911c458141a1cedda9b41f9c26c2602c')
