@@ -2,7 +2,7 @@
 # Please report issues at https://github.com/jojosch/pkgbuilds
 
 pkgname=php-sha3
-pkgver=20160210.6.c9bdde8
+pkgver=20161015.11.4587931
 pkgrel=1
 pkgdesc="PHP extension that implements SHA-3 (Keccak)"
 url="https://github.com/strawbrary/php-sha3"
