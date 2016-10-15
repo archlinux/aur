@@ -4,8 +4,8 @@
 
 pkgbase=linux-rc       # Build kernel with a different name
 _srcname=linux-4.8
-_stable=4.8
-_patchver=4.8.1
+_stable=4.8.1
+_patchver=4.8.2
 pkgver=${_patchver}rc1
 _rcpatch=patch-${_patchver}-rc1
 pkgrel=1
@@ -29,12 +29,12 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
 
 sha256sums=('3e9150065f193d3d94bcf46a1fe9f033c7ef7122ab71d75a7fb5a2f0c9a7e11a'
             'SKIP'
-            '79705983331f05944c826219ac117df77923730677aa0a32f7829ad261c0d33b'
+            '79c7bda5b4ac4dee7791f34448464f7aa74d498f80df6e1e5ab73f96c5baea41'
             'SKIP'
-            '1e792ab86329694e3d57722b405b5a9234757491b99c8891dc9e56ed39e85a9f'
+            'ddba4356b376bed97584afcc6fdb1bb0a3e31f7a63eefd4a42d3abc1a9ef2066'
             'SKIP'
-            '111186c7dec2d8e3ec7946d6b4cc0283d30c8add570f1bb6ee158e472ca56d2e'
-            '7e892a9a9f4e6b0b043e44d9d17f93a549878e1d6aa7a72fa925f98e3f895c5c'
+            '2ac8818414beb7dbacbd3ad450c516e6ada804827132a7132f63b8189e5f5151'
+            '93a4ad4f6c7bb9296fddec436ed7477a5a5c11cf4d6e68482fa6610442cbcb1f'
             'f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99')
 validpgpkeys=(
@@ -49,7 +49,7 @@ prepare() {
 
   # add upstream patch
   # comment out for initial rc (ie 4.8 --> 4.8.1rc1
-  #patch -p1 -i "${srcdir}/patch-${_stable}"
+  patch -p1 -i "${srcdir}/patch-${_stable}"
 
   # add rc patch
   patch -p1 -i "${srcdir}/$_rcpatch"
