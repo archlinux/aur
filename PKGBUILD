@@ -2,7 +2,7 @@
 # Contributer: Michael Taboada <michael@2mb.solutions>
 _pkgname=horseshoes
 pkgname=horseshoes-git
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 pkgdesc="Audio only game of horseshoes."
 arch=('any')
@@ -30,7 +30,7 @@ prepare()
 build()
 {
   cd "$_pkgname"
-git checkout v1.0.1
+git checkout v${pkgver}
   ./comp.sh
 }
 
