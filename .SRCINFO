@@ -2,7 +2,7 @@
 # Sat May 14 18:40:45 UTC 2016
 pkgbase = tresorit
 	pkgdesc = Encrypted cloud storage for your confidential files. Using Tresorit, files are encrypted before being uploaded to the cloud. Start encrypting files for free.
-	pkgver = 1.0.191.449
+	pkgver = 1.0.280.512
 	pkgrel = 1
 	url = http://www.tresorit.com/
 	install = tresorit.install
@@ -10,7 +10,7 @@ pkgbase = tresorit
 	arch = x86_64
 	license = custom
 	source = https://installerstorage.blob.core.windows.net/public/install/tresorit_installer.run
-	sha1sums = 216148080d0d052d83ed1584ae8a29cbe6e06c9f
+	sha1sums = d6e4116e22dc48aa4496f14c34b23379c213ac7d
 
 pkgname = tresorit
 

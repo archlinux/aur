@@ -1,7 +1,7 @@
 # Maintainer: Danny Su <contact@dannysu.com>
 
 pkgname=tresorit
-pkgver=1.0.191.449
+pkgver=1.0.280.512
 pkgrel=1
 pkgdesc='Encrypted cloud storage for your confidential files. Using Tresorit, files are encrypted before being uploaded to the cloud. Start encrypting files for free.'
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ license=('custom')
 optdepends=()
 source=("https://installerstorage.blob.core.windows.net/public/install/tresorit_installer.run")
 
-sha1sums=('216148080d0d052d83ed1584ae8a29cbe6e06c9f')
+sha1sums=('d6e4116e22dc48aa4496f14c34b23379c213ac7d')
 
 prepare() {
   # Validate signature
