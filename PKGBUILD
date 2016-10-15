@@ -6,14 +6,14 @@
 #       is around 13GB.
 #
 pkgname=quartus-lite
-pkgver=15.1.0.185
+pkgver=16.0.0.211
 pkgrel=1
 pkgdesc="Quartus Prime Lite Edition design software for Altera FPGA's. Modular package"
 arch=('i686' 'x86_64')
 url="http://dl.altera.com/?edition=lite"
 license=('custom')
 
-_build_nr=$(echo ${pkgver} | cut -d '.' -f4)
+_build_nr="${pkgver##*.}"
 _alteradir="/opt/altera"
 
 # According to the installer script, these dependencies are needed for the installer
@@ -53,7 +53,7 @@ optdepends=('quartus-lite-max: MAXII, MAXV device support'
 
 source=("http://download.altera.com/akdlm/software/acdsinst/${pkgver%.*.*}/${_build_nr}/ib_installers/QuartusLiteSetup-${pkgver}-linux.run"
 	"quartus.sh" "quartus.desktop" "51-usbblaster.rules" "quartus.install")
-md5sums=('cc8bfde25f57c2f05d1753882bc9607a'
+md5sums=('40e83bf5586ca027005728609214173a'
          '067c444cae7fe31d3608245712b43ce8'
          '32b17cb8b992fc2dccd33d87f0dcd8ce'
          'f5744dc4820725b93917e3a24df13da9'
@@ -67,8 +67,8 @@ package() {
     cd "${srcdir}"
 
     # TODO: Make bogus $DISPLAY
-    chmod a+x "QuartusLiteSetup-15.1.0.185-linux.run"
-    DISPLAY="" ./QuartusLiteSetup-15.1.0.185-linux.run --mode unattended --unattendedmodeui none --installdir "${pkgdir}/${_alteradir}"
+    chmod a+x "QuartusLiteSetup-${pkgver}-linux.run"
+    DISPLAY="" ./"QuartusLiteSetup-${pkgver}-linux.run" --mode unattended --unattendedmodeui none --installdir "${pkgdir}/${_alteradir}"
 
     # Remove uninstaller and install logs since we have a working package management
     rm -r "${pkgdir}${_alteradir}/uninstall"
