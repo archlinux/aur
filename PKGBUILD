@@ -1,6 +1,6 @@
 pkgname="brother-mfc-l8600cdw"
 pkgver="1.1.3"
-pkgrel="1"
+pkgrel="2"
 pkgdesc="LPR and CPUS driver for the Brother MFC-L8600CDW"
 url="http://www.brother.com"
 license=('GPL')
@@ -12,10 +12,6 @@ md5sums=('288bdce351549d883423eec2494c96f2'
          'c7f04d3e70e6ce9c9688ff6e7ed0d4b6')
 
 package() {
-  cp -R "$srcdir/usr/bin" "$pkgdir/usr" || return 1
-  cp -R "$srcdir/opt/brother" "$pkgdir/opt" || return 1
-}
-
-post_install() {
-  "$srcdir/opt/brother/Printers/mfcl8600cdw/cupswrapper/cupswrappermfcl8600cdw"
+  cp -R "$srcdir/usr/" "$pkgdir/" || return 1
+  cp -R "$srcdir/opt/" "$pkgdir/" || return 1
 }
