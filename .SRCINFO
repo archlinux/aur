@@ -1,5 +1,5 @@
 pkgbase = systemd-guest-user
-	pkgdesc = A simple implementation of guest user
+	pkgdesc = A simple systemd configurations for guest user support
 	pkgver = 11.f6ff740
 	pkgrel = 1
 	url = https://github.com/kalterfive/systemd-guest-user
