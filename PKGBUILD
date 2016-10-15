@@ -2,7 +2,7 @@
 # Maintainer: Simon Lundström <simlu@su.se> (or you?)
 
 pkgname=rancid
-pkgver=3.4.1
+pkgver=3.5.1
 pkgrel=1
 pkgdesc="Really Awesome New Cisco confIg Differ"
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ url="http://www.shrubbery.net/rancid/"
 license=('BSD')
 depends=('expect')
 source=( ftp://ftp.shrubbery.net/pub/rancid/${pkgname}-${pkgver}.tar.gz )
-sha256sums=('572964f01969bd18b198110a75013ec31ec2aba6ca582ebf6cd208c422fe3bfe')
+sha256sums=('f3657930d6ebf855acd961c9acadeffb050cd9ed79809fad5db1c1f75ecfc711')
 
 build() {
   cd ${srcdir}/${pkgname}-${pkgver}
