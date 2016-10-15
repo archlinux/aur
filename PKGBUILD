@@ -6,7 +6,7 @@ pkgrel=1
 pkgdesc='The Zerocoin Cryptocurrency'
 arch=('any')
 url='https://github.com/zcoinofficial/zcoin'
-license=('Apache')
+license=('MIT')
 depends=('boost' 'qt4')
 source=("$pkgname::git+https://github.com/zcoinofficial/zcoin.git"
         "${pkgname/-git/}.desktop")
