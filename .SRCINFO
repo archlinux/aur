@@ -1,6 +1,6 @@
 pkgbase = wed-dotfiles-git
 	pkgdesc = WhiteEyeDoll's dotfile collection
-	pkgver = r32.a3742af
+	pkgver = r35.d4ec174
 	pkgrel = 1
 	url = https://github.com/WhiteEyeDoll/wed-dotfiles
 	arch = any

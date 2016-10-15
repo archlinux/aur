@@ -2,7 +2,7 @@
 
 _pkgname=wed-dotfiles
 pkgname=$_pkgname-git
-pkgver=r32.a3742af
+pkgver=r35.d4ec174
 pkgrel=1
 pkgdesc="WhiteEyeDoll's dotfile collection"
 arch=('any')
