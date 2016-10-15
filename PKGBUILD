@@ -2,7 +2,7 @@
 #      Ralph Irving 2015-2016, ralph_irving@hotmail.com
 
 pkgname=squeezelite-git
-pkgver=v1.8.4_758.c7a59a2
+pkgver=v1.8.5_809.637e941
 pkgrel=1
 pkgdesc='Lightweight headless squeezebox emulator'
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
@@ -32,6 +32,7 @@ build() {
 
 	export LDFLAGS="${LDFLAGS} -lasound -lpthread -lm -lrt"
 	export CFLAGS="${CFLAGS} -DDSD -DRESAMPLE -DVISEXPORT -DFFMPEG"
+	export OPTS="${OPTS} -DIR"
 	make
 }
 
@@ -49,5 +50,5 @@ package() {
 sha256sums=('SKIP'
             '15695d9dbb94e41f7aae7450dcfa9fbba83f25f4d8f2427e872c20c302e486cc'
             'f0753a1cbd0194119226587ff9c12257438674d9b8e0179d22f0d5461ad3a70a'
-            '0f19c6b028ad6005c21039a3cb996824ad3be54e69cc010db4c9a409ce4cdb96')
+            '2c52ea3b2916f9d67e3029506eabba2dabb3193c2833bcc7d2ff268d3a9ab5b9')
 
