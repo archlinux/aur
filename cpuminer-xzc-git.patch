@@ -1,0 +1,13 @@
+diff --git a/build.sh b/build.sh
+index 21ddebc..e9eca8a 100755
+--- a/build.sh
++++ b/build.sh
+@@ -23,7 +23,7 @@ if [ ! "0" = `cat /proc/cpuinfo | grep -c avx` ]; then
+     extracflags="$extracflags -march=native"
+ fi
+ 
+-./configure --with-crypto --with-curl CFLAGS="-O2 $extracflags -DUSE_ASM -pg"
++./configure --prefix=/usr --with-crypto --with-curl CFLAGS="-O2 $extracflags -DUSE_ASM -pg"
+ 
+ make -j 4
+ 

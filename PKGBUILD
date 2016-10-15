@@ -8,18 +8,27 @@ arch=('any')
 url='https://github.com/ocminer/cpuminer-xzc'
 license=('GPL2')
 depends=('libcurl-gnutls' 'openssl' 'zlib')
-source=("$pkgname::git+https://github.com/ocminer/cpuminer-xzc.git")
-md5sums=('SKIP')
+provides=('cpuminer')
+conflicts=('cpuminer')
+source=("$pkgname::git+https://github.com/ocminer/cpuminer-xzc.git"
+        "$pkgname.patch")
+md5sums=('SKIP'
+         '834658714fab7b194ef491f1dfc904bd')
 
 pkgver() {
     cd "$pkgname"
     echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
 }
 
+prepare() {
+    cd "$pkgname"
+    patch -Np1 -i "$srcdir/$pkgname.patch"
+}
+
 build() {
     cd "$pkgname"
     ./build.sh
-    make
+    ./configure --prefix=/usr
 }
 
 package() {
