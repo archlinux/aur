@@ -17,7 +17,7 @@ md5sums=('084247dfc794e17b1f86a2a3861fbf5e')
 build() {
   cd  $srcdir/blogc-$pkgver
   ./autogen.sh
-  ./configure --prefix=/usr/
+  ./configure --prefix=/usr/ --enable-git-receiver --enable-runserver
   make
 }
 
