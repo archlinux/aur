@@ -1,7 +1,7 @@
 pkgbase = 8723bs-git
 	pkgdesc = RTL8723BS WIFI driver working on baytrail tablets
 	pkgver = bd6f846
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.realtek.com.tw/
 	install = 8723bs-git.install
 	arch = any

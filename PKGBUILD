@@ -2,7 +2,7 @@
 pkgname=8723bs-git
 _pkgname=8723bs
 pkgver=bd6f846
-pkgrel=1
+pkgrel=2
 pkgdesc="RTL8723BS WIFI driver working on baytrail tablets"
 url="http://www.realtek.com.tw/"
 provides=('8723bs')
@@ -19,13 +19,14 @@ sha256sums=('SKIP'
 build() {
 	
 	cd "${srcdir}/${_pkgname}/"
+	#sed -i 's/\/lib\/modules\/\$(KVER)\/kernel\/drivers\/net\/wireless\//\/lib\/modules\/\$(KVER)\/kernel\/drivers\/net\/wireless\/rtl8723bs\//g' ${srcdir}/${_pkgname}/Makefile
 	make all $MAKEFLAGS
 }
 
 package() {
 	cd "${srcdir}/${_pkgname}/"
 	_kver=$(uname -r)
-	mkdir -p "${pkgdir}/lib/modules/${_kver}/kernel/drivers/net/wireless"
-	install -p -m 644 8723bs.ko "${pkgdir}/lib/modules/${_kver}/kernel/drivers/net/wireless"
+	mkdir -p "${pkgdir}/lib/modules/${_kver}/kernel/drivers/net/wireless/rtl8723bs/"
+	install -p -m 644 8723bs.ko "${pkgdir}/lib/modules/${_kver}/kernel/drivers/net/wireless/rtl8723bs/"
 }
 
