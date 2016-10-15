@@ -1,6 +1,6 @@
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=rlcmp-git
-pkgver=1.1.0.r6.gab2f3b2
+pkgver=1.1.0.r8.g4fe2691
 pkgrel=1
 epoch=
 pkgdesc="Recursive file compare tool"
@@ -30,15 +30,13 @@ pkgver() {
 
 build() {
   cd "$srcdir/$pkgname"
+  ./configure
   make INCDIR=/usr/include LIBDIR=/usr/lib 
 }
 
 package() {
   cd "$srcdir/$pkgname"
-  make BINDIR=$pkgdir/usr/bin \
-       MANDIR=$pkgdir/usr/share/man \
-       INCDIR=$pkgdir/usr//include \
-       LIBDIR=$pkgdir/usr/lib install
+  make PREFIX="$pkgdir/usr" install
   install -Dm644 LICENSE $pkgdir/usr/share/licenses/${pkgname%-*}/LICENSE
 }
 
