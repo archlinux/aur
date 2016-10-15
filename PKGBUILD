@@ -12,7 +12,7 @@ makedepends=()
 source=(nasa-pod.sh nasa-pod.service)
 sha256sums=(
     '65e4f3c957682eb43a73afc2ae0d1be475102ac73192ddbb35c849f7a1a742a6'
-    '4ff5f1c0c80624d7526cb076014984a52677c9be33f402e288dd0dd293a97538'
+    'be6c8ff8055c38d84523077c892435ac19866390200c0047eb5119e9d15f630e'
 )
 
 package() {
