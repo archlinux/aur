@@ -1,0 +1,6 @@
+post_install() {
+	_kver=$(uname -r)
+	echo -e "\nPlease run following command by yourself:\n"
+	echo "sudo depmod -a ${_kver}"
+	echo -e "sudo modprobe 8723bs\n"
+}

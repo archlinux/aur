@@ -1,0 +1,14 @@
+pkgbase = rtl8723bs-git
+	pkgdesc = RTL8723BS driver working on baytrail tablets
+	pkgver = bd6f846
+	pkgrel = 1
+	url = https://github.com/muhviehstah/rtl8723bs
+	install = rtl8723bs.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	source = git+https://github.com/muhviehstah/rtl8723bs
+	md5sums = SKIP
+
+pkgname = rtl8723bs-git
+
