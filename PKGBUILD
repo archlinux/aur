@@ -10,11 +10,16 @@ makedepends=('git' 'java-environment')
 depends=('java-runtime')
 provides=('workcraft')
 conflicts=('workcraft')
-source=(git+https://github.com/tuura/workcraft.git workcraft_start.sh)
-md5sums=('SKIP' '83d559be23be014bbb68bef45e1aedb3')
+source=(git+https://github.com/tuura/workcraft.git git+https://github.com/tuura/workcraft-dist-template.git git+https://github.com/tuura/workcraft-doc.git workcraft_start.sh)
+md5sums=('SKIP' 'SKIP' 'SKIP' '83d559be23be014bbb68bef45e1aedb3')
 pkgver() {
 	cd "$srcdir/${pkgname%-git}"
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+prepare() {
+	cd "$srcdir/${pkgname%-git}"
+	git submodule init
+	git submodule update
 }
 build() {
 	cd "$srcdir/${pkgname%-git}"
@@ -26,9 +31,13 @@ build() {
 }
 package() {
 	cd "$srcdir"
-	mkdir -p "${pkgdir}"/usr/bin
-	mkdir -p "${pkgdir}"/opt/workcraft
-	cp -RP "${pkgname%-git}"/* "${pkgdir}"/opt/workcraft/
-	cp workcraft_start.sh "${pkgdir}"/usr/bin/workcraft
-	chmod 755 "${pkgdir}/usr/bin/workcraft"
+	mkdir -p "$pkgdir"/usr/bin
+	mkdir -p "$pkgdir"/opt/workcraft
+	cp -RP "${pkgname%-git}"/* "$pkgdir"/opt/workcraft/
+	cp workcraft_start.sh "$pkgdir"/usr/bin/workcraft
+	cp -R "${pkgname%-git}"/dist-template/linux/tools "$pkgdir"/opt/workcraft/tools
+	cp -R "${pkgname%-git}"/doc/help "$pkgdir"/opt/workcraft/help
+	cp -R "${pkgname%-git}"/doc/overview "$pkgdir"/opt/workcraft/overview
+	cp -R "${pkgname%-git}"/doc/tutorial "$pkgdir"/opt/workcraft/tutorial
+	chmod 755 "$pkgdir"/usr/bin/workcraft
 }

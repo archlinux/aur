@@ -12,7 +12,11 @@ pkgbase = workcraft-git
 	provides = workcraft
 	conflicts = workcraft
 	source = git+https://github.com/tuura/workcraft.git
+	source = git+https://github.com/tuura/workcraft-dist-template.git
+	source = git+https://github.com/tuura/workcraft-doc.git
 	source = workcraft_start.sh
+	md5sums = SKIP
+	md5sums = SKIP
 	md5sums = SKIP
 	md5sums = 83d559be23be014bbb68bef45e1aedb3
 
