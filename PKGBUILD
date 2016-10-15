@@ -15,11 +15,11 @@ _language_unix_shell_ver=0.38.2
 _language_vala_modern_ver=0.3.2
 
 pkgname=${_pkgname}-editor-${_version}
-_pkgrel=1
+_pkgrel=2
 _pkgver=1.12.0
 pkgver="${_pkgver}.beta${_pkgrel}.m${_language_gfm2_ver}"
 _ver=$_pkgver-beta${_pkgrel}
-pkgrel=2
+pkgrel=1
 pkgdesc='Hackable text editor for the 21st Century, built using web technologies on the Electron framework - Beta channel.'
 arch=('x86_64' 'i686')
 url="https://github.com/${_pkgname}/${_pkgname}"
@@ -32,7 +32,7 @@ install=atom.install
 source=("${_pkgname}-${_pkgver}-${_version}${_pkgrel}.tar.gz::$url/archive/v${_pkgver}-${_version}${_pkgrel}.tar.gz"
 "${_pkgname}-${_version}.desktop"
 "${_pkgname}-${_version}")
-sha256sums=('44f19af4187f149db00f681a45cf525489432382413f39e999a5b3163b0116dc'
+sha256sums=('2a12827a5402db4ca986e22469e76bffbd0b4f87754b317be3fcb456c9c49fb2'
             'c62faaf2f50cddb1a834ccb33c95724076d2859c88baac7d9d676bc9c3afc8c6'
             '230563ed327833351d448e152ab8b146d2d2b7bdac42c7d39eef966b96b862fc')
 
