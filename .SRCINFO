@@ -1,0 +1,13 @@
+pkgbase = emacs-showtip
+	pkgdesc = An extension for emacs to show tip at curser
+	pkgver = 0.01
+	pkgrel = 1
+	url = https://www.emacswiki.org/emacs/showtip.el
+	arch = any
+	license = GPL
+	depends = emacs
+	source = https://www.emacswiki.org/emacs/download/showtip.el
+	md5sums = 9f23b6c45b48d2055a154fae74f5c348
+
+pkgname = emacs-showtip
+
