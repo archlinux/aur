@@ -2,14 +2,14 @@
 # Latest sources are at http://snapshots.linaro.org/components/toolchain/gcc-linaro/
 
 pkgname=arm-none-eabi-gcc60-linaro
-_relver=snapshot-6.1
-_relshortdate=16.07
+_relver=snapshot-6.2
+_relshortdate=16.09
 _reldate=20${_relshortdate}
 _relverdate=${_relver}-${_reldate}
 # This is how I want to define the pkgver, but the AUR doesn't understand it, because multiple _ characters are not allowed
 #pkgver=${_relver}_${_reldate//-/_}
-pkgver=6.1_2016.07
-_pkgver=6.1-2016.07
+pkgver=6.2_2016.09
+_pkgver=6.2-2016.09
 pkgrel=1
 pkgdesc="The GNU Compiler Collection - cross compiler for ARM EABI (bare-metal) target."
 arch=(i686 x86_64)
@@ -76,7 +76,7 @@ package() {
 
 # vim: set ts=2 sw=2 ft=sh et:
 
-sha256sums=('e9716c336bd1ec47b196a07a21506f087e6100718ebf882c1b3be62e702cb2cd'
+sha256sums=('7d3e0508248ac491f0d9fb0772ae06862d4cc88405b06d19ceed8a4fc963b688'
             '76eab14830216c774291d2ac35d4b4690f3273aa8c630a2c1546f02538847d8a'
             'c9b6bc1dd53f9b4b80f5fdacdef94c9fce0e516c16fb78063107b66ba2e9fdd1'
 	    'fa08269d6a748631b07b55a5fe00fa518b2f6e04356a3d6634c60f3c3ece3b07')
