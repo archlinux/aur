@@ -4,7 +4,7 @@
 pkgname=vokoscreen
 pkgver=2.5.0
 pkgrel=2
-pkgdesc='An easy to use screencast creator. Qt5 UI.'
+pkgdesc='An easy to use screencast creator'
 arch=('i686' 'x86_64')
 url='http://linuxecke.volkoh.de/vokoscreen/vokoscreen.html'
 license=('GPL2')
