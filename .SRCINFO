@@ -1,0 +1,16 @@
+pkgbase = kodi-addon-inputstream-mpd-git
+	pkgdesc = MPEG-DASH mpd file addon for Kodi 17+
+	pkgver = r189.075cd2b
+	pkgrel = 1
+	url = https://github.com/peak3d/inputstream.mpd
+	arch = x86_64
+	arch = i686
+	license = GPL2
+	depends = kodi-platform-git>=r53
+	provides = kodi-addon-inputstream-mpd
+	conflicts = kodi-addon-inputstream-mpd
+	source = kodi-addon-inputstream-mpd-git::git+https://github.com/peak3d/inputstream.mpd.git
+	md5sums = SKIP
+
+pkgname = kodi-addon-inputstream-mpd-git
+
