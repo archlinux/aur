@@ -2,7 +2,7 @@
 
 _pkgname=libnotify
 pkgname=${_pkgname}-id
-pkgver=0.7.6
+pkgver=0.7.7
 pkgrel=1
 pkgdesc="Desktop notification library"
 arch=('i686' 'x86_64')
@@ -14,7 +14,7 @@ conflicts=('libnotify' 'libnotify-git' 'libnotify-id-git')
 provides=("libnotify=$pkgver")
 source=("http://ftp.gnome.org/pub/GNOME/sources/${_pkgname}/0.7/${_pkgname}-${pkgver}.tar.xz"
         'https://launchpadlibrarian.net/105791133/print-and-replace-id-v3.patch')
-sha256sums=('0ef61ca400d30e28217979bfa0e73a7406b19c32dd76150654ec5b2bdf47d837'
+sha256sums=('9cb4ce315b2655860c524d46b56010874214ec27e854086c1a1d0260137efc04'
             '88655522acb5a4c1634de368e91ae79b4a8f205288bf4451e82e007266ba4fcb')
 
 prepare() {
