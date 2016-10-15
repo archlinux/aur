@@ -15,7 +15,7 @@ _language_unix_shell_ver=0.38.2
 _language_vala_modern_ver=0.3.2
 
 pkgname=${_pkgname}-editor-${_version}
-pkgver=1.13.0.dev.i1.18.3.l0.5.1.m0.92.2.p1.0.0.u0.38.2.v0.3.2.c30160
+pkgver=1.13.0.dev.i1.18.3.l0.5.1.m0.92.2.p1.0.0.u0.38.2.v0.3.2.c30208
 pkgrel=1
 pkgdesc='Hackable text editor for the 21st Century, based on web technologies - git channel.'
 arch=('x86_64' 'i686')
