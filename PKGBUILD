@@ -1,7 +1,7 @@
 # Contributor: kusakata <shohei atmark kusakata period com>
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=peco-git
-pkgver=0.3.5.r15.g1ccb24d
+pkgver=0.4.3.r5.ge40c0ac
 pkgrel=1
 pkgdesc="Simplistic interactive filtering tool."
 arch=('i686' 'x86_64')
