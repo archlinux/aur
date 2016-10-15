@@ -2,12 +2,8 @@ _gitname="Sonarr"
 _gitver="2.0.0"
 _gitbranch="develop"
 
-# NB: Only for pull requests in origin
-_git_patches=""
-_git_patches+="783:mono-process-name "
-
 pkgname="sonarr-git"
-pkgver=2.0.0.r6807.2299860
+pkgver=2.0.0.r6923.713e109
 pkgrel=1
 pkgdesc="Automated TV series manager and downloader - git branch ${_gitbranch}"
 arch=(any)
@@ -31,10 +27,12 @@ install='sonarr.install'
 changelog=
 source=("git://github.com/Sonarr/Sonarr.git#branch=${_gitbranch}"
         "sonarr.sh"
-        "sonarr.service")
+        "sonarr.service"
+        "0001-Mono-Set-process-name.patch")
 sha256sums=('SKIP'
             'd594c4d5ad3c1b196a00cb9f005d4917ad4d8bb2ebf501010e8be7f349b3caa6'
-            '1ebf903e6199dae6032c7839b00ed20566404daf87cb307ffc9ee8539722a845')
+            '1ebf903e6199dae6032c7839b00ed20566404daf87cb307ffc9ee8539722a845'
+            '28ed9a1aa71d0d255c18e2ca17c52b845f69c19e3d2653607cff9a7f478931e1')
 
 
 pkgver() {
@@ -49,17 +47,8 @@ prepare() {
   # Install necessary nodejs libraries
   npm install
 
-  # Git complains if user is not already set
-  [[ `git config user.email` ]] || git config user.email "you@example.com"
-  [[ `git config user.name` ]] || git config user.name "Your Name"
-
-  for patch in ${_git_patches}; do
-      id=`echo ${patch} | cut -d \: -f 1`
-      name=`echo ${patch} | cut -d \: -f 2`
-      msg2 "Patching ${name} from (https://github.com/Sonarr/Sonarr/pull/${id}"
-      git fetch origin pull/${id}/head:${name} --force
-      git rebase ${name} --force-rebase --ignore-whitespace --quiet
-  done
+  msg2 "Patching Mono-Set-process-name"
+  git apply --ignore-whitespace "${srcdir}/0001-Mono-Set-process-name.patch"
 
   git submodule update --init
 }
