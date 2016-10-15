@@ -39,5 +39,7 @@ package() {
 	cp -R "${pkgname%-git}"/doc/help "$pkgdir"/opt/workcraft/help
 	cp -R "${pkgname%-git}"/doc/overview "$pkgdir"/opt/workcraft/overview
 	cp -R "${pkgname%-git}"/doc/tutorial "$pkgdir"/opt/workcraft/tutorial
+	rm -rf "$pkgdir"/opt/workcraft/doc/
+	rm -rf "$pkgdir"/opt/workcraft/dist-template/
 	chmod 755 "$pkgdir"/usr/bin/workcraft
 }
