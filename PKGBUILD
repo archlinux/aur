@@ -16,7 +16,7 @@ source=("git+https://github.com/muhviehstah/rtl8723bs"
 	'dkms.conf'
 	'blacklist-r8723bs.conf')
 sha256sums=('SKIP'
-	'fcfafd06740876308413d8c20196600b3cd16f6d9c97da92c1beb0382b926183'
+	'5d64a8a038c12cdd055d07fcc0f7cf324a36a39d676ea2a49f3913328d8c3b6c'
 	'7b269bda4c697037ff71647ada8591c887184d51c247f7a5d00cfacf787319d6')
 
 prepare() {

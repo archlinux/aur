@@ -13,7 +13,7 @@ pkgbase = 8723bs-git-dkms
 	source = dkms.conf
 	source = blacklist-r8723bs.conf
 	sha256sums = SKIP
-	sha256sums = fcfafd06740876308413d8c20196600b3cd16f6d9c97da92c1beb0382b926183
+	sha256sums = 5d64a8a038c12cdd055d07fcc0f7cf324a36a39d676ea2a49f3913328d8c3b6c
 	sha256sums = 7b269bda4c697037ff71647ada8591c887184d51c247f7a5d00cfacf787319d6
 
 pkgname = 8723bs-git-dkms
