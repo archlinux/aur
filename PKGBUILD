@@ -7,10 +7,14 @@ pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug}"
 arch=('i686' 'x86_64')
 url='http://forum.doom9.org/showthread.php?t=173871'
-license=('GPL')
+license=('LGPL2.1')
 depends=('vapoursynth')
-source=("https://dl.dropboxusercontent.com/u/36232595/vapoursynth/vapoursynth-miscfilters-${pkgver}.tar.gz")
-sha256sums=('5e7544a55001224749ed4b5b495215d50da9191b11cbf837b6dca943a1984e9d')
+source=("https://dl.dropboxusercontent.com/u/36232595/vapoursynth/vapoursynth-miscfilters-${pkgver}.tar.gz"
+        'https://raw.githubusercontent.com/vapoursynth/miscfilters/master/COPYING.LGPLv2.1'
+        )
+sha256sums=('5e7544a55001224749ed4b5b495215d50da9191b11cbf837b6dca943a1984e9d'
+            'b634ab5640e258563c536e658cad87080553df6f34f62269a21d554844e58bfe'
+            )
 
 prepare() {
   cd "vapoursynth-miscfilters-${pkgver}"
@@ -33,4 +37,5 @@ build() {
 package(){
   cd "vapoursynth-miscfilters-${pkgver}"
   install -Dm755 "libvs${_plug}.so" "${pkgdir}/usr/lib/vapoursynth/libvs${_plug}.so"
+  install -Dm644 "${srcdir}/COPYING.LGPLv2.1" "${pkgdir}/usr/share/licenses/${pkgname}/COPYING.LGPLv2.1"
 }
