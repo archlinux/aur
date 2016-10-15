@@ -1,6 +1,6 @@
 pkgbase = hop-git
 	pkgdesc = Software Development Kit for the Web
-	pkgver = 3.0.0r618.9fdd36e
+	pkgver = 3.0.0r619.30c3dae
 	pkgrel = 1
 	url = http://hop.inria.fr
 	install = hop.install
