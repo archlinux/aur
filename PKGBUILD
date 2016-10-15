@@ -56,15 +56,17 @@ _BFQ_enable_=
 pkgname=(linux-ck-fbcondecor linux-ck-fbcondecor-headers)
 _kernelname=-ck-fbcondecor
 _srcname=linux-4.7
-pkgver=4.7.4
+pkgver=4.7.7
 pkgrel=1
 arch=('i686' 'x86_64')
 url="https://wiki.archlinux.org/index.php/Linux-ck"
 license=('GPL2')
 makedepends=('kmod' 'inetutils' 'bc' 'libelf')
 options=('!strip')
-_ckpatchversion=4
+_ckpatchversion=5
 _ckpatchname="patch-4.7-ck${_ckpatchversion}"
+_muqssversion=111
+_muqsspatch="4.7-sched-MuQSS_$_muqssversion"
 _gcc_patch='enable_additional_cpu_optimizations_for_gcc_v4.9+_kernel_v3.15+.patch'
 _bfqpath='http://algo.ing.unimo.it/people/paolo/disk_sched/patches/4.7.0-v8r3'
 _bfqp1='0001-block-cgroups-kconfig-build-bits-for-BFQ-v7r11-4.7.0.patch'
@@ -75,6 +77,7 @@ source=("http://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
 "https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.sign"
 "http://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.xz"
 "https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.sign"
+"http://ck.kolivas.org/patches/muqss/4.0/4.7/$_muqsspatch.patch"
 'config.x86_64' 'config'
 'linux-ck-fbcondecor.preset'
 'change-default-console-loglevel.patch'
@@ -91,13 +94,14 @@ source=("http://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
 'fbcondecor-4.7.patch')
 sha256sums=('5190c3d1209aeda04168145bf50569dc0984f80467159b1dc50ad731e3285f10'
             'SKIP'
-            'a7e9415d35cee130f2ea5ae4edc652d4be784d9bbfd77e850f1e999f812b2116'
+            'b1019b88cbced3eced1fe0a908eaac061282f39c559eaa3ea0fd3ee1b089e17e'
             'SKIP'
+            '745ddd93baf6ffc545b7289e9073ac0cb77e9bed02a0125ef52c6bca2476208b'
             'fab3b856de9c83d5c6950326b77b65e60f1837e2622d4588a76d430dedcdcbb2'
-            'c1cc3063047a55affbb66d4541763cf41cb1148eae802bc0a4798fd8f71ed2de'
+            'e1bf77b5ee85010103d833a8f0efd025cdffcdbfa4ff5117b19f96c6dad7976e'
             '644ca1ccb886a8ce00b8acf05b946dae559f3bb91dd5e69be09d413a7f8c4165'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
-            'b9eae0f9aa54a41a6d5a3613c814b207fd2396a198af4a3bcd93be17f2f1bbd4'
+            '1cf066cbad338f64a315e455b38d29dd509b20a16bfb6e2faa1766f776fd335f'
             'cf0f984ebfbb8ca8ffee1a12fd791437064b9ebe0712d6f813fd5681d4840791'
             'a6bd81bbb2f72cfd6ad992fdeff4bac1cb7c58a8edfc3fcd76c1d7275f73d284'
             '144b54e95a1ffca88066e41f3c46c47df442d6497684e204e9f4312faab75572'
@@ -121,10 +125,15 @@ prepare() {
 	patch -p1 -i "${srcdir}/change-default-console-loglevel.patch"
 
 	# patch source with ck patchset with BFS
-	# fix double name in EXTRAVERSION
-	sed -i -re "s/^(.EXTRAVERSION).*$/\1 = /" "${srcdir}/${_ckpatchname}"
-	msg "Patching source with ck4 including BFS v0.497"
-	patch -Np1 -i "${srcdir}/${_ckpatchname}"
+	if [ -n "$_MuQSS" ]; then
+		msg "Patching with MuQSS"
+		patch -Np1 -i "$srcdir/$_muqsspatch.patch"
+	else
+		# fix double name in EXTRAVERSION
+		sed -i -re "s/^(.EXTRAVERSION).*$/\1 = /" "${srcdir}/${_ckpatchname}"
+		msg "Patching source with ck patchset including BFS v0.502"
+		patch -Np1 -i "${srcdir}/${_ckpatchname}"
+	fi
 
 	# Patch source to enable more gcc CPU optimizatons via the make nconfig
 	msg "Patching source with gcc patch to enable more cpus types"
@@ -257,8 +266,8 @@ build() {
 }
 
 package_linux-ck-fbcondecor() {
-	pkgdesc='Linux Kernel with the ck4 patchset featuring the Brain Fuck Scheduler v0.497 and the fbcondecor framebuffer decoration support.'
-	#_Kpkgdesc='Linux Kernel and modules with the ck4 patchset featuring the Brain Fuck Scheduler v0.497 and the fbcondecor framebuffer decoration support.'
+	pkgdesc='Linux Kernel with the ck5 patchset featuring the Brain Fuck Scheduler v0.502 and the fbcondecor framebuffer decoration support.'
+	#_Kpkgdesc='Linux Kernel and modules with the ck5 patchset featuring the Brain Fuck Scheduler v0.502 and the fbcondecor framebuffer decoration support.'
 	#pkgdesc="${_Kpkgdesc}"
 	depends=('coreutils' 'linux-firmware' 'mkinitcpio>=0.7')
 	optdepends=('crda: to set the correct wireless channels of your country' 'nvidia-ck: nVidia drivers for linux-ck' 'modprobed-db: Keeps track of EVERY kernel module that has ever been probed - useful for those of us who make localmodconfig')
