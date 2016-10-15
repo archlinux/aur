@@ -2,7 +2,7 @@
 
 pkgname=nasa-pod
 pkgver=1
-pkgrel=2
+pkgrel=3
 pkgdesc="Systemd service and timer for fetching Nasa's picture of the day and setting it as wallpaper in Gnome."
 license=('MIT')
 arch=('x86_64' 'i686')
@@ -11,8 +11,8 @@ depends=('wget' 'gconf')
 makedepends=()
 source=(nasa-pod.sh nasa-pod.service)
 sha256sums=(
-    '65e4f3c957682eb43a73afc2ae0d1be475102ac73192ddbb35c849f7a1a742a6'
-    'be6c8ff8055c38d84523077c892435ac19866390200c0047eb5119e9d15f630e'
+    'bd868dd708b849ffd4a7156e14390a9cd6067197a257d47139170557b6dc670d'
+    '4ff5f1c0c80624d7526cb076014984a52677c9be33f402e288dd0dd293a97538'
 )
 
 package() {
