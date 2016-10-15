@@ -6,7 +6,7 @@ pkgdesc="Small X11 menu intended to be used with openbox and tint2"
 arch=('i686' 'x86_64')
 url="http://www.github.com/johanmalm/jgmenu"
 license=('GPL2')
-depends=('libx11' 'cairo' 'pango' 'libxinerama' 'librsvg' 'libxml2')
+depends=('libx11' 'cairo' 'pango' 'libxinerama' 'librsvg' 'libxml2' 'gtk3')
 source=("http://www.github.com/johanmalm/jgmenu/archive/v0.4.1.tar.gz")
 md5sums=('SKIP')
 

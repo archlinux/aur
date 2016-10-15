@@ -12,6 +12,7 @@ pkgbase = jgmenu
 	depends = libxinerama
 	depends = librsvg
 	depends = libxml2
+	depends = gtk3
 	source = http://www.github.com/johanmalm/jgmenu/archive/v0.4.1.tar.gz
 	md5sums = SKIP
 
