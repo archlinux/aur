@@ -1,0 +1,13 @@
+pkgbase = wed-dotfiles-git
+	pkgdesc = WhiteEyeDoll's dotfile collection
+	pkgver = r32.a3742af
+	pkgrel = 1
+	url = https://github.com/WhiteEyeDoll/wed-dotfiles
+	arch = any
+	license = Beerware
+	makedepends = git
+	source = git://github.com/WhiteEyeDoll/wed-dotfiles
+	md5sums = SKIP
+
+pkgname = wed-dotfiles-git
+
