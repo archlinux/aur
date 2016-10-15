@@ -1,15 +1,17 @@
 pkgbase = emacs-sdcv
 	pkgdesc = An extension to lookup words through sdcv (StarDict Console Version) in Emacs.
-	pkgver = 0.1
-	pkgrel = 3
+	pkgver = 1.5.2
+	pkgrel = 1
 	url = http://code.google.com/p/sdcv-mode/
 	install = emacs-sdcv.install
 	arch = any
 	license = GPL
 	depends = emacs
 	depends = sdcv
-	source = http://sdcv-mode.googlecode.com/svn/trunk/sdcv-mode.el
-	md5sums = 3241cda6ba365e9ad9daf0a36b16ae82
+	source = https://www.emacswiki.org/emacs/download/showtip.el
+	source = https://www.emacswiki.org/emacs/download/sdcv.el
+	md5sums = 9f23b6c45b48d2055a154fae74f5c348
+	md5sums = 2574be32d3010ac6e923def079b45e2c
 
 pkgname = emacs-sdcv
 
