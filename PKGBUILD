@@ -11,7 +11,8 @@ url="http://${pkgname}.org"
 license=('GPL')
 conflicts=("${pkgname}")
 provides=("${pkgname}")
-depends=('java-runtime' 'bash')
+install=${pkgname}.install
+depends=('java-runtime' 'jre8-openjdk' 'bash')
 source=("https://github.com/langerhans/${pkgname}/releases/download/v${pkgver}/multidoge-${pkgver}-linux.jar"
         ${pkgname}
         install.properties

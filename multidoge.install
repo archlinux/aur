@@ -1,0 +1,17 @@
+repo_info() {
+    echo
+    echo "============================="
+    echo "You can download the package in repo:"
+    echo "[home_alextalker_aur_Arch_Extra]"
+    echo "SigLevel = Never"
+    echo 'Server = http://download.opensuse.org/repositories/home:/alextalker:/aur/Arch_Extra/$arch'
+    echo "============================="
+}
+
+post_install() {
+    repo_info
+}
+
+post_upgrade() {
+    repo_info
+}
