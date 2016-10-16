@@ -1,8 +1,8 @@
 # Maintainer: Rinus Remspoor <remspoor AT linuxmail DOT org>
 
 pkgname=next
-pkgver=1.452
-pkgrel=3
+pkgver=1.454
+pkgrel=1
 pkgdesc="CGM rc Heli Flight Simulator"
 arch=('i686' 'x86_64')
 url="http://www.rc-aerobatics.eu/index_e.html"
@@ -28,7 +28,7 @@ source=(	'http://www.cgm-online.com/secure_rc-heli-simulator/cgm-rc-heli-simulat
 		'next-256x256.png'
 		'next.LICENSE')
 
-sha256sums=(	'86940505aa81c0e15e679f214278b70281c533f5618537fdeda7e2af55769d60'
+sha256sums=(	'e26cb0d4fdcdbfbc275ceaef9e94ad151d34792a1879dddd896ed2953d184576'
 
 		'da75a4813dfbdeb9741baf4308799732b541bab8e7628578692a89d9ff2425dd'
 		'15e2c9a76e1900196ca8179a0a218cc8c4abd5c214960d4772e6bbf70ab45d49'
