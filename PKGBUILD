@@ -18,7 +18,7 @@ source=("git+https://github.com/influxdata/telegraf#tag=$pkgver"
         'telegraf.tmpfiles'
 				'telegraf.service')
 md5sums=('SKIP'
-         '9eb8a4195d3fe03e06c25ac56dd23e1a'
+         'd552ccaa62f0e839281641d07ebd397e'
          '58cc9edf8fbf07e7d3a0357db78121b1'
          '9c7a4df3556cab94837c432f5e46cf04'
          'cd4d39cec1edf54ab2aa4b7599c81ecc')
