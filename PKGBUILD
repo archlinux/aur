@@ -3,8 +3,8 @@
 # Contributor: Shinlun Hsieh <yngwiexx@yahoo.com.tw>
 
 pkgname=qsampler
-pkgver=0.4.0
-pkgrel=3
+pkgver=0.4.1
+pkgrel=1
 pkgdesc="LinuxSampler Qt GUI"
 arch=('i686' 'x86_64')
 url="http://qsampler.sourceforge.net/"
@@ -14,7 +14,7 @@ source=(
 "http://downloads.sourceforge.net/$pkgname/$pkgname-$pkgver.tar.gz"
 src.pri.in
 )
-md5sums=('02a39ca85bf13a18646ff80161949e2e'
+md5sums=('1d8a3bc15c91df2fa2f167b8a441a1b3'
          '243e881003421667f7f7e09b857c55fb')
 
 prepare() {
