@@ -1,0 +1,13 @@
+pkgbase = echomd
+	pkgdesc = A markdown like conversion tool for shell terminals.
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/WebReflection/echomd
+	arch = any
+	license = MIT
+	depends = perl
+	source = https://webreflection.github.io/echomd/archive/echomd-0.1.1.tar.gz
+	md5sums = 87b47e9a69fb9c05aca7bb84ba9ef1fb
+
+pkgname = echomd
+
