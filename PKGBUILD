@@ -1,13 +1,13 @@
 # Maintainer: Lorenzo Tomei <tomeil@tiscali.it>
 
 pkgname=j8-git
-pkgver=8.05.06.20161008
+pkgver=8.05.06.20161016
 pkgrel=1
 pkgdesc='J is a modern, high-level, general-purpose, high-performance programming language'
 arch=('i686' 'x86_64')
 url='http://www.jsoftware.com'
 license=('GPL3'  'LGPL')
-depends=('xdg-utils' 'qt5-webengine' 'qt5-websockets' 'qt5-multimedia')
+depends=('xdg-utils' 'qt5-webengine' 'qt5-websockets' 'qt5-multimedia' 'libedit')
 optdepends=('wget: for web/gethttp addon'
             'expat: for api/expat addon'
             'fftw: for math/fftw addon'
@@ -40,6 +40,8 @@ echo '#define jbuilder "www.jsoftware.com"' >> jsrc/jversion.h
 sed -i "s@jgit=~/gitdev/jsource@jgit=${srcdir}/jsource-master@" make/jvars.sh
 sed -i "s@jbld=~/jbld@jbld=${srcdir}/jsource-master/jbld@" make/jvars.sh
 sed -i "s@cd ~@cd ${srcdir}/jsource-master@" make/build_jconsole.sh
+sed -i "s@\$jgit/unix/libedit.a@-ledit@" make/build_jconsole.sh
+sed -i "s@\$jgit/unix/libedit64.a@-ledit@" make/build_jconsole.sh
 sed -i "s@cd ~@cd ${srcdir}/jsource-master@" make/build_libj.sh
 sed -i "s@cd ~@cd ${srcdir}/jsource-master@" make/domake.sh
 sed -i "s@else if(_isnan(@// else if(_isnan(@" jsrc/f2.c
