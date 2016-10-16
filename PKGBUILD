@@ -4,7 +4,7 @@ pkgname=thunderbird-earlybird
 _name=thunderbird
 _channel=earlybird
 _milestone=51.0a2
-pkgver=51.0a2.20161014004015
+pkgver=51.0a2.20161015004016
 pkgrel=1
 pkgdesc="Standalone Mail/News reader - Earlybird channel"
 arch=('i686' 'x86_64')
@@ -24,8 +24,8 @@ source_i686=('https://ftp.mozilla.org/pub/thunderbird/nightly/latest-comm-aurora
 source_x86_64=('https://ftp.mozilla.org/pub/thunderbird/nightly/latest-comm-aurora/thunderbird-51.0a2.en-US.linux-x86_64.tar.bz2')
 
 sha512sums=('a36bb5710b9cd6637cf6f538808e2fba8c99fdd1d486446ff9ee8094ca30b5592c17b3e808cae1da7ff2b28123f54902ed4ee1501585a8dcfc54d581588638d3')
-sha512sums_i686=('a19f7bb50bc679ec74b34d914d02930e6f23ac634fbf1dd91f925b2e894aa85b33c757b30453d8a131095858623b879838805c81a26f8b8051b9502a6a05d650')
-sha512sums_x86_64=('2e29ffcd301aecc06da2dffba8725d59ae5f4c96206db014dd9fa2a404898530a02e9faa0b00a6e734976aeb261f6925b983331603a9256641b97e36640de630')
+sha512sums_i686=('9d90ae367279ca040ca209ad309b4ba0c0e991aebbcab441c7dfc6be40973e5c337e80b4e65b1954fc8b3d7d15f5296541f2ce2bddf734db1f52604022e02b3e')
+sha512sums_x86_64=('a7e44500fa80642119aad78ced890755d696e29dfd2169c51aa2d5554637e5f6deac20faec5f902eb8e75662f08d9ccb467a220efe40ea0ba2a70e10f65c4930')
 
 pkgver() {
     cd "${_name}"
