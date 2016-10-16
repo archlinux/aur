@@ -1,14 +1,12 @@
 # Maintainer: Alex Forencich <alex@alexforencich.com>
-pkgname=python-usbtmc-git
-pkgver=0.7.r0.g9313b85
+pkgname=(python-usbtmc-git python2-usbtmc-git)
+pkgver=0.7.r17.g98549db
 pkgrel=1
 pkgdesc="A Python USBTMC driver for controlling instruments over USB."
 arch=('any')
 url="https://github.com/python-ivi/python-usbtmc"
 license=('MIT')
-depends=('python' 'python-pyusb')
 makedepends=('git')
-provides=('python-usbtmc')
 
 _gitroot='https://github.com/python-ivi/python-usbtmc.git'
 _gitname='python-usbtmc'
@@ -21,12 +19,23 @@ pkgver() {
   git describe --tags --long | sed -E 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
 }
 
-build() {
-  cd "$srcdir/$_gitname"
-}
+package_python-usbtmc-git() {
+  depends=('python' 'python-pyusb')
+  provides=('python-usbtmc')
+  conflicts=('python-usbtmc')
 
-package() {
   cd "$srcdir/$_gitname"
   python setup.py install --prefix=/usr --root="$pkgdir/" --optimize=1
+
+  install -m 0644 -D usbtmc.rules $pkgdir/etc/udev/rules.d/40-usbtmc.rules
+}
+
+package_python2-usbtmc-git() {
+  depends=('python2' 'python2-pyusb')
+  provides=('python2-usbtmc')
+  conflicts=('python2-usbtmc')
+
+  cd "$srcdir/$_gitname"
+  python2 setup.py install --prefix=/usr --root="$pkgdir/" --optimize=1
 }
 
