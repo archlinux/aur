@@ -2,7 +2,7 @@
 # Contributor: Timofey Titovets <nefelim4ag@gmail.com>
 
 pkgname=drive-git
-pkgver=r587.6cb2970
+pkgver=r745.7222324
 pkgrel=1
 pkgdesc="Drive is a tiny program to pull or push Google Drive files. You need go1.2 installed in order to build the program."
 arch=('any')
@@ -23,6 +23,7 @@ pkgver() {
 
 build() {
   export GOPATH=$srcdir
+  go get google.golang.org/api/drive/v2
   go get $_gourl
   cd $srcdir/bin/
   ./drive-gen
