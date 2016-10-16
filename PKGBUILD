@@ -56,7 +56,7 @@ _BFQ_enable_=
 pkgname=(linux-ck linux-ck-headers)
 _kernelname=-ck
 _srcname=linux-4.7
-pkgver=4.7.7
+pkgver=4.7.8
 pkgrel=1
 arch=('i686' 'x86_64')
 url="https://wiki.archlinux.org/index.php/Linux-ck"
@@ -92,7 +92,7 @@ source=("http://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
 "$_bfqpath/$_bfqp4")
 sha256sums=('5190c3d1209aeda04168145bf50569dc0984f80467159b1dc50ad731e3285f10'
             'SKIP'
-            'b1019b88cbced3eced1fe0a908eaac061282f39c559eaa3ea0fd3ee1b089e17e'
+            'd2cf10bbf9ae8746f7e57f9a34beef6031944541e6cc8ac07f0948dbbcb09fa4'
             'SKIP'
             '745ddd93baf6ffc545b7289e9073ac0cb77e9bed02a0125ef52c6bca2476208b'
             '43af3622958b540e9812f5a165072537422c79b49581bba2ba058beca589e72a'
