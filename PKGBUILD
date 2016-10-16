@@ -1,6 +1,6 @@
 # Maintainer: Alex Forencich <alex@alexforencich.com>
-pkgname=python-pyusb-git
-pkgver=1.0.0b2.r52.g39816be
+pkgname=(python-pyusb-git python2-pyusb-git)
+pkgver=1.0.0.r15.g2b09e55
 pkgrel=1
 pkgdesc="Easy USB access from Python"
 arch=('any')
@@ -25,8 +25,21 @@ build() {
   cd "$srcdir/$_gitname"
 }
 
-package() {
+package_python-pyusb-git() {
+  depends=('python' 'libusb')
+  provides=('python-pyusb')
+  conflicts=('python-pyusb')
+
   cd "$srcdir/$_gitname"
   python setup.py install --prefix=/usr --root="$pkgdir/" --optimize=1
+}
+
+package_python2-pyusb-git() {
+  depends=('python2' 'libusb')
+  provides=('python2-pyusb')
+  conflicts=('python2-pyusb')
+
+  cd "$srcdir/$_gitname"
+  python2 setup.py install --prefix=/usr --root="$pkgdir/" --optimize=1
 }
 
