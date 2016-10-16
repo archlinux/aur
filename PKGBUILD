@@ -1,7 +1,7 @@
 # Maintainer:	M.Reynolds <blackboxnetworkproject@gmail.com>
 
 pkgname=thonny
-pkgver=2.0.0b4
+pkgver=2.0.3
 pkgrel=1
 pkgdesc="Python IDE for beginners."
 arch=('any')
@@ -9,7 +9,7 @@ url="http://thonny.cs.ut.ee/"
 license=('MIT')
 depends=('openssl' 'python' 'python-beautifulsoup4' 'python-jedi' 'tcl' 'tk')
 source=("https://bitbucket.org/plas/$pkgname/downloads/$pkgname-$pkgver-x86_64.tar.gz")
-sha256sums=('95c86ba5c783dfbbd29351fa2e057192bc0fa22c2dd4d6354f9b917836f347c5')
+sha256sums=('4bdb5d18d4e0b8e95c33ed3689b552b5bcb6a79c0a90f2a9e708946324d17fac')
 
 package() {
 	cd "$srcdir"
@@ -25,22 +25,22 @@ package() {
 	cp -dr --no-preserve=ownership "$pkgname/lib/python3.5/site-packages/thonny" \
 		"$pkgdir/usr/lib/python3.5/site-packages"
 		
-	install -d  644 "$pkgdir/usr/lib/python3.5/site-packages/thonny-$pkgver.dist-info"
-	cp -dr --no-preserve=ownership "$pkgname/lib/python3.5/site-packages/thonny-$pkgver.dist-info" \
-		"$pkgdir/usr/lib/python3.5/site-packages"
+	#install -d  644 "$pkgdir/usr/lib/python3.5/site-packages/thonny-$pkgver.dist-info"
+	#cp -dr --no-preserve=ownership "$pkgname/lib/python3.5/site-packages/thonny-$pkgver.dist-info" \
+	#	"$pkgdir/usr/lib/python3.5/site-packages"
 	
 	install -Dm 644 "$pkgname/lib/python3.5/site-packages/distro.py" \
 		"$pkgdir/usr/lib/python3.5/site-packages/distro.py"
 		
-	install -d  644 "$pkgdir/usr/lib/python3.5/site-packages/distro-0.6.0-py3.5.egg-info"
-	cp -dr --no-preserve=ownership "$pkgname/lib/python3.5/site-packages/distro-0.6.0-py3.5.egg-info" \
-		"$pkgdir/usr/lib/python3.5/site-packages"		
+	#install -d  644 "$pkgdir/usr/lib/python3.5/site-packages/distro-0.6.0-py3.5.egg-info"
+	#cp -dr --no-preserve=ownership "$pkgname/lib/python3.5/site-packages/distro-0.6.0-py3.5.egg-info" \
+	#	"$pkgdir/usr/lib/python3.5/site-packages"		
 		
 	install -d  644 "$pkgdir/usr/lib/python3.5/site-packages/tkinterhtml"
 	cp -dr --no-preserve=ownership "$pkgname/lib/python3.5/site-packages/tkinterhtml" \
 		"$pkgdir/usr/lib/python3.5/site-packages"
 	
-	install -d  644 "$pkgdir/usr/lib/python3.5/site-packages/tkinterhtml-0.7-py3.5.egg-info"
-	cp -dr --no-preserve=ownership "$pkgname/lib/python3.5/site-packages/tkinterhtml-0.7-py3.5.egg-info" \
-		"$pkgdir/usr/lib/python3.5/site-packages"
+	#install -d  644 "$pkgdir/usr/lib/python3.5/site-packages/tkinterhtml-0.7-py3.5.egg-info"
+	#cp -dr --no-preserve=ownership "$pkgname/lib/python3.5/site-packages/tkinterhtml-0.7-py3.5.egg-info" \
+	#	"$pkgdir/usr/lib/python3.5/site-packages"
 }
