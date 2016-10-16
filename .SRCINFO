@@ -1,0 +1,17 @@
+pkgbase = max-control
+	pkgdesc = Controls home automation with max! eq3 system
+	pkgver = 0.4.2
+	pkgrel = 1
+	url = https://www.tabos.org/max-control/
+	arch = i686
+	arch = x86_64
+	groups = tools
+	license = GPL
+	depends = gtk3
+	depends = make
+	depends = autoconf
+	source = http://www.tabos.org/downloads/max-control-0.4.2.tar.xz
+	md5sums = 9b9ed1c0f6d043fea47b44622bff3fb4
+
+pkgname = max-control
+
