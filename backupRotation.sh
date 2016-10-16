@@ -56,9 +56,9 @@ replier_e_mail_address="$sender_e_mail_address"
 daily_target_path='daily/'
 weekly_target_path='weekly/'
 monthly_target_path='monthly/'
-target_monthly_file_name="$(date +'%m-%Y')"
-target_weekly_file_name="$(date +'%V.week-%m-%Y')"
 target_daily_file_name="$(date +'%d-%m-%Y')"
+target_weekly_file_name="$(date +'%V.week-')${target_daily_file_name}"
+target_monthly_file_name="$target_daily_file_name"
 # Should be in range 1 till 28
 backup_month_day_number=1
 # Should be in range 1 till 7
