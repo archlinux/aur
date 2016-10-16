@@ -1,21 +1,24 @@
 pkgbase = sane-epson-perfection-firmware
 	pkgdesc = Firmware binaries for Epson Perfection 1670/2480/2580/3490/3590
 	pkgver = 1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.epson.com/cgi-bin/Store/support/SupportIndex.jsp
 	install = sane-epson-perfection-firmware.install
 	arch = any
-	license = Copyright© 2000 - 2016 Epson America, Inc.
+	license = custom
 	makedepends = cabextract
 	optdepends = sane: scanner backend
 	noextract = epson12204.exe
 	noextract = epson13829.exe
+	noextract = license.txt
 	options = !strip
 	options = staticlibs
 	source = https://ftp.epson.com/drivers/epson12204.exe
 	source = https://ftp.epson.com/drivers/epson13829.exe
+	source = license.txt
 	sha512sums = ed7ebb87ecb1d5fffa516c119e71b540a2490d81604e18e721026f81f83a824b8c6224c03ae9f9dc618e10180f3d4734dad5f05f3444a61cfac6342b29694fda
 	sha512sums = e4ac06cfd8f982758e690ee96f34b6e9d5f5fd6a15d70b7f60bef87d5f8afdc9ca825afed6e7aa106ee172afade0b1b1e5f2f779dd8828778ff6b380389f2a7f
+	sha512sums = 4177905850a2085fb7a011863f270d69d2924b5f9e54cc03b193778a3833417f54487fbe52ad9a0fd999ce87040f36249ced360d7142cf6697d9b79cdc59d844
 
 pkgname = sane-epson-perfection-firmware
 
