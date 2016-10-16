@@ -11,7 +11,7 @@ set -u
 #_ubver='1.7.3~177~ubuntu14.04.1'; _libgee='libgee>=0.18.0'
 #_ubver='1.7.5~180~ubuntu14.04.1'; _libgee='libgee>=0.18.0'
 #_ubver='1.7.6~184~ubuntu14.04.1'; _libgee='libgee>=0.18.0'
-_ubver='16.10.3'; _ubrel='337'; _libgee='libgee>=0.18.0'
+_ubver='16.10.5'; _ubrel='347'; _libgee='libgee>=0.18.0'
 pkgname='timeshift'
 pkgver="${_ubver}"
 pkgrel='1'
@@ -31,7 +31,7 @@ _verwatch=("${url//code/bazaar}/trunk/changes" 'v\([0-9\.]\+\)' 't')
 #source=("${url}/+files/${_srcdir}.tar.gz")
 _srcdir='~teejee2008/timeshift/trunk'
 source=("timeshift_v${_ubver}_r${_ubrel}.tgz::${url//code/bazaar}/trunk/tarball/${_ubrel}" 'sha256sums.txt')
-sha256sums=('SKIP' 'SKIP') # bazaar generates the tarball live. It is different every time so we'll check the contents in prepare()
+sha256sums=('SKIP' 'SKIP')
 
 prepare_disable() {
   set -u
