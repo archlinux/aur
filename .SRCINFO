@@ -1,0 +1,19 @@
+pkgbase = alchemy-svn
+	pkgdesc = Nonorthodox painting software exploring and experimenting with alternative ways of drawing
+	pkgver = r574
+	pkgrel = 1
+	url = http://al.chemy.org/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = apache-ant
+	depends = sh
+	depends = java-environment
+	depends = hicolor-icon-theme
+	source = alchemy-svn::svn+http://svn.al.chemy.org/svn/
+	source = alchemy.desktop
+	md5sums = SKIP
+	md5sums = c7cffede4dda0acd94aa94deec037720
+
+pkgname = alchemy-svn
+
