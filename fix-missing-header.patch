@@ -1,0 +1,11 @@
+diff -Naur ewebkit.orig/Source/WebKit2/PlatformEfl.cmake ewebkit/Source/WebKit2/PlatformEfl.cmake
+--- ewebkit.orig/Source/WebKit2/PlatformEfl.cmake	2016-08-04 15:31:20.000000000 +0200
++++ ewebkit/Source/WebKit2/PlatformEfl.cmake	2016-10-16 14:58:56.063561199 +0200
+@@ -402,6 +402,7 @@
+     "${CMAKE_CURRENT_SOURCE_DIR}/UIProcess/API/efl/ewk_url_response.h"
+     "${CMAKE_CURRENT_SOURCE_DIR}/UIProcess/API/efl/ewk_url_scheme_request.h"
+     "${CMAKE_CURRENT_SOURCE_DIR}/UIProcess/API/efl/ewk_view.h"
++    "${CMAKE_CURRENT_SOURCE_DIR}/UIProcess/API/efl/ewk_view_configuration.h"
+     "${CMAKE_CURRENT_SOURCE_DIR}/UIProcess/API/efl/ewk_window_features.h"
+ )
+ 
