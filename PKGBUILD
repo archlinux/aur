@@ -6,7 +6,7 @@ arch=('i686' 'x86_64')
 pkgdesc="Nonorthodox painting software exploring and experimenting with alternative ways of drawing"
 url="http://al.chemy.org/"
 license=('GPL')
-depends=('sh' 'java-environment' 'hicolor-icon-theme')
+depends=('sh' 'java-environment' 'hicolor-icon-theme' 'libxrender' 'libxcomposite' 'libxtst')
 makedepends=('subversion' 'apache-ant' 'imagemagick')
 md5sums=('SKIP'
          'c7cffede4dda0acd94aa94deec037720')
