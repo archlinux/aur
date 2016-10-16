@@ -1,7 +1,7 @@
 # Maintainer: robus
 _pkgname=wine-wizard
 pkgname=${_pkgname}-git
-pkgver=2.0.1
+pkgver=3.0.1
 pkgrel=1
 
 source=(git+https://github.com/LLIAKAJL/WineWizard.git)
