@@ -9,7 +9,6 @@ arch=('any')
 license=('custom:OFL')
 depends=('fontconfig' 'xorg-font-utils')
 conflicts=('ttf-sil-fonts')
-install=ttf-andika.install
 source=(http://software.sil.org/downloads/d/andika/Andika-$pkgver.zip)
 md5sums=('b1667e145cdf1f074887b632d72a52d4')
 
