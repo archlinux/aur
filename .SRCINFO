@@ -12,7 +12,7 @@ pkgbase = button
 	depends = strace
 	depends = button-lua
 	source = https://github.com/jasonwhite/button/archive/v0.1.1/button-0.1.1.tar.gz
-	md5sums = 0ba98e2b759e00a3628d5d99b87166e3
+	md5sums = 6cdaa93e484db8bfe26f2e62fb96d3fa
 
 pkgname = button
 

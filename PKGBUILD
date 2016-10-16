@@ -9,7 +9,7 @@ license=('MIT')
 depends=('sqlite' 'strace' 'button-lua')
 makedepends=('dmd' 'dub')
 source=("https://github.com/jasonwhite/$pkgname/archive/v$pkgver/$pkgname-$pkgver.tar.gz")
-md5sums=('0ba98e2b759e00a3628d5d99b87166e3')
+md5sums=('6cdaa93e484db8bfe26f2e62fb96d3fa')
 
 build() {
     cd "$pkgname-$pkgver"
