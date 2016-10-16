@@ -2,7 +2,7 @@
 
 pkgname=qdirstat-git
 _pkgname=qdirstat
-pkgver=20160220.0e70c88
+pkgver=20160812.b3b7a82
 pkgrel=1
 pkgdesc="GUI disk usage utility (successor to kdirstat)"
 arch=('i686' 'x86_64')
@@ -20,7 +20,7 @@ pkgver() {
 
 build () {
 	cd "$srcdir/${_pkgname}"
-	qmake
+	qmake-qt5
 	make
 }
 
