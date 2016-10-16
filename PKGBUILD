@@ -18,7 +18,7 @@ md5sums=('720b421d3b8514a40189b285dd91de57')
 build() {
   cd $srcdir/pygtkglext-$pkgver
   PYTHON='/usr/bin/python2' ./configure --prefix=/usr
-  make || return 1
+  make
 }
 
 package() {
