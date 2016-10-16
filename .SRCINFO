@@ -1,0 +1,12 @@
+pkgbase = spacebgdl
+	pkgdesc = Downloads the latest Image of the Day from apod.nasa.gov/apod/astropix.html
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/Curly-/spacebgdl/
+	arch = any
+	license = ZLIB
+	source = https://github.com/Curly-/spacebgdl/archive/1.0.tar.gz
+	md5sums = 6f2aade3e623059e95ae588d910433e4
+
+pkgname = spacebgdl
+
