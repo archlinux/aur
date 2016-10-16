@@ -1,7 +1,7 @@
 # Maintainer: Daniel M. Capella <polyzen@archlinux.info>
 
 pkgname=firefox-vimfx
-pkgver=0.20.1
+pkgver=0.20.2
 pkgrel=1
 pkgdesc='Vim keyboard shortcuts for Firefox'
 url=https://github.com/akhodakivskiy/VimFx
@@ -11,7 +11,7 @@ depends=('firefox')
 conflicts=('firefox-extension-vimfx')
 source=("VimFx-$pkgver.xpi::$url/releases/download/v$pkgver/VimFx.xpi")
 noextract=("${source%%::*}")
-sha512sums=('05d5586589d77aafd63b65203dd10a8489e31dbc88fe3a20c1d6eb657db3d90dbe729d5884b76ddeb49110d0984f1f67ce6acd4b70b79acc8118f52574269d35')
+sha512sums=('7fef73dfd81f54f22c472dbe532ead36e5ac18488e5987df536d05bf566c5ee28c27d2fa845c029caa3dba11e39773b4329e4fc41977d8a2f23f832b81dd9f58')
 
 package() {
   install -Dm755 ${source%%::*} "$pkgdir"/usr/lib/firefox/browser/extensions/VimFx-unlisted@akhodakivskiy.github.com.xpi
