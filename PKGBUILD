@@ -7,7 +7,7 @@ pkgrel=1
 pkgdesc='A collaborative note taking and journal application using a stylus.'
 arch=('any')
 license=('GPL3')
-url='http://cournal-project.org/'
+url='https://github.com/flyser/cournal'
 depends=('python' 'gtk3' 'poppler-glib' 'gobject-introspection' 'python-gobject'
 	 'python-zope-interface' 'hicolor-icon-theme' 'desktop-file-utils' 'intltool')
 makedepends=('git' 'mercurial')
