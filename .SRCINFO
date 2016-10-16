@@ -1,0 +1,22 @@
+pkgbase = merecat-git
+	pkgdesc = Simple, small and fast HTTP server
+	pkgver = 20161009.a09e416
+	pkgrel = 1
+	url = https://github.com/troglobit/merecat
+	arch = i686
+	arch = x86_64
+	license = custom:BSD
+	makedepends = git
+	depends = confuse
+	provides = merecat
+	conflicts = merecat
+	backup = etc/merecat.conf
+	source = git+https://github.com/troglobit/merecat
+	source = service
+	source = config
+	sha1sums = SKIP
+	sha1sums = a85431c51628a0392c8d276075ffdbe231bce83e
+	sha1sums = 6f6d3529a4ebde2273e9a7017fdad3fd8726ade1
+
+pkgname = merecat-git
+

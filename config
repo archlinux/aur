@@ -1,0 +1,6 @@
+username = http
+directory = /srv/http
+check-symlinks = true
+virtual-host = true
+cgi-pattern = **.cgi
+cgi-limit = 99

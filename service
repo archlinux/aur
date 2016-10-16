@@ -1,0 +1,9 @@
+[Unit]
+Description=Tiny HTTP Daemon
+
+[Service]
+ExecStart=/usr/bin/merecat -n -f /etc/merecat.conf
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
