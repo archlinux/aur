@@ -1,17 +1,17 @@
 pkgbase = obd-auto-doctor
 	pkgdesc = obd scan and diagnostics
-	pkgver = 3.0.8
-	pkgrel = 3
+	pkgver = 3.1.2
+	pkgrel = 1
 	url = http://www.obdautodoctor.com/
 	arch = i686
 	arch = x86_64
 	license = LGPL3
 	depends = qt5-base>5.2
 	optdepends = bluez: for bluetooth support
-	source_i686 = http://cdn.obdautodoctor.com/obd-auto-doctor_3.0.8_i386.tar.gz
-	md5sums_i686 = 4cbca291eb5ab3577c306ab1e803a655
-	source_x86_64 = http://cdn.obdautodoctor.com/obd-auto-doctor_3.0.8_amd64.tar.gz
-	md5sums_x86_64 = 394d7783508545a2eb5b036bd6ac9a9d
+	source_i686 = http://cdn.obdautodoctor.com/obd-auto-doctor_3.1.2_i386.tar.gz
+	md5sums_i686 = 9d7020a2d7db162ad87868c8730b8c0c
+	source_x86_64 = http://cdn.obdautodoctor.com/obd-auto-doctor_3.1.2_amd64.tar.gz
+	md5sums_x86_64 = 39596201d03747d099b62d651712f3e6
 
 pkgname = obd-auto-doctor
 
