@@ -1,0 +1,39 @@
+# Contributor: OramahMaalhur <oramahmaalhur@gmail.com>
+
+_gitname=captdriver
+pkgname=${_gitname}-git
+pkgver=r50.7718f66
+pkgrel=1
+pkgdesc='Open source CUPS driver for Canon CAPT printers (not stable, formerly foo2capt)'
+arch=('any')
+url='https://github.com/agalakhov/captdriver'
+depends=('cups')
+makedepends=('automake' 'git' 'gcc')
+source=("$_gitname::git://github.com/agalakhov/captdriver.git" "capt.rules")
+md5sums=('SKIP' '0f91c724a724d0fe49d0017b6da2fe5a')
+
+pkgver() {
+    cd "$srcdir/$_gitname"
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+
+}
+build() {
+    cd $_gitname
+    aclocal
+    autoconf
+    automake --add-missing
+    ./configure --prefix=/usr/
+    make
+}
+
+package() {
+    install -m 755 -d "${pkgdir}/etc/udev/rules.d/" || return 1
+    install -D -m 644 "${srcdir}/capt.rules" "${pkgdir}/etc/udev/rules.d/51-capt.rules"
+    
+    install -m 755 -d "${pkgdir}/usr/lib/cups/filter/" || return 1
+    install -D -m 755 "${srcdir}/${_gitname}/src/rastertocapt" "${pkgdir}/usr/lib/cups/filter/rastertocapt"
+    
+    install -m 755 -d "${pkgdir}/usr/share/cups/model/" || return 1
+    install -D -m 644 "${srcdir}/${_gitname}/Canon-LBP-2900.ppd" "${pkgdir}/usr/share/cups/model/Canon-LBP-2900.ppd"
+
+}
