@@ -4,13 +4,17 @@
 # Contributor: Justin Dray <justin@dray.be>
 
 pkgname="google-cloud-sdk"
-pkgver=129.0.0
+pkgver=130.0.0
 pkgrel=1
-pkgdesc="Contains tools and libraries that enable you to easily create and manage resources on Google Cloud Platform"
+pkgdesc="Tools and libraries SDK for managing resources on the Google Cloud Platform, plus kubectl and Python/PHP appengine SDK components"
 url="https://cloud.google.com/sdk/"
 license=("Apache")
 arch=('i686' 'x86_64')
-conflicts=('kubectl-bin')
+# replaces() only works for sysupgrade, not normal install/upgrade
+conflicts=('kubectl-bin' 'google-appengine-python-php'
+           'google-appengine-python' 'google-appengine-php')
+replaces=('kubectl-bin' 'google-appengine-python-php'
+          'google-appengine-python' 'google-appengine-php')
 depends=('python2')
 makedepends=('python2')
 optdepends=('go: for Go version of App Engine'
@@ -22,14 +26,14 @@ options=('!strip' 'staticlibs')
 # 64bit
 source_x86_64=("https://dl.google.com/dl/cloudsdk/release/downloads/$pkgname-$pkgver-linux-x86_64.tar.gz"
                "profile.sh")
-sha1sums_x86_64=('12b413f1dcfeaf601f70749142f06e01e32c03ad'
-                 '9c09e242b113e50e3f2fa05b6c6c7b0ff33b4b71')
+sha1sums_x86_64=('ba5f6539cf3f8f471173a8dc5f38629758f246b5'
+                 '770d136b9feaf36f3fd595234b0d9366b40de16c')
 
 # 32bit
 source_i686=("https://dl.google.com/dl/cloudsdk/release/downloads/$pkgname-$pkgver-linux-x86.tar.gz"
              "profile.sh")
-sha1sums_i686=('dd859a30d674f3a138c2823fb440346cf498d5f7'
-               '9c09e242b113e50e3f2fa05b6c6c7b0ff33b4b71')
+sha1sums_i686=('d13472b9bcd6d46198d6655ec97c1ad0cf3f3150'
+               '770d136b9feaf36f3fd595234b0d9366b40de16c')
 
 prepare() {
 
@@ -52,10 +56,13 @@ package() {
   cp -r "$srcdir/$pkgname" "$pkgdir/opt"
 
   # kubectl is not in the tarball, add it to the package bootstrap
-  msg2 "Running bootstrapping script and adding kubectl"
+  # app-engine-python is actually the PHP+Python SDK widgets combined
+  # NOTE: do to how Google is using argparse we must bare word the components
+  msg2 "Running bootstrapping script and adding kubectl, app-engine-python"
   python2 "$pkgdir/opt/$pkgname/bin/bootstrapping/install.py" \
     --usage-reporting false --path-update false --bash-completion false \
-    --rc-path="$srcdir/fake.bashrc" --additional-components="kubectl"
+    --rc-path="$srcdir/fake.bashrc" \
+    --additional-components kubectl app-engine-python
 
   # This is the strangest design they made to backup a fresh install
   msg2 "Removing unnecessary backups created by bootstrap"
@@ -85,10 +92,6 @@ package() {
   mkdir -p "$pkgdir/usr/bin"
   find "$pkgdir/opt/$pkgname/bin" -maxdepth 1 -type f -printf \
     "/opt/$pkgname/bin/%f\n" | xargs ln -st "$pkgdir/usr/bin"
-  # this conflicts with google-appengine-python
-  rm -f "$pkgdir/usr/bin/dev_appserver.py"
-  # this conflicts with google-appengine-python-php
-  rm -f "$pkgdir/usr/bin/endpointscfg.py"
 
   # The tarball is rather sloppy with it's file permissions
   msg2 "Fixing file permissions"
