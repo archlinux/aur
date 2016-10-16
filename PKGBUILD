@@ -6,8 +6,8 @@
 
 _pkgname=qt5-base
 pkgname=$_pkgname-git
-pkgver=git
-pkgrel=2
+pkgver=5.8.0.alpha1.r482.g9944a12
+pkgrel=1
 arch=("i686" "x86_64")
 url='https://qt-project.org/'
 license=('GPL3' 'LGPL3' 'FDL' 'custom')
