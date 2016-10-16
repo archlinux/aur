@@ -11,7 +11,7 @@ arch=('i686' 'x86_64')
 depends=('gtkglext' 'mesa' 'python2-opengl' 'pygtk')
 makedepends=('libxmu')
 url='http://gtkglext.sourceforge.net/'
-source=("http://downloads.sourceforge.net/gtkglext/pygtkglext-$pkgver.tar.bz2")
+source=("https://downloads.sourceforge.net/gtkglext/pygtkglext-$pkgver.tar.bz2")
 license=('LGPL')
 md5sums=('720b421d3b8514a40189b285dd91de57')
 
