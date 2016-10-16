@@ -1,7 +1,7 @@
 # Maintainer: Tomasz Łaziuk <tlaziuk@gmail.com>
 
 pkgname=worksnaps
-pkgver=1.1.20160625
+pkgver=1.1.20160810
 pkgrel=1
 pkgdesc="Time Tracking with Screenshots for Remote Teams"
 arch=('any')
@@ -9,7 +9,7 @@ url="http://www.worksnaps.com/www/download.shtml"
 license=('unknown')
 depends=('java-runtime')
 source=("http://worksnaps-download.s3.amazonaws.com/WSClient-linux-$pkgver.zip")
-md5sums=('4dffa33186c3d3827ddf9ca5c3a502c7')
+md5sums=('436cbd0628b87d33d75f99c7fbec0035')
 
 prepare() {
     # the main executable file
