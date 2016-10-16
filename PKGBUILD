@@ -214,7 +214,7 @@ build() {
 }
 
 package_mozc-ut() {
-  pkgdesc="Mozc the Japanese Input Method with Mozc UT Dictionary"
+  pkgdesc="Mozc the Japanese Input Method with Mozc UT Dictionary (Discontinued)"
   arch=('i686' 'x86_64')
   groups=('mozc-im')
   depends=('qt4' 'zinnia')
