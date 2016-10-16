@@ -72,7 +72,7 @@ _bldtype=Release
 #_bldtype=Debug
 
 _mozcrev=2315f957d1785130c2ed196e141a330b0857b065
-_utdicver=20160905
+_utdicver=20161013
 _zipcoderel=201609
 _uimmozcrev=321.3ea28b1
 
@@ -309,5 +309,5 @@ package_uim-mozc-ut() {
 }
 
 # Global pkgdesc and depends are here so that they will be picked up by AUR
-pkgdesc="Mozc the Japanese Input Method with Mozc UT Dictionary (additional dictionary) and uim-mozc (optional)"
+pkgdesc="Mozc the Japanese Input Method with Mozc UT Dictionary (Discontinued)"
 depends=('qt4' 'zinnia')
