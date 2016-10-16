@@ -1,7 +1,7 @@
 # Maintainer: Carlos Henrique Merces Moreira "chmercesmoreira" <ch.mercesmoreira@gmail.com>
 pkgname=photofilmstrip
 pkgver=2.1.0
-pkgrel=9
+pkgrel=10
 pkgdesc="Create video clips from photos"
 arch=('i686' 'x86_64')
 url="http://www.photofilmstrip.org/1-0-Home.html"
