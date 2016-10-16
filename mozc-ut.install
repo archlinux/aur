@@ -1,0 +1,26 @@
+## arg 1:  the new package version
+post_install() {
+	  cat << _EOF
+
+                 ###############
+                  C A U T I O N
+                 ###############
+
+  Mozc-ut includes Mozc UT Dictionary the 3rd party
+  additional dictionary by UT.   It means that all
+  problems or annoying behaviors of Mozc-ut might
+  be caused by the UT Dic (might not be occured on
+  the vanilla Mozc).
+  Therefore, you should NOT think that all of them
+  are by the Google first and should be careful to
+  report them to the Google.
+
+_EOF
+
+}
+
+## arg 1:  the new package version
+## arg 2:  the old package version
+post_upgrade() {
+	post_install $1
+}

@@ -1,0 +1,19 @@
+post_install() {
+  echo -n "Registering mozc on uim..."
+  uim-module-manager --register mozc
+  [[ $? != 0 ]] && echo "Failed." || echo "Done."
+
+  cat << _EOF
+  ==> You must run the following command to use mozc
+  ==> whenever you upgrade or (re-)install uim.
+
+  \`sudo uim-module-manager --register mozc'
+
+_EOF
+}
+
+post_remove() {
+  echo -n "Unregistering mozc from uim..."
+  uim-module-manager --unregister mozc
+  [[ $? != 0 ]] && echo "Failed." || echo "Done."
+}
