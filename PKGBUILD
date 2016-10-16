@@ -7,7 +7,7 @@ pkgdesc="Nonorthodox painting software exploring and experimenting with alternat
 url="http://al.chemy.org/"
 license=('GPL')
 depends=('sh' 'java-environment' 'hicolor-icon-theme')
-makedepends=('apache-ant')
+makedepends=('subversion' 'apache-ant' 'imagemagick')
 md5sums=('SKIP'
          'c7cffede4dda0acd94aa94deec037720')
 source=("${pkgname}::svn+http://svn.al.chemy.org/svn/"
