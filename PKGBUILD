@@ -1,8 +1,9 @@
+# Maintainer: Eric Lehmann <katyl@katyl.info>
 # Contributor: ultraviolet <ultravioletnanokitty@gmail.com>
 # MAintainer: Pablo Lezeta <prflr88@gmail.com>
 
 pkgname=iio-sensor-proxy
-pkgver=1.1
+pkgver=1.3
 pkgrel=1
 pkgdesc="IIO accelerometer sensor to input device proxy"
 arch=("i686" "x86_64")
