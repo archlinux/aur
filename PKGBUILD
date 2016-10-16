@@ -5,13 +5,14 @@
 
 _pkgname=focuswriter
 pkgname=focuswriter-git
-pkgver=1.6.0.r29.g67b3a79
+pkgver=1.6.0.r32.g7f622b2
 pkgrel=1
 pkgdesc="A simple fullscreen word processor"
 arch=('i686' 'x86_64')
 url="http://gottcode.org/${_pkgname}/"
 license=('GPL3')
 depends=('qt5-base' 'qt5-multimedia' 'hunspell')
+makedepends=('qt5-tools')
 optdepends=('sdl_mixer: typewriter sound effects')
 makedepends=('git')
 provides=('focuswriter')
