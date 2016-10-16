@@ -1,0 +1,41 @@
+diff a/src/dop_packer.cpp b/src/dop_packer.cpp
+--- a/src/dop_packer.cpp
++++ b/src/dop_packer.cpp
+@@ -99,14 +99,14 @@ unsigned char reverse(unsigned char x)
+ 
+ void DopPacker::pack_buffer(dsf2flac_int32 *buffer, dsf2flac_uint32 bufferLen) {
+ 	// check the buffer seems sensible
+-	div_t d = div(bufferLen,reader->getNumChannels());
++	ldiv_t d = div(dsf2flac_int64(bufferLen),reader->getNumChannels());
+ 	if (d.rem) {
+ 		fputs("Buffer length is not a multiple of getNumChannels()",stderr);
+ 		exit(EXIT_FAILURE);
+ 	}
+ 	// get the sample buffer
+ 	boost::circular_buffer<dsf2flac_uint8>* buff = reader->getBuffer();
+-	for (int i=0; i<d.quot ; i++) {
++	for (dsf2flac_int64 i=0; i<d.quot ; i++) {
+ 
+ 		dsf2flac_int32 packed_sample;
+ 		dsf2flac_uint8 byte1;
+diff a/src/dsd_decimator.cpp b/src/dsd_decimator.cpp
+--- a/src/dsd_decimator.cpp
++++ b/src/dsd_decimator.cpp
+@@ -179,7 +179,7 @@ template <typename sampleType> void DsdDecimator::getSamplesInternal(
+ 		bool roundToInt)
+ {
+ 	// check the buffer seems sensible
+-	div_t d = div(bufferLen,getNumChannels());
++	ldiv_t d = div(dsf2flac_int64(bufferLen),getNumChannels());
+ 	if (d.rem) {
+ 		fputs("Buffer length is not a multiple of getNumChannels()",stderr);
+ 		exit(EXIT_FAILURE);
+@@ -188,7 +188,7 @@ template <typename sampleType> void DsdDecimator::getSamplesInternal(
+ 	bool clip = clipAmplitude > 0;
+ 	// get the sample buffer
+ 	boost::circular_buffer<dsf2flac_uint8>* buff = reader->getBuffer();
+-	for (int i=0; i<d.quot ; i++) {
++	for (dsf2flac_int64 i=0; i<d.quot ; i++) {
+ 		// filter each chan in turn
+ 		for (dsf2flac_uint32 c=0; c<getNumChannels(); c++) {
+ 			calc_type sum = 0.0;
