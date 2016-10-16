@@ -1,6 +1,5 @@
-# Maintainer: Chris Hobbs (RX14) <chris@rx14.co.uk>
 _npmname=git-run
-_npmver=0.5.1
+_npmver=0.5.2
 pkgname=nodejs-$_npmname # All lowercase
 pkgver=$_npmver
 pkgrel=1
@@ -12,7 +11,7 @@ depends=('nodejs' 'npm' )
 optdepends=()
 source=(http://registry.npmjs.org/$_npmname/-/$_npmname-$_npmver.tgz)
 noextract=($_npmname-$_npmver.tgz)
-sha1sums=(7d9cb28a9e8e1076d005b94baa6ec5c6316fe1e9)
+sha1sums=(1edbc7163389067dd9f2c46ab3acff07889f8333)
 
 package() {
   cd $srcdir
