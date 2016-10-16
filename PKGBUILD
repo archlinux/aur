@@ -2,13 +2,13 @@
 # Contributor: Geoffrey Teale <g.teale@elsevier.com>
 pkgname=shunit2  
 pkgver=2.1.6
-pkgrel=7
+pkgrel=8
 pkgdesc="xUnit based unit testing for Unix shell scripts"
-url="http://code.google.com/p/shunit2/"
+url="https://github.com/kward/shunit2/"
 arch=('any')
 license=('LGPL2.1')
 depends=('bash')
-source=(http://shunit2.googlecode.com/files/$pkgname-$pkgver.tgz)
+source=(https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/$pkgname/$pkgname-$pkgver.tgz)
 md5sums=('4af955ef88c454808754939c83afa22b')
 
 check() { 
