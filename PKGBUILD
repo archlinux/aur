@@ -1,96 +1,72 @@
-# Maintainer: Sebastian Wilzbach <sebi at wilzbach dot me>
+# Maintainer: Mikkel Oscar Lyderik Larsen <m at moscar dot net>
+
 pkgname=drone-git
 _pkgname=drone
-pkgver=v942
+pkgver=v2542
 pkgrel=1
 pkgdesc="Drone is a Continuous Integration platform built on Docker, written in Go"
-arch=('any')
+arch=('i686' 'x86_64')
 url="http://github.com/drone/drone"
 license=('Apache 2')
-groups=()
+makedepends=('git' 'go' 'sassc')
 depends=('docker')
-makedepends=('git' 'go')
-provides=()
-conflicts=('drone' 'drone.io')
-replaces=()
-backup=('etc/drone/drone.toml')
-options=()
+provides=('drone')
+conflicts=('drone')
+backup=('etc/drone/server' 'etc/drone/agent')
 install='drone.install'
-source=('drone::git+https://github.com/drone/drone.git' "drone.install" "drone.service")
-noextract=()
-md5sums=('SKIP'
-         '09a12dd47fc03e95672d21de0611938b'
-         'e10d439170fe3ec031c506b8eb9dae51')
+source=('git+https://github.com/drone/drone.git'
+        'drone.service'
+        'drone-agent.service'
+        'server.conf'
+        'agent.conf')
+sha1sums=('SKIP'
+          '93fc8f9cc5d2b56425086217908a7092ed77c820'
+          '4c20313a2c1b69232d17f897c0e6369d25495ecc'
+          '280d0933a4afd361e48a35803e38a98162fed644'
+          '4b58ec9c6a47e0bc5c8012d3448507c0442bd23c')
+
+pkgver() {
+  cd "$srcdir/$_pkgname"
+  echo "v"$(git rev-list --count master)
+}
+
+prepare() {
+  # setup local gopath
+  mkdir -p $srcdir/src/github.com/drone
+  ln -s $srcdir/$_pkgname $srcdir/src/github.com/drone/$_pkgname
+
+  cd $srcdir/src/github.com/drone/$_pkgname
+
+  GOPATH="$srcdir" PATH=$PATH:$GOPATH/bin make deps
+  GOPATH="$srcdir" PATH=$PATH:$GOPATH/bin make gen
+}
 
 build() {
-
-  # start per default on 8000
-  sed -e "s/^port.*$/port=\":8000\"/" -i $_pkgname/packaging/root/etc/drone/drone.toml
-
-  # temporary go path
-  export GOPATH=$(pwd)"/go"
-
-  # default dirs
-  mkdir -p $GOPATH/src
-  mkdir -p $GOPATH/bin
-
-  mkdir -p $GOPATH/src/github.com/drone
-
-  droneFolder="$GOPATH/src/github.com/drone/drone"
-
-  # remove git - allows fast rebuilds
-  rm -rf $droneFolder/.git
-
-  # we need to move the go folder inside the go path
-  cp -R $(pwd)"/$_pkgname" $GOPATH/src/github.com/drone
-
-  cd "$droneFolder"
-
-  echo "downloading go dependencies (could take some time)"
-  make deps
-
-  echo "building drone"
-  make build
-
-  # embed static files
-  export PATH=$PATH:"$GOPATH/bin"
-
-  # precompile rice sources
-  # (embedded static files)
-  ( cd server && 
-  rice embed-go
-  )
-
-  # SOMEHOW appending does not work
-  make embed
+  cd $srcdir/src/github.com/drone/$_pkgname
+  GOPATH="$srcdir" PATH=$PATH:$GOPATH/bin make build_static
 }
 
 package() {
   cd "$srcdir"
 
-  # server
-  install -Dm755 go/src/github.com/drone/drone/packaging/root/usr/local/bin/droned "$pkgdir/usr/bin/droned"
-
-  # client
-  install -Dm755 go/bin/cli "$pkgdir/usr/bin/drone"
+  # binary
+  install -Dm755 bin/drone $pkgdir/usr/bin/drone
 
   # license
-  mkdir -p $pkgdir/usr/share/$_pkgname
   install -Dm644 $_pkgname/LICENSE $pkgdir/usr/share/$_pkgname
   install -Dm644 $_pkgname/README.md $pkgdir/usr/share/$_pkgname
 
-  # config
-  mkdir -p $pkgdir/etc/$_pkgname
-  install -Dm600 $_pkgname/packaging/root/etc/drone/drone.toml $pkgdir/etc/$_pkgname/
-
   # service
-  mkdir -p $pkgdir/usr/lib/systemd/system/
-  install -Dm644 drone.service $pkgdir/usr/lib/systemd/system/
+  install -Dm644 drone.service $pkgdir/usr/lib/systemd/system/drone.service
+  install -Dm644 drone-agent.service $pkgdir/usr/lib/systemd/system/drone-agent.service
+
+  # config
+  install -Dm644 server.conf $pkgdir/etc/drone/server
+  install -Dm644 agent.conf $pkgdir/etc/drone/agent
+
+  # db path
+  install -dm700 $pkgdir/var/lib/drone
+  chown -R 633:633 $pkgdir/var/lib/drone
 }
 
-pkgver() {
-  cd $_pkgname
-  echo "v"$(git rev-list --count master)
-}
-
-# vim:set ts=2 sw=2 et:
+# vim:set ts=2 sw=2 ft=sh et:
