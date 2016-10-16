@@ -1,5 +1,5 @@
 # Contributor: Baptiste Grenier <baptiste@bapt.name>
-# Contributor: Anton Leontiev <bunder /at/ t-25.ru>
+# Contributor: Anton Leontiev <scileont /at/ gmail.com>
 pkgname=ttf-andika
 pkgver=1.004
 pkgrel=1
