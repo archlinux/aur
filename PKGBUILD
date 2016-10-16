@@ -1,7 +1,7 @@
 # Maintainer: Colin Woodbury <colingw@gmail.com>
 _hkgname=aur
 pkgname=haskell-aur
-pkgver=5.0.1
+pkgver=6.0.0
 pkgrel=1
 pkgdesc="Access metadata from the Arch Linux User Repository."
 url="http://hackage.haskell.org/package/${_hkgname}"
@@ -13,14 +13,14 @@ depends=('ghc'
          'haskell-filepath'
          'haskell-mtl'
          'haskell-text'
-         'haskell-servant'
-         'haskell-servant-client'
+         'haskell-servant>=0.9'
+         'haskell-servant-client>=0.9'
          'haskell-vector>=0.10')
 options=('strip' 'staticlibs')
 provides=('haskell-aur')
 conflicts=('haskell-aur-git')
 source=(http://hackage.haskell.org/package/${_hkgname}-${pkgver}/${_hkgname}-${pkgver}.tar.gz)
-md5sums=('0abd444e56d9547642ef5d0fae9970b4')
+md5sums=('2c4b59d0ff891dca519f06281a83f0c4')
 install=${pkgname}.install
 
 build() {
