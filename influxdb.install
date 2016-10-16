@@ -7,4 +7,8 @@ post_install() {
   systemctl daemon-reload
 }
 
+post_upgrade() {
+  systemctl daemon-reload
+}
+
 # vim:set ts=2 sw=2 et:

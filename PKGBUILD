@@ -21,7 +21,7 @@ source=("git+https://github.com/influxdata/influxdb#tag=v$pkgver"
         "influxdb.sysusers"
         "influxdb.tmpfiles")
 md5sums=('SKIP'
-         '19ce2f8bd9aa2058edc2efb3e7555cb7'
+         '0efb615d8319009fb767c4905ba80388'
          '349ecdadb3035718a57e781913a01cf6'
          '175d54bf6a82222ffe491f4a684582bd')
 build()
