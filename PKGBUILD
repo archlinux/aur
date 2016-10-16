@@ -8,7 +8,7 @@ url="https://github.com/WebReflection/echomd"
 license=('MIT')
 depends=('perl')
 source=(https://webreflection.github.io/echomd/archive/$pkgname-$pkgver.tar.gz)
-md5sums=('87b47e9a69fb9c05aca7bb84ba9ef1fb')
+md5sums=('a8380b2b5b2581ae4392ee4be59e91ef')
 
 package() {
 
