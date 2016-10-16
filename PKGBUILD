@@ -18,7 +18,7 @@
 # intel-media-sdk (experimental Intel QSV support only for x86_64)
 
 pkgname=ffmpeg-full-git
-pkgver=N.81857.g635a89b
+pkgver=N.82003.g9082603
 pkgrel=1
 pkgdesc="Record, convert and stream audio and video (Git version with all possible libs)"
 arch=('i686' 'x86_64')
@@ -49,11 +49,9 @@ conflicts=(
     'ffmpeg' 'ffmpeg-git' 'ffmpeg-full' 'ffmpeg-full-extra' 'ffmpeg-full-nvenc'
     'ffmpeg-libfdk_aac')
 source=("$pkgname"::'git://source.ffmpeg.org/ffmpeg.git'
-        'UNREDISTRIBUTABLE.txt'
-        'libopenjpeg-use-only-1.5.patch')
+        'UNREDISTRIBUTABLE.txt')
 sha256sums=('SKIP'
-            'e0c1b126862072a71e18b9580a6b01afc76a54aa6e642d2c413ba0ac9d3010c4'
-            '97d1a4a168ebbb2ae39e52bd1e14d94333c51666f039965d32b7e5d160507ed4')
+            'e0c1b126862072a71e18b9580a6b01afc76a54aa6e642d2c413ba0ac9d3010c4')
 
 pkgver() {
 	cd "${srcdir}/${pkgname}"
@@ -90,10 +88,6 @@ build() {
 	    _libnpp=""
 	    _intelsdklib=""
 	fi
-	
-	# Apply patch for using only openjpeg 1.5
-	# (openjpeg 2.1.1 is currently not supported)
-	patch -Np1 -i ../libopenjpeg-use-only-1.5.patch
 	
 	msg2 "Running ffmpeg configure script. Please wait..."
 	
