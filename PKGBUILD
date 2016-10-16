@@ -4,7 +4,7 @@
 # Maintainer: Felix Yan <felixonmars@archlinux.org>
 
 pkgname='pypy3-setuptools'
-pkgver=28.5.0
+pkgver=28.6.0
 pkgrel=1
 epoch=1
 pkgdesc="Easily download, build, install, upgrade, and uninstall Python packages"
@@ -15,7 +15,7 @@ provides=('pypy3-distribute')
 replaces=('pypy3-distribute')
 url="http://pypi.python.org/pypi/setuptools"
 source=("https://pypi.io/packages/source/s/setuptools/setuptools-${pkgver}.tar.gz")
-sha512sums=('ce3ed6276530efc32a3e1c59688c154b4c4762e255a0efbc6315857fbd2e812503ea4039059bfadb36182b4a1b82683c6daae267313259a91479309ea9ba0b94')
+sha512sums=('16a6896a8c4ff2a14613b9c3030f3b5bd26b33bff06b860c53d76217214afc87d7bf35f7cdd8435b750bbff42381d8e37c6bdde9e25b29438c073d87702e1fac')
 
 prepare() {
   cd "${srcdir}"/setuptools-${pkgver}
