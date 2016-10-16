@@ -1,6 +1,6 @@
 # Maintainer: Jason White <jasonaw0 at gmail dot com>
 pkgname=button
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="A fast, correct, and robust build system"
 arch=('i686' 'x86_64')
