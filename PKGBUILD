@@ -1,6 +1,6 @@
 # Maintainer: Niklas Krafczyk <krafczyk dot n at gmail dot com>
 pkgname=runlim
-pkgver=1.7
+pkgver=1.10
 pkgrel=1
 epoch=
 pkgdesc="A tool for sampling and limiting time and memory usage of a program"
@@ -11,11 +11,11 @@ depends=('glibc')
 makedepends=('gcc' 'make')
 options=()
 source=("$url$pkgname-$pkgver.tar.gz")
-md5sums=('a7b0f7d40a99c1808eb06f82d67759b2')
+md5sums=('5e0855a5d554c75ea4caafb08ffcfa17')
 
 build() {
 	cd "$pkgname-$pkgver"
-	./configure
+	./configure.sh
 	make
 }
 
