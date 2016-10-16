@@ -6,7 +6,7 @@
 pkgname='influxdb'
 _gitname='influxdb'
 pkgver='1.0.2'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='Scalable datastore for metrics, events, and real-time analytics'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url='http://influxdb.org/'
@@ -53,6 +53,7 @@ package()
   install -Dsm755 bin/influxd "$pkgdir/usr/bin/influxd"
   install -Dsm755 bin/influx "$pkgdir/usr/bin/influx"
   install -Dsm755 bin/influx_tsm "$pkgdir/usr/bin/influx_tsm"
+  install -Dsm755 bin/influx_inspect "$pkgdir/usr/bin/influx_inspect"
 
   cd "$GOPATH/src/github.com/influxdata/influxdb"
   install -Dm644 scripts/influxdb.service "$pkgdir/usr/lib/systemd/system/influxdb.service"
