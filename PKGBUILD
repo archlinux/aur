@@ -5,7 +5,7 @@ pkgver=r56.5bfb46e
 pkgrel=1
 makedepends=('cmake' 'git' 'gcc5')
 depends=('torch7-git>=r819')
-optdepends=('cuda:	For GPU support')
+optdepends=('torch7-cutorch-git:	For GPU support')
 arch=('x86_64' 'i686')
 url='https://github.com/baidu-research/warp-ctc'
 license=('APACHE')
