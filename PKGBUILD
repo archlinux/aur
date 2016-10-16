@@ -36,6 +36,7 @@ package() {
 	cp -RP "${pkgname%-git}"/* "$pkgdir"/opt/workcraft/
 	cp workcraft_start.sh "$pkgdir"/usr/bin/workcraft
 	cp -R "${pkgname%-git}"/dist-template/linux/tools "$pkgdir"/opt/workcraft/tools
+	cp -R "${pkgname%-git}"/dist-template/linux/libraries "$pkgdir"/opt/workcraft/libraries
 	cp -R "${pkgname%-git}"/doc/help "$pkgdir"/opt/workcraft/help
 	cp -R "${pkgname%-git}"/doc/overview "$pkgdir"/opt/workcraft/overview
 	cp -R "${pkgname%-git}"/doc/tutorial "$pkgdir"/opt/workcraft/tutorial
