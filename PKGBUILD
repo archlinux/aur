@@ -1,6 +1,7 @@
-# Old contributor: simo <simo@archlinux.org>
-# Old Contributor: twa022 <twa022 at gmail dot com>
-# Maintainer: Swift Geek
+# Maintainer: Frederik “Freso” S. Olesen <freso.dk@gmail.com>
+# Contributor: Swift Geek
+# Contributor: twa022 <twa022 at gmail dot com>
+# Contributor: simo <simo@archlinux.org>
 
 pkgname=python2-gtkglext
 pkgver=1.1.0
