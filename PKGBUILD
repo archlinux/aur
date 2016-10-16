@@ -1,11 +1,6 @@
-# This is an example PKGBUILD file. Use this as a start to creating your own,
-# and remove these comments. For more information, see 'man PKGBUILD'.
-# NOTE: Please fill out the license field for your package! If it is unknown,
-# then please put 'unknown'.
-
 # Maintainer: Jeffrey E. Bedard <jefbed@gmail.com>
 pkgname=jbwm
-pkgver=1.48
+pkgver=1.49
 pkgrel=1
 pkgdesc="minimalist X11 window manager, based on evilwm"
 arch=('x86_64' 'x86')
@@ -16,12 +11,13 @@ source=( "https://github.com/jefbed/jbwm/archive/$pkgver.tar.gz" )
 
 build() {
 	cd "$pkgname-$pkgver"
-	make
+	make LDFLAGS='-lX11 -lXext'
 }
 
 package() {
 	cd "$pkgname-$pkgver"
-	mkdir -p $pkgdir/usr/bin
+	install -d $pkgdir/usr/bin
 	make DESTDIR="$pkgdir" install
 }
-md5sums=('f5101e7173e921ceb57dc41d74f01157')
+
+md5sums=('6f078acab17109b1cfce8b7be1235081')
