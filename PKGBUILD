@@ -8,6 +8,7 @@ pkgdesc='Open source CUPS driver for Canon CAPT printers (not stable, formerly f
 arch=('any')
 url='https://github.com/agalakhov/captdriver'
 depends=('cups')
+license=('GPL')
 makedepends=('automake' 'git' 'gcc')
 source=("$_gitname::git://github.com/agalakhov/captdriver.git" "capt.rules")
 md5sums=('SKIP' '0f91c724a724d0fe49d0017b6da2fe5a')

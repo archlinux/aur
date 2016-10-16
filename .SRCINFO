@@ -4,6 +4,7 @@ pkgbase = captdriver-git
 	pkgrel = 1
 	url = https://github.com/agalakhov/captdriver
 	arch = any
+	license = GPL
 	makedepends = automake
 	makedepends = git
 	makedepends = gcc
