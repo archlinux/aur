@@ -1,26 +1,19 @@
 # Maintainer: Graham Edgecombe <graham@grahamedgecombe.com>
 pkgname=openrct2-git
-pkgver=r9325.22c7cd4
+pkgver=r9650.70c26b4
 pkgrel=1
 pkgdesc='Open source re-implementation of Roller Coaster Tycoon 2 (requires full
          copy of the game)'
 arch=('i686' 'x86_64')
 url='https://openrct2.website'
 license=('GPL3')
-depends=('hicolor-icon-theme')
-depends_i686=('sdl2' 'sdl2_ttf' 'curl' 'jansson' 'speexdsp' 'fontconfig'
-              'libpng' 'openssl')
-depends_x86_64=('lib32-sdl2' 'lib32-sdl2_ttf' 'lib32-curl' 'lib32-jansson'
-                'lib32-speexdsp' 'lib32-fontconfig' 'lib32-libpng'
-                'lib32-openssl')
+depends=('hicolor-icon-theme' 'sdl2' 'sdl2_ttf' 'curl' 'jansson' 'speexdsp'
+         'fontconfig' 'libpng' 'openssl')
 makedepends=('git' 'cmake')
-makedepends_x86_64=('gcc-multilib' 'sdl2_ttf')
 optdepends=('zenity: System dialog box support (GNOME/GTK)'
-            'kdebase-kdialog: System dialog box support (KDE)')
-optdepends_i686=('lib32-alsa-lib: ALSA audio driver'
-                 'lib32-libpulse: PulseAudio audio driver')
-optdepends_x86_64=('alsa-lib: ALSA audio driver'
-                   'libpulse: PulseAudio audio driver')
+            'kdebase-kdialog: System dialog box support (KDE)'
+            'alsa-lib: ALSA audio driver'
+            'libpulse: PulseAudio audio driver')
 conflicts=('openrct2')
 provides=('openrct2')
 options=('!buildflags')
