@@ -26,7 +26,7 @@ source=(	'http://www.cgm-online.com/secure_rc-heli-simulator/cgm-rc-heli-simulat
 		'next-128x128.png'
 		'next-192x192.png'
 		'next-256x256.png'
-		'LICENSE')
+		'next.LICENSE')
 
 sha256sums=(	'86940505aa81c0e15e679f214278b70281c533f5618537fdeda7e2af55769d60'
 

@@ -1,7 +1,7 @@
 pkgbase = next
 	pkgdesc = CGM rc Heli Flight Simulator
 	pkgver = 1.452
-	pkgrel = 1
+	pkgrel = 3
 	url = http://www.rc-aerobatics.eu/index_e.html
 	changelog = next.changelog
 	arch = i686
@@ -18,6 +18,7 @@ pkgbase = next
 	source = next-128x128.png
 	source = next-192x192.png
 	source = next-256x256.png
+	source = next.LICENSE
 	sha256sums = 86940505aa81c0e15e679f214278b70281c533f5618537fdeda7e2af55769d60
 	sha256sums = da75a4813dfbdeb9741baf4308799732b541bab8e7628578692a89d9ff2425dd
 	sha256sums = 15e2c9a76e1900196ca8179a0a218cc8c4abd5c214960d4772e6bbf70ab45d49
@@ -28,6 +29,7 @@ pkgbase = next
 	sha256sums = c3ca268d88ff1ecdf20aa2aecd5bde8f5bb115af4b2e01e108c921edc5e93d49
 	sha256sums = 473c48dd726c64f4252ecb9e360b79a9e7a2fa1951d3cf52208b29e00426f4eb
 	sha256sums = db7b807ec1cb84a5d6c575eb263affd14c3ae72800a73d0571358f378b60a2e2
+	sha256sums = febb1e65a7932f2f80155078b1dd64f469433625c76cff43b239768a184729f0
 
 pkgname = next
 
