@@ -1,7 +1,7 @@
 # Maintainer: Christian Mauderer <oss@c-mauderer.de>
 pkgname=stlink-git
 pkgrel=1
-pkgver=r871.ee2681e
+pkgver=r936.199bbba
 pkgdesc="stm32 discovery line linux programmer."
 arch=('i686' 'x86_64')
 url="https://github.com/texane/stlink"
@@ -12,7 +12,10 @@ conflicts=('stlink')
 provides=('stlink')
 install='stlink-git.install'
 options=('!makeflags')
-source=("${pkgname}"::'git+https://github.com/texane/stlink.git')
+#source=("${pkgname}"::'git+https://github.com/texane/stlink.git')
+# temporary workaround till https://github.com/texane/stlink/pull/502 is
+# accepted or another fix is found
+source=("${pkgname}"::'git+https://github.com/c-mauderer/stlink.git')
 md5sums=('SKIP')
 
 pkgver() {
@@ -39,8 +42,4 @@ package() {
 		"doc/tutorial.md"
 	install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}/" \
 		"LICENSE"
-	install -Dm644 -t "${pkgdir}/etc/modprobe.d/" \
-		etc/modprobe.d/*
-	install -Dm644 -t "${pkgdir}/etc/udev/rules.d/" \
-		etc/udev/rules.d/*
 }
