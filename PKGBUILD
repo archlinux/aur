@@ -2,7 +2,7 @@
 
 _pkgname=dmenux
 pkgname=dmenux-git
-pkgver=3bef1c4
+pkgver=e9f1041
 pkgrel=1
 pkgdesc="fork of dmenu patched with XFT, quiet, x & y, token, fuzzy matching, follow focus, tab nav, filter and full mouse support."
 url="https://github.com/lvitals/dmenux"
