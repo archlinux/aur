@@ -2,7 +2,7 @@
 Description=Tiny HTTP Daemon
 
 [Service]
-ExecStart=/usr/bin/merecat -n -f /etc/merecat.conf
+ExecStart=/usr/bin/merecat -n
 Restart=always
 
 [Install]

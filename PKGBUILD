@@ -17,7 +17,7 @@ source=("git+${url}"
         'service'
         'config')
 sha1sums=('SKIP'
-          'a85431c51628a0392c8d276075ffdbe231bce83e'
+          '35c0a29d34ce719a459b358227e215ae0fd5a1bd'
           '6f6d3529a4ebde2273e9a7017fdad3fd8726ade1')
 
 provides=("${_pkgname}")
@@ -39,6 +39,7 @@ build() {
 	./configure \
 		--prefix=/usr \
 		--sbindir=/usr/bin \
+		--sysconfdir=/etc \
 
 	make
 }
