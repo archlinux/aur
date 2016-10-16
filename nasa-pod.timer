@@ -1,0 +1,10 @@
+[Unit]
+Description=Systemd timer for downloading the Nasa's picture of the day.
+
+[Timer]
+OnCalendar=hourly
+Persistent=true
+
+[Install]
+WantedBy=timers.target
+
