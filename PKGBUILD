@@ -1,6 +1,6 @@
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=rlcmp-git
-pkgver=1.1.0.r8.g4fe2691
+pkgver=1.2.0.r22.204639d
 pkgrel=1
 epoch=
 pkgdesc="Recursive file compare tool"
@@ -25,7 +25,8 @@ md5sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/$pkgname"
-  git describe --tags | sed -E 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
+  printf "%s.r%s.%s" "$(git describe --tags | sed -E 's/^v//;s/([^-]*-g)/r\1/;s/-/./g')" \
+                     "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
