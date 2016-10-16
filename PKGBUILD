@@ -2,7 +2,7 @@
 # Contributor: Michael Carlberg <c@rlberg.se>
 pkgname=lemonbuddy
 pkgver=2.0.0.beta
-pkgrel=3
+pkgrel=4
 pkgdesc="A fast and easy-to-use tool for Lemonbar"
 arch=("i686" "x86_64")
 url="https://github.com/jaagr/lemonbuddy"
