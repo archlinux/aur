@@ -1,4 +1,4 @@
-# Uffe Jakobsen <uffe@uffe.org>
+# Maintainer: Uffe Jakobsen <uffe@uffe.org>
 
 pkgname=numatop
 pkgver=1.0.4
