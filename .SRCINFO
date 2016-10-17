@@ -1,0 +1,15 @@
+pkgbase = python-asciinema
+	pkgdesc = Record and share your terminal sessions, the right way.
+	pkgver = 1.3.0
+	pkgrel = 1
+	url = https://asciinema.org/
+	arch = any
+	license = MIT
+	depends = python
+	conflicts = asciinema
+	conflicts = asciinema-git
+	source = https://pypi.python.org/packages/06/96/93947d9be78aebb7985014fdf4d84896dd0f62514d922ee03f5bb55a21fb/asciinema-1.3.0.tar.gz
+	md5sums = cd7bc7afec49fc0322fc779fe00e2a99
+
+pkgname = python-asciinema
+
