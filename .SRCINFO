@@ -11,7 +11,7 @@ pkgbase = doconv
 	depends = python2-stevedore
 	depends = python2-lxml
 	optdepends = asciidoc
-	source = https://pypi.python.org/packages/source/d/doconv/doconv-0.1.6.tar.gz
+	source = https://pypi.org/packages/source/d/doconv/doconv-0.1.6.tar.gz
 	md5sums = dd78e24c650f1b0a5352b78c784d89c6
 
 pkgname = doconv

@@ -11,7 +11,7 @@ depends=('python2' 'python2-networkx' 'python2-stevedore' 'python2-lxml')
 optdepends=('asciidoc')
 makedepends=('python2-setuptools')
 
-source=("https://pypi.python.org/packages/source/d/doconv/${pkgname}-${pkgver}.tar.gz")
+source=("https://pypi.org/packages/source/d/doconv/${pkgname}-${pkgver}.tar.gz")
 
 package() { 
   cd "${srcdir}/${pkgname}-${pkgver}"
