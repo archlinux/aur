@@ -2,8 +2,8 @@
 # Contributor: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=mist
-pkgver=0.8.5
-_strver=0-8-5
+pkgver=0.8.6
+_strver=0-8-6
 pkgrel=1
 pkgdesc="Mist dapp browser and Ethereum wallet."
 arch=('i686' 'x86_64')
@@ -49,14 +49,14 @@ source_i686=(
   "${pkgname}-${_strver}-32.deb::https://github.com/ethereum/${pkgname}/releases/download/v${pkgver}/Mist-linux32-${_strver}.deb"
 )
 sha256sums_i686=(
-  "bd10d455600a4098a9ee9d907180680f131e4b17fc5156588e34adfa0c6d8cad"
+  "ebe7792e8b05e426d5a48f2eedcbfab8526ced786e826d37529162c9980f59cf"
 )
 source_x86_64=(
   "${pkgname}-${_strver}-64.deb::https://github.com/ethereum/${pkgname}/releases/download/v${pkgver}/Mist-linux64-${_strver}.deb"
 
 )
 sha256sums_x86_64=(
-  "95b8f82d9af5c3fe889c96e140d2a2f9f0f318ea291452a312420b715c6beb35"
+  "3060bb63f7c30c2aa9fc3ce082886112176c267c6f5eafc50f8df5937a5eaf59"
 )
 
 prepare() {
