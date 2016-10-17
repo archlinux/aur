@@ -1,7 +1,7 @@
 # Maintainer: Chris Kitching <chriskitching@linux.com>
 
 pkgname=lldb-git
-pkgver=1
+pkgver=150510f
 pkgrel=1
 pkgdesc="The LLDB Debugger, git mirror"
 arch=('i686' 'x86_64')
