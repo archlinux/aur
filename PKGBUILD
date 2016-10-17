@@ -4,7 +4,7 @@
 pkgname=mist
 pkgver=0.8.6
 _strver=0-8-6
-pkgrel=1
+pkgrel=2
 pkgdesc="Mist dapp browser and Ethereum wallet."
 arch=('i686' 'x86_64')
 depends=(
@@ -24,15 +24,12 @@ provides=(
   'libnode'
 )
 conflicts=(
-  'geth'
-  'geth-git'
-  'go-ethereum'
-  'go-ethereum-git'
   'mist-git'
   'libnode'
   'libnode-git'
 )
 optdepends=(
+  'geth: The go-ethereum commandline client (geth cli).'
   'parity: The fast, light, robust Ethereum client.'
 )
 url="https://github.com/ethereum/mist"
@@ -80,7 +77,6 @@ package() {
 
   install -d "${pkgdir}/usr/bin"
   ln -s "/usr/share/${pkgname}/Mist" "${pkgdir}/usr/bin/mist"
-  ln -s "/usr/share/${pkgname}/nodes/geth/linux-x${_arch}/geth" "${pkgdir}/usr/bin/geth"
 
   install -Dm644 "${pkgdir}/usr/share/${pkgname}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   rm "${pkgdir}/usr/share/${pkgname}/LICENSE"
@@ -96,5 +92,4 @@ package() {
   find "${pkgdir}" -type f -exec chmod 644 {} +
   chmod 755 "${pkgdir}/usr/share/${pkgname}/Mist"
   chmod 755 "${pkgdir}/usr/share/${pkgname}/libnode.so"
-  chmod 755 "${pkgdir}/usr/share/${pkgname}/nodes/geth/linux-x${_arch}/geth"
 }
