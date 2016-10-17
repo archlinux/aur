@@ -2,7 +2,7 @@
 
 pkgname=doconv
 pkgver=0.1.6
-pkgrel=1
+pkgrel=3
 pkgdesc='A tool for document file format conversion'
 arch=('any')
 url='https://github.com/jmourelos/doconv'
