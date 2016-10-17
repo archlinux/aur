@@ -6,11 +6,11 @@ echo ""
 }
 
 post_install() {
-bash etc/profile.d/aparapi.sh
+. etc/profile.d/aparapi.sh
 brick
 }
 
 post_upgrade() {
-bash etc/profile.d/aparapi.sh
+. etc/profile.d/aparapi.sh
 brick
 } 
