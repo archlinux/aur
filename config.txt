@@ -22,6 +22,7 @@
 #remove the # in front of commands to enable them.
 
 #Load a world and automatically start the server.
+#Make sure to set the correct permissions - the folder needs to be owned and writable to 'terraria', otherwise the server will crash!
 #world=/srv/terraria/world1.wld
 
 #Creates a new world if none is found. World size is specified by: 1(small), 2(medium), and 3(large).
@@ -37,7 +38,7 @@
 #maxplayers=8
 
 #Set the port number
-#port=777
+#port=7777
 
 #Set the server password
 #password=p@55w0rd
