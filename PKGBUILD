@@ -1,8 +1,7 @@
 # Maintainer: Mark Huo <markhuomian at gmail dot com>
-pkgname=python-git-repo
-_pkgname=git-repo
+pkgname=git-repo
 pkgver=1.7.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Tool for managing remote repositories from your git CLI!"
 arch=('any')
 url="https://github.com/guyzmo/git-repo"
@@ -17,7 +16,7 @@ sha1sums=('9818723314283ed1ce5663d08dc900c986ea5686'
           '7ec358708c3250907e858028245351157bbb528c')
 
 prepare() {
-    cd "$srcdir/$_pkgname-$pkgver"
+    cd "$srcdir/$pkgname-$pkgver"
     # bitbucket-api requires requests==2.2.1
     patch -Np2 -i "${srcdir}/requirements.txt.patch"
     # install requirements
@@ -32,6 +31,6 @@ package() {
     mkdir -p "$python_path"
     export PYTHONPATH=$PYTHONPATH:"$python_path"
     # install with prefix
-    cd "$srcdir/$_pkgname-$pkgver"
+    cd "$srcdir/$pkgname-$pkgver"
     python setup.py install --prefix="$pkgdir/usr" --optimize=1
 }
