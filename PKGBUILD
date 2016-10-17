@@ -1,8 +1,8 @@
 # Maintainer:  Joakim Hernberg <jhernberg at alchemy dot lu>
 
 pkgname=zita-njbridge
-pkgver=0.1.1
-pkgrel=2
+pkgver=0.4.1
+pkgrel=1
 
 pkgdesc="Jack client to transmit audio over a local IP network."
 url="http://kokkinizita.linuxaudio.org/linuxaudio/"
@@ -11,7 +11,7 @@ license=('GPL3')
 
 depends=('jack' 'zita-resampler')
 source=("http://kokkinizita.linuxaudio.org/linuxaudio/downloads/$pkgname-$pkgver.tar.bz2")
-md5sums=('e32a5223511ed4879fc6fe226b448cb9')
+md5sums=('661a952f8c96ca69566eca849babf528')
 
 build() {
     cd "$pkgname-$pkgver/source"
