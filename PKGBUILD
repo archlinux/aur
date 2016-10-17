@@ -1,5 +1,5 @@
 pkgname=crate
-pkgver=0.55.7
+pkgver=0.56.2
 pkgrel=1
 pkgdesc="shared nothing, fully searchable, document oriented cluster datastore."
 arch=('any')
@@ -47,6 +47,6 @@ package() {
         cp -r docs/ $pkgdir/usr/share/doc/$pkgname/
     fi
 }
-md5sums=('13af1ac8b45eb1ac0c0dfbbb7ee41031'
+md5sums=('083760390796d2d412c63f490445f1f5'
          '2085d9af9e9ef3e27e8067a793eb9e39'
          '763950135dadfc3f72d8c9abec71aa5a')
