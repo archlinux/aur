@@ -4,6 +4,7 @@ Type=Application
 Terminal=false
 Icon=dbeaver
 Categories=Development;Java;
+StartupWMClass=SWT
 
 Name=DBeaver
 GenericName=Database Client
