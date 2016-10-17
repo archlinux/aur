@@ -2,7 +2,7 @@
 
 _gitname=terminaltables
 pkgname=python-terminaltables-git
-pkgver=2.1.0
+pkgver='r131.ae22aaa'
 pkgrel=1
 arch=('any')
 pkgdesc='Generate simple tables in terminals from a nested list of strings.'
