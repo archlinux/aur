@@ -2,12 +2,14 @@
 
 pkgname=sxemacs-git
 pkgver=22.1.16.20.g9d3afcb
-pkgrel=1
+pkgrel=2
 pkgdesc="A derivation of xemacs - git checkout"
 arch=('i686' 'x86_64')
 url="http://www.sxemacs.org/"
 license=('GPL')
-depends=('libao' 'gpm' 'libtiff' 'jack' 'libmad' 'desktop-file-utils' 'compface' 'libpulse' 'libxaw' 'postgresql-libs' 'sox' 'openmotif' 'openssl' 'ffmpeg' 'xaw3d')
+depends=('libao' 'gpm' 'libtiff' 'jack' 'libmad' 'desktop-file-utils'
+	 'compface' 'libpulse' 'libxaw' 'postgresql-libs' 'sox'
+	 'lesstif' 'openssl' 'ffmpeg' 'xaw3d')
 makedepends=('git' 'texinfo' 'xbitmaps')
 provides=('sxemacs')
 conflicts=('sxemacs' 'xemacs')
