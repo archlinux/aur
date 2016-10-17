@@ -26,7 +26,7 @@ sed -i \
     generate-dictionary.sh
 
 sed -i \
-    -e '5,6s/^/#/ig' \
+    -e '/rm edict.*/,/gzip -dk edict.*/s/^/#/ig' \
     edict-katakana-english/generate-dictionary.sh
 
 #sed -i '71s/s\[5\]/& != "" and &/' chimei/get-entries.rb

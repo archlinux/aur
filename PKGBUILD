@@ -72,14 +72,14 @@ _bldtype=Release
 #_bldtype=Debug
 
 _mozcrev=2315f957d1785130c2ed196e141a330b0857b065
-_utdicver=20161013
+_utdicver=20161017
 _zipcoderel=201609
 _uimmozcrev=321.3ea28b1
 
 pkgbase=mozc-ut2
 pkgname=mozc-ut2
 true && pkgname=('mozc-ut2')
-pkgver=2.18.2612.102.20161013
+pkgver=2.18.2612.102.20161017
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.geocities.jp/ep3797/mozc-ut2.html"
@@ -88,19 +88,19 @@ makedepends=('python2' 'ruby' 'git' 'ninja' 'clang')
 source=(
   mozc::git+https://github.com/google/mozc.git#commit=${_mozcrev}
   http://downloads.sourceforge.net/project/pnsft-aur/mozc/mozcdic-ut2-${_utdicver}.tar.bz2
-  http://downloads.sourceforge.net/project/pnsft-aur/mozc/edict-${_utdicver}.gz
+  http://downloads.sourceforge.net/project/pnsft-aur/mozc/edict2-${_utdicver}.gz
   EDICT_license.html
   http://downloads.sourceforge.net/project/pnsft-aur/mozc/ken_all-${_zipcoderel}.zip
   http://downloads.sourceforge.net/project/pnsft-aur/mozc/jigyosyo-${_zipcoderel}.zip
   mod-generate-dictionary.sh
 )
 sha1sums=('SKIP'
-          '75efebc621fe57a5bc490b7faa1f5c556bfd7b07'
-          '478eb5f982656ff80d45e123c16d88a2b9e110b3'
+          '582971f92af75c86b056ca3507cae125ea060217'
+          '0ba7df55dfd05d43694c6de82c5b215e023f9024'
           'e0ba18e67c1be8e3cfb8ecb30760597b215da255'
           'c8085904b2326363667831131c0921b004a66bad'
           '3d012569963b9359d2d267216f78c1a07a395065'
-          '083a175815080500fc480d9d8af2ee1e39f528f1')
+          'd4cabe4be5ae956e81d0c7e2023070d622e512cf')
 
 
 if [[ "$_ibus_mozc" == "yes" ]]; then
