@@ -1,15 +1,16 @@
-# Maintainer: Antoine Lubineau <antoine@lubignon.info>
+# Uffe Jakobsen <uffe@uffe.org>
 
 pkgname=numatop
-pkgver=1.0.3
+pkgver=1.0.4
 pkgrel=1
+_pkgrel=1
 pkgdesc="Observation tool for NUMA systems"
 arch=('i686' 'x86_64')
 url="https://01.org/numatop/"
 license=('custom')
 depends=('numactl')
-source=("https://01.org/sites/default/files/numatop_linux_${pkgver}.tar_0.gz")
-md5sums=('44b7c3970309c5b37308889168d9170a')
+source=("https://01.org/sites/default/files/numatop_linux_${pkgver}.tar_${pkgrel}.gz")
+md5sums=('41c809efc81a933e6cff8004ebdfbf2e')
 
 build() {
 	cd "$srcdir/$pkgname"
