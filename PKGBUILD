@@ -27,10 +27,8 @@ options=()
 install=
 changelog=
 noextract=()
-source=(git+http://git.code.sf.net/p/opencbm/code
-        opencbm_usb_USB_LE16_TO_CPU_le16toh.patch)
-md5sums=('SKIP'
-         '460f571c2f1e2b80c10ade19a831fbed')
+source=(git+http://git.code.sf.net/p/opencbm/code)
+md5sums=('SKIP')
 
 pkgver() {
   cd "${srcdir}/code"
@@ -43,7 +41,7 @@ prepare() {
 
 build() {
   cd "${srcdir}/code"
-  #make -f LINUX/Makefile opencbm plugin-xum1541
+  #make -f LINUX/Makefile opencbm plugin-xum1541 plugin-xu1541
   make -f LINUX/Makefile opencbm plugin
 }
 
