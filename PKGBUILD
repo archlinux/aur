@@ -1,12 +1,12 @@
 # Maintainer: Phillip Schichtel <phillip.public@schich.tel>
 pkgname=adapta-backgrounds
 pkgver="0.1.0.7"
-pkgrel=2
+pkgrel=3
 pkgdesc="Wallpaper collection for adapta-project"
 arch=(any)
 url="https://github.com/adapta-project/${pkgname}"
 license=('GPL2' 'CCPL')
-optdepends=('adapta-gtk-theme')
+optdepends=('adapta-gtk-theme: The corresponding GTK theme')
 makedepends=('glib2>=2.48.0'
              'libxml2')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
