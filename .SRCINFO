@@ -1,7 +1,7 @@
 pkgbase = aparapi
 	pkgdesc = Syncleus's GPGPU API for data parallel Java. Uses OpenCL.
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Syncleus/aparapi-jni
 	install = aparapi.install
 	arch = i686

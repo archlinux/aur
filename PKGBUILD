@@ -2,7 +2,7 @@
 
 pkgname=aparapi
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Syncleus's GPGPU API for data parallel Java. Uses OpenCL."
 url="https://github.com/Syncleus/aparapi-jni"
 arch=('i686' 'x86_64')
