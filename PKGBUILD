@@ -5,7 +5,7 @@ _gtk3_max='3.22'
 _theme_name=Adapta
 _gtk2_min='2.24.30'
 pkgver="${_gtk3_max}.1.101"
-pkgrel=1
+pkgrel=2
 pkgdesc="An adaptive Gtk+ theme based on Material Design Guidelines."
 arch=(any)
 url="https://github.com/adapta-project/${pkgname}"
@@ -24,6 +24,7 @@ optdepends=("gnome-shell>=${_gtk3_min}.3: The GNOME Shell"
             'openbox>=3.6.1: The Openbox window manager'
             'paper-icon-theme: A fitting icon theme'
             'gnome-tweak-tool: A graphical tool to tweak gnome settings'
+            'adapta-backgrounds: The corresponding backgrounds project'
             "unity>=7.4.0: Ubuntu's Unity desktop")
 makedepends=('glib2>=2.48.0'
              'libxml2'
