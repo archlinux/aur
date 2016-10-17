@@ -1,25 +1,22 @@
-# Maintainer:
+# Maintainer: Christian Hesse <mail@eworm.de>
 # Contributor: Judd Vinet <judd@archlinux.org>
 
 pkgname=bridge-utils
-pkgver=1.5
-pkgrel=2
+pkgver=1.6
+pkgrel=1
 pkgdesc="Utilities for configuring the Linux ethernet bridge"
 arch=('i686' 'x86_64')
 url="http://www.linuxfoundation.org/collaborate/workgroups/networking/bridge"
 license=('GPL')
 depends=('glibc')
-source=(http://downloads.sourceforge.net/bridge/bridge-utils-$pkgver.tar.gz
-        bridge-utils-1.5-linux_3.8.x.patch)
-
-prepare () {
-  # fix compiling with newer kernel headers
-  cd "${srcdir}/${pkgname}-${pkgver}"
-  patch -Np1 -i ../bridge-utils-1.5-linux_3.8.x.patch
-}
+validpgpkeys=('9F6FC345B05BE7E766B83C8F80A77F6095CDE47E')	# Stephen Hemminger (Microsoft corporate) <sthemmin@microsoft.com>
+source=("http://www.kernel.org/pub/linux/utils/net/${pkgname}/${pkgname}-${pkgver}.tar."{xz,sign})
+sha256sums=('cc67efb5d5fb8928a6569b3fade2b4042ec17da04678dab127d96b46489e26c8'
+            'SKIP')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
+
   aclocal
   autoconf
   ./configure --prefix=/usr --sbindir=/usr/bin --sysconfdir=/etc
@@ -28,7 +25,6 @@ build() {
 
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
+
   make DESTDIR="${pkgdir}" install
 }
-md5sums=('ec7b381160b340648dede58c31bb2238'
-         'fba700dcb2a3225d72b3bae64c7f49ca')
