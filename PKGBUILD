@@ -14,7 +14,7 @@ provides=('aparapi')
 install='aparapi.install'
 
 source=( 'aparapi.sh')
-md5sums=('77d9fab729e9d953f23f4f9149c138c2')
+md5sums=('94bfab19f10cde995aecd15ff42487a7')
 
 source+=( 'aparapi.conf')
 md5sums+=('a7e04cc30d00498ff733af771b721dca')
