@@ -1,7 +1,7 @@
 # Maintainer: Muflone http://www.muflone.com/contacts/english/
 
 pkgname=libavutil-52
-pkgver=2.3.4
+pkgver=2.3.6
 pkgrel=1
 pkgdesc="Compatibility package for ffmpeg to provide versions 52 of libavutil not anymore provided by the ffmpeg package"
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ makedepends=('yasm' 'gsm' 'lame' 'opencore-amr' 'openjpeg' 'opus'  'rtmpdump'
              'schroedinger' 'speex' 'v4l-utils' 'xvidcore' 'libpulse' 'libvpx'
              'libx264' 'libtheora' 'libvdpau' 'libass' 'libbluray' 'libmodplug')
 source=("http://ffmpeg.org/releases/ffmpeg-${pkgver}.tar.bz2")
-sha256sums=('2f7dece56ea72a22c7cf49e50b58eaadef340457404395cc0479c843b42344f8')
+sha256sums=('cf1be1c5c3973b8db16b6b6e8e63a042d414fb5d47d3801a196cbba21a0a624a')
 
 build() {
   cd "ffmpeg-${pkgver}"
