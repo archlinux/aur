@@ -9,6 +9,7 @@ pkgbase = workcraft-git
 	makedepends = git
 	makedepends = java-environment
 	depends = java-runtime
+	optdepends = graphviz: Graph manipulation
 	provides = workcraft
 	conflicts = workcraft
 	source = git+https://github.com/tuura/workcraft.git
