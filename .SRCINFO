@@ -1,0 +1,20 @@
+pkgbase = alchemy
+	pkgdesc = Nonorthodox painting software experimenting with alternative ways of drawing
+	pkgver = 0.0.8
+	pkgrel = 1
+	url = http://al.chemy.org/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = imagemagick
+	depends = sh
+	depends = java-environment
+	depends = hicolor-icon-theme
+	conflicts = alchemy-svn
+	source = http://al.chemy.org/files/Alchemy-008.tar.gz
+	source = alchemy.desktop
+	md5sums = c900de439c3c2faf9abe17b6f6a55720
+	md5sums = c7cffede4dda0acd94aa94deec037720
+
+pkgname = alchemy
+
