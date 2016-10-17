@@ -1,7 +1,7 @@
 pkgbase = mvnvm
 	pkgdesc = Run different versions of maven for different projects.
 	pkgver = 1.0.8
-	pkgrel = 1
+	pkgrel = 2
 	url = http://mvnvm.org/
 	arch = any
 	license = unknown
