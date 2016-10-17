@@ -1,7 +1,7 @@
 # Maintainer: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=kdesrc-build
-pkgver=15.12
+pkgver=16.10
 pkgrel=1
 pkgdesc="A script to build KDE software from KDE's source repositories"
 url='http://kdesrc-build.kde.org/'
@@ -11,8 +11,8 @@ depends=('perl' 'perl-libwww' 'perl-xml-parser' 'dialog' 'perl-json')
 makedepends=('cmake')
 optdepends=('subversion: download source code using svn'
             'git: download source code using git')
-source=("git://anongit.kde.org/kdesrc-build.git#tag=v${pkgver}")
-md5sums=('SKIP')
+source=("${pkgname}-${pkgver}.tar.gz"::"http://quickgit.kde.org/?p=kdesrc-build.git&a=snapshot&h=f187eaf9ff7b3994de649377abf18f131fee03ef&fmt=tgz")
+md5sums=('b1990b271ebc851db8862b49bd317d90')
 
 prepare() {
   mkdir -p build
