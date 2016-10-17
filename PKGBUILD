@@ -3,7 +3,7 @@
 pkgname=rambox-bin
 _pkgname=rambox
 pkgver=0.4.4
-pkgrel=1
+pkgrel=2
 pkgdesc='Free and Open Source messaging and emailing app that combines common web applications into one.'
 arch=('i686' 'x86_64')
 depends=('alsa-lib' 'bash' 'desktop-file-utils' 'gconf' 'gtk2' 'libnotify' 'libxtst' 'libxss' 'nss')
@@ -20,9 +20,14 @@ sha256sums=('80d75e70dc6c843c3dd3f7c4ff92d89e452814234148315348a755c330f2e902'
 sha256sums_i686=('821a52acc7f4920179358501a20959050be578afdcf61c7035a9d18a583e419a')
 sha256sums_x86_64=('20a622f81000c274ec2bf7f1fc7300d3905f3dbd0caaebb38bde1d19f952bc17')
 
+# default path after extraction
+_path="Rambox-${pkgver}"
+# special path for i686
+[[ "$CARCH" = "i686" ]] && _path="Rambox-${pkgver}-ia32"
+
 package() {
     install -d ${pkgdir}/{opt/rambox,usr/{bin,share/pixmaps}}
-    cp -R ${srcdir}/Rambox-${pkgver}/* ${pkgdir}/opt/${_pkgname}/
+    cp -R ${srcdir}/${_path}/* ${pkgdir}/opt/${_pkgname}/
     install -Dm755 $srcdir/${_pkgname}.sh ${pkgdir}/usr/bin/${_pkgname}
     install -Dm644 $srcdir/${_pkgname}.png ${pkgdir}/usr/share/pixmaps/${_pkgname}.png
     desktop-file-install ${srcdir}/${_pkgname}.desktop --dir ${pkgdir}/usr/share/applications/
