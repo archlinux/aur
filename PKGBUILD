@@ -2,8 +2,8 @@
 
 _gitname=colorclass
 pkgname=python-colorclass-git
-pkgver=1.2.0
 pkgrel=1
+pkgver='r137.c7ed6d7'
 arch=('any')
 pkgdesc='Yet another ANSI color text library for Python. '
 license=('MIT')
