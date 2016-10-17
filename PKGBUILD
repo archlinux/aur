@@ -1,11 +1,11 @@
-# $Id: PKGBUILD 266459 2016-04-28 13:20:07Z jgc $
+# $Id: PKGBUILD 278826 2016-10-15 00:15:40Z heftig $
 # Contributor: Jan de Groot <jgc@archlinux.org>
-# Maintainer: Ian Hernández <ihernandezs@openmailbox.org>
+# Maintainer: Ian Hernández <badwolfie@archlinux.info>
 
 _pkgbase=nautilus
 pkgbase=nautilus-typeahead
 pkgname=(nautilus-typeahead libnautilus-extension-typeahead)
-pkgver=3.22.0.1+22+gd72934b
+pkgver=3.22.1
 pkgrel=1
 pkgdesc="Default file manager for GNOME - Patched to bring back the 'typeahead find' feature"
 url="https://wiki.gnome.org/Apps/Nautilus"
@@ -14,14 +14,13 @@ license=(GPL)
 depends=(libexif gnome-desktop exempi gvfs dconf libtracker-sparql nautilus-sendto gnome-autoar)
 makedepends=(intltool gobject-introspection python packagekit python2 gnome-common git gtk-doc)
 options=(!emptydirs)
-_commit=d72934b3f94dfd7eb109a60bd0b262c4f9cd7ed4
-_libgd=752f65e91ea0d9a2ee8a2d21343bbd97bd0d038a
+_commit=ce0c0bb5510577c9285512d2be52cba119903b96  # tags/3.22.1^0
 source=("git://git.gnome.org/nautilus#commit=$_commit"
-        "git://git.gnome.org/libgd#commit=$_libgd"
+        "git://git.gnome.org/libgd"
         nautilus-restore-typeahead.patch)
 sha256sums=('SKIP'
             'SKIP'
-            '78a2df9012f2c448a07365e7adb3c1f6058427e8453b4b003e0f68f69a563379')
+            '660ff8f7f5cec80c4f08862a89b63bc9fb21656fdcdc7cde057414bc269fbc54')
 
 prepare() {
   cd $_pkgbase
