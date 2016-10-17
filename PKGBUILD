@@ -2,7 +2,7 @@
 
 pkgname=terraria-server
 pkgver=1.3.3.3
-pkgrel=9
+pkgrel=10
 pkgdesc="Official dedicated server for Terraria"
 arch=('x86_64' 'x86')
 license=('unknown')
@@ -15,16 +15,18 @@ _pkgver=$(echo $pkgver | sed 's/\.//g')
 
 source=("http://terraria.org/server/${pkgname}-${_pkgver}.zip"
         'terraria-server'
+        'config.txt'
         'terraria-server@.service')
 
 sha256sums=('ecd6ec686d6f46defb3ae0e75d49ce50cd324a4d390fc067177668ea990ad8bc'
-            '8a7e23efe3f72d8c88024cf32e53daa4b293bb2b17070dbf80e86876af1e22f9'
+            'd70dce33d0c1a26211401fe169f643a6198c9292a4297557be154650ffe1c076'
+            '10cc09e9a49ec0d035f2237b610cca8dcc696d327c6943c575564b5ef83f6860'
             '27dfa3e01b4da26bccace69bcf02fd91293cac701e48ab358d9495070365c2ac')
 
 package() {
-    unzip "${pkgname}-${_pkgver}.zip"
+    unzip -o "${pkgname}-${_pkgver}.zip"
     cd 'Dedicated Server/Linux'
-    dest="${pkgdir}/opt/terraria-server"
+    dest="${pkgdir}/etc/terraria-server"
     install -o 697 -g 697  -d "${dest}"
     install -m644 FNA.dll "${dest}/"
     install -m644 FNA.dll.config "${dest}/"
@@ -38,8 +40,9 @@ package() {
     install -m755 terraria-server "${pkgdir}/usr/bin/"
     install -d "${pkgdir}/usr/lib/systemd/system/"
     install -m644 terraria-server@.service "${pkgdir}/usr/lib/systemd/system/"
+    install -m755 config.txt "${dest}/"
 
-    install -o 697 -g 697 -d "${pkgdir}/etc/terraria-server/"
+    install -o 697 -g 697 -d "${pkgdir}/srv/terraria"
     install -o 697 -g 697 -d "${pkgdir}/var/lib/terraria-server/"
 
     install -d "${pkgdir}/usr/lib/"

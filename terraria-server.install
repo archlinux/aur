@@ -25,6 +25,6 @@ post_remove() {
     fi
 
     if getent group terraria &>/dev/null; then
-      groupdel terrara >/dev/null
+      groupdel terraria >/dev/null
     fi
 }

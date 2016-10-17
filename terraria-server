@@ -1,5 +1,5 @@
 #!/bin/bash
-cd /opt/terraria-server
+cd /etc/terraria-server
 export MONO_IOMAP=all
 arch=$(uname -m)
-./TerrariaServer.bin.${arch} "$@"
+./TerrariaServer.bin.${arch} -config config.txt "$@"
