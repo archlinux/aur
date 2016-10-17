@@ -1,8 +1,8 @@
 # Maintainer: Muflone http://www.muflone.com/contacts/english/
 
 pkgname=ffmpeg-compat-54
-pkgver=1.2.1
-pkgrel=4
+pkgver=1.2.12
+pkgrel=1
 pkgdesc="Compatibility package for ffmpeg to provide versions 54 of libavcodec, libavdevice and libavformat, not anymore provided by the ffmpeg package"
 arch=('i686' 'x86_64')
 url="http://ffmpeg.org/"
@@ -13,9 +13,12 @@ depends=('gsm' 'lame' 'opencore-amr' 'openjpeg' 'opus' 'rtmpdump' 'libvpx'
 makedepends=('yasm' 'libass')
 provides=('libavcodec.so' 'libavdevice.so' 'libavformat.so')
 source=("http://ffmpeg.org/releases/ffmpeg-${pkgver}.tar.bz2"
+        "http://ffmpeg.org/releases/ffmpeg-${pkgver}.tar.bz2.asc"
         "libvpx_VP8E_UPD_ENTROPY.patch"::"https://git.videolan.org/?p=ffmpeg.git;a=commitdiff_plain;h=6540fe04a3f9a11ba7084a49b3ee5fa2fc5b32ab")
-sha256sums=('0302375c3a64e9c2facfa7cbeb1aa333a39fdf6bbacda228cd48e04bf9ee32ca'
+sha256sums=('913ac95c7fad92c2a4ebcfd11850904f531845c75d45c3e4e4a693990fe2497d'
+            'SKIP'
             '2da38f8d3fb671b2e40fd3a3999486086ed0bb98cbaf194d54d6fdc19c76a54d')
+validpgpkeys=('FCF986EA15E6E293A5644F10B4322F04D67658D8')
 
 prepare() {
   cd "ffmpeg-${pkgver}"
