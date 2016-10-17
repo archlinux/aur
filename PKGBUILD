@@ -2,7 +2,7 @@
 
 pkgname=mariadb-connector-odbc
 conflicts=('mariadb-connector-odbc-bin')
-pkgver=2.0.11
+pkgver=2.0.12
 pkgrel=1
 pkgdesc="MariaDB Connector/ODBC is a standardized, LGPL licensed database driver using the industry standard ODBC API"
 arch=('x86_64' 'i686')
@@ -12,9 +12,9 @@ depends=('unixodbc' 'openssl')
 makedepends=('mariadb-connector-c')
 options=('staticlibs')
 
-source=("https://downloads.mariadb.org/interstitial/connector-odbc-${pkgver}/src/${pkgname}-${pkgver}-ga-src.tar.gz")
+source=("https://downloads.mariadb.org/interstitial/connector-odbc-${pkgver}/source/${pkgname}-${pkgver}-ga-src.tar.gz")
 
-sha256sums=('1f25ac13820304d743d2d211aa76c46a9292c941d911cc1fc8912de800d07733')
+sha1sums=('b84bb2651ba774bb3aeda57101c18976f2fbf2ec')
 
 install=mariadb-connector-odbc.install
 
