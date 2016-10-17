@@ -10,6 +10,7 @@ pkgbase = mve-git
 	makedepends = git
 	makedepends = go-md2man
 	makedepends = gcc5
+	makedepends = cmake
 	depends = libjpeg
 	depends = libtiff
 	depends = libpng
