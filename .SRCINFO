@@ -1,0 +1,19 @@
+pkgbase = qt5ct-allow-theme-override
+	pkgdesc = Qt5 configuration utility patched to allow applications to override the theme
+	pkgver = 0.27
+	pkgrel = 1
+	url = http://qt5ct.sourceforge.net
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = qt5-tools
+	depends = qt5-svg
+	provides = qt5ct
+	conflicts = qt5ct
+	source = http://downloads.sourceforge.net/project/qt5ct/qt5ct-0.27.tar.bz2
+	source = allow_theme_override.patch
+	sha256sums = d3b92b9d34469cae4f66a43ca59f5f0b548ef6d37984469361329af4348ab1f3
+	sha256sums = 3bbb92f1a5dfdb47f93eae9e9397413670dd2e49cd36715258363f4e760ab512
+
+pkgname = qt5ct-allow-theme-override
+

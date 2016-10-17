@@ -1,0 +1,272 @@
+diff -urp a/src/qt5ct/appearancepage.cpp b/src/qt5ct/appearancepage.cpp
+--- a/src/qt5ct/appearancepage.cpp	2016-09-20 08:18:36.000000000 +0200
++++ b/src/qt5ct/appearancepage.cpp	2016-10-16 19:52:47.884547000 +0200
+@@ -90,6 +90,7 @@ void AppearancePage::writeSettings()
+     QSettings settings(Qt5CT::configFile(), QSettings::IniFormat);
+     settings.beginGroup("Appearance");
+     settings.setValue("style", m_ui->styleComboBox->currentText());
++    settings.setValue("allow_application_style_override", m_ui->styleOverrideCheckBox->isChecked());
+     settings.setValue("custom_palette", m_ui->customPaletteButton->isChecked());
+     settings.setValue("color_scheme_path", m_ui->colorSchemeComboBox->currentData().toString());
+     settings.endGroup();
+@@ -304,6 +305,7 @@ void AppearancePage::readSettings()
+     settings.beginGroup("Appearance");
+     QString style = settings.value("style", "Fusion").toString();
+     m_ui->styleComboBox->setCurrentText(style);
++    m_ui->styleOverrideCheckBox->setChecked(settings.value("allow_application_style_override", false).toBool());
+ 
+     m_ui->customPaletteButton->setChecked(settings.value("custom_palette", false).toBool());
+     QString colorSchemePath = settings.value("color_scheme_path").toString();
+diff -urp a/src/qt5ct/appearancepage.ui b/src/qt5ct/appearancepage.ui
+--- a/src/qt5ct/appearancepage.ui	2016-09-20 08:18:36.000000000 +0200
++++ b/src/qt5ct/appearancepage.ui	2016-10-16 22:29:41.420074422 +0200
+@@ -21,7 +21,7 @@
+      </property>
+     </widget>
+    </item>
+-   <item row="3" column="0" colspan="3">
++   <item row="3" column="0" colspan="4">
+     <widget class="QGroupBox" name="groupBox">
+      <property name="title">
+       <string>Preview</string>
+@@ -72,7 +72,7 @@
+    <item row="0" column="1">
+     <widget class="QComboBox" name="styleComboBox"/>
+    </item>
+-   <item row="0" column="2">
++   <item row="0" column="3">
+     <spacer name="horizontalSpacer">
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+@@ -85,7 +85,7 @@
+      </property>
+     </spacer>
+    </item>
+-   <item row="2" column="0" colspan="3">
++   <item row="2" column="0" colspan="4">
+     <widget class="QGroupBox" name="paletteGroupBox">
+      <property name="title">
+       <string>Palette</string>
+@@ -187,6 +187,13 @@
+      </layout>
+     </widget>
+    </item>
++   <item row="0" column="2">
++    <widget class="QCheckBox" name="styleOverrideCheckBox">
++     <property name="text">
++      <string>Allow applications to override style</string>
++     </property>
++    </widget>
++   </item>
+   </layout>
+  </widget>
+  <resources/>
+diff -urp a/src/qt5ct/qt5ct.h b/src/qt5ct/qt5ct.h
+--- a/src/qt5ct/qt5ct.h	2016-09-20 08:18:36.000000000 +0200
++++ b/src/qt5ct/qt5ct.h	2016-09-20 08:19:11.000000000 +0200
+@@ -30,7 +30,7 @@
+ #define QT5CT_H
+ 
+ #define QT5CT_VERSION_MAJOR 0
+-#define QT5CT_VERSION_MINOR 27
++#define QT5CT_VERSION_MINOR 28
+ 
+ #define QT5CT_TOSTRING(s) #s
+ #define QT5CT_STRINGIFY(s)         QT5CT_TOSTRING(s)
+diff -urp a/src/qt5ct/translations/qt5ct_de.ts b/src/qt5ct/translations/qt5ct_de.ts
+--- a/src/qt5ct/translations/qt5ct_de.ts	2016-09-20 08:18:36.000000000 +0200
++++ b/src/qt5ct/translations/qt5ct_de.ts	2016-10-16 22:32:29.394059667 +0200
+@@ -1,6 +1,6 @@
+ <?xml version="1.0" encoding="utf-8"?>
+ <!DOCTYPE TS>
+-<TS version="2.1" language="de">
++<TS version="2.0" language="de">
+ <context>
+     <name>AppearancePage</name>
+     <message>
+@@ -54,6 +54,11 @@
+         <translation>...</translation>
+     </message>
+     <message>
++        <location filename="../appearancepage.ui" line="193"/>
++        <source>Allow applications to override style</source>
++        <translation type="unfinished">Erlaube Applikationen den Stil zu überschreiben</translation>
++    </message>
++    <message>
+         <location filename="../appearancepage.cpp" line="65"/>
+         <source>Create</source>
+         <translation>Erstellen</translation>
+@@ -79,59 +84,59 @@
+         <translation>Entfernen</translation>
+     </message>
+     <message>
+-        <location filename="../appearancepage.cpp" line="120"/>
+-        <location filename="../appearancepage.cpp" line="194"/>
+-        <location filename="../appearancepage.cpp" line="229"/>
++        <location filename="../appearancepage.cpp" line="121"/>
++        <location filename="../appearancepage.cpp" line="195"/>
++        <location filename="../appearancepage.cpp" line="230"/>
+         <source>Enter Color Scheme Name</source>
+         <translation>Farbschemaname eingeben</translation>
+     </message>
+     <message>
+-        <location filename="../appearancepage.cpp" line="120"/>
+-        <location filename="../appearancepage.cpp" line="194"/>
+-        <location filename="../appearancepage.cpp" line="229"/>
++        <location filename="../appearancepage.cpp" line="121"/>
++        <location filename="../appearancepage.cpp" line="195"/>
++        <location filename="../appearancepage.cpp" line="230"/>
+         <source>File name:</source>
+         <translation>Dateiname:</translation>
+     </message>
+     <message>
+-        <location filename="../appearancepage.cpp" line="129"/>
+-        <location filename="../appearancepage.cpp" line="205"/>
+-        <location filename="../appearancepage.cpp" line="239"/>
++        <location filename="../appearancepage.cpp" line="130"/>
++        <location filename="../appearancepage.cpp" line="206"/>
++        <location filename="../appearancepage.cpp" line="240"/>
+         <source>Error</source>
+         <translation>Fehler</translation>
+     </message>
+     <message>
+-        <location filename="../appearancepage.cpp" line="129"/>
+-        <location filename="../appearancepage.cpp" line="205"/>
+-        <location filename="../appearancepage.cpp" line="239"/>
++        <location filename="../appearancepage.cpp" line="130"/>
++        <location filename="../appearancepage.cpp" line="206"/>
++        <location filename="../appearancepage.cpp" line="240"/>
+         <source>The color scheme &quot;%1&quot; already exists</source>
+         <translation>Das Farbschema »%1« ist bereits vorhanden</translation>
+     </message>
+     <message>
+-        <location filename="../appearancepage.cpp" line="147"/>
+-        <location filename="../appearancepage.cpp" line="170"/>
+-        <location filename="../appearancepage.cpp" line="224"/>
++        <location filename="../appearancepage.cpp" line="148"/>
++        <location filename="../appearancepage.cpp" line="171"/>
++        <location filename="../appearancepage.cpp" line="225"/>
+         <source>Warning</source>
+         <translation>Warnung</translation>
+     </message>
+     <message>
+-        <location filename="../appearancepage.cpp" line="147"/>
+-        <location filename="../appearancepage.cpp" line="170"/>
+-        <location filename="../appearancepage.cpp" line="224"/>
++        <location filename="../appearancepage.cpp" line="148"/>
++        <location filename="../appearancepage.cpp" line="171"/>
++        <location filename="../appearancepage.cpp" line="225"/>
+         <source>The color scheme &quot;%1&quot; is read only</source>
+         <translation>Das Farbschema »%1« ist schreibgeschützt</translation>
+     </message>
+     <message>
+-        <location filename="../appearancepage.cpp" line="175"/>
++        <location filename="../appearancepage.cpp" line="176"/>
+         <source>Confirm Remove</source>
+         <translation>Entfernen bestätigen</translation>
+     </message>
+     <message>
+-        <location filename="../appearancepage.cpp" line="176"/>
++        <location filename="../appearancepage.cpp" line="177"/>
+         <source>Are you sure you want to remove color scheme &quot;%1&quot;?</source>
+         <translation>Sind Sie sicher, dass Sie das Farbschema »%1« entfernen möchten?</translation>
+     </message>
+     <message>
+-        <location filename="../appearancepage.cpp" line="196"/>
++        <location filename="../appearancepage.cpp" line="197"/>
+         <source>%1 (copy)</source>
+         <translation>%1 (kopieren)</translation>
+     </message>
+diff -urp a/src/qt5ct-qtplugin/qt5ctplatformtheme.cpp b/src/qt5ct-qtplugin/qt5ctplatformtheme.cpp
+--- a/src/qt5ct-qtplugin/qt5ctplatformtheme.cpp	2016-09-20 08:18:36.000000000 +0200
++++ b/src/qt5ct-qtplugin/qt5ctplatformtheme.cpp	2016-10-16 19:53:03.511231000 +0200
+@@ -71,7 +71,7 @@ Qt5CTPlatformTheme::Qt5CTPlatformTheme()
+         QMetaObject::invokeMethod(this, "createFSWatcher", Qt::QueuedConnection);
+         //apply custom style hints before creating QApplication
+         //using Fusion style should avoid problems with some styles like qtcurve
+-        QApplication::setStyle(new Qt5CTProxyStyle("Fusion"));
++        //QApplication::setStyle(new Qt5CTProxyStyle("Fusion"));
+ #endif
+         QGuiApplication::setFont(m_generalFont);
+     }
+@@ -155,8 +155,29 @@ void Qt5CTPlatformTheme::applySettings()
+     if(hasWidgets())
+     {
+         //do not override proxy style (fixes crash in qupzilla)
+-        QProxyStyle *proxyStyle = qobject_cast<QProxyStyle *>(qApp->style());
+-        proxyStyle ? proxyStyle->setBaseStyle(0) : qApp->setStyle(new Qt5CTProxyStyle(m_style));
++        QStyle *style = qApp->style();
++        if(m_allowApplicationStyleOverride)
++        {
++            Qt5CTProxyStyle *proxyStyle = qobject_cast<Qt5CTProxyStyle *> (style);
++            if(!proxyStyle)
++            {
++                //do not override custom styles explicit set by the application (e.g. Krita)
++                qApp->setStyle(new Qt5CTProxyStyle(style));
++            }
++        }
++        else
++        {
++            QProxyStyle *proxyStyle = qobject_cast<QProxyStyle *> (style);
++            if(proxyStyle)
++            {
++                proxyStyle->setBaseStyle(0);
++            }
++            else
++            {
++                qApp->setStyle(new Qt5CTProxyStyle(m_style));
++            }
++        }
++
+         qApp->setFont(m_generalFont);
+ 
+         if(m_usePalette)
+@@ -225,6 +246,7 @@ void Qt5CTPlatformTheme::readSettings()
+ 
+     settings.beginGroup("Appearance");
+     m_style = settings.value("style", "Fusion").toString();
++    m_allowApplicationStyleOverride = settings.value("allow_application_style_override", false).toBool();
+     if(settings.value("custom_palette", false).toBool())
+     {
+         QString schemePath = settings.value("color_scheme_path").toString();
+diff -urp a/src/qt5ct-qtplugin/qt5ctplatformtheme.h b/src/qt5ct-qtplugin/qt5ctplatformtheme.h
+--- a/src/qt5ct-qtplugin/qt5ctplatformtheme.h	2016-09-20 08:18:36.000000000 +0200
++++ b/src/qt5ct-qtplugin/qt5ctplatformtheme.h	2016-10-16 19:43:51.017648000 +0200
+@@ -90,6 +90,7 @@ private:
+     int m_buttonBoxLayout;
+     bool m_update;
+     bool m_usePalette;
++    bool m_allowApplicationStyleOverride;
+ #if !defined(QT_NO_DBUS) && !defined(QT_NO_SYSTEMTRAYICON)
+     mutable bool m_dbusTrayAvailable;
+     mutable bool m_checkDBusTray;
+diff -urp a/src/qt5ct-qtplugin/qt5ctproxystyle.cpp b/src/qt5ct-qtplugin/qt5ctproxystyle.cpp
+--- a/src/qt5ct-qtplugin/qt5ctproxystyle.cpp	2016-09-20 08:18:36.000000000 +0200
++++ b/src/qt5ct-qtplugin/qt5ctproxystyle.cpp	2016-10-16 11:39:09.319470000 +0200
+@@ -40,6 +40,14 @@ Qt5CTProxyStyle::Qt5CTProxyStyle(const Q
+     m_activateItemOnSingleClick = settings.value("Interface/activate_item_on_single_click", Qt::PartiallyChecked).toInt();
+ }
+ 
++Qt5CTProxyStyle::Qt5CTProxyStyle(QStyle *style) :
++    QProxyStyle(style)
++{
++    QSettings settings(Qt5CT::configFile(), QSettings::IniFormat);
++    m_dialogButtonsHaveIcons = settings.value("Interface/dialog_buttons_have_icons", Qt::PartiallyChecked).toInt();
++    m_activateItemOnSingleClick = settings.value("Interface/activate_item_on_single_click", Qt::PartiallyChecked).toInt();
++}
++
+ Qt5CTProxyStyle::~Qt5CTProxyStyle()
+ {
+     //qDebug("%s", Q_FUNC_INFO);
+diff -urp a/src/qt5ct-qtplugin/qt5ctproxystyle.h b/src/qt5ct-qtplugin/qt5ctproxystyle.h
+--- a/src/qt5ct-qtplugin/qt5ctproxystyle.h	2016-09-20 08:18:36.000000000 +0200
++++ b/src/qt5ct-qtplugin/qt5ctproxystyle.h	2016-10-16 11:38:36.103211000 +0200
+@@ -39,6 +39,8 @@ class Qt5CTProxyStyle : public QProxySty
+ public:
+     explicit Qt5CTProxyStyle(const QString &key);
+ 
++    explicit Qt5CTProxyStyle(QStyle *style = Q_NULLPTR);
++
+     virtual ~Qt5CTProxyStyle();
+ 
+     int styleHint(StyleHint hint, const QStyleOption *option, const QWidget *widget, QStyleHintReturn *returnData) const;
