@@ -1,7 +1,7 @@
 # Maintainer: Skunnyk <skunnyk@archlinux.fr>
 pkgname=php-cassandra-driver
 _pkgname=cassandra
-pkgver=1.2.1
+pkgver=1.2.2
 pkgrel=1
 pkgdesc="DataStax PHP Driver for Apache Cassandra"
 arch=(i686 x86_64)
@@ -27,4 +27,4 @@ package() {
 	install -Dm644 cassandra.ini "$pkgdir/etc/php/conf.d/cassandra.ini"
 	make INSTALL_ROOT="$pkgdir/" install
 }
-sha256sums=('a14b05d3667423b4a218068aa82f6ace0d5c6ab65aecef0b615f2a0aefdbb3a2')
+sha256sums=('31db2a9ee2275e69ba0f7b0eec098f7a80cc6afa7c6a4eaa2d9d841ad040fb22')
