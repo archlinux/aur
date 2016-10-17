@@ -1,11 +1,11 @@
+# Maintainer: syne <madlikene at aim dot com>
 # Contributor: Anton Bazhenov <anton.bazhenov at gmail>
 # Contributor: Mick Elliot <micke at sfu dot ca>
-# Maintainer: syne <madlikene at aim dot com>
 pkgname=mesquite
 pkgver=3.10
 _pkgver=310-Linux
 buildver=build-765
-pkgrel=1
+pkgrel=2
 pkgdesc="A modular, extendible software for evolutionary biology, designed to help biologists organize and analyze comparative data about organisms"
 arch=('any')
 url="http://mesquiteproject.wikispaces.com"
