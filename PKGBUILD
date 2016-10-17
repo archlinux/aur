@@ -3,8 +3,8 @@
 
 _name=exchangecalendar
 pkgname=thunderbird-${_name}-beta
-_verbeta=beta5
-_vermin=3.8
+_verbeta=beta1
+_vermin=3.9
 _ver=${_vermin}.0
 pkgver=${_ver}_${_verbeta}
 pkgrel=1
@@ -19,8 +19,8 @@ options=('!strip' '!libtool' '!staticlibs' '!docs')
 conflicts=('thunderbird-exchangecalendar-git' 'thunderbird-exchangecalendar')
 replaces=('thunderbird-exchangecalendar-git' 'thunderbird-exchangecalendar')
 provides=("${_name}=${pkgver}")
-source=("${pkgname}-${pkgver}.xpi::${url}/releases/download/v${_ver}-${_verbeta}/${_name}-v${_ver}-${_verbeta}.xpi")
-sha256sums=('e96f22972395209cbe57612fac320985e30432963d91d6bc3d6bd2c0782019cd')
+source=("${pkgname}-${pkgver}.xpi::${url}/releases/download/v${_vermin}-${_verbeta}/${_name}-v${_ver}-${_verbeta}.xpi")
+sha256sums=('de01ce4babd7e955327b76312a433332162af9a21635b9837f3490f274fafd1c')
 
 package() {
   _extdir=usr/lib/thunderbird/extensions
