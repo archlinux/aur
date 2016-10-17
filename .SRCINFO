@@ -1,0 +1,21 @@
+pkgbase = haxor-news
+	pkgdesc = A Hacker News command line interface
+	pkgver = 0.4.1
+	pkgrel = 1
+	url = https://github.com/donnemartin/haxor-news
+	arch = any
+	license = Apache
+	depends = python
+	depends = python-click
+	depends = python-colorama
+	depends = python-requests
+	depends = python-pygments
+	depends = python-prompt_toolkit
+	depends = python-six
+	source = https://github.com/donnemartin/haxor-news/archive/0.4.1.tar.gz
+	source = 0001-prompt-toolkit.patch
+	md5sums = 2adcbb65e4ecc8bc87084fed8b7d7713
+	md5sums = 24001b78e3030c3b580807a001b31b80
+
+pkgname = haxor-news
+
