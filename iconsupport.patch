@@ -1,7 +1,6 @@
-diff --git a/include/atoms_rest.xmacro b/include/atoms_rest.xmacro
-index d461dc0..f32a7e1 100644
---- a/include/atoms_rest.xmacro
-+++ b/include/atoms_rest.xmacro
+diff -rupN a/include/atoms_rest.xmacro b/include/atoms_rest.xmacro
+--- a/include/atoms_rest.xmacro	2016-03-06 10:17:18.000000000 -0500
++++ b/include/atoms_rest.xmacro	2016-10-17 15:33:47.581857415 -0400
 @@ -1,6 +1,7 @@
  xmacro(_NET_WM_USER_TIME)
  xmacro(_NET_STARTUP_ID)
@@ -10,10 +9,9 @@ index d461dc0..f32a7e1 100644
  xmacro(WM_PROTOCOLS)
  xmacro(WM_DELETE_WINDOW)
  xmacro(UTF8_STRING)
-diff --git a/include/data.h b/include/data.h
-index 3a059e7..d1f09ec 100644
---- a/include/data.h
-+++ b/include/data.h
+diff -rupN a/include/data.h b/include/data.h
+--- a/include/data.h	2016-03-06 10:17:18.000000000 -0500
++++ b/include/data.h	2016-10-17 15:33:47.581857415 -0400
 @@ -426,6 +426,9 @@ struct Window {
  
      /* aspect ratio from WM_NORMAL_HINTS (MPlayer uses this for example) */
@@ -24,11 +22,10 @@ index 3a059e7..d1f09ec 100644
  };
  
  /**
-diff --git a/include/libi3.h b/include/libi3.h
-index 4c72267..1d40cea 100644
---- a/include/libi3.h
-+++ b/include/libi3.h
-@@ -587,6 +587,11 @@ color_t draw_util_hex_to_color(const char *color);
+diff -rupN a/include/libi3.h b/include/libi3.h
+--- a/include/libi3.h	2016-03-06 10:17:18.000000000 -0500
++++ b/include/libi3.h	2016-10-17 15:33:47.581857415 -0400
+@@ -587,6 +587,11 @@ color_t draw_util_hex_to_color(const cha
  void draw_util_text(i3String *text, surface_t *surface, color_t fg_color, color_t bg_color, int x, int y, int max_width);
  
  /**
@@ -40,11 +37,10 @@ index 4c72267..1d40cea 100644
   * Draws a filled rectangle.
   * This function is a convenience wrapper and takes care of flushing the
   * surface as well as restoring the cairo state.
-diff --git a/include/window.h b/include/window.h
-index d0b97f1..0b2997d 100644
---- a/include/window.h
-+++ b/include/window.h
-@@ -87,3 +87,9 @@ void window_update_hints(i3Window *win, xcb_get_property_reply_t *prop, bool *ur
+diff -rupN a/include/window.h b/include/window.h
+--- a/include/window.h	2016-03-06 10:17:18.000000000 -0500
++++ b/include/window.h	2016-10-17 15:33:47.585190738 -0400
+@@ -87,3 +87,9 @@ void window_update_hints(i3Window *win,
   *
   */
  void window_update_motif_hints(i3Window *win, xcb_get_property_reply_t *prop, border_style_t *motif_border_style);
@@ -54,11 +50,10 @@ index d0b97f1..0b2997d 100644
 + *
 + */
 +void window_update_icon(i3Window *win, xcb_get_property_reply_t *prop);
-diff --git a/libi3/draw_util.c b/libi3/draw_util.c
-index dcd881c..3bc7ff9 100644
---- a/libi3/draw_util.c
-+++ b/libi3/draw_util.c
-@@ -153,6 +153,39 @@ void draw_util_text(i3String *text, surface_t *surface, color_t fg_color, color_
+diff -rupN a/libi3/draw_util.c b/libi3/draw_util.c
+--- a/libi3/draw_util.c	2016-03-06 10:17:18.000000000 -0500
++++ b/libi3/draw_util.c	2016-10-17 15:33:47.585190738 -0400
+@@ -153,6 +153,39 @@ void draw_util_text(i3String *text, surf
  #endif
  }
  
@@ -98,11 +93,52 @@ index dcd881c..3bc7ff9 100644
  /**
   * Draws a filled rectangle.
   * This function is a convenience wrapper and takes care of flushing the
-diff --git a/src/manage.c b/src/manage.c
-index 93272f1..ee87850 100644
---- a/src/manage.c
-+++ b/src/manage.c
-@@ -92,6 +92,8 @@ void manage_window(xcb_window_t window, xcb_get_window_attributes_cookie_t cooki
+diff -rupN a/src/handlers.c b/src/handlers.c
+--- a/src/handlers.c	2016-03-06 10:17:18.000000000 -0500
++++ b/src/handlers.c	2016-10-17 15:33:47.585190738 -0400
+@@ -1295,6 +1295,20 @@ static bool handle_strut_partial_change(
+     return true;
+ }
+ 
++static bool handle_windowicon_change(void *data, xcb_connection_t *conn, uint8_t state,
++                                     xcb_window_t window, xcb_atom_t atom, xcb_get_property_reply_t *prop) {
++    Con *con;
++    if ((con = con_by_window_id(window)) == NULL || con->window == NULL)
++        return false;
++
++    window_update_icon(con->window, prop);
++
++    x_push_changes(croot);
++
++    return true;
++}
++
++
+ /* Returns false if the event could not be processed (e.g. the window could not
+  * be found), true otherwise */
+ typedef bool (*cb_property_handler_t)(void *data, xcb_connection_t *c, uint8_t state, xcb_window_t window, xcb_atom_t atom, xcb_get_property_reply_t *property);
+@@ -1315,7 +1329,8 @@ static struct property_handler_t propert
+     {0, 128, handle_windowrole_change},
+     {0, 128, handle_class_change},
+     {0, UINT_MAX, handle_strut_partial_change},
+-    {0, UINT_MAX, handle_window_type}};
++    {0, UINT_MAX, handle_window_type},
++    {0, UINT_MAX, handle_windowicon_change}};
+ #define NUM_HANDLERS (sizeof(property_handlers) / sizeof(struct property_handler_t))
+ 
+ /*
+@@ -1336,6 +1351,7 @@ void property_handlers_init(void) {
+     property_handlers[7].atom = XCB_ATOM_WM_CLASS;
+     property_handlers[8].atom = A__NET_WM_STRUT_PARTIAL;
+     property_handlers[9].atom = A__NET_WM_WINDOW_TYPE;
++    property_handlers[10].atom = A__NET_WM_ICON;
+ }
+ 
+ static void property_notify(uint8_t state, xcb_window_t window, xcb_atom_t atom) {
+diff -rupN a/src/manage.c b/src/manage.c
+--- a/src/manage.c	2016-03-06 10:17:18.000000000 -0500
++++ b/src/manage.c	2016-10-17 15:33:47.585190738 -0400
+@@ -92,6 +92,8 @@ void manage_window(xcb_window_t window,
          role_cookie, startup_id_cookie, wm_hints_cookie,
          wm_normal_hints_cookie, motif_wm_hints_cookie, wm_user_time_cookie, wm_desktop_cookie;
  
@@ -111,7 +147,7 @@ index 93272f1..ee87850 100644
      geomc = xcb_get_geometry(conn, d);
  
      /* Check if the window is mapped (it could be not mapped when intializing and
-@@ -163,6 +165,7 @@ void manage_window(xcb_window_t window, xcb_get_window_attributes_cookie_t cooki
+@@ -163,6 +165,7 @@ void manage_window(xcb_window_t window,
      motif_wm_hints_cookie = GET_PROPERTY(A__MOTIF_WM_HINTS, 5 * sizeof(uint64_t));
      wm_user_time_cookie = GET_PROPERTY(A__NET_WM_USER_TIME, UINT32_MAX);
      wm_desktop_cookie = GET_PROPERTY(A__NET_WM_DESKTOP, UINT32_MAX);
@@ -119,7 +155,7 @@ index 93272f1..ee87850 100644
  
      DLOG("Managing window 0x%08x\n", window);
  
-@@ -176,6 +179,7 @@ void manage_window(xcb_window_t window, xcb_get_window_attributes_cookie_t cooki
+@@ -176,6 +179,7 @@ void manage_window(xcb_window_t window,
      window_update_class(cwindow, xcb_get_property_reply(conn, class_cookie, NULL), true);
      window_update_name_legacy(cwindow, xcb_get_property_reply(conn, title_cookie, NULL), true);
      window_update_name(cwindow, xcb_get_property_reply(conn, utf8_title_cookie, NULL), true);
@@ -127,7 +163,7 @@ index 93272f1..ee87850 100644
      window_update_leader(cwindow, xcb_get_property_reply(conn, leader_cookie, NULL));
      window_update_transient_for(cwindow, xcb_get_property_reply(conn, transient_cookie, NULL));
      window_update_strut_partial(cwindow, xcb_get_property_reply(conn, strut_cookie, NULL));
-@@ -184,6 +188,8 @@ void manage_window(xcb_window_t window, xcb_get_window_attributes_cookie_t cooki
+@@ -184,6 +188,8 @@ void manage_window(xcb_window_t window,
      window_update_hints(cwindow, xcb_get_property_reply(conn, wm_hints_cookie, NULL), &urgency_hint);
      border_style_t motif_border_style = BS_NORMAL;
      window_update_motif_hints(cwindow, xcb_get_property_reply(conn, motif_wm_hints_cookie, NULL), &motif_border_style);
@@ -136,11 +172,10 @@ index 93272f1..ee87850 100644
      xcb_size_hints_t wm_size_hints;
      if (!xcb_icccm_get_wm_size_hints_reply(conn, wm_normal_hints_cookie, &wm_size_hints, NULL))
          memset(&wm_size_hints, '\0', sizeof(xcb_size_hints_t));
-diff --git a/src/render.c b/src/render.c
-index 9fa40f0..26d12a3 100644
---- a/src/render.c
-+++ b/src/render.c
-@@ -127,6 +127,10 @@ void render_con(Con *con, bool render_fullscreen) {
+diff -rupN a/src/render.c b/src/render.c
+--- a/src/render.c	2016-03-06 10:17:18.000000000 -0500
++++ b/src/render.c	2016-10-17 15:33:47.585190738 -0400
+@@ -127,6 +127,10 @@ void render_con(Con *con, bool render_fu
      /* find the height for the decorations */
      params.deco_height = render_deco_height();
  
@@ -151,10 +186,9 @@ index 9fa40f0..26d12a3 100644
      /* precalculate the sizes to be able to correct rounding errors */
      params.sizes = precalculate_sizes(con, &params);
  
-diff --git a/src/window.c b/src/window.c
-index d10811f..b18927d 100644
---- a/src/window.c
-+++ b/src/window.c
+diff -rupN a/src/window.c b/src/window.c
+--- a/src/window.c	2016-03-06 10:17:18.000000000 -0500
++++ b/src/window.c	2016-10-17 15:33:47.585190738 -0400
 @@ -19,6 +19,7 @@ void window_free(i3Window *win) {
      FREE(win->class_class);
      FREE(win->class_instance);
@@ -163,7 +197,7 @@ index d10811f..b18927d 100644
      FREE(win->ran_assignments);
      FREE(win);
  }
-@@ -367,3 +368,87 @@ void window_update_motif_hints(i3Window *win, xcb_get_property_reply_t *prop, bo
+@@ -367,3 +368,88 @@ void window_update_motif_hints(i3Window
  #undef MWM_DECOR_BORDER
  #undef MWM_DECOR_TITLE
  }
@@ -244,6 +278,7 @@ index d10811f..b18927d 100644
 +    }
 +
 +    LOG("Got _NET_WM_ICON of size: (%d,%d)\n", data[0], data[1]);
++    win->name_x_changed = true; // trigger a redraw
 +
 +    FREE(win->icon);
 +    win->icon = malloc(16 * 16 * sizeof(uint32_t));
@@ -251,10 +286,9 @@ index d10811f..b18927d 100644
 +
 +    FREE(prop);
 +}
-diff --git a/src/x.c b/src/x.c
-index f44bc37..bfc5eba 100644
---- a/src/x.c
-+++ b/src/x.c
+diff -rupN a/src/x.c b/src/x.c
+--- a/src/x.c	2016-03-06 10:17:18.000000000 -0500
++++ b/src/x.c	2016-10-17 15:33:47.585190738 -0400
 @@ -571,6 +571,10 @@ void x_draw_decoration(Con *con) {
      //DLOG("indent_level = %d, indent_mult = %d\n", indent_level, indent_mult);
      int indent_px = (indent_level * 5) * indent_mult;
