@@ -1,0 +1,19 @@
+pkgbase = python-git-repo
+	pkgdesc = Tool for managing remote repositories from your git CLI!
+	pkgver = 1.7.4
+	pkgrel = 1
+	url = https://github.com/guyzmo/git-repo
+	arch = any
+	license = GPL2
+	makedepends = python-setuptools
+	makedepends = python-pip
+	depends = python
+	source = python-git-repo-1.7.4.src.tar.gz::https://github.com/guyzmo/git-repo/archive/1.7.4.tar.gz
+	source = requirements.txt.patch
+	source = setup.py.patch
+	sha1sums = 9818723314283ed1ce5663d08dc900c986ea5686
+	sha1sums = 4689336862b4e8db09d2ca8f78b79544e32f2e3b
+	sha1sums = 7ec358708c3250907e858028245351157bbb528c
+
+pkgname = python-git-repo
+

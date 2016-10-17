@@ -1,0 +1,11 @@
+--- src/git-repo-1.7.3/setup.py	2016-10-13 17:14:24.000000000 +0800
++++ src/git-repo-1.7.3/setup.py.modi	2016-10-16 18:44:12.420701273 +0800
+@@ -222,7 +222,7 @@
+       ],
+       long_description_markdown_filename='README.md',
+       include_package_data = True,
+-      install_requires=requirements(),
++      install_requires=requirements('prod'),
+       tests_require=requirements('test'),
+       dependency_links=requirements_links,
+       cmdclass={
