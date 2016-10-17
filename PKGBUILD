@@ -2,7 +2,7 @@
 # Contributor: Cilyan Olowen <gaknar@gmail.com>
 
 pkgname=sugar-toolkit
-pkgver=0.98.1
+pkgver=0.110.0
 pkgrel=1
 pkgdesc="Set of widgets for Sugar applications"
 arch=('any')
@@ -11,11 +11,12 @@ license=('GPL')
 groups=('sugar-desktop' 'glucose')
 depends=('python2' 'sugar-datastore' 'sugar-presence-service' 'hippo-canvas' 'alsa-lib' 'python2-gconf' 'python2-rsvg')
 makedepends=('intltool>=0.33' 'gcc' 'perl>=5.8.1')
-source=(http://download.sugarlabs.org/sources/sucrose/glucose/${pkgname}/${pkgname}-${pkgver}.tar.bz2)
-md5sums=('ff0e201eb0f404a6d2fa7297d5b723c1')
+source=(https://github.com/sugarlabs/${pkgname}/archive/v${pkgver}.tar.gz)
+md5sums=('4c9f8316324b1107ab568690d1be4698')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
+  PYTHON=python2 ./autogen.sh
   PYTHON=python2 ./configure --prefix=/usr
   make
 }

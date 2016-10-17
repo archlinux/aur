@@ -1,6 +1,6 @@
 pkgbase = sugar-toolkit
 	pkgdesc = Set of widgets for Sugar applications
-	pkgver = 0.98.1
+	pkgver = 0.110.0
 	pkgrel = 1
 	url = http://www.sugarlabs.org/
 	arch = any
@@ -17,8 +17,8 @@ pkgbase = sugar-toolkit
 	depends = alsa-lib
 	depends = python2-gconf
 	depends = python2-rsvg
-	source = http://download.sugarlabs.org/sources/sucrose/glucose/sugar-toolkit/sugar-toolkit-0.98.1.tar.bz2
-	md5sums = ff0e201eb0f404a6d2fa7297d5b723c1
+	source = https://github.com/sugarlabs/sugar-toolkit/archive/v0.110.0.tar.gz
+	md5sums = 4c9f8316324b1107ab568690d1be4698
 
 pkgname = sugar-toolkit
 
