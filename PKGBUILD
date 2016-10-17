@@ -1,7 +1,7 @@
 # Maintainer: David Parrish <daveparrish@tutanota.com>
 
-pkgname=diffutils-git-patched-exclude-directory
-pkgver=3.5.r7.g84387b8
+pkgname=diffutils-patched-exclude-directory-git
+pkgver=3.5.r8.g1c1de41
 pkgrel=1
 pkgdesc='Utility programs used for creating patch files, including exclude directory feature'
 arch=('i686' 'x86_64')
