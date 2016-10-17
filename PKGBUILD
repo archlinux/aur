@@ -2,7 +2,7 @@
 
 pkgname=ffmpeg-compat-54
 pkgver=1.2.1
-pkgrel=3
+pkgrel=4
 pkgdesc="Compatibility package for ffmpeg to provide versions 54 of libavcodec, libavdevice and libavformat, not anymore provided by the ffmpeg package"
 arch=('i686' 'x86_64')
 url="http://ffmpeg.org/"
@@ -11,6 +11,7 @@ depends=('gsm' 'lame' 'opencore-amr' 'openjpeg' 'opus' 'rtmpdump' 'libvpx'
          'schroedinger' 'speex' 'v4l-utils' 'xvidcore' 'libpulse'  'libx264'
          'libtheora' 'libbluray' 'libmodplug' 'sdl' 'jack' 'libavutil-52')
 makedepends=('yasm' 'libass')
+provides=('libavcodec.so' 'libavdevice.so' 'libavformat.so')
 source=("http://ffmpeg.org/releases/ffmpeg-${pkgver}.tar.bz2"
         "libvpx_VP8E_UPD_ENTROPY.patch"::"https://git.videolan.org/?p=ffmpeg.git;a=commitdiff_plain;h=6540fe04a3f9a11ba7084a49b3ee5fa2fc5b32ab")
 sha256sums=('0302375c3a64e9c2facfa7cbeb1aa333a39fdf6bbacda228cd48e04bf9ee32ca'
