@@ -1,0 +1,17 @@
+pkgbase = eapol_test
+	pkgdesc = EAP peer and RADIUS client testing
+	pkgver = 2.6
+	pkgrel = 1
+	epoch = 1
+	url = https://w1.fi/wpa_supplicant/devel/testing_tools.html#eapol_test
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = wpa_supplicant
+	source = http://w1.fi/releases/wpa_supplicant-2.6.tar.gz
+	source = config
+	sha256sums = b4936d34c4e6cdd44954beba74296d964bc2c9668ecaa5255e499636fe2b1450
+	sha256sums = 5163609e133851dfbbee5982954fab22e45bf2c9093e43eb466d8a2c39f8a012
+
+pkgname = eapol_test
+
