@@ -1,6 +1,6 @@
 pkgbase = streamstudio-bin
 	pkgdesc = Provide a popcorntime clone for streaming movies directly from T411, Cpasbien, Songza, Twitch, Piratebay, Youtube and Dailymotion
-	pkgver = 2.9.9.7
+	pkgver = 2.9.9.8
 	pkgrel = 1
 	url = https://www.streamstudio.me/
 	install = streamstudio.install
@@ -22,7 +22,7 @@ pkgbase = streamstudio-bin
 	source = https://streamstudio.me/StreamStudio/streamstudio-64.zip
 	source = streamstudio.desktop
 	source = streamstudio.install
-	sha256sums = 651d81225bb676ce63b49b1abbff2dc6debe47d2a34711f984580cb588b11d13
+	sha256sums = c193f976c733d89b23995cd92255e5f01a5aba0677bebacfc2995a1e5d1d6e6f
 	sha256sums = b082d39935fd289695ad9a10c9adc3cbe9963555cd410d1d83ceb9055463275b
 	sha256sums = 4dc8715a81bfd1297f99b3e5f41f9f50936bbf7779b9bc4ef9231261053b76ea
 
