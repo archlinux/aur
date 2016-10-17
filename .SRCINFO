@@ -1,6 +1,6 @@
 pkgbase = shgreeter
 	pkgdesc = If placed in the proper directory, this script greets the user and offers some potentially interesting information about the system's current resources.
-	pkgver = 1.4
+	pkgver = 1.6
 	pkgrel = 1
 	url = https://github.com/jcjordyn130/shgreeter
 	arch = any
@@ -9,8 +9,8 @@ pkgbase = shgreeter
 	depends = bash
 	depends = coreutils
 	optdepends = lsb-release: for outputing the name of the distro
-	source = https://github.com/jcjordyn130/shgreeter/archive/v1.4.tar.gz
-	sha512sums = 08ba06cdd7b65ce80247ad6a938e88329dcbbbbac8ddbbd9d07eaf8dafb64d3a3bf673b20d12502700420784e69d6a0e3b1071a6240e930504e6bceeca00a81b
+	source = https://github.com/jcjordyn130/shgreeter/archive/v1.6.tar.gz
+	sha512sums = f7052bc54a64e5949b953d4142bab0b6ce4512730920f7ac42f2266c5448b0deeca32e5ebda7a39f85bcc126fcbe6eeb2d12413b52eee725787a1317cbb6a50f
 
 pkgname = shgreeter
 
