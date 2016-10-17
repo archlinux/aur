@@ -11,9 +11,11 @@ pkgbase = pyotherside
 	makedepends = qt5-base
 	makedepends = python
 	makedepends = qt5-declarative
+	makedepends = qt5-svg
 	depends = qt5-base
 	depends = python
 	depends = qt5-declarative
+	depends = qt5-svg
 	source = http://thp.io/2011/pyotherside/pyotherside-1.5.0.tar.gz
 	sha1sums = ef99af3bf05a032b8c2b2908a97dff50a03fc822
 
