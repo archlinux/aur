@@ -2,7 +2,8 @@
 
 pkgname=sportstracker-bin
 _pkgname=sportstracker
-pkgver=7.1.0
+_PkgName=SportsTracker
+pkgver=7.3.0
 pkgrel=1
 pkgdesc="Application for people which want to record their sporting activities ; stand-alone version with its own java"
 url="http://www.saring.de/sportstracker/"
@@ -11,8 +12,8 @@ license=('GPL')
 makedepends=('tar')
 provides=(sportstracker)
 conflicts=(sportstracker)
-source=("http://freefr.dl.sourceforge.net/project/${_pkgname}/SportsTracker/SportsTracker%20${pkgver}/Ubuntu-64bit/${_pkgname}-${pkgver}.deb")
-md5sums=('3307b8e528bc27f7a1b26643a0436db8')
+source=("http://netix.dl.sourceforge.net/project/${_pkgname}/${_PkgName}/${_PkgName}%20${pkgver}/Ubuntu-64bit/${_pkgname}-${pkgver}.deb")
+md5sums=('19ef0ba87e3473fb13c6df8d25093faf')
 
 package() {
   cd $srcdir
@@ -21,5 +22,5 @@ package() {
   cp -rp opt $pkgdir
   mkdir -p $pkgdir/usr/share/applications
   cd $pkgdir
-  mv opt/SportsTracker/SportsTracker.desktop usr/share/applications/
+  mv opt/${_PkgName}/${_PkgName}.desktop usr/share/applications/
 }
