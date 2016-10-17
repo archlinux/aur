@@ -1,7 +1,7 @@
 # Maintainer: Your Name <Alchemy-aur@bartus.33mail.com>
 pkgname=alchemy-svn
 pkgver=r574
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 pkgdesc="Nonorthodox painting software exploring and experimenting with alternative ways of drawing"
 url="http://al.chemy.org/"
