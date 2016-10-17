@@ -2,4 +2,4 @@
 cd /etc/terraria-server
 export MONO_IOMAP=all
 arch=$(uname -m)
-./TerrariaServer.bin.${arch} -config config.txt "$@"
+./TerrariaServer.bin.${arch} "$@"
