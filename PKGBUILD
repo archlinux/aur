@@ -5,7 +5,7 @@
 # Maintainer: Uffe Jakobsen <microtop@starion.dk>
 #
 pkgname=opencbm-git
-pkgver=r1226.e22583a
+pkgver=r1229.dbeb7de
 pkgrel=1
 epoch=
 pkgdesc="OpenCBM allows access to Commodore (C64) storage devices VIC 1540, 1541, 1570, 1571, or even 1581 floppy drive"
@@ -27,8 +27,10 @@ options=()
 install=
 changelog=
 noextract=()
-source=(git+http://git.code.sf.net/p/opencbm/code)
-md5sums=('SKIP')
+source=(git+http://git.code.sf.net/p/opencbm/code
+        opencbm_usb_USB_LE16_TO_CPU_le16toh.patch)
+md5sums=('SKIP'
+         '460f571c2f1e2b80c10ade19a831fbed')
 
 pkgver() {
   cd "${srcdir}/code"
@@ -41,7 +43,8 @@ prepare() {
 
 build() {
   cd "${srcdir}/code"
-  make -f LINUX/Makefile opencbm plugin-xum1541
+  #make -f LINUX/Makefile opencbm plugin-xum1541
+  make -f LINUX/Makefile opencbm plugin
 }
 
 check() {
@@ -51,7 +54,7 @@ check() {
 package() {
   cd "${srcdir}/code"
   mkdir -p "${pkgdir}/etc/udev/rules.d"
-  make -f LINUX/Makefile PREFIX="/usr" MANDIR="/usr/share/man/man1" INFODIR="/usr/share/info" DESTDIR="${pkgdir}/" install install-plugin-xum1541
+  make -f LINUX/Makefile PREFIX="/usr" MANDIR="/usr/share/man/man1" INFODIR="/usr/share/info" DESTDIR="${pkgdir}/" install install-plugin
   mv "${pkgdir}/etc/opencbm.conf" "${pkgdir}/etc/opencbm.conf.sample"
   # remove kernel modules - not supported by this pkg
   rm -rf "${pkgdir}/lib/modules"
