@@ -15,6 +15,7 @@ pkgbase = alchemy-svn
 	depends = libxrender
 	depends = libxcomposite
 	depends = libxtst
+	conflicts = alchemy
 	source = alchemy-svn::svn+http://svn.al.chemy.org/svn/
 	source = alchemy.desktop
 	md5sums = SKIP
