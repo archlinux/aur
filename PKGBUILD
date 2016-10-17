@@ -4,8 +4,8 @@ _gtk3_min='3.18'
 _gtk3_max='3.22'
 _theme_name=Adapta
 _gtk2_min='2.24.30'
-pkgver="${_gtk3_max}.1.101"
-pkgrel=2
+pkgver="${_gtk3_max}.1.108"
+pkgrel=1
 pkgdesc="An adaptive Gtk+ theme based on Material Design Guidelines."
 arch=(any)
 url="https://github.com/adapta-project/${pkgname}"
@@ -32,7 +32,7 @@ makedepends=('glib2>=2.48.0'
              'inkscape'
              'parallel')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
-sha256sums=('0b3080df1991f0290077d328df09a0017f4117155b9ca786647283c1ae063a16')
+sha256sums=('192224ee563a4e89dd22dc90f1c9e8cbd34a352569d3cc9fd020b5314d27754e')
 
 _bundle="ruby-bundle"
 
@@ -46,8 +46,7 @@ build() {
     export BUNDLE_PATH="${srcdir}/${_bundle}"
     export PATH="${BUNDLE_PATH}/bin:${PATH}"
     cd "${pkgname}-${pkgver}"
-    ./autogen.sh --prefix "${pkgdir}/usr" \
-                 --enable-gtk_next \
+    ./autogen.sh --enable-gtk_next \
                  --enable-chrome \
                  --enable-plank \
                  --enable-parallel
@@ -56,6 +55,6 @@ build() {
 
 package() {
     cd "${pkgname}-${pkgver}"
-    make install -j 8
+    make DESTDIR="$pkgdir" install -j 8
 }
 
