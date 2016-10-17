@@ -1,7 +1,7 @@
 # Maintainer: Dustin Falgout <dustin@antergos.com>
 
 pkgname=lightdm-webkit2-greeter
-pkgver=2.1.5
+pkgver=2.1.6
 pkgrel=1
 pkgdesc="A webkit2 greeter for LightDM"
 arch=('i686' 'x86_64')
@@ -14,7 +14,7 @@ provides=('lightdm-webkit-greeter' 'lightdm-webkit-theme-antergos')
 conflicts=('lightdm-webkit-greeter' 'lightdm-webkit-theme-antergos')
 replaces=('lightdm-webkit-greeter' 'lightdm-webkit-theme-antergos')
 backup=("etc/lightdm/${pkgname}.conf")
-md5sums=('eda7626d463c80e0dbb81a679b124911')
+md5sums=('29f653377cb59475cd478b650ed24aef')
 
 build() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
