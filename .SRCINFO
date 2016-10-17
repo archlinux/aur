@@ -11,6 +11,7 @@ pkgbase = mve-git
 	makedepends = go-md2man
 	makedepends = gcc5
 	makedepends = cmake
+	makedepends = gtest
 	depends = libjpeg
 	depends = libtiff
 	depends = libpng
