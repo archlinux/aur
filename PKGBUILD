@@ -1,6 +1,6 @@
 # Maintainer: Jordyn Carattini <onlinecloud1@gmail.com>
 pkgname="shgreeter-git"
-pkgver=r20.a8c1292
+pkgver=20161017
 pkgrel=1
 pkgdesc="If placed in the proper directory, this script greets the user and offers some potentially interesting information about the system's current resources."
 url="https://github.com/jcjordyn130/shgreeter"
@@ -13,9 +13,8 @@ makedepends=('git')
 optdepends=('lsb-release: for outputing the name of the distro')
 
 pkgver() {
-  # Update the pkgver from the git revision
-  cd ${srcdir}/shgreeter
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  # Update the pkgver to the date makepkg was run
+  echo $(date +%Y%m%d)
 }
 
 package() {
