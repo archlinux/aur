@@ -2,8 +2,8 @@
 
 pkgname=iprange-git
 _gitname=iprange
-pkgver=v1.0.2.r11.gab6eb9e
-pkgrel=2
+pkgver=v1.0.3.r1.g2626207
+pkgrel=1
 pkgdesc="Manage IP ranges. From the FireHOL project."
 url="http://firehol.org/"
 arch=('i686' 'x86_64' 'armv7h')
