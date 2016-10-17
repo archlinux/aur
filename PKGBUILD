@@ -8,7 +8,7 @@ url="http://bitbucket.org/lgs/pycha/"
 license=('LGPL')
 depends=('python2')
 makedepends=('python2-distribute' 'mercurial')
-source=hg+https://bitbucket.org/lgs/pycha
+source=('hg+https://bitbucket.org/lgs/pycha')
 md5sums=('SKIP')
 _hgrepo="pycha"
 
