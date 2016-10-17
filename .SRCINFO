@@ -1,6 +1,6 @@
 pkgbase = pi-hole-standalone
 	pkgdesc = The Pi-hole is an advertising-aware DNS/Web server. Arch alteration for standalone PC.
-	pkgver = 2.9.2
+	pkgver = 2.9.3
 	pkgrel = 1
 	url = https://github.com/pi-hole/pi-hole
 	install = pi-hole-standalone.install
@@ -11,7 +11,7 @@ pkgbase = pi-hole-standalone
 	conflicts = pi-hole-server
 	backup = etc/pihole/whitelist.txt
 	backup = etc/pihole/blacklist.txt
-	source = https://github.com/pi-hole/pi-hole/archive/V2.9.2.tar.gz
+	source = https://github.com/pi-hole/pi-hole/archive/v2.9.3.tar.gz
 	source = configuration
 	source = dnsmasq.complete
 	source = dnsmasq.include
@@ -20,7 +20,7 @@ pkgbase = pi-hole-standalone
 	source = whitelist.txt
 	source = blacklist.txt
 	source = mimic_setupVars.conf.sh
-	md5sums = 5990bb4d9a1516608b75cc8ed6fb6bfb
+	md5sums = c0ae73a3b7fe2d5171917384bb1e4dd9
 	md5sums = 334a055a32b5479141baea8011a9f928
 	md5sums = fa485f038d577c354068410ed1159d94
 	md5sums = 1b2e808b699a6b58647641f12379f65d
@@ -28,7 +28,7 @@ pkgbase = pi-hole-standalone
 	md5sums = d42a864f88299998f8233c0bc0dd093d
 	md5sums = d41d8cd98f00b204e9800998ecf8427e
 	md5sums = d41d8cd98f00b204e9800998ecf8427e
-	md5sums = ea9f51e8e156bfe7c8133775c62091a1
+	md5sums = f6e48b0ca309be5dbc38bfe5351890f9
 
 pkgname = pi-hole-standalone
 

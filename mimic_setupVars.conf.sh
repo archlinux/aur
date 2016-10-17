@@ -12,9 +12,9 @@ getDNSs()
 # official pihole basic-install.sh code here
 getIPv4stuff()
 {
-	piholeInterface=$(ip route get 8.8.8.8 | awk '{for(i=1;i<=NF;i++)if($i~/dev/)print $(i+1)}')
+	IPv4dev=$(ip route get 8.8.8.8 | awk '{for(i=1;i<=NF;i++)if($i~/dev/)print $(i+1)}')
 	# change local ip to unusable 0.0.0.0 (ref. http://dlaa.me/blog/post/skyhole), and :: for ipv6
-	piholeIPv4="0.0.0.0"
+	IPv4_address="0.0.0.0"
 }
 
 # official pihole basic-install.sh code here
@@ -22,7 +22,7 @@ getIPv6stuff()
 {
 	if [ -e /proc/net/if_inet6 ]; then
 		# change local ip to unusable 0.0.0.0 (ref. http://dlaa.me/blog/post/skyhole), and :: for ipv6
-		piholeIPv6="::"
+		IPv6_address="::"
 	fi
 }
 
@@ -30,14 +30,15 @@ getIPv6stuff()
 finalExports() {
     #If it already exists, lets overwrite it with the new values.
     if [[ -f ${setupVars} ]];then
-        ${SUDO} rm ${setupVars}
+        rm ${setupVars}
     fi
-    ${SUDO} echo "piholeInterface=${piholeInterface}" >> ${setupVars}
-    ${SUDO} echo "IPv4addr=${piholeIPv4}" >> ${setupVars}
-    ${SUDO} echo "piholeIPv4=${piholeIPv4}" >> ${setupVars}
-    ${SUDO} echo "piholeIPv6=${piholeIPv6}" >> ${setupVars}
-    ${SUDO} echo "piholeDNS1=${piholeDNS1}" >> ${setupVars}
-    ${SUDO} echo "piholeDNS2=${piholeDNS2}" >> ${setupVars}
+    {
+    echo "piholeInterface=${IPv4dev}"
+    echo "IPv4_address=${IPv4_address}"
+    echo "IPv6_address=${IPv6_address}"
+    echo "piholeDNS1=${piholeDNS1}"
+    echo "piholeDNS2=${piholeDNS2}"
+    }>> "${setupVars}"
 }
 
 getDNSs

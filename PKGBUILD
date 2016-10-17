@@ -2,7 +2,7 @@
 
 pkgname=pi-hole-standalone
 _pkgname=pi-hole
-pkgver=2.9.2
+pkgver=2.9.3
 pkgrel=1
 pkgdesc='The Pi-hole is an advertising-aware DNS/Web server. Arch alteration for standalone PC.'
 arch=('any')
@@ -13,7 +13,7 @@ conflicts=('pi-hole-server')
 install=$pkgname.install
 backup=('etc/pihole/whitelist.txt' 'etc/pihole/blacklist.txt')
 
-source=(https://github.com/$_pkgname/$_pkgname/archive/V$pkgver.tar.gz
+source=(https://github.com/$_pkgname/$_pkgname/archive/v$pkgver.tar.gz
 	configuration
 	dnsmasq.complete
 	dnsmasq.include
@@ -23,7 +23,7 @@ source=(https://github.com/$_pkgname/$_pkgname/archive/V$pkgver.tar.gz
 	blacklist.txt
 	mimic_setupVars.conf.sh)
 
-md5sums=('5990bb4d9a1516608b75cc8ed6fb6bfb'
+md5sums=('c0ae73a3b7fe2d5171917384bb1e4dd9'
          '334a055a32b5479141baea8011a9f928'
          'fa485f038d577c354068410ed1159d94'
          '1b2e808b699a6b58647641f12379f65d'
@@ -31,7 +31,7 @@ md5sums=('5990bb4d9a1516608b75cc8ed6fb6bfb'
          'd42a864f88299998f8233c0bc0dd093d'
          'd41d8cd98f00b204e9800998ecf8427e'
          'd41d8cd98f00b204e9800998ecf8427e'
-         'ea9f51e8e156bfe7c8133775c62091a1')
+         'f6e48b0ca309be5dbc38bfe5351890f9')
 
 prepare() {
   _ssc="/tmp/sedcontrol"
@@ -48,81 +48,55 @@ prepare() {
 
 # -----------------
 
-  # modify service management
-  sed -i 's|\[\[ \${dnsmasqPid} \]\]|systemctl is-active dnsmasq 2\>\&1 \>\/dev\/null|'"w $_ssc" "$srcdir"/$_pkgname-$pkgver/gravity.sh
-  if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: modify service management 1" && return 1 ; fi
-  sed -i "s|\${SUDO} killall -s HUP dnsmasq|\${SUDO} systemctl reload dnsmasq|w $_ssc" "$srcdir"/$_pkgname-$pkgver/gravity.sh
-  if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: modify service management 2" && return 1 ; fi
-  sed -i "s|\${SUDO} service dnsmasq start|\${SUDO} systemctl start dnsmasq|w $_ssc" "$srcdir"/$_pkgname-$pkgver/gravity.sh
-  if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: modify service management 3" && return 1 ; fi
-
-  sed -n "/dnsmasqPid\=/w $_ssc" "$srcdir"/$_pkgname-$pkgver/advanced/Scripts/whitelist.sh
-  if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: modify service management 4" && return 1 ; fi
-  sed -i '/dnsmasqPid\=/d' "$srcdir"/$_pkgname-$pkgver/advanced/Scripts/whitelist.sh
-  sed -i 's|\[\[ \${dnsmasqPid} \]\]|systemctl is-active dnsmasq 2\>\&1 \>\/dev\/null|'"w $_ssc" "$srcdir"/$_pkgname-$pkgver/advanced/Scripts/whitelist.sh
-  if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: modify service management 5" && return 1 ; fi
-  sed -i "s|\${SUDO} killall -s HUP dnsmasq|\${SUDO} systemctl reload dnsmasq|w $_ssc" "$srcdir"/$_pkgname-$pkgver/advanced/Scripts/whitelist.sh
-  if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: modify service management 6" && return 1 ; fi
-  sed -i "s|\${SUDO} service dnsmasq start|\${SUDO} systemctl start dnsmasq|w $_ssc" "$srcdir"/$_pkgname-$pkgver/advanced/Scripts/whitelist.sh
-  if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: modify service management 7" && return 1 ; fi
-
-  sed -n "/dnsmasqPid\=/w $_ssc" "$srcdir"/$_pkgname-$pkgver/advanced/Scripts/blacklist.sh
-  if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: modify service management 8" && return 1 ; fi
-  sed -i '/dnsmasqPid\=/d' "$srcdir"/$_pkgname-$pkgver/advanced/Scripts/blacklist.sh
-  sed -i 's|\[\[ \${dnsmasqPid} \]\]|systemctl is-active dnsmasq 2\>\&1 \>\/dev\/null|'"w $_ssc" "$srcdir"/$_pkgname-$pkgver/advanced/Scripts/blacklist.sh
-  if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: modify service management 9" && return 1 ; fi
-  sed -i "s|\${SUDO} killall -s HUP dnsmasq|\${SUDO} systemctl reload dnsmasq|w $_ssc" "$srcdir"/$_pkgname-$pkgver/advanced/Scripts/blacklist.sh
-  if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: modify service management 10" && return 1 ; fi
-  sed -i "s|\${SUDO} service dnsmasq start|\${SUDO} systemctl start dnsmasq|w $_ssc" "$srcdir"/$_pkgname-$pkgver/advanced/Scripts/blacklist.sh
-  if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: modify service management 11" && return 1 ; fi
-
-# -----------------
-
   # setting up and securing pihole wrapper script
-  sed -n "/function debugFunc {/w $_ssc" "$srcdir"/$_pkgname-$pkgver/pihole
+  sed -n "/debugFunc() {/w $_ssc" "$srcdir"/$_pkgname-$pkgver/pihole
   if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: setting up and securing pihole wrapper script 1" && return 1 ; fi
-  sed -i '/function debugFunc {/,+4d' "$srcdir"/$_pkgname-$pkgver/pihole
+  sed -i '/debugFunc() {/,+4d' "$srcdir"/$_pkgname-$pkgver/pihole
 
-  sed -n "/function flushFunc {/w $_ssc" "$srcdir"/$_pkgname-$pkgver/pihole
+  sed -n "/flushFunc() {/w $_ssc" "$srcdir"/$_pkgname-$pkgver/pihole
   if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: setting up and securing pihole wrapper script 2" && return 1 ; fi
-  sed -i '/function flushFunc {/,+4d' "$srcdir"/$_pkgname-$pkgver/pihole
+  sed -i '/flushFunc() {/,+4d' "$srcdir"/$_pkgname-$pkgver/pihole
 
-  sed -n "/function versionFunc {/w $_ssc" "$srcdir"/$_pkgname-$pkgver/pihole
+  sed -n "/versionFunc() {/w $_ssc" "$srcdir"/$_pkgname-$pkgver/pihole
   if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: setting up and securing pihole wrapper script 3" && return 1 ; fi
-  sed -i '/function versionFunc {/,+4d' "$srcdir"/$_pkgname-$pkgver/pihole
+  sed -i '/versionFunc() {/,+4d' "$srcdir"/$_pkgname-$pkgver/pihole
 
-  sed -n "/function updatePiholeFunc {/w $_ssc" "$srcdir"/$_pkgname-$pkgver/pihole
+  sed -n "/updatePiholeFunc() {/w $_ssc" "$srcdir"/$_pkgname-$pkgver/pihole
   if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: setting up and securing pihole wrapper script 4" && return 1 ; fi
-  sed -i '/function updatePiholeFunc {/,+66d' "$srcdir"/$_pkgname-$pkgver/pihole
+  sed -i '/updatePiholeFunc() {/,+67d' "$srcdir"/$_pkgname-$pkgver/pihole
 
-  sed -n "/function setupLCDFunction {/w $_ssc" "$srcdir"/$_pkgname-$pkgver/pihole
+  sed -n "/setupLCDFunction() {/w $_ssc" "$srcdir"/$_pkgname-$pkgver/pihole
   if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: setting up and securing pihole wrapper script 5" && return 1 ; fi
-  sed -i '/function setupLCDFunction {/,+4d' "$srcdir"/$_pkgname-$pkgver/pihole
+  sed -i '/setupLCDFunction() {/,+4d' "$srcdir"/$_pkgname-$pkgver/pihole
 
-  sed -n "/function uninstallFunc {/w $_ssc" "$srcdir"/$_pkgname-$pkgver/pihole
+  sed -n "/uninstallFunc() {/w $_ssc" "$srcdir"/$_pkgname-$pkgver/pihole
   if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: setting up and securing pihole wrapper script 6" && return 1 ; fi
-  sed -i '/function uninstallFunc {/,+4d' "$srcdir"/$_pkgname-$pkgver/pihole
+  sed -i '/uninstallFunc() {/,+4d' "$srcdir"/$_pkgname-$pkgver/pihole
 
-  sed -n "/function chronometerFunc {/w $_ssc" "$srcdir"/$_pkgname-$pkgver/pihole
+  sed -n "/chronometerFunc() {/w $_ssc" "$srcdir"/$_pkgname-$pkgver/pihole
   if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: setting up and securing pihole wrapper script 7" && return 1 ; fi
-  sed -i '/function chronometerFunc {/,+4d' "$srcdir"/$_pkgname-$pkgver/pihole
+  sed -i '/chronometerFunc() {/,+4d' "$srcdir"/$_pkgname-$pkgver/pihole
+
+  sed -n "/reconfigurePiholeFunc() {/w $_ssc" "$srcdir"/$_pkgname-$pkgver/pihole
+  if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: setting up and securing pihole wrapper script 8" && return 1 ; fi
+  sed -i '/reconfigurePiholeFunc() {/,+4d' "$srcdir"/$_pkgname-$pkgver/pihole
 
   sed -n "/:::  \-[d,f,u,s,c,v]/w $_ssc" "$srcdir"/$_pkgname-$pkgver/pihole
-  if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: setting up and securing pihole wrapper script 8" && return 1 ; fi
+  if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: setting up and securing pihole wrapper script 9" && return 1 ; fi
   sed -i '/:::  \-[d,f,u,s,c,v]/d' "$srcdir"/$_pkgname-$pkgver/pihole
 
-  sed -n "/\"\-[d,f,u,s,c,v]/w $_ssc" "$srcdir"/$_pkgname-$pkgver/pihole
-  if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: setting up and securing pihole wrapper script 9" && return 1 ; fi
-  sed -i '/\"\-[d,f,u,s,c,v]/d' "$srcdir"/$_pkgname-$pkgver/pihole
+  sed -n "/\"\-[d,f,u,r,s,c,v]/w $_ssc" "$srcdir"/$_pkgname-$pkgver/pihole
+  if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: setting up and securing pihole wrapper script 10" && return 1 ; fi
+  sed -i '/\"\-[d,f,u,r,s,c,v]/d' "$srcdir"/$_pkgname-$pkgver/pihole
 
   sed -n "/uninstall/w $_ssc" "$srcdir"/$_pkgname-$pkgver/pihole
-  if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: setting up and securing pihole wrapper script 10" && return 1 ; fi
+  if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: setting up and securing pihole wrapper script 11" && return 1 ; fi
   sed -i '/uninstall/d' "$srcdir"/$_pkgname-$pkgver/pihole
 
 # -----------------
 
   # adlists.default is already there
-  sed -i "s/\${SUDO} cp \/etc\/.pihole\/adlists.default \/etc\/pihole\/adlists.default//w $_ssc" "$srcdir"/$_pkgname-$pkgver/gravity.sh
+  sed -i "s/cp \/etc\/.pihole\/adlists.default \/etc\/pihole\/adlists.default//w $_ssc" "$srcdir"/$_pkgname-$pkgver/gravity.sh
   if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: adlists.default is already there" && return 1 ; fi
 
 # -----------------
