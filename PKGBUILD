@@ -1,7 +1,7 @@
 # Maintainer: Skunnyk <skunnyk@archlinux.fr>
 pkgname=cassandra-cpp-driver
 _pkgname=cpp-driver
-pkgver=2.4.2
+pkgver=2.4.3
 pkgrel=1
 pkgdesc="DataStax C/C++ Driver for Apache Cassandra"
 arch=(i686 x86_64)
@@ -21,4 +21,4 @@ package() {
 	cd "$_pkgname-$pkgver"
 	make DESTDIR="$pkgdir/" install
 }
-sha256sums=('8558f9cdb98764542202d2c8bccc0a9230f689247a445b828833c5cf8957232f')
+sha256sums=('d3364d1b8bc71ec4409ff7432f10d1edbdb1329ab8315418858561065b024bdf')
