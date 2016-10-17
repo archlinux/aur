@@ -2,7 +2,7 @@
 
 pkgname=iscan-plugin-epson-v500-photo
 _pkgname=iscan-plugin-gt-x770
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 _pkgver=2.1.2
 _pkgrel=1
@@ -16,10 +16,10 @@ install=${pkgname}.install
 md5sums_install=('be4086b1e50cb7e2a2e5d5c1bb5a8848')
 
 source_i686=("https://download2.ebz.epson.net/iscan/plugin/gt-x770/deb/x86/iscan-gt-x770-bundle-${pkgver}.x86.deb.tar.gz")
-md5sums_i686+=('1006330345ac3969c70fb46b98578ab4')
+md5sums_i686+=('b703adb540de1b6e6cc8128c3e2605a1')
 
 source_x86_64=("https://download2.ebz.epson.net/iscan/plugin/gt-x770/deb/x64/iscan-gt-x770-bundle-${pkgver}.x64.deb.tar.gz")
-md5sums_x86_64+=('b960a5919ee1a9172780aa379db6fdd4')
+md5sums_x86_64+=('6f09e7c6705e84674b0f0e53154fd6b2')
 
 prepare() {
   if [ "$CARCH" = "i686" ] ; then
