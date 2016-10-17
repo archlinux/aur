@@ -1,1 +1,1 @@
-export LIBAPARAPI=/opt/AMDAPP/aparapi
+export LIBAPARAPI=/opt/AMDAPP/aparapi/lib

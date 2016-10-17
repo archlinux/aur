@@ -1,45 +1,38 @@
-# Maintainer: Vi0L0 <vi0l093@gmail.com>
+# Maintainer: Jeffrey Phillips Freeman <jeffrey.freeman@syncleus.com>
 
-pkgname=amdapp-aparapi
-pkgver=20130123
-_apaver=2013_01_23
+pkgname=aparapi
+pkgver=1.0.0
 pkgrel=1
-pkgdesc="AMD's API for data parallel Java. Uses OpenCL"
-url="http://code.google.com/p/aparapi/"
+pkgdesc="Syncleus's GPGPU API for data parallel Java. Uses OpenCL."
+url="https://github.com/Syncleus/aparapi-jni"
 arch=('i686' 'x86_64')
-license=('Other Open Source')
+license=('Apache')
 groups=('amdapp')
 depends=('java-environment')
-makedepends=('unzip')
-optdepends=('apache-ant')
+makedepends=('gzip')
 provides=('aparapi')
 install='aparapi.install'
 
 source=( 'aparapi.sh')
-md5sums=('994e47a2d20c1436dd4bb9586ef1b3f7')
+md5sums=('77d9fab729e9d953f23f4f9149c138c2')
 
-if [ "$CARCH" = "i686" ]; then
-  source+=(http://aparapi.googlecode.com/files/Aparapi_${_apaver}_linux_x86.zip)
-  md5sums+=('d7cc1af45772a98ca053dd6930980e88')
-else
-  source+=(http://aparapi.googlecode.com/files/Aparapi_${_apaver}_linux_x86_64.zip)
-  md5sums+=('068812301aa8197c5629ea15665a96ab')
-fi
+source+=( 'aparapi.conf')
+md5sums+=('a7e04cc30d00498ff733af771b721dca')
+
+source+=(https://github.com/Syncleus/aparapi-jni/releases/download/v${pkgver}/libaparapi-${pkgver}-linux.tar.gz)
+md5sums+=('cc28497f3befd355e4636c333ac6b9ab')
 
 package() {
-	mkdir -p "$pkgdir"/{opt/AMDAPP/aparapi,usr/share/licenses/aparapi,etc/profile.d}
+	mkdir -p "$pkgdir"/{opt/AMDAPP/aparapi/lib,etc/profile.d,etc/ld.so.conf.d}
 	cd ${srcdir}
 	install -m755 aparapi.sh "$pkgdir/etc/profile.d/"
 	cd ${srcdir}
-	mv LICENSE.TXT "$pkgdir/usr/share/licenses/aparapi/"
-	mv api samples aparapi.jar "$pkgdir/opt/AMDAPP/aparapi"
+	install -m644 aparapi.conf "$pkgdir/etc/ld.so.conf.d/"
 
+      cd libaparapi-${pkgver}
       if [ "${CARCH}" = "i686" ]; then
-	install -m755 libaparapi_x86.so "$pkgdir/opt/AMDAPP/aparapi"
+	install -m755 libaparapi_x86.so "$pkgdir/opt/AMDAPP/aparapi/lib"
       elif [ "${CARCH}" = "x86_64" ]; then
-	install -m755 libaparapi_x86_64.so "$pkgdir/opt/AMDAPP/aparapi"
-# 	install -m755 libaparapi_x86_64.dylib "$pkgdir/opt/AMDAPP/aparapi"
+	install -m755 libaparapi_x86_64.so "$pkgdir/opt/AMDAPP/aparapi/lib"
       fi
-
-	find $pkgdir/opt/AMDAPP/aparapi/samples -name \*.sh -exec chmod 755 {} \;
 } 
