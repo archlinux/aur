@@ -1,7 +1,7 @@
 pkgname=argon2-git
 _gitname="phc-winner-argon2"
 pkgdesc="The password hash Argon2, winner of PHC"
-pkgver=20160406.r31.g1daab72
+pkgver=20160821.r25.gfe4bd40
 pkgrel=1
 arch=('i686' 'x86_64')
 conflicts=("argon2")
@@ -30,8 +30,5 @@ check() {
 
 package() {
 	cd $_gitname
-	install -D -m755 "${srcdir}/${_gitname}/argon2" "${pkgdir}/usr/bin/argon2"
-	install -D -m755 "${srcdir}/${_gitname}/libargon2.so" "${pkgdir}/usr/lib/libargon2.so"
-	install -D -m644 "${srcdir}/${_gitname}/include/argon2.h" "${pkgdir}/usr/include/argon2.h"
-	ln -s "${pkgdir}/usr/lib/libargon2.so" "${pkgdir}/usr/lib/libargon2.so.0"
+	make DESTDIR="$pkgdir" install
 }
