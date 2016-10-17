@@ -37,12 +37,12 @@ package() {
 	install -dm755 ${pkgdir}/usr/share/doc/alchemy
 	cp -r -t ${pkgdir}/usr/share/doc/alchemy dist/javadoc/*
 	convert res/Alchemy.ico alchemy.png
-	install -Dm644 "alchemy-0.png" "${pkgdir}/usr/share/icons/hicolor/apps/256x256/alchemy.png"
+	install -Dm644 "alchemy-0.png" "${pkgdir}/usr/share/icons/hicolor/256x256/apps/alchemy.png"
 	install -Dm644 "alchemy-0.png" "${pkgdir}/usr/share/pixmaps/alchemy.png"
-	install -Dm644 "alchemy-1.png" "${pkgdir}/usr/share/icons/hicolor/apps/128x128/alchemy.png"
-	install -Dm644 "alchemy-2.png" "${pkgdir}/usr/share/icons/hicolor/apps/48x48/alchemy.png"
-	install -Dm644 "alchemy-3.png" "${pkgdir}/usr/share/icons/hicolor/apps/32x32/alchemy.png"
-	install -Dm644 "alchemy-4.png" "${pkgdir}/usr/share/icons/hicolor/apps/24x24/alchemy.png"
-	install -Dm644 "alchemy-5.png" "${pkgdir}/usr/share/icons/hicolor/apps/16x16/alchemy.png"
+	install -Dm644 "alchemy-1.png" "${pkgdir}/usr/share/icons/hicolor/128x128/apps/alchemy.png"
+	install -Dm644 "alchemy-2.png" "${pkgdir}/usr/share/icons/hicolor/48x48/apps/alchemy.png"
+	install -Dm644 "alchemy-3.png" "${pkgdir}/usr/share/icons/hicolor/32x32/apps/alchemy.png"
+	install -Dm644 "alchemy-4.png" "${pkgdir}/usr/share/icons/hicolor/24x24/apps/alchemy.png"
+	install -Dm644 "alchemy-5.png" "${pkgdir}/usr/share/icons/hicolor/16x16/apps/alchemy.png"
 	install -Dm644 "../../alchemy.desktop" "${pkgdir}/usr/share/applications/alchemy.desktop"
 }
