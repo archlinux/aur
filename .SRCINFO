@@ -1,7 +1,7 @@
 pkgbase = sugar-toolkit-gtk3
 	pkgdesc = Set of widgets for Sugar applications
-	pkgver = 0.106.1
-	pkgrel = 2
+	pkgver = 0.110.0
+	pkgrel = 1
 	url = http://www.sugarlabs.org/
 	arch = any
 	groups = sugar-desktop
@@ -18,8 +18,8 @@ pkgbase = sugar-toolkit-gtk3
 	depends = python2-gconf
 	depends = python2-rsvg
 	depends = gobject-introspection
-	source = https://github.com/sugarlabs/sugar-toolkit-gtk3/archive/v0.106.1.tar.gz
-	md5sums = 037f769df36d7c98f495536f4b8522eb
+	source = https://github.com/sugarlabs/sugar-toolkit-gtk3/archive/v0.110.0.tar.gz
+	md5sums = a2345fe05075463e453a31bc080bb9a2
 
 pkgname = sugar-toolkit-gtk3
 
