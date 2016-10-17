@@ -4,7 +4,7 @@ _gtk3_min='3.18'
 _gtk3_max='3.22'
 _theme_name=Adapta
 _gtk2_min='2.24.30'
-pkgver="${_gtk3_max}.1.93"
+pkgver="${_gtk3_max}.1.101"
 pkgrel=1
 pkgdesc="An adaptive Gtk+ theme based on Material Design Guidelines."
 arch=(any)
@@ -30,11 +30,8 @@ makedepends=('glib2>=2.48.0'
              'ruby-bundler>=1.11.0'
              'inkscape'
              'parallel')
-_tri_fadeno="tri-fadeno.jpg"
-source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz"
-        "${pkgver}-${_tri_fadeno}::${url}/raw/master/.github/img/${_tri_fadeno}")
-sha256sums=('afb7be94920d4678ed98b464a883b599b25bd400e35c5e25cba5074a06d1d4f1'
-            '807bd3d99fb492569caf050cfa9b5c75d4e6a072007637fe8e583a3f5c0bea24')
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
+sha256sums=('0b3080df1991f0290077d328df09a0017f4117155b9ca786647283c1ae063a16')
 
 _bundle="ruby-bundle"
 
@@ -48,7 +45,6 @@ build() {
     export BUNDLE_PATH="${srcdir}/${_bundle}"
     export PATH="${BUNDLE_PATH}/bin:${PATH}"
     cd "${pkgname}-${pkgver}"
-    echo "PATH: ${PATH}"
     ./autogen.sh --prefix "${pkgdir}/usr" \
                  --enable-gtk_next \
                  --enable-chrome \
@@ -60,10 +56,5 @@ build() {
 package() {
     cd "${pkgname}-${pkgver}"
     make install -j 8
-
-    # The backgrounds
-    local bgdir="${pkgdir}/usr/share/backgrounds/${_theme_name}"
-    install -dm755 "$bgdir"
-    cp -dp --no-preserve=ownership "$(readlink "${srcdir}/${pkgver}-${_tri_fadeno}")" "${bgdir}/${_tri_fadeno}"
 }
 
