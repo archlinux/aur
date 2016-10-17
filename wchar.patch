@@ -1,0 +1,31 @@
+From c682e123447da23cef7f7bda63c40618434f83e2 Mon Sep 17 00:00:00 2001
+From: Chris Kitching <chriskitching@linux.com>
+Date: Sun, 16 Oct 2016 22:35:18 +0100
+Subject: [PATCH] Unconditionally set LLDB_EDITLINE_USE_WCHAR
+
+Workaround for:
+https://bugs.archlinux.org/task/49974
+---
+ include/lldb/Host/Editline.h | 4 ----
+ 1 file changed, 4 deletions(-)
+
+diff --git a/include/lldb/Host/Editline.h b/include/lldb/Host/Editline.h
+index 758f87d..522a43e 100644
+--- a/include/lldb/Host/Editline.h
++++ b/include/lldb/Host/Editline.h
+@@ -43,12 +43,8 @@
+ // will only be
+ // used in cases where this is true.  This is a compile time dependecy, for now
+ // selected per target Platform
+-#if defined(__APPLE__) || defined(__NetBSD__)
+ #define LLDB_EDITLINE_USE_WCHAR 1
+ #include <codecvt>
+-#else
+-#define LLDB_EDITLINE_USE_WCHAR 0
+-#endif
+ 
+ #include "lldb/Host/ConnectionFileDescriptor.h"
+ #include "lldb/lldb-private.h"
+-- 
+2.10.0
+
