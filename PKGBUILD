@@ -2,7 +2,7 @@
 
 _pkgname=serf
 pkgname=${_pkgname}-cluster
-pkgver=0.7.0
+pkgver=0.8.0
 pkgrel=1
 pkgdesc='Decentralized cluster membership, failure detection and orchestration util'
 arch=('i686' 'x86_64')
@@ -12,8 +12,8 @@ depends=('glibc')
 source_x86_64=("https://releases.hashicorp.com/${_pkgname}/${pkgver}/${_pkgname}_${pkgver}_linux_amd64.zip")
 source_i686=("https://releases.hashicorp.com/${_pkgname}/${pkgver}/${_pkgname}_${pkgver}_linux_386.zip")
 source=("https://raw.githubusercontent.com/hashicorp/${_pkgname}/v${pkgver}/LICENSE")
-sha256sums_x86_64=('b239fdcd1c15fd926ff0cd10bc32a31330d1c74aba9e4d49ff83d5707ef1ba4b')
-sha256sums_i686=('50c748494473d647ee81791c89a9f8032cc292f6b617781234658a6868f9db13')
+sha256sums_x86_64=('67620e000fea28c3755e21d475a97fd65ad397df02c60c0e801ae2d521587b77')
+sha256sums_i686=('562f2a3c1dc4d1d55d1d37a44a6169311e54059489fadabba384dd0faf75d266')
 sha256sums=('bef1747eda88b9ed46e94830b0d978c3499dad5dfe38d364971760881901dadd')
 
 package() {
