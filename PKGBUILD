@@ -2,7 +2,7 @@
 
 pkgname=libavutil-52
 pkgver=2.3.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Compatibility package for ffmpeg to provide versions 52 of libavutil not anymore provided by the ffmpeg package"
 arch=('i686' 'x86_64')
 url="http://ffmpeg.org/"
@@ -10,6 +10,7 @@ license=('GPL')
 makedepends=('yasm' 'gsm' 'lame' 'opencore-amr' 'openjpeg' 'opus'  'rtmpdump'
              'schroedinger' 'speex' 'v4l-utils' 'xvidcore' 'libpulse' 'libvpx'
              'libx264' 'libtheora' 'libvdpau' 'libass' 'libbluray' 'libmodplug')
+provides=('libavutil.so')
 source=("http://ffmpeg.org/releases/ffmpeg-${pkgver}.tar.bz2")
 sha256sums=('cf1be1c5c3973b8db16b6b6e8e63a042d414fb5d47d3801a196cbba21a0a624a')
 
