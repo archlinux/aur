@@ -10,25 +10,27 @@
 _pkgname=synergy
 pkgname=$_pkgname-git
 pkgver=20161011.r2692.a6ff907
-pkgrel=1
+pkgrel=2
 pkgdesc='Share a single mouse and keyboard between multiple computers'
 url='http://synergy-foss.org'
 arch=('i686' 'x86_64')
 license=('GPL2')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
-depends=('libxtst' 'libxinerama' 'avahi' 'curl' 'qt5-base')
+depends=('avahi' 'curl' 'libxinerama' 'libxrandr' 'libxtst' 'qt5-base')
 makedepends=('cmake' 'git' 'libxt' 'qt5-base' 'unzip')
 optdepends=('openssl: encryption support')
 
 source=(
   "$_pkgname::git+https://github.com/symless/$_pkgname.git"
+  "$_pkgname.png"
   "${_pkgname}s_at.socket"
   "${_pkgname}s_at.service"
 )
 
 sha512sums=(
   'SKIP'
+  'fc4db2f76a52d88d18a10a178ce885d618820a2a32fbde703e70e2000a54bc943d247064e9b0238fd13478dd59c8a1d85fdfafd9abbf80c6a7b45b0f321d84a0'
   'f9c124533dfd0bbbb1b5036b7f4b06f7f86f69165e88b9146ff17798377119eb9f1a4666f3b2ee9840bc436558d715cdbfe2fdfd7624348fae64871f785a1a62'
   'e85cc3452bb8ba8fcccb1857386c77eb1e4cabb149a1c492c56b38e1b121ac0e7d96c6fcbd3c9b522d3a4ae9d7a9974f4a89fc32b02a56f665be92af219e371c'
 )
@@ -43,7 +45,9 @@ pkgver() {
 }
 
 prepare() {
-  cd $_pkgname/ext
+  cd $_pkgname
+  sed -i 's|/usr/share/icons/synergy.ico|/usr/share/pixmaps/synergy.png|' res/synergy.desktop
+  cd ext
   rm -rf gmock-1.6.0 gtest-1.6.0
   unzip gmock-1.6.0.zip -d gmock-1.6.0
   unzip gtest-1.6.0.zip -d gtest-1.6.0
@@ -65,6 +69,9 @@ package() {
   # Install systemd service and socket
   install -Dm644 ${_pkgname}s_at.service "$pkgdir/usr/lib/systemd/system/${_pkgname}s@.service"
   install -Dm644 ${_pkgname}s_at.socket "$pkgdir/usr/lib/systemd/system/${_pkgname}s@.socket"
+
+  # Install icon (extracted from synergy.ico)
+  install -Dm644 $_pkgname.png "$pkgdir/usr/share/pixmaps/synergy.png"
 
   # Install binary
   cd $_pkgname
