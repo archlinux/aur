@@ -1,12 +1,13 @@
 pkgbase = pipman-git
 	pkgdesc = Generate PKGBUILD from pip packages
-	pkgver = 0.7.1.r0.g1de56ee
+	pkgver = 0.8.r0.gaacd977
 	pkgrel = 1
 	url = http://github.com/sollidsnake/pipman
 	arch = any
 	license = GPL
 	depends = python
 	depends = python-pip
+	depends = python-docopt
 	source = git+https://github.com/sollidsnake/pipman
 	md5sums = SKIP
 
