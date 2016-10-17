@@ -2,7 +2,7 @@
 # Maintainer: Johannes Löthberg <johannes@kyriasis.com>
 
 pkgname=pacman-contrib-git
-pkgver=r26.8effb41
+pkgver=0.0.1.r1.ga2b1db8
 pkgrel=1
 pkgdesc='pacman contributions (Git version)'
 url=https://git.archlinux.org/pacman-contrib.git
@@ -15,7 +15,7 @@ sha512sums=('SKIP')
 
 pkgver() {
   cd ${pkgname%-*}
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  git describe --long --tags | sed -r 's/^v//; s/([^-]*-g)/r\1/; s/-/./g'
 }
 
 build() {
