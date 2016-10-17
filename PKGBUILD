@@ -15,12 +15,12 @@ source=(git://github.com/kuroclef/alice.git)
 md5sums=(SKIP)
 
 pkgver() {
-  cd "$srcdir"/"${pkgname%-git}"
-  printf %s "$(date -I -ud "$(git log -1 --format=%ci)" | sed 's/-//g')"
+  cd "${pkgname%-git}"
+  printf %s "$(date -I -ud "$(git log -1 --format=%ci)" | tr -d -)"
 }
 
 build() {
-  cd "$srcdir"/"${pkgname%-git}"
+  cd "${pkgname%-git}"
 tee config.h <<\EOF
 #define CONSUMER_KEY        "your_consumer_key"
 #define CONSUMER_SECRET     "your_consumer_secret"
@@ -31,7 +31,7 @@ EOF
 }
 
 package() {
-  cd "$srcdir"/"${pkgname%-git}"
-  install -Dm 755 ./"${pkgname%-git}" "$pkgdir"/usr/bin/"${pkgname%-git}"
-  install -Dm 644 ./README.md         "$pkgdir"/usr/share/doc/"${pkgname%-git}"/README.md
+  cd "${pkgname%-git}"
+  install -Dm 755 "${pkgname%-git}" "$pkgdir"/usr/bin/"${pkgname%-git}"
+  install -Dm 644 README.md         "$pkgdir"/usr/share/doc/"${pkgname%-git}"/README.md
 }
