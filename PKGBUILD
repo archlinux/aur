@@ -15,18 +15,18 @@ source=(git://github.com/lifthrasiir/angolmois.git)
 md5sums=(SKIP)
 
 pkgver() {
-  cd "$srcdir"/"${pkgname%-git}"
-  printf %s "$(date -I -ud "$(git log -1 --format=%ci)" | sed 's/-//g')"
+  cd "${pkgname%-git}"
+  printf %s "$(date -I -ud "$(git log -1 --format=%ci)" | tr -d -)"
 }
 
 build() {
-  cd "$srcdir"/"${pkgname%-git}"
+  cd "${pkgname%-git}"
   make
 }
 
 package() {
-  cd "$srcdir"/"${pkgname%-git}"
-  install -Dm 755 ./"${pkgname%-git}" "$pkgdir"/usr/bin/"${pkgname%-git}"
-  install -Dm 644 ./INTERNALS.md      "$pkgdir"/usr/share/doc/"${pkgname%-git}"/INTERNALS.md
-  install -Dm 644 ./README.md         "$pkgdir"/usr/share/doc/"${pkgname%-git}"/README.md
+  cd "${pkgname%-git}"
+  install -Dm 755 "${pkgname%-git}" "$pkgdir"/usr/bin/"${pkgname%-git}"
+  install -Dm 644 INTERNALS.md      "$pkgdir"/usr/share/doc/"${pkgname%-git}"/INTERNALS.md
+  install -Dm 644 README.md         "$pkgdir"/usr/share/doc/"${pkgname%-git}"/README.md
 }
