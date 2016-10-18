@@ -4,7 +4,7 @@ pkgbase=linux-baytrail48
 _srcname=linux-4.8.1-baytrail
 _gitver=60cacd661dacfd0a7c4aa6f82d11f1c1664e70ad
 pkgver=4.8.1
-pkgrel=2
+pkgrel=3
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
 license=('GPL2')
@@ -25,7 +25,7 @@ source=("${_srcname}.tar.gz::https://github.com/muhviehstah/linux-4.8.1-baytrail
 
 sha256sums=('47c255a475276ad6e62ea7f54c53dc44e48211aecbdcbff31bea7b44d1425d74'
 	    '60921720cdcd2ff3fc754eebbba795af52b61d681a0541ad492a606bed309f58' 
-	    '8d6c3f830301355e6732595f56c63b73b4275fe70f76b321c663297dc8e2c798' 
+	    '24eff3b9bdc4b6d96b33f2d480ee8873444cefa45d8cb4f907f12bf1738f624d' 
             'faa6f9259870f11d8fb8846b25186c86107262bc38c325b96e9e5f08d428b307'
 	    '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
             'a9e8b1a5754604544b70591c4ddb9687c47bbe606efd169248377ec37ff56277'
