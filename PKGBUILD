@@ -2,13 +2,7 @@
 # Contributor: TZ86
 
 pkgname=vivaldi-snapshot
-pkgver_i686=1.5.633.3
-pkgver_x86_64=1.5.633.16
-if [[ "$CARCH" == "x86_64" ]]; then
-    pkgver=$pkgver_x86_64
-else
-    pkgver=$pkgver_i686
-fi
+pkgver=1.5.638.3
 pkgrel=1
 pkgdesc='An advanced browser made with the power user in mind. (weekly snapshot)'
 url="https://vivaldi.com"
@@ -21,10 +15,10 @@ optdepends=(
     'google-chrome: Widevine DRM Plugin'
     'vivaldi-widevine: Widevine DRM Plugin'
 )
-source_i686=("https://downloads.vivaldi.com/snapshot/vivaldi-snapshot-${pkgver_i686}-1.i386.rpm")
-source_x86_64=("https://downloads.vivaldi.com/snapshot/vivaldi-snapshot-${pkgver_x86_64}-1.x86_64.rpm")
-sha256sums_i686=('86691211f2e9cad15b4fb52bd35b52219e949bc8dc9ee6c033621fb34412afa8')
-sha256sums_x86_64=('241cc39d53e56c9ed93ef1196505df75824d8861917f24fdd4db6adad912f0dd')
+source_i686=("https://downloads.vivaldi.com/snapshot/vivaldi-snapshot-${pkgver}-1.i386.rpm")
+source_x86_64=("https://downloads.vivaldi.com/snapshot/vivaldi-snapshot-${pkgver}-1.x86_64.rpm")
+sha256sums_i686=('beca34780ebd64e069c40f373a9f849d2dae47d04029a5e54eb5af532dc381ea')
+sha256sums_x86_64=('6bc0ba44d49fe428a0affb377961cbf4fde7c2936fc95d5f67308f45f361581a')
 
 package() {
     cp -a {opt,usr} "$pkgdir"
