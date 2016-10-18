@@ -1,0 +1,15 @@
+pkgbase = maryspeak-git
+	pkgdesc = Command line access to MaryTTS (text to speech) software.
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/ideasman42/maryspeak
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = apache-ant
+	depends = marytts
+	source = git+https://github.com/ideasman42/maryspeak.git
+	md5sums = SKIP
+
+pkgname = maryspeak-git
+
