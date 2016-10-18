@@ -12,7 +12,8 @@ optdepends=('mpv: Alternative to mplayer for playback'
             'mplayer: Alternative to mpv for playback'
             'ffmpeg: for transcoding downloaded content'
             'python-pyperclip: for copying content to the clipboard'
-            'python-gobject: MPRIS2 support')
+            'python-gobject: MPRIS2 support'
+            'python-dbus: MPRIS2 support')
 
 provides=('mps-youtube')
 conflicts=('mps-youtube')

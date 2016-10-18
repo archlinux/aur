@@ -14,6 +14,7 @@ pkgbase = mps-youtube-git
 	optdepends = ffmpeg: for transcoding downloaded content
 	optdepends = python-pyperclip: for copying content to the clipboard
 	optdepends = python-gobject: MPRIS2 support
+	optdepends = python-dbus: MPRIS2 support
 	provides = mps-youtube
 	conflicts = mps-youtube
 	source = git+https://github.com/np1/mps-youtube.git
