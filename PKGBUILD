@@ -2,8 +2,8 @@
 
 pkgname=python-pyficache
 _pkgname=pyficache
-pkgver=0.2.6
-pkgrel=2
+pkgver=0.3.0
+pkgrel=1
 pkgdesc='Cache lines and file information which are generally Python programs'
 arch=('any')
 url="https://pypi.python.org/pypi/pyficache"
@@ -13,7 +13,7 @@ makedepends=('python-setuptools')
 replaces=()
 conflicts=()
 source=("https://pypi.python.org/packages/source/p/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
-md5sums=('bf29c209f156f114def24b91b06d322a')
+md5sums=('ab7c693c9b698d77b3670b7bc95c0789')
 
 build() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
