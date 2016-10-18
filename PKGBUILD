@@ -2,10 +2,10 @@
 
 pkgname=pi-hole-server
 _pkgname=pi-hole
-pkgver=2.9.3
+pkgver=2.9.4
 pkgrel=1
 _wwwpkgname=AdminLTE
-_wwwpkgver=1.4.2
+_wwwpkgver=1.4.3
 pkgdesc='The Pi-hole is an advertising-aware DNS/Web server. Arch adaptation for lan wide DNS server.'
 arch=('any')
 license=('GPL2')
@@ -30,8 +30,8 @@ source=(https://github.com/$_pkgname/$_pkgname/archive/v$pkgver.tar.gz
 	blacklist.txt
 	mimic_setupVars.conf.sh)
 
-md5sums=('c0ae73a3b7fe2d5171917384bb1e4dd9'
-         '60505c8f64f9efcf22761b31c6811131'
+md5sums=('07d21b50616cab39726262f86a98cd8b'
+         'eda644847b4bf7e5046c1b0b5d2112ef'
          '5daed172a416a29aa87cfb66fd3288ed'
          'cba1675593bb43c94a35aabe8a210efa'
          'fc7852b5deb952335c0ebbf4ee61cb8c'
@@ -99,8 +99,10 @@ prepare() {
 
   # arch useless
   sed -n "/#ensure \/etc\/dnsmasq\.d\//w $_ssc" "$srcdir"/$_pkgname-$pkgver/gravity.sh
-  if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: arch useless" && return 1 ; fi
+  if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: arch useless 1" && return 1 ; fi
   sed -i '/#ensure \/etc\/dnsmasq\.d\//,+5d' "$srcdir"/$_pkgname-$pkgver/gravity.sh
+  # cosmetics
+  sed -i '325 a echo " done!"' "$srcdir"/$_pkgname-$pkgver/gravity.sh  
 
 # -----------------
 
