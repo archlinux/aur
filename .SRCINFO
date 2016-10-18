@@ -1,0 +1,16 @@
+pkgbase = catimg
+	pkgdesc = Print images in a terminal with 256 colors support
+	pkgver = 2.2
+	pkgrel = 1
+	url = https://github.com/posva/catimg
+	arch = i686
+	arch = x86_64
+	groups = Applications/Multimedia
+	license = MIT
+	makedepends = cmake
+	depends = glibc
+	source = https://github.com/posva/catimg/archive/2.2.tar.gz#/catimg-2.2.tar.gz
+	md5sums = 9981dd2158a8e2e9707e0620c335ef2c
+
+pkgname = catimg
+
