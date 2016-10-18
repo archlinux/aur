@@ -1,0 +1,30 @@
+pkgbase = cuda-7.5
+	pkgdesc = NVIDIA's GPU programming toolkit. Version 7.5
+	pkgver = 7.5.18
+	pkgrel = 5
+	url = http://www.nvidia.com/object/cuda_home.html
+	install = cuda.install
+	arch = x86_64
+	license = custom:NVIDIA
+	depends = gcc-libs
+	depends = opencl-nvidia
+	depends = gcc5
+	optdepends = gdb: for cuda-gdb
+	provides = cuda-toolkit
+	provides = cuda-sdk
+	conflicts = cuda
+	replaces = cuda-toolkit
+	replaces = cuda-sdk
+	options = !strip
+	options = staticlibs
+	source = http://developer.download.nvidia.com/compute/cuda/7.5/Prod/local_installers/cuda_7.5.18_linux.run
+	source = cuda.sh
+	source = cuda.conf
+	source = cuda-findgllib_mk.diff
+	md5sums = 4b3bcecf0dfc35928a0898793cf3e4c6
+	md5sums = 7e5990e03eea90075f5a500e91a0c3d3
+	md5sums = 71420ee4e90c65df21c6c5d34373c245
+	md5sums = 6476452a339c12d8ca18b5feb47100cc
+
+pkgname = cuda-7.5
+
