@@ -1,0 +1,12 @@
+[Desktop Entry]
+Encoding=UTF-8
+Version=1.0
+Name=LHC Dashboard
+Comment=Desktop version of the LHC Dashboard
+Exec=lhc-dashboard
+StartupWMClass=lhc-dashboard
+Icon=lhc-dashboard
+Terminal=false
+Type=Application
+Categories=Network;
+X-Desktop-File-Install-Version=0.22
