@@ -7,7 +7,7 @@ replaces=('zarafa-postfixadmin-worker')
 groups=('zarafa'
 	'kopano')
 pkgver=0.20
-pkgrel=34
+pkgrel=35
 pkgdesc="A web based interface used to manage mailboxes, virtual domains and aliases created for Zarafa-Server with DB-Plugin and Postfix"
 arch=('any')
 license=('GPL')
