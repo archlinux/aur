@@ -1,7 +1,7 @@
 # Maintainer: Christian Mauderer <oss@c-mauderer.de>
 pkgname=stlink-git
 pkgrel=1
-pkgver=r936.199bbba
+pkgver=r937.4b488ac
 pkgdesc="stm32 discovery line linux programmer."
 arch=('i686' 'x86_64')
 url="https://github.com/texane/stlink"
@@ -25,7 +25,9 @@ pkgver() {
 
 build() {
 	cd "${srcdir}/${pkgname}"
-	cmake -DCMAKE_INSTALL_PREFIX="/usr/"
+	cmake -DCMAKE_INSTALL_PREFIX="/usr/" \
+	      -DSTLINK_UDEV_RULES_DIR="/usr/lib/udev/rules.d" \
+	      -DSTLINK_MODPROBED_DIR="/usr/lib/modprobe.d"
 	make
 } 
 
