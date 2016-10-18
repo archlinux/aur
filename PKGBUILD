@@ -29,6 +29,8 @@ build() {
 		--height 720px \
 		--min-width 720px \
 		--min-height 720px \
+		--electron-version 1.4.3 \
+		--honest \
 		-i "../$pkgname.png"
 
 	rm -rf lhc-dashboard
