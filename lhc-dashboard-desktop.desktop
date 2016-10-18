@@ -2,9 +2,9 @@
 Encoding=UTF-8
 Version=1.0
 Name=LHC Dashboard
-Comment=Desktop version of the LHC Dashboard
-Exec=lhc-dashboard
-StartupWMClass=lhc-dashboard
+Comment=LHC Dashboard for Desktop
+Exec=lhc-dashboard-desktop
+StartupWMClass=lhc-dashboard-desktop
 Icon=lhc-dashboard
 Terminal=false
 Type=Application
