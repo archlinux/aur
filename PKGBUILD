@@ -7,11 +7,12 @@ url='https://github.com/np1/mps-youtube'
 arch=('any')
 license=('GPL3')
 
-depends=('python' 'python-setuptools' 'python-pafy-git' 'python-gobject')
+depends=('python' 'python-setuptools' 'python-pafy-git')
 optdepends=('mpv: Alternative to mplayer for playback'
             'mplayer: Alternative to mpv for playback'
             'ffmpeg: for transcoding downloaded content'
-            'python-pyperclip: for copying content to the clipboard')
+            'python-pyperclip: for copying content to the clipboard'
+            'python-gobject: MPRIS2 support')
 
 provides=('mps-youtube')
 conflicts=('mps-youtube')
