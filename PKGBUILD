@@ -15,7 +15,7 @@ optdepends=("alsa-lib: volume module support"
             "i3ipc-glib-git: i3 module support")
 makedepends=("cmake" "python2" "pkg-config" "clang" "glibc" "boost")
 conflicts=("lemonbuddy-git")
-source=("${pkgname}::git+${url}.git#tag=${pkgver%.*}")
+source=("${pkgname}::git+${url}.git#tag=${pkgver}")
 md5sums=("SKIP")
 
 prepare() {
