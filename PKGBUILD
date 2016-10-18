@@ -9,7 +9,7 @@ pkgdesc="Qt5 client for downloading movie subtitles from NapiProjekt, OpenSubtit
 arch=('i686' 'x86_64')
 url="https://qnapi.github.io/"
 license=('GPL2')
-depends=('qt5-base' 'libmediainfo')
+depends=('qt5-base' 'libmediainfo' 'p7zip')
 makedepends=('git')
 provides=($_pkgname)
 conflicts=($_pkgname)
@@ -28,17 +28,17 @@ prepare() {
 }
 
 build() {
-    cd "${srcdir}/${_pkgname}"
-    qmake-qt5 ${_pkgname}.pro 
-    make
+  cd "${srcdir}/${_pkgname}"
+  qmake-qt5 QMAKE_DEFAULT_INCDIRS="" ${_pkgname}.pro 
+  make
 }
 
 package() {
-    cd "${srcdir}/${_pkgname}"
-    make INSTALL_ROOT="${pkgdir}/" install
-    mkdir -p ${pkgdir}/usr/share/{kde4/services,kservices5}/ServiceMenus/
-    mv ${pkgdir}/usr/share/doc/${_pkgname}/${_pkgname}-scan.desktop                ${pkgdir}/usr/share/kde4/services/ServiceMenus/${_pkgname}-scan.desktop 
-    mv ${pkgdir}/usr/share/doc/${_pkgname}/${_pkgname}-download.desktop            ${pkgdir}/usr/share/kde4/services/ServiceMenus/${_pkgname}-download.desktop
-    cp ${pkgdir}/usr/share/kde4/services/ServiceMenus/${_pkgname}-scan.desktop     ${pkgdir}/usr/share/kservices5/ServiceMenus/${_pkgname}-scan.desktop
-    cp ${pkgdir}/usr/share/kde4/services/ServiceMenus/${_pkgname}-download.desktop ${pkgdir}/usr/share/kservices5/ServiceMenus/${_pkgname}-download.desktop
+  cd "${srcdir}/${_pkgname}"
+  make INSTALL_ROOT="${pkgdir}/" install
+  mkdir -p ${pkgdir}/usr/share/{kde4/services,kservices5}/ServiceMenus/
+  mv ${pkgdir}/usr/share/doc/${_pkgname}/${_pkgname}-scan.desktop                ${pkgdir}/usr/share/kde4/services/ServiceMenus/${_pkgname}-scan.desktop 
+  mv ${pkgdir}/usr/share/doc/${_pkgname}/${_pkgname}-download.desktop            ${pkgdir}/usr/share/kde4/services/ServiceMenus/${_pkgname}-download.desktop
+  cp ${pkgdir}/usr/share/kde4/services/ServiceMenus/${_pkgname}-scan.desktop     ${pkgdir}/usr/share/kservices5/ServiceMenus/${_pkgname}-scan.desktop
+  cp ${pkgdir}/usr/share/kde4/services/ServiceMenus/${_pkgname}-download.desktop ${pkgdir}/usr/share/kservices5/ServiceMenus/${_pkgname}-download.desktop
 }
