@@ -1,8 +1,8 @@
 # Maintainer: Dominik Heidler <dominik@heidler.eu>
 
 pkgname=lua-ldbus
-pkgver=r110.9f6db62
-pkgrel=2
+pkgver=r118.a6e77a0
+pkgrel=1
 pkgdesc="Lua Bindings to dbus."
 arch=('x86_64' 'i686')
 url="https://github.com/daurnimator/ldbus"
@@ -12,7 +12,7 @@ provides=()
 depends=('lua' 'libdbus')
 makedepends=('luarocks' 'git')
 
-_commit="9f6db626600eb7e04000368da947e0c5cd175fb5"
+_commit="a6e77a080131b6e7f6fb0db27141fac5658f6b07"
 
 source=("git://github.com/daurnimator/ldbus.git#commit=${_commit}")
 md5sums=('SKIP')
