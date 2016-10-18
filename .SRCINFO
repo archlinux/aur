@@ -1,0 +1,25 @@
+pkgbase = cjdns-libsodium
+	pkgdesc = A routing engine designed for security, scalability, speed and ease of use
+	pkgver = 18
+	pkgrel = 2
+	url = https://github.com/cjdelisle/cjdns
+	install = cjdns.install
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = nodejs
+	makedepends = python2
+	depends = glibc
+	depends = sh
+	depends = libsodium
+	provides = cjdns
+	conflicts = cjdns
+	source = https://github.com/cjdelisle/cjdns/archive/cjdns-v18.tar.gz
+	source = cjdns.sodium.patch
+	source = cjdns.warnings.patch
+	md5sums = 9f6600d9ed0d87d4e17fbc9155ff0368
+	md5sums = ba220c6f05f64bf238c47f21cc4be0ac
+	md5sums = e9db1f3f1ecd4d298f82186a12a385f3
+
+pkgname = cjdns-libsodium
+
