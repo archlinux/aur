@@ -2,8 +2,8 @@
 
 pkgbase=bcc
 pkgname=('bcc' 'bcc-tools' 'python-bcc' 'python2-bcc')
-pkgver=0.1.8
-pkgrel=2
+pkgver=0.2.0
+pkgrel=1
 pkgdesc="BPF Compiler Collection"
 arch=('x86_64')
 url="https://github.com/iovisor/bcc"
@@ -12,7 +12,7 @@ conflicts=('bcc-git')
 makedepends=('cmake' 'clang>=3.7.0' 'llvm>=3.7.0' 'flex' 'bison' 'python'
              'python2')
 source=("https://github.com/iovisor/${pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('7535d0dec063454a858337dd07211ad2a207f8fa5665a3fad166f38415e50d70')
+sha256sums=('8bdea41286dda0605e3e52fc76d345356dc637434935a112e6378e2dcb439a70')
 
 build() {
   # make sure repetitive builds are clean
