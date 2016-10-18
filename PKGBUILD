@@ -15,6 +15,7 @@ source=(http://downloads.sourceforge.net/sourceforge/circuit/${_truepkgname}-${p
         ${pkgname}.xml
         ${pkgname}.desktop
         ${pkgname}.sh)
+noextract=("${_truepkgname}-${pkgver}.jar")
 sha256sums=('362a78c12ad18c203fed868872c4a01cd9c12141379d92e892bbe2c37e627bc2'
             '9dd50eb99edeff5f74247ae9b050d56c1366818ea80fbdcc6c5e24bfabfec5c0'
             '4d5ae9f9d5f5789469f3580a81ee568ca426f324df3ba37d7e4c8d6b20dc638c'
