@@ -3,35 +3,46 @@
 
 _pkgbasename=gnome-themes-standard
 pkgname=lib32-$_pkgbasename
-pkgver=3.20.2
+pkgver=3.22.2
 pkgrel=1
 pkgdesc="Default themes for the GNOME desktop (32-bit)"
+url="https://git.gnome.org/browse/gnome-themes-standard"
 arch=(x86_64)
-url="http://www.gnome.org"
 license=(GPL2)
 depends=(cantarell-fonts ttf-dejavu lib32-librsvg $_pkgbasename)
-makedepends=(gcc-multilib intltool lib32-gtk2 lib32-gtk3)
+makedepends=(gcc-multilib intltool lib32-gtk2 lib32-gtk3 gnome-common git)
 optdepends=('lib32-gtk-engines: HighContrast GTK2 theme')
 groups=(gnome)
 replaces=(lib32-gnome-themes)
 conflicts=(gnome-themes lib32-gnome-themes)
-options=('!emptydirs')
-source=(http://download.gnome.org/sources/$_pkgbasename/${pkgver:0:4}/$_pkgbasename-$pkgver.tar.xz)
-sha256sums=('9d0d9c4b2c9f9008301c3c1878ebb95859a735b7fd4a6a518802b9637e4a7915')
+options=(!emptydirs)
+_commit=4003aa8aa0007939b3fc2d647acbd31bc4696b59  # tags/3.22.2^0
+source=("git://git.gnome.org/gnome-themes-standard#commit=$_commit")
+sha256sums=('SKIP')
+
+pkgver() {
+  cd $_pkgbasename
+  git describe --tags | sed 's/-/+/g'
+}
+
+prepare() {
+  cd $_pkgbasename
+  NOCONFIGURE=1 ./autogen.sh
+}
 
 build() {
   export CC="gcc -m32"
   export CXX="g++ -m32"
   export PKG_CONFIG_PATH="/usr/lib32/pkgconfig"
 
-  cd $_pkgbasename-$pkgver
+  cd $_pkgbasename
   ./configure --prefix=/usr --libdir=/usr/lib32
   sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
   make
 }
 
 package() {
-  cd $_pkgbasename-$pkgver
+  cd $_pkgbasename
   make DESTDIR="${pkgdir}" install
 
   # remove unneeded stuff
