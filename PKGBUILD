@@ -4,8 +4,8 @@
 
 pkgname=jre
 _major=8
-_minor=102
-_build=b14
+_minor=112
+_build=b15
 pkgver=${_major}u${_minor}
 pkgrel=1
 pkgdesc="Oracle Java Runtime Environment"
@@ -49,8 +49,8 @@ source_i686=("http://download.oracle.com/otn-pub/java/jdk/$pkgver-$_build/$pkgna
 source_x86_64=("http://download.oracle.com/otn-pub/java/jdk/$pkgver-$_build/$pkgname-$pkgver-linux-x64.tar.gz")
 md5sums=('b3c7031bc65c28c2340302065e7d00d3'
          '762729fa0faba8ff2b5a29c249c95079')
-md5sums_i686=('77199a65cc3dd11e6a5dbb3144fad968')
-md5sums_x86_64=('18f4cfa3ad7b10dea718e74fd06e5f19')
+md5sums_i686=('ff4e17ebd082b5c5bad457751468769d')
+md5sums_x86_64=('5ccc09b2cbbf715b583fad72b070b69d')
 ## Alternative mirror, if your local one is throttled:
 #source_x86_64=("http://ftp.wsisiz.edu.pl/pub/pc/pozyteczne%20oprogramowanie/java/$pkgname-$pkgver-linux-x64.gz")
 
