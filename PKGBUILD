@@ -1,4 +1,5 @@
 # Maintainer: sqlwwx <wwx_2012@live.com>
+# Contributors: Eduardo San Martin Morote http://posva.net/
 
 pkgname=catimg
 pkgver=2.2
@@ -15,7 +16,7 @@ md5sums=("9981dd2158a8e2e9707e0620c335ef2c")
 
 build() {
 	cd "$pkgname-$pkgver"
-  cmake -D CMAKE_INSTALL_PREFIX="$pkgdir/usr/bin" .
+  cmake -D CMAKE_INSTALL_PREFIX="$pkgdir/usr" .
 	make
 }
 
