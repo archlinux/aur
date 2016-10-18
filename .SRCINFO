@@ -1,0 +1,18 @@
+pkgbase = gdcc-git
+	pkgdesc = Game Data Compiler Collection
+	pkgver = v0.11.0.r13.ga035de7
+	pkgrel = 1
+	url = https://github.com/DavidPH/GDCC
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = cmake
+	depends = gmp
+	provides = gdcc
+	conflicts = gdcc
+	source = gdcc::git+https://github.com/DavidPH/GDCC
+	md5sums = SKIP
+
+pkgname = gdcc-git
+
