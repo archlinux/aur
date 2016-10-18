@@ -2,13 +2,13 @@
 
 pkgname=adasockets
 pkgver=1.10.1
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 pkgdesc="BSD sockets in Ada"
 url="http://www.rfc1149.net/devel/adasockets"
 license=('custom:GNAT_Modified_GPL')
 depends=('sh')
-makedepends=('gcc-ada' 'autogen')
+makedepends=('gcc-ada')
 options=('!libtool')
 install=adasockets.install
 source=(http://www.rfc1149.net/download/${pkgname}/${pkgname}-${pkgver}.tar.gz)
