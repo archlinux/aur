@@ -7,8 +7,8 @@
 
 pkgname=libqtelegram-ae-git
 epoch=3
-pkgver=10.0.0.stable.r17.g10a4fd2
-pkgrel=2
+pkgver=10.0.0.stable.r27.g1865e02
+pkgrel=1
 pkgdesc="Telegram library written in Qt based on telegram-cli code"
 arch=('x86_64' 'i686')
 license=('GPL3')
@@ -50,7 +50,7 @@ build() {
   qmake-qt5 -r ../libqtelegram-code-generator
   make
 
-  ./libqtelegram-generator 54 ../scheme/scheme-54.tl ..
+  ./libqtelegram-generator 57 ../scheme/scheme-57.tl ..
   cd ..
   ## end of ./init
 
