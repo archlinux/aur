@@ -1,7 +1,7 @@
 # Maintainer: Tomislav Ivek <tomislav.ivek@gmail.com>
 
 pkgname=conan-git
-pkgver=0.13.3.r15.g26e92cb
+pkgver=0.13.3.r18.g63f7364
 pkgrel=1
 pkgdesc="A distributed, open source, C/C++ package manager."
 arch=('any')
@@ -21,18 +21,12 @@ depends=('python'
 makedepends=('python-setuptools')
 provides=('conan')
 conflicts=('conan')
-source=("conan-git::git+https://github.com/conan-io/conan.git" "boto-2.43.0.patch")
-md5sums=('SKIP'
-         'b2e3189a54e96445cf070cc32e21c00e')
+source=("conan-git::git+https://github.com/conan-io/conan.git")
+md5sums=('SKIP')
 
 pkgver() {
   cd "$pkgname"
   git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
-}
-
-prepare() {
-  cd "$srcdir/$pkgname"
-  patch -p1 < ../boto-2.43.0.patch
 }
 
 build() {

@@ -1,6 +1,6 @@
 pkgbase = conan-git
 	pkgdesc = A distributed, open source, C/C++ package manager.
-	pkgver = 0.13.3.r15.g26e92cb
+	pkgver = 0.13.3.r18.g63f7364
 	pkgrel = 1
 	url = https://conan.io
 	arch = any
@@ -27,9 +27,7 @@ pkgbase = conan-git
 	provides = conan
 	conflicts = conan
 	source = conan-git::git+https://github.com/conan-io/conan.git
-	source = boto-2.43.0.patch
 	md5sums = SKIP
-	md5sums = b2e3189a54e96445cf070cc32e21c00e
 
 pkgname = conan-git
 
