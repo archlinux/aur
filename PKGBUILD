@@ -1,7 +1,7 @@
 # Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=ffms2-git
-pkgver=2.22.0.g129952a
+pkgver=2.23.0.g2cf2c4b
 pkgrel=1
 pkgdesc="An FFmpeg/Libav based source library and Avisynth/Vapoursynth plugin for easy frame accurate access. (GIT version)"
 url='https://github.com/FFMS/ffms2'
@@ -21,12 +21,13 @@ provides=('libffms2.so'
           )
 conflicts=('ffms2')
 source=('git+https://github.com/FFMS/ffms2.git')
-sha1sums=('SKIP')
+sha256sums=('SKIP')
 
 pkgver() {
   cd ffms2
   echo "$(git describe --long --tags | tr - .)"
 }
+
 
 build() {
   cd ffms2
