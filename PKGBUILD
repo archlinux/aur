@@ -5,7 +5,7 @@
 # vim: ft=sh
 
 pkgname=pebble-sdk
-pkgver=4.4.1
+pkgver=4.5
 pkgrel=1
 pkgdesc="Pebble SDK, used to develop applications and watchfaces for the Pebble Smartwatch."
 url="https://developer.pebble.com/sdk"
@@ -42,8 +42,8 @@ source_i386=("https://s3.amazonaws.com/assets.getpebble.com/pebble-tool/pebble-s
 source_x86_64=("https://s3.amazonaws.com/assets.getpebble.com/pebble-tool/pebble-sdk-${pkgver}-linux64.tar.bz2")
 source=('phonesim_path.patch')
 sha1sums=('231b04c03ea4ec1f49eee94ac0caa84021210caa')
-sha1sums_i386=('89c3012a1246970cf87f1040e1a778413e8278df')
-sha1sums_x86_64=('63d1001e8cfb7da1ee4d6038b81021af44f61976')
+sha1sums_i386=('f5e9e3ba91811b1a486a14b6b2c8558d13a01982')
+sha1sums_x86_64=('7bc45d4dc085e7ffb6a49c3ae1d263461051c7f5')
 
 if [ "$CARCH" == "x86_64" ]
 then
