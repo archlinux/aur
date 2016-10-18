@@ -44,7 +44,7 @@ package_digikam() {
   depends=('liblqr' 'libkipi' 'lensfun' 'opencv' 'akonadi-contacts'
 	'knotifyconfig' 'libksane' 'kfilemetadata' 'qt5-multimedia' 'marble' 'threadweaver' 'kcalcore')
   optdepends=('kipi-plugins: export to various online services'
-              'hugin: panorama tool' 'qt5-imageformats: WEBP format support')
+              'hugin: panorama tool' 'qt5-imageformats: support for additional image formats (WEBP, TIFF)')
 
   cd build/core
   make DESTDIR="$pkgdir" install
