@@ -1,6 +1,6 @@
 pkgbase = server-jre
 	pkgdesc = Oracle Server Java Runtime Environment
-	pkgver = 8u102
+	pkgver = 8u112
 	pkgrel = 1
 	url = http://www.oracle.com/technetwork/java/javase/downloads/index.html
 	install = server-jre.install
@@ -28,9 +28,9 @@ pkgbase = server-jre
 	backup = etc/java-server-jre8/psfontj2d.properties
 	backup = etc/java-server-jre8/sound.properties
 	source = http://download.oracle.com/otn-pub/java/jce/8/jce_policy-8.zip
-	source = http://download.oracle.com/otn-pub/java/jdk/8u102-b14/server-jre-8u102-linux-x64.tar.gz
+	source = http://download.oracle.com/otn-pub/java/jdk/8u112-b15/server-jre-8u112-linux-x64.tar.gz
 	sha256sums = f3020a3922efd6626c2fff45695d527f34a8020e938a49292561f18ad1320b59
-	sha256sums = 50bc7ff61ba064c471adc2ec08e44690f0dac4cd673a3666b6d7b24a48bd7169
+	sha256sums = eb51dc02c1607be94249dc28b0223be3712b618ef72f48d3e2bfd2645db8b91a
 
 pkgname = server-jre
 
