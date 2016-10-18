@@ -13,26 +13,23 @@ post_upgrade() {
     systemd-tmpfiles --create dom4.conf
   fi
 
+  mkdir -p /opt/dom4
+
   chown dom4:dom4 /usr/bin/dom4-server
   chown -R dom4:dom4 /usr/share/dom4
+  chown -R dom4:dom4 /opt/dom4
 
   cat <<EOF
 
 Post-install tasks:
 
-Ensure Dominions 4 is installed to /opt/Dominions4. If you installed it from the Steam GUI with the default library path, use:
+Install Dominions 4 for the server user using SteamCMD:
 
-  sudo cp -R ~/.local/share/Steam/steamapps/common/Dominions4 /opt
+  dom4 install
 
-If you installed it via SteamCMD (see README.md in the Git repository for instructions on doing that if you're starting from scratch):
+You will need your login information and a valid Dominions 4 CD key. SteamCMD may ask you to validate via Steam Guard.
 
-  sudo cp -R ~/Steam/steamapps/common/Dominions4 /opt
-
-If you can't find it at either of those locations, try 'locate dom4.sh' (if you *just* installed Dominions 4, 'sudo updatedb' first). This should output one line with the full path and filename of 'dom4.sh'. 'sudo cp -R' the path, excluding the filename.
-
-Your install directory must have a 'dom4key' file present containing your Dominions 4 license key. If the file does not already exist, you can create it using the license information from Steam.
-
-To begin setting up hosting, run 'dom4'.
+To begin setting up hosting, run 'dom4' without arguments for more information.
 EOF
 }
 

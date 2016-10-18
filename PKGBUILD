@@ -4,17 +4,17 @@ pkgname=dom4-server
 pkgver=1.0.6
 pkgrel=1
 pkgdesc="Configure and run Dominions 4 as a headless server"
-arch=('x86_64')
+arch=("x86_64")
 url="http://www.illwinter.com/dom4/"
-license=('MIT')
+license=("MIT")
 install=$pkgname.install
+depends_x86_64=("steamcmd")
 source=(
   dom4-server
   dom4-server.service
   dom4-sysusers.conf
   dom4-tmpfile.conf
   dom4
-  default.properties
 )
 
 package() {
@@ -23,14 +23,11 @@ package() {
 
   install -Dm755 "$srcdir/dom4" "$pkgdir/usr/bin/dom4"
 
-  install -Dm644 "$srcdir/default.properties" "$pkgdir/usr/share/dom4/config/default.properties"
-
   install -Dm644 "$srcdir/dom4-sysusers.conf" "$pkgdir/usr/lib/sysusers.d/dom4.conf"
   install -Dm644 "$srcdir/dom4-tmpfile.conf" "$pkgdir/usr/lib/tmpfiles.d/dom4.conf"
 }
-md5sums=('d8e3011dfa108d3f1574c57aefcecb32'
+md5sums=('03931b9317799ef4ae7fded185cd1c69'
          'd7467fb7a599236f71d428a85cf05014'
          'e9772a237cc540558e74235b98df8a7f'
          '338b8462868ecf6cc56c4a520cea6bac'
-         '26c54faba6e1b864997cc918723c8db4'
-         '22bdb16a296d12c51988c43c3218201b')
+         'd25b42aae80b30633920605faa36ed35')

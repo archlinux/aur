@@ -1,11 +1,11 @@
 #!/bin/bash
 
-game=`cat /usr/share/dom4/current`
-
-if [[ -z "$game" ]]; then
-  echo "No game specified. Use 'dom4 config' to load a game configuration."
+if [[ ! -s /usr/share/dom4/current ]]; then
+  echo "No game configured. Use 'dom4 config' to set up a game."
   exit 1
 fi
+
+game=$(</usr/share/dom4/current)
 
 if [[ ! -s /usr/share/dom4/config/$game.properties ]]; then
   echo "Tried to load $game but configuration file is missing."
@@ -28,4 +28,4 @@ done < /usr/share/dom4/config/$game.properties
 
 export DOM4_CONF=/usr/share/dom4
 
-exec sh /opt/Dominions4/dom4.sh $config $game
+exec sh /opt/dom4/dom4.sh $config $game

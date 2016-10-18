@@ -1,5 +1,24 @@
 #!/bin/bash
 
+# Install Dominions 4 via SteamCMD.
+function install {
+  if [ ! $(find /opt/dom4 -maxdepth 0 -type d -empty 2>/dev/null) ];then
+    echo "/opt/dom4 is not empty. Is Dominions 4 already installed?"
+    exit 0
+  fi
+
+  read -r -p "Steam username: " user
+  read -r -s -p "Steam password: " pass
+
+  echo
+  echo "Installing Dominions 4 to /opt/dom4"
+
+  sudo -u dom4 steamcmd +login $user $pass +force_install_dir /opt/dom4 +app_update 259060 validate +quit
+
+  read -r -p "Enter your Dominions 4 CD Key: " key
+  echo $key | sudo -u dom4 tee /opt/dom4/dom4key > /dev/null
+}
+
 # Change the current hosted game by editing /usr/share/dom4/current.
 # Params:
 #   $1  game name
@@ -17,8 +36,7 @@ function change {
   fi
 
   echo "Setting $1 up for hosting."
-  echo "$1" > /usr/share/dom4/current
-  chown dom4:dom4 /usr/share/dom4/current
+  echo "$1" | sudo -u dom4 tee /usr/share/dom4/current > /dev/null
 }
 
 # Load a properties file.
@@ -29,57 +47,65 @@ function config {
     cat <<EOF
 Usage:
 
-  sudo dom4 config path/to/mygame.properties
+  dom4 config mygame
 EOF
     exit 1
   fi
 
-  if [[ ! -s $1 ]]; then
-    echo "$1 does not exist. Specify a valid properties file."
-    exit 1
-  fi
-
-  if [[ -s "/usr/share/dom4/config/$1" ]]; then
+  if [[ -s "/usr/share/dom4/config/$1.properties" ]]; then
     read -r -n 2 -p "$1 is already configured. Overwrite? [Y/n] " ovr
     if [[ $ovr != Y ]]; then
       exit 0
     fi
     echo
+  else
+    cat << EOF | sudo -u dom4 tee /usr/share/dom4/config/$1.properties > /dev/null
+###### SERVER INFO ######
+# Set the map file. Any image file must have the same name but a different extension.
+mapfile my_pretty_world.map
+# Allow host to set dropped-out players to computer control
+masterpass supersecure
+# Will default to localhost
+ipadr 127.0.0.1
+# Must be between 1024 and 65535, and forwarded in your router config
+port 6666
+# Time between turn rollover
+hours 26
+
+###### GAME SETTINGS ######
+era 1
+renaming
+storyevents
+hofsize 15
+requiredap 13
+thrones 2 8 1
+EOF
   fi
 
-  echo "Copying properties file..."
+  sudo -u dom4 $EDITOR /usr/share/dom4/config/$1.properties
 
-  cp $1 /usr/share/dom4/config
-
-  mapfile=$(grep -oP "mapfile\s+\K.+" $1)
+  mapfile=$(grep -oP "mapfile\s+\K.+" /usr/share/dom4/config/$1.properties)
   mapname=$(basename $mapfile .map)
-  confdir=$(dirname $1)
 
-  mkdir -p /usr/share/dom4/maps
-
-  USER_HOME=$(getent passwd $SUDO_USER | cut -d: -f6)
+  sudo -u dom4 mkdir -p /usr/share/dom4/maps
 
   if [[ -s "$mapname.map" ]]; then
     echo "Copying $mapname map files..."
 
-    cp "$mapname".* /usr/share/dom4/maps
-  elif [[ -s "$confdir/$mapname".map ]]; then
-    echo "Copying $mapname map files from $confdir..."
+    sudo -u dom4 cp "$mapname".* /usr/share/dom4/maps
+  elif [[ -s "$HOME/dominions4/maps/$mapname".map ]]; then
+    echo "Copying $mapname map files from $HOME/dominions4/maps..."
 
-    cp "$confdir/$mapname".* /usr/share/dom4/maps
-  elif [[ -s "$USER_HOME/dominions4/maps/$mapname".map ]]; then
-    echo "Copying $mapname map files from $USER_HOME/dominions4/maps..."
-
-    cp "$USER_HOME/dominions4/maps/$mapname".* /usr/share/dom4/maps
+    sudo cp "$HOME/dominions4/maps/$mapname".* /usr/share/dom4/maps
   else
-    echo "Could not find $mapname.map in $(pwd) or $USER_HOME/dominions4/maps. Please ensure the map file(s) exist and try again."
+    echo "Could not find $mapname.map in $(pwd) or $HOME/dominions4/maps. Please ensure the map file(s) exist in one or the other location and try again."
 
     exit 1;
   fi
 
   echo
 
-  change "$(basename $1 .properties)"
+  change $1
 
   cat <<EOF
 
@@ -89,7 +115,7 @@ Done. Start the service to let players upload their pretenders.
 
 Once all pretenders have been uploaded, stop the service and set the game to ready.
 
-  sudo dom4 ready
+  dom4 ready
 EOF
 }
 
@@ -99,16 +125,14 @@ EOF
 function ready {
   if [[ ! -z $1 ]]; then
     if [[ ! -s "/usr/share/dom4/config/$1.properties" ]]; then
-      echo "No game named '$1' found. Use dom4 config $1.properties to upload it."
+      echo "No game named '$1' found."
 
       exit 1
     fi
 
     change $1
-  fi
-
-  if [[ ! -s /usr/share/dom4/current ]]; then
-    echo "No current game found. Use dom4 config to load game configuration."
+  elif [[ ! -s /usr/share/dom4/current ]]; then
+    echo "No game configured. Use 'dom4 config' to set up a game."
 
     exit 1
   fi
@@ -137,7 +161,7 @@ function ready {
 
   echo "Setting start flag for $game ($players players)"
 
-  echo "uploadmaxp $players" >> "/usr/share/dom4/config/$game.properties"
+  echo "uploadmaxp $players" | sudo -u dom4 tee -a "/usr/share/dom4/config/$game.properties" > /dev/null
 
   cat <<EOF
 
@@ -155,11 +179,6 @@ function delete {
     exit 0
   fi
 
-  if [[ $1 = "default" ]]; then
-    echo "Not deleting the default config."
-    exit 0
-  fi
-
   game=$(</usr/share/dom4/current)
 
   if [[ $game = $1 ]]; then
@@ -168,21 +187,19 @@ function delete {
       exit 0
     fi
 
-    rm /usr/share/dom4/current
+    sudo -u dom4 rm /usr/share/dom4/current
   fi
 
   # leave the mapfile in case something else is using it
-  rm /usr/share/dom4/config/$1.properties
-  rm -rf /usr/share/dom4/savedgames/$1
+  sudo -u dom4 rm /usr/share/dom4/config/$1.properties
+  sudo -u dom4 rm -rf /usr/share/dom4/savedgames/$1
 }
 
-if [[ $EUID -ne 0 && ! -z $1 ]]; then
-   echo "Use sudo to run this script."
-
-   exit 1
-fi
-
 case $1 in
+  "install")
+    install
+    ;;
+
   "config" | "configure")
     config "${@:2}"
     ;;
@@ -197,25 +214,25 @@ case $1 in
 
   *)
     cat <<EOF
-Get an example template to modify in your editor of choice:
+Install Dominions 4 through SteamCMD:
 
-  cp /usr/share/dom4/config/default.properties mygame.properties
+  dom4 install
 
-Load a properties file into the server and set it as the current hosted game:
+Configure a new game, or edit an existing one:
 
-  sudo dom4 config path/to/mygame.properties
+  dom4 config mygame
 
 Set start flag for current game after all pretenders have been uploaded, prior to running service:
 
-  sudo dom4 ready
+  dom4 ready
 
 Set start flag for mygame after pretenders have been uploaded and set it as current hosted game:
 
-  sudo dom4 ready mygame
+  dom4 ready mygame
 
-Delete a game:
+Delete a game (this operation is irreversible!):
 
-  sudo dom4 delete mygame
+  dom4 delete mygame
 
 Service commands:
 
