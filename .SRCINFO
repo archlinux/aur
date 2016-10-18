@@ -1,0 +1,13 @@
+pkgbase = openshift-origin-client-tools
+	pkgdesc = OpenShift command line interface (CLI) ('oc' command), create applications and manage OpenShift projects from a terminal.
+	pkgver = 1.3.1
+	pkgrel = 1
+	url = https://github.com/openshift/origin/
+	arch = i686
+	arch = x86_64
+	license = Apache
+	source_x86_64 = https://github.com/openshift/origin/releases/download/v1.3.1/openshift-origin-client-tools-v1.3.1-dad658de7465ba8a234a4fb40b5b446a45a4cee1-linux-64bit.tar.gz
+	sha256sums_x86_64 = 2e25d7da6748562f10138a7616a7c027c3025086e08b42355978aebfed4da718
+
+pkgname = openshift-origin-client-tools
+
