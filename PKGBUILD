@@ -10,7 +10,8 @@
 # Contributor: Ray Rashif <schiv@archlinux.org>
 # Contributor: Tobias Powalowski <tpowa@archlinux.org>
 
-pkgname="opencv-git"
+pkgname="opencv-cuda-git"
+_pkgname="opencv-git"
 pkgver=3.1.0.r1522.g1ae27eb
 pkgrel=1
 pkgdesc="Open Source Computer Vision Library compiled with extra modules(opencv_contrib) and CUDA"
@@ -36,11 +37,11 @@ optdepends=(#'eigen'
             'python-numpy: Python 3 interface'
             'python2-numpy: Python 2 interface')
 options=('staticlibs')
-provides=("${pkgname%-git}")
-conflicts=("${pkgname%-git}")
+provides=("opencv" "${_pkgname%-git}")
+conflicts=(opencv "${_pkgname%-git}")
 changelog="ChangeLog"
-source=("${pkgname%-git}::git+http://github.com/Itseez/opencv.git"
-        "${pkgname%-git}_contrib::git+https://github.com/opencv/opencv_contrib.git"
+source=("${_pkgname%-git}::git+http://github.com/Itseez/opencv.git"
+        "${_pkgname%-git}_contrib::git+https://github.com/opencv/opencv_contrib.git"
         "ippicv_linux_20151201.tgz::https://github.com/Itseez/opencv_3rdparty/raw/ippicv/master_20151201/ippicv/ippicv_linux_20151201.tgz"
         'opencv_contrib_sfm_cmake.patch'
         'opencv_gcc6_pch.patch'
@@ -97,12 +98,12 @@ _cmakeopts=('-D WITH_OPENCL=ON'
 [[ "$CARCH" = 'armv6h' ]] && _cmakeopts+=('-D WITH_TBB=OFF')
 
 pkgver() {
-    cd "${srcdir}/${pkgname%-git}"
+    cd "${srcdir}/${_pkgname%-git}"
     git describe --long | sed -r 's/([^-]*-g)/r\1/;s/-/./g'
 }
 
 prepare() {
-    cd "${srcdir}/${pkgname%-git}"
+    cd "${srcdir}/${_pkgname%-git}"
     patch -p1 -i "${srcdir}/opencv_gcc6_pch.patch"
 
     # hack-fix folder naming inconsistency that they won't fix
@@ -113,10 +114,10 @@ prepare() {
     sed 's/share\/OpenCV/share\/opencv/' -i CMakeLists.txt
     sed 's/share\/OpenCV/share\/opencv/' -i cmake/templates/opencv_run_all_tests_unix.sh.in
 
-    mkdir -p "${srcdir}/${pkgname%-git}/3rdparty/ippicv/downloads/linux-808b791a6eac9ed78d32a7666804320e/"
-    ln -sf "${srcdir}/ippicv_linux_20151201.tgz" "${srcdir}/${pkgname%-git}/3rdparty/ippicv/downloads/linux-808b791a6eac9ed78d32a7666804320e/ippicv_linux_20151201.tgz"
+    mkdir -p "${srcdir}/${_pkgname%-git}/3rdparty/ippicv/downloads/linux-808b791a6eac9ed78d32a7666804320e/"
+    ln -sf "${srcdir}/ippicv_linux_20151201.tgz" "${srcdir}/${_pkgname%-git}/3rdparty/ippicv/downloads/linux-808b791a6eac9ed78d32a7666804320e/ippicv_linux_20151201.tgz"
 
-    cd "${srcdir}/${pkgname%-git}_contrib"
+    cd "${srcdir}/${_pkgname%-git}_contrib"
     # opencv_contrib sfm problem, use the complete FindGflags.cmake from ceres-solver
     patch -p1 -i "${srcdir}/opencv_contrib_sfm_cmake.patch"
 
@@ -126,7 +127,7 @@ prepare() {
 }
 
 build() {
-    cd "${srcdir}/${pkgname%-git}"
+    cd "${srcdir}/${_pkgname%-git}"
 
     # --expt-relaxed-constexpr to fix the error:
     #    opencv/modules/core/include/opencv2/core/cuda/vec_math.hpp(205): error: calling a constexpr __host__ function("abs") from a __device__ function("abs") is not allowed. The experimental flag '--expt-relaxed-constexpr' can be used to allow this.
@@ -135,19 +136,19 @@ build() {
     export CXX=$(which g++-5)
     cmake ${_cmakeopts[@]} \
         -D CUDA_NVCC_FLAGS='-std=c++11 -Xcompiler -D__CORRECT_ISO_CPP11_MATH_H_PROTO --expt-relaxed-constexpr' \
-        -D OPENCV_EXTRA_MODULES_PATH=$srcdir/${pkgname%-git}_contrib/modules \
+        -D OPENCV_EXTRA_MODULES_PATH=$srcdir/${_pkgname%-git}_contrib/modules \
         .
 
     make
 }
 
 package() {
-    cd "${srcdir}/${pkgname%-git}"
+    cd "${srcdir}/${_pkgname%-git}"
 
     make DESTDIR="${pkgdir}" install
 
     # install LICENSE file
-    install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname%-git}/LICENSE"
+    install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${_pkgname%-git}/LICENSE"
 }
 
 # vim:set ts=4 sw=4 et:
