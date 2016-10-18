@@ -1,0 +1,6 @@
+post_install() {
+  echo ''
+  echo '==> Enable it with the gnome-tweak-tool'
+  echo '==> or run "gnome-shell-extension-tool -e remove-dropdown-arrows@mpdeimos.com"'
+  echo ''
+}
