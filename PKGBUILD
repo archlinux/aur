@@ -1,8 +1,8 @@
 # Maintainer: bartus szczepaniak <aur@bartus.33mail.com>
 pkgname=mve-git
 pkgver=r1077.cab91ca
-pkgrel=1
-pkgdesc="Image-based geometry reconstruction pipeline, surface-from-motion, multi-view-stereo, surface-reconstruction, texturing"
+pkgrel=2
+pkgdesc="Image-based geometry reconstruction pipeline, structure-from-motion, multi-view-stereo, surface-reconstruction, texturing"
 arch=('i686' 'x86_64')
 url="http://www.gcc.tu-darmstadt.de/home/proj/mve/"
 license=('BSD' 'GPL')

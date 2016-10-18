@@ -1,7 +1,7 @@
 pkgbase = mve-git
-	pkgdesc = Image-based geometry reconstruction pipeline, surface-from-motion, multi-view-stereo, surface-reconstruction, texturing
+	pkgdesc = Image-based geometry reconstruction pipeline, structure-from-motion, multi-view-stereo, surface-reconstruction, texturing
 	pkgver = r1077.cab91ca
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.gcc.tu-darmstadt.de/home/proj/mve/
 	arch = i686
 	arch = x86_64
