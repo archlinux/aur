@@ -1,3 +1,5 @@
+pkgname=visual-paradigm-community
+
 repo_info() {
     echo "============================="
     echo "You can download the package in repo:"
@@ -11,6 +13,7 @@ post_install() {
   update-mime-database /usr/share/mime
   gtk-update-icon-cache -q -t -f /usr/share/icons/hicolor
   archlinux-java fix
+  chmod a+x "/usr/share/${pkgname}/bin/Visual_Paradigm_Fixed"
   repo_info
 }
 
