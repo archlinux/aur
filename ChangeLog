@@ -1,0 +1,49 @@
+2016-10-15 Yunhui Fu <yhfudev@gmail.com>
+
+	* 3.1.0 :
+	Add cuda dependants
+
+2015-12-02 Romain Reignier <rom.reignier@gmail.com>
+
+	* 3.0.0.r789.ga0f8645 :
+	Add armv6h architecture and NEON support for armv7h
+
+2015-06-10 Valentin Churavy <v.churavy@gmail.com>
+
+	* 3.0.0.r1.g424c2bd-2 :
+	Remove pkgconfig.patch
+
+2015-06-09 Valentin Churavy <v.churavy@gmail.com>
+
+	* 3.0.0.r1.g424c2bd :
+	Port package to aur4
+
+2015-03-27 Valentin Churavy <v.churavy@gmail.com>
+	
+	* 3.0.0.beta.r896.g77cbddf :
+	Adapt patches to upstream changes
+
+2015-03-13 Fabien Dubosson <fabien.dubosson@gmail.com>
+	
+	* 3.0.0.beta.r681.g74e88cc-1 :
+	Adapt patches to upstream changes
+	
+2015-02-24 Fabien Dubosson <fabien.dubosson@gmail.com>
+
+	* 3.0.0.beta.r557.gbdb088d-1 :
+	Adapt patches to upstream changes
+
+2015-01-14 Fabien Dubosson <fabien.dubosson@gmail.com>
+
+	* 3.0.0.beta.r273.gb2a5e66-1 :
+	Adapt fsh.patch to upstream changes
+
+2014-12-24 Fabien Dubosson <fabien.dubosson@gmail.com>
+
+	* 3.0.0.beta.r156.gfd6ef87-1 :
+	Add BUILD_NEW_PYTHON_SUPPORT flag
+
+2014-02-10 Fabien Dubosson <fabien.dubosson@gmail.com>
+
+	* 3.0.ocl.tp2.r27.g86b6c48-1 :
+	Adapt package to new VCS guidelines, based on [extra] `opencv` PKGBUILD

@@ -1,0 +1,72 @@
+From 2bb4ca7cc656969a9e2c655e594428b465edbfed Mon Sep 17 00:00:00 2001
+From: Valentin Churavy <v.churavy@gmail.com>
+Date: Sat, 28 Mar 2015 01:30:01 +0900
+Subject: [PATCH] fsh.patch
+
+---
+ CMakeLists.txt                                  | 14 +++++++-------
+ cmake/templates/opencv_run_all_tests_unix.sh.in |  2 +-
+ 2 files changed, 8 insertions(+), 8 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index d9a17b3..3b4d9ad 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -300,7 +300,7 @@ endif()
+ if(ANDROID OR WIN32)
+   set(OPENCV_DOC_INSTALL_PATH doc)
+ else()
+-  set(OPENCV_DOC_INSTALL_PATH share/OpenCV/doc)
++  set(OPENCV_DOC_INSTALL_PATH share/doc/opencv)
+ endif()
+ 
+ if(WIN32 AND CMAKE_HOST_SYSTEM_NAME MATCHES Windows)
+@@ -342,7 +342,7 @@ if(OPENCV_TEST_DATA_PATH AND NOT OPENCV_TEST_DATA_INSTALL_PATH)
+   elseif(WIN32)
+     set(OPENCV_TEST_DATA_INSTALL_PATH "testdata")
+   else()
+-    set(OPENCV_TEST_DATA_INSTALL_PATH "share/OpenCV/testdata")
++    set(OPENCV_TEST_DATA_INSTALL_PATH "share/opencv/testdata")
+   endif()
+ endif()
+ 
+@@ -371,10 +371,10 @@ else()
+     set(OPENCV_OTHER_INSTALL_PATH   etc)
+   else()
+     set(OPENCV_LIB_INSTALL_PATH     lib${LIB_SUFFIX})
+-    set(OPENCV_3P_LIB_INSTALL_PATH  share/OpenCV/3rdparty/${OPENCV_LIB_INSTALL_PATH})
+-    set(OPENCV_SAMPLES_SRC_INSTALL_PATH    share/OpenCV/samples)
+-    set(OPENCV_JAR_INSTALL_PATH share/OpenCV/java)
+-    set(OPENCV_OTHER_INSTALL_PATH   share/OpenCV)
++    set(OPENCV_3P_LIB_INSTALL_PATH  share/opencv/3rdparty/${OPENCV_LIB_INSTALL_PATH})
++    set(OPENCV_SAMPLES_SRC_INSTALL_PATH    share/opencv/samples)
++    set(OPENCV_JAR_INSTALL_PATH share/opencv/java)
++    set(OPENCV_OTHER_INSTALL_PATH   share/opencv)
+   endif()
+   set(OPENCV_INCLUDE_INSTALL_PATH "include")
+ 
+@@ -382,7 +382,7 @@ else()
+   if(LIB_SUFFIX AND NOT SIZEOF_VOID_P_BITS EQUAL LIB_SUFFIX)
+     set(OPENCV_CONFIG_INSTALL_PATH lib${LIB_SUFFIX}/cmake/opencv)
+   else()
+-    set(OPENCV_CONFIG_INSTALL_PATH share/OpenCV)
++    set(OPENCV_CONFIG_INSTALL_PATH share/opencv)
+   endif()
+ endif()
+ 
+diff --git a/cmake/templates/opencv_run_all_tests_unix.sh.in b/cmake/templates/opencv_run_all_tests_unix.sh.in
+index 7b946af..82370dc 100644
+--- a/cmake/templates/opencv_run_all_tests_unix.sh.in
++++ b/cmake/templates/opencv_run_all_tests_unix.sh.in
+@@ -53,7 +53,7 @@ fi
+ 
+ OPENCV_TEST_PATH=@CMAKE_INSTALL_PREFIX@/@OPENCV_TEST_INSTALL_PATH@
+ OPENCV_PYTHON_TESTS=@OPENCV_PYTHON_TESTS_LIST@
+-export OPENCV_TEST_DATA_PATH=@CMAKE_INSTALL_PREFIX@/share/OpenCV/testdata
++export OPENCV_TEST_DATA_PATH=@CMAKE_INSTALL_PREFIX@/share/opencv/testdata
+ 
+ # Run tests
+ 
+-- 
+2.4.2
+

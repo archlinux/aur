@@ -1,0 +1,15 @@
+--- opencv_contrib/modules/sfm/cmake/FindGflags.cmake	2016-10-16 12:09:56.783814205 +0000
++++ opencv_contrib/modules/sfm/cmake/FindGflags.cmake	2016-10-16 13:01:51.058120602 +0000
+@@ -384,9 +384,9 @@
+ 
+   if (FOUND_INSTALLED_GFLAGS_CMAKE_CONFIGURATION)
+     message(STATUS "Detected gflags version: ${gflags_VERSION}")
+-    #set(GFLAGS_FOUND ${gflags_FOUND})
+-    #set(GFLAGS_INCLUDE_DIR ${gflags_INCLUDE_DIR})
+-    #set(GFLAGS_LIBRARY ${gflags_LIBRARIES})
++    set(GFLAGS_FOUND ${gflags_FOUND})
++    set(GFLAGS_INCLUDE_DIR ${gflags_INCLUDE_DIR})
++    set(GFLAGS_LIBRARY ${gflags_LIBRARIES})
+ 
+     # gflags does not export the namespace in their CMake configuration, so
+     # use our function to determine what it should be, as it can be either

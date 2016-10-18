@@ -1,0 +1,13 @@
+diff --git a/cmake/OpenCVPCHSupport.cmake b/cmake/OpenCVPCHSupport.cmake
+index 90437cb..7dcfdce 100644
+--- a/cmake/OpenCVPCHSupport.cmake
++++ b/cmake/OpenCVPCHSupport.cmake
+@@ -14,7 +14,7 @@
+ 
+ IF(CMAKE_COMPILER_IS_GNUCXX)
+ 
+-    IF(NOT CMAKE_CXX_COMPILER_VERSION VERSION_LESS "4.2.0")
++    IF(CMAKE_CXX_COMPILER_VERSION VERSION_GREATER "4.2.-1" AND CMAKE_CXX_COMPILER_VERSION VERSION_LESS "6.0.0")
+         SET(PCHSupport_FOUND TRUE)
+     ENDIF()
+ 
