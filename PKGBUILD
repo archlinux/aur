@@ -1,8 +1,9 @@
 # Maintainer: SaultDon <sault.don gmail>
+# Contributor: Felixoid <mr.felixoid gmail>
 pkgname=python2-pyspatialite
 _pkgname=${pkgname/python2-/}
 pkgver=3.0.1
-pkgrel=12
+pkgrel=13
 pkgdesc="An interface to the SQLite 3.x embedded relational database engine with spatialite extensions."
 arch=('i686' 'x86_64')
 url="https://pypi.python.org/pypi/pyspatialite"
@@ -24,6 +25,7 @@ md5sums=(8ef12ad13a8aa67c2314426c64660a0a
 build() {
         cd "$srcdir/$_pkgname-$pkgver-alpha-0"
         cp "$srcdir/setup.cfg" .
+        sed -i '/^#include "sqlite3.h"$/d' src/{statement,util}.h
         python2 setup.py build
 }
 
