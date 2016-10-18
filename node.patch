@@ -1,7 +1,6 @@
-diff --git Makefile Makefile
-index 6ee183a..23ef317 100644
---- Makefile
-+++ Makefile
+diff -dNur node-0.3.2.orig/Makefile node-0.3.2/Makefile
+--- node-0.3.2.orig/Makefile	2003-08-23 14:27:27.000000000 +0000
++++ node-0.3.2/Makefile	2016-10-18 20:42:46.112258866 +0000
 @@ -1,5 +1,6 @@
  all: nodeusers node
  
@@ -9,7 +8,7 @@ index 6ee183a..23ef317 100644
  CC = gcc
  LD = gcc
  CFLAGS = -Wall -Wstrict-prototypes -O2 -g
-@@ -20,31 +21,31 @@ NODEUSERS_OBJS =	$(NODEUSERS_SRC:.c=.o)
+@@ -20,31 +21,31 @@
  .c.o:
  	$(CC) $(CFLAGS) -c $<
  
@@ -49,17 +48,16 @@ index 6ee183a..23ef317 100644
 -	install -m 644    -o bin -g bin man/node.conf.5  $(MAN_DIR)/man5
 -	install -m 644    -o bin -g bin man/node.perms.5 $(MAN_DIR)/man5
 -	install -m 644    -o bin -g bin man/node.8       $(MAN_DIR)/man8
-+	install -m 644 -D -o bin -g bin man/nodeusers.1  $(MAN_DIR)/man1
-+	install -m 644 -D -o bin -g bin man/node.conf.5  $(MAN_DIR)/man5
-+	install -m 644 -D -o bin -g bin man/node.perms.5 $(MAN_DIR)/man5
-+	install -m 644 -D -o bin -g bin man/node.8       $(MAN_DIR)/man8
++	install -m 644 -D -o root -g root man/nodeusers.1  $(MAN_DIR)/man1/nodeusers.1
++	install -m 644 -D -o root -g root man/node.conf.5  $(MAN_DIR)/man5/node.conf.5
++	install -m 644 -D -o root -g root man/node.perms.5 $(MAN_DIR)/man5/node.perms.5
++	install -m 644 -D -o root -g root man/node.8       $(MAN_DIR)/man8/node.8
  
  clean:
  	rm -f *.o *~ *.bak *.orig
-diff --git Makefile.include.in Makefile.include.in
-index 547891f..ef5e061 100644
---- Makefile.include.in
-+++ Makefile.include.in
+diff -dNur node-0.3.2.orig/Makefile.include.in node-0.3.2/Makefile.include.in
+--- node-0.3.2.orig/Makefile.include.in	1999-04-14 23:50:35.000000000 +0000
++++ node-0.3.2/Makefile.include.in	2016-10-18 20:42:10.973609084 +0000
 @@ -2,12 +2,12 @@
  ARCH		= @ARCH@
  
@@ -79,11 +77,10 @@ index 547891f..ef5e061 100644
  
  # Is Zlib available?
  ZLIB		= @ZLIB@
-diff --git command.c command.c
-index 1d6caaa..98de36a 100644
---- command.c
-+++ command.c
-@@ -59,7 +59,7 @@ void logout(char *reason)
+diff -dNur node-0.3.2.orig/command.c node-0.3.2/command.c
+--- node-0.3.2.orig/command.c	2003-08-23 14:15:14.000000000 +0000
++++ node-0.3.2/command.c	2016-10-18 20:42:10.973609084 +0000
+@@ -59,7 +59,7 @@
  	axio_end_all();
  	logout_user();
  	ipc_close();
@@ -92,11 +89,10 @@ index 1d6caaa..98de36a 100644
  	free_cmdlist(Nodecmds);
  	Nodecmds = NULL;
  	exit(0);
-diff --git config.c config.c
-index 5111bd1..377b201 100644
---- config.c
-+++ config.c
-@@ -110,7 +110,7 @@ char *read_perms(struct user *up, unsigned long peer)
+diff -dNur node-0.3.2.orig/config.c node-0.3.2/config.c
+--- node-0.3.2.orig/config.c	2003-03-06 18:31:11.000000000 +0000
++++ node-0.3.2/config.c	2016-10-18 20:42:10.973609084 +0000
+@@ -110,7 +110,7 @@
  			continue;
  		if (argc != 5) {
  			node_msg("Configuration error");
@@ -105,7 +101,7 @@ index 5111bd1..377b201 100644
  			break;
  		}
  		if (strcmp(argv[0], "*") && strcasecmp(argv[0], up->call))
-@@ -227,7 +227,7 @@ static int do_escapechar(int argc, char **argv)
+@@ -227,7 +227,7 @@
  	EscChar = get_escape(argv[1]);
  	if (EscChar < -1 || EscChar > 255) {
  		node_msg("Configuration error");
@@ -114,7 +110,7 @@ index 5111bd1..377b201 100644
  		    argv[1]);
  		return -2;
  	}
-@@ -304,7 +304,7 @@ static int do_hiddenports(int argc, char **argv)
+@@ -304,7 +304,7 @@
  	for (i = 1; i < argc && i < 31; i++) {
  		if (ax25_config_get_dev(argv[i]) == NULL) {
  			node_msg("Configuration error");
@@ -123,7 +119,7 @@ index 5111bd1..377b201 100644
  			return -2;
  		}
  		HiddenPorts[i - 1] = strdup(argv[i]);
-@@ -339,7 +339,7 @@ static int do_extcmd(int argc, char **argv)
+@@ -339,7 +339,7 @@
  	new->flags = atoi(argv[2]);
  	if ((pw = getpwnam(argv[3])) == NULL) {
  		node_msg("Configuration error");
@@ -132,7 +128,7 @@ index 5111bd1..377b201 100644
  		return -2;
  	}
  	new->uid = pw->pw_uid;
-@@ -409,7 +409,7 @@ int read_config(void)
+@@ -409,7 +409,7 @@
  		ret = cmdparse(cfg_cmds, line);
  		if (ret == -1) {
  			node_msg("Configuration error");
@@ -141,11 +137,19 @@ index 5111bd1..377b201 100644
  		}
  		if (ret < 0) {
  			fclose(fp);
-diff --git configure configure
-index 58704b0..52261f0 100755
---- configure
-+++ configure
-@@ -47,25 +47,25 @@ fi
+diff -dNur node-0.3.2.orig/configure node-0.3.2/configure
+--- node-0.3.2.orig/configure	2003-03-06 18:36:50.000000000 +0000
++++ node-0.3.2/configure	2016-10-18 20:42:19.733272472 +0000
+@@ -1,7 +1,7 @@
+ #!/bin/sh
+ 
+ ETC_DIR=/etc/ax25
+-SBIN_DIR=/usr/sbin
++SBIN_DIR=/usr/bin
+ BIN_DIR=/usr/bin
+ LIB_DIR=/usr/lib
+ VAR_DIR=/var/ax25
+@@ -47,25 +47,25 @@
  	HAVENETROM="#undef"
  	HAVEROSE="#undef"
  
@@ -185,11 +189,10 @@ index 58704b0..52261f0 100755
  
  echo "Creating Makefile.include"
  
-diff --git gateway.c gateway.c
-index 702bca9..ed37a93 100644
---- gateway.c
-+++ gateway.c
-@@ -55,7 +55,8 @@ static ax25io *connect_to(char **addr, int family, int escape, int compr)
+diff -dNur node-0.3.2.orig/gateway.c node-0.3.2/gateway.c
+--- node-0.3.2.orig/gateway.c	2003-03-06 21:11:55.000000000 +0000
++++ node-0.3.2/gateway.c	2016-10-18 20:42:10.973609084 +0000
+@@ -55,7 +55,8 @@
  	} sa;
  	struct in_addr inaddr;
  	char call[10], path[20], *cp, *eol;
@@ -199,7 +202,7 @@ index 702bca9..ed37a93 100644
  	int paclen;
  	struct hostent *hp;
  	struct servent *sp;
-@@ -72,7 +73,7 @@ static ax25io *connect_to(char **addr, int family, int escape, int compr)
+@@ -72,7 +73,7 @@
  	case AF_ROSE:
  		if (check_perms(PERM_ROSE, 0L) == -1) {
  			node_msg("Permission denied");
@@ -208,7 +211,7 @@ index 702bca9..ed37a93 100644
  			return NULL;
  		}
  		if ((fd = socket(AF_ROSE, SOCK_SEQPACKET, 0)) < 0) {
-@@ -124,7 +125,7 @@ static ax25io *connect_to(char **addr, int family, int escape, int compr)
+@@ -124,7 +125,7 @@
  	case AF_NETROM:
  		if (check_perms(PERM_NETROM, 0L) == -1) {
  			node_msg("Permission denied");
@@ -217,7 +220,7 @@ index 702bca9..ed37a93 100644
  			return NULL;
  		}
  		if ((fd = socket(AF_NETROM, SOCK_SEQPACKET, 0)) < 0) {
-@@ -159,7 +160,7 @@ static ax25io *connect_to(char **addr, int family, int escape, int compr)
+@@ -159,7 +160,7 @@
  	case AF_AX25:
  		if (check_perms(PERM_AX25, 0L) == -1 || (is_hidden(addr[0]) && check_perms(PERM_HIDDEN, 0L) == -1)) {
  			node_msg("Permission denied");
@@ -226,7 +229,7 @@ index 702bca9..ed37a93 100644
  			return NULL;
  		}
  		if (ax25_config_get_addr(addr[0]) == NULL) {
-@@ -241,7 +242,7 @@ static ax25io *connect_to(char **addr, int family, int escape, int compr)
+@@ -241,7 +242,7 @@
  		eol = INET_EOL;
  		if (check_perms(PERM_TELNET, sa.in.sin_addr.s_addr) == -1) {
  			node_msg("Permission denied");
@@ -235,7 +238,7 @@ index 702bca9..ed37a93 100644
  			close(fd);
  			return NULL;
  		}
-@@ -310,7 +311,7 @@ static ax25io *connect_to(char **addr, int family, int escape, int compr)
+@@ -310,7 +311,7 @@
  				cp = strdup(strerror(ret));
  				strlwr(cp);
  				node_msg_block("Failure with %s: %s", print_dl(&User), cp);
@@ -244,7 +247,7 @@ index 702bca9..ed37a93 100644
  				free(cp);
  				close(fd);
  				return NULL;
-@@ -339,7 +340,7 @@ static ax25io *connect_to(char **addr, int family, int escape, int compr)
+@@ -339,7 +340,7 @@
  				escape < 32 ? (escape + 'A' - 1) : escape);
  	node_flush(NodeIo);
  
@@ -253,7 +256,7 @@ index 702bca9..ed37a93 100644
  
  	if ((riop = axio_init(fd, fd, paclen, eol)) == NULL) {
  		node_perror("connect_to: Initializing I/O failed", errno);
-@@ -536,7 +537,7 @@ int do_connect(int argc, char **argv)
+@@ -536,7 +537,7 @@
  
  	axio_end(riop);
  
@@ -262,7 +265,7 @@ index 702bca9..ed37a93 100644
  
  	if (stay) {
  		axio_eolmode(NodeIo, EOLMODE_TEXT);
-@@ -608,10 +609,10 @@ static long calc_rtt(struct timeval tv1, struct timeval tv2)
+@@ -608,10 +609,10 @@
  /*
   * Checksum routine for Internet Protocol family headers (C Version)
   */
@@ -275,7 +278,7 @@ index 702bca9..ed37a93 100644
          register unsigned int sum = 0;
          unsigned short answer = 0;
  
-@@ -670,7 +671,7 @@ static int check_icmp(char *buf, int len, struct sockaddr_in *from, long rtt)
+@@ -670,7 +671,7 @@
  
  int do_ping(int argc, char **argv)
  {
@@ -284,7 +287,7 @@ index 702bca9..ed37a93 100644
  	struct hostent *hp;
  	struct sockaddr_in to, from;
  	struct in_addr inaddr;
-@@ -679,8 +680,8 @@ int do_ping(int argc, char **argv)
+@@ -679,8 +680,8 @@
  	struct timeval tv1, tv2;
  	fd_set fdset;
  	int fd, i, len = sizeof(struct icmphdr);
@@ -295,11 +298,10 @@ index 702bca9..ed37a93 100644
  	if (argc < 2) {
  		node_msg("Usage: ping <host> [<size>]");
  		return 0;
-diff --git ipc.c ipc.c
-index 1c4f022..86609ee 100644
---- ipc.c
-+++ ipc.c
-@@ -32,7 +32,7 @@ static void usr2_handler(int sig)
+diff -dNur node-0.3.2.orig/ipc.c node-0.3.2/ipc.c
+--- node-0.3.2.orig/ipc.c	2003-08-23 20:23:19.000000000 +0000
++++ node-0.3.2/ipc.c	2016-10-18 20:42:10.973609084 +0000
+@@ -32,7 +32,7 @@
  		nprintf("\n%s %s\n", NodeId, buf.mtext);
  		node_flush(NodeIo);
  	} else
@@ -308,7 +310,7 @@ index 1c4f022..86609ee 100644
  
  	signal(SIGUSR2, usr2_handler); /* Restore handler */
  }
-@@ -90,7 +90,7 @@ int ipc_close(void)
+@@ -90,7 +90,7 @@
  	
  	if (ipc_id != -1)	/* Remove the IPC channel */
  		if (msgctl(ipc_id, IPC_RMID, &buf) == -1) {
@@ -317,11 +319,10 @@ index 1c4f022..86609ee 100644
  			return -1;
  		}
  	return 0;
-diff --git node.c node.c
-index 0a7f5dd..81a1ccd 100644
---- node.c
-+++ node.c
-@@ -90,7 +90,7 @@ int main(int argc, char *argv[])
+diff -dNur node-0.3.2.orig/node.c node-0.3.2/node.c
+--- node-0.3.2.orig/node.c	2003-08-24 19:13:06.000000000 +0000
++++ node-0.3.2/node.c	2016-10-18 20:42:10.973609084 +0000
+@@ -90,7 +90,7 @@
  		struct sockaddr_rose      srose;
  		struct sockaddr_in        sin;
  	} saddr;
@@ -330,7 +331,7 @@ index 0a7f5dd..81a1ccd 100644
  	char *p, buf[256], *pw;
  	int paclen;
  	FILE *fp;
-@@ -104,7 +104,7 @@ int main(int argc, char *argv[])
+@@ -104,7 +104,7 @@
  	signal(SIGPIPE, SIG_IGN);
  
  	if (ax25_config_load_ports() == 0) {
@@ -339,7 +340,7 @@ index 0a7f5dd..81a1ccd 100644
  		return 1;
  	}
  	nr_config_load_ports();
-@@ -112,7 +112,7 @@ int main(int argc, char *argv[])
+@@ -112,7 +112,7 @@
  
  	if (getpeername(STDOUT_FILENO, (struct sockaddr *)&saddr, &slen) == -1) {
  		if (errno != ENOTSOCK) {
@@ -348,7 +349,7 @@ index 0a7f5dd..81a1ccd 100644
  			return 1;
  		}
  		User.ul_type = AF_UNSPEC;
-@@ -123,7 +123,7 @@ int main(int argc, char *argv[])
+@@ -123,7 +123,7 @@
  	case AF_AX25:
  		strcpy(User.call, ax25_ntoa(&saddr.sax.fsa_ax25.sax25_call));
  		if (getsockname(STDOUT_FILENO, (struct sockaddr *)&saddr.sax, &slen) == -1) {
@@ -357,7 +358,7 @@ index 0a7f5dd..81a1ccd 100644
  			return 1;
  		}
  		strcpy(User.ul_name, ax25_config_get_port(&saddr.sax.fsa_digipeater[0]));
-@@ -134,7 +134,7 @@ int main(int argc, char *argv[])
+@@ -134,7 +134,7 @@
  		strcpy(User.call, ax25_ntoa(&saddr.sax.fsa_ax25.sax25_call));
  		strcpy(User.ul_name, ax25_ntoa(&saddr.sax.fsa_digipeater[0]));
  		if (getsockname(STDOUT_FILENO, (struct sockaddr *)&saddr.sax, &slen) == -1) {
@@ -366,7 +367,7 @@ index 0a7f5dd..81a1ccd 100644
  			return 1;
  		}
  		strcpy(User.ul_port, nr_config_get_port(&saddr.sax.fsa_ax25.sax25_call));
-@@ -155,7 +155,7 @@ int main(int argc, char *argv[])
+@@ -155,7 +155,7 @@
  	case AF_UNSPEC:
  		strcpy(User.ul_name, "local");
  		if ((p = get_call(getuid())) == NULL) {
@@ -375,7 +376,7 @@ index 0a7f5dd..81a1ccd 100644
  			return 1;
  		}
  		strcpy(User.call, p);
-@@ -163,14 +163,14 @@ int main(int argc, char *argv[])
+@@ -163,14 +163,14 @@
  		p = UNSPEC_EOL;
  		break;
  	default:
@@ -392,7 +393,7 @@ index 0a7f5dd..81a1ccd 100644
  		return 1;
  	}
  #ifdef HAVE_ZLIB_H
-@@ -201,7 +201,7 @@ int main(int argc, char *argv[])
+@@ -201,7 +201,7 @@
  			strncpy(User.ul_name, hp->h_name, 31);
  			User.ul_name[31] = 0;
  		} else
@@ -401,7 +402,7 @@ index 0a7f5dd..81a1ccd 100644
  	}
  
  	User.state = STATE_LOGIN;
-@@ -224,13 +224,13 @@ int main(int argc, char *argv[])
+@@ -224,13 +224,13 @@
  
  	if (check_call(User.call) == -1) {
  		node_msg("Invalid callsign");
@@ -417,7 +418,7 @@ index 0a7f5dd..81a1ccd 100644
  		logout("Login denied");
  	} else if (strcmp(pw, "*") != 0) {
  		nputs("Password: ");
-@@ -248,7 +248,7 @@ int main(int argc, char *argv[])
+@@ -248,7 +248,7 @@
  		if (p == NULL || strcmp(p, pw) != 0) {
  			nputs("\n");
  			node_msg("Login failed");
@@ -426,7 +427,7 @@ index 0a7f5dd..81a1ccd 100644
  			logout("Login failed");
  		}
  	}
-@@ -266,7 +266,7 @@ int main(int argc, char *argv[])
+@@ -266,7 +266,7 @@
  
  	put_prompt();
  
@@ -435,11 +436,10 @@ index 0a7f5dd..81a1ccd 100644
  
  	while (1) {
  		axio_flush(NodeIo);
-diff --git node.h node.h
-index d630c02..4f03967 100644
---- node.h
-+++ node.h
-@@ -116,7 +116,7 @@ extern void node_perror(char *, int);
+diff -dNur node-0.3.2.orig/node.h node-0.3.2/node.h
+--- node-0.3.2.orig/node.h	2003-08-23 13:46:51.000000000 +0000
++++ node-0.3.2/node.h	2016-10-18 20:42:10.973609084 +0000
+@@ -116,7 +116,7 @@
  extern char *print_node(const char *, const char *);
  extern char *print_dl(struct user *);
  extern int put_prompt(void);
@@ -448,11 +448,10 @@ index d630c02..4f03967 100644
  extern char *strherror(int);
  
  /* in user.c */
-diff --git user.c user.c
-index b182b6e..f8487d5 100644
---- user.c
-+++ user.c
-@@ -37,7 +37,7 @@ void login_user(void)
+diff -dNur node-0.3.2.orig/user.c node-0.3.2/user.c
+--- node-0.3.2.orig/user.c	1999-04-21 20:38:35.000000000 +0000
++++ node-0.3.2/user.c	2016-10-18 20:42:10.973609084 +0000
+@@ -37,7 +37,7 @@
  	}
  	if (statbuf.st_size % sizeof(struct user) != 0) {
  		node_msg("%s: Incorrect size", DATA_NODE_LOGIN_FILE);
@@ -461,11 +460,10 @@ index b182b6e..f8487d5 100644
  		fclose(f);
  		return;
  	}
-diff --git util.c util.c
-index cb5b912..149f288 100644
---- util.c
-+++ util.c
-@@ -29,7 +29,7 @@ static int set_nonblock(int fd, int flag)
+diff -dNur node-0.3.2.orig/util.c node-0.3.2/util.c
+--- node-0.3.2.orig/util.c	2003-08-23 13:51:09.000000000 +0000
++++ node-0.3.2/util.c	2016-10-18 20:42:10.973609084 +0000
+@@ -29,7 +29,7 @@
  //	fprintf(stderr, "fd=%d flag=%d 0%lo -> 0%lo\n", fd, flag, oldflags, newflags);
  
  	if (fcntl(fd, F_SETFL, newflags) == -1) {
@@ -474,7 +472,7 @@ index cb5b912..149f288 100644
  		logout("fcntl failed");
  	}
  
-@@ -39,7 +39,7 @@ static int set_nonblock(int fd, int flag)
+@@ -39,7 +39,7 @@
  static int set_fd_flags(int fd, int flags)
  {
  	if (fcntl(fd, F_SETFL, flags) == -1) {
@@ -483,7 +481,7 @@ index cb5b912..149f288 100644
  		logout("fcntl failed");
  	}
  
-@@ -158,7 +158,7 @@ void node_perror(char *str, int err)
+@@ -158,7 +158,7 @@
  	/* return original blocking state */
  	set_fd_flags(NodeIo->ofd, flags);
  
@@ -492,7 +490,7 @@ index cb5b912..149f288 100644
  }
  
  char *print_node(const char *alias, const char *call)
-@@ -208,7 +208,7 @@ int put_prompt(void)
+@@ -208,7 +208,7 @@
  	return err;
  }
  
