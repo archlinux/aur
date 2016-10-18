@@ -1,6 +1,6 @@
 # Maintainer: Martin Trigaux <me@mart-e.be>
 pkgname=nxt
-pkgver=1.10.2
+pkgver=1.10.3
 pkgrel=1
 pkgdesc="The Nxt Reference Software Client for use with the Nxt Cryptocurrency."
 arch=()
@@ -10,7 +10,7 @@ arch=(any)
 makedepends=(unzip)
 depends=('jre8-openjdk')
 source=(https://bitbucket.org/JeanLucPicard/nxt/downloads/nxt-client-$pkgver.zip)
-sha256sums=('a4406ca9d1f4104683bc4c02a281073cf478a9e01a96375a108db3aa11faedd0')
+sha256sums=('ac9c717f95afff1b5d30674d10034e0124bba30a37a4b39ebc1702599dbb8181')
 
 package() {
 	mkdir -p $pkgdir/opt/$pkgname
