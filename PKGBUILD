@@ -15,15 +15,18 @@ conflicts=('cjdns')
 install=cjdns.install
 source=(https://github.com/cjdelisle/${_pkgname}/archive/cjdns-v${pkgver}.tar.gz
         cjdns.sodium.patch
-        cjdns.warnings.patch)
+        cjdns.warnings.patch
+        cjdns.sign.patch)
 md5sums=('9f6600d9ed0d87d4e17fbc9155ff0368'
          'ba220c6f05f64bf238c47f21cc4be0ac'
-         'e9db1f3f1ecd4d298f82186a12a385f3')
+         'e9db1f3f1ecd4d298f82186a12a385f3'
+         'f4ce2698082965df427fa743041a9c19')
 
 prepare() {
   cd ${_pkgname}-${_pkgname}-v${pkgver}
   patch -p1 -i "$srcdir"/cjdns.sodium.patch
   patch -p1 -i "$srcdir"/cjdns.warnings.patch
+  patch -p1 -i "$srcdir"/cjdns.sign.patch
 }
 
 build() {

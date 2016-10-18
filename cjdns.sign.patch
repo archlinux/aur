@@ -1,0 +1,36 @@
+diff -up ./crypto/Sign.c.sign ./crypto/Sign.c
+--- ./crypto/Sign.c.sign	2016-10-11 17:39:44.000000000 -0400
++++ ./crypto/Sign.c	2016-10-14 20:59:49.143754098 -0400
+@@ -13,6 +13,7 @@
+  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+  */
+ 
++#ifdef SUBNODE
+ #include "crypto/Sign.h"
+ 
+ #include "node_build/dependencies/cnacl/crypto_sign/ed25519/ref10/ge.h"
+@@ -110,3 +111,6 @@ int Sign_publicSigningKeyToCurve25519(ui
+ 
+     return 0;
+ }
++#else
++#pragma GCC diagnostic ignored "-Wpedantic"
++#endif // SUBNODE
+diff -up ./crypto/test/Sign_test.c.sign ./crypto/test/Sign_test.c
+--- ./crypto/test/Sign_test.c.sign	2016-10-11 17:39:44.000000000 -0400
++++ ./crypto/test/Sign_test.c	2016-10-14 20:57:28.737064976 -0400
+@@ -23,6 +23,7 @@
+ 
+ int main()
+ {
++#ifdef SUBNODE
+     struct Allocator* alloc = MallocAllocator_new(1048576);
+     struct Log* logger = FileWriterLog_new(stdout, alloc);
+     struct Random* rand = Random_new(alloc, logger, NULL);
+@@ -42,5 +43,6 @@ int main()
+     Assert_true(!Sign_verifyMsg(&signingKeyPair[32], msg));
+     Assert_true(!Sign_publicSigningKeyToCurve25519(curve25519publicB, &signingKeyPair[32]));
+     Assert_true(!Bits_memcmp(curve25519publicB, curve25519public, 32));
++#endif  // SUBNODE
+     return 0;
+ }
