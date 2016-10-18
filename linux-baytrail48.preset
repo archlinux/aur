@@ -10,5 +10,5 @@ default_image="/boot/initramfs-linux-baytrail48.img"
 #default_options=""
 
 #fallback_config="/etc/mkinitcpio.conf"
-fallback_image="/boot/initramfs-linux-fallback-baytrail48.img" 
+fallback_image="/boot/initramfs-linux-baytrail48-fallback.img" 
 fallback_options="-S autodetect"
