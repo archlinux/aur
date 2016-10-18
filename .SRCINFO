@@ -1,14 +1,14 @@
 pkgbase = python-pyficache
 	pkgdesc = Cache lines and file information which are generally Python programs
-	pkgver = 0.2.6
-	pkgrel = 2
+	pkgver = 0.3.0
+	pkgrel = 1
 	url = https://pypi.python.org/pypi/pyficache
 	arch = any
 	license = LGPL3
 	makedepends = python-setuptools
 	depends = python-coverage
-	source = https://pypi.python.org/packages/source/p/pyficache/pyficache-0.2.6.tar.gz
-	md5sums = bf29c209f156f114def24b91b06d322a
+	source = https://pypi.python.org/packages/source/p/pyficache/pyficache-0.3.0.tar.gz
+	md5sums = ab7c693c9b698d77b3670b7bc95c0789
 
 pkgname = python-pyficache
 
