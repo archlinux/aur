@@ -8,6 +8,7 @@ pkgbase = xargo
 	license = MIT
 	makedepends = cargo
 	depends = rustup
+	depends = gcc-libs-multilib
 	source = https://github.com/japaric/xargo/archive/v0.2.0.zip
 	sha256sums = 94736ca70961469b7caf170663835403ff7b170e161ccaee9caee9fa8563264e
 
