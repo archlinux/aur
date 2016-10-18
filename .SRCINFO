@@ -1,0 +1,16 @@
+pkgbase = pot
+	pkgdesc = universal tag manager
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/motersen/pot
+	arch = i686
+	arch = x86_64
+	license = Apache
+	makedepends = make
+	makedepends = gambit-c
+	makedepends = musl
+	source = https://github.com/motersen/pot/archive/0.2.0.tar.gz
+	md5sums = ed98b4ecd32214773f3d69b845144449
+
+pkgname = pot
+
