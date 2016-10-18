@@ -4,7 +4,7 @@
 pkgname=noteshrink-git
 _pkgname=noteshrink
 pkgver=0.1.1.r0.g7d876e5
-pkgrel=1
+pkgrel=3
 pkgdesc="Convert scans of handwritten notes to beautiful, compact PDFs"
 url='https://mzucker.github.io/2016/09/20/noteshrink.html'
 arch=('any')
