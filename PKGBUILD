@@ -10,6 +10,8 @@ arch=('i686' 'x86_64')
 arch=('any')
 license=('GPL')
 depends=('pacman-git') # change to 'pacman' after release 5.0.2
+provides=('pacman-contrib')
+replaces=('pacman-contrib')
 source=("git+$url")
 sha512sums=('SKIP')
 

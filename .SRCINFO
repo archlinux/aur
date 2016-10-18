@@ -6,6 +6,8 @@ pkgbase = pacman-contrib-git
 	arch = any
 	license = GPL
 	depends = pacman-git
+	provides = pacman-contrib
+	replaces = pacman-contrib
 	source = git+https://git.archlinux.org/pacman-contrib.git
 	sha512sums = SKIP
 
