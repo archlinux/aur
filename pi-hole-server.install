@@ -9,8 +9,8 @@ post_install() {
   /opt/pihole/mimic_setupVars.conf.sh
   /usr/bin/pihole updateGravity > /dev/null
   systemctl daemon-reload > /dev/null
-  [ ! `systemctl is-active pi-hole-gravity.timer 2>&1 >/dev/null` ] && systemctl start pi-hole-gravity.timer
-  [ ! `systemctl is-active pi-hole-logtruncate.timer 2>&1 >/dev/null` ] && systemctl start pi-hole-logtruncate.timer
+  systemctl is-active pi-hole-logtruncate.timer 2>&1 >/dev/null || systemctl start pi-hole-logtruncate.timer
+  systemctl is-active pi-hole-gravity.timer 2>&1 >/dev/null || systemctl start pi-hole-gravity.timer
 }
 
 post_upgrade() {
