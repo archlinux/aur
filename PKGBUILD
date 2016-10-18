@@ -3,7 +3,7 @@
 
 pkgbase="ptpython"
 pkgname=("ptpython" "ptpython2")
-pkgver="0.35"
+pkgver="0.36"
 pkgrel="1"
 pkgdesc="Python REPL build on top of prompt_toolkit"
 arch=("any")
@@ -14,7 +14,7 @@ makedepends=(
     "python2-setuptools"
 )
 source=("https://files.pythonhosted.org/packages/source/${pkgbase:0:1}/${pkgbase}/${pkgbase}-${pkgver}.tar.gz")
-sha256sums=('e0d380fbccb03ed33a7f33d96988e66fbd286bc813c9ceea84a1b3b5615a5660')
+sha256sums=('a84b6398962a92e07a33891c4eae821173fb4c03a4d403b1b099edf370c86d53')
 
 prepare() {
     cp -a "${srcdir}/${pkgbase}-${pkgver}" "${srcdir}/${pkgbase}2-${pkgver}"
@@ -55,7 +55,6 @@ package_ptpython2() {
     cd "${srcdir}/${pkgbase}2-${pkgver}"
     python2 setup.py install --skip-build --root="${pkgdir}" --optimize=1
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-    cd "${pkgdir}/usr/bin"
-    mv ptpython{,2}
-    mv ptipython{,2}
+    rm "${pkgdir}/usr/bin/ptpython"
+    rm "${pkgdir}/usr/bin/ptipython"
 }
