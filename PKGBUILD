@@ -3,8 +3,8 @@
 _pkgname=horseshoes
 pkgname=horseshoes-git
 pkgver=1.0.4.r1.eddbaa7
-pkgrel=1
-pkgdesc="Audio only game of horseshoes."
+pkgrel=2
+pkgdesc="Audio only game of horseshoes -- master branch."
 arch=('any')
 url="https://github.com/2mb-solutions/horseshoes"
 license=('unlicense')
