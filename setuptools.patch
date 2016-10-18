@@ -1,0 +1,26 @@
+diff --git a/setup.py b/setup.py
+index c41cdbc..8b9dad9 100755
+--- a/setup.py
++++ b/setup.py
+@@ -1,10 +1,10 @@
+ #!/usr/bin/env python
+ 
+-from distutils.core import setup
++from setuptools import setup
+ 
+ setup(
+     name = "python_ant_downloader",
+-    version = "git",
++    version = "2016.10.18",
+     author = "Braiden Kindt",
+     author_email = "braiden@braiden.org",
+     description = "Tools for download from wireless Garmin (ANT) GPS devices.",
+@@ -17,8 +17,6 @@ setup(
+         'console_scripts': ['ant-downloader = antd.main:downloader']
+     },
+     install_requires = [
+-        "distribute",
+-        "argparse",
+         "lxml",
+         "pyserial",
+         "pyusb>=1.0.0a2",
