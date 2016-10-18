@@ -2,7 +2,7 @@
 # Contributer: Michael Taboada <michael@2mb.solutions>
 _pkgname=horseshoes
 pkgname=horseshoes-git
-pkgver=1.0.4
+pkgver=1.0.4.r1.eddbaa7
 pkgrel=1
 pkgdesc="Audio only game of horseshoes."
 arch=('any')
@@ -27,10 +27,14 @@ prepare()
   git clone --recursive ${url}.git
 }
 
+pkgver() {
+  cd "$_pkgname"
+  printf "%s" "$(git describe --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g;s/^v\(.*\)/\1/g')"
+}
+
 build()
 {
   cd "$_pkgname"
-git checkout v${pkgver}
   ./comp.sh
 }
 
