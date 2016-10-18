@@ -1,0 +1,121 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns='http://www.w3.org/1999/xhtml' xml:lang='en' lang='en'>
+<head>
+<title>rpms/chromium.git - rpms/chromium</title>
+<meta name='generator' content='cgit v0.12'/>
+<meta name='robots' content='index, nofollow'/>
+<link rel='stylesheet' type='text/css' href='/cgit-data/cgit.css'/>
+<link rel='shortcut icon' href='/favicon.ico'/>
+<link rel='alternate' title='Atom feed' href='http://pkgs.fedoraproject.org/cgit/rpms/chromium.git/atom/chromium-53.0.2785.92-last-commit-position.patch?h=master' type='application/atom+xml'/>
+<link rel='vcs-git' href='git://pkgs.fedoraproject.org/rpms/chromium.git' title='rpms/chromium.git Git repository'/>
+<link rel='vcs-git' href='ssh://pkgs.fedoraproject.org/rpms/chromium.git' title='rpms/chromium.git Git repository'/>
+<link rel='vcs-git' href='http://pkgs.fedoraproject.org/git/rpms/chromium.git' title='rpms/chromium.git Git repository'/>
+</head>
+<body>
+<script src="https://apps.fedoraproject.org/fedmenu/js/jquery-1.11.2.min.js"></script>
+<script src="https://apps.fedoraproject.org/fedmenu/js/fedmenu.js"></script>
+
+<script>
+    var base = 'https://apps.fedoraproject.org/';
+    var tokens = window.location.href.split('/');
+  var repo = null;
+  if (tokens.length > 4 && tokens[4] != '') {
+    repo = tokens[4].split('.')[0];
+  }
+  fedmenu({
+      'url': base + 'js/data.js',
+      'mimeType': 'application/javascript',
+      'position': 'bottom-right',
+      'package': repo,
+  });
+</script>
+<div id='cgit'><table id='header'>
+<tr>
+<td class='logo' rowspan='2'><a href='/cgit/'><img src='/cgit-data/cgit.png' alt='cgit logo'/></a></td>
+<td class='main'><a href='/cgit/'>index</a> : <a title='rpms/chromium.git' href='/cgit/rpms/chromium.git/'>rpms/chromium.git</a></td><td class='form'><form method='get' action=''>
+<select name='h' onchange='this.form.submit();'>
+<option value='epel7'>epel7</option>
+<option value='f23'>f23</option>
+<option value='f24'>f24</option>
+<option value='f25'>f25</option>
+<option value='master' selected='selected'>master</option>
+</select> <input type='submit' name='' value='switch'/></form></td></tr>
+<tr><td class='sub'>rpms/chromium</td><td class='sub right'>root</td></tr></table>
+<table class='tabs'><tr><td>
+<a href='/cgit/rpms/chromium.git/'>summary</a><a href='/cgit/rpms/chromium.git/refs/'>refs</a><a href='/cgit/rpms/chromium.git/log/chromium-53.0.2785.92-last-commit-position.patch'>log</a><a class='active' href='/cgit/rpms/chromium.git/tree/chromium-53.0.2785.92-last-commit-position.patch'>tree</a><a href='/cgit/rpms/chromium.git/commit/chromium-53.0.2785.92-last-commit-position.patch'>commit</a><a href='/cgit/rpms/chromium.git/diff/chromium-53.0.2785.92-last-commit-position.patch'>diff</a><a href='/cgit/rpms/chromium.git/stats/chromium-53.0.2785.92-last-commit-position.patch'>stats</a></td><td class='form'><form class='right' method='get' action='/cgit/rpms/chromium.git/log/chromium-53.0.2785.92-last-commit-position.patch'>
+<select name='qt'>
+<option value='grep'>log msg</option>
+<option value='author'>author</option>
+<option value='committer'>committer</option>
+<option value='range'>range</option>
+</select>
+<input class='txt' type='text' size='10' name='q' value=''/>
+<input type='submit' value='search'/>
+</form>
+</td></tr></table>
+<div class='path'>path: <a href='/cgit/rpms/chromium.git/tree/'>root</a>/<a href='/cgit/rpms/chromium.git/tree/chromium-53.0.2785.92-last-commit-position.patch'>chromium-53.0.2785.92-last-commit-position.patch</a></div><div class='content'>blob: 46806f755aa0196d3d00bee7de1056991897b65f (<a href='/cgit/rpms/chromium.git/plain/chromium-53.0.2785.92-last-commit-position.patch'>plain</a>)
+<table summary='blob content' class='blob'>
+<tr><td class='linenumbers'><pre><a id='n1' href='#n1'>1</a>
+<a id='n2' href='#n2'>2</a>
+<a id='n3' href='#n3'>3</a>
+<a id='n4' href='#n4'>4</a>
+<a id='n5' href='#n5'>5</a>
+<a id='n6' href='#n6'>6</a>
+<a id='n7' href='#n7'>7</a>
+<a id='n8' href='#n8'>8</a>
+<a id='n9' href='#n9'>9</a>
+<a id='n10' href='#n10'>10</a>
+<a id='n11' href='#n11'>11</a>
+<a id='n12' href='#n12'>12</a>
+<a id='n13' href='#n13'>13</a>
+<a id='n14' href='#n14'>14</a>
+<a id='n15' href='#n15'>15</a>
+<a id='n16' href='#n16'>16</a>
+<a id='n17' href='#n17'>17</a>
+<a id='n18' href='#n18'>18</a>
+<a id='n19' href='#n19'>19</a>
+<a id='n20' href='#n20'>20</a>
+<a id='n21' href='#n21'>21</a>
+<a id='n22' href='#n22'>22</a>
+<a id='n23' href='#n23'>23</a>
+<a id='n24' href='#n24'>24</a>
+<a id='n25' href='#n25'>25</a>
+<a id='n26' href='#n26'>26</a>
+<a id='n27' href='#n27'>27</a>
+<a id='n28' href='#n28'>28</a>
+</pre></td>
+<td class='lines'><pre><code>diff -up chromium-53.0.2785.92/tools/gn/BUILD.gn.lastcommitfix chromium-53.0.2785.92/tools/gn/BUILD.gn
+--- chromium-53.0.2785.92/tools/gn/BUILD.gn.lastcommitfix	2016-09-06 13:50:17.540459136 -0400
++++ chromium-53.0.2785.92/tools/gn/BUILD.gn	2016-09-06 13:50:27.380269110 -0400
+@@ -259,7 +259,6 @@ executable("gn") {
+ 
+   deps = [
+     ":gn_lib",
+-    ":last_commit_position",
+     "//base",
+     "//build/config/sanitizers:deps",
+     "//build/win:default_exe_manifest",
+diff -up chromium-53.0.2785.92/tools/gn/gn_main.cc.lastcommitfix chromium-53.0.2785.92/tools/gn/gn_main.cc
+--- chromium-53.0.2785.92/tools/gn/gn_main.cc.lastcommitfix	2016-09-06 13:49:34.620288177 -0400
++++ chromium-53.0.2785.92/tools/gn/gn_main.cc	2016-09-06 13:49:47.316042652 -0400
+@@ -12,13 +12,7 @@
+ #include "tools/gn/standard_out.h"
+ #include "tools/gn/switches.h"
+ 
+-// Only the GN-generated build makes this header for now.
+-// TODO(brettw) consider adding this if we need it in GYP.
+-#if defined(GN_BUILD)
+-#include "tools/gn/last_commit_position.h"
+-#else
+ #define LAST_COMMIT_POSITION "UNKNOWN"
+-#endif
+ 
+ namespace {
+ 
+</code></pre></td></tr></table>
+</div> <!-- class=content -->
+<div class='footer'>generated by <a href='http://git.zx2c4.com/cgit/about/'>cgit v0.12</a> at 2016-10-13 19:26:26 (GMT)</div>
+</div> <!-- id=cgit -->
+</body>
+</html>

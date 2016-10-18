@@ -9,39 +9,54 @@
 # 2a) No support for NaCl, see: https://en.wikipedia.org/wiki/Google_Native_Client
 # 2b) No need to build for x86_64 using [multilib] due to 2a
 
+# Possible replacements are listed in build/linux/unbundle/replace_gn_files.py
+# Keys are the names in the above script; values are the dependencies in Arch
+declare -rgA _system_libs=(
+  [flac]=flac
+  [harfbuzz-ng]=harfbuzz-icu
+  #[libjpeg]=libjpeg   # Error during build
+  [libpng]=libpng
+  [libvpx]=libvpx
+  [libwebp]=libwebp
+  #[libxml]=libxml2    # https://bugs.archlinux.org/task/29939
+  [libxslt]=libxslt
+  [re2]=re2
+  [snappy]=snappy
+  [yasm]=
+  #[zlib]=zlib         # Error during build
+)
+
+
 pkgname=chromium-minimum
 _pkgname=chromium
-pkgver=53.0.2785.143
+pkgver=54.0.2840.59
 pkgrel=1
 _launcher_ver=3
 pkgdesc="The open-source project behind Google Chrome, with a minimum number of dependencies."
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="http://www.chromium.org/"
 license=('BSD')
-depends=('gtk2' 'nss' 'alsa-lib' 'xdg-utils' 'bzip2' 'libevent' 'libxss'
-         'libexif' 'libgcrypt' 'ttf-font' 'systemd' 'dbus' 'flac' 'snappy'
-         'pciutils' 'libpulse' 'harfbuzz' 'libsecret'
-         'libvpx' 'perl' 'perl-file-basedir' 'desktop-file-utils'
-         'hicolor-icon-theme')
+depends=('gtk2' 'nss' 'alsa-lib' 'xdg-utils' 'libxss' 'libexif' 'libgcrypt'
+         'ttf-font' 'systemd' 'dbus' 'libpulse' 'perl' 'perl-file-basedir'
+         'pciutils' 'desktop-file-utils' 'hicolor-icon-theme')
+depends+=(${_system_libs[@]})
 makedepends=('python2' 'gperf' 'yasm' 'mesa' 'ninja')
 optdepends=('kdebase-kdialog: needed for file dialogs in KDE'
             'gnome-keyring: for storing passwords in GNOME keyring'
             'kwallet: for storing passwords in KWallet')
-conflicts=('chromium')
-provides=('chromium')
 options=('!strip')
 install=chromium.install
 source=(https://commondatastorage.googleapis.com/chromium-browser-official/$_pkgname-$pkgver.tar.xz
         chromium-launcher-$_launcher_ver.tar.gz::https://github.com/foutrelis/chromium-launcher/archive/v$_launcher_ver.tar.gz
         chromium.desktop
         chromium-52.0.2743.116-unset-madv_free.patch
-        chromium-cups-2.2.patch
+        chromium-53.0.2785.92-last-commit-position.patch
         chromium-widevine.patch)
-sha256sums=('c52a58b79bfb27bb87e4a0a6ff213001485fbc747657b290f75d39ddce07dcc3'
+sha256sums=('df89c284b0109566acc6a5a1a84d94a5ab0509cc3a86a31299a50328991edcde'
             '8b01fb4efe58146279858a754d90b49e5a38c9a0b36a1f84cbb7d12f92b84c28'
             '028a748a5c275de9b8f776f97909f999a8583a4b77fd1cd600b4fc5c0c3e91e9'
             '3b3aa9e28f29e6f539ed1c7832e79463b13128863a02e9c6fecd16c30d61c227'
-            '6519cf913cb68e2def1bbf9210ef40a178b45bc9d325297c41b7a784ff57cc8e'
+            '9502a4d7e825a21ae63cced5715e5f06d983033b623cd41d94d1e38a70f29310'
             'd6fdcb922e5a7fbe15759d39ccc8ea4225821c44d98054ce0f23f9d1f00c9808')
 
 # Google API keys (see http://www.chromium.org/developers/how-tos/api-keys)
@@ -55,106 +70,96 @@ _google_default_client_secret=0ZChLK6AxeA3Isu96MkwqDR4
 prepare() {
   cd "$srcdir/$_pkgname-$pkgver"
 
-  # https://groups.google.com/a/chromium.org/d/topic/chromium-packagers/9JX1N2nf4PU/discussion
-  touch chrome/test/data/webui/i18n_process_css_test.html
-
   # Enable support for the Widevine CDM plugin
   # libwidevinecdm.so is not included, but can be copied over from Chrome
   # (Version string doesn't seem to matter so let's go with "Pinkie Pie")
   sed "s/@WIDEVINE_VERSION@/Pinkie Pie/" ../chromium-widevine.patch |
     patch -Np1
 
-  # Commentception – use bundled ICU due to build failures (50.0.2661.75)
-  # See https://crbug.com/584920 and https://crbug.com/592268
-  # ---
-  ## Remove bundled ICU; its header files appear to get picked up instead of
-  ## the system ones, leading to errors during the final link stage.
-  ## https://groups.google.com/a/chromium.org/d/topic/chromium-packagers/BNGvJc08B6Q
-  #find third_party/icu -type f \! -regex '.*\.\(gyp\|gypi\|isolate\)' -delete
-
   # Disable MADV_FREE (if set by glibc)
   # https://bugzilla.redhat.com/show_bug.cgi?id=1361157
   patch -Np1 -i ../chromium-52.0.2743.116-unset-madv_free.patch
 
-  # Fix compiling with CUPS 2.2 backend
-  patch -Np0 -i ../chromium-cups-2.2.patch
+  # Disable last_commit_position as we don't build from git repository
+  patch -Np1 -i ../chromium-53.0.2785.92-last-commit-position.patch
+
+  # Work around bug in blink in which GCC 6 optimizes away null pointer checks
+  # https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=833524
+  # https://gcc.gnu.org/bugzilla/show_bug.cgi?id=68853#c2
+  sed -i '/config("compiler")/ a cflags_cc = [ "-fno-delete-null-pointer-checks" ]' \
+    build/config/linux/BUILD.gn
 
   # Use Python 2
   find . -name '*.py' -exec sed -i -r 's|/usr/bin/python$|&2|g' {} +
+
   # There are still a lot of relative calls which need a workaround
   mkdir -p "$srcdir/python2-path"
   ln -sf /usr/bin/python2 "$srcdir/python2-path/python"
+
+  # Download the PNaCL toolchain on x86_64; i686 toolchain is no longer provided
+
+  # Remove bundled libraries for which we will use the system copies; this
+  # *should* do what the remove_bundled_libraries.py script does, with the
+  # added benefit of not having to list all the remaining libraries
+  local _lib
+  for _lib in ${!_system_libs[@]}; do
+    find -type f -path "*third_party/$_lib/*" \
+      \! -path "*third_party/$_lib/chromium/*" \
+      \! -path "*third_party/$_lib/google/*" \
+      \! -regex '.*\.\(gn\|gni\|isolate\|py\)' \
+      -delete
+  done
+
+  python2 build/linux/unbundle/replace_gn_files.py \
+    --system-libraries "${!_system_libs[@]}"
+
+  python2 third_party/libaddressinput/chromium/tools/update-strings.py
 }
 
 build() {
-  cd "$srcdir/chromium-launcher-$_launcher_ver"
-
-  make PREFIX=/usr
+  make -C "$srcdir/chromium-launcher-$_launcher_ver" PREFIX=/usr
 
   cd "$srcdir/$_pkgname-$pkgver"
-
   export PATH="$srcdir/python2-path:$PATH"
+  export TMPDIR="$srcdir/temp"
+  mkdir -p "$TMPDIR"
 
-  # CFLAGS are passed through release_extra_cflags below
-  export -n CFLAGS CXXFLAGS
+  local _flags=(
+    'is_clang=false'
+    'clang_use_chrome_plugins=false'
+    'symbol_level=0'
+    'is_debug=false'
+    'fatal_linker_warnings=false'
+    'treat_warnings_as_errors=false'
+    'fieldtrial_testing_like_official_build=true'
+    'remove_webcore_debug_symbols=true'
+    'ffmpeg_branding="Chrome"'
+    'proprietary_codecs=true'
+    'link_pulseaudio=true'
+    'linux_use_bundled_binutils=false'
+    'use_allocator="none"'
+    'use_cups=true'
+    'use_gconf=false'
+    'use_gnome_keyring=false'
+    'use_gold=false'
+    'use_gtk3=false'
+    'use_kerberos=true'
+    'use_pulseaudio=true'
+    'use_sysroot=false'
+    'enable_hangout_services_extension=true'
+    'enable_widevine=true'
+    "enable_nacl=false"
+    "enable_nacl_nonsfi=false"
+    "google_api_key=\"${_google_api_key}\""
+    "google_default_client_id=\"${_google_default_client_id}\""
+    "google_default_client_secret=\"${_google_default_client_secret}\""
+  )
 
-  # Work around bug in v8 in which GCC 6 optimizes away null pointer checks
-  # https://bugs.chromium.org/p/v8/issues/detail?id=3782
-  # https://gcc.gnu.org/bugzilla/show_bug.cgi?id=69234
-  CFLAGS+=' -fno-delete-null-pointer-checks'
+  python2 tools/gn/bootstrap/bootstrap.py --gn-gen-args "${_flags[*]}"
+  out/Release/gn gen out/Release --args="${_flags[*]}" \
+    --script-executable=/usr/bin/python2
 
-  local _chromium_conf=(
-    -Dgoogle_api_key=$_google_api_key
-    -Dgoogle_default_client_id=$_google_default_client_id
-    -Dgoogle_default_client_secret=$_google_default_client_secret
-    -Dwerror=
-    -Dclang=0
-    -Dpython_ver=2.7
-    -Dlinux_link_gsettings=1
-    -Dlinux_link_libpci=1
-    -Dlinux_link_libspeechd=0
-    -Dlinux_link_pulseaudio=1
-    -Dlinux_strip_binary=1
-    -Dlinux_use_bundled_binutils=0
-    -Dlinux_use_bundled_gold=0
-    -Dlinux_use_gold_flags=0
-    -Dicu_use_data_file_flag=1
-    -Dlogging_like_official_build=1
-    -Dtracing_like_official_build=1
-    -Dfieldtrial_testing_like_official_build=1
-    -Drelease_extra_cflags="$CFLAGS"
-    -Dffmpeg_branding=Chrome
-    -Dproprietary_codecs=1
-    -Duse_gnome_keyring=0
-    -Duse_system_bzip2=1
-    -Duse_system_flac=1
-    -Duse_system_ffmpeg=0
-    -Duse_system_harfbuzz=1
-    -Duse_system_icu=0
-    -Duse_system_libevent=1
-    -Duse_system_libjpeg=1
-    -Duse_system_libpng=1
-    -Duse_system_libvpx=1
-    -Duse_system_libxml=0
-    -Duse_system_snappy=1
-    -Duse_system_xdg_utils=1
-    -Duse_system_yasm=1
-    -Duse_system_zlib=0
-    -Dusb_ids_path=/usr/share/hwdata/usb.ids
-    -Duse_mojo=0
-    -Duse_gconf=0
-    -Duse_sysroot=0
-    -Denable_hangout_services_extension=1
-    -Denable_widevine=1
-    -Ddisable_fatal_linker_warnings=1
-    -Ddisable_glibc=1
-    -Ddisable_nacl=1
-    -Ddisable_pnacl=1)
-
-  build/linux/unbundle/replace_gyp_files.py "${_chromium_conf[@]}"
-  build/gyp_chromium --depth=. "${_chromium_conf[@]}"
-
-  ninja -C out/Release chrome chrome_sandbox chromedriver
+  ninja -C out/Release chrome chrome_sandbox chromedriver widevinecdmadapter
 }
 
 package() {
@@ -167,26 +172,23 @@ package() {
   cd "$srcdir/$_pkgname-$pkgver"
 
   install -D out/Release/chrome "$pkgdir/usr/lib/chromium/chromium"
+  install -Dm644 out/Release/chrome.1 "$pkgdir/usr/share/man/man1/chromium.1"
+  install -Dm644 "$srcdir/chromium.desktop" \
+    "$pkgdir/usr/share/applications/chromium.desktop"
 
   install -Dm4755 out/Release/chrome_sandbox \
     "$pkgdir/usr/lib/chromium/chrome-sandbox"
 
-  install -D out/Release/chromedriver "$pkgdir/usr/lib/chromium/chromedriver"
-
-  cp out/Release/{*.pak,*.bin,libwidevinecdmadapter.so} \
+  cp -a out/Release/{*.pak,*.bin,chromedriver,libwidevinecdmadapter.so,icudtl.dat} \
+    out/Release/locales \
+    out/Release/gen/content/content_resources.pak \
     "$pkgdir/usr/lib/chromium/"
 
+  ln -s /usr/lib/chromium/chromedriver "$pkgdir/usr/bin/chromedriver"
+
   # Manually strip binaries so that 'nacl_irt_*.nexe' is left intact
-  strip $STRIP_BINARIES "$pkgdir/usr/lib/chromium/"{chromium,chrome-sandbox} \
-    "$pkgdir/usr/lib/chromium/chromedriver"
+  strip $STRIP_BINARIES "$pkgdir/usr/lib/chromium/"{chromium,chrome-sandbox,chromedriver}
   strip $STRIP_SHARED "$pkgdir/usr/lib/chromium/libwidevinecdmadapter.so"
-
-  cp -a out/Release/locales "$pkgdir/usr/lib/chromium/"
-
-  install -Dm644 out/Release/chrome.1 "$pkgdir/usr/share/man/man1/chromium.1"
-
-  install -Dm644 "$srcdir/chromium.desktop" \
-    "$pkgdir/usr/share/applications/chromium.desktop"
 
   for size in 22 24 48 64 128 256; do
     install -Dm644 "chrome/app/theme/chromium/product_logo_$size.png" \
@@ -198,11 +200,7 @@ package() {
       "$pkgdir/usr/share/icons/hicolor/${size}x${size}/apps/chromium.png"
   done
 
-  ln -s /usr/lib/chromium/chromedriver "$pkgdir/usr/bin/chromedriver"
-
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/chromium/LICENSE"
-
-  install -Dm644 out/Release/icudtl.dat "${pkgdir}/usr/lib/chromium/icudtl.dat"
 }
 
 # vim:set ts=2 sw=2 et:
