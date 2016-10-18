@@ -10,6 +10,7 @@ pkgbase = wire-desktop
 	makedepends = nodejs-grunt-cli
 	makedepends = gendesk
 	makedepends = python2
+	makedepends = patch
 	depends = nss
 	depends = alsa-lib
 	depends = libxss

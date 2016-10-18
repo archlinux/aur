@@ -9,7 +9,7 @@ url='https://wire.com/'
 license=('GPL3')
 conflicts=('wire-desktop-bin')
 depends=('nss' 'alsa-lib' 'libxss' 'gconf' 'gtk2' 'libxtst')
-makedepends=('npm' 'nodejs-grunt-cli' 'gendesk' 'python2')
+makedepends=('npm' 'nodejs-grunt-cli' 'gendesk' 'python2' 'patch')
 provides=('wire-desktop')
 source=("https://github.com/wireapp/wire-desktop/archive/release/"$pkgver".tar.gz"
         "Gruntfile.patch")        
