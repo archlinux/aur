@@ -7,10 +7,11 @@
 # -Heap allocation perfomance improvement patch
 # -Wbemprox videocontroller query fix v2 (see https://bugs.winehq.org/show_bug.cgi?id=38879 )
 # -Steam patch, Crossover Hack version (see https://bugs.winehq.org/show_bug.cgi?id=39403 )
+# -Increase fragment samplers threshold (see https://bugs.winehq.org/show_bug.cgi?id=41213 ) OPTIONAL
 
 pkgname=wine-gaming-nine
-pkgver=1.9.20
-pkgrel=2
+pkgver=1.9.21
+pkgrel=1
 
 _pkgbasever=${pkgver/rc/-rc}
 _winesrcdir="wine-patched-staging-$_pkgbasever"
@@ -24,8 +25,8 @@ source=("https://github.com/wine-compholio/wine-patched/archive/staging-$_pkgbas
         steam.patch
         wbemprox_query_v2.patch
         )
-sha1sums=('1322112de8dee5111647ab3ac285afc5ca6fcce9'
-	  'dd43f92fc8911f728526d8a557d19ffcc1aadafc'
+sha1sums=('401917142ec6a92f4823786f3250e3069723c65f'
+	  '6c0f061fa4704946a251f14bbf84bbf69c019220'
           '023a5c901c6a091c56e76b6a62d141d87cce9fdb'
           '0f4ac455436d5714a2cf0b537ed25f4fa5c1a7fd'
 	  'a84456790932fb2e7bb75ddeac86fd45b7c09e79'
@@ -135,7 +136,14 @@ prepare()
     patch -p1 < "$srcdir/wine-d3d9-patches-wine-d3d9-$_pkgbasever/wine-d3d9.patch"
     patch -p1 < ../steam.patch
     patch -p1 < ../heap_perf.patch
-    patch -p1 < ../increase_max_frag_samplers.patch
+    
+    read -p "Do you want to apply the patch increasing the fragment samplers threshold (makes some DX11 games work, might break other stuff)? [y/N]" -n 1 -r
+    echo
+    if [[ $REPLY =~ ^[Yy]$ ]]
+    then
+        patch -p1 < ../increase_max_frag_samplers.patch
+    fi
+    
     patch -p1 < ../wbemprox_query_v2.patch
 
     patch -p1 -R < ../keybindings.patch
