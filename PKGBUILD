@@ -3,12 +3,12 @@
 pkgname=visual-studio-code-oss
 pkgdesc='Visual Studio Code for Linux, Open Source version'
 pkgver=1.6.1
-pkgrel=1
+pkgrel=2
 _commit=9e4e44c19e393803e2b05fe2323cf4ed7e36880e
 arch=('i686' 'x86_64')
 url='https://code.visualstudio.com/'
 license=('MIT')
-makedepends=('npm' 'gulp' 'python2')
+makedepends=('npm' 'nodejs>=6.8.0' 'gulp' 'python2')
 depends=('gtk2' 'gconf' 'libnotify' 'libxss' 'libxtst' 'nss' 'alsa-lib')
 conflicts=('vscode-oss')
 provides=('vscode-oss')
@@ -37,14 +37,6 @@ esac
 
 prepare() {
     cd "${srcdir}/vscode-${_commit}"
-
-    _npm_ver=$(pacman -Q npm | cut -d' ' -f2)
-    if [[ "${_npm_ver%-*}" == "3.10.8" ]]; then
-        echo "npm 3.10.8 is known to have a bug which prevents the successful build of vscode"
-        echo "Please downgrade to 3.10.7 or wait for a fixed version."
-        echo "Refer to https://github.com/npm/npm/issues/14042 for details."
-        exit 1
-    fi
 
     patch -p1 -i "${srcdir}/product_json.patch"
     _datestamp=$(date -u -Is | sed 's/\+00:00/Z/')
