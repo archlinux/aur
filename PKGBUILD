@@ -2,7 +2,7 @@
 # Contributor: Vitaliy Berdinskikh <ur6lad@archlinux.org.ua>
 
 pkgname=hamlib
-pkgver=3.0
+pkgver=3.0.1
 pkgrel=1
 pkgdesc="Ham radio equipment control libraries"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
@@ -46,5 +46,5 @@ package() {
 	/usr/bin/find $pkgdir -name '.packlist' -delete
 	/usr/bin/find $pkgdir -name '*.pod' -delete
 }
-sha1sums=('d7da25f1d4b48f9e2a90f45a114ae266bb6e8885')
-sha256sums=('bc16546161a47e21a44a710a40aeb0bce478f112bffcc4f253eb27e150f1c21e')
+sha1sums=('2263b77775b6bf86e0c9b0ac22d4df60119dfffe')
+sha256sums=('3fec97ea326d02aa8f35834c4af34194a3f544e6212f391397d788c566b44e32')
