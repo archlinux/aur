@@ -3,7 +3,7 @@
 # Contributer: auk
 
 pkgname=hyper
-pkgver=0.8.2
+pkgver=0.8.3
 pkgrel=1
 epoch=
 pkgdesc="A terminal built on web technologies"
@@ -29,7 +29,7 @@ source=(
     "Hyper.desktop"
 )
 noextract=()
-md5sums=('ec179e39d3c32006ae595253e4245bab'
+md5sums=('5f894b0af6cef3c91da19f425b9c6d32'
          'f3481e14cba331160339b3b5ab78872b'
          '8ccbe8d3e3b6cdc9bc5fd4301d368d5f')
 validpgpkeys=()
