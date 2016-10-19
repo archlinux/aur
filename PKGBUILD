@@ -3,7 +3,7 @@
 _plug=havsfunc
 pkgname=vapoursynth-plugin-${_plug}
 pkgver=r24
-pkgrel=2
+pkgrel=3
 pkgdesc="Plugin for Vapoursynth: ${_plug}"
 arch=('any')
 url='http://forum.doom9.org/showthread.php?t=166582'
