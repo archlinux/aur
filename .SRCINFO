@@ -1,6 +1,6 @@
 pkgbase = dom4-server
 	pkgdesc = Configure and run Dominions 4 as a headless server
-	pkgver = 1.0.6
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = http://www.illwinter.com/dom4/
 	install = dom4-server.install
