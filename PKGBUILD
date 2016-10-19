@@ -6,16 +6,16 @@
 
 pkgname=broadcom-wl-ck
 pkgver=6.30.223.271
-pkgrel=21
+pkgrel=22
 _pkgdesc='Broadcom 802.11abgn hybrid Linux networking device driver for linux-ck.'
-_extramodules="extramodules-4.7-ck"
+_extramodules="extramodules-4.8-ck"
 _kernver="$(cat /usr/lib/modules/${_extramodules}/version)"
 pkgdesc="${_pkgdesc}"
 arch=('i686' 'x86_64')
-url='http://www.broadcom.com/support/802.11/linux_sta.php'
+url='https://www.broadcom.com/support/802.11'
 license=('custom')
-depends=('linux-ck>=4.7' 'linux-ck<4.8')
-makedepends=('linux-ck-headers>=4.7' 'linux-ck-headers<4.8')
+depends=('linux-ck>=4.8' 'linux-ck<4.9')
+makedepends=('linux-ck-headers>=4.8' 'linux-ck-headers<4.9')
 conflicts=('broadcom-wl-ck-atom' 'broadcom-wl-ck-barcelona' 'broadcom-wl-ck-bulldozer' 'broadcom-wl-ck-corex' 'broadcom-wl-ck-core2' 'broadcom-wl-ck-haswell' 'broadcom-wl-ck-broadwell' 'broadcom-wl-ck-skylake' 'broadcom-wl-ck-ivybridge' 'broadcom-wl-ck-kx' 'broadcom-wl-ck-k10' 'broadcom-wl-ck-nehalem' 'broadcom-wl-ck-p4' 'broadcom-wl-ck-piledriver' 'broadcom-wl-ck-pentm' 'broadcom-wl-ck-sandybridge' 'broadcom-wl-ck-silvermont')
 #replaces=()
 #groups=('ck-generic')
@@ -23,7 +23,8 @@ source=('modprobe.d'
 'license.patch'
 '001-null-pointer-fix.patch'
 '002-rdtscl.patch'
-'003-linux47.patch')
+'003-linux47.patch'
+'linux48.patch')
 source_i686+=("http://www.broadcom.com/docs/linux_sta/hybrid-v35-nodebug-pcoem-${pkgver//./_}.tar.gz")
 source_x86_64+=("http://www.broadcom.com/docs/linux_sta/hybrid-v35_64-nodebug-pcoem-${pkgver//./_}.tar.gz")
 sha256sums=('b4aca51ac5ed20cb79057437be7baf3650563b7a9d5efc515f0b9b34fbb9dc32'
@@ -40,6 +41,7 @@ prepare() {
   patch -p1 -i license.patch
   patch -p1 -i 001-null-pointer-fix.patch
 	patch -p1 -i 003-linux47.patch
+	patch -p1 -i linux48.patch
 
 	sed -e "/BRCM_WLAN_IFNAME/s:eth:wlan:" -i src/wl/sys/wl_linux.c
 
