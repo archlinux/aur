@@ -2,7 +2,7 @@
 
 _plug=maskdetail
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=r8.2af7b11
+pkgver=r10.1f927c8
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('i686' 'x86_64')
@@ -13,15 +13,19 @@ makedepends=('git')
 provides=("vapoursynth-plugin-${_plug}")
 conflicts=("vapoursynth-plugin-${_plug}")
 source=("${_plug}::git+https://github.com/MonoS/VS-MaskDetail.git")
-sha1sums=('SKIP')
+sha256sums=('SKIP')
 
-_sites_packages="$(python -c "from distutils.sysconfig import get_python_lib; print(get_python_lib())")"
+_site_packages="$(python -c "from distutils.sysconfig import get_python_lib; print(get_python_lib())")"
 
 pkgver() {
   cd "${_plug}"
+  #echo "$(git describe --long --tags)"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package(){
-  install -Dm644 "${_plug}/MaskDetail.py" "${pkgdir}${_sites_packages}/maskdetail.py"
+  install -Dm644 "${_plug}/MaskDetail.py" "${pkgdir}${_site_packages}/MaskDetail.py"
+  python -m compileall -q -f -d "${_site_packages}" "${pkgdir}${_site_packages}/MaskDetail.py"
+  python -OO -m compileall -q -f -d "${_site_packages}" "${pkgdir}${_site_packages}/MaskDetail.py"
+
 }
