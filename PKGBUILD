@@ -16,7 +16,7 @@
 pkgname=clion-eap
 _pkgname=clion
 _archname=CLion
-pkgver=163.6110.22
+pkgver=163.6512.7
 pkgrel=1
 pkgdesc="C/C++ IDE. 30-day evaluation."
 arch=('i686' 'x86_64')
@@ -24,7 +24,7 @@ options=(!strip)
 url="http://www.jetbrains.com/${_pkgname}"
 license=('custom')
 source=("https://download.jetbrains.com/cpp/${_archname}-${pkgver}.tar.gz")
-sha256sums=('4ab3604ce43961d5bc4d2a3cc2aea9c56f976194698f2e73198c36d19e46498d')
+sha256sums=('5db549f20f0b632a04020afd4079d523262c37ef8da27b67edeed3d529fa65f3')
 noextract=("${_archname}-${pkgver}.tar.gz")
 depends=()
 optdepends=()
