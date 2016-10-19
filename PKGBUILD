@@ -2,7 +2,7 @@
 pkgname=kolide-git
 pkgver=r58.ebf59ed
 _pkgname=kolide
-pkgrel=3
+pkgrel=4
 pkgdesc="osquery command and control"
 url="https://www.kolide.co/"
 arch=('x86_64' 'i686')
@@ -30,13 +30,8 @@ prepare() {
 build() {
 	cd "${srcdir}/go/src/github.com/kolide/kolide"
 
-	export GOROOT="/usr/lib/go"
-	export GOPATH="${srcdir}/go"
-
-	export PATH="$PATH:$GOPATH/bin"
-
-	make deps
-	make
+	GOROOT="/usr/lib/go" GOPATH="${srcdir}/go" PATH="$PATH:$GOPATH/bin" make deps
+	GOROOT="/usr/lib/go" GOPATH="${srcdir}/go" PATH="$PATH:$GOPATH/bin" make
 }
 
 package() {
