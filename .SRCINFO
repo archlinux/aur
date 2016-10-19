@@ -1,6 +1,6 @@
 pkgbase = okcash-git
 	pkgdesc = Okcash Qt Wallet, git version
-	pkgver = r164.784546e
+	pkgver = r168.82651d0
 	pkgrel = 1
 	url = http://okcash.co
 	arch = i686
