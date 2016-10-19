@@ -11,7 +11,7 @@ set -u
 #_ubver='1.7.3~177~ubuntu14.04.1'; _libgee='libgee>=0.18.0'
 #_ubver='1.7.5~180~ubuntu14.04.1'; _libgee='libgee>=0.18.0'
 #_ubver='1.7.6~184~ubuntu14.04.1'; _libgee='libgee>=0.18.0'
-_ubver='16.10.5'; _ubrel='347'; _libgee='libgee>=0.18.0'
+_ubver='16.10.6'; _ubrel='349'; _libgee='libgee>=0.18.0'
 pkgname='timeshift'
 pkgver="${_ubver}"
 pkgrel='1'
