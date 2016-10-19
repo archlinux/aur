@@ -1,0 +1,35 @@
+post_install() {
+    # Add rserve user and group.
+    getent group rserve &>/dev/null || groupadd -r rserve >/dev/null
+    getent passwd rserve &>/dev/null || useradd -m -d /home/rserve \
+-s /bin/false -r -g rserve rserve >/dev/null    
+    # Exec the chmod just like in the Makefile.
+    chmod 750 /home/rserve
+
+    # Add rsd user and group.
+    getent group rsd &>/dev/null || groupadd -r rsd >/dev/null
+    getent passwd rsd &>/dev/null || useradd -s /bin/false \
+-r -g rsd rsd >/dev/null
+
+    # This is explained in the Arch Wiki. It seems that anyone belonging to the 
+    # docker group has root capablities, so creating a separate user to run 
+    # Docker is necessary in my opinion.
+    gpasswd -a rsd docker >/dev/null
+
+    chown -R rsd:rsd /opt/rserve-sandbox-docker
+
+    echo ""
+    echo ""
+    echo "You can start and enable \
+rserve-sandbox-docker.service to run the server."
+    echo ""
+    echo ""
+}
+
+pre_remove() {
+    echo ""
+    echo ""
+    echo "UNIMPLEMENTED"
+    echo ""
+    echo ""
+}
