@@ -32,6 +32,6 @@ pkgver() {
 package(){
   cd "${_plug}"
   install -Dm644 Oyster.py "${pkgdir}${_site_packages}/Oyster.py"
-  python -m compileall -q -f -d "${_sites_packages}" "${pkgdir}${_site_packages}/Oyster.py"
-  python -OO -m compileall -q -f -d "${_sites_packages}" "${pkgdir}${_site_packages}/Oyster.py"
+  python -m compileall -q -f -d "${_site_packages}" "${pkgdir}${_site_packages}/Oyster.py"
+  python -OO -m compileall -q -f -d "${_site_packages}" "${pkgdir}${_site_packages}/Oyster.py"
 }
