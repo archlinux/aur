@@ -28,10 +28,13 @@ options=('!emptydirs')
 
 # The commit for FasterMelee 4.3
 # shellcheck disable=SC2034
-source=("${pkgname}::git+https://github.com/Tinob/Ishiiruka.git#commit=0b00f1f6267190a8bf9a3584497a35d8762eb0a9")
+source=("${pkgname}::git+https://github.com/Tinob/Ishiiruka.git#commit=0b00f1f6267190a8bf9a3584497a35d8762eb0a9"
+        "GALE01.ini"
+       )
 
 # shellcheck disable=SC2034
-sha256sums=('SKIP')
+sha256sums=('SKIP'
+            '62abf45f5064fac79aeead6340120be5beb8ad7a64f25fd85c07b45e3756df3f')
 
 build() {
   cd "${srcdir}/${pkgname}" || {
@@ -68,6 +71,9 @@ package() {
   make DESTDIR="${pkgdir}" install
 
   install -Dm 644 ../Data/51-usb-device.rules -t "${pkgdir}"/usr/lib/udev/rules.d/
+
+  msg "Make sure you install the GALE01.ini config file into:"
+  msg "${HOME}/.local/share/dolphin-emu/GameSettings/GALE01.ini"
 }
 
 # vim: ts=2 sw=2 et:

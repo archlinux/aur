@@ -21,7 +21,9 @@ pkgbase = dolphin-emu-faster-melee
 	optdepends = pulseaudio: PulseAudio backend
 	options = !emptydirs
 	source = dolphin-emu-faster-melee::git+https://github.com/Tinob/Ishiiruka.git#commit=0b00f1f6267190a8bf9a3584497a35d8762eb0a9
+	source = GALE01.ini
 	sha256sums = SKIP
+	sha256sums = 62abf45f5064fac79aeead6340120be5beb8ad7a64f25fd85c07b45e3756df3f
 
 pkgname = dolphin-emu-faster-melee
 
