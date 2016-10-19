@@ -1,7 +1,7 @@
 pkgbase = catalyst-total
 	pkgdesc = AMD/ATI Catalyst drivers for linux. catalyst-dkms + catalyst-utils + lib32-catalyst-utils + experimental powerXpress suppport. Radeons HD 2 3 4 xxx ARE NOT SUPPORTED
 	pkgver = 15.9
-	pkgrel = 13
+	pkgrel = 14
 	url = http://www.amd.com
 	install = catalyst-total.install
 	arch = i686
@@ -9,7 +9,7 @@ pkgbase = catalyst-total
 	license = custom
 	depends = dkms
 	depends = linux>=3.0
-	depends = linux<4.8
+	depends = linux<4.9
 	depends = linux-headers
 	depends = xorg-server>=1.7.0
 	depends = xorg-server<1.18.0
