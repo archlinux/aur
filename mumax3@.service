@@ -1,0 +1,14 @@
+[Unit]                                                                                                               
+Description=MuMax3 server
+After=network.target
+
+[Service]
+User=mumax3
+WorkingDirectory=~
+Type=simple
+ExecStart=/opt/mumax3/mumax3-server -exec /opt/mumax3/mumax3 -l %i
+ExecReload=/bin/kill -s HUP $MAINPID
+
+[Install]
+WantedBy=multi-user.target
+
