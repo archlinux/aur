@@ -2,7 +2,7 @@
 
 _plug=vine
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=r48.fb0482c
+pkgver=r59.f4d02fc
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('i686' 'x86_64')
@@ -16,9 +16,9 @@ makedepends=('git')
 provides=("vapoursynth-plugin-${_plug}")
 conflicts=("vapoursynth-plugin-${_plug}")
 source=("${_plug}::git+https://github.com/IFeelBloated/Vine.git")
-sha1sums=('SKIP')
+sha256sums=('SKIP')
 
-_sites_packages="$(python -c "from distutils.sysconfig import get_python_lib; print(get_python_lib())")"
+_site_packages="$(python -c "from distutils.sysconfig import get_python_lib; print(get_python_lib())")"
 
 pkgver() {
   cd "${_plug}"
@@ -29,4 +29,6 @@ pkgver() {
 package(){
   cd "${_plug}"
   install -Dm644 Vine.py "${pkgdir}${_sites_packages}/Vine.py"
+  python -m compileall -q -f -d "${_site_packages}" "${pkgdir}${_site_packages}/Vine.py"
+  python -OO -m compileall -q -f -d "${_site_packages}" "${pkgdir}${_site_packages}/Vine.py"
 }
