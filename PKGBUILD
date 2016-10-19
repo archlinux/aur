@@ -3,7 +3,7 @@
 
 pkgname=fbsplash
 pkgver=1.5.4.4
-pkgrel=16
+pkgrel=17
 pkgdesc="Userspace splash screen implementation (formerly 'gensplash') (deprecated, see: Plymouth)"
 arch=('i686' 'x86_64')
 url="http://sourceforge.net/projects/fbsplash.berlios/"
@@ -25,7 +25,8 @@ source=("http://heanet.dl.sourceforge.net/project/fbsplash.berlios/splashutils-1
         'fbsplash.initcpio_install'
         'fbsplash.initcpio_hook'
         'fbcondecor.daemon'
-        'fbcondecor.conf')
+        'fbcondecor.conf'
+	'freetype2.patch')
 md5sums=('2a16704c4adde97b58812cd89e3f2342'
          '4045e315c52f5a576fca4f7e634eeb91'
          '90708a96038d7d7921c2e9fde938c058'
@@ -33,7 +34,8 @@ md5sums=('2a16704c4adde97b58812cd89e3f2342'
          '2860cc29d5da2ea65c810de068bcc262'
          'f65cf94d4d4959bb44cda5fa634ab405'
          '631b10db2f7c4b70062e79b60541ddbb'
-         'b3db9d4fd902b62ac9e38589677e2d16')
+         'b3db9d4fd902b62ac9e38589677e2d16'
+         'b3da198e805a988b62d70a2dd6895384')
 
 build() {
   cd splashutils-$pkgver
@@ -61,8 +63,10 @@ build() {
 
   #Fix freetype => freetype2
   sed -i 's|\(#include <freetype\)/|\12/|' src/libfbsplashrender.c
-  sed -i 's|\(#include <freetype\)/|\12/|' src/ttf.h
-  sed -i 's|\(#include <freetype\)/|\12/|' src/ttf.c
+
+  patch -Np2 -i "$srcdir/freetype2.patch"
+#  sed -i 's|\(#include <freetype\)/|\12/|' src/ttf.h
+#  sed -i 's|\(#include <freetype\)/|\12/|' src/ttf.c
 
   # fix set_event_dev call for initcpio usage (if evdev module is there)
   #patch -Np2 -i "$srcdir/splash_start_initcpio.patch"
