@@ -37,7 +37,7 @@ build() {
   cd "$srcdir/atom-$pkgver"
 
   export PYTHON=python2
-  script/build --compress-artifacts
+  script/build
 }
 
 package() {
