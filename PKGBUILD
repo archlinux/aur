@@ -1,14 +1,14 @@
 # Maintainer: Hans-Nikolai Viessmann <hv15 AT hw.ac.uk>
 pkgname=startw
 pkgver=1.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Script to initialise a Wayland session - similar to startx"
 arch=('any')
 url="https://git.hans.ninja/hans/startw"
 license=('MIT')
 optdepends=('sway: A Tiling Wayland shell based on i3')
 source=("$pkgname-$pkgver.tar.gz::https://git.hans.ninja/hans/${pkgname}/archive/${pkgver}.tar.gz")
-md5sums=('f4ec6b6cec399ef61a7ed4a625ddb188')
+md5sums=('f0e214e410240cd56d3ccb87bdc8cff7')
 
 package() {
 	cd "$srcdir"
