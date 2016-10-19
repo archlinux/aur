@@ -11,18 +11,18 @@
 # Contributor: zoopp
 # Contributor: kolasa (part of 4.3 kernel patches)
 # Contributor: gentoo (part of 4.3 kernel patches)
-# Contributor: 	Philip Muller @ Manjaro (4.4 kernel patch)
+# Contributor: Philip Muller @ Manjaro (4.4 kernel patch)
 
 pkgname=catalyst-generator
 pkgver=15.9
-pkgrel=12
+pkgrel=13
 _amdver=15.201.1151
 pkgdesc="AMD/ATI drivers. Generator of catalyst-{kernver} packages with fglrx module inside."
 arch=('i686' 'x86_64')
 url="http://www.amd.com"
 license=('custom')
 options=('staticlibs' 'libtool' '!strip' '!upx')
-depends=('catalyst-utils' 'gcc-libs' 'gcc>4.0.0' 'make' 'patch' 'linux>=3.0' 'linux<4.8' 'linux-headers')
+depends=('catalyst-utils' 'gcc-libs' 'gcc>4.0.0' 'make' 'patch' 'linux>=3.0' 'linux<4.9' 'linux-headers')
 optdepends=('linux-headers: to build the fglrx module for the linux kernel'
 	  'linux-lts-headers: to build the fglrx module for the linux-lts kernel')
 conflicts=('catalyst-test' 'catalyst-hook' 'catalyst' 'catalyst-daemon' 'catalyst-dkms')
