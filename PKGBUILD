@@ -1,37 +1,23 @@
 # Maintainer: Dino Morelli <dino@ui3.info>
 
 pkgname=epub-tools
-pkgver=2.8
+pkgver=2.9
 pkgrel=1
 pkgdesc='Command line utilities for working with epub files'
 arch=('i686' 'x86_64')
 url='http://hub.darcs.net/dino/epub-tools'
 license=('BSD3')
 depends=('gmp' 'libffi' 'zlib')
-makedepends=('ghc' 'cabal-install')
-options=('strip')
+makedepends=('stack')
 source=("http://hackage.haskell.org/package/${pkgname}-${pkgver}/${pkgname}-${pkgver}.tar.gz")
 
-sha256sums=('16a5004b4a408919a48e09f65f8ab1007132ddc2d9d0ffb2c5c1609f09395434')
+sha256sums=('eb550fbc268852c3e3c29eab32c9c2d171b5b1326f5e9676f42d4802dafb0ea5')
 
 
 # PKGBUILD functions
 
-build() {
-   cd ${srcdir}/${pkgname}-${pkgver}
-
-   # This may have been causing problems in the past. It can possibly
-   # be commented out.
-   cabal update
-
-   cabal sandbox init
-   cabal install --only-dependencies
-   cabal configure -O --prefix=/usr
-   cabal build
-}
-
 package() {
    cd ${srcdir}/${pkgname}-${pkgver}
 
-   cabal copy --destdir=${pkgdir}
+   stack runghc -- ./util/install.hs --prefix=${pkgdir}/usr
 }
