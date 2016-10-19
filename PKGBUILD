@@ -3,7 +3,7 @@
 pkgname=rofi-mpd
 pkgver=0.1.0
 pkgrel=1
-pkgdesc="Mopidy extension for playing music from Subsonic servers"
+pkgdesc="Script for controlling mpd through rofi."
 arch=('any')
 url="https://github.com/Prior99/mopidy-subidy"
 license=('GPL3')

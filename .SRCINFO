@@ -1,5 +1,5 @@
 pkgbase = rofi-mpd
-	pkgdesc = Mopidy extension for playing music from Subsonic servers
+	pkgdesc = Script for controlling mpd through rofi.
 	pkgver = 0.1.0
 	pkgrel = 1
 	url = https://github.com/Prior99/mopidy-subidy
