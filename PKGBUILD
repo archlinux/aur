@@ -2,49 +2,42 @@
 # Maintainer: Joe Julian
 
 pkgname=mgmt
-pkgver=0.0.4
-pkgrel=2
+pkgver=0.0.5
+pkgrel=1
 epoch=1
 pkgdesc='Next generation config management.'
 arch=('x86_64' 'i686' 'armv6h' 'armv7h')
-url='https://github.com/purpleidea/mgmt'
+pkggopath='github.com/purpleidea/mgmt'
+url="https://${pkggopath}"
 license=('AGPL3')
 makedepends=('go' 'go-md2man' 'go-tools' 'mercurial')
 # don't strip binaries! A sha1 is used to check binary consistency.
 options=('!strip')
 backup=("etc/${pkgname}/${pkgname}.conf")
 
-source=("https://github.com/purpleidea/mgmt/archive/${pkgver}.tar.gz"
+source=("${url}/archive/${pkgver}.tar.gz"
         'mgmt.service')
-sha1sums=('8dd7837e39bb738ffe5bc50f8f534ea9c56936ad'
+sha1sums=('feec085db00e4727e37f8c69a35dcb732ebf6e46'
           'ef0ecdb4d1c4441b884c7084b93806b52ec567c6')
+ noextract=("${pkgver}.tar.gz")
 
 prepare() {
-    cd "${srcdir}/${pkgname}-${pkgver}"
+    # extract tarball to path expected by go
+    mkdir -p "${srcdir}/src"
+    cd "${srcdir}"
+    tar xf "${pkgver}.tar.gz" --transform="s@^${pkgname}-${pkgver}@src/${pkggopath}@"
 
-    # This version uses the non-existent "arch" command. Fixed in master. Remove after 0.0.3.
-    sed -i 's/^ARCH = .*/ARCH = $(uname -m)/' Makefile
-
-    # This version uses git to determine the tagged version which does not work with the tarball.
-    # This is fixed in master, remove after 0.0.3
-    sed -i "s/VERSION := .*/VERSION = ${pkgver}/" Makefile
-
-    export GOPATH="$srcdir"
+    # fetch dependencies
+    export GOPATH="${srcdir}"
+    cd "${srcdir}/src/${pkggopath}"
     msg2 'installing go dependencies'
-    go get github.com/coreos/etcd
-    go get github.com/godbus/dbus
-    go get github.com/howeyc/gopass
-    go get github.com/kardianos/osext
-    go get github.com/pkg/sftp
-    go get github.com/urfave/cli
-    go get gopkg.in/fsnotify.v1
-    go get gopkg.in/yaml.v2
+    go get -d ./...
 }
 
 build() {
-    export GOPATH="$srcdir"
+    export GOPATH="${srcdir}"
     msg2 'building misc'
-    cd "${srcdir}/${pkgname}-${pkgver}"
+    cd "${srcdir}/src/${pkggopath}"
     PATH=$PATH:/usr/lib/go/pkg/tool/linux_amd64 \
         make build VERSION="${pkgver}" SVERSION="${pkgver}" PROGRAM="${pkgname}"
 }
@@ -53,7 +46,7 @@ package() {
     msg2 'installing files'
     install -Dm644 "mgmt.service" "${pkgdir}/usr/lib/systemd/system/mgmt.service"
 
-    cd "${srcdir}/${pkgname}-${pkgver}"
+    cd "${srcdir}/src/${pkggopath}"
     install -Dm755 "${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
     install -Dm644 "misc/bashrc.sh" "${pkgdir}/usr/share/bash-completion/completions/${pkgname}"
     install -Dm644 "misc/example.conf" "${pkgdir}/etc/${pkgname}/${pkgname}.conf"

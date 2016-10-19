@@ -1,7 +1,7 @@
 pkgbase = mgmt
 	pkgdesc = Next generation config management.
-	pkgver = 0.0.4
-	pkgrel = 2
+	pkgver = 0.0.5
+	pkgrel = 1
 	epoch = 1
 	url = https://github.com/purpleidea/mgmt
 	arch = x86_64
@@ -13,11 +13,12 @@ pkgbase = mgmt
 	makedepends = go-md2man
 	makedepends = go-tools
 	makedepends = mercurial
+	noextract = 0.0.5.tar.gz
 	options = !strip
 	backup = etc/mgmt/mgmt.conf
-	source = https://github.com/purpleidea/mgmt/archive/0.0.4.tar.gz
+	source = https://github.com/purpleidea/mgmt/archive/0.0.5.tar.gz
 	source = mgmt.service
-	sha1sums = 8dd7837e39bb738ffe5bc50f8f534ea9c56936ad
+	sha1sums = feec085db00e4727e37f8c69a35dcb732ebf6e46
 	sha1sums = ef0ecdb4d1c4441b884c7084b93806b52ec567c6
 
 pkgname = mgmt
