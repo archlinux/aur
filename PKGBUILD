@@ -2,9 +2,9 @@
 # Contributor: Matthew Wardrop <mister.wardrop@gmail.com>
 
 pkgbase=linux-surfacepro3-rt
-_srcname=linux-4.8
-pkgver=4.8
-pkgrel=1.6
+_srcname=linux-4.8.2
+pkgver=4.8.2
+pkgrel=1.7
 arch=('i686' 'x86_64')
 url="https://github.com/alyptik/linux-surfacepro3-rt"
 license=('GPL2')
@@ -12,21 +12,8 @@ makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc' 'elfutils')
 options=('!strip')
 source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         "https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.sign"
-        "https://www.kernel.org/pub/linux/kernel/projects/rt/${pkgver}/patch-${pkgver}-rt1.patch.xz"
-        "https://www.kernel.org/pub/linux/kernel/projects/rt/${pkgver}/patch-${pkgver}-rt1.patch.sign"
-        #"https://www.kernel.org/pub/linux/kernel/projects/rt/${pkgver}/patches-${pkgver}-rt1.tar.xz"
-        #"https://www.kernel.org/pub/linux/kernel/projects/rt/${pkgver}/patches-${pkgver}-rt1.tar.sign"
-        #"https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.xz"
-        #"https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.sign"
-        # the main kernel config files
-        'config' 'config.x86_64' 'config.sp3'
-        # standard config files for mkinitcpio ramdisk
-        'linux.preset'
-        'change-default-console-loglevel.patch'
-        'multitouch.patch'
-	'touchscreen_multitouch_fixes1.patch'
-	'touchscreen_multitouch_fixes2.patch'
-	'wifi.patch'
+        "https://www.kernel.org/pub/linux/kernel/projects/rt/${pkgver%.*}/older/patch-${pkgver}-rt2.patch.xz"
+        "https://www.kernel.org/pub/linux/kernel/projects/rt/${pkgver%.*}/older/patch-${pkgver}-rt2.patch.sign"
         # Brain Fuck Scheduler & other personal patches
         'https://raw.githubusercontent.com/alyptik/linux-surfacepro3-rt/github/bfq.patch'
         'https://raw.githubusercontent.com/alyptik/linux-surfacepro3-rt/github/bfs.patch'
@@ -38,21 +25,21 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         'https://raw.githubusercontent.com/alyptik/linux-surfacepro3-rt/github/kconfig.patch'
         'https://raw.githubusercontent.com/alyptik/linux-surfacepro3-rt/github/xattr.patch'
         'https://raw.githubusercontent.com/alyptik/linux-surfacepro3-rt/github/xfs.patch'
+        'multitouch.patch'
+	'touchscreen_multitouch_fixes1.patch'
+	'touchscreen_multitouch_fixes2.patch'
+	'wifi.patch'
+        # the main kernel config files
+        'config' 'config.x86_64' 'config.sp3'
+        # standard config files for mkinitcpio ramdisk
+        'linux.preset'
+        'change-default-console-loglevel.patch'
 )
 
-sha256sums=('3e9150065f193d3d94bcf46a1fe9f033c7ef7122ab71d75a7fb5a2f0c9a7e11a'
+sha256sums=('983636c755a397a1075001cd99fad8b85485bebf15e62ed56f3ca3ba5e225d03'
             'SKIP'
-            '85d5c766791f3a232770bad50af06a5fb4d2c1d010e18f5750a5288c43132c71'
+            '559f4f1fa49a7a362cd26bccad609f3f25c7c5be58f7d6404c73aa05349bb362'
             'SKIP'
-            '0fcd0b22fe9ec58ba41b81b463f68d619b6898a5c405fb26c85237a183240371'
-            '577a3c4c211e6946fb8c1448d6a325861b41c8c8660203ae7d63a58f3af0d279'
-            '5909eb52b6549da7054fc07a9e7142ddb307f0582128dad125e4553bfa8286c4'
-            'f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c'
-            '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
-            '3a4722981f689225a0ad550e45d829fcc3ca29d4258df3c6c989a916199e1c08'
-            'cc78e8844d9ec4bd29cce392a3e4683061646e1ad7c100c4958a5cadabb25b52'
-            '34b4e00ffcf9efc43ab47444d14febb94432d340d0f1d5bcd56153879d1be113'
-            '52e7c895aeb505bc8d3b5321a346fcdbb749f8035cacc97a237c24c1f527adbc'
             '48afded166076dc357bfb68640297e0337c70d6f72e05e1eb040e694de0ad7ed'
             '51f91681b708149fe91e565f5c40811477428e2aa86f8726a20e0e7c55c5407c'
             'cec65d71766429be99bdc9da7897584fdc4bf4df3a4b26d228ff55a76ea3d8ea'
@@ -62,7 +49,16 @@ sha256sums=('3e9150065f193d3d94bcf46a1fe9f033c7ef7122ab71d75a7fb5a2f0c9a7e11a'
             'ec655100ebc32d6699a258d7682953f928d1eb1042b895b04283d85ae57b80c1'
             'f479a5ca6abe4d50ca4c09e6e83a027369fcd3efff8d5ce60f0699d8fa47beb8'
             '4633ae19b9a9871a3cfffba98ec7c3cd240f64bef8a0eebcf1212219c80972fd'
-            '6618ef72495a6f7c7e50ecfba4a897f78668a3cbaabb93e97ad3d276e7abc52c')
+            '6618ef72495a6f7c7e50ecfba4a897f78668a3cbaabb93e97ad3d276e7abc52c'
+            '3a4722981f689225a0ad550e45d829fcc3ca29d4258df3c6c989a916199e1c08'
+            'cc78e8844d9ec4bd29cce392a3e4683061646e1ad7c100c4958a5cadabb25b52'
+            '34b4e00ffcf9efc43ab47444d14febb94432d340d0f1d5bcd56153879d1be113'
+            '52e7c895aeb505bc8d3b5321a346fcdbb749f8035cacc97a237c24c1f527adbc'
+            '0fcd0b22fe9ec58ba41b81b463f68d619b6898a5c405fb26c85237a183240371'
+            '577a3c4c211e6946fb8c1448d6a325861b41c8c8660203ae7d63a58f3af0d279'
+            '921f64223b44c51e762625a9d338fca9e728397e3d58415f322c90a9f15371ec'
+            'f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c'
+            '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99')
 
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
@@ -72,26 +68,33 @@ validpgpkeys=(
              )
 multitouch='y'
 sp3config='y'
+bcache='n'
 
 _kernelname=${pkgbase#linux}
 
 prepare() {
   cd "${srcdir}/${_srcname}"
 
-  # BFS patches not working currently
+  ## BFS/BFQ patches not working currently
   #for i in bfq.patch bfs.patch bfs-fixes1.patch bfs-fixes2.patch; do
   #  patch -p1 -i "${srcdir}/${i}"
   #done
 
-  # Add personal patches
+  ## Add personal patches
   for i in block.patch btrfs.patch init.patch kconfig.patch xattr.patch xfs.patch; do
     patch -p1 -i "${srcdir}/${i}"
   done
 
+  ## Enable unsupported bcache module
+  if [ "$bcache" != 'n' ]; then
+    sed -i '\%^diff --git a/drivers/md/bcache/Kconfig b/drivers/md/bcache/Kconfig$%,+11 d' "${srcdir}/patch-${pkgver}-rt2.patch"
+    cp "${srcdir}/linux-${pkgver}/include/linux/rwsem.h" "${srcdir}/linux-${pkgver}/drivers/md/bcache/"
+    sed -i '/#include "bcache.h"/i #include "rwsem.h"\n' "${srcdir}/linux-${pkgver}/drivers/md/bcache/request.c"
+  fi
+
   # Add RT patches
-  xzcat "${srcdir}/patch-${pkgver}-rt1.patch.xz" | patch -p1
+  patch -p1 -i "${srcdir}/patch-${pkgver}-rt2.patch"
   #xzcat "${srcdir}/patch-${pkgver}-rt1.patch.xz" | patch -p1 -F3
-  #xzcat "${srcdir}/patches-${pkgver}-rt1.tar.xz" | patch -p1
 
   # add upstream patch
   #patch -p1 -i "${srcdir}/patch-${pkgver}"
@@ -109,7 +112,7 @@ prepare() {
 
   # This patch adds multitouch support for the surface pro 3
   # keyboard cover.
-  if [[ $multitouch != 'n' ]]; then
+  if [ "$multitouch" != 'n' ]; then
     patch -p1 -i "${srcdir}/multitouch.patch"
   fi
 
