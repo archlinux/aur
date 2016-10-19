@@ -28,7 +28,7 @@ pkgver() {
 
 package(){
   cd "${_plug}"
-  install -Dm644 Vine.py "${pkgdir}${_sites_packages}/Vine.py"
+  install -Dm644 Vine.py "${pkgdir}${_site_packages}/Vine.py"
   python -m compileall -q -f -d "${_site_packages}" "${pkgdir}${_site_packages}/Vine.py"
   python -OO -m compileall -q -f -d "${_site_packages}" "${pkgdir}${_site_packages}/Vine.py"
 }
