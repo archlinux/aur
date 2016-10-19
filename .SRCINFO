@@ -1,6 +1,6 @@
 pkgbase = pipman-git
 	pkgdesc = Generate PKGBUILD from pip packages
-	pkgver = 0.9.r1.g592e8f9
+	pkgver = 0.9.1.r0.ga25667c
 	pkgrel = 1
 	url = http://github.com/sollidsnake/pipman
 	arch = any
