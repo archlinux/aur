@@ -6,7 +6,7 @@
 # Set these variables to ANYTHING that is not null to enable them
 
 # Patch with MuQSS (Multiple Queue Skiplist Scheduler)
-# See, http://ck-hack.blogspot.com/2016/10/muqss-multiple-queue-skiplist-scheduler_7.html
+# See, http://ck-hack.blogspot.com/2016/10/muqss-multiple-queue-skiplist-scheduler_17.html
 _MuQSS=
 
 # Tweak kernel options prior to a build via nconfig
@@ -55,34 +55,34 @@ _BFQ_enable_=
 
 pkgname=(linux-ck linux-ck-headers)
 _kernelname=-ck
-_srcname=linux-4.7
-pkgver=4.7.8
+_srcname=linux-4.8
+pkgver=4.8.2
 pkgrel=1
 arch=('i686' 'x86_64')
 url="https://wiki.archlinux.org/index.php/Linux-ck"
 license=('GPL2')
 makedepends=('kmod' 'inetutils' 'bc' 'libelf')
 options=('!strip')
-_ckpatchversion=5
-_ckpatchname="patch-4.7-ck${_ckpatchversion}"
+_ckpatchversion=1
+_ckpatchname="patch-4.8-ck${_ckpatchversion}"
 _muqssversion=112
-_muqsspatch="4.7-sched-MuQSS_$_muqssversion"
+_muqsspatch="4.8-sched-MuQSS_$_muqssversion"
 _gcc_patch='enable_additional_cpu_optimizations_for_gcc_v4.9+_kernel_v3.15+.patch'
-_bfqpath='http://algo.ing.unimo.it/people/paolo/disk_sched/patches/4.7.0-v8r3'
-_bfqp1='0001-block-cgroups-kconfig-build-bits-for-BFQ-v7r11-4.7.0.patch'
-_bfqp2='0002-block-introduce-the-BFQ-v7r11-I-O-sched-for-4.7.0.patch'
-_bfqp3='0003-block-bfq-add-Early-Queue-Merge-EQM-to-BFQ-v7r11-for.patch'
-_bfqp4='0004-block-bfq-turn-BFQ-v7r11-for-4.7.0-into-BFQ-v8r3-for.patch'
+_bfqpath='http://algo.ing.unimo.it/people/paolo/disk_sched/patches/4.8.0-v8r4'
+_bfqp1='0001-block-cgroups-kconfig-build-bits-for-BFQ-v7r11-4.8.0.patch'
+_bfqp2='0002-block-introduce-the-BFQ-v7r11-I-O-sched-to-be-ported.patch'
+_bfqp3='0003-block-bfq-add-Early-Queue-Merge-EQM-to-BFQ-v7r11-to-.patch'
+_bfqp4='0004-Turn-BFQ-v7r11-into-BFQ-v8r4-for-4.8.0.patch'
 source=("http://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
 "https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.sign"
 "http://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.xz"
 "https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.sign"
-"http://ck.kolivas.org/patches/muqss/4.0/4.7/$_muqsspatch.patch"
+"http://ck.kolivas.org/patches/muqss/4.0/4.8/$_muqsspatch.patch"
 'config.x86_64' 'config'
 'linux-ck.preset'
 'change-default-console-loglevel.patch'
 # ck1
-"http://ck.kolivas.org/patches/4.0/4.7/4.7-ck${_ckpatchversion}/${_ckpatchname}.xz"
+"http://ck.kolivas.org/patches/4.0/4.8/4.8-ck${_ckpatchversion}/${_ckpatchname}.xz"
 # gcc
 "http://repo-ck.com/source/gcc_patch/${_gcc_patch}.gz"
 # bfq
@@ -90,21 +90,21 @@ source=("http://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
 "$_bfqpath/$_bfqp2"
 "$_bfqpath/$_bfqp3"
 "$_bfqpath/$_bfqp4")
-sha256sums=('5190c3d1209aeda04168145bf50569dc0984f80467159b1dc50ad731e3285f10'
+sha256sums=('3e9150065f193d3d94bcf46a1fe9f033c7ef7122ab71d75a7fb5a2f0c9a7e11a'
             'SKIP'
-            'd2cf10bbf9ae8746f7e57f9a34beef6031944541e6cc8ac07f0948dbbcb09fa4'
+            'edb6e8022172df2b020b53e1cfa32bcde070f3119a6618766066098c46008a9b'
             'SKIP'
-            '19a0aca83696b8ac146fda1223d443c2e460a1d49eb88283f48de11c21c72024'
-            '43af3622958b540e9812f5a165072537422c79b49581bba2ba058beca589e72a'
-            '2bf031f11b4ea0a9a11876a28836b777fa055be38908fc5101f622bdeb27e72d'
+            '57863cbfa5d6d19c6166bc4c3c041da26989b7c41e597f31642d4c09e09b848a'
+            '395e0b97e5cf3d483778d8ff0ec11d305d93597d397305d97efc3b7826a296ed'
+            '4a053e009e05fd597b11b3781a7214a20624b188c3c610f9bf9d67039e1c656c'
             '2b3ebf5446aa3cac279842ca00bc1f2d6b7ff1766915282c201d763dbf6ca07e'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
-            '1cf066cbad338f64a315e455b38d29dd509b20a16bfb6e2faa1766f776fd335f'
+            'f085e2471668f4069c971d8beaaf12a353efea8d1cea9c68c9665858ae42b2ff'
             'cf0f984ebfbb8ca8ffee1a12fd791437064b9ebe0712d6f813fd5681d4840791'
-            'a6bd81bbb2f72cfd6ad992fdeff4bac1cb7c58a8edfc3fcd76c1d7275f73d284'
-            '144b54e95a1ffca88066e41f3c46c47df442d6497684e204e9f4312faab75572'
-            'db34093296bc02df769faa25dd609453321b05836d8265416e6975ebe9542821'
-            'db7872616d7ed3137d4b738e6e29fdaff58981a1d3912e3f1c33cd9fc61bca27')
+            '1dabd969b18b7e09e2ffeffe4c2430dbc26e5df9868563d54ca95f45c690262f'
+            'c8d17a7893d5780fd0c90311470160dcc842b81621b30671150e2e3224be86d2'
+            'e47ea5b1c2f20cfade4e6a85bff1320dac84ac638e48ef4eec7285fe9e1e1def'
+            'c3c96e304aef378f0cc6e1fb18eeabe176e6ba918d13060c105f3d8cabc85f59')
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
               '647F28654894E3BD457199BE38DBBDC86092693E' # Greg Kroah-Hartman
@@ -253,8 +253,8 @@ build() {
 }
 
 package_linux-ck() {
-	pkgdesc='Linux Kernel with the ck5 patchset featuring the Brain Fuck Scheduler v0.502.'
-	#_Kpkgdesc='Linux Kernel and modules with the ck5 patchset featuring the Brain Fuck Scheduler v0.502.'
+	pkgdesc='Linux Kernel with the ck1 patchset featuring the Brain Fuck Scheduler v0.512.'
+	#_Kpkgdesc='Linux Kernel and modules with the ck1 patchset featuring the Brain Fuck Scheduler v0.512.'
 	#pkgdesc="${_Kpkgdesc}"
 	depends=('coreutils' 'linux-firmware' 'mkinitcpio>=0.7')
 	optdepends=('crda: to set the correct wireless channels of your country' 'nvidia-ck: nVidia drivers for linux-ck' 'modprobed-db: Keeps track of EVERY kernel module that has ever been probed - useful for those of us who make localmodconfig')
