@@ -1,0 +1,19 @@
+pkgbase = minergate
+	pkgdesc = Cryptocurrency GUI miner and Mining Pool
+	pkgver = 6.6
+	pkgrel = 1
+	url = http://www.minergate.com/
+	install = minergate.install
+	arch = x86_64
+	license = custom
+	depends = qt5-base
+	depends = ocl-icd
+	depends = gcc-libs-multilib
+	depends = qt5-websockets
+	optdepends = bfgminer
+	provides = minergate
+	source = https://en.minergate.com/download/ubuntu
+	md5sums = ec7cbe2af12bd7f8fa65a089dcd3d5be
+
+pkgname = minergate
+

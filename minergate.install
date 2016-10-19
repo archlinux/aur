@@ -1,0 +1,14 @@
+post_install () {
+    rm -f /opt/minergate/platforms/libqxcb.so
+    ln -s /usr/lib/qt/plugins/platforms/libqxcb.so /opt/minergate/platforms/libqxcb.so
+    ln -s /usr/lib/libpcre16.so.0.2.7 /usr/lib/libpcre16.so.3
+}
+
+post_upgrade() {
+    post_install
+}
+
+post_remove() {
+    rm -f /opt/minergate/platforms/libqxcb.so
+    rm -f /usr/lib/libpcre16.so.3
+}

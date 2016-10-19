@@ -1,0 +1,16 @@
+*.tar
+*.tar.*
+*.zip
+*.tgz
+*.log
+*.log.*
+*.sig
+*.swp
+pkg/
+src/
+
+# KDE directory file
+.directory
+
+# Source file
+ubuntu
