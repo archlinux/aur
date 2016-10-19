@@ -33,6 +33,7 @@ build() {
     --enable-smtp \
     --enable-hcache \
     --enable-sidebar \
+    --enable-compressed \
     --with-gss=/usr \
     --with-ssl=/usr \
     --with-sasl \
