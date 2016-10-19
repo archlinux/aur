@@ -6,7 +6,7 @@ pkgname=pstate-frequency
 # shellcheck disable=SC2034
 pkgdesc="Easily control Intel p-state driver"
 # shellcheck disable=SC2034
-pkgver=3.5.1
+pkgver=3.6.0
 # shellcheck disable=SC2034
 pkgrel=1
 # shellcheck disable=SC2034
@@ -14,7 +14,7 @@ arch=('i686' 'x86_64')
 # shellcheck disable=SC2034
 makedepends=('')
 # shellcheck disable=SC2034
-depends=('coreutils' 'grep')
+depends=()
 # shellcheck disable=SC2034
 optdepends=('x86_energy_perf_policy: For the x86_energy_perf_policy-sleep.service')
 # shellcheck disable=SC2034
@@ -30,7 +30,7 @@ source=(
         "${url}/archive/${pkgver}.tar.gz"
         "00-fix-prefix.patch")
 # shellcheck disable=SC2034
-sha256sums=('662772eeae845f2e5717a9ed13b7a272e58d80d14af58e94ea7f5190c763fa52'
+sha256sums=('faeeee5ceaf33190c2328f5af375e7136d5bb52c85e779a9b277f60e151820c4'
             'e5423df20c03ef19448a78a1ae39e630d90f63c6c4e0962296ad292665575f0d')
 
 prepare() {
