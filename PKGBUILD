@@ -1,0 +1,49 @@
+# Maintainer: Michel Wohlert <michel.wohlert@gmail.com>
+
+pkgname=networkmanager-fortisslvpn-git
+pkgver=1.2.3.dev.r73.gdb477b6
+pkgrel=1
+pkgdesc='NetworkManager VPN plugin for fortisslvpn - git checkout'
+arch=('i686' 'x86_64')
+license=('GPL')
+url='http://www.gnome.org/projects/NetworkManager/'
+depends=('networkmanager' 'nm-connection-editor' 'openfortivpn' 'libsecret')
+makedepends=('git' 'intltool' 'python')
+provides=('networkmanager-fortisslvpn')
+conflicts=('networkmanager-fortisslvpn')
+source=('git://git.gnome.org/network-manager-fortisslvpn')
+sha256sums=('SKIP')
+
+pkgver() {
+        cd network-manager-fortisslvpn/
+
+        if GITTAG="$(git describe --abbrev=0 --tags 2>/dev/null)"; then
+                printf '%s.r%s.g%s' \
+                        "$(sed -e "s/^${pkgname%%-git}//" -e 's/^[-_/a-zA-Z]\+//' -e 's/[-_+]/./g' <<< ${GITTAG})" \
+                        "$(git rev-list --count ${GITTAG}..)" \
+                        "$(git log -1 --format='%h')"
+        else
+                printf '0.r%s.g%s' \
+                        "$(git rev-list --count master)" \
+                        "$(git log -1 --format='%h')"
+        fi
+}
+build() {
+        cd network-manager-fortisslvpn/
+
+        ./autogen.sh
+        ./configure --prefix=/usr \
+                --sysconfdir=/etc \
+                --localstatedir=/var \
+                --libexecdir=/usr/lib/networkmanager \
+                --enable-more-warnings=yes \
+                --disable-static
+        make
+}
+
+package() {
+        cd network-manager-fortisslvpn/
+
+        make DESTDIR="${pkgdir}" install
+}
+
