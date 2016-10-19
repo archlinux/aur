@@ -17,7 +17,7 @@ pkgname=clion
 _pkgname=clion
 _archname=CLion
 # Make sure to use vercmp to check version is seen as newer. Bump epoch if not.
-pkgver=2016.2.2
+pkgver=2016.2.3
 pkgrel=1
 # Bump when JetBrains uses silly letters in stable releases
 epoch=1
@@ -27,7 +27,7 @@ options=(!strip)
 url="http://www.jetbrains.com/${_pkgname}"
 license=('custom')
 source=("https://download.jetbrains.com/cpp/${_archname}-${pkgver}.tar.gz")
-sha256sums=('b1595466ff890067dda8e0176dd815a825fb86fc2b6ef90610294ec61c1d5819')
+sha256sums=('0d2fc6ecec4dfab15ba98021ed3d3e866c2d43e7c27b7e522e0161e76aa78fbd')
 noextract=("${_archname}-${pkgver}.tar.gz")
 depends=()
 optdepends=()
