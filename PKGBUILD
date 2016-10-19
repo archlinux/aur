@@ -1,7 +1,7 @@
 # Maintainer: Robin Baumgartner <robin@baumgartners.ch>
 # Contributor: Florian Walch <florian.walch@gmx.at>
 pkgname=tryton
-pkgver=4.0.4
+pkgver=4.0.5
 _pkgdir=4.0
 pkgrel=1
 pkgdesc="A three-tiers high-level general purpose application platform (client application)"
@@ -15,7 +15,7 @@ makedepends=('python2-distribute')
 source=("http://downloads.tryton.org/$_pkgdir/$pkgname-$pkgver.tar.gz"
         "http://downloads.tryton.org/$_pkgdir/$pkgname-$pkgver.tar.gz.asc"
         'tryton.desktop')
-md5sums=('525757054e23103fcb1dbd6cf0c3b178'
+md5sums=('c074692d2a84d8e77d3eddaa05f6b87c'
          'SKIP'
          '7ca15ad6c790c78817fe1a1b6a2c3fcf')
 validpgpkeys=('7C5A4360F6DF81ABA91FD54D6FF50AFE03489130') # Cédric Krier
