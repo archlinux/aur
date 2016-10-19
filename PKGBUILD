@@ -17,6 +17,8 @@ optdepends=(
     'php-mysql: For MySQL storage'
     'php-pgsql: For postgres storage'
     'php-sqlite: For sqlite storage'
+    'rabbitmq: For async import'
+    'redis: For async import'
 )
 install="$pkgname.install"
 options=(!strip)

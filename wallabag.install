@@ -10,7 +10,10 @@ post_install() {
     echo "php /usr/share/webapps/wallabag/bin/console wallabag:install --env=prod"
     echo ""
     echo -n "To setup your webserver and enable the needed php extensions, "
-    echo "plase read: http://doc.wallabag.org/en/master/user/installation.html"
+    echo "please read: http://doc.wallabag.org/en/master/user/installation.html"
+    echo ""
+    echo -n "If you upgraded from 2.0.x, you might need to check the upgrade guide: "
+    echo "http://doc.wallabag.org/en/master/user/upgrade-2.0.x-2.1.1.html"
 }
 
 
