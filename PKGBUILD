@@ -1,12 +1,12 @@
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=neatmkfn-git
-pkgver=0.r79.28682e1
+pkgver=0.r81.26b0c81
 pkgrel=1
 epoch=
-pkgdesc="Creates font description files for neatroff. It used to be called mktrfn."
+pkgdesc="Generate font descriptions for neatroff"
 arch=('i686' 'x86_64')
 url="http://litcave.rudi.ir/"
-license=('custom:BSD')
+license=('ISC')
 groups=()
 depends=('gsfonts')
 makedepends=('git')
