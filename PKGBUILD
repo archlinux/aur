@@ -11,19 +11,19 @@
 # Contributor: Cold (current_euid patch)
 # Contributor: kolasa (part of 4.3 kernel patches)
 # Contributor: gentoo (part of 4.3 kernel patches)
-# Contributor: 	Philip Muller @ Manjaro (4.4 kernel patch)
+# Contributor: Philip Muller @ Manjaro (4.4 kernel patch)
 
 
 pkgname=catalyst-hook
 pkgver=15.9
-pkgrel=12
+pkgrel=13
 _amdver=15.201.1151
 pkgdesc="AMD/ATI drivers. Auto re-compile fglrx module while shutdown/reboot."
 arch=('i686' 'x86_64')
 url="http://www.amd.com"
 license=('custom')
 options=('staticlibs' 'libtool' '!strip' '!upx')
-depends=('catalyst-utils' 'gcc-libs' 'gcc>4.0.0' 'make' 'patch' 'linux>=3.0' 'linux<4.8' 'linux-headers')
+depends=('catalyst-utils' 'gcc-libs' 'gcc>4.0.0' 'make' 'patch' 'linux>=3.0' 'linux<4.9' 'linux-headers')
 optdepends=('linux-lts-headers: to build the fglrx module for the linux-lts kernel')
 conflicts=('catalyst-test' 'catalyst-daemon' 'catalyst' 'catalyst-generator' 'catalyst-dkms')
 provides=("catalyst=${pkgver}")
