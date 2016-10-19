@@ -60,19 +60,28 @@ EOF
     echo
   else
     cat << EOF | sudo -u dom4 tee /usr/share/dom4/config/$1.properties > /dev/null
-###### SERVER INFO ######
-# Set the map file. Any image file must have the same name but a different extension.
-mapfile my_pretty_world.map
-# Allow host to set dropped-out players to computer control
-masterpass supersecure
-# Will default to localhost
-ipadr 127.0.0.1
-# Must be between 1024 and 65535, and forwarded in your router config
-port 6666
-# Time between turn rollover
-hours 26
+# See http://www.illwinter.com/dom4/startoptions.pdf for a full reference.
+# Sections 3-5, 3-6, and 3-7 are especially relevant. Switches should be
+# reproduced as given in the documentation, without any leading dashes (so to
+# pass the '--era 1' setting to the server, include the line 'era 1' in this
+# file).
 
-###### GAME SETTINGS ######
+# SERVER INFO
+
+# Port number must be between 1024 and 65535, and forwarded in your router
+# config. Master password is not required but useful if you want to be able to
+# set dropped-out players to computer control.
+
+port 6666
+masterpass supersecure
+
+# GAME SETTINGS
+
+# The mapfile is required. Any .rgb or image files must have the same filename
+# and differ only in extension since the map data is automatically copied over.
+
+mapfile my_pretty_world.map
+hours 26
 era 1
 renaming
 storyevents
@@ -84,10 +93,8 @@ EOF
 
   sudo -u dom4 $EDITOR /usr/share/dom4/config/$1.properties
 
-  mapfile=$(grep -oP "mapfile\s+\K.+" /usr/share/dom4/config/$1.properties)
+  mapfile=$(grep -oP "^mapfile\s+\K.+" /usr/share/dom4/config/$1.properties)
   mapname=$(basename $mapfile .map)
-
-  sudo -u dom4 mkdir -p /usr/share/dom4/maps
 
   if [[ -s "$mapname.map" ]]; then
     echo "Copying $mapname map files..."
