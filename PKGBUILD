@@ -15,9 +15,9 @@ makedepends=('git')
 provides=("vapoursynth-plugin-${_plug}")
 conflicts=("vapoursynth-plugin-${_plug}")
 source=("${_plug}::git+https://github.com/IFeelBloated/vapoursynth-mvtools-sf")
-sha1sums=('SKIP')
+sha256sums=('SKIP')
 
-_sites_packages="$(python -c "from distutils.sysconfig import get_python_lib; print(get_python_lib())")"
+_site_packages="$(python -c "from distutils.sysconfig import get_python_lib; print(get_python_lib())")"
 
 pkgver() {
   cd "${_plug}"
@@ -45,4 +45,6 @@ package(){
   cd "${_plug}"
   make DESTDIR="${pkgdir}" install
   install -Dm644 src/mvmulti.py "${pkgdir}${_sites_packages}/mvmulti.py"
+  python -m compileall -q -f -d "${_sites_packages}" "${pkgdir}${_site_packages}/mvmulti.py"
+  python -OO -m compileall -q -f -d "${_sites_packages}" "${pkgdir}${_site_packages}/mvmulti.py"
 }
