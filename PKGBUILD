@@ -5,7 +5,7 @@
 # Contributor: Eric Bélanger <eric@archlinux.org>
 pkgname=darkaudacity-git
 _gitname=audacity
-pkgver=2.1.3x.r105.g0329194
+pkgver=2.1.3x.r126.gf9b56fb
 pkgrel=1
 pkgdesc="A program that lets you manipulate digital audio waveforms"
 arch=('i686' 'x86_64')
