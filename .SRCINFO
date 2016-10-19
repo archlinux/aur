@@ -1,7 +1,7 @@
 pkgbase = pwndbg
 	pkgdesc = Makes debugging with GDB suck less
 	pkgver = 2016.09.22
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/pwndbg/pwndbg
 	arch = any
 	license = MIT
@@ -12,6 +12,7 @@ pkgbase = pwndbg
 	depends = python-ptrace
 	depends = python-pyelftools
 	depends = python-six
+	depends = python-future
 	optdepends = checksec: checksec command support
 	optdepends = ropper: ropper command support
 	optdepends = ropgadget: ropgadget command support
