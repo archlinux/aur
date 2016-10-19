@@ -18,7 +18,7 @@ options=('!makeflags')
 backup=('etc/conf.d/fbcondecor'
         'etc/conf.d/splash')
 install=$pkgname.install
-source=("http://downloads.sourceforge.net/project/fbsplash.berlios/splashutils-$pkgver.tar.bz2"
+source=("http://heanet.dl.sourceforge.net/project/fbsplash.berlios/splashutils-1.5.4.4.tar.bz2"
         'splash_start_initcpio.patch'
         'splash.conf'
         'fbsplash-basic.sh'
