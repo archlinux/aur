@@ -1,6 +1,6 @@
 # Contributor: Storm Dragon <storm@aur.org>
 pkgname=fortune-mod-limericks
-pkgver=3
+pkgver=3.1
 pkgrel=2
 pkgdesc="A collection of really funny and perverse limericks."
 arch=('any')
@@ -8,7 +8,7 @@ url="http://stormdragon.tk/fortunes/limericks"
 license=('WTFPL')
 depends=('fortune-mod')
 source=("$url")
-md5sums=('063b9c9916003dfb67094998e00b6480')
+md5sums=('b16323a44db9b6decfeb129e185ae5d4')
 
 build()
 {
