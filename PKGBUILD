@@ -7,6 +7,7 @@ arch=('i686' 'x86_64')
 url="http://www.workcraft.org/"
 license=('GPL')
 depends=('java-runtime')
+optdepends=('graphviz: Graph manipulation')
 provides=('workcraft')
 conflicts=('workcraft')
 source=(http://www.workcraft.org/_media/download/workcraft-v3.1.2-linux.tar.gz workcraft_start.sh)
