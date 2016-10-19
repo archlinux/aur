@@ -23,7 +23,7 @@ provides=("vapoursynth-plugin-${_plug}")
 conflicts=("vapoursynth-plugin-${_plug}")
 source=("${_plug}::git+https://github.com/HomeOfVapourSynthEvolution/vsTAAmbk.git")
 sha256sums=('SKIP')
-_sites_packages="$(python -c "from distutils.sysconfig import get_python_lib; print(get_python_lib())")"
+_site_packages="$(python -c "from distutils.sysconfig import get_python_lib; print(get_python_lib())")"
 
 pkgver() {
   cd "${_plug}"
@@ -33,6 +33,8 @@ pkgver() {
 
 package() {
   cd "${_plug}"
-  install -Dm644 vsTAAmbk.py "${pkgdir}${_sites_packages}/vsTAAmbk.py"
+  install -Dm644 vsTAAmbk.py "${pkgdir}${_site_packages}/vsTAAmbk.py"
+  python -m compileall -q -f -d "${_site_packages}" "${pkgdir}${_site_packages}/vsTAAmbk.py"
+  python -OO -m compileall -q -f -d "${_site_packages}" "${pkgdir}${_site_packages}/vsTAAmbk.py"
   install -Dm644 README.md "${pkgdir}/usr/share/doc/vapoursynth/plugins/${_plug}/README.md"
 }
