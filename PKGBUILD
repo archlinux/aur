@@ -12,7 +12,7 @@ depends=('vapoursynth')
 source=("https://dl.dropbox.com/u/6596386/vapoursynth-plugins/${_plug}-${pkgver/_/-}.7z")
 sha256sums=('138ef3bd565e54dab556080e0ae3a426ef00f62f340e8eb6c2cb134dbf14332c')
 
-_sites_packages="$(python -c "from distutils.sysconfig import get_python_lib; print(get_python_lib())")"
+_site_packages="$(python -c "from distutils.sysconfig import get_python_lib; print(get_python_lib())")"
 
 prepare() {
   rm -fr src/Vapoursynth.h
@@ -32,7 +32,7 @@ package(){
   install -Dm755 "lib${_plug}.so" "${pkgdir}/usr/lib/vapoursynth/lib${_plug}.so"
   install -Dm755 libtemporalsoften2.so "${pkgdir}/usr/lib/vapoursynth/libtemporalsoften2.so"
 
-  install -Dm644 temporalsoften2.py "${pkgdir}${_sites_packages}/temporalsoften2.py"
+  install -Dm644 temporalsoften2.py "${pkgdir}${_site_packages}/temporalsoften2.py"
   python -m compileall -q -f -d "${_site_packages}" "${pkgdir}${_site_packages}/temporalsoften2.py"
   python -OO -m compileall -q -f -d "${_site_packages}" "${pkgdir}${_site_packages}/temporalsoften2.py"
 
