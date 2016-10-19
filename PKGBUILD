@@ -15,7 +15,7 @@ conflicts=("vapoursynth-plugin-${_plug}")
 source=("${_plug}::git+https://github.com/gnaggnoyil/VAutoDeint.git")
 sha1sums=('SKIP')
 
-_sites_packages="$(python -c "from distutils.sysconfig import get_python_lib; print(get_python_lib())")"
+_site_packages="$(python -c "from distutils.sysconfig import get_python_lib; print(get_python_lib())")"
 
 pkgver() {
   cd "${_plug}"
@@ -42,6 +42,8 @@ build() {
 package(){
   cd "${_plug}"
   install -Dm755 "lib${_plug}.so" "${pkgdir}/usr/lib/vapoursynth/lib${_plug}.so"
-  install -Dm644 VAutoDeint.py "${pkgdir}${_sites_packages}/VAutoDeint.py"
+  install -Dm644 VAutoDeint.py "${pkgdir}${_site_packages}/VAutoDeint.py"
+  python -m compileall -q -f -d "${_site_packages}" "${pkgdir}${_site_packages}/VAutoDeint.py"
+  python -OO -m compileall -q -f -d "${_site_packages}" "${pkgdir}${_site_packages}/VAutoDeint.py"
   install -Dm644 README "${pkgdir}/usr/share/doc/vapoursynth/plugins/${_plug}/README"
 }
