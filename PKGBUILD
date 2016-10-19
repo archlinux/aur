@@ -28,6 +28,6 @@ pkgver() {
 package() {
   cd "${_plug}"
   install -Dm644 "${_plug}.py" "${pkgdir}${_site_packages}/${_plug}.py"
-  python -m compileall -q -f -d "${_sites_packages}" "${pkgdir}${_site_packages}/${_plug}.py"
-  python -OO -m compileall -q -f -d "${_sites_packages}" "${pkgdir}${_site_packages}/${_plug}.py"
+  python -m compileall -q -f -d "${_site_packages}" "${pkgdir}${_site_packages}/${_plug}.py"
+  python -OO -m compileall -q -f -d "${_site_packages}" "${pkgdir}${_site_packages}/${_plug}.py"
 }
