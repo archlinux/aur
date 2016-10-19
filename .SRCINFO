@@ -1,6 +1,6 @@
 pkgbase = okcashd
 	pkgdesc = Okcash daemon
-	pkgver = 4.0.0.0
+	pkgver = 4.0.0.1
 	pkgrel = 1
 	url = http://okcash.co
 	arch = i686
@@ -12,7 +12,7 @@ pkgbase = okcashd
 	depends = openssl
 	provides = okcashd
 	conflicts = okcashd
-	source = https://github.com/okcashpro/okcash/archive/v4.0.0.0-core.Utopia.zip
+	source = https://github.com/okcashpro/okcash/archive/v4.0.0.1-core.Utopia.zip
 	md5sums = SKIP
 
 pkgname = okcashd
