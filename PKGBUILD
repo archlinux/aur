@@ -3,7 +3,7 @@
 # The API used to connect to the SDRPlay is proprietary.
 # To obtain the API, you must register your SDRPlay at
 # http://www.sdrplay.com/starthere.php. You must download
-# the 'SDRplay_RSP_MiricsAPI-Linux-1.95.1.run' file but *do not*
+# the 'SDRplay_RSP_MiricsAPI-Linux-1.97.1.run' file but *do not*
 # follow the remaining instructions (chmod 755, etc.)
 # Instead copy the file to the same directory as the
 # PKGBUILD and run makepkg.
@@ -16,7 +16,7 @@
 #
 
 pkgname=libsdrplay
-pkgver=1.95.1
+pkgver=1.97.1
 pkgrel=1
 pkgdesc="Modules for the SDRplay receiver"
 arch=('i686' 'x86_64')
@@ -24,7 +24,7 @@ url="http://www.sdrplay.com"
 license=('custom')
 depends=('libusb>=1.0')
 source=("local://SDRplay_RSP_MiricsAPI-Linux-${pkgver}.run")
-md5sums=('1913d6d48286ac7ff2b3a25386036ad4')
+md5sums=('e5891e2e8d5c090979e4956ef2f8d20f')
 
 prepare() {
 	cd ${srcdir}
@@ -45,10 +45,11 @@ package() {
 
 	# These commands are equivalent to the scripts used in the supplied run file
 	install -D -m644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-	install -D -m644 libmirsdrapi-rsp-${CARCH}-${_apivers}.so "${pkgdir}/usr/lib/libmirsdrapi-rsp-${CARCH}-${_apivers}.so"
+	install -D -m644 "${CARCH}/libmirsdrapi-rsp.so.${_apivers}" \
+		"${pkgdir}/usr/lib/libmirsdrapi-rsp.so.${_apivers}"
 	install -D -m644 mirsdrapi-rsp.h "${pkgdir}/usr/include/mirsdrapi-rsp.h"
 	install -D -m644 66-mirics.rules "${pkgdir}/etc/udev/rules.d/66-mirics.rules"
 	cd "${pkgdir}/usr/lib"
-	ln -s libmirsdrapi-rsp-${CARCH}-${_apivers}.so libmirsdrapi-rsp-${_apivers}.so
-	ln -s libmirsdrapi-rsp-${CARCH}-${_apivers}.so libmirsdrapi-rsp.so
+	ln -s libmirsdrapi-rsp.so.${_apivers} libmirsdrapi-rsp.so.1
+	ln -s libmirsdrapi-rsp.so.${_apivers} libmirsdrapi-rsp.so
 }
