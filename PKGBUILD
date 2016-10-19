@@ -1,14 +1,14 @@
 # Maintainer: Patrick McCarty <pnorcks at gmail dot com>
 
 pkgname=libsmack
-pkgver=1.1.0
+pkgver=1.3.0
 pkgrel=1
 pkgdesc="Userspace library and helper tools for the Smack LSM"
-arch=('i686' 'x86_64')
+arch=('i686' 'x86_64' 'armv7h')
 url="https://github.com/smack-team/smack"
 license=('LGPL')
 source=(https://github.com/smack-team/smack/archive/v${pkgver}.tar.gz)
-sha256sums=('94dc21b4a5e570af0eb44debf57491170cccdbf60e03b5a3210f2a14d6448390')
+sha256sums=('5f2677086b5589cd169c072a509aa72ec124a95e506e5753df81632f82282a57')
 
 build() {
   cd "$srcdir/smack-$pkgver"
