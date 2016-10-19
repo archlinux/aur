@@ -1,6 +1,6 @@
 # Maintainer: Jonne Haß <me@jhass.eu>
 pkgname=snazzer-git
-pkgver=r149.7bbd507
+pkgver=r174.37f6e5f
 pkgrel=1
 pkgdesc="btrfs snapshotting and backup system offering snapshot measurement, transport and pruning. "
 arch=('any')
@@ -15,17 +15,27 @@ pkgver() {
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
+build() {
+  cd "$srcdir/snazzer"
+
+  make manpages
+}
+
+test() {
+  cd "$srcdir/snazzer"
+
+  make test
+}
+
 package() {
   cd "$srcdir/snazzer"
 
+  make INSTALL_PREFIX="$pkgdir/usr/bin" install
+
   for script in snazzer snazzer-measure snazzer-prune-candidates snazzer-receive snazzer-send-wrapper; do
-    install -Dm755 "$script" "$pkgdir/usr/bin/$script"
-    pod2man --release="$pkgver" "$srcdir/snazzer/$script" > "${script}.1"
-    gzip -f "${script}.1"
-    install -Dm644 "${script}.1.gz" "$pkgdir/usr/share/man/man1/${script}.1.gz"
+    gzip -f "man/${script}.8"
+    install -Dm644 "man/${script}.8.gz" "$pkgdir/usr/share/man/man8/${script}.8.gz"
   done
   install -Dm644 "LICENSE.md" "$pkgdir/usr/share/licenses/$pkgname/LICENSE.md"
-  install -dm755 "$pkgdir/usr/share/doc/$pkgname"
-  cp -av doc/* "$pkgdir/usr/share/doc/$pkgname"
 }
 sha256sums=('SKIP')
