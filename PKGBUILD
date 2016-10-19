@@ -8,14 +8,16 @@ pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('any')
 url='http://forum.doom9.org/showthread.php?t=171525'
 license=('GPL')
-depends=('vapoursynth' 'vapoursynth-plugin-fmtconv')
+depends=('vapoursynth'
+         'vapoursynth-plugin-fmtconv'
+         )
 makedepends=('git')
 provides=("vapoursynth-plugin-${_plug}")
 conflicts=("vapoursynth-plugin-${_plug}")
 source=("${_plug}::git+https://github.com/IFeelBloated/VaporSynth-Functions.git")
-sha1sums=('SKIP')
+sha256sums=('SKIP')
 
-_sites_packages="$(python -c "from distutils.sysconfig import get_python_lib; print(get_python_lib())")"
+_site_packages="$(python -c "from distutils.sysconfig import get_python_lib; print(get_python_lib())")"
 
 pkgver() {
   cd "${_plug}"
@@ -24,6 +26,8 @@ pkgver() {
 }
 
 package(){
-  install -Dm644 "${_plug}/Dither.py" "${pkgdir}${_sites_packages}/Dither.py"
+  install -Dm644 "${_plug}/Dither.py" "${pkgdir}${_site_packages}/Dither.py"
+  python -m compileall -q -f -d "${_site_packages}" "${pkgdir}${_site_packages}/Dither.py"
+  python -OO -m compileall -q -f -d "${_site_packages}" "${pkgdir}${_site_packages}/Dither.py"
 }
 
