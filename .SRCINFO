@@ -1,0 +1,14 @@
+pkgbase = mumax3
+	pkgdesc = GPU-accelerated micromagnetic simulation program
+	pkgver = 3.9.3
+	pkgrel = 1
+	url = http://mumax.github.io/
+	arch = x86_64
+	license = GPL
+	depends = cuda-7.5
+	optdepends = gnuplot: for fancy plots
+	source = https://github.com/mumax/3/releases/download/v3.9.3/mumax3.9.3_linux_cuda7.5.tar.gz
+	md5sums = fbac69c0bcf40309a7f0bf61d9745228
+
+pkgname = mumax3
+
