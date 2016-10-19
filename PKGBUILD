@@ -1,7 +1,7 @@
 # Maintainer: BlackEagle < ike DOT devolder AT gmail DOT com >
 
 pkgname=opera-beta-ffmpeg-codecs
-pkgver=54.0.2840.50
+pkgver=54.0.2840.59
 pkgrel=1
 pkgdesc="additional support for proprietary codecs for opera-beta"
 arch=('i686' 'x86_64')
@@ -17,7 +17,7 @@ source=(
   "https://commondatastorage.googleapis.com/chromium-browser-official/chromium-$pkgver.tar.xz"
   'chromium-last-commit-position-r1.patch'
 )
-sha256sums=('9b0b58f3af8353751e93fb6759660bd18de853fd3caabf88cbd48047e1c6cc38'
+sha256sums=('df89c284b0109566acc6a5a1a84d94a5ab0509cc3a86a31299a50328991edcde'
             'd3dc397956a26ec045e76c25c57a1fac5fc0acff94306b2a670daee7ba15709e')
 
 
@@ -48,7 +48,7 @@ build() {
   python2 tools/gn/bootstrap/bootstrap.py -v --gn-gen-args "$args"
   out/Release/gn gen out/Release -v --args="$args" --script-executable=/usr/bin/python2
 
-  ninja -C out/Release -v media
+  ninja -C out/Release -v media/ffmpeg
 }
 
 package() {
