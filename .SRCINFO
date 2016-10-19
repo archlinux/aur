@@ -1,0 +1,27 @@
+pkgbase = dolphin-emu-faster-melee
+	pkgdesc = The FasterMelee build of the Dolphin Emulator
+	pkgver = 4.3
+	pkgrel = 1
+	url = http://fastermelee.net
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	depends = bluez-libs
+	depends = enet
+	depends = ffmpeg
+	depends = libao
+	depends = libevdev
+	depends = mbedtls
+	depends = miniupnpc
+	depends = openal
+	depends = portaudio
+	depends = soundtouch
+	depends = xdg-utils
+	depends = wxgtk
+	optdepends = pulseaudio: PulseAudio backend
+	options = !emptydirs
+	source = dolphin-emu-faster-melee::git+https://github.com/Tinob/Ishiiruka.git#commit=0b00f1f6267190a8bf9a3584497a35d8762eb0a9
+	sha256sums = SKIP
+
+pkgname = dolphin-emu-faster-melee
+
