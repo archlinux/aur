@@ -1,0 +1,15 @@
+pkgbase = fastcgi++-git
+	pkgdesc = This library is intended as a high-efficiency C++14 api for web development.
+	pkgver = bac13ff
+	pkgrel = 1
+	url = http://isatec.ca/fastcgipp/
+	arch = x86_64
+	arch = i686
+	license = LGPL
+	makedepends = git
+	conflicts = fastcgi++
+	source = git+https://github.com/eddic/fastcgipp.git
+	sha256sums = SKIP
+
+pkgname = fastcgi++-git
+
