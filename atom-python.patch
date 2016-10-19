@@ -34,8 +34,8 @@
  Name=Atom Beta
  Comment=A hackable text editor for the 21st Century.
  GenericName=Text Editor
--Exec=/usr/share/atom-beta/atom %U
-+Exec=env PYTHON=python2 GTK_IM_MODULE= QT_IM_MODULE= XMODIFIERS= /usr/share/atom-beta/atom %U
+-Exec=/usr/share/atom-beta/atom %F
++Exec=env PYTHON=python2 XMODIFIERS= /usr/share/atom-beta/atom %F
  Icon=atom-beta
  Type=Application
  StartupNotify=true
