@@ -1,0 +1,3 @@
+#!/bin/sh
+
+electron /usr/lib/node_modules/EME

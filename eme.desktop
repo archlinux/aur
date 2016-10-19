@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=EME
+Comment=Elegant Markdown Editor.
+GenericName=Markdown Editor
+Exec=/usr/bin/eme %U
+Icon=/usr/lib/node_modules/EME/resources/icon.png
+Type=Application
+StartupNotify=true
+Categories=GNOME;GTK;Utility;TextEditor;Development;
+MimeType=text/plain;
