@@ -1,7 +1,7 @@
 # Maintainer: Ivan Lisenkov <ivan@ivlis.com>
 pkgname=mumax3
 pkgver=3.9.3
-pkgrel='1'
+pkgrel='2'
 pkgdesc="GPU-accelerated micromagnetic simulation program"
 arch=('x86_64')
 url="http://mumax.github.io/"
