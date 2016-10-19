@@ -2,7 +2,7 @@
 
 _plug=psharpen
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=r3
+pkgver=r4
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('any')
@@ -14,9 +14,9 @@ makedepends=('git')
 provides=("vapoursynth-plugin-${_plug}")
 conflicts=("vapoursynth-plugin-${_plug}")
 source=("${_plug}::git+https://gist.github.com/2545a281e3f17ba6ef82.git")
-sha1sums=('SKIP')
+sha256sums=('SKIP')
 
-_sites_packages="$(python -c "from distutils.sysconfig import get_python_lib; print(get_python_lib())")"
+_site_packages="$(python -c "from distutils.sysconfig import get_python_lib; print(get_python_lib())")"
 
 pkgver() {
   cd "${_plug}"
@@ -24,5 +24,7 @@ pkgver() {
 }
 
 package() {
-  install -Dm644 "${_plug}/${_plug}.py" "${pkgdir}${_sites_packages}/${_plug}.py"
+  install -Dm644 "${_plug}/${_plug}.py" "${pkgdir}${_site_packages}/${_plug}.py"
+  python -m compileall -q -f -d "${_site_packages}" "${pkgdir}${_site_packages}/${_plug}.py"
+  python -OO -m compileall -q -f -d "${_site_packages}" "${pkgdir}${_site_packages}/${_plug}.py"
 }
