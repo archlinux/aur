@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=Xscreensaver DBus Screenlock
+Comment=Intercept light-locker DBus service call for xscreensaver
+TryExec=xscreensaver-command
+Exec=xscreensaver-dbus-screenlock-freedesktop.py
+NotShownIn=Gnome;Unity

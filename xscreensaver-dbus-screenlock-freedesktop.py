@@ -1,5 +1,5 @@
-#!/usr/bin/env python
-# Replace gnome-screensaver DBus service to call xscreensaver
+#!/usr/bin/env python2
+# Replace gnome-screensaver or light-locker DBus service to call xscreensaver
 # http://ubuntuforums.org/showthread.php?t=1865593&s=1c7f28c50a3f258e1d3404e41f098a0b&p=11418175#post11418175
 
 import dbus

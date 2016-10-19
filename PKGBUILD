@@ -2,35 +2,35 @@
 
 pkgname=xscreensaver-dbus-screenlock
 pkgver=1
-pkgrel=3
-pkgdesc="Emulate org.freedesktop.screensaver dbus for integrated screen-locking"
+pkgrel=4
+pkgdesc="Shell-integrated screen-locking with xscreensaver"
 arch=('i686' 'x86_64')
 url="http://ubuntuforums.org/showthread.php?t=1865593&s=1c7f28c50a3f258e1d3404e41f098a0b&p=11418175#post11418175"
 license=('GPL')
 depends=('xscreensaver' 'python' 'dbus' 'gnome-settings-daemon-compat')
 optdepends=('indicator-session: Activate "Lock" from indicator')
-provides=('gnome-screensaver')
-conflicts=('gnome-screensaver')
-source=('xscreensaver-dbus-screenlock.py'
-	'xscreensaver-dbus-screenlock.desktop')
-md5sums=('4595fc34d3b3f8b620f67d0518c16d58'
-         'd334857a577f92413ddf5d16df79c15c')
+provides=('gnome-screensaver' 'light-locker')
+conflicts=('gnome-screensaver' 'light-locker')
+source=('xscreensaver-dbus-screenlock-freedesktop.py'
+	'xscreensaver-dbus-screenlock-freedesktop.desktop'
+        'xscreensaver-dbus-screenlock-gnome.py'
+	'xscreensaver-dbus-screenlock-gnome.desktop')
+md5sums=('c7d3d86def974e678f62f5c778e3abfb'
+         '65a7fb8a4d3e8183009e9caffc3e587a'
+         'a6888ae261adddb56d5ebffbe5487dc7'
+         '90ebf9aabc89691dd20f70c78506daea')
 
 package() {
 
-  # Don't install xscreensaver-dbus-screenlock.py script if user has a personalized copy
-  if [ ! -f "/usr/local/sbin/xscreensaver-dbus-screenlock.py" ]; then
-    install -Dm755 {${srcdir},${pkgdir}/usr/bin}/xscreensaver-dbus-screenlock.py
-  fi
+  install -Dm755 {${srcdir},${pkgdir}/usr/bin}/xscreensaver-dbus-screenlock-freedesktop.py
+  install -Dm755 {${srcdir},${pkgdir}/usr/bin}/xscreensaver-dbus-screenlock-gnome.py
 
-  # This startup script runs in user sesssions with user permissions.
-  # Because dbus sessions are exclusive, both gnome-session and indicator-session expect this.
-  # It might be more secure to run the process as root, but users would be locked out of sessions!
-  # Regardless, gnome-screensaver works just the same way so whatever...
-  install -Dm644 {${srcdir},${pkgdir}/etc/xdg/autostart}/xscreensaver-dbus-screenlock.desktop
+  install -Dm644 {${srcdir},${pkgdir}/etc/xdg/autostart}/xscreensaver-dbus-screenlock-freedesktop.desktop
+  install -Dm644 {${srcdir},${pkgdir}/etc/xdg/autostart}/xscreensaver-dbus-screenlock-gnome.desktop
 
-  # Redirect gnome-screensaver-command calls to xscreensaver-command
+  # Redirect stray calls to xscreensaver-command
   install -Ddm755 "${pkgdir}/usr/bin/"
   ln -s /usr/bin/xscreensaver-command "${pkgdir}/usr/bin/gnome-screensaver-command"
+  ln -s /usr/bin/xscreensaver-command "${pkgdir}/usr/bin/light-locker-command"
 
 }

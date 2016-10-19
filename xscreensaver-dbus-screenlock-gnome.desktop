@@ -2,6 +2,6 @@
 Type=Application
 Name=Xscreensaver DBus Screenlock
 Comment=Intercept gnome-screensaver DBus service call for xscreensaver
-TryExec=xscreensaver-dbus-screenlock.py
-Exec=xscreensaver-dbus-screenlock.py
-NotShownIn=Gnome;Unity
+TryExec=xscreensaver-command
+Exec=xscreensaver-dbus-screenlock-gnome.py
+OnlyShowIn=Gnome;Unity
