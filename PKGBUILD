@@ -9,7 +9,7 @@ pkgdesc='gnutls26 library (current maintained debian version with .so-version 26
 arch=('i686' 'x86_64')
 url="http://www.gnutls.org/"
 license=(LGPL3)
-depends=(libgcrypt11 libtasn1-3 p11-kit)
+depends=(libgcrypt15 libtasn1-3 p11-kit)
 
 _debver=deb7u5
 _deburl="http://security.debian.org/debian-security/pool/updates/main/g/gnutls26/"
