@@ -1,0 +1,16 @@
+pkgbase = boe-server
+	pkgdesc = A chat platform that intends to look at other chat programs and take only the Best of Everything.
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/ParkerMc/BOE
+	arch = x86_64
+	arch = i686
+	license = GPL-3
+	depends = python2-passlib
+	depends = python2-pyqt4
+	depends = python2
+	source = https://downloads.sourceforge.net/boe/0.1.1/BoE-Linux0.1.1.tar.gz
+	md5sums = 155c1f0f08ba677072ccc7a0850cff9f
+
+pkgname = boe-server
+
