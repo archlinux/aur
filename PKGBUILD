@@ -1,14 +1,14 @@
 # Maintainer: Moritz Persen <moritz.petersen@freenet.de>
 pkgname=pot
-pkgver=0.2.0
-pkgrel=3
+pkgver=0.2.1
+pkgrel=1
 pkgdesc="universal tag manager"
 arch=('i686' 'x86_64')
 url="https://github.com/motersen/pot"
 license=('Apache')
 makedepends=('make' 'gambit-c' 'musl')
 source=("https://github.com/motersen/pot/archive/$pkgver.tar.gz")
-sha512sums=('8ea18529b058808323dae282591535fbb3e47ec85e51752a9649c5e9f5d1ec53b25b626aeafb059fcb339187f82cea04b88692231711f610e4bced8d144e7966')
+sha512sums=('2bb4946534dcaecb1b87c4eda763f92746cc1905c6e9af9d26ff779af467e4c5fe62182cf9007845db29e11c6fc6f4cd19e559ba4d9d552735ac515a9754a86c')
 
 build() {
 	cd "$pkgname-$pkgver"
