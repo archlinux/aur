@@ -1,0 +1,24 @@
+diff -rupN a/src/cwidget/curses++.h b/src/cwidget/curses++.h
+--- a/src/cwidget/curses++.h	2016-10-18 18:51:59.051749706 -0700
++++ b/src/cwidget/curses++.h	2016-10-18 18:54:42.283548311 -0700
+@@ -23,7 +23,7 @@
+ #define CURSES_PLUSPLUS_H
+ 
+ #include <string>
+-#include <ncursesw/curses.h>
++#include <curses.h>
+ 
+ #include <cwidget/generic/util/eassert.h>
+ 
+diff -rupN a/src/cwidget/style.h b/src/cwidget/style.h
+--- a/src/cwidget/style.h	2016-10-18 18:52:18.551965315 -0700
++++ b/src/cwidget/style.h	2016-10-18 18:54:55.143689421 -0700
+@@ -20,7 +20,7 @@
+ #ifndef STYLE_H
+ #define STYLE_H
+ 
+-#include <ncursesw/curses.h>
++#include <curses.h>
+ 
+ #include <cwidget/curses++.h>
+ 

@@ -1,0 +1,12 @@
+diff -rupN a/src/cwidget/widgets/text_layout.cc b/src/cwidget/widgets/text_layout.cc
+--- a/src/cwidget/widgets/text_layout.cc	2014-02-21 06:34:52.000000000 -0800
++++ b/src/cwidget/widgets/text_layout.cc	2016-10-19 10:01:08.000000000 -0700
+@@ -86,7 +86,7 @@ namespace cwidget
+ 	    {
+ 	      freshen_contents(lastst);
+ 	      if(start > 0)
+-		set_start(std::max(0, start - mouse_wheel_scroll_lines));
++		set_start(std::max(size_t(0), start - mouse_wheel_scroll_lines));
+ 	    }
+ 	}
+       else if((bstate & BUTTON5_PRESSED) != 0)
