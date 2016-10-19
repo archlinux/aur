@@ -1,13 +1,16 @@
 # Maintainer: Max Zhao <alcasa.mz@gmail.com>
 pkgname=hiptext
 pkgver=0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="hiptext is command line tool for rendering images and videos inside terminals."
 arch=('any')
 url="https://github.com/jart/hiptext"
 license=('GPL')
 groups=()
-depends=()
+depends=(
+"gflags"
+"google-glog"
+)
 makedepends=(
 "libpng12"
 "libjpeg-turbo"
@@ -15,8 +18,6 @@ makedepends=(
 "giflib"
 "ragel"
 "ffmpeg"
-"gflags"
-"google-glog"
 )
 checkdepends=()
 optdepends=()
