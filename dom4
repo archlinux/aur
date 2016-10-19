@@ -11,12 +11,15 @@ function install {
   read -r -s -p "Steam password: " pass
 
   echo
-  echo "Installing Dominions 4 to /opt/dom4"
+  echo "Installing Dominions 4 to /opt/dom4..."
 
   sudo -u dom4 steamcmd +login $user $pass +force_install_dir /opt/dom4 +app_update 259060 validate +quit
 
-  read -r -p "Enter your Dominions 4 CD Key: " key
+  read -r -p "Enter your Dominions 4 license key: " key
   echo $key | sudo -u dom4 tee /opt/dom4/dom4key > /dev/null
+
+  echo "Copied license information to Dominions 4 install directory."
+  echo "Installation complete. Use 'dom4 config' to set up a game."
 }
 
 # Change the current hosted game by editing /usr/share/dom4/current.
@@ -99,7 +102,7 @@ EOF
   if [[ -s "$mapname.map" ]]; then
     echo "Copying $mapname map files..."
 
-    sudo -u dom4 cp "$mapname".* /usr/share/dom4/maps
+    sudo cp "$mapname".* /usr/share/dom4/maps
   elif [[ -s "$HOME/dominions4/maps/$mapname".map ]]; then
     echo "Copying $mapname map files from $HOME/dominions4/maps..."
 
