@@ -1,13 +1,13 @@
 # Maintainer: Joermungand <joermungand at gmail dot com>
 pkgname=lsp-plugins-doc
-pkgver=1.0.12
+pkgver=1.0.14
 pkgrel=1
 pkgdesc="HTML documentation for LSP Plugins"
 arch=('any')
 url="http://lsp-plug.in"
 license=('custom')
 source=("http://downloads.sourceforge.net/project/lsp-plugins/v${pkgver}/${pkgname}-$pkgver.tar.gz")
-sha1sums=('73deacfe5913db2ed95ee202b8780e52d19f472a')
+sha1sums=('ed8072bd440f51137aac48d2582d2f349f6eea40')
 
 package() {
 	cd $srcdir
