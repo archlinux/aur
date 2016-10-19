@@ -7,7 +7,7 @@ _gitname=evopop-gtk-theme
 pkgname=evopop-gtk-theme
 pkgbase=${pkgname}
 pkgver=2.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc='GTK theme from Solus OS and Budgie Desktop'
 arch=('any')
 url="https://github.com/$_gituser/$_gitname"
@@ -24,4 +24,6 @@ package() {
   DESTDIR="$pkgdir/usr/share/themes"
   mkdir -p "$DESTDIR"
 	cp -r EvoPop "$DESTDIR/"
+	cd "$DESTDIR/EvoPop"
+	ln -s gtk-3.20 gtk-3.0
 }
