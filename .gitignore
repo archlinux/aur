@@ -1,0 +1,5 @@
+pkg/*
+src/*
+tags
+Test-Cmd-*.tar.gz
+perl-test-cmd-*.pkg.tar.xz
