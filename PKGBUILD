@@ -15,9 +15,11 @@ makedepends=('git')
 provides=("vapoursynth-plugin-${_plug}")
 conflicts=("vapoursynth-plugin-${_plug}")
 source=("${_plug}::git+https://github.com/dubhater/vapoursynth-${_plug}.git"
-        'COPYING::http://www.wtfpl.net/txt/copying/copying')
-sha1sums=('SKIP'
-          '337ece375beddfdb7392699fd00eb9b3e823d03f')
+        'COPYING::http://www.wtfpl.net/txt/copying/copying'
+        )
+sha256sums=('SKIP'
+            '0356258391e190dc1d44ea01565cfe627fe44e27dad693a0a54c2483a7b223e5'
+            )
 
 pkgver() {
   cd "${_plug}"
