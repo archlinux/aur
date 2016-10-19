@@ -1,0 +1,282 @@
+diff -aur a/src/file-data.c b/src/file-data.c
+--- a/src/file-data.c	2016-04-07 04:37:58.000000000 -0700
++++ b/src/file-data.c	2016-07-28 00:24:43.000000000 -0700
+@@ -37,7 +37,7 @@
+ 	fdata->content_type = NULL;
+ 	fdata->free_original_path = FALSE;
+ 	fdata->dir_size = 0;
+-	
++
+ 	return fdata;
+ }
+ 
+@@ -54,6 +54,7 @@
+ 	g_free (fdata->path);
+ 	g_free (fdata->link);
+ 	g_free (fdata->list_name);
++	g_free (fdata->sort_key);
+ 	g_free (fdata);
+ }
+ 
+@@ -67,7 +68,7 @@
+ 
+ 	fdata->original_path = g_strdup (src->original_path);
+ 	fdata->free_original_path = TRUE;
+-	
++
+ 	fdata->full_path = g_strdup (src->full_path);
+ 	fdata->link = g_strdup (src->link);
+ 	fdata->size = src->size;
+@@ -81,6 +82,7 @@
+ 
+ 	fdata->list_dir = src->list_dir;
+ 	fdata->list_name = g_strdup (src->list_name);
++	fdata->sort_key = g_strdup (src->sort_key);
+ 
+ 	return fdata;
+ }
+@@ -90,10 +92,10 @@
+ file_data_get_type (void)
+ {
+ 	static GType type = 0;
+-  
++
+ 	if (type == 0)
+ 		type = g_boxed_type_register_static ("FRFileData", (GBoxedCopyFunc) file_data_copy, (GBoxedFreeFunc) file_data_free);
+-  
++
+ 	return type;
+ }
+ 
+@@ -101,10 +103,9 @@
+ void
+ file_data_update_content_type (FileData *fdata)
+ {
+-	
+-	if (fdata->dir) 
++	if (fdata->dir)
+ 		fdata->content_type = MIME_TYPE_DIRECTORY;
+-	else 
++	else
+ 		fdata->content_type = get_static_string (g_content_type_guess (fdata->full_path, NULL, 0, NULL));
+ }
+ 
+@@ -116,13 +117,28 @@
+ }
+ 
+ 
++void
++file_data_set_list_name (FileData   *fdata,
++			 const char *value)
++{
++	g_free (fdata->list_name);
++	fdata->list_name = g_strdup (value);
++
++	g_free (fdata->sort_key);
++	if (fdata->list_name != NULL)
++		fdata->sort_key = g_utf8_collate_key_for_filename (fdata->list_name, -1);
++	else
++		fdata->sort_key = NULL;
++}
++
++
+ int
+ file_data_compare_by_path (gconstpointer a,
+ 			   gconstpointer b)
+ {
+ 	FileData *data_a = *((FileData **) a);
+ 	FileData *data_b = *((FileData **) b);
+-	
++
+ 	return strcmp (data_a->full_path, data_b->full_path);
+ }
+ 
+@@ -158,12 +174,12 @@
+ 		}
+ 
+ 		if (cmp == 0)
+-			return p; 
++			return p;
+ 		else if (cmp < 0)
+ 			right = p;
+-		else 
++		else
+ 			left = p + 1;
+ 	}
+-	
++
+ 	return -1;
+ }
+diff -aur a/src/file-data.h b/src/file-data.h
+--- a/src/file-data.h	2016-04-07 04:37:58.000000000 -0700
++++ b/src/file-data.h	2016-07-28 00:24:43.000000000 -0700
+@@ -40,13 +40,14 @@
+ 	gboolean    dir;              /* Whether this is a directory listed in the archive */
+ 	goffset     dir_size;
+ 	const char *content_type;
+-	
++
+ 	/* Additional data. */
+ 
+ 	gboolean    list_dir;         /* Whether this entry is used to show
+ 				       * a directory. */
+ 	char       *list_name;        /* The string visualized in the list
+ 				       * view. */
++	char       *sort_key;
+ 
+ 	/* Private data */
+ 
+@@ -57,14 +58,15 @@
+ 
+ GType           file_data_get_type            (void);
+ FileData *      file_data_new                 (void);
+-FileData *      file_data_copy                (FileData *src);
+-void            file_data_free                (FileData *fdata);
+-void            file_data_update_content_type (FileData *fdata);
+-gboolean        file_data_is_dir              (FileData *fdata);
+-
+-int  file_data_compare_by_path                (gconstpointer a, 
+-				               gconstpointer b);
+-int  find_path_in_file_data_array             (GPtrArray   *array,
+-				               const char *path);
++FileData *      file_data_copy                (FileData      *src);
++void            file_data_free                (FileData      *fdata);
++void            file_data_update_content_type (FileData      *fdata);
++gboolean        file_data_is_dir              (FileData      *fdata);
++void            file_data_set_list_name       (FileData      *fdata,
++					       const char    *value);
++int  file_data_compare_by_path                (gconstpointer  a,
++				               gconstpointer  b);
++int  find_path_in_file_data_array             (GPtrArray     *array,
++				               const char    *path);
+ 
+ #endif /* FILE_DATA_H */
+diff -aur a/src/fr-command-7z.c b/src/fr-command-7z.c
+--- a/src/fr-command-7z.c	2016-04-07 04:37:58.000000000 -0700
++++ b/src/fr-command-7z.c	2016-09-13 21:04:59.000000000 -0700
+@@ -39,7 +39,8 @@
+ static void fr_command_7z_class_init  (FrCommand7zClass *class);
+ static void fr_command_7z_init        (FrCommand        *afile);
+ static void fr_command_7z_finalize    (GObject          *object);
+-static gboolean spd_support;
++static gboolean spd_support = FALSE;
++static gboolean unexpected_end_of_archive = FALSE;
+ 
+ /* Parent Class */
+ 
+@@ -125,6 +126,9 @@
+ 			comm->multi_volume = (strcmp (fields[1], "+") == 0);
+ 			g_strfreev (fields);
+ 		}
++		else if (strncmp (line, "Unexpected end of archive", 25) == 0)  { 
++			unexpected_end_of_archive = TRUE;
++		}
+ 		return;
+ 	}
+ 
+@@ -371,11 +375,20 @@
+ 	if (from_file != NULL)
+ 		fr_process_add_arg_concat (comm->process, "-i@", from_file, NULL);
+ 
++	if (from_file == NULL)
++		for (scan = file_list; scan; scan = scan->next)
++			/* Files prefixed with '@' need to be handled specially */
++			if (g_str_has_prefix (scan->data, "@"))
++				fr_process_add_arg_concat (comm->process, "-i!", scan->data, NULL);
++
+ 	fr_process_add_arg (comm->process, "--");
+ 	fr_process_add_arg (comm->process, comm->filename);
++
+ 	if (from_file == NULL)
+ 		for (scan = file_list; scan; scan = scan->next)
+-			fr_process_add_arg (comm->process, scan->data);
++			/* Skip files prefixed with '@', already added */
++			if (!g_str_has_prefix (scan->data, "@"))
++				fr_process_add_arg (comm->process, scan->data);
+ 
+ 	fr_process_end_command (comm->process);
+ }
+@@ -399,11 +412,20 @@
+ 	if (from_file != NULL)
+ 		fr_process_add_arg_concat (comm->process, "-i@", from_file, NULL);
+ 
++	if (from_file == NULL)
++		for (scan = file_list; scan; scan = scan->next)
++			/* Files prefixed with '@' need to be handled specially */
++			if (g_str_has_prefix (scan->data, "@"))
++				fr_process_add_arg_concat (comm->process, "-i!", scan->data, NULL);
++
+ 	fr_process_add_arg (comm->process, "--");
+ 	fr_process_add_arg (comm->process, comm->filename);
++
+ 	if (from_file == NULL)
+ 		for (scan = file_list; scan; scan = scan->next)
+-			fr_process_add_arg (comm->process, scan->data);
++			/* Skip files prefixed with '@', already added */
++			if (!g_str_has_prefix (scan->data, "@"))
++				fr_process_add_arg (comm->process, scan->data);
+ 
+ 	fr_process_end_command (comm->process);
+ }
+@@ -453,11 +475,22 @@
+ 	if (from_file != NULL)
+ 		fr_process_add_arg_concat (comm->process, "-i@", from_file, NULL);
+ 
++	if (from_file == NULL)
++		for (scan = file_list; scan; scan = scan->next)
++			/* Files prefixed with '@' need to be handled specially */
++			if (g_str_has_prefix (scan->data, "@"))
++				fr_process_add_arg_concat (comm->process, "-i!", scan->data, NULL);
++
+ 	fr_process_add_arg (comm->process, "--");
+ 	fr_process_add_arg (comm->process, comm->filename);
++
+ 	if (from_file == NULL)
+ 		for (scan = file_list; scan; scan = scan->next)
+-			fr_process_add_arg (comm->process, scan->data);
++			/* Skip files prefixed with '@', already added */
++			if (!g_str_has_prefix (scan->data, "@"))
++				fr_process_add_arg (comm->process, scan->data);
++
++	if (unexpected_end_of_archive) fr_process_set_ignore_error (comm->process, TRUE);
+ 
+ 	fr_process_end_command (comm->process);
+ }
+@@ -507,7 +540,7 @@
+ 		return;
+ 	}
+ 
+-	if (error->status <= 1) {
++	if ((error->status <= 1) || (unexpected_end_of_archive)) {
+ 		error->type = FR_PROC_ERROR_NONE;
+ 	}
+ 	else {
+@@ -572,7 +605,8 @@
+ 		if (is_mime_type (mime_type, "application/x-rar")
+ 		    || is_mime_type (mime_type, "application/x-cbr"))
+ 		{
+-			if (! check_command || g_file_test ("/usr/lib/p7zip/Codecs/Rar29.so", G_FILE_TEST_EXISTS))
++			if (! check_command || g_file_test ("/usr/lib/p7zip/Codecs/Rar29.so", G_FILE_TEST_EXISTS) || g_file_test ("/usr/lib/p7zip/Codecs/Rar.so", G_FILE_TEST_EXISTS)
++			    || g_file_test ("/usr/libexec/p7zip/Codecs/Rar29.so", G_FILE_TEST_EXISTS) || g_file_test ("/usr/libexec/p7zip/Codecs/Rar.so", G_FILE_TEST_EXISTS))
+ 				capabilities |= FR_COMMAND_CAN_READ;
+ 		}
+ 		else
+diff -aur a/src/fr-init.c b/src/fr-init.c
+--- a/src/fr-init.c	2016-04-07 04:37:58.000000000 -0700
++++ b/src/fr-init.c	2016-09-20 17:27:10.182630316 -0700
+@@ -342,6 +342,7 @@
+ 
+ 	register_command (FR_TYPE_COMMAND_TAR);
+ 	register_command (FR_TYPE_COMMAND_CFILE);
++	register_command (FR_TYPE_COMMAND_RAR);
+ 	register_command (FR_TYPE_COMMAND_7Z);
+ 	register_command (FR_TYPE_COMMAND_DPKG);
+ 
+@@ -353,7 +354,6 @@
+ 	register_command (FR_TYPE_COMMAND_ISO);
+ 	register_command (FR_TYPE_COMMAND_JAR);
+ 	register_command (FR_TYPE_COMMAND_LHA);
+-	register_command (FR_TYPE_COMMAND_RAR);
+ 	register_command (FR_TYPE_COMMAND_RPM);
+ 	register_command (FR_TYPE_COMMAND_UNSTUFF);
+ 	register_command (FR_TYPE_COMMAND_ZIP);
