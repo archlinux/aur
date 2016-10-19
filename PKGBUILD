@@ -9,20 +9,20 @@
 # Contributor: zoopp
 # Contributor: kolasa (part of 4.3 kernel patches)
 # Contributor: gentoo (part of 4.3 kernel patches)
-# Contributor: 	Philip Muller @ Manjaro (4.4 kernel patch)
+# Contributor: Philip Muller @ Manjaro (4.4 kernel patch)
 
 
 _kernver=`uname -r`
 
 pkgname=catalyst
 pkgver=15.9
-pkgrel=12
+pkgrel=13
 _amdver=15.201.1151
 pkgdesc="AMD/ATI Catalyst drivers for linux. fglrx kernel module only. Radeons HD 2 3 4 xxx ARE NOT SUPPORTED"
 arch=('i686' 'x86_64')
 url="http://www.amd.com"
 license=('custom')
-depends=('linux>=3.0' 'linux<4.8' 'catalyst-utils')
+depends=('linux>=3.0' 'linux<4.9' 'catalyst-utils')
 makedepends=('gcc-libs' 'gcc>4.0.0' 'make' 'linux-headers')
 conflicts=('catalyst-test')
 install=catalyst.install
