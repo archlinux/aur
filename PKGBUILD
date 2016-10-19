@@ -2,21 +2,18 @@
 
 _plug=cnr2
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=v1.0.gefbc438
+pkgver=v1.2.g1f2c901
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('i686' 'x86_64')
-url="http://forum.doom9.org/showthread.php?t=173659"
+url='http://forum.doom9.org/showthread.php?t=173659'
 license=('GPL')
-depends=('vapoursynth'
-         )
-makedepends=('git'
-             )
+depends=('vapoursynth')
+makedepends=('git')
 provides=("vapoursynth-plugin-${_plug}")
 conflicts=("vapoursynth-plugin-${_plug}")
 source=("${_plug}::git+https://github.com/dubhater/vapoursynth-${_plug}.git")
-sha1sums=('SKIP')
-options=('!makeflags')
+sha256sums=('SKIP')
 
 pkgver() {
   cd "${_plug}"
