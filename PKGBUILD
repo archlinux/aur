@@ -2,13 +2,13 @@
 
 pkgname=rtv
 pkgver=1.13.0
-pkgrel=0
+pkgrel=1
 pkgdesc="Browse Reddit from your terminal"
 arch=('any')
 url="https://github.com/michael-lazar/rtv"
 license=('MIT')
 conflicts=('rtv-git')
-makedepends=('git' 'python-setuptools')
+makedepends=('python-setuptools')
 depends=('python-beautifulsoup4' 'python-decorator' 'python3-kitchen' 'ncurses' 'python' 'python-six' 'python-requests' 'python-praw' 'mailcap-fix')
 source=(https://github.com/michael-lazar/rtv/archive/v$pkgver.tar.gz)
 md5sums=('ef3507ede32a324be0de4338d5a89c27')
