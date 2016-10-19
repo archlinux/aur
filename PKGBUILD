@@ -8,7 +8,7 @@ pkgdesc="Perl code benchmarking tool"
 arch=('any')
 url="http://search.cpan.org/dist/Benchmark-Timer"
 license=('GPL' 'PerlArtistic')
-depends=('perl>=5.10.0 perl-uri')
+depends=('perl>=5.10.0' 'perl-uri')
 options=('!emptydirs')
 source=("http://search.cpan.org/CPAN/authors/id/D/DC/DCOPPIT/Benchmark-Timer-$pkgver.tar.gz")
 sha256sums=('64f70fabc896236520bfbf43c2683fdcb0f2c637d77333aed0fd926b92226b60')
