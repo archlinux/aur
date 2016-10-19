@@ -2,7 +2,7 @@
 
 _plug=plum
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=r6.cc0ff14
+pkgver=r9.9602bec
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('i686' 'x86_64')
@@ -20,9 +20,9 @@ makedepends=('git')
 provides=("vapoursynth-plugin-${_plug}")
 conflicts=("vapoursynth-plugin-${_plug}")
 source=("${_plug}::git+https://github.com/IFeelBloated/Plum.git")
-sha1sums=('SKIP')
+sha256sums=('SKIP')
 
-_sites_packages="$(python -c "from distutils.sysconfig import get_python_lib; print(get_python_lib())")"
+_site_packages="$(python -c "from distutils.sysconfig import get_python_lib; print(get_python_lib())")"
 
 pkgver() {
   cd "${_plug}"
@@ -32,5 +32,7 @@ pkgver() {
 
 package(){
   cd "${_plug}"
-  install -Dm644 Plum.py "${pkgdir}${_sites_packages}/Plum.py"
+  install -Dm644 Plum.py "${pkgdir}${_site_packages}/Plum.py"
+  python -m compileall -q -f -d "${_sites_packages}" "${pkgdir}${_site_packages}/Plum.py"
+  python -OO -m compileall -q -f -d "${_sites_packages}" "${pkgdir}${_site_packages}/Plum.py"
 }
