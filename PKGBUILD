@@ -33,9 +33,12 @@ depends=('vapoursynth-plugin-adjust-git'
          )
 makedepends=('git')
 source=("${_plug}-${pkgver}.tar.gz::https://github.com/HomeOfVapourSynthEvolution/havsfunc/archive/${pkgver}.tar.gz")
-sha1sums=('37367ad47f495056197ec77db80399115bc644a4')
-_sites_packages="$(python -c "from distutils.sysconfig import get_python_lib; print(get_python_lib())")"
+sha256sums=('9ef4f5b6b783644d2c2934ea9752b74512021bf851e1c073b3126cc64d22d938')
+
+_site_packages="$(python -c "from distutils.sysconfig import get_python_lib; print(get_python_lib())")"
 
 package() {
-  install -Dm644 "${_plug}-${pkgver}/${_plug}.py" "${pkgdir}${_sites_packages}/${_plug}.py"
+  install -Dm644 "${_plug}-${pkgver}/${_plug}.py" "${pkgdir}${_site_packages}/${_plug}.py"
+  python -m compileall -q -f -d "${_sites_packages}" "${pkgdir}${_site_packages}/${_plug}.py"
+  python -OO -m compileall -q -f -d "${_sites_packages}" "${pkgdir}${_site_packages}/${_plug}.py"
 }
