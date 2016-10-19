@@ -39,6 +39,6 @@ _site_packages="$(python -c "from distutils.sysconfig import get_python_lib; pri
 
 package() {
   install -Dm644 "${_plug}-${pkgver}/${_plug}.py" "${pkgdir}${_site_packages}/${_plug}.py"
-  python -m compileall -q -f -d "${_sites_packages}" "${pkgdir}${_site_packages}/${_plug}.py"
-  python -OO -m compileall -q -f -d "${_sites_packages}" "${pkgdir}${_site_packages}/${_plug}.py"
+  python -m compileall -q -f -d "${_site_packages}" "${pkgdir}${_site_packages}/${_plug}.py"
+  python -OO -m compileall -q -f -d "${_site_packages}" "${pkgdir}${_site_packages}/${_plug}.py"
 }
