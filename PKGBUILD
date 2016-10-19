@@ -1,30 +1,35 @@
 # Contributor:	Thomas Mudrunka <harvie@@email..cz>
-# Maintainer:	Thomas Mudrunka <harvie@@email..cz>
-# You can also contact me on http://blog.harvie.cz/
+# Maintainer:	quomoow <quomoow@gmail.com>
+
 
 pkgname=gretl
-pkgver=2016a
+pkgver=2016c
 pkgrel=1
-pkgdesc='Gnu Regression, Econometrics and Time-series Library'
-arch=('any')
+pkgdesc='cross-platform software package for econometric analysis, written in the C'
+arch=('i686' 'x86_64')
 url="http://gretl.sourceforge.net/"
 license=('GPL')
-#depends=('java-runtime' 'desktop-file-utils')
-#makedepends=('imagemagick')
-source=(
-	"http://prdownloads.sourceforge.net/$pkgname/$pkgname-$pkgver.tar.xz"
-)
-
-md5sums=('3ca371d114f8aca8bda9ff313e790c5d')
+depends=('gtksourceview3' 'curl' 'lapack' 'mpfr' 'fftw')
+optdepends=('MPFR: additional multiple-precision functionality' 
+	'readline: provides a nice editable command line in gretlcli' 
+	'JSON-GLib: provides for parsing of data from various websites')
+source=("http://downloads.sourceforge.net/project/$pkgname/$pkgname/$pkgver/$pkgname-$pkgver.tar.xz")
+md5sums=('61a76e8006989d91657c1ae68453a69a')
 
 build() {
-	cd ${srcdir}/$pkgname-$pkgver
-
-	./configure --prefix=/usr --disable-xdg-utils
-	make
+        cd "$srcdir/$pkgname-$pkgver"
+        ./configure --prefix=/usr
+        make
 }
 
 package() {
-	cd ${srcdir}/$pkgname-$pkgver
-	make install DESTDIR="${pkgdir}"
+        cd "$srcdir/$pkgname-$pkgver"
+        make DESTDIR="$pkgdir/" install
 }
+
+install() {
+        cd "$srcdir/$pkgname-$pkgver"
+        ./install --prefix=/usr
+}
+
+
