@@ -1,11 +1,12 @@
 pkgbase = peerio-client
 	pkgdesc = Peerio Client
 	pkgver = 1.6.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.peerio.com
 	arch = i686
 	arch = x86_64
 	license = GPL3
+	makedepends = coreutils
 	makedepends = curl
 	makedepends = fakeroot
 	makedepends = git
