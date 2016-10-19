@@ -16,10 +16,10 @@ source=("${_plug}::git+https://bitbucket.org/mystery_keeper/vapoursynth-dctfilte
         'https://raw.githubusercontent.com/VFR-maniac/VapourSynth-DCTFilter/master/GNUmakefile'
         'https://raw.githubusercontent.com/VFR-maniac/VapourSynth-DCTFilter/master/configure'
         )
-sha1sums=('SKIP'
-          '4637a944ec0e010e023aa2dfa68b23bb0f00bb58'
-          '06bffb9bf75132918a0d31f5f52d8667ac021886'
-          )
+sha256sums=('SKIP'
+            'c9c776a8d00a0dcad9e1f64042d6299dfae1b6443bc874edbe8d571237112674'
+            '7ba97ed443bb9d28588a023bc54cf597f46fdf723f79f9a6483075ef0dab6882'
+            )
 
 pkgver() {
   cd "${_plug}"
