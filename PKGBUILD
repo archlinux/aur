@@ -6,14 +6,14 @@ pkgver=r3.6.g5c246c0
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('i686' 'x86_64')
-url="http://forum.doom9.org/showthread.php?t=171306"
+url='http://forum.doom9.org/showthread.php?t=171306'
 license=('GPL')
 depends=('vapoursynth')
 makedepends=('git')
 provides=("vapoursynth-plugin-${_plug}")
 conflicts=("vapoursynth-plugin-${_plug}")
 source=("${_plug}::git+https://github.com/HomeOfVapourSynthEvolution/VapourSynth-Bilateral.git")
-sha1sums=('SKIP')
+sha256sums=('SKIP')
 
 pkgver() {
   cd "${_plug}"
@@ -22,9 +22,10 @@ pkgver() {
 
 build() {
   cd "${_plug}"
-  ./configure --install="${pkgdir}/usr/lib/vapoursynth" \
-              --extra-cxxflags="${CXXFLAGS} ${CPPFLAGS}" \
-              --extra-ldflags="${LDFLAGS}"
+  ./configure \
+    --install="${pkgdir}/usr/lib/vapoursynth" \
+    --extra-cxxflags="${CXXFLAGS} ${CPPFLAGS}" \
+    --extra-ldflags="${LDFLAGS}"
   make
 }
 
