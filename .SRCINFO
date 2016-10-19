@@ -1,6 +1,6 @@
 pkgbase = okcashd-git
 	pkgdesc = Okcash daemon, git version
-	pkgver = r162.ef3b1a3
+	pkgver = r168.82651d0
 	pkgrel = 1
 	url = http://okcash.co
 	arch = i686

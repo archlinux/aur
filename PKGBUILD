@@ -1,7 +1,7 @@
 # Maintainer: Jonathan <greenbigfrog@gmail.com>
 _pkgname=okcash
 pkgname=okcashd-git
-pkgver=r162.ef3b1a3
+pkgver=r168.82651d0
 pkgrel=1
 pkgdesc="Okcash daemon, git version"
 arch=('i686' 'x86_64')
