@@ -45,6 +45,6 @@ package(){
   cd "${_plug}"
   make DESTDIR="${pkgdir}" install
   install -Dm644 src/mvmulti.py "${pkgdir}${_sites_packages}/mvmulti.py"
-  python -m compileall -q -f -d "${_sites_packages}" "${pkgdir}${_site_packages}/mvmulti.py"
-  python -OO -m compileall -q -f -d "${_sites_packages}" "${pkgdir}${_site_packages}/mvmulti.py"
+  python -m compileall -q -f -d "${_site_packages}" "${pkgdir}${_site_packages}/mvmulti.py"
+  python -OO -m compileall -q -f -d "${_site_packages}" "${pkgdir}${_site_packages}/mvmulti.py"
 }
