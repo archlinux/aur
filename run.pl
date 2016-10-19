@@ -26,6 +26,8 @@
  */
 
 :- use_module(server).
+:- use_module(lib/r_swish).
+:- use_module(library(r/r_sandbox)).
 
 % Using `localhost:3050`, we only bind to localhost interface!
 % Use plain `3050` (or any port number you like) to make the server

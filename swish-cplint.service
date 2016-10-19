@@ -25,6 +25,8 @@
 [Unit]
 Description=Cplint on SWISH
 Documentation=http://github.com/friguzzi/cplint https://github.com/friguzzi/swish
+Requires=rserve-sandbox-docker.service
+After=rserve-sandbox-docker.service
 
 [Service]
 # Run ExecStartPre with root permissions.
@@ -38,5 +40,6 @@ User=swish
 Group=swish
 
 [Install]
+Also=rserve-sandbox-docker.service
 WantedBy=default.target
 
