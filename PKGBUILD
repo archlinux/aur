@@ -3,11 +3,11 @@
 pkgname=eme
 pkgver=0.10.0
 pkgrel=1
-pkgdesc="Elegant Markdown Editor"
+pkgdesc="Elegant Markdown Editor."
 arch=('i686' 'x86_64')
 depends=('electron')
 makedepends=('npm')
-url="https://github.com/FredrikNoren/ungit"
+url="https://eme.moe/"
 license=('MIT')
 source=("https://github.com/egoist/eme/archive/v${pkgver}.tar.gz"
         "eme"
