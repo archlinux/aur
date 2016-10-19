@@ -1,11 +1,11 @@
 # Maintainer : Jimmy Stelzer <jimmy.stelzer@gmail.com>
 
 _npmname=ionic
-_npmver=2.0.0-beta.25
+_npmver=2.1.1
 pkgname=nodejs-ionic-beta
-pkgver=2.0.0.25
+pkgver=2.1.1
 pkgrel=1
-pkgdesc="A tool for creating and building Ionic 2 Framework mobile apps. (beta)"
+pkgdesc="A tool for creating and building Ionic 2 Framework mobile apps."
 arch=(any)
 url="http://ionicframework.com/"
 license=('MIT')
@@ -14,7 +14,7 @@ conflicts=('nodejs-ionic')
 optdepends=()
 source=(http://registry.npmjs.org/$_npmname/-/$_npmname-$_npmver.tgz)
 noextract=($_npmname-$_npmver.tgz)
-sha1sums=('0184b9f610b8c52e72bfa287eebcdde08a1443be')
+sha1sums=('7345b56915da2100a0efcd5257a4626848c4da80')
 
 package() {
   cd "$srcdir"
