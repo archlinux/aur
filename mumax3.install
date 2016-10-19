@@ -1,0 +1,8 @@
+post_install() {
+	systemd-sysusers mumax3.conf
+	systemd-tmpfiles --create mumax3.conf
+}
+
+post_upgrade() {
+	post_install
+}
