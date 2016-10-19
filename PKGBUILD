@@ -1,8 +1,8 @@
 # Maintainer: Conor Anderson <conor.anderson@mail.utoronto.ca>
 pkgname=wire-desktop
 _pkgname=wire
-pkgver=2.11.2662
-pkgrel=2
+pkgver=2.11.2663
+pkgrel=1
 pkgdesc='Modern, private messenger. Based on Electron.'
 arch=('x86_64' 'i686')
 url='https://wire.com/'
@@ -13,7 +13,7 @@ makedepends=('npm' 'nodejs-grunt-cli' 'gendesk' 'python2' 'patch')
 provides=('wire-desktop')
 source=("https://github.com/wireapp/wire-desktop/archive/release/"$pkgver".tar.gz"
         "Gruntfile.patch")        
-sha256sums=('39cde051451300085153f74fc6a660355dc6e896da7602768bb86843c80df0d0'
+sha256sums=('d29114f34f7b110702cc8638c2babf59d4f09ca80a892a77d26ac96a9b1fa43f'
             'fc8a2d5badde0b3049df843f497a999a8cfeff05a261343d9094d3ba35ca4202')
 
 prepare() {
