@@ -1,0 +1,14 @@
+pkgbase = ttf-umeplus-cl
+	pkgdesc = UmePlus CL fonts are modified Ume CL and M+ fonts for Japanese.
+	pkgver = 20160402
+	pkgrel = 1
+	url = http://www.geocities.jp/ep3797/modified_fonts_01.html
+	install = fonts.install
+	arch = any
+	license = custom
+	depends = fontconfig
+	source = http://iij.dl.osdn.jp/users/10/10367/umeplus-cl-fonts-20160402.tar.xz
+	sha256sums = 1c0a2cd01dca6c06da202afb9a56b3c367e8a5639724d17f4e4e611d20741a2b
+
+pkgname = ttf-umeplus-cl
+
