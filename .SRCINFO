@@ -1,0 +1,15 @@
+pkgbase = resty-git
+	pkgdesc = Little command line REST client that you can use in pipelines
+	pkgver = r203.82d9cbd
+	pkgrel = 1
+	url = https://github.com/micha/resty
+	arch = any
+	license = MIT
+	makedepends = git
+	provides = resty-git
+	conflicts = resty-git
+	source = git+https://github.com/micha/resty
+	md5sums = SKIP
+
+pkgname = resty-git
+
