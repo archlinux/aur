@@ -8,7 +8,7 @@ pkgname=pstate-frequency-git
 # shellcheck disable=SC2034
 pkgdesc="Easily control Intel p-state driver (git version)"
 # shellcheck disable=SC2034
-pkgver="3.5.0".r748.66dc43a
+pkgver="3.6.0".r761.475e9f8
 # shellcheck disable=SC2034
 pkgrel=1
 # shellcheck disable=SC2034
@@ -16,7 +16,7 @@ arch=('i686' 'x86_64')
 # shellcheck disable=SC2034
 makedepends=('git')
 # shellcheck disable=SC2034
-depends=('coreutils' 'grep')
+depends=()
 # shellcheck disable=SC2034
 optdepends=('x86_energy_perf_policy: For the x86_energy_perf_policy-sleep.service')
 # shellcheck disable=SC2034
@@ -33,12 +33,11 @@ url="https://github.com/pyamsoft/pstate-frequency.git"
 ##
 # shellcheck disable=SC2034
 source=(
-        "${_gitname}::git+${url}#branch=dev"
+        "${_gitname}::git+${url}"
         "00-fix-prefix.patch")
 # shellcheck disable=SC2034
-sha256sums=(
-        'SKIP'
-        'e5423df20c03ef19448a78a1ae39e630d90f63c6c4e0962296ad292665575f0d')
+sha256sums=('SKIP'
+            'e5423df20c03ef19448a78a1ae39e630d90f63c6c4e0962296ad292665575f0d')
 
 pkgver() {
   # shellcheck disable=SC2154
