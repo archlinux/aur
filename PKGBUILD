@@ -2,14 +2,14 @@
 # Contributor: Phillip Schichtel <phillip.public@schich.tel>
 
 pkgname=adapta-gtk-theme-git
-pkgver=3.21.4.205
+pkgver=3.22.1.121.r4.dbe1310
 pkgrel=1
 pkgdesc='An adaptive Gtk+ theme based on Material Design Guidelines'
 arch=('any')
 url='https://github.com/tista500/Adapta'
 license=('GPL2')
 depends=('gtk-engine-murrine' 'gtk3')
-makedepends=('git' 'inkscape' 'libxml2' 'ruby-bundler' 'ruby-sass')
+makedepends=('git' 'inkscape' 'libxml2' 'parallel' 'ruby-bundler')
 optdepends=('gnome-shell: The GNOME Shell'
             'gnome-flashback: The GNOME flashback shell'
             'budgie-desktop: The Budgie desktop'
@@ -29,8 +29,12 @@ pkgver() {
 build() {
   cd adapta-gtk-theme
 
+  bundle install --path .
+  export PATH="$(find $PWD/ruby -maxdepth 2 -type d -name bin):$PATH"
+
   ./autogen.sh \
     --prefix='/usr' \
+    --enable-parallel \
     --enable-chrome \
     --enable-plank \
     --disable-unity
