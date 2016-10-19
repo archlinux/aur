@@ -11,7 +11,7 @@ pkgbase = catalyst-firepro-compute
 	license = custom
 	depends = dkms
 	depends = linux>=3.0
-	depends = linux<4.8
+	depends = linux<4.9
 	depends = linux-headers
 	depends = xorg-server>=1.7.0
 	depends = xorg-server<1.18.0
