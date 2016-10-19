@@ -4,7 +4,7 @@ pkgname=dolphin-emu-faster-melee
 # shellcheck disable=SC2034
 pkgver=4.3
 # shellcheck disable=SC2034
-pkgrel=1
+pkgrel=2
 # shellcheck disable=SC2034
 pkgdesc='The FasterMelee build of the Dolphin Emulator'
 # shellcheck disable=SC2034
@@ -30,11 +30,13 @@ options=('!emptydirs')
 # shellcheck disable=SC2034
 source=("${pkgname}::git+https://github.com/Tinob/Ishiiruka.git#commit=0b00f1f6267190a8bf9a3584497a35d8762eb0a9"
         "GALE01.ini"
+        "GALE01r2.ini"
        )
 
 # shellcheck disable=SC2034
 sha256sums=('SKIP'
-            '62abf45f5064fac79aeead6340120be5beb8ad7a64f25fd85c07b45e3756df3f')
+            '62abf45f5064fac79aeead6340120be5beb8ad7a64f25fd85c07b45e3756df3f'
+            'a2ab0e1b737ff8af5a0ccacc40147d331ba0abe5e19aac019add68e732289605')
 
 build() {
   cd "${srcdir}/${pkgname}" || {
@@ -71,6 +73,9 @@ package() {
   make DESTDIR="${pkgdir}" install
 
   install -Dm 644 ../Data/51-usb-device.rules -t "${pkgdir}"/usr/lib/udev/rules.d/
+
+  # Patch Gecko Codes
+  cp -f "${srcdir}/GALE01r2.ini" "${pkgdir}"/usr/share/dolphin-emu/sys/GameSettings/GALE01r2.ini
 
   msg "Make sure you install the GALE01.ini config file into:"
   msg "${HOME}/.local/share/dolphin-emu/GameSettings/GALE01.ini"

@@ -1,7 +1,7 @@
 pkgbase = dolphin-emu-faster-melee
 	pkgdesc = The FasterMelee build of the Dolphin Emulator
 	pkgver = 4.3
-	pkgrel = 1
+	pkgrel = 2
 	url = http://fastermelee.net
 	arch = x86_64
 	license = GPL
@@ -22,8 +22,10 @@ pkgbase = dolphin-emu-faster-melee
 	options = !emptydirs
 	source = dolphin-emu-faster-melee::git+https://github.com/Tinob/Ishiiruka.git#commit=0b00f1f6267190a8bf9a3584497a35d8762eb0a9
 	source = GALE01.ini
+	source = GALE01r2.ini
 	sha256sums = SKIP
 	sha256sums = 62abf45f5064fac79aeead6340120be5beb8ad7a64f25fd85c07b45e3756df3f
+	sha256sums = a2ab0e1b737ff8af5a0ccacc40147d331ba0abe5e19aac019add68e732289605
 
 pkgname = dolphin-emu-faster-melee
 
