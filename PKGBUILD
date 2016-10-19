@@ -1,6 +1,6 @@
 # Maintainer: Jonne Haß <me@jhass.eu>
 pkgname=hub-git
-pkgver=v2.2.0.preview1.r496.g7a917ba
+pkgver=v2.2.0.preview1.r547.g1150e67
 pkgrel=1
 pkgdesc="cli interface for Github"
 url="https://hub.github.com"
