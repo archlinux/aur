@@ -6,7 +6,7 @@ _name=compiz
 pkgname=compiz-manjaro
 _series=0.9.13
 pkgver=${_series}.0
-pkgrel=3
+pkgrel=5
 _greybirdver=1.6.2
 pkgdesc="OpenGL compositing window manager. Includes friendly defaults, GWD theme selector and autostart for Xfce & MATE."
 arch=('i686' 'x86_64')
@@ -26,6 +26,7 @@ source=("${url}/${_series}/${pkgver}/+download/${_name}-${pkgver}.tar.bz2"
         "focus-prevention-disable.patch"
         "gtk-extents.patch"
         "trailfocus-fix.patch"
+        "metacity322-branch-rollup.patch"
         "${pkgname}-defaults.patch"
         "${pkgname}.gschema.override"
         "compiz-gtk-decorator-theme-selector"
@@ -39,9 +40,10 @@ sha256sums=('f08eb54d578be559e3e723f3fe4291a56f5c96b2fdfb9c9e74ebb6596a1ca702'
             'f4897590b0f677ba34767a29822f8f922a750daf66e8adf47be89f7c2550cf4b'
             '16ddb6311ce42d958505e21ca28faae5deeddce02cb558d55e648380274ba4d9'
             '01e94ac52cd39eb5462a8505c7df61c7b14b05159de64f8700dfadb524bdb2ce'
+            '4deb954e539853ab5297d0603b1dd7ce72361425d7d88e4e49c9351d91bf0a91'
             'b635bfbefd558cd255d6cb119378b01d9b3815b8f5f6b3a03dfe736c0cd5746b'
             '149213e0b29e34744b6e8e51cdaccc4011fd29c5f9475c59aa7482f3fe4a68af'
-            'aca18e14854a466262f876bf7463d786c88453820abc89027608d732bb79a542'
+            '28d14e5ec0694b4a451540f35210eac5699e9daf1b00020bf59d8b0296d7d9bf'
             '0faaf9e9df28d2857108ccd0910d50ba631c34c2b1659b8860da8c2b552fc889'
             '3e46a0b50a16d9fd6fd4f9d28f6082fc76f39dff8a82a79af312126a6bcf7cc2'
             'd23b8633186bb3a2a841734ad0b917500f3536a67046f5d8fbb08818eab59160'
@@ -71,6 +73,9 @@ prepare() {
 
   # Fix ambiguous function call in trailfocus plugin
   patch -p1 -i "${srcdir}/trailfocus-fix.patch"
+  
+  # Metacity 3.22 support
+  patch -p1 -i "${srcdir}/metacity322-branch-rollup.patch"
   
   # Manjaro defaults
   patch -p1 -i "${srcdir}/${pkgname}-defaults.patch"

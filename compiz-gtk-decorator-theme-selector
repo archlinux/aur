@@ -10,10 +10,10 @@ fi
 main_window() {
   selection=$(
     zenity --height 450 --width 320 --list --ok-label="Apply" --cancel-label="Close" --title="Metacity themes" \
-    --column="Current theme: $( if [ $(gsettings get org.gnome.metacity theme) == "''" ]; then
+    --column="Current theme: $( if [ $(gsettings get org.gnome.desktop.wm.preferences theme) == "''" ]; then
         echo Default
       else
-        gsettings get org.gnome.metacity theme
+        gsettings get org.gnome.desktop.wm.preferences theme
       fi)" \
     "Compiz GWD default" \
     $(
