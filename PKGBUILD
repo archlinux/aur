@@ -54,7 +54,7 @@ _disabled_modules=(languages/mod_spidermonkey
 
 pkgname='freeswitch'
 pkgver='1.6.10'
-pkgrel=1
+pkgrel=2
 pkgdesc="An opensource and free (libre, price) telephony system, similar to Asterisk."
 arch=('i686' 'x86_64')
 url="http://freeswitch.org/"
@@ -226,8 +226,8 @@ package() {
   cp -a "${srcdir}/${_pkgname}/docs" usr/share/doc/freeswitch
   install -D -m 0755 -d usr/share/doc/freeswitch/support-d
   cp -a "${srcdir}/${_pkgname}/support-d" usr/share/doc/freeswitch/
-  install -D -m 0755 -d usr/share/doc/freeswitch/scripts
-  cp -a "${srcdir}/${_pkgname}/scripts" usr/share/doc/freeswitch/
+  install -D -m 0755 -d usr/share/freeswitch/scripts
+  cp -a "${srcdir}/${_pkgname}/scripts" usr/share/freeswitch/.
   # Copy upstream confs 
   install -D -m 0755 -d usr/share/doc/freeswitch/examples/conf.default
   install -D -m 0755 -d usr/share/doc/freeswitch/examples/conf.archlinux
@@ -253,4 +253,5 @@ package() {
   install -D -m 0755 "${srcdir}/run.freeswitch" usr/share/freeswitch/run
   install -D -m 0755 "${srcdir}/run_log.freeswitch" usr/share/freeswitch/log/run
   install -D -m 0644 "${srcdir}/conf_log.freeswitch" usr/share/freeswitch/log/conf
+
 } 
