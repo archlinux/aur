@@ -4,7 +4,7 @@
 
 pkgname=flashplugin-beta
 _licensefile='PlatformClients_PC_WWEULA-MULTI-20110809_1357.pdf'
-pkgver=23.0.0.195
+pkgver=23.0.0.198
 pkgrel=1
 pkgdesc='Adobe Flash Player Beta'
 url='http://labs.adobe.com/downloads/flashplayer.html'
@@ -23,8 +23,8 @@ source_i686=("libflashplayer_${pkgver}_i686.so"::https://fpdownload.macromedia.c
 source_x86_64=("libflashplayer_${pkgver}_x86_64.so"::https://fpdownload.macromedia.com/pub/labs/flashruntimes/flashplayer/linux64/libflashplayer.so)
 md5sums=('620a140c7e85af655f39f1b583fbf932'
          'f34aae6279b40e0bd2abfb0d9963d7b8')
-md5sums_i686=('60a13923a00d2a89255cf100b3eb5cb8')
-md5sums_x86_64=('db459ee7ae48301ec78fd4032cd2d6b1')
+md5sums_i686=('81d6f31533d5bb32c81a684a663394c9')
+md5sums_x86_64=('f0aff983eed8cc7336b8663448f4f725')
 
 package () {
     install -Dm755 "libflashplayer_${pkgver}_${CARCH}.so" "$pkgdir/usr/lib/mozilla/plugins/libflashplayer.so"
