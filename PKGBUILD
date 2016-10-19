@@ -23,7 +23,9 @@ options=(!strip)
 source=("${pkgname}.tar.xz::http://wllbg.org/latest-v2-package")
 sha256sums=('f3acfde5a945bcd0a65f2549fc2f577bc6fc633ba901df27e7dc88c07feb2406')
 backup=("etc/webapps/${pkgname}/parameters.yml"
-        "usr/share/webapps/${pkgname}/parameters.yml")
+        "usr/share/webapps/${pkgname}/parameters.yml"
+        "var/lib/${pkgname}/data/db/wallabag.sqlite"
+        "usr/share/webapps/${pkgname}/data/db/wallabag.sqlite")
 
 package() {
     cd "${pkgdir}"
@@ -37,5 +39,11 @@ package() {
     chown -R http:http ${pkgdir}/etc/webapps/${pkgname}
     ln -s /etc/webapps/${pkgname}/parameters.yml "${WALLABAG_CONF_DIR}"/
 
-    chown -R http:http "${pkgdir}/usr/share/webapps/wallabag"
+    _VAR_DIR="${pkgdir}/var/lib/${pkgname}/"
+    install -d "$_VAR_DIR"
+    mv "${pkgdir}/usr/share/webapps/${pkgname}/"{data,var} "$_VAR_DIR"
+    ln -s "/var/lib/${pkgname}/"{data,var} "${pkgdir}/usr/share/webapps/${pkgname}/"
+    chown -R http:http "$_VAR_DIR"
+
+    chown -R http:http "${pkgdir}/usr/share/webapps/${pkgname}"
 }

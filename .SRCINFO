@@ -16,6 +16,8 @@ pkgbase = wallabag
 	options = !strip
 	backup = etc/webapps/wallabag/parameters.yml
 	backup = usr/share/webapps/wallabag/parameters.yml
+	backup = var/lib/wallabag/data/db/wallabag.sqlite
+	backup = usr/share/webapps/wallabag/data/db/wallabag.sqlite
 	source = wallabag.tar.xz::http://wllbg.org/latest-v2-package
 	sha256sums = f3acfde5a945bcd0a65f2549fc2f577bc6fc633ba901df27e7dc88c07feb2406
 

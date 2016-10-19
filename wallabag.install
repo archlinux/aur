@@ -1,10 +1,10 @@
 
 post_install() {
-	echo ""
-	echo "==> Installed in : /usr/share/webapps/wallabag"
-	echo ""
-	echo "==> Config is at /etc/webapps/wallabag/config/parameters.yml"
-	echo ""
+    echo ""
+    echo "==> Installed in : /usr/share/webapps/wallabag"
+    echo ""
+    echo "==> Config is at /etc/webapps/wallabag/config/parameters.yml"
+    echo ""
     echo -n "Change the configuration to fit to your current setup, and then "
     echo "init wallabag by launching:"
     echo "php /usr/share/webapps/wallabag/bin/console wallabag:install --env=prod"
@@ -15,15 +15,24 @@ post_install() {
 
 
 pre_upgrade() {
-	# save old untracked config and make it tracked
-	if [[ -f /usr/share/webapps/wallabag/app/config/parameters.yml && \
+    # save old untracked config and make it tracked
+    if [[ -f /usr/share/webapps/wallabag/app/config/parameters.yml && \
           ! -h /usr/share/webapps/wallabag/app/config/parameters.yml ]];
         then install -Dm644 \
             /usr/share/webapps/wallabag/app/config/parameters.yml \
             -t /etc/webapps/wallabag/
-	fi
+    fi
+    # also move `data` and `var` to /var/lib/wallabag/
+    if [[ -d /usr/share/webapps/wallabag/data && \
+          ! -h /usr/share/webapps/wallabag/data && \
+           -d /usr/share/webapps/wallabag/var && \
+          ! -h /usr/share/webapps/wallabag/var ]]; then
+        install -d /var/lib/wallabag/
+        chown http:http /var/lib/wallabag/
+        mv /usr/share/webapps/wallabag/{data,var} /var/lib/wallabag/
+    fi
 }
 
 post_upgrade() {
-	rm -rf /usr/share/webapps/wallabag/var/cache/*
+    rm -rf /var/lib/wallabag/var/cache/*
 }
