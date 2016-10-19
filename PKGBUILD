@@ -2,7 +2,6 @@
 pkgname=security-mailer-git
 pkgver=r6.d7c5429
 pkgrel=1
-epoch=1
 pkgdesc='arch-audit digest sender'
 conflicts=('security-mailer')
 provides=('security-mailer')
