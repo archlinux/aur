@@ -27,6 +27,6 @@ package() {
 
   install -Dm755 ots "$pkgdir/usr/bin/ots"
   install -Dm755 ots-git-gpg-wrapper "$pkgdir/usr/share/$pkgname/ots-git-gpg-wrapper"
-  printf '%s\n' "#!/bin/sh" "/usr/share/$pkgname/ots-git-gpg-wrapper --gpg-program /usr/bin/gpg -- \"\$@\"" > "$pkgdir/usr/bin/ots-git-gpg-wrapper.sh"
+  printf '%s\n' "#!/bin/sh" "/usr/share/$pkgname/ots-git-gpg-wrapper --gpg-program /usr/bin/gpg \`git config gpg.ots-args\` -- \"\$@\"" > "$pkgdir/usr/bin/ots-git-gpg-wrapper.sh"
   chmod 755 "$pkgdir/usr/bin/ots-git-gpg-wrapper.sh"
 }
