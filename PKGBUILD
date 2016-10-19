@@ -1,7 +1,7 @@
 # Maintainer: Dan Printzell <xwildn00bx@gmail.com>
 
 pkgname=("dinu-git")
-pkgver=r46.c54ad0f
+pkgver=r48.c0bb901
 pkgrel=1
 pkgdesc="Launcher, file manager, one-way terminal"
 arch=("i686" "x86_64")
@@ -44,5 +44,5 @@ package() {
 	# binaries
 	mkdir -p $pkgdir/usr/bin
 	install -m755 -t $pkgdir/usr/bin ./bin/dinu
-	install -m755 -t $pkgdir/usr/bin ./complete.sh
+	install -m755 -t $pkgdir/usr/bin ./bin/complete.sh
 }
