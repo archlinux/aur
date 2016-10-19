@@ -1,7 +1,7 @@
 pkgbase = catalyst-total-hd234k
 	pkgdesc = AMD/ATI legacy drivers. catalyst-dkms+ catalyst-utils + lib32-catalyst-utils
 	pkgver = 13.1
-	pkgrel = 37
+	pkgrel = 38
 	url = http://www.amd.com
 	install = catalyst-total-hd234k.install
 	arch = i686
@@ -9,7 +9,7 @@ pkgbase = catalyst-total-hd234k
 	license = custom
 	depends = dkms
 	depends = linux>=3.0
-	depends = linux<4.8
+	depends = linux<4.9
 	depends = linux-headers
 	depends = xorg-server>=1.7.0
 	depends = xorg-server<1.13.0
