@@ -33,8 +33,8 @@ package(){
   install -Dm755 libtemporalsoften2.so "${pkgdir}/usr/lib/vapoursynth/libtemporalsoften2.so"
 
   install -Dm644 temporalsoften2.py "${pkgdir}${_sites_packages}/temporalsoften2.py"
-  python -m compileall -q -f -d "${_sites_packages}" "${pkgdir}${_site_packages}/temporalsoften2.py"
-  python -OO -m compileall -q -f -d "${_sites_packages}" "${pkgdir}${_site_packages}/temporalsoften2.py"
+  python -m compileall -q -f -d "${_site_packages}" "${pkgdir}${_site_packages}/temporalsoften2.py"
+  python -OO -m compileall -q -f -d "${_site_packages}" "${pkgdir}${_site_packages}/temporalsoften2.py"
 
   install -Dm644 readme.txt "${pkgdir}/usr/share/doc/vapoursynth/plugins/${_plug}/README.txt"
   install -Dm644 readme_temporalsoften.txt "${pkgdir}/usr/share/doc/vapoursynth/plugins/${_plug}/README_temporalsoften2.txt"
