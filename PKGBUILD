@@ -2,7 +2,7 @@
 
 pkgname=shortcircuit
 pkgver=0.1.4
-pkgrel=1
+pkgrel=2
 _reltype='beta'
 pkgdesc='A tool for EVE Online that finds the shortest path between solar systems (including wormholes)'
 arch=('any')
@@ -28,6 +28,9 @@ package() {
   install -m 755 ${srcdir}/${pkgname}-start.sh ${pkgdir}/usr/bin/${pkgname}
 }
 
+md5sums=('0eec71bbb89c871b0f692dc4e4738cc1'
+         '284dfed1b0d0996b9b21417b5d9b0019'
+         'b1e948a581bb4738724ded5231f71292')
 md5sums=('0eec71bbb89c871b0f692dc4e4738cc1'
          '284dfed1b0d0996b9b21417b5d9b0019'
          'b1e948a581bb4738724ded5231f71292')

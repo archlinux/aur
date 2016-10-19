@@ -1,7 +1,7 @@
 pkgbase = shortcircuit
 	pkgdesc = A tool for EVE Online that finds the shortest path between solar systems (including wormholes)
 	pkgver = 0.1.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/farshield/shortcircuit
 	arch = any
 	license = MIT
