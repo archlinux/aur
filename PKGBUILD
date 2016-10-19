@@ -33,6 +33,6 @@ pkgver() {
 package(){
   cd "${_plug}"
   install -Dm644 Plum.py "${pkgdir}${_site_packages}/Plum.py"
-  python -m compileall -q -f -d "${_sites_packages}" "${pkgdir}${_site_packages}/Plum.py"
-  python -OO -m compileall -q -f -d "${_sites_packages}" "${pkgdir}${_site_packages}/Plum.py"
+  python -m compileall -q -f -d "${_site_packages}" "${pkgdir}${_site_packages}/Plum.py"
+  python -OO -m compileall -q -f -d "${_site_packages}" "${pkgdir}${_site_packages}/Plum.py"
 }
