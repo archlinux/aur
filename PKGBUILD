@@ -2,7 +2,7 @@
 
 _plug=templinearapproximate
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=r3.3.g540e788
+pkgver=r3.4.g50c4633
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('i686' 'x86_64')
@@ -13,9 +13,9 @@ makedepends=('git')
 provides=("vapoursynth-plugin-${_plug}")
 conflicts=("vapoursynth-plugin-${_plug}")
 source=("${_plug}::git+https://bitbucket.org/mystery_keeper/${_plug}-vapoursynth.git")
-sha1sums=('SKIP')
+sha256sums=('SKIP')
 
-_sites_packages="$(python -c "from distutils.sysconfig import get_python_lib; print(get_python_lib())")"
+_site_packages="$(python -c "from distutils.sysconfig import get_python_lib; print(get_python_lib())")"
 
 pkgver() {
   cd "${_plug}"
@@ -38,7 +38,10 @@ build() {
 package(){
   cd "${_plug}"
   install -Dm755 "lib${_plug}.so" "${pkgdir}/usr/lib/vapoursynth/lib${_plug}.so"
-  install -Dm644 MCDenoise.py "${pkgdir}${_sites_packages}/MCDenoise.py"
+  install -Dm644 MCDenoise.py "${pkgdir}${_site_packages}/MCDenoise.py"
+  python -m compileall -q -f -d "${_site_packages}" "${pkgdir}${_site_packages}/MCDenoise.py"
+  python -OO -m compileall -q -f -d "${_site_packages}" "${pkgdir}${_site_packages}/MCDenoise.py"
+
   install -Dm644 TempLinearApproximate-readme.txt "${pkgdir}/usr/share/doc/vapoursynth/plugins/${_plug}/readme.txt"
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
