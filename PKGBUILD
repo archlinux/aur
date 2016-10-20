@@ -6,7 +6,7 @@ _language_patch2_url="${_fusurl}/language-patch2"
 
 pkgname=${_pkgname}-editor-${_version}
 _atomver=1.11.2
-pkgver=1.11.2.aa1.6.2.db0.8.9.fu0.12.0.la0.9.2.lg0.92.2.li1.18.3.ll0.5.1.lp1.0.0.lu0.38.2.t2.4.2
+pkgver=1.11.2.db0.8.9.fu0.12.0.la0.9.2.lg0.92.2.li1.18.3.ll0.5.1.lp1.0.0.lu0.38.2.t2.4.2
 pkgrel=1
 pkgdesc="Hackable text editor for the 21st Century, built using web technologies, with some extra packages for Arch Linux package development pre-installed."
 arch=('x86_64' 'i686')
@@ -19,7 +19,6 @@ makedepends=('npm' 'hunspell-en')
 conflicts=('atom-editor-bin' 'atom-editor')
 install=${_pkgname}-${_version}.install
 source=("${_pkgname}-${_atomver}.tar.gz::${_url}/atom/archive/v${_atomver}.tar.gz"
-"about-arch::git+${_fusurl}/about"
 "dark-bint-syntax::git+https://github.com/Murriouz/dark-bint-syntax"
 "fusion-ui::git+${_fusurl}/fusion-ui"
 "language-archlinux::git+${_fusurl}/language-archlinux"
@@ -74,7 +73,6 @@ prepare() {
   function describe {
     printf "$(git -C "$srcdir/$1" describe --tags `git -C "$srcdir/$1" rev-list --tags --max-count=1` | sed 's/v//g')"
   }
-  _about_arch_ver="$(describe about-arch)"
   _dark_bint_syntax_ver="$(describe dark-bint-syntax)"
   _fusion_ui_ver="$(describe fusion-ui)"
   _language_archlinux_ver="$(describe language-archlinux)"
@@ -94,7 +92,6 @@ prepare() {
          -e "/\"dependencies\": {/a \
                      \"language-patch2\": \"${_language_patch2_url}\",\n    \"atom-ui\": \"0.4.1\"," \
          -e "s/\"language-shellscript\": \".*\",/\"language-unix-shell\": \"${_language_unix_shell_ver}\",\n    \"language-archlinux\": \"${_language_archlinux_ver}\",\n    \"terminal-fusion\": \"${_terminal_fusion_ver}\",/g" \
-         -e "s/\"about\": \".*\"/\"about-arch\": \"${_about_arch_ver}\"/g" \
          -e "/\"packageDependencies\": {/a \
               \"dark-bint-syntax\": \"${_dark_bint_syntax_ver}\",\n    \"fusion-ui\": \"${_fusion_ui_ver}\"," package.json
 
@@ -108,15 +105,6 @@ prepare() {
 
   sed -i -e 's@node script/bootstrap@node script/bootstrap --no-quiet@g' \
   ./script/build || die "Fail fixing verbosity of script/build"
-
-  # about-arch
-  pushd $srcdir/about-arch
-  git fetch -p
-  git checkout -q $(git describe --tags `git rev-list --tags --max-count=1`)
-  patch -Np1 -i $srcdir/about-arch.patch
-  popd
-  mkdir -p node_modules/about-arch
-  cp -r $srcdir/about-arch/* node_modules/about-arch/
 
   sed -i -e "s/<%=Desc=%>/$pkgdesc/g" ${srcdir}/${_pkgname}.desktop
 
