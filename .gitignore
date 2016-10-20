@@ -6,3 +6,6 @@ PythonQt
 # generated packages
 *.tar.*
 /qmetaobjectbuilder_p.h
+
+# namcap
+*.log
