@@ -16,7 +16,7 @@ license=('MIT')
 depends=('namcap' 'alsa-lib' 'desktop-file-utils' 'gconf' 'gtk2' 'libgnome-keyring' 'libnotify' 'libxtst' 'nodejs' 'nss' 'python2' 'git')
 optdepends=('gvfs: file deletion support')
 makedepends=('npm' 'hunspell-en')
-conflicts=('atom-editor-bin' 'atom-editor-beta')
+conflicts=('atom-editor-bin' 'atom-editor')
 install=${_pkgname}-${_version}.install
 source=("${_pkgname}-${_atomver}.tar.gz::${_url}/atom/archive/v${_atomver}.tar.gz"
 "about-arch::git+${_fusurl}/about"
