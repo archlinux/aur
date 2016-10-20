@@ -1,17 +1,20 @@
 # Maintainer: Simon Legner <Simon.Legner@gmail.com>
 pkgname=osmium-tool
 pkgver=1.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Command line tool for working with OpenStreetMap data based on the Osmium library"
 arch=('i686' 'x86_64')
 depends=('boost-libs' 'expat')
-makedepends=('cmake' 'libosmium')
+makedepends=('cmake' 'libosmium>=2.9.0')
 url="http://osmcode.org/osmium-tool/"
 license=('GPL3')
 source=("https://github.com/osmcode/$pkgname/archive/v$pkgver.tar.gz")
 
 build() {
 	cd "$pkgname-$pkgver"
+	mkdir -p build
+	cd build
+	cmake -DCMAKE_INSTALL_PREFIX=/usr ..
 	make
 }
 
