@@ -1,3 +1,19 @@
+2016-10-20  Frederik “Freso” S. Olesen <freso.dk@gmail.com>
+
+	* 1.44-1 :
+	Version bump to 1.44.
+
+	Upstream changelog (1.39→1.44):
+	- Support for The End.
+	- Adds support for the new strongholds and igloos coming in Minecraft 1.9
+	- User interface improvements for previewing The End dimension.
+	- Speed and memory optimizations.
+	- Stronghold locations have been updated to match Minecraft's fix in 16w06a,
+	  so AmidstExporter now supports all the upcoming new features in
+	  Minecraft 1.9.
+	- Nether Fortress icon lightened slightly, and Witchhut icon made more
+	  recognisable.
+
 2015-08-05 Frederik “Freso” S. Olesen <freso.dk@gmail.com>
 
 	* 1.39-1 :
