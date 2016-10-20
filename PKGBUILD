@@ -6,7 +6,7 @@ pkgver() {
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 pkgrel=1
-pkgdesc="A tool for 'Doing Phonetics by computer' (compiled with PulseAudio support"
+pkgdesc="A tool for 'Doing Phonetics by computer' (compiled with PulseAudio support)"
 arch=('x86_64' 'i686')
 url="http://www.fon.hum.uva.nl/praat/"
 license=('GPL')
@@ -15,7 +15,7 @@ makedepends=('git' 'pkg-config' 'gtk2' 'alsa-lib')
 optdepends=('ttf-sil-fonts')
 provides=('praat')
 conflicts=('praat' 'praat-git')
-source=('praat::git+https://github.com/praat/praat.git')
+source=('praat-pulse::git+https://github.com/praat/praat.git')
 md5sums=('SKIP')
 
 prepare() {
