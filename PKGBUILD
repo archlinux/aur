@@ -56,7 +56,7 @@ _BFQ_enable_=
 pkgname=(linux-ck linux-ck-headers)
 _kernelname=-ck
 _srcname=linux-4.8
-pkgver=4.8.2
+pkgver=4.8.3
 pkgrel=1
 arch=('i686' 'x86_64')
 url="https://wiki.archlinux.org/index.php/Linux-ck"
@@ -92,7 +92,7 @@ source=("http://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
 "$_bfqpath/$_bfqp4")
 sha256sums=('3e9150065f193d3d94bcf46a1fe9f033c7ef7122ab71d75a7fb5a2f0c9a7e11a'
             'SKIP'
-            'edb6e8022172df2b020b53e1cfa32bcde070f3119a6618766066098c46008a9b'
+            '1482dd7bda0a3a82abcde20f24576a57287c462e8e732fe688ed37daf42468cb'
             'SKIP'
             '57863cbfa5d6d19c6166bc4c3c041da26989b7c41e597f31642d4c09e09b848a'
             '395e0b97e5cf3d483778d8ff0ec11d305d93597d397305d97efc3b7826a296ed'
@@ -128,7 +128,7 @@ prepare() {
 	else
 		# fix double name in EXTRAVERSION
 		sed -i -re "s/^(.EXTRAVERSION).*$/\1 = /" "${srcdir}/${_ckpatchname}"
-		msg "Patching source with ck patchset including BFS v0.502"
+		msg "Patching source with ck patchset including BFS v0.512"
 		patch -Np1 -i "${srcdir}/${_ckpatchname}"
 	fi
 
