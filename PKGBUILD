@@ -4,8 +4,8 @@
 pkgbase=linux-netbook
 _srcname=linux-4.4
 _bfq=v7r11
-pkgver=4.4.16
-pkgrel=2
+pkgver=4.4.25
+pkgrel=1
 arch=('i686')
 url="https://github.com/korrode/linux-netbook"
 license=('GPL2')
@@ -20,7 +20,6 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         # ARCH patches
         "change-default-console-loglevel.patch"
         "0001-sdhci-revert.patch"
-        "ecryptfs.patch"
         # BFQ patches
         "0001-block-cgroups-kconfig-build-bits-for-BFQ-${_bfq}.patch::http://algo.ing.unimo.it/people/paolo/disk_sched/patches/4.4.0-${_bfq}/0001-block-cgroups-kconfig-build-bits-for-BFQ-${_bfq}-4.4.0.patch"
         "0002-block-introduce-the-BFQ-${_bfq}-I-O-sched.patch::http://algo.ing.unimo.it/people/paolo/disk_sched/patches/4.4.0-${_bfq}/0002-block-introduce-the-BFQ-${_bfq}-I-O-sched-for-4.4.0.patch"
@@ -30,12 +29,11 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         # Interactive CPUFreq governor patches
         "interactive_governor-linux4.4-20160501.patch")
 sha256sums=('401d7c8fef594999a460d10c72c5a94e9c2e1022f16795ec51746b0d165418b2'
-            '7181b6cb3a1611dab9179f57846a3f03bf2705aa3e4cddd9fbd0398bde50d5f9'
+            '5c5599ae77435cf35a6b59c4bd0c49cd928c66d4bbdb6c0e39974318c8c3d31e'
             'b8a40f9fbc69f848f8b3165a8882fa6a22f6e81d3564f31b95a738b6c3cb25ef'
             'e794216a8ae80182b506957e313586777a5bbb1ccf0760d904a933c511768127'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
             '5313df7cb5b4d005422bd4cd0dae956b2dadba8f3db904275aaf99ac53894375'
-            'a2e240ab338f02ebde278131cf5810e9aa3846a8238e3d26dc235eace05ab4e7'
             'd1cf14cc696b0f716454fe8eb9746383700889d5d22ad829611f0433cc77b4ce'
             'b17c3fb18c5b8c20a45a38198f293679ca6aef08d16f12cd816a5cfafac4b2c4'
             '69a21bc286a628128cfc4723558829cb6ff6c2d7c4dfd4468457898674187b25'
@@ -52,9 +50,6 @@ prepare() {
   # add latest fixes from stable queue, if needed
   # http://git.kernel.org/?p=linux/kernel/git/stable/stable-queue.git
 
-  # https://bugs.archlinux.org/task/50126 - broken ecryptfs
-  patch -p1 -i "${srcdir}/ecryptfs.patch"
-  
   # revert http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=9faac7b95ea4f9e83b7a914084cc81ef1632fd91
   # fixes #47778 sdhci broken on some boards
   # https://bugzilla.kernel.org/show_bug.cgi?id=106541
