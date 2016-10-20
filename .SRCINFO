@@ -1,0 +1,22 @@
+pkgbase = nvidia-xrun-git
+	pkgdesc = Script to run dedicated X server with discrete nvidia graphics
+	pkgver = 0.2.2.gbf1eeab
+	pkgrel = 1
+	url = https://github.com/Witko/nvidia-xrun
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = xorg-server
+	depends = xorg-xinit
+	depends = xorg-xrandr
+	depends = nvidia
+	depends = mesa-libgl
+	depends = bbswitch
+	provides = nvidia-xrun=0.2.2.gbf1eeab
+	provides = nvidia-xrun-git=0.2.2.gbf1eeab
+	conflicts = nvidia-xrun-git
+	source = git+https://github.com/Witko/nvidia-xrun.git
+	md5sums = SKIP
+
+pkgname = nvidia-xrun-git
+
