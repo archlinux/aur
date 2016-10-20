@@ -1,24 +1,24 @@
-# Maintainer: Maxime Gauduin <alucryd@gmail.dom>
+# Maintainer: Adrian Freund <freundadrian@gmail.dom>
 
-pkgname=numix-bevel-icon-theme-git
-pkgver=0.r10.5f1b191
-pkgrel=2
+pkgname=numix-bevel-icon-theme-bzr
+pkgver=r8
+pkgrel=1
 pkgdesc='Bevel icon theme from the Numix project'
 arch=('any')
 url='http://numixproject.org/'
 license=('GPL3')
 depends=('numix-icon-theme-git')
-makedepends=('git')
+makedepends=('bzr')
 provides=('numix-bevel-icon-theme')
 conflicts=('numix-bevel-icon-theme')
 options=('!strip')
-source=('numix-bevel-icon-theme::git+https://github.com/numixproject/numix-icon-theme-bevel.git')
+source=('numix-bevel-icon-theme::bzr+lp:numix-bevel')
 sha256sums=('SKIP')
 
 pkgver() {
   cd numix-bevel-icon-theme
 
-  echo "0.r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
+  printf "r%s" "$(bzr revno)"
 }
 
 package() {
