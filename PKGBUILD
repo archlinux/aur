@@ -1,13 +1,13 @@
 # Maintainer: Wolfgang Popp <mail@wolfgang-popp.de>
 
 pkgname=studip-sync-git
-pkgver=r20.f1344b5
+pkgver=r22.970e0a2
 pkgrel=1
 pkgdesc="Sync your files from Stud.IP"
 arch=('any')
 url="https://github.com/popeye123/studip-sync"
 license=('UNLICENSE')
-depends=('p7zip' 'rsync' 'curl')
+depends=('p7zip' 'rsync' 'curl' 'recode')
 makedepends=('git')
 source=("$pkgname::git+https://github.com/popeye123/studip-sync.git")
 md5sums=('SKIP')
