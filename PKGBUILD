@@ -5,7 +5,7 @@
 
 pkgbase=powerdevil
 pkgname=powerdevil-light
-pkgver=5.8.1
+pkgver=5.8.2
 pkgrel=1
 pkgdesc='Manages the power consumption settings of a Plasma Shell. Light version without NetworkManager and Bluez support/dependencies.'
 arch=('i686' 'x86_64')
@@ -16,7 +16,7 @@ makedepends=('extra-cmake-modules' 'kdoctools' 'python' 'kdesignerplugin')
 conflicts=('powerdevil')
 provides=('powerdevil')
 source=("http://download.kde.org/stable/plasma/${pkgver}/${pkgbase}-${pkgver}.tar.xz"{,.sig})
-sha256sums=('5b6ad450bba8e9d63efa44853e4f472376de2fba44a8b443e3a0c631996d7562'
+sha256sums=('fdc8a5f43c27ebfa78940de031b113880ea6213e47b33b3e233ed2351c02532e'
             'SKIP')
 validpgpkeys=('2D1D5B0588357787DE9EE225EC94D18F7F05997E'  # Jonathan Riddell
               '348C8651206633FD983A8FC4DEACEA00075E1D76'  # KDE Neon
