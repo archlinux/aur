@@ -1,0 +1,16 @@
+pkgbase = plymouth-theme-monoarch
+	pkgdesc = Monochrome Arch Linux theme for Plymouth
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://farsil.github.io/monoarch/
+	install = plymouth-theme-monoarch.install
+	arch = any
+	license = MIT
+	depends = plymouth
+	source = https://github.com/farsil/monoarch/archive/0.1.tar.gz
+	source = plymouth-theme-monoarch.install
+	sha256sums = e26fe7100dbe612b517037a55488f5ae25976b55e60a542c53623073e52a5ca1
+	sha256sums = efc4134ab3a534dbd0b92ec1abc55f17cda2968c0d5c6a855fe0cb760b4b291a
+
+pkgname = plymouth-theme-monoarch
+
