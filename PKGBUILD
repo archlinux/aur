@@ -3,7 +3,7 @@
 _upstream=arc-theme
 _pkgname=Arc-Clearly-Dark
 pkgname=gnome-shell-theme-arc-clearly-dark-git
-pkgver=564.9478b8d.13
+pkgver=630.2ca1989.14
 pkgrel=1
 pkgdesc='Customized GNOME Shell theme featuring cleanliness and no outlines. Based on vanilla Arc Dark theme'
 arch=(any)
