@@ -13,7 +13,7 @@ source=(Cica.zip::https://github.com/qothr/cabinet/blob/master/Cica.zip?raw=true
 md5sums=('5b0daba6aea3c54ca09a026e75a65ac7')
 
 package() {
-  cd ${srcdir}
+  cd ${srcdir}/Cica
   
   install -dm755 "${pkgdir}"/usr/share/fonts/TTF
   install -m644 *.ttf "${pkgdir}"/usr/share/fonts/TTF/
