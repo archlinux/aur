@@ -13,7 +13,7 @@ install=geeteedee.install
 
 _arch=i386
 [ "$CARCH" = 'x86_64' ] && _arch=amd64
-source=(http://codea.ru/static/${pkgname}_${pkgver}_${_arch}.deb)
+source=(https://github.com/kolombo/codea-geeteedee-bin/raw/master/${pkgname}_${pkgver}_${_arch}.deb)
 md5sums=('990106f7c7ccd61fe9bf201989405faf')
 
 if [ "$CARCH" = 'i686' ] ; then
