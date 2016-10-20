@@ -1,0 +1,6 @@
+.idea
+*.iml
+build.sh
+makepkg.conf
+target
+
