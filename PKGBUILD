@@ -1,21 +1,21 @@
 # Maintainer: alive4ever <alive4ever at live.com>
 pkgname=maynard-git
-pkgver=r121.a191e5c
-pkgrel=2
+pkgver=r123.b23c2a8
+pkgrel=1
 pkgdesc="Lightweight desktop environment based on Weston compositor for use with Wayland"
 arch=('x86_64' 'i686')
 url="https://github.com/raspberrypi/maynard"
 license=('custom:MIT' 'GPL')
 provides=("maynard")
 depends=("weston" "gnome-desktop" "gnome-menus")
+optdepends=("xorg-server-xwayland: For running X11 applications")
 makedepends=("git" "intltool")
 install=maynard.install
 source=("${pkgname%-git}::git+https://github.com/raspberrypi/maynard.git"
-	"01-maynard.patch"
-	"02-fix-weston-1.12-build.patch")
+	"01-maynard.patch")
+
 sha256sums=('SKIP'
-	'939a16eb6b50343059f7bb0afa89eff9831ae67ea561101620e7dab009883f60'
-	'ced975edb39a089debcadb76f9b0f67d4c1ec90fc1ce42b7560e9edb61b96cc9')
+	'939a16eb6b50343059f7bb0afa89eff9831ae67ea561101620e7dab009883f60')
 
 pkgver() {
 	cd "$srcdir/${pkgname%-git}"
@@ -27,7 +27,6 @@ pkgver() {
 prepare() {
 	cd "$srcdir/${pkgname%-git}"
 	patch -p1 < "$srcdir/01-maynard.patch"
-	patch -p1 < "$srcdir/02-fix-weston-1.12-build.patch"
 }
 
 build() {
