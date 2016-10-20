@@ -3,8 +3,8 @@ diff -rupN pantheon-default-settings.orig/debian/elementary-default-settings.gse
 +++ pantheon-default-settings/debian/elementary-default-settings.gsettings-override	2016-09-12 15:41:11.141869826 +0200
 @@ -1,14 +1,13 @@
  [net.launchpad.plank.dock.settings]
--dock-items=['gala-multitaskingview.dockitem','epiphany.dockitem','org.pantheon.mail.dockitem','maya-calendar.dockitem','org.pantheon.noise.dockitem','org.pantheon.audience.dockitem','pantheon-photos.dockitem','switchboard.dockitem','org.pantheon.appcenter.dockitem']
-+dock-items=['gala-multitaskingview.dockitem','epiphany.dockitem','org.pantheon.mail.dockitem','maya-calendar.dockitem','org.pantheon.noise.dockitem','org.pantheon.audience.dockitem','pantheon-photos.dockitem','switchboard.dockitem']
+-dock-items=['gala-multitaskingview.dockitem','epiphany.dockitem','org.pantheon.mail.dockitem','org.pantheon.maya.dockitem','org.pantheon.noise.dockitem','org.pantheon.audience.dockitem','pantheon-photos.dockitem','switchboard.dockitem','org.pantheon.appcenter.dockitem']
++dock-items=['gala-multitaskingview.dockitem','epiphany.dockitem','org.pantheon.mail.dockitem','org.pantheon.maya.dockitem','org.pantheon.noise.dockitem','org.pantheon.audience.dockitem','pantheon-photos.dockitem','switchboard.dockitem']
  hide-delay=250
  hide-mode='window-dodge'
  show-dock-item=false
