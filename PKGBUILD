@@ -7,7 +7,7 @@
      
 pkgname=med
 pkgver=3.2.0
-pkgrel=3
+pkgrel=4
 pkgdesc="MED stands for Modelisation et Echanges de Donnees, i.e. Data Modelization and Exchanges - MED is code-aster exchange module linked to hdf5"
 url="http://www.code-aster.org/outils/med/"
 license=('LGPL')
@@ -28,7 +28,7 @@ md5sums=('eb61df92f0624feb6328f517cd756a23'
          'b83949326d7ae0ca77a06822b754a329'
          '14a151cea108388d7a3b4c62887169f6'
          '8f0cbf6f08783a6ba68ff5ab240dd62e'
-         '5cb73821913eaffc642a72882033e62c')
+         'be65d145b85ed5b19a709d9dee84b6d2')
  
 build() {
   if [ "$CARCH" = "x86_64" ]; then
