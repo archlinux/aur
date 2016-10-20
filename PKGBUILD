@@ -21,10 +21,8 @@ build () {
 }
 
 package () {
-	cd "${srcdir}/${pkgname}"
-
-    install -D -m644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-
+    cd "${srcdir}/${pkgname}"
+    install -D -m644 "${srcdir}/${pkgname}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
     install -D -d "${pkgdir}/usr/share/lightdm-webkit/themes"
     cp -dpr --no-preserve=ownership "${srcdir}/${pkgname}" "${pkgdir}/usr/share/lightdm-webkit/themes/${_themename}"
     rm "${pkgdir}/usr/share/lightdm-webkit/themes/${_themename}/LICENSE"
