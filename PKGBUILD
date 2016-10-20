@@ -2,7 +2,7 @@
 
 pkgname=teleport
 pkgver=1.2.0
-pkgrel=1
+pkgrel=2
 # TODO: shorten?
 pkgdesc="Modern SSH server for remotely accessing clusters of Linux servers via SSH or HTTPS"
 # TODO: build for i686 possible?
@@ -21,7 +21,7 @@ sha256sums=('b2f52e23ec1a68e974cb9d6527302d14403ed19eaaeab16084a248ae0783f096'
 prepare() {
     # Set up directory structure for `go build`
     mkdir -p "${srcdir}/src/github.com/gravitational/"
-    mv -f "${pkgname}-${pkgver}" "${srcdir}/src/github.com/gravitational/teleport"
+    mv -f "${pkgname}-${pkgver}" "${srcdir}/src/github.com/gravitational/teleport" || true
 }
 
 build() {
@@ -36,10 +36,9 @@ build() {
 check() {
     cd "${srcdir}/src/github.com/gravitational/teleport"
     # Copied from upstream Makefile, but without coverage analysis and vet
-    # Note: Will work with next version
-    #go test -v ./tool/tsh/... \
-    #                    ./lib/... \
-    #                    ./tool/teleport... -tags test
+    go test -v  ./tool/tsh/... \
+             ./lib/... \
+             ./tool/teleport... -tags test
 }
 
 package() {
