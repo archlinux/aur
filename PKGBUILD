@@ -5,9 +5,9 @@
 
 pkgname=python2-gtkglext
 pkgver=1.1.0
-pkgrel=6
+pkgrel=7
 pkgdesc='Python language bindings for GtkGLExt'
-arch=('i686' 'x86_64')
+arch=('i686' 'x86_64' 'armv7h')
 depends=('gtkglext' 'mesa' 'python2-opengl' 'pygtk')
 makedepends=('libxmu')
 url='https://projects.gnome.org/gtkglext/'
