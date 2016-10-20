@@ -1,4 +1,5 @@
 # Maintainer: Afri 5chdn <aur@cach.co>
+# Available from AUR: https://aur.archlinux.org/packages/solidity/
 
 pkgname=solidity
 pkgver=0.4.2
@@ -9,8 +10,6 @@ arch=('i686' 'x86_64')
 depends=(
   'boost'
   'boost-libs'
-  'crypto++'
-  'jsoncpp'
   'glibc'
 )
 makedepends=(
@@ -20,7 +19,6 @@ makedepends=(
   'gcc'
   'gcc-libs'
   'libtool'
-  'yasm'
   'git'
 )
 groups=('ethereum')
