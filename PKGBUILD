@@ -1,7 +1,7 @@
 # Maintainer: Timur Kiyivinski <timur@linux.com>
 
 pkgname=zcoin-git
-pkgver=36.7520e9f
+pkgver=63.8676068
 pkgrel=1
 pkgdesc='The Zerocoin Cryptocurrency'
 arch=('any')
