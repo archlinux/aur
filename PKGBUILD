@@ -2,12 +2,12 @@
 
 pkgname=peco
 pkgver=0.4.3
-pkgrel=2
+pkgrel=3
 pkgdesc='Simplistic interactive filtering tool'
 arch=('i686' 'x86_64')
 url='https://github.com/peco/peco'
 license=('MIT')
-makedepends=('go')
+makedepends=('go' 'wget')
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/${pkgname}/${pkgname}/archive/v${pkgver}.tar.gz")
 md5sums=('125d6e09ccd7320d91d56230091243f4')
 
