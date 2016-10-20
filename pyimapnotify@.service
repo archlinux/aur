@@ -4,8 +4,8 @@ After=network.target
 
 [Service]
 Type=simple
-ExecStart=/usr/bin/pyimapnotify -c %h/.config/imapnotify/%I
-Restart=on-failure
+ExecStart=/usr/bin/python -u /usr/bin/pyimapnotify -vv -c %h/.config/imapnotify/%I
+Restart=always
 RestartSec=20
 
 [Install]
