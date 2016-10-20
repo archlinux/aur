@@ -1,11 +1,12 @@
-# Maintainer: Serge Zirukin <ftrvxmtrx@gmail.com>
+# Maintainer: Marek Kubica <marek@xivilization.net>
+# Contributor: Serge Zirukin <ftrvxmtrx@gmail.com>
 
 pkgname=ocaml-bisect
 pkgver=1.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Code coverage tool for OCaml"
 arch=('i686' 'x86_64')
-url=("http://bisect.x9c.fr")
+url="http://bisect.x9c.fr"
 license=('GPLv3')
 depends=('ocaml' 'ocaml-findlib')
 makedepends=('ocaml')
