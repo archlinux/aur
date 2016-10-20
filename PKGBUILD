@@ -2,7 +2,7 @@
 
 pkgbase=mpv
 pkgname=mpv-light
-pkgver=0.20.0
+pkgver=0.21.0
 pkgrel=1
 pkgdesc='Video player based on MPlayer/mplayer2, with selection of features.'
 arch=('i686' 'x86_64')
@@ -15,7 +15,7 @@ options=('!emptydirs' '!buildflags')
 provides=("${pkgbase}")
 conflicts=("${pkgbase}")
 source=("${pkgbase}-${pkgver}.tar.gz::https://github.com/mpv-player/${pkgbase}/archive/v${pkgver}.tar.gz")
-sha256sums=('fe6ec9d2ded5ce84b963f54b812d579d04f944f4a737f3ae639c4d5d9e842b56')
+sha256sums=('d05f8ece859c500ef1649cdfea911ec1529df1898b8fda3e217766dc28dc9bd3')
 
 prepare() {
   cd ${pkgbase}-${pkgver}
