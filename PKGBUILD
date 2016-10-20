@@ -1,7 +1,7 @@
 # Maintainer: Alex Forencich <alex@alexforencich.com>
 pkgname=(python-myhdl-git python2-myhdl-git)
 pkgver=0.9.0.r256.g310abe8
-pkgrel=2
+pkgrel=3
 pkgdesc="a Python-Based Hardware Description Language"
 arch=('any')
 url="http://www.myhdl.org/"
@@ -23,7 +23,7 @@ build() {
   cd "$srcdir/$_gitname"
   
   cd $srcdir/$_gitname/doc
-  make man
+  PYTHONPATH=$srcdir/$_gitname make man
   
   cd $srcdir/$_gitname/cosimulation/icarus
   make
