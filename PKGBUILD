@@ -9,6 +9,7 @@ pkgdesc="PythonQt fork featuring Qt 5.x and Python 3.x support and improved CMak
 license=("LGPL")
 url="https://github.com/knossos-project/PythonQt"
 makedepends=("cmake"
+  "git"
   "mesa" # GL/gl.h
   "ninja"
   "qt5-tools" # Qt5UiTools
