@@ -14,7 +14,7 @@ depends=('gtk2' 'alsa-lib')
 makedepends=('git' 'pkg-config' 'gtk2' 'alsa-lib')
 optdepends=('ttf-sil-fonts')
 provides=('praat')
-conflicts=('praat')
+conflicts=('praat' 'praat-git')
 source=('praat::git+https://github.com/praat/praat.git')
 md5sums=('SKIP')
 
