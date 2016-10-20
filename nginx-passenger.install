@@ -1,5 +1,5 @@
 print_config_notice() {
-    echo "Configuration tips: https://github.com/t-richards/aur-nginx-passenger#configuration"
+    echo "Configuration tips: https://aur.archlinux.org/cgit/aur.git/tree/README.md?h=nginx-passenger"
 }
 
 post_install() {
