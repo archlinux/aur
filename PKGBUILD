@@ -8,9 +8,9 @@ arch=('x86_64' 'x86')
 url="https://github.com/alamminsalo/orion"
 license=('GPL')
 groups=()
-depends=('qt5-base' 'qt5-quickcontrols' 'qt5-webengine' 'qt5-svg' 'libcommuni-git')
-optdepends=('mpv: video output' 'qtav: alternate video output', 'qt5-multimedia: alternate video output')
-makedepends=('git' 'mpv' 'qt5-webengine' 'qt5-svg' 'libcommuni-git')
+depends=('qt5-base' 'qt5-quickcontrols' 'qt5-webengine' 'qt5-svg')
+optdepends=('qtav: alternate video output', 'qt5-multimedia: alternate video output')
+makedepends=('git' 'qt5-webengine' 'qt5-svg')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 replaces=()
@@ -34,7 +34,7 @@ pkgver() {
 
 build() {
 	cd "$srcdir/${pkgname%-git}"
-	qmake 
+	qmake CONFIG+=multimedia
 	make
 }
 
