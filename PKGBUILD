@@ -9,7 +9,7 @@ license=('AGPL')
 depends=('r')
 makedepends=('git' 'python2' 'cmake' 'r')
 install='accounts.install'
-backup=('shiny-server.conf')
+backup=('etc/shiny-server.conf')
 source=('shiny-server::git+https://github.com/rstudio/shiny-server.git' 
         'shiny-server.service')
 pkver(){
@@ -42,7 +42,7 @@ build() {
   make
 
   mkdir ../build
-  (cd .. && bin/npm --python="$PYTHON" rebuild)
+  (cd .. && bin/npm --python="$PYTHON" install)
   (cd .. && ext/node/lib/node_modules/npm/node_modules/node-gyp/bin/node-gyp.js --python="$PYTHON" rebuild)
 }
 
