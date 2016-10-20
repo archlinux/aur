@@ -2,7 +2,7 @@
 #
 
 pkgname=trezor-bridge-bin
-pkgver=1.1.3
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="Standalone application to use the trezor hardware bitcoin wallet with your computer"
 arch=('i686' 'x86_64')
@@ -14,8 +14,8 @@ options=()
 install=$pkgname.install
 source_i686=("https://mytrezor.s3.amazonaws.com/bridge/${pkgver}/trezor-bridge_${pkgver}_i386.deb")
 source_x86_64=("https://mytrezor.s3.amazonaws.com/bridge/${pkgver}/trezor-bridge_${pkgver}_amd64.deb")
-sha256sums_i686=('2b5cf70dd2b5d5bd3df77375dace5242c7e7fc104651d086106d3b2038a564f7')
-sha256sums_x86_64=('079600f4c39699f71243904925d96584420773015328cc5fd7edb0ef739f14b3')
+sha256sums_i686=('ef156e38f7622c4033839e7adac16f9744b27d6554c786e9e8d2d814f19c89e6')
+sha256sums_x86_64=('1eba299bcd96be68b675efe5935705cccf013c8b7a452497d83b3ca4bba23297')
 
 package() {
     msg2 "Extracting the data..."
