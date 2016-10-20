@@ -18,7 +18,7 @@ check() {
 }
 
 package() {
-  install -D -m 755 "${srcdir}/git-meld/git-meld.pl" "${pkgdir}/usr/bin/git-meld.pl"
+  install -D -m 755 "${srcdir}/git-meld/git-meld.pl" "${pkgdir}/usr/bin/git-meld"
 }
 
 # vim:set ts=2 sw=2 et:
