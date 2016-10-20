@@ -1,7 +1,7 @@
 # Maintainer: Luca Weiss <WEI16416@spengergasse.at>
 
 pkgname=f3-git
-pkgver=6.0.r13.g2cd7e41
+pkgver=6.0.r17.gf3d067b
 pkgrel=1
 pkgdesc="Utilities to detect and repair counterfeit flash storage, i.e. thumb drives and memory cards with less flash than advertised"
 arch=('i686' 'x86_64')
@@ -34,7 +34,8 @@ build() {
 
 package() {
   cd "$srcdir/f3"
-  make PREFIX="$pkgdir/usr/" install
+  make PREFIX="$pkgdir/usr" install
+  make PREFIX="$pkgdir/usr" install-extra
 }
 
 # vim:set ts=8 sts=2 sw=2 et:
