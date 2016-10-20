@@ -1,7 +1,7 @@
 #pkgbase=linux               # Build stock -ARCH kernel
 pkgbase=linux-covolunablu-gaming       # Build kernel with a different name
-_srcname=linux-4.7
-pkgver=4.7.6
+_srcname=linux-4.8
+pkgver=4.8.2
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
@@ -24,24 +24,24 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         # standard config files for mkinitcpio ramdisk
         'linux.preset'
         'change-default-console-loglevel.patch'
-        'http://algo.ing.unimo.it/people/paolo/disk_sched/patches/4.7.0-v8r3/0001-block-cgroups-kconfig-build-bits-for-BFQ-v7r11-4.7.0.patch'
-        'http://algo.ing.unimo.it/people/paolo/disk_sched/patches/4.7.0-v8r3/0002-block-introduce-the-BFQ-v7r11-I-O-sched-for-4.7.0.patch'
-        'http://algo.ing.unimo.it/people/paolo/disk_sched/patches/4.7.0-v8r3/0003-block-bfq-add-Early-Queue-Merge-EQM-to-BFQ-v7r11-for.patch'
-        'http://algo.ing.unimo.it/people/paolo/disk_sched/patches/4.7.0-v8r3/0004-block-bfq-turn-BFQ-v7r11-for-4.7.0-into-BFQ-v8r3-for.patch'
+        'http://algo.ing.unimo.it/people/paolo/disk_sched/patches/4.8.0-v8r4/0001-block-cgroups-kconfig-build-bits-for-BFQ-v7r11-4.8.0.patch'
+        'http://algo.ing.unimo.it/people/paolo/disk_sched/patches/4.8.0-v8r4/0002-block-introduce-the-BFQ-v7r11-I-O-sched-to-be-ported.patch'
+        'http://algo.ing.unimo.it/people/paolo/disk_sched/patches/4.8.0-v8r4/0003-block-bfq-add-Early-Queue-Merge-EQM-to-BFQ-v7r11-to-.patch'
+        'http://algo.ing.unimo.it/people/paolo/disk_sched/patches/4.8.0-v8r4/0004-Turn-BFQ-v7r11-into-BFQ-v8r4-for-4.8.0.patch'
         "https://raw.githubusercontent.com/ValveSoftware/steamos_kernel/8e9ecc9caee1ae1d18c2cc4572729ef355091b6e/drivers/input/joystick/xpad.c")
 
-sha256sums=('5190c3d1209aeda04168145bf50569dc0984f80467159b1dc50ad731e3285f10'
+sha256sums=('3e9150065f193d3d94bcf46a1fe9f033c7ef7122ab71d75a7fb5a2f0c9a7e11a'
             'SKIP'
-            '2e425c268076c3b186107edf9045e0910088699e077282b5187efb5edf2b8836'
+            'edb6e8022172df2b020b53e1cfa32bcde070f3119a6618766066098c46008a9b'
             'SKIP'
-            '109a84df46989dea57015858c58ccba66fe4b3d73246a2f92d5d8d318334b807'
-            '7754450077e1e3e25fc37f92fb46d3eb05ead00fdc8a8af51e65e20fc9f7cf2a'
+            'f105551388ad00732eecbdb0037092597482970fe88af2634916ade8674410c7'
+            'd6057b86cbccb96b4f7a78932a0e70c46e635e9d017af6337cc28ab2bb67c1b9'
             'f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
-            'a6bd81bbb2f72cfd6ad992fdeff4bac1cb7c58a8edfc3fcd76c1d7275f73d284'
-            '144b54e95a1ffca88066e41f3c46c47df442d6497684e204e9f4312faab75572'
-            'db34093296bc02df769faa25dd609453321b05836d8265416e6975ebe9542821'
-            'db7872616d7ed3137d4b738e6e29fdaff58981a1d3912e3f1c33cd9fc61bca27'
+            '1dabd969b18b7e09e2ffeffe4c2430dbc26e5df9868563d54ca95f45c690262f'
+            'c8d17a7893d5780fd0c90311470160dcc842b81621b30671150e2e3224be86d2'
+            'e47ea5b1c2f20cfade4e6a85bff1320dac84ac638e48ef4eec7285fe9e1e1def'
+            'c3c96e304aef378f0cc6e1fb18eeabe176e6ba918d13060c105f3d8cabc85f59'
             'a1d3a169196c07de2a2ab6bee89e1def9e09e1d06da4cd4dfa03fefc972928e1')
 
 
@@ -67,10 +67,10 @@ prepare() {
   patch -p1 -i "${srcdir}/change-default-console-loglevel.patch"
 
   # add BFQ
-  patch -p1 -i "${srcdir}/0001-block-cgroups-kconfig-build-bits-for-BFQ-v7r11-4.7.0.patch"
-  patch -p1 -i "${srcdir}/0002-block-introduce-the-BFQ-v7r11-I-O-sched-for-4.7.0.patch"
-  patch -p1 -i "${srcdir}/0003-block-bfq-add-Early-Queue-Merge-EQM-to-BFQ-v7r11-for.patch"
-  patch -p1 -i "${srcdir}/0004-block-bfq-turn-BFQ-v7r11-for-4.7.0-into-BFQ-v8r3-for.patch"
+  patch -p1 -i "${srcdir}/0001-block-cgroups-kconfig-build-bits-for-BFQ-v7r11-4.8.0.patch"
+  patch -p1 -i "${srcdir}/0002-block-introduce-the-BFQ-v7r11-I-O-sched-to-be-ported.patch"
+  patch -p1 -i "${srcdir}/0003-block-bfq-add-Early-Queue-Merge-EQM-to-BFQ-v7r11-to-.patch"
+  patch -p1 -i "${srcdir}/0004-Turn-BFQ-v7r11-into-BFQ-v8r4-for-4.8.0.patch"
 
   # use steamos version of xpad
   cp "${srcdir}/xpad.c" ./drivers/input/joystick/xpad.c
