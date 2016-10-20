@@ -9,18 +9,20 @@
 # Maintainer: Thermi <noel [at] familie-kuntze dot de>
 
 pkgname=strongswan
-pkgver=5.5.0
+pkgver=5.5.1
 pkgrel=1
 pkgdesc="open source IPsec implementation"
 url='http://www.strongswan.org'
 license=("GPL")
 arch=('i686' 'x86_64')
+# If you want networkmanager support, add a makedepend and depend for libnm-glib
 depends=('curl' 'gmp' 'iproute2' 'openssl' 'sqlite' 'libcap' 'libsystemd' 'pam')
 makedepends=('curl' 'gmp' 'iproute2' 'openssl' 'sqlite' 'libcap' 'libsystemd' 'systemd' 'pam')
 conflicts=('openswan')
 options=(!libtool)
 backup=(
 	etc/ipsec.conf 
+        etc/ipsec.secrets
 	etc/swanctl/swanctl.conf
 	etc/strongswan.conf 
 	etc/strongswan.d/{charon-logging.conf,charon.conf,pki.conf,pool.conf,scepclient.conf,starter.conf,swanctl.conf}
@@ -40,9 +42,9 @@ source=("https://download.strongswan.org/strongswan-${pkgver}.tar.bz2"
 
 # md5 is broken. We use sha256 now. Alternatively, we could check the signature of the file, but that
 # doesn't yield any more security and just increases the work users initially have to invest.
-sha256sums=('58463998ac6725eac3687e8a20c1f69803c3772657076d06c43386a24b4c8454'
+sha256sums=('720b301991f77bdedd8d551a956f52e2d11686a0ec18e832094f86cf2b842ab7'
             '003750d77fa501075f1fdb6f55926dc544407c5dd26e2fd8d5eb4917ddf0b3f7')
-
+            
 # We don't build libipsec because it would get loaded before kernel-netlink and netkey, which
 # would case processing to be handled in user space. Also, the plugin is experimental. If you need it,
 # add --enable-libipsec and --enable-kernel-libipsec
@@ -74,6 +76,7 @@ build() {
 	--enable-aesni --enable-eap-ttls --enable-radattr --enable-xauth-pam --enable-xauth-noauth \
 	--enable-eap-dynamic --enable-eap-peap --enable-eap-tls --enable-chapoly --enable-unity \
 	--with-capabilities=libcap
+# if you want networkmanager support, add --enable-nm
 #	--enable-ruby-gems --enable-python-eggs
   make
 }
