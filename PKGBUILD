@@ -1,7 +1,7 @@
 # Maintainer: Johannes Pfrang <johannespfrang+arch@gmail.com>
 
 pkgname=teleport
-pkgver=1.1.0
+pkgver=1.2.0
 pkgrel=1
 # TODO: shorten?
 pkgdesc="Modern SSH server for remotely accessing clusters of Linux servers via SSH or HTTPS"
@@ -15,7 +15,7 @@ makedepends=('git' 'go>=1.7.0')
 install=teleport.install
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/gravitational/teleport/archive/v$pkgver.tar.gz"
         "teleport.service")
-sha256sums=('f86e9bc410fa90d139df0268a6f7be194b406e94a1df5c029287dda262f41015'
+sha256sums=('b2f52e23ec1a68e974cb9d6527302d14403ed19eaaeab16084a248ae0783f096'
             '3e332207cfa984a531044d47fde379a9c242aa92e0fef7804a031dff865396dc')
 
 prepare() {
