@@ -1,7 +1,7 @@
 # Maintainer: HabarNam <habarnam@gmail.com>
 # Improvements by: hamzadis <adis@hamzadis.com>
 pkgname=orion-git 
-pkgver=r245.98c9217
+pkgver=r281.9067484
 pkgrel=1
 pkgdesc="QML/C++-written desktop client for Twitch.tv"
 arch=('x86_64' 'x86')
@@ -43,7 +43,7 @@ package() {
     mkdir -p "$pkgdir/usr/share/applications"
     mkdir -p "$pkgdir/usr/bin"
 
-	cp "$srcdir/${pkgname%-git}/orion.svg" "$pkgdir/usr/share/icons/hicolor/scalable/apps/"
+	cp "$srcdir/${pkgname%-git}/resources/orion.svg" "$pkgdir/usr/share/icons/hicolor/scalable/apps/"
 	cp "./Orion.desktop" "$pkgdir/usr/share/applications/"
 	cp "$srcdir/${pkgname%-git}/orion" "$pkgdir/usr/bin/" 
 }
