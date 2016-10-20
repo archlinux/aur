@@ -22,8 +22,8 @@
 #
 #
 
-pkg_dir="/opt/rserve-sandbox-docker"
-pid_file="/run/rserve-sandbox-docker.pid"
+pkg_dir="/usr/share/rserve-sandbox-docker"
+pid_file="/run/rserve-sandbox-docker/rserve-sandbox-docker.pid"
 user="rsd"
 group="rsd"
 docker_image_name="rserve"
@@ -74,6 +74,19 @@ initialize()
         make image
     fi
 }
+
+killd()
+{
+    # kill action only if process exists.
+    if [ -f "$pid_file" ]; then
+        pid=$(cat "$pid_file")
+        ps -q $pid > /dev/null
+        if [ $? -eq 0 ]; then
+                make -C "$pkg_dir" stop
+        fi
+    fi
+}
+
 
 startd()
 {
@@ -145,7 +158,7 @@ killd()
         pid=$(cat "$pid_file")
         ps -q $pid > /dev/null
         if [ $? -eq 0 ]; then
-            kill -s SIGTERM $pid
+            kill -s TERM $pid
         fi
     fi
 }

@@ -29,15 +29,13 @@ Requires=docker.service
 After=docker.service
 
 [Service]
-# Run ExecStartPre with root permissions.
-PermissionsStartOnly=true
-ExecStartPre=/usr/bin/systemd-tmpfiles --create rserve-sandbox-docker.conf
 ExecStart=/usr/bin/rserve-sandbox-docker -s
 ExecStop=/usr/bin/rserve-sandbox-docker -k
 Type=forking
-PIDFile=/run/rserve-sandbox-docker.pid
+PIDFile=/run/rserve-sandbox-docker/rserve-sandbox-docker.pid
 User=rsd
 Group=rsd
+RuntimeDirectory=rserve-sandbox-docker
 
 [Install]
 Also=docker.service
