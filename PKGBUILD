@@ -1,12 +1,12 @@
 # Maintainer: Alex Forencich <alex@alexforencich.com>
 pkgname=(python-myhdl-git python2-myhdl-git)
 pkgver=0.9.0.r256.g310abe8
-pkgrel=1
+pkgrel=2
 pkgdesc="a Python-Based Hardware Description Language"
 arch=('any')
 url="http://www.myhdl.org/"
 license=('LGPL')
-makedepends=('git')
+makedepends=('git' 'python-sphinx')
 
 _gitroot='https://github.com/jandecaluwe/myhdl.git'
 _gitname='myhdl'
@@ -22,6 +22,9 @@ pkgver() {
 build() {
   cd "$srcdir/$_gitname"
   
+  cd $srcdir/$_gitname/doc
+  make man
+  
   cd $srcdir/$_gitname/cosimulation/icarus
   make
 }
@@ -35,7 +38,7 @@ package_python-myhdl-git() {
   python setup.py install --prefix=/usr --root="$pkgdir/" --optimize=1
   
   install -m 0644 -D ./LICENSE.txt $pkgdir/usr/share/licenses/$pkgname/LICENSE.txt
-  
+  install -m 0644 -D ./doc/build/man/myhdl.1 $pkgdir/usr/share/man/man1/myhdl.1
   install -m 0755 -D ./cosimulation/icarus/myhdl.vpi $pkgdir/usr/lib/ivl/myhdl.vpi
 }
 
@@ -47,8 +50,8 @@ package_python2-myhdl-git() {
   cd "$srcdir/$_gitname"
   python2 setup.py install --prefix=/usr --root="$pkgdir/" --optimize=1
   
+  rm -rf $pkgdir/usr/share/myhdl
+  
   install -m 0644 -D ./LICENSE.txt $pkgdir/usr/share/licenses/$pkgname/LICENSE.txt
-
-  install -m 0755 -D ./cosimulation/icarus/myhdl.vpi $pkgdir/usr/lib/ivl/myhdl.vpi
 }
 
