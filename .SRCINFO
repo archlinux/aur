@@ -1,0 +1,22 @@
+pkgbase = praat-pulse-git
+	pkgdesc = A tool for 'Doing Phonetics by computer' (compiled with PulseAudio support
+	pkgver = r1175.e1cb2d3
+	pkgrel = 1
+	url = http://www.fon.hum.uva.nl/praat/
+	arch = x86_64
+	arch = i686
+	license = GPL
+	makedepends = git
+	makedepends = pkg-config
+	makedepends = gtk2
+	makedepends = alsa-lib
+	depends = gtk2
+	depends = alsa-lib
+	optdepends = ttf-sil-fonts
+	provides = praat
+	conflicts = praat
+	source = praat::git+https://github.com/praat/praat.git
+	md5sums = SKIP
+
+pkgname = praat-pulse-git
+
