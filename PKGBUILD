@@ -12,8 +12,8 @@ source=("rbundle.R")
 pkgver() {
 	echo $(date +%Y.%m.%d)
 }
-provides=('r-cran-rinside')
-conflicts=('r-cran-rinside')
+provides=('r-cran-rinside' 'r-cran-rcpp')
+conflicts=('r-cran-rinside' 'r-cran-rcpp')
 
 
 prepare(){
@@ -30,5 +30,6 @@ package(){
 	cp -r $srcdir/usr $pkgdir/
 	mkdir -p $pkgdir/usr/lib/R/library
 	mv $pkgdir/usr/share/jasp-desktop/R/library/RInside $pkgdir/usr/lib/R/library/
+	mv $pkgdir/usr/share/jasp-desktop/R/library/Rcpp $pkgdir/usr/lib/R/library/
 }	
 md5sums=('3e460035be3f27cd4a059166b1db2785')
