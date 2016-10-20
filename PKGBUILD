@@ -1,7 +1,7 @@
 # Maintainer: Timur Kiyivinski <timur@linux.com>
 
 pkgname=kitematic-git
-pkgver=2167.95ce61a
+pkgver=2172.e75c1c4
 pkgrel=1
 pkgdesc='Visual Docker Container Management'
 arch=('x86_64')
