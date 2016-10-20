@@ -40,11 +40,11 @@ prepare() {
 	cd "$srcdir/${_pkgname}-${_pkgver}-${_version}${_pkgrel}"
 
   sed -i -e "/exception-reporting/d" \
-	       -e "/metrics/d" \
+         -e "/metrics/d" \
          -e "/\"dependencies\": {/a \
             \"language-patch2\": \"${_language_patch2_url}\"," \
          -e "s/\"language-gfm\": \".*\",/\"language-gfm2\": \"${_language_gfm2_ver}\",\n    \"language-ini-desktop\": \"${_language_ini_desktop_ver}\",\n    \"language-liquid\": \"${_language_liquid_ver}\",\n    \"language-patch2\": \"${_language_patch2_ver}\",/g" \
-         -e "s/\"language-shellscript\": \".*\",/\"language-unix-shell\": \"${_language_unix_shell_ver}\",\n    \"language-vala-modern\": \"${_language_vala_modern_ver}\",/g" \
+         -e "s/\"language-shellscript\": \".*\",/\"language-unix-shell\": \"${_language_unix_shell_ver}\",\n    \"language-vala-modern\": \"${_language_vala_modern_ver}\",\n    \"terminal-fusion\": \"${_terminal_fusion_ver}\",/g" \
          package.json
 
 	chmod 755 -R package.json
