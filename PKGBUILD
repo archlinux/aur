@@ -2,9 +2,9 @@
 
 pkgname=bcal
 pkgver=1.4
-pkgrel=0
+pkgrel=1
 pkgdesc="Byte CALculator. The engineer's utility for storage conversions and calculations."
-arch=("i686" "x86_64")
+arch=("x86_64")
 url="https://github.com/jarun/bcal"
 license=('GPL3')
 source=("https://github.com/jarun/bcal/archive/v${pkgver//_/-}.tar.gz")
