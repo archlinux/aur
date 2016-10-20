@@ -1,6 +1,6 @@
 diff -rupN lightdm-pantheon-greeter.orig/CMakeLists.txt lightdm-pantheon-greeter/CMakeLists.txt
---- lightdm-pantheon-greeter.orig/CMakeLists.txt	2016-05-06 10:51:40.257595927 +0200
-+++ lightdm-pantheon-greeter/CMakeLists.txt	2016-05-06 10:51:47.284064288 +0200
+--- lightdm-pantheon-greeter.orig/CMakeLists.txt	2016-10-20 11:56:55.230387369 +0200
++++ lightdm-pantheon-greeter/CMakeLists.txt	2016-10-20 11:58:27.337280463 +0200
 @@ -8,7 +8,7 @@ list (APPEND CMAKE_MODULE_PATH ${CMAKE_S
  
  set (CONF_DIR "/etc/lightdm")
@@ -8,9 +8,9 @@ diff -rupN lightdm-pantheon-greeter.orig/CMakeLists.txt lightdm-pantheon-greeter
 -set (PKGDATADIR "${DATADIR}/pantheon-greeter")
 +set (PKGDATADIR "${DATADIR}/lightdm-pantheon-greeter")
  set (CMAKE_INSTALL_PREFIX /usr)
- set (VERSION "2.0.2")
+ set (VERSION "3.0.0")
  
-@@ -61,9 +61,9 @@ add_subdirectory (po)
+@@ -61,10 +61,10 @@ add_subdirectory (po)
  
  include (GSettings)
  
@@ -22,12 +22,15 @@ diff -rupN lightdm-pantheon-greeter.orig/CMakeLists.txt lightdm-pantheon-greeter
 -install (TARGETS pantheon-greeter RUNTIME DESTINATION sbin)
 -install (FILES ${CMAKE_CURRENT_SOURCE_DIR}/data/pantheon-greeter.desktop DESTINATION share/xgreeters)
 -install (FILES ${CMAKE_CURRENT_SOURCE_DIR}/data/pantheon-greeter.conf DESTINATION ${CONF_DIR})
+-install (FILES ${CMAKE_CURRENT_SOURCE_DIR}/data/fingerprint.png DESTINATION ${PKGDATADIR})
+\ No newline at end of file
 +install (TARGETS lightdm-pantheon-greeter RUNTIME DESTINATION bin)
 +install (FILES ${CMAKE_CURRENT_SOURCE_DIR}/data/lightdm-pantheon-greeter.desktop DESTINATION share/xgreeters)
 +install (FILES ${CMAKE_CURRENT_SOURCE_DIR}/data/lightdm-pantheon-greeter.conf DESTINATION ${CONF_DIR})
-diff -rupN pantheon-greeter-2.0.0.orig/data/lightdm-pantheon-greeter.conf pantheon-greeter-2.0.0/data/lightdm-pantheon-greeter.conf
---- pantheon-greeter-2.0.0.orig/data/lightdm-pantheon-greeter.conf	2015-04-06 23:37:23.000000000 +0200
-+++ pantheon-greeter-2.0.0/data/lightdm-pantheon-greeter.conf	1970-01-01 01:00:00.000000000 +0100
++install (FILES ${CMAKE_CURRENT_SOURCE_DIR}/data/fingerprint.png DESTINATION ${PKGDATADIR})
+diff -rupN lightdm-pantheon-greeter.orig/data/lightdm-pantheon-greeter.conf lightdm-pantheon-greeter/data/lightdm-pantheon-greeter.conf
+--- lightdm-pantheon-greeter.orig/data/lightdm-pantheon-greeter.conf	1970-01-01 01:00:00.000000000 +0100
++++ lightdm-pantheon-greeter/data/lightdm-pantheon-greeter.conf	2016-10-20 11:56:20.788486000 +0200
 @@ -0,0 +1,6 @@
 +[greeter]
 +#activate-numlock=true
@@ -35,9 +38,9 @@ diff -rupN pantheon-greeter-2.0.0.orig/data/lightdm-pantheon-greeter.conf panthe
 +#high-contrast=false
 +#onscreen-keyboard=false
 +#screensaver-timeout=60
-diff -rupN pantheon-greeter-2.0.0.orig/data/lightdm-pantheon-greeter.desktop pantheon-greeter-2.0.0/data/lightdm-pantheon-greeter.desktop
---- pantheon-greeter-2.0.0.orig/data/lightdm-pantheon-greeter.desktop	2015-04-06 23:37:23.000000000 +0200
-+++ pantheon-greeter-2.0.0/data/lightdm-pantheon-greeter.desktop	1970-01-01 01:00:00.000000000 +0100
+diff -rupN lightdm-pantheon-greeter.orig/data/lightdm-pantheon-greeter.desktop lightdm-pantheon-greeter/data/lightdm-pantheon-greeter.desktop
+--- lightdm-pantheon-greeter.orig/data/lightdm-pantheon-greeter.desktop	1970-01-01 01:00:00.000000000 +0100
++++ lightdm-pantheon-greeter/data/lightdm-pantheon-greeter.desktop	2016-10-20 14:56:10.854766420 +0200
 @@ -0,0 +1,7 @@
 +[Desktop Entry]
 +Name=Pantheon Greeter
@@ -46,9 +49,9 @@ diff -rupN pantheon-greeter-2.0.0.orig/data/lightdm-pantheon-greeter.desktop pan
 +Type=Application
 +X-Ubuntu-Gettext-Domain=pantheon-greeter
 +Name[en_US]=lightdm-pantheon-greeter
-diff -rupN pantheon-greeter-2.0.0.orig/data/pantheon-greeter.conf pantheon-greeter-2.0.0/data/pantheon-greeter.conf
---- pantheon-greeter-2.0.0.orig/data/pantheon-greeter.conf	2015-04-06 23:37:23.000000000 +0200
-+++ pantheon-greeter-2.0.0/data/pantheon-greeter.conf	1970-01-01 01:00:00.000000000 +0100
+diff -rupN lightdm-pantheon-greeter.orig/data/pantheon-greeter.conf lightdm-pantheon-greeter/data/pantheon-greeter.conf
+--- lightdm-pantheon-greeter.orig/data/pantheon-greeter.conf	2016-10-20 11:56:55.227053752 +0200
++++ lightdm-pantheon-greeter/data/pantheon-greeter.conf	1970-01-01 01:00:00.000000000 +0100
 @@ -1,6 +0,0 @@
 -[greeter]
 -#activate-numlock=true
@@ -56,9 +59,9 @@ diff -rupN pantheon-greeter-2.0.0.orig/data/pantheon-greeter.conf pantheon-greet
 -#high-contrast=false
 -#onscreen-keyboard=false
 -#screensaver-timeout=60
-diff -rupN pantheon-greeter-2.0.0.orig/data/pantheon-greeter.desktop pantheon-greeter-2.0.0/data/pantheon-greeter.desktop
---- pantheon-greeter-2.0.0.orig/data/pantheon-greeter.desktop	2015-04-06 23:37:23.000000000 +0200
-+++ pantheon-greeter-2.0.0/data/pantheon-greeter.desktop	1970-01-01 01:00:00.000000000 +0100
+diff -rupN lightdm-pantheon-greeter.orig/data/pantheon-greeter.desktop lightdm-pantheon-greeter/data/pantheon-greeter.desktop
+--- lightdm-pantheon-greeter.orig/data/pantheon-greeter.desktop	2016-10-20 11:56:55.227053752 +0200
++++ lightdm-pantheon-greeter/data/pantheon-greeter.desktop	1970-01-01 01:00:00.000000000 +0100
 @@ -1,7 +0,0 @@
 -[Desktop Entry]
 -Name=Pantheon Greeter
@@ -68,26 +71,35 @@ diff -rupN pantheon-greeter-2.0.0.orig/data/pantheon-greeter.desktop pantheon-gr
 -X-Ubuntu-Gettext-Domain=pantheon-greeter
 -Name[en_US]=pantheon-greeter
 diff -rupN lightdm-pantheon-greeter.orig/src/PantheonGreeter.vala lightdm-pantheon-greeter/src/PantheonGreeter.vala
---- lightdm-pantheon-greeter.orig/src/PantheonGreeter.vala	2016-05-06 10:51:40.264262406 +0200
-+++ lightdm-pantheon-greeter/src/PantheonGreeter.vala	2016-05-06 10:51:47.284064288 +0200
-@@ -100,7 +100,7 @@ public class PantheonGreeter : Gtk.Windo
+--- lightdm-pantheon-greeter.orig/src/PantheonGreeter.vala	2016-10-20 11:56:55.227053752 +0200
++++ lightdm-pantheon-greeter/src/PantheonGreeter.vala	2016-10-20 14:57:31.984365856 +0200
+@@ -104,7 +104,7 @@ public class PantheonGreeter : Gtk.Windo
          
          settings = new KeyFile ();
          try {
--            settings.load_from_file (Constants.CONF_DIR+"/pantheon-greeter.conf",
-+            settings.load_from_file (Constants.CONF_DIR+"/lightdm-pantheon-greeter.conf",
-                     KeyFileFlags.KEEP_COMMENTS);
+-            settings.load_from_file (Path.build_filename (Constants.CONF_DIR, "pantheon-greeter.conf"), KeyFileFlags.KEEP_COMMENTS);
++            settings.load_from_file (Path.build_filename (Constants.CONF_DIR, "lightdm-pantheon-greeter.conf"), KeyFileFlags.KEEP_COMMENTS);
          } catch (Error e) {
              warning (e.message);
+         }
+@@ -433,7 +433,7 @@ public class PantheonGreeter : Gtk.Windo
+ }
+ 
+ public static int main (string [] args) {
+-    message ("Starting pantheon-greeter...");
++    message ("Starting lightdm-pantheon-greeter...");
+     /* Protect memory from being paged to disk, as we deal with passwords */
+     Posix.mlockall (Posix.MCL_CURRENT | Posix.MCL_FUTURE);
+ 
 diff -rupN lightdm-pantheon-greeter.orig/src/Wallpaper.vala lightdm-pantheon-greeter/src/Wallpaper.vala
---- lightdm-pantheon-greeter.orig/src/Wallpaper.vala	2016-05-06 10:51:40.264262406 +0200
-+++ lightdm-pantheon-greeter/src/Wallpaper.vala	2016-05-06 10:54:05.226841092 +0200
-@@ -58,7 +58,7 @@ public class Wallpaper : Clutter.Group {
-         var settings = new KeyFile();
+--- lightdm-pantheon-greeter.orig/src/Wallpaper.vala	2016-10-20 11:56:55.230387369 +0200
++++ lightdm-pantheon-greeter/src/Wallpaper.vala	2016-10-20 14:58:05.180882804 +0200
+@@ -53,7 +53,7 @@ public class Wallpaper : GtkClutter.Acto
+         var settings = new KeyFile ();
          string default_wallpaper = "/usr/share/backgrounds/elementaryos-default";
-         try{
--            settings.load_from_file(Constants.CONF_DIR+"/pantheon-greeter.conf",
-+            settings.load_from_file(Constants.CONF_DIR+"/lightdm-pantheon-greeter.conf",
-                     KeyFileFlags.KEEP_COMMENTS);
+         try {
+-            settings.load_from_file (Constants.CONF_DIR + "/pantheon-greeter.conf", KeyFileFlags.KEEP_COMMENTS);
++            settings.load_from_file (Constants.CONF_DIR + "/lightdm-pantheon-greeter.conf", KeyFileFlags.KEEP_COMMENTS);
              default_wallpaper = settings.get_string ("greeter", "default-wallpaper");
          } catch (Error e) {
+             warning (e.message);
