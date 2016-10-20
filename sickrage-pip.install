@@ -1,3 +1,8 @@
+_patch_pip_path() {
+  find /opt/sickrage/lib/python*/site-packages/sickrage -name "*.py" -exec \
+      sed -i "s|\('pip_path'.*\)'pip'|\1'/opt/sickrage/bin/pip2'|" '{}' \;
+}
+
 post_install() {
   systemd-sysusers sickrage.conf
   systemd-tmpfiles --create sickgear.conf
@@ -5,6 +10,7 @@ post_install() {
   chown -R sickrage:sickrage /opt/sickrage
   sudo -u sickrage virtualenv2 /opt/sickrage
   sudo -u sickrage /opt/sickrage/bin/pip2 install --isolated sickrage lxml pyopenssl
+  _patch_pip_path
   echo "==> Start and enable sickrage.service. Then visit http://localhost:8081/"
 }
 
@@ -13,6 +19,7 @@ post_upgrade() {
     post_install $1
   else
     sudo -u sickrage /opt/sickrage/bin/pip2 install --isolated --upgrade sickrage lxml pyopenssl
+    _patch_pip_path
   fi
 }
 
@@ -22,7 +29,7 @@ post_remove() {
   if [ $? -eq 0 ]; then
     systemctl stop sickrage.service
   fi
-  sudo -u sickrage virtualenv2 --clear --no-download --no-wheel --no-pip /opt/sickrage
+  sudo -u sickrage virtualenv2 --no-wheel --no-setuptools --no-pip --clear --no-download /opt/sickrage
 
   echo -e "\n==> Some files in /opt/sickrage may not have been removed.\n"
 

@@ -3,7 +3,7 @@
 
 _pkgname=sickrage
 pkgname=$_pkgname-pip
-pkgver=8.5.6.r0.gf7d7168
+pkgver=8.6.1.r2.ge5f0fae
 pkgrel=1
 pkgdesc="A PVR application that downloads and manages your TV shows. Echel0n fork of sickbeard, with tvrage, torrents and anime support."
 arch=('any')
