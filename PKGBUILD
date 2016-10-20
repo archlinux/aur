@@ -1,7 +1,7 @@
 # Maintainer: Conor Anderson <conor.anderson@mail.utoronto.ca>
 pkgname=wire-desktop-git
 _pkgname=wire-desktop
-pkgver=2.11.2661.r1.ga433bf2
+pkgver=2.11.2665.r0.g3f4c0dd
 pkgrel=1
 pkgdesc='Modern communication, full privacy.'
 arch=('x86_64' 'i686')
@@ -11,8 +11,10 @@ conflicts=('wire-desktop-bin' 'wire-desktop')
 depends=('nss' 'alsa-lib' 'libxss' 'gconf' 'gtk2' 'libxtst')
 makedepends=('npm' 'nodejs-grunt-cli' 'gendesk' 'python2')
 provides=('wire-desktop')
-source=("git://github.com/wireapp/wire-desktop.git")
-sha256sums=(SKIP)
+source=("git://github.com/wireapp/wire-desktop.git"
+        "Gruntfile.patch")
+sha256sums=(SKIP
+            'fc8a2d5badde0b3049df843f497a999a8cfeff05a261343d9094d3ba35ca4202')
 
 pkgver() {
   cd ${srcdir}/${_pkgname}
@@ -21,6 +23,8 @@ pkgver() {
 
 prepare() {
   gendesk -f -n --name=Wire --pkgname=${_pkgname} --pkgdesc="${pkgdesc}" --exec=wire --categories="Network"
+  cd ${srcdir}/${_pkgname}
+  patch -p0 < $startdir/Gruntfile.patch
 }
 
 build() {
