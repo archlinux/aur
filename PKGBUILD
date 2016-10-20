@@ -105,7 +105,7 @@ prepare() {
   # set DEFAULT_CONSOLE_LOGLEVEL to 4 (same value as the 'quiet' kernel param)
   # remove this when a Kconfig knob is made available by upstream
   # (relevant patch sent upstream: https://lkml.org/lkml/2011/7/26/227)
-  #patch -p1 -i "${srcdir}/change-default-console-loglevel.patch"
+  patch -p1 -i "${srcdir}/change-default-console-loglevel.patch"
 
   # This patch disables some wireless optimisations which cause trouble on Surface devices.
   patch -p1 -i "${srcdir}/wifi.patch"
