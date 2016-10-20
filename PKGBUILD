@@ -3,7 +3,7 @@
 # Contributor: Andrey Vlasovskikh <andrey.vlasovskikh@gmail.com>
 
 pkgname=pycharm-eap
-_buildver=163.6110.26
+_buildver=163.6512.5
 _pkgver=2016.3.0
 _eap="True"
 pkgver="${_pkgver}.${_buildver}"
