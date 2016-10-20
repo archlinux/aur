@@ -11,7 +11,7 @@ pkgbase = next
 	source = next.desktop
 	source = next.LICENSE
 	sha256sums = e26cb0d4fdcdbfbc275ceaef9e94ad151d34792a1879dddd896ed2953d184576
-	sha256sums = 51657bc7148aeb3ee0c8b75a354fd701f510ffcfc04b6f5810eb6f4abb2d34c8
+	sha256sums = 3acf4a84a47c281aa77c71004a28cc7be284854c98bb302da5e52002a3cc9afd
 	sha256sums = febb1e65a7932f2f80155078b1dd64f469433625c76cff43b239768a184729f0
 
 pkgname = next

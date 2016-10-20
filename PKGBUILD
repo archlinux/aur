@@ -19,7 +19,7 @@ source=(	'http://www.cgm-online.com/secure_rc-heli-simulator/cgm-rc-heli-simulat
 		'next.LICENSE')
 
 sha256sums=(	'e26cb0d4fdcdbfbc275ceaef9e94ad151d34792a1879dddd896ed2953d184576'
-		'51657bc7148aeb3ee0c8b75a354fd701f510ffcfc04b6f5810eb6f4abb2d34c8'
+		'3acf4a84a47c281aa77c71004a28cc7be284854c98bb302da5e52002a3cc9afd'
 		'febb1e65a7932f2f80155078b1dd64f469433625c76cff43b239768a184729f0')
 
 prepare() {
@@ -53,7 +53,7 @@ package() {
   cp -dr --no-preserve=ownership "${srcdir}/${pkgname}" "${pkgdir}/opt/"
 
   msg2 "Installing icon file..."
-  install -Dm644 "${srcdir}/${pkgname}/neXt_Data/Resources/UnityPlayer.png" "${pkgdir}/usr/share/icons/hicolor/128x128/apps/${pkgname}.png"
+  install -Dm644 "${srcdir}/${pkgname}/neXt_Data/Resources/UnityPlayer.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
 
   msg2 "Installing ${pkgname}.desktop file..."
   install -Dm644 "${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
