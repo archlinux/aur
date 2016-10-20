@@ -30,7 +30,7 @@ index de9044c..f5d3e78 100644
 +  initrd_extra=
 +  for i in intel-ucode.img; do
 +    if test -e "${dirname}/${i}" ; then
-+      initrd_extra+=" ${i}"
++      initrd_extra="${initrd_extra} ${i}"
 +    fi
 +  done
  

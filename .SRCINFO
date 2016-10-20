@@ -1,7 +1,7 @@
 pkgbase = grub
 	pkgdesc = GNU GRand Unified Bootloader (2)
 	pkgver = 2.02.beta3
-	pkgrel = 3
+	pkgrel = 4
 	epoch = 1
 	url = https://www.gnu.org/software/grub/
 	install = grub.install
@@ -60,17 +60,17 @@ pkgbase = grub
 	source = grub.default
 	source = grub.cfg
 	validpgpkeys = 95D2E9AB8740D8046387FD151A09227B1F435A33
-	md5sums = SKIP
-	md5sums = SKIP
-	md5sums = 728b7439ac733a7c0d56049adec364c7
-	md5sums = SKIP
-	md5sums = 9589ec46a04f9bb4d5da987340a4a324
-	md5sums = ff3b8524983ce02fc48fce38f96b1a82
-	md5sums = ba9d27c44b677bf329e5b96933bdbde8
-	md5sums = e506ae4a9f9f7d1b765febfa84e10d48
-	md5sums = f1999315bbd25b4b9359919ce9b36144
-	md5sums = a03ffd56324520393bf574cefccb893d
-	md5sums = c8b9511586d57d6f2524ae7898397a46
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = 6dc2596a0cec08f36de7fb066f12015b572456c90d4e06ddc7b399a3e50b5f89
+	sha256sums = SKIP
+	sha256sums = 6a85a2a93a27f64bac68bef513e3239a898a0502221978b3cb99e41994021b05
+	sha256sums = 37adb95049f6cdcbdbf60ed6b6440c5be99a4cd307a0f96c3c3837b6c2e07f3c
+	sha256sums = b41e4438319136b5e74e0abdfcb64ae115393e4e15207490272c425f54026dd3
+	sha256sums = a5198267ceb04dceb6d2ea7800281a42b3f91fd02da55d2cc9ea20d47273ca29
+	sha256sums = bf712de689a944ac23a0303bbcc223eedf8d4fcb5c94bdc071c71c2444158a7f
+	sha256sums = df764fbd876947dea973017f95371e53833bf878458140b09f0b70d900235676
+	sha256sums = c5e4f3836130c6885e9273c21f057263eba53f4b7c0e2f111f6e5f2e487a47ad
 
 pkgname = grub
 
