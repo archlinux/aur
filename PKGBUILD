@@ -1,9 +1,10 @@
 # Maintainer: Lucki <Lucki at holarse-linuxgaming dot de>
 
 pkgname=yaup-git
+_pkgname=yaup
 
 pkgver=0.1.r1.g6543845
-pkgrel=1
+pkgrel=2
 pkgdesc="Yet Another UPnP Portmapper - A GTK frontend for miniupnpc"
 arch=('i686' 'x86_64')
 url="https://github.com/Holarse-Linuxgaming/yaup"
@@ -23,6 +24,9 @@ pkgver()
 
 prepare()
 {
+	# generate .desktop-file
+	gendesk -n -f --categories "Game"
+
 	# update .CHANGELOG
 	git -C ${srcdir}/${pkgname} log --graph -10 > ${startdir}/.CHANGELOG
 }
@@ -38,4 +42,7 @@ package()
 {
 	cd "$srcdir/$pkgname"
 	make DESTDIR="$pkgdir" install
+
+	install -Dm644 "${srcdir}/${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
+	install -Dm644 "${srcdir}/${pkgname}/src/${_pkgname}-dark.png" "${pkgdir}/usr/share/pixmaps/${_pkgname}.png"
 }
