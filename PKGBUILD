@@ -7,7 +7,7 @@ pkgdesc="Clean LightDM Webkit2 greeter theme"
 arch=('any')
 url="https://gitlab.com/cdev/${pkgname}"
 license=('custom:WTFPL')
-depends=('lightdm-webkit-greeter')
+depends=('lightdm-webkit2-greeter')
 source=( "https://github.com/rufuswilson/${pkgname}/archive/${pkgver}.tar.gz" )
 md5sums=('7268ee4ca6633ecab8976774402b64fe')
 
