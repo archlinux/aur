@@ -15,6 +15,7 @@ pkgbase = praat-pulse-git
 	optdepends = ttf-sil-fonts
 	provides = praat
 	conflicts = praat
+	conflicts = praat-git
 	source = praat::git+https://github.com/praat/praat.git
 	md5sums = SKIP
 
