@@ -36,7 +36,7 @@ build() {
 check() {
     cd "${srcdir}/src/github.com/gravitational/teleport"
     # Copied from upstream Makefile, but without coverage analysis and vet
-    go test -v  ./tool/tsh/... \
+    go test  ./tool/tsh/... \
              ./lib/... \
              ./tool/teleport... -tags test
 }
