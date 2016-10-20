@@ -1,0 +1,14 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=neXt
+Version=1.0
+GenericName=A helicopter flight simulator made by CGM
+Comment=r/c Heli Flight Simulator made by Klaus Eiperle, Eiperle CGM
+Exec=/opt/next/next
+Terminal=false
+Icon=next.png
+Type=Application
+StartupNotify=false
+Categories=Education;
+Keywords=simulator;rc;helicopter
+

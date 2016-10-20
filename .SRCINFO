@@ -1,16 +1,17 @@
 pkgbase = next
 	pkgdesc = CGM rc Heli Flight Simulator
 	pkgver = 1.454
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.rc-aerobatics.eu/index_e.html
-	changelog = next.changelog
 	arch = i686
 	arch = x86_64
 	license = custom
 	optdepends = joyutils: jscal, jstest, and jsattach utilities for the Linux joystick driver
 	source = http://www.cgm-online.com/secure_rc-heli-simulator/cgm-rc-heli-simulator-linux-x86-64bit.zip
+	source = next.desktop
 	source = next.LICENSE
 	sha256sums = e26cb0d4fdcdbfbc275ceaef9e94ad151d34792a1879dddd896ed2953d184576
+	sha256sums = 51657bc7148aeb3ee0c8b75a354fd701f510ffcfc04b6f5810eb6f4abb2d34c8
 	sha256sums = febb1e65a7932f2f80155078b1dd64f469433625c76cff43b239768a184729f0
 
 pkgname = next
