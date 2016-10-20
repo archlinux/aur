@@ -3,7 +3,7 @@
 pkgname="qt5-python27-git"
 _qtver=5.7.0
 pkgver=3.1+96.gbe06218
-pkgrel=3
+pkgrel=4
 arch=("x86_64")
 pkgdesc="PythonQt fork featuring Qt 5.x and Python 3.x support and improved CMake build system (Qt5 and Python2.7 version)"
 license=("LGPL")
@@ -49,7 +49,6 @@ build() {
 check() {
   if ! xset q &> /dev/null; then
     echo "no running X Server, skipping tests"
-    exit 1
   else
     cd "$srcdir/build-$CHOST-$pkgname"
     ninja tests
