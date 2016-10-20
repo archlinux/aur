@@ -1,16 +1,16 @@
 # Maintainer: Madara <majetree@yandex.ru>
 
 pkgname=pixiecore
-pkgver=16.02.28.2053
+pkgver=16.10.01.1420
 pkgrel=1
 epoch=
-pkgdesc="PXE booting for people in a hurry"
-arch=('any')
-url="https://github.com/danderson/pixiecore"
+pkgdesc="An all-in-one tool for easy netbooting"
+arch=('i686' 'x86_64')
+url="https://github.com/google/netboot/tree/master/pixiecore"
 license=('GPL2')
 groups=()
 depends=()
-makedepends=('go' 'git>=2.6')
+makedepends=('go' 'git')
 checkdepends=()
 optdepends=()
 provides=()
@@ -20,30 +20,26 @@ backup=()
 options=()
 install=
 changelog=
-source=("git://github.com/danderson/pixiecore.git")
+source=()
 noextract=()
-md5sums=('SKIP')
+md5sums=()
 #validpgpkeys=()
 
 
-pkgver() {
-	cd "${srcdir}/${pkgname}"
-	git log -1 --format="%cd" --date=format:"%y.%m.%d.%H%M"
+prepare() {
+	export GOPATH="$srcdir/go"
+	mkdir -p $GOPATH
+
+	export GOBIN="$GOPATH/bin"
+	mkdir -p $GOBIN
+
+	go env
 }
 
 build() {
-	cd "${srcdir}/${pkgname}"
-	rm -rf "${srcdir}/.go/src"
-	mkdir -p "${srcdir}/.go/src"
-	export GOPATH="${srcdir}/.go"
-	mv "${srcdir}/${pkgname}" "${srcdir}/.go/src/"
-	cd "${srcdir}/.go/src/${pkgname}/"
-	ln -sf "${srcdir}/.go/src/${pkgname}/" "${srcdir}/${pkgname}"
-
-	echo "Running 'go get' ..."
-	go get
+	go get -v go.universe.tf/netboot/cmd/pixiecore
 }
 
 package() {
-	install -DT "${srcdir}/.go/bin/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
+	install -Dm755 "$GOBIN/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
 }
