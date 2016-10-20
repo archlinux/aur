@@ -1,8 +1,8 @@
 # Maintainer: Tomislav Ivek <tomislav.ivek@gmail.com>
 
 pkgname=('conan')
-pkgver=0.13.3
-pkgrel=2
+pkgver=0.14.0
+pkgrel=1
 pkgdesc="A distributed, open source, C/C++ package manager."
 arch=('any')
 url="https://conan.io"
@@ -18,14 +18,8 @@ depends=('python-pyjwt>=1.4.0' 'python-pyjwt<1.5.0'
          'python-fasteners>=0.14.1'
          'python-six>=1.10.0'
          'python-bottle>=0.12.8' 'python-bottle<0.13')
-source=("https://github.com/conan-io/conan/archive/${pkgver}.tar.gz" "boto-2.43.0.patch")
-sha512sums=('b4559f3e890e26195d77831924961ae466acbcfc440f5e3ebb85e15483910b3c94d5fef0bb7af53f18d17606fb0105168c6d14d21427a75ac4b6a2773c7b7532'
-            '2bfd05422092b4035e5c3fe007bb414f7b902e2dc6a68a94021f19c7400042541500c176519035a33ac9f7bf92f647d46b481056beb378d2306d5ca56b5e9453')
-
-prepare() {
-  cd "$srcdir/conan-$pkgver"
-  patch -p1 <../boto-2.43.0.patch
-}
+source=("https://github.com/conan-io/conan/archive/${pkgver}.tar.gz")
+sha512sums=('bce4b3d5b7bbb87bcc65a3039aea95a101ad276af0863c4fdb2fed8ec344b9608a687d6a5f9eca693fb5a58d7b2dfde2059b8f325309a4863236aa38a1691ee1')
 
 build() {
   cd "$srcdir/conan-$pkgver"
