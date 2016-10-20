@@ -53,8 +53,8 @@ _disabled_modules=(languages/mod_spidermonkey
 # BUILD CONFIGURATION ENDS                     #
 
 pkgname='freeswitch-git'
-pkgver=1.7.0.r31054.841e202
-pkgrel=5
+pkgver=1.7.0.r31427.43e19a5
+pkgrel=1
 pkgdesc="An opensource and free (libre, price) telephony system, similar to Asterisk (git version)."
 arch=('i686' 'x86_64')
 url="http://freeswitch.org/"
@@ -233,8 +233,8 @@ package() {
   cp -a "${srcdir}/${_pkgname}/docs" usr/share/doc/freeswitch
   install -D -m 0755 -d usr/share/doc/freeswitch/support-d
   cp -a "${srcdir}/${_pkgname}/support-d" usr/share/doc/freeswitch/
-  install -D -m 0755 -d usr/share/doc/freeswitch/scripts
-  cp -a "${srcdir}/${_pkgname}/scripts" usr/share/doc/freeswitch/
+  install -D -m 0755 -d usr/share/freeswitch/scripts
+  cp -a "${srcdir}/${_pkgname}/scripts" usr/share/freeswitch/.
   # Copy upstream confs 
   install -D -m 0755 -d usr/share/doc/freeswitch/examples/conf.default
   install -D -m 0755 -d usr/share/doc/freeswitch/examples/conf.archlinux
