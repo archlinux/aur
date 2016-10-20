@@ -33,8 +33,8 @@ source=(jdk8u-${_repo_ver}.tar.gz::${_url_src}/archive/${_repo_ver}.tar.gz
         langtools-${_repo_ver}.tar.gz::${_url_src}/langtools/archive/${_repo_ver}.tar.gz
         nashorn-${_repo_ver}.tar.gz::${_url_src}/nashorn/archive/${_repo_ver}.tar.gz
         build_with_gcc6.patch
-        004_add-fontconfig.patch
-        005_enable-infinality.patch)
+        add-fontconfig.patch
+        enable-infinality.patch)
 
 sha256sums=('d4161e41122de3526cfe4ca4d568e79b5843e833640752fa6ba2126f6372ed96'
             'ae51aaf7b6116ca11b79985f94af4b1cfed4675db6ee848904ddfc70b0ed0376'
@@ -74,8 +74,8 @@ prepare() {
 
   # Apply infinality patches
   cd "${srcdir}/jdk8u-${_repo_ver}/jdk"
-  patch -p1 < "${srcdir}/004_add-fontconfig.patch"
-  patch -p1 < "${srcdir}/005_enable-infinality.patch"
+  patch -p1 < "${srcdir}/add-fontconfig.patch"
+  patch -p1 < "${srcdir}/enable-infinality.patch"
 }
 
 build() {
