@@ -49,8 +49,8 @@ sha256sums=('d4161e41122de3526cfe4ca4d568e79b5843e833640752fa6ba2126f6372ed96'
             'efeee8db0710bc217b5e886224450f6cf50938004e8c140eb9aee0a699d2d5ac')
 
 case "${CARCH}" in
-  'x86_64') _JARCH=amd64 ; _DOC_ARCH=x86_64 ;;
-  'i686'  ) _JARCH=i386  ; _DOC_ARCH=x86    ;;
+  'x86_64') _JARCH=amd64 ;;
+  'i686'  ) _JARCH=i386  ;;
 esac
 
 _jdkname=openjdk8
