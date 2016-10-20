@@ -11,7 +11,7 @@ depends=()
 source=('http://docs.volcanis.me/_The_Days_of_Grays__by_liliumcruentus.zip')
 md5sums=('33025c58d2683cb1c175ef40ef4d5a51')
 
-build() {
+package() {
   cd "$srcdir/"
 
   mkdir -p $pkgdir/usr/share/themes/
