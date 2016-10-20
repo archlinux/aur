@@ -1,7 +1,7 @@
 # Maintainer: Simon Marchi <simon.marchi at polymtl dot ca>
 pkgname=git-meld-git
 pkgver=0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A wrapper around git and meld for comparing git trees."
 arch=('any')
 url="https://github.com/wmanley/git-meld.git"
