@@ -1,12 +1,12 @@
 # Maintainer: Dario Ostuni <another.code.996@gmail.com>
 pkgname=python2-itamake-git
 pkgver=r77.0148ec9
-pkgrel=1
+pkgrel=2
 pkgdesc="A stripped down cmsMake which *only* makes, nothing more."
 arch=('any')
 url="https://github.com/algorithm-ninja/itaMake.git"
 license=('AGPL3')
-depends=('python2' 'python2-cmscommon-git')
+depends=('python2' 'python2-cmscommon-git' 'python2-yaml')
 provides=('python2-itamake')
 options=(!emptydirs)
 source=("git+https://github.com/algorithm-ninja/itaMake.git")
