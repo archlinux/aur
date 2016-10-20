@@ -53,7 +53,7 @@ _disabled_modules=(languages/mod_spidermonkey
 # BUILD CONFIGURATION ENDS                     #
 
 pkgname='freeswitch-git'
-pkgver=1.7.0.r31427.43e19a5
+pkgver=1.7.0.r31430.9407f89
 pkgrel=1
 pkgdesc="An opensource and free (libre, price) telephony system, similar to Asterisk (git version)."
 arch=('i686' 'x86_64')
@@ -171,16 +171,25 @@ build() {
   sleep 5
 
   # CONFIGURE
-  ./configure --prefix=/var/lib/freeswitch --with-python=/usr/bin/python2 \
-    --bindir=/usr/bin --sbindir=/usr/sbin --localstatedir=/var \
-    --sysconfdir=/etc --datarootdir=/usr/share \
-    --libexecdir=/usr/lib/freeswitch --libdir=/usr/lib/freeswitch \
-    --includedir=/usr/include/freeswitch --enable-core-odbc-support \
+  ./configure \
+    --prefix=/var/lib/freeswitch \
+    --with-python=/usr/bin/python2 \
+    --bindir=/usr/bin \
+    --sbindir=/usr/sbin \
+    --localstatedir=/var \
+    --sysconfdir=/etc \
+    --datarootdir=/usr/share \
+    --libexecdir=/usr/lib/freeswitch \
+    --libdir=/usr/lib/freeswitch \
+    --includedir=/usr/include/freeswitch \
+    --enable-core-odbc-support \
     --with-recordingsdir=/var/spool/freeswitch/recordings \
     --with-dbdir=/var/spool/freeswitch/db \
     --with-pkgconfigdir=/usr/lib/pkgconfig \
     --with-logfiledir=/var/log/freeswitch \
     --with-modinstdir=/usr/lib/freeswitch/mod \
+    --with-scriptdir=/usr/share/freeswitch/scripts \
+    --with-certsdir=/etc/freeswitch/certs \
     --with-rundir=/run/freeswitch
 
   # COMPILE
@@ -245,6 +254,7 @@ package() {
   chmod 600 etc/freeswitch/private/passwords.xml
   ln -sf /etc/freeswitch var/lib/freeswitch/conf
   cp -a etc/freeswitch/* usr/share/doc/freeswitch/examples/conf.default/
+  install -d -m 0755 etc/freeswitch/certs
 
   for _mod in ${_enabled_modules[@]};do
     enable_mod_xml $_mod
@@ -260,4 +270,20 @@ package() {
   install -D -m 0755 "${srcdir}/run.freeswitch" usr/share/freeswitch/run
   install -D -m 0755 "${srcdir}/run_log.freeswitch" usr/share/freeswitch/log/run
   install -D -m 0644 "${srcdir}/conf_log.freeswitch" usr/share/freeswitch/log/conf
+
+  # Fix scripts' path
+  cd ${pkgdir}/usr/share/freeswitch/scripts
+  rm -rf applescript
+  rm FreeSWITCH-debian-raspbian-installer.sh
+  for i in $(find ./ -type f);
+  do
+    sed -i -r \
+      -e 's@/usr/local/s?bin/@/usr/bin/@g' \
+      -e 's@/usr/local/freeswitch/certs@/etc/freeswitch/certs@g' \
+      -e 's@/usr/local/freeswitch/run/@/run/freeswitch@g' \
+      -e 's@/usr/local/freeswitch/log@/var/log@g' \
+      -e 's@/usr/local/freeswitch/bin@/usr/bin@g' \
+      -e 's@/usr/local/freeswitch/conf@/etc/freeswitch@g' "${i}"
+  done
+
 } 
