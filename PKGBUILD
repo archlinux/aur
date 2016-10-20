@@ -2,7 +2,7 @@
 
 _pkgname=byzanz
 pkgname=$_pkgname-git
-pkgver=0.2.1.105.g1875a7f
+pkgver=0.2.1.126.g81235d2
 pkgrel=1
 pkgdesc="Record what's happening on your desktop"
 arch=('i686' 'x86_64')
