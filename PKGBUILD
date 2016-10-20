@@ -1,15 +1,14 @@
 # Maintainer: Afri 5chdn <aur@cach.co>
+# Available from AUR: https://aur.archlinux.org/packages/solidity-git/
 
 pkgname=solidity-git
-pkgver=0.4.3.git.8572664
+pkgver=0.4.3.git.20161020.008c411
 pkgrel=1
 pkgdesc="The Solidity Contract-Oriented Programming Language (Including solc, lllc; from latest unstable git version)"
 arch=('i686' 'x86_64')
 depends=(
   'boost'
   'boost-libs'
-  'crypto++'
-  'jsoncpp'
   'glibc'
 )
 makedepends=(
@@ -19,7 +18,6 @@ makedepends=(
   'gcc'
   'gcc-libs'
   'libtool'
-  'yasm'
   'git'
 )
 groups=('ethereum')
@@ -40,7 +38,7 @@ provides=(
 
 pkgver() {
   cd ${pkgname%-git}
-  echo "`grep -m1 "PROJECT\_VERSION" CMakeLists.txt | tr -cd '[[:digit:]].'`.git.`git log --pretty=format:%h -n 1`"
+  echo "`grep -m1 "PROJECT\_VERSION" CMakeLists.txt | tr -cd '[[:digit:]].'`.git.`date +%Y%m%d`.`git log --pretty=format:%h -n 1`"
 }
 
 build() {
