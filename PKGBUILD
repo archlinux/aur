@@ -47,8 +47,13 @@ build() {
 }
 
 check() {
-  cd "$srcdir/build-$CHOST-$pkgname"
-  ninja tests
+  if ! xset q &> /dev/null; then
+    echo "no running X Server, skipping tests"
+    exit 1
+  else
+    cd "$srcdir/build-$CHOST-$pkgname"
+    ninja tests
+  fi
 }
 
 package() {
