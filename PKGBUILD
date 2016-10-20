@@ -1,17 +1,17 @@
 # Contributor: Filip <fila pruda com>
 pkgname=ytd
-pkgver=1.49
+pkgver=1.57
 pkgrel=1
 pkgdesc="an utility for downloading multimedia content from YouTube and other online streaming services."
 arch=('i686' 'x86_64')
-url="http://www.pepak.net/download/youtube-downloader/"
+url="http://http://www.pepak.net/ytd/ytd/"
 license=('GPL')
 depends=(wine)
 makedepends=()
-source=(ytd ytd.desktop ytd.xml http://www.pepak.net/files/youtube/ytd-$pkgver.zip)
+source=(ytd ytd.desktop http://www.pepak.net/files/youtube/ytd-$pkgver.zip)
 md5sums=(
 	'fa41961f5092fa471145ade79584fd4b' 'e10bfe126777f969da9eaf35edd0ba65'
-	'ef7d9adbc174a208bf01300b6ab4f8bd' '09b3f080b1d94e67232be1bf01ffe1d3')
+	'dd9491e950b24cb3d1a7c7fa1389b1fa')
 
 package() {
 
@@ -20,7 +20,7 @@ package() {
   
   #app
   install -d -m755 "$pkgdir/usr/share/ytd"
-  install -m644 msdl_dll.dll rtmpdump_dll.dll ytd.exe ytd.xml ytd-defs.xml "$pkgdir/usr/share/ytd"
+  install -m644 ytd.exe ytd-defs.xml "$pkgdir/usr/share/ytd"
   
   install -d -m755 "$pkgdir/usr/share/ytd/locale"
   cp -r locale/. "$pkgdir/usr/share/ytd/locale"
