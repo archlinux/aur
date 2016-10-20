@@ -14,7 +14,7 @@ install=$pkgname.install
 source=("https://github.com/a-sk/${pkgname}/archive/${pkgver}.tar.gz"
         'pyimapnotify@.service')
 md5sums=('575aa9656a9fa89b48eb59f309f8797f'
-         'f251275ae5c146ed62e7f567ae9957ce')
+         'b5aca160ed17844f469bd051ee22cd57')
 
 package() {
   cd "${pkgname}-${pkgver}"
