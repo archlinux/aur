@@ -2,19 +2,19 @@
 pkgname=jasp-desktop-git
 _pkgname=jasp-desktop
 _buildname=jasp-build
-pkgver=v0.8.0.0Beta2.r0.gf03b8aa
+pkgver=v0.8.0.0.r0.g7df687e
 pkgrel=1
 pkgdesc="JASP, a low fat alternative to SPSS, a delicious alternative to R."
 arch=('any')
 url="http://jasp-stats.org"
 license=('AGPL3')
 depends=('qt5-base' 'r' 'libarchive' 'qt5-webkit' 'qt5-declarative' 'qt5-sensors' 'qt5-svg' 'tk' 'curl' 'jasp-rbundle')
-makedepends=('git' 'qtchooser' 'r' 'gcc-fortran' 'boost')
+makedepends=('git' 'r' 'gcc-fortran' 'boost')
 provides=('jasp' 'jasp-desktop')
 conflicts=('jasp' 'jasp-desktop')
 install='jasp-desktop-git.install'
 options=('!strip')
-source=("$_pkgname::git+https://github.com/jasp-stats/$_pkgname.git#tag=v0.8.0.0Beta2" 
+source=("$_pkgname::git+https://github.com/jasp-stats/$_pkgname.git#tag=v0.8.0.0" 
 	"include.patch"
 	"sem.patch"
 	"rlibrary.patch")
@@ -58,7 +58,7 @@ package() {
 
   #Install icon
   mkdir -p $pkgdir/usr/share/pixmaps/
-  cp $srcdir/$_pkgname/Tools/debian/jasp.svg $pkgdir/usr/share/pixmaps/
+  cp $srcdir/$_pkgname/Tools/debian/jasp.svg $pkgdir/usr/share/$_pkgname/Resources/
 
   #Install .desktop file
   mkdir -p $pkgdir/usr/share/applications
