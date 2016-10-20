@@ -1,6 +1,6 @@
 pkgbase = wire-desktop-git
 	pkgdesc = Modern communication, full privacy.
-	pkgver = 2.11.2661.r1.ga433bf2
+	pkgver = 2.11.2665.r0.g3f4c0dd
 	pkgrel = 1
 	url = https://wire.com/
 	arch = x86_64
@@ -20,7 +20,9 @@ pkgbase = wire-desktop-git
 	conflicts = wire-desktop-bin
 	conflicts = wire-desktop
 	source = git://github.com/wireapp/wire-desktop.git
+	source = Gruntfile.patch
 	sha256sums = SKIP
+	sha256sums = fc8a2d5badde0b3049df843f497a999a8cfeff05a261343d9094d3ba35ca4202
 
 pkgname = wire-desktop-git
 
