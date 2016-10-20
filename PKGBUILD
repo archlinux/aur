@@ -3,15 +3,15 @@ validpgpkeys=('748231EBCBD808A14F5E85D28C004C2F93481F6B')
 # Bug reports can be filed at https://bugs.square-r00t.net/index.php?project=3
 # News updates for packages can be followed at https://devblog.square-r00t.net
 pkgname=stuntman-git
-pkgver=0.0000001
+pkgver=1.2.1.r42.g4c9272e
 pkgrel=1
 pkgdesc="An open source STUN server and client code"
 arch=('i686' 'x86_64')
 url="http://www.stunprotocol.org/"
 license=('Apache')
-depends=('boost')
-optdepends=('')
-makedepends=('boost')
+depends=()
+#optdepends=('')
+makedepends=('boost-libs')
 _pkgname=stuntman
 provides=("stuntman")
 conflicts=("stuntman")
@@ -24,11 +24,11 @@ sha512sums=('SKIP')
 pkgver() {
   cd "${srcdir}/${_pkgname}"
   # no tags, so number of revisions e.g. r1142.a17a017
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  #printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
   ## most recent annotated tag e.g. 2.0.r6.ga17a017
   #git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
   ## most recent un-annotated tag e.g. 0.71.r115.gd95ee07
-  #git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags | sed -e 's/\([^-]*-g\)/r\1/;s/-/./g' -e 's/^version//g'
   ## or:
   ##git describe --long --tags | sed 's/-/.r/;s/-/./'
   ## project uses tags with prefix. e.g. v...
@@ -40,10 +40,16 @@ pkgver() {
   #)
 }
 build() {
-        cd "${srcdir}/${_pkgname}/src"
-        make prefix=${pkgdir}/usr
+        cd "${srcdir}/${_pkgname}"
+        make
 }
 package() {
-        install -D -m755 ${srcdir}/${_pkgname}/src/${_pkgname} ${pkgdir}/usr/bin/${_pkgname}
-        install -D -m644 ${srcdir}/${_pkgname}/docs/README.html.en ${pkgdir}/usr/share/doc/${_pkgname}/README.html
+	for i in stunclient stunserver stuntestcode;
+	do
+        	install -D -m0755 ${srcdir}/${_pkgname}/${i} ${pkgdir}/usr/bin/${i}
+	done
+	for i in HISTORY README;
+	do
+        	install -D -m0644 ${srcdir}/${_pkgname}/${i} ${pkgdir}/usr/share/doc/${_pkgname}/${i}
+	done
 }
