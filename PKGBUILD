@@ -1,7 +1,7 @@
 # Maintainer: Adrian Freund <freundadrian@gmail.com>
 pkgname=playerctl-git
 _pkgname=playerctl
-pkgver=0.4.2.r4.gfda38a6
+pkgver=0.5.0.r0.g9f5cc39
 pkgrel=1
 pkgdesc="mpris media player controller and lib for spotify, vlc, audacious, bmp, xmms2, and others."
 arch=('i686' 'x86_64')
