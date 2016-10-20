@@ -3,14 +3,15 @@
 pkgname=gog-spacechem
 _pkgname=spacechem
 pkgver=2.0.0.5
-pkgrel=2
+pkgrel=3
 pkgdesc="A puzzle game where you build elaborate chemical factories."
 url="http://www.zachtronics.com/spacechem/"
 license=('custom')
 arch=('i686' 'x86_64')
 depends=('lib32-glibc' 'lib32-alsa-lib' 'lib32-sdl' 'lib32-sdl_image' 'lib32-sdl_mixer'
          'lib32-ncurses5-compat-libs' 'lib32-libjpeg-turbo' 'lib32-libpng12'
-         'lib32-glu' 'lib32-libtiff' 'lib32-fluidsynth')
+         'lib32-glu' 'lib32-libtiff' 'lib32-fluidsynth' 'lib32-libcaca'
+         'lib32-sqlite')
 source=("gog://${pkgname//-/_}_${pkgver}.sh"
         "${pkgname}.desktop"
         "${pkgname}.patch")
