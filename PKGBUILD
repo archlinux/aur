@@ -54,7 +54,6 @@ pkgver() {
   function describe {
     printf "$(git -C "$srcdir/$1" describe --tags `git -C "$srcdir/$1" rev-list --tags --max-count=1` | sed 's/v//g')"
   }
-  _about_arch_ver="$(describe about-arch)"
   _dark_bint_syntax_ver="$(describe dark-bint-syntax)"
   _fusion_ui_ver="$(describe fusion-ui)"
   _language_archlinux_ver="$(describe language-archlinux)"
@@ -64,7 +63,7 @@ pkgver() {
   _language_patch2_ver="$(describe language-patch2)"
   _language_unix_shell_ver="$(describe language-unix-shell)"
   _terminal_fusion_ver="$(describe terminal-fusion)"
-  printf "${_atomver}.aa${_about_arch_ver}.db${_dark_bint_syntax_ver}.fu${_fusion_ui_ver}.la${_language_archlinux_ver}.lg${_language_gfm2_ver}.li${_language_ini_desktop_ver}.ll${_language_liquid_ver}.lp${_language_patch2_ver}.lu${_language_unix_shell_ver}.t${_terminal_fusion_ver}"
+  printf "${_atomver}.d${_dark_bint_syntax_ver}.f${_fusion_ui_ver}.la${_language_archlinux_ver}.lg${_language_gfm2_ver}.li${_language_ini_desktop_ver}.ll${_language_liquid_ver}.lp${_language_patch2_ver}.lu${_language_unix_shell_ver}.t${_terminal_fusion_ver}"
 }
 
 prepare() {
