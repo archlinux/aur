@@ -9,15 +9,15 @@ license=('custom')
 arch=('any')
 depends=('fontconfig' 'xorg-font-utils')
 install=$pkgname.install
-source=(Cica.zip::https://github.com/qothr/cabinet/raw/master/Cica.zip)
-md5sums=('afac6436cf774c4c76601cece36034b7')
+source=(Cica.zip::https://github.com/qothr/cabinet/blob/master/Cica.zip?raw=true)
+md5sums=('5b0daba6aea3c54ca09a026e75a65ac7')
 
 package() {
-  cd "${srcdir}"/Cica
+  cd ${srcdir}
   
   install -dm755 "${pkgdir}"/usr/share/fonts/TTF
   install -m644 *.ttf "${pkgdir}"/usr/share/fonts/TTF/
 
   install -d "${pkgdir}/usr/share/licenses/${pkgname}/"
-  install -Dm644 LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}/"
+  install -Dm644 *.txt "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
