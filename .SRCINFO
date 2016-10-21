@@ -9,9 +9,11 @@ pkgbase = next
 	optdepends = joyutils: jscal, jstest, and jsattach utilities for the Linux joystick driver
 	source = http://www.cgm-online.com/secure_rc-heli-simulator/cgm-rc-heli-simulator-linux-x86-64bit.zip
 	source = next.desktop
+	source = next.sh
 	source = next.LICENSE
 	sha256sums = 9c07767316866e40099064d2ba053786e7420cdeab0cf87288c16bb3b0a0e102
-	sha256sums = 3acf4a84a47c281aa77c71004a28cc7be284854c98bb302da5e52002a3cc9afd
+	sha256sums = 31972ec9835d29109e490a54b49865dd69084c5552344cfe2fec9b534a5fa8a2
+	sha256sums = 167bf2f656980495a5de69cc6fb0eb1063ddf065d021525cb73cf4e10425c2d8
 	sha256sums = febb1e65a7932f2f80155078b1dd64f469433625c76cff43b239768a184729f0
 
 pkgname = next

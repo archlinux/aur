@@ -1,4 +1,5 @@
-# Maintainer: Rinus Remspoor <remspoor AT linuxmail DOT org>
+# Maintainer(s):	remspoor <remspoor AT linuxmail DOT org>
+#			Jake
 
 pkgname=next
 pkgver=1.455
@@ -11,10 +12,12 @@ optdepends=(	'joyutils: jscal, jstest, and jsattach utilities for the Linux joys
 
 source=(	'http://www.cgm-online.com/secure_rc-heli-simulator/cgm-rc-heli-simulator-linux-x86-64bit.zip'
 		'next.desktop'
+		'next.sh'
 		'next.LICENSE')
 
 sha256sums=(	'9c07767316866e40099064d2ba053786e7420cdeab0cf87288c16bb3b0a0e102'
-		'3acf4a84a47c281aa77c71004a28cc7be284854c98bb302da5e52002a3cc9afd'
+		'31972ec9835d29109e490a54b49865dd69084c5552344cfe2fec9b534a5fa8a2'
+		'167bf2f656980495a5de69cc6fb0eb1063ddf065d021525cb73cf4e10425c2d8'
 		'febb1e65a7932f2f80155078b1dd64f469433625c76cff43b239768a184729f0')
 
 prepare() {
@@ -53,12 +56,10 @@ package() {
   msg2 "Installing ${pkgname}.desktop file..."
   install -Dm644 "${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
 
+  msg2 "Installing start script..."
+  install -Dm775 "${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
+
   msg2 "Installing LICENSE file..."
   # Can't find the proper license right now, maybe contact the author of the software later.
   install -Dm644 ${pkgname}.LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-
-  msg2 "Creating symlink..."
-  cd "${pkgdir}/opt/${pkgname}"
-  if [ -f "./neXt.x86_64" ]; then ln -s "neXt.x86_64" "${pkgname}"; fi
-  if [ -f "./neXt.x86" ]; then ln -s "neXt.x86" "${pkgname}"; fi
 }
