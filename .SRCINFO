@@ -1,7 +1,7 @@
 pkgbase = policycoreutils
 	pkgdesc = SELinux policy core utilities
 	pkgver = 2.5
-	pkgrel = 2
+	pkgrel = 3
 	url = http://userspace.selinuxproject.org
 	arch = i686
 	arch = x86_64
@@ -12,10 +12,10 @@ pkgbase = policycoreutils
 	depends = dbus-glib
 	depends = pam-selinux
 	depends = python2-ipy
-	depends = setools
+	depends = setools3-libs
 	depends = sepolgen
 	optdepends = hicolor-icon-theme: needed for graphical tools
-	provides = selinux-usr-policycoreutils=2.5-2
+	provides = selinux-usr-policycoreutils=2.5-3
 	conflicts = selinux-usr-policycoreutils
 	options = !emptydirs
 	source = https://raw.githubusercontent.com/wiki/SELinuxProject/selinux/files/releases/20160223/policycoreutils-2.5.tar.gz

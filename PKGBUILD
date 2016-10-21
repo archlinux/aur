@@ -6,14 +6,14 @@
 
 pkgname=policycoreutils
 pkgver=2.5
-pkgrel=2
+pkgrel=3
 pkgdesc="SELinux policy core utilities"
 arch=('i686' 'x86_64')
 url='http://userspace.selinuxproject.org'
 license=('GPL')
 groups=('selinux')
 depends=('libsemanage>=2.5' 'libcgroup' 'dbus-glib' 'pam-selinux' 'python2-ipy'
-         'setools' 'sepolgen')
+         'setools3-libs' 'sepolgen')
 optdepends=('hicolor-icon-theme: needed for graphical tools')
 conflicts=("selinux-usr-${pkgname}")
 provides=("selinux-usr-${pkgname}=${pkgver}-${pkgrel}")
