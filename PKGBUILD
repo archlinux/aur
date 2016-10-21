@@ -13,6 +13,7 @@ md5sums=("a05597c68c937fd707cc8f28cb74f4eb")
 
 instdir="usr/share/webapps/${pkgname}"
 etcdir="etc/webapps/${pkgname}"
+vardir="var/lib/${pkgname}"
 
 build() {
     msg "Nothing to compile for ${pkgname}"
@@ -21,6 +22,7 @@ build() {
 package() {
     _instdir="${pkgdir}/${instdir}"
     _etcdir="${pkgdir}/${etcdir}"
+    _vardir="${pkgdir}/${vardir}"
 
     cd php-remote-storage-${pkgver}
 
@@ -35,7 +37,8 @@ package() {
     install -d "${_instdir}/config"
     ln -s "${_etcdir}/server.yaml" "${_instdir}/config/server.yaml"
 
-    install -dm750 -o http -g http "${_instdir}/data"
+    install -dm750 -o http -g http "${_varlib}/data"
+    ln -s "${_varlib}/data" "${_instdir}/data"
 }
 
 backup=("${etcdir}/server.yaml")
