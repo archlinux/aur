@@ -2,7 +2,7 @@
 
 pkgname=ponyprog-bin
 pkgver=2.08d
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="PonyProg is a serial device programmer based on some simple and cheap interfaces for the PC"
 arch=('any')
@@ -32,9 +32,9 @@ package() {
 	mkdir -p "$pkgdir/usr/share/bin"
 	mkdir -p "$pkgdir/usr/share/pixmaps"
 
-	cp "ponyprog.desktop" "$pkgdir/usr/share/applications"
+	cp "ponyprog.desktop" "$pkgdir/usr/share/applications/"
 	cd "PonyProg-$pkgver"
-	cp "bin/ponyprog2000" "$pkgdir/usr/bin"
+	cp "bin/ponyprog2000" "$pkgdir/usr/bin/"
 	convert ponyprog.ico ponyprog.png
-	cp -r "ponyprog.png" "$pkgdir/usr/share/pixmaps"
+	cp -r "ponyprog.png" "$pkgdir/usr/share/pixmaps/"
 }
