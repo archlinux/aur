@@ -1,63 +1,58 @@
 /* modifier 0 means no modifier */
-static int surfuseragent    = 1;  /* Append Surf version to default WebKit user agent */
-static char *fulluseragent  = ""; /* Or override the whole user agent string */
+static char *useragent      = "Mozilla/5.0 (X11; U; Unix; en-US) "
+                              "AppleWebKit/537.15 (KHTML, like Gecko) "
+                              "Chrome/24.0.1295.0 Safari/537.15 Surf/"VERSION;
 static char *scriptfile     = "~/.surf/script.js";
 static char *styledir       = "~/.surf/styles/";
-static char *cachedir       = "~/.surf/cache/";
+static char *cachefolder    = "~/.surf/cache/";
 
-static int kioskmode       = 0;     /* Ignore shortcuts */
-static int showindicators  = 1;     /* Show indicators in window title */
-static int runinfullscreen = 0;     /* Run in fullscreen mode by default */
+static Bool kioskmode       = FALSE; /* Ignore shortcuts */
+static Bool showindicators  = TRUE;  /* Show indicators in window title */
+static Bool zoomto96dpi     = TRUE;  /* Zoom pages to always emulate 96dpi */
+static Bool runinfullscreen = FALSE; /* Run in fullscreen mode by default */
 
 static guint defaultfontsize = 12;   /* Default font size */
-static gfloat zoomlevel     = 1.0;   /* Default zoom level */
+static gfloat zoomlevel = 1.0;       /* Default zoom level */
 
 /* Soup default features */
 static char *cookiefile     = "~/.surf/cookies.txt";
 static char *cookiepolicies = "Aa@"; /* A: accept all; a: accept nothing,
-                                      * @: accept no third party */
-static int strictssl       = 0; /* Refuse untrusted SSL connections */
-
-/* Languages */
-static int enablespellchecking         = 0;
-static const char *spellinglanguages[] = { "en_US", NULL };
-static const char *preferedlanguages[] = { NULL };
+                                      * @: accept all except third party */
+static char *cafile         = "/etc/ssl/certs/ca-certificates.crt";
+static Bool strictssl       = FALSE; /* Refuse untrusted SSL connections */
+static time_t sessiontime   = 3600;
 
 /* Webkit default features */
-static int enablescrollbars      = 1;
-static int enablecaretbrowsing   = 1;
-static int enablecache           = 1;
-static int enableplugins         = 1;
-static int enablescripts         = 1;
-static int enableinspector       = 1;
-static int enablestyle           = 1;
-static int loadimages            = 1;
-static int hidebackground        = 0;
-static int allowgeolocation      = 1;
-static int enablednsprefetching  = 0;
-static int enableframeflattening = 0;
-
-static WebKitFindOptions findopts = WEBKIT_FIND_OPTIONS_CASE_INSENSITIVE |
-                                    WEBKIT_FIND_OPTIONS_WRAP_AROUND;
+static Bool enablescrollbars      = TRUE;
+static Bool enablespatialbrowsing = TRUE;
+static Bool enablediskcache       = TRUE;
+static int diskcachebytes         = 5 * 1024 * 1024;
+static Bool enableplugins         = TRUE;
+static Bool enablescripts         = TRUE;
+static Bool enableinspector       = TRUE;
+static Bool enablestyle           = TRUE;
+static Bool loadimages            = TRUE;
+static Bool hidebackground        = FALSE;
+static Bool allowgeolocation      = TRUE;
 
 #define SETPROP(p, q) { \
-        .v = (const char *[]){ "/bin/sh", "-c", \
-             "prop=\"`xprop -id $2 $0 " \
-             "| sed \"s/^$0(STRING) = \\(\\\\\"\\?\\)\\(.*\\)\\1$/\\2/\" " \
-             "| xargs -0 printf %b | dmenu`\" &&" \
-             "xprop -id $2 -f $1 8s -set $1 \"$prop\"", \
-             p, q, winid, NULL \
-        } \
+	.v = (char *[]){ "/bin/sh", "-c", \
+	     "prop=\"`xprop -id $2 $0 " \
+	     "| sed \"s/^$0(STRING) = \\(\\\\\"\\?\\)\\(.*\\)\\1$/\\2/\" " \
+	     "| xargs -0 printf %b | dmenu`\" &&" \
+	     "xprop -id $2 -f $1 8s -set $1 \"$prop\"", \
+	     p, q, winid, NULL \
+	} \
 }
 
 /* DOWNLOAD(URI, referer) */
 #define DOWNLOAD(d, r) { \
-        .v = (const char *[]){ "/bin/sh", "-c", \
-             "st -e /bin/sh -c \"curl -L -J -O --user-agent '$1'" \
-             " --referer '$2' -b $3 -c $3 '$0';" \
-             " sleep 5;\"", \
-             d, useragent, r, cookiefile, NULL \
-        } \
+	.v = (char *[]){ "/bin/sh", "-c", \
+	     "st -e /bin/sh -c \"curl -g -L -J -O --user-agent '$1'" \
+	     " --referer '$2' -b $3 -c $3 '$0';" \
+	     " sleep 5;\"", \
+	     d, useragent, r, cookiefile, NULL \
+	} \
 }
 
 /* PLUMB(URI) */
@@ -65,16 +60,9 @@ static WebKitFindOptions findopts = WEBKIT_FIND_OPTIONS_CASE_INSENSITIVE |
  * "http://" or "https://" should be opened.
  */
 #define PLUMB(u) {\
-        .v = (const char *[]){ "/bin/sh", "-c", \
-             "xdg-open \"$0\"", u, NULL \
-        } \
-}
-
-/* VIDEOPLAY(URI) */
-#define VIDEOPLAY(u) {\
-        .v = (const char *[]){ "/bin/sh", "-c", \
-             "mpv --really-quiet \"$0\"", u, NULL \
-        } \
+	.v = (char *[]){ "/bin/sh", "-c", \
+	     "xdg-open \"$0\"", u, NULL \
+	} \
 }
 
 /* styles */
@@ -95,64 +83,59 @@ static SiteStyle styles[] = {
  * edit the CLEANMASK() macro.
  */
 static Key keys[] = {
-	/* modifier              keyval          function    arg */
-	{ MODKEY,                GDK_KEY_g,      spawn,      SETPROP("_SURF_URI", "_SURF_GO") },
-	{ MODKEY,                GDK_KEY_f,      spawn,      SETPROP("_SURF_FIND", "_SURF_FIND") },
-	{ MODKEY,                GDK_KEY_slash,  spawn,      SETPROP("_SURF_FIND", "_SURF_FIND") },
+	/* modifier             keyval      function    arg             Focus */
+	{ MODKEY|GDK_SHIFT_MASK,GDK_r,      reload,     { .b = TRUE } },
+	{ MODKEY,               GDK_r,      reload,     { .b = FALSE } },
+	{ MODKEY|GDK_SHIFT_MASK,GDK_p,      print,      { 0 } },
 
-	{ 0,                     GDK_KEY_Escape, stop,       { 0 } },
-	{ MODKEY,                GDK_KEY_c,      stop,       { 0 } },
+	{ MODKEY,               GDK_p,      clipboard,  { .b = TRUE } },
+	{ MODKEY,               GDK_y,      clipboard,  { .b = FALSE } },
 
-	{ MODKEY|GDK_SHIFT_MASK, GDK_KEY_r,      reload,     { .b = 1 } },
-	{ MODKEY,                GDK_KEY_r,      reload,     { .b = 0 } },
+	{ MODKEY|GDK_SHIFT_MASK,GDK_j,      zoom,       { .i = -1 } },
+	{ MODKEY|GDK_SHIFT_MASK,GDK_k,      zoom,       { .i = +1 } },
+	{ MODKEY|GDK_SHIFT_MASK,GDK_q,      zoom,       { .i = 0  } },
+	{ MODKEY,               GDK_minus,  zoom,       { .i = -1 } },
+	{ MODKEY,               GDK_plus,   zoom,       { .i = +1 } },
 
-	{ MODKEY,                GDK_KEY_l,      navigate,   { .i = +1 } },
-	{ MODKEY,                GDK_KEY_h,      navigate,   { .i = -1 } },
+	{ MODKEY,               GDK_l,      navigate,   { .i = +1 } },
+	{ MODKEY,               GDK_h,      navigate,   { .i = -1 } },
 
-	                                                     /* in page % */
-	{ MODKEY,                GDK_KEY_j,      scroll_v,   { .i = +10 } },
-	{ MODKEY,                GDK_KEY_k,      scroll_v,   { .i = -10 } },
-	{ MODKEY,                GDK_KEY_b,      scroll_v,   { .i = -50 } },
-	{ MODKEY,                GDK_KEY_space,  scroll_v,   { .i = +50 } },
-	{ MODKEY,                GDK_KEY_i,      scroll_h,   { .i = +10 } },
-	{ MODKEY,                GDK_KEY_u,      scroll_h,   { .i = -10 } },
+	{ MODKEY,               GDK_j,      scroll_v,   { .i = +1 } },
+	{ MODKEY,               GDK_k,      scroll_v,   { .i = -1 } },
+	{ MODKEY,               GDK_b,      scroll_v,   { .i = -10000 } },
+	{ MODKEY,               GDK_space,  scroll_v,   { .i = +10000 } },
+	{ MODKEY,               GDK_i,      scroll_h,   { .i = +1 } },
+	{ MODKEY,               GDK_u,      scroll_h,   { .i = -1 } },
 
-	{ MODKEY|GDK_SHIFT_MASK, GDK_KEY_j,      zoom,       { .i = -1 } },
-	{ MODKEY|GDK_SHIFT_MASK, GDK_KEY_k,      zoom,       { .i = +1 } },
-	{ MODKEY|GDK_SHIFT_MASK, GDK_KEY_q,      zoom,       { .i = 0  } },
-	{ MODKEY,                GDK_KEY_minus,  zoom,       { .i = -1 } },
-	{ MODKEY,                GDK_KEY_plus,   zoom,       { .i = +1 } },
+	{ 0,                    GDK_F11,    fullscreen, { 0 } },
+	{ 0,                    GDK_Escape, stop,       { 0 } },
+	{ MODKEY,               GDK_o,      source,     { 0 } },
+	{ MODKEY|GDK_SHIFT_MASK,GDK_o,      inspector,  { 0 } },
 
-	{ MODKEY,                GDK_KEY_p,      clipboard,  { .b = 1 } },
-	{ MODKEY,                GDK_KEY_y,      clipboard,  { .b = 0 } },
+	{ MODKEY,               GDK_g,      spawn,      SETPROP("_SURF_URI", "_SURF_GO") },
+	{ MODKEY,               GDK_f,      spawn,      SETPROP("_SURF_FIND", "_SURF_FIND") },
+	{ MODKEY,               GDK_slash,  spawn,      SETPROP("_SURF_FIND", "_SURF_FIND") },
 
-	{ MODKEY,                GDK_KEY_n,      find,       { .i = +1 } },
-	{ MODKEY|GDK_SHIFT_MASK, GDK_KEY_n,      find,       { .i = -1 } },
+	{ MODKEY,               GDK_n,      find,       { .b = TRUE } },
+	{ MODKEY|GDK_SHIFT_MASK,GDK_n,      find,       { .b = FALSE } },
 
-	{ MODKEY|GDK_SHIFT_MASK, GDK_KEY_p,      print,      { 0 } },
-
-	{ MODKEY|GDK_SHIFT_MASK, GDK_KEY_a,      togglecookiepolicy, { 0 } },
-	{ 0,                     GDK_KEY_F11,    togglefullscreen, { 0 } },
-	{ MODKEY|GDK_SHIFT_MASK, GDK_KEY_o,      toggleinspector, { 0 } },
-	{ MODKEY|GDK_SHIFT_MASK, GDK_KEY_m,      togglestyle, { 0 } },
-
-	{ MODKEY|GDK_SHIFT_MASK, GDK_KEY_c,      toggle,     { .i = CaretBrowsing } },
-	{ MODKEY|GDK_SHIFT_MASK, GDK_KEY_f,      toggle,     { .i = FrameFlattening } },
-	{ MODKEY|GDK_SHIFT_MASK, GDK_KEY_g,      toggle,     { .i = Geolocation } },
-	{ MODKEY|GDK_SHIFT_MASK, GDK_KEY_s,      toggle,     { .i = JavaScript } },
-	{ MODKEY|GDK_SHIFT_MASK, GDK_KEY_i,      toggle,     { .i = LoadImages } },
-	{ MODKEY|GDK_SHIFT_MASK, GDK_KEY_v,      toggle,     { .i = Plugins } },
-	{ MODKEY|GDK_SHIFT_MASK, GDK_KEY_b,      toggle,     { .i = ScrollBars } },
+	{ MODKEY|GDK_SHIFT_MASK,GDK_c,      toggle,     { .v = "enable-caret-browsing" } },
+	{ MODKEY|GDK_SHIFT_MASK,GDK_i,      toggle,     { .v = "auto-load-images" } },
+	{ MODKEY|GDK_SHIFT_MASK,GDK_s,      toggle,     { .v = "enable-scripts" } },
+	{ MODKEY|GDK_SHIFT_MASK,GDK_v,      toggle,     { .v = "enable-plugins" } },
+	{ MODKEY|GDK_SHIFT_MASK,GDK_a,      togglecookiepolicy, { 0 } },
+	{ MODKEY|GDK_SHIFT_MASK,GDK_m,      togglestyle, { 0 } },
+	{ MODKEY|GDK_SHIFT_MASK,GDK_b,      togglescrollbars, { 0 } },
+	{ MODKEY|GDK_SHIFT_MASK,GDK_g,      togglegeolocation, { 0 } },
 };
 
 /* button definitions */
-/* target can be OnDoc, OnLink, OnImg, OnMedia, OnEdit, OnBar, OnSel, OnAny */
+/* click can be ClkDoc, ClkLink, ClkImg, ClkMedia, ClkSel, ClkEdit, ClkAny */
 static Button buttons[] = {
-	/* target       event mask      button  function        argument        stop event */
-	{ OnLink,       0,              2,      clicknewwindow, { .b = 0 },     1 },
-	{ OnLink,       MODKEY,         2,      clicknewwindow, { .b = 1 },     1 },
-	{ OnLink,       MODKEY,         1,      clicknewwindow, { .b = 1 },     1 },
-	{ OnAny,        0,              8,      clicknavigate,  { .i = -1 },    1 },
-	{ OnAny,        0,              9,      clicknavigate,  { .i = +1 },    1 },
-	{ OnMedia,      MODKEY,         1,      clickexternplayer, { 0 },       1 },
+	/* click        event mask  button  function        argument */
+	{ ClkLink,      0,          2,      linkopenembed,  { 0 } },
+	{ ClkLink,      MODKEY,     2,      linkopen,       { 0 } },
+	{ ClkLink,      MODKEY,     1,      linkopen,       { 0 } },
+	{ ClkAny,       0,          8,      navigate,       { .i = -1 } },
+	{ ClkAny,       0,          9,      navigate,       { .i = +1 } },
 };
