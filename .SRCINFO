@@ -10,6 +10,7 @@ pkgbase = ponyprog-bin
 	depends = libxt
 	depends = libxext
 	depends = libxaw
+	conflicts = ponyprog
 	source = http://downloads.sourceforge.net/project/ponyprog/PonyProg%20sources/PonyProg2000-2.08d.tar.gz
 	source = ponyprog.desktop
 	md5sums = 19d12a550d1ce7b4f034a918e04dbe2a
