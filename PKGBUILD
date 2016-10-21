@@ -3,13 +3,13 @@
 
 pkgname=lximage-qt
 pkgver=0.5.0
-pkgrel=2
+pkgrel=3
 pkgdesc="The LXQt image viewer"
 arch=("i686" "x86_64")
 groups=("lxqt")
 url="http://lxqt.org"
 license=("GPL2")
-depends=("libfm-qt")
+depends=("libfm-qt" "desktop-file-utils" "gtk-update-icon-cache")
 makedepends=("cmake" "qt5-tools" "git")
 source=("https://downloads.lxqt.org/$pkgname/$pkgver/$pkgname-$pkgver.tar.xz"{,.asc})
 sha256sums=("bd67b8b81a25d8ecd858787af87bc97256f15821ff4f1bb3efcfd214e2929066" "SKIP")
