@@ -1,8 +1,8 @@
 # Maintainer: Doyle Fermi <doylefermi@gmail.com>
 pkgname=wmail-bin-git
-pkgver=1.4.0
-pkgrel=3
-pkgdesc="The missing desktop client for Gmail & Google Inbox"
+pkgver=2.0.1
+pkgrel=4
+pkgdesc="A more up-to-date repo of the missing desktop client for Gmail & Google Inbox"
 arch=('x86_64')
 url="https://github.com/Thomas101/wmail"
 repo="git://github.com/Thomas101/wmail.git"
@@ -11,14 +11,15 @@ options=(!strip)
 makedepends=('xdg-utils' 'desktop-file-utils')
 depends=('gconf' 'gtk2' 'libxtst' 'nss' 'alsa-lib' 'libxss')
 optdepends=('gvfs' 'libnotify')
-conflicts=('wmail')
+conflicts=('wmail' 'wmail-bin')
 
 source=(
-  "wmail-linux-v${pkgver}.tar.gz::https://github.com/Thomas101/wmail/releases/download/v${pkgver}/WMail_${pkgver//./_}_prerelease_linux_x64.tar.gz"
+  
+"wmail-linux-v${pkgver}.tar.gz::https://github.com/Thomas101/wmail/releases/download/v${pkgver}/WMail_${pkgver//./_}_prerelease_linux_${arch}.tar.gz"
   "app-v${pkgver}.png::https://raw.githubusercontent.com/Thomas101/wmail/v${pkgver}/assets/icons/app.png"
   "wmail.desktop")
 noextract=("wmail-linux-v${pkgver}.tar.gz")
-sha256sums=('4a47a8bf609af17c789aabe27294d377778cc0a4e7a53b9155d69a53c428bf1e'
+sha256sums=('12e48e839971558f0a4a1b446b57cf805bf2d82c69af2f35ae653f720a8b632c'
             '08d2f7997cddab19598ebf25dc88210992a1e220381046662929f61b240a906b'
             '47fb6b3c0d49280cfca89b034b1b714d64a1e158114abcc20a7b6c40faff9a7b')
 
