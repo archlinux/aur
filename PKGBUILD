@@ -2,10 +2,10 @@
 
 _pkgname=lxqt-build-tools
 pkgname=$_pkgname-git
-pkgver=0.1.0
+pkgver=0.1.0.2.g8aaaf02
 pkgrel=1
 pkgdesc='Tools to build LXQt and components maintained by the project.'
-arch=('any')
+arch=('i686' 'x86_64')
 url='https://github.com/lxde/lxqt-build-tools'
 license=('BSD')
 makedepends=('git' 'cmake')
