@@ -1,11 +1,12 @@
 pkgname=prime-gpuchooser
-pkgver=r5.f13bea7
+pkgver=r10.26a36a6
 pkgrel=1
 pkgdesc="A graphical tool to choose the GPU used for 3D rendering with PRIME. Requires dri3."
 arch=('any')
 url="https://github.com/ChristophHaag/gpuchooser"
 license=('GPL')
 depends=('python-pyqt5' 'mesa-demos' 'driconf')
+makedepends=(git)
 source=("git+https://github.com/ChristophHaag/gpuchooser.git")
 md5sums=("SKIP")
 
