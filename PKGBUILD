@@ -2,8 +2,8 @@
 
 _gitname=vncdesk
 pkgname="$_gitname"-git
-pkgver=1.1.0.r0.ga0b4396
-pkgrel=2
+pkgver=1.4.1
+pkgrel=1
 pkgdesc="Runs applications via VNC. Useful for scaling on high DPI (HiDPI) screens."
 arch=('any')
 url="https://github.com/feklee/vncdesk"
@@ -15,14 +15,12 @@ md5sums=('SKIP')
 
 pkgver() {
     cd "$srcdir/$_gitname"
-    git describe --long | \
-        sed 's/^v//' | \
-        sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+    git describe --long | sed 's/v\([0-9]\.[0-9]\.[0-9]\).*/\1/'
 }
 
 build() {
     cd "$srcdir/$_gitname"
-    git checkout $(git describe --long)
+    git checkout v$(pkgver)
 }
 
 package() {
