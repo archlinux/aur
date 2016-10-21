@@ -6,6 +6,12 @@ After=network.target
 Type=simple
 User=searx
 Environment=SEARX_SETTINGS_PATH=/etc/searx/settings.yml
+PrivateTmp=true
+PrivateDevices=true
+# Prevent accessing /home, /root and /run/user
+ProtectHome=true
+# Prevent writes to /usr, /boot, and /etc
+ProtectSystem=full
 ExecStart=/usr/bin/searx-run
 Restart=on-abort
 
