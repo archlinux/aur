@@ -7,7 +7,6 @@ pkgbase = pcc
 	arch = x86_64
 	license = custom:BSD
 	depends = pcc-libs
-	conflicts = pcc-cvs
 	source = http://pcc.ludd.ltu.se/ftp/pub/pcc-releases/pcc-1.1.0.tgz
 	source = license
 	md5sums = 1c0f22440753075d64f9f2c6ed0e8278

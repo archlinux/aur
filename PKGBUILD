@@ -9,7 +9,6 @@ arch=('i686' 'x86_64')
 url="http://pcc.ludd.ltu.se/"
 license=('custom:BSD')
 depends=('pcc-libs')
-conflicts=('pcc-cvs')
 source=("http://pcc.ludd.ltu.se/ftp/pub/pcc-releases/${pkgname}-${pkgver}.tgz"
 	"license")
 md5sums=('1c0f22440753075d64f9f2c6ed0e8278'
