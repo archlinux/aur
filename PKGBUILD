@@ -72,14 +72,14 @@ _bldtype=Release
 #_bldtype=Debug
 
 _mozcrev=2315f957d1785130c2ed196e141a330b0857b065
-_utdicver=20161017
+_utdicver=20161020
 _zipcoderel=201609
 _uimmozcrev=321.3ea28b1
 
 pkgbase=mozc-ut2
 pkgname=mozc-ut2
 true && pkgname=('mozc-ut2')
-pkgver=2.18.2612.102.20161017
+pkgver=2.18.2612.102.20161020
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.geocities.jp/ep3797/mozc-ut2.html"
@@ -95,12 +95,12 @@ source=(
   mod-generate-dictionary.sh
 )
 sha1sums=('SKIP'
-          '582971f92af75c86b056ca3507cae125ea060217'
-          '0ba7df55dfd05d43694c6de82c5b215e023f9024'
+          '184f545ae7f3e0d0d954d3640bfcffc58c2253e6'
+          'a41d69dc6b9767baf4eb73d457f9610b9b1afa23'
           'e0ba18e67c1be8e3cfb8ecb30760597b215da255'
           'c8085904b2326363667831131c0921b004a66bad'
           '3d012569963b9359d2d267216f78c1a07a395065'
-          'd4cabe4be5ae956e81d0c7e2023070d622e512cf')
+          'deb8d45d3ef7fe2780caebddae6714c6e848ab9d')
 
 
 if [[ "$_ibus_mozc" == "yes" ]]; then
