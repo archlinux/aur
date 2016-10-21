@@ -2,14 +2,14 @@
 
 pkgname=ceres-solver
 pkgver=1.11.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Solver for nonlinear least squares problems"
 arch=('i686' 'x86_64')
 url="http://ceres-solver.org/"
 license=('LGPL')
 makedepends=('gcc-libs' 'cmake')
 depends=('google-glog>=0.3.4' 'eigen>=3.2.7'
-      'suitesparse>=4.4.5' 'protobuf>=2.6.1')
+      'suitesparse>=4.4.5')
 optdepends=('openmp')
 source=("http://ceres-solver.org/ceres-solver-1.11.0.tar.gz")
 sha256sums=("4d666cc33296b4c5cd77bad18ffc487b3223d4bbb7d1dfb342ed9a87dc9af844")
