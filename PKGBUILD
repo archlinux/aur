@@ -13,10 +13,8 @@ _PXE='0'
 [[ "${CARCH}" == 'i686' ]] && _TIANO_S_ARCH='ia32'
 #######
 
-__pkgname='refind'
-_pkgname="${__pkgname}-efi"
-pkgname="${_pkgname}-git"
-
+_pkgname='refind'
+pkgname="${_pkgname}-efi-git"
 pkgver=0.10.3.r493.c5bc1ce
 pkgrel=1
 pkgdesc='rEFInd Boot Manager - git version'
@@ -34,7 +32,7 @@ options=('!strip' '!buildflags' '!makeflags')
 conflicts=("${pkgname%-git}")
 provides=("${pkgname%-git}=${pkgver}")
 
-install="${_pkgname}.install"
+install="${pkgname%-git}.install"
 
 source=("refind::git+http://git.code.sf.net/p/refind/code#branch=master"
         'refind_linux.conf')
@@ -50,7 +48,7 @@ if [[ "${_USE_GNU_EFI}" == '1' ]]; then
 else
 
 	pkgdesc="${pkgdesc} - Built with Tianocore UDK libs"
-	makedepends+=('git' 'python2')
+	makedepends+=('python2')
 
 	_UDK_VERSION='UDK2014'
 	_TIANO_DIR_="edk2-${_UDK_VERSION}"
@@ -67,9 +65,9 @@ fi
 
 pkgver() {
 
-	cd "${srcdir}/${__pkgname}/"
+	cd "${srcdir}/${_pkgname}/"
 
-	printf "%s.r%s.%s" "$(grep -o 'REFIND_VERSION=.*' "${srcdir}/${__pkgname}/Makefile"  | grep -Eo '([0-9]|\.)+')" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	printf "%s.r%s.%s" "$(grep -o 'REFIND_VERSION=.*' "${srcdir}/${_pkgname}/Makefile"  | grep -Eo '([0-9]|\.)+')" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 
 }
 
@@ -139,27 +137,27 @@ _prepare_tianocore_sources() {
 
 _prepare_refind_sources() {
 
-	rm -rf "${srcdir}/${__pkgname}_build/" || true
-	cp -r "${srcdir}/${__pkgname}" "${srcdir}/${__pkgname}_build"
+	rm -rf "${srcdir}/${_pkgname}_build/" || true
+	cp -r "${srcdir}/${_pkgname}" "${srcdir}/${_pkgname}_build"
 
-	cd "${srcdir}/${__pkgname}_build/"
+	cd "${srcdir}/${_pkgname}_build/"
 
 	# Clean rEFInd git repo
 	git clean -x -d -f
 
 	if [[ "${_USE_GNU_EFI}" == '1' ]]; then
 		# Enable GNU_EFI_USE_MS_ABI
-		sed "s|-DEFI_FUNCTION_WRAPPER|-DEFI_FUNCTION_WRAPPER -maccumulate-outgoing-args|g" -i "${srcdir}/${__pkgname}_build/Make.common" || true
-		sed "s|-DEFIX64|-DEFIX64 -maccumulate-outgoing-args|g" -i "${srcdir}/${__pkgname}_build/Make.common" || true
-		sed "s|-m64|-maccumulate-outgoing-args -m64|g" -i "${srcdir}/${__pkgname}_build/filesystems/Make.gnuefi" || true
+		sed "s|-DEFI_FUNCTION_WRAPPER|-DEFI_FUNCTION_WRAPPER -maccumulate-outgoing-args|g" -i "${srcdir}/${_pkgname}_build/Make.common" || true
+		sed "s|-DEFIX64|-DEFIX64 -maccumulate-outgoing-args|g" -i "${srcdir}/${_pkgname}_build/Make.common" || true
+		sed "s|-m64|-maccumulate-outgoing-args -m64|g" -i "${srcdir}/${_pkgname}_build/filesystems/Make.gnuefi" || true
 	else
 		# Fix UDK Path in rEFInd Makefiles
-		sed "s|^export EDK2BASE=.*$|export EDK2BASE=${_UDK_DIR}|g" -i "${srcdir}/${__pkgname}_build/Makefile" || true
+		sed "s|^export EDK2BASE=.*$|export EDK2BASE=${_UDK_DIR}|g" -i "${srcdir}/${_pkgname}_build/Makefile" || true
 
 		# Fix GenFw: ERROR 3000: Invalid section alignment
-		sed 's|--gc-sections|--gc-sections --build-id=none|g' -i "${srcdir}/${__pkgname}_build/Make.common" || true
-		# sed -e 's|--gc-sections|--gc-sections -z max-page-size=0x20|g' -i "${srcdir}/${__pkgname}_build/Make.common" || true
-		# sed -e 's|--strip-unneeded|--section-alignment=0x20 --strip-unneeded|g' -i "${srcdir}/${__pkgname}_build/Make.common" || true
+		sed 's|--gc-sections|--gc-sections --build-id=none|g' -i "${srcdir}/${_pkgname}_build/Make.common" || true
+		# sed -e 's|--gc-sections|--gc-sections -z max-page-size=0x20|g' -i "${srcdir}/${_pkgname}_build/Make.common" || true
+		# sed -e 's|--strip-unneeded|--section-alignment=0x20 --strip-unneeded|g' -i "${srcdir}/${_pkgname}_build/Make.common" || true
 	fi
 
 }
@@ -201,7 +199,7 @@ build() {
 		_build_tianocore_sources
 	fi
 
-	cd "${srcdir}/${__pkgname}_build/"
+	cd "${srcdir}/${_pkgname}_build/"
 
 	# Compile rEFInd UEFI application
 	if [[ "${_USE_GNU_EFI}" == '1' ]]; then
@@ -218,7 +216,7 @@ build() {
 	fi
 
 	if [[ "${CARCH}" == 'x86_64' ]] && [[ "${_PXE}" == '1' ]]; then
-		cd "${srcdir}/${__pkgname}_build/net"
+		cd "${srcdir}/${_pkgname}_build/net"
 
 		# Compile Network support
 		make source
@@ -231,64 +229,64 @@ package() {
 
 	# Install the rEFInd UEFI application
 	install -d "${pkgdir}/usr/share/refind/"
-	install -D -m0644 "${srcdir}/${__pkgname}_build/refind/refind_${_TIANO_S_ARCH}.efi" "${pkgdir}/usr/share/refind/refind_${_TIANO_S_ARCH}.efi"
+	install -D -m0644 "${srcdir}/${_pkgname}_build/refind/refind_${_TIANO_S_ARCH}.efi" "${pkgdir}/usr/share/refind/refind_${_TIANO_S_ARCH}.efi"
 
 	# Install UEFI drivers built from rEFInd
 	install -d "${pkgdir}/usr/share/refind/drivers_${_TIANO_S_ARCH}/"
-	install -D -m0644 "${srcdir}/${__pkgname}_build/drivers_${_TIANO_S_ARCH}"/*.efi "${pkgdir}/usr/share/refind/drivers_${_TIANO_S_ARCH}/"
+	install -D -m0644 "${srcdir}/${_pkgname}_build/drivers_${_TIANO_S_ARCH}"/*.efi "${pkgdir}/usr/share/refind/drivers_${_TIANO_S_ARCH}/"
 
 	# Install UEFI applications built from rEFInd
 	install -d "${pkgdir}/usr/share/refind/tools_${_TIANO_S_ARCH}"
-	install -D -m0644 "${srcdir}/${__pkgname}_build/gptsync/gptsync_${_TIANO_S_ARCH}.efi" "${pkgdir}/usr/share/refind/tools_${_TIANO_S_ARCH}/gptsync_${_TIANO_S_ARCH}.efi"
+	install -D -m0644 "${srcdir}/${_pkgname}_build/gptsync/gptsync_${_TIANO_S_ARCH}.efi" "${pkgdir}/usr/share/refind/tools_${_TIANO_S_ARCH}/gptsync_${_TIANO_S_ARCH}.efi"
 
 	if [[ "${CARCH}" == 'x86_64' ]] && [[ "${_PXE}" == '1' ]]; then
-		install -D -m0644 "${srcdir}/${__pkgname}_build/net/bin/ipxe.efi" "${pkgdir}/usr/share/refind/tools_${_TIANO_S_ARCH}/ipxe_${_TIANO_S_ARCH}.efi"
-		install -D -m0644 "${srcdir}/${__pkgname}_build/net/bin/ipxe_discovery.efi" "${pkgdir}/usr/share/refind/tools_${_TIANO_S_ARCH}/ipxe_discovery_${_TIANO_S_ARCH}.efi"
+		install -D -m0644 "${srcdir}/${_pkgname}_build/net/bin/ipxe.efi" "${pkgdir}/usr/share/refind/tools_${_TIANO_S_ARCH}/ipxe_${_TIANO_S_ARCH}.efi"
+		install -D -m0644 "${srcdir}/${_pkgname}_build/net/bin/ipxe_discovery.efi" "${pkgdir}/usr/share/refind/tools_${_TIANO_S_ARCH}/ipxe_discovery_${_TIANO_S_ARCH}.efi"
 	fi
 
 	# Install rEFInd helper scripts
 	install -d "${pkgdir}/usr/bin/"
-	install -D -m0755 "${srcdir}/${__pkgname}_build/refind-install" "${pkgdir}/usr/bin/refind-install"
-	install -D -m0755 "${srcdir}/${__pkgname}_build/refind-mkdefault" "${pkgdir}/usr/bin/refind-mkdefault"
-	install -D -m0755 "${srcdir}/${__pkgname}_build/mkrlconf" "${pkgdir}/usr/bin/mkrlconf"
-	install -D -m0755 "${srcdir}/${__pkgname}_build/mvrefind" "${pkgdir}/usr/bin/mvrefind"
-	install -D -m0755 "${srcdir}/${__pkgname}_build/fonts/mkfont.sh" "${pkgdir}/usr/bin/refind-mkfont"
+	install -D -m0755 "${srcdir}/${_pkgname}_build/refind-install" "${pkgdir}/usr/bin/refind-install"
+	install -D -m0755 "${srcdir}/${_pkgname}_build/refind-mkdefault" "${pkgdir}/usr/bin/refind-mkdefault"
+	install -D -m0755 "${srcdir}/${_pkgname}_build/mkrlconf" "${pkgdir}/usr/bin/mkrlconf"
+	install -D -m0755 "${srcdir}/${_pkgname}_build/mvrefind" "${pkgdir}/usr/bin/mvrefind"
+	install -D -m0755 "${srcdir}/${_pkgname}_build/fonts/mkfont.sh" "${pkgdir}/usr/bin/refind-mkfont"
 
 	# Install the rEFInd sample config files
-	install -D -m0644 "${srcdir}/${__pkgname}_build/refind.conf-sample" "${pkgdir}/usr/share/refind/refind.conf-sample"
+	install -D -m0644 "${srcdir}/${_pkgname}_build/refind.conf-sample" "${pkgdir}/usr/share/refind/refind.conf-sample"
 	install -D -m0644 "${srcdir}/refind_linux.conf" "${pkgdir}/usr/share/refind/refind_linux.conf-sample"
 
 	# Install the rEFInd docs
 	install -d "${pkgdir}/usr/share/refind/docs/html/"
 	install -d "${pkgdir}/usr/share/refind/docs/Styles/"
 	install -d "${pkgdir}/usr/share/man/man8/"
-	install -D -m0644 "${srcdir}/${__pkgname}_build/docs/refind"/* "${pkgdir}/usr/share/refind/docs/html/"
-	install -D -m0644 "${srcdir}/${__pkgname}_build/docs/Styles"/* "${pkgdir}/usr/share/refind/docs/Styles/"
-	install -D -m0644 "${srcdir}/${__pkgname}_build/README.txt" "${pkgdir}/usr/share/refind/docs/README.txt"
-	install -D -m0644 "${srcdir}/${__pkgname}_build/NEWS.txt" "${pkgdir}/usr/share/refind/docs/NEWS.txt"
-	install -D -m0644 "${srcdir}/${__pkgname}_build/docs/man"/*.8 "${pkgdir}/usr/share/man/man8/"
+	install -D -m0644 "${srcdir}/${_pkgname}_build/docs/refind"/* "${pkgdir}/usr/share/refind/docs/html/"
+	install -D -m0644 "${srcdir}/${_pkgname}_build/docs/Styles"/* "${pkgdir}/usr/share/refind/docs/Styles/"
+	install -D -m0644 "${srcdir}/${_pkgname}_build/README.txt" "${pkgdir}/usr/share/refind/docs/README.txt"
+	install -D -m0644 "${srcdir}/${_pkgname}_build/NEWS.txt" "${pkgdir}/usr/share/refind/docs/NEWS.txt"
+	install -D -m0644 "${srcdir}/${_pkgname}_build/docs/man"/*.8 "${pkgdir}/usr/share/man/man8/"
 
 	# Install the rEFInd fonts
 	install -d "${pkgdir}/usr/share/refind/fonts/"
-	install -D -m0644 "${srcdir}/${__pkgname}_build/fonts"/* "${pkgdir}/usr/share/refind/fonts/"
+	install -D -m0644 "${srcdir}/${_pkgname}_build/fonts"/* "${pkgdir}/usr/share/refind/fonts/"
 	rm -f "${pkgdir}/usr/share/refind/fonts/mkfont.sh"
 
 	# Install the rEFInd icons
 	install -d "${pkgdir}/usr/share/refind/icons/svg/"
-	install -D -m0644 "${srcdir}/${__pkgname}_build/icons"/*.png "${pkgdir}/usr/share/refind/icons/"
-	install -D -m0644 "${srcdir}/${__pkgname}_build/icons/svg"/* "${pkgdir}/usr/share/refind/icons/svg/"
+	install -D -m0644 "${srcdir}/${_pkgname}_build/icons"/*.png "${pkgdir}/usr/share/refind/icons/"
+	install -D -m0644 "${srcdir}/${_pkgname}_build/icons/svg"/* "${pkgdir}/usr/share/refind/icons/svg/"
 
 	# Install the rEFInd images
 	install -d "${pkgdir}/usr/share/refind/images/"
-	install -D -m0644 "${srcdir}/${__pkgname}_build/images"/*.{png,bmp} "${pkgdir}/usr/share/refind/images/"
+	install -D -m0644 "${srcdir}/${_pkgname}_build/images"/*.{png,bmp} "${pkgdir}/usr/share/refind/images/"
 
 	# Install the rEFInd keys
 	install -d "${pkgdir}/usr/share/refind/keys/"
-	install -D -m0644 "${srcdir}/${__pkgname}_build/keys"/* "${pkgdir}/usr/share/refind/keys/"
+	install -D -m0644 "${srcdir}/${_pkgname}_build/keys"/* "${pkgdir}/usr/share/refind/keys/"
 
 	# Install the rEFIt license file, since rEFInd is a fork of rEFIt
 	install -d "${pkgdir}/usr/share/licenses/refind/"
-	install -D -m0644 "${srcdir}/${__pkgname}_build/LICENSE.txt" "${pkgdir}/usr/share/licenses/refind/LICENSE"
+	install -D -m0644 "${srcdir}/${_pkgname}_build/LICENSE.txt" "${pkgdir}/usr/share/licenses/refind/LICENSE"
 
 	# Use '#!/usr/bin/env bash' in all scripts
 	sed 's|#!/bin/bash|#!/usr/bin/env bash|g' -i "${pkgdir}/usr/bin"/* || true
