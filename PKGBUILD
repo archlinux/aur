@@ -1,7 +1,7 @@
 # Maintainer: Tomislav Ivek <tomislav.ivek@gmail.com>
 
 pkgname=('conan')
-pkgver=0.14.0
+pkgver=0.14.1
 pkgrel=1
 pkgdesc="A distributed, open source, C/C++ package manager."
 arch=('any')
@@ -19,7 +19,7 @@ depends=('python-pyjwt>=1.4.0' 'python-pyjwt<1.5.0'
          'python-six>=1.10.0'
          'python-bottle>=0.12.8' 'python-bottle<0.13')
 source=("https://github.com/conan-io/conan/archive/${pkgver}.tar.gz")
-sha512sums=('bce4b3d5b7bbb87bcc65a3039aea95a101ad276af0863c4fdb2fed8ec344b9608a687d6a5f9eca693fb5a58d7b2dfde2059b8f325309a4863236aa38a1691ee1')
+sha512sums=('e60cc9ab52bdfed8c4148af24b8dfac5d17583f6dff9e956fc6a614f1a995473b873004bd762064ca42cfdacd3d7924bb0079c0ac09a140f1218b47c20172c91')
 
 build() {
   cd "$srcdir/conan-$pkgver"
