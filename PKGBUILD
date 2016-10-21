@@ -7,11 +7,6 @@ pkgdesc="CGM rc Heli Flight Simulator"
 arch=('i686' 'x86_64')
 url="http://www.rc-aerobatics.eu/index_e.html"
 license=('custom')
-groups=()
-backup=()
-options=()
-install=
-depends=()
 optdepends=(	'joyutils: jscal, jstest, and jsattach utilities for the Linux joystick driver')
 
 source=(	'http://www.cgm-online.com/secure_rc-heli-simulator/cgm-rc-heli-simulator-linux-x86-64bit.zip'
@@ -66,5 +61,4 @@ package() {
   cd "${pkgdir}/opt/${pkgname}"
   if [ -f "./neXt.x86_64" ]; then ln -s "neXt.x86_64" "${pkgname}"; fi
   if [ -f "./neXt.x86" ]; then ln -s "neXt.x86" "${pkgname}"; fi
-
 }
