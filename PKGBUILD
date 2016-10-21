@@ -37,8 +37,8 @@ package() {
     install -d "${_instdir}/config"
     ln -s "${_etcdir}/server.yaml" "${_instdir}/config/server.yaml"
 
-    install -dm750 -o http -g http "${_varlib}/data"
-    ln -s "${_varlib}/data" "${_instdir}/data"
+    install -dm750 -o http -g http "${_vardir}/data"
+    ln -s "${_vardir}/data" "${_instdir}/data"
 }
 
 backup=("${etcdir}/server.yaml")
