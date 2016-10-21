@@ -15,6 +15,7 @@ pkgbase = refind-efi-git
 	depends = efibootmgr
 	optdepends = imagemagick: For refind-mkfont script
 	optdepends = python: For refind-mkdefault script
+	optdepends = sbsigntools: For EFI binary signing (Secure Boot support)
 	provides = refind-efi=0.10.4.r504.082b678
 	conflicts = refind-efi
 	options = !strip
