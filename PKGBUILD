@@ -22,8 +22,8 @@ declare -rgA _system_libs=(
 )
 
 pkgname=chromium
-pkgver=54.0.2840.59
-pkgrel=2
+pkgver=54.0.2840.71
+pkgrel=1
 _launcher_ver=3
 pkgdesc="The open-source project behind Google Chrome, an attempt at creating a safer, faster, and more stable browser"
 arch=('i686' 'x86_64')
@@ -45,7 +45,7 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/$pkgn
         chromium-52.0.2743.116-unset-madv_free.patch
         chromium-53.0.2785.92-last-commit-position.patch
         chromium-widevine.patch)
-sha256sums=('df89c284b0109566acc6a5a1a84d94a5ab0509cc3a86a31299a50328991edcde'
+sha256sums=('d202d3eb0b3a979ad0e6d0d0c4faa93222c5e5b664d88b9f3a0343899fe7dd7d'
             '8b01fb4efe58146279858a754d90b49e5a38c9a0b36a1f84cbb7d12f92b84c28'
             '028a748a5c275de9b8f776f97909f999a8583a4b77fd1cd600b4fc5c0c3e91e9'
             '3b3aa9e28f29e6f539ed1c7832e79463b13128863a02e9c6fecd16c30d61c227'
