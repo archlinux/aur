@@ -1,42 +1,41 @@
 # Maintainer: Jake <ja.ke@posteo.de>
 pkgname=script-communicator
-pkgver=4.14
-_pkgver=04_14
+pkgver=4.16
+_pkgver=04_16
 pkgrel=1
 pkgdesc="Scriptable terminal with Serial/TCP/UDP/SPI/CAN support"
 arch=('i686' 'x86_64')
 url="http://sourceforge.net/projects/scriptcommunicator/"
 license=('GPL3')
 depends=('qt5-script' 'qt5-serialport')
-makedepends=('qt5-tools' 'dos2unix' 'icoutils')
+makedepends=('qt5-tools')
 
-source=("http://sourceforge.net/projects/scriptcommunicator/files/Source/ScriptCommunicator_${_pkgver}_source.zip" 
+source=("https://github.com/szieke/ScriptCommunicator_serial-terminal/archive/Release_${_pkgver}.zip" 
 	"qmake.patch"
 	"$pkgname.desktop")
-md5sums=('9131b3adfd5868db6b706d2014d22f86'
-         'efe580480b123884895d7aadad495921'
-         '2178766b1e5dcccffe29d666625d111a')
+sha256sums=('032dbf2c36d9a74818af33965082b5ec9639c7223fc432731f2ffee6c48783ef'
+            '42d4c91d7313281e41588d7d75016ab30695bf057e81197fa09a904cb3311b6e'
+            'a6ff5c6079a0af0c5bc47c8f660073fcfc31c22a68b57d98f454542aaa560566')
 
 
 prepare() {
-	cd "ScriptCommunicator_${_pkgver}_source"
-	dos2unix ScriptCommunicator.pro
+	mv ScriptCommunicator_serial-terminal-Release_${_pkgver}/ScriptCommunicator/ ${pkgname}
+	cd $pkgname
 	patch -i "$srcdir/qmake.patch"
 }
 
 build() {
-	cd "ScriptCommunicator_${_pkgver}_source"
+	cd $pkgname
 	qmake -o Makefile ScriptCommunicator.pro
-	make
+	make --no-print-directory
 }
 
 
 package() {
 	install -Dm644 "$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
-	cd "ScriptCommunicator_${_pkgver}_source"	
 	
-	icotool -x images/main.ico -i 1 -o images/main.png
-	install -Dm644 "images/main.png" "$pkgdir/usr/share/pixmaps/$pkgname.png"
+	cd $pkgname	
+	install -Dm644 "images/main_32x32.png" "$pkgdir/usr/share/pixmaps/$pkgname.png"
 	
 	mkdir -p "$pkgdir/opt/$pkgname"
 	install -Dm755 "build/ScriptCommunicator" "$pkgdir/opt/$pkgname/"
