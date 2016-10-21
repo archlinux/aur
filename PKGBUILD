@@ -4,7 +4,7 @@
 # Contributor: Justin Dray <justin@dray.be>
 
 pkgname="google-cloud-sdk"
-pkgver=130.0.0
+pkgver=131.0.0
 pkgrel=1
 pkgdesc="Tools and libraries SDK for managing resources on the Google Cloud Platform, plus kubectl and Python/PHP appengine SDK components"
 url="https://cloud.google.com/sdk/"
@@ -26,13 +26,13 @@ options=('!strip' 'staticlibs')
 # 64bit
 source_x86_64=("https://dl.google.com/dl/cloudsdk/release/downloads/$pkgname-$pkgver-linux-x86_64.tar.gz"
                "profile.sh")
-sha1sums_x86_64=('ba5f6539cf3f8f471173a8dc5f38629758f246b5'
+sha1sums_x86_64=('976b4db7a252cb7711a879a3cc4af66b58cf71dd'
                  '770d136b9feaf36f3fd595234b0d9366b40de16c')
 
 # 32bit
 source_i686=("https://dl.google.com/dl/cloudsdk/release/downloads/$pkgname-$pkgver-linux-x86.tar.gz"
              "profile.sh")
-sha1sums_i686=('d13472b9bcd6d46198d6655ec97c1ad0cf3f3150'
+sha1sums_i686=('92cbbad8e462df47c59ba69fa8a212f89b00120a'
                '770d136b9feaf36f3fd595234b0d9366b40de16c')
 
 prepare() {
