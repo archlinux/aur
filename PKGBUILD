@@ -1,11 +1,12 @@
-# Maintainer: Adrien Sohier <adrien.sohier@art-software.fr>
+# Maintainer: Adam Goldsmith <contact@adamgoldsmith.name>
+# Based on i3lock-lixxia-git by Adrien Sohier <adrien.sohier@art-software.fr>
 
-pkgname=i3lock-lixxia-git
-pkgver=ff1273
-pkgrel=2
-pkgdesc="An improved screenlocker based upon XCB and PAM (Lixxia fork)"
+pkgname=i3lock-popoffka-git
+pkgver=353dd3
+pkgrel=1
+pkgdesc="An improved screenlocker based upon XCB and PAM (Popoffka fork)"
 arch=('i686' 'x86_64')
-url="https://github.com/Lixxia/i3lock"
+url="https://github.com/popoffka/i3lock"
 license=('MIT')
 groups=("i3")
 depends=('xcb-util-image' 'libev' 'cairo' 'libxkbcommon-x11')
@@ -14,19 +15,12 @@ replaces=('i3lock')
 provides=('i3lock')
 conflicts=('i3lock')
 backup=("etc/pam.d/i3lock")
-source=("git://github.com/Lixxia/i3lock.git"
-        "24hour.patch")
-md5sums=('SKIP'
-         '03a4b583be31541921d3392984c95cba')
+source=("git://github.com/popoffka/i3lock.git")
+md5sums=('SKIP')
 
 pkgver() {
   cd "${srcdir}/i3lock"
   git describe --always | cut -c2- | tr "-" "."
-}
-
-prepare() {
-    cd "${srcdir}/i3lock"
-    patch -Np1 -i "${srcdir}/24hour.patch"
 }
 
 build() {
