@@ -4359,7 +4359,7 @@ new file mode 100644
 index 0000000..17f8cb4
 --- /dev/null
 +++ b/crypto/evp/e_chacha20poly1305.c
-@@ -0,0 +1,435 @@
+@@ -0,0 +1,436 @@
 +/* ====================================================================
 + * Copyright (c) 2001-2014 The OpenSSL Project.  All rights reserved.
 + *
@@ -4440,6 +4440,7 @@ index 0000000..17f8cb4
 +    #define poly_update poly1305_update_wrapper
 +    #define poly_finish poly1305_finish_wrapper
 +#else
++    poly1305_state poly_state;
 +    #define poly_init CRYPTO_poly1305_init
 +    #define poly_update(c,i,l) CRYPTO_poly1305_update(&c->poly_state,i,l)
 +    #define poly_finish(c,m) CRYPTO_poly1305_finish(&c->poly_state,m)

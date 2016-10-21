@@ -28,7 +28,7 @@ md5sums=('96322138f0b69e61b7212bc53d5e912b'
          'SKIP'
          'dc78d3d06baffc16217519242ce92478'
          '3bf51be3a1bbd262be46dc619f92aa90'
-         '6d44fc7cee088fb08049da7e54cf625f')
+         'd5928687c4ef17a21b6942900fc02be7')
 
 prepare() {
 	cd $srcdir/$_pkgname-$_ver
