@@ -200,6 +200,7 @@ package_nvidia-utils-full-beta() {
   install -Dm755 libEGL_nvidia.so.$pkgver "$pkgdir"/usr/lib/libEGL_nvidia.so.$pkgver
   install -Dm755 libnvidia-eglcore.so.$pkgver "$pkgdir"/usr/lib/libnvidia-eglcore.so.$pkgver
   install -Dm755 libnvidia-egl-wayland.so.$pkgver "$pkgdir"/usr/lib/libnvidia-egl-wayland.so.$pkgver
+  install -Dm644 10_nvidia.json "$pkgdir"/usr/share/glvnd/egl_vendor.d/10_nvidia.json
 
   # OpenGL ES
   install -Dm755 libGLESv1_CM.so.1 "$pkgdir"/usr/lib/nvidia/libGLESv1_CM.so.1
@@ -239,7 +240,7 @@ package_nvidia-utils-full-beta() {
   install -Dm755 libnvidia-ml.so.$pkgver "$pkgdir"/usr/lib/libnvidia-ml.so.$pkgver
 
   # Vulkan icd
-  install -D -m644 nvidia_icd.json "$pkgdir"/etc/vulkan/icd.d/nvidia_icd.json
+  install -Dm644 nvidia_icd.json "$pkgdir"/usr/share/vulkan/icd.d/nvidia_icd.json
 
   # Helper libs for approved partners' GRID remote apps
   install -Dm755 libnvidia-ifr.so.$pkgver "$pkgdir"/usr/lib/libnvidia-ifr.so.$pkgver
