@@ -3,11 +3,11 @@
 _pkgname=horseshoes
 pkgname=horseshoes-git
 pkgver=1.0.4.r1.eddbaa7
-pkgrel=2
+pkgrel=3
 pkgdesc="Audio only game of horseshoes -- master branch."
 arch=('any')
 url="https://github.com/2mb-solutions/horseshoes"
-license=('unlicense')
+license=('MIT')
 depends=('speech-dispatcher' 'allegro')
 makedepends=('gcc' 'git')
 optdepends=('espeak: TTS support'
