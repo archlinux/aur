@@ -14,7 +14,7 @@ source=(
   "http://www.screamingfrog.co.uk/products/seo-spider/screamingfrogseospider_${pkgver}_all.deb"
   "LICENSE"
 )
-sha256sums=('17c60a389fcf8582a892709059363cba81df8b23c5f3854630ee1fe67520dbaf'
+sha256sums=('eb489a5c2b72e3122d9f82a192886538a0711664646f400c8f39ba39af813cd1'
             '5f32a7baef326d88754c6581883800a8d68a753bec846a1d0c190460ab7a2424')
 
 build() {
