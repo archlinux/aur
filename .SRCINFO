@@ -1,8 +1,8 @@
 pkgbase = pydio-sync-latest
 	pkgdesc = Pydio synchronisation client
 	pkgver = 1.2.7
-	pkgrel = 1
-	url = https://pyd.io
+	pkgrel = 2
+	url = https://pydio.com
 	arch = i686
 	arch = x86_64
 	license = GPL3

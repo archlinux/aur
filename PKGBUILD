@@ -2,10 +2,10 @@
 # Contributor: Yoann Ono Dit Biot <yoann.onoditbiot@gmail.com>
 pkgname=pydio-sync-latest
 pkgver=1.2.7
-pkgrel=1
+pkgrel=2
 pkgdesc="Pydio synchronisation client"
 arch=('i686' 'x86_64')
-url="https://pyd.io"
+url="https://pydio.com"
 license=('GPL3')
 conflicts=('pydio-sync-git' 'pydio-sync-ui-git')
 provides=('pydio-sync-latest')
