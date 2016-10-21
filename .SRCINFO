@@ -10,7 +10,6 @@ pkgbase = routersploit
 	depends = python2-paramiko
 	depends = python2-beautifulsoup4
 	depends = python2-pysnmp
-	conflicts = routersploit-git
 	source = routersploit_v2.2.1.tar.gz::https://github.com/reverse-shell/routersploit/archive/v2.2.1.tar.gz
 	md5sums = 982057f87d1a31c01c379f15ae088a8e
 
