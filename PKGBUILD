@@ -7,8 +7,8 @@
 
 # pkgbase=linux                  # Replace stock ARCH kernel
 pkgbase=linux-dell-e7x70         # Build with a different name
-_srcname=linux-4.7
-pkgver=4.7.6
+_srcname=linux-4.8
+pkgver=4.8.2
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
@@ -32,12 +32,12 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         '0005-allow-touchsticks-to-report-pressure.patch'
         '0006-set-dualpoint-flag-for-74-03-28-devices.patch') 
 
-sha256sums=('5190c3d1209aeda04168145bf50569dc0984f80467159b1dc50ad731e3285f10'
+sha256sums=('3e9150065f193d3d94bcf46a1fe9f033c7ef7122ab71d75a7fb5a2f0c9a7e11a'
             'SKIP'
-            '2e425c268076c3b186107edf9045e0910088699e077282b5187efb5edf2b8836'
+            'edb6e8022172df2b020b53e1cfa32bcde070f3119a6618766066098c46008a9b'
             'SKIP'
-            '8ac2fb81f4c932c6b1877ca2bda9a98c3ffbb42359dce7dea588c97df4db8c8a'
-            '931724fe1a57134442fecc739ccb32984c1c6a0f0ae7e7311fd9536bb0e47ead'
+            '2ac8818414beb7dbacbd3ad450c516e6ada804827132a7132f63b8189e5f5151'
+            '93a4ad4f6c7bb9296fddec436ed7477a5a5c11cf4d6e68482fa6610442cbcb1f'
             'f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
             'c2b89a884c8e2001cc02180f556295cad4f72821f99daf215c92586ae98e5b61'
