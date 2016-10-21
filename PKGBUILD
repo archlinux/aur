@@ -21,12 +21,12 @@ makedepends=('curl' 'gmp' 'iproute2' 'openssl' 'sqlite' 'libcap' 'libsystemd' 's
 conflicts=('openswan')
 options=(!libtool)
 backup=(
-	etc/ipsec.conf 
-        etc/ipsec.secrets
-	etc/swanctl/swanctl.conf
-	etc/strongswan.conf 
-	etc/strongswan.d/{charon-logging.conf,charon.conf,pki.conf,pool.conf,scepclient.conf,starter.conf,swanctl.conf}
-	etc/strongswan.d/charon/{aesni.conf,attr-sql.conf,attr.conf,cmac.conf,connmark.conf,\
+    etc/ipsec.conf
+    etc/ipsec.secrets
+    etc/swanctl/swanctl.conf
+    etc/strongswan.conf
+    etc/strongswan.d/{charon-logging.conf,charon.conf,pki.conf,pool.conf,scepclient.conf,starter.conf,swanctl.conf}
+    etc/strongswan.d/charon/{aesni.conf,attr-sql.conf,attr.conf,cmac.conf,connmark.conf,\
 constraints.conf,curl.conf,des.conf,dhcp.conf,dnskey.conf,eap-aka-3gpp2.conf,eap-aka.conf,\
 eap-gtc.conf,eap-identity.conf,eap-md5.conf,eap-mschapv2.conf,eap-radius.conf,eap-sim-file.conf,\
 eap-sim.conf,eap-simaka-pseudonym.conf,eap-simaka-reauth.conf,eap-tls.conf,ext-auth.conf,farp.conf,\
@@ -37,8 +37,8 @@ vici.conf,x509.conf,xauth-eap.conf,xauth-generic.conf,xcbc.conf,chapoly.conf,uni
 )
 
 source=("https://download.strongswan.org/strongswan-${pkgver}.tar.bz2"
-	"configure_ac.patch"
-	)
+    "configure_ac.patch"
+    )
 
 # md5 is broken. We use sha256 now. Alternatively, we could check the signature of the file, but that
 # doesn't yield any more security and just increases the work users initially have to invest.
@@ -72,12 +72,12 @@ build() {
         --enable-eap-gtc --enable-eap-aka --enable-eap-aka-3gpp2 \
         --enable-eap-mschapv2 --enable-eap-radius --enable-xauth-eap \
         --enable-ha --enable-vici --enable-swanctl --enable-systemd --enable-ext-auth \
-        --disable-mysql --disable-ldap -enable-cmd --enable-forecast --enable-connmark \
-	--enable-aesni --enable-eap-ttls --enable-radattr --enable-xauth-pam --enable-xauth-noauth \
-	--enable-eap-dynamic --enable-eap-peap --enable-eap-tls --enable-chapoly --enable-unity \
-	--with-capabilities=libcap
+        --disable-mysql --disable-ldap --enable-cmd --enable-forecast --enable-connmark \
+        --enable-aesni --enable-eap-ttls --enable-radattr --enable-xauth-pam --enable-xauth-noauth \
+        --enable-eap-dynamic --enable-eap-peap --enable-eap-tls --enable-chapoly --enable-unity \
+        --with-capabilities=libcap
 # if you want networkmanager support, add --enable-nm
-#	--enable-ruby-gems --enable-python-eggs
+#       --enable-ruby-gems --enable-python-eggs
   make
 }
 
