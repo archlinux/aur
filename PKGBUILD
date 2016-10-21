@@ -7,8 +7,8 @@
 
 pkgbase=dbus-selinux
 pkgname=(dbus-selinux dbus-docs-selinux)
-pkgver=1.10.10
-pkgrel=3
+pkgver=1.10.12
+pkgrel=1
 pkgdesc="Freedesktop.org message bus system with SELinux support"
 url="https://wiki.freedesktop.org/www/Software/dbus/"
 arch=(i686 x86_64)
@@ -18,7 +18,7 @@ depends=(libsystemd-selinux expat)
 makedepends=(systemd-selinux xmlto docbook-xsl python yelp-tools doxygen audit libselinux)
 source=(https://dbus.freedesktop.org/releases/${pkgbase/-selinux}/${pkgbase/-selinux}-$pkgver.tar.gz{,.asc}
         0001-Drop-Install-sections-from-user-services.patch)
-sha256sums=('9d8f1d069ab4d1a0255d7b400ea3bcef4430c42e729b1012abb2890e3f739a43'
+sha256sums=('210a79430b276eafc6406c71705e9140d25b9956d18068df98a70156dc0e475d'
             'SKIP'
             '48135124680bd9ea2d7d2bd2a9f457608d97bd9aa7cb4f4396e26a1c2c91af3e')
 validpgpkeys=('DA98F25C0871C49A59EAFF2C4DE8FF2A63C7CC90'  # Simon McVittie <simon.mcvittie@collabora.co.uk>
