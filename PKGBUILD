@@ -2,8 +2,8 @@
 # Contributer: Michael Taboada <michael@2mb.solutions>
 _pkgname=horseshoes
 pkgname=horseshoes-git
-pkgver=1.0.4.r1.eddbaa7
-pkgrel=3
+pkgver=1.0.4.r5.65ef3ec
+pkgrel=1
 pkgdesc="Audio only game of horseshoes -- master branch."
 arch=('any')
 url="https://github.com/2mb-solutions/horseshoes"
