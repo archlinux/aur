@@ -23,7 +23,7 @@ package() {
   cd ${srcdir}/Macrodown
   make
   install -dm755 "${pkgdir}"/usr/bin
-  install -m644 ./bin/macrodown "${pkgdir}"/usr/bin/
+  install -m755 ./bin/macrodown "${pkgdir}"/usr/bin/
 
   install -d "${pkgdir}/usr/share/licenses/${pkgname}/"
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/"
