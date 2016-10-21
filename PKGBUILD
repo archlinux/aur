@@ -8,7 +8,6 @@ pkgdesc="Libraries for the Portable C Compiler"
 arch=('i686' 'x86_64')
 url="http://pcc.ludd.ltu.se/"
 license=('custom:BSD')
-conflicts=('pcc-libs-cvs')
 source=("http://pcc.ludd.ltu.se/ftp/pub/pcc-releases/${pkgname}-${pkgver}.tgz"
 	"license")
 md5sums=('360c157bbf6a7a931c4760ccf4ad704a'

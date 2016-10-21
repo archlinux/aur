@@ -6,7 +6,6 @@ pkgbase = pcc-libs
 	arch = i686
 	arch = x86_64
 	license = custom:BSD
-	conflicts = pcc-libs-cvs
 	source = http://pcc.ludd.ltu.se/ftp/pub/pcc-releases/pcc-libs-1.1.0.tgz
 	source = license
 	md5sums = 360c157bbf6a7a931c4760ccf4ad704a
