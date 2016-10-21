@@ -2,7 +2,7 @@
 # Contributor: Julien Nicoulaud <julien.nicoulaud@gmail.com>
 pkgname=yourkit
 _version=2016.02
-_build=40
+_build=43
 pkgver=${_version}b${_build}
 pkgrel=1
 pkgdesc="Java CPU and memory profiler."
@@ -15,13 +15,13 @@ optdepends=('intellij-idea-community-edition: A Java IDE that integrates with Yo
             'netbeans: A Java IDE that integrates with Yourkit')
 options=(!strip)
 source=(http://www.yourkit.com/download/yjp-${_version}-b${_build}-linux.tar.bz2)
-sha256sums=('13ff724c249f1b02896ac1a44dfb0fc286b785396ab1417a84d6a027c4e13d0f')
+sha256sums=('09ff6cbe8dc6a5d2b0cc45d2296b7d08601d3cbe090153b7ccae2f19b0126e5f')
 
 build() {
   msg2 "Generate scripts for /usr/bin..."
   cat <<EOF > "${srcdir}"/${pkgname}.sh
 #!/bin/sh
-cd /opt/${pkgname}/bin && sh yjp.sh
+cd /opt/${pkgname}/bin && sh yjp.sh $@
 EOF
 
   msg2 "Generate desktop application entry for recorder..."
