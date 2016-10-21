@@ -1,0 +1,26 @@
+pkgbase = openmvs-git
+	pkgdesc = open Multi-View Stereo reconstruction library with simple and automatic set of tools
+	pkgver = 0.7.r9.g8cbeda1
+	pkgrel = 1
+	url = http://cdcseacave.github.io/openMVS
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = cmake
+	makedepends = cuda
+	makedepends = boost
+	makedepends = eigen
+	makedepends = ceres-solver
+	depends = opencv
+	depends = cgal
+	depends = nvidia-utils
+	source = openmvs-git::git+https://github.com/cdcseacave/openMVS.git
+	source = vcglib::git+https://github.com/cdcseacave/VCG.git
+	source = cuda.patch
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = 39ab7cf21b8ca42ad9dd28d80e71b323
+
+pkgname = openmvs-git
+
