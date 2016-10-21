@@ -1,0 +1,13 @@
+pkgbase = php-remote-storage
+	pkgdesc = remoteStorage server written in PHP
+	pkgver = 1.0.4
+	pkgrel = 1
+	url = https://github.com/fkooman/php-remote-storage
+	arch = any
+	license = agpl3
+	backup = etc/webapps/php-remote-storage/server.yaml
+	source = https://github.com/fkooman/php-remote-storage/releases/download/1.0.4/php-remote-storage-1.0.4.tar.xz
+	md5sums = a05597c68c937fd707cc8f28cb74f4eb
+
+pkgname = php-remote-storage
+
