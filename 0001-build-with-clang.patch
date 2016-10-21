@@ -1,0 +1,25 @@
+From 16c81f69dca70544f6d9d5304970856a7610f0cb Mon Sep 17 00:00:00 2001
+From: gsc <xgdgsc@gmail.com>
+Date: Fri, 21 Oct 2016 15:50:42 +0800
+Subject: [PATCH] build with clang
+
+---
+ libgo/channel.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/libgo/channel.h b/libgo/channel.h
+index 25c2727..f888d16 100644
+--- a/libgo/channel.h
++++ b/libgo/channel.h
+@@ -4,7 +4,7 @@
+ #include <libgo/block_object.h>
+ #include <libgo/co_mutex.h>
+ #include <libgo/scheduler.h>
+-
++using std::nullptr_t;
+ namespace co
+ {
+ 
+-- 
+2.10.0
+
