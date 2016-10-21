@@ -1,7 +1,7 @@
 pkgbase = ponyprog-bin
 	pkgdesc = PonyProg is a serial device programmer based on some simple and cheap interfaces for the PC
 	pkgver = 2.08d
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.LancOS.com
 	arch = any
 	license = GPL
