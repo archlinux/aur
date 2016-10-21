@@ -1,11 +1,11 @@
-# Contributor: SebRmv <sbriais at-symbol free dot fr> 
+# Contributor: SebRmv <sbriais at-symbol free dot fr>
 # PKGBUILD based on mipsel-linux-gnu-gcc
 # (made by: Vojtech Horky <vojta . horky at-symbol seznam . cz>)
 pkgname=m68k-atari-mint-gcc
 _pkgname=gcc
 _target="m68k-atari-mint"
 pkgver=4.6.4
-pkgrel=8
+pkgrel=9
 pkgdesc="The GNU Compiler Collection for the Motorola M68000 architecture"
 url="http://www.gnu.org/software/gcc/"
 arch=('i686' 'x86_64')
@@ -34,10 +34,10 @@ build() {
 
         CFLAGS=${CFLAGS//-D_FORTIFY_SOURCE=?/}
         export CFLAGS
-        
+
         CPPFLAGS=${CPPFLAGS//-D_FORTIFY_SOURCE=?/}
         export CPPFLAGS
-	
+
 	../${_pkgname}-${pkgver}/configure \
 		"--prefix=${_sysroot}" \
 		"--bindir=/usr/bin" "--program-prefix=${_target}-" \
@@ -49,10 +49,11 @@ build() {
         	--disable-libstdcxx-pch \
         	CFLAGS_FOR_TARGET="-O2 -fomit-frame-pointer" \
         	CXXFLAGS_FOR_TARGET="-O2 -fomit-frame-pointer" \
+                MAKEINFO=missing \
 		|| return 1
-	
+
 	make all-gcc "inhibit_libc=true" || return 1
-	
+
    	make all-target-libgcc || return 1
 }
 
@@ -83,4 +84,3 @@ package() {
         ln -s ../libgcc.a .
         ln -s ../libgcov.a .
 }
-

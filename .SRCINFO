@@ -1,7 +1,7 @@
 pkgbase = m68k-atari-mint-gcc
 	pkgdesc = The GNU Compiler Collection for the Motorola M68000 architecture
 	pkgver = 4.6.4
-	pkgrel = 8
+	pkgrel = 9
 	url = http://www.gnu.org/software/gcc/
 	arch = i686
 	arch = x86_64
