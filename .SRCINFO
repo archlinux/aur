@@ -18,11 +18,7 @@ pkgbase = nss-hg
 	options = !makeflags
 	options = staticlibs
 	source = hg+https://hg.mozilla.org/projects/nss
-	source = nss.pc.in
-	source = nss-config.in
 	sha256sums = SKIP
-	sha256sums = b9f1428ca2305bf30b109507ff335fa00bce5a7ce0434b50acd26ad7c47dd5bd
-	sha256sums = e44ac5095b4d88f24ec7b2e6a9f1581560bd3ad41a3d198596d67ef22f67adb9
 
 pkgname = nss-hg
 
