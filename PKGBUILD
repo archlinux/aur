@@ -15,7 +15,7 @@ _PXE='0'
 
 _pkgname='refind'
 pkgname="${_pkgname}-efi-git"
-pkgver=0.10.3.r493.c5bc1ce
+pkgver=0.10.4.r504.082b678
 pkgrel=1
 pkgdesc='rEFInd Boot Manager - git version'
 url='http://www.rodsbooks.com/refind/'
@@ -273,8 +273,10 @@ package() {
 
 	# Install the rEFInd icons
 	install -d "${pkgdir}/usr/share/refind/icons/svg/"
-	install -D -m0644 "${srcdir}/${_pkgname}_build/icons"/*.png "${pkgdir}/usr/share/refind/icons/"
+	install -d "${pkgdir}/usr/share/refind/icons/licenses/"
 	install -D -m0644 "${srcdir}/${_pkgname}_build/icons/svg"/* "${pkgdir}/usr/share/refind/icons/svg/"
+	install -D -m0644 "${srcdir}/${_pkgname}_build/icons"/*.png "${pkgdir}/usr/share/refind/icons/"
+	install -D -m0644 "${srcdir}/${_pkgname}_build/icons/licenses"/* "${pkgdir}/usr/share/refind/icons/licenses/"
 
 	# Install the rEFInd images
 	install -d "${pkgdir}/usr/share/refind/images/"

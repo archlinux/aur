@@ -1,6 +1,6 @@
 pkgbase = refind-efi-git
 	pkgdesc = rEFInd Boot Manager - git version - Built with GNU-EFI libs
-	pkgver = 0.10.3.r493.c5bc1ce
+	pkgver = 0.10.4.r504.082b678
 	pkgrel = 1
 	url = http://www.rodsbooks.com/refind/
 	install = refind-efi.install
@@ -15,7 +15,7 @@ pkgbase = refind-efi-git
 	depends = efibootmgr
 	optdepends = imagemagick: For refind-mkfont script
 	optdepends = python: For refind-mkdefault script
-	provides = refind-efi=0.10.3.r493.c5bc1ce
+	provides = refind-efi=0.10.4.r504.082b678
 	conflicts = refind-efi
 	options = !strip
 	options = !buildflags
