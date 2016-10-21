@@ -5,24 +5,16 @@
 ### BUILD OPTIONS
 # Set these variables to ANYTHING that is not null to enable them
 
-# Patch with MuQSS (Multiple Queue Skiplist Scheduler)
-# See, http://ck-hack.blogspot.com/2016/10/muqss-multiple-queue-skiplist-scheduler_17.html
-_MuQSS=
-
 # Tweak kernel options prior to a build via nconfig
 _makenconfig=
 
-# Running with a 1000 HZ tick rate (vs the ARCH 300) is reported to solve the
-# issues with the bfs/linux 3.1x and suspend. For more see:
-# http://ck-hack.blogspot.com/2013/09/bfs-0441-311-ck1.html?showComment=1378756529345#c5266548105449573343
-_1k_HZ_ticks=y
-
-### Do not disable NUMA until CK figures out why doing so causes panics for
-### some users!
-# NUMA is optimized for multi-socket motherboards.
-# A single multi-core CPU actually runs slower with NUMA enabled.
+# NUMA is optimized for multi-socket motherboards. A single multi-core CPU can
+# actually run slower with NUMA enabled.
 # See, https://bugs.archlinux.org/task/31187
-#_NUMAdisable=
+_NUMAdisable=
+
+# Use a 1000 Hz timer (CK recommended) rather than the Arch default of 300 Hz.
+_1k_HZ_ticks=y
 
 # Compile ONLY probed modules
 # As of mainline 2.6.32, running with this option will only build the modules
@@ -38,6 +30,12 @@ _1k_HZ_ticks=y
 # More at this wiki page ---> https://wiki.archlinux.org/index.php/Modprobed-db
 _localmodcfg=
 
+# Alternative I/O scheduler by Paolo Valente
+# Set this if you want it enabled globally i.e. for all devices in your system
+# If you want it enabled on a device-by-device basis, leave this unset and see:
+# https://wiki.archlinux.org/index.php/Linux-ck#How_to_Enable_the_BFQ_I.2FO_Scheduler
+_BFQ_enable_=
+
 # Use the current kernel's .config file
 # Enabling this option will use the .config of the RUNNING kernel rather than
 # the ARCH defaults. Useful when the package gets updated and you already went
@@ -45,66 +43,40 @@ _localmodcfg=
 # a new kernel is released, but again, convenient for package bumps.
 _use_current=
 
-# Alternative I/O scheduler by Paolo Valente
-# Set this if you want it enabled globally i.e. for all devices in your system
-# If you want it enabled on a device-by-device basis, leave this unset and see:
-# https://wiki.archlinux.org/index.php/Linux-ck#How_to_Enable_the_BFQ_I.2FO_Scheduler
-_BFQ_enable_=
-
 ### Do no edit below this line unless you know what you're doing
 
 pkgname=(linux-ck linux-ck-headers)
 _kernelname=-ck
 _srcname=linux-4.8
 pkgver=4.8.3
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 url="https://wiki.archlinux.org/index.php/Linux-ck"
 license=('GPL2')
 makedepends=('kmod' 'inetutils' 'bc' 'libelf')
 options=('!strip')
-_ckpatchversion=1
+_ckpatchversion=2
 _ckpatchname="patch-4.8-ck${_ckpatchversion}"
-_muqssversion=112
-_muqsspatch="4.8-sched-MuQSS_$_muqssversion"
 _gcc_patch='enable_additional_cpu_optimizations_for_gcc_v4.9+_kernel_v3.15+.patch'
-_bfqpath='http://algo.ing.unimo.it/people/paolo/disk_sched/patches/4.8.0-v8r4'
-_bfqp1='0001-block-cgroups-kconfig-build-bits-for-BFQ-v7r11-4.8.0.patch'
-_bfqp2='0002-block-introduce-the-BFQ-v7r11-I-O-sched-to-be-ported.patch'
-_bfqp3='0003-block-bfq-add-Early-Queue-Merge-EQM-to-BFQ-v7r11-to-.patch'
-_bfqp4='0004-Turn-BFQ-v7r11-into-BFQ-v8r4-for-4.8.0.patch'
 source=("http://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
 "https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.sign"
 "http://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.xz"
 "https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.sign"
-"http://ck.kolivas.org/patches/muqss/4.0/4.8/$_muqsspatch.patch"
+"http://ck.kolivas.org/patches/4.0/4.8/4.8-ck${_ckpatchversion}/${_ckpatchname}.xz"
+"http://repo-ck.com/source/gcc_patch/${_gcc_patch}.gz"
 'config.x86_64' 'config'
 'linux-ck.preset'
-'change-default-console-loglevel.patch'
-# ck1
-"http://ck.kolivas.org/patches/4.0/4.8/4.8-ck${_ckpatchversion}/${_ckpatchname}.xz"
-# gcc
-"http://repo-ck.com/source/gcc_patch/${_gcc_patch}.gz"
-# bfq
-"$_bfqpath/$_bfqp1"
-"$_bfqpath/$_bfqp2"
-"$_bfqpath/$_bfqp3"
-"$_bfqpath/$_bfqp4")
+'change-default-console-loglevel.patch')
 sha256sums=('3e9150065f193d3d94bcf46a1fe9f033c7ef7122ab71d75a7fb5a2f0c9a7e11a'
             'SKIP'
             '1482dd7bda0a3a82abcde20f24576a57287c462e8e732fe688ed37daf42468cb'
             'SKIP'
-            '57863cbfa5d6d19c6166bc4c3c041da26989b7c41e597f31642d4c09e09b848a'
-            '395e0b97e5cf3d483778d8ff0ec11d305d93597d397305d97efc3b7826a296ed'
-            '4a053e009e05fd597b11b3781a7214a20624b188c3c610f9bf9d67039e1c656c'
-            '2b3ebf5446aa3cac279842ca00bc1f2d6b7ff1766915282c201d763dbf6ca07e'
-            '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
-            'f085e2471668f4069c971d8beaaf12a353efea8d1cea9c68c9665858ae42b2ff'
+            '712097d92492935e218110ca5d26b3771430dd75a445400e5e6e8c0f2f49745c'
             'cf0f984ebfbb8ca8ffee1a12fd791437064b9ebe0712d6f813fd5681d4840791'
-            '1dabd969b18b7e09e2ffeffe4c2430dbc26e5df9868563d54ca95f45c690262f'
-            'c8d17a7893d5780fd0c90311470160dcc842b81621b30671150e2e3224be86d2'
-            'e47ea5b1c2f20cfade4e6a85bff1320dac84ac638e48ef4eec7285fe9e1e1def'
-            'c3c96e304aef378f0cc6e1fb18eeabe176e6ba918d13060c105f3d8cabc85f59')
+            '1db84d68a6fc570d2006e36cb958a8c913823d9d37db4944a0fc5148266eb868'
+            '5a2f4f61b6e529e2726bc20c33f31edf4d90500af1a30ade51dd48be270f49c8'
+            '2b3ebf5446aa3cac279842ca00bc1f2d6b7ff1766915282c201d763dbf6ca07e'
+            '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99')
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
               '647F28654894E3BD457199BE38DBBDC86092693E' # Greg Kroah-Hartman
@@ -121,26 +93,13 @@ prepare() {
 	# (relevant patch sent upstream: https://lkml.org/lkml/2011/7/26/227)
 	patch -p1 -i "${srcdir}/change-default-console-loglevel.patch"
 
-	# patch source with ck patchset with BFS
-	if [ -n "$_MuQSS" ]; then
-		msg "Patching with MuQSS"
-		patch -Np1 -i "$srcdir/$_muqsspatch.patch"
-	else
-		# fix double name in EXTRAVERSION
-		sed -i -re "s/^(.EXTRAVERSION).*$/\1 = /" "${srcdir}/${_ckpatchname}"
-		msg "Patching source with ck patchset including BFS v0.512"
-		patch -Np1 -i "${srcdir}/${_ckpatchname}"
-	fi
+	msg "Patching source with ck patchset"
+	patch -Np1 -i "${srcdir}/${_ckpatchname}"
 
 	# Patch source to enable more gcc CPU optimizatons via the make nconfig
 	msg "Patching source with gcc patch to enable more cpus types"
 	patch -Np1 -i "${srcdir}/${_gcc_patch}"
-	
-	msg "Patching source with BFQ patches"
-	patch -Np1 -i "$srcdir/$_bfqp1"
-	patch -Np1 -i "$srcdir/$_bfqp2"
-	patch -Np1 -i "$srcdir/$_bfqp3"
-	patch -Np1 -i "$srcdir/$_bfqp4"
+
 	# Clean tree and copy ARCH config over
 	msg "Running make mrproper to clean source tree"
 	make mrproper
@@ -150,36 +109,29 @@ prepare() {
 	else
 		cat "${srcdir}/config" > ./.config
 	fi
-
-	### Optionally set tickrate to 1000 to avoid suspend issues as reported here:
-	# http://ck-hack.blogspot.com/2013/09/bfs-0441-311-ck1.html?showComment=1379234249615#c4156123736313039413
+	
 	if [ -n "$_1k_HZ_ticks" ]; then
-		msg "Setting tick rate to 1k..."
+		msg "Setting tick rate to 1000 Hz..."
 		sed -i -e 's/^CONFIG_HZ_300=y/# CONFIG_HZ_300 is not set/' \
 			-i -e 's/^# CONFIG_HZ_1000 is not set/CONFIG_HZ_1000=y/' \
 			-i -e 's/^CONFIG_HZ=300/CONFIG_HZ=1000/' .config
 	fi
 	
-	### Do not disable NUMA until CK figures out why doing so causes panics for
-	### some users!
-
-	# Optionally disable NUMA since >99% of users have mono-socket systems.
-	# For more, see: https://bugs.archlinux.org/task/31187
-#	if [ -n "$_NUMAdisable" ]; then
-#		if [ "${CARCH}" = "x86_64" ]; then
-#			msg "Disabling NUMA from kernel config..."
-#			sed -i -e 's/CONFIG_NUMA=y/# CONFIG_NUMA is not set/' \
-#				-i -e '/CONFIG_AMD_NUMA=y/d' \
-#				-i -e '/CONFIG_X86_64_ACPI_NUMA=y/d' \
-#				-i -e '/CONFIG_NODES_SPAN_OTHER_NODES=y/d' \
-#				-i -e '/# CONFIG_NUMA_EMU is not set/d' \
-#				-i -e '/CONFIG_NODES_SHIFT=6/d' \
-#				-i -e '/CONFIG_NEED_MULTIPLE_NODES=y/d' \
-#				-i -e '/# CONFIG_MOVABLE_NODE is not set/d' \
-#				-i -e '/CONFIG_USE_PERCPU_NUMA_NODE_ID=y/d' \
-#				-i -e '/CONFIG_ACPI_NUMA=y/d' ./.config
-#		fi
-#	fi
+	if [ -n "$_NUMAdisable" ]; then
+		if [ "${CARCH}" = "x86_64" ]; then
+			msg "Disabling NUMA from kernel config..."
+			sed -i -e 's/CONFIG_NUMA=y/# CONFIG_NUMA is not set/' \
+				-i -e '/CONFIG_AMD_NUMA=y/d' \
+				-i -e '/CONFIG_X86_64_ACPI_NUMA=y/d' \
+				-i -e '/CONFIG_NODES_SPAN_OTHER_NODES=y/d' \
+				-i -e '/# CONFIG_NUMA_EMU is not set/d' \
+				-i -e '/CONFIG_NODES_SHIFT=6/d' \
+				-i -e '/CONFIG_NEED_MULTIPLE_NODES=y/d' \
+				-i -e '/# CONFIG_MOVABLE_NODE is not set/d' \
+				-i -e '/CONFIG_USE_PERCPU_NUMA_NODE_ID=y/d' \
+				-i -e '/CONFIG_ACPI_NUMA=y/d' ./.config
+		fi
+	fi
 
 	### Optionally use running kernel's config
 	# code originally by nous; http://aur.archlinux.org/packages.php?ID=40191
@@ -253,14 +205,13 @@ build() {
 }
 
 package_linux-ck() {
-	pkgdesc='Linux Kernel with the ck1 patchset featuring the Brain Fuck Scheduler v0.512.'
-	#_Kpkgdesc='Linux Kernel and modules with the ck1 patchset featuring the Brain Fuck Scheduler v0.512.'
+	pkgdesc='Linux Kernel with the ck2 patchset featuring MuQSS CPU scheduler v0.114'
+	#_Kpkgdesc='Linux Kernel and modules with the ck2 patchset featuring MuQSS CPU scheduler v0.114'
 	#pkgdesc="${_Kpkgdesc}"
 	depends=('coreutils' 'linux-firmware' 'mkinitcpio>=0.7')
 	optdepends=('crda: to set the correct wireless channels of your country' 'nvidia-ck: nVidia drivers for linux-ck' 'modprobed-db: Keeps track of EVERY kernel module that has ever been probed - useful for those of us who make localmodconfig')
 	provides=("linux-ck=${pkgver}")
-	conflicts=('kernel26-ck' 'linux-ck-corex' 'linux-ck-p4' 'linux-ck-pentm' 'linux-ck-atom' 'linux-ck-core2' 'linux-ck-nehalem' 'linux-ck-sandybridge' 'linux-ck-ivybridge' 'linux-ck-broadwell' 'linux-ck-skylake' 'linux-ck-haswell' 'linux-ck-kx' 'linux-ck-k10' 'linux-ck-barcelona' 'linux-ck-bulldozer' 'linux-ck-piledriver' 'linux-ck-silvermont')
-	replaces=('kernel26-ck')
+	conflicts=('linux-ck-corex' 'linux-ck-p4' 'linux-ck-pentm' 'linux-ck-atom' 'linux-ck-core2' 'linux-ck-nehalem' 'linux-ck-sandybridge' 'linux-ck-ivybridge' 'linux-ck-broadwell' 'linux-ck-skylake' 'linux-ck-haswell' 'linux-ck-kx' 'linux-ck-k10' 'linux-ck-barcelona' 'linux-ck-bulldozer' 'linux-ck-piledriver' 'linux-ck-silvermont')
 	backup=("etc/mkinitcpio.d/linux-ck.preset")
 	install=linux-ck.install
 	#groups=('ck-generic')
@@ -324,8 +275,7 @@ package_linux-ck-headers() {
 	#pkgdesc="${_Hpkgdesc}"
 	depends=('linux-ck') # added to keep kernel and headers packages matched
 	provides=("linux-ck-headers=${pkgver}" "linux-headers=${pkgver}")
-	conflicts=('kernel26-ck-headers' 'linux-ck-corex-headers' 'linux-ck-p4-headers' 'linux-ck-pentm-headers' 'linux-ck-atom-headers' 'linux-ck-core2-headers' 'linux-ck-nehalem-headers' 'linux-ck-sandybridge-headers' 'linux-ck-ivybridge-headers' 'linux-ck-haswell-headers' 'linux-ck-broadwell-headers' 'linux-ck-skylake-headers' 'linux-ck-kx-headers' 'linux-ck-k10-headers' 'linux-ck-barcelona-headers' 'linux-ck-bulldozer-headers' 'linux-ck-piledriver-headers' 'linux-ck-silvermont-headers')
-	replaces=('kernel26-ck-headers')
+	conflicts=('linux-ck-corex-headers' 'linux-ck-p4-headers' 'linux-ck-pentm-headers' 'linux-ck-atom-headers' 'linux-ck-core2-headers' 'linux-ck-nehalem-headers' 'linux-ck-sandybridge-headers' 'linux-ck-ivybridge-headers' 'linux-ck-haswell-headers' 'linux-ck-broadwell-headers' 'linux-ck-skylake-headers' 'linux-ck-kx-headers' 'linux-ck-k10-headers' 'linux-ck-barcelona-headers' 'linux-ck-bulldozer-headers' 'linux-ck-piledriver-headers' 'linux-ck-silvermont-headers')
 	#groups=('ck-generic')
 
 	install -dm755 "${pkgdir}/usr/lib/modules/${_kernver}"
