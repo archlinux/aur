@@ -1,12 +1,12 @@
 # Maintainer: James W. Barnett <jbarnet4@tulane.edu>
 pkgname=gromacs-git
-pkgver=5.1.beta1.r121.gabc4a07
-pkgrel=2
+pkgver=2016.r137.g7dffe13
+pkgrel=1
 pkgdesc='A versatile package to perform molecular dynamics, i.e. simulate the Newtonian equations of motion for systems with hundreds to millions of particles. Development branch.'
 url='http://www.gromacs.org/'
 license=("LGPL")
 arch=('i686' 'x86_64')
-depends=('fftw-bettersimd')
+depends=('fftw')
 makedepends=('cmake')
 optdepends=('openmpi: needed for parallelization across nodes'
              'lapack: normal modes and matrix manipulation'
