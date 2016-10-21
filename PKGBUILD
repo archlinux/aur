@@ -1,7 +1,7 @@
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=perl6-inline-perl5
-pkgver=0.6
+pkgver=0.21
 pkgrel=1
 pkgdesc="Use Perl 5 code in a Perl 6 program"
 arch=('i686' 'x86_64')
@@ -51,6 +51,7 @@ package() {
 
   msg2 'Cleaning up pkgdir...'
   rm -f "$pkgdir/usr/share/perl6/vendor/version"
-  find "$pkgdir" -type f -name "*.lock" -exec rm '{}' \;
-  find "$pkgdir" -type f -print0 | xargs -0 sed -i "s,$pkgdir,,g"
+  find "$pkgdir" -type f -name "*.lock" -exec rm '{}' +
+  find "$pkgdir" -type f -print0 -exec \
+    sed -i -e "s,$pkgdir,,g" -e "s,$srcdir,,g" '{}' +
 }
