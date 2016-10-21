@@ -1,4 +1,4 @@
-# Maintainer:  Joakim Hernberg <jhernberg@alchemy.lu>
+# Maintainer:  Emily <absynthesyne at gmail dot com>
 # Contributor: Sven-Hendrik Haase <sh@lutzhaase.com>
 # Contributor: Jan "heftig" Steffens <jan.steffens@gmail.com>
 # Contributor: Eduardo Romero <eduardo@archlinux.org>
