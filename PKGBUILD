@@ -1,40 +1,40 @@
+# Maintainer: quomoow <quomoow@gmail.com>
 pkgname=pcmanfm-git
-pkgver=1.2.1.r3.g8a2c79c
+_pkgname=pcmanfm
+pkgver=0.0.0.0
 pkgrel=1
-
-pkgdesc="An extremely fast, lightweight, yet feature-rich file manager with tabbed browsing"
-url="http://pcmanfm.sourceforge.net/"
+pkgdesc="An extremely fast, lightweight, yet feature-rich file manager with 
+tabbed browsing"
 arch=('i686' 'x86_64')
+url="http://pcmanfm.sourceforge.net/"
 license=('GPL')
-
-depends=('libfm-gtk-git')
+depends=('libfm-gtk2')
 makedepends=('git' 'intltool' 'pkg-config')
-optdepends=('gvfs: mounting of local and remote drives'
-            'lxmenu-data: applications menu and "Open with" dialog'
-            'gnome-menus: applications menu and "Open with" dialog')
-
+optdepends=('gnome-menus: applications menu and "Open with" dialog'
+	'gvfs: mounting of local and remote drives'
+	'lxmenu-data: applications menu and "Open with" dialog')
 provides=('pcmanfm')
 conflicts=('pcmanfm')
+source=(git://pcmanfm.git.sourceforge.net/gitroot/pcmanfm/pcmanfm)
+md5sums=('SKIP')
 
-install=pcmanfm.install
-source=('git://git.lxde.org/git/lxde/pcmanfm'
-        pcmanfm.install)
+prepare() {
+	cd "${_pkgname}"
 
-md5sums=('SKIP'
-         'fc9ea2af71f55f32c8b22bf5ea879e69')
-
-pkgver() {
-	cd pcmanfm
-	git describe --always --long | sed 's/-/-r/; s/-/./g'
+	./autogen.sh
 }
 
 build() {
-	cd pcmanfm
-	./autogen.sh
-	./configure --prefix=/usr --sysconfdir=/etc
-	make LDFLAGS="-lm ${LDFLAGS}"
+  cd "${_pkgname}"
+
+  ./configure --prefix=/usr --sysconfdir=/etc
+
+  make
 }
 
 package() {
-	make -C pcmanfm DESTDIR="$pkgdir" install
+  cd "${_pkgname}"
+
+  make DESTDIR="${pkgdir}/" install
 }
+
