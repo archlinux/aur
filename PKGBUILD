@@ -6,7 +6,7 @@ _ver=1.0.2j
 # use a pacman compatible version scheme
 pkgver=${_ver/[a-z]/.${_ver//[0-9.]/}}
 #pkgver=$_ver
-pkgrel=1
+pkgrel=2
 pkgdesc='The Open Source toolkit for Secure Sockets Layer and Transport Layer Security with ChaCha20 support (32-bit)'
 arch=('x86_64')
 url='https://www.openssl.org'
@@ -43,23 +43,19 @@ prepare() {
 }
 
 build() {
-	cd $srcdir/$_pkgname-$_ver
+	export CC="gcc -m32"
+	export CXX="g++ -m32"
+	export PKG_CONFIG_PATH="/usr/lib32/pkgconfig"
 
-	if [ "${CARCH}" == 'x86_64' ]; then
-		openssltarget='linux-x86_64'
-		optflags='enable-ec_nistp_64_gcc_128'
-	elif [ "${CARCH}" == 'i686' ]; then
-		openssltarget='linux-elf'
-		optflags=''
-	fi
+	cd $srcdir/$_pkgbasename-$_ver
 
 	# mark stack as non-executable: http://bugs.archlinux.org/task/12434
 	./Configure --prefix=/usr --openssldir=/etc/ssl --libdir=lib32 \
-		shared zlib ${optflags} \
-		"${openssltarget}" \
+		shared zlib \
+		linux-elf \
 		"-Wa,--noexecstack ${CPPFLAGS} ${CFLAGS} ${LDFLAGS}"
 
-	make depend
+	make MAKEDEPPROG="${CC}" depend
 	make
 }
 
