@@ -2,11 +2,11 @@
 # Contributer: Storm Dragon <stormdragon2976@gmail.com>
 pkgname=horseshoes
 pkgver=1.0.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Audio only game of horseshoes."
 arch=('any')
 url="https://github.com/2mb-solutions/horseshoes"
-license=('unlicense')
+license=('MIT')
 depends=('speech-dispatcher' 'allegro')
 makedepends=('gcc' 'git')
 optdepends=('espeak: TTS support'
