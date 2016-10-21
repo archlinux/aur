@@ -47,7 +47,7 @@ build() {
 	export CXX="g++ -m32"
 	export PKG_CONFIG_PATH="/usr/lib32/pkgconfig"
 
-	cd $srcdir/$_pkgbasename-$_ver
+	cd $srcdir/$_pkgname-$_ver
 
 	# mark stack as non-executable: http://bugs.archlinux.org/task/12434
 	./Configure --prefix=/usr --openssldir=/etc/ssl --libdir=lib32 \
