@@ -1,0 +1,24 @@
+pkgbase = vpnfailsafe-git
+	pkgdesc = IP leak prevention for OpenVPN
+	pkgver = r1.054da69
+	pkgrel = 1
+	url = https://github.com/wknapik/vpnfailsafe
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = bash
+	depends = coreutils
+	depends = grep
+	depends = iproute2
+	depends = iptables
+	depends = openresolv
+	depends = openvpn
+	depends = procps-ng
+	depends = sed
+	provides = vpnfailsafe
+	conflicts = vpnfailsafe
+	source = git+https://github.com/wknapik/vpnfailsafe.git
+	md5sums = SKIP
+
+pkgname = vpnfailsafe-git
+
