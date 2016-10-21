@@ -1,10 +1,10 @@
-# Maintainer: Viliam Ganz <viliam.ganz@gmail.com>
+# Maintainer: robus <RobusGrobus95@gmail.com>
 _pkgname=nvidia-xrun
 pkgname=$_pkgname"-git"
-pkgver=0.2.2.gbf1eeab
+pkgver=0.3
 pkgrel=1
 epoch=
-pkgdesc="Script to run dedicated X server with discrete nvidia graphics"
+pkgdesc="Script to run dedicated X server with discrete nvidia graphics (git version)"
 arch=("x86_64")
 url="https://github.com/Witko/nvidia-xrun"
 license=('GPL')
@@ -14,7 +14,7 @@ makedepends=('git')
 checkdepends=()
 optdepends=()
 provides=("$_pkgname=$pkgver" "$pkgname=$pkgver")
-conflicts=("$pkgname")
+conflicts=("$_pkgname")
 replaces=()
 backup=()
 options=()
@@ -35,5 +35,8 @@ package() {
 	install -Dm 644 nvidia-xorg.conf "$pkgdir/etc/X11/nvidia-xorg.conf"
 	install -Dm 644 nvidia-xinitrc "$pkgdir/etc/X11/xinit/nvidia-xinitrc"
 	install -Dm 755 nvidia-xrun "$pkgdir/usr/bin/nvidia-xrun"
+	install -dm 555 "$pkgdir/etc/X11/xinit/nvidia-xinitrc.d"
+	install -dm 555 "$pkgdir/etc/X11/nvidia-xorg.conf.d"
 }
 md5sums=('SKIP')
+
