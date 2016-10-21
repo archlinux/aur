@@ -30,6 +30,9 @@ build() {
 package() {
   cd libArcus-${pkgver}/build
   make DESTDIR="${pkgdir}" install
+
+  mv "${pkgdir}"/usr/lib64/* "${pkgdir}"/usr/lib/.
+  rm -rf "${pkgdir}/usr/lib64"
   
   install -Dm644 "${srcdir}/libArcus-${pkgver}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
