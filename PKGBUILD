@@ -2,7 +2,7 @@
 
 _npmname=mathjs
 pkgname=nodejs-mathjs
-pkgver=3.5.3
+pkgver=3.6.0
 pkgrel=3
 pkgdesc="An extensive math library for JS which also includes a powerful CLI interface"
 arch=(any)
@@ -13,7 +13,7 @@ makedepends=('npm')
 options=('!emptydirs')
 source=("https://registry.npmjs.org/${_npmname}/-/${_npmname}-${pkgver}.tgz")
 noextract=(${_npmname}-${pkgver}.tgz)
-sha384sums=('e57014556db9e4b33f1703abad75effd33c90f14d806d0b0d81ff7896813998d9d2e424328eef7c41288ea23df699cfa')
+sha384sums=('8ae391946b009a584dff4f6ff28c5c3d9870181a87a3c72d8d444f77cb6d6f4d5a7875b1fde5d06067f5934eace76978')
 
 package() {
     cd "$srcdir"
