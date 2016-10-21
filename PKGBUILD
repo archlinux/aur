@@ -8,11 +8,11 @@
 
 pkgname=wine-staging-ivb
 pkgver=1.9.11
-pkgrel=1
+pkgrel=2
 
 _pkgbasever=${pkgver/rc/-rc}
 
-source=("https://github.com/wine-compholio/wine-patched/archive/staging-$_pkgbasever.tar.gz"
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/wine-compholio/wine-patched/archive/staging-$_pkgbasever.tar.gz"
         30-win32-aliases.conf
         patch-$pkgver-ivb.patch
         patch_temp_constants.patch)
