@@ -1,5 +1,5 @@
-# $Id$
-# Maintainer: Malah <malah@neuf.fr>
+# Maintainer: Brenton Horne <brentonhorne77@gmail.com>
+# Contributor: Malah <malah@neuf.fr>
 # Contributor: Daniel Isenmann <daniel@archlinux.org>
 # Contributor: arojas
 # Contributor: Timm Preetz <timm@preetz.us>
@@ -7,7 +7,7 @@
 
 pkgname=monodevelop-stable
 _pkgname=monodevelop
-pkgver=6.1.0.5441
+pkgver=6.1.2.38
 pkgrel=1
 pkgdesc="An IDE primarily designed for C# and other .NET languages"
 arch=('any')
