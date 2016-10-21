@@ -1,0 +1,26 @@
+pkgbase = vmdebootstrap
+	pkgdesc = debootstrap installs a basic Debian system into a directory, for use with chroot(8). vmdeboostrap is a wrapper around it to install Debian into a disk image, which can be used with a virtual machine (such as KVM).
+	pkgver = 1.6
+	pkgrel = 1
+	url = http://liw.fi/vmdebootstrap/
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	depends = debootstrap
+	depends = syslinux
+	depends = qemu
+	depends = parted
+	depends = multipath-tools
+	depends = python2-cliapp
+	depends = distro-info
+	source = http://git.liw.fi/cgi-bin/cgit/cgit.cgi/vmdebootstrap/snapshot/vmdebootstrap-1.6.tar.gz
+	source = python_version.patch
+	source = default_arch.patch
+	source = fix_path.patch
+	md5sums = 90dd5a8aff602273c76644dda166e3e7
+	md5sums = 9ec42862d167c76139f453ed9651dd8e
+	md5sums = 3c3d9df067faa0d742011ad0943427e9
+	md5sums = 806fd64966193e9ae0fb4ab56ab7f3f9
+
+pkgname = vmdebootstrap
+

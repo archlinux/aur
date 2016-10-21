@@ -1,0 +1,12 @@
+diff -rupN vmdebootstrap-1.6/bin/vmdebootstrap vmdebootstrap-1.6.new/bin/vmdebootstrap
+--- vmdebootstrap-1.6/bin/vmdebootstrap	2016-08-11 23:13:45.000000000 +0200
++++ vmdebootstrap-1.6.new/bin/vmdebootstrap	2016-08-23 16:18:06.949870328 +0200
+@@ -44,6 +44,8 @@ __version__ = '1.6'
+ # pylint: disable=invalid-name,line-too-long
+ # pylint: disable=missing-docstring,too-many-statements
+ 
++os.environ['PATH'] = '/bin:/sbin:/usr/bin:/usr/sbin:' + os.environ['PATH']
++
+ 
+ class VmDebootstrap(cliapp.Application):  # pylint: disable=too-many-public-methods
+ 

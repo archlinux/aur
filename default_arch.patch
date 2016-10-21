@@ -1,0 +1,21 @@
+diff -rupN vmdebootstrap-1.6/bin/vmdebootstrap vmdebootstrap-1.6.new/bin/vmdebootstrap
+--- vmdebootstrap-1.6/bin/vmdebootstrap	2016-08-11 23:13:45.000000000 +0200
++++ vmdebootstrap-1.6.new/bin/vmdebootstrap	2016-08-23 14:59:27.576772785 +0200
+@@ -19,6 +19,7 @@
+ # pylint: disable=wrong-import-order
+ 
+ import os
++import re
+ import sys
+ import time
+ import shutil
+@@ -66,7 +67,8 @@ class VmDebootstrap(cliapp.Application):
+ 
+     def add_settings(self):
+         # deliberately long lines for clarity.
+-        default_arch = subprocess.check_output(["dpkg", "--print-architecture"]).decode('utf-8').strip()
++        arch = subprocess.check_output(['uname', '-m']).decode('utf-8').strip()
++        default_arch = 'amd64' if arch == 'x86_64' else 'i386' if re.match('i[3-8]86', arch) else arch
+ 
+         self.settings.boolean(['verbose'], 'report what is going on')
+         self.settings.string(['image'], 'put created disk image in FILE', metavar='FILE')

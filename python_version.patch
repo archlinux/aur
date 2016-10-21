@@ -1,0 +1,69 @@
+diff -rupN vmdebootstrap-1.6/bin/vmdebootstrap vmdebootstrap-1.6.new/bin/vmdebootstrap
+--- vmdebootstrap-1.6/bin/vmdebootstrap	2016-08-11 23:13:45.000000000 +0200
++++ vmdebootstrap-1.6.new/bin/vmdebootstrap	2016-08-23 12:34:23.979524142 +0200
+@@ -1,4 +1,4 @@
+-#! /usr/bin/python
++#! /usr/bin/python2
+ # Copyright 2011-2013  Lars Wirzenius
+ # Copyright 2012  Codethink Limited
+ # Copyright 2014-2015 Neil Williams <codehelp@debian.org>
+diff -rupN vmdebootstrap-1.6/doc/conf.py vmdebootstrap-1.6.new/doc/conf.py
+--- vmdebootstrap-1.6/doc/conf.py	2016-08-11 23:13:45.000000000 +0200
++++ vmdebootstrap-1.6.new/doc/conf.py	2016-08-23 12:34:38.249608970 +0200
+@@ -55,7 +55,7 @@ copyright = '2015 Neil Williams'
+ # built documents.
+ #
+ # The short X.Y version.
+-version = subprocess.Popen(['python', 'setup.py', '-V'], cwd=r'..', stdout=subprocess.PIPE).stdout.read().rstrip()
++version = subprocess.Popen(['python2', 'setup.py', '-V'], cwd=r'..', stdout=subprocess.PIPE).stdout.read().rstrip()
+ # The full version, including alpha/beta/rc tags.
+ release = version
+ 
+diff -rupN vmdebootstrap-1.6/examples/lava-submit.py vmdebootstrap-1.6.new/examples/lava-submit.py
+--- vmdebootstrap-1.6/examples/lava-submit.py	2016-08-11 23:13:45.000000000 +0200
++++ vmdebootstrap-1.6.new/examples/lava-submit.py	2016-08-23 12:34:14.232799577 +0200
+@@ -1,4 +1,4 @@
+-#! /usr/bin/python
++#! /usr/bin/python2
+ # -*- coding: utf-8 -*-
+ #
+ #  lava-submit.py
+diff -rupN vmdebootstrap-1.6/man/conf.py vmdebootstrap-1.6.new/man/conf.py
+--- vmdebootstrap-1.6/man/conf.py	2016-08-11 23:13:45.000000000 +0200
++++ vmdebootstrap-1.6.new/man/conf.py	2016-08-23 12:33:56.296026448 +0200
+@@ -49,7 +49,7 @@ copyright = u'2015, Neil Williams'
+ # built documents.
+ #
+ # The short X.Y version.
+-version = subprocess.Popen(['python', 'setup.py', '-V'], cwd=r'..', stdout=subprocess.PIPE).stdout.read()
++version = subprocess.Popen(['python2', 'setup.py', '-V'], cwd=r'..', stdout=subprocess.PIPE).stdout.read()
+ # The full version, including alpha/beta/rc tags.
+ release = version
+ 
+diff -rupN vmdebootstrap-1.6/setup.py vmdebootstrap-1.6.new/setup.py
+--- vmdebootstrap-1.6/setup.py	2016-08-11 23:13:45.000000000 +0200
++++ vmdebootstrap-1.6.new/setup.py	2016-08-23 12:33:34.665898221 +0200
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python2
+ # -*- coding: utf-8 -*-
+ #
+ #  setup.py
+diff -rupN vmdebootstrap-1.6/vmextract.py vmdebootstrap-1.6.new/vmextract.py
+--- vmdebootstrap-1.6/vmextract.py	2016-08-11 23:13:45.000000000 +0200
++++ vmdebootstrap-1.6.new/vmextract.py	2016-08-23 12:33:34.665898221 +0200
+@@ -1,4 +1,4 @@
+-#! /usr/bin/python
++#! /usr/bin/python2
+ # -*- coding: utf-8 -*-
+ #
+ #  Copyright 2015 Neil Williams <codehelp@debian.org>
+diff -rupN vmdebootstrap-1.6/vmsquashtar.py vmdebootstrap-1.6.new/vmsquashtar.py
+--- vmdebootstrap-1.6/vmsquashtar.py	2016-08-11 23:13:45.000000000 +0200
++++ vmdebootstrap-1.6.new/vmsquashtar.py	2016-08-23 12:33:34.665898221 +0200
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python2
+ # -*- coding: utf-8 -*-
+ #
+ #  vmsquash-tar.py
