@@ -21,7 +21,7 @@ source=(
 )
 md5sums=(
   '25fcca5e320a9e97131e87abdf3b7f61'
-  '52e8eabb314aa7661fd6eb1bee32eaae'
+  'c063c0236d8649b2281b334ecde73784'
   '672f5cd6c1b4c08517409809b819c547'
 )
 build() {
