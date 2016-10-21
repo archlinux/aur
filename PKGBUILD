@@ -1,6 +1,6 @@
 # Maintainer: Tarn Burton <twburton at gmail dot com>
 pkgname='pioneer-git'
-pkgver=20161015.r22.ga223bdd
+pkgver=20161015.r23.gf193740
 pkgrel=1
 pkgdesc="A game of lonely space adventure"
 arch=('i686' 'x86_64')
