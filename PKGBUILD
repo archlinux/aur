@@ -58,15 +58,21 @@ package() {
   # Translations
   install -d "$pkgdir/usr/share/yaics/translations"
   install -Dm644 translations/* \
-    "$pkgdir/usr/share/yaics/translations"
+    "$pkgdir/usr/share/${pkgname}/translations"
 
-  # Man
+  # Doc files
+  install -Dm644 ChangeLog \
+    "$pkgdir/usr/share/doc/${pkgname}/ChangeLog"
+  install -Dm644 AUTHORS \
+    "$pkgdir/usr/share/doc/${pkgname}/AUTHORS"
+
+  # Man files
   install -Dm644 docs/yaics.1 \
     "$pkgdir/usr/share/man/man1/yaics.1"
 
   # License
   install -Dm644 COPYING \
-    "${pkgdir}/usr/share/licenses/yaics/LICENSE"
+    "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
 # vim:set ts=2 sw=2 cc=80 et:
