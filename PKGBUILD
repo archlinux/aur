@@ -12,10 +12,10 @@ _remove_bundled_jre=
 
 pkgname=intellij-idea-ue-eap
 _pkgname=idea-IU
-_buildver=163.6110.12
+_buildver=163.6512.17
 _veryear=2016
 _verrelease=3
-_verextra=
+_verextra=PublicPreview
 _nojdkrelease=true
 pkgver=${_veryear}.${_verrelease}.${_buildver}
 pkgrel=1
@@ -27,11 +27,11 @@ license=('custom')
 depends=('java-environment' 'giflib' 'libxtst')
 makedepends=('wget')
 if [ "${_nojdkrelease}" = "true" ] && [ -n "${_remove_bundled_jre}" ]; then
-  source=("https://download.jetbrains.com/idea/ideaIU-${_buildver}-no-jdk.tar.gz")
-  sha256sums=($(wget -q "${source}.sha256" && cat "ideaIU-${_buildver}-no-jdk.tar.gz.sha256" | cut -f1 -d" "))
+  source=("https://download.jetbrains.com/idea/ideaIU-${_veryear}.${_verrelease}-${_verextra}-no-jdk.tar.gz")
+  sha256sums=($(wget -q "${source}.sha256" && cat "ideaIU-${_veryear}.${_verrelease}-${_verextra}-no-jdk.tar.gz.sha256" | cut -f1 -d" "))
 else
-  source=("https://download.jetbrains.com/idea/ideaIU-${_buildver}.tar.gz")
-  sha256sums=($(wget -q "${source}.sha256" && cat "ideaIU-${_buildver}.tar.gz.sha256" | cut -f1 -d" "))
+  source=("https://download.jetbrains.com/idea/ideaIU-${_veryear}.${_verrelease}-${_verextra}.tar.gz")
+  sha256sums=($(wget -q "${source}.sha256" && cat "ideaIU-${_veryear}.${_verrelease}-${_verextra}.tar.gz.sha256" | cut -f1 -d" "))
 fi
 
 package() {
