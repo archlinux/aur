@@ -1,13 +1,13 @@
 # Maintainer: Dylan Ferris <dylan@psilly.com>
 # Submaintainer: bartus <aur@bartus.33mail.com>
-
+ 
 pkgname=('visual-sfm')
 pkgver=0.5.26
-pkgrel=2
+pkgrel=3
 pkgdesc='A Visual Structure from Motion System; create 3d models from photos.'
 arch=('x86_64')
 url='http://ccwu.me/vsfm/'
-depends=('gtk2' 'glu' 'cmvs-pmvs-git' 'siftgpu' 'cuda')
+depends=('lapack' 'blas' 'f2c' 'libjpeg' 'gtk2' 'glu' 'cmvs-pmvs-git' 'siftgpu' 'cuda')
 optdepends=(
   'opencl-nvidia: nvidia gpu support'
   'opencl-mesa: amd gpu support (mesa)'
@@ -19,27 +19,30 @@ source=(
   'visual-sfm.desktop'
   'http://grail.cs.washington.edu/projects/mcba/pba_v1.0.5.zip'
 )
-sha256sums=(
-  '052bfc267ae5aed8613577735247a90bc98eb3073569bf567e93e41e7862d2d9'
-  '5a60f78a9a106c95944fdd2f9cbe4fd5d66044182fc50a050c1734cffd2c6789'
-  'ddce4118d2da9d962cb56825649bd8edfa97d39270e0960a405ef2b317fac4c2'
+md5sums=(
+  '25fcca5e320a9e97131e87abdf3b7f61'
+  '52e8eabb314aa7661fd6eb1bee32eaae'
+  '672f5cd6c1b4c08517409809b819c547'
 )
-
-
 build() {
-
+ 
   msg "building Multicore Bundle Adjustment"
   cd ${srcdir}/pba
   # adjust cuda path
   sed -i 's:CUDA_INSTALL_PATH = /usr/local/cuda:CUDA_INSTALL_PATH = /opt/cuda:' makefile
   make pba
   cp bin/libpba.so ../vsfm/bin
-  
+ 
   msg "building VisualSFM"
   cd ${srcdir}/vsfm
+  # use system lapack blas f2c
+  sed -i 's:$(LIB_DIR)/lapack.a:-llapack:' makefile
+  sed -i 's:$(LIB_DIR)/blas.a:-lblas:' makefile
+  sed -i 's:$(LIB_DIR)/libf2c.a:-lf2c:' makefile
+  sed -i 's:$(LIB_DIR)/libjpeg.a:-ljpeg:' makefile
   make
 }
-
+ 
 package() {
   install -Dm644 ${pkgname}.desktop ${pkgdir}/usr/share/applications/${pkgname}.desktop
   cd ${srcdir}/vsfm
@@ -47,6 +50,5 @@ package() {
   install -Dm755 bin/VisualSFM ${pkgdir}/usr/bin/visual-sfm
   install -Dm755 bin/libpba.so ${pkgdir}/usr/lib/libpba.so
 }
-
+ 
 # vim:set ts=2 sw=2 et:
-
