@@ -1,7 +1,7 @@
 # Maintainer: Grey Christoforo <my first name [at] my last name [dot] net>
 
 pkgname=cura
-pkgver=2.1.3
+pkgver=2.3.0
 pkgrel=1
 pkgdesc="A software solution for 3D printing aimed at RepRaps and the Ultimaker."
 depends=('qt5-svg' 'python-pyserial' 'python-numpy' 'uranium' 'curaengine')
@@ -10,15 +10,15 @@ provides=('cura')
 url="https://ultimaker.com/en/products/cura-software"
 license=('AGPLv3')
 arch=('i686' 'x86_64')
-source=(https://github.com/Ultimaker/Cura/archive/${pkgver}.tar.gz fix-python-dir.patch)
-sha1sums=('6318bea1603bbf3e43202f0894780de433c97410'
-          '439a5efb8371bbfd1266a6b6434c0584f00baaa9')
+source=(https://github.com/Ultimaker/Cura/archive/${pkgver}.tar.gz)
+sha1sums=('8db40ca9282b3ce0a2513b2cf840d7cd871513b3')
 
 install=cura.install
 
 prepare(){
   cd Cura-${pkgver}
-  patch -Np1 -i ../fix-python-dir.patch
+  sed -i 's,DESTINATION lib/python${PYTHON_VERSION_MAJOR}/dist-packages,DESTINATION lib/python${PYTHON_VERSION_MAJOR}.${PYTHON_VERSION_MINOR}/site-packages,g' CMakeLists.txt
+  sed -i 's,DESTINATION lib/python${PYTHON_VERSION_MAJOR}/dist-packages/cura),DESTINATION lib/python${PYTHON_VERSION_MAJOR}.${PYTHON_VERSION_MINOR}/site-packages/cura),g' CMakeLists.txt
 
   cat > "${srcdir}/${pkgname}.desktop" <<END
 [Desktop Entry]
