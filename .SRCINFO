@@ -7,6 +7,8 @@ pkgbase = passera
 	arch = x86_64
 	license = GPL
 	makedepends = go
+	optdepends = xclip: X11 clipboard support
+	optdepends = xsel: Manipulate the X selection
 	source = passera::git+https://github.com/icaroperseo/passera.git
 	md5sums = SKIP
 

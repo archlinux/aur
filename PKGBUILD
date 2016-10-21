@@ -9,6 +9,8 @@ url="https://github.com/icaroperseo/passera"
 license=('GPL')
 arch=('i686' 'x86_64')
 makedepends=('go')
+optdepends=('xclip: X11 clipboard support'
+            'xsel: Manipulate the X selection')
 source=("${pkgname}::git+https://github.com/icaroperseo/passera.git")
 md5sums=('SKIP')
 
