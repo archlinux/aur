@@ -4,14 +4,14 @@
 pkgbase=bitbake
 pkgname=('bitbake' 'bitbake-vim')
 pkgver=1.30
-pkgrel=5
+pkgrel=6
 pkgdesc="Build tool executing tasks and managing metadata."
 arch=('any')
 url="http://openembedded.org"
 license=('GPL2')
 makedepends=('python2' 'python2-progressbar' 'python2-ply' 'python2-pyinotify' 'python2-beautifulsoup4' 'python2-codegen')
 source=(https://github.com/openembedded/${pkgbase}/archive/${pkgver}.zip)
-md5sums=('78f913fa7ca7674705b05fb04d1067ce')
+md5sums=('76e61f7efbabb38caf5f3531e87a988f')
 
 check() {
     cd ${srcdir}/${pkgbase}-${pkgver}/bin
