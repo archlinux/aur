@@ -3,7 +3,7 @@
 
 pkgname=e-deklaracje
 pkgrel=1
-pkgver=8.0.7
+pkgver=8.0.9
 pkgdesc="Application for submitting tax return in Poland"
 arch=('any')
 url="http://www.finanse.mf.gov.pl/systemy-informatyczne/e-deklaracje"
@@ -19,5 +19,5 @@ package() {
   install -D -m 644 "$srcdir/assets/icons/icon128.png" "$pkgdir/usr/share/pixmaps/$pkgname.png"
   install -D -m 644 "$srcdir/$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
 }
-md5sums=('f97ad5c78f6d146d90ccab7cf3a7af64'
+md5sums=('4cf63e0317f1bc5f165e957d9b7a6d4a'
          'f9532049b12814ffe6b84fa57bac52e4')
