@@ -4,18 +4,18 @@
 
 pkgname=dianara
 pkgver=1.3.5
-pkgrel=1
+pkgrel=2
 pkgdesc="A Qt pump.io client"
-arch=(i686 x86_64)
+arch=('i686' 'x86_64')
 url="http://dianara.nongnu.org/"
 license=('GPL')
-depends=('file' 'qjson' 'qoauth')
+depends=('hicolor-icon-theme' 'file' 'qt5-base' 'qoauth-git')
 source=("http://download-mirror.savannah.gnu.org/releases/$pkgname/$pkgname-v$pkgver.tar.gz")
 sha256sums=('c284fecbb4c0fe00fe2ce7cfd537de42759567c6116f6c16f5b48857ddb73d3e')
 
 build() {
   cd $pkgname-v$pkgver
-  qmake-qt4 Dianara.pro
+  qmake Dianara.pro
   make
 }
 
@@ -25,23 +25,37 @@ package() {
   make INSTALL_ROOT="${pkgdir}" install
 
   # Desktop file
-  install -Dm644 $pkgname.desktop \
-    "$pkgdir/usr/share/applications/$pkgname.desktop"
+  install -Dm644 dianara.desktop \
+    "$pkgdir/usr/share/applications/dianara.desktop"
 
   # Icons
-  install -Dm644 icon/32x32/$pkgname.png \
-    "$pkgdir/usr/share/icons/hicolor/32x32/apps/$pkgname.png"
-  install -Dm644 icon/64x64/$pkgname.png \
-    "$pkgdir/usr/share/icons/hicolor/64x64/apps/$pkgname.png"
+  install -Dm644 icon/32x32/dianara.png \
+    "$pkgdir/usr/share/icons/hicolor/32x32/apps/dianara.png"
+  install -Dm644 icon/64x64/dianara.png \
+    "$pkgdir/usr/share/icons/hicolor/64x64/apps/dianara.png"
 
   # Translations
   install -d "$pkgdir/usr/share/dianara/translations"
-  install -Dm644 translations/*.qm \
-    "$pkgdir/usr/share/dianara/translations"
+  install -Dm644 translations/* \
+    "$pkgdir/usr/share/${pkgname}/translations"
 
-  # Man
-  install -Dm644 manual/$pkgname.1 \
-    "$pkgdir/usr/share/man/man1/$pkgname.1"
+  # Doc files
+  install -Dm644 BUGS \
+    "$pkgdir/usr/share/doc/${pkgname}/BUGS"
+  install -Dm644 CHANGELOG \
+    "$pkgdir/usr/share/doc/${pkgname}/CHANGELOG"
+  install -Dm644 INSTALL \
+    "$pkgdir/usr/share/doc/${pkgname}/INSTALL"
+  install -Dm644 README \
+    "$pkgdir/usr/share/doc/${pkgname}/README"
+  install -Dm644 TODO \
+    "$pkgdir/usr/share/doc/${pkgname}/TODO"
+  install -Dm644 TRANSLATING \
+    "$pkgdir/usr/share/doc/${pkgname}/TRANSLATING"
+
+  # Man files
+  install -Dm644 manual/dianara.1 \
+    "$pkgdir/usr/share/man/man1/dianara.1"
 
   # License
   install -Dm644 LICENSE \
