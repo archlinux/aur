@@ -1,13 +1,12 @@
 # Maintainer: Giancarlo Razzolini <grazzolini@gmail.com>
 pkgname=esekeyd
 pkgver=1.2.7
-pkgrel=3
+pkgrel=4
 pkgdesc="ESE Key Daemon is a multimedia keyboard daemon for Linux."
 arch=('i686' 'x86_64')
 url="http://freecode.com/projects/esekeyd"
 license=('GPL')
 depends=('glibc')
-install=$pkgname.install
 DLAGENTS='http::/usr/bin/curl -fLC - --user-agent Firefox --retry 3 --retry-delay 3 -o %o %u'
 source=("http://www.burghardt.pl/files/$pkgname-$pkgver.tar.gz"
 	"$pkgname.service")
