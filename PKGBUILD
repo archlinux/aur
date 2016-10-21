@@ -20,10 +20,7 @@ pkgver() {
 
 build() {
   cd $pkgname
-
   make -j 1
-#    ocaml setup.ml -configure --destdir $pkgdir/usr/lib/ocaml
-#   ocaml setup.ml -build
 }
 
 package() {
