@@ -1,0 +1,12 @@
+[Desktop Entry]
+Version=1.5.5
+Name=Gulden
+Comment=Cryptocurrency
+GenericName=Gulden Cryptocurrency
+Exec=Gulden %u
+TryExec=Gulden
+Icon=gulden-bin
+Terminal=false
+Type=Application
+Categories=Network;Finance;
+StartupNotify=true
