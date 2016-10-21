@@ -17,7 +17,6 @@ pkgbase = grive
 	depends = expat
 	optdepends = cppunit: unit tests
 	optdepends = binutils: backtrace and libiberty
-	conflicts = grive-git
 	source = https://github.com/vitalif/grive2/archive/v0.5.0.tar.gz
 	md5sums = f291ffaef831abf3605417995082bcc3
 
