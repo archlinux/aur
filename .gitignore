@@ -1,3 +1,4 @@
 v*.tar.gz
 chkboot-*-any.pkg.tar.xz
 chkboot-*.src.tar.gz
+chkboot-*.tar.gz
