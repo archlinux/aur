@@ -2,12 +2,12 @@
 # Contributor: Yoann Ono Dit Biot <yoann.onoditbiot@gmail.com>
 pkgname=pydio-sync-latest
 pkgver=1.2.7
-pkgrel=2
+pkgrel=3
 pkgdesc="Pydio synchronisation client"
 arch=('i686' 'x86_64')
 url="https://pydio.com"
 license=('GPL3')
-conflicts=('pydio-sync-git' 'pydio-sync-ui-git')
+conflicts=('pydio-sync-git' 'pydio-sync-ui-git' 'pydio-sync')
 provides=('pydio-sync-latest')
 options=(!strip)
 depends=('qt5-webkit' 'libsm' 'gstreamer0.10-base')
