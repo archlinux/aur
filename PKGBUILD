@@ -2,7 +2,6 @@
 
 pkgname=passera
 pkgver=0.1.5
-_commit=65dd4d4
 pkgrel=1
 pkgdesc="A small tool to turn any entered passphrase into a strong secure password"
 url="https://github.com/icaroperseo/passera"
