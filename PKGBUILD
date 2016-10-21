@@ -5,7 +5,7 @@
 # Contributor: Giovanni Scafora <giovanni@archlinux.org>
 
 pkgname=wine-rt
-pkgver=1.7.50
+pkgver=1.9.21
 pkgrel=1
 
 _pkgbasever=${pkgver/rc/-rc}
@@ -17,9 +17,10 @@ source=(http://prdownloads.sourceforge.net/wine/wine-$_pkgbasever.tar.bz2{,.sign
 sha256sums=('7c5410fab820281f337d478c18305027363c9012f30f742339ef1eb0f9dd711e'
             'SKIP'
             '9901a5ee619f24662b241672a7358364617227937d5f6d3126f70528ee5111e7'
-            'cd8c48c9e5111b6acb47120da0272bc7afe3acc1f021443c81bb75d5d40ba4cc')
+	    'cd8c48c9e5111b6acb47120da0272bc7afe3acc1f021443c81bb75d5d40ba4cc'
+	    '8b6dd027021be9dd646d65bd19c0334c36dcf9403d8ed4a6e9460b6703efade1')
 
-validpgpkeys=('5AC1A08B03BD7A313E0A955AF5E6E9EEB9461DD7')
+validpgpkeys=('DA23579A74D4AD9AF9D3F945CEFAC8EAAF17519D')
 
 pkgdesc="Realtime Wine - maps windows priority levels to linux scheduling policies"
 url="http://www.winehq.com"
@@ -208,3 +209,7 @@ package() {
 }
 
 # vim:set ts=8 sts=2 sw=2 et:
+sha256sums=('8b6dd027021be9dd646d65bd19c0334c36dcf9403d8ed4a6e9460b6703efade1'
+            'SKIP'
+            '9901a5ee619f24662b241672a7358364617227937d5f6d3126f70528ee5111e7'
+            'cd8c48c9e5111b6acb47120da0272bc7afe3acc1f021443c81bb75d5d40ba4cc')
