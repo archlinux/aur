@@ -3,7 +3,7 @@
 # Contributor: Eric Ozwigh <ozwigh at gmail dot com>
 
 pkgname=veracrypt-git
-pkgver=20160821
+pkgver=20161018
 pkgrel=1
 pkgdesc="Disk encryption with strong security based on TrueCrypt"
 arch=('i686' 'x86_64')
