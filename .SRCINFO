@@ -1,4 +1,4 @@
-pkgbase = pydio-sync
+pkgbase = pydio-sync-latest
 	pkgdesc = Pydio synchronisation client
 	pkgver = 1.2.7
 	pkgrel = 1
@@ -9,7 +9,7 @@ pkgbase = pydio-sync
 	depends = qt5-webkit
 	depends = libsm
 	depends = gstreamer0.10-base
-	provides = pydio-sync
+	provides = pydio-sync-latest
 	conflicts = pydio-sync-git
 	conflicts = pydio-sync-ui-git
 	options = !strip
@@ -20,5 +20,5 @@ pkgbase = pydio-sync
 	md5sums = 3d965c2199fc920e1828b1e0672a8ad1
 	md5sums = a508ee9d2fa6d48f2553d545be891bff
 
-pkgname = pydio-sync
+pkgname = pydio-sync-latest
 
