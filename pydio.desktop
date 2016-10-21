@@ -1,0 +1,9 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=Pydio Sync
+Exec=/usr/bin/pydio-sync
+Terminal=false
+Type=Application
+Categories=Application;Network;
+Icon=pydio-sync
+
