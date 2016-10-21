@@ -1,7 +1,7 @@
 pkgbase = php-remote-storage
 	pkgdesc = remoteStorage server written in PHP
 	pkgver = 1.0.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/fkooman/php-remote-storage
 	arch = any
 	license = agpl3

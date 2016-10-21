@@ -2,7 +2,7 @@
 
 pkgname=php-remote-storage
 pkgver=1.0.4
-pkgrel=1
+pkgrel=2
 pkgdesc="remoteStorage server written in PHP"
 arch=("any")
 license=("agpl3")
@@ -35,10 +35,10 @@ package() {
     install -Dm640 -g http config/server.yaml.example "${_etcdir}/server.yaml"
 
     install -d "${_instdir}/config"
-    ln -s "${_etcdir}/server.yaml" "${_instdir}/config/server.yaml"
+    ln -s "/${etcdir}/server.yaml" "${_instdir}/config/server.yaml"
 
     install -dm750 -o http -g http "${_vardir}/data"
-    ln -s "${_vardir}/data" "${_instdir}/data"
+    ln -s "/${vardir}/data" "${_instdir}/data"
 }
 
 backup=("${etcdir}/server.yaml")
