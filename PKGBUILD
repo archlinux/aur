@@ -3,7 +3,7 @@
 
 pkgbase=ca-certificates-blacklist
 pkgname=('ca-certificates-blacklist-cnnic' 'ca-certificates-blacklist-wosign' 'ca-certificates-blacklist-startcom')
-pkgver=3.26
+pkgver=3.27.1
 pkgrel=4
 pkgdesc="A set of broken CAs' certificates which should not be trusted"
 url="https://developer.mozilla.org/en-US/docs/Mozilla/Projects/NSS"
@@ -54,5 +54,5 @@ package_ca-certificates-blacklist-startcom() {
         StartCom_Certification_Authority_G2:2.1.59.crt
 }
 
-sha256sums=('91783a570ab953693eb977ce47c501f04c104cec287fa011c91bcc8970d1c564'
+sha256sums=('fd3637a1930cd838239a89633a7ed9a18859ae9b599043f3a18f726dc4ec2a6b'
             '2a2ff9131c21fa3b23ad7c7a2f069eabc783e56c6eb05419ac5f365f48dea0fc')
