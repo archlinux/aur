@@ -3,8 +3,8 @@
 # Contributor: Dan Elkouby <streetwalrus@codewalr.us>
 
 pkgname=numix-themes-blue-git
-pkgver=2.6.4.r6.c138b78
-pkgrel=2
+pkgver=2.6.4.r19.f14b4d4
+pkgrel=1
 pkgdesc='A flat and light theme with a modern look and softer accents (GNOME, Openbox, Unity, Xfce)'
 arch=('any')
 url='http://numixproject.org/'
@@ -44,6 +44,7 @@ prepare() {
   for FILE in $(inkscape --query-all "${SVG}" | grep -Po '(?<=^EXP-).+?(?=,)')
   do
     inkscape "${SVG}" -i "EXP-${FILE}" -e "${FILE}.png"
+    inkscape "${SVG}" -i "EXP-${FILE}" -d 180 -e "${FILE}@2.png"
   done
 }
 
