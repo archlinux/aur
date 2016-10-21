@@ -2,7 +2,7 @@
 
 pkgname=uranium
 pkgver=2.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A Python framework for building Desktop applications."
 url="https://github.com/Ultimaker/Uranium"
 arch=('any')
@@ -11,6 +11,12 @@ depends=('python' 'qt5-quickcontrols' 'pyqt5-common' 'python-pyqt5' 'python-nump
 makedepends=('cmake')
 source=("https://github.com/Ultimaker/${pkgname}/archive/${pkgver}.tar.gz")
 md5sums=('4e12b8b4c856e8a89b3bba046837b401')
+
+prepare() {
+  cd Uranium-${pkgver}
+  sed -i 's,DESTINATION lib/python${PYTHON_VERSION_MAJOR}/dist-packages,DESTINATION lib/python${PYTHON_VERSION_MAJOR}.${PYTHON_VERSION_MINOR}/site-packages,g' CMakeLists.txt
+  sed -i 's,DESTINATION lib/python${PYTHON_VERSION_MAJOR}/dist-packages/cura),DESTINATION lib/python${PYTHON_VERSION_MAJOR}.${PYTHON_VERSION_MINOR}/site-packages/cura),g' CMakeLists.txt
+}
 
 build() {
   cd Uranium-${pkgver}
