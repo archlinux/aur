@@ -8,11 +8,12 @@
 _basename=wine
 pkgname=wine-ivb
 pkgver=1.9.11
-pkgrel=3
+pkgrel=4
 
 _pkgbasever=${pkgver/rc/-rc}
 
-source=(https://dl.winehq.org/wine/source/1.9/$_basename-$_pkgbasever.tar.bz2{,.sign}
+source=(${pkgname}-${pkgver}.tar.bz2::https://dl.winehq.org/wine/source/1.9/$_basename-$_pkgbasever.tar.bz2
+        ${pkgname}-${pkgver}.tar.bz2.sign::https://dl.winehq.org/wine/source/1.9/$_basename-$_pkgbasever.tar.bz2.sign
         30-win32-aliases.conf
         patch-$pkgver-ivb.patch
         patch_temp_constants.patch)
