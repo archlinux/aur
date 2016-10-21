@@ -27,20 +27,14 @@ md5sums=("19d12a550d1ce7b4f034a918e04dbe2a"
          "614b9bcd0a846373b4c32de89ec2bd71")
 validpgpkeys=()
 
-build() {
-	cd "PonyProg-$pkgver"
-
-#	./config.sh /usr
-#	make clean
-#	make
-}
-
 package() {
-	cp --parents "ponyprog.desktop" "$pkgdir/usr/share/applications/"
+	mkdir -p "$pkgdir/usr/share/applications"
+	mkdir -p "$pkgdir/usr/share/bin"
+	mkdir -p "$pkgdir/usr/share/pixmaps"
 
+	cp "ponyprog.desktop" "$pkgdir/usr/share/applications"
 	cd "PonyProg-$pkgver"
-
-	cp --parents "bin/ponyprog2000" "$pkgdir/usr/bin/"
+	cp "bin/ponyprog2000" "$pkgdir/usr/bin"
 	convert ponyprog.ico ponyprog.png
-	cp --parents "ponyprog.png" "$pkgdir/usr/share/pixmaps/"
+	cp -r "ponyprog.png" "$pkgdir/usr/share/pixmaps"
 }
