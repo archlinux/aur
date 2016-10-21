@@ -1,14 +1,14 @@
 pkgbase = libconfini
 	pkgdesc = Yet another INI parser
 	pkgver = 1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://madmurphy.github.io/libconfini/
 	arch = i686
 	arch = x86_64
 	license = GPL
 	makedepends = intltool
-	source = https://github.com/madmurphy/libconfini/archive/1.2-1.tar.gz
-	md5sums = 19fdd3746b469abfc2ad36d326d548e3
+	source = https://github.com/madmurphy/libconfini/archive/1.2-2.tar.gz
+	md5sums = 9a8d399be59ba296ddb606e936089a20
 
 pkgname = libconfini
 
