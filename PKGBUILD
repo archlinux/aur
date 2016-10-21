@@ -1,16 +1,16 @@
 # Maintainer: sekret, mail=$(echo c2VrcmV0QHBvc3Rlby5zZQo= | base64 -d)
 _pkgname=alac
 pkgname=$_pkgname-git
-pkgver=0.r3.35e1d01
+pkgver=0.r5.c38887c
 pkgrel=1
-pkgdesc="an audio codec developed by Apple and supported on iPhone, iPad, most iPods, Mac and iTunes"
+pkgdesc="a lossless audio codec developed by Apple and deployed on all of its platforms and devices"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
-url="https://alac.macosforge.org/"
+url="https://macosforge.github.io/alac"
 license=('custom')
 makedepends=('git')
 provides=("$_pkgname" "$_pkgname-svn" 'alacconvert' 'libalac')
 conflicts=("$_pkgname" "$_pkgname-svn" 'alacconvert' 'libalac')
-source=("$_pkgname::git+git://git.macosforge.org/alac.git")
+source=("$_pkgname::git+https://github.com/macosforge/alac.git")
 md5sums=('SKIP')
 
 pkgver() {
