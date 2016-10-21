@@ -11,7 +11,7 @@ pkgbase = theweb
 	depends = xdg-utils
 	depends = qt5-base
 	source = theweb-15.0::git+https://github.com/vicr123/theweb#branch=master
-	source = http://opensource.spotify.com/cefbuilds/cef_binary_3.2785.1481.gc3a7e2c_linux64_minimal.tar.bz2
+	source = http://opensource.spotify.com/cefbuilds/cef_binary_3.2840.1494.g7fe3d03_linux64_minimal.tar.bz2
 	md5sums = SKIP
 	md5sums = SKIP
 
