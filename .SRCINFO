@@ -1,0 +1,32 @@
+pkgbase = libfm-gtk2-git
+	pkgdesc = Core library of PCManFM file manager
+	pkgver = 1.2.4.r13.ga1b16b6
+	pkgrel = 1
+	url = https://github.com/lxde/libfm
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = libtool
+	makedepends = vala
+	depends = intltool>=0.40
+	depends = glib2>=2.22
+	depends = gtk2>=2.18
+	depends = menu-cache-git>=0.3.2
+	depends = libexif
+	optdepends = gtk-doc-tools>=1.14
+	optdepends = dbus-glib
+	optdepends = libexif-gtk
+	provides = libfm-gtk2
+	provides = libfm-gtk2-git
+	conflicts = libfm-git
+	conflicts = libfm-qt-git
+	conflicts = libfm
+	conflicts = libfm-gtk3
+	conflicts = libfm-gtk2
+	conflicts = libfm-gtk3-git
+	source = git+https://github.com/lxde/libfm
+	md5sums = SKIP
+
+pkgname = libfm-gtk2-git
+
