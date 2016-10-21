@@ -4,8 +4,8 @@
 # SELinux Maintainer: Nicolas Iooss (nicolas <dot> iooss <at> m4x <dot> org)
 
 pkgbase=linux-selinux
-_srcname=linux-4.7
-pkgver=4.7.6
+_srcname=linux-4.8
+pkgver=4.8.2
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
@@ -24,12 +24,12 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         'change-default-console-loglevel.patch'
         )
 
-sha256sums=('5190c3d1209aeda04168145bf50569dc0984f80467159b1dc50ad731e3285f10'
+sha256sums=('3e9150065f193d3d94bcf46a1fe9f033c7ef7122ab71d75a7fb5a2f0c9a7e11a'
             'SKIP'
-            '2e425c268076c3b186107edf9045e0910088699e077282b5187efb5edf2b8836'
+            'edb6e8022172df2b020b53e1cfa32bcde070f3119a6618766066098c46008a9b'
             'SKIP'
-            'f110b34351b44dfa23c7fc7485e5ca7f7049143497c19cd437392bd2130146e1'
-            'a3d1f11c6f017a8b5bc6baf85dfdcaa7a851ea3f1fc2563339282cd516cbb4b5'
+            '543749db4704efcff4ac4bda95328a6b934b0f99a29b02ab5b4fe575a627208d'
+            '6e9822b0801c142503477e4fedce031b25098e70c03ae5231ab3d5b56f373721'
             'f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99')
 validpgpkeys=(
