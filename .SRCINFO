@@ -10,7 +10,7 @@ pkgbase = passera
 	optdepends = xclip: X11 clipboard support
 	optdepends = xsel: Manipulate the X selection
 	source = passera::git+https://github.com/icaroperseo/passera.git
-	md5sums = SKIP
+	sha256sums = SKIP
 
 pkgname = passera
 

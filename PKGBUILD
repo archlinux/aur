@@ -11,10 +11,10 @@ makedepends=('go')
 optdepends=('xclip: X11 clipboard support'
             'xsel: Manipulate the X selection')
 source=("${pkgname}::git+https://github.com/icaroperseo/passera.git")
-md5sums=('SKIP')
+sha256sums=('SKIP')
 
 prepare() {
-  cd ${pkgname}
+  cd $pkgname
   git submodule update --init --recursive
   export GOPATH=$PWD
   go get github.com/howeyc/gopass
@@ -28,7 +28,7 @@ build() {
 }
 
 package() {
-  cd ${pkgname}
+  cd $pkgname
 
   install -Dm755 src/passera \
     "${pkgdir}/usr/bin/passera"
