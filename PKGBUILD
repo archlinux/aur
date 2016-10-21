@@ -8,7 +8,7 @@ url="http://axtls.sourceforge.net/"
 license=('BSD')
 groups=()
 makedepends=()
-source=("https://sourceforge.net/projects/axtls/files/${pkgver}/${pkgname}-${pkgver}.tar.gz/download"
+source=("http://downloads.sourceforge.net/sourceforge/${pkgname}/axTLS-${pkgver}.tar.gz"
         "axtls-sni.patch"
         "config.h"
         ".config"
