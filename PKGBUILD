@@ -39,11 +39,13 @@ build() {
 }
 
 package() {
-	cp --parents "ponyprog.desktop" "$pkgdir/usr/share/applications/"
+	mkdir -p "$pkgdir/usr/share/applications"
+	mkdir -p "$pkgdir/usr/share/bin"
+	mkdir -p "$pkgdir/usr/share/pixmaps"
 
+	cp "ponyprog.desktop" "$pkgdir/usr/share/applications"
 	cd "PonyProg-$pkgver"
-
-	cp --parents "bin/ponyprog2000" "$pkgdir/usr/bin/"
+	cp "bin/ponyprog2000" "$pkgdir/usr/bin"
 	convert ponyprog.ico ponyprog.png
-	cp --parents "ponyprog.png" "$pkgdir/usr/share/pixmaps/"
+	cp -r "ponyprog.png" "$pkgdir/usr/share/pixmaps"
 }
