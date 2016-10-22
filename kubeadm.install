@@ -1,0 +1,17 @@
+post_install() {
+  echo "The docker daemon must be running for kubeadm to work."
+  echo "Execute 'sudo systemctl start kubelet && sudo kubeadm init' in a terminal to create a kubernetes cluster."
+}
+
+post_upgrade() {
+  post_install
+}
+
+post_remove() {
+  systemctl stop kubelet;
+  find /var/lib/kubelet | xargs -n 1 findmnt -n -t tmpfs -o TARGET -T | uniq | xargs -r umount -v;
+  rm -r -f /etc/kubernetes /var/lib/kubelet /var/lib/etcd;
+  echo "To remove all docker containers execute 'sudo docker rmi -f \$(docker images -q)'"
+}
+
+# vim: ts=2 sw=2 et:
