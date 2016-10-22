@@ -16,7 +16,7 @@ license=('MIT')
 depends=('namcap' 'alsa-lib' 'desktop-file-utils' 'gconf' 'gtk2' 'libgnome-keyring' 'libnotify' 'libxtst' 'nodejs' 'nss' 'python2' 'git')
 optdepends=('gvfs: file deletion support')
 makedepends=('npm' 'hunspell-en')
-conflicts=('atom-editor-bin' 'atom-editor')
+conflicts=('atom-editor-bin' 'atom-editor' 'atom' 'apm')
 install=${_pkgname}-${_version}.install
 source=("${_pkgname}-${_atomver}.tar.gz::${_url}/atom/archive/v${_atomver}.tar.gz"
 "dark-bint-syntax::git+https://github.com/Murriouz/dark-bint-syntax"
