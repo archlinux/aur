@@ -1,0 +1,11 @@
+[Unit]
+Description=NXT per-user service
+
+[Service]
+Type=forking
+ExecStart=/opt/nxt/start.sh
+ExecStop=/opt/nxt/stop.sh
+Restart=on-abort
+
+[Install]
+WantedBy=default.target
