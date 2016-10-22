@@ -1,0 +1,36 @@
+#!/bin/bash
+
+build() {
+    
+    add_binary "ykchalresp"
+
+    add_file "/usr/lib/yk2fe/yk2fe"
+    add_file "/usr/bin/add_yk2fe"
+    add_file "/usr/lib/udev/rules.d/69-yubikey.rules"
+}
+
+help() {
+    cat <<HELPEOF
+This hook collects a two-factor encryption passphrase using a Yubikey configured
+for challenge-response as the second factor. This hook is intended to be used in
+conjunction with the 'encrypt' hook with the 'cryptkeyscript' argument on the 
+kernel command line pointing to '/usr/lib/yk2fe/yk2fe'.
+
+cryptdevice=UUID=c87dcfc0-14a5-4afe-b4e9-bd81f952149c:encrypt-root 
+cryptkeyscript=rootfs::/usr/lib/yk2fe/yk2fe
+
+The encrypt hook will invoke the cryptkeyscript, which will block on user input.
+The script will prompt for a first factor passphrase. After that is entered, the
+script will use the first factor passphrase as a challenge to an attached 
+Yubikey. The response of which will be passed to cryptsetup via the encrypt 
+hook.
+
+This hook assumes slot 2 of the Yubikey is configured for challenge-response, if
+slot 1 is configured for challenge-response, enter -1 as the first factor 
+passphrase. The script will then use slot 1 and will re-prompt for the first-
+factor passphrase.
+
+HELPEOF
+}
+
+# vim: set ft=sh ts=4 sw=4 et:

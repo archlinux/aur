@@ -1,0 +1,5 @@
+#!/bin/sh
+
+# The main scipt of this hook is not directly invoked by the 
+# init script, but rather an associated script is invoked by 
+# the encrypt hook via the cryptkeyscript argument.

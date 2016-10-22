@@ -1,0 +1,70 @@
+#!/bin/bash
+
+set -e
+set -u
+
+usage () {
+  cat <<EOF	
+# ================== 
+# Prior to running this script to add a Yubikey as a LUKS passphrase, first
+# configure your Yubikey for challenge-response with the following:
+#
+# ykpersonalize -2 -ochal-resp -ochal-hmac -ohmac-lt64 [-ochal-btn-trig]
+#
+# Refer to the manpage for ykpersonalize for details on each option.
+# -ochal-btn-trig is optional but strongly recommended so that you
+# are always aware of when your Yubikey performs an HMAC. It can, however
+# cause problems if you are attempting to use the same slot as a means of
+# logging into a local Windows account (which may or may not matter for you).
+#
+# Expected Usage:
+#
+# add_2fa [-1 | -2] | cryptsetup addLuksKey /device
+#
+# The first argument is optional and names the Yubikey slot to use for the
+# challenge-response protocol. Default is "-2". This script will correspond
+# with cryptsetup's addLuksKey dialog to add the Yubikey's response as a
+# disk encryption passphrase. Although this can be achived via a keyfile,
+# passing the response via stdout means the response (which is in effect
+# the same as a passphrase in sensitivity) never hits the disk and therefore
+# never needs to be shredded.
+EOF
+}
+
+DEFAULT_SLOT="-2"
+SLOT="${1:-$DEFAULT_SLOT}"
+if ! ( [[ "$SLOT" == "-1" ]] || [[ "$SLOT" == "-2" ]] ) ; then
+  usage >&2
+  exit 1
+fi
+
+echo "Enter an existing LUKS passphrase: " >&2
+read -s existing
+echo "Enter a new first factor passphrase: " >&2
+read -s first
+
+response=''
+until [[ "$response" != "" ]]; do
+  # A little side note about ykchalresp. Originally there was
+  # more comprehensive error handling here, but it was ugly 
+  # because ykchalresp uses 1 for just about every failure
+  # mode. The stderr was different, but capturing both stdout
+  # and stderr is a real challenge in shell and relying on
+  # error messages is a bad idea (tm) anyway. So now stderr
+  # bubbles out to the user and this script loops until the 
+  # user gives up.
+  echo "Use your Yubikey as a second factor: " >&2
+  if stdout=$(ykchalresp "$SLOT" "$first") ; then
+    response="$stdout"
+  else 
+    echo "Press enter before trying again" >&2
+    read -s enter
+  fi  
+done  
+    
+echo "Adding key to Luks container" >&2
+
+# The following is based on the 'cryptsetup luksAddKey' dialog
+echo "$existing"
+echo "$response"
+echo "$response"

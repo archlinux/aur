@@ -1,0 +1,37 @@
+#!/bin/sh
+
+set -u
+set -e
+
+SLOT="-2"
+
+echo "Enter first factor passphrase (enter -1 to use slot one): " >&2
+read -s first
+
+if [[ "$first" == "-1" ]]; then
+  SLOT="-1"
+  echo "Using slot 1. Enter first factor passphrase: " >&2
+  read -s first
+fi
+
+response=''
+until [[ "$response" != "" ]]; do
+  # A little side note about ykchalresp. Originally there was
+  # more comprehensive error handling here, but it was ugly 
+  # because ykchalresp uses 1 for just about every failure
+  # mode. The stderr was different, but capturing both stdout
+  # and stderr is a real challenge in shell and relying on
+  # error messages is a bad idea (tm) anyway. So now stderr
+  # bubbles out to the user and this script loops until the
+  # user gives up.
+  echo "Use your Yubikey as a second factor: " >&2
+  if stdout=$(ykchalresp "$SLOT" "$first") ; then
+    response="$stdout"
+  else 
+    echo "Press enter before trying again" >&2
+    read -s enter
+  fi  
+done  
+
+echo "$response"
+

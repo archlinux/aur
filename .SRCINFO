@@ -1,0 +1,22 @@
+pkgbase = mkinitcpio-yk2fe
+	pkgdesc = Two factor LUKS disk encryption using Yubikey Challenge Response
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://wiki.archlinux.org/index.php/User:Mwberry/mkinitcpio-ykchalresp
+	arch = any
+	license = GPL2
+	depends = cryptsetup-keyscript
+	depends = yubikey-personalization
+	depends = bash
+	depends = coreutils
+	source = hook
+	source = install
+	source = yk2fe
+	source = add_yk2fe
+	md5sums = a25aea71328a2df06424c39526d6e58b
+	md5sums = f771e7efc28075811c6c0115cbd21bc3
+	md5sums = 63cb9137d5e76a51177fffc4f2806458
+	md5sums = 43f2ac34098f5dc44f266fc8b844b692
+
+pkgname = mkinitcpio-yk2fe
+
