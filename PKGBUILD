@@ -4,7 +4,7 @@
 _icon="default"
 
 pkgname=vuze-dev
-pkgver=5.6.1.3_B14
+pkgver=5.7.3.1_B20
 pkgrel=1
 pkgdesc="A feature-rich Java-based BitTorrent client (previously called 'Azureus') - Development Build"
 arch=('i686' 'x86_64')
@@ -17,18 +17,13 @@ optdepends=('vuze-plugin-countrylocator: Country flags for the "Peers" tab'
 provides=('vuze')
 options=('!strip')
 install=$pkgname.install
-
-# Fetch info
-curl -sL -O http://dev.vuze.com/versions.json
-
-# Version variables
-_main_ver_flat=$(grep -Po 'version": "\K[^"]*' versions.json | tail -1) # 5612
-_dev_ver_flat=$(grep -Pom1 'version": "\K[^"]*' versions.json)          # 5613
-_dev_ver=$(echo $_dev_ver_flat | sed -r 's/([0-9])/.\1/g' | cut -c 2-)  # 5.6.1.3
-_dev_beta=$(grep -Pom1 'build": "\K[^"]*' versions.json)                # 02
-
-source=("http://downloads.sourceforge.net/azureus/vuze/Vuze_${_main_ver_flat}/Vuze_${_main_ver_flat}_linux.tar.bz2"
-        "http://cf1.vuze.com/torrent/files/Azureus${_dev_ver_flat}-B${_dev_beta}.jar"
+versions=$(curl -sL http://dev.vuze.com/versions.json)
+_stable_ver_flat=$(echo "$versions" | grep -Po 'version": "\K[^"]*' | tail -1) # 5730
+_dev_ver_flat=$(echo "$versions" | grep -Pom1 'version": "\K[^"]*')            # 5731
+_dev_ver=$(echo "$_dev_ver_flat" | sed -r 's/([0-9])/.\1/g' | cut -c 2-)       # 5.7.3.1
+_dev_build=$(echo "$versions" | grep -Pom1 'build": "\K[^"]*')                 # 20
+source=("http://downloads.sourceforge.net/azureus/vuze/Vuze_${_stable_ver_flat}/Vuze_${_stable_ver_flat}_linux.tar.bz2"
+        "http://cf1.vuze.com/torrent/files/Azureus${_dev_ver_flat}-B${_dev_build}.jar"
          {blue,gray}_{16,32,64,128}.png)
 noextract=($(basename ${source[1]}))
 md5sums=('SKIP'
@@ -43,7 +38,7 @@ md5sums=('SKIP'
          'db19086ba7bd8eefee05538f4c65aa68')
 
 pkgver() {
-  echo ${_dev_ver}_B${_dev_beta}
+  echo ${_dev_ver}_B${_dev_build}
 }
 
 package() {
@@ -98,7 +93,7 @@ package() {
       -i "$pkgdir"/usr/share/applications/vuze-dev.desktop
 
   msg2 "Updating to Development Build..."
-  install -m644 "$srcdir"/Azureus${_dev_ver_flat}-B${_dev_beta}.jar -C "$pkgdir"/opt/vuze-dev/Azureus2.jar
+  install -m644 "$srcdir"/Azureus${_dev_ver_flat}-B${_dev_build}.jar -C "$pkgdir"/opt/vuze-dev/Azureus2.jar
 
   # Different icons for menus and systray
   if [[ $_icon = blue ]] || [[ $_icon = gray ]]; then
@@ -109,9 +104,9 @@ package() {
     install -m644 ${_icon}_128.png "$pkgdir"/usr/share/pixmaps/vuze-dev.png
 
     ## Systray
-    # Extract Azureus${_dev_ver_flat}-B${_dev_beta}.jar
+    # Extract Azureus${_dev_ver_flat}-B${_dev_build}.jar
     install -d tmp/
-    bsdtar -xf Azureus${_dev_ver_flat}-B${_dev_beta}.jar -C tmp/
+    bsdtar -xf Azureus${_dev_ver_flat}-B${_dev_build}.jar -C tmp/
 
     # Place icons
     for i in 16 32 64 128; do
