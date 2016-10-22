@@ -1,6 +1,6 @@
 pkgbase = sndio
 	pkgdesc = Small audio and MIDI framework part of the OpenBSD project
-	pkgver = 1.1.0
+	pkgver = 20160922
 	pkgrel = 1
 	url = http://www.sndio.org/
 	install = sndio.install
@@ -11,10 +11,10 @@ pkgbase = sndio
 	license = MIT
 	depends = alsa-lib
 	backup = etc/conf.d/sndiod
-	source = http://www.sndio.org/sndio-1.1.0.tar.gz
+	source = http://www.sndio.org/sndio.tar.gz
 	source = sndiod.conf
 	source = sndiod.service
-	md5sums = d3483b963c9e4b9c47eca67a4a842ae3
+	md5sums = 584d0898ae853632502c573a9aae644f
 	md5sums = e319eee0a3ccb4d60dd24b7ed1ea34b3
 	md5sums = 3767e4066491b2ade46b37179285fd80
 
