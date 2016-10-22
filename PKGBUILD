@@ -10,7 +10,7 @@ export LG2=en
 ###########################################################
 
 pkgname=i2p
-pkgver=0.9.26
+pkgver=0.9.27
 pkgrel=1
 pkgdesc="A distributed anonymous network"
 url="https://geti2p.net"
@@ -35,7 +35,8 @@ source=("${_url}/i2psource_${pkgver}.tar.bz2"{,.sig}
             #"http://whnxvjwjhzsske5yevyokhskllvtisv5ueokw6yvh6t7zqrpra2q.b32.i2p/releases/${pkgver}/i2psource_${pkgver}.tar.bz2"{,.sig}
             'i2prouter.service' 'i2prouter.sh' 'wrapper.config' 'router.config')
 }
-sha256sums=('49fbaea7f4d5ea0606de68ebb270fc3d4380631ecfd5c9ad82ed9356e29df937'
+
+sha256sums=('89808fa062735fc880d28d232fae27028d9ecdc13b1695a251ecfec119bc15da'
             'SKIP'
             '9bb899ece87099716da29bac8b7da02916fc325699b68989e73c1fe333a6342f'
             'ea8f97e66461d591b1819eab39bbc40056b89ae12f7729b3dd9fd2ce088e5e53'
