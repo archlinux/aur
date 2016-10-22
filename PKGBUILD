@@ -1,8 +1,9 @@
-# Maintainer: FadeMind <fademind@gmail.com>
+# Maintainer: Icaro Perseo <icaroperseo[at]protonmail[dot]com>
+# Contributor: FadeMind <fademind@gmail.com>
 
 pkgname=papirus-plasma-theme
-_commit=5196c8c # 7 digits
-pkgver=20160807
+_commit=ece39e5 # 7 digits
+pkgver=20160811
 pkgrel=1
 pkgdesc="Papirus plasma theme for KDE"
 url="https://github.com/PapirusDevelopmentTeam/${pkgname}"
@@ -17,10 +18,12 @@ source=("${pkgname}::git+${url}.git#commit=${_commit}")
 sha256sums=('SKIP')
 
 pkgver() {
-    cd ${pkgname}
-    git log -1 --format="%cd" --date=short | tr -d '-'
+  cd ${pkgname}
+  git log -1 --format="%cd" --date=short | tr -d '-'
 }
 
 package() {
-    make -C "${pkgname}" install DESTDIR="$pkgdir"
+  make -C "${pkgname}" install DESTDIR="$pkgdir"
 }
+
+# vim:set ts=2 sw=2 cc=80 et:
