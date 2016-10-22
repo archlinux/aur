@@ -14,6 +14,7 @@ pkgbase = rutorrent-git
 	optdepends = geoip: enable geoip plugin
 	optdepends = unrar: enable unpack plugin
 	optdepends = unzip: enable unpack plugin
+	optdepends = plowshare: fileupload plugin functionality
 	provides = rutorrent
 	provides = rutorrent-plugins
 	conflicts = rutorrent

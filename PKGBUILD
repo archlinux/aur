@@ -17,7 +17,8 @@ makedepends=('git')
 optdepends=('php-geoip: enable geoip plugin'
             'geoip: enable geoip plugin'
             'unrar: enable unpack plugin'
-            'unzip: enable unpack plugin')
+            'unzip: enable unpack plugin'
+            'plowshare: fileupload plugin functionality')
 
 conflicts=('rutorrent' 'rutorrent-plugins')
 provides=('rutorrent' 'rutorrent-plugins')
