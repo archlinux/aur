@@ -1,0 +1,14 @@
+pkgbase = php-remote-storage-git
+	pkgdesc = remoteStorage server written in PHP
+	pkgver = r329.df406f0
+	pkgrel = 1
+	url = https://github.com/fkooman/php-remote-storage
+	arch = any
+	license = agpl3
+	makedepends = composer
+	backup = etc/webapps/php-remote-storage-git/server.yaml
+	source = php-remote-storage-git::git+https://github.com/fkooman/php-remote-storage
+	md5sums = SKIP
+
+pkgname = php-remote-storage-git
+
