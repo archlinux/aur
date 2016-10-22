@@ -3,7 +3,6 @@ pkgbase = ecce-gov-pt-certificates
 	pkgver = 1.0
 	pkgrel = 1
 	url = http://www.ecce.gov.pt/certificados/
-	install = ecce-gov-pt-certificates.install
 	arch = any
 	license = custom
 	source = http://www.ecce.gov.pt/media/3793/ecraizestado.crt
