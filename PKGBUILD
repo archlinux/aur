@@ -3,7 +3,7 @@
 # Contributor: xduugu
 
 pkgname=perl-docs
-pkgver=5.22.0
+pkgver=5.24.0
 pkgrel=1
 pkgdesc="Set of HTML documentation for Perl."
 arch=('any')
