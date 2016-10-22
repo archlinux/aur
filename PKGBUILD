@@ -2,8 +2,8 @@
 
 pkgname=hostapd-rtl871xdrv
 _pkgname=${pkgname%-*}
-pkgver=2.5
-pkgrel=2
+pkgver=2.6
+pkgrel=1
 pkgdesc="IEEE 802.11 AP, IEEE 802.1X/WPA/WPA2/EAP/RADIUS Authenticator"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
 url="http://w1.fi/hostapd/"
@@ -20,11 +20,11 @@ source=(http://w1.fi/releases/${_pkgname}-${pkgver}.tar.gz
 	hostapd.service
 	hostapd-2.3-noscan.patch
 	openvswitch.patch)
-md5sums=('69f9cec3f76d74f402864a43e4f8624f'
+md5sums=('eaa56dce9bd8f1d195eb62596eab34c7'
          'SKIP'
          '43c0ec1d8b4d4e46f468bc161bb05c4b'
          '380042b9cf4950e34ed34b3093ab9e7f'
-         'eaf8e48a9a63b5902fddadff2b8933fa'
+         'f40f2652f2cd22d4bf1cfd76e02b9225'
          'a0802a604ed957078da0e14863df74f0')
 
 prepare() {
