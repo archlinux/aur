@@ -4,20 +4,20 @@
 
 pkgname=thermald
 _pkgname=thermal_daemon
-pkgver=1.5.3
+pkgver=1.5.4
 pkgrel=1
 pkgdesc="The Linux Thermal Daemon program from 01.org"
 arch=('i686' 'x86_64')
-url="https://github.com/01org/${_pkgname}"
+url="https://01.org/linux-thermal-daemon"
 license=('GPL2')
 makedepends=('systemd')
-depends=('dbus-glib>=0.94' 'libxml2>=2.4')
+depends=('dbus-glib' 'libxml2')
 backup=('etc/thermald/thermal-conf.xml')
 conflicts=('thermald')
 provides=('thermald')
-source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz"
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/01org/${_pkgname}/archive/v${pkgver}.tar.gz"
         'modules-load-thermald.conf')
-sha512sums=('aab4ade4dc50985cd5d45bcce6ea9b75cce22504eb113c86b8733c8be88a701c8812b8b0f3202f084a8128d50ec794ebe1c73312c0a5a5fd1dbc87eedf02df16'
+sha512sums=('c23b4aabc59f11fe93074459d8343f587275771268d9c71c871da6bb46d8533a46ab9ac0b495c22771d9064288872abfd3180e3bc92dbe5842cff53046e543d6'
             '3aff2d9cf1396f8dd165addfebfd1f7354051c6f7e1bfbd920fde05d402d9315eecc9bcbf19bd3f45b54b3cea6b421ba002b76540865f227e0a3d1ebdf655824')
 
 build() {
