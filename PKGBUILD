@@ -119,8 +119,7 @@ source=("${url}/archive/v${_atomver}.tar.gz"
         "autocomplete-plus::git+${_atom_url}/autocomplete-plus.git"
         "autocomplete-snippets::git+${_atom_url}/autocomplete-snippets.git")
 # patches, json, js and desktop files
-source+=('about-view.js'
-'atom-bleeding.desktop'
+source+=('atom-bleeding.desktop'
 'atom.sh'
 'beforeunload.patch'
 'deprecated-api.patch'
@@ -223,7 +222,6 @@ sha256sums=('b7c09d03d950b0a6aca82225f072d9005d5681887e3a7c466b0504bf64d7c5cd'
             'SKIP'
             'SKIP'
             'SKIP'
-            'ad7c7b2df6d2f004cd10cf8331d82d1d308702254266487ee5f6d09f11b36e24'
             '1356775fd8fba63c23735e3041ac01d372d8e79670113ebcc90313fb55e2530d'
             '17e19ac310007e6b9b4bcd78c13b2a8322909cac15375aacd14c079253930341'
             '9c419697ed1ce272a864f1a89c91d4a2e314f88ba1dc6f1836468db6572f95b6'
