@@ -1,5 +1,4 @@
 # Maintainer: Piotr Rogoza <piotr dot r dot public at gmail dot com>
-# Contributor: Piotr Rogoza <piotr dot r dot public at gmail dot com>
 
 pkgname=perl-extutils-makemaker-cpanfile
 pkgver=0.07
