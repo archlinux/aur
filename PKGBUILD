@@ -8,12 +8,14 @@ arch=('i686' 'x86_64')
 license=('custom')
 depends=('bash' 'libftdi')
 # makedepends=('gcc46')
-source=("http://qsimaging.com/downloads/${pkgname}-${pkgver}.tar.gz")
-sha1sums=('3c11fcefb122856807db6da937cb7fac4b0887fd')
+source=("http://qsimaging.com/downloads/${pkgname}-${pkgver}.tar.gz" "patch_libftdi1.diff")
+sha1sums=('3c11fcefb122856807db6da937cb7fac4b0887fd' 'e8076f6501d13ee64fdf6fd3d421444b78bec125')
 install="${pkgname}.install"
 
 build() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
+	patch < patch_libftdi1.diff
+	autoreconf -fi
 	./configure --enable-libftdi --prefix=/usr --enable-shared
 	make all
 }

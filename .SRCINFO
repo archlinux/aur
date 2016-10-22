@@ -10,7 +10,9 @@ pkgbase = qsiapi
 	depends = bash
 	depends = libftdi
 	source = http://qsimaging.com/downloads/qsiapi-7.2.0.tar.gz
+	source = patch_libftdi1.diff
 	sha1sums = 3c11fcefb122856807db6da937cb7fac4b0887fd
+	sha1sums = e8076f6501d13ee64fdf6fd3d421444b78bec125
 
 pkgname = qsiapi
 
