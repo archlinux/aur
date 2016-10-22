@@ -1,6 +1,6 @@
 #
 # Automatically generated file; DO NOT EDIT.
-# Linux/x86 4.8.2-1 Kernel Configuration
+# Linux/x86 4.8.3-2-ck2 Kernel Configuration
 #
 # CONFIG_64BIT is not set
 CONFIG_X86_32=y
@@ -47,7 +47,7 @@ CONFIG_BUILDTIME_EXTABLE_SORT=y
 #
 # General setup
 #
-CONFIG_SCHED_BFS=y
+CONFIG_SCHED_MUQSS=y
 CONFIG_INIT_ENV_ARG_LIMIT=32
 CONFIG_CROSS_COMPILE=""
 # CONFIG_COMPILE_TEST is not set
