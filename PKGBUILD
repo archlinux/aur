@@ -49,7 +49,7 @@ pkgname=(linux-ck linux-ck-headers)
 _kernelname=-ck
 _srcname=linux-4.8
 pkgver=4.8.4
-pkgrel=2
+pkgrel=3
 _ckpatchversion=3
 arch=('i686' 'x86_64')
 url="https://wiki.archlinux.org/index.php/Linux-ck"
@@ -63,6 +63,8 @@ source=("http://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
 "http://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.xz"
 "https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.sign"
 "http://ck.kolivas.org/patches/4.0/4.8/4.8-ck${_ckpatchversion}/${_ckpatchname}.xz"
+"http://ck.kolivas.org/patches/muqss/4.0/4.8/Pending/0001-Check_siblings-was-accidentally-removed-from-schedul.patch"
+"http://ck.kolivas.org/patches/muqss/4.0/4.8/Pending/0002-Revert-the-damage-caused-by-6b45f1f363d7f6959b648cf4.patch"
 "http://repo-ck.com/source/gcc_patch/${_gcc_patch}.gz"
 'config.x86_64' 'config'
 'linux-ck.preset'
@@ -72,9 +74,11 @@ sha256sums=('3e9150065f193d3d94bcf46a1fe9f033c7ef7122ab71d75a7fb5a2f0c9a7e11a'
             '86e246b19253ee3aa971403a5990376a5e33667122f7c8742cc0ee807f204403'
             'SKIP'
             'dc1a5562a20136e58a533b6f3937b993c4b5ed6d6b89988329c86538507f0503'
+            'cc33c0bc96f05719fd72c08e8aa8941001a751fdceed1797050b4cc6be1073bf'
+            '85ac6c430a0189ee7ed8526f815b6c7ee03156050104c39b907842fccd07b42a'
             'cf0f984ebfbb8ca8ffee1a12fd791437064b9ebe0712d6f813fd5681d4840791'
-            '1db84d68a6fc570d2006e36cb958a8c913823d9d37db4944a0fc5148266eb868'
-            '5a2f4f61b6e529e2726bc20c33f31edf4d90500af1a30ade51dd48be270f49c8'
+            'd8752e44ea6025d7017bf84c7d56b3c224902adc657ecf0d5502a680a46d8c2d'
+            'df437a9a8346fa20fa5f74a967cd4299b398154c992dab65ddad27071908b26a'
             '2b3ebf5446aa3cac279842ca00bc1f2d6b7ff1766915282c201d763dbf6ca07e'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99')
 validpgpkeys=(
@@ -98,6 +102,8 @@ prepare() {
 
 	msg "Patching source with ck patchset"
 	patch -Np1 -i "${srcdir}/${_ckpatchname}"
+	patch -Np1 -i "${srcdir}/0001-Check_siblings-was-accidentally-removed-from-schedul.patch"
+	patch -Np1 -i "${srcdir}/0002-Revert-the-damage-caused-by-6b45f1f363d7f6959b648cf4.patch"
 
 	# Patch source to enable more gcc CPU optimizatons via the make nconfig
 	msg "Patching source with gcc patch to enable more cpus types"
