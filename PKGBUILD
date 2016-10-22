@@ -2,7 +2,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de
 
 pkgname=aurel-git
-pkgver=0.8.2016_03_09
+pkgver=v0.8.15.g2a3e4c3.2016_10_22
 pkgrel=1
 pkgdesc="Search and download AUR packages from Emacs"
 arch=('any')
@@ -16,12 +16,7 @@ md5sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/${pkgname%-git}"
-  printf %s.%s $(git describe --tags| cut -c2-) $(git log -1 --format="%cd" --date=short | tr - _)
-}
-
-build() {
-  cd "$srcdir/${pkgname%-git}"
-  emacs --batch -f batch-byte-compile *.el >&/dev/null
+  printf %s.%s $(git describe --tags|tr - .) $(git log -1 --format="%cd" --date=short | tr - _)
 }
 
 package() {
@@ -29,5 +24,5 @@ package() {
 
   cd "$srcdir/${pkgname%-git}"
   install -d $_pkg_emacs
-  cp *.el *.elc $_pkg_emacs
+  cp *.el $_pkg_emacs
 }
