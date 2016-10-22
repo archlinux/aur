@@ -28,7 +28,6 @@ build() {
     LDFLAGS="" CFLAGS="" ./configure                     \
         --prefix=/usr               \
 	--sysconfdir=/etc           \
-	# Special thanks to F.Bezies for this correction
 	--with-pam-dir=/usr/lib/security
         make -j1
 }
