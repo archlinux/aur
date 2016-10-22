@@ -25,11 +25,12 @@ pkgname=('roccat-tools-common'
          'roccat-tools-ryosmkfx'
          'roccat-tools-ryostkl'
          'roccat-tools-savu'
+         'roccat-tools-sova'
          'roccat-tools-suora'
          'roccat-tools-tyon'
          'roccat-tools-nyth')
 pkgbase=roccat-tools
-pkgver=5.4.0
+pkgver=5.5.0
 pkgrel=1
 pkgdesc='Userland applications to configure and make extended use of ROCCAT devices'
 arch=('i686' 'x86_64')
@@ -39,7 +40,7 @@ depends=('libgaminggear>=0.15.0' 'libcanberra' 'gtk2' 'libnotify>=0.7.0' 'dbus-g
 makedepends=('cmake')
 optdepends=('kmod-roccat: Adds support for the old kone device.')
 source=("http://downloads.sourceforge.net/project/roccat/roccat-tools/roccat-tools-$pkgver.tar.bz2")
-md5sums=('e00124437d29af7f16f4b5b02ff01b35')
+md5sums=('1cd328de42261c736ee275b33c8ecbb8')
 
 build() {
   cd "$srcdir/$pkgbase-$pkgver"
@@ -271,6 +272,16 @@ package_roccat-tools-suora() {
   make DESTDIR="$pkgdir/" install
   cd "$srcdir/$pkgbase-$pkgver"
   install -Dm644 udev/90-roccat-suora.rules $pkgdir/usr/lib/udev/rules.d/90-roccat-suora.rules
+}
+
+package_roccat-tools-sova() {
+  pkgdesc='Userland applications to configure and make extended use of ROCCAT Sova devices'
+  depends=('roccat-tools-common')
+
+  cd "$srcdir/$pkgbase-$pkgver/sova"
+  make DESTDIR="$pkgdir/" install
+  cd "$srcdir/$pkgbase-$pkgver"
+  install -Dm644 udev/90-roccat-sova.rules $pkgdir/usr/lib/udev/rules.d/90-roccat-sova.rules
 }
 
 package_roccat-tools-nyth() {
