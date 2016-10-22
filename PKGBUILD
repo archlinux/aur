@@ -3,9 +3,9 @@
 # Contributor: Thomas Baechler <thomas@archlinux.org>
 
 pkgname=nvidia-304xx-ck
-pkgver=304.131
+pkgver=304.132
 _extramodules=extramodules-4.8-ck
-pkgrel=19
+pkgrel=1
 _pkgdesc="NVIDIA drivers for linux-ck, 304xx legacy branch."
 pkgdesc="$_pkgdesc"
 arch=('i686' 'x86_64')
@@ -18,14 +18,12 @@ conflicts=('nvidia-340xx-ck' 'nvidia-ck' 'nvidia-275xx-ck' 'nvidia-319-ck' 'nvid
 license=('custom')
 install=nvidia-304xx-ck.install
 options=(!strip)
-source=('disable-mtrr.patch'
-'linux-4.6.patch')
+source=('disable-mtrr.patch')
 source_i686+=("http://us.download.nvidia.com/XFree86/Linux-x86/${pkgver}/NVIDIA-Linux-x86-${pkgver}.run")
 source_x86_64+=("http://us.download.nvidia.com/XFree86/Linux-x86_64/${pkgver}/NVIDIA-Linux-x86_64-${pkgver}-no-compat32.run")
-sha256sums=('cbaa0c4e4f30d993958c079a22e0346970f99d4fda9d12379777bb16ab3306c9'
-            '7133fb270c138ab697271245f3c05654f3f409e98d9b67b01d513403f7fcc5db')
-sha256sums_i686=('d2554bb6f7867e7762d0ecedcac5bde7de0634e43b952bf466323ea8b4032da8')
-sha256sums_x86_64=('2f6e82c79ed4d1ac3d42b2c0f71d4fbdd9293db801de396e7e2cc3fdcafaf83e')
+sha256sums=('cbaa0c4e4f30d993958c079a22e0346970f99d4fda9d12379777bb16ab3306c9')
+sha256sums_i686=('d460f6ab63cc8c1f9fb89a344ad0f3ee1a90e7078b4edba78d86433e66bfd927')
+sha256sums_x86_64=('3d7c18eef3044890536b50acab76977112ea5134425b75bba10af37091879ab8')
 [[ "$CARCH" = "i686" ]] && _pkg="NVIDIA-Linux-x86-${pkgver}"
 [[ "$CARCH" = "x86_64" ]] && _pkg="NVIDIA-Linux-x86_64-${pkgver}-no-compat32"
 
@@ -35,8 +33,6 @@ prepare() {
 
 	# FS#47092
 	(cd kernel; patch -p1 --no-backup-if-mismatch -i "$srcdir"/disable-mtrr.patch)
-
-	patch -p1 --no-backup-if-mismatch -i ../linux-4.6.patch
 }
 
 build() {
