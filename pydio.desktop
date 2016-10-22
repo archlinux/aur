@@ -5,5 +5,5 @@ Exec=/usr/bin/pydio-sync
 Terminal=false
 Type=Application
 Categories=Application;Network;
-
+Icon=pydio-sync
 
