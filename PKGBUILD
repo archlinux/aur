@@ -6,7 +6,7 @@
 pkgname=mpv-sndio
 _basepkg=mpv
 epoch=1
-pkgver=0.18.1
+pkgver=0.21.0
 pkgrel=1
 _waf_version=1.8.12
 pkgdesc='a free, open source, and cross-platform media player (with sndio support)'
@@ -27,8 +27,8 @@ provides=('mpv')
 options=('!emptydirs' '!buildflags')
 source=("$_basepkg-$pkgver.tar.gz::https://github.com/mpv-player/$_basepkg/archive/v$pkgver.tar.gz"
   "http://www.freehackers.org/~tnagy/release/waf-${_waf_version}")
-sha256sums=('e413d57fec4ad43b9f9b848f38d13fb921313fc9a4a64bf1e906c8d0f7a46329'
-  '01bf2beab2106d1558800c8709bc2c8e496d3da4a2ca343fe091f22fca60c98b')
+sha256sums=('d05f8ece859c500ef1649cdfea911ec1529df1898b8fda3e217766dc28dc9bd3'
+            '01bf2beab2106d1558800c8709bc2c8e496d3da4a2ca343fe091f22fca60c98b')
 
 prepare() {
   cd ${_basepkg}-${pkgver}
