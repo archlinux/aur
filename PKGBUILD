@@ -1,7 +1,7 @@
 pkgname=sph-pack-git
-pkgver=21
+pkgver=26
 pkgrel=1
-pkgdesc="free software file packaging solution. compounding/compression/encryption and the rerverse with only one standard file format per task"
+pkgdesc="free software file packaging solution. compounding/compression/encryption with tar/xz/gz/scrypt"
 arch=(any)
 license=(gpl3)
 makedepends=(git)
