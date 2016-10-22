@@ -1,10 +1,10 @@
-# Maintainer: nrio <nrio@mailbox.org>
+# Maintainer: nroi <nroi@mailbox.org>
 pkgname=tcharmap-git
-pkgver=r19.0dfd0f4
+pkgver=r21.2433488
 pkgrel=1
 pkgdesc="Overview of unicode characters and their LaTeX counterpart"
 arch=('any')
-url="https://github.com/nrio0/tcharmap"
+url="https://github.com/nroi/tcharmap"
 license=('MIT')
 options=(!emptydirs)
 depends=('python' 'python-yaml' 'python-pyqt5')
