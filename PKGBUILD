@@ -7,7 +7,7 @@
 
 pkgname=monodevelop-stable
 _pkgname=monodevelop
-pkgver=6.1.2.38
+pkgver=6.1.1.15
 pkgrel=1
 pkgdesc="An IDE primarily designed for C# and other .NET languages"
 arch=('any')
