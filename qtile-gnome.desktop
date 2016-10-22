@@ -1,0 +1,6 @@
+[Desktop Entry]
+Name=Qtile GNOME
+Comment=A full-featured, hackable tiling window manager written and configured in Python
+TryExec=qtile
+Exec=gnome-session --session=qtile
+Type=Application

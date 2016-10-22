@@ -1,0 +1,8 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Qtile
+Comment=The qtile launcher!
+TryExec=qtile
+Exec=qtile
+NoDisplay=true

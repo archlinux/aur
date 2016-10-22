@@ -1,0 +1,20 @@
+pkgbase = qtile-gnome
+	pkgdesc = Setup qtile as window manager of GNOME 3
+	pkgver = 1.0
+	pkgrel = 1
+	url = http://docs.qtile.org/en/latest/manual/config/gnome.html
+	install = qtile-gnome.install
+	arch = any
+	license = CCPL
+	depends = qtile
+	depends = gnome-session
+	depends = gnome-settings-daemon
+	source = qtile-gnome.desktop
+	source = qtile.desktop
+	source = qtile.session
+	md5sums = 2a94846f22856e36c668057dc1382c1d
+	md5sums = a42d44ac89dd9c57aca7ba8c78db767e
+	md5sums = 69b3b57ce3faa3901db1e935ab434961
+
+pkgname = qtile-gnome
+
