@@ -1,0 +1,7 @@
+pkg/
+src/
+*.zip
+*.tar.gz
+*.pkg.tar.xz
+
+swagger_linux_amd64

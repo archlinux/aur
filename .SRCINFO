@@ -1,0 +1,18 @@
+pkgbase = go-swagger
+	pkgdesc = Toolkit for swagger in golang (go-swagger)
+	pkgver = 0.7.3
+	pkgrel = 1
+	url = https://goswagger.io
+	arch = i686
+	arch = x86_64
+	groups = swagger
+	license = ASL 2.0
+	provides = swagger
+	conflicts = swagger
+	source_i686 = https://github.com/go-swagger/go-swagger/releases/download/0.7.3/swagger_linux_386
+	sha256sums_i686 = 89eaa63c0c1eeb05f36cd6d7ae7f2112fd8bbf700ff6367c70233ee897634519
+	source_x86_64 = https://github.com/go-swagger/go-swagger/releases/download/0.7.3/swagger_linux_amd64
+	sha256sums_x86_64 = 414724d8ce5b8121ed6069c0629b79815384fafcb94e391f30646d719f188b51
+
+pkgname = go-swagger
+
