@@ -1,8 +1,8 @@
 # Maintainer:  Eric Biggers <ebiggers3@gmail.com>
 
 pkgname=libdeflate-git
-pkgver=0.5.6.g1cc88c6
-pkgrel=2
+pkgver=0.5.r7.g8d0a43a
+pkgrel=1
 pkgdesc='Heavily optimized library for DEFLATE/zlib/gzip (de)compression'
 arch=('i686' 'x86_64')
 url='https://github.com/ebiggers/libdeflate'
@@ -16,7 +16,7 @@ replaces=('libdeflate')
 
 pkgver() {
 	cd libdeflate
-	git describe --long --tags | sed 's/^v//;s/-/./g'
+	git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
