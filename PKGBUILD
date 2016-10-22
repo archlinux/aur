@@ -7,7 +7,7 @@ _milestone=51.0a2
 _lang=ru
 pkgname="${_name}-${_channel}-${_lang}"
 _pkgname="${_name}-${_channel}"
-pkgver=51.0a2.20161020004015
+pkgver=51.0a2.20161021004016
 pkgrel=1
 pkgdesc="Firefox Aurora channel - Nightly build"
 url="http://www.mozilla.org/en_US/${_name}/${_channel}/"
@@ -29,8 +29,8 @@ source_x86_64=('https://ftp.mozilla.org/pub/firefox/nightly/latest-mozilla-auror
 sha512sums=('1c0eef1129625ecfb70809dbb9ab764054d1680f05b7807f503145b5889bc42babb268cb4e2b7b102f90c50cc249114f773d91992e9ac41b5a6966e3b5c95675'
             '749bc9bb180909c7319a1576e9df1e4cb06488b33b8dd61b8f1a63e4df9208cb9bb6d0c4ecef3fbe388f78368aef4562ae1dbfda1dbbfa649aa9d247c4903610')
 
-sha512sums_i686=('a53c7a71e9a9a1a936bc0ce465cd3fbe07d29fca03402738c0a472ac8bc8f027b42d4accf7c5c0f82a050d084f29c4d0ba032d0f48788199b28a3f3900ac7aea')
-sha512sums_x86_64=('6e6f0e60f6592413f4044c6689109c971944b70ed5312378038a026885f6b0414fbbaa1d6c0b5cbebebc3453acbde4c07c761bbff622cb83041086cac73bafdf')
+sha512sums_i686=('6aa14e9b2e9f329421f2b06bb478f1a833788f306c07be3af64c99d97efca335b6619bbf639823655d928245780130046ec75dfaa1e99b567dfb8f5d77638b4f')
+sha512sums_x86_64=('f78bc5cca35f0d8889605cefe12a5bf7bb1cd227ff9cc8b98324dd031f554c07d50ea6ed1253532319bf153dcc05ea0f6d0249855a2b0ec587fd4ee4ff9dab17')
 
 pkgver() {
   cd "${_name}"
