@@ -3,7 +3,7 @@
 _pkgname=openboardview
 __pkgname=OpenBoardView
 pkgname=${_pkgname}-git
-pkgver=R7.1
+pkgver=R7.2
 pkgrel=1
 pkgdesc="Linux SDL/ImGui edition software for viewing .brd files"
 arch=('i686' 'x86_64')
@@ -26,6 +26,8 @@ package() {
   cp -dr --no-preserve=ownership {bin,utilities} "${pkgdir}/opt/${_pkgname}/"
 
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
+  mkdir -p "${pkgdir}"/usr/bin
+  ln -s /opt/openboardview/bin/openboardview "${pkgdir}"/usr/bin/openboardview
 }
 
 # vim:set ts=2 sw=2 et:
