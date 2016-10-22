@@ -12,7 +12,7 @@ license=('GPL')
 # tried to include all necessary deps and none that aren't
 # please notify if list not fully correct
 depends=(mxml sdl_mixer sdl_image glew hicolor-icon-theme)
-makedepends=(git bison)
+makedepends=(git)
 
 source=('git://github.com/dreamchess/dreamchess.git')
 md5sums=('SKIP')
