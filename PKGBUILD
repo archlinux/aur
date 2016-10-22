@@ -1,7 +1,7 @@
 # Maintainer: Andreas Grapentin <andreas@grapentin.org>
 pkgname=vmdebootstrap
 pkgver=1.6
-pkgrel=1
+pkgrel=2
 pkgdesc="debootstrap installs a basic Debian system into a directory, for use with chroot(8). vmdeboostrap is a wrapper around it to install Debian into a disk image, which can be used with a virtual machine (such as KVM)."
 arch=('i686' 'x86_64')
 
@@ -13,8 +13,11 @@ depends=('debootstrap'
          'qemu'
          'parted'
          'multipath-tools'
+         'python2'
          'python2-cliapp'
          'distro-info')
+
+makedepends=('python-sphinx')
 
 source=("http://git.liw.fi/cgi-bin/cgit/cgit.cgi/$pkgname/snapshot/$pkgname-$pkgver.tar.gz"
         'python_version.patch'
@@ -35,13 +38,24 @@ prepare() {
   patch -p1 < ../fix_path.patch
 }
 
+build() {
+  cd "$pkgname-$pkgver"
+
+  make -C man man
+}
+
 package() {
 	cd "$pkgname-$pkgver"
 
   python2 setup.py install --root="${pkgdir}/" --optimize=1
+
+  mkdir -p ${pkgdir}/usr/share/man/man8/
+  cp man/_build/man/vmdebootstrap.8 ${pkgdir}/usr/share/man/man8/
+
   mkdir -p ${pkgdir}/usr/share/doc/$pkgname
   cp COPYING ${pkgdir}/usr/share/doc/$pkgname
   cp README ${pkgdir}/usr/share/doc/$pkgname
+
   mkdir -p ${pkgdir}/usr/share/licenses/$pkgname
   cd ${pkgdir}/usr/share/licenses/$pkgname
   ln -s ../../doc/$pkgname/COPING COPYING
