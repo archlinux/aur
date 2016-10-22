@@ -5,7 +5,7 @@
              return _this.upgradePackages(options, callback);
            } else {
 -            return callback('Could not determine current Atom version installed');
-+            _this.installedAtomVersion = '1.10.0';
++            _this.installedAtomVersion = '1.11.2';
 +            return _this.upgradePackages(options, callback);
            }
          };

@@ -1,36 +1,3 @@
---- a/build/Gruntfile.coffee
-+++ b/build/Gruntfile.coffee
-@@ -304,7 +304,7 @@
-
-   grunt.registerTask('ci', ciTasks)
-
--  defaultTasks = ['download-electron', 'download-electron-chromedriver', 'build', 'set-version', 'generate-asar']
-+  defaultTasks = ['build', 'set-version', 'generate-asar']
-   unless process.platform is 'linux' or grunt.option('no-install')
-     defaultTasks.push 'install'
-   grunt.registerTask('default', defaultTasks)
---- a/build/tasks/build-task.coffee
-+++ b/build/tasks/build-task.coffee
-@@ -14,19 +14,6 @@
-     rm path.join(buildDir, 'installer')
-     mkdir path.dirname(buildDir)
-
--    if process.platform is 'darwin'
--      cp 'electron/Electron.app', shellAppDir, filter: /default_app/
--      fs.renameSync path.join(shellAppDir, 'Contents', 'MacOS', 'Electron'), path.join(shellAppDir, 'Contents', 'MacOS', 'Atom')
--      fs.renameSync path.join(shellAppDir, 'Contents', 'Frameworks', 'Electron Helper.app'), path.join(shellAppDir, 'Contents', 'Frameworks', 'Atom Helper.app')
--      fs.renameSync path.join(shellAppDir, 'Contents', 'Frameworks', 'Atom Helper.app', 'Contents', 'MacOS', 'Electron Helper'), path.join(shellAppDir, 'Contents', 'Frameworks', 'Atom Helper.app', 'Contents', 'MacOS', 'Atom Helper')
--    else
--      cp 'electron', shellAppDir, filter: /default_app/
--
--      if process.platform is 'win32'
--        fs.renameSync path.join(shellAppDir, 'electron.exe'), path.join(shellAppDir, 'atom.exe')
--      else
--        fs.renameSync path.join(shellAppDir, 'electron'), path.join(shellAppDir, 'atom')
--
-     mkdir appDir
-
-     if process.platform isnt 'win32'
 --- a/package.json
 +++ b/package.json
 @@ -12,7 +12,6 @@
@@ -41,6 +8,76 @@
    "dependencies": {
      "async": "0.2.6",
      "atom-keymap": "6.3.2",
+--- a/script/build
++++ b/script/build
+@@ -2,10 +2,6 @@
+
+ 'use strict'
+
+-// Run bootstrap first to ensure all the dependencies used later in this script
+-// are installed.
+-require('./bootstrap')
+-
+ // Needed so we can require src/module-cache.coffee during generateModuleCache
+ require('coffee-script/register')
+ require('colors')
+@@ -28,7 +24,6 @@
+ const createDebianPackage = require('./lib/create-debian-package')
+ const createRpmPackage = require('./lib/create-rpm-package')
+ const createWindowsInstaller = require('./lib/create-windows-installer')
+-const downloadChromedriver = require('./lib/download-chromedriver')
+ const dumpSymbols = require('./lib/dump-symbols')
+ const generateAPIDocs = require('./lib/generate-api-docs')
+ const generateMetadata = require('./lib/generate-metadata')
+@@ -56,48 +51,4 @@
+ prebuildLessCache()
+ generateMetadata()
+ generateAPIDocs()
+-downloadChromedriver()
+ dumpSymbols()
+-  .then(packageApplication)
+-  .then(packagedAppPath => {
+-    if (process.platform === 'darwin') {
+-      if (argv.codeSign) {
+-        codeSignOnMac(packagedAppPath)
+-      } else {
+-        console.log('Skipping code-signing. Specify the --code-sign option to perform code-signing'.gray)
+-      }
+-    } else if (process.platform === 'win32') {
+-      if (argv.createWindowsInstaller) {
+-        return createWindowsInstaller(packagedAppPath, argv.codeSign).then(() => packagedAppPath)
+-      }
+-      else {
+-        console.log('Skipping creating installer. Specify the --create-windows-installer option to create a Squirrel-based Windows installer. Code-signing was skipped too.'.gray)
+-      }
+-    } else if (process.platform === 'linux') {
+-      if (argv.createDebianPackage) {
+-        createDebianPackage(packagedAppPath)
+-      } else {
+-        console.log('Skipping creating debian package. Specify the --create-debian-package option to create it.'.gray)
+-      }
+-
+-      if (argv.createRpmPackage) {
+-        createRpmPackage(packagedAppPath)
+-      } else {
+-        console.log('Skipping creating rpm package. Specify the --create-rpm-package option to create it.'.gray)
+-      }
+-    }
+-
+-    return Promise.resolve(packagedAppPath)
+-  }).then(packagedAppPath => {
+-    if (argv.compressArtifacts) {
+-      compressArtifacts(packagedAppPath)
+-    } else {
+-      console.log('Skipping artifacts compression. Specify the --compress-artifacts option to compress Atom binaries (and symbols on macOS)'.gray)
+-    }
+-
+-    if (argv.install) {
+-      installApplication(packagedAppPath)
+-    } else {
+-      console.log('Skipping installation. Specify the --install option to install Atom'.gray)
+-    }
+-  })
 --- a/src/module-cache.coffee
 +++ b/src/module-cache.coffee
 @@ -194,7 +194,7 @@
@@ -50,8 +87,8 @@
 -  if devMode or not cache.resourcePath.startsWith("#{process.resourcesPath}#{path.sep}")
 +  if devMode or not cache.resourcePath.startsWith("/usr/lib/atom")
      fs = require 'fs-plus'
-     atomCoffeePath = path.join(cache.resourcePath, 'exports', 'atom.coffee')
-     cache.builtins.atom = atomCoffeePath if fs.isFileSync(atomCoffeePath)
+     atomJsPath = path.join(cache.resourcePath, 'exports', 'atom.js')
+     cache.builtins.atom = atomJsPath if fs.isFileSync(atomJsPath)
 --- a/src/package-manager.coffee
 +++ b/src/package-manager.coffee
 @@ -526,7 +526,7 @@
