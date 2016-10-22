@@ -10,6 +10,7 @@ pkgbase = theweb
 	depends = kwidgetsaddons
 	depends = xdg-utils
 	depends = qt5-base
+	depends = poppler-qt5
 	source = theweb-15.0::git+https://github.com/vicr123/theweb#branch=master
 	source = http://opensource.spotify.com/cefbuilds/cef_binary_3.2840.1494.g7fe3d03_linux64_minimal.tar.bz2
 	md5sums = SKIP

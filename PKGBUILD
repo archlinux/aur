@@ -7,7 +7,7 @@ pkgdesc="Web Browser based on CEF and Qt"
 arch=("x86_64")
 url="https://github.com/vicr123/theweb"
 license=('GPL3')
-depends=('kwidgetsaddons' 'xdg-utils' 'qt5-base')
+depends=('kwidgetsaddons' 'xdg-utils' 'qt5-base' 'poppler-qt5')
 makedepends=('git' 'clang')
 source=("$pkgname-$pkgver"::'git+https://github.com/vicr123/theweb#branch=master'
 	"http://opensource.spotify.com/cefbuilds/cef_binary_3.2840.1494.g7fe3d03_linux64_minimal.tar.bz2")
