@@ -6,8 +6,10 @@ pkgdesc="open Multi-View Stereo reconstruction library with simple and automatic
 arch=('i686' 'x86_64')
 url="http://cdcseacave.github.io/openMVS"
 license=('GPL')
-depends=('opencv' 'cgal' 'nvidia-utils')
-makedepends=('git' 'cmake' 'cuda' 'boost' 'eigen' 'ceres-solver')
+depends=('opencv' 'cgal')
+makedepends=('git' 'cmake' 'boost' 'eigen' 'ceres-solver')
+optdepends=('cuda: GPU optimized mesh reconstruction code'
+            'nvidia-utils: Nvidia driver API is needed for cuda code')
 options=()
 source=("${pkgname}::git+https://github.com/cdcseacave/openMVS.git"
         "vcglib::git+https://github.com/cdcseacave/VCG.git"
@@ -34,7 +36,12 @@ build() {
   cd ${srcdir}
   mkdir -p build
   cd build
-  cmake ../${pkgname} -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr -DINSTALL_BIN_DIR=/usr/bin -DVCG_DIR="../vcglib"
+  if $(pacman -Qq cuda nvidia-utils &>/dev/null)
+    then OpenMVS_USE_CUDA=ON
+    else OpenMVS_USE_CUDA=OFF
+         warning "For CUDA optimized rutines installing (cuda, nvidia-utils) and rebuild the packages"
+  fi
+  cmake ../${pkgname} -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr -DINSTALL_BIN_DIR=/usr/bin -DVCG_DIR="../vcglib" -DOpenMVS_USE_CUDA=$OpenMVS_USE_CUDA
   make
 }
 
