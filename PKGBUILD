@@ -4,8 +4,8 @@
 #Contributor: Muhammed Uluyol <uluyol0@gmail.com>
 
 pkgname=foo2zjs
-pkgver=20161004
-pkgrel=2
+pkgver=20161021
+pkgrel=1
 pkgdesc="foo2zjs Printer Drivers. Includes also foo2hp, foo2hbpl, foo2oak, foo2xqx, foo2qpdl, foo2slx, foo2hiperc and foo2lava drivers."
 url="http://foo2zjs.rkkda.com/"
 license=('GPL' 'custom')
@@ -17,22 +17,20 @@ arch=('i686' 'x86_64')
 options=('!emptydirs' '!ccache')
 install='foo2zjs.install'
 source=("foo2zjs-$pkgver.tar.gz::http://foo2zjs.rkkda.com/foo2zjs.tar.gz"
-        'destdir-support-20140329-1.patch'
-        'gen-fixes-20140329-1.patch'
-        'firmware-loader-20130602-1.patch'
-        'udev-firmware-loading-ruleset-20130601-1.patch'
-        'skip-foomatic-db-20161003-1.patch'
-        'make-ppd-20161003-2.patch'
-        'compile-flags-20161004-1.patch')
+        '0001-Makefile-DESTDIR-support.patch'
+        '0002-Makefile-general-fixes.patch'
+        '0003-Rework-firmware-loading.patch'
+        '0004-Makefile-skip-installing-Foomatic-files.patch'
+        '0005-Makefile-fix-generating-.ppd-in-place.patch'
+	'0006-Makefile-leverage-default-rules-as-much-as-possible-.patch')
 
-sha256sums=('c4e0d182102c340b094e87203423a80561ddfaad2f5f6d57bea44edd15e7267e'
-            '6fe2abe505305c627e35123ffdf80279b0e6e065b34a1967674fe56f09380f6a'
-            '2a104b8f93d8cb4bd0a10156043f9cf47eddaa728f6317d235bc6d9843312f05'
-            '5fe072326173d5008741ffed2e122053f821eabc0d3369ef64a2e346e4e327d1'
-            '32c2ccf07eb0be50f2d27e976de6383795ff1755f72965e47c238825621c459d'
-            'ade69e3dc9d1081879be9c5bd41202ca43e48a3cc6bf123254d7ea84d8f4e801'
-            'bc7a75a0e827bb47cb9a1c86cef2b55746c865a5682803d4b36d00bc6f8b1407'
-            '37bd36ce5712e1e007c78200f0bb8681eaf4236646d8221018bc71dad08caae3')
+sha256sums=('55604f4580fb21534739c294df64e041b6ea96ef45d8a0ff4cdcf516eff243a3'
+            '2c0e40294c3f77a33e242280e280a98ed834a16584072b2d0f5fa95d0c44503f'
+            '33c1c7bd31ddee2b27ef06f726684da503bc165873f10db68e7435a1e3690756'
+            '320a7d5d1e10474e8e11e201a05e741d6a7786ca1c1b5ebbe668f63ac6d5b765'
+            'cfaa38ea47afbd89b0d85a944d336a2ef30e2964beefb6a3cfc312b1d2b6ab2b'
+            'cc6befb039909ee8a09e2ef47ef10c72d4bbe59df52d35687506cfd2ad484e62'
+            '0d7dd404b84e354bdad579820e0fbe334e553a561ab0986aabd528a22628eecf')
 
 prepare() {
   cd "${pkgname}"

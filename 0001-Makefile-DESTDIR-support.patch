@@ -1,6 +1,17 @@
+From 90b8910997b272afb346ceec050b6313fb91e054 Mon Sep 17 00:00:00 2001
+From: Ivan Shapovalov <intelfx@intelfx.name>
+Date: Sat, 22 Oct 2016 12:35:14 +0300
+Subject: [PATCH 1/6] Makefile: DESTDIR support
+
+---
+ Makefile | 27 ++++++++++++++-------------
+ 1 file changed, 14 insertions(+), 13 deletions(-)
+
+diff --git a/Makefile b/Makefile
+index 969cf6f..387b221 100644
 --- a/Makefile
 +++ b/Makefile
-@@ -38,7 +38,7 @@
+@@ -38,7 +38,7 @@ INSTALL=install
  ROOT=root
  
  # Pathnames for referenced packages...
@@ -9,7 +20,7 @@
  
  # User ID's
  LPuid=-oroot
-@@ -245,8 +245,9 @@
+@@ -245,8 +245,9 @@ FILES	=	\
  
  # CUPS vars
  CUPS_SERVERBIN := $(DESTDIR)$(shell cups-config --serverbin 2>/dev/null)
@@ -21,7 +32,7 @@
  
  # hpclj2600n-0.icm km2430_0.icm km2430_1.icm km2430_2.icm samclp300-0.icm
  # sihp1000.img sihp1005.img sihp1020.img sihp1018.img
-@@ -652,7 +653,7 @@
+@@ -654,7 +655,7 @@ install-prog:
  	$(INSTALL) -c $(PROGS) $(SHELLS) $(BIN)/
  	if [ "$(BINPROGS)" != "" ]; then \
  	    $(INSTALL) -d $(UDEVBIN); \
@@ -30,7 +41,7 @@
  	fi
  	#
  	# Install gamma correction files.  These are just templates,
-@@ -706,10 +707,10 @@
+@@ -708,10 +709,10 @@ install-foo:
  	#
  	# Clear foomatic cache and rebuild database if needed
  	#
@@ -45,7 +56,7 @@
  	    foomatic-combo-xml -O >overview.xml; \
  	fi
  
-@@ -839,7 +840,7 @@
+@@ -841,7 +842,7 @@ install-extra:
  	done
  
  MODEL=$(PREFIX)/share/cups/model
@@ -54,7 +65,7 @@
  MACMODEL=/Library/Printers/PPDs/Contents/Resources
  PPD=$(PREFIX)/share/ppd
  VARPPD=/var/lp/ppd
-@@ -899,9 +900,9 @@
+@@ -901,9 +902,9 @@ install-ppd:
  	    done; \
  	fi
  
@@ -67,7 +78,7 @@
  
  install-desktop:
  	#
-@@ -925,7 +926,7 @@
+@@ -927,7 +928,7 @@ install-gui:
  	$(INSTALL) -c -m 755 hplj10xx_gui.tcl $(SHAREZJS)
  	
  
@@ -76,3 +87,6 @@
  UDEVDIR=/etc/udev/rules.d
  LIBUDEVDIR=/lib/udev/rules.d
  RULES=hplj10xx.rules
+-- 
+2.10.0
+

@@ -1,0 +1,338 @@
+From d5970af826ef467904096c48d9868c93133d55ac Mon Sep 17 00:00:00 2001
+From: Ivan Shapovalov <intelfx@intelfx.name>
+Date: Sun, 23 Oct 2016 00:59:32 +0300
+Subject: [PATCH 3/6] Rework firmware loading
+
+---
+ Makefile          |  80 ++++++++-----------------------------
+ foo2zjs-loadfw.in | 116 ++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ hplj10xx.rules    |  59 ++++++++++-----------------
+ usblp.conf        |   1 +
+ 4 files changed, 154 insertions(+), 102 deletions(-)
+ create mode 100644 foo2zjs-loadfw.in
+ create mode 100644 usblp.conf
+
+diff --git a/Makefile b/Makefile
+index 6d3a0a7..b66ded0 100644
+--- a/Makefile
++++ b/Makefile
+@@ -167,6 +167,7 @@ FILES	=	\
+ 		gipddecode.1in \
+ 		hbpldecode.c \
+ 		hbpldecode.1in \
++		foo2zjs-loadfw.in \
+ 		foo2zjs-wrapper.in \
+ 		foo2zjs-wrapper.1in \
+ 		foo2hp2600-wrapper.in \
+@@ -271,7 +272,7 @@ endif
+ SHELLS=		foo2zjs-wrapper foo2oak-wrapper foo2hp2600-wrapper \
+ 		foo2xqx-wrapper foo2lava-wrapper foo2qpdl-wrapper \
+ 		foo2slx-wrapper foo2hiperc-wrapper foo2hbpl2-wrapper
+-SHELLS+=	foo2zjs-pstops
++SHELLS+=	foo2zjs-loadfw foo2zjs-pstops
+ SHELLS+=	printer-profile
+ MANPAGES=	foo2zjs-wrapper.1 foo2zjs.1 zjsdecode.1
+ MANPAGES+=	foo2oak-wrapper.1 foo2oak.1 oakdecode.1
+@@ -482,6 +483,12 @@ foo2hiperc: foo2hiperc.o $(LIBJBG)
+ foo2hbpl2: foo2hbpl2.o $(LIBJBG)
+ 	$(CC) $(CFLAGS) -o $@ foo2hbpl2.o $(LIBJBG)
+ 
++foo2zjs-loadfw: foo2zjs-loadfw.in Makefile
++	[ ! -f $@ ] || chmod +w $@
++	sed < $@.in > $@ \
++	    -e 's:@FWDIR_ZJS@:$(SHAREZJS)/firmware:' \
++	    -e 's:@FWDIR_XQX@:$(SHAREXQX)/firmware:' || (rm -f $@ && exit 1)
++	chmod 555 $@
+ 
+ foo2zjs-wrapper: foo2zjs-wrapper.in Makefile
+ 	[ ! -f $@ ] || chmod +w $@
+@@ -915,18 +922,18 @@ install-gui:
+ 	$(INSTALL) -c -m 755 hplj10xx_gui.tcl $(SHAREZJS)
+ 	
+ 
+-USBDIR=$(DESTDIR)/etc/hotplug/usb
+ UDEVDIR=/etc/udev/rules.d
+ LIBUDEVDIR=/lib/udev/rules.d
++LIBMODPROBEDIR=/lib/modprobe.d
+ RULES=hplj10xx.rules
++USBLP=usblp.conf
+ #UDEVD=/sbin/udevd
+ # For FreeBSD 8.0
+-DEVDDIR=/etc/devd
+ 
+ ifeq ($(UNAME),Darwin)
+ install-hotplug: install-hotplug-test install-hotplug-osx
+ else
+-install-hotplug: install-hotplug-test install-hotplug-prog
++install-hotplug: install-hotplug-prog
+ endif
+ 
+ install-hotplug-test:
+@@ -962,65 +969,12 @@ install-hotplug-test:
+ 	#
+ 
+ install-hotplug-prog:
+-	#
+-	#	remove HPLIP (proprietary) files and install our version
+-	#
+-	if [ -d $(UDEVDIR) ]; then \
+-	    rm -f $(UDEVDIR)/*hpmud*laserjet_1000*; \
+-	    rm -f $(UDEVDIR)/*hpmud*laserjet_1005*; \
+-	    rm -f $(UDEVDIR)/*hpmud*laserjet_1018*; \
+-	    rm -f $(UDEVDIR)/*hpmud*laserjet_1020*; \
+-	    rm -f $(UDEVDIR)/*hpmud*laserjet_p1005*; \
+-	    rm -f $(UDEVDIR)/*hpmud*laserjet_p1006*; \
+-	    rm -f $(UDEVDIR)/*hpmud*laserjet_p1007*; \
+-	    rm -f $(UDEVDIR)/*hpmud*laserjet_p1008*; \
+-	    rm -f $(UDEVDIR)/*hpmud*laserjet_p1505*; \
+-	    rm -f $(UDEVDIR)/*hpmud_support.rules; \
+-	    rm -f $(UDEVDIR)/*hpmud_plugin.rules; \
+-	    rm -f $(LIBUDEVDIR)/*hpmud_support.rules; \
+-	    rm -f $(LIBUDEVDIR)/*hpmud_plugin.rules; \
+-	    rm -f $(LIBUDEVDIR)/*-hplj10xx.rules; \
+-	    if [ -x /sbin/udevd ]; then \
+-		version=`/sbin/udevd --version 2>/dev/null`; \
+-	    elif [ -x /usr/lib/udev/udevd ]; then \
+-		version=`/usr/lib/udev/udevd --version 2>/dev/null`; \
+-	    elif [ -x /lib/systemd/systemd-udevd ]; then \
+-		version=`/lib/systemd/systemd-udevd --version 2>/dev/null`; \
+-	    elif [ -x /usr/lib/systemd/systemd-udevd ]; then \
+-		version=`/usr/lib/systemd/systemd-udevd --version 2>/dev/null`; \
+-	    fi; \
+-	    if [ "$$version" = "" ]; then version=0; fi; \
+-	    echo "*** udev version $$version"; \
+-	    if [ "$$version" -lt 148 ]; then \
+-		$(INSTALL) -c -m 644 $(RULES).old $(UDEVDIR)/11-$(RULES); \
+-	    else \
+-		$(INSTALL) -c -m 644 $(RULES) $(UDEVDIR)/11-$(RULES); \
+-	    fi \
+-	fi
+-	if [ -d $(DEVDDIR) ]; then \
+-	    $(INSTALL) -c -m 644 hplj10xx.conf $(DEVDDIR)/; \
+-	fi
+-	[ -d $(USBDIR) ] || $(INSTALL) -d -m 755 $(USBDIR)/
+-	$(INSTALL) -c -m 755 hplj1000 $(USBDIR)/
+-	ln -sf $(USBDIR)/hplj1000 $(USBDIR)/hplj1005
+-	ln -sf $(USBDIR)/hplj1000 $(USBDIR)/hplj1018
+-	ln -sf $(USBDIR)/hplj1000 $(USBDIR)/hplj1020
+-	ln -sf $(USBDIR)/hplj1000 $(USBDIR)/hpljP1005
+-	ln -sf $(USBDIR)/hplj1000 $(USBDIR)/hpljP1006
+-	ln -sf $(USBDIR)/hplj1000 $(USBDIR)/hpljP1007
+-	ln -sf $(USBDIR)/hplj1000 $(USBDIR)/hpljP1008
+-	ln -sf $(USBDIR)/hplj1000 $(USBDIR)/hpljP1505
+-	$(USBDIR)/hplj1000 install-usermap
+-	$(USBDIR)/hplj1005 install-usermap
+-	$(USBDIR)/hplj1018 install-usermap
+-	$(USBDIR)/hplj1020 install-usermap
+-	$(USBDIR)/hpljP1005 install-usermap
+-	$(USBDIR)/hpljP1006 install-usermap
+-	$(USBDIR)/hpljP1007 install-usermap
+-	$(USBDIR)/hpljP1008 install-usermap
+-	$(USBDIR)/hpljP1505 install-usermap
+-	# modprobe usblp
+-	$(USBDIR)/hplj1000 install-usblp
++	$(INSTALL) -d -m 755 $(DESTDIR)$(LIBUDEVDIR)
++	$(INSTALL) -c -m 644 $(RULES) $(DESTDIR)$(LIBUDEVDIR)/70-$(RULES)
++	$(INSTALL) -d -m 755 $(DESTDIR)/usr/bin
++	$(INSTALL) -c -m 755 foo2zjs-loadfw $(DESTDIR)/usr/bin
++	$(INSTALL) -d -m 755 $(DESTDIR)$(MODPROBEDIR)
++	$(INSTALL) -c -m 644 $(USBLP) $(DESTDIR)$(LIBMODPROBEDIR)
+ 
+ install-hotplug-osx:
+ 	cd osx-hotplug; $(MAKE) PREFIX=$(PREFIX) install-hotplug
+diff --git a/foo2zjs-loadfw.in b/foo2zjs-loadfw.in
+new file mode 100644
+index 0000000..c0f5ec0
+--- /dev/null
++++ b/foo2zjs-loadfw.in
+@@ -0,0 +1,116 @@
++#!/bin/bash
++
++# foo2zjs-loadfw:
++#
++# Firmware download script for HP1000/1005/1020 USB laser printers.
++# Works on udev- and CUPS-based systems.
++#
++# Used to download firmware automatically into the printer when it
++# is powered up or plugged into the USB port.
++#
++# The inspiration fo this script is from:
++#  Oscar Santacreu. Alicante-Spain (2002)
++#  Mike Morgan (2004)
++#  Modified by Stefan Schweizer (2005) to work as a udev-RUN-script
++#  Rewritten by Ivan Shapovalov <intelfx@intelfx.name> (2016) to work with CUPS
++
++#
++# Directory to find downloadable HP firmware files sihpMMMM.dl
++#
++FWDIR_ZJS=@FWDIR_ZJS@
++FWDIR_XQX=@FWDIR_XQX@
++
++#
++# The CUPS USB backend program
++#
++USB_BACKEND=/usr/lib/cups/backend/usb
++
++#
++# Figure out how to log our messages
++#
++log() {
++	echo "$0: $@" >&2
++}
++
++log "Firmware download script"
++
++#
++# Figure out the model number and firmware file from the arguments
++#
++MODEL="$1"
++SERIAL="$2"
++
++case "$MODEL" in
++P1005)
++	FWMODEL=$MODEL
++	MODELNAME="HP LaserJet $MODEL"
++	FWDIR=$FWDIR_XQX
++	;;
++P1006)
++	FWMODEL=$MODEL
++	MODELNAME="HP LaserJet $MODEL"
++	FWDIR=$FWDIR_XQX
++	;;
++P1007)
++	FWMODEL=P1005		# Alias
++	MODELNAME="HP LaserJet $MODEL"
++	FWDIR=$FWDIR_XQX
++	;;
++P1008)
++	FWMODEL=P1006		# Alias
++	MODELNAME="HP LaserJet $MODEL"
++	FWDIR=$FWDIR_XQX
++	;;
++P1505)
++	FWMODEL=$MODEL
++	MODELNAME="HP LaserJet $MODEL"
++	FWDIR=$FWDIR_XQX
++	;;
++P1505n)
++	FWMODEL=$MODEL
++	MODELNAME="HP LaserJet $MODEL"
++	FWDIR=$FWDIR_XQX
++	;;
++1000)
++	FWMODEL=$MODEL
++	MODELNAME="hp LaserJet $MODEL"
++	FWDIR=$FWDIR_ZJS
++	;;
++1005)
++	FWMODEL=$MODEL
++	MODELNAME="hp LaserJet $MODEL"
++	FWDIR=$FWDIR_ZJS
++	;;
++1018)
++	FWMODEL=$MODEL
++	MODELNAME="HP LaserJet $MODEL"
++	FWDIR=$FWDIR_ZJS
++	;;
++1020)
++	FWMODEL=$MODEL
++	MODELNAME="HP LaserJet $MODEL"
++	FWDIR=$FWDIR_ZJS
++	;;
++*)
++	log "Unsupported model: $MODEL (serial: $SERIAL)"
++	exit 1
++	;;
++esac
++
++FW="$FWDIR/sihp$FWMODEL.dl"
++
++if [[ ! -f "$FW" ]]; then
++	log "Missing firmware file: $FW"
++	exit 1
++fi
++
++$USB_BACKEND 2>/dev/null | grep "\<usb://" | grep "serial=$SERIAL" | while read direct uri model1 model2 params; do
++	log "Got printer: URI='$uri'"
++	if DEVICE_URI="$uri" $USB_BACKEND 1 1 1 1 '' "$FW"; then
++		log "Firmware download OK"
++		exit 0
++	else
++		log "Firmware download failed"
++		exit 1
++	fi
++done
+diff --git a/hplj10xx.rules b/hplj10xx.rules
+index ee0295d..e5785d3 100644
+--- a/hplj10xx.rules
++++ b/hplj10xx.rules
+@@ -1,39 +1,20 @@
+-#
+-#       hplj10xx.rules.old: udev equal or after 1.30
+-#
+-#Own udev rule for HP Laserjet 1000
+-KERNEL=="lp*", SUBSYSTEMS=="usb", ATTRS{idVendor}=="03f0", \
+-	ATTRS{product}=="hp LaserJet 1000", NAME="usb/%k", \
+-	SYMLINK+="hplj1000-%n", MODE="0666", RUN+="/etc/hotplug/usb/hplj1000" 
+-#Own udev rule for HP Laserjet 1005
+-KERNEL=="lp*", SUBSYSTEMS=="usb", ATTRS{idVendor}=="03f0", \
+-	ATTRS{product}=="hp LaserJet 1005 series", NAME="usb/%k", \
+-	SYMLINK+="hplj1005-%n", MODE="0666", RUN+="/etc/hotplug/usb/hplj1005" 
+-#Own udev rule for HP Laserjet 1018
+-KERNEL=="lp*", SUBSYSTEMS=="usb", ATTRS{idVendor}=="03f0", \
+-	ATTRS{product}=="HP LaserJet 1018", NAME="usb/%k", \
+-	SYMLINK+="hplj1018-%n", MODE="0666", RUN+="/etc/hotplug/usb/hplj1018" 
+-#Own udev rule for HP Laserjet 1020
+-KERNEL=="lp*", SUBSYSTEMS=="usb", ATTRS{idVendor}=="03f0", \
+-	ATTRS{product}=="HP LaserJet 1020", NAME="usb/%k", \
+-	SYMLINK+="hplj1020-%n", MODE="0666", RUN+="/etc/hotplug/usb/hplj1020" 
+-#Own udev rule for HP Laserjet P1005
+-KERNEL=="lp*", SUBSYSTEMS=="usb", ATTRS{idVendor}=="03f0", \
+-	ATTRS{product}=="HP LaserJet P1005", NAME="usb/%k", \
+-	SYMLINK+="hpljP1005-%n", MODE="0666", RUN+="/etc/hotplug/usb/hpljP1005" 
+-#Own udev rule for HP Laserjet P1006
+-KERNEL=="lp*", SUBSYSTEMS=="usb", ATTRS{idVendor}=="03f0", \
+-	ATTRS{product}=="HP LaserJet P1006", NAME="usb/%k", \
+-	SYMLINK+="hpljP1006-%n", MODE="0666", RUN+="/etc/hotplug/usb/hpljP1006" 
+-#Own udev rule for HP Laserjet P1007
+-KERNEL=="lp*", SUBSYSTEMS=="usb", ATTRS{idVendor}=="03f0", \
+-	ATTRS{product}=="HP LaserJet P1007", NAME="usb/%k", \
+-	SYMLINK+="hpljP1007-%n", MODE="0666", RUN+="/etc/hotplug/usb/hpljP1007" 
+-#Own udev rule for HP Laserjet P1008
+-KERNEL=="lp*", SUBSYSTEMS=="usb", ATTRS{idVendor}=="03f0", \
+-	ATTRS{product}=="HP LaserJet P1008", NAME="usb/%k", \
+-	SYMLINK+="hpljP1008-%n", MODE="0666", RUN+="/etc/hotplug/usb/hpljP1008" 
+-#Own udev rule for HP Laserjet P1505
+-KERNEL=="lp*", SUBSYSTEMS=="usb", ATTRS{idVendor}=="03f0", \
+-	ATTRS{product}=="HP LaserJet P1505", NAME="usb/%k", \
+-	SYMLINK+="hpljP1505-%n", MODE="0666", RUN+="/etc/hotplug/usb/hpljP1505" 
++ACTION=="add", SUBSYSTEM=="usb", ATTRS{idVendor}=="03f0",     \
++	ATTRS{idProduct}=="0517", RUN+="/usr/bin/foo2zjs-loadfw 1000 $env{ID_SERIAL_SHORT}"
++ACTION=="add", SUBSYSTEM=="usb", ATTRS{idVendor}=="03f0",     \
++	ATTRS{idProduct}=="1317", RUN+="/usr/bin/foo2zjs-loadfw 1005 $env{ID_SERIAL_SHORT}"
++ACTION=="add", SUBSYSTEM=="usb", ATTRS{idVendor}=="03f0",     \
++	ATTRS{idProduct}=="4117", RUN+="/usr/bin/foo2zjs-loadfw 1018 $env{ID_SERIAL_SHORT}"
++ACTION=="add", SUBSYSTEM=="usb", ATTRS{idVendor}=="03f0",     \
++	ATTRS{idProduct}=="2b17", RUN+="/usr/bin/foo2zjs-loadfw 1020 $env{ID_SERIAL_SHORT}"
++ACTION=="add", SUBSYSTEM=="usb", ATTRS{idVendor}=="03f0",     \
++	ATTRS{idProduct}=="3d17", RUN+="/usr/bin/foo2zjs-loadfw P1005 $env{ID_SERIAL_SHORT}"
++ACTION=="add", SUBSYSTEM=="usb", ATTRS{idVendor}=="03f0",     \
++	ATTRS{idProduct}=="3e17", RUN+="/usr/bin/foo2zjs-loadfw P1006 $env{ID_SERIAL_SHORT}"
++ACTION=="add", SUBSYSTEM=="usb", ATTRS{idVendor}=="03f0",     \
++	ATTRS{idProduct}=="4817", RUN+="/usr/bin/foo2zjs-loadfw P1007 $env{ID_SERIAL_SHORT}"
++ACTION=="add", SUBSYSTEM=="usb", ATTRS{idVendor}=="03f0",     \
++	ATTRS{idProduct}=="4917", RUN+="/usr/bin/foo2zjs-loadfw P1008 $env{ID_SERIAL_SHORT}"
++ACTION=="add", SUBSYSTEM=="usb", ATTRS{idVendor}=="03f0",     \
++	ATTRS{idProduct}=="3f17", RUN+="/usr/bin/foo2zjs-loadfw P1505 $env{ID_SERIAL_SHORT}"
++ACTION=="add", SUBSYSTEM=="usb", ATTRS{idVendor}=="03f0",     \
++	ATTRS{idProduct}=="4017", RUN+="/usr/bin/foo2zjs-loadfw P1505n $env{ID_SERIAL_SHORT}"
+diff --git a/usblp.conf b/usblp.conf
+new file mode 100644
+index 0000000..5a604bf
+--- /dev/null
++++ b/usblp.conf
+@@ -0,0 +1 @@
++blacklist usblp
+-- 
+2.10.0
+
