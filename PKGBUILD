@@ -11,7 +11,7 @@ md5sums=('SKIP')
 build() {
     cd $pkgname
     cmake -DCMAKE_BUILD_TYPE=Release
-    make jsonstroll doc
+    make all doc test
 }
 
 package() {
