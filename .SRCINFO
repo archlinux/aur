@@ -1,0 +1,21 @@
+pkgbase = brother-dcpt500w
+	pkgdesc = Driver for the Brother DCP-T500W wifi multifuncional printer
+	pkgver = 3.0.2
+	pkgrel = 1
+	url = http://solutions.brother.com/linux/en_us/index.html
+	install = brother-dcpt500w.install
+	arch = i686
+	arch = x86_64
+	license = custom:brother
+	makedepends = rpmextract
+	depends = a2ps
+	depends = cups
+	source = fix_lp.patch
+	source = http://download.brother.com/welcome/dlf101954/dcpt500wlpr-3.0.2-0.i386.rpm
+	source = http://download.brother.com/welcome/dlf101955/dcpt500wcupswrapper-3.0.2-0.i386.rpm
+	md5sums = 6d76dd9b018d417e75a8eabb51dc3080
+	md5sums = d7cfc19a591c00378219059c6cc901df
+	md5sums = 0741ac139077747bd4966c86d62d1f26
+
+pkgname = brother-dcpt500w
+
