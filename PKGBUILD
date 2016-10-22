@@ -1,15 +1,15 @@
 # Maintainer: mutantmonkey <aur@mutantmonkey.in>
 pkgname=python-img2pdf
-pkgver=0.2
-pkgrel=2
+pkgver=0.2.1
+pkgrel=1
 pkgdesc="Losslessly convert raster images to PDF"
 url="https://gitlab.mister-muffin.de/josch/img2pdf"
 arch=('any')
 license=('LGPL')
 depends=('python' 'python-pillow')
 makedepends=('python-setuptools')
-source=("https://pypi.python.org/packages/source/i/img2pdf/img2pdf-${pkgver}.tar.gz")
-sha256sums=('ee66783fa97440f587aef662119b1014b704feff8c783e9e29412998c42ef70c')
+source=("https://pypi.python.org/packages/8b/fa/a69becbc9b2f1c5eff52ae1dc4d7394de239729be252e8ff6a50a21c0a4d/img2pdf-${pkgver}.tar.gz")
+sha256sums=('11bf6ae5cce133249cb8fe0638fd1a7dbf22c5291a2a136ea715fb2fe4cf10f0')
 
 package() {
   cd "${srcdir}/img2pdf-${pkgver}"
