@@ -1,16 +1,16 @@
 # Maintainer: razer <razer[at]neuf[dot]fr>
-pkgname=python-adafruit_nokia_lcd
-pkgver=0.1.0
-pkgrel=1
-pkgdesc='Python library for the using the Nokia 5110/3310 monochrome graphic LCD with a Raspberry Pi or Beaglebone Black'
-url='https://github.com/adafruit/Adafruit_Nokia_LCD'
-arch=('armv6h' 'armv7h')
-license=('MIT')
-depends=('python')
-source=("git://github.com/adafruit/Adafruit_Nokia_LCD")
+pkgname=python-django-omnibus
+pkgver=0.2.0
+pkgrel=2
+pkgdesc='Django/JavaScript WebSocket Connections'
+url='https://github.com/moccu/django-omnibus'
+arch=('any')
+license=('BSD')
+depends=('python' 'python-django')
+source=("git://github.com/moccu/django-omnibus")
 md5sums=('SKIP')
 
 package() {
-  cd Adafruit_Nokia_LCD
+  cd django-omnibus
   python setup.py install --prefix=/usr --root="$pkgdir" --optimize=1
 }
