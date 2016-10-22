@@ -1,7 +1,7 @@
 pkgbase = openmpi-git
 	pkgdesc = High Performance Message Passing Library (MPI)
 	pkgver = 3.0.0.a1.r25968.r4a65b19
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.open-mpi.org/
 	arch = i686
 	arch = x86_64

@@ -1,7 +1,7 @@
 # Maintainer: Rober Morales-Chaparro <rober.morales@gmail.com>
 pkgname=openmpi-git
 pkgver=3.0.0.a1.r25968.r4a65b19
-pkgrel=1
+pkgrel=2
 pkgdesc="High Performance Message Passing Library (MPI)"
 arch=('i686' 'x86_64')
 url="https://www.open-mpi.org/"
@@ -33,7 +33,7 @@ prepare() {
 build() {
 	cd "$srcdir/${pkgname%-git}"
 	./autogen.pl
-	./configure --prefix=/usr/local/
+	./configure --prefix=/usr/
 	make
 }
 
