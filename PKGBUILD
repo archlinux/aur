@@ -1,8 +1,9 @@
 # Maintainer: Joel Porquet <joel@porquet.org>
 
-pkgname=php-remote-storage-git
+name=php-remote-storage
+pkgname=${name}-git
 pkgver=r329.df406f0
-pkgrel=1
+pkgrel=2
 pkgdesc="remoteStorage server written in PHP"
 arch=("any")
 license=("agpl3")
@@ -17,9 +18,9 @@ pkgver() {
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
-instdir="usr/share/webapps/${pkgname}"
-etcdir="etc/webapps/${pkgname}"
-vardir="var/lib/${pkgname}"
+instdir="usr/share/webapps/${name}"
+etcdir="etc/webapps/${name}"
+vardir="var/lib/${name}"
 
 build() {
     msg "Nothing to compile for ${pkgname}"
