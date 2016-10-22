@@ -9,7 +9,7 @@ arch=('i686' 'x86_64')
 url='http://meteorite.sourceforge.net/'
 license=('GPL')
 depends=('wxgtk')
-source=("http://downloads.sourceforge.net/$pkgname/Meteorite-v$pkgver-src.tar.bz2")
+source=("https://downloads.sourceforge.net/$pkgname/Meteorite-v$pkgver-src.tar.bz2")
 md5sums=('9f608eee5a8f355beb8b59fb7e0a8718')
 
 build() {
