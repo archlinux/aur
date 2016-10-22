@@ -1,7 +1,7 @@
 pkgname=sph-sc-git
-pkgver=33
+pkgver=51
 pkgrel=1
-pkgdesc='a scheme syntax to c compiler'
+pkgdesc='scheme-like s-expression language that translates to c'
 arch=(any)
 license=(gpl3)
 makedepends=(git)
