@@ -1,0 +1,15 @@
+pkgbase = batman-adv-legacy-dkms
+	pkgdesc = batman kernel module (legacy version based on compat 14, dkms package)
+	pkgver = 20160614
+	pkgrel = 1
+	url = https://github.com/freifunk-gluon/batman-adv-legacy/
+	arch = any
+	license = GPL
+	depends = dkms
+	source = batman-adv-legacy::git+https://github.com/freifunk-gluon/batman-adv-legacy.git#commit=a570bc616990cce80c41394a2c02e3a15dd38de3
+	source = dkms.conf
+	sha256sums = SKIP
+	sha256sums = a0344811e0dc4954c688e8a1df84542c59709cd9349b5cb0dad38c35e5d773a6
+
+pkgname = batman-adv-legacy-dkms
+
