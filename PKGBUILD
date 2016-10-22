@@ -22,9 +22,16 @@ pkgver() {
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
+build() {
+  cd "${srcdir}/${_pypiname}"
+  mv usfm2osis/scripts/*py usfm2osis/
+  sed -i -e 's/usfm2osis.scripts/usfm2osis/g' setup.py
+  python setup.py build
+}
+
 package() {
   cd "${srcdir}/${_pypiname}"
-  python setup.py install --root="$pkgdir/" --optimize=1
+  python setup.py install --root="$pkgdir" --optimize=1 --skip-build
 }
 
 # vim:set ts=2 sw=2 et: 
