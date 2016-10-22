@@ -4,8 +4,8 @@
 
 #pkgbase=linux                      # Build stock -ARCH kernel
 pkgbase=linux-ct                    # Build kernel with a different name
-_srcname=linux-4.7
-pkgver=4.7.6
+_srcname=linux-4.8
+pkgver=4.8.3
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
@@ -24,14 +24,14 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         'change-default-console-loglevel.patch'
         )
 
-sha256sums=('5190c3d1209aeda04168145bf50569dc0984f80467159b1dc50ad731e3285f10'
+sha256sums=('3e9150065f193d3d94bcf46a1fe9f033c7ef7122ab71d75a7fb5a2f0c9a7e11a'
             'SKIP'
-            '46be737415406fd06c1067d1280a4a435f8b0a76d70f5d31858964b41367cc8e'
+            '1482dd7bda0a3a82abcde20f24576a57287c462e8e732fe688ed37daf42468cb'
             'SKIP'
-            '8ac2fb81f4c932c6b1877ca2bda9a98c3ffbb42359dce7dea588c97df4db8c8a'
-            'e3df2e21fbd035275471324e13b3a499eecc1c217f22872dda6de4d07c31b404'
+            '2ac8818414beb7dbacbd3ad450c516e6ada804827132a7132f63b8189e5f5151'
+            'ab7387c708e643e9f4213008644837ee2603c0bfecb8055c313fb9f819d2d4b7'
             'f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c'
-            'a27ac517dc6205e98c1e9218c76a2d6a3f7d7b001bab79edcdec1c1ce2a6e11b'
+            'b1f4d645dc21b5d9f3972520420bfec515e82a696d65f59a8ed83d08f6e081b2'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99')
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
