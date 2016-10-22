@@ -17,4 +17,3 @@ pkgbase = android-sdk-build-tools
 	depends_x86_64 = lib32-zlib
 
 pkgname = android-sdk-build-tools
-
