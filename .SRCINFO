@@ -1,0 +1,20 @@
+pkgbase = openmpi-git
+	pkgdesc = High Performance Message Passing Library (MPI)
+	pkgver = 3.0.0.a1.r25968.r4a65b19
+	pkgrel = 1
+	url = https://www.open-mpi.org/
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = git
+	depends = libsystemd
+	depends = libnl
+	depends = numactl
+	depends = libpciaccess
+	provides = openmpi
+	conflicts = openmpi
+	source = openmpi::git+https://github.com/open-mpi/ompi.git
+	md5sums = SKIP
+
+pkgname = openmpi-git
+
