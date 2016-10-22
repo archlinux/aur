@@ -4,7 +4,7 @@
 
 pkgname=virtualbox-headless
 pkgver=5.1.8
-pkgrel=1
+pkgrel=2
 pkgdesc='Powerful x86 virtualization for enterprise as well as home use. Headless build (no GUI, no Java).'
 arch=('i686' 'x86_64')
 url='http://virtualbox.org'
@@ -83,7 +83,7 @@ build() {
         --enable-webservice \
         --enable-vde \
         --enable-vnc \
-	--disable-java \
+        --disable-java \
         --disable-kmods \
         --with-makeself=/usr/bin/echo
     # fake makeself binary to compile without nofatal
@@ -99,9 +99,11 @@ build() {
 }
 
 package() {
-
     source "VirtualBox-$pkgver/env.sh"
     cd "VirtualBox-$pkgver/out/linux.$BUILD_PLATFORM_ARCH/release/bin"
+
+    # patch VBox.sh for headless only
+    sed -i '44,45s/VirtualBox/VBoxHeadless/' VBox.sh
 
     # binaries
     install -dm755 "$pkgdir/usr/bin"
