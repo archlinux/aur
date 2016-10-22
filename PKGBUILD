@@ -26,7 +26,8 @@ makedepends=('git')
 depends=('bash' 'dosfstools' 'efibootmgr')
 optdepends=('imagemagick: For refind-mkfont script'
             'python: For refind-mkdefault script'
-            'sbsigntools: For EFI binary signing (Secure Boot support)')
+            'sbsigntools: For EFI binary signing (Secure Boot support)'
+            'preloader-signed: For pre-signed shim loader (Secure Boot support)')
 
 options=('!strip' '!buildflags' '!makeflags')
 
