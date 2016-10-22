@@ -27,6 +27,7 @@ build() {
   mv usfm2osis/scripts/*py usfm2osis/
   sed -i -e 's/usfm2osis.scripts/usfm2osis/g' setup.py
   sed -i -e '/__main__/s/^.*$/def main(args=None):/g' usfm2osis/usfm2osis.py
+  sed -i -e '/^scriptVersion/a DEBUG = False' usfm2osis/usfm2osis.py
   python setup.py build
 }
 
