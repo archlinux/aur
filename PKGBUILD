@@ -1,4 +1,5 @@
-# Maintainer: TDY <tdy@gmx.com>
+# Maintainer: Frederik “Freso” S. Olesen <freso.dk@gmail.com>
+# Contributor: TDY <tdy@gmx.com>
 
 pkgname=meteorite
 pkgver=0.11
