@@ -1,0 +1,14 @@
+pkgbase = simutrans-pak192.comic
+	pkgdesc = High resolution graphics set for Simutrans
+	pkgver = 0.4.1
+	pkgrel = 1
+	url = http://192comic.simutrans.com/
+	arch = any
+	license = CC-BY-SA
+	provides = simutrans-pak192.comic
+	options = !strip
+	source = https://dl.dropboxusercontent.com/u/85896215/pak192.comic.0.4.1.zip
+	md5sums = SKIP
+
+pkgname = simutrans-pak192.comic
+
