@@ -1,29 +1,26 @@
-# Maintainer: Daniel Nagy <danielnagy at gmx de>
-# Contributor: TJ Holowaychuk <tj@vision-media.ca>
-# Contributor: travisjeffery <tj@travisjeffery.com>
+# Maintainer: Mario Finelli <mario at finel dot li>
+# Contributor: Daniel Nagy <danielnagy at gmx de>
+# Contributor: TJ Holowaychuk <tj at vision-media dot ca>
+# Contributor: Travis Jeffery <tj at travisjeffery dot com>
 
 _npmname=mocha
-_npmver=2.3.3
-pkgname=nodejs-mocha # All lowercase
-pkgver=$_npmver
+pkgname=nodejs-$_npmname
+pkgver=3.1.2
 pkgrel=1
 pkgdesc="simple, flexible, fun test framework"
 arch=(any)
 url="http://github.com/visionmedia/mocha"
-license=()
+license=('MIT')
 depends=('nodejs' 'npm')
-optdepends=()
 options=( '!strip' )
-source=(http://registry.npmjs.org/$_npmname/-/$_npmname-$_npmver.tgz)
-noextract=($_npmname-$_npmver.tgz)
-sha1sums=('96488c49bfd71d86a518cb941e291a83f48d8856')
+source=(https://registry.npmjs.org/$_npmname/-/$_npmname-$pkgver.tgz)
+noextract=($_npmname-$pkgver.tgz)
+sha256sums=('3db7c91f75e7d59809eba87ce930d72c0368abb302ae0ad9894e240da903ab53')
 
 package() {
   cd "$srcdir"
   local _npmdir="$pkgdir/usr/lib/node_modules/"
   mkdir -p "$_npmdir"
   cd "$_npmdir"
-  npm install -g --user root --prefix "$pkgdir/usr" $_npmname@$_npmver
+  npm install -g --user root --prefix "$pkgdir/usr" $_npmname@$pkgver
 }
-
-# vim:set ts=2 sw=2 et:
