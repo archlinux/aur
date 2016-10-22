@@ -1,7 +1,7 @@
 # Maintainer: Brendan Abolivier <brendan@archlinux.info>
 
 pkgname=nodejs-lts-bin
-pkgver=4.5.0
+pkgver=4.6.1
 pkgrel=1
 pkgdesc='Evented I/O for V8 javascript'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
@@ -17,11 +17,11 @@ source_armv6h=("https://nodejs.org/dist/v$pkgver/node-v$pkgver-linux-armv6l.tar.
 source_armv7h=("https://nodejs.org/dist/v$pkgver/node-v$pkgver-linux-armv7l.tar.xz")
 source_aarch64=("https://nodejs.org/dist/v$pkgver/node-v$pkgver-linux-arm64.tar.xz")
 
-sha256sums_i686=("0f5e51d913867eaf71332cd20fd9a98aeb3576b8a22a52e8e1cd97c89cf51feb")
-sha256sums_x86_64=("c6ee1f4303353e3605ff70de180431417eb594fe08daf612e692216236750c55")
-sha256sums_armv6h=("bc3e33872b009e18f084efb9a595cc12cf8314df125ce80c2e8bde1c2213b5f1")
-sha256sums_armv7h=("c01482d423b646542ba037cb5ce646cb26518aa2dc9f7728520e7ac1247932b3")
-sha256sums_aarch64=("9034e67629e1912d6dc0632627528565d9e412c6eba410d171f9fd80f700f84f")
+sha256sums_i686=("ddbfd6729538da959c4444181b1860dd6bfbee927c5f0c3b9007881006f19f58")
+sha256sums_x86_64=("cafa6e4bc66e3b8047f927c6cd3549398b9c11a94c73c9d0b9fc330e85e9697b")
+sha256sums_armv6h=("8883c105c0e192ba41d882ac459a5f025a205f7d5799369f2f54c71ce84fb1f2")
+sha256sums_armv7h=("3cd0d522ddcedd22110b0cd698c5babc3b11b3be378e79570010f6708ee9714f")
+sha256sums_aarch64=("a8952908de2933f6702ac85e2f12ea0443ac7459176624546565ea74d2492560")
 
 build() {
     cd node-*
