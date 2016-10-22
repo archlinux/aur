@@ -51,9 +51,9 @@ _use_current=
 pkgbase=linux-rt-bfq
 pkgname=('linux-rt-bfq' 'linux-rt-bfq-headers' 'linux-rt-bfq-docs')
 _kernelname=-rt-bfq
-_srcname=linux-4.6
-_pkgver=4.6.7
-_rtpatchver=rt14
+_srcname=linux-4.8
+_pkgver=4.8.2
+_rtpatchver=rt2
 pkgver=${_pkgver}_${_rtpatchver}
 pkgrel=1
 arch=('i686' 'x86_64')
@@ -62,26 +62,27 @@ license=('GPL2')
 options=('!strip')
 makedepends=('kmod' 'inetutils' 'bc')
 _bfqrel=v7r11
-_bfqver=v8r3
-_bfqpath="http://algo.ing.unimo.it/people/paolo/disk_sched/patches/4.6.0-${_bfqver}"
-#_bfqpath="https://pf.natalenko.name/mirrors/bfq/4.6.0-${_bfqver}/"
+_bfqver=v8r4
+_bfqpath="http://algo.ing.unimo.it/people/paolo/disk_sched/patches/4.8.0-${_bfqver}"
+#_bfqpath="https://pf.natalenko.name/mirrors/bfq/4.8.0-${_bfqver}/"
 _gcc_patch="enable_additional_cpu_optimizations_for_gcc_v4.9+_kernel_v3.15+.patch"
 
 source=("http://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         "https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.sign"
         "http://www.kernel.org/pub/linux/kernel/v4.x/patch-${_pkgver}.xz"
         "https://www.kernel.org/pub/linux/kernel/v4.x/patch-${_pkgver}.sign"
-        "http://www.kernel.org/pub/linux/kernel/projects/rt/4.6/patch-${_pkgver}-${_rtpatchver}.patch.xz"
-        "http://www.kernel.org/pub/linux/kernel/projects/rt/4.6/patch-${_pkgver}-${_rtpatchver}.patch.sign"
-        "${_bfqpath}/0001-block-cgroups-kconfig-build-bits-for-BFQ-${_bfqrel}-4.6.0.patch"
-        "${_bfqpath}/0002-block-introduce-the-BFQ-${_bfqrel}-I-O-sched-for-4.6.0.patch"
-        "${_bfqpath}/0003-block-bfq-add-Early-Queue-Merge-EQM-to-BFQ-${_bfqrel}-for.patch"
-        "${_bfqpath}/0004-block-bfq-turn-BFQ-v7r11-for-4.6.0-into-BFQ-${_bfqver}-for.patch"
+        "http://www.kernel.org/pub/linux/kernel/projects/rt/4.8/patch-${_pkgver}-${_rtpatchver}.patch.xz"
+        "http://www.kernel.org/pub/linux/kernel/projects/rt/4.8/patch-${_pkgver}-${_rtpatchver}.patch.sign"
+        "${_bfqpath}/0001-block-cgroups-kconfig-build-bits-for-BFQ-${_bfqrel}-4.8.0.patch"
+        "${_bfqpath}/0002-block-introduce-the-BFQ-${_bfqrel}-I-O-sched-to-be-ported.patch"
+        "${_bfqpath}/0003-block-bfq-add-Early-Queue-Merge-EQM-to-BFQ-${_bfqrel}-to-.patch"
+        "${_bfqpath}/0004-Turn-BFQ-${_bfqrel}-into-BFQ-${_bfqver}-for-4.8.0.patch"
         "http://repo-ck.com/source/gcc_patch/${_gcc_patch}.gz"
         'linux-rt-bfq.preset'
         'change-default-console-loglevel.patch'
         'config' 'config.x86_64'
-        'fix-race-in-PRT-wait-for-completion-simple-wait-code_Nvidia-RT-160319.patch')
+        'fix-race-in-PRT-wait-for-completion-simple-wait-code_Nvidia-RT-160319.patch'
+        'fix-CVE-2016-5195.patch')
         
 prepare() {
     cd ${_srcname}
@@ -99,6 +100,10 @@ prepare() {
         msg "Fix-race-in-PRT-wait-for-completion-simple-wait-code_Nvidia-RT.patch"
         patch -p1 -i "${srcdir}/fix-race-in-PRT-wait-for-completion-simple-wait-code_Nvidia-RT-160319.patch"          
     
+    ### Fix CVE-2016-5195.patch
+        msg "CVE-2016-5195.patch"
+        patch -p1 -i "${srcdir}/fix-CVE-2016-5195.patch"
+    
     ### set DEFAULT_CONSOLE_LOGLEVEL to 4 (same value as the 'quiet' kernel param)
     # remove this when a Kconfig knob is made available by upstream
     # (relevant patch sent upstream: https://lkml.org/lkml/2011/7/26/227)
@@ -107,7 +112,7 @@ prepare() {
 
     ### Patch source with BFQ
         msg "Patching source with BFQ patches"
-        for p in "${srcdir}"/000{1,2,3,4}-block*.patch; do
+        for p in "${srcdir}"/000{1,2,3,4}-*BFQ*.patch; do
         msg " $p"
         patch -Np1 -i "$p"
         done
@@ -457,22 +462,23 @@ package_linux-rt-bfq-docs() {
     rm -f "${pkgdir}/usr/lib/modules/${_kernver}/build/Documentation/DocBook/Makefile"
 }
 
-sha512sums=('df5ee40b0ebd89914a900f63c32a481cb4f405d8f792b2d03ea167ce9c5bdf75154c7bd8ecd7ebac77a8dbf2b077c972cbfe6b95163e27c38c1fefc6ddbdfa0b'
+sha512sums=('a48a065f21e1c7c4de4cf8ca47b8b8d9a70f86b64e7cfa6e01be490f78895745b9c8790734b1d22182cf1f930fb87eaaa84e62ec8cc1f64ac4be9b949e7c0358'
             'SKIP'
-            '8b63eb1e7c830bdf59aefbb02c591299dd8088845532612ed6b91b52f9d645e78d8c47d8d596245b877a4b7fa247ff7b703d433830cd36331c546628761a8ace'
+            '378ee4d328169b6e2475177bef31596d9f586b08ba87eb170c1943e3a1d43749d7b101b6f39886d50bbf1abf0ca8720a567f30a6ac9f5c66afe1f657d4899d25'
             'SKIP'
-            'b06d8d4b39064a11b0a68c97448120d789ba48ab46ea20fcc6294e360426e4d2c4619811b8cc46701bd5b27a6515e79f9cc9fe3252e241e6b212eff682c97cea'
+            '8ca046f7268048ddacbe0d8a00d09c1897ec104e6f717a67615ac936cfb6f0fa9a03f81986ae83cb5f8db3d275327aff82c64bf18fc00ca00adc2a19ec6ffddc'
             'SKIP'
-            '5afa1c0e60f00d8cee344270243935a769cec43e7dc14145bc9927297062cc29194b4be424cbfde4afa9f3ed6734ccb3b096278b38fda3e01baafc81529ba71d'
-            '2951f266519b1ea9d3f5075a7d4a2fd49aacbb0b6a00ac22e90e4542d9b9838d86effed61a11d14e50122f9eacb2c6b5c8349669a3461fe9b20b008fde761d24'
-            '88bd912a41e8a880f693820362fed0e514441f2963a4c78d59c1a9f6c8522caf3d28afb8ed658e7de2d3d3e7d92ae112bda317a3800710005a643127cb5711c5'
-            'f50e7ed73ff5b21d27f6b8561916130a633d20bbb4b1760823fd2a9b3db0c679d6bbfbb470fe1f4f9731a097e250923e0e2c08817593e30ca4326743fe610cea'
+            '95a7b9dc5a6c378b19e199285b5c1c397ca0ca0cf03c42d185b57da68329e59d59294d1879998f4020a0dee10d36c550acf30f28970c82adb2e7604c86424178'
+            'dc0649dfe2a5ce8e8879a62df29a4a1959eb1a84e5d896a9cb119d6a85a9bad1b17135371799e0be96532e17c66043d298e4a14b18fad3078a1f425108f888c9'
+            '135afcffee2439e2260a71202658dce9ec5f555de3291b2d49a5cffdd953c6d7851b8a90e961576895555142a618e52220a7e4a46521ca4ba19d37df71887581'
+            '87ae76889ab84ced46c237374c124786551982f8ff7325102af9153aed1ab7be72bec4db1f7516426c5ee34c5ce17221679eb2f129c5cbdeec05c0d3cb7f785d'
             '62fdd5c0a060a051b64093d71fbb028781061ccb7a28c5b06739a0b24dac0945740d9b73ff170784f60005a589774bcc14f56523ec51557eb3a677f726ec34cf'
             '14d530c8d727e5253474b3d46a7e30933bcc0aa9a6cf597ab6557c12779e2ce627d49258a3623f48421b48cd1a29012f7e3ff984387488c101d94d98fe0aae9d'
             'd9d28e02e964704ea96645a5107f8b65cae5f4fb4f537e224e5e3d087fd296cb770c29ac76e0ce95d173bc420ea87fb8f187d616672a60a0cae618b0ef15b8c8'
-            'e24ffa4aaf145239bc0035e1853598cfd6b231c1a10373b840220a1799402f30cb39ecf71d56b4a76ddc9d953710dbe297e85f2686bba52da8d5d63816c10e0e'
-            '2b461dc737582ddd77f7c9b15ff567d0d26d4d7f30e9511bfff5f884a57861b4d75e56ddb6cb37175fb7ef5f2a9cf333fb91bc696d0feb1ba011653194080457'
-            '86f717f596c613db3bc40624fd956ed379b8a2a20d1d99e076ae9061251fe9afba39cf536623eccd970258e124b8c2c05643e3d539f37bd910e02dc5dd498749')
+            '3fba4c1c172aa823c58901656fcbd30241f7e60486619d1095447e4c902b94e4a9f568d68a124001951cff6e873ce55f338975808b30e3ba2ee2380561660133'
+            'a6200ad0c8bc44b97233c0cbd4c419c37727f06e735f2c6b60a28e94bfdc6d31d7f26d24f9f898c62fceefe08dfd3bdbd5d71acf2b5fcedbda8ea3881d284daa'
+            '86f717f596c613db3bc40624fd956ed379b8a2a20d1d99e076ae9061251fe9afba39cf536623eccd970258e124b8c2c05643e3d539f37bd910e02dc5dd498749'
+            '9f530a6bc3e6b1425d180a03c04e27f7fdbaa537180e08636ce345d128fe2051ed31764b5d5bdb8c00deaeaab4098826055e4ce98dff639ee6fbaaadd263c0f1')
             
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
