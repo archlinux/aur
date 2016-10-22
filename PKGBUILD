@@ -30,6 +30,6 @@ build() {
 
 package() {
   cd "$srcdir/$pkgname-$pkgver-src"
-  scons VERSION=$pkgver PREFIX=/usr PREFIX_CONF=/etc SKIPUTILS='NSIS Menu' STRIP_CP=false  ZLIB_W32=/usr/i686-w64-mingw32/ PREFIX_DEST="$pkgdir" install
+  scons VERSION=$pkgver PREFIX=/usr PREFIX_CONF=/etc SKIPUTILS='NSIS Menu' STRIP_CP=false ZLIB_W32=/usr/i686-w64-mingw32/ PREFIX_DEST="$pkgdir" install
   install -Dm644 ${srcdir}/$pkgname-$pkgver-src/Docs/src/license.but "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
