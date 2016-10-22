@@ -8,8 +8,8 @@ pkgdesc='A professional open source system to create Windows installers'
 arch=('i686' 'x86_64')
 url='http://nsis.sourceforge.net'
 license=('custom:zlib')
-depends=('gcc-libs' 'mingw-w64-zlib')
-makedepends=('scons' 'mingw-w64-gcc')
+depends=('gcc-libs')
+makedepends=('scons' 'mingw-w64-gcc' 'mingw-w64-zlib')
 options=(!strip)
 source=(http://downloads.sourceforge.net/project/nsis/NSIS%203/$pkgver/$pkgname-$pkgver-src.tar.bz2
         nsis-add-mingw-w64-support.patch)
