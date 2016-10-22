@@ -5,20 +5,20 @@ pkgbase=gimp-elsamuko-plugins
 # AUR workaround
 pkgname=gimp-elsamuko-plugins
 true && pkgname=(
-  gimp-elsamuko-plugins
-  gimp-plugin-depthmap
-  gimp-plugin-copy-move
-  gimp-plugin-octave
-  gimp-plugin-temperature
-  gimp-plugin-eaw-sharpen
-  gimp-plugin-facedetect
-  gimp-plugin-get-curves
-  gimp-plugin-heatmap
-  gimp-plugin-hsv-analysis
-  gimp-plugin-lab-analysis
+gimp-elsamuko-plugins
+gimp-plugin-depthmap
+gimp-plugin-copy-move
+gimp-plugin-octave
+gimp-plugin-temperature
+gimp-plugin-eaw-sharpen
+gimp-plugin-facedetect
+gimp-plugin-get-curves
+gimp-plugin-heatmap
+gimp-plugin-hsv-analysis
+gimp-plugin-lab-analysis
 )
 pkgver=0.1
-pkgrel=5
+pkgrel=6
 arch=(i686 x86_64)
 url='https://sites.google.com/site/elsamuko/gimp'
 pkgdesc='Varoius Gimp plugins made by elsamuko'
@@ -26,14 +26,15 @@ license=('GPL')
 depends=(gimp)
 makedepends=(
 gimp
-opencv
+opencv2-opt
 unzip
 cimg
 )
 source=(
 https://sites.google.com/site/elsamuko/gimp/depthmap/elsamuko-depthmap-cv.tar.gz
 depthmap-cv.patch
-https://sites.google.com/site/elsamuko/forensics/clone-detection/elsamuko-copy-move.c
+#https://sites.google.com/site/elsamuko/forensics/clone-detection/elsamuko-copy-move.c
+copymove2-0.6.0.tar.gz::https://github.com/elsamuko/copymove2/archive/v0.6.0.tar.gz
 https://sites.google.com/site/elsamuko/gimp/gimp-octave/elsamuko-gimp-octave.c
 https://sites.google.com/site/elsamuko/gimp/gimp-octave/filter_pack.tar.gz
 https://sites.google.com/site/elsamuko/gimp/temperature/elsamuko-temperature.c
@@ -51,14 +52,14 @@ cimg.patch
 )
 sha256sums=('37081258b6401bcc095d86b3a313b8fc4691f2f70b75e60d6f96be26ab1eb963'
             'f93871dbc6c05a00c5232412422bed81021b9a9cd5b2969f7b9f5f3740c98611'
-            '2cfa1516ab49d1f8d94168c694219be940c2154f4128e3b3e77a8a24e8940312'
+            '84f047fa0a0502f7c416878832b93e3914b53e8f556850d5a7403cb46ecf3814'
             '890e94b870278f49c1291eeb56efdcb6bffdfd8a5e6cba210dc7b47947f5bf2a'
             '20c8ec08587d61d87e91989a9655d693904eb56f402c1eb574c5e4c3a13d4ad1'
             'e548334b3aebc039a2ac92d1f24d0323ced5163acdfa47399e727a7853f469ed'
             '382f1c7f5fbdb653fcaccb95c84416ba68163c7fba74edff0e62c885005620a5'
             'de9312250d598cc4f599958edb45f2219779bb17cf2f834215cc53ee4d72f770'
             'f06daefe35132d87734b3854a58fa0847b7b313b86ae9f076883b651a0592d16'
-            'd1fed09664684d4436902d261d4202b71b8f54ab58bcbdcde000ed51d8e65859'
+            '1f19dcd27e204e4f16114443eb071617270aca8ae38f3c2cbcd3372712dbd289'
             '58a136880bc4c83b768663caf28bd9aedfc3dca2bfb845d44d3f099926e98a80'
             '14cca94597b688aa6f2d4fff2bf807a3f9a0e7163dff897129dc685148029f6f'
             'c8ccb4ee657e24d89ff9e3bb279cc6f552d8d4e3e3e8d76a107c763eafd58d91'
@@ -77,8 +78,10 @@ prepare() {
   patch -Np1 -i face-detect-cv.patch
   cd "$srcdir"/elsamuko-lab-analysis
   patch -Np1 -i "$srcdir"/cimg.patch
-#   cd "$srcdir"/elsamuko-depthmap-cv
-#   sed '16 s/^/#/' -i Makefile
+  msg2 "Fixing depthmap-cv"
+  cd "$srcdir"/elsamuko-depthmap-cv
+  sed '16 s/^/#/' -i Makefile
+  sed 's/opencv/opencv2/g' -i Makefile
 }
 build() {
   cd "$srcdir"
@@ -98,7 +101,7 @@ build() {
   CC=g++ CFLAGS=-O3 LIBS=-lpthread gimptool --build elsamuko-copy-move.c
   # temperature
   msg2 "Building temperature plugin"
-  CC="g++ -O3" gimptool --build elsamuko-temperature.c
+  CC="g++ -O3 -Wno-narrowing" gimptool --build elsamuko-temperature.c
   # eaw-sharpen
   msg2 "Building eaw-sharpen plugin"
   cd "$srcdir"/elsamuko-eaw-sharpen
@@ -106,7 +109,7 @@ build() {
   # depthmap-cv
   msg2 "Building depthmap-cv plugin"
   cd "$srcdir"/elsamuko-depthmap-cv
-  gimptool --build elsamuko-depthmap-cv.c
+#   gimptool --build elsamuko-depthmap-cv.c
   make
   # face-detect-cv
   msg2 "Building face-detect-cv plugin"
@@ -123,7 +126,7 @@ package_gimp-elsamuko-plugins(){
 package_gimp-plugin-depthmap (){
   true && pkgdesc="Generates a depthmap out of two stereoscopic images."
   true && url='https://sites.google.com/site/elsamuko/gimp/depthmap'
-  true && depends=(gimp-elsamuko-plugins opencv)
+  true && depends=(gimp-elsamuko-plugins opencv2-opt)
   eval $_pluginsdir_eval
   cd "$srcdir"/elsamuko-depthmap-cv
   install -dm755 "${_pluginsdir}"
@@ -160,7 +163,7 @@ package_gimp-plugin-octave (){
 package_gimp-plugin-temperature (){
   true && pkgdesc="Changes the color temperature of an image via shifting it in the YUV color space"
   true && url='https://sites.google.com/site/elsamuko/gimp/temperature'
-  true && depends=(gimp-elsamuko-plugins)
+  true && depends=(gimp-elsamuko-plugins opencv2-opt)
   eval $_pluginsdir_eval
   cd "$srcdir"
   install -dm755 "${_pluginsdir}"
@@ -178,7 +181,7 @@ package_gimp-plugin-eaw-sharpen (){
 package_gimp-plugin-facedetect (){
   true && pkgdesc="Detects faces in an input image"
   true && url='https://sites.google.com/site/elsamuko/gimp/facedetect'
-  true && depends=(gimp-elsamuko-plugins opencv)
+  true && depends=(gimp-elsamuko-plugins opencv2-opt)
   eval $_pluginsdir_eval
   cd "$srcdir"/elsamuko-facedetect-cv
   install -dm755 "${_pluginsdir}"

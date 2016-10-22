@@ -5,9 +5,10 @@ index 7a7611e..59ef44c 100644
 @@ -4,7 +4,7 @@ GIMPTOOL=gimptool-2.0
  GIMP_FLAGS=`$(GIMPTOOL) --cflags`
  GIMP_LIBS=`$(GIMPTOOL) --libs`
- CV_FLAGS=`pkg-config --cflags opencv`
+-CV_FLAGS=`pkg-config --cflags opencv`
++CV_FLAGS=`pkg-config --cflags opencv2`
 -CV_LIBS=`pkg-config --libs opencv`
-+CV_LIBS=`pkg-config --libs opencv` -lm
++CV_LIBS=`pkg-config --libs opencv2` -lm
  
  RM=rm -f
  
