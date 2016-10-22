@@ -51,8 +51,8 @@ _use_current=
 pkgbase=linux-bfq
 pkgname=('linux-bfq' 'linux-bfq-headers' 'linux-bfq-docs')
 _kernelname=-bfq
-_srcname=linux-4.7
-pkgver=4.7.10
+_srcname=linux-4.8
+pkgver=4.8.4
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://algo.ing.unimo.it"
@@ -60,19 +60,19 @@ license=('GPL2')
 options=('!strip')
 makedepends=('kmod' 'inetutils' 'bc')
 _bfqrel=v7r11
-_bfqver=v8r3
-_bfqpath="http://algo.ing.unimo.it/people/paolo/disk_sched/patches/4.7.0-${_bfqver}"
-#_bfqpath="https://pf.natalenko.name/mirrors/bfq/4.7.0-${_bfqrel}"
+_bfqver=v8r4
+_bfqpath="http://algo.ing.unimo.it/people/paolo/disk_sched/patches/4.8.0-${_bfqver}"
+#_bfqpath="https://pf.natalenko.name/mirrors/bfq/4.8.0-${_bfqrel}"
 _gcc_patch="enable_additional_cpu_optimizations_for_gcc_v4.9+_kernel_v3.15+.patch"
 
 source=("http://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         "https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.sign"
         "http://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.xz"
         "https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.sign"
-        "${_bfqpath}/0001-block-cgroups-kconfig-build-bits-for-BFQ-${_bfqrel}-4.7.0.patch"
-        "${_bfqpath}/0002-block-introduce-the-BFQ-${_bfqrel}-I-O-sched-for-4.7.0.patch"
-        "${_bfqpath}/0003-block-bfq-add-Early-Queue-Merge-EQM-to-BFQ-${_bfqrel}-for.patch"
-        "${_bfqpath}/0004-block-bfq-turn-BFQ-v7r11-for-4.7.0-into-BFQ-${_bfqver}-for.patch"
+        "${_bfqpath}/0001-block-cgroups-kconfig-build-bits-for-BFQ-${_bfqrel}-4.8.0.patch"
+        "${_bfqpath}/0002-block-introduce-the-BFQ-${_bfqrel}-I-O-sched-to-be-ported.patch"
+        "${_bfqpath}/0003-block-bfq-add-Early-Queue-Merge-EQM-to-BFQ-${_bfqrel}-to-.patch"
+        "${_bfqpath}/0004-Turn-BFQ-${_bfqrel}-into-BFQ-${_bfqver}-for-4.8.0.patch"
         "http://repo-ck.com/source/gcc_patch/${_gcc_patch}.gz"
         'linux-bfq.preset'
         'change-default-console-loglevel.patch'
@@ -93,7 +93,7 @@ prepare() {
 
     ### Patch source with BFQ
         msg "Patching source with BFQ patches"
-        for p in "${srcdir}"/000{1,2,3,4}-block*.patch; do
+        for p in "${srcdir}"/000{1,2,3,4}-*BFQ*.patch; do
         msg " $p"
         patch -Np1 -i "$p"
         done
@@ -443,19 +443,19 @@ package_linux-bfq-docs() {
     rm -f "${pkgdir}/usr/lib/modules/${_kernver}/build/Documentation/DocBook/Makefile"
 }
 
-sha512sums=('e8c02583e17e4fc4214fef694825fcb78c898266f1624deb1cdf56ab5c5fdfa669c5221122a7cf0d502ed6f921ff3797634acd9d294d29e98e3faa8a21920185'
+sha512sums=('a48a065f21e1c7c4de4cf8ca47b8b8d9a70f86b64e7cfa6e01be490f78895745b9c8790734b1d22182cf1f930fb87eaaa84e62ec8cc1f64ac4be9b949e7c0358'
             'SKIP'
-            '574690938d143ca42d4d858c805ddaf03c1242f2a17e836b29e4c5ab80d24177203a1ce9435c5daaf020b4c705946f0db8c14ba23b9d00f743c55736c8bf0124'
+            'e4316472bb34e1fe8aa796f8a894781f3c4104b01c90598962a705b1cc35d860412dd1986571d4e59b797cf6b486f12c516668303aa8c82b6599ac30460f8de1'
             'SKIP'
-            '0759a2f48377d38fd331f243c9d49ca63059b2388cfcd46e2f88194d5a97741d2546e044807fe983065de2dcdefdf66197fa6e2630bb6afd0cc8abc3f76c5f01'
-            '53fb9471f477e02e132ad4b61fb2381c4ca3268ac43d268a5a40b2ddc6df26ccadf322cd696a80ec51073a6fb1c763a3dd4dbad516dda9cea6c7e6b1da21914c'
-            '02c5d82d1129ecc5f6322161e96e4db160fbcfe0c5ce1675ae9e828edfb39033404fc66f2a74fba4a30808291a25d3d0ff761c64957f41bafa8560b50dac1fa3'
-            '1b8b663071da245b1f744f6c9cb793b255f19a2346c7f2cb0115dd110d59e02916d6d6f5128c176788787bf96146511855a6002cbeb01570ad9f9cdb8fc45d9f'
+            '95a7b9dc5a6c378b19e199285b5c1c397ca0ca0cf03c42d185b57da68329e59d59294d1879998f4020a0dee10d36c550acf30f28970c82adb2e7604c86424178'
+            'dc0649dfe2a5ce8e8879a62df29a4a1959eb1a84e5d896a9cb119d6a85a9bad1b17135371799e0be96532e17c66043d298e4a14b18fad3078a1f425108f888c9'
+            '135afcffee2439e2260a71202658dce9ec5f555de3291b2d49a5cffdd953c6d7851b8a90e961576895555142a618e52220a7e4a46521ca4ba19d37df71887581'
+            '87ae76889ab84ced46c237374c124786551982f8ff7325102af9153aed1ab7be72bec4db1f7516426c5ee34c5ce17221679eb2f129c5cbdeec05c0d3cb7f785d'
             '62fdd5c0a060a051b64093d71fbb028781061ccb7a28c5b06739a0b24dac0945740d9b73ff170784f60005a589774bcc14f56523ec51557eb3a677f726ec34cf'
             '607c0fa70375bff2f51387c4984e6f2da18c786a58281ab5c28f6b49c6da22578832afa96503f26a18575ffed677b2f9522a822b5db856b76c4144dd5b59ff6b'
             'd9d28e02e964704ea96645a5107f8b65cae5f4fb4f537e224e5e3d087fd296cb770c29ac76e0ce95d173bc420ea87fb8f187d616672a60a0cae618b0ef15b8c8'
-            '1f25f40670cbbe3d5ca917d9c0278b4d4c7ed69316cb269f83e65d674e7c8fec9edd12707244c0d8d5e5a5780007a8077703369bf7e48f6656dd3b02a0571173'
-            'bdf7045fbc8307cc2f97e375da625c66ee83801f427025421c394ddc7a660000496ee902640eaa856ed14c284a093cf4f35508e32599aa6bc9b1822771b4fe63')
+            '2f63a2f373a1b97cba7ceee112a1ee69a90f8448dda2487b7ac91e669bc6b43febec0f584100cd27f7ef3be53fb75ed3b027ad881220cdb06e57fe93f214b4eb'
+            '8cfc9f98fd12333b035ec7bef53b4c3af2906e9d997aa41bd938298a669c59b51e8f554599e452f03f6e09a580ca9ca459ec29e31cec80866f4ffc2f477f79c6')
             
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
