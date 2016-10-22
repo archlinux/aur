@@ -1,0 +1,12 @@
+pre_upgrade() {
+  if(test `vercmp '3.4.3-5' "$2"` -ge 0); then
+    mv /usr/share/nethack /tmp/nethack-backup
+  fi
+}
+
+post_upgrade() {
+  if(test `vercmp '3.4.3-5' "$2"` -ge 0); then
+    rm -rf /var/games/nethack
+    mv /tmp/nethack-backup /var/games/nethack
+  fi
+}
