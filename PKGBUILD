@@ -5,12 +5,30 @@
 
 pkgname=idjc
 pkgver=0.8.16
-pkgrel=1
+pkgrel=2
 pkgdesc='Powerful client for individuals interested in streaming live radio shows'
 url='http://idjc.sourceforge.net/'
 license=('GPL2')
 arch=('i686' 'x86_64')
-depends=('desktop-file-utils' 'python2' 'dbus-python' 'mutagen' 'jack' 'pygtk' 'vorbis-tools' 'libsndfile' 'libsamplerate' 'glib2' 'lame' 'libmad' 'ffmpeg' 'flac' 'speex' 'libshout-idjc' 'twolame')
+depends=(	'dbus-python'
+			'desktop-file-utils'
+			'ffmpeg'
+			'flac'
+			'glib2'
+			'jack'
+			'lame'
+			'libmad'
+			'libsamplerate'
+			'libshout-idjc'
+			'libsndfile'
+			'mutagen'
+			'pygtk'
+			'pulseaudio-jack'
+			'python2'
+			'speex'
+			'twolame'
+			'vorbis-tools'
+)
 optdepends=('mysql-python: Ampache and Prokyon 3 support')
 conflicts=('idjc-git')
 install=${pkgname}.install
