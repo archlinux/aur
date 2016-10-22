@@ -1,0 +1,16 @@
+pkgbase = python-adafruit_nokia_lcd
+	pkgdesc = Python library for the using the Nokia 5110/3310 monochrome graphic LCD with a Raspberry Pi or Beaglebone Black
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/adafruit/Adafruit_Nokia_LCD
+	arch = armv6h
+	arch = armv7h
+	arch = x86
+	arch = x86_64
+	license = MIT
+	depends = python
+	source = git://github.com/adafruit/Adafruit_Nokia_LCD
+	md5sums = SKIP
+
+pkgname = python-adafruit_nokia_lcd
+
