@@ -1,0 +1,37 @@
+# Maintainer:  Eric Biggers <ebiggers3@gmail.com>
+
+pkgname=libdeflate-git
+pkgver=0.5.6.g1cc88c6
+pkgrel=1
+pkgdesc='Heavily optimized library for DEFLATE/zlib/gzip (de)compression'
+arch=('i686' 'x86_64')
+url='https://github.com/ebiggers/libdeflate'
+license=('custom')
+source=('git+https://github.com/ebiggers/libdeflate.git')
+sha256sums=('SKIP')
+conflicts=('libdeflate')
+provides=('libdeflate')
+replaces=('libdeflate')
+
+pkgver() {
+	cd libdeflate
+	git describe --long --tags | sed 's/^v//;s/-/./g'
+}
+
+build() {
+	cd libdeflate
+	make
+}
+
+package() {
+	cd libdeflate
+	install -Dm644 libdeflate.h "$pkgdir/usr/include/libdeflate.h"
+	install -Dm644 libdeflate.a "$pkgdir/usr/lib/libdeflate.a"
+	install -Dm755 libdeflate.so "$pkgdir/usr/lib/libdeflate.so"
+	for prog in gzip; do
+		install -Dm755 $prog "$pkgdir/usr/bin/libdeflate-$prog"
+	done
+	ln "$pkgdir/usr/bin/libdeflate-gzip" "$pkgdir/usr/bin/libdeflate-gunzip"
+	install -Dm644 -t "$pkgdir/usr/share/doc/libdeflate" \
+			README* COPYING* NEWS*
+}
