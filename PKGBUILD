@@ -20,7 +20,7 @@ _akcs=""		# Append Kernel Custom String.Not working on some systems.
 			# Use if you wnat to append a custom string to kernel version.
 			# No risc if you have a backup kernel in case of boot failure.
 
-_use_BFS="no"		# "yes":	Use BFS cpu scheduler.
+_use_MUQSS="no"		# "yes":	Use MUQSS cpu scheduler.
 			# "no":		Use CFS cpu scheduler.
 
 _use_KSM="no"		# "yes":	Enable Kernel SamePage Merging (KSM).
@@ -34,7 +34,7 @@ pkgdesc='A desktop oriented kernel and modules with Liquorix patches'
 __basekernel=4.8
 _minor=3
 pkgver=${__basekernel}.${_minor}
-pkgrel=1
+pkgrel=2
 lqxrel=1
 _kernelname=-lqx
 pkgbase=linux-lqx
@@ -105,10 +105,9 @@ prepare() {
     sed -i "s|CONFIG_LOCALVERSION_AUTO=.*|CONFIG_LOCALVERSION_AUTO=n|" ./.config
   fi
 
-  #Enable BFS cpu scheduler in config
-  if [ "${_use_BFS}" = "yes" ]; then
-    sed -i -e 's/# CONFIG_SCHED_BFS is not set/CONFIG_SCHED_BFS=y/' ./.config
-    sed -i '/CONFIG_SCHED_BFS=y/a \CONFIG_SCHED_BFS_AUTOISO=n' ./.config
+  #Enable MUQSS cpu scheduler in config
+  if [ "${_use_MUQSS}" = "yes" ]; then
+    sed -i -e 's/# CONFIG_SCHED_MUQSS is not set/CONFIG_SCHED_MUQSS=y/' ./.config
   fi
 
   #Enable KSM (Kernel SamePage Merging)
