@@ -2,7 +2,7 @@
 
 pkgname=cartaodecidadao
 pkgver=1.61.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Portuguese Citizen Card Application"
 arch=('i686' 'x86_64')
 url="http://www.cartaodecidadao.pt/"
@@ -12,15 +12,11 @@ optdepends=('autenticacao-gov-pt: Necessário para autenticações online'
 			'cartaodecidadao-pki: PKI que confirma a validade dos certificados dos CC'
 			'ecce-gov-pt-certificates: Certificados da ECCE (quem assina dos certificados contidos em cartaodecidadao-pki)')
 
-source=("cartaodecidadao.install")
-source_x86_64=("https://www.cartaodecidadao.pt/ccsoftware/cartaodecidadao-ubuntu.amd64.deb")
-source_i686=("https://www.cartaodecidadao.pt/ccsoftware/cartaodecidadao-ubuntu.i386.deb")
+source_x86_64=("https://www.cartaodecidadao.pt/ccsoftware/cartaodecidadao-ubuntu-16+.amd64.deb")
+source_i686=("https://www.cartaodecidadao.pt/ccsoftware/cartaodecidadao-ubuntu-16+.i386.deb")
 
-md5sums=('b716ba8fde53cef3376eedb1a6076cac')
-md5sums_i686=('115be572c30ccc35028bf878c4300b9e')
-md5sums_x86_64=('630442660ffc7419a6d8c82a40c1f8cc')
-
-install='cartaodecidadao.install'
+md5sums_i686=('fc3590b8b95238291193eaa508a36b02')
+md5sums_x86_64=('9bbb0718fdc48133de15ee68a781f84c')
 
 prepare() {
 	tar -xf data.tar.xz
