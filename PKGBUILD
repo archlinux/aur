@@ -2,33 +2,36 @@
 # Contributor: Balló György <ballogyor+arch at gmail dot com>
 
 pkgname=libcryptui
-pkgver=3.12.2
-pkgrel=2
+pkgver=3.12.2+24+gd5e5bc5
+pkgrel=1
 pkgdesc="Library for OpenPGP prompts"
-arch=('i686' 'x86_64')
 url="https://git.gnome.org/browse/libcryptui"
-license=('GPL')
-depends=('gtk3' 'gpgme' 'dbus-glib' 'libnotify' 'libgnome-keyring' 'dconf' 'libsm')
-makedepends=('intltool' 'gobject-introspection' 'gnome-common')
-source=(http://ftp.gnome.org/pub/GNOME/sources/$pkgname/${pkgver:0:4}/$pkgname-$pkgver.tar.xz
-        gnupg.patch)
-sha256sums=('71ead1a7b496f07f6c5102ae79945dd2515b7b9342c6edefe58b47318be20866'
-            '468e8d7730c50e6ba8da7a3deb948ab1244fb06fbce9acd2c983a93beb2b0f38')
+arch=(i686 x86_64)
+license=(GPL)
+depends=(gtk3 gpgme dbus-glib libnotify gcr dconf libsm)
+makedepends=(intltool gobject-introspection gnome-common git)
+_commit=d5e5bc593dcbb21f5dd3b8f858368170d4947cf3  # master
+source=("git://git.gnome.org/libcryptui#commit=$_commit")
+sha256sums=('SKIP')
+
+pkgver() {
+  cd $pkgname
+  git describe --tags | sed 's/-/+/g'
+}
 
 prepare() {
-  cd $pkgname-$pkgver
-  patch -Np1 -i ../gnupg.patch
-  autoreconf -fvi
+  cd $pkgname
+  NOCONFIGURE=1 ./autogen.sh
 }
 
 build() {
-  cd $pkgname-$pkgver
+  cd $pkgname
   ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var \
-              --disable-static --disable-schemas-compile
+              --disable-static --disable-schemas-compile --enable-gtk-doc
   make
 }
 
 package() {
-  cd $pkgname-$pkgver
+  cd $pkgname
   make DESTDIR="$pkgdir" install
 }
