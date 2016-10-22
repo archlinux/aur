@@ -10,20 +10,19 @@ _repo=http://mirror.netcologne.de/archlinux/core/os
 pkgbase=eudev-systemdcompat
 pkgname=('eudev-systemd' 'libeudev-systemd')
 pkgver=231
-pkgrel=10
+pkgrel=11
 arch=('i686' 'x86_64')
 license=('GPL2')
+groups=('base' 'base-openrc')
 url="http://www.freedesktop.org/wiki/Software/systemd"
 source_i686=("$_repo/i686/libsystemd-$pkgver-${_spkgrel}-i686.pkg.tar.xz"
         "$_repo/i686/systemd-$pkgver-${_spkgrel}-i686.pkg.tar.xz")
 source_x86_64=("$_repo/x86_64/libsystemd-$pkgver-${_spkgrel}-x86_64.pkg.tar.xz"
-        "$_repo/x86_64/systemd-$pkgver-${_spkgrel}-x86_64.pkg.tar.xz"
-        "gummibootx64.efi")
-md5sums_i686=('e33f8c03adec815f9bece11ce623ed78'
-              'bcbec1e89db4a7a142f860cd6479ff4d')
-md5sums_x86_64=('f4ca6c04596a14fa720ce536a2aaf3ab'
-                '54ea61ad80b4929c1a98121ef93793c4'
-                'ef357b701d67fa39355cbc1c3b9d5afd')
+        "$_repo/x86_64/systemd-$pkgver-${_spkgrel}-x86_64.pkg.tar.xz")
+sha256sums_i686=('6c9329af5749f221facd36f1cf0f065ac4522a071487414747c277b70efa7125'
+                 'ac8f895095ebe93e52bec2eb853f68498f98e48352acf20aca720599986f5c29')
+sha256sums_x86_64=('3ec899af9dee85b96e5c58c77df45e7301d58a1835ad2854fca425b2ae8a4191'
+                   '9452691b5ba4b422e4781ece876078258974bd162a46d76cd294cf3e8b571fb1')
 
 package_eudev-systemd() {
     pkgdesc="systemd-sysuser and systemd-tmpfiles binary; systemd compatibility package"
@@ -48,12 +47,8 @@ package_libeudev-systemd() {
     conflicts=('libsystemd' 'eudev-systemdcompat')
     replaces=('eudev-systemdcompat')
 
-    install -d $pkgdir/usr/lib/systemd/boot/efi
+    install -d $pkgdir/usr/lib
     for f in usr/lib/libsystemd*.so*;do
         mv -v $f $pkgdir/usr/lib
     done
-
-    if [[ $CARCH == 'x86_64' ]];then
-        install $srcdir/gummibootx64.efi $pkgdir/usr/lib/systemd/boot/efi/systemd-bootx64.efi
-    fi
 }

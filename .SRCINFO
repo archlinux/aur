@@ -1,20 +1,20 @@
 pkgbase = eudev-systemdcompat
 	pkgver = 231
-	pkgrel = 10
+	pkgrel = 11
 	url = http://www.freedesktop.org/wiki/Software/systemd
 	arch = i686
 	arch = x86_64
+	groups = base
+	groups = base-openrc
 	license = GPL2
 	source_i686 = http://mirror.netcologne.de/archlinux/core/os/i686/libsystemd-231-4-i686.pkg.tar.xz
 	source_i686 = http://mirror.netcologne.de/archlinux/core/os/i686/systemd-231-4-i686.pkg.tar.xz
-	md5sums_i686 = e33f8c03adec815f9bece11ce623ed78
-	md5sums_i686 = bcbec1e89db4a7a142f860cd6479ff4d
+	sha256sums_i686 = 6c9329af5749f221facd36f1cf0f065ac4522a071487414747c277b70efa7125
+	sha256sums_i686 = ac8f895095ebe93e52bec2eb853f68498f98e48352acf20aca720599986f5c29
 	source_x86_64 = http://mirror.netcologne.de/archlinux/core/os/x86_64/libsystemd-231-4-x86_64.pkg.tar.xz
 	source_x86_64 = http://mirror.netcologne.de/archlinux/core/os/x86_64/systemd-231-4-x86_64.pkg.tar.xz
-	source_x86_64 = gummibootx64.efi
-	md5sums_x86_64 = f4ca6c04596a14fa720ce536a2aaf3ab
-	md5sums_x86_64 = 54ea61ad80b4929c1a98121ef93793c4
-	md5sums_x86_64 = ef357b701d67fa39355cbc1c3b9d5afd
+	sha256sums_x86_64 = 3ec899af9dee85b96e5c58c77df45e7301d58a1835ad2854fca425b2ae8a4191
+	sha256sums_x86_64 = 9452691b5ba4b422e4781ece876078258974bd162a46d76cd294cf3e8b571fb1
 
 pkgname = eudev-systemd
 	pkgdesc = systemd-sysuser and systemd-tmpfiles binary; systemd compatibility package
