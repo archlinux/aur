@@ -7,7 +7,7 @@
 pkgname=brother-dcpj140w
 pkgver=1.1.3
 pkgrel=3
-pkgdesc="Driver for the Brother DCP-J315W wifi multifuncional printer"
+pkgdesc="Driver for the Brother DCP-j140w wifi multifuncional printer"
 url="http://solutions.brother.com/linux/en_us/index.html"
 license=('custom:brother')
 depends=('a2ps' 'cups')
