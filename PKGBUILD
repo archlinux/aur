@@ -40,7 +40,7 @@ options=('staticlibs')
 provides=("opencv" "${_pkgname%-git}")
 conflicts=(opencv "${_pkgname%-git}")
 changelog="ChangeLog"
-source=("${_pkgname%-git}::git+http://github.com/Itseez/opencv.git"
+source=("${_pkgname%-git}::git+https://github.com/opencv/opencv.git"
         "${_pkgname%-git}_contrib::git+https://github.com/opencv/opencv_contrib.git"
         "ippicv_linux_20151201.tgz::https://github.com/Itseez/opencv_3rdparty/raw/ippicv/master_20151201/ippicv/ippicv_linux_20151201.tgz"
         'opencv_contrib_sfm_cmake.patch'
