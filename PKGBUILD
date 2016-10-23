@@ -2,7 +2,7 @@
 
 pkgname=terminix-git
 _pkgname=terminix
-pkgver=1.3.0.r3.70cc2a0
+pkgver=1.3.0.r68.79ff796
 pkgrel=1
 pkgdesc="A tiling terminal emulator based on GTK+ 3 (git master)"
 arch=('x86_64')
