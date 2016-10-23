@@ -2,7 +2,7 @@
 # Submit issues/pull requests at https://github.com/crumblingstatue/aur-mingw-w64-sdl2
 
 pkgname=mingw-w64-sdl2
-pkgver=2.0.4
+pkgver=2.0.5
 pkgrel=1
 pkgdesc="A library for portable low-level access to a video framebuffer, audio output, mouse, and keyboard (Version 2) (mingw-w64)"
 arch=(any)
@@ -12,8 +12,7 @@ depends=()
 makedepends=(mingw-w64-configure)
 options=(staticlibs !strip !buildflags)
 source=("http://libsdl.org/release/SDL2-${pkgver}.tar.gz")
-md5sums=('44fc4a023349933e7f5d7a582f7b886e')
-
+sha1sums=('c4f87580630387796df4ac87c362b4f9a721457e')
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 build() {
