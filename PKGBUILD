@@ -18,7 +18,7 @@ gimp-plugin-hsv-analysis
 gimp-plugin-lab-analysis
 )
 pkgver=0.1
-pkgrel=6
+pkgrel=7
 arch=(i686 x86_64)
 url='https://sites.google.com/site/elsamuko/gimp'
 pkgdesc='Varoius Gimp plugins made by elsamuko'
@@ -33,8 +33,8 @@ cimg
 source=(
 https://sites.google.com/site/elsamuko/gimp/depthmap/elsamuko-depthmap-cv.tar.gz
 depthmap-cv.patch
-#https://sites.google.com/site/elsamuko/forensics/clone-detection/elsamuko-copy-move.c
-copymove2-0.6.0.tar.gz::https://github.com/elsamuko/copymove2/archive/v0.6.0.tar.gz
+https://sites.google.com/site/elsamuko/forensics/clone-detection/elsamuko-copy-move.c
+# copymove2-0.6.0.tar.gz::https://github.com/elsamuko/copymove2/archive/v0.6.0.tar.gz
 https://sites.google.com/site/elsamuko/gimp/gimp-octave/elsamuko-gimp-octave.c
 https://sites.google.com/site/elsamuko/gimp/gimp-octave/filter_pack.tar.gz
 https://sites.google.com/site/elsamuko/gimp/temperature/elsamuko-temperature.c
@@ -52,7 +52,7 @@ cimg.patch
 )
 sha256sums=('37081258b6401bcc095d86b3a313b8fc4691f2f70b75e60d6f96be26ab1eb963'
             'f93871dbc6c05a00c5232412422bed81021b9a9cd5b2969f7b9f5f3740c98611'
-            '84f047fa0a0502f7c416878832b93e3914b53e8f556850d5a7403cb46ecf3814'
+            '2cfa1516ab49d1f8d94168c694219be940c2154f4128e3b3e77a8a24e8940312'
             '890e94b870278f49c1291eeb56efdcb6bffdfd8a5e6cba210dc7b47947f5bf2a'
             '20c8ec08587d61d87e91989a9655d693904eb56f402c1eb574c5e4c3a13d4ad1'
             'e548334b3aebc039a2ac92d1f24d0323ced5163acdfa47399e727a7853f469ed'
