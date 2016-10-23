@@ -1,5 +1,5 @@
 pkgbase = linux-dell-e7x70
-	pkgver = 4.8.2
+	pkgver = 4.8.4
 	pkgrel = 1
 	url = http://www.kernel.org/
 	arch = i686
@@ -14,8 +14,8 @@ pkgbase = linux-dell-e7x70
 	options = !strip
 	source = https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.8.tar.xz
 	source = https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.8.tar.sign
-	source = https://www.kernel.org/pub/linux/kernel/v4.x/patch-4.8.2.xz
-	source = https://www.kernel.org/pub/linux/kernel/v4.x/patch-4.8.2.sign
+	source = https://www.kernel.org/pub/linux/kernel/v4.x/patch-4.8.4.xz
+	source = https://www.kernel.org/pub/linux/kernel/v4.x/patch-4.8.4.sign
 	source = config
 	source = config.x86_64
 	source = linux.preset
