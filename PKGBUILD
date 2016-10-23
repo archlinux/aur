@@ -43,8 +43,8 @@ package_neovim-airline() {
 
 package_neovim-airline-themes(){
   # set package local variables
-  pkgver=$_themes_pkgver
-  pkgrel=1
+  pkgver="$pkgver.$_themes_pkgver"
+  pkgrel=2
   pkgdesc='Themes for neovim-airline'
   depends=('neovim-airline')
 
