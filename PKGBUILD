@@ -13,8 +13,8 @@ pkgname=('jre8-openjdk-headless-infinality' 'jre8-openjdk-infinality' 'jdk8-open
 pkgbase=java8-openjdk
 _java_ver=8
 # Found @ http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html
-_jdk_update=102
-_jdk_build=14
+_jdk_update=112
+_jdk_build=15
 pkgver=${_java_ver}.u${_jdk_update}
 _repo_ver=jdk${_java_ver}u${_jdk_update}-b${_jdk_build}
 pkgrel=1
