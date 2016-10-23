@@ -1,0 +1,33 @@
+pkgbase = cryptsetup-keyscript
+	pkgdesc = Patched cryptsetup that supports invoking a script to obtain passphrase
+	pkgver = 1.7.2.keyscript
+	pkgrel = 1
+	url = https://gitlab.com/cryptsetup/cryptsetup/
+	arch = i686
+	arch = x86_64
+	groups = base
+	license = GPL
+	makedepends = util-linux
+	depends = device-mapper
+	depends = libgcrypt
+	depends = popt
+	depends = libutil-linux
+	provides = cryptsetup
+	conflicts = cryptsetup
+	options = !emptydirs
+	source = https://www.kernel.org/pub/linux/utils/cryptsetup/v1.7/cryptsetup-1.7.2.tar.xz
+	source = https://www.kernel.org/pub/linux/utils/cryptsetup/v1.7/cryptsetup-1.7.2.tar.sign
+	source = encrypt_hook
+	source = encrypt_install
+	source = sd-encrypt
+	source = keyscript.patch
+	validpgpkeys = 2A2918243FDE46648D0686F9D9B0577BD93E98FC
+	sha256sums = dbb35dbf5f0c1749168c86c913fe98e872247bfc8425314b494c2423e7e43342
+	sha256sums = SKIP
+	sha256sums = 4406f8dc83f4f1b408e49d557515f721d91b358355c71fbe51f74ab27e5c84ff
+	sha256sums = cfe465bdad3d958bb2332a05e04f2e1e884422a5714dfd1a0a3b9b74bf7dc6ae
+	sha256sums = d442304e6a78b3513ebc53be3fe2f1276a7df470c8da701b3ece971d59979bdd
+	sha256sums = SKIP
+
+pkgname = cryptsetup-keyscript
+

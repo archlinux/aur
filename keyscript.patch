@@ -1,0 +1,22 @@
+35a36,49
+>     # Invoke a script to get passphrase, if specified
+>     if [ -n "$cryptkeyscript" ]; then
+>         IFS=: read ckdev fstype path <<EOF
+> $cryptkeyscript
+> EOF
+>         if [ "$ckdev" = "rootfs" ]; then          
+>             ckey=$($path) || echo "Keyscript could not be run or failed. Reverting to passphrase."
+>         elif resolved=$(resolve_device "${ckdev}" "${rootdelay}"); then
+>             mkdir /ckeyscript
+>             mount -r -t "$fstype" "$resolved" /ckeyscript
+>             ckey=$("/ckeyscript$path") || echo "Keyscript could not be run or failed. Reverting to passphrase."
+>         fi
+>     fi
+> 
+73a88,93
+>             fi
+>             # If a key script is specified, try to use that
+>             if [ -n "${ckey}" ]; then              
+>                echo "${ckey}" | eval cryptsetup open --type luks ${resolved} ${cryptname} ${cryptargs} ${CSQUIET} \
+>                    && dopassphrase=0 \
+>                    || echo "Passphrase from keyscript failed. Reverting to manually entered passphrase."
