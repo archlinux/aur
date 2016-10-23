@@ -19,7 +19,7 @@ prepare() {
 }
 
 build() {
-  # TODO : Fix package not building the second time
+  # TODO : Fix package not building the second time (workaround with the find command in "prepare")
   cd $srcdir/$pkgname-$_commit
   export QTDIR=$(pwd)
   make linux-g++-shared
