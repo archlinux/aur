@@ -1,0 +1,25 @@
+pkgbase = dotnet-coreclr-git
+	pkgdesc = .NET Core CLR
+	pkgver = r8267.817c839
+	pkgrel = 1
+	url = https://www.microsoft.com/net/core
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	makedepends = make
+	makedepends = clang
+	makedepends = llvm
+	makedepends = gettext
+	depends = lldb
+	depends = libunwind
+	depends = icu
+	depends = lttng-ust
+	depends = openssl
+	depends = curl
+	provides = dotnet-coreclr
+	options = staticlibs
+	source = dotnet-coreclr-git::git+http://github.com/dotnet/coreclr.git#branch=master
+	sha256sums = SKIP
+
+pkgname = dotnet-coreclr-git
+
