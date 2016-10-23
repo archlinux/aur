@@ -1,25 +1,26 @@
 # Maintainer: Lukas Jirkovsky <l.jirkovsky@gmail.com>
 pkgname=codeviz
 pkgver=1.0.12
+_pkgver=8e597959959c4e812742e9d68c1ea4c4db63a39d
 _gccver=4.6.4
 pkgrel=1
 pkgdesc="A call graph generation utility for C/C++"
 arch=('i686' 'x86_64')
-url="http://www.csn.ul.ie/~mel/projects/codeviz/"
+url="https://github.com/petersenna/codeviz"
 license=('GPL2')
 depends=('perl' 'graphviz')
 # unset the C(XX)FLAGS because they would break the compilation if they contained
 # options not supported in $_gccver
 options=('!buildflags')
-source=(http://www.csn.ul.ie/~mel/projects/codeviz/codeviz-$pkgver.tar.gz \
+source=("https://github.com/petersenna/codeviz/archive/$_pkgver.zip"
         ftp://ftp.gnu.org/pub/gnu/gcc/gcc-$_gccver/gcc-${_gccver}.tar.gz)
 noextract=(gcc-${_gccver}.tar.gz)
 install=codeviz.install
-md5sums=('31bb56aeccc8eefb24f23073bf523c48'
+md5sums=('5538e066a1c18fd7d49bfe8a9df92e68'
          'a8f15fc233589924ccd8cc8140b0ca3c')
 
 build() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$srcdir/$pkgname-$_pkgver"
 
   # disable problematic flags, solution by ftschindler from gcc46
   CPPFLAGS=${CPPFLAGS//-D_FORTIFY_SOURCE=?/}
@@ -42,7 +43,7 @@ build() {
 }
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$srcdir/$pkgname-$_pkgver"
   make DESTDIR="$pkgdir" install
 }
 

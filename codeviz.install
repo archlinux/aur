@@ -1,7 +1,8 @@
 post_install() {
 cat << EOT
   Patched gcc is installed to /opt/gccgraph. To compile a project
-  for use with CodeViz, genearlly the following will work
+  for use with CodeViz, it is necessary to use this version of
+  gcc for compilation, such as:
 
     make CC=/opt/gccgraph/bin/gcc or g++
 
