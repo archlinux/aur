@@ -6,7 +6,7 @@ pkgdesc="Overlap2D"
 arch=('any')
 url="http://overlap2d.com"
 license=('APACHE2')
-depends=('java-environment', 'xorg-xrandr')
+depends=('java-environment' 'xorg-xrandr')
 source=('http://overlap2d.com/bin/overlap2d.tar.gz'
     'overlap2d.desktop'
     'http://overlap2d.com/wp-content/themes/overlap2d-v3/img/logo.png')
