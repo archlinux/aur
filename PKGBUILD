@@ -52,9 +52,8 @@ _copy_file() {
 }
 
 package() {
+  cd ${pkgname}
   local _outdir="${pkgdir}/opt/dotnet"
-  cd `pwd`/dotnet-coreclr-git
-  echo `pwd`
   for file in "${_coreclr_files[@]}"; do
     _copy_file "bin/Product/Linux.x64.Release/${file}" "${_outdir}"
   done
