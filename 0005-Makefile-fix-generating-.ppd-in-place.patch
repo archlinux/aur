@@ -1,4 +1,4 @@
-From 8745321e322393959c6ba1806a22c54f0653fd7e Mon Sep 17 00:00:00 2001
+From 7931a5f1b2687207188dfdd516127c0b0255374b Mon Sep 17 00:00:00 2001
 From: Ivan Shapovalov <intelfx@intelfx.name>
 Date: Sun, 23 Oct 2016 01:01:17 +0300
 Subject: [PATCH 5/6] Makefile: fix generating *.ppd in-place
@@ -8,10 +8,10 @@ Subject: [PATCH 5/6] Makefile: fix generating *.ppd in-place
  1 file changed, 2 insertions(+), 4 deletions(-)
 
 diff --git a/Makefile b/Makefile
-index f306448..1440cfd 100644
+index c5eec44..97a699f 100644
 --- a/Makefile
 +++ b/Makefile
-@@ -1388,10 +1388,8 @@ ppd:
+@@ -1386,10 +1386,8 @@ ppd:
  	    *)                  driver=foo2zjs;; \
  	    esac; \
  	    echo $$driver - $$printer; \

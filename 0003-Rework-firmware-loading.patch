@@ -1,4 +1,4 @@
-From d5970af826ef467904096c48d9868c93133d55ac Mon Sep 17 00:00:00 2001
+From bfe4733b4c74cfd6d3d0f28c92642f9c448e180d Mon Sep 17 00:00:00 2001
 From: Ivan Shapovalov <intelfx@intelfx.name>
 Date: Sun, 23 Oct 2016 00:59:32 +0300
 Subject: [PATCH 3/6] Rework firmware loading
@@ -13,7 +13,7 @@ Subject: [PATCH 3/6] Rework firmware loading
  create mode 100644 usblp.conf
 
 diff --git a/Makefile b/Makefile
-index 6d3a0a7..b66ded0 100644
+index 4c83e4e..c04c46b 100644
 --- a/Makefile
 +++ b/Makefile
 @@ -167,6 +167,7 @@ FILES	=	\
@@ -46,7 +46,7 @@ index 6d3a0a7..b66ded0 100644
  
  foo2zjs-wrapper: foo2zjs-wrapper.in Makefile
  	[ ! -f $@ ] || chmod +w $@
-@@ -915,18 +922,18 @@ install-gui:
+@@ -913,18 +920,18 @@ install-gui:
  	$(INSTALL) -c -m 755 hplj10xx_gui.tcl $(SHAREZJS)
  	
  
@@ -68,7 +68,7 @@ index 6d3a0a7..b66ded0 100644
  endif
  
  install-hotplug-test:
-@@ -962,65 +969,12 @@ install-hotplug-test:
+@@ -960,65 +967,12 @@ install-hotplug-test:
  	#
  
  install-hotplug-prog:
@@ -131,12 +131,12 @@ index 6d3a0a7..b66ded0 100644
 -	$(USBDIR)/hpljP1505 install-usermap
 -	# modprobe usblp
 -	$(USBDIR)/hplj1000 install-usblp
-+	$(INSTALL) -d -m 755 $(DESTDIR)$(LIBUDEVDIR)
-+	$(INSTALL) -c -m 644 $(RULES) $(DESTDIR)$(LIBUDEVDIR)/70-$(RULES)
-+	$(INSTALL) -d -m 755 $(DESTDIR)/usr/bin
-+	$(INSTALL) -c -m 755 foo2zjs-loadfw $(DESTDIR)/usr/bin
-+	$(INSTALL) -d -m 755 $(DESTDIR)$(MODPROBEDIR)
-+	$(INSTALL) -c -m 644 $(USBLP) $(DESTDIR)$(LIBMODPROBEDIR)
++	$(INSTALL) -d -m 755 $(PREFIX)$(LIBUDEVDIR)
++	$(INSTALL) -c -m 644 $(RULES) $(PREFIX)$(LIBUDEVDIR)/70-$(RULES)
++	$(INSTALL) -d -m 755 $(BIN)
++	$(INSTALL) -c -m 755 foo2zjs-loadfw $(BIN)
++	$(INSTALL) -d -m 755 $(PREFIX)$(MODPROBEDIR)
++	$(INSTALL) -c -m 644 $(USBLP) $(PREFIX)$(LIBMODPROBEDIR)
  
  install-hotplug-osx:
  	cd osx-hotplug; $(MAKE) PREFIX=$(PREFIX) install-hotplug

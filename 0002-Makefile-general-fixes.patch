@@ -1,14 +1,14 @@
-From 5c15a87c73885eb81ee67d066b7c0fea347b7dbb Mon Sep 17 00:00:00 2001
+From d31cbe5a360edb065defbd5545e9bcf3c12d6d1c Mon Sep 17 00:00:00 2001
 From: Ivan Shapovalov <intelfx@intelfx.name>
 Date: Sun, 23 Oct 2016 00:56:42 +0300
 Subject: [PATCH 2/6] Makefile: general fixes
 
 ---
- Makefile | 56 ++++++++++++++++++++++----------------------------------
- 1 file changed, 22 insertions(+), 34 deletions(-)
+ Makefile | 62 ++++++++++++++++++++++++--------------------------------------
+ 1 file changed, 24 insertions(+), 38 deletions(-)
 
 diff --git a/Makefile b/Makefile
-index 387b221..6d3a0a7 100644
+index 387b221..4c83e4e 100644
 --- a/Makefile
 +++ b/Makefile
 @@ -382,7 +382,7 @@ JBGOPTS=-m 16 -d 0 -p 92	# Equivalent options for pbmtojbg
@@ -32,7 +32,27 @@ index 387b221..6d3a0a7 100644
  ok: ok.o $(LIBJBG)
  	$(CC) $(CFLAGS) ok.o $(LIBJBG) -o $@
  
-@@ -735,7 +730,7 @@ install-crd:
+@@ -645,8 +640,6 @@ install-test:
+ 	#
+     
+ 
+-UDEVBIN=$(DESTDIR)/bin/
+-
+ install-prog:
+ 	#
+ 	# Install driver, wrapper, and development tools
+@@ -654,8 +647,8 @@ install-prog:
+ 	$(INSTALL) -d $(BIN)
+ 	$(INSTALL) -c $(PROGS) $(SHELLS) $(BIN)/
+ 	if [ "$(BINPROGS)" != "" ]; then \
+-	    $(INSTALL) -d $(UDEVBIN); \
+-	    $(INSTALL) -c $(BINPROGS) $(DESTDIR)/usr/bin/; \
++	    $(INSTALL) -d $(BIN); \
++	    $(INSTALL) -c $(BINPROGS) $(BIN); \
+ 	fi
+ 	#
+ 	# Install gamma correction files.  These are just templates,
+@@ -735,7 +728,7 @@ install-crd:
  	# Install prebuilt CRD files (from m2300w project)
  	#
  	$(INSTALL) -d $(SHAREZJS)/
@@ -41,7 +61,7 @@ index 387b221..6d3a0a7 100644
  	for i in crd/zjs/*.*; do \
  	    $(INSTALL) -c -m 644 $$i $(SHAREZJS)/crd/; \
  	done
-@@ -743,7 +738,7 @@ install-crd:
+@@ -743,7 +736,7 @@ install-crd:
  	# Install prebuilt CRD files for CLP-300/CLP-600
  	#
  	$(INSTALL) -d $(SHAREQPDL)/
@@ -50,7 +70,7 @@ index 387b221..6d3a0a7 100644
  	for i in crd/qpdl/*cms* crd/qpdl/*.ps; do \
  	    $(INSTALL) -c -m 644 $$i $(SHAREQPDL)/crd/; \
  	done
-@@ -753,7 +748,7 @@ install-psfiles:
+@@ -753,7 +746,7 @@ install-psfiles:
  	# Install prebuilt psfiles files (from m2300w project)
  	#
  	$(INSTALL) -d $(SHAREHP)/
@@ -59,7 +79,7 @@ index 387b221..6d3a0a7 100644
  	for i in psfiles/*.*; do \
  	    $(INSTALL) -c -m 644 $$i $(SHAREHP)/psfiles/; \
  	done
-@@ -767,14 +762,14 @@ install-extra:
+@@ -767,14 +760,14 @@ install-extra:
  	#
  	$(INSTALL) -d $(SHAREZJS)/
  	# foo2zjs ICM files (if any)
@@ -76,7 +96,7 @@ index 387b221..6d3a0a7 100644
  	for i in sihp1*.img; do \
  	    if [ -f $$i ]; then \
  		base=`basename $$i .img`; \
-@@ -783,7 +778,7 @@ install-extra:
+@@ -783,7 +776,7 @@ install-extra:
  	    fi; \
  	done
  	# foo2xqx Firmware files (if any)
@@ -85,7 +105,7 @@ index 387b221..6d3a0a7 100644
  	for i in sihpP*.img; do \
  	    if [ -f $$i ]; then \
  		base=`basename $$i .img`; \
-@@ -792,49 +787,49 @@ install-extra:
+@@ -792,49 +785,49 @@ install-extra:
  	    fi; \
  	done
  	# foo2oak ICM files (if any)
@@ -142,7 +162,7 @@ index 387b221..6d3a0a7 100644
  	for i in hbpl*.icm; do \
  	    if [ -f $$i ]; then \
  		$(INSTALL) -c -m 644 $$i $(SHAREHBPL)/icm/; \
-@@ -851,30 +846,22 @@ install-ppd:
+@@ -851,30 +844,22 @@ install-ppd:
  	# Install PPD files for CUPS
  	#
  	export PATH=$$PATH:`pwd`:; \
@@ -176,7 +196,7 @@ index 387b221..6d3a0a7 100644
  	    done; \
  	fi
  	#
-@@ -884,21 +871,21 @@ install-ppd:
+@@ -884,21 +869,21 @@ install-ppd:
  	    cd PPD; \
  	    for ppd in *.ppd; do \
  		modify-ppd <$$ppd | gzip > $(MODEL)/$$ppd.gz; \
@@ -201,7 +221,7 @@ index 387b221..6d3a0a7 100644
  	    done; \
  	fi
  
-@@ -1040,7 +1027,8 @@ install-hotplug-osx:
+@@ -1040,7 +1025,8 @@ install-hotplug-osx:
  
  install-filter:
  	if [ "$(CUPS_SERVERBIN)" != "" ]; then \
