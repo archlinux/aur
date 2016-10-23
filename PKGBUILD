@@ -2,13 +2,14 @@
 
 pkgbase=kde-baseapps-git
 pkgname=(konqueror-git kdepasswd-git kdialog-git kfind-git keditbookmarks-git)
-pkgver=r19991.cb458cf
+pkgver=r21051.4f5cf29
 pkgrel=1
 pkgdesc="Collection of applications used for file and Internet browsing"
 arch=(i686 x86_64)
 url='https://www.kde.org/'
 license=(LGPL)
-makedepends=(extra-cmake-modules git kdoctools kdesu kdelibs4support kactivities knewstuff python khtml kded tidy kdesignerplugin)
+makedepends=(extra-cmake-modules git kdoctools kdesu kdelibs4support kactivities knewstuff python khtml kded tidy
+             kdesignerplugin qt5-webengine mesa kcmutils)
 source=('git://anongit.kde.org/kde-baseapps')
 md5sums=('SKIP')
 
@@ -33,7 +34,7 @@ build() {
 
 package_konqueror-git() {
 	pkgdesc='KDE File Manager & Web Browser'
-	depends=(keditbookmarks-git dolphin)
+	depends=(keditbookmarks-git dolphin qt5-webengine)
 	url="http://kde.org/applications/system/konqueror/"
 	conflicts=(kdebase-konqueror konqueror konqueror-frameworks-git konq-plugins-git konq-plugins-frameworks-git
                    libkonq-git libkonq-frameworks-git konq-plugins)
