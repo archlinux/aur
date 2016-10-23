@@ -4,6 +4,8 @@ VERSION=$1
 
 set -e
 sed -i -re "s/^pkgver=.*$/pkgver=$VERSION/" PKGBUILD
+# Reset release to 1
+sed -i -re "s/^pkgrel=.*$/pkgrel=1/" PKGBUILD
 
 set +e
 makepkg -si
