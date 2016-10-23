@@ -1,0 +1,14 @@
+pkgbase = brother-mfc6490cw-lpr
+	pkgdesc = LPR driver for Brother MFC-6490CW multifunction network printer
+	pkgver = 1.1.2_2
+	pkgrel = 3
+	url = http://solutions.brother.com/linux/en_us/download_prn.html#MFC-6490CW
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = tcsh
+	source = http://download.brother.com/welcome/dlf006180/mfc6490cwlpr-1.1.2-2.i386.deb
+	md5sums = 781e72e8e451bbdb4db39a0967ec1dd6
+
+pkgname = brother-mfc6490cw-lpr
+
