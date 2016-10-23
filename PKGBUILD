@@ -19,6 +19,7 @@ options=(staticlibs)
 install=
 
 _gitbranch="master"
+_runtimever="1.0.1"
 
 source=("${pkgname}::git+http://github.com/dotnet/coreclr.git#branch=${_gitbranch}")
 sha256sums=('SKIP')
