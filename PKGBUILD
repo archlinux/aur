@@ -3,7 +3,7 @@
 pkgbase=('python-sockjs-tornado')
 pkgname=('python-sockjs-tornado')
 _module='sockjs-tornado'
-pkgver='1.0.2'
+pkgver='1.0.3'
 pkgrel=1
 pkgdesc="SockJS python server implementation on top of Tornado framework"
 url="http://github.com/mrjoes/sockjs-tornado/"
@@ -12,7 +12,7 @@ makedepends=('python-setuptools')
 license=('MIT')
 arch=('any')
 source=("https://pypi.python.org/packages/source/s/sockjs-tornado/sockjs-tornado-${pkgver}.tar.gz")
-sha256sums=('dbfbdc837234cdcb3b0c5d62bdfce7255a2d2e22332f3b15a2a0320101f18c96')
+sha256sums=('6d726e61bd1d884bd1c1788727fce1b9f24fd69062dda0daf61a476b01718e99')
 
 package() {
     depends+=()
