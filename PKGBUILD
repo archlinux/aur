@@ -4,12 +4,12 @@
 
 pkgname=emby-server-beta
 pkgver=3.1.197
-pkgrel=1
+pkgrel=2
 pkgdesc='Bring together your videos, music, photos, and live television'
 arch=('i686' 'x86_64')
 url='http://emby.media'
 license=('GPL2')
-depends=('ffmpeg' 'imagemagick' 'mono' 'sqlite')
+depends=('ffmpeg' 'imagemagick' 'mono' 'sqlite' 'mono-pcl')
 provides=('emby-server')
 conflicts=('emby-server' 'emby-server-beta-git' 'emby-server-dev-git' 'emby-server-git')
 install='emby-server.install'
