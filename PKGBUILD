@@ -55,6 +55,11 @@ pkgver() {
 prepare() {
   cd "${srcdir}/${_srcname}"
 
+  if [ -n "${linux_next_git_tag}" ]; then
+    msg "Reset to git tag: ${linux_next_git_tag}"
+    git reset --hard ${linux_next_git_tag}
+  fi
+
   #################
   # Apply patches #
   #################
