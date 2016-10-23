@@ -1,0 +1,5 @@
+pkg/
+src/
+i3lockmore/
+*.tar.xz
+*.tar.gz
