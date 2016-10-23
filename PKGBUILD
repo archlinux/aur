@@ -2,11 +2,11 @@
 
 pkgname=libshout-idjc
 pkgver=2.4.1
-pkgrel=3
+pkgrel=4
 pkgdesc="Libshout library plus some extensions for IDJC."
 arch=(i686 x86_64)
 url="http://idjc.sourceforge.net/"
-depends=('libvorbis' 'libtheora' 'speex' 'openssl')
+depends=('libvorbis' 'libtheora' 'speex' 'openssl' 'twolame' 'python-mutagen')
 options=('!emptydirs')
 source=("http://downloads.sourceforge.net/idjc/${pkgname}/${pkgname}-${pkgver}.tar.gz")
 license=('LGPL')
@@ -14,7 +14,7 @@ license=('LGPL')
 build()
 {
   cd "$srcdir/$pkgname-$pkgver"
-  autoreconf -fi
+#  autoreconf -fi
   ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var
   make LDFLAGS+=-lspeex
 }
