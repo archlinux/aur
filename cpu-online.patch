@@ -1,0 +1,22 @@
+--- src/indicator-cpufreq/indicator_cpufreq/cpufreq.py	2016-10-19 07:45:42.210318252 +0900
++++ src/indicator-cpufreq/indicator_cpufreq/cpufreq.py	2016-10-19 08:13:35.815333349 +0900
+@@ -56,8 +56,8 @@
+ 
+ ###############################################################################
+ 
+-_libcpufreq.cpufreq_cpu_exists.argtypes = [c_uint]
+-_libcpufreq.cpufreq_cpu_exists.restype = c_int
++_libcpufreq.cpupower_is_cpu_online.argtypes = [c_uint]
++_libcpufreq.cpupower_is_cpu_online.restype = c_int
+ 
+ _libcpufreq.cpufreq_get_freq_kernel.argtypes = [c_uint]
+ _libcpufreq.cpufreq_get_freq_kernel.restype = c_ulong
+@@ -118,7 +118,7 @@
+ _libcpufreq.cpufreq_set_frequency.restype = c_int
+ 
+ def cpu_exists(cpu):
+-    return _libcpufreq.cpufreq_cpu_exists(cpu)
++    return _libcpufreq.cpupower_is_cpu_online(cpu)
+ 
+ def get_freq_kernel(cpu):
+     return _libcpufreq.cpufreq_get_freq_kernel(cpu)
