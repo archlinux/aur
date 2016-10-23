@@ -14,10 +14,12 @@ _commit="ca9e8f0f2806ca5879ca3dccac1ca2cb5feab6fa"
 source=("https://github.com/KDE/$pkgname/archive/$_commit.zip")
 sha256sums=('75caeda268519aab31dfc94ea889ec2599185cb1febff8ff358e810b58348a20')
 
-#prepare() {
-#  cd $srcdir/$pkgname-$_commit
+prepare() {
+  cd $srcdir/$pkgname-$_commit
 #  patch -p1 cmake/KDE1Macros.cmake < $srcdir/KDE1Macros.patch
-#}
+  sed -i 's/lib64/lib/' cmake/FindQt1.cmake
+  sed -i 's/lib64/lib/' cmake/KDE1InstallDirs.cmake
+}
 
 build() {
   cd $srcdir/$pkgname-$_commit
@@ -34,6 +36,7 @@ package() {
   cd ..  
   install -Dm644 COPYING $pkgdir/usr/share/licenses/$pkgname/COPYING
   install -Dm644 COPYING.LIB $pkgdir/usr/share/licenses/$pkgname/COPYING.LIB
+  ln -s /opt/kde1/share/doc/HTML/en/ $pkgdir/opt/kde1/share/doc/HTML/default
 }
 
 # vim:set ts=2 sw=2 et:
