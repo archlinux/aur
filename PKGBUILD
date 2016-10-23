@@ -5,7 +5,7 @@ pkgbase=linux-next-git
 #pkgname=("${pkgbase}")
 _srcname=linux-next
 pkgver=20161021
-pkgrel=2
+pkgrel=3
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
 license=('GPL2')
@@ -22,8 +22,50 @@ md5sums=('SKIP'
 
 _kernelname=${pkgbase#linux}
 
+#######
+# Set to e.g. menuconfig, xconfig or gconfig and etc.
+#
+# For a full list of supported commands, please have a look
+# at "Configuration targets" section of `make help`'s output
+# or the help target in scripts/kconfig/Makefile
+# https://kernel.org/doc/makehelp.txt
+#
+# If unset or set to an empty or space-only string, the
+# (manual) kernel configuration step will be skipped.
+#
+linux_next_git_config_cmd="${linux_next_git_config_cmd:-olddefconfig}"
+
+#######
+# Directory with patches
+# linux_next_git_patches_dir="path"
+
+#######
+# Use local config (non empty -> yes)
+# linux_next_git_local_config=1
+
+######
+# Reset to specified tag
+# linux_next_git_tag=""
+
+pkgver() {
+  cd "${_srcname}"
+  git describe --always | tr -d 'next-'
+}
+
 prepare() {
   cd "${srcdir}/${_srcname}"
+
+  #################
+  # Apply patches #
+  #################
+  if [ -d "${linux_next_git_patches_dir}" ]; then
+    msg "Applying patches..."
+    for i in "${linux_next_git_patches_dir}"/*; do
+      [[ ${i##*/} =~ .*\.patch$ ]] && msg "Applying ${i##*/}..." && \
+      git apply "$i" || (error "Applying ${i##*/} failed" && return 1)
+      msg "---"
+    done
+  fi
 
   # add upstream patch
   # patch -p1 -i "${srcdir}/patch-${pkgver}"
@@ -40,6 +82,10 @@ prepare() {
     cat "${srcdir}/config.x86_64" > ./.config
   else
     cat "${srcdir}/config" > ./.config
+  fi
+
+  if [ -n "${linux_next_git_local_config}" ]; then
+          [ -f /proc/config.gz ] && zcat /proc/config.gz > ./.config
   fi
 
   if [ "${_kernelname}" != "" ]; then
@@ -65,7 +111,8 @@ prepare() {
   # ... or manually edit .config
 
   # rewrite configuration
-  yes "" | make config >/dev/null
+  yes "" | make config > /dev/null
+  make ${linux_next_git_config_cmd}
 }
 
 build() {
