@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Overlap2D
+Comment=Open minded editor for modern 2D games
+Exec=overlap2d
+Icon=overlap2d
+Terminal=false
+Type=Application
+Categories=Development;
