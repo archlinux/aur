@@ -1,7 +1,7 @@
 # Maintainer : David Roheim <david.roheim@gmail.com>
 
 pkgname=zendstudio
-pkgver=13.5.0
+pkgver=13.5.1
 pkgrel=1
 pkgdesc="ZendStudio is the leading PHP IDE for development"
 arch=('x86_64')
@@ -16,7 +16,7 @@ source=("http://downloads.zend.com/studio-eclipse/${pkgver}/ZendStudio-${pkgver}
         "${pkgname}.desktop"
         "${pkgname}.png")
 
-sha256sums=('7ab556c46fd4e329fa746d842161fa4d5a0f8943c284468005884f20591cf681'
+sha256sums=('99e9806051040105c92d9344659245d3fdd2249abf03d2e55d89b77097f6bae6'
             '99b9dd1daf408b634ec46fb9dafb5553b98a0a6e590ea0d1c3c86a54383c4e3e'
             'f4089b8074161e3dce8e135e6cce33db59cbf06c67bf9dfc1b1e6f6308a23b0a'
             '71ff3b80efe5c65e3733f002af64e7ed29c08118cf20e5d0b6e581e6ed7e4ffe')
