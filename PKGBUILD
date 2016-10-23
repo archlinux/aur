@@ -16,7 +16,7 @@ source=("git://anongit.freedesktop.org/xorg/proto/$_pkgname")
 md5sums=('SKIP')
 
 pkgver() {
-  cd $_pkgname 
+  cd $_pkgname  
 
   echo $(git describe --long | cut -d "-" -f2-3 | tr - .).r$(git rev-list HEAD --count).$(git describe --long | cut -d "-" -f4)
 }
