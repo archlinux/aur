@@ -15,7 +15,7 @@ _language_unix_shell_ver=0.38.2
 _language_vala_modern_ver=0.3.2
 
 pkgname=${_pkgname}-editor-${_version}
-pkgver=1.13.0.dev.i1.18.3.l0.5.1.m0.92.2.p1.0.0.u0.38.2.v0.3.2.c30208
+pkgver=1.13.0.dev.i1.18.3.l0.5.1.m0.92.2.p1.0.0.u0.38.2.v0.3.2.c30263
 pkgrel=1
 pkgdesc='Hackable text editor for the 21st Century, based on web technologies - git channel.'
 arch=('x86_64' 'i686')
@@ -30,7 +30,7 @@ source=("git+${url}.git"
 "${_pkgname}-${_version}")
 sha256sums=('SKIP'
             'b172e3f81eb42eeb1ad6ef70300c33a79a2015110ea87c413b5857c9694d10e9'
-            '542c10ffb540bd91a441682867517a02a959a20625293f72f33fab71cd3602be')
+            '20d3c386dd60e85977511f9138e32921af051fd7e573d3052822219bd7210be9')
 
 pkgver() {
   cd $srcdir/$_pkgname
