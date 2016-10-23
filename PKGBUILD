@@ -35,13 +35,22 @@ provides=(
       'libavresample.so' 'libavutil.so' 'libpostproc.so' 'libswresample.so'
       'libswscale.so'
 )
-source=(http://ffmpeg.org/releases/$_pkgbasename-$pkgver.tar.bz2{,.asc})
+source=(
+      "http://ffmpeg.org/releases/$_pkgbasename-$pkgver.tar.bz2"{,.asc}
+      "https://trac.ffmpeg.org/raw-attachment/ticket/5694/ffmpeg_opj2.patch"
+)
 validpgpkeys=('FCF986EA15E6E293A5644F10B4322F04D67658D8')
-sha256sums=('58bc89c65dd114d874efbf76f76368d03b5e407f0a3f42d5b40801c280968a38'
-            'SKIP')
+sha256sums=(
+      '58bc89c65dd114d874efbf76f76368d03b5e407f0a3f42d5b40801c280968a38'
+      'SKIP'
+      'SKIP'
+)
 
 build() {
   cd ${_pkgbasename}-${pkgver}
+
+  #Patching FFMPEG to compile againt a change in OpenJPEG2 static library until this patch is integrated in next release
+  patch -p1 < ../ffmpeg_opj2.patch
 
   export PKG_CONFIG_PATH="/usr/lib32/pkgconfig"
 
