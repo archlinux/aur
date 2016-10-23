@@ -1,0 +1,19 @@
+pkgbase = python2-javascriptcore2-git
+	pkgdesc = Javascript Core for Python (When using WebKit2Gtk)
+	pkgver = v1.0.r0.gb281673
+	pkgrel = 1
+	url = https://github.com/freundTech/pyjavascriptcore
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = pkg-config
+	depends = python2
+	depends = cython2
+	depends = webkit2gtk
+	provides = python2-javascriptcore
+	conflicts = python2-javascriptcore
+	source = git://github.com/freundTech/pyjavascriptcore.git
+	sha512sums = SKIP
+
+pkgname = python2-javascriptcore2-git
+
