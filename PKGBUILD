@@ -22,8 +22,8 @@ _localmodcfg=
 #pkgbase=linux-mainline               # Build stock -ARCH kernel
 pkgbase=linux-nvme       # Build kernel with a different name
 _srcname=linux-4.8
-_patchname=patch-4.8.3
-pkgver=4.8.3
+_patchname=patch-4.8.4
+pkgver=4.8.4
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
@@ -43,7 +43,7 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
 	'nvmepatch3-V4.patch'
 	'change-default-console-loglevel.patch')
 sha256sums=('3e9150065f193d3d94bcf46a1fe9f033c7ef7122ab71d75a7fb5a2f0c9a7e11a'
-	    '1482dd7bda0a3a82abcde20f24576a57287c462e8e732fe688ed37daf42468cb'
+	    '86e246b19253ee3aa971403a5990376a5e33667122f7c8742cc0ee807f204403'
 	    '749b19cac625284ba6abae2d3932465b64d41d0274a3c070ca2c556779bb2078'
             '7d2bb66458b57d4df497ebb15a4ac130d08a0c084ae7845d0fe791a194efdb8e'
             'f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c'
