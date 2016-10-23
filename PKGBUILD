@@ -21,5 +21,9 @@ build() {
 package() {
   cd "$srcdir/RF24"
   make install
+  cd "$pkgdir/usr/lib"
+  rm librf24.so librf24-bcm.so
+  ln -s librf24.so.1 librf24.so
+  ln -s librf24.so librf24-bcm.so
 }
 
