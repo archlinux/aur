@@ -1,5 +1,5 @@
 pkgname=emercoin
-pkgver=0.5.0
+pkgver=0.5.1
 pkgrel=1
 pkgdesc="Emercoin is a digital currency and blockchain service platform."
 arch=('i686' 'x86_64')    
@@ -7,8 +7,8 @@ url="http://emercoin.com/"
 license=('GPL3')
 source_i686=("https://sourceforge.net/projects/$pkgname/files/$pkgver/$pkgname-$pkgver-linux32.tar.gz")
 source_x86_64=("https://sourceforge.net/projects/$pkgname/files/$pkgver/$pkgname-$pkgver-linux64.tar.gz")
-md5sums_i686=('bfbea8a96db8b3073cf7925a6184b61d')
-md5sums_x86_64=('6ecbd5a4314fbadcc18a155a4624c154')
+md5sums_i686=('9bed206c47929f786b0c854563b4f0fa')
+md5sums_x86_64=('d429e40760086f78162855bb9782a4bc')
 package() {
     cd "$pkgname-$pkgver"
     mkdir -p $pkgdir/usr/bin
