@@ -2,7 +2,7 @@
 # Contributor: Rax Garfield <admin at dvizho.ks.ua>
 
 pkgname=hunspell-uk
-pkgver=2.9.1
+pkgver=3.5.1
 pkgrel=1
 pkgdesc="Ukrainian spelling dictionary"
 arch=('any')
@@ -11,7 +11,7 @@ license=('LGPL' 'GPL' 'MPL')
 groups=('dict-uk')
 optdepends=('hunspell: the spell checking libraries and apps')
 source=("http://extensions.libreoffice.org/extension-center/ukrainian-spelling-dictionary-and-thesaurus/releases/${pkgver}/dict-uk_ua-${pkgver//./-}.oxt")
-sha256sums=('940ec1f3111f4f71c976abd303500c86fc4ac8e51c74883f1e43ab30d81fbea9')
+sha256sums=('6c91a4779850425f413588550282739488bad3299d1d087031f9c723c6ed8e99')
 
 package() {
   cd uk_UA
