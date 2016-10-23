@@ -1,6 +1,6 @@
 pkgbase = workcraft-git
 	pkgdesc = A framework for interpreted graph models including petri nets and STGs
-	pkgver = r2435.f6dae14
+	pkgver = r2436.26f5b52
 	pkgrel = 1
 	url = http://www.workcraft.org/
 	arch = i686

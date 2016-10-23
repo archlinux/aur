@@ -1,6 +1,6 @@
 # Maintainer: Adrian Wheeldon <arandomowl at gmail dot com>
 pkgname=workcraft-git
-pkgver=r2435.f6dae14
+pkgver=r2436.26f5b52
 pkgrel=1
 pkgdesc="A framework for interpreted graph models including petri nets and STGs"
 arch=('i686' 'x86_64')
