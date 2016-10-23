@@ -3,12 +3,12 @@
 
 pkgname='flow-tools'
 pkgver='0.68.5.1'
-pkgrel='2'
-pkgdesc="Netflow collector, analyser and report generator"
+pkgrel='3'
+pkgdesc="Netflow collector, analyser and report generator."
 arch=('i686' 'x86_64')
 url="https://code.google.com/archive/p/${pkgname}"
 license=('BSD 3')
-makedepends=('make' 'zlib' 'openssl' 'libmariadbclient' 'postgresql-libs' 'tcp_wrappers' 'bison' 'doxygen')
+makedepends=('make' 'zlib' 'openssl' 'libmariadbclient' 'postgresql-libs' 'tcp-wrappers' 'bison' 'doxygen')
 source=("https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/${pkgname}/${pkgname}-${pkgver}.tar.bz2"
 	"flow-capture.service"
 	"flow-capture.conf"
