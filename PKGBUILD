@@ -49,8 +49,6 @@ package() {
     cd "${srcdir}/${pkgname}-${pkgver}"
 
     make DESTDIR="${pkgdir}" install
-
-    sed -i 's|#! /usr/bin/python22.7|#! /usr/bin/python2|' ${pkgdir}/usr/bin/idjc
 }
 
 md5sums=('40346a16fca39e4fa306399974e5c2cb')
