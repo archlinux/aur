@@ -1,11 +1,11 @@
 # Maintainer: Score_Under <seejay 11@gmail com>
-options=(!strip docs)  # Don't strip libs because there aren't any, don't strip docs because they're packaged separately
+options=(!strip)  # Don't strip libs because there aren't any
 DOC_DIRS=(opt/hydrus/help)
 
 pkgbase=hydrus
-pkgname=(hydrus hydrus-docs hydrus-sources)
+pkgname=(hydrus hydrus-sources)
 pkgver=228
-pkgrel=1
+pkgrel=2
 pkgdesc="Danbooru-like image tagging and searching system for the desktop"
 arch=(any)
 license=(WTFPL)
@@ -53,12 +53,13 @@ build() {
 
 package_hydrus() {
   install=hydrus.install
+  conflicts=(hydrus-docs)
 
   cd "$pkgbase"
 
   # Create /opt/hydrus and copy hydrus files to there
   install -m755 -d "${pkgdir}/opt/hydrus"
-  cp -r include static client.pyw server.py "${pkgdir}/opt/hydrus/"
+  cp -r help include static client.pyw server.py "${pkgdir}/opt/hydrus/"
 
   # Remove .py files
   find "${pkgdir}/opt/hydrus/include" -name '*.py' -delete
@@ -75,18 +76,6 @@ package_hydrus() {
   # Install .desktop shortcut
   install -d -m755 "${pkgdir}/usr/share/applications"
   install -m644 ../hydrus.desktop "${pkgdir}/usr/share/applications/${pkgbase}.desktop"
-}
-
-package_hydrus-docs() {
-  depends=()
-  optdepends=()
-  pkgdesc="Danbooru-like image tagging and searching system for the desktop (documentation)"
-
-  cd "$pkgbase"
-
-  # Create /opt/hydrus and copy hydrus help to there
-  install -m755 -d "${pkgdir}/opt/hydrus"
-  cp -r help "${pkgdir}/opt/hydrus/"
 
   # Install license files
   install -d -m755 "${pkgdir}/usr/share/licenses/${pkgbase}"
