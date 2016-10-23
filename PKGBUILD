@@ -3,7 +3,9 @@
 pkgbase=moc_notify-git
 pkgname=$pkgbase
 pkgver=1.11
-pkgrel=1
+pkgrel=2
+_gitname=moc_notify
+_gittag="v.${pkgver}"
 pkgdesc="Notifier for 'Music On Console' using libnotify."
 arch=('i686' 'x86_64')
 url='https://github.com/daltomi/moc_notify'
@@ -11,28 +13,18 @@ license=('GPL3')
 depends=('libnotify')
 optdepends=('moc: Music on Console')
 makedepends=('git' 'cmake' 'gcc' 'pkg-config')
-_gitroot=$url.git
-_gitname=moc_notify
-
 install=moc_notify-git.install
-source=('moc_notify-git.install')
-sha1sums=('ae6f9be60997863f215d13c0cb0bb8da9bbdd5eb')
+source=("moc_notify-git.install" "git+${url}.git#tag=$_gittag")
+sha1sums=('ae6f9be60997863f215d13c0cb0bb8da9bbdd5eb' 'SKIP')
 
-prepare() {
-  cd "$srcdir"
-  msg "Connecting to GIT server...."
-  git clone "$_gitroot" --branch "v.$pkgver"
-}
 
 build() {
-  src_git=$srcdir/$_gitname/
-  msg "Starting build..."
-  cd $src_git/
-  cmake -DCMAKE_BUILD_TYPE="release" . && make 
+  cd $_gitname
+  cmake -DCMAKE_BUILD_TYPE=Release . && make
 }
 
 package() {
-  install -Dm755 "$srcdir/$_gitname/moc_notify" "$pkgdir/usr/bin/moc_notify"
+  install -Dm755 "$_gitname/moc_notify" "$pkgdir/usr/bin/moc_notify"
   install -m755 -d "$pkgdir/usr/share/moc_notify"
-  install -Dm755  "$srcdir/$_gitname/scripts/onsongchange.sh" "$pkgdir/usr/share/moc_notify/"
+  install -Dm755 "$_gitname/scripts/onsongchange.sh" "$pkgdir/usr/share/moc_notify/"
 }
