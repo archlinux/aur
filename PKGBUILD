@@ -2,7 +2,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de
 
 pkgname=aurel-git
-pkgver=v0.8.15.g2a3e4c3.2016_10_22
+pkgver=v0.8.16.ga77e8af.2016_10_23
 pkgrel=1
 pkgdesc="Search and download AUR packages from Emacs"
 arch=('any')
