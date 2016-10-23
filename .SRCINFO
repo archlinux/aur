@@ -1,0 +1,17 @@
+pkgbase = brother-mfc6490cw-cupswrapper
+	pkgdesc = LPR-to-CUPS wrapper for Brother MFC-6490CW multifunction network printer
+	pkgver = 1.1.2_2
+	pkgrel = 5
+	url = http://solutions.brother.com/linux/en_us/download_prn.html#MFC-6490CW
+	install = brother-mfc6490cw-cupswrapper.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = cups
+	depends = ghostscript
+	depends = brother-mfc6490cw-lpr>=1.1.2_2
+	source = http://download.brother.com/welcome/dlf006182/mfc6490cwcupswrapper-1.1.2-2.i386.deb
+	md5sums = 8c0c560d2fd9b7a019f26968c47e8a0a
+
+pkgname = brother-mfc6490cw-cupswrapper
+
