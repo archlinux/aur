@@ -1,18 +1,19 @@
 # Maintainer: Bastien Traverse <firstname at lastname dot email>
 
 pkgname=brutha
-pkgver=1.0.2
-pkgrel=2
-pkgdesc="Batch synchronization of FLAC to Ogg Vorbis with optional down-sampling and straight copy of others"
+pkgver=1.1.1
+pkgrel=1
+pkgdesc="Sync FLAC music files to Ogg Vorbis (or keep lossy as-is)"
 arch=('any')
-url="http://git.p.engu.in/laurentb/brutha/"
+url="https://pypi.python.org/pypi/brutha"
 license=('GPL')
 depends=('mutagen' 'sox')
 makedepends=('python2-setuptools')
 optdepends=('parallel: for parallel runs'
-            'make: for parallel runs')
-source=("https://pypi.python.org/packages/source/b/${pkgname}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('1ba6959747531984723b2feadecc02c6c54746c1f5facb4f2b9c62e609a668d2')
+            'make: for parallel runs'
+            'vorbisgain: for --gain')
+source=("https://pypi.python.org/packages/28/a0/5e604f8ff19f4bfd0972c963e170f8690629733fa584f16e44cde38b5364/${pkgname}-${pkgver}.tar.gz")
+md5sums=('4b25964d8e1b368d6f04facf471fca87')
 
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
