@@ -15,6 +15,7 @@ sha256sums=('7a43fd9d30af8f07f94e6cbfee13b257b1ab6261c1b25f4a880e9eda033351d0')
 prepare() {
   cd $srcdir/$pkgname-$_commit
   mkdir -p lib
+  find . -name "*.o" -delete
 }
 
 build() {
@@ -26,7 +27,7 @@ build() {
 }
 
 _qt1_prefix="opt/qt1"
-_qt1_libdir="$_qt1_prefix/lib64"
+_qt1_libdir="$_qt1_prefix/lib"
 _qt1_bindir="$_qt1_prefix/bin"
 _qt1_includedir="$_qt1_prefix/include"
 
