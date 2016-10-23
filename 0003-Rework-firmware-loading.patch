@@ -1,19 +1,21 @@
-From 10d612accdc7f43e1517907b0664ed7d2df15755 Mon Sep 17 00:00:00 2001
+From c2829ff4264a3bccb49d63f032d798fbaca54150 Mon Sep 17 00:00:00 2001
 From: Ivan Shapovalov <intelfx@intelfx.name>
-Date: Sun, 23 Oct 2016 00:59:32 +0300
-Subject: [PATCH 3/6] Rework firmware loading
+Date: Sun, 23 Oct 2016 10:18:08 +0300
+Subject: [PATCH 3/5] Rework firmware loading
 
 ---
- Makefile          |  80 ++++++++-----------------------------
- foo2zjs-loadfw.in | 116 ++++++++++++++++++++++++++++++++++++++++++++++++++++++
- hplj10xx.rules    |  59 ++++++++++-----------------
- usblp.conf        |   1 +
- 4 files changed, 154 insertions(+), 102 deletions(-)
+ Makefile                   |  99 +++++++++++------------------------
+ foo2zjs-loadfw.in          | 128 +++++++++++++++++++++++++++++++++++++++++++++
+ foo2zjs-loadfw@.service.in |   6 +++
+ hplj10xx.rules             |  60 ++++++++-------------
+ usblp.conf                 |   1 +
+ 5 files changed, 186 insertions(+), 108 deletions(-)
  create mode 100644 foo2zjs-loadfw.in
+ create mode 100644 foo2zjs-loadfw@.service.in
  create mode 100644 usblp.conf
 
 diff --git a/Makefile b/Makefile
-index 4c83e4e..6ddcf96 100644
+index 6b707a9..2f546f9 100644
 --- a/Makefile
 +++ b/Makefile
 @@ -167,6 +167,7 @@ FILES	=	\
@@ -24,16 +26,28 @@ index 4c83e4e..6ddcf96 100644
  		foo2zjs-wrapper.in \
  		foo2zjs-wrapper.1in \
  		foo2hp2600-wrapper.in \
-@@ -271,7 +272,7 @@ endif
- SHELLS=		foo2zjs-wrapper foo2oak-wrapper foo2hp2600-wrapper \
- 		foo2xqx-wrapper foo2lava-wrapper foo2qpdl-wrapper \
- 		foo2slx-wrapper foo2hiperc-wrapper foo2hbpl2-wrapper
--SHELLS+=	foo2zjs-pstops
-+SHELLS+=	foo2zjs-loadfw foo2zjs-pstops
- SHELLS+=	printer-profile
- MANPAGES=	foo2zjs-wrapper.1 foo2zjs.1 zjsdecode.1
- MANPAGES+=	foo2oak-wrapper.1 foo2oak.1 oakdecode.1
-@@ -482,6 +483,12 @@ foo2hiperc: foo2hiperc.o $(LIBJBG)
+@@ -287,10 +288,7 @@ MANPAGES+=	foo2zjs-pstops.1 arm2hpdl.1 usb_printerid.1
+ MANPAGES+=	printer-profile.1
+ LIBJBG	=	jbig.o jbig_ar.o
+ BINPROGS=
+-
+-ifeq ($(UNAME),Linux)
+-	BINPROGS += usb_printerid
+-endif
++MISC=           foo2zjs-loadfw foo2zjs-loadfw@.service
+ 
+ # Compiler flags
+ #CFLAGS +=	-O2 -Wall -Wno-unused-but-set-variable
+@@ -381,7 +379,7 @@ JBGOPTS=-m 16 -d 0 -p 92	# Equivalent options for pbmtojbg
+ #
+ # The usual build rules
+ #
+-all:	$(PROGS) $(BINPROGS) $(SHELLS) getweb \
++all:	$(PROGS) $(BINPROGS) $(SHELLS) $(MISC) getweb \
+ 	all-icc2ps man doc \
+ 	all-done
+ 
+@@ -482,6 +480,18 @@ foo2hiperc: foo2hiperc.o $(LIBJBG)
  foo2hbpl2: foo2hbpl2.o $(LIBJBG)
  	$(CC) $(CFLAGS) -o $@ foo2hbpl2.o $(LIBJBG)
  
@@ -43,32 +57,37 @@ index 4c83e4e..6ddcf96 100644
 +	    -e 's:@FWDIR_ZJS@:$(SHAREZJS)/firmware:' \
 +	    -e 's:@FWDIR_XQX@:$(SHAREXQX)/firmware:' || (rm -f $@ && exit 1)
 +	chmod 555 $@
++
++foo2zjs-loadfw@.service: foo2zjs-loadfw@.service.in Makefile
++	[ ! -f $@ ] || chmod +w $@
++	sed < $@.in > $@ \
++	    -e 's:@PREFIX@:$(PREFIX):' || (rm -f $@ && exit 1)
++	chmod 444 $@
  
  foo2zjs-wrapper: foo2zjs-wrapper.in Makefile
  	[ ! -f $@ ] || chmod +w $@
-@@ -913,18 +920,18 @@ install-gui:
+@@ -928,13 +938,15 @@ install-gui:
  	$(INSTALL) -c -m 755 hplj10xx_gui.tcl $(SHAREZJS)
  	
  
 -USBDIR=$(DESTDIR)/etc/hotplug/usb
- UDEVDIR=/etc/udev/rules.d
- LIBUDEVDIR=/lib/udev/rules.d
-+LIBMODPROBEDIR=/lib/modprobe.d
- RULES=hplj10xx.rules
-+USBLP=usblp.conf
+-UDEVDIR=/etc/udev/rules.d
+-LIBUDEVDIR=/lib/udev/rules.d
+-RULES=hplj10xx.rules
++LIBUDEVDIR=$(PREFIX)/lib/udev/rules.d
++LIBMODPROBEDIR=$(PREFIX)/lib/modprobe.d
++UNITDIR=$(PREFIX)/lib/systemd/system
++HOTPLUG_PROGS=foo2zjs-loadfw
++HOTPLUG_RULES=hplj10xx.rules
++HOTPLUG_UNITS=foo2zjs-loadfw@.service
++HOTPLUG_USBLP=usblp.conf
  #UDEVD=/sbin/udevd
  # For FreeBSD 8.0
 -DEVDDIR=/etc/devd
  
  ifeq ($(UNAME),Darwin)
  install-hotplug: install-hotplug-test install-hotplug-osx
- else
--install-hotplug: install-hotplug-test install-hotplug-prog
-+install-hotplug: install-hotplug-prog
- endif
- 
- install-hotplug-test:
-@@ -960,65 +967,12 @@ install-hotplug-test:
+@@ -975,65 +987,14 @@ install-hotplug-test:
  	#
  
  install-hotplug-prog:
@@ -131,21 +150,23 @@ index 4c83e4e..6ddcf96 100644
 -	$(USBDIR)/hpljP1505 install-usermap
 -	# modprobe usblp
 -	$(USBDIR)/hplj1000 install-usblp
-+	$(INSTALL) -d -m 755 $(PREFIX)$(LIBUDEVDIR)
-+	$(INSTALL) -c -m 644 $(RULES) $(PREFIX)$(LIBUDEVDIR)/70-$(RULES)
 +	$(INSTALL) -d -m 755 $(BIN)
-+	$(INSTALL) -c -m 755 foo2zjs-loadfw $(BIN)
-+	$(INSTALL) -d -m 755 $(PREFIX)$(LIBMODPROBEDIR)
-+	$(INSTALL) -c -m 644 $(USBLP) $(PREFIX)$(LIBMODPROBEDIR)
++	$(INSTALL) -c -m 755 $(HOTPLUG_PROGS) $(BIN)
++	$(INSTALL) -d -m 755 $(LIBUDEVDIR)
++	$(INSTALL) -c -m 644 $(HOTPLUG_RULES) $(LIBUDEVDIR)/71-$(HOTPLUG_RULES)
++	$(INSTALL) -d -m 755 $(LIBMODPROBEDIR)
++	$(INSTALL) -c -m 644 $(HOTPLUG_USBLP) $(LIBMODPROBEDIR)
++	$(INSTALL) -d -m 755 $(UNITDIR)
++	$(INSTALL) -c -m 644 $(HOTPLUG_UNITS) $(UNITDIR)
  
  install-hotplug-osx:
  	cd osx-hotplug; $(MAKE) PREFIX=$(PREFIX) install-hotplug
 diff --git a/foo2zjs-loadfw.in b/foo2zjs-loadfw.in
 new file mode 100644
-index 0000000..c0f5ec0
+index 0000000..911fe0a
 --- /dev/null
 +++ b/foo2zjs-loadfw.in
-@@ -0,0 +1,116 @@
+@@ -0,0 +1,128 @@
 +#!/bin/bash
 +
 +# foo2zjs-loadfw:
@@ -177,16 +198,28 @@ index 0000000..c0f5ec0
 +# Figure out how to log our messages
 +#
 +log() {
-+	echo "$0: $@" >&2
++	echo "$@" >&2
 +}
-+
-+log "Firmware download script"
 +
 +#
 +# Figure out the model number and firmware file from the arguments
 +#
-+MODEL="$1"
-+SERIAL="$2"
++DEVPATH="$1"
++eval $(udevadm info -q property -x "$DEVPATH")
++MODEL="$FOO2ZJS_FW_MODEL"
++SERIAL="$ID_SERIAL_SHORT"
++
++log "Downloading firmware for printer model '$MODEL' serial '$SERIAL' at devpath '$DEVPATH'"
++
++if ! [[ "$FOO2ZJS_FW_MODEL" ]]; then
++	log "Model number is empty -- borked udev configuration?"
++	exit 1
++fi
++
++if ! [[ "$SERIAL" ]]; then
++	log "Serial number is empty -- borked udev configuration?"
++	exit 1
++fi
 +
 +case "$MODEL" in
 +P1005)
@@ -254,7 +287,7 @@ index 0000000..c0f5ec0
 +
 +$USB_BACKEND 2>/dev/null | grep "\<usb://" | grep "serial=$SERIAL" | while read direct uri model1 model2 params; do
 +	log "Got printer: URI='$uri'"
-+	if DEVICE_URI="$uri" $USB_BACKEND 1 1 1 1 '' "$FW"; then
++	if DEVICE_URI="$uri" $USB_BACKEND 1 1 1 1 '' "$FW" 2>/dev/null; then
 +		log "Firmware download OK"
 +		exit 0
 +	else
@@ -262,11 +295,23 @@ index 0000000..c0f5ec0
 +		exit 1
 +	fi
 +done
+diff --git a/foo2zjs-loadfw@.service.in b/foo2zjs-loadfw@.service.in
+new file mode 100644
+index 0000000..7bf47be
+--- /dev/null
++++ b/foo2zjs-loadfw@.service.in
+@@ -0,0 +1,6 @@
++[Unit]
++Description=Load HP ZJS/XQX printer firmware for %f
++
++[Service]
++Type=oneshot
++ExecStart=@PREFIX@/bin/foo2zjs-loadfw %f
 diff --git a/hplj10xx.rules b/hplj10xx.rules
-index ee0295d..e5785d3 100644
+index ee0295d..dec1cdd 100644
 --- a/hplj10xx.rules
 +++ b/hplj10xx.rules
-@@ -1,39 +1,20 @@
+@@ -1,39 +1,21 @@
 -#
 -#       hplj10xx.rules.old: udev equal or after 1.30
 -#
@@ -306,26 +351,27 @@ index ee0295d..e5785d3 100644
 -KERNEL=="lp*", SUBSYSTEMS=="usb", ATTRS{idVendor}=="03f0", \
 -	ATTRS{product}=="HP LaserJet P1505", NAME="usb/%k", \
 -	SYMLINK+="hpljP1505-%n", MODE="0666", RUN+="/etc/hotplug/usb/hpljP1505" 
-+ACTION=="add", SUBSYSTEM=="usb", ATTRS{idVendor}=="03f0",     \
-+	ATTRS{idProduct}=="0517", RUN+="/usr/bin/foo2zjs-loadfw 1000 $env{ID_SERIAL_SHORT}"
-+ACTION=="add", SUBSYSTEM=="usb", ATTRS{idVendor}=="03f0",     \
-+	ATTRS{idProduct}=="1317", RUN+="/usr/bin/foo2zjs-loadfw 1005 $env{ID_SERIAL_SHORT}"
-+ACTION=="add", SUBSYSTEM=="usb", ATTRS{idVendor}=="03f0",     \
-+	ATTRS{idProduct}=="4117", RUN+="/usr/bin/foo2zjs-loadfw 1018 $env{ID_SERIAL_SHORT}"
-+ACTION=="add", SUBSYSTEM=="usb", ATTRS{idVendor}=="03f0",     \
-+	ATTRS{idProduct}=="2b17", RUN+="/usr/bin/foo2zjs-loadfw 1020 $env{ID_SERIAL_SHORT}"
-+ACTION=="add", SUBSYSTEM=="usb", ATTRS{idVendor}=="03f0",     \
-+	ATTRS{idProduct}=="3d17", RUN+="/usr/bin/foo2zjs-loadfw P1005 $env{ID_SERIAL_SHORT}"
-+ACTION=="add", SUBSYSTEM=="usb", ATTRS{idVendor}=="03f0",     \
-+	ATTRS{idProduct}=="3e17", RUN+="/usr/bin/foo2zjs-loadfw P1006 $env{ID_SERIAL_SHORT}"
-+ACTION=="add", SUBSYSTEM=="usb", ATTRS{idVendor}=="03f0",     \
-+	ATTRS{idProduct}=="4817", RUN+="/usr/bin/foo2zjs-loadfw P1007 $env{ID_SERIAL_SHORT}"
-+ACTION=="add", SUBSYSTEM=="usb", ATTRS{idVendor}=="03f0",     \
-+	ATTRS{idProduct}=="4917", RUN+="/usr/bin/foo2zjs-loadfw P1008 $env{ID_SERIAL_SHORT}"
-+ACTION=="add", SUBSYSTEM=="usb", ATTRS{idVendor}=="03f0",     \
-+	ATTRS{idProduct}=="3f17", RUN+="/usr/bin/foo2zjs-loadfw P1505 $env{ID_SERIAL_SHORT}"
-+ACTION=="add", SUBSYSTEM=="usb", ATTRS{idVendor}=="03f0",     \
-+	ATTRS{idProduct}=="4017", RUN+="/usr/bin/foo2zjs-loadfw P1505n $env{ID_SERIAL_SHORT}"
++ACTION!="add", GOTO="foo2zjs_fw_end"
++SUBSYSTEM!="usb", GOTO="foo2zjs_fw_end"
++ENV{DEVTYPE}!="usb_device", GOTO="foo2zjs_fw_end"
++
++ATTRS{idVendor}=="03f0", ATTRS{idProduct}=="0517", ENV{FOO2ZJS_FW_MODEL}="1000"
++ATTRS{idVendor}=="03f0", ATTRS{idProduct}=="1317", ENV{FOO2ZJS_FW_MODEL}="1005"
++ATTRS{idVendor}=="03f0", ATTRS{idProduct}=="4117", ENV{FOO2ZJS_FW_MODEL}="1018"
++ATTRS{idVendor}=="03f0", ATTRS{idProduct}=="2b17", ENV{FOO2ZJS_FW_MODEL}="1020"
++ATTRS{idVendor}=="03f0", ATTRS{idProduct}=="3d17", ENV{FOO2ZJS_FW_MODEL}="P1005"
++ATTRS{idVendor}=="03f0", ATTRS{idProduct}=="3e17", ENV{FOO2ZJS_FW_MODEL}="P1006"
++ATTRS{idVendor}=="03f0", ATTRS{idProduct}=="4817", ENV{FOO2ZJS_FW_MODEL}="P1007"
++ATTRS{idVendor}=="03f0", ATTRS{idProduct}=="4917", ENV{FOO2ZJS_FW_MODEL}="P1008"
++ATTRS{idVendor}=="03f0", ATTRS{idProduct}=="3f17", ENV{FOO2ZJS_FW_MODEL}="P1505"
++ATTRS{idVendor}=="03f0", ATTRS{idProduct}=="4017", ENV{FOO2ZJS_FW_MODEL}="P1505n"
++ENV{FOO2ZJS_FW_MODEL}=="", GOTO="foo2zjs_fw_end"
++
++# Inherit the instance name from the parent unit's instance name (or unit name, if there is no instance name).
++# In our case -- the printer's full devpath gets passed.
++TAG+="systemd", ENV{SYSTEMD_WANTS}+="foo2zjs-loadfw@.service"
++
++LABEL="foo2zjs_fw_end"
 diff --git a/usblp.conf b/usblp.conf
 new file mode 100644
 index 0000000..5a604bf

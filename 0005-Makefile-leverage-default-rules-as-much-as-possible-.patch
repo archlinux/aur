@@ -1,7 +1,7 @@
-From 359f64c508a34e977b2a36af322b139a7c3ee49e Mon Sep 17 00:00:00 2001
+From 170a4d0f10107f40eaca97ba6b3ad46effe66e7a Mon Sep 17 00:00:00 2001
 From: Ivan Shapovalov <intelfx@intelfx.name>
 Date: Sun, 23 Oct 2016 01:01:59 +0300
-Subject: [PATCH 6/6] Makefile: leverage default rules as much as possible to
+Subject: [PATCH 5/5] Makefile: leverage default rules as much as possible to
  fix behavior wrt user compile flags
 
 ---
@@ -10,10 +10,10 @@ Subject: [PATCH 6/6] Makefile: leverage default rules as much as possible to
  2 files changed, 30 insertions(+), 75 deletions(-)
 
 diff --git a/Makefile b/Makefile
-index 176fdfe..ac48605 100644
+index fcca27e..615f9e1 100644
 --- a/Makefile
 +++ b/Makefile
-@@ -455,33 +455,15 @@ all-done:
+@@ -452,33 +452,15 @@ all-done:
  	@echo "yourself."
  
  
@@ -56,12 +56,17 @@ index 176fdfe..ac48605 100644
  
  foo2zjs-loadfw: foo2zjs-loadfw.in Makefile
  	[ ! -f $@ ] || chmod +w $@
-@@ -559,49 +541,21 @@ getweb: getweb.in Makefile
+@@ -562,54 +544,26 @@ getweb: getweb.in Makefile
  	chmod 555 $@
  
  all-icc2ps:
 -	cd icc2ps; $(MAKE) all
 +	$(MAKE) -C icc2ps all
+ 
+ all-osx-hotplug:
+ ifeq ($(UNAME),Darwin)
+ 	cd osx-hotplug; $(MAKE) all
+ endif
  
 -ok: ok.o $(LIBJBG)
 -	$(CC) $(CFLAGS) ok.o $(LIBJBG) -o $@

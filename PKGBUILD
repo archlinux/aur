@@ -5,7 +5,7 @@
 
 pkgname=foo2zjs
 pkgver=20161021
-pkgrel=3
+pkgrel=4
 pkgdesc="foo2zjs Printer Drivers. Includes also foo2hp, foo2hbpl, foo2oak, foo2xqx, foo2qpdl, foo2slx, foo2hiperc and foo2lava drivers."
 url="http://foo2zjs.rkkda.com/"
 license=('GPL' 'custom')
@@ -20,17 +20,15 @@ source=("foo2zjs-$pkgver.tar.gz::http://foo2zjs.rkkda.com/foo2zjs.tar.gz"
         '0001-Makefile-DESTDIR-support.patch'
         '0002-Makefile-general-fixes.patch'
         '0003-Rework-firmware-loading.patch'
-        '0004-Makefile-skip-installing-Foomatic-files.patch'
-        '0005-Makefile-fix-generating-.ppd-in-place.patch'
-	'0006-Makefile-leverage-default-rules-as-much-as-possible-.patch')
+        '0004-Makefile-fix-generating-.ppd-in-place.patch'
+	'0005-Makefile-leverage-default-rules-as-much-as-possible-.patch')
 
 sha256sums=('55604f4580fb21534739c294df64e041b6ea96ef45d8a0ff4cdcf516eff243a3'
-            '2c0e40294c3f77a33e242280e280a98ed834a16584072b2d0f5fa95d0c44503f'
-            'b3fdf0702404bf2e4e5e47588d4c1440b95fb301abe0a03c58cf27aedefcadeb'
-            '2cc5c9c51f240218106713e36682fd69caca05e04cfe3ee5b857a9bb55959977'
-            '81abc3714cf1a6a1f46d5eefe4a6d554e66017befcca66a1d6891ab26f2a014d'
-            '537db87a3d7e81c154d6a6b4b6d3b67f893aa4cede6046bf7658e414e9a5f825'
-            '90a78899436021695246b884e717cd0f7fb6b4ec8e16e6aac029e0b348c4be50')
+            'f13c6a2308df53d7ed5636f6d77aae7616fc0e8437ca5f4f79ed4361c92eb709'
+            'cf40a20898b9619545bdcf2a59e72e0018c47d81b965b8a781e01688faa1abae'
+            'dd049ccd362c098515d3873c17b9f09b2d78da697e89d2022f537d7587874861'
+            'ef76d05b549e2c5875eabe7f526fda3caa5151824000ef582a869601edfbf690'
+            '83c37616c37887df933910b5dee30cedb118e4c3e4b08d7ab6dd7813466441f2')
 
 prepare() {
   cd "${pkgname}"
@@ -56,7 +54,7 @@ package() {
 
   install -d "${pkgdir}"/usr/share/{applications,pixmaps,cups/model}
 
-  make DESTDIR="${pkgdir}" install install-hotplug-prog
+  make DESTDIR="${pkgdir}" install install-hotplug
 
 #  install -m755 getweb "${pkgdir}/usr/bin"
   install -D -m644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"

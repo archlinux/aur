@@ -3,7 +3,13 @@ restart_cups() {
 	systemctl try-restart org.cups.cupsd
 }
 
+reload_udev() {
+	echo "> Now reloading udev rules database..."
+	udevadm control --reload
+}
+
 post_install() {
+	reload_udev
 	restart_cups
 
 	echo ""
@@ -14,9 +20,11 @@ post_install() {
 }
 
 post_upgrade() {
+	reload_udev
 	restart_cups
 }
 
 post_remove() {
+	reload_udev
 	restart_cups
 }
