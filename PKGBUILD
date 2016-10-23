@@ -2,7 +2,7 @@
 # Contributor: Filippo Squillace <sqoox85@gmail.com>
 
 pkgname=visit
-pkgver=2.10.3
+pkgver=2.11.0
 _pkgver=${pkgver//./_}
 pkgrel=1
 pkgdesc="Interactive parallel visualization and graphical analysis tool."
@@ -10,7 +10,8 @@ arch=('i686' 'x86_64')
 url="https://wci.llnl.gov/simulation/computer-codes/visit"
 license=('BSD' 'custom')
 makedepends=('cmake' 'java-runtime' 'gcc-fortran')
-depends=('qt5-webkit' 'python2-numpy'
+depends=('qt5-webkit' 'qt5-x11extras' 'qwt-qt5'
+         'python2-numpy'
          'gperftools' 'icet' 'java-environment'
          'vtk-visit'
          'gdal' 'silo' 'cgns' 'hdf5' 'zlib')
@@ -19,7 +20,7 @@ source=("https://portal.nersc.gov/svn/${pkgname}/trunk/releases/${pkgver}/${pkgn
         "visit.sh"
         "visit_FindIceT.patch"
         "visit_frontendlauncher.patch")
-sha256sums=('05018215c4727eb42d47bb5cc4ff937b2a2ccaca90d141bc7fa426a0843a5dbc'
+sha256sums=('f01b34c61081cd767199a3229c2012ab2344e01bc2df84965a3cd266e08ba5b5'
             'd07a11e67ad646579fbc341f30e1eb63ebd38a5fbdd4f3ea36e8f460419028da'
             '2e7b0be6ad5bc6c0f0568b91f79149f081c2a9bded58223e4347fcf513aa206a'
             '75179bcdcc5881b12e417f402e52b14598ae2f85ea1f78702ce1dc95c9b5198f')
@@ -66,6 +67,10 @@ prepare(){
   # IceT, use the IceTConfig.cmake provided by IceT
   patch CMake/FindIceT.cmake "${srcdir}/visit_FindIceT.patch"
 
+  # Fix Qwt include
+  sed -i 's:<qwt_:<qwt/qwt_:g' \
+    gui/QvisStripChart.h gui/QvisStripChart.C
+
   # Netcdf, does not work for now
   #sed -i 's/netcdf_c++/netcdf_c++4/g' CMake/FindNetcdf.cmake
   #sed -i 's/netcdfcpp.h/netcdf/g' databases/S3D/avtS3DFileFormat.C
@@ -101,6 +106,7 @@ build() {
     -DVISIT_JAVA:BOOL=ON \
     -DVISIT_PYTHON_DIR:PATH=/usr -DVISIT_PYTHON_SKIP_INSTALL:BOOL=ON \
     -DVISIT_QT5:BOOL=ON -DVISIT_QT_DIR:PATH=/usr/lib/qt -DVISIT_QT_SKIP_INSTALL:BOOL=ON \
+    -DVISIT_QWT_DIR:PATH=/usr \
     -DVISIT_SILO_DIR:PATH=/usr \
     -DVISIT_THREAD:BOOL=ON \
     -DVISIT_TCMALLOC_DIR:PATH=/usr \
