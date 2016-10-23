@@ -3,12 +3,14 @@ options=(!strip)  # Don't strip libs because there aren't any
 DOC_DIRS=(opt/hydrus/help)
 
 pkgbase=hydrus
-pkgname=(hydrus hydrus-sources)
+pkgname=(hydrus)
 pkgver=228
-pkgrel=2
+pkgrel=3
 pkgdesc="Danbooru-like image tagging and searching system for the desktop"
 arch=(any)
 license=(WTFPL)
+install=hydrus.install
+conflicts=(hydrus-docs hydrus-sources)
 url=http://hydrusnetwork.github.io/hydrus/
 depends=(python2 wxpython opencv python2-beautifulsoup4 python2-yaml
          hsaudiotag python2-pypdf2 python2-pafy python2-lz4 python2-numpy
@@ -52,17 +54,11 @@ build() {
 }
 
 package_hydrus() {
-  install=hydrus.install
-  conflicts=(hydrus-docs)
-
   cd "$pkgbase"
 
   # Create /opt/hydrus and copy hydrus files to there
   install -m755 -d "${pkgdir}/opt/hydrus"
   cp -r help include static client.pyw server.py "${pkgdir}/opt/hydrus/"
-
-  # Remove .py files
-  find "${pkgdir}/opt/hydrus/include" -name '*.py' -delete
 
   # Create and populate /opt/hydrus/bin
   install -d -m755 "${pkgdir}/opt/hydrus/bin"
@@ -81,19 +77,4 @@ package_hydrus() {
   install -d -m755 "${pkgdir}/usr/share/licenses/${pkgbase}"
   install -m644 COPYING "${pkgdir}/usr/share/licenses/${pkgbase}/"
   install -m644 license.txt "${pkgdir}/usr/share/licenses/${pkgbase}/"
-}
-
-package_hydrus-sources() {
-  depends=()
-  optdepends=('hydrus: The sources are not usable without extra files from the hydrus package')
-  pkgdesc="Danbooru-like image tagging and searching system for the desktop (sources only)"
-
-  cd "$pkgbase"
-
-  # Create /opt/hydrus and copy hydrus sources to there
-  install -m755 -d "${pkgdir}/opt/hydrus"
-  cp -r include "${pkgdir}/opt/hydrus/"
-
-  # Remove .pyo files
-  find "${pkgdir}/opt/hydrus/include" -name '*.pyo' -delete
 }
