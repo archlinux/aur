@@ -1,8 +1,9 @@
-#Maintainer: Dan Ziemba <zman0900@gmail.com>
+# Maintainer: Mark Weiman <markzz@archlinux.net>
+# Contributor: Dan Ziemba <zman0900@gmail.com>
 
 pkgbase=linux-vfio
-_srcname=linux-4.7
-pkgver=4.7.5
+_srcname=linux-4.8
+pkgver=4.8.4
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
@@ -18,18 +19,18 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         # standard config files for mkinitcpio ramdisk
         'linux.preset'
         'change-default-console-loglevel.patch'
-        '0001-Updated-ACS-override-patch-for-4.6.2.patch'
-        '0001-Updated-i915-vga-arbiter-patch-for-4.6.2.patch')
-sha256sums=('5190c3d1209aeda04168145bf50569dc0984f80467159b1dc50ad731e3285f10'
+        '0001-pci-Enable-overrides-for-missing-ACS-capabilities-4..patch'
+        '0001-i915-Add-module-option-to-support-VGA-arbiter-on-HD-.patch')
+sha256sums=('3e9150065f193d3d94bcf46a1fe9f033c7ef7122ab71d75a7fb5a2f0c9a7e11a'
             'SKIP'
-            '46be737415406fd06c1067d1280a4a435f8b0a76d70f5d31858964b41367cc8e'
+            '86e246b19253ee3aa971403a5990376a5e33667122f7c8742cc0ee807f204403'
             'SKIP'
-            '8ac2fb81f4c932c6b1877ca2bda9a98c3ffbb42359dce7dea588c97df4db8c8a'
-            '931724fe1a57134442fecc739ccb32984c1c6a0f0ae7e7311fd9536bb0e47ead'
+            'fdb743ebd87f2a6dc3e654774cf2b57c58fc5bc8d0ab2c3b0d6b89277d2b2116'
+            '7e9e1c443aeba1c9b028493de13f0b170d99bedf876d1fbe2748b77c6fb24549'
             'f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
-            '7568f319f0cffbf27e79a781e7a21cfe62771bd14ea09d671919368c4f3fcd2f'
-            '6dc172c2ef277223aa59806a2edda7efc4f94d2bf68b6bf2b1d0413e84b9e260')
+            'd36c589e3866535a9ac92911be64795967a05a6d300cc8b70abb79ea24b7b393'
+            '97c6eaff4dfd2059835351afa9466b43569f3eb45f6c57094f57a3f3fad7ec85')
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
               '647F28654894E3BD457199BE38DBBDC86092693E' # Greg Kroah-Hartman
@@ -59,11 +60,11 @@ prepare() {
 
   # patches for vga arbiter fix in intel systems
   echo '==> Applying i915 VGA arbitration patch'
-  patch -p1 -i "${srcdir}/0001-Updated-i915-vga-arbiter-patch-for-4.6.2.patch"
+  patch -p1 -i "${srcdir}/0001-i915-Add-module-option-to-support-VGA-arbiter-on-HD-.patch"
 
   # Overrides for missing acs capabilities
   echo '==> Applying ACS override patch'
-  patch -p1 -i "${srcdir}/0001-Updated-ACS-override-patch-for-4.6.2.patch"
+  patch -p1 -i "${srcdir}/0001-pci-Enable-overrides-for-missing-ACS-capabilities-4..patch"
 
   if [ "${_kernelname}" != "" ]; then
     sed -i "s|CONFIG_LOCALVERSION=.*|CONFIG_LOCALVERSION=\"${_kernelname}\"|g" ./.config

@@ -1,12 +1,10 @@
-From 9441bfb6810bbbf7c099f23ace0357165a9abd4c Mon Sep 17 00:00:00 2001
-From: Dan Ziemba <zman0900@gmail.com>
-Date: Mon, 13 Jun 2016 18:37:29 -0400
-Subject: [PATCH] Updated ACS override patch for 4.6.2
+From 866f4c5de45ae13aa590de0d40819a0c38f3f682 Mon Sep 17 00:00:00 2001
+From: Mark Weiman <mark.weiman@markzz.com>
+Date: Sun, 23 Oct 2016 12:57:37 -0400
+Subject: [PATCH] pci: Enable overrides for missing ACS capabilities (4.8+)
 
 This an updated version of Alex Williamson's patch from:
 https://lkml.org/lkml/2013/5/30/513
-I don't currently use hardware requiring acs override, so this is
-untested.
 
 Original commit message follows:
 ---
@@ -47,38 +45,37 @@ specific devices which enforce isolation but not provide an ACS
 capability.  Please contact me to have your devices added and save
 your customers the hassle of this boot option.
 
-Signed-off-by: Alex Williamson <alex.williamson@redhat.com>
+Signed-off-by: Mark Weiman <mark.weiman@markzz.com>
 ---
- Documentation/kernel-parameters.txt |  10 ++++
- drivers/pci/quirks.c                | 102 ++++++++++++++++++++++++++++++++++++
- 2 files changed, 112 insertions(+)
+ Documentation/kernel-parameters.txt |   9 ++++
+ drivers/pci/quirks.c                | 101 ++++++++++++++++++++++++++++++++++++
+ 2 files changed, 110 insertions(+)
 
 diff --git a/Documentation/kernel-parameters.txt b/Documentation/kernel-parameters.txt
-index 0b3de80..3eb47aa 100644
+index a4f4d69..d68cfab 100644
 --- a/Documentation/kernel-parameters.txt
 +++ b/Documentation/kernel-parameters.txt
-@@ -3012,6 +3012,16 @@ bytes respectively. Such letter suffixes can also be entirely omitted.
- 		nomsi	Do not use MSI for native PCIe PME signaling (this makes
- 			all PCIe root ports use INTx for all services).
- 
-+	pcie_acs_override =
-+			[PCIE] Override missing PCIe ACS support for:
-+		downstream
-+			All downstream ports - full ACS capabilties
-+		multifunction
-+			All multifunction devices - multifunction ACS subset
-+		id:nnnn:nnnn
-+			Specfic device - full ACS capabilities
-+			Specified as vid:did (vendor/device ID) in hex
-+
- 	pcmv=		[HW,PCMCIA] BadgePAD 4
- 
- 	pd_ignore_unused
+@@ -2928,6 +2928,15 @@ bytes respectively. Such letter suffixes can also be entirely omitted.
+ 		nomsi		[MSI] If the PCI_MSI kernel config parameter is
+ 				enabled, this kernel boot option can be used to
+ 				disable the use of MSI interrupts system-wide.
++		pci_acs_override =
++					[PCIE] Override missing PCIe ACS support for:
++				downstream
++					All downstream ports - full ACS capabilities
++				multfunction
++					All multifunction devices - multifunction ACS subset
++				id:nnnn:nnnn
++					Specfic device - full ACS capabilities
++					Specified as vid:did (vendor/device ID) in hex
+ 		noioapicquirk	[APIC] Disable all boot interrupt quirks.
+ 				Safety option to keep boot IRQs enabled. This
+ 				should never be necessary.
 diff --git a/drivers/pci/quirks.c b/drivers/pci/quirks.c
-index 8e67802..db7a808 100644
+index 44e0ff3..32016cb 100644
 --- a/drivers/pci/quirks.c
 +++ b/drivers/pci/quirks.c
-@@ -3418,6 +3418,107 @@ static int __init pci_apply_final_quirks(void)
+@@ -3487,6 +3487,106 @@ static int __init pci_apply_final_quirks(void)
  
  fs_initcall_sync(pci_apply_final_quirks);
  
@@ -110,7 +107,7 @@ index 8e67802..db7a808 100644
 +
 +			if (max_acs_id >= NUM_ACS_IDS - 1) {
 +				pr_warn("Out of PCIe ACS override slots (%d)\n",
-+					NUM_ACS_IDS);
++						NUM_ACS_IDS);
 +				goto next;
 +			}
 +
@@ -124,7 +121,7 @@ index 8e67802..db7a808 100644
 +			acs_on_ids[max_acs_id].vendor = val;
 +
 +			p += strcspn(p, ":");
-+			if (*p != ':') {
++			if (*p != ';') {
 +				pr_warn("PCIe ACS invalid ID\n");
 +				goto next;
 +			}
@@ -158,13 +155,13 @@ index 8e67802..db7a808 100644
 +
 +	/* Never override ACS for legacy devices or devices with ACS caps */
 +	if (!pci_is_pcie(dev) ||
-+	    pci_find_ext_capability(dev, PCI_EXT_CAP_ID_ACS))
-+		return -ENOTTY;
++		pci_find_ext_capability(dev, PCI_EXT_CAP_ID_ACS))
++			return -ENOTTY;
 +
 +	for (i = 0; i < max_acs_id; i++)
 +		if (acs_on_ids[i].vendor == dev->vendor &&
-+		    acs_on_ids[i].device == dev->device)
-+			return 1;
++			acs_on_ids[i].device == dev->device)
++				return 1;
 +
 +	switch (pci_pcie_type(dev)) {
 +	case PCI_EXP_TYPE_DOWNSTREAM:
@@ -182,11 +179,10 @@ index 8e67802..db7a808 100644
 +
 +	return -ENOTTY;
 +}
-+
  /*
   * Followings are device-specific reset methods which can be used to
   * reset a single function if other methods (e.g. FLR, PM D0->D3) are
-@@ -4028,6 +4129,7 @@ static const struct pci_dev_acs_enabled {
+@@ -4160,6 +4260,7 @@ static const struct pci_dev_acs_enabled {
  	{ 0x10df, 0x720, pci_quirk_mf_endpoint_acs }, /* Emulex Skyhawk-R */
  	/* Cavium ThunderX */
  	{ PCI_VENDOR_ID_CAVIUM, PCI_ANY_ID, pci_quirk_cavium_acs },
@@ -195,5 +191,5 @@ index 8e67802..db7a808 100644
  };
  
 -- 
-2.8.3
+2.10.1
 
