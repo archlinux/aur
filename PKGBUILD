@@ -1,16 +1,16 @@
 # Maintainer: grimi <grimi at poczta dot fm>
 
 pkgname=numix-themes-green
-pkgver=2.6.4
+pkgver=2.6.5
 pkgrel=1
 pkgdesc="A flat and light theme with a modern look using Green color (GNOME, MATE, Openbox, Unity, XFCE)"
 arch=('any')
 url='http://numixproject.org/'
 license=('GPL3')
 depends=('gtk-engine-murrine')
-makedepends=('ruby-bundler' 'imagemagick')
+makedepends=('ruby-bundler' 'inkscape' 'optipng')
 source=("${pkgname%-*}-${pkgver}.tar.gz::https://github.com/numixproject/numix-gtk-theme/archive/${pkgver}.tar.gz")
-md5sums=('cdaca5ede2a40000d383d200e01c0395')
+sha1sums=('2ce78b143ea39d66b1411b43ea0a10b5c303de9f')
 
 
 prepare() {
@@ -29,8 +29,8 @@ prepare() {
       index.theme \
       ../Makefile
    do
+      sed -i 's/#f1544d/#697740/Ig'  "${FILE}"
       sed -i 's/#f0544c/#697740/Ig'  "${FILE}"
-      sed -i 's/#d64937/#697740/Ig'  "${FILE}"
       sed -i 's/#f06860/#697740/Ig'  "${FILE}"
       sed -i 's/#f44336/#697740/Ig'  "${FILE}"
       sed -i 's/#444444/#333333/g'   "${FILE}"
@@ -38,18 +38,8 @@ prepare() {
       sed -i 's/Numix/Numix-Green/I' "${FILE}"
    done
 
-
-   # fix name change
-   cp assets/radio-{selected,checked}.svg
-   cp assets/radio-{selected,checked}-dark.svg
-
-   for FILE in assets/*.svg
-   do
-      if [[ -f ${FILE%.svg}.png ]]
-      then
-         convert -resize 16x16 -background none "${FILE}" "${FILE%.svg}.png"
-      fi
-   done
+   rm assets/*.png
+   ../scripts/render-assets.sh
 
    echo -e "source 'https://rubygems.org'\ngem 'sass'" > ../Gemfile
 }
@@ -66,3 +56,4 @@ package() {
    cd numix-gtk-theme-${pkgver}
    make SASS="bundle exec sass" DESTDIR="${pkgdir}" install
 }
+
