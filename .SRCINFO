@@ -1,7 +1,7 @@
 pkgbase = openhab-runtime
 	pkgdesc = openHAB automation runtime
 	pkgver = 1.8.3
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.openhab.org/
 	arch = any
 	license = EPL
