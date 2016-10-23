@@ -1,0 +1,12 @@
+post_install() {
+    # Add swish user and group.
+    getent group swish &>/dev/null || groupadd -r swish >/dev/null
+    getent passwd swish &>/dev/null || useradd -m -d /home/swish \
+-r -g swish swish >/dev/null
+
+    chown -R swish:swish /usr/share/swish
+
+    printf "\n\nYou can start and enable \
+swish.service to run the server.\n\n"
+}
+
