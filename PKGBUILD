@@ -2,7 +2,7 @@
 
 pkgname=ape
 pkgver=2.0.50
-pkgrel=1
+pkgrel=2
 pkgdesc="A plasmid editor"
 arch=('any')
 url="http://biologylabs.utah.edu/jorgensen/wayned/ape/"
@@ -27,7 +27,7 @@ Name=ApE
 GenericName=A Plasmid Editor
 Comment=a tcl/tk plasmid editor
 Exec=ape
-Icon=/opt/ApE/Accessory Files/Icons and Images/monkey_icon.gif
+Icon=/usr/share/icons/hicolor/128x128/apps/ape.png
 Terminal=false
 Type=Application
 Categories=Education;Science;Biology;
