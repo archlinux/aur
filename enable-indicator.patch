@@ -1,0 +1,11 @@
+--- glippy/data/glippy.schemas	2014-05-29 21:05:30.638242000 +0900
++++ glippy/data/glippy.schemas	2014-05-30 19:47:23.415640207 +0900
+@@ -299,7 +299,7 @@
+       <applyto>/apps/glippy/plugins/list</applyto>
+       <owner>glippy</owner>
+       <type>string</type>
+-      <default>libglippytray|libglippysnippets|libglippyupload</default>
++      <default>libglippyindicator|libglippytray|libglippysnippets|libglippyupload</default>
+       <gettext_domain>glippy</gettext_domain>
+       <locale name="C">
+          <short>List of plugins</short>
