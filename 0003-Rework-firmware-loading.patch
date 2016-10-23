@@ -1,4 +1,4 @@
-From bfe4733b4c74cfd6d3d0f28c92642f9c448e180d Mon Sep 17 00:00:00 2001
+From 10d612accdc7f43e1517907b0664ed7d2df15755 Mon Sep 17 00:00:00 2001
 From: Ivan Shapovalov <intelfx@intelfx.name>
 Date: Sun, 23 Oct 2016 00:59:32 +0300
 Subject: [PATCH 3/6] Rework firmware loading
@@ -13,7 +13,7 @@ Subject: [PATCH 3/6] Rework firmware loading
  create mode 100644 usblp.conf
 
 diff --git a/Makefile b/Makefile
-index 4c83e4e..c04c46b 100644
+index 4c83e4e..6ddcf96 100644
 --- a/Makefile
 +++ b/Makefile
 @@ -167,6 +167,7 @@ FILES	=	\
@@ -135,7 +135,7 @@ index 4c83e4e..c04c46b 100644
 +	$(INSTALL) -c -m 644 $(RULES) $(PREFIX)$(LIBUDEVDIR)/70-$(RULES)
 +	$(INSTALL) -d -m 755 $(BIN)
 +	$(INSTALL) -c -m 755 foo2zjs-loadfw $(BIN)
-+	$(INSTALL) -d -m 755 $(PREFIX)$(MODPROBEDIR)
++	$(INSTALL) -d -m 755 $(PREFIX)$(LIBMODPROBEDIR)
 +	$(INSTALL) -c -m 644 $(USBLP) $(PREFIX)$(LIBMODPROBEDIR)
  
  install-hotplug-osx:
