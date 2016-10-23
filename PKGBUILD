@@ -4,31 +4,32 @@
 pkgbase=vbam
 pkgname=('vbam-sdl' 'vbam-gtk' 'vbam-wx')
 pkgver=2.0.0b2
-pkgrel=1
+pkgrel=2
 pkgdesc='Nintendo GameBoy Advance emulator'
 arch=('i686' 'x86_64')
 url='http://vba-m.com'
 license=('GPL2')
-depends=('sdl' 'sfml' 'zip')
+depends=('sdl2' 'sfml' 'zip')
 makedepends=('cmake' 'desktop-file-utils' 'freetype2' 'git' 'glew' 'gtkglextmm'
              'imagemagick' 'libjpeg' 'libpng' 'libsndfile' 'libxrandr'
              'openal' 'subversion' 'wxgtk')
 makedepends_i686=('nasm')
 options=('!emptydirs')
-source=('vbam::git+https://github.com/visualboyadvance-m/visualboyadvance-m.git#tag=VBA-M_Beta_2'
-        'cxx11-fixes.patch')
+_commit='1eb768578bc0c4fa17396f573a4b37a652f12acd'
+source=("vbam::git+https://github.com/visualboyadvance-m/visualboyadvance-m.git#commit=${_commit}"
+        'vbam-fixes.patch')
 sha256sums=('SKIP'
-            '610d770bfcea8da990cddc33c6360b572bc20683b216ab1e6f23424e9d494417')
+            'be860c010e1185c1fa3938f57fd824b9e8e8430a00f851ff21a033de7bce5cf8')
 
 prepare() {
   cd vbam
-
-  patch -Np1 -i ../cxx11-fixes.patch
 
   if [[ -d build ]]; then
     rm -rf build
   fi
   mkdir build
+
+  patch -Np1 -i ../vbam-fixes.patch
 }
 
 build() {
@@ -61,31 +62,30 @@ backup=('etc/vbam.cfg')
   cd vbam/build
 
   make DESTDIR="${pkgdir}" install
+  mv "${pkgdir}"/{usr/etc,}
   rm -rf "${pkgdir}"/usr/{bin/{g,wx}vbam,share/{applications,icons,locale,man/man1/{g,wx}vbam.1,vbam}}
 }
 
 package_vbam-gtk() {
-depends+=('desktop-file-utils' 'gtkglextmm')
+depends+=('gtkglextmm')
 conflicts=('vbam-wx')
-install='vbam-gtk.install'
 
   cd vbam/build
 
   make DESTDIR="${pkgdir}" install
-  rm -rf "${pkgdir}"/{etc,usr/{bin/vbam,share/man/man1/vbam.1}}
+  rm -rf "${pkgdir}"/{etc,usr/{bin/vbam,etc,share/man/man1/vbam.1}}
   find "${pkgdir}" -type f -regex .*wxvbam.* -exec rm {} +
 }
 
 package_vbam-wx() {
-depends+=('desktop-file-utils' 'wxgtk')
+depends+=('wxgtk')
 conflicts=('vbam-gtk')
-install='vbam-wx.install'
 
   cd vbam/build
 
   make DESTDIR="${pkgdir}" install
   install -m 755 visualboyadvance-m "${pkgdir}"/usr/bin/
-  rm -rf "${pkgdir}"/{etc,usr/{bin/vbam,share/man/man1/vbam.1}}
+  rm -rf "${pkgdir}"/{etc,usr/{bin/vbam,etc,share/man/man1/vbam.1}}
   find "${pkgdir}" -type f -regex .*gvbam.* -exec rm {} +
 }
 
