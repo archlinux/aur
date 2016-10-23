@@ -1,6 +1,6 @@
 pkgbase = overlap2d
 	pkgdesc = Overlap2D
-	pkgver = 0.1.1
+	pkgver = 0.1.3
 	pkgrel = 0
 	url = http://overlap2d.com
 	arch = any
