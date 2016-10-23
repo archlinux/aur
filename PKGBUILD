@@ -4,7 +4,7 @@
 _dbname=odlyzko_zeta
 pkgname=sage-data-$_dbname
 pkgver=20061209
-pkgrel=1
+pkgrel=2
 pkgdesc="Table of zeros of the Riemann zeta function for SageMath"
 arch=(any)
 url="http://www.sagemath.org"
@@ -20,7 +20,7 @@ md5sums=('c93f63760540d5a787728a7a89ca2d9c'
 package() {
   export PYTHONPATH="$PWD:/usr/lib/sage/site-packages:/usr/bin"
   export SAGE_LOCAL="/usr"
-  export SAGE_SHARE="$pkgdir/usr/share/sage"
+  export SAGE_SHARE="$pkgdir/usr/share"
 
   ln -s database_$_dbname-$pkgver src
   python2 spkg-install

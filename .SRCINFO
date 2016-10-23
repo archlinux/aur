@@ -1,7 +1,7 @@
 pkgbase = sage-data-odlyzko_zeta
 	pkgdesc = Table of zeros of the Riemann zeta function for SageMath
 	pkgver = 20061209
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.sagemath.org
 	arch = any
 	license = GPL
