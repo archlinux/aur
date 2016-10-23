@@ -1,16 +1,16 @@
 # Maintainer: M0Rf30
 
 pkgname=libshout-idjc-git
-pkgver=879.f155fa4
+pkgver=882.7e4ff89
 pkgrel=1
 pkgdesc="Libshout library plus some extensions for IDJC."
 arch=(i686 x86_64)
 url="http://idjc.sourceforge.net/"
-depends=('libvorbis' 'libtheora' 'speex' 'twolame')
+depends=('libvorbis' 'libtheora' 'speex' 'openssl' 'twolame' 'python-mutagen')
 makedepends=('git')
-provides=('libshout')
-conflicts=('libshout' 'libshout-idjc')
-options=('!libtool' '!emptydirs')
+replaces=('libshout')
+conflicts=('libshout-idjc')
+options=('!emptydirs')
 source=('libshout-idjc::git://idjc.git.sourceforge.net/gitroot/idjc/idjc/')
 license=('LGPL')
 
