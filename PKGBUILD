@@ -6,7 +6,7 @@ pkgdesc='Django/JavaScript WebSocket Connections'
 url='https://github.com/moccu/django-omnibus'
 arch=('any')
 license=('BSD')
-depends=('python' 'python-django' 'python-pyzmq')
+depends=('python' 'python-django' 'python-pyzmq' 'python-tornado' 'python-sockjs-tornado')
 source=("git://github.com/moccu/django-omnibus")
 md5sums=('SKIP')
 
