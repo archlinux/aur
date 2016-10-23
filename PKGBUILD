@@ -15,7 +15,7 @@ md5sums=('SKIP')
 
 build() {
   cd "$srcdir/RF24"
-  ./configure --driver=SPIDEV --prefix="$pkgdir/" --ldconfig=''
+  ./configure --driver=SPIDEV --prefix="$pkgdir/usr" --ldconfig=''
 }
 
 package() {
