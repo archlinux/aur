@@ -2,7 +2,7 @@
 # Contributor: Sandor Czettner <sandor@czettner.hu>
 
 pkgname=zendframework
-pkgver=1.12.18
+pkgver=1.12.20
 pkgrel=1
 pkgdesc="An object-oriented web-application framework for PHP projects"
 arch=('any')
@@ -11,8 +11,8 @@ options=(!strip)
 license=('BSD')
 depends=('php>=5.2.11')
 optdepends=()
-source=("http://framework.zend.com/releases/ZendFramework-$pkgver/ZendFramework-$pkgver.zip")
-sha256sums=('f44fdda2d0edca5959fe659178737c69cbe576ca4c23368d7338fa9a628f9a0b')
+source=("https://packages.zendframework.com/releases/ZendFramework-$pkgver/ZendFramework-$pkgver.tar.gz")
+sha256sums=('984396e529a2de11bd29ba9662fbf652a1f1052ed18b69a06fa7602fdce84f83')
 
 build() {
   true
