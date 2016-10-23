@@ -1,0 +1,21 @@
+diff -aur eg-eg-v1.01/Makefile eg/Makefile
+--- eg.orig/Makefile	2015-12-05 17:01:14.000000000 +0300
++++ eg.new/Makefile	2016-10-23 14:58:03.249950545 +0300
+@@ -20,11 +20,12 @@
+ ######################################################################
+ CC=gcc
+ #CFLAGS=-Wall -g -O2 -DDEBUG
+-CFLAGS=-Wall -O2 -I/usr/local/include
+-DLIBS= -L/usr/local/lib -lslang
+-BINDIR=/usr/bin
+-MANDIR=/usr/man
+-NGDIR=/usr/share/norton-guides
++CFLAGS=-Wall -O2
++DLIBS=-lslang
++DESTDIR=
++BINDIR=$(DESTDIR)/usr/bin
++MANDIR=$(DESTDIR)/usr/share/man
++NGDIR=$(DESTDIR)/usr/share/norton-guides
+ INSTALL=/usr/bin/install
+ ######################################################################
+ 
