@@ -47,13 +47,16 @@ _coreclr_files=(
 )
 
 _copy_file() {
+  mkdir -p "$2/shared/Microsoft.NETCore.App/${_runtimever}/"
   cp --force --preserve=mode $1 "$2/shared/Microsoft.NETCore.App/${_runtimever}/"
 }
 
 package() {
   local _outdir="${pkgdir}/opt/dotnet"
+  cd `pwd`/dotnet-coreclr-git
+  echo `pwd`
   for file in "${_coreclr_files[@]}"; do
-    _copy_file "${_clrdir}/bin/Product/Linux.x64.Release/${file}" "${_outdir}"
+    _copy_file "bin/Product/Linux.x64.Release/${file}" "${_outdir}"
   done
 }
 
