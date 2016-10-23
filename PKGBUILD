@@ -2,8 +2,8 @@
 # Contributor: jdarch <jda -dot- cloud -plus- archlinux -at- gmail -dot- com>
 
 pkgname=ocz-ssd-utility
-pkgver=2.1.2542
-pkgrel=2
+pkgver=2.2.2645
+pkgrel=1
 pkgdesc="A GUI based tool for managing OCZ SSD including firmware and BIOS updates."
 arch=('i686' 'x86_64')
 url="https://ocz.com/us/download/"
@@ -16,7 +16,7 @@ source=("https://ocz.com/download/software/ssd-utility/${pkgver}/SSDUtility_${pk
         "${pkgname}.png"
         "${pkgname}_polkit"
         "org.archlinux.pkexec.${pkgname}.policy")
-sha256sums=('486edce8e5b9ff20f24575f4ddbe961db27c5cf6ef15543c02c0c4dfa957d24b'
+sha256sums=('7edba645836568c57346ec49bb3a4f0b4bfd366d84fd14a794e748abfcccbfa9'
             '78cdb3ff8f3c24684d2db624b770b02b6f34e2db28bda70400beb523ec6f8060'
             'da8b6756cc02fb492b7cc76e01d2468946a4a4acbea69ade568a0d615cfb5b30'
             '69dd55520a01972e74d421d68afd5673bf4835f618b2e671880c6f9497fe1ce2'
