@@ -1,0 +1,20 @@
+pkgbase = kde-now-git
+	pkgdesc = Google Now alternative for the Plasma Desktop
+	pkgver = r172.a895335
+	pkgrel = 1
+	url = http://www.kde.org
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = extra-cmake-modules
+	makedepends = git
+	makedepends = python
+	depends = plasma-workspace
+	depends = kimap
+	provides = kde-now
+	conflicts = kde-now
+	source = git://anongit.kde.org/kde-now.git
+	sha256sums = SKIP
+
+pkgname = kde-now-git
+
