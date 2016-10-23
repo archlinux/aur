@@ -1,6 +1,18 @@
 QNapi ChangeLog:
 ================
 
+2016-10-22 v0.2.2:
+ * odswiezona ikona aplikacji
+ * wyswietlanie jezyka pobranych napisow w oknie podsumowania - #53 (thx andrewpros)
+ * poprawki w instalatorze dla Windows - #55
+ * usprawnienia w oknie wyboru napisow - #57 (thx andrewpros)
+ * poprawka bledu przy zamianie znakow diakrytycznych na ASCII - #64
+ * zapobieganie segfaultowi - #83 (thx kempniu)
+ * poprawki literowek w kilku miejscach - #84 (thx kempniu)
+ * konfiguracja silnika Napisy24 - #88
+ * usuniete niewspierane funkcje silnika Napiprojekt (upload napisow,
+   zglaszanie poprawek) 
+
 2016-01-06 v0.2.1:
  * problem z nazwami sciezek zawierajacymi znaki specjalne poprawiony rowniez
    gdy otwarta jest inna instancja aplikacji (Windows) - #28
