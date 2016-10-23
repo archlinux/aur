@@ -27,7 +27,7 @@ pkgrel=1
 _launcher_ver=3
 pkgdesc="The open-source project behind Google Chrome, an attempt at creating a safer, faster, and more stable browser"
 arch=('i686' 'x86_64')
-url="http://www.chromium.org/"
+url="https://www.chromium.org/Home"
 license=('BSD')
 depends=('gtk2' 'nss' 'alsa-lib' 'xdg-utils' 'libxss' 'libexif' 'libgcrypt'
          'ttf-font' 'systemd' 'dbus' 'libpulse' 'perl' 'perl-file-basedir'
@@ -37,7 +37,6 @@ makedepends=('python2' 'gperf' 'yasm' 'mesa' 'ninja')
 optdepends=('kdebase-kdialog: needed for file dialogs in KDE'
             'gnome-keyring: for storing passwords in GNOME keyring'
             'kwallet: for storing passwords in KWallet')
-options=('!strip')
 install=chromium.install
 source=(https://commondatastorage.googleapis.com/chromium-browser-official/$pkgname-$pkgver.tar.xz
         chromium-launcher-$_launcher_ver.tar.gz::https://github.com/foutrelis/chromium-launcher/archive/v$_launcher_ver.tar.gz
@@ -59,15 +58,6 @@ sha256sums=('d202d3eb0b3a979ad0e6d0d0c4faa93222c5e5b664d88b9f3a0343899fe7dd7d'
 _google_api_key=AIzaSyDwr302FpOSkGRpLlUpPThNTDPbXcIn_FM
 _google_default_client_id=413772536636.apps.googleusercontent.com
 _google_default_client_secret=0ZChLK6AxeA3Isu96MkwqDR4
-
-# We can't build (P)NaCL on i686 because the toolchain is x86_64 only and the
-# instructions on how to build the toolchain from source don't work that well
-# (at least not from within the Chromium 39 source tree).
-# https://sites.google.com/a/chromium.org/dev/nativeclient/pnacl/building-pnacl-components-for-distribution-packagers
-_build_nacl=false
-if [[ $CARCH == i686 ]]; then
-  _build_nacl=false
-fi
 
 prepare() {
   cd "$srcdir/$pkgname-$pkgver"
@@ -97,14 +87,6 @@ prepare() {
   # There are still a lot of relative calls which need a workaround
   mkdir -p "$srcdir/python2-path"
   ln -sf /usr/bin/python2 "$srcdir/python2-path/python"
-
-  # Download the PNaCL toolchain on x86_64; i686 toolchain is no longer provided
-  if [[ $_build_nacl == true ]]; then
-    python2 build/download_nacl_toolchains.py \
-      --packages nacl_x86_newlib,pnacl_newlib,pnacl_translator \
-      sync --extract
-    #python2 tools/clang/scripts/update.py
-  fi
 
   # Remove bundled libraries for which we will use the system copies; this
   # *should* do what the remove_bundled_libraries.py script does, with the
@@ -157,8 +139,8 @@ build() {
     'use_sysroot=false'
     'enable_hangout_services_extension=true'
     'enable_widevine=true'
-    "enable_nacl=$_build_nacl"
-    "enable_nacl_nonsfi=$_build_nacl"
+    'enable_nacl=false'
+    'enable_nacl_nonsfi=false'
     "google_api_key=\"${_google_api_key}\""
     "google_default_client_id=\"${_google_default_client_id}\""
     "google_default_client_secret=\"${_google_default_client_secret}\""
@@ -194,16 +176,6 @@ package() {
     "$pkgdir/usr/lib/chromium/"
 
   ln -s /usr/lib/chromium/chromedriver "$pkgdir/usr/bin/chromedriver"
-
-  # Manually strip binaries so that 'nacl_irt_*.nexe' is left intact
-  strip $STRIP_BINARIES "$pkgdir/usr/lib/chromium/"{chromium,chrome-sandbox,chromedriver}
-  strip $STRIP_SHARED "$pkgdir/usr/lib/chromium/libwidevinecdmadapter.so"
-
-  if [[ $_build_nacl == true ]]; then
-    cp out/Release/nacl_helper{,_bootstrap} out/Release/nacl_irt_*.nexe \
-      "$pkgdir/usr/lib/chromium/"
-    strip $STRIP_BINARIES "$pkgdir/usr/lib/chromium/"nacl_helper{,_bootstrap}
-  fi
 
   for size in 22 24 48 64 128 256; do
     install -Dm644 "chrome/app/theme/chromium/product_logo_$size.png" \
