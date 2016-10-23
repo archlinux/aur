@@ -41,13 +41,13 @@ build() {
 package() {
 	cd $pkgdir
 	mkdir -p opt
-	mkdir -p etc/openhab/addons-enabled
 	mkdir -p etc/conf.d
 	mkdir -p usr/lib/systemd/system
 	cp $srcdir/openhab.service usr/lib/systemd/system
 	cp -r $srcdir/openhab-runtime opt
 	cp $srcdir/openhab etc/conf.d
-	mv opt/openhab-runtime/configurations etc/openhab/configurations
+	mv opt/openhab-runtime/addons etc/openhab/
+	mv opt/openhab-runtime/configurations etc/openhab/
 	ln -s /etc/openhab/configurations opt/openhab-runtime/configurations
-	ln -s /etc/openhab/addons-enabled opt/openhab-runtime/addons
+	ln -s /etc/openhab/addons opt/openhab-runtime/addons
 }
