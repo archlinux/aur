@@ -6,7 +6,7 @@
 _pkgbasename=ffmpeg
 pkgname=lib32-$_pkgbasename
 pkgver=3.1.3
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="Complete solution to record, convert and stream audio and video (32 bit)"
 arch=('x86_64')
@@ -49,7 +49,7 @@ sha256sums=(
 build() {
   cd ${_pkgbasename}-${pkgver}
 
-  #Patching FFMPEG to compile againt a change in OpenJPEG2 static library until this patch is integrated in next release
+  #Patching FFMPEG to compile against a change in OpenJPEG2 static library until this patch is integrated in next release
   patch -p1 < ../ffmpeg_opj2.patch
 
   export PKG_CONFIG_PATH="/usr/lib32/pkgconfig"
