@@ -1,0 +1,6 @@
+pkg/
+src/
+zita-bls1-*.tar.xz
+zita-bls1-*.src.tar.gz
+zita-bls1-*.tar.bz2
+.AURINFO
