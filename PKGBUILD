@@ -38,8 +38,8 @@ prepare() {
   cd "${srcdir}/indicator-cpufreq"
 
   #Fixes
-  patch -Np1 -i "${srcdir}/0001_Use_cpupower.patch"
-  patch -Np1 -i "${srcdir}/cpu-online.patch"
+  patch -Np1 < "${srcdir}/0001_Use_cpupower.patch"
+  patch -Np2 < "${srcdir}/cpu-online.patch"
 
   #Indicator-Powersave
   patch -Np1 -i "${srcdir}/indicator-powersave.patch"
