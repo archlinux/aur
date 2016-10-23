@@ -2,7 +2,7 @@
 # Contributor: SpepS <dreamspepser at yahoo dot it>
 
 pkgname=zita-dpl1
-pkgver=0.0.2
+pkgver=0.1.0
 pkgrel=1
 pkgdesc="A look-ahead digital peak level limiter"
 arch=(i686 x86_64)
@@ -10,7 +10,7 @@ url="http://kokkinizita.linuxaudio.org/linuxaudio/"
 license=('GPL' 'custom')
 depends=('cairo' 'clthreads>=2.4.0' 'clxclient>=3.9' 'jack')
 source=("${url}downloads/$pkgname-$pkgver.tar.bz2")
-md5sums=('6f76ef405396940409f5da89c37a775a')
+md5sums=('32e82022c7d9fd996c998877de165594')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver/source"
