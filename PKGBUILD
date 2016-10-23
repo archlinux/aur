@@ -5,7 +5,7 @@
 
 pkgname=eggdrop
 pkgver=1.6.21
-pkgrel=7
+pkgrel=8
 pkgdesc="The world's most popular Open Source IRC bot."
 arch=('i686' 'x86_64')
 url="http://www.eggheads.org/"
@@ -31,7 +31,8 @@ readonly -a _sharedir _modulesdir _scriptsdir _helpdir _bin _mandir
 
 build() {
   cd "$srcdir/$pkgname$pkgver"
-  patch -p1 < "$srcdir/utf8.patch"
+# UNCOMMENT IF YOU NEED UTF-8 SUPPORT
+#  patch -p1 < "$srcdir/utf8.patch"
 
   # Don't complain about language files on startup.
   sed -i "s|\"./language\"|\"$_sharedir/$pkgname/language\"|g" src/eggdrop.h
