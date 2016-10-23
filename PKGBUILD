@@ -1,6 +1,6 @@
 # Maintainer: jerry73204 <jerry73204@gmail.com>
 pkgname=python2-pwntools
-pkgver=3.0.1
+pkgver=3.1.0
 pkgrel=1
 pkgdesc='The CTF framework used by Gallopsled in every CTF'
 arch=('any')
@@ -20,11 +20,13 @@ depends=('python2>=2.7'
          'python2-pysocks'
          'python2-dateutil'
          'python2-pygments'
+         'python2-pypandoc'
+         'python2-packaging'
          'ropgadget')
 conflicts=('python2-pwntools' 'python2-pwntools-git')
 options=('strip')
 source=("https://github.com/Gallopsled/pwntools/archive/${pkgver}.tar.gz")
-sha1sums=('13ea6800d45738f322f58578f1dbb2c1a9886e33')
+sha1sums=('4aeb40f60f33fd8a8a66026c3f051c0ef6bd412b')
 
 _repodir="pwntools-${pkgver}"
 
