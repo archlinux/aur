@@ -1,3 +1,4 @@
+# Maintainer: Alexandre Demers <alexandre.f.demers@gmail.com>
 # Contributor: Johannes Dewender  arch at JonnyJD dot net
 # Contributor: Ionut Biru <ibiru@archlinux.org>
 # Contributor: Tom Newsom <Jeepster@gmx.co.uk>
@@ -6,27 +7,44 @@
 _pkgbasename=ffmpeg
 pkgname=lib32-$_pkgbasename
 pkgver=3.1.3
-pkgrel=2
+pkgrel=3
 epoch=1
 pkgdesc="Complete solution to record, convert and stream audio and video (32 bit)"
 arch=('x86_64')
 url="http://ffmpeg.org/"
 license=('GPL3')
 depends=("$_pkgbasename"
-      'lib32-alsa-lib' 'lib32-fontconfig' 'lib32-fribidi'
-      'lib32-gnutls' 'lib32-gsm' 'lib32-lame' 'lib32-libass'
+      'lib32-alsa-lib'
+      'lib32-fontconfig'
+      'lib32-fribidi'
+      'lib32-gnutls'
+      'lib32-gsm'
+      'lib32-lame'
+      'lib32-libass'
       'lib32-libavc1394'
-      'lib32-libbluray' 'lib32-libiec61883'
-      'lib32-libmodplug' 'lib32-libpulse'
-      'lib32-libtheora' 'lib32-libva' 'lib32-libvdpau'
-      'lib32-libwebp' 'lib32-opencore-amr' 'lib32-openjpeg'
-      'lib32-opus' 'lib32-schroedinger'
-      'lib32-sdl' 'lib32-speex' 'lib32-v4l-utils'
+      'lib32-libbluray'
+      'lib32-libiec61883'
+      'lib32-libmodplug'
+      'lib32-libpulse'
+      'lib32-jack'
+      'lib32-libtheora'
+      'lib32-libva'
+      'lib32-libvdpau'
+      'lib32-libwebp'
+      'lib32-opencore-amr' 
+      'lib32-openjpeg'
+      'lib32-openjpeg2'
+      'lib32-opus'
+      'lib32-schroedinger'
+      'lib32-sdl'
+      'lib32-speex'
+      'lib32-v4l-utils'
       'lib32-libxv'
-      'lib32-xvidcore' 'lib32-zlib'
-      'lib32-libvorbis' 'libvorbis.so' 'libvorbisenc.so'
-      'lib32-libx264' 'libx264.so'
-      'lib32-libvpx' 'libvpx.so'
+      'lib32-xvidcore'
+      'lib32-zlib'
+      'lib32-libvorbis'
+      'lib32-libx264'
+      'lib32-libvpx'
       )
 makedepends=('hardening-wrapper' 'lib32-ladspa' 'yasm')
 optdepends=('lib32-ladspa: LADSPA filters')
@@ -43,7 +61,7 @@ validpgpkeys=('FCF986EA15E6E293A5644F10B4322F04D67658D8')
 sha256sums=(
       '58bc89c65dd114d874efbf76f76368d03b5e407f0a3f42d5b40801c280968a38'
       'SKIP'
-      'SKIP'
+      '336f14fa497598fbd437fc780305fa7c576fd6cd44aaef77b0b4f61448f55fb8'
 )
 
 build() {
