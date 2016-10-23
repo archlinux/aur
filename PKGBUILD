@@ -1,7 +1,7 @@
 # Maintainer: Tomislav Ivek <tomislav.ivek@gmail.com>
 
 pkgname=conan-git
-pkgver=0.13.3.r18.g63f7364
+pkgver=0.14.1.r9.g12cd380
 pkgrel=1
 pkgdesc="A distributed, open source, C/C++ package manager."
 arch=('any')
@@ -39,4 +39,6 @@ package() {
   python setup.py install --optimize=1 --root=${pkgdir}
   install -m755 -d "${pkgdir}/usr/share/licenses/conan"
   install -m644 LICENSE.md "${pkgdir}/usr/share/licenses/conan/"
+  install -m755 -d "${pkgdir}/usr/share/doc/conan"
+  install -m644 contributors.txt "${pkgdir}/usr/share/doc/conan/"
 }

@@ -1,6 +1,6 @@
 pkgbase = conan-git
 	pkgdesc = A distributed, open source, C/C++ package manager.
-	pkgver = 0.13.3.r18.g63f7364
+	pkgver = 0.14.1.r9.g12cd380
 	pkgrel = 1
 	url = https://conan.io
 	arch = any
