@@ -4,7 +4,7 @@
 _dbname=cremona_ellcurve
 pkgname=sage-data-$_dbname
 pkgver=20160211
-pkgrel=1
+pkgrel=2
 pkgdesc="John Cremona's large database of elliptic curves for SageMath"
 arch=(any)
 url="http://www.sagemath.org"
@@ -17,6 +17,6 @@ md5sums=('4bfe0c7630dfcadfe4ec1d0c635ce423')
 
 package() {
   cd src
-  mkdir -p "$pkgdir"/usr/share/sage/cremona
-  install -m644 * "$pkgdir"/usr/share/sage/cremona
+  mkdir -p "$pkgdir"/usr/share/cremona
+  install -m644 * "$pkgdir"/usr/share/cremona
 }
