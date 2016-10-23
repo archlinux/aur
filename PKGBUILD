@@ -9,7 +9,7 @@
 declare -rgA _system_libs=(
   [flac]=flac
   [harfbuzz-ng]=harfbuzz-icu
-  #[libjpeg]=libjpeg   # Error during build
+  [libjpeg]=libjpeg
   [libpng]=libpng
   [libvpx]=libvpx
   [libwebp]=libwebp
@@ -92,7 +92,7 @@ prepare() {
   # *should* do what the remove_bundled_libraries.py script does, with the
   # added benefit of not having to list all the remaining libraries
   local _lib
-  for _lib in ${!_system_libs[@]}; do
+  for _lib in ${!_system_libs[@]} ${_system_libs[libjpeg]+libjpeg_turbo}; do
     find -type f -path "*third_party/$_lib/*" \
       \! -path "*third_party/$_lib/chromium/*" \
       \! -path "*third_party/$_lib/google/*" \
