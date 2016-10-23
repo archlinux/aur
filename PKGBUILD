@@ -10,9 +10,9 @@ depends=('java-environment')
 source=('http://overlap2d.com/bin/overlap2d.tar.gz'
     'overlap2d.desktop'
     'http://overlap2d.com/wp-content/themes/overlap2d-v3/img/logo.png')
-md5sums=('cbb5c07dd380ac0b17c545ee044068fd'
+md5sums=('41862a0f623f7dc17f4f3ddbe0f05c26'
      '8089e89b4d6e4fc55e4487da130d7165'
-     '41862a0f623f7dc17f4f3ddbe0f05c26')
+     '1577999c9e742b7259d57e3b0987c864')
  
 build() {
   cd $srcdir
