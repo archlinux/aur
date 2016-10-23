@@ -6,8 +6,8 @@
 
 _pkgbasename=ffmpeg
 pkgname=lib32-$_pkgbasename
-pkgver=3.1.3
-pkgrel=3
+pkgver=3.1.5
+pkgrel=1
 epoch=1
 pkgdesc="Complete solution to record, convert and stream audio and video (32 bit)"
 arch=('x86_64')
@@ -55,20 +55,15 @@ provides=(
 )
 source=(
       "http://ffmpeg.org/releases/$_pkgbasename-$pkgver.tar.bz2"{,.asc}
-      "https://trac.ffmpeg.org/raw-attachment/ticket/5694/ffmpeg_opj2.patch"
 )
 validpgpkeys=('FCF986EA15E6E293A5644F10B4322F04D67658D8')
 sha256sums=(
-      '58bc89c65dd114d874efbf76f76368d03b5e407f0a3f42d5b40801c280968a38'
+      '2400882a2c7795c74f0abebc28d267f2796510fb69ba324b0e9f16cc8dbb0d2b'
       'SKIP'
-      '336f14fa497598fbd437fc780305fa7c576fd6cd44aaef77b0b4f61448f55fb8'
 )
 
 build() {
   cd ${_pkgbasename}-${pkgver}
-
-  #Patching FFMPEG to compile against a change in OpenJPEG2 static library until this patch is integrated in next release
-  patch -p1 < ../ffmpeg_opj2.patch
 
   export PKG_CONFIG_PATH="/usr/lib32/pkgconfig"
 
