@@ -4,13 +4,13 @@
 
 pkgname=lib32-dbus-glib
 pkgver=0.106
-pkgrel=1
+pkgrel=2
 pkgdesc='GLib bindings for DBUS'
 arch=('x86_64')
 license=('GPL')
 url='http://www.freedesktop.org/wiki/Software/DBusBindings'
-depends=('dbus-glib' 'lib32-glib2' 'lib32-glibc' 'lib32-libdbus')
-makedepends=('gcc-multilib')
+depends=('dbus-glib' 'lib32-glib2' 'lib32-glibc' 'lib32-dbus')
+makedepends=('gcc-multilib' 'lib32-expat')
 options=('!emptydirs')
 source=("http://dbus.freedesktop.org/releases/dbus-glib/dbus-glib-${pkgver}.tar.gz")
 sha256sums=('b38952706dcf68bad9c302999ef0f420b8cf1a2428227123f0ac4764b689c046')
