@@ -1,4 +1,4 @@
-#Maintainer: hexchain <i at hexchain.org>
+# Maintainer: hexchain <i at hexchain.org>
 pkgname=hmcl
 pkgver=2.5.3.88
 pkgrel=2
