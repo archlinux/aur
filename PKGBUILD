@@ -6,13 +6,13 @@
 
 pkgname=lib32-fluidsynth
 pkgver=1.1.6
-pkgrel=1
+pkgrel=2
 pkgdesc='A real-time software synthesizer based on the SoundFont 2 specifications'
 arch=('x86_64')
 url='http://www.fluidsynth.org/'
 license=('LGPL')
 depends=('fluidsynth' 'lib32-alsa-lib' 'lib32-glib2' 'lib32-glibc' 'lib32-jack'
-         'lib32-libdbus' 'lib32-libpulse' 'lib32-libsndfile' 'lib32-readline')
+         'lib32-dbus' 'lib32-libpulse' 'lib32-libsndfile' 'lib32-readline')
 makedepends=('cmake' 'gcc-multilib' 'lib32-ladspa')
 optdepends=('pulseaudio: PulseAudio sound support')
 source=("http://downloads.sourceforge.net/fluidsynth/fluidsynth-$pkgver.tar.gz")
