@@ -2,7 +2,7 @@
 
 _realname=CPU-X
 pkgname=cpu-x
-pkgver=3.1.1
+pkgver=3.1.2
 pkgrel=1
 pkgdesc="A Free software that gathers information on CPU, motherboard and more"
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ license=('GPL3')
 depends=('gtk3' 'ncurses' 'curl' 'libcpuid-git' 'pciutils' 'procps-ng')
 makedepends=('cmake' 'nasm')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/X0rg/CPU-X/archive/v$pkgver.tar.gz")
-md5sums=('bc7f7a843ba610f9983c2637f38edcab')
+md5sums=('31c4dfa0a35c35b35c1c1fb34d951583')
 
 prepare() {
 	msg2 "Make 'build' directory..."
