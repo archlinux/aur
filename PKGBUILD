@@ -1,7 +1,7 @@
 # Maintainer: Yunhui Fu <yhfudev at gmail dot com>
 
 pkgname=libucd-git
-pkgver=553d21c
+pkgver=r110.6e122a1
 pkgrel=1
 pkgdesc="Universal Charset Detector C/C++ API"
 arch=('i686' 'x86_64' 'arm')
@@ -22,10 +22,8 @@ md5sums=(
          )
 
 pkgver() {
-    cd "$srcdir/$pkgname"
-    local ver="$(git show | grep commit | awk '{print $2}'  )"
-    #printf "r%s" "${ver//[[:alpha:]]}"
-    echo ${ver:0:7}
+  cd "$pkgname"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
