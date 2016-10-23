@@ -1,24 +1,31 @@
 # Maintainer: Christopher Arndt <aur -at- chrisarndt -dot- de>
 
 pkgname=oxefmsynth
-pkgver=1.3.4
-pkgrel=2
+pkgver=1.3.5
+pkgrel=1
 pkgdesc="An 8-OP FM synthesizer VST plug-in"
 arch=('i686' 'x86_64')
 url="http://www.oxesoft.com/"
 license=('GPL3')
 depends=('mesa')
-source=("https://github.com/oxesoft/oxefmsynth/archive/v${pkgver}.zip"
-        'http://www.steinberg.net/sdk_downloads/vstsdk360_22_11_2013_build_100.zip')
-md5sums=('44841c42b5a3d934f27d3cec73b20b57'
-         '1ac422ebb4aa2e86061278412c347b55')
+makedepends=('steinberg-vst36')
+source=("https://github.com/oxesoft/oxefmsynth/archive/v${pkgver}.zip")
+md5sums=('d89f70be3a0b7bfb9883e08b86858b57')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
 
-  export VSTSDK_PATH="$srcdir/VST3\\ SDK"
-  # See: http://stackoverflow.com/questions/10789012/g-cdecl-calling-convention-with-steinberg-vst-sdk
-  export CFLAGS='-D__cdecl=""'
+  export VSTSDK_PATH="/usr/include/vst36"
+  export CFLAGS="$CFLAGS -std=c++11 -Wno-narrowing"
+  for file in Makefile.vstlinux \
+        src/vst/oxevst.h \
+        src/vst/oxevsteditor.h \
+        src/vst/oxevsteditor.cpp \
+        src/vst/vsthostinterface.cpp; do
+    sed -i -e 's|public.sdk/source/vst2.x/||g' "$file"
+  done
+  sed -i -e 's| "VERSION_STR| " VERSION_STR|' src/synth/constants.h
+  sed -i -e 's|BMP_PATH| BMP_PATH |' src/toolkits/xlibtoolkit.cpp
   make -f Makefile.vstlinux LIBS="-lX11 -lGL -lpthread -ldl"
 }
 
