@@ -2,7 +2,7 @@
 
 pkgname=kde1-kdetoys
 pkgver=1.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Historical copy of the toys module of KDE 1, adapted to compile on modern systems (circa. 2016)"
 arch=('i686' 'x86_64')
 url="https://github.com/KDE/kde1-kdetoys"
@@ -10,9 +10,9 @@ license=("GPL2")
 groups=("kde1")
 depends=("qt1" "kde1-kdelibs")
 makedepends=("cmake")
-_commit="b57e80c105e3c1269c23b438e9be3974ef60c943"
+_commit="16f863f984ead0f72fdbfb05062e3e603b0e674b"
 source=("https://github.com/z3ntu/$pkgname/archive/$_commit.zip")
-sha256sums=('ce5233e61fd313b3582958e0655131f44b06103c6e382634e915ffb980f3eaeb')
+sha256sums=('cc7d6a843f13b332a5da111f165756f4c8345b6a8940ef3b04c1325f4116e5de')
 
 #prepare() {
 #  cd $srcdir/$pkgname-$_commit
@@ -23,7 +23,7 @@ build() {
   cd $srcdir/$pkgname-$_commit
   mkdir -p build
   cd build
-  cmake .. -DCMAKE_INSTALL_PREFIX='/usr' -DCMAKE_LIBRARY_PATH='/opt/kde1/lib64'
+  cmake .. -DCMAKE_INSTALL_PREFIX='/usr' -DCMAKE_LIBRARY_PATH='/opt/kde1/lib'
   make
 }
 
