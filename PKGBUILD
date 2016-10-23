@@ -5,18 +5,19 @@
 
 _pkgname=https-everywhere
 pkgname=firefox-extension-${_pkgname}
-pkgver=5.2.5
-pkgrel=2
-_file=507323
+pkgver=5.2.6
+pkgrel=1
+_file=523792
 pkgdesc="Plugin for firefox which ensures you are using https whenever it's possible."
 license=('GPL2')
 arch=('any')
 url="https://www.eff.org/https-everywhere"
 depends=("firefox")
 makedepends=("unzip")
-source=("${_pkgname}-${pkgver}.xpi::https://addons.mozilla.org/firefox/downloads/file/${_file}/${_pkgname/-/_}-${pkgver}-an+tb+sm+fx.xpi")
+# Apparently, API endpoints are all the rage -- so this isn't actually a file...
+source=("${_pkgname}-${pkgver}.xpi::https://addons.mozilla.org/firefox/downloads/file/${_file}/")
 noextract=("${_pkgname}-${pkgver}.xpi")
-sha256sums=('b7142c6eb2b869a9cbfe8f6cb68f123c3914775c010720dbeea1b7bcafa1e562')
+sha256sums=('e8e1e22f1e48e4f63f81a0e55cd9490003cacccb5724f0ae1225ac57cad67f8a')
 
 prepare() {
   cd "$srcdir"
@@ -26,13 +27,6 @@ prepare() {
 
 package() {
   cd "${srcdir}"
-
-  _signdata="${_pkgname}-${pkgver}/META-INF/mozilla.rsa"
-  if [[ ! -f "${_signdata}" ]] || ! grep -qs Production1 "${_signdata}"; then
-    warning "No valid signing data from AMO. This extension will *NOT* work unless you disable extension verification in Firefox."
-    # Add install file to print warning.
-    install=firefox-extension-verification.install
-  fi
 
   _extension_id="$(sed -n '/.*<em:id>\(.*\)<\/em:id>.*/{s//\1/p;q}' ${_pkgname}-${pkgver}/install.rdf)"
   _extension_dest="${pkgdir}/usr/lib/firefox/browser/extensions/${_extension_id}"
