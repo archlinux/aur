@@ -1,6 +1,6 @@
 # Maintainer: substanceof <vk-cli.dev[at]ya[dot]ru>
 pkgname=vk-cli-git
-pkgver=0.7.4.r1.b0d4016
+pkgver=r958.2f6e595
 pkgrel=1
 pkgdesc="A console (ncurses) client for vk.com written in D (git upstream)"
 arch=('x86_64' 'i686')
@@ -16,6 +16,11 @@ source=("git+https://github.com/HaCk3Dq/vk.git")
 md5sums=('SKIP')
 
 _gitname=vk
+
+pkgver() {
+  cd "$srcdir/$_gitname"
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
 
 build() {
   cd "$srcdir/$_gitname"
