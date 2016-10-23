@@ -1,6 +1,6 @@
 # Maintainer: Maxime Arthaud <maxime@arthaud.me>
 
-pkgname=snowman
+pkgname=snowman-git
 pkgver=0.1.0.r0.g609791c
 pkgrel=1
 pkgdesc="Native code to C/C++ decompiler (supporting x86, amd64 and arm)"
