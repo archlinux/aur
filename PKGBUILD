@@ -12,7 +12,7 @@
 pkgbase=mesa-git
 pkgname=('opencl-mesa-git' 'mesa-vulkan-intel-git' 'mesa-vulkan-radeon-git' 'libva-mesa-driver-git' 'mesa-vdpau-git' 'mesa-libgl-git' 'mesa-git')
 pkgdesc="an open-source implementation of the OpenGL specification, git version"
-pkgver=12.1.0_devel.85418.4d7d982
+pkgver=13.1.0_devel.85939.7b7eb71
 pkgrel=1
 arch=('i686' 'x86_64')
 makedepends=('python2-mako' 'libxml2' 'libx11' 'glproto' 'libdrm>=2.4.66' 'dri2proto' 'dri3proto' 'presentproto' 
@@ -155,7 +155,7 @@ package_mesa-vulkan-intel-git() {
   mv -v "${srcdir}"/fakeinstall/usr/lib/libvulkan_intel.so "${pkgdir}"/usr/lib
   mv -v "${srcdir}"/fakeinstall/usr/include/vulkan/vulkan_intel.h "${pkgdir}"/usr/include/vulkan
   
-  mv -v ${srcdir}/fakeinstall/usr/share/vulkan/icd.d/intel_icd.json ${pkgdir}/usr/share/vulkan/icd.d
+  mv -v ${srcdir}/fakeinstall/usr/share/vulkan/icd.d/intel_icd.*.json ${pkgdir}/usr/share/vulkan/icd.d
 
   install -m755 -d "${pkgdir}"/usr/share/licenses/mesa-vulkan-intel-git
   install -m644 "${srcdir}"/LICENSE "${pkgdir}"/usr/share/licenses/mesa-vulkan-intel-git/
