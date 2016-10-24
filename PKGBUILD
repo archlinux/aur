@@ -3,10 +3,11 @@
 
 pkgname=pypubsub-git
 gitname=pypubsub
-pkgver=git
+pkgver=20161021.0a0e49c
 pkgver() {
   cd "$gitname"
-  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  git log -1 --format=%cd.%h --date=short|tr -d -
+  #git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 pkgrel=1
 pkgdesc="Python Publish-Subscribe Package"
@@ -19,11 +20,11 @@ source=("git+https://github.com/schollii/pypubsub.git")
 md5sums=('SKIP')
 
 build() {
-    cd "$srcdir/$_pkgname-$pkgver"
+    cd "$srcdir/$gitname"
     python2 setup.py build
 }
 
 package() {
-    cd "$srcdir/$_pkgname-$pkgver"
-    python2 setup.py install --prefix=/usr --root="$pkgdir" --optimize=1 --skip-build
+    cd "$srcdir/$gitname"
+    python2 setup.py install --prefix=/usr --root="$pkgdir" --optimize=1 --skip-bui$
 }
