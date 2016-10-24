@@ -9,7 +9,7 @@ _godver=4.8
 _badver=4.9
 pkgver=0.8
 _extramodules=extramodules-$_godver-pf # Don't forget to update bbswitch.install
-pkgrel=30
+pkgrel=31
 pkgdesc="Kernel module allowing to switch dedicated graphics card on Optimus laptops"
 arch=('i686' 'x86_64')
 url="http://github.com/Bumblebee-Project/bbswitch"
@@ -17,11 +17,11 @@ license=('GPL')
 depends=("linux-pf>=$_godver" "linux-pf<$_badver")
 makedepends=("linux-pf-headers")
 install=bbswitch.install
-source=("https://github.com/Bumblebee-Project/bbswitch/archive/v${pkgver}.tar.gz")
-md5sums=('5b116b31ace3604ddf9d1fc1f4bc5807')
+source=(git+https://github.com/Bumblebee-Project/bbswitch.git#branch=pm-rework)
+md5sums=('SKIP')
 
 build() {
-  cd ${srcdir}/${_pkgname}-${pkgver}
+  cd ${srcdir}/${_pkgname}
 
   _kernver="$(cat /usr/lib/modules/${_extramodules}/version)"
 
