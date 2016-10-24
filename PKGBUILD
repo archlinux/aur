@@ -6,17 +6,26 @@
 # Contributor: Marius <marius at matamare dot ro>
 
 pkgname=gnome-colors-icon-theme
-pkgver=5.5.1
-pkgrel=3
+epoch=1
+pkgver=0.r217.g8689d1d
+_commit=8689d1d
+pkgrel=1
 pkgdesc='GNOME-Colors icon theme'
 arch=('any')
-url='http://gnome-colors.googlecode.com'
+url='https://github.com/gnome-colors/gnome-colors'
 license=('GPL2')
-source=(http://gnome-colors.googlecode.com/files/gnome-colors-$pkgver.tar.gz)
-md5sums=('8ec81b556bac351817bd56a1701dbbfb')
+makedepends=('git' 'inkscape')
+source=("git://github.com/gnome-colors/gnome-colors.git#commit=${_commit}")
+sha256sums=('SKIP')
+
+build() {
+	cd "${srcdir}/gnome-colors/gnome-colors/"
+
+	make
+}
 
 package() {
-	cd "${srcdir}"
+	cd "${srcdir}/gnome-colors/gnome-colors/"
 
 	make DESTDIR="${pkgdir}"/ install
 }
