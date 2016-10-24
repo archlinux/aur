@@ -9,27 +9,53 @@
 
 pkgname=arduino
 pkgver=1.6.12
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="Arduino prototyping platform SDK"
-arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h') # TODO remove arm once moved into community
 url="https://github.com/arduino/Arduino"
 license=('GPL' 'LGPL')
-depends=('gtk2' 'desktop-file-utils' 'shared-mime-info' 'java-runtime=8' 'avrdude')
-makedepends=('java-environment=8' 'apache-ant' 'unzip')
-provides=('arduino-builder')
-conflicts=('arduino-builder')
-options=(!strip staticlibs)
+depends=('gtk2' 'desktop-file-utils' 'shared-mime-info' 'java-runtime=8' 'arduino-builder')
+makedepends=('java-environment=8' 'apache-ant' 'unzip') # TODO remove unzip once all deps are resolved
+optdepends=('arduino-docs: Offline documentation for arduino'
+            'arduino-avr-core: AVR core with upstream avr-gcc and avrdude')
+options=(!strip)
 install="arduino.install"
 source=("https://github.com/arduino/Arduino/archive/${pkgver}.tar.gz"
-        "arduino.sh")
+        "https://github.com/arduino-libraries/WiFi101-FirmwareUpdater-Plugin/releases/download/v0.8.0/WiFi101-Updater-ArduinoIDE-Plugin-0.8.0.zip"
+        "https://downloads.arduino.cc/libastylej-2.05.1-3.zip"
+        "https://downloads.arduino.cc/liblistSerials/liblistSerials-1.1.4.zip"
+        "https://downloads.arduino.cc/tools/arduino-builder-linux64-1.3.21_r1.tar.bz2"
+        "arduino.sh"
+        "build.patch")
 sha512sums=('2d386ddf26babc920767db9062304b75bf0b6b12ac469a33597b9b8abcc306a1ea6c18dd8b59f51fa2ecd7ffd66f36e80ade1953fd104cf29f0d74b5ab9da2d9'
-            '6dae08b8687e897ed370cc51cfeeba9020bb749356acfd367c796bf34fb43b763888340501be6a577859c19c37fe857be2b8fb52f1295769403b8e826c4e3f28')
+            'b4ef0f253c56529eef52fad353f8e448f1756714a7fcd61370d7fabab61d4d09867b82301b2d30e4698f2c5b70b202e7536fa16a98e5fab0210c2c7d8f977e78'
+            '7f82d64e34ef2d85a6b037caeecfa338b72f8edfc57a9903af3ab89b1d42cf7dfd9a6170abe8131ae3e6506850d82ed5092c3b08983a16d9c80319cd24c14555'
+            'db605a53bbe8ce9da2387e991da2401054bf25f6172c4ffc72cba1fff8c44d819ed967f7f0e666e38ce967359573f6e3c544774832dd446f8107849ee76aaaba'
+            '223b81ae4cdb14962e3e6b271f78a88c055185785991d0ff32b3dbb3db9a4861cec495e5e726718df484e8c9901f5d3f0650d4d1e3b8d7bdb8f197c23222e748'
+            '6dae08b8687e897ed370cc51cfeeba9020bb749356acfd367c796bf34fb43b763888340501be6a577859c19c37fe857be2b8fb52f1295769403b8e826c4e3f28'
+            '71d36dcc21b399a9ebe70801f5738687d8c309ef0410bfb8b7f540d12d5df1771c09ecef8a271cdff492523b5a15e2ffb1b51b62cfccd6761eae28d0ffabcc02')
+
+prepare()
+{
+    # Patch arduino build process. See PR: https://github.com/arduino/Arduino/pull/5438
+    cd "${srcdir}/Arduino-${pkgver}"
+    patch -Np1 -i "${srcdir}/build.patch"
+
+    # echo -e "\n# By default, don't notify the user of a new upstream version." \
+    #         "\n# https://bugzilla.redhat.com/show_bug.cgi?id=773519" \
+    #         "\nupdate.check=false" \
+    #     >> build/shared/lib/preferences.txt
+}
 
 build() {
     cd "Arduino-${pkgver}/build"
+
+    # Compile with java8
     export PATH=/usr/lib/jvm/java-8-openjdk/jre/bin/:$PATH
-    ant clean build
+
+    # Do not include their avr-core + tools and no docs. We build them seperately
+    ant clean build -Dlight_bundle=true -Dno_docs=true -Dlocal_sources=true
 }
 
 package() {
@@ -43,12 +69,20 @@ package() {
 
     # Create wrapper for java8 + buider and documentation symlink
     install -Dm755 "${srcdir}/arduino.sh" "${pkgdir}/usr/bin/arduino"
-    ln -s /usr/share/arduino/arduino-builder "${pkgdir}/usr/bin/arduino-builder"
-    ln -s /usr/share/arduino/reference "${pkgdir}/usr/share/doc/arduino"
 
-    # Fix avrdude (see https://github.com/arduino/Arduino/issues/5094)
-    rm -f "${pkgdir}/usr/share/arduino/hardware/tools/avr/bin/avrdude"{,_bin}
-    ln -s /usr/bin/avrdude "${pkgdir}/usr/share/arduino/hardware/tools/avr/bin/avrdude"
+    # Link arduino-builder, ctags, libastylej, libserialport and docs
+    # TODO ctags, astyle libserialport do not work yet
+    rm "${pkgdir}/usr/share/arduino/arduino-builder"
+    ln -s /usr/bin/arduino-builder "${pkgdir}/usr/share/arduino/arduino-builder"
+    # ctags TODO -> patch platform.txt and not the binary ln
+    #rm "${pkgdir}/usr/share/arduino/tools-builder/ctags/5.8-arduino10/ctags"
+    #ln -s /usr/bin/ctags "${pkgdir}/usr/share/arduino/tools-builder/ctags/5.8-arduino10/ctags"
+    #rm "${pkgdir}/usr/share/arduino/lib/libastylej.so"
+    #ln -s /usr/lib/libastyle-2.05.1.so "${pkgdir}/usr/share/arduino/lib/libastylej.so"
+    #rm "${pkgdir}/usr/share/arduino/lib/liblistSerialsj.so"
+    #ln -s /usr/lib/libserialport.so "${pkgdir}/usr/share/arduino/lib/liblistSerialsj.so"
+    rm -r "${pkgdir}/usr/share/arduino/reference"
+    ln -s /usr/share/doc/arduino "${pkgdir}/usr/share/arduino/reference"
 
     # Install desktop icons (keep a symlink for the arduino binary)
     cp -a lib/icons/* "${pkgdir}/usr/share/icons/hicolor"
