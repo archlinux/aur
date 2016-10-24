@@ -10,21 +10,21 @@ pkgdesc='Complete solution to record, convert and stream audio and video (with a
 arch=('i686' 'x86_64')
 url='http://ffmpeg.org/'
 license=('GPL3' 'custom:UNREDISTRIBUTABLE')
-depends=('alsa-lib' 'bzip2' 'fontconfig' 'fribidi' 'gnutls' 'gsm' 'lame'
-         'libass' 'libavc1394' 'libbluray' 'libiec61883' 'libmodplug'
+depends=('alsa-lib' 'bzip2' 'fontconfig' 'fribidi' 'gmp' 'gnutls' 'gsm' 'jack'
+         'lame' 'libass' 'libavc1394' 'libbluray' 'libiec61883' 'libmodplug'
          'libpulse' 'libsoxr' 'libssh' 'libtheora' 'libva' 'libvdpau' 'libwebp'
-         'netcdf' 'opencore-amr' 'openjpeg' 'opus' 'schroedinger' 'sdl' 'speex'
+         'opencore-amr' 'openjpeg' 'opus' 'schroedinger' 'sdl' 'speex'
          'v4l-utils' 'xvidcore' 'zlib'
          'libvidstab.so' 'libvorbis.so' 'libvorbisenc.so' 'libvpx.so'
-         'libx264.so' 'libx265.so'
-         'celt' 'chromaprint-fftw' 'faac' 'frei0r-plugins' 'jack' 'kvazaar'
+         'libx264.so' 'libx265.so' 'libnetcdf.so'
+         'celt' 'chromaprint-fftw' 'faac' 'frei0r-plugins' 'kvazaar'
          'ladspa' 'libbs2b' 'libcaca' 'libcdio-paranoia' 'libcl' 'libdc1394'
          'libebur128' 'libfdk-aac' 'libgme' 'libilbc' 'libmfx-git' 'libxv'
          'java-environment-common' 'mesa' 'nut-multimedia-git' 'openal'
          'opencl-headers' 'openh264' 'rubberband' 'rtmpdump' 'shine'
          'smbclient' 'snappy' 'tesseract' 'twolame' 'vid.stab' 'vo-aacenc'
          'vo-amrwbenc' 'wavpack' 'xavs' 'zeromq' 'zimg' 'zvbi')
-makedepends=('hardening-wrapper' 'libvdpau' 'yasm')
+makedepends=('hardening-wrapper' 'intel-media-sdk' 'libvdpau' 'yasm')
 optdepends=('intel-media-sdk: for Intel QSV encoding/decoding')
 conflicts=('ffmpeg' 'ffmpeg-git' 'ffmpeg-full-git')
 provides=('libavcodec.so' 'libavdevice.so' 'libavfilter.so' 'libavformat.so'
@@ -56,6 +56,7 @@ build() {
     --prefix=/usr \
     --extra-cflags="-I/usr/lib/jvm/$(archlinux-java get)/include \
                     -I/usr/lib/jvm/$(archlinux-java get)/include/linux" \
+    --extra-ldflags="-Wl,-rpath -Wl,/opt/intel/mediasdk/lib64" \
     --disable-debug \
     --disable-static \
     --disable-stripping \
