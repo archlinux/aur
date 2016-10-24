@@ -4,7 +4,7 @@
 _name=volnoti-brightness
 pkgname=volnoti-brightness-git
 pkgver=0.1.r3.gc5a94af
-pkgrel=1
+pkgrel=2
 pkgdesc="Lightweight volume and brightness notification for Linux using volnoti"
 url="https://github.com/hcchu/volnoti"
 arch=('i686' 'x86_64')
