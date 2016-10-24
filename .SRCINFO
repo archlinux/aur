@@ -1,7 +1,7 @@
 pkgbase = gulden-bin
 	pkgdesc = Gulden Cryptocurrency (binaries)
 	pkgver = 1.5.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.gulden.com/
 	arch = i686
 	arch = x86_64
@@ -19,13 +19,13 @@ pkgbase = gulden-bin
 	source = https://developer.gulden.com/images/branding/gwhite1024x1024.png
 	md5sums = f8207bf8ce855a1fb98a8c59daec169d
 	md5sums = d2cc8941bfa9b38e6920555b7c151947
-	md5sums = eb9603bb64fd13e3970b85e9fd9c50d5
-	md5sums = d2648f3e7453c62393a1b984c26c62e7
-	md5sums = 62af9894aed8a57a17b4b43bfe1773e3
-	md5sums = d5dff2053841cabd3071355712176b52
-	md5sums = 86280de84e083e83a61a130302089fdf
-	md5sums = a0aa03006422e8d2dfcb8183adc1353a
-	md5sums = 5b18d9291fcb67d605b4b3d7135f189e
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
 
 pkgname = gulden-bin
 

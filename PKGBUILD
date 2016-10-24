@@ -3,7 +3,7 @@
 pkgname=gulden-bin
 pkgver=1.5.5
 _version=155
-pkgrel=1
+pkgrel=2
 pkgdesc="Gulden Cryptocurrency (binaries)"
 arch=('i686' 'x86_64')
 url="https://www.gulden.com/"
@@ -35,13 +35,13 @@ for i in 16x16 32x32 64x64 128x128 256x256 512x512 1024x1024; do
 done
 
 md5sums+=('d2cc8941bfa9b38e6920555b7c151947'
-          'eb9603bb64fd13e3970b85e9fd9c50d5'
-          'd2648f3e7453c62393a1b984c26c62e7'
-          '62af9894aed8a57a17b4b43bfe1773e3'
-          'd5dff2053841cabd3071355712176b52'
-          '86280de84e083e83a61a130302089fdf'
-          'a0aa03006422e8d2dfcb8183adc1353a'
-          '5b18d9291fcb67d605b4b3d7135f189e')
+          'SKIP'
+          'SKIP'
+          'SKIP'
+          'SKIP'
+          'SKIP'
+          'SKIP'
+          'SKIP')
 
 package ()
 {
