@@ -1,7 +1,7 @@
 # Maintainer: Giancarlo Razzolini <grazzolini@gmail.com>
 pkgname=memlockd
 pkgver=1.1
-pkgrel=5
+pkgrel=6
 pkgdesc="A daemon that locks files into memory. It is meant to increase the chances of recovery from paging issues."
 arch=('i686' 'x86_64')
 url="https://doc.coker.com.au/projects/memlockd/"
