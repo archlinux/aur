@@ -1,7 +1,7 @@
 pkgbase = arduino-bin
 	pkgdesc = Arduino prototyping platform SDK
-	pkgver = 1.6.11
-	pkgrel = 2
+	pkgver = 1.6.12
+	pkgrel = 1
 	url = https://arduino.cc/en/Main/Software
 	install = arduino.install
 	arch = i686
@@ -14,21 +14,25 @@ pkgbase = arduino-bin
 	depends = desktop-file-utils
 	depends = shared-mime-info
 	depends = java-runtime=8
-	depends = avrdude
+	optdepends = arduino-avr-core: AVR core with upstream avr-gcc and avrdude
 	provides = arduino
+	provides = arduino-builder
+	provides = arduino-docs
 	conflicts = arduino
+	conflicts = arduino-builder
+	conflicts = arduino-docs
 	options = !strip
 	options = staticlibs
 	source = arduino.sh
 	sha512sums = 6dae08b8687e897ed370cc51cfeeba9020bb749356acfd367c796bf34fb43b763888340501be6a577859c19c37fe857be2b8fb52f1295769403b8e826c4e3f28
-	source_i686 = https://downloads.arduino.cc/arduino-1.6.11-linux32.tar.xz
-	sha512sums_i686 = 1819d3b5de13bce00fa96b411bca74ccbf5b9db5deb9c8ebf874b8a0c00d0d8e90277d4ec34961cc2fc1f810c1fac8cbe9bc93f737d95d6970f50b929a1484e3
-	source_x86_64 = https://downloads.arduino.cc/arduino-1.6.11-linux64.tar.xz
-	sha512sums_x86_64 = 252ae2ca085e598992cc1a8d067dd69c369789376aea75bb14cb3937317e77d14f239e9df4158fbabdb607ce7a04a59401747a0148db8957ce072075b10b5dee
-	source_armv6h = https://downloads.arduino.cc/arduino-1.6.11-linuxarm.tar.xz
-	sha512sums_armv6h = c06f18d9589f1252f75ad338a4011ed8905379d7737b14692d3a1ecbd5aea9013de3bcab11cc4e45d1d940ea3d5e7072d3b30bfc1eb760ed3d07ea75645f0d64
-	source_armv7h = https://downloads.arduino.cc/arduino-1.6.11-linuxarm.tar.xz
-	sha512sums_armv7h = c06f18d9589f1252f75ad338a4011ed8905379d7737b14692d3a1ecbd5aea9013de3bcab11cc4e45d1d940ea3d5e7072d3b30bfc1eb760ed3d07ea75645f0d64
+	source_i686 = https://downloads.arduino.cc/arduino-1.6.12-linux32.tar.xz
+	sha512sums_i686 = 27855ba3ad1be254aa570cc6f7d0747c59bd07df9eb78dd5691af44258596899ece4a5723817277dc9c71ae2bbe293425a928c0ce1e01fa02ca6a3af588f4977
+	source_x86_64 = https://downloads.arduino.cc/arduino-1.6.12-linux64.tar.xz
+	sha512sums_x86_64 = ff1d5e6506692abdda63b2f0ec8ec0acccdc6d24f2e16240e1527a56b64cd0e30113c7d9b2f3fba443de68981ac16a9943ca327386873d9a1154aaf2b6f448a0
+	source_armv6h = https://downloads.arduino.cc/arduino-1.6.12-linuxarm.tar.xz
+	sha512sums_armv6h = 870c0d036c92557a11ae25e98e31a43bde5e1bcceccbcca8ae84dfc81944989b92c742ee30d4f55eacd086fe56682e54e2fdacbb5c58e4be171b922fa86cbe64
+	source_armv7h = https://downloads.arduino.cc/arduino-1.6.12-linuxarm.tar.xz
+	sha512sums_armv7h = 870c0d036c92557a11ae25e98e31a43bde5e1bcceccbcca8ae84dfc81944989b92c742ee30d4f55eacd086fe56682e54e2fdacbb5c58e4be171b922fa86cbe64
 
 pkgname = arduino-bin
 
