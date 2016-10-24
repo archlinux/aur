@@ -1,0 +1,32 @@
+pkgbase = curl-http2
+	pkgdesc = An URL retrieval utility and library. With http2 support.
+	pkgver = 7.50.3
+	pkgrel = 1
+	url = http://curl.haxx.se
+	arch = i686
+	arch = x86_64
+	license = MIT
+	depends = ca-certificates
+	depends = krb5
+	depends = libidn
+	depends = libssh2
+	depends = openssl
+	depends = zlib
+	depends = nghttp2
+	provides = curl=7.50.3
+	provides = libcurl.so
+	conflicts = curl
+	conflicts = curl-git
+	conflicts = curl-http2-git
+	options = strip
+	source = http://curl.haxx.se/download/curl-7.50.3.tar.gz
+	source = http://curl.haxx.se/download/curl-7.50.3.tar.gz.asc
+	source = curlbuild.h
+	validpgpkeys = 27EDEAF22F3ABCEB50DB9A125CC908FDB71E12C2
+	validpgpkeys = 914C533DF9B2ADA2204F586D78E11C6B279D5C91
+	md5sums = 870e16fd88a88b52e26a4f04dfc161db
+	md5sums = SKIP
+	md5sums = 751bd433ede935c8fae727377625a8ae
+
+pkgname = curl-http2
+
