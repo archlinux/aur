@@ -1,5 +1,5 @@
 pkgname='qemu-static'
-pkgver=2.4.1
+pkgver=2.7.0
 pkgrel=1
 arch=('i686' 'x86_64')
 license=('GPL2' 'LGPL2.1')
@@ -10,16 +10,17 @@ makedepends=('perl' 'python2'
 	     'glibc-static' 'glib2-static' 'pcre-static')
 options=(!strip)
 source=(http://wiki.qemu.org/download/qemu-${pkgver}.tar.bz2)
-md5sums=('a895e93ec1dafc34bc64ed676f0d55a6')
+md5sums=('08d4d06d1cb598efecd796137f4844ab')
 
 build() {
   cd "${srcdir}/qemu-${pkgver}"
   export LDFLAGS="-L/usr/lib"
   ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var \
-               --static --python=/usr/bin/python2 --disable-werror \
+              --static --python=/usr/bin/python2 --disable-werror \
               --disable-docs --disable-gtk --disable-vnc --disable-kvm --disable-libssh2 \
               --enable-user --disable-system \
-              --disable-fdt --disable-libnfs --disable-glusterfs --disable-libiscsi
+              --disable-fdt --disable-libnfs --disable-glusterfs --disable-libiscsi \
+              --disable-gcrypt --disable-nettle
   make
 }
 
@@ -29,7 +30,7 @@ package() {
   # provided by seabios package
   rm "${pkgdir}/usr/share/qemu/bios.bin"
   rm "${pkgdir}/usr/share/qemu/acpi-dsdt.aml"
-  rm "${pkgdir}/usr/share/qemu/q35-acpi-dsdt.aml"
+#  rm "${pkgdir}/usr/share/qemu/q35-acpi-dsdt.aml"
   # remove conflicting /var/run directory
   rm -r "${pkgdir}/var"
   # bridge_helper needs suid
