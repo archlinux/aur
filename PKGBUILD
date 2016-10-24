@@ -7,7 +7,7 @@ arch=('i386' 'x86_64')
 url='https://studentnet.cs.manchester.ac.uk/resources/software/komodo/assembler/'
 license=('Custom: Non-commercial')
 depends=('kmd')
-makedepends=('git gcc')
+makedepends=('git' 'gcc')
 
 source=('aasm'::'git+https://github.com/UoMCS/aasm.git')
 
