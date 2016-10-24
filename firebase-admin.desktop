@@ -1,0 +1,8 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Firebase Admin
+Comment=Firebase Management Cross Platform Application.
+Icon=/opt/firebase-admin/logo.svg
+Terminal=false
+Exec=firebase-admin
