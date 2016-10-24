@@ -9,18 +9,21 @@ pkgdesc="A data visualization and processing tool for scanning probe miscroscopy
 url="http://gwyddion.net/"
 license=("GPL")
 arch=('i686' 'x86_64')
-depends=(gtk2 pango cairo gtkglext desktop-file-utils python2 pygtk 
+depends=(gtk2 gtkglext desktop-file-utils pygtk
          hicolor-icon-theme openexr fftw libunique)
 #depends=('freeglut' 'gtksourceview')
 makedepends=('pkgconfig')
-optdepends=('libxmu: for alternative "remote control" backend'
-            'gconf: better GNOME and XFce integration (SPM file thumbnails)'
-            'libxml2: SPML file support'
-            'zlib: Matlab MAT5 file support'
+optdepends=('libxml2: import of SPML and APE DAX data files'
+            'zlib: import of SPML data files and import of gzip-compressed data from other file formats (Createc, NRRD, RHK SM4 PRM metadata)'
             'perl: development of plug-in'
             'ruby: development of plug-in'
             'fpc: development of plug-in'
-            'gtksourceview2: Pygwy console syntax highlighting')
+            'gtksourceview2: Pygwy console syntax highlighting'
+            'bzip2: import of bzip2-compressed data from NRRD'
+            'libpng: export of height fields to 16bit greyscale PNG images and import from 16bit PNG images'
+            'libwebp: WebP format support for the image export'
+            'libzip: import of APE DAX, NanoObserver, NanoScanTech, OpenGPS and Sensofar PLUX data files'
+            'cfitsio: import of Flexible Image Transport System (FITS) files')
 install=gwyddion.install
 source=(http://downloads.sourceforge.net/sourceforge/gwyddion/$pkgname-$pkgver.tar.xz
         http://gwyddion.net/download/2.46/gwyddion-2.46-jpkscan-no-minizip.patch)
