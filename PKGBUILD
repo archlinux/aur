@@ -49,8 +49,8 @@ pkgname=(linux-ck linux-ck-headers)
 _kernelname=-ck
 _srcname=linux-4.8
 pkgver=4.8.4
-pkgrel=3
-_ckpatchversion=3
+pkgrel=4
+_ckpatchversion=4
 arch=('i686' 'x86_64')
 url="https://wiki.archlinux.org/index.php/Linux-ck"
 license=('GPL2')
@@ -63,8 +63,6 @@ source=("http://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
 "http://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.xz"
 "https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.sign"
 "http://ck.kolivas.org/patches/4.0/4.8/4.8-ck${_ckpatchversion}/${_ckpatchname}.xz"
-"http://ck.kolivas.org/patches/muqss/4.0/4.8/Pending/0001-Check_siblings-was-accidentally-removed-from-schedul.patch"
-"http://ck.kolivas.org/patches/muqss/4.0/4.8/Pending/0002-Revert-the-damage-caused-by-6b45f1f363d7f6959b648cf4.patch"
 "http://repo-ck.com/source/gcc_patch/${_gcc_patch}.gz"
 'config.x86_64' 'config'
 'linux-ck.preset'
@@ -73,9 +71,7 @@ sha256sums=('3e9150065f193d3d94bcf46a1fe9f033c7ef7122ab71d75a7fb5a2f0c9a7e11a'
             'SKIP'
             '86e246b19253ee3aa971403a5990376a5e33667122f7c8742cc0ee807f204403'
             'SKIP'
-            'dc1a5562a20136e58a533b6f3937b993c4b5ed6d6b89988329c86538507f0503'
-            'cc33c0bc96f05719fd72c08e8aa8941001a751fdceed1797050b4cc6be1073bf'
-            '85ac6c430a0189ee7ed8526f815b6c7ee03156050104c39b907842fccd07b42a'
+            '10f995dcef7802bc1d15f530a54d92832f269154ac40b994e3a84a5a218e511c'
             'cf0f984ebfbb8ca8ffee1a12fd791437064b9ebe0712d6f813fd5681d4840791'
             'd8752e44ea6025d7017bf84c7d56b3c224902adc657ecf0d5502a680a46d8c2d'
             'df437a9a8346fa20fa5f74a967cd4299b398154c992dab65ddad27071908b26a'
@@ -102,8 +98,6 @@ prepare() {
 
 	msg "Patching source with ck patchset"
 	patch -Np1 -i "${srcdir}/${_ckpatchname}"
-	patch -Np1 -i "${srcdir}/0001-Check_siblings-was-accidentally-removed-from-schedul.patch"
-	patch -Np1 -i "${srcdir}/0002-Revert-the-damage-caused-by-6b45f1f363d7f6959b648cf4.patch"
 
 	# Patch source to enable more gcc CPU optimizatons via the make nconfig
 	msg "Patching source with gcc patch to enable more cpus types"
@@ -214,8 +208,8 @@ build() {
 }
 
 package_linux-ck() {
-	pkgdesc='Linux Kernel with the ck3 patchset featuring MuQSS CPU scheduler v0.115'
-	#_Kpkgdesc='Linux Kernel and modules with the ck3 patchset featuring MuQSS CPU scheduler v0.115'
+	pkgdesc='Linux Kernel with the ck4 patchset featuring MuQSS CPU scheduler v0.116'
+	#_Kpkgdesc='Linux Kernel and modules with the ck4 patchset featuring MuQSS CPU scheduler v0.116'
 	#pkgdesc="${_Kpkgdesc}"
 	depends=('coreutils' 'linux-firmware' 'mkinitcpio>=0.7')
 	optdepends=('crda: to set the correct wireless channels of your country' 'nvidia-ck: nVidia drivers for linux-ck' 'modprobed-db: Keeps track of EVERY kernel module that has ever been probed - useful for those of us who make localmodconfig')
