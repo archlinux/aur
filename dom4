@@ -2,7 +2,7 @@
 
 # List all configured games.
 function list {
-  ls /usr/share/dom4/config
+  ls /usr/share/dom4/config | cut -d "." -f 1
 }
 
 # Install Dominions 4 via SteamCMD.

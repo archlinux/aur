@@ -1,7 +1,7 @@
 # Dominions 4 Server Configuration
 # Maintainer: Dian Fay <dian.m.fay@gmail.com>
 pkgname=dom4-server
-pkgver=1.1.3
+pkgver=1.1.4
 pkgrel=1
 pkgdesc="Configure and run Dominions 4 as a headless server"
 arch=("x86_64")
@@ -30,4 +30,4 @@ md5sums=('372f6150c891165d1c1dc3a26477c7de'
          'd7467fb7a599236f71d428a85cf05014'
          'e9772a237cc540558e74235b98df8a7f'
          '338b8462868ecf6cc56c4a520cea6bac'
-         'ed40151150be520c7d903d35e2649789')
+         '72377d8ca4511751c00e4ec3e9ae32d7')
