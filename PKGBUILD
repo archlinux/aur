@@ -9,11 +9,13 @@ pkgname=gnome-colors-icon-theme
 epoch=1
 pkgver=0.r217.g8689d1d
 _commit=8689d1d
-pkgrel=1
+pkgrel=2
 pkgdesc='GNOME-Colors icon theme'
 arch=('any')
 url='https://github.com/gnome-colors/gnome-colors'
 license=('GPL2')
+conflicts=('gnome-colors-icon-theme-extras')
+replaces=('gnome-colors-icon-theme-extras')
 makedepends=('git' 'inkscape')
 source=("git://github.com/gnome-colors/gnome-colors.git#commit=${_commit}")
 sha256sums=('SKIP')
