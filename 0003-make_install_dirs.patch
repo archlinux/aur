@@ -1,0 +1,22 @@
+From: Simon Eisenmann <simon@longsleep.org>
+Date: Sun, 8 May 2016 11:40:11 +0200
+Subject: make_install_dirs Create install dirs
+
+---
+ Makefile | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/Makefile b/Makefile
+index 9783252..ce319c4 100644
+--- a/Makefile
++++ b/Makefile
+@@ -30,7 +30,9 @@ distclean: clean
+ 	rm -f $(OUT) $(CONF) config.h
+ 
+ install: $(OUT)
++	mkdir -p $(DESTDIR)$(bindir)
+ 	cp $(OUT) $(DESTDIR)$(bindir)
++	mkdir -p $(DESTDIR)$(mandir)/man1
+ 	gzip -9c $(OUT).1 > $(DESTDIR)$(mandir)/man1/$(OUT).1.gz
+ 
+ uninstall: $(DESTDIR)$(bindir)/$(OUT)

@@ -1,0 +1,96 @@
+From: Simon Eisenmann <simon@longsleep.org>
+Date: Sun, 8 May 2016 11:26:51 +0200
+Subject: libgif7-support Support libgif7 API changes.
+
+---
+ gif.c | 24 ++++++++++++------------
+ 1 file changed, 12 insertions(+), 12 deletions(-)
+
+diff --git a/gif.c b/gif.c
+index 755d03e..50a1c2c 100644
+--- a/gif.c
++++ b/gif.c
+@@ -31,10 +31,10 @@
+ #include <string.h>
+ #define min(a,b) ((a) < (b) ? (a) : (b))
+ #define gflush return(FH_ERROR_FILE);
+-#define grflush { DGifCloseFile(gft); return(FH_ERROR_FORMAT); }
+-#define mgrflush { free(lb); free(slb); DGifCloseFile(gft); return(FH_ERROR_FORMAT); }
++#define grflush { DGifCloseFile(gft, D_GIF_SUCCEEDED); return(FH_ERROR_FORMAT); }
++#define mgrflush { free(lb); free(slb); DGifCloseFile(gft, D_GIF_SUCCEEDED); return(FH_ERROR_FORMAT); }
+ #define agflush return(FH_ERROR_FORMAT);
+-#define agrflush { DGifCloseFile(gft); return(FH_ERROR_FORMAT); }
++#define agrflush { DGifCloseFile(gft, D_GIF_SUCCEEDED); return(FH_ERROR_FORMAT); }
+ 
+ 
+ int fh_gif_id(char *name)
+@@ -98,19 +98,19 @@ int fh_gif_load(char *name,unsigned char *buffer, unsigned char ** alpha, int x,
+ 		if(lb!=NULL && slb!=NULL)
+ 		{
+ 			unsigned char *alphaptr = NULL;
+-			
++
+ 		    cmap=(gft->Image.ColorMap ? gft->Image.ColorMap : gft->SColorMap);
+ 		    cmaps=cmap->ColorCount;
+ 
+ 		    ibxs=ibxs*3;
+ 		    fbptr=(char*)buffer;
+-			
++
+ 			if(transparency != -1)
+ 			{
+ 				alphaptr = malloc(px * py);
+ 				*alpha = alphaptr;
+ 			}
+-			
++
+ 		    if(!(gft->Image.Interlace))
+ 		    {
+ 			for(i=0;i<py;i++,fbptr+=px*3)
+@@ -126,13 +126,13 @@ int fh_gif_load(char *name,unsigned char *buffer, unsigned char ** alpha, int x,
+                     else
+ 		    {
+ 				unsigned char * aptr = NULL;
+-				
++
+ 	               for(j=0;j<4;j++)
+ 	               {
+ 						int k;
+ 				        if(alphaptr)
+ 							aptr = alphaptr + (in_beginrow[j] * px);
+-							
++
+ 					    fbptr=(char*)buffer + (in_beginrow[j] * px * 3);
+ 
+ 					    for(i = in_beginrow[j]; i<py; i += in_nextrow[j], fbptr += px * 3 * in_nextrow[j], aptr += px * in_nextrow[j])
+@@ -170,7 +170,7 @@ int fh_gif_load(char *name,unsigned char *buffer, unsigned char ** alpha, int x,
+ 	}
+     }
+     while( rt!= TERMINATE_RECORD_TYPE );
+-    DGifCloseFile(gft);
++    DGifCloseFile(gft, D_GIF_SUCCEEDED);
+     return(FH_ERROR_OK);
+ }
+ 
+@@ -197,7 +197,7 @@ int fh_gif_getsize(char *name,int *x,int *y)
+ 		px=gft->Image.Width;
+ 		py=gft->Image.Height;
+ 		*x=px; *y=py;
+-		DGifCloseFile(gft);
++		DGifCloseFile(gft, D_GIF_SUCCEEDED);
+ 		return(FH_ERROR_OK);
+ 		break;
+ 	    case EXTENSION_RECORD_TYPE:
+@@ -207,10 +207,10 @@ int fh_gif_getsize(char *name,int *x,int *y)
+ 		break;
+ 	    default:
+ 		break;
+-	}  
++	}
+     }
+     while( rt!= TERMINATE_RECORD_TYPE );
+-    DGifCloseFile(gft);
++    DGifCloseFile(gft, D_GIF_SUCCEEDED);
+     return(FH_ERROR_FORMAT);
+ }
+ #endif
