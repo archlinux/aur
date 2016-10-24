@@ -1,21 +1,22 @@
 pkgbase = fgallery
 	pkgdesc = a modern, minimalist javascript photo gallery
 	pkgver = 1.8.2
-	pkgrel = 1
+	pkgrel = 3
 	url = https://www.thregr.org/~wavexx/software/fgallery/
-	arch = i686
-	arch = x86_64
-	license = GPL
+	arch = any
+	license = GPL2
 	depends = fbida
 	depends = imagemagick
 	depends = lcms
 	depends = perl>=5.14
 	depends = perl-json
 	depends = perl-image-exiftool
-	depends = python-pyqt4
 	depends = zip
-	optdepends = pngcrush
-	optdepends = p7zip
+	optdepends = facedetect-git: to center thumbnails on subject face
+	optdepends = jpegoptim: to optimize JPEG files
+	optdepends = p7zip: for faster compression
+	optdepends = pngcrush: to optimize PNG files
+	optdepends = python-pyqt4: to use fcaption
 	source = https://github.com/wavexx/fgallery/archive/fgallery-1.8.2.tar.gz
 	sha256sums = 3c9f558b97db57d66ad26885d9fb0738a771d775a40648df6afa4d212dd35750
 
