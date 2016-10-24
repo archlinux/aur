@@ -1,9 +1,9 @@
 # Maintainer: Igor <f2404@yandex.ru>
 _pkgname=xfce4-terminal
 pkgname=xfce4-terminal-git
-pkgver=0.8.0.r1.g03c9441
+pkgver=0.8.0.r14.g0983901
 pkgrel=1
-pkgdesc="A modern terminal emulator primarly for the Xfce desktop environment - git checkout"
+pkgdesc="A modern terminal emulator primarily for the Xfce desktop environment - git checkout"
 arch=('i686' 'x86_64')
 url="http://docs.xfce.org/apps/terminal/start"
 license=('GPL2')
