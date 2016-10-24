@@ -1,0 +1,15 @@
+pkgbase = kmd-compile-aasm
+	pkgdesc = ARM compiler for kmd (Komodo Manchester Debugger)
+	pkgver = 20120816
+	pkgrel = 1
+	url = https://studentnet.cs.manchester.ac.uk/resources/software/komodo/assembler/
+	arch = i386
+	arch = x86_64
+	license = Custom: Non-commercial
+	makedepends = git gcc
+	depends = kmd
+	source = aasm::git+https://github.com/UoMCS/aasm.git
+	md5sums = SKIP
+
+pkgname = kmd-compile-aasm
+
