@@ -1,7 +1,7 @@
 # Maintainer:   Razer <razer[AT]neuf[DOT]fr>
 
 pkgname=rf24-network
-pkgver='1.1.7.r8.gc94f877'
+pkgver='1.0.7.r1.g53e1a44'
 pkgver() {
   cd RF24Network
   git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
