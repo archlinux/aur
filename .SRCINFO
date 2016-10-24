@@ -1,0 +1,20 @@
+pkgbase = arduino-builder
+	pkgdesc = A command line tool for compiling Arduino sketches
+	pkgver = 1.3.21
+	pkgrel = 1
+	url = https://github.com/arduino/arduino-builder
+	arch = i686
+	arch = x86_64
+	arch = armv6h
+	arch = armv7h
+	license = GPL
+	makedepends = go
+	makedepends = git
+	makedepends = unzip
+	optdepends = ctags
+	options = !strip
+	source = https://github.com/arduino/arduino-builder/archive/1.3.21.tar.gz
+	sha512sums = 9d724585294f1107fb0d1f55cfbbe831a15e11460d5152329fb76e2794ac8b98f62b0c149cb8bb6de8cbe6090222c0f199478f7030c6505f49561e891a27ed04
+
+pkgname = arduino-builder
+
