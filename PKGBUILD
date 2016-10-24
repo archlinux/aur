@@ -9,7 +9,7 @@
 # Maintainer: Jeffrey E. Bedard <jefbed@gmail.com>
 pkgname=xstatus-git
 pkgver=0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="lightweight xcb-based desktop panel"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/jefbed/xstatus"
@@ -37,16 +37,14 @@ build() {
   rm -rf "$srcdir/$_gitname-build"
   git clone --recursive "$srcdir/$_gitname" "$srcdir/$_gitname-build"
   cd "$srcdir/$_gitname-build"
-
-  #
-  # BUILD HERE
-  #
+  ./configure
   make
 }
 
 package() {
   cd "$srcdir/$_gitname-build"
   make DESTDIR="$pkgdir/" install
+  install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
 # vim:set ts=2 sw=2 et:
