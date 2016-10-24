@@ -1,0 +1,13 @@
+pkgbase = timeline-git
+	pkgdesc = A plain-text based distributed social network build on top of git configuration manager
+	pkgver = 1
+	pkgrel = 1
+	url = https://ajdiaz.me/timeline/
+	arch = any
+	license = GPLv3
+	makedepends = git
+	source = timeline::git+https://github.com/ajdiaz/timeline.git
+	sha256sums = SKIP
+
+pkgname = timeline-git
+
