@@ -5,7 +5,7 @@ pkgrel=1
 pkgdesc='ARM compiler for kmd (Komodo Manchester Debugger)'
 arch=('i386' 'x86_64')
 url='https://studentnet.cs.manchester.ac.uk/resources/software/komodo/assembler/'
-license=('Custom: Non-commercial')
+license=('custom')
 depends=('kmd')
 makedepends=('git' 'gcc')
 
