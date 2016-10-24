@@ -5,7 +5,8 @@ pkgbase = timeline
 	url = https://ajdiaz.me/timeline/
 	arch = any
 	license = GPLv3
-	makedepends = git
+	depends = bash
+	depends = git
 	source = https://github.com/ajdiaz/timeline/archive/1.0.tar.gz
 	sha256sums = f5f6fe025b97fa68a5ebf878093e4fcc524a2a17b5d1204de7a857accacb50b7
 
