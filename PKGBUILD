@@ -7,9 +7,9 @@ arch=('x86_64')
 url='https://github.com/dripcap/dripcap'
 license=('MIT')
 depends=('wget')
-srouce=(https://github.com/dripcap/dripcap/releases/download/v${pkgver}/dripcap-linux-amd64.deb)
 
 package() {
+  wget https://github.com/dripcap/dripcap/releases/download/v${pkgver}/dripcap-linux-amd64.deb
   ar vx dripcap-linux-amd64.deb
   bsdtar xf data.tar.gz
   chmod -R g-w usr
