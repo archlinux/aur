@@ -1,9 +1,12 @@
 # Maintainer: razer <razer[at]neuf[dot]fr>
 pkgname=python-adafruit_bbio-git
-pkgver=0.0.30
+pkgver='1.0.0.r13.gd1e8dc1'
+pkgver() {
+  cd adafruit-beaglebone-io-python
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
 pkgrel=1
-pkgdesc="Python adafruit library for using GPIO of the beaglebone 
-boards"
+pkgdesc="Adafruit's BeagleBone IO Python Library" 
 url="https://github.com/adafruit/adafruit-beaglebone-io-python"
 arch=('armv7h')
 license=('GPLv3')
