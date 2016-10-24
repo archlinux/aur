@@ -1,0 +1,11 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=Nuclear Throne
+GenericName=Nuclear Throne
+Comment=Action roguelike-like about mutants.
+Exec=nuclear-throne-hib
+Icon=nuclear-throne-hib
+StartupNotify=true
+Terminal=false
+Type=Application
+Categories=Application;Game;AudioVideo;
