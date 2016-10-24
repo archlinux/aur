@@ -2,7 +2,7 @@
 
 pkgname=gnome-colors-common-icon-theme
 pkgver=5.5.1
-pkgrel=1
+pkgrel=2
 pkgdesc='GNOME-Colors icon theme (common icons)'
 arch=('any')
 url="https://github.com/actionless/oomox"
@@ -16,11 +16,8 @@ conflicts=('gnome-colors-icon-theme')
 
 package() {
 	cd "${srcdir}/oomox"
-	pwd
-	ls -laho
-
-  install -d "$pkgdir/usr/share/icons/gnome-colors-common"
-  cp -r gnome-colors/gnome-colors-common/* \
-    "$pkgdir/usr/share/icons/gnome-colors-common/"
+	install -d "$pkgdir/usr/share/icons/gnome-colors-common"
+	cp -r gnome-colors/gnome-colors-common/* \
+		"$pkgdir/usr/share/icons/gnome-colors-common/"
 }
 

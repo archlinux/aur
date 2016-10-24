@@ -1,7 +1,7 @@
 pkgbase = gnome-colors-common-icon-theme
 	pkgdesc = GNOME-Colors icon theme (common icons)
 	pkgver = 5.5.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/actionless/oomox
 	arch = any
 	license = GPL3
