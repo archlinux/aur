@@ -12,17 +12,13 @@ _makenconfig=
 # Tweak kernel options prior to a build via menuconfig
 _makemenuconfig=
 
-# Running with a 1000 HZ tick rate (vs the ARCH 300) is reported to solve the
-# issues with the bfs/linux 3.1x and suspend. For more see:
-# http://ck-hack.blogspot.com/2013/09/bfs-0441-311-ck1.html?showComment=1378756529345#c5266548105449573343
-_1k_HZ_ticks=y
-
-### Do not disable NUMA until CK figures out why doing so causes panics for
-### some users!
-# NUMA is optimized for multi-socket motherboards.
-# A single multi-core CPU actually runs slower with NUMA enabled.
+# NUMA is optimized for multi-socket motherboards. A single multi-core CPU can
+# actually run slower with NUMA enabled.
 # See, https://bugs.archlinux.org/task/31187
-#_NUMAdisable=
+_NUMAdisable=
+
+# Use a 1000 Hz timer (CK recommended) rather than the Arch default of 300 Hz.
+_1k_HZ_ticks=y
 
 # Compile ONLY probed modules
 # As of mainline 2.6.32, running with this option will only build the modules
@@ -38,6 +34,12 @@ _1k_HZ_ticks=y
 # More at this wiki page ---> https://wiki.archlinux.org/index.php/Modprobed-db
 _localmodcfg=
 
+# Alternative I/O scheduler by Paolo Valente
+# Set this if you want it enabled globally i.e. for all devices in your system
+# If you want it enabled on a device-by-device basis, leave this unset and see:
+# https://wiki.archlinux.org/index.php/Linux-ck#How_to_Enable_the_BFQ_I.2FO_Scheduler
+_BFQ_enable_=
+
 # Use the current kernel's .config file
 # Enabling this option will use the .config of the RUNNING kernel rather than
 # the ARCH defaults. Useful when the package gets updated and you already went
@@ -45,68 +47,45 @@ _localmodcfg=
 # a new kernel is released, but again, convenient for package bumps.
 _use_current=
 
-# Alternative I/O scheduler by Paolo Valente
-# Set this if you want it enabled globally i.e. for all devices in your system
-# If you want it enabled on a device-by-device basis, leave this unset and see:
-# https://wiki.archlinux.org/index.php/Linux-ck#How_to_Enable_the_BFQ_I.2FO_Scheduler
-_BFQ_enable_=
-
 ### Do no edit below this line unless you know what you're doing
 
 pkgname=(linux-ck-fbcondecor linux-ck-fbcondecor-headers)
 _kernelname=-ck-fbcondecor
-_srcname=linux-4.7
-pkgver=4.7.7
-pkgrel=1
+_srcname=linux-4.8
+pkgver=4.8.4
+pkgrel=3
+_ckpatchversion=3
 arch=('i686' 'x86_64')
 url="https://wiki.archlinux.org/index.php/Linux-ck"
 license=('GPL2')
 makedepends=('kmod' 'inetutils' 'bc' 'libelf')
 options=('!strip')
-_ckpatchversion=5
-_ckpatchname="patch-4.7-ck${_ckpatchversion}"
-_muqssversion=111
-_muqsspatch="4.7-sched-MuQSS_$_muqssversion"
+_ckpatchname="patch-4.8-ck${_ckpatchversion}"
 _gcc_patch='enable_additional_cpu_optimizations_for_gcc_v4.9+_kernel_v3.15+.patch'
-_bfqpath='http://algo.ing.unimo.it/people/paolo/disk_sched/patches/4.7.0-v8r3'
-_bfqp1='0001-block-cgroups-kconfig-build-bits-for-BFQ-v7r11-4.7.0.patch'
-_bfqp2='0002-block-introduce-the-BFQ-v7r11-I-O-sched-for-4.7.0.patch'
-_bfqp3='0003-block-bfq-add-Early-Queue-Merge-EQM-to-BFQ-v7r11-for.patch'
-_bfqp4='0004-block-bfq-turn-BFQ-v7r11-for-4.7.0-into-BFQ-v8r3-for.patch'
 source=("http://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
 "https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.sign"
 "http://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.xz"
 "https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.sign"
-"http://ck.kolivas.org/patches/muqss/4.0/4.7/$_muqsspatch.patch"
+"http://ck.kolivas.org/patches/4.0/4.8/4.8-ck${_ckpatchversion}/${_ckpatchname}.xz"
+"http://ck.kolivas.org/patches/muqss/4.0/4.8/Pending/0001-Check_siblings-was-accidentally-removed-from-schedul.patch"
+"http://ck.kolivas.org/patches/muqss/4.0/4.8/Pending/0002-Revert-the-damage-caused-by-6b45f1f363d7f6959b648cf4.patch"
+"http://repo-ck.com/source/gcc_patch/${_gcc_patch}.gz"
 'config.x86_64' 'config'
 'linux-ck-fbcondecor.preset'
 'change-default-console-loglevel.patch'
-# ck1
-"http://ck.kolivas.org/patches/4.0/4.7/4.7-ck${_ckpatchversion}/${_ckpatchname}.xz"
-# gcc
-"http://repo-ck.com/source/gcc_patch/${_gcc_patch}.gz"
-# bfq
-"$_bfqpath/$_bfqp1"
-"$_bfqpath/$_bfqp2"
-"$_bfqpath/$_bfqp3"
-"$_bfqpath/$_bfqp4"
-# fbcondecor
-'fbcondecor-4.7.patch')
-sha256sums=('5190c3d1209aeda04168145bf50569dc0984f80467159b1dc50ad731e3285f10'
+'fbcondecor-4.8.patch')
+sha256sums=('3e9150065f193d3d94bcf46a1fe9f033c7ef7122ab71d75a7fb5a2f0c9a7e11a'
             'SKIP'
-            'b1019b88cbced3eced1fe0a908eaac061282f39c559eaa3ea0fd3ee1b089e17e'
+            '86e246b19253ee3aa971403a5990376a5e33667122f7c8742cc0ee807f204403'
             'SKIP'
-            '745ddd93baf6ffc545b7289e9073ac0cb77e9bed02a0125ef52c6bca2476208b'
-            'fab3b856de9c83d5c6950326b77b65e60f1837e2622d4588a76d430dedcdcbb2'
-            'e1bf77b5ee85010103d833a8f0efd025cdffcdbfa4ff5117b19f96c6dad7976e'
+            'dc1a5562a20136e58a533b6f3937b993c4b5ed6d6b89988329c86538507f0503'
+            'cc33c0bc96f05719fd72c08e8aa8941001a751fdceed1797050b4cc6be1073bf'
+            '85ac6c430a0189ee7ed8526f815b6c7ee03156050104c39b907842fccd07b42a'
+            'cf0f984ebfbb8ca8ffee1a12fd791437064b9ebe0712d6f813fd5681d4840791'
+            'c32afcae79b4687c8027055e73517948d0baa2bb3952983062c870573b0fcd93'
+            '610f09e0a21741154a817eec44f96f74337897a6ee401f84e8f28f22e4e2061c'
             '644ca1ccb886a8ce00b8acf05b946dae559f3bb91dd5e69be09d413a7f8c4165'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
-            '1cf066cbad338f64a315e455b38d29dd509b20a16bfb6e2faa1766f776fd335f'
-            'cf0f984ebfbb8ca8ffee1a12fd791437064b9ebe0712d6f813fd5681d4840791'
-            'a6bd81bbb2f72cfd6ad992fdeff4bac1cb7c58a8edfc3fcd76c1d7275f73d284'
-            '144b54e95a1ffca88066e41f3c46c47df442d6497684e204e9f4312faab75572'
-            'e0c9474431b60ca9fc3da04e7610748219da143440f1d7f5152572c7c63b52e0'
-            'db7872616d7ed3137d4b738e6e29fdaff58981a1d3912e3f1c33cd9fc61bca27'
             'b8c95822b17a90b65431c518f349bdb7a448688da2774b5b652ef085824d7b42')
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
@@ -124,30 +103,21 @@ prepare() {
 	# (relevant patch sent upstream: https://lkml.org/lkml/2011/7/26/227)
 	patch -p1 -i "${srcdir}/change-default-console-loglevel.patch"
 
-	# patch source with ck patchset with BFS
-	if [ -n "$_MuQSS" ]; then
-		msg "Patching with MuQSS"
-		patch -Np1 -i "$srcdir/$_muqsspatch.patch"
-	else
-		# fix double name in EXTRAVERSION
-		sed -i -re "s/^(.EXTRAVERSION).*$/\1 = /" "${srcdir}/${_ckpatchname}"
-		msg "Patching source with ck patchset including BFS v0.502"
-		patch -Np1 -i "${srcdir}/${_ckpatchname}"
-	fi
+	# fix naming schema in EXTRAVERSION
+	sed -i -re "s/^(.EXTRAVERSION).*$/\1 = /" "${srcdir}/${_ckpatchname}"
+
+	msg "Patching source with ck patchset"
+	patch -Np1 -i "${srcdir}/${_ckpatchname}"
+	patch -Np1 -i "${srcdir}/0001-Check_siblings-was-accidentally-removed-from-schedul.patch"
+	patch -Np1 -i "${srcdir}/0002-Revert-the-damage-caused-by-6b45f1f363d7f6959b648cf4.patch"
 
 	# Patch source to enable more gcc CPU optimizatons via the make nconfig
 	msg "Patching source with gcc patch to enable more cpus types"
 	patch -Np1 -i "${srcdir}/${_gcc_patch}"
-	
-	msg "Patching source with BFQ patches"
-	patch -Np1 -i "$srcdir/$_bfqp1"
-	patch -Np1 -i "$srcdir/$_bfqp2"
-	patch -Np1 -i "$srcdir/$_bfqp3"
-	patch -Np1 -i "$srcdir/$_bfqp4"
 
 	# Patch source to enable frame buffer decorations.
 	msg "Patching source with fbcondecor patch."
-	patch -Np1 -i "${srcdir}/fbcondecor-4.7.patch"
+	patch -Np1 -i "${srcdir}/fbcondecor-4.8.patch"
 
 	# Clean tree and copy ARCH config over
 	msg "Running make mrproper to clean source tree"
@@ -158,36 +128,29 @@ prepare() {
 	else
 		cat "${srcdir}/config" > ./.config
 	fi
-
-	### Optionally set tickrate to 1000 to avoid suspend issues as reported here:
-	# http://ck-hack.blogspot.com/2013/09/bfs-0441-311-ck1.html?showComment=1379234249615#c4156123736313039413
+	
 	if [ -n "$_1k_HZ_ticks" ]; then
-		msg "Setting tick rate to 1k..."
+		msg "Setting tick rate to 1000 Hz..."
 		sed -i -e 's/^CONFIG_HZ_300=y/# CONFIG_HZ_300 is not set/' \
 			-i -e 's/^# CONFIG_HZ_1000 is not set/CONFIG_HZ_1000=y/' \
 			-i -e 's/^CONFIG_HZ=300/CONFIG_HZ=1000/' .config
 	fi
 	
-	### Do not disable NUMA until CK figures out why doing so causes panics for
-	### some users!
-
-	# Optionally disable NUMA since >99% of users have mono-socket systems.
-	# For more, see: https://bugs.archlinux.org/task/31187
-#	if [ -n "$_NUMAdisable" ]; then
-#		if [ "${CARCH}" = "x86_64" ]; then
-#			msg "Disabling NUMA from kernel config..."
-#			sed -i -e 's/CONFIG_NUMA=y/# CONFIG_NUMA is not set/' \
-#				-i -e '/CONFIG_AMD_NUMA=y/d' \
-#				-i -e '/CONFIG_X86_64_ACPI_NUMA=y/d' \
-#				-i -e '/CONFIG_NODES_SPAN_OTHER_NODES=y/d' \
-#				-i -e '/# CONFIG_NUMA_EMU is not set/d' \
-#				-i -e '/CONFIG_NODES_SHIFT=6/d' \
-#				-i -e '/CONFIG_NEED_MULTIPLE_NODES=y/d' \
-#				-i -e '/# CONFIG_MOVABLE_NODE is not set/d' \
-#				-i -e '/CONFIG_USE_PERCPU_NUMA_NODE_ID=y/d' \
-#				-i -e '/CONFIG_ACPI_NUMA=y/d' ./.config
-#		fi
-#	fi
+	if [ -n "$_NUMAdisable" ]; then
+		if [ "${CARCH}" = "x86_64" ]; then
+			msg "Disabling NUMA from kernel config..."
+			sed -i -e 's/CONFIG_NUMA=y/# CONFIG_NUMA is not set/' \
+				-i -e '/CONFIG_AMD_NUMA=y/d' \
+				-i -e '/CONFIG_X86_64_ACPI_NUMA=y/d' \
+				-i -e '/CONFIG_NODES_SPAN_OTHER_NODES=y/d' \
+				-i -e '/# CONFIG_NUMA_EMU is not set/d' \
+				-i -e '/CONFIG_NODES_SHIFT=6/d' \
+				-i -e '/CONFIG_NEED_MULTIPLE_NODES=y/d' \
+				-i -e '/# CONFIG_MOVABLE_NODE is not set/d' \
+				-i -e '/CONFIG_USE_PERCPU_NUMA_NODE_ID=y/d' \
+				-i -e '/CONFIG_ACPI_NUMA=y/d' ./.config
+		fi
+	fi
 
 	### Optionally use running kernel's config
 	# code originally by nous; http://aur.archlinux.org/packages.php?ID=40191
@@ -266,8 +229,8 @@ build() {
 }
 
 package_linux-ck-fbcondecor() {
-	pkgdesc='Linux Kernel with the ck5 patchset featuring the Brain Fuck Scheduler v0.502 and the fbcondecor framebuffer decoration support.'
-	#_Kpkgdesc='Linux Kernel and modules with the ck5 patchset featuring the Brain Fuck Scheduler v0.502 and the fbcondecor framebuffer decoration support.'
+	pkgdesc='Linux Kernel with the ck3 patchset featuring MuQSS CPU scheduler v0.115 and the fbcondecor framebuffer decoration support.'
+	#_Kpkgdesc='Linux Kernel and modules with the ck3 patchset featuring MuQSS CPU scheduler v0.115 and the fbcondecor framebuffer decoration support.'
 	#pkgdesc="${_Kpkgdesc}"
 	depends=('coreutils' 'linux-firmware' 'mkinitcpio>=0.7')
 	optdepends=('crda: to set the correct wireless channels of your country' 'nvidia-ck: nVidia drivers for linux-ck' 'modprobed-db: Keeps track of EVERY kernel module that has ever been probed - useful for those of us who make localmodconfig')
