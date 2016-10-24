@@ -8,7 +8,7 @@ pkgver() {
 pkgrel=1
 pkgdesc="Adafruit's BeagleBone IO Python Library" 
 url="https://github.com/adafruit/adafruit-beaglebone-io-python"
-arch=('armv7h')
+arch=('x86_64' 'armv7h')
 license=('GPLv3')
 depends=('python')
 optdepends=()
