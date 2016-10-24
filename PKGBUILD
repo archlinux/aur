@@ -29,7 +29,7 @@ depends=('gambas3-gb-image>=3.9.0'
 	'gambas3-gb-desktop-x11>=3.9.0'
 	'gambas3-gb-args>=3.9.0'
 	'gambas3-gb-util-web>=3.9.0'
-	'mpv>=1:0.10.0'
+	'mpv>=1:0.21.0'
 	'taglib'
 	'youtube-dl>=2016.09.08'
 	'wget')
