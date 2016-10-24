@@ -1,0 +1,4 @@
+oomox/
+pkg/
+src/
+*.pkg.tar.xz
