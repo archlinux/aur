@@ -2,7 +2,7 @@
 # http://packages.gentoo.org/package/sci-visualization/gwyddion
 
 pkgname=gwyddion
-pkgver=2.45
+pkgver=2.46
 pkgrel=1
 pkgdesc="A data visualization and processing tool for scanning probe miscroscopy (SPM, i.e. AFM, STM, MFM, SNOM/NSOM, ...) and profilometry, useful also for general image and 2D data analysis"
 #A modular program for SPM (scanning probe microscopy) and other 2D (height field) data visualization and analysis"
@@ -22,9 +22,23 @@ optdepends=('libxmu: for alternative "remote control" backend'
             'fpc: development of plug-in'
             'gtksourceview2: Pygwy console syntax highlighting')
 install=gwyddion.install
-source=(http://downloads.sourceforge.net/sourceforge/gwyddion/$pkgname-$pkgver.tar.xz)
-sha256sums=('7958943825bac5a38be4bb13bcde04562a44515b5a5f4c3beaf6b6227c4691b5')
+source=(http://downloads.sourceforge.net/sourceforge/gwyddion/$pkgname-$pkgver.tar.xz
+        http://gwyddion.net/download/2.46/gwyddion-2.46-jpkscan-no-minizip.patch)
+sha256sums=('3f2600288b38e0253fccaff67a632c7dadbdec7f645200f0d86e1131662490e9'
+            '53b30f10cb1d708bf6213a789259dd9748790c5e6670cd8b2c5ba3c205e48a67')
 
+prepare() {
+  cd $pkgname-$pkgver
+
+  # python2 fix
+  for file in $(find . -name '*.py' -print); do
+      sed -i 's_#!.*/usr/bin/python_#!/usr/bin/python2_' $file
+      sed -i 's_#!.*/usr/bin/env.*python_#!/usr/bin/env python2_' $file
+  done
+
+  patch -Np1 -i "${srcdir}/gwyddion-2.46-jpkscan-no-minizip.patch"
+
+}
 
 build() {
   cd $pkgname-$pkgver
@@ -35,12 +49,6 @@ build() {
 #		--enable-plugin-proxy \
 #              --disable-updater --disable-schemas-compile \
 
-
-  # python2 fix
-  for file in $(find . -name '*.py' -print); do
-      sed -i 's_#!.*/usr/bin/python_#!/usr/bin/python2_' $file
-      sed -i 's_#!.*/usr/bin/env.*python_#!/usr/bin/env python2_' $file
-  done
 
   ./configure --prefix=/usr --sysconfdir=/etc \
               --localstatedir=/var --libexecdir=/usr/lib \
@@ -59,6 +67,7 @@ package() {
   gconf-merge-schema "${pkgdir}/usr/share/gconf/schemas/${pkgname}.schemas" --domain gwyddion ${pkgdir}/etc/gconf/schemas/*.schemas
   rm -f ${pkgdir}/etc/gconf/schemas/*.schemas
 }
+
 
 
 
