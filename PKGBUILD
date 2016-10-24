@@ -1,14 +1,14 @@
 pkgname=ttf-babelstone-han
-pkgver=9.0.0
-pkgrel=2
+pkgver=9.0.1
+pkgrel=1
 pkgdesc="A Unicode Han font in Song/Ming style with glyphs used in Mainland China."
 arch=('any')
 url="http://www.babelstone.co.uk/Fonts/Han.html"
 license=('custom:"arphic"')
 depends=('fontconfig' 'xorg-font-utils')
-source=('http://babelstone.co.uk/Fonts/9318/BabelStoneHan.zip'
+source=('http://babelstone.co.uk/Fonts/5521/BabelStoneHan.zip'
         'http://ftp.gnu.org/non-gnu/chinese-fonts-truetype/LICENSE')
-sha256sums=('4c417fbaf0b06b29d2f0fd6ea5c0d9ac4c5c9e5ccda2ea1102cb0e3ddab22de0'
+sha256sums=('fbeeb846b6a0d355143d19708e7cf28feff28b0760389b025a5ff75d9949481c'
             'ba74a961aaa5fa7e73dc67276df2781ba405da2cb30c52c9d9eee9c200d4d11e')
 
 package()
@@ -16,4 +16,3 @@ package()
   install -Dm644 BabelStoneHan.ttf $pkgdir/usr/share/fonts/TTF/BabelStoneHan.ttf
   install -Dm644 LICENSE $pkgdir/usr/share/licenses/$pkgname/LICENSE
 }
-
