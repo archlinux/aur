@@ -1,12 +1,11 @@
 pkgbase = dripcap
 	pkgdesc = Caffeinated Packet Analyzer
-	pkgver = 0.3.10
+	pkgver = 0.4.0
 	pkgrel = 1
-	url = https://dripcap.org/
+	url = https://github.com/dripcap/dripcap
 	arch = x86_64
 	license = MIT
 	depends = wget
-	source = http://mirror.easyname.at/blackarch/blackarch/os/x86_64/dripcap-0.3.10-1-x86_64.pkg.tar.xz
 	sha256sums = SKIP
 
 pkgname = dripcap
