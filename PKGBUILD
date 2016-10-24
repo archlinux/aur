@@ -2,14 +2,14 @@
 # Contributor: Raziel23 <venom23 at runbox dot com>
 
 pkgname=vcmi-git
-pkgver=r6067.a03419e
+pkgver=r6215.da1c9cf
 pkgrel=1
 pkgdesc="Open-source engine for Heroes of Might and Magic III"
 arch=('i686' 'x86_64')
 url="http://vcmi.eu"
 license=('GPL2')
 depends=('boost-libs' 'ffmpeg' 'sdl2_image' 'sdl2_mixer' 'sdl2_ttf' 'qt5-base' 'libxkbcommon-x11'
-         'desktop-file-utils' 'gtk-update-icon-cache' 'hicolor-icon-theme' 'minizip')
+         'desktop-file-utils' 'gtk-update-icon-cache' 'hicolor-icon-theme')
 makedepends=('boost' 'cmake' 'git')
 optdepends=('innoextract: required by vcmibuilder'
             'unshield: required by vcmibuilder'
