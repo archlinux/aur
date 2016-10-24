@@ -1,7 +1,7 @@
 # Maintainer: Milian Reichardt <mreichardt95@gmail.com>
 
 pkgname=check_mk-agent
-pkgver=1.2.8p11
+pkgver=1.2.8p13
 pkgrel=1
 pkgdesc="Agent to send information to a Check_MK server"
 arch=(any)
@@ -20,4 +20,5 @@ package() {
 	mkdir -p "$pkgdir/etc/xinetd.d/"
 	cp -r "$srcdir/check_mk_agent.linux" "$pkgdir/usr/bin/check_mk_agent"
 	cp -r "$srcdir/cfg_examples/xinetd.conf" "$pkgdir/etc/xinetd.d/check_mk"
+	cp -r "$srcdir/check_mk_caching_agent.linux" "$pkgdir/usr/bin/check_mk_caching_agent"
 }
