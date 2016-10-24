@@ -1,8 +1,8 @@
 # Maintainer: Tomas Jasek <tomsik68(at)gmail(dot)com>
 
 pkgname="papyrus"
-pkgver="1.1.4"
-pkgrel=2
+pkgver="2.0.1"
+pkgrel=3
 pkgdesc="Graphical editing tool for UML based on eclipse."
 arch=('i686' 'x86_64')
 url="http://www.eclipse.org/papyrus/"
@@ -17,17 +17,18 @@ backup=()
 options=()
 install=
 changelog=
-source_i686=("http://ftp.snt.utwente.nl/pub/software/eclipse//modeling/mdt/papyrus/rcp/mars/${pkgver}/papyrus-mars-${pkgver}-linux32.tar.gz")
-md5sums_i686=('01f352ceed549a1373a0ea905b9962e3')
-md5sums_x86_64=('7f3a26468f09e205c8ea9f8a126f6991')
-source_x86_64=("http://ftp.snt.utwente.nl/pub/software/eclipse//modeling/mdt/papyrus/rcp/mars/${pkgver}/papyrus-mars-${pkgver}-linux64.tar.gz")
+_eclipsever="neon"
+source_i686=("http://ftp-stud.fht-esslingen.de/pub/Mirrors/eclipse/modeling/mdt/papyrus/rcp/${_eclipsever}/${pkgver}/papyrus-${_eclipsever}-${pkgver}-linux32.tar.gz")
+md5sums_i686=('08d05bb5407d0762f14d11fa665da3c9')
+md5sums_x86_64=('67eed1baa1206d88be8467c2d90fac8b')
+source_x86_64=("http://ftp-stud.fht-esslingen.de/pub/Mirrors/eclipse/modeling/mdt/papyrus/rcp/${_eclipsever}/${pkgver}/papyrus-${_eclipsever}-${pkgver}-linux64.tar.gz")
 noextract=()
 
 build() {
   cd $srcdir
-  tar -xvzf *.gz
+  tar -xvzf papyrus-${_eclipsever}-${pkgver}-linux*.tar.gz
   mkdir -p $srcdir/usr/bin/
-  echo 'exec /usr/lib/papyrus/papyrus' > $srcdir/usr/bin/papyrus
+  echo '#!/bin/sh\nexec /usr/lib/papyrus/papyrus' > $srcdir/usr/bin/papyrus
 }
 
 package() {
