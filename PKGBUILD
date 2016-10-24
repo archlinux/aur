@@ -1,7 +1,7 @@
 # Maintainer: Benoît Giraudou <bgiraudou@gmail.com>
 pkgname=epub-thumbnailer-git
 _gitname=epub-thumbnailer
-pkgver=1.0r39.5d6e2ff
+pkgver=1.0r50.22383bc
 pkgrel=1
 pkgdesc="Creates thumbnail for EPUB files."
 arch=('any')
