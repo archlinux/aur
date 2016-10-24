@@ -1,5 +1,10 @@
 #!/bin/bash
 
+# List all configured games.
+function list {
+  ls /usr/share/dom4/config
+}
+
 # Install Dominions 4 via SteamCMD.
 function install {
   if [ ! $(find /opt/dom4 -maxdepth 0 -type d -empty 2>/dev/null) ];then
@@ -39,6 +44,7 @@ function change {
   fi
 
   echo "Setting $1 up for hosting."
+  echo
   echo "$1" | sudo -u dom4 tee /usr/share/dom4/current > /dev/null
 }
 
@@ -206,6 +212,10 @@ function delete {
 }
 
 case $1 in
+  "list")
+    list
+    ;;
+
   "install")
     install
     ;;
@@ -227,6 +237,10 @@ case $1 in
 Install Dominions 4 through SteamCMD:
 
   dom4 install
+
+List configured games:
+
+  dom4 list
 
 Configure a new game, or edit an existing one:
 
