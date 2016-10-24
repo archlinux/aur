@@ -1,0 +1,14 @@
+pkgbase = gnome-colors-common-icon-theme
+	pkgdesc = GNOME-Colors icon theme (common icons)
+	pkgver = 5.5.1
+	pkgrel = 1
+	url = https://github.com/actionless/oomox
+	arch = any
+	license = GPL3
+	provides = gnome-colors-icon-theme
+	conflicts = gnome-colors-icon-theme
+	source = git+https://github.com/actionless/oomox.git#branch=master
+	md5sums = SKIP
+
+pkgname = gnome-colors-common-icon-theme
+
