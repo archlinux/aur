@@ -7,3 +7,4 @@ pkgdir
 *.pkg.*
 iio-sensor-proxy
 *~
+.gnupg
