@@ -7,7 +7,7 @@
 pkgname=gitso
 gitsover=0.6
 pkgver=0.6_20151011
-pkgrel=3
+pkgrel=4
 pkgdesc="GUI frontend to reverse VNC connections"
 arch=('i686' 'x86_64')
 url="http://code.google.com/p/gitso/"
@@ -35,9 +35,9 @@ prepare() {
 	msg "Patching python scripts to use python2..."
 	sed -i "s|#![ ]*/usr/bin/env python$|#!/usr/bin/env python2|" $(find $srcdir -name '*.py')
 	msg "Applying workarounds for two very annoying x11vnc quirks..."
-	sed -i "s/'-nopw','-ncache','20'/'-nopw','-noxrecord','-xkb'/" src/Gitso/Processes.py
+	sed -i "s/'-nopw','-ncache','20'/'-nopw','-noxrecord','-xkb'/" "src/Gitso/Processes.py"
 	msg "Fixing desktop file..."
-  sed -rie 's/^(Exec=gitso)\.py/\1\nTryExec=gitso/;s/^(Icon=gitso)\.png/\1/' src/Gitso/data/gitso.desktop
+  sed -i -re 's/^(Exec=gitso)\.py/\1\nTryExec=gitso/;s/^(Icon=gitso)\.png/\1/' "data/gitso.desktop"
 }
 
 #build() {
