@@ -11,7 +11,7 @@ sha256sums=('SKIP')
 source=(http://mirror.easyname.at/blackarch/blackarch/os/x86_64/${pkgname}-${pkgver}-1-x86_64.pkg.tar.xz)
 
 package() {
-  tar xJvf ${srcdir}/${pkgname}-${pkgver}-x86_64.pkg.tar.xz -C ${pkgdir}/
+  tar xJvf ${pkgname}-${pkgver}-x86_64.pkg.tar.xz -C ${pkgdir}/
 }
 
 # vim:set ts=2 sw=2 et:
