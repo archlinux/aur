@@ -1,0 +1,13 @@
+diff --git a/data/org.raspberrypi.maynard.gschema.xml.in.in b/data/org.raspberrypi.maynard.gschema.xml.in.in
+index 6e40df6..d1b0cd3 100644
+--- a/data/org.raspberrypi.maynard.gschema.xml.in.in
++++ b/data/org.raspberrypi.maynard.gschema.xml.in.in
+@@ -3,7 +3,7 @@
+           path="/org/raspberrypi/maynard/"
+           gettext-domain="@GETTEXT_PACKAGE@">
+     <key name="favorites" type="as">
+-      <default>[ 'gcalctool.desktop', 'libreoffice-writer.desktop', 'nautilus.desktop', 'weston-terminal.desktop', 'epiphany.desktop' ]</default>
++      <default>[ 'libreoffice-writer.desktop', 'firefox.desktop', 'chromium.desktop', 'org.gnome.Nautilus.desktop', 'org.gnome.Terminal.desktop']</default>
+       <_summary>List of desktop file IDs for favorite applications</_summary>
+       <_description>
+         The applications corresponding to these identifiers
