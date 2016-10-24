@@ -62,12 +62,14 @@ EOF
   fi
 
   if [[ -s "/usr/share/dom4/config/$1.properties" ]]; then
-    read -r -n 2 -p "$1 is already configured. Overwrite? [Y/n] " ovr
+    read -r -n 2 -p "$1 is already configured. Edit this game? [Y/n] " ovr
     if [[ $ovr != Y ]]; then
       exit 0
     fi
+
     echo
   else
+    newgame=true
     cat << EOF | sudo -u dom4 tee /usr/share/dom4/config/$1.properties > /dev/null
 # See http://www.illwinter.com/dom4/startoptions.pdf for a full reference.
 # Sections 3-5, 3-6, and 3-7 are especially relevant. Switches should be
@@ -105,26 +107,27 @@ EOF
   mapfile=$(grep -oP "^mapfile\s+\K.+" /usr/share/dom4/config/$1.properties)
   mapname=$(basename $mapfile .map)
 
-  if [[ -s "$mapname.map" ]]; then
-    echo "Copying $mapname map files..."
+  if [ "$newgame" = true ]; then
+    if [[ -s "$mapname.map" ]]; then
+      echo "Copying $mapname map files..."
 
-    sudo cp "$mapname".* /usr/share/dom4/maps
-  elif [[ -s "$HOME/dominions4/maps/$mapname".map ]]; then
-    echo "Copying $mapname map files from $HOME/dominions4/maps..."
+      sudo cp "$mapname".* /usr/share/dom4/maps
+    elif [[ -s "$HOME/dominions4/maps/$mapname".map ]]; then
+      echo "Copying $mapname map files from $HOME/dominions4/maps..."
 
-    sudo cp "$HOME/dominions4/maps/$mapname".* /usr/share/dom4/maps
-  else
-    echo "Could not find $mapname.map in $(pwd) or $HOME/dominions4/maps. Please ensure the map file(s) exist in one or the other location and try again."
+      sudo cp "$HOME/dominions4/maps/$mapname".* /usr/share/dom4/maps
+    else
+      echo "Could not find $mapname.map in $(pwd) or $HOME/dominions4/maps. Please ensure the map file(s) exist in one or the other location and try again."
 
-    exit 1;
+      exit 1;
+    fi
+
+    echo
   fi
-
-  echo
 
   change $1
 
   cat <<EOF
-
 Done. Start the service to let players upload their pretenders.
 
   sudo systemctl start dom4-server.service
@@ -195,20 +198,24 @@ function delete {
     exit 0
   fi
 
-  game=$(</usr/share/dom4/current)
+  if [[ -s /usr/share/dom4/current ]]; then
+    game=$(</usr/share/dom4/current)
 
-  if [[ $game = $1 ]]; then
-    read -r -n 2 -p "$game is currently being hosted. Really delete? [Y/n] " ovr
-    if [[ $ovr != Y ]]; then
-      exit 0
+    if [[ $game = $1 ]]; then
+      read -r -n 2 -p "$game is currently being hosted. Really delete? [Y/n] " ovr
+      if [[ $ovr != Y ]]; then
+        exit 0
+      fi
+
+      sudo -u dom4 rm /usr/share/dom4/current
     fi
-
-    sudo -u dom4 rm /usr/share/dom4/current
   fi
 
   # leave the mapfile in case something else is using it
   sudo -u dom4 rm /usr/share/dom4/config/$1.properties
   sudo -u dom4 rm -rf /usr/share/dom4/savedgames/$1
+
+  echo "Deleted $1."
 }
 
 case $1 in
