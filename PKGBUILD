@@ -5,7 +5,7 @@
 #pkgbase=linux                      # Build stock -ARCH kernel
 pkgbase=linux-ct                    # Build kernel with a different name
 _srcname=linux-4.8
-pkgver=4.8.3
+pkgver=4.8.4
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
@@ -26,12 +26,12 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
 
 sha256sums=('3e9150065f193d3d94bcf46a1fe9f033c7ef7122ab71d75a7fb5a2f0c9a7e11a'
             'SKIP'
-            '1482dd7bda0a3a82abcde20f24576a57287c462e8e732fe688ed37daf42468cb'
+            '86e246b19253ee3aa971403a5990376a5e33667122f7c8742cc0ee807f204403'
             'SKIP'
             '2ac8818414beb7dbacbd3ad450c516e6ada804827132a7132f63b8189e5f5151'
             'ab7387c708e643e9f4213008644837ee2603c0bfecb8055c313fb9f819d2d4b7'
             'f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c'
-            'b1f4d645dc21b5d9f3972520420bfec515e82a696d65f59a8ed83d08f6e081b2'
+            '63c196ef56720d00962657a37c417db556c37de75a617c18f65e485298f4dac9'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99')
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
