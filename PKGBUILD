@@ -13,7 +13,7 @@ license=('GPL3' 'custom:UNREDISTRIBUTABLE')
 depends=('alsa-lib' 'bzip2' 'fontconfig' 'fribidi' 'gnutls' 'gsm' 'lame'
          'libass' 'libavc1394' 'libbluray' 'libiec61883' 'libmodplug'
          'libpulse' 'libsoxr' 'libssh' 'libtheora' 'libva' 'libvdpau' 'libwebp'
-         'netcdf' 'opencore-amr' 'opus' 'schroedinger' 'sdl' 'speex'
+         'netcdf' 'opencore-amr' 'openjpeg' 'opus' 'schroedinger' 'sdl' 'speex'
          'v4l-utils' 'xvidcore' 'zlib'
          'libvidstab.so' 'libvorbis.so' 'libvorbisenc.so' 'libvpx.so'
          'libx264.so' 'libx265.so'
@@ -21,8 +21,8 @@ depends=('alsa-lib' 'bzip2' 'fontconfig' 'fribidi' 'gnutls' 'gsm' 'lame'
          'ladspa' 'libbs2b' 'libcaca' 'libcdio-paranoia' 'libcl' 'libdc1394'
          'libebur128' 'libfdk-aac' 'libgme' 'libilbc' 'libmfx-git' 'libxv'
          'java-environment-common' 'mesa' 'nut-multimedia-git' 'openal'
-         'opencl-headers' 'rubberband' 'rtmpdump' 'shine' 'smbclient'
-         'snappy' 'tesseract' 'twolame' 'vid.stab' 'vo-aacenc'
+         'opencl-headers' 'openh264' 'rubberband' 'rtmpdump' 'shine'
+         'smbclient' 'snappy' 'tesseract' 'twolame' 'vid.stab' 'vo-aacenc'
          'vo-amrwbenc' 'wavpack' 'xavs' 'zeromq' 'zimg' 'zvbi')
 makedepends=('hardening-wrapper' 'libvdpau' 'yasm')
 optdepends=('intel-media-sdk: for Intel QSV encoding/decoding')
@@ -33,10 +33,21 @@ provides=('libavcodec.so' 'libavdevice.so' 'libavfilter.so' 'libavformat.so'
           'ffmpeg')
 source=(http://ffmpeg.org/releases/ffmpeg-$pkgver.tar.bz2{,.asc}
         UNREDISTRIBUTABLE.txt)
+        openh264-1.6.0-fix.patch
+        openh264-dec-wrapper.patch)
 validpgpkeys=('FCF986EA15E6E293A5644F10B4322F04D67658D8') # ffmpeg-devel
 sha256sums=('58bc89c65dd114d874efbf76f76368d03b5e407f0a3f42d5b40801c280968a38'
             'SKIP'
-            'e0c1b126862072a71e18b9580a6b01afc76a54aa6e642d2c413ba0ac9d3010c4')
+            'e0c1b126862072a71e18b9580a6b01afc76a54aa6e642d2c413ba0ac9d3010c4'
+            '1f1830169aa15507cd50e2099147db33a31a73123a8a90e74296dcc1243be457'
+            '4e122061f9602447c4875966e75e52db2113c46a564cc65285ffa06ee1c44c77')
+
+prepare() {
+  cd ${pkgname%-full}-$pkgver
+
+  patch -p1 -i "${srcdir}/openh264-dec-wrapper.patch"
+  patch -p1 -i "${srcdir}/openh264-1.6.0-fix.patch"
+}
 
 build() {
   cd ${pkgname%-full}-$pkgver
@@ -86,6 +97,8 @@ build() {
     --enable-libopencore-amrnb \
     --enable-libopencore-amrwb \
     --enable-libopencv \
+    --enable-libopenjpeg \
+    --enable-libopenh264 \
     --enable-libopus \
     --enable-libpulse \
     --enable-librtmp \
