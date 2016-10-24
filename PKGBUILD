@@ -15,6 +15,10 @@ md5sums=('SKIP')
 
 build() {
   cd "$srcdir/RF24"
+  if [ ! -e /dev/spidev0.0 ] && [ -e /dev/spidev1.0 ]; then
+    sed 's/spidev0.0/spidev1.0/' utility/SPIDEV/spi.cpp > utility/SPIDEV/spi.cpp.new
+    mv utility/SPIDEV/spi.cpp.new utility/SPIDEV/spi.cpp
+  fi
   ./configure --driver=SPIDEV --prefix="$pkgdir/usr" --ldconfig=''
 }
 
