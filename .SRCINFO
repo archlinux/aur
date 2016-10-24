@@ -1,0 +1,14 @@
+pkgbase = lci
+	pkgdesc = A lambda calculus interpreter
+	pkgver = 0.6
+	pkgrel = 1
+	url = https://chatziko.github.io/lci/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = readline
+	source = https://github.com/chatziko/lci/releases/download/v0.6/lci-0.6.tar.gz
+	sha512sums = 97ba25c39cf7d5156091b57bf839eb71c6f05b1ad343d382ec99ff43443d5df91b1ad641a853526dda8724e61059998adbf5bb43a724b93d59409443ecd41877
+
+pkgname = lci
+
