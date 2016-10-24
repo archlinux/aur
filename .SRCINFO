@@ -1,0 +1,19 @@
+pkgbase = libtrace-git
+	pkgdesc = libtrace is a library for trace processing
+	pkgver = r2186.6552540
+	pkgrel = 1
+	url = http://research.wand.net.nz/software/libtrace.php
+	arch = i686
+	arch = x86_64
+	license = LGPL3
+	makedepends = automake
+	makedepends = flex
+	makedepends = bison
+	depends = libpcap
+	depends = zlib
+	depends = libwandio
+	provides = libtrace
+	conflicts = libtrace
+
+pkgname = libtrace-git
+
