@@ -151,6 +151,8 @@ if ! :; then
          -e 's:array\[:html_array\[:g' 'stringtools.cpp'
   sed -i -e 's:^#define _exit exit:// &:g' 'cryptoplugin/dllmain.cpp'
 fi
+  # Simple assert errors, probably fixed soon
+  sed -i -e 's:^#include "AESGCMDecryption.h".*$:#include <assert.h>\r\n&:g' 'cryptoplugin/AESGCMDecryption.cpp'
 
   # fix the build scripts
   #sed -i -e 's:response.readall():response.read():g' 'build/replace_versions.py' # python was always a bad choice for these text replacements. As of Python 3.5 this script doesn't work at all and read() is not a proper replacement for readall().
