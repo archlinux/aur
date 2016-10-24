@@ -1,9 +1,9 @@
 # Maintainer: Andrey Zhidenkov <pensnarik@gmail.com>
 
-pkgname=consolas-fonts
+pkgname=consolas-font
 pkgver=1.1
 pkgrel=1
-pkgdesc="Consolas fonts"
+pkgdesc="Consolas font"
 arch=(any)
 depends=(fontconfig xorg-font-utils)
 source=("https://github.com/pensnarik/$pkgname/raw/master/consolas-fonts-tts.tar.bz2")
