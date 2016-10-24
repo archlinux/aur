@@ -12,7 +12,7 @@ depends=('qt4' 'udisks2')
 optdepends=('xdg-su: NEEDED by non-KDE users!'
 	    'kdebase-runtime: provides kdesu')
 source=("http://download.opensuse.org/tumbleweed/repo/src-oss/suse/src/$pkgname-$pkgver-${_release}.src.rpm")
-sha512sums=('208b2361407af6833c4c3ea76cf395835b362a2b1a8e6d41554ed386467c3384ecc71031ec7931f1162a3be91afb172dfcae3d697420ae85ecd197dab506e275')
+sha512sums=('1187829feeaa2c4289438cc208949d27f9ee088e96eaf8e4a3a903f88f30861ed7f4f8dbb4c4bbcb3f8260f0c9685ed4c1bea1ad165b09df07d99b79ac10b61c')
 
 prepare() {
 	cd $srcdir
