@@ -2,7 +2,7 @@
 # Contributor: Franco Masotti <franco dot masotti at student dot unife dot it>
 pkgname=swish-cplint
 pkgver=r1673.4e5dd96
-pkgrel=1
+pkgrel=2
 pkgdesc="SWI-Prolog for SHaring: a SWI-Prolog web IDE integrated with the cplint suite"
 arch=('x86_64')
 url="https://github.com/friguzzi/swish"
@@ -13,24 +13,18 @@ makedepends=('git'
              'bower'
              'sed')
 conflicts=('swish')
-install=.INSTALL
-source=('git://github.com/friguzzi/swish#branch=master')
+install=.install
+source=('git+https://github.com/friguzzi/swish#branch=master')
 md5sums=('SKIP')
-
-prepare() {
-    # Edit the .INSTALL script.
-    sed \
-    -e "s@startdir=.*@startdir="${startdir}"@" \
-    -i ${startdir}/.INSTALL
-}
 
 build() {
     cd ${srcdir}/swish
     bower --allow-root install
     make src
     # Patch
-    cp ${startdir}/run.pl .
-    cp ${startdir}/run.sh .
+    cp ../../run.pl .
+    cp ../../run.sh .
+    cp ../../install_web_iface_deps.pl .
 }
 
 pkgver () {
@@ -43,11 +37,10 @@ pkgver () {
 
 package() {
     cd ${srcdir}
-    install -d ${pkgdir}/usr/share/${pkgname}
-    install -d ${pkgdir}/usr/bin
-    cp -r swish/* ${pkgdir}/usr/share/${pkgname}
-    install -D -m644 swish/LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-    install -D -m644 ${startdir}/${pkgname}.service "${pkgdir}/usr/lib/systemd/system/${pkgname}.service"
-    install -D -m644 ${startdir}/${pkgname}.conf "${pkgdir}/usr/lib/tmpfiles.d/${pkgname}.conf"
-    ln -s /usr/share/${pkgname}/run.sh ${pkgdir}/usr/bin/${pkgname}
+    install -d "${pkgdir}"/usr/share/"${pkgname}"
+    install -d "${pkgdir}"/usr/bin
+    cp -r swish/* "${pkgdir}"/usr/share/"${pkgname}"
+    install -D -m644 swish/LICENSE "${pkgdir}"/usr/share/licenses/"${pkgname}"/LICENSE
+    install -D -m644 ../"${pkgname}".service ${pkgdir}/usr/lib/systemd/system/"${pkgname}".service
+    ln -s /usr/share/"${pkgname}"/run.sh "${pkgdir}"/usr/bin/"${pkgname}"
 }

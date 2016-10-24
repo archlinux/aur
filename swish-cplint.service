@@ -29,15 +29,13 @@ Requires=rserve-sandbox-docker.service
 After=rserve-sandbox-docker.service
 
 [Service]
-# Run ExecStartPre with root permissions.
-PermissionsStartOnly=true
-ExecStartPre=/usr/bin/systemd-tmpfiles --create swish-cplint.conf
 ExecStart=/usr/bin/swish-cplint -s
 ExecStop=/usr/bin/swish-cplint -k
 Type=forking
-PIDFile=/run/swish-cplint.pid
+PIDFile=/run/swish-cplint/swish-cplint.pid
 User=swish
 Group=swish
+RuntimeDirectory=swish-cplint
 
 [Install]
 Also=rserve-sandbox-docker.service
