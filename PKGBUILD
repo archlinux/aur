@@ -1,7 +1,7 @@
 # Maintainer: "Amhairghin" Oscar Garcia Amor (https://ogarcia.me)
 
 pkgname=timeline
-pkgver=1.0
+pkgver=1.1
 pkgrel=1
 pkgdesc="A plain-text based distributed social network build on top of git configuration manager"
 arch=('any')
@@ -9,7 +9,7 @@ url="https://ajdiaz.me/timeline/"
 license=('GPLv3')
 depends=('bash' 'git')
 source=("https://github.com/ajdiaz/${pkgname}/archive/${pkgver}.tar.gz")
-sha256sums=('f5f6fe025b97fa68a5ebf878093e4fcc524a2a17b5d1204de7a857accacb50b7')
+sha256sums=('0c80e3b045eff71478a4d7bfec4d064411cd2d16f3353ac90df68e4c5a3d1d29')
 
 build() {
   cd "${pkgname}-${pkgver}"
