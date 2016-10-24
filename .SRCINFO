@@ -1,0 +1,18 @@
+pkgbase = silicon-git
+	pkgdesc = A high performance, middleware oriented C++14 http web framework
+	pkgver = 0.1+11+gfc46119
+	pkgrel = 1
+	url = https://github.com/matt-42/silicon
+	arch = any
+	license = MIT
+	makedepends = cmake
+	makedepends = git
+	optdepends = iod: for introspection of objects and generation code matching their data structures
+	optdepends = libmicrohttpd: for microhttpd backend
+	provides = silicon
+	conflicts = silicon
+	source = git+https://github.com/matt-42/silicon.git
+	sha256sums = SKIP
+
+pkgname = silicon-git
+
