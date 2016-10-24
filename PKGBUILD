@@ -7,7 +7,7 @@ arch=('x86_64')
 url='https://github.com/dripcap/dripcap'
 license=('MIT')
 depends=('wget')
-sha256sums=('SKIP')
+sha256sums=('b1dfdf03381918ce3e5f77e1111c78ae7cc7fdd00c2432bfeb98de0dd0ca55ae')
 srouce=(https://github.com/dripcap/dripcap/releases/download/v${pkgver}/dripcap-linux-amd64.deb)
 
 package() {
