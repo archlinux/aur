@@ -3,7 +3,7 @@
 pkgname=firebase-admin
 _foldername='Firebase Admin'
 pkgver=1.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Firebase Management Cross Platform Application.'
 url='https://firebaseadmin.com/'
 license=('GPL3')
