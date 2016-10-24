@@ -6,8 +6,8 @@
 # Contributor: Pavlo <pavlofreemen(at)gmail(dot)com>
 
 pkgname=font-manager
-pkgver=0.7.2
-pkgrel=2
+pkgver=0.7.3
+pkgrel=1
 pkgdesc="A simple font management application for GTK+ Desktop Environments"
 url="http://fontmanager.github.io/"
 arch=('i686' 'x86_64')
@@ -16,12 +16,12 @@ depends=('libgee' 'libxml2' 'sqlite' 'gucharmap' 'file-roller')
 makedepends=('intltool' 'yelp-tools' 'gobject-introspection' 'vala')
 install=font-manager.install
 source=("https://github.com/FontManager/master/releases/download/${pkgver}/${pkgname}-${pkgver}.tar.bz2")
-md5sums=('0d845cc3cd369b60da04d78211146937')
+md5sums=('3623327f516100f65a84a04ba1be39c9')
 
 build() {
   cd ${srcdir}/${pkgname}-${pkgver}
 
-  ./configure --prefix=/usr --disable-schemas-compile
+  ./configure --prefix=/usr --disable-schemas-compile --with-file-roller
   make -j1
 }
 
