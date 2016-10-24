@@ -1,7 +1,7 @@
 # Maintainer: Antoine Lubineau <antoine@lubignon.info>
 
 pkgname=patator
-pkgver=0.5
+pkgver=0.6
 pkgrel=1
 pkgdesc="A multi-purpose bruteforcer"
 arch=('any')
@@ -23,15 +23,15 @@ optdepends=(
   'java-runtime: keystore files'
   'unzip: zip archives'
 )
-source=("http://patator.googlecode.com/files/patator_v$pkgver.py")
-sha256sums=('83ed9230b0eb3bcbc05184ecf515ede05d72dd38b3943757d59abf5c2518d4a8')
+source=("https://github.com/lanjelot/patator/archive/$pkgver.tar.gz")
+sha256sums=('7938aba21880f35e36f7ccf05524e0c34c611a5d60d6db02256111e5d6e9e435')
 
 build() {
-  sed -e 's|#!/usr/bin/env python|#!/usr/bin/env python2|g' -i "$srcdir/${pkgname}_v$pkgver.py"
+  sed -e 's|#!/usr/bin/env python|#!/usr/bin/env python2|g' -i "$srcdir/${pkgname}-$pkgver/${pkgname}.py"
 }
 
 package() {
-  install -D -m 0755 "$srcdir/${pkgname}_v$pkgver.py" "$pkgdir/usr/bin/patator"
+  install -D -m 0755 "$srcdir/${pkgname}-$pkgver/${pkgname}.py" "$pkgdir/usr/bin/patator"
 
   _modules=(
     'ftp_login'
