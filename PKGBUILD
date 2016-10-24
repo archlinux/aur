@@ -1,20 +1,20 @@
 # Maintainer: johnguant <rhys @t johnguant dot com>
 
-_rev=r01
-_sdkver=5.1
-_sdkint=22
+_rev=r06
+_sdkver=6.0
+_sdkint=23
 pkgname=android-tv-x86-system-image-${_sdkint}
 pkgver=${_sdkver}_${_rev}
 pkgrel=1
-pkgdesc="Android TV x86 System Image, API-${_sdkint}"
+pkgdesc="Android TV Intel x86 Atom System Image, API-${_sdkint}"
 arch=('any')
 url="http://developer.android.com/tv/index.html"
 license=('custom')
 depends=("android-platform-${_sdkint}")
 optdepends=('qemu-kvm' 'libvirt')
 options=('!strip')
-source=("http://dl.google.com/android/repository/sys-img/android-tv/sysimg_atv_x86-${_sdkint}_${_rev}.zip")
-sha1sums=('51849acc07627b75c8941b15cbe659644aac4a55')
+source=("http://dl.google.com/android/repository/sys-img/android-tv/x86-${_sdkint}_${_rev}.zip")
+sha1sums=('2a245f28a422dad4d0a8eea4273ce3569b4435d6')
 
 package() {
   install -Dm644 "${srcdir}/x86/NOTICE.txt" "${pkgdir}/usr/share/licenses/$pkgname/NOTICE.txt"
