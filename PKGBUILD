@@ -8,12 +8,12 @@
 
 pkgname=ccextractor
 pkgver=0.82
-pkgrel=1
+pkgrel=2
 pkgdesc="A fast closed captions extractor for MPEG files."
 arch=('i686' 'x86_64')
 url="http://www.ccextractor.org"
 license=('GPL')
-depends=('gcc-libs')
+depends=('gcc-libs' 'tesseract')
 source=(
    http://downloads.sourceforge.net/ccextractor/$pkgname.src.$pkgver.zip
 )
