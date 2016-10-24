@@ -28,4 +28,4 @@ done < /usr/share/dom4/config/$game.properties
 
 export DOM4_CONF=/usr/share/dom4
 
-exec sh /opt/dom4/dom4.sh $config $game
+exec sh /opt/dom4/dom4.sh $config $game > /var/log/dom4/dom4.log

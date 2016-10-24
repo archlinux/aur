@@ -16,10 +16,12 @@ post_upgrade() {
   mkdir -p /opt/dom4
   mkdir -p /usr/share/dom4/config
   mkdir -p /usr/share/dom4/maps
+  mkdir -p /var/log/dom4
 
   chown dom4:dom4 /usr/bin/dom4-server
   chown -R dom4:dom4 /usr/share/dom4
   chown -R dom4:dom4 /opt/dom4
+  chown -R dom4:dom4 /var/log/dom4
 
   cat <<EOF
 
