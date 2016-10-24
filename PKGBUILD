@@ -1,5 +1,5 @@
 pkgname=osvr-core-git
-pkgver=0.2.r2190.gc5baef2
+pkgver=0.2.r2221.g6c12b30
 pkgrel=1
 pkgdesc="The core libraries, applications, and plugins of the OSVR software platform."
 arch=(i686 x86_64)
@@ -8,11 +8,11 @@ url="https://github.com/OSVR/OSVR-Core"
 makedepends=('git' 'cmake')
 depends=('jsoncpp' 'markdown' 'boost' 'opencv' 'osvr-libfunctionality-git') #TODO: add more deps
 source=("osvr-core::git+https://github.com/OSVR/OSVR-Core.git"
-"json-schemas::git+https://github.com/OSVR/OSVR-JSON-Schemas.git"
-"vendor-discount-windows-bins::git+https://github.com/OSVR/discount.git"
-"vendor-jenkins-ctest-plugin::git+https://github.com/rpavlik/jenkins-ctest-plugin.git"
-"vendor-vrpn::git+https://github.com/vrpn/vrpn.git"
-"FindJsonCpp.cmake"
+	"json-schemas::git+https://github.com/OSVR/OSVR-JSON-Schemas.git"
+	"vendor-discount-windows-bins::git+https://github.com/OSVR/discount.git"
+	"vendor-jenkins-ctest-plugin::git+https://github.com/rpavlik/jenkins-ctest-plugin.git"
+	"vendor-vrpn::git+https://github.com/vrpn/vrpn.git"
+	"FindJsonCpp.cmake"
 ) #TODO: add more recursive submodules
 
 
@@ -33,19 +33,21 @@ prepare() {
   git submodule update --init --recursive
 
   mkdir -p "$srcdir/osvr-core-build/"
-  #mkdir -p "$srcdir/osvr-core-build/cmake"
-   #cp "$srcdir/FindJsonCpp.cmake" "$srcdir/osvr-core/cmake/Findjsoncpp.cmake"
-   #sed -i '1 i\list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_LIST_DIR}/cmake")' "$srcdir/osvr-core/CMakeLists.txt" #TODO CMAKE_MODULE_PATH
 
 #temporary fix for boost incompatibility
-sed -i "s/105900/106000/g" src/osvr/Common/IPCRingBuffer.cpp
-sed -i "s/105900/106000/g" cmake-local/BoostTargets.cmake
+sed -i "s/105900/106100/g" src/osvr/Common/IPCRingBuffer.cpp
+sed -i "s/105900/106100/g" cmake-local/BoostTargets.cmake
 
 #https://github.com/OSVR/OSVR-Core/pull/468
 cd vendor/vrpn
 git reset --hard origin/master
 cd ..
 git commit -am "update vrpn"
+
+#WIP positional tracking
+git remote add toastedcrumpets https://github.com/toastedcrumpets/OSVR-Core.git || true
+git fetch toastedcrumpets
+git merge toastedcrumpets/uvc-camera --no-edit
 }
 
 build() {
