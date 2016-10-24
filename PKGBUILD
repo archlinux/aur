@@ -24,7 +24,7 @@ source=("https://dl-ssl.google.com/android/repository/platform-tools_${pkgver}-l
 sha256sums=('8ce9dcb1bd2df125347f70657f99a77996090d686ec42d1397ce050cc13f7262'
             '1c219abea7584ae13f3f76b04e269ef21c1699d6bd29b7615523f927a9d10deb'
             'a7f3a259290ae6a5dc61bd34ecae36e2b7e2f644865ddc3c7fde5d248b8a7cef'
-            '2fd5ce400b55317e1430e026a271584b399b700b474e4ecbd515d65f6e37ab14')
+            '7110b722d1c7ca3f84cb060614e473a0458b723d4ddf65613ad4187bfbf0bff7')
 
 package() {
   install -Dm644 "${srcdir}/adb.service" "${pkgdir}/usr/lib/systemd/system/adb.service"
