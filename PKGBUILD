@@ -10,6 +10,7 @@ depends=('wget')
 srouce=(https://github.com/dripcap/dripcap/releases/download/v${pkgver}/dripcap-linux-amd64.deb)
 
 package() {
+  ar vx dripcap-linux-amd64.deb
   bsdtar xf data.tar.gz
   chmod -R g-w usr
   mv usr "${pkgdir}"
