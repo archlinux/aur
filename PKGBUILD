@@ -1,6 +1,6 @@
 # Maintainer: Victor Tran <vicr12345 at gmail dot com>
 pkgname=themedia
-pkgver=1.5
+pkgver=2.0
 pkgrel=0
 pkgdesc="Media Player based on Phonon"
 arch=("x86_64")
