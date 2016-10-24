@@ -1,0 +1,14 @@
+pkgbase = pypubsub-git
+	pkgdesc = Python Publish-Subscribe Package
+	pkgver = git
+	pkgrel = 1
+	url = https://pypi.python.org/pypi/PyPubSub
+	arch = any
+	license = BSD
+	makedepends = python2-setuptools
+	depends = python2
+	source = git+https://github.com/schollii/pypubsub.git
+	md5sums = SKIP
+
+pkgname = pypubsub-git
+
