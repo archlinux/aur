@@ -19,7 +19,6 @@ license=('MIT')
 depends=('ca-certificates' 'krb5' 'libidn' 'libssh2' 'openssl' 'zlib' 'nghttp2')
 provides=("curl=$pkgver" 'libcurl.so')
 conflicts=('curl' 'curl-git' 'curl-http2-git')
-#replace=('curl')
 options=('strip')
 source=("http://curl.haxx.se/download/$_pkgname-$pkgver.tar.gz"{,.asc}
         curlbuild.h)
