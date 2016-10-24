@@ -3,7 +3,7 @@
 pkgname=jackcpp-git
 _basename=jackcpp
 pkgver=r23.488554c
-pkgrel=1
+pkgrel=2
 pkgdesc="Some c++ classes which wrap the Jack audio io api and lock-free ring buffer."
 arch=('i686' 'x86_64')
 url="http://x37v.info/jack_cpp/"
@@ -29,6 +29,7 @@ package() {
   cd $_basename
   mkdir -p ${pkgdir}/usr/{include,lib,share/doc/${_basename}/{html,latex}}
   make PREFIX="/usr" DESTDIR="$pkgdir/" install
+  install -Dm 644 $srcdir/${_basename}/src/* ${pkgdir}/usr/lib
   install -Dm 644 $srcdir/${_basename}/doc/html/* ${pkgdir}/usr/share/doc/${_basename}/html
   install -Dm 644 $srcdir/${_basename}/doc/latex/* ${pkgdir}/usr/share/doc/${_basename}/latex
 }
