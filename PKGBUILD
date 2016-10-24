@@ -2,8 +2,8 @@ pkgname=linux-usermode
 true && pkgname=(linux-usermode linux-usermode-modules)
 pkgbase=linux-usermode
 _kernelname=-usermodelinux
-_srcname=linux-4.7
-pkgver=4.7.0
+_srcname=linux-4.8
+pkgver=4.8.4
 pkgrel=1
 pkgdesc="User mode Linux kernel and modules"
 arch=('i686' 'x86_64')
@@ -12,16 +12,17 @@ url="http://user-mode-linux.sourceforge.net/"
 depends=('coreutils')
 makedepends=('bc' 'inetutils' 'vde2-static' 'vde2')
 source=("http://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
-#	"http://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.xz"
+	"http://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.xz"
 	config-i686
 	config-x86_64)
-md5sums=('5276563eb1f39a048e4a8a887408c031'
+md5sums=('c1af0afbd3df35c1ccdc7a5118cd2d07'
+         '4d85e2c59ec33dd7766e18d079e75114'
          '27523cd2017f599a97fb7aeca7873b5b'
          '01ea55240d283decc4a15d5c90ea8dba')
 
 prepare() {
   cd "${srcdir}/${_srcname}"
-#  patch -p1 -i "${srcdir}/patch-${pkgver}"
+  patch -p1 -i "${srcdir}/patch-${pkgver}"
 }
 
 build() {
