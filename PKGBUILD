@@ -4,7 +4,7 @@ pkgname=upwork-beta
 pkgver=4.2.77.0
 _rawver=${pkgver//./_}
 _hashver="963lryij439iyjhc"
-pkgrel=1
+pkgrel=2
 pkgdesc="Team App (ex. oDesk)"
 arch=('i686' 'x86_64')
 url="https://www.upwork.com/downloads/new-team-application"
@@ -13,8 +13,8 @@ conflicts=('upwork' 'upwork-alpha')
 depends=('gtk2' 'nss' 'gconf' 'alsa-lib' 'glu' 'libxtst' 'gtkglext' 'libgcrypt15' 'libxss')
 install=upwork.install
 
-source=('file://LICENSE')
-md5sums=('56198f3b7f1d0371d89a044c3e110cdd')
+#source=('LICENSE')
+#md5sums=('56198f3b7f1d0371d89a044c3e110cdd')
 md5sums_i686=('97cc111bb35f59d55f4326054dfbbfbf')
 md5sums_x86_64=('4df4d1f69a28421075fbc30df11849a8')
 
@@ -31,5 +31,5 @@ package() {
     cd "${srcdir}"
     cp -rp usr "${pkgdir}/usr"
 
-    install -Dm644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    #install -Dm644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
