@@ -6,37 +6,41 @@
 
 pkgname=root5
 pkgver=5.34.36
-pkgrel=1
+pkgrel=2
 pkgdesc='C++ data analysis framework and interpreter from CERN.'
 arch=('i686' 'x86_64')
 url='http://root.cern.ch'
 license=('LGPL2.1')
 conflicts=('root')
-depends=('desktop-file-utils'
-	 'fftw'
-	 'ftgl'
-	 'giflib'
-	 'glew'
-	 'graphviz'
-	 'gsl'
-	 'libmysqlclient'
-	 'postgresql-libs'
-	 'python2'
-	 'unixodbc'
-	 'shared-mime-info'
-	 'xmlrpc-c'
-	 'xorg-fonts-75dpi'
-	 'gcc-fortran'
-	 'libiodbc'
-	 'gtk-update-icon-cache'
-	 'libafterimage')
+depends=('cfitsio'
+  'fftw'
+  'ftgl'
+  'giflib'
+  'glew'
+  'graphviz'
+  'gsl'
+  'libmysqlclient'
+  'postgresql-libs'
+  'python2'
+  'unixodbc'
+  'shared-mime-info'
+  'xmlrpc-c'
+  'tex-gyre-fonts'
+  'libiodbc'
+  'gtk-update-icon-cache'
+  'libafterimage')
+optdepends=('gcc-fortran: Enable the Fortran components of ROOT'
+            'tcsh: Legacy CSH support'
+)
 install='root.install'
 options=('!emptydirs')
 source=("https://root.cern.ch/download/root_v${pkgver}.source.tar.gz"
+        'enable_gcc6.patch'
         'root.sh'
         'rootd'
         'root.xml')
 md5sums=('6a1ad549b3b79b10bbb1f116b49067ee'
+         '886e0649f28ceb75ea4ba1beb1b6f83f'
          '0e883ad44f99da9bc7c23bc102800b62'
          'efd06bfa230cc2194b38e0c8939e72af'
          'e2cf69b204192b5889ceb5b4dedc66f7')
@@ -67,11 +71,15 @@ build() {
   # Horid glibc hack
   sed -e 's/__USE_BSD/__USE_MISC/' -i core/base/src/TTimeStamp.cxx
 
+  ## https://sft.its.cern.ch/jira/browse/ROOT-8180
+  patch -p1 < ${srcdir}/enable_gcc6.patch
+
   local sys_libs=""
-  for sys_lib in ftgl freetype glew pcre zlib lzma; do
+  for sys_lib in afterimage ftgl freetype glew pcre zlib lzma; do
     sys_libs+="--disable-builtin-${sys_lib} "
   done
 
+    # --cxxflags="${CXXFLAGS} -D_GLIBCXX_USE_CXX11_ABI=0" \  # add after TARGET if needed
   ./configure \
     ${TARGET} \
     --prefix=/usr \
@@ -80,7 +88,6 @@ build() {
     --enable-minuit2 \
     --enable-soversion \
     --enable-roofit \
-	--disable-builtin-afterimage \
     --with-python-incdir=/usr/include/python2.7 \
     --with-python-libdir=/usr/lib \
     ${sys_libs}

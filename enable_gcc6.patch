@@ -1,0 +1,94 @@
+diff -aur root/cint/cint/Module.mk root.new/cint/cint/Module.mk
+--- root/cint/cint/Module.mk	2016-04-05 09:24:40.000000000 +0100
++++ root.new/cint/cint/Module.mk	2016-10-22 14:46:25.969966034 +0100
+@@ -165,6 +165,10 @@
+ CINTS2       := $(filter-out $(MODDIRSD)/libstrm.%,$(CINTS2))
+ CINTS2       += $(MODDIRSD)/gcc4strm.cxx
+ endif
++ifeq ($(GCC_MAJOR),6)
++CINTS2       := $(filter-out $(MODDIRSD)/libstrm.%,$(CINTS2))
++CINTS2       += $(MODDIRSD)/gcc4strm.cxx
++endif
+ ifneq ($(CLANG_MAJOR),)
+ CINTS2       := $(filter-out $(MODDIRSD)/libstrm.%,$(CINTS2))
+ CINTS2       += $(MODDIRSD)/gcc4strm.cxx
+@@ -207,6 +211,9 @@
+ ifneq ($(CLANG_MAJOR),)
+ IOSENUMA     := $(CINTDIRIOSEN)/iosenum.$(ARCH)3
+ else
++ifeq ($(GCC_MAJOR),6)
++IOSENUMA     := $(CINTDIRIOSEN)/iosenum.$(ARCH)3
++else
+ ifeq ($(GCC_MAJOR),5)
+ IOSENUMA     := $(CINTDIRIOSEN)/iosenum.$(ARCH)3
+ else
+@@ -221,6 +228,7 @@
+ endif
+ endif
+ endif
++endif
+ 
+ # used in the main Makefile
+ ALLHDRS     += $(CINTHT) $(CINTINCLUDES)
+@@ -355,7 +363,9 @@
+ ifeq ($(GCC_MAJOR),5)
+ $(call stripsrc,$(CINTDIRSD)/gcc4strm.o): CINTCXXFLAGS += -Wno-strict-aliasing
+ endif
+-
++ifeq ($(GCC_MAJOR),6)
++$(call stripsrc,$(CINTDIRSD)/gcc4strm.o): CINTCXXFLAGS += -Wno-strict-aliasing
++endif
+ 
+ $(MAKECINTO) $(CINTO): $(CINTCONF) $(ORDER_) $(CINTINCLUDES)
+ 
+@@ -389,8 +399,12 @@
+ ##### configcint.h
+ ifeq ($(CPPPREP),)
+ # cannot use "CPPPREP?=", as someone might set "CPPPREP="
++ifeq  ($(GCC_MAJOR),6)
++  CPPPREP = $(CXX) -std=c++98 -E -C
++else
+   CPPPREP = $(CXX) -E -C
+ endif
++endif
+ 
+ include $(CINTCONFMK)
+ ##### configcint.h - END
+diff -aur root/cmake/modules/SetUpLinux.cmake root.new/cmake/modules/SetUpLinux.cmake
+--- root/cmake/modules/SetUpLinux.cmake	2016-04-05 09:24:40.000000000 +0100
++++ root.new/cmake/modules/SetUpLinux.cmake	2016-10-22 14:49:59.101613728 +0100
+@@ -69,7 +69,11 @@
+   set(CMAKE_C_FLAGS_PROFILE          "-g3 -fno-inline -ftest-coverage -fprofile-arcs")
+ 
+   #Settings for cint
+-  set(CPPPREP "${CXX} -E -C")
++  if (GCC_MAJOR EQUAL 6)
++    set(CPPPREP "${CXX} -std=c++98 -E -C")
++  else()
++    set(CPPPREP "${CXX} -E -C")
++  endif()
+   set(CXXOUT "-o ")
+   set(EXPLICITLINK "no") #TODO
+ 
+diff -aur root/config/Makefile.linux root.new/config/Makefile.linux
+--- root/config/Makefile.linux	2016-04-05 09:24:40.000000000 +0100
++++ root.new/config/Makefile.linux	2016-10-22 14:52:13.482632996 +0100
+@@ -62,7 +62,6 @@
+ else
+ F77LIBS      := $(shell $(F77) -m32 -print-file-name=libgfortran.a)
+ endif
+-F77LIBS      += $(shell $(F77) -m32 -print-file-name=libgfortranbegin.a)
+ endif
+ 
+ ifneq ($(findstring g77, $(F77)),)
+diff -aur root/config/Makefile.linuxx8664gcc root.new/config/Makefile.linuxx8664gcc
+--- root/config/Makefile.linuxx8664gcc	2016-04-05 09:24:40.000000000 +0100
++++ root.new/config/Makefile.linuxx8664gcc	2016-10-22 14:51:31.352314764 +0100
+@@ -71,7 +71,6 @@
+ else
+ F77LIBS      := $(shell $(F77) -m64 -print-file-name=libgfortran.a)
+ endif
+-F77LIBS      += $(shell $(F77) -m64 -print-file-name=libgfortranbegin.a)
+ endif
+ 
+ ifneq ($(findstring g77, $(F77)),)
