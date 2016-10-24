@@ -4021,7 +4021,7 @@ diff -ENwbur linux-4.8.4/sound/hdmi_audio/intel_mid_hdmi_audio.c sound-byt-cht-h
 +module_exit(alsa_card_intelhad_exit);
 diff -ENwbur linux-4.8.4/sound/hdmi_audio/intel_mid_hdmi_audio.h sound-byt-cht-hdmi-v4.8/sound/hdmi_audio/intel_mid_hdmi_audio.h
 --- linux-4.8.4/sound/hdmi_audio/intel_mid_hdmi_audio.h	1970-01-01 10:00:00.000000000 +1000
-+++ sound-byt-cht-hdmi-v4.8/sound/hdmi_audio/intel_mid_hdmi_audio.h	2016-10-24 18:01:10.355474353 +1100
++++ sound-byt-cht-hdmi-v4.8/sound/hdmi_audio/intel_mid_hdmi_audio.h	2016-10-25 07:15:35.130950053 +1100
 @@ -0,0 +1,740 @@
 +/*
 + *   intel_mid_hdmi_audio.h - Intel HDMI audio driver for MID
