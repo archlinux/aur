@@ -8,7 +8,7 @@ url='https://github.com/dripcap/dripcap'
 license=('MIT')
 depends=('wget')
 sha256sums=('SKIP')
-srouce=("https://github.com/dripcap/dripcap/releases/download/v${pkgver}/dripcap-linux-amd64.deb")
+srouce=(https://github.com/dripcap/dripcap/releases/download/v${pkgver}/dripcap-linux-amd64.deb)
 
 package() {
   bsdtar xf data.tar.gz
