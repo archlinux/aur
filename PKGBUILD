@@ -3,12 +3,12 @@
 
 pkgname=lib32-libteam
 pkgver=1.23
-pkgrel=1
+pkgrel=2
 pkgdesc='Library for controlling team network device'
 arch=('x86_64')
 url='http://libteam.org/'
 license=('LGPL2.1')
-depends=('lib32-libdbus' 'lib32-libnl' 'lib32-zeromq' 'libteam')
+depends=('lib32-dbus' 'lib32-libnl' 'lib32-zeromq' 'libteam')
 makedepends=('gcc-multilib' 'lib32-jansson' 'lib32-libdaemon' 'swig')
 source=("http://libteam.org/files/libteam-${pkgver}.tar.gz")
 sha256sums=('d8cd132c425032cc3a7e9314c55485e32243875e0b1adbddd043bbadf1d28c5a')
