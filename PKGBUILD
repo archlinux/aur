@@ -8,7 +8,9 @@ url="http://www.workcraft.org/"
 license=('GPL')
 makedepends=('git' 'java-environment')
 depends=('java-runtime')
-optdepends=('graphviz: Graph manipulation')
+optdepends=(
+	'graphviz: Graph manipulation',
+	'stack: Concepts support')
 provides=('workcraft')
 conflicts=('workcraft')
 source=(git+https://github.com/tuura/workcraft.git git+https://github.com/tuura/workcraft-dist-template.git git+https://github.com/tuura/workcraft-doc.git workcraft_start.sh)
