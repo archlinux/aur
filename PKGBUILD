@@ -9,7 +9,7 @@
 
 _pack=statistics
 pkgname=octave-$_pack
-pkgver=1.2.4
+pkgver=1.3.0
 pkgrel=1
 pkgdesc="Additional statistics functions for Octave."
 arch=(any)
@@ -25,7 +25,11 @@ install=$pkgname.install
 _archive=$_pack-$pkgver.tar.gz
 source=("http://downloads.sourceforge.net/octave/$_archive")
 noextract=("$_archive")
-md5sums=('d816a7c7a1bad7e640ef5e07d0501eb8')
+md5sums=('c0a82761323f5668f2c9933227a874e7')
+
+_octave_run() {
+	octave --no-history --no-init-file --no-window-system -q -f --eval "$*"
+}
 
 _install_dir() {
 	src=$1
@@ -39,7 +43,7 @@ build() {
 	_archprefix="$srcdir"/install_archprefix
 	mkdir -p "$_prefix" "$_archprefix"
 	cd "$srcdir"
-	octave -q -f --eval "$(cat <<-EOF
+	_octave_run "$(cat <<-EOF
 		pkg local_list octave_packages;
 		pkg prefix $_prefix $_archprefix;
 		pkg install -verbose -nodeps $_archive;
