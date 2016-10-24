@@ -1,10 +1,6 @@
-# make a proper manifest
-Index: chatty-0.8.2/manifest.mf
-===================================================================
---- chatty-0.8.2.orig/manifest.mf	2016-04-26 22:45:58.827753038 +0200
-+++ chatty-0.8.2/manifest.mf	2016-04-26 22:46:24.096275971 +0200
-@@ -1,3 +1,3 @@
- Manifest-Version: 1.0
--X-COMMENT: Main-Class will be added automatically by build
+diff -Nur chatty-0.8.4.orig/manifest.mf chatty-0.8.4/manifest.mf
+--- chatty-0.8.4.orig/manifest.mf	1970-01-01 01:00:00.000000000 +0100
++++ chatty-0.8.4/manifest.mf	2016-10-24 22:20:19.004420770 +0200
+@@ -0,0 +1,2 @@
++Manifest-Version: 1.0
 +Main-Class: chatty.Chatty
- 
