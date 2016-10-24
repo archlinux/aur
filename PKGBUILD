@@ -2,7 +2,7 @@
 # Contributor: Dean Galvin <deangalvin3@gmail.com>
 pkgname="home-assistant"
 pkgdesc='Home Assistant is an open-source home automation platform running on Python 3'
-pkgver=0.31
+pkgver=0.31.1
 pkgrel=1
 url="https://home-assistant.io/"
 license=('MIT')
@@ -16,7 +16,7 @@ optdepends=('git: install component requirements from github'
 conflicts=('python-home-assistant' 'python-home-assistant-git')
 source=("https://github.com/${pkgname}/${pkgname}/archive/${pkgver}.tar.gz"
         "home-assistant.service")
-sha256sums=('854c6cc73444594579403e3e0adc45148a69ad86c983f0ee94948db1a6b99264'
+sha256sums=('f4e2b80db79c8c3f550a024ac641823e4a32dfa91830916765bffc7d00336cb1'
             'SKIP')
 backup=('var/lib/hass/configuration.yaml')
 install='hass.install'

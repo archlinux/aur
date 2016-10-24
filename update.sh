@@ -17,12 +17,12 @@ sed -i -re "s/^sha256sums=.*$/sha256sums=('$checksum'/" PKGBUILD
 
 makepkg -si
 
-sudo systemctl status home-assistant
+sudo systemctl --no-pager status home-assistant
 
 echo "Sleep 60sec to ensure everything is working good"
 
-sleep 60
-sudo systemctl is-active home-assistant
+for i in {1..12}: do echo -n . ; sleep 5 done
+sudo systemctl --no-pager status home-assistant
 
 makepkg --printsrcinfo > .SRCINFO
 
