@@ -25,5 +25,8 @@ build() {
 package() {
   cd "$srcdir/RF24Network"
   make PREFIX="$pkgdir/usr" install 
+  cd "$pkgdir/usr/lib"
+  rm librf24network.so
+  ln -s librf24network.so.1.0 librf24network.so
 }
 
