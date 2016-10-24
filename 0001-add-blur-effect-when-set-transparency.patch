@@ -1,0 +1,84 @@
+From 20e6d6223e3c14bf173edbf4633859146cb60a97 Mon Sep 17 00:00:00 2001
+From: leaeasy <leaeasy@gmail.com>
+Date: Sun, 23 Oct 2016 20:17:42 +0800
+Subject: [PATCH] add-blur-effect-when-set-transparency
+
+---
+ CMakeLists.txt     |  3 ++-
+ src/CMakeLists.txt |  2 ++
+ src/MainWindow.cpp | 11 +++++++++++
+ 3 files changed, 15 insertions(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 18b6e49..51f7c0e 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -35,6 +35,7 @@ find_package(Qt5 ${QT_MIN_VERSION} CONFIG REQUIRED
+     PrintSupport
+     Script
+     Widgets
++    X11Extras
+ )
+ 
+ find_package(KF5 ${KF5_MIN_VERSION} REQUIRED
+@@ -42,7 +43,7 @@ find_package(KF5 ${KF5_MIN_VERSION} REQUIRED
+     CoreAddons Crash GuiAddons DBusAddons
+     I18n IconThemes Init KIO Notifications NotifyConfig
+     Parts Pty Service TextWidgets WidgetsAddons
+-    WindowSystem XmlGui DBusAddons
++    WindowSystem XmlGui DBusAddons 
+ )
+ 
+ find_package(KF5DocTools ${KF5_MIN_VERSION})
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index 25f6e57..6077ed0 100644
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -108,6 +108,7 @@ set(konsole_LIBS
+                  KF5::XmlGui
+                  Qt5::PrintSupport
+                  Qt5::Xml
++                 Qt5::X11Extras
+                  KF5::Notifications
+                  KF5::WindowSystem
+                  KF5::TextWidgets
+@@ -118,6 +119,7 @@ set(konsole_LIBS
+                  KF5::Pty
+                  KF5::KIOWidgets
+                  KF5::DBusAddons
++                 ${X11_LIBRARIES}
+ )
+ 
+ if(${CMAKE_SYSTEM_NAME} MATCHES "FreeBSD")
+diff --git a/src/MainWindow.cpp b/src/MainWindow.cpp
+index 803eeaf..dfca483 100644
+--- a/src/MainWindow.cpp
++++ b/src/MainWindow.cpp
+@@ -56,6 +56,12 @@
+ #include "settings/ProfileSettings.h"
+ #include "settings/TabBarSettings.h"
+ 
++#ifdef HAVE_X11
++#include <QtX11Extras/QX11Info>
++#include <X11/Xlib.h>
++#include <X11/Xatom.h>
++#endif
++
+ using namespace Konsole;
+ 
+ MainWindow::MainWindow()
+@@ -135,6 +141,11 @@ void MainWindow::updateUseTransparency()
+     setAttribute(Qt::WA_TranslucentBackground, useTranslucency);
+     setAttribute(Qt::WA_NoSystemBackground, false);
+     WindowSystemInfo::HAVE_TRANSPARENCY = useTranslucency;
++    #ifdef HAVE_X11
++        Atom net_wm_blur_region = XInternAtom(QX11Info::display(), "_KDE_NET_WM_BLUR_BEHIND_REGION", False);
++        unsigned long region[] = { 0 };
++        XChangeProperty(QX11Info::display(), winId(), net_wm_blur_region, XA_CARDINAL, 32, PropModeReplace, reinterpret_cast<const unsigned char*>(&region), 1);
++    #endif
+ }
+ 
+ void MainWindow::rememberMenuAccelerators()
+-- 
+2.10.1
+
