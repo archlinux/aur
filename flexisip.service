@@ -1,0 +1,8 @@
+[Unit]
+Description=
+After=network.service
+
+[Service]
+Type=forking
+ExecStart=/usr/bin/flexisip --daemon -p /run/flexisip.pid
+PIDFile=/run/flexsip.pid

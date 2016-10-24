@@ -1,13 +1,13 @@
 # Maintainer: Guillaume Horel <guillaume.horel@gmail.com>
 pkgname=flexisip
-pkgver=1.0.6
+pkgver=1.0.10
 pkgrel=1
 pkgdesc="A general purpose SIP proxy with media capabilities"
 arch=('i686' 'x86_64')
 url="http://flexisip.org"
 license=('AGPL3')
 groups=()
-depends=('belle-sip' 'boost-libs' 'hiredis' 'mediastreamer' 'protobuf' 'sofia-sip-bc' 'unixodbc' 'xsd')
+depends=('belle-sip' 'boost-libs' 'hiredis' 'mediastreamer' 'protobuf' 'sofia-sip-bc' 'unixodbc' 'xsd' 'soci')
 makedepends=()
 optdepends=()
 provides=()
@@ -19,10 +19,9 @@ install=
 changelog=
 source=("https://github.com/BelleDonneCommunications/$pkgname/archive/$pkgver.tar.gz")
 noextract=()
-md5sums=('295f6c7017484c0ea7ce183e586b9c69')
+md5sums=('aa42bc3fee319e731947c2e00dff4eb3')
 
 build() {
-  CXXFLAGS="$CXXFLAGS -fpermissive"
   cd "$pkgname-$pkgver"
 
   ./autogen.sh
@@ -37,7 +36,8 @@ build() {
 	--enable-protobuf \
 	--enable-redis \
 	--enable-transcoder \
-	--disable-doc
+	--disable-doc \
+    --disable-strict
   make
 }
 
