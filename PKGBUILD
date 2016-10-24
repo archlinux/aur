@@ -18,7 +18,7 @@ depends=(
   'mingw-w64-sqlite'
   'mingw-w64-libpng'
   'mingw-w64-openssl'
-  'mingw-w64-libdbus')
+  'mingw-w64-dbus')
 makedepends=('mingw-w64-gcc' 'mingw-w64-mariadb-connector-c' 'mingw-w64-postgresql' 'mingw-w64-pkg-config')
 optdepends=('mingw-w64-postgresql: PostgreSQL driver'
             'mingw-w64-mariadb-connector-c: MariaDB driver')
