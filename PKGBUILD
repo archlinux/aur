@@ -4,14 +4,16 @@ pkgname=(chocolate-{doom,heretic,hexen,strife,common})
 pkgbase=${pkgname[0]}
 pkgdesc="Historically-accurate Doom, Heretic, Hexen, and Strife ports."
 pkgver=2.2.1
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 url="http://www.chocolate-doom.org/"
 license=('GPL2')
 depends=('libsamplerate' 'sdl_mixer' 'sdl_net')
 makedepends=('python')
-source=(http://chocolate-doom.org/downloads/${pkgver}/${pkgbase}-${pkgver}.tar.gz)
-sha256sums=('ad11e2871667c6fa0658abf2dcba0cd9b26fbd651ee8df55adfdc18ad8fd674a')
+source=(http://chocolate-doom.org/downloads/${pkgver}/${pkgbase}-${pkgver}.tar.gz
+        0001-i_sdlsound.c-fix-compilation-with-libsamplerate-0.1..patch)
+sha256sums=('ad11e2871667c6fa0658abf2dcba0cd9b26fbd651ee8df55adfdc18ad8fd674a'
+            '2f54bccecbecfc57be96d75cdc73ca98c58107b6e583b00a1907dd8805f82158')
 
 prepare() {
   cd "${pkgbase}-${pkgver}"
