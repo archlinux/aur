@@ -9,9 +9,10 @@ pkgdesc="gcp is a file copy tool, freely inspired from cp, but with a few high-l
 arch=("any")
 url="http://wiki.goffi.org/wiki/Gcp/en"
 license=('GPL3')
-depends=('python2' 'python2-gobject' 'python2-dbus')
+depends=('python2' 'python2-gobject2' 'python2-dbus' 'dbus-glib')
 source=('ftp://ftp.goffi.org/gcp/gcp.tar.bz2')
 makedepends=('python2-setuptools')
+optdepends=('python2-progressbar')
 md5sums=('146da3e5508be6273b0a9169326286f2')
 
 build() {
