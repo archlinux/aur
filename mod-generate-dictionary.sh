@@ -25,5 +25,5 @@ sed -i \
     generate-dictionary.sh
 
 sed -i \
-    -e '/rm -f edict.*/,/gzip -dk edict.*/s/^/#/ig' \
+    -e '/^\(#\|ruby\|$\)/!s/^/#/ig' \
     edict-katakana-english/generate-dictionary.sh
