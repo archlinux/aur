@@ -1,11 +1,12 @@
 pkgbase = qxmledit
 	pkgdesc = Simple XML editor and XSD viewer
 	pkgver = 0.9.4
-	pkgrel = 1
+	pkgrel = 2
 	url = http://qxmledit.org/
 	arch = x86_64
 	license = GPL3
 	license = LGPL3
+	makedepends = freeglut
 	depends = qt5-svg
 	depends = qt5-xmlpatterns
 	depends = glu
