@@ -1,7 +1,7 @@
 # Contributor: Army
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=9base-git
-pkgver=20150627.109
+pkgver=20160912.113
 pkgrel=1
 pkgdesc="A port of various original Plan 9 tools for Unix, based on plan9port."
 arch=('i686' 'x86_64')
