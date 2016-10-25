@@ -1,7 +1,7 @@
 # Maintainer: Christian Krause ("wookietreiber") <kizkizzbangbang@googlemail.com>
 
 pkgname=picard-tools
-pkgver=2.7.0
+pkgver=2.7.1
 pkgrel=1
 pkgdesc='set of tools for working with next generation sequencing data in the BAM format'
 arch=('any')
@@ -12,9 +12,9 @@ source=("picard-$pkgver.jar::https://github.com/broadinstitute/picard/releases/d
         'picard-profile.sh'
         'picard.sh')
 noextract=("picard-$pkgver.jar")
-md5sums=('bcf083a7f1af6ee8a21bd08570f1efd3'
-	 'ebcda2d2c55df6d05994252cf22a68c2'
-	 '0987aa56f62f5e843bfa788cc93626c8')
+md5sums=('323c048b5c33ce4cccfd8b481539968b'
+         'ebcda2d2c55df6d05994252cf22a68c2'
+         '0987aa56f62f5e843bfa788cc93626c8')
 
 package() {
   install -Dm755 $srcdir/picard-profile.sh  $pkgdir/etc/profile.d/picard.sh
