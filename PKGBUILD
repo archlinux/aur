@@ -1,16 +1,17 @@
 #Maintainer: allencch <allencch at hotmail dot com>
 #Contributor: Charles E. Vejnar
 pkgname=meme
-pkgver=4.10.2
+pkgver=4.11.2
 pkgrel=1
+_minor=_2
 pkgdesc="The MEME suite provides tools for discovering and using protein and DNA sequence motifs"
 arch=("i686" "x86_64")
 url="http://meme-suite.org/"
 license=("custom")
 depends=(perl-html-template tcsh python2 perl-xml-parser openmpi)
-source=("http://meme-suite.org/meme-software/${pkgver}/meme_${pkgver}.tar.gz"
+source=("http://meme-suite.org/meme-software/${pkgver}/meme_${pkgver}${_minor}.tar.gz"
         "python27.patch")
-sha1sums=('230a52664c4739354f2ac79ace9b55f3dd2fde8d'
+sha1sums=('92d1a19191a718586a6b2e1f82c3e6dbb7438b7e'
           '737b1ef7cb277412c2fff692a2e9b2a261e1b532')
 
 prepare() {
@@ -58,5 +59,5 @@ package() {
     # Add symlinks for those files:
     ln -s "${pkgdir}/usr/bin/meme-meme_xml_to_html" "${pkgdir}/usr/bin/meme_xml_to_html"
     ln -s "${pkgdir}/usr/bin/meme-glam2html" "${pkgdir}/usr/bin/glam2html"
-    ln -s "${pkgdir}/usr/bin/meme-glam2psfm" "${pkgdir}/usr/bin/glam2psfm" 
+    ln -s "${pkgdir}/usr/bin/meme-glam2psfm" "${pkgdir}/usr/bin/glam2psfm"
 }
