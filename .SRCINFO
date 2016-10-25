@@ -1,0 +1,16 @@
+pkgbase = pacmanity
+	pkgdesc = Saves the list of packages installed via pacman and yaourt to your Github gist
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/alexchernokun/pacmanity
+	arch = x86_64
+	arch = i686
+	license = GPL
+	makedepends = git
+	depends = pacman>=5.0
+	depends = gist-git>=4.5.0
+	source = pacmanity::git+https://github.com/alexchernokun/pacmanity.git
+	md5sums = SKIP
+
+pkgname = pacmanity
+
