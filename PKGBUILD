@@ -1,9 +1,9 @@
 # Maintainer: Vladislav Tyulbashev <vladislav.tyulbashev@yandex.ru>
 
 pkgname=qlivebittorrent-git
-pkgver=20140909
+pkgver=20161025
 pkgrel=1
-pkgdesc="Simple bittorrent client with very interesting live feature"
+pkgdesc="Simple console bittorrent client"
 arch=('i686' 'x86_64')
 url="https://github.com/vtyulb/QLiveBittorrent"
 license=('GPL')
