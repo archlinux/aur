@@ -2,7 +2,7 @@
 # PKGBUILD by hasufell, updated by DaarkWel
 
 pkgname=qt4-fsarchiver
-pkgver=0.6.19_18
+pkgver=0.8.0_5
 pkgrel=1
 pkgdesc='GUI for fsarchiver'
 arch=('i686' 'x86_64')
@@ -10,9 +10,9 @@ url='http://sourceforge.net/projects/qt4-fsarchiver/'
 license=('GPL')
 depends=('fsarchiver' 'gksu' 'qt4')
 makedepends=()
-source=("http://sourceforge.net/projects/${pkgname}/files/source/${pkgname}-${pkgver//_/-}.tar.gz")
+source=("https://sourceforge.net/projects/${pkgname}/files/${pkgname}/source/${pkgname}-${pkgver//_/-}.tar.gz")
 
-sha256sums=('3e1cdaa4ad9deca2c26a9560c1e912b36f456d1820b67bb34d5e7b5e116f503f')
+sha256sums=('0e86b52fc3d07dde4d04b87e843fd50bdb86f5dd8902096a50ce07c05b23baa2')
 
 build() {
 	cd "${srcdir}/${pkgname}"
