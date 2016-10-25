@@ -1,6 +1,6 @@
 
 pkgname=sway
-pkgver=0.9
+pkgver=0.10
 pkgrel=1
 pkgdesc="i3 compatible window manager for Wayland"
 arch=("i686" "x86_64")
@@ -16,13 +16,13 @@ optdepends=(
 	"ffmpeg: For recording screencasts."
 	"i3status: To display system information with a bar."
 )
-makedepends=("cmake" "git" "asciidoc")
+makedepends=("cmake" "asciidoc")
 source=(
 	"$pkgname-$pkgver.tar.gz::https://github.com/SirCmpwn/$pkgname/archive/$pkgver.tar.gz"
 	"$pkgname-$pkgver.tar.gz::https://github.com/SirCmpwn/$pkgname/archive/$pkgver.tar.gz.sig"
 )
 sha256sums=(
-	"dc98fe5abd084dbf059fdf19b5b40e44b5c7ac75a5b704b47a6b53c9f489f42d"
+	"9723baf037cf7e9de557e4ca9a54280594962ec1cf85e736592b860789b447f1"
 	"SKIP"
 )
 validpgpkeys=(
