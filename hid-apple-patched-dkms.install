@@ -17,10 +17,21 @@ pre_remove() {
 # -----------------------------------------------------------------------------------
 
 do_install() {
-    echo dkms install hid-apple-patched/${1%%-*}
+    #dkms install hid-apple-patched/${1%%-*}
+    echo "dkms intall already handled by pacman hooks"
+    cat << EOF
+
+==> hid-apple-patched install/upgrade note:
+------------------------------------------------------------------------------
+New functionalities are disabled by default. You can enable them by providing
+a configuration file at /etc/modprobe.d/hid_apple.conf. An example is provided
+at /etc/modprobe.d/hid_apple.conf.example.
+
+EOF
 }
 
 do_remove() {
-    echo dkms remove hid_apple-patched/${1%%-*} --all
+    #dkms remove hid-apple-patched/${1%%-*} --all
+    echo "dkms remove already handled by pacman hooks"
 }
 
