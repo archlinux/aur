@@ -1,7 +1,7 @@
 pkgbase = mraa
 	pkgdesc = Low Level Skeleton Library for IO Communication on GNU/Linux platforms.
 	pkgver = 1.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/intel-iot-devkit/mraa
 	arch = x86_64
 	arch = i686
