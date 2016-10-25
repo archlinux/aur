@@ -10,3 +10,7 @@ post_install() {
 swish.service to run the server.\n\n"
 }
 
+post_remove()
+{
+    printf "\n\nYou can remove swish user and group.\n\n"
+}
