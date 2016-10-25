@@ -1,6 +1,6 @@
 # Maintainer: Jordyn Carattini <onlinecloud1@gmail.com>
 pkgname="shsession-git"
-pkgver=r9.5d9ecea
+pkgver=20161025
 pkgrel=1
 pkgdesc="A lightweight session manager written in bash."
 url="https://github.com/jcjordyn130/shsession"
@@ -16,19 +16,17 @@ optdepends=('pygtk: for the gui session controller'
             'systemd: for the default poweroff and reboot commaands')
 
 pkgver() {
-  # Update the pkgver from the git revision
-  cd ${srcdir}/shsession
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  # Update the pkgver to the date makepkg was run
+  echo $(date +%Y%m%d)
 }
 
 package() {
   # Make the usr and usr/bin directories in the package
   mkdir -p ${pkgdir}/usr/bin
-  # Copy shgreeter into the package
+  # Copy shsession into the package
   cp -v ${srcdir}/shsession/shsession ${pkgdir}/usr/bin/shsession
   mkdir -p ${pkgdir}/usr/share/shsession
-  cp -v ${srcdir}/shsession/default-xfce4-shsession.desktop ${pkgdir}/usr/share/shsession/default-xfce4-shsession.desktop
-  cp -rv ${srcdir}/shsession/default-config ${pkgdir}/usr/share/shsession/default-config
+  cp -rv ${srcdir}/shsession/sessions ${pkgdir}/usr/share/shsession/
   cp -rv ${srcdir}/shsession/sessionctl-gui/* ${pkgdir}/usr/bin/
   cp -rv ${srcdir}/shsession/sessionctl-cli/* ${pkgdir}/usr/bin/
 }
