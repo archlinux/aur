@@ -2,8 +2,8 @@
 
 pkgbase=moc_notify-git
 pkgname=$pkgbase
-pkgver=1.12
-pkgrel=2
+pkgver=1.13
+pkgrel=1
 _gitname=moc_notify
 _gittag="v.${pkgver}"
 pkgdesc="Notifier for 'Music On Console' using libnotify."
