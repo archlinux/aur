@@ -6,7 +6,7 @@ pkgname=steam-wrapper-git
 # shellcheck disable=SC2034
 pkgdesc="Steam wrapper for common operations (git version)"
 # shellcheck disable=SC2034
-pkgver=0.6.0.r145.d1b762a
+pkgver=0.6.0.r146.23bc2d1
 # shellcheck disable=SC2034
 pkgrel=1
 # shellcheck disable=SC2034
@@ -27,13 +27,13 @@ license=('GPLv2')
 sha256sums=('SKIP')
 url="https://github.com/pyamsoft/steam-wrapper.git"
 # shellcheck disable=SC2034
-source=("${_gitname}::git+${url}#branch=dev")
+source=("${_gitname}::git+${url}")
 
 pkgver() {
   # shellcheck disable=SC2154
   cd "$srcdir/$_gitname" || {
-	msg "Could not cd into ${srcdir}/$_gitname"
-	return 1
+    msg "Could not cd into ${srcdir}/$_gitname"
+    return 1
   }
 
   printf "%s.r%s.%s" "$(awk -F '=' \
@@ -46,8 +46,8 @@ pkgver() {
 package() {
   # shellcheck disable=SC2154
   cd "$srcdir/$_gitname" || {
-	msg "Could not cd into ${srcdir}/$_gitname"
-	return 1
+    msg "Could not cd into ${srcdir}/$_gitname"
+    return 1
   }
 
   # Install the script
