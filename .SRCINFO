@@ -1,5 +1,5 @@
 pkgbase = juffed-qt5-git
-	pkgdesc = A lightweight cross-platform text editor. Qt5 UI. Development version.
+	pkgdesc = A lightweight cross-platform text editor. Development version.
 	pkgver = 0.10.85.g5ba17f9
 	pkgrel = 3
 	url = http://juffed.com/
