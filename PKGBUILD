@@ -1,4 +1,5 @@
-# Maintainer: Boohbah <boohbah at gmail.com>
+# Maintainer: Gimmeapill <gimmeapill at gmail dot com>
+# Contributor: Boohbah <boohbah at gmail.com>
 # Contributor: SpepS <dreamspepser at yahoo.it>
 # Contributor: Bernardo Barros <bernardobarros at gmail.com>
 # Contributor: Uli Armbruster <uli_armbruster at web.de>
@@ -6,21 +7,21 @@
 
 _pkgname=ardour
 pkgname="${_pkgname}-git"
-pkgver=4.2.r16.g041b31d
+pkgver=5.4.r227.g24846f4
 pkgrel=1
 pkgdesc="A multichannel hard disk recorder and digital audio workstation"
 arch=('i686' 'x86_64')
 url="http://ardour.org/"
 license=('GPL')
 depends=('aubio' 'cwiid' 'gtkmm' 'liblo' 'liblrdf' 'libltc' 'lilv' 'suil'
-         'rubberband' 'taglib')
-makedepends=('git' 'python2' 'boost' 'cppunit' 'doxygen' 'graphviz')
+         'rubberband' 'taglib' 'fluidsynth' 'libarchive' 'hidapi')
+makedepends=('git' 'python2' 'boost' 'cppunit' 'doxygen' 'graphviz' 'itstool')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 source=("${_pkgname}::git://github.com/Ardour/ardour.git"
         'ardour.desktop')
 md5sums=('SKIP'
-         '151094720b3cdcce2d66b30915dea536')
+         'd4e6590ea931cbb539a159d3565802a2')
 
 pkgver() {
   cd "${srcdir}/${_pkgname}"
@@ -42,8 +43,9 @@ build() {
     --lxvst \
     --optimize \
     --with-backends=jack,alsa,dummy \
-    --use-external-libs \
-    --cxx11
+    --cxx11 \
+    --no-phone-home
+#    --use-external-libs     
 
   python2 waf build $MAKEFLAGS
 }
@@ -53,7 +55,7 @@ package() {
 
   python2 waf --destdir="${pkgdir}" install
 
-  # Install freedesktop.org compatibile applictaion starter desktop file
+  # Install freedesktop.org compatible application starter desktop file
   install -Dm644 "${srcdir}/ardour.desktop" \
     "${pkgdir}/usr/share/applications/ardour.desktop"
 }
