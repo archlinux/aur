@@ -1,6 +1,6 @@
 pkgbase = qlivebittorrent-git
 	pkgdesc = Simple bittorrent client with very interesting live feature
-	pkgver = 20140909
+	pkgver = 20161025
 	pkgrel = 1
 	url = https://github.com/vtyulb/QLiveBittorrent
 	arch = i686
