@@ -1,0 +1,14 @@
+pkgbase = r-cran-zoo
+	pkgdesc = Methods for totally ordered indexed observations
+	pkgver = 1.7.13
+	pkgrel = 1
+	url = http://cran.r-project.org/web/packages/zoo/index.html
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = r
+	source = http://cran.r-project.org/src/contrib/zoo_1.7-13.tar.gz
+	md5sums = 99521dfa4c668e692720cefcc5a1bf30
+
+pkgname = r-cran-zoo
+
