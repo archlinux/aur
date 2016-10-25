@@ -8,17 +8,17 @@ pkgname=keybase-bin
 pkgdesc='the Keybase Go client, filesystem, and GUI'
 license=('BSD')
 url='https://keybase.io'
-pkgver=1.0.17_20161024194756+4dcf351
+pkgver=1.0.17_20161025160021+77565f4
 pkgrel=1
 arch=('i686' 'x86_64')
 depends=(fuse gconf)
 # keybase-release is a deprecated AUR package
 conflicts=(keybase keybase-release keybase-git)
 source_i686=(
-  "https://s3.amazonaws.com/prerelease.keybase.io/linux_binaries/deb/keybase_1.0.17-20161024194756.4dcf351_i386.deb"
+  "https://s3.amazonaws.com/prerelease.keybase.io/linux_binaries/deb/keybase_1.0.17-20161025160021.77565f4_i386.deb"
 )
 source_x86_64=(
-  "https://s3.amazonaws.com/prerelease.keybase.io/linux_binaries/deb/keybase_1.0.17-20161024194756.4dcf351_amd64.deb"
+  "https://s3.amazonaws.com/prerelease.keybase.io/linux_binaries/deb/keybase_1.0.17-20161025160021.77565f4_amd64.deb"
 )
 install=keybase.install
 
@@ -33,7 +33,7 @@ package() {
   fi
 
   cd "$srcdir"
-  deb_package="keybase_1.0.17-20161024194756.4dcf351_${deb_arch}.deb"
+  deb_package="keybase_1.0.17-20161025160021.77565f4_${deb_arch}.deb"
   ar xf "$deb_package"
   tar xf data.tar.xz -C "$pkgdir"
 
@@ -41,5 +41,5 @@ package() {
   rm -rf "$pkgdir/etc"
 }
 
-sha256sums_i686=(5a5d7a25205094fcd14db8615a4b2929dabb51256e0ecffa979afff78a3e16d6)
-sha256sums_x86_64=(e0ccb7945fe3b7589ee348ac7b301cd9afb4d975e227cf29927ccb182dcc0895)
+sha256sums_i686=(bd6c00a94e8411e9b7b79a683995237d157d12e0319356da3a6ee775d45a9e07)
+sha256sums_x86_64=(a026020518f9a80a9c7780814b2166654d9653e6026d30fc54319daf2eea5836)
