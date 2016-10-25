@@ -1,6 +1,6 @@
 # Maintainer: David Flemström <dflemstr@spotify.com>
 pkgname=helios-git
-pkgver=0.8.420.r0.ga0381bc
+pkgver=0.9.45.r0.gc6779ee
 pkgrel=1
 pkgdesc="Spotify Helios - Docker container orchestration platform"
 license=('Apache')
@@ -8,7 +8,7 @@ license=('Apache')
 arch=('any')
 depends=('docker' 'java-runtime' 'zookeeper')
 makedepends=('git' 'maven')
-source=("$pkgname::git+ssh://git@github.com/spotify/helios.git"
+source=("$pkgname::git+https://github.com/spotify/helios.git"
         'helios-master.service'
         'helios-agent.service'
         'helios-env.sh')
