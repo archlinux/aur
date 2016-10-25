@@ -1,9 +1,9 @@
 pkgbase = teleirc
 	pkgdesc = NodeJS Telegram to IRC bridge bot
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ritlug/teleirc
-	install = .install
+	install = teleirc.install
 	arch = any
 	license = MIT
 	depends = nodejs
