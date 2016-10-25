@@ -20,7 +20,7 @@ _akcs=""		# Append Kernel Custom String.Not working on some systems.
 			# Use if you wnat to append a custom string to kernel version.
 			# No risc if you have a backup kernel in case of boot failure.
 
-_use_MUQSS="no"		# "yes":	Use MUQSS cpu scheduler.
+_use_BFS="no"		# "yes":	Use BFS cpu scheduler.
 			# "no":		Use CFS cpu scheduler.
 
 _use_KSM="no"		# "yes":	Enable Kernel SamePage Merging (KSM).
@@ -32,9 +32,9 @@ _use_32bit_pae="no"	# "yes": Use the PAE config for 32-bit
 
 pkgdesc='A desktop oriented kernel and modules with Liquorix patches'
 __basekernel=4.8
-_minor=3
+_minor=4
 pkgver=${__basekernel}.${_minor}
-pkgrel=2
+pkgrel=1
 lqxrel=1
 _kernelname=-lqx
 pkgbase=linux-lqx
@@ -62,7 +62,7 @@ source=("http://www.kernel.org/pub/linux/kernel/v4.x/linux-${__basekernel}.tar.x
 
 sha512sums=('a48a065f21e1c7c4de4cf8ca47b8b8d9a70f86b64e7cfa6e01be490f78895745b9c8790734b1d22182cf1f930fb87eaaa84e62ec8cc1f64ac4be9b949e7c0358'
             'SKIP'
-            'c576bc5f7763516cd7eb9f56fc0b1f1eb7ae54a410b11f6e7a1080e148d6d1cb34840427224404891f175529e777e21f9ded7f85c0336c444e07f493fb1a46d0'
+            'd2bdc1745de42259f5b7cd256637f86fa43a5fb59c1599e08caee50e7a7c14120495bcabc77b43fb9aaf92042fadc525aefcb111818f0ca71cfca34d84777d22'
             'ceca5349248f6c48437c25ce8de611487cbfe3b6cea48cf9fed5332438a46e78dcecd5e9c27a8d29715ebd2f8ad7d60265e8741a64d214f6c689f8ae87e501a0'
             '82e943b238cea41386181589c84f95ff558a3b18de7890ae7f4c277728d4053e37f0e8ecd9300302fc88e28a090cae9559d6c7b986b69ad53dae080f60d071c3'
             '9902630f5b42c34d6927c0a2c0be3f703e40d34235016613407ded97e049d337a8791e24f5ef4ca8d1e3b0bec281aef8a4194505ad2596bbdc7cb32140ce9599'
@@ -105,9 +105,10 @@ prepare() {
     sed -i "s|CONFIG_LOCALVERSION_AUTO=.*|CONFIG_LOCALVERSION_AUTO=n|" ./.config
   fi
 
-  #Enable MUQSS cpu scheduler in config
-  if [ "${_use_MUQSS}" = "yes" ]; then
-    sed -i -e 's/# CONFIG_SCHED_MUQSS is not set/CONFIG_SCHED_MUQSS=y/' ./.config
+  #Enable BFS cpu scheduler in config
+  if [ "${_use_BFS}" = "yes" ]; then
+    sed -i -e 's/# CONFIG_SCHED_BFS is not set/CONFIG_SCHED_BFS=y/' ./.config
+    sed -i '/CONFIG_SCHED_BFS=y/a \CONFIG_SCHED_BFS_AUTOISO=n' ./.config
   fi
 
   #Enable KSM (Kernel SamePage Merging)
