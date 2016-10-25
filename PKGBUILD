@@ -1,6 +1,6 @@
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=abduco-git
-pkgver=0.r74.28ef145
+pkgver=0.r148.df780cf
 pkgrel=1
 pkgdesc="A session management and attach/detach functionality (to use together with dvtm(1))."
 arch=('i686' 'x86_64')
