@@ -1,6 +1,6 @@
 pkgbase = 2048-puzzle-bash-git
 	pkgdesc = A bash implementation of 2048 puzzle game
-	pkgver = 3.0
+	pkgver = 4.0
 	pkgrel = 1
 	url = https://github.com/rhoit/2048
 	arch = any
