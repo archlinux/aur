@@ -9,7 +9,7 @@
 
 pkgname=arduino
 pkgver=1.6.12
-pkgrel=2
+pkgrel=3
 epoch=1
 pkgdesc="Arduino prototyping platform SDK"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h') # TODO remove arm once moved into community
@@ -25,16 +25,18 @@ source=("https://github.com/arduino/Arduino/archive/${pkgver}.tar.gz"
         "https://github.com/arduino-libraries/WiFi101-FirmwareUpdater-Plugin/releases/download/v0.8.0/WiFi101-Updater-ArduinoIDE-Plugin-0.8.0.zip"
         "https://downloads.arduino.cc/libastylej-2.05.1-3.zip"
         "https://downloads.arduino.cc/liblistSerials/liblistSerials-1.1.4.zip"
-        "https://downloads.arduino.cc/tools/arduino-builder-linux64-1.3.21_r1.tar.bz2"
         "arduino.sh"
         "build.patch")
+source_i686=("https://downloads.arduino.cc/tools/arduino-builder-linux32-1.3.21_r1.tar.bz2")
+source_x86_64=("https://downloads.arduino.cc/tools/arduino-builder-linux64-1.3.21_r1.tar.bz2")
 sha512sums=('2d386ddf26babc920767db9062304b75bf0b6b12ac469a33597b9b8abcc306a1ea6c18dd8b59f51fa2ecd7ffd66f36e80ade1953fd104cf29f0d74b5ab9da2d9'
             'b4ef0f253c56529eef52fad353f8e448f1756714a7fcd61370d7fabab61d4d09867b82301b2d30e4698f2c5b70b202e7536fa16a98e5fab0210c2c7d8f977e78'
             '7f82d64e34ef2d85a6b037caeecfa338b72f8edfc57a9903af3ab89b1d42cf7dfd9a6170abe8131ae3e6506850d82ed5092c3b08983a16d9c80319cd24c14555'
             'db605a53bbe8ce9da2387e991da2401054bf25f6172c4ffc72cba1fff8c44d819ed967f7f0e666e38ce967359573f6e3c544774832dd446f8107849ee76aaaba'
-            '223b81ae4cdb14962e3e6b271f78a88c055185785991d0ff32b3dbb3db9a4861cec495e5e726718df484e8c9901f5d3f0650d4d1e3b8d7bdb8f197c23222e748'
             '6dae08b8687e897ed370cc51cfeeba9020bb749356acfd367c796bf34fb43b763888340501be6a577859c19c37fe857be2b8fb52f1295769403b8e826c4e3f28'
             '71d36dcc21b399a9ebe70801f5738687d8c309ef0410bfb8b7f540d12d5df1771c09ecef8a271cdff492523b5a15e2ffb1b51b62cfccd6761eae28d0ffabcc02')
+sha512sums_i686=('a0df7ba3d7f313aeac4c32365b9aaf32feb374c18e0b82516d61e51be10db897f368e46b6ff4e1574fec8b78fe584c39a76215974b32b440e85e27a1434e3d12')
+sha512sums_x86_64=('223b81ae4cdb14962e3e6b271f78a88c055185785991d0ff32b3dbb3db9a4861cec495e5e726718df484e8c9901f5d3f0650d4d1e3b8d7bdb8f197c23222e748')
 
 prepare()
 {
