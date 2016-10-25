@@ -1,25 +1,24 @@
 # Maintainer: James W. Barnett <jbarnet4@tulane.edu>
 pkgname=xdrfile
-pkgver=1.1.4
+pkgver=2.1
 pkgrel=1
 pkgdesc='Reads/writes compressed trajectory files.'
-license=("LGPL")
+license=("GPL")
 arch=('i686' 'x86_64')
-source=(ftp://ftp.gromacs.org/contrib/${pkgname}-${pkgver}.tar.gz)
-md5sums=('d992901d1bd7305b91d280ab85427c7b')
+source=(https://github.com/wesbarnett/lib${pkgname}/archive/${pkgver}.tar.gz)
+md5sums=('5bdbaddf3128bd97c5b01db29c1984bb')
 
 build() {
-    cd ${srcdir}/${pkgname}-${pkgver}
-    ./configure
+    cd ${srcdir}/lib${pkgname}-${pkgver}
     make
 }
 
 check() {
-    cd ${srcdir}/${pkgname}-${pkgver}
+    cd ${srcdir}/lib${pkgname}-${pkgver}
     make test
 }
 
 package() {
-    cd ${srcdir}/${pkgname}-${pkgver}
+    cd ${srcdir}/lib${pkgname}-${pkgver}
     make DESTDIR=${pkgdir} install
 }
