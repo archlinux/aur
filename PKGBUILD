@@ -6,7 +6,7 @@ pkgrel=1
 pkgdesc="Manage all your JetBrains Projects and Tools"
 arch=('x86_64' 'i686')
 options=('!strip')
-url="http://www.jetbrains.com/${pkgname}/"
+url="http://www.jetbrains.com/toolbox/"
 license=('Commercial')
 depends=('fuse')
 optdepends=('java-environment>=8: use system java'
