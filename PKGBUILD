@@ -1,16 +1,16 @@
 # Contributor: graysky <graysky AT archlinux dot us>
 
 pkgname=('linpack')
-pkgver=11.3.3.011
-_math_kernel_lib=11.3.3
-_url=9128
+pkgver=2017.0.010
+_math_kernel_lib=2017
+_url=9752
 pkgrel=1
 arch=('i686' 'x86_64')
 license=('custom')
 url="http://software.intel.com/en-us/articles/intel-math-kernel-library-linpack-download"
 source=("http://registrationcenter-download.intel.com/akdlm/irc_nas/$_url/l_mklb_p_$pkgver.tgz"
 'linpack.conf' 'runme.template')
-sha256sums=('d19c1614d0508f28439e4af2ff606de2ae078f19dc9ca7363e4192694d43813e'
+sha256sums=('bbdb3f983818650d27b068cb0ba4b746f273405785d77109f79859db01165efb'
             'd7e31c8c7e2648c8fa3c4838d98dfc39b8fadf0f74bdaa4ca52cd38277ec8254'
             '8bcd48bd97b3177590f15e922f8f7fb1ebfe6ea0608b4d63d8902ac2bd9b6a52')
 
@@ -30,6 +30,6 @@ package_linpack() {
 	
 	install -Dm755 linpack_runme_xeon$bit "$pkgdir/usr/bin/linpack_runme_xeon$bit"
 	install -Dm644 linpack.conf "$pkgdir/usr/share/$pkgname/linpack.conf"
-	install -Dm644 "$_base/license.txt" "$pkgdir/usr/share/licenses/linpack/license.txt"
+	install -Dm644 "$_base/EULA.txt" "$pkgdir/usr/share/licenses/linpack/license.txt"
 	install -Dm755 "$_test/xlinpack_xeon$bit" "$pkgdir/usr/bin/xlinpack_xeon$bit"
 }
