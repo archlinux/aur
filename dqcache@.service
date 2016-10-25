@@ -1,0 +1,17 @@
+[Unit]
+Description=dqcache caching recursive DNS server
+Documentation=https://mojzis.com/software/dq
+After=network.target
+
+[Service]
+Type=simple
+Restart=always
+PrivateTmp=true
+PrivateDevices=true
+ProtectSystem=true
+WorkingDirectory=/etc/dqcache
+EnvironmentFile=/etc/dqcache/%i.conf
+ExecStart=/usr/bin/dqcache
+
+[Install]
+WantedBy=multi-user.target
