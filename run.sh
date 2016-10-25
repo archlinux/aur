@@ -88,7 +88,10 @@ startd()
     local pid=""
 
     {
-        ( initialize && exec swipl --quiet -f "$pkg_dir"/run.pl ) &
+        (
+            cd "$pkg_dir"
+            initialize && exec swipl --quiet -f "$pkg_dir"/run.pl
+        ) &
         pid="$!"
     } 1>/dev/null 2>/dev/null
 
