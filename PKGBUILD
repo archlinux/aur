@@ -2,7 +2,7 @@
 # Maintainer: Adria Arrufat <adria.arrufat+AUR@protonmail.ch>
 
 pkgname=gxml-git
-pkgver=0.12.0+9+g178aa9a
+pkgver=0.12.0
 pkgrel=1
 pkgdesc="GObject XML and Serialization API"
 arch=('i686' 'x86_64')
@@ -12,7 +12,8 @@ provides=(${pkgname/-git})
 conflicts=(${pkgname/-git})
 makedepends=('gobject-introspection' 'vala')
 url="https://wiki.gnome.org/GXml"
-source=("git+https://git.gnome.org/browse/gxml")
+_commit="a0b55b0fbae50359a361bff4c7ec49f975b2fa90"
+source=("git+https://git.gnome.org/browse/gxml#commit=${_commit}")
 sha256sums=('SKIP')
 
 pkgver() {
@@ -27,7 +28,7 @@ prepare() {
 
 build() {
   cd ${pkgname/-git}
-  ./configure --prefix=/usr --enable-vapigen
+  ./configure --prefix=/usr --enable-vapigen --enable-docs
   make
 }
 
