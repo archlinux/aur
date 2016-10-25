@@ -3,7 +3,7 @@
 _pkgname=lemonbuddy
 pkgname="${_pkgname}-git"
 pkgver=2.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A fast and easy-to-use tool for Lemonbar"
 arch=("i686" "x86_64")
 url="https://github.com/jaagr/lemonbuddy"
@@ -13,7 +13,7 @@ optdepends=("alsa-lib: volume module support"
             "libmpdclient: mpd module support"
             "wireless_tools: network module support"
             "i3ipc-glib-git: i3 module support")
-makedepends=("cmake" "python2" "pkg-config" "clang35" "libc++abi" "glibc" "boost")
+makedepends=("cmake" "python2" "pkg-config" "clang35" "libc++" "glibc" "boost")
 provides=("lemonbuddy")
 conflicts=("lemonbuddy")
 source=("${_pkgname}::git+${url}.git")
