@@ -1,6 +1,6 @@
-pkgbase = dupeguru-se
+pkgbase = dupeguru
 	pkgdesc = Find duplicate files on your system
-	pkgver = 3.9.1
+	pkgver = 4.0.2
 	pkgrel = 1
 	url = http://www.hardcoded.net/dupeguru/
 	arch = any
@@ -9,8 +9,11 @@ pkgbase = dupeguru-se
 	depends = python
 	depends = python-pyqt5
 	depends = libxkbcommon-x11
-	source = http://download.hardcoded.net/dupeguru-se-src-3.9.1.tar.gz
-	md5sums = 8f78859b3a18455339e7919fc4d684ce
+	depends = python-hsaudiotag3k
+	depends = python-polib
+	depends = python-send2trash
+	source = http://download.hardcoded.net/dupeguru-src-4.0.2.tar.gz
+	md5sums = fb3a149a8134f79bd58e4a49fb082f37 
 
-pkgname = dupeguru-se
+pkgname = dupeguru
 

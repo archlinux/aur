@@ -1,12 +1,13 @@
 # Maintainer: Virgil Dupras <hsoft@hardcoded.net>
-pkgname=dupeguru-se
-pkgver=3.9.1
+# Maintainer: Bijaya Dangol <dangoldbj23@gmail.com>
+pkgname=dupeguru
+pkgver=4.0.2
 pkgrel=1
 pkgdesc="Find duplicate files on your system"
 arch=(any)
 url="http://www.hardcoded.net/dupeguru/"
 license=('BSD')
-depends=('python' 'python-pyqt5' 'libxkbcommon-x11')
+depends=('python' 'python-pyqt5' 'libxkbcommon-x11' 'python-polib' 'python-send2trash' 'python-hsaudiotag3k')
 makedepends=(
     python-sphinx
 )
@@ -14,7 +15,7 @@ source=(
     http://download.hardcoded.net/$pkgname-src-$pkgver.tar.gz
 )
 md5sums=(
-    '8f78859b3a18455339e7919fc4d684ce'
+'fb3a149a8134f79bd58e4a49fb082f37'
 )
 
 build() {
@@ -24,7 +25,6 @@ build() {
   python -m pip install --no-index --find-links=deps -r requirements.txt
   source env/bin/activate
   msg "Starting build..."
-  python configure.py --edition se
   python build.py --clean
 }
 
