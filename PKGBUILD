@@ -3,7 +3,7 @@
 # Contributor: Ivan Petruk <localizator@ukr.net>
 pkgname=super-flat-remix-icon-theme
 _pkgname=Flat-Remix
-pkgver=20161016
+pkgver=20161024
 pkgrel=1
 pkgdesc='a pretty simple icon theme, derived from Ultra-Flat-Icons, Paper and Flattr'
 arch=('any')
@@ -26,7 +26,3 @@ package() {
 	cp -a "${_pkgname//-/ }" "${pkgdir}/usr/share/icons/$_pkgname"
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"  
 }
-
-
-
-
