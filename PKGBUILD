@@ -1,7 +1,7 @@
 # Maintainer: rho <rho.rhoit@gmail.com>
 
 pkgname=2048-puzzle-bash-git
-pkgver=3.0
+pkgver=4.0
 pkgrel=1
 pkgdesc="A bash implementation of 2048 puzzle game"
 arch=('any')
@@ -27,7 +27,7 @@ pkgver() {
 
 build() {
   cd "$srcdir/$_gitname"
-  git describe --tags > .version
+  ./configure
 }
 
 package() {
