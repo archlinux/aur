@@ -2,8 +2,9 @@
 # Maintainer: Andreas Radke <andyrtr@archlinux.org>
 
 pkgbase=linux-lts-selinux
+#pkgbase=linux-lts-custom
 _srcname=linux-4.4
-pkgver=4.4.26
+pkgver=4.4.27
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
@@ -21,7 +22,7 @@ source=(https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.{xz,sign}
 # https://www.kernel.org/pub/linux/kernel/v4.x/sha256sums.asc
 sha256sums=('401d7c8fef594999a460d10c72c5a94e9c2e1022f16795ec51746b0d165418b2'
             'SKIP'
-            '100bb46956585d418a6950bc898c5abc8206c3e34adfaf7ce4f6d14598918f72'
+            '578caffa00f5056a921f672c585734cd572b1e3e33227b71a54ef27873f7ea20'
             'SKIP'
             'a77182fa8011f68567f857e88b140f0164c1c2fb8aae46e20f885a885e295079'
             '531d6394acb1c27e00ee74cbb62386a6d058f5381746b2b971da44cf7bb530bb'
@@ -128,7 +129,7 @@ _package() {
     -i "${startdir}/${install}"
 
   # install mkinitcpio preset file for kernel
-  install -D -m644 "${srcdir}/${pkgbase}.preset" "${pkgdir}/etc/mkinitcpio.d/${pkgbase}.preset"
+  install -D -m644 "${srcdir}/linux-lts.preset" "${pkgdir}/etc/mkinitcpio.d/${pkgbase}.preset"
   sed \
     -e "1s|'linux.*'|'${pkgbase}'|" \
     -e "s|ALL_kver=.*|ALL_kver=\"/boot/vmlinuz-${pkgbase}\"|" \
