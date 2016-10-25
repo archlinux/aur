@@ -1,0 +1,19 @@
+pkgbase = hardsub-git
+	pkgdesc = burn soft subtitles into video
+	pkgver = r0
+	pkgrel = 1
+	url = https://github.com/dffischer/hardsub
+	arch = any
+	license = GPL
+	makedepends = ruby-ronn
+	makedepends = git
+	depends = ffmpeg
+	depends = grep
+	provides = hardsub=r0
+	conflicts = hardsub
+	source = hardsub::git+https://github.com/dffischer/hardsub
+	md5sums = SKIP
+	sha256sums = SKIP
+
+pkgname = hardsub-git
+
