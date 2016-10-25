@@ -1,0 +1,14 @@
+pkgbase = r-cran-magrittr
+	pkgdesc = Provides a mechanism for chaining commands
+	pkgver = 1.5
+	pkgrel = 1
+	url = http://cran.r-project.org/web/packages/magrittr/index.html
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = r
+	source = http://cran.r-project.org/src/contrib/magrittr_1.5.tar.gz
+	md5sums = e74ab7329f2b9833f0c3c1216f86d65a
+
+pkgname = r-cran-magrittr
+
