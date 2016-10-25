@@ -1,0 +1,15 @@
+pkgbase = vim-colorscheme-unsuck-flat-git
+	pkgdesc = A Vim / GVim color scheme that tries not to suck as hard as the existing ones
+	pkgver = 1.be38bc4
+	pkgrel = 1
+	url = https://github.com/unsuckvim/unsuck-flat
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = vim
+	conflicts = vim-colorscheme-unsuck-flat
+	source = git+https://github.com/unsuckvim/unsuck-flat.git
+	sha256sums = SKIP
+
+pkgname = vim-colorscheme-unsuck-flat-git
+
