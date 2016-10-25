@@ -2,8 +2,8 @@
 # Contributor: FadeMind <fademind@gmail.com>
 
 pkgname=grub2-theme-breeze-git
-pkgver=r17.9610d5b
-pkgrel=2
+pkgver=r21.b969dc5
+pkgrel=1
 pkgdesc="A minimalistic GRUB theme inspired by Breeze"
 arch=('any')
 url="https://github.com/gustawho/grub2-theme-breeze"

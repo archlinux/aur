@@ -1,7 +1,7 @@
 pkgbase = grub2-theme-breeze-git
 	pkgdesc = A minimalistic GRUB theme inspired by Breeze
-	pkgver = r17.9610d5b
-	pkgrel = 2
+	pkgver = r21.b969dc5
+	pkgrel = 1
 	url = https://github.com/gustawho/grub2-theme-breeze
 	arch = any
 	license = CCPL:by-sa
