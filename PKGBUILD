@@ -1,11 +1,11 @@
-# Maintainer: Thorsten Toepper <atsutane at freethoughts dot de>
-# Contributor: Jan-Erik Rediger <badboy at archlinux dot us>
+# Maintainer: Jan-Erik Rediger <badboy at archlinux dot us>
+# Contributor: Thorsten Toepper <atsutane at freethoughts dot de>
 # Contributor: William Giokas <1007380@gmail.com>
 
 # This PKGBUILD was prepared for pacman 4.1 by William. Thank you. :-)
 
 pkgname=i3-git
-pkgver=4.12.r55.g47562b4
+pkgver=4.12.r151.gc3b5bb9
 pkgrel=1
 pkgdesc='An improved dynamic tiling window manager'
 arch=('i686' 'x86_64')
@@ -37,22 +37,27 @@ pkgver() {
 
 build() {
   cd "$_gitname"
-  make
-  make -C man
+
+  autoreconf --force --install
+
+  rm -rf build
+  mkdir -p build && cd build
+
+  ../configure \
+    --prefix=/usr \
+    --sysconfdir=/etc
+
+  # See https://lists.archlinux.org/pipermail/arch-dev-public/2013-April/024776.html
+  make CPPFLAGS+="-U_FORTIFY_SOURCE"
 }
 
 package() {
-  cd "$_gitname"
+  cd "$_gitname/build"
 
   make DESTDIR="$pkgdir/" install
 
-  install -d "${pkgdir}/usr/share/man/man1/"
-  install -m644 man/*.1 "${pkgdir}/usr/share/man/man1/"
-
-  install -Dm644 LICENSE \
+  install -Dm644 ../LICENSE \
     "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-
-  make clean
 }
 
 # vim:set ts=2 sw=2 et:
