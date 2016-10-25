@@ -1,0 +1,13 @@
+--- local/owr_device_list.c.orig	2016-10-22 10:45:35.609345316 +0300
++++ local/owr_device_list.c	2016-10-22 10:45:41.739356339 +0300
+@@ -344,8 +344,8 @@
+         g_free(filename);
+         filename = NULL;
+ 
+-    if (!device_name)
+-        return NULL;
++        if (!device_name)
++            return NULL;
+ 
+         source = _owr_local_media_source_new_cached(index, device_name,
+             OWR_MEDIA_TYPE_VIDEO, OWR_SOURCE_TYPE_CAPTURE);
