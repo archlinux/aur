@@ -2,7 +2,7 @@
 # Maintainer: Bijaya Dangol <dangoldbj23@gmail.com>
 pkgname=dupeguru
 pkgver=4.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Find duplicate files on your system"
 arch=(any)
 url="http://www.hardcoded.net/dupeguru/"
@@ -17,6 +17,8 @@ source=(
 md5sums=(
 'fb3a149a8134f79bd58e4a49fb082f37'
 )
+provides=("dupeguru")
+conflicts=("dupeguru-se" "dupeguru-pe" "dupeguru-me")
 
 build() {
   cd "$srcdir"
