@@ -8,7 +8,7 @@
 
 _name=ffmpeg
 pkgname=ffmpeg-libfdk_aac
-pkgver=3.1.4
+pkgver=3.1.5
 pkgrel=1
 epoch=1
 pkgdesc='Complete solution to record, convert and stream audio and video (Same as official package except with libfdk-aac support)'
@@ -34,7 +34,7 @@ conflicts=("$_name")
 source=(https://ffmpeg.org/releases/$_name-$pkgver.tar.xz{,.asc}
         https://trac.ffmpeg.org/raw-attachment/ticket/5694/ffmpeg_opj2.patch)
 validpgpkeys=('FCF986EA15E6E293A5644F10B4322F04D67658D8') # ffmpeg-devel
-sha256sums=('a80cb378dda5c9bbcdbd62a99bdec0e4eedbcb47f290e72845af4855c1146b5b'
+sha256sums=('49cc3105f7891c5637f8fabb1b75ebb19c9b5123b311a3ccc6182aa35d58b89a'
             'SKIP'
             '336f14fa497598fbd437fc780305fa7c576fd6cd44aaef77b0b4f61448f55fb8')
 
