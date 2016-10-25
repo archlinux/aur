@@ -5,7 +5,7 @@ arch=('any')
 url="https://github.com/nana-4/Flat-Plat"
 license=('GPL')
 makedepends=('git')
-depends=('gtk3>=3.20','gtk-engine-murrine', 'gnome-themes-standard')
+depends=('gtk3>=3.22','gtk-engine-murrine', 'gnome-themes-standard')
 optdepends=()
 provides=('flatplat-theme')
 conflicts=('flatplat-theme')
@@ -13,7 +13,7 @@ replaces=()
 source=(${pkgname}::git+https://github.com/nana-4/Flat-Plat.git)
 sha256sums=('SKIP')
 
-pkgver=r136.6edb24d
+pkgver=r185.a3f3fab
 pkgver() {
   cd "$srcdir/${pkgname}"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
