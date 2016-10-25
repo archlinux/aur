@@ -2,13 +2,13 @@
 pkgname=(stderred-git lib32-stderred-git)
 _gitname=stderred
 pkgver=v1.0.r30.gab40b5f
-pkgrel=2
+pkgrel=3
 pkgdesc="LD_PRELOAD hack to color stderr output red"
 arch=(i686 x86_64)
 url="https://github.com/sickill/stderred"
 license=(MIT)
 source=(git+https://github.com/sickill/stderred)
-makedepends=(git cmake)
+makedepends=(git cmake gcc-libs-multilib)
 md5sums=(SKIP)
 optdepends=('bash: to use the convenience script')
 
