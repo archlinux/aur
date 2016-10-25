@@ -1,5 +1,5 @@
 pkgbase = screencloud-git
-	pkgdesc = An easy to use screenshot sharing tool. Qt5 UI. Development version.
+	pkgdesc = An easy to use screenshot sharing tool. Development version.
 	pkgver = 1.3.1.0.g54cd0c3
 	pkgrel = 3
 	url = https://screencloud.net/

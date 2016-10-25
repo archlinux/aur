@@ -4,7 +4,7 @@ _pkgname=screencloud
 pkgname=${_pkgname}-git
 pkgver=1.3.1.0.g54cd0c3
 pkgrel=3
-pkgdesc='An easy to use screenshot sharing tool. Qt5 UI. Development version.'
+pkgdesc='An easy to use screenshot sharing tool. Development version.'
 arch=('i686' 'x86_64')
 url='https://screencloud.net/'
 license=('GPL2')
@@ -26,7 +26,7 @@ sha512sums=('SKIP')
 pkgver() {
 	# Updating package version
 	cd "${srcdir}"/${_pkgname}
-	git describe --long --tags | sed 's/^v//;s/-/./g'
+	git describe --long --tags 2>/dev/null | sed 's/^v//;s/-/./g'
 }
 
 prepare() {
