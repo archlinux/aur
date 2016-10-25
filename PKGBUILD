@@ -8,6 +8,7 @@ arch=('i686' 'x86_64')
 url="https://github.com/rigon/qmmp-plugin-youtube"
 license=('GPL')
 depends=('qmmp' 'python>=3.5' 'python<3.6' 'youtube-dl' 'qjson' 'pythonqt')
+makedepends=('qt5-tools' 'fakeroot' 'qmake' 'make' 'gcc')
 source=("https://github.com/rigon/$pkgname/archive/v$pkgver.tar.gz")
 md5sums=('a11fb33664df98e97f641dbcadc800ec')
 
