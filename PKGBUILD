@@ -1,7 +1,7 @@
 # Maintainer: Martin Müllenhaupt <mm+aur.archlinux.org@netlair.de>
 pkgname=python2-fafclient
-pkgver=0.11.60
-pkgrel=2
+pkgver=0.11.60+577
+pkgrel=1
 epoch=0
 pkgdesc="Forged Alliance Forever - Lobby Client. Community-driven client system for Supreme Commander: Forged Alliance."
 url="http://www.faforever.com/"
@@ -19,28 +19,28 @@ backup=()
 options=()
 install=
 changelog=
-source=("https://github.com/FAForever/client/archive/$pkgver.tar.gz" 'changes.patch' 'FAForever.desktop' 'https://github.com/FAForever/uid/releases/download/v2.1.0/uid')
-sha256sums=('0aa89b8b7d53ed17481d1edd5be198a269bd9221d9da953dfb915d9bc97417e5'
-            '8144095df0522295901281bc06e20fdb03cd7ba5c2a5e8d48c3876a45d5fc324'
+source=("https://github.com/FAForever/client/archive/abc02517c9d2820002c4eb485bbdf9b907d887e4.tar.gz" 'changes.patch' 'FAForever.desktop' 'https://github.com/FAForever/uid/releases/download/v2.1.0/uid')
+sha256sums=('7e86b0bdb7f5074c7a2d2b8a5813e57000e216bab8432affc777ffc0fa235d29'
+            '0069559d178d7feb5576c0af7cce53abd0f181104dafb6f6e5b202bbbd1547c4'
             'f503475daa227d4ce1fa66063b065db7375ce3c0d161d77e3c2bd19c65468cbc'
             '9e9f3a561cdbc257c609cee1f517d8025c3fba110b1ea64d3ae3e09327a83dc0')
 noextract=()
 validpgpkeys=()
 
 prepare() {
-  cd "client-$pkgver"
+  cd "client-abc02517c9d2820002c4eb485bbdf9b907d887e4"
   patch -p1 < "$srcdir"/changes.patch
   chmod +x "$srcdir"/uid
   mv src fafclient
 }
 
 build() {
-  cd "client-$pkgver"
+  cd "client-abc02517c9d2820002c4eb485bbdf9b907d887e4"
   FAFCLIENT_VERSION=$pkgver python2 setup.py build
 }
 
 package() {
-  cd "client-$pkgver"
+  cd "client-abc02517c9d2820002c4eb485bbdf9b907d887e4"
   FAFCLIENT_VERSION=$pkgver python2 setup.py install --root="$pkgdir" --optimize=1 
   mkdir -p "$pkgdir/usr/share"
   cp -r "res" "$pkgdir/usr/share/fafclient"

@@ -13,10 +13,10 @@ index c63307f..c5029f8 100644
  dist/
  Thumbs.db
 diff --git a/.travis.yml b/.travis.yml
-index b28d989..1b93ba1 100644
+index 74ee1ab..dbbd36a 100644
 --- a/.travis.yml
 +++ b/.travis.yml
-@@ -10,6 +10,7 @@ install:
+@@ -11,6 +11,7 @@ install:
    - "pip install cx_Freeze"
    - "pip install python-coveralls"
    - "pip install -r requirements.txt --trusted-host content.faforever.com"
@@ -25,30 +25,17 @@ index b28d989..1b93ba1 100644
  
  before_script:
 diff --git a/appveyor.yml b/appveyor.yml
-index c4e0009..5f1a5ba 100644
+index f58e1af..53b16b3 100644
 --- a/appveyor.yml
 +++ b/appveyor.yml
 @@ -19,6 +19,7 @@ install:
-   - ps: "$env:PYTEST_QT_API=\"pyqt4v2\""
+   - ps: "$env:PYTEST_QT_API=\"pyqt4\""
    - ps: "$env:FAF_FORCE_PRODUCTION=true"
    - "%PYTHON%\\Scripts\\pip.exe install -r requirements.txt --trusted-host content.faforever.com"
 +  - ps: (Invoke-WebRequest -Uri https://api.github.com/repos/FAForever/uid/releases/latest | ConvertFrom-Json).assets | where {$_.name -eq "uid.exe"} | %{ iwr $_.browser_download_url -OutFile ".\\lib\\uid.exe" }
  
  test_script:
      - "%PYTHON%\\Scripts\\py.test.exe -vv --full-trace"
-diff --git a/requirements.txt b/requirements.txt
-index 9683392..29144a5 100644
---- a/requirements.txt
-+++ b/requirements.txt
-@@ -1,6 +1,8 @@
- bsdiff4==1.1.4
- cx_Freeze==4.3.4
- enum34
-+pillow
-+lupa
- git+https://github.com/FAForever/faftools.git@develop#egg=faftools
- ipaddress
- lupa
 diff --git a/setup.py b/setup.py
 index cec04dc..fd9c8eb 100644
 --- a/setup.py
@@ -153,7 +140,7 @@ index cec04dc..fd9c8eb 100644
 +    **platform_options
  )
 diff --git a/src/__main__.py b/src/__main__.py
-index 9daf832..e05d737 100644
+index 438d743..f144245 100644
 --- a/src/__main__.py
 +++ b/src/__main__.py
 @@ -30,14 +30,16 @@ uic.widgetPluginPath.append(path)
@@ -177,307 +164,8 @@ index 9daf832..e05d737 100644
 +if sys.platform == 'win32':
 +    util.COMMON_DIR = os.path.join(os.getcwd(), "res")
  
- import config
- import platform
-diff --git a/src/chat/_chatwidget.py b/src/chat/_chatwidget.py
-index 3fca596..a352a78 100644
---- a/src/chat/_chatwidget.py
-+++ b/src/chat/_chatwidget.py
-@@ -264,9 +264,7 @@ class ChatWidget(FormClass, BaseClass, SimpleIRCClient):
- 
-         for user in listing:
-             name = user.strip(chat.IRC_ELEVATION)
--            id = -1
--            if name in self.client.players:
--                id = self.client.players[name].id
-+            id = self.client.players.getID(name)
-             self.channels[channel].addChatter(name, id, user[0] if user[0] in chat.IRC_ELEVATION else None, '')
- 
-         logger.debug("Added " + str(len(listing)) + " Chatters")
-diff --git a/src/chat/channel.py b/src/chat/channel.py
-index 4bd8eba..1391219 100644
---- a/src/chat/channel.py
-+++ b/src/chat/channel.py
-@@ -226,7 +226,10 @@ class Channel(FormClass, BaseClass):
-             cursor.removeSelectedText()
-             self.lines = self.lines - CHAT_REMOVEBLOCK
- 
--        player = self.lobby.client.players.get(name, IRCPlayer(name))
-+        if self.lobby.client.players.isPlayer(name):
-+            player = self.lobby.client.players[name]
-+        else:
-+            player = IRCPlayer(name)
- 
-         displayName = name
-         if player.clan is not None:
-@@ -247,7 +250,7 @@ class Channel(FormClass, BaseClass):
- 
-         else:
-             # Fallback and ask the client. We have no Idea who this is.
--            color = self.lobby.client.players.getUserColor(name)
-+            color = self.lobby.client.players.getUserColor(player.id)
- 
-         if mentioned:
-             color = self.lobby.client.getColor("you")
-@@ -305,31 +308,30 @@ class Channel(FormClass, BaseClass):
-         '''
-         Print an raw message in the chatArea of the channel
-         '''
--        try:
--            color = self.lobby.client.players.getUserColor(name)
--                
--            # Play a ping sound
--            if self.private and name != self.lobby.client.login:
--                self.pingWindow()
--                
--            # scroll if close to the last line of the log
--            scroll_current = self.chatArea.verticalScrollBar().value()
--            scroll_needed = scroll_forced or ((self.chatArea.verticalScrollBar().maximum() - scroll_current) < 20)
--            
--            cursor = self.chatArea.textCursor()
--            cursor.movePosition(QtGui.QTextCursor.End)
--            self.chatArea.setTextCursor(cursor)
--                                
--            formatter = Formatters.FORMATTER_RAW
--            line = formatter.format(time=self.timestamp(), name=name, color=color, width=self.maxChatterWidth, text=text)
--            self.chatArea.insertHtml(line)
--            
--            if scroll_needed:
--                self.chatArea.verticalScrollBar().setValue(self.chatArea.verticalScrollBar().maximum())
--            else:
--                self.chatArea.verticalScrollBar().setValue(scroll_current)
--        except:
--            pass
-+        id = self.lobby.client.players.getID(name)
-+
-+        color = self.lobby.client.players.getUserColor(id)
-+
-+        # Play a ping sound
-+        if self.private and name != self.lobby.client.login:
-+            self.pingWindow()
-+
-+        # scroll if close to the last line of the log
-+        scroll_current = self.chatArea.verticalScrollBar().value()
-+        scroll_needed = scroll_forced or ((self.chatArea.verticalScrollBar().maximum() - scroll_current) < 20)
-+
-+        cursor = self.chatArea.textCursor()
-+        cursor.movePosition(QtGui.QTextCursor.End)
-+        self.chatArea.setTextCursor(cursor)
-+
-+        formatter = Formatters.FORMATTER_RAW
-+        line = formatter.format(time=self.timestamp(), name=name, color=color, width=self.maxChatterWidth, text=text)
-+        self.chatArea.insertHtml(line)
-+
-+        if scroll_needed:
-+            self.chatArea.verticalScrollBar().setValue(self.chatArea.verticalScrollBar().maximum())
-+        else:
-+            self.chatArea.verticalScrollBar().setValue(scroll_current)
- 
-     def timestamp(self):
-         '''returns a fresh timestamp string once every minute, and an empty string otherwise'''
-diff --git a/src/chat/chatter.py b/src/chat/chatter.py
-index 704aff0..c6bb61b 100644
---- a/src/chat/chatter.py
-+++ b/src/chat/chatter.py
-@@ -13,6 +13,7 @@ from fa.replay import replay
- import util
- 
- import client
-+from config import Settings
- 
- """
- A chatter is the representation of a person on IRC, in a channel's nick list.
-@@ -147,7 +148,7 @@ class Chatter(QtGui.QTableWidgetItem):
-         """
-         # First make sure we've got the correct id for ourselves
-         if self.id == -1 and self.lobby.client.players.isPlayer(self.name):
--            self.id = self.lobby.client.players[self.name].id
-+            self.id = self.lobby.client.players.getID(self.name)
-         
-         # Color handling
-         self.set_color()
-@@ -301,10 +302,12 @@ class Chatter(QtGui.QTableWidgetItem):
-                 menu.addAction(action_inspect_in_mordor)
- 
-                 def send_the_orcs():
-+                    route = Settings.get('mordor/host')
-+
-                     if self.id != -1:
--                        QtGui.QDesktopServices.openUrl(QUrl("http://mordor.faforever.com/users/{}".format(self.id)))
-+                        QtGui.QDesktopServices.openUrl(QUrl("{}/users/{}".format(route, self.id)))
-                     else:
--                        QtGui.QDesktopServices.openUrl(QUrl("http://mordor.faforever.com/users/{}".format(self.name)))
-+                        QtGui.QDesktopServices.openUrl(QUrl("{}/users/{}".format(route, self.name)))
- 
-                 action_inspect_in_mordor.triggered.connect(send_the_orcs)
- 
-diff --git a/src/client/_clientwindow.py b/src/client/_clientwindow.py
-index 8f605ee..10f6142 100644
---- a/src/client/_clientwindow.py
-+++ b/src/client/_clientwindow.py
-@@ -1051,15 +1051,15 @@ class ClientWindow(FormClass, BaseClass):
- 
-     def joinChannel(self, username, channel):
-         '''Join users to a channel'''
--        self.send(dict(command="admin", action="join_channel", user_ids=[self.players[username].id], channel=channel))
-+        self.send(dict(command="admin", action="join_channel", user_ids=[self.players.getID(username)], channel=channel))
- 
-     def closeFA(self, username):
-         '''Close FA remotly'''
--        self.send(dict(command="admin", action="closeFA", user_id=self.players[username].id))
-+        self.send(dict(command="admin", action="closeFA", user_id=self.players.getID(username)))
- 
-     def closeLobby(self, username):
-         '''Close lobby remotly'''
--        self.send(dict(command="admin", action="closelobby", user_id=self.players[username].id))
-+        self.send(dict(command="admin", action="closelobby", user_id=self.players.getID(username)))
- 
-     def addFriend(self, friend_id):
-         if friend_id in self.players:
-@@ -1420,7 +1420,7 @@ class ClientWindow(FormClass, BaseClass):
-             self.usersUpdated.emit([player['login']])
- 
-             if self.me.clan is not None and new_player.clan == self.me.clan:
--                self.players.clanlist.add(player['login'])
-+                self.players.clanlist.add(player['id'])
- 
-     def avatarManager(self):
-         self.requestAvatars(0)
-diff --git a/src/client/players.py b/src/client/players.py
-index 13234f3..c641709 100644
---- a/src/client/players.py
-+++ b/src/client/players.py
-@@ -57,7 +57,7 @@ class Players:
-         '''
-         Convenience function for other modules to inquire about a user's civilian status.
-         '''
--        return name in self or name == self.me.login
-+        return name in self
- 
-     def getUserColor(self, id):
-         '''
-@@ -65,19 +65,18 @@ class Players:
-         '''
-         if id == self.me.id:
-             return self.getColor("self")
--        elif id in self.friends:
-+        if id in self.friends:
-             return self.getColor("friend")
--        elif id in self.foes:
-+        if id in self.foes:
-             return self.getColor("foe")
--        elif id in self.clanlist:
-+        if id in self.clanlist:
-             return self.getColor("clan")
--        else:
--            if self.coloredNicknames:
--                return self.getRandomColor(id)
--            if id in self:
--                return self.getColor("player")
-+        if self.coloredNicknames:
-+            return self.getRandomColor(id)
-+        if id in self:
-+            return self.getColor("player")
- 
--            return self.getColor("default")
-+        return self.getColor("default")
- 
-     def getRandomColor(self, id):
-         '''Generate a random color from a name'''
-@@ -103,17 +102,20 @@ class Players:
-         val = self.__getitem__(item)
-         return val if val else default
- 
-+    def getID(self, name):
-+        if name in self._logins:
-+            return self._logins[name].id
-+        return -1
-+
-     def __contains__(self, item):
-         return self.__getitem__(item) is not None
- 
-     def __getitem__(self, item):
-         if isinstance(item, Player):
-             return item
--        try:
--            # Lets hope that nobody has an integer valued name
--            return self._players[int(item)]
--        except (ValueError, KeyError):
--            if item in self._logins:
-+        if isinstance(item, int) and item in self._players:
-+            return self._players[item]
-+        if item in self._logins:
-                 return self._logins[item]
- 
-     def __setitem__(self, key, value):
-diff --git a/src/config/__init__.py b/src/config/__init__.py
-index 29d06a2..38bb1d0 100644
---- a/src/config/__init__.py
-+++ b/src/config/__init__.py
-@@ -101,6 +101,10 @@ if environment == 'production':
- elif environment == 'development':
-     from develop import defaults
- 
-+for k, v in defaults.iteritems():
-+    if isinstance(v, str):
-+        defaults[k] = v.format(host = Settings.get('host'))
-+
- # Setup normal rotating log handler
- make_dirs()
- rotate = RotatingFileHandler(os.path.join(Settings.get('client/logs/path'), 'forever.log'),
-diff --git a/src/config/develop.py b/src/config/develop.py
-index 738502c..1a2ed03 100644
---- a/src/config/develop.py
-+++ b/src/config/develop.py
-@@ -10,10 +10,4 @@ else:
-     APPDATA_DIR = os.path.join(os.environ['HOME'], "FAForever")
- 
- defaults = production_defaults.copy()
--
--defaults['client/log/level'] = logging.INFO
--defaults['turn/host'] = 'dev.faforever.com'
--defaults['lobby/host'] = 'lobby.dev.faforever.com'
--defaults['proxy/host'] = 'proxy.dev.faforever.com'
--defaults['replay_server/host'] = 'lobby.dev.faforever.com'
--defaults['relay_server/host'] = 'lobby.dev.faforever.com'
-+defaults['host'] = 'test.faforever.com'
-diff --git a/src/config/production.py b/src/config/production.py
-index ed8faee..690fa2b 100644
---- a/src/config/production.py
-+++ b/src/config/production.py
-@@ -16,24 +16,26 @@ defaults = {
-     'client/logs/level': logging.INFO,
-     'client/logs/max_size': 512*1024,
-     'client/logs/buffer_size': 8*1024,
-+    'content/host': 'http://content.{host}',
-     'chat/enabled': True,
-     'game/bin/path': join(APPDATA_DIR, 'bin'),
-     'game/engine/path': join(join(APPDATA_DIR, 'repo'), 'binary-patch'),
-     'game/logs/path': join(APPDATA_DIR, 'logs'),
-     'game/mods/path': join(join(APPDATA_DIR, 'repo'), 'mods'),
-     'game/maps/path': join(join(APPDATA_DIR, 'repo'), 'maps'),
--    'proxy/host': 'proxy.faforever.com',
-+    'host': 'faforever.com',
-+    'proxy/host': 'proxy.{host}',
-     'proxy/port': 9124,
-     'lobby/relay/port': 15000,
--    'lobby/host': 'lobby.faforever.com',
-+    'lobby/host': 'lobby.{host}',
-     'lobby/port': 8001,
--    'turn/host': 'faforever.com',
-+    'mordor/host': 'http://mordor.{host}',
-+    'turn/host': '{host}',
-     'turn/port': 3478,
--    'replay_server/host': 'lobby.faforever.com',
-+    'replay_server/host': 'lobby.{host}',
-     'replay_server/port': 15000,
--    'relay_server/host': 'lobby.faforever.com',
-+    'relay_server/host': 'lobby.{host}',
-     'relay_server/port': 8000,
--    'MUMBLE_URL': 'mumble://{login}@mumble.faforever.com/Games?version:1.2.0',
-     'FORUMS_URL': 'http://forums.faforever.com/forums',
-     'WEBSITE_URL': 'http://www.faforever.com',
-     'UNITDB_URL': 'http://faforever.com/faf/unitsDB/',
+ # Set up crash reporting
+ excepthook_original = sys.excepthook
 diff --git a/src/config/version.py b/src/config/version.py
 index 8ee2014..80d2437 100644
 --- a/src/config/version.py
@@ -491,58 +179,6 @@ index 8ee2014..80d2437 100644
          return release_version
  
      # First try to get the current version using “git describe”.
-diff --git a/src/downloadManager/__init__.py b/src/downloadManager/__init__.py
-index 46bf985..9a1e8de 100644
---- a/src/downloadManager/__init__.py
-+++ b/src/downloadManager/__init__.py
-@@ -5,24 +5,25 @@ import logging
- import os
- import util
- import warnings
-+from config import Settings
- 
- logger= logging.getLogger(__name__)
- 
--VAULT_PREVIEW_ROOT = "http://content.faforever.com/faf/vault/map_previews/small/"
-+VAULT_PREVIEW_ROOT = "{}/faf/vault/map_previews/small/".format(Settings.get('content/host'))
- 
- class downloadManager(QtCore.QObject):
-     ''' This class allows downloading stuff in the background'''
--    
-+
-     def __init__(self, parent = None):
-         self.client = parent
-         self.nam = QNetworkAccessManager()
--        
-+
-         self.nam.finished.connect(self.finishedDownload)
- 
-         self.modRequests = {}
-         self.mapRequests = {}
-         self.mapRequestsItem = []
--        
-+
-     def finishedDownload(self,reply):
-         ''' finishing downloads '''
-         urlstring = reply.url().toString()
-@@ -59,7 +60,7 @@ class downloadManager(QtCore.QObject):
-                         requester.setIcon(util.icon(pathimg, False))
-             if urlstring in self.mapRequests: del self.mapRequests[urlstring]
-             if urlstring in self.modRequests: del self.modRequests[urlstring]
--            
-+
-     def downloadMap(self, name, requester, item=False):
-         '''
-         Downloads a preview image from the web for the given map name
-@@ -68,7 +69,7 @@ class downloadManager(QtCore.QObject):
-         name = name.lower()
-         if len(name) == 0:
-             return
--        
-+
- 
-         url = QtCore.QUrl(VAULT_PREVIEW_ROOT + urllib2.quote(name) + ".png")
-         if not url.toString() in self.mapRequests:
 diff --git a/src/fa/game_process.py b/src/fa/game_process.py
 index 9052f31..61d2c63 100644
 --- a/src/fa/game_process.py
@@ -576,248 +212,23 @@ index 9052f31..61d2c63 100644
              logger.info("Running FA with info: " + str(info))
              logger.info("Running FA via command: " + command)
              logger.info("Running FA via executable: " + executable)
-diff --git a/src/fa/maps.py b/src/fa/maps.py
-index ce307d1..47dfbf5 100644
---- a/src/fa/maps.py
-+++ b/src/fa/maps.py
-@@ -16,10 +16,12 @@ import urllib2
- import zipfile
- import tempfile
- import re
-+from config import Settings
- 
--VAULT_PREVIEW_ROOT = "http://content.faforever.com/faf/vault/map_previews/small/"
--VAULT_DOWNLOAD_ROOT = "http://content.faforever.com/faf/vault/"
--VAULT_COUNTER_ROOT = "http://content.faforever.com/faf/vault/map_vault/inc_downloads.php"
-+route = Settings.get('content/host')
-+VAULT_PREVIEW_ROOT = "{}/faf/vault/map_previews/small/".format(route)
-+VAULT_DOWNLOAD_ROOT = "{}/faf/vault/".format(route)
-+VAULT_COUNTER_ROOT = "{}/faf/vault/map_vault/inc_downloads.php".format(route)
-  
- maps = { # A Lookup table for info (names, sizes, players) of the official Forged Alliance Maps
-                  "scmp_001" : ["Burial Mounds", "1024x1024", 8],
-diff --git a/src/games/gameitem.py b/src/games/gameitem.py
-index ed40e6d..c6c97b1 100644
---- a/src/games/gameitem.py
-+++ b/src/games/gameitem.py
-@@ -81,6 +81,7 @@ class GameItem(QtGui.QListWidgetItem):
-         self.client         = None
-         self.title          = None
-         self.host           = None
-+        self.hostid         = -1
-         self.teams          = []
-         self.password_protected = False
-         self.mod            = None
-@@ -119,7 +120,7 @@ class GameItem(QtGui.QListWidgetItem):
-         
-     @QtCore.pyqtSlot()
-     def announceReplay(self):
--        if not self.client.players.isFriend(self.host):
-+        if not self.client.players.isFriend(self.hostid):
-             return
- 
-         if not self.state == "playing":
-@@ -139,7 +140,7 @@ class GameItem(QtGui.QListWidgetItem):
-     
-     @QtCore.pyqtSlot()
-     def announceHosting(self):
--        if not self.client.players.isFriend(self.host) or self.isHidden():
-+        if not self.client.players.isFriend(self.hostid) or self.isHidden():
-             return
- 
-         if not self.state == "open":
-@@ -168,6 +169,9 @@ class GameItem(QtGui.QListWidgetItem):
-         self.title = message['title']
-         self.host = message['host']
- 
-+        if self.client.players.isPlayer(self.host):
-+            self.hostid = self.client.players.isPlayer(self.host)
-+
-         # Maps integral team numbers (from 2, with 1 "none") to lists of names.
-         teams_map = dict.copy(message['teams'])
-         self.password_protected = message.get('password_protected', False)
-@@ -263,7 +267,7 @@ class GameItem(QtGui.QListWidgetItem):
-         else:
-             playerstring = "players"
- 
--        color = client.players.getUserColor(self.host)
-+        color = client.players.getUserColor(self.hostid)
- 
-         self.editTooltip(teams)
- 
-@@ -369,8 +373,8 @@ class GameItem(QtGui.QListWidgetItem):
-         if not other.client: return False;
-         
-         # Friend games are on top
--        if self.client.players.isFriend(self.host) and not self.client.players.isFriend(other.host): return True
--        if not self.client.players.isFriend(self.host) and self.client.players.isFriend(other.host): return False
-+        if self.client.players.isFriend(self.hostid) and not self.client.players.isFriend(other.hostid): return True
-+        if not self.client.players.isFriend(self.hostid) and self.client.players.isFriend(other.hostid): return False
- 
-         # Sort Games
-         # 0: By Player Count
-diff --git a/src/modvault/utils.py b/src/modvault/utils.py
-index f16e263..ccb1508 100644
---- a/src/modvault/utils.py
-+++ b/src/modvault/utils.py
-@@ -14,11 +14,12 @@ import warnings
- 
- import cStringIO
- import zipfile
-+from config import Settings
- 
- logger = logging.getLogger(__name__)
- 
- MODFOLDER = os.path.join(util.PERSONAL_DIR, "My Games", "Gas Powered Games", "Supreme Commander Forged Alliance", "Mods")
--MODVAULT_DOWNLOAD_ROOT = "http://content.faforever.com/faf/vault/"
-+MODVAULT_DOWNLOAD_ROOT = "{}/faf/vault/".format(Settings.get('content/host'))
- 
- installedMods = [] # This is a global list that should be kept intact. So it should be cleared using installedMods[:] = []
- 
-diff --git a/src/replays/_replayswidget.py b/src/replays/_replayswidget.py
-index 7b463a4..f96050d 100644
---- a/src/replays/_replayswidget.py
-+++ b/src/replays/_replayswidget.py
-@@ -291,7 +291,6 @@ class ReplaysWidget(BaseClass, FormClass):
-                         # Add additional info
-                         item.setText(3, item.info['featured_mod'])
-                         item.setTextAlignment(3, QtCore.Qt.AlignCenter)
--                        item.setTextColor(1, QtGui.QColor(client.instance.players.getUserColor(item.info.get('recorder', ""))))
-                     else:
-                         bucket = buckets.setdefault("incomplete", [])                    
-                         item.setIcon(0, util.icon("replays/replay.png"))
-@@ -405,31 +404,33 @@ class ReplaysWidget(BaseClass, FormClass):
-                 if team == "-1": #skip observers, they don't seem to stream livereplays
-                     continue
-                 
--                for player in info['teams'][team]:
-+                for name in info['teams'][team]:
-                     playeritem = QtGui.QTreeWidgetItem()
--                    playeritem.setText(0, player)  
-+                    playeritem.setText(0, name)
-+
-+                    playerid = self.client.players.getID(name)
- 
-                     url = QtCore.QUrl()
-                     url.setScheme("faflive")
-                     url.setHost("lobby.faforever.com")
--                    url.setPath(str(info["uid"]) + "/" + player + ".SCFAreplay")
-+                    url.setPath(str(info["uid"]) + "/" + name + ".SCFAreplay")
-                     url.addQueryItem("map", info["mapname"])
-                     url.addQueryItem("mod", info["featured_mod"])
-                     
-                     playeritem.url = url
--                    if client.instance.login == player:
-+                    if client.instance.login == name:
-                         mygame = True
-                         item.setTextColor(1, QtGui.QColor(client.instance.getColor("self")))
-                         playeritem.setTextColor(0, QtGui.QColor(client.instance.getColor("self")))
-                         playeritem.setToolTip(0, url.toString())
-                         playeritem.setIcon(0, util.icon("replays/replay.png"))                        
--                    elif client.instance.players.isFriend(player):
-+                    elif client.instance.players.isFriend(playerid):
-                         if not mygame:
-                             item.setTextColor(1, QtGui.QColor(client.instance.getColor("friend")))
-                         playeritem.setTextColor(0, QtGui.QColor(client.instance.getColor("friend")))
-                         playeritem.setToolTip(0, url.toString())
-                         playeritem.setIcon(0, util.icon("replays/replay.png"))                        
--                    elif client.instance.players.isPlayer(player):
-+                    elif client.instance.players.isPlayer(playerid):
-                         playeritem.setTextColor(0, QtGui.QColor(client.instance.getColor("player")))                        
-                         playeritem.setToolTip(0, url.toString())
-                         playeritem.setIcon(0, util.icon("replays/replay.png"))                        
-diff --git a/src/replays/replayitem.py b/src/replays/replayitem.py
-index 9e7b245..b0b9234 100644
---- a/src/replays/replayitem.py
-+++ b/src/replays/replayitem.py
-@@ -7,6 +7,7 @@ from fa import maps
- import util
- import os, time
- from games.moditem import mods
-+from config import Settings
- 
- import client
- 
-@@ -77,6 +78,7 @@ class ReplayItem(QtGui.QTreeWidgetItem):
-     def __init__(self, uid, parent, *args, **kwargs):
-         QtGui.QTreeWidgetItem.__init__(self, *args, **kwargs)
- 
-+        ROOT = Settings.get('content/host')
-         
-         self.uid            = uid
-         self.parent         = parent
-@@ -94,7 +96,7 @@ class ReplayItem(QtGui.QTreeWidgetItem):
-         self.moreInfo       = False
-         self.replayInfo     = False
-         self.spoiled        = False
--        self.url            = "http://content.faforever.com/faf/vault/replay_vault/replay.php?id=%i" % self.uid
-+        self.url            = "{}/faf/vault/replay_vault/replay.php?id={}".format(Settings.get('content/host'), self.uid)
-         
-         self.teams          = {}
-         self.access         = None
-diff --git a/src/stats/_statswidget.py b/src/stats/_statswidget.py
-index 7bf3f5d..89bd118 100644
---- a/src/stats/_statswidget.py
-+++ b/src/stats/_statswidget.py
-@@ -11,6 +11,8 @@ import time
- import logging
- logger = logging.getLogger(__name__)
- 
-+from config import Settings
-+
- ANTIFLOOD = 0.1
- 
- FormClass, BaseClass = util.loadUiType("stats/stats.ui")
-@@ -216,4 +218,4 @@ class StatsWidget(BaseClass, FormClass):
-         if util.themeurl("ladder/style.css"):
-             self.webview.settings().setUserStyleSheetUrl(util.themeurl("ladder/style.css"))
- 
--        self.webview.setUrl(QtCore.QUrl("http://content.faforever.com/faf/leaderboards/read-leader.php?board=1v1&username=%s" % me.login))
-+        self.webview.setUrl(QtCore.QUrl("{}/faf/leaderboards/read-leader.php?board=1v1&username={}".format(Settings.get('content/host'), me.login)))
-diff --git a/src/tutorials/tutorialitem.py b/src/tutorials/tutorialitem.py
-index 3881cfe..ceb23ce 100644
---- a/src/tutorials/tutorialitem.py
-+++ b/src/tutorials/tutorialitem.py
-@@ -5,6 +5,7 @@
- from PyQt4 import QtCore, QtGui
- from fa import maps
- import util
-+from config import Settings
- 
- class TutorialItemDelegate(QtGui.QStyledItemDelegate):
-     
-@@ -85,12 +86,11 @@ class TutorialItem(QtGui.QListWidgetItem):
-         '''
-         Updates this item from the message dictionary supplied
-         '''
--        
--        
-+
-         self.client = client
-         self.tutorial      = message['tutorial']
-         self.description   = message['description']
--        self.url           = "http://content.faforever.com/faf/tutorials/" + message['url']
-+        self.url           = "{}/faf/tutorials/{}".format(Settings.get('content/host'), message['url'])
- 
-         # Map preview code
-         if self.mapname != message['mapname']:
 diff --git a/src/util/__init__.py b/src/util/__init__.py
-index fdcf950..f4fc217 100644
+index 21989b0..f4fc217 100644
 --- a/src/util/__init__.py
 +++ b/src/util/__init__.py
-@@ -1,21 +1,29 @@
+@@ -1,12 +1,17 @@
  import sys
 -
  import os
 +import subprocess
 +import getpass
  from ctypes import *
++
++from PyQt4.QtGui import QDesktopServices
++
+ from config import Settings
++from PyQt4.QtGui import QDesktopServices
  
-+from PyQt4.QtGui import QDesktopServices
-+
-+from config import Settings
-+from PyQt4.QtGui import QDesktopServices
-+
  # Developer mode flag
  def developer():
 -    return sys.executable.endswith("python.exe")
@@ -825,12 +236,10 @@ index fdcf950..f4fc217 100644
  
  from config import VERSION as VERSION_STRING
  
- LOGFILE_MAX_SIZE = 256 * 1024  #256kb should be enough for anyone
+@@ -14,8 +19,11 @@ LOGFILE_MAX_SIZE = 256 * 1024  #256kb should be enough for anyone
  
-+UNITS_PREVIEW_ROOT = "{}/faf/unitsDB/icons/big/".format(Settings.get('content/host'))
+ UNITS_PREVIEW_ROOT = "{}/faf/unitsDB/icons/big/".format(Settings.get('content/host'))
  
--UNITS_PREVIEW_ROOT = "http://content.faforever.com/faf/unitsDB/icons/big/"
--
 -#These are paths relative to the executable or main.py script
 +# On Windows the res dir is relative to the executable or main.py script
  COMMON_DIR = os.path.join(os.getcwd(), "res")
@@ -943,28 +352,6 @@ index fdcf950..f4fc217 100644
  
  
  import datetime
-diff --git a/src/vault/__init__.py b/src/vault/__init__.py
-index a15d931..112b3bd 100644
---- a/src/vault/__init__.py
-+++ b/src/vault/__init__.py
-@@ -14,6 +14,7 @@ from vault import luaparser
- import urllib2
- import re
- import json
-+from config import Settings
- 
- logger = logging.getLogger(__name__)
- 
-@@ -56,7 +57,8 @@ class MapVault(QtCore.QObject):
-         if util.themeurl("vault/style.css"):
-             self.ui.settings().setUserStyleSheetUrl(util.themeurl("vault/style.css"))
- 
--        self.ui.setUrl(QtCore.QUrl("http://content.faforever.com/faf/vault/maps.php?username={user}&pwdhash={pwdhash}".format(user=self.client.login, pwdhash=self.client.password)))
-+        ROOT = Settings.get('content/host')
-+        self.ui.setUrl(QtCore.QUrl("{route}/faf/vault/maps.php?username={user}&pwdhash={pwdhash}".format(route = Settings.get('content/host'), user = self.client.login, pwdhash = self.client.password)))
- 
-     @QtCore.pyqtSlot()
-     def addScript(self):
 diff --git a/tests/unit_tests/client/test_updating.py b/tests/unit_tests/client/test_updating.py
 index 05b4ca4..ebf086a 100644
 --- a/tests/unit_tests/client/test_updating.py
