@@ -11,19 +11,19 @@ source=("git+https://github.com/MikalaiR/TitanIM.git")
 sha256sums=("SKIP")
 
 pkgver() {
-	cd "$srcdir/titanim"
+	cd "$srcdir/TitanIM"
 	echo $(egrep -o "\"(.*)\"$" "version.h" | cut -d \" -f2).$(git rev-parse --short HEAD)
 }
 
 build() {
-	cd "$srcdir/titanim"
+	cd "$srcdir/TitanIM"
 	qmake
 	make
 
 }
 
 package() {
-        cd "$srcdir/titanim"
+        cd "$srcdir/TitanIM"
         make DESTDIR="$pkgdir/" INSTALL_ROOT="$pkgdir/" install
 	install -Dm644 "TitanIM.desktop" "$pkgdir/usr/share/applications/TitanIM.desktop"
 	install -Dm644 "TitanIM64.png" "$pkgdir/usr/share/pixmaps/TitanIM64.png"
