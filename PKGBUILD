@@ -3,14 +3,14 @@
 _target_arch=arm64
 _target=aarch64-linux-gnu
 pkgname=$_target-linux-api-headers
-pkgver=4.7
+pkgver=4.8
 pkgrel=1
 pkgdesc="Kernel headers sanitized for use in userspace ($_target)"
 arch=(any)
 url='http://www.gnu.org/software/libc'
 license=(GPL2)
 source=(http://www.kernel.org/pub/linux/kernel/v4.x/linux-$pkgver.tar.xz)
-sha1sums=('99551524779bf05382e363f4879101227664dd55')
+sha1sums=('e375f93600a7b96191498af39e5a2416b6666e59')
 
 build() {
   cd linux-$pkgver
