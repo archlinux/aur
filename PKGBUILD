@@ -9,7 +9,7 @@
 # Contributor: eworm
 
 pkgname=opera
-pkgver=40.0.2308.90
+pkgver=41.0.2353.46
 pkgrel=1
 pkgdesc="A fast and secure web browser"
 url="http://www.opera.com/"
@@ -30,8 +30,8 @@ source_i686=("http://get.geo.opera.com/pub/${pkgname}/desktop/${pkgver}/linux/${
 source_x86_64=("http://get.geo.opera.com/pub/${pkgname}/desktop/${pkgver}/linux/${pkgname}-stable_${pkgver}_amd64.deb")
 sha256sums=('508512464e24126fddfb2c41a1e2e86624bdb0c0748084b6a922573b6cf6b9c5'
             '4913d97dec0ddc99d1e089b029b9123c2c86b7c88d631c4d1111b119b09da027')
-sha256sums_i686=('93cc5cf5c0054bf418bc1957755fae91eb6172efe8bd175dda3e8c42ecea0bbb')
-sha256sums_x86_64=('cf4cc36aef8ce1459b54670d2d92950caceebb6e375be7e53a39ddc8bbfc358a')
+sha256sums_i686=('06ed44aff1f08dd54a6391371cee9c184fa4fc6d0a7849191bfae7789491e2de')
+sha256sums_x86_64=('b7cea184547a33391ad93a4fdb80e55518e6922ca657bea6cc3c3ff934f463d3')
 
 prepare() {
     sed -e "s/%pkgname%/$pkgname/g" -i "$srcdir/opera"
