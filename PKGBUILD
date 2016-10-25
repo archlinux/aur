@@ -1,6 +1,6 @@
 # Maintainer: Simon Legner <Simon.Legner@gmail.com>
 pkgname=picapport
-pkgver=6.2.01
+pkgver=6.2.02
 pkgrel=1
 pkgdesc="An easy-to-use, free of charge, photo server for your home network"
 arch=('any')
@@ -8,7 +8,7 @@ url="http://www.picapport.de/"
 license=('CC BY-NC-ND 4.0')
 depends=('java-runtime-headless')
 optdepends=('java-openjfx: for running the interactive GUI')
-source=("${pkgname}.jar::http://www.picapport.de/download/${pkgver//\./-}/jar/picapport.jar")
+source=("${pkgname}.jar::http://www.picapport.de/download/${pkgver//\./-}/picapport.jar")
 
 package() {
   install -Dm644 $pkgname.jar "${pkgdir}/usr/share/java/$pkgname/$pkgname.jar"
@@ -25,5 +25,5 @@ EOF
   chmod 755 "${pkgdir}/usr/bin/$pkgname-headless"
 }
 
-sha1sums=('c9f79d2b1ea4c3c9c89bc29f145cd3e24422d3cf')
-sha256sums=('e663e50ebcc900fa959737cddca797b8e9a0da4f15739bd7b1439076877d0100')
+sha1sums=('aa672d0a1b39b985a94bf20df4b94e1346f63b01')
+sha256sums=('36653b853adf4aff6efa0c28a1b1c3b70b9a667181271b3ad232a485ea418458')
