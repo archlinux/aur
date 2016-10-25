@@ -1,6 +1,6 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 pkgname=plastex-git
-pkgver=1.0.0.49.g4f2518a
+pkgver=1.0.0.50.ge7978be
 pkgrel=1
 pkgdesc="Python-based LaTeX document processing framework"
 arch=('any')
