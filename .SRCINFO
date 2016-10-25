@@ -7,10 +7,10 @@ pkgbase = qmmp-plugin-youtube
 	arch = x86_64
 	license = GPL
 	makedepends = qt5-tools
-	makedepends = fakeroot
-	makedepends = qmake
+	makedepends = qt5-base
 	makedepends = make
 	makedepends = gcc
+	makedepends = fakeroot
 	depends = qmmp
 	depends = python>=3.5
 	depends = python<3.6
