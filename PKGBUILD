@@ -3,7 +3,7 @@
 pkgname=doomsday-bin
 _pkgname=doomsday
 pkgver=2.0.0
-pkgrel=2072
+pkgrel=2122
 pkgdesc="An advanced Doom engine that supports DOOM, Heretic and Hexen."
 url="http://dengine.net/"
 arch=('x86_64')
@@ -16,7 +16,7 @@ optdepends=('doom1-wad: Doom shareware',
             'heretic1-wad: Heretic shareware', 
             'hexen1-wad: Hexen shareware')
 source=("http://files.dengine.net/builds/build${pkgrel}/${_pkgname}-${pkgver}-build${pkgrel}-1.x86_64.rpm")
-md5sums=('f49f8033b1aa8538c47a4e1d36d8e58f')
+md5sums=('SKIP')
 
 package() {
 	cd $pkgdir
