@@ -7,8 +7,8 @@
 
 _basename=wine
 pkgname=wine-ivb
-pkgver=1.9.11
-pkgrel=4
+pkgver=1.9.20
+pkgrel=1
 
 _pkgbasever=${pkgver/rc/-rc}
 
@@ -17,11 +17,11 @@ source=(${pkgname}-${pkgver}.tar.bz2::https://dl.winehq.org/wine/source/1.9/$_ba
         30-win32-aliases.conf
         patch-$pkgver-ivb.patch
         patch_temp_constants.patch)
-sha512sums=('3c2037558b0e3dc833b68e18bee91642f22d19b201c604cd95c09a33ebe72ee1252139e2eb138efea666cf24bb727232b12d4c456459068ab228bfe951c793b2'
+sha512sums=('31841298104592eb615e0a3d70b06b69b5226f8c2b8865e639407399d8a19e20527779d76fe08fb913f6114c4908401f7efa9cfa56fc3360b832c30cc523e764'
             'SKIP'
             '6e54ece7ec7022b3c9d94ad64bdf1017338da16c618966e8baf398e6f18f80f7b0576edf1d1da47ed77b96d577e4cbb2bb0156b0b11c183a0accf22654b0a2bb'
-            'dfc3491d015ca5fbd074290869fad296f168383aba57a2b26392b05570e37d84a939cae141107fed02a06589472da9505366cb97a894c9582c9492bec4b35a93'
-            '83583553d8db60e671679adcddedb87a2f8a740d36e5cdffef4a0cf2b995e48be216e53a7d1ee3bbeafd5bf9d0938b4c32b42265620c8e7c5bba967da893be11')
+            '42af4c34688119e38df40802d1450a7623749ea268ea25400ad6acddba11c55c4a3efc3a658bfcf071595e3ac7d45b9885b7efbd0eaebd22cb7ac1f7cc601529'
+            '54e7927ea07137f2383734f65147ae18366a65a17c1970af06b13d5597f501ade3b2b435311bfae1759070895473f09382d75676e8b774c52ce540bc06cf5461')
 validpgpkeys=(5AC1A08B03BD7A313E0A955AF5E6E9EEB9461DD7
               DA23579A74D4AD9AF9D3F945CEFAC8EAAF17519D)
 
@@ -30,7 +30,6 @@ url="http://www.winehq.com"
 arch=(i686 x86_64)
 options=(staticlibs)
 license=(LGPL)
-install=wine.install
 
 _depends=(
   fontconfig      lib32-fontconfig

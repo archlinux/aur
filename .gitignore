@@ -1,2 +1,3 @@
-wine-ivb-1.9.1-1-*.pkg.tar.xz
+wine-ivb-*-*.pkg.tar.xz
 wine-*.tar.*
+*.log
