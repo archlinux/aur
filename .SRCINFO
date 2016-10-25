@@ -1,0 +1,12 @@
+pkgbase = pvs-studio
+	pkgdesc = Static Code Analyzer for C, C++ and C#
+	pkgver = 6.10.19280.1.1
+	pkgrel = 1
+	url = http://www.viva64.com/en/pvs-studio/
+	arch = x86_64
+	license = unknown
+	source = http://files.viva64.com/pvs-studio-6.10.19280.1-1.x86_64.tgz
+	md5sums = 5befc43afd49f9437800ff1e9b5f0db0
+
+pkgname = pvs-studio
+
