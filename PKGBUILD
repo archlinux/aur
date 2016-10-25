@@ -2,11 +2,11 @@ pkgname=cava-gui-git
 _pkgname=cava
 pkgver=r284.164c494
 pkgrel=1
-pkgdesc='SDL2 Audio Visualizer for Alsa/Pulseaudio'
+pkgdesc='Xlib and SDL2 Audio Visualizer for Alsa/Pulseaudio'
 arch=('i686' 'x86_64')
 url='https://github.com/nikp123/cava-gui'
 license=('MIT')
-depends=('fftw' 'alsa-lib' 'iniparser' 'libx11')
+depends=('fftw' 'alsa-lib' 'iniparser' 'ncurses' 'libx11' 'sdl2')
 makedepends=('git' 'libtool' 'automake')
 source=('git+https://github.com/nikp123/cava.git')
 conflicts=($_pkgname)
@@ -32,3 +32,5 @@ package() {
   install -Dm744 example_files/desktop/icon.png "$pkgdir/usr/share/$_pkgname/icon.png"
   install -Dm744 example_files/desktop/"$_pkgname".desktop "$pkgdir"/usr/share/applications/"$_pkgname".desktop
 }
+
+
