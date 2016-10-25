@@ -31,8 +31,8 @@ sha256sums=('9d77cd58a5458a8391965934d6dde232f80fe4dca06818ee4337752331bc2c57')
 package() {
   # shellcheck disable=SC2154
   cd "$srcdir/$pkgname-$pkgver" || {
-	msg "Could not cd into ${srcdir}/${pkgname}-${pkgver}"
-	return 1
+    msg "Could not cd into ${srcdir}/${pkgname}-${pkgver}"
+    return 1
   }
 
   # Install the script
