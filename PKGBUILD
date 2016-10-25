@@ -3,12 +3,12 @@
 
 pkgname=labplot-kf5
 pkgver=2.3.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A free software data analysis and visualization application, for two and three-dimensional graphical presentation of data sets and functions."
 arch=('i686' 'x86_64')
 url='http://labplot.sourceforge.net/'
 license=('GPL')
-depends=('kdebase-runtime' 'gsl')
+depends=('kdebase-runtime' 'gsl' 'kdelibs4support')
 makedepends=('cmake' 'extra-cmake-modules' 'kdoctools')
 source=("http://download.kde.org/stable/labplot/${pkgver}/labplot-${pkgver}-kf5.tar.xz"
 	"labplot-kf5.install"
