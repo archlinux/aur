@@ -1,6 +1,5 @@
 # Maintainer: Icaro Perseo <icaroperseo[at]protonmail[dot]com>
-
-# Thanks to @xenom, contributor of firefox-nightly
+# Forked from @xenom PKGBUILD, contributor of firefox-nightly
 
 # Before you complain about unverifiable signature, please read Allan's post:
 # http://allanmcrae.com/2015/01/two-pgp-keyrings-for-package-management-in-arch-linux/
