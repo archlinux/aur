@@ -2,7 +2,7 @@
 
 pkgname=zypper-git
 pkgver=1.11.16.4.g9565572
-pkgrel=1
+pkgrel=2
 pkgdesc="Command line software manager using libzypp"
 arch=('i686' 'x86_64')
 url="https://github.com/openSUSE/zypper"
