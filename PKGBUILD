@@ -6,7 +6,7 @@
 _pkgbase=gdm
 pkgbase=gdm-plymouth
 pkgname=(gdm-plymouth libgdm-plymouth)
-pkgver=3.22.0+1+g3d2aa55
+pkgver=3.22.1
 pkgrel=1
 pkgdesc="Gnome Display Manager with Plymouth support."
 arch=(i686 x86_64)
@@ -21,10 +21,10 @@ source=("git://git.gnome.org/gdm#commit=$_commit"
 sha256sums=('SKIP'
             '63f99db7623f078e390bf755350e5793db8b2c4e06622caf42eddc63cd39ecca')
 
-pkgver() {
-  cd $_pkgbase
-  git describe --tags | sed 's/-/+/g'
-}
+#pkgver() {
+#  cd $_pkgbase
+#  git describe --tags | sed 's/-/+/g'
+#}
 
 prepare() {
   cd $_pkgbase
