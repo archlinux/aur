@@ -1,12 +1,12 @@
 pkgname=osvr-core-git
-pkgver=0.2.r2221.g6c12b30
+pkgver=0.2.r2221.g23a18ea
 pkgrel=1
 pkgdesc="The core libraries, applications, and plugins of the OSVR software platform."
 arch=(i686 x86_64)
 url="https://github.com/OSVR/OSVR-Core"
 #license=('GPL')
 makedepends=('git' 'cmake')
-depends=('jsoncpp' 'markdown' 'boost' 'opencv' 'osvr-libfunctionality-git') #TODO: add more deps
+depends=('jsoncpp' 'markdown' 'boost' 'opencv' 'osvr-libfunctionality-git' 'libuvc-git') #TODO: add more deps
 source=("osvr-core::git+https://github.com/OSVR/OSVR-Core.git"
 	"json-schemas::git+https://github.com/OSVR/OSVR-JSON-Schemas.git"
 	"vendor-discount-windows-bins::git+https://github.com/OSVR/discount.git"
