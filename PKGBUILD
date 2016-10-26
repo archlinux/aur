@@ -9,8 +9,8 @@ url="https://github.com/openSUSE/zypper"
 license=('GPL')
 depends=('libzypp-git' 'libxml2' 'procps' 'readline' 'augeas')
 makedepends=('git' 'cmake' 'boost')
-provides=('zypper')
-conflicts=('zypper')
+provides=('zypper' 'apt')
+conflicts=('zypper' 'apt')
 source=('git+https://github.com/openSUSE/zypper.git'
         'make-ZyppCommon-cmake-module-includable.patch')
 md5sums=('SKIP'
