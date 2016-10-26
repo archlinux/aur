@@ -6,7 +6,7 @@ pkgdesc="Tool for managing remote repositories from your git CLI!"
 arch=('any')
 url="https://github.com/guyzmo/git-repo"
 license=('GPL2')
-depends=('python' 'python-docopt' 'GitPython' 'python-progress' 'python-gitlab'
+depends=('python' 'python-docopt' 'python-git' 'python-progress' 'python-gitlab'
          'python-uritemplate.py' 'python-github3.py' 'python-bitbucket-api')
 makedepends=('python-setuptools' 'python-pip')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
