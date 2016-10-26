@@ -9,7 +9,8 @@ arch=('x86_64')
 url="https://www.microsoft.com/en-us/download/details.aspx?id=36437"
 license=('custom')
 depends=('unixodbc' 'krb5')
-source=("https://download.microsoft.com/download/B/C/D/BCDD264C-7517-4B7D-8159-C99FC5535680/$pkgname-$pkgver.tar.gz"
+# curl -s https://raw.githubusercontent.com/Azure/msphpsql/PHP-7.0-Linux/ODBC%20install%20scripts/installodbc_redhat.sh | grep 'wget.*msodbcsql'
+source=("$pkgname-$pkgver.tar.gz::https://meetsstorenew.blob.core.windows.net/contianerhd/RedHat%2013.0%20Tar/$pkgname-$pkgver.tar.gz?st=2016-10-18T17%3A29%3A00Z&se=2022-10-19T17%3A29%3A00Z&sp=rl&sv=2015-04-05&sr=b&sig=xrQ9LQaE9FsLckIo7IuGJX5Nv3cH5Bs7hgrGyEJHMMI%3D"
         driver.ini)
 sha256sums=('2fec18bfd036460d45ff7a1e0d0b10cdd425b19fa610f472570c379ec4de4f4f'
             '1420c1fbc2437a803bd76f87591879ef77dc48784c28db64ab89d97e4bdfc0dd')
