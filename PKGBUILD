@@ -9,7 +9,7 @@ _pkgname=audacious-plugins
 pkgname=$_pkgname-gtk3
 pkgver=3.8
 _pkgver=$pkgver-gtk3
-pkgrel=1
+pkgrel=2
 pkgdesc="Plugins for Audacious"
 arch=('i686' 'x86_64')
 url="http://audacious-media-player.org/"
@@ -18,10 +18,10 @@ provides=('audacious-plugins')
 conflicts=('audacious-plugins')
 
 makedepends=("audacious-gtk3>=$pkgver"
-             'glib2' 'python2' # for gdbus-codegen
-             'alsa-lib' 'pulseaudio' 'jack2' 'lame' 'libvorbis' 'flac'
-             'mpg123' 'faad2' 'ffmpeg' 'libmodplug' 'fluidsynth'
-             'libcdio-paranoia' 'libsidplayfp' 'wavpack' 'dbus-glib' 'libnotify'
+             'glib2' 'python' # for gdbus-codegen
+             'alsa-lib' 'pulseaudio' 'jack2' 'lame' 'libvorbis' 'flac' 'mpg123'
+             'faad2' 'ffmpeg' 'libmodplug' 'fluidsynth' 'libcdio-paranoia'
+             'libsidplayfp' 'wavpack' 'dbus-glib' 'libsamplerate' 'libnotify'
              'lirc' 'curl' 'libmtp' 'neon' 'libmms' 'libcue')
 
 optdepends=('alsa-lib: Advanced Linux Sound Arch. output'
@@ -41,6 +41,7 @@ optdepends=('alsa-lib: Advanced Linux Sound Arch. output'
             'wavpack: WavPack input'
 
             'dbus-glib: Gnome Shortcuts Plugin'
+            'libsamplerate: Speed and Pitch Plugin'
             'libnotify: libnotify OSD'
             'lirc: LIRC'
             'curl: AudioScrobbler Client'
