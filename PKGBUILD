@@ -2,14 +2,14 @@
 
 pkgname=nageru
 pkgver=1.4.0
-pkgrel=1
+pkgrel=2
 
 pkgdesc="Nageru is a live video mixer, based around the standard M/E workflow."
 arch=(x86_64)
 url="https://nageru.sesse.net/"
 license=('GPLv3')
 
-depends=('qt5-base' 'protobuf' 'libepoxy' 'libmicrohttpd' 'lua51' 'movit' 'libusb' 'x264')
+depends=('qt5-base' 'protobuf' 'libepoxy' 'libmicrohttpd' 'lua51' 'movit' 'libusb' 'x264' 'bmusb')
 makedepends=('gcc')
 optdepends=()
 provides=('nageru')
