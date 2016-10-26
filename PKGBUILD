@@ -16,12 +16,21 @@ sha256sums=('5f30c0ded283578011e637f5f7b46fd56d9d3cdaf3f42fd6a4f4dfe44074b33c')
 
 package() {
   cd "${pkgdir}"
-  mkdir -p "usr/share/webapps" "usr/share/licenses/${_pkgname}" "etc/webapps/${_pkgname}"
+  install -d "usr/share/webapps" "usr/share/licenses/${_pkgname}" "var/lib/${_pkgname}"
 
-  mv "${srcdir}/${_Pkgname}-$pkgver/COPYING" "usr/share/licenses/${_pkgname}/"
-  mv "${srcdir}/${_Pkgname}-$pkgver" "usr/share/webapps/${_pkgname}"
+  cd "${srcdir}/${_Pkgname}-$pkgver/"
+  mv "COPYING" "${pkgdir}/usr/share/licenses/${_pkgname}/"
+  mv "cache" "data" "pagecache" "tmp" "${pkgdir}/var/lib/${_pkgname}"
+  ln -s "/var/lib/${_pkgname}/"{cache,data,pagecache,tmp} .
+  cd ..
+  mv "${_Pkgname}-$pkgver" "${pkgdir}/usr/share/webapps/${_pkgname}"
 
   chown -R root:http "${pkgdir}/usr/share/webapps/${_pkgname}"
+  chmod -R go-w "${pkgdir}/usr/share/webapps/${_pkgname}"
+
+  chown -R root:http "${pkgdir}/var/lib/${_pkgname}"
+  chmod -R o-rwx,g-w "${pkgdir}/var/lib/${_pkgname}"
+  chmod -R g+w "${pkgdir}/var/lib/${_pkgname}"*
 }
 
 # vim:set ts=2 sw=2 et:
