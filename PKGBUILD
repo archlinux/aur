@@ -8,8 +8,8 @@
 # Based on linux-pae package
 
 pkgbase=linux-libre-pae
-_pkgbasever=4.7-gnu
-_pkgver=4.7.6-gnu
+_pkgbasever=4.8-gnu
+_pkgver=4.8.4-gnu
 
 _replacesarchkernel=('linux%') # '%' gets replaced with _kernelname
 _replacesoldkernels=() # '%' gets replaced with _kernelname
@@ -41,9 +41,9 @@ source=("http://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgbasever}/li
         'change-default-console-loglevel.patch'
         '0001-usb-serial-gadget-no-TTY-hangup-on-USB-disconnect-WI.patch'
         '0002-fix-Atmel-maXTouch-touchscreen-support.patch')
-sha256sums=('f483e595e0ad9a9d1b3afd20e4ecb0b798cf16eb31e79a7b99311eb9c061032a'
+sha256sums=('d54e0f8a27e24f3666c19b395c19dba194635db26929c89e78ffa4b2b0e8ca3a'
             'SKIP'
-            'fb98fce9aa7f53a052dac58fb5192c855c6bffc0d1d75a2e5681d5b690d6aa91'
+            '961e1887b500c8752fcc0414d3e202229751f84262329cba948398a574599ef7'
             'SKIP'
             'bfd4a7f61febe63c880534dcb7c31c5b932dde6acf991810b41a939a93535494'
             'SKIP'
@@ -51,7 +51,7 @@ sha256sums=('f483e595e0ad9a9d1b3afd20e4ecb0b798cf16eb31e79a7b99311eb9c061032a'
             'SKIP'
             '6de8a8319271809ffdb072b68d53d155eef12438e6d04ff06a5a4db82c34fa8a'
             'SKIP'
-            'c642f7c755f93eb1400d97fb19018a78efb184060dcca8331c718181d9555db5'
+            '4d1026e82d40cac4e217be0934fe40c6a85bf1e5ba87ceff75647a0e3f2e3d2f'
             'f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
             '0376bd5efa31d4e2a9d52558777cebd9f0941df8e1adab916c868bf0c05f2fc3'
