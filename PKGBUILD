@@ -23,6 +23,7 @@ build() {
     mkdir -p build-${_arch} && pushd build-${_arch}
     ${_arch}-cmake \
       -DBUILD_PYTHON=OFF \
+      -DBUILD_SHARED_LIBS=OFF \
       ..
     make
     popd
@@ -33,7 +34,7 @@ package() {
   for _arch in ${_architectures}; do
     cd "$srcdir/agrum-${pkgver}/build-${_arch}"
     make install DESTDIR="$pkgdir"
-    ${_arch}-strip --strip-unneeded "$pkgdir"/usr/${_arch}/bin/*.dll
+    #${_arch}-strip --strip-unneeded "$pkgdir"/usr/${_arch}/bin/*.dll
     ${_arch}-strip -g "$pkgdir"/usr/${_arch}/lib/*.a
   done
 }
