@@ -1,12 +1,12 @@
 # Maintainer: Grant Hames-Morgan <nthmorgan at gmail dot com>
 pkgname=marp
 pkgver=0.0.9
-pkgrel=1
+pkgrel=2
 pkgdesc="Markdown presentation writer, powered by Electron"
 arch=('x86_64' 'i686')
 url="https://github.com/yhatt/marp"
 license=('MIT')
-depends=('gtk2' 'xdg-utils')
+depends=('gtk2' 'xdg-utils' 'gconf')
 
 # Package
 source_x86_64=("${url}/releases/download/v${pkgver}/${pkgver}-Marp-linux-x64.tar.gz")

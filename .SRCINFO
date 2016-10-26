@@ -1,13 +1,14 @@
 pkgbase = marp
 	pkgdesc = Markdown presentation writer, powered by Electron
 	pkgver = 0.0.9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/yhatt/marp
 	arch = x86_64
 	arch = i686
 	license = MIT
 	depends = gtk2
 	depends = xdg-utils
+	depends = gconf
 	source = https://raw.githubusercontent.com/yhatt/marp/master/images/marp.png
 	source = marp.desktop
 	md5sums = 095ab0c670c1d311be1b066e416efed3
