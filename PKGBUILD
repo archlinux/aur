@@ -3,7 +3,7 @@
 pkgname=unifi-video-beta
 pkgver=3.5.0
 _pkgsubver=beta2
-pkgrel=1
+pkgrel=2
 pkgdesc="Centralized management system for Ubiquiti UniFi Surveillance Cameras"
 arch=('x86_64')
 url="https://www.ubnt.com/"
