@@ -1,0 +1,8 @@
+*.gz
+*.xz
+pkg
+src
+.SRCINFO
+ges-git
+python
+PKGBUILD
