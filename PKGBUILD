@@ -52,6 +52,9 @@ package() {
 
   # Install desktop files
   install -m644 {p4v,p4merge,p4admin}.desktop "${pkgdir}"/usr/share/applications
+
+  install -d "$pkgdir/usr/share/licenses/$pkgname"
+  install -m 0644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
 # vim:set ts=2 sw=2 et:
