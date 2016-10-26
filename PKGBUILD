@@ -1,5 +1,4 @@
 # Maintainer: Guillaume ALAUX <guillaume at alaux dot net>
-# Sources available at https://github.com/galaux/arch_storm
 
 # nimbus -> requires zookeeper to run
 # supervisor -> requires zookeeper to run
@@ -9,9 +8,9 @@
 # TODO split packages? nimbus/supervisor/ui ?
 
 pkgname=storm
-pkgver=1.0.0
+pkgver=1.0.2
 pkgrel=1
-pkgdesc='Distributed and fault-tolerant realtime computation system'
+pkgdesc='Free and open source distributed realtime computation system'
 arch=('any')
 url='https://storm.apache.org/'
 license=('Apache')
@@ -35,7 +34,7 @@ source=(${_closest}/${_app_path}
         systemd_tmpfiles.d_storm.conf
         arch_python2.patch)
 
-sha256sums=('8233dab1a6898fc39bcf9fe68dfadbee38159a39c473ac2da9ce9da60db52066'
+sha256sums=('b3fd2475e88e4b5e30f0e47eab70363419d67c15ddc7fe1f3c423ac0499eb76e'
             'c94799f4b459f5218faf1da57936baeb4c32b9542a1ba0aacdd637bf2f3aaf05'
             '00780ee4cea3bb7a282a548f41b8964d5e392776f9d687ebea89cd49ed5742e3'
             '0d8958786538714da86ccf3f23cb668fa017530f8858aea2b7325ffe1af66cd1'
