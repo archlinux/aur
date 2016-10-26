@@ -2,7 +2,7 @@
 # Based On: Sergej Pupykin <pupykin.s+arch@gmail.com>
 
 pkgname=sdlmame-wout-toolkits
-pkgver=0.176
+pkgver=0.179
 pkgrel=1
 pkgdesc="A port of the popular Multiple Arcade Machine Emulator using SDL with OpenGL support. Without Qt toolkit"
 url='http://mamedev.org'
@@ -28,10 +28,10 @@ source=("https://github.com/mamedev/mame/archive/mame${pkgver/./}.tar.gz"
         'sdlmame.sh'
         'extras.tar.gz'
         )
-sha1sums=('7c6d454c75bce7f0167943d225cf5e3204c42a5d'
-          '1ed8016f41edecfca746fadcfb40eab78845a3d6'
-          '75732974431844670aa3904d8f9ce3f5c5504827'
-          )
+sha256sums=('d1616ef32b884c3e7913378ebf5282b6f846f895f419eb92a9068770581e081b'
+            '201e9cc3d0d7397e15a4aaf7477f8b32a379a9ba2134b94180cdaf2067d1f859'
+            '5ba55ce8c33743207a12a7509efdf13dd98f5d87fa12f0e471ea523d3ae4f4ac'
+            )
 install=sdlmame-wout-toolkits.install
 noextract=('extras.tar.gz')
 
