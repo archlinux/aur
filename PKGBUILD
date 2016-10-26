@@ -14,8 +14,6 @@ sha256sums=('e4f86d926a93b25672d4337af9c3549896125c7f345bb1d98eb3dca7da12c123')
 build() {
 	cd ios-webkit-debug-proxy-$pkgver
 
-	sed -i -e 's/-Werror//' configure.ac
-
 	./autogen.sh --prefix=/usr
 	./configure LIBS="-lm" --prefix=/usr \
 	            --includedir=/usr/include/ios-webkit-debug-proxy
