@@ -1,6 +1,6 @@
 # Maintainer: Samuel Damashek <samuel dot damashek at gmail dot com>
 pkgname=huggle
-pkgver=3.1.21
+pkgver=3.1.22
 pkgrel=1
 pkgdesc="diff browser intended for dealing with vandalism and other unconstructive edits on Wikimedia projects"
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ depends=('qt5-base' 'qt5-webkit')
 makedepends=('cmake' 'unzip')
 groups=('base-devel')
 source=("https://github.com/huggle/huggle3-qt-lx/archive/${pkgver}.tar.gz")
-sha256sums=('7c7f78d794e82a982368816d043450e85c70369db992689f0778457eaebfef8a')
+sha256sums=('15b62b16dde284c0f6b110414746abfb5240a2e929ed8cac3e95ebc812351fd2')
 
 prepare() {
     cd "$srcdir/huggle3-qt-lx-${pkgver}/huggle"
