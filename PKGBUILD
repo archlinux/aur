@@ -10,7 +10,7 @@
 
 pkgbase=linux-libre-lts
 _pkgbasever=4.4-gnu
-_pkgver=4.4.23-gnu
+_pkgver=4.4.27-gnu
 
 _replacesarchkernel=('linux%') # '%' gets replaced with _kernelname
 _replacesoldkernels=() # '%' gets replaced with _kernelname
@@ -20,7 +20,7 @@ _srcname=linux-${_pkgbasever%-*}
 _archpkgver=${_pkgver%-*}
 pkgver=${_pkgver//-/_}
 pkgrel=1
-rcnrel=armv7-x12
+rcnrel=armv7-x13
 arch=('i686' 'x86_64' 'armv7h')
 url="http://linux-libre.fsfla.org/"
 license=('GPL2')
@@ -60,7 +60,7 @@ source=("http://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgbasever}/li
         '0009-ARM-dts-dove-add-Dove-divider-clocks.patch')
 sha256sums=('f53e99866c751f21412737d1f06b0721e207f495c8c64f97dffb681795ee69a0'
             'SKIP'
-            '481376e2a8098b8d9b840608aa14ab71f92cd2b0a6cfd67c6e3ae4227d560839'
+            '6bb8ff974ba64251894378abfbdbc62f2edd9ab454a170b412fda8d3ebc6400a'
             'SKIP'
             'bfd4a7f61febe63c880534dcb7c31c5b932dde6acf991810b41a939a93535494'
             'SKIP'
@@ -77,7 +77,7 @@ sha256sums=('f53e99866c751f21412737d1f06b0721e207f495c8c64f97dffb681795ee69a0'
             'f0a10ea9a669e5200aa33656565c209718b24ff1add03ac5279c4a1f46ab8798'
             '96c6c7d4057b8d08238adae85d476c863c082770a182057163a45480511d35a8'
             '2ca85ee212ef8d8aab3d3c2a0cef304a355d86e7aa520e19471f56ace68a0cf4'
-            '699fbc683e1a16176e4193127501387c715156967911c67530ad2b030dfe2abc'
+            '09490f07851e3954c066b8799fd7f82e2f06ecdb518d8e2be8ccdd3b4cc52d8c'
             'SKIP'
             'a851312b26800a7e189b34547d5d4b2b62a18874f07335ac6f426c32b47c3817'
             '486976f36e1919eac5ee984cb9a8d23a972f23f22f8344eda47b487ea91047f4'
