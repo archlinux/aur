@@ -1,6 +1,6 @@
 pkgbase = vlc-extension-lyricsfinder-git
 	pkgdesc = VLC media player lyrics extension
-	pkgver = 0.3.2.r23.ga5a4321
+	pkgver = 0.3.4.1.r1.gf188356
 	pkgrel = 1
 	url = https://github.com/Smile4ever/VLC-Lyrics-Finder
 	arch = any

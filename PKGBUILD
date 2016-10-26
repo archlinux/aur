@@ -1,7 +1,7 @@
 # Maintainer: Michael Straube <michael_straube web de>
 
 pkgname=vlc-extension-lyricsfinder-git
-pkgver=0.3.2.r23.ga5a4321
+pkgver=0.3.4.1.r1.gf188356
 pkgrel=1
 pkgdesc='VLC media player lyrics extension'
 arch=('any')
@@ -14,7 +14,7 @@ sha1sums=('SKIP')
 pkgver() {
   cd VLC-Lyrics-Finder
 
-  git describe --long | sed 's/^v//;s/-/.r/;s/-/./'
+  git describe --long --tags | sed 's/^v//;s/-/.r/;s/-/./'
 }
 
 package() {
