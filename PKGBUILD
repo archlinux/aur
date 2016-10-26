@@ -1,4 +1,5 @@
-# Maintainer: Jonathan Arnold <jarnold@buddydog.org>
+# Maintainer: Ben Widawsky <ben@bwidawsk.net>
+# Contributor: Jonathan Arnold <jarnold@buddydog.org>
 # Contributor: Marq Schneider <queueRAM@gmail.com>
 
 pkgname=p4v
