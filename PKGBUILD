@@ -2,7 +2,7 @@
 
 pkgname=ttf-inconsolata-dz
 pkgver=20091202
-pkgrel=3
+pkgrel=4
 pkgdesc="Monospace font for pretty code listings and for the terminal (modified to have straight single and double quotes)"
 arch=('any')
 url="http://nodnod.net/2009/feb/12/adding-straight-single-and-double-quotes-inconsola/"
