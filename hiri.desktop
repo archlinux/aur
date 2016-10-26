@@ -1,0 +1,8 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Hiri
+Comment=Hiri email client
+Exec=bash -c "hiri %F"
+Icon=hiri.png
+
