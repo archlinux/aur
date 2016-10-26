@@ -1,5 +1,4 @@
-# Maintainer: Meir Kriheli <mkriheli@gmail.com>
-# Contributor:
+# Maintainer: Jingbei Li <i@jingbei.li>
 
 pkgname=python-ruamel.yaml-hg
 _hgname=yaml
