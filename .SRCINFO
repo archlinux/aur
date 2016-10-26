@@ -1,0 +1,13 @@
+pkgbase = shaarli
+	pkgdesc = The personal, minimalist, super-fast, no-database delicious clone - community repo
+	pkgver = 0.7.0
+	pkgrel = 1
+	url = https://github.com/shaarli/Shaarli
+	arch = any
+	license = ZLIB
+	depends = php
+	source = https://github.com/shaarli/Shaarli/archive/v0.7.0.tar.gz
+	sha256sums = 5f30c0ded283578011e637f5f7b46fd56d9d3cdaf3f42fd6a4f4dfe44074b33c
+
+pkgname = shaarli
+
