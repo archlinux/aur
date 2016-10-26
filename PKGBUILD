@@ -1,12 +1,13 @@
 # Maintainer: Yamakaky <yamakaky@yamaworld_fr>
 pkgname=safeeyes
 pkgver=1.0.7
-pkgrel=1
+pkgrel=2
 pkgdesc="A Linux alternative for EyeLeo"
 arch=("any")
 url="https://github.com/slgobinath/SafeEyes"
 license=("GPL3")
 depends=("python2-xlib"
+         "python2-gobject"
          "hicolor-icon-theme"
          "xorg-xprop"
          "libappindicator-gtk3")
