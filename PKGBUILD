@@ -1,7 +1,7 @@
 # Maintainer: Thomas "Ventto" Venriès <thomas.venries@gmail.com>
 
 pkgname=lux
-pkgver=0.7
+pkgver=0.8
 pkgrel=1
 pkgdesc='Bash script to easily control brightness on backlight controllers.'
 arch=('any')
@@ -12,7 +12,7 @@ provides=("${pkgname}")
 conflicts=("${pkgname}")
 makedepends=('help2man')
 source=("https://github.com/Ventto/lux/archive/v${pkgver}.tar.gz")
-sha256sums=('95155afc4a9cafe3132484df46295df8c9ef5473355aeaefd4192f7118ea05f8')
+sha256sums=('3d9f92924756dffd87d732d7de7d1fedfa381be3e4076d394145f147e4bce69d')
 
 build() {
   cd ${srcdir}/${pkgname}-${pkgver}
