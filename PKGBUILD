@@ -2,9 +2,9 @@
 pkgname=lockrun
 pkgver=0.6.2
 _pkgver=20110613-163042
-pkgrel=1
+pkgrel=2
 pkgdesc="Exclusively run things via lock files"
-arch=('i686' 'x86_64')
+arch=('i686' 'x86_64' 'armv7h')
 url="https://github.com/hilbix/lockrun"
 license=('GPL')
 depends=('glibc')
