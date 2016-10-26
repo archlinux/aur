@@ -1,18 +1,18 @@
 # Maintainer: Eric Engestrom <aur [at] engestrom [dot] ch>
 
 pkgname=gfxbench
-pkgver=4.0.0
-pkgrel=2
+pkgver=4.0.13
+pkgrel=1
 pkgdesc="Unified graphics benchmark based on DXBenchmark (DirectX) and GLBenchmark (OpenGL ES)"
 url='https://gfxbench.com/'
 arch=('i686' 'x86_64')
 license=('custom')
 depends=('libpng12')
 _basename="gfxbench_gl-linux-qt-${pkgver}+community"
-source_i686=(  "${_basename}.sh::http://gfxbench.com/download/${_basename}_32bit.sh")
-source_x86_64=("${_basename}.sh::http://gfxbench.com/download/${_basename}_64bit.sh")
-md5sums_i686=(  '9eccb959962efda21f94d5bb301ece5c')
-md5sums_x86_64=('9ec770568944857158b05238b8593405')
+source_i686=(  "${_basename}.sh::https://gfxbench.com/download/${_basename}_32bit.sh")
+source_x86_64=("${_basename}.sh::https://gfxbench.com/download/${_basename}_64bit.sh")
+sha1sums_i686=(  'dfbcd1deeeb3a21cd79738c30d535f08ebfdac6c')
+sha1sums_x86_64=('81c6575e3af9402711b01e7b32e8e4d310eb00c0')
 
 package() {
   cd "${srcdir}"

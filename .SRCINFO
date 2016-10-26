@@ -1,16 +1,16 @@
 pkgbase = gfxbench
 	pkgdesc = Unified graphics benchmark based on DXBenchmark (DirectX) and GLBenchmark (OpenGL ES)
-	pkgver = 4.0.0
-	pkgrel = 2
+	pkgver = 4.0.13
+	pkgrel = 1
 	url = https://gfxbench.com/
 	arch = i686
 	arch = x86_64
 	license = custom
 	depends = libpng12
-	source_i686 = http://gfxbench.com/download/gfxbench_gl-linux-qt-4.0.0+community_32bit.sh
-	md5sums_i686 = 9eccb959962efda21f94d5bb301ece5c
-	source_x86_64 = http://gfxbench.com/download/gfxbench_gl-linux-qt-4.0.0+community_64bit.sh
-	md5sums_x86_64 = 9ec770568944857158b05238b8593405
+	source_i686 = gfxbench_gl-linux-qt-4.0.13+community.sh::https://gfxbench.com/download/gfxbench_gl-linux-qt-4.0.13+community_32bit.sh
+	sha1sums_i686 = dfbcd1deeeb3a21cd79738c30d535f08ebfdac6c
+	source_x86_64 = gfxbench_gl-linux-qt-4.0.13+community.sh::https://gfxbench.com/download/gfxbench_gl-linux-qt-4.0.13+community_64bit.sh
+	sha1sums_x86_64 = 81c6575e3af9402711b01e7b32e8e4d310eb00c0
 
 pkgname = gfxbench
 
