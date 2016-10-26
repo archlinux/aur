@@ -1,0 +1,15 @@
+pkgbase = python-bitbucket-api
+	pkgdesc = Python library to interact with BitBucket REST API
+	pkgver = 0.5.0
+	pkgrel = 1
+	url = https://github.com/Sheeprider/BitBucket-api
+	arch = any
+	license = ISC
+	depends = python-requests
+	depends = python-sh
+	depends = python-requests-oauthlib
+	source = BitBucket-api-0.5.0.tar.gz::https://github.com/Sheeprider/BitBucket-api/archive/0.5.0.tar.gz
+	sha256sums = b6ccabde3ae7739dc9fd16218288ac6691680a0f9a97bfd6d2463b68c5058e7c
+
+pkgname = python-bitbucket-api
+
