@@ -3,18 +3,18 @@
 pkgname=php56-apcu
 _pkgbase="${pkgname#php56-}"
 _phpbase="${pkgname/-apcu}"
-pkgver=4.0.10
-pkgrel=2
+pkgver=4.0.11
+pkgrel=1
 pkgdesc="A userland caching module for php56"
 arch=('i686' 'x86_64')
 url="https://pecl.php.net/package/APCu"
 license=('PHP')
-depends=('php56>=5.6.17-3')
+depends=('php56>=5.6.27')
 provides=("php-${_pkgbase}=${pkgver}-${pkgrel}")
 backup=("etc/php56/conf.d/apcu.ini")
 install=php56-apcu.install
 source=("https://pecl.php.net/get/${_pkgbase}-${pkgver}.tgz")
-md5sums=('e52d930a050066025095e2a448fd3cab')
+md5sums=('13c0c0dd676e5a7905d54fa985d0ee62')
 
 build() {
 	cd "${srcdir}/${_pkgbase}-${pkgver}"
