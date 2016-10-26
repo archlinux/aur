@@ -1,13 +1,15 @@
 pkgbase = dgraph-bin
 	pkgdesc = a low latency, high throughput, native and distributed graph database
 	pkgver = 0.4.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/dgraph-io/dgraph
 	arch = x86_64
 	license = APACHE
 	depends = gcc-libs
 	source = dgraph-0.4.4.tar.gz::https://github.com/dgraph-io/dgraph/releases/download/v0.4.4/dgraph-linux-amd64-v0.4.4.tar.gz
+	source = dgraph.service
 	sha256sums = a3ae2915edcab7f2fac83d7d9205304c5d9318b36808493b57a4e87182b3c7c9
+	sha256sums = 67b405e0d92d90ec33bd5abfab7fa842165746372ba6049d3f00e482425bc974
 
 pkgname = dgraph-bin
 
