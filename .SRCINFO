@@ -1,0 +1,22 @@
+pkgbase = sxiv-pango-git
+	pkgdesc = Simple X Image Viewer
+	pkgver = 2016.07.28
+	pkgrel = 1
+	url = https://github.com/Hjdskes/sxiv
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	depends = imlib2
+	depends = desktop-file-utils
+	depends = xdg-utils
+	depends = hicolor-icon-theme
+	depends = libexif
+	depends = pango
+	provides = sxiv
+	conflicts = sxiv
+	source = sxiv::git+https://github.com/Hjdskes/sxiv.git#branch=pango
+	md5sums = SKIP
+
+pkgname = sxiv-pango-git
+
