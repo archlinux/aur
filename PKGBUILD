@@ -3,7 +3,7 @@
 pkgname=shfmt
 _pkg=sh
 _name="${pkgname}"
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="Format shell programs"
 url="https://github.com/mvdan/${_pkg}"
@@ -22,7 +22,7 @@ prepare() {
 
 build() {
 	cd "${srcdir}/src/github.com/mvdan/${_pkg}/cmd/${_name}"
-	GOPATH="${srcdir}" go build
+	GOPATH="${srcdir}" go build -ldflags='-s -w'
 }
 
 package() {
