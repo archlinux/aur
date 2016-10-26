@@ -1,5 +1,4 @@
-# $Id: PKGBUILD 59656 2011-11-29 08:40:05Z arodseth $
-# Maintainer: Alexander Rødseth
+# Maintainer: Kyle Keen <keenerd@gmail.com>
 # Contributor: Biru Ionut <ionut@archlinux.ro>
 # Contributor: Jeff Mickey <jeff@archlinux.org>
 pkgname=iat
@@ -11,8 +10,9 @@ url="http://iat.berlios.de/"
 license=('GPL')
 depends=('glibc')
 #source=("http://download.berlios.de/$pkgname/$pkgname-$pkgver.tar.bz2")
-source=("http://www.mirrorservice.org/sites/download.sourceforge.net/pub/sourceforge/i/project/ia/iat.berlios/iat-$pkgver.tar.bz2")
-md5sums=('5e1ffd82000ea4c80ffb2d63ae55120c')
+source=("http://downloads.sourceforge.net/project/iat.berlios/iat-$pkgver.tar.gz")
+#md5sums=('5e1ffd82000ea4c80ffb2d63ae55120c')
+md5sums=('af4526b497ddeb85f97f037f9bd7ae6b')  # not sure what changed...
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
