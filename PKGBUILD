@@ -2,12 +2,12 @@
 pkgname=python2-telegrambot-api
 _name=pyTelegramBotAPI
 pkgver=2.1.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Python Telegram bot api"
 arch=('any')
 url='https://github.com/eternnoir/pyTelegramBotAPI'
 license=('GPL2')
-depends=('python2' 'python2-pytest' 'python2-requests' 'python2-six')
+depends=('python2' 'python2-pytest' 'python2-requests' 'python2-six' 'python2-watchdog' 'python2-tornado' 'python2-sympy')
 
 source=("https://github.com/eternnoir/$_name/archive/$pkgver.tar.gz")
 md5sums=('a1ccbfa7165e0d472f54b3d524b0de08') 
