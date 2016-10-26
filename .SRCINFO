@@ -1,12 +1,14 @@
 pkgbase = cleanupdate-git
 	pkgdesc = A simple script to speed up updating and cleaning your system
 	pkgver = 0.3
-	pkgrel = 6
+	pkgrel = 7
 	url = https://github.com/cubanpit/cleanupdate
 	arch = any
 	license = GPL3
 	makedepends = git
 	depends = ncurses
+	depends = sudo
+	depends = bash
 	optdepends = yaourt: update packages from AUR repository (alternative to pacaur)
 	optdepends = pacaur: update packages from AUR repository (alternative to yaourt)
 	source = git://github.com/cubanpit/cleanupdate
