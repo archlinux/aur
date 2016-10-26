@@ -1,9 +1,9 @@
 # Maintainer: Dario Ostuni <another.code.996@gmail.com>
 pkgname=grainbow-git
 pkgver=r2.cff35ea
-pkgrel=2
+pkgrel=3
 pkgdesc="Color the screen with a rainbow (libgamma version)"
-arch=('i686' 'x86_64')
+arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 url="https://github.com/dariost/GRainbow"
 license=('APACHE2')
 depends=('libgammamm')
