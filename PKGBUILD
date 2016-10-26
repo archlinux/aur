@@ -86,7 +86,7 @@ sha256sums=('3e9150065f193d3d94bcf46a1fe9f033c7ef7122ab71d75a7fb5a2f0c9a7e11a'
             '610f09e0a21741154a817eec44f96f74337897a6ee401f84e8f28f22e4e2061c'
             '644ca1ccb886a8ce00b8acf05b946dae559f3bb91dd5e69be09d413a7f8c4165'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
-            'b8c95822b17a90b65431c518f349bdb7a448688da2774b5b652ef085824d7b42')
+            'd90a80d5c775c16e51e97b81e105328bd9a9489478fab7e497a5094c54d334b2')
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
               '647F28654894E3BD457199BE38DBBDC86092693E' # Greg Kroah-Hartman
@@ -235,8 +235,7 @@ package_linux-ck-fbcondecor() {
 	depends=('coreutils' 'linux-firmware' 'mkinitcpio>=0.7')
 	optdepends=('crda: to set the correct wireless channels of your country' 'nvidia-ck: nVidia drivers for linux-ck' 'modprobed-db: Keeps track of EVERY kernel module that has ever been probed - useful for those of us who make localmodconfig')
 	provides=("linux-ck-fbcondecor=${pkgver}" "linux-ck=${pkgver}" "linux-fbcondecor=${pkgver}")
-	conflicts=('kernel26-ck' 'linux-ck-corex' 'linux-ck-p4' 'linux-ck-pentm' 'linux-ck-atom' 'linux-ck-core2' 'linux-ck-nehalem' 'linux-ck-sandybridge' 'linux-ck-ivybridge' 'linux-ck-broadwell' 'linux-ck-haswell' 'linux-ck-kx' 'linux-ck-k10' 'linux-ck-barcelona' 'linux-ck-bulldozer' 'linux-ck-piledriver' 'linux-ck-silvermont' 'linux-ck')
-	replaces=('kernel26-ck')
+	conflicts=('linux-ck-corex' 'linux-ck-p4' 'linux-ck-pentm' 'linux-ck-atom' 'linux-ck-core2' 'linux-ck-nehalem' 'linux-ck-sandybridge' 'linux-ck-ivybridge' 'linux-ck-broadwell' 'linux-ck-haswell' 'linux-ck-kx' 'linux-ck-k10' 'linux-ck-barcelona' 'linux-ck-bulldozer' 'linux-ck-piledriver' 'linux-ck-silvermont' 'linux-ck')
 	backup=("etc/mkinitcpio.d/linux-ck-fbcondecor.preset")
 	install=linux-ck-fbcondecor.install
 	#groups=('ck-generic')
@@ -302,8 +301,7 @@ package_linux-ck-fbcondecor-headers() {
 	#pkgdesc="${_Hpkgdesc}"
 	depends=('linux-ck-fbcondecor') # added to keep kernel and headers packages matched
 	provides=("linux-ck-headers=${pkgver}" "linux-ck-fbcondecor-headers=${pkgver}" "linux-fbcondecor-headers=${pkgver}" "linux-headers=${pkgver}")
-	conflicts=('kernel26-ck-headers' 'linux-ck-corex-headers' 'linux-ck-p4-headers' 'linux-ck-pentm-headers' 'linux-ck-atom-headers' 'linux-ck-core2-headers' 'linux-ck-nehalem-headers' 'linux-ck-sandybridge-headers' 'linux-ck-ivybridge-headers' 'linux-ck-haswell-headers' 'linux-ck-broadwell-headers' 'linux-ck-kx-headers' 'linux-ck-k10-headers' 'linux-ck-barcelona-headers' 'linux-ck-bulldozer-headers' 'linux-ck-piledriver-headers' 'linux-ck-silvermont-headers' 'linux-ck-headers')
-	replaces=('kernel26-ck-headers')
+	conflicts=('linux-ck-corex-headers' 'linux-ck-p4-headers' 'linux-ck-pentm-headers' 'linux-ck-atom-headers' 'linux-ck-core2-headers' 'linux-ck-nehalem-headers' 'linux-ck-sandybridge-headers' 'linux-ck-ivybridge-headers' 'linux-ck-haswell-headers' 'linux-ck-broadwell-headers' 'linux-ck-kx-headers' 'linux-ck-k10-headers' 'linux-ck-barcelona-headers' 'linux-ck-bulldozer-headers' 'linux-ck-piledriver-headers' 'linux-ck-silvermont-headers' 'linux-ck-headers')
 	#groups=('ck-generic')
 
 	install -dm755 "${pkgdir}/usr/lib/modules/${_kernver}"
