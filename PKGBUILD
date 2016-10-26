@@ -4,7 +4,7 @@ pkgname=biber-bin
 pkgver=2.6 # for biblatex 3.5
 pkgrel=1
 pkgdesc="Binary version of a unicode-capable BibTeX replacement for biblatex users"
-arch=('any')
+arch=('x86_64')
 license=('PerlArtistic' 'GPL')
 url="https://sourceforge.net/projects/biblatex-biber/"
 
