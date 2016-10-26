@@ -1,9 +1,9 @@
 # Maintainer: Dario Ostuni <another.code.996@gmail.com>
 pkgname=xrainbow-git
 pkgver=r5.4f1743c
-pkgrel=1
+pkgrel=2
 pkgdesc="Color the screen with a rainbow (X11 version)"
-arch=('i686' 'x86_64')
+arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 url="https://github.com/dariost/XRainbow"
 license=('APACHE2')
 depends=('libx11' 'libxxf86vm')
