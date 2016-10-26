@@ -9,12 +9,12 @@ pkgbase = git-repo
 	makedepends = python-pip
 	depends = python
 	depends = python-docopt
-	depends = python-git
-	depends = python-progress
-	depends = python-gitlab
-	depends = python-uritemplate.py
-	depends = python-github3.py
-	depends = python-bitbucket-api
+	depends = python-git>=2.0.6
+	depends = python-progress=1.2
+	depends = python-gitlab=0.13
+	depends = python-uritemplate.py=2.0.0
+	depends = python-github3.py=0.9.5
+	depends = python-bitbucket-api=0.5.0
 	source = git-repo-1.7.4.tar.gz::https://github.com/guyzmo/git-repo/archive/1.7.4.tar.gz
 	sha256sums = c307a53e6d46fd6c1f832500b4eb19011f4f9f07607d09fa3b683b4516654e1a
 
