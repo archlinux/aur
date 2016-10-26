@@ -1,0 +1,11 @@
+pkgbase = biber-bin
+	pkgdesc = Binary version of a unicode-capable BibTeX replacement for biblatex users
+	pkgver = 2.6
+	pkgrel = 1
+	url = https://sourceforge.net/projects/biblatex-biber/
+	arch = any
+	license = PerlArtistic
+	license = GPL
+
+pkgname = biber-bin
+
