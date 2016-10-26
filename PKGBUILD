@@ -1,7 +1,7 @@
 # Maintainer: Hans-Nikolai Viessmann <hv15@hw.ac.uk>
 _project=sshprint
 pkgname=$_project
-pkgver=2.05
+pkgver=2.06
 pkgrel=1
 pkgdesc="A Perl script to print local files on remote printers using SSH"
 arch=('any')
@@ -13,7 +13,7 @@ options=(!emptydirs)
 changelog='CHANGELOG.md'
 install=sshprint.install
 source=("https://github.com/hv15/${_project}/archive/${pkgver}.tar.gz")
-md5sums=('07134492f0c488e4c044a46d7274c891')
+md5sums=('53f46bb3b88717d7178ab34eb8bb84bc')
 
 build() {
   cd "$srcdir/${pkgname}-$pkgver"
