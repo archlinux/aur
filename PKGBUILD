@@ -1,5 +1,5 @@
 pkgname=json-stroller-git
-pkgver=v1.1
+pkgver=v1.1.1
 pkgrel=1
 pkgdesc="A ncurse tool for viewing json files and displaying differences between json formatted data"
 arch=('i686' 'x86_64')
