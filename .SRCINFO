@@ -2,8 +2,8 @@
 # Sat May  2 12:04:59 UTC 2015
 pkgbase = python-django-celery
 	pkgdesc = django-celery provides Celery integration for Django
-	pkgver = 3.1.16
-	pkgrel = 2
+	pkgver = 3.1.17
+	pkgrel = 1
 	url = https://pypi.python.org/pypi/django-celery
 	arch = any
 	license = BSD
@@ -11,8 +11,8 @@ pkgbase = python-django-celery
 	depends = python
 	depends = python-django
 	depends = python-celery
-	source = https://pypi.python.org/packages/source/d/django-celery/django-celery-3.1.16.tar.gz
-	md5sums = 626c3c5fa91097ab16a7709108b82756
+	source = https://pypi.python.org/packages/source/d/django-celery/django-celery-3.1.17.tar.gz
+	md5sums = a3abc9674b0680469b0694a254dd7019
 
 pkgname = python-django-celery
 

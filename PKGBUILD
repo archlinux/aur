@@ -2,8 +2,8 @@
 
 pkgname=python-django-celery
 _pypi_pkgname=django-celery
-pkgver=3.1.16
-pkgrel=2
+pkgver=3.1.17
+pkgrel=1
 pkgdesc="django-celery provides Celery integration for Django"
 arch=(any)
 url="https://pypi.python.org/pypi/django-celery"
@@ -11,7 +11,7 @@ license=('BSD')
 makedepends=('python-setuptools')
 depends=('python' 'python-django' 'python-celery')
 source=("https://pypi.python.org/packages/source/d/django-celery/django-celery-${pkgver}.tar.gz")
-md5sums=('626c3c5fa91097ab16a7709108b82756')
+md5sums=('a3abc9674b0680469b0694a254dd7019')
 
 build() {
     cd "${srcdir}/${_pypi_pkgname}-${pkgver}"
