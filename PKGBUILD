@@ -8,7 +8,7 @@ sqlitestudio-plugins
 )
 _pkgname=SQLiteStudio
 pkgver=3.1.0
-pkgrel=2
+pkgrel=3
 _pkgver=3
 pkgdesc='Database manager for SQLite'
 arch=(i686 x86_64)
@@ -24,7 +24,8 @@ qt5-script
 )
 makedepends=(
 chrpath
-qtchooser
+# qtchooser
+qt5-base
 qt5-svg
 qt5-tools
 )
