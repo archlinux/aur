@@ -7,14 +7,14 @@
 
 _pkgname=ardour
 pkgname="${_pkgname}-git"
-pkgver=5.4.r227.g24846f4
+pkgver=5.4.r229.g8d70b76
 pkgrel=1
 pkgdesc="A multichannel hard disk recorder and digital audio workstation"
 arch=('i686' 'x86_64')
 url="http://ardour.org/"
 license=('GPL')
 depends=('aubio' 'cwiid' 'gtkmm' 'liblo' 'liblrdf' 'libltc' 'lilv' 'suil'
-         'rubberband' 'taglib' 'fluidsynth' 'libarchive' 'hidapi')
+         'rubberband' 'taglib')
 makedepends=('git' 'python2' 'boost' 'cppunit' 'doxygen' 'graphviz' 'itstool')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
@@ -37,15 +37,9 @@ build() {
     --configdir=/etc \
     --docs \
     --freedesktop \
-    --internal-shared-libs \
-    --libjack=weak \
-    --lv2 \
-    --lxvst \
-    --optimize \
     --with-backends=jack,alsa,dummy \
-    --cxx11 \
-    --no-phone-home
-#    --use-external-libs     
+    --cxx11 
+#    --qm-dsp-include=${srcdir}/ardour/libs/qm-dsp/base/Pitch.h
 
   python2 waf build $MAKEFLAGS
 }
