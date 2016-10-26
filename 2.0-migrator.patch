@@ -1,0 +1,36 @@
+diff -u 1.4-2.0_db_convert/convert_mysql 1.4-2.0_db_convert2/convert_mysql
+--- enforcer/utils/1.4-2.0_db_convert/convert_mysql	2016-10-14 15:40:13.000000000 +0200
++++ enforcer/utils/1.4-2.0_db_convert/convert_mysql	2016-10-26 19:58:04.107679108 +0200
+@@ -5,7 +5,7 @@
+ # old and new databases live on the same host and are accessable by the same 
+ # user.
+ 
+-SCHEMA=../../src/db/schema.mysql
++SCHEMA=./schema.mysql
+ 
+ DB_IN=""
+ DB_OUT=""
+diff -u 1.4-2.0_db_convert/convert_sqlite 1.4-2.0_db_convert2/convert_sqlite
+--- enforcer/utils/1.4-2.0_db_convert/convert_sqlite	2016-10-14 15:40:13.000000000 +0200
++++ enforcer/utils/1.4-2.0_db_convert/convert_sqlite	2016-10-26 19:57:50.144369310 +0200
+@@ -3,7 +3,7 @@
+ 
+ # This scipt converts a ODS 1.4.9 Sqlite database to ODS 2.0.
+ 
+-SCHEMA=../../src/db/schema.sqlite
++SCHEMA=./schema.sqlite
+ 
+ DB_IN=""
+ DB_OUT=""
+diff -u 1.4-2.0_db_convert/README.md 1.4-2.0_db_convert2/README.md
+--- enforcer/utils/1.4-2.0_db_convert/README.md	2016-10-14 15:40:13.000000000 +0200
++++ enforcer/utils/1.4-2.0_db_convert/README.md	2016-10-26 19:56:58.251123704 +0200
+@@ -35,7 +35,7 @@
+  * sqlite_convert.sql - Contains SQL statements, called by convert_sqlite
+ 
+ call the script like so: `./convert_sqlite -i INPUT -o OUTPUT`. Where INPUT is
+-the kasp.db file commonly found in _/var/opendnssec/kasp.db_. And OUTPUT is a
++the kasp.db file commonly found in _/var/lib/opendnssec/kasp.db_. And OUTPUT is a
+ non-existing file where the new database should go. On success, replace old
+ database file with the new database file or adjust _conf.xml_ accordingly.
+ 

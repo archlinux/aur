@@ -1,7 +1,7 @@
 # Maintainer: Javier Torres <javitonino [at] gmail [dot] com>
 
 pkgname=opendnssec
-pkgver=1.4.10
+pkgver=2.0.3
 pkgrel=1
 pkgdesc="Turn-key solution for DNSSEC"
 arch=('i686' 'x86_64')
@@ -22,37 +22,24 @@ install="opendnssec.install"
 changelog=
 source=("http://www.opendnssec.org/files/source/${pkgname}-${pkgver}.tar.gz"
 	"pid-path.patch"
+	"2.0-migrator.patch"
         "ods-signer.service"
         "ods-enforcer.service"
         "opendnssec.tmpfiles")
 noextract=()
 
-md5sums=('74cd456827bb1b2df6b7390d919fd954'
-         '471ec859269bc2add2ad6f95539e8c04'
-         'e762cdc2c3f8be40aeff379aa4bade76'
-         'c5464f7be7984bb9a925da0b157eafdf'
-         '69908ba1f46c25e4c34bc91f45bc9660')
-sha1sums=('c83c452b9951df8dd784d7c39aae90363f1a1213'
-          'a8234e007fb56262c450016d4058693b4fb7c98c'
+sha1sums=('82590445906cf298e5229ca00466d6675f3a340f'
+          'bca51f206c8bd646da78195b10f909ceb2baf233'
+          '04e8bf7504cf728b2c3744d19295a63839dd61ca'
           '2a4fac3a16fea3f89b281f0933b6920524978d49'
           'fa28111fdce06c389813ff6ed2d4cae136252488'
           'f10d783b3e0232fd3beff645a07207c161371d0c')
-sha256sums=('55b44c1da3a665eef0af1d1b3f4d1c57d20f50f77858b1dd3d03ca6ebc1df7cb'
-            'c16b206258bca7fd0fd4838c23d3a1bd80bc33aaf355f6ccdbfbfb3b4c3a7e8f'
+sha256sums=('ebeb5481d696cf83c21c5dfbecce6ab5dcc73df1a08573ef257f2f6fe10f6214'
+            'f09ac11a2c00261f32d85b343fdba87e8ec72f9e7d01a24aa9ade0b8bb88f9d0'
+            '1a7f604364c050f7206ba893d109db5851c60cb5b000bd282ac55b81d8ff14ca'
             '596d238ad219de1c88f79fd26a8b829250bf0512a308b34c11fd231d0b4eb0f4'
             '75cecbfb0ece13957a68a5bc39c20a1d69b95373e7473545d70621e1732733d8'
             '28a43d8d5ee512db5425c86bdba9c5832753dce0260291958b1b73253e3ebf55')
-sha384sums=('0a7348fbff41b886ad18e203b30657d8d0d55c596096fd02cd1f28dc4db66df984dd1ce04c74d05178a3c3dcef393a83'
-            '9fbdf5f5e50c1bddc9d7e0ea3126bb520b00cb3f764878629c86075303226b011e401158751a5d3086e22e8ac8f685e7'
-            '29d68ccca64339ab190518f6c5bffedba71287548634e305a12c98b7744984cc37f6a1748394ca0d96e709dbd520fe19'
-            '0869168e8c5a5064cbac0d2f0afe71539a68785d548752c609759381648b04015fc7c3ed9684aec944a914143c777a66'
-            '5c42366ad7b99d496679b089c1605b3af9060ba737350915439d8ef7bbcfd0f7128c389d256a62754bb79e5ad3e215c2')
-sha512sums=('00ba6ceba595f9d4d7736af982b78779f204eb52fcf92222256792368328647ca1a4c84b4db64dcdd9a0119292f132a4efd15e60436c2a125bf6a8fb3f33540e'
-            'd927457d2d7a5343c4480ff34237f49e3829cef65eefd71fb58ce4fa15d8d969126e64c5a59dc02cc7792876f8a5a91cd4de3c5bfe3acc0396663c8c139d7cce'
-            '39068133b3bfd075f3555491096be50ea0973a73ac716abb19faed0aa972ef043a6012491d4c6c208443352a2a508b8ebfbd7273fd84df43b3d6d478e72e7957'
-            'a3700c82e6577bdacbce9cfd749e71e3c749814884ad4e9a1359e97105f9c045dc1472ba231ecb52c23855cacf67874623c8eef715955bfd41239b199d03a0db'
-            'b221eec802ac471cd90908faa252d49ef2d217d6e48262a02490ae99fb64f3b82bc7f2dd2056d6e58b8bb1ca62072d52bffbc2bfd9f4eb794ec2d02275e88899')
-
 
 build() 
 {
@@ -60,6 +47,9 @@ build()
 
   # /var/lib/run -> /var/run
   patch -p0 < "${srcdir}/pid-path.patch"
+
+  # 1.4 -> 2.0 migrator
+  patch -p0 < "${srcdir}/2.0-migrator.patch"
 
   aclocal
   autoconf
@@ -85,16 +75,15 @@ package() {
         "${pkgdir}/usr/lib/systemd/system/ods-signer.service"
   install -Dm0644 "${srcdir}/ods-enforcer.service" \
         "${pkgdir}/usr/lib/systemd/system/ods-enforcer.service"
-  install -Dm0644 "enforcer/utils/migrate_adapters_1.sqlite3" \
-        "${pkgdir}/usr/share/opendnssec"
   install -Dm0644 "${srcdir}/opendnssec.tmpfiles" \
         "${pkgdir}/usr/lib/tmpfiles.d/opendnssec.conf"
   install -Dm0644 "LICENSE" \
         "${pkgdir}/usr/share/licenses/opendnssec/LICENSE"
 
-  #Migration scripts for 1.4.8
-  /usr/bin/install -c -m 644 "enforcer/utils/migrate_1_4_8.mysql" "${pkgdir}/usr/share/opendnssec"
-  /usr/bin/install -c -m 644 "enforcer/utils/migrate_1_4_8.sqlite3" "${pkgdir}/usr/share/opendnssec"
+  # Migration scripts for 2.0
+  cp -r "enforcer/utils/1.4-2.0_db_convert/" "${pkgdir}/usr/share/opendnssec/"
+  install -Dm0644 "enforcer/src/db/schema.mysql" "${pkgdir}/usr/share/opendnssec/1.4-2.0_db_convert/schema.mysql"
+  install -Dm0644 "enforcer/src/db/schema.sqlite" "${pkgdir}/usr/share/opendnssec/1.4-2.0_db_convert/schema.sqlite"
 
   chown 227:227 "${pkgdir}/etc/opendnssec" -R
   chown 227:227 "${pkgdir}/var/lib/opendnssec" -R

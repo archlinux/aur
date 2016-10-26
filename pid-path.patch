@@ -1,6 +1,6 @@
 --- Makefile.am	2012-07-17 08:53:51.000000000 +0200
 +++ Makefile.am	2012-11-20 21:56:11.000000000 +0100
-@@ -29,8 +29,8 @@
+@@ -36,8 +36,8 @@
  	$(INSTALL) -d $(DESTDIR)$(localstatedir)/opendnssec/signconf
  	$(INSTALL) -d $(DESTDIR)$(localstatedir)/opendnssec/unsigned
  	$(INSTALL) -d $(DESTDIR)$(localstatedir)/opendnssec/signed
