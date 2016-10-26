@@ -23,7 +23,7 @@ pkgver() {
 }
 package() {
       cd "$srcdir/$_hgname"
-      pip install --install-option="--prefix=$pkgdir/usr" .
+      pip install --isolated --ignore-installed --no-deps --install-option="--prefix=$pkgdir/usr" .
 }
 
 # vim:set ts=2 sw=2 et:
