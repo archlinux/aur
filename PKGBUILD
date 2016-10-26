@@ -1,12 +1,12 @@
 # Maintainer: xpt <user.xpt@gmail.com>
 pkgname=prey-node-client
 pkgver=1.6.3
-pkgrel=2
+pkgrel=3
 pkgdesc="Remote tracking and monitoring application for laptops, smartphones, and other electronic devices"
 url="https://preyproject.com/"
 arch=('x86_64' 'i686')
 license=('GPL3')
-depends=('nodejs' 'mpg123' 'xawtv' 'scrot' 'openssh' 'wireless_tools' 'lsb-release' 'python2' 'pygtk' 'networkmanager')
+depends=('nodejs' 'mpg123' 'xawtv' 'scrot' 'openssh' 'wireless_tools' 'lsb-release' 'python2' 'pygtk' 'networkmanager' 'npm')
 replaces=('prey-tracker')
 # Should be used as soon as the bash client is renamed
 #provides=('prey-tracker')
@@ -22,10 +22,12 @@ sha256sums_i686=('4da7dbc422d1ff7139f565f59c6e8efeace22f60faeabba17cba53a5e7be78
 package() {
   cd "$srcdir/prey-$pkgver"
 
+  # Now, we use prey's node, so we don't delete bin/node
+  # --------------------------------
   # We don't need the bundled node.js as we have it installed in the system.
   # Conveniently, the bash script probes for node.js and automatically uses
   # the system node if the bundled one is not found.
-  rm bin/node
+  # rm bin/node
 
   # Fix symlink path, Python shebangs and default-disable automatic updates
   patch -p0 < ${srcdir}/prey-node-client.patch
@@ -35,6 +37,7 @@ package() {
   install -Dm644 license.txt "$pkgdir/usr/share/licenses/$pkgname/license.txt"
 
   mkdir -p "$pkgdir/usr/bin/"
+  # Binary prey named as prey_project
   ln -s /opt/prey-node-client/bin/prey "$pkgdir/usr/bin/prey_project"
 }
 
