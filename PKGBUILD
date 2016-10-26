@@ -1,8 +1,8 @@
 # Maintainer: Timofey Titovets <nefelim4ag@gmail.com>
 
 pkgname=ananicy-git
-pkgver=49.232884a
-pkgrel=3
+pkgver=66.f6a8ac9
+pkgrel=1
 pkgdesc="Ananicy - is Another auto nice daemon, with community rules support"
 arch=('any')
 url="https://github.com/Nefelim4ag/Ananicy.git"
@@ -18,9 +18,6 @@ pkgver() {
 }
 
 package() {
-    "$srcdir/${pkgname}/install.sh" PREFIX="$pkgdir"
-    #mkdir -p        "$pkgdir"/etc/
-    #mv              "$srcdir"/$pkgname/ananicy.d        "$pkgdir"/etc/
-    #install -Dm644  "$srcdir"/$pkgname/ananicy.service  "$pkgdir"/usr/lib/systemd/system/ananicy.service
-    #install -Dm755  "$srcdir"/$pkgname/ananicy.sh       "$pkgdir"/usr/lib/systemd/scripts/ananicy.sh
+  cd "$srcdir/${pkgname}/"
+  ./install.sh PREFIX="$pkgdir"
 }
