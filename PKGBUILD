@@ -12,12 +12,13 @@ _GPU_TARGET=sm30
 
 pkgname=magma
 pkgver=2.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Provides a dense linear algebra library similar to LAPACK but for heterogeneous/hybrid architectures, starting with current 'Multicore+GPU' systems. (with CUDA)"
 arch=("i686" "x86_64")
 url="http://icl.cs.utk.edu/magma/"
 license=(custom)
 depends=("cuda>=6.5.0" "gcc-libs-multilib" "gsl" "python" "cblas")
+makedepends=("gcc-fortran")
 options=('staticlibs')
 sha1sums=('8bf2dce79bc55e414aae0bc858956f8bd08b9c91')
 source=("http://icl.cs.utk.edu/projectsfiles/magma/downloads/magma-${pkgver}.tar.gz")
