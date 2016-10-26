@@ -10,9 +10,9 @@
 
 pkgbase=linux-libre-grsec-knock
 _pkgbasever=4.7-gnu
-_pkgver=4.7.6-gnu
+_pkgver=4.7.10-gnu
 _grsecver=3.1
-_timestamp=201609301918
+_timestamp=201610222037
 _knockpatchver=4.7_1
 
 _replacesarchkernel=('linux%') # '%' gets replaced with _kernelname
@@ -58,6 +58,7 @@ source=("http://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgbasever}/li
         "https://repo.parabola.nu/other/rcn-libre-grsec/patches/${_pkgver%-*}/rcn-libre-grsec-${_pkgver%-*}-${rcnrel}.patch"
         "https://repo.parabola.nu/other/rcn-libre-grsec/patches/${_pkgver%-*}/rcn-libre-grsec-${_pkgver%-*}-${rcnrel}.patch.sig"
         '0001-ARM-disable-implicit-function-declaration-error.patch'
+        '0002-ARM-fix-redefinition-error-of-atomic64_xchg_unchecked_relaxed.patch'
         '0001-ARM-atags-add-support-for-Marvell-s-u-boot.patch'
         '0002-ARM-atags-fdt-retrieve-MAC-addresses-from-Marvell-bo.patch'
         '0003-SMILE-Plug-device-tree-file.patch'
@@ -70,9 +71,9 @@ source=("http://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgbasever}/li
         '0010-exynos4412-odroid-set-higher-minimum-buck2-regulator.patch')
 sha256sums=('f483e595e0ad9a9d1b3afd20e4ecb0b798cf16eb31e79a7b99311eb9c061032a'
             'SKIP'
-            'fb98fce9aa7f53a052dac58fb5192c855c6bffc0d1d75a2e5681d5b690d6aa91'
+            '2c90eb1a33112512728f421e06a2f1b0004a6012fc83c638b1ae57626d2da250'
             'SKIP'
-            'a9256a7e276275f4528771579a7008a7890b9e1ba33d0cc27588e964b6dc1fcb'
+            'b075e615a01411243a8a7dfd321ca6e056da1443f714c21f100b0c2c6853aef1'
             'SKIP'
             'ae7ea068d703220716591ed3d865238b7ac140181b83d7eb466cc9c140933113'
             'SKIP'
@@ -82,16 +83,17 @@ sha256sums=('f483e595e0ad9a9d1b3afd20e4ecb0b798cf16eb31e79a7b99311eb9c061032a'
             'SKIP'
             '6de8a8319271809ffdb072b68d53d155eef12438e6d04ff06a5a4db82c34fa8a'
             'SKIP'
-            '16b9b1d52bdeadd3222b03d95e41f399034d71fb52ca34b97ce90c67d770650a'
-            'e666e07a2451937795b10691affcfc9cae68dfaca4697543c555c2479e14d33c'
-            'b0d9e3b7faffb798ca69a6d21a90353c0fea4fa49b9499ed36432324c2d141ae'
+            'b7d9554fb15d0642859878bda76fa7c8d7cfb66da60592a246872cbcd415c192'
+            'c88e6dade91b4f21487f05f4e3e935be2d04704899def5d5c4a2cfea404a1d35'
+            'e29ae5d2e0be82a504bb30dce9645dd64fb0f3857f1431b98db11cb90b0a8098'
             'f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
             '0376bd5efa31d4e2a9d52558777cebd9f0941df8e1adab916c868bf0c05f2fc3'
             '351fd96be8cd5ebd0435c0a8a978673fc023e3b1026085e67f86d815b2285e25'
-            '387892636b83ef1cffff34e795d521273401c459386b168aeebcac8fe923aa99'
+            'e82cd603e71736851629ffc5e8b22eeb728f439471a87f1fbbd2fbb59280cf30'
             'SKIP'
             '1fc7055041da895d5d023fcf0c5e06d00a3506ae98931138229dba7392e2c382'
+            '34c74396b40f1a22a94c1e49e6ae1aaed2fb55f28225dfa9de2cb6f9f4607d21'
             '1620f9ed6f52250c540a88d5182be0caf8b50b93f83c85fec02c225ae121c9c1'
             'd61c4da6d06ad61b20058dd8684aba5dc581e75264834e3a03f958f941bfeea5'
             'b0d21ae300fb667350323190a9217e7e19834f9c216627e927c01feda63341f8'
@@ -143,6 +145,9 @@ prepare() {
 
     # disable implicit function declaration error since grsecurity patches conflicts against some RCN modules
     patch -p1 -i "${srcdir}/0001-ARM-disable-implicit-function-declaration-error.patch"
+
+    # fix redefinition error of atomic64_xchg_unchecked_relaxed
+    patch -p1 -i "${srcdir}/0002-ARM-fix-redefinition-error-of-atomic64_xchg_unchecked_relaxed.patch"
 
     # ALARM patches
     patch -p1 -i "${srcdir}/0001-ARM-atags-add-support-for-Marvell-s-u-boot.patch"
