@@ -1,5 +1,20 @@
 # Maintainer: Guillaume ALAUX <guillaume at alaux dot net>
 
+# Important note about source signature validation:
+#
+# `makepkg` will refuse to build this package unless you either:
+#
+# - manually add upstream signing key to your GPG keyring with:
+#   `gpg --recv-keys <UPSTREAM_KEY(S)>`
+# - set your GPG config to automatically retrieve missing keys by adding
+#   `keyserver-options auto-key-retrieve` to your `~/.gnupg/gpg.conf`
+#
+# Whichever you choose **will not sign nor trust** the downloaded key(s)
+# and will thus **not** affect security checks of your keyring in any way.
+# On the other hand the provided `validpgpkeys` directive will allow `makepkg`
+# to trust the given key(s) for this package build as **I**, the package
+# provider, have checked these keys are bound to actual upstream accounts.
+
 # nimbus -> requires zookeeper to run
 # supervisor -> requires zookeeper to run
 # ui -> requires nimbus
@@ -9,7 +24,7 @@
 
 pkgname=storm
 pkgver=1.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Free and open source distributed realtime computation system'
 arch=('any')
 url='https://storm.apache.org/'
@@ -25,6 +40,7 @@ _apache_cgi="http://www.apache.org/dyn/closer.cgi"
 _closest=$(curl "${_apache_cgi}?asjson=1" | tr -d '\n ' | sed -r 's/.*"preferred":"(.+)".*/\1/')
 _app_path="/${pkgname}/apache-${pkgname}-${pkgver}/apache-${pkgname}-${pkgver}.tar.gz"
 source=(${_closest}/${_app_path}
+        https://www.apache.org/dist/${pkgname}/apache-${pkgname}-${pkgver}/apache-${pkgname}-${pkgver}.tar.gz.asc
         zookeeper_zoo.cfg
         zookeeper_log4j.properties
         systemd_storm-nimbus.service
@@ -33,8 +49,10 @@ source=(${_closest}/${_app_path}
         systemd_sysusers.d_storm.conf
         systemd_tmpfiles.d_storm.conf
         arch_python2.patch)
+validpgpkeys=('ACEFE18DD2322E1E84587A148DE03962E80B8FFD') # P. Taylor Goetz
 
 sha256sums=('b3fd2475e88e4b5e30f0e47eab70363419d67c15ddc7fe1f3c423ac0499eb76e'
+            'SKIP'
             'c94799f4b459f5218faf1da57936baeb4c32b9542a1ba0aacdd637bf2f3aaf05'
             '00780ee4cea3bb7a282a548f41b8964d5e392776f9d687ebea89cd49ed5742e3'
             '0d8958786538714da86ccf3f23cb668fa017530f8858aea2b7325ffe1af66cd1'
