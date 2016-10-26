@@ -1,0 +1,17 @@
+pkgbase = mitsuba-blender-hg
+	pkgdesc = Mitsuba integration plugin for blender, based on luxrender luxblend code
+	pkgver = 105.70361d3b0956
+	pkgrel = 1
+	url = https://www.mitsuba-renderer.org/repos/exporters/mitsuba-blender
+	arch = any
+	license = GPL3
+	makedepends = mercurial
+	depends = blender
+	depends = mitsuba
+	provides = mtsblend
+	conflicts = mtsblend
+	source = hg+https://www.mitsuba-renderer.org/repos/exporters/mitsuba-blender
+	md5sums = SKIP
+
+pkgname = mitsuba-blender-hg
+
