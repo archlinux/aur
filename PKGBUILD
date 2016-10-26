@@ -1,7 +1,7 @@
 # Maintainer: Christian Mauderer <oss@c-mauderer.de>
 pkgname=stlink-git
 pkgrel=1
-pkgver=r939.cbe455e
+pkgver=r941.49248f5
 pkgdesc="stm32 discovery line linux programmer."
 arch=('i686' 'x86_64')
 url="https://github.com/texane/stlink"
@@ -12,10 +12,7 @@ conflicts=('stlink')
 provides=('stlink')
 install='stlink-git.install'
 options=('!makeflags')
-#source=("${pkgname}"::'git+https://github.com/texane/stlink.git')
-# temporary workaround till https://github.com/texane/stlink/pull/502 is
-# accepted or another fix is found
-source=("${pkgname}"::'git+https://github.com/c-mauderer/stlink.git')
+source=("${pkgname}"::'git+https://github.com/texane/stlink.git')
 md5sums=('SKIP')
 
 pkgver() {

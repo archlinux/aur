@@ -1,6 +1,6 @@
 pkgbase = stlink-git
 	pkgdesc = stm32 discovery line linux programmer.
-	pkgver = r939.cbe455e
+	pkgver = r941.49248f5
 	pkgrel = 1
 	url = https://github.com/texane/stlink
 	install = stlink-git.install
@@ -15,7 +15,7 @@ pkgbase = stlink-git
 	provides = stlink
 	conflicts = stlink
 	options = !makeflags
-	source = stlink-git::git+https://github.com/c-mauderer/stlink.git
+	source = stlink-git::git+https://github.com/texane/stlink.git
 	md5sums = SKIP
 
 pkgname = stlink-git
