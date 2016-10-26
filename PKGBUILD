@@ -27,7 +27,7 @@ source=("bricscadv13.2.17.tar.gz::https://www.dropbox.com/sh/i53jscuk8afoa7c/AAB
 md5sums=('2ca6f4b512b9e9ac51e54d53c9edfb25'
          'c24313275d36fa6db16d92d530862739'
          'aa602524fb3687cbf1fab63ee6ea7077'
-         'b90151309e0ea94b1f1cee9e6960418c')
+         '4e3c9ff1c1566c033bb3dfc55719ab7d')
 
 noextract=("bricscadv13.2.17.tar.gz")
 
