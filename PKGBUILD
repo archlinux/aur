@@ -1,6 +1,6 @@
 # Maintainer: Sam Bazley <samb1999@hotmail.co.uk>
 pkgname=spacebgdl
-pkgver=1.0
+pkgver=1.1
 pkgrel=1
 pkgdesc="Downloads the latest Image of the Day from apod.nasa.gov/apod/astropix.html"
 arch=('any')
@@ -16,4 +16,4 @@ package() {
     echo "Enable the service with:"
     echo "systemctl enable spacebgdl; systemctl start spacebgdl"
 }
-md5sums=('6f2aade3e623059e95ae588d910433e4')
+md5sums=('f8906401426df001bb69428a6c535afd')
