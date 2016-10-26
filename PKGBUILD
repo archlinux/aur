@@ -2,7 +2,7 @@
 
 pkgname=squaw
 pkgver=3.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Simplistic quiet user agent for the Web'
 url='http://fenua.org/gaetan/src/'
 arch=('i686' 'x86_64')
