@@ -4,15 +4,15 @@
 BUILD_SELINUX=false
 
 pkgname=389-ds-base
-pkgver=1.3.5.4
+pkgver=1.3.5.14
 pkgrel=1
 pkgdesc="389 Directory Server (base)"
 arch=(i686 x86_64)
 url="http://port389.org/"
 license=(GPL)
-depends=(db cyrus-sasl cyrus-sasl-gssapi icu lm_sensors net-snmp nspr nss
-         openldap openssl pcre perl-mozldap perl-netaddr-ip perl-socket 'svrcore>=4.1.2'
-         tcp_wrappers zlib)
+depends=(cyrus-sasl cyrus-sasl-gssapi icu lm_sensors net-snmp libsystemd
+         openldap perl-mozldap perl-netaddr-ip perl-socket 'svrcore>=4.1.2')
+
 if [[ "${BUILD_SELINUX}" = "true" ]]; then
   depends+=(selinux-usr-policycoreutils)
 fi
@@ -24,10 +24,8 @@ backup=(etc/default/dirsrv
         etc/dirsrv/config/template-initconfig)
 options=(!libtool)
 install=${pkgname}.install
-source=("http://www.port389.org/binaries/${pkgname}-${pkgver}.tar.bz2"
-        "pkg-config.patch")
-sha512sums=('0cf3a1e403bc6d417525f908263d59689bbee1db887c5ba552fdae28252a59c37ee8e47ec29c48eb18fc1384652b94667f5768df87602f4c37b86d7ef0df284e'
-            'd20a7387c509983fa68ff22d5cd363e41d3c91ebd9232921edcc6c4b61a960a2cfd85e6f76152c39abf6a3c75f1617b8e94492fe2fdc3538038bd14c05bbac75')
+source=("http://www.port389.org/binaries/${pkgname}-${pkgver}.tar.bz2")
+sha512sums=('d267048048c781ddefb06b53dace6bc741138c95a25c6546abb5049a4d2c7af03e0da4aca259d5cbb5e56750c0c1b8a4fe8d835dff04ead50370375cf17404b3')
 
 build() {
   cd "${pkgname}-${pkgver}"
@@ -41,7 +39,6 @@ build() {
     export USE_64=1
   fi
 
-  patch -p1 < "${srcdir}/pkg-config.patch"
   autoreconf
 
   ./configure \
