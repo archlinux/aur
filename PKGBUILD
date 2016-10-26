@@ -1,6 +1,6 @@
 pkgbase=swift-preview
 pkgname=(swift-preview swift-lldb-preview)
-_swiftver=3.0.1-PREVIEW-3
+_swiftver=3.0.1-GM-CANDIDATE
 pkgver=${_swiftver//-/.}
 pkgrel=1
 pkgdesc="The Swift programming language and debugger - preview release"
@@ -26,17 +26,17 @@ source=(
     "swift-integration-tests-${_swiftver}.tar.gz::https://github.com/apple/swift-integration-tests/archive/swift-${_swiftver}.tar.gz"
     "swift-sphinx2.patch" "xar-1.6.patch"
 )
-sha256sums=('97e7db66270c9336d50d09ef427bcc30129051dec31d6517883394343e493471'
-            '39e4e3ec7db91f99910fd932c3aed38ce3c3d40f2e40d82c52e7d585f7e8da68'
-            '31861f3ad2f84c4e543b65beced7681d9e386d033743d6faafb76844accc58bf'
-            'b41c9f5833d805703ab2671bd751d36fc173815b9cae30c69b95bb15c68d98c0'
-            '05083f7d8f08268ef932e6c58fa2d76ff7e7599a80d48535b16ac38254699651'
-            'cdeedfe7848befba39a73ef8b87bce548f5a4a2bb7b7c88277dd15237b377c9c'
-            'ced5a22d92a9d6af6b49e2c4603f8ca1bffc178bcaa19d21e9d633aa94d2d55a'
-            'ab426f01d7b6e03945e5db5ed561c73954ddf3965f010f2476a0b8c57d16aae8'
-            '0fee5e5e0757d2433060e26051929b60d7f4af05843f59ea10abbf205b11763b'
-            '173c8f24a74b936e9f357946cd0859e1fe1c3f40dcdfc9e9d54341517862f5c6'
-            '6c046cf29aa810c2500e37ef805ccc90276f76694b324c9cbe5be8ee3e796840'
+sha256sums=('9d760ca8b743d66a1def8082a8137a478785885fdbdcbd49e3e4fa19946e1750'
+            '4d287821eda15301252f527b5af5c3a15db88a8f623fd44e11e7f8ad976d185c'
+            '6d37588a7784639eb36ef74e00ad364000a688a4fdaa0e7fe0abc950e92e2f16'
+            '89e9a2d4a72a371667acf49bac9fe20dea66e09bfdb3ca486c257f2473f327da'
+            '9fb64e687aeb40ff0ca2b725ae7a67ca89a592469434c5a0158fdcf981e0c4f4'
+            '58148ea661409a56500df4f115b47266c649f777b7d6b23aea220eb7b8028ad6'
+            '4c8538f3bf8da11d93379d04fccecf8bc66f1f13d018bb75a09c8eb394d33f1d'
+            '945fdd01ef80b9ede2d6efb03912b282b43c056b02a98dd22c080fb8d83388db'
+            '19fcc113bd09688af60283e57acaf692a650bd915ea61ba73f067c9f7938bc8b'
+            '73f77593e0ddf9e90b3eece7dc0c73f422684967b9338a85be5b3969e3ae482e'
+            'bd4869b8fe17dcda4c68613af2c2efe898a26710c0d62643669c6aac93ff63ef'
             '93bbe769666aab15b15d12e2423f213b39d6c47237eafc781569698c8367535f'
             'df27c2bfeaed6335f49a8815b0b296fd5acc331a6a9361a40f7dfc69a7518da6')
 
