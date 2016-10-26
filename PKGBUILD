@@ -4,12 +4,13 @@
 # Contributor: Michał Masłowski <mtjm@mtjm.eu>
 # Contributor: Márcio Silva <coadde@parabola.nu>
 # Contributor: Luke Shumaker <lukeshu@sbcglobal.net>
+# Contributor: Luke R. <g4jc@openmailbox.org>
 
 # Based on linux-xen package
 
 pkgbase=linux-libre-xen
-_pkgbasever=4.7-gnu
-_pkgver=4.7.6-gnu
+_pkgbasever=4.8-gnu
+_pkgver=4.8.4-gnu
 
 _replacesarchkernel=('linux%') # '%' gets replaced with _kernelname
 _replacesoldkernels=() # '%' gets replaced with _kernelname
@@ -19,10 +20,12 @@ _srcname=linux-${_pkgbasever%-*}
 _archpkgver=${_pkgver%-*}
 pkgver=${_pkgver//-/_}
 pkgrel=1
-arch=('i686')
+rcnrel=armv7-x3
+arch=('i686' 'armv7h')
 url="http://linux-libre.fsfla.org/"
 license=('GPL2')
 makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc' 'libelf')
+makedepends_armv7h=('git')
 options=('!strip')
 source=("http://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgbasever}/linux-libre-${_pkgbasever}.tar.xz"
         "http://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgbasever}/linux-libre-${_pkgbasever}.tar.xz.sign"
@@ -35,15 +38,32 @@ source=("http://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgbasever}/li
         "https://repo.parabola.nu/other/linux-libre/logos/logo_linux_vga16.ppm"
         "https://repo.parabola.nu/other/linux-libre/logos/logo_linux_vga16.ppm.sig"
         # the main kernel config files
-        'config'
+        'config.i686' 'config.armv7h'
         # standard config files for mkinitcpio ramdisk
         'linux.preset'
         'change-default-console-loglevel.patch'
         '0001-usb-serial-gadget-no-TTY-hangup-on-USB-disconnect-WI.patch'
-        '0002-fix-Atmel-maXTouch-touchscreen-support.patch')
-sha256sums=('f483e595e0ad9a9d1b3afd20e4ecb0b798cf16eb31e79a7b99311eb9c061032a'
+        '0002-fix-Atmel-maXTouch-touchscreen-support.patch'
+        # armv7h patches
+        "https://repo.parabola.nu/other/rcn-libre/patches/${_pkgver%-*}/rcn-libre-${_pkgver%-*}-${rcnrel}.patch"
+        "https://repo.parabola.nu/other/rcn-libre/patches/${_pkgver%-*}/rcn-libre-${_pkgver%-*}-${rcnrel}.patch.sig"
+        '0001-ARM-atags-add-support-for-Marvell-s-u-boot.patch'
+        '0002-ARM-atags-fdt-retrieve-MAC-addresses-from-Marvell-bo.patch'
+        '0003-SMILE-Plug-device-tree-file.patch'
+        '0004-fix-mvsdio-eMMC-timing.patch'
+        '0005-net-smsc95xx-Allow-mac-address-to-be-set-as-a-parame.patch'
+        '0006-ARM-TLV320AIC23-SoC-Audio-Codec-Fix-errors-reported-.patch'
+        '0007-set-default-cubietruck-led-triggers.patch'
+        '0008-USB-armory-support.patch'
+        '0009-ARM-dts-imx6ul-pico-hobbit-Add-Wifi-support.patch'
+        '0010-exynos4412-odroid-set-higher-minimum-buck2-regulator.patch'
+        '0011-usb-musb-Fix-hardirq-safe-hardirq-unsafe-lock-order-.patch'
+        '0012-usb-musb-Call-pm_runtime-from-musb_gadget_queue.patch'
+        '0013-phy-twl4030-usb-better-handle-musb_mailbox-failure.patch'
+        '0014-Revert-gpu-drm-omapdrm-dss-of-add-missing-of_node_pu.patch')
+sha256sums=('d54e0f8a27e24f3666c19b395c19dba194635db26929c89e78ffa4b2b0e8ca3a'
             'SKIP'
-            'fb98fce9aa7f53a052dac58fb5192c855c6bffc0d1d75a2e5681d5b690d6aa91'
+            '961e1887b500c8752fcc0414d3e202229751f84262329cba948398a574599ef7'
             'SKIP'
             'bfd4a7f61febe63c880534dcb7c31c5b932dde6acf991810b41a939a93535494'
             'SKIP'
@@ -51,13 +71,31 @@ sha256sums=('f483e595e0ad9a9d1b3afd20e4ecb0b798cf16eb31e79a7b99311eb9c061032a'
             'SKIP'
             '6de8a8319271809ffdb072b68d53d155eef12438e6d04ff06a5a4db82c34fa8a'
             'SKIP'
-            '566c73faf935fe8d590892117d9112e79e06bd984285805dfd985fa8ecaf0673'
+            'ffc0fb9c1c7549a56f6e24c2fe26fd11eb4f1d0b9d551bbab52295693ef51ef3'
+            'ffa8f48cfbf0bc3968d92c7c4b4c396f86ed2b5661c477f47041420688dde942'
             'f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
             '0376bd5efa31d4e2a9d52558777cebd9f0941df8e1adab916c868bf0c05f2fc3'
-            '351fd96be8cd5ebd0435c0a8a978673fc023e3b1026085e67f86d815b2285e25')
+            '351fd96be8cd5ebd0435c0a8a978673fc023e3b1026085e67f86d815b2285e25'
+            '89b376f80ea6e530bf1b065167f8668008ff1f80a9c967e3530f1f97870e5c1a'
+            'SKIP'
+            'ed9595e2736386e70f9c16ce2d933885bd2f298fa6f8e95dd10c93d99c8addf7'
+            'c17b6f6fe8c1949472d6f4421ca498dda386933e2640b8fe18e907fb9a1cdf11'
+            '6d376399d862c201ef953b663a8008849a8cb4e154d9918d919ab24bf3263c4e'
+            'c0cd1d852e266ac493dcbfe5c25bf64d995344268e0754a1405906e48b1d9e7f'
+            'b974cb919fb4b836df87d5c5088ce4a886b9f49683d143708faacf689357939a'
+            'df91889cc95f4748419b59f5ebf352e489b4d8ccaa7c27b9021cc3c1fbc0fe57'
+            'b1b96244a7301addd1a73965362741d262240eac5482d005e64ff8a60a6e1ac4'
+            '117ae47c9de4ecee666fb85bbe26b4f4733ac114b6746483c4f7c1474ff0b3b0'
+            '122fecf9a187f0182d67d6f7bded420ebf6ff1a8a49e536232d52a6a133466b0'
+            '9ca332918ade3685aafabb7d68bfc4fc68c5133dafefd0540f30e9a1a1063d90'
+            '412819f091e13f541605f935bc1f39c266fc8bc5e396142241c078e2c11be90e'
+            'a90170710bba55f6b0c4a01261e10a669644777e5f70ce1f75ec8e9f33f40bf7'
+            '6561eccea49c9467e86d926932f16a6b93a293e9cbc5a1bb9ca6934f7eba663b'
+            'aac8865bd9c0a583f3d589215683332931049a60a666b2dace37e70d7e68592d')
 validpgpkeys=(
               '474402C8C582DAFBE389C427BCB7CF877E7D47A7' # Alexandre Oliva
+              'C92BAA713B8D53D3CAE63FC9E6974752F9704456' # André Silva
               '684D54A189305A9CC95446D36B888913DDB59515' # Márcio Silva
 )
 
@@ -66,7 +104,10 @@ _replacesarchkernel=("${_replacesarchkernel[@]/\%/${_kernelname}}")
 _replacesoldkernels=("${_replacesoldkernels[@]/\%/${_kernelname}}")
 _replacesoldmodules=("${_replacesoldmodules[@]/\%/${_kernelname}}")
 
-  KARCH=x86
+case "${CARCH}" in
+  i686) KARCH=x86;;
+  armv7h) KARCH=arm;;
+esac
 
 prepare() {
   cd "${srcdir}/${_srcname}"
@@ -74,6 +115,30 @@ prepare() {
   # add upstream patch
   if [ "${_pkgbasever}" != "${_pkgver}" ]; then
     patch -p1 -i "${srcdir}/patch-${_pkgbasever}-${_pkgver}"
+  fi
+
+  if [ "${CARCH}" = "armv7h" ]; then
+    # RCN patch (CM3 firmware deblobbed, AUFS and RT removed)
+    # Note: For stability reasons, AUFS and RT have been removed in the RCN patch.
+    # We are supporting AUFS in linux-libre-pck through PCK patch and RT through its official
+    # patch in linux-libre-rt. See https://wiki.parabola.nu/PCK for further details about PCK.
+    git apply -v "${srcdir}/rcn-libre-${_pkgver%-*}-${rcnrel}.patch"
+
+    # ALARM patches
+    patch -p1 -i "${srcdir}/0001-ARM-atags-add-support-for-Marvell-s-u-boot.patch"
+    patch -p1 -i "${srcdir}/0002-ARM-atags-fdt-retrieve-MAC-addresses-from-Marvell-bo.patch"
+    patch -p1 -i "${srcdir}/0003-SMILE-Plug-device-tree-file.patch"
+    patch -p1 -i "${srcdir}/0004-fix-mvsdio-eMMC-timing.patch"
+    patch -p1 -i "${srcdir}/0005-net-smsc95xx-Allow-mac-address-to-be-set-as-a-parame.patch"
+    patch -p1 -i "${srcdir}/0006-ARM-TLV320AIC23-SoC-Audio-Codec-Fix-errors-reported-.patch"
+    patch -p1 -i "${srcdir}/0007-set-default-cubietruck-led-triggers.patch"
+    patch -p1 -i "${srcdir}/0008-USB-armory-support.patch"
+    patch -p1 -i "${srcdir}/0009-ARM-dts-imx6ul-pico-hobbit-Add-Wifi-support.patch"
+    patch -p1 -i "${srcdir}/0010-exynos4412-odroid-set-higher-minimum-buck2-regulator.patch"
+    patch -p1 -i "${srcdir}/0011-usb-musb-Fix-hardirq-safe-hardirq-unsafe-lock-order-.patch"
+    patch -p1 -i "${srcdir}/0012-usb-musb-Call-pm_runtime-from-musb_gadget_queue.patch"
+    patch -p1 -i "${srcdir}/0013-phy-twl4030-usb-better-handle-musb_mailbox-failure.patch"
+    patch -p1 -i "${srcdir}/0014-Revert-gpu-drm-omapdrm-dss-of-add-missing-of_node_pu.patch"
   fi
 
   # add freedo as boot logo
@@ -97,7 +162,7 @@ prepare() {
   # http://www.fsfla.org/pipermail/linux-libre/2015-November/003202.html
   patch -p1 -i "${srcdir}/0002-fix-Atmel-maXTouch-touchscreen-support.patch"
 
-  cat "${srcdir}/config" > ./.config # simpler
+  cat "${srcdir}/config.${CARCH}" > ./.config
 
   # append pkgrel to extraversion
   sed -ri "s|^(EXTRAVERSION =.*\S).*|\1-${pkgrel}|" Makefile
@@ -123,18 +188,23 @@ prepare() {
 build() {
   cd "${srcdir}/${_srcname}"
 
-  make ${MAKEFLAGS} LOCALVERSION= bzImage modules
+  if [ "${CARCH}" = "armv7h" ]; then
+    make ${MAKEFLAGS} LOCALVERSION= zImage modules dtbs
+  elif [ "${CARCH}" = "i686" ]; then
+    make ${MAKEFLAGS} LOCALVERSION= bzImage modules
+  fi
 }
 
 _package() {
   pkgdesc="The ${pkgbase^} kernel and modules with Xen guest support"
   [ "${pkgbase}" = "linux-libre" ] && groups=('base')
-  depends=('coreutils' 'linux-libre-firmware' 'kmod' 'mkinitcpio>=0.7')
+  depends=('coreutils' 'linux-libre-firmware' 'kmod')
   optdepends=('crda: to set the correct wireless channels of your country')
   provides=("${_replacesarchkernel[@]/%/=${_archpkgver}}")
   conflicts=("${_replacesoldkernels[@]}" "${_replacesoldmodules[@]}")
   replaces=("${_replacesarchkernel[@]}" "${_replacesoldkernels[@]}" "${_replacesoldmodules[@]}")
-  backup=("etc/mkinitcpio.d/${pkgbase}.preset")
+  depends_i686=('mkinitcpio>=0.7')
+  backup_i686=("etc/mkinitcpio.d/${pkgbase}.preset")
   install=linux.install
 
   cd "${srcdir}/${_srcname}"
@@ -146,7 +216,12 @@ _package() {
 
   mkdir -p "${pkgdir}"/{lib/modules,lib/firmware,boot}
   make LOCALVERSION= INSTALL_MOD_PATH="${pkgdir}" modules_install
-  cp arch/$KARCH/boot/bzImage "${pkgdir}/boot/vmlinuz-${pkgbase}"
+  if [ "${CARCH}" = "armv7h" ]; then
+    make LOCALVERSION= INSTALL_DTBS_PATH="${pkgdir}/boot/dtbs/${pkgbase}" dtbs_install
+    cp arch/$KARCH/boot/zImage "${pkgdir}/boot/vmlinuz-${pkgbase}"
+  elif [ "${CARCH}" = "i686" ]; then
+    cp arch/$KARCH/boot/bzImage "${pkgdir}/boot/vmlinuz-${pkgbase}"
+  fi
 
   # set correct depmod command for install
   cp -f "${startdir}/${install}" "${startdir}/${install}.pkg"
@@ -156,14 +231,16 @@ _package() {
     -e  "s/KERNEL_VERSION=.*/KERNEL_VERSION=${_kernver}/" \
     -i "${startdir}/${install}"
 
-  # install mkinitcpio preset file for kernel
-  install -D -m644 "${srcdir}/linux.preset" "${pkgdir}/etc/mkinitcpio.d/${pkgbase}.preset"
-  sed \
-    -e "1s|'linux.*'|'${pkgbase}'|" \
-    -e "s|ALL_kver=.*|ALL_kver=\"/boot/vmlinuz-${pkgbase}\"|" \
-    -e "s|default_image=.*|default_image=\"/boot/initramfs-${pkgbase}.img\"|" \
-    -e "s|fallback_image=.*|fallback_image=\"/boot/initramfs-${pkgbase}-fallback.img\"|" \
-    -i "${pkgdir}/etc/mkinitcpio.d/${pkgbase}.preset"
+  if [ "${CARCH}" = "i686" ]; then
+    # install mkinitcpio preset file for kernel
+    install -D -m644 "${srcdir}/linux.preset" "${pkgdir}/etc/mkinitcpio.d/${pkgbase}.preset"
+    sed \
+      -e "1s|'linux.*'|'${pkgbase}'|" \
+      -e "s|ALL_kver=.*|ALL_kver=\"/boot/vmlinuz-${pkgbase}\"|" \
+      -e "s|default_image=.*|default_image=\"/boot/initramfs-${pkgbase}.img\"|" \
+      -e "s|fallback_image=.*|fallback_image=\"/boot/initramfs-${pkgbase}-fallback.img\"|" \
+      -i "${pkgdir}/etc/mkinitcpio.d/${pkgbase}.preset"
+  fi
 
   # remove build and source links
   rm -f "${pkgdir}"/lib/modules/${_kernver}/{source,build}
@@ -182,8 +259,10 @@ _package() {
   mkdir -p "${pkgdir}/usr"
   mv "${pkgdir}/lib" "${pkgdir}/usr/"
 
-  # add vmlinux
-  install -D -m644 vmlinux "${pkgdir}/usr/lib/modules/${_kernver}/build/vmlinux"
+  if [ "${CARCH}" = "i686" ]; then
+    # add vmlinux
+    install -D -m644 vmlinux "${pkgdir}/usr/lib/modules/${_kernver}/build/vmlinux"
+  fi
 }
 
 _package-headers() {
@@ -212,6 +291,16 @@ _package-headers() {
   # copy arch includes for external modules
   mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build/arch/${KARCH}"
   cp -a arch/${KARCH}/include "${pkgdir}/usr/lib/modules/${_kernver}/build/arch/${KARCH}/"
+  if [ "${CARCH}" = "armv7h" ]; then
+    for i in dove exynos omap2; do
+      mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build/arch/${KARCH}/mach-${i}"
+      cp -a arch/${KARCH}/mach-${i}/include "${pkgdir}/usr/lib/modules/${_kernver}/build/arch/${KARCH}/mach-${i}/"
+    done
+    for i in omap orion samsung versatile; do
+      mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build/arch/${KARCH}/plat-${i}"
+      cp -a arch/${KARCH}/plat-${i}/include "${pkgdir}/usr/lib/modules/${_kernver}/build/arch/${KARCH}/plat-${i}/"
+    done
+  fi
 
   # copy files necessary for later builds
   cp Module.symvers "${pkgdir}/usr/lib/modules/${_kernver}/build"
