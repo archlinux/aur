@@ -2,7 +2,7 @@
 
 pkgname=ti99sim
 pkgver=0.14.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Texas Instruments TI-99/4A Home Computer Emulator'
 arch=('i686' 'x86_64')
 url='http://www.mrousseau.org/programs/ti99sim'
@@ -32,7 +32,6 @@ build() {
 
   "${srcdir}/${pkgname}-${pkgver}/bin/convert-ctg" 994a.bin
   "${srcdir}/${pkgname}-${pkgver}/bin/convert-ctg" --cru=1100 ti-disk.bin
-  "${srcdir}/${pkgname}-${pkgver}/bin/convert-ctg" 994a.bin
 }
 
 package() {
