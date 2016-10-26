@@ -3,7 +3,7 @@
 
 pkgname=rstudio-desktop-preview-bin
 pkgver=1.0.44
-pkgrel=1
+pkgrel=2
 pkgdesc="A new integrated development environment (IDE) for R (binary version from RStudio official website)"
 arch=('i686' 'x86_64')
 license=('GPL')
@@ -68,7 +68,8 @@ export QT_DIR=/usr/lib/rstudio/bin
 export QT_PLUGIN_PATH=$QT_DIR/plugins
 export QT_QPA_PLATFORM_PLUGIN_PATH=$QT_PLUGIN_PATH/platforms
 export KDEDIRS=/usr
-exec /usr/lib/rstudio/bin/rstudio
+# exec /usr/lib/rstudio/bin/rstudio
+exec /usr/lib/rstudio/bin/rstudio "$@"
 ' > "$pkgdir/usr/bin/rstudio-preview-bin"
   chmod 755 "$pkgdir/usr/bin/rstudio-preview-bin"
 
