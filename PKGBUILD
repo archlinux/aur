@@ -14,12 +14,13 @@ _use_ccache=0          # Use ccache when build.
 _use_pax=0             # Set 1 to change PaX permisions in executables NOTE: only use if use PaX environment.
 _use_gtk3=1            # If set 1, then build with GTK3 support, if set 0, then build with GTK2.
 _debug_mode=0          # Build in debug mode.
+_enable_vaapi=0        # Patch for VAAPI HW acceleration NOTE: don't work in some graphic cards, for example, NVIDIA
 
 ##############################################
 ## -- Package and components information -- ##
 ##############################################
 pkgname=chromium-dev
-pkgver=55.0.2883.11
+pkgver=56.0.2897.0
 _launcher_ver=3
 pkgrel=1
 pkgdesc="The open-source project behind Google Chrome (Dev Channel)"
@@ -28,7 +29,6 @@ url='http://www.chromium.org'
 license=('BSD')
 depends=('jsoncpp'
 #          'libsrtp'
-         'libwebp'
          'libxslt'
          'libxss'
          'minizip'
@@ -84,6 +84,7 @@ source=( #"https://gsdview.appspot.com/chromium-browser-official/chromium-${pkgv
         # Patch form Gentoo
         'https://raw.githubusercontent.com/gentoo/gentoo/master/www-client/chromium/files/chromium-system-ffmpeg-r4.patch'
         'https://raw.githubusercontent.com/gentoo/gentoo/master/www-client/chromium/files/chromium-system-jinja-r14.patch'
+        'https://raw.githubusercontent.com/gentoo/gentoo/master/www-client/chromium/files/chromium-gn-r8.patch'
         # Misc Patches
         "https://raw.githubusercontent.com/saiarcot895/chromium-ubuntu-build/0507ec8f882295901bc33dba58260b6f87b4dfd8/debian/patches/enable_vaapi_on_linux.diff"
         'https://raw.githubusercontent.com/saiarcot895/chromium-ubuntu-build/0507ec8f882295901bc33dba58260b6f87b4dfd8/debian/patches/specify-max-resolution.patch'
@@ -100,6 +101,7 @@ sha256sums=( #"$(curl -sL https://gsdview.appspot.com/chromium-browser-official/
             # Patch form Gentoo
             'e3c474dbf3822a0be50695683bd8a2c9dfc82d41c1524a20b4581883c0c88986'
             'a9cb08fbac8ffcf6371edd7ab67833efd42c5b92938f1e2e7922d1d22d226db8'
+            '8abe0b63202f78304ab50f3f23df165453171b91f4e9ebeabe9ec9e78345b937'
             # Misc Patches
             'd45827fe84a3fa3d55da7f9c3241f9b5b4d309b4d16e61cc121be3c8aa92553b'
             '025042ac038ea5fdaabc91e67b13a410d2cacd9afc2d74f89b36fdf2388d4afc'
@@ -174,13 +176,6 @@ if [ -e /usr/lib/security/pam_gnome_keyring.so ]; then
   _gnome_keyring=true
 fi
 
-# Are you use Pulseaudio?.
-_pulseaudio=false
-if [ -e /usr/lib/pulseaudio/libpulsecore-9.0.so ]; then
-  depends+=('pulseaudio')
-  _pulseaudio=true
-fi
-
 # List of third-party components needed for build chromium. The rest is remove by remove_bundled_libraries srcipt in prepare().
 _keeplibs=('base/third_party/dmg_fp'
            'base/third_party/dynamic_annotations'
@@ -247,7 +242,7 @@ _keeplibs=('base/third_party/dmg_fp'
            'third_party/libusb'
            'third_party/libva'
            'third_party/libwebm'
-           'third_party/libxml/chromium'
+           'third_party/libxml'
            'third_party/libyuv'
            'third_party/lss'
            'third_party/lzma_sdk'
@@ -310,7 +305,7 @@ _flags=('is_debug=false'
         "use_gio=false"
         "use_gnome_keyring=${_gnome_keyring}"
         "use_gtk3=${_gtk3}"
-        "use_pulseaudio=${_pulseaudio}"
+        "use_pulseaudio=true"
         "link_pulseaudio=true"
         'use_kerberos=true'
         'use_cups=true'
@@ -342,7 +337,7 @@ _use_system=('ffmpeg'
              'libpng'
              'libvpx'
              'libwebp'
-             'libxml'
+#              'libxml' # https://bugs.archlinux.org/task/29939
              'libxslt'
              're2'
              'snappy'
@@ -387,13 +382,19 @@ prepare() {
   # Patch sources from Gentoo.
   patch -p1 -i "${srcdir}/chromium-system-ffmpeg-r4.patch"
   patch -p1 -i "${srcdir}/chromium-system-jinja-r14.patch"
+  patch -p1 -i "${srcdir}/chromium-gn-r8.patch"
 
   # Misc Patches:
-  patch -p1 -i "${srcdir}/enable_vaapi_on_linux.diff"
-  patch -p1 -i "${srcdir}/specify-max-resolution.patch"
+  if [ "${_enable_vaapi}" = 1 ]; then
+    patch -p1 -i "${srcdir}/enable_vaapi_on_linux.diff"
+    patch -p1 -i "${srcdir}/specify-max-resolution.patch"
+  fi
+
   # Fix paths.
-  sed -e 's|x86_64-linux-gnu/||g' \
-      -e 's|i386-linux-gnu/||g' \
+  sed -e 's|i386-linux-gnu/||g' \
+      -e 's|x86_64-linux-gnu/||g' \
+      -e 's|/usr/lib/va/drivers|/usr/lib/dri|g' \
+      -e 's|/usr/lib64/va/drivers|/usr/lib/dri|g' \
       -i content/common/sandbox_linux/bpf_gpu_policy_linux.cc
 
   patch -p1 -i "${srcdir}/minizip.patch"
