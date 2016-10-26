@@ -3,9 +3,9 @@ pkgname="tor-browser-fr"
 pre_install() {
 	echo ""
 	echo "==> Si vous voulez vérifier la signature gnupg vous allez"
-	echo "==> importer la clé publique appropriée (Trouvable ici https://www.torproject.org/docs/signing-keys.html)."
+	echo "==> importer la clé publique appropriée (Trouvable ici https://www.torproject.org/docs/signing-keys.html.en)."
 	echo "==> Choisissez-en une et lancez :"
-	echo "==> pacman-key -r <keyid>"
+	echo "==> gpg --recv-keys <keyid>"
 	echo "==> Après ça, la vérification de la signature marchera."
 	echo ""
 }

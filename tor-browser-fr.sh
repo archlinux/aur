@@ -3,6 +3,7 @@
 # Copyright (C) 2009 Benjamin Drung <bdrung at ubuntu dot com>
 # Copyright (C) 2012 Alessio Sergi <al3hex at gmail dot com>
 # modified 2012 for tor-browser (Max Roder <maxroder at web dot de>)
+# modified 2014 by Yardena Cohen <yardenack at gmail dot com>
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -23,7 +24,6 @@ set -e
 NAME='REPL_NAME'
 VERSION='REPL_VERSION'
 LANGUAGE="REPL_LANGUAGE"
-PKGARCH="REPL_ARCH"
 
 ARCH=$(getconf LONG_BIT)
 
@@ -62,6 +62,10 @@ Options:
   -h|--help         Show this help message and exit
   -u|--update       Force update of the copy in your home directory
   --dir=<directory> The Tor-Browser directory to use
+
+  All unrecognized arguments will be passed to the browser,
+  but arguments with spaces will break, until Tor fixes this bug:
+  https://trac.torproject.org/projects/tor/ticket/12161
 EOF
 }
 
@@ -103,4 +107,4 @@ else
 fi
 
 # start tor-browser
-cd $INSTALL_DIRECTORY && ./Browser/start-tor-browser --class Tor\ Browser "${args[@]}"
+cd $INSTALL_DIRECTORY/Browser && ./start-tor-browser --class Tor\ Browser "${args[@]}"
