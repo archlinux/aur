@@ -3,7 +3,7 @@
 pkgbase = python-django-celery
 	pkgdesc = django-celery provides Celery integration for Django
 	pkgver = 3.1.17
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pypi.python.org/pypi/django-celery
 	arch = any
 	license = BSD
