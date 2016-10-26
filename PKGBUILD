@@ -3,7 +3,7 @@
 pkgname=xurls
 _name="${pkgname}"
 pkgver=0.9.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Extract urls from plain text"
 url="https://github.com/mvdan/${_name}"
 license=('BSD')
@@ -21,7 +21,7 @@ prepare() {
 
 build() {
 	cd "${srcdir}/src/github.com/mvdan/${_name}/cmd/${_name}"
-	GOPATH="${srcdir}" go build
+	GOPATH="${srcdir}" go build -ldflags='-w -s'
 }
 
 package() {
