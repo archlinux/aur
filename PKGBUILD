@@ -2,7 +2,7 @@
 
 pkgname=ananicy-git
 pkgver=49.232884a
-pkgrel=1
+pkgrel=2
 pkgdesc="Ananicy - is Another auto nice daemon, with community rules support"
 arch=('any')
 url="https://github.com/Nefelim4ag/Ananicy.git"
@@ -18,8 +18,9 @@ pkgver() {
 }
 
 package() {
-    mkdir -p        "$pkgdir"/etc/
-    mv              "$srcdir"/$pkgname/ananicy.d        "$pkgdir"/etc/
-    install -Dm644  "$srcdir"/$pkgname/ananicy.service  "$pkgdir"/usr/lib/systemd/system/ananicy.service
-    install -Dm755  "$srcdir"/$pkgname/ananicy.sh       "$pkgdir"/usr/lib/systemd/scripts/ananicy.sh
+    "$srcdir"/install.sh PREFIX="$pkgdir"
+    #mkdir -p        "$pkgdir"/etc/
+    #mv              "$srcdir"/$pkgname/ananicy.d        "$pkgdir"/etc/
+    #install -Dm644  "$srcdir"/$pkgname/ananicy.service  "$pkgdir"/usr/lib/systemd/system/ananicy.service
+    #install -Dm755  "$srcdir"/$pkgname/ananicy.sh       "$pkgdir"/usr/lib/systemd/scripts/ananicy.sh
 }
