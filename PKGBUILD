@@ -31,7 +31,7 @@ gimp-script-white-balance-puzzle
 gimp-script-vintage-look
 gimp-script-split-tone
 )
-pkgver=b3f4e3e7
+pkgver=r7.b3f4e3e7
 pkgrel=1
 pkgdesc='Varoius Gimp scripts made by elsamuko'
 arch=(any)
@@ -53,7 +53,8 @@ _gitname=gimp-elsamuko
 pkgver(){
   if [ -d "$srcdir"/$_gitname ]; then
     cd "$srcdir"/$_gitname
-    git describe --always | sed 's|-|.|g'
+#     git describe --always | sed 's|-|.|g'
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
   fi
 }
 _scriptsdir_eval='_scriptsdir="$pkgdir"/usr/share/gimp/2.0/scripts'
