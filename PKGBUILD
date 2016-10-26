@@ -3,7 +3,7 @@
 pkgbase="can-isotp-git"
 pkgname=("can-isotp-modules-git" "can-isotp-headers-git")
 _pkgname="can-isotp-modules"
-pkgver=r822.856c160
+pkgver=r823.712c3aa
 pkgrel=1
 pkgdesc="The CAN ISO-TP Kernel Module (ALPHA)"
 arch=('i686' 'x86_64')
@@ -13,6 +13,8 @@ depends=('linux')
 makedepends=('linux-headers')
 source=("git+https://github.com/hartkopp/can-isotp-modules.git")
 md5sums=('SKIP')
+
+_extramodules="extramodules-4.8-ARCH"
 
 pkgver() {
     cd "${srcdir}/${_pkgname}"
@@ -31,8 +33,9 @@ package_can-isotp-modules-git() {
     optdepends=("can-utils: Userspace utilities for SocketCAN")
 
     cd "${srcdir}/${_pkgname}/net/can"
-    install -d "${pkgdir}/usr/lib/modules/extramodules-4.2-ARCH"
-    install "can-isotp.ko" "${pkgdir}/usr/lib/modules/extramodules-4.2-ARCH/can-isotp.ko"
+    install -d "${pkgdir}/usr/lib/modules/$_extramodules"
+    gzip "can-isotp.ko"
+    install "can-isotp.ko.gz" "${pkgdir}/usr/lib/modules/$_extramodules/can-isotp.ko.gz"
 }
 
 package_can-isotp-headers-git() {
