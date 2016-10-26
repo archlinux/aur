@@ -1,0 +1,23 @@
+From d692553c178a09ff79f8152fcb0e69ba166796a0 Mon Sep 17 00:00:00 2001
+From: Mathieu Fenniak <mathieu@encouragemarketing.com>
+Date: Sat, 25 Jun 2016 14:30:04 -0600
+Subject: [PATCH] Access _default_manager on the model instance's type, not the
+ instance
+
+---
+ djcelery/schedulers.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/djcelery/schedulers.py b/djcelery/schedulers.py
+index b5ba399..f51dc78 100644
+--- a/djcelery/schedulers.py
++++ b/djcelery/schedulers.py
+@@ -95,7 +95,7 @@ def __next__(self):
+     def save(self):
+         # Object may not be synchronized, so only
+         # change the fields we care about.
+-        obj = self.model._default_manager.get(pk=self.model.pk)
++        obj = type(self.model)._default_manager.get(pk=self.model.pk)
+         for field in self.save_fields:
+             setattr(obj, field, getattr(self.model, field))
+         obj.last_run_at = make_aware(obj.last_run_at)
