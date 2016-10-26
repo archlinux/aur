@@ -3,12 +3,12 @@
 
 pkgname='python-ampy-git'
 pkgver=0
-pkgrel=3
+pkgrel=4
 pkgdesc="ESP8266 FS management tool provided by Adafruit"
 url="https://github.com/adafruit/ampy"
 arch=('any')
 license=('GPL')
-depends=('python' 'python-click')
+depends=('python' 'python-click' 'python-pyserial')
 makedepends=('python-setuptools')
 provides=('python-ampy','ampy')
 source=("${pkgname}::git+https://github.com/adafruit/ampy")
@@ -20,4 +20,3 @@ package() {
 }
 
 # vim:set ts=2 sw=2 et:
-
