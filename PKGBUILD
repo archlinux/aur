@@ -1,7 +1,7 @@
 # Maintainer: Philipp Wolfer <ph.wolfer@gmail.com>
 pkgname=roger-router
 pkgver=1.9.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Roger Router"
 arch=('i686' 'x86_64')
 url="https://www.tabos.org/"
@@ -21,8 +21,14 @@ optdepends=(
 provides=(roger)
 conflicts=(roger)
 install=roger-router.install
-source=(http://www.tabos.org/downloads/$pkgname-$pkgver.tar.xz)
-sha1sums=('b0de17edcf32ac686e941b06fd8e83f5999b8b85')
+source=(
+	http://www.tabos.org/downloads/$pkgname-$pkgver.tar.xz
+	address-book.svg
+	)
+sha1sums=(
+	'b0de17edcf32ac686e941b06fd8e83f5999b8b85'
+	'eea8152ef5472bf2e52f05651485ba3c60eb8e3f'
+	)
 
 build() {
 	cd "$srcdir/$pkgname-$pkgver"
@@ -33,6 +39,9 @@ build() {
 		--with-secret=check \
 		--with-pulseaudio=check \
 		--with-portaudio=check
+
+	# This file is missing from the release tarball, see https://www.tabos.org/topic/compile-error-2/
+	cp ../../address-book.svg roger/images/
 	make
 }
 
