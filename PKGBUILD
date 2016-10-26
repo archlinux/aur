@@ -7,7 +7,7 @@
 # https://github.com/soker90/paquetes-archinux.git
 
 pkgname=netbeans-es
-pkgver=8.1
+pkgver=8.2
 pkgrel=1
 pkgdesc="Netbeans IDE development platform in Spanish"
 url="http://www.netbeans.org"
@@ -16,9 +16,9 @@ license=('CDDL')
 conflicts=('netbeans')
 provides=('netbeans')
 depends=('java-environment')
-source=('http://bits.netbeans.org/netbeans/8.1/community/zip/netbeans-8.1-201511021428.zip'
+source=('http://bits.netbeans.org/netbeans/8.2/community/zip/netbeans-8.2-201610071157.zip'
 		'netbeans.desktop')
-md5sums=('aca66dedbf7ac4be76984e3a63152659'
+md5sums=('ded1adcdce2c2e8fe22919769370ff65'
          '954bdd8edfce8aaf93c82f260fb771ce')
 install=netbeans.install
 options=('!strip')
