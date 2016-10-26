@@ -1,0 +1,16 @@
+pkgbase = python-blitzdb
+	pkgdesc = A document-oriented database written purely in Python
+	pkgver = 0.3.3
+	pkgrel = 1
+	url = https://github.com/adewes/blitzdb
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	options = !emptydirs
+	source = https://pypi.python.org/packages/3c/7f/52906526e58705c42261916cdc11c67f099dd6543c74d4a88a58a0015e86/blitzdb-0.3.3.tar.gz
+	md5sums = fd7615fb2665e81d0909f860d4e50034
+	sha256sums = d6090dad0cefd1276f776c0fb3df79becf90ca1153a667e3ced6b7739eb0e222
+
+pkgname = python-blitzdb
+
