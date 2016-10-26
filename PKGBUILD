@@ -20,8 +20,8 @@ _akcs=""		# Append Kernel Custom String.Not working on some systems.
 			# Use if you wnat to append a custom string to kernel version.
 			# No risc if you have a backup kernel in case of boot failure.
 
-_use_MUQSS="no"		# "yes":	Use MUQSS cpu scheduler.
-			# "no":		Use CFS cpu scheduler.
+_use_MUQSS="yes"		# "yes":	Use MUQSS cpu scheduler.
+			        # "no":		Use CFS cpu scheduler.
 
 _use_KSM="no"		# "yes":	Enable Kernel SamePage Merging (KSM).
 			# "no":		Don't use Kernel SamePage Merging (KSM).
@@ -105,9 +105,9 @@ prepare() {
     sed -i "s|CONFIG_LOCALVERSION_AUTO=.*|CONFIG_LOCALVERSION_AUTO=n|" ./.config
   fi
 
-  #Enable MUQSS cpu scheduler in config
-  if [ "${_use_MUQSS}" = "yes" ]; then
-    sed -i -e 's/# CONFIG_SCHED_MUQSS is not set/CONFIG_SCHED_MUQSS=y/' ./.config
+  #Disable MUQSS cpu scheduler in config
+  if [ "${_use_MUQSS}" = "no" ]; then
+    sed -i -e 's/CONFIG_SCHED_MUQSS=y/# CONFIG_SCHED_MUQSS is not set/' ./.config
   fi
 
   #Enable KSM (Kernel SamePage Merging)
