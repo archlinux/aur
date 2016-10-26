@@ -2,7 +2,7 @@
 
 _pkgname=vdirsyncer
 pkgname=${_pkgname}-git
-pkgver=0.12.1.r16.gb6f009e
+pkgver=0.14.0.r0.gdd9394a
 pkgrel=1
 pkgdesc="Synchronize CalDAV and CardDAV."
 arch=('i686' 'x86_64')
