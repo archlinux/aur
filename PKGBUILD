@@ -2,12 +2,12 @@
 
 pkgname=ekho
 pkgver=7.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Chinese text-to-speech (TTS) software for Cantonese, Mandarin, Zhaoan Hakka, Tibetan, Ngangien and Korean"
 arch=('i686' 'x86_64')
 url="http://www.eguidedog.net/ekho.php"
 license=('GPL')
-depends=('libpulse' 'lame' 'festival' 'ncurses')
+depends=('libpulse' 'lame' 'festival' 'ncurses' 'espeak')
 source=("http://downloads.sourceforge.net/e-guidedog/ekho-${pkgver}.tar.xz")
 options=(!strip) #We have a lots of non executable data and only 2 executables
 md5sums=('cf0890f265ff40c90328b39c4ddfc746')
