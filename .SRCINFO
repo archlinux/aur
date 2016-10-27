@@ -1,7 +1,7 @@
 pkgbase = messengerfordesktop-bin
 	pkgdesc = Beautiful desktop client for Facebook Messenger. Binary version.
 	pkgver = 2.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://messengerfordesktop.com/
 	arch = i686
 	arch = x86_64
@@ -15,13 +15,12 @@ pkgbase = messengerfordesktop-bin
 	depends = nss
 	conflicts = messengerfordesktop
 	conflicts = messengerfordesktop-git
-	noextract = messengerfordesktop-2.0.1-linux-i386.deb
-	noextract = messengerfordesktop-2.0.1-linux-amd64.deb
+	noextract = messengerfordesktop-2.0.1.deb
 	options = !strip
-	source = https://github.com/Aluxian/Facebook-Messenger-Desktop/releases/download/v2.0.1/messengerfordesktop-2.0.1-linux-i386.deb
-	source = https://github.com/Aluxian/Facebook-Messenger-Desktop/releases/download/v2.0.1/messengerfordesktop-2.0.1-linux-amd64.deb
-	sha256sums = ed05f1afb3d25589c071276c7cc12bff1f5a6e4acb301eeab1cc3300a97d5726
-	sha256sums = d4c9eebc60f51c2ba5c136617f6dd71121feb3d8c99b7b563498109d7be74d45
+	source_i686 = messengerfordesktop-2.0.1.deb::https://github.com/Aluxian/Facebook-Messenger-Desktop/releases/download/v2.0.1/messengerfordesktop-2.0.1-linux-i386.deb
+	sha256sums_i686 = ed05f1afb3d25589c071276c7cc12bff1f5a6e4acb301eeab1cc3300a97d5726
+	source_x86_64 = messengerfordesktop-2.0.1.deb::https://github.com/Aluxian/Facebook-Messenger-Desktop/releases/download/v2.0.1/messengerfordesktop-2.0.1-linux-amd64.deb
+	sha256sums_x86_64 = d4c9eebc60f51c2ba5c136617f6dd71121feb3d8c99b7b563498109d7be74d45
 
 pkgname = messengerfordesktop-bin
 

@@ -14,7 +14,7 @@ options=(!strip)
 depends=('libxtst' 'alsa-lib' 'gtk2' 'gconf' 'libnotify' 'nss')
 makedepends=('tar')
 
-_debname="${_pkgname}-${pkgver}-${CARCH}.deb"
+_debname="${_pkgname}-${pkgver}.deb"
 noextract=("${_debname}")
 
 source_i686=("${_debname}::https://github.com/Aluxian/Facebook-Messenger-Desktop/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux-i386.deb")
