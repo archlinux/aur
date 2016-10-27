@@ -1,7 +1,7 @@
 pkgbase = pharo-vm
 	pkgdesc = Pharo-VM for Pharo 4 images. Pharo is a clean, innovative, open-source Smalltalk-inspired environment
 	pkgver = 5.0
-	pkgrel = 0
+	pkgrel = 1
 	url = http://www.pharo.org/
 	arch = i686
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = pharo-vm
 	depends = lib32-libvorbis
 	depends = lib32-pango
 	depends = lib32-mesa
-	depends = lib32-dbus-core
+	depends = lib32-dbus
 	depends = lib32-libxml2
 	depends = wget
 	depends = unzip

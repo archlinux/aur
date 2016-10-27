@@ -4,7 +4,7 @@
 
 pkgname=pharo-vm
 pkgver=5.0
-pkgrel=0
+pkgrel=1
 pkgdesc="Pharo-VM for Pharo 4 images. Pharo is a clean, innovative, open-source Smalltalk-inspired environment"
 conflicts=('pharo' 'pharo-vm-latest')
 arch=(i686 x86_64)
@@ -12,7 +12,7 @@ source=($pkgname-$pkgver.tar.gz)
 url="http://www.pharo.org/"
 license=('MIT')
 if [ "$CARCH" = "x86_64" ]; then
-  depends=('lib32-alsa-lib' 'lib32-libvorbis' 'lib32-pango' 'lib32-mesa' 'lib32-dbus-core' 'lib32-libxml2' 'wget' 'unzip')
+  depends=('lib32-alsa-lib' 'lib32-libvorbis' 'lib32-pango' 'lib32-mesa' 'lib32-dbus' 'lib32-libxml2' 'wget' 'unzip')
 else
   depends=('alsa-lib' 'libvorbis' 'pango' 'mesa' 'dbus-core' 'libxml2' 'wget' 'unzip')
 fi
