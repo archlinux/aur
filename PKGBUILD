@@ -2,7 +2,7 @@
 # Contributor: Niels Abspoel <aboe76 (at) Gmail (dot) com>
 
 pkgname=puppetserver
-pkgver=2.4.0
+pkgver=2.6.0
 pkgrel=1
 pkgdesc="Server automation framework and application"
 arch=('any')
@@ -22,7 +22,7 @@ backup=('etc/default/puppetserver'
         'etc/puppetlabs/puppetserver/request-logging.xml')
 install=$pkgname.install
 source=(http://downloads.puppetlabs.com/puppet/$pkgname-$pkgver.tar.gz)
-md5sums=('dacd0ad2db22074a0285b37ab5ef0154')
+md5sums=('5b331765fc8c66d8e24fd812fac2b78c')
 
 prepare() {
   cd $pkgname-$pkgver
