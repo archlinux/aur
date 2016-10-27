@@ -1,6 +1,6 @@
 # Maintainer: Philipp Überbacher <murks at lavabit dot com>
 pkgname=a2jmidid-git
-pkgver=20121007
+pkgver=20150715.6fc0ced
 pkgrel=1
 pkgdesc="Daemon for exposing legacy ALSA sequencer applications in JACK MIDI system."
 arch=('i686' 'x86_64')
@@ -13,6 +13,11 @@ install=${pkgname}.install
 
 _gitroot="git://repo.or.cz/a2jmidid.git"
 _gitname="a2jmidid"
+
+pkgver() {
+	cd "${srcdir}/${_pkgname}"
+	git log -1 --format='%cd.%h' --date=short | tr -d -
+}
 
 build() {
   cd "${srcdir}"
