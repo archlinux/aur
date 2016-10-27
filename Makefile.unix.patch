@@ -1,0 +1,11 @@
+--- Makefile.unix	2016-10-26 20:02:00.028599864 -0400
++++ Makefile.unix.new	2016-10-26 21:17:56.734382744 -0400
+@@ -17,8 +17,6 @@
+ 	 cp -v $(LIBNAME)$(VERSION_MAJOR).a $(PREFIX)/lib/
+ 	 cp -v $(LIBNAME)$(VERSION_MAJOR).so.$(VERSION_MINOR) $(PREFIX)/lib/
+ 	 cp -v pdkim.h $(PREFIX)/include/pdkim$(VERSION_MAJOR).h
+-	 echo "LDCONFIG"
+-	 ldconfig
+ 
+ uninstall: clean
+ 	   echo "Removing lib from $(PREFIX)/lib/, header from $(PREFIX)/include/"
