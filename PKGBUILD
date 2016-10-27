@@ -1,15 +1,16 @@
 # Maintainer: Shusui Moyatani <syusui.s at gmail dot com>
 
+_release_number=66604
 pkgname=azpainterb
-pkgver=1.0.2
-pkgrel=2
+pkgver=1.0.3
+pkgrel=1
 pkgdesc="PixelArt/Paint/Retouch Software"
 arch=('i686' 'x86_64')
 url="http://azsky2.html.xdomain.jp/linux/azpainterb/"
 license=('GPL3')
 depends=('fontconfig' 'freetype2' 'libjpeg-turbo' 'libpng' 'libx11' 'libxext' 'libxi' 'zlib')
-source=("https://osdn.jp/frs/redir.php?f=/azpainterb/66065/${pkgname}-${pkgver}.tar.bz2")
-sha1sums=("21a5cf30e6e2ca57a6b24782d0859f2c4864bc4e")
+source=("https://osdn.jp/frs/redir.php?f=/azpainterb/${_release_number}/${pkgname}-${pkgver}.tar.bz2")
+sha1sums=("b2b13a56352e9711ab7671a791ab4b0e59debfd4")
 
 build() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
