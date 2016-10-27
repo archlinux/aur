@@ -19,7 +19,10 @@ pkgver(){
  }
 build() {
 cd $srcdir/rkward
-cmake -DCMAKE_INSTALL_PREFIX=/usr
+cmake -DCMAKE_INSTALL_PREFIX=/usr \
+  -DCMAKE_BUILD_TYPE:STRING="RelWithDebInfo" \
+  -DCMAKE_INSTALL_LIBDIR=lib \
+      -DR_LIBDIR=/usr/lib/R/library
 make
 }
 
