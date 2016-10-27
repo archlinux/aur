@@ -1,7 +1,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=emacs-lucid-git
-pkgver=25.1.50.r126652
+pkgver=26.0.50.r127314
 pkgrel=1
 pkgdesc="GNU Emacs. Official git master."
 arch=('i686' 'x86_64')
@@ -54,8 +54,6 @@ package() {
   # remove conflict with ctags package
   mv "$pkgdir"/usr/bin/{ctags,ctags.emacs}
   mv "$pkgdir"/usr/share/man/man1/{ctags.1.gz,ctags.emacs.1.gz}
-  # remove conflict with texinfo
-  rm "$pkgdir"/usr/share/info/info.info.gz
   # fix user/root permissions on usr/share files
   find "$pkgdir"/usr/share/emacs/ -exec chown root:root {} \;
   # Delete compressed .el.gz files. Comment out if needed.
