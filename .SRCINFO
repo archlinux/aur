@@ -1,0 +1,15 @@
+pkgbase = python-wcsaxes
+	pkgdesc = Framework for plotting astronomical and geospatial data
+	pkgver = 0.9
+	pkgrel = 1
+	url = http://wcsaxes.readthedocs.org
+	arch = any
+	license = BSD
+	depends = python-astropy
+	depends = python-matplotlib
+	options = !emptydirs
+	source = https://pypi.io/packages/source/w/wcsaxes/wcsaxes-0.9.tar.gz
+	md5sums = 5df63a4ab8fe3445fc101a9c62edea79
+
+pkgname = python-wcsaxes
+
