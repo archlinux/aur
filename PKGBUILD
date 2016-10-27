@@ -12,7 +12,7 @@ makedepends=('python')
 optdepends=('lame' 'vorbis-tools' 'flac' 'faad2' 'mpg123' 'opus-tools' 'ffmpeg' 'imagemagick' 'python-unidecode' 'python-gobject' 'python-pillow')
 options=(!emptydirs)
 install=cherrymusic.install
-source=($pkgname-${pkgver//_/-}.tar.gz::https://github.com/devsnd/cherrymusic/archive/0.38.0.tar.gz 'cherrymusic@.service')
+source=($pkgname-${pkgver//_/-}.tar.gz::https://github.com/devsnd/cherrymusic/archive/${pkgver}.tar.gz 'cherrymusic@.service')
 sha512sums=('f80399c34d5b3f9327baac3c54831eb311d0307d4f0085f2a49923e58762aa8d77ee0462ef9651db372f9f609948d1a87aa93d597ab80003992a81a913e8ec3e'
             '9d336a06492df0bb5718848f161895922d08171ab637b54fffad42fc5c12cd22d00f2408dabffc3617f0a59512276e38553f1c63a0ea68028982076b7f115165')
 
