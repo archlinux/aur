@@ -4,7 +4,7 @@
 
 pkgname=kpcli
 pkgver=3.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Command line browser of KeePassX database files (*.kdb)"
 arch=('any')
 license=('PerlArtistic' 'GPL')

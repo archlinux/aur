@@ -1,7 +1,7 @@
 pkgbase = kpcli
 	pkgdesc = Command line browser of KeePassX database files (*.kdb)
 	pkgver = 3.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://sourceforge.net/projects/kpcli/
 	arch = any
 	license = PerlArtistic
@@ -13,6 +13,7 @@ pkgbase = kpcli
 	depends = perl-term-readline-gnu
 	depends = perl-sort-naturally
 	depends = perl-clone
+	depends = perl-xml-parser
 	optdepends = perl-crypt-pwsafe3: import Password Safe v3 files
 	optdepends = perl-capture-tiny
 	optdepends = perl-clipboard
