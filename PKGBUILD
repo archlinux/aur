@@ -1,9 +1,6 @@
-# $Id$
-# Maintainer: Artem Vorotnikov <artem@vorotnikov.me>
-
 _pkgname=gxml
 pkgname=$_pkgname
-pkgver=0.10.0
+pkgver=0.12.0
 pkgrel=1
 pkgdesc="GObject XML and Serialization API"
 arch=('i686' 'x86_64')
@@ -11,8 +8,8 @@ license=('LGPL')
 depends=('glib2' 'libgee' 'libxml2')
 makedepends=('gobject-introspection' 'vala')
 url="https://wiki.gnome.org/GXml"
-source=('http://ftp.gnome.org/pub/gnome/sources/gxml/0.10/gxml-0.10.0.tar.xz')
-sha256sums=('7d8b9c503fdfaa056031133c5527418f4eb2591570704babb19b5419ef47a944')
+source=('http://ftp.gnome.org/pub/gnome/sources/gxml/0.12/gxml-0.12.0.tar.xz')
+sha256sums=('f9310d81078df031c8a5defc90be814a4666e641fb242cd3f4b6f3b6706fb44d')
 
 build() {
   cd "$srcdir/$_pkgname-$pkgver"
