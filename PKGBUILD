@@ -3,7 +3,7 @@
 _hkgname=apply-refact
 pkgname=haskell-apply-refact
 pkgver=0.3.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Perform refactorings specified by the refact library"
 arch=('i686' 'x86_64')
 url="https://hackage.haskell.org/package/${_hkgname}"
@@ -15,7 +15,7 @@ sha256sums=('0d2a8845ed554c4a6742a3d0a130dac3f16d0d710b65b20dfeb8e773409ed70f')
 build() {
     cd "${srcdir}/${_hkgname}-${pkgver}"
 
-    sed -i '28 i import Data.Monoid ((<>))' src/Main.hs
+    sed -i '28 i import Data.Semigroup ((<>))' src/Main.hs
 
     runhaskell Setup configure -O --enable-library-profiling --enable-shared \
         --prefix=/usr --docdir="/usr/share/doc/${pkgname}" \
