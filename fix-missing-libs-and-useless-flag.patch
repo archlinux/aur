@@ -1,0 +1,20 @@
+--- a/pianobooster-src-0.6.4b/src/CMakeLists.txt	2009-11-28 05:25:35.000000000 +0800
++++ b/pianobooster-src-0.6.4b/src/CMakeLists.txt	2016-10-26 23:49:54.447370008 +0800
+@@ -56,7 +56,7 @@
+     #PKG_CHECK_MODULES(ALSA REQUIRED alsa>=1.0)
+     #IF(ALSA_FOUND)
+         ADD_DEFINITIONS(-D__LINUX_ALSASEQ__)
+-        LINK_LIBRARIES (asound)
++        LINK_LIBRARIES (asound pthread GL)
+     #ELSE(ALSA_FOUND)
+     #    MESSAGE(FATAL_ERROR "Please install the 'libasound2-dev' package and then try again")
+     #ENDIF(ALSA_FOUND)
+@@ -203,7 +203,7 @@
+         ${PIANOBOOSTER_UI_HDRS} )
+ ENDIF(WIN32)
+ 
+-SET_TARGET_PROPERTIES(pianobooster PROPERTIES LINK_FLAGS "-mwindows")
++SET_TARGET_PROPERTIES(pianobooster PROPERTIES LINK_FLAGS "")
+ 
+ IF (USE_PCH)
+ ADD_PRECOMPILED_HEADER( pianobooster ${CMAKE_CURRENT_SOURCE_DIR}/precompile/precompile.h )
