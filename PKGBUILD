@@ -3,8 +3,8 @@
 pkgbase='pygobject-tutorial'
 pkgname=('pygobject-tutorial' 'pygobject-tutorial-devhelp')
 pkgver=3.4
-pkgrel=1
-pkgdesc="The PyGObject Tutorial."
+pkgrel=2
+pkgdesc="The PyGObject Tutorial in html format."
 arch=('any')
 url="https://github.com/sebp/PyGObject-Tutorial"
 license=('FDL1.3')
@@ -25,6 +25,8 @@ package_pygobject-tutorial() {
 }
 
 package_pygobject-tutorial-devhelp() {
+    pkgdesc="The PyGObject Tutorial for GNOME devhelp."
+
     install -d ${pkgdir}/usr/share/devhelp/books/PythonGTK3Tutorial
     cd "${srcdir}/${pkgbase}"
     cp -a build/devhelp/* ${pkgdir}/usr/share/devhelp/books/PythonGTK3Tutorial/
