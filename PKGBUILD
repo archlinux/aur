@@ -137,6 +137,8 @@ package_reduce-addons-svn() {
     'python2-pyside: for QT-based GUI'
   )
 
+  install -Dm644 qreduce.desktop ${pkgdir}/usr/share/applications/qreduce.desktop
+
   cd "${srcdir}/${_pkgbase}-build"
 
   install -d ${pkgdir}/usr/lib/reduce
