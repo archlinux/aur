@@ -1,0 +1,13 @@
+pkgbase = freeswitch-sounds-en-us-8000
+	pkgdesc = 8KHz US English prompts for FreeSWITCH
+	pkgver = 1.0.51
+	pkgrel = 1
+	url = https://freeswitch.org/
+	arch = any
+	license = custom:none
+	options = !strip
+	source = https://files.freeswitch.org/releases/sounds/freeswitch-sounds-en-us-callie-8000-1.0.51.tar.gz
+	sha256sums = e48a63bd69e6253d294ce43a941d603b02467feb5d92ee57a536ccc5f849a4a8
+
+pkgname = freeswitch-sounds-en-us-8000
+
