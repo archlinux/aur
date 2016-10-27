@@ -1,7 +1,7 @@
 # Maintainer: Quey-Liang Kao <s101062801@m101.nthu.edu.tw>
 
 pkgname=kpatch-git
-pkgver=r1076.03ef5a2
+pkgver=r1095.4e1a596
 pkgrel=1
 pkgdesc="dynamic kernel patching tool"
 
@@ -11,13 +11,11 @@ license=('GPL')
 
 depends=('elfutils')
 makedepends=('gcc' 'git')
-source=("git+https://github.com/dynup/kpatch.git"
-	"no-libexec.patch")
-md5sums=('SKIP'
-'c6182ee2867efdea9ff144a9f8ebdb06')
+source=("git+https://github.com/dynup/kpatch.git")
+md5sums=('SKIP')
 
 prepare() {
-	patch -p0 < $srcdir/no-libexec.patch
+	sed -i 's/libexec/lib/g' "$srcdir/kpatch/kpatch-build/kpatch-build"
 }
 
 build() {
