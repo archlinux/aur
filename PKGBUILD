@@ -7,7 +7,7 @@
 # Contributor: al.janitor <al.janitor [at] sdf [dot] org>
 
 pkgname=metasploit-git
-pkgver=4.12.20.39219.667c356
+pkgver=4.12.38.39940.9672759
 pkgrel=1
 epoch=1
 pkgdesc='Advanced open-source platform for developing, testing, and using exploit code'
@@ -50,9 +50,17 @@ package() {
 
   for f in "${pkgdir}"/opt/${pkgname}/msf*; do
     local _msffile="${pkgdir}/usr/bin/`basename "${f}"`"
-    echo -e "#!/bin/sh\nBUNDLE_GEMFILE=/opt/${pkgname}/Gemfile bundle exec ruby /opt/${pkgname}/`basename "${f}"` \"\$@\"" > ${_msffile}
-    chmod 755 ${_msffile}
+    echo -e "#!/bin/sh\nBUNDLE_GEMFILE=/opt/${pkgname}/Gemfile bundle exec ruby /opt/${pkgname}/`basename "${f}"` \"\$@\"" > "${_msffile}"
+    chmod 755 "${_msffile}"
   done
+
+  (cd "${pkgdir}/opt/${pkgname}"
+    for f in tools/*/*.rb; do
+      install -Dm 755 "${f}" ".${f}"
+      echo -e "#!/bin/sh\nBUNDLE_GEMFILE=/opt/${pkgname}/Gemfile bundle exec ruby /opt/${pkgname}/."${f}" \"\$@\"" > "${f}"
+      chmod 755 "${f}"
+    done
+  )
 
   install -Dm 644 external/zsh/_* -t "${pkgdir}/usr/share/zsh/site-functions"
   install -Dm 644 LICENSE COPYING -t "${pkgdir}/usr/share/licenses/${pkgname}"
