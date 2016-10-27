@@ -1,7 +1,7 @@
 # Maintainer: Philipp Wolfer <ph.wolfer@gmail.com>
 pkgname=roger-router
 pkgver=1.9.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Roger Router"
 arch=('i686' 'x86_64')
 url="https://www.tabos.org/"
@@ -41,7 +41,7 @@ build() {
 		--with-portaudio=check
 
 	# This file is missing from the release tarball, see https://www.tabos.org/topic/compile-error-2/
-	cp ../../address-book.svg roger/images/
+	cp "${srcdir}/address-book.svg" roger/images/
 	make
 }
 
