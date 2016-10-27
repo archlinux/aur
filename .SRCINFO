@@ -10,7 +10,6 @@ pkgbase = extempore-git
 	makedepends = cmake
 	makedepends = gcc
 	makedepends = perl
-	depends = extempore-llvm
 	depends = mesa
 	depends = pcre
 	depends = alsa-lib

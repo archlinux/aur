@@ -8,7 +8,7 @@ pkgdesc="A cyber-physical programming environment for live coding"
 arch=('i686' 'x86_64')
 url="http://extempore.moso.com.au"
 license=('BSD')
-depends=('extempore-llvm' 'mesa' 'pcre' 'alsa-lib')
+depends=('mesa' 'pcre' 'alsa-lib')
 makedepends=('git' 'cmake' 'gcc' 'perl')
 optdepends=('jack')
 provides=('extempore')
@@ -17,29 +17,31 @@ source=("git+https://github.com/digego/extempore.git")
 md5sums=('SKIP')
 
 pkgver() {
-  git --git-dir="$srcdir/extempore/.git" describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  git --git-dir="${srcdir}/extempore/.git" describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-  mkdir -p "$srcdir/extempore/build"
-  cd "$srcdir/extempore/build"
+  mkdir -p "${srcdir}/build"
+  cd "${srcdir}/build"
 
+  # TODO: do not build aot on the install target
   # TODO: fix extended_deps dependencies, they still depend on LLVM.
   # TODO: if BUILD_DEPS=OFF, aot_extended is still built.
+  # TODO: make install does not install anything besides the main binary.
 
-  export EXT_LLVM_DIR="/usr/share/extempore/llvm"
   cmake -DCMAKE_INSTALL_PREFIX=/usr \
         -DJACK=ON \
         -DBUILD_DEPS=ON \
-        ..
+        ../extempore
 
   # build extempore
   make
+  make aot_extended
 }
 
 package() {
-  cd "$srcdir/extempore/build"
-  make DESTDIR="$pkgdir/" install
+  cd "${srcdir}/build"
+  make DESTDIR="${pkgdir}/" install
 }
 
 
