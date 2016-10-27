@@ -1,7 +1,7 @@
 # Maintainer: Manuel Schneider  <manuelschneid3r at googles mail>
 pkgname=albert
 pkgver=0.8.11
-pkgrel=1
+pkgrel=2
 pkgdesc="A DE agnostic omnilauncher."
 arch=('i686' 'x86_64')
 url="https://github.com/ManuelSchneid3r/albert"
@@ -15,18 +15,19 @@ noextract=()
 md5sums=('9c724bb01c7d32e318d152affc675e77')
 
 build() {
-  [[ -d "${pkgname}-${pkgver}/build" ]]\
-    || mkdir -p "${pkgname}-${pkgver}/build"
+  echo -e "\e[41;20;1mIf you plan to report bugs please modify the PKGBUILD to build the debug version.\e[0m"
+
+  [[ -d "${pkgname}-${pkgver}/build" ]] || mkdir -p "${pkgname}-${pkgver}/build"
   cd "${pkgname}-${pkgver}/build"
-  cmake ".." \
-    -DCMAKE_INSTALL_PREFIX=/usr \
-    -DCMAKE_BUILD_TYPE=Debug
+
+  # If you want a debug build, change CMAKE_BUILD_TYPE to 'Debug'
+  cmake ".." -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release
   make
 }
 
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}/build"
-  make DESTDIR="$pkgdir/" install
+  make DESTDIR="$pkgdir/" install | grep -v '^-- '
 }
 
 # vim:set ts=2 sw=2 et:
