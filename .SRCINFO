@@ -1,0 +1,15 @@
+pkgbase = php53-apcu
+	pkgdesc = A userland caching module for PHP
+	pkgver = 4.0.11
+	pkgrel = 1
+	url = http://pecl.php.net/package/APCu
+	arch = i686
+	arch = x86_64
+	license = PHP
+	depends = php53
+	backup = etc/php/conf.d/apcu.ini
+	source = http://pecl.php.net/get/apcu-4.0.11.tgz
+	md5sums = 13c0c0dd676e5a7905d54fa985d0ee62
+
+pkgname = php53-apcu
+
