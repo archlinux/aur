@@ -1,20 +1,23 @@
-pkgname=laszip
-pkgver=2.2.0
-pkgrel=4
-pkgdesc="Quickly turns bulky LAS files into compact LAZ files without information loss."
+# Maintainer: Maciej Sieczka <msieczka at sieczka dot org>
+# Contributor: Michael <mbostwick89@gmail.com>
+
+pkgname='laszip'
+pkgver='2.2.0'
+pkgrel='5'
+pkgdesc='ASPRS LAS lossless compression library.'
 arch=('i686' 'x86_64')
-url="http://www.laszip.org/"
+url='http://www.laszip.org'
 license=('LGPL')
-source=(https://github.com/LASzip/LASzip/releases/download/v$pkgver/$pkgname-src-$pkgver.tar.gz)
-md5sums=('1693724d8284dc04f04eb0b86f7de2cc')
+source=("http://download.osgeo.org/laszip/${pkgname}-src-${pkgver}.tar.bz2")
+md5sums=('93194700623f6aca470454299361e89d')
 
 build() {
-  cd "$srcdir/$pkgname-src-$pkgver"
-  ./configure --prefix=/usr --includedir=/usr/include/${pkgname}
+  cd "${srcdir}/${pkgname}-src-${pkgver}"
+  ./configure --prefix='/usr' --includedir="/usr/include/${pkgname}"
   make
 }
 
 package() {
-  cd "$srcdir/$pkgname-src-$pkgver"
-  make DESTDIR="$pkgdir/" install
+  cd "${srcdir}/${pkgname}-src-${pkgver}"
+  make DESTDIR="$pkgdir" install
 }
