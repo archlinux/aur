@@ -1,7 +1,7 @@
 pkgbase = nginx-upload-module-git
 	pkgdesc = Module for nginx web server for handling file uploads using multipart/form-data encoding (RFC 1867)
 	pkgver = 2.2.0.r25.gaba1e3f
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jamesan/nginx-upload-module
 	arch = i686
 	arch = x86_64
