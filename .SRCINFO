@@ -1,24 +1,24 @@
 pkgbase = mock
 	pkgdesc = A simple chroot build environment manager for building RPMs
-	pkgver = 1.2.21
-	pkgrel = 2
+	pkgver = 1.3.1.1
+	pkgrel = 1
 	url = https://github.com/rpm-software-management/mock
 	install = mock.install
 	arch = any
 	license = GPL2
-	makedepends = bash-completion
 	depends = distribution-gpg-keys
 	depends = python
 	optdepends = createrepo_c: for mockchain command
 	optdepends = dnf-plugins-core: to create RPMs for Fedora >= 24 and for Mageia
 	optdepends = lvm2: for lvm_root plugin
 	optdepends = pigz: for parallel compression of chroot cache
+	optdepends = python-requests: for mockchain command
 	optdepends = yum-utils: to create RPMs for Fedora <= 23 (including EL5, EL6 and EL7)
 	backup = etc/mock/site-defaults.cfg
-	source = https://github.com/rpm-software-management/mock/archive/mock-1.2.21.tar.gz
+	source = https://github.com/rpm-software-management/mock/archive/mock-1.3.1-1.tar.gz
 	source = mock.sysusers
 	source = mock.tmpfiles
-	md5sums = fb6732796192c285ebd2f24f4efb13eb
+	md5sums = 113a3f286dfbf2f36fe27ce1d8649109
 	md5sums = d277502b9a95484594f86231d073dae0
 	md5sums = 1052fa4db74b59b0c195f4756bd865e8
 

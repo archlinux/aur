@@ -6,51 +6,90 @@
 _with_usermode=0
 
 pkgname=mock
-pkgver=1.2.21
-pkgrel=2
+_pkgver=1.3.1
+_rpmrel=1
+pkgver=$_pkgver.$_rpmrel
+pkgrel=1
 pkgdesc="A simple chroot build environment manager for building RPMs"
 url="https://github.com/rpm-software-management/$pkgname"
 arch=('any')
 license=('GPL2')
 depends=('distribution-gpg-keys' 'python')
 ((_with_usermode)) && depends+=('usermode')
-makedepends=('bash-completion')
 optdepends=('createrepo_c: for mockchain command'
             'dnf-plugins-core: to create RPMs for Fedora >= 24 and for Mageia'
             'lvm2: for lvm_root plugin'
             'pigz: for parallel compression of chroot cache'
+            'python-requests: for mockchain command'
             'yum-utils: to create RPMs for Fedora <= 23 (including EL5, EL6 and EL7)')
 install="$pkgname.install"
 backup=("etc/$pkgname/site-defaults.cfg")
-source=("$url/archive/$pkgname-$pkgver.tar.gz"
+source=("$url/archive/$pkgname-$_pkgver-$_rpmrel.tar.gz"
         "$pkgname.sysusers"
         "$pkgname.tmpfiles")
-md5sums=('fb6732796192c285ebd2f24f4efb13eb'
+md5sums=('113a3f286dfbf2f36fe27ce1d8649109'
          'd277502b9a95484594f86231d073dae0'
          '1052fa4db74b59b0c195f4756bd865e8')
 
+_prefix=/usr
+_bindir=$_prefix/bin
+_datadir=$_prefix/share
+_mandir=$_datadir/man
+_sysconfdir=/etc
+
 prepare() {
-	mv "$pkgname-$pkgname-$pkgver" "$pkgname-$pkgver"
+	mv "$pkgname-$pkgname-$_pkgver-$_rpmrel" "$pkgname-$pkgver"
 }
 
 build() {
 	cd "$pkgname-$pkgver"
-	./autogen.sh
-	./configure --prefix=/usr      \
-	            --sysconfdir=/etc  \
-	            --libdir=/usr/lib  \
-	            --sbindir=/usr/bin
 
-	make
+	python_sitelib=$(python -c "from distutils.sysconfig import get_python_lib; import sys; sys.stdout.write(get_python_lib())")
+	sed -r -i py/${pkgname}{,chain}.py \
+	    -e 's|^__VERSION__\s*=.*|__VERSION__="'$pkgver'"|' \
+	    -e 's|^SYSCONFDIR\s*=.*|SYSCONFDIR="'$_sysconfdir'"|' \
+	    -e 's|^PYTHONDIR\s*=.*|PYTHONDIR="'$python_sitelib'"|' \
+	    -e 's|^PKGPYTHONDIR\s*=.*|PKGPYTHONDIR="'$python_sitelib'/mockbuild"|'
+
+	sed -e "s|@VERSION@|$pkgver|" -i docs/${pkgname}{,chain}.1
+
+	python    -m compileall py/ -q
+	python -O -m compileall py/ -q
 }
 
 package() {
 	cd "$pkgname-$pkgver"
-	make DESTDIR="$pkgdir/" install
+
+	install -d "$pkgdir/$_bindir/"
+	install py/mock.py      "$pkgdir/$_bindir/"mock
+	install py/mockchain.py "$pkgdir/$_bindir/"mockchain
+
+	install -d "$pkgdir/$_sysconfdir/"pam.d
+	cp -a etc/pam/* "$pkgdir/$_sysconfdir/"pam.d/
+
+	install -d "$pkgdir/$_sysconfdir/"mock
+	cp -a etc/mock/* "$pkgdir/$_sysconfdir/"mock/
+
+	install -d "$pkgdir/$_datadir/"bash-completion/completions
+	cp -a etc/bash_completion.d/* "$pkgdir/$_datadir/"bash-completion/completions/
+	ln -s mock "$pkgdir/$_datadir/"bash-completion/completions/mockchain
+
+	install -d "$pkgdir/$_sysconfdir/"pki/mock
+	cp -a etc/pki/* "$pkgdir/$_sysconfdir/"pki/mock/
+
+	python_sitelib=$(python -c "from distutils.sysconfig import get_python_lib; import sys; sys.stdout.write(get_python_lib())")
+	install -d "$pkgdir/$python_sitelib/"
+	cp -a py/mockbuild "$pkgdir/$python_sitelib/"
+
+	install -d "$pkgdir/$_mandir/"man1
+	cp -a docs/${pkgname}{,chain}.1 "$pkgdir/$_mandir/"man1/
 
 	if ((_with_usermode)); then
+		install -d "$pkgdir/$_sysconfdir/"security/console.apps/
+		cp -a etc/consolehelper/$pkgname "$pkgdir/$_sysconfdir/"security/console.apps/$pkgname
+
 		mv "$pkgdir/usr/bin/$pkgname"{,.py}
-		sed -e "s|/usr/sbin/$pkgname|/usr/bin/$pkgname.py|" \
+		sed -e "s|/usr/libexec/$pkgname/$pkgname|/usr/bin/$pkgname.py|" \
 		    -i "$pkgdir/etc/security/console.apps/$pkgname"
 		ln -s /usr/bin/consolehelper "$pkgdir/usr/bin/$pkgname"
 	fi
