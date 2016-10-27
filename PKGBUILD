@@ -1,7 +1,7 @@
 # Maintainer: Jameson Pugh <imntreal@gmail.com>
 
 pkgname=ssh-audit
-pkgver=1.6.0
+pkgver=1.7.0
 pkgrel=1
 pkgdesc="A tool for ssh server auditing."
 arch=(any)
@@ -9,7 +9,7 @@ url="https://github.com/arthepsy/ssh-audit"
 license=('MIT')
 depends=('python')
 source=("https://github.com/arthepsy/ssh-audit/archive/v${pkgver}.tar.gz")
-sha256sums=('efebff6d39f270cde5e235f1e3cbaedd8a56e693c810e91dd4a48aaceb0ca2dd')
+sha256sums=('cba29cc19ec2932e4f43c720b2c49a7d179219e23482476aeb472f7463713b68')
 
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
