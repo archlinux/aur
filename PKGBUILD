@@ -1,7 +1,7 @@
 # Moritz Bunkus <moritz@bunkus.org>
 
 pkgname='perl-net-sip'
-pkgver='0.687'
+pkgver='0.688'
 pkgrel='1'
 pkgdesc="SIP (Voice Over IP, RFC3261) packet handling"
 arch=('any')
@@ -9,8 +9,8 @@ license=('PerlArtistic')
 options=('!emptydirs')
 depends=('perl-net-dns')
 url='http://search.cpan.org/dist/Net-SIP'
-source=("http://search.cpan.org/CPAN/authors/id/S/SU/SULLR/Net-SIP-${pkgver}.tar.gz")
-sha512sums=('3356e4662eb931f5cbbf611cd9ad88e17bfd4b6a05b882062d7410829e48c4f0de323451da2a9e422f37ef207716ccc6dd5d3e465289b39bfe5cd8f0957e3f4f')
+source=("https://cpan.metacpan.org/authors/id/S/SU/SULLR/Net-SIP-${pkgver}.tar.gz")
+sha512sums=('0944d32fe715a513130370f0814fd8b758ffb693123372077b5db39cfb20ef1d02b1f389f91ea0b7e61ee6a63c9b6d3f2f3556f6c181c01a4774eba08e44921c')
 
 prepare_environment() {
   export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
