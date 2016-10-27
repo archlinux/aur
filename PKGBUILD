@@ -1,15 +1,15 @@
 # Maintainer: Ricardo (XenGi) Band <email@ricardo.band>
 
 pkgname=c-lolcat
-pkgver=r25.88c27c9
-pkgrel=1
+pkgver=r27.33ee440
+pkgrel=2
 pkgdesc="High-performance implementation of lolcat"
 arch=('i686' 'x86_64')
 url="https://github.com/jaseg/lolcat"
 license=('WTFPL')
 depends=()
 makedepends=()
-conflicts=('lolcat' 'python-lolcat')
+conflicts=('lolcat')
 source=("$pkgname"::'git+https://github.com/jaseg/lolcat.git')
 sha256sums=(SKIP)
 
@@ -25,6 +25,6 @@ build() {
 
 package() {
   cd "$srcdir/$pkgname"
-  mkdir -p "${pkgdir}/usr/local/bin"
-  make install # DESTDIR="$pkgdir/" install
+  mkdir -p "${pkgdir}/usr/bin"
+  make DESTDIR="$pkgdir/usr/bin" install
 }
