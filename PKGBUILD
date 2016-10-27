@@ -1,7 +1,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 pkgname=vm-bzr
-pkgver=8.2.0b1.r1506
-pkgrel=2
+pkgver=8.2.0b1.r1509
+pkgrel=1
 pkgdesc="View Mail for Emacs"
 arch=('i686' 'x86_64')
 url="https://launchpad.net/vm"
