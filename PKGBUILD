@@ -12,7 +12,7 @@ source=("https://raw.githubusercontent.com/slgobinath/uget-chrome-wrapper/master
         "https://raw.githubusercontent.com/slgobinath/uget-chrome-wrapper/master/uget-chrome-wrapper/conf/com.javahelps.ugetchromewrapper.json")
 md5sums=('c3b9166f09d25b51576cb771552b3f2a' '6fef0c020c6aa8570862bd48546844d8')
 browser=opt/chrome
-#browser=chromium #if you use chromium
+#browser=chromium #if you use chromium or vivaldi
 install=uget-chrome-wrapper.install
 build() {
 	cd "$srcdir"/"$_pkgname"
