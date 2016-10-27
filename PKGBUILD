@@ -10,7 +10,7 @@
 
 pkgname=strongswan
 pkgver=5.5.1
-pkgrel=1
+pkgrel=2
 pkgdesc="open source IPsec implementation"
 url='http://www.strongswan.org'
 license=("GPL")
@@ -26,14 +26,14 @@ backup=(
     etc/swanctl/swanctl.conf
     etc/strongswan.conf
     etc/strongswan.d/{charon-logging.conf,charon.conf,pki.conf,pool.conf,scepclient.conf,starter.conf,swanctl.conf}
-    etc/strongswan.d/charon/{aesni.conf,attr-sql.conf,attr.conf,cmac.conf,connmark.conf,\
+    etc/strongswan.d/charon/{aesni.conf,attr-sql.conf,attr.conf,bliss.conf,chapoly.conf,cmac.conf,connmark.conf,\
 constraints.conf,curl.conf,des.conf,dhcp.conf,dnskey.conf,eap-aka-3gpp2.conf,eap-aka.conf,\
 eap-gtc.conf,eap-identity.conf,eap-md5.conf,eap-mschapv2.conf,eap-radius.conf,eap-sim-file.conf,\
 eap-sim.conf,eap-simaka-pseudonym.conf,eap-simaka-reauth.conf,eap-tls.conf,ext-auth.conf,farp.conf,\
-fips-prf.conf,forecast.conf,gmp.conf,ha.conf,hmac.conf,kernel-netlink.conf,md5.conf,nonce.conf,openssl.conf,\
+fips-prf.conf,forecast.conf,gmp.conf,ha.conf,hmac.conf,kernel-netlink.conf,md5.conf,mgf1.conf,nonce.conf,newhope.conf,ntru.conf,openssl.conf,\
 pem.conf,pgp.conf,pkcs1.conf,pkcs12.conf,pkcs7.conf,pkcs8.conf,pubkey.conf,random.conf,rc2.conf,resolve.conf,\
-revocation.conf,sha1.conf,sha2.conf,socket-default.conf,sql.conf,sqlite.conf,sshkey.conf,stroke.conf,updown.conf,\
-vici.conf,x509.conf,xauth-eap.conf,xauth-generic.conf,xcbc.conf,chapoly.conf,unity.conf}
+revocation.conf,sha1.conf,sha2.conf,sha3.conf,socket-default.conf,sql.conf,sqlite.conf,sshkey.conf,stroke.conf,updown.conf,\
+vici.conf,x509.conf,xauth-eap.conf,xauth-generic.conf,xcbc.conf,unity.conf}
 )
 
 source=("https://download.strongswan.org/strongswan-${pkgver}.tar.bz2"
@@ -75,7 +75,8 @@ build() {
         --disable-mysql --disable-ldap --enable-cmd --enable-forecast --enable-connmark \
         --enable-aesni --enable-eap-ttls --enable-radattr --enable-xauth-pam --enable-xauth-noauth \
         --enable-eap-dynamic --enable-eap-peap --enable-eap-tls --enable-chapoly --enable-unity \
-        --with-capabilities=libcap
+        --with-capabilities=libcap --enable-newhope --enable-ntru --enable-mgf1 --enable-sha3 \
+        --enable-bliss
 # if you want networkmanager support, add --enable-nm
 #       --enable-ruby-gems --enable-python-eggs
   make
