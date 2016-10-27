@@ -1,6 +1,6 @@
 # Maintainer: karronoli <karo+arch at karonori.com>
 pkgname=redpen
-pkgver=1.7.4
+pkgver=1.7.6
 pkgrel=1
 pkgdesc="A document checker. RedPen is a proofreading tool to help writers or programmers."
 url="http://redpen.cc/"
@@ -8,7 +8,7 @@ arch=('any')
 license=('Apache')
 depends=('java-runtime>=8')
 source=(https://github.com/redpen-cc/redpen/releases/download/redpen-${pkgver}/redpen-${pkgver}.tar.gz redpen.service)
-sha256sums=('d7b7ed2ebebecf1219187b562a648cba8cd23bb6a4eaef7f1add25ddeb8b985d'
+sha256sums=('7543a50e9de7465b2f9e81ec5b5f4dd707310c3534b4100e62fdede42fa9d045'
             '0437aa2b6486db4a30a1f3806238548db14e98e69fdc5d2e769a968ba001ce7e')
 
 package() {
