@@ -1,0 +1,15 @@
+pkgbase = avra
+	pkgdesc = Atmel AVR Assembler for all platforms. Compatible with Atmel's own assembler.
+	pkgver = 1.3.0
+	pkgrel = 1
+	url = https://sourceforge.net/projects/avra/
+	arch = x86_64
+	license = GPL
+	provides = avra
+	source = https://downloads.sourceforge.net/project/avra/1.3.0/avra-1.3.0.tar.bz2
+	source = avra-1.3.0.patch
+	md5sums = d5d48369ceaa004c4ca09f61f69b2c84
+	md5sums = bbdeb05ec02f6d6d625eba9fe73a687b
+
+pkgname = avra
+
