@@ -1,8 +1,8 @@
 # Maintainer: Piotr Rogoża <rogoza dot piotr at gmail dot com>
 
 pkgname=oktopi-git
-pkgver=9895a4b5
-pkgrel=2
+pkgver=r1.9895a4b
+pkgrel=1
 pkgdesc='A fork of Pacman’s GUI Octopi for Chakra.'
 arch=('i686' 'x86_64')
 url='http://gitorious.org/chakra/oktopi'
@@ -23,7 +23,10 @@ pkgver(){
   fi
 
   cd "$srcdir"/$_gitname
-  git describe --always | sed 's|-|.|g'
+  set -o pipefail
+  git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+
 }
 build(){
   cd "$srcdir"
