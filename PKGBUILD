@@ -31,7 +31,7 @@ gimp-script-white-balance-puzzle
 gimp-script-vintage-look
 gimp-script-split-tone
 )
-pkgver=r7.b3f4e3e7
+pkgver=r7.b3f4e3e
 pkgrel=1
 pkgdesc='Varoius Gimp scripts made by elsamuko'
 arch=(any)
