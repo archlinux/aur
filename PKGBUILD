@@ -5,7 +5,7 @@
 pkgbase=reduce-svn
 _pkgbase=reduce
 pkgname=(reduce-csl-svn reduce-psl-svn reduce-common-svn reduce-addons-svn)
-pkgver=20160806.3771
+pkgver=20161027.3822
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://reduce-algebra.sourceforge.net/"
@@ -38,6 +38,8 @@ prepare() {
 
   cd "${srcdir}/${_pkgbase}-build"
   patch -Np0 -i "${srcdir}/qreduce-file-location.patch"
+
+  sed -i 's/python-config/python2-config/g' generic/libreduce/src/Makefile.in
 }
 
 build() {
