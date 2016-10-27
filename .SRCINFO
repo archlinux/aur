@@ -1,0 +1,18 @@
+pkgbase = nginx-upload-progress-module-git
+	pkgdesc = Module for nginx web server for handling file uploads using multipart/form-data encoding (RFC 1867)
+	pkgver = v0.9.2.r2.gafb2d31
+	pkgrel = 1
+	url = http://wiki.codemongers.com/NginxHttpUploadProgressModule
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = git
+	provides = nginx-upload-progress-module=v0.9.2.r2.gafb2d31
+	conflicts = nginx-upload-progress-module
+	source = nginx-upload-progress-module::git+https://github.com/masterzen/nginx-upload-progress-module.git
+	source = http://nginx.org/download/nginx-1.10.2.tar.gz
+	md5sums = SKIP
+	md5sums = e8f5f4beed041e63eb97f9f4f55f3085
+
+pkgname = nginx-upload-progress-module-git
+
