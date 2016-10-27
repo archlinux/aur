@@ -1,9 +1,9 @@
-# Maintainer: dracorp <piotr.r.public@gmail.com>
+# Maintainer: dracorp aka Piotr Rogoza <piotr.r.public at gmail.com>
 # Contributor: 3ED <krzysztof1987@gmail.com>
 
 pkgname=napi-bash-git
 _pkgname=napi-bash
-pkgver=v1.1.rc1.3.g60fc8ebc
+pkgver=v1.1.0.r0.g89897ca
 pkgrel=1
 pkgdesc="Lightweight, easy and fast polish subtitle downloader from the napiprojekt.pl"
 arch=('any')
@@ -28,7 +28,9 @@ sha256sums=('SKIP')
 pkgver(){
   if [ -d "$srcdir"/$_gitname ]; then
     cd "$srcdir"/$_gitname
-    git describe --always | sed 's|-|.|g'
+    ( set -o pipefail
+    git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)" )
   fi
 }
 package() {
