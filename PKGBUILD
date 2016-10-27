@@ -1,6 +1,6 @@
 pkgname=libsolv
 pkgver=0.6.23
-pkgrel=1
+pkgrel=2
 pkgdesc="Library for solving packages and reading repositories"
 arch=('i686' 'x86_64')
 url="https://github.com/openSUSE/$pkgname"
@@ -23,26 +23,29 @@ build() {
 	cd "$pkgname-$pkgver"/build
 	cmake -DCMAKE_BUILD_TYPE=Release     \
 	      -DCMAKE_INSTALL_PREFIX=/usr    \
+	      -DLIB=/lib                     \
 	      -DUSE_VENDORDIRS=ON            \
-	      -DARCHLINUX=1                  \
+	      -DFEDORA=1                     \
 	      -DENABLE_APPDATA=ON            \
 	      -DENABLE_ARCHREPO=ON           \
-	      -DENABLE_BZIP2_COMPRESSION=OFF \
-	      -DENABLE_COMPS=OFF             \
+	      -DENABLE_BZIP2_COMPRESSION=ON  \
+	      -DENABLE_COMPLEX_DEPS=1        \
+	      -DENABLE_COMPS=ON              \
 	      -DENABLE_CUDFREPO=OFF          \
 	      -DENABLE_DEBIAN=ON             \
 	      -DENABLE_HAIKU=OFF             \
-	      -DENABLE_HELIXREPO=OFF         \
+	      -DENABLE_HELIXREPO=ON          \
 	      -DENABLE_LZMA_COMPRESSION=ON   \
-	      -DENABLE_MDKREPO=OFF           \
+	      -DENABLE_MDKREPO=ON            \
 	      -DENABLE_PERL=ON               \
 	      -DENABLE_PUBKEY=OFF            \
 	      -DENABLE_PYTHON=ON             \
 	      -DENABLE_RPMDB=ON              \
-	      -DENABLE_RPMDB_BYRPMHEADER=OFF \
+	      -DENABLE_RPMDB_BYRPMHEADER=ON  \
 	      -DENABLE_RPMMD=ON              \
 	      -DENABLE_RUBY=ON               \
-	      -DENABLE_SUSEREPO=OFF          \
+	      -DENABLE_SUSEREPO=ON           \
+	      -DMULTI_SEMANTICS=ON           \
 	      ..
 	make
 }
@@ -55,10 +58,6 @@ check() {
 package() {
 	cd "$pkgname-$pkgver"/build
 	make DESTDIR="$pkgdir/" install
-	if [[ "$CARCH" == "x86_64" ]]; then
-		mv "$pkgdir/"usr/lib64/* "$pkgdir/"usr/lib
-		rmdir "$pkgdir/"usr/lib64
-	fi
 
 	install -D -m644 ../LICENSE.BSD "$pkgdir/usr/share/licenses/$pkgname/LICENSE.BSD"
 	install -D -m644 ../README      "$pkgdir/usr/share/doc/$pkgname/README"
