@@ -1,17 +1,55 @@
-From 95b15cafc63e50a964c25b2b8e509e4ef847ef22 Mon Sep 17 00:00:00 2001
+From fd8f7aa5b1b29912bf794ae0df71a9b2207027f1 Mon Sep 17 00:00:00 2001
 From: Bertram Felgenhauer <int-e@gmx.de>
 Date: Thu, 27 Oct 2016 10:45:43 +0200
-Subject: [PATCH 2/2] rename array module for ocaml 4.03
+Subject: [PATCH] rename array module for ocaml 4.03
 
 ---
+ compiler/.depend                          | 14 +++++++-------
  compiler/Makefile                         |  2 +-
  compiler/{array.ml => array_camlidl.ml}   |  0
  compiler/{array.mli => array_camlidl.mli} |  0
  compiler/cvtval.ml                        | 20 ++++++++++----------
- 4 files changed, 11 insertions(+), 11 deletions(-)
+ 5 files changed, 18 insertions(+), 18 deletions(-)
  rename compiler/{array.ml => array_camlidl.ml} (100%)
  rename compiler/{array.mli => array_camlidl.mli} (100%)
 
+diff --git a/compiler/.depend b/compiler/.depend
+index d014910..e58c23c 100644
+--- a/compiler/.depend
++++ b/compiler/.depend
+@@ -1,4 +1,4 @@
+-array.cmi: idltypes.cmi prefix.cmi 
++array_camlidl.cmi: idltypes.cmi prefix.cmi 
+ constdecl.cmi: idltypes.cmi 
+ cvttyp.cmi: idltypes.cmi 
+ cvtval.cmi: idltypes.cmi prefix.cmi 
+@@ -22,10 +22,10 @@ typedef.cmi: idltypes.cmi
+ uniondecl.cmi: idltypes.cmi 
+ union.cmi: idltypes.cmi prefix.cmi 
+ variables.cmi: idltypes.cmi 
+-array.cmo: cvttyp.cmi idltypes.cmi lexpr.cmi utils.cmi variables.cmi \
+-    array.cmi 
+-array.cmx: cvttyp.cmx idltypes.cmi lexpr.cmx utils.cmx variables.cmx \
+-    array.cmi 
++array_camlidl.cmo: cvttyp.cmi idltypes.cmi lexpr.cmi utils.cmi variables.cmi \
++    array_camlidl.cmi 
++array_camlidl.cmx: cvttyp.cmx idltypes.cmi lexpr.cmx utils.cmx variables.cmx \
++    array_camlidl.cmi 
+ clflags.cmo: config.cmi 
+ clflags.cmx: config.cmx 
+ config.cmo: config.cmi 
+@@ -34,9 +34,9 @@ constdecl.cmo: cvttyp.cmi idltypes.cmi lexpr.cmi utils.cmi constdecl.cmi
+ constdecl.cmx: cvttyp.cmx idltypes.cmi lexpr.cmx utils.cmx constdecl.cmi 
+ cvttyp.cmo: config.cmi idltypes.cmi lexpr.cmi utils.cmi cvttyp.cmi 
+ cvttyp.cmx: config.cmx idltypes.cmi lexpr.cmx utils.cmx cvttyp.cmi 
+-cvtval.cmo: array.cmi cvttyp.cmi enum.cmi idltypes.cmi lexpr.cmi struct.cmi \
++cvtval.cmo: array_camlidl.cmi cvttyp.cmi enum.cmi idltypes.cmi lexpr.cmi struct.cmi \
+     union.cmi utils.cmi variables.cmi cvtval.cmi 
+-cvtval.cmx: array.cmx cvttyp.cmx enum.cmx idltypes.cmi lexpr.cmx struct.cmx \
++cvtval.cmx: array_camlidl.cmx cvttyp.cmx enum.cmx idltypes.cmi lexpr.cmx struct.cmx \
+     union.cmx utils.cmx variables.cmx cvtval.cmi 
+ enumdecl.cmo: cvttyp.cmi cvtval.cmi enum.cmi idltypes.cmi utils.cmi \
+     variables.cmi enumdecl.cmi 
 diff --git a/compiler/Makefile b/compiler/Makefile
 index 688d14a..5740330 100644
 --- a/compiler/Makefile
