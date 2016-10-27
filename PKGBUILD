@@ -6,7 +6,7 @@
 _with_usermode=0
 
 pkgname=mock
-_pkgver=1.3.1
+_pkgver=1.3.2
 _rpmrel=1
 pkgver=$_pkgver.$_rpmrel
 pkgrel=1
@@ -27,7 +27,7 @@ backup=("etc/$pkgname/site-defaults.cfg")
 source=("$url/archive/$pkgname-$_pkgver-$_rpmrel.tar.gz"
         "$pkgname.sysusers"
         "$pkgname.tmpfiles")
-md5sums=('113a3f286dfbf2f36fe27ce1d8649109'
+md5sums=('8aa53410d4857278d46f4574a00a5e95'
          'd277502b9a95484594f86231d073dae0'
          '1052fa4db74b59b0c195f4756bd865e8')
 
