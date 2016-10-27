@@ -1,7 +1,7 @@
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=bitcoin-core-git
-pkgver=20160822
+pkgver=20161027
 pkgrel=1
 pkgdesc="Bitcoin Core headless P2P node"
 arch=('i686' 'x86_64')
@@ -31,8 +31,8 @@ sha256sums=('SKIP'
             '10ad0b8c356559886634eaf658992004045853ec26cddee143d16125cb75e8f1')
 backup=('etc/bitcoin/bitcoin.conf'
         'etc/logrotate.d/bitcoin')
-provides=('bitcoin-cli' 'bitcoin-daemon' 'bitcoin-tx')
-conflicts=('bitcoin-cli' 'bitcoin-daemon' 'bitcoin-qt' 'bitcoin-tx')
+provides=('bitcoin-cli' 'bitcoin-core' 'bitcoin-daemon' 'bitcoin-tx')
+conflicts=('bitcoin-cli' 'bitcoin-core' 'bitcoin-daemon' 'bitcoin-qt' 'bitcoin-tx')
 install=bitcoin.install
 
 pkgver() {
@@ -66,12 +66,8 @@ package() {
   install -Dm 644 COPYING -t "$pkgdir/usr/share/licenses/${pkgname%%-*}"
 
   msg2 'Installing man pages...'
-  install -Dm 644 contrib/debian/manpages/bitcoind.1 \
-    -t "$pkgdir/usr/share/man/man1"
-  install -Dm 644 contrib/debian/manpages/bitcoin-cli.1 \
-    -t "$pkgdir/usr/share/man/man1"
-  install -Dm 644 contrib/debian/manpages/bitcoin.conf.5 \
-    -t "$pkgdir/usr/share/man/man5"
+  find doc/man -type f -name "*.1" -exec \
+    install -Dm 644 -t "$pkgdir/usr/share/man/man1" '{}' +
 
   msg2 'Installing documentation...'
   install -dm 755 "$pkgdir/usr/share/doc/bitcoin"
