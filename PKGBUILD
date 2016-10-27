@@ -2,12 +2,13 @@
 
 pkgname=ananicy-git
 pkgver=70.553b454
-pkgrel=1
+pkgrel=2
 pkgdesc="Ananicy - is Another auto nice daemon, with community rules support"
 arch=('any')
 url="https://github.com/Nefelim4ag/Ananicy.git"
 license=('GPL3')
 depends=('systemd' 'bash')
+makedepends=('rsync')
 source=("$pkgname"::'git://github.com/Nefelim4ag/Ananicy.git#branch=master')
 md5sums=('SKIP')
 install=$pkgname.install
