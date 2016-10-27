@@ -11,7 +11,7 @@ depends=()
 makedepends=()
 conflicts=('lolcat')
 source=("$pkgname"::'git+https://github.com/jaseg/lolcat.git')
-sha256sums=(SKIP)
+sha256sums=('SKIP')
 
 pkgver() {
     cd "$srcdir/$pkgname"
