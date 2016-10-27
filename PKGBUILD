@@ -2,7 +2,7 @@
 # Available from AUR: https://aur.archlinux.org/packages/solidity-git/
 
 pkgname=solidity-git
-pkgver=0.4.3.git.20161020.008c411
+pkgver=0.4.4.20161027.49089f6
 pkgrel=1
 pkgdesc="The Solidity Contract-Oriented Programming Language (Including solc, lllc; from latest unstable git version)"
 arch=('i686' 'x86_64')
@@ -22,7 +22,7 @@ makedepends=(
 )
 groups=('ethereum')
 url="https://github.com/ethereum/solidity"
-license=('GPL')
+license=('GPL3')
 source=("${pkgname%-git}::git+https://github.com/ethereum/solidity#branch=develop")
 sha256sums=('SKIP')
 provides=(
@@ -38,7 +38,7 @@ provides=(
 
 pkgver() {
   cd ${pkgname%-git}
-  echo "`grep -m1 "PROJECT\_VERSION" CMakeLists.txt | tr -cd '[[:digit:]].'`.git.`date +%Y%m%d`.`git log --pretty=format:%h -n 1`"
+  echo "`grep -m1 "PROJECT\_VERSION" CMakeLists.txt | tr -cd '[[:digit:]].'`.`date +%Y%m%d`.`git log --pretty=format:%h -n 1`"
 }
 
 build() {
