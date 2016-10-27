@@ -1,7 +1,7 @@
 # Maintainer: Colin Woodbury <colingw@gmail.com>
 _hkgname=aura
 pkgname=aura-bin
-pkgver=1.3.6
+pkgver=1.3.7
 pkgrel=1
 pkgdesc="A secure package manager for Arch Linux and the AUR written in Haskell - Prebuilt binary"
 url="https://github.com/fosskers/aura"
@@ -14,10 +14,10 @@ optdepends=('powerpill:    For faster repository downloads.'
 provides=('aura')
 conflicts=('aura' 'aura-git')
 options=('strip')
-source=(https://bitbucket.org/fosskers/aura/downloads/${_hkgname}-${pkgver}-${CARCH}.tar.gz)
+source=(https://github.com/aurapm/aura/releases/download/v${pkgver}/aura-${pkgver}-x86_64.tar.gz)
 
 if [[ $CARCH = "x86_64" ]]; then
-  md5sums=('72980bea311eeca7fa2decc34e3864e3')
+   md5sums=('4dbbc65e0fd54a19b9daf868dc944fa9')
 else
   md5sums=()
 fi
@@ -26,7 +26,7 @@ package() {
     # Install aura binary
     mkdir -p "$pkgdir/usr/bin/"
     install -m 755 aura "$pkgdir/usr/bin/"
-  
+
     # Installing man page
     mkdir -p "$pkgdir/usr/share/man/man8/"
     install -m 644 aura.8 "$pkgdir/usr/share/man/man8/aura.8"
