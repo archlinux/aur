@@ -4,14 +4,14 @@
 
 
 pkgname=pianoteq-stage
-pkgver=5.6.2
+pkgver=5.7.1
 pkgrel=1
 pkgdesc="Virtual piano instrument using physical modelling synthesis. Both standalone and plugin versions."
 arch=('i686' 'x86_64')
 url="https://www.pianoteq.com/pianoteq5"
 license=('LGPL')
 depends=('alsa-lib' 'freetype2' 'libxext')
-makedepends=('gendesk' 'p7zip')
+makedepends=('gendesk' 'wget' 'p7zip')
 optdepends=()
 provides=("${pkgname%-*}")
 conflicts=("${pkgname%-*}" "pianoteq-stage-bin", "pianoteq-standard-trial-bin")
@@ -21,17 +21,17 @@ sha256sums=('94ee64cf6688a49d74f0bf70d811e7466abac103feeab17496a89f828afcc6d3')
 # Define the target archive filename:
 _pianoteqfilename=pianoteq_stage_linux_v${pkgver//./}.7z
 # Define its checksum:
-_pianoteqsha256sum=bd4575f02c3f2299ed989bf646e5b60150febbd1d23c4902f436ce7338235605
+_pianoteqsha256sum=edad61486178a58cd16db986cdb52e8769b52fbd06b3f15e1d15b271c0625d56
 
 prepare(){
         # the source package must be downloaded manually
         # this can be done by going to the link here:
-        # https://www.pianoteq.com/download?file=pianoteq_stage_linux_v562.7z
+        # https://www.pianoteq.com/download?file=pianoteq_stage_linux_v571.7z
         # the checksum will still be validated
 	if [ ! -f "../$_pianoteqfilename" ]
 	then
             echo "File not found!"
-            echo -e "For this package a mannual download of the pianoteq software is needed: 'https://www.pianoteq.com/download?file=pianoteq_stage_linux_v561-.7z'\nThe archive should be in the same dir as the PKGBUILD!"
+            echo -e "For this package a mannual download of the pianoteq binary is needed: 'https://www.pianoteq.com/download?file=pianoteq_stage_linux_v571.7z'\nThe archive should be in the same directory as the PKGBUILD!"
             exit;
         fi
         # move the dependency to ./src/
