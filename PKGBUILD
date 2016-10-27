@@ -2,7 +2,7 @@
 
 _pkgname=feeluown
 pkgname="${_pkgname}-git"
-pkgver=9.2a.42.gb1dd057
+pkgver=9.3a.0.g698ed58
 pkgrel=1
 epoch=1
 pkgdesc="个性化音乐服务 For Mac And Linux"
