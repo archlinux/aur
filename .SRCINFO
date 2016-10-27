@@ -1,0 +1,14 @@
+pkgbase = f4transkript
+	pkgdesc = Speeds up your transcription process
+	pkgver = f4v6
+	pkgrel = 1
+	url = www.audiotranskription.de
+	arch = x86_64
+	depends = vlc
+	depends = libusb
+	depends = gcc-libs
+	source = https://www.audiotranskription.de/audot/downloadfile.php?k=1&d=39&l=en&c=1bef039b56
+	sha256sums = cd8057502f1de5586ad3d6b15c3d1205df774948e298d169d4932cabff447710
+
+pkgname = f4transkript
+
