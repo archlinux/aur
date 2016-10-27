@@ -3,17 +3,17 @@
 
 _pkgname=libhttpseverywhere
 pkgname="$_pkgname-git"
-pkgrel=4
+pkgrel=5
 pkgver=95+ga07a685
 pkgdesc="library to use HTTPSEverywhere in desktop applications"
 arch=('i686' 'x86_64')
-url="https://github.com/grindhold/libhttpseverywhere/"
+url="https://git.gnome.org/browse/libhttpseverywhere"
 license=('LGPL3')
 depends=('libgee' 'libxml2' 'libarchive' 'libsoup' 'glib2' 'json-glib')
 makedepends=('git' 'meson' 'ninja' 'vala' 'valadoc-git' 'gobject-introspection')
 conflicts=('libhttpseverywhere')
 provides=('libhttpseverywhere')
-source=(git+git://github.com/grindhold/libhttpseverywhere.git)
+source=(git+git://git.gnome.org/libhttpseverywhere)
 md5sums=(SKIP)
 
 pkgver() {
