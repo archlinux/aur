@@ -1,13 +1,13 @@
 # Maintainer: dracorp aka Piotr Rogoza <piotr dot r dot public at gmail dot com>
 
 pkgname=xflux-gui-git
-pkgver=0b562044
-pkgrel=3
+pkgver=r187.0b56204
+pkgrel=1
 pkgdesc='Better lighting for Linux. Open source GUI for xflux'
 arch=(any)
 url='https://justgetflux.com/linux.html'
 license=(MIT)
-provides=(xflux-gui)
+provides=(xflux-gui=$pkgver)
 conflicts=(xflux-gui)
 depends=(
 hicolor-icon-theme
@@ -19,7 +19,6 @@ libappindicator-gtk2
 python2-xdg
 )
 makedepends=(git)
-# install='xflux-gui.install'
 source=('git://github.com/xflux-gui/xflux-gui.git')
 _gitname='xflux-gui'
 md5sums=(SKIP)
@@ -27,7 +26,9 @@ md5sums=(SKIP)
 pkgver(){
   if [ -d "$srcdir"/$_gitname ]; then
     cd "$srcdir"/$_gitname
-    git describe --always | sed 's|-|.|g'
+    ( set -o pipefail
+    git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)" )
   fi
 }
 package(){
