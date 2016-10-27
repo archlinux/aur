@@ -1,6 +1,6 @@
 pkgbase = vpnks
 	pkgdesc = VPNKS protects you against leaks caused by disconnetction
-	pkgver = 0.1
+	pkgver = 1.0
 	pkgrel = 1
 	url = https://github.com/plasticbrain/vpnkillswitch
 	arch = any

@@ -1,7 +1,7 @@
 # Maintainer: Michael Egger
 
 pkgname=vpnks
-pkgver=0.1
+pkgver=1.0
 pkgrel=1
 pkgdesc="VPNKS protects you against leaks caused by disconnetction"
 arch=('any')
@@ -24,6 +24,7 @@ package() {
 	do
 		install -D -m644 "${file}" "${pkgdir}/usr/bin/"
 	done
+        echo "If you've questions about this package, please read: http://mikeeverhart.net/2015/12/vpn-killswitch-bash-script/"
 }
 
 # vim:set ts=2 sw=2 et:
