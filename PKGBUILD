@@ -1,17 +1,17 @@
-# Maintainer: Mohammadreza Abdollahzadeh <morealaz@gmail.com>
+# Maintainer: Mohammadreza Abdollahzadeh <morealaz at gmail dot com>
 
 pkgname=qcustomplot-qt5
-pkgver=1.3.2
+pkgver=2.0.0_beta
 pkgrel=1
 pkgdesc="Plotting library for Qt5"
 url="http://www.qcustomplot.com"
 arch=('x86_64' 'i686')
 license=('GPL')
 depends=('qt5-base')
-source=("http://www.qcustomplot.com/release/${pkgver}/QCustomPlot.tar.gz"
-        "http://www.qcustomplot.com/release/${pkgver}/QCustomPlot-sharedlib.tar.gz")
-md5sums=('a86d447230f7a3966cfbd946f7a3d301'
-         '82955a71538b18c23a320047ac32eace')
+source=("http://www.qcustomplot.com/release/${pkgver//_/-}/QCustomPlot.tar.gz"
+        "http://www.qcustomplot.com/release/${pkgver//_/-}/QCustomPlot-sharedlib.tar.gz")
+md5sums=('a4196694eb08de800a794cc297e046dd'
+         '294fdf8834e8ef0fa2c1e830f936b7fc')
 
 build() {
   cd "${srcdir}"
