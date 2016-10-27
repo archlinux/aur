@@ -1,7 +1,7 @@
-# Maintainer: Mohammadreza Abdollahzadeh <morealaz@gmail.com>
+# Maintainer: Mohammadreza Abdollahzadeh <morealaz at gmail dot com>
 
 pkgname=rfc-pdf
-pkgver=20160613
+pkgver=20161027
 pkgrel=1
 pkgdesc="RFCs from rfc-editor.org in pdf format."
 arch=('any')
@@ -25,22 +25,22 @@ source=('http://www.rfc-editor.org/rfc/tar/pdfrfc0001-0500.tar.gz'
         'http://www.rfc-editor.org/rfc/tar/pdfrfc7001-7500.tar.gz'
         'http://www.rfc-editor.org/rfc/tar/pdfrfc7501-latest.tar.gz'
         'license')
-md5sums=('bd2331f5ecc92730f78782786ed21b86'
-         'bf859b9bfdde0dd9d561e54f827a47ba'
-         '3209ad4c9ff3e7adde7980264cd964a9'
-         'ea520b2fa945f97e0916989eb1a47365'
-         '3dd963b103067752c0dff4ba1f1791c4'
-         '5a0b6e1f8730f6d6f8b15399b398f8fb'
-         '3bd2e3aaedddadcfeeea753445b44319'
-         '3a8ca407483d2ebb2a5ee70e48c4e966'
-         'b5803ae8b775823719944b54926bccbb'
-         '61431de31ef6cdeaed440030a3d0e24b'
-         '8b0a3e3900e707b35e18abb5eacc4b5c'
-         'd09d7fafde699872cb31adb2fdb90fa7'
-         '90da90a74a1adff54cd43aaf93263f57'
-         'bc69b9b6945140f34170e138b885cd47'
-         'e3e7181703bfe1ecaee9bb0a09d75b0f'
-         '69052af45bf07a3ab944f8d93b9577d5'
+md5sums=('a1d40429a3c912adf02408de86987937'
+         '3e750b67f3f73af8b88b22160811ec0c'
+         '3dcf40258b6577755d3019b25b546000'
+         '7e047b46154f001eed528a97ea4a7de7'
+         'c0cd31190f2d6040e20ff8c887684fbe'
+         '4cd2d50d5158cfcfc973faecc9a01d72'
+         'c3c00fe0231a4a0d02f9c29631ba2069'
+         'd86e4d96e9e5c9fccd94d3310f3ecc1e'
+         '46dd2b68341ebb4c39f15f7aa3b0a7de'
+         'f4faa8e0a53d686ac5ea4ef5ca5ec630'
+         'fc0ccf359e8353093b24632be85d162a'
+         'c4fd803dfad863262ec13fbcc365c867'
+         'b717ef6788d248dcc08de7982b0add8b'
+         '94cb9e2695027c5a1e5204af98f1b2bf'
+         '322832971f0daec7c2f8b45b7d7d9b36'
+         '58dce6f2e3c4f2f4982403317e2b2ac8'
          '06a779406b45edddbd19fda96696ab4a')
 
 package() {
