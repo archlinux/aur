@@ -1,7 +1,19 @@
-diff -Nur camlidl-1.05.orig/config/Makefile.unix camlidl-1.05/config/Makefile.unix
---- camlidl-1.05.orig/config/Makefile.unix	2013-10-02 11:39:13.596586957 +0200
-+++ camlidl-1.05/config/Makefile.unix	2013-10-02 11:40:06.050112149 +0200
-@@ -19,7 +19,7 @@
+From a29e6b96b4574be8eaeb8c9c7514583734108cae Mon Sep 17 00:00:00 2001
+From: Bertram Felgenhauer <int-e@gmx.de>
+Date: Thu, 27 Oct 2016 10:45:13 +0200
+Subject: [PATCH 1/2] arch build system fix
+
+---
+ config/Makefile.unix  |  8 +++++---
+ lib/Makefile          | 10 ++++++++--
+ runtime/Makefile.unix |  2 +-
+ 3 files changed, 14 insertions(+), 6 deletions(-)
+
+diff --git a/config/Makefile.unix b/config/Makefile.unix
+index cf4549c..fc8c063 100644
+--- a/config/Makefile.unix
++++ b/config/Makefile.unix
+@@ -19,7 +19,7 @@ OSTYPE=unix
  
  # How to invoke the C preprocessor
  # Works on most Unix systems:
@@ -10,13 +22,13 @@ diff -Nur camlidl-1.05.orig/config/Makefile.unix camlidl-1.05/config/Makefile.un
  # Alternatives:
  # CPP=cpp
  # CPP=/usr/ccs/lib/cpp
-@@ -31,10 +31,12 @@
+@@ -31,10 +31,12 @@ RANLIB=ranlib
  #RANLIB=:
  
  # Location of the Objective Caml library in your installation
 -OCAMLLIB=/usr/local/lib/ocaml
 +OCAMLBASEDIR=$(shell ocamlc -where)
-+OCAMLLIB=$(DESTDIR)$(OCAMLBASEDIR)/camlidl
++OCAMLLIB=$(DESTDIR)$(OCAMLBASEDIR)
 +OCAMLINCDIR=$(DESTDIR)$(OCAMLBASEDIR)/caml
  
  # Where to install the binaries
@@ -25,10 +37,11 @@ diff -Nur camlidl-1.05.orig/config/Makefile.unix camlidl-1.05/config/Makefile.un
  
  # The Objective Caml compilers (the defaults below should be OK)
  OCAMLC=ocamlc -g
-diff -Nur camlidl-1.05.orig/lib/Makefile camlidl-1.05/lib/Makefile
---- camlidl-1.05.orig/lib/Makefile	2013-10-02 11:39:13.596586957 +0200
-+++ camlidl-1.05/lib/Makefile	2013-10-02 11:40:33.639866581 +0200
-@@ -29,8 +29,14 @@
+diff --git a/lib/Makefile b/lib/Makefile
+index 7ce04da..c347d6f 100644
+--- a/lib/Makefile
++++ b/lib/Makefile
+@@ -29,8 +29,14 @@ $(NATIVELIB): $(NATIVEOBJS)
  	$(OCAMLOPT) -a -o $(NATIVELIB) $(NATIVEOBJS)
  
  install:
@@ -45,10 +58,11 @@ diff -Nur camlidl-1.05.orig/lib/Makefile camlidl-1.05/lib/Makefile
  
  .SUFFIXES: .mli .ml .cmi .cmo .cmx
  
-diff -Nur camlidl-1.05.orig/runtime/Makefile.unix camlidl-1.05/runtime/Makefile.unix
---- camlidl-1.05.orig/runtime/Makefile.unix	2013-10-02 11:39:13.596586957 +0200
-+++ camlidl-1.05/runtime/Makefile.unix	2013-10-02 11:39:21.178020877 +0200
-@@ -22,7 +22,7 @@
+diff --git a/runtime/Makefile.unix b/runtime/Makefile.unix
+index 5617349..737b048 100644
+--- a/runtime/Makefile.unix
++++ b/runtime/Makefile.unix
+@@ -22,7 +22,7 @@ libcamlidl.a: $(OBJS)
  	$(RANLIB) $@
  
  install:
@@ -56,3 +70,7 @@ diff -Nur camlidl-1.05.orig/runtime/Makefile.unix camlidl-1.05/runtime/Makefile.
 +	cp camlidlruntime.h $(OCAMLINCDIR)/camlidlruntime.h
  	cp libcamlidl.a $(OCAMLLIB)/libcamlidl.a
  	cd $(OCAMLLIB); $(RANLIB) libcamlidl.a
+ 
+-- 
+2.10.1
+

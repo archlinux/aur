@@ -1,0 +1,134 @@
+From fd8f7aa5b1b29912bf794ae0df71a9b2207027f1 Mon Sep 17 00:00:00 2001
+From: Bertram Felgenhauer <int-e@gmx.de>
+Date: Thu, 27 Oct 2016 10:45:43 +0200
+Subject: [PATCH] rename array module for ocaml 4.03
+
+---
+ compiler/.depend                          | 14 +++++++-------
+ compiler/Makefile                         |  2 +-
+ compiler/{array.ml => array_camlidl.ml}   |  0
+ compiler/{array.mli => array_camlidl.mli} |  0
+ compiler/cvtval.ml                        | 20 ++++++++++----------
+ 5 files changed, 18 insertions(+), 18 deletions(-)
+ rename compiler/{array.ml => array_camlidl.ml} (100%)
+ rename compiler/{array.mli => array_camlidl.mli} (100%)
+
+diff --git a/compiler/.depend b/compiler/.depend
+index d014910..e58c23c 100644
+--- a/compiler/.depend
++++ b/compiler/.depend
+@@ -1,4 +1,4 @@
+-array.cmi: idltypes.cmi prefix.cmi 
++array_camlidl.cmi: idltypes.cmi prefix.cmi 
+ constdecl.cmi: idltypes.cmi 
+ cvttyp.cmi: idltypes.cmi 
+ cvtval.cmi: idltypes.cmi prefix.cmi 
+@@ -22,10 +22,10 @@ typedef.cmi: idltypes.cmi
+ uniondecl.cmi: idltypes.cmi 
+ union.cmi: idltypes.cmi prefix.cmi 
+ variables.cmi: idltypes.cmi 
+-array.cmo: cvttyp.cmi idltypes.cmi lexpr.cmi utils.cmi variables.cmi \
+-    array.cmi 
+-array.cmx: cvttyp.cmx idltypes.cmi lexpr.cmx utils.cmx variables.cmx \
+-    array.cmi 
++array_camlidl.cmo: cvttyp.cmi idltypes.cmi lexpr.cmi utils.cmi variables.cmi \
++    array_camlidl.cmi 
++array_camlidl.cmx: cvttyp.cmx idltypes.cmi lexpr.cmx utils.cmx variables.cmx \
++    array_camlidl.cmi 
+ clflags.cmo: config.cmi 
+ clflags.cmx: config.cmx 
+ config.cmo: config.cmi 
+@@ -34,9 +34,9 @@ constdecl.cmo: cvttyp.cmi idltypes.cmi lexpr.cmi utils.cmi constdecl.cmi
+ constdecl.cmx: cvttyp.cmx idltypes.cmi lexpr.cmx utils.cmx constdecl.cmi 
+ cvttyp.cmo: config.cmi idltypes.cmi lexpr.cmi utils.cmi cvttyp.cmi 
+ cvttyp.cmx: config.cmx idltypes.cmi lexpr.cmx utils.cmx cvttyp.cmi 
+-cvtval.cmo: array.cmi cvttyp.cmi enum.cmi idltypes.cmi lexpr.cmi struct.cmi \
++cvtval.cmo: array_camlidl.cmi cvttyp.cmi enum.cmi idltypes.cmi lexpr.cmi struct.cmi \
+     union.cmi utils.cmi variables.cmi cvtval.cmi 
+-cvtval.cmx: array.cmx cvttyp.cmx enum.cmx idltypes.cmi lexpr.cmx struct.cmx \
++cvtval.cmx: array_camlidl.cmx cvttyp.cmx enum.cmx idltypes.cmi lexpr.cmx struct.cmx \
+     union.cmx utils.cmx variables.cmx cvtval.cmi 
+ enumdecl.cmo: cvttyp.cmi cvtval.cmi enum.cmi idltypes.cmi utils.cmi \
+     variables.cmi enumdecl.cmi 
+diff --git a/compiler/Makefile b/compiler/Makefile
+index 688d14a..5740330 100644
+--- a/compiler/Makefile
++++ b/compiler/Makefile
+@@ -16,7 +16,7 @@ include ../config/Makefile
+ 
+ OBJS=config.cmo utils.cmo clflags.cmo \
+   prefix.cmo lexpr.cmo cvttyp.cmo variables.cmo \
+-  array.cmo struct.cmo enum.cmo union.cmo cvtval.cmo \
++  array_camlidl.cmo struct.cmo enum.cmo union.cmo cvtval.cmo \
+   structdecl.cmo enumdecl.cmo uniondecl.cmo \
+   typedef.cmo funct.cmo constdecl.cmo intf.cmo \
+   file.cmo predef.cmo \
+diff --git a/compiler/array.ml b/compiler/array_camlidl.ml
+similarity index 100%
+rename from compiler/array.ml
+rename to compiler/array_camlidl.ml
+diff --git a/compiler/array.mli b/compiler/array_camlidl.mli
+similarity index 100%
+rename from compiler/array.mli
+rename to compiler/array_camlidl.mli
+diff --git a/compiler/cvtval.ml b/compiler/cvtval.ml
+index c71e622..3a9c921 100644
+--- a/compiler/cvtval.ml
++++ b/compiler/cvtval.ml
+@@ -135,17 +135,17 @@ let rec ml_to_c oc onstack pref ty v c =
+   | Type_pointer(Ignore, ty_elt) ->
+       iprintf oc "%s = NULL;\n" c
+   | Type_array({maybe_null=false} as attr, ty_elt) ->
+-      Array.array_ml_to_c ml_to_c oc onstack pref attr ty_elt v c
++      Array_camlidl.array_ml_to_c ml_to_c oc onstack pref attr ty_elt v c
+   | Type_array({maybe_null=true} as attr, ty_elt) ->
+       option_ml_to_c oc v c
+         (fun v' ->
+-          Array.array_ml_to_c ml_to_c oc onstack pref attr ty_elt v' c)
++          Array_camlidl.array_ml_to_c ml_to_c oc onstack pref attr ty_elt v' c)
+   | Type_bigarray({bigarray_maybe_null=false} as attr, ty_elt) ->
+-      Array.bigarray_ml_to_c oc pref attr ty_elt v c
++      Array_camlidl.bigarray_ml_to_c oc pref attr ty_elt v c
+   | Type_bigarray({bigarray_maybe_null=true} as attr, ty_elt) ->
+       option_ml_to_c oc v c
+         (fun v' ->
+-          Array.bigarray_ml_to_c oc pref attr ty_elt v' c)
++          Array_camlidl.bigarray_ml_to_c oc pref attr ty_elt v' c)
+   | Type_interface(modl, name) ->
+       error (sprintf "Reference to interface %s that is not a pointer" name)
+   | Type_const ty' ->
+@@ -212,15 +212,15 @@ let rec c_to_ml oc pref ty c v =
+   | Type_pointer(Ignore, ty_elt) ->
+       ()
+   | Type_array({maybe_null=false} as attr, ty_elt) ->
+-      Array.array_c_to_ml c_to_ml oc pref attr ty_elt c v
++      Array_camlidl.array_c_to_ml c_to_ml oc pref attr ty_elt c v
+   | Type_array({maybe_null=true} as attr, ty_elt) ->
+       option_c_to_ml oc c v
+-        (Array.array_c_to_ml c_to_ml oc pref attr ty_elt c)
++        (Array_camlidl.array_c_to_ml c_to_ml oc pref attr ty_elt c)
+   | Type_bigarray({bigarray_maybe_null=false} as attr, ty_elt) ->
+-      Array.bigarray_c_to_ml oc pref attr ty_elt c v
++      Array_camlidl.bigarray_c_to_ml oc pref attr ty_elt c v
+   | Type_bigarray({bigarray_maybe_null=true} as attr, ty_elt) ->
+       option_c_to_ml oc c v
+-        (Array.bigarray_c_to_ml oc pref attr ty_elt c)
++        (Array_camlidl.bigarray_c_to_ml oc pref attr ty_elt c)
+   | Type_interface(modl, name) ->
+       error (sprintf "Reference to interface %s that is not a pointer" name)
+   | Type_const ty' ->
+@@ -234,9 +234,9 @@ let rec allocate_output_space oc pref c ty =
+       let c' = new_c_variable ty_arg in
+       iprintf oc "%s = &%s;\n" c c'
+   | Type_array(attr, ty_arg) ->
+-      Array.array_allocate_output_space oc pref attr ty_arg c
++      Array_camlidl.array_allocate_output_space oc pref attr ty_arg c
+   | Type_bigarray(attr, ty_arg) ->
+-      Array.bigarray_allocate_output_space oc pref attr ty_arg c
++      Array_camlidl.bigarray_allocate_output_space oc pref attr ty_arg c
+   | Type_const ty' -> (* does this make sense? *)
+       allocate_output_space oc pref c ty'
+   | _ -> ()
+-- 
+2.10.1
+
