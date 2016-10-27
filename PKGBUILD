@@ -3,8 +3,8 @@
 
 _pkgname=libhttpseverywhere
 pkgname="$_pkgname-git"
-pkgrel=5
-pkgver=95+ga07a685
+pkgrel=1
+pkgver=174+gf38354e
 pkgdesc="library to use HTTPSEverywhere in desktop applications"
 arch=('i686' 'x86_64')
 url="https://git.gnome.org/browse/libhttpseverywhere"
