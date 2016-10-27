@@ -1,0 +1,6 @@
+post_install()
+{
+    echo "you should install uGet Integration extension from"
+    echo "https://chrome.google.com/webstore/detail/uget-integration/efjgjleilhflffpbnkaofpmdnajdpepi"
+    echo "to your chrome browser"
+}
