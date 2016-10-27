@@ -1,22 +1,19 @@
 pkgbase = waifu2x-converter-cpp-git
-	pkgdesc = Image rescaling and noise reduction using the power of convolutional neural networks
-	pkgver = r317.0d10572
+	pkgdesc = Image Super-Resolution for Anime-Style Art
+	pkgver = r427
 	pkgrel = 1
 	url = https://github.com/tanakamura/waifu2x-converter-cpp
 	arch = i686
 	arch = x86_64
 	license = MIT
-	makedepends = cmake
 	makedepends = git
-	depends = opencl-headers
+	makedepends = cmake
 	depends = opencv
-	provides = waifu2x
+	depends = opencl-headers
 	provides = waifu2x-converter-cpp
-	conflicts = waifu2x-git
-	source = git+https://github.com/tanakamura/waifu2x-converter-cpp.git
-	source = arch_use_usr_share_for_models.patch
-	md5sums = SKIP
-	md5sums = SKIP
+	conflicts = waifu2x-converter-cpp
+	source = waifu2x-converter-cpp::git+https://github.com/tanakamura/waifu2x-converter-cpp.git
+	sha512sums = SKIP
 
 pkgname = waifu2x-converter-cpp-git
 
