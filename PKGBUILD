@@ -84,7 +84,7 @@ pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.geocities.jp/ep3797/mozc-ut2.html"
 license=('BSD' 'GPL' 'CC-BY-SA' 'custom')
-makedepends=('python2' 'ruby' 'git' 'ninja' 'clang')
+makedepends=('python2' 'ruby' 'git' 'ninja' 'clang' 'qt4')
 source=(
   mozc::git+https://github.com/google/mozc.git#commit=${_mozcrev}
   http://downloads.sourceforge.net/project/pnsft-aur/mozc/mozcdic-ut2-${_utdicver}.tar.bz2
