@@ -1,16 +1,16 @@
 pkgbase = nodejs-ionic-beta
 	pkgdesc = A tool for creating and building Ionic 2 Framework mobile apps.
-	pkgver = 2.1.1
-	pkgrel = 2
+	pkgver = 2.1.4
+	pkgrel = 1
 	url = http://ionicframework.com/
 	arch = any
 	license = MIT
 	depends = nodejs
 	depends = npm
 	conflicts = nodejs-ionic
-	noextract = ionic-2.1.1.tgz
-	source = http://registry.npmjs.org/ionic/-/ionic-2.1.1.tgz
-	sha1sums = 7345b56915da2100a0efcd5257a4626848c4da80
+	noextract = ionic-2.1.4.tgz
+	source = http://registry.npmjs.org/ionic/-/ionic-2.1.4.tgz
+	sha1sums = 3e799d20ea079c0191ed5f0d187f565c539879db
 
 pkgname = nodejs-ionic-beta
 
