@@ -2,7 +2,7 @@
 
 pkgname=pharo-spur-vm
 pkgver=5.0
-pkgrel=0
+pkgrel=1
 pkgdesc="Pharo Spur VM for Pharo 5 images. Pharo is a clean, innovative, open-source Smalltalk-inspired environment"
 conflicts=('pharo' 'pharo-vm-latest')
 arch=(i686 x86_64)
@@ -10,16 +10,16 @@ source=($pkgname-$pkgver.tar.gz)
 url="http://www.pharo.org/"
 license=('MIT')
 if [ "$CARCH" = "x86_64" ]; then
-  depends=('lib32-alsa-lib' 'lib32-libvorbis' 'lib32-pango' 'lib32-mesa' 'lib32-dbus-core' 'lib32-libxml2' 'wget' 'unzip')
+  depends=('lib32-alsa-lib' 'lib32-libvorbis' 'lib32-pango' 'lib32-mesa' 'lib32-dbus' 'lib32-libxml2' 'wget' 'unzip')
 else
   depends=('alsa-lib' 'libvorbis' 'pango' 'mesa' 'dbus-core' 'libxml2' 'wget' 'unzip')
 fi
 
 source=(http://files.pharo.org/sources/PharoV50.sources.zip
-        http://files.pharo.org/vm/pharo-spur32/linux/stable-20160504.zip)
+        http://files.pharo.org/vm/pharo-spur32/linux/stable-20160623.zip)
 
 md5sums=('9810ede95576dba2fb4f71158ae4a4d6'
-         '37b17037ff4ba57951d99616617e724f')
+				 'f16396ad292ae7b49c0cb236051f589e')
 
 package() {
   cd $srcdir/
