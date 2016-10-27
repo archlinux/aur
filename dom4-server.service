@@ -6,7 +6,6 @@ After=network.target
 ExecStart=/usr/bin/dom4-server
 Type=simple
 User=dom4
-RemainAfterExit=yes
 
 [Install]
 WantedBy=multi-user.target

@@ -1,7 +1,7 @@
 # Dominions 4 Server Configuration
 # Maintainer: Dian Fay <dian.m.fay@gmail.com>
 pkgname=dom4-server
-pkgver=1.1.4
+pkgver=1.1.5
 pkgrel=1
 pkgdesc="Configure and run Dominions 4 as a headless server"
 arch=("x86_64")
@@ -27,7 +27,7 @@ package() {
   install -Dm644 "$srcdir/dom4-tmpfile.conf" "$pkgdir/usr/lib/tmpfiles.d/dom4.conf"
 }
 md5sums=('372f6150c891165d1c1dc3a26477c7de'
-         'd7467fb7a599236f71d428a85cf05014'
+         '7c6722df4f73b19e0db3c365f89eec96'
          'e9772a237cc540558e74235b98df8a7f'
          '338b8462868ecf6cc56c4a520cea6bac'
-         '72377d8ca4511751c00e4ec3e9ae32d7')
+         '219c9aca46b988f031200263bcacc4de')

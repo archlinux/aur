@@ -102,7 +102,7 @@ thrones 2 8 1
 EOF
   fi
 
-  sudo -u dom4 $EDITOR /usr/share/dom4/config/$1.properties
+  sudo -u dom4 ${EDITOR:-nano} /usr/share/dom4/config/$1.properties
 
   mapfile=$(grep -oP "^mapfile\s+\K.+" /usr/share/dom4/config/$1.properties)
   mapname=$(basename $mapfile .map)
@@ -123,11 +123,10 @@ EOF
     fi
 
     echo
-  fi
 
-  change $1
+    change $1
 
-  cat <<EOF
+    cat <<EOF
 Done. Start the service to let players upload their pretenders.
 
   sudo systemctl start dom4-server.service
@@ -136,6 +135,15 @@ Once all pretenders have been uploaded, stop the service and set the game to rea
 
   dom4 ready
 EOF
+  else
+    change $1
+
+    cat <<EOF
+Done. Restart the service to load the new configuration:
+
+  sudo systemctl restart dom4-server.service
+EOF
+  fi
 }
 
 # Set game start flag in properties file.
@@ -241,32 +249,20 @@ case $1 in
 
   *)
     cat <<EOF
-Install Dominions 4 through SteamCMD:
+Dominions 4 Headless Server Interface
 
-  dom4 install
+This program manages Dominions 4 installation and configuration for the headless server. Multiple games may be configured, but only one game can be actively hosted at once -- this is a true multiplayer server rather than a PBEM setup.
 
-List configured games:
+The headless server itself is a systemd service and can be managed via systemctl.
 
-  dom4 list
-
-Configure a new game, or edit an existing one:
-
-  dom4 config mygame
-
-Set start flag for current game after all pretenders have been uploaded, prior to running service:
-
-  dom4 ready
-
-Set start flag for mygame after pretenders have been uploaded and set it as current hosted game:
-
-  dom4 ready mygame
-
-Delete a game (this operation is irreversible!):
-
-  dom4 delete mygame
+Usage:
+  dom4 install        Install Dominions 4 through SteamCMD
+  dom4 list           List configured games
+  dom4 config mygame  Configure a new game, or edit an existing one
+  dom4 ready mygame   Sets the start flag for mygame after all pretenders have been uploaded
+  dom4 delete mygame  Deletes mygame (this operation is irreversible!)
 
 Service commands:
-
   sudo systemctl start dom4-server.service
   sudo systemctl stop dom4-server.service
   sudo systemctl restart dom4-server.service

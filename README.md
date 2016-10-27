@@ -18,7 +18,13 @@ Choose a port number between 1024 and 65535 and make sure you don't have anythin
 
 If your computer is behind a router you will need to make sure the port is forwarded. It is also helpful to configure a static IP address so the routing stays consistent. Consult your router documentation for instructions.
 
-## Game Configuration
+## Usage
+
+Most of the game configuration is accomplished through the `dom4` program. Run it without arguments for detailed usage instructions.
+
+The actual game server is set up as a systemd service and can be managed via systemctl like any other service.
+
+### Configuration
 
 ```bash
 dom4 config mygame
@@ -33,7 +39,7 @@ Edit the file as desired and save. The `mapfile` should reference a file either 
 
 You may also want to `sudo systemctl enable dom4-server` in order to start the server automatically after reboots.
 
-Note that only one game may be served at a time. If you configure or ready a new game, any previously active configuration will be preserved unless you are directly overwriting it.
+Note that only one game may be served at a time. If you configure or ready a new game, you will be asked if you want to host it instead of the current game. Any existing configuration will be preserved.
 
 ### Deleting Games
 
