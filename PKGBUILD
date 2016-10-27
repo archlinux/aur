@@ -2,7 +2,7 @@
 
 pkgname=mendeleydesktop-dev
 pkgshortname=mendeleydesktop
-pkgver=1.17 #_dev2
+pkgver=1.17.2 #_dev2
 pkgrel=1
 pkgdesc="Academic software for managing and sharing research papers (desktop client)"
 url=https://www.mendeley.com/release-notes/development/
@@ -15,11 +15,11 @@ md5sums=('' '44c54032370c2a7cbc6667af6d19acf7')
 
 if [[ $CARCH = i686 ]];then
   _arch=i486
-  md5sums[0]='6f6bfbe8ea33f9dcff392e156e978a98'
+  md5sums[0]='e7f5e33c7ebf2630609d72feb9b9c7e1'
 
 else
   _arch=$CARCH
-  md5sums[0]='b4dcae737ee660bca4e90c0c0362864a'
+  md5sums[0]='29056c1477c711648d0e9f715e450f31'
 fi
 
 if which gconftool-2 &>/dev/null;then
@@ -52,12 +52,12 @@ package() {
     ln -s /opt/"$pkgshortname"/share/applications/mendeleydesktop.desktop "$pkgdir"/usr/share/applications/
 
     #Romove bundled Qt from package
-    cat << __EOF__
-Removing bundled Qt library.
-If you used "--force-bundled-qt" to start mendeley,
-make sure you remove any old versions of ".desktop" file of mendeley in ~/.local/share/applications/,
-because mendeley will automatically create one there.
-__EOF__
+    #cat << __EOF__
+#Removing bundled Qt library.
+#If you used "--force-bundled-qt" to start mendeley,
+#make sure you remove any old versions of ".desktop" file of mendeley in #~/.local/share/applications/,
+#because mendeley will automatically create one there.
+#__EOF__
     #rm -rf "$pkgdir"/opt/"$pkgshortname"/lib/qt
 
     #Remove unneeded lines if gconf is not installed.
