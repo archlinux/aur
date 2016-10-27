@@ -1,6 +1,6 @@
 # Maintainer: Claudio d'Angelis <claudiodangelis at gmail dot com>
 pkgname=toggl-bin
-pkgver=7.3.326
+pkgver=7.3.346
 pkgrel=1
 pkgdesc="Free Time Tracking Software which is insanely easy to use. (Unofficial Binary)"
 arch=('x86_64')
@@ -8,11 +8,11 @@ url="https://toggl.com"
 license=('BSD')
 install=${pkgname}.install
 source=(
-	"https://github.com/toggl/toggldesktop/releases/download/v7.3.326/toggldesktop_linux_x86_64-7_3_326.tar.gz"
+	"https://github.com/toggl/toggldesktop/releases/download/v7.3.346/toggldesktop_linux_x86_64-7_3_346.tar.gz"
 	"toggl.desktop"
 )
 md5sums=(
-	"85ca7c4fcbaec9411a5e9a1eefc49236"
+	"6336271def4838e4036a6518194b9c7a"
 	"8c12ccdabee1dac4d6bec24cc5b9f5d5"
 )
 
