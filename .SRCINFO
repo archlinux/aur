@@ -1,14 +1,14 @@
 pkgbase = insomnia
 	pkgdesc = A simple and beautiful REST API and HTTP client
-	pkgver = 3.6.4
+	pkgver = 3.6.5
 	pkgrel = 2
 	url = http://insomnia.rest/
 	arch = i686
 	arch = x86_64
 	options = !strip
 	options = !upx
-	source = https://downloads.insomnia.rest/linux/insomnia-3.6.4.deb
-	md5sums = 8421d2881470e3dbdf6c974be78e2aa9
+	source = https://downloads.insomnia.rest/linux/insomnia-3.6.5.deb
+	md5sums = 024a46702779a7e732f2bb763ae69b47
 
 pkgname = insomnia
 
