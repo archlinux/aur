@@ -1,0 +1,19 @@
+pkgbase = whereami-git
+	pkgdesc = Uses WiFi signals and machine learning to predict where you are
+	pkgver = r49.a782f9e
+	pkgrel = 1
+	url = https://github.com/kootenpv/whereami
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = python
+	depends = python-access_points
+	depends = python-tqdm
+	depends = python-scikit-learn
+	provides = whereami
+	conflicts = whereami
+	source = git+https://github.com/kootenpv/whereami
+	md5sums = SKIP
+
+pkgname = whereami-git
+
