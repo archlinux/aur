@@ -1,6 +1,6 @@
 pkgbase = qpid-cpp
 	pkgdesc = A connection-oriented messaging API that supports many languages and platforms
-	pkgver = 0.34
+	pkgver = 1.35.0
 	pkgrel = 1
 	url = http://qpid.apache.org/index.html
 	arch = i686
@@ -8,15 +8,9 @@ pkgbase = qpid-cpp
 	license = APACHE
 	makedepends = cmake
 	makedepends = boost
-	optdepends = xqilla
-	optdepends = xerces-c
-	optdepends = nss
-	optdepends = nspr
-	optdepends = libibverbs
-	optdepends = librdmacm
-	optdepends = gcc
-	source = http://www.eu.apache.org/dist/qpid/cpp/0.34/qpid-cpp-0.34.tar.gz
-	md5sums = e9d8ef8a9853ee51698687b9ee8d1b87
+	makedepends = python2-virtualenv
+	source = http://www-us.apache.org/dist/qpid/cpp/1.35.0/qpid-cpp-1.35.0.tar.gz
+	md5sums = f63032428999b3ae509cc0db00e42102
 
 pkgname = qpid-cpp
 
