@@ -1,0 +1,15 @@
+pkgbase = pkgsync
+	pkgdesc = Sync installed packages across Arch installs
+	pkgver = 1.00
+	pkgrel = 1
+	url = https://github.com/moparisthebest/pkgsync
+	arch = any
+	license = GPL3
+	backup = etc/pkgsync/pkg_blacklist.list
+	backup = etc/pkgsync/pkg_exclude.list
+	backup = etc/default/pkgsync
+	source = https://codeload.github.com/moparisthebest/pkgsync/tar.gz/v1.00
+	sha256sums = 4b1384a806664f673ce0abeb9dcd5506c4951a378deeee360b9eb256491a065b
+
+pkgname = pkgsync
+
