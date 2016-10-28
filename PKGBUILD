@@ -1,13 +1,13 @@
 # Maintainer: Antonio Cardace <antonio@cardace.com>
 pkgname=kmailapplet-git
-pkgver=0.1
+pkgver=1.0.r3.g585f253
 pkgrel=1
 pkgdesc="A Mail Applet for the system tray to watch your Maildir box and get notifications whenever there's a new mail."
 arch=('any')
 url="https://github.com/ichigo663/KMailApplet"
 license=('GPL3')
 depends=('glibc' 'gcc-libs' 'boost-libs' 'qt5-base')
-makedepends=('git' 'make' 'qt5-base')
+makedepends=('git' 'gcc' 'make' 'qt5-base' 'boost')
 provides=("$pkgname")
 conflicts=("$pkgname")
 source=("$pkgname::git+https://github.com/ichigo663/KMailApplet.git")
