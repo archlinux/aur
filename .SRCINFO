@@ -1,6 +1,6 @@
 pkgbase = ffmpeg-nvenc-manjaro
 	pkgdesc = Complete solution to record, convert and stream audio and video with Nvidia CUDA Hardware Acceleration
-	pkgver = 3.1.4
+	pkgver = 3.1.5
 	pkgrel = 1
 	epoch = 1
 	url = http://ffmpeg.org/
@@ -66,7 +66,7 @@ pkgbase = ffmpeg-nvenc-manjaro
 	conflicts = ffmpeg
 	conflicts = ffmpeg-nvenc
 	conflicts = ffmpeg-full-nvenc
-	source = http://ffmpeg.org/releases/ffmpeg-3.1.4.tar.bz2
+	source = http://ffmpeg.org/releases/ffmpeg-3.1.5.tar.bz2
 	sha256sums = 7c99df75a4dc12d22c0f1ed11d0acf98cac1f8b5fe7a7434344b167f810bcbfa
 
 pkgname = ffmpeg-nvenc-manjaro
