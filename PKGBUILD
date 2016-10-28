@@ -2,7 +2,7 @@
 
 _pkgname=fernflower
 pkgname=$_pkgname-git
-pkgver=r265.52b31bf
+pkgver=r282.7bdec4f
 pkgrel=1
 pkgdesc='An analytical decompiler for Java'
 arch=('any')
