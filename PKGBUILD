@@ -22,10 +22,6 @@ package() {
   cd build
   cmake ../../xpmclient -DOPENCL_LIBRARY=/usr/lib/libOpenCL.so -DOPENCL_INCLUDE_DIRECTORY=/opt/AMDAPP/SDK/include
 
-  # Place systemd user service
-  install -Dm644 "utils/${_gitname}.service" "${pkgdir}/usr/lib/systemd/user/${_gitname}.service"
-
-  # Install License
-  # MIT/X11 license
-  install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  # Place binary
+  install -Dm755 "./xpmclient" "${pkgdir}/usr/bin/xpmclient-zcash"
 }
