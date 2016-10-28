@@ -2,13 +2,13 @@
 
 _pkgname='git-phab'
 pkgname='git-phab-git'
-pkgver=r94.6b53da5
+pkgver=r163.b59c888
 pkgrel=1
 pkgdesc='Git subcommand to integrate with phabricator'
 arch=('any')
 url='https://phabricator.freedesktop.org/project/profile/60/'
 license=('GPL2')
-depends=('python-gitpython' 'arcanist' 'python-argcomplete' 'python-appdirs')
+depends=('python-git' 'python-phabricator' 'python-argcomplete' 'python-appdirs')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 makedepends=('git')
@@ -24,5 +24,5 @@ package() {
   cd "$srcdir/$_pkgname"
   install -Dm755 git-phab "$pkgdir/usr/bin/$_pkgname"
   install -Dm644 git-phab.txt "$pkgdir/usr/share/doc/$_pkgname/$_pkgname.txt"
-  install -Dm644 README "$pkgdir/usr/share/doc/$_pkgname/README"
+  install -Dm644 README.md "$pkgdir/usr/share/doc/$_pkgname/README"
 }
