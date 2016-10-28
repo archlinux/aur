@@ -1,0 +1,9 @@
+pkgbase = dbus-core
+	pkgdesc = This is a dummy package for packages depending on dbus-core. This replaces it with an empty package depending on dbus.
+	pkgver = 1.10.12
+	pkgrel = 2
+	arch = any
+	depends = dbus
+
+pkgname = dbus-core
+
