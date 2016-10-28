@@ -1,0 +1,16 @@
+pkgbase = xtsttopng-git
+	pkgdesc = Tool to convert X Test Suite results into PNG images
+	pkgver = r6.e3daf14
+	pkgrel = 1
+	url = https://cgit.freedesktop.org/xorg/app/xtsttopng/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	makedepends = xorg-util-macros
+	depends = libpng
+	source = git+https://anongit.freedesktop.org/git/xorg/app/xtsttopng.git
+	md5sums = SKIP
+
+pkgname = xtsttopng-git
+
