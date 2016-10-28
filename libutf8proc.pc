@@ -5,6 +5,6 @@ includedir=${prefix}/include
 
 Name: libutf8proc
 Description: Processes UTF-8 encoded strings
-Version: 1.1.6
+Version: 2.0.2
 Libs: -L${libdir} -lutf8proc
 Cflags: -I${includedir}
