@@ -8,7 +8,8 @@ pkgdesc="Plugin for Vapoursynth: ${_plug}. (GIT Version)"
 arch=('any')
 url='http://forum.doom9.org/showthread.php?t=166582'
 license=('GPL')
-depends=('vapoursynth-plugin-adjust-git'
+depends=('vapoursynth'
+         'vapoursynth-plugin-adjust-git'
          'vapoursynth-plugin-addgrain-git'
          'vapoursynth-plugin-awarpsharp2-git'
          'vapoursynth-plugin-bilateral-git'
@@ -24,6 +25,7 @@ depends=('vapoursynth-plugin-adjust-git'
          'vapoursynth-plugin-genericfilters-git'
          'vapoursynth-plugin-knlmeanscl'
          'vapoursynth-plugin-mvtools'
+         'vapoursynth-plugin-nnedi3_resample-git'
          'vapoursynth-plugin-nnedi3-git'
          'vapoursynth-plugin-sangnom-hg'
          'vapoursynth-plugin-scenechange'
@@ -46,6 +48,6 @@ pkgver() {
 
 package() {
   install -Dm644 "${_plug}/${_plug}.py" "${pkgdir}${_site_packages}/${_plug}.py"
-  python -m compileall -q -f -d "${_sites_packages}" "${pkgdir}${_site_packages}/${_plug}.py"
-  python -OO -m compileall -q -f -d "${_sites_packages}" "${pkgdir}${_site_packages}/${_plug}.py"
+  python -m compileall -q -f -d "${_site_packages}" "${pkgdir}${_site_packages}/${_plug}.py"
+  python -OO -m compileall -q -f -d "${_site_packages}" "${pkgdir}${_site_packages}/${_plug}.py"
 }
