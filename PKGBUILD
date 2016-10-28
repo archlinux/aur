@@ -1,9 +1,9 @@
 #Maintainer: giniu < gginiu@gmail.com >
 
 pkgname=vim-languagetool
-pkgver=1.29
+pkgver=1.30
 _scriptid=3223
-_srcid=23923
+_srcid=24588
 pkgrel=1
 pkgdesc="Grammar checker for English, French, German (etc.) in Vim"
 arch=(any)
@@ -16,7 +16,7 @@ install=vimdoc.install
 
 source=(LanguageTool.zip::http://www.vim.org/scripts/download_script.php?src_id=${_srcid}
         languagetool.patch license.txt)
-md5sums=('abed1473f70c9c471f1cd5e58eadb1b0'
+md5sums=('06896aaba33dd38c4c2ca78f639b3d8a'
          'a315ba8727e49c2db80eacd2445fabf7'
          'f49a1270c8ead84829517d3a625e1d83')
 
