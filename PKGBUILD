@@ -8,7 +8,7 @@ url="https://github.com/tudurom/windowchef"
 license=('ISC')
 depends=("libxcb" "xcb-util-wm")
 optdepends=("sxhkd" "wmutils-git" "lemonbar")
-provides=("windowchef")
+conflicts=('windowchef-git')
 source=("https://github.com/tudurom/$pkgname/archive/v${pkgver}.tar.gz")
 md5sums=("3ec113dc8cb7b127fb45cbf6e3be9ce7")
 

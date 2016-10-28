@@ -13,7 +13,7 @@ pkgbase = windowchef
 	optdepends = sxhkd
 	optdepends = wmutils-git
 	optdepends = lemonbar
-	provides = windowchef
+	conflicts = windowchef-git
 	source = https://github.com/tudurom/windowchef/archive/v0.2.tar.gz
 	md5sums = 3ec113dc8cb7b127fb45cbf6e3be9ce7
 
