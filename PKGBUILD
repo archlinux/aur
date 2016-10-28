@@ -86,6 +86,7 @@ build() {
 		--with-http_realip_module \
 		--with-http_v2_module \
 		--with-file-aio \
+		--with-compat \
 		--with-pcre-jit \
 		--with-stream \
 		--with-stream_ssl_module
