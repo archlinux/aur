@@ -1,18 +1,18 @@
 # Maintainer: Moritz Lipp <mlq@pwmt.org>
 pkgname=asix-ax88179-dkms
-pkgver=1.14.4
-pkgrel=2
+pkgver=1.15.1
+pkgrel=1
 
 _dirname=AX88179_178A_LINUX_DRIVER_v${pkgver}_SOURCE
 _modname=ax88179_178a
 
-pkgdesc="Driver for USB ASIX Ethernet model AX88179"
+pkgdesc="Driver for USB ASIX Ethernet model AX88179/AX88178A"
 arch=('i686' 'x86_64')
 url="http://www.asix.com.tw/products.php?op=pItemdetail&PItemID=131;71;112&PLine=71"
 license=('GPL')
 depends=('dkms' 'linux-headers')
 install=${_modname}-dkms.install
-source=("http://www.asix.com.tw/FrootAttach/driver/AX88179_178A_LINUX_DRIVER_v${pkgver}_SOURCE.zip"
+source=("http://www.asix.com.tw/FrootAttach/driver/AX88179_178A_LINUX_DRIVER_v${pkgver}_SOURCE.tar.bz2"
     "dkms.conf"
     "blacklist-${_modname}.conf"
     "${_modname}-dkms.conf"
@@ -20,7 +20,7 @@ source=("http://www.asix.com.tw/FrootAttach/driver/AX88179_178A_LINUX_DRIVER_v${
     "0001-No-date-time.patch"
     "0002-b2b128.patch"
 )
-md5sums=('c4a54ab19292979f620df00315d69945'
+md5sums=('9ce091263215aa40cc7e9c8cf66a891e'
          '514d0362d678e4ce67d40a6a23bbd8fd'
          'd6005a9e529a254e622b52c17134013f'
          '1f0152ac565eb09470fb8dfbb98433e2'
