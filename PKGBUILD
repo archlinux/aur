@@ -1,51 +1,33 @@
-# Maintainer: John Jenkins twodopeshaggy@gmail.com
+# Maintainer: Jean Lucas <jean at 4ray dot co>
+# Contributor: John Jenkins <twodopeshaggy at gmail dot com>
 
 pkgname=ssh-chat-git
-epoch=1
-pkgver=0.288.6c893a8
+pkgver=r366.7781d5b
 pkgrel=1
-pkgdesc="A command line tool for chating over SSH"
+pkgdesc="Chat over SSH"
 arch=('i686' 'x86_64')
 url="https://github.com/shazow/ssh-chat"
+_gourl="github.com/shazow/ssh-chat"
 license=('MIT')
 makedepends=('go' 'git')
-source=(
-  'git+git://github.com/shazow/ssh-chat.git'
-)
-
-sha256sums=(
-  'SKIP'
-)
-_gitname="ssh-chat"
 
 pkgver() {
-  cd "${srcdir}/${_gitname}"
-  echo "0.$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
-}
+  GOPATH=$srcdir go get -d ${_gourl}
 
+  cd $srcdir/src/${_gourl}
 
-prepare(){
-mkdir -p "$srcdir/go"
-export GOPATH="$srcdir/go"
-go get golang.org/x/crypto/ssh
-go get code.google.com/p/gopass
-go get github.com/alexcesaro/log
-go get github.com/alexcesaro/log/golog
-go get github.com/jessevdk/go-flags
-go get github.com/shazow/ssh-chat
-go get github.com/shazow/ssh-chat/chat
-go get github.com/shazow/ssh-chat/chat/message
-go get github.com/shazow/ssh-chat/sshd
-
-
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-  cd "${srcdir}/${_gitname}"
-  make build
+  GOPATH=$srcdir go get -fix -v ${_gourl}...
 }
 
 package() {
-  cd "${srcdir}/${_gitname}"
-  install -D ssh-chat "${pkgdir}/usr/bin/ssh-chat"
+  cd ${srcdir}
+
+  install -Dm 0755 bin/ssh-chat $pkgdir/usr/bin/ssh-chat
+  install -Dm 0755 bin/examples $pkgdir/usr/bin/examples
+  install -Dm 0644 src/${_gourl}/README.md $pkgdir/usr/share/doc/${pkgname%-*}/README.md
+  install -Dm 0644 src/${_gourl}/LICENSE $pkgdir/usr/share/licenses/${pkgname%-*}/LICENSE
 }
