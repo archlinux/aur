@@ -1,7 +1,7 @@
 # Maintainer: Antoine Damhet <antoine.damhet@lse.epita.fr>
 
 pkgname=('sbtools-git' 'sbtools-hook-git')
-pkgver=r9.138541f
+pkgver=r10.af500bc
 pkgrel=1
 provides=('sbtools')
 pkgdesc='Secure boot tools'
@@ -32,6 +32,7 @@ package_sbtools-git() {
 	install -D -m 755 sbmkkeys ${pkgdir}/usr/bin/sbmkkeys
 	install -D -m 755 sb-make-boot-img ${pkgdir}/usr/bin/sb-make-boot-img
 	install -D -m 755 sb-sign-binary ${pkgdir}/usr/bin/sb-sign-binary
+	install -D -m 755 uncat ${pkgdir}/usr/bin/uncat
 
 	install -D -m 644 sbtools.conf ${pkgdir}/etc/sbtools.conf
 
