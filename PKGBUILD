@@ -13,9 +13,9 @@ _log_path="/var/log/${_pkgname}"
 
 
 pkgname=nginx-mainline-libressl
-pkgver=1.11.1
+pkgver=1.11.5
 pkgrel=1
-librever=2.4.1
+librever=2.5.0
 pkgdesc="lightweight HTTP server, statically linked against LibreSSL."
 arch=('i686' 'x86_64')
 
@@ -41,20 +41,21 @@ backup=("${_conf_path}/nginx.conf"
 	"${_conf_path}/uwsgi_params"
 	"etc/logrotate.d/nginx")
 
-source=( "nginx.conf"
+source=(	"http://nginx.org/download/nginx-$pkgver.tar.gz"{,.asc}
+		"http://ftp.openbsd.org/pub/OpenBSD/LibreSSL/libressl-$librever.tar.gz"{,.asc}
+		"nginx.conf"
 		"nginx.logrotate"
 		"nginx.service"
-		"http://nginx.org/download/nginx-$pkgver.tar.gz"{,.asc}
-		"http://ftp.openbsd.org/pub/OpenBSD/LibreSSL/libressl-$librever.tar.gz"{,.asc}
 )
 
-sha256sums=('8d8e314da10411b29157066ea313fc080a145d2075df0c99a1d500ffc7e8b7d1'
-            'adcf6507abb2d4edbc50bd92f498ba297927eed0460d71633df94f79637aa786'
-            '225228970d779e1403ba4314e3cd8d0d7d16f8c6d48d7a22f8384db040eb0bdf'
-            '5d8dd0197e3ffeb427729c045382182fb28db8e045c635221b2e0e6722821ad0'
-            'SKIP'
-            '121922b13169cd47a85e3e77f0bc129f8d04247193b42491cb1fab9074e80477'
-	    'SKIP')
+sha256sums=(	'223f8a2345a75f891098cf26ccdf208b293350388f51ce69083674c9432db6f6'
+            	'SKIP'
+            	'8652bf6b55ab51fb37b686a3f604a2643e0e8fde2c56e6a936027d12afda6eae'
+	    	'SKIP'
+		'8d8e314da10411b29157066ea313fc080a145d2075df0c99a1d500ffc7e8b7d1'
+		'adcf6507abb2d4edbc50bd92f498ba297927eed0460d71633df94f79637aa786'
+		'225228970d779e1403ba4314e3cd8d0d7d16f8c6d48d7a22f8384db040eb0bdf'
+)
 
 build() {
 	local _src_dir="${srcdir}/${_pkgname}-${pkgver}"
@@ -87,7 +88,8 @@ build() {
 		--with-http_v2_module \
 		--with-file-aio \
 		--with-pcre-jit \
-		--with-stream
+		--with-stream \
+		--with-stream_ssl_module
 
 	make
 }
