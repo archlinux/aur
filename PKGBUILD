@@ -1,24 +1,23 @@
-# Maintainer: Thomas Schneider <maxmusterm@gmail.com>
+# Maintainer : Özgür Sarıer <echo b3pndXJzYXJpZXIxMDExNjAxMTE1QGdtYWlsLmNvbQo= | base64 -d>
+# Contributor: Thomas Schneider <maxmusterm@gmail.com>
 # I don't provide Packages for a higher version because they are not open source anymore (somehow)
 
 pkgname=fruit
 pkgver=2.1
-pkgrel=2
-pkgdesc="Fruit is a suprisingly strong, minimalistic chess engine"
-url="http://wbec-ridderkerk.nl/html/details1/Fruit.html"
+pkgrel=3
+pkgdesc="UCI chess engine developed by Fabien Letouzey"
+url="http://arctrix.com/nas/chess/fruit/"
 arch=('i686' 'x86_64')
 license=('GPL')
-makedepends=('gcc')
-source=(http://wbec-ridderkerk.nl/html/downloada/$pkgname/${pkgname}_21.zip)
-md5sums=(52828a94ecdf8a50127516a53e9ee2d0)
+source=("http://arctrix.com/nas/chess/$pkgname/${pkgname}_21_linux.zip")
+md5sums=("35e538708a036f58aa88a7acee6a2030")
 
 build() {
-  cd ${srcdir}/${pkgname}_21/src/
-  make || return 1
+  cd "${srcdir}/${pkgname}_21_linux/src/"
+  make
 }
 
 package() {
-  mkdir -p ${pkgdir}/usr/bin/
-  cp ${srcdir}/${pkgname}_21/src/fruit ${pkgdir}/usr/bin/
+  cd "${srcdir}/${pkgname}_21_linux/src/"
+  install -Dm0755 $pkgname ${pkgdir}/usr/bin/$pkgname
 }
-
