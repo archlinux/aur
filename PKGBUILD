@@ -3,7 +3,7 @@
 
 pkgname=moneydance
 pkgver=2017.1584
-pkgrel=2
+pkgrel=3
 epoch=
 pkgdesc="A personal finance manager for Mac, Windows and Linux"
 arch=('i686' 'x86_64')
@@ -25,10 +25,6 @@ source=('moneydance.sh'
         'moneydance.patch')
 source_i686=(http://infinitekind.com/stabledl/current/Moneydance_linux_x86.tar.gz)
 source_x86_64=(http://infinitekind.com/stabledl/current/Moneydance_linux_amd64.tar.gz)
-sha256sums=('2afec424853974a22690657376edfdbe7924a2adae7ea57c0e3aa98d8cd62947'
-            '4e48af0efb968910304767fe0bbab733aaa7b15f4d05b6a82c9fdac78351776f')
-sha256sums_i686=('1e6cab4c65c8f83f9b538f4e7c457da4fa5b1b38efe6e05718be074f22063d8e')
-sha256sums_x86_64=('15c50e9d480738d354e0758b476f13d98d0c8cfa22586558fc0e5fb81bac67c5')
 
 package() {
   # generate directories in $pkgdir
@@ -54,3 +50,7 @@ package() {
   install -m644 jars/com/moneydance/apps/md/view/gui/glyphs/appicon_128.png "$pkgdir/usr/share/pixmaps/$pkgname.png" || return 1
   install -m644 jars/*.jar "$pkgdir/usr/share/java/$pkgname" || return 1
 }
+md5sums=('5f95567e5a015721c6a80292d173a9e7'
+         'a2c3a2f8a672ca93d52cd8d207aef3a5')
+md5sums_i686=('c0083f3cbe5bf935c724b9f2be1d7dcf')
+md5sums_x86_64=('abc061e6676aa502dd31ba8094b69c1b')
