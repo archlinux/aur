@@ -1,0 +1,16 @@
+pkgbase = schemaspy
+	pkgdesc = Graphical Database Schema Metadata Browser
+	pkgver = 5.0.0
+	pkgrel = 1
+	url = http://schemaspy.sourceforge.net/
+	install = schemaspy.install
+	arch = any
+	license = LGPL2.1
+	depends = java-runtime>=6
+	provides = schemaspy
+	noextract = schemaSpy_5.0.0.jar
+	source = schemaSpy_5.0.0.jar::http://downloads.sourceforge.net/project/schemaspy/schemaspy/SchemaSpy%205.0.0/schemaSpy_5.0.0.jar
+	md5sums = d1a4ca73e932f8c22d6da0f563f42690
+
+pkgname = schemaspy
+
