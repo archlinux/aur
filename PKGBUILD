@@ -1,6 +1,6 @@
 # Maintainer: AbrarSyed <sacabrarsyed g-mail>
 pkgname=cloudfoundry-cli
-pkgver=6.22.1
+pkgver=6.22.2
 pkgrel=1
 pkgdesc="The official command line client for Cloud Foundry"
 arch=('i686' 'x86_64')
@@ -13,12 +13,12 @@ source=("license.txt::https://raw.githubusercontent.com/cloudfoundry/cli/v${pkgv
 source_i686=("cf-cli-${pkgver}-i686.tar.gz::https://cli.run.pivotal.io/stable?release=linux32-binary&version=${pkgver}&source=github-rel")
 source_x86_64=("cf-cli-${pkgver}-amd64.tar.gz::https://cli.run.pivotal.io/stable?release=linux64-binary&version=${pkgver}&source=github-rel")
 
-md5sums=('22a53954e4e0ec258dfce4391e905dac')
-md5sums_i686=('90e3793be140dbab735ffc2f4b866fa2')
-md5sums_x86_64=('08985124aad65de0d7cc0beb83f1db2d')
-sha256sums=('62c7a1e35f56406896d7aa7ca52d0cc0d272ac022b5d2796e7d6905db8a3636a')
-sha256sums_i686=('6948c3f0441d46b70db3b45902ab5cb971d233aa576ce0474820918264af58ca')
-sha256sums_x86_64=('739e1ca6bd64a8a2d6a048c5b088496a10af0e942d69448d77192b584ca3859c')
+md5sums=('2ee41112a44fe7014dce33e26468ba93')
+md5sums_i686=('32ccd46c24c7750d01d1d9b3ae3ebc2b')
+md5sums_x86_64=('17e7ceef9200faa30bcbb502ab6b96db')
+sha256sums=('0d542e0c8804e39aa7f37eb00da5a762149dc682d7829451287e11b938e94594')
+sha256sums_i686=('c4bf62f85ee901acf96936fdf32c259f1ca4b4192d2da212afc91a8f851cf7c8')
+sha256sums_x86_64=('8ecd65da834f43282c53ef3bd79df22faf08dc3465c8625e897c7d32994cb409')
 
 package() {
     # copy binary
