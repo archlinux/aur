@@ -1,0 +1,13 @@
+pkgbase = zhcal-git
+	pkgdesc = A Chinese calendar toolkit.
+	pkgver = r7.97f8af8
+	pkgrel = 1
+	url = https://github.com/910JQK/zhcal
+	arch = any
+	depends = python
+	provides = zhcal
+	source = zhcal::git+https://github.com/910JQK/zhcal.git
+	md5sums = SKIP
+
+pkgname = zhcal-git
+
