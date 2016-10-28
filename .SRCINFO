@@ -14,7 +14,7 @@ pkgbase = windowchef-git
 	optdepends = sxhkd
 	optdepends = wmutils-git
 	optdepends = lemonbar
-	provides = windowchef
+	conflicts = windowchef
 	source = windowchef-git::git+https://github.com/tudurom/windowchef.git
 	md5sums = SKIP
 

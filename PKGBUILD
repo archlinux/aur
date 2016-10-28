@@ -10,7 +10,7 @@ license=('ISC')
 depends=("libxcb" "xcb-util-wm")
 makedepends=("git")
 optdepends=("sxhkd" "wmutils-git" "lemonbar")
-provides=("windowchef")
+conflicts=('windowchef')
 source=("$pkgname::git+https://github.com/tudurom/windowchef.git")
 md5sums=("SKIP")
 
