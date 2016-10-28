@@ -5,7 +5,7 @@
 
 pkgname=skype
 pkgver=4.3.0.37
-pkgrel=7
+pkgrel=8
 arch=('i686' 'x86_64')
 pkgdesc="P2P software for high-quality voice communication"
 url="http://www.skype.com/"
@@ -14,6 +14,10 @@ options=('!strip')
 depends=(xdg-utils hicolor-icon-theme)
 optdepends=('pulseaudio: audio support/voice chatting'
             'pavucontrol: volume adjustment')
+source=(http://download.skype.com/linux/$pkgname-$pkgver.tar.bz2 PERMISSION skype-wrapper)
+md5sums=('95db8f2072b9acd6f79ed42da3d6db79'
+         '26e1772379d4d4df9471b6ed660a6d97'
+         '66985be1d7b953fb9f73ba6ed749812b')
 
 if [[ $CARCH == 'i686' ]]; then
   depends+=(libpulse qt4 libxss libxv libxcursor v4l-utils qtwebkit)
@@ -21,12 +25,9 @@ if [[ $CARCH == 'i686' ]]; then
 else
   depends+=(lib32-{libpulse,qt4,libxss,libxv,libxcursor,v4l-utils})
   optdepends+=('lib32-libcanberra: XDG sound support')
+  source+=(https://archive.archlinux.org/packages/l/lib32-qt4/lib32-qt4-4.8.7-4-x86_64.pkg.tar.xz)
+  md5sums+=('399f232b39602f42c318443471a258b6')
 fi
-
-source=(http://download.skype.com/linux/$pkgname-$pkgver.tar.bz2 PERMISSION skype-wrapper)
-md5sums=('95db8f2072b9acd6f79ed42da3d6db79'
-         '26e1772379d4d4df9471b6ed660a6d97'
-         '66985be1d7b953fb9f73ba6ed749812b')
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
@@ -71,4 +72,9 @@ package() {
     "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   install -Dm 644 "$srcdir/PERMISSION" \
     "$pkgdir/usr/share/licenses/$pkgname/PERMISSION"
+
+  # Fix for buggy libQtWebKit from lib32-qt4. https://bbs.archlinux.org/viewtopic.php?pid=1664995#p1664995
+  if [[ $CARCH == 'x86_64' ]]; then
+    install -D -m 644 "$srcdir/usr/lib32/libQtWebKit.so.4.9.4" "$pkgdir/usr/share/skype/lib/libQtWebKit.so.4"
+  fi
 }
