@@ -4,7 +4,7 @@ pkgname=tensorflow
 pkgver=0.11.0rc0+1547+g988b53e
 pkgrel=1
 
-pkgdesc="Computation library using data flow graphs for scalable machine learning"
+pkgdesc="Library for computation using data flow graphs for scalable machine learning"
 url="https://tensorflow.org/"
 license=('Apache2')
 arch=('i686' 'x86_64')
