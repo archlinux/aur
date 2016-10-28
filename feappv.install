@@ -1,0 +1,14 @@
+
+post_install() {
+cat << EOF
+
+Both an executable 'feappv' and the library have been installed. While
+the executable can be used for running the element/material functions that
+are already implemented, the archive is needed for compiling your own
+elements and material laws.
+
+A dummy example with a makefile and an empty user element can be found in
+/usr/share/feappv/.
+EOF
+}
+

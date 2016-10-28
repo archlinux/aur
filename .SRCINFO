@@ -1,0 +1,17 @@
+pkgbase = feappv
+	pkgdesc = A finite element analysis program
+	pkgver = 31
+	pkgrel = 1
+	url = http://www.ce.berkeley.edu/projects/feap/feappv
+	install = feappv.install
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = cmake
+	makedepends = gcc-fortran
+	depends = libx11
+	source = http://www.ce.berkeley.edu/projects/feap/feappv/feappv31.zip
+	md5sums = 6031611765744f2cf51b4d928be38a0b
+
+pkgname = feappv
+
