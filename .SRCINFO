@@ -1,6 +1,6 @@
 pkgbase = gupnp-tools
 	pkgdesc = GUPnP Tools are free replacements of Intel UPnP tools that use GUPnP
-	pkgver = 0.8.10
+	pkgver = 0.8.12
 	pkgrel = 1
 	url = http://www.gupnp.org/
 	arch = i686
@@ -17,8 +17,10 @@ pkgbase = gupnp-tools
 	depends = gupnp>=0.13
 	depends = intltool
 	options = !libtool
-	source = https://download.gnome.org/sources/gupnp-tools/0.8/gupnp-tools-0.8.10.tar.xz
-	md5sums = ad8423d036e98bc6f877528d6b846f6a
+	source = https://download.gnome.org/sources/gupnp-tools/0.8/gupnp-tools-0.8.12.tar.xz
+	source = missing-header.patch
+	md5sums = b922a6839128e672b05720ee8b28cec5
+	md5sums = 6cec7cacd086dccd0955023189ecc54f
 
 pkgname = gupnp-tools
 
