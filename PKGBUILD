@@ -2,26 +2,31 @@
 # Contributor: Mihai Militaru <mihai dot militaru at xmpp dot ro>
 
 pkgname=im
-_pkglongname=imtoolkit
-pkgver=3.8.2
-pkgrel=2
+pkgver=3.12
+pkgrel=1
 pkgdesc="Toolkit for Digital Imaging."
 arch=('i686' 'x86_64')
 url="http://www.tecgraf.puc-rio.br/im/"
 license=('MIT')
 depends=('gcc-libs' 'zlib')
-makedepends=('lua')
+makedepends=('lua' 'tar')
+source=("http://sourceforge.net/projects/imtoolkit/files/${pkgver}/Docs%20and%20Sources/${pkgname}-${pkgver}_Sources.tar.gz")
+noextract=("${pkgname}-${pkgver}_Sources.tar.gz")
+sha1sums=('b101433603645af96de88c406be48761369a7142')
 
-source=(http://sourceforge.net/projects/${_pkglongname}/files/${pkgver}/Docs%20and%20Sources/${pkgname}-${pkgver}_Sources.tar.gz)
-sha1sums=('1fd36cdef7c704ca6269fb2de697d439d361c9ba')
+prepare() {
+  cd "$srcdir"
+  # bdstar won't extract the 3.12 tarball
+  tar -xaf "${pkgname}-${pkgver}_Sources.tar.gz"
+  
+  cd "$pkgname"
+  find ./ -type d -exec chmod 0755 "{}" \;
+  find ./ -type f -exec chmod 0644 "{}" \;
+}
 
 build() {
   cd "$srcdir/$pkgname"
-  
-  find ./ -type d -exec chmod 0755 "{}" \;
-  find ./ -type f -exec chmod 0644 "{}" \;
-  
-  make -j1
+  make -j1 USE_LUA53=Yes
 }
 
 package() {
