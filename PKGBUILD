@@ -1,7 +1,7 @@
 # Maintainer: tuxflo
 
 pkgname=ecodmsclient
-pkgver=16.09.-1
+pkgver=16.09.1
 pkgrel=2
 pkgdesc="Document Management Software"
 arch=('x86_64')
