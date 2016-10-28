@@ -1,0 +1,22 @@
+pkgbase = vrep
+	pkgdesc = V-REP is the Swiss army knife among robot simulators. V-REP is used for fast algorithm development, factory automation simulations, fast prototyping and verification, robotics related education, remote monitoring, safety double-checking, etc.
+	pkgver = 3_3_2
+	pkgrel = 0.1
+	epoch = 1
+	url = http://www.coppeliarobotics.com/index.html
+	arch = i686
+	arch = x86_64
+	license = GPL
+	license = LGPL
+	options = !strip
+	source = http://coppeliarobotics.com/V-REP_PRO_EDU_V3_3_2_64_Linux.tar.gz
+	source = vrep.sh
+	md5sums = 48a3688f940e25f542fed01525023fb1
+	md5sums = a5f75fcd3c08b1a8c93f74997006e5d5
+	source_i686 = http://coppeliarobotics.com/V-REP_PRO_EDU_V3_3_2_Linux.tar.gz
+	source_i686 = vrep.sh
+	md5sums_i686 = aadd01183e4f5ac819aacd996d5e5d8d
+	md5sums_i686 = a5f75fcd3c08b1a8c93f74997006e5d5
+
+pkgname = vrep
+
