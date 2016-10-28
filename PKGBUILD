@@ -15,8 +15,10 @@ conflicts=('libtensorflow')
 makedepends=('git' 'bazel' 'gcc5' 'python-numpy')
 optdepends=('cuda: GPU support'
             'cudnn: GPU support')
-source=("git+https://github.com/tensorflow/tensorflow")
-md5sums=('SKIP')
+source=("git+https://github.com/tensorflow/tensorflow"
+        "${pkgname}.pc")
+md5sums=('SKIP'
+         'b08c95aee33ce1ec9664079e2cfe0cb2')
 
 pkgver() {
   cd ${srcdir}/tensorflow
@@ -63,6 +65,7 @@ package() {
   cd ${srcdir}/tensorflow
   install -Dm644 bazel-bin/tensorflow/libtensorflow_c.so ${pkgdir}/usr/lib/${pkgname}.so
   install -Dm644 tensorflow/c/c_api.h ${pkgdir}/usr/include/libtensorflow/c_api.h
+  install -Dm644 ../libtensorflow.pc ${pkgdir}/usr/lib/pkgconfig/${pkgname}.pc
   install -Dm644 LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
 }
 
