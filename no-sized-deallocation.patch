@@ -1,0 +1,20 @@
+--- a/include/functions.mk
++++ b/include/functions.mk
+@@ -26,3 +26,7 @@
+ cc-disable-warning = $(call try-run,\
+ 	$(CC) $(KBUILD_CPPFLAGS) $(KBUILD_CFLAGS) -W$(strip $(1)) -c -x c /dev/null -o "$$TMP",-Wno-$(strip $(1)))
+
++# cc-disable-flag
++# Usage: cflags-y += $(call cc-disable-flag,sized-deallocation)
++cc-disable-flag = $(call try-run,\
++	$(CC) $(KBUILD_CPPFLAGS) $(KBUILD_CFLAGS) -f$(strip $(1)) -c -x c /dev/null -o "$$TMP",-fno-$(strip $(1)))
+--- a/linutil/Makefile
++++ b/linutil/Makefile
+@@ -165,6 +165,7 @@
+ CXXFLAGS += -Wno-reorder -fcheck-new -fno-enforce-eh-specs
+ # 4.8+
+ CXXFLAGS += $(call cc-disable-warning,unused-local-typedefs)
++CXXFLAGS += $(call cc-disable-flag,sized-deallocation)
+ MSGFILE  = linutil.pot
+ XGTGLAGS = --keyword=_:1 -o$(O)/$(MSGFILE) -j --no-location
+

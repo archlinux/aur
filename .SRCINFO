@@ -1,0 +1,18 @@
+pkgbase = paragon-ufsd-tools
+	pkgdesc = Paragon NTFS & HFS+ tools. Requires purchase of Paragon NTFS & HFS+ for Linux Professional.
+	pkgver = 9.4
+	pkgrel = 1
+	url = https://www.paragon-software.com/home/ntfs-linux-professional/
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = tar
+	optdepends = paragon-ufsd-dkms-git: NTFS & HFS+ driver with write support
+	conflicts = ntfs-3g
+	conflicts = ntfsprogs
+	source = no-sized-deallocation.patch
+	sha256sums = d025eb4f5e8e9ee07dbd7a7edda5ea34e5cd51b4e6372f9474bbade11365fefc
+	sha256sums = f8be10d9723844e716416e322817e8efb0aadf8416fe658272ccde4f6b069f24
+
+pkgname = paragon-ufsd-tools
+
