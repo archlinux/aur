@@ -1,7 +1,7 @@
 # Maintainer: DonOregano <lars@foldspace.nu>
 
 pkgname=safir-sdk-core
-pkgver=6.3
+pkgver=6.3.3
 pkgrel=1
 pkgdesc="Safir SDK Core is a middleware and platform for creation of distributed soft real-time systems. It is Scalable, Reliable, Portable, and last but not least, it is Open!"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
@@ -11,15 +11,16 @@ groups=()
 depends=('boost' 'unixodbc' 'qt5-base' 'cmake' 'python' 'mono' 'java-environment>=6')
 makedepends=('git' 'subversion' 'doxygen' 'graphviz')
 install=install
-source=('https://github.com/SafirSDK/safir-sdk-core/releases/download/6.3/safir-sdk-core_6.3_src.tar.bz2'
+source=("https://github.com/SafirSDK/safir-sdk-core/releases/download/${pkgver}/safir-sdk-core_${pkgver}_src.tar.bz2"
         'safir-sdk-core.tmpfiles')
-sha1sums=('b5bfe17ba0dddc8fdf91f6501aaa3f21f076f76f'
+sha1sums=('3985e8a2453cb53816281db429f1823e40c04c15'
           'b2ef06ef3614b2f7243556cb8a28e4856e0c9e7b')
 backup=('etc/safir-sdk-core/typesystem.ini' 'etc/safir-sdk-core/logging.ini' 'etc/safir-sdk-core/locations.ini')
 
 build() {
   cd "$srcdir/${pkgname}_${pkgver}_src"
-  cmake -Wno-dev -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=RelWithDebInfo .
+  cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=RelWithDebInfo .
+
   make
 }
 
