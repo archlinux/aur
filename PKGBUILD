@@ -3,15 +3,15 @@
 
 pkgname=sunxi-tools-git
 _pkgname=sunxi-tools
-pkgver=v1.1.r225.g9bf1de0
+pkgver=v1.1.r331.g1351c82
 pkgrel=1
 pkgdesc="Tools to help hacking Allwinner based devices. (A10, A20, sun4i, sun7i)"
-arch=('i686' 'x86_64')
+arch=('any')
 url="https://github.com/linux-sunxi/sunxi-tools"
 license=('GPL')
 depends=(libusb)
 makedepends=(git libusb)
-conflicts=()
+conflicts=('sunxi-tools')
 provides=()
 source=('git+https://github.com/linux-sunxi/sunxi-tools.git')
 md5sums=('SKIP')
