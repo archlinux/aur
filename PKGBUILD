@@ -7,6 +7,12 @@
 # Contributor: Tom Newsom <Jeepster@gmx.co.uk>
 # Contributor: Paul Mattal <paul@archlinux.org>
 
+# If you get the "error: jni.h: No such file or directory",
+# you may need to install java-7-openjdk and switch to it
+# via archlinux-java before installing this package.
+# After the installation, you can set archlinux-java again
+# to whatever java version you like. 
+#
 # If you don't want CUDA/CUVID support, you can remove
 # depends_x86_64=('cuda') line and 
 # $_cuda \, $_cuvid \, $_libnpp \ lines from PKGBUILD
