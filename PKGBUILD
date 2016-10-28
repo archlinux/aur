@@ -1,6 +1,6 @@
 # Maintainer: Graham Edgecombe <graham@grahamedgecombe.com>
 pkgname=openrct2-git
-pkgver=r9650.70c26b4
+pkgver=r9936.a29bf99
 pkgrel=1
 pkgdesc='Open source re-implementation of Roller Coaster Tycoon 2 (requires full
          copy of the game)'
@@ -36,14 +36,7 @@ build() {
 }
 
 package() {
-  cd "$srcdir/$pkgname"
+  cd "$srcdir/$pkgname/build"
 
-  # Standard OpenRCT2 distribution files.
-  pushd build
   make DESTDIR="$pkgdir" install
-  popd
-
-  # ArchLinux-specific stuff (.desktop file and icon).
-  install -Dm644 distribution/linux/openrct2.desktop "$pkgdir/usr/share/applications/openrct2.desktop"
-  install -Dm644 resources/logo/icon_flag.svg "$pkgdir/usr/share/icons/hicolor/scalable/apps/openrct2.svg"
 }
