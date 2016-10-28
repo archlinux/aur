@@ -1,7 +1,7 @@
 pkgbase = moneydance
 	pkgdesc = A personal finance manager for Mac, Windows and Linux
 	pkgver = 2017.1584
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.moneydance.com/
 	arch = i686
 	arch = x86_64
