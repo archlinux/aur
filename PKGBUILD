@@ -2,7 +2,7 @@
 pkgbase=freeswitch-sounds
 pkgver=1.0.51
 pkgrel=1
-pkgdesc='Prompts for FreeSWITCH'
+pkgdesc='Voice recordings for FreeSWITCH'
 arch=('any')
 url='https://freeswitch.org/'
 license=('custom:none')
@@ -88,7 +88,7 @@ prepare() {
 _package() {
   pkgname="$1"
   pkgver="$2"
-  pkgdesc="$4 prompts for FreeSWITCH"
+  pkgdesc="$4 voice recordings for FreeSWITCH"
   cd "$3"
   find . -type f -print0 | while IFS= read -r -d '' _f; do
    install -D -m644 "${srcdir}/$3/$_f" "${pkgdir}/usr/share/freeswitch/sounds/$_f"
