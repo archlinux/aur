@@ -4,8 +4,8 @@
 # ALERTA: Estos perfiles son inestbles y pueden fallar.
 
 pkgname=firejail-extras
-pkgver=0.9.42
-pkgrel=13
+pkgver=0.9.44
+pkgrel=1
 pkgdesc="Extra profiles for firejail"
 arch=('any')
 url="https://github.com/chiraag-nataraj/firejail-profiles"
@@ -45,6 +45,20 @@ package() {
         rm   ${srcdir}/firejail-profiles/google-chrome.profile
         rm   ${srcdir}/firejail-profiles/libreoffice.profile
         rm   ${srcdir}/firejail-profiles/skype.profile
+        rm   ${srcdir}/firejail-profiles/flowblade.profile
+        rm   ${srcdir}/firejail-profiles/gimp.profile
+        rm   ${srcdir}/firejail-profiles/inkscape.profile
+        rm   ${srcdir}/firejail-profiles/mutt.profile
+        rm   ${srcdir}/firejail-profiles/openshot.profile
+        rm   ${srcdir}/firejail-profiles/qpdfview.profile
+        rm   ${srcdir}/firejail-profiles/synfigstudio.profile 
+        rm   ${srcdir}/firejail-profiles/virtualbox.profile       
+
+        rm   ${srcdir}/fe/7z.profile
+        rm   ${srcdir}/fe/feh.profile
+        rm   ${srcdir}/fe/keepass.profile
+        rm   ${srcdir}/fe/keepassx.profile
+        rm   ${srcdir}/fe/zathura.profile
 
 	mkdir -p "${pkgdir}/etc/firejail"
 
