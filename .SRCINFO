@@ -1,6 +1,6 @@
 pkgbase = windowchef
 	pkgdesc = A stacking window manager that cooks windows with orders from the Waitron
-	pkgver = 0.1.1
+	pkgver = 0.2
 	pkgrel = 1
 	url = https://github.com/tudurom/windowchef
 	arch = i686
@@ -14,8 +14,8 @@ pkgbase = windowchef
 	optdepends = wmutils-git
 	optdepends = lemonbar
 	provides = windowchef
-	source = https://github.com/tudurom/windowchef/archive/v0.1.1.tar.gz
-	md5sums = d90d1f35ead7f01c650f4457f188c687
+	source = https://github.com/tudurom/windowchef/archive/v0.2.tar.gz
+	md5sums = 3ec113dc8cb7b127fb45cbf6e3be9ce7
 
 pkgname = windowchef
 
