@@ -25,7 +25,7 @@ backup=(
   'etc/airoscript-ng/screenrc.airoscript'
 )
 options=('!makeflags' '!emptydirs')
-source=(https://airoscript.googlecode.com/files/${pkgname}-${_pkgver}-${_pkgverrc}.tar.gz)
+source=(https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/airoscript/airoscript-ng-${_pkgver}-${_pkgverrc}.tar.gz)
 sha512sums=('77056023e1671ae8ad719495cfef7189882e0ee3ed5db965e4798e13b75835afe700828be99efb8d3c6b95e11658aad768df0c7357f5e43f12ac13918ef49fd1')
 
 prepare() {
