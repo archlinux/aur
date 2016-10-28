@@ -1,6 +1,6 @@
 pkgbase = mudlet-dev
 	pkgdesc = Development prerelease of Mudlet
-	pkgver = 3.0delta
+	pkgver = 3.0epsilon
 	pkgrel = 1
 	url = http://www.mudlet.org
 	arch = i686
@@ -23,8 +23,8 @@ pkgbase = mudlet-dev
 	conflicts = mudlet
 	conflicts = mudlet-git
 	conflicts = mudlet-deb
-	source = http://www.mudlet.org/download/Mudlet_3.0.0-delta.tar.bz2
-	md5sums = b0fc709e6cb4332168e9b5f77747668a
+	source = http://www.mudlet.org/download/Mudlet_3.0.0-epsilon.tar.gz
+	sha1sums = 9be17cdddba7ac1559ba35ed4e12766e1a8289f5
 
 pkgname = mudlet-dev
 

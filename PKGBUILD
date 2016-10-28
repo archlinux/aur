@@ -1,8 +1,8 @@
 # Based on mudlet-git package, all credist go there
 # Contributor: Xabre <xabre @archlinux.info>
 pkgname=mudlet-dev
-pkgver=3.0delta
-pkgrel=2
+pkgver=3.0epsilon
+pkgrel=1
 pkgdesc="Development prerelease of Mudlet"
 arch=('i686' 'x86_64')
 url="http://www.mudlet.org"
@@ -11,15 +11,15 @@ depends=('yajl' 'qt5-base' 'qt5-multimedia' 'hunspell' 'libzip' 'glu' 'lua51' 'l
 makedepends=('boost' 'qt5-tools')
 provides=('mudlet')
 conflicts=('mudlet' 'mudlet-git' 'mudlet-deb')
-source=("http://www.mudlet.org/download/Mudlet_3.0.0-delta.tar.bz2")
-md5sums=('b0fc709e6cb4332168e9b5f77747668a')
+source=("http://www.mudlet.org/download/Mudlet_3.0.0-epsilon.tar.gz")
+sha1sums=('9be17cdddba7ac1559ba35ed4e12766e1a8289f5')
 
 prepare() {
     cd "$srcdir/src"
     sed -i 's,QString path = "../src/mudlet-lua/lua/LuaGlobal.lua";,QString path = "/usr/share/mudlet/lua/LuaGlobal.lua";,' TLuaInterpreter.cpp
     sed -i 's;"mudlet.app/Contents/Resources/mudlet-lua/lua/";"mudlet.app/Contents/Resources/mudlet-lua/lua/", "/usr/share/mudlet/lua/";' mudlet-lua/lua/LuaGlobal.lua
 
-##Fix building with Qt 5.5
+##Fix building with Qt 5.5+
     sed -i '/#include <QString>/ a #include <QDataStream>' ActionUnit.h
     sed -i '/#include <QTime>/ a #include <QDataStream>' ctelnet.h
 }
