@@ -1,5 +1,5 @@
 pkgname=aurutils-git
-pkgver=1.3.3.r34.g749e2c5
+pkgver=1.3.6.r24.gfc958aa
 pkgrel=1
 pkgdesc='helper tools for the arch user repository'
 arch=('any')
@@ -9,7 +9,7 @@ source=("git+$url")
 md5sums=('SKIP')
 conflicts=('aurutils')
 provides=('aurutils')
-depends=('pacman>=5.0' 'git' 'expac' 'jq' 'pacutils' 'repose')
+depends=('pacman>=5.0' 'git' 'expac' 'jq' 'pacutils')
 checkdepends=('shellcheck')
 makedepends=('git')
 optdepends=('devtools: systemd-nspawn support'
