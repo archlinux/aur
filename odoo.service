@@ -13,7 +13,7 @@ Group=odoo
 SyslogIdentifier=Odoo
 PIDFile=/run/odoo/odoo.pid
 ExecStartPre=/usr/bin/install -d -m755 -o odoo -g odoo /run/odoo
-ExecStart=/usr/bin/odoo.py -c $ODOO_CONF --pidfile=/run/odoo/odoo.pid $ODOO_ARGS
+ExecStart=/usr/bin/odoo -c $ODOO_CONF --pidfile=/run/odoo/odoo.pid $ODOO_ARGS
 ExecStop=/bin/kill $MAINPID
 
 [Install]
