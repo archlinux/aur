@@ -1,16 +1,16 @@
 # Maintainer: Karl-Felix Glatzer <karl.glatzer@gmx.de>
 pkgname=mingw-w64-orc
-pkgver=0.4.25
+pkgver=0.4.26
 pkgrel=1
-pkgdesc="The Oil Runtime Compiler (mingw-w64)"
+pkgdesc="Optimized Inner Loop Runtime Compiler (mingw-w64)"
 arch=('any')
 license=('custom')
-url="http://code.entropywave.com/projects/orc/"
+url="https://cgit.freedesktop.org/gstreamer/orc/"
 depends=('mingw-w64-crt')
 makedepends=('mingw-w64-gcc' 'mingw-w64-configure')
 options=('!strip' '!buildflags' '!libtool' 'staticlibs')
 source=(http://gstreamer.freedesktop.org/data/src/orc/orc-${pkgver}.tar.xz)
-md5sums=('8582a28b15f53110c88d8043d9f55bcf')
+sha256sums=('7d52fa80ef84988359c3434e1eea302d077a08987abdde6905678ebcad4fa649')
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 build () {
