@@ -19,6 +19,14 @@ pkgver() {
   git --git-dir="${srcdir}/extempore/.git" describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
+prepare() {
+  cd "${srcdir}/extempore"
+
+  # Do not hook up aot_extended on ALL. Otherwise it is run at make install,
+  # since it does not track build products.
+  sed -i 's/aot_extended ALL/aot_extended/g' CMakeLists.txt
+}
+
 build() {
   mkdir -p "${srcdir}/build"
   cd "${srcdir}/build"
@@ -35,8 +43,9 @@ build() {
 package() {
   cd "${srcdir}/build"
 
-  # TODO: fix CMakeLists.txt so it does not rebuild aot_extended at this point.
   make DESTDIR="${pkgdir}/" install
+
+  # TODO: add symlink or launcher script at /usr/bin
 }
 
 
