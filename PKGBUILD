@@ -1,8 +1,8 @@
 # Maintainer: Chocobo1
 
 pkgname=igb
-pkgver=5.3.5.3
-pkgrel=2
+pkgver=5.3.5.4
+pkgrel=1
 pkgdesc="Linux* Base Driver for Intel(R) Ethernet Network Connection"
 arch=('i686' 'x86_64')
 url="https://sourceforge.net/projects/e1000/files/igb%20stable/"
@@ -11,7 +11,7 @@ depends=('linux>=2.6.30')
 makedepends=('linux-headers>=2.6.30')
 install=$pkgname.install
 source=("$pkgname-$pkgver-src.tar.gz::https://downloads.sourceforge.net/project/e1000/igb%20stable/$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('4bee5e16cba82a390dc7ae6d930b0af0f6ac82939e7f17f1494ff8b59bbd62ba')
+sha256sums=('804fe3c5c3a65b4ce8681569175b62efd648240f5fbbc349689f14de0d3dee6d')
 
 
 build() {
