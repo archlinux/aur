@@ -16,26 +16,26 @@
 
 pkgname=ffmpeg-full-nvenc
 _pkgbasename=ffmpeg
-pkgver=3.1.5
+pkgver=3.2
 pkgrel=1
 epoch=1
 pkgdesc="Record, convert, and stream audio and video (all codecs including Nvidia NVENC)"
 arch=('i686' 'x86_64')
 url="http://ffmpeg.org/"
 license=('GPL' 'custom:UNREDISTRIBUTABLE')
-depends=('alsa-lib' 'bzip2' 'celt' 'chromaprint-fftw' 'faac' 'flite' 'fontconfig' 'frei0r-plugins'
+depends=('alsa-lib' 'bzip2' 'celt' 'chromaprint-fftw' 'flite' 'fontconfig' 'frei0r-plugins'
          'fribidi' 'glibc' 'gnutls' 'gsm' 'jack' 'kvazaar' 'ladspa' 'lame' 'libass' 
          'libavc1394' 'libbluray' 'libbs2b' 'libcaca' 'libcdio-paranoia' 'libcl' 'libdc1394'
          'libebur128' 'libfdk-aac' 'libgme' 'libiec61883' 'libilbc' 'libmfx-git' 'libmodplug'
          'libomxil-bellagio' 'libpulse' 'libsoxr' 'libssh' 'libtheora' 'libva' 'libvdpau' 'libwebp'
-         'libxv' 'mesa' 'netcdf' 'nut-multimedia-git' 'openal' 'opencore-amr' 'opencl-headers'
-         'opus' 'rubberband' 'rtmpdump' 'schroedinger' 'sdl' 'smbclient' 'speex' 'shine'
-         'tesseract' 'twolame' 'v4l-utils' 'vid.stab' 'vo-amrwbenc' 'libxcb' 'xvidcore' 
-         'wavpack' 'zeromq' 'zimg' 'zlib' 'zvbi' 'nvidia-utils'
+         'libxv' 'mesa' 'netcdf' 'nut-multimedia-git' 'openal' 'opencore-amr' 'opencl-headers' 
+         'openh264' 'openjpeg' 'libopenmpt-svn' 'opus' 'rubberband' 'rtmpdump' 'schroedinger' 
+         'sdl2' 'smbclient' 'speex' 'shine' 'tesseract' 'twolame' 'v4l-utils' 'vid.stab' 
+         'vo-amrwbenc' 'libxcb' 'xvidcore' 'wavpack' 'zeromq' 'zimg' 'zlib' 'zvbi'
          'libvorbisenc.so' 'libvorbis.so' 'libvpx.so' 'libx264.so' 'x265'
          'snappy' 'xavs' 'java-environment')
 depends_x86_64=('cuda')
-makedepends=('hardening-wrapper' 'libvdpau' 'nvidia-sdk' 'yasm')
+makedepends=('hardening-wrapper' 'libvdpau' 'yasm')
 optdepends=('avxsynth-git: for Avisynth support'
             'blackmagic-decklink-sdk: for Blackmagic DeckLink support; need to add --enable-decklink option in this PKGBUILD')
 optdepends_x86_64=('intel-media-sdk: for Intel QSV support (Experimental! See PKGBUILD of that package for additional info)')
@@ -46,7 +46,7 @@ provides=('libavcodec.so' 'libavdevice.so' 'libavfilter.so' 'libavformat.so'
 source=(https://ffmpeg.org/releases/$_pkgbasename-$pkgver.tar.xz{,.asc}
         'UNREDISTRIBUTABLE.txt')
 validpgpkeys=('FCF986EA15E6E293A5644F10B4322F04D67658D8')
-sha256sums=('49cc3105f7891c5637f8fabb1b75ebb19c9b5123b311a3ccc6182aa35d58b89a'
+sha256sums=('88f70c1b8cab108f494ecbab5ba302cdb35d59a84cea88008b5fe49be068d5da'
             'SKIP'
             'e0c1b126862072a71e18b9580a6b01afc76a54aa6e642d2c413ba0ac9d3010c4')
 
@@ -76,10 +76,9 @@ build() {
   ## if you have decklink-sdk installed
   ./configure \
     --prefix=/usr \
-    --extra-cflags="-I/usr/include/nvidia-sdk \
-                    ${_cudainc} \
-                    -I/usr/lib/jvm/$(archlinux-java get)/include \
-                    -I/usr/lib/jvm/$(archlinux-java get)/include/linux" \
+    --extra-cflags="-I/usr/lib/jvm/$(archlinux-java get)/include \
+                    -I/usr/lib/jvm/$(archlinux-java get)/include/linux \
+                    ${_cudainc}" \
     --extra-ldflags="${_cudalib} ${_intelsdklib}" \
     \
     --enable-rpath \
@@ -123,7 +122,6 @@ build() {
     --enable-libcelt \
     --enable-libdc1394 \
     --enable-libebur128 \
-    --enable-libfaac \
     --enable-libfdk-aac \
     --enable-libfreetype \
     --enable-libfribidi \
@@ -138,7 +136,9 @@ build() {
     --enable-libopencore-amrnb \
     --enable-libopencore-amrwb \
     --enable-libopencv \
-    --disable-libopenjpeg \
+    --enable-libopenh264 \
+    --enable-libopenjpeg \
+    --enable-libopenmpt \
     --enable-libopus \
     --enable-libpulse \
     --enable-librubberband \
@@ -177,7 +177,7 @@ build() {
     --enable-opencl \
     --enable-opengl \
     --enable-openssl \
-    --enable-sdl \
+    --enable-sdl2 \
     --enable-vaapi \
     --enable-vda \
     --enable-vdpau \
