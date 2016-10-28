@@ -1,6 +1,6 @@
 # Maintainer: Andrzej Giniewicz <gginiu@gmail.com>
 pkgname=python2-guiqwt
-pkgver=3.0.2
+pkgver=3.0.3
 pkgrel=1
 pkgdesc="Python library providing efficient 2D data-plotting features"
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ makedepends=('python2-setuptools' 'cython2')
 options=(!emptydirs)
 
 source=("https://github.com/PierreRaybaut/guiqwt/archive/v${pkgver}.tar.gz")
-md5sums=('f56ed23bca92a4c489a7ab44be95f0ec')
+md5sums=('732c114dcab35a5c51044cce50425309')
 
 build() {
   cd "$srcdir"/guiqwt-$pkgver
