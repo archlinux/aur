@@ -18,12 +18,12 @@ makedepends=('autoconf'
              'pkg-config')
 optdepends=('miniupnpc: build with support for UPnP')
 license=('MIT')
-source=(${pkgname%-core}-$pkgver.tar.gz::https://codeload.github.com/bitcoin/bitcoin/tar.gz/v$pkgver
+source=(https://bitcoin.org/bin/bitcoin-core-$pkgver/bitcoin-$pkgver.tar.gz
         bitcoin.conf
         bitcoin.logrotate
         bitcoin.service
         bitcoin-reindex.service)
-sha256sums=('97d4a1aea7aed957e76f8f5e6ba2a2bfc66c1fcbdaf76ee46bd0650e5957eaa9'
+sha256sums=('d8edbd797ff1c8266113e54d851a85def46ab82389abe7d7bd0d2827e74cecd7'
             'f581e8b24cb2b5d848b6a5e14b3f00f7b9efb5df66aaea8df05bbfb21665959a'
             '8f05207b586916d489b7d25a68eaacf6e678d7cbb5bfbac551903506b32f904f'
             '5e45f2ceaeb7bfa60aeb66ca4167068191eb4358af03f95ac70fd96d9b006349'
@@ -59,14 +59,6 @@ package() {
   msg2 'Installing license...'
   install -Dm 644 COPYING -t "$pkgdir/usr/share/licenses/${pkgname%-core}"
 
-  msg2 'Installing man pages...'
-  install -Dm 644 contrib/debian/manpages/bitcoind.1 \
-    -t "$pkgdir/usr/share/man/man1"
-  install -Dm 644 contrib/debian/manpages/bitcoin-cli.1 \
-    -t "$pkgdir/usr/share/man/man1"
-  install -Dm 644 contrib/debian/manpages/bitcoin.conf.5 \
-    -t "$pkgdir/usr/share/man/man5"
-
   msg2 'Installing documentation...'
   install -dm 755 "$pkgdir/usr/share/doc/bitcoin"
   for _doc in \
@@ -89,8 +81,4 @@ package() {
 
   msg2 'Installing bitcoin.logrotate...'
   install -Dm 644 "$srcdir/bitcoin.logrotate" "$pkgdir/etc/logrotate.d/bitcoin"
-
-  msg2 'Installing bash completion...'
-  install -Dm 644 contrib/bitcoind.bash-completion \
-    "$pkgdir/usr/share/bash-completion/completions/bitcoind"
 }
