@@ -1,0 +1,40 @@
+diff -ur dymo-cups-drivers-1.4.0.5/src/common/CupsFilter.h dymo-cups-drivers-1.4.0.5-patch/src/common/CupsFilter.h
+--- dymo-cups-drivers-1.4.0.5/src/common/CupsFilter.h	2012-02-07 08:22:37.000000000 -0500
++++ dymo-cups-drivers-1.4.0.5-patch/src/common/CupsFilter.h	2016-10-27 20:13:46.267013540 -0400
+@@ -23,6 +23,7 @@
+ 
+ #include <cups/cups.h>
+ #include <cups/raster.h>
++#include <cups/ppd.h>
+ #include <memory>
+ #include <string>
+ #include "CupsPrintEnvironment.h"
+diff -ur dymo-cups-drivers-1.4.0.5/src/lm/CupsFilterLabelManager.h dymo-cups-drivers-1.4.0.5-patch/src/lm/CupsFilterLabelManager.h
+--- dymo-cups-drivers-1.4.0.5/src/lm/CupsFilterLabelManager.h	2012-02-07 08:22:38.000000000 -0500
++++ dymo-cups-drivers-1.4.0.5-patch/src/lm/CupsFilterLabelManager.h	2016-10-27 20:14:00.407310094 -0400
+@@ -23,6 +23,7 @@
+ 
+ #include <cups/cups.h>
+ #include <cups/raster.h>
++#include <cups/ppd.h>
+ #include "LabelManagerDriver.h"
+ #include "LabelManagerLanguageMonitor.h"
+ #include "DummyLanguageMonitor.h"
+@@ -50,4 +51,4 @@
+ 
+ /*
+  * End of "$Id: CupsFilterLabelManager.h 14880 2011-03-31 16:29:05Z aleksandr $".
+- */
+\ No newline at end of file
++ */
+diff -ur dymo-cups-drivers-1.4.0.5/src/lw/CupsFilterLabelWriter.h dymo-cups-drivers-1.4.0.5-patch/src/lw/CupsFilterLabelWriter.h
+--- dymo-cups-drivers-1.4.0.5/src/lw/CupsFilterLabelWriter.h	2012-02-07 08:22:37.000000000 -0500
++++ dymo-cups-drivers-1.4.0.5-patch/src/lw/CupsFilterLabelWriter.h	2016-10-27 20:14:23.717798963 -0400
+@@ -23,6 +23,7 @@
+ 
+ #include <cups/cups.h>
+ #include <cups/raster.h>
++#include <cups/ppd.h>
+ #include "LabelWriterDriver.h"
+ #include "LabelWriterLanguageMonitor.h"
+ #include "DummyLanguageMonitor.h"
