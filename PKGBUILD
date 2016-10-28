@@ -3,13 +3,13 @@
 
 pkgname=openfwwf
 pkgver=5.2
-pkgrel=3
+pkgrel=4
 pkgdesc="Free firmware for some Broadcom 43xx series WLAN chips"
 arch=('any')
 url="http://www.ing.unibs.it/openfwwf/"
 license=('GPL2')
 makedepends=('b43-tools')
-source=(http://www.ing.unibs.it/openfwwf/firmware/$pkgname-$pkgver.tar.gz)
+source=(http://netweb.ing.unibs.it/~openfwwf/firmware/$pkgname-$pkgver.tar.gz)
 md5sums=('e045a135453274e439ae183f8498b0fa')
 
 prepare() {
