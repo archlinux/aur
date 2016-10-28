@@ -1,3 +1,17 @@
+2016-10-28 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
+  * 2.1.6.3-1:
+    Fixed ASF not shutting down when last Bot gets stopped.
+    Fixed a possible race condition in callback handler function that could lead to some ASF exceptions.
+    Fixed ASF not accepting trades from SteamMasterID when no TradingPreferences were chosen. Also added optional logic of accepting donation trades from ASF bots regardless of AcceptDonations enabled or not.
+  * 2.1.6.2:
+    [!] Added long-awaited support for Steam family sharing.
+    [!] Added support for auto-reload of modified configs.
+    [!] Improved trading module by replacing SteamTradeMatcher bot config property with TradingPreferences.
+    Added !redeem& command.
+    Added Paused bot config property.
+    Added support for Steam wallet codes (through !redeem and likewise).
+    Fixed logging in with SteamPassword containing non-ASCII characters.
+    Major code improvements, optimizations and bugfixes.
 2016-10-12 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
   * 2.1.5.4-1:
     Fixed regression of LoginLimiterDelay being falsely ignored on non-ASF 2FA accounts.
