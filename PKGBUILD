@@ -1,7 +1,7 @@
 # Maintainer: Myles English <myles at rockhead dot biz>
 pkgname=fiat-git
 pkgdesc="Supports generation of arbitrary order instances of the Lagrange elements on lines, triangles, and tetrahedra."
-pkgver=20140214
+pkgver=20161027
 pkgrel=1
 _branch=master
 arch=('i686' 'x86_64')
