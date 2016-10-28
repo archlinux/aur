@@ -34,6 +34,8 @@ build() {
 
 package() {
   cd "${srcdir}/build"
+
+  # TODO: fix CMakeLists.txt so it does not rebuild aot_extended at this point.
   make DESTDIR="${pkgdir}/" install
 }
 
