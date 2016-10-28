@@ -1,6 +1,6 @@
 # Maintainer: Andrzej Giniewicz <gginiu@gmail.com>
 pkgname=python2-guidata
-pkgver=1.7.5
+pkgver=1.7.6
 pkgrel=1
 pkgdesc="Python library generating graphical user interfaces for easy dataset editing and display"
 arch=('any')
@@ -13,7 +13,7 @@ makedepends=('python2-distribute' 'unzip')
 options=(!emptydirs)
 
 source=("https://github.com/PierreRaybaut/guidata/archive/v${pkgver}.tar.gz")
-md5sums=('de906bde15e13fa03dd0a02cdcfd671f')
+md5sums=('92a44558cdbba8fa12f6025280018231')
 
 build() {
   cd "$srcdir"/guidata-$pkgver
