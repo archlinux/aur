@@ -1,0 +1,8 @@
+post_install () {
+  echo "Before running zcashd you need to download the Sprout proving and verifying keys (911MB)"
+  echo
+  echo "$ zcutil-fetch-params"
+  echo
+  echo "For more information read https://github.com/zcash/zcash/wiki/Beta-Guide#get-started"
+}
+# vim:set ts=2 sw=2 et:

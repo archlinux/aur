@@ -1,0 +1,15 @@
+pkgbase = zcash
+	pkgdesc = Decentralized and open source cryptocurrency
+	pkgver = e7183d8
+	pkgrel = 1
+	url = https://z.cash
+	install = zcash.install
+	arch = any
+	license = MIT
+	makedepends = tar
+	provides = zcash
+	source = https://github.com/zcash/zcash/archive/v1.0.0-rc4.tar.gz
+	sha256sums = 8ab6b552ef2c4df4aaaa8e065a5ef00fdfb68875295f35e1a87093575b5029f5
+
+pkgname = zcash
+
