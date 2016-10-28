@@ -1,7 +1,7 @@
 # Maintainer: Myles English <myles at rockhead dot biz>
 pkgname=slepc
 pkgver=3.7.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Scalable library for Eigenvalue problem computations"
 arch=('i686' 'x86_64')
 url="http://www.grycap.upv.es/slepc"
@@ -58,6 +58,7 @@ package() {
     sed -i 's#'"${pkgdir}"'##g' "${pkgdir}${_install_dir}/lib/slepc/conf/uninstall.py"
     sed -i 's#'"${pkgdir}"'##g' "${pkgdir}${_install_dir}/lib/pkgconfig/SLEPc.pc"
     sed -i 's#'"${pkgdir}"'##g' "${pkgdir}${_install_dir}/lib/slepc/conf/modules/${pkgname}/${pkgver}"
+    sed -i 's#'"${_build_dir}"'#'"${_install_dir}"'#g' "${pkgdir}${_install_dir}/include/slepcconf.h"
 
     # remove logs containing references to the build dir
     rm -f "${pkgdir}${_install_dir}/lib/slepc/conf/configure.log"
