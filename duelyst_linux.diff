@@ -1,0 +1,21 @@
+58a59,60
+>   argv.token = '32432543254'
+> 
+62,74d63
+<   if (pkgJson.name === 'duelyst' && argv.token === undefined) {
+<     dialog.showMessageBox({
+<       type: 'error',
+<       title: 'ERROR',
+<       message: 'Please use the launcher to start Duelyst',
+<       detail: 'You cannot start the Duelyst executable directly.',
+<       buttons: []
+<     }, app.quit)
+<     return
+<   }
+< 
+< 	// if using steam, attempt to initialize steamworks api
+< 	// otherwise display dialog erroring out
+94c83
+<   if (process.platform === 'win32') setupWin32Shortcuts()
+---
+>   if (process.platform === 'win32' || process.platform === 'linux') setupWin32Shortcuts()

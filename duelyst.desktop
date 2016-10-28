@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Duelyst
+Comment=A collectible card game played on a grid-like board
+Generic Name=Collectible Card Game
+Exec=duelyst
+Icon=duelyst
+Type=Application
+StartupNotify=true
+Categories=Game;
