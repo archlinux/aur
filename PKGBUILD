@@ -1,14 +1,15 @@
 # Maintainer: Uncle Hunto <unclehunto äτ ÝãΗ00 Ð0τ ÇÖΜ>
 
 pkgname=bitcoin-gui-git
-pkgver=v0.13.0.r116.g4ed2627
+pkgver=v0.13.1.r1.g2e2388a
 pkgrel=1
-pkgdesc='Bitcoind, bitcoin-cli, bitcoin-tx, and bitcoin-qt, most recent stable branch, w/GUI and wallet'
+pkgdesc='Most recent stable branch, UPNP disabled, w/ Bitcoin binaries, dev tools, GUI, and wallet'
 arch=('i686' 'x86_64')
 url="https://bitcoin.org/en/download"
 license=('MIT')
-depends=('boost-libs' 'desktop-file-utils' 'libevent' 'qt5-base' 'protobuf' 'qrencode' 'openssl')
-makedepends=('boost' 'libevent' 'qt5-base' 'qt5-tools' 'qrencode' 'protobuf')
+depends=('boost-libs' 'desktop-file-utils' 'libevent' 'protobuf' 'qrencode' 'qt5-base' 'zeromq')
+makedepends=('git' 'boost' 'libevent' 'qt5-base' 'qt5-tools' 'qrencode' 'protobuf' 'zeromq')
+optdepends=('db4.8: Wallet portability/compatibility w/official binaries')
 provides=('bitcoin-daemon' 'bitcoin-cli' 'bitcoin-qt' 'bitcoin-tx')
 conflicts=('bitcoin-daemon' 'bitcoin-cli' 'bitcoin-qt' 'bitcoin-tx')
 install=bitcoin-qt.install
@@ -26,37 +27,25 @@ git describe --long --tags | sed -E 's/([^-]*-g)/r\1/;s/-/./g'
 
 build() {
   cd "$srcdir/bitcoin"
-
 	msg2 'Building...'
   CXXFLAGS="$CXXFLAGS -DBOOST_VARIANT_USE_RELAXED_GET_BY_DEFAULT=1"
 	./autogen.sh
-	./configure --prefix=/usr --with-incompatible-bdb --with-gui=qt5
-  make -j$(nproc)
+	./configure --prefix=/usr --with-incompatible-bdb --with-gui=qt5 --without-miniupnpc
+  make -j$(nproc) check
 }
 
 package() {
 	cd "$srcdir/bitcoin"
-
-	msg2 'Installing bitcoin-qt...'
-	install -Dm755 "$srcdir/bitcoin/src/qt/bitcoin-qt" "$pkgdir/usr/bin/bitcoin-qt"
+  make install DESTDIR="$pkgdir"
   install -Dm644 "$srcdir/bitcoin/share/pixmaps/bitcoin128.png"\
 								 "$pkgdir/usr/share/pixmaps/bitcoin128.png"
   install -Dm644 COPYING "$pkgdir/usr/share/licenses/$pkgname/COPYING"
 	cp "$srcdir/bitcoin/contrib/debian/bitcoin-qt.desktop" "$srcdir/bitcoin/bitcoin.desktop"
 	desktop-file-install -m 644 --dir="$pkgdir/usr/share/applications/" "bitcoin.desktop"
-
-	msg2 'Installing bitcoin-daemon...'
-	install -Dm755 "$srcdir/bitcoin/src/bitcoind" "$pkgdir/usr/bin/bitcoind"
   install -Dm644 "$srcdir/bitcoin/contrib/debian/examples/bitcoin.conf"\
 								 "$pkgdir/usr/share/doc/$pkgname/examples/bitcoin.conf"
   install -Dm644 "$srcdir/bitcoin/contrib/debian/manpages/bitcoind.1"\
 								 "$pkgdir/usr/share/man/man1/bitcoind.1"
   install -Dm644 "$srcdir/bitcoin/contrib/debian/manpages/bitcoin.conf.5"\
 								 "$pkgdir/usr/share/man/man5/bitcoin.conf.5"
-
-  msg2 'Installing bitcoin-cli...'
-	install -Dm755 "$srcdir/bitcoin/src/bitcoin-cli" "$pkgdir/usr/bin/bitcoin-cli"
-
-  msg2 'Installing bitcoin-tx...'
-	install -Dm755 "$srcdir/bitcoin/src/bitcoin-tx" "$pkgdir/usr/bin/bitcoin-tx"
 }
