@@ -1,0 +1,10 @@
+post_install() {
+  systemd-sysusers bluealsa.conf
+  systemd-tmpfiles --create bluealsa.conf
+  echo '# You have to grant BlueZ access to user bluealsa'
+  echo '# Add those lines to /etc/dbus-1/system.d/bluetooth.conf'
+  echo '<policy user="bluealsa">'
+  echo '  <allow send_destination="org.bluez"/>'
+  echo '</policy>'
+  echo '# Users can use this service when they are members of the "audio" group.'
+}
