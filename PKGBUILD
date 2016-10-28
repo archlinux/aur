@@ -2,7 +2,7 @@
 
 pkgname='texlive-vub'
 pkgver="1.1.0"
-pkgrel=1
+pkgrel=2
 pkgdesc='Provides the titlepage and style elements for the Vrije Universiteit Brussel.'
 url='https://gitlab.com/rubdos/texlive-vub/'
 license=(
@@ -22,7 +22,6 @@ depends=(
  'tex-gyre-fonts'
 )
 makedepends=(
- 'binutils'
 )
 checkdepends=(
 )
