@@ -3,9 +3,9 @@
 
 pkgname=cd
 _pkglongname=canvasdraw
-pkgver=5.7
-pkgrel=2
-pkgdesc="C platform-independent graphics library."
+pkgver=5.11
+pkgrel=1
+pkgdesc="C platform-independent graphics library, aka canvasdraw."
 arch=('i686' 'x86_64')
 url="http://www.tecgraf.puc-rio.br/cd/"
 license=('MIT')
@@ -13,22 +13,31 @@ makedepends=('freetype2' 'libx11' 'libxpm' 'libxmu' 'libxft' 'gtk2' 'lua')
 depends=('ftgl' 'im>=3.7' 'gtk2' 'pangox-compat')
 optdepends=('lua: bindings for Lua are available')
 
-source=("http://downloads.sourceforge.net/project/${_pkglongname}/${pkgver}/Docs%20and%20Sources/${pkgname}-${pkgver}_Sources.tar.gz")
-sha1sums=('370f6e3f595554197f71536f527533f910c509eb')
+source=("http://downloads.sourceforge.net/project/canvasdraw/${pkgver}/Docs%20and%20Sources/${pkgname}-${pkgver}_Sources.tar.gz")
+sha1sums=('9235250a53dc5e9841bf8b87e062df5aaf5fa1b3')
 
-build() 
-{
+prepare() {
+  cd "$srcdir/$pkgname"
+  # tweak this to run as not-root
+  sed -i 's/^Pause/#&/' config_lua_module
+  sed -i "s|\$TEC_LUA_LIB|$pkgdir&|" config_lua_module
+  sed -i 's/lib64/lib/' tec_uname
+}
+
+build() {
   cd "$srcdir/$pkgname"
   
   find ./ -type d -exec chmod 0755 "{}" \;
   find ./ -type f -exec chmod 0644 "{}" \;
-  
+
   make -j1
 }
 
 package() {
   cd "$srcdir/$pkgname"
-	
+
+  USE_LUA53=Yes bash config_lua_module
+
   mkdir -p "$pkgdir/usr/lib"
   pushd lib
   install -m644 Linux*/libcd*.a "$pkgdir/usr/lib/"
