@@ -4,7 +4,7 @@ pkgname='texlive-vub'
 pkgver="1.1.0"
 pkgrel=1
 pkgdesc='Provides the titlepage and style elements for the Vrije Universiteit Brussel.'
-url='https://huisstijl.vub.ac.be/'
+url='https://gitlab.com/rubdos/texlive-vub/'
 license=(
  'LPPL'
 )
