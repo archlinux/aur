@@ -23,7 +23,7 @@ build() {
 package() {
     cd "$srcdir/$pkgname-$pkgver/src"
 
-    _kernver=$(pacman -Q linux | sed -r 's#.* ([0-9]+\.[0-9]+).*#\1#')
+    _kernver=$(pacman -Q linux | grep -Po '(?<= )\d+\.\d+')
     _extramodules="/usr/lib/modules/extramodules-$_kernver-ARCH"
 
     find './' -name '*.ko' -exec gzip --force --fast {} \;
