@@ -1,12 +1,12 @@
 # Maintainer: Sandro Kalbermatter <info.kalsan [ät-symbol] valaiscom.ch>
 pkgname=schemaspygui
 pkgver=0.99
-pkgrel=1
+pkgrel=2
 pkgdesc="Graphical user interface for the tool SchemaSpy from John Currier"
 arch=(any)
 url="http://schemaspy.sourceforge.net/"
 license=(LGPL)
-depends=('java-runtime>=6', 'schemaspy', 'graphviz')
+depends=('java-runtime>=6' 'schemaspy' 'graphviz')
 provides=('schemaspygui')
 install=${pkgname}.install
 source=("schemaSpyGUI20090302.zip::http://downloads.sourceforge.net/project/schemaspygui/schemaspygui/SchemaSpyGUI%20Version%20$pkgver%20%2820090302%29%20-%20Linux%20bugfix/schemaSpyGUI20090302.zip")
