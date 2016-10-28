@@ -29,7 +29,7 @@ build() {
         -DPACKAGE=ON \
         ../extempore
 
-  make
+  make extempore aot_extended assets
 }
 
 package() {
