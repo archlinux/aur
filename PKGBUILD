@@ -3,11 +3,11 @@
 pkgname=resin-cli
 pkgdesc='Resin.io command line interface'
 pkgver=5.2.1
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://resin.io/'
 license=('APACHE')
-depends=('nodejs')
+depends=('nodejs>=6.0.0')
 makedepends=('npm')
 source=(http://registry.npmjs.org/$pkgname/-/${pkgname}-${pkgver}.tgz)
 noextract=(${pkgname}-${pkgver}.tgz)
