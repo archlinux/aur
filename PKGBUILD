@@ -45,7 +45,7 @@ _sounds=(
          'zh-hk:sinmei:8000:8KHz Chinese (Hong Kong)'
          'zh-hk:sinmei:16000:16KHz Chinese (Hong Kong)'
          'zh-hk:sinmei:32000:32KHz Chinese (Hong Kong)'
-         'zh-hk:sinmei:48000:64KHz Chinese (Hong Kong)'
+         'zh-hk:sinmei:48000:48KHz Chinese (Hong Kong)'
 )
 
 for _sound in "${_sounds[@]}"; do
