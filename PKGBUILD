@@ -3,13 +3,13 @@
 # Contributor: Marq Schneider <queueRAM@gmail.com>
 
 pkgname=kicad-git
-pkgver=r7108.4b6d283
+pkgver=r7336.86dcfeb
 pkgrel=1
 pkgdesc="Electronic schematic and printed circuit board (PCB) design tools"
 arch=('i686' 'x86_64')
-url="http://iut-tice.ujf-grenoble.fr/kicad/"
+url="http://kicad-pcb.org/"
 license=('GPL')
-depends=('glew' 'wxgtk' 'desktop-file-utils' 'boost-libs' 'python' 'glm')
+depends=('glew' 'wxgtk' 'desktop-file-utils' 'boost-libs' 'python' 'glm' 'curl')
 makedepends=('cmake' 'git' 'zlib' 'mesa' 'boost')
 optdepends=('kicad-library: for footprints')
 conflicts=('kicad' 'kicad-bzr')
