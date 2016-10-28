@@ -1,15 +1,15 @@
 # Contributor: Thaodan <theodorstormgrade@gmail.com>
 
 pkgname=wargus
-pkgver=2.2.7
-pkgrel=3
+pkgver=2.3.0
+pkgrel=1
 pkgdesc="Warcraft2 Mod that allows you to play Warcraft2 with the Stratagus engine"
 arch=("i686" "x86_64")
 url="http://wargus.sourceforge.net/"
 license=('GPL')
-depends=('stratagus=2.2.7' 'ffmpeg2theora' 'cdparanoia' 'timidity++' 'gtk2' )
-source=("http://launchpad.net/wargus/trunk/$pkgver/+download/${pkgname}_${pkgver}.orig.tar.gz")
-md5sums=('115ad5f85d6e6e2078bafb2f95599d6b')
+depends=( "stratagus=$pkgver" 'ffmpeg2theora' 'cdparanoia' 'timidity++' 'gtk2' 'tolua++' )
+source=("http://launchpad.net/wargus/trunk/${pkgver%%??}/+download/${pkgname}_${pkgver}.orig.tar.gz")
+md5sums=('46d5d1b64d78efc3ddaab119e4a2ea33')
 install=wargus.install
 
 build() {
