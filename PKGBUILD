@@ -26,7 +26,7 @@ provides=('libavcodec.so' 'libavdevice.so' 'libavfilter.so' 'libavformat.so'
           'libswscale.so' 'ffmpeg' 'ffmpeg-nvenc')
 conflicts=('ffmpeg' 'ffmpeg-nvenc' 'ffmpeg-full-nvenc')
 source=(http://ffmpeg.org/releases/ffmpeg-${pkgver}.tar.bz2)
-sha256sums=('7c99df75a4dc12d22c0f1ed11d0acf98cac1f8b5fe7a7434344b167f810bcbfa')
+sha256sums=('239a1e8637e21745e13e0eaa06ced0298dd86690dfd225ce3f8e1968dcad22b9')
 
 build() {
   cd ffmpeg-${pkgver}
