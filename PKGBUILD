@@ -1,7 +1,7 @@
 # Maintainer: Bram Swenson <bram at craniumisajar dot com> PGP-Key: 9E93532D99D643C0
 
 pkgname=zcash
-pkgver=e7183d8
+pkgver=v1.0.0.rc4
 pkgrel=1
 pkgdesc="Decentralized and open source cryptocurrency"
 arch=('any')
@@ -15,8 +15,7 @@ install="${pkgname}.install"
 _srcname=zcash-1.0.0-rc4
 
 pkgver() {
-  cd $_srcname
-  echo $(git describe --always | sed 's/-/./g')
+  echo ${pkgver}
 }
 
 build() {
