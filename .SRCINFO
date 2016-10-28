@@ -1,5 +1,5 @@
 pkgbase = linux-pf-lts
-	pkgver = 3.14.77
+	pkgver = 3.14.79
 	pkgrel = 1
 	url = http://pf.natalenko.name/
 	arch = i686
@@ -71,6 +71,8 @@ pkgbase = linux-pf-lts
 	source = https://www.kernel.org/pub/linux/kernel/v3.x/incr/patch-3.14.74-75.xz
 	source = https://www.kernel.org/pub/linux/kernel/v3.x/incr/patch-3.14.75-76.xz
 	source = https://www.kernel.org/pub/linux/kernel/v3.x/incr/patch-3.14.76-77.xz
+	source = https://www.kernel.org/pub/linux/kernel/v3.x/incr/patch-3.14.77-78.xz
+	source = https://www.kernel.org/pub/linux/kernel/v3.x/incr/patch-3.14.78-79.xz
 	source = bfs-sched.patch
 	sha256sums = 61558aa490855f42b6340d1a1596be47454909629327c49a5e4e10268065dffa
 	sha256sums = SKIP
@@ -131,6 +133,8 @@ pkgbase = linux-pf-lts
 	sha256sums = 3f29242be19c727b83e0b245ccc983c299024a6c48323a2d86fb428013a6607a
 	sha256sums = 989b0b046aad1b91e9b5e8a32e776d1d1f5577dc1aaf1c502295e67914b641dc
 	sha256sums = 3aa34b9d238b8df9bb0475547ae4df5771969310bd2cb9f1fe043abbbab5b320
+	sha256sums = 68d71fd2b4293c9b278c244c6b77e58f91174bcf0c2faafa695994ba36b3bd94
+	sha256sums = acfdf66c132c0e4d29adc062362db07ec3fa3006435314da0d80aeb25c96e287
 	sha256sums = a2789e82f980cb886ccea88d2d94e622ecde47b4eb006b94ceb6b944ed4c7833
 
 pkgname = linux-pf-lts
@@ -149,7 +153,7 @@ pkgname = linux-pf-lts
 	optdepends = nvidia-beta-all: NVIDIA drivers for all installed kernels
 	optdepends = modprobed_db: Keeps track of EVERY kernel module that has ever been probed. Useful for make localmodconfig.
 	provides = linux-pf-lts=3.14
-	provides = linux=3.14.77
+	provides = linux=3.14.79
 	provides = aufs3
 	conflicts = linux-pf-lts
 	replaces = aufs3
@@ -158,6 +162,6 @@ pkgname = linux-pf-lts
 pkgname = linux-pf-lts-headers
 	pkgdesc = Header files and scripts for building modules for linux-pf-lts kernel.
 	provides = linux-pf-lts-headers
-	provides = linux-headers=3.14.77
+	provides = linux-headers=3.14.79
 	conflicts = linux-pf-lts-headers
 
