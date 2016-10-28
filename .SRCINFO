@@ -1,15 +1,16 @@
 pkgbase = zcash
-	pkgdesc = Decentralized and open source cryptocurrency
-	pkgver = v1.0.0.rc4
+	pkgdesc = Zcash is a decentralized and open-source cryptocurrency that offers privacy and selective transparency of transactions.
+	pkgver = v1.0.0
 	pkgrel = 1
 	url = https://z.cash
 	install = zcash.install
 	arch = any
 	license = MIT
 	makedepends = tar
+	makedepends = git
 	provides = zcash
-	source = https://github.com/zcash/zcash/archive/v1.0.0-rc4.tar.gz
-	sha256sums = 8ab6b552ef2c4df4aaaa8e065a5ef00fdfb68875295f35e1a87093575b5029f5
+	source = https://github.com/zcash/zcash/archive/v1.0.0.tar.gz
+	sha256sums = de4a7d2b7ae4c4487ecf63c8c251a29c9d003922a25e45d748a80141415a732d
 
 pkgname = zcash
 

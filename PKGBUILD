@@ -1,18 +1,18 @@
 # Maintainer: Bram Swenson <bram at craniumisajar dot com> PGP-Key: 9E93532D99D643C0
 
 pkgname=zcash
-pkgver=v1.0.0.rc4
+pkgver=v1.0.0
 pkgrel=1
-pkgdesc="Decentralized and open source cryptocurrency"
+pkgdesc="Zcash is a decentralized and open-source cryptocurrency that offers privacy and selective transparency of transactions."
 arch=('any')
 url="https://z.cash"
 license=(MIT)
-makedepends=('tar')
+makedepends=('tar' 'git')
 provides=('zcash')
-source=("https://github.com/zcash/zcash/archive/v1.0.0-rc4.tar.gz")
-sha256sums=('8ab6b552ef2c4df4aaaa8e065a5ef00fdfb68875295f35e1a87093575b5029f5')
+source=("https://github.com/zcash/zcash/archive/v1.0.0.tar.gz")
+sha256sums=('de4a7d2b7ae4c4487ecf63c8c251a29c9d003922a25e45d748a80141415a732d')
 install="${pkgname}.install"
-_srcname=zcash-1.0.0-rc4
+_srcname=zcash-1.0.0
 
 pkgver() {
   echo ${pkgver}
