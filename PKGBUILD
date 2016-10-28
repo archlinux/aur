@@ -1,7 +1,7 @@
 # Maintainer: Manuel Schneider  <manuelschneid3r at googles mail>
 pkgname=albert
 pkgver=0.8.11
-pkgrel=2
+pkgrel=3
 pkgdesc="A DE agnostic omnilauncher."
 arch=('i686' 'x86_64')
 url="https://github.com/ManuelSchneid3r/albert"
