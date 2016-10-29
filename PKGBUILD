@@ -1,8 +1,8 @@
 # Maintainer:  Karl-Felix Glatzer <karl.glatzer@gmx.de>
 
 pkgname=mingw-w64-x265
-pkgver=2.0
-pkgrel=1
+pkgver=2.1
+pkgrel=2
 pkgdesc='Open Source H265/HEVC video encoder (mingw-w64)'
 arch=('any')
 url='https://bitbucket.org/multicoreware/x265'
@@ -12,8 +12,8 @@ options=(!strip !buildflags staticlibs)
 makedepends=('mingw-w64-cmake' 'yasm')
 source=("https://bitbucket.org/multicoreware/x265/downloads/x265_${pkgver}.tar.gz"
         mingw.patch)
-md5sums=('a4f16c0f054f002d6d8c9c6f7fb03026'
-         'd1f6263ad2f345673a8b0ece73f68338')
+sha256sums=('88fcb9af4ba52c0757ac9c0d8cd5ec79951a22905ae886897e06954353d6a643'
+            '90b8e81cd5228d2b147fbd6c000921d5b7593819e378d0e73c11c8de390796bc')
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 prepare() {
