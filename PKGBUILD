@@ -14,7 +14,7 @@ provides=batman-adv
 arch=('i686' 'x86_64')
 url='https://www.open-mesh.net/'
 license=('GPL')
-install='${pkgname}.install'
+install='batman-adv-optimized.install'
 source=("https://downloads.open-mesh.org/batman/releases/${_pkgname}-${pkgver}/${_pkgname}-${pkgver}.tar.gz"
         '${pkgname}.install'
         '0001-batman-adv-Fix-speedy-join-in-gateway-client-mode.patch'
