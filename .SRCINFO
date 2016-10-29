@@ -1,0 +1,18 @@
+pkgbase = isoquery
+	pkgdesc = Search and display ISO codes for countries, languages, currencies, and scripts.
+	pkgver = 3.2.1
+	pkgrel = 1
+	url = https://github.com/toddy15
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = python-docutils
+	makedepends = po4a
+	depends = glib2
+	depends = iso-codes
+	depends = json-glib
+	source = isoquery-3.2.1.tar.gz::https://github.com/toddy15/isoquery/archive/v3.2.1.tar.gz
+	sha256sums = bfdf71180c74b8bab0877052a0466bfa05935f166713b2a135516468451f7d91
+
+pkgname = isoquery
+
