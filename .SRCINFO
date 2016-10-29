@@ -1,17 +1,17 @@
 pkgbase = rukbi
-	pkgdesc = Alternative Ukrainian and Russian keyboard layouts with miscellaneous useful typographic characters, including Ilya Birman’s layout
-	pkgver = 3.5
-	pkgrel = 2
+	pkgdesc = Alternative keyboard layouts with miscellaneous useful typographic characters
+	pkgver = 4.0
+	pkgrel = 1
 	url = http://besisland.name/rukbi
 	install = arch-install
 	arch = any
-	license = GPLv3
+	license = GPL3
 	depends = xkeyboard-config
 	depends = python
-	source = http://rukbi.googlecode.com/files/rukbi-3.5.tar.bz2
-	md5sums = 58741c7318f99d8157675c454eff213c
-	sha1sums = 4195f1fd81535897a82f1f5a8aa2a851ccfe72a7
-	sha256sums = ddcd326976039c4b85424da09c01b5db89188321e9d86831716d077c566ea8b0
+	source = https://bitbucket.org/denyspopov/rukbi/downloads/rukbi-4.0.tar.bz2
+	md5sums = 0aa98a3726bccc85068c23694a0bddc4
+	sha1sums = 23a3cd199f33c90f050f219f86fd2a016b6b77bd
+	sha256sums = 0408284d758691d0dd87f42ec7fd69f01e53dfc73483a570260633131a6e7743
 
 pkgname = rukbi
 
