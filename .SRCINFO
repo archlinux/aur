@@ -1,6 +1,6 @@
 pkgbase = emacs25-git
 	pkgdesc = GNU Emacs. Version 25 development and maintenance branch.
-	pkgver = 25.1.50.125223
+	pkgver = 25.1.50.125246
 	pkgrel = 1
 	url = http://www.gnu.org/software/emacs/
 	arch = i686
@@ -8,12 +8,11 @@ pkgbase = emacs25-git
 	license = GPL
 	makedepends = git
 	depends = gpm
-	depends = giflib
 	depends = m17n-lib
-	depends = desktop-file-utils
 	depends = alsa-lib
 	depends = imagemagick
-	depends = gtk3
+	depends = 
+	depends = webkitgtk
 	provides = emacs
 	conflicts = emacs
 	source = emacs25-git::git://git.savannah.gnu.org/emacs.git#branch=emacs-25

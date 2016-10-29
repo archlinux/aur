@@ -31,27 +31,42 @@
 #######################################################################
 GTK3="YES"       # Leave empty to compile with gtk+ 2 support.
 LTO=             # Enable link-time optimization. Broken.
-CAIRO=           # Very broken for me. Use at own risk.
-XWIDGETS=        # Use GTK+ native widgets pulled from webkitgtk.
+CAIRO=           # Very broken for everyone. Use at own risk.
+XWIDGETS="YES"        # Use GTK+ native widgets pulled from webkitgtk.
+                 # Experimental as in: It will break and eat your homework.
 DOCS_HTML=       # Generate and install html documentation.
 DOCS_PDF=        # Generate and install pdf documentation.
 #######################################################################
 
 pkgname=emacs25-git
-pkgver=25.1.50.125223
+pkgver=25.1.50.125246
 pkgrel=1
 pkgdesc="GNU Emacs. Version 25 development and maintenance branch."
 arch=('i686' 'x86_64')
 url="http://www.gnu.org/software/emacs/"
 license=('GPL')
-depends=('gpm' 'giflib' 'm17n-lib' 'desktop-file-utils' 'alsa-lib' 'imagemagick')
+depends=('gpm' 'm17n-lib' 'alsa-lib' 'imagemagick')
 makedepends=('git')
 #######################################################################
 #######################################################################
-if [[ $GTK3 = "YES" ]]; then depends+=('gtk3'); else depends+=('gtk2'); fi
+if [[ $GTK3 = "YES" ]]; then
+    if [[ $XWIDGETS = "YES" ]]; 
+    then depends+=('');
+    else depends+=('gtk3'); fi
+  else
+    if [[ $XWIDGETS = "YES" ]]; 
+    then depends+=('');
+    else depends+=('gtk2'); 
+    fi
+fi
 if [[ $CAIRO = "YES" ]]; then depends+=('cairo'); fi
+if [[ $XWIDGETS = "" ]]; then depends+=('gnutls'); fi
 if [[ $XWIDGETS = "YES" ]]; then
-  if [[ $GTK3 = "YES" ]]; then depends+=('webkitgtk'); else depends+=('webkitgtk2'); fi
+  if [[ $GTK3 = "YES" ]]; then 
+    depends+=('webkitgtk'); 
+   else 
+    depends+=('webkitgtk2'); 
+  fi
 fi
 if [[ $DOCS_PDF = "YES" ]]; then makedepends+=('texlive-core'); fi
 #######################################################################
