@@ -84,6 +84,8 @@ build() {
       --disable-build-with-cxx --disable-build-poststage1-with-cxx \
       --program-suffix=-${_ver} --enable-version-specific-runtime-libs \
       --enable-checking=release
+
+  echo "" > gcc-4.7.4/gcc/doc/gcc.texi
   make -j2
 }
 
