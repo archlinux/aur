@@ -8,7 +8,7 @@ Type=forking
 EnvironmentFile=-/etc/default/slurm-llnl
 ExecStart=/usr/bin/slurmdbd $SLURMDBD_OPTIONS
 ExecReload=/bin/kill -HUP $MAINPID
-PIDFile=/run/slurm-llnl/slurmdbd.pid
+PIDFile=/run/slurmdbd.pid
 
 [Install]
 WantedBy=multi-user.target
