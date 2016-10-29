@@ -62,7 +62,7 @@ makedepends=('kmod' 'inetutils' 'bc')
 _bfqrel=v7r11
 _bfqver=v8r4
 _bfqpath="http://algo.ing.unimo.it/people/paolo/disk_sched/patches/4.8.0-${_bfqver}"
-#_bfqpath="https://pf.natalenko.name/mirrors/bfq/4.8.0-${_bfqrel}"
+#_bfqpath="https://pf.natalenko.name/mirrors/bfq/4.8.0-${_bfqver}"
 _gcc_patch="enable_additional_cpu_optimizations_for_gcc_v4.9+_kernel_v3.15+.patch"
 
 source=("http://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
