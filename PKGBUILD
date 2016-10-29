@@ -32,7 +32,7 @@
 GTK3="YES"       # Leave empty to compile with gtk+ 2 support.
 LTO=             # Enable link-time optimization. Broken.
 CAIRO=           # Very broken for everyone. Use at own risk.
-XWIDGETS="YES"        # Use GTK+ native widgets pulled from webkitgtk.
+XWIDGETS=        # Use GTK+ native widgets pulled from webkitgtk.
                  # Experimental as in: It will break and eat your homework.
 DOCS_HTML=       # Generate and install html documentation.
 DOCS_PDF=        # Generate and install pdf documentation.
