@@ -2,10 +2,8 @@
 Encoding=UTF-8
 Value=1.0
 Type=Application
-Name=SuperHexagon
-GenericName=SuperHexagon
+Name=Super Hexagon
 Comment=A minimal action game by Terry Cavanagh, with music by Chipzel
-Icon=superhexagon.png
-Exec=superhexagon
+Exec=/usr/bin/superhexagon
+Icon=superhexagon
 Categories=Game;
-Path=/opt/superhexagon
