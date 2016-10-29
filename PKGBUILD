@@ -1,4 +1,4 @@
-# Maintainer: Your Name <youremail@domain.com>
+# Maintainer: Joseph Lansdowne <J49137@gmail.com>
 pkgname=pyroom
 pkgver=0.4.1
 pkgrel=1
