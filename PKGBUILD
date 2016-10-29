@@ -3,7 +3,7 @@
 # Submitter: Fredrik Tegenfeldt <fredrik.tegenfeldt@unige.ch>
 
 pkgname=slurm-llnl-git
-pkgver=17.02.0.0pre2.r292.g3fa5a23
+pkgver=17.02.0.0pre2.r298.g3a3ae2a
 pkgrel=1
 pkgdesc="Simple Linux Utility for Resource Management (development version)"
 arch=('i686' 'x86_64')
@@ -36,11 +36,11 @@ source=("slurm-tmpfiles.conf"
 	"slurmd.service"
 	"slurmdbd.service"
 	"${pkgname}"::"git+https://github.com/SchedMD/slurm.git")
-md5sums=('51e4ae2c51edf7c145d1b87bec4c344e'
+md5sums=('0594bc219f4fd8a0e8663330619829b5'
          'cae664b8ef44d01783dade9088e25b53'
-         '06b572524c0e419d91c81d84c169358b'
-         '5cfc5d7bf548dd0dd3b6ac3708daccb7'
-         'da7a52451ce31c9269211b309f9ebe1c'
+         '5545ddfc50e0f517ee59fff054a3f866'
+         '54181476ea043812e658ddf08d997734'
+         'f5b4e5e24ad8bdffb12a3bdb6b08d2de'
          'SKIP')
 
 pkgver() {
@@ -99,7 +99,7 @@ package() {
 	install -D -m644 ../slurmctld.service   "${pkgdir}/usr/lib/systemd/system/slurmctld.service"
 	install -D -m644 ../slurmd.service      "${pkgdir}/usr/lib/systemd/system/slurmd.service"
 	install -D -m644 ../slurmdbd.service    "${pkgdir}/usr/lib/systemd/system/slurmdbd.service"
-	install -D -m644 ../slurm-tmpfiles.conf "${pkgdir}/etc/tmpfiles.d/slurm-tmpfiles.conf"
+	install -D -m644 ../slurm-tmpfiles.conf "${pkgdir}/usr/lib/tmpfiles.d/slurm-tmpfiles.conf"
 
 	# creating a log and a lib dir
 	install -d -m755 "${pkgdir}/var/log/slurm-llnl"
