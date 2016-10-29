@@ -1,0 +1,10 @@
+[Unit]
+Description=A file transfer program to keep remote files in sync
+After=network.target
+
+[Service]
+ExecStart=/usr/bin/rsync --daemon --no-detach
+RestartSec=1
+
+[Install]
+WantedBy=multi-user.target

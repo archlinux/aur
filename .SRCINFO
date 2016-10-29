@@ -1,0 +1,36 @@
+pkgbase = rsync-fadvise
+	pkgdesc = Patched version of rsync that prevents it from using disk cache through parameter --drop-cache
+	pkgver = 3.1.2
+	pkgrel = 1
+	url = http://rsync.samba.org/
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	depends = perl
+	depends = popt
+	depends = acl
+	depends = zlib
+	provides = rsync
+	conflicts = rsync
+	backup = etc/rsyncd.conf
+	backup = etc/xinetd.d/rsync
+	source = http://rsync.samba.org/ftp/rsync/src/rsync-3.1.2.tar.gz
+	source = http://rsync.samba.org/ftp/rsync/src/rsync-3.1.2.tar.gz.asc
+	source = https://tobi.oetiker.ch/patches/rsync-3.1.2-1-fadvise.patch
+	source = rsyncd.conf
+	source = rsync.xinetd
+	source = rsyncd.service
+	source = rsyncd.socket
+	source = rsyncd@.service
+	validpgpkeys = 0048C8B026D4C96F0E589C2F6C859FB14B96A8C5
+	md5sums = 0f758d7e000c0f7f7d3792610fad70cb
+	md5sums = SKIP
+	md5sums = b055468e7cbc5d829aa943f07916d458
+	md5sums = bce64d122a8e0f86872a4a21a03bc7f3
+	md5sums = ea3e9277dc908bc51f9eddc0f6b935c1
+	md5sums = f90ba7f3717028769d6f230a2402b5aa
+	md5sums = ae4c381e0c02d6132c7f6ded3f473041
+	md5sums = 53f94e613e0bc502d38dd61bd2cd7636
+
+pkgname = rsync-fadvise
+
