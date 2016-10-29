@@ -3,7 +3,7 @@
 pkgname=armory-bin
 pkgver=0.95.0
 _binver=0.95
-pkgrel=1
+pkgrel=2
 pkgdesc="Full-featured Bitcoin wallet management application (official binary)"
 arch=('x86_64')
 url="https://github.com/goatpig/BitcoinArmory"
@@ -21,7 +21,7 @@ check() {
   msg 'Validating GPG signature...'
   msg2 '(To disable: remove/rename check() function from PKGBUILD)'
   gpg --recv-key 8C5211764922589A
-  wget -q $_signatures -O 'sha256sum.txt.asc'
+  curl -sL $_signatures -o sha256sum.txt.asc
   msg2 "Downloading $_signatures"
   gpg --verify 'sha256sum.txt.asc'
   msg2 'GPG signature is valid.'
@@ -34,7 +34,6 @@ check() {
 package() {
   tar xvf "$srcdir/data.tar.gz"
 
-  sed -i 's/python/python2/g' usr/bin/armory
   find usr/lib/ -type f -exec sed -i 's|/usr/bin/python|/usr/bin/python2|g' {} \;
   find usr/lib/ -type f -exec sed -i 's|/usr/bin/env python|/usr/bin/env python2|g' {} \;
 
