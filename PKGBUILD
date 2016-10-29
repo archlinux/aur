@@ -2,7 +2,7 @@
 # Contributor: Michael Carlberg <c@rlberg.se>
 _pkgname=lemonbuddy
 pkgname="${_pkgname}-git"
-pkgver=2.1.8
+pkgver=2.1.9
 pkgrel=1
 pkgdesc="A fast and easy-to-use tool for Lemonbar"
 arch=("i686" "x86_64")
@@ -12,6 +12,7 @@ depends=("libxft" "xcb-util-wm")
 optdepends=("alsa-lib: volume module support"
             "libmpdclient: mpd module support"
             "wireless_tools: network module support"
+            "jsoncpp: i3 module support"
             "i3ipc-glib-git: i3 module support")
 makedepends=("cmake" "python2" "pkg-config" "boost")
 provides=("lemonbuddy")

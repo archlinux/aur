@@ -1,6 +1,6 @@
 pkgbase = lemonbuddy-git
 	pkgdesc = A fast and easy-to-use status bar
-	pkgver = 2.1.8
+	pkgver = 2.1.9
 	pkgrel = 1
 	url = https://github.com/jaagr/lemonbuddy
 	arch = i686
@@ -15,6 +15,7 @@ pkgbase = lemonbuddy-git
 	optdepends = alsa-lib: volume module support
 	optdepends = libmpdclient: mpd module support
 	optdepends = wireless_tools: network module support
+	optdepends = jsoncpp: i3 module support
 	optdepends = i3ipc-glib-git: i3 module support
 	provides = lemonbuddy
 	conflicts = lemonbuddy
