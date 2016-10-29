@@ -10,6 +10,7 @@ pkgbase = ecwolf
 	license = GPL
 	license = custom: ID
 	makedepends = cmake
+	makedepends = mercurial
 	depends = sdl
 	depends = libvorbis
 	depends = flac
