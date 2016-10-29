@@ -6,8 +6,9 @@
 
 pkgbase=linux-mptcp
 _srcname=mptcp
-_mptcpv=0.91
-pkgver=0.91.525553.1939096
+_mptcpv=0.91.1
+pkgver=0.91.1.r0.g214e17c
+epoch=1
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.multipath-tcp.org/"
@@ -30,7 +31,7 @@ _kernelname=${pkgbase#linux}
 
 pkgver() {
   cd "${srcdir}/${_srcname}"
-  echo ${_mptcpv}.$(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+  git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
@@ -88,7 +89,7 @@ build() {
 }
 
 _package() {
-  pkgdesc="The Linux kernel and modules with Multipath TCP support (based on linux 4.1.26)"
+  pkgdesc="The Linux kernel and modules with Multipath TCP support (based on linux 4.1.34)"
   [ "${pkgbase}" = "linux" ] && groups=('base')
   depends=('coreutils' 'linux-firmware' 'kmod' 'mkinitcpio>=0.7')
   optdepends=('crda: to set the correct wireless channels of your country'
