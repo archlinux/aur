@@ -3,7 +3,7 @@
 # Contributor: Filip Dvorak <fila@pruda.com>
 
 pkgname=mingw-w64-enca
-pkgver=1.18
+pkgver=1.19
 pkgrel=1
 pkgdesc="Charset analyser and converter (mingw-w64)"
 arch=('any')
@@ -14,10 +14,12 @@ depends=('mingw-w64-crt' 'mingw-w64-recode')
 makedepends=('mingw-w64-gcc' 'wine')
 source=("http://dl.cihar.com/enca/enca-${pkgver}.tar.xz"
         'configure.patch'
-        'tools.patch')
-md5sums=('a139a6ba811c375f50947f9c547b3306'
+        'tools.patch'
+	'autogen.patch')
+md5sums=('a7a0c152658e012db701a48ae8b79525'
          'ae3503817acea6331b3d443636704c7b'
-         'e62da0e6fd31affa1f3e15171dbc95c6')
+         'e62da0e6fd31affa1f3e15171dbc95c6'
+         '4c55e12e639524c584c436bfc93e4b11')
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 prepare() {
@@ -25,6 +27,7 @@ prepare() {
 
     patch -Np1 -i "${srcdir}/configure.patch"
     patch -Np1 -i "${srcdir}/tools.patch"
+    patch -Np1 -i "${srcdir}/autogen.patch"
     ./autogen.sh
     make distclean
 }
