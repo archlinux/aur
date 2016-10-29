@@ -3,7 +3,7 @@
 _pkgname=lemonbuddy
 pkgname="${_pkgname}-git"
 pkgver=2.1.7
-pkgrel=2
+pkgrel=3
 pkgdesc="A fast and easy-to-use tool for Lemonbar"
 arch=("i686" "x86_64")
 url="https://github.com/jaagr/lemonbuddy"
@@ -31,8 +31,9 @@ prepare() {
 }
 
 build() {
+  cd "${_pkgname}" || exit
   [ -x version.sh ] && ./version.sh >/dev/null
-  cd "${_pkgname}/build" || exit
+  cd build || exit
   cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr ..
   make
 }
