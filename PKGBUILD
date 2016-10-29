@@ -2,9 +2,10 @@
 #   Tobias Powalowski <tpowa@archlinux.org>
 #   Thomas Baechler <thomas@archlinux.org>
 #   graysky <graysky@archlinux.us>
+#   Ernestas Kulik <ernestas.kulik@gmail.com>
 
 pkgname=(linux-lts318-ck linux-lts318-ck-headers)
-pkgver=3.18.33
+pkgver=3.18.44
 pkgrel=1
 arch=(i686 x86_64)
 url="https://www.kernel.org/"
@@ -29,7 +30,7 @@ source=(
 )
 
 sha512sums=(
-    "684e8c0ab6acbe51e6937ca46f6c8ede731490cee3f9b38e2a0bfea77abc86df2ece557b2cd94f2e58cbcc8781ba0825b7e6e12a384142ac0c54b5509681750a"
+    "8a9ab2a1e02fb0f12a7d9b7689b4c87d0665bb2983d8e41d4ceba49d92d18327fec9fb0b91ad3b623b7be25eda2a84764f12f548d249453aca8b17e9475fe478"
 
     "SKIP"
     "c1ffbbc641cf9ef3c666a1fe5ddff1ab9ed02eb2d8d229d5ce4c11487609ef81beee456c211a658355c2061a108042929b9ad62914395a22077754ade4eb6a23"
