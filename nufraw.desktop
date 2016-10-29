@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=Nufraw
+Comment=A new version of the popular raw digital images manipulator ufraw.
+Exec=nufraw
+Icon=nufraw
+Terminal=false
+StartupNotify=false
+Categories=Application;
