@@ -4,26 +4,23 @@
 # Contributor: Andreas Radke <andyrtr@archlinux.org>
 
 pkgbase=mesa-nosystemd
-pkgname=('opencl-mesa-nosystemd' 'vulkan-intel-nosystemd' 'libva-mesa-driver-nosystemd' 'mesa-vdpau-nosystemd' 'mesa-nosystemd' 'mesa-libgl-nosystemd')
-pkgver=12.0.3
-pkgrel=3
+pkgname=('opencl-mesa-nosystemd' 'vulkan-intel-nosystemd' 'vulkan-radeon-nosystemd' 'libva-mesa-driver-nosystemd' 'mesa-vdpau-nosystemd' 'mesa-nosystemd' 'mesa-libgl-nosystemd')
+pkgver=13.0.0rc2
+pkgrel=1
 arch=('i686' 'x86_64')
 makedepends=('python2-mako' 'libxml2' 'libx11' 'glproto' 'libdrm' 'dri2proto' 'dri3proto' 'presentproto' 
              'libxshmfence' 'libxxf86vm' 'libxdamage' 'libvdpau' 'libva' 'wayland' 'elfutils' 'llvm'
              'libudev.so' 'libomxil-bellagio' 'libgcrypt' 'libclc' 'clang')
 url="http://mesa3d.sourceforge.net"
 license=('custom')
-source=(ftp://ftp.freedesktop.org/pub/mesa/${pkgver}/mesa-${pkgver}.tar.xz{,.sig}
+#source=(ftp://ftp.freedesktop.org/pub/mesa/${pkgver}/mesa-${pkgver}.tar.xz{,.sig}
+source=(ftp://ftp.freedesktop.org/pub/mesa/13.0.0/mesa-13.0.0-rc2.tar.xz{,.sig}
         LICENSE
-        remove-libpthread-stubs.patch
-        0001-loader-dri3-add-get_dri_screen-to-the-vtable.patch
-        0002-loader-dri3-import-prime-buffers-in-the-currently-bo.patch)
-sha256sums=('1dc86dd9b51272eee1fad3df65e18cda2e556ef1bc0b6e07cd750b9757f493b1'
+        remove-libpthread-stubs.patch)
+sha256sums=('ef26031a79b915e1643b0ffe5354f8ae774cd445f12b342abac63438f9735a43'
             'SKIP'
             '7fdc119cf53c8ca65396ea73f6d10af641ba41ea1dd2bd44a824726e01c8b3f2'
-            'd82c329e89754266eb1538df29b94d33692a66e3b6882b2cee78f4d5aab4a39c'
-            '52eb98eb6c9c644383d9743692aea302d84c4f89cfaa7a276b9276befc2d9780'
-            '96ad07e241d16802b14b14ca3d6965fa7f4f4b8c678d62ba375291910dce3b4a')
+            '75ab53ad44b95204c788a2988e97a5cb963bdbf6072a5466949a2afb79821c8f')
 validpgpkeys=('8703B6700E7EE06D7A39B8D6EDAE37B02CEB490D') # Emil Velikov <emil.l.velikov@gmail.com>
 
 prepare() {
@@ -31,11 +28,6 @@ prepare() {
 
   # Now mesa checks for libpthread-stubs - so remove the check
   patch -Np1 -i ../remove-libpthread-stubs.patch
-  
-  # fix FS#50240 - https://bugs.freedesktop.org/show_bug.cgi?id=71759
-  # merged upstream
-  patch -Np1 -i ../0001-loader-dri3-add-get_dri_screen-to-the-vtable.patch
-  patch -Np1 -i ../0002-loader-dri3-import-prime-buffers-in-the-currently-bo.patch
 
   autoreconf -fiv
 }
@@ -49,7 +41,7 @@ build() {
     --with-gallium-drivers=r300,r600,radeonsi,nouveau,svga,swrast,virgl \
     --with-dri-drivers=i915,i965,r200,radeon,nouveau,swrast \
     --with-egl-platforms=x11,drm,wayland \
-    --with-vulkan-drivers=intel \
+    --with-vulkan-drivers=intel,radeon \
     --with-sha1=libgcrypt \
     --disable-xvmc \
     --enable-gallium-llvm \
@@ -68,7 +60,8 @@ build() {
     --enable-vdpau \
     --enable-omx \
     --enable-nine \
-    --enable-opencl --enable-opencl-icd \
+    --enable-opencl \
+    --enable-opencl-icd \
     --with-clang-libdir=/usr/lib
 
   make
@@ -80,7 +73,7 @@ build() {
 
 package_opencl-mesa-nosystemd() {
   pkgdesc="OpenCL support for AMD/ATI Radeon mesa drivers"
-  depends=('expat' 'libdrm' 'elfutils' 'libxfixes' 'libxext' 'opencl-icd-loader' 'libclc' 'clang')
+  depends=('expat' 'libdrm' 'libelf' 'libgcrypt' 'opencl-icd-loader' 'libclc' 'clang')
   provides=('opencl-mesa')
   conflicts=('opencl-mesa')
   replaces=('opencl-mesa')
@@ -99,13 +92,13 @@ package_opencl-mesa-nosystemd() {
 
 package_vulkan-intel-nosystemd() {
   pkgdesc="Intel's Vulkan mesa driver"
-  depends=('vulkan-icd-loader' 'libgcrypt' 'wayland' 'libxcb')
+  depends=('vulkan-icd-loader' 'libgcrypt' 'wayland' 'libx11' 'libxshmfence')
   provides=('vulkan-intel')
   conflicts=('vulkan-intel')
   replaces=('vulkan-intel')
-  
-  install -m755 -d ${pkgdir}/usr/share
-  mv -v ${srcdir}/fakeinstall/usr/share/vulkan ${pkgdir}/usr/share/
+
+  install -m755 -d ${pkgdir}/usr/share/vulkan/icd.d
+  mv -v ${srcdir}/fakeinstall/usr/share/vulkan/icd.d/intel_icd*.json ${pkgdir}/usr/share/vulkan/icd.d/
 
   install -m755 -d ${pkgdir}/usr/{include/vulkan,lib}
   mv -v ${srcdir}/fakeinstall/usr/lib/libvulkan_intel.so ${pkgdir}/usr/lib/
@@ -115,12 +108,31 @@ package_vulkan-intel-nosystemd() {
   install -m644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/vulkan-intel/"
 }
 
+package_vulkan-radeon-nosystemd() {
+  pkgdesc="Radeon's Vulkan mesa driver"
+  depends=('vulkan-icd-loader' 'libgcrypt' 'wayland' 'libx11' 'libxshmfence' 'libelf'
+           'libdrm' 'llvm-libs')
+  provides=('vulkan-radeon')
+  conflicts=('vulkan-radeon')
+  replaces=('vulkan-radeon')
+
+  install -m755 -d ${pkgdir}/usr/share/vulkan/icd.d
+  mv -v ${srcdir}/fakeinstall/usr/share/vulkan/icd.d/radeon_icd*.json ${pkgdir}/usr/share/vulkan/icd.d/
+
+  install -m755 -d ${pkgdir}/usr/lib
+  mv -v ${srcdir}/fakeinstall/usr/lib/libvulkan_radeon.so ${pkgdir}/usr/lib/
+
+  install -m755 -d "${pkgdir}/usr/share/licenses/vulkan-radeon"
+  install -m644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/vulkan-radeon/"
+}
+
 package_libva-mesa-driver-nosystemd() {
   pkgdesc="VA-API implementation for gallium"
-  depends=('libdrm' 'libx11' 'llvm-libs' 'expat' 'elfutils')
+  depends=('libdrm' 'libx11' 'llvm-libs' 'expat' 'libelf' 'libgcrypt' 'libxshmfence')
   provides=('libva-mesa-driver')
   conflicts=('libva-mesa-driver')
   replaces=('libva-mesa-driver')
+
   install -m755 -d ${pkgdir}/usr/lib
   cp -rv ${srcdir}/fakeinstall/usr/lib/dri ${pkgdir}/usr/lib
    
@@ -130,10 +142,11 @@ package_libva-mesa-driver-nosystemd() {
 
 package_mesa-vdpau-nosystemd() {
   pkgdesc="Mesa VDPAU drivers"
-  depends=('libdrm' 'libx11' 'llvm-libs' 'expat' 'elfutils')
+  depends=('libdrm' 'libx11' 'llvm-libs' 'expat' 'libelf' 'libgcrypt' 'libxshmfence')
   provides=('mesa-vdpau')
   conflicts=('mesa-vdpau')
   replaces=('mesa-vdpau')
+
   install -m755 -d ${pkgdir}/usr/lib
   cp -rv ${srcdir}/fakeinstall/usr/lib/vdpau ${pkgdir}/usr/lib
    
@@ -143,8 +156,8 @@ package_mesa-vdpau-nosystemd() {
 
 package_mesa-nosystemd() {
   pkgdesc="an open-source implementation of the OpenGL specification"
-  depends=('libdrm' 'wayland' 'libxxf86vm' 'libxdamage' 'libxshmfence' 'libudev.so' 'elfutils' 
-           'libomxil-bellagio' 'expat' 'libgcrypt' 'libtxc_dxtn' 'llvm-libs')
+  depends=('libdrm' 'wayland' 'libxxf86vm' 'libxdamage' 'libxshmfence' 'libelf' 
+           'libomxil-bellagio' 'libgcrypt' 'libtxc_dxtn' 'llvm-libs')
   optdepends=('opengl-man-pages: for the OpenGL API man pages'
               'mesa-vdpau-nosystemd: for accelerated video playback'
               'libva-mesa-driver-nosystemd: for accelerated video playback')
