@@ -32,7 +32,7 @@ prepare() {
 
 build() {
   cd "${_pkgname}/build" || exit
-  cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr ..
+  cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr -DUPDATE_GIT_TAG=1 ..
   make
 }
 
