@@ -1,7 +1,6 @@
-# vim:set ts=2 sw=2 et:
-# $Id: PKGBUILD 163258 2016-02-24 08:19:13Z idevolder $
-# Maintainer: Sergej Pupykin <pupykin.s+arch@gmail.com>
-# Maintainer: BlackIkeEagle < ike DOT devolder AT gmail DOT com >
+# Maintainer graysky <graysky AT archlinux DOT us>
+# Contributor: Sergej Pupykin <pupykin.s+arch@gmail.com>
+# Contributor: BlackIkeEagle < ike DOT devolder AT gmail DOT com >
 # Contributor: Brad Fanella <bradfanella@archlinux.us>
 # Contributor: [vEX] <niechift.dot.vex.at.gmail.dot.com>
 # Contributor: Zeqadious <zeqadious.at.gmail.dot.com>
@@ -11,8 +10,8 @@
 
 pkgbase=kodi-pre-release
 pkgname=('kodi-pre-release' 'kodi-eventclients-pre-release')
-pkgver=16.1rc2
-_codename=Jarvis
+pkgver=17.0b5
+_codename=Krypton
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://kodi.tv"
@@ -25,12 +24,12 @@ makedepends=(
   'libvdpau' 'libxrandr' 'libxslt' 'lzo' 'mesa' 'nasm' 'nss-mdns'
   'python2-pillow' 'python2-pybluez' 'python2-simplejson' 'rtmpdump' 'sdl2'
   'sdl_image' 'shairplay' 'smbclient' 'swig' 'taglib' 'tinyxml' 'unzip' 'upower'
-  'yajl' 'zip' 'mesa' 'libdcadec.so' 'libcrossguid'
+  'yajl' 'zip' 'mesa' 'dcadec' 'libcrossguid'
 )
 source=(
   "kodi-$pkgver-$_codename.tar.gz::https://github.com/xbmc/xbmc/archive/$pkgver-$_codename.tar.gz"
 )
-sha256sums=('952049f46c1ee05975ca2e455d14409e5cfff4d37c7da36a9a109fdd50c7ad84')
+sha256sums=('e27d31c24de77f5f6b79f32d60c4e34787a2f98dcd7a15339ab6cf290f10a15d')
 
 prepare() {
   cd "$srcdir/xbmc-$pkgver-$_codename"
@@ -79,7 +78,8 @@ package_kodi-pre-release() {
     'bluez-libs' 'fribidi' 'glew' 'hicolor-icon-theme' 'libass' 'libcdio'
     'libjpeg-turbo' 'libmariadbclient' 'libmicrohttpd' 'libpulse' 'libssh'
     'libva' 'libxrandr' 'libxslt' 'lzo' 'sdl2' 'smbclient' 'taglib' 'tinyxml'
-    'yajl' 'mesa' 'libdcadec.so'
+    'yajl' 'mesa' 'dcadec' 'desktop-file-utils'
+    'libbluray' 'libvdpau'
   )
   optdepends=(
     'afpfs-ng: Apple shares support'
@@ -96,9 +96,8 @@ package_kodi-pre-release() {
     'upower: Display battery level'
     'lsb-release: log distro information in crashlog'
   )
-  install="kodi.install"
   provides=('xbmc' 'kodi')
-  conflicts=('xbmc' 'kodi')
+  conflicts=('xbmc' 'kodi' 'kodi-devel' 'kodi-git')
   replaces=('xbmc')
 
   cd "$srcdir/xbmc-$pkgver-$_codename"
