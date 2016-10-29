@@ -1,0 +1,19 @@
+pkgbase = gnucap-adms-git
+	pkgdesc = automatic device model compiler for Gnucap
+	pkgver = r578.e719276
+	pkgrel = 1
+	url = http://gnucap.org/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = gnucap-git
+	depends = boost
+	depends = adms-git
+	provides = gnucap-adms
+	conflicts = gnucap-adms
+	source = gnucap-adms::git+git://git.sv.gnu.org/gnucap/gnucap-adms.git#branch=unstable
+	md5sums = SKIP
+
+pkgname = gnucap-adms-git
+
