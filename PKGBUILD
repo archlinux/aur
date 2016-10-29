@@ -49,7 +49,7 @@ pkgname=(linux-ck linux-ck-headers)
 _kernelname=-ck
 _srcname=linux-4.8
 pkgver=4.8.5
-pkgrel=1
+pkgrel=2
 _ckpatchversion=5
 arch=('i686' 'x86_64')
 url="https://wiki.archlinux.org/index.php/Linux-ck"
@@ -114,10 +114,10 @@ prepare() {
 	fi
 	
 	if [ -n "$_1k_HZ_ticks" ]; then
-		msg "Setting tick rate to 1000 Hz..."
+		msg "Setting tick rate to 100 Hz..."
 		sed -i -e 's/^CONFIG_HZ_300=y/# CONFIG_HZ_300 is not set/' \
-			-i -e 's/^# CONFIG_HZ_1000 is not set/CONFIG_HZ_1000=y/' \
-			-i -e 's/^CONFIG_HZ=300/CONFIG_HZ=1000/' .config
+			-i -e 's/^# CONFIG_HZ_100 is not set/CONFIG_HZ_100=y/' \
+			-i -e 's/^CONFIG_HZ=300/CONFIG_HZ=100/' .config
 	fi
 	
 	if [ -n "$_NUMAdisable" ]; then
