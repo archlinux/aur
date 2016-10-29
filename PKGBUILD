@@ -1,15 +1,15 @@
 # Maintainer: Karl-Felix Glatzer <karl.glatzer@gmx.de>
 pkgname=mingw-w64-schroedinger
 pkgver=1.0.11
-pkgrel=3
+pkgrel=4
 pkgdesc="An implemenation of the Dirac video codec in ANSI C code (mingw-w64)"
 arch=('any')
-url="http://www.diracvideo.org/"
+url="https://launchpad.net/schroedinger"
 license=('GPL2' 'LGPL2.1' 'MPL' 'MIT')
 depends=('mingw-w64-crt' 'mingw-w64-orc')
 options=(!strip !buildflags !libtool staticlibs)
 makedepends=('mingw-w64-gcc' 'mingw-w64-pkg-config')
-source=(http://www.diracvideo.org/download/schroedinger/schroedinger-$pkgver.tar.gz
+source=(http://launchpad.net/schroedinger/trunk/$pkgver/+download/schroedinger-$pkgver.tar.gz
         'testsuite.patch')
 md5sums=('da6af08e564ca1157348fb8d92efc891'
          '0d6d1f8e78befde9bd04d7e93aed0b67')
