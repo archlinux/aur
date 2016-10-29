@@ -1,0 +1,18 @@
+pkgbase = gnucap-make-git
+	pkgdesc = Just in time compilation + loader for Gnucap
+	pkgver = r7.dcb5d84
+	pkgrel = 1
+	url = http://gnucap.org/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = gnucap-git
+	depends = gsl
+	provides = gnucap-make
+	conflicts = gnucap-make
+	source = gnucap-make::git+git://github.com/gnucap/gnucap-make.git
+	md5sums = SKIP
+
+pkgname = gnucap-make-git
+
