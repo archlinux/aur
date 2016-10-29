@@ -1,5 +1,6 @@
 
 post_install() {
-  echo "You need 'Wolfenstein 3D' or 'Spear of Destiny' data files under '~/.config/ecwolf'."
-  echo "You can get the shareware versions here: http://maniacsvault.net/ecwolf/download.php"
+  echo " => You need 'Wolfenstein 3D' or 'Spear of Destiny' data files, put them under"
+  echo "    '~/.config/ecwolf'. You can get the shareware versions here:"
+  echo "    http://maniacsvault.net/ecwolf/download.php"
 }
