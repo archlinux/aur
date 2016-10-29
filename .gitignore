@@ -1,3 +1,5 @@
 Anaconda3*.sh
 pkg/
 src/
+*.log
+*.pkg*

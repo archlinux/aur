@@ -1,7 +1,7 @@
---- a/pkgs/.install.py> 2016-10-22 22:34:35.739932506 +0800
-+++ b/pkgs/.install.py> 2016-10-22 22:35:04.296779737 +0800
+--- a/pkgs/.install.py	2016-10-22 22:34:35.739932506 +0800
++++ b/pkgs/.install.py	2016-10-22 22:35:04.296779737 +0800
 @@ -44,6 +44,7 @@
--
+ 
  # these may be changed in main()
  ROOT_PREFIX = sys.prefix
 +instdir = ROOT_PREFIX
@@ -10,8 +10,8 @@
  FORCE = False
 @@ -1145,7 +1146,9 @@
      return res
--
--
+ 
+ 
 -def update_prefix(path, new_prefix, placeholder, mode):
 +def update_prefix(path, new_prefix, placeholder, mode, instdir=None):
 +    if not instdir is None:
@@ -21,8 +21,8 @@
          # to escape backslashes - replace with unix-style path separators
 @@ -1269,7 +1272,7 @@
      return set(fn[:-5] for fn in os.listdir(meta_dir) if fn.endswith('.json'))
--
--
+ 
+ 
 -def link(prefix, dist, linktype=LINK_HARD):
 +def link(prefix, dist, linktype=LINK_HARD, instdir=None):
      '''
@@ -43,22 +43,22 @@
              assert dist in IDISTS
 -            link(prefix, dist, linktype)
 +            link(prefix, dist, linktype, instdir)
--
+ 
          for dist in duplicates_to_remove(linked(prefix), dists):
              meta_path = join(prefix, 'conda-meta', dist + '.json')
 @@ -1419,7 +1422,7 @@
--
--
+ 
+ 
  def main():
 -    global ROOT_PREFIX, PKGS_DIR, FORCE
 +    global ROOT_PREFIX, PKGS_DIR, FORCE, instdir
--
+ 
      p = OptionParser(description="conda link tool used by installers")
--
+ 
 @@ -1428,6 +1431,10 @@
                   default=abspath(join(__file__, '..', '..')),
                   help="root prefix (defaults to %default)")
--
+ 
 +    p.add_option('--instdir',
 +                 action="store",
 +                 help="install dir (defaults to root prefix)")
@@ -67,12 +67,12 @@
                   action="store",
                   help="perform post extract (on a single package), "
 @@ -1439,6 +1446,10 @@ p.error('no arguments expected')
--
+ 
      ROOT_PREFIX = opts.root_prefix
 +    if not opts.instdir:
 +        instdir = ROOT_PREFIX
 +    else:
 +        instdir = opts.instdir
      PKGS_DIR = join(ROOT_PREFIX, 'pkgs')
--
+ 
      if opts.post:
