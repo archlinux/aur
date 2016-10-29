@@ -1,0 +1,19 @@
+pkgbase = libretro-glupen64-git
+	pkgdesc = mupen64plus + GlideN64 + libretro
+	pkgver = 359.b42c669
+	pkgrel = 1
+	url = https://github.com/loganmc10/GLupeN64
+	arch = i686
+	arch = x86_64
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	license = GPLv3
+	makedepends = git
+	source = git+https://github.com/loganmc10/GLupeN64.git
+	source = https://raw.githubusercontent.com/libretro/libretro-super/master/dist/info/glupen64_libretro.info
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = libretro-glupen64-git
+
