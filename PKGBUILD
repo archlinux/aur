@@ -3,12 +3,12 @@
 
 pkgname=poldi
 pkgver=0.4.1
-pkgrel=8
+pkgrel=9
 pkgdesc="PAM module for authentication using a smartcard"
 arch=('i686' 'x86_64')
 url="http://www.g10code.com/p-poldi.html"
 license=("GPL")
-depends=('libgcrypt' 'libgpg-error' 'libksba' 'pam')
+depends=('libgcrypt' 'libgpg-error' 'libksba' 'pam' 'pcsclite')
 makedepends=()
 optdepends=('logrotate: To avoid giant logfiles')
 options=()
