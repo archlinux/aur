@@ -1,0 +1,19 @@
+pkgbase = gnucap-jack-git
+	pkgdesc = jack audio devices and simulation for Gnucap
+	pkgver = r11.a1ba7a1
+	pkgrel = 1
+	url = http://gnucap.org/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = gnucap-git
+	depends = boost
+	depends = jack
+	provides = gnucap-jack
+	conflicts = gnucap-jack
+	source = gnucap-jack::git+git://github.com/gnucap/gnucap-jack.git
+	md5sums = SKIP
+
+pkgname = gnucap-jack-git
+
