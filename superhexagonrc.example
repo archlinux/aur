@@ -1,6 +1,0 @@
-# Example superhexagonrc. Place this file in $HOME/.config/superhexagonrc
-
-# Display settings, because GLUT is a derp
-# Thanks to BtbN for this idea!
-export HEX_WIDTH=1920
-export HEX_HEIGHT=1200

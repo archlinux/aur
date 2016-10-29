@@ -2,27 +2,22 @@
 # Maintainer: Eric Anderson <ejona86@gmail.com>
 
 pkgname=superhexagon
-pkgver=16
-pkgrel=3
+pkgver=20160217
+_pkgver=02172016
+pkgrel=1
 pkgdesc="A minimal action game by Terry Cavanagh, with music by Chipzel"
 arch=('i686' 'x86_64')
 url="http://superhexagon.com/"
 license=('custom')
-depends=('gcc-libs' 'freeglut' 'libvorbis' 'openal' 'glu' 'glew1.6')
-install="${pkgname}.install"
-_binver="1366677959"
-_gamepkg="super-hexagon-linux-${pkgver}-bin-${_binver}"
+depends=('libvorbis' 'openal' 'sdl2' 'glew1.6')
+_gamepkg="${pkgname}-${_pkgver}-bin"
 source=("hib://${_gamepkg}"
         "${pkgname}.sh"
-        "${pkgname}.desktop"
-        "${pkgname}.install"
-        "${pkgname}rc.example")
+        "${pkgname}.desktop")
 noextract=("${_gamepkg}")
-sha256sums=('2c6dfba53cb0dd58bcbff519862af8bf7af67475845bb43207e9d32032efa104'
-            'fecc1b8c99b3758ac705ed6f8eedb8a28434d2cdd91deec457e192b3be280273'
-            '6399b71d49dc5e313b6e882ae51b33df043b945ae102666c94a457cfaac15e4e'
-            '1f183c17982dd12f8a1ccd310d27c74eaf83f550571e8e6ff77cc735f29b55b7'
-            'ff966f4106571ae7e5906bb2a47944d03c3ec73e280f43c1693da8121df80a81')
+sha256sums=('a27df72e78e8e7b791d213ab3da5b18f38b26c2d3a5dca58c47172bef6278527'
+            '03e3f570cb09c92980e24510846db477e5d61880d6457e4bb627df51058ea0f8'
+            '6399b71d49dc5e313b6e882ae51b33df043b945ae102666c94a457cfaac15e4e')
 
 # You can download the Humble Indie Bundle file manually, or you can configure
 # DLAGENTS in makepkg.conf to auto-download.
@@ -51,7 +46,7 @@ package()
   install -d "${pkgdir}/opt/${pkgname}"
   install -m644 -t "${pkgdir}/opt/${pkgname}" \
       Linux.README \
-      "${srcdir}/${pkgname}rc.example"
+      SuperHexagon.png
   cp -r data "${pkgdir}/opt/${pkgname}"
   rm "${pkgdir}/opt/${pkgname}/data/license.txt"
 
@@ -64,7 +59,8 @@ package()
   fi
 
   install -D -m755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
-  install -D -m644 "SuperHexagon.png" \
+  install -d "${pkgdir}/usr/share/pixmaps"
+  ln -s "/opt/${pkgname}/SuperHexagon.png" \
       "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
   install -D -m644 "${srcdir}/${pkgname}.desktop" \
       "${pkgdir}/usr/share/applications/${pkgname}.desktop"
