@@ -9,12 +9,11 @@
 _makenconfig=
 
 # NUMA is optimized for multi-socket motherboards. A single multi-core CPU can
-# actually run slower with NUMA enabled.
+# actually run slower with NUMA enabled. Most users will want to set this option
+# to enabled ... in other words, do not use NUMA on a single CPU system.
+#
 # See, https://bugs.archlinux.org/task/31187
 _NUMAdisable=y
-
-# Use a 1000 Hz timer (CK recommended) rather than the Arch default of 300 Hz.
-_1k_HZ_ticks=y
 
 # Compile ONLY probed modules
 # As of mainline 2.6.32, running with this option will only build the modules
@@ -49,7 +48,7 @@ pkgname=(linux-ck linux-ck-headers)
 _kernelname=-ck
 _srcname=linux-4.8
 pkgver=4.8.5
-pkgrel=2
+pkgrel=3
 _ckpatchversion=5
 arch=('i686' 'x86_64')
 url="https://wiki.archlinux.org/index.php/Linux-ck"
@@ -73,8 +72,8 @@ sha256sums=('3e9150065f193d3d94bcf46a1fe9f033c7ef7122ab71d75a7fb5a2f0c9a7e11a'
             'SKIP'
             'cb67d632c951cfc799472039afb59f47c2ad4aa00d326a0f9f3da3c5f2ef9cd7'
             'cf0f984ebfbb8ca8ffee1a12fd791437064b9ebe0712d6f813fd5681d4840791'
-            'd8752e44ea6025d7017bf84c7d56b3c224902adc657ecf0d5502a680a46d8c2d'
-            'df437a9a8346fa20fa5f74a967cd4299b398154c992dab65ddad27071908b26a'
+            'e63d02c41fbdeff8b5511177d5e67c8a6f5141951c21576d8dee4b0fc7bb03b4'
+            '58dba408b142d61d1ee2f59ad8a669e4e824e6838faa14597e0891f328342fea'
             '2b3ebf5446aa3cac279842ca00bc1f2d6b7ff1766915282c201d763dbf6ca07e'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99')
 validpgpkeys=(
@@ -93,10 +92,10 @@ prepare() {
 	# (relevant patch sent upstream: https://lkml.org/lkml/2011/7/26/227)
 	patch -p1 -i "${srcdir}/change-default-console-loglevel.patch"
 
-	# fix naming schema in EXTRAVERSION
+	# fix naming schema in EXTRAVERSION of ck patch set
 	sed -i -re "s/^(.EXTRAVERSION).*$/\1 = /" "${srcdir}/${_ckpatchname}"
 
-	msg "Patching source with ck patchset"
+	msg "Patching source with ck patchset including MuQSS"
 	patch -Np1 -i "${srcdir}/${_ckpatchname}"
 
 	# Patch source to enable more gcc CPU optimizatons via the make nconfig
@@ -113,13 +112,19 @@ prepare() {
 		cat "${srcdir}/config" > ./.config
 	fi
 	
-	if [ -n "$_1k_HZ_ticks" ]; then
-		msg "Setting tick rate to 100 Hz..."
-		sed -i -e 's/^CONFIG_HZ_300=y/# CONFIG_HZ_300 is not set/' \
-			-i -e 's/^# CONFIG_HZ_100 is not set/CONFIG_HZ_100=y/' \
-			-i -e 's/^CONFIG_HZ=300/CONFIG_HZ=100/' .config
-	fi
+	# MuQSS is now a tickless scheduler. That means it can maintain its
+	# guaranteed low latency even in a build configured with a low Hz tick rate.
+	# To that end, it is now defaulting to 100Hz, and it is recommended to use
+	# this as the default choice for it leads to more throughput and power
+	# savings as well.
+	#
+	# http://ck-hack.blogspot.com/2016/10/linux-48-ck5-muqss-version-0120.html
+	sed -i -e 's/^CONFIG_HZ_300=y/# CONFIG_HZ_300 is not set/' \
+		-i -e 's/^# CONFIG_HZ_100 is not set/CONFIG_HZ_100=y/' \
+		-i -e 's/^CONFIG_HZ=300/CONFIG_HZ=100/' .config
 	
+	### Optionally disable NUMA for 64-bit kernels only
+	# (x86 kernels do not support NUMA)
 	if [ -n "$_NUMAdisable" ]; then
 		if [ "${CARCH}" = "x86_64" ]; then
 			msg "Disabling NUMA from kernel config..."
@@ -208,8 +213,8 @@ build() {
 }
 
 package_linux-ck() {
-	pkgdesc='Linux Kernel with the ck4 patchset featuring MuQSS CPU scheduler v0.120'
-	#_Kpkgdesc='Linux Kernel and modules with the ck4 patchset featuring MuQSS CPU scheduler v0.120'
+	pkgdesc='Linux Kernel with the ck5 patchset featuring MuQSS CPU scheduler v0.120'
+	#_Kpkgdesc='Linux Kernel and modules with the ck5 patchset featuring MuQSS CPU scheduler v0.120'
 	#pkgdesc="${_Kpkgdesc}"
 	depends=('coreutils' 'linux-firmware' 'mkinitcpio>=0.7')
 	optdepends=('crda: to set the correct wireless channels of your country' 'nvidia-ck: nVidia drivers for linux-ck' 'modprobed-db: Keeps track of EVERY kernel module that has ever been probed - useful for those of us who make localmodconfig')
