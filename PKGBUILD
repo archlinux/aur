@@ -33,7 +33,5 @@ build() {
 
 package() {
   make -C build DESTDIR=${pkgdir} install
-  mkdir -p ${pkgdir}/usr/lib/cmake
-  mv ${pkgdir}/usr/cmake ${pkgdir}/usr/lib/cmake/nlohmann_json
   install -Dm644 json/LICENSE.MIT ${pkgdir}/usr/share/licenses/nlohmann_json/LICENSE
 }
