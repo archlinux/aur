@@ -1,7 +1,7 @@
 # Maintainer: carstene1ns <arch carsten-teibes de> - http://git.io/ctPKG
 
 pkgname=ecwolf-hg
-pkgver=1.3.r6.bf7ee7fbc2b0
+pkgver=1.3.3.r3.f002d4054728
 pkgrel=1
 pkgdesc='Advanced source port of "Wolfenstein 3D" and "Spear of Destiny" based on Wolf4SDL (development version)'
 arch=('i686' 'x86_64')
@@ -9,36 +9,46 @@ url="http://maniacsvault.net/ecwolf"
 license=('GPL' 'custom: ID')
 provides=('ecwolf')
 conflicts=('ecwolf')
-depends=('sdl_mixer' 'libjpeg' 'gtk2')
+depends=('sdl_net' 'libvorbis' 'flac' 'opusfile' 'libmikmod' 'fluidsynth' 'libjpeg' 'gtk2')
 makedepends=('mercurial' 'cmake')
 optdepends=('wolf3d-shareware: Demo version of Wolfenstein 3D')
 install=ecwolf.install
 source=("hg+https://bitbucket.org/Blzut3/ecwolf"
+        "hg+https://bitbucket.org/Blzut3/sdl_mixer-for-ecwolf"
         "ecwolf-datadirs.patch")
 sha256sums=('SKIP'
-            'f99391f9139fc796dc69b081132ca76ce2ecb16978b29a1e864969946c15283c')
+            'SKIP'
+            '46d59c0a25e34e32fc73cef60c146103cb3e57bc7c904c048371c3eccb89e183')
 
 pkgver() {
   cd ecwolf
-  _tag=$(hg tags -q | sort -r | grep "^[0-9]\.[0-9]" | head -n1)
-  _commits=$(hg log --template "{node}\n" -r $_tag:tip | wc -l)
-  printf "%s.r%s.%s" "$_tag" "$_commits" "$(hg identify -i)"
+  local _tag=$(hg tags -q | sort -r | grep "^[0-9]\.[0-9]" | head -n1)
+  local _commits=$(hg log --template "{node}\n" -r $_tag:tip | wc -l)
+  local _hash=$(hg identify -i | sed "s/+//")
+  printf "%s.r%s.%s" "$_tag" "$_commits" "$_hash"
 }
 
 prepare() {
-  # reset build folder
-  rm -rf build
-  mkdir build
+  # reset build folders
+  rm -rf build mixer-build
+  mkdir build mixer-build
 
   # data dir hack (using a patch, so we can see it fail, when the source has changed)
-  patch -Np0 <ecwolf-datadirs.patch
+  patch -Np0 < ecwolf-datadirs.patch
 }
 
 build() {
-  cd build
+  msg2 "Building custom SDL_mixer..."
+  cd mixer-build
+  cmake ../sdl_mixer-for-ecwolf
+  make
 
-  # build patch utility and enable gpl licensed opl emulator
-  cmake ../ecwolf -DBUILD_PATCHUTIL=ON -DGPL=ON
+  msg2 "Building ecwolf..."
+  cd ../build
+  # build patch utility, enable gpl licensed opl emulator and force custom SDL2_mixer with dependency libraries
+  cmake ../ecwolf -DBUILD_PATCHUTIL=ON -DGPL=ON \
+    -DSDLMIXER_INCLUDE_DIR="$srcdir/sdl_mixer-for-ecwolf" \
+    -DSDLMIXER_LIBRARY="$srcdir/mixer-build/libSDL_mixer.a;-lfluidsynth;-lvorbisfile;-lvorbis;-lopusfile;-lopus;-lFLAC;-lmikmod;-logg"
   make
 }
 

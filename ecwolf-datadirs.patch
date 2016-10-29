@@ -1,7 +1,7 @@
-diff -Naur ecwolf.old/src/wl_iwad.cpp ecwolf/src/wl_iwad.cpp
---- ecwolf.old/src/wl_iwad.cpp	2014-05-25 09:17:58.000000000 +0200
-+++ ecwolf/src/wl_iwad.cpp	2014-06-04 11:24:40.778863092 +0200
-@@ -430,7 +430,7 @@
+diff -Naur -x.hg ecwolf.old/src/wl_iwad.cpp ecwolf/src/wl_iwad.cpp
+--- ecwolf.old/src/wl_iwad.cpp	2016-10-29 12:08:37.510265126 +0200
++++ ecwolf/src/wl_iwad.cpp	2016-10-29 13:09:29.469624116 +0200
+@@ -481,7 +481,7 @@
  	int defaultIWad = config.GetSetting("DefaultIWad")->GetInteger();
  
  	bool useProgdir = false;
@@ -10,7 +10,7 @@ diff -Naur ecwolf.old/src/wl_iwad.cpp ecwolf/src/wl_iwad.cpp
  	if(!datawadRes)
  	{
  		useProgdir = true;
-@@ -493,7 +493,7 @@
+@@ -544,7 +544,7 @@
  	}
  	while(split != 0);
  
@@ -19,12 +19,12 @@ diff -Naur ecwolf.old/src/wl_iwad.cpp ecwolf/src/wl_iwad.cpp
  
  	// Look for a steam install. (Basically from ZDoom)
  	{
-@@ -558,7 +558,7 @@
+@@ -639,7 +639,7 @@
  	selectedGame = &iwadTypes[base.Type];
  
  	if(!useProgdir)
 -		wadfiles.Push(datawad);
 +		wadfiles.Push("/usr/share/ecwolf/ecwolf.pk3");
  	else
- 		wadfiles.Push(progdir + "/" + datawad);
+ 		wadfiles.Push(progdir + PATH_SEPARATOR + datawad);
  	for(unsigned int i = 0;i < base.Path.Size();++i)
