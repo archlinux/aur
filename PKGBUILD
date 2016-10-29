@@ -16,7 +16,7 @@ url='https://www.open-mesh.net/'
 license=('GPL')
 install='batman-adv-optimized.install'
 source=("https://downloads.open-mesh.org/batman/releases/${_pkgname}-${pkgver}/${_pkgname}-${pkgver}.tar.gz"
-        '${pkgname}.install'
+        'batman-adv-optimized.install'
         '0001-batman-adv-Fix-speedy-join-in-gateway-client-mode.patch'
         '1001-batman-adv-introduce-no_rebroadcast-option.patch'
         '1002-batman-adv-decrease-maximum-fragment-size.patch'
