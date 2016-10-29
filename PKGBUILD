@@ -50,14 +50,9 @@ makedepends=('git')
 #######################################################################
 #######################################################################
 if [[ $GTK3 = "YES" ]]; then
-    if [[ $XWIDGETS = "YES" ]]; 
-    then depends+=('');
-    else depends+=('gtk3'); fi
-  else
-    if [[ $XWIDGETS = "YES" ]]; 
-    then depends+=('');
-    else depends+=('gtk2'); 
-    fi
+  depends+=('gtk3');
+else
+  depends+=('gtk2'); 
 fi
 if [[ $CAIRO = "YES" ]]; then depends+=('cairo'); fi
 if [[ $XWIDGETS = "" ]]; then depends+=('gnutls'); fi
