@@ -4,8 +4,8 @@
 pkgname=elogind-git
 _pkgname=elogind
 pkgver=219.14.6d224ff
-pkgrel=1
-pkgdesc="The systemd project's logind, extracted to a standalone package"
+pkgrel=2
+pkgdesc="The systemd project's logind, extracted to a standalone package for use on systems without systemd installed"
 arch=('i686' 'x86_64')
 url="https://github.com/wingo/elogind.git"
 license=('GPL')
