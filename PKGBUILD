@@ -1,16 +1,9 @@
 # Maintainer: Karol "Kenji Takahashi" Woźniak <kenji.sx>
 # Contributor: Jakob Gahde <j5lx@fmail.co.uk>
 
-# NOTICE: This needs Steinberg VST Audio Plug-Ins SDK in ~/SDKs to work.
-# It can obtained like this:
-# 1. curl -LO http://www.steinberg.net/sdk_downloads/vstsdk360_22_11_2013_build_100.zip
-# 2. unzip vstsdk360_22_11_2013_build_100.zip
-# 3. mkdir -p ~/SDKs/vstsdk2.4
-# 4. cp -va "VST3 SDK/." ~/SDKs/vstsdk2.4
-
 pkgname=radium
 pkgver=4.1.6
-pkgrel=1
+pkgrel=2
 pkgdesc="A graphical music editor. A next generation tracker."
 arch=('i686' 'x86_64')
 url="http://users.notam02.no/~kjetism/radium/"
@@ -37,23 +30,31 @@ makedepends=(
     'boost'
     'llvm'
     'qt5-tools'
+    'libxrandr'
+    'steinberg-vst36'
 )
 options=(!strip)
 source=("https://github.com/kmatheussen/${pkgname}/archive/${pkgver}.tar.gz"
+        "faust-accept-clang-390.patch"
+        "dont-empty-qt-library-paths.patch"
         "reenable-libbfd-workaround.patch"
-        "use-gcc5-for-pluginhost.patch")
+        "use-gcc5-for-pluginhost.patch"
+        "use-system-vstsdk.patch")
 md5sums=('538cb0ffab64719bbda03b1c434448e3'
+         '9c72bd466ead73e36b0c2d4297d76870'
+         '77c202bc0a36562eb7b805ad6b7a85b3'
          '74ea7a54f0e358035a7f0cc7baf54b6e'
-         '9c19006defeef7e317ec23ed8eae1b72')
+         '9c19006defeef7e317ec23ed8eae1b72'
+         'a634357218872c0502202d3c738b5a9d')
 
 prepare() {
     cd "${pkgname}-${pkgver}"
 
-    # Fix faust2 compilation on llvm 3.8.1
-    sed -i '105s/3.8.0/3.8.0 3.8.1/' "bin/packages/faust2/compiler/Makefile.unix"
+    # Fix faust2 compilation on llvm 3.9.0
+    patch -Np1 < "${srcdir}/faust-accept-clang-390.patch"
 
     # Fix QT_QPA_PLATFORM_PLUGIN_PATH problem
-    sed -i '2224d' "Qt/Qt_Main.cpp"
+    patch -Np1 < "${srcdir}/dont-empty-qt-library-paths.patch"
 
     # See https://github.com/kmatheussen/radium/commit/22be69fd24235cafb5878692d574d500f843c911#commitcomment-17394610
     patch -Np1 < "${srcdir}/reenable-libbfd-workaround.patch"
@@ -61,6 +62,9 @@ prepare() {
     # specific to GCC5, so they don't compile with Arch's regular GCC6 and we
     # have to switch back manually
     patch -Np1 < "${srcdir}/use-gcc5-for-pluginhost.patch"
+    # Use the VST SDK from steinberg-vst36, so the user doesn't have to
+    # manually put it into his home directory
+    patch -Np1 < "${srcdir}/use-system-vstsdk.patch"
 }
 
 build() {
@@ -84,6 +88,10 @@ package() {
     mkdir -p "${pkgdir}/opt/radium/packages"
     tar -xvf "bin/packages/s7.tar.gz" -C "${pkgdir}/opt/radium/packages" \
       --no-same-owner --no-same-permissions --wildcards '*.scm'
+
+    # Restore Faust GUI styles - Radium will complain if these are missing
+    install -Dm644 -t "${pkgdir}/opt/radium/packages/faust2/architecture/faust/gui/Styles" \
+      "bin/packages/faust2/architecture/faust/gui/Styles/"*".qss"
 }
 
 # vim:set ts=4 sw=4 et:

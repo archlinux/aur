@@ -1,0 +1,38 @@
+diff -aur --no-dereference package.pristine/Makefile.Qt package.new/Makefile.Qt
+--- package.pristine/Makefile.Qt	2016-10-29 12:36:00.479600104 +0200
++++ package.new/Makefile.Qt	2016-10-29 12:38:36.228464209 +0200
+@@ -190,7 +190,7 @@
+ 
+ FLAGOPTS = $(DEFINES) -DGUIISQT -DUSE_GFX_OP_QUEUE -DFULL_VERSION=$(FULL_VERSION) -DIS_LITTLE_ENDIAN=1 -DUSE_OPENGL=1 $(VISUAL) $(REQTYPE_TYPE) $(MENU_TYPE)
+ 
+-COMMONOPT = -c `cat buildtype.opt` -I$(GCDIR)/include -I$(P) -I$(PYPATH) `cat flagopts.opt` $(MIDIINC) $(OS_OPTS) $(VST_OPTS) -I${HOME}/boost_1_61_0 -I${HOME}/SDKs/vstsdk2.4 -Wextra -Wno-unused-parameter -Wno-missing-field-initializers -fno-omit-frame-pointer 
++COMMONOPT = -c `cat buildtype.opt` -I$(GCDIR)/include -I$(P) -I$(PYPATH) `cat flagopts.opt` $(MIDIINC) $(OS_OPTS) $(VST_OPTS) -I${HOME}/boost_1_61_0 -I/usr/include/vst36 -Wextra -Wno-unused-parameter -Wno-missing-field-initializers -fno-omit-frame-pointer 
+ 
+ ifeq ($(RADIUM_QT_VERSION),5)
+ 	COMMONOPT += -DUSE_QT5
+diff -aur --no-dereference package.pristine/check_dependencies.sh package.new/check_dependencies.sh
+--- package.pristine/check_dependencies.sh	2016-10-29 12:36:00.136269274 +0200
++++ package.new/check_dependencies.sh	2016-10-29 12:36:53.429214014 +0200
+@@ -127,8 +127,8 @@
+     exit 5
+ fi
+ 
+-if [ ! -f ~/SDKs/vstsdk2.4/pluginterfaces/vst2.x/aeffect.h ] ; then
+-    echo 'Steinberg VST headers not found. (Missing "~/SDKs/vstsdk2.4/pluginterfaces/vst2.x/aeffect.h")'
++if [ ! -f /usr/include/vst36/pluginterfaces/vst2.x/aeffect.h ] ; then
++    echo 'Steinberg VST headers not found. (Missing "/usr/include/vst36/pluginterfaces/vst2.x/aeffect.h")'
+     echo 'You should find these files in the "VST Audio Plug-Ins SDK" from http://www.steinberg.net/en/company/developers.html'
+     exit 5
+ fi
+diff -aur --no-dereference package.pristine/pluginhost/Builds/Linux/Makefile package.new/pluginhost/Builds/Linux/Makefile
+--- package.pristine/pluginhost/Builds/Linux/Makefile	2016-10-29 12:36:00.166269054 +0200
++++ package.new/pluginhost/Builds/Linux/Makefile	2016-10-29 12:38:05.555354633 +0200
+@@ -38,7 +38,7 @@
+     TARGET_ARCH := -march=native
+   endif
+ 
+-  CPPFLAGS := $(DEPFLAGS) -D "LINUX=1" -D "DEBUG=1" -D "_DEBUG=1" -D "JUCE_CHECK_MEMORY_LEAKS=0" -D "JUCER_LINUX_MAKE_7346DA2A=1" -D "JUCE_APP_VERSION=1.0.0" -D "JUCE_APP_VERSION_HEX=0x10000" -I /usr/include -I /usr/include/freetype2 -I ~/SDKs/VST3\ SDK -I ../../JuceLibraryCode -I ../../JuceLibraryCode/modules -I ~/SDKs/vstsdk2.4
++  CPPFLAGS := $(DEPFLAGS) -D "LINUX=1" -D "DEBUG=1" -D "_DEBUG=1" -D "JUCE_CHECK_MEMORY_LEAKS=0" -D "JUCER_LINUX_MAKE_7346DA2A=1" -D "JUCE_APP_VERSION=1.0.0" -D "JUCE_APP_VERSION_HEX=0x10000" -I /usr/include -I /usr/include/freetype2 -I ~/SDKs/VST3\ SDK -I ../../JuceLibraryCode -I ../../JuceLibraryCode/modules -I /usr/include/vst36
+   CFLAGS += $(CPPFLAGS) $(TARGET_ARCH) -g -ggdb -O3 -I../../../Qt `cat ../../../flagopts.opt`
+   CXXFLAGS += $(CFLAGS) -std=c++11
+   LDFLAGS += $(TARGET_ARCH) -L$(BINDIR) -L$(LIBDIR) -L/usr/X11R6/lib/ -lX11 -lXext -lXinerama -lasound -ldl -lfreetype -lpthread -lrt 
