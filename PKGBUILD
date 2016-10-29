@@ -14,7 +14,7 @@
 declare -rgA _system_libs=(
   [flac]=flac
   [harfbuzz-ng]=harfbuzz-icu
-  #[libjpeg]=libjpeg   # Error during build
+  [libjpeg]=libjpeg
   [libpng]=libpng
   [libvpx]=libvpx
   [libwebp]=libwebp
@@ -26,11 +26,10 @@ declare -rgA _system_libs=(
   #[zlib]=zlib         # Error during build
 )
 
-
 pkgname=chromium-minimum
 _pkgname=chromium
 pkgver=54.0.2840.71
-pkgrel=1
+pkgrel=2
 _launcher_ver=3
 pkgdesc="The open-source project behind Google Chrome, with a minimum number of dependencies."
 arch=('x86_64')
@@ -45,6 +44,9 @@ optdepends=('kdebase-kdialog: needed for file dialogs in KDE'
             'gnome-keyring: for storing passwords in GNOME keyring'
             'kwallet: for storing passwords in KWallet')
 options=('!strip')
+provides=('chromium')
+conflicts=('chromium')
+replaces=('chromium')
 install=chromium.install
 source=(https://commondatastorage.googleapis.com/chromium-browser-official/$_pkgname-$pkgver.tar.xz
         chromium-launcher-$_launcher_ver.tar.gz::https://github.com/foutrelis/chromium-launcher/archive/v$_launcher_ver.tar.gz
@@ -102,7 +104,7 @@ prepare() {
   # *should* do what the remove_bundled_libraries.py script does, with the
   # added benefit of not having to list all the remaining libraries
   local _lib
-  for _lib in ${!_system_libs[@]}; do
+  for _lib in ${!_system_libs[@]} ${_system_libs[libjpeg]+libjpeg_turbo}; do
     find -type f -path "*third_party/$_lib/*" \
       \! -path "*third_party/$_lib/chromium/*" \
       \! -path "*third_party/$_lib/google/*" \
