@@ -2,9 +2,9 @@
 # Adapted for the net-tools package in [core].
 pkgname=net-tools-mptcp
 _srcname=net-tools
-_mptcpv=0.90
-pkgver=0.90.585.1830361
-pkgrel=2
+_mptcpv=0.91
+pkgver=0.91.600.888d808
+pkgrel=1
 pkgdesc="Configuration tools for Linux networking, with Multipath TCP support"
 arch=('i686' 'x86_64')
 license=('GPL2')
@@ -40,10 +40,10 @@ package() {
   make DESTDIR=${pkgdir}/usr update
 
   # the following is provided by yp-tools
-  #rm "${pkgdir}"/usr/bin/{nis,yp}domainname
+  rm "${pkgdir}"/usr/bin/{nis,yp}domainname
   rm "${pkgdir}"/usr/share/man/man1/{nis,yp}domainname.1
 
   # hostname is provided by inetutils
-  #rm "${pkgdir}"/usr/bin/{hostname,dnsdomainname,domainname}
+  rm "${pkgdir}"/usr/bin/{hostname,dnsdomainname,domainname}
   rm -rf "${pkgdir}"/usr/share/man/man1
 }
