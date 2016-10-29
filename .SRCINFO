@@ -1,63 +1,33 @@
 pkgbase = setools
 	pkgdesc = Policy analysis tools for SELinux
-	pkgver = 3.3.8
-	pkgrel = 6
-	url = https://github.com/TresysTechnology/setools3/wiki
+	pkgver = 4.0.1
+	pkgrel = 1
+	url = https://github.com/TresysTechnology/setools/wiki
 	arch = i686
 	arch = x86_64
 	groups = selinux
 	license = GPL
 	license = LGPL
-	makedepends = java-environment
-	makedepends = bwidget>=1.8
-	makedepends = gtk2>=2.8
-	makedepends = glib2
-	makedepends = libglade>=2.6.4
+	makedepends = bison
+	makedepends = flex
 	makedepends = swig
-	makedepends = tk>=8.4.9
-	depends = flex
-	depends = bison
-	depends = libselinux>=2.4
-	depends = libsepol>=2.4
-	depends = sqlite3>=3.6.20
-	depends = python2
-	optdepends = glib2: needed for graphical tools
-	optdepends = gtk2>=2.8: needed for graphical tools
-	optdepends = bwidget>=1.8: needed for graphical tools
-	optdepends = libglade>=2.6.4: needed for graphical tools
-	optdepends = tk>=8.4.9: needed for graphical tools
-	provides = selinux-setools=3.3.8-6
-	provides = setools3-libs=3.3.8-6
+	makedepends = python-setuptools
+	makedepends = python-tox
+	makedepends = python2
+	makedepends = python2-setuptools
+	makedepends = python2-networkx
+	makedepends = python2-mock
+	makedepends = python2-tox
+	depends = libselinux>=2.5
+	depends = python
+	depends = python-networkx
+	optdepends = python-pyqt5: needed for graphical tools
+	optdepends = python2: Python2 support
+	optdepends = python2-networkx: Python2 support
+	provides = selinux-setools=4.0.1-1
 	conflicts = selinux-setools
-	conflicts = setools3-libs
-	source = https://raw.githubusercontent.com/wiki/TresysTechnology/setools3/files/dists/setools-3.3.8/setools-3.3.8.tar.bz2
-	source = https://github.com/TresysTechnology/setools3/commit/4560a00c872d0a664c1098585e5c1a209adf698b.patch
-	source = https://github.com/TresysTechnology/setools3/commit/76e333503433be018e8aee8992d8f77aa14979a5.patch
-	source = https://github.com/TresysTechnology/setools3/commit/ebf8c55a26abd7d5e088f9299a4d5c0df329446b.patch
-	source = https://github.com/TresysTechnology/setools3/commit/a85750fa6ed6570e29a52520317ec0986612eab9.patch
-	source = https://github.com/TresysTechnology/setools3/commit/0aa68c97dfd909d84242f3aca96923676770bf33.patch
-	source = https://github.com/TresysTechnology/setools3/commit/eefba53065bd522f3e053605d0c3a1d52a4aefbb.patch
-	source = https://github.com/TresysTechnology/setools3/commit/02bb44767963b38c0cd8f07c4ad55c23c67ebe9b.patch
-	source = https://github.com/TresysTechnology/setools3/commit/92fa9a361aa962e21701cc601c175ab5c6798583.patch
-	source = https://github.com/TresysTechnology/setools3/commit/f31571fd633c5ab6c76f6da4af2f0a0a2dc98f4e.patch
-	source = https://github.com/TresysTechnology/setools3/commit/6f3dd212e9b5d466628bb5be4263416057728219.patch
-	source = https://github.com/TresysTechnology/setools3/commit/8001568ca3914432ffc3825acb278a1e6d8293d9.patch
-	source = https://github.com/TresysTechnology/setools3/commit/4668d85ef6b078de110caf3aa6cdf89a7d8aa89d.patch
-	source = https://github.com/TresysTechnology/setools3/commit/f1e5b208d507171968ca4d2eeefd7980f1004a3c.patch
-	sha256sums = 44387ecc9a231ec536a937783440cd8960a72c51f14bffc1604b7525e341e999
-	sha256sums = 14144c9d4bb3e1ea040f049a7fb0da0660df061a68a00ca9c66dcbbe8c334097
-	sha256sums = 10b02d8074cf823bd6eefa7650ab385ea084ef1e4a88c201930a673e813c52d1
-	sha256sums = 8951699c1976cba9f8a9fe32dc8c80a072d747155e3b731fb5f6072e12a92c53
-	sha256sums = e2745ec4cb7bc8efdc47abc16b049db5144939123b8e19e0395b5d21c5f49fa8
-	sha256sums = 52e0e0eb6b41d7dedf5582dbf9f889594d6ef06ef24a85e3ecb6b93958838832
-	sha256sums = 2d081631219c07cf573e3c3b912ceafbf894d043db75db77b893b50252fabb82
-	sha256sums = 901b67411efa25e578b660aba0a171da0eb6b0ece824300eb30f80d992e582e6
-	sha256sums = 7d2a001ecceef59b77d93522bef8a69f34e7e0294ed1605daf0585ffc55c3ba7
-	sha256sums = cd1552026f40a92bb57c20bf28ce9d11865b137c047e9993fb2bdbb209ae9d07
-	sha256sums = 01efb617890d9173883a94a5a416fb20621e2fe26db6a52dca139b4fc884556f
-	sha256sums = 9a302906aad975f4d1460ec0e0316b24d035c574796655c56ddf252459eaeb30
-	sha256sums = 948a69c4f0b3389d985be9e460cf89efc86c1cd1ba735f655d81a1036e14d956
-	sha256sums = 02bb2496f1c33177099ee025be3c297eec718dfe41565695e21056e165d4d626
+	source = setools-4.0.1.tar.gz::https://github.com/TresysTechnology/setools/archive/4.0.1.tar.gz
+	sha256sums = 4c2049877f2f68e4485b72bc280fe20127b49a019169a2cf1d8295c908bdcdfe
 
 pkgname = setools
 
