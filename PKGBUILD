@@ -31,7 +31,7 @@ prepare() {
   do
           case "$s" in
                   (*.patch)
-                          patch -p1 < "${srcdir}/${s}"
+                          #patch -p1 < "${srcdir}/${s}"
           esac
   done
 }
