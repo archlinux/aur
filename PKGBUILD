@@ -10,7 +10,7 @@ url="http://feldrise.com"
 license=('custom:MIT')
 depends=('qt5-base' 'qt5-webengine' 'qt5-declarative' 'qt5-webchannel' 'qt5-location')
 source=(http://feldrise.com/Sielo/Linux/$pkgname-$pkgver.tar.gz)
-md5sums=('be3a41281d63bf1459be61cbbb2d0ef4')
+md5sums=('1f35ef90db2188b6eec10fac08597e2f')
 build() {
 	cd $srcdir/$pkgname
 	make || return 1
