@@ -1,40 +1,40 @@
-# $Id: PKGBUILD 146960 2012-01-19 17:53:37Z pierre $
-# Maintainer: Pierre Schmitz <pierre@archlinux.de>
+# Maintainer: James An <james@jamesan.ca>
+# Contributor: Pierre Schmitz <pierre@archlinux.de>
 
-pkgname=php-suhosin
-pkgver=0.9.38
+pkgname=php-suhosin7-git
+_pkgname=${pkgname%-git}
+__pkgname=${_pkgname#php-}
+pkgver=0.10.0dev.r58.ge55e273
 pkgrel=1
-arch=('i686' 'x86_64')
 pkgdesc='An advanced protection system for PHP installations'
+arch=('i686' 'x86_64')
 url='http://suhosin.org/'
 license=('PHP')
-source=("https://download.suhosin.org/suhosin-${pkgver}.tar.gz"
-        "https://download.suhosin.org/suhosin-${pkgver}.tar.gz.sig")
 depends=('php')
 checkdepends=('php-cgi')
-backup=('etc/php/conf.d/suhosin.ini')
-sha1sums=('20af6379c0ff9879c5ed69452a6c38b7b3e76748'
-          'SKIP')
-validpgpkeys=('E027452AFAB2A52F18AB6363B12D0447319F1ADB')
+provides=("$_pkgname=$pkgver")
+conflicts=("$_pkgname")
+backup=('etc/php/conf.d/$__pkgname.ini')
+source=("$_pkgname"::"git+https://github.com/sektioneins/$__pkgname.git")
+md5sums=('SKIP')
 
 build() {
-	cd ${srcdir}/suhosin-${pkgver}
-	phpize
-	./configure --prefix=/usr --enable-suhosin
-	make
+  cd $_pkgname
+
+  phpize
+  ./configure --prefix=/usr --enable-$__pkgname
+  make
 }
 
 check() {
-	cd ${srcdir}/suhosin-${pkgver}
-	export NO_INTERACTION=1
-	export REPORT_EXIT_STATUS=1
-	make test
+  cd $_pkgname
+
+  NO_INTERACTION=1 REPORT_EXIT_STATUS=1 make -k test
 }
 
 package() {
-	cd ${srcdir}/suhosin-${pkgver}
-	make INSTALL_ROOT=${pkgdir} install
-	# disable by default
-	sed -i 's|extension = suhosin.so|;extension=suhosin.so|g' suhosin.ini
-	install -D -m644 suhosin.ini ${pkgdir}/etc/php/conf.d/suhosin.ini
+  cd $_pkgname
+
+  make INSTALL_ROOT=$pkgdir install
+  install -D -m644 $__pkgname.ini $pkgdir/etc/php/conf.d/$__pkgname.ini
 }
