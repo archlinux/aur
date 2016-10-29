@@ -79,7 +79,7 @@ package_kodi-pre-release() {
     'libjpeg-turbo' 'libmariadbclient' 'libmicrohttpd' 'libpulse' 'libssh'
     'libva' 'libxrandr' 'libxslt' 'lzo' 'sdl2' 'smbclient' 'taglib' 'tinyxml'
     'yajl' 'mesa' 'dcadec' 'desktop-file-utils'
-    'libbluray' 'libvdpau'
+    'libvdpau'
   )
   optdepends=(
     'afpfs-ng: Apple shares support'
