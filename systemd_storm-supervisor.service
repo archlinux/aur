@@ -6,6 +6,10 @@ After=network.target zookeeper@storm.service
 [Service]
 User=storm
 Group=storm
+# The regular way for Systemd to stop the daemon is to send SIGTERM (15)
+# to the underlying process spawned by the `ExecStart` script.
+# When done, the underlying process will thus return 15 to its parent script
+# which will itself return 128+15=143 (See `man bash`)
 SuccessExitStatus=143
 ExecStart=/usr/bin/storm supervisor
 
