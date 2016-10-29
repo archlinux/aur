@@ -1,17 +1,17 @@
 # Maintainer: Michael Yang <ohmyarchlinux@gmail.com>
 
 pkgname=cpprestsdk-git
-pkgver=2.8.0.r1633.e8b3509
+pkgver=2.9.0.r1702.ec83ac4
 pkgrel=1
 pkgdesc="A cross-platform, modern, and asynchronous library that enables developers to access and author connected applications"
 arch=('i686' 'x86_64')
 url="https://github.com/Microsoft/cpprestsdk/"
-license=('Apache')
+license=('MIT')
 depends=('boost' 'websocketpp' 'openssl>=1.0.0')
 makedepends=('git' 'cmake>=2.6.0')
 conflicts=('cpprestsdk' 'casablanca' 'casablanca-git')
 provides=('cpprestsdk')
-source=("git://github.com/Microsoft/cpprestsdk.git#branch=development")
+source=("git://github.com/Microsoft/cpprestsdk.git#branch=testing")
 sha512sums=('SKIP')
 
 pkgver() {
