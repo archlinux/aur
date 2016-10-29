@@ -1,7 +1,7 @@
 pkgname=gien
-pkgver=0.3
+pkgver=0.3.1
 pkgrel=1
-pkgdesc="Tool for exporting Github issue tracker contents to local mbox email storage"
+pkgdesc="Export Github issue tracker and wiki contents to local email storage"
 arch=('any')
 license=('GPL')
 url="https://github.com/2ion/gien"

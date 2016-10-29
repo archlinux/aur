@@ -1,6 +1,6 @@
 pkgbase = gien
-	pkgdesc = Tool for exporting Github issue tracker contents to local mbox email storage
-	pkgver = 0.3
+	pkgdesc = Export Github issue tracker and wiki contents to local email storage
+	pkgver = 0.3.1
 	pkgrel = 1
 	url = https://github.com/2ion/gien
 	arch = any
