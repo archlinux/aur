@@ -1,0 +1,14 @@
+pkgbase = cmsis-svd-git
+	pkgdesc = Aggegration of ARM Cortex-M CMSIS SVDs and related tools
+	pkgver = 0.4
+	pkgrel = 1
+	url = https://github.com/posborne/cmsis-svd
+	arch = any
+	license = custom
+	makedepends = python-setuptools
+	depends = python
+	source = cmsis-svd::git+https://github.com/posborne/cmsis-svd
+	md5sums = SKIP
+
+pkgname = cmsis-svd-git
+
