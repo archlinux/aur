@@ -47,6 +47,6 @@ package() {
 
     # Copy the whole thing
     install -dm766 "${pkgdir}/usr/share/vrep"
-    cp -pr . "${pkgdir}/usr/share/vrep"
+    yes | cp -prf . "${pkgdir}/usr/share/vrep"
     chmod -R 777 "${pkgdir}/usr/share/vrep"
 }
