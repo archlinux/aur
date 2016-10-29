@@ -1,4 +1,4 @@
-# Maintainer: Denys Popov <besisland@besisland.name>
+# Maintainer: Denys Popov <denys@denyspopov.biz>
 # rukbi install file
 
 post_install() {
