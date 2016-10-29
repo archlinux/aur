@@ -1,6 +1,6 @@
 pkgbase = openboardview-git
 	pkgdesc = Linux SDL/ImGui edition software for viewing .brd files
-	pkgver = R5
+	pkgver = r532.9fc1822
 	pkgrel = 1
 	url = http://openboardview.org/
 	arch = i686
@@ -17,7 +17,8 @@ pkgbase = openboardview-git
 	depends = sdl2
 	depends = fontconfig
 	depends = sqlite
-	source = openboardview-git::git+https://github.com/inflex/OpenBoardView.git#tag=R5
+	depends = gtk3
+	source = openboardview-git::git+https://github.com/OpenBoardView/OpenBoardView.git#branch=master
 	sha512sums = SKIP
 
 pkgname = openboardview-git
