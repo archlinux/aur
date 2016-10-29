@@ -8,10 +8,10 @@
 
 pkgname=prosody-hg
 pkgrel=1
-pkgver=0.10.r7704+.5022e6181193+
+pkgver=r7704+.5022e6181193+
 pkgver() {
   cd "$srcdir/$pkgname"
-  printf "0.10.r%s.%s" "$(hg identify -n)" "$(hg identify -i)"
+  printf "r%s.%s" "$(hg identify -n)" "$(hg identify -i)"
 }
 pkgdesc="Lightweight and extensible Jabber/XMPP server written in Lua (development build from trunk-branch)"
 arch=('i686' 'x86_64' 'armv7h')
