@@ -3,13 +3,12 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=flashplugin-beta
-_licensefile='PlatformClients_PC_WWEULA-MULTI-20110809_1357.pdf'
-pkgver=23.0.0.198
+pkgver=24.0.0.138
 pkgrel=1
 pkgdesc='Adobe Flash Player Beta'
 url='http://labs.adobe.com/downloads/flashplayer.html'
 arch=('i686' 'x86_64')
-depends=('mozilla-common' 'libxt' 'libxpm' 'gtk2' 'nss' 'curl' 'hicolor-icon-theme')
+depends=('mozilla-common' 'libxt' 'gtk2' 'nss' 'hicolor-icon-theme')
 optdepends=('libvdpau: GPU acceleration on Nvidia card')
 conflicts=('flashplugin')
 provides=('flashplayer' 'flashplugin')
@@ -17,17 +16,24 @@ license=('custom')
 options=(!strip)
 install=flashplugin.install
 backup=(etc/adobe/mms.cfg)
-source=(http://www.adobe.com/products/eulas/pdfs/${_licensefile}
-        mms.cfg)
-source_i686=("libflashplayer_${pkgver}_i686.so"::https://fpdownload.macromedia.com/pub/labs/flashruntimes/flashplayer/linux32/libflashplayer.so)
-source_x86_64=("libflashplayer_${pkgver}_x86_64.so"::https://fpdownload.macromedia.com/pub/labs/flashruntimes/flashplayer/linux64/libflashplayer.so)
-md5sums=('620a140c7e85af655f39f1b583fbf932'
-         'f34aae6279b40e0bd2abfb0d9963d7b8')
-md5sums_i686=('81d6f31533d5bb32c81a684a663394c9')
-md5sums_x86_64=('f0aff983eed8cc7336b8663448f4f725')
+source=(mms.cfg)
+source_i686=("flash_player_npapi_linux_${pkgver}_i386.tar.gz"::https://fpdownload.macromedia.com/pub/labs/flashruntimes/flashplayer/linux32/flash_player_npapi_linux.i386.tar.gz)
+source_x86_64=("flash_player_npapi_linux_${pkgver}_x86_64.tar.gz"::https://fpdownload.macromedia.com/pub/labs/flashruntimes/flashplayer/linux64/flash_player_npapi_linux.x86_64.tar.gz)
+md5sums=('f34aae6279b40e0bd2abfb0d9963d7b8')
+md5sums_i686=('be7719827c9f93004fadc9199f8c5497')
+md5sums_x86_64=('c64705c1e58a605410c63e571fbeb8e8')
 
 package () {
-    install -Dm755 "libflashplayer_${pkgver}_${CARCH}.so" "$pkgdir/usr/lib/mozilla/plugins/libflashplayer.so"
-    install -Dm644 "${_licensefile}" "$pkgdir/usr/share/licenses/$pkgname/LICENSE.pdf"
+    rm -r usr/lib/
+    mv usr/{lib64,lib}
+    # KDE 4 is no longer supported by Arch
+    rm -r usr/{lib,share}/kde4
+    chmod +x usr/bin/flash-player-properties
+    cp -dr --no-preserve=ownership usr "$pkgdir/"
+    install -Ddm755 "$pkgdir/usr/share/licenses/$pkgname/"
+    cp -dr --no-preserve=ownership LGPL "$pkgdir/usr/share/licenses/$pkgname/"
+    install -Dm644 license.pdf "$pkgdir/usr/share/licenses/$pkgname/license.pdf"
+    install -Dm755 "libflashplayer.so" "$pkgdir/usr/lib/mozilla/plugins/libflashplayer.so"
+    install -Dm644 readme.txt "$pkgdir/usr/share/doc/$pkgname/readme.txt"
     install -Dm644 mms.cfg "$pkgdir/etc/adobe/mms.cfg"
 }
