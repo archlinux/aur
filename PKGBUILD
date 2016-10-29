@@ -28,19 +28,23 @@
 
 #######################################################################
 # Assign "YES" to the variable you want enabled, empty otherwise
+#
+#      Where you read experimental, replace with foobar.
+# =============================================================
+#
 #######################################################################
-GTK3="YES"       # Leave empty to compile with gtk+ 2 support.
-LTO=             # Enable link-time optimization. Broken.
-CAIRO=           # Very broken for everyone. Use at own risk.
+GTK2=            # Leave empty to compile with gtk+ 3 support.
+LTO=             # Enable link-time optimization. Experimental.
+CAIRO=           # Experimental.
 XWIDGETS=        # Use GTK+ native widgets pulled from webkitgtk.
-                 # Experimental as in: It will break and eat your homework.
+                 # Highly experimental.
 DOCS_HTML=       # Generate and install html documentation.
 DOCS_PDF=        # Generate and install pdf documentation.
 #######################################################################
 
 pkgname=emacs25-git
 pkgver=25.1.50.125246
-pkgrel=1
+pkgrel=2
 pkgdesc="GNU Emacs. Version 25 development and maintenance branch."
 arch=('i686' 'x86_64')
 url="http://www.gnu.org/software/emacs/"
@@ -49,18 +53,23 @@ depends=('gpm' 'm17n-lib' 'alsa-lib' 'imagemagick')
 makedepends=('git')
 #######################################################################
 #######################################################################
-if [[ $GTK3 = "YES" ]]; then
-  depends+=('gtk3');
+if [[ $GTK2 = "YES" ]]; then
+  depends+=('gtk2');
 else
-  depends+=('gtk2'); 
+  depends+=('gtk3'); 
 fi
 if [[ $CAIRO = "YES" ]]; then depends+=('cairo'); fi
 if [[ $XWIDGETS = "" ]]; then depends+=('gnutls'); fi
 if [[ $XWIDGETS = "YES" ]]; then
-  if [[ $GTK3 = "YES" ]]; then 
-    depends+=('webkitgtk'); 
+  if [[ $GTK2 = "YES" ]]; then 
+    echo "";
+    echo "";
+    echo "Xwidgets support *requires* gtk+3!!!";
+    echo "";
+    echo "";
+    exit 1;
    else 
-    depends+=('webkitgtk2'); 
+    depends+=('webkit2gtk'); 
   fi
 fi
 if [[ $DOCS_PDF = "YES" ]]; then makedepends+=('texlive-core'); fi
@@ -109,10 +118,10 @@ build() {
 
 #######################################################################
 #######################################################################
-  if [[ $GTK3 = "YES" ]]; then 
-    _conf+=('--with-x-toolkit=gtk3' '--without-gconf' '--with-gsettings'); 
-  else
+  if [[ $GTK2 = "YES" ]]; then 
     _conf+=('--with-x-toolkit=gtk2' '--with-gconf' '--without-gsettings');
+  else
+    _conf+=('--with-x-toolkit=gtk3' '--without-gconf' '--with-gsettings'); 
   fi
   if [[ $LTO = "YES" ]]; then _conf+=('--enable-link-time-optimization'); fi
   if [[ $CAIRO = "YES" ]]; then _conf+=('--with-cairo'); fi
@@ -130,8 +139,7 @@ build() {
   # are reusing your src directory!
   make
 
-  # You may need to run this if loaddefs.el files become
-  # corrupt.
+  # You may need to run this if loaddefs.el files become corrupt.
   #cd "$srcdir/$pkgname/lisp"
   #make autoloads
   #cd ../

@@ -1,3 +1,4 @@
+emacs25-git
 *~
 *.log
 pkg/
@@ -13,4 +14,3 @@ src/
 *.tar
 *.jar
 *.zip
-emacs25-git
