@@ -1,16 +1,10 @@
 
 post_install() {
-  echo "This package provides two frontends:"
-  echo "  'usb-creator-gtk' for GTK3 and 'usb-creator-kde' for KDE4"
-  echo "Choose your preferred frontend and install the needed runtime dependency."
-
-  xdg-icon-resource forceupdate --theme hicolor &> /dev/null
+  echo " => This package provides two frontends:"
+  echo "    'usb-creator-gtk' for GTK3 and 'usb-creator-kde' for KDE4"
+  echo " => Choose your preferred frontend and install the needed runtime dependency."
 }
 
 post_upgrade() {
   post_install
-}
-
-post_remove() {
-  xdg-icon-resource forceupdate --theme hicolor &> /dev/null
 }
