@@ -9,5 +9,3 @@ post_install() {
   echo 
   echo "Note: Autoenv overrides cd. If you already do this, invoke autoenv_init within your custom cd after sourcing activate.sh."
 }
-
-

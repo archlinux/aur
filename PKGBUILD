@@ -1,8 +1,8 @@
 # Maintainer:  jyantis <yantis@yantis.net>
 
 pkgname=autoenv-git
-pkgver=1.0.0.r102.c4bc3f5
-pkgrel=2
+pkgver=0.2.0.r187.7eb70ec
+pkgrel=1
 pkgdesc='Directory based enviroments'
 arch=('any')
 url='https://github.com/kennethreitz/autoenv'
