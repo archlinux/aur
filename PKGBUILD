@@ -1,7 +1,8 @@
+# shellcheck disable=SC2034,SC2154,SC2164
 pkgname=('qt5-styleplugins-git')
 _srcname='qtstyleplugins'
 pkgdesc='Additional style plugins for Qt5'
-pkgver='r22'
+pkgver='r28'
 pkgrel='1'
 arch=('i686' 'x86_64')
 url="https://code.qt.io/cgit/qt/${_srcname}"
@@ -12,14 +13,8 @@ makedepends=('git')
 provides=("${pkgname[0]%-git}")
 conflicts=("${pkgname[0]%-git}")
 
-source=(
-    "${_srcname}::git+${url}.git"
-    'gconf.patch'
-)
-sha512sums=(
-    'SKIP'
-    'SKIP'
-)
+source=("${_srcname}::git+${url}.git")
+sha512sums=('SKIP')
 
 pkgver() {
     cd "${srcdir}/${_srcname}"
@@ -28,12 +23,6 @@ pkgver() {
         "$( git rev-list --count 'HEAD' )" \
         "$( git log --max-count='1' --pretty='format:%ct' )" \
         "$( git rev-parse --short 'HEAD' )"
-}
-
-prepare() {
-    cd "${srcdir}/${_srcname}"
-
-    git apply "${srcdir}/gconf.patch"
 }
 
 build() {
