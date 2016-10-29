@@ -1,18 +1,19 @@
 pkgbase = libtrace
 	pkgdesc = libtrace is a library for trace processing
-	pkgver = 3.0.22
+	pkgver = 4.0.0
 	pkgrel = 1
 	url = http://research.wand.net.nz/software/libtrace.php
 	arch = i686
 	arch = x86_64
-	license = GPL
+	license = GPL3
 	makedepends = automake
 	makedepends = flex
 	makedepends = bison
+	depends = libwandio
 	depends = libpcap
 	depends = zlib
-	source = http://research.wand.net.nz/software/libtrace/libtrace-3.0.22.tar.bz2
-	md5sums = 5acea7067e0e72a21059e6e055c06f5b
+	source = http://research.wand.net.nz/software/libtrace/libtrace-4.0.0.tar.bz2
+	md5sums = b6afc3f117715363545b2cf8554a9c7b
 
 pkgname = libtrace
 

@@ -1,12 +1,12 @@
 # Contributor: Olivier Mehani <shtrom-aur@ssji.net>
 pkgname=libtrace
-pkgver=3.0.22
+pkgver=4.0.0
 pkgrel=1
 pkgdesc="libtrace is a library for trace processing"
 arch=(i686 x86_64)
 url="http://research.wand.net.nz/software/libtrace.php"
-license=('GPL')
-depends=(libpcap zlib)
+license=('GPL3')
+depends=(libwandio libpcap zlib)
 makedepends=(automake flex bison)
 source=(http://research.wand.net.nz/software/libtrace/$pkgname-$pkgver.tar.bz2)
 
@@ -23,4 +23,4 @@ package() {
   make DESTDIR="$pkgdir/" install
 }
 
-md5sums=('5acea7067e0e72a21059e6e055c06f5b')
+md5sums=('b6afc3f117715363545b2cf8554a9c7b')
