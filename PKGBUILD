@@ -42,9 +42,9 @@ build() {
 }
 
 package() {
-  cd "${srcdir}/${_pkgname}-${pkgver}"
+  cd "${srcdir}/${_pkgname}-${pkgver}/build"
   install -D -m644 net/batman-adv/batman-adv.ko "${pkgdir}/usr/lib/modules/$(uname -r)/updates/net/batman-adv/batman_adv.ko"
-  install -D -m644 README "${pkgdir}/usr/share/doc/batman-adv/README"
+  install -D -m644 ../README "${pkgdir}/usr/share/doc/batman-adv/README"
 }
 
 sha256sums=('bc1236dd83209db51a09368b7ed1dd3a1ce5f5b933e09260c4d6f107c0a150eb'
