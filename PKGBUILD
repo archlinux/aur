@@ -4,7 +4,7 @@
 # Contributor: Olivier Biesmans <olivier at biesmans dot fr>
 
 pkgname=mitmproxy-py3-git
-pkgver=0.18.5347
+pkgver=0.19.5628
 pkgrel=1
 pkgdesc="SSL-capable man-in-the-middle HTTP proxy"
 arch=('any')
@@ -14,9 +14,9 @@ depends=('python-blinker' 'python-click' 'python-configargparse' 'python-constru
          'python-cryptography' 'python-flask' 'python-h2' 'python-hpack'
          'python-html2text' 'python-hyperframe' 'python-lxml' 'python-pillow'
          'python-passlib' 'python-pyasn1' 'python-pyopenssl' 'python-pyparsing'
-         'python-pyperclip' 'python-requests' 'python-six' 'python-tornado'
-         'python-urwid' 'python-watchdog' 'python-pytz' 'python-brotlipy' 'python-cssutils'
-		 'python-jsbeautifier')
+         'python-pyperclip' 'python-requests' 'python-tornado'
+         'python-urwid' 'python-watchdog' 'python-brotlipy' 'python-cssutils'
+		 'python-jsbeautifier' 'python-sortedcontainers' 'python-editorconfig')
 optdepends=('python-protobuf: Contentviews - Extended content decoding'
             'python-pyamf: Contentviews - Decodes AMF files')
 makedepends=('git')
@@ -46,7 +46,7 @@ prepare() {
   sed -e '/import certifi/d' \
       -e 's|certifi.where()|"/etc/ssl/certs/ca-certificates.crt"|' \
       -e 's/from backports import ssl_match_hostname/import ssl as ssl_match_hostname/' \
-      -i netlib/tcp.py
+      -i mitmproxy/net/tcp.py
 }
 
 check() {
