@@ -34,9 +34,12 @@ build() {
 package() {
     cd $srcdir/kubernetes-$pkgver
 
+    [ "$CARCH" = 'i686' ] && _kubearch=386
+    [ "$CARCH" = 'x86_64' ] && _kubearch=amd64
+
     binaries=(kube-dns kube-proxy kube-apiserver kube-controller-manager kubelet kubemark hyperkube kube-scheduler kubectl)
     for bin in "${binaries[@]}"; do
-        install -Dm755 _output/local/bin/linux/amd64/$bin $pkgdir/usr/bin/$bin
+        install -Dm755 _output/local/bin/linux/$_kubearch/$bin $pkgdir/usr/bin/$bin
     done
    
     # install manpages
