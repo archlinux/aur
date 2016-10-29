@@ -1,6 +1,6 @@
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=aerc-git
-pkgver=r164.c88c57e
+pkgver=r183.fef5146
 pkgrel=1
 epoch=
 pkgdesc="Asynchronous email client for your terminal"
