@@ -7,7 +7,7 @@ pkgdesc='Directory based enviroments'
 arch=('any')
 url='https://github.com/kennethreitz/autoenv'
 license=('custom')
-source=('git+https://github.com/kennethreitz/autoenv.git')
+source=("$pkgname"::'git+https://github.com/kennethreitz/autoenv.git')
 sha256sums=('SKIP')
 depends=('bash')
 optdepends=('zsh: if you prefer zsh over bash')
@@ -16,9 +16,9 @@ makedepends=('git')
 conflicts=('autoenv')
 
 pkgver() {
-  cd autoenv
+  cd "$pkgname"
   set -o pipefail
-  git describe --long | sed -r 's/([^-]*-g)/r\1/;s/-/./g' ||
+  # git describe --tags --long | sed -r 's/([^-]*-g)/r\1/;s/-/./g' ||
 
   # If there is a setup.py then pull the version tag from the file
   if [ -f "setup.py" ]; then

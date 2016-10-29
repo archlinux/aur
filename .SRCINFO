@@ -1,7 +1,7 @@
 pkgbase = autoenv-git
 	pkgdesc = Directory based enviroments
-	pkgver = 1.0.0.r102.c4bc3f5
-	pkgrel = 2
+	pkgver = 0.2.0.r187.7eb70ec
+	pkgrel = 1
 	url = https://github.com/kennethreitz/autoenv
 	install = autoenv.install
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = autoenv-git
 	depends = bash
 	optdepends = zsh: if you prefer zsh over bash
 	conflicts = autoenv
-	source = git+https://github.com/kennethreitz/autoenv.git
+	source = autoenv-git::git+https://github.com/kennethreitz/autoenv.git
 	sha256sums = SKIP
 
 pkgname = autoenv-git
