@@ -4,13 +4,14 @@
 
 pkgbase='vte3-notification'
 pkgname=("${pkgbase}" 'vte-notification-common')
-pkgver=0.44.2
-pkgrel=2
+pkgver=0.46.0
+pkgrel=1
 pkgdesc='Virtual Terminal Emulator widget for use with GTK3 with Fedora patches'
 arch=('i686' 'x86_64')
 url='https://wiki.gnome.org/Apps/Terminal/VTE'
 license=('LGPL')
-makedepends=('intltool' 'gobject-introspection' 'gtk3' 'vala' 'gperf' 'glade')
+depends=('gtk3' 'pcre2')
+makedepends=('intltool' 'gobject-introspection' 'vala' 'gperf' 'glade')
 options=('!emptydirs')
 source=(
 	"https://download.gnome.org/sources/vte/${pkgver::4}/vte-${pkgver}.tar.xz"
@@ -18,8 +19,8 @@ source=(
 	'add-zsh-notfication-support.patch'
 )
 sha256sums=(
-	'a1ea594814bb136a3a9a6c7656b46240571f6a198825c1111007fe99194b0949'
-	'ad9c9cd940426e9beb81ab40d4e6936662ccf49f86de56509b51047cb8bd17b1'
+	'5f7122e7860eb2470d310fc63df91d3ee32bab233729c2dc181a0cbc9b3249d7'
+	'8143306bed082e7fe14c742675bd10e000d92fa9b135491ff121a5078b5a9ebe'
 	'150a151404ca565f70259044661b2ef5cda43142ca677e7da324614eef8cf45a'
 )
 
@@ -35,7 +36,7 @@ build() {
 	./configure --prefix='/usr' --sysconfdir='/etc' \
 		--libexecdir='/usr/lib/vte' \
 		--localstatedir='/var' --disable-static \
-		--enable-introspection --enable-glade-catalogue
+		--enable-introspection --enable-glade-catalogue --enable-gtk-doc
 	sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
 	make
 }
