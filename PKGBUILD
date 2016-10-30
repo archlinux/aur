@@ -1,28 +1,34 @@
 # Maintainer: Antoine Lubineau <antoine@lubignon.info>
 
 pkgname=cadubi
-pkgver=1.3
-pkgrel=2
-pkgdesc="A terminal application to draw text-based images"
+pkgver=1.3.1
+pkgrel=1
+pkgdesc="Creative ASCII Drawing Utility By Ian"
 arch=('any')
-url="http://langworth.com/pub/cadubi/"
-license=('GPL' 'PerlArtistic')
+url="https://github.com/statico/cadubi"
+license=('MIT')
 depends=('perl-term-readkey')
-source=("ftp://ftp.uwsg.indiana.edu/linux/gentoo/distfiles/$pkgname-$pkgver.tar.gz")
-sha256sums=('ca8b6ea305e0eccb11add7fc165beeee7ef33f9f0106e84efa1b364f082df0ab')
+source=(https://github.com/statico/$pkgname/archive/v$pkgver.tar.gz
+        perl-5.22.patch)
+sha1sums=('ee6d4a2b0e19e4e516b438895a2b4bf5224c4038'
+          'cd2f8460939e9d0090a3ada40f42c6ed70960380')
 
-build() {
-  cd "$srcdir/$pkgname-$pkgver"
+prepare() {
+  cd $pkgname-$pkgver
+
+  patch -p1 < ../perl-5.22.patch
   sed 's|$Bin/help.txt|/usr/share/cadubi/help.txt|g' -i cadubi
 }
 
 package() {
-  mkdir -p "$pkgdir/usr/bin"
-  ln -s /usr/share/cadubi/cadubi "$pkgdir/usr/bin/cadubi"
+  cd $pkgname-$pkgver
 
-  cd "$srcdir/$pkgname-$pkgver"
-  install -D -m 0755 cadubi "$pkgdir/usr/share/cadubi/cadubi"
-  install -D -m 0755 help.txt "$pkgdir/usr/share/cadubi/help.txt"
+  install -d "$pkgdir"/usr/bin
+  ln -s /usr/share/cadubi/cadubi "$pkgdir"/usr/bin/cadubi
+
+  install -Dm755 cadubi "$pkgdir"/usr/share/cadubi/cadubi
+  install -Dm755 help.txt "$pkgdir"/usr/share/cadubi/help.txt
+
+  install -Dm644 cadubi.1 "$pkgdir"/usr/share/man/man1/cadubi.1
+  install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
-
-# vim:set ts=2 sw=2 et:
