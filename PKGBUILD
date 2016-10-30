@@ -3,17 +3,17 @@
 # Contributor: Taylor Venable <taylor@metasyntax.net>
 
 pkgname=ocaml-re
-pkgver=1.6.1
+pkgver=1.7.1
 pkgrel=1
 pkgdesc="Pure OCaml regular expressions, with support for Perl and POSIX-style strings"
 arch=('i686' 'x86_64')
 depends=('ocaml')
-makedepends=('ocaml-findlib')
+makedepends=('ocamlbuild' 'ocaml-findlib')
 url="https://github.com/ocaml/ocaml-re"
 license=('LGPL')
 options=('!strip')
 source=("https://github.com/ocaml/ocaml-re/archive/${pkgver}.tar.gz")
-sha256sums=('4fe88b095bb65abc3e9b132bdd6fba7451eb3a32f1a5cd6a0f9a92faca099f47')
+sha256sums=('eb18382d63459b0a4065315ce6fef854bc99152aec2b557bb8a43e664e6679e8')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
