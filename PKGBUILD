@@ -7,7 +7,7 @@ pkgbase=python-django-rest-swagger0.3.10
 _pkgbase=django-rest-swagger
 pkgname=(python-django-rest-swagger0.3.10 python2-django-rest-swagger0.3.10)
 pkgver=0.3.10
-pkgrel=2
+pkgrel=3
 pkgdesc='Swagger/OpenAPI Documentation Generator for Django REST Framework.'
 arch=(any)
 url='https://github.com/marcgibbons/django-rest-swagger'
@@ -18,8 +18,8 @@ makedepends=(
   'python2-django'
   python2-setuptools
 )
-conflicts=("${_pkgbase}")
-replaces=("${_pkgbase}")
+conflicts=(python-django-rest-swagger python2-django-rest-swagger)
+replaces=(python-django-rest-swagger python2-django-rest-swagger)
 options=(!emptydirs)
 source=("https://github.com/marcgibbons/${_pkgbase}/archive/${pkgver}.tar.gz")
 sha256sums=('d9e5897898b5bb33630fc8abf8f4674c50df38a007f9d242bfe65b5f12943095')
