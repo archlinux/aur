@@ -3,7 +3,7 @@
 pkgbase=mpv
 pkgname=mpv-light
 pkgver=0.21.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Video player based on MPlayer/mplayer2, with selection of features.'
 arch=('i686' 'x86_64')
 license=('GPL')
@@ -57,7 +57,7 @@ build() {
     --enable-vdpau \
     --enable-vdpau-gl-x11 \
     --disable-caca \
-    --disable-vdpau-hwaccel \
+    --enable-vdpau-hwaccel \
     --disable-tv \
     --disable-tv-v4l2 \
     --disable-libv4l2 \
