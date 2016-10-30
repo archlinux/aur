@@ -4,7 +4,7 @@
 
 _pkgname='utop'
 pkgname="ocaml-${_pkgname}"
-pkgver=1.19.2
+pkgver=1.19.3
 pkgrel=1
 pkgdesc='A toplevel for OCaml that supports completion, colors, and parenthesis matching'
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ license=('BSD')
 depends=('ocaml' 'cppo' 'ocaml-lambda-term' 'ocaml-lwt' 'ocaml-findlib' 'ocaml-react' 'camlp4')
 source=("https://github.com/diml/utop/archive/${pkgver}.tar.gz")
 options=('!strip')
-md5sums=('0f65ab4a47cb200da4491e5866a53e4e')
+md5sums=('280f9a1062c53be8bae41cfd57ce29dd')
 
 build() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
@@ -27,10 +27,8 @@ build() {
 package() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
 
-  OCAMLFIND_DESTDIR="${pkgdir}$(ocamlfind printconf destdir)"
-  mkdir -p "${OCAMLFIND_DESTDIR}"
-  DESTDIR="${pkgdir}" \
-    OCAMLFIND_DESTDIR="${OCAMLFIND_DESTDIR}" \
-    make install
+  export OCAMLFIND_DESTDIR="${pkgdir}$(ocamlfind printconf destdir)"
+  install -dm755 "${OCAMLFIND_DESTDIR}"
+  make install
   install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
