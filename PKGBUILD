@@ -4,7 +4,7 @@
 
 _pkgname="lambda-term"
 pkgname="ocaml-${_pkgname}"
-pkgver=1.10
+pkgver=1.10.1
 pkgrel=1
 pkgdesc='A cross-platform library for manipulating the terminal'
 arch=('i686' 'x86_64')
@@ -14,24 +14,23 @@ depends=('ocaml' 'ocaml-lwt' 'ocaml-react' 'ocaml-zed')
 makedepends=('ocaml-findlib')
 source=("https://github.com/diml/lambda-term/archive/${pkgver}.tar.gz")
 options=('!strip')
-md5sums=('ce9cc6503a01f327d414988f97343635')
+md5sums=('1ad66f7e3f517f1f40528400d8cd00d9')
 
 build() {
-    cd "$srcdir/${_pkgname}-${pkgver}"
-    ./configure --prefix /usr --destdir "$pkgdir"
+    cd "${srcdir}/${_pkgname}-${pkgver}"
+    ./configure --prefix /usr --destdir "${pkgdir}"
 
-    env DESTDIR="$pkgdir" \
-        OCAMLFIND_DESTDIR="$pkgdir/$(ocamlfind printconf destdir)" \
+    env DESTDIR="${pkgdir}" \
+        OCAMLFIND_DESTDIR="${pkgdir}/$(ocamlfind printconf destdir)" \
         make
 }
 
 
 package() {
-    install -dm755 "$pkgdir/$(ocamlfind printconf destdir)"
-    install -dm755 "$pkgdir/$(ocamlfind printconf destdir)/stublibs"
-    cd "$srcdir/${_pkgname}-${pkgver}"
-    env DESTDIR="$pkgdir" \
-        OCAMLFIND_DESTDIR="$pkgdir/$(ocamlfind printconf destdir)" \
-        make install
-    install -Dm 644 LICENSE $pkgdir/usr/share/licenses/$pkgname/LICENSE
+    cd "${srcdir}/${_pkgname}-${pkgver}"
+
+    export OCAMLFIND_DESTDIR="${pkgdir}/$(ocamlfind printconf destdir)"
+    install -dm755 "${OCAMLFIND_DESTDIR}/stublibs"
+    make install
+    install -Dm 644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
