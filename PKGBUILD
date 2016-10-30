@@ -12,8 +12,8 @@ _configure_args="$_configure_args \
 pkgname=("bareos-traymonitor"
          "bareos-bat")
 
-source=("http://download.bareos.org/bareos/release/16.2/Debian_8.0/bareos_${_pkgver}.orig.tar.gz"
+source=("git+https://github.com/bareos/bareos.git#tag=Release/16.2.4"
         "PKGBUILD.common")
 
-sha256sums=('584aea278ab6548bef958e383036a13e4bfff6b0355d2cfd2e4e30268b63cb47'
-            '40252e18e72f8492a91d46ca8bbb7b6e1205864a86836133c093b8f50597b342')
+sha256sums=('SKIP'
+            'b8c2f27f4cb6c49dc63f6998188ee3a307f3ad7a7dc633c4890404da2890d665')
