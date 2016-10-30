@@ -4,8 +4,8 @@
 
 pkgbase=linux-rc       # Build kernel with a different name
 _srcname=linux-4.8
-_stable=4.8.4
-_patchver=4.8.5
+_stable=4.8.5
+_patchver=4.8.6
 pkgver=${_patchver}rc1
 _rcpatch=patch-${_patchver}-rc1
 pkgrel=1
@@ -29,9 +29,9 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
 
 sha256sums=('3e9150065f193d3d94bcf46a1fe9f033c7ef7122ab71d75a7fb5a2f0c9a7e11a'
             'SKIP'
-            '86e246b19253ee3aa971403a5990376a5e33667122f7c8742cc0ee807f204403'
+            '99f5e8f3836580440f12de9c00c9faab10f09529e2734fab584ef4baa84fd7ca'
             'SKIP'
-            '43448f02cea7e851bb50d1a46ec1a35a1e7204bc879bfc4595e526bf51ed8cf0'
+            '6dfa915e3bf3fe2fe1445e188cd0858d587931c38bd17788cb2995be95f8eab0'
             'SKIP'
             '2ac8818414beb7dbacbd3ad450c516e6ada804827132a7132f63b8189e5f5151'
             '93a4ad4f6c7bb9296fddec436ed7477a5a5c11cf4d6e68482fa6610442cbcb1f'
