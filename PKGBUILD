@@ -1,13 +1,13 @@
 # Maintainer: Brenton Horne <brentonhorne77 at gmail dot com>
 
 pkgname=moksha
-pkgver=0.2.0
-pkgrel=2
+pkgver=0.2.1
+pkgrel=1
 pkgdesc="A fork of the E17 window manager used by Bodhi Linux."
 arch=('i686' 'x86_64')
 url="http://mokshadesktop.org"
 license=('BSD')
-depends=('desktop-file-utils' 'e_dbus' 'efl>1.17' 'elementary')
+depends=('desktop-file-utils' 'e_dbus' 'efl>1.18')
 optdepends=('acpid: power events on laptop lid close'
             'bc: calculator in everything module'
             'connman: network module'
@@ -20,7 +20,7 @@ conflicts=("enlightenment")
 backup=('etc/enlightenment/sysactions.conf'
         'etc/xdg/menus/e-applications.menu')
 source=("https://github.com/JeffHoogland/moksha/archive/$pkgver.tar.gz")
-sha256sums=('f03601558902b9f9b286d85aa5da418dfa74acf3e3947992dcb131cc0e44994e')
+sha256sums=('1c838cef42fca07b7162c1b9907a345946acb669008899c7ecc42a86774cf16e')
 install='moksha.install'
 
 build() {
