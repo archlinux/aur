@@ -2,7 +2,7 @@
 
 pkgname=mediagoblin
 pkgver=0.9.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A free software media publishing platform'
 arch=('i686' 'x86_64')
 url='http://mediagoblin.org'

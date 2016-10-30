@@ -1,4 +1,4 @@
-pkgname=mediagoblin-git
+pkgname=mediagoblin
 
 post_install() {
   if [ ! `grep mediagoblin /etc/group` ]; then
