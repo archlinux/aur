@@ -11,11 +11,10 @@ pkgdesc="Updated Slic3r by Prusa3D with many bugfixes and new features"
 arch=('i686' 'x86_64' 'armv6' 'armv6h' 'armv7h')
 url="http://www.prusa3d.com/"
 license=('AGPL3')
-depends=('perl'
-         'perl-moo' 'perl-math-planepath' 'perl-encode-locale' 'boost')
-makedepends=('perl-class-accessor' 'perl-devel-checklib' 'perl-extutils-cppguess'
-             'perl-extutils-typemaps-default' 'perl-module-build-withxspp'
-             'perl-opengl' 'perl-wx')
+depends=('perl' 'perl-class-accessor''perl-encode-locale'
+         'perl-math-planepath' 'perl-moo' 'perl-opengl' 'perl-wx-glcanvas')
+makedepends=('boost' 'perl-devel-checklib' 'perl-extutils-cppguess'
+             'perl-extutils-typemaps-default' 'perl-module-build-withxspp')
 checkdepends=('perl-io-stringy')
 optdepends=('perl-net-dbus: notifications support via any dbus-based notifier'
             'perl-xml-sax-expatxs: make AMF parsing faster'
