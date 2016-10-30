@@ -3,13 +3,12 @@
 _name=netbox
 pkgname=${_name}
 pkgver=1.6.3
-pkgrel=8
+pkgrel=9
 pkgdesc="IP address management (IPAM) and data center infrastructure management (DCIM) tool."
 arch=('any')
 url="https://github.com/digitalocean/${_name}"
 license=('Apache-2.0')
 depends=('python2'
-         'graphviz'
          'gunicorn-python2'
          'libffi'
          'libpgf'
@@ -20,15 +19,17 @@ depends=('python2'
          'python2-django-debug-toolbar-git'
          'python2-django-filter'
          'python2-django-rest-framework'
-         'python2-django-rest-swagger'
+         'python2-django-rest-swagger0.3.10'
          'python2-django-tables2'
+         'python2-graphviz'
          'python2-lxml'
          'python2-markdown'
          'python2-natsort'
          'python2-ncclient'
          'python2-netaddr'
-         'python-paramiko'
+         'python2-paramiko'
          'python2-py-gfm'
+         'python2-psycopg2'
          'python2-sqlparse'
          'python2-xmltodict')
 
@@ -48,6 +49,8 @@ backup=('etc/netbox/gunicorn_config.py' 'etc/netbox/configuration.py')
 package() {
 	mkdir -p "${pkgdir}/opt/${_name}"
 	chmod 775 "${pkgdir}/opt/${_name}"
+	sed -i -e "s|#![ ]*/usr/bin/env python$|#!/usr/bin/env python2|" \
+		$(find "${_name}-${pkgver}/${_name}" -name '*.py')
 	cp -r ${_name}-${pkgver}/${_name} "$pkgdir/opt/"
 
 	install -D -m644 ${_name}-system.service "$pkgdir/usr/lib/systemd/system/${_name}.service"

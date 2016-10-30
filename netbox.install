@@ -7,6 +7,13 @@ _create_user() {
 post_install() {
     _create_user
 
+	# Create a directory in /run if it does not exist
+	if [ ! -d /run/${_NAME} ]; then
+		mkdir /run/${_NAME}
+		chown ${_NAME}. /run/${_NAME}
+		chmod 775 /run/${_NAME}
+	fi
+
     echo ""
     echo -e "Follow the instructions on http://netbox.readthedocs.io/en/latest/installation/netbox/"
     echo -e "to finish the configuration, and enable and start the systemd "
