@@ -6,16 +6,18 @@
 _gitname='fenrir'
 pkgname="${_gitname}-git"
 pkgver=v0.2.5.g33af5b6
-pkgrel=1
+pkgrel=2
 pkgdesc='A user space console screen reader written in python3'
 arch=('any')
 url='https://github.com/chrys87/${_pkgname}'
 license=('MIT')
-depends=('python' 'python-espeak' 'python-daemonize' 'python-evdev')
+depends=('python' 'python-daemonize' 'python-evdev')
 optdepends=('brltty: For Braille support'
-  'gstreamer: for soundicons via gstreamer'
+'gstreamer: for soundicons via gstreamer'
   'sox: The default sound driver'
-  'python-pyenchant: for spell check functionality')
+  'python-espeak: TTS support'
+  'python-pyenchant: for spell check functionality'
+  'speech-dispatcher: TTS support')
 makedepends=('git')
 provides=('fenrir')
 conflicts=('fenrir')
