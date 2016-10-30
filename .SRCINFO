@@ -1,6 +1,6 @@
 pkgbase = python2-pyphen
 	pkgdesc = Library to hyphenate text using included or external Hunspell hyphenation dictionaries
-	pkgver = 0.9.1
+	pkgver = 0.9.4
 	pkgrel = 1
 	url = http://pyphen.org/
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = python2-pyphen
 	license = LGPL2.1
 	license = MPL
 	makedepends = python2
-	source = https://pypi.python.org/packages/source/P/Pyphen/Pyphen-0.9.1.tar.gz
-	md5sums = 024fe88b78e7b65f02cba1c3165223e6
+	source = https://github.com/Kozea/Pyphen/archive/0.9.4.tar.gz
+	md5sums = 5b27217dde553bc0fdd3f7d3878e85a4
 
 pkgname = python2-pyphen
 
