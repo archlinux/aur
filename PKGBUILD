@@ -2,7 +2,7 @@
 
 pkgname=mediagoblin-git
 pkgver=20161030
-pkgrel=3
+pkgrel=4
 pkgdesc='A free software media publishing platform'
 arch=('i686' 'x86_64')
 url='http://mediagoblin.org'
@@ -44,6 +44,7 @@ pkgver() {
 }
 
 prepare() {
+  cd "$srcdir/mediagoblin"
   git submodule init
   git submodule update
 }
