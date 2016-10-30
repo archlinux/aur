@@ -101,8 +101,6 @@ prepare() {
   sed -n "/#ensure \/etc\/dnsmasq\.d\//w $_ssc" "$srcdir"/$_pkgname-$pkgver/gravity.sh
   if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: arch useless 1" && return 1 ; fi
   sed -i '/#ensure \/etc\/dnsmasq\.d\//,+5d' "$srcdir"/$_pkgname-$pkgver/gravity.sh
-  # cosmetics
-  sed -i '325 a echo " done!"' "$srcdir"/$_pkgname-$pkgver/gravity.sh  
 
 # -----------------
 
