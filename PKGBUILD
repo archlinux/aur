@@ -13,7 +13,7 @@ makedepends=('git')
 provides=("${pkgname[0]%-git}")
 conflicts=("${pkgname[0]%-git}")
 
-source=("${_srcname}::git+${url}.git")
+source=("${_srcname}::git+https://code.qt.io/qt/${_srcname}.git")
 sha512sums=('SKIP')
 
 pkgver() {

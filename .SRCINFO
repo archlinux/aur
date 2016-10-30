@@ -12,7 +12,7 @@ pkgbase = qt5-styleplugins-git
 	depends = libx11
 	provides = qt5-styleplugins
 	conflicts = qt5-styleplugins
-	source = qtstyleplugins::git+https://code.qt.io/cgit/qt/qtstyleplugins.git
+	source = qtstyleplugins::git+https://code.qt.io/qt/qtstyleplugins.git
 	sha512sums = SKIP
 
 pkgname = qt5-styleplugins-git
