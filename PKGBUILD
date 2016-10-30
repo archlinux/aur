@@ -1,9 +1,9 @@
 pkgname='postgresql-musicbrainz-unaccent'
-pkgver=v1.0.0.r0.gdb45982
+pkgver=v1.0.0.r2.ga32ca6a
 pkgrel=1
 pkgdesc="MusicBrainz' unaccent extension to PostgreSQL"
 arch=('i686' 'x86_64')
-url=("http://musicbrainz.org/doc/MusicBrainz_Server")
+url="http://musicbrainz.org/doc/MusicBrainz_Server"
 license=('GPL')
 depends=('postgresql' 'icu')
 
