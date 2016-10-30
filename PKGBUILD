@@ -1,17 +1,17 @@
-# Maintainer: wenLiangcan <boxeed at gmail dot com>
+# Maintainer: Adrian Freund <freundadrian@gmail.com>
 
-pkgname=('python-javascriptcore2-git')
+pkgname=('python-javascriptcore-git')
 _pkgname='pyjavascriptcore'
-pkgver=v1.0.r0.gb281673
+pkgver=v1.0.r1.g9e714df
 pkgrel=1
 pkgdesc="Javascript Core for Python (When using WebKit2Gtk)"
 url="https://github.com/freundTech/pyjavascriptcore"
 license=('GPL2')
 arch=('i686' 'x86_64')
-depends=('python' 'cython' 'webkit2gtk')
+depends=('python' 'cython' 'webkitgtk')
 makedepends=('pkg-config')
-provides=('python-javascriptcore2')
-conflicts=('python-javascriptcore2')
+provides=('python-javascriptcore')
+conflicts=('python-javascriptcore')
 source=("git://github.com/freundTech/pyjavascriptcore.git")
 sha512sums=('SKIP')
 
@@ -22,12 +22,12 @@ pkgver() {
 
 build() {
     cd "${srcdir}/${_pkgname}"
-    python setup.py build
+    python setup_legacy.py build
 }
 
 package() {
     cd "${srcdir}/${_pkgname}"
-    python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
+    python setup_legacy.py install --root="${pkgdir}" --optimize=1 --skip-build
     install -Dm644 'COPYING' "${pkgdir}/usr/share/licenses/${pkgname}/COPYING"
 }
 
