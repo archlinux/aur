@@ -2,14 +2,14 @@
 # Contributor: Daniel Seymour <dannyseeless@gmail.com>
 
 pkgname=emby-server-beta-git
-pkgver=3.0.5934
+pkgver=3.1.201
 pkgrel=1
 pkgdesc='Bring together your videos, music, photos, and live television'
 arch=('i686' 'x86_64' 'armv6h')
 url='http://emby.media'
 license=('GPL2')
 depends=('ffmpeg' 'imagemagick' 'mono' 'sqlite')
-makedepends=('git')
+makedepends=('git' 'mono-pcl')
 provides=('emby-server')
 conflicts=('emby-server')
 install='emby-server.install'
