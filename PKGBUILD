@@ -1,6 +1,6 @@
 # Maintainer: Kai Michaelis <seu@panopticon.re>
 pkgname=panopticon-git
-pkgver=0.15.0.1246
+pkgver=0.16.0.1340
 pkgrel=1
 pkgdesc="A libre cross platform disassembler"
 arch=('x86_64' 'i686')
@@ -12,7 +12,6 @@ depends=(
     'qt5-quickcontrols>=5.4'
 	'qt5-graphicaleffects>=5.4')
 makedepends=(
-    'rust'
     'cargo'
     'git>=1'
     'python-pytoml'
