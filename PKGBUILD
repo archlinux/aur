@@ -1,8 +1,8 @@
 # Maintainer : Immae <ismael.bouya@normalesup.org>
 
 pkgname=mediagoblin-git
-pkgver=20161030
-pkgrel=4
+pkgver=0.9.0.r8.gc4d3293
+pkgrel=1
 pkgdesc='A free software media publishing platform'
 arch=('i686' 'x86_64')
 url='http://mediagoblin.org'
@@ -20,7 +20,7 @@ optdepends=(
   'gst-plugins-bad: to handle videos'
   'gst-plugins-ugly: to handle videos'
   )
-backup=('etc/paste_local.ini' 'etc/mediagoblin_local.ini')
+backup=('etc/webapps/mediagoblin/paste_local.ini' 'etc/webapps/mediagoblin/mediagoblin_local.ini')
 install=mediagoblin.install
 makedepends=('git' 'automake')
 source=(
@@ -59,7 +59,7 @@ build() {
 }
 
 package() {
-  cd "$srcdir/$_gitrepo"
+  cd "$srcdir/mediagoblin"
   rm -rf .git .gitignore
 
   install -dm755 "$pkgdir"/usr/share/webapps/mediagoblin/
@@ -67,7 +67,7 @@ package() {
 
   cd "$pkgdir"/usr/share/webapps/mediagoblin
   find . -name '*.pyc' -delete
-  find . -type f -exec sed -i "s|$srcdir/$_gitrepo|/usr/share/webapps/mediagoblin|g" {} \;
+  find . -type f -exec sed -i "s|$srcdir/mediagoblin|/usr/share/webapps/mediagoblin|g" {} \;
 
   install -dm755 "$pkgdir"/var/lib/mediagoblin
   install -dm755 "$pkgdir"/etc/webapps/mediagoblin
