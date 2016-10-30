@@ -9,6 +9,8 @@ post_install() {
     echo -e "service: "
     echo "    systemctl enable --now netbox.service"
     echo ""
+    echo "Tweak the gunicorn configuration in /etc/netbox/gunicorn_config.py"
+    echo ""
 }
 
 post_upgrade() {

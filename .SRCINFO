@@ -1,7 +1,7 @@
 pkgbase = netbox
 	pkgdesc = IP address management (IPAM) and data center infrastructure management (DCIM) tool.
 	pkgver = 1.6.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/digitalocean/netbox
 	install = netbox.install
 	arch = any
@@ -30,12 +30,15 @@ pkgbase = netbox
 	depends = python2-xmltodict
 	conflicts = netbox-git
 	replaces = netbox-git
+	backup = etc/netbox/gunicorn_config.py
 	source = https://github.com/digitalocean/netbox/archive/v1.6.3.tar.gz
 	source = netbox-system.service
 	source = netbox.tmpfile
+	source = gunicorn_config.py
 	sha256sums = 426a7b31e15acaaa9286b423a26f6d6e262f6b94e9060c5acabee2e9c5685dd4
-	sha256sums = af0e22f2756aacb3f3d261d19f2b18d1748f6d93dc16fa01a60fe40790e39c7e
+	sha256sums = 5aaf2eef73c77c64bd78a50a80b8f4b3af87b63c64b139d63aa4a95cd82b1ca4
 	sha256sums = b8f7030f570e7707eb9c0f41c382e37d54244e7885c795a9f31788efdd45914e
+	sha256sums = 7a5ae05cad7ec14193a43ef080776b5525c80b6258762a6cb6a108db83861ff9
 
 pkgname = netbox
 

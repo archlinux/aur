@@ -6,7 +6,7 @@ After=network.target
 User=netbox
 Type=forking
 PIDFile=/run/netbox/netbox.pid
-ExecStart=gunicorn -c /opt/netbox/gunicorn_config.py /opt/netbox/netbox/netbox.wsgi
+ExecStart=/usr/bin/gunicorn -c /etc/netbox/gunicorn_config.py netbox.wsgi
 
 [Install]
 WantedBy=multi-user.target
