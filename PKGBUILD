@@ -1,3 +1,5 @@
+# Maintainer : Immae <ismael.bouya@normalesup.org>
+
 pkgname=cal3d
 pkgver=0.11.0
 pkgrel=6
