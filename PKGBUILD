@@ -3,7 +3,7 @@
 
 pkgname=litecoin-git
 _gitname=litecoin
-pkgver=v0.10.4.0.8.g865c17d
+pkgver=v0.10.4.0.12.g699bfd0
 pkgrel=1
 pkgdesc="A peer-to-peer network-based digital currency (git version)"
 arch=('i686' 'x86_64')
