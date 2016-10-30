@@ -1,7 +1,7 @@
 # Maintainer: Jonathan <greenbigfrog@gmail.com>
 _pkgname=okcash
 pkgname=okcash-git
-pkgver=r168.82651d0
+pkgver=r175.f1d2218
 pkgrel=1
 pkgdesc="Okcash Qt Wallet, git version"
 arch=('i686' 'x86_64')
@@ -35,4 +35,8 @@ package() {
     install -Dm644 "COPYING" "${pkgdir}/usr/share/licenses/okcash/LICENSE"
     install -d "${pkgdir}/usr/share/doc/okcash"
     cp -a "doc/" "${pkgdir}/usr/share/doc/okcash/"
+    mkdir "${pkgdir}/usr/share/applications"
+    mkdir "${pkgdir}/usr/share/pixmaps"
+    install -Dm755 "linux-desktop/okcash.desktop" "${pkgdir}/usr/share/applications/"
+    install -Dm755 "linux-desktop/okcash.png" "${pkgdir}/usr/share/pixmaps/"
 }
