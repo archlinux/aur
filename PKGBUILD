@@ -5,7 +5,7 @@
 
 pkgname=alot
 pkgver=0.3.7
-pkgrel=1
+pkgrel=2
 pkgdesc="terminal-based MUA for the notmuch mail system"
 arch=(any)
 url="https://github.com/pazz/alot"
@@ -24,11 +24,11 @@ source=($pkgname-$pkgver.tar.gz::https://github.com/pazz/$pkgname/archive/$pkgve
 build() {
     cd "$srcdir/$pkgname-$pkgver"
 
-    # The archlinux package python2-magic's egg calls itself
-    # "Magic-file-extensions", as opposed to the python-magic on pypi. The
-    # result is that the alot executable can't find the module, so we patch
-    # setup.py to fix the dependency:
-    sed -i -e 's/python-magic/Magic-file-extensions/' setup.py
+    # The archlinux package python2-magic's egg calls itself "file-magic",
+    # as opposed to the python-magic on pypi. The result is that the alot
+    # executable can't find the module, so we patch setup.py to fix the
+    # dependency:
+    sed -i -e 's/python-magic/file-magic/' setup.py
     python2 setup.py build
     make SPHINXBUILD=sphinx-build2 -C docs man html
 }
