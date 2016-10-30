@@ -2,7 +2,7 @@
 
 pkgname=mediagoblin-git
 pkgver=20161030
-pkgrel=2
+pkgrel=3
 pkgdesc='A free software media publishing platform'
 arch=('i686' 'x86_64')
 url='http://mediagoblin.org'
