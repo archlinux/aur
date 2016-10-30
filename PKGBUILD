@@ -32,6 +32,7 @@ package() {
 	install -D -m755 *-server "${pkgdir}/usr/bin"
 	cd ..
 	cp -R conf "$pkgdir/opt/tidb/"
+	cd ..
 	rm tidb-latest-linux-amd64.tar.gz
 	rm tidb-latest-linux-amd64.sha256
 }
