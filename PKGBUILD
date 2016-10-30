@@ -3,7 +3,7 @@
 _name=netbox
 pkgname=${_name}
 pkgver=1.6.3
-pkgrel=7
+pkgrel=8
 pkgdesc="IP address management (IPAM) and data center infrastructure management (DCIM) tool."
 arch=('any')
 url="https://github.com/digitalocean/${_name}"
@@ -20,6 +20,7 @@ depends=('python2'
          'python2-django-debug-toolbar-git'
          'python2-django-filter'
          'python2-django-rest-framework'
+         'python2-django-rest-swagger'
          'python2-django-tables2'
          'python2-lxml'
          'python2-markdown'
