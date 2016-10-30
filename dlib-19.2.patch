@@ -1,6 +1,17 @@
-diff -ruN dlib-19.1/dlib/cmake_utils/cmake_find_blas.txt dlib-19.1-patched/dlib/cmake_find_blas.txt
---- dlib-19.1/dlib/cmake_utils/cmake_find_blas.txt	2016-06-26 03:05:41.000000000 +0800
-+++ dlib-19.1-patched/dlib/cmake_utils/cmake_find_blas.txt	2016-06-27 13:03:20.968515000 +0800
+diff -ruN dlib-19.2/dlib/CMakeLists.txt dlib-19.2-patched/dlib/CMakeLists.txt
+--- dlib-19.2/dlib/CMakeLists.txt	2016-10-11 07:36:19.000000000 +0800
++++ dlib-19.2-patched/dlib/CMakeLists.txt	2016-10-30 10:36:04.000000000 +0800
+@@ -308,6 +308,7 @@
+          if (PNG_FOUND AND LIBPNG_IS_GOOD)
+             include_directories(${PNG_INCLUDE_DIR})
+             set (dlib_needed_libraries ${dlib_needed_libraries} ${PNG_LIBRARY})
++            set (dlib_needed_libraries ${dlib_needed_libraries} ${ZLIB_LIBRARY})
+             set(REQUIRES_LIBS " libpng")
+          else()
+             # If we can't find libpng then statically compile it in.
+diff -ruN dlib-19.2/dlib/cmake_utils/cmake_find_blas.txt dlib-19.2-patched/dlib/cmake_utils/cmake_find_blas.txt
+--- dlib-19.2/dlib/cmake_utils/cmake_find_blas.txt	2016-10-11 07:36:19.000000000 +0800
++++ dlib-19.2-patched/dlib/cmake_utils/cmake_find_blas.txt	2016-10-30 10:36:04.000000000 +0800
 @@ -314,6 +314,116 @@
      endif()
  
@@ -118,14 +129,3 @@ diff -ruN dlib-19.1/dlib/cmake_utils/cmake_find_blas.txt dlib-19.1-patched/dlib/
  endif()
  
  
-diff -ruN dlib-19.1/dlib/CMakeLists.txt dlib-19.1-patched/dlib/CMakeLists.txt
---- dlib-19.1/dlib/CMakeLists.txt	2016-06-26 03:05:41.000000000 +0800
-+++ dlib-19.1-patched/dlib/CMakeLists.txt	2016-06-27 13:03:20.968515000 +0800
-@@ -309,6 +309,7 @@
-          if (PNG_FOUND AND LIBPNG_IS_GOOD)
-             include_directories(${PNG_INCLUDE_DIR})
-             set (dlib_needed_libraries ${dlib_needed_libraries} ${PNG_LIBRARY})
-+            set (dlib_needed_libraries ${dlib_needed_libraries} ${ZLIB_LIBRARY})
-             set(REQUIRES_LIBS " libpng")
-          else()
-             # If we can't find libpng then statically compile it in.

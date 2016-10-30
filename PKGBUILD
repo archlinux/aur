@@ -2,7 +2,7 @@
 
 pkgname=mingw-w64-dlib
 _pkgname=dlib
-pkgver=19.1
+pkgver=19.2
 pkgrel=1
 pkgdesc="Dlib is a general purpose cross-platform C++ library designed using contract programming and modern C++ techniques. (mingw-w64)"
 arch=('any')
@@ -16,8 +16,8 @@ optdepends=('mingw-w64-lapack: for BLAS and LAPACK support'
 options=('!buildflags' '!strip' 'staticlibs')
 source=(http://downloads.sourceforge.net/project/dclib/${_pkgname}/v${pkgver}/${_pkgname}-${pkgver}.tar.bz2
         dlib-${pkgver}.patch)
-md5sums=('8201f9b74602aebd5a68c261ff97e00c'
-         '646ce527c1ff21d80298087b399f662d')
+md5sums=('12786b3765cc98193c404ccf3c88c900'
+         'a8842c48f1eb5d7e3460e004e1a97d38')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
