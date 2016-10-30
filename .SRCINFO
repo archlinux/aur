@@ -1,7 +1,7 @@
 pkgbase = netbox
 	pkgdesc = IP address management (IPAM) and data center infrastructure management (DCIM) tool.
 	pkgver = 1.6.3
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/digitalocean/netbox
 	install = netbox.install
 	arch = any
@@ -31,6 +31,7 @@ pkgbase = netbox
 	conflicts = netbox-git
 	replaces = netbox-git
 	backup = etc/netbox/gunicorn_config.py
+	backup = etc/netbox/configuration.py
 	source = https://github.com/digitalocean/netbox/archive/v1.6.3.tar.gz
 	source = netbox-system.service
 	source = netbox.tmpfile
