@@ -19,7 +19,6 @@ sha512sums=('fb35d31ddf88cd25c0e81efdd99c52f69444a08015e4b7585fcbcb804623b035b36
 
 package() {	
         sed 's/eth0/wlp0s29f7u3/' ${srcdir}/vpnkillswitch-master/vpnkillswitch.sh
-        sed 's/eth0/wlp0s29f7u3/' "${pkgdir}/usr/bin/vpnkillswitch.sh"
         echo "Please replace eth0 with your network interface at vpnkillswitch.sh"
 	mkdir -p "${pkgdir}/usr/bin"
         for file in ${srcdir}/vpnkillswitch-master/*.sh
@@ -27,7 +26,8 @@ package() {
 		install -D -m644 "${file}" "${pkgdir}/usr/bin/"
 	done
         echo "If you've questions about this package, please read: http://mikeeverhart.net/2015/12/vpn-killswitch-bash-script/"
-        echo "For recovery your connection please run # vpnkillswitch up"   
+        echo "For recovery your connection please run # vpnkillswitch up" 
+        sed 's/eth0/wlp0s29f7u3/' "${pkgdir}/usr/bin/vpnkillswitch.sh"  
 }
 
 # vim:set ts=2 sw=2 et:
