@@ -2,7 +2,7 @@
 
 pkgname=brave-git
 _pkgname=browser-laptop
-pkgver=0.12.6.15
+pkgver=0.12.8.4052
 pkgrel=1
 pkgdesc="A web browser that stops ads and trackers by default. Master branch."
 arch=('x86_64') # Upstream supports x86_64 only
@@ -20,14 +20,23 @@ sha384sums=('SKIP'
             'f950675fb4a3f9e48374f8a2667e7a45889206a3062c8182e474143607fc26bd17e852a1ef494607dbd3ff4de325e05f')
 
 pkgver() {
-  cd "$startdir/$_pkgname"
+  cd "$srcdir/$_pkgname"
   
-  # Please note that this version hack works here because this package 
-  # intends to track dev-channel, you can track master instead, just edit
-  # above to your heart's content. 
-  # Upstream has a defined tagging and versioning policy, often.
-  # Version extraction is fragile and needs work.
-  echo $(git describe --tags | sed -e 's/^v//' -e 's/dev//' -e 's/-/./' -e 's/-.\+//')
+  # Version tracking is somewhat of a mess.
+  # 
+  # Upstream has a defined tagging and versioning policy, often. But...
+  # Version extraction is fragile and needs work. E.g., final releases have
+  # a lower lexicographical value than pre-releases. Not good. Thusly, the 
+  # version extracted below never matches a true release even if already tagged.
+  #
+  # echo $(git describe --tags | sed -e 's/^v//' -e 's/dev//' -e 's/-/./' -e 's/-.\+//')
+  #
+  # Found out where the version number is kept, finally! Let's hope this works
+  # as a long term fix.
+  #
+  printf %s.%s \
+    $(grep version package.json | awk '{print $2}' | sed -e 's/,//' -e 's/"//g')\
+    $(git rev-list --count master)
 }
 
 build() {
