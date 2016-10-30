@@ -1,23 +1,24 @@
 pkgname=dnf
-_pkgver=1.1.10
-_rpmrel=1
+_pkgver=2.0.0
+_rpmrel=0.rc1.1
+_pkgtag=$pkgname-$_pkgver-$_rpmrel
 pkgver=$_pkgver.$_rpmrel
 pkgrel=1
 pkgdesc="Package manager forked from Yum, using libsolv as a dependency resolver"
 arch=('any')
 url="https://github.com/rpm-software-management/$pkgname"
 license=('GPL2' 'GPL')
-depends=('hawkey' 'libcomps' 'librepo' 'rpm-org'
+depends=('libdnf>=0.7' 'libcomps' 'librepo' 'rpm-org'
          'python' 'python-iniparse' 'python-pygpgme')
 makedepends=('bash-completion' 'cmake' 'python-sphinx')
 checkdepends=('python-nose')
 backup=("etc/$pkgname/automatic.conf"
         "etc/$pkgname/$pkgname.conf")
-source=("$url/archive/$pkgname-$_pkgver-$_rpmrel.tar.gz")
-md5sums=('c0effd3b40e21d471f39c9c8eeacd68a')
+source=("$url/archive/$_pkgtag.tar.gz")
+md5sums=('d79a2b644afa8f10df36c067e3651ccb')
 
 prepare() {
-	mv "$pkgname-$pkgname-$_pkgver-$_rpmrel" "$pkgname-$pkgver"
+	mv "$pkgname-$_pkgtag" "$pkgname-$pkgver"
 
 	cd "$pkgname-$pkgver"
 	rm -rf build
@@ -36,7 +37,7 @@ build() {
 
 # Tests seem to need a non-empty RPM database installed on the system
 #check() {
-#	cd "$pkgname-$pkgname-$_pkgver-$_rpmrel"/build
+#	cd "$pkgname-$pkgver"/build
 #	make ARGS="-V" test
 #}
 
