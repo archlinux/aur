@@ -3,7 +3,7 @@
 _name=netbox
 pkgname=${_name}
 pkgver=1.6.3
-pkgrel=6
+pkgrel=7
 pkgdesc="IP address management (IPAM) and data center infrastructure management (DCIM) tool."
 arch=('any')
 url="https://github.com/digitalocean/${_name}"
@@ -55,7 +55,7 @@ package() {
 	mkdir -p "$pkgdir/etc/netbox"
 	install -D -m644 gunicorn_config.py "$pkgdir/etc/netbox/gunicorn_config.py"
 	install -D -m644 ${_name}-${pkgver}/${_name}/${_name}/configuration.example.py "$pkgdir/etc/netbox/configuration.py"
-	ln -s /etc/netbox/configuration.py /opt/netbox/netbox/configuration.py
+	ln -s /etc/netbox/configuration.py "$pkgdir/opt/netbox/netbox/configuration.py"
 
 	find "$pkgdir" -type d -name '.git' -exec rm -r '{}' +
 }
