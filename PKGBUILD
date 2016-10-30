@@ -13,7 +13,7 @@ makedepends=('git')
 provides=("${pkgname[0]%-git}")
 conflicts=("${pkgname[0]%-git}")
 
-source=("${_srcname}::git+${url}.git#commit=695d8d5793e86f7ad06b931e2418e02fefc74c09")
+source=("${_srcname}::git+https://code.qt.io/qt/${_srcname}.git#commit=695d8d5793e86f7ad06b931e2418e02fefc74c09")
 sha512sums=('SKIP')
 
 install='install.sh'
