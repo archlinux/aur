@@ -1,6 +1,6 @@
 pkgbase = python-javascriptcore2-git
 	pkgdesc = Javascript Core for Python (When using WebKit2Gtk)
-	pkgver = v1.0.r0.gb281673
+	pkgver = v1.0.r2.gdb9d8e9
 	pkgrel = 1
 	url = https://github.com/freundTech/pyjavascriptcore
 	arch = i686
