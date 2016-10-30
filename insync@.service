@@ -8,7 +8,7 @@ Type=oneshot
 RemainAfterExit=yes
 ExecStart=/usr/bin/insync start
 ExecStop=/usr/bin/insync quit
+User=%I
 
 [Install]
 WantedBy=multi-user.target
-
