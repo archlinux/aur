@@ -1,22 +1,36 @@
 # Maintainer: Adrian Perez <aperez@igalia.com>
 pkgname='dmon'
-pkgver='0.4.3'
+pkgver='0.4.4'
 pkgrel='1'
 pkgdesc='Toolset for daemonizing and supervising processes'
 arch=('i686' 'x86_64' 'arm')
 url='https://github.com/aperezdc/dmon'
 license=('MIT')
 depends=('glibc')
-makedepends=('make')
+makedepends=('make' 'gnupg')
+validpgpkeys=('91C559DBE4C9123B')
 source=("git+https://github.com/aperezdc/dmon.git#tag=v${pkgver}"
         "git+https://github.com/aperezdc/wheel.git")
 sha1sums=('SKIP' 'SKIP')
 
+_checktag () {
+  local -a line
+  while read -r -a line ; do
+    if [[ ${line[1]} = GOODSIG && ${line[2]} = ${validpgpkeys[0]} ]] ; then
+      return 0
+    fi
+  done < <( git verify-tag "v${pkgver}" --raw 2>&1 )
+  return 1
+}
+
 prepare () {
-	cd dmon
-	git submodule init
-	git config submodule.wheel.url "${srcdir}/wheel"
-	git submodule update
+  cd dmon
+  git submodule init
+  git config submodule.wheel.url "${srcdir}/wheel"
+  git submodule update
+  if ! git verify-tag "v${pkgver}" || ! _checktag ; then
+    exit 42
+  fi
 }
 
 build() {

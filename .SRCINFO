@@ -1,6 +1,6 @@
 pkgbase = dmon
 	pkgdesc = Toolset for daemonizing and supervising processes
-	pkgver = 0.4.3
+	pkgver = 0.4.4
 	pkgrel = 1
 	url = https://github.com/aperezdc/dmon
 	arch = i686
@@ -8,9 +8,11 @@ pkgbase = dmon
 	arch = arm
 	license = MIT
 	makedepends = make
+	makedepends = gnupg
 	depends = glibc
-	source = git+https://github.com/aperezdc/dmon.git#tag=v0.4.3
+	source = git+https://github.com/aperezdc/dmon.git#tag=v0.4.4
 	source = git+https://github.com/aperezdc/wheel.git
+	validpgpkeys = 91C559DBE4C9123B
 	sha1sums = SKIP
 	sha1sums = SKIP
 
