@@ -22,7 +22,27 @@ GenericName[sr@latin]=Prevodilac Raw slika
 GenericName[zh_CN]=Raw 图像转换器
 GenericName[zh_TW]=Raw 影像轉換器
 
-Comment=A new version of the popular raw digital images manipulator ufraw.
+Comment=Convert camera RAW images to standard image files.
+
+Keywords=graphics;photography;raw;
+Keywords[ca]=graphics;photography;raw;
+Keywords[cs]=grafika;fotografie;raw;
+Keywords[da]=grafik;fotografi;raw;
+Keywords[de]=Graphik;Grafik;Photographie;Fotografie;Raw;
+Keywords[el]=graphics;photography;raw;
+Keywords[es]=gráficos;fotografía;raw;
+Keywords[fr]=graphisme;photographie;raw;
+Keywords[he]=גרפיקה;צילום;raw;
+Keywords[hu]=grafika;fénykép;fotó;raw;
+Keywords[it]=grafica;fotografia;raw;
+Keywords[ja]=graphics;photography;raw;
+Keywords[nl]=grafische vormgeving;fotografie;raw;
+Keywords[pt_BR]=gráfico;fotografia;raw;
+Keywords[ru]=graphics;photography;raw;
+Keywords[sk]=grafika;fotografovanie;fotografie;raw;surový;
+Keywords[sl]=grafika;fotografije;surove;
+Keywords[sq]=graphics;photography;raw;
+Keywords[sv]=grafik;fotografi;rå;
 
 Exec=nufraw %U
 TryExec=nufraw
@@ -30,5 +50,7 @@ Terminal=false
 StartupNotify=true
 
 Icon=nufraw
-Categories=Graphics;Photography;RasterGraphics;GTK;
-MimeType=application/x-ufraw;application/x-nufraw;image/x-dcraw;
+Categories=Graphics;Photography;2DGraphics;
+MimeType=application/x-nufraw;image/x-dcraw;
+# https://en.wikipedia.org/wiki/Raw_image_format
+#.3fr, .ari, .arw, .bay, .crw, .cr2, .cap, .data, .dcs, .dcr, .dng, .drf, .eip, .erf, .fff, .iiq, .k25, .kdc, .mdc, .mef, .mos, .mrw, .nef, .nrw, .obm, .orf, .pef, .ptx, .pxn, .r3d, .raf, .raw, .rwl, .rw2, .rwz, .sr2, .srf, .srw, .tif, .x3f
