@@ -4,7 +4,7 @@
 # Contributor: Chris Down <chris at chrisdown dot name>
 
 pkgname=django-registration
-pkgver=1.2
+pkgver=1.4
 pkgrel=1
 pkgdesc="A simple, generic user-registration application for Django"
 arch=('any')
@@ -12,7 +12,7 @@ url='https://github.com/macropin/django-registration'
 license=('BSD')
 depends=('python-django')
 source=("https://github.com/macropin/django-registration/archive/v${pkgver}.tar.gz")
-sha256sums=('8e77f21d3f10eaf3319e21e052f40b47683d8e1ad3fd461815f492eb5665d0db')
+sha256sums=('60088b22faf691130719055935d01342227cb91d76ddaddec68ca0b3746db48d')
 
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
