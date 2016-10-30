@@ -1,6 +1,6 @@
 # voltra-aur
 
-AUR package for the [voltra music player][voltra], created from the Debian package.
+AUR package for the [voltra music player][voltra.co], created from the Debian package.
 
 With thanks to:
 - @dcelasun's [n1 AUR package][n1-aur]
