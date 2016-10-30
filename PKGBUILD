@@ -1,9 +1,9 @@
 pkgname='postgresql-musicbrainz-collate'
-pkgver=v1.0.0.r7.g583f801
+pkgver=v1.0.0.r11.g958142e
 pkgrel=1
 pkgdesc="MusicBrainz' collate extension to PostgreSQL"
 arch=('i686' 'x86_64')
-url=("http://musicbrainz.org/doc/MusicBrainz_Server")
+url="http://musicbrainz.org/doc/MusicBrainz_Server"
 license=('GPL')
 depends=('postgresql')
 
