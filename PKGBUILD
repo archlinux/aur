@@ -1,9 +1,9 @@
-# Contributor: Zdenek Janak <janak@physics.muni.cz>
+# Contributor: Zdenek Janak <janak@astronomie.cz>
 
 pkgname=munipack
-pkgver=0.5.6
+pkgver=0.5.7
 pkgrel=1
-pkgdesc="General astronomical photometry software package"
+pkgdesc="A general astronomical image processing software"
 arch=('i686' 'x86_64')
 url="http://munipack.physics.muni.cz/"
 license=('GPL3')
@@ -12,11 +12,11 @@ makedepends=(gcc-fortran)
 optdepends=('fitspng: for FITS to PNG conversion'
             'rawtran: for RAW to FITS conversion')
 source=(ftp://integral.physics.muni.cz/pub/$pkgname/$pkgname-$pkgver.tar.gz)
-md5sums=('f609ee8cba91fdb63c5a3bf90277b812')
+md5sums=('b012be15091253bbc350b78d7b9458a0')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
-  ./configure --prefix=/usr --libexecdir=/usr/lib
+  ./configure FCFLAGS=-std=legacy --prefix=/usr --libexecdir=/usr/lib
   make
 }
 
