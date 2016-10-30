@@ -21,7 +21,7 @@ url='Unknown'
 license=('BSD')
 depends=('ncurses')
 conflicts=('netkit-telnet' 'inetutils')
-source=("http://ftp.sunet.se/pub/Linux/distributions/suse/people/kukuk/ipv6/$pkgname-$pkgver.tar.bz2"
+source=("http://ftp.isr.ist.utl.pt/pub/MIRRORS/ftp.suse.com/people/kukuk/ipv6/$pkgname-$pkgver.tar.bz2"
         'telnet.xinetd'
         'telnet.socket'
         'telnet@.service')
