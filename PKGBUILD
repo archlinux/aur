@@ -2,7 +2,7 @@
 # Contributor: Ner0 <darkelfdarkelf666@yahoo.co.uk>
 
 pkgname=pantheon-files-plugin-dropbox-bzr
-pkgver=r22
+pkgver=r24
 pkgrel=1
 pkgdesc='Dropbox integration for pantheon-files'
 arch=('i686' 'x86_64')
