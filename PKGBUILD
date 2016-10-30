@@ -1,7 +1,7 @@
 # Maintainer: Jonathan <greenbigfrog@gmail.com>
 _pkgname=okcash
 pkgname=okcashd
-pkgver=4.0.0.1
+pkgver=4.0.0.3
 pkgcodename=Utopia
 pkgrel=1
 pkgdesc="Okcash daemon"
