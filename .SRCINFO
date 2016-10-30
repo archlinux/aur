@@ -1,0 +1,16 @@
+pkgbase = scangearmp-mx510series-x86_64
+	pkgdesc = Canon Scanner Driver (MX510 Series) x86_64
+	pkgver = 1.90
+	pkgrel = 1
+	url = http://support-th.canon-asia.com/contents/TH/EN/0100413102.html
+	arch = x86_64
+	license = custom
+	makedepends = rpmextract
+	depends = sane
+	depends = pangox-compat
+	conflicts = scangearmp
+	source = http://pdisp01.c-wss.com/gdl/WWUFORedirectTarget.do?id=MDEwMDAwNDEzMTAx&cmp=ACB&lang=EN
+	md5sums = d055b3dc640ebe1c6b60b77c78916b8e
+
+pkgname = scangearmp-mx510series-x86_64
+
