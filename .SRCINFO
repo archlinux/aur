@@ -6,8 +6,8 @@ pkgbase = tidb-bin
 	arch = x86_64
 	license = APACHE
 	depends = gcc-libs
-	source = http://download.pingcap.org/tidb-latest-linux-amd64.tar.gz?ver=20161030052309
-	source = http://download.pingcap.org/tidb-latest-linux-amd64.sha256?ver=20161030052309
+	source = http://download.pingcap.org/tidb-latest-linux-amd64.tar.gz
+	source = http://download.pingcap.org/tidb-latest-linux-amd64.sha256
 	sha256sums = SKIP
 	sha256sums = SKIP
 

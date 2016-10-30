@@ -10,8 +10,8 @@ depends=('gcc-libs')
 backup=()
 options=()
 
-source=("http://download.pingcap.org/tidb-latest-linux-amd64.tar.gz?ver=20161030052309"
-	"http://download.pingcap.org/tidb-latest-linux-amd64.sha256?ver=20161030052309")
+source=("http://download.pingcap.org/tidb-latest-linux-amd64.tar.gz"
+	"http://download.pingcap.org/tidb-latest-linux-amd64.sha256")
 
 sha256sums=(
 	'SKIP'
