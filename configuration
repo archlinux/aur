@@ -1,6 +1,6 @@
 Pi-hole Archlinux configuration instructions
 Standalone version
-rev. 0.3
+rev. 0.4
 
 It is possible to add custom ad-list server in /etc/pihole/adlists.list
 
@@ -19,7 +19,7 @@ A) First install steps
     2) copy pi-hole include config lines in right place
 
     # mkdir /etc/dnsmasq.d
-    # cp /etc/pihole/configs/dnsmasq.include /etc/dnsmasq.d/pihole.conf
+    # cp /etc/pihole/configs/dnsmasq.include /etc/dnsmasq.d/01-pihole.conf
 
     3) edit your /etc/dnsmasq.conf to uncomment last line (including new pi-hole config lines)
 
@@ -32,7 +32,9 @@ A) First install steps
     4) backup original dnsmasq config file and copy pi-hole one
 
     # cp /etc/dnsmasq.conf /etc/dnsmasq.orig
-    # cp /etc/pihole/configs/dnsmasq.complete /etc/dnsmasq.conf
+    # cp /etc/pihole/configs/dnsmasq.main /etc/dnsmasq.conf
+    # mkdir /etc/dnsmasq.d
+    # cp /etc/pihole/configs/dnsmasq.include /etc/dnsmasq.d/01-pihole.conf
 
   *** end if
 
