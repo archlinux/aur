@@ -2,7 +2,7 @@
 
 pkgname=cadubi
 pkgver=1.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Creative ASCII Drawing Utility By Ian"
 arch=('any')
 url="https://github.com/statico/cadubi"
@@ -27,7 +27,7 @@ package() {
   ln -s /usr/share/cadubi/cadubi "$pkgdir"/usr/bin/cadubi
 
   install -Dm755 cadubi "$pkgdir"/usr/share/cadubi/cadubi
-  install -Dm755 help.txt "$pkgdir"/usr/share/cadubi/help.txt
+  install -Dm644 help.txt "$pkgdir"/usr/share/cadubi/help.txt
 
   install -Dm644 cadubi.1 "$pkgdir"/usr/share/man/man1/cadubi.1
   install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
