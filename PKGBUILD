@@ -4,13 +4,13 @@
 
 _pkgname='gnome-terminal'
 pkgname="${_pkgname}-fedora"
-pkgver=3.20.2
-pkgrel=2
+pkgver=3.22.0
+pkgrel=1
 pkgdesc='The GNOME Terminal Emulator with Fedora patches'
 arch=('i686' 'x86_64')
 url='https://wiki.gnome.org/Apps/Terminal'
 license=('GPL')
-depends=('vte3-notification>=0.44.2' 'gsettings-desktop-schemas' 'dconf' 'gtk3>=3.12.0' 'glib2>=2.42.0')
+depends=('vte3-notification>=0.46.0' 'gsettings-desktop-schemas' 'dconf' 'gtk3>=3.12.0' 'glib2>=2.42.0')
 makedepends=('gnome-doc-utils' 'intltool' 'itstool' 'docbook-xsl' 'desktop-file-utils'
              'libnautilus-extension' 'appdata-tools' 'gnome-shell' 'gconf' 'vala' 'yelp-tools')
 provides=("${_pkgname}=${pkgver}")
@@ -20,26 +20,19 @@ groups=('gnome')
 install="${pkgname}.install"
 source=(
 	"https://download.gnome.org/sources/${_pkgname}/${pkgver::4}/${_pkgname}-${pkgver}.tar.xz"
-	'dnd-crash.patch'
-	'palette-color.patch'
 	'0001-build-Don-t-treat-warnings-as-errors.patch'
 	'gnome-terminal-transparency-notify.patch'
 	'org.gnome.Terminal.gschema.override'
 )
 sha256sums=(
-	'f5383060730f1de70af35e917f82d5b6a14d963ad9cfd6a0e705f90011645a23'
-	'0bb1021b01ed0cdc1b598289de707221ebea0be46cba32301c32477dfd4cb166'
-	'1d98a84fa8ce0e93e2e3e36c6cd50d86965d3fb120d2d6a42305b402be1df573'
+	'97e6b1b4128ac133d8917b3940c71ddf9b89d189c5ac8402b1060126733993ed'
 	'83c42ed513e374c181b23da4f9fce39e197c1e09ae328147b2b2bcdfbc4c99d7'
-	'34d2fb95873334dd79ff76dda6a69692b0f390e9ac1c9795052020e847a680ed'
+	'd8f23d2e708e48744d6a730f9d695eec9f169d0e58313ff9a5b019aabcc9dbc0'
 	'5409b35d1940443d29d810de0560d3303eb74c009e661e8fbfa1030e5ffde92e'
 )
 
 prepare () {
 	cd "${_pkgname}-${pkgver}"
-
-	patch -Np1 -i '../dnd-crash.patch'
-	patch -Np1 -i '../palette-color.patch'
 
 	patch -Np1 -i '../0001-build-Don-t-treat-warnings-as-errors.patch'
 	patch -Np1 -i '../gnome-terminal-transparency-notify.patch'
