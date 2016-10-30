@@ -8,8 +8,8 @@ validpgpkeys=('748231EBCBD808A14F5E85D28C004C2F93481F6B')
 
 pkgname=spearmint-git
 _pkgname=spearmint
-pkgver=r4064.33b5758
-pkgrel=7
+pkgver=r4130.f80caa0
+pkgrel=1
 _ioq3v1='1.36'
 _ioq3v2='1.32-9'
 _upver='0.2'  # upstream release- needed for some pk3's.
@@ -56,7 +56,7 @@ sha512sums=('53a3b3b2bb139b9e5ecbd12c5876048dd2b2cffab07acf2db5fd7697f5624af24d5
             'SKIP'
             'SKIP'
             'SKIP'
-            '950e7cd01fd272a7feed853f3bd9934ae050ccd1363d2d1d6a7fee78364ae697df9f4a1d98be949d8beb34afcb15de3908b267c1b19806cee996244ece7142fa'
+            'SKIP'
             '2ca85a1fc28feaa0f7609d419f5ae81f830e9e9244bccfb8d881f1e44c6151af168bc5cc1e8ebcb1f212d345d34ea967b00763f682c35db720612b0b7162a522'
             '9e70a201f26265e29fb9ce2d198d943de8e12094b9d04b5e2fad630508787f036c0ee318604a2899ad4a74b4cef8ba3bffd1e7817de8bcbd512a6f80783aea1a'
             '84c60900e2db08e2e8dc39236d268fea392fcbc7cb51af051b5981301bfd5d6c10cafd29284096728048ed4b54baa580ee3f9824a2a1435ba42e91d644547cc0'
