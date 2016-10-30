@@ -2,7 +2,7 @@
 
 pkgname=vpnks
 pkgver=1.0
-pkgrel=3
+pkgrel=4
 pkgdesc="VPNKS protects you against leaks caused by disconnetction"
 arch=('any')
 url="https://github.com/plasticbrain/vpnkillswitch"
@@ -19,6 +19,7 @@ sha512sums=('fb35d31ddf88cd25c0e81efdd99c52f69444a08015e4b7585fcbcb804623b035b36
 
 package() {	
         sed 's/eth0/wlp0s29f7u3/' ${srcdir}/vpnkillswitch-master/vpnkillswitch.sh
+        sed 's/eth0/wlp0s29f7u3/' "${pkgdir}/usr/bin/vpnkillswitch.sh"
         echo "Please replace eth0 with your network interface at vpnkillswitch.sh"
 	mkdir -p "${pkgdir}/usr/bin"
         for file in ${srcdir}/vpnkillswitch-master/*.sh
