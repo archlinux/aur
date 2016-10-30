@@ -5,9 +5,11 @@
 # Contributor: Leonid Selivanov <bravebug at gmail dot com>
 
 _pkgname="liferea"
+_pkgver="1.12"
+_prerelease="rc1"
 
 pkgname="${_pkgname}-unstable"
-pkgver=1.11.7
+pkgver="${_pkgver}.${_prerelease}"
 pkgrel=1
 pkgdesc="A desktop news aggregator for online news feeds and weblogs - Unstable"
 arch=('i686' 'x86_64')
@@ -24,13 +26,12 @@ optdepends=(
 options=('!libtool' '!emptydirs')
 provides=('liferea')
 conflicts=('liferea' 'liferea-git')
-install="${pkgname}.install"
-source=("https://github.com/lwindolf/${_pkgname}/releases/download/v${pkgver}/${_pkgname}-${pkgver}.tar.bz2")
-sha256sums=('227c3d4e13fef655e96bad7194671e97373ef0ca2b47eecd1fdd61a2547c5453')
+source=("https://github.com/lwindolf/${_pkgname}/archive/v${_pkgver}-${_prerelease}.tar.gz")
+sha256sums=('49416c9a013bc2a5eac0d82602571df3cbd6be7aa06521eeac91587f2eb77572')
 
 build() {
-    cd "${_pkgname}-${pkgver}"
-
+    cd "${_pkgname}-${_pkgver}-${_prerelease}"
+    ./autogen.sh
     ./configure \
     --prefix=/usr \
     --sysconfdir=/etc \
@@ -41,7 +42,7 @@ build() {
 }
 
 package() {
-    cd "${_pkgname}-${pkgver}"
+    cd "${_pkgname}-${_pkgver}-${_prerelease}"
     make DESTDIR="${pkgdir}" install
 }
 
