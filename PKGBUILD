@@ -2,8 +2,8 @@
 # Contributor: Jakob Gahde <j5lx@fmail.co.uk>
 
 pkgname=radium
-pkgver=4.1.6
-pkgrel=2
+pkgver=4.2.3
+pkgrel=1
 pkgdesc="A graphical music editor. A next generation tracker."
 arch=('i686' 'x86_64')
 url="http://users.notam02.no/~kjetism/radium/"
@@ -37,15 +37,13 @@ options=(!strip)
 source=("https://github.com/kmatheussen/${pkgname}/archive/${pkgver}.tar.gz"
         "faust-accept-clang-390.patch"
         "dont-empty-qt-library-paths.patch"
-        "reenable-libbfd-workaround.patch"
         "use-gcc5-for-pluginhost.patch"
         "use-system-vstsdk.patch")
-md5sums=('538cb0ffab64719bbda03b1c434448e3'
+md5sums=('3fa66475f7dd73c6ad863bc2da16e5f3'
          '9c72bd466ead73e36b0c2d4297d76870'
          '77c202bc0a36562eb7b805ad6b7a85b3'
-         '74ea7a54f0e358035a7f0cc7baf54b6e'
          '9c19006defeef7e317ec23ed8eae1b72'
-         'a634357218872c0502202d3c738b5a9d')
+         '661c15bc037131c1ad8f8f11d3bc957f')
 
 prepare() {
     cd "${pkgname}-${pkgver}"
@@ -56,12 +54,11 @@ prepare() {
     # Fix QT_QPA_PLATFORM_PLUGIN_PATH problem
     patch -Np1 < "${srcdir}/dont-empty-qt-library-paths.patch"
 
-    # See https://github.com/kmatheussen/radium/commit/22be69fd24235cafb5878692d574d500f843c911#commitcomment-17394610
-    patch -Np1 < "${srcdir}/reenable-libbfd-workaround.patch"
     # Some parts of JUCE that Radium uses depend on unstandardized behaviour
     # specific to GCC5, so they don't compile with Arch's regular GCC6 and we
     # have to switch back manually
     patch -Np1 < "${srcdir}/use-gcc5-for-pluginhost.patch"
+
     # Use the VST SDK from steinberg-vst36, so the user doesn't have to
     # manually put it into his home directory
     patch -Np1 < "${srcdir}/use-system-vstsdk.patch"
