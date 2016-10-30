@@ -4,7 +4,7 @@
 
 pkgname=flashplugin-beta
 pkgver=24.0.0.138
-pkgrel=1
+pkgrel=2
 pkgdesc='Adobe Flash Player Beta'
 url='http://labs.adobe.com/downloads/flashplayer.html'
 arch=('i686' 'x86_64')
@@ -23,12 +23,21 @@ md5sums=('f34aae6279b40e0bd2abfb0d9963d7b8')
 md5sums_i686=('be7719827c9f93004fadc9199f8c5497')
 md5sums_x86_64=('c64705c1e58a605410c63e571fbeb8e8')
 
-package () {
-    rm -r usr/lib/
-    mv usr/{lib64,lib}
+prepare () {
+    # In Adobe's x86_64 tarball, files in usr/lib/ are symlinked to
+    # counterparts in usr/lib64/
+    [[ $CARCH = 'x86_64' ]] && (
+        rm -r usr/lib/
+        mv usr/{lib64,lib}
+    )
+
     # KDE 4 is no longer supported by Arch
     rm -r usr/{lib,share}/kde4
+
     chmod +x usr/bin/flash-player-properties
+}
+
+package() {
     cp -dr --no-preserve=ownership usr "$pkgdir/"
     install -Ddm755 "$pkgdir/usr/share/licenses/$pkgname/"
     cp -dr --no-preserve=ownership LGPL "$pkgdir/usr/share/licenses/$pkgname/"
