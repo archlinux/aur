@@ -1,0 +1,18 @@
+[Unit]
+Description=Mediagoblin
+ 
+[Service]
+Type=simple
+WorkingDirectory=/usr/share/webapps/mediagoblin
+User=mediagoblin
+Group=mediagoblin
+ExecStart=/usr/share/webapps/mediagoblin/bin/paster serve \
+             /usr/share/webapps/mediagoblin/paste_local.ini \
+             --pid-file=/var/run/mediagoblin/mediagoblin.pid
+ExecStop=/usr/share/webapps/mediagoblin/bin/paster serve \
+            --pid-file=/var/run/mediagoblin/mediagoblin.pid \
+            /usr/share/webapps/mediagoblin/paste_local.ini stop
+PIDFile=/var/run/mediagoblin/mediagoblin.pid
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,16 @@
+[Unit]
+Description=Mediagoblin Celeryd
+
+[Service]
+User=mediagoblin
+Group=mediagoblin
+Type=simple
+WorkingDirectory=/usr/share/webapps/mediagoblin/
+Environment=MEDIAGOBLIN_CONFIG=/usr/share/webapps/mediagoblin/mediagoblin_local.ini \
+            CELERY_CONFIG_MODULE=mediagoblin.init.celery.from_celery
+ExecStart=/usr/share/webapps/mediagoblin/bin/celery worker \
+              --loglevel=INFO
+PIDFile=/var/run/mediagoblin/mediagoblin-celeryd.pid
+
+[Install]
+WantedBy=multi-user.target

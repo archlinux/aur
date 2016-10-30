@@ -1,0 +1,29 @@
+pkgname=mediagoblin-git
+
+post_install() {
+  if [ ! `grep mediagoblin /etc/group` ]; then
+    groupadd mediagoblin &>/dev/null;
+  fi
+
+  id mediagoblin &>/dev/null || \
+    useradd -g mediagoblin -d /var/lib/mediagoblin -s /bin/false mediagoblin
+
+  /usr/bin/systemd-tmpfiles --create mediagoblin.conf
+
+  chown -R mediagoblin:mediagoblin /var/run/mediagoblin /var/lib/mediagoblin
+
+  cd /usr/share/webapps/mediagoblin/
+  /bin/su -s /bin/sh -c "/usr/share/webapps/mediagoblin/bin/gmg dbupdate" mediagoblin
+}
+
+post_upgrade() {
+  cd /usr/share/webapps/mediagoblin/
+  /bin/su -s /bin/sh -c "/usr/share/webapps/mediagoblin/bin/gmg dbupdate" mediagoblin
+}
+
+pre_remove() {
+  /usr/bin/systemd-tmpfiles --remove mediagoblin.conf
+
+  userdel mediagoblin &> /dev/null
+  groupdel mediagoblin &> /dev/null
+}
