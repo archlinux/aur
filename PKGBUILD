@@ -1,4 +1,4 @@
-# Maintainer: Jeremy "Ichimonji10" Audet <ichimonji10 at gmail dot com>
+# Maintainer: Anthony25 <Anthony Ruhier>
 #
 # Thanks to Jeremy "Ichimonji10" Audet <ichimonji10 at gmail dot com> for
 # his PKGBUILD that served as a base for this one
