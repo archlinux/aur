@@ -1,7 +1,7 @@
 # Maintainer: Quentin Retornaz <quentin dot retornaz at yahoo dot fr>
 
 pkgname=fossamail-bin
-pkgver=25.2.3
+pkgver=25.2.4
 pkgrel=1
 pkgdesc="Open Source, Mozilla Thunderbird-based mail, news and chat client based on the Pale Moon browser core."
 arch=('i686' 'x86_64')
@@ -16,9 +16,9 @@ source_i686=(http://relmirror.fossamail.org/${pkgver}/FossaMail-${pkgver}.en-US.
 source_x86_64=(http://relmirror.fossamail.org/${pkgver}/FossaMail-${pkgver}.en-US.linux-x86_64.tar.bz2
 			http://relmirror.fossamail.org/${pkgver}/FossaMail-${pkgver}.en-US.linux-x86_64.tar.bz2.sig)
 sha512sums=('eac44b9ad2c2f4dec616dbf2ff8ba166601fe3ff516c658e54e9db28d26bd95cf00613ae5b723790cf5128845391adf0d3a1ad8637c460722394752c4426e056')
-sha512sums_i686=('16fdd3b48eb8977352b57b91a4da0ba18042929486de97e2db447e1182ee73645c33d10ecd0c33bc7af309ad9cf9eb52063dc223c0dd6fae6cdd27d0f867a35c'
+sha512sums_i686=('7bcfd111cc3ed49e9a3605abc89bc0f8312110aced560145c2096eecc7a61f4ef7323871adeb3eefbe658879ebc68f12fd696e2415dfa19a13369a982231508f'
                  'SKIP')
-sha512sums_x86_64=('6865603b12cd56b616be349bceeb67c95d7fdaf1ba439635933b680af848f3a9db277055f7e289eb624152b8f57f6edeb60ac90f9cf67e6c5feef1f4b0e3f3b9'
+sha512sums_x86_64=('ea8a39b530b7532fbddad79ba63df59dcbf35dd934dce761a28e12085d08b3b5be253c73edb00361f433081641c3b9aed84480b01b91aca984e7a238e46ff6e0'
                    'SKIP')
 validpgpkeys=('439F46F42C6AE3D23CF52E70865E6C87C65285EC')
 
