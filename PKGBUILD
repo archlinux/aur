@@ -1,8 +1,8 @@
-# Maintainer: carstene1ns <url/mail: arch carsten-teibes de>
+# Maintainer: carstene1ns <arch carsten-teibes de> - http://git.io/ctPKG
 
 pkgname=devkitppc
 pkgver=r27
-pkgrel=3
+pkgrel=4
 pkgdesc='PowerPC toolchain for Nintendo Gamecube/Wii homebrew development'
 arch=('i686' 'x86_64')
 url="http://www.devkitpro.org/"
@@ -25,6 +25,9 @@ source=("http://downloads.sourceforge.net/sourceforge/devkitpro/buildscripts-201
         "http://www.bastoul.net/cloog/pages/download/cloog-0.18.1.tar.gz"
         "devkitppc-skip-libs.patch"
         "devkitppc-use-in-tree-cloog-isl.patch"
+        "devkitppc-add-gcc-patches.patch"
+        "fix-gcc-4.8.2-compilation-on-gcc-6.patch"
+        "fix-texinfo-build.patch"
         "devkitppc.sh")
 sha256sums=('f272442812d44ae22bae8597c9325cb0035a901c59b4a62140dbedc7c31cbaec'
             'e5e8c5be9664e7f7f96e0d09919110ab5ad597794f5b1809871177a0f0f14137'
@@ -40,6 +43,9 @@ sha256sums=('f272442812d44ae22bae8597c9325cb0035a901c59b4a62140dbedc7c31cbaec'
             '02500a4edd14875f94fe84cbeda4290425cb0c1c2474c6f75d75a303d64b4196'
             '54c0d89610614a725c4505aed2bc5bab7eb5a6db729cc29878fe98a575b1e831'
             'a6fa9bc52df88cf2ac4cbfa6b95cc89230cfd601364cfaaf3abdb95e9ada8354'
+            '3ffd66fadb26643ed234bb33c568e7bf305e1c8251b17ad1fbc90cf656c3feed'
+            '4a2a02feed91f3999683280fdcc49d83aeb59443a0591371ec962fd94b22b9a8'
+            'd8bccc430e39e8c06d6636fd7236ccc056fa3b91b7e9057372c031a11d9c719b'
             'a7bb9f8050601cf1fad4a8bcb04c2bf24b1d29f93c7dc567ddb7e610388a04a0')
 noextract=('binutils-2.24.tar.bz2' 'gcc-4.8.2.tar.bz2' 'newlib-2.0.0.tar.gz'
            'gdb-7.7.tar.bz2' 'gxtexconv-0.1.9.tar.bz2' 'gcdspsuite-1.4.0.tar.bz2'
@@ -69,6 +75,9 @@ END
   patch -Np0 < devkitppc-use-in-tree-cloog-isl.patch
   # isl needlessly wants automake-11, upgrading
   autoreconf -Wnone -fi isl-0.12.2
+
+  # add patch to build gcc 4.8.2 on gcc >6 and the docs on texinfo >6.2
+  patch -Np0 < devkitppc-add-gcc-patches.patch
 
   # disable building of libogc and libfat, we have seperate packages
   patch -Np0 < devkitppc-skip-libs.patch
