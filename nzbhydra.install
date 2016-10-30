@@ -1,0 +1,19 @@
+post_install() {
+    if grep -v -q "^nzbhydra" /etc/group &> /dev/null; then
+        groupadd -r nzbhydra &> /dev/null
+    fi
+
+    if grep -v -q "^nzbhydra" /etc/passwd &> /dev/null; then
+        useradd -r -s /bin/false -c "NZB Hydra" -d /var/lib/nzbhydra -g nzbhydra nzbhydra &> /dev/null
+    fi
+
+    mkdir -p /var/lib/nzbhydra
+    chown -R nzbhydra: /var/lib/nzbhydra
+
+    mkdir -p /etc/nzbhydra
+    chown -R nzbhydra /etc/nzbhydra
+}
+
+post_upgrade() {
+    chown -R nzbhydra: /var/lib/nzbhydra
+}
