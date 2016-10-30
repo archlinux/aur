@@ -1,7 +1,7 @@
 pkgbase = vpnks
 	pkgdesc = VPNKS protects you against leaks caused by disconnetction
 	pkgver = 1.0
-	pkgrel = 1
+	pkgrel = 3
 	url = https://github.com/plasticbrain/vpnkillswitch
 	arch = any
 	license = GPL
@@ -11,6 +11,7 @@ pkgbase = vpnks
 	depends = networkmanager-openvpn
 	depends = nm-connection-editor
 	depends = openvpn
+	depends = systemd
 	source = https://github.com/plasticbrain/vpnkillswitch/archive/master.zip
 	md5sums = 763d77798dc0ce97e3a7bf700e4fec7c
 	sha1sums = 2dc64aa2234530a37d356e32c41e36647848aabd

@@ -2,12 +2,12 @@
 
 pkgname=vpnks
 pkgver=1.0
-pkgrel=1
+pkgrel=3
 pkgdesc="VPNKS protects you against leaks caused by disconnetction"
 arch=('any')
 url="https://github.com/plasticbrain/vpnkillswitch"
 license=('GPL')
-depends=('networkmanager' 'libnm-glib' 'networkmanager-openvpn' 'nm-connection-editor' 'openvpn')
+depends=('networkmanager' 'libnm-glib' 'networkmanager-openvpn' 'nm-connection-editor' 'openvpn' 'systemd')
 makedepends=('bash')
 source=(https://github.com/plasticbrain/vpnkillswitch/archive/master.zip)
 md5sums=('763d77798dc0ce97e3a7bf700e4fec7c')
@@ -18,6 +18,7 @@ sha384sums=('5d3fe6b1d25fbef52c50c4e39f848836d635f028093ebd98f0a077485f659123b22
 sha512sums=('fb35d31ddf88cd25c0e81efdd99c52f69444a08015e4b7585fcbcb804623b035b36433ee508956f1d1ac8b852812912a2cc3afcb1fa504a4d355ea785dda8d3c')
 
 package() {	
+        sed 's/eth0/wlp0s29f7u3/' ${srcdir}/vpnkillswitch-master/vpnkillswitch.sh
         echo "Please replace eth0 with your network interface at vpnkillswitch.sh"
 	mkdir -p "${pkgdir}/usr/bin"
         for file in ${srcdir}/vpnkillswitch-master/*.sh
@@ -25,6 +26,7 @@ package() {
 		install -D -m644 "${file}" "${pkgdir}/usr/bin/"
 	done
         echo "If you've questions about this package, please read: http://mikeeverhart.net/2015/12/vpn-killswitch-bash-script/"
+        echo "For recovery your connection please run # vpnkillswitch up"   
 }
 
 # vim:set ts=2 sw=2 et:
