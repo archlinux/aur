@@ -2,10 +2,10 @@
 
 pkgname=pi-hole-server
 _pkgname=pi-hole
-pkgver=2.9.4
-pkgrel=2
+pkgver=2.9.5
+pkgrel=1
 _wwwpkgname=AdminLTE
-_wwwpkgver=1.4.3.1
+_wwwpkgver=1.4.4.2
 pkgdesc='The Pi-hole is an advertising-aware DNS/Web server. Arch adaptation for lan wide DNS server.'
 arch=('any')
 license=('GPL2')
@@ -19,7 +19,7 @@ source=(https://github.com/$_pkgname/$_pkgname/archive/v$pkgver.tar.gz
 	https://github.com/$_pkgname/$_wwwpkgname/archive/v$_wwwpkgver.tar.gz
 	configuration
 	dnsmasq.include
-	dnsmasq.complete
+	dnsmasq.main
 	lighttpd.conf
 	$_pkgname.tmpfile
 	$_pkgname-gravity.service
@@ -30,12 +30,12 @@ source=(https://github.com/$_pkgname/$_pkgname/archive/v$pkgver.tar.gz
 	blacklist.txt
 	mimic_setupVars.conf.sh)
 
-md5sums=('07d21b50616cab39726262f86a98cd8b'
-         'c8d580fdcda4a95942641e4c9aa725e2'
-         '5daed172a416a29aa87cfb66fd3288ed'
+md5sums=('b383a2741e556a3680b3ae312a18cfba'
+         'fe8c5814aa6570085825bc055f8e85b9'
+         '6e6ab264586c16350ad2a5a800ab03e7'
          'cba1675593bb43c94a35aabe8a210efa'
-         'fc7852b5deb952335c0ebbf4ee61cb8c'
-         '4d1d85e3572ef20dd5562e36414f1451'
+         'e3b364719011b00d44a9c6bd4c387bcb'
+         '82ce6717056c7a680fd2dd09bf6f6ff4'
          '990b8abd0bfbba23a7ce82c59f2e3d64'
          '047f13d4ac97877f724f87b002aaee63'
          'd42a864f88299998f8233c0bc0dd093d'
@@ -43,7 +43,7 @@ md5sums=('07d21b50616cab39726262f86a98cd8b'
          '291d3c95e445fe65caf40c3605efd186'
          'd41d8cd98f00b204e9800998ecf8427e'
          'd41d8cd98f00b204e9800998ecf8427e'
-         '42a7805dc1d1e824673b9b93ac4b0308')
+         'd6af5c9b54af57b395e53c27aa2d750e')
 
 prepare() {
   _ssc="/tmp/sedcontrol"
@@ -63,19 +63,19 @@ prepare() {
 
   sed -n "/updatePiholeFunc() {/w $_ssc" "$srcdir"/$_pkgname-$pkgver/pihole
   if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: setting up and securing pihole wrapper script 2" && return 1 ; fi
-  sed -i '/updatePiholeFunc() {/,+67d' "$srcdir"/$_pkgname-$pkgver/pihole
+  sed -i '/updatePiholeFunc() {/,+4d' "$srcdir"/$_pkgname-$pkgver/pihole
+
+  sed -n "/reconfigurePiholeFunc() {/w $_ssc" "$srcdir"/$_pkgname-$pkgver/pihole
+  if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: setting up and securing pihole wrapper script 3" && return 1 ; fi
+  sed -i '/reconfigurePiholeFunc() {/,+4d' "$srcdir"/$_pkgname-$pkgver/pihole
 
   sed -n "/setupLCDFunction() {/w $_ssc" "$srcdir"/$_pkgname-$pkgver/pihole
-  if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: setting up and securing pihole wrapper script 3" && return 1 ; fi
+  if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: setting up and securing pihole wrapper script 4" && return 1 ; fi
   sed -i '/setupLCDFunction() {/,+4d' "$srcdir"/$_pkgname-$pkgver/pihole
 
   sed -n "/uninstallFunc() {/w $_ssc" "$srcdir"/$_pkgname-$pkgver/pihole
-  if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: setting up and securing pihole wrapper script 4" && return 1 ; fi
-  sed -i '/uninstallFunc() {/,+4d' "$srcdir"/$_pkgname-$pkgver/pihole
-
-  sed -n "/reconfigurePiholeFunc() {/w $_ssc" "$srcdir"/$_pkgname-$pkgver/pihole
   if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: setting up and securing pihole wrapper script 5" && return 1 ; fi
-  sed -i '/reconfigurePiholeFunc() {/,+4d' "$srcdir"/$_pkgname-$pkgver/pihole
+  sed -i '/uninstallFunc() {/,+4d' "$srcdir"/$_pkgname-$pkgver/pihole
 
   sed -n "/:::  \-[d,u,s]/w $_ssc" "$srcdir"/$_pkgname-$pkgver/pihole
   if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: setting up and securing pihole wrapper script 6" && return 1 ; fi
@@ -160,8 +160,7 @@ package() {
   install -Dm755 ./$_pkgname-$pkgver/advanced/Scripts/version.sh "$pkgdir"/opt/pihole/version.sh || return 1
   install -Dm755 ./$_pkgname-$pkgver/advanced/Scripts/piholeLogFlush.sh "$pkgdir"/opt/pihole/piholeLogFlush.sh || return 1
   install -Dm755 ./$_pkgname-$pkgver/advanced/Scripts/chronometer.sh "$pkgdir"/opt/pihole/chronometer.sh || return 1
-  install -Dm755 ./$_pkgname-$pkgver/advanced/Scripts/blacklist.sh "$pkgdir"/opt/pihole/blacklist.sh || return 1
-  install -Dm755 ./$_pkgname-$pkgver/advanced/Scripts/whitelist.sh "$pkgdir"/opt/pihole/whitelist.sh || return 1
+  install -Dm755 ./$_pkgname-$pkgver/advanced/Scripts/list.sh "$pkgdir"/opt/pihole/list.sh || return 1
 
   install -Dm755 mimic_setupVars.conf.sh "$pkgdir"/opt/pihole/mimic_setupVars.conf.sh || return 1
 
@@ -183,7 +182,7 @@ package() {
   install -Dm644 ./$_pkgname-$pkgver/adlists.default "$pkgdir"/etc/pihole/adlists.default || return 1
   install -Dm644 whitelist.txt "$pkgdir"/etc/pihole/whitelist.txt || return 1
   install -Dm644 blacklist.txt "$pkgdir"/etc/pihole/blacklist.txt || return 1
-  install -Dm644 dnsmasq.complete "$pkgdir"/etc/pihole/configs/dnsmasq.complete || return 1
+  install -Dm644 dnsmasq.main "$pkgdir"/etc/pihole/configs/dnsmasq.main || return 1
   install -Dm644 dnsmasq.include "$pkgdir"/etc/pihole/configs/dnsmasq.include || return 1
   install -Dm644 lighttpd.conf "$pkgdir"/etc/pihole/configs/lighttpd.conf || return 1
   install -Dm644 configuration "$pkgdir"/usr/share/doc/pihole/configuration || return 1

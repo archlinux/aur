@@ -1,7 +1,3 @@
-# If you want dnsmasq to read another file, as well as /etc/hosts, use
-# this.
-addn-hosts=/etc/pihole/gravity.list
-
 # The following two options make you a better netizen, since they
 # tell dnsmasq to filter out queries which the public DNS cannot
 # answer, and which load the servers (especially the root servers)
@@ -31,14 +27,6 @@ server=8.8.4.4
 # you use this.)
 #listen-address=127.0.0.1
 
-# Set the cachesize here.
-cache-size=10000
-
-# For debugging purposes, log each DNS query as it passes through
-# dnsmasq.
-log-queries
-log-facility=/run/log/pihole/pihole.log
-
 # Normally responses which come from /etc/hosts and the DHCP lease
 # file have Time-To-Live set as zero, which conventionally means
 # do not cache further. If you are happy to trade lower load on the
@@ -46,5 +34,3 @@ log-facility=/run/log/pihole/pihole.log
 # seconds) here.
 local-ttl=300
 
-# This allows it to continue functioning without being blocked by syslog, and allows syslog to use dnsmasq for DNS queries without risking deadlock
-log-async

@@ -4,7 +4,7 @@ setupVars=/etc/pihole/setupVars.conf
 
 getDNSs()
 {
-	dnsmasqdns=(`grep server= /etc/pihole/configs/dnsmasq.complete | awk -F "=" '{print $2}'`)
+	dnsmasqdns=(`grep server= /etc/pihole/configs/dnsmasq.main | awk -F "=" '{print $2}'`)
 	piholeDNS1=${dnsmasqdns[0]}
 	piholeDNS2=${dnsmasqdns[1]}
 }
