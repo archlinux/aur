@@ -1,0 +1,12 @@
+[Unit]
+Description=Netbox Daemon
+After=network.target
+
+[Service]
+User=netbox
+Type=forking
+PIDFile=/run/netbox/netbox.pid
+ExecStart=gunicorn -c /opt/netbox/gunicorn_config.py /opt/netbox/netbox/netbox.wsgi
+
+[Install]
+WantedBy=multi-user.target

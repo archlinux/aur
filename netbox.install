@@ -1,0 +1,25 @@
+_NAME=netbox
+
+post_install() {
+	getent passwd ${_NAME} > /dev/null || useradd -d /opt/${_NAME} -s /bin/false -r ${_NAME} > /dev/null
+
+    echo ""
+    echo -e "Follow the instructions on http://netbox.readthedocs.io/en/latest/installation/netbox/"
+    echo -e "to finish the configuration, and enable and start the systemd "
+    echo -e "service: "
+    echo "    systemctl enable --now netbox.service"
+    echo ""
+}
+
+post_upgrade() {
+	post_install
+    echo ""
+    echo "To end the migration, use the following commands:"
+    echo "    /opt/netbox/manage.py migrate"
+    echo "    /opt/netbox/manage.py collectstatic --noinput"
+    echo ""
+}
+
+post_remove() {
+	userdel -f ${_NAME}
+}
