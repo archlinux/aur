@@ -3,7 +3,7 @@
 
 pkgname=gitkraken
 pkgrel=1
-pkgver=1.8.0
+pkgver=1.8.1
 pkgdesc="The intuitive, fast, and beautiful cross-platform Git client."
 url="http://www.gitkraken.com/"
 provides=('gitkraken')
@@ -19,7 +19,7 @@ source=(
     "gitkraken.png"
     "eula.html"
 )
-md5sums=('903f6d076f58362f07a520ab5e69a891'
+md5sums=('79f0c065dfc11d25e417e8d85a4a2edf'
          'cf2a1746a0cafe11793af0801c78afeb'
          '04987b933d551d15c0813111d715bb9e'
          'e9ba6663e5f1f92cae31beb0074e8c6c')
