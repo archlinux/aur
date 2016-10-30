@@ -4,7 +4,7 @@
 
 pkgname=bash-git-prompt-git
 _pkgname=bash-git-prompt
-pkgver=2.5.1.r484.33c19b2
+pkgver=2.6.1.r506.9af8824
 pkgrel=1
 pkgdesc="Informative git prompt for bash and fish (git version)"
 arch=('any')
@@ -19,8 +19,8 @@ source=("git+https://github.com/magicmonty/${_pkgname}"
         'bash-git-prompt.install'
         'Default_Arch.bgptheme')
 md5sums=('SKIP'
-         'db6f83999124b7fa660310a8d6624f70'
-         '879555792d1b4c0ddef7cd81b0a3e35c')
+         '990d3a7ef8a21b83f0d1e90d9ef1a5b7'
+         'af064330b3a579ec6efd2e018e6829df')
 install='bash-git-prompt.install'
 
 pkgver() {
