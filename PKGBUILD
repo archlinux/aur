@@ -12,7 +12,7 @@ pkgbase=kodi-pre-release
 pkgname=('kodi-pre-release' 'kodi-eventclients-pre-release')
 pkgver=17.0b5
 _codename=Krypton
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 url="http://kodi.tv"
 license=('GPL2')
@@ -38,6 +38,10 @@ prepare() {
   sed 's|^#!.*python$|#!/usr/bin/python2|' -i tools/depends/native/rpl-native/rpl
 	sed 's/python/python2/' -i tools/Linux/kodi.sh.in
   sed 's/shell python/shell python2/' -i tools/EventClients/Makefile.in
+  # disable wiiremote due to incompatibility with bluez-5.29
+  sed '/WiiRemote/d' -i tools/EventClients/Makefile.in
+  sed '/mkdir -p $(DESTDIR)$(bindir)/i \
+install:' -i tools/EventClients/Makefile.in
 
   # patches
 }
@@ -55,10 +59,12 @@ build() {
   export PYTHON_VERSION=2  # external python v2
   ./configure --prefix=/usr --exec-prefix=/usr \
     --disable-debug \
+    --enable-profiling \
     --enable-optimizations \
     --enable-libbluray \
-    --enable-shared-libraries \
+    --disable-shared-libraries \
     --with-lirc-device=/run/lirc/lircd \
+    ac_cv_lib_bluetooth_hci_devid=no \
     ac_cv_type__Bool=yes
 
   # Now (finally) build
