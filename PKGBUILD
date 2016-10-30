@@ -25,10 +25,10 @@ source=("http://ftp.isr.ist.utl.pt/pub/MIRRORS/ftp.suse.com/people/kukuk/ipv6/$p
         'telnet.xinetd'
         'telnet.socket'
         'telnet@.service')
-md5sums=('72d72c65e7796dfec999f347da1c295f'
-         '02a3909411d2f2d4983f4f785c94d23c'
-         '46d57ace47af36468334e1d4124a2495'
-         'c6f8c6f4da2687e5772a52e0b87bf70b')
+sha256sums=('d6a9d26740ef75565cb1ed8ff11e327d240e6734748b2d1d2e96c126849e4733'
+            '2625ffbad4201fcf88901975b01f2ab6cde3ad32c188e10a0d1944fa904f5f37'
+            '5597fd2f5187efe317c828ea9d925697d86ce3ede38f56c33b166d31ca73b19b'
+            '31e6733053ecdee40da0b9ced8f0d45518c1f45bf7173d757633de6d13b58475')
 
 build() {
   cd "$srcdir"/$pkgname-$pkgver
