@@ -1,8 +1,8 @@
-# Maintainer: wenLiangcan <boxeed at gmail dot com>
+# Maintainer: Adrian Freund <freundadrian@gmail.com>
 
 pkgname=('python2-javascriptcore2-git')
 _pkgname='pyjavascriptcore'
-pkgver=v1.0.r0.gb281673
+pkgver=v1.0.r2.gdb9d8e9
 pkgrel=1
 pkgdesc="Javascript Core for Python (When using WebKit2Gtk)"
 url="https://github.com/freundTech/pyjavascriptcore"
