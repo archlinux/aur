@@ -1,0 +1,18 @@
+pkgbase = python2-django-debug-toolbar-git
+	pkgdesc = A configurable set of panels that display various debug information about the current request/response.
+	pkgver = 1.6.r3.g3728860
+	pkgrel = 1
+	url = https://django-debug-toolbar.readthedocs.io/
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = git
+	depends = python2
+	depends = python2-django
+	provides = python2-django-debug-toolbar
+	conflicts = python2-django-debug-toolbar
+	source = git://github.com/django-debug-toolbar/django-debug-toolbar.git
+	md5sums = SKIP
+
+pkgname = python2-django-debug-toolbar-git
+
