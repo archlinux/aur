@@ -1,15 +1,15 @@
+# Maintainer: quomoow <quomoow@gmail.com>
 pkgname=neon-threadsafe
 _pkgname=neon
-pkgver=0.30.0
+pkgver=0.30.1
 pkgrel=1
 pkgdesc="HTTP and WebDAV client library with a C interface"
 arch=('i686' 'x86_64')
 url="http://www.webdav.org/neon/"
 license=('GPL' 'LGPL')
-depends=('krb5' 'expat' 'ca-certificates')
-options=('libtool') # FS#16067
+depends=('krb5' 'expat' 'ca-certificates' 'libproxy' 'zlib')
+options=('libtool')
 source=("http://www.webdav.org/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
-md5sums=('fb60b3a124eeec441937a812c456fd94')
 conflicts=('neon')
 provides=('neon')
 
@@ -29,3 +29,4 @@ package() {
   cd ${_pkgname}-${pkgver}
   make DESTDIR="${pkgdir}" install
 }
+md5sums=('231adebe5c2f78fded3e3df6e958878e')

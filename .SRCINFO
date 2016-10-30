@@ -1,6 +1,6 @@
 pkgbase = neon-threadsafe
 	pkgdesc = HTTP and WebDAV client library with a C interface
-	pkgver = 0.30.0
+	pkgver = 0.30.1
 	pkgrel = 1
 	url = http://www.webdav.org/neon/
 	arch = i686
@@ -10,11 +10,13 @@ pkgbase = neon-threadsafe
 	depends = krb5
 	depends = expat
 	depends = ca-certificates
+	depends = libproxy
+	depends = zlib
 	provides = neon
 	conflicts = neon
 	options = libtool
-	source = http://www.webdav.org/neon/neon-0.30.0.tar.gz
-	md5sums = fb60b3a124eeec441937a812c456fd94
+	source = http://www.webdav.org/neon/neon-0.30.1.tar.gz
+	md5sums = 231adebe5c2f78fded3e3df6e958878e
 
 pkgname = neon-threadsafe
 
