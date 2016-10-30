@@ -3,7 +3,7 @@
 
 _pkgname=splitviewfuse
 pkgname="$_pkgname"-git
-pkgver=v0.2.3.r0.gf690704
+pkgver=v0.3.1.r1.g58323b3
 pkgrel=1
 pkgdesc="A view on a given directory that splits large files into segments implemented as FUSE file system. An additional 
 filesystem that merges such segments into regular files is included as well. AUR package by Raansu, project by seiferma"
