@@ -1,7 +1,7 @@
 # Maintainer: Michael Spradling <mike@mspradling.com>
 # Contributor: Daniel Albers <daniel@lbe.rs>
 
-pkgver=16.2.4rc2
+pkgver=16.2.4
 _pkgver=16.2.4
 pkgrel=1
 arch=(i686 x86_64)
@@ -13,7 +13,7 @@ makedepends=('sqlite3' 'libmariadbclient' 'postgresql-libs' 'lzo' 'acl' 'libcap'
 optdepends=('openssl: network encryption between daemons')
 
 _instdir="${startdir}/install"
-_pkgsrc="${startdir}/src/bareos-${_pkgver}"
+_pkgsrc="${startdir}/src/bareos"
 _configure_args="--prefix=/usr \
   --with-sbin-perm=755 \
   --libdir=/usr/lib/bareos \
