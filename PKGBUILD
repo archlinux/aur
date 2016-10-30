@@ -1,85 +1,142 @@
-# Maintainer: jdarch <jda -dot- cloud -plus- archlinux -at- gmail -dot- com>
+# Maintainer: Alexander Phinikarides (alexisph -at- gmail -dot- com)
 
-pkgbase=microsoft-r-open
-pkgname=('microsoft-r-open' 'microsoft-r-open-blas')
-pkgver=3.2.5
-_mrandate=2016-05-01
+pkgname=microsoft-r-open
+pkgver=3.3.1
 pkgrel=1
+_majorver=3.3
+_mrandate=2016-07-01
 pkgdesc="Language and environment for statistical computing and graphics, modified version by Microsoft"
 arch=('x86_64')
 license=('GPL')
 url='https://mran.revolutionanalytics.com/open/'
-makedepends=('java-environment' 'gcc-fortran' 'tk')
+provides=("r=${pkgver}")
+conflicts=('r')
+depends=('bzip2'
+        'curl'
+        'desktop-file-utils'
+        'gcc-libs'
+        'libjpeg'
+        'libpng'
+        'libpng12'
+        'libtiff'
+        'libxmu'
+        'libxt'
+        'ncurses'
+        'pango'
+        'pcre'
+        'perl'
+        'readline'
+        'unzip'
+        'xz'
+        'zip'
+        'zlib')
+makedepends=('java-environment'
+            'gcc-fortran'
+            'tk'
+            'rpmextract')
+optdepends=('tk: tcl/tk interface'
+            'texlive-bin: latex sty files')
+backup=('etc/R/Makeconf'
+        'etc/R/Renviron'
+        'etc/R/ldpaths'
+        'etc/R/repositories'
+        'etc/R/javaconf')
 options=('!makeflags' '!emptydirs')
-source=("https://github.com/RevolutionAnalytics/RRO/archive/MRO-${pkgver}.tar.gz"
-	"Rprofile_site.patch"
-	"mro.desktop")
-md5sums=('0572a3384f9bc724118cb9b7c363f885'
-         '3e35bccbf4b9df66059400c4c42d21ef'
-         '70e8f9d0b1eebeb1f0b45f4568bc0701')
-sha512sums=('b309dba4820210728cc61520be1e48739b82350e5ae3897578e95a21742ed26ea83c4afd1c727c39417e419ef037a7d52ef554587723201b5ce349ec848d4f89'
-            'f6d0dc696a1c8fd6f7714c77bf286663ca34d5b1ab0226fb26d9574ed3bf6a38a59743fb2165a9235f91d31cba3f97a7faaca6e5201e60dd9d554fddb0700168'
-            '2b0221bd1e0fdd399284333e6f2020bb9ad11395ad39dd2fca688b7ebc68fbbc60de59a757e1898be8bcd9e2926afccc121043f38445e7693f177c3076f92b61')
+install=microsoft-r-open.install
+source=("https://mran.revolutionanalytics.com/install/mro/${pkgver}/microsoft-r-open-${pkgver}.tar.gz"
+        'mro.desktop'
+        'mro.png'
+        'R.conf')
+md5sums=('e0c50107acb08ec2aa7fee0d8076c4bd'
+         '70e8f9d0b1eebeb1f0b45f4568bc0701'
+         '8e0c51650b8a63f110fa7b09e699e9c4'
+         '6c381ed007c2bfc97ab42f05bf50b57d')
+sha512sums=('ba163cc29fa7c828f696f25bdec5c18dc235e58b4da0804c449510e1e7534245ef51e2ed0e5d880efdbdf4660eff2ee37cd95badbd31a128a623f109b30deeb4'
+            '2b0221bd1e0fdd399284333e6f2020bb9ad11395ad39dd2fca688b7ebc68fbbc60de59a757e1898be8bcd9e2926afccc121043f38445e7693f177c3076f92b61'
+            '1491b01d3d14b86d26c383e00e2305858a52ddd498158c9f7f6b33026ee01f246408b1676cffea73f7783c8c4cf546285705c43c0286adbd75ad77706918b5fe'
+            '41e6779500748eee0fa785a20bcaf7323d4aa67000386243fdfe1681152023fb4a5dd4e1f078eeae24db18c223f86fa57afbbad391da226988b0a14eec75c986')
 
 prepare() {
-# Patch Rprofile.site for Arch Linux
-  patch "RRO-MRO-${pkgver}/RRO-src/files/common/Rprofile.site" "Rprofile_site.patch"
+  cd ${pkgname}
+  # extract rpms
+  rpmextract.sh "rpm/${pkgname}-mro-${_majorver}.rpm"
+  rpmextract.sh "rpm/${pkgname}-mkl-${_majorver}.rpm"
+  rpmextract.sh "rpm/${pkgname}-foreachiterators-${_majorver}.rpm"
+  mv usr/lib64 usr/lib
 }
 
-build() {
-# Build R
-  cd "RRO-MRO-${pkgver}/R-src"
-  ./configure 	--prefix="/usr/lib/MRO-${pkgver}/R-${pkgver}" \
-		--enable-R-shlib \
-		--with-tcltk \
-		--with-cairo \
-		--with-libpng \
-		--with-libtiff \
-		--with-x=yes \
-		--with-lapack \
-		--enable-BLAS-shlib \
-		LIBR="-lpthread" \
-		--enable-memory-profiling
-  make
+package() {
+  cd ${pkgname}
+  cp -r usr "${pkgdir}"
 
-# Add default Revolution R Open packages
-  echo "install.packages(\"checkpoint\", \"${srcdir}/RRO-MRO-${pkgver}/R-src/library\", repos=\"http://mran.revolutionanalytics.com/snapshot/${_mrandate}\")" | bin/R -q --vanilla
-}
+  # Install MKL libs
+  install -d "${pkgdir}/usr/lib/microsoft-r/${_majorver}/lib64/R/backup/lib"
+  mv ${pkgdir}/usr/lib/microsoft-r/${_majorver}/lib64/R/lib/*.so "${pkgdir}/usr/lib/microsoft-r/${_majorver}/lib64/R/backup/lib"
+  install -Dm644 "${pkgdir}/usr/lib/microsoft-r/${_majorver}/lib64/R/backup/lib/libR.so" "${pkgdir}/usr/lib/microsoft-r/${_majorver}/lib64/R/lib/libR.so"
+  install -Dm644 ${pkgdir}/usr/lib/microsoft-r/${_majorver}/stage/mkl_install_stage/*.so "${pkgdir}/usr/lib/microsoft-r/${_majorver}/lib64/R/lib"
+  rm -rf ${pkgdir}/usr/lib/microsoft-r/${_majorver}/stage
 
-package_microsoft-r-open() {
-  install=microsoft-r-open.install
-  provides=("r=${pkgver}")
-  conflicts=('r')
-  backup=("usr/lib/MRO-${pkgver}/R-${pkgver}/lib64/R/etc/Makeconf" "usr/lib/MRO-${pkgver}/R-${pkgver}/lib64/R/etc/Renviron" "usr/lib/MRO-${pkgver}/R-${pkgver}/lib64/R/etc/ldpaths" "usr/lib/MRO-${pkgver}/R-${pkgver}/lib64/R/etc/repositories" "usr/lib/MRO-${pkgver}/R-${pkgver}/lib64/R/etc/javaconf" "usr/lib/MRO-${pkgver}/R-${pkgver}/lib64/R/etc/Rprofile.site")
-  depends=('microsoft-r-open-blas' 'curl' 'libpng' 'libjpeg' 'libtiff' 'pango' 'libxmu' 'bzip2' 'ncurses' 'pcre' 'readline' 'zlib' 'perl' 'gcc-libs' 'libxt' 'xz' 'desktop-file-utils' 'zip' 'unzip')
-  optdepends=('tk: tcl/tk interface' 'texlive-bin: latex sty files' 'revomath: high performance BLAS/Lapack library' 'microsoft-r-open-blas-systemblas: use system BLAS&Lapack libraries')
+  # Link R binaries to system path
+  install -d "${pkgdir}/usr/bin"
+  cd "${pkgdir}/usr/bin"
+  ln -s ../lib/microsoft-r/${_majorver}/lib64/R/bin/R
+  ln -s ../lib/microsoft-r/${_majorver}/lib64/R/bin/Rscript
 
-
-  cd "RRO-MRO-${pkgver}/R-src"
-  make DESTDIR="${pkgdir}" install
-  cp ../RRO-src/files/common/Rprofile.site "${pkgdir}/usr/lib/MRO-${pkgver}/R-${pkgver}/lib64/R/etc"
-  cp ../RRO-src/files/common/ThirdPartyNotices.pdf "${pkgdir}/usr/lib/MRO-${pkgver}"
-  cp ../README.txt "${pkgdir}/usr/lib/MRO-${pkgver}"
-  cp ../COPYING "${pkgdir}/usr/lib/MRO-${pkgver}"
-  rm "${pkgdir}/usr/lib/MRO-${pkgver}/R-${pkgver}/bin/R"
-  rm "${pkgdir}/usr/lib/MRO-${pkgver}/R-${pkgver}/bin/Rscript"
-  rm "${pkgdir}/usr/lib/MRO-${pkgver}/R-${pkgver}/lib64/R/lib/libRblas.so" 
-  rm "${pkgdir}/usr/lib/MRO-${pkgver}/R-${pkgver}/lib64/R/lib/libRlapack.so"
-
-  mkdir -p "${pkgdir}/usr/bin"
-  ln -s "/usr/lib/MRO-${pkgver}/R-${pkgver}/lib64/R/bin/R" "${pkgdir}/usr/lib/MRO-${pkgver}/R-${pkgver}/bin/R"
-  ln -s "/usr/lib/MRO-${pkgver}/R-${pkgver}/lib64/R/bin/R" "${pkgdir}/usr/bin/R"
-  ln -s "/usr/lib/MRO-${pkgver}/R-${pkgver}/lib64/R/bin/Rscript" "${pkgdir}/usr/lib/MRO-${pkgver}/R-${pkgver}/bin/Rscript"
-  ln -s "/usr/lib/MRO-${pkgver}/R-${pkgver}/lib64/R/bin/Rscript" "${pkgdir}/usr/bin/Rscript"
-
+  # Install freedesktop.org compatibility
   install -Dm644 "${srcdir}/mro.desktop" "${pkgdir}/usr/share/applications/mro.desktop"
-  install -Dm644 "${srcdir}/RRO-MRO-${pkgver}/RRO-src/OSX/project/clarkbg.png" "${pkgdir}/usr/share/pixmaps/mro.png"
+  install -Dm644 "${srcdir}/mro.png" "${pkgdir}/usr/share/pixmaps/mro.png"
+
+  # Create etc config directory
+  install -d "${pkgdir}/etc/R"
+  cd "${pkgdir}/usr/lib/microsoft-r/${_majorver}/lib64/R/etc"
+  for i in *; do
+    mv -f ${i} "${pkgdir}/etc/R"
+    ln -s /etc/R/${i} ${i}
+  done
+  # fix a typo
+  sed -i "s|IMPLEMENTATIN|IMPLEMENTATION|g" "${pkgdir}/etc/R/Makeconf"
+
+  # Ensure other applications can access the shared libs
+  install -Dm644 "${srcdir}/R.conf" "${pkgdir}/etc/ld.so.conf.d/R.conf"
+  sed -i "s/VERSION/${_majorver}/" "${pkgdir}/etc/ld.so.conf.d/R.conf"
+
+  # Install pkgconfig file
+  cd "${pkgdir}/usr/lib/microsoft-r/${_majorver}/lib64"
+  sed -i "s|rhome=.*$|rhome=/usr/lib/microsoft-r/${_majorver}/lib64/R|" pkgconfig/libR.pc
+  sed -i "s|rincludedir=.*$|rincludedir=/usr/include/R|" pkgconfig/libR.pc
+  sed -i "s|-L/builddir/vendor/build/lib||" pkgconfig/libR.pc
+  install -Dm644 pkgconfig/libR.pc "${pkgdir}/usr/lib/pkgconfig/libR.pc"
+
+  # Install header files
+  install -d "${pkgdir}/usr/include/R"
+  cp -r ${pkgdir}/usr/lib/microsoft-r/${_majorver}/lib64/R/include/* "${pkgdir}/usr/include/R/"
+
+  # Install man pages
+  cd "${pkgdir}/usr/lib/microsoft-r/${_majorver}/share/man/man1"
+  gzip -9 *
+  install -Dm644 R.1.gz "${pkgdir}/usr/share/man/man1/R.1.gz"
+  install -Dm644 Rscript.1.gz "${pkgdir}/usr/share/man/man1/Rscript.1.gz"
+  gzip -d *
+
+  # Install shared files
+  install -d "${pkgdir}/usr/share/R"
+  cp -r "${pkgdir}/usr/lib/microsoft-r/${_majorver}/lib64/R/share/dictionaries" "${pkgdir}/usr/share/R/"
+  cp -r "${pkgdir}/usr/lib/microsoft-r/${_majorver}/lib64/R/share/encodings" "${pkgdir}/usr/share/R/"
+  cp -r "${pkgdir}/usr/lib/microsoft-r/${_majorver}/lib64/R/share/java" "${pkgdir}/usr/share/R/"
+  cp -r "${pkgdir}/usr/lib/microsoft-r/${_majorver}/lib64/R/share/licenses" "${pkgdir}/usr/share/R/"
+  cp -r "${pkgdir}/usr/lib/microsoft-r/${_majorver}/lib64/R/share/make" "${pkgdir}/usr/share/R/"
+  cp -r "${pkgdir}/usr/lib/microsoft-r/${_majorver}/lib64/R/share/R" "${pkgdir}/usr/share/R/"
+  cp -r "${pkgdir}/usr/lib/microsoft-r/${_majorver}/lib64/R/share/Rd" "${pkgdir}/usr/share/R/"
+  cp -r "${pkgdir}/usr/lib/microsoft-r/${_majorver}/lib64/R/share/sh" "${pkgdir}/usr/share/R/"
+  # LaTeX templates
+  cp -r "${pkgdir}/usr/lib/microsoft-r/${_majorver}/lib64/R/share/texmf" "${pkgdir}/usr/share/"
+
+  # Install docs
+  install -d "${pkgdir}/usr/share/doc/R"
+  cp -r ${pkgdir}/usr/lib/microsoft-r/${_majorver}/lib64/R/doc/* "${pkgdir}/usr/share/doc/R/"
+
+  # Copy EULAs
+  install -d "${pkgdir}/opt/${pkgname}/doc"
+  install -m644 ${srcdir}/${pkgname}/*.txt "${pkgdir}/opt/${pkgname}/doc"
 }
 
-package_microsoft-r-open-blas() {
-  depends=('microsoft-r-open')
-  pkgdesc="Unoptimized math library for Revolution R Open"
-  mkdir -p "${pkgdir}/usr/lib/MRO-${pkgver}/R-${pkgver}/lib64/R/lib"
-  cp "${srcdir}/RRO-MRO-${pkgver}/R-src/lib/libRblas.so" "${pkgdir}/usr/lib/MRO-${pkgver}/R-${pkgver}/lib64/R/lib/libRblas.so"
-  cp "${srcdir}/RRO-MRO-${pkgver}/R-src/lib/libRlapack.so" "${pkgdir}/usr/lib/MRO-${pkgver}/R-${pkgver}/lib64/R/lib/libRlapack.so"
-}
