@@ -1,7 +1,7 @@
 # Maintainer: Adria Arrufat (archdria) <adria.arrufat+AUR@protonmail.ch>
 
 pkgname=tensorflow
-pkgver=0.11.0rc0+1547+g988b53e
+pkgver=0.11.0rc0+1550+g6bf2cc7
 pkgrel=1
 
 pkgdesc="Library for computation using data flow graphs for scalable machine learning"
@@ -16,7 +16,7 @@ optdepends=('cuda: GPU support'
 source=("git+https://github.com/tensorflow/tensorflow"
         "${pkgname}.pc")
 md5sums=('SKIP'
-         '3f966f0e234ec5c951caa45b9935ef5f')
+         '46d0ac65eb8e5c3960ea2a4752f98e29')
 pkgver() {
   cd ${srcdir}/tensorflow
   git describe --tags | sed 's/-/+/g;s/^v//'
@@ -56,11 +56,13 @@ build() {
   cd ${srcdir}/tensorflow
   ./configure
   bazel build -c opt ${_build_opts} tensorflow:libtensorflow_c.so
+  # copy the built library out of the bazel directory
+  cp -f bazel-bin/tensorflow/libtensorflow_c.so .
 }
 
 package() {
   cd ${srcdir}/tensorflow
-  install -Dm644 bazel-bin/tensorflow/libtensorflow_c.so ${pkgdir}/usr/lib/${pkgname}.so
+  install -Dm644 libtensorflow_c.so ${pkgdir}/usr/lib/lib${pkgname}.so
   install -Dm644 tensorflow/c/c_api.h ${pkgdir}/usr/include/${pkgname}/c_api.h
   install -Dm644 ../${pkgname}.pc ${pkgdir}/usr/lib/pkgconfig/${pkgname}.pc
   install -Dm644 LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE

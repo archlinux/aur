@@ -8,5 +8,5 @@ Name: tensorflow
 Version: 0.11rc
 Description: TensorFlow library
 Requires:
-Libs: -L${libdir} -l:tensorflow.so
+Libs: -L${libdir} -ltensorflow
 Cflags: -I${includedir}/tensorflow
