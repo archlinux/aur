@@ -1,10 +1,10 @@
-# Maintainer: Michael Goehler <somebody dot here at gmx dot de>
+# Maintainer: quomoow <quomoow@gmail.com>
 
 pkgname=python-dot3k
-pkgver=r115.d543fb3
+pkgver=r115.862b3e1
 pkgrel=1
 pkgdesc="Library for the Display-o-tron Raspberry Pi add-on board from Pimoroni."
-arch=('armv6h')
+arch=('any')
 url="https://github.com/pimoroni/dot3k"
 license=('GPL')
 depends=('python' 'python-raspberry-gpio' 'python-sn3218' 'python-st7036')
@@ -27,4 +27,3 @@ package() {
   python setup.py install --root="$pkgdir/" --optimize=1
 }
 
-# vim:set ts=2 sw=2 et:

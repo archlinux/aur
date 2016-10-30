@@ -1,9 +1,9 @@
 pkgbase = python-dot3k
 	pkgdesc = Library for the Display-o-tron Raspberry Pi add-on board from Pimoroni.
-	pkgver = r115.d543fb3
+	pkgver = r115.862b3e1
 	pkgrel = 1
 	url = https://github.com/pimoroni/dot3k
-	arch = armv6h
+	arch = any
 	license = GPL
 	makedepends = python
 	makedepends = git
