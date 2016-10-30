@@ -1,4 +1,5 @@
-# Maintainer: Ray Rashif <schiv@archlinux.org>
+# Maintainer : Immae <ismael.bouya@normalesup.org>
+# Contributor : Ray Rashif <schiv@archlinux.org>
 
 pkgname=waon
 pkgver=0.10
