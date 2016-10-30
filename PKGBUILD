@@ -1,7 +1,7 @@
 # Maintainer: Simon Gomizelj <simongmzlj@gmail.com>
 
 pkgname=repose-git
-pkgver=5
+pkgver=6.2.9.g578eefd
 pkgver() {
   cd "repose"
   git describe | sed 's/^v//;s/-/./g'
@@ -13,7 +13,7 @@ arch=('i686' 'x86_64')
 url="http://github.com/vodik/repose"
 license=('GPL')
 depends=('pacman' 'libarchive' 'gnupg')
-makedepends=('git')
+makedepends=('git' 'ragel')
 conflicts=('repose')
 provides=('repose')
 source=('git+git://github.com/vodik/repose.git')
