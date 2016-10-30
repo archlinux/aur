@@ -1,0 +1,11 @@
+pkgname=mediagoblin-plugin-basicsearch
+
+post_install() {
+  cd /usr/share/webapps/mediagoblin/
+  /bin/su -s /bin/sh -c "/usr/share/webapps/mediagoblin/bin/gmg dbupdate" mediagoblin
+}
+
+post_upgrade() {
+  cd /usr/share/webapps/mediagoblin/
+  /bin/su -s /bin/sh -c "/usr/share/webapps/mediagoblin/bin/gmg dbupdate" mediagoblin
+}
