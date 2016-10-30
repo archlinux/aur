@@ -4,10 +4,10 @@
 # his PKGBUILD that served as a base for this one
 
 pkgbase=python-django-rest-swagger0.3.10
-_pkgbase=python-django-rest-swagger
+_pkgbase=django-rest-swagger
 pkgname=(python-django-rest-swagger0.3.10 python2-django-rest-swagger0.3.10)
 pkgver=0.3.10
-pkgrel=1
+pkgrel=2
 pkgdesc='Swagger/OpenAPI Documentation Generator for Django REST Framework.'
 arch=(any)
 url='https://github.com/marcgibbons/django-rest-swagger'
