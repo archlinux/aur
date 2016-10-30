@@ -2,7 +2,7 @@
 
 pkgname=nufraw
 pkgver=0.37
-pkgrel=1
+pkgrel=2
 pkgdesc='A new version of the popular raw digital images manipulator ufraw.'
 arch=('i686' 'x86_64')
 url='https://sourceforge.net/projects/nufraw'
@@ -15,7 +15,7 @@ source=(https://sourceforge.net/projects/$pkgname/files/$pkgname-$pkgver.tar.gz
 nufraw.desktop
 )
 sha512sums=('a61669fd353891323e86ea8e4c754f072ddb076d9817b773ab46107c4faed325a9d9481e9937da763eef1ae22784ceccd126d831119499f6d126c9837b62050d'
-            '5b8fcd5011df190e5a0240e1bdcb17c7dc525f0bd93df462753d2ef4ebbb0f8a964502c744b4ff4c6a2b53110a70d5db05c14387e083a210be1b62494c34d051')
+            '46285022f5ffcb57b99f3595c5907cba90a5be022bece5b77911597ecd3efbcba9bdea660bbcb175c8d8fb1cfab904f52b920b2e81dca541b2b1b5c544b8a498')
 
 prepare(){
   cd "$pkgname-$pkgver"

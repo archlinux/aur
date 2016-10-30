@@ -1,10 +1,34 @@
 [Desktop Entry]
-Encoding=UTF-8
+Version=1.0
 Type=Application
-Name=Nufraw
+Name=nUFRaw
+
+GenericName=Raw image converter
+GenericName[ca]=Convertidor d'imatges Raw
+GenericName[cs]=Konvertor raw snímků
+GenericName[da]=Råbilledbehandler
+GenericName[de]=Konverter für Raw-Bilder
+GenericName[es]=Conversor de imágenes raw
+GenericName[fr]=Convertisseur d'image RAW
+GenericName[it]=Convertitore per immagini Raw
+GenericName[ko]=Raw 이미지 변환기
+GenericName[nb]=Raw-bildebehandler
+GenericName[nl]=Camera Raw Conversie
+GenericName[pl]=Konwerter zdjęć RAW
+GenericName[pt]=Conversor de imagens cruas
+GenericName[ru]=Проявитель цифровых негативов
+GenericName[sr]=Преводилац Raw слика
+GenericName[sr@latin]=Prevodilac Raw slika
+GenericName[zh_CN]=Raw 图像转换器
+GenericName[zh_TW]=Raw 影像轉換器
+
 Comment=A new version of the popular raw digital images manipulator ufraw.
-Exec=nufraw
-Icon=nufraw
+
+Exec=nufraw %U
+TryExec=nufraw
 Terminal=false
-StartupNotify=false
-Categories=Application;
+StartupNotify=true
+
+Icon=nufraw
+Categories=Graphics;Photography;RasterGraphics;GTK;
+MimeType=application/x-ufraw;application/x-nufraw;image/x-dcraw;
