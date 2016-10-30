@@ -13,6 +13,18 @@ post_install() {
                GIT_PROMPT_THEME=Default_Arch
                source /usr/lib/bash-git-prompt/gitprompt.sh
             fi
+
+   NOTE: To have the colors shown by 'git status' match the Default_Arch theme,
+         add the following to your ~/.gitconfig:
+
+            [color "status"]
+               branch = magenta
+               untracked = cyan
+               unmerged = yellow
+
+         And if you want boilerplate to be less prominent, also:
+
+               header = bold black
          
 "
 }
