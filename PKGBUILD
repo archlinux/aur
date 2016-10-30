@@ -60,6 +60,7 @@ build() {
   CXXFLAGS=${CXXFLAGS/-pipe/}
 
   cd ${srcdir}
+  sed -i 's/BUILD_INFO=info/BUILD_INFO=/' gcc/configure
   mkdir gcc-build && cd gcc-build
 
   ${srcdir}/${_basedir}/configure --prefix=/usr \
