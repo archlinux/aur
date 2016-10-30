@@ -1,10 +1,11 @@
-# Maintainer: NicoHood <aur {at} nicohood {dot} de>
+# Maintainer: NicoHood <archlinux {cat} nicohood {dog} de>
+# PGP ID: 97312D5EB9D7AE7D0BD4307351DAE9B7C1AE9161
 
 pkgname=arduino-builder
 pkgver=1.3.21
-pkgrel=1
+pkgrel=2
 pkgdesc="A command line tool for compiling Arduino sketches"
-arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+arch=('i686' 'x86_64')
 url="https://github.com/arduino/arduino-builder"
 license=('GPL')
 depends=('')
