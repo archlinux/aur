@@ -85,8 +85,6 @@ build() {
       --program-suffix=-${_ver} --enable-version-specific-runtime-libs \
       --enable-checking=release
 
-  make -j2 || true
-  echo "" > ../gcc-4.7.4/gcc/doc/gcc.texi
   make -j2
 }
 
