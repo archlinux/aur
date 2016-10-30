@@ -3,16 +3,17 @@
 
 _pkgname=neon
 pkgname=lib32-${_pkgname}
-pkgver=0.30.1
-pkgrel=2
+pkgver=0.30.2
+pkgrel=1
 pkgdesc="HTTP and WebDAV client library with a C interface (32 bit)"
 arch=('x86_64')
 license=('GPL' 'LGPL')
-depends=('lib32-krb5' 'lib32-expat' "${_pkgname}") #'ca-certificates'
+depends=('lib32-krb5' 'lib32-expat' "${_pkgname}" 'ca-certificates' 'zlib')
 url="http://www.webdav.org/neon/"
 source=("http://www.webdav.org/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
-md5sums=('231adebe5c2f78fded3e3df6e958878e')
 options=('libtool') # FS#16067
+md5sums=('e28d77bf14032d7f5046b3930704ef41')
+
 
 build() {
 export CC='gcc -m32'
