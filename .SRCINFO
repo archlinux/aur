@@ -1,6 +1,6 @@
 pkgbase = okcash
 	pkgdesc = Okcash Qt Wallet
-	pkgver = 4.0.0.1
+	pkgver = 4.0.0.3
 	pkgrel = 1
 	url = http://okcash.co
 	arch = i686
@@ -14,7 +14,7 @@ pkgbase = okcash
 	optdepends = qrencode: adds qr code functionality
 	provides = okcash
 	conflicts = okcash
-	source = https://github.com/okcashpro/okcash/archive/v4.0.0.1-core.Utopia.zip
+	source = https://github.com/okcashpro/okcash/archive/v4.0.0.3-core.Utopia.zip
 	md5sums = SKIP
 
 pkgname = okcash

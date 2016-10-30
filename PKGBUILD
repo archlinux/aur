@@ -1,6 +1,6 @@
 # Maintainer: Jonathan <greenbigfrog@gmail.com>
 pkgname=okcash
-pkgver=4.0.0.1
+pkgver=4.0.0.3
 pkgcodename=Utopia
 pkgrel=1
 pkgdesc="Okcash Qt Wallet"
@@ -30,4 +30,8 @@ package() {
     install -Dm644 "COPYING" "${pkgdir}/usr/share/licenses/okcash/LICENSE"
     install -d "${pkgdir}/usr/share/doc/okcash"
     cp -a "doc/" "${pkgdir}/usr/share/doc/okcash/"
+    mkdir "${pkgdir}/usr/share/applications"
+    mkdir "${pkgdir}/usr/share/pixmaps"
+    install -Dm755 "linux-desktop/okcash.desktop" "${pkgdir}/usr/share/applications/"
+    install -Dm755 "linux-desktop/okcash.png" "${pkgdir}/usr/share/pixmaps/"
 }
