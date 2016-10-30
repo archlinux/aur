@@ -1,6 +1,6 @@
 # Maintainer: Liqueur Librazy <im@librazy.org>
 pkgname=tidb-bin
-pkgver=0.0.1.20161029021623
+pkgver=0.0.1.20161030052309
 pkgrel=1
 pkgdesc="A distributed NewSQL database compatible with MySQL protocol"
 arch=('x86_64')
@@ -10,8 +10,8 @@ depends=('gcc-libs')
 backup=()
 options=()
 
-source=("http://download.pingcap.org/tidb-latest-linux-amd64.tar.gz"
-	"http://download.pingcap.org/tidb-latest-linux-amd64.sha256")
+source=("http://download.pingcap.org/tidb-latest-linux-amd64.tar.gz?ver=20161030052309"
+	"http://download.pingcap.org/tidb-latest-linux-amd64.sha256?ver=20161030052309")
 
 sha256sums=(
 	'SKIP'
