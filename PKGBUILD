@@ -7,18 +7,22 @@
 
 _pkgname=ffmpeg
 pkgname=ffmpeg-headless
-pkgver=3.1.5
+pkgver=3.2
 pkgrel=1
 epoch=1
 pkgdesc='Complete solution to record, convert and stream audio and video; optimised for server (headless) systems'
 arch=('i686' 'x86_64' 'armv7h' 'armv6h')
 url='http://ffmpeg.org/'
 license=('GPL3') #enabling libfdk_aac makes ffmpeg incompatible with the GPL!
-depends=('bzip2' 'fontconfig' 'fribidi' 'gnutls' 'gsm' 'lame' 'libass'
-         'libbluray' 'libmodplug' 'libtheora' 'libwebp' 'opencore-amr'
-         'openjpeg' 'opus' 'schroedinger' 'speex' 'v4l-utils' 'xvidcore' 'zlib'
-         'libvorbis.so' 'libvorbisenc.so' 'libvpx.so' 'libx264.so' 'libx265.so'
-         'rtmpdump')
+depends=('bzip2' 'fontconfig' 'fribidi' 'glibc' 'gmp' 'gnutls' 'gsm'
+		 'lame' 'libmodplug'
+		 'libtheora'
+		 'libwebp' 'opencore-amr' 'openjpeg2' 'opus'
+		 'schroedinger' 'speex' 'v4l-utils' 'xz' 'zlib'
+		 'libass.so' 'libbluray.so'
+		 'libvorbisenc.so' 'libvorbis.so' 'libvpx.so'
+		 'libx264.so' 'libx265.so' 'libxvidcore.so'
+		 'rtmpdump')
 optdepends=('vid.stab: Video stabilization library'
             'libfdk-aac: AAC-HE support'
             'libiec61883: FireWire DV/HDV support'
