@@ -1,0 +1,33 @@
+# Maintainer: Markus Kalb <mk@filmkreis.tu-darmstadt.de>
+# Contributor: Stefan Karner <stefan.karner@student.tuwien.ac.at>
+pkgname=liblocked-sstream-git
+pkgver=0.r4.22163e0
+pkgrel=1
+pkgdesc="library for dcpomatic sstream locking"
+arch=('i686' 'x86_64')
+url="https://github.com/cth103/locked_sstream.git"
+license=('GPL')
+depends=('boost-libs>=1.45')
+makedepends=('python2' 'boost>=1.45')
+provides=('liblocked-sstream')
+conflicts=('liblocked-sstream')
+#source=("libsub-git::git+https://github.com/cth103/libsub.git#branch=1.0")
+source=("liblocked-sstream-git::git+https://github.com/cth103/locked_sstream.git")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd liblocked-sstream-git
+  printf "0.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+build() {
+    CXXFLAGS="$CXXFLAGS    -std=c++11"
+    cd liblocked-sstream-git
+    python2 waf configure --prefix=/usr 
+    python2 waf build
+}
+
+package() {
+    cd liblocked-sstream-git
+  python2 waf install --destdir=$pkgdir
+}
