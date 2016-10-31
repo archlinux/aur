@@ -1,25 +1,37 @@
 # Maintainer: Jan de Groot <jgc@archlinux.org>
 
 pkgname=gdl
-pkgver=3.20.0
+pkgver=3.22.0
 pkgrel=1
 pkgdesc="GNOME Docking Library"
 arch=(i686 x86_64)
 license=('GPL')
 url="http://www.gnome.org/"
 depends=('gtk3')
-makedepends=('gtk-doc' 'intltool' 'gobject-introspection')
-source=(http://ftp.gnome.org/pub/GNOME/sources/$pkgname/${pkgver:0:4}/$pkgname-$pkgver.tar.xz)
-sha256sums=('53d3a3bb9b9be25b3a40c644fdbbb57a5a63ee1f5f839c2266d1cd9779360e8b')
+makedepends=('gtk-doc' 'intltool' 'gobject-introspection' gnome-common git)
+_commit=4d878257865371dfbb1662f4d17b12b3ed334cb6  # tags/GDL_3_22_0^0
+source=("git://git.gnome.org/gdl#commit=$_commit")
+sha256sums=('SKIP')
+
+pkgver() {
+  cd $pkgname
+  git describe --tags | sed 's/^GDL_//;s/_/./g;s/-/+/g'
+}
+
+prepare() {
+  cd $pkgname
+  NOCONFIGURE=1 ./autogen.sh
+}
 
 build() {
-  cd "$pkgname-$pkgver"
+  cd "$pkgname"
   ./configure --prefix=/usr --sysconfdir=/etc \
-      --localstatedir=/var --disable-static
+      --localstatedir=/var --disable-static --enable-gtk-doc
+  sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
   make
 }
 
 package() {
-  cd "$pkgname-$pkgver"
+  cd "$pkgname"
   make DESTDIR="$pkgdir" install
 }
