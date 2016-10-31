@@ -1,15 +1,15 @@
 pkgbase=swift-language
 pkgname=(swift swift-lldb)
-_swiftver=3.0-RELEASE
+_swiftver=3.0.1-RELEASE
 pkgver=${_swiftver//-RELEASE/}
-pkgrel=2
+pkgrel=1
 pkgdesc="The Swift programming language and debugger"
 arch=('i686' 'x86_64')
 url="http://swift.org/"
 license=('apache')
 depends=('python2' 'libutil-linux' 'icu' 'libbsd' 'libedit' 'libxml2'
          'sqlite' 'ncurses' 'libkqueue')
-makedepends=('git' 'cmake' 'ninja' 'swig' 'clang>=3.8' 'python2-six' 'perl'
+makedepends=('git' 'cmake' 'ninja' 'swig' 'clang=3.8.1' 'python2-six' 'perl'
              'python2-sphinx')
 
 source=(
@@ -26,17 +26,17 @@ source=(
     "swift-integration-tests-${_swiftver}.tar.gz::https://github.com/apple/swift-integration-tests/archive/swift-${_swiftver}.tar.gz"
     "swift-sphinx2.patch" "xar-1.6.patch"
 )
-sha256sums=('a278ca9ef489fbab00dc9864a2ac1bd84c8324bba7463ce7e3797debaf8cee84'
-            '30bff4c69fae90a6b3aeb7fef14681c1e291fd57cf695d330adb095eac2718e6'
-            '75027d876a58c42200d2439c2f0e3aa569a98d2c245f609eab0c5d32a6514db4'
-            'd4244307aa18842ba48f93c48aa23184c218641fbdcdd77fa7207765961d3cbc'
-            'c2d4c81ebfc9602091b7b536a54acc1ce7719f23ce4c3866e1bdb8c33a949ab6'
-            '6dd33ec7b513492f8c0aa6f0449ef21799331c43cb7f329225dcdddf17a706d8'
-            '1dc3bac89e096f2a338c19a0599c9448fd04e67d8e9c954790754b924c36b91f'
-            '1f9c170e259ebaf7d0ec623520e7f8f15c8ede85164423e0ca527db3ce4edd9d'
-            '391bd525be98396efcf7845dc88be676db585ead77a823df93fd4f1feea75b1a'
-            '7f2554a218b6571a7d7e15a7101139cd6e672334d18e07b13b20a5d6caf6df52'
-            '2a2072d52c4c361bd946136ccc8db4fbf1d0944f40b67d14a2b1e2ebf4f36709'
+sha256sums=('5770cc45fe352d8a96d35ee35222cba0a47883b057e012a5464d411898afa074'
+            '5cfaa08743b29e6c8a948654b71fef608a48953b3eb928c3049c07ca279275c9'
+            '470e3c735a675aa37f58e4fe206a2d4141478a318dcb78c3fc8121e087e782b4'
+            '9ad53d861639adb9158833049af756f3e35232313a455112341e4666cca1ec1d'
+            '07c8d491735cc0bef3a7f8796f9eff5e52011b85e025084721fbc896a469cddb'
+            'aff9754ebc47e8248a7e8c6b716f8230031cf87dc13696b4a2b8cbd9ce9e7fb1'
+            '170ac0eed1050fa7df641d60a8194685072221e9b99d4ec4e3d30a08413b3a4b'
+            '93b14c75973d1eb0399551ca3ef26e4244a3c3f341b294afbf6cdf54c1bf6439'
+            '8fb7ee9ad64b4e5cdbcb8f31bd4e3bc40eeca5f8c8ab8c9009888f8645f089c5'
+            'ccfd071018f69540fa5e2a6691d5cc5e401c3b2fa19651d38a3f915b4a0b5d36'
+            'fc686e6fba5ab9c2520bde71031116cfe57d3230098ad3cdea513a2e367c61af'
             '93bbe769666aab15b15d12e2423f213b39d6c47237eafc781569698c8367535f'
             'df27c2bfeaed6335f49a8815b0b296fd5acc331a6a9361a40f7dfc69a7518da6')
 
