@@ -20,16 +20,16 @@ md5sums=('4c2f17bb9d481821c41b6fbee904cea1'
 package_python-tempita() {
   depends=('python')
 
-  cd $srcdir/Tempita-${pkgver}
-  python setup.py install --root=$pkgdir --optimize=1
-  install -Dm644 $srcdir/$pkgbase-license.txt $pkgdir/usr/share/licenses/$pkgname/license.txt
+  cd "$srcdir"/Tempita-${pkgver}
+  python setup.py install --root="$pkgdir" --optimize=1
+  install -Dm644 "$srcdir"/$pkgbase-license.txt "$pkgdir"/usr/share/licenses/$pkgname/license.txt
 }
 
 package_python2-tempita() {
   depends=('python2')
 
-  cd $srcdir/Tempita-${pkgver}
+  cd "$srcdir"/Tempita-${pkgver}
   sed -e 's|from urllib.parse|from urllib|' -i tempita/__init__.py
-  python2 setup.py install --root=$pkgdir --optimize=1
-  install -Dm644 $srcdir/$pkgbase-license.txt $pkgdir/usr/share/licenses/$pkgname/license.txt
+  python2 setup.py install --root="$pkgdir" --optimize=1
+  install -Dm644 "$srcdir"/$pkgbase-license.txt "$pkgdir"/usr/share/licenses/$pkgname/license.txt
 }
