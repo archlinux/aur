@@ -1,15 +1,15 @@
 # Maintainer: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=lightdm-gtk-greeter-bzr
-pkgver=r323
+pkgver=r353
 pkgrel=1
 pkgdesc='GTK+ greeter for LightDM'
 arch=('i686' 'x86_64')
 url='https://launchpad.net/lightdm-gtk-greeter'
 license=('GPL3' 'LGPL3')
 depends=('gtk3' 'lightdm')
-makedepends=('bzr' 'gnome-common' 'gnome-doc-utils' 'gobject-introspection'
-             'intltool')
+makedepends=('bzr' 'exo' 'gnome-common' 'gnome-doc-utils'
+             'gobject-introspection' 'intltool')
 provides=('lightdm-gtk-greeter')
 conflicts=('lightdm-gtk-greeter')
 backup=('etc/lightdm/lightdm-gtk-greeter.conf')
