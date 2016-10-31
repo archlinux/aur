@@ -1,12 +1,12 @@
 # Maintainer: Sandro Kalbermatter <info.kalsan [ät-symbol] valaiscom.ch>
 pkgname=schemaspy
 pkgver=5.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Graphical Database Schema Metadata Browser"
 arch=(any)
 url="http://schemaspy.sourceforge.net/"
 license=(LGPL2.1)
-depends=('java-runtime>=6')
+depends=('java-environment' 'bash')
 provides=('schemaspy')
 install=${pkgname}.install
 _jarname="schemaSpy_${pkgver}.jar"
