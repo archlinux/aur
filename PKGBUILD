@@ -4,18 +4,15 @@ pkgname=nginx-mainline-waf
 _pkgname=nginx
 provides=('nginx')
 conflicts=('nginx')
-pkgver=1.11.3
-pkgrel=2
+pkgver=1.11.5
+pkgrel=1
 pkgdesc='Lightweight HTTP1/2 server, mainline, Brotli , with Naxsi, Certificate
 Transparency and GeoIP (GeoIP Legacy) Support.'
 arch=('i686' 'x86_64')
 url='http://nginx.org'
 license=('custom')
 
-_psver=1.9.32.4-beta
-_psolver=1.9.32.4
-
-depends=('pcre' 'zlib' 'openssl' 'geoip' 'yubico-c-client' 'libbrotli-git')
+depends=('pcre' 'zlib' 'openssl' 'geoip' 'libbrotli')
 backup=('etc/nginx/fastcgi.conf'
         'etc/nginx/fastcgi_params'
         'etc/nginx/koi-win'
@@ -28,8 +25,6 @@ backup=('etc/nginx/fastcgi.conf'
         'etc/logrotate.d/nginx')
 install=nginx.install
 source=($url/download/nginx-$pkgver.tar.gz
-	#https://github.com/pagespeed/ngx_pagespeed/archive/release-$_psver.zip
-    #https://dl.google.com/dl/page-speed/psol/$_psolver.tar.gz
 	git+https://github.com/nbs-system/naxsi.git
     git+https://github.com/google/ngx_brotli.git
 	#git+https://github.com/aperezdc/ngx-fancyindex.git
@@ -116,14 +111,14 @@ package() {
 }
 
 # vim:set ts=2 sw=2 et:
-md5sums=('18275c1daa39c5fac12e56c34907d45b'
+md5sums=('db43f2b19746f6f47401c3afc3924dc6'
          'SKIP'
          'SKIP'
          'SKIP'
          'SKIP'
          'ce9a06bcaf66ec4a3c4eb59b636e0dfd'
          '3441ce77cdd1aab6f0ab7e212698a8a7')
-sha1sums=('dbccb96ac381118ae8d527947f03b93d5ec51017'
+sha1sums=('3658724f3c6d049cd1d24f02f1acb7f9be250886'
           'SKIP'
           'SKIP'
           'SKIP'
