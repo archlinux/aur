@@ -5,7 +5,7 @@ _modname=$_pkgbase
 pkgname="${_pkgbase}-dkms"
 pkgver='1.1'
 _pkgtag='6bfe9fe44e04'
-pkgrel=1
+pkgrel=2
 pkgdesc='A reverse engineering driver for the Clevo SM series backlight keyboard (DKMS version)'
 arch=('i686' 'x86_64')
 license=('GPL')
@@ -21,8 +21,6 @@ sha256sums=('43e7eadbec5cf0d92d10bb1fd511a77cb4a11a7fa29f3a2df33dacbeb65c5f09'
             '0cdf0213692a71d69f54730d1856d9f1e7b3d363d9b2a66a5d6bb363e8d8212f'
             'fb20847bde676a305fda41b865b46aff52ae9de60e1262d6e9725a71d72b806b')
 install='clevo-xsm-wmi-dkms.install'
-_linux_major_version=$(pacman -Q linux | cut -d' ' -f 2 | sed -r 's/^([0-9]+\.[0-9]+).+$/\1/')
-_extramodules="extramodules-${_linux_major_version}-ARCH"
 
 package() {
     cd "${srcdir}/lynthium-clevo-xsm-wmi-${_pkgtag}/module"
@@ -38,4 +36,3 @@ package() {
     install -Dm644 /dev/null "$pkgdir/usr/lib/modules-load.d/$pkgname.conf"
     echo "clevo-xsm-wmi" > "$pkgdir/usr/lib/modules-load.d/$pkgname.conf"
 }
-
