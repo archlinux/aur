@@ -1,23 +1,23 @@
-# Maintainer: Christian Babeux <christian.babeux@0x80.ca>
+# Maintainer: Philippe Proulx <pproulx@efficios.com>
 # Contributor: Manuel Mendez <mmendez534 at gmail dot com>
 
 pkgname=babeltrace
-pkgver=1.3.2
+pkgver=1.4.0
 pkgrel=1
 pkgdesc="command-line trace reader for LTTng"
 arch=('i686' 'x86_64')
 url="http://lttng.org/"
 license=('MIT' 'GPL2' 'LGPL2.1')
-depends=('popt' 'util-linux' 'glib2>=2.22.0')
+depends=('popt' 'util-linux' 'glib2>=2.22.0' 'elfutils>=0.154')
 options=('!libtool')
 source=(http://www.efficios.com/files/${pkgname}/${pkgname}-${pkgver}.tar.bz2)
 install='babeltrace.install'
-sha1sums=('ba95d2a6e9c55c0c0875c0cf722f14e6d6d73c12')
+sha1sums=('3b162480ee883625e8581bf163817f78a4b6487b')
 
 build()
 {
     cd ${srcdir}/${pkgname}-${pkgver}
-    ./configure --prefix=/usr
+    ./configure --prefix=/usr --enable-debug-info
     make
 }
 
