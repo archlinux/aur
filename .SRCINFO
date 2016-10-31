@@ -11,7 +11,7 @@ pkgbase = ruby-net-ssh-multi
 	noextract = net-ssh-multi-1.2.1.gem
 	options = !emptydirs
 	source = https://rubygems.org/downloads/net-ssh-multi-1.2.1.gem
-	sha512sums = 2519086251d8e0dc2530bc736bd93ac538efea85a123934f2fff54ccbc15541051aed8a7538d4777465e865fb23a78b9d3f5040384fd339382e1d44a2a0cffa9
+	sha1sums = bffe0c41e3b62f71a84745409ca5f5869f33cd7d
 
 pkgname = ruby-net-ssh-multi
 
