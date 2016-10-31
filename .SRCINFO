@@ -1,0 +1,20 @@
+pkgbase = ca-certificates-postsignum
+	pkgdesc = PostSignum root & qualified certificates
+	pkgver = 20100119
+	pkgrel = 1
+	url = http://www.postsignum.cz/
+	install = ca-certificates-postsignum.install
+	arch = any
+	license = unknown
+	depends = ca-certificates-utils
+	source = http://www.postsignum.cz/files/ca/postsignum_qca2_root.pem
+	source = http://www.postsignum.cz/files/ca/postsignum_qca2_sub.pem
+	source = http://www.postsignum.cz/files/ca/postsignum_qca3_sub.pem
+	source = http://www.postsignum.cz/files/ca/postsignum_vca2_sub.pem
+	md5sums = e3cda846deea8fd3781fb720c4fcdb5c
+	md5sums = b8d77e2ddcc7fabc2d6d65927f1d1ab4
+	md5sums = dbaa798aa74aa3422a88e6541a823ead
+	md5sums = ef405fb0b7a4721da7cde32bc56b2237
+
+pkgname = ca-certificates-postsignum
+
