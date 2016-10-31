@@ -6,8 +6,8 @@
 # You may find it convenient to file issues and pull requests there.
 
 pkgname=mozilla-extension-gnome-keyring-git
-pkgver=0.11
-pkgrel=4
+pkgver=0.12
+pkgrel=1
 pkgdesc="Mozilla extension to store passwords and form logins in gnome-keyring."
 arch=(any)
 url='https://github.com/swick/mozilla-gnome-keyring'
