@@ -22,20 +22,20 @@ md5sums=('6b96fe9d2d1c546842a4d1c7ef387e4c'
          '509df653dec8956faf1a40a8c544d9ce')
 
 prepare() {
-  cd $srcdir/$pkgname-$pkgver
-  patch -p1 <$srcdir/mandir.patch
+  cd "$srcdir"/$pkgname-$pkgver
+  patch -p1 <"$srcdir"/mandir.patch
 }
 
 build() {
-  cd $srcdir/$pkgname-$pkgver
+  cd "$srcdir"/$pkgname-$pkgver
   make PREFIX=/usr DIST="$pkgdir"
 }
 
 package() {
-  cd $srcdir/$pkgname-$pkgver
-  mkdir -p $pkgdir/usr/share/man/man1
+  cd "$srcdir"/$pkgname-$pkgver
+  mkdir -p "$pkgdir"/usr/share/man/man1
   make install-all DIST="$pkgdir"
   # remove all the stuff supplied by bin86
-  rm $pkgdir/usr/bin/{as,ld,nm,objdump,size}86
-  rm $pkgdir/usr/share/man/man1/{as,ld}86.1
+  rm "$pkgdir"/usr/bin/{as,ld,nm,objdump,size}86
+  rm "$pkgdir"/usr/share/man/man1/{as,ld}86.1
 }
