@@ -4,7 +4,7 @@
 
 pkgname=firefox-extension-omnisidebar
 pkgver=1.6.13
-pkgrel=1
+pkgrel=2
 pkgdesc='A firefox add-on designed to provide more control over the behavior of the sidebar.'
 arch=('any')
 license=('MPLv2')
@@ -43,9 +43,18 @@ query-version() {
   xmllint .version --xpath \
     "//application[appID='$2']/$1_version/text()"
 }
+
 version-range() {
-  local emid=$(emid $1)
-  echo "$1>$(version min $emid)" "$1<$(version max $emid)"
+  if [ -z "$(sparql "?x em:type ?type. filter(?type in ('2', '64'))")" ] ||
+    [ -n "$(sparql "?x em:strictCompatibility 'true'")" ] ||
+    { [ -e chrome.manifest ] &&
+      grep '^binary-component[ \t]' chrome.manifest ; }
+  then
+    local emid=$(emid $1)
+    echo "$1>$(version min $emid)" "$1<$(version max $emid)"
+  else
+    echo "$1>$(version min $(emid $1))"
+  fi
 }
 
 emid() {
