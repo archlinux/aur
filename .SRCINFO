@@ -1,13 +1,13 @@
 pkgbase = schemaspygui
 	pkgdesc = Graphical user interface for the tool SchemaSpy from John Currier
 	pkgver = 0.99
-	pkgrel = 1
+	pkgrel = 3
 	url = http://schemaspy.sourceforge.net/
 	install = schemaspygui.install
 	arch = any
 	license = LGPL
-	depends = java-runtime>=6,
-	depends = schemaspy,
+	depends = java-environment
+	depends = schemaspy
 	depends = graphviz
 	provides = schemaspygui
 	source = schemaSpyGUI20090302.zip::http://downloads.sourceforge.net/project/schemaspygui/schemaspygui/SchemaSpyGUI%20Version%200.99%20%2820090302%29%20-%20Linux%20bugfix/schemaSpyGUI20090302.zip
