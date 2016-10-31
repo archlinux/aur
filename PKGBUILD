@@ -73,7 +73,7 @@ _bldtype=Release
 
 _mozcrev=2315f957d1785130c2ed196e141a330b0857b065
 _utdicver=20161024
-_zipcoderel=201609
+_zipcoderel=201610
 _uimmozcrev=321.3ea28b1
 
 pkgbase=mozc-ut2
@@ -98,9 +98,9 @@ sha1sums=('SKIP'
           '66b2c6c3f2fc340b03814736d03ce1a4cd69a9ed'
           'bf19a6b74194d332bc5e8d6daa291bd537812974'
           'e0ba18e67c1be8e3cfb8ecb30760597b215da255'
-          'c8085904b2326363667831131c0921b004a66bad'
-          '3d012569963b9359d2d267216f78c1a07a395065'
-          '18816b7cf42c1112de35ceaf336e36756c5ff26f')
+          '4dbc4d7068e6126b54ca2889ed6d30f50a47f862'
+          '21e0587eb7c1df8ea2ee709e98a0b533ec48fecf'
+          '16574ba571784ff037022ecdab7f62c9d5bb4ce6')
 
 
 if [[ "$_ibus_mozc" == "yes" ]]; then
