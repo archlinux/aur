@@ -40,5 +40,5 @@ package() {
     SYSDATADIR="${pkgdir}"/etc/incron.d install
 
   install -Dm0644 "${srcdir}/incrond.service" "${pkgdir}/usr/lib/systemd/system/incrond.service"
-  rmdir $pkgdir/usr/sbin
+  rmdir "$pkgdir"/usr/sbin
 }
