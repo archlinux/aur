@@ -1,9 +1,8 @@
 pkgbase = vim-flagship-git
 	pkgdesc = Configurable and extensible tab line and status line, by tpope
-	pkgver = 1.0.r7.g6fb105f
-	pkgrel = 1
+	pkgver = 1.1.r3.g77342d7
+	pkgrel = 2
 	url = https://github.com/tpope/vim-flagship
-	install = vimdoc.install
 	arch = any
 	groups = vim-plugins
 	license = custom:vim
