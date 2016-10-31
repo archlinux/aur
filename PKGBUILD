@@ -1,7 +1,7 @@
 # Maintainer: Jonathan Liu <net147@gmail.com>
 pkgname=meshlab
 pkgver=1.3.3
-pkgrel=5
+pkgrel=6
 pkgdesc="System for processing and editing triangular meshes"
 arch=('i686' 'x86_64')
 url="http://meshlab.sourceforge.net/"
@@ -9,6 +9,7 @@ license=('GPL2')
 depends=('bzip2' 'desktop-file-utils' 'glu' 'lapack' 'mpir' 'openssl' 'qt4')
 install="${pkgname}.install"
 source=("http://downloads.sourceforge.net/project/meshlab/meshlab/MeshLab%20v${pkgver//[a-z]/}/MeshLabSrc_AllInc_v${pkgver//./}.tgz"
+        "fix_local_stl_import.patch"
         "gcc-4.7.patch"
         "lapack.patch"
         "mpir.patch"
@@ -20,6 +21,7 @@ source=("http://downloads.sourceforge.net/project/meshlab/meshlab/MeshLab%20v${p
         "meshlab.desktop")
 noextract=("MeshLabSrc_AllInc_v${pkgver//./}.tgz")
 md5sums=('cbdd83d4f3ed69e7a9837c34ebae307a'
+         '5582b6a1bcd7fd46b4854e1f4a8aea7f'
          '65d7ff92ad2d6e74119af9c0e377bb37'
          '4139d3217f1540c67306545213126391'
          '308f1b90f7de56f9df1485808713ed53'
@@ -38,6 +40,8 @@ prepare() {
   # remove bundled headers and libraries
   rm -fr meshlab/src/external/{inc,lib}
 
+  # fix text import breaking for different locales
+  patch -Np0 -i "${srcdir}/fix_local_stl_import.patch"
   # fix compile errors with GCC 4.7
   patch -Np0 -i "${srcdir}/qt-4.8.patch"
   # fix Qt 4.8 compatibility
