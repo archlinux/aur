@@ -14,12 +14,12 @@ source=(https://code.launchpad.net/alltray/trunk/${pkgver}/+download/alltray-${p
 md5sums=('5842253b89a5943031b5a02bbd8fd4fb')
 
 build() {
-  cd ${srcdir}/${pkgname}-${pkgver}
+  cd "$srcdir"/${pkgname}-${pkgver}
   ./configure --prefix=/usr
   make
 }
 
 package() {
-  cd ${srcdir}/${pkgname}-${pkgver}
-  make DESTDIR=${pkgdir} install
+  cd "$srcdir"/${pkgname}-${pkgver}
+  make DESTDIR="$pkgdir" install
 }
