@@ -13,5 +13,5 @@ source=(http://ftp.us.debian.org/debian/pool/main/d/dia-shapes/dia-shapes_0.6.0-
 md5sums=('9a5ce955cbed2beb5f33288e632a3214')
 
 package() {
-	tar -zxf data.tar.gz -C "${pkgdir}"
+	tar -xf data.tar.xz -C "${pkgdir}"
 }
