@@ -2,7 +2,7 @@
 # Contributor: Manuel Mendez <mmendez534 at gmail dot com>
 
 pkgname=lttng-tools
-pkgver=2.8.1
+pkgver=2.8.2
 pkgrel=1
 pkgdesc="LTTng tracing control tools"
 arch=('i686' 'x86_64')
@@ -10,6 +10,7 @@ url="http://lttng.org/"
 license=('GPL2' 'LGPL2.1')
 provides=('lttng')
 source=(http://lttng.org/files/$pkgname/$pkgname-$pkgver.tar.bz2)
+makedepends=('asciidoc' 'xmlto')
 depends=(
     'popt'
     'liburcu>=0.7.2'
@@ -22,12 +23,12 @@ optdepends=(
     'babeltrace: view traces with `lttng view` command'
     'man-db: view man pages with the `lttng help` command'
 )
-sha1sums=('d881696e0ba8c231cc6166e5883baef37ccb95c4')
+sha1sums=('870874ba9644691de8e564a1fa1459aa5fef42ba')
 
 build()
 {
     cd ${srcdir}/${pkgname}-${pkgver}
-    ./configure --prefix=/usr
+    ./configure --prefix=/usr --enable-man-pages
     make
 }
 
