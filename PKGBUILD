@@ -7,7 +7,7 @@
 
 pkgname=hugo-bin
 pkgver=0.17
-pkgrel=1
+pkgrel=2
 pkgdesc="A Fast and Flexible Static Site Generator built in Go - Precompiled binary from official repository"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
 url="https://gohugo.io/"
@@ -44,6 +44,6 @@ package() {
   "${srcdir}/${pkgname/-bin}_${pkgver}_linux_${_pkgarch}/${pkgname/-bin}_${pkgver}_linux_${_pkgarch}" gen autocomplete --completionfile="${pkgdir}/usr/share/bash-completion/completions/${pkgname/-bin}"
 
   # Generate man pages
-  mkdir -p "${pkgdir}/usr/share/man/"
-  "${srcdir}/${pkgname/-bin}_${pkgver}_linux_${_pkgarch}/${pkgname/-bin}_${pkgver}_linux_${_pkgarch}" gen man --dir="${pkgdir}/usr/share/man/"
+  mkdir -p "${pkgdir}/usr/share/man/man1/"
+  "${srcdir}/${pkgname/-bin}_${pkgver}_linux_${_pkgarch}/${pkgname/-bin}_${pkgver}_linux_${_pkgarch}" gen man --dir="${pkgdir}/usr/share/man/man1/"
 }
