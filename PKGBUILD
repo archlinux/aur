@@ -6,7 +6,7 @@
 pkgbase='firefox-theme-adwaita-git'
 pkgname=('firefox-theme-gnome-git' 'firefox-extension-gnome-theme-tweak-git')
 pkgver=45.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Adwaita theme for Firefox (Matches the default Gnome Shell theme)"
 url="https://github.com/gnome-integration-team/firefox-gnome"
 arch=('any')
@@ -60,9 +60,18 @@ query-version() {
   sed -n "s/^ *\"$1-version\": \"\\([^\"]\+\\)\",\$/\\1/p" *.json
 }
 
+
 version-range() {
-  local emid=$(emid $1)
-  echo "$1>$(version min $emid)" "$1<$(version max $emid)"
+  if [ -z "$(sparql "?x em:type ?type. filter(?type in ('2', '64'))")" ] ||
+    [ -n "$(sparql "?x em:strictCompatibility 'true'")" ] ||
+    { [ -e chrome.manifest ] &&
+      grep '^binary-component[ \t]' chrome.manifest ; }
+  then
+    local emid=$(emid $1)
+    echo "$1>$(version min $emid)" "$1<$(version max $emid)"
+  else
+    echo "$1>$(version min $(emid $1))"
+  fi
 }
 
 emid() {
