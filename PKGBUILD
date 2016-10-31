@@ -27,7 +27,7 @@ md5sums=('SKIP'
          'SKIP'
          '8cf9900ebada61f352a03465a088da34')
 
-version() {
+pkgver() {
   cut -d' ' -f 3 docker-latest.tgz.sha256 |sed 's#docker-\(.*\).tgz#\1#' |sed 's#-#_#g'
 }
 
