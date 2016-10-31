@@ -3,8 +3,8 @@
 # Contributor: Sébastien "Seblu" Luttringer
 
 pkgname=docker-experimental-bin
-pkgver=1.12.2_rc3
-pkgrel=3
+pkgver=1.12.3
+pkgrel=1
 pkgdesc='Pack, ship and run any application as a lightweight container, using official binaries'
 arch=('x86_64')
 url='https://www.docker.com/'
@@ -28,7 +28,7 @@ md5sums=('SKIP'
          '8cf9900ebada61f352a03465a088da34')
 
 version() {
-  cut -d' ' -f 3 docker-latest.tgz.sha256 |sed 's#docker-\(.*\)-\(.*\).tgz#\1_\2#'
+  cut -d' ' -f 3 docker-latest.tgz.sha256 |sed 's#docker-\(.*\).tgz#\1#' |sed 's#-#_#g'
 }
 
 prepare() {
