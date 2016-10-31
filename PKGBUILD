@@ -2,7 +2,7 @@
 
 pkgname=runa
 pkgver=1.10.1
-pkgrel=3
+pkgrel=4
 pkgdesc="Fast and light desktop application launcher"
 arch=('any')
 url="http://appstogo.mcfadzean.org.uk/linux.html#runa"
