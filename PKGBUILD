@@ -1,7 +1,7 @@
 # Maintainer: bartus <aur@bartus.33mail.com>
 
 pkgname=awesomebump-git
-pkgver=5.0.r9.g8ce9963
+pkgver=5.0.r12.g42c869f
 pkgrel=1
 pkgdesc="A free program designed to generate normal, height, specular or ambient occlusion textures from a single image"
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ url="http://awesomebump.besaba.com/"
 license=('LGPL3')
 depends=('qt5-base' 'qt5-location' 'qt5-script')
 conflicts=('awesomebump')
-makedepends=('imagemagick' 'git' 'wget' 'unzip')
+makedepends=('imagemagick' 'git' 'wget' 'unzip' 'mesa-demos')
 source=("${pkgname}::git+https://github.com/kmkolasinski/AwesomeBump.git"
         "awesomebump.log.file.moved.to.tmp.patch"
         "awesomeBump.sh"
@@ -27,6 +27,11 @@ pkgver() {
 prepare() {
   cd ${srcdir}/${pkgname}
   patch -Np1 -i ../awesomebump.log.file.moved.to.tmp.patch
+  glver=$(LIBGL_ALWAYS_INDIRECT=1 glxinfo |sed -n '/OpenGL version string:/s/^.*: \([0-9.]*\).*$/\1/p')
+  #glver=3.3 # uncomment for headles system to build opengl330 version
+  if (echo $glver | grep -Eq  ^3.*$) ; then
+    sed -i 's:qmake:qmake "CONFIG+=gl330":' unixBuildScript.sh
+  fi
 }
 
 build() {
