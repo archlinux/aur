@@ -3,10 +3,9 @@
 pkgname=mugshot
 pkgver=0.3.1
 pkgver_min=${pkgver%.*}
-pkgrel=1
+pkgrel=2
 pkgdesc="Program to update personal user details"
 arch=('any')
-install="${pkgname}.install"
 url="https://launchpad.net/mugshot"
 license=('GPLv3')
 depends=('python-pexpect' 'python-dbus' 'python-cairo' 'python-gobject' 'python-distutils-extra')
