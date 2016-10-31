@@ -7,7 +7,7 @@
 
 pkgname=mozilla-extension-gnome-keyring-git
 pkgver=0.12
-pkgrel=1
+pkgrel=2
 pkgdesc="Mozilla extension to store passwords and form logins in gnome-keyring."
 arch=(any)
 url='https://github.com/swick/mozilla-gnome-keyring'
@@ -72,9 +72,18 @@ for target in "${optdepends[@]}"; do
 done
 optdepends=()
 
+
 version-range() {
-  local emid=$(emid $1)
-  echo "$1>$(version min $emid)" "$1<$(version max $emid)"
+  if [ -z "$(sparql "?x em:type ?type. filter(?type in ('2', '64'))")" ] ||
+    [ -n "$(sparql "?x em:strictCompatibility 'true'")" ] ||
+    { [ -e chrome.manifest ] &&
+      grep '^binary-component[ \t]' chrome.manifest ; }
+  then
+    local emid=$(emid $1)
+    echo "$1>$(version min $emid)" "$1<$(version max $emid)"
+  else
+    echo "$1>$(version min $(emid $1))"
+  fi
 }
 
 emid() {
