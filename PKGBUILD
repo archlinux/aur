@@ -3,7 +3,7 @@
 # Contributor: Max Meyer <dev@fedux.org>
 
 pkgname='python-pacparser'
-pkgver=1.3.6
+pkgver=1.3.7
 pkgrel=1
 arch=(i686 x86_64)
 url="https://github.com/pacparser/pacparser"
@@ -12,7 +12,7 @@ depends=('python')
 options=('!makeflags')
 pkgdesc="Python 3.x pacparser module"
 source=("https://github.com/pacparser/pacparser/archive/${pkgver}.tar.gz")
-sha256sums=('c1f6f2ccd4fec329175f882102e47c57328e8e6e16aa9dbd4f8b859f9a028e83')
+sha256sums=('575c5d8096b4c842b2af852bbb8bcfde96170b28b49f33249dbe2057a8beea13')
 
 build() {
   cd pacparser-$pkgver
