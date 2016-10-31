@@ -1,0 +1,15 @@
+_notice() {
+    echo
+    echo "NOTICE: This package includes proprietary configuration files which make"
+    echo "the package non-free and non-redistributable.  If you wish to disable"
+    echo "the extra functionality and use the pure open-source package, read the"
+    echo "notice at the top of the PKGBUILD and set VSCODE_NONFREE=0"
+}
+
+post_install() {
+    _notice
+}
+
+post_upgrade() {
+    _notice
+}
