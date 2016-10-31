@@ -1,0 +1,19 @@
+pkgbase = notification-thing-git
+	pkgdesc = Python-based implementation of Desktop Notifications Specification (notification-daemon)
+	pkgver = 20161031
+	pkgrel = 1
+	url = https://github.com/mk-fg/notification-thing
+	arch = any
+	license = unknown
+	makedepends = git
+	depends = python2-dbus
+	depends = python2-gobject
+	optdepends = python2-yaml: to configure daemon via YAML file, not CLI (--conf option).
+	optdepends = python2-pyzmq: to broadcast/receive notification messages over zeromq pub/sub sockets.
+	optdepends = libcanberra: to play sounds (from XDG themes or files).
+	provides = notification-thing
+	source = notification-thing-git::git://github.com/mk-fg/notification-thing.git
+	md5sums = SKIP
+
+pkgname = notification-thing-git
+
