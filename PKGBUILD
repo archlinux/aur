@@ -6,12 +6,12 @@
 
 pkgname=coherence
 pkgver=0.6.6.2
-pkgrel=8
+pkgrel=9
 pkgdesc="A DLNA/UPnP MediaServer and MediaRenderer"
 arch=('any')
 url="http://coherence.beebits.net/"
 license=('MIT')
-depends=('python2' 'twisted-web2' 'python-elementtree' 'python2-configobj' 'libcaca')
+depends=('python2' 'twisted-web2' 'python-elementtree' 'python2-configobj' 'libcaca' 'python2-service-identity' 'python2-gobject2' 'pygtk')
 optdepends=('ampache: for the Ampache Backend'
             'gstreamer0.10-python: for the gstreamer MediaRenderer'
             'pyid3lib: for MediaStore Backend ID3 Option B'
