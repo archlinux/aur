@@ -15,15 +15,15 @@ pkgdesc='Complete solution to record, convert and stream audio and video (Same a
 arch=('i686' 'x86_64')
 url='http://ffmpeg.org/'
 license=('GPL3' 'custom:libfdk-aac')
-depends=('alsa-lib' 'bzip2' 'fontconfig' 'fribidi' 'gmp' 'gnutls' 'gsm' 'lame'
-         'libass' 'libavc1394' 'libbluray' 'libiec61883' 'libmodplug'
-         'libpulse' 'libsoxr' 'libssh' 'libtheora' 'libva' 'libvdpau' 'libwebp'
-         'opencore-amr' 'openjpeg2' 'opus' 'schroedinger' 'sdl' 'speex'
-         'v4l-utils' 'xvidcore' 'zlib'
-         'libvidstab.so' 'libvorbis.so' 'libvorbisenc.so' 'libvpx.so'
-         'libx264.so' 'libx265.so' 'libnetcdf.so'
+depends=('alsa-lib' 'bzip2' 'fontconfig' 'fribidi' 'glibc' 'gmp' 'gnutls' 'gsm'
+         'jack' 'lame' 'libavc1394' 'libiec61883' 'libmodplug' 'libpulse'
+         'libraw1394' 'libsoxr' 'libssh' 'libtheora' 'libva' 'libvdpau'
+         'libwebp' 'libx11' 'libxcb' 'opencore-amr' 'openjpeg2' 'opus'
+         'schroedinger' 'sdl2' 'speex' 'v4l-utils' 'xz' 'zlib'
+         'libass.so' 'libbluray.so' 'libfreetype.so' 'libnetcdf.so'
+         'libvidstab.so' 'libvorbisenc.so' 'libvorbis.so' 'libvpx.so'
+         'libx264.so' 'libx265.so' 'libxvidcore.so'
          'libfdk-aac')
-
 makedepends=('hardening-wrapper' 'ladspa' 'libvdpau' 'yasm')
 optdepends=('ladspa: LADSPA filters')
 provides=('libavcodec.so' 'libavdevice.so' 'libavfilter.so' 'libavformat.so'
