@@ -52,8 +52,8 @@ pkgbase=linux-rt-bfq
 pkgname=('linux-rt-bfq' 'linux-rt-bfq-headers' 'linux-rt-bfq-docs')
 _kernelname=-rt-bfq
 _srcname=linux-4.8
-_pkgver=4.8.2
-_rtpatchver=rt3
+_pkgver=4.8.6
+_rtpatchver=rt5
 pkgver=${_pkgver}_${_rtpatchver}
 pkgrel=1
 arch=('i686' 'x86_64')
@@ -81,8 +81,7 @@ source=("http://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         'linux-rt-bfq.preset'
         'change-default-console-loglevel.patch'
         'config' 'config.x86_64'
-        'fix-race-in-PRT-wait-for-completion-simple-wait-code_Nvidia-RT-160319.patch'
-        'fix-CVE-2016-5195.patch')
+        'fix-race-in-PRT-wait-for-completion-simple-wait-code_Nvidia-RT-160319.patch')
         
 prepare() {
     cd ${_srcname}
@@ -99,10 +98,6 @@ prepare() {
     # Stops X from hanging on certain NVIDIA cards
         msg "Fix-race-in-PRT-wait-for-completion-simple-wait-code_Nvidia-RT.patch"
         patch -p1 -i "${srcdir}/fix-race-in-PRT-wait-for-completion-simple-wait-code_Nvidia-RT-160319.patch"          
-    
-    ### Fix CVE-2016-5195.patch
-        msg "CVE-2016-5195.patch"
-        patch -p1 -i "${srcdir}/fix-CVE-2016-5195.patch"
     
     ### set DEFAULT_CONSOLE_LOGLEVEL to 4 (same value as the 'quiet' kernel param)
     # remove this when a Kconfig knob is made available by upstream
@@ -464,9 +459,9 @@ package_linux-rt-bfq-docs() {
 
 sha512sums=('a48a065f21e1c7c4de4cf8ca47b8b8d9a70f86b64e7cfa6e01be490f78895745b9c8790734b1d22182cf1f930fb87eaaa84e62ec8cc1f64ac4be9b949e7c0358'
             'SKIP'
-            '378ee4d328169b6e2475177bef31596d9f586b08ba87eb170c1943e3a1d43749d7b101b6f39886d50bbf1abf0ca8720a567f30a6ac9f5c66afe1f657d4899d25'
+            '8a3c9bbba1bb8fc49b073509320fedec085b5de0507826baced59a2acfd0bef9b3a79a2510ccffa6bf1e21098bb13efff028f87ea239b19047e9afa61c149558'
             'SKIP'
-            'dd8e7102d86f6e751c394e6853aa95f81674d3931819c17e2bbd198693cfb50e4f6477d5a8de317658599e717a40c2dfdc4fb15b2967d1338254e57d9736915d'
+            '38ee3539300ea4e2104e96ee753aa21ba5256a22e4802b953fbbddb436b7dd900f8e63d8a4020016fb131fd037e91e16a4511da776f735fce50c5b3d58fe9321'
             'SKIP'
             '95a7b9dc5a6c378b19e199285b5c1c397ca0ca0cf03c42d185b57da68329e59d59294d1879998f4020a0dee10d36c550acf30f28970c82adb2e7604c86424178'
             'dc0649dfe2a5ce8e8879a62df29a4a1959eb1a84e5d896a9cb119d6a85a9bad1b17135371799e0be96532e17c66043d298e4a14b18fad3078a1f425108f888c9'
@@ -477,8 +472,7 @@ sha512sums=('a48a065f21e1c7c4de4cf8ca47b8b8d9a70f86b64e7cfa6e01be490f78895745b9c
             'd9d28e02e964704ea96645a5107f8b65cae5f4fb4f537e224e5e3d087fd296cb770c29ac76e0ce95d173bc420ea87fb8f187d616672a60a0cae618b0ef15b8c8'
             '3fba4c1c172aa823c58901656fcbd30241f7e60486619d1095447e4c902b94e4a9f568d68a124001951cff6e873ce55f338975808b30e3ba2ee2380561660133'
             'a6200ad0c8bc44b97233c0cbd4c419c37727f06e735f2c6b60a28e94bfdc6d31d7f26d24f9f898c62fceefe08dfd3bdbd5d71acf2b5fcedbda8ea3881d284daa'
-            '86f717f596c613db3bc40624fd956ed379b8a2a20d1d99e076ae9061251fe9afba39cf536623eccd970258e124b8c2c05643e3d539f37bd910e02dc5dd498749'
-            '9f530a6bc3e6b1425d180a03c04e27f7fdbaa537180e08636ce345d128fe2051ed31764b5d5bdb8c00deaeaab4098826055e4ce98dff639ee6fbaaadd263c0f1')
+            '86f717f596c613db3bc40624fd956ed379b8a2a20d1d99e076ae9061251fe9afba39cf536623eccd970258e124b8c2c05643e3d539f37bd910e02dc5dd498749')
             
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
