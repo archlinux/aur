@@ -33,6 +33,7 @@ CXXFLAGS="${CFLAGS} -ansi"
 MAKEFLAGS="-j$(nproc)"
 
 build() {
+	sed  -i '/\#include \"cryptopp_inc.h\"/a #include "assert.h"' "${srcdir}/urbackup-client-${pkgver}.0/cryptoplugin/AESGCMDecryption.h"
 	cd "${srcdir}/urbackup-client-${pkgver}.0"
 	./configure --prefix=/usr --sbindir=/usr/bin --localstatedir=/var --sysconfdir=/etc
 	make
@@ -41,7 +42,7 @@ build() {
 package() {
 	cd "${srcdir}/urbackup-client-${pkgver}.0"
 	make DESTDIR="${pkgdir}" install
-
+	sed -i 's/\/usr\/local\/sbin/\/usr\/bin/gi' urbackupclientbackend-debian.service
 	install -Dm644 urbackupclientbackend-debian.service \
 		"${pkgdir}"/usr/lib/systemd/system/urbackupclientbackend.service
 	install -Dm644 docs/urbackupclientbackend.1 \
