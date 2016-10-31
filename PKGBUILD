@@ -14,7 +14,6 @@ pkgdesc='Video player based on MPlayer/mplayer2 (git version)'
 arch=('x86_64')
 license=('GPL3')
 url='http://mpv.io'
-screenshot='http://i.imgur.com/6TacA5I.png'
 _undetected_depends=('desktop-file-utils' 'hicolor-icon-theme' 'xdg-utils')
 depends=('pulseaudio' 'ffmpeg' 'lcms2' 'libdvdread' 'libgl' 'libvdpau'
          'libxinerama' 'libxv' 'libxkbcommon' 'libva'  'libass' 'uchardet' 
@@ -51,7 +50,6 @@ optdepends+=('libva: for open source driver users')
 provides=('mpv')
 conflicts=('mpv' 'mpv-vapoursynth' 'mpv-ahjolinna-build-git' 'mpv-build-git' )
 options=('!emptydirs')
-install=mpv.install
 source=('git+https://github.com/mpv-player/mpv'
         'find-deps.py'
          "ftp://ftp.ritual.org/common/ColorManagement/BT.709_Profiles.zip"
