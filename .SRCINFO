@@ -1,7 +1,7 @@
 pkgbase = thunderbird-theme-tt-deepdark
 	pkgdesc = Smooth dark theme for Thunderbird
 	pkgver = 11.0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://addons.mozilla.org/thunderbird/addon/tt-deepdark/
 	arch = any
 	license = custom:noncommercial
