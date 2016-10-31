@@ -16,6 +16,10 @@ elif [[ $CARCH == "x86_64" ]]; then
   source=(http://www.hdsentinel.com/hdslin/hdsentinel-016-x64.tar.gz)
   md5sums=('2ecf56573fcb8a339fc1b2819d1b96a9')
   _HDSentinel="HDSentinel"
+elif [[ $CARCH == "armv7h" ]]; then
+  source=(http://www.hdsentinel.com/hdslin/hdsentinel_008_arm.gz)
+  md5sums=('043b51bdad959bac5a73c094abf19472')
+  _HDSentinel="hdsentinel_008_arm"
 fi
 
 package() {
