@@ -1,7 +1,7 @@
 # Maintainer : Karl-Felix Glatzer <karl.glatzer@gmx.de>
 
 pkgname=mingw-w64-ffmpeg
-pkgver=3.1.5
+pkgver=3.2
 pkgrel=1
 epoch=1
 pkgdesc="Complete solution to record, convert and stream audio and video (mingw-w64)"
@@ -14,14 +14,14 @@ depends=(
 'mingw-w64-crt' 'mingw-w64-bzip2' 'mingw-w64-fontconfig' 'mingw-w64-fribidi' 'mingw-w64-gmp' 'mingw-w64-gnutls'
 'mingw-w64-gsm' 'mingw-w64-lame' 'mingw-w64-libass' 'mingw-w64-libbluray' 'mingw-w64-libmodplug'
 'mingw-w64-libsoxr' 'mingw-w64-libtheora' 'mingw-w64-vid.stab' 'mingw-w64-libwebp' 'mingw-w64-libvorbis' 'mingw-w64-libvpx'
-'mingw-w64-opencore-amr' 'mingw-w64-openjpeg' 'mingw-w64-opus' 'mingw-w64-libssh' 'mingw-w64-schroedinger'
+'mingw-w64-opencore-amr' 'mingw-w64-openjpeg2' 'mingw-w64-opus' 'mingw-w64-libssh' 'mingw-w64-schroedinger'
 'mingw-w64-sdl' 'mingw-w64-speex' 'mingw-w64-x264' 'mingw-w64-xvidcore' 'mingw-w64-zlib' 'mingw-w64-x265'
 )
 options=(!strip !buildflags staticlibs)
 makedepends=('mingw-w64-gcc' 'mingw-w64-pkg-config' 'yasm')
 source=(https://ffmpeg.org/releases/ffmpeg-${pkgver}.tar.xz{,.asc})
 validpgpkeys=('FCF986EA15E6E293A5644F10B4322F04D67658D8')
-sha256sums=('49cc3105f7891c5637f8fabb1b75ebb19c9b5123b311a3ccc6182aa35d58b89a'
+sha256sums=('88f70c1b8cab108f494ecbab5ba302cdb35d59a84cea88008b5fe49be068d5da'
             'SKIP')
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
