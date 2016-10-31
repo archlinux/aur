@@ -15,12 +15,12 @@ source=(ftp://ftp.uni-frankfurt.de/pub/Mirrors2/gentoo.org/distfiles/$pkgname-$p
 md5sums=('64576e8a10ff5514e285d98b3898ae78')
 
 build() {
-  cd $srcdir/$pkgname-$pkgver
+  cd "$srcdir"/$pkgname-$pkgver
   make
 }
 
 package() {
-  cd $srcdir/$pkgname-$pkgver
-  install -Dm755 pstotext $pkgdir/usr/bin/pstotext
-  install -Dm644 pstotext.1 $pkgdir/usr/share/man/man1/pstotext.1
+  cd "$srcdir"/$pkgname-$pkgver
+  install -Dm755 pstotext "$pkgdir"/usr/bin/pstotext
+  install -Dm644 pstotext.1 "$pkgdir"/usr/share/man/man1/pstotext.1
 }
