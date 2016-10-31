@@ -1,26 +1,28 @@
 pkgbase=calligra-git
-pkgname=('calligra-braindump-git'
+pkgname=(
+#	 'calligra-braindump-git'
          'calligra-devtools-git'
          'calligra-extras-git'
          'calligra-filters-git'
 #         'calligra-flow-git'
 #         'calligra-handbook-git'
-         'calligra-karbon-git'
+#         'calligra-karbon-git'
          'calligra-libs-git'
          'calligra-plan-git'
          'calligra-plugins-git'
          'calligra-sheets-git'
-         'calligra-stage-git'
+#         'calligra-stage-git'
          'calligra-words-git'
-         'calligra-gemini-git')
-pkgver=r99647.05e6cff
+#         'calligra-gemini-git'
+)
+pkgver=r99991.d6cbb49
 pkgrel=1
 arch=('i686' 'x86_64')
 license=('FDL1.2' 'GPL2' 'LGPL')
 url='http://www.calligra-suite.org/'
 makedepends=('khtml' 'kross' 'kreport-git' 'kproperty-git' 'kdiagram-git' 'okular-frameworks-git' 'kxmlgui' 'qt5-webkit' 
              'kdelibs4support' 'poppler' 'qca-qt5' 'libvisio' 'libetonyek' 'kactivities' 'kio' 'ilmbase' 'lcms2'  'kxmlgui'
-             'marble' 'kcalcore' 'akonadi-contact' 'knotifyconfig' 'okular-frameworks-git' 'poppler-qt5' 'qt5-quick1' 'libodfgen' 'threadweaver' 'boost' 'eigen')
+             'marble' 'kcalcore' 'akonadi-contacts' 'knotifyconfig' 'okular-frameworks-git' 'poppler-qt5' 'qt5-quick1' 'libodfgen' 'threadweaver' 'boost' 'eigen')
 groups=('calligra-git')
 source=('calligra::git+git://anongit.kde.org/calligra')
 md5sums=('SKIP')
@@ -53,7 +55,7 @@ build() {
       -DCMAKE_BUILD_TYPE=Release \
       -DLIB_INSTALL_DIR=lib \
       -DKDE_INSTALL_USE_QT_SYS_PATHS=ON \
-      -DBUILD_TESTING=OFF  -Wno-dev 
+      -DBUILD_TESTING=OFF  -Wno-dev
   make    
 }
 
