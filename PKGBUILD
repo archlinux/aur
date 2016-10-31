@@ -16,10 +16,10 @@ md5sums=('0671f8353717513bf1f0ebc80e9710f6'
          '1785edbb50316ba07c3ab68f061bf766')
 
 build() {
-  cd $srcdir/Xdialog-$pkgver
+  cd "$srcdir"/Xdialog-$pkgver
   patch -p1 <../xdialog-$pkgver-gtk2.patch
   ./configure --prefix=/usr \
-    --mandir=${pkgdir}/usr/share/man --with-gtk2
+    --mandir="$pkgdir"/usr/share/man --with-gtk2
   # Fix bugs in automake - see Xdialog.spec
   sed -i -e "s:RANLIB = @RANLIB@:RANLIB = /usr/bin/ranlib:" lib/Makefile
   sed -i -e "s;XGETTEXT = :;XGETTEXT = /usr/bin/xgettext;" po/Makefile
@@ -27,6 +27,6 @@ build() {
 }
 
 package() {
-  cd ${srcdir}/Xdialog-${pkgver}
-  make prefix=${pkgdir}/usr install
+  cd "$srcdir"/Xdialog-${pkgver}
+  make prefix="$pkgdir"/usr install
 }
