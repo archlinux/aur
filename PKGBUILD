@@ -2,7 +2,7 @@
 
 pkgname=mediagoblin
 pkgver=0.9.0
-pkgrel=2
+pkgrel=3
 pkgdesc='A free software media publishing platform'
 arch=('i686' 'x86_64')
 url='http://mediagoblin.org'
@@ -32,11 +32,11 @@ source=(
   'mediagoblin-tmpfiles.conf'
 )
 sha256sums=('SKIP'
-            'f666807655f0dcafb041be9b684c2a1ff285e24cf06c5d2e8ab0974e8b2936b2'
-            'aecbb1f1b60d5c2b524ea68e49feda0264cb49bc66d82c4511b800ac81642f01'
+            '2a02c90dcc8f69ac2a072044d3e4281347ed048c2610cb2e11295e4876cfb409'
+            'f636d02f86d2dab5ecc901be5b0f7c42366500393f22dfdc7e354ca299fca65a'
             'ac914d60886d9bf53d3f40b8b00a60d46ada1cac9130210e045a4776d898e884'
             '9adf338f5dbfb94ee7ae29433091b6991a1fa39a6135a8295f9f1cc1fde0edc1'
-            '1bf9172ba79bdac4694c5d4c8c2134bbcfdfadf29f0b4cfc88fa0a329201b202')
+            'abb6c4c4e54d4372adfe67ab22371ad625505098311955e5ae8e34102b059d47')
 
 prepare() {
   cd "$srcdir/mediagoblin"
