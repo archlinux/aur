@@ -6,7 +6,7 @@ pkgver=1.4.0
 pkgrel=1
 pkgdesc="command-line trace reader for LTTng"
 arch=('i686' 'x86_64')
-url="http://lttng.org/"
+url="http://diamon.org/babeltrace"
 license=('MIT' 'GPL2' 'LGPL2.1')
 depends=('popt' 'util-linux' 'glib2>=2.22.0' 'elfutils>=0.154')
 options=('!libtool')
