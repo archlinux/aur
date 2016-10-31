@@ -1,0 +1,15 @@
+pkgbase = pscrotum
+	pkgdesc = Take screenshot with escrotum and upload it to pomf.cat,pomf.se or any other pomf clone.
+	pkgver = 1.0
+	pkgrel = 1
+	arch = any
+	license = GPL
+	depends = curl
+	depends = jq
+	depends = escrotum
+	depends = xclip
+	provides = pscrotum
+	conflicts = pscrotum
+
+pkgname = pscrotum
+
