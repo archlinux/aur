@@ -2,20 +2,20 @@
 
 pkgname=mediagoblin-git
 pkgver=0.9.0.r8.gc4d3293
-pkgrel=2
+pkgrel=3
 pkgdesc='A free software media publishing platform'
 arch=('i686' 'x86_64')
 url='http://mediagoblin.org'
 license=('AGPL')
 provides=('mediagoblin')
 conflicts=('mediagoblin')
-depends=('python2' 'python2-lxml' 'sqlite' 'python2-pillow' 'python2-virtualenv' 'npm' 'nodejs')
+depends=('python' 'python-lxml' 'sqlite' 'python-pillow' 'python-virtualenv' 'npm' 'nodejs')
 optdepends=(
   'postgresql: to use the postgresql database backend'
-  'python2-psycopg2: to use the postgresql database backend'
-  'python2-gobject: to handle videos'
+  'python-psycopg2: to use the postgresql database backend'
+  'python-gobject: to handle videos'
   'gst-libav: to handle videos'
-  'gst-python2: to handle videos'
+  'gst-python: to handle videos'
   'gst-plugins-good: to handle videos'
   'gst-plugins-bad: to handle videos'
   'gst-plugins-ugly: to handle videos'
@@ -53,7 +53,7 @@ build() {
   cd "$srcdir/mediagoblin"
 
   ./bootstrap.sh
-  ./configure
+  ./configure --with-python3
   make || make
   ./bin/easy_install flup
 }
