@@ -3,24 +3,25 @@
 #
 
 pkgname=ffmpeg-full
-pkgver=3.1.5
+pkgver=3.2
 pkgrel=1
 epoch=1
 pkgdesc='Complete solution to record, convert and stream audio and video (with all options)'
 arch=('i686' 'x86_64')
 url='http://ffmpeg.org/'
 license=('GPL3' 'custom:UNREDISTRIBUTABLE')
-depends=('alsa-lib' 'bzip2' 'fontconfig' 'fribidi' 'gmp' 'gnutls' 'gsm' 'jack'
-         'lame' 'libass' 'libavc1394' 'libbluray' 'libiec61883' 'libmodplug'
-         'libpulse' 'libsoxr' 'libssh' 'libtheora' 'libva' 'libvdpau' 'libwebp'
-         'opencore-amr' 'openjpeg' 'opus' 'schroedinger' 'sdl' 'speex'
-         'v4l-utils' 'xvidcore' 'zlib'
-         'libvidstab.so' 'libvorbis.so' 'libvorbisenc.so' 'libvpx.so'
-         'libx264.so' 'libx265.so' 'libnetcdf.so'
+depends=('alsa-lib' 'bzip2' 'fontconfig' 'fribidi' 'glibc' 'gmp' 'gnutls' 'gsm'
+         'jack' 'lame' 'libavc1394' 'libiec61883' 'libmodplug' 'libpulse'
+         'libraw1394' 'libsoxr' 'libssh' 'libtheora' 'libva' 'libvdpau'
+         'libwebp' 'libx11' 'libxcb' 'opencore-amr' 'openjpeg2' 'opus'
+         'schroedinger' 'sdl2' 'speex' 'v4l-utils' 'xz' 'zlib'
+         'libass.so' 'libbluray.so' 'libfreetype.so' 'libnetcdf.so'
+         'libvidstab.so' 'libvorbisenc.so' 'libvorbis.so' 'libvpx.so'
+         'libx264.so' 'libx265.so' 'libxvidcore.so'
          'celt' 'chromaprint-fftw' 'faac' 'frei0r-plugins' 'kvazaar'
          'ladspa' 'libbs2b' 'libcaca' 'libcdio-paranoia' 'libcl' 'libdc1394'
-         'libebur128' 'libfdk-aac' 'libgme' 'libilbc' 'libmfx-git' 'libxv'
-         'java-environment-common' 'mesa' 'nut-multimedia-git' 'openal'
+         'libebur128' 'libfdk-aac' 'libgme' 'libilbc' 'libmfx-git' 'libopenmpt'
+         'libxv' 'java-environment-common' 'mesa' 'nut-multimedia-git' 'openal'
          'opencl-headers' 'openh264' 'rubberband' 'rtmpdump' 'shine'
          'smbclient' 'snappy' 'tesseract' 'twolame' 'vid.stab' 'vo-aacenc'
          'vo-amrwbenc' 'wavpack' 'xavs' 'zeromq' 'zimg' 'zvbi')
@@ -32,22 +33,11 @@ provides=('libavcodec.so' 'libavdevice.so' 'libavfilter.so' 'libavformat.so'
           'libswscale.so'
           'ffmpeg')
 source=(https://ffmpeg.org/releases/ffmpeg-$pkgver.tar.xz{,.asc}
-        UNREDISTRIBUTABLE.txt
-        openh264-1.6.0-fix.patch
-        openh264-dec-wrapper.patch)
+        UNREDISTRIBUTABLE.txt)
 validpgpkeys=('FCF986EA15E6E293A5644F10B4322F04D67658D8') # ffmpeg-devel
-sha256sums=('49cc3105f7891c5637f8fabb1b75ebb19c9b5123b311a3ccc6182aa35d58b89a'
+sha256sums=('88f70c1b8cab108f494ecbab5ba302cdb35d59a84cea88008b5fe49be068d5da'
             'SKIP'
-            'e0c1b126862072a71e18b9580a6b01afc76a54aa6e642d2c413ba0ac9d3010c4'
-            '1f1830169aa15507cd50e2099147db33a31a73123a8a90e74296dcc1243be457'
-            '4e122061f9602447c4875966e75e52db2113c46a564cc65285ffa06ee1c44c77')
-
-prepare() {
-  cd ${pkgname%-full}-$pkgver
-
-  patch -p1 -i "${srcdir}/openh264-dec-wrapper.patch"
-  patch -p1 -i "${srcdir}/openh264-1.6.0-fix.patch"
-}
+            'e0c1b126862072a71e18b9580a6b01afc76a54aa6e642d2c413ba0ac9d3010c4')
 
 build() {
   cd ${pkgname%-full}-$pkgver
@@ -81,7 +71,6 @@ build() {
     --enable-libcelt \
     --enable-libdc1394 \
     --enable-libebur128 \
-    --enable-libfaac \
     --enable-libfdk-aac \
     --enable-libfontconfig \
     --enable-libfreetype \
@@ -98,8 +87,9 @@ build() {
     --enable-libopencore-amrnb \
     --enable-libopencore-amrwb \
     --enable-libopencv \
-    --enable-libopenjpeg \
     --enable-libopenh264 \
+    --enable-libopenjpeg \
+    --enable-libopenmpt \
     --enable-libopus \
     --enable-libpulse \
     --enable-librtmp \
