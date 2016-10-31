@@ -1,32 +1,32 @@
 # Maintainer: Markus Kalb <mk@filmkreis.tu-darmstadt.de>
 # Contributor: Stefan Karner <stefan.karner@student.tuwien.ac.at>
 pkgname=libcxml-git
-pkgver=0.r69.ba540d3
-pkgrel=4
+pkgver=0.r121.494afbc
+pkgrel=1
 pkgdesc="A small C++ library which makes it marginally neater to parse XML using libxml++"
 arch=('i686' 'x86_64')
-url="http://carlh.net/software/libcxml/"
+url="http://carlh.net/libcxml"
 license=('GPL')
 depends=('libxml++>=2.6' 'boost-libs')
 makedepends=('python2' 'pkg-config' 'boost')
-provides=(libcxml)
-conflicts=(libcxml)
-source=("libcxml-git::git+http://git.carlh.net/git/libcxml.git")
+provides=('libcxml=0.15.4devel')
+conflicts=('libcxml')
+source=("libcxml-git::git+https://github.com/cth103/libcxml.git")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd libcxml-git
-  printf "0.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    cd libcxml-git
+    printf "0.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-  cd libcxml-git
-  python2 waf configure --prefix=/usr
-  python2 waf build
+    CXXFLAGS="$CXXFLAGS -std=c++11"
+    cd libcxml-git
+    python2 waf configure --prefix=/usr
+    python2 waf build
 }
 
 package() {
-  cd libcxml-git
-  python2 waf install --destdir=$pkgdir
+    cd libcxml-git
+    python2 waf install --destdir=$pkgdir
 }
-
