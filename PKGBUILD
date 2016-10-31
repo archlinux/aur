@@ -1,7 +1,7 @@
 # Maintainer: Laurent Treguier <laurent@treguier.org>
 
 pkgname=oomox
-pkgver=0.24.1
+pkgver=0.25.0
 pkgrel=1
 pkgdesc="Graphical application for generating different color variations
 of Numix theme (GTK2, GTK3) and gnome-colors icon theme. Have a hack for HiDPI in gtk2."
@@ -21,6 +21,7 @@ optdepends=(
     'xorg-xrdb: for the `xresources` theme'
     'imagemagick: for icon theme generation'
     'inkscape: for icon theme generation'
+    'gnome-colors-common-icon-theme: for using the generated icon theme'
 )
 provides=('oomox')
 conflicts=('oomox-git')
@@ -32,7 +33,7 @@ source=(
     'oomoxify-cli'
     'oomox.desktop'
 )
-md5sums=('d49806e827f963613689e2e580395cd6'
+md5sums=('7160e5471f46157126653e169da0d1ea'
          'cf96db21684e4e0df1f9a14b3aae65bb'
          '0d156463416bbc2260c073c15b7f2a70'
          '57cfcc4141ce6e346da7ab8bab411b14'
