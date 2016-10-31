@@ -12,7 +12,7 @@ pkgbase=kodi-pre-release
 pkgname=('kodi-pre-release' 'kodi-eventclients-pre-release')
 pkgver=17.0b5
 _codename=Krypton
-pkgrel=2
+pkgrel=3
 arch=('i686' 'x86_64')
 url="http://kodi.tv"
 license=('GPL2')
@@ -36,7 +36,7 @@ prepare() {
 
   find -type f -name *.py -exec sed 's|^#!.*python$|#!/usr/bin/python2|' -i "{}" +
   sed 's|^#!.*python$|#!/usr/bin/python2|' -i tools/depends/native/rpl-native/rpl
-	sed 's/python/python2/' -i tools/Linux/kodi.sh.in
+  sed 's/python/python2/' -i tools/Linux/kodi.sh.in
   sed 's/shell python/shell python2/' -i tools/EventClients/Makefile.in
   # disable wiiremote due to incompatibility with bluez-5.29
   sed '/WiiRemote/d' -i tools/EventClients/Makefile.in
@@ -49,7 +49,7 @@ install:' -i tools/EventClients/Makefile.in
 build() {
   cd "$srcdir/xbmc-$pkgver-$_codename"
 
-	# Bootstrapping
+  # Bootstrapping
   MAKEFLAGS=-j1 ./bootstrap
 
   #./configure --help
@@ -59,10 +59,8 @@ build() {
   export PYTHON_VERSION=2  # external python v2
   ./configure --prefix=/usr --exec-prefix=/usr \
     --disable-debug \
-    --enable-profiling \
-    --enable-optimizations \
-    --enable-libbluray \
     --disable-shared-libraries \
+    --enable-libbluray \
     --with-lirc-device=/run/lirc/lircd \
     ac_cv_lib_bluetooth_hci_devid=no \
     ac_cv_type__Bool=yes
@@ -116,10 +114,10 @@ package_kodi-pre-release() {
   # we will leave /usr/{include,lib,share}/xbmc for now
 
   # Licenses
-	install -dm755 ${pkgdir}/usr/share/licenses/${pkgname}
+  install -dm755 ${pkgdir}/usr/share/licenses/${pkgname}
   for licensef in LICENSE.GPL copying.txt; do
-		mv ${pkgdir}/usr/share/doc/kodi/${licensef} \
-			${pkgdir}/usr/share/licenses/${pkgname}
+    mv ${pkgdir}/usr/share/doc/kodi/${licensef} \
+      ${pkgdir}/usr/share/licenses/${pkgname}
   done
 }
 
