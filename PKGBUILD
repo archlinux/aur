@@ -3,7 +3,7 @@
 
 pkgname=lttng-ust
 pkgver=2.8.1
-pkgrel=1
+pkgrel=2
 pkgdesc="LTTng user space tracing libraries for LTTng"
 arch=('i686' 'x86_64')
 url="http://lttng.org/"
@@ -20,7 +20,7 @@ sha1sums=('8bebdcbcb453d2643fb226dbe92de61764f1ee3b')
 build()
 {
     cd ${srcdir}/${pkgname}-${pkgver}
-    ./configure --prefix=/usr --enable-man-pages
+    ./configure --prefix=/usr --enable-man-pages --disable-python-agent
     make
 }
 
