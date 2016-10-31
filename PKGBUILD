@@ -1,7 +1,7 @@
 # Maintainer: quomoow <quomoow@gmail.com>
 # Contributor: Sean Bartell <archlinux@yotann.org>
 
-pkgname=seq24
+pkgname=seq24-bzr
 pkgver=0.9.3
 pkgrel=1
 pkgdesc="A pattern-based midi sequencer with strong live performance functions"

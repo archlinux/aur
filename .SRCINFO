@@ -1,4 +1,4 @@
-pkgbase = seq24
+pkgbase = seq24-bzr
 	pkgdesc = A pattern-based midi sequencer with strong live performance functions
 	pkgver = 0.9.3
 	pkgrel = 1
@@ -10,8 +10,8 @@ pkgbase = seq24
 	depends = gtkmm>=2.4.0
 	provides = seq24
 	conflicts = seq24
-	source = bzr+http://bazaar.launchpad.net/~seq24team/seq24/trunk
+	source = bzr+http://bazaar.launchpad.net/~seq24-bzrteam/seq24-bzr/trunk
 	md5sums = SKIP
 
-pkgname = seq24
+pkgname = seq24-bzr
 
