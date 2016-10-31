@@ -5,7 +5,7 @@
 
 pkgname=duckietv
 pkgver=1.1.3
-pkgrel=1
+pkgrel=2
 pkgdesc="DuckieTV is an application that takes care of TV-Show addicts by providing a personalized TV-Show calendar."
 url="https://schizoduckie.github.io/DuckieTV/"
 arch=('i686' 'x86_64')
@@ -15,7 +15,7 @@ source=('https://github.com/SchizoDuckie/DuckieTV/releases/download/1.1.3/Duckie
 		'DuckieTV.desktop'
 		'icon.png')
 md5sums=('bc78ee5ae68f78021b47d95067404c28' 
-		'8461f133a0a6e3ae38eea835bfafbb0b'
+		'955a2661edac3b500d324bb1565a1fb7'
 		'591fcd7c2c1ceadf33935ed9da0091af')
 
 package() {
@@ -27,7 +27,7 @@ package() {
 	
 	cp -rv "${srcdir}"/DuckieTV-1.1.3-Linux-x64/DuckieTV "${pkgdir}"/opt
     mkdir -p "${pkgdir}"/usr/bin/
-    ln -s "${pkgdir}"/opt/DuckieTV/DuckieTV "${pkgdir}"/usr/bin/DuckieTV
+    ln -s "${pkgdir}"/opt/DuckieTV/DuckieTV "${pkgdir}"/usr/bin/duckietv
 
     mkdir "${pkgdir}"/opt/DuckieTV/lib
     ln -sf "/usr/lib/libudev.so.1" "${pkgdir}"/opt/DuckieTV/lib/libudev.so.0

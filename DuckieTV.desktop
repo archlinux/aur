@@ -2,7 +2,7 @@
 Name=DuckieTV
 GenericName=DuckieTV
 Comment=TV-Show calendar
-Exec=/usr/bin/DuckieTV
+Exec=/usr/bin/duckietv
 Terminal=false
 Icon=/opt/DuckieTV/icon.png
 Type=Application
