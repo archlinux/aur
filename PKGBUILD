@@ -4,7 +4,7 @@
 
 pkgname=firefox-extension-hide-tab-bar-with-one-tab
 pkgver=1.5.1.signed.1.signed
-pkgrel=1
+pkgrel=2
 pkgdesc='Hide the tab bar if there is only one tab.'
 url='http://forums.mozillazine.org/viewtopic.php?f=48&t=2141579'
 license=('MPLv2')
@@ -42,9 +42,18 @@ query-version() {
   xmllint .version --xpath \
     "//application[appID='$2']/$1_version/text()"
 }
+
 version-range() {
-  local emid=$(emid $1)
-  echo "$1>$(version min $emid)" "$1<$(version max $emid)"
+  if [ -z "$(sparql "?x em:type ?type. filter(?type in ('2', '64'))")" ] ||
+    [ -n "$(sparql "?x em:strictCompatibility 'true'")" ] ||
+    { [ -e chrome.manifest ] &&
+      grep '^binary-component[ \t]' chrome.manifest ; }
+  then
+    local emid=$(emid $1)
+    echo "$1>$(version min $emid)" "$1<$(version max $emid)"
+  else
+    echo "$1>$(version min $(emid $1))"
+  fi
 }
 
 emid() {
