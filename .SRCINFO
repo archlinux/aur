@@ -1,0 +1,15 @@
+pkgbase = tako
+	pkgdesc = A command language and shell based on Python
+	pkgver = 0.0.2
+	pkgrel = 1
+	url = https://takoshell.org/
+	install = tako.install
+	arch = any
+	license = custom:Soopycat2
+	makedepends = python-setuptools
+	depends = python
+	source = https://takoshell.org/tako-0.0.2.tar.gz
+	sha256sums = 41ba66cdc7f5366dea08ec7d8a2191c88262b7351554eae2da521df7f4bc4f19
+
+pkgname = tako
+
