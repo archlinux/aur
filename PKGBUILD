@@ -1,18 +1,21 @@
 #Contributor: Hans Janssen <janserv at gmail dot com>
+# Maintainer: quomoow <quomoow@gmail.com>
 
 pkgname=fgrun
-pkgver=3.4.0
-pkgrel=3
+_pkgname=flightgear
+pkgver=2016.3.1
+pkgrel=1
 pkgdesc="Frontend for FlightGear."
 arch=('i686' 'x86_64')
 license=('GPL')
-depends=('fltk' 'openscenegraph')
-makedepends=('git' 'cmake' 'boost' 'simgear')
+depends=('freeglut' 'openal' 'openscenegraph')
+makedepends=('cmake' 'boost' 'simgear')
 url="http://sourceforge.net/projects/flightgear/"
-source=('fgrun::git+http://git.code.sf.net/p/flightgear/fgrun#branch=release/3.4.0')
-sha256sums=('SKIP')
+source=('https://sourceforge.net/projects/flightgear/files/release-2016.3/flightgear-2016.3.1.tar.bz2')
+sha256sums=('501d2f59b8f9d221332044346bbbfe195e42d0195945f8bb0fec8b474bc79c31')
+
 build() {
-	cd ${srcdir}/${pkgname}
+	cd ${srcdir}/${_pkgname}-${pkgver}
 	cmake . \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_BUILD_TYPE=Release
@@ -20,6 +23,7 @@ build() {
 }
 
 package() {
-	cd ${srcdir}/${pkgname}
+	cd ${srcdir}/${_pkgname}-${pkgver}
 	make DESTDIR="${pkgdir}" install
 }
+
