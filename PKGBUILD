@@ -3,7 +3,7 @@
 # You may find it convenient to file issues and pull requests there.
 
 pkgname=mozilla-extension-gnome-keyring
-pkgver=0.11
+pkgver=0.12
 pkgrel=1
 pkgdesc="Mozilla extension to store passwords and form logins in gnome-keyring."
 arch=(any)
@@ -11,7 +11,7 @@ _extname=mozilla-gnome-keyring
 license=(GPLv3)
 depends=(libgnome-keyring)
 optdepends=(firefox thunderbird)
-md5sums=('01360c61d9587f233552155f4cb9db41')
+md5sums=('c165720bf25e4fdc55677e0dc1a3c791')
 
 [ "$arch" ] || arch=('any')
 
