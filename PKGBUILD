@@ -36,7 +36,7 @@ provides=('libavcodec.so' 'libavdevice.so' 'libavfilter.so' 'libavformat.so'
 conflicts=('ffmpeg')
 replaces=('ffmpeg')
 source=(https://ffmpeg.org/releases/${_pkgname}-${pkgver}.tar.xz)
-sha256sums=('49cc3105f7891c5637f8fabb1b75ebb19c9b5123b311a3ccc6182aa35d58b89a')
+sha256sums=('88f70c1b8cab108f494ecbab5ba302cdb35d59a84cea88008b5fe49be068d5da')
 
 build() {
   cd ${_pkgname}-${pkgver}
