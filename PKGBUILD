@@ -15,13 +15,13 @@ md5sums=('10779394f39d39115fa3fd0f3dea4436'
          '114c10e7dc14dc78fc38189ee82fa225')
 
 build() {
-  cd $srcdir/gtk+extra-$pkgver
-  patch -p1 <$srcdir/build-fix.patch
+  cd "$srcdir"/gtk+extra-$pkgver
+  patch -p1 <"$srcdir"/build-fix.patch
   ./configure --prefix=/usr
   make
 }
 
 package() {
-  cd $srcdir/gtk+extra-$pkgver
-  make DESTDIR=$pkgdir install
+  cd "$srcdir"/gtk+extra-$pkgver
+  make DESTDIR="$pkgdir" install
 }
