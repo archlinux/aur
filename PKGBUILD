@@ -13,7 +13,7 @@ source=(http://ibiblio.org/pub/linux/apps/sound/mp3-utils/$pkgname/$pkgname-$pkg
 md5sums=('cb7b619a10a40aaac2113b87bb2b2ea2')
 
 build() {
-  cd ${srcdir}/$pkgname-$pkgver
+  cd "$srcdir"/$pkgname-$pkgver
 
   sed -i "s:-O2:${CFLAGS}:" Makefile
   sed -i "s:/usr/bin/install:/bin/install:" Makefile
@@ -22,8 +22,8 @@ build() {
 }
 
 package() {
-  cd ${srcdir}/$pkgname-$pkgver
+  cd "$srcdir"/$pkgname-$pkgver
 
-  install -d ${pkgdir}/usr/bin ${pkgdir}/usr/share/man/man1
-  make prefix=${pkgdir}/usr mandir=${pkgdir}/usr/share/man/man1 install
+  install -d "$pkgdir"/usr/bin "$pkgdir"/usr/share/man/man1
+  make prefix="$pkgdir"/usr mandir="$pkgdir"/usr/share/man/man1 install
 }
