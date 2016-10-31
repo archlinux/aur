@@ -1,0 +1,17 @@
+pkgbase = quartus-lite-modelsim
+	pkgdesc = Simulation software for Altera FPGA's
+	pkgver = 16.0.0.211
+	pkgrel = 1
+	url = http://www.altera.com
+	arch = x86_64
+	arch = i686
+	license = custom
+	depends = quartus-lite
+	options = !strip
+	source = http://download.altera.com/akdlm/software/acdsinst/16.0/211/ib_installers/ModelSimSetup-16.0.0.211-linux.run
+	source = profile.sh
+	md5sums = 7b4283e86760660c25cb5eb3160519ff
+	md5sums = 66ba4d6142a4066fb262058e4c0ac66e
+
+pkgname = quartus-lite-modelsim
+
