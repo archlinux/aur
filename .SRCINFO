@@ -1,0 +1,25 @@
+pkgbase = ttf-oxygen
+	pkgdesc = The Oxygen font family. A desktop/gui font family for integrated use with the KDE desktop
+	pkgver = 5.4.3
+	pkgrel = 1
+	epoch = 1
+	url = https://projects.kde.org/projects/kde/workspace/oxygen-fonts
+	install = ttf-oxygen.install
+	arch = i686
+	arch = x86_64
+	license = custom:OFL
+	license = GPL
+	license = custom:GPL+FE
+	makedepends = extra-cmake-modules
+	makedepends = qt5-base
+	makedepends = fontforge
+	depends = fontconfig
+	depends = xorg-fonts-encodings
+	depends = xorg-font-utils
+	provides = ttf-font
+	options = !emptydirs
+	source = http://download.kde.org/stable/plasma/5.4.3/oxygen-fonts-5.4.3.tar.xz
+	md5sums = 8d8ab61a65642a18a40de9f3945ce584
+
+pkgname = ttf-oxygen
+
