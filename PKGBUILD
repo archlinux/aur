@@ -5,7 +5,7 @@
 
 pkgname=mozilla-extension-stylish
 pkgver=2.0.7
-pkgrel=1
+pkgrel=2
 pkgdesc='Customize your favorite web sites with user styles.'
 url='https://userstyles.org/'
 license=('GPL')
@@ -63,9 +63,18 @@ for target in "${optdepends[@]}"; do
 done
 optdepends=()
 
+
 version-range() {
-  local emid=$(emid $1)
-  echo "$1>$(version min $emid)" "$1<$(version max $emid)"
+  if [ -z "$(sparql "?x em:type ?type. filter(?type in ('2', '64'))")" ] ||
+    [ -n "$(sparql "?x em:strictCompatibility 'true'")" ] ||
+    { [ -e chrome.manifest ] &&
+      grep '^binary-component[ \t]' chrome.manifest ; }
+  then
+    local emid=$(emid $1)
+    echo "$1>$(version min $emid)" "$1<$(version max $emid)"
+  else
+    echo "$1>$(version min $(emid $1))"
+  fi
 }
 
 emid() {

@@ -1,7 +1,7 @@
 pkgbase = mozilla-extension-stylish
 	pkgdesc = Customize your favorite web sites with user styles.
 	pkgver = 2.0.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://userstyles.org/
 	arch = any
 	license = GPL
