@@ -32,6 +32,8 @@ noextract=()
 package() {
   cd "$srcdir/$pkgname"
   python2 setup.py install --root="$pkgdir/" --prefix=/usr --optimize=1
+  mkdir -p "$pkgdir/usr/share/dbus-1/services"
+  install -m0644 org.freedesktop.Notifications.service "$pkgdir/usr/share/dbus-1/services/"
 }
 
 # vim:set ts=2 sw=2 et:
