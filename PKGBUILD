@@ -1,6 +1,6 @@
 # Maintainer: David Flemström <david.flemstrom@gmail.com>
 pkgname=record-query-git
-pkgver=latest
+pkgver=v0.6.0.r7.ge70579c
 pkgrel=1
 epoch=
 pkgdesc="A tool for doing record analysis and transformation"
@@ -8,7 +8,7 @@ arch=('i686' 'x86_64')
 url=""
 license=('Apache-2.0')
 groups=()
-depends=()
+depends=(v8)
 makedepends=(rust)
 checkdepends=()
 optdepends=()
