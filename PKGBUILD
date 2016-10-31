@@ -1,7 +1,7 @@
 # Maintainer: Conor Anderson <conor.anderson@mail.utoronto.ca>
 pkgname=wire-desktop-git
 _pkgname=wire-desktop
-pkgver=2.11.2666.r0.g7af8437
+pkgver=2.11.2666.r2.g5506ec2
 pkgrel=1
 pkgdesc='Modern communication, full privacy.'
 arch=('x86_64' 'i686')
