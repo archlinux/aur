@@ -1,4 +1,4 @@
-# $Id: PKGBUILD 277554 2016-10-02 14:20:03Z alucryd $
+# $Id: PKGBUILD 279478 2016-10-30 16:53:01Z alucryd $
 # Maintainer: Jan Koppe <post@jankoppe.de>
 #
 # This package is a modified version of extra/ffmpeg with --enable-decklink
@@ -9,28 +9,30 @@
 # Contributor: Paul Mattal <paul@archlinux.org>
 
 pkgname=ffmpeg-decklink
-pkgver=3.1.4
-pkgrel=3
+pkgver=3.2
+pkgrel=2
 epoch=1
 pkgdesc='Complete solution to record, convert and stream audio and video'
 arch=('i686' 'x86_64')
 url='http://ffmpeg.org/'
 license=('GPL3')
-depends=('alsa-lib' 'bzip2' 'decklink' 'fontconfig' 'fribidi' 'gmp' 'gnutls' 'gsm' 'jack'
-         'lame' 'libass' 'libavc1394' 'libbluray' 'libiec61883' 'libmodplug'
-         'libpulse' 'libsoxr' 'libssh' 'libtheora' 'libva' 'libvdpau' 'libwebp'
-         'opencore-amr' 'openjpeg' 'opus' 'schroedinger' 'sdl' 'speex'
-         'v4l-utils' 'xvidcore' 'zlib'
-         'libvidstab.so' 'libvorbis.so' 'libvorbisenc.so' 'libvpx.so'
-         'libx264.so' 'libx265.so' 'libnetcdf.so')
+depends=('alsa-lib' 'bzip2' 'decklink' 'fontconfig' 'fribidi' 'glibc' 'gmp' 'gnutls' 'gsm'
+         'jack' 'lame' 'libavc1394' 'libiec61883' 'libmodplug' 'libpulse'
+         'libraw1394' 'libsoxr' 'libssh' 'libtheora' 'libva' 'libvdpau'
+         'libwebp' 'libx11' 'libxcb' 'opencore-amr' 'openjpeg2' 'opus'
+         'schroedinger' 'sdl2' 'speex' 'v4l-utils' 'xz' 'zlib'
+         'libass.so' 'libbluray.so' 'libfreetype.so' 'libnetcdf.so'
+         'libvidstab.so' 'libvorbisenc.so' 'libvorbis.so' 'libvpx.so'
+         'libx264.so' 'libx265.so' 'libxvidcore.so')
 makedepends=('decklink-sdk' 'hardening-wrapper' 'ladspa' 'libvdpau' 'yasm')
 optdepends=('ladspa: LADSPA filters')
 provides=('libavcodec.so' 'libavdevice.so' 'libavfilter.so' 'libavformat.so'
           'libavresample.so' 'libavutil.so' 'libpostproc.so' 'libswresample.so'
           'libswscale.so')
-conflicts=('ffmpeg')
-source=(http://ffmpeg.org/releases/ffmpeg-${pkgver}.tar.bz2)
-sha256sums=('7c99df75a4dc12d22c0f1ed11d0acf98cac1f8b5fe7a7434344b167f810bcbfa')
+source=("https://ffmpeg.org/releases/ffmpeg-${pkgver}.tar.xz"{,.asc})
+validpgpkeys=('FCF986EA15E6E293A5644F10B4322F04D67658D8')
+sha256sums=('88f70c1b8cab108f494ecbab5ba302cdb35d59a84cea88008b5fe49be068d5da'
+            'SKIP')
 
 build() {
   cd ffmpeg-${pkgver}
@@ -60,6 +62,7 @@ build() {
     --enable-libmp3lame \
     --enable-libopencore_amrnb \
     --enable-libopencore_amrwb \
+    --enable-libopenjpeg \
     --enable-libopus \
     --enable-libpulse \
     --enable-libschroedinger \
