@@ -26,7 +26,7 @@ prepare() {
 build() {
   cd $pkgname
 
-  qmake-qt5 PREFIX=/usr notepadqq.pro
+  qmake-qt5 PREFIX=/usr LRELEASE=/usr/bin/lrelease notepadqq.pro
 
   make
 }
