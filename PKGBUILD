@@ -1,7 +1,7 @@
 # Maintainer: Karl-Felix Glatzer <karl.glatzer@gmx.de>
 pkgname=mingw-w64-libvpx
 pkgver=1.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc="VP8 and VP9 codec (mingw-w64)"
 arch=('any')
 url="http://www.webmproject.org/"
@@ -61,6 +61,9 @@ package() {
     mkdir ${pkgdir}/usr/${_arch}/bin
     mv ${pkgdir}/usr/${_arch}/lib/libvpx.dll ${pkgdir}/usr/${_arch}/bin/
     mv ${pkgdir}/usr/${_arch}/lib/libvpx.dll.4* ${pkgdir}/usr/${_arch}/bin/
+
+    #Install implib
+    install -m 0644 ${srcdir}/libvpx-$pkgver/build-${_arch}/libvpx.dll.a ${pkgdir}/usr/${_arch}/lib/libvpx.dll.a
 
     ${_arch}-strip -g --strip-unneeded ${pkgdir}/usr/${_arch}/bin/*.dll
     ${_arch}-strip -g ${pkgdir}/usr/${_arch}/lib/*.a
