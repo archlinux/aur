@@ -2,16 +2,16 @@
 #     Updated: Yuki Chiba <yuki.from.akita@gmail.com>
 
 pkgname=smlsharp
-pkgver=3.1.1
+pkgver=3.2.0
 pkgrel=1
 pkgdesc="A new programming language in the Standard ML family"
 arch=('x86_64')
 url="http://www.pllab.riec.tohoku.ac.jp/smlsharp/"
 license=('custom')
-depends=('gmp')
+depends=('gmp' 'yajl')
 makedepends=('llvm=3.7.1' )
 source=(http://www.pllab.riec.tohoku.ac.jp/smlsharp/download/$pkgname-$pkgver.tar.gz)
-md5sums=('9a9f9ad4668c4169ea9230e0f44c4f76')
+md5sums=('8ea32075594d1e038612fad3a6fc2513')
 options=(libtool staticlibs)
 
 build() {
