@@ -14,14 +14,14 @@ source=(http://downloads.sourceforge.net/sourceforge/uriparser/$pkgname-$pkgver.
 md5sums=('c5cf6b3941d887deb7defc2a86c40f1d')
 
 build() {
-  cd ${srcdir}/$pkgname-$pkgver
+  cd "$srcdir"/$pkgname-$pkgver
   [ -f Makefile ] || ./configure --prefix=/usr --disable-test
   sed -i 's|{css,gif,html,png}|{css,html,png}|' doc/Makefile
   make
 }
 
 package() {
-  cd ${srcdir}/$pkgname-$pkgver
-  make DESTDIR=$pkgdir install
+  cd "$srcdir"/$pkgname-$pkgver
+  make DESTDIR="$pkgdir" install
   install -D -m644 "${srcdir}/$pkgname-$pkgver/COPYING" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
