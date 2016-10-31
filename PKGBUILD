@@ -16,10 +16,10 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/Flyspray/flyspray/archive/v
 md5sums=('8edb8af9ce298440b21b165646130c61')
 
 package() {
-  _instdir=$pkgdir/usr/share/webapps/flyspray
-  mkdir -p ${_instdir} $pkgdir/etc/webapps/flyspray
+  _instdir="$pkgdir"/usr/share/webapps/flyspray
+  mkdir -p ${_instdir} "$pkgdir"/etc/webapps/flyspray
   cd ${_instdir}
-  cp -ra $srcdir/flyspray-${pkgver/rc/-rc}/* .
-  echo "deny from all" > $pkgdir/etc/webapps/flyspray/.htaccess
+  cp -ra "$srcdir"/flyspray-${pkgver/rc/-rc}/* .
+  echo "deny from all" > "$pkgdir"/etc/webapps/flyspray/.htaccess
   ln -s /etc/webapps/flyspray/.htaccess .htaccess
 }
