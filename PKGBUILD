@@ -2,10 +2,10 @@
 #
 pkgname=php-virtphp
 pkgver=0.5.2
-pkgrel=1
+pkgrel=2
 pkgdesc="virtPHP is a tool to create isolated PHP environments."
 url="http://virtphp.org/"
-license="MIT"
+license=("MIT")
 arch=("any")
 depends=("php")
 source=("https://github.com/virtphp/virtphp/releases/download/v${pkgver}-alpha/virtphp.phar")
