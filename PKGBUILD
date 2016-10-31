@@ -28,6 +28,6 @@ build() {
 
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
-  make DESTDIR=${pkgdir} install
-  rm -rf $pkgdir/etc/rc.d
+  make DESTDIR="$pkgdir" install
+  rm -rf "$pkgdir"/etc/rc.d
 }
