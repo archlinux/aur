@@ -4,7 +4,7 @@
 
 pkgname=mozilla-extension-gnotifier
 pkgver=1.9.7
-pkgrel=1
+pkgrel=2
 pkgdesc='Add-on for Firefox and Thunderbird. Replaces built-in notifications with the OS native notifications. It'
 arch=('any')
 license=('GPL3')
@@ -68,9 +68,18 @@ for target in "${optdepends[@]}"; do
 done
 optdepends=()
 
+
 version-range() {
-  local emid=$(emid $1)
-  echo "$1>$(version min $emid)" "$1<$(version max $emid)"
+  if [ -z "$(sparql "?x em:type ?type. filter(?type in ('2', '64'))")" ] ||
+    [ -n "$(sparql "?x em:strictCompatibility 'true'")" ] ||
+    { [ -e chrome.manifest ] &&
+      grep '^binary-component[ \t]' chrome.manifest ; }
+  then
+    local emid=$(emid $1)
+    echo "$1>$(version min $emid)" "$1<$(version max $emid)"
+  else
+    echo "$1>$(version min $(emid $1))"
+  fi
 }
 
 emid() {
