@@ -1,9 +1,9 @@
 # Maintainer: Somasis <somasis@cryptolab.net>
 
 pkgname=mugshot
-pkgver=0.3.0
+pkgver=0.3.1
 pkgver_min=${pkgver%.*}
-pkgrel=5
+pkgrel=1
 pkgdesc="Program to update personal user details"
 arch=('any')
 install="${pkgname}.install"
@@ -18,7 +18,8 @@ optdepends=( 'gstreamer0.10-good-plugins: webcam support'
 options=(!emptydirs)
 
 source=("https://launchpad.net/mugshot/$pkgver_min/$pkgver/+download/mugshot-${pkgver}.tar.gz" "office-phone.patch")
-md5sums=('526722e9985ad86771fd60cdf0bee985' 'e4ea8f6762f9c3e4023ca73e4fc32a62')
+md5sums=('edc71cf248438bd8ea574d00746ab2b9'
+         'e4ea8f6762f9c3e4023ca73e4fc32a62')
 
 prepare() {
     cd "${srcdir}/${pkgname}-${pkgver}"
