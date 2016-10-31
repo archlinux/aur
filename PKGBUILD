@@ -3,6 +3,7 @@
 pkgname=dia-shapes
 pkgver=0.3.0
 pkgrel=1
+depends=('mono')
 pkgdesc="Shapes Installer for Dia (diagram creation program)"
 arch=('x86_64')
 url="http://dia-installer.de/diashapes/index.html"
