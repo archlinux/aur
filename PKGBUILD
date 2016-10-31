@@ -3,7 +3,7 @@
 
 pkgname=babeltrace
 pkgver=1.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="command-line trace reader for LTTng"
 arch=('i686' 'x86_64')
 url="http://diamon.org/babeltrace"
@@ -17,7 +17,7 @@ sha1sums=('3b162480ee883625e8581bf163817f78a4b6487b')
 build()
 {
     cd ${srcdir}/${pkgname}-${pkgver}
-    ./configure --prefix=/usr --enable-debug-info
+    ./configure --prefix=/usr --enable-debug-info --disable-python-bindings
     make
 }
 
