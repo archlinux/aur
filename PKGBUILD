@@ -1,13 +1,13 @@
 # Maintainer: Andrew Stubbs <andrew.stubbs@gmail.com>
 pkgname=python2-logfury
 pkgver=0.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Responsible, low-boilerplate logging of method calls for python libraries"
 arch=('any')
 url="https://github.com/ppolewicz/logfury"
 license=('BSD')
 groups=()
-depends=('python2' 'python2-funcsigs')
+depends=('python2' 'python2-funcsigs' 'python2-six>=1.10')
 makedepends=()
 provides=()
 conflicts=()
