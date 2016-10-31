@@ -21,7 +21,7 @@ build() {
 
 package() {
   cd "$srcdir/$pkgname"
-  make PREFIX=/usr DATADIR=/usr/share SYSCONFDIR=/etc QTDIR=/usr QMAKE=qmake-qt4 DESTDIR=$pkgdir install
-  install -d $pkgdir/usr/share/{applications,pixmaps}
+  make PREFIX=/usr DATADIR=/usr/share SYSCONFDIR=/etc QTDIR=/usr QMAKE=qmake-qt4 DESTDIR="$pkgdir" install
+  install -d "$pkgdir"/usr/share/{applications,pixmaps}
   install -D -m644 "$srcdir/qmc2/data/img/mame.png" "$pkgdir/usr/share/pixmaps"
 }
