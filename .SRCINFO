@@ -1,0 +1,36 @@
+pkgbase = freeswitch-core
+	pkgdesc = A scalable, open source telephony platform
+	pkgver = 1.6.12
+	pkgrel = 1
+	url = https://freeswitch.org/
+	arch = i686
+	arch = x86_64
+	license = MPL
+	makedepends = libjpeg-turbo
+	makedepends = yasm
+	makedepends = nasm
+	makedepends = lua
+	makedepends = libsndfile
+	makedepends = opus
+	depends = curl
+	depends = libedit
+	depends = pcre
+	depends = speex
+	depends = sqlite
+	depends = xz
+	optdepends = lua: for mod_lua module
+	optdepends = libjpeg-turbo: for mod_spandsp module
+	optdepends = libsndfile: for mod_sndfile module
+	optdepends = opus: for mod_opus module
+	optdepends = ldns: for mod_enum module
+	provides = freeswitch
+	conflicts = freeswitch
+	source = https://files.freeswitch.org/releases/freeswitch/freeswitch-1.6.12.tar.xz
+	source = freeswitch.service
+	source = modules.conf
+	sha256sums = ae072ca2d96fd9ef59ca6f589f932048b088c7b469d46e468bb917371de24ff9
+	sha256sums = 7eff153fdae3c99cd884c654335b32f484df5cb7e624bd6adc630372ea83e573
+	sha256sums = SKIP
+
+pkgname = freeswitch-core
+

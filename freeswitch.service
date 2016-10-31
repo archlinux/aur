@@ -1,0 +1,12 @@
+[Unit]
+Description=FreeSWITCH Service
+After=network.target
+
+[Service]
+Type=forking
+PIDFile=/run/freeswitch.pid
+ExecStart=/usr/bin/freeswitch -ncwait -nonat
+ExecStop=/usr/bin/freeswitch -stop
+
+[Install]
+WantedBy=multi-user.target
