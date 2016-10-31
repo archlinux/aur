@@ -1,7 +1,7 @@
 # Maintainer: Miloš Polakovič (milos@mailbox.org)
 
 pkgname=mrdux-git
-pkgver=0.3.r0.g57356da
+pkgver=0.4.r0.g4573dd8
 pkgrel=1
 pkgdesc="A desktop environment focused on productivity, speed and aesthetics"
 url="https://gitlab.com/mpolakovic/mrduX"
@@ -11,7 +11,7 @@ arch=('any')
 makedepends=(sh 'git')
 depends=(
    'xorg-server' 'xorg-xinit' 'xorg-xsetroot' 'xorg-xmessage' 'xorg-xrandr'
-   'xf86-video-vesa' 'alsa-utils' 'sl'
+   'xf86-video-vesa' 'xscreensaver' 'alsa-utils' 'sl' 'zsh'
    # Window manager (xmonad) and status bar (xmobar)
    'xmonad' 'xmonad-contrib' 'xmobar-alsa'
    # Application launchers and terminal emulators
@@ -24,15 +24,14 @@ depends=(
 optdepends=(
    'light: Adjust screen backlight with M-<Up> and M-<Down>'
    'redshift-adjust: Adjust screen temperature with M-<Left> and M-<Right>'
-   'xscreensaver: Lock the screen with M-S-l (also provides a screensaver)'
+   'xss-lock-git: Automatically lock the screen on suspend/hibernate'
    'xcursor-pixelfun: Minimalistic cursor theme with a piece of old-school'
    'shutter: Take a screenshot with M-<Print>'
-   'pulseaudio-ctl: Control sound volume with dedicated keys'
-   'netmenu: Switch netctl active network profile with M-S-n'
+   'pulseaudio-ctl: Control sound volume with multimedia keys'
+   'netmenu: Switch active network profile with M-S-n (when using netctl)'
    'wavemon: Show wireless network monitor scratchpad with M1-C-<Home>'
    'htop: Show interactive process viewer scratchpad with M1-C-<Delete>'
    'vtop: Show interactive system monitor scratchpad with M1-C-<Insert>'
-   'terminology: Start a fancy EFL-based terminal emulator with M-S-M1-<Return>'
    'feh: Set desktop wallpaper on the command-line with "feh --bg-fill <file>"'
    'arandr: Edit screen layouts with <XF86Video>'
    'paper-icon-theme-git: mrduX default icon theme'
@@ -43,7 +42,7 @@ optdepends=(
 source=('mrduX::git+http://gitlab.com/mpolakovic/mrduX')
 install='mrduX.install'
 md5sums=('SKIP')
-provides=('mrduX' 'mXinstall')
+provides=('mrduX')
 
 pkgver() {
    cd mrduX
@@ -51,8 +50,9 @@ pkgver() {
 }
 
 package() {
-  cd $srcdir/mrduX
+  cd $srcdir/mrduX/mrduX-cli
   python setup.py install --root="$pkgdir/" --optimize=1
+  cd $srcdir/mrduX
   mkdir -p $pkgdir/usr/share
-  cp -r configs $pkgdir/usr/share/mrduX
+  cp -r dotfiles $pkgdir/usr/share/mrduX
 }
