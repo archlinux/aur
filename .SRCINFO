@@ -1,7 +1,7 @@
 pkgbase = awesomebump-git
 	pkgdesc = A free program designed to generate normal, height, specular or ambient occlusion textures from a single image
 	pkgver = 5.0.r12.g42c869f
-	pkgrel = 1
+	pkgrel = 2
 	url = http://awesomebump.besaba.com/
 	arch = i686
 	arch = x86_64

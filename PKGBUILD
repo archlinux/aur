@@ -2,7 +2,7 @@
 
 pkgname=awesomebump-git
 pkgver=5.0.r12.g42c869f
-pkgrel=1
+pkgrel=2
 pkgdesc="A free program designed to generate normal, height, specular or ambient occlusion textures from a single image"
 arch=('i686' 'x86_64')
 url="http://awesomebump.besaba.com/"
