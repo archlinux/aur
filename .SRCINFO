@@ -1,0 +1,17 @@
+pkgbase = tako-git
+	pkgdesc = A command language and shell based on Python
+	pkgver = 0.0.2
+	pkgrel = 1
+	url = https://notabug.org/adqm/tako
+	install = tako.install
+	arch = any
+	license = custom:Soopycat2
+	makedepends = python-setuptools
+	makedepends = git
+	depends = python
+	conflicts = tako
+	source = git+https://notabug.org/adqm/tako.git
+	sha256sums = SKIP
+
+pkgname = tako-git
+
