@@ -1,7 +1,7 @@
 # Maintainer: zlsun <zlsun1995 at gmail dot com>
 
 pkgname=yah3c
-pkgver=0.6
+pkgver=0.6.1
 pkgrel=1
 pkgdesc="A program for h3c authentication in SYSU east campus."
 arch=('any')
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('python')
 makedepends=('python-setuptools')
 source=("https://github.com/zlsun/yah3c/archive/v$pkgver.tar.gz")
-md5sums=("e5f195a5338b1b269e7e06ccfd8a32f0")
+md5sums=("f3a7be590d778ed068d71e13c1b7c597")
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"
