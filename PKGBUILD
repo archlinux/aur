@@ -1,9 +1,11 @@
 # Maintainer: Eli Schwartz <eschwartz93@gmail.com>
 # Contributor: Joris Steyn <jorissteyn@gmail.com>
 
+# All my PKGBUILDs are managed at https://github.com/eli-schwartz/pkgbuilds
+
 pkgname=vim-gitgutter-git
-pkgver=285.0e66fc9
-pkgrel=1
+pkgver=388.g1742a8f
+pkgrel=2
 pkgdesc="A Vim plugin which shows a git diff in the 'gutter'"
 arch=('any')
 url="https://github.com/airblade/${pkgname%-git}"
@@ -12,13 +14,12 @@ groups=('vim-plugins')
 depends=('vim' 'git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-install=vimdoc.install
 source=("git://github.com/airblade/${pkgname%-git}.git")
 md5sums=('SKIP')
 
 pkgver() {
     cd "${srcdir}/${pkgname%-git}"
-    echo "$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
+    echo "$(git rev-list --count HEAD).g$(git rev-parse --short HEAD)"
 }
 
 package() {
