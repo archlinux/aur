@@ -1,0 +1,25 @@
+post_install() {
+	echo -n "Adding aria2 user and group ..."
+	# --no-create-home
+	useradd aria2 -r -U -d /var/share/aria2/ -s /bin/nologin && echo " done."
+	passwd -l aria2 &>/dev/null
+
+	install -d /var/share/aria2/
+	touch /var/share/aria2/aria2.log
+	touch /var/share/aria2/aria2.session
+
+	chmod 600 /etc/conf.d/aria2.conf
+	chown aria2:aria2 /etc/conf.d/aria2.conf
+	chown -R aria2:aria2 /var/share/aria2c/
+
+	echo "Now the aria2d is installed, you may want to ..."
+	echo "  1. check the config file for aria2 at /etc/conf.d/aria2.conf"
+	echo "  2. get the downloaded files at /var/share/aria2/"
+}
+
+post_remove() {
+	echo -n -e "\nRemoving aria2c user/group..."
+	userdel aria2c && echo " done."
+	echo "Now the aria2d was removed from your system,"
+	echo "you may need to check the directory /var/share/aria2/ by manual."
+}
