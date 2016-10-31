@@ -2,7 +2,7 @@
 
 pkgname=dia-shapes
 pkgver=0.6.0
-pkgrel=1
+pkgrel=3
 depends=('dia')
 pkgdesc="Additional Shapes for Dia (diagram creation program)"
 arch=('i686' 'x86_64')

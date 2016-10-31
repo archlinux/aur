@@ -1,7 +1,7 @@
 pkgbase = dia-shapes
 	pkgdesc = Additional Shapes for Dia (diagram creation program)
 	pkgver = 0.6.0
-	pkgrel = 1
+	pkgrel = 3
 	url = http://dia-installer.de/diashapes/index.html
 	arch = i686
 	arch = x86_64
