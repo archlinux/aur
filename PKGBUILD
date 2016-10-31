@@ -1,6 +1,6 @@
 pkgname=aurutils-git
 pkgver=1.3.6.r24.gfc958aa
-pkgrel=1
+pkgrel=2
 pkgdesc='helper tools for the arch user repository'
 arch=('any')
 url=https://github.com/AladW/aurutils
@@ -16,8 +16,8 @@ optdepends=('devtools: systemd-nspawn support'
 	'vifm: build file interaction'
 	'parallel: download performance'
 	'aria2: download performance'
-	'datamash: check tsort input')
-optdepends=('devtools' 'vifm' 'parallel' 'datamash')
+	'datamash: check tsort input'
+	'repose: database performance')
 
 pkgver() {
   cd aurutils
