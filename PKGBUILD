@@ -2,7 +2,7 @@
 
 pkgname=runa
 pkgver=1.10.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Fast and light desktop application launcher"
 arch=('any')
 url="http://appstogo.mcfadzean.org.uk/linux.html#runa"
@@ -10,7 +10,7 @@ license=('custom:MPL2')
 depends=('bash' 'dmenu' 'libnotify')
 optdepends=('gxmessage: to view .desktop files' 'perl-file-mimeinfo: to better determine mimetypes')
 source=("http://appstogo.mcfadzean.org.uk/dl/$pkgname/$pkgname-$pkgver.tar.gz")
-md5sums=('f3cefb04f215baa180e0ffbf59706d69')
+md5sums=('f8c43310a8d67f37ccaaa34abd7c2918')
 
 package() {
   cd "$srcdir/${pkgname}-$pkgver"
