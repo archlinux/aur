@@ -11,7 +11,6 @@ url='http://www.vim.org/scripts/script.php?script_id=294'
 license=('custom')
 depends=('vim')
 groups=('vim-plugins')
-install=vimdoc.install
 md5sums=('40bf32ee1da9ea08b65cb107f5181f0f'
          'b924ab4f0d09585ac4482208cc32bd2f')
 source=("$pkgname.vbz.gz::http://www.vim.org/scripts/download_script.php?src_id=$_scriptid"
