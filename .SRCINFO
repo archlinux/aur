@@ -1,7 +1,7 @@
 pkgbase = firefox-theme-ft-deepdark
 	pkgdesc = Smooth dark theme for Firefox
 	pkgver = 14.1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://addons.mozilla.org/firefox/addon/ft-deepdark/
 	arch = any
 	license = custom:noncommercial

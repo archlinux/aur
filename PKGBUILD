@@ -4,7 +4,7 @@
 
 pkgname=firefox-theme-ft-deepdark
 pkgver=14.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Smooth dark theme for Firefox'
 license=('custom:noncommercial')
 md5sums=('619535d085f00f16efd6898aac8dc1b1')
@@ -41,9 +41,18 @@ query-version() {
   xmllint .version --xpath \
     "//application[appID='$2']/$1_version/text()"
 }
+
 version-range() {
-  local emid=$(emid $1)
-  echo "$1>$(version min $emid)" "$1<$(version max $emid)"
+  if [ -z "$(sparql "?x em:type ?type. filter(?type in ('2', '64'))")" ] ||
+    [ -n "$(sparql "?x em:strictCompatibility 'true'")" ] ||
+    { [ -e chrome.manifest ] &&
+      grep '^binary-component[ \t]' chrome.manifest ; }
+  then
+    local emid=$(emid $1)
+    echo "$1>$(version min $emid)" "$1<$(version max $emid)"
+  else
+    echo "$1>$(version min $(emid $1))"
+  fi
 }
 
 emid() {
