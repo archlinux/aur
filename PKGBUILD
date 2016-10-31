@@ -5,14 +5,13 @@
 
 _realname=mutter
 pkgname=$_realname-catalyst
-pkgver=3.20.3
+pkgver=3.22.1+41+ge8fc090
 pkgrel=1
-pkgdesc="A window manager for GNOME with patch for catalyst compatibility"
+pkgdesc="A window manager for GNOME with patches for catalyst compatibility"
 url="https://git.gnome.org/browse/mutter"
 arch=(i686 x86_64)
 license=('GPL')
-depends=('clutter'
-  'dconf'
+depends=('dconf'
   'gobject-introspection-runtime'
   'gsettings-desktop-schemas'
   'libcanberra'
@@ -24,44 +23,58 @@ depends=('clutter'
   'libxkbcommon-x11'
   'gnome-settings-daemon'
   'libgudev'
+  'libinput'
 )
 makedepends=('intltool'
-  'libxkbcommon-x11'
   'gobject-introspection'
-  'python2'
+  'git'
+  'gnome-common'
 )
-conflicts=('mutter')
+conflicts=('mutter' "gnome-shell>${pkgver}")
 provides=("mutter=${pkgver}")
 groups=('gnome')
 options=('!emptydirs')
-source=(https://download.gnome.org/sources//$_realname/${pkgver:0:4}/$_realname-$pkgver.tar.xz
-        catalyst-workaround.patch)
-sha256sums=('142c5271df4bde968c725ed09026173292c07b4dd7ba75f19c4b14fc363af916'
-            'cf6c54cf23dc5898ab105d8bde2d60fd3f6671b319ffef12b0584544bfb23655')
+_commit=e8fc09064afd8b1d50ff401140c412db558a2d62  # gnome-3-22
+source=("git://git.gnome.org/mutter#commit=$_commit"
+  "catalyst-workaround.patch"
+  "catalyst mutter cogl.patch")
+sha256sums=('SKIP'
+            'cf6c54cf23dc5898ab105d8bde2d60fd3f6671b319ffef12b0584544bfb23655'
+            '55079a9daddedc22d9fe4dcfe2e87607345dfafb370f8e7fb6a98c0acae3348a')
 
 prepare() {
-  cd "$_realname-$pkgver"
+  cd "$_realname"
 
-  #https://bugzilla.gnome.org/show_bug.cgi?id=741581
+  # https://bugzilla.gnome.org/show_bug.cgi?id=741581
   echo "Commenting out call to function with XRRChangeOutputProperty to fix issue with catalyst"
-  patch -Np1 < ../catalyst-workaround.patch
-  echo "Patch applied"
+  patch -Np1 < "${srcdir}/catalyst-workaround.patch"
+  # https://bugzilla.gnome.org/show_bug.cgi?id=756306
+  echo "workaround compatibility shaders used in fw compat ctx in cogl"
+  patch -Np1 -i "${srcdir}/catalyst mutter cogl.patch"
+  echo "Patches applied"
+
+  NOCONFIGURE=1 ./autogen.sh
 }
 
 build() {
-  cd "$_realname-$pkgver"
-  ./configure --prefix=/usr --sysconfdir=/etc \
-      --libexecdir=/usr/lib/mutter \
-      --localstatedir=/var --disable-static \
-      --disable-schemas-compile --enable-compile-warnings=minimum
+  cd "$_realname"
+  ./configure --prefix=/usr \
+    --sysconfdir=/etc \
+    --localstatedir=/var \
+    --libexecdir=/usr/lib/$_realname \
+    --disable-static \
+    --disable-schemas-compile \
+    --enable-compile-warnings=minimum \
+    --enable-gtk-doc
 
   #https://bugzilla.gnome.org/show_bug.cgi?id=655517
-  sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
+  sed -e 's/ -shared / -Wl,-O1,--as-needed\0/g' \
+      -i {.,cogl,clutter}/libtool
 
   make
 }
 
 package() {
-  cd "$_realname-$pkgver"
+  cd "$_realname"
   make DESTDIR="$pkgdir" install
 }

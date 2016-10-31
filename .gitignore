@@ -5,4 +5,4 @@ pkg
 # source archives and generated packages
 *.tar.*
 *.log
-/mutter-*
+/mutter*
