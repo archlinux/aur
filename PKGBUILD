@@ -17,7 +17,7 @@ md5sums=('c61fa219942f8a1ed43cdbc1e4ef0187'
 
 prepare() {
   cd "$srcdir"/buildbot-${pkgver/_/}
-  patch -p1 <$srcdir/version-parse.patch
+  patch -p1 <"$srcdir"/version-parse.patch
 }
 
 package() {
