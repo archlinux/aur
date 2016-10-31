@@ -8,6 +8,7 @@ pkgdesc="LTTng user space tracing libraries for LTTng"
 arch=('i686' 'x86_64')
 url="http://lttng.org/"
 license=('LGPL2.1' 'GPL2' 'MIT')
+makedepends=('asciidoc' 'xmlto')
 depends=('liburcu>=0.7.2' 'util-linux' 'python')
 optdepends=(
     'lttng-tools: LTTng tracing control tools'
@@ -19,7 +20,7 @@ sha1sums=('8bebdcbcb453d2643fb226dbe92de61764f1ee3b')
 build()
 {
     cd ${srcdir}/${pkgname}-${pkgver}
-    ./configure --prefix=/usr
+    ./configure --prefix=/usr --enable-man-pages
     make
 }
 
