@@ -1,0 +1,25 @@
+diff --git a/config.h b/config.h
+index 6187523..537933e 100644
+--- a/config.h
++++ b/config.h
+@@ -20,6 +20,7 @@
+ # ifndef MUSL_LIBC
+ #  include <bsd/stdlib.h>
+ #  include <bsd/string.h>
++#  include <bsd/sys/cdefs.h>
+ # else
+ #  include <errno.h>
+ #  include <unistd.h>
+diff --git a/main.c b/main.c
+index 1ccfe4a..45ef79d 100644
+--- a/main.c
++++ b/main.c
+@@ -120,7 +120,7 @@ xdup(int infd, int outfd)
+  * Execute "newargs", which is already created in main(), as a
+  * subprocess of type "comp".
+  */
+-static __dead void
++static __dead2 void
+ xrun(enum comp comp, const char **newargs)
+ {
+ 
