@@ -2,14 +2,17 @@
 # contributor: Carl Rogers <carl.rogers@gmail.com>
 pkgname='levmar'
 pkgver=2.6
-pkgrel=2
+pkgrel=3
 pkgdesc='Levenberg-Marquardt nonlinear least squares algorithms in C/C++'
-url='http://www.ics.forth.gr/~lourakis/levmar'
+url='http://users.ics.forth.gr/~lourakis/levmar'
 arch=('i686' 'x86_64')
 license=('GPL')
 depends=('f2c' 'lapack')
-source=('http://www.ics.forth.gr/~lourakis/levmar/levmar-2.6.tgz')
+source=('http://users.ics.forth.gr/~lourakis/levmar/levmar-2.6.tgz')
 md5sums=('16bc34efa1617219f241eef06427f13f')
+
+# Fool the server.
+DLAGENTS=('http::/usr/bin/curl -A not_a_bot -fLC - --retry 3 --retry-delay 3 -o %o %u')
 
 build() {
     # Adapted from Debian packaging by Daniil Ivanov.
