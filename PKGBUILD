@@ -12,8 +12,8 @@ optdepends=('stunnel: VPN over SSL' 'openssh: VPN over SSH')
 provides=('airvpn')
 conflicts=('airvpn' 'airvpn-beta-bin')
 install=airvpn.install
-source_i686=("https://airvpn.org/repository/${pkgver%.*}/airvpn_linux_x86_debian.deb")
-source_x86_64=("https://airvpn.org/repository/${pkgver%.*}/airvpn_linux_x64_debian.deb")
+source_i686=("airvpn_linux_x86_debian_${pkgver}.deb::https://airvpn.org/eddie/download/?platform=linux&arch=x86&ui=ui&format=debian.deb&version=${pkgver%.*}")
+source_x86_64=("airvpn_linux_x64_debian_${pkgver}.deb::https://airvpn.org/eddie/download/?platform=linux&arch=x64&ui=ui&format=debian.deb&version=${pkgver%.*}")
 md5sums_i686=('0138d03df3f14c2103720b30f00f4400')
 md5sums_x86_64=('796a053cb937e50a656cde65f6dc1968')
 sha256sums_i686=('bdf64987d98558b499bdf2ce5518a7d8ade63b975323bafe903d03d53050f539')
@@ -34,17 +34,18 @@ package() {
   install -Dm644 "$srcdir/usr/share/doc/airvpn/copyright" "$pkgdir/usr/share/doc/airvpn/copyright"
   install -Dm644 "$srcdir/usr/share/man/man1/airvpn.1.gz" "$pkgdir/usr/share/man/man1/airvpn.1.gz"
   ## Fix .desktop file for KDE
-  if [ -f "/usr/bin/dolphin" ]; then
+  _desktop_session=$(printf "%s" "$DESKTOP_SESSION" | awk -F "/" '{print $NF}')
+  if [ "$_desktop_session" = "plasma" ]; then
     msg2 "Installing desktop file for KDE..."
     install -Dm644 "$srcdir/usr/share/pixmaps/AirVPN.png"  "$pkgdir/usr/share/pixmaps/airvpn.png"
     cp "$srcdir/usr/share/applications/AirVPN.desktop" "$srcdir/airvpn.desktop"
-    desktop-file-install -m 644 --set-comment="VPN service based on OpenVPN"\
-    --dir="$pkgdir/usr/share/applications/" --add-category="Qt;KDE"\
+    desktop-file-install -m 644 --set-comment="VPN service based on OpenVPN" \
+    --dir="$pkgdir/usr/share/applications/" \
     --set-icon="/usr/share/pixmaps/airvpn.png" "airvpn.desktop"
   else
   msg2 "Installing desktop file..."
   install -Dm644 "$srcdir/usr/share/pixmaps/AirVPN.png"  "$pkgdir/usr/share/pixmaps/AirVPN.png"
-  desktop-file-install -m 644 --set-comment="VPN service based on OpenVPN"\
+  desktop-file-install -m 644 --set-comment="VPN service based on OpenVPN" \
   --dir="$pkgdir/usr/share/applications/" "$srcdir/usr/share/applications/AirVPN.desktop"
   fi
 }
