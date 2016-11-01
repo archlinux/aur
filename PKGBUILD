@@ -2,18 +2,18 @@
 
 pkgbase=linux-samus4
 pkgver=4.8
-pkgrel=5
+pkgrel=6
 arch=('x86_64')
 url="https://github.com/raphael/linux-samus"
 license=('GPL2')
 makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc' 'lzop')
 options=('!strip')
-source=("https://github.com/raphael/linux-samus/archive/v4.8-5.tar.gz"
+source=("https://github.com/raphael/linux-samus/archive/v4.8-6.tar.gz"
         "config"
         "linux.preset"
         )
 _kernelname=${pkgbase#linux}
-_linuxsrc=linux-samus-4.8-5/build/linux/
+_linuxsrc=linux-samus-4.8-6/build/linux/
 
 # $srcdir is: /home/raphael/src/kernel-pkg/src
 prepare() {
@@ -244,6 +244,6 @@ for _p in ${pkgname[@]}; do
   }"
 done
 
-md5sums=('8aec32347761f202ffa748f598920e05'
+md5sums=('ec9775e82584ece811df7fa5668db320'
          '5973bbc62c942bec6ddcfd06ff301489'
          '5aae464a8085b2f3adcdcaff29853d04')
