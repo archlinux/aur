@@ -1,0 +1,24 @@
+pkgbase = gnome-dvb-daemon-git
+	pkgdesc = GStreamer based to setup DVB devices, record and watch TV shows and browse EPG.
+	pkgver = r1356.23dd846
+	pkgrel = 1
+	url = https://wiki.gnome.org/action/show/Projects/DVBDaemon
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = gnome-common
+	makedepends = vala
+	depends = gst-rtsp-server
+	depends = gst-plugins-good
+	depends = gst-plugins-bad
+	depends = sqlite
+	depends = libgee
+	depends = dtv-scan-tables
+	provides = gnome-dvb-daemon
+	conflicts = gnome-dvb-daemon
+	source = git://git.gnome.org/gnome-dvb-daemon
+	md5sums = SKIP
+
+pkgname = gnome-dvb-daemon-git
+
