@@ -24,8 +24,10 @@ build() {
   grunt 'clean:linux' 'update-keys' 'release-prod'
   if [ $CARCH == 'x86_64' ]; then
     node_modules/.bin/build --linux --x64 --dir
-  else
+  elif [ $CARCH == 'i686' ]; then
     node_modules/.bin/build --linux --ia32 --dir
+  else
+    echo "Unknown architecture"; exit 1;
   fi
 }
 
@@ -34,8 +36,10 @@ package() {
   install -d ${pkgdir}/usr/lib/${_pkgname}
   if [ $CARCH == 'x86_64' ]; then
     cp -a ${srcdir}/${pkgname}-release-${pkgver}/wrap/dist/linux-unpacked/* ${pkgdir}/usr/lib/${_pkgname}
-  else
+  elif [ $CARCH == 'i686' ]; then
     cp -a ${srcdir}/${pkgname}-release-${pkgver}/wrap/dist/linux-ia32-unpacked/* ${pkgdir}/usr/lib/${_pkgname}
+  else
+    echo "Unknown architecture"; exit 1;
   fi
   
   # Symlink main binary
