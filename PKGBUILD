@@ -1,28 +1,27 @@
 # Maintainer: Håvard Pettersson <mail@haavard.me>
 
 pkgname=simplicitystudio
-pkgver=3.3
-pkgrel=3
+pkgver=4
+pkgrel=1
 pkgdesc='Design tools, documentation, software and support resources for EFM32™, EFM8™, 8051, Wireless MCUs and Wireless SoCs.'
 arch=(i686 x86_64)
 url='https://www.silabs.com/products/mcu/Pages/simplicity-studio.aspx'
 license=('unknown')
 
-# should probably put something here but most dependencies are included
-depends_i686=(gtk2 libxtst)
-depends_x86_64=(lib32-gtk2 lib32-libxtst)
+depends_i686=(gtk2 libxtst qt4)
+depends_x86_64=(lib32-gtk2 lib32-libxtst lib32-qt4)
 
 options=('!strip')
 
-source=(http://www.silabs.com/Support%20Documents/Software/SimplicityStudio.tgz
+source=(http://www.silabs.com/Support%20Documents/Software/SimplicityStudio-v4.tgz
         simplicitystudio.patch
         simplicitystudio)
-sha256sums=('06d675b4d498cc939aaffcdae5abbb9ae7dc3bb1238117bc467b2db8f21de51b'
-            '22dadf833916b51d85a04d50db595cb8446c9a9c1644e9dfab8e0875d8f9f906'
+sha256sums=('7ed1d63f1b4a7a1d5aeb52addf59704825d27a9700c981bd9be75b6496aed0d3'
+            '0ccc9c084c82d99174980f299dc0f8a10249170060640ea19bec309a775f83c8'
             'ad55e8352d5d3d9cba50553086ca6d8b1d5072dc87b2763a79f34210f7bc2b5d')
 
 prepare() {
-    cd "$srcdir/SimplicityStudio_v3"
+    cd "$srcdir/SimplicityStudio_v4"
     patch -p1 -i "$srcdir/simplicitystudio.patch"
 }
 
@@ -31,7 +30,7 @@ package() {
     install -dm755 "$pkgdir/usr/share/applications/"
     install -dm755 "$pkgdir/etc/udev/rules.d"
 
-    cp -a "$srcdir/SimplicityStudio_v3" "$pkgdir/opt/$pkgname"
+    cp -a "$srcdir/SimplicityStudio_v4" "$pkgdir/opt/$pkgname"
 
     DESTDIR="$pkgdir" "$pkgdir/opt/$pkgname/setup.sh"
 
