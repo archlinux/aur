@@ -3,3 +3,4 @@ pkg/
 src/
 *.log
 *.pkg*
+*.sw*
