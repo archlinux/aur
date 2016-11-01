@@ -5,7 +5,7 @@
 
 pkgbase=mesa-nosystemd
 pkgname=('opencl-mesa-nosystemd' 'vulkan-intel-nosystemd' 'vulkan-radeon-nosystemd' 'libva-mesa-driver-nosystemd' 'mesa-vdpau-nosystemd' 'mesa-nosystemd' 'mesa-libgl-nosystemd')
-pkgver=13.0.0rc2
+pkgver=13.0.0
 pkgrel=1
 arch=('i686' 'x86_64')
 makedepends=('python2-mako' 'libxml2' 'libx11' 'glproto' 'libdrm' 'dri2proto' 'dri3proto' 'presentproto' 
@@ -13,11 +13,10 @@ makedepends=('python2-mako' 'libxml2' 'libx11' 'glproto' 'libdrm' 'dri2proto' 'd
              'libudev.so' 'libomxil-bellagio' 'libgcrypt' 'libclc' 'clang')
 url="http://mesa3d.sourceforge.net"
 license=('custom')
-#source=(ftp://ftp.freedesktop.org/pub/mesa/${pkgver}/mesa-${pkgver}.tar.xz{,.sig}
-source=(ftp://ftp.freedesktop.org/pub/mesa/13.0.0/mesa-13.0.0-rc2.tar.xz{,.sig}
+source=(ftp://ftp.freedesktop.org/pub/mesa/${pkgver}/mesa-${pkgver}.tar.xz{,.sig}
         LICENSE
         remove-libpthread-stubs.patch)
-sha256sums=('ef26031a79b915e1643b0ffe5354f8ae774cd445f12b342abac63438f9735a43'
+sha256sums=('94edb4ebff82066a68be79d9c2627f15995e1fe10f67ab3fc63deb842027d727'
             'SKIP'
             '7fdc119cf53c8ca65396ea73f6d10af641ba41ea1dd2bd44a824726e01c8b3f2'
             '75ab53ad44b95204c788a2988e97a5cb963bdbf6072a5466949a2afb79821c8f')
