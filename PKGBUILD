@@ -17,7 +17,7 @@ _makemenuconfig=
 # to enabled ... in other words, do not use NUMA on a single CPU system.
 #
 # See, https://bugs.archlinux.org/task/31187
-_NUMAdisable=y
+_NUMAdisable=
 
 # Compile ONLY probed modules
 # As of mainline 2.6.32, running with this option will only build the modules
@@ -85,7 +85,7 @@ sha256sums=('3e9150065f193d3d94bcf46a1fe9f033c7ef7122ab71d75a7fb5a2f0c9a7e11a'
             'b5cfe6b2d361cb9051c70b777cf0556ec057a7f240e2014d577284509d46588b'
             'b0b22a3355f13e040b5fc768862234e0b0429bc2dd1db7d54ac4a04162efaf77'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
-            'd90a80d5c775c16e51e97b81e105328bd9a9489478fab7e497a5094c54d334b2')
+            '06181f75c5aa1cd39e8d45418853fd5a272858e4ba862895e3923a8111ab90a8')
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
               '647F28654894E3BD457199BE38DBBDC86092693E' # Greg Kroah-Hartman
