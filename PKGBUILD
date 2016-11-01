@@ -3,7 +3,7 @@
 # You may find it convenient to file issues and pull requests there.
 
 pkgname=gnome-shell-extension-coverflow-alt-tab
-pkgver=1.2
+pkgver=1.3
 pkgrel=1
 pkgdesc="Replacement of Alt-Tab, iterates through windows in a cover-flow manner"
 arch=('any')
@@ -11,20 +11,20 @@ url="https://github.com/dmo60/CoverflowAltTab"
 license=('GPL')
 
 makedepends+=(jq)
-source+=("release::${_giturl:-${url/github.com/api.github.com\/repos}/releases/latest}")
+source+=("tags::${_giturl:-${url/github.com/api.github.com\/repos}/tags}")
 md5sums+=('SKIP')
 
 prepare() {
-  local url="$(jq -r '.assets[0].browser_download_url' release)"
+  local url="$(jq -r '.[0].tarball_url' tags)"
   local archive="${url##*/}"
   if [ ! -e "$archive" ]; then
     curl -Lo "$archive" "$url"
   fi
-  unzip -o "$archive"
+  tar xf "$archive"
 }
 
 pkgver() {
-  jq -r .tag_name release | grep -o '[[:digit:].]*$'
+  jq -r '.[0].name' tags | grep -o '[[:digit:].]*$'
 }
 package() {
   for function in $(declare -F | grep -Po 'package_[[:digit:]]+[[:alpha:]_]*$')
