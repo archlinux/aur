@@ -5,7 +5,7 @@ _pkgver_minor=
 _python2_ver_major=$(pacman -Qi python2|gawk '$1~/Version/{split($3,v,".");print v[1] "." v[2]}')
 pkgname=mesos
 pkgver=1.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A cluster manager that simplifies the complexity of running applications on a shared pool of servers"
 arch=('i686' 'x86_64')
 url=http://mesos.apache.org/
@@ -50,7 +50,7 @@ build() {
   cd "$srcdir/$pkgname-$pkgver${_pkgver_minor}"/build
   PYTHON_VERSION=${_python2_ver_major} \
   LIBS='-lprotobuf -lglog' \
-  ../configure \
+  CFLAGS=-Wno-error CXXFLAGS=-Wno-error ../configure \
    --enable-optimize \
    --prefix=/usr \
    --sysconfdir=/etc \
