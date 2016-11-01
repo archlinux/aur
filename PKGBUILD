@@ -6,7 +6,7 @@
 pkgname=microchip-mplabx-bin
 pkgver=3.45
 _mplabcomm_version=3.21.00
-pkgrel=1
+pkgrel=2
 pkgdesc="IDE for Microchip PIC and dsPIC development"
 arch=(i686 x86_64)
 url='http://www.microchip.com/mplabx'
@@ -79,6 +79,9 @@ EOF
 
   # Fix broken udev rules
   sed -i '/^BUS!="usb"/c \ACTION!="add", SUBSYSTEM!="usb_device", GOTO="jlink_rules_end"\r' "${pkgdir}/etc/udev/rules.d/99-jlink.rules"
+
+  # Rename udev rules to avoid conflict with jlink-software-and-documentation
+  mv "${pkgdir}"/etc/udev/rules.d/{99-jlink,98-jlink-mplabx}.rules
 
   # Patch jdkhome to use system JRE
   local conf
