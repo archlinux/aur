@@ -5,11 +5,11 @@ pkgname=libots
 pkgver=0.5.0
 pkgrel=4
 pkgdesc='Open Text Summarizer'
-url='http://libots.sourceforge.net/'
+url='https://libots.sourceforge.net/'
 arch=('i686' 'x86_64')
 license=('GPL')
 depends=('libxml2' 'glib2' 'popt')
-source=("http://downloads.sourceforge.net/sourceforge/${pkgname}/ots-${pkgver}.tar.gz")
+source=("https://downloads.sourceforge.net/sourceforge/${pkgname}/ots-${pkgver}.tar.gz")
 sha1sums=('4468bc06470734848c2369a37c84f76ca4ac3f9a')
 
 options=('!makeflags')
