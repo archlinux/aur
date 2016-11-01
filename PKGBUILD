@@ -13,12 +13,11 @@ _makenconfig=
 _makemenuconfig=
 
 # NUMA is optimized for multi-socket motherboards. A single multi-core CPU can
-# actually run slower with NUMA enabled.
+# actually run slower with NUMA enabled. Most users will want to set this option
+# to enabled ... in other words, do not use NUMA on a single CPU system.
+#
 # See, https://bugs.archlinux.org/task/31187
-_NUMAdisable=
-
-# Use a 1000 Hz timer (CK recommended) rather than the Arch default of 300 Hz.
-_1k_HZ_ticks=y
+_NUMAdisable=y
 
 # Compile ONLY probed modules
 # As of mainline 2.6.32, running with this option will only build the modules
@@ -52,9 +51,9 @@ _use_current=
 pkgname=(linux-ck-fbcondecor linux-ck-fbcondecor-headers)
 _kernelname=-ck-fbcondecor
 _srcname=linux-4.8
-pkgver=4.8.4
-pkgrel=3
-_ckpatchversion=3
+pkgver=4.8.6
+pkgrel=1
+_ckpatchversion=5
 arch=('i686' 'x86_64')
 url="https://wiki.archlinux.org/index.php/Linux-ck"
 license=('GPL2')
@@ -67,24 +66,24 @@ source=("http://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
 "http://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.xz"
 "https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.sign"
 "http://ck.kolivas.org/patches/4.0/4.8/4.8-ck${_ckpatchversion}/${_ckpatchname}.xz"
-"http://ck.kolivas.org/patches/muqss/4.0/4.8/Pending/0001-Check_siblings-was-accidentally-removed-from-schedul.patch"
-"http://ck.kolivas.org/patches/muqss/4.0/4.8/Pending/0002-Revert-the-damage-caused-by-6b45f1f363d7f6959b648cf4.patch"
 "http://repo-ck.com/source/gcc_patch/${_gcc_patch}.gz"
 'config.x86_64' 'config'
 'linux-ck-fbcondecor.preset'
+'https://github.com/ckolivas/linux/commit/6d6ea6a24879ed0f5c99d64d3d621d2007c699a3.patch'
+'https://github.com/ckolivas/linux/commit/d2a88342b9d69e550ae21d5d1fdd7a15fe039159.patch'
 'change-default-console-loglevel.patch'
 'fbcondecor-4.8.patch')
 sha256sums=('3e9150065f193d3d94bcf46a1fe9f033c7ef7122ab71d75a7fb5a2f0c9a7e11a'
             'SKIP'
-            '86e246b19253ee3aa971403a5990376a5e33667122f7c8742cc0ee807f204403'
+            '3ac0ea443ac8a7aa40f8d5ce8ec33b84abbad4dbfc567c7699df728c2c21df37'
             'SKIP'
-            'dc1a5562a20136e58a533b6f3937b993c4b5ed6d6b89988329c86538507f0503'
-            'cc33c0bc96f05719fd72c08e8aa8941001a751fdceed1797050b4cc6be1073bf'
-            '85ac6c430a0189ee7ed8526f815b6c7ee03156050104c39b907842fccd07b42a'
+            'cb67d632c951cfc799472039afb59f47c2ad4aa00d326a0f9f3da3c5f2ef9cd7'
             'cf0f984ebfbb8ca8ffee1a12fd791437064b9ebe0712d6f813fd5681d4840791'
-            'c32afcae79b4687c8027055e73517948d0baa2bb3952983062c870573b0fcd93'
-            '610f09e0a21741154a817eec44f96f74337897a6ee401f84e8f28f22e4e2061c'
+            '18a76384c51a4c7227dbd1c3439517d4ca17b1d954de7c9a028f1561e8a6886a'
+            'ceccb5397faac05c783c16b5d8f9fdd5f8d84743f89fe2e01fe3339ab3b53ebb'
             '644ca1ccb886a8ce00b8acf05b946dae559f3bb91dd5e69be09d413a7f8c4165'
+            'b5cfe6b2d361cb9051c70b777cf0556ec057a7f240e2014d577284509d46588b'
+            'b0b22a3355f13e040b5fc768862234e0b0429bc2dd1db7d54ac4a04162efaf77'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
             'd90a80d5c775c16e51e97b81e105328bd9a9489478fab7e497a5094c54d334b2')
 validpgpkeys=(
@@ -103,13 +102,13 @@ prepare() {
 	# (relevant patch sent upstream: https://lkml.org/lkml/2011/7/26/227)
 	patch -p1 -i "${srcdir}/change-default-console-loglevel.patch"
 
-	# fix naming schema in EXTRAVERSION
+	# fix naming schema in EXTRAVERSION of ck patch set
 	sed -i -re "s/^(.EXTRAVERSION).*$/\1 = /" "${srcdir}/${_ckpatchname}"
 
-	msg "Patching source with ck patchset"
+	msg "Patching source with ck patchset including MuQSS"
 	patch -Np1 -i "${srcdir}/${_ckpatchname}"
-	patch -Np1 -i "${srcdir}/0001-Check_siblings-was-accidentally-removed-from-schedul.patch"
-	patch -Np1 -i "${srcdir}/0002-Revert-the-damage-caused-by-6b45f1f363d7f6959b648cf4.patch"
+	patch -Np1 -i "${srcdir}/6d6ea6a24879ed0f5c99d64d3d621d2007c699a3.patch"
+	patch -Np1 -i "${srcdir}/d2a88342b9d69e550ae21d5d1fdd7a15fe039159.patch"
 
 	# Patch source to enable more gcc CPU optimizatons via the make nconfig
 	msg "Patching source with gcc patch to enable more cpus types"
@@ -129,13 +128,19 @@ prepare() {
 		cat "${srcdir}/config" > ./.config
 	fi
 	
-	if [ -n "$_1k_HZ_ticks" ]; then
-		msg "Setting tick rate to 1000 Hz..."
-		sed -i -e 's/^CONFIG_HZ_300=y/# CONFIG_HZ_300 is not set/' \
-			-i -e 's/^# CONFIG_HZ_1000 is not set/CONFIG_HZ_1000=y/' \
-			-i -e 's/^CONFIG_HZ=300/CONFIG_HZ=1000/' .config
-	fi
+	# MuQSS is now a tickless scheduler. That means it can maintain its
+	# guaranteed low latency even in a build configured with a low Hz tick rate.
+	# To that end, it is now defaulting to 100Hz, and it is recommended to use
+	# this as the default choice for it leads to more throughput and power
+	# savings as well.
+	#
+	# http://ck-hack.blogspot.com/2016/10/linux-48-ck5-muqss-version-0120.html
+	sed -i -e 's/^CONFIG_HZ_300=y/# CONFIG_HZ_300 is not set/' \
+		-i -e 's/^# CONFIG_HZ_100 is not set/CONFIG_HZ_100=y/' \
+		-i -e 's/^CONFIG_HZ=300/CONFIG_HZ=100/' .config
 	
+	### Optionally disable NUMA for 64-bit kernels only
+	# (x86 kernels do not support NUMA)
 	if [ -n "$_NUMAdisable" ]; then
 		if [ "${CARCH}" = "x86_64" ]; then
 			msg "Disabling NUMA from kernel config..."
@@ -229,8 +234,8 @@ build() {
 }
 
 package_linux-ck-fbcondecor() {
-	pkgdesc='Linux Kernel with the ck3 patchset featuring MuQSS CPU scheduler v0.115 and the fbcondecor framebuffer decoration support.'
-	#_Kpkgdesc='Linux Kernel and modules with the ck3 patchset featuring MuQSS CPU scheduler v0.115 and the fbcondecor framebuffer decoration support.'
+	pkgdesc='Linux Kernel with the ck5 patchset featuring MuQSS CPU scheduler v0.120 and the fbcondecor framebuffer decoration support.'
+	#_Kpkgdesc='Linux Kernel and modules with the ck5 patchset featuring MuQSS CPU scheduler v0.120 and the fbcondecor framebuffer decoration support.'
 	#pkgdesc="${_Kpkgdesc}"
 	depends=('coreutils' 'linux-firmware' 'mkinitcpio>=0.7')
 	optdepends=('crda: to set the correct wireless channels of your country' 'nvidia-ck: nVidia drivers for linux-ck' 'modprobed-db: Keeps track of EVERY kernel module that has ever been probed - useful for those of us who make localmodconfig')
@@ -275,8 +280,6 @@ package_linux-ck-fbcondecor() {
 	rm -f "${pkgdir}"/lib/modules/${_kernver}/{source,build}
 	# remove the firmware
 	rm -rf "${pkgdir}/lib/firmware"
-	## gzip -9 all modules to save 100MB of space
-	#find "${pkgdir}" -name '*.ko' -exec gzip -9 {} \;
 	# make room for external modules
 	ln -s "../extramodules-${_basekernel}${_kernelname:ck}" "${pkgdir}/lib/modules/${_kernver}/extramodules"
 	# add real version for building modules and running depmod from post_install/upgrade
