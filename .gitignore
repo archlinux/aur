@@ -4,8 +4,7 @@
 #pkg building files
 
 *.7z
-*.tar.xz
-*.tar.gz
+*.tar*
 
 src/
 pkg/
