@@ -1,2 +1,3 @@
 #!/bin/sh
-/usr/lib/v8/d8 $*
+
+exec /usr/lib/v8/d8 "$@"
