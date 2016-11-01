@@ -5,8 +5,8 @@ validpgpkeys=('748231EBCBD808A14F5E85D28C004C2F93481F6B')
 # thanks to Slash <demodevil5[at]yahoo[dot]com> for the original no-git package
 
 pkgname=ezquake-git
-pkgver=r4930.b1e3acb
-pkgrel=3
+pkgver=r4932.ad6618c
+pkgrel=1
 pkgdesc="One of the most Popular QuakeWorld clients for Linux/BSD/OSX/Win32. You need the retail pak files to play. (Git version)"
 url="http://ezquake.sourceforge.net/"
 license=('GPL')
@@ -31,6 +31,7 @@ source=("git+https://github.com/ezQuake/ezquake-source.git"
 	'ezquake.launcher'
 	'ezquake.desktop'
 	'ezquake.ico'
+	'pak.lst'
 	'pak.lst.sig'
 	'ezquake.launcher.sig'
 	'ezquake.desktop.sig'
@@ -41,6 +42,7 @@ sha512sums=('SKIP'
             '658d36e36acd808ef6e5ad082b2c9c75614bc6861e8c425356c9e45c88b693b9048cf27f974cb1bdeb044345eb245f352a0c4fd462807b6a994348646c2c4b7d'
             '32b76abde8b93a64bdf42af7dd72288eb2baa7fc07ff45e18d38a9ad0ccbc0f3617d38ae0ccf4a04a1d4d2dd4536e1d1cdd51a5560274efb347f5a17ecf4919d'
             '1d9ea83c95fb324ef87bf22a767e3a41429f5c35a456111adbc9a56d70691d587bdda6ec9ff5a9025436f5fcdad40e4959e6244425a474be2f4286bb00cd130e'
+	    '91a2c6862b1a849fa15d6599c8197cc02090fa8fe7fc8e39fd2dc92c90088e2a47515ab6c8fa4e021cdec2f8cd3b8a8f4ec030efb919af8bb9c2f0d5575695b4'
             'SKIP'
 	    'SKIP'
             'SKIP'
