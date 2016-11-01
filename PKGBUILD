@@ -11,11 +11,12 @@ validpgpkeys=('748231EBCBD808A14F5E85D28C004C2F93481F6B')
 
 pkgname=('nquake')
 pkgver=2.5
-pkgrel=3
+pkgrel=4
 pkgdesc="The easiest, quickest, and most popular QuakeWorld client."
-url="http://nquake.sourceforge.net/"
-license=('GPL2' 'Custom:CC0-1.0' '')
+url="http://nquake.com/"
+license=('GPL2' 'custom')
 depends=('unzip' 'ezquake')
+optdepends=('nquakesv: the nquake server')
 arch=('any')
 install=nquake.install
 
