@@ -1,6 +1,6 @@
 pkgbase = tuxjdk
 	pkgver = 8.92.03
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/tuxjdk/tuxjdk
 	arch = i686
 	arch = x86_64

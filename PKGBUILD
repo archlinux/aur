@@ -19,7 +19,7 @@ _jdk_build=14
 _tuxjdk_ver=03
 pkgver=${_java_ver}.${_jdk_update}.${_tuxjdk_ver}
 _repo_ver=jdk${_java_ver}u${_jdk_update}-b${_jdk_build}
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 url='https://github.com/tuxjdk/tuxjdk'
 license=('custom')
@@ -54,7 +54,7 @@ case "${CARCH}" in
 esac
 
 _jdkname=tuxjdk8
-_jvmdir=/opt/tuxjdk
+_jvmdir=/usr/lib/jvm/java-8-tuxjdk
 _prefix="jdk8u-${_repo_ver}/image"
 _imgdir="${_prefix}/jvm/openjdk-1.8.0_$(printf '%.2d' ${_jdk_update})"
 _tuxjdkdir="tuxjdk-${pkgver}"
@@ -82,6 +82,8 @@ build() {
   unset JAVA_HOME
   # http://icedtea.classpath.org/bugzilla/show_bug.cgi?id=1346
   export MAKEFLAGS=${MAKEFLAGS/-j*}
+  # https://hydra.nixos.org/build/41230444/log
+  export CFLAGS="-Wno-error=deprecated-declarations"
 
   # cannot build on gcc 6+
   export CC=gcc-5
