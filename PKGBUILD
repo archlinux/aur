@@ -1,5 +1,5 @@
-# Maintainer: Sébastien Luttringer
-pkgname=virtualbox-ext-oracle
+# Maintainer: Gaweł Kazimierczuk <kazi@kazigk.pl>
+pkgname='virtualbox-ext-oracle-5.0'
 pkgver=5.0.24
 pkgrel=1
 pkgdesc='Oracle VM VirtualBox Extension Pack'
