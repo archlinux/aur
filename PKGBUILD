@@ -3,10 +3,10 @@
 
 pkgname=libnetconf-git
 _pkgname=libnetconf
-pkgver=r2020.673458a
+pkgver=r2227.62a983a
 pkgrel=1
 pkgdesc='a NETCONF library in C intended for building NETCONF clients and servers.'
-url="https://code.google.com/p/$_pkgname/"
+url="https://github.com/CESNET/$_pkgname.git"
 arch=('i686' 'x86_64')
 license=('BSD')
 depends=('curl' 'libssh' 'libxslt')
@@ -14,7 +14,7 @@ makedepends=('git' 'doxygen')
 provides=($_pkgname)
 conflicts=($_pkgname)
 options=('!emptydirs')
-source=("$pkgname::git+https://code.google.com/p/$_pkgname/")
+source=("$pkgname::git+https://github.com/CESNET/$_pkgname.git")
 md5sums=('SKIP')
 
 pkgver() {
