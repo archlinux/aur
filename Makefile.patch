@@ -1,0 +1,8 @@
+1c1
+< CFLAGS := -Wall -Wextra -Werror -std=c89 -pedantic -O2
+---
+> CFLAGS := -Wall -Wextra -std=c89 -pedantic -O2
+3c3
+< LIBPNG_FLAGS := $(shell pkg-config --cflags --libs libpng12)
+---
+> LIBPNG_FLAGS := $(shell pkg-config --cflags --libs libpng)
