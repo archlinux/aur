@@ -11,7 +11,7 @@ validpgpkeys=('748231EBCBD808A14F5E85D28C004C2F93481F6B')
 
 pkgname=('nquake')
 pkgver=2.5
-pkgrel=2
+pkgrel=3
 pkgdesc="The easiest, quickest, and most popular QuakeWorld client."
 url="http://nquake.sourceforge.net/"
 license=('GPL2' 'Custom:CC0-1.0' '')
@@ -141,6 +141,6 @@ package () {
 	install -d -m 0755 ${pkgdir}/usr/share/licenses/${pkgname}
 	cp -a ${srcdir}/CC0-1.0 ${pkgdir}/usr/share/licenses/${pkgname}/.
 	# And the Business-End(TM). Do the thing.
-	cp -a ${srcdir}/qw/textures.pk3 ${pkgdir}/opt/quake/qw.  # Textures
+	cp -a ${srcdir}/qw/textures.pk3 ${pkgdir}/opt/quake/qw/.  # Textures
 	cp -a ${srcdir}/qw/readme-textures.txt ${pkgdir}/opt/quake/.  # ????
 }
