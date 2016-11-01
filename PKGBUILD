@@ -57,8 +57,8 @@ validpgpkeys=('95D2E9AB8740D8046387FD151A09227B1F435A33')  # Paul Hardy <unifoun
 
 source=("grub-${_pkgver}::git+git://git.sv.gnu.org/grub.git#tag=${_GRUB_GIT_TAG}"
         "grub-extras::git+git://git.sv.gnu.org/grub-extras.git#commit=${_GRUB_EXTRAS_COMMIT}"
-        "http://ftp.gnu.org/gnu/unifont/unifont-${_UNIFONT_VER}/unifont-${_UNIFONT_VER}.bdf.gz"
-        "http://ftp.gnu.org/gnu/unifont/unifont-${_UNIFONT_VER}/unifont-${_UNIFONT_VER}.bdf.gz.sig"
+        "https://ftp.gnu.org/gnu/unifont/unifont-${_UNIFONT_VER}/unifont-${_UNIFONT_VER}.bdf.gz"
+        "https://ftp.gnu.org/gnu/unifont/unifont-${_UNIFONT_VER}/unifont-${_UNIFONT_VER}.bdf.gz.sig"
         '0001-Fix-security-issue-when-reading-username-and-passwor.patch'
         '0002-intel-ucode.patch'
         '0003-10_linux-detect-archlinux-initramfs.patch'

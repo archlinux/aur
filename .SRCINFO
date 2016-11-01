@@ -50,8 +50,8 @@ pkgbase = grub
 	backup = etc/grub.d/40_custom
 	source = grub-2.02::git+git://git.sv.gnu.org/grub.git#tag=grub-2.02-beta3
 	source = grub-extras::git+git://git.sv.gnu.org/grub-extras.git#commit=f2a079441939eee7251bf141986cdd78946e1d20
-	source = http://ftp.gnu.org/gnu/unifont/unifont-6.3.20131217/unifont-6.3.20131217.bdf.gz
-	source = http://ftp.gnu.org/gnu/unifont/unifont-6.3.20131217/unifont-6.3.20131217.bdf.gz.sig
+	source = https://ftp.gnu.org/gnu/unifont/unifont-6.3.20131217/unifont-6.3.20131217.bdf.gz
+	source = https://ftp.gnu.org/gnu/unifont/unifont-6.3.20131217/unifont-6.3.20131217.bdf.gz.sig
 	source = 0001-Fix-security-issue-when-reading-username-and-passwor.patch
 	source = 0002-intel-ucode.patch
 	source = 0003-10_linux-detect-archlinux-initramfs.patch
