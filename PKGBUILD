@@ -1,7 +1,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 pkgname=latex2e-help-texinfo  
-pkgver=2016_04
-pkgrel=2
+pkgver=2016_08
+pkgrel=1
 pkgdesc="Inofficial LaTeX2e Reference Manual in info format"
 url="http://home.gna.org/latexrefman/"
 arch=('any')
@@ -10,7 +10,7 @@ source=(http://svn.gna.org/viewcvs/*checkout*/latexrefman/trunk/latex2e.info
 	http://svn.gna.org/viewcvs/*checkout*/latexrefman/trunk/latex2e-es.info
 	http://mirror.jmu.edu/pub/CTAN/info/latex2e-help-texinfo-fr/latex2e-fr.info
        http://mirror.unl.edu/ctan/info/latex2e-help-texinfo/README)
-md5sums=('2c40633a08dfcbb4f1954f178a6e8c7b'
+md5sums=('f0fad43bcaf1a87a8f604b34deb60972'
          '457214fce461228c5500fe998e9476ab'
          '38ee5b0fad6db14fc0394d3a404e62c0'
          'd9d4087ddae0795b6ace85f2958631c6')
