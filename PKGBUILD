@@ -6,9 +6,8 @@ pkgdesc="HeeksCNC is an open source, 3D CAD/CAM software"
 arch=('x86_64')
 url="http://heeks.net"
 license=('custom:BSD3')
-depends=('python' 'opencascade' 'wxgtk2.8' 'libarea')
+depends=('python' 'opencascade' 'wxgtk2.8' 'libarea-git')
 makedepends=('git' 'cmake')
-provides=('heekscad')
 source=('heekscad-git::git://github.com/Heeks/heekscad.git')
 md5sums=('SKIP')
 
