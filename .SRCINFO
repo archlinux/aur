@@ -1,0 +1,14 @@
+pkgbase = s3-bash
+	pkgdesc = Access s3 from bash
+	pkgver = 1
+	pkgrel = 1
+	url = https://github.com/random-archer/s3-bash
+	arch = i686
+	arch = x86_64
+	license = Apache
+	makedepends = git
+	source = git+https://github.com/random-archer/s3-bash.git#branch=master
+	md5sums = SKIP
+
+pkgname = s3-bash
+
