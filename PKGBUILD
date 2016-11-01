@@ -1,4 +1,3 @@
-# Maintainer: Michael Straube <michael_straube web de>
 # Contributor: xantares <xantares09 at hotmail dot com>
 
 pkgname=combblas
