@@ -9,7 +9,7 @@ url="https://github.com/plasticbrain/vpnkillswitch"
 license=('GPL')
 depends=('networkmanager' 'libnm-glib' 'networkmanager-openvpn' 'nm-connection-editor' 'openvpn' 'systemd')
 makedepends=('bash')
-source=(https://github.com/primaryobjects/vpndemon/archive/master.zip
+source=(master.zip
 "vpndemon.sig")
 sha384sums=('a750b66d813750d9aa63ed76e79d1c51c39b2619835fa9571fa2ead8b04d64333c7424646211cf53f4e6422aa0af88dc'
              'SKIP')
