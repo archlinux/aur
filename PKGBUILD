@@ -1,7 +1,7 @@
-# Maintainer: Kiril Zyapkov <kiril.zyapkov at gmail>
+# Maintainer: Grey Christoforo <first name at last name dot net>
 pkgname=heekscad-git
-pkgver=1441.2254f21
-pkgrel=1
+pkgver=1447.d6a3e96
+pkgrel=2
 pkgdesc="HeeksCNC is an open source, 3D CAD/CAM software"
 arch=('x86_64')
 url="http://heeks.net"
@@ -9,7 +9,7 @@ license=('custom:BSD3')
 depends=('python' 'opencascade' 'wxgtk2.8' 'libarea')
 makedepends=('git' 'cmake')
 provides=('heekscad')
-source=('heekscad-git::git://github.com/Heeks/heekscad.git#branch=oce-0.17')
+source=('heekscad-git::git://github.com/Heeks/heekscad.git')
 md5sums=('SKIP')
 
 pkgver() {
