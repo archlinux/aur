@@ -4,8 +4,7 @@ libdir=/usr/lib
 includedir=${prefix}/include
 
 Name: v8
-Description: V8 JavaScript Engine
+Description: V8 JavaScript Engine - Platform library
 Version: @VERSION@
-Requires: icu-uc, icu-i18n, v8_libbase = @VERSION@
-Libs: -L${libdir} -lv8 -pthread
+Libs: -L${libdir} -lv8_libplatform -pthread
 Cflags: -I${includedir}
