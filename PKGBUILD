@@ -2,7 +2,7 @@
 
 pkgbase=python-daemonize
 pkgname=($pkgbase python2-daemonize)
-pkgver=2.4.6
+pkgver=2.4.7
 pkgrel=1
 pkgdesc='Library to enable your code run as a daemon process on Unix-like systems'
 license=('MIT')
@@ -10,8 +10,8 @@ arch=('any')
 url='https://pypi.python.org/pypi/daemonize/'
 makedepends=('python-setuptools'
              'python2-setuptools')
-source=("https://pypi.python.org/packages/source/d/daemonize/daemonize-${pkgver}.tar.gz")
-md5sums=('17bc788a8524b104d4639a68623461e3')
+source=("https://pypi.python.org/packages/84/15/923e3fe48239adf5d697c29e04a3f868d3e4ce8539aab29d6abe784db5be/daemonize-2.4.7.tar.gz")
+md5sums=('6759005b12dfeea0d4305f8536b4b0c2')
 
 prepare() {
 	cp -a "daemonize-$pkgver"{,-python2}
