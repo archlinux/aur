@@ -10,7 +10,7 @@ url="http://www.linuxfoundation.org/collaborate/workgroups/networking/bridge"
 license=('GPL')
 depends=('glibc')
 validpgpkeys=('9F6FC345B05BE7E766B83C8F80A77F6095CDE47E')	# Stephen Hemminger (Microsoft corporate) <sthemmin@microsoft.com>
-source=("http://www.kernel.org/pub/linux/utils/net/${pkgname}/${pkgname}-${pkgver}.tar."{xz,sign})
+source=("https://www.kernel.org/pub/linux/utils/net/${pkgname}/${pkgname}-${pkgver}.tar."{xz,sign})
 sha256sums=('cc67efb5d5fb8928a6569b3fade2b4042ec17da04678dab127d96b46489e26c8'
             'SKIP')
 
