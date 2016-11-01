@@ -10,7 +10,7 @@ url="http://tarot.freeshell.org/leafpad/"
 license=('GPL')
 depends=('gtk2')
 makedepends=('intltool')
-source=(http://download.savannah.gnu.org/releases/${pkgname}/${pkgname}-${pkgver}.tar.gz)
+source=(https://download.savannah.gnu.org/releases/${pkgname}/${pkgname}-${pkgver}.tar.gz)
 md5sums=('254a72fc67505e3aa52884c729cd7b97')
 
 build() {
