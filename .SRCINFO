@@ -1,7 +1,7 @@
 pkgbase = gwaei
 	pkgdesc = Japanese-English dictionary program
 	pkgver = 3.6.2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://gwaei.sourceforge.net/
 	install = gwaei.install
 	arch = i686

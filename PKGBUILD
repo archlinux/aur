@@ -5,7 +5,7 @@
 
 pkgname=gwaei
 pkgver=3.6.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Japanese-English dictionary program"
 arch=('i686' 'x86_64')
 url="http://gwaei.sourceforge.net/"
