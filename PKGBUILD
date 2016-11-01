@@ -2,15 +2,15 @@
 pkgname=bloonix-agent
 #_pkgname=
 provides=('bloonix-agent')
-pkgver=0.75
-pkgrel=11
+pkgver=0.77
+pkgrel=1
 pkgdesc='Bloonix Monitoring Agent'
 arch=('i686' 'x86_64')
 url='https://bloonix.org'
 license=('GPLv3')
 options=('!emptydirs')
 install='bloonix-agent.install'
-
+backup=('etc/bloonix/agent/main.conf')
 depends=('perl-module-build' 'perl-io-socket-inet6' 'perl-params-validate'
 'perl-term-readkey' 'perl-log-handler' 'perl-json' 'bloonix-core' 'facter')
 source=(https://download.bloonix.de/sources/$pkgname-$pkgver.tar.gz)
@@ -43,5 +43,5 @@ package() {
 }
 
 # vim:set ts=2 sw=2 et:
-md5sums=('a47c2b8389383600c129324251bf8568')
-sha1sums=('7ea79e814c40bc0d49303918ca31d6d0045307e7')
+md5sums=('183dbcc366bd71b1bd1069c9989048c7')
+sha1sums=('0cac5933ffadd9a5cb72b4a5f9d27801b10851b9')
