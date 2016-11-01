@@ -1,0 +1,6 @@
+[Unit]
+Description=DuckDNS update job
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/duckdns

@@ -1,21 +1,23 @@
 # Maintainer: Tom Stroobants <stroobantstom@gmail.com>
 pkgname=duckdns
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="Update your DuckDNS.org entries from your computer without setting up any cronjob. You just need to create config files for your domains."
 arch=('any')
-url="https://stroobants.io"
-license=('MIT')
+install=${pkgname}.install
+url="https://www.duckdns.org"
 backup=("etc/duckdns.d/default.cfg")
 
-source=("https://stroobants.io/wp-content/uploads/2015/09/${pkgname}-${pkgver}.tar.gz")
-md5sums=('78ea999eaa92e8b005464ca37544cf62')
+source=('default.cfg' 'duckdns.service' 'duckdns.timer' 'duckdns.sh')
+md5sums=('4cad7ae6c25b8148916fc702f4846a6f'
+         'b478880b19c7c403c8f8b2e80292c789'
+         '891ca4358eca8d9c2c1994aa3025fa04'
+         '1bcd62ec5cec5ca5618d2dd2901c66e1')
+
 
 package() {
-	cd ${pkgname}
 	
 	install -D duckdns.sh "${pkgdir}/usr/bin/${pkgname}"
-	install -D LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
 	install -d "${pkgdir}/etc/duckdns.d/"
 
@@ -26,3 +28,4 @@ package() {
 
 
 }
+

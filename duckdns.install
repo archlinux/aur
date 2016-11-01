@@ -1,0 +1,6 @@
+post_install() {
+        echo "Please edit /etc/duckdns.d/default.cfg, and change your token and server"
+}
+post_upgrade() {
+        echo "Please edit /etc/duckdns.d/default.cfg,and change your token and server"
+}

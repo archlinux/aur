@@ -1,0 +1,8 @@
+[Unit]
+Description=Run DuckDNS every 5 minutes
+
+[Timer]
+OnCalendar=*:0/15
+
+[Install]
+WantedBy=timers.target
