@@ -5,6 +5,7 @@ pkgver=r211.f6aeb88
 pkgrel=1
 makedepends=('cmake' 'git')
 depends=('torch7-git>=r819' 'torch7-nn-git')
+optdepends=('graphviz:	To display the graphs that you have created.')
 arch=('x86_64' 'i686')
 url='https://github.com/torch/nngraph'
 license=('BSD')
