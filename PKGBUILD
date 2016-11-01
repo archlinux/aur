@@ -2,7 +2,7 @@
 # Upstream URL: https://github.com/highfidelity/hifi
 
 pkgname=hifi-git
-pkgver=r44635.e893b17
+pkgver=r47892.3625f32
 pkgrel=1
 pkgdesc="High Fidelity is an open, decentralized virtual world using sensors to control avatars and dynamically assigned devices as servers. This provides the client, servers and dev tools. (git - master)"
 arch=('i686' 'x86_64')
