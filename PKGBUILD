@@ -23,7 +23,7 @@ depends=(
   'python2'
   'sdl'
 )
-optdepends=('virtualbox-ext-oracle: for Oracle extensions')
+optdepends=('virtualbox-ext-oracle-5.0: for Oracle extensions')
 provides=("virtualbox=${pkgver}")
 conflicts=('virtualbox' 'virtualbox-ose' 'virtualbox-modules' 'virtualbox-host-modules')
 replaces=('virtualbox_bin' 'virtualbox-sun')

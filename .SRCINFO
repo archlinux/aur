@@ -18,7 +18,7 @@ pkgbase = virtualbox-bin-5.0
 	depends = linux-headers
 	depends = python2
 	depends = sdl
-	optdepends = virtualbox-ext-oracle: for Oracle extensions
+	optdepends = virtualbox-ext-oracle-5.0: for Oracle extensions
 	provides = virtualbox=5.0.28
 	conflicts = virtualbox
 	conflicts = virtualbox-ose
