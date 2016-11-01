@@ -1,7 +1,7 @@
 # Maintainer: Daniel Milde <daniel@milde.cz>
 
 pkgname=python-hg
-pkgver=3.7.0a0.r103770+.2c9e07db0ac4+
+pkgver=3.7.0a0.r104865+.a6e59a2e880e+
 pkgrel=1
 _pybasever=3.7
 _pkgname=cpython
