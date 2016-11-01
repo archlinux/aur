@@ -1,14 +1,13 @@
-# Maintainer: Kiril Zyapkov <kiril.zyapkov at gmail>
+# Maintainer: Grey Christoforo <first name at last name dot net>
 pkgname=libarea-git
 pkgver=120.f1986ac
-pkgrel=2
+pkgrel=3
 pkgdesc="Library and python module for pocketing and profiling operations"
 arch=('x86_64')
 url="https://github.com/Heeks/libarea"
 license=('custom:BSD3')
 depends=('python' 'opencascade' 'boost')
 makedepends=('git' 'cmake')
-provides=('libarea')
 source=('libarea-git::git://github.com/Heeks/libarea.git')
 md5sums=('SKIP')
 
