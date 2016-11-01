@@ -3,16 +3,16 @@
 
 pkgbase=rust-nightly
 pkgname=('rust-nightly' 'rust-nightly-doc')
-pkgver=1.14.0_2016.10.19
-pkgrel=2
+pkgver=1.13.0_2016.09.13
+pkgrel=3
 arch=('i686' 'x86_64')
 pkgdesc='A safe, concurrent, practical language'
 url='http://www.rust-lang.org/'
 license=('MIT' 'Apache')
 depends=('shared-mime-info')
 makedepends=('libffi' 'perl' 'python2' 'curl' 'llvm' 'clang' 'haskell-pandoc' 'emacs')
-source=("http://static.rust-lang.org/dist/rustc-nightly-src.tar.gz")
-sha256sums=('SKIP')
+source=("https://static.rust-lang.org/dist/2016-09-13/rustc-nightly-src.tar.gz")
+sha256sums=('f46a880efe1fb70bd689cf17bcf38779706af23aa7d17e47e688a2bad8aaa499')
 options=('!makeflags' 'staticlibs' '!strip' '!emptydirs')
 conflicts=('rust')
 provides=('rust')
