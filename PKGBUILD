@@ -9,7 +9,7 @@
 
 pkgname=whipper-git
 _gitname=whipper
-pkgver=0.2.3.r101.gd7f8557
+pkgver=0.2.3.r112.g5a59f3c
 pkgrel=1
 pkgdesc="A Unix CD ripper aiming for accuracy over speed -- forked from morituri"
 arch=('any')
@@ -35,8 +35,8 @@ makedepends=(
     'python2-gobject2'
     )
 optdepends=()
-provides=('morituri')
-conflicts=('morituri' 'morituri-git')
+provides=('whipper')
+conflicts=('morituri' 'whipper')
 install=$pkgname.install
 source=('git+https://github.com/JoeLametta/whipper.git')
 md5sums=('SKIP')
