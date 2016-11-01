@@ -5,14 +5,14 @@ _pkgname=nginx
 provides=('nginx')
 conflicts=('nginx')
 pkgver=1.11.5
-pkgrel=1
-pkgdesc='Lightweight HTTP1/2 server, mainline, Brotli , with Naxsi, Certificate
+pkgrel=2
+pkgdesc='Lightweight HTTP1/2 server, mainline, with Naxsi, Certificate
 Transparency and GeoIP (GeoIP Legacy) Support.'
 arch=('i686' 'x86_64')
 url='http://nginx.org'
 license=('custom')
 
-depends=('pcre' 'zlib' 'openssl' 'geoip' 'libbrotli')
+depends=('pcre' 'zlib' 'openssl' 'geoip')
 backup=('etc/nginx/fastcgi.conf'
         'etc/nginx/fastcgi_params'
         'etc/nginx/koi-win'
@@ -26,7 +26,7 @@ backup=('etc/nginx/fastcgi.conf'
 install=nginx.install
 source=($url/download/nginx-$pkgver.tar.gz
 	git+https://github.com/nbs-system/naxsi.git
-    git+https://github.com/google/ngx_brotli.git
+    #git+https://github.com/google/ngx_brotli.git
 	#git+https://github.com/aperezdc/ngx-fancyindex.git
 	git+https://github.com/openresty/headers-more-nginx-module.git
 	git+https://github.com/grahamedgecombe/nginx-ct.git
@@ -50,7 +50,6 @@ build() {
     --http-fastcgi-temp-path=/var/lib/nginx/fastcgi \
     --http-scgi-temp-path=/var/lib/nginx/scgi \
     --http-uwsgi-temp-path=/var/lib/nginx/uwsgi \
-    --with-ipv6 \
     --with-pcre-jit \
     --with-file-aio \
     --with-http_dav_module \
@@ -72,7 +71,6 @@ build() {
     --with-threads \
     --add-module=../naxsi/naxsi_src \
     --add-module=../headers-more-nginx-module \
-    --add-module=../ngx_brotli \
     --add-module=../nginx-ct
 
 
@@ -115,11 +113,9 @@ md5sums=('db43f2b19746f6f47401c3afc3924dc6'
          'SKIP'
          'SKIP'
          'SKIP'
-         'SKIP'
          'ce9a06bcaf66ec4a3c4eb59b636e0dfd'
          '3441ce77cdd1aab6f0ab7e212698a8a7')
 sha1sums=('3658724f3c6d049cd1d24f02f1acb7f9be250886'
-          'SKIP'
           'SKIP'
           'SKIP'
           'SKIP'
