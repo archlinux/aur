@@ -1,10 +1,11 @@
 pkgbase = grub2-theme-arch-leap
 	pkgdesc = Arch Linux branded theme adapted from openSUSE Leap 42.1
 	pkgver = 1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mstraube/grub2-theme-arch-leap
 	arch = any
 	license = GPL
+	license = CCPL:by-sa
 	depends = grub
 	source = https://github.com/mstraube/grub2-theme-arch-leap/archive/1.tar.gz
 	sha1sums = 0fa3aaf3957aeba7adc3e838ae08179495fc969c
