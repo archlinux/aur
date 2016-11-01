@@ -6,7 +6,7 @@ validpgpkeys=('748231EBCBD808A14F5E85D28C004C2F93481F6B')
 
 pkgname=ezquake-git
 pkgver=r4930.b1e3acb
-pkgrel=2
+pkgrel=3
 pkgdesc="One of the most Popular QuakeWorld clients for Linux/BSD/OSX/Win32. You need the retail pak files to play. (Git version)"
 url="http://ezquake.sourceforge.net/"
 license=('GPL')
@@ -31,6 +31,7 @@ source=("git+https://github.com/ezQuake/ezquake-source.git"
 	'ezquake.launcher'
 	'ezquake.desktop'
 	'ezquake.ico'
+	'pak.lst.sig'
 	'ezquake.launcher.sig'
 	'ezquake.desktop.sig'
 	'ezquake.ico.sig')
@@ -41,6 +42,7 @@ sha512sums=('SKIP'
             '32b76abde8b93a64bdf42af7dd72288eb2baa7fc07ff45e18d38a9ad0ccbc0f3617d38ae0ccf4a04a1d4d2dd4536e1d1cdd51a5560274efb347f5a17ecf4919d'
             '1d9ea83c95fb324ef87bf22a767e3a41429f5c35a456111adbc9a56d70691d587bdda6ec9ff5a9025436f5fcdad40e4959e6244425a474be2f4286bb00cd130e'
             'SKIP'
+	    'SKIP'
             'SKIP'
             'SKIP')
 pkgver() {
@@ -68,22 +70,26 @@ package() {
     install -d "${pkgdir}/opt/quake/id1/"
 
     # Make save game Directory with user group permissions
-    install -d -m775 -g users "${pkgdir}/opt/quake/qw/save/"
+    install -d -m0775 -g users "${pkgdir}/opt/quake/qw/save/"
 
     # Install Icon
-    install -D -m644 "${srcdir}/ezquake.ico" \
+    install -D -m0644 "${srcdir}/ezquake.ico" \
         "${pkgdir}/usr/share/pixmaps/ezquake.ico"
 
     # Install Launcher
-    install -D -m755 "${srcdir}/ezquake.launcher" \
+    install -D -m0755 "${srcdir}/ezquake.launcher" \
         "${pkgdir}/usr/bin/ezquake"
 
     # Install Desktop
-    install -D -m644 "${srcdir}/ezquake.desktop" \
+    install -D -m0644 "${srcdir}/ezquake.desktop" \
         "${pkgdir}/usr/share/applications/ezquake.desktop"
 
     # Install Binary
-    install -D -m755 "${srcdir}/ezquake-source/ezquake-linux-$(uname -m)" \
+    install -D -m0755 "${srcdir}/ezquake-source/ezquake-linux-$(uname -m)" \
         "${pkgdir}/opt/quake/ezquake-linux"
+
+    # Install pak.lst
+    install -D -m0755 "${srcdir}/pak.lst"\
+	"${pkgdir}/opt/quake/ezquake/pak.lst"
 }
 
