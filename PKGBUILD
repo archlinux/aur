@@ -1,5 +1,5 @@
 # Maintainer: Jingbei Li <i@jingbei.lli>
-pkgname='torch7-cunn-git'
+pkgname='torch7-nngraph-git'
 pkgdesc='Graph Computation for nn'
 pkgver=r211.f6aeb88
 pkgrel=1
