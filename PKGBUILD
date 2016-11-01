@@ -3,27 +3,29 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=ttf-oxygen-git
-pkgver=5.3.90.r168.4a2d1f7
+pkgver=5.4.90.r170.5f935c7
 pkgrel=1
-pkgdesc="A desktop/gui font family for integrated use with the KDE desktop. (GIT version)"
-arch=('any')
-license=('custom:OFL')
-url='https://projects.kde.org/projects/playground/artwork/oxygen-fonts'
-makedepends=('git' 'cmake' 'extra-cmake-modules' 'fontforge')
-provides=('ttf-oxygen')
+pkgdesc="A desktop/gui font family for integrated use with the KDE desktop"
+url='https://projects.kde.org/projects/kde/workspace/oxygen-fonts'
+arch=('i686' 'x86_64') # CMake files are arch-dependent
+license=('custom:OFL' 'GPL' 'custom:GPL+FE')
+depends=('fontconfig' 'xorg-fonts-encodings' 'xorg-font-utils')
+makedepends=('git' 'extra-cmake-modules' 'fontforge')
+provides=('ttf-oxygen' 'ttf-font')
 conflicts=('ttf-oxygen')
+options=('!emptydirs')
+install=${pkgname}.install
 source=('git://anongit.kde.org/oxygen-fonts.git')
 sha1sums=('SKIP')
-install=ttf-oxygen-git.install
 
 pkgver() {
   cd oxygen-fonts
-  _ver="$(cat CMakeLists.txt | grep -m1 PROJECT_VERSION | cut -d '"' -f2)"
+  _ver="$(grep -m1 PROJECT_VERSION CMakeLists.txt | cut -d '"' -f2)"
   echo "${_ver}.r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
 }
 
 prepare() {
-  mkdir -p build
+  mkdir build
 }
 
 build() {
@@ -37,5 +39,15 @@ build() {
 }
 
 package() {
-  make -C build DESTDIR="${pkgdir}" install
+  cd build
+  make DESTDIR="${pkgdir}" install
+
+  # Fix install path
+  install -d "${pkgdir}"/usr/share/fonts/TTF
+  mv "${pkgdir}"/usr/share/fonts/truetype/oxygen/*.ttf \
+    "${pkgdir}"/usr/share/fonts/TTF/
+
+  install -d "${pkgdir}"/usr/share/licenses/${pkgname}
+  install -m644 "${srcdir}"/oxygen-fonts/COPYING-{GPL+FE.txt,OFL} \
+    "${pkgdir}"/usr/share/licenses/${pkgname}
 }

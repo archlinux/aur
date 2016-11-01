@@ -1,8 +1,8 @@
 post_install() {
   echo -n "Updating font cache... "
   fc-cache -s
-  mkfontscale /usr/share/fonts/truetype/oxygen
-  mkfontdir /usr/share/fonts/truetype/oxygen
+  mkfontscale /usr/share/fonts/TTF
+  mkfontdir /usr/share/fonts/TTF
   echo "done."
 }
 
