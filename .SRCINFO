@@ -1,15 +1,15 @@
 pkgbase = ttf-dosega
 	pkgdesc = An exact copy of the DOS EGA font, by Mateusz Viste
-	pkgver = 20100605
+	pkgver = 20150901
 	pkgrel = 1
-	url = http://www.viste-family.net/mateusz/dos/en/dosega.htm
+	url = http://dosega.sourceforge.net
 	install = ttf-dosega.install
 	arch = any
 	license = CC-BY-SA
 	depends = xorg-font-utils
 	depends = fontconfig
-	source = http://www.viste-family.net/mateusz/dos/dosega.zip
-	md5sums = f15bcb0a9d2479b629427ec573eb3b29
+	source = http://downloads.sourceforge.net/dosega/DOSEGA-20150901.zip
+	md5sums = f4311c29c7060bc39ac2d9dfcc04910e
 
 pkgname = ttf-dosega
 
