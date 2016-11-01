@@ -3,21 +3,19 @@
 
 pkgname=babeltrace
 pkgver=1.4.0
-pkgrel=2
+pkgrel=3
 pkgdesc="command-line trace reader for LTTng"
 arch=('i686' 'x86_64')
 url="http://diamon.org/babeltrace"
 license=('MIT' 'GPL2' 'LGPL2.1')
 depends=('popt' 'util-linux' 'glib2>=2.22.0' 'elfutils>=0.154')
-options=('!libtool')
 source=(http://www.efficios.com/files/${pkgname}/${pkgname}-${pkgver}.tar.bz2)
-install='babeltrace.install'
 sha1sums=('3b162480ee883625e8581bf163817f78a4b6487b')
 
 build()
 {
     cd ${srcdir}/${pkgname}-${pkgver}
-    ./configure --prefix=/usr --enable-debug-info --disable-python-bindings
+    ./configure --prefix=/usr --enable-debug-info
     make
 }
 
