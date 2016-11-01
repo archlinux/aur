@@ -11,7 +11,7 @@ validpgpkeys=('748231EBCBD808A14F5E85D28C004C2F93481F6B')
 
 pkgname=('nquake')
 pkgver=2.5
-pkgrel=1
+pkgrel=2
 pkgdesc="The easiest, quickest, and most popular QuakeWorld client."
 url="http://nquake.sourceforge.net/"
 license=('GPL2' 'Custom:CC0-1.0' '')
@@ -33,6 +33,7 @@ source=("${_nQ_MIRROR}/gpl.zip"
 	"${_nQ_MIRROR}/addon-textures.zip"
 	"${_nQ_MIRROR}/addon-clanarena.zip"
 	"${_nQ_MIRROR}/addon-fortress.zip"
+	"${_nQ_MIRROR}/qsw106.zip"
 	"CC0-1.0::https://creativecommons.org/publicdomain/zero/1.0/legalcode.txt"
 	"gpl.zip.sig"
 	"non-gpl.zip.sig"
@@ -40,7 +41,10 @@ source=("${_nQ_MIRROR}/gpl.zip"
 	"addon-textures.zip.sig"
 	"addon-clanarena.zip.sig"
 	"addon-fortress.zip.sig"
-	"CC0-1.0.sig")
+	"CC0-1.0.sig"
+	"qsw106.zip.sig")
+
+noextract=('qsw106.zip')
 
 sha512sums=('5dee11708c593201e4cfb85e9c4ecbaf76e22eb076da1544af06da31680c6271352ef3489f6f07a36136629822c7ede47c2ad469c5de0a3dca0cd9b99b9d5b63'
             '2672acedf39b27c189ca43ec59f643b2073b0629fbcb24aa3de9fe84219207321619f748ca7d2cf398d48728faadb04ed07814e290eb4ef28e51224f1777a7cf'
@@ -48,6 +52,7 @@ sha512sums=('5dee11708c593201e4cfb85e9c4ecbaf76e22eb076da1544af06da31680c6271352
             '693379acc3c0204b810ab31aeaaedbb6d8659fd2140e3874f463bde3af5009a161d76b1dbd2f970e151ebae1f323848a937b8209cf2172c6251578edcad1753b'
             '96dca06af3f1044816247596c75876fabb5a7d9585229f43e85552872ef5b4c754a830fd7f83d6107c0e3df62951ee952bb36b5a184b74a8b1870125c3d23dad'
             'a15cbd4ccf2a3d87e0ec9f6f6f4546e2a68a0f03a516bac47d0965bc6affaf902669db0824619634dc19698698d40ef72325da33ea2c78437c45bd19bd2c8138'
+	    '32df717a4a8f121358243333c30d8d0e5d43ee04f3ee8175a894199b8932e90ebedc6b687c25207c6191dbf25363307f09f8c1dc767b58e254e015c150217384'
             '1eb4436f8d58766cbe99db97e5e8c0db8a706376afd291c337de1ba7a6b066d3791dc85ad034bdd54ea336bed6e6e8e7a037d8b04b2773c9c7517b9d9921d1fa'
             'SKIP'
             'SKIP'
@@ -55,7 +60,12 @@ sha512sums=('5dee11708c593201e4cfb85e9c4ecbaf76e22eb076da1544af06da31680c6271352
             'SKIP'
             'SKIP'
             'SKIP'
-            'SKIP')
+            'SKIP'
+	    'SKIP')
+
+prepare () {
+	unzip -j "qsw106.zip" "ID1/PAK0.PAK"
+}
 
 package () {
 ## BASE ##
@@ -82,6 +92,9 @@ package () {
 	cp -a ${srcdir}/ezquake/configs ${pkgdir}/opt/quake/ezquake/.  # actually part of the linux.zip, not gpl.zip
 
 	ln -sf /usr/bin/ezquake ${pkgdir}/usr/bin/nquake
+
+## DEMO DATA ##
+	install -D -m 0644 ${srcdir}/PAK0.PAK ${pkgdir}/opt/quake/id1/pak0.pak
 
 ## NON-FREE ##
 	# Most of these files are in non-gpl.zip
