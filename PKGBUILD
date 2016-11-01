@@ -12,7 +12,7 @@ pkgbase=kodi-pre-release
 pkgname=('kodi-pre-release' 'kodi-eventclients-pre-release')
 pkgver=17.0b5
 _codename=Krypton
-pkgrel=3
+pkgrel=4
 arch=('i686' 'x86_64')
 url="http://kodi.tv"
 license=('GPL2')
@@ -59,7 +59,6 @@ build() {
   export PYTHON_VERSION=2  # external python v2
   ./configure --prefix=/usr --exec-prefix=/usr \
     --disable-debug \
-    --disable-shared-libraries \
     --enable-libbluray \
     --with-lirc-device=/run/lirc/lircd \
     ac_cv_lib_bluetooth_hci_devid=no \
