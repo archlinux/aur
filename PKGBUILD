@@ -3,7 +3,7 @@
 # Contributor: Angus Gibson <darthshrine@gmail.com>
 
 pkgname=ipbt
-pkgver=20141026.2197432
+pkgver=20160908.4a07ab0
 pkgrel=1
 pkgdesc="A high-tech ttyrec player"
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ url="http://www.chiark.greenend.org.uk/~sgtatham/ipbt/"
 license=('MIT')
 depends=('ncurses' 'perl')
 source=("http://www.chiark.greenend.org.uk/~sgtatham/ipbt/$pkgname-$pkgver.tar.gz")
-md5sums=('aee6263c862c102f12cab1ae544d75a9')
+md5sums=('ce196b7bdd348c65bf247bdd595959dd')
 
 build() {
 	cd $srcdir/$pkgname-$pkgver
