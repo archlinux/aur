@@ -1,7 +1,7 @@
 # Maintainer: Conor Anderson <conor.anderson@mail.utoronto.ca>
 pkgname=wire-desktop-git
 _pkgname=wire-desktop
-pkgver=2.11.2665.r0.g3f4c0dd
+pkgver=2.11.2668.r0.gb724780
 pkgrel=1
 pkgdesc='Modern communication, full privacy.'
 arch=('x86_64' 'i686')
@@ -13,8 +13,8 @@ makedepends=('npm' 'nodejs-grunt-cli' 'gendesk' 'python2')
 provides=('wire-desktop')
 source=("git://github.com/wireapp/wire-desktop.git"
         "Gruntfile.patch")
-sha256sums=(SKIP
-            'fc8a2d5badde0b3049df843f497a999a8cfeff05a261343d9094d3ba35ca4202')
+sha256sums=('SKIP'
+            'ca467ed7cf823e1a47cc123793bae4fc536b3a44b0013c3cb30f8b8b37909dec')
 
 pkgver() {
   cd ${srcdir}/${_pkgname}
@@ -30,7 +30,7 @@ prepare() {
 build() {
   cd ${srcdir}/${_pkgname}
   npm install
-  grunt linux-prod
+  grunt linux-local
 }
 
 package() {
