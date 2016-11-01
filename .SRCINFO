@@ -1,0 +1,18 @@
+pkgbase = ruby-apipie-bindings
+	pkgdesc = A swift, liberal HTML parser with a fantastic library
+	pkgver = 0.0.18
+	pkgrel = 1
+	url = http://code.whytheluckystiff.net/hpricot/
+	arch = any
+	license = MIT
+	depends = ruby
+	depends = ruby-json
+	depends = ruby-oauth
+	depends = ruby-rest-client
+	noextract = apipie-bindings-0.0.18.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/apipie-bindings-0.0.18.gem
+	sha1sums = c87bd6c433cb350f38a2ca5768043acad25a6dba
+
+pkgname = ruby-apipie-bindings
+
