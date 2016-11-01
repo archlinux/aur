@@ -1,8 +1,8 @@
 # Maintainer: petRUShka <petrushkin@yandex.ru>
 
 pkgname=nuvola-app-yandex-music-git
-pkgver=r9.996782a
-pkgrel=2
+pkgver=r10.cce65a0
+pkgrel=1
 pkgdesc="Yandex Music integration for Nuvola Player."
 arch=("any")
 url="https://github.com/tiliado/nuvola-app-yandex-music"
@@ -10,7 +10,7 @@ license=('custom:BSD')
 depends=('nuvolaplayer')
 provides=('nuvola-app-yandex-music')
 conflicts=('nuvola-app-yandex-music')
-makedepends=('git')
+makedepends=('git' 'scour')
 source=("${pkgname}::git+https://github.com/tiliado/nuvola-app-yandex-music.git")
 sha256sums=('SKIP')
 
