@@ -2,8 +2,8 @@
 # Contributor: David Roheim < david dot roheim at gmail dot com >
 # Contributor: Thomas Dziedzic < gostrc at gmail >
 
-# Set to 1 to enable usermode support
-_with_usermode=0
+# Uncomment to enable usermode support
+#_with_usermode=1
 
 pkgname=mock
 _pkgver=1.3.2
@@ -44,9 +44,9 @@ prepare() {
 build() {
 	cd "$pkgname-$pkgver"
 
-	python_sitelib=$(python -c "from distutils.sysconfig import get_python_lib; import sys; sys.stdout.write(get_python_lib())")
+	python_sitelib=$(python -c 'from distutils.sysconfig import get_python_lib; import sys; sys.stdout.write(get_python_lib())')
 	sed -r -i py/${pkgname}{,chain}.py \
-	    -e 's|^__VERSION__\s*=.*|__VERSION__="'$pkgver'"|' \
+	    -e 's|^__VERSION__\s*=.*|__VERSION__="'$_pkgver'"|' \
 	    -e 's|^SYSCONFDIR\s*=.*|SYSCONFDIR="'$_sysconfdir'"|' \
 	    -e 's|^PYTHONDIR\s*=.*|PYTHONDIR="'$python_sitelib'"|' \
 	    -e 's|^PKGPYTHONDIR\s*=.*|PKGPYTHONDIR="'$python_sitelib'/mockbuild"|'
@@ -77,7 +77,7 @@ package() {
 	install -d "$pkgdir/$_sysconfdir/"pki/mock
 	cp -a etc/pki/* "$pkgdir/$_sysconfdir/"pki/mock/
 
-	python_sitelib=$(python -c "from distutils.sysconfig import get_python_lib; import sys; sys.stdout.write(get_python_lib())")
+	python_sitelib=$(python -c 'from distutils.sysconfig import get_python_lib; import sys; sys.stdout.write(get_python_lib())')
 	install -d "$pkgdir/$python_sitelib/"
 	cp -a py/mockbuild "$pkgdir/$python_sitelib/"
 
