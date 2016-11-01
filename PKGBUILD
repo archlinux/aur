@@ -2,13 +2,13 @@
 
 _pkgname=lxqt-l10n
 pkgname=$_pkgname-git
-pkgver=0.10.95.23.g7ea85f6
+pkgver=0.11.0.85.g72a5ce5
 pkgrel=1
 pkgdesc='Translations of all components maintained by the LXQt project'
 arch=('any')
 url='https://github.com/lxde/lxqt-l10n'
 license=('LGPL')
-makedepends=('git' 'cmake' 'liblxqt-git' 'qt5-tools')
+makedepends=('git' 'cmake' 'lxqt-build-tools-git' 'qt5-tools')
 provides=("$_pkgname")
 conflicts=("$_pkgname" "compton-conf"{,-git} "libfm-qt"{,-git} "liblxqt"{,-git} "lximage-qt"{,-git}
           "lxqt-about"{,-git} "lxqt-admin"{,-git} "lxqt-config"{,-git} "lxqt-globalkeys"{,-git}
