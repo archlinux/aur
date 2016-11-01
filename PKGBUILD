@@ -1,58 +1,55 @@
-# Maintainer: Jakob Gahde <j5lx@fmail.co.uk>
+# Maintainer: Ondrej Patrovic <ondrej@patrovic.com>
 pkgname=010editor
-pkgver=6.0.2
+pkgver=7.0.2
 pkgrel=1
 pkgdesc="Professional text and hex editing with Binary Templates technology"
 arch=('i686' 'x86_64')
 url="http://www.sweetscape.com/010editor/"
-license=('custom:proprietary')
-depends=('qt4')
-source=("010editor.desktop")
-md5sums=('4cff010c132fdd24399e5dd57834b93b')
+license=('custom')
+depends=('qt5-tools')
+makedepends=('fakechroot')
+options=(!strip)
 
-if [[ ${CARCH} = x86_64 ]]; then
-	source+=("http://www.sweetscape.com/download/010EditorLinux64Installer.tar.gz")
-	md5sums+=('ac3cea47802cb21033cca185c7164236')
-	_installer="010EditorLinux64Installer"
-else
-	source+=("http://www.sweetscape.com/download/010EditorLinux32Installer.tar.gz")
-	md5sums+=('aa3b511927b7bd81e0d285fec497a274')
-	_installer="010EditorLinux32Installer"
-fi
+source=('010editor.desktop')
+sha256sums=('e3398b117934840828a96cd33534fc9b9242ec96089c2f283add137975499766')
 
-build() {
-    cd "${srcdir}"
-    
-    [[ -d prefix ]] && rm -rf prefix
-    mkdir prefix
-    
-    msg2 "Running the installer"
-    ./${_installer} --mode silent --prefix ${PWD}/prefix
-}
+source_i686=('http://www.sweetscape.com/download/010EditorLinux32Installer.tar.gz')
+source_x86_64=('http://www.sweetscape.com/download/010EditorLinux64Installer.tar.gz')
+
+sha256sums_i686=('f3c7f202f4a34e5b3b125acef4bc4dbd6604814d106d4820f2a60563c0097ba1')
+sha256sums_x86_64=('f44d4091327264ffa57f0ba2a0a3d50a92f735e41ca71ffc8fc2330d2dafab1c')
 
 package() {
-    cd "${srcdir}/prefix"
+	cd "${srcdir}"
 
-    install -dm755 "${pkgdir}/opt/${pkgname}/Data/"
-    install -dm755 "${pkgdir}/opt/${pkgname}/ext/"
-    install -dm755 "${pkgdir}/usr/share/doc/${pkgname}/"
-    install -dm755 "${pkgdir}/usr/bin"
+	_source=source_${CARCH}
+	_filename=${!_source##*/}
+	_installer=${_filename%%.*}
 
-    install -Dm644 "010Editor.qch" \
-                   "010Editor.qhc" \
-                   "010_icon_128x128.png" \
-                   "010editor.news" \
-                   "${pkgdir}/opt/${pkgname}/"
-    install -Dm644 Data/*      "${pkgdir}/opt/${pkgname}/Data/"
-    install -Dm644 ext/*       "${pkgdir}/opt/${pkgname}/ext/"
-    install -Dm755 "010editor" "${pkgdir}/opt/${pkgname}/010editor"
-    install -Dm644 "Changes.txt" \
-                   "Readme.txt" \
-                   "${pkgdir}/usr/share/doc/${pkgname}/"
-    install -Dm644 "license.txt" "${pkgdir}/usr/share/licenses/${pkgname}/license.txt"
-    ln -s "/usr/bin/assistant-qt4" "${pkgdir}/opt/${pkgname}/assistant"
+	install -dm 755 "${pkgdir}/opt"
 
-    install -Dm644 "010_icon_128x128.png" "${pkgdir}/usr/share/pixmaps/010editor.png"
-    install -Dm644 "${srcdir}/010editor.desktop" "${pkgdir}/usr/share/applications/010editor.desktop"
-    ln -s "/opt/${pkgname}/010editor" "${pkgdir}/usr/bin/010editor"
+	msg "Entering fakechroot environment..."
+	msg2 "Running installer..."
+
+	mkdir "${pkgname}-${pkgver}"
+	ln -s {/etc,/tmp} "${_}/"
+	ln -s "${pkgdir}/opt" "${_}/"
+	ln -s "${srcdir}/${_installer}" "${_}/"
+
+	fakechroot -s chroot "${_}" \
+		./${_installer} --mode silent --prefix "/opt/${pkgname}"
+
+	# Clean up unnecessary items (assitant is part of qt5-tools)
+	rm -r "${pkgdir}/opt/${pkgname}/"{'assistant','uninstall'}
+
+	install -dm 755 "${pkgdir}/usr/bin"
+	ln -s "/opt/${pkgname}/010editor" "${_}/010editor"
+
+	install -dm 755 "${pkgdir}/usr/share/pixmaps"
+	ln -s "/opt/${pkgname}/010_icon_128x128.png" "${_}/010editor.png"
+
+	install -dm 755 "${pkgdir}/usr/share/licenses/${pkgname}"
+	ln -s "/opt/${pkgname}/license.txt" "${_}/license.txt"
+
+	install -Dm 644 '010editor.desktop' "${pkgdir}/usr/share/applications/010editor.desktop"
 }
