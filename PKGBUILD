@@ -7,6 +7,7 @@ arch=('any')
 url='http://www.virtualbox.org/'
 license=('custom:PUEL')
 options=('!strip')
+conflicts=('virtualbox-ext-oracle')
 install=virtualbox-ext-oracle.install
 source=("http://download.virtualbox.org/virtualbox/$pkgver/Oracle_VM_VirtualBox_Extension_Pack-$pkgver.vbox-extpack")
 noextract=("Oracle_VM_VirtualBox_Extension_Pack-$pkgver.vbox-extpack")
