@@ -1,6 +1,6 @@
 pkgbase = wire-desktop-git
 	pkgdesc = Modern communication, full privacy.
-	pkgver = 2.11.2665.r0.g3f4c0dd
+	pkgver = 2.11.2666.r2.g5506ec2
 	pkgrel = 1
 	url = https://wire.com/
 	arch = x86_64
