@@ -20,7 +20,7 @@ license=('LGPL')
 url="https://www.qt.io/"
 _pkgfqn="${_qt_module}-opensource-src-$pkgver"
 source=("https://download.qt.io/official_releases/qt/${pkgver:0:3}/$pkgver/submodules/qtserialport-opensource-src-$pkgver.tar.xz")
-md5sums=('f93cc8b36964c6aa965c27c3acd12f82')
+md5sums=('b3058aac0e652e03144fb2a3ca9ad740')
 
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
 [[ $NO_STATIC_LIBS ]] || \
