@@ -8,6 +8,7 @@ pkgdesc="Dropbox icons for Plasma 5 Light Panels"
 arch=('any')
 url="https://github.com/x11tete11x/dropbox-plasma-light-icons"
 license=('GPL')
+makedepends=('git')
 depends=('hicolor-icon-theme' 'dropbox')
 conflicts=('dropbox-kfilebox-icons'
            'dropbox-plasma-dark-icons-git')           
