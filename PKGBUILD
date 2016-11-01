@@ -2,16 +2,16 @@
 
 pkgname=keyringer
 pkgver=0.3.8
-pkgrel=1
+pkgrel=2
 pkgdesc="Encrypted and distributed secret sharing software"
 arch=(any)
 url="https://keyringer.pw"
 license=(GPL3)
 depends=(gnupg git)
-source=("git://git.sarava.org/$pkgname#tag=$pkgver")
+source=("https://keyringer.pw/releases/$pkgname-$pkgver.tar.bz2")
 
 package() {
-    cd "$srcdir/$pkgname"
+    cd "$srcdir/$pkgname-$pkgver"
     make PREFIX=/usr DESTDIR="$pkgdir" install
 }
-md5sums=('SKIP')
+md5sums=('ebda1afd538184fd510dcbafc11dc08a')
