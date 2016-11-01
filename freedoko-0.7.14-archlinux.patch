@@ -155,3 +155,15 @@
  Path=
  Icon=FreeDoko
  Categories=Application;Game;CardGame;
+
+--- src/ui/gtkmm/widgets/scaled_pixbuf.cpp	2016-11-01 15:23:08.166213480 +0100
++++ src/ui/gtkmm/widgets/scaled_pixbuf.cpp	2016-11-01 15:28:55.139358063 +0100
+@@ -254,7 +254,7 @@
+    **/
+     ScaledPixbuf::operator bool() const
+     {
+-      return this->orig_pixbuf_;
++      return static_cast<bool>(this->orig_pixbuf_);
+     } // ScaledPixbuf::operator bool() const
+ 
+   /**

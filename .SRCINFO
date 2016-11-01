@@ -1,7 +1,7 @@
 pkgbase = freedoko
 	pkgdesc = Free version of the german card game Doppelkopf
 	pkgver = 0.7.14
-	pkgrel = 4
+	pkgrel = 5
 	url = http://free-doko.sourceforge.net/en/FreeDoko.html
 	arch = i686
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = freedoko
 	source = http://downloads.sourceforge.net/free-doko/FreeDoko_0.7.14.src.zip
 	source = freedoko-0.7.14-archlinux.patch
 	sha1sums = 178d351adf7cf70f5c5fa132a2b468645dac670d
-	sha1sums = 33f2c8d1cfbecb3b1d86b694535a333b644c72fa
+	sha1sums = 8b80914baaacc4b3034c7953cb98f893475d448c
 
 pkgname = freedoko
 
