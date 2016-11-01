@@ -33,7 +33,8 @@ package() {
 }
 package_01_locate() {
   msg2 'Locating extension...'
-  cd "$(find -name 'metadata.json' -execdir test -e extension.js \; -printf %h -quit)"
+  cd "$(find -name 'metadata.json' -execdir test -e extension.js \; \
+    -printf '%C@ %h\n' | sort -nr | sed 's/^.* //;q' )"
   extname=$(grep -Po '(?<="uuid": ")[^"]*' metadata.json)
   destdir="$pkgdir/usr/share/gnome-shell/extensions/$extname"
 }
