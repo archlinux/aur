@@ -3,7 +3,7 @@
 pkgname=dropbox-plasma-light-icons-git
 _pkgname=dropbox-plasma-light-icons
 pkgver=20161008
-pkgrel=1
+pkgrel=2
 pkgdesc="Dropbox icons for Plasma 5 Light Panels"
 arch=('any')
 url="https://github.com/x11tete11x/dropbox-plasma-light-icons"
