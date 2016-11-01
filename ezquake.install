@@ -1,6 +1,7 @@
 
 post_install() {
-    echo ">>> You need the retail pak0.pak and pak1.pak in order to play."
+    echo ">>> You need the demo/shareware pak0.pak (included in the nquake AUR package)"
+    ecgo ">>> and pak1.pak (retail) in order to play."
     echo ">>>   Copy or symlink them into /opt/quake/id1/"
 }
 
