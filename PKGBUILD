@@ -1,7 +1,8 @@
+# Maintainer: Husam Bilal <husam212@gmail.com>
 # Contributor: henning mueller <henning@orgizm.net>
 
 pkgname=ruby-libvirt
-pkgver=0.6.0
+pkgver=0.7.0
 pkgrel=1
 pkgdesc='Ruby bindings for libvirt.'
 arch=(i686 x86_64)
@@ -29,4 +30,4 @@ package() {
     -i "$pkgdir$_gemdir" \
     pkg/$pkgname-$pkgver.gem
 }
-sha256sums=('18ccacf3b3be3912b326a910c4c148c4ff5428ac2bff7d35a93eed786a17404c')
+sha256sums=('6d4bb093dc8bab0ec7cb827a95f0a61157238e694c04393597e9380b03229a0a')
