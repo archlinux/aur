@@ -2,13 +2,13 @@
 # Contributer: Peter Sutton (foxxy) <foxxy@foxdogstudios.com>
 
 pkgname=ngrok
-pkgver=2.1.14
+pkgver=2.1.18
 pkgrel=1
 pkgdesc='A tunneling, reverse proxy for developing and understanding networked, HTTP services'
 url='https://ngrok.com'
 license=('Apache')
 source=("https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-linux-amd64.zip")
-sha256sums=('17ba5dc5f3232042bf2600606f17435fdcb8c4704a9a057db1edb02bac754afc')
+sha256sums=('0165a266388e80b467d6f97fcc42baa51da262c467b99bfb79305d7b6dd22b94')
 arch=('i686' 'x86_64')
 
 package() {
