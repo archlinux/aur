@@ -1,7 +1,7 @@
-# Maintainer: Rainmaker <rainmaker52@gmail.com>
+# Maintainer: Gaweł Kazimierczuk <kazi@kazigk.pl>
 # Original script by: M0Rf30
 
-pkgname=virtualbox-bin
+pkgname='virtualbox-bin-5.0'
 pkgver=5.0.24
 _build=108355
 pkgrel=1
