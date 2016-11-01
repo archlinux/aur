@@ -1,5 +1,5 @@
 pkgbase = wire-desktop-git
-	pkgdesc = Modern communication, full privacy.
+	pkgdesc = Modern, private messenger. Based on Electron.
 	pkgver = 2.11.2668.r0.gb724780
 	pkgrel = 1
 	url = https://wire.com/
@@ -7,7 +7,7 @@ pkgbase = wire-desktop-git
 	arch = i686
 	license = GPL3
 	makedepends = npm
-	makedepends = nodejs-grunt-cli
+	makedepends = grunt-cli
 	makedepends = gendesk
 	makedepends = python2
 	depends = nss
@@ -20,9 +20,7 @@ pkgbase = wire-desktop-git
 	conflicts = wire-desktop-bin
 	conflicts = wire-desktop
 	source = git://github.com/wireapp/wire-desktop.git
-	source = Gruntfile.patch
 	sha256sums = SKIP
-	sha256sums = ca467ed7cf823e1a47cc123793bae4fc536b3a44b0013c3cb30f8b8b37909dec
 
 pkgname = wire-desktop-git
 
