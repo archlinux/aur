@@ -14,8 +14,10 @@ makedepends=('cmake' 'doxygen')
 conflicts=('grantlee-qt5')
 provides=('grantlee-qt5')
 replaces=('grantlee-qt5')
-source=("http://downloads.grantlee.org/grantlee-$pkgver.tar.gz")
-md5sums=('57989ae9f7c113e682ef1713a6f1e92a')
+source=("http://downloads.grantlee.org/grantlee-$pkgver.tar.gz"{,.asc}) # Stephen Kelly <steveire@gmail.com>
+md5sums=('57989ae9f7c113e682ef1713a6f1e92a'
+         'SKIP')
+validpgpkeys=(FCA530E51EE4331C2DF16637D264C7B1D02D6509)
 
 prepare() {
   mkdir -p build
