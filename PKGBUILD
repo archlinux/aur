@@ -3,7 +3,7 @@
 pkgname=vpndemon
 pkgver=1.0
 pkgrel=4
-pkgdesc="VPNKS protects you against leaks caused by disconnetction"
+pkgdesc="a vpn killswitc MUST BE RUN AS ROOT"
 arch=('any')
 url="https://github.com/primaryobjects/vpndemon"
 license=('GPL')

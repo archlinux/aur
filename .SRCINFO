@@ -1,5 +1,5 @@
 pkgbase = vpndemon
-	pkgdesc = VPNKS protects you against leaks caused by disconnetction
+	pkgdesc = a vpn killswitc MUST BE RUN AS ROOT
 	pkgver = 1.0
 	pkgrel = 4
 	url = https://github.com/primaryobjects/vpndemon
