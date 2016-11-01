@@ -12,11 +12,11 @@ license=('GPL3')
 depends=('gtk-update-icon-cache' 'hicolor-icon-theme')
 optdepends=( #'moka-icon-theme-git: Arc icon theme was built to be used on top of Moka icon theme'
              #'faba-icon-theme: Smaller version of moka with no application icons'
-            'elementary: Secondary icon theme fallback')
+            'elementary: Secondary icon theme fallback'
+            'arc-gtk-theme: gtk theme of arc')
 options=('!emptydirs' '!strip')
-source=("https://github.com/horst3180/${pkgname}/archive/${pkgver}.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/horst3180/${pkgname}/archive/${pkgver}.tar.gz")
 sha512sums=('cb5ae5b828c2945614885672d2bd741dffe7cd77c0b7bf2d060bdcac046b7cee7dc5c6643e51bd2954b54d40aa05afddc555e2a1523ba8443cedf7997ad218d1')
-conflicts=('arc-icon-theme-git')
 
 prepare() {
     # Add moka, faba and elementary theme as fallback theme
