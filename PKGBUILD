@@ -1,7 +1,7 @@
 # Maintainer: Adria Arrufat <adria.arrufat+AUR@protonmail.ch>
 # Contributor: Philipp Trommler <ph.trommler@gmail.com>
 pkgname=valum
-pkgver=v0.2.6+482+ga066e6d
+pkgver=0.2.6+482+ga066e6d
 pkgrel=1
 pkgdesc="Web micro-framework written in Vala"
 arch=("i686" "x86_64")
@@ -18,7 +18,7 @@ md5sums=("SKIP")
 
 pkgver() {
   cd ${pkgname}
-  git describe --tags | sed 's/-/+/g'
+  git describe --tags | sed 's/-/+/g;s/^v//'
 }
 
 build() {
