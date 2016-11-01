@@ -1,14 +1,14 @@
 # Maintainer: jjacky
 pkgname=slicd
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="simple lightweight Linux cron daemon"
 arch=('i686' 'x86_64')
-url="http://jjacky.com/slicd"
+url="https://jjacky.com/slicd"
 license=('GPL3+')
-makedepends=('skalibs')
-source=(http://jjacky.com/$pkgname/$pkgname-$pkgver.tar.gz)
-sha256sums=('cf57256b9f7216a0143d761982f026c84a13e5908649c9219360ea6ce0f190ad')
+makedepends=('skalibs>=2.4.0.0')
+source=(https://jjacky.com/$pkgname/$pkgname-$pkgver.tar.gz)
+sha256sums=('da0d5fb624f3c7e293f49fd83a19a1085c955dbe5c13303da8d3cfe52263ec73')
 
 build() {
   cd "$pkgname-$pkgver"
