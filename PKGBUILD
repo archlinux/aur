@@ -10,7 +10,7 @@ depends=('openssl' 'lzo' 'iproute2' 'libsystemd' 'pkcs11-helper')
 optdepends=('easy-rsa: easy CA and certificate handling')
 makedepends=('systemd')
 license=('custom')
-source=(http://swupdate.openvpn.net/community/releases/openvpn-${pkgver}.tar.xz{,.asc}
+source=(https://swupdate.openvpn.net/community/releases/openvpn-${pkgver}.tar.xz{,.asc}
         openvpn@.service)
 sha256sums=('13b963414e2430215981868c77b9795d93653ee535a2d73576f7bb2c28200abc'
             'SKIP'
