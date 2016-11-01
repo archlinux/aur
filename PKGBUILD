@@ -11,8 +11,8 @@ arch=('any')
 url="http://pypi.python.org/pypi/speaklater"
 license=("BSD")
 makedepends=('python2-setuptools' 'python-setuptools')
-source=("http://pypi.python.org/packages/source/s/speaklater/speaklater-${pkgver}.tar.gz")
-md5sums=("e8d5dbe36e53d5a35cff227e795e8bbf")
+source=("https://pypi.io/packages/source/s/speaklater/speaklater-${pkgver}.tar.gz")
+md5sums=('e8d5dbe36e53d5a35cff227e795e8bbf')
 
 prepare() {
     cp -R speaklater-$pkgver python2-speaklater-$pkgver
