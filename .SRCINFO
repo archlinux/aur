@@ -1,5 +1,5 @@
 pkgbase = ttf-oxygen
-	pkgdesc = The Oxygen font family. A desktop/gui font family for integrated use with the KDE desktop
+	pkgdesc = A desktop/gui font family for integrated use with the KDE desktop
 	pkgver = 5.4.3
 	pkgrel = 1
 	epoch = 1
@@ -11,7 +11,6 @@ pkgbase = ttf-oxygen
 	license = GPL
 	license = custom:GPL+FE
 	makedepends = extra-cmake-modules
-	makedepends = qt5-base
 	makedepends = fontforge
 	depends = fontconfig
 	depends = xorg-fonts-encodings

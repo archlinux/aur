@@ -1,5 +1,5 @@
-# $Id$
-# Maintainer: Felix Yan <felixonmars@archlinux.org>
+# Maintainer: Michael Straube <michael_straube@web.de>
+# Contributor: Felix Yan <felixonmars@archlinux.org>
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 # Contributor: Antonio Rojas <arojas@archlinux.org>
 
@@ -7,12 +7,12 @@ pkgname=ttf-oxygen
 epoch=1
 pkgver=5.4.3
 pkgrel=1
-pkgdesc='The Oxygen font family. A desktop/gui font family for integrated use with the KDE desktop'
+pkgdesc='A desktop/gui font family for integrated use with the KDE desktop'
 url='https://projects.kde.org/projects/kde/workspace/oxygen-fonts'
 arch=('i686' 'x86_64') # CMake files are arch-dependent
 license=('custom:OFL' 'GPL' 'custom:GPL+FE')
 depends=('fontconfig' 'xorg-fonts-encodings' 'xorg-font-utils')
-makedepends=('extra-cmake-modules' 'qt5-base' 'fontforge')
+makedepends=('extra-cmake-modules' 'fontforge')
 provides=('ttf-font')
 options=('!emptydirs')
 install=${pkgname}.install
