@@ -1,0 +1,16 @@
+pkgbase = ruby-bundler_ext
+	pkgdesc = Load system gems via Bundler DSL
+	pkgver = 0.4.1
+	pkgrel = 1
+	url = https://github.com/bundlerext/bundler_ext
+	arch = any
+	license = MIT
+	depends = ruby
+	depends = ruby-bundler
+	noextract = bundler_ext-0.4.1.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/bundler_ext-0.4.1.gem
+	sha1sums = 21555412404d6060cbcba3149b9144dbefebaa97
+
+pkgname = ruby-bundler_ext
+
