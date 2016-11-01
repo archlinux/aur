@@ -1,9 +1,9 @@
 pkgname=pg_amqp
-pkgver=v0.3.0.r3.g143b7bb
+pkgver=v0.4.1.r0.g1290d7c
 pkgrel=1
 pkgdesc="AMQP support for Postgres"
 arch=('i686' 'x86_64')
-url=("https://github.com/omniti-labs/pg_amqp")
+url="https://github.com/omniti-labs/pg_amqp"
 license=('BSD')
 depends=('postgresql')
 
