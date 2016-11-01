@@ -1,0 +1,12 @@
+pkgbase = sage-data-jones_numfield
+	pkgdesc = A table of number fields with bounded ramification and degree ≤6
+	pkgver = 4
+	pkgrel = 1
+	url = http://www.sagemath.org
+	arch = any
+	license = GPL
+	source = http://mirrors.mit.edu/sage/spkg/upstream/database_jones_numfield/database_jones_numfield-4.tar.gz
+	md5sums = a8da4f207235a1de980a23a06e1e6d76
+
+pkgname = sage-data-jones_numfield
+
