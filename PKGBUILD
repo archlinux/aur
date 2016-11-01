@@ -1,14 +1,13 @@
-# Maintainer: Kiril Zyapkov <kiril.zyapkov at gmail>
+# Maintainer: Grey Christoforo <first name at last name dot net>
 pkgname=heekscnc-git
 pkgver=1139.ece2f41
-pkgrel=1
+pkgrel=2
 pkgdesc="CAM add-on for HeeksCAD"
 arch=('x86_64')
 url="http://heeks.net"
 license=('custom:BSD3')
-depends=('heekscad')
+depends=('heekscad-git')
 makedepends=('git' 'cmake')
-provides=('heekscnc')
 source=('heekscnc-git::git://github.com/Heeks/heekscnc.git')
 md5sums=('SKIP')
 
