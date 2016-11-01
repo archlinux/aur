@@ -1,4 +1,4 @@
-# Maintainer: Tom Stroobants <stroobantstom@gmail.com>
+# Maintainer: Mesmer <mesmer@fisica.if.uff.br>
 pkgname=duckdns
 pkgver=1.0.1
 pkgrel=1
