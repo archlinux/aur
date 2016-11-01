@@ -4,10 +4,10 @@
 _gemname=apipie-bindings
 pkgname=ruby-$_gemname
 pkgver=0.0.18
-pkgrel=1
-pkgdesc='A swift, liberal HTML parser with a fantastic library'
+pkgrel=2
+pkgdesc='Bindings for API calls that are documented with Apipie. Bindings are generated on the fly.'
 arch=(any)
-url='http://code.whytheluckystiff.net/hpricot/'
+url='http://github.com/Apipie/apipie-bindings'
 license=(MIT)
 depends=(ruby ruby-json ruby-oauth ruby-rest-client)
 options=(!emptydirs)

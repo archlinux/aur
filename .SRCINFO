@@ -1,8 +1,8 @@
 pkgbase = ruby-apipie-bindings
-	pkgdesc = A swift, liberal HTML parser with a fantastic library
+	pkgdesc = Bindings for API calls that are documented with Apipie. Bindings are generated on the fly.
 	pkgver = 0.0.18
-	pkgrel = 1
-	url = http://code.whytheluckystiff.net/hpricot/
+	pkgrel = 2
+	url = http://github.com/Apipie/apipie-bindings
 	arch = any
 	license = MIT
 	depends = ruby
