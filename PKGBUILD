@@ -1,7 +1,7 @@
-# Maintainer: Grey Christoforo <first name [at] last name [dot] net>
+# Maintainer: Grey Christoforo <first name at last name dat net>
 
 pkgname=f-engrave
-pkgver=1.57
+pkgver=1.59
 pkgrel=1
 pkgdesc="Supports Engraving and V-Carving"
 url="http://www.scorchworks.com/Fengrave/fengrave.html"
@@ -9,10 +9,9 @@ arch=('i686' 'x86_64')
 license=('GPLv3')
 makedepends=('dos2unix')
 depends=('python')
-optdepends=('ttf2cxf: for reading True Type Fonts')
 source=(http://www.scorchworks.com/Fengrave/F-Engrave-${pkgver}_src.zip arch.patch)
-md5sums=('43b968be47690494e00bb2e1669553e1'
-         '7db385c158cfdf726522a1c5c34aeb9d')
+md5sums=('08821a74f7e371c2f22f5ec5a0d9771d'
+         'f1844c9323b52b92f8e12f922ff50965')
 
 prepare() {
   cd F-Engrave-${pkgver}_src
@@ -20,9 +19,16 @@ prepare() {
   dos2unix ${pkgname}-${pkgver/./}.py
 }
 
+build() {
+  cd F-Engrave-${pkgver}_src/TTF2CXF_STREAM
+  make
+}
+
 package() {
   cd F-Engrave-${pkgver}_src
   install -Dm755 ${pkgname}-${pkgver/./}.py "$pkgdir/usr/bin/${pkgname}"
+  cd TTF2CXF_STREAM
+  install -Dm755 ttf2cxf_stream "$pkgdir/usr/bin/ttf2cxf_stream"
 }
 
 # vim:set ts=2 sw=2 et:
