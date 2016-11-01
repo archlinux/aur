@@ -1,0 +1,12 @@
+pkgbase = ultra-flat-icons-green
+	pkgdesc = Ultra Flat Icons - Green Edition
+	pkgver = 1.3.2
+	pkgrel = 1
+	url = http://www.noobslab.com/2015/01/make-linux-more-elegant-with-ultra-flat.html
+	arch = any
+	license = CCPL
+	source = https://launchpad.net/~noobslab/+archive/ubuntu/icons/+files/ultra-flat-icons-green_1.3.2~trusty~Noobslab.com_all.deb
+	sha1sums = 9ef68e2e99e5421345c30b1360965d5878270f10
+
+pkgname = ultra-flat-icons-green
+
