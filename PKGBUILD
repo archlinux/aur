@@ -1,8 +1,8 @@
-# Maintainer: Yuexuan Gu <lastavengers@outlook.com>
+# Maintainer: SY Zhang <lastavengers@archlinuxcn.org>
 
 pkgname=ricin
 _pkgname=Ricin
-pkgver=0.2.5
+pkgver=0.2.6
 pkgrel=1
 pkgdesc="A dead-simple but powerful Tox client."
 url="https://ricin.im/"
@@ -18,7 +18,7 @@ depends=('gtk3'
          )
 
 source=("https://github.com/RicinApp/${_pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('12799d3a10ac13239ae7114180a77c6d745bfdf042a4a4b3e01a023914b9919d')
+sha256sums=('8dbee6f8413135a2709ad5641eb0707b6ea84e64d7d85e01f3f016d54ffd6487')
 provides=('ricin')
 conflicts=('ricin-git')
 
