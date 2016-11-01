@@ -1,0 +1,14 @@
+[Unit]
+Description=Stuntman STUN-Server
+After=network.target
+
+[Service]
+Type=simple
+User=nobody
+Group=nobody
+ExecStart=/usr/bin/stunserver
+ExecStop=/usr/bin/killall --user nobody stunserver
+
+[Install]
+WantedBy=multi-user.target
+

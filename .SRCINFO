@@ -1,0 +1,15 @@
+pkgbase = stuntman
+	pkgdesc = STUN server and client
+	pkgver = 1.2.1
+	pkgrel = 1
+	url = http://www.stunprotocol.org/
+	arch = i686
+	arch = x86_64
+	license = Apache
+	makedepends = boost-libs
+	conflicts = stuntman-git
+	source = https://github.com/jselbie/stunserver/archive/version1.2.1.zip
+	sha256sums = 59c35de587699f4e8959b19d5d26173d27a9f4affe2b07b793dd95ac52508c53
+
+pkgname = stuntman
+
