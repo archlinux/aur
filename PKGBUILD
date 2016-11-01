@@ -3,7 +3,7 @@
 pkgname=plover-git
 pkgdesc="Free and open source real-time stenography engine."
 pkgver=4.0.0.dev0.44.gdcf0425
-pkgrel=1
+pkgrel=2
 arch=('any')
 license=('GPLv2 or any later version')
 depends=(
@@ -33,6 +33,11 @@ sha1sums=(SKIP)
 pkgver() {
   cd "$pkgname"
   python2 setup.py patch_version | sed -n '/^patching version to /{s///;s/+/./;p;Q0};${Q1}'
+}
+
+build() {
+  cd "$pkgname"
+  PYTHONPATH="$(echo -n .eggs/pyqt_distutils-*.egg)" python2 setup.py build
 }
 
 check() {
