@@ -5,8 +5,8 @@
 
 _pkgname=slic3r
 pkgname=${_pkgname}-prusa3d
-pkgver=1.31.1
-pkgrel=2
+pkgver=1.31.2
+pkgrel=1
 pkgdesc="Updated Slic3r by Prusa3D with many bugfixes and new features"
 arch=('i686' 'x86_64' 'armv6' 'armv6h' 'armv7h')
 url="http://www.prusa3d.com/"
@@ -24,17 +24,12 @@ optdepends=('perl-net-dbus: notifications support via any dbus-based notifier'
 provides=('slic3r')
 conflicts=('slic3r' 'slic3r-git' 'slic3r-xs' 'slic3r-xs-git')
 source=("https://github.com/prusa3d/Slic3r/archive/version_${pkgver}.tar.gz"
-        "https://github.com/prusa3d/Slic3r/commit/51c8d73b11ae79807b48eefef86b7d38e44007bf.diff"
         'slic3r.desktop')
-md5sums=('7a553d7563971197a0e4509f4374f12a'
-         'c7ba4045d41272ccc1378ccb704f9f93'
+md5sums=('ad838f6a44e1142bdd7058b6f5540698'
          '1b561afff48c79f86889664375d179ed')
 
 prepare() {
-cd "${srcdir}/Slic3r-version_${pkgver}"
-  patch -p1 -i "$srcdir/51c8d73b11ae79807b48eefef86b7d38e44007bf.diff"
-
-  cd "xs"
+cd "${srcdir}/Slic3r-version_${pkgver}/xs"
   PERL_MM_OPT="INSTALLDIRS=vendor DESTDIR='$pkgdir'" \
   PERL_MB_OPT="--installdirs vendor --destdir '$pkgdir'" \
     perl Build.PL
