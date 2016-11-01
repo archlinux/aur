@@ -10,14 +10,14 @@ license=('GPL')
 depends=('networkmanager' 'libnm-glib' 'networkmanager-openvpn' 'nm-connection-editor' 'openvpn' 'systemd')
 makedepends=('bash')
 source=(https://github.com/primaryobjects/vpndemon/archive/master.zip
-"vpndemon-1.0-5-any.pkg.tar.xz.sig")
+)
 sha384sums=('a750b66d813750d9aa63ed76e79d1c51c39b2619835fa9571fa2ead8b04d64333c7424646211cf53f4e6422aa0af88dc'
-             'SKIP')
+)
 sha256sums=('e93b043e621644752d688f8c45836bd7b5f6f283fbcf2e9241afea35ed0221b7'
-             'SKIP')
+)
 sha512sums=('38da3528540b4aa9cbe539dc2769ff76e73a734cd4a15ce2fe0f66978a9825d4e36a39c5dac8ce4deb5bac2a1f22b67d876d55a0c8b38544d9120b64597bf08a'
-            'SKIP')
-validgpgkeys=('DB68D18158C19A535A538524507F8DFE0C99485B')
+)
+
 package() {	mkdir -p "${pkgdir}/usr/bin"
         for file in ${srcdir}/vpndemon-master/vpnde*
 	do
