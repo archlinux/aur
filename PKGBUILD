@@ -13,7 +13,7 @@ pkgname=vim-colorschemes
 pkgver=r150.b8dff40
 pkgrel=1
 pkgdesc="A very large collection of color schemes from vim.org"
-url="http://packages.gentoo.org/package/app-vim/colorschemes"
+url="https://github.com/flazz/vim-colorschemes/"
 arch=('any')
 conflicts=('vim-colorsamplerpack' 'vim-solarized-git')
 depends=('vim')
@@ -24,13 +24,10 @@ md5sums=('SKIP')
 
 pkgver(){
    cd "$pkgname"
-     ( set -o pipefail
-         git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
-               printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-           )
+   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 
- 
-}
+       }
+
 build() {
   cd "$srcdir"/vim-colorschemes
   # fix line endings
