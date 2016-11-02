@@ -2,14 +2,14 @@
 
 pkgname=wicd-dark-icons
 pkgver=1
-pkgrel=2
+pkgrel=3
 arch=('any')
 pkgdesc="Dark mono icons for Wicd Network Manager"
 url="http://kde-look.org/content/show.php/Alternate+Wicd+Tray+Icons?content=125921"
 license=('GPL')
 depends=('wicd-gtk')
 conflicts=('wicd-mono-icons' 'wicd-pale-icons')
-source=(http://kde-look.org/CONTENT/content-files/125921-wicd.tar.gz)
+source=(https://dl.opendesktop.org/api/files/download/id/1466612428/125921-wicd.tar.gz)
 md5sums=('1ccfb2cd61e4bc30a325211fce2ad8d9')
 
 package() {
