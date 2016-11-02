@@ -2,7 +2,7 @@
 # Contributor:
 
 pkgname=photofiltrelx
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 pkgdesc="Simple but featureful editor. Built for casual graphic editing and performance."
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ depends=('desktop-file-utils' 'graphicsmagick' 'hicolor-icon-theme' 'qt5-base')
 makedepends=('imagemagick')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/PhotoFiltre-LX/${pkgname}/archive/${pkgver}.tar.gz"
         'photofiltrelx.desktop')
-sha256sums=('31485dbbbd24abe2b521edf40850a67a6fca2abfa27d58cf49aa63229ca6ce6d'
+sha256sums=('063062a6121b807b977c0276cfd55bdafe0dcbeeba85f43649de6108f300f9f7'
             '76ab31a371e3c04e0a2bb7d08ddc6289183ac42f19cbbaaea74e3eb2bba9fb2f')
 
 build() {
