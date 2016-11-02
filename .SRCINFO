@@ -1,6 +1,6 @@
 pkgbase = pyflame-git
 	pkgdesc = A tool for generating flame graphs for Python processes.
-	pkgver = r116.b2bfad0.1
+	pkgver = r116.b2bfad0
 	pkgrel = 1
 	url = https://github.com/uber/pyflame
 	arch = i686
