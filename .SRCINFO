@@ -1,21 +1,21 @@
 pkgbase = algernon
-	pkgdesc = HTTP/2 web server with built-in support for Markdown, Lua, Sass (SCSS), JSX and Redis
+	pkgdesc = Web server with built-in support for Lua, Markdown, HTTP/2, templates, SCSS and Redis
 	pkgver = 1.2.1
-	pkgrel = 1
+	pkgrel = 4
 	url = http://algernon.roboticoverlords.org/
-	install = algernon.install
 	arch = x86_64
 	arch = i686
 	license = MIT
 	makedepends = go
 	makedepends = git
 	makedepends = glide
+	makedepends = setconf
 	optdepends = redis: For using the Redis database backend
 	optdepends = mariadb: For using the MariaDB/MySQL database backend
 	optdepends = postgresql: For using the PostgreSQL database backend
 	backup = etc/algernon/serverconf.lua
 	backup = usr/lib/systemd/system/algernon.service
-	source = git://github.com/xyproto/algernon#tag=1.2.1
+	source = git://github.com/xyproto/algernon#commit=8d43533
 	md5sums = SKIP
 
 pkgname = algernon

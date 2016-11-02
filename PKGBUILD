@@ -2,8 +2,8 @@
 
 pkgname=algernon
 pkgver=1.2.1
-pkgrel=3
-pkgdesc='Web server with built-in support for Lua, Markdown, HTTP/2, templates, SCSS, Redis and more'
+pkgrel=4
+pkgdesc='Web server with built-in support for Lua, Markdown, HTTP/2, templates, SCSS and Redis'
 arch=('x86_64' 'i686')
 url='http://algernon.roboticoverlords.org/'
 license=('MIT')
@@ -15,7 +15,6 @@ backup=('etc/algernon/serverconf.lua'
         'usr/lib/systemd/system/algernon.service')
 source=("git://github.com/xyproto/algernon#commit=8d43533")
 md5sums=('SKIP')
-install='algernon.install'
 _gourl=github.com/xyproto/algernon
 
 prepare() {
@@ -53,8 +52,10 @@ prepare() {
   glide install
 
   # Startup parameters
-  setconf system/algernon_dev.service ExecStart \
-    "/usr/bin/algernon -e -a --domain --server --log /var/log/algernon.log --addr=:80 /srv/algernon"
+  setconf system/algernon_dev.service \
+    ExecStart \
+    "/usr/bin/algernon -e -a --domain --server --log /var/log/algernon.log --addr=:80 /srv/http"
+  setconf system/algernon_dev.service Group=http
 }
 
 build() {
