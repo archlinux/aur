@@ -3,7 +3,7 @@
 #and many thanks to the previous maintainer mxtm
 pkgname=mullvad
 pkgver=60
-pkgrel=1
+pkgrel=2
 pkgdesc="VPN Client for Mullvad.net, a bitcoin-friendly VPN for anonymity and privacy"
 url="https://www.mullvad.net"
 arch=('any')
@@ -15,7 +15,7 @@ replaces=(mullvad-new)
 backup=()
 install=
 
-source=('https://mullvad.net/static/download/mullvad-'${pkgver}'.tar.gz'
+source=('https://mullvad.net/download/latest/source'
 		'update-resolv-conf'
 )
 
