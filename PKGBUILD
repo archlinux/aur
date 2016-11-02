@@ -2,7 +2,7 @@
 # Contributor: Vitaliy Berdinskikh ur6lad[at]i.ua
 
 pkgname=xnec2c
-pkgver=3.4
+pkgver=3.5
 pkgrel=1
 pkgdesc="GTK+ Antenna EM Modeling Client"
 arch=('i686' 'x86_64')
@@ -11,17 +11,14 @@ arch=('i686' 'x86_64')
 url="http://www.qsl.net/5b4az/pkg/nec2/xnec2c/doc/xnec2c.html"
 license=('GPL')
 depends=('gtk2')
-optdepends=('desktop-file-utils: desktop icons'
-            'gnuplot: to use plotted output/data files')
+optdepends=('gnuplot: to use plotted output/data files')
 #source=(http://5b4az.chronos.org.uk/pkg/nec2/$pkgname/$pkgname-$pkgver.tar.bz2
 #source=(http://pkgs.fedoraproject.org/repo/pkgs/$pkgname/$pkgname-$pkgver.tar.bz2/d3c1d34da5519cf66ff429de51c6c768/$pkgname-$pkgver.tar.bz2
-source=(http://www.qsl.net/5b4az/pkg/nec2/xnec2c/xnec2c-$pkgver.tar.bz2
-        $pkgname.desktop
-        $pkgname.sh 
-        http://bjensen.fedorapeople.org/pkgs/hams/icon/Ham_Icon-1-48.png)
-md5sums=('c652ecbe6faee6e4ced6e1b2c48da1a6'
+source=("http://www.qsl.net/5b4az/pkg/nec2/xnec2c/xnec2c-$pkgver.tar.bz2"
+        "$pkgname.desktop"
+        "http://bjensen.fedorapeople.org/pkgs/hams/icon/Ham_Icon-1-48.png")
+md5sums=('f4644506447e49e422ce06028d9c4c25'
          '02105f9a231b715c41279d5be6d40a7c'
-         'e5e3d9bc73159a21c4a5c0902bbb9156'
          '38378f273628bd9a28d3e5f9ff39fa18')
 
 build() {
@@ -40,7 +37,6 @@ package() {
 
 	make DESTDIR="$pkgdir" install
 
-	install -D -m 755 ../$pkgname.sh "$pkgdir/usr/bin/$pkgname.sh"
 	install -m644 doc/images/* "$pkgdir/usr/share/$pkgname/doc/images"
 	rm -r doc/images
 	install -m644 doc/* "$pkgdir/usr/share/$pkgname/doc"
@@ -49,7 +45,3 @@ package() {
 	install -m644 ../Ham_Icon-1-48.png "$pkgdir/usr/share/pixmaps/$pkgname.png"
 }
 
-md5sums=('2a336089f86094e0701f61cf4bba3223'
-         '02105f9a231b715c41279d5be6d40a7c'
-         'e5e3d9bc73159a21c4a5c0902bbb9156'
-         '38378f273628bd9a28d3e5f9ff39fa18')
