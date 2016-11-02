@@ -2,8 +2,8 @@
 
 pkgname=rink
 pkgver=0.4.0
-pkgrel=1
-pkgdesc='Command line client for speedtest.net written in Go'
+pkgrel=2
+pkgdesc='Unit conversion tool and library written in rust'
 arch=('x86_64')
 url=https://github.com/tiffany352/rink-rs
 license=('MPL2')
