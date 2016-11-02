@@ -3,14 +3,14 @@
 pkgname=codelite-bin
 _pkgname=codelite
 pkgver=9.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A cross platform C/C++/PHP and Node.js IDE written in C++"
 arch=('i686' 'x86_64')
 url="http://www.codelite.org/"
 license=('GPL')
 depends=('wxgtk' 'curl' 'webkitgtk2' 'libssh'
 				 'xterm' 'python2' 'libedit' 'ncurses'
-				 'valgrind' 'libmariadbclient' 'lldb' 'clang')
+				 'valgrind' 'libmariadbclient' 'lldb' 'clang>=3.9.0')
 
 makedepends=('tar' 'xz')
 optdepends=( 'graphviz: callgraph visualization'
@@ -38,4 +38,6 @@ build() {
 package() {
 	find "${srcdir}/usr" -type d -exec chmod 755 '{}' \;
   cp -r "${srcdir}/usr" "${pkgdir}"
+	mkdir -p "${pkgdir}/usr/lib"
+	ln -s /usr/lib/libclang.so "${pkgdir}/usr/lib/libclang.so.3.8"
 }
