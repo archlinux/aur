@@ -1,11 +1,10 @@
 # Maintainer: Timofey Titovets <nefelim4ag@gmail.com>
 
 pkgbase=scaleio
-pkgname=( 'scaleio-gui' 'scaleio-tb'
-          'scaleio-sdc' 'scaleio-sds'
+pkgname=( 'scaleio-gui' 'scaleio-sdc' 'scaleio-sds'
           'scaleio-mdm' 'scaleio-callhome' )
 pkgver=2.0.0.2
-pkgrel=5
+pkgrel=6
 pkgdesc="ScaleIO"
 arch=('x86_64')
 url="http://www.emc.com/storage/scaleio/"
@@ -98,42 +97,9 @@ package_scaleio-gui()
         } >  ${pkgdir}/usr/share/applications/scaleio-gui.desktop
 }
 
-package_scaleio-gateway()
-{
-        pkgdesc="ScaleIO Gateway"
-        depends=()
-        provides=()
-        conflicts=()
-        options=('!emptydirs' '!strip')
-
-        cd ${srcdir}/ScaleIO_${pkgver}_Complete_Linux_SW_Download/
-}
-
 package_scaleio-callhome()
 {
         pkgdesc="ScaleIO callhome"
-        depends=()
-        provides=()
-        conflicts=()
-        options=('!emptydirs' '!strip')
-
-        cd ${srcdir}/ScaleIO_${pkgver}_Complete_Linux_SW_Download/
-}
-
-package_scaleio-lia()
-{
-        pkgdesc="ScaleIO callhome"
-        depends=()
-        provides=()
-        conflicts=()
-        options=('!emptydirs' '!strip')
-
-        cd ${srcdir}/ScaleIO_${pkgver}_Complete_Linux_SW_Download/
-}
-
-package_scaleio-tb()
-{
-        pkgdesc="ScaleIO tb"
         depends=()
         provides=()
         conflicts=()
