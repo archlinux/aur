@@ -88,5 +88,5 @@ index 969cf6f..387b221 100644
  LIBUDEVDIR=/lib/udev/rules.d
  RULES=hplj10xx.rules
 -- 
-2.10.0
+2.10.2
 

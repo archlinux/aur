@@ -1,15 +1,15 @@
-From c2829ff4264a3bccb49d63f032d798fbaca54150 Mon Sep 17 00:00:00 2001
+From f07d23f3b7f3438d81d6ac403204db79d429f4e5 Mon Sep 17 00:00:00 2001
 From: Ivan Shapovalov <intelfx@intelfx.name>
 Date: Sun, 23 Oct 2016 10:18:08 +0300
 Subject: [PATCH 3/5] Rework firmware loading
 
 ---
- Makefile                   |  99 +++++++++++------------------------
- foo2zjs-loadfw.in          | 128 +++++++++++++++++++++++++++++++++++++++++++++
+ Makefile                   |  99 +++++++++++-----------------------
+ foo2zjs-loadfw.in          | 132 +++++++++++++++++++++++++++++++++++++++++++++
  foo2zjs-loadfw@.service.in |   6 +++
  hplj10xx.rules             |  60 ++++++++-------------
  usblp.conf                 |   1 +
- 5 files changed, 186 insertions(+), 108 deletions(-)
+ 5 files changed, 190 insertions(+), 108 deletions(-)
  create mode 100644 foo2zjs-loadfw.in
  create mode 100644 foo2zjs-loadfw@.service.in
  create mode 100644 usblp.conf
@@ -163,10 +163,10 @@ index 6b707a9..2f546f9 100644
  	cd osx-hotplug; $(MAKE) PREFIX=$(PREFIX) install-hotplug
 diff --git a/foo2zjs-loadfw.in b/foo2zjs-loadfw.in
 new file mode 100644
-index 0000000..911fe0a
+index 0000000..3e5484e
 --- /dev/null
 +++ b/foo2zjs-loadfw.in
-@@ -0,0 +1,128 @@
+@@ -0,0 +1,132 @@
 +#!/bin/bash
 +
 +# foo2zjs-loadfw:
@@ -211,69 +211,54 @@ index 0000000..911fe0a
 +
 +log "Downloading firmware for printer model '$MODEL' serial '$SERIAL' at devpath '$DEVPATH'"
 +
-+if ! [[ "$FOO2ZJS_FW_MODEL" ]]; then
-+	log "Model number is empty -- borked udev configuration?"
-+	exit 1
-+fi
-+
-+if ! [[ "$SERIAL" ]]; then
-+	log "Serial number is empty -- borked udev configuration?"
++if ! [[ "$MODEL" ]]; then
++	log "Model number is empty (borked udev configuration?)"
 +	exit 1
 +fi
 +
 +case "$MODEL" in
 +P1005)
 +	FWMODEL=$MODEL
-+	MODELNAME="HP LaserJet $MODEL"
 +	FWDIR=$FWDIR_XQX
 +	;;
 +P1006)
 +	FWMODEL=$MODEL
-+	MODELNAME="HP LaserJet $MODEL"
 +	FWDIR=$FWDIR_XQX
 +	;;
 +P1007)
 +	FWMODEL=P1005		# Alias
-+	MODELNAME="HP LaserJet $MODEL"
 +	FWDIR=$FWDIR_XQX
 +	;;
 +P1008)
 +	FWMODEL=P1006		# Alias
-+	MODELNAME="HP LaserJet $MODEL"
 +	FWDIR=$FWDIR_XQX
 +	;;
 +P1505)
 +	FWMODEL=$MODEL
-+	MODELNAME="HP LaserJet $MODEL"
 +	FWDIR=$FWDIR_XQX
 +	;;
 +P1505n)
 +	FWMODEL=$MODEL
-+	MODELNAME="HP LaserJet $MODEL"
 +	FWDIR=$FWDIR_XQX
 +	;;
 +1000)
 +	FWMODEL=$MODEL
-+	MODELNAME="hp LaserJet $MODEL"
 +	FWDIR=$FWDIR_ZJS
 +	;;
 +1005)
 +	FWMODEL=$MODEL
-+	MODELNAME="hp LaserJet $MODEL"
 +	FWDIR=$FWDIR_ZJS
 +	;;
 +1018)
 +	FWMODEL=$MODEL
-+	MODELNAME="HP LaserJet $MODEL"
 +	FWDIR=$FWDIR_ZJS
 +	;;
 +1020)
 +	FWMODEL=$MODEL
-+	MODELNAME="HP LaserJet $MODEL"
 +	FWDIR=$FWDIR_ZJS
 +	;;
 +*)
-+	log "Unsupported model: $MODEL (serial: $SERIAL)"
++	log "Unsupported model tag: $MODEL (borked udev configuration?)"
 +	exit 1
 +	;;
 +esac
@@ -285,14 +270,33 @@ index 0000000..911fe0a
 +	exit 1
 +fi
 +
-+$USB_BACKEND 2>/dev/null | grep "\<usb://" | grep "serial=$SERIAL" | while read direct uri model1 model2 params; do
-+	log "Got printer: URI='$uri'"
-+	if DEVICE_URI="$uri" $USB_BACKEND 1 1 1 1 '' "$FW" 2>/dev/null; then
-+		log "Firmware download OK"
-+		exit 0
-+	else
-+		log "Firmware download failed"
-+		exit 1
++#
++# Now detect the printer URI. In theory, each USB device provides a "serial number",
++# which is included in the CUPS URI... If only it was so easy. Not all devices provide a serial number.
++#
++
++if [[ "$SERIAL" ]]; then
++	function match() {
++		[[ $1 == *serial=$SERIAL* ]]
++	}
++else
++	# in case serial number is not provided, match by model number
++	# and check absence of FWVER tag in the IEEE1284 descriptor string
++	log "Serial number is empty, working around"
++	function match() {
++		[[ $2 == *$MODEL* && ! $2 == *FWVER:* ]]
++	}
++fi
++
++$USB_BACKEND 2>/dev/null | while read direct uri model1 model2 deviceid; do
++	if [[ $direct == direct && $uri == usb://* ]] && match "$uri" "$deviceid"; then
++		log "Got printer: URI='$uri' ieee1284='$deviceid'"
++
++		if DEVICE_URI="$uri" $USB_BACKEND 1 1 1 1 '' "$FW" 2>/dev/null; then
++			log "Firmware download OK"
++		else
++			log "Firmware download failed"
++		fi
 +	fi
 +done
 diff --git a/foo2zjs-loadfw@.service.in b/foo2zjs-loadfw@.service.in
@@ -380,5 +384,5 @@ index 0000000..5a604bf
 @@ -0,0 +1 @@
 +blacklist usblp
 -- 
-2.10.0
+2.10.2
 

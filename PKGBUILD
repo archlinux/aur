@@ -5,7 +5,7 @@
 
 pkgname=foo2zjs
 pkgver=20161021
-pkgrel=4
+pkgrel=4.1
 pkgdesc="foo2zjs Printer Drivers. Includes also foo2hp, foo2hbpl, foo2oak, foo2xqx, foo2qpdl, foo2slx, foo2hiperc and foo2lava drivers."
 url="http://foo2zjs.rkkda.com/"
 license=('GPL' 'custom')
@@ -24,11 +24,11 @@ source=("foo2zjs-$pkgver.tar.gz::http://foo2zjs.rkkda.com/foo2zjs.tar.gz"
 	'0005-Makefile-leverage-default-rules-as-much-as-possible-.patch')
 
 sha256sums=('55604f4580fb21534739c294df64e041b6ea96ef45d8a0ff4cdcf516eff243a3'
-            'f13c6a2308df53d7ed5636f6d77aae7616fc0e8437ca5f4f79ed4361c92eb709'
-            'cf40a20898b9619545bdcf2a59e72e0018c47d81b965b8a781e01688faa1abae'
-            'dd049ccd362c098515d3873c17b9f09b2d78da697e89d2022f537d7587874861'
-            'ef76d05b549e2c5875eabe7f526fda3caa5151824000ef582a869601edfbf690'
-            '83c37616c37887df933910b5dee30cedb118e4c3e4b08d7ab6dd7813466441f2')
+            'b964aea4706f3cb0e908a5e85ee8b890f7ef424e570eaa65e8411a4d0a94b301'
+            '882c15e2bde1d32ef659ec2629f315a7814b405a078c4413151dcac5d30b341d'
+            'e828daef29531683603f004bed9b59046ba708192ccd50c549dbe790e3748e09'
+            '0ae70b88d51eda523db301f0f277c1bf7a68cfcc58c775d9c70c1114f28b8753'
+            'f8f38470154f72e37677f008dd4b4a7deffa96d0f3739097b169a7faefddded0')
 
 prepare() {
   cd "${pkgname}"
