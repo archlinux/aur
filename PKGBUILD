@@ -14,12 +14,12 @@ optdepends=('gmsh-docs: docs for gmsh'
             'python: for onelab.py')
 options=(!emptydirs)
 source=("${url}src/${pkgname}-${pkgver}-source.tgz" gmsh.desktop gmsh.completion)
-md5sums=('314403c85935dd64a796765214197c61'
+md5sums=('8666d1b7df328827e35f62e790ef81c9'
          '28272d41da2675f259d8f38f5466a88b'
          '9ee4b5bf27956de5aa412bbc939660d3')
 
 build() {
-   cd "${srcdir}/${pkgname}-${pkgver}-svn-20161031-source"
+   cd "${srcdir}/${pkgname}-${pkgver}-source"
 
    # Help links to local doc (package gmsh-docs)
    sed -e "s|http://gmsh.info/doc/texinfo/|file:///usr/share/doc/gmsh/gmsh.html|" \
@@ -39,7 +39,7 @@ build() {
 
 package() {
 
-   cd "${srcdir}/${pkgname}-${pkgver}-svn-20161031-source/build"
+   cd "${srcdir}/${pkgname}-${pkgver}-source/build"
    make DESTDIR=${pkgdir} install
    install -D -m644 "${pkgdir}/usr/bin/onelab.py" "${pkgdir}/usr/lib/python2.7/site-packages/onelab.py"
    install -D -m644 "${pkgdir}/usr/bin/onelab.py" "${pkgdir}/usr/lib/python3.5/site-packages/onelab.py"
