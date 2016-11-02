@@ -1,6 +1,6 @@
 pkgbase = acme-client-git
 	pkgdesc = Yet another ACME client, specifically for Let's Encrypt, but one with a strong focus on security. Written in C.
-	pkgver = 0.1.12.r0.g2d209d4
+	pkgver = 0.1.13.r0.g4ff972e
 	pkgrel = 1
 	url = https://kristaps.bsd.lv/acme-client/
 	arch = x86_64
@@ -18,13 +18,11 @@ pkgbase = acme-client-git
 	source = acme@.timer
 	source = acme@.service
 	source = example.conf
-	source = bsd-cdefs.patch
 	sha256sums = SKIP
 	sha256sums = bd5726f3e247e7a7d30ce69946d174b8fb92d999d22710c65f176c969812960e
 	sha256sums = c7d852229ae8a1b816ec476554c5d703a5513e6578a38672a52f7e7fca653b73
 	sha256sums = d6e274929979a385308f29b4f15a923ce888b57faca9925b6f46a995b2bfd662
 	sha256sums = 297cf2592b1baed8da591136334ab7fc1f4f64a6a093a1ac657ceaae45aa8583
-	sha256sums = 0336ab833dc0332bbeaacf952d2dba41614de2cbc9f129b85334206ddb5082cd
 
 pkgname = acme-client-git
 
