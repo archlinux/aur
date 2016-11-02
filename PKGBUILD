@@ -8,7 +8,7 @@ arch=('i686' 'x86_64')
 url="http://carlh.net/software/libdcp"
 license=('GPL')
 depends=('libcxml' 'libsndfile' 'openssl' 'libxml++>=2.6' 'xmlsec' 'imagemagick' 'openjpeg2' 'libsigc++>=2.0' 'boost-libs>=1.61.0' 'libasdcp-cth')
-makedepends=('python2' 'boost>=1.45')
+makedepends=('python2' 'boost>=1.45' 'pkg-config')
 provides=('libdcp')
 conflicts=('libdcp')
 source=("libdcp-git::git+https://github.com/cth103/libdcp.git#branch=1.0")
