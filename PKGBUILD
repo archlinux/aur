@@ -1,7 +1,7 @@
 # Maintainer: Dominik Peteler <archlinux@with-h.at>
 
 pkgname=ldap-account-manager
-pkgver=5.3
+pkgver=5.5
 pkgrel=1
 pkgdesc="A webfrontend for managing entries stored in an LDAP directory"
 arch=('any')
@@ -13,11 +13,11 @@ optdepends=('php-mcrypt: Store LDAP password encrypted in the session file'
             'php-apache: Run LDAP Account Manager on Apache'
             'php-fpm: Run LDAP Account Manager on other webservers')
 options=('!strip')
-source=(http://downloads.sourceforge.net/lam/${pkgname}-${pkgver}.tar.bz2
-       dont-look-for-alternate-perl.patch
-       fix-htmldir-and-docdir.patch
-       apache.example.conf)
-md5sums=('f2263f4726776fa748ce7b3ff7f07600'
+source=("http://downloads.sourceforge.net/lam/${pkgname}-${pkgver}.tar.bz2"
+        "dont-look-for-alternate-perl.patch"
+        "fix-htmldir-and-docdir.patch"
+        "apache.example.conf")
+md5sums=('c7f4e308c0982ff2d85e9f6760a5d51e'
          'a9674e38ec4a6e2e8c4c939212c60250'
          'd32a8d1d4863fe89fda04722404a621f'
          '288c8e57cc9f701050d35b79d70d66e8')
@@ -28,13 +28,13 @@ _docdir="usr/share/doc/${pkgname}"
 _datadir="var/lib/${pkgname}"
 
 prepare() {
-	cd "$srcdir"
-	patch "$pkgname-$pkgver/configure.ac" dont-look-for-alternate-perl.patch
-	patch "$pkgname-$pkgver/Makefile.in" fix-htmldir-and-docdir.patch
+	cd "${srcdir}"
+	patch "${pkgname}-${pkgver}/configure.ac" dont-look-for-alternate-perl.patch
+	patch "${pkgname}-${pkgver}/Makefile.in" fix-htmldir-and-docdir.patch
 }
 
 build() {
-	cd "$srcdir/$pkgname-$pkgver"
+	cd "${srcdir}/${pkgname}-${pkgver}"
 	./configure --prefix=/usr \
                     --with-httpd-user=http \
                     --with-httpd-group=http \
@@ -45,20 +45,16 @@ build() {
 }
 
 package() {
-	cd "$srcdir/$pkgname-$pkgver"
+	cd "${srcdir}/${pkgname}-${pkgver}"
 
-	make DESTDIR="$pkgdir/" install
-        install -Dm644 $srcdir/apache.example.conf $pkgdir/${_docdir}/apache.example.conf
+	make DESTDIR="${pkgdir}/" install
+	install -Dm644 "${srcdir}/apache.example.conf" "${pkgdir}/${_docdir}/apache.example.conf"
 
-        cd "$pkgdir"
+	cd "${pkgdir}"
 
-        chown http:http ${_datadir}
-        chmod 775 ${_confdir}
+	chown http:http ${_datadir}
+	chmod 775 ${_confdir}
 
-        sed -i \
-            -e 's#/bin/#/usr/bin/#' \
-            ${_confdir}/templates/profiles/default.user
-        sed -i \
-            -e 's#/bin/#/usr/bin/#' \
-            ${_webroot}/lib/modules/posixAccount.inc
+	sed -i 's|/bin/|/usr/bin/|' ${_confdir}/templates/profiles/default.user
+	sed -i 's|/bin/|/usr/bin/|' ${_webroot}/lib/modules/posixAccount.inc
 }
