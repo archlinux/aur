@@ -16,6 +16,7 @@ pkgbase = pkgrepotools-git
 	replaces = makepkg-expanded
 	source = pkgrepotools::git+https://github.com/dffischer/pkgrepotools
 	md5sums = SKIP
+	sha256sums = SKIP
 
 pkgname = pkgrepotools-git
 
