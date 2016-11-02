@@ -21,6 +21,7 @@ pkgver() {
 
 
 build() {
+    PKG_CONFIG_LIBDIR="/usr/lib64/pkgconfig/:/usr/lib/pkgconfig/:$PKG_CONFIG_LIBDIR"
     CXXFLAGS="$CXXFLAGS    --std=c++11"
     cd  dcpomatic-git
     python waf configure --prefix=/usr
