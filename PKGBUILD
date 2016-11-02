@@ -1,6 +1,6 @@
 pkgname=gtk3-optional-csd
 pkgver=3.22.2
-pkgrel=1
+pkgrel=2
 
 pkgdesc='gobject-based gui toolkit with optionally enabled csd'
 url='http://www.gtk.org/'
@@ -14,7 +14,7 @@ depends=('atk' 'cairo' 'libcups' 'libxcursor' 'libxinerama' 'libxrandr' 'libxi'
 makedepends=('gobject-introspection' 'gtk-doc' 'libcanberra' 'wayland-protocols')
 optdepends=('at-spi2-atk: accessibility')
 
-provides=('gtk3' 'gtk3-print-backends' 'gtk-update-icon-cache')
+provides=("gtk3=$pkgver" 'gtk3-print-backends' 'gtk-update-icon-cache')
 conflicts=('gtk3' 'gtk3-print-backends' 'gtk-update-icon-cache')
 
 source=("https://download.gnome.org/sources/gtk+/${pkgver:0:4}/gtk+-$pkgver.tar.xz"
