@@ -5,7 +5,7 @@ pkgname=( 'scaleio-gui' 'scaleio-tb'
           'scaleio-sdc' 'scaleio-sds'
           'scaleio-mdm' 'scaleio-callhome' )
 pkgver=2.0.0.2
-pkgrel=4
+pkgrel=5
 pkgdesc="ScaleIO"
 arch=('x86_64')
 url="http://www.emc.com/storage/scaleio/"
@@ -44,7 +44,20 @@ prepare() {
         echo "Remove Gateway for Linux"
         rm -rf ./ScaleIO_${pkgver}_Gateway_for_Linux_Download
         mv ./ScaleIO_${pkgver}_GUI_for_Linux_Download ./GUI
+        rm ./GUI/EMC-ScaleIO-gui-2.0-7120.0.noarch.rpm
+
         mv ./ScaleIO_${pkgver}_UBUNTU_14.04_Download  ./U1404P
+        cd ./U1404P
+        for file in ./*.tar; do
+            tar xf $file
+            rm $file
+        done
+        rm ./*.sig
+        for file in ./*.siob; do
+            ./siob_extract $file
+        done
+        rm ./siob_extract
+        rm ./*.siob
 }
 
 package_scaleio-gui()
@@ -56,7 +69,6 @@ package_scaleio-gui()
         options=('!emptydirs' '!strip')
 
         cd ${srcdir}/ScaleIO_${pkgver}_Complete_Linux_SW_Download/GUI
-        rm EMC-ScaleIO-gui-2.0-7120.0.noarch.rpm
         extract_deb EMC-ScaleIO-gui-2.0-7120.0.deb
         rm EMC-ScaleIO-gui-2.0-7120.0.deb control.tar.gz debian-binary
         tar xf data.tar.gz
