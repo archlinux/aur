@@ -8,17 +8,24 @@ arch=('i686' 'x86_64')
 url="http://equinox-project.org/"
 _watch="http://equinox-project.org/wiki/Download"
 license=('LGPL')
-depends=('fltk' 'dbus-core' 'libstdc++5' 'python')
+depends=('fltk' 'dbus' 'libstdc++5' 'python')
 makedepends=('ftjam')
-source=(http://downloads.sourceforge.net/project/ede/$pkgname/$pkgver/$pkgname-$pkgver.tar.gz)
-md5sums=('2e6ee2e1ceaea327967ed55868a1cb9f')
+source=("http://downloads.sourceforge.net/project/ede/$pkgname/$pkgver/$pkgname-$pkgver.tar.gz"
+        'edelib.3592.patch')
+md5sums=('2e6ee2e1ceaea327967ed55868a1cb9f'
+         '530ddd4bbf774eb99a4fff3e7e705891')
+
+prepare() {
+    cd "$srcdir/$pkgname-$pkgver"
+    patch -Np1 -i "$srcdir/edelib.3592.patch"
+}
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"
     ./autogen.sh
     CFLAGS="-mtune=generic -O2 -pipe -fstack-protector --param=ssp-buffer-size=4 -D_FORTIFY_SOURCE=2 -fPIC"
     CXXFLAGS="-mtune=generic -O2 -pipe -fstack-protector --param=ssp-buffer-size=4 -D_FORTIFY_SOURCE=2 -fPIC"
-    MAKEFLAGS="-j2"
+    MAKEFLAGS="-j1"
     ./configure --prefix=/usr
     jam
 }
