@@ -8,7 +8,7 @@ license=(BSD)
 depends=(gperftools zlib bzip2 lz4 snappy gcc-libs)
 checkdepends=(python2)
 source=(https://github.com/facebook/rocksdb/archive/rocksdb-$pkgver.zip)
-sha256sums=('8b134583fc94886808b793e595ca8138a433cc985bce9cc3d35c65b004dd5b55<Paste>')
+sha256sums=('8b134583fc94886808b793e595ca8138a433cc985bce9cc3d35c65b004dd5b55')
 
 prepare() {
   cd rocksdb-rocksdb-$pkgver
