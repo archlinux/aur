@@ -12,7 +12,7 @@ makedepends=(git kdelibs cmake automoc4)
 provides=(oktopi)
 conflicts=(oktopi)
 source=(oktopi.desktop)
-sha512sums=('2ab11ce0feff00e81a4e9090e159a8458ab2bc86d5d9b33874c8838765b8b219f32df6e156ac968f9e020741a6ca22452eed8449565b31f0a0bbbb7f44650e20')
+sha512sums=('4ce42d0249afd9c307ce1ce67b209fd69996646fc5c3cc261faf4bbf3f2e0a785b69bf1f3ea4ade1b75c95a4140278a2e0d615abad8a9dd706bfb9aebe548f28')
 _gitroot='http://gitorious.org/chakra/oktopi.git'
 _gitname='oktopi'
 
