@@ -5,7 +5,7 @@
 pkgname=go4
 _Pkgname=Go4
 pkgver=5.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Object-oriented system (GSI Object Oriented On-line Off-line system) based on ROOT'
 arch=('i686' 'x86_64')
 depends=('root5' 'qt4')
