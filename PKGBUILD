@@ -30,27 +30,30 @@ md5sums=('SKIP'
          '03863b8db5dff40e194290ae07d6366f'
          '7de264a96d4bcc1143b148ad8d854979')
 
+        
 prepare() {
   cd "${srcdir}/Slic3r"
   patch -p1 -i "$srcdir/Move-Slic3r-data-to-usr-share-slic3r.patch"
   sed -i 's/lglu/lGLU/g' xs/Build.PL
   sed -i 's/lgl/lGL/g' xs/Build.PL
+  sed -i 's/-DGLEW_STATIC//g' xs/Build.PL
 }
 
 build() {
   cd "${srcdir}/Slic3r/xs"
-  export SLIC3R_GUI=1
-  perl Build.PL --installdirs vendor
-
-
   CFLAGS+=' -std=c++11'
-  perl Build
+  unset PERL5LIB PERL_MM_OPT PERL_MB_OPT PERL_LOCAL_LIB_ROOT
+  export PERL_MM_USE_DEFAULT=1 MODULEBUILDRC=/dev/null
+  export SLIC3R_GUI=1
+  /usr/bin/perl Build.PL
+  ./Build
 }
 
 check () {
-  cd "${srcdir}/Slic3r"
-  prove -Ixs/blib/arch -Ixs/blib/lib/ xs/t/ || true
-  prove -Ixs/blib/arch -Ixs/blib/lib/ t/ || true
+  cd "${srcdir}/Slic3r/xs"
+  unset PERL5LIB PERL_MM_OPT PERL_MB_OPT PERL_LOCAL_LIB_ROOT
+  export PERL_MM_USE_DEFAULT=1
+  ./Build test
 }
 
 package () {
@@ -78,6 +81,7 @@ package () {
 
   ### SLIC3R-XS MERGE
   cd xs
-  ./Build install --destdir="$pkgdir"
+  unset PERL5LIB PERL_MM_OPT PERL_MB_OPT PERL_LOCAL_LIB_ROOT
+  ./Build install --installdirs=vendor --destdir="$pkgdir"
 }
 
