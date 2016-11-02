@@ -28,7 +28,7 @@ source=("git+https://github.com/prusa3d/Slic3r.git#tag=version_$pkgver"
         'slic3r.desktop')
 md5sums=('SKIP'
          '03863b8db5dff40e194290ae07d6366f'
-         'f9fd39cf31b8f9693585c92293ccef5e')
+         '7de264a96d4bcc1143b148ad8d854979')
 
 prepare() {
   cd "${srcdir}/Slic3r"
