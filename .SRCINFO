@@ -1,0 +1,22 @@
+pkgbase = xxd-standalone
+	pkgdesc = Hexdump utility from vim
+	pkgver = 8.0.0055
+	pkgrel = 1
+	url = http://www.vim.org
+	arch = i686
+	arch = x86_64
+	license = MIT
+	license = GPL2
+	depends = glibc
+	provides = xxd
+	conflicts = vim
+	conflicts = gvim
+	source = https://raw.githubusercontent.com/vim/vim/v8.0.0055/src/xxd/xxd.c
+	source = https://raw.githubusercontent.com/vim/vim/v8.0.0055/runtime/doc/xxd.1
+	source = LICENSE
+	md5sums = fbbe3afbc7bdd8f8c6b75f8789292bab
+	md5sums = 25af84984b44a69ab4f72710a209a00a
+	md5sums = 533619562b1da5fd32458517fc740af8
+
+pkgname = xxd-standalone
+
