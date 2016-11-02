@@ -8,11 +8,11 @@ pkgver=2.9
 pkgrel=1
 pkgdesc='C library for encoding, decoding and manipulating JSON data'
 arch=('x86_64')
-url='http://www.digip.org/jansson/'
+url='https://www.digip.org/jansson/'
 depends=('jansson' 'lib32-glibc')
 makedepends=('gcc-multilib')
 license=('MIT')
-source=("http://www.digip.org/jansson/releases/jansson-${pkgver}.tar.bz2")
+source=("https://www.digip.org/jansson/releases/jansson-${pkgver}.tar.bz2")
 sha256sums=('77094fc1e113da0e2e65479488a0719f859b8f5bde3a6a0da88a1c73a88b5698')
 
 build() {
