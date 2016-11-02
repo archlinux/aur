@@ -12,7 +12,7 @@ makedepends=('python2' 'pkg-config' 'boost')
 source=("${pkgname}-${pkgver}.tar.bz2::http://carlh.net/downloads/libasdcp-cth/${pkgname}-${pkgver}.tar.bz2")
 sha256sums=('062d435a767091df30614a1252a81323c097027a9d01e067b2326f76c3ffc3da')
 conflicts=('asdcplib')
-provides=('asdcplib')
+provides=('libasdcp-cth')
 
 build() {
     CXXFLAGS="$CXXFLAGS -std=c++11"
