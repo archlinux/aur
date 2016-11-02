@@ -20,13 +20,14 @@ pkgver() {
 }
 
 build() {
+  PKG_CONFIG_LIBDIR="/usr/lib64/pkgconfig/:/usr/lib/pkgconfig/:$PKG_CONFIG_LIBDIR"
   CXXFLAGS="$CXXFLAGS -std=c++11"
-    cd libdcp-git
+  cd libdcp-git
   python2 waf configure --prefix=/usr
   python2 waf build
 }
 
 package() {
-    cd libdcp-git
+  cd libdcp-git
   python2 waf install --destdir=$pkgdir
 }
