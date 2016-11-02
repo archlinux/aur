@@ -15,18 +15,18 @@ makedepends=('clang>=3.8' 'clang<=3.9' 'llvm>=3.8' 'llvm<=3.9')
 optdepends=('python2')
 
 build() {
-  cd $srcdir/$pkgname
+    cd $srcdir/$pkgname
 
-  cmake -DIWYU_LLVM_ROOT_PATH=/usr/lib -DCMAKE_INSTALL_PREFIX:PATH=/usr .
-  make
-  sed -i "s|^#!/usr/bin/python$|#!/usr/bin/python2|" fix_includes.py
+    cmake -DIWYU_LLVM_ROOT_PATH=/usr/lib -DCMAKE_INSTALL_PREFIX:PATH=/usr .
+    make
+    sed -i "s|^#!/usr/bin/python$|#!/usr/bin/python2|" fix_includes.py
 }
 
 package() {
-  cd $srcdir/$pkgname
+    cd $srcdir/$pkgname
 
-  make install DESTDIR=$pkgdir
-  install -Dm755 fix_includes.py "${pkgdir}/usr/bin/iwyu-fix_includes.py"
+    make install DESTDIR=$pkgdir
+    install -Dm755 fix_includes.py "${pkgdir}/usr/bin/iwyu-fix_includes.py"
 }
 
 # vim:set ts=2 sw=2 et:
