@@ -12,7 +12,7 @@ pkgbase=linux-libre-grsec-xen
 _pkgbasever=4.7-gnu
 _pkgver=4.7.10-gnu
 _grsecver=3.1
-_timestamp=201610222037
+_timestamp=201610262029
 
 _replacesarchkernel=('linux%') # '%' gets replaced with _kernelname
 _replacesoldkernels=() # '%' gets replaced with _kernelname
@@ -68,7 +68,7 @@ sha256sums=('f483e595e0ad9a9d1b3afd20e4ecb0b798cf16eb31e79a7b99311eb9c061032a'
             'SKIP'
             '2c90eb1a33112512728f421e06a2f1b0004a6012fc83c638b1ae57626d2da250'
             'SKIP'
-            'b075e615a01411243a8a7dfd321ca6e056da1443f714c21f100b0c2c6853aef1'
+            '648d926d8e8d1fe9bd0b611b3591c85147cba1affaf3fbfd6357b8a35b2a15b8'
             'SKIP'
             'bfd4a7f61febe63c880534dcb7c31c5b932dde6acf991810b41a939a93535494'
             'SKIP'
@@ -76,9 +76,9 @@ sha256sums=('f483e595e0ad9a9d1b3afd20e4ecb0b798cf16eb31e79a7b99311eb9c061032a'
             'SKIP'
             '6de8a8319271809ffdb072b68d53d155eef12438e6d04ff06a5a4db82c34fa8a'
             'SKIP'
-            '543c493e15130ed95ccce295cf8e7f43899ace686cc17fa0270a1f3db08a82e0'
-            '17bb370c6ad69da1baeeb1a86b22e884caf305f38c8ef8608a616114c82e4e6a'
-            '6c11431ac9cdd99853a4e3fa8a108c76aec007085dfa4a4cf78bc8a316dc4e30'
+            '38cd99d5ef4747e1a9113593a44fec19a16d6620feef036621fd241878382fb7'
+            '2eb98aeb61e0f766e29f58c564d6592607e98ae9ce9d00e1d643c7ce9d5a2487'
+            'c962c1140519015b5386797e6e8b08181adc924bbd2237fffd3786fe6ca0e639'
             'f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
             '0376bd5efa31d4e2a9d52558777cebd9f0941df8e1adab916c868bf0c05f2fc3'
