@@ -13,7 +13,7 @@ makedepends=('gstreamer0.10-base-plugins' 'gconf' 'webkitgtk2' 'glu')
 optdepends=('webkitgtk2: for webview support')
 options=('!emptydirs')
 conflicts=('wxgtk')
-provides=('wxgtk')
+provides=('wxgtk=${pkgver}')
 
 source=(https://github.com/wxWidgets/wxWidgets/releases/download/v3.1.0/wxWidgets-${pkgver}.tar.bz2
 		make-abicheck-non-fatal.patch
