@@ -1,13 +1,13 @@
 # Maintainer: Snaipe
 
 pkgname=criterion
-pkgver=2.2.1
+pkgver=2.3.0-rc2
 pkgrel=1
 pkgdesc="A KISS, non-intrusive unit testing framework for C and C++"
 arch=('i686' 'x86_64')
 url="http://github.com/Snaipe/${pkgname}.git"
 license=('MIT')
-depends=('glibc' 'pcre' 'gettext')
+depends=('glibc' 'gettext')
 source=("$pkgname"::"git://github.com/Snaipe/${pkgname}.git#tag=v${pkgver}")
 md5sums=('SKIP')
 
@@ -15,7 +15,10 @@ build() {
   cd ${srcdir}/${pkgname}
   mkdir -p "build"
   cd "build"
-  cmake -DCMAKE_BUILD_TYPE=RelWithDebInfo -DCMAKE_INSTALL_PREFIX=/usr ..
+  cmake -DCMAKE_BUILD_TYPE=RelWithDebInfo \
+        -DCMAKE_INSTALL_LIBDIR=lib \
+        -DCMAKE_INSTALL_PREFIX=/usr \
+        ..
   make
 }
 
