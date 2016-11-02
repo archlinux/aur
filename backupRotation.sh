@@ -45,7 +45,7 @@
 
 # account        default : gmail
 # endregion
-# region default options
+# region default optio ns
 # Example:
 # declare -A source_target_mappings=(
 #     ['SOURCE_URL1']='TARGET_URL1 RECIPIENT_E_MAIL_ADDRESS' \
@@ -80,7 +80,8 @@ fi
 # endregion
 # region controller
 # Get current month and week day number
-month_day_number="$(date +'%d')"
+month_day_number="$(date +'%d' | grep '[1-9][0-9]?' --only-matching \
+    --extended-regexp)"
 week_day_number="$(date +'%u')"
 for source_path in "${!source_target_mappings[@]}"; do
     target_path="$(echo "${source_target_mappings[$source_path]}" | \
