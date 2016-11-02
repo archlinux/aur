@@ -1,14 +1,15 @@
 # Maintainer: Snaipe
 
 pkgname=criterion
-pkgver=2.3.0-rc2
+pkgver=2.3.0
+_fullver=2.3.0-rc2
 pkgrel=1
 pkgdesc="A KISS, non-intrusive unit testing framework for C and C++"
 arch=('i686' 'x86_64')
 url="http://github.com/Snaipe/${pkgname}.git"
 license=('MIT')
 depends=('glibc' 'gettext')
-source=("$pkgname"::"git://github.com/Snaipe/${pkgname}.git#tag=v${pkgver}")
+source=("$pkgname"::"git://github.com/Snaipe/${pkgname}.git#tag=v${_fullver}")
 md5sums=('SKIP')
 
 build() {
