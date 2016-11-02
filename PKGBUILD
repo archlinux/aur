@@ -1,7 +1,7 @@
 # Maintainer: Baptiste Jonglez <baptiste--aur at jonglez dot org>
 # Contributor: William J. Bowman <bluephoenix47@gmail.com>
 pkgname=coq-nox
-pkgver=8.5pl2
+pkgver=8.5pl3
 pkgrel=1
 pkgdesc='Formal proof management system. Headless version, without CoqIDE.'
 arch=('i686' 'x86_64')
@@ -13,9 +13,9 @@ provides=('coq')
 conflicts=('coq')
 optdepends=('coq-doc')
 source=("http://coq.inria.fr/distrib/V$pkgver/files/coq-$pkgver.tar.gz")
-md5sums=('adb68bbce7616edc4e770b6962016da3')
-sha1sums=('8b5699f956afb3071a84318f24333f045f7af3d4')
-sha256sums=('83239d1251bf6c54a9ca5045d738e469019b93ca601756bf982aab0654e4de73')
+md5sums=('b1295e3ec6e27e301c1cb33de537b77d')
+sha1sums=('daecdf067520ad031711a5839e4251f921cb83d6')
+sha256sums=('305b92e05d406d4d0c64f43d4fadb6b89419120a1d4ae4115ed1c5eb8812d33b')
 
 build() {
   cd "coq-$pkgver"
