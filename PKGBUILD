@@ -9,7 +9,7 @@
 
 pkgbase=linux-libre-pae
 _pkgbasever=4.8-gnu
-_pkgver=4.8.4-gnu
+_pkgver=4.8.6-gnu
 
 _replacesarchkernel=('linux%') # '%' gets replaced with _kernelname
 _replacesoldkernels=() # '%' gets replaced with _kernelname
@@ -43,7 +43,7 @@ source=("http://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgbasever}/li
         '0002-fix-Atmel-maXTouch-touchscreen-support.patch')
 sha256sums=('d54e0f8a27e24f3666c19b395c19dba194635db26929c89e78ffa4b2b0e8ca3a'
             'SKIP'
-            '961e1887b500c8752fcc0414d3e202229751f84262329cba948398a574599ef7'
+            '35d6ed23a6a2fc10ef864cd06dfe9b0ea37f722961a75d7e34375c4b483de207'
             'SKIP'
             'bfd4a7f61febe63c880534dcb7c31c5b932dde6acf991810b41a939a93535494'
             'SKIP'
