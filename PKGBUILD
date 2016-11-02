@@ -3,18 +3,17 @@
 # Maintainer: alexmo82 <25396682 AT live DOT it>
 
 pkgname=freefilesync
-pkgver=8.6
-pkgrel=0
+pkgver=8.5
+pkgrel=1
 pkgdesc="Backup software to synchronize files and folders"
 arch=('i686' 'x86_64')
 url="http://www.freefilesync.org/"
 license=('GPLv3')
-depends=('wxgtk-trenchbroom' 'webkitgtk2' 'boost-libs')
-makedepends=('boost')
+depends=(wxgtk webkitgtk2 boost-libs)
+makedepends=(boost)
 source=(
 	"http://downloads.sourceforge.net/project/zenxml/zenXml_2.3.zip"	#zen
-	"FreeFileSync_${pkgver}_Source.zip::https://dl.dropboxusercontent.com/u/74545385/FreeFileSync_8.6_Source.zip"		#ffs
-#	"http://www.freefilesync.org/download/FreeFileSync_8.6_Source.zip"	#ffs
+	"FreeFileSync_${pkgver}_Source.zip::https://dl.dropboxusercontent.com/u/74545385/FreeFileSync_8.5_Source.zip"		#ffs
 	FreeFileSync.desktop
 	ffsicon.png
 	RealTimeSync.desktop
@@ -22,7 +21,7 @@ source=(
 	)
 md5sums=(
 	'58baf96cb8e1136d10e1ada7419921c5'	#zen source
-	'53ab11128f8085ef47a5e641ddb19745'	#ffs source
+	'3d95dd10e7b3395f73173eb6eabc4c9e'	#ffs source
 	'eab0ccfc6a88e229a0f07507b93cfcff'	#FreeFileSync.desktop
 	'1f452dff6f970d95839411008d86250b'	#ffsicon.png
 	'ab266177f69d16ad9f4099ae4edd77a2'	#RealTimeSync.desktop
@@ -31,7 +30,7 @@ md5sums=(
 
 prepare() {
     cd ${srcdir}/zen
-#    sed -i 's/__GNUC__ < 6/__GNUC__ < 7/' scope_guard.h
+    sed -i 's/__GNUC__ < 5/__GNUC__ < 7/' scope_guard.h
 }
 
 build() {
