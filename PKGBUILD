@@ -1,9 +1,10 @@
 # Maintainer: Tim Kleinschmidt <tim.kleinschmidt@gmail.com>
 # Contributor: Marcin Wieczorek <marcin@marcin.co>
+# Contributor: Jean-Pier Brochu <jeanpier.brochu@gmail.com>
 
 pkgname=gitkraken
 pkgrel=1
-pkgver=1.8.1
+pkgver=1.9.0
 pkgdesc="The intuitive, fast, and beautiful cross-platform Git client."
 url="http://www.gitkraken.com/"
 provides=('gitkraken')
@@ -19,7 +20,7 @@ source=(
     "gitkraken.png"
     "eula.html"
 )
-md5sums=('79f0c065dfc11d25e417e8d85a4a2edf'
+md5sums=('933935c662e66405097c1936d0894d70'
          'cf2a1746a0cafe11793af0801c78afeb'
          '04987b933d551d15c0813111d715bb9e'
          'e9ba6663e5f1f92cae31beb0074e8c6c')
