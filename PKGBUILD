@@ -5,18 +5,19 @@ pkgname=( 'scaleio-gui' 'scaleio-gateway'
           'scaleio-sdc' 'scaleio-sds'
           'scaleio-mdm' 'scaleio-callhome'
           'scaleio-lia' 'scaleio-tb')
-pkgver=1.32.2
-pkgrel=8
+pkgver=2.0.0.2
+pkgrel=1
 pkgdesc="ScaleIO"
 arch=('x86_64')
-url="http://github.com/odeke-em/drive"
+url="http://www.emc.com/storage/scaleio/"
 license=('Custom')
 depends=('libaio' 'numactl' 'mutt' 'bash-completion' 'python2')
 makedepends=('unzip' 'rpmextract')
 conflicts=()
 options=('!strip' '!emptydirs')
 install=$pkgname.install
-source=("http://downloads.emc.com/emc-com/usa/ScaleIO/ScaleIO_${pkgver}_Linux_SW_Download.zip")
+source=("http://downloads.emc.com/emc-com/usa/ScaleIO/ScaleIO_Linux_v2.0.zip")
+
 sha256sums=('SKIP')
 
 prepare() {
