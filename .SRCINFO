@@ -8,7 +8,7 @@ pkgbase = gmsh-docs
 	makedepends = cmake
 	makedepends = texlive-core
 	source = http://www.geuz.org/gmsh/src/gmsh-2.14.1-source.tgz
-	md5sums = 314403c85935dd64a796765214197c61
+	md5sums = 8666d1b7df328827e35f62e790ef81c9
 
 pkgname = gmsh-docs
 
