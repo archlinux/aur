@@ -1,0 +1,29 @@
+pkgbase = lib32-freetype2-old-hinting
+	pkgdesc = TrueType font rendering library (32-bit)
+	pkgver = 2.7
+	pkgrel = 2
+	url = http://www.freetype.org/
+	arch = x86_64
+	license = GPL
+	makedepends = gcc-multilib
+	depends = lib32-zlib
+	depends = lib32-bzip2
+	depends = lib32-libpng
+	depends = lib32-harfbuzz
+	depends = freetype2
+	provides = libfreetype.so
+	provides = lib32-freetype2=2.7-2
+	conflicts = lib32-freetype2
+	source = http://download.savannah.gnu.org/releases/freetype/freetype-2.7.tar.bz2
+	source = http://download.savannah.gnu.org/releases/freetype/freetype-2.7.tar.bz2.sig
+	source = 0001-Enable-table-validation-modules.patch
+	source = 0002-Enable-subpixel-rendering.patch
+	source = 0003-Enable-infinality-subpixel-hinting.patch
+	sha1sums = f251029d5ab542a96dd4531605fe577185077560
+	sha1sums = SKIP
+	sha1sums = b31882ef5e8447e761acee1c4a44c0630cd4d465
+	sha1sums = b1494810ed3aca25cdd8e8cedf634e5adfe6c09e
+	sha1sums = 41d27140fd590945e22e012c9dce62de3d6f11e6
+
+pkgname = lib32-freetype2-old-hinting
+
