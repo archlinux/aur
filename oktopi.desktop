@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=Oktopi
+Comment=A fork of Pacman’s GUI Octopi for Chakra.
+Exec=oktopi
+Icon=oktopi
+Terminal=false
+StartupNotify=false
+Categories=Application;

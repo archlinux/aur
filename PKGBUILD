@@ -2,7 +2,7 @@
 
 pkgname=oktopi-git
 pkgver=r1.9895a4b
-pkgrel=1
+pkgrel=2
 pkgdesc='A fork of Pacman’s GUI Octopi for Chakra.'
 arch=('i686' 'x86_64')
 url='http://gitorious.org/chakra/oktopi'
@@ -11,8 +11,8 @@ depends=(kdebase-runtime)
 makedepends=(git kdelibs cmake automoc4)
 provides=(oktopi)
 conflicts=(oktopi)
-# install='oktopi-git.install'
-source=()
+source=(oktopi.desktop)
+sha512sums=('2ab11ce0feff00e81a4e9090e159a8458ab2bc86d5d9b33874c8838765b8b219f32df6e156ac968f9e020741a6ca22452eed8449565b31f0a0bbbb7f44650e20')
 _gitroot='http://gitorious.org/chakra/oktopi.git'
 _gitname='oktopi'
 
@@ -56,4 +56,7 @@ build(){
 package(){
   cd "$srcdir"/$_gitname-build/build
   make DESTDIR="$pkgdir/" install
+  install -Dm644 $srcdir/oktopi.desktop $pkgdir/usr/share/applications/oktopi.desktop
+  install -Dm644 ../resources/images/oktopi_yellow.png \
+    $pkgdir/usr/share/icons/hicolor/64x64/apps/oktopi.png
 }
