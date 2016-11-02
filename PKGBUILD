@@ -2,14 +2,14 @@
 
 _gitname='tartan'
 pkgname='tartan-git'
-pkgver=0.2.0.r122.gf1502e7
+pkgver=0.3.0.r3.g86e13b8
 pkgrel=1
 pkgdesc='Clang analysis plugin for GLib and GNOME'
 url='https://people.collabora.com/~pwith/gnome-clang/'
 arch=('i686' 'x86_64')
 provides=('tartan')
 conflicts=('tartan')
-license='GPL3'
+license=('GPL3')
 source=('git+https://github.com/pwithnall/tartan.git')
 # Alt: https://git.collabora.com/git/tartan.git
 depends=('llvm' 'clang' 'glib2' 'gobject-introspection')
