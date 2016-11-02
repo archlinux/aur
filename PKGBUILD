@@ -11,12 +11,13 @@ pkgver=1.2.56
 pkgrel=4
 pkgdesc='A collection of routines used to create PNG format graphics files'
 arch=('x86_64')
-url='http://www.libpng.org/pub/png/libpng.html'
+url='https://www.libpng.org/pub/png/libpng.html'
 license=('custom')
 depends=('lib32-glibc' 'lib32-zlib')
 makedepends=('gcc-multilib')
-source=("http://sourceforge.net/projects/libpng/files/libpng-${pkgver}.tar.xz"
-        "http://sourceforge.net/projects/apng/files/libpng/libpng12/libpng-${pkgver}-apng.patch.gz")
+source=("https://sourceforge.net/projects/libpng/files/libpng-${pkgver}.tar.xz"{,.asc}
+        "https://sourceforge.net/projects/apng/files/libpng/libpng12/libpng-${pkgver}-apng.patch.gz")
+validpgpkeys=('8048643BA2C840F4F92A195FF54984BFA16C640F') # Glenn Randers-Pehrson
 sha256sums=('24ce54581468b937734a6ecc86f7e121bc46a90d76a0d948dca08f32ee000dbe'
             '454631947201483930c759ecb3741618258e8143db4ff13b0d938b4238bc8708')
 
