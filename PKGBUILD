@@ -2,6 +2,8 @@
 # Contributor: Joonas Henriksson
 # Contributor: Rutger Broekhoff
 # Contributor: gatitofeliz at protonmail dot com
+# gpg key avaible at gpg --keyserver pgp.mit.edu --recv-keys DB68D18158C19A535A538524507F8DFE0C99485B
+
 pkgname=natron-portable
 pkgver=2.1.7
 pkgrel=2
