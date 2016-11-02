@@ -1,0 +1,7 @@
+post_install() {
+  echo ':: To use pacman-installed vim addons with neovim, enable the default vim runtime'
+  echo '   path by adding the following line to your neovim configuration:'
+  echo
+  echo '     set runtimepath^=/usr/share/vim/vimfiles'
+  echo
+}

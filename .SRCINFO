@@ -1,0 +1,32 @@
+pkgbase = neovim-drop-in
+	pkgdesc = Emulate vim and vi executables with neovim
+	pkgver = 1
+	pkgrel = 1
+	url = https://neovim.io/doc/user/vim_diff.html
+	install = neovim-drop-in.install
+	arch = any
+	license = custom:none
+	depends = neovim
+	optdepends = xxd: For editing binary files
+	provides = vi
+	provides = vim
+	provides = vim-runtime
+	conflicts = gvim
+	conflicts = neovim-symlinks
+	conflicts = vi
+	conflicts = vim
+	source = ex.sh
+	source = exim.sh
+	source = rview.sh
+	source = rvim.sh
+	source = view.sh
+	source = vimdiff.sh
+	md5sums = 43a308b1bd6ff01af18713cd396d9613
+	md5sums = 7bfc8f55728827a9cfef456bc1b25e2c
+	md5sums = 63df8ad2cf566c0b58c621e383f46e0f
+	md5sums = a970a2b303ea9f116eac6c91c045bd4c
+	md5sums = 7e4047ace5a1f0793e707653f4dc0432
+	md5sums = 3e470ab2dc0a42e1ada96869e19ac094
+
+pkgname = neovim-drop-in
+
