@@ -1,10 +1,10 @@
 # Maintainer: Timofey Titovets <nefelim4ag@gmail.com>
 
 pkgbase=scaleio
-# Not ready 'scaleio-sdc' 'scaleio-sds' 'scaleio-mdm' 'scaleio-callhome'
-pkgname=( 'scaleio-gui'  )
+# Not ready 'scaleio-sdc' 'scaleio-sds'  'scaleio-callhome'
+pkgname=( 'scaleio-gui' 'scaleio-mdm' )
 pkgver=2.0.0.2
-pkgrel=7
+pkgrel=8
 pkgdesc="ScaleIO"
 arch=('x86_64')
 url="http://www.emc.com/storage/scaleio/"
@@ -42,6 +42,7 @@ prepare() {
         rm ./*.pdf
         echo "Remove Gateway for Linux"
         rm -rf ./ScaleIO_${pkgver}_Gateway_for_Linux_Download
+
         mv ./ScaleIO_${pkgver}_GUI_for_Linux_Download ./GUI
         rm ./GUI/EMC-ScaleIO-gui-2.0-7120.0.noarch.rpm
 
@@ -97,6 +98,54 @@ package_scaleio-gui()
         } >  ${pkgdir}/usr/share/applications/scaleio-gui.desktop
 }
 
+package_scaleio-mdm()
+{
+        pkgdesc="ScaleIO mdm"
+        depends=()
+        provides=()
+        conflicts=()
+        install=scaleio-mdm.install
+        options=('!emptydirs' '!strip')
+
+        cd ${srcdir}/ScaleIO_${pkgver}_Complete_Linux_SW_Download/
+        mkdir -p MDM
+        mv ./U1404P/EMC-ScaleIO-mdm-2.0-7120.0.Ubuntu.14.04.x86_64.deb ./MDM
+        cd ./MDM
+        extract_deb EMC-ScaleIO-mdm-2.0-7120.0.Ubuntu.14.04.x86_64.deb
+        rm EMC-ScaleIO-mdm-2.0-7120.0.Ubuntu.14.04.x86_64.deb debian-binary control.tar.gz
+        tar xf data.tar.xz
+        mv opt ${pkgdir}/opt
+
+        mkdir -p ${pkgdir}/usr/bin/
+        {
+            echo '#!/bin/bash'
+            echo /opt/emc/scaleio/mdm/bin/cli '"$@"'
+        } > ${pkgdir}/usr/bin/scli
+        chmod +x ${pkgdir}/usr/bin/scli
+
+        mkdir -p ${pkgdir}/usr/share/bash-completion/completions/
+        cp ${pkgdir}/opt/emc/scaleio/mdm/bin/cli_autocompletion ${pkgdir}/usr/share/bash-completion/completions/
+
+        mkdir -p ${pkgdir}/usr/lib/systemd/system/
+        # mdm.service
+        {
+            echo "[Unit]"
+            echo  Description=ScaleIO MDM
+            echo  After=local-fs.target
+
+            echo "[Service]"
+            echo ExecStart=/opt/emc/scaleio/mdm/bin/run_bin.sh
+            echo OOMScoreAdjust=-999
+            echo Restart=always
+            echo CPUAccounting=true
+            echo MemoryAccounting=true
+            echo ProtectHome=true
+
+            echo "[Install]"
+            echo WantedBy=local-fs.target
+        } > ${pkgdir}/usr/lib/systemd/system/mdm.service
+}
+
 #package_scaleio-callhome()
 #{
 #        pkgdesc="ScaleIO callhome"
@@ -122,17 +171,6 @@ package_scaleio-gui()
 #package_scaleio-sds()
 #{
 #        pkgdesc="ScaleIO sds"
-#        depends=()
-#        provides=()
-#        conflicts=()
-#        options=('!emptydirs' '!strip')
-#
-#        cd ${srcdir}/ScaleIO_${pkgver}_Complete_Linux_SW_Download/
-#}
-
-#package_scaleio-mdm()
-#{
-#        pkgdesc="ScaleIO mdm"
 #        depends=()
 #        provides=()
 #        conflicts=()

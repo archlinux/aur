@@ -1,0 +1,48 @@
+post_install(){
+    # Eventlogger rotater configuration
+    ROTATE_DB_CFG_FILE=/opt/emc/scaleio/mdm/cfg/eventloggerconf.txt
+
+    if [ ! -f $ROTATE_DB_CFG_FILE ]; then
+        {
+            echo "[General]"
+            echo log_dir=/opt/emc/scaleio/mdm/logs/
+            echo db_dir=/opt/emc/scaleio/mdm/logs/
+            echo log_file=eventLogger.log
+            echo event_db_file_name=eventlog.db
+            echo max_db_line_to_rotate=20000
+        } > $ROTATE_DB_CFG_FILE
+    fi
+
+    mkdir -p /opt/emc/scaleio/mdm/rep/
+    #Format the repository after installation
+    if [ ! -f /opt/emc/scaleio/mdm/rep/mdm_rep.bin ]; then
+        /opt/emc/scaleio/mdm/bin/rep_format --format_rep --rep_file /opt/emc/scaleio/mdm/rep/mdm_rep.bin
+    fi
+
+    MDM_CFG_FILE=/opt/emc/scaleio/mdm/cfg/conf.txt
+    #Setup conf file to contain all the repositories and their shared memory
+    {
+        echo rep_dev_name=/opt/emc/scaleio/mdm/rep/mdm_rep.bin
+        echo rep_shm_name=scaleio_mdm_rep_shm
+        echo actor_rep_dev_name=/opt/emc/scaleio/mdm/rep/actor_rep.bin
+        echo actor_rep_shm_name=scaleio_actor_shm
+        echo actor_local_voter_rep_dev_name=/opt/emc/scaleio/mdm/rep/actor_local_voter_rep.bin
+        echo actor_local_voter_rep_shm_name=scaleio_voter_shm
+        echo actor_role_is_manager=$MDM_ROLE_IS_MANAGER
+    } > $MDM_CFG_FILE
+
+    # End
+    echo "Config: /opt/emc/scaleio/mdm/cfg/conf.txt"
+    echo "Set actor_role_is_manager=1 if server is a Master"
+    echo "Set actor_role_is_manager=0 if server is a TieBreaker"
+    echo
+    echo "To enable: systemctl enable mdm"
+}
+
+post_upgrade(){
+  :
+}
+
+post_remove(){
+  :
+}
