@@ -7,12 +7,12 @@ pkgver=0.26.0
 pkgrel=1
 pkgdesc='A low-level configuration system'
 arch=('x86_64')
-url='http://live.gnome.org/dconf'
+url='https://live.gnome.org/dconf'
 license=('LGPL2.1')
 depends=('dconf' 'lib32-glib2')
 makedepends=('docbook-xsl' 'gcc-multilib' 'intltool' 'python' 'vala')
 install='dconf.install'
-source=("http://download.gnome.org/sources/dconf/${pkgver%.*}/dconf-${pkgver}.tar.xz")
+source=("https://download.gnome.org/sources/dconf/${pkgver%.*}/dconf-${pkgver}.tar.xz")
 sha256sums=('8683292eb31a3fae31e561f0a4220d8569b0f6d882e9958b68373f9043d658c9')
 
 prepare() {
