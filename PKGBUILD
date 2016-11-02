@@ -1,10 +1,11 @@
-# Maintainer: Adrien Sohier <adrien.sohier@art-software.fr>
+# Maintainer: Peter Wu <peter@lekensteyn.nl>
+# Contributor: Adrien Sohier <adrien.sohier@art-software.fr>
 pkgname=ltunify-git
 pkgver=0.2.22.gc3a263f
-pkgrel=1
+pkgrel=2
 pkgdesc="A command-line tool to pair Logitech Unifying devices"
 arch=('i686' 'x86_64' 'ARM')
-url="http://lekensteyn.nl"
+url="https://lekensteyn.nl"
 license=('GPL')
 depends=('glibc')
 makedepends=('git')
@@ -25,5 +26,7 @@ build() {
 
 package() {
 	cd "$_gitname"
-	make install DESTDIR=$pkgdir bindir=/usr/bin udevrulesdir=/usr/lib/udev/rules.d
+	install -Dm755 ltunify "$pkgdir/usr/bin/ltunify"
+	install -Dm644 udev/42-logitech-unify-permissions.rules \
+		"$pkgdir/usr/lib/udev/rules.d/42-ltunify-permissions.rules"
 }
