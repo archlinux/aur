@@ -1,7 +1,7 @@
 pkgbase = cin-bin
-	pkgdesc = Cinelerra (5.1) (20161002)
+	pkgdesc = Cinelerra (5.1) (20161030)
 	pkgver = 5.1
-	pkgrel = 20161002
+	pkgrel = 20161030
 	url = http://www.cinelerra-cv.org/five
 	arch = x86_64
 	license = GPL
@@ -26,11 +26,14 @@ pkgbase = cin-bin
 	conflicts = cinelerra-cv
 	conflicts = cinelerra-heroine
 	conflicts = cin
-	source = https://bitbucket.org/juanperez89/cinelerra5/downloads/cin-5.1-20161002-x86_64.pkg.tar.xz
-	md5sums = 3ba47f80b1f1177fcb533fbf521a7491
-	sha256sums = 29365db318f93020009599e2c30b6537998ef343390e599e13d99747ec15d975
-	sha384sums = 023f9fe4246b5fa16539100a0a7ea87ffdc08228ab4a6e4ee5fdb7214aedeaa50272acb6d5f1526ad112437822bbe7fd
-	sha512sums = 2869554e68d53b5118f892ce1945a0b485725e4016fc72270e669893ff1e2713587254b3c1c2143f0e416228e70bb169c62556abc3a73f0bc3a602fdaef7f5ae
+	source = https://bitbucket.org/juanperez89/cinelerra5/downloads/cinbie-5.1-20161030-x86_64.pkg.tar.xz
+	source = cinbie-5.1-20161030-x86_64.pkg.tar.xz.sig
+	sha256sums = 4dd15a6850033192327d313f98d56d8c1fffca5c7208aa8cc5af4aa5bae290bb
+	sha256sums = SKIP
+	sha384sums = 66618e133ac23b9096b8795004ce77039a7b76f9937b18b84aefdd18dcb7d82b05f8f12cb87c2029068f35946f59b9b8
+	sha384sums = SKIP
+	sha512sums = d1b756977fb7788ce1eae6ec8632ffed255cd3c3f8e4d781d3761fa0715ddebbed7ef385dc224e816f5f3ec07ef3e008862eb39ab9971a331e099509b56a42f9
+	sha512sums = SKIP
 
 pkgname = cin-bin
 
