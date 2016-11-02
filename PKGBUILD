@@ -1,6 +1,6 @@
 # Maintainer: Oleg Senin <trashmessage@yandex.ru>
 pkgname=pyflame-git
-pkgver=r116.b2bfad0.1
+pkgver=r116.b2bfad0
 pkgrel=1
 pkgdesc="A tool for generating flame graphs for Python processes."
 arch=('i686' 'x86_64')
