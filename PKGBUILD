@@ -1,6 +1,6 @@
 # Maintainer: Oleg Senin <trashmessage@yandex.ru>
 pkgname=pyflame-git
-pkgver=r57.80f6cd3
+pkgver=r116.b2bfad0-1
 pkgrel=1
 pkgdesc="A tool for generating flame graphs for Python processes."
 arch=('i686' 'x86_64')
@@ -8,8 +8,7 @@ url="https://github.com/uber/pyflame"
 license=('APACHE')
 depends=('gcc-libs')
 makedepends=('autoconf' 'automake' 'gcc>=4.6' 'git')
-provides=('pyflames')
-conflicts=()
+conflicts=('pyflame')
 source=("$pkgname::git+https://github.com/uber/pyflame.git")
 md5sums=('SKIP')
 
