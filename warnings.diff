@@ -1,0 +1,11 @@
+--- src/catch.hpp	2016-11-02 08:08:44.216933290 -0400
++++ src/catch.hpp	2016-11-02 08:08:52.013599558 -0400
+@@ -2813,7 +2813,7 @@
+                 for( std::vector<Ptr<Pattern> >::const_iterator it = m_patterns.begin(), itEnd = m_patterns.end(); it != itEnd; ++it )
+                     if( !(*it)->matches( testCase ) )
+                         return false;
+-                    return true;
++                return true;
+             }
+         };
+ 

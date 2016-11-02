@@ -2,27 +2,37 @@
 # Contributor: masutu <masutu dot arch at gmail dot com>
 
 pkgname=necpp
-pkgver=1.5.0.cvs20101003
+pkgver=1.6.1
 pkgrel=1
-pkgdesc="Free NEC-2 compatable electromagnetic code. It can both read nec2 antenna description files and also be incorporated into other projects like GUI tools and automatic antenna optimization systems."
+pkgdesc="Free NEC-2 compatable electromagnetic code. With C, C++ APIs."
 arch=('i686' 'x86_64')
-url="http://alioth.debian.org/projects/necpp/"
+url="http://elec.otago.ac.nz/w/index.php/Necpp"
 license=('GPL')
+depends=('gcc-libs')
 options=(!libtool)
-source=(http://ftp.de.debian.org/debian/pool/main/n/${pkgname}/${pkgname}_${pkgver%.*}+${pkgver##*.}.orig.tar.gz)
-md5sums=('122bf50da6b7a5a33c06499063538f4b')
+source=("necpp-$pkgver.tgz::https://github.com/tmolteno/necpp/archive/v$pkgver.tar.gz"
+        "warnings.diff")
+md5sums=('a498fee8642bf60bbba3586a6ae18fec'
+         '45801970e5c2b44e24ce5980cefb2969')
+
+# todo: python bindings, ruby bindings
+
+prepare() {
+  cd "necpp-$pkgver"
+  #sed -i 's/AM_CONFIG_HEADER/AC_CONFIG_HEADERS/' configure.in
+  cd src
+  patch -Np1 -i "$srcdir/warnings.diff"
+  sed -i 's/(abs/(fabs/' c_evlcom_tb.cpp
+}
 
 build() {
-  cd "${srcdir}/${pkgname}-${pkgver%.*}+${pkgver##*.}"
-	
-#	sed -i 's/AM_CONFIG_HEADER/AC_CONFIG_HEADERS/' configure.in
-  make -f Makefile.cvs
+  cd "necpp-$pkgver"
+  make -f Makefile.git
   ./configure --prefix=/usr --without-lapack
   make
 }
 
 package() {
-  cd "${srcdir}/${pkgname}-${pkgver%.*}+${pkgver##*.}"
-  
-	make DESTDIR="${pkgdir}/" install
+  cd "necpp-$pkgver"
+  make DESTDIR="${pkgdir}/" install
 }
