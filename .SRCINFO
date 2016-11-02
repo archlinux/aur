@@ -1,9 +1,8 @@
 pkgbase = natron-portable
 	pkgdesc = Video compositing software similar to Nuke and Adobe After Effects, portable snapshot
-	pkgver = 2.1.5
+	pkgver = 2.1.7
 	pkgrel = 2
 	url = http://natron.fr/
-	arch = i686
 	arch = x86_64
 	license = GPL
 	depends = ffmpeg
@@ -19,18 +18,14 @@ pkgbase = natron-portable
 	md5sums = ca5186feb5a7f336517c015f72d0f8c8
 	md5sums = 60eb9f97a0ddeab5acda48d15894559a
 	md5sums = 475e14142c51d8b545f7cbc4b5426ce2
-	source_i686 = https://bitbucket.org/juanperez89/natron/downloads/Natron-2.1.5-Linux-x86_32bit-portable.tar.xz
-	md5sums_i686 = 3c76260bfe992f8d05d45ffb9a2ab8a5
-	sha1sums_i686 = dc78bea76437dce216fc3f07b592dab038bcd937
-	sha256sums_i686 = 1ff38af24afbe55c4ef70d01d80f724ebc16c6a6a5aff6e5187493b2bfeb9d15
-	sha384sums_i686 = 43855a7bea9a80911073e738981c549cfd5c41a74186b3fb0fc04896a5c3473e1dd2baa91dd21517f94b5a0d257c15d6
-	sha512sums_i686 = 27746d158711ea0dc5b34ed1b65cce7b31695a750475c682cb64b479aaa385423d93c64c7e51dc3b902761b3a4f95e76927cec3578b8c081f419eb5c75c05c06
-	source_x86_64 = https://bitbucket.org/juanperez89/natron/downloads/Natron-2.1.5-Linux-x86_64bit-portable.tar.xz
-	md5sums_x86_64 = df3bca1c6a10d4e9aad49330841491c2
-	sha1sums_x86_64 = a4b44cc53ac49fd124f8c15ea6a320767ab127bf
-	sha256sums_x86_64 = 950c9be33d6b879f8567776b959d4196c058e3e1501f95507fb12b2782a731e4
-	sha384sums_x86_64 = a4290c470fbff74bff318299a0f130fb19c756ddd3f4a8bd55598694597ebe612438eb1ab6d7c2a47f257223d3225d2b
-	sha512sums_x86_64 = 7ba29fb83d841d2207d3aec0013a122457cffa7442ccaea5c941d3a4ce59c22e9f4062f869fec0c606b44e52dc7bfa2e115b4f729db5d72b1837d24ccd04681b
+	source_x86_64 = https://bitbucket.org/juanperez89/natron/downloads/natron-port-2.1.7-2-x86_64.pkg.tar.xz
+	source_x86_64 = natron-port-2.1.7-2-x86_64.pkg.tar.xz.sig
+	sha256sums_x86_64 = d697a3b0557cd2596a04a1ea68002cf1e0b3117939b3a0bd4c039f13aff4b859
+	sha256sums_x86_64 = SKIP
+	sha384sums_x86_64 = 46862f6a9ea43f3e32c41c9c1dd87ac18d36ec11738fc47f12532375ae9462029602b86a18d36fa565922125ef580d8d
+	sha384sums_x86_64 = SKIP
+	sha512sums_x86_64 = 1312b187e0cb7c3b39b50da5e5055a8aebc5569415b5368870909bb58a8efca188e496ad60b6073ee3d50ff3c84a7ef4fd796f6d8dd8ef160990c6fcc87e4eec
+	sha512sums_x86_64 = SKIP
 
 pkgname = natron-portable
 
