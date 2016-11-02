@@ -1,6 +1,6 @@
 pkgbase = tartan
 	pkgdesc = Clang analysis plugin for GLib and GNOME
-	pkgver = 0.2.0
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://people.collabora.com/~pwith/gnome-clang/
 	arch = i686
@@ -10,8 +10,8 @@ pkgbase = tartan
 	depends = clang
 	depends = glib2
 	depends = gobject-introspection
-	source = https://github.com/pwithnall/tartan/archive/0.2.0.tar.gz
-	sha256sums = d73a0e4bda475498a69cbfc11d2e9b142b483d7a67f55b24642915e796c51115
+	source = https://www.freedesktop.org/software/tartan/releases/tartan-0.3.0.tar.xz
+	sha256sums = 008f8195de142900443f10d7a0a1e5a0360c1296e5684274fa39c148a161c731
 
 pkgname = tartan
 
