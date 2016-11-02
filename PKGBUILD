@@ -10,9 +10,9 @@
 
 pkgbase=linux-libre-rt
 _pkgbasever=4.8-gnu
-_pkgver=4.8.2-gnu
+_pkgver=4.8.6-gnu
 _rtbasever=4.8
-_rtpatchver=rt3
+_rtpatchver=rt5
 
 _replacesarchkernel=('linux%') # '%' gets replaced with _kernelname
 _replacesoldkernels=() # '%' gets replaced with _kernelname
@@ -22,7 +22,7 @@ _srcname=linux-${_pkgbasever%-*}
 _archpkgver=${_pkgver%-*}_${_rtpatchver}
 pkgver=${_pkgver//-/_}.${_rtpatchver}
 pkgrel=1
-rcnrel=armv7-x3
+rcnrel=armv7-x4
 arch=('i686' 'x86_64' 'armv7h')
 url="https://rt.wiki.kernel.org/"
 license=('GPL2')
@@ -46,7 +46,6 @@ source=("http://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgbasever}/li
         # standard config files for mkinitcpio ramdisk
         'linux.preset'
         'change-default-console-loglevel.patch'
-        'fix-CVE-2016-5195.patch'
         '0001-usb-serial-gadget-no-TTY-hangup-on-USB-disconnect-WI.patch'
         '0002-fix-Atmel-maXTouch-touchscreen-support.patch'
         # armv7h patches
@@ -68,9 +67,9 @@ source=("http://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgbasever}/li
         '0014-Revert-gpu-drm-omapdrm-dss-of-add-missing-of_node_pu.patch')
 sha256sums=('d54e0f8a27e24f3666c19b395c19dba194635db26929c89e78ffa4b2b0e8ca3a'
             'SKIP'
-            '4ea446eafe2764c5e5f1ec1c94dad428b78ba4f2e14ff8310f08454145011b46'
+            '35d6ed23a6a2fc10ef864cd06dfe9b0ea37f722961a75d7e34375c4b483de207'
             'SKIP'
-            '43d91458034ac44f5aa9e91296b92e421b2d46a7762db054b553c5fe6bd6de28'
+            'f0e1bc55ec0288e54e84cc35a9e16a9df93be3772fda58b654ece6260f12699a'
             'SKIP'
             'bfd4a7f61febe63c880534dcb7c31c5b932dde6acf991810b41a939a93535494'
             'SKIP'
@@ -83,10 +82,9 @@ sha256sums=('d54e0f8a27e24f3666c19b395c19dba194635db26929c89e78ffa4b2b0e8ca3a'
             '4f41fd9878ae11dd9927f05c491b0680555d1c8afd4e5bc496ebc064a5e4ccd1'
             'f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
-            '23a5b972cbb3b7e0ec6e202435113319dd9498f05b5502d6ca972932a6ad6ae8'
             '0376bd5efa31d4e2a9d52558777cebd9f0941df8e1adab916c868bf0c05f2fc3'
             '351fd96be8cd5ebd0435c0a8a978673fc023e3b1026085e67f86d815b2285e25'
-            '075e3f6d7ef545d3ea624a6744d74aeba3962ae85263ce06e7e17462c5ecd16a'
+            '60220f4dbb85febaba6094ec876481c08a2ba5643974c3a91679df3225f97619'
             'SKIP'
             'ed9595e2736386e70f9c16ce2d933885bd2f298fa6f8e95dd10c93d99c8addf7'
             'c17b6f6fe8c1949472d6f4421ca498dda386933e2640b8fe18e907fb9a1cdf11'
@@ -168,9 +166,6 @@ prepare() {
   # remove this when a Kconfig knob is made available by upstream
   # (relevant patch sent upstream: https://lkml.org/lkml/2011/7/26/227)
   patch -p1 -i "${srcdir}/change-default-console-loglevel.patch"
-
-  # fix CVE-2016-5195
-  patch -p1 -i "${srcdir}/fix-CVE-2016-5195.patch"
 
   # maintain the TTY over USB disconnects
   # http://www.coreboot.org/EHCI_Gadget_Debug
