@@ -15,7 +15,7 @@ optdepends=("pacman>=5: to use aurbranch without a .SRCINFO argument, $(
             )makepkg-expanded and graph-templates"
             'git: for offbranch, aurbranch and aurremote')
 replaces=('makepkg-expanded')
-_gvdir='usr/share/graphviz'
+_gvdir='usr/share/graphviz/gvpr'
 
 makedepends+=('git')
 source+=("${_gitname:=${pkgname%-git}}::${_giturl:-git+$url}")
