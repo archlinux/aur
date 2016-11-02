@@ -2,13 +2,13 @@
 
 pkgname=include-what-you-use
 epoch=1
-pkgver=0.6
+pkgver=0.7
 pkgrel=1
 pkgdesc="A tool for use with clang to analyze #includes in C and C++ source files"
 url="http://include-what-you-use.org"
 license=('LLVM Release License')
 source=(http://include-what-you-use.org/downloads/include-what-you-use-$pkgver.src.tar.gz)
-sha1sums=('71295c39e7374a9c139154ac12b252fb5e1305f9')
+sha1sums=('2c50ace20d108a097d2aa5433b0c50a7d1f8b59e')
 arch=('i686' 'x86_64')
 _lower=3.9
 _upper=3.10
@@ -17,7 +17,7 @@ makedepends=('clang>='$_lower 'clang<='$_upper 'cmake' 'llvm>='$_lower 'llvm<='$
 optdepends=('python2')
 
 build() {
-    cd $srcdir/$pkgname
+    cd $srcdir/llvm/tools/clang/tools/$pkgname
 
     cmake -DIWYU_LLVM_ROOT_PATH=/usr/lib -DCMAKE_INSTALL_PREFIX:PATH=/usr .
     make
@@ -25,7 +25,7 @@ build() {
 }
 
 package() {
-    cd $srcdir/$pkgname
+    cd $srcdir/llvm/tools/clang/tools/$pkgname
 
     make install DESTDIR=$pkgdir
     install -Dm755 fix_includes.py "${pkgdir}/usr/bin/iwyu-fix_includes.py"
