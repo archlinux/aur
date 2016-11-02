@@ -6,14 +6,16 @@ pkgver=1.5.1
 pkgrel=1
 pkgdesc='libjpeg derivative with accelerated baseline JPEG compression and decompression'
 arch=('i686' 'x86_64')
-url='http://libjpeg-turbo.virtualgl.org/'
+url='https://libjpeg-turbo.virtualgl.org/'
 license=('BSD')
 depends=('glibc')
 makedepends=('nasm')
 provides=('libjpeg6')
 conflicts=('libjpeg6')
-source=("http://downloads.sourceforge.net/project/libjpeg-turbo/${pkgver}/libjpeg-turbo-${pkgver}.tar.gz")
-sha256sums=('41429d3d253017433f66e3d472b8c7d998491d2f41caa7306b8d9a6f2a2c666c')
+source=("https://downloads.sourceforge.net/project/libjpeg-turbo/${pkgver}/libjpeg-turbo-${pkgver}.tar.gz"{,.sig})
+validpgpkeys=('7D6293CC6378786E1B5C496885C7044E033FDE16') # libjpeg-turbo
+sha256sums=('41429d3d253017433f66e3d472b8c7d998491d2f41caa7306b8d9a6f2a2c666c'
+            'SKIP')
 
 build() {
   cd libjpeg-turbo-${pkgver}
