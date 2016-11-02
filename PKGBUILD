@@ -2,7 +2,7 @@
 # Contributor: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=qpdfview-bzr
-pkgver=2001
+pkgver=2017
 pkgrel=1
 pkgdesc='A tabbed PDF viewer using the poppler library. (development version)'
 arch=('i686' 'x86_64' 'armv7h')
@@ -16,7 +16,6 @@ optdepends=('texlive-bin: for shared SyncTeX parser library (required at build t
             'libmupdf: for PDF support (required at build time)')
 makedepends=('bzr' 'qt5-tools')
 conflicts=('qpdfview')
-install='qpdfview.install'
 source=('qpdfview::bzr+http://bazaar.launchpad.net/~adamreichold/qpdfview/trunk/')
 md5sums=('SKIP')
 
