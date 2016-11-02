@@ -5,7 +5,7 @@
 # Contributor: Artem Sheremet <dot_doom_at_gmail_dot_com>
 pkgname=sky
 pkgver=2.1.6375_1
-pkgrel=1
+pkgrel=2
 pkgdesc="Lync and Skype for Business client on Linux"
 
 arch=(
@@ -43,7 +43,7 @@ source_x86_64=("https://tel.red/repos/debian/pool/non-free/sky_${pkgver//_/-}deb
 sha256sums_x86_64=('142326355aeedaaa16595ba8923602cc41d11f6d720b2bcd7aff2ae5b9a5d587')
 
 package() {
-	local _sky_libdir="/usr/lib/sky/lib"
+	local _sky_libdir="/usr/lib/sky/lib64"
 	local _sky_bindir="/usr/lib/sky"
 	local _sky_datadir=( "${_sky_bindir}/sounds" )
 
@@ -57,9 +57,8 @@ package() {
 
 	install -dm 0755 "${srcdir}${_sky_bindir}" "${pkgdir}${_sky_libdir}"
 	find "${srcdir}${_sky_bindir}" -maxdepth 1 -type f -perm /0111 -exec install -m 0755 {} "${pkgdir}${_sky_bindir}/" \;
-	sed -i s/QT_PLUGIN_PATH=\"[^\"]*\"\\s*//g "${pkgdir}${_sky_bindir}/sky.sh"
 	install -dm 0755 "${pkgdir}/usr/bin"
-	ln -s "../..${_sky_bindir}/sky.sh" "${pkgdir}/usr/bin/sky"
+	ln -s "../..${_sky_bindir}/sky" "${pkgdir}/usr/bin/sky"
 
 	for dd in ${_sky_datadir[@]} ; do
 		install -dm 0755 "${srcdir}${dd}" "${pkgdir}${dd}"
