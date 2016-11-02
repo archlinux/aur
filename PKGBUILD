@@ -6,19 +6,23 @@ pkgname=( 'scaleio-gui' 'scaleio-gateway'
           'scaleio-mdm' 'scaleio-callhome'
           'scaleio-lia' 'scaleio-tb')
 pkgver=2.0.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="ScaleIO"
 arch=('x86_64')
 url="http://www.emc.com/storage/scaleio/"
 license=('Custom')
 depends=('libaio' 'numactl' 'mutt' 'bash-completion' 'python2')
-makedepends=('unzip' 'rpmextract')
+makedepends=('unzip')
 conflicts=()
 options=('!strip' '!emptydirs')
 install=$pkgname.install
 source=("http://downloads.emc.com/emc-com/usa/ScaleIO/ScaleIO_Linux_v2.0.zip")
 
 sha256sums=('SKIP')
+
+extract_deb(){
+    ar xv $1
+}
 
 prepare() {
         cd $srcdir
