@@ -1,7 +1,7 @@
 # Maintainer: Fernando Barillas <fbis251@mailbox.org>
 pkgname=wire-desktop-bin
 pkgver=2.11.2665
-pkgrel=1
+pkgrel=2
 pkgdesc='Modern communication, full privacy.'
 arch=('i686' 'x86_64')
 url='https://wire.com/'
@@ -22,6 +22,12 @@ package() {
     echo "Unknown arch: $CARCH"
     exit 1
   fi
+
+  cd "$pkgdir"
+  mkdir -p opt etc/profile.d
+  echo 'export PATH=$PATH:/opt/Wire' > "etc/profile.d/${pkgname}.sh"
+  echo 'setenv PATH ${PATH}:/opt/Wire' > "etc/profile.d/${pkgname}.csh"
+  chmod 755 "etc/profile.d/${pkgname}".{csh,sh}
 
   cd "$srcdir"
   deb_package="wire-${pkgver}-${deb_arch}.deb"
