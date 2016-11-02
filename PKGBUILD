@@ -6,12 +6,12 @@
 
 pkgname=openbrf
 pkgdesc='Mount&Blade resource editor by Marco Tarini.'
-pkgver=0.0.80
+pkgver=0.0.82e
 pkgrel=1
 arch=('i686' 'x86_64')
 url="https://forums.taleworlds.com/index.php?topic=72279.0"
 license=('GPL')
-depends=('qt4' 'glew' 'glu')
+depends=('qt5-base' 'glew' 'glu')
 makedepends=('icoutils' 'subversion' 'git')
 install=openbrf.install
 source=('git+https://github.com/cfcohen/openbrf.git' 'svn://svn.code.sf.net/p/vcg/code/trunk/vcglib')
@@ -30,8 +30,7 @@ build()
 
 	# use the correct location for our VCG lib, instead of the custom hardcoded path
 	sed -e "s/VCGLIB = \/home\/cory\/Source\/VCGLib/VCGLIB = ..\/vcglib/" openBrf.pro --in-place
-
-	qmake-qt4 -makefile openBrf.pro
+	qmake -makefile openBrf.pro
 	make -j 4
 }
 
