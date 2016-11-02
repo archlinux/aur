@@ -1,0 +1,5 @@
+*.bak
+*.tar.?z
+pkg/
+src/
+scipy-sphinx-theme/
