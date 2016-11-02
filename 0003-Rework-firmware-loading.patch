@@ -1,15 +1,15 @@
-From f07d23f3b7f3438d81d6ac403204db79d429f4e5 Mon Sep 17 00:00:00 2001
+From 2fc12fd1f3abd8c098cad5b27a263016b5fdb86d Mon Sep 17 00:00:00 2001
 From: Ivan Shapovalov <intelfx@intelfx.name>
 Date: Sun, 23 Oct 2016 10:18:08 +0300
 Subject: [PATCH 3/5] Rework firmware loading
 
 ---
- Makefile                   |  99 +++++++++++-----------------------
- foo2zjs-loadfw.in          | 132 +++++++++++++++++++++++++++++++++++++++++++++
- foo2zjs-loadfw@.service.in |   6 +++
- hplj10xx.rules             |  60 ++++++++-------------
+ Makefile                   |  99 ++++++++++----------------------
+ foo2zjs-loadfw.in          | 138 +++++++++++++++++++++++++++++++++++++++++++++
+ foo2zjs-loadfw@.service.in |   6 ++
+ hplj10xx.rules             |  60 +++++++-------------
  usblp.conf                 |   1 +
- 5 files changed, 190 insertions(+), 108 deletions(-)
+ 5 files changed, 196 insertions(+), 108 deletions(-)
  create mode 100644 foo2zjs-loadfw.in
  create mode 100644 foo2zjs-loadfw@.service.in
  create mode 100644 usblp.conf
@@ -163,10 +163,10 @@ index 6b707a9..2f546f9 100644
  	cd osx-hotplug; $(MAKE) PREFIX=$(PREFIX) install-hotplug
 diff --git a/foo2zjs-loadfw.in b/foo2zjs-loadfw.in
 new file mode 100644
-index 0000000..3e5484e
+index 0000000..115e734
 --- /dev/null
 +++ b/foo2zjs-loadfw.in
-@@ -0,0 +1,132 @@
+@@ -0,0 +1,138 @@
 +#!/bin/bash
 +
 +# foo2zjs-loadfw:
@@ -288,9 +288,15 @@ index 0000000..3e5484e
 +	}
 +fi
 +
-+$USB_BACKEND 2>/dev/null | while read direct uri model1 model2 deviceid; do
++$USB_BACKEND 2>/dev/null | while read line; do
++	# word-split the line
++	eval "line=( $line )"
++	direct="${line[0]}"
++	uri="${line[1]}"
++	deviceid="${line[4]}"
++
 +	if [[ $direct == direct && $uri == usb://* ]] && match "$uri" "$deviceid"; then
-+		log "Got printer: URI='$uri' ieee1284='$deviceid'"
++		log "Got printer: URI='$uri' deviceid='$deviceid'"
 +
 +		if DEVICE_URI="$uri" $USB_BACKEND 1 1 1 1 '' "$FW" 2>/dev/null; then
 +			log "Firmware download OK"

@@ -5,7 +5,7 @@
 
 pkgname=foo2zjs
 pkgver=20161021
-pkgrel=4.1
+pkgrel=5
 pkgdesc="foo2zjs Printer Drivers. Includes also foo2hp, foo2hbpl, foo2oak, foo2xqx, foo2qpdl, foo2slx, foo2hiperc and foo2lava drivers."
 url="http://foo2zjs.rkkda.com/"
 license=('GPL' 'custom')
@@ -26,9 +26,9 @@ source=("foo2zjs-$pkgver.tar.gz::http://foo2zjs.rkkda.com/foo2zjs.tar.gz"
 sha256sums=('55604f4580fb21534739c294df64e041b6ea96ef45d8a0ff4cdcf516eff243a3'
             'b964aea4706f3cb0e908a5e85ee8b890f7ef424e570eaa65e8411a4d0a94b301'
             '882c15e2bde1d32ef659ec2629f315a7814b405a078c4413151dcac5d30b341d'
-            'e828daef29531683603f004bed9b59046ba708192ccd50c549dbe790e3748e09'
-            '0ae70b88d51eda523db301f0f277c1bf7a68cfcc58c775d9c70c1114f28b8753'
-            'f8f38470154f72e37677f008dd4b4a7deffa96d0f3739097b169a7faefddded0')
+            'e7d6ad7e3c7d16146fe0bf2b59c7a72621f690db08952d565b02dd4d63d32d20'
+            '8408f3aa6247445fa8da75f829bbf4b922b95667c8c8c59dcd2ab2cf89b7d896'
+            'a27f262c9680a0fbe13c10c7e009b5d560dd8c5f81d8b7376f79e3419ecdc8d3')
 
 prepare() {
   cd "${pkgname}"

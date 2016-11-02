@@ -1,4 +1,4 @@
-From beaaf127bafe730b785899553e30ad124f0a2082 Mon Sep 17 00:00:00 2001
+From 7d2d860369e65df970176117433c04479ab77ee7 Mon Sep 17 00:00:00 2001
 From: Ivan Shapovalov <intelfx@intelfx.name>
 Date: Sun, 23 Oct 2016 01:01:17 +0300
 Subject: [PATCH 4/5] Makefile: fix generating *.ppd in-place
