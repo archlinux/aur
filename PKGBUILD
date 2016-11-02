@@ -4,27 +4,25 @@
 # Contributor: Olivier Biesmans <olivier at biesmans dot fr>
 
 pkgname=mitmproxy
-pkgver=0.17
-pkgrel=3
+pkgver=0.18.2
+pkgrel=1
 pkgdesc="SSL-capable man-in-the-middle HTTP proxy"
 arch=('any')
 url="http://mitmproxy.org/"
 license=('GPL')
-depends=('python2-blinker' 'python2-click' 'python2-configargparse' 'python2-construct'
-         'python2-cryptography' 'python2-flask' 'python2-h2' 'python2-hpack'
-         'python2-html2text' 'python2-hyperframe' 'python2-lxml' 'python2-pillow'
-         'python2-passlib' 'python2-pyasn1' 'python2-pyopenssl' 'python2-pyparsing'
-         'python2-pyperclip' 'python2-requests' 'python2-six' 'python2-tornado'
-         'python2-urwid' 'python2-watchdog' 'python2-enum34' 'python2-ipaddress')
-optdepends=('python2-cssutils: Contentviews - Beautifies CSS files'
-            'python2-protobuf: Contentviews - Extended content decoding'
-            'python2-pyamf: Contentviews - Decodes AMF files')
+depends=('python-blinker' 'python-brotlipy' 'python-click' 'python-configargparse'
+         'python-construct' 'python-cryptography' 'python-cssutils' 'python-flask' 'python-h2'
+         'python-html2text' 'python-hyperframe' 'python-jsbeautifier' 'python-lxml' 'python-pillow'
+         'python-passlib' 'python-pyasn1' 'python-pyopenssl' 'python-pyparsing' 'python-pyperclip'
+         'python-sortedcontainers' 'python-requests' 'python-tornado' 'python-urwid'
+         'python-watchdog')
+optdepends=('python-protobuf: Contentviews - Extended content decoding')
 makedepends=('git')
-checkdepends=('python2-beautifulsoup4' 'python2-harparser' 'python2-mock'
-              'python2-pytest-runner' 'python2-pytest-timeout')
-provides=('python2-libmproxy' 'python2-netlib' 'pathod')
-conflicts=('python2-libmproxy' 'python2-netlib' 'pathod')
-replaces=('python2-libmproxy' 'python2-netlib' 'pathod')
+checkdepends=('python-beautifulsoup4' 'python-harparser' 'python-mock' 'python-pytest-runner'
+              'python-pytest-timeout' 'python-pytz' 'python-pytz')
+provides=('pathod')
+conflicts=('pathod')
+replaces=('pathod')
 source=("git+https://github.com/mitmproxy/mitmproxy.git#tag=v$pkgver")
 sha256sums=('SKIP')
 
@@ -46,10 +44,10 @@ prepare() {
 
 check() {
   cd mitmproxy
-  python2 setup.py ptr
+  python setup.py ptr
 }
  
 package() {
   cd mitmproxy
-  python2 setup.py install --root="$pkgdir" -O1
+  python setup.py install --root="$pkgdir" -O1
 }
