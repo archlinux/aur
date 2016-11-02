@@ -5,6 +5,15 @@ post_install() {
 
   install -dm700 srv/algernon
   chown algernon:algernon srv/algernon
+
+  # Copy in a index.lua file if no index.* file exists in /srv/algernon/localhost
+  for f in /srv/algernon/localhost/index.*; do
+    if [[ ! -e "$f" ]]; then
+      install -Dm644 /usr/share/doc/algernon/samples/headers/index.lua \
+        /srv/algernon/localhost/index.lua
+    fi
+    break
+  done
 }
 
 # vim:set ts=2 sw=2 et:
