@@ -1,0 +1,22 @@
+pkgbase = reprepro-git
+	pkgdesc = A tool to handle local repositories of Debian packages (Git latest)
+	pkgver = reprepro.debian.4.17.1.1.r0.g0c9f0f4
+	pkgrel = 1
+	url = http://mirrorer.alioth.debian.org
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = db
+	depends = gpgme
+	depends = git
+	depends = zlib
+	depends = bzip2
+	depends = libarchive
+	optdepends = apt: Importing from other sources
+	provides = reprepro
+	conflicts = reprepro
+	source = reprepro-git::git+git://git.debian.org/mirrorer/reprepro.git
+	sha256sums = SKIP
+
+pkgname = reprepro-git
+
