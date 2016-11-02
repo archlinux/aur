@@ -1,41 +1,41 @@
 #Maintainer: Benjamin Chretien <chretien at lirmm dot fr>
-pkgdesc="An open-source library for mathematical programming"
-url="http://ampl.github.io"
 pkgname=ampl-mp
-pkgver=2.0.3
-arch=('i686' 'x86_64')
+pkgver=3.1.0
 pkgrel=1
-license=('BSD')
+pkgdesc="An open-source library for mathematical programming"
+arch=('i686' 'x86_64')
+url="http://ampl.github.io"
+license=('custom')
 makedepends=('cmake')
-depends=()
-optdepends=()
-_dir="mp-${pkgver}"
+options=('!emptydirs')
 source=("https://github.com/ampl/mp/archive/${pkgver}.tar.gz")
-sha256sums=("4ae38da883cfdf077d57c488b03756d9068b1d5b8552db983f6690246edc71a8")
+sha256sums=('587c1a88f4c8f57bef95b58a8586956145417c8039f59b1758365ccc5a309ae9')
 
 _modules=""
 
-prepare() {
-  mkdir -p "${srcdir}/build"
-  cd "${srcdir}/build"
+build() {
+  mkdir -p build
+  cd build
 
-  cmake "${srcdir}/${_dir}" \
-    -DCMAKE_INSTALL_PREFIX="/usr" \
+  cmake ../mp-${pkgver} \
+    -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_BUILD_TYPE=Release \
     -DBUILD=${_modules}
-}
-
-build() {
-  cd "${srcdir}/build"
   make
 }
 
 check() {
-  cd "${srcdir}/build"
+  cd build
+
   make test
 }
 
 package() {
-  cd "${srcdir}/build"
-  make DESTDIR="${pkgdir}/" install
+  cd build
+
+  make DESTDIR="${pkgdir}" install
+
+  install -d "${pkgdir}"/usr/share/licenses/${pkgname}
+  mv "${pkgdir}"/usr/share/mp/LICENSE.rst \
+    "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
 }
