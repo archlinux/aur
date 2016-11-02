@@ -8,7 +8,7 @@
 
 pkgname=mpv-ahjolinna-git
 _gitname=mpv
-pkgver=0.20.0_0_g0a81fe1
+pkgver=0.21.0.0.g3f5b41d
 pkgrel=1
 pkgdesc='Video player based on MPlayer/mplayer2 (git version)'
 arch=('x86_64')
@@ -62,7 +62,7 @@ source=('git+https://github.com/mpv-player/mpv'
 sha256sums=('SKIP'
             'ce974e160347202e0dc63f6a7a5a89e52d2cc1db2d000c661fddb9dc1d007c02'
             'd53aa2c59350a8e364b1a18a5509ba995826f7d37e34ad029251bee082f3c360'
-            'fb0fea391407e3a91a158816a716a9ca2bbcc9d5070756a70ba07b31c6a76362'
+            'cc980774d9ded3c3d8dc7e6bb775285b50ce1558840becaee14f8084173a284a'
             'ddd18dbccdaa4513586cb97299e88564e3289940f25d7ebe762c4482fbad3809'
             'e02f7b07653ea4ce9745b9f699954f5a4eafd416ada5a5d032c7dd7294921f90'
             '8cf41f23572417836084209fce343f779e72dea9688dc84e23e8eb913d002d5f'
@@ -74,7 +74,7 @@ pkgver() {
   _tagver="$(git describe --tags $_curtag | sed -e 's:^v::' -e 's:-:_:g')"
   _commits="$(git rev-list --count HEAD --since=$_tagver)"
   _sha="$(git rev-parse --short HEAD)"
-  printf "%s_%s_g%s" $_tagver $_commits $_sha
+  printf "%s.%s.g%s" $_tagver $_commits $_sha
   #msg "$(git rev-list --count HEAD).g$(git rev-parse --short HEAD)"
 }
 
