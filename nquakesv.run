@@ -1,0 +1,5 @@
+#!/bin/bash
+
+cd /opt/quake
+./mvdsv +cfg_use_home 1 +cfg_load "$@"
+exit $?

@@ -13,6 +13,7 @@ pkg/
 *.tbz2
 *.zip
 *.run
+!nquakesv.run
 *.7z
 *.rar
 *.deb
