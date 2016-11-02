@@ -1,5 +1,3 @@
-# Maintainer: Michael Straube <michael_straube web de>
-
 pkgname=alterego
 # could not find any version number, so using 1.0
 pkgver=1.0
