@@ -3,7 +3,7 @@
 # Contributor: max-k <max-k AT post DOT com>
 
 pkgname=reprepro-git
-pkgver=reprepro.debian.4.17.1.1.r0.g0c9f0f4
+pkgver=4.17.1.1.r0.g0c9f0f4
 pkgrel=1
 pkgdesc="A tool to handle local repositories of Debian packages (Git latest)"
 arch=('i686' 'x86_64')
@@ -19,7 +19,7 @@ sha256sums=('SKIP')
 pkgver() {
 
   cd "$pkgname"
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/reprepro.debian.//'
 
 }
 
