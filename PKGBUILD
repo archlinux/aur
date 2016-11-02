@@ -5,7 +5,7 @@
 # Contributor: Artem Sheremet <dot_doom_at_gmail_dot_com>
 pkgname=sky
 pkgver=2.1.6375_1
-pkgrel=2
+pkgrel=3
 pkgdesc="Lync and Skype for Business client on Linux"
 
 arch=(
@@ -34,9 +34,6 @@ makedepends=(
 	'binutils'
 	'tar'
 	'xz'
-)
-optdepends=(
-	'ibus'
 )
 
 source_x86_64=("https://tel.red/repos/debian/pool/non-free/sky_${pkgver//_/-}debian+jessie_amd64.deb")
