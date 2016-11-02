@@ -4,7 +4,7 @@ pkgrel=1
 pkgdesc="A High-level Utility Package for FMI-based Software Development (mingw-w64)"
 arch=('any')
 url="http://fmipp.sourceforge.net"
-depends=('mingw-w64-boost')
+depends=('mingw-w64-boost' 'mingw-w64-sundials')
 makedepends=('git' 'mingw-w64-cmake')
 options=('!buildflags' 'staticlibs' '!strip')
 license=('BSD')
@@ -28,7 +28,7 @@ build() {
       -DCMAKE_INSTALL_PREFIX=/usr \
       -DDBUILD_SWIG=OFF -DBUILD_SWIG_PYTHON=OFF -DBUILD_SWIG_JAVA=OFF \
       -DBUILD_TESTS=OFF \
-      -DINCLUDE_SUNDIALS=OFF \
+      -DINCLUDE_SUNDIALS=ON \
       ..
     make
     popd
