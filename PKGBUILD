@@ -1,10 +1,10 @@
 # Maintainer: Timofey Titovets <nefelim4ag@gmail.com>
 
 pkgbase=scaleio
-pkgname=( 'scaleio-gui' 'scaleio-sdc' 'scaleio-sds'
-          'scaleio-mdm' 'scaleio-callhome' )
+# Not ready 'scaleio-sdc' 'scaleio-sds' 'scaleio-mdm' 'scaleio-callhome'
+pkgname=( 'scaleio-gui'  )
 pkgver=2.0.0.2
-pkgrel=6
+pkgrel=7
 pkgdesc="ScaleIO"
 arch=('x86_64')
 url="http://www.emc.com/storage/scaleio/"
@@ -97,46 +97,46 @@ package_scaleio-gui()
         } >  ${pkgdir}/usr/share/applications/scaleio-gui.desktop
 }
 
-package_scaleio-callhome()
-{
-        pkgdesc="ScaleIO callhome"
-        depends=()
-        provides=()
-        conflicts=()
-        options=('!emptydirs' '!strip')
+#package_scaleio-callhome()
+#{
+#        pkgdesc="ScaleIO callhome"
+#        depends=()
+#        provides=()
+#        conflicts=()
+#        options=('!emptydirs' '!strip')
+#
+#        cd ${srcdir}/ScaleIO_${pkgver}_Complete_Linux_SW_Download/
+#}
 
-        cd ${srcdir}/ScaleIO_${pkgver}_Complete_Linux_SW_Download/
-}
+#package_scaleio-sdc()
+#{
+#        pkgdesc="ScaleIO sdc"
+#        depends=()
+#        provides=()
+#        conflicts=()
+#        options=('!emptydirs' '!strip')
+#
+#        cd ${srcdir}/ScaleIO_${pkgver}_Complete_Linux_SW_Download/
+#}
 
-package_scaleio-sdc()
-{
-        pkgdesc="ScaleIO sdc"
-        depends=()
-        provides=()
-        conflicts=()
-        options=('!emptydirs' '!strip')
+#package_scaleio-sds()
+#{
+#        pkgdesc="ScaleIO sds"
+#        depends=()
+#        provides=()
+#        conflicts=()
+#        options=('!emptydirs' '!strip')
+#
+#        cd ${srcdir}/ScaleIO_${pkgver}_Complete_Linux_SW_Download/
+#}
 
-        cd ${srcdir}/ScaleIO_${pkgver}_Complete_Linux_SW_Download/
-}
-
-package_scaleio-sds()
-{
-        pkgdesc="ScaleIO sds"
-        depends=()
-        provides=()
-        conflicts=()
-        options=('!emptydirs' '!strip')
-
-        cd ${srcdir}/ScaleIO_${pkgver}_Complete_Linux_SW_Download/
-}
-
-package_scaleio-mdm()
-{
-        pkgdesc="ScaleIO mdm"
-        depends=()
-        provides=()
-        conflicts=()
-        options=('!emptydirs' '!strip')
-
-        cd ${srcdir}/ScaleIO_${pkgver}_Complete_Linux_SW_Download/
-}
+#package_scaleio-mdm()
+#{
+#        pkgdesc="ScaleIO mdm"
+#        depends=()
+#        provides=()
+#        conflicts=()
+#        options=('!emptydirs' '!strip')
+#
+#        cd ${srcdir}/ScaleIO_${pkgver}_Complete_Linux_SW_Download/
+#}
