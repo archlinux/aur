@@ -3,7 +3,7 @@
 
 pkgname=firefox-beta-bin
 _pkgname=firefox-beta
-pkgver=50.0b11
+pkgver=50.0rc1
 _major=${pkgver/rc*}
 _build=${pkgver/*rc}
 pkgrel=1
@@ -30,8 +30,8 @@ if [[ $_build = ? ]]; then
 fi
 sha512sums=('702359fd891da5ac3b24124a328f70bac3034e9bbb33c1eb00da15420825ce3e13cf62bfdf5fe2ef9cc876a0e533422d7989af62e966123a21171293e5e4fa14'
             '776fccb247711d33621605dd0807c03528ffd0f9bc14f20b4f60f344589c1aad62e9377c22bcf583066c8c600cd86bf9db5b48e2c44924cd48a48c1c4a9c39a0')
-sha512sums_i686=('dc16e4d2b1bc7d112cfaf339f7b57a4f0b4aad97b6a5e5f4609b886be7ebcfc200db9cde7bffa7e42d653ac5e210c338e8c779f093de2f42f0d0a00ca3446f3a')
-sha512sums_x86_64=('0412330a641e22b5c6b5deb991b33d1b80beb343a786fe9e751ecbf833974b5575d67e36c1cbce6b91cd975afccf5bab0b2d5b5a1de4e300fd29e3a3ff09c388')
+sha512sums_i686=('b810a4c1e3430fbd6b74c5991c5d26fc4c8b2fc5d94ca5e8a8cf01785f9fba98a28cd70b5d0e3483b8c71529f8dbae545604674a9cc71103db42d564c3888abb')
+sha512sums_x86_64=('6d218ad3207a7d36fb59c636e00f85ffcbbf0043137f7a58cf39945e0d90615fd4cfe3e8d7df864136c56fdca8f7d82f4a03efbad6f75be8b1723df9b37ae8c0')
 
 package() {
   # Create directories
