@@ -1,12 +1,13 @@
-# Maintainer: Peter Lamby <peterlamby@web.de>
+# Maintainer: Brenton Horne <brentonhorne77@gmail.com>
+# Contributor: Peter Lamby <peterlamby@web.de>
 pkgname=valama-git
-pkgver=r938.2f8f85b
-pkgrel=3
+pkgver=r940.a7539fa
+pkgrel=1
 pkgdesc="Next generation Vala IDE"
 arch=('i686' 'x86_64')
 url="https://github.com/Valama/valama"
 license=('GPL3')
-depends=('glib2' 'vala' 'clutter-gtk' 'libgee' 'gdk-pixbuf2' 'gdl' 'gtksourceview3' 'webkit2gtk' 'intltool' 'glade')
+depends=('glib2' 'vala0.26' 'clutter-gtk' 'libgee' 'gdk-pixbuf2' 'gdl' 'gtksourceview3' 'webkit2gtk' 'intltool' 'glade')
 makedepends=("cmake" 'imagemagick')
 options=('!libtool')
 install=valama.install
