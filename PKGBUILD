@@ -10,8 +10,10 @@ license=('LLVM Release License')
 source=(http://include-what-you-use.org/downloads/include-what-you-use-$pkgver.src.tar.gz)
 sha1sums=('71295c39e7374a9c139154ac12b252fb5e1305f9')
 arch=('i686' 'x86_64')
-depends=('clang>=3.8' 'clang<=3.9')
-makedepends=('clang>=3.8' 'clang<=3.9' 'cmake' 'llvm>=3.8' 'llvm<=3.9')
+_lower=3.9
+_upper=3.10
+depends=('clang>='$_lower 'clang<='$_upper)
+makedepends=('clang>='$_lower 'clang<='$_upper 'cmake' 'llvm>='$_lower 'llvm<='$_upper)
 optdepends=('python2')
 
 build() {
