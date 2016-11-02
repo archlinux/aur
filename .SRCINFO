@@ -9,7 +9,7 @@ pkgbase = neovim-drop-in
 	depends = neovim
 	optdepends = xxd: For editing binary files
 	provides = vi
-	provides = vim
+	provides = vim=7.0.4
 	provides = vim-runtime
 	conflicts = gvim
 	conflicts = neovim-symlinks

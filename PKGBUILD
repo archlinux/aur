@@ -9,7 +9,7 @@ url='https://neovim.io/doc/user/vim_diff.html'
 license=('custom:none')
 depends=('neovim')
 optdepends=('xxd: For editing binary files')
-provides=('vi' 'vim' 'vim-runtime')
+provides=('vi' 'vim=7.0.4' 'vim-runtime')
 conflicts=('gvim' 'neovim-symlinks' 'vi' 'vim')
 source=('ex.sh' 'exim.sh' 'rview.sh' 'rvim.sh' 'view.sh' 'vimdiff.sh')
 install=neovim-drop-in.install
