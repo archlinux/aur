@@ -6,10 +6,10 @@
 
 pkgbase=linux-mptcp
 _srcname=mptcp
-_mptcpv=0.91.1
-pkgver=0.91.1.r0.g214e17c
-epoch=1
+_mptcpv=0.91.2
+pkgver=0.91.2.r0.g8e6d10d
 pkgrel=1
+epoch=1
 arch=('i686' 'x86_64')
 url="http://www.multipath-tcp.org/"
 license=('GPL2')
@@ -89,7 +89,7 @@ build() {
 }
 
 _package() {
-  pkgdesc="The Linux kernel and modules with Multipath TCP support (based on linux 4.1.34)"
+  pkgdesc="The Linux kernel and modules with Multipath TCP support (based on linux 4.1.35)"
   [ "${pkgbase}" = "linux" ] && groups=('base')
   depends=('coreutils' 'linux-firmware' 'kmod' 'mkinitcpio>=0.7')
   optdepends=('crda: to set the correct wireless channels of your country'
