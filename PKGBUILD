@@ -10,7 +10,7 @@
 
 pkgbase=linux-libre-pck
 _pkgbasever=4.8-gnu
-_pkgver=4.8.4-gnu
+_pkgver=4.8.6-gnu
 _pckpatchver=pck1
 
 _replacesarchkernel=('linux-zen')
@@ -21,7 +21,7 @@ _srcname=linux-${_pkgbasever%-*}
 _archpkgver=${_pkgver%-*}
 pkgver=${_pkgver//-/_}.${_pckpatchver}
 pkgrel=1
-rcnrel=armv7-x3
+rcnrel=armv7-x4
 arch=('i686' 'x86_64' 'armv7h')
 url="https://wiki.parabola.nu/PCK"
 license=('GPL2')
@@ -64,9 +64,9 @@ source=("http://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgbasever}/li
         '0014-Revert-gpu-drm-omapdrm-dss-of-add-missing-of_node_pu.patch')
 sha256sums=('d54e0f8a27e24f3666c19b395c19dba194635db26929c89e78ffa4b2b0e8ca3a'
             'SKIP'
-            '961e1887b500c8752fcc0414d3e202229751f84262329cba948398a574599ef7'
+            '35d6ed23a6a2fc10ef864cd06dfe9b0ea37f722961a75d7e34375c4b483de207'
             'SKIP'
-            'a0e2d7c4c58ea57bdfaf8da1f8d2d7ce5f34fa47c3cfbb6962d65800976b2166'
+            '697d7bef4560931d4232227706a22ca670218ca967c2b6ade93b17a9b711f05e'
             'SKIP'
             'bfd4a7f61febe63c880534dcb7c31c5b932dde6acf991810b41a939a93535494'
             'SKIP'
@@ -79,7 +79,7 @@ sha256sums=('d54e0f8a27e24f3666c19b395c19dba194635db26929c89e78ffa4b2b0e8ca3a'
             '0d25a0c10a039342166ce13334a368da785892254719862a210b2f00974ae6d2'
             'f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
-            '89b376f80ea6e530bf1b065167f8668008ff1f80a9c967e3530f1f97870e5c1a'
+            'ab1b5468dc67ead6a1cabaa6bda495536d9cc1d4b62e4aff4643663601f14b3a'
             'SKIP'
             'ed9595e2736386e70f9c16ce2d933885bd2f298fa6f8e95dd10c93d99c8addf7'
             'c17b6f6fe8c1949472d6f4421ca498dda386933e2640b8fe18e907fb9a1cdf11'
