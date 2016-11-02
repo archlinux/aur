@@ -3,9 +3,9 @@
 pkgbase=octopi
 pkgname=('octopi' 'octopi-pacmanhelper' 'octopi-notifier-qt5' 'octopi-notifier-frameworks' 'octopi-repoeditor' 'octopi-cachecleaner')
 pkgver=0.8.5
-pkgrel=1
+pkgrel=2
 # This is the release package so the below _gitcommit variable should (usually) be commented out.
-_gitcommit="4d0bc6caa92eaf9637af8970dd57779208c5281c"
+_gitcommit="872d5fc7f73f561e4157916b126a8ed65fd2ae6e"
 pkgdesc="a powerful Pacman frontend using Qt libs"
 arch=('i686' 'x86_64')
 url="http://octopiproject.wordpress.com"
@@ -18,7 +18,7 @@ else
   source=("https://github.com/aarnt/${pkgname}/archive/v${pkgver}.tar.gz"
 	'octopi-repoeditor.desktop')
 fi
-sha256sums=('7c47ac8e94157a7ee483b249aa45d85c53d410ac588c52477c77c2f3d714d718'
+sha256sums=('caeb62e3ca87002bdf4afe2f020008eb2d75c37de9e91de6a684864e29981b46'
             '131f16745df685430db55e54ede6da66aed9b02ca00d6d873a002b2a3e1c90ef')
 
 prepare() {
