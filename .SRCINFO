@@ -6,6 +6,7 @@ pkgbase = wire-desktop
 	arch = x86_64
 	arch = i686
 	license = GPL3
+	makedepends = npm
 	makedepends = yarn
 	makedepends = grunt-cli
 	makedepends = gendesk
