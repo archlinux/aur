@@ -2,7 +2,7 @@
 
 _npmname=ember-cli
 pkgname=nodejs-$_npmname
-pkgver=2.5.0
+pkgver=2.9.1
 pkgrel=1
 pkgdesc="The ember command line interface"
 arch=('any')
@@ -11,7 +11,7 @@ license=('MIT')
 depends=('nodejs' 'npm')
 source=(https://registry.npmjs.org/$_npmname/-/$_npmname-$pkgver.tgz)
 noextract=($_npmname-$pkgver.tgz)
-sha256sums=('a085bd30506022c24933879567aefa4a4b6de4fc8459e443f01bbc8814d72274')
+sha256sums=('d2568a1d8794493a549b4a8660d093779f612313d878654b2ab883c24643f1ff')
 
 package() {
   cd "$srcdir"
