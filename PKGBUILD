@@ -4,12 +4,12 @@
 
 _appname_=netbeans
 pkgname=${_appname_}-javase
-pkgver=8.1
-_pkgbuild_=201510222201
+pkgver=8.2
+_pkgbuild_=201609300101
 pkgrel=1
 pkgdesc="Oracle's Java (SE) IDE"
-arch=("any")
 url="http://netbeans.org"
+arch=("any")
 license=("CDDL")
 depends=("java-environment" "ttf-font" "libxtst" "giflib" "atk")
 provides=("${_appname_}")
@@ -42,5 +42,5 @@ package() {
 	install -D -m644 "${startdir}"/${_appname_}.desktop "${pkgdir}"/usr/share/applications/${_appname_}.desktop
 }
 
-sha1sums=('2f9b5537788e141d629e04a6b968ea33d7f0d8ee'
+sha1sums=('9d922e1cce80d39946925e847e4db3e3b0ca9029'
           '88c86c3d8c3349ac3b3822166b4d22b792e54bb8')
