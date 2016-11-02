@@ -1,5 +1,5 @@
 pkgbase = lib32-freetype2-old-hinting
-	pkgdesc = TrueType font rendering library (32-bit)
+	pkgdesc = TrueType font rendering library (including old hinting engine; 32-bit)
 	pkgver = 2.7
 	pkgrel = 2
 	url = http://www.freetype.org/
