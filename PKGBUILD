@@ -5,6 +5,7 @@ pkgdesc="A High-level Utility Package for FMI-based Software Development"
 arch=('i686' 'x86_64')
 url="http://fmipp.sourceforge.net"
 depends=('sundials' 'boost-libs')
+makedepends=('git' 'cmake')
 license=('BSD')
 source=("fmipp-${pkgver}::git+git://git.code.sf.net/p/fmipp/code#commit=565836e255a73d013b3b74331d56f24ebf8b5408")
 md5sums=('SKIP')
