@@ -10,12 +10,12 @@ pkgver=1.2.12
 pkgrel=2
 pkgdesc='A simple multi-channel audio mixer'
 arch=('x86_64')
-url='http://www.libsdl.org/projects/SDL_mixer/'
+url='https://www.libsdl.org/projects/SDL_mixer/'
 license=('custom')
 depends=('lib32-libmikmod' 'lib32-libvorbis' 'lib32-sdl' 'lib32-smpeg' 'sdl_mixer')
 makedepends=('gcc-multilib' 'lib32-fluidsynth')
 optdepends=('lib32-fluidsynth: MIDI software synth, replaces built-in timidity')
-source=("http://www.libsdl.org/projects/SDL_mixer/release/SDL_mixer-${pkgver}.tar.gz"
+source=("https://www.libsdl.org/projects/SDL_mixer/release/SDL_mixer-${pkgver}.tar.gz"
         'sdl_mixer-mikmod1.patch'
         'sdl_mixer-mikmod2.patch'
         'sdl_mixer-fluidsynth-volume.patch'
