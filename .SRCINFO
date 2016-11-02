@@ -1,11 +1,12 @@
 pkgbase = xfce4-multiload-ng-plugin-git
 	pkgdesc = A modern graphical system monitor, Xfce version
 	pkgver = r820.a8ae047
-	pkgrel = 7
+	pkgrel = 8
 	url = https://udda.github.io/multiload-ng/
 	arch = i686
 	arch = x86_64
 	license = GPL2
+	makedepends = intltool
 	makedepends = git
 	depends = xfce4-panel
 	depends = libxfce4util
