@@ -1,5 +1,5 @@
 pkgname=osvr-core-git
-pkgver=0.2.r2221.g23a18ea
+pkgver=0.2.r2225.ga6aa62d
 pkgrel=1
 pkgdesc="The core libraries, applications, and plugins of the OSVR software platform."
 arch=(i686 x86_64)
@@ -35,8 +35,9 @@ prepare() {
   mkdir -p "$srcdir/osvr-core-build/"
 
 #temporary fix for boost incompatibility
-sed -i "s/105900/106100/g" src/osvr/Common/IPCRingBuffer.cpp
-sed -i "s/105900/106100/g" cmake-local/BoostTargets.cmake
+#sed -i "s/105900/106200/g" src/osvr/Common/IPCRingBuffer.cpp #doesn't work with 1.62
+#sed -i "s/105900/106200/g" cmake-local/BoostTargets.cmake
+  git merge origin/boost-1.62.0 --no-edit
 
 #https://github.com/OSVR/OSVR-Core/pull/468
 cd vendor/vrpn
@@ -46,7 +47,7 @@ git commit -am "update vrpn"
 
 #WIP positional tracking
 git remote add toastedcrumpets https://github.com/toastedcrumpets/OSVR-Core.git || true
-git fetch toastedcrumpets
+git fetch toastedcrumpets uvc-camera
 git merge toastedcrumpets/uvc-camera --no-edit
 }
 

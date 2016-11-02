@@ -1,6 +1,6 @@
 pkgbase = osvr-core-git
 	pkgdesc = The core libraries, applications, and plugins of the OSVR software platform.
-	pkgver = 0.2.r2221.g23a18ea
+	pkgver = 0.2.r2225.ga6aa62d
 	pkgrel = 1
 	url = https://github.com/OSVR/OSVR-Core
 	arch = i686
