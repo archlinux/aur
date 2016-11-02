@@ -1,0 +1,21 @@
+pkgbase = otf-fira-code-mozilla
+	pkgdesc = Fira Code (Mozilla version) is Fira Mono with less Line Space (1.0) – does not include programming ligatures
+	pkgver = 3.206
+	pkgrel = 1
+	url = https://github.com/carrois/Fira
+	install = otf-fira-code-mozilla.install
+	arch = any
+	license = custom: SIL Open Font License
+	depends = fontconfig
+	depends = xorg-font-utils
+	conflicts = otf-fira-code
+	conflicts = otf-fira-code-git
+	source = https://github.com/carrois/Fira/raw/master/Fira_Code_3_2/Fonts/FiraCode_OTF_32/FiraCode-Bold.otf
+	source = https://github.com/carrois/Fira/raw/master/Fira_Code_3_2/Fonts/FiraCode_OTF_32/FiraCode-Medium.otf
+	source = https://github.com/carrois/Fira/raw/master/Fira_Code_3_2/Fonts/FiraCode_OTF_32/FiraCode-Regular.otf
+	md5sums = a89d8ffe48e285a4efce31792e17240e
+	md5sums = 10afd3e2c9f919056e200976bb03183d
+	md5sums = 27f24a47e75845269ffe3b2179302989
+
+pkgname = otf-fira-code-mozilla
+
