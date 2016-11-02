@@ -42,6 +42,13 @@ package() {
   mv "$pkgdir"/usr/bin/sshd         "$pkgdir"/usr/bin/ssh.d/sshd
   mv "$pkgdir"/usr/doc/gsi_openssh  "$pkgdir"/usr/share/doc/
 
+  # handle duplicates which already exist under ssh.d/
+  for f in "$pkgdir"/usr/share/man/man*/*; do
+    if [[ -e ${f%/*}/ssh.d/${f##*/} ]]; then
+      mv "$f" "$f"globus
+    fi
+  done
+
   cd "$srcdir"
   install -Dm 644 globus.sysusers "$pkgdir"/usr/lib/sysusers.d/globus.conf
 }
