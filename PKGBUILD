@@ -1,10 +1,11 @@
 # Maintainer: Baptiste Jonglez <baptiste--aur at jonglez dot org>
-# Adapted for the net-tools package in [core].
+# Adapted from the net-tools package in [core].
 pkgname=net-tools-mptcp
 _srcname=net-tools
 _mptcpv=0.91
-pkgver=0.91.600.888d808
+pkgver=0.91.1.r0.g888d808
 pkgrel=1
+epoch=1
 pkgdesc="Configuration tools for Linux networking, with Multipath TCP support"
 arch=('i686' 'x86_64')
 license=('GPL2')
@@ -21,7 +22,7 @@ sha1sums=('SKIP')
 
 pkgver() {
   cd "${srcdir}/${_srcname}"
-  echo ${_mptcpv}.$(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+  git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
