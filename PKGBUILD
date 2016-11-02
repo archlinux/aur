@@ -7,9 +7,9 @@
 
 pkgname=visual-studio-code-oss
 pkgdesc='Visual Studio Code for Linux, Open Source version'
-pkgver=1.6.1
-pkgrel=3
-_commit=9e4e44c19e393803e2b05fe2323cf4ed7e36880e
+pkgver=1.7.1
+pkgrel=1
+_commit=02611b40b24c9df2726ad8b33f5ef5f67ac30b44
 arch=('i686' 'x86_64')
 url='https://code.visualstudio.com/'
 license=('MIT')
@@ -19,11 +19,9 @@ conflicts=('vscode-oss')
 provides=('vscode-oss')
 
 source=("${pkgver}-${pkgrel}.tar.gz::https://github.com/Microsoft/vscode/archive/${_commit}.tar.gz"
-        "${pkgname}.desktop"
-        'rebuild-monaco.patch.gz')
-sha1sums=('d2b827fbc7aa8b54343f6cda452fb74142e1993a'
-          '9c4176c4d99103736df6746ca174b5026bd57e6b'
-          '0f4f62ec0a9ee4123198180bb9494ea87170eb1b')
+        "${pkgname}.desktop")
+sha1sums=('27868bbab5ecb5313daf419b4fcba81c1d4ad1dc'
+          '9c4176c4d99103736df6746ca174b5026bd57e6b')
 
 if (( VSCODE_NONFREE )); then
     source+=('product_json.patch')
@@ -54,12 +52,6 @@ prepare() {
         sed -e "s/@COMMIT@/$_commit/" -e "s/@DATE@/$_datestamp/" \
             -i product.json
     fi
-
-    # gulp now generates monaco.d.ts without preceeding whitespace, which the
-    # build detects as being an uncommitted change :(.  This patch doesn't
-    # actually change any of the code, it just makes the whitespace match so
-    # the build system doesn't complain about it.
-    patch -p1 -i "${srcdir}/rebuild-monaco.patch"
 }
 
 build() {
