@@ -7,14 +7,15 @@
 # SELinux Contributor: Zezadas
 
 pkgname=shadow-selinux
-pkgver=4.2.1
-pkgrel=4
+pkgver=4.4
+pkgrel=2
 pkgdesc="Password and account management tool suite with support for shadow files and PAM - SELinux support"
 arch=('i686' 'x86_64')
-url='http://pkg-shadow.alioth.debian.org/'
+url='https://github.com/shadow-maint/shadow'
 license=('BSD')
 groups=('selinux')
 depends=('bash' 'pam-selinux' 'acl' 'libsemanage')
+makedepends=('git' 'libxslt' 'docbook-xsl' 'gnome-doc-utils')
 conflicts=("${pkgname/-selinux}" "selinux-${pkgname/-selinux}")
 provides=("${pkgname/-selinux}=${pkgver}-${pkgrel}"
           "selinux-${pkgname/-selinux}=${pkgver}-${pkgrel}")
@@ -26,7 +27,7 @@ backup=(etc/login.defs
 options=(strip debug)
 install='shadow.install'
 validpgpkeys=('D5C2F9BFCA128BBA22A77218872F702C4D6E25A8')  # Christian Perrier
-source=("http://pkg-shadow.alioth.debian.org/releases/${pkgname/-selinux}-$pkgver.tar.xz"{,.sig}
+source=("git+https://github.com/shadow-maint/shadow.git#tag=$pkgver"
         LICENSE
         chgpasswd
         chpasswd
@@ -39,8 +40,7 @@ source=("http://pkg-shadow.alioth.debian.org/releases/${pkgname/-selinux}-$pkgve
         xstrdup.patch
         shadow-strncpy-usage.patch
         lastlog.tmpfiles)
-sha1sums=('0917cbadd4ce0c7c36670e5ecd37bbed92e6d82d'
-          'SKIP'
+sha1sums=('SKIP'
           '33a6cf1e44a1410e5c9726c89e5de68b78f5f922'
           '4ad0e059406a305c8640ed30d93c2a1f62c2f4ad'
           '12427b1ca92a9b85ca8202239f0d9f50198b818f'
@@ -55,19 +55,30 @@ sha1sums=('0917cbadd4ce0c7c36670e5ecd37bbed92e6d82d'
           '21e12966a6befb25ec123b403cd9b5c492fe5b16'
           'f57ecde3f72b4738fad75c097d19cf46a412350f')
 
+pkgver() {
+  cd "${pkgname/-selinux}"
+
+  git describe
+}
+
 prepare() {
-  cd "${pkgname/-selinux}-$pkgver"
+  cd "${pkgname/-selinux}"
 
   # need to offer these upstream
   patch -Np1 <"$srcdir/xstrdup.patch"
   patch -Np1 <"$srcdir/shadow-strncpy-usage.patch"
+
+  # Fix regression in useradd not loading defaults properly.
+  git cherry-pick -n '507f96cdeb54079fb636c7ce21e371f7a16a520e'
+
+  autoreconf -v -f --install
 
   # supress etc/pam.d/*, we provide our own
   sed -i '/^SUBDIRS/s/pam\.d//' etc/Makefile.in
 }
 
 build() {
-  cd "${pkgname/-selinux}-$pkgver"
+  cd "${pkgname/-selinux}"
 
   ./configure \
     LIBS="-lcrypt" \
@@ -76,16 +87,17 @@ build() {
     --sbindir=/usr/bin \
     --libdir=/usr/lib \
     --mandir=/usr/share/man \
+    --enable-man \
     --sysconfdir=/etc \
     --with-libpam \
-    --with-selinux \
-    --with-group-name-max-length=32
+    --with-group-name-max-length=32 \
+    --with-selinux
 
   make
 }
 
 package() {
-  cd "${pkgname/-selinux}-$pkgver"
+  cd "${pkgname/-selinux}"
 
   make DESTDIR="$pkgdir" install
 
