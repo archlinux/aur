@@ -1,6 +1,6 @@
 pkgbase = numix-cursor-theme-git
 	pkgdesc = Numix cursor theme for Linux
-	pkgver = 1
+	pkgver = r32.e92186d
 	pkgrel = 1
 	url = http://numixproject.org/
 	arch = any

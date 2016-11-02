@@ -2,7 +2,7 @@
 
 _pkgname=numix-cursor-theme
 pkgname=${_pkgname}-git
-pkgver=1
+pkgver=r32.e92186d
 pkgrel=1
 pkgdesc="Numix cursor theme for Linux"
 arch=('any')
