@@ -12,8 +12,10 @@ arch=('x86_64')
 url='https://github.com/jedisct1/libsodium'
 license=('custom:ISC')
 depends=('lib32-glibc' 'libsodium')
-source=("http://download.libsodium.org/libsodium/releases/libsodium-${pkgver}.tar.gz")
-sha256sums=('a14549db3c49f6ae2170cbbf4664bd48ace50681045e8dbea7c8d9fb96f9c765')
+source=("https://download.libsodium.org/libsodium/releases/libsodium-${pkgver}.tar.gz"{,.sig})
+validpgpkeys=('54A2B8892CC3D6A597B92B6C210627AABA709FE1') # Frank Denis
+sha256sums=('a14549db3c49f6ae2170cbbf4664bd48ace50681045e8dbea7c8d9fb96f9c765'
+            'SKIP')
 
 build() {
   cd libsodium-${pkgver}
