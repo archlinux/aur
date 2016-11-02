@@ -11,7 +11,7 @@ validpgpkeys=('748231EBCBD808A14F5E85D28C004C2F93481F6B')
 
 pkgname=('nquake')
 pkgver=2.5
-pkgrel=4
+pkgrel=5
 pkgdesc="The easiest, quickest, and most popular QuakeWorld client."
 url="http://nquake.com/"
 license=('GPL2' 'custom')
@@ -66,6 +66,9 @@ sha512sums=('5dee11708c593201e4cfb85e9c4ecbaf76e22eb076da1544af06da31680c6271352
 
 prepare () {
 	unzip -j "qsw106.zip" "ID1/PAK0.PAK"
+	unzip -j "qsw106.zip" "LICINFO.TXT"
+	unzip -j "qsw106.zip" "README.TXT"
+	unzip -j "qsw106.zip" "SLICNSE.TXT"
 }
 
 package () {
@@ -73,6 +76,8 @@ package () {
 	# Most of these files are in gpl.zip
 	install -d -m 0750 ${pkgdir}/opt/quake/{id1,qw,ezquake}
 	install -d -m 0750 ${pkgdir}/usr/share/nquake
+	install -d -m 0750 ${pkgdir}/usr/share/doc/nquake
+	install -d -m 0750 ${pkgdir}/usr/share/licenses/nquake
 	install -d -m 0755 ${pkgdir}/usr/bin
 	# Fix ezquake packages.
 	install -d -m 0770 ${pkgdir}/opt/quake/ezquake/{sb/cache,temp}
@@ -96,6 +101,9 @@ package () {
 
 ## DEMO DATA ##
 	install -D -m 0644 ${srcdir}/PAK0.PAK ${pkgdir}/opt/quake/id1/pak0.pak
+	install -D -m 0644 ${srcdir}/LICINFO.TXT ${pkgdir}/usr/share/doc/nquake/quake_shareware_license_info.txt
+	install -D -m 0644 ${srcdir}/README.TXT ${pkgdir}/usr/share/doc/nquake/quake_shareware_readme.txt
+	install -D -m 0644 ${srcdir}/SLICNSE.TXT ${pkgdir}/usr/share/licenses/nquake/quake_shareware.txt
 
 ## NON-FREE ##
 	# Most of these files are in non-gpl.zip
