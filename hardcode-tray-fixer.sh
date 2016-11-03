@@ -5,4 +5,4 @@ if [ "$EUID" -eq 0 ] ; then
   exit 1
 fi
 cd /opt/hardcode-tray-fixer/
-sudo -E python3 /opt/Hardcode-Tray/script.py "$@"
+sudo -E python3 /opt/hardcode-tray-fixer/script.py "$@"
