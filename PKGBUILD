@@ -12,24 +12,23 @@ makedepends=('jq')
 optdepends=('gtk-engine-murrine: for GTK2 themes')
 source=("version::version://dl.opendesktop.org/api/files/index?format=json&status=active&collection_content_id=${url##*/}"
         'https://dl.opendesktop.org/api/files/download/id/1468995652/Dark-Aurora.tar.gz')
-sha256sums=('f5bbb7ea941d120d03237a28d07411aafc23e866b184083e37e02eda65aa3072'
+sha256sums=('1677d88c4ec71ec160aeb98855becaaadd5e1386a5a7ee3d645e3158488b0a01'
             '6fbdaaae2e59b5f514ca003ba2552fcb7eb5724bd278e291ed5ae2036563d6ff')
 
 # The following is a very convoluted script because of makepkg's DLAGENTS escaping logic.
 # An agent is added for the protocol "version". It is treated like http, which is done by processing
 # the input url %u with sed, replacing the protocol back to http. Everything downloaded is then not
-# immediatley saved to the output file name %o, but first piped through jq, which finds the
-# gnome-shell version string in the JSON metadata received from the Dark Aurora page on
-# GNOME-Look.org. This makes a file containing the version readily available to both pkgver
-# and package so that they not both have to extract the version themselves again and again.
+# immediatley saved to the output file name %o, but first piped through jq, which simplifies the
+# JSON metadata received from the Dark Aurora page on GNOME-Look.org. This makes it more accessible
+# for the following functions which then do not need to repeat the prefix again and again.
 DLAGENTS=("version::/usr/bin/bash -c $(
   printf '%s\n' "${DLAGENTS[@]}" | sed -n 's/http::\(.*\)/\1/p' \
     | sed 's/-[^ ] %o //' | sed 's/ /\\ /g' | sed 's/%u/$(echo\\ \"%u\"\\ |\\ sed\\ "s\/^version\/http\/")/'
-)\ |\ jq\ -j\ '.files."0".version'\ >\ %o"
+)\ |\ jq\ -j\ '.files.\"0\"'\ >\ %o"
 "${DLAGENTS[@]}")
 
 pkgver() {
-  cat version
+  js -j '.version' version
   while read -rd $'\0'
   do
     if [[ "$REPLY" -gt "$max" ]]
@@ -48,5 +47,5 @@ package() {
 
 # Hidden in a subfunction not to show up in the .SRCINFO.
 extend-optdepends() {
-  optdepends+=("gnome-shell=$(cat version): for gnome-shell themes")
+  optdepends+=("gnome-shell=$(jq -j .version version): for gnome-shell themes")
 }
