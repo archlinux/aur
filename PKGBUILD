@@ -17,7 +17,7 @@
 
 pkgname=docker-git
 _pkgname=docker
-pkgver=1.12.0.dev.25853.724c69f
+pkgver=1.13.0.dev.28456.f54339d
 pkgrel=1
 epoch=1
 pkgdesc='Pack, ship and run any application as a lightweight container.'
@@ -76,7 +76,6 @@ package() {
   _dockerver="$(cat VERSION)"
   install -Dm755 "bundles/$_dockerver/dynbinary-client/docker-$_dockerver" "$pkgdir/usr/bin/docker"
   install -Dm755 "bundles/$_dockerver/dynbinary-daemon/dockerd-$_dockerver" "$pkgdir/usr/bin/dockerd"
-  install -Dm755 "bundles/$_dockerver/dynbinary-daemon/docker-proxy-$_dockerver" "$pkgdir/usr/bin/docker-proxy"
 
   # symlink containerd/run (nice integration...)
   ln -s containerd "$pkgdir/usr/bin/docker-containerd"
