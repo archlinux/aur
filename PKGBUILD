@@ -2,7 +2,8 @@
 
 pkgbase='vte3-terminix-git'
 pkgname=("${pkgbase}" 'vte-terminix-common-git')
-pkgver=0.46.0
+pkgver=0.46.0+1.3.0.r102.ge9f1e1e
+_vtever=0.46.0
 pkgrel=1
 pkgdesc='Virtual Terminal Emulator widget for use with GTK3 with Fedora and Terminix patches'
 arch=('x86_64')
@@ -13,7 +14,7 @@ makedepends=('intltool' 'gobject-introspection' 'vala' 'gperf' 'glade')
 options=('!emptydirs')
 # Fedora patches: http://pkgs.fedoraproject.org/cgit/rpms/vte291.git/tree/
 source=(
-	"https://download.gnome.org/sources/vte/${pkgver::4}/vte-${pkgver}.tar.xz"
+	"https://download.gnome.org/sources/vte/${_vtever::4}/vte-${_vtever}.tar.xz"
 	"git+https://github.com/gnunn1/terminix"
 	'vte291-command-notify-scroll-speed.patch'
 	'add-zsh-notfication-support.patch'
@@ -25,8 +26,14 @@ sha256sums=(
 	'150a151404ca565f70259044661b2ef5cda43142ca677e7da324614eef8cf45a'
 )
 
+pkgver() {
+	cd terminix
+	echo -n ${_vtever}+
+	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
 prepare () {
-	cd "vte-${pkgver}"
+	cd "vte-${_vtever}"
 	echo '-> Making the patch-sets compatible'
     sed -r -e 's/(\+\s*gpointer padding\[)15/\114/g' \
 		-e 's/(\-\s*gpointer padding\[)16/\115/g' \
@@ -40,7 +47,7 @@ prepare () {
 }
 
 build() {
-	cd "vte-${pkgver}"
+	cd "vte-${_vtever}"
 	./configure --prefix='/usr' --sysconfdir='/etc' \
 		--libexecdir='/usr/lib/vte' \
 		--localstatedir='/var' --disable-static \
@@ -51,9 +58,9 @@ build() {
 
 package_vte3-terminix-git(){
 	depends=('gtk3' 'vte-terminix-common-git')
-	provides=("vte3=${pkgver}")
+	provides=("vte3=${_vtever}")
 	conflicts=('vte3')
-	cd "vte-${pkgver}"
+	cd "vte-${_vtever}"
 	make DESTDIR="${pkgdir}" install
 
 	rm "${pkgdir}/etc/profile.d/vte.sh"
@@ -62,9 +69,9 @@ package_vte3-terminix-git(){
 package_vte-terminix-common-git() {
 	pkgdesc='Common files used by vte and vte3'
 	arch=('any')
-	provides=("vte-common=${pkgver}")
+	provides=("vte-common=${_vtever}")
 	conflicts=('vte-common')
-	cd "vte-${pkgver}"
+	cd "vte-${_vtever}"
 
 	install -Dm644 'src/vte.sh' "${pkgdir}/etc/profile.d/vte.sh"
 }
