@@ -9,7 +9,6 @@ pkgbase = debhelper
 	makedepends = po4a>=0.24
 	makedepends = man-db>=2.5.1
 	makedepends = file>=3.23
-	makedepends = pod2man
 	depends = binutils
 	depends = dpkg>=1.16.2
 	depends = file>=3.23
