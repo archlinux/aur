@@ -1,0 +1,16 @@
+[Unit]
+Description=Web GUI for PowerDNS autoritative server
+
+[Service]
+Type=simple
+User=powerdns-admin
+Group=powerdns-admin
+WorkingDirectory=/usr/share/webapps/powerdns-admin
+ExecStart=/usr/share/webapps/powerdns-admin/powerdns-admin
+CapabilityBoundingSet=CAP_NET_BIND_SERVICE
+NoNewPrivilegies=true
+PrivateTmp=true
+PrivateDevices=true
+ProtectHome=true
+ReadOnlyPaths=/
+ReadWritePaths=/usr/share/webapps/powerdns-admin /var/lib/powerdns-admin

@@ -1,0 +1,24 @@
+pkgbase = powerdns-admin-git
+	pkgdesc = Web GUI for PowerDNS autoritative server
+	pkgver = r220.e18757e
+	pkgrel = 1
+	url = https://github.com/ngoduykhanh/PowerDNS-Admin
+	install = powerdns-admin.install
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python2-pip
+	makedepends = python2-virtualenv
+	depends = python2
+	optdepends = powerdns: autoritative server itself
+	options = !strip
+	backup = etc/webapps/powerdns-admin/config.py
+	source = powerdns-admin-git::git+https://github.com/ngoduykhanh/PowerDNS-Admin.git
+	source = powerdns-admin.install
+	source = powerdns-admin.service
+	md5sums = SKIP
+	md5sums = 5ffad849c02289e795d69990e6e851db
+	md5sums = fc7e033978132dd1ee4d81c966e21600
+
+pkgname = powerdns-admin-git
+

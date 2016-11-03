@@ -1,0 +1,24 @@
+post_install() {
+  if ! getent group powerdns-admin >/dev/null; then
+    groupadd -g 980 --system powerdns-admin 
+  fi
+  if ! getent passwd powerdns-admin >/dev/null; then
+    useradd -u 980 --system -c 'powerdns-admin worker user' -g powerdns-admin -d / -s /usr/bin/nologin powerdns-admin
+  fi
+}
+
+post_upgrade() {
+  post_install $1
+}
+
+pre_remove() {
+  userdel powerdns-admin 2>/dev/null >/dev/null
+  groupdel powerdns-admin 2>/dev/null >/dev/null
+  
+  if getent passwd powerdns-admin >/dev/null; then
+    echo You may need to delete powerdns-admin user manually
+  fi
+  if getent group powerdns-admin >/dev/null; then
+    echo You may need to delete powerdns-admin group manually
+  fi
+}
