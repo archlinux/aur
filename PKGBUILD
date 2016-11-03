@@ -3,7 +3,7 @@
 # Contributor: Chuck Boucher <jofywyxaxukyvofa (at) tempomail.fr>
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=edbrowse
-pkgver=3.6.0
+pkgver=3.6.1
 pkgrel=1
 epoch=
 pkgdesc="A line-oriented editor, browser and mail client."
@@ -24,9 +24,9 @@ install=
 changelog=
 source=("http://edbrowse.org/$pkgname-$pkgver.zip")
 noextract=()
-md5sums=('721855af5420650a0e35a43643a0ae07')
-sha1sums=('03f64fb4a313251f8fbf048d2f4830c3ded3821d')
-sha256sums=('0970d0e2106baa1d91a9501f7933e3bbbf6740a079d0aaa42f0a37d1018ab83a')
+md5sums=('1f14dd4319ab1c1cc0f8b35609c5aea7')
+sha1sums=('273d1d21da1a8be1128a72a722ce8defd66fbc68')
+sha256sums=('f8fc77d44db7596ed0daf8d64042b1a955ca146a539a532ddbd5869113b033bf')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
