@@ -1,9 +1,9 @@
 post_install() {
   echo -n "Updating font cache... "
-  fc-cache -sf
+  fc-cache -s
   mkfontscale /usr/share/fonts/TTF
   mkfontdir /usr/share/fonts/TTF
-  echo "done."
+  echo "Done."
 }
 
 post_upgrade() {

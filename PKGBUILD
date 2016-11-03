@@ -1,7 +1,7 @@
 # Maintainer: Markus Weimar <mail@markusweimar.de>
 pkgname=ttf-roboto-mono
 pkgver=2.000985
-pkgrel=4
+pkgrel=5
 epoch=1
 depends=('fontconfig' 'xorg-font-utils')
 pkgdesc='Roboto Mono is a monospaced addition to the Roboto type family.'
@@ -9,16 +9,16 @@ arch=('any')
 url='https://www.google.com/fonts/specimen/Roboto+Mono'
 license=('Apache')
 source=('https://raw.githubusercontent.com/google/fonts/master/apache/robotomono/LICENSE.txt'
-        'https://raw.githubusercontent.com/google/fonts/master/apache/robotomono//RobotoMono-Bold.ttf'
-        'https://raw.githubusercontent.com/google/fonts/master/apache/robotomono//RobotoMono-BoldItalic.ttf'
-        'https://raw.githubusercontent.com/google/fonts/master/apache/robotomono//RobotoMono-Italic.ttf'
-        'https://raw.githubusercontent.com/google/fonts/master/apache/robotomono//RobotoMono-Light.ttf'
-        'https://raw.githubusercontent.com/google/fonts/master/apache/robotomono//RobotoMono-LightItalic.ttf'
-        'https://raw.githubusercontent.com/google/fonts/master/apache/robotomono//RobotoMono-Medium.ttf'
-        'https://raw.githubusercontent.com/google/fonts/master/apache/robotomono//RobotoMono-MediumItalic.ttf'
-        'https://raw.githubusercontent.com/google/fonts/master/apache/robotomono//RobotoMono-Regular.ttf'
-        'https://raw.githubusercontent.com/google/fonts/master/apache/robotomono//RobotoMono-Thin.ttf'
-        'https://raw.githubusercontent.com/google/fonts/master/apache/robotomono//RobotoMono-ThinItalic.ttf')
+        'https://raw.githubusercontent.com/google/fonts/master/apache/robotomono/RobotoMono-Bold.ttf'
+        'https://raw.githubusercontent.com/google/fonts/master/apache/robotomono/RobotoMono-BoldItalic.ttf'
+        'https://raw.githubusercontent.com/google/fonts/master/apache/robotomono/RobotoMono-Italic.ttf'
+        'https://raw.githubusercontent.com/google/fonts/master/apache/robotomono/RobotoMono-Light.ttf'
+        'https://raw.githubusercontent.com/google/fonts/master/apache/robotomono/RobotoMono-LightItalic.ttf'
+        'https://raw.githubusercontent.com/google/fonts/master/apache/robotomono/RobotoMono-Medium.ttf'
+        'https://raw.githubusercontent.com/google/fonts/master/apache/robotomono/RobotoMono-MediumItalic.ttf'
+        'https://raw.githubusercontent.com/google/fonts/master/apache/robotomono/RobotoMono-Regular.ttf'
+        'https://raw.githubusercontent.com/google/fonts/master/apache/robotomono/RobotoMono-Thin.ttf'
+        'https://raw.githubusercontent.com/google/fonts/master/apache/robotomono/RobotoMono-ThinItalic.ttf')
 install=${pkgname}.install
 sha256sums=('cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30'
             '6250e98e33a56ab2ca07bc61835a8f53ed85d231347fc9c74136c2d356b63875'
