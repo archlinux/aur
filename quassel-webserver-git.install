@@ -1,0 +1,4 @@
+post_install() {
+    getent passwd quassel-webserver >/dev/null || useradd -r -s /bin/false -d /usr/share/webapps/quassel-webserver quassel-webserver
+    chown -R quassel-webserver:quassel-webserver /usr/share/webapps/quassel-webserver
+}
