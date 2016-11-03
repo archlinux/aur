@@ -1,7 +1,7 @@
 # Maintainer: Gaetan Bisson <bisson@archlinux.org>
 
 pkgname=gp2c
-pkgver=0.0.9pl5
+pkgver=0.0.10
 pkgrel=1
 pkgdesc='Translates GP scripts to PARI programs'
 url='http://pari.math.u-bordeaux.fr/'
@@ -10,7 +10,7 @@ license=('GPL')
 depends=('pari')
 makedepends=('perl')
 source=("${url}pub/pari/GP2C/$pkgname-${pkgver}.tar.gz")
-sha1sums=('e07cebffcd09c0d644d52335130984f33042b46f')
+sha1sums=('6bce2bbb69227de44fa768619d1dffa861d6470a')
 
 build() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
