@@ -1,7 +1,7 @@
 pkgbase = powerdns-admin-git
 	pkgdesc = Web GUI for PowerDNS autoritative server
 	pkgver = r220.e18757e
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ngoduykhanh/PowerDNS-Admin
 	install = powerdns-admin.install
 	arch = any
@@ -18,7 +18,7 @@ pkgbase = powerdns-admin-git
 	source = powerdns-admin.service
 	md5sums = SKIP
 	md5sums = 5ffad849c02289e795d69990e6e851db
-	md5sums = fc7e033978132dd1ee4d81c966e21600
+	md5sums = 14f2531802ca67453bd074ce83249f30
 
 pkgname = powerdns-admin-git
 

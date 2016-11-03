@@ -1,7 +1,7 @@
 # Maintainer: Sergey Shatunov <me@prok.pw>
 pkgname=powerdns-admin-git
 pkgver=r220.e18757e
-pkgrel=1
+pkgrel=2
 pkgdesc="Web GUI for PowerDNS autoritative server"
 arch=('any')
 url="https://github.com/ngoduykhanh/PowerDNS-Admin"
@@ -17,7 +17,7 @@ source=('powerdns-admin-git::git+https://github.com/ngoduykhanh/PowerDNS-Admin.g
         'powerdns-admin.service')
 md5sums=('SKIP'
          '5ffad849c02289e795d69990e6e851db'
-         'fc7e033978132dd1ee4d81c966e21600')
+         '14f2531802ca67453bd074ce83249f30')
 
 _uid=980
 _gid=$_uid

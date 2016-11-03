@@ -1,5 +1,6 @@
 [Unit]
 Description=Web GUI for PowerDNS autoritative server
+After=syslog.target network.target
 
 [Service]
 Type=simple
@@ -14,3 +15,7 @@ PrivateDevices=true
 ProtectHome=true
 ReadOnlyPaths=/
 ReadWritePaths=/usr/share/webapps/powerdns-admin /var/lib/powerdns-admin
+
+[Install]
+WantedBy=multi-user.target
+
