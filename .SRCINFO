@@ -1,6 +1,6 @@
 pkgbase = solvespace
-	pkgdesc = SOLVESPACE is a parametric 3d CAD program.
-	pkgver = 2.1
+	pkgdesc = A parametric 3d CAD program
+	pkgver = 2.2
 	pkgrel = 1
 	url = http://solvespace.com/
 	arch = i686
@@ -15,12 +15,12 @@ pkgbase = solvespace
 	depends = zlib
 	depends = freetype2
 	depends = fontconfig
-	source = https://github.com/solvespace/solvespace/archive/v2.1.tar.gz
-	source = https://github.com/solvespace/libdxfrw/archive/master.zip
-	source = v2.1.patch
-	md5sums = e9b070c7dc41c3d79547507376734f01
+	source = https://github.com/solvespace/solvespace/archive/v2.2.tar.gz
+	source = git+https://github.com/solvespace/libdxfrw.git#commit=8f95895
+	source = v2.2.patch
+	md5sums = 114781d60197a95113b0b6d18f60f916
 	md5sums = SKIP
-	md5sums = 7cc547028bf896e4748403c1a16199e3
+	md5sums = f785e1b6036eaca0588e1a09c6b6e92b
 
 pkgname = solvespace
 
