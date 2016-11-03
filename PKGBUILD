@@ -3,7 +3,7 @@
 # Contributor: Vladimir Ermakov <vooon341@gmail.com>
 
 pkgname=gazebo
-pkgver=7.1.0
+pkgver=7.4.0
 pkgrel=1
 pkgdesc="A multi-robot simulator for outdoor environments"
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ license=('Apache')
 # See: http://www.gazebosim.org/tutorials?tut=install_from_source&cat=install
 depends=('boost>=1.40.0' 'curl>=4.0' 'freeglut' 'freeimage>=3.0'
          'intel-tbb>=3.0' 'libccd>=1.4' 'libltdl>=2.4.2' 'libtar>=1.2' 'libxml2>=2.7.7'
-         'ogre' 'protobuf>=2.3.0' 'qt4' 'qtwebkit' 'sdformat>=4.0.0' 'ignition-math>=2' 'ignition-transport'
+         'ogre' 'protobuf>=2.3.0' 'qt4' 'qtwebkit' 'sdformat>=4.2.0' 'ignition-math>=2' 'ignition-transport'
          'tinyxml>=2.6.2' 'tinyxml2')
 optdepends=('bullet>=2.82: Bullet support'
             'cegui>=0.8.3: Design custom graphical interfaces'
@@ -27,7 +27,7 @@ optdepends=('bullet>=2.82: Bullet support'
 makedepends=('cmake' 'doxygen' 'pkg-config>=0.26')
 install="${pkgname}.install"
 source=("http://osrf-distributions.s3.amazonaws.com/gazebo/releases/${pkgname}-${pkgver}.tar.bz2")
-sha256sums=('93f75ec601bdafd2d4715d7200d81f52123979b00d547635ae38738e6405d863')
+sha256sums=('a033b2273383f16e5dd5b5bfe597551dc3618b98e64abecfa8a41bdddd6542f7')
 
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"
