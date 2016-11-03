@@ -1,14 +1,14 @@
 # Maintainer: Vyacheslav Konovalov <vyachkonovalov@gmail.com>
 
 pkgname=redis-desktop-manager
-_pkgver=0.9.0-alpha1
+_pkgver=0.9.0-alpha2
 pkgver=${_pkgver/-/_}
 pkgrel=1
 pkgdesc='Open source cross-platform Redis Desktop Manager based on Qt 5'
 arch=('x86_64')
 url="https://redisdesktop.com/"
 license=('GPLv3')
-depends=('qt5-base' 'qt5-imageformats' 'qt5-tools' 'qt5-declarative' 'qt5-quickcontrols' 'qt5-graphicaleffects' 'qt5-svg' 'libssh2')
+depends=('qt5-base' 'qt5-charts' 'qt5-imageformats' 'qt5-tools' 'qt5-declarative' 'qt5-quickcontrols' 'qt5-graphicaleffects' 'qt5-svg' 'libssh2')
 makedepends=('git' 'gcc')
 conflicts=('redis-desktop-manager-bin')
 source=("rdm::git://github.com/uglide/RedisDesktopManager.git#tag=${_pkgver}"
@@ -27,7 +27,7 @@ prepare() {
   python2 build/utils/set_version.py "${_pkgver}" > 3rdparty/crashreporter/src/version.h
 
   _lssdir='3rdparty/gbreakpad/src/third_party/lss/'
-  mkdir ${_lssdir}
+  mkdir -p ${_lssdir}
   cp 3rdparty/linux-syscall-support/linux_syscall_support.h ${_lssdir}
   cd 3rdparty/gbreakpad
   touch README
