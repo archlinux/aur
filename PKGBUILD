@@ -7,13 +7,12 @@
 
 pkgbase=linux-git
 _srcname=linux
-pkgver=4.9rc3.r0.ga909d3e
+pkgver=4.9rc3.r243.g0c183d9
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
 license=('GPL2')
 makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc' 'git' 'libelf')
-backup=('etc/mkinitcpio.d/linux-git.preset')
 options=('!strip')
 source=('git+https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git'
         # the main kernel config files
@@ -21,8 +20,8 @@ source=('git+https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git'
         # standard config files for mkinitcpio ramdisk
         "${pkgbase}.preset")
 sha256sums=('SKIP'
-            '749b19cac625284ba6abae2d3932465b64d41d0274a3c070ca2c556779bb2078'
-            '7b2fecccbaa58a112f78d366dd961437ed7a62e556f81ee37d3833c0e1152e22'
+            'd0c447d92205a25f4659c46cfde5210ee3f7fdc2017e9de78840e7f3b7ece20e'
+            'a489e7af28a11482e1d6461bdafef4f4ad4261b954b0494a86f73133f348baae'
             '95fcfdfcb9d540d1a1428ce61e493ddf2c2a8ec96c8573deeadbb4ee407508c7')
 
 _kernelname=${pkgbase#linux}
@@ -49,16 +48,17 @@ prepare() {
   # don't run depmod on 'make install'. We'll do this ourselves in packaging
   sed -i '2iexit 0' scripts/depmod.sh
 
-  # get kernel version
-  make prepare
-
   # load configuration
   # Configure the kernel. Replace the line below with one of your choice.
   #make menuconfig # CLI menu for configuration
   #make nconfig # new CLI menu for configuration
   #make xconfig # X-based configuration
   #make oldconfig # using old config from previous kernel version
+  make olddefconfig # old config from previous kernel, defaults for new options
   # ... or manually edit .config
+
+  # get kernel version
+  make prepare
 
   # rewrite configuration
   yes "" | make config >/dev/null
