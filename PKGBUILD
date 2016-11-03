@@ -1,12 +1,13 @@
 # Maintainer: queue <queueRAM@gmail.com>
 
 pkgname=minipro-git
-pkgver=0.0.1.r14.gb730b4c
+pkgver=0.0.1.r43.ge897666
 pkgrel=1
 pkgdesc="Open source programming utility for autoelectric.cn Minipro TL866"
 url="https://github.com/vdudouyt/minipro"
 arch=('i686' 'x86_64')
 license=('GPL')
+depends=('libusb')
 makedepends=('git')
 source=(${pkgname}::git://github.com/vdudouyt/minipro.git)
 conflicts=('minipro')
@@ -28,11 +29,11 @@ build() {
 
 package() {
   cd "${srcdir}/${pkgname}"
-  make PREFIX="${pkgdir}" \
-       UDEV_RULES_DIR="${pkgdir}/etc/udev/rules.d" \
-       COMPLETIONS_DIR="${pkgdir}/usr/share/bash-completion/completions" \
-       MAN_DIR="${pkgdir}/usr/share/man/man1" \
-       install
+  make \
+    DESTDIR="${pkgdir}" \
+    PREFIX="/usr" \
+    COMPLETIONS_DIR="${pkgdir}/usr/share/bash-completion/completions" \
+    install
 }
 
 # vim: ts=2 sw=2 et:
