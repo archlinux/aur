@@ -9,6 +9,7 @@ arch=('any')
 url="https://ajdiaz.me/timeline/"
 license=('GPLv3')
 depends=('bash' 'git')
+conflicts=('timeline')
 source=("${_pkgname}"::"git+https://github.com/ajdiaz/${_pkgname}.git")
 sha256sums=('SKIP')
 

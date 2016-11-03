@@ -5,7 +5,9 @@ pkgbase = timeline-git
 	url = https://ajdiaz.me/timeline/
 	arch = any
 	license = GPLv3
-	makedepends = git
+	depends = bash
+	depends = git
+	conflicts = timeline
 	source = timeline::git+https://github.com/ajdiaz/timeline.git
 	sha256sums = SKIP
 
