@@ -2,9 +2,9 @@
 
 pkgname=acme-client-git
 _pkgname=acme-client
-pkgver=0.1.13.r0.g4ff972e
-pkgrel=2
-arch=('x86_64' 'i686')
+pkgver=0.1.14.r0.gc5c0c27
+pkgrel=1
+arch=('x86_64' 'i686' 'armv7h')
 license=('BSD')
 pkgdesc="Yet another ACME client, specifically for Let's Encrypt, but one with a strong focus on security. Written in C."
 url='https://kristaps.bsd.lv/acme-client/'
