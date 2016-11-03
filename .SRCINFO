@@ -1,0 +1,18 @@
+pkgbase = thot
+	pkgdesc = Thot is a line scanner application, primarily targetting Ciclop scanner
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/fdev31/thot
+	arch = any
+	license = GPL
+	depends = python-setuptools
+	depends = python-pyserial
+	depends = opencv
+	depends = python-scipy
+	depends = python-numpy
+	depends = python-prompt_toolkit
+	source = https://github.com/fdev31/thot/archive/0.1.0.zip
+	sha512sums = SKIP
+
+pkgname = thot
+
