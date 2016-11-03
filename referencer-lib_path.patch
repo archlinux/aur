@@ -1,0 +1,11 @@
+--- referencer-1.2.2/src/Document.C	2014-01-27 03:43:00.000000000 +0700
++++ referencer-1.2.2_/src/Document.C	2016-11-03 16:25:00.698676538 +0700
+@@ -297,7 +297,7 @@
+ 
+ 			lib_path = lib_path->get_parent();
+ 			up_dir_level += "../";
+-			if (lib_path == 0) {
++			if (lib_path) {
+ 				doc_is_relative_to_library = false;
+ 				break;
+ 			}

@@ -2,12 +2,13 @@
 
 pkgname=referencer
 pkgver=1.2.2
-pkgrel=4
+pkgrel=5
 pkgdesc="a Gnome application to organise documents or references, and ultimately generate a BibTeX bibliography file"
 arch=('i686' 'x86_64')
 url="https://launchpad.net/referencer/"
 license=('GPL2')
-makedepends=(   'intltool'
+makedepends=(   
+                'intltool'
                 'gnome-doc-utils'
                 'gnome-icon-theme' 
                 'boost' )
@@ -16,13 +17,20 @@ depends=(       'boost-libs'
 		'poppler-glib'
                 'python2'
                 'yelp' )
-source=("https://launchpad.net/$pkgname/1./$pkgver/+download/$pkgname-$pkgver.tar.gz")
-install=${pkgname}.install
+source=(https://launchpad.net/$pkgname/1./$pkgver/+download/$pkgname-$pkgver.tar.gz
+        referencer-lib_path.patch)
 
+prepare()
+{
+  cd "$pkgname-$pkgver"
 
-build() {
+  patch -Np1 -i "${srcdir}/referencer-lib_path.patch"
+}
+
+build() 
+{
   export PYTHON=/usr/bin/python2
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$pkgname-$pkgver"
 #  autoreconf
   CXXFLAGS="$CXXFLAGS -std=gnu++11"
   ./configure --prefix="/usr" --disable-update-mime-database --enable-python
@@ -35,9 +43,14 @@ build() {
   done
 }
 
-package() {
-  cd "$srcdir/$pkgname-$pkgver"
+package() 
+{
+  cd "$pkgname-$pkgver"
   make DESTDIR="$pkgdir" install
 }
 
-md5sums=('d7021937a3d481edc3d8d540eec950cd')
+md5sums=('d7021937a3d481edc3d8d540eec950cd'
+         '014f8d4cc4ca9f02d8fcc46a4aa67007')
+
+
+
