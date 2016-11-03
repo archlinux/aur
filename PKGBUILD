@@ -1,7 +1,7 @@
 # Maintainer: Ingo Bürk <admin at airblader dot de>
 
 pkgname=i3-gaps-next-git
-pkgver=4.12.215.g413023d
+pkgver=4.12.217.gd23e7e1
 pkgrel=1
 pkgdesc='A fork of i3wm tiling window manager (development branch) with more features, including gaps'
 arch=('i686' 'x86_64')
@@ -34,9 +34,6 @@ pkgver() {
 build() {
   cd "$_gitname"
 
-  # TODO Find a better way to do this
-  sed -i "s,default_sanitizers=address,default_sanitizers=,g" configure.ac
-
   autoreconf --force --install
 
   rm -rf build/
@@ -44,7 +41,8 @@ build() {
 
   ../configure \
     --prefix=/usr \
-    --sysconfdir=/etc
+    --sysconfdir=/etc \
+    --disable-sanitizers
 
   # See https://lists.archlinux.org/pipermail/arch-dev-public/2013-April/024776.html
   make CPPFLAGS+="-U_FORTIFY_SOURCE"
