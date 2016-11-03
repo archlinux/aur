@@ -1,0 +1,14 @@
+pkgbase = php-stats
+	pkgdesc = PHP extension for Stats
+	pkgver = 2.0.3
+	pkgrel = 1
+	url = http://pecl.php.net/package/stats
+	arch = i686
+	arch = x86_64
+	license = PHP
+	depends = php>=7.0.0
+	source = http://pecl.php.net/get/stats-2.0.3.tgz
+	sha512sums = 68a21296f8892c399d961bc1bba31cb6ebf6e0533fd396fc8527a33aa0b7cc189e718bd22dddbaaaeda183488971f02e87b2d9514085cc2a3d0fc558921a584c
+
+pkgname = php-stats
+
