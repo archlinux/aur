@@ -9,6 +9,8 @@ pkgbase = triggerhappy-git
 	makedepends = git
 	makedepends = linux-api-headers
 	depends = libsystemd
+	provides = triggerhappy
+	conflicts = triggerhappy
 	source = git+https://github.com/wertarbyte/triggerhappy
 	md5sums = SKIP
 
