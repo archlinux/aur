@@ -4,7 +4,7 @@
 
 pkgname=solaar
 pkgver=0.9.2
-pkgrel=5
+pkgrel=6
 pkgdesc="Device manager for Logitech's Unifying receiver peripherals"
 url="http://pwr.github.com/Solaar/"
 license=('GPL2')
@@ -16,7 +16,7 @@ optdepends=(
 	)
 makedepends=('python')
 provides=('solaar')
-conflicts=('solaar')
+conflicts=('solaar' 'ltunify-git')
 options=(!emptydirs)
 install=solaar.install
 source=("https://github.com/pwr/Solaar/archive/${pkgver}.tar.gz" 
