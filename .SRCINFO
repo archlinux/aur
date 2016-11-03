@@ -1,0 +1,32 @@
+pkgbase = elasticsearch2
+	pkgdesc = Distributed RESTful search engine built on top of Lucene
+	pkgver = 2.4.1
+	pkgrel = 1
+	url = https://www.elastic.co/products/elasticsearch
+	install = elasticsearch.install
+	arch = any
+	license = APACHE
+	depends = java-runtime-headless
+	depends = systemd
+	provides = elasticsearch=2.4.1
+	conflicts = elasticsearch
+	backup = etc/elasticsearch/elasticsearch.yml
+	backup = etc/elasticsearch/logging.yml
+	backup = etc/default/elasticsearch
+	source = http://download.elasticsearch.org/elasticsearch/release/org/elasticsearch/distribution/tar/elasticsearch/2.4.1/elasticsearch-2.4.1.tar.gz
+	source = elasticsearch.service
+	source = elasticsearch@.service
+	source = elasticsearch-sysctl.conf
+	source = elasticsearch-user.conf
+	source = elasticsearch-tmpfile.conf
+	source = elasticsearch.default
+	sha256sums = 23a369ef42955c19aaaf9e34891eea3a055ed217d7fbe76da0998a7a54bbe167
+	sha256sums = 339a16452c89d55dba3c693e5979fd331981e79decc5eceb2e9be25670d946d9
+	sha256sums = 5705be6546922d5c0c7aded3b839af25b369ace2af7024ea11e2bce9426ae2f6
+	sha256sums = b3feb1e9c7e7ce6b33cea6c727728ed700332aae942ca475c3bcc1d56b9f113c
+	sha256sums = 815f6a39db6f54bb40750c382ffbdc298d2c4c187ee8ea7e2f855923e2ff354b
+	sha256sums = 6578cacc9fdbdf4713e9f607710701edcd46b026e99743af0fbb63e177eed9b1
+	sha256sums = bb74e5fb8bc28f2125e015395ab05bea117b72bfc6dadbca827694b362ee0bf8
+
+pkgname = elasticsearch2
+
