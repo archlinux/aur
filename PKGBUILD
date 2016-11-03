@@ -12,8 +12,7 @@ pkgdesc="A web based interface used to manage mailboxes, virtual domains and ali
 arch=('any')
 license=('GPL')
 url="https://git.pietma.com/pietma/com-pietma-${pkgname}"
-depends=('bash'
-	 'php'
+depends=('php'
 	 'php-imap'
 	 'mysql'
 	 'zarafa-server')
