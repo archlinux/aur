@@ -1,6 +1,5 @@
 post_install() {
 	echo -n "Adding aria2 user and group ..."
-	# --no-create-home
 	useradd aria2 -r -U -d /var/share/aria2/ -s /bin/nologin && echo " done."
 	passwd -l aria2 &>/dev/null
 
@@ -18,8 +17,8 @@ post_install() {
 }
 
 post_remove() {
-	echo -n -e "\nRemoving aria2c user/group..."
-	userdel aria2c && echo " done."
+	echo -n -e "\nRemoving aria2 user/group..."
+	userdel aria2 && echo " done."
 	echo "Now the aria2d was removed from your system,"
 	echo "you may need to check the directory /var/share/aria2/ by manual."
 }
