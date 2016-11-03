@@ -99,10 +99,10 @@ index 2ae7649..0f7892d 100644
  static void register_drivers(void)
 diff --git a/libfprint/drivers/validity/vfsDriver.c b/libfprint/drivers/validity/vfsDriver.c
 new file mode 100644
-index 0000000..7bc0dde
+index 0000000..ebc0f7e
 --- /dev/null
 +++ b/libfprint/drivers/validity/vfsDriver.c
-@@ -0,0 +1,289 @@
+@@ -0,0 +1,288 @@
 +
 +
 +/*! @file vfsDriver.c
@@ -131,7 +131,6 @@ index 0000000..7bc0dde
 +#include <errno.h>
 +#include <string.h>
 +#include <glib.h>
-+#include <usb.h>
 +#include <fp_internal.h>
 +#include <stdio.h>
 +#include <dlfcn.h>

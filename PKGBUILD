@@ -7,7 +7,7 @@
 pkgname=libfprint-git
 epoch=1
 pkgver=0.6.0.r34.g12f6dae
-pkgrel=1
+pkgrel=2
 pkgdesc="Library for fingerprint readers"
 arch=(i686 x86_64)
 url="http://www.freedesktop.org/wiki/Software/fprint/libfprint"
@@ -21,7 +21,7 @@ conflicts=(libfprint)
 source=("git://anongit.freedesktop.org/libfprint/libfprint.git"
         "validity-sensor.patch")
 md5sums=('SKIP'
-         'bb3cd615f3b6b70c7613f9c83466dbfe')
+         'b5a26aaa401b41fcc9ba4d8b717189c3')
 
 pkgver() {
   cd libfprint
