@@ -6,11 +6,11 @@ pkgver=3.20.20160705
 pkgrel=1
 pkgdesc='Easy On The Eyes GNOME Shell, GTK2, GTK3 and Cinnamon themes'
 arch=('any')
-url='https://www.opendesktop.org/p/1143475/'
+url='https://www.opendesktop.org/p/1143475'
 license=('GPL3')
-makedepends=('lbxml2')
+makedepends=('jq')
 optdepends=('gtk-engine-murrine: for GTK2 themes')
-source=("version::version${url#https}"
+source=("version::version://dl.opendesktop.org/api/files/index?format=json&status=active&collection_content_id=${url##*/}"
         'https://dl.opendesktop.org/api/files/download/id/1468995652/Dark-Aurora.tar.gz')
 sha256sums=('f5bbb7ea941d120d03237a28d07411aafc23e866b184083e37e02eda65aa3072'
             '6fbdaaae2e59b5f514ca003ba2552fcb7eb5724bd278e291ed5ae2036563d6ff')
@@ -18,14 +18,14 @@ sha256sums=('f5bbb7ea941d120d03237a28d07411aafc23e866b184083e37e02eda65aa3072'
 # The following is a very convoluted script because of makepkg's DLAGENTS escaping logic.
 # An agent is added for the protocol "version". It is treated like http, which is done by processing
 # the input url %u with sed, replacing the protocol back to http. Everything downloaded is then not
-# immediatley saved to the output file name %o, but first piped through sed, which finds the
-# gnome-shell version string in the Dark Aurora page on GNOME-Look.org.
-# This makes a file containing the version readily available to both pkgver and package so that they
-# not both have to sed out the version from the webpage themselves.
+# immediatley saved to the output file name %o, but first piped through jq, which finds the
+# gnome-shell version string in the JSON metadata received from the Dark Aurora page on
+# GNOME-Look.org. This makes a file containing the version readily available to both pkgver
+# and package so that they not both have to extract the version themselves again and again.
 DLAGENTS=("version::/usr/bin/bash -c $(
   printf '%s\n' "${DLAGENTS[@]}" | sed -n 's/http::\(.*\)/\1/p' \
-    | sed 's/-[^ ] %o //' | sed 's/ /\\ /g' | sed 's/%u/$(echo\\ %u\\ |\\ sed\\ "s\/^version\/http\/")/'
-)\ |\ xmllint\ --html\ --xpath\ 'normalize-space(//span[@class=\"value\"][1]/text())'\ -\ 2>/dev/null\ >\ %o"
+    | sed 's/-[^ ] %o //' | sed 's/ /\\ /g' | sed 's/%u/$(echo\\ \"%u\"\\ |\\ sed\\ "s\/^version\/http\/")/'
+)\ |\ jq\ -j\ '.files."0".version'\ >\ %o"
 "${DLAGENTS[@]}")
 
 pkgver() {
