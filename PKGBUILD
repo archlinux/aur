@@ -33,5 +33,5 @@ package(){
   install -Dm644 $srcdir/genymotion.desktop $pkgdir/usr/share/applications/genymotion.desktop
   install -Dm644 $srcdir/genymotion-player.desktop $pkgdir/usr/share/applications/genymotion-player.desktop
   chown -R root:root $pkgdir/opt/genymotion
-  rm $pkgdir/opt/genymotion/libdrm.so.2
+
 }
