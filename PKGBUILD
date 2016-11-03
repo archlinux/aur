@@ -24,6 +24,7 @@ executable_files=(
   __init__.py
   _vendor/requests/packages/chardet/chardetect.py
   _vendor/requests/certs.py
+  _vendor/appdirs.py
 )
 
 package() {
