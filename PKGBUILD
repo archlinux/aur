@@ -5,6 +5,7 @@ pkgdesc='Daemonize aria2'
 license=('GPL2')
 arch=(any)
 depends=('aria2')
+provides=('aria2c-daemon')
 conflicts=('aria2c-daemon')
 replaces=('aria2c-daemon')
 makedepends=('git')
