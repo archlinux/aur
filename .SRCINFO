@@ -1,7 +1,7 @@
 pkgbase = qpid-proton
 	pkgdesc = Proton is a high-performance, lightweight messaging library
-	pkgver = 0.8
-	pkgrel = 2
+	pkgver = 0.15.0
+	pkgrel = 1
 	url = https://qpid.apache.org/releases/
 	arch = i686
 	arch = x86_64
@@ -12,8 +12,8 @@ pkgbase = qpid-proton
 	makedepends = cmake
 	makedepends = swig
 	depends = python2
-	source = http://www.eu.apache.org/dist/qpid/proton/0.8/qpid-proton-0.8.tar.gz
-	sha1sums = 2cae466d975b0f1df28fdfb0fe8e8d000a35d99a
+	source = https://www-us.apache.org/dist/qpid/proton/0.15.0/qpid-proton-0.15.0.tar.gz
+	sha1sums = 7c85f9a76a33c1f22dbef22dc194f315261a6a02
 
 pkgname = qpid-proton
 

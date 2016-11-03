@@ -1,6 +1,6 @@
 # Maintainer: Florian Schweikert <kelvan at ist-total.org>
 pkgname=qpid-proton
-pkgver=0.10
+pkgver=0.15.0
 pkgrel=1
 pkgdesc="Proton is a high-performance, lightweight messaging library"
 arch=('i686' 'x86_64' 'armv7h')
@@ -9,8 +9,8 @@ license=('APACHE')
 depends=('python2')
 makedepends=('util-linux' 'python2' 'cmake' 'swig')
 optdepends=()
-source=("http://www.eu.apache.org/dist/qpid/proton/$pkgver/$pkgname-$pkgver.tar.gz")
-sha1sums=('a38f246beea833b7fbbc8dd594b922c1ec18f691')
+source=("https://www-us.apache.org/dist/qpid/proton/$pkgver/$pkgname-$pkgver.tar.gz")
+sha1sums=('7c85f9a76a33c1f22dbef22dc194f315261a6a02')
 
 build() {
   cd "${srcdir}/qpid-proton-${pkgver}"
