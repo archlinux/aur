@@ -3,20 +3,26 @@
 
 pkgname=visualfsm
 pkgver=0.5.26
-pkgrel=1
+pkgrel=2
 pkgdesc="A Visual Structure from Motion System"
 arch=('x86_64')
 url="https://github.com/anders-dc/vsfm-linux-x86_64"
 license=('GPL3')
-depends=('freeglut' 'devil' 'gtk2' 'glew')
+depends=('freeglut' 'devil' 'gtk2' 'glew' 'cuda')
 makedepends=('make')
 source=("https://github.com/anders-dc/vsfm-linux-x86_64/archive/master.zip")
 
 md5sums=('2eaa9a98c0ddffdc06747d1f6fcbf043')
 
+prepare() {
+  cd "${srcdir}"/"vsfm-linux-x86_64-master"
+  sed -i '/SiftGPU: SiftGPU.zip$/{ N; s#$#\n\tsed -i "s,usr/local/cuda,opt/cuda," SiftGPU/makefile#; }' Makefile
+}
+
 build() {
   cd "${srcdir}"/"vsfm-linux-x86_64-master"
-  make
+  make clean
+  make -j1
 }
 
 package() {
