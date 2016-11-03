@@ -1,0 +1,10 @@
+--- src/exrtools-0.4/src/pngoutput.c	2016-11-03 17:11:12.032289339 +0100
++++ src/exrtools-0.4/src/pngoutput_.c	2016-11-03 17:25:43.738339077 +0100
+@@ -27,6 +27,7 @@
+ #include <errno.h>
+ #include <string.h>
+ #include <png.h>
++#include <zlib.h>
+ #include "pngoutput.h"
+ 
+ struct pngoutput_s
