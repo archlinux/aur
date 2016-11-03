@@ -1,0 +1,31 @@
+pkgbase = foreman-proxy
+	pkgdesc = Manages services like DNS, DHCP, TFTP and Puppet though a HTTP Restful API. Used by foreman
+	pkgver = 1.13.0
+	pkgrel = 1
+	url = https://github.com/theforeman/smart-proxy
+	install = foreman-proxy.install
+	arch = any
+	license = GPL3
+	depends = ruby
+	depends = ruby-bundler_ext
+	depends = ruby-sinatra>=1.3.3
+	depends = ruby-json
+	optdepends = ruby-gssapi: REALM module dependanecy
+	optdepends = ruby-rb-inotify: DHCP module dependency
+	optdepends = sudo: PUPPET module dependency
+	optdepends = wget: TFTP module dependency
+	options = emptydirs
+	backup = etc/foreman-proxy/settings.yml
+	source = https://github.com/theforeman/smart-proxy/archive/1.13.0.tar.gz
+	source = foreman-proxy.systemd
+	source = foreman-proxy.conf.d
+	source = foreman-proxy.logrotate
+	source = foreman-proxy.tmpfiles.conf
+	md5sums = dca0a2bf1e6842243c20830f0a8a4107
+	md5sums = d1c95e8be469b9d67ada1f8ad9a09ca0
+	md5sums = 930f65dfe6bac87a276d02a76b691058
+	md5sums = d41d8cd98f00b204e9800998ecf8427e
+	md5sums = dedfafe3fd8ee6efcbc7fd9ae90a75cd
+
+pkgname = foreman-proxy
+

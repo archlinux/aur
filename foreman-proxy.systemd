@@ -1,0 +1,14 @@
+[Unit]
+Description=Foreman Proxy
+Wants=basic.target
+After=basic.target network.target
+
+[Service]
+Type=forking
+User=foreman-proxy
+ExecStart=/usr/share/foreman-proxy/bin/smart-proxy
+PIDFile=/run/foreman-proxy/foreman-proxy.pid
+EnvironmentFile=-/etc/conf.d/foreman-proxy
+
+[Install]
+WantedBy=multi-user.target

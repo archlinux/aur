@@ -1,0 +1,58 @@
+# Foreman-proxy: Installer: Arch
+# Maintainer: Greg Sutcliffe <greg.sutcliffe@gmail.com>>
+
+pre_install() {
+  # Add the "foreman-proxy" user and group
+  getent group foreman-proxy >/dev/null || groupadd -r foreman-proxy
+  getent passwd foreman-proxy >/dev/null || useradd -r -g foreman-proxy -d /usr/share/foreman-proxy -s /sbin/nologin -c "Foreman Proxy daemon user" foreman-proxy
+  exit 0
+}
+
+post_install() {
+  chown foreman-proxy /var/log/foreman-proxy
+  /usr/bin/systemd-tmpfiles --create foreman-proxy.conf
+  /usr/bin/systemctl daemon-reload >/dev/null 2>&1
+  exit 0
+}
+
+pre_upgrade() {
+  pre_install
+}
+
+post_upgrade() {
+  chown foreman-proxy /var/log/foreman-proxy
+  # Migrate proxy config files
+  TEMP=$(mktemp -d)
+  trap "rm -rf $TEMP" EXIT
+  pushd $TEMP >/dev/null
+
+  if /usr/sbin/ruby /usr/share/foreman-proxy/extra/migrate_settings.rb -t . > /var/log/foreman-proxy/migrate_settings.log 2>&1; then
+    (
+      cd result && for f in migration_state settings.yml settings.d/*.yml; do
+        [ -e "$f" ] && cat $f > /etc/foreman-proxy/$f
+      done
+    )
+
+    # from monolithic to split config files
+    egrep -q '^:settings_directory' /etc/foreman-proxy/settings.yml || \
+      sed -i '/^---/ a #replace default location of "settings.d"\n:settings_directory: /etc/foreman-proxy/settings.d\n' \
+        /etc/foreman-proxy/settings.yml
+  fi
+  popd >/dev/null
+
+  /usr/bin/systemctl try-restart foreman-proxy.service >/dev/null 2>&1
+
+  exit 0
+}
+
+pre_remove() {
+  /usr/bin/systemctl --no-reload disable foreman-proxy.service >/dev/null 2>&1
+  /usr/bin/systemctl stop foreman-proxy.service >/dev/null 2>&1
+  exit 0
+}
+
+post_remove() {
+  /usr/bin/systemctl daemon-reload >/dev/null 2>&1
+  exit 0
+}
+
