@@ -18,14 +18,13 @@ conflicts=('autoenv')
 pkgver() {
   cd "$pkgname"
   set -o pipefail
-  # git describe --tags --long | sed -r 's/([^-]*-g)/r\1/;s/-/./g' ||
+  git describe --tags --long | sed -r 's/([^-]*-g)/r\1/;s/-/./g' ||
 
   # If there is a setup.py then pull the version tag from the file
   if [ -f "setup.py" ]; then
-    printf "%s." "$(grep -R "version=" setup.py | awk -F\' '{print $2}')"
+    printf "%s.r%s.g%s" "$(grep -R "version=" setup.py | awk -F\' '{print $2}')" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
   fi
 
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
