@@ -1,14 +1,16 @@
 pkgbase = sim65
 	pkgdesc = 65c02 simulation system
 	pkgver = 1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.wsxyz.net/sim65/
 	arch = i686
 	arch = x86_64
 	license = GPL
 	depends = wxgtk
 	source = http://www.wsxyz.net/sim65/sim65.tar.gz
+	source = wx3.patch
 	md5sums = b83a86302e55763e280638676715c391
+	md5sums = ba0b33c3e37c1c8a7d80ab135b7bdeb8
 
 pkgname = sim65
 

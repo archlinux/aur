@@ -1,0 +1,63 @@
+diff -aur sim65/Acia6551Frame.cpp sim65.wx3/Acia6551Frame.cpp
+--- sim65/Acia6551Frame.cpp	2010-08-23 20:18:27.000000000 -0500
++++ sim65.wx3/Acia6551Frame.cpp	2016-11-03 04:08:03.139857833 -0500
+@@ -11,7 +11,7 @@
+ EVT_CLOSE(Acia6551Frame::OnClose)
+ END_EVENT_TABLE()
+ 
+-#define NORESIZE_FRAME (wxDEFAULT_FRAME_STYLE & ~(wxRESIZE_BORDER | wxRESIZE_BOX | wxMAXIMIZE_BOX))
++#define NORESIZE_FRAME (wxDEFAULT_FRAME_STYLE & ~(wxRESIZE_BORDER | wxMAXIMIZE_BOX))
+ 
+ Acia6551Frame::~Acia6551Frame ()
+ {
+@@ -86,7 +86,7 @@
+   reg_sizer->Add(txdwin, 0, wxLEFT | wxRIGHT | wxBOTTOM | wxALIGN_RIGHT, prefs->BorderWidth());
+   reg_sizer->Add(rxdwin, 0, wxLEFT | wxRIGHT | wxBOTTOM | wxALIGN_RIGHT, prefs->BorderWidth());
+ 
+-  term = new wxTextCtrl(panel, -1, wxString::FromAscii(""), wxDefaultPosition, wxDefaultSize, wxTE_MULTILINE | wxTE_LINEWRAP | wxTE_READONLY);
++  term = new wxTextCtrl(panel, -1, wxString::FromAscii(""), wxDefaultPosition, wxDefaultSize, wxTE_MULTILINE | wxTE_CHARWRAP | wxTE_READONLY);
+   term->SetFont(font);
+   term->SetDefaultStyle(attr);
+   term->SetSize(40 * term->GetCharWidth(), 2 * term->GetCharHeight());
+diff -aur sim65/AddressDialog.cpp sim65.wx3/AddressDialog.cpp
+--- sim65/AddressDialog.cpp	2010-08-23 20:02:35.000000000 -0500
++++ sim65.wx3/AddressDialog.cpp	2016-11-03 04:05:52.985080506 -0500
+@@ -18,7 +18,7 @@
+ 
+ AddressDialog::AddressDialog(wxWindow *parent)
+   : wxDialog(parent, -1, wxString::FromAscii("Enter Load Address"), wxDefaultPosition,
+-	     wxDefaultSize, wxDEFAULT_DIALOG_STYLE | wxDIALOG_MODAL)
++	     wxDefaultSize, wxDEFAULT_DIALOG_STYLE)
+ {
+   m_value = wxString::FromAscii("");
+   wxString message = wxString::FromAscii("At what address do you want to load the image?");
+diff -aur sim65/SimFrame.cpp sim65.wx3/SimFrame.cpp
+--- sim65/SimFrame.cpp	2010-08-27 22:29:20.000000000 -0500
++++ sim65.wx3/SimFrame.cpp	2016-11-03 04:03:59.603390570 -0500
+@@ -15,7 +15,7 @@
+ #include "Acia6551.h"
+ #include "Acia6551Frame.h"
+ 
+-#define NORESIZE_FRAME (wxDEFAULT_FRAME_STYLE & ~(wxRESIZE_BORDER | wxRESIZE_BOX | wxMAXIMIZE_BOX))
++#define NORESIZE_FRAME (wxDEFAULT_FRAME_STYLE & ~(wxRESIZE_BORDER | wxMAXIMIZE_BOX | wxMAXIMIZE_BOX))
+ 
+ enum
+   {
+@@ -380,7 +380,7 @@
+ 				       wxString::FromAscii(""),
+ 				       wxString::FromAscii(""),
+ 				       wxString::FromAscii("*.*"),
+-				       wxOPEN | wxCHANGE_DIR);
++				       wxFD_OPEN | wxFD_CHANGE_DIR);
+ 
+   int result = fd->ShowModal();
+ 
+@@ -518,7 +518,7 @@
+ 					wxString::FromAscii(""),
+ 					wxString::FromAscii(""),
+ 					wxString::FromAscii("*.*"),
+-				       wxOPEN | wxCHANGE_DIR);
++				       wxFD_OPEN | wxFD_CHANGE_DIR);
+ 
+   int result = fd->ShowModal();
+ 
