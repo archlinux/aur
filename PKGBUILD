@@ -1,22 +1,22 @@
 # Maintainer: Phil Schaf <flying-sheep@web.de>
 _name=pydot
 pkgname=python-$_name
-pkgver=1.2.2
+pkgver=1.2.3
 pkgrel=1
 pkgdesc='Python interface to Graphviz’s Dot language'
 arch=('any')
 url='https://github.com/erocarrera/pydot'
 license=('MIT')
 depends=('python' 'python-pyparsing' 'graphviz')
-makedepends=('setuptools')
+makedepends=('python-setuptools')
 provides=('python-dot')
 conflicts=('python-dot')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-md5sums=('fad67d9798dbb33bb3dca3e6d4c47665')
+md5sums=('5b50fd8cf022811d8718562ebc8aefb2')
 
 package() {
 	cd "$srcdir/$_name-$pkgver"
 	
-	python setup.py install --install-data='/usr/share/pydot' --root="$pkgdir" || return 1
+	python setup.py install --root="$pkgdir" || return 1
 	install -D -m644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
