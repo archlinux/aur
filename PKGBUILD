@@ -1,23 +1,21 @@
 # Maintainer: Timofey Titovets <nefelim4ag@gmail.com>
 
 pkgbase=scaleio
-# Not ready 'scaleio-sdc' 'scaleio-sds'  'scaleio-callhome'
+# Not ready 'scaleio-sdc' 'scaleio-xcache' - kernel modules for RHEL
 pkgname=( 'scaleio-gui' 'scaleio-mdm' 'scaleio-sds' )
 pkgver=2.0.0.2
-pkgrel=9
+pkgrel=10
 pkgdesc="ScaleIO"
-arch=('x86_64')
+arch=( 'x86_64' )
 url="http://www.emc.com/storage/scaleio/"
-license=('Custom')
-depends=('libaio' 'numactl' 'mutt' 'bash-completion' 'python2')
-makedepends=('unzip')
-conflicts=()
-options=('!strip' '!emptydirs')
+license=( 'Custom' )
+makedepends=( 'unzip' 'tar' )
+options=( '!strip' '!emptydirs' )
 source=("http://downloads.emc.com/emc-com/usa/ScaleIO/ScaleIO_Linux_v2.0.zip")
 
 md5sums=('b681b39f46bcff125522d2c2b819b32f')
 
-extract_deb(){ ar xv "$1"; }
+extract_deb(){ ar xv "$1"; rm "$1"; }
 
 prepare() {
         cd $srcdir/ScaleIO_${pkgver}_Complete_Linux_SW_Download
@@ -55,22 +53,19 @@ prepare() {
         rm ./*.sig
         for file in ./*.siob; do
             ./siob_extract $file
+            rm $file
         done
         rm ./siob_extract
-        rm ./*.siob
 }
 
 package_scaleio-gui()
 {
         pkgdesc="ScaleIO GUI"
-        depends=('java-runtime')
-        provides=()
-        conflicts=()
-        options=('!emptydirs' '!strip')
+        depends=( 'java-runtime' )
+        options=( '!emptydirs' '!strip' )
 
         cd ${srcdir}/ScaleIO_${pkgver}_Complete_Linux_SW_Download/GUI
         extract_deb EMC-ScaleIO-gui-2.0-7120.0.deb
-        rm EMC-ScaleIO-gui-2.0-7120.0.deb control.tar.gz debian-binary
         tar xf data.tar.gz
         mv opt ${pkgdir}/opt
 
@@ -101,18 +96,15 @@ package_scaleio-gui()
 package_scaleio-mdm()
 {
         pkgdesc="ScaleIO mdm"
-        depends=()
-        provides=()
-        conflicts=()
+        depends=( 'libaio' 'numactl' )
         install=scaleio-mdm.install
-        options=('!emptydirs' '!strip')
+        options=( '!emptydirs' '!strip' )
 
         cd ${srcdir}/ScaleIO_${pkgver}_Complete_Linux_SW_Download/
         mkdir -p MDM
         mv ./U1404P/EMC-ScaleIO-mdm-2.0-7120.0.Ubuntu.14.04.x86_64.deb ./MDM
         cd ./MDM
         extract_deb EMC-ScaleIO-mdm-2.0-7120.0.Ubuntu.14.04.x86_64.deb
-        rm EMC-ScaleIO-mdm-2.0-7120.0.Ubuntu.14.04.x86_64.deb debian-binary control.tar.gz
         tar xf data.tar.xz
         mv opt ${pkgdir}/opt
 
@@ -149,18 +141,15 @@ package_scaleio-mdm()
 package_scaleio-sds()
 {
         pkgdesc="ScaleIO sds"
-        depends=()
-        provides=()
-        conflicts=()
+        depends=( 'libaio' 'numactl' )
         install=scaleio-sds.install
-        options=('!emptydirs' '!strip')
+        options=( '!emptydirs' '!strip' )
 
         cd ${srcdir}/ScaleIO_${pkgver}_Complete_Linux_SW_Download/
         mkdir -p SDS
         mv ./U1404P/EMC-ScaleIO-sds-2.0-7120.0.Ubuntu.14.04.x86_64.deb ./MDM
         cd ./MDM
         extract_deb EMC-ScaleIO-sds-2.0-7120.0.Ubuntu.14.04.x86_64.deb
-        rm EMC-ScaleIO-sds-2.0-7120.0.Ubuntu.14.04.x86_64.deb debian-binary control.tar.gz
         tar xf data.tar.xz
         mv opt ${pkgdir}/opt
 
@@ -185,25 +174,3 @@ package_scaleio-sds()
             echo WantedBy=local-fs.target
         } > ${pkgdir}/usr/lib/systemd/system/sds.service
 }
-
-#package_scaleio-callhome()
-#{
-#        pkgdesc="ScaleIO callhome"
-#        depends=()
-#        provides=()
-#        conflicts=()
-#        options=('!emptydirs' '!strip')
-#
-#        cd ${srcdir}/ScaleIO_${pkgver}_Complete_Linux_SW_Download/
-#}
-
-#package_scaleio-sdc()
-#{
-#        pkgdesc="ScaleIO sdc"
-#        depends=()
-#        provides=()
-#        conflicts=()
-#        options=('!emptydirs' '!strip')
-#
-#        cd ${srcdir}/ScaleIO_${pkgver}_Complete_Linux_SW_Download/
-#}
