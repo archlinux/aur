@@ -1,6 +1,4 @@
-2014-02-04 Fabien Dubosson <fabien.dubosson@gmail.com>
+2016-11-03 Fabien Dubosson <fabien.dubosson@gmail.com>:
 
-	* 462-1:
-	Add ChangeLog
-	Uniformalize PKGBUILD notations
-
+	* r71.0215b79-1:
+	Upstream moved to a git repository
