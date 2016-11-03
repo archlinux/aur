@@ -1,6 +1,6 @@
 # Maintainer: Jonne Haß <me@jhass.eu>
 pkgname='diaspora-mysql'
-pkgver=0.6.0.1
+pkgver=0.6.1.0
 pkgrel=3
 pkgdesc="A distributed privacy aware social network (MySQL)"
 arch=('i686' 'x86_64')
@@ -55,7 +55,7 @@ build() {
   msg "Setup build directory"
   rm -rf $_builddir
   mkdir -p $_builddir
-  cp -Rf $srcdir/diaspora-0.6.0.1/{bin,app,config,db,public,lib,script,vendor,config.ru,Gemfile,Gemfile.lock,Rakefile} $_builddir
+  cp -Rf $srcdir/diaspora-0.6.1.0/{bin,app,config,db,public,lib,script,vendor,config.ru,Gemfile,Gemfile.lock,Rakefile} $_builddir
 
   cd $_builddir
 
@@ -129,7 +129,7 @@ package() {
   ln -sf /var/log/diaspora                     $pkgdir/usr/share/webapps/diaspora/log
 }
 
-sha256sums=('fc2d8b31b4d5e839d9915f2628960fc4c8322a3be577cececdb46987ae37f7d3'
+sha256sums=('e81f7e8cc78c928996f493780ae41f1e77642dd180348df9bc045693a22bb9ce'
             'aae126c4b1bcba6265d3d925dc3845bb034defa5606385c22dfb053111b57685'
             '4b01e08bf47cd21fb996cd0a9ea9bf54f0b10a23ad8a4d142d674feb410f5395'
             '7128024976c95d511d8995c472907fe0b8c36fe5b45fef57fc053e3fadcae408'
