@@ -1,0 +1,12 @@
+diff -Nur meshlab.orig/src/external/structuresynth-1.5/ssynth/SyntopiaCore/GLEngine/Raytracer/VoxelStepper.cpp meshlab/src/external/structuresynth-1.5/ssynth/SyntopiaCore/GLEngine/Raytracer/VoxelStepper.cpp
+--- meshlab.orig/src/external/structuresynth-1.5/ssynth/SyntopiaCore/GLEngine/Raytracer/VoxelStepper.cpp	2014-02-07 20:38:23.000000000 +1100
++++ meshlab/src/external/structuresynth-1.5/ssynth/SyntopiaCore/GLEngine/Raytracer/VoxelStepper.cpp	2016-05-23 12:55:58.752439956 +1000
+@@ -122,7 +122,7 @@
+ 						currentT = p;
+ 
+ 						// We do not intersect grid.
+-						if (!found) return false;
++						if (!found) return 0;
+ 				}
+ 
+ 				stepX = (dir.x() > 0) ? 1 : -1;

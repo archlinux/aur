@@ -1,0 +1,21 @@
+diff -Naur meshlab.orig/src/meshlabplugins/edit_quality/eqhandle.cpp meshlab/src/meshlabplugins/edit_quality/eqhandle.cpp
+--- meshlab.orig/src/meshlabplugins/edit_quality/eqhandle.cpp	2016-10-30 14:07:42.211338698 +0100
++++ meshlab/src/meshlabplugins/edit_quality/eqhandle.cpp	2016-10-30 14:08:26.774164177 +0100
+
+@@ -30,6 +30,7 @@
+ #include "eqhandle.h"
+ #include <QMouseEvent>
+ #include <QGraphicsSceneMouseEvent>
++#include "math.h" /* fabs() */
+ 
+ EqHandle::EqHandle(CHART_INFO *environment_info, QColor color, QPointF position, 
+ 				   EQUALIZER_HANDLE_TYPE type, EqHandle** handles, qreal* midHandlePercentilePosition, QDoubleSpinBox* spinbox,
+@@ -83,7 +83,7 @@
+ 	setCursor(Qt::OpenHandCursor);
+ 
+ 	QPointF newPos = event->scenePos();
+-	qreal handleOffset = abs(newPos.x()-pos().x());
++	qreal handleOffset = fabs(newPos.x()-pos().x());
+ 
+ 	if (handleOffset >= std::numeric_limits<float>::epsilon())
+ 	{
