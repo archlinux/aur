@@ -29,7 +29,7 @@ pkgver() {
 }
 
 package() {
-  cd autoenv
+  cd "$pkgname"
 
   install -D -m755 activate.sh "${pkgdir}/usr/share/${pkgname}/activate.sh"
   install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
