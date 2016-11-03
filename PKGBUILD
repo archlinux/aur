@@ -1,13 +1,13 @@
 # Maintainer: Markus Kalb <mk@filmkreis.tu-darmstadt.de>
 # Contributor: Stefan Karner <stefan.karner@student.tuwien.ac.at>
 pkgname=libsub-git
-pkgver=0.r325.79ec1e0
+pkgver=0.r334.1eab24b
 pkgrel=1
 pkgdesc="libsub is a small C++ library to read and write subtitles in a few different formats (currently STL, SubRip and DCP)"
 arch=('i686' 'x86_64')
 url="http://carlh.net/libsub"
 license=('GPL')
-depends=('libdcp'  'liblocked-sstream' 'libcxml>=0.15.1' 'openssl' 'libxml++>=2.6' 'xmlsec' 'openjpeg'  'libsigc++>=2.0' 'boost-libs>=1.45')
+depends=('libdcp'  'liblocked-sstream' 'libcxml>=0.15.2' 'openssl' 'libxml++>=2.6' 'xmlsec' 'openjpeg'  'libsigc++>=2.0' 'boost-libs>=1.45')
 makedepends=('python2' 'boost>=1.45')
 provides=('libsub')
 conflicts=('libsub')
