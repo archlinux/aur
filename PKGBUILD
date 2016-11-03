@@ -12,7 +12,7 @@ arch=('i686' 'x86_64')
 url="http://www.twolame.org/"
 license=('LGPL')
 depends=('libsndfile')
-source=("http://heanet.dl.sourceforge.net/${_pkgname}/${_pkgname}/${pkgver}/${_pkgname}-${pkgver}.tar.gz")
+source=("http://heanet.dl.sourceforge.net/project/${_pkgname}/${_pkgname}/${pkgver}/${_pkgname}-${pkgver}.tar.gz")
 md5sums=('4113d8aa80194459b45b83d4dbde8ddb')
 
 build() {
