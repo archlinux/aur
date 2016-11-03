@@ -69,7 +69,6 @@ source venv/bin/activate
 ./run.py
 EOF
   chown -R $_uid:$_gid usr/share/webapps/powerdns-admin etc/webapps/powerdns-admin
-  ls -lh usr/share/webapps
   
   install ${srcdir}/powerdns-admin.service usr/lib/systemd/system/powerdns-admin.service
 }
