@@ -1,0 +1,16 @@
+pkgbase = triggerhappy-git
+	pkgdesc = A lightweight hotkey daemon, systemd branch
+	pkgver = r170
+	pkgrel = 1
+	url = https://github.com/wertarbyte/triggerhappy
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = linux-api-headers
+	depends = libsystemd
+	source = git+https://github.com/wertarbyte/triggerhappy
+	md5sums = SKIP
+
+pkgname = triggerhappy-git
+
