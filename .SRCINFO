@@ -1,0 +1,10 @@
+pkgbase = asciii-git
+	pkgver = v3.0.0
+	pkgrel = 1
+	arch = i686
+	arch = x86_64
+	source = git+https://github.com/hoodie/asciii-rs.git
+	md5sums = SKIP
+
+pkgname = asciii-git
+
