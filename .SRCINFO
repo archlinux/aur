@@ -1,6 +1,6 @@
 pkgbase = kmailapplet-git
 	pkgdesc = A Mail Applet for the system tray to watch your Maildir box and get notifications whenever there's a new mail.
-	pkgver = 0.1
+	pkgver = r24.fa4d4e5
 	pkgrel = 1
 	url = https://github.com/ichigo663/KMailApplet
 	arch = any

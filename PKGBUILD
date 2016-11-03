@@ -1,6 +1,6 @@
 # Maintainer: Antonio Cardace <antonio@cardace.com>
 pkgname=kmailapplet-git
-pkgver=0.1
+pkgver=r24.fa4d4e5
 pkgrel=1
 pkgdesc="A Mail Applet for the system tray to watch your Maildir box and get notifications whenever there's a new mail."
 arch=('any')
@@ -15,7 +15,7 @@ md5sums=("SKIP")
 
 pkgver() {
     cd "$srcdir/$pkgname"
-    git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
