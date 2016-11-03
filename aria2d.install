@@ -9,7 +9,7 @@ post_install() {
 
 	chmod 600 /etc/conf.d/aria2.conf
 	chown aria2:aria2 /etc/conf.d/aria2.conf
-	chown -R aria2:aria2 /var/share/aria2c/
+	chown -R aria2:aria2 /var/share/aria2/
 
 	echo "Now the aria2d is installed, you may want to ..."
 	echo "  1. check the config file for aria2 at /etc/conf.d/aria2.conf"
