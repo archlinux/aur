@@ -2,8 +2,8 @@
 _pkgname=asciii
 pkgname=${_pkgname}-git
 pkgver=v3.0.0.beta1.r47.gf78ebfe # auto
-pkgrel=2
-#makedepends=('rust' 'cargo' 'cmake')
+pkgrel=3
+makedepends=('rust' 'cargo' 'cmake')
 arch=('i686' 'x86_64')
 source=("git+https://github.com/hoodie/asciii-rs.git")
 md5sums=('SKIP')
