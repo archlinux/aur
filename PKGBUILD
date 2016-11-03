@@ -10,7 +10,7 @@ url='https://www.opendesktop.org/p/1143475'
 license=('GPL3')
 makedepends=('jq')
 optdepends=('gtk-engine-murrine: for GTK2 themes')
-source=("version::meta://dl.opendesktop.org/api/files/index?format=json&status=active&collection_content_id=${url##*/}"
+source=("meta::meta://dl.opendesktop.org/api/files/index?format=json&status=active&collection_content_id=${url##*/}"
         'https://dl.opendesktop.org/api/files/download/id/1468995652/Dark-Aurora.tar.gz')
 sha256sums=('0f20c0287933ea77e0830d856ff75d6e99c80cf3ba185bda5fd6a662bae049b4'
             '6fbdaaae2e59b5f514ca003ba2552fcb7eb5724bd278e291ed5ae2036563d6ff')
@@ -28,7 +28,7 @@ DLAGENTS=("meta::/usr/bin/bash -c $(
 "${DLAGENTS[@]}")
 
 pkgver() {
-  js -j '.version' version
+  js -j '.version' meta
   while read -rd $'\0'
   do
     if [[ "$REPLY" -gt "$max" ]]
@@ -47,5 +47,5 @@ package() {
 
 # Hidden in a subfunction not to show up in the .SRCINFO.
 extend-optdepends() {
-  optdepends+=("gnome-shell=$(jq -j .version version): for gnome-shell themes")
+  optdepends+=("gnome-shell=$(jq -j .version meta): for gnome-shell themes")
 }
