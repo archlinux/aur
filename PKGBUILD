@@ -1,40 +1,40 @@
+# Maintainer: Ivan Shapovalov <intelfx@intelfx.name>
 # contributor: Hoàng Đức Hiếu <hdh@lazny.tang.la>
 # Contributor: Gilfran Ribeiro <contato [at] gilfran [dot] net>
 # Contributor: William Díaz <wdiaz [at] archlinux [dot] us>
 # Contributor: Gustavo Alvarez <sl1pkn07 [at] gmail [dot] com>
-# Maintainer: Ivan Shapovalov <intelfx100@gmail.com>
 
-pkgname=pyrit-svn
-pkgver=308
-pkgrel=8
-pkgdesc="GPU-accelerated attack against WPA-PSK authentication (SVN version)"
+pkgname=pyrit-git
+pkgver=0.5.0.r21.g6111f10
+pkgrel=1
+pkgdesc="The famous WPA precomputed cracker (Git version)"
 url="http://code.google.com/p/pyrit/"
 license=('GPL3')
 arch=('i686' 'x86_64')
 provides=('pyrit')
 conflicts=('pyrit')
-depends=('python2' 'libpcap')
-makedepends=('svn')
-optdepends=('cpyrit-cuda-svn: CUDA backend'
-            'cpyrit-opencl-svn: OpenCL backend')
+depends=('python2' 'libpcap' 'openssl' 'zlib' 'scapy' 'python2-psycopg2')
+makedepends=('git')
+optdepends=('pyrit-cuda-git: CUDA backend'
+            'pyrit-opencl-git: OpenCL backend')
 
-source=("svn+http://pyrit.googlecode.com/svn/trunk/pyrit")
+source=("git://github.com/JPaulMora/Pyrit")
 md5sums=('SKIP')
 
-pkgver() {
-	cd pyrit
+function pkgver() {
+	cd Pyrit
 
-	svnversion
+	git describe --long --tags | sed 's/^v//;s/-/.r/;s/-/./'
 }
 
 build() {
-	cd pyrit
+	cd Pyrit
 
 	python2 setup.py build
 }
 
 package() {
-	cd pyrit
+	cd Pyrit
 
 	python2 setup.py install --root="${pkgdir}" --optimize=1
 }
