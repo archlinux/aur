@@ -1,0 +1,4 @@
+pkg/
+src/
+terrahelp-linux-amd64
+*.pkg.tar.xz

@@ -1,0 +1,12 @@
+pkgbase = terrahelp
+	pkgdesc = Encryption helper for terraform
+	pkgver = 0.4.3
+	pkgrel = 1
+	url = https://github.com/opencredo/terrahelp
+	arch = x86_64
+	license = apache
+	source = https://github.com/opencredo/terrahelp/releases/download/v0.4.3/terrahelp-linux-amd64
+	md5sums = c11530e1dd17471e6f70cef526c42ce9
+
+pkgname = terrahelp
+
