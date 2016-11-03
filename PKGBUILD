@@ -3,7 +3,7 @@
 
 _pkgbase=hardcode-tray-fixer
 pkgname=$_pkgbase-git
-pkgver=r650.0b8800c
+pkgver=r675.2ea9b1b
 pkgrel=1
 pkgdesc="Fixes Hardcoded Tray Icons"
 arch=('i686' 'x86_64')
@@ -16,7 +16,7 @@ optdepends=('sni-qt-eplus-bzr: patched qt4 sni plugin to enable icon modificatio
 optdepends_x86_64=('lib32-sni-qt-eplus-bzr: 32-bit patched qt4 sni plugin to enable icon modification')
 source=("$pkgname::git://github.com/bil-elmoussaoui/Hardcode-Tray" "hardcode-tray-fixer.sh")
 sha256sums=('SKIP'
-            '5f33bc00c4994f4dc731ab810aff6f5474dd2bba655752b38a51ac282a73192f')
+            '856fd5bf57c67d055b4063bd56ea4d6f04274ae9903e341748522de397739078')
 
 pkgver() {
   cd "$srcdir/$pkgname"
