@@ -1,0 +1,36 @@
+post_install(){
+    TGT_OPT_CFG_FILE=/opt/emc/scaleio/sds/cfg/conf_opt.txt
+    TGT_CFG_FILE=/opt/emc/scaleio/sds/cfg/conf.txt
+
+    #Generate the optimize cont file
+    {
+        echo tgt_net__recv_buffer=4096
+        echo tgt_net__send_buffer=4096
+        echo tgt_thread__ini_io=500
+        echo tgt_thread__tgt_io_main=500
+        echo tgt_umt_num=1500
+        echo tgt_umt_os_thrd=8
+        echo tgt_net__worker_thread=8
+        echo tgt_asyncio_max_req_per_file=400
+    } > $TGT_OPT_CFG_FILE
+
+
+    #Generate the conf file
+    {
+        echo tgt_rep__name=/opt/emc/scaleio/sds/cfg/rep_tgt.txt
+        echo use_fifo_file=1
+        echo fifo_filename=/opt/emc/scaleio/sds/bin/.mos.fifo
+    } > $TGT_CFG_FILE
+
+    echo "To enable: systemctl enable sds"
+    echo "You can optimize config: $TGT_CFG_FILE"
+    echo "By using options from: $TGT_OPT_CFG_FILE"
+}
+
+post_upgrade(){
+    :
+}
+
+post_remove(){
+    :
+}

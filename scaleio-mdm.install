@@ -40,9 +40,9 @@ post_install(){
 }
 
 post_upgrade(){
-  :
+    :
 }
 
 post_remove(){
-  :
+    echo "Make rm -rf /opt/emc/scaleio/mdm if you want remove completely"
 }

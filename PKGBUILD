@@ -2,9 +2,9 @@
 
 pkgbase=scaleio
 # Not ready 'scaleio-sdc' 'scaleio-sds'  'scaleio-callhome'
-pkgname=( 'scaleio-gui' 'scaleio-mdm' )
+pkgname=( 'scaleio-gui' 'scaleio-mdm' 'scaleio-sds' )
 pkgver=2.0.0.2
-pkgrel=8
+pkgrel=9
 pkgdesc="ScaleIO"
 arch=('x86_64')
 url="http://www.emc.com/storage/scaleio/"
@@ -146,6 +146,46 @@ package_scaleio-mdm()
         } > ${pkgdir}/usr/lib/systemd/system/mdm.service
 }
 
+package_scaleio-sds()
+{
+        pkgdesc="ScaleIO sds"
+        depends=()
+        provides=()
+        conflicts=()
+        install=scaleio-sds.install
+        options=('!emptydirs' '!strip')
+
+        cd ${srcdir}/ScaleIO_${pkgver}_Complete_Linux_SW_Download/
+        mkdir -p SDS
+        mv ./U1404P/EMC-ScaleIO-sds-2.0-7120.0.Ubuntu.14.04.x86_64.deb ./MDM
+        cd ./MDM
+        extract_deb EMC-ScaleIO-sds-2.0-7120.0.Ubuntu.14.04.x86_64.deb
+        rm EMC-ScaleIO-sds-2.0-7120.0.Ubuntu.14.04.x86_64.deb debian-binary control.tar.gz
+        tar xf data.tar.xz
+        mv opt ${pkgdir}/opt
+
+
+
+        mkdir -p ${pkgdir}/usr/lib/systemd/system/
+        # mdm.service
+        {
+            echo "[Unit]"
+            echo  Description=ScaleIO SDS
+            echo  After=local-fs.target
+
+            echo "[Service]"
+            echo ExecStart=/opt/emc/scaleio/sds/bin/run_bin.sh
+            echo OOMScoreAdjust=-999
+            echo Restart=always
+            echo CPUAccounting=true
+            echo MemoryAccounting=true
+            echo ProtectHome=true
+
+            echo "[Install]"
+            echo WantedBy=local-fs.target
+        } > ${pkgdir}/usr/lib/systemd/system/sds.service
+}
+
 #package_scaleio-callhome()
 #{
 #        pkgdesc="ScaleIO callhome"
@@ -160,17 +200,6 @@ package_scaleio-mdm()
 #package_scaleio-sdc()
 #{
 #        pkgdesc="ScaleIO sdc"
-#        depends=()
-#        provides=()
-#        conflicts=()
-#        options=('!emptydirs' '!strip')
-#
-#        cd ${srcdir}/ScaleIO_${pkgver}_Complete_Linux_SW_Download/
-#}
-
-#package_scaleio-sds()
-#{
-#        pkgdesc="ScaleIO sds"
 #        depends=()
 #        provides=()
 #        conflicts=()
