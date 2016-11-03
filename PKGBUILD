@@ -42,7 +42,7 @@ source=(https://github.com/kokoko3k/xt7-player-mpv/archive/$pkgver$hotfix.tar.gz
 
 
 build() {
-  cd ${srcdir}/${_realname}-v${pkgver}$hotfix
+  cd ${srcdir}/${_realname}-${pkgver}$hotfix
   gbc3 -e -a -g -t -p -m
   gba3 || return 1
 
