@@ -1,13 +1,13 @@
 pkgbase = sage-data-cremona_ellcurve
 	pkgdesc = John Cremona's large database of elliptic curves for SageMath
-	pkgver = 20160211
-	pkgrel = 2
+	pkgver = 20161017
+	pkgrel = 1
 	url = http://www.sagemath.org
 	arch = any
 	license = GPL
 	depends = sagemath
-	source = http://mirrors.mit.edu/sage/spkg/upstream/database_cremona_ellcurve/database_cremona_ellcurve-20160211.tar.bz2
-	md5sums = 4bfe0c7630dfcadfe4ec1d0c635ce423
+	source = http://mirrors.mit.edu/sage/spkg/upstream/database_cremona_ellcurve/database_cremona_ellcurve-20161017.tar.bz2
+	md5sums = 09fc9b5f5569597fc39622b2dabc10d9
 
 pkgname = sage-data-cremona_ellcurve
 
