@@ -4,7 +4,7 @@
 # Contributor: Sebastien Binet <binet@lblbox>
 
 pkgname=pypy-pip
-pkgver=8.1.2
+pkgver=9.0.0
 pkgrel=1
 pkgdesc="The PyPA recommended tool for installing Python packages"
 url="https://pip.pypa.io/"
@@ -13,10 +13,8 @@ license=('MIT')
 source=(
     https://pypi.io/packages/source/p/pip/pip-${pkgver}.tar.gz{,.asc}
 )
-sha256sums=(
-    '4d24b03ffa67638a3fa931c09fd9e0273ffa904e95ebebe7d4b1a54c93d7b732'
-    'SKIP'
-)
+sha256sums=('f62fb70e7e000e46fce12aaeca752e5281a5446977fe5a75ab4189a43b3f8793'
+            'SKIP')
 validpgpkeys=(
     '7C6B7C5D5E2B6356A926F04F6E3CBCE93372DCFA'  # Donald Stufft
 )
