@@ -2,19 +2,19 @@
 # Contributer: Arthur D'Andréa Alemar
 
 pkgname=prometheus
-pkgver=1.1.2
-pkgrel=2
+pkgver=1.3.0
+pkgrel=1
 pkgdesc="An open-source service monitoring system and time series database."
-depends=('glibc')
-makedepends=('go')
 arch=('i686' 'x86_64')
 url="http://prometheus.io"
 license=('APACHE')
+depends=('glibc')
+makedepends=('go' 'git')
 install="$pkgname.install"
 backup=('etc/prometheus/prometheus.yml')
 source=("https://github.com/prometheus/prometheus/archive/v$pkgver.tar.gz"
-                'prometheus.service')
-sha256sums=('1a924ce9d8880a6dbff11eefbb823cdcc0af5977488deb8e5d16a74ae68d4708'
+        'prometheus.service')
+sha256sums=('df8845515085b5babf308ac871d6e939a51a8f2a865eb4dd5a058af99a7d0f5c'
             '2d689efe588302346b7065fef1b05be812e4a91df1a8d8845830c0b2397b2ac3')
 
 prepare() {
@@ -38,9 +38,9 @@ check() {
 }
 
 package() {
-    install -dm755 "$pkgdir/usr/bin/$pkgsrc"
-    install -m755 "$srcdir/$pkgname-$pkgver/prometheus" "$pkgdir/usr/bin/$pkgsrc"
-    install -m755 "$srcdir/$pkgname-$pkgver/promtool" "$pkgdir/usr/bin/$pkgsrc"
+    install -dm755 "$pkgdir/usr/bin"
+    install -m755 "$srcdir/$pkgname-$pkgver/prometheus" "$pkgdir/usr/bin"
+    install -m755 "$srcdir/$pkgname-$pkgver/promtool" "$pkgdir/usr/bin"
 
     install -dm755 "$pkgdir/etc/prometheus"
     install -m644 "$srcdir/$pkgname-$pkgver/documentation/examples/prometheus.yml" "$pkgdir/etc/prometheus"
@@ -49,7 +49,7 @@ package() {
     install -dm755 "$pkgdir/etc/prometheus/consoles"
 
     install -dm755 "$pkgdir/usr/lib/systemd/system"
-    install -m644 "${srcdir}/prometheus.service" "$pkgdir/usr/lib/systemd/system/prometheus.service"
+    install -m644 "$srcdir/prometheus.service" "$pkgdir/usr/lib/systemd/system/prometheus.service"
 
     install -dm755 "$pkgdir/usr/share/doc/prometheus/examples"
     cp -R "$srcdir/$pkgname-$pkgver/consoles" "$pkgdir/usr/share/doc/prometheus/examples"
