@@ -1,47 +1,37 @@
-# Maintainer: Ivan Shapovalov <intelfx100@gmail.com>
+# Maintainer: Ivan Shapovalov <intelfx@intelfx.name>
 # Contributor: Gustavo Alvarez <sl1pkn07@gmail.com>
 # Contributor: Hoàng Đức Hiếu <hdh@lazny.tang.la>
 # Contributor: Gilfran Ribeiro <contato [at] gilfran [dot] net>
 # Contributor: William Díaz <wdiaz [at] archlinux [dot] us>
 
-pkgname=cpyrit-opencl-svn
-pkgver=308
+pkgname=cpyrit-opencl-git
+pkgver=0.5.0.r21.g6111f10
 pkgrel=1
-pkgdesc="OpenCL backend for accelerated attack against WPA-PSK authentication. (SVN version)"
-url="http://code.google.com/p/pyrit/"
+pkgdesc="The famous WPA precomputed cracker, OpenCL backend (Git version)"
+url="https://github.com/JPaulMora/Pyrit"
 license=('GPL3')
 arch=('i686' 'x86_64')
-depends=('pyrit-svn' 'python2')
-makedepends=('opencl-headers' 'svn')
-optdepends=('opencl-nvidia: OpenCL implemention for NVIDIA'
-            'opencl-catalyst: OpenCL implemention from AMD')
-conflicts=('cpyrit-calpp-svn' 'cpyrit-calpp' 'cpyrit-opencl' 'cpyrit-cuda')
+depends=('pyrit-git' 'libcl')
+makedepends=('opencl-headers' 'git')
 provides=('cpyrit-opencl')
 
-source=("svn+http://pyrit.googlecode.com/svn/trunk/cpyrit_opencl")
+source=("git://github.com/JPaulMora/Pyrit")
 md5sums=('SKIP')
 
-pkgver() {
-	cd cpyrit_opencl
+function pkgver() {
+	cd Pyrit
 
-	svnversion
-}
-
-prepare() {
-	cd cpyrit_opencl
-
-	# fix path headers
-	sed -i 's|/usr/local/opencl/OpenCL/common/inc|/usr/include/CL|g' setup.py
+	git describe --long --tags | sed 's/^v//;s/-/.r/;s/-/./'
 }
 
 build() {
-	cd cpyrit_opencl
+	cd Pyrit/modules/cpyrit_opencl
 
 	python2 setup.py build
 }
 
 package() {
-	cd cpyrit_opencl
+	cd Pyrit/modules/cpyrit_opencl
 
 	python2 setup.py install --root="${pkgdir}" --optimize=1
 }
