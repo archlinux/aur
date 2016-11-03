@@ -1,7 +1,7 @@
 # Maintainer: Vyacheslav Konovalov <vyachkonovalov@gmail.com>
 
 pkgname=robomongo-bin
-_pkgver=0.9.0-rc10
+_pkgver=0.9.0
 pkgver=${_pkgver/-/_}
 pkgrel=1
 pkgdesc='Shell-centric cross-platform open source MongoDB management tool'
@@ -10,11 +10,11 @@ url='https://robomongo.org/'
 license=('GPLv3')
 depends=('qt5-base' 'pcre' 'qjson')
 conflicts=('robomongo')
-_tarfile="robomongo-${_pkgver}-linux-x86_64-33c89ea"
+_tarfile="robomongo-${_pkgver}-linux-x86_64-0786489"
 source=("https://download.robomongo.org/${_pkgver}/linux/${_tarfile}.tar.gz"
         'https://raw.githubusercontent.com/paralect/robomongo/master/src/robomongo/gui/resources/icons/logo.png'
         'robomongo.desktop')
-sha256sums=('1cd9133bb72ceec21454ce015354cdc565bc549ec72477eb8cd92328622d81dc'
+sha256sums=('4db1b623d72f746f82f87946bbcccc9ae0f997bf82367405009c39357e830ae1'
             '62afd8e83603f0785b21ec8692f6945438e00faf068e35dd9c00986e46419196'
             '90912e3628e56248b970cd38bfc41098c7315d86f4fc3783e5483a1e794b89aa')
 
