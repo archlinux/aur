@@ -16,7 +16,7 @@ optdepends=('sni-qt-eplus-bzr: patched qt4 sni plugin to enable icon modificatio
 optdepends_x86_64=('lib32-sni-qt-eplus-bzr: 32-bit patched qt4 sni plugin to enable icon modification')
 source=("$pkgname::git://github.com/bil-elmoussaoui/Hardcode-Tray" "hardcode-tray-fixer.sh")
 sha256sums=('SKIP'
-            '856fd5bf57c67d055b4063bd56ea4d6f04274ae9903e341748522de397739078')
+            '2df8935eae4644ffc29554a067fdc3fb3ba61b74ae6135dad4154a9c1c45c4a9')
 
 pkgver() {
   cd "$srcdir/$pkgname"
