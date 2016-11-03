@@ -1,0 +1,16 @@
+pkgbase = triggerhappy
+	pkgdesc = A lightweight hotkey daemon
+	pkgver = 0.5.0
+	pkgrel = 1
+	url = https://github.com/wertarbyte/triggerhappy
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = linux-api-headers
+	depends = libsystemd
+	source = https://github.com/wertarbyte/triggerhappy/archive/release/0.5.0.tar.gz
+	md5sums = 2056cda4e9127cd375067f2cd3234616
+
+pkgname = triggerhappy
+
