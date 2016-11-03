@@ -1,0 +1,16 @@
+pkgbase = xdxf2slob-git
+	pkgdesc = Aard 2 Dictionary: Tool to convert XDXF (visual) dictionaries to slob format
+	pkgver = 5.c69d4bb
+	pkgrel = 1
+	url = https://github.com/itkach/xdxf2slob
+	arch = any
+	license = GPL3
+	makedepends = git
+	makedepends = python-setuptools
+	depends = python
+	depends = python-slob-git
+	source = xdxf2slob-git::git+https://github.com/itkach/xdxf2slob.git
+	sha512sums = SKIP
+
+pkgname = xdxf2slob-git
+
