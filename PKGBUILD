@@ -1,12 +1,15 @@
 # Maintainer: András Wacha <awacha@gmail.com>
 pkgname=atsas
 pkgver=2.7.2.5
-pkgrel=1
+pkgrel=2
 pkgdesc="A program suite for small-angle scattering data analysis from biological macromolecules"
 arch=('i686' 'x86_64')
 url="https://www.embl-hamburg.de/biosaxs/software.html"
 license=('custom')
 options=('!strip')
+
+# !!! You have to download the sources yourself from https://www.embl-hamburg.de/biosaxs/download.html
+
 [ "$CARCH" = "i686" ] && source=('ATSAS-2.7.2-5_i386.tar.gz' 'license.md')
 [ "$CARCH" = "x86_64" ] && source=('ATSAS-2.7.2-5_amd64.tar.gz' 'license.md')
 
@@ -23,7 +26,7 @@ package() {
 		f=$(basename $f)
 		cat >${pkgdir}${DEST_BIN_DIR}/$f <<EOF
 #!/bin/sh
-ATSAS=${ATSAS_ROOT} LD_LIBRARY_PATH=${ATSAS_ROOT}/lib/${arch}-linux-gnu/atsas:\${LD_LIBRARY_PATH} ${ATSAS_ROOT}/bin/$f \$*
+ATSAS=${ATSAS_ROOT} LD_LIBRARY_PATH=${ATSAS_ROOT}/lib/${CARCH}-linux-gnu/atsas:\${LD_LIBRARY_PATH} ${ATSAS_ROOT}/bin/$f \$*
 EOF
 		chmod +x ${pkgdir}${DEST_BIN_DIR}/$f
 	done
