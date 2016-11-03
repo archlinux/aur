@@ -1,39 +1,38 @@
-# Maintainer: Ivan Shapovalov <intelfx100@gmail.com>
+# Maintainer: Ivan Shapovalov <intelfx@intelfx.name>
 # Contributor: Gustavo Alvarez <sl1pkn07@gmail.com>
 # Contributor: Hoàng Đức Hiếu <hdh@lazny.tang.la>
 # Contributor: Gilfran Ribeiro <contato [at] gilfran [dot] net>
 # Contributor: William Díaz <wdiaz [at] archlinux [dot] us>
 
-pkgname=cpyrit-cuda-svn
-pkgver=308
+pkgname=cpyrit-cuda-git
+pkgver=0.5.0.r21.g6111f10
 pkgrel=1
-pkgdesc="CUDA backend for accelerated attack against WPA-PSK authentication. (SVN version)"
-url="http://code.google.com/p/pyrit/"
+pkgdesc="The famous WPA precomputed cracker, CUDA backend (Git version)"
+url="https://github.com/JPaulMora/Pyrit"
 license=('GPL3')
 arch=('i686' 'x86_64')
-depends=('pyrit-svn' 'nvidia-utils' 'python2') 
-makedepends=('cuda' 'svn')
-conflicts=('cpyrit-calpp-svn' 'cpyrit-calpp' 'cpyrit-cuda' 'cpyrit-opencl')
+depends=('pyrit-git' 'cuda')
+makedepends=('git')
 provides=('cpyrit-cuda')
 
-source=("svn+http://pyrit.googlecode.com/svn/trunk/cpyrit_cuda")
+source=("git://github.com/JPaulMora/Pyrit")
 md5sums=('SKIP')
 
-pkgver() {
-	cd cpyrit_cuda
+function pkgver() {
+	cd Pyrit
 
-	svnversion
+	git describe --long --tags | sed 's/^v//;s/-/.r/;s/-/./'
 }
 
 build() {
-	cd cpyrit_cuda
+	cd Pyrit/modules/cpyrit_cuda
 
-	sed "s|' --host-compilation C'||" -i setup.py
+#	sed "s|' --host-compilation C'||" -i setup.py
 	python2 setup.py build
 }
 
 package() {
-	cd cpyrit_cuda
+	cd Pyrit/modules/cpyrit_cuda
 
 	python2 setup.py install --root="${pkgdir}" --optimize=1
 }
