@@ -1,12 +1,13 @@
 pkgbase = timeline
 	pkgdesc = A plain-text based distributed social network build on top of git configuration manager
 	pkgver = 1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://ajdiaz.me/timeline/
 	arch = any
 	license = GPLv3
 	depends = bash
 	depends = git
+	conflicts = timeline-git
 	source = https://github.com/ajdiaz/timeline/archive/1.2.tar.gz
 	sha256sums = c96d93fce73ce7fe06e136e3df2f89af3da21ffe85eb4fb09a41bec6857ee3b0
 
