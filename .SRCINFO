@@ -3,7 +3,7 @@
 pkgbase = cloudcross
 	pkgdesc = CloudCross is a improved multi-cloud client with Yandex disk, Google Drive and Dropbox support.
 	pkgver = v1.2.4
-	pkgrel = 1
+	pkgrel = 2
 	url = http://cloudcross.mastersoft24.ru
 	arch = i686
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = cloudcross
 	replaces = grive2
 	options = !emptydirs
 	source = http://cloudcross.mastersoft24.ru/download/?v=1.0.3&r=pacman
-	md5sums = 3115b9aa0f6ae73fe78413bb03d4d538
+	md5sums = 054cc159a4ab059523102ec4d89a16e0
 
 pkgname = cloudcross
 
