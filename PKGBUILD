@@ -14,7 +14,7 @@ source=("http://www-verimag.imag.fr/~raymond/edu/lego/t2n/files/${pkgname}-${pkg
 	"Makefile.am"
 	"configure.ac")
 
-md5sums=('7be45fa0cd5672812ab596b7d8cb84a6'
+md5sums=('3b633b3a2d9a82cd434512f04be4dd22'
 	'c10f2eb53db8d5304138bae316c3194b'
 	'3158f44e4feb65ad916ddb81427fece8')
 
