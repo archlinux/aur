@@ -1,25 +1,18 @@
 # Maintainer: Fabien Dubosson <fabien.dubosson@gmail.com>
 
 pkgname="ecgpuwave"
-pkgver="1.3.2"
+pkgver="1.3.3"
 pkgrel="1"
 pkgdesc="Physionet QRS detector and waveform limit locator"
 url="http://physionet.org/physiotools/ecgpuwave/"
 license=('GPL')
 arch=('i686' 'x86_64')
+depends=('wfdb')
+makedepends=('gcc-fortran')
 optdepends=('wfdb-samples')
 changelog="ChangeLog"
 source=("${pkgname}.tar.gz::http://www.physionet.org/physiotools/${pkgname}/src/${pkgname}-${pkgver}.tar.gz")
-md5sums=('277f5b8365ec30297d8467ac8095a13d')
-
-if [[ ${CARCH} == 'i686' ]]; then
-    depends=('wfdb')
-    makedepends=('gcc-fortran')
-else
-    depends=('lib32-wfdb')
-    makedepends=('gcc-fortran-multilib')
-fi
-
+md5sums=('cd95be64a25d846b696aac8162f0162b')
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
@@ -32,7 +25,7 @@ package() {
 
     mkdir -p "${pkgdir}/usr/bin"
 
-    make WFDBROOT="${pkgdir}/usr" install
+    make prefix="${pkgdir}/usr" install
 
     make check || exit 1
 }
