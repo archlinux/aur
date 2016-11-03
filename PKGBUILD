@@ -1,5 +1,5 @@
 pkgname=halcyon
-pkgver=0.9.29.6136
+pkgver=0.9.30.6148
 pkgrel=1
 pkgdesc="InWorldz Halcyon 3d virtual reality world simulator"
 arch=(any)
@@ -11,7 +11,7 @@ provides=(opensimulator)
 source=("https://github.com/InWorldz/$pkgname/archive/v$pkgver.tar.gz"
 "$pkgname.sh"
 "hc-database.sh")
-md5sums=('e919732c6b74979daa21755a6e368c14'
+md5sums=('979c43a100c533abfadb67bfc80cbbdd'
          '86977d028c882ee1e9615f4b8d1a68e6'
          'ee63724ab4ed7ba836ea6205689b0029')
 
