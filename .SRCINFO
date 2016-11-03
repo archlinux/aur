@@ -1,12 +1,13 @@
 pkgbase = minipro-git
 	pkgdesc = Open source programming utility for autoelectric.cn Minipro TL866
-	pkgver = 0.0.1.r14.gb730b4c
+	pkgver = 0.0.1.r43.ge897666
 	pkgrel = 1
 	url = https://github.com/vdudouyt/minipro
 	arch = i686
 	arch = x86_64
 	license = GPL
 	makedepends = git
+	depends = libusb
 	provides = minipro
 	conflicts = minipro
 	source = minipro-git::git://github.com/vdudouyt/minipro.git
