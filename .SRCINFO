@@ -1,5 +1,5 @@
 pkgbase = triggerhappy-git
-	pkgdesc = A lightweight hotkey daemon, systemd branch
+	pkgdesc = A lightweight hotkey daemon
 	pkgver = r170
 	pkgrel = 1
 	url = https://github.com/wertarbyte/triggerhappy

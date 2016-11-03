@@ -3,7 +3,7 @@
 pkgname=triggerhappy-git
 pkgver=r170
 pkgrel=1
-pkgdesc="A lightweight hotkey daemon, systemd branch"
+pkgdesc="A lightweight hotkey daemon"
 arch=('i686' 'x86_64')
 url="https://github.com/wertarbyte/triggerhappy"
 license=('GPL')
