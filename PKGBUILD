@@ -2,8 +2,8 @@
 # Put icons always in folder with version and release
 
 pkgname=sardi-icons
-pkgver=7.8
-pkgrel=3
+pkgver=7.9
+pkgrel=2
 pkgdesc="Sardi is an icon theme build upon ardis icons but has outgrown its roots = 18 iconsets"
 arch=('any')
 url="http://sourceforge.net/projects/sardi"
