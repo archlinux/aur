@@ -10,7 +10,8 @@ license=('GPL2')
 depends=('libcap' 'libnl' 'net-snmp' 'readline' 'ncurses' 'perl')
 options=('!buildflags')
 install=quagga.install
-source=("http://download.savannah.gnu.org/releases/$pkgname/$pkgname-$pkgver.tar.gz"
+validpgpkeys=('C1B5C3ED3000F2BFCD66F3B76FE57CA8C1A4AEA6') # Quagga Release Signing Key
+source=("http://download.savannah.gnu.org/releases/$pkgname/$pkgname-$pkgver.tar.gz"{,.asc}
         'quagga.sysusers'
         'quagga.tmpfiles'
         'babeld.service'
@@ -23,6 +24,7 @@ source=("http://download.savannah.gnu.org/releases/$pkgname/$pkgname-$pkgver.tar
         'ripngd.service'
         'zebra.service')
 md5sums=('daa303871e07ea5856aae6fd79e89722'
+         'SKIP'
          '286c545efadcc7b463eb603c25473cb4'
          '9dfa2f649a2c83a2e52f5f89dec3b167'
          '20a8e36ad851d4e06467aeb56a84b245'
@@ -41,8 +43,8 @@ prepare() {
   local filename
   for filename in "${source[@]}"; do
     if [[ "$filename" =~ \.patch$ ]]; then
-      msg2 "Applying patch $filename"
-      patch -p1 -N -i "$srcdir/$filename"
+      msg2 "Applying patch ${filename##*/}"
+      patch -p1 -N -i "$srcdir/${filename##*/}"
     fi
   done
   :
