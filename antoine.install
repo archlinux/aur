@@ -1,0 +1,27 @@
+#!/bin/sh
+
+
+_message() {
+    echo ''
+    echo 'You might want to register for updates and bug fixes at'
+    echo 'http://www.iphc.cnrs.fr/nutheo/code_antoine/registration.html'
+    echo ''
+    echo 'NOTE:'
+    echo 'Create $HOME/antoine/mat and $HOME/antoine/vec directories and'
+    echo 'link these two directories to a place where you have enough'
+    echo '(meaning up to several GBs ) scratch space'
+    echo ''
+    echo "For jobs on a PC cluster have a look at ${pkgdir}/usr/share/antoine/go"
+    echo ''
+    echo ''
+    echo ''
+    echo ''
+}
+
+post_install() {
+    _message
+}
+
+post_upgrade() {
+    _message
+}
