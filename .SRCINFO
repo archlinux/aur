@@ -1,6 +1,6 @@
 pkgbase = ocaml-ctypes-git
 	pkgdesc = Library for binding to C libraries using pure OCaml
-	pkgver = 0.10.2.2.gcbae21b
+	pkgver = 0.10.2.5.gea7af5d
 	pkgrel = 1
 	url = https://github.com/ocamllabs/ocaml-ctypes
 	arch = i686
