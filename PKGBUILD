@@ -2,7 +2,7 @@
 # Contributor: Florian Hahn <flo@fhahn.com>
 
 pkgname=neovim-git
-pkgver=0.1.5.r49.gc6ac4f8
+pkgver=0.1.6.r27.g01f1028
 pkgrel=1
 pkgdesc='Fork of Vim aiming to improve user experience, plugins, and GUIs.'
 arch=('i686' 'x86_64')
@@ -31,7 +31,7 @@ build() {
   mkdir -p "${pkgname}/build"
   cd "${pkgname}/build"
   cmake -G 'Unix Makefiles' \
-        -DCMAKE_BUILD_TYPE=Dev \
+        -DCMAKE_BUILD_TYPE=RelWithDebInfo \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DENABLE_JEMALLOC=ON \
         ..
