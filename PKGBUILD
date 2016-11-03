@@ -8,6 +8,7 @@ pkgdesc='Easy On The Eyes GNOME Shell, GTK2, GTK3 and Cinnamon themes'
 arch=('any')
 url='https://www.opendesktop.org/p/1143475/'
 license=('GPL3')
+makedepends=('lbxml2')
 optdepends=('gtk-engine-murrine: for GTK2 themes')
 source=("version::version${url#https}"
         'https://dl.opendesktop.org/api/files/download/id/1468995652/Dark-Aurora.tar.gz')
