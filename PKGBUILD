@@ -10,14 +10,14 @@ arch=('i686' 'x86_64')
 url='http://www.google.com/chrome'
 license=('custom:chrome')
 options=('!strip')
-_chrome_ver=54.0.2840.71
+_chrome_ver=54.0.2840.90
 conflicts=("google-chrome")
 source=('chrome-eula_text.html::https://www.google.com/intl/en/chrome/browser/privacy/eula_text.html')
 source_i686=("http://mirror.retrosnub.co.uk/apt/google/pool/main/g/google-chrome-stable/google-chrome-stable_48.0.2564.116-1_i386.deb")
 source_x86_64=("https://dl.google.com/linux/deb/pool/main/g/google-chrome-stable/google-chrome-stable_${_chrome_ver}-1_amd64.deb")
 sha256sums=('e93c01576427cad9099f2cf0df0be70d0a2cc0a3a66c743318b2138aa7c4ed93')
 sha256sums_i686=('7401ad3698a28bf2b45e350fd2b941c44cb51dbb3f87b0e7dd1a2da72c42f594')
-sha256sums_x86_64=('35acb5b5aa43947670081c666a54d414b49a7eb0d2dce0ab861637bce8eb98d6')
+sha256sums_x86_64=('c1b6639702f0a18deb36effa82f8fc37554cc15aa67bfff80111e274e27fbda2')
 
 prepare() {
   bsdtar -xf data.tar.xz opt/google/chrome/{chrome,libwidevinecdm.so}
