@@ -8,6 +8,7 @@ pkgbase = libim
 	license = custom
 	depends = gcc-libs
 	depends = zlib
+	depends = libpng
 	optdepends = lua: bindings for Lua are available
 	optdepends = fftw: for fft support
 	noextract = im-3.12_Sources.tar.gz

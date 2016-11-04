@@ -9,7 +9,7 @@ pkgrel=1
 pkgdesc="Toolkit for Digital Imaging"
 arch=('i686' 'x86_64')
 url="http://www.tecgraf.puc-rio.br/im/"
-depends=('gcc-libs' 'zlib')
+depends=('gcc-libs' 'zlib' 'libpng')
 optdepends=('lua: bindings for Lua are available'
             'fftw: for fft support')
 license=('custom')
