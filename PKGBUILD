@@ -1,6 +1,6 @@
 # Maintainer: Fabien Devaux <fdev31@gmail.com>
 pkgname=blender-plugin-manuelbastionilab
-pkgver=1.3.0
+pkgver=1.4.0
 pkgrel=1
 pkgdesc="powerful 3d humanoids creator"
 url="http://www.manuelbastioni.com"
