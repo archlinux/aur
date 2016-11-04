@@ -1,7 +1,7 @@
 pkgbase = discord-canary
 	pkgdesc = Discord Canary linux release
-	pkgver = 0.0.9
-	pkgrel = 2
+	pkgver = 0.0.10
+	pkgrel = 1
 	url = https://discordapp.com/
 	install = DiscordCanary.install
 	arch = x86_64
@@ -23,8 +23,8 @@ pkgbase = discord-canary
 	sha256sums = e554dbc5d8b4e6753e9a921336508d051af575c2d77b96be9e3f72a5f4ca837a
 	sha256sums = 688f418cd32a682c6d331c211fedd48ff86ee8ba5a7640f589eadb32996af80f
 	sha256sums = 912cb31b21023980614437b859bb11f39697108c0e9ca21778f81da8065a0815
-	source_x86_64 = https://dl-canary.discordapp.net/apps/linux/0.0.9/discord-canary-0.0.9.tar.gz
-	sha256sums_x86_64 = 72f692cea62b836220f40d81d110846f9cde9a0fba7a8d47226d89e0980255b9
+	source_x86_64 = https://dl-canary.discordapp.net/apps/linux/0.0.10/discord-canary-0.0.10.tar.gz
+	sha256sums_x86_64 = f91ad0380ed0cecbb10d80c6ef31a5c85af9608eb4255357ebf1f185975d6bf2
 
 pkgname = discord-canary
 
