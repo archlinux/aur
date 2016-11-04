@@ -2,14 +2,14 @@
 # Maintainer: Patryk Kowalczyk <patryk at kowalczyk dot ws>
 pkgname=qemu-spice
 _pkgname=qemu
-pkgver=2.6.0
-pkgrel=2
+pkgver=2.7.0
+pkgrel=1
 pkgdesc="Latest stable QEMU with KVM spice usbredir virtfs smartcard seccomp iscsi tpm glusterfs fdt and RDMA live migration"
 arch=(i686 x86_64 armv7h)
 license=('GPL2' 'LGPL2.1')
 url="http://wiki.qemu.org/Index.html"
 depends=('pixman' 'libjpeg' 'libpng' 'libsasl' 'curl' 'sdl' 'alsa-lib' 'nss' 'glib2' 'gnutls>=2.4.1' 'bluez-libs' 'vde2' 'libcap-ng' 'tpm-tools' 'librdmacm' 'libcacard>=2.0.0' 'spice-protocol' 'snappy' 'lzo2'
-'util-linux' 'libpulse' 'seabios>=1.7.5' 'spice>=0.12.2' 'libiscsi>=1.9' 'libaio' 'libseccomp' 'libusb' 'glusterfs' 'dtc')
+'util-linux' 'libpulse' 'seabios>=1.7.5' 'spice>=0.12.2' 'libiscsi>=1.9' 'libaio' 'libseccomp' 'libusb' 'glusterfs' 'dtc' 'usbredir')
 makedepends=('texi2html' 'perl' 'python2')
 backup=('etc/qemu/target-x86_64.conf')
 install=${pkgname}.install
@@ -107,5 +107,5 @@ fi
 	rm "${pkgdir}/usr/share/qemu/vgabios-vmware.bin"
 	rmdir "${pkgdir}/var/run"
 }
-md5sums=('ca3f70b43f093e33e9e014f144067f13'
+md5sums=('08d4d06d1cb598efecd796137f4844ab'
          'b316a066d2f1bb57d8f5b7ea1d0d1caf')
