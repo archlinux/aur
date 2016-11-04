@@ -1,0 +1,3 @@
+post_install() {
+  echo '>>' Edit required options in /etc/conf.d/pgweb and start service with "systemctl enable --now pgweb"
+}

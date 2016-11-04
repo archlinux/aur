@@ -1,0 +1,22 @@
+pkgbase = pgweb-git
+	pkgdesc = Web client (GUI) for PostgreSQL databases
+	pkgver = v0.9.5.r10.g1e88d3d
+	pkgrel = 1
+	url = https://github.com/sosedoff/pgweb
+	install = pgweb.install
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = go
+	backup = etc/conf.d/pgweb
+	source = git+https://github.com/sosedoff/pgweb.git
+	source = pgweb.install
+	source = pgweb.env
+	source = pgweb.service
+	md5sums = SKIP
+	md5sums = d45bd1fdcac2311fffa9534b430a3ee8
+	md5sums = 3a89d3f7502a2695ffc3598bd6e7d8b0
+	md5sums = 1362f2c1ba241a56b4c2c98bdfa2eca7
+
+pkgname = pgweb-git
+
