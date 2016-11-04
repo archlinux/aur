@@ -16,7 +16,7 @@ sha256sums=('c3861722d533db3a99859fb4a2a620a995be98479ea71d41f3565b6c4a85d82a')
 build() {
   cd ${srcdir}/${pkgname}-${pkgver}
   make -f Makefile.libusb
-  help2man -N -n "${pkgdesc}" -h -h -v -v ${pkgname} | gzip - > ${pkgname}.1.gz
+  help2man -N -n "${pkgdesc}" -h -h -v -v ./${pkgname} | gzip - > ${pkgname}.1.gz
 }
 
 package() {
