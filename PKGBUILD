@@ -1,6 +1,6 @@
 pkgname=aria2d
-pkgver=1.0
-pkgrel=2
+pkgver=1.1
+pkgrel=1
 pkgdesc='Daemonize aria2'
 license=('GPL2')
 arch=(any)
@@ -15,6 +15,7 @@ source=("git+https://github.com/MikalaiR/aria2d.git")
 md5sums=('SKIP')
 
 package() {
-    install -D -m600 "${srcdir}/${pkgname}/aria2.conf"     "${pkgdir}/etc/conf.d/aria2.conf"
-    install -D -m755 "${srcdir}/${pkgname}/aria2d.service" "${pkgdir}/usr/lib/systemd/system/aria2d.service"
+	cd "${srcdir}/${pkgname}"
+	install -D -m644 "./aria2.conf"     	"${pkgdir}/etc/conf.d/aria2.conf"
+	install -D -m644 "./aria2d.service" 	"${pkgdir}/usr/lib/systemd/system/aria2d.service"
 }
