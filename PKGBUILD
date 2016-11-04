@@ -2,7 +2,7 @@
 # Contributor: FadeMind <fademind@gmail.com>
 
 pkgname=aurora-themes
-pkgver=3.20.20160705
+pkgver=3.20.20160929
 pkgrel=1
 pkgdesc='Easy On The Eyes GNOME Shell, GTK2, GTK3 and Cinnamon themes'
 arch=('any')
@@ -39,14 +39,7 @@ prepare() {
 
 pkgver() {
   meta version
-  while read -rd $'\0'
-  do
-    if [[ "$REPLY" -gt "$max" ]]
-    then
-      max="$REPLY"
-    fi
-  done < <(find */ -type f -exec stat --printf="%Y\0" '{}' +)
-  date -d "@$max" +.%Y%m%d
+  date -d "$(meta updated_timestamp)" +.%Y%m%d
 }
 
 package() {
