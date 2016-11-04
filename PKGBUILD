@@ -18,7 +18,7 @@ source=('powerdns-admin-git::git+https://github.com/ngoduykhanh/PowerDNS-Admin.g
         'powerdns-admin.install'
         'powerdns-admin.service')
 md5sums=('SKIP'
-         '5ffad849c02289e795d69990e6e851db'
+         'edde746cf96d975211b50ad649eb3b5b'
          '14f2531802ca67453bd074ce83249f30')
 
 _uid=980

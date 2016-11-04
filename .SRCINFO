@@ -19,7 +19,7 @@ pkgbase = powerdns-admin-git
 	source = powerdns-admin.install
 	source = powerdns-admin.service
 	md5sums = SKIP
-	md5sums = 5ffad849c02289e795d69990e6e851db
+	md5sums = edde746cf96d975211b50ad649eb3b5b
 	md5sums = 14f2531802ca67453bd074ce83249f30
 
 pkgname = powerdns-admin-git
