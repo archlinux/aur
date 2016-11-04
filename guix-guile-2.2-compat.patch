@@ -1,0 +1,45 @@
+From 5a88b2d1304ad57c1249558a261a8d191daf9758 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Taylan=20Ulrich=20Bay=C4=B1rl=C4=B1/Kammer?=
+ <taylanbayirli@gmail.com>
+Date: Tue, 27 Sep 2016 22:34:06 +0200
+Subject: [PATCH] build: Improve Guile 2.2 compatibility.
+
+* build-aux/compile-all.scm (compile-file*): Ensure loading of
+  compilation related modules before going parallel.
+* guix/build/pull.scm (build-guix): Ditto.
+---
+ build-aux/compile-all.scm | 3 +++
+ guix/build/pull.scm       | 3 +++
+ 2 files changed, 6 insertions(+)
+
+diff --git a/build-aux/compile-all.scm b/build-aux/compile-all.scm
+index 7c937a0..46b3817 100644
+--- a/build-aux/compile-all.scm
++++ b/build-aux/compile-all.scm
+@@ -81,6 +81,9 @@
+    (let ((files (filter file-needs-compilation? files)))
+      (for-each load-module-file files)
+      (let ((mutex (make-mutex)))
++       ;; Make sure compilation related modules are loaded before starting to
++       ;; compile files in parallel.
++       (compile #f)
+        (par-for-each (lambda (file)
+                        (compile-file* file mutex))
+                      files)))))
+diff --git a/guix/build/pull.scm b/guix/build/pull.scm
+index ccf1868..871bf6f 100644
+--- a/guix/build/pull.scm
++++ b/guix/build/pull.scm
+@@ -125,6 +125,9 @@ containing the source code.  Write any debugging output to DEBUG-PORT."
+       (newline)
+       (let ((mutex (make-mutex))
+             (completed 0))
++        ;; Make sure compilation related modules are loaded before starting to
++        ;; compile files in parallel.
++        (compile #f)
+         (par-for-each
+          (lambda (file)
+            (with-mutex mutex
+-- 
+2.7.4
+

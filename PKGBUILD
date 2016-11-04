@@ -7,7 +7,7 @@
 
 pkgname=guix
 pkgver=0.11.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A purely functional package manager for the GNU system"
 arch=('x86_64' 'i686')
 url="https://www.gnu.org/software/guix/"
@@ -32,11 +32,23 @@ optdepends=(
   'graphviz: to enable Emacs Interface'
   'guile-json: to import packages from cpan, gem, pypi')
 source=(
-  "ftp://alpha.gnu.org/gnu/${pkgname}/${pkgname}-${pkgver}.tar.gz"{,.sig})
+  "ftp://alpha.gnu.org/gnu/${pkgname}/${pkgname}-${pkgver}.tar.gz"{,.sig}
+  "guix-guile-2.2-compat.patch"
+  "guix-delete-go-files-SIGINT.patch")
 install="${pkgname}.install"
 sha1sums=('bd12d65a46c8eef3b490efea6ac953b995d524eb'
-          'a9080412df96832d22e57a1bcc76e3016f93f0b0')
+          'a9080412df96832d22e57a1bcc76e3016f93f0b0'
+          '0b976fe5862798b34fdb90d9f9f405b39ccedb1b'
+          '3506f8bb7cf35776739a6cc1afceff31555cebc0')
 validpgpkeys=('3CE464558A84FDC69DB40CFB090B11993D9AEBB5')
+
+prepare() {
+	cd ${srcdir}/${pkgname}-${pkgver}
+	# http://git.savannah.gnu.org/cgit/guix.git/commit/?id=5a88b2d
+	patch -Np1 < "${srcdir}/${source[2]}"
+	# http://git.savannah.gnu.org/cgit/guix.git/commit/?id=402bb3b
+	patch -Np1 < "${srcdir}/${source[3]}"
+}
 
 build() {
 	bash_completion_dir="`pkg-config --variable=completionsdir bash-completion`"
