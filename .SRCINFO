@@ -1,0 +1,29 @@
+pkgbase = urbit
+	pkgdesc = a secure peer-to-peer network of personal servers, built on a clean-slate system software stack
+	pkgver = 0.4
+	pkgrel = 1
+	epoch = 0
+	url = https://urbit.org/
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = gcc
+	makedepends = automake
+	makedepends = autoconf
+	makedepends = ragel
+	makedepends = cmake
+	makedepends = re2c
+	makedepends = libtool
+	makedepends = ncurses
+	makedepends = curl
+	depends = libsigsegv
+	depends = gmp
+	depends = openssl
+	depends = ncurses
+	depends = termcap
+	conflicts = urbit-git
+	source = urbit-0.4.tar.gz::https://media.urbit.org/dist/src/urbit-0.4.tar.gz
+	md5sums = 7a403e9a03e32c98ea2fa00654abf85a
+
+pkgname = urbit
+
