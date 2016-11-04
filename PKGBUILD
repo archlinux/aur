@@ -27,8 +27,12 @@ DLAGENTS=("meta::/usr/bin/bash -c $(
 )\ |\ jq\ -j\ '.files.\"0\"'\ |\ sed\ '/downloaded/d'\ >\ %o"
 "${DLAGENTS[@]}")
 
+meta() {
+  jq -j ".$1" meta
+}
+
 pkgver() {
-  js -j '.version' meta
+  meta version
   while read -rd $'\0'
   do
     if [[ "$REPLY" -gt "$max" ]]
@@ -47,5 +51,5 @@ package() {
 
 # Hidden in a subfunction not to show up in the .SRCINFO.
 extend-optdepends() {
-  optdepends+=("gnome-shell=$(jq -j .version meta): for gnome-shell themes")
+  optdepends+=("gnome-shell=$(meta version): for gnome-shell themes")
 }
