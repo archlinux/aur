@@ -1,6 +1,6 @@
 # Maintainer: David Baum <david.baum@naraesk.eu>
 pkgname=titania
-pkgver=2.1.0
+pkgver=2.0.1
 pkgrel=2
 pkgdesc="Use Titania to create standard complient X3D/VRML worlds for publishing on the World Wide Web and for creating stand alone applications"
 arch=('i686' 'x86_64')
