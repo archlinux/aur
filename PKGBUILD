@@ -4,7 +4,7 @@
 pkgbase=linux-surfacepro3-rt
 _srcname=linux-4.8.6
 pkgver=4.8.6
-pkgrel=1.8
+pkgrel=1.9
 arch=('i686' 'x86_64')
 url="https://github.com/alyptik/linux-surfacepro3-rt"
 license=('GPL2')
@@ -76,30 +76,20 @@ _kernelname=${pkgbase#linux}
 prepare() {
   cd "${srcdir}/${_srcname}"
 
-  ## BFS/BFQ patches and unsupported BCache module; none of these worked during current testing
-  if [ "$bfq" != 'n' ]; then patch -p1 -i "${srcdir}/bfq.patch"; fi
-  if [ "$bfs" != 'n' ]; then
-    for i in bfq.patch bfs.patch bfs-fixes1.patch bfs-fixes2.patch; do patch -p1 -i "${srcdir}/${i}"; done
-  fi
-  if [ "$bcache" != 'n' ]; then
+  ## Options which are currently buggy/broken: BFS/BFQ patches and unsupported BCache module
+  if [ "$bfq" = 'y' ]; then patch -p1 -i "${srcdir}/bfq.patch"; fi
+  if [ "$bfs" = 'y' ]; then for i in bfq bfs bfs-fixes1 bfs-fixes2; do patch -p1 -i "${srcdir}/${i}.patch"; done; fi
+  if [ "$bcache" = 'y' ]; then
     sed -i '\%^diff --git a/drivers/md/bcache/Kconfig b/drivers/md/bcache/Kconfig$%,+11 d' "${srcdir}/patch-${pkgver}-rt2.patch"
     cp "${srcdir}/linux-${pkgver}/include/linux/rwsem.h" "${srcdir}/linux-${pkgver}/drivers/md/bcache/"
     sed -i '/#include "bcache.h"/i #include "rwsem.h"\n' "${srcdir}/linux-${pkgver}/drivers/md/bcache/request.c"
   fi
 
   ## Add personal patches
-  if [ "$personal" != 'n' ]; then
-    for i in block.patch init.patch kconfig.patch xattr.patch xfs.patch; do patch -p1 -i "${srcdir}/${i}"; done
-  fi
+  if [ "$personal" = 'y' ]; then for i in block init kconfig xattr xfs; do patch -p1 -i "${srcdir}/${i}.patch"; done; fi
 
   # Add RT patches
   patch -p1 -i "${srcdir}/patch-${pkgver}-rt5.patch"
-
-  # add upstream patch
-  #patch -p1 -i "${srcdir}/patch-${pkgver}"
-
-  # add latest fixes from stable queue, if needed
-  # http://git.kernel.org/?p=linux/kernel/git/stable/stable-queue.git
 
   # set DEFAULT_CONSOLE_LOGLEVEL to 4 (same value as the 'quiet' kernel param)
   # remove this when a Kconfig knob is made available by upstream
@@ -111,18 +101,18 @@ prepare() {
 
   # This patch adds multitouch support for the surface pro 3
   # keyboard cover.
-  if [ "$multitouch" != 'n' ]; then
-    patch -p1 -i "${srcdir}/multitouch.patch"
-  fi
+  if [ "$multitouch" = 'y' ]; then patch -p1 -i "${srcdir}/multitouch.patch"; fi
 
   # These patches work around buggy hardware implementations
   # in the surface pro 3 touchscreen module.
   patch -p1 -i "${srcdir}/touchscreen_multitouch_fixes1.patch"
   patch -p1 -i "${srcdir}/touchscreen_multitouch_fixes2.patch"
 
-  if [ "${CARCH}" = "x86_64" ]; then
-    ## Set sp3config='y' to use the personal config as a base
-    [ "$sp3config" != 'n' ] && cat "${srcdir}/config.sp3" >./.config || cat "${srcdir}/config.x86_64" >./.config
+  ## If sp3config='y' use personal config as a base
+  if [ "$sp3config" = 'y' ]; then
+    cat "${srcdir}/config.sp3" >./.config
+  elif [ "${CARCH}" = "x86_64" ]; then
+    cat "${srcdir}/config.x86_64" >./.config
   else
     cat "${srcdir}/config" > ./.config
   fi
