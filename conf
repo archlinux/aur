@@ -1,0 +1,5 @@
+cgi-limit = 29
+cgi-pattern = '**.cgi'
+directory = /srv/http
+username = http
+virtual-host = true

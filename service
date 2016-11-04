@@ -1,9 +1,9 @@
 [Unit]
-Description=Tiny HTTP Daemon
+Description=Simple, small, and fast HTTP server
 
 [Service]
-ExecStart=/usr/bin/merecat -n
 Restart=always
+ExecStart=/usr/bin/merecat -n
 
 [Install]
 WantedBy=multi-user.target

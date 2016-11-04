@@ -1,6 +1,6 @@
 pkgbase = merecat-git
 	pkgdesc = Simple, small and fast HTTP server
-	pkgver = 20161009.a09e416
+	pkgver = 20161103.e2c6a0a
 	pkgrel = 1
 	url = https://github.com/troglobit/merecat
 	arch = i686
@@ -13,10 +13,10 @@ pkgbase = merecat-git
 	backup = etc/merecat.conf
 	source = git+https://github.com/troglobit/merecat
 	source = service
-	source = config
+	source = conf
 	sha1sums = SKIP
-	sha1sums = 35c0a29d34ce719a459b358227e215ae0fd5a1bd
-	sha1sums = 6f6d3529a4ebde2273e9a7017fdad3fd8726ade1
+	sha1sums = 381cd341de5a5062f9ce85323b41c61a59ef59b6
+	sha1sums = 54971b00300b6a3e8516ccaa55742ad7b5dca1e9
 
 pkgname = merecat-git
 
