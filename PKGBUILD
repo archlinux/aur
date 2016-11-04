@@ -7,7 +7,7 @@
 pkgname=geany-plugins-gtk3
 _pkgname=geany-plugins
 pkgver=1.28
-pkgrel=2
+pkgrel=3
 pkgdesc='Plugins for Geany'
 arch=('x86_64' 'i686')
 url='http://plugins.geany.org/'
@@ -28,7 +28,7 @@ cd "${_pkgname}-$pkgver"
 ./configure \
   --prefix=/usr \
   --libexecdir=/usr/lib \
-  --enable-gkt3
+  --enable-gtk3
 make 
 }
 
