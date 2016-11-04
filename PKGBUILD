@@ -2,7 +2,7 @@
 
 pkgname=perl6-method-modifiers
 pkgver=0.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Adds before, after and around functions to modify class methods similar to p5 Moose"
 arch=('any')
 depends=('perl6')
@@ -13,14 +13,6 @@ url="https://github.com/supernovus/perl6-method-modifiers"
 license=('PerlArtistic')
 source=($pkgname-$pkgver::git+https://github.com/supernovus/perl6-method-modifiers)
 sha256sums=('SKIP')
-
-prepare() {
-  cd "$srcdir/$pkgname-$pkgver"
-
-  msg2 'Fixing monkey typing...'
-  sed -i 's/MONKEY_TYPING/MONKEY-TYPING/' lib/Method/Modifiers/Augment.pm6
-  sed -i 's/skip_rest/skip-rest/' t/02-augment.t
-}
 
 check() {
   cd "$srcdir/$pkgname-$pkgver"
@@ -49,6 +41,7 @@ package() {
 
   msg2 'Cleaning up pkgdir...'
   rm -f "$pkgdir/usr/share/perl6/vendor/version"
-  find "$pkgdir" -type f -name "*.lock" -exec rm '{}' \;
-  find "$pkgdir" -type f -print0 | xargs -0 sed -i "s,$pkgdir,,g"
+  find "$pkgdir" -type f -name "*.lock" -exec rm '{}' +
+  find "$pkgdir" -type f -print0 -exec \
+    sed -i -e "s,$pkgdir,,g" -e "s,$srcdir,,g" '{}' +
 }
