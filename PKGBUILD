@@ -1,6 +1,6 @@
 # Maintainer: Dylan Araps <dylan.araps@gmail.com>
 pkgname=neofetch
-pkgver=1.9
+pkgver=1.9.1
 pkgrel=1
 pkgdesc="CLI script to show your system's info and display an image using w3m."
 arch=('any')
@@ -30,7 +30,7 @@ optdepends=(
   'xorg-xwininfo: See https://github.com/dylanaraps/neofetch/wiki/Images-in-the-terminal'
 )
 source=("https://github.com/dylanaraps/${pkgname}/archive/${pkgver}.tar.gz")
-md5sums=('950cd551842d31e118213fdb56fbd632')
+md5sums=('5bc35839ccdd096abb61bda0d6a28f27')
 
 package() {
   cd "$srcdir/$pkgname-$pkgver/"
