@@ -3,8 +3,8 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=flashplugin-beta
-pkgver=24.0.0.138
-pkgrel=2
+pkgver=24.0.0.145
+pkgrel=1
 pkgdesc='Adobe Flash Player Beta'
 url='http://labs.adobe.com/downloads/flashplayer.html'
 arch=('i686' 'x86_64')
@@ -20,8 +20,8 @@ source=(mms.cfg)
 source_i686=("flash_player_npapi_linux_${pkgver}_i386.tar.gz"::https://fpdownload.macromedia.com/pub/labs/flashruntimes/flashplayer/linux32/flash_player_npapi_linux.i386.tar.gz)
 source_x86_64=("flash_player_npapi_linux_${pkgver}_x86_64.tar.gz"::https://fpdownload.macromedia.com/pub/labs/flashruntimes/flashplayer/linux64/flash_player_npapi_linux.x86_64.tar.gz)
 md5sums=('f34aae6279b40e0bd2abfb0d9963d7b8')
-md5sums_i686=('be7719827c9f93004fadc9199f8c5497')
-md5sums_x86_64=('c64705c1e58a605410c63e571fbeb8e8')
+md5sums_i686=('2014e0e08151e0af01c87b8e53d45202')
+md5sums_x86_64=('c3be1a2d50c38b253fc94b68fda52bcc')
 
 prepare () {
     # In Adobe's x86_64 tarball, files in usr/lib/ are symlinked to
