@@ -3,8 +3,8 @@
 # Maintainer: Yegorius <yegorius@domic.us>
 
 pkgname=jetty
-pkgver=9.3.11
-_timestamp=v20160721
+pkgver=9.3.13
+_timestamp=v20161014
 pkgrel=1
 pkgdesc="Jetty is a pure Java-based HTTP server and Java Servlet container"
 arch=('any')
@@ -13,13 +13,13 @@ license=('Apache' 'EPL')
 depends=('java-environment')
 options=('!strip')
 _distname=jetty-distribution-$pkgver.$_timestamp
-_dluri="http://repo1.maven.org/maven2/org/eclipse/jetty/jetty-distribution/9.3.11.v20160721/$_distname.tar.gz"
+_dluri="http://repo1.maven.org/maven2/org/eclipse/jetty/jetty-distribution/$pkgver.$_timestamp/$_distname.tar.gz"
 source=("$_distname.tar.gz::$_dluri"
 	jetty.default
 	jetty.logrotate
 	jetty.service
 	rundir.patch)
-sha256sums=('6f720a39324ba02491c5dd598039f9cda1746d45c26594f8189692058f9f4264'
+sha256sums=('f10a8ef66cf1d24f06baeb8061d8fe2b6550921a1e5c05d94f59e269c267a515'
             'e5b425043a379bde57fd37c498ff8efb822325b7606b149cc09a53737ab4297d'
             'da0402440e0a3b66e55387700b2c178c294dc65cc4a7bd079c622343845adecb'
             '36266b7f4daf20871f4bf5636686e37fa5ffd173fd51303f2569fc8d453fa17a'
