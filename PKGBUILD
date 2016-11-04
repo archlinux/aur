@@ -10,7 +10,7 @@ arch=('x86_64')
 url='https://github.com/gnunn1/terminix/tree/master/experimental/vte'
 license=('LGPL')
 depends=('gtk3' 'pcre2')
-makedepends=('intltool' 'gobject-introspection' 'vala' 'gperf' 'glade')
+makedepends=('intltool' 'gobject-introspection' 'vala' 'gperf' 'glade' 'git')
 options=('!emptydirs')
 # Fedora patches: http://pkgs.fedoraproject.org/cgit/rpms/vte291.git/tree/
 source=(
@@ -35,14 +35,14 @@ pkgver() {
 prepare () {
 	cd "vte-${_vtever}"
 	echo '-> Making the patch-sets compatible'
-    sed -r -e 's/(\+\s*gpointer padding\[)15/\114/g' \
-		-e 's/(\-\s*gpointer padding\[)16/\115/g' \
-		../terminix/experimental/vte/alternate-screen.patch > alternate-screen-compat.patch
+	sed -r -e 's/(\-\s*gpointer padding\[)16/\115/g' \
+    	-e 's/(\+\s*gpointer padding\[)15/\114/g' \
+		../terminix/experimental/vte/alternate-screen.patch > ../alternate-screen-compat.patch
 	echo '-> Applying Fedora patches'
 	patch -p1 -i '../vte291-command-notify-scroll-speed.patch'
 	patch -p1 -i '../add-zsh-notfication-support.patch'
 	echo '-> Applying terminix patches'
-	patch -p1 -i 'alternate-screen-compat.patch'
+	patch -p1 -i '../alternate-screen-compat.patch'
 	patch -p1 -i '../terminix/experimental/vte/disable-bg-draw.patch'
 }
 
