@@ -32,6 +32,6 @@ package() {
   mkdir -p $pkgdir/usr/share/applications
 
   cd "$srcdir/$pkgname"
-  install -m644 "build/SSGL/linux64/SSGL" "$pkgdir/usr/bin/ssgl"
+  install -m755 "build/SSGL/linux64/SSGL" "$pkgdir/usr/bin/ssgl"
 
 }
