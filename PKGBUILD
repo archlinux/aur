@@ -15,7 +15,7 @@ depends=('curl'
 source=('spotlight.sh'
         'spotlight.service'
         'spotlight.timer')
-md5sums=('4994716b97b9a3805387a99bbd560ba1'
+md5sums=('a67804eb3cf27cd0ff05270c1e1d2d68'
          '61f2ea773a24bf62185179499194fc69'
          '5cf181a3dd50993e0dfbf1835c9d2364')
 
