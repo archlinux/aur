@@ -1,15 +1,13 @@
 # Maintainer: Conor Anderson <conor[dot]anderson[at]utoronto.ca>
 pkgname=pqr
-_pkgver="2016-06-24"
+_pkgver="2016-10-24"
 pkgver=${_pkgver//-/}
 pkgrel=1
 pkgdesc="a pretty quick version of R"
 arch=('i686' 'x86_64')
 url="http://www.pqr-project.org/"
 license=('GPL')
-depends=('blas' 'lapack' 'bzip2'  'libpng' 'libjpeg' 'libtiff'
-         'ncurses' 'pcre' 'readline' 'zlib' 'perl' 'gcc-libs'
-         'libxt' 'libxmu' 'pango' 'xz' 'desktop-file-utils' 'zip' 'unzip')
+depends=('blas' 'lapack' 'bzip2'  'libtiff' 'pcre' 'libxmu')
 makedepends=('gcc-fortran')
 optdepends=('tk: tcl/tk interface' 'texlive-bin: latex sty files')
 options=('!makeflags' '!emptydirs')
@@ -17,9 +15,9 @@ install=$pkgname.install
 source=("http://www.pqr-project.org/pqR-${_pkgver}.tar.gz"
 	'pqr.desktop'
 	'pqr.png')
-sha1sums=('0e8c694412bb73fce4dbe28873a5f9ac8b1ebebd'
-         'cdc48b06aaeeea8850b5b12583950581726bef02'
-         'fd2c3e142d2c9fd11f95a89c8ab5d3e980db29dd')
+sha256sums=('de6ebb98ffde2dae669fc4db25d3d9f65af8a5c523dd305e82b24cb17de3ada7'
+            'c22cb2c5c98e8cd9cece75160ceb6edf6850fd84cd1c34f7d1325ac83874211a'
+            '281e4b365b164930af35046178e7012d29f1b7aece17a95658ac049d77a05df6')
 
 build() {
   cd "pqR-${_pkgver}"
