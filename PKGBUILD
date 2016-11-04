@@ -1,4 +1,5 @@
-# Maintainer: Manuel Hüsers <manuel.huesers@uni-ol.de>
+# Maintainer: Davi da Silva Böger <dsboger@gmail.com>
+# Contributor: Manuel Hüsers <manuel.huesers@uni-ol.de>
 # Contributor: Fernando Fernandez <fernando@softwareperonista.com.ar>
 # Contributor: Ionut Biru <ibiru@archlinux.org>
 
@@ -11,8 +12,9 @@ arch=('i686' 'x86_64')
 url='https://wiki.gnome.org/Apps/Terminal/VTE'
 license=('LGPL')
 depends=('gtk3' 'pcre2')
-makedepends=('intltool' 'gobject-introspection' 'vala' 'gperf' 'glade')
+makedepends=('intltool' 'gobject-introspection' 'gtk-doc' 'vala' 'gperf' 'glade')
 options=('!emptydirs')
+# Fedora patches: http://pkgs.fedoraproject.org/cgit/rpms/vte291.git/tree/
 source=(
 	"https://download.gnome.org/sources/vte/${pkgver::4}/vte-${pkgver}.tar.xz"
 	'vte291-command-notify-scroll-speed.patch'
