@@ -54,7 +54,7 @@ sha256sums=('74744e00420856cfc8049fa3b3a55e57a116994226a498ef56801bc9492df36b'
             '52e7c895aeb505bc8d3b5321a346fcdbb749f8035cacc97a237c24c1f527adbc'
             '0fcd0b22fe9ec58ba41b81b463f68d619b6898a5c405fb26c85237a183240371'
             '577a3c4c211e6946fb8c1448d6a325861b41c8c8660203ae7d63a58f3af0d279'
-            '293ac0c17f8addc6f259cfe7f89ff13d3fa64f4f5588f944bf43a2c8b2fdc4ef'
+            '608919b2ea0cac04d88e4e532f55bbd2481666aad91b5eb683dd03808c7145aa'
             'f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99')
 
@@ -122,7 +122,7 @@ prepare() {
 
   if [ "${CARCH}" = "x86_64" ]; then
     ## Set sp3config='y' to use the personal config as a base
-    [ "$sp3config" != 'n' ] && cat "${srcdir}/config.sp3.final" >./.config || cat "${srcdir}/config.x86_64" >./.config
+    [ "$sp3config" != 'n' ] && cat "${srcdir}/config.sp3" >./.config || cat "${srcdir}/config.x86_64" >./.config
   else
     cat "${srcdir}/config" > ./.config
   fi
