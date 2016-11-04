@@ -20,7 +20,7 @@ source=('git+https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git'
         # standard config files for mkinitcpio ramdisk
         "${pkgbase}.preset")
 sha256sums=('SKIP'
-            'd0c447d92205a25f4659c46cfde5210ee3f7fdc2017e9de78840e7f3b7ece20e'
+            'becc0c98cff692dee9500f19d38882636caf4c58d5086c7725690a245532f5dc'
             'a489e7af28a11482e1d6461bdafef4f4ad4261b954b0494a86f73133f348baae'
             '95fcfdfcb9d540d1a1428ce61e493ddf2c2a8ec96c8573deeadbb4ee407508c7')
 
