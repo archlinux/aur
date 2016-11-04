@@ -6,14 +6,14 @@
 # Maintainer: Andrew Kraut <akraut@gmail.com>
 pkgname=urbit
 pkgver=0.4
-pkgrel=1
+pkgrel=2
 epoch=0
 pkgdesc="a secure peer-to-peer network of personal servers, built on a clean-slate system software stack"
 arch=('i686' 'x86_64')
 url="https://urbit.org/"
 license=('MIT')
-depends=('libsigsegv' 'gmp' 'openssl' 'ncurses' 'termcap')
-makedepends=('gcc' 'automake' 'autoconf' 'ragel' 'cmake' 're2c' 'libtool' 'ncurses' 'curl')
+depends=('libsigsegv' 'gmp' 'openssl' 'ncurses' 'curl')
+makedepends=('gcc' 'automake' 'autoconf' 'ragel' 'cmake' 're2c' 'libtool')
 conflicts=('urbit-git')
 options=()
 source=("${pkgname}-${pkgver}.tar.gz::https://media.urbit.org/dist/src/${pkgname}-${pkgver}.tar.gz")
