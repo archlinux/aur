@@ -1,6 +1,6 @@
 pkgbase = silentarmy
 	pkgdesc = GPU Zcash Equihash solver
-	pkgver = 3
+	pkgver = 3.0.1
 	pkgrel = 1
 	url = https://github.com/mbevand/silentarmy
 	arch = i686
