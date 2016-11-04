@@ -37,6 +37,11 @@ prepare() {
 		-e 's/"data-dir"/"data-directory"/g' \
 		-e 's/HAVE_LIBCONFUSE/HAVE_FORK/g' \
 		-i src/merecat.c
+	sed \
+		-e 's/<img .* alt=\\"\([^"]*\)\\">/\1/g' \
+		-e 's/, icon//g' \
+		-e '/<address>/d' \
+		-i src/libhttpd.c
 	./autogen.sh
 }
 
