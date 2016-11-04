@@ -2,13 +2,13 @@
 # Contributor: Michael Carlberg <c@rlberg.se>
 _pkgname=lemonbuddy
 pkgname="${_pkgname}-git"
-pkgver=2.2.0
+pkgver=2.2.1
 pkgrel=1
 pkgdesc="A fast and easy-to-use tool for Lemonbar"
 arch=("i686" "x86_64")
 url="https://github.com/jaagr/lemonbuddy"
 license=("MIT")
-depends=("libxft" "xcb-util-wm")
+depends=("libxft" "xcb-util-wm" "xcb-util-image")
 optdepends=("alsa-lib: volume module support"
             "libmpdclient: mpd module support"
             "wireless_tools: network module support"
