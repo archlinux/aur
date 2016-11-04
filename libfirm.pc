@@ -1,0 +1,12 @@
+prefix=/usr
+exec_prefix=${prefix}
+libdir=${exec_prefix}/lib
+includedir=${prefix}/include
+
+Name: libFirm
+Description: A lib for graph-based IR, optimizations and code gen for compilers
+Version: 1.22.1
+Requires: 
+Libs: -L${libdir} -lfirm
+Libs.private: -lm
+Cflags: -I${includedir}/libfirm

@@ -1,0 +1,16 @@
+pkgbase = libfirm-git
+	pkgdesc = A c-lib for graph-based IR, optimizations and code gen for compilers
+	pkgver = r18354.107ceb1
+	pkgrel = 1
+	url = http://pp.ipd.kit.edu/firm/Index
+	arch = any
+	license = GPL
+	makedepends = git
+	options = staticlibs
+	source = libfirm::git+http://pp.ipd.kit.edu/git/libfirm.git
+	source = libfirm.pc
+	md5sums = SKIP
+	md5sums = 39a7ef0417669487524b95460962f6c7
+
+pkgname = libfirm-git
+
