@@ -2,12 +2,12 @@
 
 pkgname=ssgl-doom-launcher-git 
 pkgver=v1.1.1.r1.gfb54314 
-pkgrel=3
+pkgrel=4
 pkgdesc="Doom Frontend with Oblige mapbuild integration for zdoom, gzDoom, Zandronum, Doom64EX and DoomRPG written in AngularMaterial on NWJS for Windows, Linux and OSX." 
 arch=('x86_64' 'i686') 
 url="https://github.com/FreaKzero/ssgl-doom-launcher"
 license=('MIT')
-makedepends=('bower' 'git' 'grunt-cli')
+makedepends=('bower' 'git' 'nodejs-grunt-cli')
 source=(
 	'ssgl-doom-launcher-git::git+https://github.com/FreaKzero/ssgl-doom-launcher.git'
 	'ssgl-launch'
