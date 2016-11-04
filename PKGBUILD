@@ -13,7 +13,7 @@ optdepends=('speech-dispatcher: for speech output'
   'brltty: for braille support'
   'perl: for speechd-log-extractor script')
 conflicts=('emacs-speechd-el')
-provides=('emacs-speechd-el=$pkgver')
+provides=(emacs-speechd-el=${pkgver})
 install=emacs-speechd-el-git.install
 source=(git://git.freebsoft.org/git/speechd-el)
 md5sums=('SKIP')
