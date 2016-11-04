@@ -2,7 +2,7 @@
 # Contributor: FadeMind <fademind@gmail.com>
 
 pkgname=aurora-themes
-pkgver=20161104103131
+pkgver=20161121091307
 pkgrel=1
 pkgdesc='Easy On The Eyes GNOME Shell, GTK2, GTK3 and Cinnamon themes'
 arch=('any')
@@ -11,7 +11,7 @@ license=('GPL3')
 makedepends=('jq')
 optdepends=('gtk-engine-murrine: for GTK2 themes')
 source=("meta::meta://dl.opendesktop.org/api/files/index?format=json&status=active&collection_content_id=${url##*/}")
-sha256sums=('93620fb9df4f8a7f8f1c726f40058e6b655895aa3087413122c4cd7fc387c5ef')
+sha256sums=('ad8124bba7333a255191c6d2ea322e9bf8b67215a6b2b757a5db1c0c877274a7')
 
 # The following is a very convoluted script because of makepkg's DLAGENTS escaping logic.
 # An agent is added for the protocol "meta". It is treated like http, which is done by processing
@@ -31,7 +31,7 @@ meta() {
 
 prepare() {
   source=("https://dl.opendesktop.org/api/files/download/id/$(meta id)/Dark-Aurora.tar.xz")
-  sha256sums=('a95e1232c41987b01f435b0c929eced0041b13e8d3754133553b534cf6ac8252')
+  sha256sums=('3259a8be44493ab5f3b2b455b6dae7725e0646b160c2b9a83968bf81feb3eaaa')
   download_sources
   check_source_integrity
   extract_sources
