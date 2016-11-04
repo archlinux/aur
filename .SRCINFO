@@ -1,0 +1,13 @@
+pkgbase = scribble
+	pkgdesc = console based scrabble like game
+	pkgver = 1.11_1
+	pkgrel = 1
+	url = https://sources.debian.net/src/scribble/1.11-1/
+	arch = any
+	license = GPL3
+	depends = perl
+	source = git+https://github.com/baitmooth/scribble.git
+	md5sums = SKIP
+
+pkgname = scribble
+
