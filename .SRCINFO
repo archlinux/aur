@@ -6,6 +6,8 @@ pkgbase = jdom
 	arch = any
 	license = custom
 	depends = java-runtime
+	provides = jdom
+	provides = jdom2
 	source = http://www.jdom.org/dist/binary/jdom-2.0.6.zip
 	md5sums = 5869015f58961bb38308f91b97c93d4d
 

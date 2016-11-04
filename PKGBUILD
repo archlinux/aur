@@ -8,7 +8,7 @@ arch=('any')
 url="http://www.jdom.org/downloads/"
 license=('custom')
 depends=('java-runtime')
-provides=()
+provides=('jdom' 'jdom2')
 source=("http://www.jdom.org/dist/binary/jdom-${pkgver}.zip")
 
 md5sums=("5869015f58961bb38308f91b97c93d4d")
