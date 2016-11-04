@@ -5,7 +5,7 @@
 pkgname=i2pd
 _pkgname=i2pd
 pkgver=2.10.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Simplified C++ implementation of I2P client"
 arch=('i686' 'x86_64')
 url="https://github.com/PurpleI2P/i2pd"
@@ -37,8 +37,8 @@ package(){
   install -Dm0644 $srcdir/i2pd.tmpfiles.conf $pkgdir/usr/lib/tmpfiles.d/i2pd.conf
 
   install -Dm0644 $srcdir/$pkgname-$pkgver/docs/i2pd.conf $pkgdir/${_conf_dest}/i2pd.conf
-  install -Dm0644 $srcdir/$pkgname-$pkgver/debian/tunnels.conf $pkgdir/${_conf_dest}/tunnels.conf
-  install -Dm0644 $srcdir/$pkgname-$pkgver/debian/subscriptions.txt $pkgdir/${_conf_dest}/subscriptions.txt
+  install -Dm0644 $srcdir/$pkgname-$pkgver/docs/tunnels.conf $pkgdir/${_conf_dest}/tunnels.conf
+  install -Dm0644 $srcdir/$pkgname-$pkgver/docs/subscriptions.txt $pkgdir/${_conf_dest}/subscriptions.txt
 
   install -d -m0750 $pkgdir/${_home_dest}
   ln -s /${_conf_dest}/i2pd.conf $pkgdir/${_home_dest}/i2pd.conf
