@@ -3,7 +3,7 @@
 _pkgname=nheqminer-cpu
 pkgname=${_pkgname}-git
 pkgver=0.4b.r1.ge2a73b4
-pkgrel=1
+pkgrel=2
 pkgdesc="zcash equihash miner by NiceHash. Xenoncat CPU solver build."
 arch=('x86_64')
 url="https://github.com/nicehash/nheqminer/"
@@ -24,12 +24,13 @@ build() {
   cd "${pkgname}/cpu_xenoncat/Linux/asm/"
   sh assemble.sh
   cd "../../../${_build_dir}"
-  cmake .
+  # Since we don't use make install, skip setting RPATH in the binary
+  cmake -DCMAKE_SKIP_BUILD_RPATH=true .
   make -j $(nproc)
 }
 
 package() {
-	cd "${pkgname}"
+  cd "${pkgname}"
   install -D -m755 "${_build_dir}/nheqminer_cpu" -t "${pkgdir}/usr/bin/"
   install -D -m644 LICENSE_MIT -t "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
