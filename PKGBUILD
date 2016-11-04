@@ -3,7 +3,7 @@
 pkgname=jdom
 pkgver=2.0.6
 pkgrel=1
-pkgdesc="Java API to manipulate XML"
+pkgdesc="Java XML parser, similar to DOM but easier to use"
 arch=('any')
 url="http://www.jdom.org/downloads/"
 license=('custom')
