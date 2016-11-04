@@ -2,7 +2,7 @@
 pkgname=wire-desktop-git
 _pkgname=wire-desktop
 _name=wire
-pkgver=2.11.2669.r0.g064a81c
+pkgver=2.11.2670.r1.g7e1b309
 pkgrel=1
 pkgdesc='Modern, private messenger. Based on Electron.'
 arch=('x86_64' 'i686')
@@ -10,7 +10,7 @@ url='https://wire.com/'
 license=('GPL3')
 conflicts=('wire-desktop-bin' 'wire-desktop')
 depends=('nss' 'alsa-lib' 'libxss' 'gconf' 'gtk2' 'libxtst')
-makedepends=('npm' 'yarn' 'grunt-cli' 'gendesk' 'python2')
+makedepends=('yarn' 'grunt-cli' 'gendesk' 'python2')
 provides=('wire-desktop')
 source=("git://github.com/wireapp/wire-desktop.git")
 sha256sums=('SKIP')
@@ -50,7 +50,7 @@ package() {
   
   # Symlink main binary
   install -d ${pkgdir}/usr/bin
-  ln -s "/usr/lib/${_name}/Wire" "${pkgdir}/usr/bin/${_name}"
+  ln -s "/usr/lib/${_name}/${_name}" "${pkgdir}/usr/bin/${_name}"
   
   # Place desktop entry and icon
   install -Dm644 ${_name}.desktop ${pkgdir}/usr/share/applications/${_name}.desktop
