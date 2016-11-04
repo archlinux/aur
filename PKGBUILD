@@ -2,7 +2,7 @@
 
 pkgname=hyperd
 pkgver=0.7.0
-pkgrel=0
+pkgrel=1
 pkgdesc="Hypervisor-agnostic Docker Runtime"
 arch=('i686' 'x86_64')
 url="https://www.hypercontainer.io/"
@@ -11,7 +11,7 @@ depends=('libvirt')
 makedepends=('device-mapper' 'sqlite3' 'libvirt' 'go')
 optdepends=('hyperstart: boot files for hyperd instances')
 options=('!strip' '!emptydirs')
-source=("https://github.com/hyperhq/${pkgname}/archive/v${pkgver}.tar.gz")
+source=("hyperd-$pkgver.tar.gz::https://github.com/hyperhq/${pkgname}/archive/v${pkgver}.tar.gz")
 sha256sums=('e79d4e6aebe01d2117e981050ecb88dd24f8a9e45e2fbe1a558bcd1ee5d90b88')
 
 build() {
