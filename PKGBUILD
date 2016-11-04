@@ -7,7 +7,7 @@
 
 _pkgname=ardour
 pkgname="${_pkgname}-git"
-pkgver=5.4.r229.g8d70b76
+pkgver=5.4.r257.g1457050
 pkgrel=1
 pkgdesc="A multichannel hard disk recorder and digital audio workstation"
 arch=('i686' 'x86_64')
@@ -32,14 +32,14 @@ pkgver() {
 build() {
   cd "${srcdir}/${_pkgname}"
 
-  python2 waf configure \
-    --prefix=/usr \
-    --configdir=/etc \
-    --docs \
-    --freedesktop \
-    --with-backends=jack,alsa,dummy \
-    --cxx11 
-#    --qm-dsp-include=${srcdir}/ardour/libs/qm-dsp/base/Pitch.h
+  python2 waf configure --prefix=/usr \
+                        --configdir=/etc \
+                        --with-backends="jack,alsa,dummy " \
+                        --libjack=weak \
+                        --optimize \
+                        --docs \
+                        --cxx11 \
+                        --no-phone-home
 
   python2 waf build $MAKEFLAGS
 }
