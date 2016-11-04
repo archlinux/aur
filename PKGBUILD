@@ -10,10 +10,8 @@ url='https://www.opendesktop.org/p/1143475'
 license=('GPL3')
 makedepends=('jq')
 optdepends=('gtk-engine-murrine: for GTK2 themes')
-source=("meta::meta://dl.opendesktop.org/api/files/index?format=json&status=active&collection_content_id=${url##*/}"
-        'https://dl.opendesktop.org/api/files/download/id/1468995652/Dark-Aurora.tar.gz')
-sha256sums=('0f20c0287933ea77e0830d856ff75d6e99c80cf3ba185bda5fd6a662bae049b4'
-            '6fbdaaae2e59b5f514ca003ba2552fcb7eb5724bd278e291ed5ae2036563d6ff')
+source=("meta::meta://dl.opendesktop.org/api/files/index?format=json&status=active&collection_content_id=${url##*/}")
+sha256sums=('0f20c0287933ea77e0830d856ff75d6e99c80cf3ba185bda5fd6a662bae049b4')
 
 # The following is a very convoluted script because of makepkg's DLAGENTS escaping logic.
 # An agent is added for the protocol "meta". It is treated like http, which is done by processing
@@ -29,6 +27,14 @@ DLAGENTS=("meta::/usr/bin/bash -c $(
 
 meta() {
   jq -j ".$1" meta
+}
+
+prepare() {
+  source=("https://dl.opendesktop.org/api/files/download/id/$(meta id)/Dark-Aurora.tar.xz")
+  sha256sums=('6fbdaaae2e59b5f514ca003ba2552fcb7eb5724bd278e291ed5ae2036563d6ff')
+  download_sources
+  check_source_integrity
+  extract_sources
 }
 
 pkgver() {
