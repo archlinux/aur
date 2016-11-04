@@ -1,7 +1,7 @@
 post_install(){
 	useradd aria2 -r -U -d /var/share/aria2/ -s /bin/nologin
 	passwd -l aria2 &> /dev/null	
-	install -d -o aria2 -g aria2 		"${pkgdir}/var/share/aria2/"
+	install -d -o aria2 -g aria2 /var/share/aria2/
 	touch /var/share/aria2/aria2.session
 
 cat << EOF
