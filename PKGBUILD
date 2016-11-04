@@ -2,7 +2,7 @@
 # Contributor: FadeMind <fademind@gmail.com>
 
 pkgname=aurora-themes
-pkgver=3.20.20160929053736
+pkgver=20160929053736
 pkgrel=1
 pkgdesc='Easy On The Eyes GNOME Shell, GTK2, GTK3 and Cinnamon themes'
 arch=('any')
@@ -38,7 +38,6 @@ prepare() {
 }
 
 pkgver() {
-  meta version
   date -d "$(meta updated_timestamp)" '+%Y%m%d%H%M%S'
 }
 
