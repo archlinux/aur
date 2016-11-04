@@ -1,7 +1,7 @@
 # Maintainer: Sergey Shatunov <me@prok.pw>
 pkgname=powerdns-admin-git
 pkgver=r220.e18757e
-pkgrel=2
+pkgrel=3
 pkgdesc="Web GUI for PowerDNS autoritative server"
 arch=('any')
 url="https://github.com/ngoduykhanh/PowerDNS-Admin"
@@ -9,7 +9,9 @@ license=('MIT')
 options=(!strip)
 depends=('python2')
 makedepends=('git' 'python2-pip' 'python2-virtualenv')
-optdepends=('powerdns: autoritative server itself')
+optdepends=('powerdns: autoritative server itself'
+            'postgresql: postgresql backend'
+            'mariadb: mysql backend')
 install=powerdns-admin.install
 backup=(etc/webapps/powerdns-admin/config.py)
 source=('powerdns-admin-git::git+https://github.com/ngoduykhanh/PowerDNS-Admin.git'
@@ -32,7 +34,7 @@ build() {
   virtualenv2 venv
   virtualenv2 --relocatable venv
   source venv/bin/activate
-  PIP_CONFIG_FILE=/dev/null pip2 install --isolated --ignore-installed -r requirements.txt
+  PIP_CONFIG_FILE=/dev/null pip2 install --isolated --ignore-installed -r requirements.txt psycopg2 MySQL-python
 }
 
 package() {

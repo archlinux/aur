@@ -3,7 +3,7 @@ post_install() {
     groupadd -g 980 --system powerdns-admin 
   fi
   if ! getent passwd powerdns-admin >/dev/null; then
-    useradd -u 980 --system -c 'powerdns-admin worker user' -g powerdns-admin -d / -s /usr/bin/nologin powerdns-admin
+    useradd -u 980 --system -c 'powerdns-admin worker user' -g powerdns-admin -d /usr/share/webapps/powerdns-admin -s /usr/bin/nologin powerdns-admin
   fi
 }
 
