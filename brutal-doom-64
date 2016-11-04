@@ -1,0 +1,3 @@
+#!/bin/bash
+
+gzdoom -config /usr/share/games/brutal-doom-64/gzdoom.ini

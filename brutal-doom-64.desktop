@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.0
+Name=Brutal Doom 64
+GenericName=Brutal Doom 64
+Type=Application
+Icon=/usr/share/pixmaps/brutal-doom-64.png
+Exec=brutal-doom-64
+Keywords=game;
+Terminal=false
+Categories=Game
+
