@@ -10,25 +10,25 @@ depends=('curl' 'tar' 'findutils' 'coreutils' 'binutils' 'openssl')
 provides=('cerbero-profiler')
 
 # release tarball and external dependencies...
-source=("https://store.cerbero.io/static/downloads/profiler/profiler_${pkgver}.tar.gz" 'http://mirrors.kernel.org/ubuntu/pool/main/p/python3.4/libpython3.4_3.4.3-1ubuntu1~14.04.3_amd64.deb' 'http://mirrors.kernel.org/ubuntu/pool/main/libp/libpng/libpng12-0_1.2.50-1ubuntu2.14.04.2_amd64.deb')
+source=("https://store.cerbero.io/static/downloads/profiler/profiler_${pkgver}.tar.gz" 'http://security.ubuntu.com/ubuntu/pool/main/p/python3.4/libpython3.4_3.4.0-2ubuntu1.1_amd64.deb' 'http://mirrors.kernel.org/ubuntu/pool/main/libp/libpng/libpng12-0_1.2.50-1ubuntu2.14.04.2_amd64.deb')
 noextract=('libpython3.4_3.4.3-1ubuntu1~14.04.3_amd64.deb' 'libpng12-0_1.2.50-1ubuntu2.14.04.2_amd64.deb')
 
 #
 # this is where the sha1 hashes were obtained:
 #
 # 1. http://packages.ubuntu.com/uk/trusty-updates/amd64/libpng12-0/download
-# 2. http://packages.ubuntu.com/uk/trusty-updates/amd64/libpython3.4/download
+# 2. http://packages.ubuntu.com/trusty/amd64/libpython3.4/download
 # 3. https://store.cerbero.io/profiler/download
 #
 
-sha1sums=('c4517aac16d56aeca6a64e9bff06bf5496875ef3' '651c686d24b7310361a739b63228bc312d0e5553' '0fd57a753a5e46659492187f804d6981158d8a00')
+sha1sums=('c4517aac16d56aeca6a64e9bff06bf5496875ef3' 'f3feb9e69cc02a0f4c7502e45db0f1f9c4e7c863' '0fd57a753a5e46659492187f804d6981158d8a00')
 
 prepare() {
 	# we have to manually extract our two external dependencies since
 	# they both contain files with the same names
 
-	echo "Extracting: libpython3.4_3.4.3-1ubuntu1~14.04.3_amd64.deb"
-	ar vx libpython3.4_3.4.3-1ubuntu1~14.04.3_amd64.deb >> /dev/null 2>&1
+	echo "Extracting: libpython3.4_3.4.0-2ubuntu1.1_amd64.deb"
+	ar vx libpython3.4_3.4.0-2ubuntu1.1_amd64.deb >> /dev/null 2>&1
 	tar xf data.tar.xz >> /dev/null 2>&1
 
 	echo "Extracting: libpng12-0_1.2.50-1ubuntu2.14.04.2_amd64.deb"
