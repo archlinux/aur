@@ -1,5 +1,4 @@
-# Maintainer: kfgz <kfgz at interia dot pl>
-# Maintainer: Vinycius Maia <suportevg at uol dot com dot br>
+# Maintainer: baronleonardo <mohamedayman.fcis@zoho.com>
 
 pkgname=xfce4-netspeed-plugin-default-route
 srcname=xfce4-netspeed-plugin
