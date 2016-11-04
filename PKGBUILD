@@ -3,9 +3,9 @@
 # Maintainer: András Wacha <awacha@gmail.com>
 pkgname=sasfit
 pkgver=0.94.7
-pkgrel=1
+pkgrel=2
 pkgdesc="A program for fitting structural models to small angle scattering data"
-arch=('x86_64')
+arch=('x86_64' 'i686')
 url="https://kur.web.psi.ch/sans1/SANSSoft/sasfit.html"
 license=('GPL')
 makedepends=('cmake>=2.8.0')
@@ -16,7 +16,7 @@ options=("!strip")
 source=("https://github.com/SASfit/SASfit/releases/download/v${pkgver}/SASfit-${pkgver}_source.tar.gz"
         "sasfit.patch")
 md5sums=('d563765b90c2826cda5b912e10d699e9'
-         '7c09381e4207bc93dda90448e7d6890d')
+         '4ca03b222f17c7e1f07247d00d34da34')
 
 prepare() {
 	cd "${srcdir}/SASfit-${pkgver}"
