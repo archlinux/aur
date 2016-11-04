@@ -1,0 +1,5 @@
+/pkg
+/src
+nheqminer-cpu-git
+/*.src.tar*
+/*.pkg.tar*
