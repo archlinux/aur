@@ -10,7 +10,7 @@ arch=('x86_64')
 url='https://github.com/gnunn1/terminix/tree/master/experimental/vte'
 license=('LGPL')
 depends=('gtk3' 'pcre2')
-makedepends=('intltool' 'gobject-introspection' 'vala' 'gperf' 'glade' 'git')
+makedepends=('intltool' 'gobject-introspection' 'gtk-doc' 'vala' 'gperf' 'glade' 'git')
 options=('!emptydirs')
 # Fedora patches: http://pkgs.fedoraproject.org/cgit/rpms/vte291.git/tree/
 source=(
