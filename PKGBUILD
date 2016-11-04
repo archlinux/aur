@@ -1,7 +1,7 @@
 # Maintainer: Conor Anderson <conor.anderson@mail.utoronto.ca>
 pkgname=wire-desktop
 _pkgname=wire
-pkgver=2.11.2669
+pkgver=2.11.2670
 pkgrel=1
 pkgdesc='Modern, private messenger. Based on Electron.'
 arch=('x86_64' 'i686')
@@ -9,10 +9,10 @@ url='https://wire.com/'
 license=('GPL3')
 conflicts=('wire-desktop-bin')
 depends=('nss' 'alsa-lib' 'libxss' 'gconf' 'gtk2' 'libxtst')
-makedepends=('npm' 'yarn' 'grunt-cli' 'gendesk' 'python2')
+makedepends=('yarn' 'grunt-cli' 'gendesk' 'python2')
 provides=('wire-desktop')
 source=("https://github.com/wireapp/wire-desktop/archive/release/"$pkgver".tar.gz")        
-sha256sums=('5d1669fb93fb46ff943bfb071912a5decb9f27ce2464feec17008f7f5e7740ac')
+sha256sums=('c7057a5e323d79f3e30b50493f79ccf62f3fce36db24f8f7b7038d01c1ad899d')
 
 prepare() {
   gendesk -f -n --name=Wire --pkgname=${_pkgname} --pkgdesc="${pkgdesc}" --exec="${_pkgname}" --categories="Network"
@@ -44,7 +44,7 @@ package() {
   
   # Symlink main binary
   install -d ${pkgdir}/usr/bin
-  ln -s "/usr/lib/${_pkgname}/Wire" "${pkgdir}/usr/bin/${_pkgname}"
+  ln -s "/usr/lib/${_pkgname}/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
   
   # Place desktop entry and icon
   install -Dm644 ${_pkgname}.desktop ${pkgdir}/usr/share/applications/${_pkgname}.desktop
