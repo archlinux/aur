@@ -1,6 +1,6 @@
 # Maintainer: SebRmv <sbriais at-symbol free dot fr>
 pkgname=virtualjaguar-git
-pkgver=r497.40e59fa
+pkgver=r503.a0fe543
 pkgrel=1
 pkgdesc="A portable Atari Jaguar emulator"
 arch=('i686' 'x86_64')
@@ -34,6 +34,6 @@ package() {
 }
 
 pkgver() {
-  cd "$pkgname"
+  cd "$srcdir/$_gitname"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }

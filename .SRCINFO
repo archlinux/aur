@@ -1,6 +1,6 @@
 pkgbase = virtualjaguar-git
 	pkgdesc = A portable Atari Jaguar emulator
-	pkgver = r497.40e59fa
+	pkgver = r503.a0fe543
 	pkgrel = 1
 	url = http://icculus.org/virtualjaguar/
 	arch = i686
