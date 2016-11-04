@@ -6,7 +6,7 @@ groups=('zarafa'
 	'kopano'
 	'zarafa-webapp-plugins')
 pkgver=1.2
-pkgrel=128
+pkgrel=129
 pkgdesc='Passwd plugin for Zarafa Webapp'
 arch=('any')
 url='https://github.com/silentsakky/zarafa-webapp-passwd'
