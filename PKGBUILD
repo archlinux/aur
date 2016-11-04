@@ -10,7 +10,7 @@
 
 _name=vlc
 pkgname=vlc-git
-pkgver=2.2.0.git.r6294.gc9c734d
+pkgver=3.0.0.r9646.g8466176
 pkgrel=1
 pkgdesc="A multi-platform MPEG, VCD/DVD, and DivX player (GIT Version)"
 arch=('i686' 'x86_64')
@@ -19,7 +19,7 @@ license=('LGPL2.1' 'GPL2')
 depends=('a52dec' 'faad2' 'ffmpeg' 'libdca' 'libdvbpsi'
          'libdvdnav' 'libmad' 'libmatroska' 'libmpcdec' 'libmpeg2'
          'libproxy' 'libshout' 'libtar' 'libtiger' 'libupnp'
-         'libxinerama' 'libxpm' 'lua' 'qt4' 'sdl_image'
+         'libxinerama' 'libxpm' 'lua' 'qt5-base' 'sdl_image'
          'taglib' 'xcb-util-keysyms' 'zvbi')
 makedepends=('aalib' 'flac' 'git' 'gnome-vfs' 'kdelibs'
              'libavc1394' 'libbluray' 'libcaca' 'libdc1394' 'libdvdcss'
@@ -62,18 +62,20 @@ backup=('usr/share/vlc/lua/http/.hosts'
         'usr/share/vlc/lua/http/dialogs/.hosts')
 options=('!emptydirs')
 install="${_name}.install"
-source=('git://git.videolan.org/vlc.git')
-md5sums=('SKIP')
+source=('git://git.videolan.org/vlc.git' 'lua53_compat.patch')
+md5sums=('SKIP'
+         '96d3b346d9149ffb1b430066dfb6249a')
 
 pkgver() {
   cd "${srcdir}/${_name}"
-  git describe --long | sed 's/\([^-]*-g\)/r\1/g;s/^.//;s/-/./g'
+  printf "%s.r%s.g%s\n" "$(grep 'AC_INIT' configure.ac | sed 's/[^0-9\.]*//g')" "$(git describe --tags --long | cut -d '-' -f 3)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
   cd "${srcdir}/${_name}"
 
   sed -i -e 's:truetype/ttf-dejavu:TTF:g' modules/visualization/projectm.cpp
+  patch -p1 -i "${srcdir}/lua53_compat.patch"
 }
 
 build() {
