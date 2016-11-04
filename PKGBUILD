@@ -2,7 +2,7 @@
 
 pkgname=wechatircd-git
 _pkgname=wechatircd
-pkgver=r64.0424e14
+pkgver=r70.8ae5416
 pkgrel=1
 pkgdesc="IRC server capable of controlling Web WeChat"
 arch=('i686' 'x86_64')
@@ -13,9 +13,9 @@ optdepends=("python-ipython: pretty error messages with the '-d' option")
 makedepends=('git')
 provides=('wechatircd')
 conflicts=('wechatircd')
-source=('git+https://github.com/MaskRay/wechatircd.git' wechatircd.service wechatircd.install)
+source=('git+https://github.com/MaskRay/wechatircd.git' wechatircd.install)
 install="$_pkgname.install"
-md5sums=('SKIP' 'SKIP' 'SKIP')
+md5sums=('SKIP' 'SKIP')
 
 pkgver() {
   cd "$_pkgname"
@@ -25,5 +25,5 @@ pkgver() {
 package() {
   install -D "$_pkgname/wechatircd.py" "$pkgdir/usr/bin/wechatircd"
   install -Dm644 "$_pkgname/injector.js" -t "$pkgdir/usr/share/wechatircd/"
-  install -Dm644 wechatircd.service -t "$pkgdir/usr/lib/systemd/system/"
+  install -Dm644 "$_pkgname/wechatircd.service" -t "$pkgdir/usr/lib/systemd/system/"
 }
