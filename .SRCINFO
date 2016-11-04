@@ -5,7 +5,10 @@ pkgbase = pearlfan
 	url = https://github.com/Ventto/pearlfan
 	arch = x86_64
 	license = GPL3
-	makedepends = help2man netpbm
+	makedepends = help2man
+	makedepends = netpbm
+	provides = pearlfan
+	conflicts = pearlfan
 	source = https://github.com/Ventto/pearlfan/archive/v1.0.tar.gz
 	sha256sums = c3861722d533db3a99859fb4a2a620a995be98479ea71d41f3565b6c4a85d82a
 

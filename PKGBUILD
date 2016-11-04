@@ -7,7 +7,9 @@ pkgdesc='Tool to control Pearl USB LED fan.'
 arch=('x86_64')
 url="https://github.com/Ventto/${pkgname}"
 license=('GPL3')
-makedepends=('help2man netpbm')
+provides=("${pkgname}")
+conflicts=("${pkgname}")
+makedepends=('help2man' 'netpbm')
 source=("https://github.com/Ventto/${pkgname}/archive/v${pkgver}.tar.gz")
 sha256sums=('c3861722d533db3a99859fb4a2a620a995be98479ea71d41f3565b6c4a85d82a')
 
