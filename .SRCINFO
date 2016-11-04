@@ -1,6 +1,6 @@
 pkgbase = sthttpd-git
 	pkgdesc = Supported fork of the thttpd web server
-	pkgver = 20150722.aa3f36c
+	pkgver = 20161018.7e15761
 	pkgrel = 1
 	url = https://github.com/blueness/sthttpd
 	arch = i686

@@ -4,7 +4,7 @@
 
 _pkgname=sthttpd
 pkgname=sthttpd-git
-pkgver=20150722.aa3f36c
+pkgver=20161018.7e15761
 pkgrel=1
 pkgdesc='Supported fork of the thttpd web server'
 url='https://github.com/blueness/sthttpd'
