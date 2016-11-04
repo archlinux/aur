@@ -4,7 +4,7 @@
 _gitname='fenrir'
 pkgname="${_gitname}-git"
 pkgver=v0.2.5.g33af5b6
-pkgrel=2
+pkgrel=3
 pkgdesc='A user space console screen reader written in python3'
 arch=('any')
 url='https://github.com/chrys87/${_pkgname}'
@@ -39,7 +39,7 @@ package()
  install -m755 -d "$pkgdir/usr/share/fenrir/scripts"
  install -m755 -d "$pkgdir/usr/share/fenrir/tools"
  install -m644 -D "config/keyboard/desktop.conf" "$pkgdir/etc/fenrir/keyboard/desktop.conf"
- install -m644 -D "config/keyboard/laptop.conf" "$pkgdir/etc/fenrir/keyboard/desktop.conf"
+ install -m644 -D "config/keyboard/laptop.conf" "$pkgdir/etc/fenrir/keyboard/laptop.conf"
  install -m644 -D "config/punctuation/default.conf" "$pkgdir/etc/fenrir/punctuation/default.conf"
  install -m644 -D "config/settings/settings.conf" "$pkgdir/etc/fenrir/settings/settings.conf"
  install -d "$pkgdir/usr/share/sounds/fenrir"
