@@ -1,0 +1,13 @@
+pkgbase = jdom
+	pkgdesc = Java API to manipulate XML
+	pkgver = 2.0.6
+	pkgrel = 1
+	url = http://www.jdom.org/downloads/
+	arch = any
+	license = custom
+	depends = java-runtime
+	source = http://www.jdom.org/dist/binary/jdom-2.0.6.zip
+	md5sums = 5869015f58961bb38308f91b97c93d4d
+
+pkgname = jdom
+
