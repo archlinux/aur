@@ -7,7 +7,7 @@ arch=('i686' 'x86_64')
 url="https://github.com/mbevand/silentarmy"
 license=('MIT')
 groups=()
-depends=('ocl-icd' 'libsodium' 'opencl-headers')
+depends=('libcl' 'libsodium' 'opencl-headers')
 source=("https://github.com/mbevand/silentarmy/archive/v3.tar.gz")
 sha256sums=('0143966902d30a9edd1f6c4867d9a6b1d07596eb4773aa4cf93a10b8eb532457')
 
