@@ -1,0 +1,6 @@
+post_install() {
+	luarocks-admin make_manifest --local-tree
+}
+post_remove() {
+	luarocks-admin make_manifest --local-tree
+}
