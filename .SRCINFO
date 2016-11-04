@@ -1,13 +1,14 @@
 pkgbase = ocaml-cryptokit
 	pkgdesc = Cryptographic primitives for OCaml
 	pkgver = 1.11
-	pkgrel = 1
+	pkgrel = 2
 	url = http://pauillac.inria.fr/~xleroy/software.html#cryptokit
 	arch = i686
 	arch = x86_64
 	license = LGPL
 	makedepends = ocaml
 	makedepends = ocaml-findlib
+	makedepends = ocamlbuild
 	depends = ocaml
 	depends = zlib
 	depends = zarith
