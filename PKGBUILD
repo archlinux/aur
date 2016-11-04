@@ -48,8 +48,8 @@ pkgname=(linux-ck linux-ck-headers)
 _kernelname=-ck
 _srcname=linux-4.8
 pkgver=4.8.6
-pkgrel=1
-_ckpatchversion=5
+pkgrel=2
+_ckpatchversion=6
 arch=('i686' 'x86_64')
 url="https://wiki.archlinux.org/index.php/Linux-ck"
 license=('GPL2')
@@ -65,20 +65,16 @@ source=("http://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
 "http://repo-ck.com/source/gcc_patch/${_gcc_patch}.gz"
 'config.x86_64' 'config'
 'linux-ck.preset'
-'https://github.com/ckolivas/linux/commit/6d6ea6a24879ed0f5c99d64d3d621d2007c699a3.patch'
-'https://github.com/ckolivas/linux/commit/d2a88342b9d69e550ae21d5d1fdd7a15fe039159.patch'
 'change-default-console-loglevel.patch')
 sha256sums=('3e9150065f193d3d94bcf46a1fe9f033c7ef7122ab71d75a7fb5a2f0c9a7e11a'
             'SKIP'
             '3ac0ea443ac8a7aa40f8d5ce8ec33b84abbad4dbfc567c7699df728c2c21df37'
             'SKIP'
-            'cb67d632c951cfc799472039afb59f47c2ad4aa00d326a0f9f3da3c5f2ef9cd7'
+            'ceca20aff1ac9f84cd46aeabc0645e88c130584bd2e93213db293087329abdef'
             'cf0f984ebfbb8ca8ffee1a12fd791437064b9ebe0712d6f813fd5681d4840791'
             'e63d02c41fbdeff8b5511177d5e67c8a6f5141951c21576d8dee4b0fc7bb03b4'
             '58dba408b142d61d1ee2f59ad8a669e4e824e6838faa14597e0891f328342fea'
             '2b3ebf5446aa3cac279842ca00bc1f2d6b7ff1766915282c201d763dbf6ca07e'
-            'b5cfe6b2d361cb9051c70b777cf0556ec057a7f240e2014d577284509d46588b'
-            'b0b22a3355f13e040b5fc768862234e0b0429bc2dd1db7d54ac4a04162efaf77'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99')
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
@@ -101,8 +97,6 @@ prepare() {
 
 	msg "Patching source with ck patchset including MuQSS"
 	patch -Np1 -i "${srcdir}/${_ckpatchname}"
-	patch -Np1 -i "${srcdir}/6d6ea6a24879ed0f5c99d64d3d621d2007c699a3.patch"
-	patch -Np1 -i "${srcdir}/d2a88342b9d69e550ae21d5d1fdd7a15fe039159.patch"
 
 	# Patch source to enable more gcc CPU optimizatons via the make nconfig
 	msg "Patching source with gcc patch to enable more cpus types"
@@ -219,8 +213,8 @@ build() {
 }
 
 package_linux-ck() {
-	pkgdesc='Linux Kernel with the ck5 patchset featuring MuQSS CPU scheduler v0.120'
-	#_Kpkgdesc='Linux Kernel and modules with the ck5 patchset featuring MuQSS CPU scheduler v0.120'
+	pkgdesc='Linux Kernel with the ck6 patchset featuring MuQSS CPU scheduler v0.135'
+	#_Kpkgdesc='Linux Kernel and modules with the ck6 patchset featuring MuQSS CPU scheduler v0.135'
 	#pkgdesc="${_Kpkgdesc}"
 	depends=('coreutils' 'linux-firmware' 'mkinitcpio>=0.7')
 	optdepends=('crda: to set the correct wireless channels of your country' 'nvidia-ck: nVidia drivers for linux-ck' 'modprobed-db: Keeps track of EVERY kernel module that has ever been probed - useful for those of us who make localmodconfig')
