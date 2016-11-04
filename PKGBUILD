@@ -3,7 +3,7 @@
 pkgname=jdom
 pkgver=2.0.6
 pkgrel=1
-pkgdesc="Java XML parser, similar to DOM but easier to use"
+pkgdesc="Easy-to-use Java XML parser"
 arch=('any')
 url="http://www.jdom.org/downloads/"
 license=('custom')
