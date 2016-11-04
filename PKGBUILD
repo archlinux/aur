@@ -15,12 +15,12 @@ license=('GPL')
 depends=('xfce4-panel' 'libxfcegui4' 'libgtop')
 makedepends=('intltool')
 install=xfce4-netspeed-plugin.install
-source=(http://xfce4-netspeed-plugin.googlecode.com/files/${srcname}-${pkgver}.tar.gz
+source=(https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/xfce4-netspeed-plugin/${srcname}-${pkgver}.tar.gz
         xfce4-netspeed-plugin.install
-	default-route.patch)
+  default-route.patch)
 md5sums=('b88cacc3ecd53798d76855e35a7a4d79'
          'b2ebab59089be208323356fef393640a'
-	 '04466c8f600e04975146174a0adb25d2')
+   '04466c8f600e04975146174a0adb25d2')
 
 build() {
   cd "${srcdir}"/${srcname}
