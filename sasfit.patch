@@ -1,6 +1,6 @@
-diff -aurN SASfit-0.94.7.pristine/src/cmake/CPackConfig.cmake SASfit-0.94.7/src/cmake/CPackConfig.cmake
---- SASfit-0.94.7.pristine/src/cmake/CPackConfig.cmake	1970-01-01 01:00:00.000000000 +0100
-+++ SASfit-0.94.7/src/cmake/CPackConfig.cmake	2016-11-04 09:06:20.235958749 +0100
+diff -aurN SASfit-0.94.7/src/cmake/CPackConfig.cmake SASfit-0.94.7.new/src/cmake/CPackConfig.cmake
+--- SASfit-0.94.7/src/cmake/CPackConfig.cmake	1970-01-01 01:00:00.000000000 +0100
++++ SASfit-0.94.7.new/src/cmake/CPackConfig.cmake	2016-11-04 11:36:37.239715813 +0100
 @@ -0,0 +1,40 @@
 +# src/cmake/CPackConfig.cmake
 +#
@@ -42,9 +42,9 @@ diff -aurN SASfit-0.94.7.pristine/src/cmake/CPackConfig.cmake SASfit-0.94.7/src/
 +	set(CPACK_GENERATOR "ZIP")
 +endif(NOT WIN32)
 +
-diff -aurN SASfit-0.94.7.pristine/src/cmake/create_source_package.list SASfit-0.94.7/src/cmake/create_source_package.list
---- SASfit-0.94.7.pristine/src/cmake/create_source_package.list	2016-04-25 09:27:08.000000000 +0200
-+++ SASfit-0.94.7/src/cmake/create_source_package.list	2016-11-04 09:05:58.046930712 +0100
+diff -aurN SASfit-0.94.7/src/cmake/create_source_package.list SASfit-0.94.7.new/src/cmake/create_source_package.list
+--- SASfit-0.94.7/src/cmake/create_source_package.list	2016-04-25 09:27:08.000000000 +0200
++++ SASfit-0.94.7.new/src/cmake/create_source_package.list	2016-11-04 11:36:37.239715813 +0100
 @@ -178,183 +178,6 @@
  doc/images/missing.png
  src/doc/footer.html
@@ -229,9 +229,9 @@ diff -aurN SASfit-0.94.7.pristine/src/cmake/create_source_package.list SASfit-0.
  src/sasfit_common/CMakeLists.txt
  src/sasfit_common/include/bool.h
  src/sasfit_common/include/sasfit_common.h
-diff -aurN SASfit-0.94.7.pristine/src/cmake/Findf2c.cmake SASfit-0.94.7/src/cmake/Findf2c.cmake
---- SASfit-0.94.7.pristine/src/cmake/Findf2c.cmake	2016-04-25 09:27:08.000000000 +0200
-+++ SASfit-0.94.7/src/cmake/Findf2c.cmake	2016-11-04 09:05:58.046930712 +0100
+diff -aurN SASfit-0.94.7/src/cmake/Findf2c.cmake SASfit-0.94.7.new/src/cmake/Findf2c.cmake
+--- SASfit-0.94.7/src/cmake/Findf2c.cmake	2016-04-25 09:27:08.000000000 +0200
++++ SASfit-0.94.7.new/src/cmake/Findf2c.cmake	2016-11-04 11:36:37.239715813 +0100
 @@ -36,35 +36,7 @@
  #                              against.
  # f2c_FOUND        - Do not attempt to use if "no" or undefined.
@@ -271,9 +271,9 @@ diff -aurN SASfit-0.94.7.pristine/src/cmake/Findf2c.cmake SASfit-0.94.7/src/cmak
 +set(f2c_INCLUDE_DIRS /usr/include)
 +set(f2c_LIBRARIES /usr/lib/libf2c.so)
  
-diff -aurN SASfit-0.94.7.pristine/src/cmake/FindFFTW.cmake SASfit-0.94.7/src/cmake/FindFFTW.cmake
---- SASfit-0.94.7.pristine/src/cmake/FindFFTW.cmake	2016-04-25 09:27:08.000000000 +0200
-+++ SASfit-0.94.7/src/cmake/FindFFTW.cmake	2016-11-04 09:05:58.046930712 +0100
+diff -aurN SASfit-0.94.7/src/cmake/FindFFTW.cmake SASfit-0.94.7.new/src/cmake/FindFFTW.cmake
+--- SASfit-0.94.7/src/cmake/FindFFTW.cmake	2016-04-25 09:27:08.000000000 +0200
++++ SASfit-0.94.7.new/src/cmake/FindFFTW.cmake	2016-11-04 11:36:37.239715813 +0100
 @@ -45,32 +45,6 @@
  # FFTW_EXE_LINKER_FLAGS = rpath on Unix
  
@@ -310,9 +310,9 @@ diff -aurN SASfit-0.94.7.pristine/src/cmake/FindFFTW.cmake SASfit-0.94.7/src/cma
 +set(FFTW_FOUND TRUE)
 +set(FFTW_LIBRARIES /usr/lib/libfftw3.so)
 +set(FFTW_INCLUDE_DIRS /usr/include)
-diff -aurN SASfit-0.94.7.pristine/src/cmake/FindGSL.cmake SASfit-0.94.7/src/cmake/FindGSL.cmake
---- SASfit-0.94.7.pristine/src/cmake/FindGSL.cmake	2016-04-25 09:27:08.000000000 +0200
-+++ SASfit-0.94.7/src/cmake/FindGSL.cmake	2016-11-04 09:05:58.056930272 +0100
+diff -aurN SASfit-0.94.7/src/cmake/FindGSL.cmake SASfit-0.94.7.new/src/cmake/FindGSL.cmake
+--- SASfit-0.94.7/src/cmake/FindGSL.cmake	2016-04-25 09:27:08.000000000 +0200
++++ SASfit-0.94.7.new/src/cmake/FindGSL.cmake	2016-11-04 11:42:03.675471653 +0100
 @@ -20,71 +20,6 @@
  # 
  # GSL_INCLUDE_DIRS     = where to find headers 
@@ -388,9 +388,9 @@ diff -aurN SASfit-0.94.7.pristine/src/cmake/FindGSL.cmake SASfit-0.94.7/src/cmak
 +set(GSL_INCLUDE_DIRS /usr/include)
 +set(GSL_LIBRARIES /usr/lib/libgsl.so /usr/lib/libgslcblas.so /usr/lib/libm.so)
 +set(GSL_FOUND TRUE)
-diff -aurN SASfit-0.94.7.pristine/src/cmake/Findsundials.cmake SASfit-0.94.7/src/cmake/Findsundials.cmake
---- SASfit-0.94.7.pristine/src/cmake/Findsundials.cmake	2016-04-25 09:27:08.000000000 +0200
-+++ SASfit-0.94.7/src/cmake/Findsundials.cmake	2016-11-04 09:05:58.056930272 +0100
+diff -aurN SASfit-0.94.7/src/cmake/Findsundials.cmake SASfit-0.94.7.new/src/cmake/Findsundials.cmake
+--- SASfit-0.94.7/src/cmake/Findsundials.cmake	2016-04-25 09:27:08.000000000 +0200
++++ SASfit-0.94.7.new/src/cmake/Findsundials.cmake	2016-11-04 11:36:37.249715376 +0100
 @@ -42,31 +42,15 @@
  # sundials_LINK_DIRECTORIES = link directories, useful for rpath on Unix
  # sundials_EXE_LINKER_FLAGS = rpath on Unix
@@ -434,14 +434,13 @@ diff -aurN SASfit-0.94.7.pristine/src/cmake/Findsundials.cmake SASfit-0.94.7/src
 +    /usr/lib/libsundials_nvecserial.so
 +    /usr/lib/liblapack.so)
 +set(sundials_FOUND TRUE)
-diff -aurN SASfit-0.94.7.pristine/src/cmake/FindTCL.cmake SASfit-0.94.7/src/cmake/FindTCL.cmake
---- SASfit-0.94.7.pristine/src/cmake/FindTCL.cmake	2016-04-25 09:27:08.000000000 +0200
-+++ SASfit-0.94.7/src/cmake/FindTCL.cmake	2016-11-04 09:05:58.056930272 +0100
-@@ -9,53 +9,9 @@
- # TCL_LIBRARIES   = full path to the libraries
+diff -aurN SASfit-0.94.7/src/cmake/FindTCL.cmake SASfit-0.94.7.new/src/cmake/FindTCL.cmake
+--- SASfit-0.94.7/src/cmake/FindTCL.cmake	2016-04-25 09:27:08.000000000 +0200
++++ SASfit-0.94.7.new/src/cmake/FindTCL.cmake	2016-11-04 11:43:07.262704532 +0100
+@@ -10,52 +10,6 @@
  # TCL_INCLUDE_DIRS     = where to find headers 
  
--message("find TCL")
+ message("find TCL")
 -get_package_dir(${SASFIT_ROOT_DIR}/src/tcl)
 -
 -# file include dir of custom build library
@@ -468,7 +467,7 @@ diff -aurN SASfit-0.94.7.pristine/src/cmake/FindTCL.cmake SASfit-0.94.7/src/cmak
 -    NO_DEFAULT_PATH
 -    DOC "TCL static stubs library"
 -)
- 
+-
 -find_program(TCL_SH
 -    NAMES tclsh tclsh84 tclsh84s tclsh8.4
 -    PATHS ${SOURCE_DIR}
@@ -489,15 +488,14 @@ diff -aurN SASfit-0.94.7.pristine/src/cmake/FindTCL.cmake SASfit-0.94.7/src/cmak
 -if(IS_DIRECTORY "${TCL_INCLUDE_DIRS}" AND TCL_LIBRARIES AND TCL_SH)
 -    set(TCL_FOUND TRUE)
 -endif()
-+message("find TCL")
- 
+-
 -# vim: set ts=4 sw=4 sts=4 tw=0:
 +set(TCL_INCLUDE_DIRS /usr/include)
 +set(TCL_LIBRARIES /usr/lib/libtcl.so /usr/lib/libtclstub8.6.a)
 +set(TCL_FOUND TRUE)
-diff -aurN SASfit-0.94.7.pristine/src/cmake/SasfitCmakeUtils.cmake SASfit-0.94.7/src/cmake/SasfitCmakeUtils.cmake
---- SASfit-0.94.7.pristine/src/cmake/SasfitCmakeUtils.cmake	2016-04-25 09:27:08.000000000 +0200
-+++ SASfit-0.94.7/src/cmake/SasfitCmakeUtils.cmake	2016-11-04 09:05:58.056930272 +0100
+diff -aurN SASfit-0.94.7/src/cmake/SasfitCmakeUtils.cmake SASfit-0.94.7.new/src/cmake/SasfitCmakeUtils.cmake
+--- SASfit-0.94.7/src/cmake/SasfitCmakeUtils.cmake	2016-04-25 09:27:08.000000000 +0200
++++ SASfit-0.94.7.new/src/cmake/SasfitCmakeUtils.cmake	2016-11-04 11:36:37.249715376 +0100
 @@ -496,10 +496,10 @@
          # avoid modifying LD_LIBRARY_PATH,
          # using dyn.lib.loader in sasfit.sh instead
@@ -513,18 +511,10 @@ diff -aurN SASfit-0.94.7.pristine/src/cmake/SasfitCmakeUtils.cmake SASfit-0.94.7
              )
      elseif(WIN32)
          find_library(pthread_LIB pthread-2)
-diff -aurN SASfit-0.94.7.pristine/src/CMakeLists.txt SASfit-0.94.7/src/CMakeLists.txt
---- SASfit-0.94.7.pristine/src/CMakeLists.txt	2016-04-25 09:27:08.000000000 +0200
-+++ SASfit-0.94.7/src/CMakeLists.txt	2016-11-04 09:05:58.056930272 +0100
-@@ -1,5 +1,7 @@
- cmake_minimum_required(VERSION 2.6.2)
- 
-+set(CMAKE_C_FLAGS "-fPIC")
-+
- if(CMAKE_HOST_APPLE)
-         set(CMAKE_C_COMPILER /usr/bin/gcc)
-         set(CMAKE_CXX_COMPILER /usr/bin/g++)
-@@ -234,7 +236,7 @@
+diff -aurN SASfit-0.94.7/src/CMakeLists.txt SASfit-0.94.7.new/src/CMakeLists.txt
+--- SASfit-0.94.7/src/CMakeLists.txt	2016-04-25 09:27:08.000000000 +0200
++++ SASfit-0.94.7.new/src/CMakeLists.txt	2016-11-04 11:44:32.738987670 +0100
+@@ -234,7 +234,7 @@
  
  target_link_libraries(sasfit
          ${TCL_LIBRARIES}

@@ -16,7 +16,7 @@ options=("!strip")
 source=("https://github.com/SASfit/SASfit/releases/download/v${pkgver}/SASfit-${pkgver}_source.tar.gz"
         "sasfit.patch")
 md5sums=('d563765b90c2826cda5b912e10d699e9'
-         '4ca03b222f17c7e1f07247d00d34da34')
+         'cd01d5f14b3028ce67c18e475e4d713d')
 
 prepare() {
 	cd "${srcdir}/SASfit-${pkgver}"
