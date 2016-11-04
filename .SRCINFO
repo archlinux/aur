@@ -9,8 +9,8 @@ pkgbase = silentarmy
 	depends = libcl
 	depends = libsodium
 	depends = opencl-headers
-	source = https://github.com/mbevand/silentarmy/archive/v3.tar.gz
-	sha256sums = 0143966902d30a9edd1f6c4867d9a6b1d07596eb4773aa4cf93a10b8eb532457
+	source = https://github.com/mbevand/silentarmy/archive/adea4e582a728438d6adaa4b4a41ef9645496062.tar.gz
+	sha256sums = 32d31aaa69a18a08e113154e0eb1daf9f0f48f389cc6c10cce13a33bf286bc67
 
 pkgname = silentarmy
 
