@@ -1,8 +1,8 @@
 # Maintainer: Peter Vágner <pvdeejay@gmail.com>
 
 pkgname=emacs-speechd-el-git
-pkgver=20141025.3d72981
-pkgrel=2
+pkgver=20160710.ec344ed
+pkgrel=1
 pkgdesc="Emacs speech and Braille output interface"
 url="http://devel.freebsoft.org/speechd-el"
 arch=('any')
