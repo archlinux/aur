@@ -10,7 +10,9 @@ pkgbase = ssgl-doom-launcher-git
 	makedepends = git
 	makedepends = grunt-cli
 	source = ssgl-doom-launcher-git::git+https://github.com/FreaKzero/ssgl-doom-launcher.git
-	md5sums = SKIP
+	source = ssgl-launch
+	sha256sums = SKIP
+	sha256sums = 7dc5bd3454f96e5f3cc099f53d71aae96aa36bd1eeb724abe206d75640e8d959
 
 pkgname = ssgl-doom-launcher-git
 
