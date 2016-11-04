@@ -1,0 +1,12 @@
+pkgbase = sentaku
+	pkgdesc = Utilily to make sentaku (selection) window with shell command.
+	pkgver = 0.5.5
+	pkgrel = 1
+	url = https://github.com/rcmdnk/sentaku
+	arch = any
+	license = MIT
+	source = https://github.com/rcmdnk/sentaku/archive/v0.5.5.zip
+	md5sums = 70b68552ce0c0d8277eea6be1f2c880d
+
+pkgname = sentaku
+
