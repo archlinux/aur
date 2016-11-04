@@ -1,32 +1,33 @@
-# Maintainer: oozyslug <oozyslug at gmail dot com>
-# Contributor: oozyslug <oozyslug at gmail dot com>
-# Submitter: oozyslug <oozyslug at gmail dot com>
+# Maintainer Brenton Horne <brentonhorne77 at gmail dot com>
 
 pkgname=hugo
-pkgver=0.16
+pkgver=0.17
 pkgrel=1
-pkgdesc="Fast and Flexible Static Site Generator in Go"
-arch=('x86_64' 'i686' 'arm')
+pkgdesc="Fast and Flexible Static Site Generator in Go — built from source."
+arch=('i686' 'x86_64')
 url="http://hugo.spf13.com/"
+conflicts=("${pkgname}-src" "${pkgname}-bin")
 license=('Apache')
-if [ "$CARCH" = "i686" ]; then
-  _PKGARCH=386
-elif [ "$CARCH" = "arm" ]; then
-  _PKGARCH=arm
-else
-  _PKGARCH=amd64
-fi
-source_x86_64=("https://github.com/spf13/hugo/releases/download/v${pkgver}/${pkgname}_${pkgver}_linux-64bit.tgz")
-source_i686=("https://github.com/spf13/hugo/releases/download/v${pkgver}/${pkgname}_${pkgver}_linux-32bit.tgz")
-source_arm=("https://github.com/spf13/hugo/releases/download/v${pkgver}/${pkgname}_${pkgver}_linux_arm32.tgz")
-sha256sums_x86_64=('13e299dc45bea4fad5bdf8c2640305a5926e2acd02c3aa03b7864403e513920e')
-sha256sums_i686=('aed82d156f01a4562c39bd1af41aa81699009140da965e0369c370ba874725c9')
-sha256sums_arm=('bc836def127d93e2457da9994f9c09b0100523e46d61074cd724ef092b11714f')
+depends=('glibc')
+optdepends=('pygmentize: syntax-highlight code snippets.')
+makedepends=('go' 'git' 'mercurial')
+source=("https://github.com/spf13/${pkgname}/archive/v${pkgver}.tar.gz")
+sha512sums=('1c21b029895182be2648fa4f4f3a8040a44f3d7db13fff378992b7eec23cd58ca4354358defbb317e679c1b2f176c1e4f0812b737404abc36f7f739ba3da0844')
 
-package() {
-  install -Dm755 "${srcdir}/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
-  install -Dm644 "${srcdir}/LICENSE.md" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+build() {
+  cd "$srcdir/${pkgname}-${pkgver}"
+
+  # Force our own git checkout
+  export GOPATH="$srcdir"
+  mkdir -p "$GOPATH/src/github.com/spf13"
+  ln -s `pwd` "$GOPATH/src/github.com/spf13/hugo"
+
+  go get -d -v . || printf "Failed at go get"
+  make no-git-info || printf "make no-git-info failed"
 }
 
-# vim:set ts=2 sw=2 et:
-
+package() {
+  cd "$srcdir/${pkgname}-${pkgver}"
+  install -Dm755 "${pkgname}" "$pkgdir/usr/bin/${pkgname}"
+  install -Dm644 LICENSE.md "$pkgdir/usr/share/licenses/${pkgname}/LICENSE"
+}
