@@ -4,7 +4,7 @@
 
 pkgbase=python-billiard
 pkgname=('python-billiard' 'python2-billiard')
-pkgver=3.5.0.1
+pkgver=3.5.0.2
 pkgrel=1
 pkgdesc="Python multiprocessing fork with improvements and bugfixes."
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ license=('BSD')
 makedepends=('python-setuptools' 'python2-setuptools')
 checkdepends=('python-pytest-runner' 'python2-pytest-runner' 'python-case' 'python2-case')
 source=("https://pypi.io/packages/source/b/billiard/billiard-$pkgver.tar.gz")
-md5sums=('8192bc8dc918e7cb7bd4cc8b63e5e04b')
+md5sums=('301a16643bc51d73869df81c9aa1e082')
 
 prepare() {
   cp -a billiard-$pkgver{,-py2}
