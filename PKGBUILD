@@ -3,8 +3,8 @@
 
 pkgname=bastion-hib
 _installname=bastion
-pkgver=1.2+h20120621
-_hibver=2012-06-20
+pkgver=1.2+h20161016
+_hibver=10162016
 pkgrel=1
 pkgdesc="An action role-playing game set in a lush imaginative world (Humble Bundle/Store version)"
 url="http://www.supergiantgames.com/games/bastion/"
@@ -12,40 +12,39 @@ license=('custom')
 arch=('i686' 'x86_64')
 groups=("hib5" "hib9")
 depends=('sdl' 'mono' 'fmodex' 'libxft')
+makedepends=('imagemagick')
+optdepends=('xdg-utils: For the website links in the menu')
 conflicts=('bastion')
 replaces=('bastion')
+options=('!strip')
 PKGEXT=".pkg.tar"
 
-_gamepkg="Bastion-HIB-${_hibver}.sh"
+_gamepkg="bastion-${_hibver}-bin"
 
 source=("hib://$_gamepkg"
         "$_installname.desktop")
-md5sums=('aa6ccaead3b4b8a5fbd156f4019e8c8b'
+md5sums=('19fea173ff2da0f990f60bd5e7c3b237'
          'ff287fa599220f913e8a1ba7b062037e')
 
 case $CARCH in
-    i686) _arch=x86 ;;
-    x86_64) _arch=x86_64 ;;
+    i686)   _arch=x86    ; _lib=lib   ; _lib_other=lib64 ;;
+    x86_64) _arch=x86_64 ; _lib=lib64 ; _lib_other=lib   ;;
 esac
 
 prepare() {
-    msg2 "Extracting game data..."
-    rm -rf data; mkdir -p data/game
-    while read line; do echo -n '.'; done < <(  # show progress as dots
-        sh $_gamepkg --tar xvf -C data
-        bsdtar -xvf data/instarchive_all          -C data/game 2>&1
-        bsdtar -xvf data/instarchive_linux_$_arch -C data/game 2>&1
-    ); echo
+    # Set apart files to install separately
+    mv data/{Bastion.bmp,Linux.README} .
+    
+    msg2 "Preparing icon..."
+    convert Bastion.bmp Bastion.png
     
     msg2 "Preparing launch script..."
-    echo -e "#!/usr/bin/env bash\n" \
+    echo -e "#!/usr/bin/env sh\n" \
             "cd /opt/$_installname\n" \
             "export force_s3tc_enable=true\n" \
+            "export LD_LIBRARY_PATH='./$_lib:\$LD_LIBRARY_PATH'\n" \
             'exec mono Bastion.exe "$@"' \
         > launcher.sh
-    
-    # Set apart files to install separately
-    mv data/game/{Bastion.png,README.linux} "$srcdir"
 }
 
 package() {
@@ -53,11 +52,12 @@ package() {
     
     # Install game data
     install -d "$_target"
-    cp -alrT data/game "$_target"
+    cp -alrT data "$_target"
     
     # Remove unneeded files
-    rm -r "$_target"/lib64/{libSDL*,libfmodex.so,libmono*}
-    rm -r "$_target"/{mono,Bastion.bin.*}
+    rm -r "$_target"/$_lib_other
+    rm -r "$_target"/$_lib/{libSDL*,libfmodex.so,libmono*}
+    rm -r "$_target"/{mono,Bastion,Bastion.bin.*}
     rm -r "$_target"/{mscorlib,Mono.*,System*}.dll
     
     # Install launch script
@@ -67,9 +67,9 @@ package() {
     install -Dm644 $_installname.desktop \
                    "$pkgdir"/usr/share/applications/$_installname.desktop
     install -Dm644 Bastion.png \
-                   "$pkgdir"/usr/share/icons/$_installname.png
+                  "$pkgdir"/usr/share/icons/$_installname.png
     
     # Install docs
-    install -Dm644 README.linux \
-                   "$pkgdir"/usr/share/doc/$_installname/README.linux
+    install -Dm644 Linux.README \
+                   "$pkgdir"/usr/share/doc/$_installname/Linux.README
 }
