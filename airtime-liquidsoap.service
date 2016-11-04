@@ -1,0 +1,13 @@
+[Unit]
+Description=airtime-liquidsoap daemon
+After=local-fs.target remote-fs.target network.target
+
+[Service]
+Type=simple
+User=http
+Group=http
+ExecStart=/usr/bin/airtime-liquidsoap
+ExecReload=/usr/bin/kill -HUP $MAINPID
+
+[Install]
+WantedBy=multi-user.target

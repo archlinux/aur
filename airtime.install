@@ -1,0 +1,11 @@
+post_install() {
+	if type -P systemd-tmpfiles &> /dev/null; then
+    systemd-tmpfiles --create airtime.conf
+  fi
+}
+
+post_upgrade() {
+	if type -P systemd-tmpfiles &> /dev/null; then
+		systemd-tmpfiles --create airtime.conf
+ 	fi
+}
