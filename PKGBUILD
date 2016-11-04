@@ -1,7 +1,8 @@
+# shellcheck disable=SC2034,SC2154,SC2164
 pkgname=('shotcut')
 _srcname='shotcut'
 pkgdesc='Video editor'
-pkgver='16.09'
+pkgver='16.11'
 pkgrel='1'
 arch=('i686' 'x86_64')
 url='https://github.com/mltframework/shotcut'
