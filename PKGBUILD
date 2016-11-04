@@ -9,7 +9,7 @@
 pkgbase=python-pyflakes-git
 pkgname=(python-pyflakes-git python2-pyflakes-git)
 _reponame=pyflakes
-pkgver=0.8.1.r35.g03ffc76
+pkgver=1.3.0.r4.g140e231
 pkgrel=1
 pkgdesc='A lint-like tool for Python to identify common errors quickly without executing code (Git version)'
 arch=('any')
