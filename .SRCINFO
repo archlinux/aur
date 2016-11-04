@@ -1,6 +1,6 @@
 pkgbase = xvile
 	pkgdesc = vi like emacs
-	pkgver = 9.8_p
+	pkgver = 9.8_r
 	pkgrel = 1
 	url = http://invisible-island.net/vile/vile.html
 	arch = i686
@@ -27,6 +27,8 @@ pkgbase = xvile
 	source = ftp://invisible-island.net/vile/patches/vile-9.8n.patch.gz
 	source = ftp://invisible-island.net/vile/patches/vile-9.8o.patch.gz
 	source = ftp://invisible-island.net/vile/patches/vile-9.8p.patch.gz
+	source = ftp://invisible-island.net/vile/patches/vile-9.8q.patch.gz
+	source = ftp://invisible-island.net/vile/patches/vile-9.8r.patch.gz
 	md5sums = b5a0d89165f633a662cdb4b5c57f2e2f
 	md5sums = 685cb681943e9315a1689a6a6f4734cb
 	md5sums = f3842ea427c635d0ee96f6da8566fa56
@@ -44,6 +46,8 @@ pkgbase = xvile
 	md5sums = a820b20d9032e3021c1b4fdd5f01492b
 	md5sums = 55b726a610737bd3203a4478e352b6b9
 	md5sums = 6b0ad7123f74c6bb58f18fa0cfb50173
+	md5sums = c28888b36591275803f1c49a649a2e90
+	md5sums = d9c359c9c6718e45d751a3b405457c97
 
 pkgname = xvile
 

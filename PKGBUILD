@@ -3,33 +3,21 @@
 
 pkgname=xvile
 _basename=vile
-pkgver=9.8_p
+pkgver=9.8_r
 _basever=9.8
 pkgrel=1
 pkgdesc="vi like emacs"
 arch=('i686' 'x86_64')
 url="http://invisible-island.net/vile/vile.html"
+_download="ftp://invisible-island.net/vile"
 depends=('perl' 'vile' 'xaw3d')
 license=('custom')
 options=(!libtool)
 source=(
-	"ftp://invisible-island.net/vile/vile-${_basever}.tgz"
-	"ftp://invisible-island.net/vile/patches/vile-${_basever}a.patch.gz"
-	"ftp://invisible-island.net/vile/patches/vile-${_basever}b.patch.gz"
-	"ftp://invisible-island.net/vile/patches/vile-${_basever}c.patch.gz"
-	"ftp://invisible-island.net/vile/patches/vile-${_basever}d.patch.gz"
-	"ftp://invisible-island.net/vile/patches/vile-${_basever}e.patch.gz"
-	"ftp://invisible-island.net/vile/patches/vile-${_basever}f.patch.gz"
-	"ftp://invisible-island.net/vile/patches/vile-${_basever}g.patch.gz"
-	"ftp://invisible-island.net/vile/patches/vile-${_basever}h.patch.gz"
-	"ftp://invisible-island.net/vile/patches/vile-${_basever}i.patch.gz"
-	"ftp://invisible-island.net/vile/patches/vile-${_basever}j.patch.gz"
-	"ftp://invisible-island.net/vile/patches/vile-${_basever}k.patch.gz"
-	"ftp://invisible-island.net/vile/patches/vile-${_basever}l.patch.gz"
-	"ftp://invisible-island.net/vile/patches/vile-${_basever}m.patch.gz"
-	"ftp://invisible-island.net/vile/patches/vile-${_basever}n.patch.gz"
-	"ftp://invisible-island.net/vile/patches/vile-${_basever}o.patch.gz"
-	"ftp://invisible-island.net/vile/patches/vile-${_basever}p.patch.gz"
+	"$_download/vile-${_basever}.tgz"
+	$(printf "$_download/patches/vile-${_basever}%s.patch.gz " \
+		a b c d e f g h i j k l m n o p q r
+	)
 )
 md5sums=(
 	'b5a0d89165f633a662cdb4b5c57f2e2f'
@@ -49,6 +37,8 @@ md5sums=(
 	'a820b20d9032e3021c1b4fdd5f01492b'
 	'55b726a610737bd3203a4478e352b6b9'
 	'6b0ad7123f74c6bb58f18fa0cfb50173'
+	'c28888b36591275803f1c49a649a2e90'
+	'd9c359c9c6718e45d751a3b405457c97'
 )
 
 prepare() {
