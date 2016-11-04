@@ -49,5 +49,7 @@ package() {
 
 # Hidden in a subfunction not to show up in the .SRCINFO.
 extend-optdepends() {
-  optdepends+=("gnome-shell=$(meta version): for gnome-shell themes")
+  readarray -t < <(meta version | sed 's/[^[:digit:].]\+/\n/g' | sort -n)
+  optdepends+=("gnome-shell>=${MAPFILE[0]}: for gnome-shell themes")
+  optdepends+=("gnome-shell<${MAPFILE[-1]%.*}.$((${MAPFILE[-1]#*.} + 1)): for gnome-shell themes")
 }
