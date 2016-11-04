@@ -14,6 +14,8 @@ pkgbase = textext-hg
 	optdepends = pstoedit
 	optdepends = ghostscript
 	optdepends = imagemagick
+	provides = textext
+	conflicts = textext
 	source = textext::hg+https://bitbucket.org/pitgarbe/textext
 	md5sums = SKIP
 
