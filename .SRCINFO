@@ -9,6 +9,7 @@ pkgbase = powerdns-admin-git
 	makedepends = git
 	makedepends = python2-pip
 	makedepends = python2-virtualenv
+	makedepends = libmariadbclient
 	depends = python2
 	optdepends = powerdns: autoritative server itself
 	optdepends = postgresql: postgresql backend

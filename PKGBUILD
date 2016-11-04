@@ -8,7 +8,7 @@ url="https://github.com/ngoduykhanh/PowerDNS-Admin"
 license=('MIT')
 options=(!strip)
 depends=('python2')
-makedepends=('git' 'python2-pip' 'python2-virtualenv')
+makedepends=('git' 'python2-pip' 'python2-virtualenv' 'libmariadbclient')
 optdepends=('powerdns: autoritative server itself'
             'postgresql: postgresql backend'
             'mariadb: mysql backend')
