@@ -1,22 +1,23 @@
-# Maintainer: Doug Newgard <scimmia22 at outlook dot com>
+# Maintainer: Jakob Gahde <j5lx@fmail.co.uk>
+# Contributor: Doug Newgard <scimmia22 at outlook dot com>
 
 _pkgname=eruler
 pkgname=$_pkgname-git
-pkgver=0.1.0.r9.386f9e7
+pkgver=0.1.0.r17.7175c00
 pkgrel=1
 pkgdesc="On-Screen Ruler and Measurement Tools using EFL"
 arch=('i686' 'x86_64')
-url="http://www.enlightenment.org"
+url="https://www.enlightenment.org/"
 license=('GPL')
-depends=('elementary')
+depends=('efl')
 makedepends=('git')
-provides=("$_pkgname=$pkgver")
+provides=("${_pkgname}=${pkgver}")
 conflicts=("$_pkgname")
-source=("git://git.enlightenment.org/apps/$_pkgname.git")
+source=("git://git.enlightenment.org/apps/${_pkgname}.git")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/$_pkgname"
+  cd "${srcdir}/${_pkgname}"
 
   local v_ver=$(awk -F , '/^AC_INIT/ {gsub(/[\[\] -]/, ""); print $2}' configure.ac)
 
@@ -24,9 +25,7 @@ pkgver() {
 }
 
 build() {
-  cd "$srcdir/$_pkgname"
-
-  export CFLAGS="$CFLAGS -fvisibility=hidden"
+  cd "${srcdir}/${_pkgname}"
 
   ./autogen.sh --prefix=/usr
 
@@ -34,11 +33,9 @@ build() {
 }
 
 package() {
-  cd "$srcdir/$_pkgname"
+  cd "${srcdir}/${_pkgname}"
 
-  make DESTDIR="$pkgdir" install
+  make install DESTDIR="${pkgdir}"
 
-# install text files
-  install -d "$pkgdir/usr/share/doc/$_pkgname/"
-  install -m644 -t "$pkgdir/usr/share/doc/$_pkgname/" AUTHORS README
+  install -Dm644 -t "${pkgdir}/usr/share/doc/${_pkgname}/" "AUTHORS" "README"
 }
