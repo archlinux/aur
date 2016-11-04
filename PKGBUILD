@@ -12,7 +12,7 @@ makedepends=('jq')
 optdepends=('gtk-engine-murrine: for GTK2 themes')
 source=("version::version://dl.opendesktop.org/api/files/index?format=json&status=active&collection_content_id=${url##*/}"
         'https://dl.opendesktop.org/api/files/download/id/1468995652/Dark-Aurora.tar.gz')
-sha256sums=('1677d88c4ec71ec160aeb98855becaaadd5e1386a5a7ee3d645e3158488b0a01'
+sha256sums=('0f20c0287933ea77e0830d856ff75d6e99c80cf3ba185bda5fd6a662bae049b4'
             '6fbdaaae2e59b5f514ca003ba2552fcb7eb5724bd278e291ed5ae2036563d6ff')
 
 # The following is a very convoluted script because of makepkg's DLAGENTS escaping logic.
@@ -24,7 +24,7 @@ sha256sums=('1677d88c4ec71ec160aeb98855becaaadd5e1386a5a7ee3d645e3158488b0a01'
 DLAGENTS=("version::/usr/bin/bash -c $(
   printf '%s\n' "${DLAGENTS[@]}" | sed -n 's/http::\(.*\)/\1/p' \
     | sed 's/-[^ ] %o //' | sed 's/ /\\ /g' | sed 's/%u/$(echo\\ \"%u\"\\ |\\ sed\\ "s\/^version\/http\/")/'
-)\ |\ jq\ -j\ '.files.\"0\"'\ >\ %o"
+)\ |\ jq\ -j\ '.files.\"0\"'\ |\ sed\ '/downloaded/d'\ >\ %o"
 "${DLAGENTS[@]}")
 
 pkgver() {
