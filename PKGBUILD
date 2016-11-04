@@ -1,7 +1,7 @@
 # maintainer : fenugrec
 # contributors : xantares,  icarus 
 pkgname=freediag
-pkgver=1.07
+pkgver=1.08
 pkgrel=1
 pkgdesc="OBD-II vehicle diagnostic software and (mostly) J1978 compliant scan tool."
 arch=('i686' 'x86_64')
@@ -12,11 +12,11 @@ depends=('glibc')
 optdepends=('fltk: needed for scangui front-end'
 		'readline: better CLI')
 source=("http://downloads.sourceforge.net/project/$pkgname/$pkgname/1.0/$pkgname-$pkgver-src.tar.gz")
-sha256sums=('7249ea20f24f141d6b7dbb40703232f51de97ecff1c303ef6ed30d44c30ba7e6')
+sha256sums=('ec0d857538999e1e36f5564c64f652df46fc840d9d406ed053304cf22cc0e551')
 
 build() {
   cd "$pkgname-$pkgver-src"
-  cmake -DCMAKE_INSTALL_PREFIX=/usr -DBUILDGUI=ON -DUSE_RCFILE=ON -DUSE_INIFILE=OFF
+  cmake -DCMAKE_INSTALL_PREFIX=/usr -DBUILDGUI=ON -DUSE_RCFILE=ON -DUSE_INIFILE=ON
   make
 }
 
@@ -24,13 +24,5 @@ build() {
 package () {
   cd "$pkgname-$pkgver-src"
   make DESTDIR="$pkgdir" install
-  
-  install -d "$pkgdir"/usr/share/doc/freediag/carsim_examples
-  cp README* "$pkgdir"/usr/share/doc/freediag/
-  #hax cleanup. CMakeLists.txt should really be fixed upstream for the next release
-  mv "$pkgdir"/usr/bin/*.db "$pkgdir"/usr/share/doc/freediag/carsim_examples
-  mv "$pkgdir"/usr/doc/* "$pkgdir"/usr/share/doc/freediag
-  mv "$pkgdir"/usr/{A*,C*,R*} "$pkgdir"/usr/share/doc/freediag
-  rmdir "$pkgdir"/usr/doc
 }
 
