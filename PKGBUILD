@@ -1,16 +1,16 @@
 # Maintainer: M0Rf30
 
 pkgname=kodi-addon-superrepo-adult
-pkgver=0.5.205
+pkgver=0.7.04
 pkgrel=1
 pkgdesc='The world largest Kodi addon repository containing more than 1.300 addons'
-codename=helix
-classname=repository.superrepo.org.${codename}.others.adult
+codename=jarvis
+classname=superrepo.kodi.${codename}.repositories
 arch=('any')
 url='http://superrepo.org/'
 license=('GPL3')
 depends=('kodi')
-source=("http://mirrors.superrepo.org/addons/${codename}/${classname}/${classname}-${pkgver}.zip")
+source=("http://srp.nu/${codename}/repositories/superrepo/${classname}-${pkgver}.zip")
 
 package() {
   mkdir -p "${pkgdir}/usr/share/kodi/addons/"
@@ -19,4 +19,4 @@ package() {
   find "${pkgdir}/usr/share/kodi/addons/${classname}/" -type f -exec chmod 644 {} \;
 }
 
-md5sums=('2ff22cb7257d8e95a645a97abd22bb80')
+md5sums=('5b0811789cc736fd7371dadaa65a981f')
