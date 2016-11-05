@@ -1,4 +1,4 @@
-nam = arch-upgrade
+nam = $(shell sed -n 's/^pkgname=//p' PKGBUILD)
 src = PKGBUILD
 inf = .SRCINFO
 
