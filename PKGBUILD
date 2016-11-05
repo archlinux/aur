@@ -8,7 +8,7 @@ pkgdesc="Video Player based on EFL - Development version"
 arch=('i686' 'x86_64')
 url="https://www.enlightenment.org/p.php?p=about/rage"
 license=('BSD')
-depends=('elementary')
+depends=('efl')
 makedepends=('git')
 provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")

@@ -7,7 +7,7 @@ pkgbase = rage-git
 	arch = x86_64
 	license = BSD
 	makedepends = git
-	depends = elementary
+	depends = efl
 	provides = rage=0.1.4.r132.48d9936
 	conflicts = rage
 	source = git://git.enlightenment.org/apps/rage.git
