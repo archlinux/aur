@@ -3,7 +3,7 @@
 pkgname=konqueror-git
 pkgver=r14064.fc206b3
 pkgrel=1
-pkgdesc="http://kde.org/applications/system/konqueror/"
+pkgdesc="KDE File Manager and Web Browser"
 arch=(i686 x86_64)
 url='https://userbase.kde.org/Konqueror'
 license=(LGPL)
