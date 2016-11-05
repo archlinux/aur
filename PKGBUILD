@@ -11,7 +11,7 @@ _language_ini_desktop_ver=1.18.3
 _language_liquid_ver=0.5.1
 _language_patch2_url="${_fus_url}/language-patch2"
 _language_patch2_ver=1.0.0
-_language_unix_shell_ver=0.38.2
+_language_unix_shell_ver=0.39.0
 _language_vala_modern_ver=0.3.2
 _terminal_fusion_ver=2.4.2
 
@@ -20,7 +20,7 @@ _pkgrel=7
 _pkgver=1.12.0
 pkgver="${_pkgver}.beta${_pkgrel}.m${_language_gfm2_ver}"
 _ver=$_pkgver-beta${_pkgrel}
-pkgrel=1
+pkgrel=2
 pkgdesc='Hackable text editor for the 21st Century, built using web technologies on the Electron framework - Beta channel.'
 arch=('x86_64' 'i686')
 url="https://github.com/${_pkgname}/${_pkgname}"
