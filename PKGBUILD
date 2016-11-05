@@ -5,7 +5,7 @@ _gtk3_max='4.0'
 _theme_name=Adapta
 _gtk2_min='2.24.30'
 pkgver="3.22.2.73"
-pkgrel=1
+pkgrel=2
 pkgdesc="An adaptive Gtk+ theme based on Material Design Guidelines."
 arch=(any)
 url="https://github.com/adapta-project/${pkgname}"
@@ -14,8 +14,11 @@ depends=("gtk2>=${_gtk2_min}"
          "gtk3>=${_gtk3_min}.9"
          "gtk3<=${_gtk3_max}.99"
          'gtk-engines>=2.21.0'
-         'gtk-engine-murrine>=0.98.1')
-optdepends=("gnome-shell>=${_gtk3_min}.3: The GNOME Shell"
+         'gtk-engine-murrine>=0.98.1'
+         'cantarell-fonts')
+optdepends=('ttf-roboto: The recommended font'
+            'noto-fonts: The recommended font for improved language support'
+            "gnome-shell>=${_gtk3_min}.3: The GNOME Shell"
             "gnome-flashback>=${_gtk3_min}.2: The GNOME flashback shell"
             'budgie-desktop>=10.2.5: The Budgie desktop'
             'cinnamon>=2.8.6: The Cinnamon desktop'
