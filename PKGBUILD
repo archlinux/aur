@@ -9,7 +9,7 @@ url="https://madmurphy.github.io/libconfini/"
 license=("GPL")
 makedepends=('intltool')
 source=("https://github.com/madmurphy/${pkgname}/archive/${pkgver}-${pkgrel}.tar.gz")
-md5sums=('4a2f5b34b97efa8a0571bb72f764bb53')
+md5sums=('0da7a5b3745f0822afbbc871ecebb49d')
 
 prepare() {
 
