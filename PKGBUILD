@@ -24,8 +24,8 @@ source=(https://launchpad.net/$pkgname/${_majorver}/$pkgver/+download/$pkgname-$
 
 sha256sums=('07a76f338304baadc4ad69d025fe000b1ab4779a251ae8f338afdc13ef1e0f24'
             'SKIP'
-            'd2fea5a62bacae350cfe56bad1b293c12afe803bec10e546b901324e582e89af'
-            '076aebfa815543f85d26215056a921996fbff14d1678ddfa07ab50dbfda94ba1'
+            '124300162dab2a923c024b91c5a977dbee901376a22eefc64cad2f91319876d5'
+            '9704478ae13fe1c3fb2747afac86c31b1b4593493f0e1425ae2b77d47878e32e'
             'eea47ec2a3fb0c1104193bed91586cfccda745f2e0a473f6d1d2a0d2fe42c413')
 
 # 3D3664BB: AppArmor Development Team (AppArmor signing key) <apparmor@lists.ubuntu.com>
