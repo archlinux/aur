@@ -21,6 +21,7 @@ build() {
 	./AdjustMt.sh
 	qmake-qt4
 	make
+	lrelease-qt4 src/translations/mp3diags_*.ts
 }
 
 package() {
@@ -40,4 +41,9 @@ package() {
 		install -m644 -t "${pkgdir}/usr/share/icons/hicolor/${i}x${i}/apps" \
 		                 "MP3Diags${i}.png"
 	done
+
+	cd "${srcdir}/MP3Diags-${pkgver}/src/translations"
+	install -m755 -d "${pkgdir}/usr/share/mp3diags/translations"
+	install -m644 -t "${pkgdir}/usr/share/mp3diags/translations" \
+	                 *.qm
 }
