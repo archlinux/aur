@@ -1,5 +1,5 @@
-# Maintainer: Guillaume Friloux <guillaume@friloux.me>
-# Co-Maintainer: Maxime "pep" Buquet <archlinux@bouah.net>
+# Maintainer: Maxime "pep" Buquet <archlinux@bouah.net>
+# Contributor: Guillaume Friloux <guillaume@friloux.me>
 
 _pkgbase='movim'
 _tagname=v0.10
