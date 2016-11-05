@@ -4,7 +4,7 @@
 pkgname=kerio-control-vpnclient_8_5
 _pkgname=${pkgname%%_*}
 pkgver=8.5.3.3469
-pkgrel=1
+pkgrel=2
 pkgdesc="Kerio Control VPN client for corporate networks (version 8.5, the last compatible VPN Client for older Kerio WinRoute Firewall 6.x)."
 arch=('i686' 'x86_64')
 url="http://www.kerio.com/control"
@@ -20,7 +20,7 @@ source=("http://download.kerio.com/dwn/control/control-${pkgver%.*}-${pkgver##*.
         "kvpnc.conf"
         "kvpnc.service")
 sha256sums=('0aa1f9f6edd9c6fc4b08f0235a23f3afa608da4aada05f22ed5703ad341a42ba'
-            '8725cb7067f0640e75f6ac4d1894b067bca577fc0f1db1fdcedc937e8ca5f9a7'
+            '984ac81f6fe291ca11a4dc6822bcb1e7efaf82d14259f5395247fdbdef4c1759'
             '2f15a0d88c9fa915cd9150796638811daec911e6824b8ff5f96f131352d1e74a'
             'bd8b1aabc31b9b24c4b63ce8099bef111dc84bd4923c77d42e05d3f1704d5c17')
 

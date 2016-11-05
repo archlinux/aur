@@ -105,7 +105,7 @@ configure() {
   [ -z "$PORT_NUMBER" ] && die 3 "The Kerio VPN server port number must be set."
 
   SSL_REPLY=$(execute_with_timeout $COMMAND_TIMEOUT bash -c "echo | \
-      openssl s_client -ssl3 -connect $SERVER_NAME:$PORT_NUMBER 2> /dev/null"
+      openssl s_client -connect $SERVER_NAME:$PORT_NUMBER 2> /dev/null"
   )
   [ -z $SSL_REPLY ] && die 4 "Unable to connect to the Kerio VPN server"
 
