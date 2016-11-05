@@ -19,7 +19,7 @@ sha256sums=('SKIP'
             '3aaa567f7a0a4efce3ac127344a9b795c5494c9d011e27a7d454d632ba3d533d')
 
 build() {
-  cd ${srcdir}/
+  cd ${srcdir}/tripwire-open-source-master
 
 #build package
 #  CFLAGS="$CFLAGS -fno-strict-aliasing" CXXFLAGS="$CXXFLAGS -fno-strict-aliasing" \
