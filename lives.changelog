@@ -1,3 +1,8 @@
+2016-11-05 Angelo "Encelo" Theodorou  <encelo@users.sourceforge.net>
+
+	* PKGBUILD :
+	Removed toonz patch as no more needed
+
 2016-09-08 Angelo "Encelo" Theodorou  <encelo@users.sourceforge.net>
 
 	* PKGBUILD :
