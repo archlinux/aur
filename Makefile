@@ -1,4 +1,4 @@
-nam = cssc
+nam = $(shell sed -n 's/^pkgname=//p' PKGBUILD)
 src = PKGBUILD
 inf = .SRCINFO
 
