@@ -26,12 +26,12 @@ pkgver() {
 
 build() {
   cd ncmpcpp || exit
-  ./autogen.sh BOOST_LIB_SUFFIX='' \
-  --prefix=/usr \
-  --enable-clock \
-  --enable-outputs \
-  --enable-visualizer
-  ./configure --prefix=/usr
+  ./autogen.sh BOOST_LIB_SUFFIX=''
+  ./configure \
+    --prefix=/usr \
+    --enable-clock \
+    --enable-outputs \
+    --enable-visualizer
   make
 } 
 
