@@ -1,0 +1,16 @@
+pkgbase = hxqz-git
+	pkgdesc = hex arithmetic quiz
+	pkgver = r3.0b6defd
+	pkgrel = 1
+	url = http://github.com/KeyboardFire/hxqz
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = glibc
+	provides = hxqz
+	conflicts = hxqz
+	source = hxqz::git+git://github.com/KeyboardFire/hxqz#branch=master
+	md5sums = SKIP
+
+pkgname = hxqz-git
+
