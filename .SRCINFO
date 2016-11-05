@@ -1,7 +1,7 @@
 pkgbase = kaku-bin
 	pkgdesc = The next generation music client.
 	pkgver = 1.8.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://kaku.rocks
 	arch = x86_64
 	license = MIT
@@ -16,6 +16,7 @@ pkgbase = kaku-bin
 	optdepends = xdialog: .desktop file installation dialog
 	optdepends = zenity: .desktop file installation dialog
 	optdepends = kdebase-kdialog: .desktop file installation dialog
+	optdepends = libnotify: Desktop notifications
 	conflicts = kaku
 	noextract = Kaku-1.8.0-x86_64.AppImage
 	options = !strip

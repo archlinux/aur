@@ -1,7 +1,7 @@
 
 pkgname=kaku-bin
 pkgver=1.8.0
-pkgrel=1
+pkgrel=2
 pkgdesc="The next generation music client."
 # TODO: add 32 bit
 arch=('x86_64')
@@ -10,7 +10,8 @@ license=('MIT')
 depends=('gconf' 'gtk2' 'fuse' 'xdg-utils' 'libxtst' 'libxss' 'nss' 'alsa-lib')
 optdepends=('xdialog: .desktop file installation dialog'
             'zenity: .desktop file installation dialog'
-            'kdebase-kdialog: .desktop file installation dialog')
+            'kdebase-kdialog: .desktop file installation dialog'
+            'libnotify: Desktop notifications')
 conflicts=('kaku')
 options=(!strip)
 noextract=("Kaku-$pkgver-x86_64.AppImage")
