@@ -2,14 +2,14 @@
 # Contributor: Ondrej Martinak <omartinak@gmail.com>
 
 pkgname=sfml
-pkgver=2.4.0
+pkgver=2.4.1
 pkgrel=1
 pkgdesc='A simple, fast, cross-platform, and object-oriented multimedia API'
 arch=('i686' 'x86_64')
 url='http://www.sfml-dev.org/'
 license=('zlib')
-depends=('libsndfile' 'libxrandr' 'libjpeg' 'openal' 'glew' 'freetype2' 'xcb-util-image')
-makedepends=('mesa' 'cmake' 'doxygen' 'git')
+depends=('libsndfile' 'libxrandr' 'libjpeg' 'openal' 'glew' 'freetype2' 'libx11')
+makedepends=('mesa' 'cmake' 'doxygen' 'git' 'systemd')
 install=sfml.install
 source=("git+git://github.com/LaurentGomila/SFML.git#tag=${pkgver}")
 md5sums=('SKIP')
