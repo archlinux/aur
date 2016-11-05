@@ -1,0 +1,16 @@
+post_install() {
+  echo 'Post-installation tutorial'
+  echo 'https://github.com/movim/movim/wiki/Install-Movim#2-database-configuration'
+  echo
+  echo 'You should also read'
+  echo 'https://github.com/movim/movim/wiki/Install-Movim#general-behaviour'
+  echo
+  echo 'To complete the setup, please install a database and configure a reverse proxy.'
+  echo 'Don’t forget to adapt /etc/webapps/movim/db.inc.php and /etc/default/movim'
+  echo 'to your server settings'
+  echo 'Once everything is setup, use `systemctl start movim` to start the daemon'
+}
+
+post_upgrade() {
+  post_install $1
+}

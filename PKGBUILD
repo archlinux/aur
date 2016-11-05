@@ -1,68 +1,72 @@
-# $Id$
 # Maintainer: Guillaume Friloux <guillaume@friloux.me>
+# Co-Maintainer: Maxime "pep" Buquet <archlinux@bouah.net>
 
+_pkgbase='movim'
 pkgname=movim-git
-pkgver=r4254
+pkgver=r5044.a086079
 pkgrel=1
 pkgdesc="Movim is a decentralized social network, written in PHP and HTML5 and based on the XMPP standard protocol."
 arch=('any')
-url="https://movim.eu/"
-licence=('AGPL')
+url='https://movim.eu'
+license=('AGPL3')
+provides=('movim')
 depends=('php-gd' 'php-imagick')
-optdepends=('mariadb: to use the MySQL database backend')
-makedepends=('php-composer' 'git' 'mercurial')
-source=("$pkgname"::'git+https://github.com/edhelas/movim'
-        'movim.env'
-        'movim.service')
-md5sums=('SKIP'
-         'b0f837f56d80f7da3e8b01315890ec2e'
-         '01c4b71e1c0c13363f8158922280b543')
-backup=('etc/default/movim')
+optdepends=('postgresql: to use the postgresql database backend'
+            'php-pgsql: php bindings for postgresql'
+            'mariadb: to use the mysql database backend'
+            'nginx: reverse proxy'
+            'apache: reverse proxy'
+            'php-fpm: PHP FactCGI process manager')
+makedepends=('git' 'composer')
+source=("$_pkgbase::git://github.com/movim/movim"
+        movim.env
+        movim.service)
+install=movim.install
+sha256sums=('SKIP'
+            '5c36a52a410a61f9af9daf9cd12e63b1ef7bab10dab9541b5d3cc8aa4805880c'
+            '4e9730b357b909912ea2f15ed8ca24189725f79d910da140800d586921c3e431')
+backup=("etc/webapps/$_pkgbase/db.inc.php"
+        "etc/default/movim")
 
 pkgver() {
-  cd "$srcdir/$pkgname"
-  printf 'r%s' "$(git rev-list --count HEAD)"
-}
-
-prepare() {
-  cd "$srcdir/$pkgname"
-
-  find . -type f -name .gitignore -delete
-  find $(pwd) -name .git -type d -exec rm -rf {} +
-  rm -fr INSTALL.md README.md .dir-locals.el \
-         debian CHANGELOG.md .bzrignore build.sh tests
+  cd $srcdir/$_pkgbase
+  echo "r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
 }
 
 build() {
-  msg "Starting build..."
-  cd "$srcdir/$pkgname"
-  composer install
+  cd $srcdir/$_pkgbase
+  XDG_CACHE_HOME="$srcdir/cache" composer install \
+    --no-interaction --no-dev --no-suggest
+  rm -rf "$srcdir/cache"
 }
 
 package() {
-  #find ${srcdir}/${pkgname}/ -type d -name .git -exec rm -rf {} \;
+    cd "$srcdir/$_pkgbase"
 
-  # install license
-  install -d ${pkgdir}/usr/share/licenses/${pkgname}
-  mv ${srcdir}/${pkgname}/COPYING ${pkgdir}/usr/share/licenses/${pkgname}
+    install -m755 -d "$pkgdir/usr/share/webapps/$_pkgbase"
 
-  # install project
-  install -d ${pkgdir}/usr/share/webapps/
-  cp -a ${srcdir}/${pkgname} ${pkgdir}/usr/share/webapps/
-  chown -R http:http ${pkgdir}/usr/share/webapps/${pkgname}
-  find ${pkgdir}/usr/share/webapps/${pkgname} -type f -exec chmod 0664 {} \;
-  find ${pkgdir}/usr/share/webapps/${pkgname} -type d -exec chmod 0755 {} \;
+    # Movim-editable directories
+    install -o http -m755 -d "$pkgdir/usr/share/webapps/$_pkgbase"/{cache,users}
 
-  # move config to /etc
-  install -d ${pkgdir}/etc/webapps/${pkgname}
-  mv ${pkgdir}/usr/share/webapps/${pkgname}/config ${pkgdir}/etc/webapps/${pkgname}/config
-  chown -R http:http ${pkgdir}/etc/webapps/${pkgname}
-  ln -s /etc/webapps/${pkgname}/config ${pkgdir}/usr/share/webapps/${pkgname}/config
-  
-  # Add nginx example conf file
+    cp -r app lib locales src system themes vendor "$pkgdir/usr/share/webapps/$_pkgbase"
+    install -Dm644 VERSION INSTALL.md README.md index.php linker.php manifest.webapp \
+      "$pkgdir/usr/share/webapps/$_pkgbase"
+    install -Dm755 daemon.php mud.php "$pkgdir/usr/share/webapps/$_pkgbase"
 
-  # Add systemd service
-  install -d ${pkgdir}/etc/default
-  install -m 744 ${srcdir}/movim.env ${pkgdir}/etc/default/movim
-  install -Dm644 ${srcdir}/movim.service "${pkgdir}"/usr/lib/systemd/system/movim.service
+    # Configuration file
+    install -m750 -d "$pkgdir/etc/webapps/$_pkgbase"
+    install -Dm750 config/db.example.inc.php "$pkgdir/etc/webapps/$_pkgbase/db.inc.php"
+    chown -R http:root "$pkgdir/etc/webapps/$_pkgbase"
+    chmod -R u+rwX,g+rwX,o-rwx "$pkgdir/etc/webapps/$_pkgbase"
+    ln -s "/etc/webapps/$_pkgbase" "$pkgdir/usr/share/webapps/$_pkgbase/config"
+
+    # Log files
+    install -m770 -d "$pkgdir/var/log/webapps/$_pkgbase"
+    chown -R http:root "$pkgdir/var/log/webapps/$_pkgbase"
+    ln -s "/var/log/webapps/$_pkgbase" "$pkgdir/usr/share/webapps/$_pkgbase/log"
+
+    # Systemd unit file
+    install -m755 -d "$pkgdir/etc/default"
+    install -o http -Dm640 "$srcdir/movim.env" "$pkgdir/etc/default/$_pkgbase"
+    install -Dm644 "$srcdir/movim.service" "$pkgdir/usr/lib/systemd/system/movim.service"
 }
