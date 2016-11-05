@@ -24,7 +24,7 @@
 # under /usr/include/pd-l2ork.
 
 pkgname=purr-data
-pkgver=20161101.r3100.abd40b8
+pkgver=20161105.r3125.8cc88be
 pkgrel=1
 pkgdesc="Jonathan Wilkes' nw.js variant of Pd-L2Ork (git version)"
 url="https://git.purrdata.net/jwilkes/purr-data"
@@ -42,19 +42,19 @@ makedepends=('autoconf' 'automake' 'libtool' 'git' 'rsync')
 provides=('pd-l2ork')
 conflicts=('pd-l2ork' 'pd-l2ork-git')
 install=purr-data.install
-options=('!makeflags')
+options=('!makeflags' '!strip')
 source=("$pkgname::git+https://git.purrdata.net/aggraef/purr-data.git#branch=release"
 	"RTcmix-pd-LCPLAY-stabilize.patch")
 md5sums=('SKIP'
          '39c53063dc18681f29b12c08d9c453aa')
 # nw.js sdk binaries
 nwjsname=nwjs-sdk
-nwjsver=0.17.6
+nwjsver=0.18.5
 source_common="http://dl.nwjs.io/v$nwjsver/$nwjsname-v$nwjsver-linux"
 source_i686=("$source_common-ia32.tar.gz")
 source_x86_64=("$source_common-x64.tar.gz")
-md5sums_i686=('5d878e8849c54e758884b285307e5955')
-md5sums_x86_64=('2a01edf88ed2f60ec1e0abf91ef2ce0c')
+md5sums_i686=('1d5e9e25c36b7c3221e317baa7d94b64')
+md5sums_x86_64=('3c6391a30c74531e918c7434caa2730f')
 
 if [ "$CARCH" = "i686" ]; then
   _arch="ia32"
