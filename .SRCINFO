@@ -1,0 +1,16 @@
+pkgbase = quick-back-git
+	pkgdesc = Quick, simple command line backup tool
+	pkgver = r4.914774a
+	pkgrel = 1
+	url = https://github.com/PenguinSnail/Quick-Back
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = rsync
+	provides = quick-back
+	conflicts = quick-back
+	source = git://github.com/PenguinSnail/Quick-Back
+	md5sums = SKIP
+
+pkgname = quick-back-git
+
