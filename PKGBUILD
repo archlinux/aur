@@ -2,7 +2,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=inkscape-092-bzr
-pkgver=r15141
+pkgver=r15152
 pkgrel=1
 pkgdesc="An Open Source vector graphics editor, using Scalable Vector Graphics (SVG) file format"
 url="https://launchpad.net/inkscape"
@@ -11,7 +11,7 @@ license=('GPL' 'LGPL')
 depends=('aspell' 'gtkspell' 'gtkmm' 'libexif' 'gc' 'poppler-glib' 'potrace'
 	 'libxslt' 'gsl' 'imagemagick' 'desktop-file-utils' 'python2'
 	 'popt' 'dbus-glib' 'libcdr' 'libvisio' 'python2' 'gdk-pixbuf2'
-	 'hicolor-icon-theme')
+	 'hicolor-icon-theme' 'ttf-linux-libertine')
 optdepends=('python2-numpy: some extensions'
             'python2-lxml: some extensions and filters'
             'uniconvertor: reading/writing to some proprietary formats'
@@ -20,7 +20,7 @@ optdepends=('python2-numpy: some extensions'
 makedepends=('boost' 'intltool' 'bzr' 'gettext' 'pango' 'fontconfig')
 provides=('inkscape')
 conflicts=('inkscape')
-options=('!libtool')
+options=('!libtool' '!makeflags')
 source=('inkscape-0.92.x::bzr+http://bazaar.launchpad.net/~inkscape.dev/inkscape/0.92.x')
 md5sums=('SKIP')
 _bzrmod="inkscape-0.92.x"
@@ -44,27 +44,17 @@ prepare() {
 
 build() {
   cd "$srcdir/$_bzrmod"
-  [[ -d ../build ]] || mkdir ../build
-  export CXXFLAGS+=" `pkg-config --cflags glib` -fPIC -std=c++11"
-  ./autogen.sh
-  sed -i 's|python -c|python2 -c|g' configure
-  cd ../build
-  ../$_bzrmod/configure LIBS='-lpangoft2-1.0 -lfontconfig' \
-    --prefix=/usr \
-    --without-gnome-vfs \
-    --enable-lcms \
-    --enable-poppler-cairo \
-    --disable-gtk3-experimental \
-    --enable-dbusapi \
-    --enable-visio \
-    --enable-wpg \
-    --disable-rpath \
-    --enable-binreloc \
-    --disable-dependency-tracking
-   make 
+  [[ -d build ]] || mkdir build
+  cd build
+  
+  cmake .. \
+	-DCMAKE_INSTALL_PREFIX=/usr \
+	-DCMAKE_BUILD_TYPE=RELEASE \
+	-DWITH_DBUS=OFF
+  make 
 }
 
 package() {
-  cd "$srcdir/build"
+  cd "$srcdir/$_bzrmod/build"
   make DESTDIR=$pkgdir install
 }
