@@ -1,16 +1,18 @@
 pkgbase = tripwire-git
 	pkgdesc = An intrusion detection system
-	pkgver = latest
+	pkgver = r74.acf7bd3
 	pkgrel = 1
 	url = http://sourceforge.net/projects/tripwire/
 	install = tripwire-git.install
 	arch = i686
 	arch = x86_64
 	license = GPL
+	makedepends = git
 	depends = openssl
+	provides = tripwire
 	backup = etc/tripwire/twpol.txt
 	backup = etc/tripwire/twcfg.txt
-	source = https://github.com/Tripwire/tripwire-open-source/archive/master.zip
+	source = tripwire-open-source::git://github.com/Tripwire/tripwire-open-source.git#branch=master
 	source = twpol.txt
 	source = twcfg.txt
 	sha256sums = SKIP

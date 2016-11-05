@@ -3,32 +3,42 @@
 # Contributor: eliott <eliott@cactuswax.net>
 
 pkgname=tripwire-git
-pkgver=latest
+pkgver=r74.acf7bd3
 pkgrel=1
 pkgdesc="An intrusion detection system"
 arch=('i686' 'x86_64')
 url="http://sourceforge.net/projects/tripwire/"
 license=('GPL')
 depends=('openssl')
+makedepends=('git')
+provides=('tripwire')
+#replaces=('tripwire')
 backup=('etc/tripwire/twpol.txt' 'etc/tripwire/twcfg.txt')
 install=$pkgname.install
 #options=('!makeflags')
-source=(https://github.com/Tripwire/tripwire-open-source/archive/master.zip twpol.txt twcfg.txt)
+source=('tripwire-open-source::git://github.com/Tripwire/tripwire-open-source.git#branch=master' twpol.txt twcfg.txt)
 sha256sums=('SKIP'
             '4da49a185fee570e0a7bdc7acaadc0d2bf7f4c488057e93e60b2a2819807cd9d'
             '3aaa567f7a0a4efce3ac127344a9b795c5494c9d011e27a7d454d632ba3d533d')
 
 build() {
-  cd ${srcdir}/tripwire-open-source-master
+  cd ${srcdir}/tripwire-open-source
 
 #build package
 #  CFLAGS="$CFLAGS -fno-strict-aliasing" CXXFLAGS="$CXXFLAGS -fno-strict-aliasing" \
-    ./configure --prefix=/usr --sysconfdir=/etc/tripwire
+    ./configure --sysconfdir=/etc/tripwire
   make
 }
 
+pkgver() {
+ cd ${srcdir}/tripwire-open-source
+  ( set -o pipefail
+    git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  )
+}
 package () {
-  cd ${srcdir}/
+  cd ${srcdir}/tripwire-open-source
 
   # This package doesn't have a typical make install, so we do it by hand.
  
@@ -57,6 +67,8 @@ package () {
   install -m644 man/man8/*.8 ${pkgdir}/usr/share/man/man8/
 
 #install configuration files
+  mkdir ${pkgdir}/etc
+  mkdir ${pkgdir}/etc/tripwire
   install -d ${pkgdir}/etc/$pkgname
   install -m644 ${srcdir}/twpol.txt ${pkgdir}/etc/tripwire/twpol.txt
   install -m644 ${srcdir}/twcfg.txt ${pkgdir}/etc/tripwire/twcfg.txt
