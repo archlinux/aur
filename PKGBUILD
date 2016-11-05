@@ -117,8 +117,6 @@ prepare() {
 	# To that end, it is now defaulting to 100Hz, and it is recommended to use
 	# this as the default choice for it leads to more throughput and power
 	# savings as well.
-	#
-	# http://ck-hack.blogspot.com/2016/10/linux-48-ck5-muqss-version-0120.html
 	sed -i -e 's/^CONFIG_HZ_300=y/# CONFIG_HZ_300 is not set/' \
 		-i -e 's/^# CONFIG_HZ_100 is not set/CONFIG_HZ_100=y/' \
 		-i -e 's/^CONFIG_HZ=300/CONFIG_HZ=100/' .config
@@ -149,7 +147,7 @@ prepare() {
 			# modprobe configs
 			zcat /proc/config.gz > ./.config
 		else
-			warning "You kernel was not compiled with IKCONFIG_PROC!"
+			warning "Your kernel was not compiled with IKCONFIG_PROC!"
 			warning "You cannot read the current config!"
 			warning "Aborting!"
 			exit
