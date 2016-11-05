@@ -7,7 +7,7 @@ pkgbase = equate-git
 	arch = x86_64
 	license = MIT
 	makedepends = git
-	depends = elementary
+	depends = efl
 	source = git://git.enlightenment.org/apps/equate.git
 	md5sums = SKIP
 
