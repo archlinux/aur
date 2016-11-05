@@ -4,7 +4,7 @@
 pkgbase=linux-surfacepro3-rt
 _srcname=linux-4.8.6
 pkgver=4.8.6
-pkgrel=1.9
+pkgrel=1.91
 arch=('i686' 'x86_64')
 url="https://github.com/alyptik/linux-surfacepro3-rt"
 license=('GPL2')
