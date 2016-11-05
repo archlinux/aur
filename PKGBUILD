@@ -4,7 +4,7 @@
 
 pkgname=mp3diags
 pkgver=1.2.03
-pkgrel=1
+pkgrel=2
 pkgdesc="Identify issues with your MP3 files, fix those issues and make other changes"
 url="http://mp3diags.sourceforge.net/"
 license=("GPL")
