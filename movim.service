@@ -1,0 +1,14 @@
+[Unit]
+Description=Movim Daemon
+After=network.target
+
+[Service]
+User=http
+WorkingDirectory=/usr/share/webapps/movim
+EnvironmentFile=/etc/default/movim
+ExecStartPre=/usr/bin/php mud.php db --set
+ExecStart=/usr/bin/php daemon.php $MOVIM_URL $MOVIM_PORT
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
