@@ -2,20 +2,20 @@
 
 pkgname=libconfini
 pkgver=1.3
-pkgrel=3
+pkgrel=4
 pkgdesc='Yet another INI parser'
 arch=('i686' 'x86_64')
 url="https://madmurphy.github.io/libconfini/"
 license=("GPL")
 makedepends=('intltool')
 source=("https://github.com/madmurphy/${pkgname}/archive/${pkgver}-${pkgrel}.tar.gz")
-md5sums=('7342eb154ed81916999d357d92e05114')
+md5sums=('d3b2846b161b3e78e8f62c187059b095')
 
 prepare() {
 
 	cd "${srcdir}/${pkgname}-${pkgver}-${pkgrel}"
 	./autogen.sh
-	./configure --prefix=/usr CFLAGS='-g -O3' CXXFLAGS='-g -O3' JFLAGS='-g -O3' FFLAGS='-g -O3'
+	./configure --prefix=/usr CFLAGS='-g -O3'
 
 }
 
