@@ -1,17 +1,18 @@
+
 # Maintainer: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=kget-frameworks-git
-pkgver=r2719.845570a
+pkgver=r2733.3336063
 pkgrel=1
 pkgdesc='KDE Download Manager'
 arch=(i686 x86_64)
 url='https://www.kde.org/applications/internet/kget/'
 license=(GPL)
-depends=(kdelibs4support kcmutils knotifyconfig qca-qt5 gpgmepp)
+depends=(kdelibs4support kcmutils knotifyconfig qca-qt5 qgpgme)
 makedepends=(extra-cmake-modules git kdoctools python boost kdesignerplugin)
 conflicts=(kdenetwork-kget kget)
 provides=(kget)
-source=("git://anongit.kde.org/kget.git#branch=kf5_port")
+source=("git://anongit.kde.org/kget.git#branch=frameworks")
 sha256sums=('SKIP')
 
 pkgver() {
