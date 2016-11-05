@@ -1,8 +1,8 @@
 # Maintainer: Cosku Bas <cosku.bas@gmail.com>
 
 pkgname=quetoo-data-git
-pkgver=r476.d953ad8
-pkgrel=1
+pkgver=r73.b36227a
+pkgrel=2
 pkgdesc="Quetoo is a Free first person shooter for Mac, PC and Linux."
 arch=('any')
 url="http://quetoo.org"
