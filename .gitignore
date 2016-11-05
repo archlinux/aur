@@ -1,0 +1,6 @@
+pkg/
+src/
+.AURINFO
+jack-matchmaker-*.tar.xz
+jack-matchmaker-*.tar.gz
+jack-matchmaker-*.src.tar.gz
