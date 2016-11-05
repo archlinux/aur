@@ -1,4 +1,4 @@
-# Maintainer: Daniel Lanadu <daniel+aur@landau.fi>
+# Maintainer: Daniel Landau <daniel+aur@landau.fi>
 # Contributor: sekret, mail=$(echo c2VrcmV0QHBvc3Rlby5zZQo= | base64 -d)
 # Contributor: mmm
 # Contributor: bslackr <brendan at vastactive dot com>
@@ -6,13 +6,13 @@
 # Contributor: Thomas Dziedzic < gostrc at gmail >
 _pkgname=lightspark
 pkgname=$_pkgname-git
-pkgver=0.7.2.r461.g10b91ea
+pkgver=0.7.2.r584.g1876a7b
 pkgrel=1
 pkgdesc="An open source flash player implementation"
 arch=('i686' 'x86_64')
 url="http://lightspark.sourceforge.net"
 license=('LGPL3')
-depends=('gtk2' 'boost-libs' 'glew' 'ffmpeg' 'curl' 'desktop-file-utils' 'rtmpdump' 'sdl_mixer' 'glibmm')
+depends=('gtk2' 'boost-libs' 'glew' 'ffmpeg' 'curl' 'desktop-file-utils' 'rtmpdump' 'sdl2_mixer' 'glibmm')
 makedepends=('git' 'cmake' 'nasm' 'llvm' 'boost')
 optdepends=('gnash-gtk: Gnash fallback support')
 provides=("$_pkgname")
