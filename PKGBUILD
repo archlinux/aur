@@ -1,7 +1,7 @@
 # Maintainer: SebRmv <sbriais at-symbol free dot fr>
 pkgname=omake-git
 pkgver=r328.988b2a7
-pkgrel=1
+pkgrel=2
 pkgdesc="A build system designed for scalability and portability"
 arch=('i686' 'x86_64')
 url=http://projects.camlcity.org/projects/omake.html
@@ -9,6 +9,7 @@ license=('GPL')
 depends=('ncurses' 'readline')
 makedepends=('git' 'gcc' 'ocaml')
 provides=('omake')
+conflicts=('omake')
 source=('omake::git+https://github.com/ocaml-omake/omake.git')
 sha1sums=(SKIP)
 

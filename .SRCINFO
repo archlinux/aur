@@ -1,7 +1,7 @@
 pkgbase = omake-git
 	pkgdesc = A build system designed for scalability and portability
 	pkgver = r328.988b2a7
-	pkgrel = 1
+	pkgrel = 2
 	url = http://projects.camlcity.org/projects/omake.html
 	arch = i686
 	arch = x86_64
@@ -12,6 +12,7 @@ pkgbase = omake-git
 	depends = ncurses
 	depends = readline
 	provides = omake
+	conflicts = omake
 	source = omake::git+https://github.com/ocaml-omake/omake.git
 	sha1sums = SKIP
 
