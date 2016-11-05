@@ -10,7 +10,6 @@ arch=('i686' 'x86_64')
 url="http://abntex.sourceforge.net/"
 license=('LPPL')
 depends=('texlive-core')
-install=$pkgname.install
 source=("http://downloads.sourceforge.net/sourceforge/${pkgname}/${pkgname}-${_pkgver}.tar.gz")
 md5sums=('4c5bc2d5388ddf03df754072116ab1f8')
 
