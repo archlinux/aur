@@ -2,7 +2,7 @@
 
 pkgname=referencer
 pkgver=1.2.2
-pkgrel=5
+pkgrel=6
 pkgdesc="a Gnome application to organise documents or references, and ultimately generate a BibTeX bibliography file"
 arch=('i686' 'x86_64')
 url="https://launchpad.net/referencer/"
@@ -50,7 +50,7 @@ package()
 }
 
 md5sums=('d7021937a3d481edc3d8d540eec950cd'
-         '014f8d4cc4ca9f02d8fcc46a4aa67007')
+         '50b0d7fc0539fd8fb25d837b309e6928')
 
 
 
