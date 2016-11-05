@@ -7,14 +7,13 @@
 
 _pkgname=ardour
 pkgname="${_pkgname}-git"
-pkgver=5.4.r257.g1457050
+pkgver=5.4.r258.g91c2527
 pkgrel=1
 pkgdesc="A multichannel hard disk recorder and digital audio workstation"
 arch=('i686' 'x86_64')
 url="http://ardour.org/"
 license=('GPL')
-depends=('aubio' 'cwiid' 'gtkmm' 'liblo' 'liblrdf' 'libltc' 'lilv' 'suil'
-         'rubberband' 'taglib')
+depends=('aubio' 'cwiid' 'gtkmm' 'liblo' 'liblrdf' 'lilv' 'suil' 'rubberband' 'taglib' 'libarchive')
 makedepends=('git' 'python2' 'boost' 'cppunit' 'doxygen' 'graphviz' 'itstool')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
