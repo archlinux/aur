@@ -9,7 +9,7 @@ pkgbase = python2-efl-git
 	license = GPL3
 	makedepends = git
 	makedepends = cython2
-	depends = elementary>=1.14.99
+	depends = efl>=1.14.99
 	depends = python2-dbus
 	provides = python2-efl=1.14.99a936.g37930f3
 	conflicts = python2-efl
