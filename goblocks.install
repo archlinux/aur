@@ -1,0 +1,21 @@
+# arg 1:  the new package version
+post_install() {
+    cat <<'EOF'
+==> Goblocks requires a configuration file to be located at
+==> $HOME/.config/goblocks/goblocks.yml. There is a full configuration example
+==> located at /usr/share/goblocks/config/goblocks-full.yml, which you may copy
+==> and modify to your needs.
+==>
+==> For more info about Goblocks, see the locally installed README or the
+==> Goblocks website:
+==>
+==> * /usr/share/goblocks/README.md
+==> * https://github.com/davidscholberg/goblocks
+EOF
+}
+
+# arg 1:  the new package version
+# arg 2:  the old package version
+post_upgrade() {
+    post_install
+}
