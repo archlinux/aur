@@ -10,6 +10,7 @@ pkgbase = tripwire-git
 	makedepends = git
 	makedepends = automake
 	depends = openssl
+	optdepends = lynis
 	provides = tripwire
 	backup = etc/tripwire/twpol.txt
 	backup = etc/tripwire/twcfg.txt

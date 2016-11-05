@@ -10,6 +10,7 @@ arch=('i686' 'x86_64')
 url="http://sourceforge.net/projects/tripwire/"
 license=('GPL')
 depends=('openssl')
+optdepends=('lynis')
 makedepends=('git' 'automake')
 provides=('tripwire')
 #replaces=('tripwire')
