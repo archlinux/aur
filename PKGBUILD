@@ -2,7 +2,7 @@
 # Maintainer: rich_o <aurua@riseup.net>
 
 pkgname="ncmpcpp-git"
-pkgver=1975.79d2863
+pkgver=2022.5532689
 pkgrel=1
 epoch=1
 pkgdesc="An almost exact clone of ncmpc with some new features." 
@@ -31,12 +31,11 @@ build() {
   --enable-clock \
   --enable-outputs \
   --enable-visualizer
+  ./configure --prefix=/usr
   make
 } 
 
 package() {
   cd ncmpcpp || exit
-  # make PREFIX=/usr DESTDIR="${pkgdir}" install
   make DESTDIR="${pkgdir}/" install
-  # find "${pkgdir}" -type d -name .git -exec rm -r '{}' +
 }
