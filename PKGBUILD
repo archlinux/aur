@@ -2,10 +2,10 @@
 
 pkgname=unidata-decoders
 pkgver=5.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Unidata various data format decoders"
 url="http://www.unidata.ucar.edu/software/decoders"
-license="custom"
+license=("custom")
 arch=(i686 x86_64)
 depends=(netcdf udunits)
 makedepends=(gcc)
