@@ -1,17 +1,17 @@
-# Maintainer: Javier Tia <javier dot tia at gmail dot com>
+# Maintainer: Javier Tiá <javier dot tia at gmail dot com>
 
 _name=distribution
 pkgname="python-${_name}"
-pkgver=1.2.2
-pkgrel=2
+pkgver=1.3
+pkgrel=1
 pkgdesc='Short, simple, direct scripts for creating ASCII graphical histograms in the terminal'
 url='https://github.com/philovivero/distribution'
 arch=('any')
 license=('GPL2')
 depends=('python2')
 provides=("${_name}=${pkgver}")
-source=("${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('b6bfca0b2a802c179f0a9b3dc12290ac0331f10f7472230e1e664aeff16ebd63')
+source=("${url}/archive/${pkgver}.tar.gz")
+sha256sums=('d7f2c9beeee15986d24d8068eb132c0a63c0bd9ace932e724cb38c1e6e54f95d')
 
 prepare() {
   cd "${srcdir}/${_name}-${pkgver}"
