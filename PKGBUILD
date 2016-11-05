@@ -2,7 +2,7 @@
 # Contributor: 天苯 <universebenzene at sina dot com>
 pkgname=astrometry.net
 pkgver=0.67
-pkgrel=10
+pkgrel=11
 pkgdesc="Automatic recognition of astronomical images"
 arch=('i686' 'x86_64')
 url="http://astrometry.net/"
@@ -40,5 +40,7 @@ package() {
   cd ${pkgdir}; grep -r -l "/usr/bin/env python" . | xargs sed -i 's|/usr/bin/env python|/usr/bin/env python2|'
   sed -e "s|${pkgdir}/usr/data|/usr/share/astrometry/data|" -i ${pkgdir}/etc/astrometry.cfg
   rm ${pkgdir}/usr/share/doc/astrometry/report.txt
+  rm ${pkgdir}/usr/bin/fitscopy
+  rm ${pkgdir}/usr/bin/imcopy
 }
 md5sums=('b7b3277bb9779ef19b06b8e2377a63d4')
