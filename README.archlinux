@@ -1,0 +1,7 @@
+The default directory for the "webroot" directory where acme-client will place
+its challenges has been changed in the Arch Linux package from the upstream
+default location. Make sure to use the following:
+
+  /srv/http/acme
+
+This directory may be referred to as "/var/www/acme" in the documentation.
