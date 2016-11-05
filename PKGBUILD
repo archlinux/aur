@@ -29,7 +29,7 @@ build() {
     autoreconf --force --install
     ${srcdir}/tripwire-open-source/autogen.sh
     ./configure --sysconfdir=/etc/tripwire
-  make
+  make -j4
 }
 
 pkgver() {
@@ -50,11 +50,11 @@ package () {
   install -d -m700 ${pkgdir}/var/lib/tripwire/report
 
 #install binaries
-  install -d ${pkgdir}/usr/sbin
-  install -m755 bin/siggen ${pkgdir}/usr/sbin/
-  install -m755 bin/tripwire ${pkgdir}/usr/sbin/
-  install -m755 bin/twadmin ${pkgdir}/usr/sbin/
-  install -m755 bin/twprint ${pkgdir}/usr/sbin/
+  install -d ${pkgdir}/usr/bin
+  install -m755 bin/siggen ${pkgdir}/usr/bin/
+  install -m755 bin/tripwire ${pkgdir}/usr/bin/
+  install -m755 bin/twadmin ${pkgdir}/usr/bin/
+  install -m755 bin/twprint ${pkgdir}/usr/bin/
 
 #copy install files for use by user after install, and fix a path
   install -d ${pkgdir}/usr/share/$pkgname
