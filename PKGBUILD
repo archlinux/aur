@@ -2,7 +2,7 @@
 # Contributor: bjoern lindig (bjoern _dot_ lindig _at_ google.com)
 
 pkgname=faust2-git
-pkgver=7584.33009c4
+pkgver=7930.828a428
 pkgrel=1
 pkgdesc="The latest development version of Faust featuring additional backends for LLVM, C, Java, JavaScript etc."
 arch=('i686' 'x86_64')
@@ -53,7 +53,7 @@ package() {
 
   # docs
   install -d "$pkgdir/usr/share/doc/faust"
-  install -Dm644 documentation/*.{pdf,txt} "$pkgdir/usr/share/doc/faust"
+  install -Dm644 documentation/*.{pdf,html} "$pkgdir/usr/share/doc/faust"
 
   # examples
   install -d "$pkgdir/usr/share/faust/examples"
