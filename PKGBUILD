@@ -8,7 +8,7 @@
 
 pkgname=shadow-selinux
 pkgver=4.4
-pkgrel=2
+pkgrel=3
 pkgdesc="Password and account management tool suite with support for shadow files and PAM - SELinux support"
 arch=('i686' 'x86_64')
 url='https://github.com/shadow-maint/shadow'
@@ -49,7 +49,7 @@ sha1sums=('SKIP'
           '12427b1ca92a9b85ca8202239f0d9f50198b818f'
           '611be25d91c3f8f307c7fe2485d5f781e5dee75f'
           'a154a94b47a3d0c6c287253b98c0d10b861226d0'
-          'e40fc20894e69a07fb0070b41f567d0c27133720'
+          '7372dfd8a3030bee4ec39c79bad4f9b9c6f8687a'
           '9ae93de5987dd0ae428f0cc1a5a5a5cd53583f19'
           '6010fffeed1fc6673ad9875492e1193b1a847b53'
           '21e12966a6befb25ec123b403cd9b5c492fe5b16'
@@ -110,8 +110,8 @@ package() {
   # systemd timer
   install -D -m644 "$srcdir/shadow.timer" "$pkgdir/usr/lib/systemd/system/shadow.timer"
   install -D -m644 "$srcdir/shadow.service" $pkgdir/usr/lib/systemd/system/shadow.service
-  install -d -m755 "$pkgdir/usr/lib/systemd/system/multi-user.target.wants"
-  ln -s ../shadow.timer "$pkgdir/usr/lib/systemd/system/multi-user.target.wants/shadow.timer"
+  install -d -m755 "$pkgdir/usr/lib/systemd/system/timers.target.wants"
+  ln -s ../shadow.timer "$pkgdir/usr/lib/systemd/system/timers.target.wants/shadow.timer"
 
   # login.defs
   install -Dm644 "$srcdir/login.defs" "$pkgdir/etc/login.defs"
