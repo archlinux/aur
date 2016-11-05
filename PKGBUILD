@@ -5,7 +5,7 @@ _gitname=mipp
 
 pkgname=python2-mipp
 pkgrel=1
-pkgver=v0.10.0.3.g9ae41be
+pkgver=v1.0.0
 pkgdesc="Meteorological Ingest-Processing Package (MIPP)"
 arch=('any')
 url="https://mipp.readthedocs.org/"
