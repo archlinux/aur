@@ -8,7 +8,7 @@ pkgbase = elbow-git
 	license = LGPL3
 	makedepends = git
 	makedepends = cmake
-	depends = elementary
+	depends = efl
 	depends = ewebkit
 	provides = elbow=r63.b41fd0b
 	conflicts = elbow

@@ -8,7 +8,7 @@ pkgdesc="EFL based browser"
 arch=('i686' 'x86_64')
 url="https://github.com/bunhere/elbow"
 license=('LGPL3')
-depends=('elementary' 'ewebkit')
+depends=('efl' 'ewebkit')
 makedepends=('git' 'cmake')
 provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
