@@ -12,7 +12,7 @@ makedepends=('git')
 provides=('quick-back')
 conflicts=('quick-back-git')
 options=()
-source=('https://github.com/PenguinSnail/Quick-Back/archive/$pkgrel.tar.gz')
+source=('https://github.com/PenguinSnail/Quick-Back/archive/'$pkgrel'.tar.gz')
 md5sums=('SKIP')
 
 _gitname='Quick-Back'
