@@ -1,4 +1,4 @@
-nam = libinput-gestures
+nam = $(shell sed -n 's/^pkgname=//p' PKGBUILD)
 src = PKGBUILD
 inf = .SRCINFO
 
