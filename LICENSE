@@ -1,8 +1,8 @@
 Burp Suite Free Edition Licence Agreement
 
-This licence agreement (Licence) is a legal agreement between you (Licensee or you) and PORTSWIGGER LTD of 2 Regent Street, Knutsford, WA16 6GR England (Licensor or we) for a suite of tools designed for web application security testers (Burp Suite Free Edition or Software), which includes computer software, and the online documentation current at the date of the download of this Licence (Documentation).
+This licence agreement (Licence) is a legal agreement between you (Licensee or you) and PORTSWIGGER LTD of Victoria Court, Bexton Road, Knutsford, WA16 0PF England (Licensor or we) for a suite of tools designed for web application security testers (Burp Suite Free Edition or Software), which includes computer software, and the online documentation current at the date of the download of this Licence (Documentation).
 
-BURP SUITE FREE EDITION REQUIRES A COMPUTER WITH A MINIMUM OF 4GB OF MEMORY AND THE OFFICIAL JAVA RUNTIME ENVIRONMENT (VERSION 1.7 OR LATER). BY INSTALLING THE SOFTWARE YOU AGREE TO THE TERMS OF THIS LICENCE AND THE TERMS AND CONDITIONS OF THE LICENSOR WHICH WILL BIND YOU AND YOUR EMPLOYEES. IF YOU DO NOT AGREE TO THE TERMS OF THIS LICENCE AND THE TERMS AND CONDITIONS, WE ARE UNWILLING TO LICENSE THE SOFTWARE TO YOU AND YOU MUST DISCONTINUE THE INSTALLATION PROCESS NOW. IN THIS CASE THE INSTALLATION WILL TERMINATE.
+BURP SUITE FREE EDITION REQUIRES A COMPUTER WITH A MINIMUM OF 4GB OF MEMORY AND THE OFFICIAL JAVA RUNTIME ENVIRONMENT (64-BIT EDITION, VERSION 1.7 OR LATER). BY INSTALLING THE SOFTWARE YOU AGREE TO THE TERMS OF THIS LICENCE AND THE TERMS AND CONDITIONS OF THE LICENSOR WHICH WILL BIND YOU AND YOUR EMPLOYEES. IF YOU DO NOT AGREE TO THE TERMS OF THIS LICENCE AND THE TERMS AND CONDITIONS, WE ARE UNWILLING TO LICENSE THE SOFTWARE TO YOU AND YOU MUST DISCONTINUE THE INSTALLATION PROCESS NOW. IN THIS CASE THE INSTALLATION WILL TERMINATE.
 
 WARNING: BURP SUITE FREE EDITION IS DESIGNED TO TEST FOR SECURITY FLAWS AND CAN DO DAMAGE TO TARGET SYSTEMS DUE TO THE NATURE OF ITS FUNCTIONALITY. TESTING FOR SECURITY FLAWS INHERENTLY INVOLVES INTERACTING WITH TARGETS IN NON-STANDARD WAYS WHICH CAN CAUSE PROBLEMS IN SOME VULNERABLE TARGETS. YOU MUST TAKE DUE CARE WHEN USING THE SOFTWARE, YOU MUST READ ALL DOCUMENTATION BEFORE USE, YOU SHOULD BACK UP TARGET SYSTEMS BEFORE USE AND YOU SHOULD NOT USE THE SOFTWARE ON PRODUCTION SYSTEMS OR OTHER SYSTEMS FOR WHICH THE RISK OF DAMAGE IS NOT ACCEPTED BY YOU.
 
@@ -28,7 +28,7 @@ WARNING: BURP SUITE FREE EDITION IS DESIGNED TO TEST FOR SECURITY FLAWS AND CAN 
 
 2.    LICENSEE'S WARRANTY AND UNDERTAKINGS
 
-2.1    You warrant that you are not acquiring the Software as a consumer, but will be using the software in your business.
+2.1    You warrant that you are not acquiring the Software as a consumer, but will be using the Software in your business and that you are duly authorised by your business to acquire the Software.
 
 2.2    Except as expressly set out in this Licence or as permitted by any local law, you undertake:
 
@@ -62,7 +62,7 @@ WARNING: BURP SUITE FREE EDITION IS DESIGNED TO TEST FOR SECURITY FLAWS AND CAN 
 
 2.2.12    not to engage in any activity, practice or conduct which would constitute an offence under sections 1, 2, or 6 of the Bribery Act 2010, if such activity, practice or conduct had been carried out in the UK;
 
-2.2.13    to indemnify and keep indemnified the Licensor against all costs (including legal costs), charges and expenses incurred by the Licensor as a result of the failure by you to comply with the provisions of this Licence Agreement.
+2.2.13    to be responsible for all liability claims, actions, or causes of action, together with the legal costs of the Licensor in bringing the same, arising by reason of or in any way relating to your actions or activities of yourself, your employees, agents, or contractors under this Licence Agreement.
 
 3.    SUPPORT AND UPGRADES
 
@@ -150,11 +150,13 @@ provided that this condition 7.2 shall not prevent claims for loss of or damage 
 
 7.5    This Licence sets out the full extent of the Licensor's obligations and liabilities in respect of the supply of the Software and Burp Apps. In particular, there are no conditions, warranties, representations or other terms, express or implied, that are binding on the Licensor except as specifically stated in this Licence. Any condition, warranty, representation or other term concerning the supply of the Software and Burp Apps which might otherwise be implied into, or incorporated in, this Licence, or any collateral contract, whether by statute, common law or otherwise, is hereby excluded to the fullest extent permitted by law.
 
-8.         COMMUNICATION
+8.         PUBLICITY AND COMMUNICATION
 
-8.1       By entering into this Licence Agreement you consent that we may process any personal data that we collect from you in accordance with our Privacy Policy. In particular, we may use information we hold about you for the purposes of, inter alia, sending out questionnaires to certain categories of users including feedback requests.
+8.1       By entering into this Licence Agreement you agree that we may refer to you as one of our customers internally and in externally published media and, where relevant, you grant your consent to the use of your logo for this purpose, unless you notify us in writing that we may not refer to you for such purpose. Any additional disclosure by us with respect to you shall be subject to your prior written consent.
 
-8.2       Any questions, comments and requests regarding our data processing practices may be addressed to office@portswigger.net.
+8.2       By entering into this Licence Agreement you consent that we may process any personal data that we collect from you in accordance with our Privacy Policy. In particular, we may use information we hold about you for the purposes of, inter alia, sending out questionnaires to certain categories of users including feedback requests.
+
+8.3       Any questions, comments and requests regarding our data processing practices may be addressed to office@portswigger.net.
 
 9.    TERMINATION
 
@@ -178,7 +180,7 @@ provided that this condition 7.2 shall not prevent claims for loss of or damage 
 
 11.    NOTICES
 
-All notices given by you to us must be given to PortSwigger Ltd at office@portswigger.net or 2 Regent Street, Knutsford, WA16 6GR England. We may give notice to you at either the e-mail or postal address you provided to us when downloading the Software or provided in other communications from you to us. Notice will be deemed received and properly served immediately when posted on our website, 24 hours after an e-mail is sent, or three days after the date of posting of any letter. In proving the service of any notice, it will be sufficient to prove, in the case of a letter, that such letter was properly addressed, stamped and placed in the post and, in the case of an e-mail, that such e-mail was sent to the specified e-mail address of the addressee.
+All notices given by you to us must be given to PortSwigger Ltd at office@portswigger.net or Victoria Court, Bexton Road, Knutsford, WA16 0PF England. We may give notice to you at either the e-mail or postal address you provided to us when downloading the Software or provided in other communications from you to us. Notice will be deemed received and properly served immediately when posted on our website, 24 hours after an e-mail is sent, or three days after the date of posting of any letter. In proving the service of any notice, it will be sufficient to prove, in the case of a letter, that such letter was properly addressed, stamped and placed in the post and, in the case of an e-mail, that such e-mail was sent to the specified e-mail address of the addressee.
 
 12.    EVENTS OUTSIDE OUR CONTROL
 
