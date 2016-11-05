@@ -1,7 +1,7 @@
 # Maintainer: goll <adrian.goll+aur[at]gmail>
 
 pkgname=tixati
-pkgver=2.47
+pkgver=2.48
 pkgrel=1
 pkgdesc="A simple P2P client that is compatible with the BitTorrent protocol"
 arch=('i686' 'x86_64')
@@ -14,8 +14,8 @@ source=("LICENSE")
 source_i686=("https://download3.tixati.com/download/$pkgname-${pkgver}-1.i686.manualinstall.tar.gz")
 source_x86_64=("https://download3.tixati.com/download/$pkgname-${pkgver}-1.x86_64.manualinstall.tar.gz")
 sha1sums=('35d7f63a3b0dbf3f8f2bd0a45a7f3c96b453e86b')
-sha1sums_i686=('a1dfb4ac397dc0c547e883d86fa70d9f1b64ffee')
-sha1sums_x86_64=('ec4420f0a3de3408d284b556e567db206d0f9755')
+sha1sums_i686=('29605c94df2882298eaf1a1e23911f4b996019d2')
+sha1sums_x86_64=('bb41f0082095e7befe5a62e4c9f7245af4710f45')
 
 package() {
   cd "$srcdir/$pkgname-${pkgver}-1.$CARCH.manualinstall"
