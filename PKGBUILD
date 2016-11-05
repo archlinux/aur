@@ -3,14 +3,14 @@ pkgbase=python-terminaltables
 _pyname=terminaltables
 pkgname=('python-terminaltables' 'python2-terminaltables')
 makedepends=('python' 'python2' 'python-setuptools' 'python2-setuptools')
-pkgver=3.0.0
+pkgver=3.1.0
 pkgrel=1
 pkgdesc="Generate simple tables in terminals from a nested list of strings"
 arch=('any')
 url="https://github.com/Robpol86/terminaltables"
 license=('MIT')
 source=("https://github.com/Robpol86/$_pyname/archive/v$pkgver.tar.gz")
-sha512sums=('608122b64d1c5da169fff66bff3d974e68d4d34eb42a071062033d714a4371faaeb1acb64bd463571b8743e203986c936b82d12b20b666cb990ba2f0f039b242')
+sha512sums=('dc49458652fff8bc6094d316d84c9b8e9fca1a26e3230c0b668bc03ec8528793f4ef024e8032d4a56fbfabfdfd4a1142870f550f0b373ba6a42dd2e3ead3f501')
 
 package_python-terminaltables() {
   depends=('python')
