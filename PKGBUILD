@@ -2,7 +2,7 @@
 # Contributors: Dan Serban, Dany Martineau, RTFreedman, Harvey
 
 pkgname=mp3diags
-pkgver=1.2.02
+pkgver=1.2.03
 pkgrel=1
 pkgdesc="Identify issues with your MP3 files, fix those issues and make other changes"
 url="http://mp3diags.sourceforge.net/"
@@ -12,13 +12,13 @@ depends=("boost-libs" "qt4")
 makedepends=("boost")
 optdepends=('mp3gain: MP3 normalization support')
 install=mp3diags.install
-_unstabl="0"
-source=("http://downloads.sourceforge.net/project/mp3diags/mp3diags-src/MP3Diags.tar.gz")
-sha1sums=('92b102713ac767ed45476c684f68f0d300fc8354')
+source=("http://downloads.sourceforge.net/project/mp3diags/mp3diags-src/MP3Diags-${pkgver}.tar.gz")
+sha1sums=('53a699b809781819988a17b7558b9c0aab08d76a')
 # set to 1 to use the unstable version
-[ "$_unstabl" = "1" ] && pkgver=1.3.03 
+_unstabl="0"
+[ "$_unstabl" = "1" ] && pkgver=1.3.04 
 [ "$_unstabl" = "1" ] && source=("http://sourceforge.net/projects/mp3diags/files/unstable/mp3diags-src/MP3Diags-unstable.tar.gz") ;
-[ "$_unstabl" = "1" ] && sha1sums=('9afee373045bf13dbded4eb2cd1b7edce90cb7dd') ; 
+[ "$_unstabl" = "1" ] && sha1sums=('f5de6a781e5b5625b010486ad5fbf90515d13b13') ; 
 [ "$_unstabl" = "1" ] && _unstable=-unstable 
 
 build() {
