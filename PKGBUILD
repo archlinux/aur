@@ -25,13 +25,19 @@ build() {
 
 package() {
 	cd "MP3Diags-${pkgver}"
-	mkdir -p "${pkgdir}/usr/bin" "${pkgdir}/usr/share/applications"
-	install -p -m755 "bin/MP3Diags" "${pkgdir}/usr/bin/"
-	install -p -m644 "desktop/MP3Diags.desktop" "${pkgdir}/usr/share/applications/"
 
+	install -m755 -d "${pkgdir}/usr/bin"
+	install -m755 -d "${pkgdir}/usr/share/applications"
+
+	cd "bin"
+	install -m755 -t "${pkgdir}/usr/bin" "MP3Diags"
+
+	cd "../desktop"
+	install -m644 -t "${pkgdir}/usr/share/applications" "MP3Diags.desktop"
 
 	for i in "16" "22" "24" "32" "36" "40" "48"; do
-		mkdir -p "${pkgdir}/usr/share/icons/hicolor/${i}x${i}/apps"
-		install -p -m644 "desktop/MP3Diags${i}.png" "${pkgdir}/usr/share/icons/hicolor/${i}x${i}/apps/MP3Diags${_unstable}.png"
+		install -m755 -d "${pkgdir}/usr/share/icons/hicolor/${i}x${i}/apps"
+		install -m644 -t "${pkgdir}/usr/share/icons/hicolor/${i}x${i}/apps" \
+		                 "MP3Diags${i}.png"
 	done
 }
