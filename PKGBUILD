@@ -4,7 +4,8 @@
 
 pkgname=selinux-refpolicy-src
 _origname=refpolicy
-pkgver=20151208
+pkgver=20161023
+_pkgver="${pkgver}-1"
 pkgrel=1
 pkgdesc="SELinux reference policy sources"
 arch=('any')
@@ -14,8 +15,8 @@ groups=('selinux' 'selinux-policies')
 depends=('linux-selinux')
 makedepends=('checkpolicy>=2.1.8' 'policycoreutils>=2.1.10'
              'libsepol>=2.1.4' 'libsemanage>=2.0.29')
-source=(https://raw.githubusercontent.com/wiki/TresysTechnology/${_origname}/files/${_origname}-2.${pkgver}.tar.bz2)
-sha256sums=('2dd2f45a7132137afe8302805c3b7839739759b9ab73dd1815c01afe34ac99de')
+source=(https://raw.githubusercontent.com/wiki/TresysTechnology/${_origname}/files/${_origname}-2.${_pkgver}.tar.bz2)
+sha256sums=('f056de551c17bbbd2775dfa63a94434538548c90ed1e0f0b6c2be6bf9b123e4f')
 
 package() {
   cd "${srcdir}/${_origname}"
