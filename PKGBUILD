@@ -3,7 +3,7 @@
 
 pkgname=wgrib2
 pkgver=2.0.5
-pkgrel=1
+pkgrel=2
 pkgdesc="A program to manipulate, inventory and decode GRIB-2 files"
 arch=('i686' 'x86_64')
 url="http://www.cpc.noaa.gov/products/wesley/wgrib2/"
@@ -13,7 +13,7 @@ makedepends=('g2clib' 'gctpc')
 source=(ftp://ftp.cpc.ncep.noaa.gov/wd51we/${pkgname}/${pkgname}_nolib.tgz.v${pkgver}
         wgrib2.patch)
 md5sums=('0b6f0e9d5dc1f0d1245cf37abcb25f02'
-         '98e2810e5dea2210d97ce561ea3579a4')
+         'ff244fa30d9890e30fee4f9de9bfa7ae')
 
 build() {
   cd ${srcdir}/grib2

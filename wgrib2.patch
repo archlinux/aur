@@ -45,7 +45,7 @@
  
  ifeq ($(findstring gcc,$(notdir $(CC))),gcc)
 -   wCPPFLAGS+=-Wall -Wmissing-prototypes -Wold-style-definition -Werror=format-security -ffast-math  -O3
-+   wCPPFLAGS+=$(CPPFLAGS) -DGFORTRAN
++   wCPPFLAGS+=$(CPPFLAGS) -DGFORTRAN -fPIC
     netcdf3CPPFLAGS+=-Wall -Wmissing-prototypes -Wold-style-definition -Werror=format-security -O3
     hdf5CFLAGS+=-Wall -Wmissing-prototypes -Wold-style-definition -O1
  endif
@@ -54,7 +54,7 @@
        wLDFLAGS+=-lgfortran
        wCPPFLAGS+=-DGFORTRAN
 -      wFFLAGS+=-O2
-+      wFFLAGS+=$(CFLAGS)
++      wFFLAGS+=$(CFLAGS) -fPIC
     endif
  
  # for open64 fortran - personal system
