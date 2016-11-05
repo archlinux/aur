@@ -22,7 +22,7 @@
 #   comment out the `prepare()` function or insert a `return` at the top of it.
 
 pkgname=archdroid-icon-theme
-pkgver=r110.8e1ec05
+pkgver=r112.0969494
 pkgrel=1
 pkgdesc="Port of Android 5/6 (Lollipop/Marshmallow)'s material design icons to Arch."
 arch=('any')
@@ -36,7 +36,7 @@ install="${pkgname}.install"
 # To revert to an older version, use an archive from here:
 #   https://github.com/GreenRaccoon23/archdroid-icon-theme/raw/master/bak
 source=("https://github.com/GreenRaccoon23/${pkgname}/raw/master/${pkgname}.tar.xz")
-md5sums=("34b28d36d3dff095f0ba8ff26d485bc0")
+md5sums=("dfddd826d00cd62fc85f17f35e5c9ad2")
 
 prepare() {
   if fc-list | grep Roboto >/dev/null; then
