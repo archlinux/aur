@@ -12,15 +12,14 @@ makedepends=('git')
 provides=('quick-back')
 conflicts=('quick-back-git')
 options=()
-source=('https://github.com/PenguinSnail/Quick-Back/archive/v1.0.tar.gz')
+source=('https://github.com/PenguinSnail/Quick-Back/archive/1.0.tar.gz')
 md5sums=('SKIP')
 
 _gitname='Quick-Back'
 
 pkgver() {
-    cd $srcdir/$_gitname
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
+echo $pkgver
+   }
 
 package() {
     mkdir $pkgdir/usr
