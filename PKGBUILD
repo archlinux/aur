@@ -4,7 +4,7 @@
 pkgbase=linux-surfacepro3-rt
 _srcname=linux-4.8.6
 pkgver=4.8.6
-pkgrel=1.91
+pkgrel=1.92
 arch=('i686' 'x86_64')
 url="https://github.com/alyptik/linux-surfacepro3-rt"
 license=('GPL2')
@@ -54,7 +54,7 @@ sha256sums=('74744e00420856cfc8049fa3b3a55e57a116994226a498ef56801bc9492df36b'
             '52e7c895aeb505bc8d3b5321a346fcdbb749f8035cacc97a237c24c1f527adbc'
             '0fcd0b22fe9ec58ba41b81b463f68d619b6898a5c405fb26c85237a183240371'
             '577a3c4c211e6946fb8c1448d6a325861b41c8c8660203ae7d63a58f3af0d279'
-            '608919b2ea0cac04d88e4e532f55bbd2481666aad91b5eb683dd03808c7145aa'
+            '7551d9fe8016880bc97bfabdd3e84b86d0fe326fb365b5ae9512cc9bfddefe28'
             'f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99')
 
@@ -136,16 +136,16 @@ prepare() {
   #make olddefconfia # Use current kernel configuration
   # ... or manually edit .config
 
-  printf '\n \033[32m %s \033[0m ' "[Run interactive nconfig? (Y/n)]"; read -r; echo
+  printf '\n \033[32m %s \033[0m ' "[Run make ([n]config|[o]lddefconfig) or [s]kip? (n/o/S)]"; read -r; echo
   case $REPLY in
-          [Yy]*|'') make nconfig ;; # new CLI menu for configuration
-          [Nn]*) printf ' \033[32m %s \n\033[0m ' "Continuing..."; make olddefconfig ;;
-          *) printf ' \033[31m %s \n\033[0m ' "Invalid input..."; return 1 ;;
+          [Nn]*) make nconfig ;; # new CLI menu for configuration
+          [Oo]*) make olddefconfig ;;
+          *) printf ' \033[32m %s \n\033[0m ' "Continuing..."; ;;
   esac
 
-  printf '\n \033[32m %s \033[0m ' "[Run local(mod|yes)config? (M/y)]"; read -r; echo
+  printf '\n \033[32m %s \033[0m ' "[Run local([m]odconfig|[y]esconfig) or [s]kip? (m/y/S)]"; read -r; echo
   case $REPLY in
-          [Mm]*|'') make localmodconfig ;;
+          [Mm]*) make localmodconfig ;;
           [Yy]*) make localyesconfig ;;
           *) printf ' \033[32m %s \n\033[0m ' "Continuing..." ;;
   esac
