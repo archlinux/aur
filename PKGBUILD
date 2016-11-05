@@ -7,7 +7,6 @@ arch=('any')
 url="http://portal.bu.ufsc.br/normas-e-procedimentos/normalizacao/"
 license=('GPL')
 depends=('abntex')
-install=$pkgname.install
 source=("http://portal.bu.ufsc.br/files/2013/10/template-tex-2015.zip")
 sha512sums=('61d768fe9de94df61c62c527f8e602572c4d1e9035e476d92c84d093f37cfbf46bceb3a1a9ae1b33e2b377089f9c514e37a5b8ddd29d0306dc0e468004d8a860')
 
