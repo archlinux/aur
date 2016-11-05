@@ -12,7 +12,7 @@ makedepends=('git')
 provides=('quick-back')
 conflicts=('quick-back-git')
 options=()
-source=('https://github.com/PenguinSnail/Quick-Back/archive/1.0.tar.gz')
+source=('https://github.com/PenguinSnail/Quick-Back/archive/$pkgrel.tar.gz')
 md5sums=('SKIP')
 
 _gitname='Quick-Back'
@@ -24,7 +24,7 @@ echo $pkgver
 package() {
     mkdir $pkgdir/usr
     mkdir $pkgdir/usr/bin
-    cd $srcdir/$_gitname
+    cd $srcdir/$pkgrel
     cp quick-back $pkgdir/usr/bin
     chmod +x $pkgdir/usr/bin/quick-back
 }

@@ -9,7 +9,7 @@ pkgbase = quick-back
 	depends = rsync
 	provides = quick-back
 	conflicts = quick-back-git
-	source = https://github.com/PenguinSnail/Quick-Back/archive/1.0.tar.gz
+	source = https://github.com/PenguinSnail/Quick-Back/archive/$pkgrel.tar.gz
 	md5sums = SKIP
 
 pkgname = quick-back
