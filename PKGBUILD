@@ -41,9 +41,5 @@ build() {
   make
 }
 package() {
-  pkgdesc='A utility for displaying dialog boxes from shell scripts. (GIT version)'
-
-
-
   make -C build DESTDIR="${pkgdir}" install
 }
