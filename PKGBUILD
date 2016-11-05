@@ -1,31 +1,23 @@
+#Maintainer: Mohammadreza Abdollahzadeh <morealaz at gmail dot com>
 #Maintainer: David McInnis <davidm@eagles.ewu.edu>
 #Contributer: André Silva <emulatorman@parabola.nu>
 #Contributer: Márcio Silva <coadde@parabola.nu>
 
-_pkgname=jquery
 pkgname=jquery-ui
-pkgver=1.11.4
+pkgver=1.12.1
 pkgrel=1
-pkgdesc='Build highly interactive web applications with low-level interaction and high-level widgets'
+pkgdesc='A curated set of user interface interactions, effects, widgets, and themes built on top of the jQuery JavaScript Library.'
 arch=('any')
-url='http://jqueryui.com/'
+url='https://jqueryui.com/'
 license=('MIT')
 depends=('jquery')
-makedepends=('npm' 'nodejs-grunt-cli')
-
-source=("https://github.com/$_pkgname/$pkgname/archive/$pkgver.tar.gz")
-sha256sums=('5d6035c1d802667a4d1f56b4c7f40aff142ae46ed462de9dacb7687ad705a4c0')
-
-build() {
-  cd $srcdir/$pkgname-$pkgver
-  npm install
-  grunt concat:ui uglify:main
-}
+source=("https://jqueryui.com/resources/download/$pkgname-$pkgver.zip")
+md5sums=('e0cfea21c9d1acd37fb58592f2c1f50d')
 
 package() {
   cd $srcdir/$pkgname-$pkgver
   install -d $pkgdir/usr/share/javascript/$pkgname
   install -d $pkgdir/usr/share/licenses/$pkgname
-  cp -a dist/* $pkgdir/usr/share/javascript/$pkgname
+  cp -a ./${pkgname}*.{js,css} $pkgdir/usr/share/javascript/$pkgname/
   cp -a LICENSE.txt $pkgdir/usr/share/licenses/$pkgname/LICENSE
 }
