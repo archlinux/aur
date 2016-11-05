@@ -37,5 +37,7 @@ package() {
   fi
   install -Dm644 "${srcdir}/LICENSE.txt" \
     "$pkgdir/usr/share/licenses/$pkgname/LICENSE.txt"
-  rm "${pkgdir}/LICENSE.txt"
+  if [ -f "${pkgdir}/LICENSE.txt ]; then
+    rm -f "${pkgdir}/LICENSE.txt"
+  fi
 }
