@@ -1,4 +1,4 @@
-nam = cdhist
+nam = $(shell sed -n 's/^pkgname=//p' PKGBUILD)
 src = PKGBUILD
 inf = .SRCINFO
 
