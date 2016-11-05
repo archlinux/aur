@@ -1,0 +1,20 @@
+pkgbase = regency-solitaire-hib
+	pkgdesc = Experience romantic Regency England in this sumptuous solitaire game. (Humble Bundle)
+	pkgver = 117b
+	pkgrel = 1
+	url = https://www.humblebundle.com/store/regency-solitaire
+	arch = i686
+	arch = x86_64
+	groups = games
+	license = custom
+	depends = glu
+	optdepends = gendesk: generate menu icons
+	provides = regency-solitaire
+	conflicts = regency-solitaire
+	source = hib://RegencySolitaireV117b_1472495785.tar.gz
+	source = local://regency-solitaire
+	md5sums = 15e8377d2cac99a52407cb399bd1ee7c
+	md5sums = fb382d5d733bf8ab346f6145fd15a623
+
+pkgname = regency-solitaire-hib
+

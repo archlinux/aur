@@ -1,0 +1,3 @@
+#!/bin/bash
+
+(cd /opt/regency-solitaire-hib && exec ./RegencySolitaire)
