@@ -6,13 +6,13 @@
 
 pkgname=ocaml-pcre
 pkgver=7.2.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Perl compatible regular expressions for OCaml"
 arch=('i686' 'x86_64')
 url="http://mmottl.github.io/pcre-ocaml"
 license=('LGPL')
 depends=('pcre>=4.5')
-makedepends=('ocaml-findlib')
+makedepends=('ocaml-findlib' 'ocamlbuild')
 replaces=('pcre-ocaml')
 conflicts=('pcre-ocaml')
 options=('!strip' 'staticlibs')
@@ -30,8 +30,8 @@ package() {
   cd "${srcdir}/pcre-ocaml-${pkgver}"
 
   export OCAMLFIND_DESTDIR="${pkgdir}$(ocamlfind printconf destdir)"
-  install -dm 755 "${OCAMLFIND_DESTDIR}/stublibs"
+  install -dm755 "${OCAMLFIND_DESTDIR}/stublibs"
   make install
   mv "${pkgdir}/usr/share/doc/pcre" "${pkgdir}/usr/share/doc/${pkgname}"
-  install -Dm 644 COPYING.txt "${pkgdir}/usr/share/licenses/${pkgname}/COPYING"
+  install -Dm644 COPYING.txt "${pkgdir}/usr/share/licenses/${pkgname}/COPYING"
 }
