@@ -1,7 +1,7 @@
 pkgbase = pgweb-git
 	pkgdesc = Web client (GUI) for PostgreSQL databases
 	pkgver = v0.9.5.r10.g1e88d3d
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/sosedoff/pgweb
 	install = pgweb.install
 	arch = any

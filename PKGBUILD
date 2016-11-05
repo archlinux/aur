@@ -4,7 +4,7 @@ _github_prefix=github.com/sosedoff
 
 pkgname=pgweb-git
 pkgver=v0.9.5.r10.g1e88d3d
-pkgrel=1
+pkgrel=2
 pkgdesc="Web client (GUI) for PostgreSQL databases"
 arch=('any')
 url="https://$_github_prefix/$_pkgname"
@@ -44,6 +44,6 @@ package() {
   install -d usr/{bin,lib/systemd/system} etc/conf.d
 
   install $srcdir/$_pkgname/$_pkgname usr/bin/$_pkgname
-  install $srcdir/$_pkgname.env etc/conf.d/$_pkgname
-  install $srcdir/$_pkgname.service usr/lib/systemd/system/$_pkgname.service
+  install -m064 $srcdir/$_pkgname.env etc/conf.d/$_pkgname
+  install -m064 $srcdir/$_pkgname.service usr/lib/systemd/system/$_pkgname.service
 }
