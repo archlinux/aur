@@ -2,7 +2,7 @@
 # Maintainer: Joe Julian
 
 pkgname=mgmt
-pkgver=0.0.5
+pkgver=0.0.6
 pkgrel=1
 epoch=1
 pkgdesc='Next generation config management.'
@@ -15,17 +15,19 @@ makedepends=('go' 'go-md2man' 'go-tools' 'mercurial')
 options=('!strip')
 backup=("etc/${pkgname}/${pkgname}.conf")
 
-source=("${url}/archive/${pkgver}.tar.gz"
+source=("git+${url}.git"
         'mgmt.service')
-sha1sums=('feec085db00e4727e37f8c69a35dcb732ebf6e46'
+sha1sums=('SKIP'
           'ef0ecdb4d1c4441b884c7084b93806b52ec567c6')
- noextract=("${pkgver}.tar.gz")
 
 prepare() {
     # extract tarball to path expected by go
-    mkdir -p "${srcdir}/src"
-    cd "${srcdir}"
-    tar xf "${pkgver}.tar.gz" --transform="s@^${pkgname}-${pkgver}@src/${pkggopath}@"
+    mkdir -p "${srcdir}/src/${pkggopath}"
+    cd "${srcdir}/${pkgname}"
+
+    git submodule --quiet update --init --recursive
+    git archive --prefix="${pkggopath}/" --format="tar" HEAD | tar xf - -C "${srcdir}/src"
+    git submodule foreach 'git archive --prefix="${path}/" --format="tar" HEAD | tar xvf - -C "'${srcdir}'/src/'${pkggopath}'"'
 
     # fetch dependencies
     export GOPATH="${srcdir}"
