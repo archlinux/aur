@@ -17,14 +17,14 @@ source=("http://downloads.sourceforge.net/project/mp3diags/mp3diags-src/MP3Diags
 sha1sums=('53a699b809781819988a17b7558b9c0aab08d76a')
 
 build() {
-	cd "${srcdir}/MP3Diags$-${pkgver}"
+	cd "MP3Diags-${pkgver}"
 	./AdjustMt.sh
 	qmake-qt4
 	make
 }
 
 package() {
-	cd "${srcdir}/MP3Diags-${pkgver}"
+	cd "MP3Diags-${pkgver}"
 	mkdir -p "${pkgdir}/usr/bin" "${pkgdir}/usr/share/applications"
 	install -p -m755 "bin/MP3Diags" "${pkgdir}/usr/bin/"
 	install -p -m644 "desktop/MP3Diags.desktop" "${pkgdir}/usr/share/applications/"
