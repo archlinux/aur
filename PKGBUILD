@@ -4,15 +4,23 @@
 
 pkgname=antimicro
 pkgver=2.22
-pkgrel=1
+pkgrel=2
 pkgdesc="Graphical program used to map keyboard keys and mouse controls to gamepad buttons"
 arch=('i686' 'x86_64')
 url="https://github.com/AntiMicro/antimicro"
 license=('GPL3')
 depends=('libxkbcommon-x11' 'libxtst' 'qt5-base' 'sdl2' 'shared-mime-info' 'desktop-file-utils')
 makedepends=('cmake' 'gettext' 'itstool' 'qt5-tools')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/AntiMicro/${pkgname}/archive/${pkgver}.tar.gz")
-md5sums=('165a0dbe5931783f0d2c035a87b8e6a1')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/AntiMicro/${pkgname}/archive/${pkgver}.tar.gz" "sdl_check_ev.patch")
+sha1sums=('b30cd898218d3325ff7f18fd2efee2a88a79a5ea'
+          '068047dad992f99e70aedceb0a4587ac6735412d')
+
+
+prepare() {
+  cd ${pkgname}-${pkgver}
+  patch -Np1 -i ../sdl_check_ev.patch
+}
+
 
 build() {
   cd ${pkgname}-${pkgver}

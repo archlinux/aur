@@ -1,0 +1,40 @@
+diff --git a/src/sdleventreader.cpp b/src/sdleventreader.cpp
+index 6729155..e8e60ae 100644
+--- a/src/sdleventreader.cpp
++++ b/src/sdleventreader.cpp
+@@ -205,7 +205,17 @@ int SDLEventReader::CheckForEvents()
+             exit = true;
+             break;
+         }
+-        case 1:
++        case 0:
++        {
++            if (!pollRateTimer.isActive())
++            {
++                pollRateTimer.start();
++            }
++            //exit = true;
++            //SDL_Delay(10);
++            break;
++        }
++        default:
+         {
+             /*Logger::LogInfo(
+                         QString("Gamepad Poll %1").arg(
+@@ -217,16 +227,6 @@ int SDLEventReader::CheckForEvents()
+             exit = true;
+             break;
+         }
+-        case 0:
+-        {
+-            if (!pollRateTimer.isActive())
+-            {
+-                pollRateTimer.start();
+-            }
+-            //exit = true;
+-            //SDL_Delay(10);
+-            break;
+-        }
+     }
+ 
+     return result;

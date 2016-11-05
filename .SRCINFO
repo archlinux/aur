@@ -1,7 +1,7 @@
 pkgbase = antimicro
 	pkgdesc = Graphical program used to map keyboard keys and mouse controls to gamepad buttons
 	pkgver = 2.22
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/AntiMicro/antimicro
 	arch = i686
 	arch = x86_64
@@ -17,7 +17,9 @@ pkgbase = antimicro
 	depends = shared-mime-info
 	depends = desktop-file-utils
 	source = antimicro-2.22.tar.gz::https://github.com/AntiMicro/antimicro/archive/2.22.tar.gz
-	md5sums = 165a0dbe5931783f0d2c035a87b8e6a1
+	source = sdl_check_ev.patch
+	sha1sums = b30cd898218d3325ff7f18fd2efee2a88a79a5ea
+	sha1sums = 068047dad992f99e70aedceb0a4587ac6735412d
 
 pkgname = antimicro
 
