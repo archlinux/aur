@@ -5,14 +5,14 @@
 
 pkgname=burpsuite
 pkgver=1.7.10
-pkgrel=1
+pkgrel=2
 pkgdesc="An integrated platform for performing security testing of web applications (free edition)."
 url="https://portswigger.net/burp/"
 depends=('java-runtime')
 arch=('any')
 license=('custom')
 noextract=("${pkgname}.jar")
-source=("${pkgname}.jar::https://portswigger.net/DownloadUpdate.ashx?Product=Free"
+source=("${pkgname}.jar::https://portswigger.net/Burp/Releases/Download?productId=100&version=${pkgver}&type=Jar"
         LICENSE
         burpsuite.desktop
         icon64.png)
