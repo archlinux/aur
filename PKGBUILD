@@ -1,4 +1,5 @@
-# Maintainer: Patrick Burroughs (Celti) <celti@celti.name>
+# Maintainer:  <qqqqqqqqq9 AT web DOT de
+# Contributor: Patrick Burroughs (Celti) <celti@celti.name>
 # Contributor: speps <speps at aur dot archlinux dot org>
 # Contributor: TDY <tdy@gmx.com>
 
