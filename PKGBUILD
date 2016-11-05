@@ -14,22 +14,23 @@ makedepends=('git')
 _libname=ppsspp_libretro
 _gitname=libretro-ppsspp
 source=("git+https://github.com/libretro/${_gitname}.git"
-        "git+https://github.com/hrydgard/minidx9.git"
-        "git+https://github.com/libretro/ppsspp-ffmpeg"
-        "git+https://github.com/hrydgard/ppsspp-lang"
-        "git+https://github.com/libretro/ppsspp-native"
-        "git+https://github.com/hrydgard/pspautotests"
-        "git+https://github.com/hrydgard/ppsspp-redist"
-        "https://raw.github.com/libretro/libretro-super/master/dist/info/ppsspp_libretro.info"
-       )
+	"git+https://github.com/hrydgard/minidx9.git"
+	"git+https://github.com/libretro/ppsspp-ffmpeg"
+	"git+https://github.com/hrydgard/ppsspp-lang"
+	"git+https://github.com/libretro/ppsspp-native"
+	"git+https://github.com/hrydgard/pspautotests"
+	"git+https://github.com/hrydgard/ppsspp-redist"
+	"https://raw.github.com/libretro/libretro-super/master/dist/info/ppsspp_libretro.info"
+	)
 sha256sums=('SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP')
+	'SKIP'
+	'SKIP'
+	'SKIP'
+	'SKIP'
+	'SKIP'
+	'SKIP'
+	'SKIP'
+	)
 
 pkgver() {
   cd "${_gitname}"
@@ -58,5 +59,5 @@ build() {
 
 package() {
   install -Dm644 "${_gitname}/libretro/${_libname}.so" "${pkgdir}/usr/lib/libretro/${_libname}.so"
-  install -Dm644 "${_libname}.info" "${pkgdir}/usr/lib/libretro/${_libname}.info"
+  install -Dm644 "${_libname}.info" "${pkgdir}/usr/share/libretro/info/${_libname}.info"
 }
