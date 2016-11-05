@@ -16,7 +16,7 @@ md5sums=(SKIP
          '82baecba5be4c2af0cccf0f5bc0e00c7') ## $pkgname.install
 
 pkgver=6.0.5
-pkgrel=2
+pkgrel=3
 url="http://www.livrephoto-cewe.fr/"
 license=("custom:eula")
 depends=('libx11' 'libjpeg' 'curl' 'wget')
@@ -69,7 +69,7 @@ package() {
 		Name=$_productRename
 		Comment=Offline client for cewe.fr service, french version
 		Exec=$pkgname
-		Icon=hps-$_keyaccount
+		Icon=cewe-hps-500.png
 		StartupNotify=true
 		Categories=Graphics;Photography;
 		MimeType=application/x-hps-mcf
