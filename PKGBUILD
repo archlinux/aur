@@ -26,6 +26,7 @@ build() {
 
 #build package
 #  CFLAGS="$CFLAGS -fno-strict-aliasing" CXXFLAGS="$CXXFLAGS -fno-strict-aliasing" \
+    ./autogen,sh
     ./configure --sysconfdir=/etc/tripwire
   make
 }
