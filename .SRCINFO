@@ -7,7 +7,7 @@ pkgbase = ev-git
 	arch = x86_64
 	license = LGPL2.1
 	makedepends = git
-	depends = elementary
+	depends = efl
 	provides = ev=r45.e23387b
 	conflicts = ev
 	source = git://git.enlightenment.org/devs/discomfitor/ev.git

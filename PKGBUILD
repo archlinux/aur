@@ -8,7 +8,7 @@ pkgdesc="xv image viewer replacment using EFL"
 arch=('i686' 'x86_64')
 url="http://www.enlightenment.org"
 license=('LGPL2.1')
-depends=('elementary')
+depends=('efl')
 makedepends=('git')
 provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
