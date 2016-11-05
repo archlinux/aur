@@ -2,7 +2,7 @@
 # Contributor: Brice Waegeneire <brice dot wge at gmail dot com>
 # Contributor: Reventlov <contact+aur@volcanis.me>
 pkgname=isso
-pkgver=0.10.4
+pkgver=0.10.5
 pkgrel=1
 pkgdesc="A commenting python server similar to Disqus"
 arch=('any')
@@ -11,12 +11,12 @@ license=('MIT')
 depends=('python-werkzeug' 'python-html5lib' 'python-misaka-v1' 'python-itsdangerous' 'python-six' 'sqlite' 'python-setuptools')
 makedepends=('git' 'python')
 backup=('etc/isso.conf')
-source=("https://pypi.python.org/packages/source/i/isso/isso-$pkgver.tar.gz" 
-  "https://pypi.python.org/packages/source/i/isso/isso-$pkgver.tar.gz.asc"
+source=("https://github.com/posativ/isso/releases/download/$pkgver/isso-$pkgver.tar.gz"
+  "https://github.com/posativ/isso/releases/download/$pkgver/isso-$pkgver.tar.gz.asc"
   "https://raw.githubusercontent.com/posativ/isso/master/LICENSE"
   "isso.service")
 install=$pkgname.install
-sha256sums=('8666b7339605baf40be9e5dce7a7c772d3acf2b27c47c39ba76ab40a5500eaef'
+sha256sums=('2c4748c5123251ef2e6fd0fa4853c175f3c100071a04e98ed32e1878db55e090'
             'SKIP'
             'd909d060d71c4d9ce92102fa68aa53c963db9b4b6ca315fa0817eafb07651fe2'
             'dfcf54f32094238c7e5344b2dc602925365c8eb0a58c03a922526461b894eba0')
