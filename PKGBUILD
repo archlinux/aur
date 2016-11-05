@@ -1,7 +1,7 @@
 # Maintainer: Joe George <joe at externl dot com>
 
 pkgname="zeroc-ice-php56"
-pkgver=3.6.2
+pkgver=3.6.3
 pkgrel=1
 pkgdesc="PHP bindings for Ice RPC framework"
 arch=("i686" "x86_64")
