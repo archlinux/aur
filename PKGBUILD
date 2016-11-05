@@ -6,6 +6,7 @@
 # Contributor: Stefan Tatschner <stefan@sevenbyte.org>
 # Contributor: Caleb Maclennan <caleb@alerque.com>
 
+_pkgname=gitlab
 pkgname=gitlab-ee
 pkgver=8.13.3_ee
 pkgrel=3
@@ -21,12 +22,12 @@ optdepends=('postgresql: database backend'
             'mysql: database backend'
             'python2-docutils: reStructuredText markup language support'
             'smtp-server: mail server in order to receive mail notifications')
-backup=("etc/webapps/${pkgname}/application.rb"
-        "etc/webapps/${pkgname}/gitlab.yml"
-        "etc/webapps/${pkgname}/resque.yml"
-        "etc/webapps/${pkgname}/unicorn.rb"
-        "etc/logrotate.d/${pkgname}")
-source=("$pkgname-$pkgver.tar.gz::https://gitlab.com/gitlab-org/gitlab-ee/repository/archive.tar.gz?ref=v${pkgver/_/-}"
+backup=("etc/webapps/${_pkgname}/application.rb"
+        "etc/webapps/${_pkgname}/gitlab.yml"
+        "etc/webapps/${_pkgname}/resque.yml"
+        "etc/webapps/${_pkgname}/unicorn.rb"
+        "etc/logrotate.d/${_pkgname}")
+source=("${pkgname}-${pkgver}.tar.gz::https://gitlab.com/gitlab-org/gitlab-ee/repository/archive.tar.gz?ref=v${pkgver/_/-}"
         gitlab-unicorn.service
         gitlab-sidekiq.service
         gitlab-backup.service
@@ -60,10 +61,10 @@ sha256sums=('2c3f556292790a1a9b9d8378e66a46d2a29dbf21117fe18974bff5ff31bf1dc7'
             '822d0b80f1974c8418a9f4d66fbefb7679313b6de9a49c137c83c0bfe622460f'
             'ea5a5f0b4c0ffd26d977efaf564800ee7fa88579a9e4f0556143a591a7ff198c')
 
-_datadir="/usr/share/webapps/${pkgname}"
-_etcdir="/etc/webapps/${pkgname}"
-_homedir="/var/lib/${pkgname}"
-_logdir="/var/log/${pkgname}"
+_datadir="/usr/share/webapps/${_pkgname}"
+_etcdir="/etc/webapps/${_pkgname}"
+_homedir="/var/lib/${_pkgname}"
+_logdir="/var/log/${_pkgname}"
 _commit=966f6c7f5e501b6ff1af675b28bfa1d4a9d4e4d5
 _srcdir="${pkgname}-v${pkgver/_/-}-${_commit}"
 
@@ -111,6 +112,8 @@ prepare() {
 
 build() {
   cd "${srcdir}/${_srcdir}"
+  
+  export SKIP_STORAGE_VALIDATION='true'
 
   msg "Fetching bundled gems..."
   # Gems will be installed into vendor/bundle
@@ -143,7 +146,7 @@ package() {
   install -dm750 -o 105 -g 105 "${pkgdir}${_homedir}/uploads"
   install -dm750 -o 105 -g 105 "${pkgdir}${_homedir}/backups"
   install -dm750 -o 105 -g 105 "${pkgdir}${_etcdir}"
-  install -dm755 "${pkgdir}/usr/share/doc/${pkgname}"
+  install -dm755 "${pkgdir}/usr/share/doc/${_pkgname}"
 
   ln -fs /run/gitlab "${pkgdir}${_homedir}/pids"
   ln -fs /run/gitlab "${pkgdir}${_homedir}/sockets"
@@ -177,8 +180,8 @@ package() {
   ln -fs "${_etcdir}/secrets.yml" "${pkgdir}${_datadir}/config/secrets.yml"
 
   # Install license and help files
-  mv README.md MAINTENANCE.md CONTRIBUTING.md CHANGELOG.md PROCESS.md VERSION config/*.{example,mysql,postgresql} "${pkgdir}/usr/share/doc/${pkgname}"
-  install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  mv README.md MAINTENANCE.md CONTRIBUTING.md CHANGELOG.md PROCESS.md VERSION config/*.{example,mysql,postgresql} "${pkgdir}/usr/share/doc/${_pkgname}"
+  install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
 
   # https://gitlab.com/gitlab-org/gitlab-ce/issues/765
   cp -r "${pkgdir}${_datadir}/doc" "${pkgdir}${_datadir}/public/help"
@@ -197,7 +200,7 @@ package() {
 
   # Install webserver config templates
   for config_file in apache apache-ssl apache2.2 apache2.2-ssl nginx nginx-ssl lighttpd; do
-    install -m644 "${srcdir}/${config_file}.conf.example" "${pkgdir}/usr/share/doc/${pkgname}"
+    install -m644 "${srcdir}/${config_file}.conf.example" "${pkgdir}/usr/share/doc/${_pkgname}"
   done
 }
 

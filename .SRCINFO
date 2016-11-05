@@ -26,11 +26,11 @@ pkgbase = gitlab-ee
 	optdepends = smtp-server: mail server in order to receive mail notifications
 	conflicts = gitlab
 	replaces = gitlab
-	backup = etc/webapps/gitlab-ee/application.rb
-	backup = etc/webapps/gitlab-ee/gitlab.yml
-	backup = etc/webapps/gitlab-ee/resque.yml
-	backup = etc/webapps/gitlab-ee/unicorn.rb
-	backup = etc/logrotate.d/gitlab-ee
+	backup = etc/webapps/gitlab/application.rb
+	backup = etc/webapps/gitlab/gitlab.yml
+	backup = etc/webapps/gitlab/resque.yml
+	backup = etc/webapps/gitlab/unicorn.rb
+	backup = etc/logrotate.d/gitlab
 	source = gitlab-ee-8.13.3_ee.tar.gz::https://gitlab.com/gitlab-org/gitlab-ee/repository/archive.tar.gz?ref=v8.13.3-ee
 	source = gitlab-unicorn.service
 	source = gitlab-sidekiq.service
