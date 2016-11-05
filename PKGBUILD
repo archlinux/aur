@@ -1,10 +1,11 @@
+# Maintainer: Daniel Landau <daniel+aur@landau.fi>
 # Contributor: Paul Burton <paulburton89@gmail.com>
 # Contributor: Hervé Cauwelier <herve@oursours.net>
 # Contributor: MagicFish1990 <magicfish1990@gmail.com>
 
 pkgname=nvidia-bl
 pkgver=0.17.3
-pkgrel=9
+pkgrel=10
 pkgdesc="Driver to adjust display backlight on modern mobile NVidia graphics adapters."
 arch=('i686' 'x86_64')
 license=('GPL')
@@ -17,7 +18,7 @@ source=('nvidia_bl.c'
         'Makefile'
         'nvidia_bl.conf'
         'nvidia_bl_ml.conf')
-md5sums=('5ba18564188130954bdad60fe5a5fea5'
+md5sums=('430dc2d223090c093d29f11af15ebbfa'
          '65086fc2501d2024ee6a1c78b21d030e'
          '897ee78c30e6b498d0e3ce07c06dabc5'
          '5771d2ea826f76d8f27bd9fdcb78a76f')

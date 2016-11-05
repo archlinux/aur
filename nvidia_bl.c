@@ -209,7 +209,7 @@ static const struct driver_data nv5x_driver_data __devinitconst = {
  * $ cat /sys/class/dmi/id/sys_vendor
  * $ cat /sys/class/dmi/id/product_name
  */
-static DEFINE_PCI_DEVICE_TABLE(nvidia_bl_device_table) = {
+static const struct pci_device_id nvidia_bl_device_table[] = {
 	/* Geforce Go 7800 (195.30) */
 	{ PCI_VDEVICE(NVIDIA, 0x0098), (kernel_ulong_t)&nv4x_driver_data },
 	/* Geforce Go 7800 GTX (195.30) */
