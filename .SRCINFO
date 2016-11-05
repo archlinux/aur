@@ -10,6 +10,7 @@ pkgbase = silentarmy-git
 	depends = opencl-headers
 	depends = python
 	provides = silentarmy
+	conflicts = silentarmy
 
 pkgname = silentarmy-git
 

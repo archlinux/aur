@@ -7,6 +7,7 @@ pkgdesc="GPU Zcash Equihash solver"
 arch=('i686' 'x86_64')
 url="https://github.com/mbevand/silentarmy"
 license=('MIT')
+conflicts=('silentarmy')
 provides=('silentarmy')
 groups=()
 depends=('libcl' 'opencl-headers' 'python')
