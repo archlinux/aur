@@ -24,7 +24,7 @@ echo $pkgver
 package() {
     mkdir $pkgdir/usr
     mkdir $pkgdir/usr/bin
-    cd $srcdir/'$_gitname'-'$pkgrel'
+    cd $srcdir/${_gitname}-${pkgrel}
     cp quick-back $pkgdir/usr/bin
     chmod +x $pkgdir/usr/bin/quick-back
 }
