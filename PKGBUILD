@@ -2,7 +2,7 @@
 
 pkgname='goblocks'
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Fast, lightweight i3status replacement written in Go'
 arch=('x86_64'
       'i686')
@@ -13,8 +13,6 @@ makedepends=('git'
              'go>=1.7.0')
 optdepends=('alsa-utils: volume status support'
             'zfs-utils: zfs status support')
-provides=('goblocks')
-conflicts=('goblocks')
 
 _gopgkname='github.com/davidscholberg/goblocks'
 _giturl="https://$_gopgkname.git"

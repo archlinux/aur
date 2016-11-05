@@ -1,7 +1,7 @@
 pkgbase = goblocks
 	pkgdesc = Fast, lightweight i3status replacement written in Go
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/davidscholberg/goblocks
 	install = goblocks.install
 	arch = x86_64
@@ -11,8 +11,6 @@ pkgbase = goblocks
 	makedepends = go>=1.7.0
 	optdepends = alsa-utils: volume status support
 	optdepends = zfs-utils: zfs status support
-	provides = goblocks
-	conflicts = goblocks
 
 pkgname = goblocks
 
