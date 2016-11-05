@@ -2,11 +2,12 @@
 
 pkgname=hyperstart
 pkgver=0.7.0
-pkgrel=0
+pkgrel=1
 pkgdesc="Hypervisor-agnostic Docker Runtime (boot files)"
 arch=('any')
 url="https://www.hypercontainer.io/"
 license=('Apache')
+makedepends=('go')
 optdepends=('hyperd: Hypervisor-agnostic Docker Runtime')
 options=('!strip' '!emptydirs')
 source=("hyperstart-$pkgver.tar.gz::https://github.com/hyperhq/${pkgname}/archive/v${pkgver}.tar.gz")
