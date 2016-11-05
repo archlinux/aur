@@ -9,7 +9,6 @@ arch=('any')
 url='http://extensions.services.openoffice.org/en/node/6213'
 license=('unknown')
 optdepends=('libmythes: offers thesaurus library functions')
-changelog="${pkgname}.changelog"
 source=('http://downloads.sourceforge.net/project/aoo-extensions/6212/0/dicsin-br.oxt')
 sha256sums=('0663f9ba720647499ef7d6960e5c7d3b2ee022cc47a933b121dbdbefd2abc2f4')
 
