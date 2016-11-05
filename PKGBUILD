@@ -1,31 +1,29 @@
 
 pkgname=kaku-bin
-pkgver=1.6.1
+pkgver=1.8.0
 pkgrel=1
-pkgdesc="The next generation music client"
+pkgdesc="The next generation music client."
 # TODO: add 32 bit
 arch=('x86_64')
 url="http://kaku.rocks"
-repo="git://github.com/EragonJ/Kaku.git"
 license=('MIT')
-options=(!strip)
-depends=('gconf' 'gtk2' 'libnotify' 'nss' 'alsa-lib' 'libxtst')
-optdepends=('gvfs' 'python2' 'xdg-utils' 'desktop-file-utils')
+depends=('gconf' 'gtk2' 'fuse' 'xdg-utils' 'libxtst' 'libxss' 'nss' 'alsa-lib')
+optdepends=('xdialog: .desktop file installation dialog'
+            'zenity: .desktop file installation dialog'
+            'kdebase-kdialog: .desktop file installation dialog')
 conflicts=('kaku')
-
-md5sums=('2c8133c984200218ec127c76e65eaee0'
-         '4da31bb76a5352d2310a332d7972be4a'
-         'abbb6affbdd10243d96892edc5dd68ac')
-source=(
-  "Kaku-linux64-v${pkgver}.zip::https://github.com/EragonJ/Kaku/releases/download/${pkgver}/Kaku-linux64.zip"
-  "kaku.png::https://camo.githubusercontent.com/0b9900f6f5800a2121741e6adf860a048220cef0/687474703a2f2f692e696d6775722e636f6d2f63334b4b5139742e706e67"
-  "kaku.desktop")
+options=(!strip)
+noextract=("Kaku-$pkgver-x86_64.AppImage")
+source=("https://github.com/EragonJ/Kaku/releases/download/$pkgver/Kaku-$pkgver-x86_64.AppImage"
+        "https://raw.githubusercontent.com/EragonJ/Kaku/master/LICENSE")
+sha1sums=('117924c08c7a85843803693fc62b74bf9806b75b'
+          'c83f356e593dd80c05d6b5cbc1769b3e5a2f3c10')
 
 package() {
-  mkdir -p "${pkgdir}/usr/share/kaku"
-  mkdir -p "${pkgdir}/usr/bin"
-  cp -R "${srcdir}/Kaku-linux64"/* "${pkgdir}/usr/share/kaku"
-  ln -s "/usr/share/kaku/Kaku" "${pkgdir}/usr/bin/kaku"
-  install -Dm644 "${srcdir}/kaku.png" "${pkgdir}/usr/share/icons/kaku.png"
-  install -Dm644 "${srcdir}/kaku.desktop" "${pkgdir}/usr/share/applications/kaku.desktop"
+  install -d "$pkgdir"/{opt/kaku,usr/bin}
+
+  install -m755 Kaku-$pkgver-x86_64.AppImage "$pkgdir"/opt/kaku
+  install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
+
+  ln -s /opt/kaku/Kaku-$pkgver-x86_64.AppImage "$pkgdir"/usr/bin/kaku
 }
