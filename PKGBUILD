@@ -1,6 +1,6 @@
 pkgname=aria2d
 pkgver=1.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Daemonize aria2'
 license=('GPL2')
 arch=(any)
