@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=Stardew Valley
+Comment=An open-ended country-life RPG
+Exec=gog-stardew-valley
+Icon=gog-stardew-valley
+StartupNotify=true
+Terminal=false
+Type=Application
+Categories=Application;Game;AudioVideo;
