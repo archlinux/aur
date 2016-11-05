@@ -5,7 +5,7 @@
 
 pkgname=burpsuite
 pkgver=1.7.10
-pkgrel=2
+pkgrel=3
 pkgdesc="An integrated platform for performing security testing of web applications (free edition)."
 url="https://portswigger.net/burp/"
 depends=('java-runtime')
@@ -18,7 +18,7 @@ source=("${pkgname}.jar::https://portswigger.net/Burp/Releases/Download?productI
         icon64.png)
 
 md5sums=('d34753e71e8fcd505e39510c6bf9e74b'
-         'f463acff8a409ef66136a30b404ff361'
+         '4cb5840ee960fa96da23b7833acf8b3a'
          '81feb47df93ef9b65e5194cf9ff6c023'
          'c3678a3dcb77765beb6708a7cead6341')
 
