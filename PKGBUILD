@@ -7,7 +7,6 @@ pkgdesc="An open-ended country-life RPG"
 url="http://stardewvalley.net"
 license=('custom')
 arch=('i686' 'x86_64')
-depends=('sdl2')
 source=("gog://${pkgname//-/_}_${pkgver}.sh"
         "${pkgname}.desktop")
 sha256sums=('88e1fae7226c7bfa91cb28c137c24867e12b1a0b6e824e6ffe73e1eefc166aac'
