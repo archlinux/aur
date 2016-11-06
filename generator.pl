@@ -1,83 +1,104 @@
 #!/usr/bin/perl
 use v5.10;
+use strict;
+use warnings;
 use experimental 'smartmatch';
 use Tie::File;
-use JSON;
 use Template;
 use LWP::UserAgent;
-use Data::Dumper;
+use HTML::TreeBuilder;
+use List::Util qw(maxstr);
 
 use constant {
-    SOURCE => "https://ftp.mozilla.org/pub/thunderbird/nightly/latest-comm-aurora/",
-    CMD => "bash -c '" . 'source ./PKGBUILD; echo "${pkgver%%.*}"' . "'",
-    ARCHES => [ 'i686', 'x86_64' ]
+    ROOT => 'http://ftp.mozilla.org/pub/thunderbird/nightly/',
 };
 
-sub _get_latest_version {
-    my ($ua) = @_;
+sub _find_max {
+    my ($tree, $filter) = @_;
 
-    my $cmd = CMD();
-    my $init = `$cmd`;
+    my @values =  map { $_->as_text } $tree->find('a');
+    @values    = grep { $_ ~~ $filter } @values if defined $filter;
 
-    sub _url {
-        my ($version) = @_;
-
-        return SOURCE . "thunderbird-$version.0a2.en-US.linux-i686.json";
+    unless(@values) {
+        say "No values can be extracted.";
+        exit 1;
     }
 
-    my ($req, $res);
-    for $i ( $init .. ( $init + 5 ) ) {
-        $req = HTTP::Request->new( HEAD => _url($i) );
-        $res = $ua->request($req);
-
-        last if $res->is_success;
-    }
-
-    exit 2 unless $res->is_success;
-
-    my $uri = $res->base;
-    $uri =~ /thunderbird-(?<version>[\d]{2}).0a2.en-US.linux-[xi0-9_]*.json/;
-
-    return %+ if %+;
-
-    print "Cannot get response on HEAD request about latest tarball";
-    exit 1;
+    return maxstr @values;
 }
 
-sub _fill_metadata {
-    my ($ua, $version) = @_;
-    # thundebird-50.0a2.en-US.linux-x86_64.tar.bz
-    for my $arch ( @{ +ARCHES } ) {
-        print "Arch = $arch\n";
-        my $file = "thunderbird-$version->{version}.0a2.en-US.linux-$arch";
-        my $base_uri = SOURCE . $file;
-        my $uri = $base_uri . '.checksums';
+sub _get_tree {
+    my ($ua, $url) = @_;
 
-        my $req = HTTP::Request->new(GET => $uri);
-        my $res = $ua->request($req);
-        if ( $res->is_success ) {
-            my $sum = "sha512sums_$arch";
-            $res->content =~ /(?<$sum>[0-9a-f]+) sha512 [\d]+ $file.tar.bz2/m;
-            $version->{$sum} = $+{$sum};
-        }
+    my $req = HTTP::Request->new(GET => $url);
+    my $res = $ua->request($req);
 
-        unless ( $version->{buildid} ) {
-            $uri = $base_uri . '.json';
-            $req = HTTP::Request->new(GET => $uri);
-            $res = $ua->request($req);
-            if ( $res->is_success ) {
-                my $json = decode_json $res->content;
-                $version->{buildid} = $json->{buildid};
-            }
-        }
+    if ( $res->is_success ) {
+        my $tree = HTML::TreeBuilder->new_from_content($res->content);
+        return $tree;
+    }
+    else {
+        say "Request $url is failed";
+        exit 2;
+    }
+}
+
+sub _get_part {
+    my ($ua, $uri, $filter) = @_;
+
+    return _find_max(_get_tree($ua, $uri), $filter);
+}
+
+sub _get_data {
+    my ($ua, $lang) = @_;
+    $lang //= 'en-US';
+    my $uri = ROOT;
+    my $is_num = qr/^\d+/;
+    my $data = {};
+
+    my $year = _get_part($ua,$uri, $is_num);
+    $uri .= $year;
+    $year =~ s:/::;
+    $data->{year} = $year;
+
+    my $month = _get_part($ua, $uri, $is_num);
+    $uri .= $month;
+    $month =~ s:/::;
+    $data->{month} = $month;
+
+    my $release = _get_part($ua, $uri, qr(aurora/$));
+    $uri .= $release;
+    $release =~ /^\d{4}-\d{2}-(?<day>\d+)-(?<hour>\d+)-(?<minute>\d+)-(?<second>\d+)/;
+    $data = { %$data, %+ };
+
+    my $package_i686 = _get_part($ua, $uri, qr($lang.linux-i686.tar.bz2$));
+    my $package_i686_sums = _get_part($ua, $uri, qr($lang.linux-i686.checksums$));
+    $data->{sha512sums_i686} = _get_hashsum($ua, $uri . $package_i686_sums, $package_i686);
+
+    my $package_x86_64  = _get_part($ua, $uri, qr($lang.linux-x86_64.tar.bz2$));
+    my $package_x86_64_sums = _get_part($ua, $uri, qr($lang.linux-x86_64.checksums$));
+    $data->{sha512sums_x86_64} = _get_hashsum($ua, $uri . $package_x86_64_sums, $package_x86_64);
+
+    $data->{version} = $1 if $package_x86_64 =~ /thunderbird-(\d+)/;
+
+    return $data;
+}
+
+sub _get_hashsum {
+    my ($ua, $uri, $file) = @_;
+
+    my $req = HTTP::Request->new(GET => $uri);
+    my $res = $ua->request($req);
+    if ( $res->is_success ) {
+        $res->content =~ /(?<sum>[0-9a-f]+) sha512 [\d]+ $file/m;
+        return $+{sum};
     }
 }
 
 my $ua = LWP::UserAgent->new;
-
-my %version = _get_latest_version($ua);
-_fill_metadata($ua, \%version);
+my $data = _get_data($ua);
 
 my $t = Template->new(RELATIVE => 1);
 
-$t->process('PKGBUILD.template', \%version, 'PKGBUILD') || die $tt->error();
+say "Generate PKGBUILD for version $data->{version}...";
+$t->process('PKGBUILD.template', $data, 'PKGBUILD') || die $t->error();
