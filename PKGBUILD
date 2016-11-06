@@ -3,7 +3,7 @@
 pkgname=gog-spacechem
 _pkgname=spacechem
 pkgver=2.0.0.5
-pkgrel=4
+pkgrel=5
 pkgdesc="A puzzle game where you build elaborate chemical factories."
 url="http://www.zachtronics.com/spacechem/"
 license=('custom')
@@ -23,6 +23,9 @@ sha256sums=('c009d9bdd2c343700ac7e6681f640d3c5a6f362c7b5931753b26cd5f7ec635c3'
 
 # You need to download the gog.com installer file manually or with lgogdownloader.
 DLAGENTS+=("gog::/usr/bin/echo %u - This is is not a real URL, you need to download the GOG file manually to \"$PWD\" or setup a gog:// DLAGENT. Read this PKGBUILD for more information.")
+
+# Prevent compressing final package
+PKGEXT='.pkg.tar'
 
 prepare(){
     # Unzip will produce an error code because it is unable to unzip the Installer.
