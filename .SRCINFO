@@ -11,7 +11,7 @@ pkgbase = pulseaudiocontrol
 	provides = pulseaudio-ctl
 	provides = pulseaudio_ctl
 	source = https://github.com/YanDoroshenko/pulseaudiocontrol/raw/master/pulseaudiocontrol-1.1.tar.xz
-	sha256sums = 8b1b2657100b283365601f6155dfd36ece09d207e9ad0208516c1ec74593f31b
+	sha256sums = 8f83e5698023bb913596b59873844590c18588fb6f4cb4121f30f4a3da989943
 
 pkgname = pulseaudiocontrol
 
