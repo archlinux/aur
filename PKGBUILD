@@ -1,8 +1,8 @@
 # Maintainer: zoe <chp321@gmail.com>
 
 pkgname=bikexperience
-pkgver=5.1.7
-pkgrel=6
+pkgver=5.2.0
+pkgrel=1
 pkgdesc="Software for outdoor training planning and gpx-track-management"
 arch=('any')
 url="http://www.bikexperience.de/"
@@ -16,7 +16,7 @@ source=(
 "bikeXperience")
 
 md5sums=(
-'e4741f77c3af1b8087f77cb90b55d694'
+'c626890ddc55e275684a101522ec7a2e'
 '28d05ae6d71f8cfb18e9cf8469281355'
 '51830fb6b0fb7d5cd2e74ef7f697d222'
 '70b9104796d1a645509395da4822b96b')
