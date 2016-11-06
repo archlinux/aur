@@ -2,7 +2,7 @@
 
 pkgname="zeroc-ice-php56"
 pkgver=3.6.3
-pkgrel=1
+pkgrel=2
 pkgdesc="PHP bindings for Ice RPC framework"
 arch=("i686" "x86_64")
 url="https://zeroc.com"
@@ -19,8 +19,8 @@ source=(
     "ice-packaging-${pkgver}.tar.gz::https://github.com/zeroc-ice/ice-packaging/archive/v${pkgver}.tar.gz"
 )
 
-sha256sums=('5e9305a5eb6081c8f128d63a5546158594e9f115174fc91208f645dbe2fc02fe'
-            'f838d1740ef9421151873f1e04c9afd89da7c73998991f73f7c66e8466f5de80')
+sha256sums=('82ff74e6d24d9fa396dbb4d9697dc183b17bc9c3f6f076fecdc05632be80a2dc'
+            '36f26dd60e90928e4b8cccfc5b72e572e11d3d987ff513f814001600f76dfa2e')
 
 _make_args="OPTIMIZE=yes USE_BIN_DIST=yes embedded_runpath=prefix='' prefix=/usr"
 
@@ -29,8 +29,8 @@ build() {
 
     msg "Building Ice for PHP"
     msg2 "Compiling..."
-    find . -name 'Make*' -exec sed -i -e 's/php\-config\ /php\-config56\ /g' {} \;
-    find . -name 'Make*' -exec sed -i -e 's/shell\ php\ /shell\ php56\ /g' {} \;
+    find . -name "Make*" -exec sed -i -e 's/php\-config$/php\-config56/g' {} \;
+    find . -name "Make*" -exec sed -i -e 's/shell\ php\ /shell\ php56\ /g' {} \;
     make ${_make_args} -j`nproc` DESTDIR="${pkgdir}/"
 }
 
@@ -45,8 +45,7 @@ package() {
 
     # Put stuff into more possibly Arch Linux friendly places
     rm -rf ${pkgdir}/usr/share/Ice-${pkgver}/*
-    rm ${pkgdir}/usr/share/slice
+    rm -rf ${pkgdir}/usr/share/slice
     mv ${pkgdir}/usr/share/php ${pkgdir}/usr/share/Ice-${pkgver}/php
 }
-
 
