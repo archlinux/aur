@@ -7,10 +7,12 @@ arch=('any')
 url="https://code.google.com/p/pyew/"
 license=('GPL2')
 depends=('python2')
+provides=('pyew')
+conflicts=('pyew')
 optdepends=('libemu' 'python2-pylibemu' 'pil' 'python2-pillow' 'pygtk')
 makedepends=('git')
 source=('git+https://github.com/joxeankoret/pyew')
-md5sums=('SKIP')
+sha512sums=('SKIP')
 install="pyew.install"
 
 pkgver() {
