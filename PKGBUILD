@@ -10,9 +10,11 @@ makedepends=("java-environment")
 options=("!makeflags")
 
 source=("git+https://github.com/podonoghue/usbdm-eclipse-makefiles-build.git"
-        "undebian.patch")
+        "undebian.patch"
+        "60-usbdm.rules")
 sha256sums=('SKIP'
-            'f26f12f010d0c43412af8c2825c052e8b801df39824fd7bee36c74ea29df763f')
+            '70b10fac3ae580ca0f951b94b3713cd2b7a9c023502bf6cfe47ef07206499b52'
+            '88eaab73a1020ac84d4979a4f70f122214b0042d167942a95bddd0560f0e3aa8')
 
 pkgver() {
 	cd "usbdm-eclipse-makefiles-build"
@@ -143,4 +145,6 @@ package() {
 	find ${USBDM_LIBDIR} -type f -executable -exec chmod 755 {} \; -exec strip {} \;
 	find ${USBDM_LIBDIR} -type f -name \*.so\* -exec chmod 644 {} \;
 	find ${DUMMY_ROOT}   -type f ! -executable -exec chmod 644 {} \;
+
+	install -pD -m=664 "${srcdir}/60-usbdm.rules" "${pkgdir}/usr/lib/udev/rules.d/60-usbdm.rules"
 }
