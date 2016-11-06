@@ -6,6 +6,7 @@ pkgbase = python2-creole-hg
 	arch = any
 	license = BSD
 	depends = python2
+	provides = python2-creole
 	source = hg+https://bitbucket.org/thesheep/wikicreole
 	md5sums = SKIP
 

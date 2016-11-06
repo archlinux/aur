@@ -8,6 +8,7 @@ arch=('any')
 url='https://bitbucket.org/thesheep/wikicreole/wiki/Home'
 license=('BSD')
 depends=('python2')
+provides=($name)
 source=("hg+https://bitbucket.org/thesheep/wikicreole")
 md5sums=('SKIP')
 
