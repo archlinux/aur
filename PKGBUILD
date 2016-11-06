@@ -14,5 +14,5 @@ md5sums=('474e1e02aa0a8e3df5d1048e8d4376f5')
 package() {
 	cd djiki-$pkgver
 	python2 setup.py install --root="$pkgdir/" --optimize=1
-	chmod -R a+rx $pkgdir
+	chmod -R a+rX $pkgdir
 }
