@@ -8,6 +8,7 @@ arch=('any')
 url='https://github.com/Smile4ever/VLC-Lyrics-Finder'
 license=('GPL')
 depends=('vlc')
+makedepends=('git')
 source=("git+https://github.com/Smile4ever/VLC-Lyrics-Finder.git")
 sha1sums=('SKIP')
 
@@ -20,8 +21,8 @@ pkgver() {
 package() {
   cd VLC-Lyrics-Finder
 
-  install -D -m 644 lyricsfinder.lua "$pkgdir/usr/lib/vlc/lua/extensions/lyricsfinder.lua"
+  install -Dm644 lyricsfinder.lua "$pkgdir"/usr/lib/vlc/lua/extensions/lyricsfinder.lua
 
-  install -d -m 755 "$pkgdir/usr/share/vlc/lua/extensions/lyricsfinder/locale"
-  install -m 644 locale/*.xml "$pkgdir/usr/share/vlc/lua/extensions/lyricsfinder/locale/"
+  install -d "$pkgdir"/usr/share/vlc/lua/extensions/lyricsfinder/locale
+  install -m644 locale/*.xml "$pkgdir"/usr/share/vlc/lua/extensions/lyricsfinder/locale
 }

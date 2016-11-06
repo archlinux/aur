@@ -5,6 +5,7 @@ pkgbase = vlc-extension-lyricsfinder-git
 	url = https://github.com/Smile4ever/VLC-Lyrics-Finder
 	arch = any
 	license = GPL
+	makedepends = git
 	depends = vlc
 	source = git+https://github.com/Smile4ever/VLC-Lyrics-Finder.git
 	sha1sums = SKIP
