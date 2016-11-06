@@ -2,8 +2,8 @@
 _orgname=openorienteering
 _pkgname=mapper
 pkgname=${_orgname}-${_pkgname}-git
-pkgver=0.6.6.r3007.6f2fc07
-pkgrel=1
+pkgver=0.6.6.r3089.19a80d1
+pkgrel=2
 pkgdesc="Orienteering mapmaking program"
 arch=('i686' 'x86_64')
 url="http://openorienteering.github.io/apps/mapper/"
@@ -21,6 +21,13 @@ pkgver() {
   RELEASE="$(git describe --tags $(git rev-list --tags --max-count=1))"
   REVISION="$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
   printf "%s.r%s" "${RELEASE#?}" "${REVISION}"
+}
+
+prepare() {
+  cd ${srcdir}/${_pkgname}/translations
+  for lang in `ls OpenOrienteering_*.ts | sed 's/OpenOrienteering_\(.*\)\.ts/\1/' | grep -v template`; do
+    curl -so OpenOrienteering_$lang.ts https://hosted.weblate.org/download/${_orgname}/${_pkgname}/$lang/
+  done
 }
 
 build() {
