@@ -4,24 +4,18 @@
 # Contributor: Michal Krenek (a.k.a. Mikos) <m.krenek@gmail.com>
 
 pkgname=beignet
-pkgver=1.2.0
-pkgrel=3
+pkgver=1.2.1
+pkgrel=1
 pkgdesc='A GPGPU System for Intel Ivybridge GPUs'
 arch=('x86_64')
 url="https://01.org/beignet"
 license=('LGPL2.1')
 depends=('glu' 'llvm' 'mesa' 'ocl-icd' 'opencl-headers')
-makedepends=('clang' 'cmake' 'python2')
+makedepends=('clang' 'cmake' 'python')
 provides=('opencl-intel')
 conflicts=('opencl-intel')
-source=("https://01.org/sites/default/files/beignet-${pkgver}-source.tar.gz" 'libdrm2471.patch')
-sha256sums=('fc7af19efb7596b04510d26c558a576eba3e95e1ef86fd6951213c6a4bf58bff'
-            'a71ddc57c943f02a73fff24de190f078f0f6864a5c66fd5f859d63ea9d5daf54')
-
-prepare() {
-    cd "${srcdir}/Beignet-${pkgver}-Source"
-    patch -p1 < "${srcdir}/libdrm2471.patch"
-}
+source=("https://01.org/sites/default/files/${pkgname}-${pkgver}-source.tar.gz")
+sha256sums=('b74eb03534a12b86a896cdbd8209b072c8a38e7af456195793a498428a7ac81f')
 
 build() {
     mkdir -p "${srcdir}/Beignet-${pkgver}-Source/build"
@@ -29,8 +23,7 @@ build() {
     cmake .. \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DCMAKE_INSTALL_LIBDIR=/usr/lib \
-        -DCMAKE_BUILD_TYPE=RELEASE \
-        -DPYTHON_EXECUTABLE:FILEPATH=/usr/bin/python2
+        -DCMAKE_BUILD_TYPE=RELEASE
     make
 }
 

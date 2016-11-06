@@ -1,13 +1,13 @@
 pkgbase = beignet
 	pkgdesc = A GPGPU System for Intel Ivybridge GPUs
-	pkgver = 1.2.0
-	pkgrel = 3
+	pkgver = 1.2.1
+	pkgrel = 1
 	url = https://01.org/beignet
 	arch = x86_64
 	license = LGPL2.1
 	makedepends = clang
 	makedepends = cmake
-	makedepends = python2
+	makedepends = python
 	depends = glu
 	depends = llvm
 	depends = mesa
@@ -15,10 +15,8 @@ pkgbase = beignet
 	depends = opencl-headers
 	provides = opencl-intel
 	conflicts = opencl-intel
-	source = https://01.org/sites/default/files/beignet-1.2.0-source.tar.gz
-	source = libdrm2471.patch
-	sha256sums = fc7af19efb7596b04510d26c558a576eba3e95e1ef86fd6951213c6a4bf58bff
-	sha256sums = a71ddc57c943f02a73fff24de190f078f0f6864a5c66fd5f859d63ea9d5daf54
+	source = https://01.org/sites/default/files/beignet-1.2.1-source.tar.gz
+	sha256sums = b74eb03534a12b86a896cdbd8209b072c8a38e7af456195793a498428a7ac81f
 
 pkgname = beignet
 
