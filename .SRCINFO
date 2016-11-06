@@ -1,0 +1,24 @@
+pkgbase = tomatoes
+	pkgdesc = How many tomatoes can you smash in ten short minutes?
+	pkgver = 1.55
+	pkgrel = 11
+	url = http://tomatoes.sourceforge.net
+	arch = i686
+	arch = x86_64
+	license = ZLIB
+	depends = sdl_image
+	depends = sdl_mixer
+	depends = glu
+	source = http://downloads.sourceforge.net/tomatoes/tomatoes-linux-src-1.55.tar.bz2
+	source = http://downloads.sourceforge.net/tomatoes/tomatoes-linux-1.5.tar.bz2
+	source = 0001-tomatoes-1.55-makefile-Append-to-compile-flags.patch
+	source = 0002-tomatoes-1.55-Quell-const-char-conversion-warnings.patch
+	source = config.cfg
+	sha1sums = aa123a5fa9c8c0223c602c0cffe8a5bb0ebad60c
+	sha1sums = 8dc306617800f7ccc1e8610fb39e87d8181c482d
+	sha1sums = 65faa7dc05d4f5629339cf4150f5dcbf2626e3a5
+	sha1sums = 6ad404f67a05781efe8787773e352af1a2922c60
+	sha1sums = e241ac2f76abad1f618e20f8e2d0089cdfa555af
+
+pkgname = tomatoes
+
