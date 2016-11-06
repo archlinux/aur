@@ -1,9 +1,8 @@
 # Maintainer: Markus Meissner <coder@safemailbox.de>
-# Submitter: Nikita Volodin <volodin.n at gmail dot com>
 
-pkgname=asus-fan-dkms-git
-pkgver=v0.9.1.r6.g2472ad6
-pkgrel=2
+pkgname=asus-fan-dkms-git 
+pkgver=v0.9.1.r8.g491f5e9
+pkgrel=1
 _realname=asus-fan
 _modname=asus_fan
 pkgdesc="Kernel module allowing to control (both) fan inside various ASUS laptops"
@@ -26,7 +25,7 @@ pkgver() {
 package() {
   cd "${srcdir}/${pkgname}"
 
-  #mkdir -p ${pkgdir}/usr/sbin
+  #mkdir -p ${pkgdir}/usr/sbin 
   mkdir -p ${pkgdir}/usr/bin
   mkdir -p ${pkgdir}/usr/lib/systemd/system
   install misc/asus-fan-create-symlinks.sh ${pkgdir}/usr/bin/asus-fan-create-symlinks.sh
@@ -36,6 +35,6 @@ package() {
 
   ksrcdir="/usr/src/${_modname}-git"
   mkdir -p ${pkgdir}${ksrcdir}
-  make -f Makefile.dkms DESTDIR=${pkgdir}${ksrcdir} src_install
+  make -f Makefile.dkms DESTDIR=${pkgdir}${ksrcdir} src_install 
 }
 
