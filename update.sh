@@ -8,7 +8,7 @@ sed -i -re "s/^pkgver=.*$/pkgver=$VERSION/" PKGBUILD
 sed -i -re "s/^pkgrel=.*$/pkgrel=1/" PKGBUILD
 
 set +e
-makepkg -si
+makepkg -s
 set -e
 
 checksum=$(sha256sum $VERSION.tar.gz | awk '{print $1}')
@@ -21,7 +21,7 @@ sudo systemctl --no-pager status home-assistant
 
 echo "Sleep 60sec to ensure everything is working good"
 
-for i in {1..12}: do echo -n . ; sleep 5 done
+for i in {1..12}; do echo -n . ; sleep 5 ; done
 sudo systemctl --no-pager status home-assistant
 
 makepkg --printsrcinfo > .SRCINFO
