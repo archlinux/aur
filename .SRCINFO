@@ -1,24 +1,21 @@
 pkgbase = valum-git
 	pkgdesc = Web micro-framework written in Vala
-	pkgver = r519.cea929a
-	pkgrel = 1
+	pkgver = r1068.34c0db3
+	pkgrel = 2
 	url = https://github.com/valum-framework/valum
 	arch = i686
 	arch = x86_64
 	license = LGPL3
 	makedepends = git
-	makedepends = python
-	depends = vala
-	depends = glib2>=2.32
-	depends = libsoup>=2.38
-	depends = libgee06>=0.6.4
-	depends = ctpl>=0.3.3
+	makedepends = ninja>=1.6.0
+	makedepends = vala>=0.26
+	makedepends = meson>=0.33
+	makedepends = python>=3.4
+	depends = glib2>=2.40
+	depends = libsoup>=2.44
 	depends = fcgi
-	optdepends = libmemcached: For memcached cache storage.
-	optdepends = memcached: For memcached cache storage.
-	optdepends = luajit: For an embedded Lua VM.
 	provides = valum
-	source = git://github.com/antono/valum.git
+	source = git://github.com/valum-framework/valum.git
 	md5sums = SKIP
 
 pkgname = valum-git
