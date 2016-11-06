@@ -8,7 +8,7 @@ _verrelease=2
 _extraver=5
 _nojdkrelease=true
 pkgver=${_veryear}.${_verrelease}.${_extraver}
-pkgrel=1
+pkgrel=2
 pkgdesc="Intellij Idea IDE (community version) with Intellij JDK"
 arch=('any')
 options=(!strip)
@@ -36,7 +36,7 @@ cat <<EOF
 [Desktop Entry]
 Version=$pkgver
 Type=Application
-Name=IntelliJ IDEA Community EAP
+Name=IntelliJ IDEA Community
 Comment=Intelligent Java IDE - EAP version
 Exec="/opt/$pkgname/bin/idea.sh" %f
 Icon=/opt/$pkgname/bin/idea.png
