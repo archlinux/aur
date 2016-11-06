@@ -2,11 +2,11 @@
 # Maintainer: Felix Yan <felixonmars@archlinux.org>
 # Contributor: Alessio Sergi <asergi at archlinux dot us>
 
-_bzr_branch=synapse-project
+_bzr_branch=trunk
 _pkgname=synapse
 
 pkgname=$_pkgname-bzr
-pkgver=r654
+pkgver=r653
 pkgrel=1
 pkgdesc="A semantic file launcher"
 arch=('i686' 'x86_64')
@@ -44,7 +44,7 @@ optdepends=(
            )
 
 source=(
-        "$_pkgname::bzr+http://bazaar.launchpad.net/~bebehei/$_pkgname-project/$_bzr_branch/"
+        "$_pkgname::bzr+http://bazaar.launchpad.net/~$_pkgname-core/$_pkgname-project/$_bzr_branch/"
        )
 sha1sums=(
           'SKIP'
