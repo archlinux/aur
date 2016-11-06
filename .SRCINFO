@@ -1,8 +1,8 @@
 pkgbase = merecat-git
 	pkgdesc = Simple, small and fast HTTP server
-	pkgver = 20161103.e2c6a0a
+	pkgver = 20161106.53a355f
 	pkgrel = 1
-	url = https://github.com/troglobit/merecat
+	url = http://merecat.troglobit.com/
 	arch = i686
 	arch = x86_64
 	license = custom:BSD

@@ -4,10 +4,10 @@
 
 _pkgname=merecat
 pkgname=merecat-git
-pkgver=20161103.e2c6a0a
+pkgver=20161106.53a355f
 pkgrel=1
 pkgdesc='Simple, small and fast HTTP server'
-url='https://github.com/troglobit/merecat'
+url='http://merecat.troglobit.com/'
 license=('custom:BSD')
 arch=('i686' 'x86_64')
 backup=('etc/merecat.conf')
