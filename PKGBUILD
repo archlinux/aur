@@ -3,10 +3,10 @@
 
 pkgname=minecraft-technic-launcher
 pkgver=4.347
-pkgrel=2
+pkgrel=3
 pkgdesc='Choose from thousands of community-made Minecraft modpacks available on the Technic Platform.'
 arch=('any')
-license=('GPL3')
+license=('custom')
 url='http://www.technicpack.net/'
 depends=('java-runtime' 'xorg-xrandr' 'hicolor-icon-theme')
 makedepends=('icoutils')
@@ -31,4 +31,8 @@ package(){
         install -D -m644 "${srcdir}/icon_"?"_${size}x${size}x32.png" \
             "${pkgdir}/usr/share/icons/hicolor/${size}x${size}/apps/technic-launcher.png"
     done
+
+    bsdtar xf TechnicLauncher.jar licenses
+    mkdir -p "$pkgdir/usr/share/doc/$pkgname/licenses"
+    install -Dm644 licenses/* "$pkgdir/usr/share/doc/$pkgname/licenses"
 }
