@@ -1,48 +1,60 @@
 # Maintainer: Philipp Trommler <ph.trommler@gmail.com>
+# Contributor: Adria Arrufat <adria.arrufat+AUR@protonmail.ch>
 pkgname=valum-git
-pkgver=r519.cea929a
-pkgrel=1
+pkgver=r1068.34c0db3
+pkgrel=2
 pkgdesc="Web micro-framework written in Vala"
 arch=("i686" "x86_64")
 url="https://github.com/valum-framework/valum"
 license=("LGPL3")
-depends=("vala"
-		 "glib2>=2.32"
-		 "libsoup>=2.38"
-		 "libgee06>=0.6.4"
-		 "ctpl>=0.3.3"
-		 "fcgi")
-optdepends=("libmemcached: For memcached cache storage."
-			"memcached: For memcached cache storage."
-			"luajit: For an embedded Lua VM.")
+depends=("glib2>=2.40"
+         "libsoup>=2.44"
+         "fcgi")
 makedepends=("git"
-			 "python")
+             "ninja>=1.6.0"
+             "vala>=0.26"
+             "meson>=0.33"
+	     "python>=3.4")
 provides=("valum")
-source=("git://github.com/antono/valum.git")
+source=("git://github.com/valum-framework/valum.git")
 md5sums=("SKIP")
 
 pkgver() {
-	cd "valum"
+	cd valum
   	( set -o pipefail
 		git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' || printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 	)
 }
 
 build() {
-	cd "valum"
-	./waf configure --prefix=/usr
-	./waf build
+	mkdir -p valum/_build
+	cd valum/_build
+	CFLAGS="-Wall -Wextra -O -march=native" meson --prefix /usr --buildtype=plain ..
+	ninja
 }
 
 check() {
-	cd "valum"
-	export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:./build
-	./build/tests/tests
+	cd valum/_build
+	ninja test
 }
 
 package() {
-	cd "valum"
-	DESTDIR="$pkgdir" ./waf install
-	install -Dm644 vapi/ctpl.vapi vapi/fcgi.vapi "$pkgdir/usr/share/vala/vapi/"
-	install -Dm644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+	cd valum
+
+	mkdir -p ${pkgdir}/usr/share/licenses/valum/
+	install -Dm644 COPYING ${pkgdir}/usr/share/licenses/valum/LICENSE
+
+	cd _build
+	DESTDIR=${pkgdir} ninja install
+
+	cd ${pkgdir}
+
+	mkdir -p usr/lib
+	mv usr/lib64/* usr/lib/
+	rm -rf usr/lib64
+
+	cd usr/lib/pkgconfig
+	for f in `ls *pc`; do
+		sed -i $f -e "s/\/lib64/\/lib/g"
+	done
 }
