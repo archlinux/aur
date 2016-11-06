@@ -1,6 +1,6 @@
 pkgbase = pulseaudiocontrol
 	pkgdesc = Pulseaudio command line control
-	pkgver = 1.1
+	pkgver = 1.1.1
 	pkgrel = 1
 	url = https://github.com/YanDoroshenko/pulseaudio-control
 	arch = any
