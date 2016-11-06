@@ -1,6 +1,6 @@
 pkgbase = xapps-git
 	pkgdesc = Common library for X-Apps project
-	pkgver = r8.17a09bc
+	pkgver = r26.15e6611
 	pkgrel = 1
 	url = https://github.com/linuxmint/xapps
 	arch = i686
