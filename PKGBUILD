@@ -9,13 +9,13 @@
 pkgname=ocaml-ounit
 _pkgname=ounit
 pkgver=2.0.0
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 license=('MIT')
 pkgdesc="Unit testing framework for OCaml"
 url="http://ounit.forge.ocamlcore.org"
 depends=('ocaml')
-makedepends=('ocaml-findlib')
+makedepends=('ocaml-findlib' 'ocamlbuild')
 options=('!strip')
 source=("http://forge.ocamlcore.org/frs/download.php/1258/$_pkgname-$pkgver.tar.gz")
 sha512sums=('e12c8fb534ef88de7a83a34e5a578060a90abfce601d8532408412a56e843f69b89cfd6ce69bd7c5519e9a04e306d46339e9b8f13975727a3458afe20cd776d0')
