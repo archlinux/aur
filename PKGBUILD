@@ -2,16 +2,14 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=inkscape-092-bzr
-pkgver=r15152
+pkgver=r15154
 pkgrel=1
 pkgdesc="An Open Source vector graphics editor, using Scalable Vector Graphics (SVG) file format"
 url="https://launchpad.net/inkscape"
 arch=('i686' 'x86_64')
 license=('GPL' 'LGPL')
-depends=('aspell' 'gtkspell' 'gtkmm' 'libexif' 'gc' 'poppler-glib' 'potrace'
-	 'libxslt' 'gsl' 'imagemagick' 'desktop-file-utils' 'python2'
-	 'popt' 'dbus-glib' 'libcdr' 'libvisio' 'python2' 'gdk-pixbuf2'
-	 'hicolor-icon-theme' 'ttf-linux-libertine')
+depends=('gtkspell' 'gtkmm' 'gc' 'poppler-glib' 'potrace' 'libxslt' 'gsl' 'imagemagick'
+	 'python2' 'popt' 'libcdr' 'libvisio' 'gnome-vfs')
 optdepends=('python2-numpy: some extensions'
             'python2-lxml: some extensions and filters'
             'uniconvertor: reading/writing to some proprietary formats'
