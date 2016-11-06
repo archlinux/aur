@@ -1,0 +1,4 @@
+/pkg/
+/src/
+/synapse/
+/synapse-bzr*.pkg.*
