@@ -4,7 +4,7 @@
 
 pkgbase=digikam
 pkgname=('digikam' 'kipi-plugins')
-_pkgver=5.2.0
+_pkgver=5.3.0
 pkgver=${_pkgver//-/_} # for beta versions
 pkgrel=1
 pkgdesc="Digital photo management application for KDE"
@@ -14,9 +14,9 @@ url="http://www.digikam.org/"
 makedepends=('extra-cmake-modules' 'libkipi' 'libksane' 'liblqr' 'opencv' 'boost'
              'doxygen' 'lensfun' 'eigen' 'kdoctools' 'marble' 'kdesignerplugin'
              'kfilemetadata' 'akonadi-contacts' 'qt5-multimedia' 'threadweaver' 'kcalcore'
-             'knotifyconfig' 'libmediawiki' 'libkvkontakte' 'gphoto2')
+             'knotifyconfig' 'libmediawiki' 'libkvkontakte')
 source=("http://download.kde.org/stable/${pkgname}/${pkgname}-${_pkgver}.tar.xz")
-sha1sums=('329195ac7ea890a3bec435cd2ed83b04bc80ba1d')
+sha1sums=('3a62f6efdfafc37341626cbf0225cd7adc9d0633')
 
 prepare() {
   mkdir -p build
