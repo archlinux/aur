@@ -1,7 +1,7 @@
 # Maintainer: Chris Rizzitello <sithlord48@gmail.com>
 pkgname=atcore-git
 confilicts=('atcore')
-pkgver=707e566
+pkgver=b8850b3
 pkgrel=1
 pkgdesc="KDE 3D Printing"
 arch=('i686' 'x86_64')
@@ -26,6 +26,9 @@ build() {
 package(){
   cd "atcore"
   make DESTDIR="$pkgdir/" install 
-  mkdir "$pkgdir/usr/bin"
-  cp "testclient/AtCoreTest" "$pkgdir/usr/bin/"
+  #add the optional stuff for AtCoreTest deployment
+  install -D -s -m755 testclient/AtCoreTest $pkgdir/usr/bin/AtCoreTest
+  install -D -m644 testclient/AtCoreTest.menu $pkgdir/usr/share/menu/AtCoreTest
+  install -D -m644 testclient/AtCoreTest.png $pkgdir/usr/share/pixmaps/AtCoreTest.png
+  install -D -m644 testclient/AtCoreTest.desktop $pkgdir/usr/share/applications/AtCoreTest.desktop
 }  
