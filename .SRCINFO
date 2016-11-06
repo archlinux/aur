@@ -1,0 +1,13 @@
+pkgbase = python-diff_match_patch
+	pkgdesc = The Diff Match and Patch libraries offer robust algorithms to perform the operations required for synchronizing plain text
+	pkgver = 20121119
+	pkgrel = 1
+	url = http://code.google.com/p/google-diff-match-patch/
+	arch = any
+	license = Apache
+	depends = python
+	source = https://pypi.python.org/packages/22/82/46eaeab04805b4fac17630b59f30c4f2c8860988bcefd730ff4f1992908b/diff-match-patch-20121119.tar.gz
+	md5sums = 08e02cad82dda942b09ee248772fe143
+
+pkgname = python-diff_match_patch
+
