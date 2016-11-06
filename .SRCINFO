@@ -1,7 +1,7 @@
 pkgbase = gog-spacechem
 	pkgdesc = A puzzle game where you build elaborate chemical factories.
 	pkgver = 2.0.0.5
-	pkgrel = 3
+	pkgrel = 4
 	url = http://www.zachtronics.com/spacechem/
 	arch = i686
 	arch = x86_64
@@ -25,6 +25,19 @@ pkgbase = gog-spacechem
 	sha256sums = c009d9bdd2c343700ac7e6681f640d3c5a6f362c7b5931753b26cd5f7ec635c3
 	sha256sums = 13163c5848f639d672c5802b28df8d192cd8639119b65b9db31982915757824c
 	sha256sums = 5fd3aba4d99000f15b125f868aa27b7e7d16f6b448b3cc92ab05c4d41ddf1037
+	depends_i686 = glibc
+	depends_i686 = alsa-lib
+	depends_i686 = sdl
+	depends_i686 = sdl_image
+	depends_i686 = sdl_mixer
+	depends_i686 = ncurses5-compat-libs
+	depends_i686 = libjpeg-turbo
+	depends_i686 = libpng12
+	depends_i686 = glu
+	depends_i686 = libtiff
+	depends_i686 = fluidsynth
+	depends_i686 = libcaca
+	depends_i686 = sqlite
 
 pkgname = gog-spacechem
 
