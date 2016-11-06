@@ -1,6 +1,6 @@
 #Contributor: Hector Mtz-Seara <hseara.#at#.gmail*.*com>
 pkgname=pyzo
-pkgver=4.2.1
+pkgver=4.3.1
 pkgrel=1
 pkgdesc="Pyzo is a cross-platform Python IDE focused on interactivity and introspection, which makes it very suitable for scientific computing."
 url="http://pyzo.org"
@@ -18,7 +18,7 @@ makedepends=('python-setuptools')
 
 source=("https://github.com/pyzo/pyzo/archive/v${pkgver}.tar.gz")
 
-sha1sums=('8c99a53a63b1e5f0d4167cdc7e8d08f3e180e9cc')
+sha1sums=('8163a7b9f41204b43011a4abcf592df036590230')
 
 
 build(){
@@ -49,8 +49,9 @@ EOF
   mkdir -p ${pkgdir}/usr/share/applications
   install -m644 ${pkgname}.desktop ${pkgdir}/usr/share/applications/${pkgname}.desktop
 
-msg2 "Building iep shortcut"
-mkdir -p ${pkgdir}/usr/bin
+  # Building shortcut
+  msg2 "Building pyzo shortcut"
+  mkdir -p ${pkgdir}/usr/bin
   cat > ${pkgdir}/usr/bin/${pkgname} <<EOF
 #!/usr/bin/env python
 import pyzo
