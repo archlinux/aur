@@ -5,13 +5,13 @@
 
 _pkgname=go-ipfs
 pkgname=$_pkgname-git
-pkgver=0.4.3rc2.r0.g813bcb6
+pkgver=0.4.5dev.r327.g6779ff1
 pkgrel=1
 pkgdesc='global versioned p2p merkledag file system'
 url="https://github.com/ipfs/$_pkgname"
 arch=('i686' 'x86_64' 'armv7h')
 license=('MIT')
-makedepends=('git' 'go')
+makedepends=('git' 'go' 'jq')
 optdepends=('fuse: for mounting/advanced use'
             'bash-completion: bash completion support')
 provides=("$_pkgname")
@@ -25,7 +25,9 @@ sha512sums=('SKIP'
 
 pkgver() {
   cd "$srcdir/$_pkgname"
- git describe --long --tags | sed -e 's/^v//' -e 's/^\(.*\)-\([0-9]*\)-\(g[0-9a-f]*\)$/\1.r\2.\3/' -e 's/-//g'
+  VERSION=$(jq -r .version package.json)
+  REST=$(git describe --long --tags | sed -e 's/^v//' -e 's/^\(.*\)-\([0-9]*\)-\(g[0-9a-f]*\)$/r\2.\3/')
+  printf "%s.%s" "$VERSION" "$REST" | sed -e 's/-//g'
 }
 
 prepare() {
