@@ -6,7 +6,7 @@ pkgname=fontconfig-ubuntu
 pkgver=2.11.94
 _ubver=0ubuntu2
 pkgrel=2
-pkgdesc="Library for configuring and customizing font access, with Ubuntu's LCD rendering patches."
+pkgdesc="Library for configuring and customizing font access - with Ubuntu's patches"
 arch=('i686' 'x86_64')
 url="https://launchpad.net/ubuntu/+source/fontconfig"
 license=('custom')
@@ -23,6 +23,10 @@ md5sums=('c988ea12f4117330246e041109152b4a'
          '1527bc9abef9c13eef6178b4369dda2e'
          'a17e48be6a06bc056574be6756cb9738')
 
+# a nice page to test font matching:
+# http://zipcon.net/~swhite/docs/computers/browsers/fonttest.html
+# http://getemoji.com/
+
 prepare() {
   cd fontconfig-$pkgver
 
@@ -31,24 +35,14 @@ prepare() {
     patch -Np1 -i "../debian/patches/$_f"
   done
 
-  # patch
-  patch -u conf.d/53-monospace-lcd-filter.conf ../53-monospace-lcd-filter.patch
+  ## patch
+  #patch -u conf.d/53-monospace-lcd-filter.conf ../53-monospace-lcd-filter.patch
 }
 
 build() {
   cd fontconfig-$pkgver
-
-  # # make sure there's no rpath trouble and sane .so versioning - FC and Gentoo do this as well
-  # msg2 "Running libtoolize.."
-  # libtoolize -f
-
-  # msg2 "Running autoreconf.."
-  # autoreconf -fi
-
-  # Enable Position Independent Code for prelinking
-  export CFLAGS="$CFLAGS -fPIC"
   
-  msg2 "Running './configure'.."
+  msg2 "Running ./configure.."
   ./configure --prefix=/usr \
     --sysconfdir=/etc \
     --with-templatedir=/etc/fonts/conf.avail \
@@ -65,7 +59,7 @@ build() {
 package() {
   cd fontconfig-$pkgver
   
-  msg2 "Running make install.."
+  msg2 "Running 'make install'.."
   make DESTDIR="$pkgdir" install
 
   # License

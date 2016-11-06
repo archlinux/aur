@@ -1,5 +1,5 @@
 pkgbase = fontconfig-ubuntu
-	pkgdesc = Library for configuring and customizing font access, with Ubuntu's LCD rendering patches.
+	pkgdesc = Library for configuring and customizing font access - with Ubuntu's patches
 	pkgver = 2.11.94
 	pkgrel = 2
 	url = https://launchpad.net/ubuntu/+source/fontconfig
