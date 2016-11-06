@@ -2,7 +2,7 @@
 # Contributor: Adria Arrufat <adria.arrufat+AUR@protonmail.ch>
 pkgname=valum-git
 pkgver=r1068.34c0db3
-pkgrel=2
+pkgrel=3
 pkgdesc="Web micro-framework written in Vala"
 arch=("i686" "x86_64")
 url="https://github.com/valum-framework/valum"
@@ -16,6 +16,7 @@ makedepends=("git"
              "meson>=0.33"
 	     "python>=3.4")
 provides=("valum")
+conflicts=("valum")
 source=("git://github.com/valum-framework/valum.git")
 md5sums=("SKIP")
 
