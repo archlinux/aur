@@ -1,0 +1,13 @@
+post_install() {
+    ln -sf /opt/Stoplight/Stoplight /usr/bin/stoplight
+    update-desktop-database -q
+}
+
+post_upgrade() {
+    post_install
+}
+
+post_remove() {
+    rm -f /usr/bin/stoplight
+    update-desktop-database -q
+}
