@@ -1,5 +1,5 @@
-#! /bin/bash
-# Maintainer: Jorge Barroso <jorge.barroso.11 at gmail dot com>
+# Maintainer: twa022 <twa022 at gmail dot com>
+# Contributor: Jorge Barroso <jorge.barroso.11 at gmail dot com>
 # Contributor: Shockrates <antisocrates@gmail.com>
 
 pkgname=gridwars
@@ -13,8 +13,9 @@ license=('GPL')
 [ "$CARCH" = "x86_64" ] && depends=('lib32-libgl' 'lib32-libstdc++5' 'lib32-libxxf86vm' 'lib32-alsa-oss')
 source=('http://gridwars.marune.de/bin/gridwars_lin.zip'
         'gridwars.desktop')
-sha512sums=('7aac0bbc3b584ccaac5c0ac05e1be14f1b2bada776506ffadc5c45107a13eb4e0b16e7f375d1caa865c6aaa277c2a7a37d8061fed32628d9a0da2f45129ab8dd'
-            'b085da3b75fefb1d25c3204d5b3b20d5dc6a2b23dbf7e29f9585853df2d31d4dc41a644b94bd9711b43096f12bd776dd51075742a0dcb1c3027e6753bfd35d67')
+sha256sums=('51b5070f48f573bd5c33290740bdcc313f71aa97f78b637152ff827d85ff5109'
+            '2ad4d272c2d4696b27eb3f8c5bff3b9d0c540703680124796c147cbf11eabb8e')
+
 build() {
 	cd $srcdir
 
@@ -43,5 +44,5 @@ package() {
 #Linking binary and stuff
 
 	ln -sf /usr/share/games/gridwars/gridwars $pkgdir/usr/bin/gridwars
-        chgrp games $pkgdir/usr/share/games/gridwars/Config.txt        
+        chgrp games $pkgdir/usr/share/games/gridwars/Config.txt
 }
