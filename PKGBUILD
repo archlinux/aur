@@ -2,7 +2,7 @@
 
 pkgname=gnome-shell-extension-gnome-hdate-git
 _gitname=gnome-hdate
-pkgver=8529403
+pkgver=20161106
 pkgrel=1
 pkgdesc="Show Hebrew date in gnome-shell panel"
 arch=('i686' 'x86_64')
