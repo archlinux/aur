@@ -4,7 +4,7 @@
 
 pkgname=libreswan
 pkgver=3.18
-pkgrel=1
+pkgrel=2
 pkgdesc="IPsec implementation with IKEv1 and IKEv2 keying protocols"
 arch=('i686' 'x86_64')
 url="https://libreswan.org/"
@@ -22,7 +22,7 @@ build() {
   cd $pkgname-$pkgver
 
   # Disable new warning introduced with GCC 6 (-Wunused-const-variable=)
-  export CFLAGS="$CFLAGS -Wno-error=unused-const-variable "
+  export CFLAGS="$CFLAGS -Wno-error=sign-compare -Wno-error=unused-const-variable "
 
   make \
     USE_XAUTH=true USE_LIBCAP_NG=true USE_LEAK_DETECTIVE=false \
