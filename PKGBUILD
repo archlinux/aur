@@ -1,42 +1,46 @@
-# Maintainer: Mateusz Lemusisk <mrlemux@gmail.com>
-# Based on xf86-input-libinput by Laurent Carlier <lordheavym@gmail.com>
+# Maintainer: Det <thatone>
+# Contributor: Mateusz Lemusisk <mrlemux@gmail.com>
+# Based on extra/xf86-input-libinput by: Laurent Carlier <lordheavym@gmail.com>:
+# https://git.archlinux.org/svntogit/packages.git/tree/trunk/PKGBUILD?h=packages/xf86-input-libinput
 
+_pkgname=xf86-input-libinput
 pkgname=xf86-input-libinput-git
-pkgver=0.11.0.r0.g449b496
+pkgver=0.22.0.6.r200.ga61e156
 pkgrel=1
-pkgdesc="Generic input driver for the X.Org server based on libinput. Git version"
+pkgdesc="Generic input driver for the X.Org server based on libinput - Git version"
 arch=('i686' 'x86_64')
 license=('custom')
-url="http://xorg.freedesktop.org/"
-depends=('libinput')
-makedepends=('xorg-server-devel' 'X-ABI-XINPUT_VERSION=22.1' 'libxi' 'libx11' 'resourceproto' 'scrnsaverproto')
-conflicts=('xorg-server<1.16' 'X-ABI-XINPUT_VERSION<22' 'X-ABI-XINPUT_VERSION>=23' xf86-input-libinput)
-provides=xf86-input-libinput
+url="https://cgit.freedesktop.org/xorg/driver/xf86-input-libinput/"
+depends=('libinput>=1.2.0')
+makedepends=('xorg-server-devel' 'X-ABI-XINPUT_VERSION' 'libxi' 'libx11' 'resourceproto' 'scrnsaverproto' 'git')
+provides=("${_pkgname}=${pkgver}" 'xf86-input-driver')
+conflicts=('xorg-server<1.18.0' 'X-ABI-XINPUT_VERSION<22' "${_pkgname}")
 groups=('xorg-drivers' 'xorg')
-source=(git://anongit.freedesktop.org/xorg/driver/xf86-input-libinput
-        90-libinput.conf)
-sha256sums=('SKIP'
-            'd4a728caadb7924852dcdc0da4de950c6fb9ebd8999d4e3af3d0baaa51cd0e75')
+source=("git://anongit.freedesktop.org/xorg/driver/${_pkgname}")
+sha256sums=('SKIP')
 
 pkgver() {
-    cd xf86-input-libinput
-git describe --long | sed 's/^xf86.input.libinput.//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  cd ${_pkgname}
+  
+  echo $(git describe --long | cut -d "-" -f4-5 | tr - .).r$(git rev-list HEAD --count).$(git describe --long | cut -d "-" -f6)
 }
 
 build() {
-  cd "${srcdir}/xf86-input-libinput"
-  ./autogen.sh --prefix=/usr
-  ./configure --prefix=/usr --disable-static
+  cd ${_pkgname}
+
+  msg2 "Starting ./configure..."
+  ./configure --prefix=/usr \
+    --disable-static
+	
+  msg2 "Starting make..."
   make
 }
 
 package() {
-  cd xf86-input-libinput
+  cd ${_pkgname}
+
+  msg2 "Starting 'make install'..."
   make DESTDIR="${pkgdir}" install
 
-  install -m755 -d "${pkgdir}/usr/share/X11/xorg.conf.d"
-  install -m644 ../90-libinput.conf "${pkgdir}/usr/share/X11/xorg.conf.d/"
-  install -m755 -d "${pkgdir}/usr/share/licenses/${pkgname}"
-  install -m644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}/"
+  install -Dm644 COPYING "${pkgdir}/usr/share/licenses/${_pkgname}/COPYING"
 }
-
