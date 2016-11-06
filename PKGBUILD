@@ -1,7 +1,7 @@
 # Maintainer: Jose Riha <jose1711 gmail com>
 # Contributor: Alexander 'hatred' Drozdov <adrozdoff@gmail.com>
 pkgname=routeconverter
-pkgver=2.18.5
+pkgver=2.19
 pkgrel=1
 pkgdesc="A free tool to edit and convert routes, tracks and waypoints."
 arch=(i686 x86_64)
@@ -22,8 +22,8 @@ md5sumscommon=('4bc45e6a1a93656a0deb8956f71b6af8'
 
 md5sums=('e4cdc9db82a9f8c550afb44f851d897f'
          'fdf570309917df1c1536b7e3c7740b33'
-         'fcd5ba246148aaf589c5dec2431aeb20'
-         '6179b82a7d0f53912b6fb107384fa83f')
+         'b7cfe056ad0a8030af0d03dec356406e'
+         '4eb734fd15a4eab0782b29f0bd1179be')
 
 noextract=(RouteConverterCmdLine.jar
            RouteConverterLinux.jar
