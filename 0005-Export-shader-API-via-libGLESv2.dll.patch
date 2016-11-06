@@ -1,26 +1,58 @@
-From 76ef75af85db31e33fa573336a18058238639f9c Mon Sep 17 00:00:00 2001
+From ccff4861fa86aa66aedc680f65c00aa0b190e7a9 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sun, 25 Sep 2016 23:07:03 +0200
 Subject: [PATCH 5/8] Export shader API via libGLESv2.dll
 
 Required by Qt WebKit
 ---
- src/libGLESv2.gypi | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ src/compiler/translator/ShaderLang.cpp | 11 +++++++++++
+ src/compiler/translator/ShaderVars.cpp | 11 +++++++++++
+ 2 files changed, 22 insertions(+)
 
-diff --git a/src/libGLESv2.gypi b/src/libGLESv2.gypi
-index 1267cc2..17375c9 100644
---- a/src/libGLESv2.gypi
-+++ b/src/libGLESv2.gypi
-@@ -1036,7 +1036,7 @@
-         {
-             'target_name': 'libGLESv2',
-             'type': '<(angle_gl_library_type)',
--            'dependencies': [ 'libANGLE', 'angle_common' ],
-+            'dependencies': [ 'translator', 'libANGLE', 'angle_common' ],
-             'includes': [ '../build/common_defines.gypi', ],
-             'sources':
-             [
+diff --git a/src/compiler/translator/ShaderLang.cpp b/src/compiler/translator/ShaderLang.cpp
+index 37b1114..c9397b4 100644
+--- a/src/compiler/translator/ShaderLang.cpp
++++ b/src/compiler/translator/ShaderLang.cpp
+@@ -9,6 +9,17 @@
+ // as defined in ShaderLang.h
+ //
+ 
++// ensure this gets exported
++#ifndef COMPONENT_BUILD
++#define COMPONENT_BUILD
++#endif
++#ifdef ANGLE_TRANSLATOR_STATIC
++#undef ANGLE_TRANSLATOR_STATIC
++#endif
++#ifndef ANGLE_TRANSLATOR_IMPLEMENTATION
++#define ANGLE_TRANSLATOR_IMPLEMENTATION
++#endif
++
+ #include "GLSLANG/ShaderLang.h"
+ 
+ #include "compiler/translator/Compiler.h"
+diff --git a/src/compiler/translator/ShaderVars.cpp b/src/compiler/translator/ShaderVars.cpp
+index 8e217f1..a4d451c 100644
+--- a/src/compiler/translator/ShaderVars.cpp
++++ b/src/compiler/translator/ShaderVars.cpp
+@@ -7,6 +7,17 @@
+ //  Methods for GL variable types (varyings, uniforms, etc)
+ //
+ 
++// ensure this gets exported
++#ifndef COMPONENT_BUILD
++#define COMPONENT_BUILD
++#endif
++#ifdef ANGLE_TRANSLATOR_STATIC
++#undef ANGLE_TRANSLATOR_STATIC
++#endif
++#ifndef ANGLE_TRANSLATOR_IMPLEMENTATION
++#define ANGLE_TRANSLATOR_IMPLEMENTATION
++#endif
++
+ #include <GLSLANG/ShaderLang.h>
+ 
+ #include "common/debug.h"
 -- 
 2.10.2
 

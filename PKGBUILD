@@ -33,10 +33,10 @@ sha256sums=('SKIP'
             'e79008c38c429937985812e525c71292bd612f6a3844abb328d2837fd69ce763'
             '08e47bb775a032a470f9fc995f1a06721b0431c30c2b7a79ca083ea06d0a9622'
             'd7a0c9de5c91aa9d5364fa453240309d30c0a17ea85dde979c85b836916ae11e'
-            'b85618a22d25ced858ff47a6b4102c0d48b89470484add48063ccfe242169555'
-            'da091bbe30f96038026713941ce47c7aaf2bb8767150bd941ec95878cde7c4a2'
-            '8da56bffa5e718d987306794fd9087a8a92a49e79203857ca81d383c9d5462c8'
-            '0a513ee36b9b452ff7c2ba3a37539efe3d5b65992969c95e07afccdf7545f0ee')
+            '50db99bc4f7fc8d68fc1ae5d5826f1938714b9f5a06d62ece718a02d1b0d4a2d'
+            '7dc50ef89e3af1b99d41ba25e1ad7acb62a0abd4008a23b298aa3c224751934a'
+            '66852b4499763955f27906599567a0a4712218d5e739feb550a8a13eaa2d43f0'
+            '521251e4ffd280f4344de1ece6393820b57517c457dbb695a673d865d71b5ed2')
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
 
 #pkgver() {
@@ -62,9 +62,6 @@ prepare() {
 
   # Execute bootstrap scripts
   python2 scripts/bootstrap.py
-  # Set cache dir manually, though
-  #gclient config --name change2dot --unmanaged --cache-dir /tmp/gclient \
-  #    'https://chromium.googlesource.com/angle/angle.git'
   gclient sync --deps=all
 
   # Apply patches; further descriptions can be found in patch files itself

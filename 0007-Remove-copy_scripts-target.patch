@@ -1,4 +1,4 @@
-From 6344194952f53a8c59997badf56d143da57893f2 Mon Sep 17 00:00:00 2001
+From 1ea025fac01f94d61d254309418ef470c36cbd4c Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sun, 6 Nov 2016 17:57:18 +0100
 Subject: [PATCH 7/8] Remove copy_scripts target
@@ -131,7 +131,7 @@ index 578f0f3..083c760 100644
      ] # conditions
  }
 diff --git a/src/libGLESv2.gypi b/src/libGLESv2.gypi
-index 17375c9..2a88286 100644
+index 1267cc2..56c3e99 100644
 --- a/src/libGLESv2.gypi
 +++ b/src/libGLESv2.gypi
 @@ -1020,13 +1020,6 @@
