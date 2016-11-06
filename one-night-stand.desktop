@@ -1,0 +1,9 @@
+[Desktop Entry]
+Categories=Game;
+Exec=/usr/bin/one-night-stand
+Icon=one-night-stand
+Terminal=false
+Type=Application
+Name=One Night Stand
+Comment=A game about the morning after a one night stand.
+Name[en_US]=One Night Stand

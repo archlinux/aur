@@ -1,0 +1,2 @@
+#!/bin/sh
+cd /opt/one-night-stand && sh One\ Night\ Stand.sh
