@@ -1,0 +1,87 @@
+diff --git a/Common.mk b/Common.mk
+index 64325fd..7e30d4e 100644
+--- a/Common.mk
++++ b/Common.mk
+@@ -47,7 +47,6 @@ else
+    TARGET_BINDIR   ?= ../PackageFiles/bin/$(MULTIARCH)
+    TARGET_LIBDIR   ?= ../PackageFiles/lib/$(MULTIARCH)
+    BUILDDIR_SUFFIX ?= .$(MULTIARCH)
+-   include /usr/share/java/java_defaults.mk
+ endif
+ 
+ ifeq ($(UNAME_S),Windows)
+@@ -296,7 +295,7 @@ ifeq ($(UNAME_S),Windows)
+    JAVA_INC := -I$(PROGRAM_DIR_JAVA)/Java/jdk1.8.0_60/include
+    JAVA_INC += -I$(PROGRAM_DIR_JAVA)/Java/jdk1.8.0_60/include/win32
+ else
+-   JAVA_INC := -I/usr/lib/jvm/default-java/include $(jvm_includes)
++   JAVA_INC := -I/usr/lib/jvm/default/include -I/usr/lib/jvm/default/include/linux
+ endif
+ 
+ #=============================================================
+diff --git a/Library.mk b/Library.mk
+index 12657ad..500f193 100644
+--- a/Library.mk
++++ b/Library.mk
+@@ -39,17 +39,8 @@ ifeq ($(UNAME_S),Windows)
+ else
+    # Assume Linux
+    DIRS = $(COMMON_DIRS)
+-   BITNESS ?= $(shell getconf LONG_BIT)
+-   ifeq ($(BITNESS),32)
+-      TARGET_BINDIR   ?= ../PackageFiles/bin/i386-linux-gnu
+-      TARGET_LIBDIR   ?= ../PackageFiles/lib/i386-linux-gnu
+-      BUILDDIR_SUFFIX ?= .i386
+-   endif
+-   ifeq ($(BITNESS),64)
+-      TARGET_BINDIR   ?= ../PackageFiles/bin/x86_64-linux-gnu
+-      TARGET_LIBDIR   ?= ../PackageFiles/lib/x86_64-linux-gnu
+-      BUILDDIR_SUFFIX ?= .x86_64
+-   endif
++   TARGET_BINDIR   ?= ../PackageFiles/bin
++   TARGET_LIBDIR   ?= ../PackageFiles/lib
+ endif
+ 
+ ifeq ($(UNAME_S),Windows)
+diff --git a/USBDM_API_Example/Common.mk b/USBDM_API_Example/Common.mk
+index d6f5d71..dcbc3b1 100644
+--- a/USBDM_API_Example/Common.mk
++++ b/USBDM_API_Example/Common.mk
+@@ -47,7 +47,6 @@ else
+    TARGET_BINDIR   ?= ../PackageFiles/bin/$(MULTIARCH)
+    TARGET_LIBDIR   ?= ../PackageFiles/lib/$(MULTIARCH)
+    BUILDDIR_SUFFIX ?= .$(MULTIARCH)
+-   include /usr/share/java/java_defaults.mk
+ endif
+ 
+ ifeq ($(UNAME_S),Windows)
+@@ -299,7 +298,7 @@ ifeq ($(UNAME_S),Windows)
+    JAVA_INC := -I$(PROGRAM_DIR_JAVA)/Java/jdk1.8.0_60/include
+    JAVA_INC += -I$(PROGRAM_DIR_JAVA)/Java/jdk1.8.0_60/include/win32
+ else
+-   JAVA_INC := -I/usr/lib/jvm/default-java/include $(jvm_includes)
++   JAVA_INC := -I/usr/lib/jvm/default/include -I/usr/lib/jvm/default/include/linux
+ endif
+ 
+ #=============================================================
+diff --git a/USBDM_Programmer_API_Example/Common.mk b/USBDM_Programmer_API_Example/Common.mk
+index 2d8dffd..7988431 100644
+--- a/USBDM_Programmer_API_Example/Common.mk
++++ b/USBDM_Programmer_API_Example/Common.mk
+@@ -47,7 +47,6 @@ else
+    TARGET_BINDIR   ?= ../PackageFiles/bin/$(MULTIARCH)
+    TARGET_LIBDIR   ?= ../PackageFiles/lib/$(MULTIARCH)
+    BUILDDIR_SUFFIX ?= .$(MULTIARCH)
+-   include /usr/share/java/java_defaults.mk
+ endif
+ 
+ ifeq ($(UNAME_S),Windows)
+@@ -292,7 +291,7 @@ ifeq ($(UNAME_S),Windows)
+    JAVA_INC := -I$(PROGRAM_DIR_JAVA)/Java/jdk1.8.0_60/include
+    JAVA_INC += -I$(PROGRAM_DIR_JAVA)/Java/jdk1.8.0_60/include/win32
+ else
+-   JAVA_INC := -I/usr/lib/jvm/default-java/include $(jvm_includes)
++   JAVA_INC := -I/usr/lib/jvm/default/include -I/usr/lib/jvm/default/include/linux
+ endif
+ 
+ #=============================================================
