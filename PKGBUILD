@@ -5,7 +5,7 @@
 
 pkgname=r-mkl
 pkgver=3.3.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Language and environment for statistical computing and graphics, linked with Intel's MKL."
 arch=('x86_64')
 license=('GPL')
@@ -87,7 +87,7 @@ build() {
 
   if [ $_CC = "icc" ]; then
     source /opt/intel/composerxe/linux/bin/compilervars.sh ${_intel_arch}
-    _intel_cc_opt=" -O3 -qno-opt-matmul -xHost -m64 -parallel -mkl=parallel -qopenmp -ipo -fp-model precise -fp-model source -qopt-mem-layout-trans=2 -diag-disable=188,308"
+    _intel_cc_opt=" -O3 -qno-opt-matmul -xHost -m64 -qopenmp -ipo -fp-model precise -fp-model source -qopt-mem-layout-trans=2 -diag-disable=188,308"
     export MAIN_LDFLAGS=" -qopenmp"
     export FLIBS=" -lgfortran"
 
@@ -96,7 +96,6 @@ build() {
       -lmkl_intel_thread \
       -lmkl_core \
       -liomp5 \
-      -limf \
       -lsvml \
       -lirc \
       -lunwind \
@@ -127,7 +126,6 @@ build() {
       -lmkl_core \
       -liomp5 \
       -lpthread \
-      -limf \
       -lm \
       -ldl"
 
@@ -151,6 +149,9 @@ build() {
     --with-lapack \
     --enable-R-shlib \
     LIBnn=lib
+
+  # Place Intel's basic math library prior to GLIBC libm
+  sed -i "s/\(^\| \)-lm\( \|$\)/\1-limf -lm\2/g" {./,etc/}Makeconf
 
   # Build the package
   make
