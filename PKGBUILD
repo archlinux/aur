@@ -1,6 +1,8 @@
-# $Id: PKGBUILD 172135 2016-04-27 17:58:47Z fyan $
-# Maintainer: Felix Yan <felixonmars@archlinux.org>
-# Contributor: Alessio Sergi <asergi at archlinux dot us>
+# Maintainer: Benedikt Heine <bebe@bebehei.de>
+
+# Based on work of original synapse PKGBUILD from:
+# - Felix Yan <felixonmars@archlinux.org>
+# - Alessio Sergi <asergi at archlinux dot us>
 
 _bzr_branch=trunk
 _pkgname=synapse
