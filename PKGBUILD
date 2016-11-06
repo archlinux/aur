@@ -7,12 +7,12 @@
 
 pkgname=cerbero-profiler
 pkgver=2.6.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Cerbero Profiler is a tool designed primarily for malware and forensic analysis. It supports a huge number of file formats on which it performs analysis and lets the user inspect their internal layout."
 arch=('x86_64')
 url="http://cerbero.io/profiler"
 license=('custom')
-depends=('curl' 'tar' 'findutils' 'coreutils' 'binutils' 'openssl')
+depends=('curl' 'tar' 'findutils' 'coreutils' 'binutils' 'openssl' 'xcb-util-renderutil')
 provides=('cerbero-profiler')
 
 #
