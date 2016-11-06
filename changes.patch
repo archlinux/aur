@@ -1,5 +1,5 @@
 diff --git a/.gitignore b/.gitignore
-index c63307f..c5029f8 100644
+index c63307f..347c1d9 100644
 --- a/.gitignore
 +++ b/.gitignore
 @@ -11,7 +11,8 @@
@@ -7,37 +7,37 @@ index c63307f..c5029f8 100644
  *.vcproj
  .idea/
 -uid.dll
-+lib/uid
-+lib/uid.exe
++lib/faf-uid
++lib/faf-uid.exe
  build/
  dist/
  Thumbs.db
 diff --git a/.travis.yml b/.travis.yml
-index 74ee1ab..dbbd36a 100644
+index 74ee1ab..3ca3e26 100644
 --- a/.travis.yml
 +++ b/.travis.yml
 @@ -11,6 +11,7 @@ install:
    - "pip install cx_Freeze"
    - "pip install python-coveralls"
    - "pip install -r requirements.txt --trusted-host content.faforever.com"
-+  - curl -s https://api.github.com/repos/FAForever/uid/releases/latest | jq -r '.assets[] | select(.name | contains("uid")) | .browser_download_url' | wget -i - -O ./lib/uid
++  - curl -s https://api.github.com/repos/FAForever/uid/releases/latest | jq -r '.assets[] | select(.name | contains("uid")) | .browser_download_url' | wget -i - -O ./lib/faf-uid
  
  
  before_script:
 diff --git a/appveyor.yml b/appveyor.yml
-index f58e1af..53b16b3 100644
+index f58e1af..15e4cba 100644
 --- a/appveyor.yml
 +++ b/appveyor.yml
 @@ -19,6 +19,7 @@ install:
    - ps: "$env:PYTEST_QT_API=\"pyqt4\""
    - ps: "$env:FAF_FORCE_PRODUCTION=true"
    - "%PYTHON%\\Scripts\\pip.exe install -r requirements.txt --trusted-host content.faforever.com"
-+  - ps: (Invoke-WebRequest -Uri https://api.github.com/repos/FAForever/uid/releases/latest | ConvertFrom-Json).assets | where {$_.name -eq "uid.exe"} | %{ iwr $_.browser_download_url -OutFile ".\\lib\\uid.exe" }
++  - ps: (Invoke-WebRequest -Uri https://api.github.com/repos/FAForever/uid/releases/latest | ConvertFrom-Json).assets | where {$_.name -eq "faf-uid.exe"} | %{ iwr $_.browser_download_url -OutFile ".\\lib\\faf-uid.exe" }
  
  test_script:
      - "%PYTHON%\\Scripts\\py.test.exe -vv --full-trace"
 diff --git a/setup.py b/setup.py
-index cec04dc..fd9c8eb 100644
+index cec04dc..2ea6973 100644
 --- a/setup.py
 +++ b/setup.py
 @@ -11,7 +11,10 @@ sip.setapi('QList', 2)
@@ -84,7 +84,7 @@ index cec04dc..fd9c8eb 100644
      'include_files': ['res',
                        'RELEASE-VERSION',
 -                      ('lib/uid.dll', 'uid.dll'),
-+                      ('lib/uid.exe', 'uid.exe'),
++                      ('lib/faf-uid.exe', 'faf-uid.exe'),
                        ('lib/qt.conf', 'qt.conf'),
                        ('lib/xdelta3.exe', 'xdelta3.exe'),
                        ('lib/lua51.dll', 'lua51.dll')],
@@ -166,38 +166,6 @@ index 438d743..f144245 100644
  
  # Set up crash reporting
  excepthook_original = sys.excepthook
-diff --git a/src/chat/chatter.py b/src/chat/chatter.py
-index 14fd986..84c15c0 100644
---- a/src/chat/chatter.py
-+++ b/src/chat/chatter.py
-@@ -179,7 +179,6 @@ class Chatter(QtGui.QTableWidgetItem):
-             self.setText("[%s]%s" % (self.clan,self.name))
- 
-         rating = self.rating
--        ladder_rating = player.ladder_estimate()
- 
-         # Status icon handling
-         url = client.instance.urls.get(player.login)
-@@ -194,15 +193,13 @@ class Chatter(QtGui.QTableWidgetItem):
-             self.statusItem.setIcon(QtGui.QIcon())
-             self.statusItem.setToolTip("Idle")
- 
--        # Rating icon choice  (chr(0xB1) = +-)
--        self.rankItem.setToolTip("Global Rating: " + str(int(rating)) + " (" + str(player.number_of_games) + " Games) ["
--                                 + str(int(player.rating_mean)) + chr(0xB1) + str(int(player.rating_deviation)) +
--                                 "]\nLadder Rating: " + str(int(ladder_rating)) + " [" +
--                                 str(int(player.ladder_rating_mean)) + chr(0xB1) + str(int(player.ladder_rating_deviation)) + "]")
-+        #Rating icon choice
-+        #TODO: These are very basic and primitive
-+        self.rankItem.setToolTip("Global Rating: " + str(int(rating)))
- 
-         league = player.league
-         if league is not None:
--            self.rankItem.setToolTip("Division : " + league["division"] + "\nGlobal Rating: " + str(int(rating)))
-+            self.rankItem.setToolTip("Division : " + league["division"]+ "\nGlobal Rating: " + str(int(rating)))
-             self.rankItem.setIcon(util.icon("chat/rank/%s.png" % league["league"]))
-         else:
-             self.rankItem.setIcon(util.icon("chat/rank/newplayer.png"))
 diff --git a/src/client/_clientwindow.py b/src/client/_clientwindow.py
 index fc6b900..4e8e027 100644
 --- a/src/client/_clientwindow.py
@@ -298,23 +266,6 @@ index fc6b900..4e8e027 100644
  
          logger.info("Handling game_launch via JSON " + str(message))
  
-diff --git a/src/client/player.py b/src/client/player.py
-index a1c90d9..28ab447 100644
---- a/src/client/player.py
-+++ b/src/client/player.py
-@@ -62,12 +62,6 @@ class Player:
-         """
-         return int(max(0, (self.global_rating[0] - 3 * self.global_rating[1])))
- 
--    def ladder_estimate(self):
--        """
--        Get the conservative estimate of the players ladder trueskill rating
--        """
--        return int(max(0, (self.ladder_rating[0] - 3 * self.ladder_rating[1])))
--
-     @property
-     def rating_mean(self):
-         return self.global_rating[0]
 diff --git a/src/config/__init__.py b/src/config/__init__.py
 index 38bb1d0..493e9b1 100644
 --- a/src/config/__init__.py
@@ -439,19 +390,6 @@ index 0000000..76f203a
 +    def setGameSession(self, game_session):
 +        self.game_session = game_session
 \ No newline at end of file
-diff --git a/src/fa/check.py b/src/fa/check.py
-index 6ed9860..53f5b81 100644
---- a/src/fa/check.py
-+++ b/src/fa/check.py
-@@ -28,7 +28,7 @@ def map(mapname, force=False, silent=False):
-     auto = config.Settings.get('maps/autodownload', default=False, type=bool)
-     if not auto:
-         msgbox = QtGui.QMessageBox()
--        msgbox.setWindowTitle("Download Map")
-+        msgbox.setWindowTitle("Download Mod")
-         msgbox.setText("Seems that you don't have the map used this game. Do you want to download it?<br/><b>" + mapname + "</b>")
-         msgbox.setInformativeText("If you respond 'Yes to All' maps will be downloaded automatically in the future")
-         msgbox.setStandardButtons(QtGui.QMessageBox.Yes | QtGui.QMessageBox.YesToAll | QtGui.QMessageBox.No)
 diff --git a/src/fa/game_process.py b/src/fa/game_process.py
 index 9052f31..61d2c63 100644
 --- a/src/fa/game_process.py
@@ -703,67 +641,8 @@ index f235d73..9e6dceb 100644
          """ The core function that does most of the actual update work."""
          try:
              if self.sim:
-diff --git a/src/replays/_replayswidget.py b/src/replays/_replayswidget.py
-index 8aeac5e..5cce083 100644
---- a/src/replays/_replayswidget.py
-+++ b/src/replays/_replayswidget.py
-@@ -85,14 +85,14 @@ class ReplaysWidget(BaseClass, FormClass):
-     def searchVault(self):
-         """ search for some replays """
-         self.searching = True
--        self.connectToReplayVault()
-+        self.connectToModVault()
-         self.send(dict(command="search", rating=self.minRating.value(), map=self.mapName.text(),
-                                 player=self.playerName.text(), mod=self.modList.currentText()))
-         self.onlineTree.clear()
- 
-     def reloadView(self):
-         if not self.searching:
--            self.connectToReplayVault()
-+            self.connectToModVault()
-             self.send(dict(command="list"))
- 
-     def finishRequest(self, reply):
-@@ -114,7 +114,7 @@ class ReplaysWidget(BaseClass, FormClass):
-             self.selectedReplay = item
-             if hasattr(item, "moreInfo"):
-                 if item.moreInfo is False:
--                    self.connectToReplayVault()
-+                    self.connectToModVault()
-                     self.send(dict(command="info_replay", uid=item.uid))
-                 elif item.spoiled != self.spoilerCheckbox.isChecked():
-                     self.replayInfos.clear()
-@@ -129,9 +129,8 @@ class ReplaysWidget(BaseClass, FormClass):
-             self.replayDownload.get(QNetworkRequest(QtCore.QUrl(item.url))) 
- 
-     def spoilerCheckboxPressed(self, item):
--        if self.selectedReplay:  # if something is selected in the tree to the left
--            if type(self.selectedReplay) == ReplayItem:  # and if it is a game
--                self.selectedReplay.generateInfoPlayersHtml()  # then we redo it
-+        if self.selectedReplay:
-+            self.selectedReplay.generateInfoPlayersHtml()
- 
-     def replayVault(self, message):
-         action = message["action"]
-@@ -180,7 +179,6 @@ class ReplaysWidget(BaseClass, FormClass):
-         return BaseClass.showEvent(self, event)
- 
-     def updateOnlineTree(self):
--        self.selectedReplay = None  # clear because won't be part of the new tree
-         self.replayInfos.clear()
-         self.onlineTree.clear()
-         buckets = {}
-@@ -522,7 +520,7 @@ class ReplaysWidget(BaseClass, FormClass):
-             self.client.viewingReplay.emit(item.url)
-             replay(item.url)
-             
--    def connectToReplayVault(self):
-+    def connectToModVault(self):
-         """ connect to the replay vault server """
- 
-         if self.replayVaultSocket.state() != QtNetwork.QAbstractSocket.ConnectedState and self.replayVaultSocket.state() != QtNetwork.QAbstractSocket.ConnectingState:
 diff --git a/src/util/__init__.py b/src/util/__init__.py
-index 21989b0..f4fc217 100644
+index 21989b0..26bf310 100644
 --- a/src/util/__init__.py
 +++ b/src/util/__init__.py
 @@ -1,12 +1,17 @@
@@ -893,7 +772,7 @@ index 21989b0..f4fc217 100644
 -        logger.warning("UniqueID Failure, user warned", exc_info=sys.exc_info())
 -        QtGui.QApplication.quit()
 +        # on error, the uid exe returns 1 which will result in a CalledProcessError exception
-+        return subprocess.check_output(["uid", session], env=env, stderr=subprocess.STDOUT)
++        return subprocess.check_output(["faf-uid", session], env=env, stderr=subprocess.STDOUT)
 +    except OSError as err:
 +        logger.error("UniqueID error finding the executable: {}".format(err))
 +    except subprocess.CalledProcessError as exc:

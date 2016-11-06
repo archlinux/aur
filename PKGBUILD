@@ -21,7 +21,7 @@ install=
 changelog=
 source=("https://github.com/FAForever/client/archive/f28663fdf4b08b68968a1e367df99527a4e74454.tar.gz" 'changes.patch' 'FAForever.desktop')
 sha256sums=('67b800dcfba5ca6f179c0335c0cd39b23097345627839bc7cc7a227846b829fb'
-            '602c991a849bf33a253dc0372bbb27f2521253398ebd2ad2c399e7bd55203e0d'
+            '61dc8f7fbe2a4cd205b81e69260e159aa473a5b82066cfd1d81402a8c88dabcc'
             'f503475daa227d4ce1fa66063b065db7375ce3c0d161d77e3c2bd19c65468cbc')
 noextract=()
 validpgpkeys=()
