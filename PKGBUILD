@@ -2,32 +2,28 @@
 # Contributor: Your Name <youremail@domain.com>
 
 pkgname=ocp-build
-pkgver=1.99.9_beta
+pkgver=1.99.17_beta
 pkgrel=1
 pkgdesc="A build system for OCaml applications"
 arch=('i686' 'x86_64')
 url="http://www.typerex.org/${pkgname}.html"
 license=('GPL3')
 depends=('ocaml')
-source=("http://www.typerex.org/pub/${pkgname}/${pkgname}.${pkgver/_/-}.tar.gz" "destdir.patch")
-md5sums=('756bfe6337160693ec52119b400a12c2'
-         '5693506e95d1eff4decdbfaa8fa0e18f')
-
-prepare() {
-  cd "${srcdir}/${pkgname}.${pkgver/_/-}"
-
-  patch -Np1 -i "$srcdir/destdir.patch"
-}
+source=("https://github.com/OCamlPro/typerex-build/archive/${pkgver/_/-}.tar.gz")
+md5sums=('524a09f12bd41d17728a1321d4c39bdb')
 
 build() {
-  cd "${srcdir}/${pkgname}.${pkgver/_/-}"
+  cd "${srcdir}/typerex-build-${pkgver/_/-}"
 
-  ./configure --prefix=/usr
+  ./configure
   make
 }
 
 package() {
-  cd "${srcdir}/${pkgname}.${pkgver/_/-}"
+  cd "${srcdir}/typerex-build-${pkgver/_/-}"
 
-  make install DESTDIR="$pkgdir/"
+  make install prefix="${pkgdir}/usr"
+  # No need for uninstall information - we're using a package manager
+  find "${pkgdir}" -name "*.uninstall" -type f -delete
+  rm "${pkgdir}/usr/lib/ocaml/installed.ocp"
 }
