@@ -1,7 +1,7 @@
 # Maintainer: Yan Doroshenko <yandoroshenko@protonmail.com>
 
 pkgname=pulseaudiocontrol
-pkgver=1.1
+pkgver=1.1.1
 pkgrel=1
 pkgdesc="Pulseaudio command line control"
 arch=('any')
@@ -10,7 +10,7 @@ license=('GPL')
 depends=('libpulse>=4.0' 'pulseaudio>=4.0' 'sed')
 provides=('pulseaudio-ctl' 'pulseaudio_ctl')
 source=("https://github.com/YanDoroshenko/"$pkgname"/raw/master/"$pkgname"-"$pkgver".tar.xz")
-sha256sums=('8f83e5698023bb913596b59873844590c18588fb6f4cb4121f30f4a3da989943')
+sha256sums=('378f508fad45100bc5f6deba7bf600dca0b66a2f24acce35b85e504c4da961a6')
 
 package() {
     mkdir -p "$pkgdir"/usr/bin
