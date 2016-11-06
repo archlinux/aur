@@ -1,0 +1,28 @@
+diff -Naur ./mugshot-0.3.2.old/mugshot/MugshotWindow.py ./mugshot-0.3.2/mugshot/MugshotWindow.py
+--- ./mugshot-0.3.2.old/mugshot/MugshotWindow.py	2016-11-06 09:13:47.604768017 -0500
++++ ./mugshot-0.3.2/mugshot/MugshotWindow.py	2016-11-06 09:14:11.431116827 -0500
+@@ -257,10 +257,11 @@
+             logger.debug('Found profile image: %s' % str(image))
+ 
+             if os.path.isfile(face):
+-                if os.path.samefile(image, face):
+-                    self.updated_image = face
+-                else:
+-                    self.updated_image = None
++                if os.path.exists(image):
++                    if os.path.samefile(image, face):
++                        self.updated_image = face
++                    else:
++                        self.updated_image = None
+                 self.set_user_image(face)
+             elif os.path.isfile(image):
+                 self.updated_image = image
+@@ -612,7 +613,7 @@
+             success = False
+ 
+         logger.debug('Updating Office Phone...')
+-        
++
+         command = "%s -w \"%s\" %s" % (chfn, office_phone, username)
+         # Office phone is potentially handled by the -o flag in newer versions of chfn
+         command2 = "%s -o \"%s\" %s" % (chfn, office_phone, username)
