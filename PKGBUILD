@@ -1,7 +1,5 @@
-# Please report PKGBUILD bugs at
-# https://github.com/ystein/archlinux-aur-packages
-
-# Maintainer: Yannik Stein <yannik.stein [at] gmail.com>
+# Maintainer: twa022 <twa022 at gmail dot com>
+# Contributor: Yannik Stein <yannik.stein [at] gmail.com>
 
 pkgname=rhythmbox-tray-icon
 pkgver=0.2_1
@@ -16,7 +14,7 @@ depends=('rhythmbox>=2.90' 'python-cairo' 'gnome-icon-theme')
 conflicts=('rhythmbox-git')
 changelog=$pkgname.changelog
 source=(https://github.com/downloads/palfrey/rhythmbox-tray-icon/rhythmbox-tray-icon_${pkgver//_/-}_all.deb)
-md5sums=('2291a0bd18efdb3929b887f690752782')
+sha256sums=('8636241bb6dabb28f4c50959f9e1b4be4a3bacee2e55d0fc59a005bbf7fdaffa')
 
 package() {
   tar xfC "$srcdir/data.tar.gz" "$pkgdir"
