@@ -1,7 +1,7 @@
 # Maintainer:  Oliver Jaksch <arch-aur@com-in.de>
 
 pkgname=libretro-fbalpha-git
-pkgver=188.b895a68
+pkgver=200.43d71c7
 pkgrel=1
 pkgdesc="libretro implementation of Final Burn Alpha (Arcade)"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
@@ -34,6 +34,6 @@ build() {
 
 package() {
   install -Dm644 "${_gitname}/${_libname}.so" "${pkgdir}/usr/lib/libretro/${_libname}.so"
-  install -Dm644 "${_libname}.info" "${pkgdir}/usr/lib/libretro/${_libname}.info"
+  install -Dm644 "${_libname}.info" "${pkgdir}/usr/share/libretro/info/${_libname}.info"
   install -Dm644 "${_gitname}/src/license.txt" "${pkgdir}/usr/share/licenses/${pkgname}/license.txt"
 }
