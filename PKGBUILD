@@ -41,7 +41,6 @@ build() {
               --enable-ipv6 \
               --with-system-expat \
               --with-dbmliborder=gdbm:ndbm \
-              --with-system-ffi \
               --with-system-libmpdec \
               --enable-loadable-sqlite-extensions \
               --without-ensurepip
