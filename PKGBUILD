@@ -2,12 +2,13 @@
 pkgname=one-night-stand
 _pkgname=One_Night_Stand
 pkgver=2.04
-pkgrel=1
+pkgrel=2
 pkgdesc="A game about the morning after a one night stand."
 arch=(i686 x86_64)
 url="https://kinmoku.itch.io/one-night-stand"
 license=('custom')
-depends=(lib32-libgl lib32-gdk-pixbuf2 lib32-libxcursor lib32-libxrandr)
+depends_i686=(libxmu python2 ffmpeg libpng12 libxi freetype2 glu)
+depends_x86_64=(lib32-libxmu python2 ffmpeg libpng12 lib32-libxi lib32-freetype2 lib32-glu lib32-libpng12)
 options=(!strip)
 source=($pkgname
         $pkgname.desktop
