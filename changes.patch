@@ -1,5 +1,5 @@
 diff --git a/.gitignore b/.gitignore
-index c63307f..347c1d9 100644
+index c63307f..c5029f8 100644
 --- a/.gitignore
 +++ b/.gitignore
 @@ -11,7 +11,8 @@
@@ -7,76 +7,37 @@ index c63307f..347c1d9 100644
  *.vcproj
  .idea/
 -uid.dll
-+lib/faf-uid
-+lib/faf-uid.exe
++lib/uid
++lib/uid.exe
  build/
  dist/
  Thumbs.db
 diff --git a/.travis.yml b/.travis.yml
-index 74ee1ab..3ca3e26 100644
+index 74ee1ab..dbbd36a 100644
 --- a/.travis.yml
 +++ b/.travis.yml
 @@ -11,6 +11,7 @@ install:
    - "pip install cx_Freeze"
    - "pip install python-coveralls"
    - "pip install -r requirements.txt --trusted-host content.faforever.com"
-+  - curl -s https://api.github.com/repos/FAForever/uid/releases/latest | jq -r '.assets[] | select(.name | contains("uid")) | .browser_download_url' | wget -i - -O ./lib/faf-uid
++  - curl -s https://api.github.com/repos/FAForever/uid/releases/latest | jq -r '.assets[] | select(.name | contains("uid")) | .browser_download_url' | wget -i - -O ./lib/uid
  
  
  before_script:
 diff --git a/appveyor.yml b/appveyor.yml
-index f58e1af..15e4cba 100644
+index f58e1af..53b16b3 100644
 --- a/appveyor.yml
 +++ b/appveyor.yml
 @@ -19,6 +19,7 @@ install:
    - ps: "$env:PYTEST_QT_API=\"pyqt4\""
    - ps: "$env:FAF_FORCE_PRODUCTION=true"
    - "%PYTHON%\\Scripts\\pip.exe install -r requirements.txt --trusted-host content.faforever.com"
-+  - ps: (Invoke-WebRequest -Uri https://api.github.com/repos/FAForever/uid/releases/latest | ConvertFrom-Json).assets | where {$_.name -eq "faf-uid.exe"} | %{ iwr $_.browser_download_url -OutFile ".\\lib\\faf-uid.exe" }
++  - ps: (Invoke-WebRequest -Uri https://api.github.com/repos/FAForever/uid/releases/latest | ConvertFrom-Json).assets | where {$_.name -eq "uid.exe"} | %{ iwr $_.browser_download_url -OutFile ".\\lib\\uid.exe" }
  
  test_script:
      - "%PYTHON%\\Scripts\\py.test.exe -vv --full-trace"
-diff --git a/readme.md b/readme.md
-index 92946ee..b27be6c 100644
---- a/readme.md
-+++ b/readme.md
-@@ -28,7 +28,33 @@ pull-requests of your changes.
- Pull Requests must have py.test unit test coverage.
- 
- 
--Running
-+Running on Linux
-+-------
-+This guide is about runnning the client from source repository. For a [ready-made Arch-Linux package](https://aur.archlinux.org/cgit/aur.git/tree/PKGBUILD?h=python2-fafclient) [follow the instructions in the wiki](http://wiki.faforever.com/index.php?title=Setting_Up_FAF_Linux).
-+
-+Clone this repository locally:
-+
-+    git clone https://github.com/FAForever/client.git faf-client
-+    
-+Create a python virtualenv for installing its dependencies:
-+
-+    virtualenv2 ./faf-client-venv --system-site-packages
-+    ./faf-client-venv/bin/pip install -r ./faf-client/requirements.txt
-+
-+Now download the `uid` executable:
-+
-+    wget https://github.com/FAForever/uid/releases/download/v2.1.0/uid -O ./faf-client/lib/uid
-+    chmod +x ./faf-client/lib/uid
-+
-+Note that the `uid` smurf protection executable needs to run `xrandr`, `lspci`, `lsblk` and `uname` to gather unique system information.
-+
-+Run the client:
-+
-+    cd ./faf-client && ../faf-client-venv/bin/python src/__main__.py
-+
-+For more information see [the wiki](http://wiki.faforever.com/index.php?title=Setting_Up_FAF_Linux).
-+
-+Running unit tests
- -------
- Before running unit tests, set PYTEST_QT_API as follows:
- 
 diff --git a/setup.py b/setup.py
-index cec04dc..1448fdb 100644
+index cec04dc..fd9c8eb 100644
 --- a/setup.py
 +++ b/setup.py
 @@ -11,7 +11,10 @@ sip.setapi('QList', 2)
@@ -102,19 +63,19 @@ index cec04dc..1448fdb 100644
 -appveyor_build_version = os.getenv('APPVEYOR_BUILD_VERSION')
 -version.write_release_version(appveyor_build_version)
 +if sys.platform == 'win32':
-+    import config.version as version
-+    import PyQt4.uic
-+    git_version = version.get_git_version()
-+    msi_version = version.msi_version(git_version)
-+    appveyor_build_version = os.getenv('APPVEYOR_BUILD_VERSION')
-+    version.write_release_version(appveyor_build_version)
++  import config.version as version
++  import PyQt4.uic
++  git_version = version.get_git_version()
++  msi_version = version.msi_version(git_version)
++  appveyor_build_version = os.getenv('APPVEYOR_BUILD_VERSION')
++  version.write_release_version(appveyor_build_version)
  
 -print('Git version:', git_version,
 -      'Release version:', appveyor_build_version,
 -      'Build version:', msi_version)
-+    print('Git version:', git_version,
-+          'Release version:', appveyor_build_version,
-+          'Build version:', msi_version)
++  print('Git version:', git_version,
++        'Release version:', appveyor_build_version,
++        'Build version:', msi_version)
  
  # Ugly hack to fix broken PyQt4
  try:
@@ -123,7 +84,7 @@ index cec04dc..1448fdb 100644
      'include_files': ['res',
                        'RELEASE-VERSION',
 -                      ('lib/uid.dll', 'uid.dll'),
-+                      ('lib/faf-uid.exe', 'faf-uid.exe'),
++                      ('lib/uid.exe', 'uid.exe'),
                        ('lib/qt.conf', 'qt.conf'),
                        ('lib/xdelta3.exe', 'xdelta3.exe'),
                        ('lib/lua51.dll', 'lua51.dll')],
@@ -205,28 +166,292 @@ index 438d743..f144245 100644
  
  # Set up crash reporting
  excepthook_original = sys.excepthook
-diff --git a/src/config/version.py b/src/config/version.py
-index 8ee2014..bca2bc6 100644
---- a/src/config/version.py
-+++ b/src/config/version.py
-@@ -40,7 +40,7 @@ def call_git_describe():
-         return line.strip()
-     except Exception as e:
-         print("Error grabbing git version: {}".format(e))
--        return "0.0.0-dev"
-+        return None
+diff --git a/src/chat/chatter.py b/src/chat/chatter.py
+index 14fd986..84c15c0 100644
+--- a/src/chat/chatter.py
++++ b/src/chat/chatter.py
+@@ -179,7 +179,6 @@ class Chatter(QtGui.QTableWidgetItem):
+             self.setText("[%s]%s" % (self.clan,self.name))
  
- def is_development_version(version):
-     return "-" in version and not is_prerelease_version(version)
-@@ -94,7 +94,7 @@ def get_git_version():
-     # If we still don't have anything, that's an error.
+         rating = self.rating
+-        ladder_rating = player.ladder_estimate()
  
-     if version is None:
--        raise ValueError("Cannot find the version number!")
-+        raise ValueError("Cannot find the version number! Please provide RELEASE-VERSION file or run from git.")
+         # Status icon handling
+         url = client.instance.urls.get(player.login)
+@@ -194,15 +193,13 @@ class Chatter(QtGui.QTableWidgetItem):
+             self.statusItem.setIcon(QtGui.QIcon())
+             self.statusItem.setToolTip("Idle")
  
-     # Finally, return the current version.
-     return version
+-        # Rating icon choice  (chr(0xB1) = +-)
+-        self.rankItem.setToolTip("Global Rating: " + str(int(rating)) + " (" + str(player.number_of_games) + " Games) ["
+-                                 + str(int(player.rating_mean)) + chr(0xB1) + str(int(player.rating_deviation)) +
+-                                 "]\nLadder Rating: " + str(int(ladder_rating)) + " [" +
+-                                 str(int(player.ladder_rating_mean)) + chr(0xB1) + str(int(player.ladder_rating_deviation)) + "]")
++        #Rating icon choice
++        #TODO: These are very basic and primitive
++        self.rankItem.setToolTip("Global Rating: " + str(int(rating)))
+ 
+         league = player.league
+         if league is not None:
+-            self.rankItem.setToolTip("Division : " + league["division"] + "\nGlobal Rating: " + str(int(rating)))
++            self.rankItem.setToolTip("Division : " + league["division"]+ "\nGlobal Rating: " + str(int(rating)))
+             self.rankItem.setIcon(util.icon("chat/rank/%s.png" % league["league"]))
+         else:
+             self.rankItem.setIcon(util.icon("chat/rank/newplayer.png"))
+diff --git a/src/client/_clientwindow.py b/src/client/_clientwindow.py
+index fc6b900..4e8e027 100644
+--- a/src/client/_clientwindow.py
++++ b/src/client/_clientwindow.py
+@@ -1193,11 +1193,10 @@ class ClientWindow(FormClass, BaseClass):
+ 
+         # Run an initial connectivity test and initialize a gamesession object
+         # when done
+-        self.connectivity = ConnectivityHelper(self, self.gamePort)
+-        self.connectivity.connectivity_status_established.connect(self.initialize_game_session)
+-        self.connectivity.start_test()
++        #self.connectivity = ConnectivityHelper(self, self.gamePort)
++        #self.connectivity.connectivity_status_established.connect(self.initialize_game_session)
++        #self.connectivity.start_test()
+ 
+-    def initialize_game_session(self):
+         self.game_session = GameSession(self, self.connectivity)
+ 
+     def handle_registration_response(self, message):
+@@ -1217,55 +1216,41 @@ class ClientWindow(FormClass, BaseClass):
+                 'gameport': self.gamePort,
+                 'faction': faction
+             }
+-            if self.connectivity.state == 'STUN':
+-                msg['relay_address'] = self.connectivity.relay_address
++            #if self.connectivity.state == 'STUN':
++            #    msg['relay_address'] = self.connectivity.relay_address
+             self.send(msg)
+             self.game_session.ready.disconnect(request_launch)
+         if self.game_session:
+             self.game_session.ready.connect(request_launch)
+-            self.game_session.listen()
++            #self.game_session.listen()
+ 
+     def host_game(self, title, mod, visibility, mapname, password, is_rehost=False):
+-        def request_launch():
+-            msg = {
+-                'command': 'game_host',
+-                'title': title,
+-                'mod': mod,
+-                'visibility': visibility,
+-                'mapname': mapname,
+-                'password': password,
+-                'is_rehost': is_rehost
+-            }
+-            if self.connectivity.state == 'STUN':
+-                msg['relay_address'] = self.connectivity.relay_address
+-            self.send(msg)
+-            self.game_session.ready.disconnect(request_launch)
+-        if self.game_session:
+-            self.game_session.game_password = password
+-            self.game_session.ready.connect(request_launch)
+-            self.game_session.listen()
++        msg = {
++            'command': 'game_host',
++            'title': title,
++            'mod': mod,
++            'visibility': visibility,
++            'mapname': mapname,
++            'password': password,
++            'is_rehost': is_rehost
++        }
++        self.send(msg)
+ 
+     def join_game(self, uid, password=None):
+-        def request_launch():
+-            msg = {
+-                'command': 'game_join',
+-                'uid': uid,
+-                'gameport': self.gamePort
+-            }
+-            if password:
+-                msg['password'] = password
+-            if self.connectivity.state == "STUN":
+-                msg['relay_address'] = self.connectivity.relay_address
+-            self.send(msg)
+-            self.game_session.ready.disconnect(request_launch)
+-        if self.game_session:
+-            self.game_session.game_password = password
+-            self.game_session.ready.connect(request_launch)
+-            self.game_session.listen()
++        msg = {
++            'command': 'game_join',
++            'uid': uid,
++            'gameport': self.gamePort
++        }
++        if password:
++            msg['password'] = password
++        #if self.connectivity.state == "STUN":
++        #    msg['relay_address'] = self.connectivity.relay_address
++        self.send(msg)
+ 
+     def handle_game_launch(self, message):
+-        if not self.game_session or not self.connectivity.is_ready:
+-            logger.error("Not ready for game launch")
++        #if not self.game_session or not self.connectivity.is_ready:
++        #    logger.error("Not ready for game launch")
+ 
+         logger.info("Handling game_launch via JSON " + str(message))
+ 
+diff --git a/src/client/player.py b/src/client/player.py
+index a1c90d9..28ab447 100644
+--- a/src/client/player.py
++++ b/src/client/player.py
+@@ -62,12 +62,6 @@ class Player:
+         """
+         return int(max(0, (self.global_rating[0] - 3 * self.global_rating[1])))
+ 
+-    def ladder_estimate(self):
+-        """
+-        Get the conservative estimate of the players ladder trueskill rating
+-        """
+-        return int(max(0, (self.ladder_rating[0] - 3 * self.ladder_rating[1])))
+-
+     @property
+     def rating_mean(self):
+         return self.global_rating[0]
+diff --git a/src/config/__init__.py b/src/config/__init__.py
+index 38bb1d0..493e9b1 100644
+--- a/src/config/__init__.py
++++ b/src/config/__init__.py
+@@ -124,4 +124,10 @@ if environment == 'development':
+     logging.getLogger().addHandler(devh)
+     logging.getLogger().setLevel(logging.INFO)
+ 
++ch = logging.StreamHandler()
++ch.setLevel(logging.DEBUG)
++formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
++ch.setFormatter(formatter)
++logging.getLogger().addHandler(ch)
++
+ logging.getLogger().info("FAF version: {} Environment: {}".format(version.get_git_version(), environment))
+diff --git a/src/connectivity/JsonRpcTcpClient.py b/src/connectivity/JsonRpcTcpClient.py
+new file mode 100644
+index 0000000..eb39f05
+--- /dev/null
++++ b/src/connectivity/JsonRpcTcpClient.py
+@@ -0,0 +1,73 @@
++from PyQt4.QtNetwork import QTcpSocket
++from PyQt4 import QtCore
++
++import json
++
++from decorators import with_logger
++
++
++@with_logger
++class JsonRpcTcpClient:
++    def __init__(self, host, port, requestHandlerInstance):
++        self.socket = QTcpSocket()
++        self.socket.connectToHost(host, port)
++        self.socket.readyRead.connect(self._onData)
++        self.requestHandlerInstance = requestHandlerInstance
++        requestHandlerInstance._client = self
++
++        self.nextid = 1
++
++    def __getattr__(self, attr):
++        return lambda *args: self._call(attr, args)
++
++    @QtCore.pyqtSlot()
++    def _onData(self):
++        while self.socket.canReadLine():
++            data = str(self.socket.readLine())
++            try:
++                request = json.loads(data)
++
++                # is this a request?
++                if "method" in request:
++                    try:
++                        m = getattr(self.requestHandlerInstance, request["method"])
++                        if "params" in request and len(request["params"]) > 0:
++                            result = m(*request["params"])
++                        else:
++                            result = m()
++
++                        # we do not only have a notification, but a request which awaits a response
++                        if "id" in request:
++                            responseObject = {
++                                "id": request["id"],
++                                "result": result,
++                                "jsonrpc": "2.0"
++                            }
++                            self.socket.write(json.dumps(responseObject))
++                    except AttributeError:
++                        if "id" in request:
++                            responseObject = {
++                                "id": request["id"],
++                                "error": "no such method",
++                                "jsonrpc": "2.0"
++                            }
++                            self.socket.write(json.dumps(responseObject))
++
++                # this is only a response
++                elif "result" in request:
++                    self.lastResponse = request["result"]
++
++            except ValueError as e:
++                self._logger.error("parse failed {}".format(data))
++
++    def _call(self, method, args):
++        rpcObject = {
++            "id": self.nextid,
++            "method": method,
++            "params": args,
++            "jsonrpc": "2.0"
++        }
++        self.nextid += 1
++        self.socket.write(json.dumps(rpcObject))
++        self.socket.waitForReadyRead()
++        return self.lastResponse
+diff --git a/src/connectivity/ice_adapter.py b/src/connectivity/ice_adapter.py
+new file mode 100644
+index 0000000..76f203a
+--- /dev/null
++++ b/src/connectivity/ice_adapter.py
+@@ -0,0 +1,23 @@
++from decorators import with_logger
++
++@with_logger
++class IceAdapterHandler:
++
++    def onNeedSdp(self, localId, remoteId):
++        self._logger.info("onNeedSdp {} {}".format(localId, remoteId))
++
++    def onSdpGathered(self, localId, remoteId, sdp):
++        self._logger.info("onSdpGathered {} {} {}".format(localId, remoteId, sdp))
++        self.game_session.send("SdpRecord", [remoteId, sdp])
++
++    def onConnectionStateChanged(self, newState):
++        self._logger.info("onConnectionStateChanged {}".format(newState))
++        if self.game_session and newState == "Connected":
++            self.game_session._new_game_connection()
++
++    def onGpgNetMessageReceived(self, header, chunks):
++        self._logger.info("onGpgNetMessageReceived {} {}".format(header, chunks))
++        self.game_session._on_game_message(header, chunks)
++
++    def setGameSession(self, game_session):
++        self.game_session = game_session
+\ No newline at end of file
+diff --git a/src/fa/check.py b/src/fa/check.py
+index 6ed9860..53f5b81 100644
+--- a/src/fa/check.py
++++ b/src/fa/check.py
+@@ -28,7 +28,7 @@ def map(mapname, force=False, silent=False):
+     auto = config.Settings.get('maps/autodownload', default=False, type=bool)
+     if not auto:
+         msgbox = QtGui.QMessageBox()
+-        msgbox.setWindowTitle("Download Map")
++        msgbox.setWindowTitle("Download Mod")
+         msgbox.setText("Seems that you don't have the map used this game. Do you want to download it?<br/><b>" + mapname + "</b>")
+         msgbox.setInformativeText("If you respond 'Yes to All' maps will be downloaded automatically in the future")
+         msgbox.setStandardButtons(QtGui.QMessageBox.Yes | QtGui.QMessageBox.YesToAll | QtGui.QMessageBox.No)
 diff --git a/src/fa/game_process.py b/src/fa/game_process.py
 index 9052f31..61d2c63 100644
 --- a/src/fa/game_process.py
@@ -260,16 +485,293 @@ index 9052f31..61d2c63 100644
              logger.info("Running FA with info: " + str(info))
              logger.info("Running FA via command: " + command)
              logger.info("Running FA via executable: " + executable)
+diff --git a/src/fa/game_session.py b/src/fa/game_session.py
+index 8d4a81e..c171ecd 100644
+--- a/src/fa/game_session.py
++++ b/src/fa/game_session.py
+@@ -8,6 +8,11 @@ from decorators import with_logger
+ from fa.game_connection import GPGNetConnection
+ from fa.game_process import GameProcess, instance as game_process_instance
+ 
++from connectivity.ice_adapter import IceAdapterHandler
++from connectivity.JsonRpcTcpClient import JsonRpcTcpClient
++
++import os
++import subprocess
+ 
+ class GameSessionState(IntEnum):
+     # Game services are entirely off
+@@ -40,11 +45,6 @@ class GameSession(QObject):
+         # Subscribe to messages targeted at 'game' from the server
+         client.subscribe_to('game', self)
+ 
+-        # Connectivity helper
+-        self.connectivity = connectivity
+-        self.connectivity.ready.connect(self.ready.emit)
+-        self.connectivity.peer_bound.connect(self._peer_bound)
+-
+         # Keep a parent pointer so we can use it to send
+         # relay messages about the game state
+         self._client = client  # type: Client
+@@ -57,11 +57,6 @@ class GameSession(QObject):
+         self.init_mode = 0
+         self._joins, self._connects = [], []
+ 
+-        # 'GPGNet' TCP listener
+-        self._game_listener = QTcpServer(self)
+-        self._game_listener.newConnection.connect(self._new_game_connection)
+-        self._game_listener.listen(QHostAddress.LocalHost)
+-
+         # We only allow one game connection at a time
+         self._game_connection = None
+ 
+@@ -69,9 +64,33 @@ class GameSession(QObject):
+         self._process.started.connect(self._launched)
+         self._process.finished.connect(self._exited)
+ 
++        self.state = GameSessionState.LISTENING
++
++        try:
++            env = os.environ
++            env['PATH'] += ":" + os.getcwd()  # the Windows setup places executables in the root/CWD
++            env['PATH'] += ":" + os.path.join(os.getcwd(), "lib")  # the default download location for travis/Appveyor
++            self.ice_adapter_process = subprocess.Popen(["faf-ice-adapter",
++                                                         "-i",
++                                                         str(self.player.id),
++                                                         "-l",
++                                                         self.player.login],
++                                                        env=env
++                                                        #stdout=subprocess.STDOUT,
++                                                        #stderr=subprocess.STDOUT
++                                                        )
++            self.ice_adapter_handler = IceAdapterHandler()
++            self.ice_adapter_handler.setGameSession(self)
++            self.ice_adapter = JsonRpcTcpClient("127.0.0.1", 7236, self.ice_adapter_handler)
++        except OSError as err:
++            self._logger.error("error finding the faf-ice-adapter executable: {}".format(err))
++        except subprocess.CalledProcessError as exc:
++            self._logger.error("faf-ice-adapter executable error: {}".format(exc.output))
++
+     @property
+     def relay_port(self):
+-        return self._game_listener.serverPort()
++        #print(self.ice_adapter.status())
++        return self.ice_adapter.status()["gpgnet"]["local_port"]
+ 
+     @property
+     def state(self):
+@@ -81,40 +100,46 @@ class GameSession(QObject):
+     def state(self, val):
+         self._state = val
+ 
+-    def listen(self):
+-        """
+-        Start listening for remote commands
+-
+-        Call this in good time before hosting a game,
+-        e.g. when the host game dialog is being shown.
+-        """
+-        assert self.state == GameSessionState.OFF
+-        self.state = GameSessionState.LISTENING
+-        if self.connectivity.is_ready:
+-            self.ready.emit()
+-        else:
+-            self.connectivity.prepare()
+-
+     def handle_message(self, message):
+         command, args = message.get('command'), message.get('args', [])
+         if command == 'SendNatPacket':
+-            addr_and_port, message = args
+-            host, port = addr_and_port.split(':')
+-            self.connectivity.send(message, (host, port))
++            #addr_and_port, message = args
++            #host, port = addr_and_port.split(':')
++            #self.connectivity.send(message, (host, port))
++            None
+         elif command == 'CreatePermission':
+-            addr_and_port = args[0]
+-            host, port = addr_and_port.split(':')
+-            self.connectivity.permit((host, port))
++            #addr_and_port = args[0]
++            #host, port = addr_and_port.split(':')
++            #self.connectivity.permit((host, port))
++            None
+         elif command == 'JoinGame':
+-            addr, login, peer_id = args
+-            self._joins.append(peer_id)
+-            self.connectivity.bind(addr, login, peer_id)
++            login, peer_id = args
++            #self._joins.append(peer_id)
++            #self.connectivity.bind(addr, login, peer_id)
++            self.ice_adapter.joinGame(login, peer_id)
++        elif command == 'HostGame':
++            #addr, login, peer_id = args
++            #self._joins.append(peer_id)
++            #self.connectivity.bind(addr, login, peer_id)
++            self.ice_adapter.hostGame(args[0])
+         elif command == 'ConnectToPeer':
+-            addr, login, peer_id = args
+-            self._connects.append(peer_id)
+-            self.connectivity.bind(addr, login, peer_id)
++            login, peer_id = args
++            #self._connects.append(peer_id)
++            #self.connectivity.bind(addr, login, peer_id)
++            self.ice_adapter.connectToPeer(login, peer_id)
++        elif command == 'DisconnectFromPeer':
++            #addr, login, peer_id = args
++            #self._connects.append(peer_id)
++            #self.connectivity.bind(addr, login, peer_id)
++            self.ice_adapter.disconnectFromPeer(args[0])
++        elif command == "SdpRecord":
++            peer_id, sdp = args
++            #self._connects.append(peer_id)
++            #self.connectivity.bind(addr, login, peer_id)
++            self.ice_adapter.setSdp(peer_id, sdp)
+         else:
+-            self._game_connection.send(command, *args)
++            self._logger.warn("sending unhandled GPGNet message {} {}".format(command, args))
++            self.ice_adapter.sendToGpgNet(command, args)
+ 
+     def send(self, command_id, args):
+         self._logger.info("Outgoing relay message {} {}".format(command_id, args))
+@@ -135,22 +160,22 @@ class GameSession(QObject):
+ 
+     def _new_game_connection(self):
+         self._logger.info("Game connected through GPGNet")
+-        assert not self._game_connection
+-        self._game_connection = GPGNetConnection(self._game_listener.nextPendingConnection())
+-        self._game_connection.messageReceived.connect(self._on_game_message)
+         self.state = GameSessionState.RUNNING
++        self.ready.emit()
+ 
+     def _on_game_message(self, command, args):
++        self._logger.info("_on_game_message {}".format(self.game_map))
+         self._logger.info("Incoming GPGNet: {} {}".format(command, args))
+         if command == "GameState":
+             if args[0] == 'Idle':
++                pass
+                 # autolobby, port, nickname, uid, hasSupcom
+-                self._game_connection.send("CreateLobby",
+-                                           self.init_mode,
+-                                           self.game_port + 1,
+-                                           self.me.login,
+-                                           self.me.id,
+-                                           1)
++                #self._game_connection.send("CreateLobby",
++                #                           self.init_mode,
++                #                           self.game_port + 1,
++                #                           self.me.login,
++                #                           self.me.id,
++                #                           1)
+             elif args[0] == 'Lobby':
+                 # TODO: Eagerly initialize the game by hosting/joining early
+                 pass
+@@ -159,15 +184,11 @@ class GameSession(QObject):
+ 
+         self.send(command, args)
+ 
+-    def _turn_state_changed(self, val):
+-        if val == TURNState.BOUND:
+-            self.ready.emit()
+-
+     def _launched(self):
+         self._logger.info("Game has started")
+ 
+     def _exited(self, status):
+-        self._game_connection = None
++        #self._game_connection = None
+         self.state = GameSessionState.OFF
+         self._logger.info("Game has exited with status code: {}".format(status))
+         self.send('GameState', ['Ended'])
+diff --git a/src/fa/updater.py b/src/fa/updater.py
+index f235d73..9e6dceb 100644
+--- a/src/fa/updater.py
++++ b/src/fa/updater.py
+@@ -157,6 +157,7 @@ class Updater(QtCore.QObject):
+ 
+ 
+     def run(self, *args, **kwargs):
++        return self.RESULT_SUCCESS
+         clearLog()
+         log("Update started at " + timestamp())
+         log("Using appdata: " + util.APPDATA_DIR)
+@@ -400,6 +401,7 @@ class Updater(QtCore.QObject):
+                 os.chmod(dst_file, st.st_mode | stat.S_IWRITE)   # make all files we were considering writable, because we may need to patch them
+ 
+     def doUpdate(self):
++        return
+         """ The core function that does most of the actual update work."""
+         try:
+             if self.sim:
+diff --git a/src/replays/_replayswidget.py b/src/replays/_replayswidget.py
+index 8aeac5e..5cce083 100644
+--- a/src/replays/_replayswidget.py
++++ b/src/replays/_replayswidget.py
+@@ -85,14 +85,14 @@ class ReplaysWidget(BaseClass, FormClass):
+     def searchVault(self):
+         """ search for some replays """
+         self.searching = True
+-        self.connectToReplayVault()
++        self.connectToModVault()
+         self.send(dict(command="search", rating=self.minRating.value(), map=self.mapName.text(),
+                                 player=self.playerName.text(), mod=self.modList.currentText()))
+         self.onlineTree.clear()
+ 
+     def reloadView(self):
+         if not self.searching:
+-            self.connectToReplayVault()
++            self.connectToModVault()
+             self.send(dict(command="list"))
+ 
+     def finishRequest(self, reply):
+@@ -114,7 +114,7 @@ class ReplaysWidget(BaseClass, FormClass):
+             self.selectedReplay = item
+             if hasattr(item, "moreInfo"):
+                 if item.moreInfo is False:
+-                    self.connectToReplayVault()
++                    self.connectToModVault()
+                     self.send(dict(command="info_replay", uid=item.uid))
+                 elif item.spoiled != self.spoilerCheckbox.isChecked():
+                     self.replayInfos.clear()
+@@ -129,9 +129,8 @@ class ReplaysWidget(BaseClass, FormClass):
+             self.replayDownload.get(QNetworkRequest(QtCore.QUrl(item.url))) 
+ 
+     def spoilerCheckboxPressed(self, item):
+-        if self.selectedReplay:  # if something is selected in the tree to the left
+-            if type(self.selectedReplay) == ReplayItem:  # and if it is a game
+-                self.selectedReplay.generateInfoPlayersHtml()  # then we redo it
++        if self.selectedReplay:
++            self.selectedReplay.generateInfoPlayersHtml()
+ 
+     def replayVault(self, message):
+         action = message["action"]
+@@ -180,7 +179,6 @@ class ReplaysWidget(BaseClass, FormClass):
+         return BaseClass.showEvent(self, event)
+ 
+     def updateOnlineTree(self):
+-        self.selectedReplay = None  # clear because won't be part of the new tree
+         self.replayInfos.clear()
+         self.onlineTree.clear()
+         buckets = {}
+@@ -522,7 +520,7 @@ class ReplaysWidget(BaseClass, FormClass):
+             self.client.viewingReplay.emit(item.url)
+             replay(item.url)
+             
+-    def connectToReplayVault(self):
++    def connectToModVault(self):
+         """ connect to the replay vault server """
+ 
+         if self.replayVaultSocket.state() != QtNetwork.QAbstractSocket.ConnectedState and self.replayVaultSocket.state() != QtNetwork.QAbstractSocket.ConnectingState:
 diff --git a/src/util/__init__.py b/src/util/__init__.py
-index 21989b0..f8bc9a8 100644
+index 21989b0..f4fc217 100644
 --- a/src/util/__init__.py
 +++ b/src/util/__init__.py
 @@ -1,12 +1,17 @@
  import sys
 -
  import os
-+import getpass
 +import subprocess
++import getpass
  from ctypes import *
 +
 +from PyQt4.QtGui import QDesktopServices
@@ -333,7 +835,7 @@ index 21989b0..f8bc9a8 100644
  
 -# This should be "My Documents" for most users. However, users with accents in their names can't even use these folders in Supcom
 -# so we are nice and create a new home for them in the APPDATA_DIR
-+PERSONAL_DIR = str(QDesktopServices.storageLocation(QDesktopServices.DocumentsLocation))
++PERSONAL_DIR = QDesktopServices.storageLocation(QDesktopServices.DocumentsLocation)
  try:
 -    os.environ['USERNAME'].decode('ascii')  # Try to see if the user has a wacky username
 -
@@ -354,7 +856,7 @@ index 21989b0..f8bc9a8 100644
  #Ensure Application data directories exist
  if not os.path.isdir(APPDATA_DIR):
      os.makedirs(APPDATA_DIR)
-@@ -149,10 +166,14 @@ __theme = None
+@@ -149,11 +166,6 @@ __theme = None
  __themedir = None
  
  
@@ -362,18 +864,11 @@ index 21989b0..f8bc9a8 100644
 -# Stolen from Config because reasons
 -from config import _settings
 -settings = _settings
-+# initialize wine settings for non Windows platforms
-+if sys.platform != 'win32':
-+    wine_exe = settings.value("wine/exe", "wine", type=str)
-+    wine_cmd_prefix = settings.value("wine/cmd_prefix", "", type=str)
-+    if settings.contains("wine/prefix"):
-+        wine_prefix = str(settings.value("wine/prefix", type=str))
-+    else:
-+        wine_prefix = os.path.join(os.path.expanduser("~"), ".wine")
- 
+-
  def clean_slate(path):
      if os.path.exists(path):
-@@ -560,23 +581,17 @@ def md5(file_name):
+         logger.info("Wiping " + path)
+@@ -560,23 +572,17 @@ def md5(file_name):
  
  def uniqueID(user, session):
      ''' This is used to uniquely identify a user's machine to prevent smurfing. '''
@@ -398,7 +893,7 @@ index 21989b0..f8bc9a8 100644
 -        logger.warning("UniqueID Failure, user warned", exc_info=sys.exc_info())
 -        QtGui.QApplication.quit()
 +        # on error, the uid exe returns 1 which will result in a CalledProcessError exception
-+        return subprocess.check_output(["faf-uid", session], env=env, stderr=subprocess.STDOUT)
++        return subprocess.check_output(["uid", session], env=env, stderr=subprocess.STDOUT)
 +    except OSError as err:
 +        logger.error("UniqueID error finding the executable: {}".format(err))
 +    except subprocess.CalledProcessError as exc:
