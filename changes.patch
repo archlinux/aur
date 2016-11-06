@@ -1,5 +1,5 @@
 diff --git a/.gitignore b/.gitignore
-index c63307f..c5029f8 100644
+index c63307f..347c1d9 100644
 --- a/.gitignore
 +++ b/.gitignore
 @@ -11,7 +11,8 @@
@@ -7,37 +7,76 @@ index c63307f..c5029f8 100644
  *.vcproj
  .idea/
 -uid.dll
-+lib/uid
-+lib/uid.exe
++lib/faf-uid
++lib/faf-uid.exe
  build/
  dist/
  Thumbs.db
 diff --git a/.travis.yml b/.travis.yml
-index 74ee1ab..dbbd36a 100644
+index 74ee1ab..3ca3e26 100644
 --- a/.travis.yml
 +++ b/.travis.yml
 @@ -11,6 +11,7 @@ install:
    - "pip install cx_Freeze"
    - "pip install python-coveralls"
    - "pip install -r requirements.txt --trusted-host content.faforever.com"
-+  - curl -s https://api.github.com/repos/FAForever/uid/releases/latest | jq -r '.assets[] | select(.name | contains("uid")) | .browser_download_url' | wget -i - -O ./lib/uid
++  - curl -s https://api.github.com/repos/FAForever/uid/releases/latest | jq -r '.assets[] | select(.name | contains("uid")) | .browser_download_url' | wget -i - -O ./lib/faf-uid
  
  
  before_script:
 diff --git a/appveyor.yml b/appveyor.yml
-index f58e1af..53b16b3 100644
+index f58e1af..15e4cba 100644
 --- a/appveyor.yml
 +++ b/appveyor.yml
 @@ -19,6 +19,7 @@ install:
    - ps: "$env:PYTEST_QT_API=\"pyqt4\""
    - ps: "$env:FAF_FORCE_PRODUCTION=true"
    - "%PYTHON%\\Scripts\\pip.exe install -r requirements.txt --trusted-host content.faforever.com"
-+  - ps: (Invoke-WebRequest -Uri https://api.github.com/repos/FAForever/uid/releases/latest | ConvertFrom-Json).assets | where {$_.name -eq "uid.exe"} | %{ iwr $_.browser_download_url -OutFile ".\\lib\\uid.exe" }
++  - ps: (Invoke-WebRequest -Uri https://api.github.com/repos/FAForever/uid/releases/latest | ConvertFrom-Json).assets | where {$_.name -eq "faf-uid.exe"} | %{ iwr $_.browser_download_url -OutFile ".\\lib\\faf-uid.exe" }
  
  test_script:
      - "%PYTHON%\\Scripts\\py.test.exe -vv --full-trace"
+diff --git a/readme.md b/readme.md
+index 92946ee..b27be6c 100644
+--- a/readme.md
++++ b/readme.md
+@@ -28,7 +28,33 @@ pull-requests of your changes.
+ Pull Requests must have py.test unit test coverage.
+ 
+ 
+-Running
++Running on Linux
++-------
++This guide is about runnning the client from source repository. For a [ready-made Arch-Linux package](https://aur.archlinux.org/cgit/aur.git/tree/PKGBUILD?h=python2-fafclient) [follow the instructions in the wiki](http://wiki.faforever.com/index.php?title=Setting_Up_FAF_Linux).
++
++Clone this repository locally:
++
++    git clone https://github.com/FAForever/client.git faf-client
++    
++Create a python virtualenv for installing its dependencies:
++
++    virtualenv2 ./faf-client-venv --system-site-packages
++    ./faf-client-venv/bin/pip install -r ./faf-client/requirements.txt
++
++Now download the `uid` executable:
++
++    wget https://github.com/FAForever/uid/releases/download/v2.1.0/uid -O ./faf-client/lib/uid
++    chmod +x ./faf-client/lib/uid
++
++Note that the `uid` smurf protection executable needs to run `xrandr`, `lspci`, `lsblk` and `uname` to gather unique system information.
++
++Run the client:
++
++    cd ./faf-client && ../faf-client-venv/bin/python src/__main__.py
++
++For more information see [the wiki](http://wiki.faforever.com/index.php?title=Setting_Up_FAF_Linux).
++
++Running unit tests
+ -------
+ Before running unit tests, set PYTEST_QT_API as follows:
+ 
 diff --git a/setup.py b/setup.py
-index cec04dc..fd9c8eb 100644
+index cec04dc..1448fdb 100644
 --- a/setup.py
 +++ b/setup.py
 @@ -11,7 +11,10 @@ sip.setapi('QList', 2)
@@ -63,19 +102,19 @@ index cec04dc..fd9c8eb 100644
 -appveyor_build_version = os.getenv('APPVEYOR_BUILD_VERSION')
 -version.write_release_version(appveyor_build_version)
 +if sys.platform == 'win32':
-+  import config.version as version
-+  import PyQt4.uic
-+  git_version = version.get_git_version()
-+  msi_version = version.msi_version(git_version)
-+  appveyor_build_version = os.getenv('APPVEYOR_BUILD_VERSION')
-+  version.write_release_version(appveyor_build_version)
++    import config.version as version
++    import PyQt4.uic
++    git_version = version.get_git_version()
++    msi_version = version.msi_version(git_version)
++    appveyor_build_version = os.getenv('APPVEYOR_BUILD_VERSION')
++    version.write_release_version(appveyor_build_version)
  
 -print('Git version:', git_version,
 -      'Release version:', appveyor_build_version,
 -      'Build version:', msi_version)
-+  print('Git version:', git_version,
-+        'Release version:', appveyor_build_version,
-+        'Build version:', msi_version)
++    print('Git version:', git_version,
++          'Release version:', appveyor_build_version,
++          'Build version:', msi_version)
  
  # Ugly hack to fix broken PyQt4
  try:
@@ -84,7 +123,7 @@ index cec04dc..fd9c8eb 100644
      'include_files': ['res',
                        'RELEASE-VERSION',
 -                      ('lib/uid.dll', 'uid.dll'),
-+                      ('lib/uid.exe', 'uid.exe'),
++                      ('lib/faf-uid.exe', 'faf-uid.exe'),
                        ('lib/qt.conf', 'qt.conf'),
                        ('lib/xdelta3.exe', 'xdelta3.exe'),
                        ('lib/lua51.dll', 'lua51.dll')],
@@ -167,18 +206,27 @@ index 438d743..f144245 100644
  # Set up crash reporting
  excepthook_original = sys.excepthook
 diff --git a/src/config/version.py b/src/config/version.py
-index 8ee2014..80d2437 100644
+index 8ee2014..bca2bc6 100644
 --- a/src/config/version.py
 +++ b/src/config/version.py
-@@ -79,7 +79,7 @@ def get_git_version():
-     # Read in the version that's currently in RELEASE-VERSION.
-     release_version = read_release_version()
+@@ -40,7 +40,7 @@ def call_git_describe():
+         return line.strip()
+     except Exception as e:
+         print("Error grabbing git version: {}".format(e))
+-        return "0.0.0-dev"
++        return None
  
--    if hasattr(sys, 'frozen'):
-+    if hasattr(sys, 'frozen') or sys.platform != 'win32':
-         return release_version
+ def is_development_version(version):
+     return "-" in version and not is_prerelease_version(version)
+@@ -94,7 +94,7 @@ def get_git_version():
+     # If we still don't have anything, that's an error.
  
-     # First try to get the current version using “git describe”.
+     if version is None:
+-        raise ValueError("Cannot find the version number!")
++        raise ValueError("Cannot find the version number! Please provide RELEASE-VERSION file or run from git.")
+ 
+     # Finally, return the current version.
+     return version
 diff --git a/src/fa/game_process.py b/src/fa/game_process.py
 index 9052f31..61d2c63 100644
 --- a/src/fa/game_process.py
@@ -213,15 +261,15 @@ index 9052f31..61d2c63 100644
              logger.info("Running FA via command: " + command)
              logger.info("Running FA via executable: " + executable)
 diff --git a/src/util/__init__.py b/src/util/__init__.py
-index 21989b0..f4fc217 100644
+index 21989b0..f8bc9a8 100644
 --- a/src/util/__init__.py
 +++ b/src/util/__init__.py
 @@ -1,12 +1,17 @@
  import sys
 -
  import os
-+import subprocess
 +import getpass
++import subprocess
  from ctypes import *
 +
 +from PyQt4.QtGui import QDesktopServices
@@ -285,7 +333,7 @@ index 21989b0..f4fc217 100644
  
 -# This should be "My Documents" for most users. However, users with accents in their names can't even use these folders in Supcom
 -# so we are nice and create a new home for them in the APPDATA_DIR
-+PERSONAL_DIR = QDesktopServices.storageLocation(QDesktopServices.DocumentsLocation)
++PERSONAL_DIR = str(QDesktopServices.storageLocation(QDesktopServices.DocumentsLocation))
  try:
 -    os.environ['USERNAME'].decode('ascii')  # Try to see if the user has a wacky username
 -
@@ -306,7 +354,7 @@ index 21989b0..f4fc217 100644
  #Ensure Application data directories exist
  if not os.path.isdir(APPDATA_DIR):
      os.makedirs(APPDATA_DIR)
-@@ -149,11 +166,6 @@ __theme = None
+@@ -149,10 +166,14 @@ __theme = None
  __themedir = None
  
  
@@ -314,11 +362,18 @@ index 21989b0..f4fc217 100644
 -# Stolen from Config because reasons
 -from config import _settings
 -settings = _settings
--
++# initialize wine settings for non Windows platforms
++if sys.platform != 'win32':
++    wine_exe = settings.value("wine/exe", "wine", type=str)
++    wine_cmd_prefix = settings.value("wine/cmd_prefix", "", type=str)
++    if settings.contains("wine/prefix"):
++        wine_prefix = str(settings.value("wine/prefix", type=str))
++    else:
++        wine_prefix = os.path.join(os.path.expanduser("~"), ".wine")
+ 
  def clean_slate(path):
      if os.path.exists(path):
-         logger.info("Wiping " + path)
-@@ -560,23 +572,17 @@ def md5(file_name):
+@@ -560,23 +581,17 @@ def md5(file_name):
  
  def uniqueID(user, session):
      ''' This is used to uniquely identify a user's machine to prevent smurfing. '''
@@ -343,7 +398,7 @@ index 21989b0..f4fc217 100644
 -        logger.warning("UniqueID Failure, user warned", exc_info=sys.exc_info())
 -        QtGui.QApplication.quit()
 +        # on error, the uid exe returns 1 which will result in a CalledProcessError exception
-+        return subprocess.check_output(["uid", session], env=env, stderr=subprocess.STDOUT)
++        return subprocess.check_output(["faf-uid", session], env=env, stderr=subprocess.STDOUT)
 +    except OSError as err:
 +        logger.error("UniqueID error finding the executable: {}".format(err))
 +    except subprocess.CalledProcessError as exc:
