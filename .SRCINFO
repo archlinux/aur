@@ -1,7 +1,7 @@
 pkgbase = brutal-doom-64
 	pkgdesc = Brutal Doom 64 via the GzDoom engine.
 	pkgver = 1c
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.moddb.com/mods/brutal-doom-64
 	install = brutal-doom-64.install
 	arch = any

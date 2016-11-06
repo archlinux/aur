@@ -2,7 +2,7 @@
 # Mod: http://www.moddb.com/mods/brutal-doom-64/
 pkgname=brutal-doom-64
 pkgver=1c
-pkgrel=1
+pkgrel=2
 pkgdesc="Brutal Doom 64 via the GzDoom engine."
 arch=(any)
 url="http://www.moddb.com/mods/brutal-doom-64"
