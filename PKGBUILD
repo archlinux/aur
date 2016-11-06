@@ -13,7 +13,7 @@ _commit=02611b40b24c9df2726ad8b33f5ef5f67ac30b44
 arch=('i686' 'x86_64')
 url='https://code.visualstudio.com/'
 license=('MIT')
-makedepends=('npm' 'nodejs>=6.8.0' 'gulp' 'python2')
+makedepends=('npm' 'nodejs>=6.8.0' 'gulp' 'python2' 'git')
 depends=('gtk2' 'gconf' 'libnotify' 'libxss' 'libxtst' 'nss' 'alsa-lib')
 conflicts=('vscode-oss')
 provides=('vscode-oss')
