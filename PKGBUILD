@@ -10,25 +10,25 @@ arch=('any')
 url="https://github.com/erocarrera/pefile"
 license=('MIT')
 makedepends=('python' 'python2' 'python-future' 'python2-future') 
-source=("https://github.com/erocarrera/pefile/releases/download/v${pkgver}/pefile-${pkgver}.tar.gz")
-sha256sums=('51d149b31d0eeb5c97c67ee6a05b529d9fab37557d59d82c1f489560dc0b66f7')
+source=("https://github.com/erocarrera/pefile/releases/download/v2016.3.4/pefile-2016.3.4.tar.gz")
+sha512sums=('3befda46a772b03c41cbce37db2b16e50a2cdea60e2884ae003081e7a66c7f1cb083b0f74eaccdfbba5cf4f6913a6aedbe48e2a97f26d820c3c37fd9b6694ffc')
 
 prepare() {
-  cd $srcdir
-  cp -r pefile-$pkgver pefile2-$pkgver
+  cd ${srcdir}
+  cp -r pefile-${pkgver} pefile2-${pkgver}
 }
 
 check() {
-  cd $srcdir/pefile-$pkgver 
+  cd ${srcdir}/pefile-${pkgver} 
   python setup.py check
   
-  cd $srcdir/pefile2-$pkgver 
+  cd ${srcdir}/pefile2-${pkgver} 
   python2 setup.py check  
 }
 
 package_python-pefile() {
   depends=('python' 'python-future')
-  cd "$srcdir/pefile-$pkgver"
+  cd "${srcdir}/pefile-${pkgver}"
   python setup.py install --root "${pkgdir}" --optimize=1
   install -Dm 644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   install -Dm 644 README "${pkgdir}/usr/share/doc/${pkgname}/README"
@@ -36,7 +36,7 @@ package_python-pefile() {
 
 package_python2-pefile() {
   depends=('python2' 'python2-future')
-  cd "$srcdir/pefile2-$pkgver"
+  cd "${srcdir}/pefile2-${pkgver}"
   python2 setup.py install --root "${pkgdir}" --optimize=1
   install -Dm 644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   install -Dm 644 README "${pkgdir}/usr/share/doc/${pkgname}/README"
