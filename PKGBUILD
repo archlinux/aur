@@ -1,7 +1,7 @@
 # Maintainer: Vyacheslav Konovalov <vyachkonovalov@gmail.com>
 
 pkgname=redis-desktop-manager
-_pkgver=0.9.0-alpha2
+_pkgver=0.9.0-alpha3
 pkgver=${_pkgver/-/_}
 pkgrel=1
 pkgdesc='Open source cross-platform Redis Desktop Manager based on Qt 5'
