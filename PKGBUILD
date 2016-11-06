@@ -4,11 +4,11 @@
 
 _pkgname=xf86-input-evdev
 pkgname=$_pkgname-git
-pkgver=2.10.0.1.r2.gd7e61a7
+pkgver=2.10.4.1.r672.g7251e42
 pkgrel=1
 pkgdesc="X.org evdev input driver - Git version"
 arch=('i686' 'x86_64')
-url="http://cgit.freedesktop.org/xorg/driver/$_pkgname/"
+url="https://cgit.freedesktop.org/xorg/driver/$_pkgname/"
 license=('custom')
 groups=('xorg' 'xorg-drivers')
 depends=('glibc' 'systemd-tools' 'mtdev')
