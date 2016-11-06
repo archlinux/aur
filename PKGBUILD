@@ -24,10 +24,6 @@ pkgver() {
 }
 
 package() {
-    mkdir $pkgdir/usr
-    mkdir $pkgdir/usr/bin
-    cd $srcdir/$_gitname
-    cp quick-back $pkgdir/usr/bin
-    chmod +x $pkgdir/usr/bin/quick-back
+    install -D -m 755 $srcdir/$_gitname/quick-back $pkgdir/usr/bin/quick-back
 }
 
