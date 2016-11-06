@@ -1,15 +1,16 @@
 pkgbase = ttf-roboto-hinted
 	pkgdesc = Sans serif font designed for Android (hinted)
 	pkgver = 2.134
-	pkgrel = 1
+	pkgrel = 2
 	url = https://material.google.com/style/typography.html
 	install = ttf-roboto-hinted.install
 	arch = any
 	license = Apache
 	depends = fontconfig
-	provides = ttf-font
+	provides = ttf-roboto
 	conflicts = ttf-roboto
 	conflicts = ttf-roboto-git
+	conflicts = ttf-roboto-font
 	source = https://github.com/google/roboto/releases/download/v2.134/roboto-hinted.zip
 	md5sums = 1a1459f19f8ae78a607a7ee7fc143093
 
