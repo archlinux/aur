@@ -1,7 +1,7 @@
 # Maintainer: Yan Doroshenko <yandoroshenko@protonmail.com>
 
 pkgname=pulseaudiocontrol
-pkgver=1.0
+pkgver=1.1
 pkgrel=1
 pkgdesc="Pulseaudio command line control"
 arch=('any')
