@@ -6,9 +6,8 @@ _buildver=162.2228.15
 _veryear=2016
 _verrelease=2
 _extraver=5
-_nojdkrelease=true
 pkgver=${_veryear}.${_verrelease}.${_extraver}
-pkgrel=2
+pkgrel=3
 pkgdesc="Intellij Idea IDE (community version) with Intellij JDK"
 arch=('any')
 options=(!strip)
@@ -27,24 +26,20 @@ package() {
         rm -f "${pkgdir}/opt/${pkgname}/bin/libyjpagent-linux64.so"
         rm -f "${pkgdir}/opt/${pkgname}/bin/fsnotifier64"
     fi
-    if [ "${_nojdkrelease}" = "false" ] && [ -n "${_remove_bundled_jre}" ]; then
-      msg "Removing bundled JRE..."
-      rm -rf "${pkgdir}/opt/${pkgname}/jre"
-    fi
 (
 cat <<EOF
 [Desktop Entry]
 Version=$pkgver
 Type=Application
 Name=IntelliJ IDEA Community
-Comment=Intelligent Java IDE - EAP version
+Comment=Intelligent Java IDE
 Exec="/opt/$pkgname/bin/idea.sh" %f
 Icon=/opt/$pkgname/bin/idea.png
 Comment=$pkgdesc
 Categories=Development;IDE;
 Terminal=false
 StartupNotify=true
-StartupWMClass=jetbrains-idea
+StartupWMClass=jetbrains-idea-ce
 EOF
 ) > "${srcdir}/${pkgname}.desktop"
 
