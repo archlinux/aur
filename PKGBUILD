@@ -33,6 +33,6 @@ package(){
     done
 
     bsdtar xf TechnicLauncher.jar licenses
-    mkdir -p "$pkgdir/usr/share/doc/$pkgname/licenses"
-    install -Dm644 licenses/* "$pkgdir/usr/share/doc/$pkgname/licenses"
+    mkdir -p "$pkgdir/usr/share/licenses/$pkgname/"
+    install -Dm644 licenses/* "$pkgdir/usr/share/licenses/$pkgname/"
 }
