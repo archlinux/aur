@@ -1,6 +1,6 @@
 pkgbase = gitlab-ee
 	pkgdesc = Project management and code hosting application
-	pkgver = 8.13.3_ee
+	pkgver = 8.13.3
 	pkgrel = 3
 	url = https://gitlab.com/gitlab-org/gitlab-ce/tree/master#README
 	install = gitlab.install
@@ -31,7 +31,7 @@ pkgbase = gitlab-ee
 	backup = etc/webapps/gitlab/resque.yml
 	backup = etc/webapps/gitlab/unicorn.rb
 	backup = etc/logrotate.d/gitlab
-	source = gitlab-ee-8.13.3_ee.tar.gz::https://gitlab.com/gitlab-org/gitlab-ee/repository/archive.tar.gz?ref=v8.13.3-ee
+	source = gitlab-ee-8.13.3.tar.gz::https://gitlab.com/gitlab-org/gitlab-ee/repository/archive.tar.gz?ref=v8.13.3-ee
 	source = gitlab-unicorn.service
 	source = gitlab-sidekiq.service
 	source = gitlab-backup.service

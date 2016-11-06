@@ -8,7 +8,7 @@
 
 _pkgname=gitlab
 pkgname=gitlab-ee
-pkgver=8.13.3_ee
+pkgver=8.13.3
 pkgrel=3
 pkgdesc="Project management and code hosting application"
 arch=('i686' 'x86_64')
@@ -27,7 +27,7 @@ backup=("etc/webapps/${_pkgname}/application.rb"
         "etc/webapps/${_pkgname}/resque.yml"
         "etc/webapps/${_pkgname}/unicorn.rb"
         "etc/logrotate.d/${_pkgname}")
-source=("${pkgname}-${pkgver}.tar.gz::https://gitlab.com/gitlab-org/gitlab-ee/repository/archive.tar.gz?ref=v${pkgver/_/-}"
+source=("${pkgname}-${pkgver}.tar.gz::https://gitlab.com/gitlab-org/gitlab-ee/repository/archive.tar.gz?ref=v${pkgver}-ee"
         gitlab-unicorn.service
         gitlab-sidekiq.service
         gitlab-backup.service
@@ -66,7 +66,7 @@ _etcdir="/etc/webapps/${_pkgname}"
 _homedir="/var/lib/${_pkgname}"
 _logdir="/var/log/${_pkgname}"
 _commit=966f6c7f5e501b6ff1af675b28bfa1d4a9d4e4d5
-_srcdir="${pkgname}-v${pkgver/_/-}-${_commit}"
+_srcdir="${pkgname}-v${pkgver/_/-}-ee-${_commit}"
 
 prepare() {
   cd "${srcdir}/${_srcdir}"
