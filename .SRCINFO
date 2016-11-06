@@ -1,6 +1,6 @@
 pkgbase = konqueror-git
 	pkgdesc = KDE File Manager and Web Browser
-	pkgver = r14064.fc206b3
+	pkgver = r14067.4ab571e
 	pkgrel = 1
 	url = https://userbase.kde.org/Konqueror
 	arch = i686
@@ -26,6 +26,7 @@ pkgbase = konqueror-git
 	conflicts = libkonq-git
 	conflicts = libkonq-frameworks-git
 	conflicts = konq-plugins
+	conflicts = kdebase-konq-plugins
 	replaces = konq-plugins-git
 	replaces = libkonq-git
 	source = git://anongit.kde.org/konqueror

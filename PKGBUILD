@@ -1,7 +1,7 @@
 # Maintainer: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=konqueror-git
-pkgver=r14064.fc206b3
+pkgver=r14067.4ab571e
 pkgrel=1
 pkgdesc="KDE File Manager and Web Browser"
 arch=(i686 x86_64)
@@ -10,7 +10,7 @@ license=(LGPL)
 depends=(dolphin qt5-webengine)
 makedepends=(extra-cmake-modules git kdoctools kdesu tidy kdesignerplugin kdelibs4support)
 conflicts=(kdebase-konqueror konqueror konqueror-frameworks-git konq-plugins-git konq-plugins-frameworks-git
-           libkonq-git libkonq-frameworks-git konq-plugins)
+           libkonq-git libkonq-frameworks-git konq-plugins kdebase-konq-plugins)
 provides=(konqueror)
 replaces=(konq-plugins-git libkonq-git)
 optdepends=('tidy: Tidy HTML plugin' 'kdesu: shell command plugin')
