@@ -2,7 +2,7 @@
 
 pkgname=quagga
 pkgver=1.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='BGP/OSPF/ISIS/RIP/RIPNG routing daemon suite'
 arch=('i686' 'x86_64')
 url='http://www.quagga.net'
