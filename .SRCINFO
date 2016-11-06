@@ -5,6 +5,7 @@ pkgbase = grub2-theme-breeze-git
 	url = https://github.com/gustawho/grub2-theme-breeze
 	arch = any
 	license = CCPL:by-sa
+	makedepends = git
 	depends = grub
 	conflicts = breeze-grub
 	source = git+https://github.com/gustawho/grub2-theme-breeze.git
