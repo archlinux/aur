@@ -3,21 +3,23 @@
 
 pkgname=tomatoes
 pkgver=1.55
-pkgrel=11
+pkgrel=12
 pkgdesc="How many tomatoes can you smash in ten short minutes?"
 url="http://tomatoes.sourceforge.net"
 license=('ZLIB')
 arch=('i686' 'x86_64')
 depends=('sdl_image' 'sdl_mixer' 'glu')
-source=(http://downloads.sourceforge.net/$pkgname/$pkgname-linux-src-$pkgver.tar.bz2
-        http://downloads.sourceforge.net/$pkgname/$pkgname-linux-1.5.tar.bz2
-        0001-tomatoes-1.55-makefile-Append-to-compile-flags.patch
-        0002-tomatoes-1.55-Quell-const-char-conversion-warnings.patch
-        config.cfg)
+source=("http://downloads.sourceforge.net/$pkgname/$pkgname-linux-src-$pkgver.tar.bz2"
+        "http://downloads.sourceforge.net/$pkgname/$pkgname-linux-1.5.tar.bz2"
+        "0001-tomatoes-1.55-makefile-Append-to-compile-flags.patch"
+        "0002-tomatoes-1.55-Quell-const-char-conversion-warnings.patch"
+        "0003-tomatoes-1.55-config-hiscore-file-saving-loading.patch"
+        "config.cfg")
 sha1sums=('aa123a5fa9c8c0223c602c0cffe8a5bb0ebad60c'
           '8dc306617800f7ccc1e8610fb39e87d8181c482d'
           '65faa7dc05d4f5629339cf4150f5dcbf2626e3a5'
           '6ad404f67a05781efe8787773e352af1a2922c60'
+          '77c85236c92f1746aa1b9ec0f42951b15a73eda9'
           'e241ac2f76abad1f618e20f8e2d0089cdfa555af')
 
 prepare() {
@@ -25,6 +27,7 @@ prepare() {
 
   patch -p1 < ../0001-tomatoes-1.55-makefile-Append-to-compile-flags.patch
   patch -p1 < ../0002-tomatoes-1.55-Quell-const-char-conversion-warnings.patch
+  patch -p0 < ../0003-tomatoes-1.55-config-hiscore-file-saving-loading.patch
 
   sed -n '7,27p' README-src > LICENSE
 }
