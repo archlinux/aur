@@ -1,5 +1,5 @@
 pkgbase = vuze-dev
-	pkgdesc = A feature-rich Java-based BitTorrent client (previously called 'Azureus') - Latest Dev Build
+	pkgdesc = A feature-rich Java-based BitTorrent client (previously called 'Azureus') - Bleeding edge version
 	pkgver = 5.7.3.1_B22
 	pkgrel = 1
 	url = http://dev.vuze.com/
