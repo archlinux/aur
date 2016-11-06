@@ -1,0 +1,6 @@
+# Packaging directories
+pkg/
+src/
+
+# Spacechem binary
+gog_spacechem_2.0.0.5.sh
