@@ -19,5 +19,5 @@ pkgver() {
 
 package() {
 	cd $srcdir/wikicreole
-	python setup.py install --prefix=/usr --root="${pkgdir}/"
+	python2 setup.py install --prefix=/usr --root="${pkgdir}/"
 }
