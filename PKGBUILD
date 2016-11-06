@@ -3,7 +3,7 @@
 
 _pkgbase=xorg-server
 pkgname=('xorg-server-dev' 'xorg-server-xephyr-dev' 'xorg-server-xdmx-dev' 'xorg-server-xvfb-dev' 'xorg-server-xnest-dev' 'xorg-server-xwayland-dev' 'xorg-server-common-dev' 'xorg-server-devel-dev')
-pkgver=1.18.99.901 # https://lists.x.org/archives/xorg/2016-September/058268.html
+pkgver=1.18.99.902 # 1.19-RC2: https://lists.x.org/archives/xorg/2016-October/058420.html
 pkgrel=1
 arch=('i686' 'x86_64')
 license=('custom')
@@ -15,14 +15,14 @@ makedepends=('pixman' 'libx11' 'mesa' 'libgl' 'xf86driproto' 'xcmiscproto' 'xtra
              'xf86dgaproto' 'libxmu' 'libxrender' 'libxi' 'dmxproto' 'libxaw' 'libdmx' 'libxtst' 'libxres'
              'xorg-xkbcomp' 'xorg-util-macros' 'xorg-font-util' 'glproto' 'dri2proto' 'libgcrypt' 'libepoxy'
              'xcb-util' 'xcb-util-image' 'xcb-util-renderutil' 'xcb-util-wm' 'xcb-util-keysyms' 'dri3proto'
-             'libxshmfence' 'libunwind')
+             'libxshmfence' 'libunwind' 'xfont2-git' 'wayland-protocols')
 source=(${url}/releases/individual/xserver/${_pkgbase}-${pkgver}.tar.bz2{,.sig}
         xvfb-run
         xvfb-run.1)
 validpgpkeys=('7B27A3F1A6E18CD9588B4AE8310180050905E40C'
               'C383B778255613DFDB409D91DB221A6900000011'
               'DD38563A8A8224537D1F90E45B8A2D50A0ECD0D3')
-sha256sums=('757c0c815b1b07cb9e039664dcad9653dfaa689ca530b10efafc266b9ee07c65'
+sha256sums=('f0c27ae3d20474674708d19b888f5d11c25c811e7ed8dba4e6318d581727e91f'
             'SKIP'
             'ff0156309470fc1d378fd2e104338020a884295e285972cc88e250e031cc35b9'
             '2460adccd3362fefd4cdc5f1c70f332d7b578091fb9167bf88b5f91265bbd776')
