@@ -4,7 +4,7 @@
 # Contributor: Andrey Vlasovskikh <andrey.vlasovskikh@gmail.com>
 
 pkgname=rider-eap
-_buildver=163.6834
+_buildver=163.7608
 _pkgver=1.0
 _eap="True"
 pkgver="${_pkgver}.${_buildver}"
@@ -22,7 +22,7 @@ groups=("development" "IDE" "editor" "jetbrains")
 
 source=("file://riderRS-${_buildver}.tar.gz"
         "${pkgname}.desktop")
-sha256sums=('2b5b39a053b4dfee220f48e3add52287558851dcdd7ad4e46bd26fbdb2e95028'
+sha256sums=('cbf1a0badd144ca1e48419e0c97f480b3da8a6c312af5ed783d0477699c9403f'
             'c587386c310274e67aa1b0ae8e83dfd1c1987e2b911b389bb999ad06308a8a78')
 
 package() {
