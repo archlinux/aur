@@ -1,0 +1,25 @@
+From 9d67527bab497a3c0030ddc4b2f7467f58bf3a85 Mon Sep 17 00:00:00 2001
+From: Martchus <martchus@gmx.net>
+Date: Tue, 9 Aug 2016 19:15:20 +0200
+Subject: [PATCH 2/8] Provide Windows XP support
+
+---
+ src/common/string_utils.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/common/string_utils.cpp b/src/common/string_utils.cpp
+index bb1edd2..2e6e228 100644
+--- a/src/common/string_utils.cpp
++++ b/src/common/string_utils.cpp
+@@ -141,7 +141,7 @@ bool ReadFileToString(const std::string &path, std::string *stringOut)
+ Optional<std::vector<wchar_t>> WidenString(size_t length, const char *cString)
+ {
+     std::vector<wchar_t> wcstring(length + 1);
+-#if !defined(ANGLE_PLATFORM_WINDOWS)
++#if !defined(ANGLE_PLATFORM_WINDOWS) || defined(ANGLE_WINDOWS_XP_SUPPORT)
+     size_t written = mbstowcs(wcstring.data(), cString, length + 1);
+     if (written == 0)
+     {
+-- 
+2.10.2
+

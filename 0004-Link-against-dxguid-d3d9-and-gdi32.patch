@@ -1,0 +1,41 @@
+From d3d4fba06e0e8f0c80a1573b1a002ac76bbe9c5b Mon Sep 17 00:00:00 2001
+From: Martchus <martchus@gmx.net>
+Date: Sun, 25 Sep 2016 23:05:02 +0200
+Subject: [PATCH 4/8] Link against dxguid, d3d9 and gdi32
+
+---
+ src/libEGL.gypi    | 3 +++
+ src/libGLESv2.gypi | 3 +++
+ 2 files changed, 6 insertions(+)
+
+diff --git a/src/libEGL.gypi b/src/libEGL.gypi
+index 1176136..03fb651 100644
+--- a/src/libEGL.gypi
++++ b/src/libEGL.gypi
+@@ -41,6 +41,9 @@
+                     'ldflags': [ '-Wl,--out-implib,libEGL.dll.a ../../../src/libEGL/libEGL.def' ],
+                 }],
+             ],
++            'libraries': [
++                '-ldxguid -ld3d9 -lgdi32'
++            ]
+         },
+     ],
+ }
+diff --git a/src/libGLESv2.gypi b/src/libGLESv2.gypi
+index dac2dae..1267cc2 100644
+--- a/src/libGLESv2.gypi
++++ b/src/libGLESv2.gypi
+@@ -1059,6 +1059,9 @@
+                     'ldflags': [ '-Wl,--out-implib,libGLESv2.dll.a ../../../src/libGLESv2/libGLESv2.def' ],
+                 }],
+             ],
++            'libraries': [
++                '-ldxguid -ld3d9 -lgdi32'
++            ]
+         },
+     ],
+ }
+-- 
+2.10.2
+

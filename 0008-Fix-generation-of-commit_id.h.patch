@@ -1,0 +1,36 @@
+From 0eccfb59664cfc9285ca893bca9e0b053c86fdcd Mon Sep 17 00:00:00 2001
+From: Martchus <martchus@gmx.net>
+Date: Sun, 6 Nov 2016 18:46:15 +0100
+Subject: [PATCH 8/8] Fix generation of commit_id.h
+
+This might break compiling when not
+executing ninja in subdir of source tee
+---
+ src/angle.gyp | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/angle.gyp b/src/angle.gyp
+index 083c760..0c149f3 100644
+--- a/src/angle.gyp
++++ b/src/angle.gyp
+@@ -8,7 +8,7 @@
+         'angle_code': 1,
+         'angle_gen_path': '<(SHARED_INTERMEDIATE_DIR)/angle',
+         'angle_id_script_base': 'commit_id.py',
+-        'angle_id_script': '<(angle_gen_path)/<(angle_id_script_base)',
++        'angle_id_script': '<(angle_id_script_base)',
+         'angle_id_header_base': 'commit.h',
+         'angle_id_header': '<(angle_gen_path)/id/<(angle_id_header_base)',
+         'angle_use_commit_id%': '<!(python <(angle_id_script_base) check ..)',
+@@ -187,7 +187,7 @@
+                             'action_name': 'Generate ANGLE Commit ID Header',
+                             'message': 'Generating ANGLE Commit ID',
+                             # reference the git index as an input, so we rebuild on changes to the index
+-                            'inputs': [ '<(angle_id_script)', '<(angle_path)/.git/index' ],
++                            'inputs': [ '<(angle_id_script)', '<(angle_path)/../.git/index' ],
+                             'outputs': [ '<(angle_id_header)' ],
+                             'msvs_cygwin_shell': 0,
+                             'action':
+-- 
+2.10.2
+

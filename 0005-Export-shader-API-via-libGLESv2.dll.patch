@@ -1,0 +1,26 @@
+From 76ef75af85db31e33fa573336a18058238639f9c Mon Sep 17 00:00:00 2001
+From: Martchus <martchus@gmx.net>
+Date: Sun, 25 Sep 2016 23:07:03 +0200
+Subject: [PATCH 5/8] Export shader API via libGLESv2.dll
+
+Required by Qt WebKit
+---
+ src/libGLESv2.gypi | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/libGLESv2.gypi b/src/libGLESv2.gypi
+index 1267cc2..17375c9 100644
+--- a/src/libGLESv2.gypi
++++ b/src/libGLESv2.gypi
+@@ -1036,7 +1036,7 @@
+         {
+             'target_name': 'libGLESv2',
+             'type': '<(angle_gl_library_type)',
+-            'dependencies': [ 'libANGLE', 'angle_common' ],
++            'dependencies': [ 'translator', 'libANGLE', 'angle_common' ],
+             'includes': [ '../build/common_defines.gypi', ],
+             'sources':
+             [
+-- 
+2.10.2
+

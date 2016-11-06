@@ -1,0 +1,44 @@
+From af3962f3143069029c367c9da70cb94987c3fafb Mon Sep 17 00:00:00 2001
+From: Jose Santiago <jsantiago@haivision.com>
+Date: Thu, 3 Nov 2016 09:38:19 -0500
+Subject: [PATCH 6/8] Make GLintptr and GLsizeiptr match those from Qt 5
+
+Fix compiling mingw-w64-qt5-base-dynamic and mingw-w64-qt5-webkit
+---
+ include/KHR/khrplatform.h | 13 +++++++++----
+ 1 file changed, 9 insertions(+), 4 deletions(-)
+
+diff --git a/include/KHR/khrplatform.h b/include/KHR/khrplatform.h
+index 9017b61..d31a9f9 100755
+--- a/include/KHR/khrplatform.h
++++ b/include/KHR/khrplatform.h
+@@ -228,17 +228,22 @@ typedef unsigned short int     khronos_uint16_t;
+  * to be the only LLP64 architecture in current use.
+  */
+ #ifdef _WIN64
+-typedef signed   long long int khronos_intptr_t;
++//typedef signed   long long int khronos_intptr_t;
+ typedef unsigned long long int khronos_uintptr_t;
+-typedef signed   long long int khronos_ssize_t;
++//typedef signed   long long int khronos_ssize_t;
+ typedef unsigned long long int khronos_usize_t;
+ #else
+-typedef signed   long  int     khronos_intptr_t;
++//typedef signed   long  int     khronos_intptr_t;
+ typedef unsigned long  int     khronos_uintptr_t;
+-typedef signed   long  int     khronos_ssize_t;
++//typedef signed   long  int     khronos_ssize_t;
+ typedef unsigned long  int     khronos_usize_t;
+ #endif
+ 
++// Make this compatible with QTOpenGL and QtWebkit.
++// It seems that ptrdiff_t is the right size on WIN32 and WIN64.
++typedef ptrdiff_t khronos_intptr_t;
++typedef ptrdiff_t khronos_ssize_t;
++
+ #if KHRONOS_SUPPORT_FLOAT
+ /*
+  * Float type
+-- 
+2.10.2
+

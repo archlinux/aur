@@ -1,0 +1,62 @@
+From 17a753984f0385f1d54133b7809bfa6b37c3aa32 Mon Sep 17 00:00:00 2001
+From: Martchus <martchus@gmx.net>
+Date: Tue, 9 Aug 2016 18:35:55 +0200
+Subject: [PATCH 1/8] Provide workaround for building static libs
+
+See: https://bugs.chromium.org/p/angleproject/issues/detail?id=1251
+
+Workaround relies on ANGLE_STATIC being defined when using static libs
+---
+ include/KHR/khrplatform.h | 6 +++---
+ include/export.h          | 4 ++--
+ 2 files changed, 5 insertions(+), 5 deletions(-)
+
+diff --git a/include/KHR/khrplatform.h b/include/KHR/khrplatform.h
+index c9e6f17..9017b61 100755
+--- a/include/KHR/khrplatform.h
++++ b/include/KHR/khrplatform.h
+@@ -97,9 +97,9 @@
+  *-------------------------------------------------------------------------
+  * This precedes the return type of the function in the function prototype.
+  */
+-#if defined(_WIN32) && !defined(__SCITECH_SNAP__)
++#if defined(_WIN32) && !defined(__SCITECH_SNAP__) && !defined(ANGLE_STATIC)
+ #   define KHRONOS_APICALL __declspec(dllimport)
+-#elif defined (__SYMBIAN32__)
++#elif defined (__SYMBIAN32__) && !defined(ANGLE_STATIC)
+ #   define KHRONOS_APICALL IMPORT_C
+ #else
+ #   define KHRONOS_APICALL
+@@ -223,7 +223,7 @@ typedef signed   short int     khronos_int16_t;
+ typedef unsigned short int     khronos_uint16_t;
+ 
+ /*
+- * Types that differ between LLP64 and LP64 architectures - in LLP64, 
++ * Types that differ between LLP64 and LP64 architectures - in LLP64,
+  * pointers are 64 bits, but 'long' is still 32 bits. Win64 appears
+  * to be the only LLP64 architecture in current use.
+  */
+diff --git a/include/export.h b/include/export.h
+index 809265c..2bc3900 100644
+--- a/include/export.h
++++ b/include/export.h
+@@ -9,14 +9,14 @@
+ #ifndef LIBGLESV2_EXPORT_H_
+ #define LIBGLESV2_EXPORT_H_
+ 
+-#if defined(_WIN32)
++#if defined(_WIN32) && !defined(ANGLE_STATIC)
+ #if defined(LIBGLESV2_IMPLEMENTATION) || defined(LIBANGLE_IMPLEMENTATION) || \
+     defined(LIBANGLE_UTIL_IMPLEMENTATION)
+ #       define ANGLE_EXPORT __declspec(dllexport)
+ #   else
+ #       define ANGLE_EXPORT __declspec(dllimport)
+ #   endif
+-#elif defined(__GNUC__)
++#elif defined(__GNUC__) && !defined(ANGLE_STATIC)
+ #if defined(LIBGLESV2_IMPLEMENTATION) || defined(LIBANGLE_IMPLEMENTATION) || \
+     defined(LIBANGLE_UTIL_IMPLEMENTATION)
+ #       define ANGLE_EXPORT __attribute__((visibility ("default")))
+-- 
+2.10.2
+
