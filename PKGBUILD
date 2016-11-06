@@ -2,21 +2,25 @@
 # forked from cewe-fotoservice by James Crompton, itself forked from cewe-fotobuch, originally by Jozef Riha, updated by Manuel Conzelmann
 # Updated by Zoe <chp321 at gmail dot com>, for french version
 
-_keyaccount=14227
-_productUrname='Mon LIVRE PHOTO CEWE'
-_productRename='LIVRE PHOTO CEWE'
-_setupFilename='setup_Mon_LIVRE_PHOTO_CEWE'
+#_keyaccount=14227
+_keyaccount=22953
+# _productUrname='Mon LIVRE PHOTO CEWE'
+_productUrname='UNIVERS Service Photo Online'
+#_productRename='LIVRE PHOTO CEWE'
+_productRename='UNIVERS Service Photo Online'
+#_setupFilename='setup_Mon_LIVRE_PHOTO_CEWE'
+_setupFilename='setup_UNIVERS_Service_Photo_Online'
 
 pkgname=cewe-monlivrephoto
 conflicts=('cewe-fotobuch' 'cewe-fotoservice' 'mullerfoto-fotostar_de')
 pkgdesc="Création off-line de livres photos, disponibles ensuite en ligne auprès de divers prestataires"
-# setup_Mon_LIVRE_PHOTO_CEWE (script perl) is versatile too much, so it is better to skip its md5sum :
+# setup_UNIVERS_Service_Photo_Online (script perl) is versatile too much, so it is better to skip its md5sum :
 md5sums=(SKIP
          '2a3ccb8cbbb4c45c5b634efce189bcaa'  ## updater.pl
          '82baecba5be4c2af0cccf0f5bc0e00c7') ## $pkgname.install
 
-pkgver=6.0.5
-pkgrel=3
+pkgver=6.1.5
+pkgrel=1
 url="http://www.livrephoto-cewe.fr/"
 license=("custom:eula")
 depends=('libx11' 'libjpeg' 'curl' 'wget')
