@@ -4,7 +4,7 @@
 
 pkgname=arch-backup
 pkgver=0.8.11
-pkgrel=1
+pkgrel=2
 pkgdesc="trivial backup scripts (ssh/smb support)"
 arch=(any)
 url="https://github.com/p5n/archlinux-stuff/tree/master/arch-backup"
@@ -28,7 +28,7 @@ package() {
 		     $pkgdir/usr/lib/arch-backup/smb
   install -D -m 0755 ${srcdir}/${pkgname}.git/arch-backup/local-backup.sh \
 		     $pkgdir/usr/lib/arch-backup/local
-  install -D -m 0644 ${srcdir}/${pkgname}.git/arch-backup/common.inc \
+  install -D -m 0755 ${srcdir}/${pkgname}.git/arch-backup/common.inc \
 		     $pkgdir/usr/lib/arch-backup/
   install -D -m 0644 ${srcdir}/${pkgname}.git/arch-backup/local-example.conf \
 		     $pkgdir/etc/arch-backup/_local-example
