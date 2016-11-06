@@ -1,105 +1,104 @@
 #!/usr/bin/perl
 use v5.10;
+use strict;
+use warnings;
 use experimental 'smartmatch';
 use Tie::File;
-use JSON;
 use Template;
 use LWP::UserAgent;
-use Data::Dumper;
-
-use constant LANG => 'ru';
-
-my $lang = LANG();
+use HTML::TreeBuilder;
+use List::Util qw(maxstr);
 
 use constant {
-    SOURCE => "https://ftp.mozilla.org/pub/firefox/nightly/latest-mozilla-aurora-l10n/",
-    LATEST_URL => 'https://download.mozilla.org/?product=firefox-aurora-latest-l10n&os=linux64&lang=' . LANG,
-    ARCHES => [ 'i686', 'x86_64' ]
+    ROOT => 'http://ftp.mozilla.org/pub/firefox/nightly/',
 };
 
-sub _get_buildid_url {
-    my ($version) = @_;
-    return "https://ftp.mozilla.org/pub/firefox/nightly/latest-mozilla-aurora/"
-         . "firefox-$version.0a2.en-US.linux-i686.json";
+sub _find_max {
+    my ($tree, $filter) = @_;
+
+    my @values =  map { $_->as_text } $tree->find('a');
+    @values    = grep { $_ ~~ $filter } @values if defined $filter;
+
+    unless(@values) {
+        say "No values can be extracted.";
+        exit 1;
+    }
+
+    return maxstr @values;
 }
 
-sub _get_latest_version {
-    my ($ua) = @_;
+sub _get_tree {
+    my ($ua, $url) = @_;
 
-    my $req = HTTP::Request->new(HEAD => LATEST_URL);
+    my $req = HTTP::Request->new(GET => $url);
     my $res = $ua->request($req);
-    my $uri;
 
     if ( $res->is_success ) {
-        $uri = $res->base;
-        $uri =~ /firefox-(?<version>[\d]{2}).0a2.$lang.linux-[xi0-9_]*.tar.bz/;
-
-        return %+ if %+;
+        my $tree = HTML::TreeBuilder->new_from_content($res->content);
+        return $tree;
     }
-    print "Cannot get response on HEAD request about latest tarball";
-    exit 1;
+    else {
+        say "Request $url is failed";
+        exit 2;
+    }
 }
 
-sub _fill_metadata {
-    my ($ua, $version) = @_;
-    # firefox-50.0a2.en-US.linux-x86_64.tar.bz
-    for my $arch ( @{ +ARCHES } ) {
-        print "Arch = $arch\n";
-        my $file = "firefox-$version->{version}.0a2.$lang.linux-$arch";
-        my $base_uri = SOURCE . $file;
-        my $uri = $base_uri . '.checksums';
+sub _get_part {
+    my ($ua, $uri, $filter) = @_;
 
-        my $req = HTTP::Request->new(GET => $uri);
-        my $res = $ua->request($req);
-        if ( $res->is_success ) {
-            my $sum = "sha512sums_$arch";
-            $res->content =~ /(?<$sum>[0-9a-f]+) sha512 [\d]+ $file.tar.bz2/m;
-            $version->{$sum} = $+{$sum};
-        }
+    return _find_max(_get_tree($ua, $uri), $filter);
+}
 
-        unless ( $version->{buildid} ) {
-            $uri = _get_buildid_url($version->{version});
-            $req = HTTP::Request->new(GET => $uri);
-            $res = $ua->request($req);
-            if ( $res->is_success ) {
-                my $json = decode_json $res->content;
-                $version->{buildid} = $json->{buildid};
-            }
-        }
+sub _get_data {
+    my ($ua, $locale) = @_;
+    $locale //= 'en-US';
+    my $uri = ROOT;
+    my $is_num = qr/^\d+/;
+    my $data = {};
+
+    my $year = _get_part($ua,$uri, $is_num);
+    $uri .= $year;
+    $year =~ s:/::;
+    $data->{year} = $year;
+
+    my $month = _get_part($ua, $uri, $is_num);
+    $uri .= $month;
+    $month =~ s:/::;
+    $data->{month} = $month;
+
+    my $release = _get_part($ua, $uri, qr(aurora-l10n/$));
+    $uri .= $release;
+    $release =~ /^\d{4}-\d{2}-(?<day>\d+)-(?<hour>\d+)-(?<minute>\d+)-(?<second>\d+)/;
+    $data = { %$data, %+ };
+
+    my $package_i686 = _get_part($ua, $uri, qr($locale.linux-i686.tar.bz2$));
+    my $package_i686_sums = _get_part($ua, $uri, qr($locale.linux-i686.checksums$));
+    $data->{sha512sums_i686} = _get_hashsum($ua, $uri . $package_i686_sums, $package_i686);
+
+    my $package_x86_64  = _get_part($ua, $uri, qr($locale.linux-x86_64.tar.bz2$));
+    my $package_x86_64_sums = _get_part($ua, $uri, qr($locale.linux-x86_64.checksums$));
+    $data->{sha512sums_x86_64} = _get_hashsum($ua, $uri . $package_x86_64_sums, $package_x86_64);
+
+    $data->{version} = $1 if $package_x86_64 =~ /firefox-(\d+)/;
+
+    return $data;
+}
+
+sub _get_hashsum {
+    my ($ua, $uri, $file) = @_;
+
+    my $req = HTTP::Request->new(GET => $uri);
+    my $res = $ua->request($req);
+    if ( $res->is_success ) {
+        $res->content =~ /(?<sum>[0-9a-f]+) sha512 [\d]+ $file/m;
+        return $+{sum};
     }
 }
 
 my $ua = LWP::UserAgent->new;
-
-my %version = _get_latest_version($ua);
-_fill_metadata($ua, \%version);
+my $data = _get_data($ua, 'ru');
 
 my $t = Template->new(RELATIVE => 1);
 
-# buildid => 2016...
-# version => 51
-# sha512sums_i686...
-
-$t->process('PKGBUILD.template', \%version, 'PKGBUILD') || die $tt->error();
-# 
-# my @versions = grep { $_ ~~ /Visual_Paradigm_CE[^\s]+Linux[2-6]{2}_InstallFree.tar.gz/ } @lines;
-# 
-# die "Cannot get versions" unless @versions;
-# 
-# my %data = ();
-# 
-# for my $line ( @versions ) {
-#     $line =~ /_CE_([0-9_]+)_Linux([2-6]{2}).*sha256:\s+([0-9a-f]+).*md5:\s+([0-9a-f]+)/;
-#     my $info = {
-#         version => $1,
-#         arch    => $2,
-#         sha256  => $3,
-#         md5     => $4,
-# 
-#     };
-#     $info->{version} =~ s/_/./g;
-#     my $arch = $info->{arch} eq 32 ? 'i686' : 'x86_64';
-#     $data{$arch} = $info;
-# }
-# if ( $data{x86_64}->{version} ) {
-# }
+say "Generate PKGBUILD for version $data->{version}...";
+$t->process('PKGBUILD.template', $data, 'PKGBUILD') || die $t->error();
