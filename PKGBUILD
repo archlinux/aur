@@ -1,4 +1,4 @@
-# $Id: PKGBUILD 273441 2016-08-07 13:55:46Z heftig $
+# $Id: PKGBUILD 279103 2016-10-21 12:18:19Z heftig $
 # Maintainer: Brian Bidulock <bidulock@openss7.org>
 # Contributor: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 # Contributor : Ionut Biru <ibiru@archlinux.org>
@@ -6,7 +6,7 @@
 
 pkgname=firefox-gtk2
 _pkgname=firefox
-pkgver=48.0.2
+pkgver=49.0.2
 pkgrel=1
 pkgdesc="Standalone web browser from mozilla.org"
 arch=('i686' 'x86_64')
@@ -18,6 +18,7 @@ depends=('gtk2' 'mozilla-common' 'libxt' 'startup-notification' 'mime-types'
 makedepends=('unzip' 'zip' 'diffutils' 'python2' 'yasm' 'mesa' 'imake' 'gconf'
              'libpulse' 'inetutils' 'xorg-server-xvfb' 'autoconf2.13' 'rust')
 optdepends=('networkmanager: Location detection via available WiFi networks'
+            'libnotify: Notification integration'
             'upower: Battery API')
 options=('!emptydirs' '!makeflags')
 provides=("firefox=${pkgver}-${pkgrel}")
@@ -27,15 +28,13 @@ source=(https://ftp.mozilla.org/pub/mozilla.org/firefox/releases/$pkgver/source/
         firefox.desktop
         firefox-install-dir.patch
         vendor.js
-        firefox-symbolic.svg
-        no-libnotify.patch)
-sha256sums=('6efbe0cc8dd120f16ff6d9394d96ea1b13bf6b4163d3b25d4210e06d23ea44b3'
+        firefox-symbolic.svg)
+sha256sums=('67abe9202958c36bf60454c91065953aa8f6ede83ea1c0e9cdb870c3fc3d56d0'
             '5488e59d08787927337b343c74a999e62e36ba1a0715f3ecb1c314e2ff8f1961'
-            'fde2daaf082fb8ffcb107fa04ae26698b75083e34d984a7f4073b3407af9273e'
+            '75c526e9669b91b4fe5dcea650a1e8419220abb2e9564184f0d984c71eae82e8'
             'd86e41d87363656ee62e12543e2f5181aadcff448e406ef3218e91865ae775cd'
             '4b50e9aec03432e21b44d18c4c97b2630bace606b033f7d556c9d3e3eb0f4fa4'
-            'a2474b32b9b2d7e0fb53a4c89715507ad1c194bef77713d798fa39d507def9e9'
-            'e4ebdd14096d177d264a7993dbd5df46463605ff45f783732c26d30b9caa53a7')
+            'a2474b32b9b2d7e0fb53a4c89715507ad1c194bef77713d798fa39d507def9e9')
 validpgpkeys=('2B90598A745E992F315E22C58AB132963A06537A')
 
 # Google API keys (see http://www.chromium.org/developers/how-tos/api-keys)
@@ -43,8 +42,6 @@ validpgpkeys=('2B90598A745E992F315E22C58AB132963A06537A')
 # get your own set of keys. Feel free to contact foutrelis@archlinux.org for
 # more information.
 _google_api_key=AIzaSyDwr302FpOSkGRpLlUpPThNTDPbXcIn_FM
-_google_default_client_id=413772536636.apps.googleusercontent.com
-_google_default_client_secret=0ZChLK6AxeA3Isu96MkwqDR4
 
 # Mozilla API keys (see https://location.services.mozilla.com/api)
 # Note: These are for Arch Linux use ONLY. For your own distribution, please
@@ -59,15 +56,8 @@ prepare() {
   cp ../mozconfig .mozconfig
   patch -Np1 -i ../firefox-install-dir.patch
 
-  # Notifications with libnotify are broken
-  # https://bugzilla.mozilla.org/show_bug.cgi?id=1236150
-  patch -Np1 -i ../no-libnotify.patch
-
   echo -n "$_google_api_key" >google-api-key
   echo "ac_add_options --with-google-api-keyfile=\"$PWD/google-api-key\"" >>.mozconfig
-
-  echo -n "$_google_default_client_id $_google_default_client_secret" >google-oauth-api-key
-  echo "ac_add_options --with-google-oauth-api-keyfile=\"$PWD/google-oauth-api-key\"" >>.mozconfig
 
   echo -n "$_mozilla_api_key" >mozilla-api-key
   echo "ac_add_options --with-mozilla-api-keyfile=\"$PWD/mozilla-api-key\"" >>.mozconfig
@@ -86,7 +76,7 @@ build() {
   LDFLAGS+=" -Wl,-z,now"
 
   # GCC 6
-  CXXFLAGS+=" -fno-delete-null-pointer-checks -fno-lifetime-dse -fno-schedule-insns2"
+  CXXFLAGS+=" -fno-delete-null-pointer-checks -fno-schedule-insns2"
 
   export PATH="$srcdir/path:$PATH"
 
