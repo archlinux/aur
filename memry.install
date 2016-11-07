@@ -1,0 +1,4 @@
+post_install() {
+    groupadd -g 337 memry &> /dev/null
+    useradd -u 337 -g memry -d /var/lib/memry -s /bin/false memry &> /dev/null
+}
