@@ -1,0 +1,12 @@
+--- a/charls-1.1.0/CMakeLists.txt	2016-05-15 22:40:58.000000000 +0200
++++ b/charls-1.1.0/CMakeLists.txt	2016-11-07 22:48:26.924423213 +0100
+@@ -41,7 +41,8 @@
+ set (charls_HEADERS
+ src/context.h         src/defaulttraits.h    src/jpegimagedatasegment.h  src/jpegsegment.h           src/lookuptable.h       src/publictypes.h
+ src/colortransform.h  src/contextrunmode.h   src/encoderstrategy.h       src/jpegmarker.h            src/losslesstraits.h    src/scan.h
+-src/config.h          src/decoderstrategy.h  src/header.h                src/jpegmarkersegment.h     src/jpegstreamwriter.h  src/processline.h     src/util.h)
++src/config.h          src/decoderstrategy.h  src/header.h                src/jpegmarkersegment.h     src/jpegstreamwriter.h  src/processline.h
++src/interface.h	      src/util.h)
+ 
+ add_library(CharLS src/interface.cpp src/jpegls.cpp src/jpegmarkersegment.cpp src/header.cpp src/jpegstreamwriter.cpp)
+ set (CHARLS_LIB_MAJOR_VERSION 1)
