@@ -19,7 +19,8 @@ pkgver() {
   git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
-_build_dir="Linux_cmake/nheqminer_cpu"
+_binary="nheqminer_cpu"
+_build_dir="Linux_cmake/${_binary}"
 build() {
   cd "${pkgname}/cpu_xenoncat/Linux/asm/"
   sh assemble.sh
@@ -31,6 +32,6 @@ build() {
 
 package() {
   cd "${pkgname}"
-  install -D -m755 "${_build_dir}/nheqminer_cpu" -t "${pkgdir}/usr/bin/"
+  install -D -m755 "${_build_dir}/${_binary}" -t "${pkgdir}/usr/bin/"
   install -D -m644 LICENSE_MIT -t "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
