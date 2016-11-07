@@ -1,7 +1,7 @@
 # Maintainer: Felix Yan <felixonmars@archlinux.org>
 
 pkgname=sopel
-pkgver=6.4.0
+pkgver=6.5.0
 pkgrel=1
 pkgdesc="An easy-to-use and highly extensible IRC Bot framework (Formerly Willie)"
 arch=('any')
@@ -29,7 +29,7 @@ build() {
 
 check() {
   cd sopel
-  py.test --ignore=sopel.py --ignore=build/ || warning "Tests failed"
+  py.test --ignore=sopel.py --ignore=build/
 }
 
 package() {
