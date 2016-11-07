@@ -3,11 +3,11 @@
 
 pkgname=gmpc-lyricwiki
 pkgver=11.8.16
-pkgrel=4
+pkgrel=5
 pkgdesc="A new plugin that uses the REST api of lyricwiki to fetch lyrics."
-arch=(i686 x86_64)
+arch=('i686' 'x86_64')
 url="http://gmpc.wikia.com/"
-license="GPL"
+license=('GPL')
 depends=('libmpd>=0.20.0' 'libxml2' 'gmpc>=11.8.16')
 makedepends=('intltool')
 source=(http://download.sarine.nl/Programs/gmpc/${pkgver}/${pkgname}-${pkgver}.tar.gz)
