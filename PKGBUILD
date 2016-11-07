@@ -12,7 +12,8 @@ provides=('cinnxp-icon-theme-git')
 conflicts=('cinnxp-icon-theme-git')
 source=("${pkgname}::git+https://github.com/Elbullazul/WinXP-Icons.git")
 md5sums=(SKIP)
-_themedir="usr/share/icons/${pkgname}"
+_themename="WinXP-Icons"
+_themedir="usr/share/icons/${_themename}"
 
 pkgver() {
   cd "${pkgname}"
@@ -22,5 +23,5 @@ pkgver() {
 package() {
   cd "${pkgname}"
   install -dm755 "$pkgdir/$_themedir"
-  find * -type f -exec install -Dm644 {} $pkgdir/&_themedir/ \;
+  find * -type f -exec install -Dm644 {} $pkgdir/$_themedir/ \;
 }
