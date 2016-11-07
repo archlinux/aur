@@ -1,0 +1,16 @@
+pkgbase = cinnxp-icon-theme-git
+	pkgdesc = Remake of classic YlmfOS theme with some mods for icons to scale right.
+	pkgver = r13.8edf942
+	pkgrel = 1
+	url = https://github.com/Elbullazul/WinXP-Icons
+	arch = any
+	makedepends = git
+	depends = icon-naming-utils
+	depends = gtk-update-icon-cache
+	provides = cinnxp-icon-theme-git
+	conflicts = cinnxp-icon-theme-git
+	source = cinnxp-icon-theme-git::git+https://github.com/Elbullazul/WinXP-Icons.git
+	md5sums = SKIP
+
+pkgname = cinnxp-icon-theme-git
+
