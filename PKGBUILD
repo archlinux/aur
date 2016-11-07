@@ -13,8 +13,9 @@ optdepends=('python2')
 options=(!libtool)
 replaces=(coova-chilli)
 source=("https://github.com/coova/coova-chilli/archive/$pkgver.tar.gz"
-	chilli.service)
+	    chilli.service)
 backup=('etc/chilli.conf')
+install=chilli.install
 
 build() {
     cd "${srcdir}/coova-chilli-${pkgver}"
@@ -22,14 +23,14 @@ build() {
     ./bootstrap   
     ./configure --prefix=/usr --sbindir=/usr/bin/ \
 	--sysconfdir=/etc --localstatedir=/var \
-        --enable-statusfile \
-        --disable-static \
-        --enable-shared \
+    --enable-statusfile \
+    --disable-static \
+    --enable-shared \
 	--enable-largelimits \
 	--enable-miniportal \
 	--enable-chilliredir \
 	--enable-chilliproxy \
-        --enable-chilliscript \
+    --enable-chilliscript \
 	--with-poll \
 	--with-openssl \
 	--enable-chilliradsec 
@@ -39,7 +40,12 @@ build() {
 package() {
     cd "${srcdir}/coova-chilli-${pkgver}"
     make DESTDIR="${pkgdir}" install
+    
+msg2 "Installing systemd unit for ${pkgname}"    
+    install -Dm0644 ../chilli.service $pkgdir/usr/lib/systemd/system/chilli.service
 }
 
 md5sums=('26e02689f632ad27ad599bc0d9f5ae3d'
-         'b416def2a56b69f0e5c3b5b09703cda9')
+         '828147e21eac257c3b700ea7f4ca3d98')
+md5sums=('26e02689f632ad27ad599bc0d9f5ae3d'
+         '828147e21eac257c3b700ea7f4ca3d98')

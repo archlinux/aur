@@ -1,0 +1,5 @@
+post_install() {
+        echo -n ">>> Please, configure your captive portal"
+	echo -n ">>>>>  Conf Path:  /etc/chilli"
+}
+
