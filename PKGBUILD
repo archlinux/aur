@@ -1,7 +1,7 @@
 pkgname=linphone-plugin-msx264
 _pkgname=msx264
 pkgver=1.5.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Linphone plugin that enables H.264 video codec"
 url="http://www.linphone.org/"
 arch=('i686' 'x86_64')
@@ -18,6 +18,9 @@ cd "$srcdir/$_pkgname-$pkgver"
 autoreconf --force --install
 ./configure --prefix=/usr
  
+#Fix build error
+sed -i 's/-Werror//g' src/Makefile
+
 make
 }
  
