@@ -1,7 +1,7 @@
 # Maintainer: Markus Kitsinger (SwooshyCueb) <root@swooshalicio.us>
 
 pkgname=xchat-se
-pkgver=1.2.15
+pkgver=1.2.21
 pkgrel=1
 pkgdesc="An xchat fork with a few different features"
 arch=('x86_64')
@@ -11,9 +11,9 @@ options=('!strip')
 provides=("xchat")
 conflicts=('xchat')
 # https://xchat.servx.ru/linux
-source=('https://xchat.servx.ru/linux/xchat-se_1.2.15-1_amd64.deb'
+source=('https://xchat.servx.ru/linux/x86_64/linuxmint/stable/18/xchat-se_1.2.21-1_amd64.deb'
         'xchat-se.install')
-md5sums=('6f7324429929d79341ec99cb76b26d60'
+md5sums=('16ef377b9e708a89968edf80f35c52ea'
          '8de528b549f6fffa56fb492162faed63')
 
 depends=('gtk2'
