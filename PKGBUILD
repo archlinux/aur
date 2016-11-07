@@ -3,12 +3,12 @@
 
 pkgname='fortune-mod-bofh-excuses'
 pkgver=20121125.190600
-pkgrel=4
+pkgrel=5
 pkgdesc='BOFH excuses fortune cookie files'
 arch=('any')
 url='http://www.cs.wisc.edu/~ballard/bofh/'
 depends=('fortune-mod')
-makedepends=('curl' 'pkgbuild-introspection')
+makedepends=('curl')
 groups=('fortune-mods')
 license=('Public domain')
 
@@ -57,14 +57,6 @@ build()
 
 package()
 {
-    # XXX: Super ugly hotfix for pacaur apparently generating .SRCINFO _before_ pkgver() is run
-    #      (therefore, it may contain invalid information).
-    if [ -f "${startdir}/.SRCINFO" ]; then
-        cd "${startdir}"
-        mksrcinfo
-    fi
-
-
     cd "${srcdir}"
     
     install -D -m644 bofh-excuses "${pkgdir}/usr/share/fortune/bofh-excuses"

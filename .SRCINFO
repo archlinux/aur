@@ -1,13 +1,12 @@
 pkgbase = fortune-mod-bofh-excuses
 	pkgdesc = BOFH excuses fortune cookie files
 	pkgver = 20121125.190600
-	pkgrel = 4
+	pkgrel = 5
 	url = http://www.cs.wisc.edu/~ballard/bofh/
 	arch = any
 	groups = fortune-mods
 	license = Public domain
 	makedepends = curl
-	makedepends = pkgbuild-introspection
 	depends = fortune-mod
 
 pkgname = fortune-mod-bofh-excuses
