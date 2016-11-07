@@ -7,7 +7,7 @@ pkgdesc="VideoLAN Media Library"
 arch=('i686' 'x86_64')
 url="http://vlmc.org/"
 license=('GPL')
-depends=('vlc libvlcpp libjpeg-turbo sqlite')
+depends=('vlc' 'libvlcpp' 'libjpeg-turbo' 'sqlite')
 makedepends=('git')
 source=(
   'git+https://code.videolan.org/videolan/medialibrary.git'
