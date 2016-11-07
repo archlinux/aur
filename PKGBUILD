@@ -6,7 +6,7 @@ _pkgname=libnetconf
 pkgver=r2227.62a983a
 pkgrel=1
 pkgdesc='a NETCONF library in C intended for building NETCONF clients and servers.'
-url="https://github.com/CESNET/$_pkgname.git"
+url="https://github.com/CESNET/$_pkgname"
 arch=('i686' 'x86_64')
 license=('BSD')
 depends=('curl' 'libssh' 'libxslt')
@@ -14,7 +14,7 @@ makedepends=('git' 'doxygen')
 provides=($_pkgname)
 conflicts=($_pkgname)
 options=('!emptydirs')
-source=("$pkgname::git+https://github.com/CESNET/$_pkgname.git")
+source=("$pkgname::git+https://github.com/CESNET/$_pkgname")
 md5sums=('SKIP')
 
 pkgver() {

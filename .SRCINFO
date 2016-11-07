@@ -1,8 +1,8 @@
 pkgbase = libnetconf-git
 	pkgdesc = a NETCONF library in C intended for building NETCONF clients and servers.
-	pkgver = r2020.673458a
+	pkgver = r2227.62a983a
 	pkgrel = 1
-	url = https://code.google.com/p/libnetconf/
+	url = https://github.com/CESNET/libnetconf
 	arch = i686
 	arch = x86_64
 	license = BSD
@@ -14,7 +14,7 @@ pkgbase = libnetconf-git
 	provides = libnetconf
 	conflicts = libnetconf
 	options = !emptydirs
-	source = libnetconf-git::git+https://code.google.com/p/libnetconf/
+	source = libnetconf-git::git+https://github.com/CESNET/libnetconf
 	md5sums = SKIP
 
 pkgname = libnetconf-git
