@@ -1,16 +1,19 @@
 # Maintainer: Hendrik Sollich <hendrik@hoodie.de>
 _pkgname=asciii
 pkgname=${_pkgname}-git
-pkgver=v3.0.0.beta1.r47.gf78ebfe # auto
-pkgrel=3
+pkgver=v3.0.0RC # auto
+pkgrel=1
 makedepends=('rust' 'cargo' 'cmake')
 arch=('i686' 'x86_64')
 source=("git+https://github.com/hoodie/asciii-rs.git")
 md5sums=('SKIP')
 
+
+
 pkgver() {
     cd "$srcdir/asciii-rs/"
-    git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+    #git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+    echo $(git tag | tail -1).$(git rev-list --count HEAD)
 }
 
 build() {
@@ -20,5 +23,6 @@ build() {
 
 package() {
     cd "$srcdir/asciii-rs/"
-    install -Dm755  "$srcdir/asciii-rs/target/release/$_pkgname" "$pkgdir/usr/bin/$_pkgname"
+    target="$srcdir/asciii-rs/target/release/$_pkgname"
+    install -Dm755 $target "$pkgdir/usr/bin/$_pkgname"
 }
