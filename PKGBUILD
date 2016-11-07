@@ -39,7 +39,7 @@ build() {
 
   ./bootstrap
   ./configure --prefix=/usr
-  LANG=C make
+  make
 }
 
 package() {
