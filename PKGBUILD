@@ -2,10 +2,10 @@
 
 pkgname="pentbox"
 pkgver=1.5
-pkgrel=6
+pkgrel=7
 pkgdesc="A security suite that packs security and stability testing oriented tools for networks and systems."
 arch=(any)
-url="http://www.pentbox.net"
+url="https://sourceforge.net/projects/pentbox/"
 license=('GPL3')
 depends=(ruby)
 optdepends=('hping: TCP SYN flood with hping3')
