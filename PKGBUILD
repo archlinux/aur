@@ -1,4 +1,5 @@
-# Maintainer: Dave Reisner <dreisner@archlinux.org>
+# Maintainer: Lucas Werkmeister <mail@lucaswerkmeister.de>
+# Contributor: Dave Reisner <dreisner@archlinux.org>
 
 pkgname=mkosi-git
 pkgver=r44.96e64b4
