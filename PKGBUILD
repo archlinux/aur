@@ -1,6 +1,9 @@
 # Maintainer: dumblob <dumblob@gmail.com>
 # Contributor: dumblob <dumblob@gmail.com>
 
+# 2016-11-07 19:08:48 CET
+#   fix project URL in PKGBUILD
+#   relicensed from GPL to MIT
 # 2016-03-25 21:45:57 CET
 #   add support for multiple X displays
 #   unset used variables
@@ -11,10 +14,10 @@
 
 pkgname=udm
 pkgver=1.2
-pkgrel=1
+pkgrel=2
 pkgdesc='A micro display manager (like cdm, tdm etc.) with multi display/session support. Written in POSIX shell without any dependencies and having only 31 SLOC.'
-url='http://aur.archlinux.org'
-license=('GPL')
+url='https://aur.archlinux.org/packages/udm'
+license=('MIT')
 arch=('any')
 depends=('sh')
 provides=('udm')
