@@ -1,18 +1,29 @@
 pkgbase = iup
 	pkgdesc = C cross platform GUI toolkit
-	pkgver = 3.18
+	pkgver = 3.20
 	pkgrel = 1
 	url = http://www.tecgraf.puc-rio.br/iup/
 	arch = i686
 	arch = x86_64
 	license = MIT
+	makedepends = lsb-release
+	makedepends = lua
 	depends = libcd
 	depends = libim
+	depends = gtk3
+	depends = libpng
+	depends = ftgl
+	depends = zlib
+	depends = freetype2
+	depends = cairo
+	depends = pango
+	depends = glib2
+	depends = webkitgtk
 	options = staticlibs
-	source = http://downloads.sourceforge.net/project/iup/3.18/Docs%20and%20Sources/iup-3.18_Sources.tar.gz
-	source = http://heanet.dl.sourceforge.net/project/iup/3.18/Docs%20and%20Sources/iup-3.18_Docs.pdf
-	md5sums = 60a3b03b14056364379cc195f95f897f
-	md5sums = 08455b56beb828ab1a814299b217b5f9
+	source = http://downloads.sourceforge.net/project/iup/3.20/Docs%20and%20Sources/iup-3.20_Sources.tar.gz
+	source = http://downloads.sourceforge.net/project/iup/3.20/Docs%20and%20Sources/iup-3.20_Docs.pdf
+	md5sums = fa1c47d1fcbe138300b85166e6bb7474
+	md5sums = 86becc02f33ff17366232af0cdd3c5d7
 
 pkgname = iup
 
