@@ -1,0 +1,13 @@
+[Unit]
+Description=Dedicated tmux server for a user
+Documentation=man:tmux(1)
+
+[Service]
+Type=forking
+WorkingDirectory=%h
+ExecStart=/usr/bin/tmux -2u new-session -s %u -d
+ExecStop=/usr/bin/tmux kill-session -t %u
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

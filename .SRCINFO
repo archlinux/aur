@@ -1,0 +1,21 @@
+pkgbase = tmix
+	pkgdesc = Tmux service and mixer
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://wiki.archlinux.org/index.php/Tmux#Clients_simultaneously_interacting_with_various_windows_of_a_session
+	arch = x86_64
+	arch = i686
+	license = GPL
+	depends = tmux
+	source = tmix.sh
+	source = tmix.sh.sig
+	source = tmux.service
+	source = tmux.service.sig
+	validpgpkeys = 8710F6CEE12649E205BA39E67D4C5DFC6C76C13E
+	md5sums = fdf7137b780205312e35ea7e5b450df4
+	md5sums = 0afd81e7dbd77327a88fd32b1fd3d3c5
+	md5sums = 2387d9b98aada06e24050438f8f1c7aa
+	md5sums = bfd88c60618a6808308a20dcbe7bf823
+
+pkgname = tmix
+
