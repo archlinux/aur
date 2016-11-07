@@ -23,5 +23,5 @@ pkgver() {
 package() {
   cd "${pkgname}"
   install -dm755 "$pkgdir/$_themedir"
-  find * -type f -exec install -Dm644 {} $pkgdir/$_themedir/ \;
+  cp -drf --no-preserve='ownership' . "$pkgdir/$_themedir/"
 }
