@@ -1,11 +1,9 @@
 [Desktop Entry]
-Name=Shotcut
-Name[de]=Shotcut
-GenericName=Video Editor
-GenericName[de]=Video Bearbeitungsprogramm
-Comment=Video Editor
-Comment[de]=Programm zum Bearbeiten und Abspielen von Videodateien.
-Exec=shotcut
-Terminal=false
 Type=Application
+Name=Shotcut
+GenericName=Video Editor
+Comment=Video editor
+Exec=shotcut
 Icon=applications-multimedia
+Terminal=false
+Categories=AudioVideo;Video;AudioVideoEditing;
