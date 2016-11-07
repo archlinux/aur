@@ -1,7 +1,7 @@
 # Maintainer: Daniel M. Capella <polyzen@archlinux.info>
 
 pkgname=firefox-pentadactyl-signed
-pkgver=7296
+pkgver=7300
 pkgrel=1
 pkgdesc='Firefox for Vim and Links addicts (signed fork)'
 url=http://5digits.org/pentadactyl
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('firefox')
 source=("https://github.com/willsALMANJ/pentadactyl-signed/releases/download/$pkgver/pentadactyl-signed-$pkgver.xpi")
 noextract=("${source##*/}")
-sha512sums=('14982ac40b0e6e7c6487298ea4d76390e96e1611c1f09800b43778835ae0f9b65f4d5890c045040a8e0f38c1e1ec1b7549702c96aada832359b16b90c7218a43')
+sha512sums=('637113e07b1214d14a23c784eae27b59eba814be31ac97d23120498d4bba0d26de8ab5cb478084df43bc4b69800ed0ef9ee1a30e0a2d8fc368ca2f6d3911542a')
 
 package() {
   install -Dm755 ${source##*/} "$pkgdir"/usr/lib/firefox/browser/extensions/pentadactyl-signed@willsalmanj.github.com.xpi
