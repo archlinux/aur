@@ -2,7 +2,7 @@
 # Maintainer: Sebastian Stammler <echo c2ViQGhkZG4uc3BhY2UK|base64 -d>
 _pkgname=nheqminer-cuda
 pkgname=${_pkgname}-git
-pkgver=0.4b.r2.g519cdf0
+pkgver=0.4b.r0.geb37570
 pkgrel=1
 pkgdesc="zcash equihash miner by NiceHash. Tromp GPU/CUDA solver build."
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('MIT')
 depends=('boost' 'cuda')
 makedepends=('git')
 optdepends=('zcash: zcash node and tools')
-source=("${pkgname}::git+https://github.com/nicehash/nheqminer.git")
+source=("${pkgname}::git+https://github.com/nicehash/nheqminer.git#branch=Linux")
 md5sums=('SKIP')
 
 pkgver() {
