@@ -1,5 +1,6 @@
 /pkg
 /src
 nheqminer-cpu-git
+nheqminer-cuda-git
 /*.src.tar*
 /*.pkg.tar*
