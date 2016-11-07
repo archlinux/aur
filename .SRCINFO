@@ -1,6 +1,6 @@
 pkgbase = flexget-git
 	pkgdesc = Automate downloading or processing content (torrents, podcasts, etc.) from different sources like RSS-feeds, html-pages, various sites and more.
-	pkgver = 2.3.45.r11178.a8b98c7
+	pkgver = 2.5.16.r11681.13aaeec
 	pkgrel = 1
 	url = http://flexget.com/
 	arch = any
@@ -34,12 +34,12 @@ pkgbase = flexget-git
 	depends = python2-flask-restful>=0.3.3
 	depends = python2-flask-restplus=0.8.6
 	depends = python2-flask-compress>=1.2.1
-	depends = python2-flask-login>=0.3.2
+	depends = python2-flask-login>=0.4.0
 	depends = python2-flask-cors>=2.1.2
 	depends = python2-pyparsing>=2.0.3
 	depends = python2-safe>=0.4
 	depends = python2-future>=0.15.2
-	depends = python2-terminaltables>=3.0.0
+	depends = python2-terminaltables>=3.1.0
 	depends = python2-colorclass>=2.2.0
 	optdepends = python2-guppy: for memusage plugin
 	optdepends = python2-transmissionrpc: Transmission support

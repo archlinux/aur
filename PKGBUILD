@@ -5,7 +5,7 @@
 
 pkgname=flexget-git
 _pkgname=Flexget
-pkgver=2.3.45.r11178.a8b98c7
+pkgver=2.5.16.r11681.13aaeec
 pkgrel=1
 
 pkgdesc="Automate downloading or processing content (torrents, podcasts, etc.) from different sources like RSS-feeds, html-pages, various sites and more."
@@ -39,12 +39,12 @@ depends=('python2'
          'python2-flask-restful>=0.3.3' #AUR#
          'python2-flask-restplus=0.8.6'
          'python2-flask-compress>=1.2.1'
-         'python2-flask-login>=0.3.2'
+         'python2-flask-login>=0.4.0'
          'python2-flask-cors>=2.1.2'
          'python2-pyparsing>=2.0.3'
          'python2-safe>=0.4'
          'python2-future>=0.15.2'
-         'python2-terminaltables>=3.0.0'
+         'python2-terminaltables>=3.1.0'
          'python2-colorclass>=2.2.0'
          )
 optdepends=('python2-guppy: for memusage plugin' #AUR#
@@ -108,7 +108,7 @@ package() {
   install -Dm644 LICENSE "${pkgdir}"/usr/share/licenses/"${pkgname}"/LICENSE
 
   # Make sure the perms allow reading by all
-  chmod ugo+r ${pkgdir}/usr/lib/python2.7/site-packages/FlexGet-2.3.*.dev0-py2.7.egg-info/*
+  chmod ugo+r ${pkgdir}/usr/lib/python2.7/site-packages/FlexGet-2.5.*.dev0-py2.7.egg-info/*
 
   # install systemd user unit
   install -Dm644 ../flexget.service "${pkgdir}"/usr/lib/systemd/user/flexget.service
