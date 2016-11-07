@@ -6,7 +6,7 @@
 
 pkgname=lib32-fluidsynth
 pkgver=1.1.6
-pkgrel=2
+pkgrel=3
 pkgdesc='A real-time software synthesizer based on the SoundFont 2 specifications'
 arch=('x86_64')
 url='http://www.fluidsynth.org/'
