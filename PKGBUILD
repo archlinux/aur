@@ -2,8 +2,8 @@
 
 _pkgname=dcmtk
 pkgname=$_pkgname-git
-pkgver=3.6.1_20160216.63.g2b6c548
-pkgrel=2
+pkgver=3.6.1_20161102.4.g7872b1c
+pkgrel=1
 pkgdesc='Collection of libraries and applications implementing large parts the DICOM standard'
 arch=('i686' 'x86_64')
 url='http://dicom.offis.de/dcmtk'
@@ -21,11 +21,11 @@ pkgver() {
 }
 
 build() {
-  # man pages get created only when compiling inside the source tree
+  # man pages are created only when compiling inside the source tree
+  # http://forum.dcmtk.org/viewtopic.php?f=3&t=4475
   cd $_pkgname
   cmake . \
         -DCMAKE_INSTALL_PREFIX=/usr \
-        -DDCMTK_USE_CXX11_STL=ON \
         -DBUILD_SHARED_LIBS=ON
   make
   make html
