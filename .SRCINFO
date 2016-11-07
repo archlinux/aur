@@ -1,7 +1,7 @@
 pkgbase = soapylms7-git
 	pkgdesc = SoapySDR LMS7002M/LimeSDR Support Module
-	pkgver = r792.4165104
-	pkgrel = 1
+	pkgver = r997.2827512
+	pkgrel = 2
 	url = https://github.com/pothosware/SoapySDR
 	arch = i686
 	arch = x86_64
