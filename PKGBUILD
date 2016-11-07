@@ -1,7 +1,7 @@
 # Maintainer: Johannes Wienke <languitar@semipol.de>
 
 pkgname='rsbag-tools-cl'
-pkgver=0.14.1.632ea9d
+pkgver=0.15.0.3523fd7
 pkgrel=1
 pkgdesc='RSBag common lisp tools'
 arch=('i686' 'x86_64')
@@ -9,10 +9,10 @@ url='https://projects.cor-lab.org/projects/rsbag'
 license=('LGPL3')
 makedepends=('git' 'cmake' 'rsb-proto' 'sbcl')
 options=("!strip")
-source=("rsbag-tools-cl::git+https://code.cor-lab.org/git/rsbag.git.tools-cl#branch=0.14"
-        "rsbag-cl::git+https://code.cor-lab.org/git/rsbag.git.cl#branch=0.14"
-        "rsb-tools-cl::git+https://code.cor-lab.org/git/rsb.git.tools-cl#branch=0.14"
-        "rsb-cl::git+https://code.cor-lab.org/git/rsb.git.cl#branch=0.14"
+source=("rsbag-tools-cl::git+https://code.cor-lab.org/git/rsbag.git.tools-cl#branch=0.15"
+        "rsbag-cl::git+https://code.cor-lab.org/git/rsbag.git.cl#branch=0.15"
+        "rsb-tools-cl::git+https://code.cor-lab.org/git/rsb.git.tools-cl#branch=0.15"
+        "rsb-cl::git+https://code.cor-lab.org/git/rsb.git.cl#branch=0.15"
         "cl-protobuf::git+https://github.com/scymtym/cl-protobuf"
         "network.spread::git+https://github.com/scymtym/network.spread"
         "iterate-sequence::git+https://github.com/scymtym/iterate-sequence"
@@ -39,8 +39,8 @@ prepare() {
         curl -O http://beta.quicklisp.org/quicklisp.lisp
         sbcl --noinform --no-userinit --disable-debugger --load quicklisp.lisp --eval '(quicklisp-quickstart:install :path "'$(pwd)'/quicklisp")' --quit
     fi
-    echo "\"/usr/share/rsbprotocol0.14/\"" > "${srcdir}/rsb-cl/protocol-directory.sexp"
-    cp -R "/usr/share/rsbprotocol0.14/" "${srcdir}/rsbag-cl/data/"
+    echo "\"/usr/share/rsbprotocol0.15/\"" > "${srcdir}/rsb-cl/protocol-directory.sexp"
+    cp -R "/usr/share/rsbprotocol0.15/" "${srcdir}/rsbag-cl/data/"
     sbcl --noinform --no-userinit --disable-debugger --load "$(pwd)/quicklisp/setup.lisp" --eval '(ql:quickload (list :esrap :net.didierverna.clon))' --quit
 }
 
