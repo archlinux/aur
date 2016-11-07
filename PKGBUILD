@@ -1,7 +1,7 @@
 # Maintainer: Johannes Wienke <languitar@semipol.de>
 
 pkgname='rsc'
-pkgver=0.14.5.4df6330
+pkgver=0.15.0.1ae8e9a
 pkgrel=1
 pkgdesc='Robotics Systems Commons library'
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ url='https://projects.cor-lab.org/projects/rsc'
 license=('LGPL3')
 depends=('boost')
 makedepends=('git' 'cmake')
-source=("git+https://code.cor-lab.org/git/rsc.git#branch=0.14")
+source=("git+https://code.cor-lab.org/git/rsc.git#branch=0.15")
 md5sums=('SKIP')
 
 pkgver() {
