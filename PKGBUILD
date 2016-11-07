@@ -2,7 +2,7 @@ _libressl_ver='2.5.0'
 pkgname='acme-client'
 pkgdesc="Secure Let's Encrypt client"
 pkgver='0.1.14'
-pkgrel='1'
+pkgrel='2'
 license=('BSD')
 url='https://kristaps.bsd.lv/acme-client/'
 arch=('x86_64' 'i686')
@@ -51,7 +51,7 @@ package () {
 	# Additional documentation
 	install -Dm644 README.md \
 		"${pkgdir}/usr/share/doc/${pkgname}/README.md"
-	install -Dm644 README.archlinux \
+	install -Dm644 "${srcdir}/README.archlinux" \
 		"${pkgdir}/usr/share/doc/${pkgname}/README.archlinux"
 
 	# Ensure that the default directories for certificates and challenges exist

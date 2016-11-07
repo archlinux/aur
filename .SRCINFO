@@ -1,7 +1,7 @@
 pkgbase = acme-client
 	pkgdesc = Secure Let's Encrypt client
 	pkgver = 0.1.14
-	pkgrel = 1
+	pkgrel = 2
 	url = https://kristaps.bsd.lv/acme-client/
 	arch = x86_64
 	arch = i686
