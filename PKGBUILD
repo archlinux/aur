@@ -1,26 +1,27 @@
 # Maintainer: M0Rf30
 
 pkgname=coova-chilli-arch
-pkgver=1.3.0
+pkgver=1.3.2
 pkgrel=1
 pkgdesc='an open-source software access controller'
 arch=('i686' 'x86_64')
-url="http://coova.org/CoovaChilli"
+url="https://coova.github.io/"
 license=('GPL')
 depends=('curl' 'libpcap' 'openssl')
+makedepends=('gengetopt')
 optdepends=('python2')
 options=(!libtool)
 replaces=(coova-chilli)
-source=(http://ap.coova.org/chilli/coova-chilli-${pkgver}.tar.gz
-coova-chilli)
+source=("https://github.com/coova/coova-chilli/archive/$pkgver.tar.gz"
+	chilli.service)
 backup=('etc/chilli.conf')
 
 build() {
     cd "${srcdir}/coova-chilli-${pkgver}"
 
-    export CFLAGS="-Wno-error=unused-but-set-variable"
-   
-    ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var \
+    ./bootstrap   
+    ./configure --prefix=/usr --sbindir=/usr/bin/ \
+	--sysconfdir=/etc --localstatedir=/var \
         --enable-statusfile \
         --disable-static \
         --enable-shared \
@@ -38,10 +39,7 @@ build() {
 package() {
     cd "${srcdir}/coova-chilli-${pkgver}"
     make DESTDIR="${pkgdir}" install
-    rm -rf ${pkgdir}/etc/init.d
-    install -D $srcdir/coova-chilli $pkgdir/etc/rc.d/coova-chilli
-    chmod +x $pkgdir/etc/rc.d/coova-chilli
 }
 
-md5sums=('dc0037e3cdebcb60508081b4e42e984a'
+md5sums=('26e02689f632ad27ad599bc0d9f5ae3d'
          'b416def2a56b69f0e5c3b5b09703cda9')
