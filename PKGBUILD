@@ -1,7 +1,7 @@
 # Maintainer: Maxs <max dot van dot den dot branden @t gmail dot com>
 pkgname="solarus-quest-editor"
 pkgver="1.5.0"
-pkgrel="1"
+pkgrel="2"
 epoch=
 pkgdesc="A graphical user interface to create and modify quests for the Solarus engine."
 arch=("i686" "x86_64")
@@ -26,14 +26,14 @@ md5sums=("4db117734e76363bc37cb6e1412512e4")
 build() {
   cd "$srcdir/$pkgname-$pkgver"
 
-  cmake -D CMAKE_BUILD_TYPE=Release .
+  cmake -D CMAKE_BUILD_TYPE=Release -D CMAKE_INSTALL_PREFIX="/usr" .
   make
 }
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
 
-  install -Dm755 "$pkgname" "$pkgdir/usr/bin/$pkgname"
+  make DESTDIR="${pkgdir}/" install
   install -Dm644 "license.txt" "$pkgdir/usr/share/licences/$pkgname/license.txt"
   install -Dm644 "images/logo/sqe-logo.png" "$pkgdir/usr/share/pixmaps/sqe-logo.png"
   install -Dm644 "resources/$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
