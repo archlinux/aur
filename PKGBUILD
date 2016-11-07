@@ -7,13 +7,13 @@
 
 pkgname=vlmc-git
 epoch=1
-pkgver=0.4187.8162cfd
+pkgver=0.4342.c9987f1
 pkgrel=1
 pkgdesc="VideoLAN Movie Creator, a simple and user-friendly video editor"
 arch=('i686' 'x86_64')
 url="http://vlmc.org/"
 license=('GPL')
-depends=('vlc' 'frei0r-plugins' 'libvlcpp-git')
+depends=('vlc' 'frei0r-plugins' 'libvlcpp-git' 'medialibrary-git')
 makedepends=('git' 'gcc-objc' 'qt5-tools')
 source=(
   'git+https://code.videolan.org/videolan/vlmc.git'
