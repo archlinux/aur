@@ -7,6 +7,7 @@ arch=('i686' 'x86_64')
 url="https://github.com/chneukirchen/nq"
 license=('GPL')
 makedepends=('make')
+provides=("nq")
 conflicts=("nq")
 source=("${pkgname}::git+https://github.com/chneukirchen/nq.git")
 md5sums=('SKIP')
