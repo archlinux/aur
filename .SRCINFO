@@ -1,14 +1,14 @@
 pkgbase = pysword
 	pkgdesc = A native Python2/3 reader module for the SWORD Project Bible Modules
-	pkgver = 0.2.0
+	pkgver = 0.2.3
 	pkgrel = 1
 	url = https://gitlab.com/tgc-dk/pysword
 	arch = any
 	license = GPL2
 	makedepends = python-setuptools
 	makedepends = python2-setuptools
-	source = pysword-0.2.0.tar.gz::https://gitlab.com/tgc-dk/pysword/repository/archive.tar.gz?ref=0.2.0
-	sha256sums = 85618b359932d87c5c154bc9b250b90065a35b9edb3415c8a541ed54cdbb3ec3
+	source = pysword-0.2.3.tar.gz::https://gitlab.com/tgc-dk/pysword/repository/archive.tar.gz?ref=0.2.3
+	sha256sums = d64c821a362a27e9ee962846cab22f7d607bea88bb3175cf18c8bb7a0db3a9ee
 
 pkgname = python-pysword
 	depends = python
