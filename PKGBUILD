@@ -1,6 +1,6 @@
 # Maintainer: q9 <qqqqqqqqq9 at web dot de>
 pkgname=scidb-svn
-pkgver=1.0.beta.r1070
+pkgver=1.0.beta.r1111
 pkgrel=1
 epoch=2
 pkgdesc="Scidb is a Chess Information Data Base SVN-Checkout"
@@ -26,7 +26,7 @@ prepare() {
 
 build() {
 	cd "$srcdir/$pkgname-build"
-  ./configure --prefix="/usr" --exec-prefix="/usr" --destdir=$pkgdir --mandir=/usr/share/man --enginesdir=/usr/bin --enable-debug-si4=no --enable-freedesktop=no  
+   ./configure --prefix="/usr" --exec-prefix="/usr" --enginesdir=/usr/bin --destdir=$pkgdir  --enable-debug-si4=no --enable-freedesktop=no  
   make clean
 	make
 }
@@ -34,6 +34,4 @@ build() {
 package() {
 	cd "$srcdir/$pkgname-build"
   make install
-  sed -i -e "s@/usr/local/engines@/usr/share/scidb-beta/engines@g;s@$pkgdir@@g" $pkgdir/usr/bin/scidb-beta
-  sed -i -e "s@$pkgdir@@g" $pkgdir/usr/bin/update-scidb-photo-files
 }
