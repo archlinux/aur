@@ -2,12 +2,13 @@
 pkgname='lighttpd-debian-scripts'
 epoch=1
 pkgver=1.4.39.1
-pkgrel=1
+pkgrel=2
 pkgdesc='The extra scripts contained in the Debian release of lighttpd. Includes create-mime.assign.pl, include-conf-enabled.pl, and use-ipv6.pl.'
 url="http://anonscm.debian.org/cgit/pkg-lighttpd/lighttpd.git"
 arch=('x86_64' 'i686')
 license=('custom')
 depends=('lighttpd' 'perl')
+optdepends=('mime-types: required by create-mime.assign.pl')
 source=('git://anonscm.debian.org/pkg-lighttpd/lighttpd.git')
 md5sums=('SKIP')
 
