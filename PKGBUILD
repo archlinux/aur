@@ -1,7 +1,7 @@
 # Maintainer: Jameson Pugh <jameson.pugh@gmail.com>
 
 pkgname=mpxj
-pkgver=4.7.3
+pkgver=5.5.2
 pkgrel=1
 pkgdesc="A Java based project file reader/writter."
 arch=('any')
@@ -10,7 +10,7 @@ license=('LGPL')
 depends=('apache-poi' 'java-environment')
 makedepends=('java-environment')
 source=("http://downloads.sourceforge.net/mpxj/${pkgname}-${pkgver}.zip")
-sha256sums=('ac48fd2bcec142e152b64329da33be6b50ca61bd543c12aed92ce8e1e2a95694')
+sha256sums=('a434a4e0fd537701329aeeb78e5fcefc798b8e2fe71488547df684d11fd4d98c')
 
 package() {
   cd "${srcdir}/${pkgname}"
