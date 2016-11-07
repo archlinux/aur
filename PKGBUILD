@@ -1,7 +1,7 @@
 # Maintainer: Johannes Wienke <languitar@semipol.de>
 
 pkgname='rsb-spread-cpp'
-pkgver=0.14.2.e7324f4
+pkgver=0.15.0.84e9019
 pkgrel=1
 pkgdesc='Robotics Service Bus C++ spread transport'
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ license=('LGPL3')
 depends=('rsc' 'boost' 'protobuf' 'spread-daemon' 'rsb-cpp')
 makedepends=('git' 'cmake')
 checkdepends=('python2')
-source=("rsb-spread-cpp::git+https://code.cor-lab.org/git/rsb.git.spread-cpp#branch=0.14")
+source=("rsb-spread-cpp::git+https://code.cor-lab.org/git/rsb.git.spread-cpp#branch=0.15")
 md5sums=('SKIP')
 
 pkgver() {
