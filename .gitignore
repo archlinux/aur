@@ -1,0 +1,6 @@
+gog_mini_metro_2.6.0.8.sh
+*.tar
+*.xz
+
+pkg/
+src/

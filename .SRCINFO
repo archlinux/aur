@@ -1,0 +1,20 @@
+pkgbase = gog-mini-metro
+	pkgdesc = Minimalistic subway layout game
+	pkgver = 2.6.0.8
+	pkgrel = 1
+	url = http://dinopoloclub.com/gog-mini-metro/
+	arch = i686
+	arch = x86_64
+	license = custom:None
+	depends = libgl
+	depends = libx11
+	depends = glu
+	depends = desktop-file-utils
+	depends = gtk-update-icon-cache
+	source = gog://gog_mini_metro_2.6.0.8.sh
+	source = gog-mini-metro.desktop
+	sha256sums = 72400b05da958bcce5b890c4a0f22c6f1786e4b4ebd5dda6619f19562f0ed65a
+	sha256sums = aa4eff65b8ae460ce64149745fbf9c7582b62dbd310bea644a0f5e9c8cdf1ca5
+
+pkgname = gog-mini-metro
+
