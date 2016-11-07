@@ -2,13 +2,13 @@
 
 pkgname=memcache-top
 pkgver=0.6
-pkgrel=1
+pkgrel=2
 pkgdesc="perl command-line memcached stat reporter, top-like output"
 arch=('any')
 url="http://code.google.com/p/memcache-top/"
 license=('BSD New License')
 depends=('perl')
-source=(http://memcache-top.googlecode.com/files/$pkgname-v$pkgver)
+source=(https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/memcache-top/$pkgname-v$pkgver)
 md5sums=('5eb035237cb482772f898597eda26106')
 
 package() {
