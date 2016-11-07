@@ -2,9 +2,9 @@
 # Contributor: Mohammad Alsaleh <msal@tormail.org>
 # Maintainer: Steven Allen <steven@stebalien.com>
 
-_date=2016-11-03
+_date=2016-11-06
 pkgname=rust-nightly-bin
-pkgver=1.14.0_2016.11.02
+pkgver=1.14.0_2016.11.05
 pkgrel=1
 arch=('i686' 'x86_64')
 pkgdesc='Fast, concurrent, safe. The Rust programming language and its package manager, Cargo.'
