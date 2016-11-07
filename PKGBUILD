@@ -2,12 +2,13 @@
 
 pkgname=beast2
 pkgver=2.4.3
-pkgrel=1
+pkgrel=2
 pkgdesc='Bayesian Evolutionary Analysis by Sampling Trees'
 arch=(any)
 url="http://www.beast2.org/"
 license=('GPL2')
 depends=('bash' 'java-runtime>=8')
+optdepends=('beagle-lib')
 source=("https://github.com/CompEvol/beast2/releases/download/v$pkgver/BEAST.v$pkgver.Linux.tgz")
 md5sums=('2184d0d10ce83bf01c1d682fb4aa596e')
 
