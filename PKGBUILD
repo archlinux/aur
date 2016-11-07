@@ -1,14 +1,14 @@
-# NiceHash equihash miner. CPU xenocat solver build
+# NiceHash equihash miner. Tromp GPU/CUDAsolver build
 # Maintainer: Sebastian Stammler <echo c2ViQGhkZG4uc3BhY2UK|base64 -d>
-_pkgname=nheqminer-cpu
+_pkgname=nheqminer-cuda
 pkgname=${_pkgname}-git
 pkgver=0.4b.r1.ge2a73b4
-pkgrel=2
-pkgdesc="zcash equihash miner by NiceHash. Xenoncat CPU solver build."
+pkgrel=1
+pkgdesc="zcash equihash miner by NiceHash. Tromp GPU/CUDA solver build."
 arch=('x86_64')
 url="https://github.com/nicehash/nheqminer/"
 license=('MIT')
-depends=('boost')
+depends=('boost' 'cuda')
 makedepends=('git')
 optdepends=('zcash: zcash node and tools')
 source=("${pkgname}::git+https://github.com/nicehash/nheqminer.git")
@@ -22,11 +22,15 @@ pkgver() {
 _binary="nheqminer_cuda_tromp"
 _build_dir="Linux_cmake/${_binary}"
 build() {
-  cd "${pkgname}/cpu_xenoncat/Linux/asm/"
-  sh assemble.sh
-  cd "../../../${_build_dir}"
+  cd "${pkgname}/${_build_dir}"
   # Since we don't use make install, skip setting RPATH in the binary
-  cmake -DCMAKE_SKIP_BUILD_RPATH=true .
+  # and use gcc-5 for compilation. Add COMPUTE=30 etc if you need to change
+  # nvidia compute version of your card(s)
+  cmake . -DCMAKE_SKIP_BUILD_RPATH=true \
+    -DCMAKE_C_COMPILER=/usr/bin/gcc-5 \
+    -DCMAKE_CXX_COMPILER=/usr/bin/g++-5 \
+    -DCMAKE_RANLIB=/usr/bin/gcc-ranlib-5 \
+    -DCMAKE_AR=/usr/bin/gcc-ar-5
   make -j $(nproc)
 }
 
