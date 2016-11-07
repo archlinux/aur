@@ -1,7 +1,7 @@
 # Maintainer: Johannes Wienke <languitar@semipol.de>
 
 pkgname='rst-proto'
-pkgver=0.14.2.7ca78f8
+pkgver=0.15.0.0272643
 pkgrel=1
 pkgdesc='Robotics Systems Types library'
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ url='https://projects.cor-lab.org/projects/rst'
 license=('LGPL3')
 depends=('protobuf' 'python2' 'python2-protobuf' 'apache-ant' 'protobuf-java')
 makedepends=('git' 'cmake' 'rsc')
-source=("rst-proto::git+https://code.cor-lab.org/git/rst.git.proto#branch=0.14")
+source=("rst-proto::git+https://code.cor-lab.org/git/rst.git.proto#branch=0.15")
 md5sums=('SKIP')
 
 pkgver() {
