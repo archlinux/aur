@@ -68,11 +68,5 @@ package(){
 }
 
 md5sums=('086cd191a9a3e1adb45e71b65cc417fc'
-         'adca50403d39229a25c0acd1cac4ea20'
-         'acda29e5b46a0c9fade734a6a467b381')
-md5sums=('086cd191a9a3e1adb45e71b65cc417fc'
-         'adca50403d39229a25c0acd1cac4ea20'
-         '3a2525a728d944f0d2aeb978ec12ee13')
-md5sums=('086cd191a9a3e1adb45e71b65cc417fc'
          '1db645e5069f868b15fc9a74822e4e01'
          '3a2525a728d944f0d2aeb978ec12ee13')
