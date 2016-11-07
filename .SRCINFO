@@ -1,8 +1,8 @@
 pkgbase = pentbox
 	pkgdesc = A security suite that packs security and stability testing oriented tools for networks and systems.
 	pkgver = 1.5
-	pkgrel = 6
-	url = http://www.pentbox.net
+	pkgrel = 7
+	url = https://sourceforge.net/projects/pentbox/
 	arch = any
 	license = GPL3
 	depends = ruby
