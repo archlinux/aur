@@ -1,4 +1,3 @@
-# $Id$
 # Maintainer: kpcyrd <git@rxv.cc>
 
 pkgname=memry
