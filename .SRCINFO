@@ -14,7 +14,7 @@ pkgbase = gog-mini-metro
 	source = gog://gog_mini_metro_2.6.0.8.sh
 	source = gog-mini-metro.desktop
 	sha256sums = 72400b05da958bcce5b890c4a0f22c6f1786e4b4ebd5dda6619f19562f0ed65a
-	sha256sums = aa4eff65b8ae460ce64149745fbf9c7582b62dbd310bea644a0f5e9c8cdf1ca5
+	sha256sums = 85d3b80eacde486736e94c999d15a34b1d0d8581df5bf0a209a32c6bccf5b6ef
 
 pkgname = gog-mini-metro
 

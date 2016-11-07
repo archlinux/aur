@@ -13,7 +13,7 @@ makedepnds=('imagemagick')
 source=("gog://${pkgname//-/_}_${pkgver}.sh"
 "${pkgname}.desktop")
 sha256sums=('72400b05da958bcce5b890c4a0f22c6f1786e4b4ebd5dda6619f19562f0ed65a'
-'aa4eff65b8ae460ce64149745fbf9c7582b62dbd310bea644a0f5e9c8cdf1ca5')
+            '85d3b80eacde486736e94c999d15a34b1d0d8581df5bf0a209a32c6bccf5b6ef')
 
 # You need to download the gog.com installer file manually or with lgogdownloader.
 DLAGENTS+=("gog::/usr/bin/echo %u - This is is not a real URL, you need to download the GOG file manually to \"$PWD\" or setup a gog:// DLAGENT. Read this PKGBUILD for more information.")
