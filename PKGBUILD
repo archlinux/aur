@@ -3,7 +3,7 @@
 
 pkgname=memry
 pkgver=2.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="mem'ry, tar pipe curl"
 url='https://github.com/kpcyrd/memry'
 arch=('i686' 'x86_64')
