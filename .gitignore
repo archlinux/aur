@@ -1,0 +1,7 @@
+pkg/
+src/
+python-rtmidi-*.tar.bz2
+python-rtmidi-*.pkg.tar.xz
+python2-rtmidi-*.pkg.tar.xz
+python-rtmidi-*.src.tar.gz
+.AURINFO
