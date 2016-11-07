@@ -44,7 +44,8 @@ source=("airtime::git+https://github.com/sourcefabric/airtime.git"
         'airtime-media-monitor.service'
         'airtime-liquidsoap.service'
         'airtime-playout.service'
-        'airtime.tmpfiles.conf')
+        'airtime.tmpfiles.conf'
+	'httpd-airtime.conf')
 branch=2.5.x
 
 prepare() {
@@ -91,8 +92,7 @@ package() {
     install -d -m655 "${pkgdir}/etc/airtime/nginx"
 
     install -D -m 755 "installer/php/airtime.ini" "${pkgdir}/etc/airtime/php/airtime.ini"
-    install -D -m 755 "installer/apache/airtime-vhost" "${pkgdir}/etc/airtime/apache/apache.vhost.tpl"
-    install -D -m 755 "installer/apache/airtime-vhost-2.4" "${pkgdir}/etc/airtime/apache/apache24.vhost.tpl"
+    install -D -m 755 ../httpd-airtime.conf "${pkgdir}/etc/httpd/conf/extra/httpd-airtime.conf"
 
     install -D -m 755 ../airtime-media-monitor.service "${pkgdir}/usr/lib/systemd/system/airtime-media-monitor.service"
     install -D -m 755 ../airtime-liquidsoap.service "${pkgdir}/usr/lib/systemd/system/airtime-liquidsoap.service"
@@ -129,4 +129,5 @@ md5sums=('SKIP'
          '4e40e6b0f7fa9ec7eb8e5356bf817bd3'
          'fc4a319d43a96f0003f348c7ddd8aca2'
          '93f750480f7c49d72cdcdb10cd97c089'
-         'd9c15aaa7b1da14acc99e047f58aac66')
+         'd9c15aaa7b1da14acc99e047f58aac66'
+         'a9cdc83a195ad1b32118c8003027181b')
