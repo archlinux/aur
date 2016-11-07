@@ -1,7 +1,7 @@
 # Maintainer: Johannes Wienke <languitar@semipol.de>
 
 pkgname='rsb-cpp'
-pkgver=0.14.2.bd9c803
+pkgver=0.15.0.6bbb74e
 pkgrel=1
 pkgdesc='Robotics Service Bus C++ implementation'
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ license=('LGPL3')
 depends=('rsc' 'boost' 'protobuf')
 makedepends=('git' 'cmake' 'rsb-proto')
 checkdepends=('python2')
-source=("rsb-cpp::git+https://code.cor-lab.org/git/rsb.git.cpp#branch=0.14")
+source=("rsb-cpp::git+https://code.cor-lab.org/git/rsb.git.cpp#branch=0.15")
 md5sums=('SKIP')
 
 pkgver() {
