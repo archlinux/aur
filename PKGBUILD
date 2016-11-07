@@ -2,7 +2,7 @@
 # Contributor: Dave Reisner <dreisner@archlinux.org>
 
 pkgname=mkosi-git
-pkgver=r44.96e64b4
+pkgver=r108.692044d
 pkgrel=1
 pkgdesc="Build Legacy-Free OS Images"
 arch=('any')
