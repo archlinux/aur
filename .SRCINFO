@@ -1,0 +1,15 @@
+pkgbase = packpack
+	pkgdesc = Simple building of RPMs & Debian packages from git repos
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/packpack/packpack
+	arch = any
+	license = BSD
+	depends = coreutils
+	depends = bash
+	depends = docker
+	source = https://github.com/packpack/packpack/archive/1.0/packpack-1.0.tar.gz
+	sha1sums = d2f1f410e6dbe414d0f1964bcfb662123a974b03
+
+pkgname = packpack
+
