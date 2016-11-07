@@ -1,7 +1,7 @@
 # Maintainer: PenguinSnail
 
 pkgname=quick-back
-pkgver=2.0.1
+pkgver=2.1.0
 pkgrel=1
 pkgdesc="Quick, simple command line backup tool"
 arch=('any')
@@ -9,6 +9,7 @@ url="https://github.com/PenguinSnail/Quick-Back"
 license=('GPL3')
 depends=('rsync')
 makedepends=() 
+optdepends=('arch-install-scripts: Repair backed-up fstab *experimental')
 provides=('quick-back')
 conflicts=('quick-back-git')
 options=()
