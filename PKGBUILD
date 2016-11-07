@@ -5,7 +5,7 @@
 
 pkgbase='vte3-notification'
 pkgname=("${pkgbase}" 'vte-notification-common')
-pkgver=0.46.0
+pkgver=0.46.1
 pkgrel=1
 pkgdesc='Virtual Terminal Emulator widget for use with GTK3 with Fedora patches'
 arch=('i686' 'x86_64')
@@ -21,7 +21,7 @@ source=(
 	'add-zsh-notfication-support.patch'
 )
 sha256sums=(
-	'5f7122e7860eb2470d310fc63df91d3ee32bab233729c2dc181a0cbc9b3249d7'
+	'8800cf8bc259704a12ad1853fb0eb43bfe3857af15242e6fb9f2c3fd95b3f5c6'
 	'8143306bed082e7fe14c742675bd10e000d92fa9b135491ff121a5078b5a9ebe'
 	'150a151404ca565f70259044661b2ef5cda43142ca677e7da324614eef8cf45a'
 )
