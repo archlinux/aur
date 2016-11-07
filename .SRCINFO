@@ -1,0 +1,20 @@
+pkgbase = ruby-adn-reborn
+	pkgdesc = A Ruby library for App.net
+	pkgver = 0.5.0
+	pkgrel = 1
+	url = https://github.com/trorornmn/adn-reborn
+	arch = any
+	groups = pacgem
+	license = custom:ruby-adn-reborn
+	makedepends = ruby
+	makedepends = binutils
+	depends = ruby
+	depends = ruby-multipart-post>=1.2.0
+	depends = ruby-mime-types>=2.0
+	noextract = adn-reborn-0.5.0.gem
+	options = !emptydirs
+	source = https://rubygems.org/gems/adn-reborn-0.5.0.gem
+	sha256sums = 23c6bf17d4bf8013a86ab280f45fd1a259778f442741e33f41f67f85d9d94fea
+
+pkgname = ruby-adn-reborn
+
