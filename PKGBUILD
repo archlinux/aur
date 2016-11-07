@@ -1,7 +1,8 @@
 # Maintainer: yubimusubi
 pkgname=('3dstool-git')
 provides=('3dstool')
-pkgver=r73.344f109
+conflicts=('3dstool')
+pkgver=r90.4b22fbf
 pkgrel=1
 pkgdesc="An all-in-one tool for extracting/creating 3ds roms."
 arch=('i686' 'x86_64')
@@ -12,24 +13,15 @@ options=('!strip')
 
 source=(
     "$pkgname::git+https://github.com/dnasdw/3dstool.git"
-    '00-3dstool-share-ignore.patch'
 )
 
 sha256sums=(
     'SKIP'
-    '3d55e1bb49caa79648cd27aacba3793cfa38882cd740661560bc3d0d68da8d3d'
 )
 
 pkgver() {
     cd "$pkgname"
     echo "r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
-}
-
-prepare() {
-    cd "$pkgname"
-
-    # Move ignore file into /usr/share
-    patch -p1 < ../00-3dstool-share-ignore.patch
 }
 
 build() {
