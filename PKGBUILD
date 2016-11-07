@@ -1,6 +1,6 @@
 # Maintainer: Andrejs Mivreņiks <gim at fastmail dot fm>
 pkgname=hunspell-lv
-pkgver=1.2.0
+pkgver=1.3.0
 pkgrel=1
 pkgdesc='Latvian hunspell dictionary'
 arch=('any')
@@ -8,7 +8,7 @@ url='http://dict.dv.lv/download.php?prj=lv'
 license=('LGPL2')
 depends=('hunspell' 'hyphen')
 source=("http://dict.dv.lv/download/lv_LV-${pkgver}.zip")
-sha256sums=('67f515c303b45d188904eb0ce095fd4e3cb8534cc9e1ee5689df10a71b196d53')
+sha256sums=('2f8856f58f2dcc6153593c142cfc7db02697706a1d84c717cacec943fbe40a90')
 
 package() {
   install -Dm644 lv_LV.aff "$pkgdir/usr/share/hunspell/lv_LV.aff"
