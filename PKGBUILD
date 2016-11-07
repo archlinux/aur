@@ -23,7 +23,6 @@ depends=(
     'gambas3-gb-net'
     'gambas3-gb-net-curl'
     'gambas3-gb-qt5'
-    'gambas3-gb-qt5'
     'gambas3-gb-settings'
     'gambas3-gb-signal'
     'gambas3-gb-util-web'
