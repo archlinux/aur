@@ -1,0 +1,18 @@
+pkgbase = virtuality-qt5-git
+	pkgdesc = qt5 widget style
+	pkgver = r110.22ba423
+	pkgrel = 2
+	url = https://github.com/luebking/virtuality
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = cmake
+	makedepends = extra-cmake-modules
+	makedepends = automoc4
+	makedepends = git
+	source = git://github.com/luebking/virtuality.git
+	md5sums = SKIP
+
+pkgname = virtuality-qt5-git
+	depends = qt5-x11extras
+
