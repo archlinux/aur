@@ -1,0 +1,15 @@
+note() {
+    printf "${blue}==>${yellow} NOTE:${bold} $1${all_off}\n"
+}
+
+pre_upgrade() {
+    rm /opt/nxt/lib/*
+}
+
+post_install() {
+    note "Use 'sudo systemctl enable nxt' to automatically start Nxt at system launch"
+}
+
+post_upgrade() {
+    post_install
+}
