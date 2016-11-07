@@ -6,7 +6,7 @@ pkgdesc='A wrapper for i3lock that adds additional functionality'
 arch=('any')
 url='https://github.com/SammysHP/i3lockmore'
 license=('MIT')
-depends=('i3lock' 'imagemagick' 'xorg-xset' 'xorg-xrandr')
+depends=('i3lock' 'imagemagick' 'xorg-xset')
 source=("${pkgname%-git}::git+https://github.com/SammysHP/${pkgname%-git}.git")
 md5sums=('SKIP')
 
