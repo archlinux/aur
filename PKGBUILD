@@ -1,5 +1,5 @@
 pkgname=smartscope-beta
-pkgver=2016.1007.1609
+pkgver=2016.1105.0020.00
 pkgrel=1
 pkgdesc="SmartScope App (Beta version)"
 arch=('x86_64' 'i686')
