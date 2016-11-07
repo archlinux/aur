@@ -2,7 +2,7 @@
 # Maintainer: Xander van der Goot <xandervandergoot@gmail.com>
 
 pkgname=hledger-git
-pkgver=20160907
+pkgver=20161102
 pkgrel=1
 pkgdesc="The hledger command-line and web-based accounting tool"
 arch=('i686' 'x86_64')
@@ -23,8 +23,6 @@ pkgver() {
 
 package() {
   cd ${pkgname%-git}
-
-  mv stack-ghc8.yaml stack.yaml
 
   msg2 'Installing license...'
   install -Dm 644 LICENSE -t "$pkgdir/usr/share/licenses/hledger"
