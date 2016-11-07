@@ -3,7 +3,7 @@
 pkgname=coova-chilli-arch
 pkgver=1.3.2
 pkgrel=1
-pkgdesc='an open-source software access controller'
+pkgdesc='An open-source software access controller'
 arch=('i686' 'x86_64')
 url="https://coova.github.io/"
 license=('GPL')
