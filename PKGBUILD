@@ -5,7 +5,7 @@
 
 set -u
 pkgname='pmacct'
-pkgver='1.6.0'
+pkgver='1.6.1'
 pkgrel='1'
 pkgdesc='Accounting and aggregation toolsuite for IPv4 and IPv6 able to collect data through libpcap, Netlink/ULOG, Netflow and sFlow'
 arch=('i686' 'x86_64')
@@ -18,7 +18,7 @@ source=("${url}${pkgname}-${pkgver}.tar.gz"
         'nfacctd.rc.d' \
         'sfacctd.rc.d' \
         'uacctd.rc.d')
-sha256sums=('1b8d65032b21e152811b6a20ee38ac18ded7ee9ff27cd86870673f088db3c395'
+sha256sums=('eb332a6812d1e02134900a1d115a24f315de7c861a9b63093c1226753486cbe7'
             '504b31e1a3ccc6ab9fd56960800e6146cae69c479d1a87a5f491042c382e4384'
             '143e7b83d15df723e2668383efb108e458818b47fdd62a6201b159a5430379e7'
             '990915185774ccb6f167433f1f4a4c415dc60fcaaee2af9d9239dfafefcb8166'
