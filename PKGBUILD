@@ -2,7 +2,7 @@
 
 pkgname=libvlcpp-git
 epoch=1
-pkgver=0.268.ac76311
+pkgver=0.277.544bb60
 pkgrel=1
 pkgdesc="C++ bindings for libvlc"
 arch=('i686' 'x86_64')
