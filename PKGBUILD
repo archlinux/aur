@@ -1,10 +1,11 @@
-# Maintainer: Manuel Hüsers <manuel.huesers@uni-ol.de>
+# Maintainer: Davi da Silva Böger <dsboger@gmail.com>
+# Contributor: Manuel Hüsers <manuel.huesers@uni-ol.de>
 # Contributor: Fernando Fernandez <fernando@softwareperonista.com.ar>
 # Contributor: Jan de Groot <jgc@archlinux.org>
 
 _pkgname='gnome-terminal'
 pkgname="${_pkgname}-fedora"
-pkgver=3.22.0
+pkgver=3.22.1
 pkgrel=1
 pkgdesc='The GNOME Terminal Emulator with Fedora patches'
 arch=('i686' 'x86_64')
@@ -17,7 +18,7 @@ provides=("${_pkgname}=${pkgver}")
 conflicts=("${_pkgname}")
 options=('!emptydirs')
 groups=('gnome')
-install="${pkgname}.install"
+# Fedora patches: http://pkgs.fedoraproject.org/cgit/rpms/gnome-terminal.git/tree/
 source=(
 	"https://download.gnome.org/sources/${_pkgname}/${pkgver::4}/${_pkgname}-${pkgver}.tar.xz"
 	'0001-build-Don-t-treat-warnings-as-errors.patch'
@@ -25,7 +26,7 @@ source=(
 	'org.gnome.Terminal.gschema.override'
 )
 sha256sums=(
-	'97e6b1b4128ac133d8917b3940c71ddf9b89d189c5ac8402b1060126733993ed'
+	'b00752336eb22d6d9f10c863c166ac73dcbb2ce4b280abdc0c78337e261bb0d4'
 	'83c42ed513e374c181b23da4f9fce39e197c1e09ae328147b2b2bcdfbc4c99d7'
 	'd8f23d2e708e48744d6a730f9d695eec9f169d0e58313ff9a5b019aabcc9dbc0'
 	'5409b35d1940443d29d810de0560d3303eb74c009e661e8fbfa1030e5ffde92e'
