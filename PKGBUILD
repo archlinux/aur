@@ -3,6 +3,7 @@
 # Contributor: Tom Bu <tom.bu AT members.fsf.org>
 # Contributor: John Reese <john@noswap.com>
 # Contributor: Jordan J Klassen <forivall@gmail.com>
+# Contributor: George Rawlinson <george@rawlinson.net.nz>
 # Upstream URL: https://github.com/atom/atom
 
 pkgname=atom-editor-bin
@@ -12,12 +13,11 @@ pkgdesc="Chrome-based text editor from Github - Precompiled binary from official
 arch=('x86_64')
 url="https://github.com/atom/atom"
 license=('MIT')
-provides=('atom')
-conflicts=('atom')
+provides=('atom' 'apm')
 options=(!strip)
 depends=('git' 'gconf' 'gtk2' 'libnotify' 'libxtst' 'nss' 'python2' 'xdg-utils' 'desktop-file-utils' 'alsa-lib' 'libgnome-keyring')
 optdepends=('gvfs')
-conflicts=('atom-editor' 'atom-editor-git' 'atom-editor-git-tagged')
+conflicts=('atom' 'atom-editor' 'atom-editor-git' 'atom-editor-git-tagged' 'apm')
 install=$pkgname.install
 
 md5sums=('e94838794c58ac46752d3183f0c19bd3'
