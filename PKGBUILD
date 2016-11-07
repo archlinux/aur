@@ -1,7 +1,7 @@
 # Maintainer: Johannes Wienke <languitar@semipol.de>
 
 pkgname='rsb-tools-cl'
-pkgver=0.14.7.2f7d3f2
+pkgver=0.15.0.b596630
 pkgrel=1
 pkgdesc='Robotics Service Bus common lisp tools'
 arch=('i686' 'x86_64')
@@ -10,8 +10,8 @@ license=('LGPL3')
 depends=('spread-daemon')
 makedepends=('git' 'cmake' 'rsc' 'rsb-proto' 'sbcl')
 options=("!strip")
-source=("rsb-tools-cl::git+https://code.cor-lab.org/git/rsb.git.tools-cl#branch=0.14"
-        "rsb-cl::git+https://code.cor-lab.org/git/rsb.git.cl#branch=0.14"
+source=("rsb-tools-cl::git+https://code.cor-lab.org/git/rsb.git.tools-cl#branch=0.15"
+        "rsb-cl::git+https://code.cor-lab.org/git/rsb.git.cl#branch=0.15"
         "cl-protobuf::git+https://github.com/scymtym/cl-protobuf"
         "network.spread::git+https://github.com/scymtym/network.spread"
         "architecture.builder-protocol::git+https://github.com/scymtym/architecture.builder-protocol")
@@ -34,7 +34,7 @@ prepare() {
         curl -O http://beta.quicklisp.org/quicklisp.lisp
         sbcl --noinform --no-userinit --disable-debugger --load quicklisp.lisp --eval '(quicklisp-quickstart:install :path "'$(pwd)'/quicklisp")' --quit
     fi
-    echo "\"/usr/share/rsbprotocol0.14/\"" > "${srcdir}/rsb-cl/protocol-directory.sexp"
+    echo "\"/usr/share/rsbprotocol0.15/\"" > "${srcdir}/rsb-cl/protocol-directory.sexp"
 }
 
 build() {
