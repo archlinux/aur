@@ -1,11 +1,11 @@
-#Maintainer: M0Rf30
-#Contributor: kurych
-#Contributor: redfish
+# Maintainer: M0Rf30
+# Contributor: kurych
+# Contributor: redfish
+# Contributor: atommixz
 
 pkgname=i2pd
-_pkgname=i2pd
 pkgver=2.10.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Simplified C++ implementation of I2P client"
 arch=('i686' 'x86_64')
 url="https://github.com/PurpleI2P/i2pd"
@@ -27,8 +27,8 @@ build() {
 
 package(){
         _bin_dest=usr/bin
-        _conf_dest=etc/${_pkgname}
-        _home_dest=var/lib/${_pkgname}
+        _conf_dest=etc/${pkgname}
+        _home_dest=var/lib/${pkgname}
         _share_dest=usr/share
 
   install -Dm755 $srcdir/$pkgname-$pkgver/i2pd "$pkgdir/${_bin_dest}/i2pd"
@@ -68,5 +68,5 @@ package(){
 }
 
 md5sums=('086cd191a9a3e1adb45e71b65cc417fc'
-         '13c910900be4df3e0da11fc893f59a6f'
+         '25bf75261bc501b89b18b22392fefebd'
          'acda29e5b46a0c9fade734a6a467b381')

@@ -13,9 +13,7 @@ PIDFile=/run/i2pd/i2pd.pid
 #Restart=on-failure
 
 ### Use SIGINT for gracefull stop daemon.
-# i2pd stops accepting new tunnels and waits ~10 min while old ones do not die.
 KillSignal=SIGINT
-TimeoutStopSec=10m
 
 LimitNOFILE=8192
 PrivateDevices=yes
