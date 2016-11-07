@@ -1,13 +1,13 @@
 pkgbase = python-django-cors-headers
 	pkgdesc = Django application for handling the server headers required for Cross-Origin Resource Sharing (CORS)
-	pkgver = 1.2.2
+	pkgver = 1.3.0
 	pkgrel = 1
 	url = http://github.com/ottoyiu/django-cors-headers
 	arch = any
 	makedepends = python-setuptools
 	depends = python-django
-	source = https://github.com/ottoyiu/django-cors-headers/archive/1.2.2.tar.gz
-	md5sums = 2f9393a52fb8326f55fb0bc83f1b4ca9
+	source = https://github.com/ottoyiu/django-cors-headers/archive/1.3.0.tar.gz
+	md5sums = 7339efdf7e17306149993b037d72a6fb
 
 pkgname = python-django-cors-headers
 
