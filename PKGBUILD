@@ -4,7 +4,7 @@
 
 pkgname=nam
 pkgver=1.15
-pkgrel=5
+pkgrel=6
 pkgdesc="Tcl/TK based animation tool for viewing network simulation traces and real world packet traces"
 url="http://www.isi.edu/nsnam/nam/"
 license=('GPL')
