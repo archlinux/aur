@@ -1,7 +1,7 @@
 # Maintainer: Timofey Titovets <nefelim4ag@gmail.com>
 
 pkgname=leagueoflegends-git
-pkgver=4.b791517
+pkgver=5.32b8b8c
 pkgrel=1
 pkgdesc="League Of Legends: Install/Run wrapper"
 arch=('any')
@@ -10,6 +10,7 @@ license=('GPL3')
 depends=('wine-staging' 'winetricks' 'bash')
 source=("$pkgname"::'git://github.com/Nefelim4ag/League-Of-Legends.git#branch=master')
 md5sums=('SKIP')
+install=leagueoflegends-git.install
 
 pkgver() {
   cd ${pkgname}
