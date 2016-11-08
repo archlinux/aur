@@ -1,14 +1,14 @@
-From 4916c2a75905dfd628672e13e0913e1c2515637c Mon Sep 17 00:00:00 2001
+From 8c77fc6f55c450793e5bd3769dec0a62bb9b7955 Mon Sep 17 00:00:00 2001
 From: Ivan Shapovalov <intelfx@intelfx.name>
 Date: Sun, 23 Oct 2016 10:21:54 +0300
 Subject: [PATCH 2/5] Makefile: general fixes
 
 ---
- Makefile | 57 +++++++++++++++++++++++++++++----------------------------
- 1 file changed, 29 insertions(+), 28 deletions(-)
+ Makefile | 58 +++++++++++++++++++++++++++++-----------------------------
+ 1 file changed, 29 insertions(+), 29 deletions(-)
 
 diff --git a/Makefile b/Makefile
-index 387b221..6b707a9 100644
+index 5918515..6b707a9 100644
 --- a/Makefile
 +++ b/Makefile
 @@ -42,7 +42,7 @@ FOODB=$(PREFIX)/share/foomatic/db/source
@@ -223,10 +223,11 @@ index 387b221..6b707a9 100644
  endif
  
  install-hotplug-test:
-@@ -1040,7 +1040,8 @@ install-hotplug-osx:
+@@ -1040,8 +1040,8 @@ install-hotplug-osx:
  
  install-filter:
  	if [ "$(CUPS_SERVERBIN)" != "" ]; then \
+-	    $(INSTALL) -d $(CUPS_SERVERBIN)/filter; \
 -	    ln -sf $(BIN)/command2foo2lava-pjl $(CUPS_SERVERBIN)/filter/; \
 +	    install -d -m 755 $(CUPS_SERVERBIN)/filter; \
 +	    ln -sf ../../../bin/command2foo2lava-pjl $(CUPS_SERVERBIN)/filter/; \

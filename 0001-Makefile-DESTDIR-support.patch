@@ -1,4 +1,4 @@
-From 90b8910997b272afb346ceec050b6313fb91e054 Mon Sep 17 00:00:00 2001
+From adf8623ffb74f25ac0fff962946d11b1151fa469 Mon Sep 17 00:00:00 2001
 From: Ivan Shapovalov <intelfx@intelfx.name>
 Date: Sat, 22 Oct 2016 12:35:14 +0300
 Subject: [PATCH 1/5] Makefile: DESTDIR support
@@ -8,7 +8,7 @@ Subject: [PATCH 1/5] Makefile: DESTDIR support
  1 file changed, 14 insertions(+), 13 deletions(-)
 
 diff --git a/Makefile b/Makefile
-index 969cf6f..387b221 100644
+index b3bfb11..5918515 100644
 --- a/Makefile
 +++ b/Makefile
 @@ -38,7 +38,7 @@ INSTALL=install

@@ -1,4 +1,4 @@
-From 2fc12fd1f3abd8c098cad5b27a263016b5fdb86d Mon Sep 17 00:00:00 2001
+From 49c9fcca99fe276ddfca802d3595e08784187742 Mon Sep 17 00:00:00 2001
 From: Ivan Shapovalov <intelfx@intelfx.name>
 Date: Sun, 23 Oct 2016 10:18:08 +0300
 Subject: [PATCH 3/5] Rework firmware loading
