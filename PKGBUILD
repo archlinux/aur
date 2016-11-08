@@ -4,7 +4,7 @@
 pkgbase=linux-surfacepro3-rt
 _srcname=linux-4.8.6
 pkgver=4.8.6
-pkgrel=1.92
+pkgrel=2.0
 arch=('i686' 'x86_64')
 url="https://github.com/alyptik/linux-surfacepro3-rt"
 license=('GPL2')
@@ -19,6 +19,7 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         'https://raw.githubusercontent.com/alyptik/linux-surfacepro3-rt/github/bfs.patch'
         'https://raw.githubusercontent.com/alyptik/linux-surfacepro3-rt/github/bfs-fixes1.patch'
         'https://raw.githubusercontent.com/alyptik/linux-surfacepro3-rt/github/bfs-fixes2.patch'
+        'https://raw.githubusercontent.com/alyptik/linux-surfacepro3-rt/github/bfs-fixes3.patch'
         'https://raw.githubusercontent.com/alyptik/linux-surfacepro3-rt/github/block.patch'
         'https://raw.githubusercontent.com/alyptik/linux-surfacepro3-rt/github/init.patch'
         'https://raw.githubusercontent.com/alyptik/linux-surfacepro3-rt/github/kconfig.patch'
@@ -39,10 +40,11 @@ sha256sums=('74744e00420856cfc8049fa3b3a55e57a116994226a498ef56801bc9492df36b'
             'SKIP'
             'f0e1bc55ec0288e54e84cc35a9e16a9df93be3772fda58b654ece6260f12699a'
             'SKIP'
-            '48afded166076dc357bfb68640297e0337c70d6f72e05e1eb040e694de0ad7ed'
+            '242d32d0fe819852e74d93b8a044cf24a40a9474d6f00ca93a19aa98298dcefa'
             '51f91681b708149fe91e565f5c40811477428e2aa86f8726a20e0e7c55c5407c'
             'cec65d71766429be99bdc9da7897584fdc4bf4df3a4b26d228ff55a76ea3d8ea'
             '48d0d2e549ceddc18a59cc5f0d9325db5727ac82a9a4829c99a781ce979e1a6d'
+            '1a178463958f6b7f05a32c437f2674ecb25f2b1a0bf0cb2880d504efd8ba59c6'
             'ba5c7ee929108ac05800d7c8a7a28c28b2e04679ad33089ea53af15a955d5c5e'
             'ec655100ebc32d6699a258d7682953f928d1eb1042b895b04283d85ae57b80c1'
             'f479a5ca6abe4d50ca4c09e6e83a027369fcd3efff8d5ce60f0699d8fa47beb8'
@@ -54,7 +56,7 @@ sha256sums=('74744e00420856cfc8049fa3b3a55e57a116994226a498ef56801bc9492df36b'
             '52e7c895aeb505bc8d3b5321a346fcdbb749f8035cacc97a237c24c1f527adbc'
             '0fcd0b22fe9ec58ba41b81b463f68d619b6898a5c405fb26c85237a183240371'
             '577a3c4c211e6946fb8c1448d6a325861b41c8c8660203ae7d63a58f3af0d279'
-            '7551d9fe8016880bc97bfabdd3e84b86d0fe326fb365b5ae9512cc9bfddefe28'
+            '5c92eb5febe5bafcc76f19aa3d4aaf723cfbb465615cd68ecfaea54a2f773994'
             'f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99')
 
@@ -78,7 +80,7 @@ prepare() {
 
   ## Options which are currently buggy/broken: BFS/BFQ patches and unsupported BCache module
   if [ "$bfq" = 'y' ]; then patch -p1 -i "${srcdir}/bfq.patch"; fi
-  if [ "$bfs" = 'y' ]; then for i in bfq bfs bfs-fixes1 bfs-fixes2; do patch -p1 -i "${srcdir}/${i}.patch"; done; fi
+  if [ "$bfs" = 'y' ]; then for i in bfs bfs-fixes{1..3}; do patch -p1 -i "${srcdir}/${i}.patch"; done; fi
   if [ "$bcache" = 'y' ]; then
     sed -i '\%^diff --git a/drivers/md/bcache/Kconfig b/drivers/md/bcache/Kconfig$%,+11 d' "${srcdir}/patch-${pkgver}-rt2.patch"
     cp "${srcdir}/linux-${pkgver}/include/linux/rwsem.h" "${srcdir}/linux-${pkgver}/drivers/md/bcache/"
