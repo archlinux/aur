@@ -5,8 +5,8 @@
 pkgname=popcorntime-git
 _pkgname=popcorntime
 _gitname=popcorn-desktop
-pkgver=r5925.1e2f946
-pkgrel=2
+pkgver=r6157.5aabb4b
+pkgrel=1
 pkgdesc="Stream movies and TV shows from torrents"
 arch=('i686' 'x86_64')
 url="https://popcorntime.sh"
@@ -45,14 +45,6 @@ package() {
   install -dm755 "${pkgdir}/usr/share/${_pkgname}"
   install -dm755 "${pkgdir}/usr/bin"
 
-  # Program
-  install -Dm755 "${_bpath}/Popcorn-Time" "${pkgdir}/usr/share/${_pkgname}/"
-  install -Dm644 "${_bpath}/"{icudtl.dat,libffmpegsumo.so,nw.pak,package.json} \
-    "${pkgdir}/usr/share/${_pkgname}/"
-
-  # Directories
-  cp -a "${_bpath}/"{locales,node_modules,src} "${pkgdir}/usr/share/${_pkgname}/"
-
   # Link to program
   ln -s "/usr/share/${_pkgname}/Popcorn-Time" "${pkgdir}/usr/bin/${_pkgname}"
 
@@ -61,5 +53,7 @@ package() {
 
   # Icon
   install -Dm644 "${_bpath}/src/app/images/icon.png" "${pkgdir}/usr/share/icons/hicolor/256x256/apps/${_pkgname}.png"
-}
 
+  # Copy complete content of source archive to /usr/share/${_pkgname}/
+  cp -a "${_bpath}"/* "${pkgdir}/usr/share/${_pkgname}/"
+}

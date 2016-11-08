@@ -1,7 +1,7 @@
 pkgbase = popcorntime-git
 	pkgdesc = Stream movies and TV shows from torrents
-	pkgver = r5925.1e2f946
-	pkgrel = 2
+	pkgver = r6157.5aabb4b
+	pkgrel = 1
 	url = https://popcorntime.sh
 	arch = i686
 	arch = x86_64
