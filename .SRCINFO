@@ -1,0 +1,18 @@
+pkgbase = acc
+	pkgdesc = ACS script compiler for use with ZDoom and/or Hexen
+	pkgver = 1.55
+	pkgrel = 1
+	url = http://www.zdoom.org/
+	arch = i686
+	arch = x86_64
+	license = custom:EULA
+	depends = glibc
+	source = http://zdoom.org/files/utils/acc/acc155-src.zip
+	source = http://zdoom.org/files/utils/acc/acc155win.zip
+	source = http://www.doomworld.com/eternity/activision_eula.txt
+	sha256sums = 6483eb26016aeae95e9abb51d1b3a815400ac277d4e1013d269ac4342e2f11dc
+	sha256sums = 92a3815112d1a0b8334f9ed67a8a169ef788ea4c897177c0476a3eb772c48bd6
+	sha256sums = d1dd96235e883c638e202715039946fac58f2979e1f11cb2bbe2a24eefb5fe9a
+
+pkgname = acc
+
