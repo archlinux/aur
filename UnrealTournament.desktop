@@ -1,0 +1,77 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns='http://www.w3.org/1999/xhtml' xml:lang='en' lang='en'>
+<head>
+<title>aur.git - AUR Package Repositories</title>
+<meta name='generator' content='cgit '/>
+<meta name='robots' content='index, nofollow'/>
+<link rel='stylesheet' type='text/css' href='/css/cgit.css'/>
+<link rel='shortcut icon' href='/images/favicon.ico'/>
+<link rel='alternate' title='Atom feed' href='https://aur.archlinux.org/cgit/aur.git/atom/UnrealTournament.desktop?h=unreal-tournament-4' type='application/atom+xml'/>
+<link rel='vcs-git' href='https://aur.archlinux.org/unreal-tournament-4.git/' title='aur.git Git repository'/>
+</head>
+<body>
+		<div id="archnavbar" class="anb-aur">
+			<div id="archnavbarlogo"><h1><a href="/" title="Return to the main page">Arch Linux User Repository</a></h1></div>
+			<div id="archnavbarmenu">
+				<ul id="archnavbarlist">
+					<li id="anb-home"><a href="https://www.archlinux.org/" title="Arch news, packages, projects and more">Home</a></li>
+					<li id="anb-packages"><a href="https://www.archlinux.org/packages/" title="Arch Package Database">Packages</a></li>
+					<li id="anb-forums"><a href="https://bbs.archlinux.org/" title="Community forums">Forums</a></li>
+					<li id="anb-wiki"><a href="https://wiki.archlinux.org/" title="Community documentation">Wiki</a></li>
+					<li id="anb-bugs"><a href="https://bugs.archlinux.org/" title="Report and track bugs">Bugs</a></li>
+					<li id="anb-aur"><a href="/" title="Arch Linux User Repository">AUR</a></li>
+					<li id="anb-download"><a href="https://www.archlinux.org/download/" title="Get Arch Linux">Download</a></li>
+				</ul>
+			</div>
+		</div><!-- #archnavbar -->
+<div id='cgit'><table id='header'>
+<tr>
+<td class='main'>AUR : unreal-tournament-4.git</td></tr>
+<tr><td class='sub'>AUR Package Repositories | click <a href='/packages/unreal-tournament-4/'>here</a> to return to the package details page</td><td class='sub right'></td></tr></table>
+<table class='tabs'><tr><td>
+<a href='/cgit/aur.git/?h=unreal-tournament-4'>summary</a><a href='/cgit/aur.git/log/UnrealTournament.desktop?h=unreal-tournament-4'>log</a><a class='active' href='/cgit/aur.git/tree/UnrealTournament.desktop?h=unreal-tournament-4'>tree</a><a href='/cgit/aur.git/commit/UnrealTournament.desktop?h=unreal-tournament-4'>commit</a><a href='/cgit/aur.git/diff/UnrealTournament.desktop?h=unreal-tournament-4'>diff</a><a href='/cgit/aur.git/stats/UnrealTournament.desktop?h=unreal-tournament-4'>stats</a></td><td class='form'><form class='right' method='get' action='/cgit/aur.git/log/UnrealTournament.desktop'>
+<input type='hidden' name='h' value='unreal-tournament-4'/><select name='qt'>
+<option value='grep'>log msg</option>
+<option value='author'>author</option>
+<option value='committer'>committer</option>
+<option value='range'>range</option>
+</select>
+<input class='txt' type='text' size='10' name='q' value=''/>
+<input type='submit' value='search'/>
+</form>
+</td></tr></table>
+<div class='path'>path: <a href='/cgit/aur.git/tree/?h=unreal-tournament-4'>root</a>/<a href='/cgit/aur.git/tree/UnrealTournament.desktop?h=unreal-tournament-4'>UnrealTournament.desktop</a></div><div class='content'>blob: d73744d6584092ff86109e26803f0e0b9fa74a27 (<a href='/cgit/aur.git/plain/UnrealTournament.desktop?h=unreal-tournament-4'>plain</a>)
+<table summary='blob content' class='blob'>
+<tr><td class='linenumbers'><pre><a id='n1' href='#n1'>1</a>
+<a id='n2' href='#n2'>2</a>
+<a id='n3' href='#n3'>3</a>
+<a id='n4' href='#n4'>4</a>
+<a id='n5' href='#n5'>5</a>
+<a id='n6' href='#n6'>6</a>
+<a id='n7' href='#n7'>7</a>
+<a id='n8' href='#n8'>8</a>
+<a id='n9' href='#n9'>9</a>
+<a id='n10' href='#n10'>10</a>
+</pre></td>
+<td class='lines'><pre><code><span class="hl kwa">[Desktop Entry]</span>
+<span class="hl kwb">Type</span><span class="hl opt">=</span><span class="hl kwc">Application</span>
+<span class="hl kwb">Name</span><span class="hl opt">=</span><span class="hl kwc">Unreal Tournament</span>
+<span class="hl kwb">Comment</span><span class="hl opt">=</span><span class="hl kwc">A first-person shooter</span>
+<span class="hl kwb">Path</span><span class="hl opt">=</span><span class="hl kwc">/opt/unreal-tournament-4/Engine/Binaries/Linux/</span>
+<span class="hl kwb">Exec</span><span class="hl opt">=</span><span class="hl kwc">/opt/unreal-tournament-4/Engine/Binaries/Linux/UE4Game-Linux-Shipping UnrealTournament</span>
+<span class="hl kwb">Icon</span><span class="hl opt">=</span><span class="hl kwc">UnrealTournament</span>
+<span class="hl kwb">Terminal</span><span class="hl opt">=</span><span class="hl kwc">false</span>
+<span class="hl kwb">Categories</span><span class="hl opt">=</span><span class="hl kwc">Game;</span>
+
+</code></pre></td></tr></table>
+</div> <!-- class=content -->
+<div id="footer">
+	<p>
+		Copyright &copy; 2004-2014 aurweb Development Team &ndash;
+		<strong>AUR packages are user produced content. Any use of the provided files is at your own risk.</strong>
+	</p>
+</div>
+</div> <!-- id=cgit -->
+</body>
+</html>

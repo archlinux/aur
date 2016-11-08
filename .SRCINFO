@@ -1,0 +1,25 @@
+pkgbase = ut4-git
+	pkgdesc = A first-person shooter by Epic Games based on Unreal Engine 4. (git latest)
+	pkgver = r19168.c09ae43
+	pkgrel = 1
+	url = https://www.epicgames.com/unrealtournament/
+	arch = x86_64
+	license = custom:UnrealTournament
+	makedepends = clang
+	makedepends = mono
+	makedepends = dos2unix
+	makedepends = cmake
+	depends = icu
+	depends = xdg-user-dirs
+	depends = sdl2
+	depends = qt4
+	depends = python
+	options = !strip
+	options = staticlibs
+	source = ut4-git::git+https://github.com/EpicGames/UnrealTournament.git
+	source = UnrealTournament.desktop
+	md5sums = SKIP
+	md5sums = 3789cf2924c76c6cfc583c9244f15289
+
+pkgname = ut4-git
+
