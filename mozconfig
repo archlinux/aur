@@ -38,7 +38,7 @@ ac_add_options --with-system-libevent
 ac_add_options --with-system-libvpx
 ac_add_options --with-system-nspr
 ac_add_options --with-system-nss
-ac_add_options --with-system-icu
+#ac_add_options --with-system-icu # Segmentation fault with ICU 58.1 and FF 45.4.0
 ac_add_options --disable-gconf
 
 mk_add_options MOZ_OBJDIR=@TOPSRCDIR@/firefox-build-dir

@@ -84,12 +84,12 @@ diff -Naur firefox-45.0esr.bak/modules/libpref/init/all.js firefox-45.0esr/modul
 --- firefox-45.0esr.bak/modules/libpref/init/all.js	2016-03-13
 +++ firefox-45.0esr/modules/libpref/init/all.js	2016-03-13
 @@ -29,7 +29,7 @@
- 
+
  pref("general.config.obscure_value", 13); // for MCD .cfg files
- 
+
 -pref("general.warnOnAboutConfig", true);
 +pref("general.warnOnAboutConfig", false);
- 
+
  // maximum number of dated backups to keep at any time
  pref("browser.bookmarks.max_backups",       5);
 @@ -1117,7 +1117,7 @@
@@ -100,9 +100,27 @@ diff -Naur firefox-45.0esr.bak/modules/libpref/init/all.js firefox-45.0esr/modul
 +pref("privacy.trackingprotection.enabled",  true);
  // Enforce tracking protection in Private Browsing mode
  pref("privacy.trackingprotection.pbmode.enabled",  true);
- 
-@@ -4096,7 +4096,7 @@
- 
+
+@@ -3644,7 +3644,7 @@
+
+ // Middle-mouse handling
+ pref("middlemouse.paste", true);
+-pref("middlemouse.contentLoadURL", true);
++pref("middlemouse.contentLoadURL", false);
+ pref("middlemouse.openNewWindow", true);
+ pref("middlemouse.scrollbarPosition", true);
+
+@@ -3710,7 +3710,7 @@
+
+ // Middle-mouse handling
+ pref("middlemouse.paste", true);
+-pref("middlemouse.contentLoadURL", true);
++pref("middlemouse.contentLoadURL", false);
+ pref("middlemouse.openNewWindow", true);
+ pref("middlemouse.scrollbarPosition", true);
+
+@@ -4105,7 +4105,7 @@
+
  // Satchel (Form Manager) prefs
  pref("browser.formfill.debug",            false);
 -pref("browser.formfill.enable",           true);
