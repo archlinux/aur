@@ -1,68 +1,69 @@
-# Maintainer: Daniel Nagy <danielnagy at gmx de>
+# Maintainer: Peter Wu <peter@lekensteyn.nl>
+# Contributor: Daniel Nagy <danielnagy at gmx de>
 
 pkgname=wireshark-git
-pkgver=51933.b2689ab
+pkgver=2.3.0rc0+1430+g7531318
 pkgrel=1
 pkgdesc="A free network protocol analyzer for Unix/Linux. GIT version"
 arch=('i686' 'x86_64')
 license=('GPL2')
-depends=('gtk3' 'libpcap' 'gnutls' 'c-ares' 'e2fsprogs' 'lua' 'portaudio' 'geoip' 'libsmi'
-         'krb5' 'perl-parse-yapp' 'python2')
-makedepends=('git')
-url="http://www.wireshark.org/"
-sha1sums=('dd9b14967b1ab16d6bd75af4ea790df50a8e397e'
-          'd57aa736a9864a2ed518aec4f463f3bb30a5edd5'
-          'SKIP')
+depends=(
+        'c-ares'
+        'geoip'
+        'glib2'
+        'libpcap'
+        'lua52'
+
+        # wireshark-qt dependencies
+        'qt5-multimedia'
+        'qt5-svg'
+        'qt5-tools'
+        # wireshark-gtk (deprecated) depedencies
+        #'portaudio'
+        # shared between the GUI (for post-installation hook)
+        'desktop-file-utils'
+        'hicolor-icon-theme'
+
+        # optional dependencies for improved dissection or features
+        'gnutls'                # for SSL decryption using RSA keys
+        'krb5'
+        #'libsmi'
+        'nghttp2'               # for HTTP/2 dissector
+        'sbc'                   # Bluetooth audio codec
+        'snappy' 'lz4'          # for cql dissector
+
+        # extcap (sshdump, etc.)
+        'libssh'
+        )
+# perl-parse-yapp is only needed as build-time dependency if you are actually
+# going to regenerate pidl dissectors (unlikely for the majority of users).
+makedepends=('cmake' 'git' 'ninja' 'python')
+url="https://www.wireshark.org/"
+source=("git+https://code.wireshark.org/git/wireshark")
+sha256sums=('SKIP')
 replaces=('ethereal')
 provides=('wireshark')
-_gitmod='wireshark'
-source=("wireshark.desktop"
-		"wireshark.png"
-		"$_gitmod::git+https://code.wireshark.org/git/wireshark")
-conflicts=('wireshark-gtk')
-options=('strip' '!libtool')
+conflicts=('wireshark-common' 'wireshark-gtk' 'wireshark-qt' 'wireshark-cli')
 install=$pkgname.install
 
 
 pkgver() {
-    cd $srcdir/$_gitmod
-    printf "%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  cd "$srcdir/wireshark"
+  git describe --long --match=v\* | sed 's/^v//;s/-/+/g'
 }
 
 build() {
-    cd $srcdir/$_gitmod
-    ./autogen.sh
+  cd "$srcdir/wireshark"
+  mkdir -p build
+  cd build
 
-    mkdir $srcdir/build
-    cd $srcdir/build
-
-    /usr/lib/python2.7/Tools/scripts/reindent.py $srcdir/$_gitmod/tools/ncp2222.py
-
-    $srcdir/$_gitmod/configure \
-    --prefix=/usr \
-    --with-ssl \
-    --with-krb5 \
-    --with-zlib=yes \
-    --with-lua=/usr/include/ \
-    --with-portaudio \
-    --with-python=/usr/bin/python2 \
-    --enable-aircap \
-    LDFLAGS="-llua" \
-    CFLAGS="-Wno-error=old-style-definition -Wno-error=clobbered -Wno-error=unused-but-set-variable -fno-unit-at-a-time"
-
-    make ${MAKEFLAGS} PYTHON=/usr/bin/python2 
+  cmake -GNinja -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release ..
+  ninja
 }
 
 package() {
-    cd $srcdir/build
-    make ${MAKEFLAGS} DESTDIR=${pkgdir} install
-
-    install -Dm644 ${srcdir}/wireshark.png ${pkgdir}/usr/share/icons/wireshark.png
-    install -Dm644 ${srcdir}/wireshark.desktop ${pkgdir}/usr/share/applications/wireshark.desktop
-
-    cd $pkgdir/usr/lib/
-    ln -s libwsutil.so.0 libwsutil.so.3
-    ln -s libwiretap.so.0 libwiretap.so.3
+  cd "$srcdir/wireshark/build"
+  DESTDIR="${pkgdir}" ninja install
 }
 
 # vim:set ts=2 sw=2:
