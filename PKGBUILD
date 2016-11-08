@@ -1,7 +1,7 @@
 # Maintainer: Aaron Abbott <aabmass at gmail dot com>
 pkgname=mycli
-pkgver=1.8.0
-pkgrel=2
+pkgver=1.8.1
+pkgrel=1
 pkgdesc='CLI for MySQL Database. With auto-completion and syntax highlighting.'
 arch=('any')
 url="https://pypi.python.org/pypi/${pkgname}"
@@ -18,8 +18,8 @@ options=(!emptydirs)
 
 # source is broken on pypi for some reason since 1.7.0... hard code instead
 # source=("https://pypi.python.org/packages/source/m/${pkgname}/${pkgname}-${pkgver}.tar.gz")
-source=("https://pypi.python.org/packages/c7/12/782d85bd32dfa24a977dcc9a35b3cdd76b8cd33b58b78897f377d988f869/mycli-1.8.0.tar.gz")
-md5sums=('114ae038fb74e8d0ea7296d92a48eb0a')
+source=("https://pypi.python.org/packages/06/e4/748f932427af83fc9c7f3311e580476e9686c301630a3096b3e18f60a4d0/mycli-1.8.1.tar.gz")
+md5sums=('4484c59b0cd3f98e37868d158886490e')
 
 build() {
     cd "$srcdir/${pkgname}-${pkgver}"
