@@ -13,7 +13,7 @@
 pkgbase=lib32-mesa-git
 pkgname=('lib32-mesa-vdpau-git' 'lib32-mesa-vulkan-intel-git' 'lib32-mesa-vulkan-radeon-git' 'lib32-mesa-libgl-git' 'lib32-libva-mesa-driver-git' 'lib32-mesa-git')
 pkgdesc="an open-source implementation of the OpenGL specification, git version for multilib applications"
-pkgver=12.1.0_devel.85418.4d7d982
+pkgver=13.1.0_devel.86315.3fa10ff
 pkgrel=1
 arch=('x86_64')
 makedepends=('python2' 'lib32-libxml2' 'lib32-expat' 'lib32-libx11' 'glproto' 'lib32-libdrm>=2.4.66' 'dri2proto' 'dri3proto' 'presentproto'
@@ -223,9 +223,9 @@ package_lib32-mesa-git() {
 package_lib32-mesa-libgl-git() {
   pkgdesc="Mesa 3-D graphics library (32-bit)"
   depends=('lib32-mesa-git')
-  provides=("lib32-mesa-libgl=$(_mesaver)" "lib32-libgl=$(_mesaver)")
+  provides=("lib32-mesa-libgl=$(_mesaver)" "lib32-libgl=$(_mesaver)" 'lib32-libegl' 'lib32-libgles' )
   replaces=('lib32-mesa-libgl')
-  conflicts=('lib32-mesa-libgl')
+  conflicts=('lib32-mesa-libgl' 'lib32-libegl' 'lib32-libgles')
 
   install -m755 -d "${pkgdir}/usr/lib32"
 
