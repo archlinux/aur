@@ -6,7 +6,7 @@
 _pkgbase=nginx-mainline
 pkgbase=${_pkgbase}-addons
 pkgname=("${pkgbase}" "${_pkgbase}-full")
-pkgver=1.11.4
+pkgver=1.11.5
 pkgrel=1
 pkgdesc='Lightweight HTTP server and IMAP/POP3 proxy server, mainline release'
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
@@ -16,7 +16,7 @@ makedepends=('hardening-wrapper' 'geoip' 'leiningen' 'java-environment-openjdk>=
 source=($url/download/nginx-$pkgver.tar.gz
         service
         logrotate)
-md5sums=('92666d60410f429ddbdb10060369a480'
+md5sums=('db43f2b19746f6f47401c3afc3924dc6'
          'ce9a06bcaf66ec4a3c4eb59b636e0dfd'
          '3441ce77cdd1aab6f0ab7e212698a8a7')
 
@@ -135,8 +135,8 @@ package_nginx-mainline-addons() {
   sed -e 's|\<user\s\+\w\+;|user html;|g' \
     -e '44s|html|/usr/share/nginx/html|' \
     -e '54s|html|/usr/share/nginx/html|' \
-    -e '1iinclude modules/enabled/*.conf' \
-    -e '$i\ \ \ \ include sites/enabled/*.conf' \
+    -e '1iinclude modules/enabled/*.conf;' \
+    -e '$i\ \ \ \ include sites/enabled/*.conf;' \
     -i "$pkgdir"/etc/nginx/nginx.conf
 
   rm "$pkgdir"/etc/nginx/*.default
