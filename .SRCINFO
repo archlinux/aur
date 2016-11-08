@@ -1,17 +1,16 @@
 pkgbase = silentarmy
 	pkgdesc = GPU Zcash Equihash solver
-	pkgver = 3.0.1
-	pkgrel = 2
+	pkgver = 4
+	pkgrel = 1
 	url = https://github.com/mbevand/silentarmy
 	arch = i686
 	arch = x86_64
 	license = MIT
 	depends = libcl
-	depends = libsodium
 	depends = opencl-headers
-	depends = python
-	source = https://github.com/mbevand/silentarmy/archive/adea4e582a728438d6adaa4b4a41ef9645496062.tar.gz
-	sha256sums = 32d31aaa69a18a08e113154e0eb1daf9f0f48f389cc6c10cce13a33bf286bc67
+	depends = python>=3.3.0
+	source = https://github.com/mbevand/silentarmy/archive/v4.tar.gz
+	sha256sums = 0a0cdd272160d0a00c778b4ffaee9c82f41282bdcd18adc685f781b7dd090fc2
 
 pkgname = silentarmy
 
