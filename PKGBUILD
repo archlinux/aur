@@ -8,7 +8,7 @@ arch=('any')
 url="https://github.com/Nefelim4ag/League-Of-Legends"
 license=('GPL3')
 depends=('wine-staging' 'winetricks' 'bash')
-conflict=('leagueoflegends')
+conflicts=('leagueoflegends')
 source=("$pkgname"::'git://github.com/Nefelim4ag/League-Of-Legends.git#branch=master')
 md5sums=('SKIP')
 install=leagueoflegends-git.install
