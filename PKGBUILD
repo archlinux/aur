@@ -1,5 +1,5 @@
 pkgname=dlt-viewer
-pkgver=1.15
+pkgver=2.18.0
 pkgrel=1
 pkgdesc="Diagnostic Log and Trace client viewer"
 url="http://projects.genivi.org/diagnostic-log-trace/"
@@ -8,8 +8,9 @@ license=('GPLv2')
 depends=('qt5-base')
 makedepends=('qt5-base')
 optdepends=('xdg-utils')
-source=("git://git.projects.genivi.org/dlt-viewer.git")
-md5sums=('SKIP')
+_commit=c52fcd34b46a65780c3a43c2b6e7fe85f4385c79  # tags/v2.18.0^0
+source=("git://github.com/GENIVI/dlt-viewer.git#commit=$_commit")
+sha256sums=('SKIP')
 
 build() {
   cd "${srcdir}/${pkgname}"
