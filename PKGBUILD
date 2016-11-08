@@ -2,7 +2,7 @@
 
 pkgbase='vte3-terminix-git'
 pkgname=("${pkgbase}" 'vte-terminix-common-git')
-pkgver=0.46.1+1.3.5.r7.g8a24d49
+pkgver=0.46.1+1.3.5.r14.g4e7fec9
 _vtever=0.46.1
 pkgrel=1
 pkgdesc='Virtual Terminal Emulator widget for use with GTK3 with Fedora and Terminix patches'
@@ -22,7 +22,7 @@ source=(
 sha256sums=(
 	'8800cf8bc259704a12ad1853fb0eb43bfe3857af15242e6fb9f2c3fd95b3f5c6'
 	'SKIP'
-	'8143306bed082e7fe14c742675bd10e000d92fa9b135491ff121a5078b5a9ebe'
+	'9238ca155af79ec4f55f13b82981ea97745c26e3fcc87ab6917a1d41b4b9d852'
 	'150a151404ca565f70259044661b2ef5cda43142ca677e7da324614eef8cf45a'
 )
 
@@ -58,8 +58,8 @@ build() {
 
 package_vte3-terminix-git(){
 	depends=('gtk3' 'vte-terminix-common-git')
-	provides=("vte3=${_vtever}")
-	conflicts=('vte3')
+	provides=("vte3=${_vtever}" "vte3-notification=${_vtever}-2")
+	conflicts=('vte3' 'vte3-notification')
 	cd "vte-${_vtever}"
 	make DESTDIR="${pkgdir}" install
 
@@ -69,8 +69,8 @@ package_vte3-terminix-git(){
 package_vte-terminix-common-git() {
 	pkgdesc='Common files used by vte and vte3'
 	arch=('any')
-	provides=("vte-common=${_vtever}")
-	conflicts=('vte-common')
+	provides=("vte-common=${_vtever}" "vte-notification-common=${_vtever}-2")
+	conflicts=('vte-common' 'vte-notification-common')
 	cd "vte-${_vtever}"
 
 	install -Dm644 'src/vte.sh' "${pkgdir}/etc/profile.d/vte.sh"
