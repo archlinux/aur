@@ -1,35 +1,35 @@
-# Maintainer : Jamin Collins <jamin.collins@gmail.com>
+# Maintainer: fenuks
 
+_pkgname=gnoMint
 pkgname=gnomint
-pkgver=1.2.1
-pkgrel=3
-pkgdesc='A x509 Certification Authority management tool for GTK/Gnome'
-arch=('i686' 'x86_64')
-url="http://gnomint.sourceforge.net"
-license=('GPLv3')
-depends=('intltool>=0.23' 'sqlite3' 'libgnomeui' 'gnutls>=3' 'libtasn1' 'libgcrypt')
-makedepends=('patch' 'gnutls>=3')
-
-source=("http://downloads.sourceforge.net/project/gnomint/gnomint/${pkgver}/gnomint-${pkgver}.tar.gz"
-        "gnutls3.patch"
-        "configure.patch"
-        "Makefile.in.patch")
-
-md5sums=('f09f55abe094232fbea2a2d13ef600e6'
-         '4871f56b52bcaa732183c2989d74e362'
-         '2121d32289a051f9305e4ce938230dbf'
-         'a3daedfd564b282f07bb473e100a09b0')
-
-package() {
-    cd $srcdir/$pkgname-$pkgver
-    patch ./configure < $startdir/configure.patch || return 1
-    CFLAGS="-I/usr/gnutls2/include" LDFLAGS="-L/usr/gnutls2/lib" ./configure --prefix=/usr --sysconfdir=/etc
-    patch src/Makefile.in < $startdir/Makefile.in.patch || return 1
-    make || return 1
-    make DESTDIR=$pkgdir install
-}
+pkgver=1.3.0
+pkgrel=1
+pkgdesc="Certification Authority management made easy."
+arch=("i686" "x86_64")
+url="htt://gnomint.sf.net"
+license=("GPL3")
+depends=("gconf" "gtk2" "sqlite")
+optdepends=()
+makedepends=("autoconf")  
+conflicts=("${pkgname}")
+options=("!buildflags")
+# install=$pkgname.install
+source=("https://github.com/davefx/gnoMint/archive/1.3.0.tar.gz")
+md5sums=('a02c57c0bcc2d714b8034d264bc46afc')
 
 prepare() {
-    cd "$srcdir/$pkgname-$pkgver"
-    patch -Np1 -i $srcdir/gnutls3.patch
+    cd "${srcdir}/${_pkgname}-${pkgver}"
+    ./autogen.sh --prefix=/usr
+}
+
+build() {
+    cd "${srcdir}/${_pkgname}-${pkgver}"
+    make
+}
+
+package() {
+    cd "${srcdir}/${_pkgname}-${pkgver}"
+    make install DESTDIR="$pkgdir"
+    cd "${pkgdir}"
+    mv usr/etc .
 }
