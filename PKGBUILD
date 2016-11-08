@@ -7,7 +7,7 @@ pkgdesc="Open broadcast software for scheduling and station management."
 arch=('i686' 'x86_64')
 url="http://www.sourcefabric.org/en/airtime"
 license=('GPL3')
-depends=('php' 'php-gd' 'php-pear' 'zendframework' 'php-pgsql' 'php-apcu' 'php-apcu-bc'
+depends=('php56' 'php56-gd' 'php56-pear' 'zendframework' 'php56-pgsql' 'php56-apcu'
          'python2' 'python2-virtualenv' 'python2-pip'
          'python2-configobj' 'python2-anyjson' 'python2-amqplib'
          'python2-argparse' 'python2-configobj' 'python2-docopt'
@@ -85,9 +85,8 @@ package() {
     install -d -m777 "${pkgdir}/var/tmp/airtime"
 
     install -d -m655 "${pkgdir}/etc/airtime"
-    touch "${pkgdir}/etc/airtime/airtime.conf"
 
-    install -D -m644 "installer/php/airtime.ini" "${pkgdir}/etc/php/conf.d/airtime.ini"
+    install -D -m644 "installer/php/airtime.ini" "${pkgdir}/etc/php56/conf.d/airtime.ini"
     install -D -m644 ../httpd-airtime.conf "${pkgdir}/etc/httpd/conf/extra/httpd-airtime.conf"
 
     install -D -m644 ../airtime-media-monitor.service "${pkgdir}/usr/lib/systemd/system/airtime-media-monitor.service"
@@ -114,7 +113,6 @@ package() {
 msg2 "Cleaning..."
     rm -r "${pkgdir}/etc/init"
     rm -r "${pkgdir}/etc/init.d"
-    rm "${pkgdir}/usr/share/airtime/airtime_mvc/build/airtime.example.conf" 
 }
 
 pkgver() {
@@ -127,4 +125,4 @@ md5sums=('SKIP'
          'fc4a319d43a96f0003f348c7ddd8aca2'
          '93f750480f7c49d72cdcdb10cd97c089'
          'd9c15aaa7b1da14acc99e047f58aac66'
-         '4e9ffb41819885ee91896ef611cba781')
+         '577ff7ba8f6fd84bf9b989ea07cdabde')

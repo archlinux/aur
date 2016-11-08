@@ -2,7 +2,9 @@ post_install() {
 	if type -P systemd-tmpfiles &> /dev/null; then
     systemd-tmpfiles --create airtime.conf
   fi
-  echo ">>> In order to get Airtime working, here's what to do:"
+  echo ">>> In order to get Airtime working, here's what to do."
+  echo ">>> Please refer to Arch Linux wiki for php56 and httpd basic setup"
+  echo ""
   echo ">> In /etc/httpd/conf/httpd.conf"
   echo "> uncomment" 
   echo "LoadModule deflate_module modules/mod_deflate.so"
@@ -11,9 +13,9 @@ post_install() {
   echo "# Airtime"
   echo "Include conf/extra/httpd-airtime.conf"
   echo ""
-  echo ">> In /etc/php/php.ini"
+  echo ">> In /etc/php56/php.ini"
   echo "> enable the following modules:"
-  echo "bcmath pgsql"
+  echo "bcmath pgsql pdo_pgsql gd"
   echo ""
   echo ">> Start rabbitmq"
   echo "systemctl start rabbitmq"
