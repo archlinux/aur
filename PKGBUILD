@@ -2,7 +2,7 @@
 
 pkgname=i3-gaps
 _pkgsourcename=i3
-pkgver=4.12
+pkgver=4.13
 pkgrel=1
 pkgdesc='A fork of i3wm tiling window manager with more features, including gaps'
 arch=('i686' 'x86_64')
@@ -22,51 +22,33 @@ optdepends=('rxvt-unicode: The terminal emulator used in the default config.'
             'perl-json-xs: For i3-save-tree'
             'perl-anyevent-i3: For i3-save-tree')
 options=('docs' '!strip')
-source=("https://github.com/Airblader/i3/archive/${pkgver}.tar.gz"
-        'fix-out-of-tree-build.patch')
-sha1sums=('6e747e001b9c8b9667641cff63af943ab034aaf6' 'SKIP')
+source=("https://github.com/Airblader/i3/archive/${pkgver}.tar.gz")
+sha1sums=('49ea9c91137b658697d50da1548b5d4410c0b9da')
 
 build() {
   cd "${srcdir}/${_pkgsourcename}-${pkgver}"
 
-  # This can be removed with 4.13
-  patch -p1 -i "${srcdir}/fix-out-of-tree-build.patch"
+  autoreconf --force --install
 
-  make
-  make -C man
+  rm -rf build/
+  mkdir -p build && cd build/
+
+  ../configure \
+    --prefix=/usr \
+    --sysconfdir=/etc \
+    --disable-sanitizers
+
+  # See https://lists.archlinux.org/pipermail/arch-dev-public/2013-April/024776.html
+  make CPPFLAGS+="-U_FORTIFY_SOURCE"
 }
 
 package() {
   cd "${srcdir}/${_pkgsourcename}-${pkgver}"
+  cd build/
 
   make DESTDIR="${pkgdir}/" install
 
-  install -Dm644 man/i3.1 \
-    "${pkgdir}/usr/share/man/man1/i3.1"
-  install -Dm644 man/i3bar.1 \
-    "${pkgdir}/usr/share/man/man1/i3bar.1"
-  install -Dm644 man/i3-config-wizard.1 \
-    "${pkgdir}/usr/share/man/man1/i3-config-wizard.1"
-  install -Dm644 man/i3-input.1 \
-    "${pkgdir}/usr/share/man/man1/i3-input.1"
-  install -Dm644 man/i3-msg.1 \
-    "${pkgdir}/usr/share/man/man1/i3-msg.1"
-  install -Dm644 man/i3-migrate-config-to-v4.1 \
-    "${pkgdir}/usr/share/man/man1/i3-migrate-config-to-v4.1"
-  install -Dm644 man/i3-nagbar.1 \
-    "${pkgdir}/usr/share/man/man1/i3-nagbar.1"
-  install -Dm644 man/i3-dmenu-desktop.1 \
-    "${pkgdir}/usr/share/man/man1/i3-dmenu-desktop.1"
-  install -Dm644 man/i3-dump-log.1 \
-    "${pkgdir}/usr/share/man/man1/i3-dump-log.1"
-  install -Dm644 man/i3-sensible-editor.1 \
-    "${pkgdir}/usr/share/man/man1/i3-sensible-editor.1"
-  install -Dm644 man/i3-sensible-pager.1 \
-    "${pkgdir}/usr/share/man/man1/i3-sensible-pager.1"
-  install -Dm644 man/i3-sensible-terminal.1 \
-    "${pkgdir}/usr/share/man/man1/i3-sensible-terminal.1"
-
-  install -Dm644 LICENSE \
+  install -Dm644 ../LICENSE \
     "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
