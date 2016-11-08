@@ -1,7 +1,7 @@
 pkgname=shellex
 pkgdesc='zsh/urxvt based program launcher'
 pkgver=0.1
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 license=(BSD)
 depends=(
