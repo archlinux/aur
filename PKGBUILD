@@ -1,4 +1,5 @@
-# Maintainer: Myles English <myles at rockhead dot biz>
+# Maintainer: Andreas Bilke <abilke at cosy dot sbg dot ac dot at>
+# Contributor: Myles English <myles at rockhead dot biz>
 pkgname=slepc
 pkgver=3.7.3
 pkgrel=2
