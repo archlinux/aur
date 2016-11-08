@@ -1,7 +1,7 @@
 # Maintainer: Tomislav Ivek <tomislav.ivek@gmail.com>
 
 pkgname=('conan')
-pkgver=0.14.1
+pkgver=0.15.0
 pkgrel=1
 pkgdesc="A distributed, open source, C/C++ package manager."
 arch=('any')
@@ -19,7 +19,7 @@ depends=('python-pyjwt>=1.4.0' 'python-pyjwt<1.5.0'
          'python-six>=1.10.0'
          'python-bottle>=0.12.8' 'python-bottle<0.13')
 source=("https://github.com/conan-io/conan/archive/${pkgver}.tar.gz")
-sha512sums=('e60cc9ab52bdfed8c4148af24b8dfac5d17583f6dff9e956fc6a614f1a995473b873004bd762064ca42cfdacd3d7924bb0079c0ac09a140f1218b47c20172c91')
+sha512sums=('9ec341a1e33465970f3311a1248eb3841eb5d709e545cea5aeb2bc82f2c92afc2ad01cc6a6ccbdf0102e3d677c9fa72c2bd9f4aaebcd86c3789c584c362a996e')
 
 build() {
   cd "$srcdir/conan-$pkgver"
@@ -31,4 +31,6 @@ package() {
   python setup.py install --optimize=1 --root=${pkgdir}
   install -m755 -d "${pkgdir}/usr/share/licenses/conan"
   install -m644 LICENSE.md "${pkgdir}/usr/share/licenses/conan/"
+  install -m755 -d "${pkgdir}/usr/share/doc/conan"
+  install -m644 contributors.txt "${pkgdir}/usr/share/doc/conan/"
 }
