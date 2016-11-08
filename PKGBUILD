@@ -1,7 +1,7 @@
 # Maintainer: M0Rf30
 
 pkgname=airtime-git
-pkgver=12396.4940c73
+pkgver=2.5.2.1
 pkgrel=1
 pkgdesc="Open broadcast software for scheduling and station management."
 arch=('i686' 'x86_64')
@@ -38,7 +38,7 @@ backup=('etc/airtime/airtime.conf'
         'etc/logrotate.d/airtime-liquidsoap'
         'etc/logrotate.d/airtime-php')
 install=airtime.install
-source=("airtime::git+https://github.com/sourcefabric/airtime.git"
+source=("airtime::git+https://github.com/sourcefabric/airtime"
         'airtime-media-monitor.service'
         'airtime-liquidsoap.service'
         'airtime-playout.service'
@@ -86,12 +86,12 @@ package() {
 
     install -d -m655 "${pkgdir}/etc/airtime"
 
-    install -D -m 755 "installer/php/airtime.ini" "${pkgdir}/etc/php/conf.d/airtime.ini"
-    install -D -m 755 ../httpd-airtime.conf "${pkgdir}/etc/httpd/conf/extra/httpd-airtime.conf"
+    install -D -m644 "installer/php/airtime.ini" "${pkgdir}/etc/php/conf.d/airtime.ini"
+    install -D -m644 ../httpd-airtime.conf "${pkgdir}/etc/httpd/conf/extra/httpd-airtime.conf"
 
-    install -D -m 755 ../airtime-media-monitor.service "${pkgdir}/usr/lib/systemd/system/airtime-media-monitor.service"
-    install -D -m 755 ../airtime-liquidsoap.service "${pkgdir}/usr/lib/systemd/system/airtime-liquidsoap.service"
-    install -D -m 755 ../airtime-playout.service "${pkgdir}/usr/lib/systemd/system/airtime-playout.service"
+    install -D -m644 ../airtime-media-monitor.service "${pkgdir}/usr/lib/systemd/system/airtime-media-monitor.service"
+    install -D -m644 ../airtime-liquidsoap.service "${pkgdir}/usr/lib/systemd/system/airtime-liquidsoap.service"
+    install -D -m644 ../airtime-playout.service "${pkgdir}/usr/lib/systemd/system/airtime-playout.service"
 
     # python apps
     python2 "python_apps/std_err_override/setup.py" install \
@@ -113,6 +113,7 @@ package() {
 msg2 "Cleaning..."
     rm -r "${pkgdir}/etc/init"
     rm -r "${pkgdir}/etc/init.d"
+    rm "${pkgdir}/usr/share/airtime/airtime_mvc/build/airtime.example.conf"
 }
 
 pkgver() {
@@ -125,4 +126,4 @@ md5sums=('SKIP'
          'fc4a319d43a96f0003f348c7ddd8aca2'
          '93f750480f7c49d72cdcdb10cd97c089'
          'd9c15aaa7b1da14acc99e047f58aac66'
-         'a9cdc83a195ad1b32118c8003027181b')
+         '4e9ffb41819885ee91896ef611cba781')

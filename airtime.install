@@ -15,7 +15,20 @@ post_install() {
   echo "> enable the following modules:"
   echo "bcmath pgsql"
   echo ""
-  echo ">> Then start Apache, Postgresql and create an user according to Airtime Interface"
+  echo ">> Start rabbitmq"
+  echo "systemctl start rabbitmq"
+  echo ""
+  echo ">> Enable airtime user and vhost on rabbitmq"
+  echo "sudo -u rabbitmq rabbitmqctl add_user airtime airtime"
+  echo "sudo -u rabbitmq rabbitmqctl add_vhost /airtime"
+  echo "sudo -u rabbitmq rabbitmqctl set_permissions -p /airtime airtime ".*" ".*" ".*""
+  echo ""
+  echo ">> Start PostgreSql as described in Arch Linux Wiki and create an user for airtime"
+  echo ""
+  echo ">> Start Apache"
+  echo "systemctl start httpd"
+  echo ""
+  echo "Follow the steps at http://127.0.0.1:80"
 }
 
 post_upgrade() {
