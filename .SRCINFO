@@ -19,14 +19,14 @@ pkgbase = rxvt-unicode-wcwidthcallback
 	source = urxvt-tabbed.desktop
 	source = line-spacing-fix.patch
 	source = https://gist.githubusercontent.com/alexoj/df5bae7a4825cb596581/raw/75a1e75c2ae1ec5c0db68a29f8a6821e9e3d87a5/sgr-mouse-mode.patch
-	source = wcwidthcallback.patch::https://github.com/exg/rxvt-unicode/compare/master...blueyed:bea43cd
+	source = wcwidthcallback.patch
 	sha1sums = e575b869782fbfed955f84f48b204ec888d91ba1
 	sha1sums = b5a4507f85ebb7bac589db2e07d9bc40106720d9
 	sha1sums = 62c4ffecfce6967def394dd4d418b68652372ea2
 	sha1sums = cd204d608d114d39c80331efe0af0231ad6b7e18
 	sha1sums = b7fde1c46af45e831828738874f14b092b1e795f
 	sha1sums = dfbc8729c545105eff21e20ef3a4a3841a68a192
-	sha1sums = 72eff59ec1ba391107be3dc6373fb953ece9a193
+	sha1sums = 1c138cb00670bbac7ef918d5f0050e17792bcbfb
 
 pkgname = rxvt-unicode-wcwidthcallback
 

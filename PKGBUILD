@@ -33,15 +33,15 @@ source=(http://dist.schmorp.de/rxvt-unicode/$_pkgname-$pkgver.tar.bz2
         'urxvt-tabbed.desktop'
         'line-spacing-fix.patch'
         'https://gist.githubusercontent.com/alexoj/df5bae7a4825cb596581/raw/75a1e75c2ae1ec5c0db68a29f8a6821e9e3d87a5/sgr-mouse-mode.patch'
-        # https://github.com/exg/rxvt-unicode/compare/master...blueyed:wcwidth-hack
-        'wcwidthcallback.patch::https://github.com/exg/rxvt-unicode/compare/master...blueyed:bea43cd')
+        # https://github.com/exg/rxvt-unicode/compare/master...blueyed:wcwidth-hack.diff
+        'wcwidthcallback.patch')
 sha1sums=('e575b869782fbfed955f84f48b204ec888d91ba1'
           'b5a4507f85ebb7bac589db2e07d9bc40106720d9'
           '62c4ffecfce6967def394dd4d418b68652372ea2'
           'cd204d608d114d39c80331efe0af0231ad6b7e18'
           'b7fde1c46af45e831828738874f14b092b1e795f'
           'dfbc8729c545105eff21e20ef3a4a3841a68a192'
-          'ea41427169d4438b5e443e3a2d6c958124df66d9')
+          '1c138cb00670bbac7ef918d5f0050e17792bcbfb')
 
 prepare() {
   cd $_pkgname-$pkgver

@@ -1,0 +1,1081 @@
+diff --git a/README.md b/README.md
+new file mode 100644
+index 0000000..02243e9
+--- /dev/null
++++ b/README.md
+@@ -0,0 +1,100 @@
++# Modified rxvt-unicode to get widths of glyphs from the font itself
++
++This is an experimental/modified version of rxvt-unicode to fix issues with
++wide glyphs, which normally end up being displayed as rectangular or square
++boxes (depending on what wcwidth(3) returns).  This is the same symbol that
++rxvt-unicode uses when a glyph/character is not provided by any font, but in
++this case it is normally considered to be too wide.
++
++## The problem with wcwidth(3)
++
++`wcwidth` is typically used to get the columns needed for wide characters, but
++there are ambigious regions in the Unicode standard, and while Unicode 9 fixes
++this for Emojis, there are also private use areas, where the width is
++undefined, and really depends on the font you are using (e.g. FontAwesome or
++powerline-extra-symbols, which has glyphs that are 4 cells wide).
++
++## The approach
++
++With this patch rxvt-unicode asks the font about the actual width (in
++`rxvt_term::scr_add_lines`, via `rxvt_term::rxvt_wcwidth` and
++`rxvt_font_xft::get_wcwidth`).
++
++rxvtwcwidth.so is then used to override/provide `wcwidth` and `wcswidth` for
++client programs (via `LD_PRELOAD`), and asks rxvt-unicode through a Unix
++socket.
++
++There is caching in place in both the shared library and
++`rxvt_term::rxvt_wcwidth`.  TODO: This needs to be cleaned up / improved.
++
++## Installation
++
++There is no (working) `configure` switch to enable/disable it yet, so you can
++do the normal `./configure`, e.g.
++
++    ./configure --enable-unicode3 --enable-256-color --disable-smart-resize
++
++There is however `--enable-debug-wcwidth`, which will output debugging
++information to stderr, from where rxvt-unicode was started from.  It is
++recommended to enable it to get a feeling about what is going on.
++
++`--enable-wcwidthpreload` can be used to automatically set `LD_PRELOAD` for the
++rxvt-unicode client.
++
++See README.configure for the general/other options.
++
++A PKGBUILD for Arch is available at:
++https://github.com/blueyed/PKGBUILD-rxvt-unicode-wcwidthcallback
++
++### Setup
++
++rxvt-unicode will then already use the improved character width handling, but
++to fully enable it, you have to set `LD_PRELOAD` (depending on where you
++installed rxvt-unicode):
++
++    export LD_PRELOAD=/usr/local/lib/urxvt/rxvtwcwidth.so
++
++This can be enabled to be done automatically through the
++`--enable-wcwidthpreload` `configure` option, but you might want to enable it
++manually for testing purposes / more control.
++
++The `RXVT_WCWIDTH_SOCKET` environment variable is used from the
++`rxvtwcwidth.so` to connect to the socket.
++(Un)setting it will automatically disable/enable the callback.
++
++## Application notes
++
++### (Neo)Vim
++
++Vim/Neovim uses its own internal functions, and you have to define
++`USE_WCHAR_FUNCTIONS` when building them to enable the wcwidth callback.
++However, it will work better already without it: the wide glyphs get displayed,
++and will even cover 2 cells when followed by a space.
++
++## History
++
++I have initially used another method myself for a while, which required to
++have whitespace after wide glyphs, but it caused a crash for some people.
++Instead of fixing what I could not reproduce myself, I have created this.
++
++References:
++ - http://lists.schmorp.de/pipermail/rxvt-unicode/2014q4/002042.html
++ - https://github.com/blueyed/rxvt-unicode/compare/display-wide-glyphs
++
++## TODO
++ - consider using AF_INET also?!  If staying with AF_UNIX, it could require
++   urxvtd/urxvtc and use its RXVT_SOCKET probably?!
++ - currently only Xft fonts are handled.  I don't know if it makes sense for
++   others after all?!
++ - The code needs to be reviewed to ensure that there is no performance
++   regression, especially when not using the mechanism at all.
++ - Improve detection of our callback being used, i.e. the shell has used it,
++   but the program in it has not.  This gets done in a rudimentary way in
++   `rxvt_term::scr_add_lines` already; both for the internal width, and when
++   NOCHAR is being replaced (e.g. Vim writing the Space after a wide glyph).
++   Also when using tmux, you might attach a client where the server has not
++   loaded it.
++ - Handle chars carefully where the system wcwidth and rxvt-unicode's
++   get_wcwidth disagree.
++ - Can /etc/ld.so.conf.d or another method be used instead of LD_PRELOAD?!
++ - Wrap code with `#ifdef ENABLE_WCWIDTHCALLBACK`
+diff --git a/config.h.in b/config.h.in
+index 914d606..5915a9e 100644
+--- a/config.h.in
++++ b/config.h.in
+@@ -1,5 +1,8 @@
+ /* config.h.in.  Generated from configure.ac by autoheader.  */
+ 
++/* Enable debugging for wcwidthcallback */
++#undef DEBUG_WCWIDTH
++
+ /* Define if you want 8 bit control sequences */
+ #undef EIGHT_BIT_CONTROLS
+ 
+@@ -412,6 +415,9 @@
+ /* Define if you want to have utmp/utmpx support */
+ #undef UTMP_SUPPORT
+ 
++/* Enable adding LD_PRELOAD for wcwidthcallback */
++#undef WCWIDTH_ADDPRELOAD
++
+ /* Define if you want to have wtmp support when utmp/utmpx is enabled */
+ #undef WTMP_SUPPORT
+ 
+diff --git a/configure b/configure
+index 3e3f78b..49db7d5 100755
+--- a/configure
++++ b/configure
+@@ -725,6 +725,8 @@ enable_rxvt_scroll
+ enable_next_scroll
+ enable_xterm_scroll
+ enable_perl
++enable_wcwidthpreload
++enable_debug_wcwidth
+ with_codesets
+ enable_xim
+ enable_backspace_key
+@@ -1398,6 +1400,8 @@ Optional Features:
+   --enable-next-scroll    enable NeXT style scrollbar
+   --enable-xterm-scroll   enable Xterm style scrollbar
+   --enable-perl           enable embedded perl interpreter
++  --enable-wcwidthpreload enable adding LD_PRELOAD for wcwidthcallback
++  --enable-debug-wcwidth  enable debugging for wcwidthcallback
+   --enable-xim            XIM (X Input Method) protocol support
+   --disable-backspace-key disable handling of the backspace key
+   --disable-delete-key    disable handling of the delete key
+@@ -4749,6 +4753,7 @@ support_8bitctrls=no
+ support_iso14755=yes
+ support_styles=yes
+ support_perl=yes
++# support_wcwidthcallback=yes
+ codesets=all
+ 
+ 
+@@ -4781,6 +4786,7 @@ if test "${enable_everything+set}" = set; then :
+        support_iso14755=no
+        support_styles=no
+        support_perl=no
++       # support_wcwidthcallback=no
+        codesets=
+     fi
+     if test x$enableval = xyes; then
+@@ -4809,6 +4815,7 @@ if test "${enable_everything+set}" = set; then :
+        support_iso14755=yes
+        support_styles=yes
+        support_perl=yes
++       # support_wcwidthcallback=yes
+        codesets=all
+     fi
+ 
+@@ -4973,6 +4980,41 @@ if test "${enable_perl+set}" = set; then :
+ fi
+ 
+ 
++# TODO
++# AC_ARG_ENABLE(wcwidthcallback,
++#   [  --enable-wcwidthcallback enable wcwidth callback],
++#   [if test x$enableval = xyes -o x$enableval = xno; then
++#     support_wcwidthcallback=$enableval
++#   fi])
++
++support_wcwidthpreload=no
++# Check whether --enable-wcwidthpreload was given.
++if test "${enable_wcwidthpreload+set}" = set; then :
++  enableval=$enable_wcwidthpreload; if test x$enableval = xyes; then
++    support_wcwidthpreload=yes
++  fi
++fi
++
++if test x$support_wcwidthpreload = xyes; then
++
++$as_echo "#define WCWIDTH_ADDPRELOAD 1" >>confdefs.h
++
++fi
++
++support_debugwcwidth=no
++# Check whether --enable-debug-wcwidth was given.
++if test "${enable_debug_wcwidth+set}" = set; then :
++  enableval=$enable_debug_wcwidth; if test x$enableval = xyes; then
++    support_debugwcwidth=yes
++  fi
++fi
++
++if test x$support_debugwcwidth = xyes; then
++
++$as_echo "#define DEBUG_WCWIDTH 1" >>confdefs.h
++
++fi
++
+ 
+ # Check whether --with-codesets was given.
+ if test "${with_codesets+set}" = set; then :
+@@ -7818,6 +7860,10 @@ if test x$support_combining = xyes; then
+ $as_echo "#define ENABLE_COMBINING 1" >>confdefs.h
+ 
+ fi
++# TODO: ifdefs
++# if test x$support_wcwidthcallback = xyes; then
++#   AC_DEFINE(ENABLE_WCWIDTHCALLBACK, 1, Define if you want to use the wcwidth callback)
++# fi
+ if test x$codesets = xall; then
+   codesets=jp,jp-ext,kr,zh,zh-ext
+ fi
+diff --git a/configure.ac b/configure.ac
+index 0da3b59..14091de 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -97,6 +97,7 @@ support_8bitctrls=no
+ support_iso14755=yes
+ support_styles=yes
+ support_perl=yes
++# support_wcwidthcallback=yes
+ codesets=all
+ 
+ dnl# --------------------------------------------------------------------------
+@@ -133,6 +134,7 @@ AC_ARG_ENABLE(everything,
+        support_iso14755=no
+        support_styles=no
+        support_perl=no
++       # support_wcwidthcallback=no
+        codesets=
+     fi
+     if test x$enableval = xyes; then
+@@ -161,6 +163,7 @@ AC_ARG_ENABLE(everything,
+        support_iso14755=yes
+        support_styles=yes
+        support_perl=yes
++       # support_wcwidthcallback=yes
+        codesets=all
+     fi
+   ])
+@@ -273,6 +276,33 @@ AC_ARG_ENABLE(perl,
+     support_perl=$enableval
+   fi])
+ 
++# TODO
++# AC_ARG_ENABLE(wcwidthcallback,
++#   [  --enable-wcwidthcallback enable wcwidth callback],
++#   [if test x$enableval = xyes -o x$enableval = xno; then
++#     support_wcwidthcallback=$enableval
++#   fi])
++
++support_wcwidthpreload=no
++AC_ARG_ENABLE(wcwidthpreload,
++  [  --enable-wcwidthpreload enable adding LD_PRELOAD for wcwidthcallback],
++  [if test x$enableval = xyes; then
++    support_wcwidthpreload=yes
++  fi])
++if test x$support_wcwidthpreload = xyes; then
++  AC_DEFINE(WCWIDTH_ADDPRELOAD, 1, Enable adding LD_PRELOAD for wcwidthcallback)
++fi
++
++support_debugwcwidth=no
++AC_ARG_ENABLE(debug-wcwidth,
++  [  --enable-debug-wcwidth  enable debugging for wcwidthcallback],
++  [if test x$enableval = xyes; then
++    support_debugwcwidth=yes
++  fi])
++if test x$support_debugwcwidth = xyes; then
++  AC_DEFINE(DEBUG_WCWIDTH, 1, Enable debugging for wcwidthcallback)
++fi
++
+ AC_ARG_WITH(codesets,
+   [  --with-codesets=CS,...  compile in additional codesets (jp,jp_ext,kr,zh,zh_ext,all)],
+   [codesets="$withval"])
+@@ -700,6 +730,10 @@ fi
+ if test x$support_combining = xyes; then
+   AC_DEFINE(ENABLE_COMBINING, 1, Define if you want to automatically compose combining characters)
+ fi
++# TODO: ifdefs
++# if test x$support_wcwidthcallback = xyes; then
++#   AC_DEFINE(ENABLE_WCWIDTHCALLBACK, 1, Define if you want to use the wcwidth callback)
++# fi
+ if test x$codesets = xall; then
+   codesets=jp,jp-ext,kr,zh,zh-ext
+ fi
+diff --git a/src/Makefile.in b/src/Makefile.in
+index 18acb39..320d422 100644
+--- a/src/Makefile.in
++++ b/src/Makefile.in
+@@ -20,7 +20,8 @@ CXXFLAGS = @CXXFLAGS@
+ CPPFLAGS = @CPPFLAGS@
+ LDFLAGS = @LDFLAGS@
+ DEFS = @DEFS@
+-LIBS = @LIBS@
++# XXX: -lstdc for std::map (probably not necessary after all, when using another cache method)
++LIBS = -lstdc++ @LIBS@
+ XINC = @X_CFLAGS@ @PIXBUF_CFLAGS@ @STARTUP_NOTIFICATION_CFLAGS@
+ XLIB = @X_LIBS@ -lX11 @X_EXTRA_LIBS@ @PIXBUF_LIBS@ @STARTUP_NOTIFICATION_LIBS@
+ COMPILE = $(CXX) -I.. -I$(srcdir) -I. -I$(srcdir)/../libev -I$(srcdir)/../libptytty/src $(DEFS) $(CPPFLAGS) $(CXXFLAGS) $(XINC)
+@@ -47,6 +48,7 @@ COMMON_DAEMON = rxvtdaemon.o
+ RXVT_BINNAME=$(DESTDIR)$(bindir)/$(RXVTNAME)$(EXEEXT)
+ RXVTC_BINNAME=$(DESTDIR)$(bindir)/$(RXVTNAME)c$(EXEEXT)
+ RXVTD_BINNAME=$(DESTDIR)$(bindir)/$(RXVTNAME)d$(EXEEXT)
++RXVTWCWIDTH_LIBNAME=$(DESTDIR)$(libdir)/urxvt/rxvtwcwidth.so
+ 
+ #
+ # Distribution variables
+@@ -63,7 +65,7 @@ RXVTD_BINNAME=$(DESTDIR)$(bindir)/$(RXVTNAME)d$(EXEEXT)
+ 
+ all: allbin
+ 
+-rxvt: rxvt.o $(COMMON)
++rxvt: rxvt.o rxvtwcwidth.so $(COMMON)
+ 	$(LINK) -o $@ rxvt.o $(COMMON) $(LIBS) $(XLIB) $(PERLLIB)
+ 
+ rxvtd: rxvtd.o $(COMMON) $(COMMON_DAEMON)
+@@ -130,7 +132,11 @@ install-bin: allbin
+ 	$(INSTALL_PROGRAM) rxvtc $(RXVTC_BINNAME)
+ 	$(INSTALL_PROGRAM) rxvtd $(RXVTD_BINNAME)
+ 
+-install: install-bin install-perl
++install-wcwidth: rxvtwcwidth.so
++	$(INSTALL) -d $(dir $(RXVTWCWIDTH_LIBNAME))
++	$(INSTALL_DATA) $< $(RXVTWCWIDTH_LIBNAME)
++
++install: install-bin install-perl install-wcwidth
+ 
+ perlxsi.c: Makefile
+ 	$(PERL) -MExtUtils::Embed -e xsinit -- -std urxvt
+@@ -141,6 +147,15 @@ rxvtperl.C: rxvtperl.xs iom_perl.h iom_perl.xs typemap typemap.iom
+ rxvtperl.o: rxvtperl.C perlxsi.c
+ 	$(COMPILE) $(PERLFLAGS) -DLIBDIR="\"$(libdir)/urxvt\"" -c $<
+ 
++init.o: init.C
++	$(COMPILE) -DLIBDIR="\"$(libdir)/urxvt\"" -c $<
++
++# TODO: verify/check options!
++# -fPIC is required.
++# Others? -frtti -ldl -lrt -shared -rdynamic
++rxvtwcwidth.so: rxvtwcwidth.C
++	$(COMPILE) -fPIC -ldl -shared -o $@ $<
++
+ depend:
+ 	makedepend -f Makefile.in -I. -I.. -I../libptytty/src -I../libev -Y *.C *.xs >/dev/null 2>&1
+ 
+@@ -289,3 +304,4 @@ rxvtperl.o: ../libptytty/src/estl.h emman.h rxvtfont.h rxvttoolkit.h
+ rxvtperl.o: callback.h rxvtimg.h scrollbar.h ../libptytty/src/libptytty.h
+ rxvtperl.o: rxvtperl.h hookinc.h rsinc.h optinc.h keyboard.h perlxsi.c
+ rxvtperl.o: iom_perl.h
++rxvtwcwidth.so: ../config.h rxvt.h
+diff --git a/src/command.C b/src/command.C
+index 19e4fcc..7681130 100644
+--- a/src/command.C
++++ b/src/command.C
+@@ -62,6 +62,10 @@
+ # include <time.h>
+ #endif
+ 
++// TODO: ifdef
++#include <sys/socket.h>
++#include <sys/un.h>
++
+ /*----------------------------------------------------------------------*/
+ 
+ #define IS_CONTROL(ch) !((ch) & 0xffffff60UL)
+@@ -1368,6 +1372,53 @@ rxvt_term::mouse_report (XButtonEvent &ev)
+               32 + y);
+ }
+ 
++void
++rxvt_term::wcwidth_cb (ev::io &w, int revents)
++{
++  int data_fd = accept(wcwidth_socket_fd, NULL, NULL);
++  if (data_fd == -1) {
++    perror("wcwidth_cb: accept");
++    return;
++  }
++  wcwidth_reply_ev.start(data_fd, ev::READ);
++}
++
++
++void
++rxvt_term::wcwidth_reply_cb (ev::io &w, int revents)
++{
++  if (!wcwidth_last_request)
++    wcwidth_last_request = time(0);
++
++  wchar_t query;
++  int ret = recv(w.fd, &query, sizeof(wchar_t), 0);
++  if (ret == -1)
++  {
++    perror("wcwidth_reply_cb: read");
++  }
++  else
++  {
++    if (ret == 0)
++    {
++      fprintf(stderr, "no data received! Stopping!\n");
++    }
++    else
++    {
++      int width = rxvt_wcwidth(query);
++      ret = write(w.fd, &width, sizeof(int));
++      if (ret == -1) {
++        perror("wcwidth_reply_cb: write");
++      }
++#ifdef DEBUG_WCWIDTH
++      fprintf(stderr, "wcwidth_reply_cb: %lc => %i\n", query, width);
++#endif
++    }
++    close(w.fd);
++    wcwidth_reply_ev.stop();
++  }
++}
++
++
+ /*{{{ process an X event */
+ void ecb_hot
+ rxvt_term::x_cb (XEvent &ev)
+diff --git a/src/init.C b/src/init.C
+index f4af544..deb8da8 100644
+--- a/src/init.C
++++ b/src/init.C
+@@ -65,6 +65,9 @@
+ # include <libsn/sn-launchee.h>
+ #endif
+ 
++#include <sys/socket.h>
++#include <sys/un.h>
++
+ #ifdef DISPLAY_IS_IP
+ /* On Solaris link with -lsocket and -lnsl */
+ #include <sys/types.h>
+@@ -1556,6 +1559,50 @@ rxvt_term::run_command (const char *const *argv)
+     return;
+ #endif
+ 
++  // TODO: use hash based on fontsets?!
++  //       hook into daemon?!
++  const char * socket_basename = "/tmp/.rxvtwcwidth";
++  int pid = getpid();
++  int len = snprintf(NULL, 0, "%s.%i", socket_basename, pid);
++  wcwidth_socket_name = (char *)rxvt_malloc (len);
++  sprintf (wcwidth_socket_name, "%s.%i", socket_basename, pid);
++  unlink(wcwidth_socket_name);
++
++  wcwidth_socket_fd = socket(AF_UNIX, SOCK_SEQPACKET, 0);
++#ifdef DEBUG_WCWIDTH
++  fprintf(stderr, "Creating socket: %d: %s\n", wcwidth_socket_fd, wcwidth_socket_name);
++#endif
++  if (wcwidth_socket_fd == -1) {
++    perror("Could not create wcwidth socket");
++    exit(EXIT_FAILURE);
++  }
++
++  int flags;
++  flags = fcntl(wcwidth_socket_fd, F_GETFL);
++  flags |= O_NONBLOCK;
++  fcntl(wcwidth_socket_fd, F_SETFL, flags);
++
++  struct sockaddr_un name;
++  name.sun_family = AF_UNIX;
++  strcpy(name.sun_path, wcwidth_socket_name);
++  len = strlen(name.sun_path) + sizeof(name.sun_family);
++
++  int ret = bind(wcwidth_socket_fd, (const struct sockaddr *) &name,
++      sizeof(struct sockaddr_un));
++  if (ret == -1) {
++    perror("Could not bind wcwidth socket");
++    exit(EXIT_FAILURE);
++  }
++
++  ret = listen(wcwidth_socket_fd, 20);
++  if (ret == -1) {
++    perror("Could not listen on wcwidth socket");
++    exit(EXIT_FAILURE);
++  }
++
++  wcwidth_ev.start (wcwidth_socket_fd, ev::READ);
++
++
+   /* spin off the command interpreter */
+   switch (cmd_pid = fork ())
+     {
+@@ -1567,6 +1614,13 @@ rxvt_term::run_command (const char *const *argv)
+       case 0:
+         init_env ();
+ 
++        // XXX: move to rxvt_term::init_env?!
++        char *val;
++        char *env_socket;
++        env_socket = (char *)rxvt_malloc (snprintf(NULL, 0, "%s", wcwidth_socket_name) + 19);
++        sprintf (env_socket, "RXVT_WCWIDTH_SOCKET=%s", wcwidth_socket_name);
++        putenv (env_socket);
++
+         if (!pty->make_controlling_tty ())
+           fprintf (stderr, "%s: could not obtain control of tty.", RESNAME);
+         else
+@@ -1656,6 +1710,10 @@ rxvt_term::run_child (const char *const *argv)
+   signal (SIGTTOU, SIG_IGN);
+ #endif /* SIGTSTP */
+ 
++#ifdef WCWIDTH_ADDPRELOAD
++  putenv ("LD_PRELOAD=" LIBDIR "/rxvtwcwidth.so");
++#endif
++
+   /* command interpreter path */
+   if (argv)
+     {
+diff --git a/src/main.C b/src/main.C
+index 98d4c4f..5315e16 100644
+--- a/src/main.C
++++ b/src/main.C
+@@ -185,6 +185,8 @@ rxvt_term::rxvt_term ()
+   flush_ev.set            <rxvt_term, &rxvt_term::flush_cb>   (this);
+   destroy_ev.set          <rxvt_term, &rxvt_term::destroy_cb> (this);
+   pty_ev.set              <rxvt_term, &rxvt_term::pty_cb>     (this);
++  wcwidth_ev.set          <rxvt_term, &rxvt_term::wcwidth_cb> (this);
++  wcwidth_reply_ev.set    <rxvt_term, &rxvt_term::wcwidth_reply_cb> (this);
+   termwin_ev.set          <rxvt_term, &rxvt_term::x_cb>       (this);
+   vt_ev.set               <rxvt_term, &rxvt_term::x_cb>       (this);
+ 
+@@ -298,6 +300,9 @@ rxvt_term::child_cb (ev::child &w, int status)
+ {
+   HOOK_INVOKE ((this, HOOK_CHILD_EXIT, DT_INT, status, DT_END));
+ 
++  close(wcwidth_socket_fd);
++  unlink(wcwidth_socket_name);
++
+   cmd_pid = 0;
+ 
+   if (!option (Opt_hold))
+diff --git a/src/rxvt.h b/src/rxvt.h
+index 5e5ee2d..cef2234 100644
+--- a/src/rxvt.h
++++ b/src/rxvt.h
+@@ -1173,6 +1173,12 @@ struct rxvt_term : zero_initialized, rxvt_vars, rxvt_screen
+ 
+   long vt_emask, vt_emask_perl, vt_emask_xim, vt_emask_mouse;
+ 
++  int wcwidth_data_socket;
++  char * wcwidth_socket_name;
++  int wcwidth_socket_fd;
++  time_t wcwidth_last_request = 0;
++  time_t wcwidth_last_request_debug = -1;
++
+   void vt_select_input () const NOTHROW
+   {
+     XSelectInput (dpy, vt, vt_emask | vt_emask_perl | vt_emask_xim | vt_emask_mouse);
+@@ -1197,6 +1203,8 @@ struct rxvt_term : zero_initialized, rxvt_vars, rxvt_screen
+   void cmdbuf_append (const char *str, size_t count);
+   bool pty_fill ();
+   void pty_cb (ev::io &w, int revents); ev::io pty_ev;
++  void wcwidth_cb (ev::io &w, int revents); ev::io wcwidth_ev;
++  void wcwidth_reply_cb (ev::io &w, int revents); ev::io wcwidth_reply_ev;
+ 
+ #ifdef CURSOR_BLINK
+   void cursor_blink_reset ();
+@@ -1473,6 +1481,8 @@ struct rxvt_term : zero_initialized, rxvt_vars, rxvt_screen
+     enumerate_resources (cb, "keysym", "Keysym");
+   }
+   void extract_keysym_resources ();
++
++  int rxvt_wcwidth(wchar_t c);
+ };
+ 
+ #endif /* _RXVT_H_ */
+diff --git a/src/rxvtfont.C b/src/rxvtfont.C
+index c56921c..6ea5b77 100644
+--- a/src/rxvtfont.C
++++ b/src/rxvtfont.C
+@@ -155,7 +155,7 @@ static const struct rxvt_fallback_font {
+ // these characters are used to guess the font height and width
+ // pango uses a similar algorithm and doesn't trust the font either.
+ static uint16_t extent_test_chars[] = {
+-  '0', '1', '8', 'a', 'd', 'x', 'm', 'y', 'g', 'W', 'X', '\'', '_',
++  ' ', '0', '1', '8', 'a', 'd', 'x', 'm', 'y', 'g', 'W', 'X', '\'', '_',
+   0x00cd, 0x00d5, 0x0114, 0x0177, 0x0643,	// ÍÕĔŷﻙ
+   0x304c, 0x672c,				// が本
+ };
+@@ -327,6 +327,12 @@ struct rxvt_font_default : rxvt_font {
+     return false;
+   }
+ 
++  int
++  get_wcwidth (unicode_t unicode) const
++  {
++    return WCWIDTH(unicode);
++  }
++
+   void draw (rxvt_drawable &d, int x, int y,
+              const text_t *text, int len,
+              int fg, int bg);
+@@ -521,6 +527,14 @@ struct rxvt_font_overflow : rxvt_font {
+     return false;
+   }
+ 
++  /* XXX: never used (only in my setup?!), but needs to be defined. */
++  int
++  get_wcwidth (unicode_t unicode) const
++  {
++    int fid = fs->find_font_idx (unicode);
++    return (*fs)[fid]->get_wcwidth(unicode);
++  }
++
+   void draw (rxvt_drawable &d, int x, int y,
+              const text_t *text, int len,
+              int fg, int bg)
+@@ -552,6 +566,12 @@ struct rxvt_font_x11 : rxvt_font {
+ 
+   bool has_char (unicode_t unicode, const rxvt_fontprop *prop, bool &careful) const;
+ 
++  int
++  get_wcwidth (unicode_t unicode) const
++  {
++    return WCWIDTH(unicode);
++  }
++
+   void draw (rxvt_drawable &d, int x, int y,
+              const text_t *text, int len,
+              int fg, int bg);
+@@ -1135,12 +1155,16 @@ struct rxvt_font_xft : rxvt_font {
+ 
+   bool load (const rxvt_fontprop &prop, bool force_prop);
+ 
++  int get_wcwidth (unicode_t unicode) const;
+   void draw (rxvt_drawable &d, int x, int y,
+              const text_t *text, int len,
+              int fg, int bg);
+ 
+   bool has_char (unicode_t unicode, const rxvt_fontprop *prop, bool &careful) const;
+ 
++private:
++  int get_wcwidth_for_glyph (XGlyphInfo g) const;
++
+ protected:
+   XftFont *f;
+ };
+@@ -1324,6 +1348,14 @@ rxvt_font_xft::load (const rxvt_fontprop &prop, bool force_prop)
+   return success;
+ }
+ 
++int
++rxvt_font_xft::get_wcwidth_for_glyph (XGlyphInfo g) const
++{
++  int w = g.width - g.x;
++  int wcw = (w + term->fwidth - term->fwidth/2) / term->fwidth;
++  return max(wcw, 1);
++}
++
+ bool
+ rxvt_font_xft::has_char (unicode_t unicode, const rxvt_fontprop *prop, bool &careful) const
+ {
+@@ -1341,7 +1373,11 @@ rxvt_font_xft::has_char (unicode_t unicode, const rxvt_fontprop *prop, bool &car
+   XftTextExtents32 (term->dpy, f, &ch, 1, &g);
+ 
+   int w = g.width - g.x;
+-  int wcw = max (WCWIDTH (unicode), 1);
++  // NOTE: using get_wcwidth_for_glyph here enables wide glyphs, although they
++  // might still be displayed (scaled down) in a single cell then.
++  // This is a crucial part already to improve handline of wide glyphs already,
++  // even when not using the wcwidth callback.
++  int wcw = get_wcwidth_for_glyph (g);
+ 
+   careful = g.x > 0 || w > prop->width * wcw;
+ 
+@@ -1355,6 +1391,18 @@ rxvt_font_xft::has_char (unicode_t unicode, const rxvt_fontprop *prop, bool &car
+   return true;
+ }
+ 
++int
++rxvt_font_xft::get_wcwidth (FcChar32 ch) const
++{
++  // Same speed optimization as with WCWIDTH.
++  if (IN_RANGE_INC (ch, 0x20, 0x7e))
++    return 1;
++
++  XGlyphInfo g;
++  XftTextExtents32 (term->dpy, f, &ch, 1, &g);
++  return get_wcwidth_for_glyph(g);
++}
++
+ void
+ rxvt_font_xft::draw (rxvt_drawable &d, int x, int y,
+                      const text_t *text, int len,
+diff --git a/src/rxvtfont.h b/src/rxvtfont.h
+index efb1509..24ea81e 100644
+--- a/src/rxvtfont.h
++++ b/src/rxvtfont.h
+@@ -53,6 +53,7 @@ struct rxvt_font
+   virtual bool load (const rxvt_fontprop &morph, bool force_prop) = 0;
+   virtual bool has_char (uint32_t unicode, const rxvt_fontprop *prop, bool &careful) const = 0;
+ 
++  virtual int get_wcwidth (unicode_t unicode) const = 0;
+   virtual void draw (rxvt_drawable &d,
+                      int x, int y,
+                      const text_t *text, int len,
+diff --git a/src/rxvtwcwidth.C b/src/rxvtwcwidth.C
+new file mode 100644
+index 0000000..21d949a
+--- /dev/null
++++ b/src/rxvtwcwidth.C
+@@ -0,0 +1,209 @@
++/*
++ * Shared object to override wcwidth/wcswidth, which asks rxvt-unicode for the
++ * width of a char.
++ *
++ * TODO:
++ * - is it possible from rxvt-unicode to detect that the client does not use
++ *   its rxvtwcwidth.so?  In that case rxvt-unicode might fall back to the
++ *   system's, too - or rather just be more careful.
++ *   This happens e.g. when attaching to a tmux session, which was started
++ *   without the wrapper.
++ *
++ * XXX: this is quite a mess still.
++ *  - would it be possible to have a terminal escape char interface for this?!
++ */
++
++#include "../config.h"          /* NECESSARY */
++#include "rxvt.h"               /* NECESSARY */
++#include <sys/socket.h>
++#include <sys/un.h>
++#define _GNU_SOURCE
++#include <dlfcn.h>
++#include <fcntl.h>
++
++#include "rxvtwcwidth.h"
++
++int SOCKET_STATUS = -1;
++MapType wcwidth_cache;
++
++typedef int (*orig_wcwidth_f_type)(wchar_t c);
++int
++orig_wcwidth(wchar_t c)
++{
++    orig_wcwidth_f_type wcwidth;
++    wcwidth = (orig_wcwidth_f_type)dlsym(RTLD_NEXT, "wcwidth");
++    return wcwidth(c);
++}
++
++
++int _wcwidth(wchar_t c)
++{
++  const char *wcwidth_socket_name = getenv("RXVT_WCWIDTH_SOCKET");
++  if (!wcwidth_socket_name)
++  {
++    if (SOCKET_STATUS == -1)
++    {
++#ifdef DEBUG_WCWIDTH
++      fprintf(stderr, "RXVT_WCWIDTH_SOCKET is not set (pid %d). Using orig_wcwidth.\n",
++          getpid());
++#endif
++    }
++    SOCKET_STATUS = 0;
++    return orig_wcwidth(c);
++  }
++  /*
++   * connect errors etc, allowing to re-activate by via setting and unsetting
++   * the socket name.
++   */
++  if (SOCKET_STATUS == -2)
++    return orig_wcwidth(c);
++
++  if (SOCKET_STATUS == 0)
++  {
++    fprintf(stderr, "RXVT_WCWIDTH_SOCKET activated again (pid %d).\n", getpid());
++    SOCKET_STATUS = 1;
++    wcwidth_cache.clear();
++  }
++  else
++  {
++    /* Cached? */
++    MapType::iterator it;
++    it = wcwidth_cache.find(c);
++    if(it != wcwidth_cache.end()) {
++      return it->second;
++    }
++  }
++
++#ifdef DEBUG_WCWIDTH_CLIENT
++  fprintf(stderr, "_wcwidth: connecting to socket: %s\n", wcwidth_socket_name);
++#endif
++  int wcwidth_socket_fd = socket(AF_UNIX, SOCK_SEQPACKET, 0);
++  if (wcwidth_socket_fd == -1) {
++    perror("wcwidth: could not open socket");
++    SOCKET_STATUS = -2;
++    return orig_wcwidth(c);
++  }
++
++  /* Bind socket to socket name. */
++  struct sockaddr_un name;
++  name.sun_family = AF_UNIX;
++  strcpy(name.sun_path, wcwidth_socket_name);
++  int len = strlen(name.sun_path) + sizeof(name.sun_family);
++
++  // Write should be non-blocking in case the parent is gone (tmux).
++  int orig_flags;
++  orig_flags = fcntl(wcwidth_socket_fd, F_GETFL);
++  fcntl(wcwidth_socket_fd, F_SETFL, orig_flags | O_NONBLOCK);
++
++  if (-1 == connect(wcwidth_socket_fd, (struct sockaddr *)&name, len))
++  {
++    if (errno == EINPROGRESS)
++    {
++#ifdef DEBUG_WCWIDTH
++      fprintf(stderr, "EINPROGRESS in connect() - selecting\n");
++#endif
++      struct timeval tv;
++      fd_set myset;
++      do
++      {
++        tv.tv_sec = 1;
++        tv.tv_usec = 0;
++        FD_ZERO(&myset);
++        FD_SET(wcwidth_socket_fd, &myset);
++        int ret = select(wcwidth_socket_fd+1, NULL, &myset, NULL, &tv);
++        if (ret < 0 && errno != EINTR)
++        {
++          perror("Error connecting");
++        }
++        else if (ret > 0)
++        {
++          // Socket selected for write
++          socklen_t lon;
++          lon = sizeof(int);
++          int valopt;
++          if (getsockopt(wcwidth_socket_fd, SOL_SOCKET, SO_ERROR,
++                         (void*)(&valopt), &lon) < 0)
++          {
++            perror("getsockopt");
++          }
++          else if (!valopt)
++          {
++            // Success.
++            break;
++          }
++          perror("Error in delayed connection()");
++        }
++        else {
++          perror("Timeout in select() - Cancelling!");
++        }
++        SOCKET_STATUS = -2;
++        close(wcwidth_socket_fd);
++        return orig_wcwidth(c);
++      } while (1);
++    }
++    else
++    {
++      fprintf(stderr, "Could not connect to socket %s: %s\n",
++          wcwidth_socket_name, strerror(errno));
++      SOCKET_STATUS = -2;
++      close(wcwidth_socket_fd);
++      return orig_wcwidth(c);
++    }
++  }
++  fcntl(wcwidth_socket_fd, F_SETFL, orig_flags);
++
++
++#ifdef DEBUG_WCWIDTH_CLIENT
++  fprintf(stderr, "_wcwidth: sending query: %lc\n", c);
++#endif
++  int ret = write(wcwidth_socket_fd, &c, sizeof(wchar_t));
++  int width;
++  if (ret == -1) {
++    perror("write");
++    width = orig_wcwidth(c);
++  }
++  else
++  {
++#ifdef DEBUG_WCWIDTH_CLIENT
++    fprintf(stderr, "_wcwidth: reading answer\n");
++#endif
++    ret = read(wcwidth_socket_fd, &width, sizeof(int));
++    if (ret == -1)
++    {
++        perror("read");
++        width = orig_wcwidth(c);
++    }
++    else
++    {
++#ifdef DEBUG_WCWIDTH_CLIENT
++      fprintf(stderr, "_wcwidth: read: %i\n", width);
++#endif
++      wcwidth_cache[c] = width;
++    }
++  }
++  close(wcwidth_socket_fd);
++  return width;
++}
++
++
++int wcwidth(wchar_t c) {
++  orig_wcwidth_f_type wcwidth = _wcwidth;
++  return WCWIDTH(c);
++}
++
++
++/* This seems to be required, since it will not always use (the injected)
++ * wcwidth?!
++ */
++int wcswidth(const wchar_t *pwcs, size_t n)
++{
++  int w, width = 0;
++
++  for (;*pwcs && n-- > 0; pwcs++)
++    if ((w = wcwidth(*pwcs)) < 0)
++      return -1;
++    else
++      width += w;
++
++  return width;
++}
+diff --git a/src/rxvtwcwidth.h b/src/rxvtwcwidth.h
+new file mode 100644
+index 0000000..f80d464
+--- /dev/null
++++ b/src/rxvtwcwidth.h
+@@ -0,0 +1,2 @@
++#include <map>
++typedef std::map<const wchar_t, int> MapType;
+diff --git a/src/screen.C b/src/screen.C
+index 115afbf..2a6c9d1 100644
+--- a/src/screen.C
++++ b/src/screen.C
+@@ -28,6 +28,7 @@
+ #include "../config.h"          /* NECESSARY */
+ #include "rxvt.h"               /* NECESSARY */
+ #include "rxvtperl.h"           /* NECESSARY */
++#include "rxvtwcwidth.h"        /* NECESSARY */
+ 
+ #include <inttypes.h>
+ 
+@@ -787,6 +788,23 @@ rxvt_term::scr_scroll_text (int row1, int row2, int count) NOTHROW
+   return count;
+ }
+ 
++MapType wcwidth_cache;
++int
++rxvt_term::rxvt_wcwidth(wchar_t c) {
++  MapType::iterator it;
++  it = wcwidth_cache.find(c);
++  if(it == wcwidth_cache.end())
++  {
++    rxvt_fontset *fs = FONTSET (rstyle);
++    rxvt_font *f = (*fs)[fs->find_font_idx (c)];
++    int width = f->get_wcwidth(c);
++    wcwidth_cache[c] = width;
++    return width;
++  }
++  return it->second;
++}
++
++
+ /* ------------------------------------------------------------------------- */
+ /*
+  * Add text given in <str> of length <len> to screen struct
+@@ -896,7 +914,21 @@ rxvt_term::scr_add_lines (const wchar_t *str, int len, int minlines) NOTHROW
+       // further replacements, as wcwidth might return -1 for the line
+       // drawing characters below as they might be invalid in the current
+       // locale.
+-      int width = WCWIDTH (c);
++      int width;
++      if (wcwidth_last_request)
++        width = rxvt_wcwidth (c);
++      else
++      {
++        width = WCWIDTH (c);
++#ifdef DEBUG_WCWIDTH
++        if (wcwidth_last_request != wcwidth_last_request_debug)
++        {
++          fprintf(stderr, "wcwidth: not using rxvt_wcwidth, since no LD_PRELOAD request was done yet (%lc) => %i\n",
++              c, width);
++          wcwidth_last_request_debug = wcwidth_last_request;
++        }
++#endif
++      }
+ 
+       if (ecb_unlikely (charsets [screen.charset] == '0')) // DEC SPECIAL
+         {
+@@ -952,12 +984,47 @@ rxvt_term::scr_add_lines (const wchar_t *str, int len, int minlines) NOTHROW
+                 screen.cur.col = ncol - width;
+             }
+ 
+-          // nuke the character at this position, if required
+-          // due to wonderful coincidences everywhere else in this loop
+-          // we never have to check for overwriting a wide char itself,
+-          // only its tail.
+-          if (ecb_unlikely (line->t[screen.cur.col] == NOCHAR))
+-            scr_kill_char (*line, screen.cur.col);
++          // Handle wide characters at this position, if required.
++          // This used to nuke the wide char, but since only we might consider
++          // it to be wide, this will mark the wide char for redrawing.
++          // This works around Vim not displaying wide glyphs properly / at all
++          // when not using LD_PRELOAD/wcwidth!
++          // Eventually Vim writes a single space after a glyph, which would
++          // then cause the wide char (before it) to be nuked, although Vim
++          // only meant to set the space.
++          // TODO: improve this, based on if rxvt-unicode's get_wcwidth and
++          //       wcwidth disagree?!  (but still no guarantee that wcwidth is
++          //       used, e.g. Vim uses its own method by default).
++          //       For this we could store RS_wcw_from_us in `rend`, but that
++          //       is going overboard for now, and does not cover when only
++          //       the callback was used actually.
++          if (ecb_unlikely (line->t[screen.cur.col] == NOCHAR)) {
++            if (wcwidth_last_request)
++            {
++              if (c == ' ') {
++                rend = line->r[screen.cur.col];
++                c = NOCHAR;
++#if DEBUG_WCWIDTH
++                fprintf(stderr, "Keeping NOCHAR for space at %d/%d\n",
++                        screen.cur.row, screen.cur.col);
++#endif
++              }
++              else
++              {
++#if DEBUG_WCWIDTH
++                fprintf(stderr, "Redrawing from %d/%d for overwriting NOCHAR with '%lc'\n",
++                        screen.cur.row, screen.cur.col, c);
++#endif
++                scr_set_char_rend (*line, screen.cur.col, rend ^ RS_redraw);
++              }
++            }
++            else
++            {
++              fprintf(stderr, "Killing wide char for NOCHAR from %d/%d\n",
++                  screen.cur.row, screen.cur.col);
++              scr_kill_char (*line, screen.cur.col);
++            }
++          }
+ 
+           line->touch ();
+ 
+@@ -984,6 +1051,10 @@ rxvt_term::scr_add_lines (const wchar_t *str, int len, int minlines) NOTHROW
+           // pad with spaces when overwriting wide character with smaller one
+           for (int c = screen.cur.col; ecb_unlikely (c < ncol && line->t[c] == NOCHAR); c++)
+             {
++#if DEBUG_WCWIDTH
++              fprintf(stderr, "Overwriting wide char with space at %d/%d\n",
++                  screen.cur.row, c);
++#endif
+               line->t[c] = ' ';
+               line->r[c] = rend;
+             }
+@@ -3646,7 +3717,7 @@ rxvt_term::scr_overlay_set (int x, int y, const wchar_t *s) NOTHROW
+   while (*s)
+     {
+       text_t t = *s++;
+-      int width = WCWIDTH (t);
++      int width = rxvt_wcwidth (t);
+ 
+       while (width--)
+         {
+diff --git a/src/xdefaults.C b/src/xdefaults.C
+index 9b47bf2..64a7968 100644
+--- a/src/xdefaults.C
++++ b/src/xdefaults.C
+@@ -379,6 +379,7 @@ static const char optionsstring[] = "options: "
+ #if defined(XTERM_SCROLLBAR)
+                                     "+xterm"
+ #endif
++                                    "+wcwidthcallback"
+                                     "\nUsage: ";		/* Usage */
+ 
+ #define INDENT 28
