@@ -25,34 +25,13 @@ transitive, symmetric VPN configurations.
 Using this option wrongly will break your mesh network, use this option
 wisely and at your own risk!
 
-Signed-off-by: Linus Lüssing <linus.luessing@web.de>
 ---
- .../ABI/testing/sysfs-class-net-batman-adv         | 11 ++++
  net/batman-adv/hard-interface.c                    |  2 +
  net/batman-adv/send.c                              |  4 ++
  net/batman-adv/sysfs.c                             | 59 ++++++++++++++++++++++
  net/batman-adv/types.h                             |  1 +
- 5 files changed, 77 insertions(+)
+ 4 files changed
 
-diff --git a/Documentation/ABI/testing/sysfs-class-net-batman-adv b/Documentation/ABI/testing/sysfs-class-net-batman-adv
-index 518f6a1..896c480 100644
---- a/Documentation/ABI/testing/sysfs-class-net-batman-adv
-+++ b/Documentation/ABI/testing/sysfs-class-net-batman-adv
-@@ -28,3 +28,14 @@ Description:
-                 The /sys/class/net/<iface>/batman-adv/mesh_iface file
-                 displays the batman mesh interface this <iface>
-                 currently is associated with.
-+
-+What:           /sys/class/net/<iface>/batman-adv/no_rebroadcast
-+Date:           Sep 2013
-+Contact:        Linus Lüssing <linus.luessing@web.de>
-+Description:
-+                With this option set incoming multicast payload frames on
-+                <iface> are not being rebroadcasted on <iface> again. This
-+                option should be set on links which are known to be transitive
-+                and symmetric only, for instance point-to-point wifi longshots
-+                or wired links. Using this option wrongly is going to
-+                break your mesh network, use at your own risk!
 diff --git a/net/batman-adv/hard-interface.c b/net/batman-adv/hard-interface.c
 index 8c2f399..48e53d0 100644
 --- a/net/batman-adv/hard-interface.c
