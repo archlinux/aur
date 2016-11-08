@@ -12,6 +12,7 @@ depends=(
         'c-ares'
         'geoip'
         'glib2'
+        'libcap'
         'libpcap'
         'lua52'
 
@@ -74,6 +75,10 @@ build() {
 package() {
   cd "$srcdir/wireshark/build"
   DESTDIR="${pkgdir}" ninja install
+
+  # GID for wireshark is 150
+  chgrp 150 "${pkgdir}/usr/bin/dumpcap"
+  chmod 754 "${pkgdir}/usr/bin/dumpcap"
 }
 
 # vim:set ts=2 sw=2:
