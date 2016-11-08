@@ -1,4 +1,5 @@
 # Maintainer: Pieter Goetschalckx <3.14.e.ter [at] gmail [dot] com>
+# Contributor: Bastien Traverse <firstname at lastname dot email>
 # Contributor: Ricardo Funke <ricardo [at] gmail [dot] com>
 # Contributor: Attila Bukor <r1pp3rj4ck [at] w4it [dot] eu>
 # Contributor: Iwan Timmer <irtimmer [at] gmail [dot] com>
@@ -12,8 +13,8 @@
 
 pkgname=popcorntime-bin
 _pkgname=popcorntime
-pkgver=0.3.9
-pkgrel=7
+pkgver=0.3.10
+pkgrel=1
 pkgdesc="Stream movies and TV shows from torrents"
 arch=('i686' 'x86_64')
 url="https://popcorntime.sh"
@@ -23,28 +24,15 @@ provides=('popcorntime' 'popcorn-time-ce')
 conflicts=('popcorntime')
 options=('!strip')
 source=("${_pkgname}.desktop")
-source_i686=("https://get.popcorntime.sh/build/Popcorn-Time-${pkgver}-Linux-32.tar.xz")
-source_x86_64=("https://get.popcorntime.sh/build/Popcorn-Time-${pkgver}-Linux-64.tar.xz")
+source_i686=("https://get.popcorntime.sh/repo/build/Popcorn-Time-${pkgver}-Linux-32.tar.xz")
+source_x86_64=("https://get.popcorntime.sh/repo/build/Popcorn-Time-${pkgver}-Linux-64.tar.xz")
 sha256sums=('4422f21e16176fda697ed0c8a6d1fb6f9dd7c4bc3f3694f9bcc19cbe66630334')
-sha256sums_i686=('0c8a84e853946c70b4986d8044ec869f995b8001b48cd5bd3ef0ed61e8848335')
-sha256sums_x86_64=('5655111b7f5883ce7a620a8fb0b9f7fb7563a46516697aac5ad2b28b8b5e49df')
-
-[ "$CARCH" = "i686" ]   && _platform=linux32
-[ "$CARCH" = "x86_64" ] && _platform=linux64
+sha256sums_i686=('c6497b067304918c3d19db2fecd36cc9efe1fff13765d461b24fd2cd8692ed42')
+sha256sums_x86_64=('b7f789c2e2f3b0f7e3408a437080404f8a2aa7ce4a41858cf891b02cda8c37a5')
 
 package() {
-  _bpath="${_platform}"
-
   install -dm755 "${pkgdir}/usr/share/${_pkgname}"
   install -dm755 "${pkgdir}/usr/bin"
-
-  # Program
-  install -Dm755 "${_bpath}/Popcorn-Time" "${pkgdir}/usr/share/${_pkgname}/"
-  install -Dm644 "${_bpath}/"{icudtl.dat,libffmpegsumo.so,nw.pak,package.json} \
-    "${pkgdir}/usr/share/${_pkgname}/"
-
-  # Directories
-  cp -a "${_bpath}/"{locales,node_modules,src} "${pkgdir}/usr/share/${_pkgname}/"
 
   # Link to program
   ln -s "/usr/share/${_pkgname}/Popcorn-Time" "${pkgdir}/usr/bin/${_pkgname}"
@@ -53,6 +41,11 @@ package() {
   install -Dm644 "${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
 
   # Icon
-  install -Dm644 "${_bpath}/src/app/images/icon.png" "${pkgdir}/usr/share/icons/hicolor/256x256/apps/${_pkgname}.png"
-}
+  install -Dm644 "${srcdir}/src/app/images/icon.png" "${pkgdir}/usr/share/icons/hicolor/256x256/apps/${_pkgname}.png"
 
+  # Remove makepkg-created symlinks before copying content
+  rm *.tar.xz *.desktop
+
+  # Copy complete content of source archive to /usr/share/${_pkgname}/
+  cp -a "${srcdir}"/* "${pkgdir}/usr/share/${_pkgname}/"
+}
