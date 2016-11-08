@@ -29,6 +29,7 @@ optdepends=('python-pyqt5: needed for graphical tools'
 makedepends=('bison' 'flex' 'swig'
              'python-setuptools' 'python-tox'
              'python2' 'python2-setuptools' 'python2-networkx' 'python2-mock' 'python2-tox')
+checkdepends=('checkpolicy')
 conflicts=("selinux-${pkgname}")
 provides=("selinux-${pkgname}=${pkgver}-${pkgrel}")
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/TresysTechnology/setools/archive/${pkgver}.tar.gz")
