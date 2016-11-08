@@ -85,6 +85,7 @@ package() {
     install -d -m777 "${pkgdir}/var/tmp/airtime"
 
     install -d -m655 "${pkgdir}/etc/airtime"
+    touch "${pkgdir}/etc/airtime/airtime.conf"
 
     install -D -m644 "installer/php/airtime.ini" "${pkgdir}/etc/php/conf.d/airtime.ini"
     install -D -m644 ../httpd-airtime.conf "${pkgdir}/etc/httpd/conf/extra/httpd-airtime.conf"
@@ -113,7 +114,7 @@ package() {
 msg2 "Cleaning..."
     rm -r "${pkgdir}/etc/init"
     rm -r "${pkgdir}/etc/init.d"
-    rm "${pkgdir}/usr/share/airtime/airtime_mvc/build/airtime.example.conf"
+    rm "${pkgdir}/usr/share/airtime/airtime_mvc/build/airtime.example.conf" 
 }
 
 pkgver() {
