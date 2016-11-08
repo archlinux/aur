@@ -1,6 +1,6 @@
 pkgbase = mesa-git
 	pkgdesc = an open-source implementation of the OpenGL specification, git version
-	pkgver = 13.1.0_devel.85939.7b7eb71
+	pkgver = 13.1.0_devel.86315.3fa10ff
 	pkgrel = 1
 	url = http://mesa3d.sourceforge.net
 	arch = i686
@@ -47,7 +47,7 @@ pkgname = opencl-mesa-git
 	depends = libcl
 	depends = libclc
 	depends = nettle
-	depends = mesa-git=13.1.0_devel.85939.7b7eb71
+	depends = mesa-git=13.1.0_devel.86315.3fa10ff
 	optdepends = opencl-headers: headers necessary for OpenCL development
 	provides = opencl-mesa=13.1.0-devel
 	conflicts = opencl-mesa
@@ -59,7 +59,7 @@ pkgname = mesa-vulkan-intel-git
 	depends = libgcrypt
 	depends = wayland
 	depends = libxcb
-	depends = mesa-git=13.1.0_devel.85939.7b7eb71
+	depends = mesa-git=13.1.0_devel.86315.3fa10ff
 	provides = vulkan-intel
 	conflicts = vulkan-intel
 	replaces = vulkan-intel
@@ -77,24 +77,28 @@ pkgname = mesa-vulkan-radeon-git
 pkgname = libva-mesa-driver-git
 	pkgdesc = VA-API implementation for gallium
 	depends = nettle
-	depends = mesa-git=13.1.0_devel.85939.7b7eb71
+	depends = mesa-git=13.1.0_devel.86315.3fa10ff
 	provides = libva-mesa-driver=13.1.0-devel
 	conflicts = libva-mesa-driver
 
 pkgname = mesa-vdpau-git
 	pkgdesc = Mesa VDPAU drivers
 	depends = nettle
-	depends = mesa-git=13.1.0_devel.85939.7b7eb71
+	depends = mesa-git=13.1.0_devel.86315.3fa10ff
 	provides = mesa-vdpau=13.1.0-devel
 	conflicts = mesa-vdpau
 	replaces = mesa-vdpau
 
 pkgname = mesa-libgl-git
 	pkgdesc = Mesa 3-D graphics library
-	depends = mesa-git=13.1.0_devel.85939.7b7eb71
+	depends = mesa-git=13.1.0_devel.86315.3fa10ff
 	provides = mesa-libgl=13.1.0-devel
 	provides = libgl=13.1.0-devel
+	provides = libgles
+	provides = libegl
 	conflicts = mesa-libgl
+	conflicts = libgles
+	conflicts = libegl
 	replaces = mesa-libgl
 
 pkgname = mesa-git

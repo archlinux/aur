@@ -12,7 +12,7 @@
 pkgbase=mesa-git
 pkgname=('opencl-mesa-git' 'mesa-vulkan-intel-git' 'mesa-vulkan-radeon-git' 'libva-mesa-driver-git' 'mesa-vdpau-git' 'mesa-libgl-git' 'mesa-git')
 pkgdesc="an open-source implementation of the OpenGL specification, git version"
-pkgver=13.1.0_devel.85939.7b7eb71
+pkgver=13.1.0_devel.86315.3fa10ff
 pkgrel=1
 arch=('i686' 'x86_64')
 makedepends=('python2-mako' 'libxml2' 'libx11' 'glproto' 'libdrm>=2.4.66' 'dri2proto' 'dri3proto' 'presentproto' 
@@ -24,11 +24,11 @@ license=('custom')
 source=('mesa::git://anongit.freedesktop.org/mesa/mesa#branch=master'
         'LICENSE'
         'disable-pthread-stubs-on-linux.patch'
-        )
+)
 sha512sums=('SKIP'
             '25da77914dded10c1f432ebcbf29941124138824ceecaf1367b3deedafaecabc082d463abcfa3d15abff59f177491472b505bcb5ba0c4a51bb6b93b4721a23c2'
             '1a8ffbc194a8264ae08cad7b886ec87cd331047f35272fdcb11901ddb0c6f64e2cd69af946e01254c9df8fe881ad1e42162202e1bc38db97aaf294313fb0f9ce'
-            )
+)
 
 prepare() {
     cd "${srcdir}"/mesa
@@ -56,7 +56,6 @@ build () {
                --with-dri-drivers=i915,i965,r200,radeon,nouveau,swrast \
                --with-egl-platforms=x11,drm,wayland \
                --with-vulkan-drivers=intel,radeon \
-               --disable-vulkan-icd-full-driver-path \
                --with-clang-libdir=/usr/lib \
                --with-sha1=libnettle \
                --enable-texture-float \
@@ -247,9 +246,9 @@ package_mesa-git () {
 package_mesa-libgl-git () {
   pkgdesc="Mesa 3-D graphics library"
   depends=("mesa-git=${pkgver}")
-  provides=("mesa-libgl=$(_mesaver)" "libgl=$(_mesaver)")
+  provides=("mesa-libgl=$(_mesaver)" "libgl=$(_mesaver)" 'libgles' 'libegl')
   replaces=('mesa-libgl')
-  conflicts=('mesa-libgl')
+  conflicts=('mesa-libgl' 'libgles' 'libegl')
 
   # See FS#26284
   install -m755 -d "${pkgdir}"/usr/lib/xorg/modules/extensions
