@@ -1,32 +1,26 @@
 pkgbase = idos-timetable-data-chaps-all-latest
 	pkgdesc = Timetable data for the timetable search engines by CHAPS: European railway, Czech/Slovak trains + bus, Czech public transport, some air transport. Note that some timetables need the purchased version of IDOS to run.
 	pkgver = 2016_10_28
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 0
 	url = http://chaps.cz/eng/download/idos/zip#kotvatt
 	arch = any
 	groups = idos-timetable
 	license = custom
 	makedepends = wget
-	depends = idos-timetable-data-trains-common
+	depends = idos-timetable-data-chaps-trains-cz-latest
+	depends = idos-timetable-data-chaps-trains-europe-latest
 	optdepends = idos-timetable-tariff: For showing prices.
 	optdepends = idos-timetable-maps: For displaying routes on maps.
-	optdepends = idos-timetable-additionalinfo-trains: For (links to) additional information about train composition and stations.
 	optdepends = idos-timetable-additionalinfo-bus: For images of certain bus stations.
 	optdepends = idos-timetable-additionalinfo-mhd-idsjmk: For photographs of public transport stops in the IDSJMK region.
 	optdepends = idos-timetable-additionalinfo-mhd-pid: For photographs of public transport stops in the PID region.
 	optdepends = idos-timetable-additionalinfo-mhd-odis: For links to information about changes, fares, salespoints ... in the ODIS-region.
 	provides = idos-timetable-data-chaps-all=2016_10_28
 	provides = idos-timetable-data=2016_10_28
-	provides = idos-timetable-data-trains=2016_10_28
-	provides = idos-timetable-data-trains-cz=2016_10_28
-	provides = idos-timetable-data-trains-sk=2016_10_28
-	provides = idos-timetable-data-trains-europe=2016_10_28
 	provides = idos-timetable-data-bus=2016_10_28
 	provides = idos-timetable-data-mhd=2016_10_28
 	provides = idos-timetable-data-flights=2016_10_28
-	provides = idos-timetable-data-chaps-trains-cz=2016_10_28
-	provides = idos-timetable-data-chaps-trains-europe=2016_10_28
 	provides = idos-timetable-data-trains-idol=2016_10_28
 	provides = idos-timetable-data-trains-odis=2016_10_28
 	provides = idos-timetable-data-trains-pid=2016_10_28
@@ -151,9 +145,6 @@ pkgbase = idos-timetable-data-chaps-all-latest
 	provides = idos-timetable-data-mhd-zatec=2016_10_28
 	provides = idos-timetable-data-mhd-zdarns=2016_10_28
 	conflicts = idos-timetable-data-chaps-all
-	conflicts = idos-timetable-data-chaps-trains-europe
-	conflicts = idos-timetable-data-chaps-trains-cz
-	conflicts = idos-timetable-data-chaps-trains-sk
 	conflicts = idos-timetable-data-trains-idol
 	conflicts = idos-timetable-data-trains-odis
 	conflicts = idos-timetable-data-trains-pid
