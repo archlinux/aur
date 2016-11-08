@@ -1,7 +1,7 @@
 # Maintainer: M0Rf30
 
 pkgname=airtime-git
-pkgver=2.5.2.1
+pkgver=12396.4940c73
 pkgrel=1
 pkgdesc="Open broadcast software for scheduling and station management."
 arch=('i686' 'x86_64')
