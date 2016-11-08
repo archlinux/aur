@@ -1,28 +1,33 @@
 diff --git a/configure.ac b/configure.ac
-index 707f587..a1efc57 100644
+index 58ea9e9..830e749 100644
 --- a/configure.ac
 +++ b/configure.ac
-@@ -23,7 +23,7 @@ AC_SUBST(lt_major)
- AC_SUBST(lt_revision)
- AC_SUBST(lt_age)
+@@ -25,6 +25,9 @@ AC_SUBST(lt_age)
  
--all_drivers="upekts upektc upeksonly vcom5s uru4000 fdu2000 aes1610 aes1660 aes2501 aes2550 aes2660 aes3500 aes4000 vfs101 vfs301 vfs5011 upektc_img etes603"
-+all_drivers="upekts upektc upeksonly vcom5s uru4000 fdu2000 aes1610 aes1660 aes2501 aes2550 aes2660 aes3500 aes4000 vfs101 vfs301 vfs5011 upektc_img etes603 vcs"
+ all_drivers="upekts upektc upeksonly vcom5s uru4000 fdu2000 aes1610 aes1660 aes2501 aes2550 aes2660 aes3500 aes4000 vfs101 vfs301 vfs5011 upektc_img etes603 vfs0050"
  
++# XXX: VCS
++all_drivers="$all_drivers vcs"
++
  require_imaging='no'
  require_aeslib='no'
-@@ -48,6 +48,7 @@ enable_vfs301='no'
- enable_vfs5011='no'
- enable_upektc_img='no'
+ require_aesX660='no'
+@@ -50,6 +53,9 @@ enable_upektc_img='no'
  enable_etes603='no'
-+enable_vcs='no'
+ enable_vfs0050='no'
  
++# XXX: VCS
++enable_vcs='no'
++
  AC_ARG_WITH([drivers],[AS_HELP_STRING([--with-drivers],
  	[List of drivers to enable])],
-@@ -150,6 +151,10 @@ for driver in `echo ${drivers} | sed -e 's/,/ /g' -e 's/,$//g'`; do
- 			AC_DEFINE([ENABLE_ETES603], [], [Build EgisTec ES603 driver])
- 			enable_etes603="yes"
+ 	[drivers="$withval"],
+@@ -155,6 +161,12 @@ for driver in `echo ${drivers} | sed -e 's/,/ /g' -e 's/,$//g'`; do
+ 			AC_DEFINE([ENABLE_VFS0050], [], [Build Validity VFS0050 driver])
+ 			enable_vfs0050="yes"
  		;;
++
++		# XXX: VCS
 +		vcs)
 +			AC_DEFINE([ENABLE_VCS], [], [Build Validity Sensors driver])
 +			enable_vcs="yes"
@@ -30,41 +35,48 @@ index 707f587..a1efc57 100644
  	esac
  done
  
-@@ -175,6 +180,7 @@ AM_CONDITIONAL([ENABLE_VFS301], [test "$enable_vfs301" = "yes"])
- AM_CONDITIONAL([ENABLE_VFS5011], [test "$enable_vfs5011" = "yes"])
- AM_CONDITIONAL([ENABLE_UPEKTC_IMG], [test "$enable_upektc_img" = "yes"])
+@@ -182,6 +194,9 @@ AM_CONDITIONAL([ENABLE_UPEKTC_IMG], [test "$enable_upektc_img" = "yes"])
  AM_CONDITIONAL([ENABLE_ETES603], [test "$enable_etes603" = "yes"])
-+AM_CONDITIONAL([ENABLE_VCS], [test "$enable_vcs" = "yes"])
+ AM_CONDITIONAL([ENABLE_VFS0050], [test "$enable_vfs0050" = "yes"])
  
++# XXX: VCS
++AM_CONDITIONAL([ENABLE_VCS], [test "$enable_vcs" = "yes"])
++
  
  PKG_CHECK_MODULES(LIBUSB, [libusb-1.0 >= 0.9.1])
-@@ -396,6 +402,11 @@ if test x$enable_etes603 != xno ; then
+ AC_SUBST(LIBUSB_CFLAGS)
+@@ -407,6 +422,14 @@ if test x$enable_vfs0050 != xno ; then
  else
- 	AC_MSG_NOTICE([   etes603 driver disabled])
+ 	AC_MSG_NOTICE([   vfs0050 driver disabled])
  fi
++
++# XXX: VCS
 +if test x$enable_vcs != xno ; then
 +	AC_MSG_NOTICE([** validity sensors driver enabled])
 +else
 +	AC_MSG_NOTICE([   validity sensors driver disabled])
 +fi
++
  if test x$require_aeslib != xno ; then
  	AC_MSG_NOTICE([** aeslib helper functions enabled])
  else
 diff --git a/libfprint/Makefile.am b/libfprint/Makefile.am
-index ea6e678..bf903a9 100644
+index a7fb162..a473179 100644
 --- a/libfprint/Makefile.am
 +++ b/libfprint/Makefile.am
-@@ -21,6 +21,9 @@ VFS301_SRC = drivers/vfs301.c drivers/vfs301_proto.c  drivers/vfs301_proto.h dri
- VFS5011_SRC = drivers/vfs5011.c drivers/vfs5011_proto.h
- UPEKTC_IMG_SRC = drivers/upektc_img.c drivers/upektc_img.h
+@@ -23,6 +23,11 @@ UPEKTC_IMG_SRC = drivers/upektc_img.c drivers/upektc_img.h
  ETES603_SRC = drivers/etes603.c
-+VCS_SRCS    = drivers/validity/vfsDriver.c \
-+							drivers/validity/vfsDriver.h \
-+							drivers/validity/vfsWrapper.h
+ VFS0050_SRC = drivers/vfs0050.c drivers/vfs0050.h
  
++# XXX: VCS
++VCS_SRCS    = drivers/validity/vfsDriver.c \
++              drivers/validity/vfsDriver.h \
++              drivers/validity/vfsWrapper.h
++
  EXTRA_DIST = \
  	$(UPEKE2_SRC)		\
-@@ -36,6 +39,7 @@ EXTRA_DIST = \
+ 	$(UPEKTS_SRC)		\
+@@ -37,6 +42,7 @@ EXTRA_DIST = \
  	$(AES3500_SRC)		\
  	$(AES4000_SRC)		\
  	$(FDU2000_SRC)		\
@@ -72,10 +84,12 @@ index ea6e678..bf903a9 100644
  	$(VCOM5S_SRC)		\
  	$(VFS101_SRC)		\
  	$(VFS301_SRC)		\
-@@ -184,6 +188,10 @@ if ENABLE_ETES603
- DRIVER_SRC += $(ETES603_SRC)
+@@ -190,6 +196,12 @@ if ENABLE_VFS0050
+ DRIVER_SRC += $(VFS0050_SRC)
  endif
  
++
++# XXX: VCS
 +if ENABLE_VCS
 +DRIVER_SRC += $(VCS_SRCS)
 +endif
@@ -84,13 +98,15 @@ index ea6e678..bf903a9 100644
  OTHER_SRC += pixman.c
  libfprint_la_CFLAGS += $(IMAGING_CFLAGS)
 diff --git a/libfprint/core.c b/libfprint/core.c
-index 2ae7649..0f7892d 100644
+index 8b6fe43..5e28d63 100644
 --- a/libfprint/core.c
 +++ b/libfprint/core.c
-@@ -402,6 +402,9 @@ static struct fp_img_driver * const img_drivers[] = {
+@@ -405,6 +405,11 @@ static struct fp_img_driver * const img_drivers[] = {
  	&fdu2000_driver,
  #endif
  	*/
++
++/* XXX: VCS */
 +#ifdef ENABLE_VCS
 +	&validity_driver,
 +#endif
@@ -508,7 +524,7 @@ index 0000000..55d1f43
 +
 +#endif /*vfsWrapper */
 diff --git a/libfprint/fp_internal.h b/libfprint/fp_internal.h
-index 2324b27..2cf009a 100644
+index e309ea9..2310d03 100644
 --- a/libfprint/fp_internal.h
 +++ b/libfprint/fp_internal.h
 @@ -233,6 +233,9 @@ enum fp_print_data_type fpi_driver_get_data_type(struct fp_driver *drv);
@@ -521,13 +537,15 @@ index 2324b27..2cf009a 100644
  struct fp_img_driver {
  	struct fp_driver driver;
  	uint16_t flags;
-@@ -305,6 +308,9 @@ extern struct fp_img_driver upektc_img_driver;
- #ifdef ENABLE_ETES603
- extern struct fp_img_driver etes603_driver;
+@@ -309,6 +312,11 @@ extern struct fp_img_driver etes603_driver;
+ extern struct fp_img_driver vfs0050_driver;
  #endif
+ 
++/* XXX: VCS */
 +#ifdef ENABLE_VCS
 +extern struct fp_img_driver validity_driver;
 +#endif
- 
++
  extern libusb_context *fpi_usb_ctx;
  extern GSList *opened_devices;
+ 
