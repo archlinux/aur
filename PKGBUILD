@@ -1,8 +1,8 @@
 # Maintainer: Sam Stuewe <halosghost at archlinux dot info>
 
 pkgname=pbpst-git
-pkgver=v1.1.1.r7.g1893f08
-pkgrel=2
+pkgver=v1.3.0.r27.ga3a2884
+pkgrel=1
 
 pkgdesc='A small tool to interact with pb instances'
 url='https://github.com/HalosGhost/pbpst'
@@ -21,6 +21,11 @@ sha256sums=('SKIP')
 pkgver () {
     cd pbpst
     git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+prepare () {
+    cd pbpst
+    ./configure --prefix='/usr'
 }
 
 build () {
