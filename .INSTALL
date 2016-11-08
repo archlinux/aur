@@ -20,18 +20,6 @@ post_install() {
     		touch /usr/rmmagent/hacker_patterns_custom || echo "Tried to create hacker_patterns_custom"
     	fi
     fi
-    echo "[Unit]" >> /etc/systemd/system/rmmagentd.service
-    echo "Description=Languard Remote Management Agent" >> /etc/systemd/system/rmmagentd.service
-    echo "" >> /etc/systemd/system/rmmagentd.service
-    echo "[Service]" >> /etc/systemd/system/rmmagentd.service
-    echo "Type=forking" >> /etc/systemd/system/rmmagentd.service
-    echo "TimeoutStartSec=0" >> /etc/systemd/system/rmmagentd.service
-    echo "ExecStart=/usr/rmmagent/rmmagentd --start" >> /etc/systemd/system/rmmagentd.service
-    echo "ExecStop=/usr/rmmagent/rmmagentd --terminate" >> /etc/systemd/system/rmmagentd.service
-    echo "" >> /etc/systemd/system/rmmagentd.service
-    echo "[Install]" >> /etc/systemd/system/rmmagentd.service
-    echo "WantedBy=multi-user.target" >> /etc/systemd/system/rmmagentd.service
-    echo ""
     echo "To register this server in the dashboard please run '# /usr/rmmagent/rmmagentd -i'"
     echo ""
     echo "When asked if you want to start the agent during setup, choose 'No' then"
