@@ -1,7 +1,7 @@
 diff --git a/tests/Makefile b/tests/Makefile
 index f179d48..8927a5c 100644
---- a/tests/Makefile
-+++ b/tests/Makefile
+--- a/mve-git/tests/Makefile
++++ b/mve-git/tests/Makefile
 @@ -7,9 +7,9 @@ SOURCES = $(wildcard math/gtest_*.cc) $(wildcard mve/gtest_*.cc) $(wildcard sfm/
  INCLUDES = -I${MVE_ROOT}/libs -I${GTEST_PATH}/include
  CXXWARNINGS = -Wall -Wextra -pedantic -Wno-sign-compare
@@ -14,3 +14,46 @@ index f179d48..8927a5c 100644
  	${LINK.cc} -o $@ $^ ${LDLIBS}
  
  clean:
+diff --git a/tests/Makefile b/tests/Makefile
+index 69269b6..e043727 100644
+--- a/smvs/tests/Makefile
++++ b/smvs/tests/Makefile
+@@ -6,9 +6,9 @@ SOURCES = $(wildcard gtest_*.cc)
+ INCLUDES = -I../lib -I${MVE_ROOT}/libs -I${GTEST_PATH}/include
+ CXXWARNINGS = -Wall -Wextra -pedantic -Wno-sign-compare
+ CXXFLAGS = -std=c++11 -pthread ${CXXWARNINGS} ${INCLUDES}
+-LDLIBS += -lpng -ltiff -ljpeg
++LDLIBS += -lpng -ltiff -ljpeg -lgtest -lgtest_main
+ 
+-test: ${SOURCES:.cc=.o} libsmvs.a gtest_main.a
++test: ${SOURCES:.cc=.o} libsmvs.a
+ 	${LINK.cc} -o $@ $^ ${LDLIBS}
+ 
+ clean:
+diff --git a/smvs/tests/gtest_correspondence.cc b/tests/gtest_correspondence.cc
+index fcb6a50..a8e2da4 100644
+--- a/smvs/tests/gtest_correspondence.cc
++++ b/smvs/tests/gtest_correspondence.cc
+@@ -365,8 +365,8 @@ TEST(CorrespondenceJacobianTest, ValuesAndDerivatives)
+     corr_new[0] -= 0.5;
+     corr_new[1] -= 0.5;
+     diff = (corr_new - corr_base) / delta;
+-    EXPECT_NEAR(corr_jac[0], diff[0], 1e-4);
+-    EXPECT_NEAR(corr_jac[1], diff[1], 1e-4);
++    EXPECT_NEAR(corr_jac[0], diff[0], 2e-4);
++    EXPECT_NEAR(corr_jac[1], diff[1], 2e-4);
+     x = backup;
+ 
+     backup = y;
+@@ -377,8 +377,8 @@ TEST(CorrespondenceJacobianTest, ValuesAndDerivatives)
+     corr_new[0] -= 0.5;
+     corr_new[1] -= 0.5;
+     diff = (corr_new - corr_base) / delta;
+-    EXPECT_NEAR(corr_jac[2], diff[0], 1e-4);
+-    EXPECT_NEAR(corr_jac[3], diff[1], 1e-4);
++    EXPECT_NEAR(corr_jac[2], diff[0], 2e-4);
++    EXPECT_NEAR(corr_jac[3], diff[1], 2e-4);
+     y = backup;
+
+ #if 1
+
