@@ -9,23 +9,16 @@
 # Contributor: Steven Nance <steven@devtrw.com>
 
 pkgname=vagrant
-pkgver=1.8.6
-pkgrel=2
+pkgver=1.8.7
+pkgrel=1
 pkgdesc="Build and distribute virtualized development environments"
 arch=('i686' 'x86_64')
 url="http://vagrantup.com"
 license=('MIT')
 options=('!emptydirs')
 depends=('vagrant-substrate')
-source=($pkgname-$pkgver.tar.gz::http://github.com/mitchellh/$pkgname/archive/v$pkgver.tar.gz)
-md5sums=('27b431b4fac3e0ef9c844d7dea904427')
-
-prepare() {
-  cd $pkgname-$pkgver
-
-  # build fails with 1.6.4 -> 1.6.8
-  sed -i '/nokogiri/s/1.6.7.1/1.6.3.1/'  vagrant.gemspec
-}
+source=($pkgname-$pkgver.tar.gz::https://github.com/mitchellh/$pkgname/archive/v$pkgver.tar.gz)
+md5sums=('5bd280b1324bbf3da2eab40aec10a2bd')
 
 build() {
   cd $pkgname-$pkgver
