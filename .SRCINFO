@@ -1,0 +1,18 @@
+pkgbase = hypercli-git
+	pkgdesc = Hyper.sh CLI client
+	pkgver = r22214.6fe5465
+	pkgrel = 1
+	url = https://github.com/hyperhq/hypercli
+	arch = x86_64
+	arch = i686
+	license = Apache
+	makedepends = go
+	makedepends = git
+	provides = hypercli
+	conflicts = hypercli
+	options = !strip
+	source = git+https://github.com/hyperhq/hypercli.git
+	sha512sums = SKIP
+
+pkgname = hypercli-git
+
