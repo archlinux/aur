@@ -3,8 +3,8 @@
 _pkgname=idos-timetable-data-chaps-trains-europe
 pkgname="${_pkgname}-latest"
 epoch=0
-pkgver=2016_10_27
-pkgrel=2
+pkgver=2016_11_8
+pkgrel=1
 pkgdesc="Timetable data for the timetable search engines by CHAPS: European trains."
 arch=(any)
 url="http://chaps.cz/eng/download/idos/zip#kotvatt"

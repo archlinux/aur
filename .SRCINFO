@@ -1,7 +1,7 @@
 pkgbase = idos-timetable-data-chaps-trains-europe-latest
 	pkgdesc = Timetable data for the timetable search engines by CHAPS: European trains.
-	pkgver = 2016_10_27
-	pkgrel = 2
+	pkgver = 2016_11_8
+	pkgrel = 1
 	epoch = 0
 	url = http://chaps.cz/eng/download/idos/zip#kotvatt
 	arch = any
@@ -15,10 +15,10 @@ pkgbase = idos-timetable-data-chaps-trains-europe-latest
 	optdepends = idos-timetable-maps-trains-sk: For displaying routes on (for Slovakia only).
 	optdepends = idos-timetable-additionalinfo-trains-europe: For (links to) additional information about train composition and stations.
 	optdepends = idos-timetable-additionalinfo-trains-sk: For (links to) additional information about train composition and stations (for Slovakia only).
-	provides = idos-timetable-data-chaps-trains-europe=2016_10_27
-	provides = idos-timetable-data=2016_10_27
-	provides = idos-timetable-data-trains=2016_10_27
-	provides = idos-timetable-data-trains-europe=2016_10_27
+	provides = idos-timetable-data-chaps-trains-europe=2016_11_8
+	provides = idos-timetable-data=2016_11_8
+	provides = idos-timetable-data-trains=2016_11_8
+	provides = idos-timetable-data-trains-europe=2016_11_8
 	conflicts = idos-timetable-data-chaps-trains-europe
 	source = vlak16e.zip::http://ttakt.chaps.cz/TTAktual/Win/Zip/VLAK16E.ZIP
 	source = IDOS-Licence.pdf::http://chaps.cz/files/idos/IDOS-Licence.pdf
