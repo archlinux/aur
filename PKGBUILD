@@ -4,7 +4,7 @@ _pkgname=idos-timetable-data-chaps-trains-cz
 pkgname="${_pkgname}-latest"
 epoch=0
 pkgver=2016_10_27
-pkgrel=1
+pkgrel=2
 pkgdesc="Timetable data for the timetable search engines by CHAPS: Czech trains."
 arch=(any)
 url="http://chaps.cz/eng/download/idos/zip#kotvatt"
@@ -39,7 +39,8 @@ provides=(
 
 conflicts=(
   "${_pkgname}"
-  "idos-timetable-data-chaps-all"
+  ### The conflict will be handled by idos-timetable-data-chaps-all, if needed. Sometimes idos-timetable-data-chaps-all does not provide the train data, and then idos-timetable-data-chaps-all will depend on this package, thus this package should not have idos-timetable-data-chaps-all as conflict.
+  # "idos-timetable-data-chaps-all"
 )
 
 source=(
