@@ -1,4 +1,5 @@
-# Maintainer: Myles English <myles at rockhead dot biz>
+# Maintainer: Andreas Bilke <abilke at cosy dot sbg dot ac dot at>
+# Contributor: Myles English <myles at rockhead dot biz>
 pkgname=petsc
 pkgver=3.7.4
 pkgrel=1
