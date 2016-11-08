@@ -2,16 +2,16 @@
 
 pkgname=the-binding-of-isaac
 pkgver=20111101
-pkgrel=4
+pkgrel=5
 pkgdesc="A randomly generated action RPG shooter with heavy Rogue-like elements."
 url="http://www.bindingofisaac.com"
 license=('custom: "commercial"')
 arch=('i686' 'x86_64')
 
-[ "${CARCH}" = "x86_64" ] && depends=('lib32-sqlite3' 'lib32-libidn' 'lib32-libxt' 'lib32-libxxf86vm' 'lib32-gtk2' 'lib32-nss' 'lib32-curl') \
-&& optdepends=('lib32-libvdpau: For flash player hardware acceleration')
-[ "${CARCH}" = "i686" ] && depends=('sqlite3' 'libidn' 'libxt' 'libxxf86vm' 'gtk2' 'nss' 'curl')\
-&& optdepends=('libvdpau: For flash player hardware acceleration') 
+depends_x86_64=('lib32-sqlite' 'lib32-libidn' 'lib32-libxt' 'lib32-libxxf86vm' 'lib32-gtk2' 'lib32-nss' 'lib32-curl')
+optdepends_x86_64=('lib32-libvdpau: For flash player hardware acceleration')
+depends_i686=('sqlite' 'libidn' 'libxt' 'libxxf86vm' 'gtk2' 'nss' 'curl')
+optdepends_x86_64=('libvdpau: For flash player hardware acceleration')
 options=(!strip)
 source=("isaac.desktop" "isaac.png")
 
