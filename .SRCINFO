@@ -1,0 +1,20 @@
+pkgbase = dtagfs-git
+	pkgdesc = Tag-based FUSE virtual file system
+	pkgver = 0.1.0.r0.ga141d74
+	pkgrel = 1
+	url = https://git.fuwafuwa.moe/lesderid/dtagfs
+	arch = i386
+	arch = x86_64
+	license = custom:NCSA
+	makedepends = git
+	makedepends = dub
+	makedepends = d-compiler
+	depends = fuse
+	depends = exempi
+	provides = dtagfs
+	conflicts = dtagfs
+	source = git+https://git.fuwafuwa.moe/lesderid/dtagfs
+	md5sums = SKIP
+
+pkgname = dtagfs-git
+
