@@ -1,7 +1,7 @@
 # Maintainer: neXyon <nexyon at gmail dot com>
 
 pkgname=audaspace-git
-pkgver=0.1.179.a703501
+pkgver=1.3.0.586.ef0e017
 pkgrel=1
 pkgdesc="A feature rich high level audio library."
 arch=('i686' 'x86_64')
@@ -28,7 +28,7 @@ pkgver() {
   hash=$(git log --pretty=format:'%h' -n 1)
   revision=$(git rev-list --count HEAD)
 
-  echo 0.1.$revision.$hash
+  echo 1.3.0.$revision.$hash
 }
 
 build() {
@@ -36,7 +36,8 @@ build() {
   cd build
 
   cmake ../$_gitname \
-    -DCMAKE_INSTALL_PREFIX:PATH=/usr || return 1
+    -DCMAKE_INSTALL_PREFIX:PATH=/usr \
+    -DDEFAULT_PLUGIN_PATH:PATH=/usr/share/audaspace/plugins || return 1
 
   make $MAKEFLAGS || return 1
 }
