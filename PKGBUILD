@@ -2,13 +2,13 @@
 
 pkgname=python-django-debug-toolbar-git
 _gitname=django-debug-toolbar
-pkgver=1.5.r25.gef4bc2b
+pkgver=1.6.r9.gcef000a
 pkgrel=1
 pkgdesc="A configurable set of panels that display various debug information about the current request/response."
-arch=('i686' 'x86_64')
+arch=('any')
 url="https://django-debug-toolbar.readthedocs.io/"
 license=('BSD')
-depends=('python' 'python-django')
+depends=('python' 'python-django' 'python-sqlparse')
 conflicts=('python-django-debug-toolbar')
 provides=('python-django-debug-toolbar')
 makedepends=('git')
