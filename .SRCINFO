@@ -1,7 +1,7 @@
 pkgbase = tclcl
 	pkgdesc = Tcl with classes (TclCl) is a Tcl/C++ interface
 	pkgver = 1.20
-	pkgrel = 5
+	pkgrel = 6
 	url = http://otcl-tclcl.sourceforge.net/tclcl/
 	arch = i686
 	arch = x86_64

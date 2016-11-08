@@ -4,7 +4,7 @@
 
 pkgname=tclcl
 pkgver=1.20
-pkgrel=5
+pkgrel=6
 pkgdesc="Tcl with classes (TclCl) is a Tcl/C++ interface"
 url="http://otcl-tclcl.sourceforge.net/tclcl/"
 license=('MIT')
@@ -24,7 +24,7 @@ prepare() {
 
 build() {
   cd "${srcdir}"/"${pkgname}"-"${pkgver}"
-  ./configure --prefix="${pkgdir}"/usr/lib/tclcl
+  ./configure --prefix="${pkgdir}"/usr/lib/tclcl --enable-static
   make
 }
 
