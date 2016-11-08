@@ -1,7 +1,7 @@
 # Maintainer: Hendrik Sollich <hendrik@hoodie.de>
 _pkgname=asciii
 pkgname=${_pkgname}-git
-pkgver=3.0.0RC # auto
+pkgver=3.0.0 # auto
 pkgrel=1
 makedepends=('rust' 'cargo' 'cmake')
 arch=('i686' 'x86_64')
