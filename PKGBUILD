@@ -1,8 +1,7 @@
 # maintainer : fenugrec
-#todo: fix cmakelists upstream + fix package() here
 #todo: change to git:// url
 pkgname=freediag-git
-pkgver=20150309.134.26cd55b
+pkgver=20161108.463.446bb28
 pkgrel=1
 pkgdesc="OBD-II vehicle diagnostic software and (mostly) J1978 compliant scan tool."
 arch=('i686' 'x86_64')
@@ -29,19 +28,12 @@ pkgver () {
 
 build() {
   cd $srcdir/../builddir
-  cmake $srcdir/freediag -DCMAKE_INSTALL_PREFIX=/usr -DBUILDGUI=ON -DUSE_RCFILE=ON -DUSE_INIFILE=OFF
+  cmake $srcdir/freediag -DCMAKE_INSTALL_PREFIX=/usr -DBUILDGUI=ON -DUSE_RCFILE=ON -DUSE_INIFILE=ON
   make
 }
 
 package () {
   cd $srcdir/../builddir
   make DESTDIR="$pkgdir" install
-  
-  #this garbage is necessary until CMakeLists.txt is improved upstream.
-  install -d "$pkgdir"/usr/share/doc/freediag/carsim_examples
-  mv "$pkgdir"/usr/bin/*.db "$pkgdir"/usr/share/doc/freediag/carsim_examples
-  mv "$pkgdir"/usr/doc/* "$pkgdir"/usr/share/doc/freediag
-  mv "$pkgdir"/usr/{A*,C*,R*} "$pkgdir"/usr/share/doc/freediag
-  rm -r "$pkgdir"/usr/doc
 }
 
