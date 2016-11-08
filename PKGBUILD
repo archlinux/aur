@@ -27,13 +27,18 @@ build() {
 }
 
 package() {
-  mkdir -p "$pkgdir/usr/bin"
+  mkdir -p "$pkgdir"/usr/bin
 
   cd "$pkgname"
   make DESTDIR="$pkgdir" install
 
+  for _f in "$pkgdir"/usr/share/man/man*/*; do
+    rm -f "$_f"
+    cp -a "$pkgdir"/usr/lib/mstpctl-utils/"${_f##*/}" "$_f"
+  done
+
   cd "$srcdir"
-  install -Dm 644 mstpd.service "$pkgdir/usr/lib/systemd/system/mstpd.service"
+  install -Dm 644 mstpd.service "$pkgdir"/usr/lib/systemd/system/mstpd.service
 }
 
 # vim: ft=sh:ts=2:sw=2:et
