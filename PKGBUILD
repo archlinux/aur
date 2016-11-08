@@ -11,7 +11,7 @@ depends=('wine-staging' 'winetricks' 'bash')
 source=("$pkgname"::'git://github.com/Nefelim4ag/League-Of-Legends.git#branch=master')
 md5sums=('SKIP')
 install=leagueoflegends-git.install
-
+backup=("etc/leagueoflegends.conf")
 pkgver() {
   cd ${pkgname}
   echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
