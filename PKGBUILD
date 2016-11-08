@@ -4,7 +4,7 @@
 
 pkgname=kbdd-git
 pkgrel=1
-pkgver=0.7.1
+pkgver=0.7.1.r7.g9dca0b7
 provides=('kbdd')
 conflicts=('kbdd')
 pkgdesc="Simple daemon and library to make per window layout"
@@ -33,5 +33,5 @@ package() {
 
 pkgver() {
     cd "${srcdir}/kbdd"
-    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+    git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }

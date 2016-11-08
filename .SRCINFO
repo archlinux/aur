@@ -1,6 +1,6 @@
 pkgbase = kbdd-git
 	pkgdesc = Simple daemon and library to make per window layout
-	pkgver = 0.7.1
+	pkgver = 0.7.1.r7.g9dca0b7
 	pkgrel = 1
 	url = https://github.com/qnikst/kbdd
 	arch = i686
