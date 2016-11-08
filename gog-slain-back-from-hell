@@ -1,0 +1,4 @@
+#!/bin/bash
+
+gogdir="/opt/gog/slain-back-from-hell"
+"$gogdir"/start.sh

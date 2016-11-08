@@ -1,0 +1,19 @@
+pkgbase = gog-slain-back-from-hell
+	pkgdesc = You control the fate of Bathoryn, a doomed hero in a Gothic world, who seeks to liberate six cursed realms from six deadly overlords.
+	pkgver = 2.2.0.3
+	pkgrel = 1
+	install = gog-slain-back-from-hell.install
+	arch = x86_64
+	license = custom
+	depends = lib32-glibc
+	depends = lib32-alsa-lib
+	depends = lib32-libgl
+	source = local://gog_slain_back_from_hell_2.2.0.3.sh
+	source = gog-slain-back-from-hell
+	source = gog-slain-back-from-hell.desktop
+	sha256sums = SKIP
+	sha256sums = 21b51d22142c31ef5f10de55ac774a47055473a0cbf1724dfec2b946dab2fb4e
+	sha256sums = 76e6dbb9e45fb113b72a3fc190bfa3099ce8d721efa3cf6b2a33c01a9f2a6193
+
+pkgname = gog-slain-back-from-hell
+

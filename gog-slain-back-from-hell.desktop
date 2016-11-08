@@ -1,0 +1,12 @@
+[Desktop Entry]
+Encoding=UTF-8
+Value=1.0
+Type=Application
+Name=Slain Back From Hell
+GenericName=Slain Back From Hell
+Comment=Slain Back From Hell
+Icon=/opt/gog/slain-back-from-hell/support/icon.png
+Exec="/opt/gog/slain-back-from-hell/start.sh"
+Categories=Game;
+Path=/opt/gog/slain-back-from-hell
+
