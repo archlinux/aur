@@ -2,7 +2,7 @@
 
 pkgname=rmmagent
 pkgver=1.0.2
-pkgrel=3
+pkgrel=1-3
 pkgdesc='Remote Monitoring Agent for GFI Languard Dashboard'
 arch=('i686' 'x86_64')
 url='http://languard.gfi.com/'
