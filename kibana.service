@@ -6,7 +6,7 @@ After=elasticsearch.service
 User=nobody
 Group=elasticsearch
 Environment="NODE_ENV=production"
-ExecStart=/usr/bin/node --max-old-space-size=128 /usr/share/kibana/src/cli --quiet --config=/etc/elasticsearch/kibana/kibana.yml
+ExecStart=/usr/bin/node --max-old-space-size=512 /usr/share/kibana/src/cli --quiet --config=/etc/elasticsearch/kibana/kibana.yml
 
 [Install]
 WantedBy=multi-user.target
