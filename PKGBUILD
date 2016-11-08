@@ -1,7 +1,7 @@
 # Maintainer: Tony Lambiris <tony@criticalstack.com>
 
 pkgname=osquery-git
-pkgver=2.0.0.r8.gfa0e15a
+pkgver=2.1.2.r8.g0b62245
 pkgrel=1
 epoch=
 pkgdesc="SQL powered operating system instrumentation, monitoring, and analytics."
@@ -9,9 +9,10 @@ arch=(any)
 url="https://osquery.io"
 license=('BSD')
 groups=()
-depends=('asio' 'audit' 'aws-sdk-cpp-git' 'boost' 'boost-libs' 'clang' 'cmake'
-		 'doxygen' 'gflags' 'git' 'google-glog' 'lsb-release' 'make' 'python'
-		 'python-jinja' 'python-pip' 'sleuthkit' 'snappy' 'thrift' 'yara')
+depends=('asio' 'audit' 'aws-sdk-cpp-git' 'boost' 'boost-libs' 'clang'
+		 'cmake' 'doxygen' 'gflags' 'git' 'google-glog' 'linenoise'
+		 'lsb-release' 'make' 'python' 'python-jinja' 'python-pip'
+		 'sleuthkit' 'snappy' 'thrift' 'yara')
 makedepends=('python-jinja' 'python-psutil' 'python-pexpect' 'rocksdb-lite'
 			 'benchmark' 'cpp-netlib' 'magic' 'unzip' 'wget')
 checkdepends=()
@@ -23,17 +24,19 @@ backup=('etc/osquery/osquery.conf')
 options=()
 install=
 changelog=
-_gitcommit="fa0e15ae1090fcf676d15bfed6c803e8a015d52c"
+_gitcommit="0b62245848992f2d670b794970b31352fbb15121"
 source=("${pkgname}::git+https://github.com/facebook/osquery#commit=${_gitcommit}"
 		"osqueryd.conf.d"
 		"osqueryd.service"
+		"linenoise.h"
 		"arch-linux.patch")
 noextract=()
 validpgpkeys=()
 sha256sums=('SKIP'
             '3aea1799571f6ddab8d4c9820686fb64e7989e8121a98747a65326cd9f62f7e1'
             '7b1082c9a74e11b02fa6d8410e987db64be2e097f84fcd346e7feef8c1e8a104'
-            'b39fd6563f02bcade66a2cb30a410177a53eb415d49fc74745e6b1c2def56166')
+            'ffbd01592bd82771e23b4a85b827df6c1f832bca516389837f4892593c55b105'
+            '3331551b1cf61036d0eb5d2867cda3f3f7be3ff86666685e40595d8c63626a21')
 
 _gitname=${pkgname}
 
@@ -49,7 +52,8 @@ prepare() {
 	git reset HEAD --hard
 	git submodule update --init
 
-	patch -p1 -i "${srcdir}/arch-linux.patch"
+	cp -fv "${srcdir}/linenoise.h" "osquery/devtools/linenoise.h"
+	patch -p1 -F3 -i "${srcdir}/arch-linux.patch"
 
 	find . -type f -name '*apt_sources*' -delete
 	find . -type f -name '*deb_package*' -delete
@@ -69,9 +73,11 @@ build() {
 	#SQLITE_DEBUG=True # Enable SQLite query debugging (very verbose!)
 	#export SKIP_TESTS=True SKIP_BENCHMARKS=True
 
+	export PACKAGE=1
 	cmake -Wno-dev \
 		-DCMAKE_INSTALL_PREFIX=/usr \
-		-DCMAKE_VERBOSE_MAKEFILE=OFF
+		-DCMAKE_VERBOSE_MAKEFILE=OFF \
+		-DOSQUERY_BUILD_RELEASE=ON
 
 	make -j $(nproc) all
 }

@@ -1,20 +1,3 @@
-diff --git a/osquery/CMakeLists.txt b/osquery/CMakeLists.txt
-index a2e5608..ad5ea6e 100644
---- a/osquery/CMakeLists.txt
-+++ b/osquery/CMakeLists.txt
-@@ -45,9 +45,9 @@ if(WINDOWS)
- else()
-   ADD_OSQUERY_LINK_CORE("libpthread")
-   ADD_OSQUERY_LINK_CORE("libz")
--  ADD_OSQUERY_LINK_CORE("boost_system-mt")
--  ADD_OSQUERY_LINK_CORE("boost_filesystem-mt")
--  ADD_OSQUERY_LINK_CORE("boost_regex-mt")
-+  ADD_OSQUERY_LINK_CORE("boost_system")
-+  ADD_OSQUERY_LINK_CORE("boost_filesystem")
-+  ADD_OSQUERY_LINK_CORE("boost_regex")
-   ADD_OSQUERY_LINK_CORE("rocksdb_lite")
-   ADD_OSQUERY_LINK_CORE("snappy")
-   ADD_OSQUERY_LINK_CORE("gflags")
 diff --git a/tools/provision.sh b/tools/provision.sh
 index c363196..31019ff 100755
 --- a/tools/provision.sh
@@ -29,10 +12,10 @@ index c363196..31019ff 100755
    # and various compilers/library dependencies.
    if [[ ! -d "$DEPS_DIR" ]]; then
 diff --git a/osquery/tables/CMakeLists.txt b/osquery/tables/CMakeLists.txt
-index c8fe70d..ae85ff4 100644
+index bda94a8..d4631f3 100644
 --- a/osquery/tables/CMakeLists.txt
 +++ b/osquery/tables/CMakeLists.txt
-@@ -77,8 +77,8 @@ else()
+@@ -76,8 +76,8 @@ else()
    ADD_OSQUERY_LINK_ADDITIONAL("magic")
    ADD_OSQUERY_LINK_ADDITIONAL("tsk")
 
@@ -43,3 +26,53 @@ index c8fe70d..ae85ff4 100644
  endif()
 
  if(APPLE OR LINUX)
+diff --git a/specs/windows/services.table b/specs/windows/services.table
+index 3acf0c5..bd7612b 100644
+--- a/specs/windows/services.table
++++ b/specs/windows/services.table
+@@ -12,7 +12,7 @@ schema([
+     Column("path", TEXT, "Path to Service Executable"),
+     Column("module_path", TEXT, "Path to ServiceDll"),
+     Column("description", TEXT, "Service Description"),
+-    Column("user_account", TEXT, "The name of the account that the service process will be logged on as when it runs. This name can be of the form Domain\UserName. If the account belongs to the built-in domain, the name can be of the form .\UserName."),
++    Column("user_account", TEXT, "The name of the account that the service process will be logged on as when it runs. This name can be of the form Domain\\UserName. If the account belongs to the built-in domain, the name can be of the form .\\UserName."),
+ ])
+ implementation("system/windows/services@genServices")
+ examples([
+diff --git a/osquery/CMakeLists.txt b/osquery/CMakeLists.txt
+index c6c9a84..097f91c 100644
+--- a/osquery/CMakeLists.txt
++++ b/osquery/CMakeLists.txt
+@@ -55,8 +55,8 @@ if(WINDOWS)
+ else()
+   ADD_OSQUERY_LINK_CORE("libpthread")
+   ADD_OSQUERY_LINK_CORE("libz")
+-  ADD_OSQUERY_LINK_CORE("boost_system-mt")
+-  ADD_OSQUERY_LINK_CORE("boost_filesystem-mt")
++  ADD_OSQUERY_LINK_CORE("boost_system")
++  ADD_OSQUERY_LINK_CORE("boost_filesystem")
+   ADD_OSQUERY_LINK_CORE("gflags")
+   ADD_OSQUERY_LINK_CORE("thrift")
+   ADD_OSQUERY_LINK_CORE("lz4")
+@@ -79,7 +79,7 @@ ADD_OSQUERY_LINK_ADDITIONAL("cppnetlib-uri")
+ ADD_OSQUERY_LINK_ADDITIONAL("cppnetlib-client-connections")
+
+ if(NOT WINDOWS)
+-  ADD_OSQUERY_LINK_ADDITIONAL("boost_regex-mt")
++  ADD_OSQUERY_LINK_ADDITIONAL("boost_regex")
+   ADD_OSQUERY_LINK_ADDITIONAL("rocksdb_lite")
+   ADD_OSQUERY_LINK_ADDITIONAL("snappy")
+   ADD_OSQUERY_LINK_ADDITIONAL("ssl")
+diff --git a/osquery/devtools/shell.cpp b/osquery/devtools/shell.cpp
+index eda12da..bb03f5a 100644
+--- a/osquery/devtools/shell.cpp
++++ b/osquery/devtools/shell.cpp
+@@ -29,7 +29,7 @@
+ #include <readline/readline.h>
+ #endif
+
+-#include <linenoise.h>
++#include "linenoise.h"
+ #include <sqlite3.h>
+
+ #include <boost/algorithm/string/predicate.hpp>

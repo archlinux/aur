@@ -1,6 +1,6 @@
 pkgbase = osquery-git
 	pkgdesc = SQL powered operating system instrumentation, monitoring, and analytics.
-	pkgver = 2.0.0.r8.gfa0e15a
+	pkgver = 2.1.2.r8.g0b62245
 	pkgrel = 1
 	url = https://osquery.io
 	arch = any
@@ -25,6 +25,7 @@ pkgbase = osquery-git
 	depends = gflags
 	depends = git
 	depends = google-glog
+	depends = linenoise
 	depends = lsb-release
 	depends = make
 	depends = python
@@ -35,14 +36,16 @@ pkgbase = osquery-git
 	depends = thrift
 	depends = yara
 	backup = etc/osquery/osquery.conf
-	source = osquery-git::git+https://github.com/facebook/osquery#commit=fa0e15ae1090fcf676d15bfed6c803e8a015d52c
+	source = osquery-git::git+https://github.com/facebook/osquery#commit=0b62245848992f2d670b794970b31352fbb15121
 	source = osqueryd.conf.d
 	source = osqueryd.service
+	source = linenoise.h
 	source = arch-linux.patch
 	sha256sums = SKIP
 	sha256sums = 3aea1799571f6ddab8d4c9820686fb64e7989e8121a98747a65326cd9f62f7e1
 	sha256sums = 7b1082c9a74e11b02fa6d8410e987db64be2e097f84fcd346e7feef8c1e8a104
-	sha256sums = b39fd6563f02bcade66a2cb30a410177a53eb415d49fc74745e6b1c2def56166
+	sha256sums = ffbd01592bd82771e23b4a85b827df6c1f832bca516389837f4892593c55b105
+	sha256sums = 3331551b1cf61036d0eb5d2867cda3f3f7be3ff86666685e40595d8c63626a21
 
 pkgname = osquery-git
 
