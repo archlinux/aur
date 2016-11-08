@@ -1,7 +1,7 @@
 # Maintainer: Abdó Roig-Maranges <abdo.roig@gmail.com>
 
 pkgname=extempore-git
-pkgver=0.6.0
+pkgver=0.7.0.r228.g6adb2de
 pkgrel=1
 pkgdesc="A cyber-physical programming environment for live coding"
 arch=('i686' 'x86_64')
@@ -31,13 +31,16 @@ build() {
   mkdir -p "${srcdir}/build"
   cd "${srcdir}/build"
 
-  cmake -DCMAKE_INSTALL_PREFIX=/usr \
+  cmake -DCMAKE_INSTALL_PREFIX=/opt \
         -DJACK=ON \
         -DBUILD_DEPS=ON \
         -DPACKAGE=ON \
         ../extempore
 
   make extempore aot_extended assets
+
+  cd "${srcdir}/extempore/docs"
+  make man
 }
 
 package() {
@@ -45,7 +48,14 @@ package() {
 
   make DESTDIR="${pkgdir}/" install
 
-  # TODO: add symlink or launcher script at /usr/bin
+  # emacs and vim files
+  install -D "${srcdir}/extempore/extras/extempore.el" "${pkgdir}/usr/share/emacs/site-lisp/extempore/extempore.el"
+  install -D "${srcdir}/extempore/extras/extempore.vim" "${pkgdir}/usr/share/vim/vimfiles/plugin/extempore.vim"
+
+  # manual page
+  install -D "${srcdir}/extempore/docs/_build/man/extempore.1" "${pkgdir}/usr/share/man/man1/extempore.1"
+
+  ln -s /opt/extempore/extempore "${pkgdir}/usr/bin/extempore"
 }
 
 
