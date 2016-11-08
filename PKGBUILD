@@ -5,8 +5,8 @@
 
 _pkgname=slic3r
 pkgname=${_pkgname}-prusa3d
-pkgver=1.31.2
-pkgrel=3
+pkgver=1.31.3
+pkgrel=1
 pkgdesc="Updated Slic3r by Prusa3D with many bugfixes and new features"
 arch=('i686' 'x86_64' 'armv6' 'armv6h' 'armv7h')
 url="http://www.prusa3d.com/"
@@ -34,26 +34,20 @@ md5sums=('SKIP'
 prepare() {
   cd "${srcdir}/Slic3r"
   patch -p1 -i "$srcdir/Move-Slic3r-data-to-usr-share-slic3r.patch"
-  sed -i 's/lglu/lGLU/g' xs/Build.PL
-  sed -i 's/lgl/lGL/g' xs/Build.PL
-  sed -i 's/-DGLEW_STATIC//g' xs/Build.PL
 }
 
 build() {
   cd "${srcdir}/Slic3r/xs"
-  CFLAGS+=' -std=c++11'
   unset PERL5LIB PERL_MM_OPT PERL_MB_OPT PERL_LOCAL_LIB_ROOT
   export PERL_MM_USE_DEFAULT=1 MODULEBUILDRC=/dev/null
-  export SLIC3R_GUI=1
   /usr/bin/perl Build.PL
   ./Build
 }
 
 check () {
-  cd "${srcdir}/Slic3r/xs"
-  unset PERL5LIB PERL_MM_OPT PERL_MB_OPT PERL_LOCAL_LIB_ROOT
-  export PERL_MM_USE_DEFAULT=1
-  ./Build test
+  cd "${srcdir}/Slic3r"
+  prove -Ixs/blib/arch -Ixs/blib/lib/ xs/t/
+  prove -Ixs/blib/arch -Ixs/blib/lib/ t/
 }
 
 package () {
