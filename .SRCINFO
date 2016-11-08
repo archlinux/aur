@@ -1,0 +1,15 @@
+pkgbase = python-id3parse
+	pkgdesc = A parser and serializer for ID3v2 tags
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/frececroka/id3parse.py/
+	arch = any
+	license = MIT
+	makedepends = python
+	makedepends = python-setuptools
+	depends = python
+	source = https://pypi.python.org/packages/d9/fa/ab128ac6534bd6ab2ecceaa9b71844d2d45245df2f746e82b19020c8fd26/id3parse-0.1.1.tar.gz
+	md5sums = 20611aca4ff0ceb7b94a3d0287267a10
+
+pkgname = python-id3parse
+
