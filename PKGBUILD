@@ -7,7 +7,7 @@
 pkgname=python-owm
 pkgver=2.5.0
 pkgrel=1
-pkgdesc="a wrapper for the OpenWeatherMap API"
+pkgdesc="A wrapper for the OpenWeatherMap API"
 arch=('any')
 url="https://github.com/csparpa/pyowm"
 license=('MIT')
