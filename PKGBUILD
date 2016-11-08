@@ -1,6 +1,6 @@
 # Maintainer: Timofey Titovets <nefelim4ag@gmail.com>
 
-pkgname=ananicy-git
+pkgname=leagueoflegends-git
 pkgver=1.0
 pkgrel=1
 pkgdesc="League Of Legends: Install/Run wrapper"
