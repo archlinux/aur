@@ -1,0 +1,18 @@
+pkgbase = lib32-libgtkhtml
+	pkgdesc = An HTML library for GTK
+	pkgver = 2.11.1
+	pkgrel = 1
+	url = http://www.gnome.org
+	arch = x86_64
+	groups = lib32
+	license = GPL
+	makedepends = gcc-multilib
+	makedepends = gcc-libs-multilib
+	depends = lib32-gtk2>=2.22.1
+	depends = lib32-libxml2>=2.7.8
+	options = !libtool
+	source = http://ftp.gnome.org/pub/GNOME/sources/libgtkhtml/2.11/libgtkhtml-2.11.1.tar.gz
+	sha256sums = 905efcb61ca0cf3b876af55d4ee2a7685472594c2bd5d318b00fb289d5de6c3b
+
+pkgname = lib32-libgtkhtml
+
