@@ -1,7 +1,7 @@
 pkgbase = cpufreqd
 	pkgdesc = A small daemon to adjust cpu speed (and indeed voltage)
 	pkgver = 2.4.2
-	pkgrel = 9
+	pkgrel = 10
 	url = http://www.linux.it/~malattia/wiki/index.php/Cpufreqd
 	arch = i686
 	arch = x86_64
