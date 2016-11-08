@@ -11,7 +11,7 @@ pkgdesc='The GNOME Terminal Emulator with Fedora patches'
 arch=('i686' 'x86_64')
 url='https://wiki.gnome.org/Apps/Terminal'
 license=('GPL')
-depends=('vte3-notification>=0.46.0' 'gsettings-desktop-schemas' 'dconf' 'gtk3>=3.12.0' 'glib2>=2.42.0')
+depends=('vte3-notification>=0.46.1-2' 'gsettings-desktop-schemas' 'dconf' 'gtk3>=3.12.0' 'glib2>=2.42.0')
 makedepends=('gnome-doc-utils' 'intltool' 'itstool' 'docbook-xsl' 'desktop-file-utils'
              'libnautilus-extension' 'appdata-tools' 'gnome-shell' 'gconf' 'vala' 'yelp-tools')
 provides=("${_pkgname}=${pkgver}")
@@ -22,21 +22,21 @@ groups=('gnome')
 source=(
 	"https://download.gnome.org/sources/${_pkgname}/${pkgver::4}/${_pkgname}-${pkgver}.tar.xz"
 	'0001-build-Don-t-treat-warnings-as-errors.patch'
-	'gnome-terminal-transparency-notify.patch'
+	'gnome-terminal-notify-open-title-transparency.patch'
 	'org.gnome.Terminal.gschema.override'
 )
 sha256sums=(
 	'b00752336eb22d6d9f10c863c166ac73dcbb2ce4b280abdc0c78337e261bb0d4'
 	'83c42ed513e374c181b23da4f9fce39e197c1e09ae328147b2b2bcdfbc4c99d7'
-	'd8f23d2e708e48744d6a730f9d695eec9f169d0e58313ff9a5b019aabcc9dbc0'
+	'3b35e56a397aca2d92f49ae8cdcfbee8d73024c2c3342fb74a70c50fcee0a999'
 	'5409b35d1940443d29d810de0560d3303eb74c009e661e8fbfa1030e5ffde92e'
 )
 
 prepare () {
 	cd "${_pkgname}-${pkgver}"
 
-	patch -Np1 -i '../0001-build-Don-t-treat-warnings-as-errors.patch'
-	patch -Np1 -i '../gnome-terminal-transparency-notify.patch'
+	patch -p1 -i '../0001-build-Don-t-treat-warnings-as-errors.patch'
+	patch -p1 -i '../gnome-terminal-notify-open-title-transparency.patch'
 
 	autoreconf -fvi
 }
