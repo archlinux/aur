@@ -6,9 +6,8 @@ pkgbase = dlt-viewer
 	arch = x86_64
 	arch = i686
 	license = GPLv2
-	makedepends = qt5-base
 	depends = qt5-base
-	optdepends = xdg-utils
+	depends = qt5-serialport
 	source = git://github.com/GENIVI/dlt-viewer.git#commit=c52fcd34b46a65780c3a43c2b6e7fe85f4385c79
 	sha256sums = SKIP
 
