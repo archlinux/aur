@@ -6,7 +6,7 @@
 
 pkgname=cpufreqd
 pkgver=2.4.2
-pkgrel=9
+pkgrel=10
 pkgdesc="A small daemon to adjust cpu speed (and indeed voltage)"
 arch=('i686' 'x86_64')
 url="http://www.linux.it/~malattia/wiki/index.php/Cpufreqd"
@@ -24,7 +24,7 @@ md5sums=('2ca80a77849c9a69b81e27c1843c97f5'
          '4d0fafbdb5f1b7313fdeb6f1250ef34f'
          '4213dced234d7700dd012d3f63349cd1'
          'd0df76dce1bc6cc021b199f820b748b9'
-         'cbc349fa8d4e83a45e9c9e45356648be')
+         '7debc75713aff93e0545b80821099810')
 
 build() {
   cd ${srcdir}

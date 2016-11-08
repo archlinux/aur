@@ -16,7 +16,7 @@
 -AC_CHECK_LIB([cpufreq], [cpufreq_cpu_exists],
 -		[ CPUFREQD_LDFLAGS="${CPUFREQD_LDFLAGS} -lcpufreq" ],
 -		[ AC_MSG_ERROR([You need libcpufreq from cpufrequtils to build cpufreqd]) ])
-+AC_CHECK_LIB([cpupower], [cpufreq_cpu_exists],
++AC_CHECK_LIB([cpupower], [cpufreq_get_freq_kernel],
 +		[ CPUFREQD_LDFLAGS="${CPUFREQD_LDFLAGS} -lcpupower" ],
 +		[ AC_MSG_ERROR([You need libcpupower from cpupower to build cpufreqd]) ])
  AC_SUBST(CPUFREQD_LDFLAGS)
