@@ -1,0 +1,21 @@
+post_install() {
+	systemd-sysusers webvirtcloud.conf
+
+	cat <<- EOF
+	If you want to change admin, you need to run: 
+	# /usr/lib/webvirtcloud/bin/createsupersu.sh
+
+	# sudo systemctl endable webvirtcloud.service
+
+	Port info
+		WebVirtCloud : 8006
+		NoVNC : 6080
+
+	Sample nginx conf file stored in /usr/lib/webvirtcloud/conf/nginx/webvirtcloud.conf
+	EOF
+}
+
+post_upgrade() {
+	/usr/lib/webvirtcloud/manage.sh mirgrate --noinput
+}
+

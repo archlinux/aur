@@ -1,0 +1,3 @@
+u webvirtcloud 600 "WebVirtCloud" /var/lib/webvirtcloud
+g webvirtcloud 600
+

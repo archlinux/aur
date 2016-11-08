@@ -1,0 +1,17 @@
+[Unit]
+Description=WebVirtCloud novncd
+Requires=webvirtcloud.service
+After=network.target
+After=local-fs.target
+After=remote-fs.target
+After=webvirtcloud.target
+#After=libvirtd.target
+
+[Service]
+Type=simple
+User=webvirtcloud
+Group=webvirtcloud
+ExecStart=/usr/lib/webvirtcloud/bin/webvirtcloud-novncd.sh
+
+[Install]
+WantedBy=multi-user.target
