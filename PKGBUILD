@@ -5,8 +5,10 @@ pkgver=v3.0.0RC # auto
 pkgrel=1
 makedepends=('rust' 'cargo' 'cmake')
 arch=('i686' 'x86_64')
-source=("git+https://github.com/hoodie/asciii-rs.git")
+source=("git+https://github.com/ascii-dresden/asciii-rs.git")
 md5sums=('SKIP')
+replaces=('asciii')
+license=('MIT/Apache-2.0')
 
 
 
