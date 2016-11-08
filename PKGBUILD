@@ -4,7 +4,7 @@
 
 pkgname=otcl
 pkgver=1.14
-pkgrel=6
+pkgrel=7
 pkgdesc="An extension to Tcl/Tk for object-oriented programming"
 url="http://otcl-tclcl.sourceforge.net/otcl/"
 license=('MIT')
@@ -28,7 +28,7 @@ build() {
   MAKEFLAGS=-j1
 
   cd "${srcdir}"/"${pkgname}"-"${pkgver}"
-  ./configure --prefix="${pkgdir}"/usr
+  ./configure --prefix="${pkgdir}"/usr --enable-static
   make
 }
 
