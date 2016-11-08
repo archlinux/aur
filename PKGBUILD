@@ -35,8 +35,6 @@ provides=('airtime')
 replaces=('airtime')
 backup=('etc/airtime/airtime.conf'
         'etc/airtime/airtime.ini'
-        'etc/airtime/apache.vhost.tpl'
-        'etc/airtime/apache24.vhost.tpl'
         'etc/logrotate.d/airtime-liquidsoap'
         'etc/logrotate.d/airtime-php')
 install=airtime.install
@@ -87,11 +85,8 @@ package() {
     install -d -m777 "${pkgdir}/var/tmp/airtime"
 
     install -d -m655 "${pkgdir}/etc/airtime"
-    install -d -m655 "${pkgdir}/etc/airtime/php"
-    install -d -m655 "${pkgdir}/etc/airtime/apache"
-    install -d -m655 "${pkgdir}/etc/airtime/nginx"
 
-    install -D -m 755 "installer/php/airtime.ini" "${pkgdir}/etc/airtime/php/airtime.ini"
+    install -D -m 755 "installer/php/airtime.ini" "${pkgdir}/etc/php/conf.d/airtime.ini"
     install -D -m 755 ../httpd-airtime.conf "${pkgdir}/etc/httpd/conf/extra/httpd-airtime.conf"
 
     install -D -m 755 ../airtime-media-monitor.service "${pkgdir}/usr/lib/systemd/system/airtime-media-monitor.service"
