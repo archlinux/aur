@@ -54,6 +54,14 @@ pkgver() {
   git describe --long --match=v\* | sed 's/^v//;s/-/+/g'
 }
 
+prepare() {
+  cd "$srcdir/wireshark"
+
+  # For .desktop and icon files. https://code.wireshark.org/review/18708
+  git fetch https://code.wireshark.org/review/wireshark refs/changes/08/18708/1 &&
+  git cherry-pick --no-commit FETCH_HEAD
+}
+
 build() {
   cd "$srcdir/wireshark"
   mkdir -p build
