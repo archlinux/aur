@@ -1,0 +1,15 @@
+pkgbase = pipeline-git
+	pkgdesc = A tool to help with quick iteration on complex shell pipelines.
+	pkgver = r25.02303e6
+	pkgrel = 1
+	url = https://github.com/skelterjohn/pipeline
+	arch = i686
+	arch = x86_64
+	license = Apache
+	makedepends = go
+	makedepends = git
+	source = pipeline-git::git+https://github.com/skelterjohn/pipeline
+	md5sums = SKIP
+
+pkgname = pipeline-git
+
