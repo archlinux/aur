@@ -1,28 +1,30 @@
-# Maintainer: Michael Schubert <mschu.dev at gmail>
-pkgname=gnome-shell-extension-system-monitor-git
-_pkgname=gnome-shell-system-monitor-applet
-pkgver=r704.8b31f07
-pkgrel=1
-pkgdesc="speed up gnome-shell animations"
-arch=('any')
-url="https://github.com/paradoxxxzero/gnome-shell-system-monitor-applet"
-license=('GPL3')
-depends=('gnome-shell')
-makedepends=('git')
-install='gschemas.install'
-source=("git+https://github.com/paradoxxxzero/gnome-shell-system-monitor-applet")
-md5sums=('SKIP')
+# Maintainer: Daniel Milde <daniel@milde.cz>
+# Contributor: Florian Mounier aka paradoxxxzero <paradoxxx.zero@gmail.com>
+# Contributor: Michael Schubert <mschu.dev at gmail> 
 
-pkgver() {
-  cd "$srcdir/$_pkgname"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
+pkgname=gnome-shell-extension-system-monitor-git
+pkgver=704.8b31f07
+_gitname=gnome-shell-system-monitor-applet
+pkgrel=2
+pkgdesc="System monitor extension for Gnome-Shell (display mem swap cpu usage)"
+arch=('any')
+url="http://github.com/paradoxxxzero/gnome-shell-system-monitor-applet"
+license=('GPL3')
+depends=('gnome-shell>=3.10' 'libgtop' 'networkmanager')
+makedepends=('git')
+provides=("system-monitor-applet gnome-shell-system-monitor-applet-git")
+replaces=("gnome-shell-system-monitor-applet-git")
+conflicts=("gnome-shell-system-monitor-applet-git")
+source=('git://github.com/paradoxxxzero/gnome-shell-system-monitor-applet.git')
+sha1sums=('SKIP')
 
 package() {
-  cd "$srcdir/$_pkgname"
+    cd "$srcdir/$_gitname"
+    mkdir -p "$pkgdir/usr/share/gnome-shell/extensions/"
+    cp -R "system-monitor@paradoxxx.zero.gmail.com" "$pkgdir/usr/share/gnome-shell/extensions"
+}
 
-  for i in $(find -type f)
-    do
-        install -Dm 644 $i $pkgdir/usr/share/gnome-shell/extensions/$i
-  done
+pkgver() {
+  cd $_gitname
+  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
 }
