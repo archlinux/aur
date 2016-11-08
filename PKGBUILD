@@ -6,6 +6,7 @@ pkgver=2.3.0rc0+1430+g7531318
 pkgrel=1
 pkgdesc="A free network protocol analyzer for Unix/Linux. GIT version"
 arch=('i686' 'x86_64')
+url="https://www.wireshark.org/"
 license=('GPL2')
 depends=(
         'c-ares'
@@ -16,7 +17,6 @@ depends=(
 
         # wireshark-qt dependencies
         'qt5-multimedia'
-        'qt5-svg'
         'qt5-tools'
         # wireshark-gtk (deprecated) depedencies
         #'portaudio'
@@ -34,17 +34,19 @@ depends=(
 
         # extcap (sshdump, etc.)
         'libssh'
-        )
+)
+optdepends=(
+        'qt5-svg: for SVG icons in the Qt GUI'
+)
 # perl-parse-yapp is only needed as build-time dependency if you are actually
 # going to regenerate pidl dissectors (unlikely for the majority of users).
 makedepends=('cmake' 'git' 'ninja' 'python')
-url="https://www.wireshark.org/"
-source=("git+https://code.wireshark.org/git/wireshark")
-sha256sums=('SKIP')
-replaces=('ethereal')
 provides=('wireshark')
 conflicts=('wireshark-common' 'wireshark-gtk' 'wireshark-qt' 'wireshark-cli')
+replaces=('ethereal')
 install=$pkgname.install
+source=("git+https://code.wireshark.org/git/wireshark")
+sha256sums=('SKIP')
 
 
 pkgver() {
