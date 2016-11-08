@@ -1,0 +1,15 @@
+pkgbase = python-common
+	pkgdesc = Common tools and data structures implemented in pure python.
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://pypi.python.org/pypi/common
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	provides = python-common
+	source = https://pypi.python.org/packages/eb/b2/c900168d36abd28b1b08a81387835eff8b574bc6c2e9fefb5c4a38135d94/common-0.1.2.tar.gz
+	md5sums = a3fc474353300d0e1f60c21aca7dd47f
+
+pkgname = python-common
+
