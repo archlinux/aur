@@ -6,7 +6,7 @@ groups=('zarafa'
 	'kopano'
 	'zarafa-webapp-plugins')
 pkgver=1.0.31
-pkgrel=70
+pkgrel=71
 pkgdesc='Smime plugin for Zarafa Webapp'
 arch=('any')
 source=("https://download.zarafa.com/community/final/WebApp/plugins/SMIME%201.0/fedora-21/x86_64/zarafa-webapp-plugins-smime-1.0-31.1.noarch.rpm"
