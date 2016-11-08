@@ -1,6 +1,7 @@
 # Maintainer: Dimitrios Vogiatzis <me@dimtree.net>
 
 pkgname=pipeline-git
+_pkgname=pipeline
 pkgver=r25.02303e6
 pkgrel=1
 pkgdesc="A tool to help with quick iteration on complex shell pipelines."
@@ -30,7 +31,7 @@ build() {
 
 package() {
     cd "$pkgname"
-    install -Dm755 "$pkgname" "$pkgdir/usr/bin/$pkgname"
+    install -Dm755 "$pkgname" "$pkgdir/usr/bin/$_pkgname"
 }
 
 # vim:ft=sh
