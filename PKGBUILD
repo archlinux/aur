@@ -7,7 +7,7 @@
 
 pkgbase=ppsspp-git
 pkgname=('ppsspp-git' 'ppsspp-qt-git')
-pkgver=1.2.2.r353.a4ca07e
+pkgver=1.3.r146.9c08b60
 pkgrel=1
 pkgdesc='A PSP emulator written in C++'
 arch=('i686' 'x86_64')
@@ -16,7 +16,7 @@ license=('GPL2')
 depends=('gcc-libs' 'glew' 'glibc' 'libgl' 'libzip' 'sdl2' 'zlib'
          'libavcodec.so' 'libavformat.so' 'libavutil.so' 'libswresample.so'
          'libswscale.so')
-makedepends=('cmake' 'git' 'glu' 'qt5-tools')
+makedepends=('cmake' 'git' 'glu' 'qt5-multimedia' 'qt5-tools')
 source=('git+https://github.com/hrydgard/ppsspp.git'
         'git+https://github.com/hrydgard/ppsspp-lang.git'
         'ppsspp-armips::git+https://github.com/Kingcom/armips.git'
@@ -35,7 +35,7 @@ pkgver() {
 prepare() {
   cd ppsspp
 
-  for submodule in lang ext/armips; do
+  for submodule in assets/lang ext/armips; do
     git submodule init ${submodule}
     git config submodule.${submodule}.url ../ppsspp-${submodule#*/}
     git submodule update ${submodule}
@@ -54,13 +54,17 @@ build() {
 
   cmake .. \
     -DCMAKE_BUILD_TYPE='Release' \
-    -DCMAKE_SKIP_RPATH='TRUE' \
-    -DUSE_SYSTEM_FFMPEG='TRUE'
+    -DCMAKE_SKIP_RPATH='ON' \
+    -DUSE_SYSTEM_FFMPEG='ON'
   make
 
   cd ../build-qt
 
-  qmake-qt5 CONFIG+='release' CONFIG+='system_ffmpeg' ../Qt/PPSSPPQt.pro
+  cmake .. \
+    -DCMAKE_BUILD_TYPE='Release' \
+    -DCMAKE_SKIP_RPATH='ON' \
+    -DUSE_SYSTEM_FFMPEG='ON' \
+    -DUSING_QT_UI='ON'
   make
 }
 
@@ -70,23 +74,26 @@ package_ppsspp-git() {
 
   cd ppsspp/build-sdl
 
-  install -dm 755 "${pkgdir}"/usr/{bin,share/{applications,man/man1,pixmaps,ppsspp}}
+  install -dm 755 "${pkgdir}"/usr/{bin,share/{applications,icons,man/man1,pixmaps,ppsspp}}
   install -m 755 PPSSPPSDL "${pkgdir}"/usr/bin/ppsspp
   cp -dr --no-preserve='ownership' assets "${pkgdir}"/usr/share/ppsspp/
-  install -m 644 ../assets/unix-icons/icon-512.svg "${pkgdir}"/usr/share/pixmaps/ppsspp.svg
+  cp -dr --no-preserve='ownership' ../icons/hicolor "${pkgdir}"/usr/share/icons/
+  install -m 644 ../icons/icon-512.svg "${pkgdir}"/usr/share/pixmaps/ppsspp.svg
   install -m 644 ../../ppsspp.desktop "${pkgdir}"/usr/share/applications/
 }
 
 package_ppsspp-qt-git() {
-  depends+=('qt5-base')
+  depends+=('qt5-base' 'qt5-multimedia')
   provides=('ppsspp')
   conflicts=('ppsspp' 'ppsspp-git' 'ppsspp-qt')
 
   cd ppsspp/build-qt
 
   install -dm 755 "${pkgdir}"/usr/{bin,share/{applications,man/man1,pixmaps}}
-  install -m 755 ppsspp "${pkgdir}"/usr/bin/
-  install -m 644 ../assets/unix-icons/icon-512.svg "${pkgdir}"/usr/share/pixmaps/ppsspp.svg
+  install -m 755 PPSSPPQt "${pkgdir}"/usr/bin/ppsspp
+  cp -dr --no-preserve='ownership' assets "${pkgdir}"/usr/share/ppsspp/
+  cp -dr --no-preserve='ownership' ../icons/hicolor "${pkgdir}"/usr/share/icons/
+  install -m 644 ../icons/icon-512.svg "${pkgdir}"/usr/share/pixmaps/ppsspp.svg
   install -m 644 ../../ppsspp.desktop "${pkgdir}"/usr/share/applications/
 }
 
