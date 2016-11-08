@@ -4,7 +4,7 @@
 
 pkgname=ns
 pkgver=2.35
-pkgrel=7
+pkgrel=8
 pkgdesc="Discrete event simulator targeted at networking research"
 url="http://www.isi.edu/nsnam/ns/"
 license=('GPL')
@@ -35,7 +35,7 @@ prepare() {
 
 build() {
   cd "${srcdir}"/"${pkgname}"-"${pkgver}"
-  ./configure --prefix=/usr --with-tclcl=/usr/lib/tclcl
+  ./configure --prefix=/usr --with-tclcl=/usr/lib/tclcl --enable-static
   make
 }
 
