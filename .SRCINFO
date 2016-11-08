@@ -1,6 +1,6 @@
 pkgbase = mod_tile-git
 	pkgdesc = Mod tile is an apache module to serve raster Mapnik tiles
-	pkgver = 0.4.r229.g4f9b9f1
+	pkgver = 0.4.r276.g7211cb7
 	pkgrel = 1
 	url = http://wiki.openstreetmap.org/wiki/Mod_tile
 	arch = i686
@@ -13,7 +13,9 @@ pkgbase = mod_tile-git
 	backup = etc/renderd.conf
 	backup = etc/httpd/conf/extra/mod_tile.conf
 	source = git+https://github.com/openstreetmap/mod_tile/
+	source = mapnik-3.0.12-compile-fix.patch::https://github.com/S73417H/mod_tile/commit/55c410c5655af917fd971ea5bb47d0fc06f41d78.patch
 	md5sums = SKIP
+	md5sums = 185945c4e897365e9c7062c76a3cee72
 
 pkgname = mod_tile-git
 

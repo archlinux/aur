@@ -1,7 +1,7 @@
 # Contributor: Calimero <calimeroteknik@free.fr>
 
 pkgname=mod_tile-git
-pkgver=0.4.r229.g4f9b9f1
+pkgver=0.4.r276.g7211cb7
 pkgrel=1
 pkgdesc='Mod tile is an apache module to serve raster Mapnik tiles'
 arch=('i686' 'x86_64')
@@ -10,8 +10,15 @@ license=('GPL2')
 depends=('mapnik' 'apache' 'boost' 'iniparser')
 makedepends=()
 backup=('etc/renderd.conf' 'etc/httpd/conf/extra/mod_tile.conf')
-source=('git+https://github.com/openstreetmap/mod_tile/')
-md5sums=('SKIP')
+source=('git+https://github.com/openstreetmap/mod_tile/'
+        'mapnik-3.0.12-compile-fix.patch::https://github.com/S73417H/mod_tile/commit/55c410c5655af917fd971ea5bb47d0fc06f41d78.patch')
+md5sums=('SKIP'
+         '185945c4e897365e9c7062c76a3cee72')
+
+prepare() {
+  cd "${srcdir}/mod_tile"
+  patch -r - -Np1 -i "${srcdir}/mapnik-3.0.12-compile-fix.patch" || true
+}
 
 pkgver() {
   cd "${srcdir}/mod_tile"
