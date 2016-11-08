@@ -4,7 +4,7 @@
 # Contributor: Justin Dray <justin@dray.be>
 
 pkgname="google-cloud-sdk"
-pkgver=132.0.0
+pkgver=133.0.0
 pkgrel=1
 pkgdesc="Tools and libraries SDK for managing resources on the Google Cloud Platform, plus kubectl and Python/PHP appengine SDK components"
 url="https://cloud.google.com/sdk/"
@@ -26,13 +26,13 @@ options=('!strip' 'staticlibs')
 # 64bit
 source_x86_64=("https://dl.google.com/dl/cloudsdk/release/downloads/$pkgname-$pkgver-linux-x86_64.tar.gz"
                "profile.sh")
-sha1sums_x86_64=('4926b770df756f2e7828e626476e0b2d8fa9a551'
+sha1sums_x86_64=('55a7aaf590c3a17819aaab24391fba37978f1b12'
                  '770d136b9feaf36f3fd595234b0d9366b40de16c')
 
 # 32bit
 source_i686=("https://dl.google.com/dl/cloudsdk/release/downloads/$pkgname-$pkgver-linux-x86.tar.gz"
              "profile.sh")
-sha1sums_i686=('6938bc9407697c194f47096b0334074432b1a51c'
+sha1sums_i686=('6ef3c002e1ee12ddea849f20b255116ff72763d7'
                '770d136b9feaf36f3fd595234b0d9366b40de16c')
 
 prepare() {
@@ -57,7 +57,7 @@ package() {
 
   # kubectl is not in the tarball, add it to the package bootstrap
   # app-engine-python is actually the PHP+Python SDK widgets combined
-  # NOTE: do to how Google is using argparse we must bare word the components
+  # NOTE: due to how Google is using argparse we must bare word the components
   msg2 "Running bootstrapping script and adding kubectl, app-engine-python"
   python2 "$pkgdir/opt/$pkgname/bin/bootstrapping/install.py" \
     --usage-reporting false --path-update false --bash-completion false \
