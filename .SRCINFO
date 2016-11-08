@@ -1,6 +1,6 @@
 pkgbase = i3-gaps-git
 	pkgdesc = A fork of i3wm tiling window manager with more features, including gaps
-	pkgver = 4.12
+	pkgver = 4.13
 	pkgrel = 1
 	url = https://github.com/Airblader/i3/tree/gaps
 	arch = i686
@@ -10,6 +10,8 @@ pkgbase = i3-gaps-git
 	makedepends = git
 	makedepends = asciidoc
 	makedepends = docbook-xsl
+	makedepends = xmlto
+	makedepends = perl
 	makedepends = pkgconfig
 	depends = xcb-util-keysyms
 	depends = xcb-util-wm
