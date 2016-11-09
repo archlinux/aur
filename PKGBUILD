@@ -1,11 +1,12 @@
 # Maintainer: David Matson <gitcoder at outlook dot com>
 pkgbase=freeswitch-music
 pkgver=1.0.52
-pkgrel=1
+pkgrel=2
 pkgdesc='On-hold music for FreeSWITCH'
 arch=('any')
 url='https://freeswitch.org/'
 license=('custom:none')
+depends=('freeswitch-core')
 options=('!strip')
 
 pkgname=()
