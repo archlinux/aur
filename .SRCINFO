@@ -1,0 +1,16 @@
+pkgbase = perl-chemistry-elements
+	pkgdesc = Perl extension for working with Chemical Elements
+	pkgver = 1.07
+	pkgrel = 1
+	url = https://metacpan.org/release/Chemistry-Elements
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl>=0
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/B/BD/BDFOY/Chemistry-Elements-1.07.tar.gz
+	md5sums = 81537ee461db6804f4aace7b4c574c81
+	sha512sums = bfed7ab91c2554f01cb8923ac311dae8986fdbdbde35f6868aa59d3c1b9c10ac047e222b5473204fd4b464e3fc93ac7fb80a907b57ceeb9bea3afb1d7850445f
+
+pkgname = perl-chemistry-elements
+
