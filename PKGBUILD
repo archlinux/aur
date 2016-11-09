@@ -1,9 +1,9 @@
-# Maintainer: roger <roger@rogerpc.com.ar>
+# Maintainer: Maarten de Vries <maarten@de-vri.es>
 
-pkgname=qtile-git
-pkgver=2118.c948877
+pkgname=qtile-de-vri-es-git
+pkgver=2594.138e8e0
 pkgrel=1
-pkgdesc="A full-featured, pure-Python tiling window manager. (git version)"
+pkgdesc="A full-featured, pure-Python tiling window manager. (git version from de-vri-es)"
 arch=('any')
 url="http://www.qtile.org"
 license=('MIT')
@@ -12,8 +12,7 @@ makedepends=('python2-setuptools')
 optdepends=('python2-setproctitle: change the process name to qtile')
 provides=('qtile')
 conflicts=('qtile')
-install=${pkgname}.install
-source=('git://github.com/qtile/qtile.git')
+source=('git://github.com/de-vri-es/qtile.git')
 md5sums=('SKIP')
 
 _gitname="qtile"
