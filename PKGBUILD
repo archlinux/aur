@@ -10,7 +10,7 @@ conflicts=("${pkgname}-src" "${pkgname}-bin")
 license=('Apache')
 depends=('glibc')
 optdepends=('pygmentize: syntax-highlight code snippets.')
-makedepends=('go' 'git' 'mercurial')
+makedepends=('go' 'git')
 source=("https://github.com/spf13/${pkgname}/archive/v${pkgver}.tar.gz")
 sha512sums=('1c21b029895182be2648fa4f4f3a8040a44f3d7db13fff378992b7eec23cd58ca4354358defbb317e679c1b2f176c1e4f0812b737404abc36f7f739ba3da0844')
 
