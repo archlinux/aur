@@ -1,7 +1,7 @@
 # Maintainer: RubenKelevra <cyrond@gmail.com>
 
 pkgname=rk-desktop-gnome
-pkgver=2016.7.21
+pkgver=2016.11.09
 pkgrel=1
 pkgdesc="Metapackage that installs a full gnome desktop. Enables all needed services."
 url="http://notyetthere.com"

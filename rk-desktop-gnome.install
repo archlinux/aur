@@ -12,15 +12,23 @@ post_install() {
 	usr/bin/systemctl enable avahi-daemon
 	echo "haveged.service"
 	usr/bin/systemctl enable haveged
-	echo "systemd-readahead-collect.service"
-	usr/bin/systemctl enable systemd-readahead-collect
-	echo "systemd-readahead-replay.service"
-	usr/bin/systemctl enable systemd-readahead-replay
+	usr/bin/systemctl disable systemd-readahead-collect
+	usr/bin/systemctl disable systemd-readahead-replay
 	echo "NetworkManager.service"
 	usr/bin/systemctl enable NetworkManager
 	echo "ModemManager.service"
 	usr/bin/systemctl enable ModemManager
 	echo "gdm.service"
 	usr/bin/systemctl enable gdm
+	echo "updating mirrorlist..."
+	cat /etc/pacman.d/mirrorlist | grep -v 'mirror.vfn-nrw.de' > /tmp/mirrorlist.rk.tmp
+	echo 'Server = https://mirror.vfn-nrw.de/archlinux/$repo/os/$arch' > /etc/pacman.d/mirrorlist
+	cat /tmp/mirrorlist.rk.tmp >> /etc/pacman.d/mirrorlist
+	rm -f /tmp/mirrorlist.rk.tmp
 	echo "done"
 }
+
+post_upgrade() {
+	post_install
+}
+
