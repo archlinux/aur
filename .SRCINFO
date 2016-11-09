@@ -1,7 +1,7 @@
 pkgbase = perl-pdl-nohdf4
 	pkgdesc = The Perl Data Language, a perl extension designed for scientific and bulk numeric data processing and display
 	pkgver = 2.017
-	pkgrel = 2
+	pkgrel = 3
 	url = http://search.cpan.org/dist/PDL
 	arch = i686
 	arch = x86_64
@@ -23,7 +23,7 @@ pkgbase = perl-pdl-nohdf4
 	optdepends = perl-opengl>=0.6703: for PDL::Graphics::TriD support
 	optdepends = plplot: for PDL::Graphics::PLplot support
 	optdepends = proj: for PDL::GIS::Proj and PDL::Transform::Proj4 support
-	provides = perl-pdl
+	provides = perl-pdl=${pkgver}
 	conflicts = perl-pdl
 	options = !emptydirs
 	source = http://search.cpan.org/CPAN/authors/id/C/CH/CHM/PDL-2.017.tar.gz
