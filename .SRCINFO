@@ -1,0 +1,16 @@
+pkgbase = perl-math-spline
+	pkgver = 0.02
+	pkgrel = 1
+	url = https://metacpan.org/release/Math-Spline
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-math-derivative>=0
+	depends = perl>=5.006
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/C/CH/CHORNY/Math-Spline-0.02.tar.gz
+	md5sums = 64c7bb3829e1fa7e49c2bf50b358c7c7
+	sha512sums = 089c013cedb5e2a87bd144e6f294a7257cb87763221ad7a9069aec7fdb41b6de9714b3a8f66a7e819c4c08739222808420c685ab02e5a1a881e38b086c945bce
+
+pkgname = perl-math-spline
+
