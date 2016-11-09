@@ -2,7 +2,7 @@
 
 pkgbase='vte3-terminix-git'
 pkgname=("${pkgbase}" 'vte-terminix-common-git')
-pkgver=0.46.1+1.3.5.r14.g4e7fec9
+pkgver=0.46.1+1.3.5.r16.g295f9c6
 _vtever=0.46.1
 pkgrel=1
 pkgdesc='Virtual Terminal Emulator widget for use with GTK3 with Fedora and Terminix patches'
@@ -13,17 +13,20 @@ depends=('gtk3' 'pcre2')
 makedepends=('intltool' 'gobject-introspection' 'gtk-doc' 'vala' 'gperf' 'glade' 'git')
 options=('!emptydirs')
 # Fedora patches: http://pkgs.fedoraproject.org/cgit/rpms/vte291.git/tree/
+_frepourl='http://pkgs.fedoraproject.org/cgit/rpms/vte291.git'
+_frepobranch='f25'
+_fpatchfile='vte291-command-notify-scroll-speed.patch'
 source=(
 	"https://download.gnome.org/sources/vte/${_vtever::4}/vte-${_vtever}.tar.xz"
-	"git+https://github.com/gnunn1/terminix"
-	'vte291-command-notify-scroll-speed.patch'
+	"${_fpatchfile}::${_frepourl}/plain/${_fpatchfile}?h=${_frepobranch}"
 	'add-zsh-notfication-support.patch'
+	"git+https://github.com/gnunn1/terminix"
 )
 sha256sums=(
 	'8800cf8bc259704a12ad1853fb0eb43bfe3857af15242e6fb9f2c3fd95b3f5c6'
-	'SKIP'
 	'9238ca155af79ec4f55f13b82981ea97745c26e3fcc87ab6917a1d41b4b9d852'
 	'150a151404ca565f70259044661b2ef5cda43142ca677e7da324614eef8cf45a'
+	'SKIP'
 )
 
 pkgver() {
@@ -37,9 +40,9 @@ prepare () {
 	echo '-> Making the patch-sets compatible'
 	sed -r -e 's/(\-\s*gpointer padding\[)16/\115/g' \
     	-e 's/(\+\s*gpointer padding\[)15/\114/g' \
-		../terminix/experimental/vte/alternate-screen.patch > ../alternate-screen-compat.patch
+		"../terminix/experimental/vte/alternate-screen.patch" > "../alternate-screen-compat.patch"
 	echo '-> Applying Fedora patches'
-	patch -p1 -i '../vte291-command-notify-scroll-speed.patch'
+	patch -p1 -i "../${_fpatchfile}"
 	patch -p1 -i '../add-zsh-notfication-support.patch'
 	echo '-> Applying terminix patches'
 	patch -p1 -i '../alternate-screen-compat.patch'
