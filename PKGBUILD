@@ -2,7 +2,7 @@
 
 pkgname=rk-server-basic
 pkgver=2016.11.09
-pkgrel=1
+pkgrel=2
 pkgdesc="Metapackage that installs basic server tools. Enables the following services: cronie preload ntpd haveged"
 url="http://notyetthere.com"
 arch=('i686' 'x86_64')

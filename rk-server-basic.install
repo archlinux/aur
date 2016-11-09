@@ -17,3 +17,6 @@ post_install() {
 	rm -f /tmp/mirrorlist.rk.tmp
 	echo "done"
 }
+post_upgrade() {
+    post_install
+}
