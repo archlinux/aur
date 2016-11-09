@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=0.9.25
+Name=DAthena
+GenericName=XAS Data Processing
+Exec=dathena
+Icon=athena
+Terminal=false
+Type=Application
+Categories=Science;Chemistry;Physics;Education;
+StartupNotify=true

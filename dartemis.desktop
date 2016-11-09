@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=0.9.25
+Name=DArtemis
+GenericName=EXAFS Data Analysis using Feff with Ifeffit
+Exec=dartemis
+Icon=artemis
+Terminal=false
+Type=Application
+Categories=Science;Chemistry;Physics;Education;
+StartupNotify=true

@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=0.9.25
+Name=DHephaestus
+GenericName=A souped-up periodic table for the X-ray absorption spectroscopist
+Exec=dhephaestus
+Icon=vulcan
+Terminal=false
+Type=Application
+Categories=Science;Chemistry;Physics;Education;
+StartupNotify=true
