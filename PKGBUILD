@@ -1,21 +1,31 @@
-# Maintainer: Sibren Vasse <arch @ sibrenvasse dot nl>
+# Maintainer: Daniel M. Capella <polyzen@archlinux.info>
+# Contributor: Sibren Vasse <arch @ sibrenvasse dot nl>
 # Contributor: Preston Carpenter <APragmaticPlace@gmail.com>
 
-pkgname=spotify-adkiller
-source=("spotify-adkiller::git+http://github.com/SecUpwN/Spotify-AdKiller#branch=master")
-url="https://github.com/SecUpwN/Spotify-AdKiller"
-pkgver=10
-pkgrel=2
-epoch=0
-pkgdesc="Your Party with Spotify - but without ads!"
+pkgname=spotify-adkiller-git
+pkgver=r155.1fa0ff9
+pkgrel=1
+pkgdesc='Your Party with Spotify - without ads!'
 arch=('any')
-makedepends=('git')
+url=https://github.com/SecUpwN/Spotify-AdKiller
 license=('GPL3')
-depends=("xorg-xprop" "libpulse" "libnotify" "pulseaudio" "xdotool")
-md5sums=('SKIP')
+depends=('libnotify' 'pulseaudio' 'spotify' 'xdotool' 'xorg-xprop')
+makedepends=('git')
+provides=("${pkgname%-*}")
+conflicts=("${pkgname%-*}")
+source=("$url.git")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd ${pkgname%-*}
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
 
 package() {
-    install -Dm755 "$srcdir"/"$pkgname"/spotify-adkiller.sh "$pkgdir"/usr/bin/spotify-adkiller.sh
-    install -Dm755 "$srcdir"/"$pkgname"/spotify-wrapper.sh "$pkgdir"/usr/bin/spotify-wrapper.sh
-    install -Dm644 "$srcdir"/"$pkgname"/"Spotify (AdKiller).desktop" "$pkgdir"/usr/share/applications/"Spotify (AdKiller).desktop"
+  cd ${pkgname%-*}
+  install -Dm755 ${pkgname%-*}.sh "$pkgdir"/usr/bin/${pkgname%-*}.sh
+  install -Dm755 spotify-wrapper.sh "$pkgdir"/usr/bin/spotify-wrapper.sh
+  install -Dm644 'Spotify (AdKiller).desktop' "$pkgdir"/usr/share/applications/'Spotify (AdKiller).desktop'
 }
+
+# vim:set ts=2 sw=2 et:
