@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=0.94.7
+Name=SASFit
+GenericName=Small-angle scattering data interpretation
+Exec=sasfit
+Icon=sasfit
+Terminal=false
+Type=Application
+Categories=Science;Chemistry;Physics;Education;
+StartupNotify=true
