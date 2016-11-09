@@ -5,7 +5,7 @@
 
 pkgname=gnome-terminal-transparency
 _pkgname=gnome-terminal
-pkgver=3.22.0+4+g87e36d3
+pkgver=3.22.1
 pkgrel=1
 pkgdesc="The GNOME Terminal Emulator, with background transparency"
 url="https://wiki.gnome.org/Apps/Terminal"
@@ -13,31 +13,28 @@ arch=(i686 x86_64)
 license=(GPL)
 depends=(vte3 gsettings-desktop-schemas dconf)
 makedepends=(intltool itstool docbook-xsl libnautilus-extension appdata-tools
-             gnome-shell gconf vala yelp-tools git)
+             gnome-shell gconf vala yelp-tools)
 provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
 options=(!emptydirs)
 groups=(gnome)
 changelog=$pkgname.changelog
-_commit=87e36d320ff9819948a2c8398c71f8b57075063a  # gnome-3-22
-source=("git://git.gnome.org/gnome-terminal#commit=$_commit"
-         gnome-terminal-transparency.patch)
-sha256sums=('SKIP' # current official package from Archlinux does this
-            '5d893e75f973bf2d639cc56e9dad685a76495eb8c55c88a1c2ad4338799a0e51')
-
-pkgver() {
-  cd $_pkgname
-  git describe --tags | sed 's/-/+/g'
-}
+source=(https://download.gnome.org/sources/$_pkgname/${pkgver:0:4}/$_pkgname-$pkgver.tar.xz
+        gnome-terminal-transparency.patch)
+sha256sums=('b00752336eb22d6d9f10c863c166ac73dcbb2ce4b280abdc0c78337e261bb0d4'
+            'fd79404dba8a0b10237d720484201268a98e9bafc813c5628f4debd638499d67')
 
 prepare() {
-  cd $_pkgname
+  cd $_pkgname-$pkgver
   patch -Np1 -i ../gnome-terminal-transparency.patch
-  NOCONFIGURE=1 ./autogen.sh
+  # possiblity, use autoreconf:
+  # http://www.gnu.org/software/autoconf/autoconf.html
+  # https://wiki.debian.org/Autoreconf
+  # autoreconf -fvi
 }
 
 build() {
-  cd $_pkgname
+  cd $_pkgname-$pkgver
   ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var \
     --libexecdir=/usr/lib/$_pkgname --disable-static --with-nautilus-extension
   sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
@@ -45,11 +42,11 @@ build() {
 }
 
 check() {
-  cd $_pkgname
+  cd $_pkgname-$pkgver
   make check
 }
 
 package() {
-  cd $_pkgname
+  cd $_pkgname-$pkgver
   make DESTDIR="$pkgdir" install
 }

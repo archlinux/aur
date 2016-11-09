@@ -1,3 +1,8 @@
+2016-11-09
+	upstream update: 3.22.0 -> 3.22.1
+	use current patches from fedora
+	using tarball instead git
+
 2016-10-20
 	upstream upgrade: 3.20.2 -> 3.22.0
 	use current patches from fedora
