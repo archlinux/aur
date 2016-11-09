@@ -1,0 +1,31 @@
+--- a/obdgpslogger-0.16/src/logger/gpscomm.c	2016-11-08 20:15:18.819536538 -0500
++++ b/obdgpslogger-0.16/src/logger/gpscomm.c	2016-11-08 20:27:52.831890068 -0500
+@@ -26,8 +26,9 @@
+ #include <gps.h>
+ 
+ struct gps_data_t *opengps(char *server, char *port) {
+-	struct gps_data_t *g = gps_open(server,port);
+-	if(NULL == g)
++	struct gps_data_t *g = malloc(sizeof(struct gps_data_t)); 
++	int ret = gps_open(server,port,g);
++	if(0 != ret)
+ 		return NULL;
+ 
+ #ifdef HAVE_GPSD_V3
+@@ -41,6 +42,7 @@
+ 
+ void closegps(struct gps_data_t *g) {
+ 	gps_close(g);
++	free(g);
+ }
+ 
+ int getgpsposition(struct gps_data_t *g, double *lat, double *lon, double *alt, double *speed, double *course, double *gpstime) {
+@@ -58,7 +60,7 @@
+ 		count = select(g->gps_fd + 1, &fds, NULL, NULL, &timeout);
+ 		if(count > 0) {
+ #ifdef HAVE_GPSD_V3
+-			gps_poll(g);
++			gps_read(g);
+ #else
+ 			gps_query(g, "o");
+ #endif //HAVE_GPSD_V3

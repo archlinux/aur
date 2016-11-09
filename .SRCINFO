@@ -1,0 +1,18 @@
+pkgbase = obdgpslogger
+	pkgdesc = OBD and GPS logging utilities
+	pkgver = 0.16
+	pkgrel = 1
+	url = https://icculus.org/obdgpslogger/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = cmake
+	depends = gpsd
+	optdepends = bluez
+	source = https://icculus.org/obdgpslogger/downloads/obdgpslogger-0.16.tar.gz
+	source = gpsd_api_updates.patch
+	sha256sums = 7255307b846c19c1ebd7c79bd0d9a5759a6f88917b9a6b01f8e52cc7f98025d2
+	sha256sums = 0f623b27a9b151cfbdddd8341aded6b1011eedff5ca410398f1ac884d1cbf8cc
+
+pkgname = obdgpslogger
+
