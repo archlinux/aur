@@ -1,0 +1,16 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Exec=/usr/bin/volunode-ui
+Path=/var/lib/volunode
+Icon=boinc-next
+Categories=System;Monitor;GTK;
+Name=Volunode UI
+GenericName=Volunode monitor and control utility
+GenericName[cs]=Monitorovací a ovládací nástroj pro Volunode
+GenericName[de]=Volunode Überwachungs- und Kontrollprogramm
+GenericName[pt]=Monitorização Volunode e utilitário de controlo
+Comment=Configure or monitor a Volunode core client
+Comment[cs]=Monitoruje a nastavuje klienta Volunode
+Comment[de]=Volunode Basis Client konfigurieren oder überwachen
+Comment[pt]=Configurar ou monitorizar o cliente básico do Volunode
