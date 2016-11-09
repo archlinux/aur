@@ -55,6 +55,7 @@ package() {
   # manual page
   install -D "${srcdir}/extempore/docs/_build/man/extempore.1" "${pkgdir}/usr/share/man/man1/extempore.1"
 
+  install -d "${pkgdir}/usr/bin"
   ln -s /opt/extempore/extempore "${pkgdir}/usr/bin/extempore"
 }
 
