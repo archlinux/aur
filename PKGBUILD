@@ -1,6 +1,6 @@
 #Maintainer : Sasasu <lizhaolong0123@gmail.com>
 pkgname=uget-chrome-wrapper
-pkgver=1.3
+pkgver=1.3.3
 pkgrel=1
 pkgdesc="Integrate uGet Download Manager with Google Chrome"
 arch=('any')
@@ -10,7 +10,7 @@ depends=('python2' 'uget')
 makedepends=()
 source=("https://raw.githubusercontent.com/slgobinath/uget-chrome-wrapper/master/uget-chrome-wrapper/bin/uget-chrome-wrapper"
         "https://raw.githubusercontent.com/slgobinath/uget-chrome-wrapper/master/uget-chrome-wrapper/conf/com.javahelps.ugetchromewrapper.json")
-md5sums=('98b173bb4ad82389159a9a1684a23aea'
+md5sums=('309e95bbe764a9ec5271670ecdec1ddf'
          '6fef0c020c6aa8570862bd48546844d8')
 install=uget-chrome-wrapper.install
 build() {
