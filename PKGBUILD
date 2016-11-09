@@ -3,7 +3,7 @@
 
 _pkgbase=hardcode-tray-fixer
 pkgname=$_pkgbase-git
-pkgver=r688.1fee22e
+pkgver=r718.1e5917f
 pkgrel=1
 pkgdesc="Fixes Hardcoded Tray Icons"
 arch=('i686' 'x86_64')
@@ -29,7 +29,6 @@ pkgver() {
 package() {
   install -Dm755 "$srcdir/hardcode-tray-fixer.sh" "$pkgdir/usr/bin/hardcode-tray"
   install -Dm755 "$srcdir/$pkgname/script.py" "$pkgdir/opt/$_pkgbase/script.py"
-  install -Dm644 "$srcdir/$pkgname/db.csv" "$pkgdir/opt/$_pkgbase/db.csv"
   install -d "$pkgdir/opt/$_pkgbase"
   cp -r "$srcdir/$pkgname/database" "$pkgdir/opt/$_pkgbase"
 }
