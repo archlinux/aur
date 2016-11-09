@@ -5,7 +5,7 @@
 
 # Maintainer: Matěj Týč <matej.tyc@gmail.com>
 pkgname=argbash
-pkgver=2.1.1
+pkgver=2.2.0
 pkgrel=1
 epoch=
 pkgdesc="Bash argument parsing code generator"
@@ -24,9 +24,9 @@ backup=()
 options=()
 install=
 changelog=
-source=("https://github.com/matejak/argbash/archive/$pkgver.tar.gz" LICENSE)
+source=("https://github.com/matejak/$pkgname/archive/$pkgver.tar.gz" LICENSE)
 noextract=()
-sha256sums=('d075f2b2e2a939852ce19b935031d399c79652bc82a5222c289694ff4ca75d4b' '9ee9a6920cd16723e49b065f4ae101127d353fc5400d849e269482fbf4f56a45')
+sha256sums=('761c783dea1f23d0d7e90c40d63ae32b494e4d1a2d7ab1cbcb97665a1cae483d' '9ee9a6920cd16723e49b065f4ae101127d353fc5400d849e269482fbf4f56a45')
 validpgpkeys=()
 
 build() {
@@ -35,7 +35,7 @@ build() {
 
 check() {
 	cd "$pkgname-$pkgver/resources"
-	make -k check
+	make check
 }
 
 package() {
