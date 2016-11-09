@@ -2,7 +2,7 @@
 # Contributor: Alexej Magura <agm2819*gmail*>
 
 pkgname=freebsd-manpages
-pkgver=10.3
+pkgver=11.0
 pkgrel=1
 pkgdesc="Manual pages for GNU/kFreeBSD systems"
 arch=('any')
@@ -11,7 +11,7 @@ license=('BSD')
 #depends=('')
 makedepends=('deb2targz')
 source=("http://mirrors.kernel.org/debian/pool/main/f/$pkgname/${pkgname}_${pkgver}-${pkgrel}_all.deb")
-md5sums=('cf2410ba9c9e98e0ee74676fdeab4f5f')
+md5sums=('7ef8c3f06b068461953d6d71d0f226a8')
 
 
 prepare () {
