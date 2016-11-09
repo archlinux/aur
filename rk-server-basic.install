@@ -10,5 +10,10 @@ post_install() {
 	usr/bin/systemctl enable ntpd
 	echo "haveged.service"
 	usr/bin/systemctl enable haveged
+	echo "updating mirrorlist..."
+	cat /etc/pacman.d/mirrorlist | grep -v "mirror.vfn-nrw.de" > /tmp/mirrorlist.rk.tmp
+	echo "Server = https://mirror.vfn-nrw.de/archlinux/$repo/os/$arch" > /etc/pacman.d/mirrorlist
+	cat /tmp/mirrorlist.rk.tmp >> /etc/pacman.d/mirrorlist
+	rm -f /tmp/mirrorlist.rk.tmp
 	echo "done"
 }
