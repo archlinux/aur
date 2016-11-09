@@ -8,7 +8,7 @@ pkgname=update-hosts-git
 # shellcheck disable=SC2034
 pkgdesc="Generate a hosts file based on multiple sources (git)"
 # shellcheck disable=SC2034
-pkgver=r182.b9031e4
+pkgver=r206.17461ce
 # shellcheck disable=SC2034
 pkgrel=1
 # shellcheck disable=SC2034
@@ -18,7 +18,13 @@ makedepends=('git')
 # shellcheck disable=SC2034
 depends=()
 # shellcheck disable=SC2034
-optdepends=('curl: Default download client' 'wget: Optional download client')
+optdepends=(
+  'curl: Default download client'
+  'wget: Optional download client'
+  'iprange: Helper to optimize ipset configuration'
+  'ipset: Parse ip address sets as an extra blocklist'
+  'sudo: Helper to run as a normal user'
+)
 # shellcheck disable=SC2034
 provides=('update-hosts')
 # shellcheck disable=SC2034
