@@ -1,5 +1,6 @@
 pkg/
 src/
-SASfit*.tar.gz
+*.tar.gz
 *.pkg.tar.xz
 *~
+*.log
