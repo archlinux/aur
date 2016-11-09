@@ -1,0 +1,16 @@
+pkgbase = perl-astro-fits-header
+	pkgdesc = Object Orientated interface to FITS HDUs
+	pkgver = 3.07
+	pkgrel = 1
+	url = https://metacpan.org/release/Astro-FITS-Header
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl>=0
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/T/TJ/TJENNESS/Astro-FITS-Header-3.07.tar.gz
+	md5sums = 3a9795ecc74269419340e900018a5840
+	sha512sums = 21b72ca2727fd77c6da01407ab97ac1bc3bfb4f6864d7a4728fa3f9cbad07b64ca20445bc8daf6c34a3523ab16a2b688cf99936157a41f36147b39f05a6c1f90
+
+pkgname = perl-astro-fits-header
+
