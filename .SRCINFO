@@ -1,0 +1,17 @@
+pkgbase = perl-regexp-assemble
+	pkgdesc = Assemble multiple Regular Expressions into a single RE
+	pkgver = 0.37
+	pkgrel = 1
+	url = https://metacpan.org/release/Regexp-Assemble
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	checkdepends = perl-test-pod>=1.48
+	depends = perl>=0
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/R/RS/RSAVAGE/Regexp-Assemble-0.37.tgz
+	md5sums = 2f7f232642f0f30f69983ef1316ecb42
+	sha512sums = 2b21154c814fec9b0fc0affc3c7751e17bd93e5d0b42c13379131498ea2c4ea340316a01045d936dbc9b0e8cfdb1afa7b778936083d04cc533766942fd46c407
+
+pkgname = perl-regexp-assemble
+
