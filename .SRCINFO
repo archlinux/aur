@@ -1,10 +1,11 @@
 pkgbase = freeswitch-sounds
 	pkgdesc = Voice recordings for FreeSWITCH
 	pkgver = 1.0.51
-	pkgrel = 1
+	pkgrel = 2
 	url = https://freeswitch.org/
 	arch = any
 	license = custom:none
+	depends = freeswitch-core
 	noextract = freeswitch-sounds-en-ca-june-8000-1.0.51.tar.gz
 	noextract = freeswitch-sounds-en-ca-june-16000-1.0.51.tar.gz
 	noextract = freeswitch-sounds-en-ca-june-32000-1.0.51.tar.gz

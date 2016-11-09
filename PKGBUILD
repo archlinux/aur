@@ -1,11 +1,12 @@
 # Maintainer: David Matson <gitcoder at outlook dot com>
 pkgbase=freeswitch-sounds
 pkgver=1.0.51
-pkgrel=1
+pkgrel=2
 pkgdesc='Voice recordings for FreeSWITCH'
 arch=('any')
 url='https://freeswitch.org/'
 license=('custom:none')
+depends=('freeswitch-core')
 options=('!strip')
 
 pkgname=()
