@@ -1,11 +1,11 @@
 pkgbase = omnetpp-qt
-	pkgdesc = Component-based simulation package designed for modeling communication networks
+	pkgdesc = OMNeT++ Discrete Event Simulator. OMNeT++ is an extensible, modular, component-based C++ simulation library and framework, primarily for building network simulators.
 	pkgver = 5.0
 	pkgrel = 1
 	url = http://www.omnetpp.org
 	arch = i686
 	arch = x86_64
-	license = Academic Public License
+	license = custom
 	makedepends = qt4
 	makedepends = cmake
 	makedepends = gcc
