@@ -1,0 +1,15 @@
+pkgbase = ifeffit
+	pkgdesc = XAFS analysis program
+	pkgver = 1.2.final
+	pkgrel = 2
+	url = http://cars9.uchicago.edu/ifeffit/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = gcc-fortran
+	depends = pgplot
+	source = https://github.com/newville/ifeffit/archive/1.2.final.tar.gz
+	md5sums = 8708de3ea387cd0a47c7a1a4b5cf8e8e
+
+pkgname = ifeffit
+
