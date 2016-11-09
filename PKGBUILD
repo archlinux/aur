@@ -11,7 +11,7 @@
 
 pkgname=wine-gaming-nine
 pkgver=1.9.22
-pkgrel=1
+pkgrel=2
 
 _pkgbasever=${pkgver/rc/-rc}
 _winesrcdir="wine-patched-staging-$_pkgbasever"
@@ -156,7 +156,7 @@ prepare()
 
     # Get rid of old build dirs
     rm -rf $pkgname-{32,64}-build
-    mkdir $pkgname-32-build
+    mkdir -p $pkgname-32-build
 }
 
 build()
@@ -166,7 +166,7 @@ build()
     if [[ $CARCH == x86_64 ]]; then
         msg2 "Building Wine-64..."
 
-        mkdir $pkgname-64-build
+        mkdir -p $pkgname-64-build
         cd "$srcdir/$pkgname-64-build"
         ../$_winesrcdir/configure \
             --prefix=/usr \
