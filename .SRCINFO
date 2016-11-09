@@ -1,0 +1,16 @@
+pkgbase = perl-term-sk
+	pkgdesc = Perl extension for displaying a progress indicator on a terminal.
+	pkgver = 0.18
+	pkgrel = 1
+	url = https://metacpan.org/release/Term-Sk
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl>=0
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/K/KE/KEICHNER/Term-Sk-0.18.tar.gz
+	md5sums = 18834e4acac7b766bc7f5d68a3dbff28
+	sha512sums = 7ebaa2a884f480a75a6bf6ace37a4d3076671346f57c9ff091e814825fca5c2d98854e52dab1fdb811403c141c0f02b888821fff6cb19787c0cb876ce6aa07b1
+
+pkgname = perl-term-sk
+
