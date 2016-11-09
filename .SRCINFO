@@ -1,0 +1,16 @@
+pkgbase = perl-module-compile
+	pkgdesc = Perl Module Compilation
+	pkgver = 0.35
+	pkgrel = 1
+	url = https://metacpan.org/release/Module-Compile
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-digest-sha1>=2.13
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/I/IN/INGY/Module-Compile-0.35.tar.gz
+	md5sums = 7b9cf30692ab350d2ac013db55d9bc34
+	sha512sums = 4115277ffb0da033c6c7fea6480c7245c8b5eb151378081fefaef35761b92a4218d56e8e1e9a4892ce78a379592336badefa2de56062d9e5b7024cdc35d3e46b
+
+pkgname = perl-module-compile
+
