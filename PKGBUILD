@@ -7,7 +7,7 @@ _veryear=2016
 _verrelease=2
 _extraver=5
 pkgver=${_veryear}.${_verrelease}.${_extraver}
-pkgrel=4
+pkgrel=5
 pkgdesc="Intellij Idea IDE (community version) with Intellij JDK"
 arch=('any')
 options=(!strip)
@@ -48,7 +48,7 @@ EOF
     mkdir -p "${pkgdir}/usr/share/licenses/${pkgname}/"
     install -Dm644 "${srcdir}/${pkgname}.desktop" "${pkgdir}/usr/share/applications/"
     for i in $(ls $srcdir/idea-IC-$_buildver/license/ ); do
-      ln -sf "/opt/${pkgname}/idea-IC-$_buildver/license/$i" "${pkgdir}/usr/share/licenses/${pkgname}/$i"
+      ln -sf "/opt/${pkgname}/license/$i" "${pkgdir}/usr/share/licenses/${pkgname}/$i"
     done
     ln -s "/opt/${pkgname}/bin/idea.sh" "${pkgdir}/usr/bin/idea-ce-eap"
 }
