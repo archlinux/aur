@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=Harmony
 Comment=Listen to music from Spotify, SoundCloud, Google Play Music or your local disk,
-Exec="/opt/Harmony/Harmony"
+Exec="/opt/Harmony/harmony"
 Terminal=false
 Type=Application
 Icon=harmony

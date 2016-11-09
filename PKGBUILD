@@ -1,7 +1,7 @@
 # Maintainer: Gustav Hansen <kusti8@gmail.com>
 pkgname=harmony-player
 pkgver=0.4.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A next-gen music player built with Electron."
 arch=('x86_64')
 url="http://getharmony.xyz/"

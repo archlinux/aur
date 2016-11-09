@@ -1,7 +1,7 @@
 pkgbase = harmony-player
 	pkgdesc = A next-gen music player built with Electron.
 	pkgver = 0.4.2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://getharmony.xyz/
 	arch = x86_64
 	license = GPL
