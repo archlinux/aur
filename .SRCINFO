@@ -1,0 +1,19 @@
+pkgbase = perl-file-monitor-lite
+	pkgdesc = Monitor file changes
+	pkgver = 0.652003
+	pkgrel = 1
+	url = https://metacpan.org/release/File-Monitor-Lite
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-class-accessor>=0
+	depends = perl-file-find-rule>=0
+	depends = perl-file-monitor>=0
+	depends = perl-file-touch>=0
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/D/DR/DRYMAN/File-Monitor-Lite-0.652003.tar.gz
+	md5sums = f16a90d0bc1287e323a02183227232c7
+	sha512sums = 78a2aa47d7a3900c47798d2e129dd2384d345cdd5d3d5c67dc2a44d8ebf7b49f44ea880379c351917c225f5ad6c56d0a1db50fd11eac3db9fa5d4af2f6564a69
+
+pkgname = perl-file-monitor-lite
+
