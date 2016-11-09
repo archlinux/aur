@@ -1,7 +1,7 @@
 # Maintainer: Xavier Devlamynck <magicrhesus@ouranos.be>
 
 pkgname=kamailio
-pkgver=4.4.3
+pkgver=4.4.4
 pkgrel=1
 pkgdesc="Rock solid SIP server"
 url="http://www.kamailio.org/"
