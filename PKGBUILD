@@ -8,7 +8,7 @@ pkgdesc="Object Orientated interface to FITS HDUs"
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
-depends=('perl>=0')
+depends=('perl>=0' 'perl-astro-fits-cfitsio' 'perl-starlink-ast')
 makedepends=()
 url='https://metacpan.org/release/Astro-FITS-Header'
 source=('http://search.cpan.org/CPAN/authors/id/T/TJ/TJENNESS/Astro-FITS-Header-3.07.tar.gz')

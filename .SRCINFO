@@ -7,6 +7,8 @@ pkgbase = perl-astro-fits-header
 	license = PerlArtistic
 	license = GPL
 	depends = perl>=0
+	depends = perl-astro-fits-cfitsio
+	depends = perl-starlink-ast
 	options = !emptydirs
 	source = http://search.cpan.org/CPAN/authors/id/T/TJ/TJENNESS/Astro-FITS-Header-3.07.tar.gz
 	md5sums = 3a9795ecc74269419340e900018a5840
