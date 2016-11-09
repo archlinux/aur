@@ -1,0 +1,30 @@
+pkgbase = perl-pdl-nohdf4
+	pkgdesc = The Perl Data Language, a perl extension designed for scientific and bulk numeric data processing and display
+	pkgver = 2.017
+	pkgrel = 1
+	url = http://search.cpan.org/dist/PDL
+	arch = i686
+	arch = x86_64
+	license = PerlArtistic
+	license = GPL
+	checkdepends = perl-test-warn
+	makedepends = perl>=5.11.3
+	makedepends = fftw2
+	makedepends = perl-opengl>=0.6703
+	makedepends = proj
+	depends = perl>=5.8.9
+	depends = perl-inline>=0.43
+	depends = gsl
+	optdepends = fftw2: for PDL::FFTW support
+	optdepends = perl-astro-fits-header: improved FITS files support
+	optdepends = perl-convert-uu: for the case when something wrong with Unicode support
+	optdepends = perl-extutils-f77: for PDL::Slatec and PDL::Minuit support
+	optdepends = perl-opengl>=0.6703: for PDL::Graphics::TriD support
+	optdepends = plplot: for PDL::Graphics::PLplot support
+	optdepends = proj: for PDL::GIS::Proj and PDL::Transform::Proj4 support
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/C/CH/CHM/PDL-2.017.tar.gz
+	md5sums = 9966447f0afd61625e3ea871f731adf1
+
+pkgname = perl-pdl-nohdf4
+
