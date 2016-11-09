@@ -3,7 +3,7 @@
 
 pkgname='perl-term-twiddle'
 pkgver='2.73'
-pkgrel='1'
+pkgrel='2'
 pkgdesc="Twiddles a thingy while-u-wait"
 arch=('any')
 license=('PerlArtistic' 'GPL')
@@ -29,12 +29,13 @@ build() {
   )
 }
 
-check() {
-  cd "$srcdir/$_distdir"
-  ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""
-    make test
-  )
-}
+# skip checks: most of them are interacive.
+#check() {
+#  cd "$srcdir/$_distdir"
+#  ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""
+#    make test
+#  )
+#}
 
 package() {
   cd "$srcdir/$_distdir"
