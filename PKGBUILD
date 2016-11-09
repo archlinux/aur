@@ -5,18 +5,17 @@
 #
 pkgname="utext"
 pkgver="0.5.0"
-pkgrel="1"
+pkgrel="2"
 _ubuntur="0extras16.04.1"
 pkgdesc="An application to work with markdown files."
 arch=('i686' 'x86_64')
 url="http://www.atareao.es/tag/utext/"
 license=('GPL3')
-depends=('gobject-introspection' 'gtkspell3' 'gvfs' 'imagemagick' 'python' 'shared-mime-info' 'python-beautifulsoup4' 'python-jinja' 'python-markdown' 'python-requests' 'wkhtmltopdf')
+depends=('gobject-introspection' 'gtkspell3' 'gvfs' 'imagemagick' 'python' 'shared-mime-info' 'python-beautifulsoup4' 'python-jinja' 'python-lxml' 'python-markdown' 'python-requests' 'wkhtmltopdf')
 makedepends=('python2-distutils-extra' 'python2-polib')
 provides=("${pkgname}")
 source=("https://launchpad.net/~atareao/+archive/ubuntu/${pkgname}/+files/${pkgname}_${pkgver}-${_ubuntur}.tar.xz")
 sha256sums=('43f779552b29aab04edcf79def2ad9b2e6b2bd45daee1cd57c6e5a97321697f2')
-install="${pkgname}.install"
 
 build() {
     cd "${srcdir}/${pkgname}"
