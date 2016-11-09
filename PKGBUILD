@@ -26,11 +26,6 @@ pkgver() {
          "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
-prepare() {
-  cd $srcdir/$pkgname
-  patch -p1 -i $srcdir/makefile.diff
-}
-
 build() {
   cd $srcdir/$pkgname
   ./configure --prefix=/usr   \
