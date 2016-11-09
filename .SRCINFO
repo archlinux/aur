@@ -1,29 +1,27 @@
 pkgbase = plover
 	pkgdesc = Free and open source real-time stenography engine.
-	pkgver = 3.0.0
-	pkgrel = 3
+	pkgver = 3.1.0
+	pkgrel = 1
 	url = http://www.openstenoproject.org/plover/
 	arch = any
-	license = GPL2
+	license = GPLv2 or any later version
 	makedepends = python2-mock
 	makedepends = python2-pytest
-	makedepends = python2-pytest-runner
+	makedepends = python2-setuptools-scm
 	depends = python2
 	depends = python2-appdirs
+	depends = python2-dbus
 	depends = python2-hidapi
-	depends = python2-notify
 	depends = python2-pyserial
 	depends = python2-setuptools
-	depends = python2-simplejson
+	depends = python2-six
 	depends = python2-xlib
 	depends = wmctrl
 	depends = wxpython
 	provides = plover
 	conflicts = plover-git
-	source = https://github.com/openstenoproject/plover/archive/v3.0.0.tar.gz
-	source = fix_wx_pynotify_crash.patch
-	sha1sums = 89ca6af3fe002be218158930d105d25c1e1282be
-	sha1sums = b455b23628f0cc3b1bc290a3f55df901fbad8fc1
+	source = https://github.com/openstenoproject/plover/releases/download/v3.1.0/plover-3.1.0.tar.gz
+	sha1sums = 20dc0391db86d2661f93298b350f36ecf8042f8e
 
 pkgname = plover
 
