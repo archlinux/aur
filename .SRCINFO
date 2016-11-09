@@ -1,0 +1,17 @@
+pkgbase = perl-file-slurper
+	pkgdesc = A simple, sane and efficient module to slurp a file
+	pkgver = 0.009
+	pkgrel = 1
+	url = https://metacpan.org/release/File-Slurper
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	checkdepends = perl-test-warnings>=0
+	depends = perl>=5.008
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/L/LE/LEONT/File-Slurper-0.009.tar.gz
+	md5sums = b4ffcb66095aebbcd6df03de7befda13
+	sha512sums = e07074eb5470df75c43848d9bd2e0c5d3bfabf3b6f9739e67d830ce87f4f38a3a569aeca885537d0f9c7d2e285e52f7dfdc27f8035ce0d74d6c750067959f057
+
+pkgname = perl-file-slurper
+
