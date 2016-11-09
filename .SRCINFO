@@ -1,0 +1,18 @@
+pkgbase = perl-math-random
+	pkgdesc = Random Number Generators
+	pkgver = 0.72
+	pkgrel = 1
+	url = https://metacpan.org/release/Math-Random
+	arch = i686
+	arch = x86_64
+	license = PerlArtistic
+	license = GPL
+	depends = perl>=0
+	depends = glibc>=2.24
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/G/GR/GROMMEL/Math-Random-0.72.tar.gz
+	md5sums = b0b961e2ae06920801a9c9843c48d0bc
+	sha512sums = 6a24f59ba06b93027fe5907d41a36b2142c20c2813813a34a5adfa9ee06de25902d5f544009f307b518905c614238f63ad3717a1f199513f455f4c53119e2088
+
+pkgname = perl-math-random
+
