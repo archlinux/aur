@@ -15,9 +15,12 @@ depends=('gtk3' 'pcre2')
 makedepends=('intltool' 'gobject-introspection' 'gtk-doc' 'vala' 'gperf' 'glade')
 options=('!emptydirs')
 # Fedora patches: http://pkgs.fedoraproject.org/cgit/rpms/vte291.git/tree/
+_fedorarepourl='http://pkgs.fedoraproject.org/cgit/rpms/vte291.git'
+_fedorarepobranch='f25'
+_patchfile='vte291-command-notify-scroll-speed.patch'
 source=(
 	"https://download.gnome.org/sources/vte/${pkgver::4}/vte-${pkgver}.tar.xz"
-	'vte291-command-notify-scroll-speed.patch'
+	"${_patchfile}::${_fedorarepourl}/plain/${_patchfile}?h=${_fedorarepobranch}"
 	'add-zsh-notfication-support.patch'
 )
 sha256sums=(
