@@ -3,12 +3,12 @@
 _version=3.0.1
 pkgname=swift-bin
 pkgver=${_version//-/.}
-pkgrel=1
+pkgrel=2
 pkgdesc="The Swift programming language, the binary drops from the official website"
 arch=('x86_64')
 url="https://swift.org"
 license=('apache')
-depends=('icu' 'ncurses5-compat-libs' 'libedit' 'python2' 'libutil-linux' 'libbsd' 'clang' 'libtinfo5' 'python2-six' 'libxml2')
+depends=('icu55' 'ncurses5-compat-libs' 'libedit' 'python2' 'libutil-linux' 'libbsd' 'clang' 'libtinfo5' 'python2-six' 'libxml2')
 conflicts=('lldb' 'swift-language-git')
 options=('!strip')
 validpgpkeys=('A3BAFD3556A59079C06894BD63BC1CFE91D306C6')
