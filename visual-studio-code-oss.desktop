@@ -2,7 +2,7 @@
 Encoding=UTF-8
 Name=Visual Studio Code (Open Source)
 Version=1.0
-Exec="/opt/VSCode-OSS/code-oss" %F
+Exec="/opt/VSCode-OSS/bin/code-oss" %F
 Icon=/opt/VSCode-OSS/resources/app/resources/linux/code.png
 Type=Application
 Categories=Development;

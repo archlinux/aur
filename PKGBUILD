@@ -8,7 +8,7 @@
 pkgname=visual-studio-code-oss
 pkgdesc='Visual Studio Code for Linux, Open Source version'
 pkgver=1.7.1
-pkgrel=1
+pkgrel=2
 _commit=02611b40b24c9df2726ad8b33f5ef5f67ac30b44
 arch=('i686' 'x86_64')
 url='https://code.visualstudio.com/'
@@ -21,7 +21,7 @@ provides=('vscode-oss')
 source=("${pkgver}-${pkgrel}.tar.gz::https://github.com/Microsoft/vscode/archive/${_commit}.tar.gz"
         "${pkgname}.desktop")
 sha1sums=('27868bbab5ecb5313daf419b4fcba81c1d4ad1dc'
-          '9c4176c4d99103736df6746ca174b5026bd57e6b')
+          '1f08aa48cfa0ec57114ad906db48a35e59e077be')
 
 if (( VSCODE_NONFREE )); then
     source+=('product_json.patch')
@@ -71,7 +71,7 @@ package() {
 
     # Include symlink in system bin directory
     install -m 0755 -d "${pkgdir}/usr/bin"
-    ln -s '/opt/VSCode-OSS/code-oss' "${pkgdir}/usr/bin/${pkgname}"
+    ln -s '/opt/VSCode-OSS/bin/code-oss' "${pkgdir}/usr/bin/${pkgname}"
 
     # Add .desktop file
     install -D -m644 "${srcdir}/${pkgname}.desktop" \
