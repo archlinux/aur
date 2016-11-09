@@ -5,8 +5,8 @@ pkgver=20160918.c262a93
 pkgrel=1
 pkgdesc="Qt-style wrapper for Accounts Service"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
-url='http://liri.io'
-license=('GPL3')
+url='https://liri.io'
+license=('LGPL3')
 depends=('qt5-declarative')
 makedepends=('git' 'extra-cmake-modules')
 conflicts=('qtaccountsservice-git' 'qt5-accountsservice')
@@ -14,7 +14,7 @@ replaces=('qtaccountsservice-git' 'qt5-accountsservice')
 provides=('qt5-accountsservice')
 groups=('liri-git')
 
-_gitroot="git://github.com/hawaii-desktop/qtaccountsservice.git"
+_gitroot="git://github.com/lirios/qtaccountsservice.git"
 _gitbranch=develop
 _gitname=qtaccountsservice
 source=(${_gitname}::${_gitroot}#branch=${_gitbranch})
