@@ -1,0 +1,11 @@
+pkgbase = pg_export
+	pkgdesc = Dumps PostgreSQL database structure on disk
+	pkgver = 0.4
+	pkgrel = 1
+	arch = any
+	depends = postgresql
+	source = https://github.com/pensnarik/pg_export/archive/v0.4.tar.gz
+	md5sums = 4b1660cbfe52cb2a46d634ed25c78624
+
+pkgname = pg_export
+
