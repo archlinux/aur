@@ -1,0 +1,16 @@
+pkgbase = perl-term-twiddle
+	pkgdesc = Twiddles a thingy while-u-wait
+	pkgver = 2.73
+	pkgrel = 1
+	url = https://metacpan.org/release/Term-Twiddle
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl>=0
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/S/SC/SCOTTW/Term-Twiddle-2.73.tar.gz
+	md5sums = e5d31c85374f66b939f3cb6716604873
+	sha512sums = bdc5bfa00fe1f81de25b2469f143aa1541028ed45fc2d637dcf91f7d6d9437ac38d5e393ad08c2552bda8f6839109dc613673c510a94ba64044f92346abf1611
+
+pkgname = perl-term-twiddle
+
