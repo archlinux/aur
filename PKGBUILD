@@ -1,7 +1,7 @@
 # Maintainer: Pablo Lezaeta <prflr88 (arroba) gmail (dot) com>
 
 pkgname=mint-backgrounds-xfce
-pkgver=2014.12.11
+pkgver=2016.11.05
 pkgrel=1
 pkgdesc="Linux Mint Xfce background"
 arch=("any")
@@ -17,5 +17,4 @@ package() {
 	cp -dpr --no-preserve=ownership "${srcdir}/${pkgname}-${pkgver}/debian/changelog" "${pkgdir}/usr/share/doc/${pkgname}/"
 	cp -dpr --no-preserve=ownership "${srcdir}/${pkgname}-${pkgver}/debian/copyright" "${pkgdir}/usr/share/doc/${pkgname}/"
 }
-
-md5sums=('32b5f2036be05209dd3cfa8b7bd887ce')
+md5sums=('144b64d0c526b9d75a284b469de37b25')
