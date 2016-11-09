@@ -1,0 +1,17 @@
+pkgbase = perl-spreadsheet-writeexcel
+	pkgdesc = Write to a cross-platform Excel binary file.
+	pkgver = 2.40
+	pkgrel = 1
+	url = https://metacpan.org/release/Spreadsheet-WriteExcel
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-ole-storage-lite>=0.19
+	depends = perl-parse-recdescent>=0
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/J/JM/JMCNAMARA/Spreadsheet-WriteExcel-2.40.tar.gz
+	md5sums = b3262290e96985ee12d81c861a389790
+	sha512sums = aa6690b4b7b66620e6490f97b0d82520dbe2a51cdc0fd03c9f83bf963f609c39e5f9f45c31e0a68809d0ba8f8ea3120c7c53cddd48a875074d5dd8250d19574e
+
+pkgname = perl-spreadsheet-writeexcel
+
