@@ -11,7 +11,7 @@ depends=('ifeffit' 'pgplot' 'perl-archive-zip' 'perl-capture-tiny'
 	'perl-graph' 'perl-heap' 'perl-list-moreutils' 'perl-moose'
 	'perl-moosex-types' 'perl-pdl-nohdf4' 'perl-pod-pom' 
 	'perl-regexp-common' 'perl-statistics-descriptive' 'perl-text-template'
-	'perl-text-unidecode' 'perl-tree-simple' 'perl-want' 'perl-xmlrpc-lite'
+	'perl-text-unidecode' 'perl-tree-simple' 'perl-want' 'perl-xmlrpc-lite>=0'
 	'perl-wx' 'perl-chemistry-elements' 'perl-encoding-fixlatin'
 	'perl-file-countlines' 'perl-math-combinatorics' 'perl-math-derivative'
 	'perl-math-random' 'perl-math-round' 'perl-math-spline' 
@@ -22,7 +22,8 @@ depends=('ifeffit' 'pgplot' 'perl-archive-zip' 'perl-capture-tiny'
 makedepends=('perl-module-build')
 source=(https://github.com/bruceravel/${pkgname}/archive/${pkgver}.tar.gz
 	)
-md5sums=()
+
+md5sums=('ddd8f92b88c262c9f3e041cce87369a2')
 
 prepare() {
 	cd "$pkgname-$pkgver"
@@ -41,5 +42,15 @@ check() {
 
 package() {
 	cd "$pkgname-$pkgver"
-#	make DESTDIR="$pkgdir/" install
+	PLIB=${pkgdir}/usr/lib/perl5/vendor_perl
+	mkdir -p $PLIB
+	mkdir -p ${pkgdir}/usr/bin
+	mkdir -p ${pkgdir}/usr/share/man
+	./Build --install_path lib=$PLIB \
+		--install_path arch=$PLIB \
+		--install_path bin=${pkgdir}/usr/bin \
+		--install_path script=${pkgdir}/usr/bin \
+		--install_path bindoc=${pkgdir}/usr/share/man \
+		--install_path libdoc=${pkgdir}/usr/share/man \
+		install
 }

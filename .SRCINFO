@@ -28,7 +28,7 @@ pkgbase = demeter
 	depends = perl-text-unidecode
 	depends = perl-tree-simple
 	depends = perl-want
-	depends = perl-xmlrpc-lite
+	depends = perl-xmlrpc-lite>=0
 	depends = perl-wx
 	depends = perl-chemistry-elements
 	depends = perl-encoding-fixlatin
@@ -50,6 +50,7 @@ pkgbase = demeter
 	depends = perl-term-sk
 	depends = perl-term-twiddle
 	source = https://github.com/bruceravel/demeter/archive/0.9.25.tar.gz
+	md5sums = ddd8f92b88c262c9f3e041cce87369a2
 
 pkgname = demeter
 
