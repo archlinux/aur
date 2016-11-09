@@ -2,15 +2,15 @@
 # Maintainer: Pablo Lezaeta <prflr88@gmail.com>
 
 pkgname=firefox-tumblr-savior
-pkgver=0.4.27
+pkgver=0.5.0
 pkgrel=1
-_dnum=421051
+_dnum=388913
 groups=("firefox-addons")
 pkgdesc="Extension for firefox which block post with predefined tags in Tumblr"
 arch=("any")
 url="http://bjornstar.com/tumblr-savior"
 license=("MIT")
-source=("https://addons.mozilla.org/firefox/downloads/file/${_dnum}/tumblr_savior-${pkgver}-fx.xpi")
+source=("https://addons.cdn.mozilla.net/user-media/addons/${_dnum}/tumblr_savior-${pkgver}-an+fx.xpi")
 
 package() {
 	depends=("firefox")
@@ -25,4 +25,4 @@ package() {
 	find "${pkgdir}" -type f -exec chmod 0644 {} \;
 }
 
-md5sums=('2b8b53b2d5181b95bdc0138fdefcdd8a')
+md5sums=('6e85a7242108a0ffd809234d8eea519a')
