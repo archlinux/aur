@@ -13,7 +13,7 @@ depends=('libnotify' 'pulseaudio' 'spotify' 'xdotool' 'xorg-xprop')
 makedepends=('git')
 provides=("${pkgname%-*}")
 conflicts=("${pkgname%-*}")
-source=("$url.git")
+source=("git+$url.git")
 sha512sums=('SKIP')
 
 pkgver() {
