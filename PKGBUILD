@@ -1,8 +1,8 @@
 # Maintainer: Emmanuel Gil Peyrot <linkmauve@linkmauve.fr>
 
 pkgname=biboumi
-pkgver=3.0
-pkgrel=3
+pkgver=4.0
+pkgrel=1
 pkgdesc="XMPP gateway to IRC"
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 url="https://biboumi.louiz.org/"
@@ -13,7 +13,7 @@ backup=("etc/$pkgname/$pkgname.cfg")
 install="$pkgname.install"
 source=("https://git.louiz.org/biboumi/snapshot/$pkgname-$pkgver.tar.xz"
         'sysuser.conf')
-md5sums=('a012516d2a2ba600d16351c8b93f2690'
+md5sums=('064958f1a8663ad72010e7209dbd5fd1'
          '07c92af3248861ce94d361e98cfb7f5c')
 
 prepare() {
