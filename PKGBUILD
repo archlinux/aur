@@ -1,7 +1,7 @@
 # Maintainer: Timofey Titovets <nefelim4ag@gmail.com>
 
 pkgname=leagueoflegends-git
-pkgver=23.4cd1609
+pkgver=27.e6823f2
 pkgrel=1
 pkgdesc="League Of Legends: Install/Run wrapper"
 arch=('any')
@@ -13,12 +13,13 @@ source=("$pkgname"::'git://github.com/Nefelim4ag/League-Of-Legends.git#branch=ma
 md5sums=('SKIP')
 install=leagueoflegends-git.install
 backup=("etc/leagueoflegends.conf")
+
 pkgver() {
-  cd ${pkgname}
-  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+    cd ${pkgname}
+    echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
 }
 
 package() {
-  cd "$srcdir/${pkgname}/"
-  ./install.sh PREFIX="$pkgdir"
+    cd "$srcdir/${pkgname}/"
+    ./install.sh PREFIX="$pkgdir"
 }
