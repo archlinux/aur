@@ -1,0 +1,14 @@
+pkgbase = hidclient
+	pkgdesc = Client program to transmit local keyboard events over bluetooth.
+	pkgver = 20060725
+	pkgrel = 1
+	url = http://anselm.hoffmeister.be/computer/hidclient/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = bluez-libs
+	source = hidclient-20060725.tar.bz2
+	md5sums = d0670498038f11b23415880a873e3f55
+
+pkgname = hidclient
+
