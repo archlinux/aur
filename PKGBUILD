@@ -2,13 +2,13 @@
 pkgname=cryptol-git
 _pkgname=cryptol
 
-pkgver=v2.2.4.r456.g9f3d423
+pkgver=2.4.0.r122.g5b502ec
 pkgver() {
-      cd "$_pkgname"
-        git describe --long --tags | sed -r 's/([^-]*-g)/r\1/;s/-/./g'
-    }
+    cd "$_pkgname"
+    git describe --long --tags | sed -r 's/([^-]*-g)/r\1/;s/-/./g'
+}
 
-pkgrel=2
+pkgrel=1
 pkgdesc="A domain-specific language for specifying cryptographic algorithms."
 url="http://www.cryptol.net"
 arch=('x86_64' 'i686')
@@ -34,12 +34,11 @@ build() {
 }
 
 package() {
-  cd $srcdir/$_pkgname 
-  mkdir -p "$pkgdir/usr/bin"
-  mkdir -p "$pkgdir/usr/share/cryptol"
-  mkdir -p "$pkgdir/usr/share/licenses/$_pkgname/"
-  #cp .cabal-sandbox/bin/cryptol "$pkgdir/usr/bin"
-  cp dist/build/cryptol/cryptol "$pkgdir/usr/bin"
-  cp lib/* "$pkgdir/usr/share/cryptol"
-  cp LICENSE "$pkgdir/usr/share/licenses/$_pkgname/"
+    cd $srcdir/$_pkgname 
+    mkdir -p $pkgdir/usr/bin
+    mkdir -p $pkgdir/usr/share/cryptol
+    mkdir -p $pkgdir/usr/share/licenses/$_pkgname/
+    cp dist/build/cryptol/cryptol $pkgdir/usr/bin
+    cp -r lib/* $pkgdir/usr/share/cryptol
+    cp LICENSE $pkgdir/usr/share/licenses/$_pkgname/
 }
