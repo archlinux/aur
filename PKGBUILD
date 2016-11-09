@@ -20,7 +20,7 @@ optdeps=('cuneiform: alternativer OCR')
 source=("https://github.com/jflesch/paperwork/archive/${pkgver}.zip"
         "https://github.com/jflesch/paperwork-backend/archive/stable.zip")
 md5sums=('8591cc88de3c4453d53d0c32dab227df'
-         '789e075b02e61b84075aaa070e8df99c')
+         'SKIP')
 install=paperwork.install
 
 build() {
