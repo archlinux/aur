@@ -1,0 +1,19 @@
+pkgbase = perl-starlink-ast
+	pkgdesc = Interface to the Starlink AST library
+	pkgver = 1.05
+	pkgrel = 1
+	url = https://metacpan.org/release/Starlink-AST
+	arch = i686
+	arch = x86_64
+	license = PerlArtistic
+	license = GPL
+	checkdepends = perl-test-deep>=0
+	checkdepends = perl-test-number-delta>=0
+	depends = perl>=5.008
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/T/TJ/TJENNESS/Starlink-AST-1.05.tar.gz
+	md5sums = 5ca28e250d2fa93882a03603547cb6d6
+	sha512sums = 9f1353c139cbecad4b468dbac73d27af53784ed0979fcd6dcb57277e1eae0d1f0d32d18dc4cf8d072b86e0534759c979e386ade809f75b0866a6afe953f00b31
+
+pkgname = perl-starlink-ast
+
