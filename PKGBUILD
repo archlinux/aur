@@ -18,6 +18,7 @@ depends=(
 	'perl>=5.8.9'
 	'perl-inline>=0.43'
 	'gsl'
+	'perl-inline-c'
 )
 makedepends=(
 	'perl>=5.11.3' # To provide ExtUtils::MakeMaker 6.56
