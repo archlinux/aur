@@ -1,0 +1,19 @@
+pkgbase = perl-astro-fits-cfitsio
+	pkgdesc = Perl extension for using the cfitsio library
+	pkgver = 1.11
+	pkgrel = 1
+	url = https://metacpan.org/release/Astro-FITS-CFITSIO
+	arch = i686
+	arch = x86_64
+	license = PerlArtistic
+	license = GPL
+	depends = perl>=0
+	depends = glibc>=2.24
+	depends = cfitsio
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/P/PR/PRATZLAFF/Astro-FITS-CFITSIO-1.11.tar.gz
+	md5sums = 99526138ddeaee2f14f364d2406b1ee9
+	sha512sums = e823831c51f20ea775b66c0fa3855451ca0b9de984968daa07e365b86151578a4424089d21c5b7528c15c1eb49e9517935f266d60c1b074ce7d9d02265fc20a5
+
+pkgname = perl-astro-fits-cfitsio
+
