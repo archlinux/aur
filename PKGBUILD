@@ -1,10 +1,11 @@
 # Maintainer: twa022 <twa022 at gmail dot com>
 
 pkgname=nemo-emblems
-pkgver=3.0.1
+_pkgname=nemo-extensions
+pkgver=3.2.0
 pkgrel=1
 pkgdesc="Nemo file emblems extension"
-arch=('i686' 'x86_64')
+arch=('any')
 url="https://github.com/linuxmint/nemo-extensions"
 license=('GPL')
 depends=('nemo-python')
@@ -12,17 +13,20 @@ makedepends=('python2-distutils-extra')
 options=('!libtool' '!emptydirs')
 install="$pkgname".install
 
-source=("http://packages.linuxmint.com/pool/main/${pkgname:0:1}/${pkgname}/${pkgname}_${pkgver}.tar.gz")
-sha256sums=('0f892648269b95ea2cfe313729d0f1c3e4eba4f059013b3d150947e0047ee44b')
+#source=("http://packages.linuxmint.com/pool/main/${pkgname:0:1}/${pkgname}/${pkgname}_${pkgver}.tar.gz")
+source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/linuxmint/${_pkgname}/archive/${pkgver}.tar.gz")
+sha256sums=('1536fd828b2ee0a8f194155a9e13b8cce937b403b5c87d8e579d7b1ced8d6d14')
 
 prepare() {
-  cd ${srcdir}/${pkgname}
+#  cd ${srcdir}/${pkgname}
+  cd ${srcdir}/${_pkgname}-${pkgver}/${pkgname}
   sed -i -e "s|#![ ]*/usr/bin/python$|#!/usr/bin/env python2|" \
          -e "s|#![ ]*/usr/bin/env python$|#!/usr/bin/env python2|" \
             $(find . -name '*.py')
 }
 
 package() {
-  cd ${srcdir}/${pkgname}
+#  cd ${srcdir}/${pkgname}
+  cd ${srcdir}/${_pkgname}-${pkgver}/${pkgname}
   python2 ./setup.py install --root="${pkgdir}"
 }
