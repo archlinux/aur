@@ -1,0 +1,15 @@
+pkgbase = perl-convert-uu
+	pkgver = 0.5201
+	pkgrel = 1
+	url = https://metacpan.org/release/Convert-UU
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl>=0
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/A/AN/ANDK/Convert-UU-0.5201.tar.gz
+	md5sums = f60f49d15770503efa5ed0c81296ef2f
+	sha512sums = 2f44805dfef3bc0ea3f632c474ddbe8bde12e3b986eb49a21b68a730bb1df7afe8b5a64e57855ff9911a2bfe7f517b14a7ecee9d33b2f3a892871507fe461476
+
+pkgname = perl-convert-uu
+
