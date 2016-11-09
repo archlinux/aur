@@ -19,11 +19,16 @@ conflicts=("${_pkgname}")
 options=('!emptydirs')
 groups=('gnome')
 # Fedora patches: http://pkgs.fedoraproject.org/cgit/rpms/gnome-terminal.git/tree/
+_frepourl='http://pkgs.fedoraproject.org/cgit/rpms/gnome-terminal.git'
+_frepobranch='f25'
+_fpatchfile1='0001-build-Don-t-treat-warnings-as-errors.patch'
+_fpatchfile2='gnome-terminal-notify-open-title-transparency.patch'
+_fgsoverridefile='org.gnome.Terminal.gschema.override'
 source=(
 	"https://download.gnome.org/sources/${_pkgname}/${pkgver::4}/${_pkgname}-${pkgver}.tar.xz"
-	'0001-build-Don-t-treat-warnings-as-errors.patch'
-	'gnome-terminal-notify-open-title-transparency.patch'
-	'org.gnome.Terminal.gschema.override'
+	"${_fpatchfile1}::${_frepourl}/plain/${_fpatchfile1}?h=${_frepobranch}"
+	"${_fpatchfile2}::${_frepourl}/plain/${_fpatchfile2}?h=${_frepobranch}"
+	"${_fgsoverridefile}::${_frepourl}/plain/${_fgsoverridefile}?h=${_frepobranch}"
 )
 sha256sums=(
 	'b00752336eb22d6d9f10c863c166ac73dcbb2ce4b280abdc0c78337e261bb0d4'
@@ -35,8 +40,8 @@ sha256sums=(
 prepare () {
 	cd "${_pkgname}-${pkgver}"
 
-	patch -p1 -i '../0001-build-Don-t-treat-warnings-as-errors.patch'
-	patch -p1 -i '../gnome-terminal-notify-open-title-transparency.patch'
+	patch -p1 -i "../${_fpatchfile1}"
+	patch -p1 -i "../${_fpatchfile2}"
 
 	autoreconf -fvi
 }
@@ -65,6 +70,6 @@ package() {
 	cd "${_pkgname}-${pkgver}"
 	make DESTDIR="${pkgdir}" install
 
-	install -Dm644 '../org.gnome.Terminal.gschema.override' \
-		"${pkgdir}/usr/share/glib-2.0/schemas/org.gnome.Terminal.gschema.override"
+	install -Dm644 "../${_fgsoverridefile}" \
+		"${pkgdir}/usr/share/glib-2.0/schemas/${_fgsoverridefile}"
 }
