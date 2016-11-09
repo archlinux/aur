@@ -16,11 +16,11 @@ _language_vala_modern_ver=0.3.2
 _terminal_fusion_ver=2.4.2
 
 pkgname=${_pkgname}-editor-${_version}
-_pkgrel=7
-_pkgver=1.12.0
+_pkgrel=0
+_pkgver=1.13.0
 pkgver="${_pkgver}.beta${_pkgrel}.m${_language_gfm2_ver}"
 _ver=$_pkgver-beta${_pkgrel}
-pkgrel=2
+pkgrel=1
 pkgdesc='Hackable text editor for the 21st Century, built using web technologies on the Electron framework - Beta channel.'
 arch=('x86_64' 'i686')
 url="https://github.com/${_pkgname}/${_pkgname}"
