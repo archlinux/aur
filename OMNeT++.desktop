@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=5.0
+Type=Application
+Name=OMNeT++
+Icon=/opt/omnetpp/doc/manual/omnetpp.png
+Exec=omnetpp
+Comment=Start OMNeT++ IDE
+Categories=Development;
+Terminal=false
