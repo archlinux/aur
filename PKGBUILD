@@ -1,26 +1,39 @@
 # Maintainer: James Bunton <jamesbunton@delx.net.au>
-# Contributor: David Mason <djmason@gmail.com>
-# Contributor: Wijnand Modderman-Lenstra <maze@maze.io>
 
 # The latest version can be found like this:
-# $ curl -s http://bluejeans.com/downloads | grep 'bjnplugin.*\.deb'
+# $ curl -s https://bluejeans.com/downloads | grep 'desktop/linux'
 
 pkgname=bluejeans
-pkgver=2.160.66.8
+pkgver=1.18.15
 pkgrel=1
-pkgdesc="BlueJeans browser plugin"
+pkgdesc="BlueJeans app"
 arch=('x86_64')
-url="http://www.bluejeans.com/"
+url="https://www.bluejeans.com"
 license=('Proprietary')
 groups=()
-conflicts=(bjnplugin)
 depends=()
-source=(
-    https://swdl.bluejeans.com/skinny/rbjnplugin_${pkgver}-1_amd64.deb
-)
-sha1sums=('9ac0b9851218d8ab5ff2a88876b98c3b7c9d7908')
+makedepends=('rpmextract')
+install=bluejeans.install
+source=(http://swdl.bluejeans.com/desktop/linux/${pkgver%.*}/${pkgver}/bluejeans-${pkgver}.x86_64.rpm)
+sha256sums=('fb87b6e20c0893485dc3bb79cb03161d7e79a087467fd51e86dfbd3250ad71ef')
 
 package() {
-    ar x rbjnplugin_${pkgver}-${pkgrel}_amd64.deb "${pkgdir}"
-    tar xf data.tar.gz -C "${pkgdir}"
+  # extract rpm
+  rpmextract.sh "bluejeans-${pkgver}.x86_64.rpm"
+
+  # add bluejeans wrapper to /usr/bin
+  mkdir -p "${pkgdir}/usr/bin"
+  chmod +x "opt/bluejeans/bluejeans"
+  ln -nsf "/opt/bluejeans/bluejeans" "${pkgdir}/usr/bin/bluejeans"
+
+  # install desktop file and icons
+  mkdir -p "${pkgdir}/usr/share/applications/"
+  mv "opt/bluejeans/bluejeans.desktop" "${pkgdir}/usr/share/applications/"
+  mv "opt/bluejeans/icons" "${pkgdir}/usr/share/"
+
+  # hack for libudev.so.0
+  ln -nsf "/usr/lib/libudev.so.1" "opt/bluejeans/libudev.so.0"
+
+  # put the rest in /opt
+  mv "opt" "${pkgdir}"
 }

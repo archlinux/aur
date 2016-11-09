@@ -1,0 +1,17 @@
+note() {
+    printf "${blue}==>${yellow} NOTE:${bold} $1${all_off}\n"
+}
+
+all_off="$(tput sgr0)"
+bold="${all_off}$(tput bold)"
+blue="${bold}$(tput setaf 4)"
+yellow="${bold}$(tput setaf 3)"
+
+post_install() {
+    note "Bluejeans is no longer supporting their browser plugin."
+    note "This package has now switched to the Bluejeans app instead."
+}
+
+post_upgrade() {
+    post_install
+}
