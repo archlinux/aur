@@ -9,7 +9,7 @@
 
 pkgname=perl-pdl-nohdf4
 pkgver=2.017
-pkgrel=1
+pkgrel=2
 pkgdesc='The Perl Data Language, a perl extension designed for scientific and bulk numeric data processing and display'
 arch=('i686' 'x86_64')
 url='http://search.cpan.org/dist/PDL'
@@ -20,6 +20,8 @@ depends=(
 	'gsl'
 	'perl-inline-c'
 )
+provides=('perl-pdl')
+conflicts=('perl-pdl')
 makedepends=(
 	'perl>=5.11.3' # To provide ExtUtils::MakeMaker 6.56
 	'fftw2'
