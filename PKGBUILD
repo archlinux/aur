@@ -17,14 +17,14 @@ depends=('pygobject2-devel' 'pygtk' 'python-pycountry'
          'glade' 'gnome-icon-theme-symbolic' 'gnome-icon-theme')
 makedepends=('python' 'python-setuptools' 'git')
 optdeps=('cuneiform: alternativer OCR')
-source=("https://github.com/jflesch/paperwork/archive/${pkgver}.zip"
-        "https://github.com/jflesch/paperwork-backend/archive/stable.zip")
-md5sums=('8591cc88de3c4453d53d0c32dab227df'
-         'SKIP')
+source=("paperwork-gui.tgz::https://github.com/jflesch/paperwork/archive/${pkgver}.tar.gz"
+        "paperwork-backend.tgz::https://github.com/jflesch/paperwork-backend/archive/${pkgver}.tar.gz")
+md5sums=('7df3e8be0c7dd96196d6ab3ecc21726a'
+         '3911c9bc34803a326ad433885d4ce1ac')
 install=paperwork.install
 
 build() {
-  cd "${srcdir}/${pkgname}-backend-stable"
+  cd "${srcdir}/${pkgname}-backend-${pkgver}"
   python setup.py build
 
   cd "${srcdir}/${pkgname}-${pkgver}"
@@ -32,7 +32,7 @@ build() {
 }
 
 package() {
-  cd "${srcdir}/${pkgname}-backend-stable"
+  cd "${srcdir}/${pkgname}-backend-${pkgver}"
   python setup.py install --prefix=/usr --root="${pkgdir}" --optimize=1
 
   cd "${srcdir}/${pkgname}-${pkgver}"

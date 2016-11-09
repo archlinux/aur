@@ -3,6 +3,7 @@
 *.tar
 *.tar.xz
 *.tar.gz
+*.tgz
 *.zip
 
 # All sub-folders
