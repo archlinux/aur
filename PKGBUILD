@@ -5,7 +5,8 @@ pkgrel=1
 pkgdesc="Debugger interface for Freescale RS08,HCS08,HCS12,Coldfire and ARM-Kinetis Devices."
 arch=("i686" "x86_64")
 url="http://usbdm.sourceforge.net/"
-depends=("java-runtime" "webkitgtk2" "xerces-c" "tcl")
+license=('GPL2')
+depends=("java-runtime" "webkitgtk2" "xerces-c" "tcl" "wxgtk" "xdg-utils")
 makedepends=("java-environment")
 options=("!makeflags")
 
