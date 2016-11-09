@@ -1,0 +1,28 @@
+--- a/hidclient.c
++++ b/hidclient.c
+@@ -799,6 +799,7 @@
+ 				break;
+ 			  // *** Special key: PAUSE
+ 			  case	KEY_PAUSE:	
++			  case	KEY_F10:
+ 				// When pressed: abort connection
+ 				if ( inevent->value == 0 )
+ 				{
+@@ -889,7 +890,7 @@
+ 			  case	KEY_SYSRQ:	++u; //[printscr]
+ 			  case	KEY_F12:	++u; //F12=> code 69
+ 			  case	KEY_F11:	++u;
+-			  case	KEY_F10:	++u;
++						++u;
+ 			  case	KEY_F9:		++u;
+ 			  case	KEY_F8:		++u;
+ 			  case	KEY_F7:		++u;
+@@ -1360,7 +1361,7 @@
+ "		openvt -s -w hidclient\n" \
+ "This will even return to your xsession after hidclient terminates.\n\n" \
+ "hidclient connections can be dropped at any time by pressing the PAUSE\n" \
+-"key; the program will wait for other connections afterward.\n" \
++"or F10 key; the program will wait for other connections afterward.\n" \
+ "To stop hidclient, press LeftCtrl+LeftAlt+Pause.\n"
+ 		);
+ 	return;
