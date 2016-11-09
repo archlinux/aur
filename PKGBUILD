@@ -3,7 +3,7 @@
 
 pkgname=('sumo' 'sumo-doc')
 pkgbase=sumo
-pkgver=0.27.1
+pkgver=0.28.0
 pkgrel=1
 pkgdesc="SUMO is an open source, highly portable, microscopic and continuous road traffic simulation package designed to handle large road networks"
 arch=('i686' 'x86_64')
