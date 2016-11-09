@@ -1,26 +1,26 @@
 # Maintainer: Ashley Towns <mail(at)ashleytowns(dot)id(dot)au>
 
-_version=2.2.1
+_version=3.0.1
 pkgname=swift-bin
 pkgver=${_version//-/.}
-pkgrel=4
+pkgrel=1
 pkgdesc="The Swift programming language, the binary drops from the official website"
 arch=('x86_64')
 url="https://swift.org"
 license=('apache')
-depends=('icu55' 'ncurses5-compat-libs' 'libedit' 'python2' 'libutil-linux' 'libbsd' 'clang' 'libtinfo5' 'python2-six' 'libxml2')
+depends=('icu' 'ncurses5-compat-libs' 'libedit' 'python2' 'libutil-linux' 'libbsd' 'clang' 'libtinfo5' 'python2-six' 'libxml2')
 conflicts=('lldb' 'swift-language-git')
 options=('!strip')
-validpgpkeys=('1BE1E29A084CB305F397D62A9F597F4D21A56D5F')
+validpgpkeys=('A3BAFD3556A59079C06894BD63BC1CFE91D306C6')
 provides=('swift-language')
 replaces=('swift-language-bin')
 
 source=(
-  "https://swift.org/builds/swift-${_version}-release/ubuntu1510/swift-${_version}-RELEASE/swift-${_version}-RELEASE-ubuntu15.10.tar.gz"
-  "https://swift.org/builds/swift-${_version}-release/ubuntu1510/swift-${_version}-RELEASE/swift-${_version}-RELEASE-ubuntu15.10.tar.gz.sig"
+  "https://swift.org/builds/swift-${_version}-release/ubuntu1604/swift-${_version}-RELEASE/swift-${_version}-RELEASE-ubuntu16.04.tar.gz"
+  "https://swift.org/builds/swift-${_version}-release/ubuntu1604/swift-${_version}-RELEASE/swift-${_version}-RELEASE-ubuntu16.04.tar.gz.sig"
 )
-sha256sums=('6b03743e4b5182c105f80573ea0ab9e469f91553fb23a59015349c6a03a0097c'
-            'SKIP')
+sha256sums=('38e7ce6a716f7f72f1868b9c0ba6f29007a83e1662adb21400cca0c6c7902b58'
+            '0cd89ca6c8c485e9f431df16c18ad840766d3980cd3555f4fa34fb2dcff8c7e4')
 
 package() {
     tar -C "$pkgdir" -xf "swift-${_version}-RELEASE"*.tar.gz --strip 1
@@ -41,10 +41,7 @@ package() {
     # Ensure the items have the right permissions..
     # some tarballs from upstream seem to have the wrong ones
     find "${pkgdir}/usr/bin" -type f -exec chmod a+rx {} \;
-    find "${pkgdir}/usr/lib" -type f -exec chmod a+r {} \; 
-
-    # Update glibc map paths
-    sed -i 's/\/x86_64-linux-gnu//g' "${pkgdir}/usr/lib/swift/glibc/module.map"
+    find "${pkgdir}/usr/lib" -type f -exec chmod a+r {} \;     
 
     # Move license
     install -dm755 ${pkgdir}/usr/share/licenses/${pkgname}
