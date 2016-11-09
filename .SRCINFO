@@ -1,0 +1,17 @@
+pkgbase = perl-file-countlines
+	pkgdesc = Efficiently count the number of line breaks in a file
+	pkgver = 0.0.3
+	pkgrel = 1
+	url = https://metacpan.org/release/File-CountLines
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	makedepends = perl-module-build>=0.36
+	depends = perl>=0
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/M/MO/MORITZ/File-CountLines-v0.0.3.tar.gz
+	md5sums = b27721b242c6ee42025a01af838deac9
+	sha512sums = 84adcb4b8ba24f4ea2f23fe4df6da925cdc0f5ff5354a509af50398dfbe58114af7e940f358d4fbcae6acc1af5229e80d0f337d7cbcdaeafb15e856514dcfa41
+
+pkgname = perl-file-countlines
+
