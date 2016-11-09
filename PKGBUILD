@@ -13,7 +13,7 @@ depends=('pygobject2-devel' 'pygtk' 'python-pycountry'
          'python-levenshtein' 'python-whoosh' 'python-pyenchant'
          'python-joblib' 'python-numpy' 'python-scipy' 'python-scikit-learn'
          'python-scikit-image' 'python-gobject' 'python-nltk' 'python-termcolor'
-         'python-simplebayes' 'python-pillowfight' 'python-cairo'
+         'python-simplebayes' 'python-pypillowfight' 'python-cairo'
          'glade' 'gnome-icon-theme-symbolic' 'gnome-icon-theme')
 makedepends=('python' 'python-setuptools' 'git')
 optdeps=('cuneiform: alternativer OCR')
