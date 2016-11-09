@@ -23,19 +23,13 @@ prepare() {
 	sed -e "/use_setuptools(/d" -i setup.py
 }
 
-build() {
-  cd "$srcdir"/pyxmpp2
-  python setup.py build --build-base=py3-build
-
-  cd "$srcdir"/pyxmpp2
-  python2 setup.py build
-}
-
 package_python-pyxmpp2-git() {
   depends=('python')
   optdepends=('python-dnspython')
 
   cd pyxmpp2
+  python setup.py make_version
+  python setup.py build --build-base=py3-build
   python setup.py install --root="$pkgdir" --optimize=1
   install -D -m644 COPYING "$pkgdir"/usr/share/licenses/python-pyxmpp2/COPYING
 }
@@ -45,6 +39,8 @@ package_python2-pyxmpp2-git() {
   optdepends=('python2-dnspython')
 
   cd pyxmpp2
+  python2 setup.py make_version
+  python2 setup.py build
   python2 setup.py install --root="$pkgdir" --optimize=1
   install -D -m644 COPYING "$pkgdir"/usr/share/licenses/python2-pyxmpp2/COPYING
 }
