@@ -1,0 +1,17 @@
+pkgbase = perl-graphics-gnuplotif
+	pkgdesc = A dynamic Perl interface to gnuplot
+	pkgver = 1.8
+	pkgrel = 1
+	url = https://metacpan.org/release/Graphics-GnuplotIF
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl>=0
+	depends = gnuplot
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/M/ME/MEHNER/Graphics-GnuplotIF-1.8.tar.gz
+	md5sums = c5416c5db2bb10a171e60c98e6427e84
+	sha512sums = c0eb2d39d38a891b69969448a1e9be4184c4ea045c1eee813f6c7293d8c3c23d044e1e90c0834fcc76b7f84d388706e0f58bbee044dc9b5d6e4b5cc523a61ea6
+
+pkgname = perl-graphics-gnuplotif
+
