@@ -1,0 +1,17 @@
+pkgbase = perl-moosex-types-laxnum
+	pkgdesc = A LaxNum type which provides the loose behavior of Moose's Num pre-2.10
+	pkgver = 0.04
+	pkgrel = 1
+	url = https://metacpan.org/release/MooseX-Types-LaxNum
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	checkdepends = perl-test-fatal>=0
+	depends = perl-moose>=0
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/S/SW/SWEETKID/MooseX-Types-LaxNum-0.04.tar.gz
+	md5sums = f6f5a571d509006f0bba0a181580746c
+	sha512sums = ee2eaa2838ed6b941e53b7fff1dbf82fc581e3720b935869535445012fe9a7bea3a68fd47d4142b0e4579cb1046eea48ab78d240abf250f1440e0f536d3a5640
+
+pkgname = perl-moosex-types-laxnum
+
