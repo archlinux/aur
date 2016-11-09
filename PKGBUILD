@@ -1,6 +1,6 @@
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=scrollz-git
-pkgver=2.2.3.r36.gc97e764
+pkgver=2.3.r1646.8eae44d
 pkgrel=1
 pkgdesc="An advanced IRC client based on ircII client."
 arch=('i686' 'x86_64')
@@ -16,19 +16,14 @@ replaces=()
 backup=()
 options=()
 install=
-source=("$pkgname::git+git://github.com/ScrollZ/ScrollZ.git"
-        "makefile.diff")
+source=("$pkgname::git+git://github.com/ScrollZ/ScrollZ.git")
 noextract=()
-md5sums=('SKIP'
-         '08ffe17576bc23bdb791ea3e502ef633')
-sha1sums=('SKIP'
-          '00124cf382288b304a094e8084311b6f46130ed2')
-sha256sums=('SKIP'
-            'd31c99074e27dcdad369c93cdd175af64cf7e564dbe976c9e2bc6ebf4b8048f3')
+md5sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/$pkgname"
-  git describe --tags | sed -E 's/([^-]*-g)/r\1/;s/-/./g;s/ScrollZ.//'
+  printf "%s.r%s.%s" "$(git describe --tags | sed -E 's/([^-]*-g)/r\1/;s/-/./g;s/ScrollZ.//')" \
+         "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
