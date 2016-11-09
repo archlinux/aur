@@ -1,0 +1,16 @@
+pkgbase = perl-encoding-fixlatin
+	pkgdesc = takes mixed encoding input and produces UTF-8 output
+	pkgver = 1.04
+	pkgrel = 1
+	url = https://metacpan.org/release/Encoding-FixLatin
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl>=0
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/G/GR/GRANTM/Encoding-FixLatin-1.04.tar.gz
+	md5sums = c3a2c7fac21788cd7f8035b0fd1e5cf9
+	sha512sums = 7091e503b11c9d1c5a3dd38156467cf398ae4b96e1c109db4781478dfb100c2cc50e688c742392f66b9f195b936c19cafe003fffe4fc0459165b02622c154f72
+
+pkgname = perl-encoding-fixlatin
+
