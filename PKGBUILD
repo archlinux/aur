@@ -10,7 +10,7 @@
 
 pkgname=keepassxc
 pkgver=2.0.3
-pkgrel=2
+pkgrel=3
 pkgdesc="A reboot with keepasshttp of an OpenSource password safe which helps you to manage your passwords in an easy and secure way"
 arch=('i686' 'x86_64')
 url="https://github.com/keepassxreboot/keepassx"
@@ -24,13 +24,13 @@ source=("https://github.com/keepassxreboot/keepassxc/archive/${pkgver}-http.tar.
 sha256sums=('fe62a1a30629485df2350c8375fdf68f68a5827d2fe90439cd7397557f88662d')
 
 prepare() {
-    cd "${srcdir}/keepassx-${pkgver}-http"
+    cd "${srcdir}/${pkgname}-${pkgver}-http"
     sed -i '/git/d' src/CMakeLists.txt
     mkdir -p build
 }
 
 build() {
-    cd "${srcdir}/keepassx-${pkgver}-http/build"
+    cd "${srcdir}/${pkgname}-${pkgver}-http/build"
     cmake -DCMAKE_INSTALL_PREFIX=/usr \
         -DCMAKE_INSTALL_BINDIR=/usr/bin \
         -DCMAKE_INSTALL_LIBDIR=/usr/lib \
@@ -41,12 +41,12 @@ build() {
 }
 
 check() {
-    cd "${srcdir}/keepassx-${pkgver}-http/build"
+    cd "${srcdir}/${pkgname}-${pkgver}-http/build"
     make test
 }
 
 package() {
-    cd "${srcdir}/keepassx-${pkgver}-http/build"
+    cd "${srcdir}/${pkgname}-${pkgver}-http/build"
     make DESTDIR="${pkgdir}" install
 }
 
