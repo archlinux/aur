@@ -1,0 +1,13 @@
+pkgbase = bootableusb
+	pkgdesc = Create bootable usb drives
+	pkgver = 0.3
+	pkgrel = 1
+	url = https://github.com/bugra9/BootableUSB
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	source = bootableusb::git+https://github.com/bugra9/BootableUSB.git
+	md5sums = SKIP
+
+pkgname = bootableusb
+
