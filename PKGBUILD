@@ -2,27 +2,27 @@
 # Maintainer: Johannes Löthberg <johannes@kyriasis.com>
 
 pkgname=pacman-contrib-git
+_gitname=pacman-contrib
 pkgver=0.0.1.r8.g86adc7b
 pkgrel=1
 pkgdesc='pacman contributions (Git version)'
-url=https://git.archlinux.org/pacman-contrib.git
+url=https://git.archlinux.org/$_gitname.git
 arch=('i686' 'x86_64')
-arch=('any')
 license=('GPL')
-depends=('pacman-git') # Change to 'pacman' after release 5.0.2
+depends=('pacman-git') # Change to 'pacman' after its next release
 makedepends=('asciidoc' 'git')
-provides=('pacman-contrib')
-replaces=('pacman-contrib')
+provides=("$_gitname")
+replaces=("$_gitname")
 source=("git+$url")
 sha512sums=('SKIP')
 
 pkgver() {
-  cd ${pkgname%-*}
+  cd $_gitname
   git describe --long --tags | sed -r 's/^v//; s/([^-]*-g)/r\1/; s/-/./g'
 }
 
 build() {
-  cd ${pkgname%-*}
+  cd $_gitname
   ./autogen.sh
   ./configure --prefix=/usr --sysconfdir=/etc \
     --localstatedir=/var --enable-git-version \
@@ -31,11 +31,11 @@ build() {
 }
 
 check() {
-  make -C ${pkgname%-*} check
+  make -C $_gitname check
 }
 
 package() {
-  cd ${pkgname%-*}
+  cd $_gitname
   make DESTDIR="$pkgdir" install
 }
 
