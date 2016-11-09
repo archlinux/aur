@@ -3,8 +3,8 @@
 _version=3.0.1
 pkgname=swift-bin
 pkgver=${_version//-/.}
-pkgrel=2
-pkgdesc="The Swift programming language, the binary drops from the official website"
+pkgrel=3
+pkgdesc="Official binary builds of the Swift programming language."
 arch=('x86_64')
 url="https://swift.org"
 license=('apache')
