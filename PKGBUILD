@@ -8,9 +8,9 @@
 # Contributor: Alucryd <alucryd at gmail dot com>
 # Contributor: Paolo Stivanin <admin at polslinux dot it>
 
-pkgname=keepassx-reboot
+pkgname=keepassxc
 pkgver=2.0.3
-pkgrel=2
+pkgrel=1
 pkgdesc="A reboot with keepasshttp of an OpenSource password safe which helps you to manage your passwords in an easy and secure way"
 arch=('i686' 'x86_64')
 url="https://github.com/keepassxreboot/keepassx"
@@ -18,9 +18,9 @@ license=('GPL2')
 depends=('libxtst' 'shared-mime-info' 'qt5-x11extras' 'hicolor-icon-theme' 'desktop-file-utils' 'libmicrohttpd')
 makedepends=('intltool' 'cmake' 'qt5-base' 'qt5-tools' 'zlib' 'libgcrypt')
 conflicts=('keepassx-svn' 'keepassx' 'keepassx-git' 'keepassx2-git' 'keepassx2' 'keepassx2-yubikey-git' 'keepassx-http' 'keepassx-reboot-git')
-provides=("keepassx{,2}" "keepassx-svn" "keepassx2-git")
-replaces=('keepassx-http')
-source=("https://github.com/keepassxreboot/keepassx/archive/${pkgver}-http.tar.gz")
+provides=("keepassx{,2}" 'keepassx-http' 'keepassx-reboot')
+replaces=('keepassx-http' 'keepassx-reboot')
+source=("https://github.com/keepassxreboot/keepassxc/archive/${pkgver}-http.tar.gz")
 sha256sums=('b88291118a5b253d9517a9812b418329ce1273fa15788e60e58d59dfce489370')
 
 prepare() {
