@@ -3,7 +3,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=lilypond-devel-docs
-pkgver=2.19.49
+pkgver=2.19.50
 pkgrel=1
 pkgdesc="Offline documentation for lilypond"
 arch=('any')
@@ -11,7 +11,7 @@ url="http://lilypond.org"
 license=('GPL')
 options=('!strip')
 source=("http://lilypond.org/downloads/binaries/documentation/lilypond-${pkgver}-1.documentation.tar.bz2")
-sha256sums=('694f5c6e9c08387413d0d97df08688287ab09a08d8f1badbf6c9a4808aa1bb7d')
+sha256sums=('3c1b6c37f1edc16d11a5d0a5091a36dede5d41de3a0d031a51043cfe22f41ef8')
 
 package(){
   install -d ${pkgdir}/usr/share
