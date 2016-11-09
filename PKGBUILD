@@ -2,7 +2,7 @@
 # Maintainer: Francois Boulogne <fboulogne at april dot org>
 
 pkgname=python-gphoto2
-pkgver=1.4.0
+pkgver=1.5.0
 pkgrel=1
 pkgdesc="Python interface to libgphoto2"
 arch=('any')
@@ -11,7 +11,7 @@ license=('GPL3')
 depends=('python' 'libgphoto2' 'swig')
 makedepends=('python-setuptools')
 source=(https://github.com/jim-easterbrook/python-gphoto2/archive/v$pkgver.tar.gz)
-sha256sums=('04aa2398e05f5c3c27f7884f072ca2121e3c682163a9b74129d37e3db739a1e4')
+sha256sums=('6da77baf8e4e15f878017ecb37949adadd4db79f07f9b78b938143b93e973d86')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
