@@ -1,11 +1,12 @@
 pkgbase = nheqminer-cpu-git
 	pkgdesc = zcash equihash miner by NiceHash. Xenoncat CPU solver build.
-	pkgver = 0.4b.r1.ge2a73b4
-	pkgrel = 2
+	pkgver = 0.4b.r2.g519cdf0
+	pkgrel = 1
 	url = https://github.com/nicehash/nheqminer/
 	arch = x86_64
 	license = MIT
 	makedepends = git
+	makedepends = cmake
 	depends = boost
 	optdepends = zcash: zcash node and tools
 	source = nheqminer-cpu-git::git+https://github.com/nicehash/nheqminer.git
