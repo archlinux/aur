@@ -9,7 +9,7 @@
 # to the depends and delete "no-g15" in the configure line below
 
 pkgname=mumble-git
-pkgver=2016.07.21
+pkgver=2016.11.07
 _pkgver=1.3.0
 pkgrel=1
 arch=('i686' 'x86_64')
@@ -50,7 +50,7 @@ build() {
   # Building mumble
   qmake-qt5 main.pro \
     CONFIG+="bundled-celt no-bundled-opus no-bundled-speex no-g15 no-xevie \
-             no-server no-embed-qt-translations no-update packaged" \
+             no-server no-embed-qt-translations no-update packaged c++11" \
     DEFINES+="PLUGIN_PATH=/usr/lib/mumble" \
     INCLUDEPATH+="/usr/include/speech-dispatcher"
 
