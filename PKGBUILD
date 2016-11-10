@@ -11,7 +11,7 @@
 
 pkgname=wine-gaming-nine
 pkgver=1.9.22
-pkgrel=2
+pkgrel=3
 
 _pkgbasever=${pkgver/rc/-rc}
 _winesrcdir="wine-patched-staging-$_pkgbasever"
@@ -26,7 +26,7 @@ source=("https://github.com/wine-compholio/wine-patched/archive/staging-$_pkgbas
         wbemprox_query_v2.patch
         )
 sha1sums=('e22a28c1ee1477a31494882e23b39aeb183a7b8e'
-	  '0c143235c739d23dec36e3af720dd972b33b6da5'
+	  'd113eeaafa09e36f83f3104ae20920ac4260ac24'
           '023a5c901c6a091c56e76b6a62d141d87cce9fdb'
           '0f4ac455436d5714a2cf0b537ed25f4fa5c1a7fd'
 	  'a84456790932fb2e7bb75ddeac86fd45b7c09e79'
