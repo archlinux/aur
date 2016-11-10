@@ -1,11 +1,12 @@
-# Maintainer:  Benjamin Chrétien <chretien at lirmm dot fr>
+# Maintainer:  jjpk <julienjpk@email.com>
+# Contributor: Benjamin Chrétien <chretien at lirmm dot fr>
 # Contributor: DaNiMoTh <jjdanimoth@gmail.com>
 # Contributor: Andrea Scarpino <bash.lnx@gmail.com>
 # Contributor: Gereon Schomber <Gereon_Schomber@fastmail.fm>
 # Contributor: Alex Belanger <i.caught.air@gmail.com>
 
 pkgname=ace
-pkgver=6.3.3
+pkgver=6.4.1
 pkgrel=1
 pkgdesc="Framework that provides many components and patterns for developing high-performance, distributed real-time and embedded systems."
 url="http://www.dre.vanderbilt.edu/~schmidt/ACE.html"
@@ -16,7 +17,7 @@ options=(!libtool)
 conflicts=('libace')
 source=("http://download.dre.vanderbilt.edu/previous_versions/ACE-${pkgver}.tar.gz"
         "license.txt")
-sha256sums=('98178062d55a0c5e58b7187ba8916f6f51351c3426e391562565f8c327661d49'
+sha256sums=('bc51ffcc6c68f9a244def11a92c6843e789349538b997529c7942629641379ce'
             '4aef434f0bc8c91488f92b25863e5dcbff857598389276718c59903cd8c8c954')
 
 build() {
@@ -28,6 +29,7 @@ build() {
   cd ace
   make
 }
+
 package() {
   cd $srcdir/ACE_wrappers/ace
   make DESTDIR="$pkgdir/" install
