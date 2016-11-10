@@ -1,0 +1,2 @@
+# EMS USB 64M Gameboy flash cart
+ATTRS{idVendor}=="4670", ATTRS{idProduct}=="9394", MODE="0664", GROUP="plugdev"
