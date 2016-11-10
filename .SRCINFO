@@ -1,7 +1,7 @@
 pkgbase = rst-converters-cpp
 	pkgdesc = Robotics Systems Types converters fro C++
 	pkgver = 0.15.0.27476c4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://projects.cor-lab.org/projects/rst
 	arch = i686
 	arch = x86_64

@@ -2,7 +2,7 @@
 
 pkgname='rst-converters-cpp'
 pkgver=0.15.0.27476c4
-pkgrel=1
+pkgrel=2
 pkgdesc='Robotics Systems Types converters fro C++'
 arch=('i686' 'x86_64')
 url='https://projects.cor-lab.org/projects/rst'
@@ -24,6 +24,7 @@ check() {
 
 build() {
     cd "${srcdir}/rst-converters-cpp"
+    rm -rf build
     mkdir -p build
     cd build
     cmake -DCMAKE_INSTALL_PREFIX=/usr ..
