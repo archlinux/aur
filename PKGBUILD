@@ -2,7 +2,7 @@
 
 pkgname=tako-git
 _gitname=tako
-pkgver=0.0.8
+pkgver=0.0.9
 pkgrel=1
 pkgdesc="A command language and shell based on Python"
 arch=('any')
