@@ -1,0 +1,14 @@
+post_install() {
+  usr/bin/trust extract-compat
+  echo "To use eduroam-unicamp: copy the template..."
+  echo "    cp /etc/netctl/examples/eduroam-unicamp /etc/netctl/eduroam-unicamp"
+  echo "... and edit it to match your credentials"
+}
+
+post_upgrade() {
+  post_install
+}
+
+pre_remove() {
+  post_install
+}
