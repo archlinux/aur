@@ -1,26 +1,25 @@
 # Maintainer: Sebastian Lau <lauseb644 _at_ gmail _dot_ com>
 
-_mintrel=betsy
 pkgname=nemo-compare
-pkgver=3.0.0
+pkgver=3.2.0
 pkgrel=1
 pkgdesc="Context menu comparison extension for Nemo file manager"
 arch=("any")
 url="https://github.com/linuxmint/nemo-extensions"
 license=('GPL3')
-depends=('nemo>=3.0' 'nemo<3.1' 'nemo-python>=1.0' 'python2-xdg' 'pygtk')
+depends=('nemo>=3.1' 'nemo-python>=1.0' 'python2-xdg' 'pygtk')
 groups=('nemo-extensions')
 optdepends=('kdiff3: Additional comparison options (preferred diff, three-way, multi-compare)'
 	   'diffuse: Additional comparison options (preferred diff, three-way, multi-compare)'
 	   'kompare: Additional comparison options (preferred diff, three-way, multi-compare)'
 	   'fldiff: Additional comparison options (preferred diff, three-way, multi-compare)')
 install=${pkgname}.install
-source=("http://packages.linuxmint.com/pool/main/n/${pkgname}/${pkgname}_${pkgver}%2b${_mintrel}.tar.gz")
-sha256sums=('4a058383e2b093e54f622f4a42b05db786a27ab9de1e6ab8a57063260e958d03')
+source=("nemo-extensions-$pkgver.tar.gz::https://github.com/linuxmint/nemo-extensions/archive/$pkgver.tar.gz")
+sha256sums=('1536fd828b2ee0a8f194155a9e13b8cce937b403b5c87d8e579d7b1ced8d6d14')
 
 
 package() {
-  cd ${pkgname}-${pkgver}+${_mintrel}
+  cd "${srcdir}/nemo-extensions-${pkgver}/${pkgname}"
 
   # Python2 fix
   find -type f | xargs sed -i 's@^#!.*python$@#!/usr/bin/python2@'
