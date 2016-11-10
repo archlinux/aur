@@ -15,6 +15,7 @@ depends=('opencv'
          )
 makedepends=('cmake'
              'git'
+             'opencl-headers'
              )
 provides=('waifu2x-converter-cpp'
           'waifu2x'
