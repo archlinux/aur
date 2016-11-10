@@ -24,7 +24,7 @@ package() {
   mkdir -p $pkgdir/usr/bin
 
   for binary in $binaries; do
-    ln -s /opt/chefdk/bin/$binary $pkgdir/usr/bin/ || error_exit "Cannot link $binary to /usr/bin"
+    ln -s /opt/chef/bin/$binary $pkgdir/usr/bin/ || error_exit "Cannot link $binary to /usr/bin"
   done
   chown -Rh 0:0 $pkgdir
   chmod 755 $pkgdir/opt
