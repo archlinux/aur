@@ -1,6 +1,6 @@
 # Maintainer: Justus Piater <Justus-dev at Piater dot name>
 pkgname=('syncevolution' 'syncevolution-http')
-pkgver=1.5.1+20160926+SE+8fccc44+unclean+SYSYNC+59b55aa
+pkgver=1.5.2
 pkgrel=1
 pkgdesc="Synchronize PIM data via various protocols"
 arch=('i686' 'x86_64')
@@ -9,10 +9,10 @@ license=('LGPL')
 depends=('evolution-data-server' 'libgnome-keyring' 'neon' 'openobex' 'python2' 'libunique')
 makedepends=('intltool' 'boost')
 #changelog=
-source=("http://downloads.syncevolution.org/syncevolution/sources/syncevolution-1.5.1%2B20160926%2BSE%2B8fccc44%2Bunclean%2BSYSYNC%2B59b55aa.tar.gz"
+source=("https://download.01.org/syncevolution/syncevolution/sources/syncevolution-$pkgver.tar.gz"
         "$pkgname-$pkgver-python2.patch")
-sha256sums=('3563ebaf6b9a29c9a8baa6487554821480bcc6ff5b870af632a45ed92fe31d11'
-            '8167ca6bb392ccb2f36093eef0e76d8c6cde5d43dcc595ad73af9af838ea14ce')
+sha256sums=('8b692bd549a63d2259ed7519afb74fc9cab5be10c7a6f51868b66fc98fb48128'
+            'e18f3b8828d6a9d2065bc26ae3cab1ca108d382dac93f5ec77557dffb93925e8')
 
 prepare() {
     cd "$pkgname-$pkgver"
