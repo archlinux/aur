@@ -1,0 +1,13 @@
+[Desktop Entry]
+Name=Cypress
+Comment=Cypress.io Desktop App
+GenericName=Cypress
+Exec=/opt/Cypress/Cypress %U
+Icon=/opt/Cypress/resources/app/lib/public/img/icon_128x128@2x.png
+Terminal=false
+Type=Application
+StartupNotify=true
+StartupWMClass=cypress
+Keywords=Cypress;Testing;
+Categories=Development;
+X-GNOME-UsesNotifications=false
