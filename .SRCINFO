@@ -1,7 +1,7 @@
 pkgbase = rsb-tools-cl
 	pkgdesc = Robotics Service Bus common lisp tools
 	pkgver = 0.15.0.b596630
-	pkgrel = 1
+	pkgrel = 2
 	url = https://projects.cor-lab.org/projects/rsb
 	arch = i686
 	arch = x86_64

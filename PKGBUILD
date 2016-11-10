@@ -2,7 +2,7 @@
 
 pkgname='rsb-tools-cl'
 pkgver=0.15.0.b596630
-pkgrel=1
+pkgrel=2
 pkgdesc='Robotics Service Bus common lisp tools'
 arch=('i686' 'x86_64')
 url='https://projects.cor-lab.org/projects/rsb'
@@ -39,6 +39,7 @@ prepare() {
 
 build() {
     cd "${srcdir}/rsb-tools-cl"
+    rm -rf build
     mkdir -p build
     cd build
     cmake \
