@@ -2,7 +2,7 @@
 
 pkgname='rsb-proto'
 pkgver=0.15.0.9553903
-pkgrel=1
+pkgrel=2
 pkgdesc='Robotics Service Bus Communication Protocol'
 arch=(any)
 url='https://projects.cor-lab.org/projects/rsb'
@@ -19,6 +19,7 @@ pkgver() {
 
 build() {
     cd "${srcdir}/rsb-proto"
+    rm -rf build
     mkdir -p build
     cd build
     cmake -DCMAKE_INSTALL_PREFIX=/usr ..

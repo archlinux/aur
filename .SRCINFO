@@ -1,7 +1,7 @@
 pkgbase = rsb-proto
 	pkgdesc = Robotics Service Bus Communication Protocol
 	pkgver = 0.15.0.9553903
-	pkgrel = 1
+	pkgrel = 2
 	url = https://projects.cor-lab.org/projects/rsb
 	arch = any
 	license = LGPL3
