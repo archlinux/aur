@@ -4,7 +4,7 @@
 pkgname=nemo-filename-repairer
 pkgver=3.0.0
 _mintrel=betsy
-pkgrel=2
+pkgrel=3
 pkgdesc="Nemo extension for filename encoding repair"
 arch=('i686' 'x86_64')
 url="https://github.com/linuxmint/nemo-extensions"
