@@ -1,7 +1,7 @@
 pkgbase = syncevolution
 	pkgdesc = Synchronize PIM data via various protocols
 	pkgver = 1.5.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://syncevolution.org/
 	arch = i686
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = syncevolution
 	source = https://download.01.org/syncevolution/syncevolution/sources/syncevolution-1.5.2.tar.gz
 	source = syncevolution-1.5.2-python2.patch
 	sha256sums = 8b692bd549a63d2259ed7519afb74fc9cab5be10c7a6f51868b66fc98fb48128
-	sha256sums = e18f3b8828d6a9d2065bc26ae3cab1ca108d382dac93f5ec77557dffb93925e8
+	sha256sums = f3cf917615d82512a7720d52c2486a1abd90bbf671debb92c70127b4ee28ce69
 
 pkgname = syncevolution
 

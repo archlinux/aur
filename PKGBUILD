@@ -1,7 +1,7 @@
 # Maintainer: Justus Piater <Justus-dev at Piater dot name>
 pkgname=('syncevolution' 'syncevolution-http')
 pkgver=1.5.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Synchronize PIM data via various protocols"
 arch=('i686' 'x86_64')
 url="https://syncevolution.org/"
@@ -12,7 +12,7 @@ makedepends=('intltool' 'boost')
 source=("https://download.01.org/syncevolution/syncevolution/sources/syncevolution-$pkgver.tar.gz"
         "$pkgname-$pkgver-python2.patch")
 sha256sums=('8b692bd549a63d2259ed7519afb74fc9cab5be10c7a6f51868b66fc98fb48128'
-            'e18f3b8828d6a9d2065bc26ae3cab1ca108d382dac93f5ec77557dffb93925e8')
+            'f3cf917615d82512a7720d52c2486a1abd90bbf671debb92c70127b4ee28ce69')
 
 prepare() {
     cd "$pkgname-$pkgver"

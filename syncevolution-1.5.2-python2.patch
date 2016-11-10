@@ -7,6 +7,18 @@ diff -aur syncevolution-1.5.2.pristine/build/source2html.py syncevolution-1.5.2.
  
  """
  Converts source code (first parameter, can be - for stdin) to HTML
+diff -aur syncevolution-1.5.2.pristine/Makefile.in syncevolution-1.5.2.new/Makefile.in
+--- syncevolution-1.5.2.pristine/Makefile.in	2016-11-08 18:13:27.000000000 +0100
++++ syncevolution-1.5.2.new/Makefile.in	2016-11-10 23:32:17.593355287 +0100
+@@ -12859,7 +12859,7 @@
+ 	  fi; \
+ 	done
+ src/ClientTest.cpp.html: build/source2html.py test/ClientTest.cpp
+-	$(AM_V_GEN)python $+ >$@
++	$(AM_V_GEN)python2 $+ >$@
+ 
+ # copy base test files
+ $(filter-out %.tem, $(filter src/testcases/%, $(subst $(top_srcdir)/test/,src/,$(CLIENT_LIB_TEST_FILES)))) : src/% : $(top_srcdir)/test/%
 diff -aur syncevolution-1.5.2.pristine/src/dbus/server/pim/examples/search.py syncevolution-1.5.2.new/src/dbus/server/pim/examples/search.py
 --- syncevolution-1.5.2.pristine/src/dbus/server/pim/examples/search.py	2014-10-30 17:54:09.000000000 +0100
 +++ syncevolution-1.5.2.new/src/dbus/server/pim/examples/search.py	2016-11-10 21:49:15.538140395 +0100
