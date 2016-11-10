@@ -1,0 +1,9 @@
+# $1: new package version
+post_install() {
+  echo ":: neovim-qt can be launched from the packaged desktop file."
+  echo ":: If needed, the name of the binary is nvim-qt."
+  echo ":: If you have any questions, check the following page first:"
+  echo "   https://github.com/equalsraf/neovim-qt/wiki"
+}
+
+# vim:set sw=2 sts=2 et:
