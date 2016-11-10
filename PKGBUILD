@@ -3,7 +3,7 @@
 
 pkgname=nemo-dropbox
 pkgver=3.2.0
-pkgrel=3
+pkgrel=1
 pkgdesc="Dropbox for Linux - Nemo extension"
 arch=('i686' 'x86_64')
 url="https://github.com/linuxmint/nemo-extensions"
