@@ -1,9 +1,9 @@
 # Maintainer: Chris Rizzitello <sithlord48@gmail.com>
 pkgname=atcore-git
 confilicts=('atcore')
-pkgver=b8850b3
+pkgver=43949e2
 pkgrel=1
-pkgdesc="KDE 3D Printing"
+pkgdesc="KDE 3D Printing libary"
 arch=('i686' 'x86_64')
 url="https://github.com/KDE/atcore"
 license=('LGPL3')
