@@ -1,7 +1,7 @@
 pkgbase = 0bin-git
 	pkgdesc = A python2 client side encrypted pastebin that can run without a database.
-	pkgver = r209.391df05
-	pkgrel = 2
+	pkgver = r229.7da1615
+	pkgrel = 1
 	url = https://0bin.readthedocs.org/en/latest/
 	arch = any
 	license = WTFPL
