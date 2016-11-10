@@ -50,7 +50,7 @@ build() {
 		--with-blas \
                 F77=gfortran \
 		LIBnn=lib
-   make
+   make  -j`nproc`
 
 # make libRmath.so
    cd src/nmath/standalone
