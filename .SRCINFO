@@ -1,0 +1,15 @@
+pkgbase = barnyard2
+	pkgdesc = A dedicated spooler for Snort's unified2 binary output format.
+	pkgver = 1.13
+	pkgrel = 1
+	url = http://www.github.com/firnsy/barnyard2
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = libpcap
+	depends = libmariadbclient
+	source = https://github.com/firnsy/barnyard2/archive/v2-1.13.tar.gz
+	md5sums = 212066058364f18a4806720b271ffd87
+
+pkgname = barnyard2
+
