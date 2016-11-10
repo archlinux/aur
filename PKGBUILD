@@ -1,17 +1,16 @@
 #Maintainer: Larzid <juanitocampamocha@gmail.com>
 pkgname=sotw
-pkgver=0.5.5
-pkgrel=3
+pkgver=0.5.6.1
+pkgrel=1
 epoch=
 pkgdesc="Shadow Of The Wyrm is a single player, traditional roguelike by Julian Day."
 arch=('x86_64')
 url="http://www.shadowofthewyrm.org/"
 license=('MIT')
 groups=()
-depends=('xerces-c' 'zlib' 'ncurses' 'lua51' 'boost')
+depends=('xerces-c' 'zlib' 'ncurses' 'lua51' 'boost' 'gtest')
 makedepends=('premake' 'mercurial')
 checkdepends=()
-optdepends=('gtest: for debug build')
 provides=(sotw)
 conflicts=(sotw-dev)
 replaces=()
