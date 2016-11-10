@@ -1,6 +1,6 @@
 pkgbase = sotw-dev
 	pkgdesc = Shadow Of The Wyrm by Julian Day - Development branch.
-	pkgver = 0.5.6
+	pkgver = 0.5.7
 	pkgrel = 1
 	url = http://www.shadowofthewyrm.org/
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = sotw-dev
 	depends = ncurses
 	depends = lua51
 	depends = boost
-	optdepends = gtest: for debug build
+	depends = gtest
 	provides = sotw
 	conflicts = sotw
 	source = hg+https://hg@bitbucket.org/prolog/shadow-of-the-wyrm
