@@ -1,7 +1,7 @@
 pkgbase = rst-proto
 	pkgdesc = Robotics Systems Types library
 	pkgver = 0.15.0.0272643
-	pkgrel = 1
+	pkgrel = 2
 	url = https://projects.cor-lab.org/projects/rst
 	arch = i686
 	arch = x86_64
