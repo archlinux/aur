@@ -1,26 +1,30 @@
-# Maintainer: Sebastien Duthil <duthils@free.fr>
+# Maintainer: mickael9 <mickael9@gmail.com>
+# Contributor: Sebastien Duthil <duthils@free.fr>
 # Inspiration for service and config files: https://github.com/Bisa/factorio-init
 
 pkgname=factorio-headless
-pkgver=0.13.20
+pkgver=0.14.19
 pkgrel=1
-pkgdesc="A 2D game about building and maintaining factories - Server version"
+pkgdesc="A 2D game about building and maintaining factories - Server version (stable branch)"
 arch=('x86_64')
 url="http://www.factorio.com/"
 license=('custom: commercial')
 conflicts=('factorio' 'factorio-demo' 'factorio-experimental' 'factorio-headless-experimental')
 install=factorio-headless.install
-backup=(etc/conf.d/factorio)
+backup=(etc/conf.d/factorio
+        etc/factorio/server-settings.json
+)
+
 source=(LICENSE
         factorio-headless.service
         factorio-headless.conf
         factorio-headless.sysusers
         factorio_headless_x64_${pkgver}.tar.gz::http://www.factorio.com/get-download/${pkgver}/headless/linux64)
 sha256sums=('67ec2f88afff5d7e0ca5fd3301b5d98655269c161a394368fa0ec49fbc0c0e21'
-            'b6b3d8421abf5ccd1e26618c354eaf1b56bbf39b19beef4358a02740d9871947'
-            '476423af51eda76154e6da5a0a73695744e1251730a89d3f657068e5175418fe'
+            'd06a47498ac5e540e8f4e653213b8bd5b21ae9424df718b9b065268f571900c6'
+            '5c7b9dcb07167d680de3dd6a0435b21ee4ee448fb7f6ce429f028ee5b543e9ab'
             '87dae15d1bcfb4683faea9c66498bd916bd27f8aa0dc724c4e21076dcf17da64'
-            'cbf5481e4b7e0efcc07c7b6a1fc3ff1404ad5597f3c9d37914a52ffb58d7c159')
+            '202517299eb2c1e098cc109832fa25d7d7f56fae163f1f94a05dc75551267c09')
 
 
 # no modifications needed, the executable looks for:
@@ -36,4 +40,8 @@ package() {
   install -Dm644 "${srcdir}/factorio-headless.sysusers" "$pkgdir/usr/lib/sysusers.d/factorio.conf"
   install -Dm644 "${srcdir}/factorio-headless.conf" "${pkgdir}/etc/conf.d/factorio"
   install -Dm644 "${srcdir}/factorio-headless.service" "${pkgdir}/usr/lib/systemd/system/factorio.service"
+  install -Dm644 "${srcdir}/factorio/data/server-settings.example.json" "${pkgdir}/etc/factorio/server-settings.json"
+
+  # public isn't really a good default especially with the default name/description
+  sed -i 's/^    "public": true/    "public": false/' "${pkgdir}/etc/factorio/server-settings.json"
 }
