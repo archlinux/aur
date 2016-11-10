@@ -2,7 +2,7 @@
 
 pkgname="zeroc-ice-php56"
 pkgver=3.6.3
-pkgrel=2
+pkgrel=3
 pkgdesc="PHP bindings for Ice RPC framework"
 arch=("i686" "x86_64")
 url="https://zeroc.com"
@@ -41,7 +41,7 @@ package() {
     msg "Installing Ice for PHP"
     install -dm755 ${pkgdir}/etc/php56/conf.d/
     echo "extension = IcePHP.so" > ${pkgdir}/etc/php56/conf.d/ice.ini
-    echo "include_path=${include_path}:/usr/share/Ice-${pkgver}/php/" > ${pkgdir}/etc/php56/conf.d/ice.ini
+    echo "include_path=${include_path}:/usr/share/Ice-${pkgver}/php/" >> ${pkgdir}/etc/php56/conf.d/ice.ini
 
     # Put stuff into more possibly Arch Linux friendly places
     rm -rf ${pkgdir}/usr/share/Ice-${pkgver}/*
