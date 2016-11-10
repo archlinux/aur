@@ -2,14 +2,13 @@
 pkgname=atcore-git
 confilicts=('atcore')
 pkgver=43949e2
-pkgrel=1
+pkgrel=2
 pkgdesc="KDE 3D Printing libary"
 arch=('i686' 'x86_64')
 url="https://github.com/KDE/atcore"
 license=('LGPL3')
 buildDepends=('git' 'cmake' 'extra-cmake-modules')
 depends=('qt5-base' 'qt5-serialport' 'solid') #Qt5)
-#install=$pkgname.install
 source=("git://github.com/kde/atcore.git")
 md5sums=(SKIP)
 
@@ -20,7 +19,7 @@ pkgver() {
 
 build() {
   cd "atcore"
-  cmake -DCMAKE_INSTALL_PREFIX=$(kf5-config --prefix) -DCMAKE_INSTALL_LIBDIR=lib -DCMAKE_BUILD_TYPE=Release CMakeLists.txt 
+  cmake -DCMAKE_INSTALL_PREFIX=$(qtpaths --install-prefix) -DCMAKE_INSTALL_LIBDIR=lib -DCMAKE_BUILD_TYPE=Release CMakeLists.txt 
   make
 }
 package(){
