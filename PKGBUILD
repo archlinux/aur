@@ -2,27 +2,28 @@
 # Contributor: Serede Sixty Six <serede.dev@gmail.com>
 
 pkgname=nemo-audio-tab
-pkgver=3.0.0
-_mintrel=betsy
+pkgver=3.2.0
 pkgrel=1
 pkgdesc="View audio tag information from the file manager's properties tab"
 arch=('any')
 url="https://github.com/linuxmint/nemo-extensions"
 license=('GPL2')
 groups=('nemo-extensions')
-depends=('nemo>=3.0' 'nemo<3.1' 'nemo-python' 'python-mutagen')
+depends=('nemo>=3.2' 'nemo-python' 'python-mutagen')
 makedepends=('python-distutils-extra')
 
 options=('!libtool' '!emptydirs')
 
-source=("http://packages.linuxmint.com/pool/main/n/${pkgname}/${pkgname}_${pkgver}+${_mintrel}.tar.gz")
-sha256sums=('3442e3aeb7fb8718ed18ba2bb4be54143fd2253d5df3ed75c1ca3f6954076d92')
+source=("nemo-extensions-$pkgver.tar.gz::https://github.com/linuxmint/nemo-extensions/archive/$pkgver.tar.gz")
+sha256sums=('1536fd828b2ee0a8f194155a9e13b8cce937b403b5c87d8e579d7b1ced8d6d14')
 
 package() {
+  cd "${srcdir}/nemo-extensions-${pkgver}/${pkgname}"
+
   # Python2 fix
   find -type f | xargs sed -i 's@^#!.*python$@#!/usr/bin/python2@'
 
   install -d ${pkgdir}/usr/share/nemo-python/extensions
-  install ${srcdir}/${pkgname}-${pkgver}+${_mintrel}/nemo-extension/nemo-audio-tab.py ${pkgdir}/usr/share/nemo-python/extensions
-  install ${srcdir}/${pkgname}-${pkgver}+${_mintrel}/nemo-extension/nemo-audio-tab.glade ${pkgdir}/usr/share/nemo-python/extensions
+  install ${srcdir}/nemo-extensions-${pkgver}/${pkgname}/nemo-extension/nemo-audio-tab.py ${pkgdir}/usr/share/nemo-python/extensions
+  install ${srcdir}/nemo-extensions-${pkgver}/${pkgname}/nemo-extension/nemo-audio-tab.glade ${pkgdir}/usr/share/nemo-python/extensions
 }
