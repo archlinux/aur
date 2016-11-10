@@ -10,7 +10,7 @@ arch=('i686' 'x86_64')
 url="https://github.com/linuxmint/nemo-extensions"
 license=('GPL2')
 groups=('nemo-extensions')
-depends=('nemo>=3.0' 'nemo<3.1')
+depends=('nemo>=3.0')
 makedepends=('gnome-common')
 install="${pkgname}.install"
 
