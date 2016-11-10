@@ -2,7 +2,7 @@
 
 pkgname='rsb-spread-cpp'
 pkgver=0.15.0.84e9019
-pkgrel=1
+pkgrel=2
 pkgdesc='Robotics Service Bus C++ spread transport'
 arch=('i686' 'x86_64')
 url='https://projects.cor-lab.org/projects/rsb'
@@ -25,6 +25,7 @@ check() {
 
 build() {
     cd "${srcdir}/rsb-spread-cpp"
+    rm -rf build
     mkdir -p build
     cd build
     cmake -DCMAKE_INSTALL_PREFIX=/usr ..
