@@ -1,0 +1,16 @@
+pkgbase = deepin-qt-dbus-factory
+	pkgdesc = Deepin framework DBus tools and file
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = http://cr.deepin.io/
+	arch = x86_64
+	arch = i686
+	groups = deepin
+	license = GPLV3
+	makedepends = git
+	makedepends = qt5-tools
+	source = git+https://cr.deepin.io/dde/dde-qt-dbus-factory
+	sha256sums = SKIP
+
+pkgname = deepin-qt-dbus-factory
+
