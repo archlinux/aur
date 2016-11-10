@@ -23,6 +23,7 @@ sha256sums=('8d95dfd359fb187289d7d085e217d8fabb6022135d358134ed4165418a269237'
 build() {
 	cd "${srcdir}/${srcname}-${pkgver}"
 
+	CFLAGS="-DOPENSSL_NO_GOST -O2 -g" \
 	./configure \
 		--prefix /usr \
 		--sbindir /usr/bin \
