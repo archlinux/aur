@@ -2,7 +2,7 @@
 
 pkgname=obs-qtwebkit-git
 pkgver=3dd7cde
-pkgrel=1
+pkgrel=2
 pkgdesc="Browser source plugin for obs-studio based on QtWebkit library."
 arch=("i686" "x86_64")
 url="https://github.com/bazukas/obs-qtwebkit"
