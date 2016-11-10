@@ -1,0 +1,14 @@
+pkgbase = bspwm-kde-session
+	pkgdesc = Start a KDE session with the bspwm window manager
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/danielgreve/bspwm-kde-session
+	arch = any
+	license = custom:UNLICENSE
+	depends = bspwm
+	depends = plasma-workspace
+	source = https://github.com/danielgreve/bspwm-kde-session/archive/0.1.tar.gz
+	md5sums = 478e0a5d382ff86041c86c3dc632adcd
+
+pkgname = bspwm-kde-session
+
