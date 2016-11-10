@@ -3,7 +3,7 @@
 
 pkgname='google-authenticator-libpam-git'
 
-pkgver=r173.43ab972
+pkgver=r120.c1b3879
 pkgver() {
   cd "$srcdir/$pkgname"
   ( set -o pipefail
@@ -15,18 +15,18 @@ pkgver() {
 pkgrel=1
 pkgdesc='PAM module for google authenticator app'
 arch=('i686' 'x86_64' 'armv7h')
-url='https://github.com/google/google-authenticator'
+url='https://github.com/google/google-authenticator-libpam'
 license=('APACHE')
 depends=('pam')
 makedepends=('git')
 optdepends=('qrencode: scannable QR codes for google auth phone app')
 provides=('google-authenticator-libpam')
 conflicts=('google-authenticator-libpam')
-source=("$pkgname"::'git+https://github.com/google/google-authenticator.git')
+source=("$pkgname"::'git+https://github.com/google/google-authenticator-libpam.git')
 md5sums=(SKIP)
 
 build() {
-  cd "${srcdir}/${pkgname}/libpam"
+  cd "${srcdir}/${pkgname}"
   ./bootstrap.sh
   ./configure --prefix=/usr
   make
@@ -34,6 +34,6 @@ build() {
 
 
 package() {
-  cd "${srcdir}/${pkgname}/libpam"
+  cd "${srcdir}/${pkgname}"
   make DESTDIR="${pkgdir}/" install
 }
