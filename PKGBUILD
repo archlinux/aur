@@ -15,17 +15,18 @@
 
 pkgname=clion-eap
 _pkgname=clion
-_archname=CLion
-pkgver=163.7342.13
+_dlname=CLion
+pkgver=163.7743.15
+_dlver=2016.3-RC
 pkgrel=1
 pkgdesc="C/C++ IDE. 30-day evaluation."
 arch=('i686' 'x86_64')
 options=(!strip)
 url="http://www.jetbrains.com/${_pkgname}"
 license=('custom')
-source=("https://download.jetbrains.com/cpp/${_archname}-${pkgver}.tar.gz")
-sha256sums=('3527412d8824acee7dbeca8afedb6e87a4e185c78544b939f1d0be6576f036d9')
-noextract=("${_archname}-${pkgver}.tar.gz")
+source=("https://download.jetbrains.com/cpp/${_dlname}-${_dlver}.tar.gz")
+sha256sums=('dbc7a00c1e3807929fa1daa4d1e7c0895bdc531431f5ceeab3144cdaed5a5ca8')
+noextract=("${_dlname}-${_dlver}.tar.gz")
 depends=()
 optdepends=()
 
@@ -56,7 +57,7 @@ optdepends+=(
 
 package() {
   mkdir -p "${pkgdir}/opt/${pkgname}"
-  bsdtar --strip-components 1 -xf "${_archname}-${pkgver}.tar.gz" \
+  bsdtar --strip-components 1 -xf "${_dlname}-${_dlver}.tar.gz" \
          -C "${pkgdir}/opt/${pkgname}"
 
   (( USE_SYSTEM_JRE )) && rm -r "${pkgdir}/opt/${pkgname}/jre"
