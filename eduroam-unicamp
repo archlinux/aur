@@ -7,7 +7,7 @@ WPAConfigSection=(
     'ssid="eduroam"'
     'key_mgmt=WPA-EAP'
     'eap=TTLS'
-    'ca_cert="/usr/share/ca-certificates/trust-source/anchors/ac-raiz-icpedu.crt"'
+    'ca_cert="/etc/ca-certificates/trust-source/anchors/ac-raiz-icpedu.crt"'
     'identity="xxxxxx@unicamp.br"'
     'password="xxxxxxxx"'
     'phase2="auth=PAP"'
