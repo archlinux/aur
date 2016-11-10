@@ -1,7 +1,7 @@
 pkgbase = netctl-eduroam-unicamp
 	pkgdesc = Example configuration for eduroam at Unicamp using netctl
 	pkgver = 1
-	pkgrel = 0
+	pkgrel = 1
 	url = http://www.ccuec.unicamp.br/ccuec/rede_sem_fio_eduroam
 	install = install
 	arch = any
