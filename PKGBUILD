@@ -2,23 +2,26 @@
 
 pkgname=gradio
 _gitname=gradio
-pkgver=4.0.1
+pkgver=5.0.0.beta2
+_pkgver=5.0.0-beta2
 pkgrel=1
 pkgdesc='A GTK3 app for finding and listening to internet radio stations'
 arch=('i686' 'x86_64')
 license=('GPL3')
 url="https://github.com/haecker-felix/gradio"
-depends=('desktop-file-utils' 'gstreamer' 'json-glib' 'libgee' 'libsoup')
+depends=('desktop-file-utils' 'gstreamer' 'gst-plugins-ugly'  
+'json-glib' 'libgee' 
+'libsoup')
 makedepends=('unzip' 'gnome-common' 'intltool' 'itstool' 'vala' 'yelp-tools' 'cmake')
 options=('!emptydirs')
 install=gradio.install
-source=("https://github.com/haecker-felix/${_gitname}/archive/v${pkgver}.zip")
-md5sums=('7c50e0dc0ec944d0a7893d8a7df1c41a')
+source=("https://github.com/haecker-felix/${_gitname}/archive/v${_pkgver}.zip")
+md5sums=('b3da8e5c5abdcb44cfefd505757a30fe')
 conflicts=('gradio-git' 'gradio-bin')
-provides=("gradio=$pkgver")
+provides=("gradio=$_pkgver")
 
 build() {
-	cd "$srcdir/gradio-${pkgver}"
+	cd "$srcdir/gradio-${_pkgver}"
 	mkdir build
 	cd build
 	cmake -DCMAKE_INSTALL_PREFIX=/usr ..
@@ -26,6 +29,6 @@ build() {
 }
 
 package() {
-	cd "$srcdir/gradio-${pkgver}/build"
+	cd "$srcdir/gradio-${_pkgver}/build"
 	make DESTDIR="${pkgdir}" install
 }
