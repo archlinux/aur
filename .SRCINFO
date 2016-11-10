@@ -1,7 +1,7 @@
 pkgbase = rsb-cpp
 	pkgdesc = Robotics Service Bus C++ implementation
 	pkgver = 0.15.0.6bbb74e
-	pkgrel = 1
+	pkgrel = 2
 	url = https://projects.cor-lab.org/projects/rsb
 	arch = i686
 	arch = x86_64

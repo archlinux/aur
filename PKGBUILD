@@ -2,7 +2,7 @@
 
 pkgname='rsb-cpp'
 pkgver=0.15.0.6bbb74e
-pkgrel=1
+pkgrel=2
 pkgdesc='Robotics Service Bus C++ implementation'
 arch=('i686' 'x86_64')
 url='https://projects.cor-lab.org/projects/rsb'
@@ -25,6 +25,7 @@ check() {
 
 build() {
     cd "${srcdir}/rsb-cpp"
+    rm -rf build
     mkdir -p build
     cd build
     cmake -DCMAKE_INSTALL_PREFIX=/usr ..
