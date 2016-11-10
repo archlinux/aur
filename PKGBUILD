@@ -1,8 +1,8 @@
 # Maintainer: Perry Hung <perry@leaflabs.com>
 
 pkgname=decklink
-_dvver=10.8.1a2 # DesktopVideo
-_mever=3.5.2a2 # MediaExpress
+_dvver=10.8.2a4 # DesktopVideo
+_mever=3.5.3a1 # MediaExpress
 pkgver=${_dvver}
 pkgrel=1
 pkgdesc="Drivers for Blackmagic Design DeckLink, Intensity or Multibridge video editing cards"
@@ -17,9 +17,9 @@ install='decklink.install'
 [ "$CARCH" = "i686" ] && _arch='i386'
 [ "$CARCH" = "x86_64" ] && _arch='x86_64'
 
-pkgsrc_url="https://www.blackmagicdesign.com/api/register/en/download/0247fca5518644dfb196bbe962d84f65"
+pkgsrc_url="https://www.blackmagicdesign.com/api/register/en/download/a001da6b18954d31adaa43a367a0c719"
 pkgsrc_file=$pkgname-${_dvver}.tar.gz
-pkgsrc_sha256sum="e421ec5250ada328dc003eccd0b1c6a2362a96cec61878a67130fa86e59648fd"
+pkgsrc_sha256sum="d5ee661575b7516ee9334163c7aa5399bdf813ef008f74b1eec60a34166be817"
 
 prepare() {
   temp_url=`curl --data '{country":"us","platform":"Linux"}' $pkgsrc_url`
@@ -43,3 +43,4 @@ package() {
 	tar xf "mediaexpress-${_mever}-${_arch}.tar.gz"
 	cp -a "mediaexpress-${_mever}-${_arch}/"* "$pkgdir"
 }
+
