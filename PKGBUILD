@@ -1,7 +1,7 @@
 # Maintainer: Cédric Devivier <cedric dot devivier chiocciola gmail point com>
 _themename="clean"
 pkgname=lightdm-webkit2-${_themename}
-pkgver=v1.0
+pkgver=v1.1
 pkgrel=1
 pkgdesc="Clean LightDM Webkit2 greeter theme"
 arch=('any')
@@ -9,7 +9,7 @@ url="https://github.com/rufuswilson/${pkgname}"
 license=('custom:WTFPL')
 depends=('lightdm-webkit2-greeter')
 source=( "https://github.com/rufuswilson/${pkgname}/archive/${pkgver}.tar.gz" )
-md5sums=('7268ee4ca6633ecab8976774402b64fe')
+md5sums=('4f3a7b42bf5abf1a4c584cf84e8bb547')
 
 pkgver() {
     printf "%s" "${pkgver}"
