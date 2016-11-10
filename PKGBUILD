@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1
 
 pkgname=libtorrent-rasterbar-1_0-git
-pkgver=1_0_10.r7.geec6957
+pkgver=1.0.10.r7.geec6957
 pkgrel=1
 pkgdesc='A C++ BitTorrent library that aims to be a good alternative to all the other implementations around (git branch RC_1_0)'
 url='http://www.libtorrent.org/'
@@ -20,7 +20,7 @@ sha256sums=('SKIP'
 pkgver() {
     cd "libtorrent"
 
-    git describe --long --tags | sed 's/^[A-Za-z]*-//;s/\([^-]*-g\)/r\1/;s/-/./g'
+    git describe --long --tags | sed 's/^[A-Za-z]*-//;s/\([^-]*-g\)/r\1/;s/[_-]/./g'
 }
 
 prepare() {
