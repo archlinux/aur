@@ -1,0 +1,132 @@
+--- makefile.all.orig	2016-11-05 12:35:15.189884554 +0100
++++ makefile.all	2016-11-06 23:45:20.649345515 +0100
+@@ -234,32 +234,40 @@
+ 
+ # -------- rules for deleting the generated files --------
+ 
+-clean:
+-ifdef UNIX_TOOLS
+-	-rm $(RM_OPTS) $(OBJ_CLEAN_FILES)
+-	-rm $(RM_OPTS) $(OTHER_CLEAN_FILES)
+-else
++
++ifndef UNIX_TOOLS
+    define RM_CLEAN
+       $(foreach file, $(wildcard $(OBJ_CLEAN_FILES)), -del $(subst /,\,$(file))
+       )
+       $(foreach file, $(wildcard $(OTHER_CLEAN_FILES)), -del $(subst /,\,$(file))
+       )
+    endef
+-	-$(RM_CLEAN)
+ endif
+ 
+-distclean: clean
++clean:
+ ifdef UNIX_TOOLS
+-	-rm $(RM_OPTS) $(DISTCLEAN_FILES)
++	-rm $(RM_OPTS) $(OBJ_CLEAN_FILES)
++	-rm $(RM_OPTS) $(OTHER_CLEAN_FILES)
+ else
++	-$(RM_CLEAN)
++endif
++
++
++ifndef UNIX_TOOLS
+    define RM_DISTCLEAN
+       $(foreach file, $(wildcard $(DISTCLEAN_FILES)), -del $(subst /,\,$(file))
+       )
+    endef
++endif
++
++distclean: clean
++ifdef UNIX_TOOLS
++	-rm $(RM_OPTS) $(DISTCLEAN_FILES)
++else
+ 	-$(RM_DISTCLEAN)
+ endif
+ 
+-veryclean: distclean
++
+ ifdef UNIX_TOOLS
+ 	-rm $(RM_OPTS) $(VERYCLEAN_FILES)
+ else
+@@ -267,6 +275,12 @@
+       $(foreach file, $(wildcard $(VERYCLEAN_FILES)), -del $(subst /,\,$(file))
+       )
+    endef
++endif
++
++veryclean: distclean
++ifdef UNIX_TOOLS
++	-rm $(RM_OPTS) $(VERYCLEAN_FILES)
++else
+ 	-$(RM_VERYCLEAN)
+ endif
+ 
+@@ -292,15 +306,19 @@
+    INSTALL_DIRS := $(subst /,$(strip \),$(INSTALL_DIRS))
+ endif
+ 
+-create-install-dirs:
+-ifdef UNIX_TOOLS
+-	misc/mdhelper.sh $(INSTALL_DIRS)
+-else
++
++ifndef UNIX_TOOLS
+    define MKDIRS
+    $(foreach dir,$(INSTALL_DIRS),\
+       misc\mdhelper.bat $(dir)
+    )
+    endef
++endif
++
++create-install-dirs:
++ifdef UNIX_TOOLS
++	misc/mdhelper.sh $(INSTALL_DIRS)
++else
+ 	$(MKDIRS)
+ endif
+ 
+@@ -378,6 +396,14 @@
+         $(INSTALLDIR_U)/$(INCDIR_U)/allegro/internal/*.h \
+     )
+ 
++
++ifndef UNIX_TOOLS
++   define RM_FILES
++      $(foreach file, $(UNINSTALL_FILES), del $(subst /,\,$(file))
++      )
++   endef
++endif
++
+ generic-uninstall:
+ ifdef UNIX_TOOLS
+ 	-rm -fv $(UNINSTALL_FILES)
+@@ -386,10 +412,6 @@
+ 	-rmdir $(INSTALLDIR_U)/$(INCDIR_U)/allegro/internal
+ 	-rmdir $(INSTALLDIR_U)/$(INCDIR_U)/allegro
+ else
+-   define RM_FILES
+-      $(foreach file, $(UNINSTALL_FILES), del $(subst /,\,$(file))
+-      )
+-   endef
+ 	-$(RM_FILES)
+ 	-rd $(INSTALLDIR_D)\$(INCDIR_D)\allegro\platform
+ 	-rd $(INSTALLDIR_D)\$(INCDIR_D)\allegro\inline
+@@ -468,8 +490,11 @@
+ 
+ ifdef INFO
+ 
++ifndef CROSSCOMPILE
++
+ $(filter %.$(TEXI),$(DOCS)): docs/texi/%.$(TEXI): docs/src/%._tx $(MAKEDOC)
+ 	$(MAKEDOC) -$(TEXI) $@ $<
++endif
+ 
+ $(filter %.$(INFO),$(DOCS)): docs/info/%.$(INFO): docs/texi/%.$(TEXI) $(MAKEDOC)
+ 	-makeinfo --no-split -o $@ $<
+@@ -590,4 +615,3 @@
+ # -------- automatic source dependencies --------
+ 
+ -include $(OBJ_DIR)/makefile.dep
+-

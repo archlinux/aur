@@ -1,0 +1,11 @@
+--- ./misc/mdhelper.sh.orig	2016-11-06 23:31:58.528148062 +0100
++++ ./misc/mdhelper.sh	2016-11-06 23:32:00.188171030 +0100
+@@ -3,7 +3,7 @@
+ 
+ for dir in $*; do
+    if [ ! -d "$dir" ]; then
+-      mkdir $dir
++      mkdir -p $dir
+       if [ $? != 0 ]; then
+          exit 1
+       fi

@@ -1,0 +1,136 @@
+--- makefile.dj.orig	2016-11-05 12:51:42.412366330 +0100
++++ makefile.dj	2016-11-10 22:36:15.464658620 +0100
+@@ -14,6 +14,7 @@
+ CC = gcc
+ EXE = .exe
+ OBJ = .o
++AR = ar
+ 
+ PLATFORM_DIR = obj/djgpp
+ 
+@@ -22,9 +23,11 @@
+ 
+ ifdef CROSSCOMPILE
+    UNIX_TOOLS = 1
++   CC = $(XPREFIX)gcc
++   AR = $(XPREFIX)ar
+ endif
+ 
+-ifneq (,$(findstring bash,$(SHELL)))
++ifneq (,$(findstring sh,$(basename $(SHELL))))
+    UNIX_TOOLS = 1
+ endif
+ 
+@@ -184,6 +187,15 @@
+ OFLAGS = $(TARGET_ARCH) $(TARGET_OPTS)
+ 
+ CFLAGS = -DALLEGRO_LIB_BUILD
++CFLAGS += -fgnu89-inline
++
++#CFLAGS += -L/usr/i686-pc-msdosdjgpp/lib -llibc
++#CFLAGS += -I/usr/i686-pc-msdosdjgpp/include
++
++#CFLAGS += -isystem /usr/i686-pc-msdosdjgpp/include
++CFLAGS += --sysroot /usr/i686-pc-msdosdjgpp
++CFLAGS += -isystem /usr/i686-pc-msdosdjgpp/include
++CFLAGS += -isysroot /usr/i686-pc-msdosdjgpp/include
+ 
+ 
+ 
+@@ -247,53 +259,56 @@
+ 
+ # -------- rules for installing and removing the library files --------
+ 
+-INSTALLDIR = $(DJDIR_U)
++INSTALLDIR ?= $(DJDIR_U)
+ LIBDIR = lib
+ INCDIR = include
+ 
+ ifdef UNIX_TOOLS
+ 
+-$(DJDIR_U)/lib/lib$(VERSION).a: $(LIB_NAME) $(DJDIR_U)/lib
+-	cp lib/djgpp/lib$(VERSION).a $(DJDIR_U)/lib
++$(INSTALLDIR)/lib/lib$(VERSION).a: $(LIB_NAME) $(INSTALLDIR)/lib
++	cp lib/djgpp/lib$(VERSION).a $(INSTALLDIR)/lib
+ 
+-$(DJDIR_U)/info/allegro.$(INFO): docs/info/allegro.$(INFO)
+-	-cp docs/info/allegro.$(INFO) $(DJDIR_U)/info
+-	-install-info $(DJDIR_U)/info/allegro.$(INFO) $(DJDIR_U)/info/dir
++$(INSTALLDIR)/info/allegro.$(INFO): docs/info/allegro.$(INFO)
++	-cp docs/info/allegro.$(INFO) $(INSTALLDIR)/info
++	-install-info $(INSTALLDIR)/info/allegro.$(INFO) $(INSTALLDIR)/info/dir
+ 
+ else
+ 
+-$(DJDIR_U)/lib/lib$(VERSION).a: $(LIB_NAME)
++$(INSTALLDIR)/lib/lib$(VERSION).a: $(LIB_NAME)
+ 	copy lib\djgpp\lib$(VERSION).a $(DJDIR_D)\lib
+ 
+-$(DJDIR_U)/info/allegro.$(INFO): docs/info/allegro.$(INFO)
++$(INSTALLDIR)/info/allegro.$(INFO): docs/info/allegro.$(INFO)
+ 	-copy docs\info\allegro.$(INFO) $(DJDIR_D)\info
+-	-install-info $(DJDIR_U)/info/allegro.$(INFO) $(DJDIR_U)/info/dir
++	-install-info $(INSTALLDIR)/info/allegro.$(INFO) $(INSTALLDIR)/info/dir
+ 
+ endif
+ 
+ 
+-HEADERS = $(DJDIR_U)/include/allegro/platform/aintdos.h  \
+-          $(DJDIR_U)/include/allegro/platform/al386gcc.h \
+-          $(DJDIR_U)/include/allegro/platform/aldjgpp.h  \
+-          $(DJDIR_U)/include/allegro/platform/alplatf.h  \
+-          $(DJDIR_U)/include/allegro/platform/astdint.h  \
+-          $(DJDIR_U)/include/allegro/platform/aldos.h
++HEADERS = $(INSTALLDIR)/include/allegro/platform/aintdos.h  \
++          $(INSTALLDIR)/include/allegro/platform/al386gcc.h \
++          $(INSTALLDIR)/include/allegro/platform/aldjgpp.h  \
++          $(INSTALLDIR)/include/allegro/platform/alplatf.h  \
++          $(INSTALLDIR)/include/allegro/platform/astdint.h  \
++          $(INSTALLDIR)/include/allegro/platform/aldos.h
+ 
+-INSTALL_FILES = $(DJDIR_U)/lib/lib$(VERSION).a  \
+-                $(DJDIR_U)/info/allegro.$(INFO) \
++INSTALL_FILES = $(INSTALLDIR)/lib/lib$(VERSION).a  \
+                 $(HEADERS)
+ 
++ifndef CROSSCOMPILE
++INSTALL_FILES += $(INSTALLDIR)/info/allegro.$(INFO)
++endif
++
+ install: generic-install
+ 	@echo The $(DESCRIPTION) $(PLATFORM) library has been installed.
+ 
+-UNINSTALL_FILES = $(DJDIR_U)/lib/liballeg.a       \
+-                  $(DJDIR_U)/lib/liballd.a        \
+-                  $(DJDIR_U)/lib/liballp.a        \
+-                  $(DJDIR_U)/info/allegro.$(INFO) \
++UNINSTALL_FILES = $(INSTALLDIR)/lib/liballeg.a       \
++                  $(INSTALLDIR)/lib/liballd.a        \
++                  $(INSTALLDIR)/lib/liballp.a        \
++                  $(INSTALLDIR)/info/allegro.$(INFO) \
+                   $(HEADERS)
+ 
+ uninstall: generic-uninstall
+-	-install-info --delete $(DJDIR_U)/info/allegro.$(INFO) $(DJDIR_U)/info/dir
++	-install-info --delete $(INSTALLDIR)/info/allegro.$(INFO) $(INSTALLDIR)/info/dir
+ 	@echo All gone!
+ 
+ 
+@@ -330,7 +345,7 @@
+ # -------- finally, we get to the fun part... --------
+ 
+ define MAKE_LIB
+-   ar rs $(LIB_NAME) $(OBJECTS)
++   $(AR) rs $(LIB_NAME) $(OBJECTS)
+ endef
+ 
+ COMPILE_FLAGS = $(subst src/,-DALLEGRO_SRC ,$(findstring src/, $<))$(CFLAGS)
+@@ -409,7 +424,7 @@
+ endif
+ 
+ define MAKE_PLUGIN_LIB
+-   ar rs $(PLUGIN_LIB) $(PLUGIN_OBJS)
++   $(AR) rs $(PLUGIN_LIB) $(PLUGIN_OBJS)
+ endef
+ 
+ define LINK_WITH_PLUGINS
