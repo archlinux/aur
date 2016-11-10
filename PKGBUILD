@@ -1,7 +1,7 @@
     pkgname=thea-git
     _pkgname=thea
     pkgver=20140105
-    pkgrel=2
+    pkgrel=3
     pkgdesc="A simple backup tool for desktop computers"
     arch=('any')
     url="https://projects.kde.org/projects/playground/base/kio-mtp"
@@ -25,6 +25,7 @@
 
 	    cd $srcdir/$_gitname
 	    sed -e 's/\/usr\/local/\/usr/g' -i Makefile thea-*
+	    sed -e 's/\/sbin/\/bin/g' -i Makefile
     }
     package() {
 	    cd $srcdir/$_gitname
