@@ -2,13 +2,15 @@
 
 pkgname=gradio-git
 _gitname=gradio
-pkgver=2.3
+pkgver=5.0.0.beta2
 pkgrel=1
 pkgdesc='A GTK3 app for finding and listening to internet radio stations'
 arch=('i686' 'x86_64')
 license=('GPL3')
 url="https://github.com/haecker-felix/gradio"
-depends=('desktop-file-utils' 'gstreamer' 'json-glib' 'libgee' 'libsoup')
+depends=('desktop-file-utils' 'gstreamer' 'gst-plugins-ugly' 'json-glib' 
+'libgee' 
+'libsoup')
 makedepends=('git' 'gnome-common' 'intltool' 'itstool' 'vala' 'yelp-tools' 'cmake')
 
 options=('!emptydirs')
@@ -20,13 +22,11 @@ provides=("gradio=$pkgver")
 
 build() {
 	cd "$srcdir/${_gitname}"
-	mkdir build
-	cd build
-	cmake -DCMAKE_INSTALL_PREFIX=/usr ..
+	./autogen.sh
 	make
 }
 
 package() {
-	cd "$srcdir/${_gitname}/build"
+	cd "$srcdir/${_gitname}"
 	make DESTDIR="${pkgdir}" install
 }
