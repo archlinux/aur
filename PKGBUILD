@@ -2,8 +2,8 @@
 # Maintainer: Sebastian Stammler <echo c2ViQGhkZG4uc3BhY2UK|base64 -d>
 _pkgname=nheqminer-cpu
 pkgname=${_pkgname}-git
-pkgver=0.4b.r1.ge2a73b4
-pkgrel=2
+pkgver=0.4b.r2.g519cdf0
+pkgrel=1
 pkgdesc="zcash equihash miner by NiceHash. Xenoncat CPU solver build."
 arch=('x86_64')
 url="https://github.com/nicehash/nheqminer/"
