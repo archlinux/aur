@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+
+make_srcinfo () {
+  makepkg --printsrcinfo > .SRCINFO
+}
+
+build () {
+  makepkg -s
+}
+
+clean () {
+  rm *.pkg.tar.xz *.tar.gz && rm -rf ./pkg ./src
+}
+
+main () {
+  clean && build && make_srcinfo
+}
+
+main "$@"
