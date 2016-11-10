@@ -3,7 +3,7 @@
 
 _pkgbase='movim'
 pkgname=movim-git
-pkgver=r5044.a086079
+pkgver=r5079.484e460
 pkgrel=1
 pkgdesc="Movim is a decentralized social network, written in PHP and HTML5 and based on the XMPP standard protocol."
 arch=('any')
@@ -41,32 +41,32 @@ build() {
 }
 
 package() {
-    cd "$srcdir/$_pkgbase"
+  cd "$srcdir/$_pkgbase"
 
-    install -m755 -d "$pkgdir/usr/share/webapps/$_pkgbase"
+  install -m755 -d "$pkgdir/usr/share/webapps/$_pkgbase"
 
-    # Movim-editable directories
-    install -o http -m755 -d "$pkgdir/usr/share/webapps/$_pkgbase"/{cache,users}
+  # Movim-editable directories
+  install -o http -m755 -d "$pkgdir/usr/share/webapps/$_pkgbase"/{cache,users}
 
-    cp -r app lib locales src system themes vendor "$pkgdir/usr/share/webapps/$_pkgbase"
-    install -Dm644 VERSION INSTALL.md README.md index.php linker.php manifest.webapp \
-      "$pkgdir/usr/share/webapps/$_pkgbase"
-    install -Dm755 daemon.php mud.php "$pkgdir/usr/share/webapps/$_pkgbase"
+  cp -r app lib locales src system themes vendor "$pkgdir/usr/share/webapps/$_pkgbase"
+  install -Dm644 VERSION INSTALL.md README.md index.php linker.php manifest.webapp \
+    "$pkgdir/usr/share/webapps/$_pkgbase"
+  install -Dm755 daemon.php mud.php "$pkgdir/usr/share/webapps/$_pkgbase"
 
-    # Configuration file
-    install -m750 -d "$pkgdir/etc/webapps/$_pkgbase"
-    install -Dm750 config/db.example.inc.php "$pkgdir/etc/webapps/$_pkgbase/db.inc.php"
-    chown -R http:root "$pkgdir/etc/webapps/$_pkgbase"
-    chmod -R u+rwX,g+rwX,o-rwx "$pkgdir/etc/webapps/$_pkgbase"
-    ln -s "/etc/webapps/$_pkgbase" "$pkgdir/usr/share/webapps/$_pkgbase/config"
+  # Configuration file
+  install -m750 -d "$pkgdir/etc/webapps/$_pkgbase"
+  install -Dm750 config/db.example.inc.php "$pkgdir/etc/webapps/$_pkgbase/db.inc.php"
+  chown -R http:root "$pkgdir/etc/webapps/$_pkgbase"
+  chmod -R u+rwX,g+rwX,o-rwx "$pkgdir/etc/webapps/$_pkgbase"
+  ln -s "/etc/webapps/$_pkgbase" "$pkgdir/usr/share/webapps/$_pkgbase/config"
 
-    # Log files
-    install -m770 -d "$pkgdir/var/log/webapps/$_pkgbase"
-    chown -R http:root "$pkgdir/var/log/webapps/$_pkgbase"
-    ln -s "/var/log/webapps/$_pkgbase" "$pkgdir/usr/share/webapps/$_pkgbase/log"
+  # Log files
+  install -m770 -d "$pkgdir/var/log/webapps/$_pkgbase"
+  chown -R http:root "$pkgdir/var/log/webapps/$_pkgbase"
+  ln -s "/var/log/webapps/$_pkgbase" "$pkgdir/usr/share/webapps/$_pkgbase/log"
 
-    # Systemd unit file
-    install -m755 -d "$pkgdir/etc/default"
-    install -o http -Dm640 "$srcdir/movim.env" "$pkgdir/etc/default/$_pkgbase"
-    install -Dm644 "$srcdir/movim.service" "$pkgdir/usr/lib/systemd/system/movim.service"
+  # Systemd unit file
+  install -m755 -d "$pkgdir/etc/default"
+  install -o http -Dm640 "$srcdir/movim.env" "$pkgdir/etc/default/$_pkgbase"
+  install -Dm644 "$srcdir/movim.service" "$pkgdir/usr/lib/systemd/system/movim.service"
 }
