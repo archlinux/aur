@@ -1,13 +1,13 @@
 # Maintainer: Claudio d'Angelis <claudiodangelis at gmail dot com>
 pkgname=postman-bin
 pkgver=4.8.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Build, test, and document your APIs faster"
 arch=('x86_64')
 url="https://www.getpostman.com"
 license=('MIT')
 source=(
-	"https://dl.pstmn.io/download/latest/linux?arch=64"
+	"Postman-linux-x64-${pkgver}.tar.gz::https://dl.pstmn.io/download/latest/linux?arch=64"
 )
 md5sums=(
 	"35d1e600bd338c19b05693928bf9cde6"
