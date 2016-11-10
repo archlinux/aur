@@ -2,7 +2,7 @@
 
 _pkgname=gdcm
 pkgname=$_pkgname-git
-pkgver=2.6.3.328.ga18f94b
+pkgver=2.6.6.364.g05a664a
 pkgrel=1
 pkgdesc='Open source implementation of the DICOM standard'
 arch=('i686' 'x86_64')
@@ -36,7 +36,7 @@ build() {
     -DGDCM_USE_SYSTEM_JSON=OFF \
     -DGDCM_USE_SYSTEM_LIBXML2=ON \
     -DGDCM_USE_SYSTEM_LJPEG=OFF \
-    -DGDCM_USE_SYSTEM_OPENJPEG=OFF \
+    -DGDCM_USE_SYSTEM_OPENJPEG=ON \
     -DGDCM_USE_SYSTEM_OPENSSL=ON \
     -DGDCM_USE_SYSTEM_POPPLER=ON \
     -DGDCM_USE_SYSTEM_SOCKETXX=OFF \
