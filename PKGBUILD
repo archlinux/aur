@@ -1,15 +1,14 @@
 # Maintainer: M0Rf30
 
 pkgname=python2-pysqlcipher
-pkgver=2.6.4
+pkgver=2.6.7
 pkgrel=1
 pkgdesc="Python interface to SQLCipher"
 arch=(any)
 url="http://github.com/leapcode/pysqlcipher/"
 license=('ZLIB')
 depends=(python2 sqlcipher)
-makedeps=(wget)
-source=(https://pypi.python.org/packages/source/p/pysqlcipher/pysqlcipher-${pkgver}.tar.gz)
+source=("https://github.com/leapcode/pysqlcipher/archive/${pkgver}.tar.gz")
 
 
 package(){
@@ -17,5 +16,4 @@ package(){
 
   python2 setup.py install --root="$pkgdir"
 }
-
-md5sums=('d0d03064ee657dca58abdc7860277939')
+md5sums=('e8c6904a369b2287e240f5fd1d7eb5b0')
