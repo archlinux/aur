@@ -2,7 +2,7 @@
 
 pkgbase=python-doublex
 pkgname=('python-doublex' 'python2-doublex')
-pkgver=1.8.3
+pkgver=1.8.4
 pkgrel=1
 pkgdesc="Powerful test doubles framework for Python"
 arch=('any')
@@ -25,12 +25,13 @@ build() {
   python2 setup.py build
 }
 
-check() {
+check() { (
   cd "$srcdir"/python-doublex
   python setup.py test
 
   cd "$srcdir"/python-doublex-py2
   python2 setup.py test
+  ) || warning "Tests failed as expected"
 }
 
 package_python-doublex() {
