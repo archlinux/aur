@@ -1,7 +1,7 @@
 pkgbase = rsc
 	pkgdesc = Robotics Systems Commons library
 	pkgver = 0.15.0.1ae8e9a
-	pkgrel = 1
+	pkgrel = 2
 	url = https://projects.cor-lab.org/projects/rsc
 	arch = i686
 	arch = x86_64

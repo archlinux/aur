@@ -2,7 +2,7 @@
 
 pkgname='rsc'
 pkgver=0.15.0.1ae8e9a
-pkgrel=1
+pkgrel=2
 pkgdesc='Robotics Systems Commons library'
 arch=('i686' 'x86_64')
 url='https://projects.cor-lab.org/projects/rsc'
@@ -19,6 +19,7 @@ pkgver() {
 
 build() {
     cd "${srcdir}/rsc"
+    rm -rf build
     mkdir build
     cd build
     cmake -DCMAKE_INSTALL_PREFIX=/usr ..
