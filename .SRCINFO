@@ -1,7 +1,7 @@
 pkgbase = rsbag-tools-cl
 	pkgdesc = RSBag common lisp tools
 	pkgver = 0.15.0.3523fd7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://projects.cor-lab.org/projects/rsbag
 	arch = i686
 	arch = x86_64

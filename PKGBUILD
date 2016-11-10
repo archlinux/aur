@@ -2,7 +2,7 @@
 
 pkgname='rsbag-tools-cl'
 pkgver=0.15.0.3523fd7
-pkgrel=1
+pkgrel=2
 pkgdesc='RSBag common lisp tools'
 arch=('i686' 'x86_64')
 url='https://projects.cor-lab.org/projects/rsbag'
@@ -46,6 +46,7 @@ prepare() {
 
 build() {
     cd "${srcdir}/rsbag-tools-cl"
+    rm -rf build
     mkdir -p build
     cd build
     cmake \
