@@ -12,7 +12,7 @@ depends=('curl' 'sqlite')
 makedepends=('dmd')
 backup=('etc/onedrive.conf')
 install=$pkgname.install
-source=("https://github.com/skilion/onedrive/archive/v$pkgver.tar.gz")
+source=("$pkgname-$pkgver::https://github.com/skilion/onedrive/archive/v$pkgver.tar.gz")
 sha256sums=('c54fad2b452a6a84e009f8743efecdaaca37abcbfe046fc830d7e101cac3594d')
 
 prepare() {
