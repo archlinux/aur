@@ -24,7 +24,7 @@ build() {
     -DBUILD_SAMPLES=OFF \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr
-  make
+  make  -j`nproc`
 }
 
 package() {
