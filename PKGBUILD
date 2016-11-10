@@ -2,8 +2,8 @@
 
 pkgname="python-pyinsane2"
 _pkgname="pyinsane"
-pkgver="2.0.2"
-pkgrel="2"
+pkgver="2.0.3"
+pkgrel="1"
 pkgdesc="Python implementation of the Sane API (using ctypes) and abstration layer"
 arch=('any')
 url="https://github.com/jflesch/pyinsane"
@@ -12,7 +12,7 @@ makedepends=('python' 'python-setuptools')
 depends=('python' 'python-pillow' 'sane')
 changelog="ChangeLog"
 source=("https://github.com/jflesch/${_pkgname}/archive/${pkgver}.tar.gz")
-md5sums=('39c66c6c7869d3495e195c2dc809ab82')
+md5sums=('060a2ba43f6fa8d49904a26eb307b6a7')
 
 build() {
     cd ${srcdir}/${_pkgname}-${pkgver}
