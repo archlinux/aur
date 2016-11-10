@@ -9,7 +9,7 @@
 _pkgname=encfs
 pkgname=encfs18
 pkgver=1.8.1
-pkgrel=7
+pkgrel=8
 pkgdesc='Encrypted filesystem in user-space (without issue #214)'
 arch=('i686' 'x86_64')
 url='https://vgough.github.io/encfs/'
