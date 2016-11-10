@@ -1,24 +1,21 @@
-# Maintainer: Vlad M. <vlad@archlinux.net>
-
 pkgname=cargo-script
-pkgver=0.1.4
-pkgrel=2
-pkgdesc="Run Rust "scripts""
+pkgver=0.2.0
+pkgrel=1
+pkgdesc="Quickly and easily run Rust \"scripts\""
 url="https://github.com/DanielKeep/cargo-script"
 depends=('cargo')
 arch=('i686' 'x86_64')
 license=('MIT')
-source=("https://github.com/DanielKeep/$pkgname/archive/v$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('4872eca8c1c4b5886d9f93c5d7e4af67187ceff0b56012be1d6e9a6b18336f31')
+source=("git+https://github.com/DanielKeep/cargo-script.git#commit=11ad368ff6dfa862629b2d0864dcaa958caba33f")
+sha256sums=('SKIP')
 
 build() {
-  cd "$pkgname-$pkgver"
+  cd "$pkgname"
   cargo build --release
 }
 
 package() {
-  cd "$pkgname-$pkgver"
+  cd "$pkgname"
   install -Dm755 target/release/run-cargo-script "$pkgdir/usr/bin/run-cargo-script"
   install -Dm755 target/release/cargo-script "$pkgdir/usr/bin/cargo-script"
-  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
