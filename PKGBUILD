@@ -3,7 +3,7 @@ pkgname=codeviz
 pkgver=1.0.12
 _pkgver=8e597959959c4e812742e9d68c1ea4c4db63a39d
 _gccver=4.6.4
-pkgrel=1
+pkgrel=2
 pkgdesc="A call graph generation utility for C/C++"
 arch=('i686' 'x86_64')
 url="https://github.com/petersenna/codeviz"
@@ -12,12 +12,33 @@ depends=('perl' 'graphviz')
 # unset the C(XX)FLAGS because they would break the compilation if they contained
 # options not supported in $_gccver
 options=('!buildflags')
-source=("https://github.com/petersenna/codeviz/archive/$_pkgver.zip"
-        ftp://ftp.gnu.org/pub/gnu/gcc/gcc-$_gccver/gcc-${_gccver}.tar.gz)
+source=("$pkgname-$pkgver.tar.gz::https://github.com/petersenna/codeviz/archive/$_pkgver.tar.gz"
+        ftp://ftp.gnu.org/pub/gnu/gcc/gcc-$_gccver/gcc-${_gccver}.tar.gz
+        autopatch.diff gcc-$_gccver-disable_texinfo.diff)
 noextract=(gcc-${_gccver}.tar.gz)
 install=codeviz.install
-md5sums=('5538e066a1c18fd7d49bfe8a9df92e68'
-         'a8f15fc233589924ccd8cc8140b0ca3c')
+md5sums=('d74dbb67020f3508e9a75e22486bc443'
+         'a8f15fc233589924ccd8cc8140b0ca3c'
+         'e7065b30ef76518d3e8936b124289da4'
+         '37f408fb79cd87f15d1a0fa4574e29c8')
+
+prepare() {
+  cd "$srcdir/$pkgname-$_pkgver"
+
+  # modify the script for building gcc to automatically apply patches
+  patch -Np1 < "$srcdir/autopatch.diff"
+
+  # add patch to disable building of documentation
+  ln -sf "$srcdir/gcc-$_gccver-disable_texinfo.diff" compilers/gcc-patches/
+
+  # update for gcc 4.6.4 instead of 4.6.2
+  find . -type f -exec sed -i 's|4\.6\.2|4\.6\.4|g' '{}' ';'
+  mv compilers/install_gcc-4.6.2.sh compilers/install_gcc-${_gccver}.sh
+  mv compilers/gcc-patches/gcc-4.6.2-cdepn.diff compilers/gcc-patches/gcc-${_gccver}-cdepn.diff
+
+  # link the downloaded sources so the configure script doesn't download them again
+  ln -sf "$SRCDEST/gcc-${_gccver}.tar.gz" compilers/gcc-${_gccver}.tar.gz
+}
 
 build() {
   cd "$srcdir/$pkgname-$_pkgver"
@@ -29,11 +50,6 @@ build() {
   export CFLAGS
   CXXFLAGS=${CXXFLAGS//-fstack-protector-strong/-fstack-protector}
   export CXXFLAGS
-
-  # update for gcc 4.6.4 instead of 4.6.2
-  find . -type f -exec sed -i 's|4\.6\.2|4\.6\.4|g' '{}' ';'
-  mv compilers/install_gcc-4.6.2.sh compilers/install_gcc-${_gccver}.sh
-  mv compilers/gcc-patches/gcc-4.6.2-cdepn.diff compilers/gcc-patches/gcc-${_gccver}-cdepn.diff
 
   # link the downloaded sources so the configure script doesn't download them again
   ln -sf "$SRCDEST/gcc-${_gccver}.tar.gz" compilers/gcc-${_gccver}.tar.gz

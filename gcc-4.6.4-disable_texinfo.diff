@@ -1,0 +1,24 @@
+diff -rup gcc-4.6.4/gcc/Makefile.in gcc-4.6.4.new/gcc/Makefile.in
+--- gcc-4.6.4/gcc/Makefile.in	2013-04-01 10:32:34.000000000 +0200
++++ gcc-4.6.4.new/gcc/Makefile.in	2016-11-10 11:00:52.771345965 +0100
+@@ -4261,18 +4261,10 @@ doc/gcc.info: $(TEXI_GCC_FILES)
+ doc/gccint.info: $(TEXI_GCCINT_FILES)
+ doc/cppinternals.info: $(TEXI_CPPINT_FILES)
+ 
+-doc/%.info: %.texi
+-	if [ x$(BUILD_INFO) = xinfo ]; then \
+-		$(MAKEINFO) $(MAKEINFOFLAGS) -I . -I $(gcc_docdir) \
+-			-I $(gcc_docdir)/include -o $@ $<; \
+-	fi
++doc/%.info:
+ 
+ # Duplicate entry to handle renaming of gccinstall.info
+-doc/gccinstall.info: $(TEXI_GCCINSTALL_FILES)
+-	if [ x$(BUILD_INFO) = xinfo ]; then \
+-		$(MAKEINFO) $(MAKEINFOFLAGS) -I $(gcc_docdir) \
+-			-I $(gcc_docdir)/include -o $@ $<; \
+-	fi
++doc/gccinstall.info:
+ 
+ doc/cpp.dvi: $(TEXI_CPP_FILES)
+ doc/gcc.dvi: $(TEXI_GCC_FILES)

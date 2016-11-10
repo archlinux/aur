@@ -1,0 +1,13 @@
+--- codeviz-8e597959959c4e812742e9d68c1ea4c4db63a39d/compilers/install_gcc-4.6.2.sh	2015-07-23 15:37:43.000000000 +0200
++++ codeviz-8e597959959c4e812742e9d68c1ea4c4db63a39d.new/compilers/install_gcc-4.6.4.sh	2016-11-10 11:25:18.931139114 +0100
+@@ -28,7 +28,9 @@ tar -zxf gcc-4.6.2.tar.gz -C gcc-graph |
+ 
+ # Apply patch
+ cd gcc-graph/gcc-4.6.2
+-patch -p1 < ../../gcc-patches/gcc-4.6.2-cdepn.diff
++for PATCH in ../../gcc-patches/gcc-4.6.2-*.diff ; do
++  patch -p1 < $PATCH
++done
+ cd ../objdir
+ 
+ # Configure and compile
