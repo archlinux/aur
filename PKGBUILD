@@ -1,7 +1,7 @@
 # Maintainer: Bram Swenson <bram at craniumisajar dot com> PGP-Key: 9E93532D99D643C0
 
 pkgname=zcash
-pkgver=v1.0.1
+pkgver=v1.0.2
 pkgrel=1
 pkgdesc="Zcash is a decentralized and open-source cryptocurrency that offers privacy and selective transparency of transactions."
 arch=('any')
@@ -10,9 +10,9 @@ license=(MIT)
 makedepends=('tar' 'git' 'wget')
 provides=('zcash')
 source=("https://github.com/zcash/zcash/archive/${pkgver}.tar.gz")
-sha256sums=('45d52b384869e89d686dbd780ac1aea3f1db820cc63eddfc9fe4cfa0b788d5db')
+sha256sums=('2c49d9e5af33fae8557915cdc05f5ef41d512c0dc88fcf44d546f642402fa85c')
 install="${pkgname}.install"
-_srcname=zcash-1.0.1
+_srcname=zcash-1.0.2
 
 pkgver() {
   echo ${pkgver}
@@ -25,7 +25,7 @@ build() {
 
 package() {
   cd $_srcname
-  install -Dm755 zcutil/fetch-params.sh "${pkgdir}/usr/bin/zcutil-fetch-params"
+  install -Dm755 zcutil/fetch-params.sh "${pkgdir}/usr/bin/zcash-fetch-params"
   install -Dm755 src/zcash-cli "${pkgdir}/usr/bin/zcash-cli"
   install -Dm755 src/zcashd "${pkgdir}/usr/bin/zcashd"
 }

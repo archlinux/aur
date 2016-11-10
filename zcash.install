@@ -1,7 +1,7 @@
 post_install () {
   echo "Before running zcashd you need to download the Zcash 1.0 \"Sprout\" proving and verifying keys (around 911MB)"
   echo
-  echo "$ zcutil-fetch-params"
+  echo "$ zcash-fetch-params"
   echo
   echo "For more information read https://github.com/zcash/zcash/wiki/1.0-User-Guide"
 }
