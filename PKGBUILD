@@ -12,7 +12,7 @@ _basename="gfxbench_gl-linux-qt-${pkgver}+community"
 source_i686=(  "${_basename}.sh::https://gfxbench.com/download/${_basename}_32bit.sh")
 source_x86_64=("${_basename}.sh::https://gfxbench.com/download/${_basename}_64bit.sh")
 sha1sums_i686=(  'dfbcd1deeeb3a21cd79738c30d535f08ebfdac6c')
-sha1sums_x86_64=('81c6575e3af9402711b01e7b32e8e4d310eb00c0')
+sha1sums_x86_64=('73867f8320258a655051d884de785abb1987a564')
 
 package() {
   cd "${srcdir}"
