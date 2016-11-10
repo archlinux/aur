@@ -13,7 +13,7 @@ provides=("obs-qtwebkit")
 source=("$pkgname::git+https://github.com/bazukas/obs-qtwebkit#branch=master"
         "000_install_path.patch")
 md5sums=("SKIP"
-         "8dbde6438cb2fea91478b472abf66edb")
+         "27e8210140dd54c4529a78bef43347ab")
 
 pkgver() {
   cd $pkgname
