@@ -1,0 +1,49 @@
+From ef66f59bb9de005d87f2be17bb4626eb128ea03c Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?D=C4=81vis?= <davispuh@gmail.com>
+Date: Mon, 3 Aug 2015 18:14:06 +0300
+Subject: [PATCH] Fix out of srcdir build
+
+---
+ bindings/python/Makefile.am | 6 +++---
+ bindings/python/setup.py    | 2 +-
+ 2 files changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/bindings/python/Makefile.am b/bindings/python/Makefile.am
+index b7e6a98..c909ac5 100644
+--- a/bindings/python/Makefile.am
++++ b/bindings/python/Makefile.am
+@@ -33,15 +33,15 @@ EXTRA_DIST = \
+ if ENABLE_PYTHON_BINDING
+ 
+ all-local:
+-	$(PYTHON) setup.py build
++	$(PYTHON) $(srcdir)/setup.py build
+ 
+ install-exec-local:
+-	$(PYTHON) setup.py install @PYTHON_INSTALL_PARAMS@
++	$(PYTHON) $(srcdir)/setup.py install @PYTHON_INSTALL_PARAMS@
+ 
+ uninstall-local:
+ 	rm -rf $(DESTDIR)$(libdir)/python*/*-packages/*libtorrent*
+ 
+ clean-local:
+-	$(PYTHON) setup.py clean --all
++	$(PYTHON) $(srcdir)/setup.py clean --all
+ 
+ endif
+diff --git a/bindings/python/setup.py b/bindings/python/setup.py
+index fb857f2..170e73c 100644
+--- a/bindings/python/setup.py
++++ b/bindings/python/setup.py
+@@ -95,7 +95,7 @@ else:
+ 		flag for flag in get_config_var('OPT').split() if flag != '-Wstrict-prototypes')
+ 
+ 	source_list = os.listdir(os.path.join(os.path.dirname(__file__), "src"))
+-	source_list = [os.path.join("src", s) for s in source_list if s.endswith(".cpp")]
++	source_list = [os.path.abspath(os.path.join(os.path.dirname(__file__), "src", s)) for s in source_list if s.endswith(".cpp")]
+ 
+ 	ext = [Extension('libtorrent',
+ 		sources = source_list,
+-- 
+2.10.0.windows.1
+
