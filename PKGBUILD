@@ -22,13 +22,11 @@ provides=("gradio=$_pkgver")
 
 build() {
 	cd "$srcdir/gradio-${_pkgver}"
-	mkdir build
-	cd build
-	cmake -DCMAKE_INSTALL_PREFIX=/usr ..
+	./autogen.sh
 	make
 }
 
 package() {
-	cd "$srcdir/gradio-${_pkgver}/build"
+	cd "$srcdir/gradio-${_pkgver}"
 	make DESTDIR="${pkgdir}" install
 }
