@@ -36,5 +36,7 @@ package() {
     make DESTDIR="$pkgdir/" install
     chmod 644 "$pkgdir/etc/barnyard2.conf"
     install -d -m755 "$pkgdir/var/log/barnyard2"
-    install -d -m755 "$pkgdir/var/log/snort/barnyard2.waldo"
+    install -d -m755 "$pkgdir/var/log/snort"
+    touch "$pkgdir/var/log/snort/barnyard2.waldo"
+    cmod 644 "$pkgdir/var/log/snort/barnyard2.waldo"
 }
