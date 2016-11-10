@@ -6,6 +6,7 @@ pkgbase = nheqminer-cuda-git
 	arch = x86_64
 	license = MIT
 	makedepends = git
+	makedepends = cmake
 	depends = boost
 	depends = cuda
 	optdepends = zcash: zcash node and tools
