@@ -2,7 +2,7 @@
 
 pkgname=xflux-gui-git
 pkgver=r187.0b56204
-pkgrel=2
+pkgrel=3
 pkgdesc='Better lighting for Linux. Open source GUI for xflux'
 arch=(any)
 url='https://justgetflux.com/linux.html'
