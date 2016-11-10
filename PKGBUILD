@@ -5,8 +5,8 @@
 pkgbase=linux-zen           # Build -zen kernel
 #pkgbase=linux-custom       # Build kernel with a different name
 _srcname=linux-4.8
-_zenpatch=zen-4.8.6-098f02f33b213d30ded7da895393c6928c8d8cfd.diff
-pkgver=4.8.6
+_zenpatch=zen-4.8.7-c92b9be1a8b29a42efec377a67f27a87b93ddd47.diff
+pkgver=4.8.7
 pkgrel=1
 arch=('i686' 'x86_64')
 url="https://github.com/zen-kernel/zen-kernel"
@@ -17,8 +17,8 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         "https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.sign"
         "https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.xz"
         "https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.sign"
-        "http://pkgbuild.com/~heftig/zen-patches/${_zenpatch}.xz"
-        "http://pkgbuild.com/~heftig/zen-patches/${_zenpatch}.sign"
+        "https://pkgbuild.com/~heftig/zen-patches/${_zenpatch}.xz"
+        "https://pkgbuild.com/~heftig/zen-patches/${_zenpatch}.sign"
         # the main kernel config files
         'config' 'config.x86_64'
         # standard config files for mkinitcpio ramdisk
@@ -28,9 +28,9 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
 
 sha256sums=('3e9150065f193d3d94bcf46a1fe9f033c7ef7122ab71d75a7fb5a2f0c9a7e11a'
             'SKIP'
-            '3ac0ea443ac8a7aa40f8d5ce8ec33b84abbad4dbfc567c7699df728c2c21df37'
+            '94213e7557d192d1054e352aec18e93275ed5a84abe190d43fd43847d1d86efe'
             'SKIP'
-            '0cd35800f8ede7ba8a3276019d24a556e39589ccb80c5db76f54de21e0ecb05d'
+            '0a3654bbeab9955e0745e1da5b727886e9acc3886254821f4a512a27d347ed84'
             'SKIP'
             '3b764e486dfb961518a3b514fbc35b78a67df3abed83173e752aced212a16c82'
             '0a1194e0e5cdf73f4340fc73385f010fe4eb43125e9e6c45304bb91ff41e6278'
