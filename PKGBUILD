@@ -7,12 +7,15 @@ pkgdesc="A dedicated spooler for Snort's unified2 binary output format."
 arch=('i686' 'x86_64')
 url="http://www.github.com/firnsy/barnyard2"
 license=('GPL')
-depends=('libpcap' 'libmariadbclient')
+depends=('libpcap' 'libmariadbclient' 'snort')
 options=()
 provides=('barnyard2')
 conflicts=('barnyard2')
-source=('barnyard2::git+https://github.com/firnsy/barnyard2.git')
-md5sums=('SKIP')
+install=barnyard2.install
+source=('barnyard2::git+https://github.com/firnsy/barnyard2.git'
+        'barnyard2@.service')
+md5sums=('SKIP'
+         '1cadc9bb8c5147cd41977dce2a226c40')
 
 pkgver() {
   cd "barnyard2"
@@ -37,6 +40,11 @@ package() {
     chmod 644 "$pkgdir/etc/barnyard2.conf"
     install -d -m755 "$pkgdir/var/log/barnyard2"
     install -d -m755 "$pkgdir/var/log/snort"
+
+    install -D -m644 '../barnyard2@.service' "$pkgdir/usr/lib/systemd/system/barnyard2@.service"
+
     touch "$pkgdir/var/log/snort/barnyard2.waldo"
-    cmod 644 "$pkgdir/var/log/snort/barnyard2.waldo"
+    chmod 644 "$pkgdir/var/log/snort/barnyard2.waldo"
+    sed -i 's#/etc/snort/sid-msg.map#/etc/snort/rules/sid-msg.map#' "$pkgdir/etc/barnyard2.conf"
+
 }

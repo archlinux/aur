@@ -1,0 +1,8 @@
+post_install() {
+cat << _EOF
+
+>>> You have to edit /etc/barnyard2.conf and specify an output module.
+
+_EOF
+}
+

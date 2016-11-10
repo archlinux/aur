@@ -1,0 +1,10 @@
+[Unit]
+Description=Barnyard2 for snort listening on interface '%I'
+
+[Service]
+Type=simple
+ExecStartPre=/usr/sbin/ip link set up dev %I
+ExecStart=/usr/bin/barnyard2 -d /var/log/snort/ -f snort.log -u snort -g snort -c /etc/barnyard2.conf -i %I
+
+[Install]
+Alias=multi-user.target.wants/barnyard2@%i.service
