@@ -1,5 +1,5 @@
 pkgbase = pqr
-	pkgdesc = a pretty quick version of R
+	pkgdesc = A pretty quick version of R
 	pkgver = 20161024
 	pkgrel = 1
 	url = http://www.pqr-project.org/
