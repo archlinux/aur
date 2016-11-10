@@ -9,7 +9,7 @@ arch=('x86_64')
 url="https://github.com/nicehash/nheqminer/"
 license=('MIT')
 depends=('boost' 'cuda')
-makedepends=('git')
+makedepends=('git' 'cmake')
 optdepends=('zcash: zcash node and tools')
 source=("${pkgname}::git+https://github.com/nicehash/nheqminer.git#branch=Linux")
 md5sums=('SKIP')
