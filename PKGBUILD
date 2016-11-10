@@ -1,7 +1,7 @@
 # Maintainer: desbma
 pkgname=imgur-uploader-git
 pkgver=r31.225dba7
-pkgrel=2
+pkgrel=3
 pkgdesc="A script that uploads an image to imgur and copies the image URL to the clipboard"
 arch=('any')
 _gitname='Imgur-Uploader'
@@ -11,7 +11,7 @@ depends=('curl')
 optdepends=('xsel: Copy URL to clipboard'
             'xclip: Alternative to copy URL to clipboard')
 conflicts=('imgur')
-source=("git://github.com/tangphillip/${_gitname}")
+source=("git+https://github.com/tangphillip/${_gitname}")
 md5sums=('SKIP')
 
 pkgver() {
