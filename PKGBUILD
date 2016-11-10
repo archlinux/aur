@@ -20,7 +20,7 @@ pkgver() {
 
 build() {
   cd "atcore"
-  cmake CMakeLists.txt 
+  cmake -DCMAKE_INSTALL_PREFIX=$(kf5-config --prefix) -DCMAKE_INSTALL_LIBDIR=lib -DCMAKE_BUILD_TYPE=Release CMakeLists.txt 
   make
 }
 package(){
