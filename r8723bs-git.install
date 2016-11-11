@@ -1,0 +1,25 @@
+pre_install() {
+	# unload old module version
+	modprobe -r r8723bs
+	# unload 8723bs if loaded
+	modprobe -r 8723bs
+	# trash old module versions 
+	find /lib/modules/$(uname -r) -name r8723bs*ko* -exec rm -f {} \; 
+}
+
+
+post_install() {
+	_kver=$(uname -r)
+	echo -e "\nPlease run following command by yourself:\n"
+	echo "sudo depmod -a ${_kver}"
+	echo -e "sudo modprobe r8723bs\n"
+	echo -e "dont forget to update initrd if needed\n"
+}
+
+post_remove() {
+	# delete old module dir
+	find /lib/modules/$(uname -r) -name r8723bs -type d -exec rm -rf {} \;
+	rm -f /lib/firmware/rtlwifi/rtl8723bs_nic.bin
+	rm -f /lib/firmware/rtlwifi/rtl8723bs_wowlan.bin
+
+}
