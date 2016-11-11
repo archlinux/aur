@@ -4,13 +4,14 @@ validpgpkeys=('748231EBCBD808A14F5E85D28C004C2F93481F6B')
 # News updates for packages can be followed at https://devblog.square-r00t.net
 pkgname=python-menu
 pkgver=2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Easily create commandline menus in python applications"
 arch=('i686' 'x86_64')
 url="https://pypi.python.org/pypi/Menu"
 license=('GPL')
 _pkgname=Menu
 provides=("python-menu")
+depends=("python2")
 #conflicts=("python-menu")
 install=
 changelog=
@@ -21,9 +22,9 @@ sha512sums=('0bb2e2b93e9e19cc0c768bd68b0f848dedb665118a836cb1c56b5130e0cd45f29ca
             'SKIP')
 build() {
 	cd "${srcdir}/${_pkgname}-${pkgver}"
-        python3 setup.py build || return 1
+        python2 setup.py build || return 1
 }
 package() {
 	cd "${srcdir}/${_pkgname}-${pkgver}"
-	python3 setup.py install --root="${pkgdir}" --optimize=1 || return 1
+	python2 setup.py install --root="${pkgdir}" --optimize=1 || return 1
 }
