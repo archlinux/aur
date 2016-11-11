@@ -2,7 +2,7 @@
 
 pkgname=lib32-libusb0
 pkgver=0.1.12
-pkgrel=7
+pkgrel=8
 pkgdesc="Library to enable user space application programs to communicate with USB devices. 0.x branch. Debian's binary."
 arch=('x86_64')
 url="http://libusb.sourceforge.net/"
@@ -40,4 +40,5 @@ package() {
   rm -r ${pkgdir}/lib/i386-linux-gnu ${pkgdir}/lib/x86_64-linux-gnu \
         ${pkgdir}/usr/lib32/i386-linux-gnu ${pkgdir}/usr/lib32/x86_64-linux-gnu || true
   rm -rf ${pkgdir}/lib/
+  rm -rf ${pkgdir}/usr/bin/libusb-config ${pkgdir}/usr/include/usb.h
 }
