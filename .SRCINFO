@@ -9,7 +9,7 @@ pkgbase = rocrail
 	depends = wxgtk
 	depends = libusb
 	depends = webkitgtk2
-	source = http://home.eelviny.me:8051/$pkgname-$pkgrel-arch-$CARCH.tar.xz
+	source = http://home.eelviny.me:8051/rocrail-11643-arch-x86_64.tar.xz
 	sha256sums = 142629b3f581b654e2b4e97d9936e496d70d51238b2daca84ab52cff5cb08979
 
 pkgname = rocrail
