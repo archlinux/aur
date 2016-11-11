@@ -6,14 +6,12 @@ if [[ -f ~/.config/chromium-flags.conf ]]; then
 fi
 
 # Detect Pepper Flash
-for i in '/opt/google/chrome-unstable' '/usr/lib'; do
-   if [[ -f $i/PepperFlash/libpepflashplayer.so ]]; then
-      PepperFlash="$i/PepperFlash/libpepflashplayer.so"
-      PepperFlashVersion="$(grep 'version' $i/PepperFlash/manifest.json | cut -d '"' -f4)"
-      CHROMIUM_USER_FLAGS+=" --ppapi-flash-path=$PepperFlash --ppapi-flash-version=$PepperFlashVersion"
-      continue
-   fi
-done
+if [[ -f /usr/lib/PepperFlash/libpepflashplayer.so ]]; then
+  PepperFlashLib="/usr/lib/PepperFlash/libpepflashplayer.so"
+  PepperFlashVersion="$(grep 'version' /usr/lib/PepperFlash/manifest.json | cut -d '"' -f4)"
+  CHROMIUM_USER_FLAGS+=" --ppapi-flash-path=$PepperFlashLib --ppapi-flash-version=$PepperFlashVersion"
+  continue
+fi
 
 # Let the wrapped binary know that it has been run through the wrapper.
 export CHROME_WRAPPER="$(readlink -f $0)"
