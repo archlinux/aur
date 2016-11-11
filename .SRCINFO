@@ -1,27 +1,27 @@
 pkgbase = syndie
 	pkgdesc = Java based open source system for operating secure distributed forums
-	pkgver = 1.105b
+	pkgver = 1.107b
 	pkgrel = 1
 	url = http://syndie.i2p2.de
 	arch = any
 	license = Public Domain
-	makedepends = java-environment
+	makedepends = java-environment>=7
 	makedepends = apache-ant
 	depends = java-runtime
 	depends = swt
 	optdepends = words: for spelling correction support
-	source = http://syndie.i2p2.de/files/syndie-1.105b.src.tar.bz2
-	source = http://syndie.i2p2.de/files/syndie-1.105b.src.tar.bz2.sig
+	source = http://syndie.i2p2.de/files/syndie-1.107b.src.tar.bz2
+	source = http://syndie.i2p2.de/files/syndie-1.107b.src.tar.bz2.sig
 	source = syndie.desktop
 	source = syndie.xpm
 	source = syndie.sh
-	source = https://launchpad.net/~i2p-maintainers/+archive/ubuntu/i2p/+files/i2p-router_0.9.26-1ubuntu1_all.deb
-	sha256sums = f6bd632b0264016fb57255e8c3db1bea8d1d1004e163c10cd7c1d44c980f36bb
+	source = https://launchpad.net/~i2p-maintainers/+archive/ubuntu/i2p/+files/i2p-router_0.9.27-1-1ubuntu1_all.deb
+	sha256sums = 441cdd79ab8ad5cae73fceb8c548441493a210ada1550a00923d6c9dd539a214
 	sha256sums = SKIP
 	sha256sums = a4711e9876f8e185a5de84976f2b5a72a8890329c86688ffa583ae8741ecc6cc
 	sha256sums = 552d02ae3724d969e668996b67d0d7b1d70f39bf03ad43287073511696c995f7
 	sha256sums = a3e9d28f4e2da66cf91b4f1e57bf902dcd091ac1b97dadd9ec819f383cd83df8
-	sha256sums = 18402d70eeed0047d1bdb1e34ba110675dfaf20deb2a5c2cf581583fc04a9536
+	sha256sums = 2ddded8d99d7fbb8cbbbac87a347f451e93f6f12a9ab9b763c1f53e60ef8c70b
 
 pkgname = syndie
 
