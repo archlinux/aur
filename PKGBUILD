@@ -1,14 +1,14 @@
 # All credit and criticisms can be directed to Aelius @ Freenode
 
 pkgname=dctl
-pkgver=1
+pkgver=2
 pkgrel=1
 pkgdesc="A dmenu wrapper for basic systemctl commands"
 arch=('any')
 depends=('dmenu')
 source=('dctl' 'daskpass')
-md5sums=('10fc7a84cbe8ee2d6764f8b477ca93f2'
-	 'a207fd7e4f2402027ef53aa464d8b9ac')
+md5sums=('160b4c14399a498e9bdf12859f78f5a3'
+         '12e77a29fd27b49ead7cbb48b808b6c8')
 
 package() {
 	cd $srcdir
