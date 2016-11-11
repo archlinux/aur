@@ -28,7 +28,7 @@ pkgbase = animewatch-pyqt5
 	conflicts = animewatch-pyqt4
 	conflicts = animewatch-pyqt5.git
 	source = https://github.com/kanishka-linux/AnimeWatch/releases/download/v3.0.0-0/AnimeWatch-3.0.0-0.tar.bz2
-	md5sums = e35db393b36b444e32d80fcf08430cf
+	md5sums = e35db3e93b36b444e32d80fcf08430cf
 
 pkgname = animewatch-pyqt5
 
