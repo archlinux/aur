@@ -1,6 +1,7 @@
-# Maintainer: Justin Wilcox <nat1192 at gmail dot com>
+# Maintainer: Baptiste Jonglez <baptiste--aur at jonglez dot org>
+# Contributor: Justin Wilcox <nat1192 at gmail dot com>
 pkgname=restbed
-pkgver=3.5
+pkgver=4.0
 pkgrel=1
 pkgdesc="A framework for asynchronous RESTful functionality in C++11 applications"
 arch=('i686' 'x86_64')
