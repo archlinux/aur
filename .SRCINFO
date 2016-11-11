@@ -1,0 +1,15 @@
+pkgbase = corastool
+	pkgdesc = Editor for the family of CORAS security analysis diagrams.
+	pkgver = 1.4
+	pkgrel = 1
+	url = http://coras.sourceforge.net/coras_tool.html
+	arch = x86_64
+	license = unknown
+	depends = bash
+	source = corastool-1.4.zip::http://downloads.sourceforge.net/project/coras/CorasTool/corastool_v1.4_non_windows.zip?r=http%3A%2F%2Fcoras.sourceforge.net%2Fdownloads.html&ts=1475586617&use_mirror=netix
+	source = corastool.desktop
+	sha512sums = c8ae31e971996d68d6922ff928699bad6425d6920c9423ef446779aedb3f61b9f4a440ad70917bf70ef6270ec0b7883a7b6add1338456f71a536b6fbe2952206
+	sha512sums = c6faeeb6fba3661407d3536c821d6b508ac8cc53168fbd14266b45f4a989da2030d6dced5c716ebc80a25e418d969599e478f06cd47988372808a80a8261fa01
+
+pkgname = corastool
+

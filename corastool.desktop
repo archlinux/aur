@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=Coras Tool
+Comment=Editor for the CORAS security analysis diagrams
+#Path=/usr/share/java/battlescribe
+Exec=/usr/bin/corastool
+#Icon=battlescribe
+Terminal=false
+Categories=Development;Java;
+X-Desktop-File-Install-Version=0.22
