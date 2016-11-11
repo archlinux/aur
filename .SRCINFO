@@ -1,0 +1,20 @@
+pkgbase = brother-mfc-j220
+	pkgdesc = LPR and CUPS driver for the Brother MFC-J220
+	pkgver = 1.1.3
+	pkgrel = 1
+	url = http://solutions.brother.com/linux/en_us/
+	install = brother-mfc-j220.install
+	arch = i686
+	arch = x86_64
+	license = custom:brother commercial license
+	depends = cups
+	depends = perl
+	depends = bash
+	depends = lib32-glibc
+	source = http://www.brother.com/pub/bsc/linux/dlf/mfcj220lpr-1.1.3-1.i386.rpm
+	source = http://www.brother.com/pub/bsc/linux/dlf/mfcj220cupswrapper-1.1.3-1.i386.rpm
+	md5sums = 931b168c320049ae20a1b5939f5da31e
+	md5sums = 37bbde153ca2e3ac5005f637ce5a4fbb
+
+pkgname = brother-mfc-j220
+
