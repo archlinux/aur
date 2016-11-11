@@ -1,0 +1,14 @@
+pkgbase = tftpy
+	pkgdesc = Pure Python TFTP library
+	pkgver = 0.6.2
+	pkgrel = 1
+	url = https://github.com/msoulier/tftpy
+	arch = any
+	license = MIT
+	makedepends = python2-setuptools
+	source = https://pypi.org/packages/source/t/tftpy/tftpy-0.6.2.tar.gz
+	sha512sums = f4b3b14f3db62006775126d42e7582f20f6e9aa2b1d50fd554dc7567e1b21a437ecf17d6cda4700a7b2c663524016917ba179db27a993c3c7770fcc33e9401b0
+
+pkgname = python2-tftpy
+	depends = python2
+
