@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1
 
 pkgname=libtorrent-rasterbar-1_0-git
-pkgver=1.0.10.r7.geec6957
+pkgver=1.0.10.r9.ga166c3f
 pkgrel=1
 pkgdesc='A C++ BitTorrent library that aims to be a good alternative to all the other implementations around (git branch RC_1_0)'
 url='http://www.libtorrent.org/'
@@ -11,10 +11,8 @@ depends=('boost-libs')
 makedepends=('boost' 'python2' 'python')
 provides=('libtorrent-rasterbar')
 conflicts=('libtorrent-rasterbar')
-source=('git+https://github.com/arvidn/libtorrent.git#branch=RC_1_0'
-         Fix_out_of_srcdir_build.patch)
-sha256sums=('SKIP'
-            'e4dfe4363eb5f196363d3b477377046d6241c7e8277d475dc8f74ef612d77850')
+source=('git+https://github.com/arvidn/libtorrent.git#branch=RC_1_0')
+sha256sums=('SKIP')
 
 
 pkgver() {
@@ -27,7 +25,6 @@ prepare() {
   mkdir -p py2 py3
   cd "libtorrent"
 
-  patch -p1 -i ../Fix_out_of_srcdir_build.patch
   ./autotool.sh
 }
 
