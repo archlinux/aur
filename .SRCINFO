@@ -1,6 +1,6 @@
 pkgbase = autoenv-git
 	pkgdesc = Directory based enviroments
-	pkgver = 0.2.0.r187.7eb70ec
+	pkgver = 0.2.1.r2.g7eb70ec
 	pkgrel = 1
 	url = https://github.com/kennethreitz/autoenv
 	install = autoenv.install

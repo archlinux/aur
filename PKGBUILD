@@ -1,7 +1,7 @@
 # Maintainer:  jyantis <yantis@yantis.net>
 
 pkgname=autoenv-git
-pkgver=0.2.0.r187.7eb70ec
+pkgver=0.2.1.r2.g7eb70ec
 pkgrel=1
 pkgdesc='Directory based enviroments'
 arch=('any')
@@ -18,7 +18,7 @@ conflicts=('autoenv')
 pkgver() {
   cd "$pkgname"
   set -o pipefail
-  git describe --tags --long | sed -r 's/([^-]*-g)/r\1/;s/-/./g' ||
+  git describe --tags --long | sed -r 's/([^-]*-g)/r\1/;s/-/./g' | sed 's/v//' ||
 
   # If there is a setup.py then pull the version tag from the file
   if [ -f "setup.py" ]; then
