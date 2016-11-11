@@ -12,14 +12,13 @@ arch=('any')
 url='http://numixproject.org/'
 license=('GPL3')
 #install='do.install'
-makedepends=('git' 'glib2' 'ruby-sass')
+makedepends=('gtk-engine-murrine')
 
-build() {
-  cd "$srcdir"
-  [-z Numix-Manjaro-Borders] || tar zxvf ../Numix-Manjaro-Borders.tar.gz
+#build() {
+#  cd "$srcdir"
+#  [-z Numix-Manjaro-Borders] || tar zxvf ../Numix-Manjaro-Borders.tar.gz
+#}
 
-
-}
 package() {
   	cd "Numix-Manjaro-Borders"
 	for i in `ls *|grep -v xfwm4|grep -v xpm|grep -v png|grep -v themerc`; do 
