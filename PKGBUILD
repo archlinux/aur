@@ -38,7 +38,7 @@ sha1sums=('e22a28c1ee1477a31494882e23b39aeb183a7b8e'
 pkgdesc="Based off wine-staging, including the gallium-nine patches and some more hacks"
 url="http://www.wine-staging.com"
 arch=(i686 x86_64)
-options=(staticlibs)
+options=(staticlibs !upx)
 license=(LGPL)
 
 _depends=(
