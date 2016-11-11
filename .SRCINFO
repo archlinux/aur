@@ -1,7 +1,7 @@
 pkgbase = gfxbench
 	pkgdesc = Unified graphics benchmark based on DXBenchmark (DirectX) and GLBenchmark (OpenGL ES)
 	pkgver = 4.0.13
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gfxbench.com/
 	arch = i686
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = gfxbench
 	source_i686 = gfxbench_gl-linux-qt-4.0.13+community.sh::https://gfxbench.com/download/gfxbench_gl-linux-qt-4.0.13+community_32bit.sh
 	sha1sums_i686 = dfbcd1deeeb3a21cd79738c30d535f08ebfdac6c
 	source_x86_64 = gfxbench_gl-linux-qt-4.0.13+community.sh::https://gfxbench.com/download/gfxbench_gl-linux-qt-4.0.13+community_64bit.sh
-	sha1sums_x86_64 = 73867f8320258a655051d884de785abb1987a564
+	sha1sums_x86_64 = 9480bd67d7a5873d0f732c5d22b10f25c8fdf891
 
 pkgname = gfxbench
 
