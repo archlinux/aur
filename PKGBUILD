@@ -3,7 +3,7 @@
 pkgbase=linux-baytrail49 
 _srcname=linux-baytrail49
 _gitver=8749cde02a01703b404599ec0a032d6462416362
-pkgver=4.9.0
+pkgver=4.9rc4
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"

@@ -1,5 +1,5 @@
 pkgbase = linux-baytrail49
-	pkgver = 4.9.0
+	pkgver = 4.9rc4
 	pkgrel = 1
 	url = http://www.kernel.org/
 	arch = i686
