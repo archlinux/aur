@@ -14,7 +14,7 @@ pkgdesc="Open Source Mathematics Software, free alternative to Magma, Maple, Mat
 arch=(i686 x86_64)
 url="http://www.sagemath.org"
 license=(GPL)
-depends=(ipython2 cysignals ppl palp brial singular cliquer maxima-ecl gfan sympow tachyon python2-rpy2 nauty fpylll
+depends=(ipython2 ppl palp brial singular cliquer maxima-ecl gfan sympow tachyon nauty python2-rpy2 python2-fpylll
   python2-matplotlib python2-scipy python2-sympy python2-networkx python2-pillow python2-future libgap flintqs lcalc lrcalc arb
   eclib gmp-ecm zn_poly gd python2-cvxopt pynac linbox rubiks pari-galdata pari-seadata-small planarity rankwidth
   sage-data-combinatorial_designs sage-data-elliptic_curves sage-data-graphs sage-data-polytopes_db sage-data-conway_polynomials)
