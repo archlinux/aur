@@ -1,17 +1,17 @@
 pkgbase = battlescribe
 	pkgdesc = An army list builder for table-top games.
-	pkgver = 1.15.07
-	pkgrel = 2
-	url = http://battlescribe.net/
+	pkgver = 2.00.04
+	pkgrel = 1
+	url = http://battlescribe.net/?tab=downloads
 	arch = any
 	license = custom
 	depends = java-environment
 	depends = bash
-	source = http://files.battlescribe.net/BattleScribe_1.15.07_Multi.zip
+	source = http://battlescribe.net/files/BattleScribe_2.00.04_Multi.zip
 	source = battlescribe.desktop
 	source = battlescribe.png
 	source = BattleScribe.sh
-	md5sums = 1104d01254a217e0472b13fbb7af612f
+	md5sums = 016214696796770a0916cf89e630df2e
 	md5sums = 0d18577e61b1c6a90f3258905410b03b
 	md5sums = d0fef06c5b080003f84a0e148fbe9261
 	md5sums = cf0f2351b3241aa80cd80854fd73045f
