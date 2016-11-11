@@ -13,7 +13,7 @@ provides=('sidef')
 conflicts=('sidef')
 
 makedepends=('git')
-depends=('perl>=5.22.0' 'perl-data-dump' 'perl-math-gmpq>=0.41' 'perl-math-gmpz>=0.39' 'perl-math-mpfr>=3.29' 'perl-math-mpc')
+depends=('perl>=5.22.0' 'perl-data-dump' 'perl-math-gmpq>=0.41' 'perl-math-gmpz>=0.39' 'perl-math-mpfr>=3.29' 'perl-math-mpc' 'perl-math-prime-util-gmp')
 
 source=('git://github.com/trizen/sidef.git')
 md5sums=('SKIP')
