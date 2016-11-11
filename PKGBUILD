@@ -8,7 +8,7 @@
 
 pkgbase=sagemath-git
 pkgname=(sagemath-git sagemath-jupyter-git)
-pkgver=7.5.beta0.r0.g26d4124
+pkgver=7.5.beta2.r0.g470c42a
 pkgrel=1
 pkgdesc="Open Source Mathematics Software, free alternative to Magma, Maple, Mathematica, and Matlab"
 arch=(i686 x86_64)
@@ -33,11 +33,11 @@ source=("git://git.sagemath.org/sage.git#branch=develop"
         env.patch skip-check.patch cython-sys-path.patch is-package-installed.patch package.patch disable-fes.patch
         jupyter-path.patch test-optional.patch python-2.7.11.patch ecm-7.patch increase-rtol.patch)
 md5sums=('SKIP'
-         '784ba3fca83f24ed0bbf62e01fa4e967'
+         '70b7c1c5da6400e1ae48cf1e5a2d2879'
          '17771a1e59e14535cc837a189d3cb8a7'
          '0de8f29a99a48e2ca2a13045f122c386'
          '5dca842e4440e4ef235ae18c1b1f20e3'
-         '493a9e0eae9b2ef87544b42785ae11ea'
+         'ccfd5b1bc4796f414f1531be52504dd7'
          'a40b32a7b5d83379745b538be85064c8'
          'e618d534f42428e298e12b1aa94c1a31'
          '921017fd2d9dadbb6b602ac0476bfd58'
@@ -62,8 +62,6 @@ prepare(){
   patch -p0 -i ../env.patch
 # skip checking build status
   patch -p0 -i ../skip-check.patch
-# supress warning about GAP install dir
-  sed -e "s|gapdir = os.path.join(SAGE_LOCAL, 'gap', 'latest')|gapdir = '/usr/lib/gap'|" -i src/sage/libs/gap/util.pyx 
 # don't list optional packages when running tests
   patch -p0 -i ../test-optional.patch
 # set jupyter path

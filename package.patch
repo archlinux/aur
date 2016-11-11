@@ -20,11 +20,10 @@
  
  class CythonizeExtension(Extension):
      """
-@@ -75,15 +73,7 @@
-     try:
+@@ -76,14 +74,7 @@
          condition = kwds.pop("condition")
      except KeyError:
--        pkg = kwds.pop("package")
+         pkg = kwds.pop("package")
 -        try:
 -            pkginfo = all_packages[pkg]
 -        except KeyError:
@@ -37,4 +36,3 @@
      if condition:
          return Extension(*args, **kwds)
      else:
-     
