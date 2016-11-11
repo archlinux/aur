@@ -52,18 +52,18 @@ _remove_static_objects_ipp=false
 ########################################
 
 _year='2017'
-_v_a='0'
-_v_b='098' 
+_v_a='1'
+_v_b='132' 
 # year, version a and version b found in /opt/intel/compilers_and_libraries_YEAR_A_B
 
-_update=''
+_update='1'
 
 pkgrel=1
 #http://registrationcenter-download.intel.com/akdlm/irc_nas/9651/parallel_studio_xe_2017_update1.tgz
 
 _sp=''
 
-_icc_ver='17.0.0' # intel-ccompxe-${_v_b}-${_icc_ver}.noarch.rpm
+_icc_ver='17.0.1' # intel-ccompxe-${_v_b}-${_icc_ver}.noarch.rpm
 #_openmp_ver='16.0.1' # intel-openmp-${_v_b}-${_openmp_ver}.${arch}.rpm
 # omp was merged together with the icc compiler
 
@@ -78,20 +78,20 @@ _mkl_ver="11.3.3" # intel-mkl-cluster-${_v_b}-${_mkl_ver}.${arch}.rpm
 _tbb_ver='4.4.3' # intel-tbb-${_v_b_}-${_tbb_ver}.noarch.rpm
 #_gdb_ver='7.8.0' # intel-gdb-${_gdb_ver}-${_v_b}.x86_64.rpm
 #_gdb_gt_ver='7.6.0' # intel-gdb-gt-${_gdb_gt_ver}-{_v_b}.x86_64.rpm
-_vtune_ver='16.3.463186' # intel-vtune-amplifier-xe-${year}-*-${_vtune_ver}.${arch}.rpm
-_inspector_ver='16.1.460803' # intel-inspector-${year}-*-${_inspector_ver}.${arch}.rpm
-_advisor_ver='16.1.463413' # intel-advisor-${year}-*-${_advisor_ver}.${arch}.rpm
+_vtune_ver='17.1.486011' # intel-vtune-amplifier-xe-${year}-*-${_vtune_ver}.${arch}.rpm
+_inspector_ver='17.1.484836' # intel-inspector-${year}-*-${_inspector_ver}.${arch}.rpm
+_advisor_ver='17.1.486553' # intel-advisor-${year}-*-${_advisor_ver}.${arch}.rpm
 
 # Different version for docs
-_vtune_man_ver='0.2.478468'
-_inspector_man_ver='1.0.475470'
-_advisor_man_ver='1.0.477503'
+_vtune_man_ver='1.0.486011'
+_inspector_man_ver='1.1.484836'
+_advisor_man_ver='1.1.486553'
 
 
 
 pkgver=${_year}.${_icc_ver}.${_v_a}.${_v_b}
 
-_dir_nr='9651'
+_dir_nr='10973'
 
 options=(strip libtool staticlibs)
 
@@ -126,7 +126,7 @@ source=(
 
 
 sha256sums=(
-    'f380a56a25cf17941eb691a640035e79f92516346500e0df80fbdd46c5c1b301'  # parallel_studio_xe_2016_update3.tgz
+    'c808be744c98f7471c61258144859e8e8fc92771934281a16135803e941fd9b0'  # parallel_studio_xe_2017_update1.tgz
 	'75fcdfc246949341afddcf51b2037f606f25612a04c199ac1a743247aa7c4ea5'  # intel_compilers.sh
 	'35c06af80885c3a49501652c24939df3bd073afbb19d3635928439d25a9e2bea'  # intel_vtune-amplifier-xe.sh
 	'11b2bd13666145592448d3ba2519dfb8c8f3e62787045ff0b83c2556059c675f'  # intel_advisor.sh
