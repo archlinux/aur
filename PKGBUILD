@@ -1,7 +1,7 @@
 # Maintainer: Alexander Görtz <aur@nyloc.de>
 
 pkgname=quassel-webserver-git
-pkgver=2.1.1.r0.gdda457f
+pkgver=2.1.2.r1.g8b99e23
 pkgrel=1
 pkgdesc="A web client for Quassel (requires a running quasselcore)"
 arch=('i686' 'x86_64')
@@ -14,6 +14,7 @@ makedepends=('npm')
 sha256sums=('SKIP'
             '2dab6d8506790ab08ea033e9b2de98884483ea79a5a8016f4af79281240614e0')
 install=$pkgname.install
+backup=("usr/share/webapps/${pkgname%-git}/settings-user.js")
 
 
 pkgver() {

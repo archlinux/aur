@@ -1,6 +1,6 @@
 pkgbase = quassel-webserver-git
 	pkgdesc = A web client for Quassel (requires a running quasselcore)
-	pkgver = 2.1.1.r0.gdda457f
+	pkgver = 2.1.2.r1.g8b99e23
 	pkgrel = 1
 	url = https://github.com/magne4000/quassel-webserver
 	install = quassel-webserver-git.install
@@ -9,6 +9,7 @@ pkgbase = quassel-webserver-git
 	license = MIT
 	makedepends = npm
 	depends = nodejs
+	backup = usr/share/webapps/quassel-webserver/settings-user.js
 	source = quassel-webserver::git+https://github.com/magne4000/quassel-webserver.git
 	source = quassel-webserver.service
 	sha256sums = SKIP
