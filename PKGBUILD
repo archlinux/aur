@@ -7,7 +7,7 @@ pkgrel=1
 pkgdesc="A modern object-oriented programming language. (-git version)"
 arch=('any')
 url="https://github.com/trizen/sidef"
-license=('GPLv3')
+license=('Artistic2.0')
 
 provides=('sidef')
 conflicts=('sidef')
