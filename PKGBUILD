@@ -2,7 +2,7 @@
 
 pkgname=openconcerto
 pkgver=1.4.2
-pkgrel=1
+pkgrel=2
 pkgdesc="ERP ILM Openconcerto client multi and mono"
 arch=('any')
 license=('GPL3')
@@ -26,9 +26,9 @@ package() {
         rm "${pkgdir}"/usr/share/applications/OpenConcerto-Configuration.desktop
         rm "${pkgdir}"/usr/share/applications/OpenConcerto-Caisse.desktop
         rm "${pkgdir}"/usr/share/applications/OpenConcerto.desktop
-        mv "${srcdir}"/OpenConcerto-Configuration.desktop "${pkgdir}"/usr/share/applications/OpenConcerto-Configuration.desktop
-        mv "${srcdir}"/OpenConcerto-Caisse.desktop "${pkgdir}"/usr/share/applications/OpenConcerto-Caisse.desktop
-        mv "${srcdir}"/OpenConcerto.desktop "${pkgdir}"/usr/share/applications/OpenConcerto.desktop
+        mv OpenConcerto-Configuration.desktop "${pkgdir}"/usr/share/applications/OpenConcerto-Configuration.desktop
+        mv OpenConcerto-Caisse.desktop "${pkgdir}"/usr/share/applications/OpenConcerto-Caisse.desktop
+        mv OpenConcerto.desktop "${pkgdir}"/usr/share/applications/OpenConcerto.desktop
 
 
 } 

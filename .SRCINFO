@@ -1,7 +1,7 @@
 pkgbase = openconcerto
 	pkgdesc = ERP ILM Openconcerto client multi and mono
 	pkgver = 1.4.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.openconcerto.org/
 	arch = any
 	license = GPL3
