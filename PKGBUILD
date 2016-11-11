@@ -2,7 +2,7 @@
 pkgname=wire-desktop-git
 _pkgname=wire-desktop
 _name=wire
-pkgver=2.11.2673.r0.gce43739
+pkgver=2.11.2675.r0.gab8558b
 pkgrel=1
 pkgdesc='Modern, private messenger. Based on Electron.'
 arch=('x86_64' 'i686')
