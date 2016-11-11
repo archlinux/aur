@@ -12,7 +12,7 @@ url='http://eigen.tuxfamily.org'
 license=('GPL' 'LGPL3')
 makedepends=('cmake' 'pkg-config')
 source=("http://bitbucket.org/eigen/eigen/get/${pkgver}.tar.bz2")
-sha256sum=('7255e856ed367ce6e6e2d4153b0e4e753c8b8d36918bf440dd34ad56aff09960')
+sha256sums=('7255e856ed367ce6e6e2d4153b0e4e753c8b8d36918bf440dd34ad56aff09960')
 
 build() {
   cd "${srcdir}"
