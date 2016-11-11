@@ -8,6 +8,8 @@ url="http://usbdm.sourceforge.net/"
 license=('GPL2')
 depends=("java-runtime" "webkitgtk2" "xerces-c" "tcl" "wxgtk" "xdg-utils")
 makedepends=("java-environment")
+provides=("usbdm")
+conflicts=("usbdm")
 options=("!makeflags")
 install="usbdm.install"
 
