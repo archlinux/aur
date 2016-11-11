@@ -18,7 +18,7 @@ conflicts=('autoenv')
 pkgver() {
   cd "$pkgname"
   set -o pipefail
-  git describe --tags --long | sed -r 's/([^-]*-g)/r\1/;s/-/./g' | sed 's/v//' ||
+  git describe --tags --long | sed -r 's/([^-]*-g)/r\1/;s/-/./g;s/v//' ||
 
   # If there is a setup.py then pull the version tag from the file
   if [ -f "setup.py" ]; then
