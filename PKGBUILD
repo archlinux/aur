@@ -1,5 +1,5 @@
 pkgname=skypeforlinux
-pkgver=1.11.0.1
+pkgver=1.12.0.4
 pkgrel=1
 pkgdesc="Skype for Linux WebRTC Alpha"
 arch=(x86_64 i686)
@@ -9,7 +9,7 @@ depends=(electron libgnome-keyring)
 makedepends=(asar npm python2)
 source=(https://repo.skype.com/deb/pool/main/s/$pkgname/${pkgname}_${pkgver}_amd64.deb
         $pkgname.sh)
-sha256sums=('1f9a0ffda516e91ac86bbc5e06676d16193cc8d772189a7c978e4abcf8276280'
+sha256sums=('5a938754e9fd96d32b0a585ff92ac34a2fe329467bddf474223bfd0620e2a89e'
             '0aca67c5c2cd1be1e7b7a2d2f126cdf0310f8a85985c1aba31540fcc2892eafa')
 
 prepare() {
