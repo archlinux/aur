@@ -23,9 +23,6 @@ _kernelname=${pkgbase#linux}
 
 prepare() {
 
-  cd "${srcdir}"
-  mv linux-4.7.10-baytrail-"${_gitver}" "${_srcname}-${_gitver}"
-
   cd "${srcdir}/${_srcname}-${_gitver}"
 
   if [ "${CARCH}" = "x86_64" ]; then
