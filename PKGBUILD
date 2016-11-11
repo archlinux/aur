@@ -14,8 +14,14 @@ makedepends=('python-setuptools')
 source=("https://pypi.python.org/packages/ab/5a/c22c6ff37c74196950fad281b1094547e06065d5c922d8b679458e5f37b5/${_name}-${pkgver}.tar.gz")
 md5sums=('d5fa14a9a18db14d426f040872b06b45')
 
-package() {
+build() {
     cd "${srcdir}/${_name}-${pkgver}"
-    python setup.py install --prefix=/usr --root="${pkgdir}"
+    python setup.py build
+}
+
+package() {
+    install -Dm644 ../LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    cd "${srcdir}/${_name}-${pkgver}"
+    python setup.py install -O1 --skip-build --prefix=/usr --root="${pkgdir}"
 }
 
