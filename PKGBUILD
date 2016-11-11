@@ -15,11 +15,11 @@
 # archzfs github page.
 #
 pkgname="zfs-utils-linux-git"
-pkgver=0.7.0_rc2_r5_g2bac681_4.8.6_1
+pkgver=0.7.0_rc2_r38_g0df15db_4.8.7_1
 pkgrel=1
 pkgdesc="Kernel module support files for the Zettabyte File System."
-depends=("spl-linux-git" "linux=4.8.6")
-makedepends=("linux-headers=4.8.6" "git")
+depends=("spl-linux-git" "linux=4.8.7")
+makedepends=("linux-headers=4.8.7" "git")
 arch=("x86_64")
 url="http://zfsonlinux.org/"
 source=("git+https://github.com/zfsonlinux/zfs.git"
