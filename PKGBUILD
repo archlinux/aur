@@ -4,10 +4,10 @@ pkgname=gnome-shell-extension-bottompanel-git
 _pkgname=gnome-shell-extension-bottompanel
 _pkgauthor=Thoma5
 pkgver=27.fa9d21c
-pkgrel=1
+pkgrel=2
 pkgdesc="Move your GNOME 3.16+ shell panel to the bottom."
 arch=('any')
-url="https://github.com/horst3180/${_pkgname}"
+url="https://github.com/${_pkgauthor}/${_pkgname}"
 license=('GPL3')
 depends=('gnome-shell>=3.16')
 makedepends=('git')
