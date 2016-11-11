@@ -1,7 +1,7 @@
 # Maintainer: Nicolas Leclercq <nicolas.private@gmail.com>
 
 pkgname='telegraf'
-pkgver='1.0.1'
+pkgver='1.1.0'
 pkgrel='1'
 pkgdesc='Server-level metric gathering agent for InfluxDB'
 arch=('i686' 'x86_64')
