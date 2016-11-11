@@ -15,11 +15,11 @@
 # archzfs github page.
 #
 pkgname="zfs-utils-linux"
-pkgver=0.6.5.8_4.8.6_1
+pkgver=0.6.5.8_4.8.7_1
 pkgrel=1
 pkgdesc="Kernel module support files for the Zettabyte File System."
-depends=("spl-linux" "linux=4.8.6")
-makedepends=("linux-headers=4.8.6")
+depends=("spl-linux" "linux=4.8.7")
+makedepends=("linux-headers=4.8.7")
 arch=("x86_64")
 url="http://zfsonlinux.org/"
 source=("https://github.com/zfsonlinux/zfs/releases/download/zfs-0.6.5.8/zfs-0.6.5.8.tar.gz"
