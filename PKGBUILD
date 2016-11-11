@@ -2,27 +2,27 @@
 pkgbase=python-pymisp
 _pyname=PyMISP
 pkgname=('python-pymisp' 'python2-pymisp')
-makedepends=('python' 'python2')
-pkgver=2.2
+makedepends=('python' 'python2' 'python-setuptools' 'python2-setuptools')
+pkgver=2.4.53
 pkgrel=1
 pkgdesc="API for MISP."
 arch=('any')
 url="https://github.com/MISP/PyMISP/"
 license=('BSD2')
-source=("https://github.com/MISP/PyMISP/archive/v$pkgver.tar.gz")
-sha512sums=('125e9251acb832b2c63bb08f1a9f17e22ee155a21d5f97cc642a046c7c5ebe4a457ba7cd635ca196f20607b446ea2716b3ef73d9e2b81d05446700a830bca04c')
+source=("https://github.com/MISP/PyMISP/archive/v2.4.53.tar.gz")
+sha512sums=('fbdd28c337dc05ce8169a15dcc817b6f70a35217113a5f0f277d03ef66a351c41e5b0083257c187aebade3e0ecae82c6acffb032e687c754770518a44c063b65')
 
 package_python-pymisp() {
   depends=('python')
-  cd "$srcdir/$_pyname-$pkgver"
-  python setup.py install -O1 --root=$pkgdir
+  cd "${srcdir}/${_pyname}-${pkgver}"
+  python setup.py install -O1 --root=${pkgdir}
 
 }
 
 package_python2-pymisp() {
   depends=('python2')
-  cd "$srcdir/$_pyname-$pkgver"
-  python2 setup.py install -O1 --root=$pkgdir
+  cd "${srcdir}/${_pyname}-${pkgver}"
+  python2 setup.py install -O1 --root=${pkgdir}
 
 }
 
