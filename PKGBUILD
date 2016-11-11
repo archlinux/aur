@@ -2,7 +2,7 @@
 
 _pkgname=dcmtk
 pkgname=$_pkgname-git
-pkgver=3.6.1_20161102.4.g7872b1c
+pkgver=3.6.1_20161102.17.gdd23149
 pkgrel=1
 pkgdesc='Collection of libraries and applications implementing large parts the DICOM standard'
 arch=('i686' 'x86_64')
@@ -25,6 +25,7 @@ build() {
   # http://forum.dcmtk.org/viewtopic.php?f=3&t=4475
   cd $_pkgname
   cmake . \
+        -DDCMTK_USE_CXX11_STL=ON \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DBUILD_SHARED_LIBS=ON
   make
