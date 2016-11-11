@@ -3,7 +3,7 @@
 
 pkgname=vim-airline
 pkgver=0.8
-pkgrel=2
+pkgrel=3
 pkgdesc='Lean & mean statusline/tabline for ViM'
 arch=('any')
 url='https://github.com/vim-airline/vim-airline'
@@ -12,7 +12,6 @@ depends=('vim-runtime' 'vim-airline-themes')
 makedepends=('git')
 groups=('vim-plugins')
 #optdepends=('otf-powerline-symbols-git: Use the Powerline symbols')
-install='vimdoc.install'
 source=("git://github.com/vim-airline/$pkgname.git#tag=v$pkgver")
 md5sums=('SKIP')
 
