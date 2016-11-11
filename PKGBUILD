@@ -4,7 +4,7 @@
 _name=pawk
 pkgname=python-pawk
 pkgver=0.6
-pkgrel=2
+pkgrel=3
 pkgdesc="A Python line-processor (like awk) based on pyline."
 arch=('any')
 url='https://github.com/alecthomas/pawk'
