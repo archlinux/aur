@@ -6,7 +6,7 @@
 _pkgname=xf86-input-libinput
 pkgname=xf86-input-libinput-git
 pkgver=0.22.0.6.r200.ga61e156
-pkgrel=1
+pkgrel=2
 pkgdesc="Generic input driver for the X.Org server based on libinput - Git version"
 arch=('i686' 'x86_64')
 license=('custom')
@@ -28,8 +28,8 @@ pkgver() {
 build() {
   cd ${_pkgname}
 
-  msg2 "Starting ./configure..."
-  ./configure --prefix=/usr \
+  msg2 "Starting ./autogen.sh..."
+  ./autogen.sh --prefix=/usr \
     --disable-static
 	
   msg2 "Starting make..."
