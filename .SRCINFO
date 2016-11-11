@@ -1,0 +1,12 @@
+pkgbase = xcursor-mayaserie-blue
+	pkgdesc = Maya Serie Blue cursor theme
+	pkgver = 2016.11.10
+	pkgrel = 1
+	url = https://store.kde.org/p/999900
+	arch = any
+	license = LGPL
+	source = https://raw.githubusercontent.com/i3-Arch/PKGBUILD/master/Maya-Serie/Maya-Blue.tar.gz
+	md5sums = b931ebdeda48eaaa9d5068ca4fd57a52
+
+pkgname = xcursor-mayaserie-blue
+
