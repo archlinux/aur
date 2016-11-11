@@ -1,5 +1,5 @@
 pkgbase = cargo-check-git
-	pkgver = r3.872765d
+	pkgver = r19.64dc90b
 	pkgrel = 1
 	url = https://github.com/rsolomo/cargo-check
 	arch = x86

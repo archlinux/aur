@@ -1,12 +1,12 @@
 # Maintainer: Yamakaky <yamakaky@yamaworld.fr>
 _pkgname=cargo-check
 pkgname=$_pkgname-git
-pkgver=r7.d582b94
+pkgver=r19.64dc90b
 pkgrel=1
 pkgdesc=""
 arch=('x86' 'x86_64')
 url="https://github.com/rsolomo/cargo-check"
-license=('BSD')
+license=('BSD' 'Apache')
 makedepends=('git' 'cargo')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
@@ -31,5 +31,6 @@ check() {
 package() {
     cd "$srcdir/$_pkgname"
     install -D "target/release/cargo-check" "$pkgdir/usr/bin/cargo-check"
-    install -D -m 644 "LICENSE" "$pkgdir/usr/share/licences/${_pkgname}/LICENSE"
+    install -D -m 644 "LICENSE-APACHE" "$pkgdir/usr/share/licenses/${_pkgname}/LICENSE"
+    install -D -m 644 "LICENSE-MIT" "$pkgdir/usr/share/licenses/${_pkgname}/LICENSE"
 }
