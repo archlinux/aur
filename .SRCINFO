@@ -3,13 +3,14 @@ pkgbase = rocrail
 	pkgver = git
 	pkgrel = 11643
 	url = http://wiki.rocrail.net/
-	arch = i686
 	arch = x86_64
+	arch = i686
 	license = Proprietary
-	makedepends = git
 	depends = wxgtk
 	depends = libusb
 	depends = webkitgtk2
+	source = http://home.eelviny.me:8051/$pkgname-$pkgrel-arch-$CARCH.tar.xz
+	sha256sums = 142629b3f581b654e2b4e97d9936e496d70d51238b2daca84ab52cff5cb08979
 
 pkgname = rocrail
 
