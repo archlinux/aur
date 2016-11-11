@@ -1,0 +1,6 @@
+post_install() {
+  printf "post_instal...\n"
+  gpasswd -a http uucp
+  chown -R http:http "${pkgdir}/opt/domoticz"
+}
+
