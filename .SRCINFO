@@ -1,0 +1,39 @@
+pkgbase = linux-baytrail49
+	pkgver = 4.9.0
+	pkgrel = 1
+	url = http://www.kernel.org/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = xmlto
+	makedepends = docbook-xsl
+	makedepends = kmod
+	makedepends = inetutils
+	makedepends = bc
+	makedepends = libelf
+	options = !strip
+	source = git+https://github.com/muhviehstah/linux-baytrail49.git#tag=4.9-rc4
+	source = config
+	source = config.x86_64
+	source = linux-baytrail49.preset
+	sha256sums = SKIP
+	sha256sums = 60921720cdcd2ff3fc754eebbba795af52b61d681a0541ad492a606bed309f58
+	sha256sums = b3460e905a0e47229426608470e8605eec3a0a633970790fa2d5909b775925b7
+	sha256sums = d872b4454a0f7e49bece2c1719dc48aaaff3b6caf55e0fe661681951330f858a
+
+pkgname = linux-baytrail49
+	pkgdesc = The Linux-baytrail49 with baytrail freeze fixes and integrated RTL8723BS WIFI driver + kernel and modules
+	install = linux-baytrail49.install
+	depends = coreutils
+	depends = linux-firmware
+	depends = kmod
+	depends = mkinitcpio>=0.7
+	optdepends = crda: to set the correct wireless channels of your country
+	backup = etc/mkinitcpio.d/linux-baytrail49.preset
+
+pkgname = linux-baytrail49-headers
+	pkgdesc = Header files and scripts for building modules for Linux-baytrail49 kernel with baytrail freeze fixes
+
+pkgname = linux-baytrail49-docs
+	pkgdesc = Kernel hackers manual - HTML documentation that comes with the Linux-baytrail49 kernel with baytrail freeze fixes
+
