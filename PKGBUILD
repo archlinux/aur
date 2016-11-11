@@ -17,7 +17,7 @@
 # under /usr/include/pd-l2ork.
 
 pkgname=purr-data-git
-pkgver=r2953.4258567
+pkgver=20161110.r3065.cdbcc2a
 pkgrel=1
 pkgdesc="Jonathan Wilkes' nw.js variant of Pd-L2Ork (git version)"
 url="https://git.purrdata.net/jwilkes/purr-data"
@@ -31,23 +31,23 @@ depends=('bluez-libs' 'desktop-file-utils' 'dssi' 'fftw'
   'libsndobj-git' 'libv4l' 'libvorbis' 'lua51' 'portaudio'
   'smpeg' 'speex' 'stk' 'tk' 'tkpng' 'vlc' 'xapian-tcl-bindings' 'zlib'
   'alsa-lib' 'gconf' 'gtk2' 'nss' 'libxtst' 'libxss' 'ttf-dejavu')
-makedepends=('autoconf' 'automake' 'libtool' 'git')
+makedepends=('autoconf' 'automake' 'libtool' 'git' 'rsync')
 provides=('purr-data' 'pd-l2ork')
 conflicts=('purr-data' 'pd-l2ork' 'pd-l2ork-git')
 install=purr-data.install
-options=('!makeflags')
+options=('!makeflags' '!strip')
 source=("$pkgname::git+https://git.purrdata.net/jwilkes/purr-data.git"
 	"RTcmix-pd-LCPLAY-stabilize.patch")
 md5sums=('SKIP'
          '39c53063dc18681f29b12c08d9c453aa')
 # nw.js sdk binaries
 nwjsname=nwjs-sdk
-nwjsver=0.17.6
+nwjsver=0.18.5
 source_common="http://dl.nwjs.io/v$nwjsver/$nwjsname-v$nwjsver-linux"
 source_i686=("$source_common-ia32.tar.gz")
 source_x86_64=("$source_common-x64.tar.gz")
-md5sums_i686=('5d878e8849c54e758884b285307e5955')
-md5sums_x86_64=('2a01edf88ed2f60ec1e0abf91ef2ce0c')
+md5sums_i686=('1d5e9e25c36b7c3221e317baa7d94b64')
+md5sums_x86_64=('3c6391a30c74531e918c7434caa2730f')
 
 if [ "$CARCH" = "i686" ]; then
   _arch="ia32"
@@ -63,7 +63,7 @@ buildopt=${buildopt:--B}
 
 pkgver() {
   cd $srcdir/$pkgname
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  printf "%s.r%s.%s" "$(git log -1 --format=%cd --date=short | sed -e 's/-//g')" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
@@ -95,6 +95,9 @@ package() {
   # Remove init.d-related stuff.
   cd "$pkgdir/etc"
   rm -rf default init.d
+  # Remove extra K12 icons. K12 mode is not supported by purr-data yet.
+  cd "$pkgdir/usr/share/applications"
+  rm -f pd-l2ork-k12*.desktop
   # Move pdsend and pdreceive to avoid conflicts with other Pd versions.
   cd "$pkgdir/usr"
   mv bin/cyclist bin/pdreceive bin/pdsend lib/pd-l2ork/bin
