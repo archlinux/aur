@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=KBBI-Qt
+Comment=Kamus Besar Bahasa Indonesia
+GenericName=kbbi-qt
+Exec=/usr/bin/kbbi-qt
+Type=Application
+Icon=kbbi-qt.png
+Categories=Education;
