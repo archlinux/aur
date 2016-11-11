@@ -1,6 +1,9 @@
 [Unit]
 Description=DuckDNS update job
 
+[Install]
+WantedBy=multi-user.target
+
 [Service]
 Type=oneshot
 ExecStart=/usr/bin/duckdns
