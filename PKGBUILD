@@ -1,17 +1,16 @@
 # Maintainer: X0rg
 
-_kernel=$(pacman -Qqo /usr/lib/modules/`uname -r` | grep linux | grep -v headers)
 _gitname=darling
 pkgbase=$_gitname-mach-git
 pkgname=($_gitname-mach-git $_gitname-mach-dkms-git)
 pkgver=r23.44cf244
-pkgrel=1
+pkgrel=2
 pkgdesc="Darling's Linux kernel module (darling-mach)"
 arch=('x86_64') # Can only be built on x86_64 systems
 url="http://www.darlinghq.org"
 license=('GPL3')
 groups=('darling-git')
-makedepends=('git' "$_kernel-headers")
+makedepends=('git')
 source=('git+https://github.com/darlinghq/darling.git'
         'dkms.conf')
 md5sums=('SKIP'
