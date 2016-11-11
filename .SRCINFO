@@ -1,0 +1,13 @@
+pkgbase = adwaita-compact-gtk-theme
+	pkgdesc = Compact modification of Adwaita gtk2 and gtk3 theme
+	pkgver = 3.20.9.1
+	pkgrel = 1
+	url = https://github.com/abihf/adwaita-compact
+	arch = any
+	license = GPL
+	depends = gnome-themes-standard
+	source = https://github.com/abihf/adwaita-compact/archive/v3.20.9.1.tar.gz
+	md5sums = 129c35969a2d0e0cd5fa4efdb1c93f6d
+
+pkgname = adwaita-compact-gtk-theme
+
