@@ -1,68 +1,34 @@
 # Maintainer: Timo Sarawinski <t.sarawinski@gmail.com>
 
 pkgbase=linux-baytrail48 
-_srcname=linux-4.8.1-baytrail
-_gitver=60cacd661dacfd0a7c4aa6f82d11f1c1664e70ad
-pkgver=4.8.1
-pkgrel=3
+_srcname=linux-4.8.7-baytrail
+_gitver=8749cde02a01703b404599ec0a032d6462416362
+pkgver=4.8.7
+pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
 license=('GPL2')
 makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc' 'libelf')
 options=('!strip')
-source=("${_srcname}.tar.gz::https://github.com/muhviehstah/linux-4.8.1-baytrail/archive/${_gitver}.tar.gz"
+source=("${_srcname}.tar.gz::https://github.com/muhviehstah/linux-4.8-7-baytrail/archive/${_gitver}.tar.gz"
         'config' 'config.x86_64'
         'linux-baytrail48.preset'
-        'change-default-console-loglevel.patch'
-	'baytrailfix1.patch'
-	'baytrailfix2.patch'
-	'baytrailfix3.patch'
-	'baytrailfix4.patch'
-	'baytrailfix5.patch'
-	'tpm-fix-a-race-condition-in-tpm2_unseal_trusted.patch'
-	'tpm_crb-fix-crb_req_canceled-behavior.patch'
         )
 
-sha256sums=('47c255a475276ad6e62ea7f54c53dc44e48211aecbdcbff31bea7b44d1425d74'
-	    '60921720cdcd2ff3fc754eebbba795af52b61d681a0541ad492a606bed309f58' 
-	    '4d0312d3f4270f5734a7d928a4f51aa7750de675768d6485ba47fdd02aecc90e' 
-            'fea475f6e265059438342e9f0f5b32639030436ebe592e88d0c574fc50dc6034'
-	    '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
-            'a9e8b1a5754604544b70591c4ddb9687c47bbe606efd169248377ec37ff56277'
-            'fbe2b26f8ad4aa9aa8be4b514c753296ead8ea236ac0b0199189189b14ac5af8'
-            '10f8f3f2e9c1d8f571fb73827935426d8a5043d4ea7e7ccb9e49c315605e34cb'
-            '48b6689f21b69528a425e0439bd5fb5b0d87605009b50d06adc4f172b7d2b065'
-            '3fcb56222fefc399a299b848c328bb89fe255c56e4752f9093012eb0a7ca5b18'
-	    '87db8ab73c99d9af7486d6bfc2f4ad1e3d67ed35ab9e0c7a435da1e847c736c4'
-	    'b3ff75016c2b1cd589d2ae0ffd400f1883886042c8dfc0ba6f02745c6c6f60dc'
-             )
+sha256sums=('2d75ff7c4b7b83e98a6604daf28cebd2c120f29433d68866ac5a822d3b58c7c2'
+            '60921720cdcd2ff3fc754eebbba795af52b61d681a0541ad492a606bed309f58'
+            '1a957010987f586492a10b358966b37844b50c3788493bb8466e20aceabbe36a'
+            'fea475f6e265059438342e9f0f5b32639030436ebe592e88d0c574fc50dc6034')
 
 _kernelname=${pkgbase#linux}
 
 prepare() {
+
+  cd "${srcdir}"
+
+  mv linux-4.8-7-baytrail-"${_gitver}" "${_srcname}-${_gitver}"
+
   cd "${srcdir}/${_srcname}-${_gitver}"
-
-  # add upstream patch
-
-  # add latest fixes from stable queue, if needed
-  # http://git.kernel.org/?p=linux/kernel/git/stable/stable-queue.git
-
-  # set DEFAULT_CONSOLE_LOGLEVEL to 4 (same value as the 'quiet' kernel param)
-  # remove this when a Kconfig knob is made available by upstream
-  # (relevant patch sent upstream: https://lkml.org/lkml/2011/7/26/227)
-  patch -p1 -i "${srcdir}/change-default-console-loglevel.patch"
-
-  # baytrail fixes
-  patch -p1 --ignore-whitespace -i "${srcdir}/baytrailfix1.patch"
-  patch -p1 --ignore-whitespace -i "${srcdir}/baytrailfix2.patch"
-  patch -p1 --ignore-whitespace -i "${srcdir}/baytrailfix3.patch"
-  patch -p1 --ignore-whitespace -i "${srcdir}/baytrailfix4.patch"
-  patch -p1 --ignore-whitespace -i "${srcdir}/baytrailfix5.patch"
-
-  # latest stable-queue patches
-  patch -p1 -i "${srcdir}/tpm-fix-a-race-condition-in-tpm2_unseal_trusted.patch"
-  patch -p1 -i "${srcdir}/tpm_crb-fix-crb_req_canceled-behavior.patch"
-  
 
   if [ "${CARCH}" = "x86_64" ]; then
     cat "${srcdir}/config.x86_64" > ./.config
