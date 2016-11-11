@@ -1,5 +1,32 @@
 # Change Log
 
+## [1.0.1](https://github.com/ari-zah/gaiasky/tree/1.0.1) (2016-11-11)
+[Full Changelog](https://github.com/ari-zah/gaiasky/compare/1.0.0...1.0.1)
+
+**Implemented enhancements:**
+
+- Add brightness and contrast controls [\#88](https://github.com/ari-zah/gaiasky/issues/88)
+- Improve search functionality [\#85](https://github.com/ari-zah/gaiasky/issues/85)
+- Spacecraft camera mode - Game on! [\#84](https://github.com/ari-zah/gaiasky/issues/84)
+- Update planets and moons textures [\#82](https://github.com/ari-zah/gaiasky/issues/82)
+- Add an optional crosshair in focus mode [\#81](https://github.com/ari-zah/gaiasky/issues/81)
+- Implement 360 deg mode for 360 VR videos [\#80](https://github.com/ari-zah/gaiasky/issues/80)
+
+**Fixed bugs:**
+
+- Configuration dialog should appear at the center of focused screen [\#90](https://github.com/ari-zah/gaiasky/issues/90)
+- Fix stereoscopic mode for large distances/eye separations [\#89](https://github.com/ari-zah/gaiasky/issues/89)
+- Fix resizing and fullscreen toggle [\#86](https://github.com/ari-zah/gaiasky/issues/86)
+- Crash - Vector pool null pointer when multithreading is on [\#83](https://github.com/ari-zah/gaiasky/issues/83)
+- Fix connection to archive for DR1 sources [\#78](https://github.com/ari-zah/gaiasky/issues/78)
+- error 1114 [\#76](https://github.com/ari-zah/gaiasky/issues/76)
+- New Version 1.0.0 doesn`t work on OSX 10.10.5 [\#75](https://github.com/ari-zah/gaiasky/issues/75)
+
+**Closed issues:**
+
+- Gaia Sky crashes on Windows 10, Java 1.8.0\_101 [\#79](https://github.com/ari-zah/gaiasky/issues/79)
+- Please consider uploading gaiasandbox to Debian [\#39](https://github.com/ari-zah/gaiasky/issues/39)
+
 ## [1.0.0](https://github.com/ari-zah/gaiasky/tree/1.0.0) (2016-09-13)
 [Full Changelog](https://github.com/ari-zah/gaiasky/compare/0.800b...1.0.0)
 
