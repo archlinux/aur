@@ -26,10 +26,9 @@ package() {
         rm "${pkgdir}"/usr/share/applications/OpenConcerto-Configuration.desktop
         rm "${pkgdir}"/usr/share/applications/OpenConcerto-Caisse.desktop
         rm "${pkgdir}"/usr/share/applications/OpenConcerto.desktop
-        mv OpenConcerto-Configuration.desktop "${pkgdir}"/usr/share/applications/OpenConcerto-Configuration.desktop
-        mv OpenConcerto-Caisse.desktop "${pkgdir}"/usr/share/applications/OpenConcerto-Caisse.desktop
-        mv OpenConcerto.desktop "${pkgdir}"/usr/share/applications/OpenConcerto.desktop
-
+        install -Dm644 "OpenConcerto.desktop" "${pkgdir}/usr/share/applications/OpenConcerto.desktop"
+        install -Dm644 "OpenConcerto-Configuration.desktop" "${pkgdir}/usr/share/applications/OpenConcerto-Configuration.desktop"
+        install -Dm644 "OpenConcerto-Caisse.desktop" "${pkgdir}/usr/share/applications/OpenConcerto-Caisse.desktop"
 
 } 
 
