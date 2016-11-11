@@ -1,9 +1,9 @@
-# Maintainer: Mario Finelli <mario dot finelli at yahoo dot com>
+# Maintainer: Mario Finelli <mario at finel dot li>
 # Contributor: Mark Pustjens <pustjens at dds dot nl>
 
 _npmname=express
 pkgname=nodejs-$_npmname
-pkgver=4.13.3
+pkgver=4.14.0
 pkgrel=1
 pkgdesc="Fast, unopinionated, minimalist web framework."
 arch=('any')
@@ -12,7 +12,7 @@ license=('MIT')
 depends=('nodejs' 'npm')
 source=(https://registry.npmjs.org/$_npmname/-/$_npmname-$pkgver.tgz)
 noextract=($_npmname-$pkgver.tgz)
-sha256sums=('51e4e232c0973708d05399481b6003b93533664745a3949d25674fd5e29224df')
+sha256sums=('e21c61034b8d836ca5d68de4b3365012548e8c57af4a6047026b21797efd8c80')
 
 package() {
   cd "$srcdir"
