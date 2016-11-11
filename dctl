@@ -6,22 +6,39 @@
 # - implement status, detailed info piped to dmenu
 # - make failed list prettier
 
-export SUDO_ASKPASS=/usr/bin/daskpass
-font="inconsolata:size=8"
-action=$(echo -e 'start\nstop\nrestart\nenable\nenable --now\ndisable\ndisable --now\ndaemon reload\n--user start\n--user stop\n--user restart\n--user enable\n--user enable --now\n--user disable\n--user disable --now\n--user daemon reload' | dmenu -fn $font)
+export ${SUDO_ASKPASS-/usr/bin/daskpass}
+systemctlArgs="--type service,timer,automount,socket --no-pager"
+action=$(dmenu <<EOF
+start
+stop
+restart
+enable
+enable --now
+disable
+disable --now
+daemon reload
+--user start
+--user stop
+--user restart
+--user enable
+--user enable --now
+--user disable
+--user disable --now
+--user daemon reload
+EOF
+)
 
 [ -z "$action" ] && exit 0 # if no action, quit
 if [ -z $(echo $action | sed -e '/--user/d') ]; then # if action contains '--user'
-	systemctl --user --type service,timer,automount,socket --no-pager | sed -e '/failed/!d' -e 's/●\s//' > /tmp/dctl
-	systemctl --user --type service,timer,automount,socket --no-pager list-unit-files >> /tmp/dctl
-	unit=$(cat /tmp/dctl | dmenu -fn $font -l 20 | sed 's/\s.*$//') # List --user units
+	systemctl --user $systemctlArgs | sed -e '/failed/!d' -e 's/●\s//' > /tmp/dctl
+	systemctl --user $systemctlArgs list-unit-files >> /tmp/dctl
+	unit=$(dmenu -l 20 </tmp/dctl | sed 's/\s.*$//') # List --user units
 	[ -z $unit ] && exit 0 # if no unit, quit
 	systemctl $action $unit && notify-send 'dctl - success' "systemctl $action $unit"
 else # action for system
-	systemctl --type service,timer,automount,socket --no-pager | sed -e '/failed/!d' -e 's/●\s//' > /tmp/dctl
-	systemctl --type service,timer,automount,socket --no-pager list-unit-files >> /tmp/dctl
-	unit=$(cat /tmp/dctl | dmenu -fn $font -l 20 | sed 's/\s.*$//') # List --user units
+	systemctl $systemctlArgs | sed -e '/failed/!d' -e 's/●\s//' > /tmp/dctl
+	systemctl $systemctlArgs list-unit-files >> /tmp/dctl
+	unit=$(dmenu -l 20 </tmp/dctl | sed 's/\s.*$//') # List --user units
 	[ -z $unit ] && exit 0 # if no unit, quit
 	sudo -A systemctl $action $unit && notify-send 'dctl - success' "systemctl $action $unit"
 fi
-
