@@ -1,11 +1,11 @@
 pkgbase = tcc-git
 	pkgdesc = Tiny C Compiler
-	pkgver = 20121116
+	pkgver = 0.9.26.r819.g7e7f2e5
 	pkgrel = 1
 	url = http://bellard.org/tcc/
 	arch = x86_64
 	arch = i686
-	license = LGPLv2
+	license = LGPL2.1
 	makedepends = texi2html
 	makedepends = git
 	provides = tcc
