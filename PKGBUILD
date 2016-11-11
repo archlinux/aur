@@ -9,24 +9,23 @@ pkgdesc="A simple Python 3.x command line menu system"
 arch=('i686' 'x86_64')
 url="https://pypi.python.org/pypi/menu3"
 license=('GPL')
-depends=('')
-optdepends=('')
-makedepends=('')
-_pkgname=python-menu3
+depends=('python')
+_pkgname=menu3
 provides=("python-menu3")
 #conflicts=("python-menu3")
 install=
 changelog=
 noextract=()
+# TODO: FIX THIS FUCKING UGLY URL. the redirection for https://pypi.io/packages/source/m/menu3/menu3-1.0.tar.gz is broken.
 source=("https://files.pythonhosted.org/packages/83/00/9cbf6fbe63286cf919e20292663273884ecd9c87d682b4f741e513f7473a/menu3-1.0.zip"
         "menu3-1.0.zip.sig")
-sha512sums=('cf83e1357eefb8bdf1542850d66d8007d620e4050b5715dc83f4a921d36ce9ce47d0d13c5d85f2b0ff8318d2877eec2f63b931bd47417a81a538327af927da3e'
+sha512sums=('44f0f75acf0d5cd2cd4511a5cb755a6c621967da8da58982d7a4d6ee4881f6d811cd42d22228e38089c22b8f6c62c6b0f4a9c17c1461a18600d691a953f4d802'
             'SKIP')
 build() {
-        cd "${srcdir}/${_pkgname}/src"
-        make prefix=${pkgdir}/usr
+	cd "${srcdir}/${_pkgname}-${pkgver}"
+        python3 setup.py build || return 1
 }
 package() {
-        install -D -m755 ${srcdir}/${_pkgname}/src/${_pkgname} ${pkgdir}/usr/bin/${_pkgname}
-        install -D -m644 ${srcdir}/${_pkgname}/docs/README.html.en ${pkgdir}/usr/share/doc/${_pkgname}/README.html
+	cd "${srcdir}/${_pkgname}-${pkgver}"
+	python3 setup.py install --root="${pkgdir}" --optimize=1 || return 1
 }
