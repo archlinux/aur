@@ -1,5 +1,5 @@
 #!/bin/sh
-
 # All credit and criticisms can be directed to Aelius @ Freenode
-
-echo "..." | dmenu -fn inconsolata:size=8 -p "Password:" -nb "#222222" -nf "#222222"
+dmenu -p "Password:" -nb "#222222" -nf "#222222" << EOF
+...
+EOF
