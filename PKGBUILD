@@ -8,15 +8,15 @@
 # This PKGBUILD is based on the official Arch cmake package.
 
 pkgname=cmake-git
-pkgver=3.6.2.1252.g5d29506
-pkgrel=1
+pkgver=3.7.0.rc3.485.ga21f747
+pkgrel=2
 pkgdesc='A cross-platform open-source make system'
 arch=('i686' 'x86_64')
 url="http://www.cmake.org/"
 license=('custom')
 conflicts=('cmake')
 provides=('cmake')
-depends=('curl' 'libarchive' 'shared-mime-info' 'jsoncpp')
+depends=('curl' 'libarchive' 'shared-mime-info' 'jsoncpp' 'rhash')
 makedepends=('qt5-base' 'python-sphinx' 'emacs' 'git' 'ncurses')
 optdepends=('qt5-base: cmake-gui'
             'libxkbcommon-x11: cmake-gui')
