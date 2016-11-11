@@ -2,12 +2,13 @@
 _project=sshprint
 pkgname=$_project
 pkgver=2.06
-pkgrel=1
+pkgrel=2
 pkgdesc="A Perl script to print local files on remote printers using SSH"
 arch=('any')
 url="https://github.com/hv15/$_project"
 license=('MIT')
 depends=('perl>=5.22.0' 'openssh' 'perl-log-log4perl' 'perl-config-simple' 'perl-net-openssh')
+makedepends=('perl-module-build')
 conflicts=('sshprint<=1.6.3')
 options=(!emptydirs)
 changelog='CHANGELOG.md'
