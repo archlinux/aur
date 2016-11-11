@@ -1,6 +1,6 @@
 # Maintainer: Yamakaky <yamakaky@yamaworld.fr>
 pkgname=rust-src
-pkgver=1.12.1
+pkgver=1.13.0
 pkgrel=1
 pkgdesc="Rust source files"
 arch=('any')
@@ -8,7 +8,7 @@ url="http://rust-lang.org"
 license=('MIT' 'Apache')
 options=(!strip)
 source=("https://static.rust-lang.org/dist/rustc-$pkgver-src.tar.gz")
-sha256sums=('97913ae4cb255618aaacd1a534b11f343634b040b32656250d09d8d9ec02d3dc')
+sha256sums=('ecb84775ca977a5efec14d0cad19621a155bfcbbf46e8050d18721bb1e3e5084')
 
 prepare() {
     cd "rustc-$pkgver"
