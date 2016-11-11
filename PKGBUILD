@@ -3,20 +3,20 @@
 
 pkgname=arm-none-eabi-gcc60-linaro
 _relver=snapshot-6.2
-_relshortdate=16.09
+_relshortdate=16.10
 _reldate=20${_relshortdate}
 _relverdate=${_relver}-${_reldate}
 # This is how I want to define the pkgver, but the AUR doesn't understand it, because multiple _ characters are not allowed
 #pkgver=${_relver}_${_reldate//-/_}
-pkgver=6.2_2016.09
-_pkgver=6.2-2016.09
+pkgver=6.2_2016.10
+_pkgver=6.2-2016.10
 pkgrel=1
 pkgdesc="The GNU Compiler Collection - cross compiler for ARM EABI (bare-metal) target."
 arch=(i686 x86_64)
 url="https://releases.linaro.org/"
 license=('GPL' 'LGPL')
 groups=('arm-none-eabi-toolchain')
-depends=('arm-none-eabi-binutils>=2.26-1' 'gmp' 'cloog-git' 'arm-none-eabi-newlib' 'mpfr' 'libmpc')
+depends=('arm-none-eabi-binutils>=2.26-1' 'gmp' 'cloog-git' 'arm-none-eabi-newlib-linaro-git' 'mpfr' 'libmpc')
 makedepends=('flex' 'bison')
 provides=('arm-none-eabi-gcc')
 conflicts=('arm-none-eabi-gcc' 'cross-arm-none-eabi-gcc')
@@ -37,8 +37,8 @@ cd ${srcdir}/${_basedir}
   mkdir build
   cd build
 
-  export CFLAGS="-O2"
-  export CXXFLAGS="-O2"
+  export CFLAGS="-O3"
+  export CXXFLAGS="-O3"
   unset CPPFLAGS
   ../configure --with-pkgversion="Arch User Repository" \
                --with-bugurl="https://aur.archlinux.org/packages/arm-none-eabi-gcc-linaro" \
@@ -76,7 +76,7 @@ package() {
 
 # vim: set ts=2 sw=2 ft=sh et:
 
-sha256sums=('7d3e0508248ac491f0d9fb0772ae06862d4cc88405b06d19ceed8a4fc963b688'
-            '76eab14830216c774291d2ac35d4b4690f3273aa8c630a2c1546f02538847d8a'
-            'c9b6bc1dd53f9b4b80f5fdacdef94c9fce0e516c16fb78063107b66ba2e9fdd1'
-	    'fa08269d6a748631b07b55a5fe00fa518b2f6e04356a3d6634c60f3c3ece3b07')
+sha256sums=('d0082159bd5bb609e07c24a414666e1c2820d9b8ce6e39462f5927d6104fd3d8'
+            '76eab14830216c774291d2ac35d4b4690f3273aa8c630a2c1546f02538847d8a'                                                                                                                                     
+            'c9b6bc1dd53f9b4b80f5fdacdef94c9fce0e516c16fb78063107b66ba2e9fdd1'                                                                                                                                     
+            'fa08269d6a748631b07b55a5fe00fa518b2f6e04356a3d6634c60f3c3ece3b07')
