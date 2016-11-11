@@ -9,11 +9,11 @@ _setupFilename='setup_OnlineFotoservice'
 pkgname=cewe-fotoservice
 conflicts=(cewe-fotobuch)
 pkgdesc='an offline client for creating photobooks and other photo products and ordering them at cewe.de or partners'
-md5sums=('b24efdf989618c637f21f73f205a0f13'
+md5sums=('6891dbdf83f1e466df67f49239bb0833'
          '422a405d520e18ef9afade2e7c24440b')
 
 pkgver=6.2.1
-pkgrel=1
+pkgrel=2
 url="http://www.cewe.de/"
 license=("custom:eula")
 depends=('libx11' 'libjpeg' 'curl' 'wget')
