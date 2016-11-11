@@ -1,6 +1,6 @@
 pkgbase = animewatch-pyqt5
 	pkgdesc = An Audio/Video Manager and Front End for mpv/mplayer with special emphasis on Anime Collection
-	pkgver = 2.9.0
+	pkgver = 3.0.0
 	pkgrel = 0
 	arch = any
 	license = GPL3
@@ -23,13 +23,12 @@ pkgbase = animewatch-pyqt5
 	depends = ffmpegthumbnailer
 	depends = sqlite3
 	depends = python-pytaglib
-	depends = livestreamer
 	depends = youtube-dl
 	depends = wget
 	conflicts = animewatch-pyqt4
-	conflicts = animewatch-pyqt5-git
-	source = https://github.com/kanishka-linux/AnimeWatch/releases/download/v2.9.0-0/AnimeWatch-2.9.0-0.tar.bz2
-	md5sums = 9ff1114c8983a3d6d4898e2bd028f5c0
+	conflicts = animewatch-pyqt5.git
+	source = https://github.com/kanishka-linux/AnimeWatch/releases/download/v3.0.0-0/AnimeWatch-3.0.0-0.tar.bz2
+	md5sums = e35db393b36b444e32d80fcf08430cf
 
 pkgname = animewatch-pyqt5
 
