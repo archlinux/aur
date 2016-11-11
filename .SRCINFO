@@ -1,14 +1,14 @@
 pkgbase = python-pawk
 	pkgdesc = A Python line-processor (like awk) based on pyline.
 	pkgver = 0.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/alecthomas/pawk
 	arch = any
 	license = PSF
 	makedepends = python-setuptools
 	depends = python
-	source = https://github.com/alecthomas/pawk/archive/v0.6.tar.gz
-	sha256sums = e5029c57e334953a39f2023d8c6f29d954a4c6f15d509479b5a64b679fd45a97
+	source = https://pypi.python.org/packages/ab/5a/c22c6ff37c74196950fad281b1094547e06065d5c922d8b679458e5f37b5/pawk-0.6.tar.gz
+	md5sums = d5fa14a9a18db14d426f040872b06b45
 
 pkgname = python-pawk
 
