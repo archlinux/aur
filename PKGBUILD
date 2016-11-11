@@ -6,13 +6,13 @@
 pkgname=eigen2
 pkgver=2.0.17
 pkgrel=3
-pkgdesc="A lightweight C++ template library for vector and matrix math, a.k.a. linear algebra"
+pkgdesc="C++ template library for linear algebra: matrices, vectors, numerical solvers, and related algorithms"
 arch=('any')
-url='http://eigen.tuxfamily.org/index.php?title=Main_Page'
+url='http://eigen.tuxfamily.org'
 license=('GPL' 'LGPL3')
 makedepends=('cmake' 'pkg-config')
 source=("http://bitbucket.org/eigen/eigen/get/${pkgver}.tar.bz2")
-sha1sums=('461546be98b964d8d5d2adb0f1c31ba0e42efc38')
+sha256sum=('7255e856ed367ce6e6e2d4153b0e4e753c8b8d36918bf440dd34ad56aff09960')
 
 build() {
   cd "${srcdir}"
