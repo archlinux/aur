@@ -7,32 +7,24 @@
 #
 
 pkgname=platformio
-pkgver=2.11.2
+pkgver=3.1.0
 pkgrel=1
 pkgdesc="A cross-platform code builder and library manager"
 arch=('any')
 url="https://github.com/platformio/platformio/"
 license=('Apache')
 depends=('python2'
-	 'python2-setuptools'
-         'python2-click'
          'python2-bottle'
-         'python2-lockfile'
-         'python2-requests'
+         'python2-click-5.1' # https://github.com/platformio/platformio/issues/349
          'python2-colorama'
-         'python2-pyserial')
-optdepends=('energia: For MSP430 based projects'
-            'arduino: For Arduino based projects')
+         'python2-lockfile'
+         'python2-pyserial'
+         'python2-requests'
+         'python2-semantic-version'
+         'python2-setuptools')
 conflicts=('platformio-git')
-source=("https://github.com/platformio/platformio/archive/v${pkgver}.tar.gz"
-	"setup.patch")
-sha256sums=('72b373b4e653b76df17d41e4962ae4d6e1f7f705b0c9931b0ec360cc60ee1865'
-	    '536217552b06ef562469268a8f0115a31bf052308f891a228adf94e314ce3730')
-
-prepare() {
-	cd "platformio-$pkgver"
-	patch -Np0 -i ${srcdir}/setup.patch
-}
+source=("https://github.com/platformio/platformio/archive/v${pkgver}.tar.gz")
+sha256sums=('80b22f4322904648ea4b355935ea9315cfd765c3286022b54b75227e1be03d83')
 
 package() {
     cd "$srcdir/platformio-$pkgver"
