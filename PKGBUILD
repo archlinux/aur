@@ -16,7 +16,7 @@ _language_vala_modern_ver=0.3.2
 _terminal_fusion_ver=2.4.2
 
 pkgname=${_pkgname}-editor-${_version}
-_pkgrel=0
+_pkgrel=1
 _pkgver=1.13.0
 pkgver="${_pkgver}.beta${_pkgrel}.m${_language_gfm2_ver}"
 _ver=$_pkgver-beta${_pkgrel}
@@ -33,7 +33,7 @@ install=atom.install
 source=("${_pkgname}-${_pkgver}-${_version}${_pkgrel}.tar.gz::$url/archive/v${_pkgver}-${_version}${_pkgrel}.tar.gz"
 "${_pkgname}-${_version}.desktop"
 "${_pkgname}-${_version}")
-sha256sums=('18f3dfdc20661f5e13070392ab9358f385060af4182f1123fc167d3e0ffb67f7'
+sha256sums=('d610a1977954c712fe4776a09b8e706bc50bb0ae37a19df46b258197449f1121'
             'c62faaf2f50cddb1a834ccb33c95724076d2859c88baac7d9d676bc9c3afc8c6'
             '230563ed327833351d448e152ab8b146d2d2b7bdac42c7d39eef966b96b862fc')
 
