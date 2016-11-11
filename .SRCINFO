@@ -1,0 +1,15 @@
+pkgbase = python-pyprind
+	pkgdesc = Python Progress Bar and Percent Indicator Utility
+	pkgver = 2.9.8
+	pkgrel = 1
+	url = https://github.com/rasbt/pyprind
+	arch = any
+	license = BSD
+	makedepends = python-setuptools
+	depends = python
+	optdepends = python-psutil: improved system information
+	source = pyprind-2.9.8.tar.gz::https://github.com/rasbt/pyprind/archive/2.9.8.tar.gz
+	sha256sums = 03a52f3cc86b9090b451df36003e7e223a9bdbdbea54817a6d0814fbe8e93463
+
+pkgname = python-pyprind
+
