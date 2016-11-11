@@ -1,12 +1,13 @@
 pkgbase = gluon-scenebuilder
 	pkgdesc = JavaFX visual layout tool with sereral improvements by Gluon
 	pkgver = 8.2.0
-	pkgrel = 3
+	pkgrel = 4
 	url = http://gluonhq.com/open-source/scene-builder/
 	arch = any
 	license = Oracle BSD License
 	depends = bash
 	depends = java-environment
+	depends = java-openjfx
 	noextract = SceneBuilder-8.2.0.jar
 	source = http://download.gluonhq.com/scenebuilder/8.2.0/SceneBuilder-8.2.0.jar
 	source = gluon-scenebuilder.desktop
