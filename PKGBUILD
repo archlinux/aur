@@ -1,13 +1,13 @@
-# Maintainer: Aurelien Martin <aurlienmartin@gmail.com>
+# Maintainer: Jannik Birk <birk.jannik@gmail.com>
 
 _target=i686-elf
 pkgname=$_target-gcc
-pkgver=4.9.2
-pkgrel=2
+pkgver=6.2.0
+pkgrel=1
 _gmpver=6.0.0a
 _mpfrver=3.1.2
 _mpcver=1.0.2
-_islver=0.12.2
+_islver=0.16
 _cloogver=0.18.1
 pkgdesc='The GNU Compiler Collection - cross compiler for i686-elf target'
 arch=(i686 x86_64)
@@ -21,11 +21,11 @@ source=(ftp://gcc.gnu.org/pub/gcc/releases/gcc-$pkgver/gcc-$pkgver.tar.bz2
         ftp://ftp.gnu.org/gnu/mpc/mpc-$_mpcver.tar.gz
         http://isl.gforge.inria.fr/isl-$_islver.tar.bz2
         http://www.bastoul.net/cloog/pages/download/cloog-$_cloogver.tar.gz)
-sha256sums=('2020c98295856aa13fda0f2f3a4794490757fc24bcca918d52cc8b4917b972dd'
+sha256sums=('9944589fc722d3e66308c0ce5257788ebd7872982a718aa2516123940671b7c5'
             '9156d32edac6955bc53b0218f5f3763facb890b73a835d5e1b901dcf8eb8b764'
             '399d0f47ef6608cc01d29ed1b99c7faff36d9994c45f36f41ba250147100453b'
             'b561f54d8a479cee3bc891ee52735f18ff86712ba30f036f8b8537bae380c488'
-            'f4b3dbee9712850006e44f0db2103441ab3d13b406f77996d1df19ee89d11fb4'
+            '3899e68047d0a18db5a7d73bdabcbe9246865e73e86efbd95387817d342fd554'
             '02500a4edd14875f94fe84cbeda4290425cb0c1c2474c6f75d75a303d64b4196')
 
 _basedir=gcc-$pkgver
