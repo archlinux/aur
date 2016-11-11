@@ -1,0 +1,15 @@
+pkgbase = rocrail
+	pkgdesc = Rocrail - Model Railroad Control System
+	pkgver = git
+	pkgrel = 11643
+	url = http://wiki.rocrail.net/
+	arch = i686
+	arch = x86_64
+	license = Proprietary
+	makedepends = git
+	depends = wxgtk
+	depends = libusb
+	depends = webkitgtk2
+
+pkgname = rocrail
+
