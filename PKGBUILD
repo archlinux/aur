@@ -5,7 +5,7 @@
 
 pkgname='kapacitor'
 _gitname='kapacitor'
-pkgver='1.0.1'
+pkgver='1.1.0'
 pkgrel='1'
 pkgdesc='Open source framework for processing, monitoring, and alerting on time series data'
 arch=('i686' 'x86_64')
