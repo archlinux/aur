@@ -1,6 +1,6 @@
 pkgbase = animewatch-pyqt5-git
 	pkgdesc = An Audio/Video Manager and Front End for mpv/mplayer with special emphasis on Anime Collection
-	pkgver = 3.0.0.r32.0842ba9
+	pkgver = 3.0.0.r33.286c12f
 	pkgrel = 1
 	arch = any
 	license = GPL3
@@ -23,7 +23,6 @@ pkgbase = animewatch-pyqt5-git
 	depends = ffmpegthumbnailer
 	depends = sqlite3
 	depends = python-pytaglib
-	depends = livestreamer
 	depends = youtube-dl
 	depends = wget
 	conflicts = animewatch-pyqt4

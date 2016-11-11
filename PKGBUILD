@@ -1,6 +1,6 @@
 pkgname=animewatch-pyqt5-git
 _pkgname=AnimeWatch
-pkgver=3.0.0.r32.0842ba9
+pkgver=3.0.0.r33.286c12f
 pkgrel=1
 pkgdesc="An Audio/Video Manager and Front End for mpv/mplayer with special emphasis on Anime Collection"
 arch=(any)
@@ -8,7 +8,7 @@ conflicts=('animewatch-pyqt4' 'animewatch-pyqt5')
 license=('GPL3')
 depends=('python' 'qt5-webengine' 'python-pyqt5' 'python-pycurl' 'python-urllib3' 'curl' 'libnotify' 'python-dbus' 'libtorrent-rasterbar'
         'python-beautifulsoup4' 'python-psutil' 'python-pillow' 'python-lxml' 'mpv' 'mplayer' 'ffmpegthumbnailer' 'sqlite3' 'python-pytaglib' 
-	'livestreamer' 	'youtube-dl' 'wget')
+	'youtube-dl' 'wget')
 #optdepends=('livestreamer' 'youtube-dl' 'wget')
 makedepends=('git')
 
