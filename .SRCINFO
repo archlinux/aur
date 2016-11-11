@@ -27,6 +27,7 @@ pkgbase = omnetpp-qt
 	depends = graphviz
 	depends = osgearth-qt4
 	depends = openscenegraph-qt4
+	depends = clang
 	provides = omnetpp
 	conflicts = omnetpp
 	source = OMNeT++.desktop
