@@ -9,6 +9,7 @@ license=('GPL2')
 depends=("java-runtime" "webkitgtk2" "xerces-c" "tcl" "wxgtk" "xdg-utils")
 makedepends=("java-environment")
 options=("!makeflags")
+install="usbdm.install"
 
 source=("git+https://github.com/podonoghue/usbdm-eclipse-makefiles-build.git"
         "undebian.patch"

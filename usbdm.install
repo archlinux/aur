@@ -1,0 +1,7 @@
+post_install() {
+	echo ">>> The HCS08 microcontrollers in several USBDM dongles do not"
+	echo ">>> properly support USB suspend. If you use a power management"
+	echo ">>> suite like laptop-mode-tools or tlp, disable USB autosuspend"
+	echo ">>> for USBDM devices (VID 16d0, PID 0567) or else you will"
+	echo ">>> likely have connection problems."
+}
