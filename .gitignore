@@ -1,0 +1,4 @@
+packetsender/
+pkg/
+src/
+*.tar.xz
