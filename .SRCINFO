@@ -1,0 +1,15 @@
+pkgbase = bloaty-git
+	pkgdesc = A size profiler for binaries
+	pkgver = 0.0.0.r68.g263f2ef
+	pkgrel = 1
+	url = https://github.com/google/bloaty
+	arch = x86_64
+	arch = x86
+	license = Apache v2.0
+	makedepends = git
+	makedepends = gcc
+	source = git+https://github.com/google/bloaty
+	md5sums = SKIP
+
+pkgname = bloaty-git
+
