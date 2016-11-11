@@ -1,0 +1,16 @@
+pkgbase = python-rawkit
+	pkgdesc = CTypes based LibRaw bindings
+	pkgver = 0.5.0
+	pkgrel = 1
+	url = https://pypi.python.org/pypi/rawkit
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	makedepends = python-sphinx
+	depends = libraw
+	depends = python
+	source = rawkit-0.5.0.tar.gz::https://github.com/photoshell/rawkit/archive/v0.5.0.tar.gz
+	sha256sums = 9270941d3293f2814dafaf548e20e6727443ec668207a99afafc875027b3bab8
+
+pkgname = python-rawkit
+
