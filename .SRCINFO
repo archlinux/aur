@@ -1,11 +1,12 @@
 pkgbase = emacs-ess
 	pkgdesc = Emacs Speaks Statistics: A Universal Interface for Statistical Analysis
 	pkgver = 16.10
-	pkgrel = 1
+	pkgrel = 2
 	url = http://ess.r-project.org/
 	install = ess.install
 	arch = any
 	license = GPL
+	makedepends = wget
 	depends = emacs
 	depends = r
 	provides = ess
