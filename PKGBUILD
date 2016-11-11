@@ -4,7 +4,7 @@
 
 pkgname=telegram-desktop-bin
 pkgver=0.10.19
-pkgrel=1
+pkgrel=2
 pkgdesc="Official desktop version of Telegram messaging app - Static binaries"
 arch=('i686' 'x86_64')
 url="https://desktop.telegram.org"
