@@ -4,7 +4,8 @@
 # Contributor: x-demon 
 
 pkgname=nicotine-plus-git
-pkgver=r1771.c95471e
+_gitname=nicotine-plus
+pkgver=r1824.86583b9
 pkgrel=1
 pkgdesc="A fork of Nicotine, a graphical client for the SoulSeek peer-to-peer system."
 arch=('i686' 'x86_64')
@@ -17,10 +18,8 @@ optdepends=('miniupnpc: To enable UPnP support'
 	    'python-geoip: To enable geographical blocker')
 conflicts=('nicotine' 'nicotine-plus')
 replaces=('nicotine' 'nicotine-plus')
-source=(git+https://github.com/eLvErDe/nicotine-plus.git)
+source=(git+https://github.com/Nicotine-Plus/${_gitname}.git)
 sha512sums=('SKIP')
-
-_gitname=nicotine-plus
 
 pkgver() {
 	cd "${srcdir}/$_gitname"

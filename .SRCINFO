@@ -1,6 +1,6 @@
 pkgbase = nicotine-plus-git
 	pkgdesc = A fork of Nicotine, a graphical client for the SoulSeek peer-to-peer system.
-	pkgver = r1771.c95471e
+	pkgver = r1824.86583b9
 	pkgrel = 1
 	url = http://nicotine-plus.org
 	arch = i686
@@ -18,7 +18,7 @@ pkgbase = nicotine-plus-git
 	conflicts = nicotine-plus
 	replaces = nicotine
 	replaces = nicotine-plus
-	source = git+https://github.com/eLvErDe/nicotine-plus.git
+	source = git+https://github.com/Nicotine-Plus/nicotine-plus.git
 	sha512sums = SKIP
 
 pkgname = nicotine-plus-git
