@@ -1,63 +1,32 @@
 # Maintainer: Timo Sarawinski <t.sarawinski@gmail.com>
 
 pkgbase=linux-baytrail47              
-_srcname=linux-4.7.7-baytrail
-_gitver=33c0259b09e7a7eba8a452ad0a6db90038d89012
-pkgver=4.7.7
+_srcname=linux-4.7.10-baytrail
+_gitver=8adf13bdfeda4aae5aa924cf546958c71597793d
+pkgver=4.7.10
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
 license=('GPL2')
 makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc' 'libelf')
 options=('!strip')
-source=("linux-baytrail-4.7.7.tar.gz::https://github.com/muhviehstah/linux-4.7.7-baytrail/archive/33c0259b09e7a7eba8a452ad0a6db90038d89012.tar.gz"
-        # the main kernel config files
-        'config' 'config.x86_64'
-        # standard config files for mkinitcpio ramdisk
-        'linux.preset'
-        'change-default-console-loglevel.patch'
-	'baytrailfix1.patch'
-	'baytrailfix2.patch'
-	'baytrailfix3.patch'
-	'baytrailfix4.patch'
-	'baytrailfix5.patch'
-        )
-
-sha256sums=('93887e2c55dfe3f209a649c528f0d7fb17bfedec84b4dacaaae8fc221b3ba101'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-	    'SKIP'
-	    'SKIP'
-             )
+source=("${_srcname}::https://github.com/muhviehstah/linux-4.7.10-baytrail/archive/${_gitver}.tar.gz"
+        'config'
+        'config.x86_64'
+        'linux.preset')
+sha256sums=('13c4173e7277f1e4039088b47fdfcb3a2ec9e6f2e84fc6d078c77be3bbca5fb1'
+            'f12f3e275f1d048dac630db7e6a1ae51bc3bd6f47005ede07b1b11db34ab5bdc'
+            'b41060406fce95aabd99fc2dd15916786bed707d2180a366baa4fdd2be5ffe80'
+            'f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c')
 
 _kernelname=${pkgbase#linux}
 
 prepare() {
+
+  cd "${srcdir}"
+  mv linux-4.7.10-baytrail-"${_gitver}" "${_srcname}-${_gitver}"
+
   cd "${srcdir}/${_srcname}-${_gitver}"
-
-  # add upstream patch
-
-  # add latest fixes from stable queue, if needed
-  # http://git.kernel.org/?p=linux/kernel/git/stable/stable-queue.git
-
-  # set DEFAULT_CONSOLE_LOGLEVEL to 4 (same value as the 'quiet' kernel param)
-  # remove this when a Kconfig knob is made available by upstream
-  # (relevant patch sent upstream: https://lkml.org/lkml/2011/7/26/227)
-  patch -p1 -i "${srcdir}/change-default-console-loglevel.patch"
-
-  # Baytrail freeze issue related patches
-  patch -p1 --ignore-whitespace -i "${srcdir}/baytrailfix1.patch"
-  patch -p1 --ignore-whitespace -i "${srcdir}/baytrailfix2.patch"
-  patch -p1 --ignore-whitespace -i "${srcdir}/baytrailfix3.patch"
-  patch -p1 --ignore-whitespace -i "${srcdir}/baytrailfix4.patch"
-  patch -p1 --ignore-whitespace -i "${srcdir}/baytrailfix5.patch"
-
-  # latest stable-queue patches
 
   if [ "${CARCH}" = "x86_64" ]; then
     cat "${srcdir}/config.x86_64" > ./.config
@@ -79,16 +48,9 @@ prepare() {
   # get kernel version
   make prepare
 
-  # load configuration
-  # Configure the kernel. Replace the line below with one of your choice.
-  #make menuconfig # CLI menu for configuration
-  #make nconfig # new CLI menu for configuration
-  #make xconfig # X-based configuration
-  #make oldconfig # using old config from previous kernel version
-  # ... or manually edit .config
-
   # rewrite configuration
   yes "" | make config >/dev/null
+
 }
 
 build() {
@@ -98,7 +60,7 @@ build() {
 }
 
 _package() {
-  pkgdesc="The ${pkgbase/linux/Linux} baytrail optimized kernel with integrated RTL8723BS WIFI SDIO Driver 
+  pkgdesc="The ${pkgbase/linux/Linux} baytrail optimized kernel with integrated RTL8723BS WIFI SDIO Driver" 
   [ "${pkgbase}" = "linux" ] && groups=('base')
   depends=('coreutils' 'linux-firmware' 'kmod' 'mkinitcpio>=0.7')
   optdepends=('crda: to set the correct wireless channels of your country')
@@ -111,8 +73,8 @@ _package() {
 
   # get kernel version
   _kernver="$(make LOCALVERSION= kernelrelease)"
-  _basekernel=${_kernver%%-*}
-  _basekernel=${_basekernel%.*}
+  _basekernel="${_kernver%%-*}"
+  _basekernel="${_basekernel%.*}"
 
   mkdir -p "${pkgdir}"/{lib/modules,lib/firmware,boot}
   make LOCALVERSION= INSTALL_MOD_PATH="${pkgdir}" modules_install
@@ -298,12 +260,14 @@ _package-docs() {
   rm -f "${pkgdir}/usr/lib/modules/${_kernver}/build/Documentation/DocBook/Makefile"
 }
 
+
 pkgname=("${pkgbase}" "${pkgbase}-headers" "${pkgbase}-docs")
 for _p in ${pkgname[@]}; do
-  eval "package_${_p}() {
-    $(declare -f "_package${_p#${pkgbase}}")
-    _package${_p#${pkgbase}}
-  }"
+    eval "package_${_p}() {
+      $(declare -f "_package${_p#${pkgbase}}")
+      _package${_p#${pkgbase}}
+    }"
 done
 
 # vim:set ts=8 sts=2 sw=2 et:
+
