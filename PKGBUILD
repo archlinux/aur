@@ -3,14 +3,14 @@
 pkgname=tor-torrc.d
 pkgdesc='Collects separate configurations from /etc/tor/torrc.d/*.torrc into a single torrc before running tor service'
 pkgver=1
-pkgrel=1
+pkgrel=2
 arch=('any')
 license=('MIT')
 depends=('tor')
 options=('emptydirs')
 source=('torrc.d.conf')
 
-sha256sums=('88bc63f86362f34f3dc9fafe5c2d0210e59b3f072af8735da6cd484c04fb75c4')
+sha256sums=('8b9bb8b72bbbadce6354c6fcb814dc586e4bb3963f72d187d5f8cdc49e12e104')
 
 package() {
 
