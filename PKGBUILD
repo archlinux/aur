@@ -1,5 +1,5 @@
 pkgname=osvr-core-git
-pkgver=0.2.r2225.ga6aa62d
+pkgver=0.2.r2243.g9456a41
 pkgrel=1
 pkgdesc="The core libraries, applications, and plugins of the OSVR software platform."
 arch=(i686 x86_64)
@@ -37,7 +37,6 @@ prepare() {
 #temporary fix for boost incompatibility
 #sed -i "s/105900/106200/g" src/osvr/Common/IPCRingBuffer.cpp #doesn't work with 1.62
 #sed -i "s/105900/106200/g" cmake-local/BoostTargets.cmake
-  git merge origin/boost-1.62.0 --no-edit
 
 #https://github.com/OSVR/OSVR-Core/pull/468
 cd vendor/vrpn
