@@ -2,11 +2,11 @@
 
 /* appearance */
 static const char *fonts[] = {
-    "Erusfont:size=8",
+    "Inconsolata:size=12",
     "VL Gothic:size=10.5",
     "WenQuanYi Micro Hei:size=10.5",
 };
-static const char font[]            = "-*-proggyoptis-*-*-*-*-11-*-*-*-*-*-*-*";
+static const char font[]            = "-*-inconsolata-*-*-*-*-12-*-*-*-*-*-*-*";
 static const unsigned int borderpx  = 1;        /* border pixel of windows */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const unsigned int systraypinning = 0;   /* 0: sloppy systray follows selected monitor, >0: pin systray to monitor X */
@@ -43,7 +43,7 @@ static const Rule rules[] = {
 	{ "Abiword",            NULL,       NULL,                        1 << 3,       False,       False,        0 },
 	{ "Gnumeric",           NULL,       NULL,                        1 << 3,       False,       False,        0 },
 	/* monitor 1 */
-	{ "chromium",           NULL,       NULL,                        1 << 1,       False,       False,        1 },
+	{ "Chromium",           NULL,       NULL,                        1 << 1,       False,       False,        1 },
 	{ "Google-chrome-beta", NULL,       NULL,                        1 << 1,       False,       False,        1 },
 	{ NULL,                 "Browser",  NULL,                        1 << 1,       True,        True,         1 },
 	{ NULL,                 "dwb",      NULL,                        1 << 1,       False,       False,        1 },
