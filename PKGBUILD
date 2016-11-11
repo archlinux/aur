@@ -2,7 +2,7 @@
 pkgname=flatplat-theme
 epoch=1
 pkgver=3.22.20161109
-pkgrel=1
+pkgrel=2
 pkgdesc="A Material Design-like flat theme for GTK3, GTK2, Metacity, and GNOME-Shell. This package does not contain chrome skin extension."
 arch=('any')
 url="https://github.com/nana-4/Flat-Plat"
@@ -12,11 +12,11 @@ optdepends=()
 provides=('flatplat-theme')
 conflicts=('flatplat-theme-git')
 replaces=()
-source=("https://github.com/nana-4/Flat-Plat/archive/v${pkgver}.tar.gz")
-sha256sums=('6a424ad69175d6c6293f23955faea7b5e7722d00f8d406bdf956331e89a2cf33')
+source=("https://github.com/nana-4/Flat-Plat/releases/download/v${pkgver}/Flat-Plat-${pkgver}.tar.gz")
+sha256sums=('77d335d1a946999389e0ffe3418be41df24615b402aaedc1c04fb8ab44468636')
 
 package() {
-  cd "Flat-Plat-${pkgver}"
+  cd "Flat-Plat"
   install -dm 755 "${pkgdir}"/usr/share/themes/Flat-Plat
   rm -rf chrome img
   cp -dr --no-preserve='ownership,mode' * "${pkgdir}"/usr/share/themes/Flat-Plat
