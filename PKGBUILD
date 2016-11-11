@@ -1,7 +1,7 @@
 pkgname=mingw-w64-libcroco
 pkgver=0.6.11
 pkgrel=2
-pkgdesc="A CSS parsing library (mingw-w64)"
+pkgdesc="GNOME CSS2 parsing and manipulation toolkit (mingw-w64)"
 arch=(any)
 url="http://www.gnome.org"
 license=("LGPL")
