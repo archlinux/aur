@@ -1,6 +1,6 @@
 pkgbase = python-pendulum
 	pkgdesc = Python datetimes made easy
-	pkgver = 0.6.0
+	pkgver = 0.6.5
 	pkgrel = 1
 	url = https://pendulum.eustace.io
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = python-pendulum
 	makedepends = python
 	makedepends = python2
 	options = !emptydirs
-	source = git+https://github.com/sdispater/pendulum.git#tag=0.6.0
+	source = git+https://github.com/sdispater/pendulum.git#tag=0.6.5
 	sha256sums = SKIP
 
 pkgname = python-pendulum
