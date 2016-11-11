@@ -1,0 +1,18 @@
+pkgbase = wtrack-git
+	pkgdesc = Work time tracker
+	pkgver = 0.1.dev0.g9ca27c4
+	pkgrel = 1
+	url = https://github.com/languitar/wtrack
+	arch = any
+	license = LGPL3
+	makedepends = git
+	makedepends = python-setuptools
+	depends = python3
+	depends = python-pandas
+	depends = python-matplotlib
+	depends = python-icalendar
+	source = wtrack-git::git://github.com/languitar/wtrack.git
+	md5sums = SKIP
+
+pkgname = wtrack-git
+
