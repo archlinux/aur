@@ -1,11 +1,11 @@
 # Maintainer: Yamakaky <yamakaky@yamaworld.fr>
 pkgname=bloaty-git
 pkgver=0.0.0.r68.g263f2ef
-pkgrel=1
+pkgrel=2
 pkgdesc="A size profiler for binaries"
 arch=("x86_64" "x86")
 url="https://github.com/google/bloaty"
-license=("Apache v2.0")
+license=("Apache")
 makedepends=("git" "gcc")
 source=("git+https://github.com/google/bloaty")
 md5sums=("SKIP")
