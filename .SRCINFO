@@ -1,0 +1,12 @@
+pkgbase = xcursor-mayaserie-red
+	pkgdesc = Maya Serie Red cursor theme
+	pkgver = 2016.11.10
+	pkgrel = 1
+	url = https://store.kde.org/p/999900
+	arch = any
+	license = LGPL
+	source = https://raw.githubusercontent.com/i3-Arch/PKGBUILD/master/Maya-Serie/Maya-Red.tar.gz
+	md5sums = 5aa2d7d69914f7b43e956e6c579d2b58
+
+pkgname = xcursor-mayaserie-red
+
