@@ -5,6 +5,7 @@ pkgname=imvirt-git
 _pkgname=${pkgname/-git}
 pkgver=0.9.6+28+g1d62521
 pkgrel=1
+epoch=1
 pkgdesc='Detect the virtualization technology of a machine, it is run in'
 url='http://micky.ibh.net/~liske/imvirt.html'
 arch=('i686' 'x86_64')
@@ -30,7 +31,9 @@ prepare() {
 
 build() {
   cd ${pkgname}
-  ./configure --prefix=/usr --libexecdir=/usr/lib/${_pkgname} --sbindir=/usr/bin
+  ./configure --prefix=/usr \
+    --libexecdir=/usr/lib/${_pkgname} \
+    --sbindir=/usr/bin
   make
 }
 

@@ -2,6 +2,7 @@ pkgbase = imvirt-git
 	pkgdesc = Detect the virtualization technology of a machine, it is run in
 	pkgver = 0.9.6+28+g1d62521
 	pkgrel = 1
+	epoch = 1
 	url = http://micky.ibh.net/~liske/imvirt.html
 	arch = i686
 	arch = x86_64
