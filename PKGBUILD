@@ -1,15 +1,15 @@
-# Maintainer: Levente Polyak <levente[at]leventepolyak[dot]net>
+# Maintainer: Levente Polyak <anthraxx[at]archlinux[dot]org>
 # Contributor: Sebastien Duquette <ekse.0x@gmail.com>
 
 pkgname=dnsmap
 pkgver=0.30
 pkgrel=3
-pkgdesc="passive DNS network mapper"
-url="https://dnsmap.googlecode.com"
+pkgdesc='Passive DNS network mapper'
+url='https://dnsmap.googlecode.com'
 arch=('i686' 'x86_64')
 depends=('bash')
 license=('GPL2')
-source=(https://dnsmap.googlecode.com/files/${pkgname}-${pkgver}.tar.gz)
+source=(https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/dnsmap/dnsmap-${pkgver}.tar.gz)
 sha512sums=('a4653fec0c407b88d1edc0d40dead19d2fa405d840b701160586c3efc90e7fccef166966af19809b7d175ed9c658b014298a991544213fb604fa9b007030e63d')
 
 build() {
@@ -25,4 +25,4 @@ package() {
   install -Dm 644 README.txt "${pkgdir}/usr/share/doc/${pkgname}/README"
 }
 
-# vim:set ts=2 sw=2 et:
+# vim: ts=2 sw=2 et:
