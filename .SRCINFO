@@ -1,0 +1,19 @@
+pkgbase = multiload-ng-systray-gtk2
+	pkgdesc = Modern graphical system monitor, system tray version
+	pkgver = 1.4.2
+	pkgrel = 1
+	url = https://udda.github.io/multiload-ng/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = intltool
+	depends = gtk2>=2.20.0
+	depends = cairo
+	conflicts = multiload-ng-systray-gtk3
+	conflicts = multiload-ng-systray-gtk2-git
+	conflicts = multiload-ng-systray-gtk3-git
+	source = https://github.com/udda/multiload-ng/archive/v1.4.2.tar.gz
+	md5sums = 3c17d8483bc874b20c877a7d7897ab5e
+
+pkgname = multiload-ng-systray-gtk2
+
