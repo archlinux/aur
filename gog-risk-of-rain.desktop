@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Risk of Rain
+Comment=Risk of Rain is an action platformer with roguelike elements.
+Exec=gog-risk-of-rain
+Icon=gog-risk-of-rain
+Type=Application
+Terminal=false
+StartupNotify=true
+Categories=Game;AudioVideo;
+Encoding=UTF-8
