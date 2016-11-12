@@ -5,9 +5,9 @@
 
 pkgname=po-debconf
 pkgver=1.0.20
-pkgrel=1
+pkgrel=2
 pkgdesc="Debian manage translated Debconf templates files with gettext"
-arch=('i686' 'x86_64')
+arch=('any')
 url="http://www.debian.org/"
 license=('GPL')
 changelog=ChangeLog
