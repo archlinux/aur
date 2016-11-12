@@ -3,11 +3,19 @@
 set -e
 set -u
 
+# Grab functions
 source nannycam.functions
+
+# Grab configuration
+if [ -z ${1:-} ]; then
+  source /etc/nannycam.conf
+else
+  source "$1"
+fi  
+AUTH_PUB_KEY_FILE="/tmp$AUTH_KEY_FILE.pub"
 
 # This script is expected to be called from mkinitcpio, setup env otherwise
 ensure_mkcpinitio_environment
-
 
 # The BUILDROOT and _optgenimg varibles are set in mkinitcpio and I do feel
 # fairly bad for relying on the implementation details, but the interface
@@ -20,23 +28,32 @@ assert_encrypted "$_optgenimg"
 # If any other process on the box reads the private key file then all the
 # protections are for naught.
 assert_root
+touch "/tmp$AUTH_KEY_FILE"
+chmod 700 "/tmp$AUTH_KEY_FILE"
 
-KEYFILE="/tmp/boot_partition_auth.pem"
-PUBFILE="/tmp/boot_partition_auth.pub"
+# Generate a new public key each time the initramfs is built
+openssl genpkey \
+  -algorithm rsa \
+  -pkeyopt rsa_keygen_bits:$AUTH_KEY_LENGTH \
+  -out "/tmp$AUTH_KEY_FILE" \
+  2> /dev/null
+add_file "/tmp$AUTH_KEY_FILE" "$AUTH_KEY_FILE"
 
-touch "$KEYFILE"
-chmod 700 "$KEYFILE"
+# Extract the public key 
+openssl rsa \
+  -pubout \
+  -out "$AUTH_PUB_KEY_FILE" \
+  -outform DER \
+  -in "/tmp$AUTH_KEY_FILE" \
+  2> /dev/null
 
-openssl genpkey -algorithm rsa -pkeyopt rsa_keygen_bits:4096 -out "$KEYFILE" 2> /dev/null
-openssl rsa -pubout -out "$PUBFILE" -outform DER -in "$KEYFILE" 2> /dev/null
+# The private component is no longer required
+shred -uf "/tmp$AUTH_KEY_FILE"
 
-add_file "$KEYFILE"
-
-shred -uf "$KEYFILE"
-
+# Print a QR-code with the public half
 echo "Scan the following public key into your verification device"
-cat "$PUBFILE" | qrencode -8 -t ANSIUTF8 -m 1
+cat "$AUTH_PUB_KEY_FILE" | qrencode -8 $QR_OPTS
 read -p "Press ENTER to continue..." pause
 
-rm "$PUBFILE"
+rm "$AUTH_PUB_KEY_FILE"
 
