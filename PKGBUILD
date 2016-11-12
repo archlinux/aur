@@ -1,7 +1,7 @@
 # Maintainer: Daniel Egeberg <daniel.egeberg@gmail.com>
 pkgname="nzbhydra-git"
-pkgver=r849.f51e7d0
-pkgrel=2
+pkgver=r932.450f6d9
+pkgrel=1
 pkgdesc="Meta search for NZB indexers"
 arch=('any')
 url="https://github.com/theotherp/nzbhydra"
@@ -11,6 +11,7 @@ optdepends=('python2-lxml: faster result processing')
 makedepends=('git')
 install='nzbhydra.install'
 provides=('nzbhydra')
+conflicts=('nzbhydra')
 source=("${pkgname}::git+https://github.com/theotherp/nzbhydra.git"
         "nzbhydra.sh"
         "nzbhydra.service"
