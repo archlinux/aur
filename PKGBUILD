@@ -13,6 +13,8 @@ depends=('perl-term-extendedcolor')
 makedepends=('git')
 backup=('etc/ls++.conf')
 options=('!emptydirs')
+provides=('ls++')
+conflicts=('ls++')
 source=(${pkgname}::git+https://github.com/trapd00r/ls--.git
         fix-user-group-align.patch
         make-destdir.patch)
