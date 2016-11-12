@@ -1,0 +1,14 @@
+pkgbase = python-pyknp
+	pkgdesc = Python binding for KNP and JUMAN
+	pkgver = 0.3
+	pkgrel = 1
+	url = http://nlp.ist.i.kyoto-u.ac.jp/index.php?PyKNP
+	arch = x86_64
+	arch = i686
+	license = custom
+	depends = python
+	source = http://nlp.ist.i.kyoto-u.ac.jp/DLcounter/lime.cgi?down=http://lotus.kuee.kyoto-u.ac.jp/nl-resource/pyknp/pyknp-0.3.tar.gz
+	sha512sums = 277e0032c8d4773926c3f1bf4153b7e8407d55e743035da380873c953c259ec7c29eb2a9c8ca10aa21f38176ee0e2dc19f608094b6ef5a93621998b5d504a846
+
+pkgname = python-pyknp
+
