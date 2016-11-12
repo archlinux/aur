@@ -1,0 +1,16 @@
+[Desktop Entry]
+Version=1.0
+
+Name=UltraStar Deluxe WorldParty
+Comment=Karaoke program that evaluates your performance
+Comment[de]=Singe Karaoke und messe dich mit anderen Spielern
+
+Icon=ultrastardxwp
+
+TryExec=ultrastardxwp
+Exec=ultrastardxwp
+StartupNotify=false
+Terminal=false
+
+Type=Application
+Categories=Game;ArcadeGame;

@@ -1,0 +1,13 @@
+diff --git a/src/base/UPlatformLinux.pas b/src/base/UPlatformLinux.pas
+index cdce2e4..90270a0 100644
+--- a/src/base/UPlatformLinux.pas
++++ b/src/base/UPlatformLinux.pas
+@@ -118,7 +118,7 @@ begin
+   if UseLocalDirs then
+     Result := GetExecutionDir()
+   else
+-    Result := GetHomeDir().Append('.ultrastardx', pdAppend);
++    Result := GetHomeDir().Append('.ultrastardxwp', pdAppend);
+ end;
+ 
+ {**
