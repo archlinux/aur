@@ -1,6 +1,6 @@
 pkgbase = ls++-git
 	pkgdesc = Colorized LS on steroids
-	pkgver = 0.348.71.5c591e1
+	pkgver = 0.348.75.47c63f3
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/trapd00r/ls--/
@@ -11,7 +11,11 @@ pkgbase = ls++-git
 	options = !emptydirs
 	backup = etc/ls++.conf
 	source = ls++-git::git+https://github.com/trapd00r/ls--.git
+	source = fix-user-group-align.patch
+	source = make-destdir.patch
 	sha512sums = SKIP
+	sha512sums = 80123d9e11e55643c96ac5e2866cca75ae4197023a16719671d55251ed74cca95f4970c0b07ca0f049edbd96aec6c1c8a6bdbff4b44b4697ee8afb79d8777e28
+	sha512sums = b4fff9fff1233130dca795ec9a0d7abf1bddb8cc94b2e5ed2b6784e6379ae15d12094a9cfe2b21e8d98f68278903f7726f98d0b3d9861c9e75224de631ea049f
 
 pkgname = ls++-git
 

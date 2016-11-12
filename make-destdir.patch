@@ -1,0 +1,31 @@
+From e0f396148123d3babf22f91ff18e1db1903b6a24 Mon Sep 17 00:00:00 2001
+From: anthraxx <levente@leventepolyak.net>
+Date: Sat, 12 Nov 2016 23:48:54 +0100
+Subject: [PATCH] support standard DESTDIR for packaging into a subdirectory
+
+This is required for creating a package for a distribution as they
+distribute the files in a sourcedir to create the tarball.
+However the DESTDIR should not influence the runtime itself, therefor
+PREFIX is the only variable considered in the $(sysconfdir_scripts)
+---
+ Makefile.PL | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/Makefile.PL b/Makefile.PL
+index 9b2651c..6affbbf 100644
+--- a/Makefile.PL
++++ b/Makefile.PL
+@@ -70,8 +70,8 @@ sysconfdir:
+ 	$(PERL) -pi -e "s|\"/etc/ls\+\+\.conf|\"$(PREFIX)/etc/ls++.conf|g" $(sysconfdir_scripts)
+ 
+ install_vendor :: ls++.conf
+-	[ ! -d $(PREFIX)/etc ] && mkdir -p $(PREFIX)/etc
+-	[ ! -f $(PREFIX)/etc/ls++.conf ] && cp ls++.conf $(PREFIX)/etc/ls++.conf
++	[ ! -d $(DESTDIR)/$(PREFIX)/etc ] && mkdir -p $(DESTDIR)/$(PREFIX)/etc
++	[ ! -f $(DESTDIR)/$(PREFIX)/etc/ls++.conf ] && cp ls++.conf $(DESTDIR)/$(PREFIX)/etc/ls++.conf
+ 
+ install :: install_vendor
+ }
+-- 
+2.10.2
+
