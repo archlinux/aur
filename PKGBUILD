@@ -3,7 +3,7 @@
 
 pkgname=imvirt-git
 _pkgname=${pkgname/-git}
-pkgver=0.9.6.231.1db4a69
+pkgver=0.9.6+28+g1d62521
 pkgrel=1
 pkgdesc='Detect the virtualization technology of a machine, it is run in'
 url='http://micky.ibh.net/~liske/imvirt.html'
@@ -14,18 +14,18 @@ makedepends=('git')
 provides=('imvirt')
 conflicts=('imvirt')
 options=('!emptydirs')
-source=(${pkgname}::git+https://github.com/DE-IBH/${_pkgname})
+source=(${pkgname}::git+https://github.com/DE-IBH/imvirt)
 sha512sums=('SKIP')
 
 pkgver() {
   cd ${pkgname}
-  printf "%s.%s.%s" "$(git describe --tags --abbrev=0|cut -dv -f2)" \
-    "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  git describe --tags|sed 's|-|+|g'|sed -r 's|v?(.+)|\1|'
 }
 
 prepare() {
   cd ${pkgname}
   sed 's|/usr/sbin|/usr/bin|g' -i perl/lib/ImVirt/Utils/dmidecode/pipe.pm
+  autoreconf -fiv
 }
 
 build() {
