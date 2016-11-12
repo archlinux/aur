@@ -7,7 +7,7 @@ pkgbase = selene
 	license = zlib
 	checkdepends = cmake
 	depends = lua
-	source = Selene-0.4.tar.gz::https://github.com/jeremyong/Selene/archive/v0.4.tar.gz
+	source = selene-0.4.tar.gz::https://github.com/jeremyong/Selene/archive/v0.4.tar.gz
 	sha512sums = 9751849e9c7920222f6cdf8e010378fb2a567ab7498ea5872c199d17966d7062403d04718a99c7847e6af77468f767999c2d6bbdd3f140307397f6ae36ca356f
 
 pkgname = selene
