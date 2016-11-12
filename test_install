@@ -1,0 +1,7 @@
+#!/bin/bash
+
+# Simply a test harness to execute the install hook
+# while developing
+
+source ./install
+build "$1"

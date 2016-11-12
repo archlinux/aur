@@ -10,6 +10,16 @@ pkgbase = mkinitcpio-nannycam
 	depends = qrencode
 	depends = bash
 	depends = coreutils
+	source = config
+	source = hook
+	source = install
+	source = nannycam
+	source = nannycam.functions
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
 
 pkgname = mkinitcpio-nannycam
 

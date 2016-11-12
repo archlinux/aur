@@ -1,0 +1,11 @@
+#!/bin/bash
+
+# Simply a test harness to execute the init hook
+# while developing
+
+
+/usr/lib/initcpio/busybox ash <<TEST_HARNESS
+  source ./hook
+
+  run_hook "$1"
+TEST_HARNESS

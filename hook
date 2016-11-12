@@ -1,0 +1,32 @@
+#!/bin/ash
+
+#
+# nannycam init hook
+#
+
+run_hook () {
+
+  set -e
+  set -u
+
+  # Grab configuration
+  if [ -z ${1:-} ]; then
+    source /etc/nannycam.conf
+  else
+    source "$1"
+  fi
+
+  # Invoke the nannycam script
+  NANNYCAM="/usr/lib/nannycam/nannycam"
+  if [ ! -f "$NANNYCAM" ]; then
+    NANNYCAM="$(pwd)/nannycam"
+  fi
+
+  source $NANNYCAM \
+    -k "$AUTH_KEY_FILE" \
+    -h "$HASH_ALG" \
+    -q "$QR_OPTS" \
+    -m "$EXPECTED_MBR_HASH" \
+    -p "$EXPECTED_MBR_GAP_HASH" \
+    -e "$EXPECTED_EFI_STUB_HASH"
+}
