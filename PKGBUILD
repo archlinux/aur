@@ -5,10 +5,8 @@
 # Contributor: Wei-Ning Huang <aitjcize@gmail.com>
 
 pkgname=intel-opencl
-_pkgver=2.0-54425
-_package="intel-opencl-2.0-$_pkgver"
-_package_internal="intel-opencl-r${_pkgver}.x86_64"
-pkgver=${_pkgver//-/.}
+_pkgver=3.0-57406
+pkgver="${_pkgver/-/.r}"
 pkgrel=1
 pkgdesc="OpenCL(TM) 2.0 Driver for Intel(R) HD, Iris(TM), and Iris(TM) Pro Graphics for Linux"
 arch=('x86_64')
@@ -17,13 +15,16 @@ license=('custom:intel')
 depends=('zlib' 'libdrm')
 optdepends=('intel-opencl-sdk: Intel SDK for OpenCL Applications')
 provides=('opencl')
-source=(http://registrationcenter-download.intel.com/akdlm/irc_nas/9418/${_package}.tar.gz)
-sha256sums=('df2292415a6ead0bd9e9a038e29cea7ec8de70dd1ea00a8aa190bacb174803e6')
+source=("${pkgname}-${pkgver}-linux64.zip::https://software.intel.com/sites/default/files/managed/b8/65/linux64.zip")
+sha256sums=('5fc83b6626e3d1dea2864bd6f80b0de82f191ccd879c08a1345835d9ebe75349')
+
+_package_internal=("intel-opencl-r${_pkgver}.x86_64.tar.xz"
+                   "intel-opencl-cpu-r${_pkgver}.x86_64.tar.xz")
 
 package() {
-	cd $_package
-
-	tar -xf ${_package_internal}.tar.xz -C "$pkgdir"
+	for p in "${_package_internal[@]}"; do
+		tar -xf "$p" -C "$pkgdir"
+	done
 
 	# Copy license
 	mkdir -p                              "$pkgdir/usr/share/licenses/intel-opencl"
