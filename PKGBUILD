@@ -1,7 +1,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=tex2page-git
-pkgver=20161108
+pkgver=20161111
 pkgrel=1
 pkgdesc="Lisp program for making Web pages from TeX documents"
 arch=('any')
@@ -21,16 +21,18 @@ pkgver() {
 
 build() {
   cd "$_gitname"
-  ./configure searchpathforscmxlate="$srcdir" --dialect=guile --prefix=/usr
+  ./configure --dialect=guile --prefix=/usr
   # creating the documentation
   cat story.tex $srcdir/end > story.new
   mv story.new story.tex
-  pdftex story
-  pdftex index || true
+  xetex story
+  yes "s"|xetex index || true
   makeindex index
+  bibtex index
   mpost lambda
-  pdftex index
-  pdftex index
+  epstopdf lambda-1.eps 
+  xetex index
+  xetex index
 }
 
 check() {
@@ -54,7 +56,7 @@ package() {
 	  $pkgdir/usr/share/texmf/bibtex/bib/"$_gitname"/"$_gitname".bib
   install -Dm644 COPYING $pkgdir/usr/share/licenses/$pkgname/COPYING
   # installing documentation other than manpage 
-  for _i in index*
+  for _i in index* lambda* mpexample*
   do
     install -Dm644 $_i $pkgdir/usr/share/doc/$pkgname/$_i
   done
