@@ -1,5 +1,5 @@
 pkgbase = rats
-	pkgdesc = A tool for scanning source code and flagging common security related programming errors
+	pkgdesc = Tool for scanning source code and flagging common security related programming errors
 	pkgver = 2.4
 	pkgrel = 1
 	url = https://code.google.com/p/rough-auditing-tool-for-security/
@@ -8,7 +8,7 @@ pkgbase = rats
 	license = GPL2
 	depends = expat
 	options = !emptydirs
-	source = https://rough-auditing-tool-for-security.googlecode.com/files/rats-2.4.tgz
+	source = https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/rough-auditing-tool-for-security/rats-2.4.tgz
 	sha512sums = f402717fc935a2f9c2464e1623807575044258fd998cabc8f115c063141004b5978bad739021f109cbbd1abd84231155eb59671ae202aefb40e1fd6733d8ac6d
 
 pkgname = rats
