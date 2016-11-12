@@ -1,0 +1,148 @@
+From 9409b8c338da096088c97e5658a3aeab8b167a56 Mon Sep 17 00:00:00 2001
+From: anthraxx <levente@leventepolyak.net>
+Date: Sat, 12 Nov 2016 23:44:20 +0100
+Subject: [PATCH] properly align user and group when listing mixed directories
+
+- this also fixes other small issues listed in the issues section
+---
+ ls++ | 64 ++++++++++++++++++++++++++++++++++++++++++----------------------
+ 1 file changed, 42 insertions(+), 22 deletions(-)
+
+diff --git a/ls++ b/ls++
+index 7a8c91c..d80e20e 100755
+--- a/ls++
++++ b/ls++
+@@ -118,30 +118,36 @@ ls();
+ sub ls {
+   my $view = shift // 'perm_size_file';
+   my($perm, $hlink, $user, $group, $size, $seconds, $file, $rel);
++  my($userpad, $grouppad, $sizelen);
+   my($second, $minute, $hour, $time, $month, $day, $year, %mon2num); #for Mac OS
+ 
+   open(my $ls, '-|', "$ls @ls_opts @ls_where")
+     or die("Cant popen $ls: $!");
+ 
+-  while(my $line = <$ls>) {
+-    #total 1.7M
+-    next if $line =~ /^total/;
+-
+-
++  local $/=undef;
++  foreach my $sub (split(/\n\n/, <$ls>)) {
++  $sizelen = get_max_size_len($sub);
++  foreach my $line (split(/^/, $sub . "\n")) {
++    if ($line =~ /^\n$/) {
++      print();
++      next;
++    }
+     # Assume GNU coreutils
+     if($^O eq 'linux') {
+-      ($perm, $hlink, $user, $group, $size, $seconds) = split(/\s+/, $line)
++      ($perm, $hlink, $user, $group, $size, $seconds, $file) = split(/\s+/, $line, 7)
+         unless $line =~ /^\s/;
++        chop($file);
+ 
+-      ($file) = $line =~ m/.* \d{6,}? (.+)/;
++      ($userpad, $grouppad) = $line =~ m/\d+\s+\S+\s(\s*)\S+(\s*)\s.{$sizelen}\s/;
+     }
+     elsif( ($^O eq 'darwin') or ($^O =~ /.+bsd$/) ) {
+-        ($perm, $hlink, $user, $group, $size, $month, $day, $time, $year) = split(/\s+/, $line);
++        ($perm, $hlink, $user, $group, $size, $month, $day, $time, $year, $file) = split(/\s+/, $line, 10);
++        chop($file);
+         if( (!$day) ) {
+           printf("%s", $line);
+           next;
+         }
+-        ($file) = $line =~ m/.*\d{2,}? (.*)/;
++        $file = uncolor($file);
+ 
+         $perm =~ s/(?:\+|\@)$//g; # MacOS 'special extended attributes'
+ 
+@@ -158,11 +164,13 @@ sub ls {
+ 
+ 
+     if( (!$file) ) {
+-        if ($line =~ /(.*):/){
+-            printf("Dir: %s/\n", $1);
+-        } else {
+-          next;
++      if( $line =~ /(.*):/ ) {
++        printf("\n%s:\n", fg($c[9], fg('bold', $1)));
++      }
++      elsif( $line =~ /^total (.*)/ ) {
++        printf("%s %s\n", fg($c[1], 'total'), ($size = size($1)) =~ s/\s+//gr);
+       }
++      next;
+     }
+     $file = add_ls_color($file) unless(!$ENV{DISPLAY});
+ 
+@@ -206,7 +214,7 @@ sub ls {
+       $size =~ s/^\s{3}(.+)/$1 /;
+     }
+ 
+-    my $user = owner($user, $group);
++    my $user = owner($userpad . $user, $group . $grouppad);
+ 
+     if($opt->{perm_file}) {
+       perm_file($perm, $file);
+@@ -229,6 +237,19 @@ sub ls {
+       next;
+     }
+   }
++  }
++}
++
++sub get_max_size_len {
++  my($out) = @_;
++  my($perm, $hlink, $user, $group, $size, $max, $cur);
++  $max = 0;
++  foreach my $line (split(/^/, $out)) {
++    ($perm, $hlink, $user, $group, $size) = split(/\s+/, $line);
++    $cur = length($size);
++    $max = ($max, $cur)[$max < $cur];
++  }
++  return $max;
+ }
+ 
+ sub add_ls_color {
+@@ -366,30 +387,29 @@ sub owner {
+ 
+ sub size {
+   my ($size) = @_;
+-
+   #FIXME
+   if($colors > 16) {
+     #$size =~ s/(\S+)(K)/$c[2]$1\e[0m$c[4]$2\e[0m/gi;# and print "AA\n";
+     if($size =~ m/^(\S+)(K)/) {
+-      $size = sprintf("% 27s",
+-        fg($c[7], sprintf("% 4g", $1))
++      $size = sprintf("%27s",
++        fg($c[7], sprintf("%4g", $1))
+           . fg($c[2], fg('bold', $2))
+         );
+     }
+     elsif($size =~ m/^(\S+)(M)/) {
+-      $size = sprintf("% 29s",
+-        fg($c[7], sprintf("% 4g", $1))
++      $size = sprintf("%29s",
++        fg($c[7], sprintf("%4g", $1))
+           . fg($c[4], fg('bold', $2))
+         );
+     }
+     elsif($size =~ m/^(\S+)(G)/) {
+-      $size = sprintf("% 27s",
+-        fg($c[7], sprintf("% 4g", $1))
++      $size = sprintf("%27s",
++        fg($c[7], sprintf("%4g", $1))
+           . fg($c[3], fg('bold', $2))
+         );
+     }
+     elsif($size =~ m/^(\d+)/) {
+-      $size = sprintf("% 27s",
++      $size = sprintf("%27s",
+         fg($c[7], sprintf("%4d", $1))
+           . fg($c[14], fg('bold', 'B'))
+         );
+-- 
+2.10.2
+
