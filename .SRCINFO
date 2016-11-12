@@ -1,0 +1,17 @@
+pkgbase = vineyard-git
+	pkgdesc = Windows programs on Linux, easily (git version)
+	pkgver = 88.a685ec9
+	pkgrel = 1
+	url = http://vineyardproject.org/
+	arch = any
+	license = LGPL2
+	makedepends = git
+	provides = vineyard,
+	provides = python2-wine
+	conflicts = vineyard,
+	conflicts = python2-wine
+	source = git+https://github.com/Cybolic/vineyard.git
+	md5sums = SKIP
+
+pkgname = vineyard-git
+
