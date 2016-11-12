@@ -1,7 +1,7 @@
 # Maintainer: Levente Polyak <anthraxx[at]archlinux[dot]org>
 
 pkgname=strip-nondeterminism-git
-pkgver=0.022.132.732aba7
+pkgver=0.028+4+gd1126e4
 pkgrel=1
 pkgdesc='Tool for stripping bits of non-deterministic information from files'
 url='https://anonscm.debian.org/git/reproducible/strip-nondeterminism.git'
@@ -17,13 +17,13 @@ sha512sums=('SKIP')
 
 pkgver() {
   cd ${pkgname}
-  printf "%s.%s.%s" "$(git describe --tags --abbrev=0|sed -r 's|(.+/)?(.+)|\2|')" \
-    "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  git describe --tags|sed 's|-|+|g'
 }
 
 prepare() {
   cd ${pkgname}
   sed -r 's|bin/dh_strip_nondeterminism ||g' -i Makefile.PL
+  sed -r '/dh_strip_nondeterminism/d' -i t/binaries.t
 }
 
 build() {
@@ -33,7 +33,8 @@ build() {
 }
 
 check() {
-  make -C ${pkgname} test
+  cd ${pkgname}
+  PERLLIB=./lib make test
 }
 
 package() {
