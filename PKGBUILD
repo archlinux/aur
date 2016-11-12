@@ -1,7 +1,8 @@
 # -*- sh -*-
 # vim: ft=shell
 
-# Maintainer: Allen Li <darkfeline@felesatra.moe>
+# Maintainer: ncoif <ncoif@gmx.com>
+# Contributor: Allen Li <darkfeline@felesatra.moe>
 # Contributor: Thomas Dziedzic <gostrc@gmail.com>
 # Contributor: Jan "heftig" Steffens <jan.steffens@gmail.com>
 # Contributor: tobias [ tobias at archlinux org ]
@@ -9,7 +10,7 @@
 
 _pkgbase=vim
 pkgname=vim-x11
-pkgver=7.4.2334
+pkgver=8.0.0055
 _versiondir=74
 pkgrel=1
 _upstream_pkgrel=1
@@ -20,7 +21,7 @@ makedepends=('gpm' 'python2' 'python' 'ruby' 'libxt' 'lua' 'gawk' 'tcl')
 source=("vim-$pkgver.tar.gz::http://github.com/vim/vim/archive/v$pkgver.tar.gz"
         'vimrc'
         'archlinux.vim')
-sha1sums=('3a1cf404cf54ec0ea09d86202f63d345cf3b284a'
+sha1sums=('20f144e8dc42bb2f5201b18b2f3a9990efc294f6'
           'b8ca9132826e53cd14431ef9767e4fd820faa782'
           '94f7bb87b5d06bace86bc4b3ef1372813b4eedf2')
 
