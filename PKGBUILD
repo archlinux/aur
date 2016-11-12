@@ -11,16 +11,16 @@ pkgdesc='Virtual Terminal Emulator widget for use with GTK3 with Fedora patches'
 arch=('i686' 'x86_64')
 url='https://wiki.gnome.org/Apps/Terminal/VTE'
 license=('LGPL')
-depends=('gtk3' 'pcre2')
+depends=('gtk3' 'pcre2' 'gnutls')
 makedepends=('intltool' 'gobject-introspection' 'gtk-doc' 'vala' 'gperf' 'glade')
 options=('!emptydirs')
 # Fedora patches: http://pkgs.fedoraproject.org/cgit/rpms/vte291.git/tree/
-_fedorarepourl='http://pkgs.fedoraproject.org/cgit/rpms/vte291.git'
-_fedorarepobranch='f25'
-_patchfile='vte291-command-notify-scroll-speed.patch'
+_frepourl='http://pkgs.fedoraproject.org/cgit/rpms/vte291.git'
+_frepobranch='f25'
+_fpatchfile='vte291-command-notify-scroll-speed.patch'
 source=(
 	"https://download.gnome.org/sources/vte/${pkgver::4}/vte-${pkgver}.tar.xz"
-	"${_patchfile}::${_fedorarepourl}/plain/${_patchfile}?h=${_fedorarepobranch}"
+	"${_fpatchfile}::${_frepourl}/plain/${_fpatchfile}?h=${_frepobranch}"
 	'add-zsh-notfication-support.patch'
 )
 sha256sums=(
@@ -32,7 +32,7 @@ sha256sums=(
 prepare () {
 	cd "vte-${pkgver}"
 
-	patch -p1 -i '../vte291-command-notify-scroll-speed.patch'
+	patch -p1 -i "../${_fpatchfile}"
 	patch -p1 -i '../add-zsh-notfication-support.patch'
 }
 
