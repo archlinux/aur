@@ -1,12 +1,13 @@
 pkgbase = texlive-aastex6
 	pkgdesc = Package for preparing papers in American Astronomical Society (AAS) journals
 	pkgver = 6.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://journals.aas.org/authors/aastex.html
 	install = texlive-aastex6.install
 	arch = i686
 	arch = x86_64
 	depends = texlive-core
+	depends = texlive-publishers
 	provides = texlive-aastex6
 	source = http://journals.aas.org/authors/aastex/aastex61.cls
 	source = http://journals.aas.org/authors/aastex/aasjournal.bst
