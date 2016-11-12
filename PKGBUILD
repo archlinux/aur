@@ -1,7 +1,7 @@
 # Maintainer: Levente Polyak <anthraxx[at]archlinux[dot]org>
 
 pkgname=diffoscope-git
-pkgver=59.742.82b072f
+pkgver=62+2+ge4731a6
 pkgrel=1
 pkgdesc='Tool for in-depth comparison of files, archives, and directories'
 url='https://diffoscope.org/'
@@ -50,7 +50,7 @@ sha512sums=('SKIP')
 
 pkgver() {
   cd ${pkgname}
-  printf "%s.%s.%s" "$(git describe --tags --abbrev=0)" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  git describe --tags|sed 's|-|+|g'
 }
 
 prepare() {
