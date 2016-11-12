@@ -3,7 +3,7 @@
 
 pkgname=docker-registry-git
 _pkgname=docker-registry
-pkgver=v2.5.0.rc.1.148.gb89a594
+pkgver=v2.6.0.rc.1.2.gd22e09a
 pkgrel=1
 pkgdesc="An implementation of the Docker Registry HTTP API V2 for use with docker 1.6+."
 arch=('any')
