@@ -17,9 +17,9 @@ run_hook () { (
   fi
 
   # Invoke the nannycam script
-  NANNYCAM="/usr/lib/nannycam/nannycam"
+  NANNYCAM="$(pwd)/nannycam"
   if [ ! -f "$NANNYCAM" ]; then
-    NANNYCAM="$(pwd)/nannycam"
+    NANNYCAM="/usr/lib/nannycam/nannycam"
   fi
 
   source $NANNYCAM \

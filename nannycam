@@ -62,8 +62,12 @@ fi
 check_mbr && check_mbr_gap && check_efi_stub || hash_mismatch
 
 DATE_TIME="$(date +%s)"
-echo -n "$DATE_TIME" \
-  | openssl pkeyutl -inkey "$AUTH_KEY_FILE" -sign \
+PREFIX="D${DATE_TIME}S"
+(
+  echo -n "$PREFIX"
+  echo -n "$DATE_TIME" \
+  | openssl dgst -"$HASH_ALG" -sign "$AUTH_KEY_FILE" 
+) \
   | qrencode -8 $QR_OPTS
 echo "$DATE_TIME"
 
