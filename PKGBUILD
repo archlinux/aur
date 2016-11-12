@@ -3,12 +3,14 @@
 
 pkgname=clamtk
 pkgver=5.23
-pkgrel=1
-pkgdesc='GUI front-end for ClamAV using Perl and Gtk libraries. It is designed to be an easy-to-use, on-demand scanner for Linux systems'
+pkgrel=2
+pkgdesc='Easy to use, light-weight, on-demand virus scanner for Linux systems'
 url='https://dave-theunsub.github.io/clamtk/'
 arch=('any')
 license=('GPL')
-depends=('clamav' 'perl' 'gtk2-perl' 'perl-locale-gettext' 'perl-libwww' 'perl-http-message' 'perl-lwp-protocol-https' 'perl-text-csv' 'perl-json' 'python' 'zenity' 'desktop-file-utils' 'gnome-icon-theme')
+depends=('clamav' 'perl' 'gtk2-perl' 'perl-locale-gettext' 'perl-libwww' 'perl-http-message'
+         'perl-lwp-protocol-https' 'perl-text-csv' 'perl-json' 'python' 'zenity' 'desktop-file-utils'
+         'gnome-icon-theme' 'cronie')
 source=(https://bitbucket.org/dave_theunsub/clamtk/downloads/clamtk-${pkgver}.tar.gz{,.asc}
         fix-gtk-icon.patch)
 sha512sums=('e7728c2e117a626bd725762ed9691ecc27a610bde9e56aca20282db0c9b9c5a6817697663eaa9520dc6db8f6ecf16a01a1fc44a478711127ebda974a1655fe5b'
@@ -24,41 +26,24 @@ prepare() {
 package() {
   cd ${pkgname}-${pkgver}
 
-  # executable
-  install -Dm 755 clamtk "${pkgdir}/usr/bin/clamtk"
-
-  # libs
-  for n in lib/* ; do
-	  install -Dm 644 $n "${pkgdir}/usr/lib/perl5/vendor_perl/ClamTk/`basename $n`"
+  install -Dm 755 clamtk -t "${pkgdir}/usr/bin"
+  for f in lib/* ; do
+	  install -Dm 644 ${f} "${pkgdir}/usr/lib/perl5/vendor_perl/ClamTk/`basename ${f}`"
   done
 
-  # localization
-  for n in po/*.mo ; do
-	  install -Dm 644 $n "${pkgdir}/usr/share/locale/`basename $n .mo`/LC_MESSAGES/clamtk.mo"
+  for f in po/*.mo ; do
+	  install -Dm 644 "${f}" "${pkgdir}/usr/share/locale/`basename ${f} .mo`/LC_MESSAGES/clamtk.mo"
   done
 
-  # man pages
-  install -Dm 644 clamtk.1.gz "${pkgdir}/usr/share/man/man1/clamtk.1.gz"
+  install -Dm 644 clamtk.1.gz -t "${pkgdir}/usr/share/man/man1"
+  install -Dm 644 CHANGES DISCLAIMER README -t "${pkgdir}/usr/share/doc/${pkgname}"
+  install -Dm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 
-  # doc
-  install -Dm 644 CHANGES "${pkgdir}/usr/share/doc/${pkgname}/CHANGES"
-  install -Dm 644 DISCLAIMER "${pkgdir}/usr/share/doc/${pkgname}/DISCLAIMER"
-  install -Dm 644 LICENSE "${pkgdir}/usr/share/doc/${pkgname}/LICENSE"
-  install -Dm 644 README "${pkgdir}/usr/share/doc/${pkgname}/README"
+  install -d "${pkgdir}/usr/share/help"
+  cp -dr --no-preserve=ownership help/* "${pkgdir}/usr/share/help"
 
-  # help
-  install -d "${pkgdir}/usr/share/help/"
-  cp -dr --no-preserve=ownership help/* "${pkgdir}/usr/share/help/"
-
-  # pixmaps
-  install -Dm 644 images/clamtk.xpm "${pkgdir}/usr/share/pixmaps/clamtk.xpm"
-  install -Dm 644 images/clamtk.png "${pkgdir}/usr/share/pixmaps/clamtk.png"
-
-  # menu
-  install -Dm 644  clamtk.desktop "${pkgdir}/usr/share/applications/clamtk.desktop"
-
-  # nautilus
-  # install -Dm 755  clamtk.py "${pkgdir}/usr/share/nautilus-python/extensions/clamtk.py"
+  install -Dm 644 images/clamtk.{xpm,png} -t "${pkgdir}/usr/share/pixmaps"
+  install -Dm 644 clamtk.desktop -t "${pkgdir}/usr/share/applications"
 }
 
 # vim: ts=2 sw=2 et:

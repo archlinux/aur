@@ -1,7 +1,7 @@
 pkgbase = clamtk
-	pkgdesc = GUI front-end for ClamAV using Perl and Gtk libraries. It is designed to be an easy-to-use, on-demand scanner for Linux systems
+	pkgdesc = Easy to use, light-weight, on-demand virus scanner for Linux systems
 	pkgver = 5.23
-	pkgrel = 1
+	pkgrel = 2
 	url = https://dave-theunsub.github.io/clamtk/
 	arch = any
 	license = GPL
@@ -18,6 +18,7 @@ pkgbase = clamtk
 	depends = zenity
 	depends = desktop-file-utils
 	depends = gnome-icon-theme
+	depends = cronie
 	source = https://bitbucket.org/dave_theunsub/clamtk/downloads/clamtk-5.23.tar.gz
 	source = https://bitbucket.org/dave_theunsub/clamtk/downloads/clamtk-5.23.tar.gz.asc
 	source = fix-gtk-icon.patch
