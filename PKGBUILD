@@ -19,6 +19,9 @@ md5sums=(
     'SKIP'
     '23b1a68491fef30c9bcbb9459ec67a23'
 )
+provides=(
+    'stupidterm'
+)
 
 pkgver() {
     cd "${_pkgname}"

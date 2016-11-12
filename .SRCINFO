@@ -9,6 +9,7 @@ pkgbase = stupidterm-git
 	arch = armv7l
 	license = LGPL
 	depends = vte3
+	provides = stupidterm
 	conflicts = stupidterm
 	conflicts = st
 	source = stupidterm::git+https://github.com/esmil/stupidterm.git
