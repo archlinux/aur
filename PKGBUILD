@@ -18,7 +18,7 @@ package_mint-sounds() {
 	pkgdesc="Linux Mint system sounds from ${pkgbase} package."
 	install="${pkgname}.install"
 
-	cd "${srcdir}/${pkgbase}"
+	cd "${srcdir}/${pkgbase}-${pkgver}"
 	install -d "${pkgdir}/usr/share/sounds"
 	cp -dr --no-preserve=ownership "./usr/share/sounds/LinuxMint" "${pkgdir}/usr/share/sounds/"
 	install -Dm644 "../${pkgname}.gschema.override" "${pkgdir}/usr/share/glib-2.0/schemas/${pkgname}.gschema.override"
