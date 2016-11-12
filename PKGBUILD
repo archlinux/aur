@@ -1,7 +1,7 @@
 # Maintainer: Baptiste Jonglez <baptiste--aur at jonglez dot org>
 # Contributor: Andy Weidenbaum <archbaum@gmail.com>
 pkgname=opendht-git
-pkgver=20160818
+pkgver=20161110
 pkgrel=1
 pkgdesc="A C++11 implementation of the Kademlia DHT (Distributed Hash Table)"
 arch=('i686' 'x86_64')
@@ -29,7 +29,8 @@ build() {
   cmake .. \
     -DCMAKE_BUILD_TYPE=Release \
     -DOPENDHT_PYTHON=ON \
-    -DCMAKE_INSTALL_PREFIX=/usr
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_INSTALL_LIBDIR=lib
   make
 }
 
@@ -42,7 +43,7 @@ package() {
   cd ..
 
   msg2 'Installing documentation...'
-  install -D -m655 README.md "${pkgdir}/usr/share/doc/opendht/README.md"
+  install -D -m644 README.md "${pkgdir}/usr/share/doc/opendht/README.md"
 
   msg2 'Cleaning up pkgdir...'
   find "$pkgdir" -type d -name .git -exec rm -r '{}' +
