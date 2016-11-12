@@ -4,7 +4,7 @@
 #Contributor: Muhammed Uluyol <uluyol0@gmail.com>
 
 pkgname=foo2zjs
-pkgver=20161105
+pkgver=20161108
 pkgrel=1
 pkgdesc="foo2zjs Printer Drivers. Includes also foo2hp, foo2hbpl, foo2oak, foo2xqx, foo2qpdl, foo2slx, foo2hiperc and foo2lava drivers."
 url="http://foo2zjs.rkkda.com/"
@@ -23,7 +23,7 @@ source=("foo2zjs-$pkgver.tar.gz::http://foo2zjs.rkkda.com/foo2zjs.tar.gz"
         '0004-Makefile-fix-generating-.ppd-in-place.patch'
 	'0005-Makefile-leverage-default-rules-as-much-as-possible-.patch')
 
-sha256sums=('aeae02808157633145aba789ad017e66a1208c12386ca2a259ad4567436cb0a8'
+sha256sums=('75df43dbba15dafec6b100115a0ee1e444769bf9189a8eee15cc3b8d1835ecc8'
             '5935bfc2d7127cf47ee828710145075a1ba0e538e349389b514a0f3afa603618'
             '40bea306e1d379fbd9a7452617807f16694384e58d7e4ece0de4a6f189caca8c'
             '6df5958dad60c5a486b4dc9ad138f9e6a45d40e55e2af307c0304fa7ea96b6c2'
