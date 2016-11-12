@@ -1,0 +1,17 @@
+pkgbase = selene-git
+	pkgdesc = Simple C++11 friendly header-only bindings to Lua
+	pkgver = 0.4+126+g856b15e
+	pkgrel = 1
+	url = https://github.com/jeremyong/Selene
+	arch = any
+	license = zlib
+	checkdepends = cmake
+	makedepends = git
+	depends = lua
+	provides = selene
+	conflicts = selene
+	source = selene-git::git+https://github.com/jeremyong/Selene
+	sha512sums = SKIP
+
+pkgname = selene-git
+
