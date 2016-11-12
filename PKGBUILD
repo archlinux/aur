@@ -27,7 +27,8 @@ md5sums=('SKIP'
 build()
 {
   export GOPATH="$srcdir"
-  export PATH="$GOPATH/bin:$PATH"
+  export GOBIN="$GOPATH/bin"
+  export PATH="$GOBIN:$PATH"
   mkdir -p "$GOPATH/src/github.com/influxdata"
   mv -f "$srcdir/kapacitor" "$GOPATH/src/github.com/influxdata/"
 
@@ -49,9 +50,9 @@ package()
   install -Dm644 kapacitor.sysusers "$pkgdir/usr/lib/sysusers.d/kapacitor.conf"
   install -Dm644 kapacitor.tmpfiles "$pkgdir/usr/lib/tmpfiles.d/kapacitor.conf"
 
-  cd $GOPATH
-  install -Dsm755 bin/kapacitord "$pkgdir/usr/bin/kapacitord"
-  install -Dsm755 bin/kapacitor "$pkgdir/usr/bin/kapacitor"
+  cd $GOBIN
+  install -Dsm755 kapacitord "$pkgdir/usr/bin/kapacitord"
+  install -Dsm755 kapacitor "$pkgdir/usr/bin/kapacitor"
 
   cd "$GOPATH/src/github.com/influxdata/kapacitor"
   install -Dm644 scripts/kapacitor.service "$pkgdir/usr/lib/systemd/system/kapacitor.service"
