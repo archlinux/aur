@@ -3,8 +3,8 @@
 pkgname=radamsa
 pkgver=0.5
 pkgrel=1
-pkgdesc="General purpose mutation based fuzzer"
-url="https://github.com/aoh/radamsa"
+pkgdesc='General purpose mutation based fuzzer'
+url='https://github.com/aoh/radamsa'
 arch=('i686' 'x86_64')
 license=('MIT')
 depends=('glibc')
