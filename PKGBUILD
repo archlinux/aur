@@ -1,7 +1,7 @@
 # Maintainer: Javier Torres <javitonino [at] gmail [dot] com>
 
 pkgname=python2-kolabformat
-pkgver=1.1.2
+pkgver=1.1.6
 pkgrel=1
 pkgdesc='Python bindings for Kolab XML Format Schema Definitions Library'
 url='http://www.kolab.org'
@@ -10,10 +10,10 @@ license=('GPL')
 depends=('libkolabxml')
 makedepends=('cmake' 'boost' 'xsd' 'qt4' 'swig')
 source=("http://mirror.kolabsys.com/pub/releases/libkolabxml-${pkgver}.tar.gz")
-sha256sums=('1de632572da1421c0e4b580cba763932bc943d457743abc7fb836e6200861fac')
+sha256sums=('e48d7f5de1860a381da27981f6c70de1c9f38c4cd536bc6558b6529ce95f0677')
 
 prepare() {
-    mkdir build
+    mkdir "${srcdir}/build"
 
     # Patch CMake to use python2
     sed "s/find_package(PythonLibs REQUIRED)/find_package(PythonLibs 2.7 REQUIRED)/g" -i "${srcdir}/libkolabxml-${pkgver}/src/python/CMakeLists.txt"  
