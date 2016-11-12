@@ -1,17 +1,20 @@
 pkgbase = bokken
 	pkgdesc = GUI for radare2 and pyew
 	pkgver = 1.8
-	pkgrel = 2
+	pkgrel = 3
 	url = http://inguma.eu/projects/bokken
 	arch = any
 	license = GPL2
+	makedepends = mercurial
 	depends = pygtk
 	depends = pygtksourceview2
 	depends = python2-pillow
 	depends = graphviz
 	depends = radare2-bindings
-	source = bokken-1.8.tar.gz::https://inguma.eu/attachments/download/212/bokken-1.8.tar.gz
-	sha512sums = 4fc34c054b018bdf2012024827d909420f4384d3de32196b319299794a9e7ccf0d1ce22987bad5526af077fe2486b0b3d89ce62ef762c3c84dee58cb32fa09d0
+	source = bokken-1.8.tar.gz::https://bitbucket.org/inguma/bokken/get/1.8.tar.gz
+	source = fix-new-radare.patch
+	sha512sums = 1bec1c908bbfc5bf3dad121d98fc135a2b0ab9753077df113c7a5ca4059d3c7b86715ba2bd017fd1fa55e504e41eee4f22f76d551be4852371975ae45d3141f2
+	sha512sums = 478de59f170cf5d28ab0dbe16cf9cb1d472d40de3abbe049d9577319b2123b514cd08320213a36fa2ee441add680aa56fdfc721a26ee786ed59f1d12cc1825b9
 
 pkgname = bokken
 

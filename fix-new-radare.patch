@@ -1,0 +1,16 @@
+--- ui/radare_core.py
++++ ui/radare_core.py.orig
+@@ -456,8 +465,11 @@
+             if entryp:
+                 self.full_fileinfo['eps'] = []
+                 for line in entryp.split('\n'):
+-                    line = line.strip('[').strip(']')
+-                    self.full_fileinfo['eps'].append(['Entry0', hex(int(line))])
++                    line = line.strip()
++                    if line != "":
++                      entries = eval(line.strip()) # fuck it, just use an eval
++                      for entry in entries:
++                        self.full_fileinfo['eps'].append(['Entry0', hex(entry['vaddr'])])
+             # Get symbols
+             symbols = self.send_cmd_str('is')
+             if symbols:
