@@ -1,12 +1,12 @@
-# $Id: PKGBUILD 277575 2016-10-03 16:25:40Z tpowa $
-# Maintainer: Emily <absynthesyne at gmail dot com>
+# Maintainer: Daniel Hillenbrand <codeworkx@bbqlinux.org>
+# Contributor: Emily <absynthesyne at gmail dot com>
 # Contributor: Tobias Powalowski <tpowa@archlinux.org>
 # Contributor: Thomas Baechler <thomas@archlinux.org>
 
 pkgbase=linux-cik               # Build stock -ARCH kernel
 #pkgbase=linux-custom       # Build kernel with a different name
-_srcname=linux-4.7
-pkgver=4.7.6
+_srcname=linux-4.8
+pkgver=4.8.7
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
@@ -24,12 +24,15 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         'change-default-console-loglevel.patch'
         )
 
-sha256sums=('5190c3d1209aeda04168145bf50569dc0984f80467159b1dc50ad731e3285f10'
+sha256sums=('3e9150065f193d3d94bcf46a1fe9f033c7ef7122ab71d75a7fb5a2f0c9a7e11a'
             'SKIP'
-            '2e425c268076c3b186107edf9045e0910088699e077282b5187efb5edf2b8836'
+            '94213e7557d192d1054e352aec18e93275ed5a84abe190d43fd43847d1d86efe'
             'SKIP'
-            'ba61080d6ba852b3dc10ed056efbd80bdff6555a7ae4cf40373c7544d36ffcc9'
-            '79f31430392ef0583aad2c9777b858a34b537d5c964fa9610192e94b0c10c9bb'
+            # config
+            'cb0c20e586d4419b8cd14dcbf545a575fba6b2cd3ffb2a2c3e56873dcf3fdebe'
+            # config.x86_64
+            '7374c052b9f633e5f7f1b85226093de99601a77a2b4e608858d512f3b5c6fde2'
+            # linux-cik.preset
             '1289455a84da1a93dbf35fd84e1e580c3f073314de135685614e6a3758f43410'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99')
 validpgpkeys=(
@@ -41,6 +44,11 @@ _kernelname=${pkgbase#linux}
 
 prepare() {
   cd "${srcdir}/${_srcname}"
+
+  # Get key of Linus Torvalds
+  gpg --keyserver pool.sks-keyservers.net --recv-keys ABAF11C65A2970B130ABE3C479BE3E4300411886
+  # Get key of Greg Kroah-Hartman
+  gpg --keyserver pool.sks-keyservers.net --recv-keys 647F28654894E3BD457199BE38DBBDC86092693E
 
   # add upstream patch
   patch -p1 -i "${srcdir}/patch-${pkgver}"
@@ -299,5 +307,3 @@ for _p in ${pkgname[@]}; do
     _package${_p#${pkgbase}}
   }"
 done
-
-# vim:set ts=8 sts=2 sw=2 et:
