@@ -33,7 +33,7 @@ install=atom.install
 source=("${_pkgname}-${_pkgver}-${_version}${_pkgrel}.tar.gz::$url/archive/v${_pkgver}-${_version}${_pkgrel}.tar.gz"
 "${_pkgname}-${_version}.desktop"
 "${_pkgname}-${_version}")
-sha256sums=('d610a1977954c712fe4776a09b8e706bc50bb0ae37a19df46b258197449f1121'
+sha256sums=('c8883e98b4a9efe8055c4e2885dfbe8c94e0563e52d17626a8626b9cdff1e781'
             'c62faaf2f50cddb1a834ccb33c95724076d2859c88baac7d9d676bc9c3afc8c6'
             '230563ed327833351d448e152ab8b146d2d2b7bdac42c7d39eef966b96b862fc')
 
