@@ -1,7 +1,7 @@
 # Maintainer: Polichronucci <nick at discloud dot eu> 
 
 pkgname=owncloud-app-announcementcenter
-pkgver=9.0.4
+pkgver=9.1.2
 pkgrel=1
 pkgdesc="An Announcement Center app for ownCloud"
 arch=('any')
@@ -10,7 +10,7 @@ license=('AGPL')
 depends=('owncloud')
 options=('!strip')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/owncloud/announcementcenter/archive/v${pkgver}.tar.gz")
-sha512sums=('db3e03d1124a2ac248d7944218abbec88c201f01d735baba5662fc8a141ec646741745278fc1c7bbdd30fad31c45c9e0725cc02057c098182ea3549c6ee43842')
+sha512sums=('cf39151b8e199c4921b471b9b402791e31a46c784ec8c67b24fe0fbef6729c161d2df767d21472319537e4ed72cc277ac6abd8b320eff8173bc8dbd0bf5219fc')
 
 package() {
   install -d "${pkgdir}/usr/share/webapps/owncloud/apps"
