@@ -5,15 +5,14 @@
 
 _pkgname=kile
 pkgname=kile-git
-pkgver=v2.1.r572.ga13b20c
-pkgrel=2
+pkgver=v2.1.r602.ge005e2a
+pkgrel=1
 pkgdesc="A TeX/LaTeX frontend for KDE"
 arch=('i686' 'x86_64')
 url="http://kile.sourceforge.net/"
 license=('GPL2')
-depends=('kinit' 'texlive-core' 'okular-frameworks-git' 'ktexteditor')
+depends=('kinit' 'texlive-core' 'okular-git' 'ktexteditor')
 makedepends=('git' 'extra-cmake-modules' 'kdoctools' 'python')
-install=$pkgname.install
 conflicts=('kile')
 provides=('kile')
 replaces=('kile-svn')
