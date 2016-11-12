@@ -1,7 +1,7 @@
 # Maintainer: Nate Simon <aurpkg (at natesimon.net)>
 
 pkgname=pix
-pkgver=1.0.6
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="Image viewer and browser based on gthumb. X-Apps Project."
 arch=('i686' 'x86_64')
@@ -23,14 +23,14 @@ url='https://github.com/linuxmint/pix'
 install=pix.install
 
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/linuxmint/${pkgname}/archive/${pkgver}.tar.gz")
-md5sums=('5e39ccfb69d9bc0a67b445804717510a')
+md5sums=('94d8a6476ca972d78ca819b6e6b4efe3')
 
 
 build() {
     cd ${srcdir}/${pkgname}-${pkgver}
     gnome-autogen.sh --prefix="/usr" \
         --localstatedir="/var" \
-        --libexecdir="/usr/lib/pix" \
+        --libexecdir="/usr/lib/${pkgname}" \
         -disable-static
 
     # Copy some files that ended up in the wrong directory.
