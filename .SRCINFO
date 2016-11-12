@@ -1,22 +1,25 @@
 pkgbase = cowrie
-	pkgdesc = A medium interaction SSH honeypot designed to log brute force attacks and, most importantly, the entire shell interaction performed by the attacker
-	pkgver = 1.0.0_alpha
+	pkgdesc = Medium interaction SSH honeypot designed to log brute force attacks and entire shell interaction
+	pkgver = 1.1.0
 	pkgrel = 1
-	url = https://github.com/micheloosterhof/cowrie.git
+	url = https://github.com/micheloosterhof/cowrie
 	install = cowrie.install
 	arch = any
 	license = BSD
 	depends = twisted
-	depends = pycrypto
 	depends = zope-interface
+	depends = zope-interface
+	depends = python2-crypto
 	depends = python2-pyasn1
+	depends = python2-cryptography
+	depends = python2-gmpy2
+	depends = python2-pyopenssl
+	depends = mysql-python
+	depends = python2-dateutil
+	depends = python2-tftpy
 	backup = etc/cowrie.cfg
-	source = cowrie-1.0.0_alpha.tar.gz::https://github.com/micheloosterhof/cowrie/archive/v1.0.0-alpha.tar.gz
-	source = cowrie.service
-	source = INSTALL
-	sha512sums = 0ffcb55906d30869f551676fbdded32d5de50519107f9e1e2be27c8a8914b887af4070c470abee5018b1edb815c604b1961a5598ab1d9b61764034bcf191995b
-	sha512sums = 106618a2c73d5f1f2ad75997e693f6ff4e903644a6be0dc59e85f72ae81f583927b2f079823c3379a8796e03fd542f497d2cc9405dc5d0d20d6caeb9dc88abed
-	sha512sums = a80dc0e9ec922c795af13ec85fc4e3414481a0d7ae14d9f17e29ade2a118010c1d69d474fe38c7e648d69b07ff09144efe97183e8a64ccf8165ec3a767a18ce2
+	source = cowrie-1.1.0.tar.gz::https://github.com/micheloosterhof/cowrie/archive/v1.1.0.tar.gz
+	sha512sums = da6cb2e25f57dd5a1e9b7ff02a39ae4d6955ee2be03b0054f92f07b429a1a12b938c571862b05d5ccbe9949d132185079bd93644bd38469e841cb9a8cc95dfbd
 
 pkgname = cowrie
 
