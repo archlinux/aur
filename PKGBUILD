@@ -5,7 +5,7 @@
 
 _pkgname=phoronix-test-suite
 pkgname=phoronix-test-suite-git
-pkgver=v6.0.1.136.gfa006e0
+pkgver=v6.6.1.20.g01b3030
 pkgrel=1
 pkgdesc="The most comprehensive testing and benchmarking platform available for Linux"
 arch=('i686' 'x86_64')
