@@ -1,7 +1,7 @@
 # Maintainer: Christian Rebischke <chris.rebischke[at]archlinux[dot]org>
 _pkgname=nerdtree
 pkgname=vim-nerdtree-git
-pkgver=5.0.0.881.334fb0e
+pkgver=5.0.0.887.eee431d
 pkgrel=2
 pkgdesc='Tree explorer plugin for navigating the filesystem'
 arch=('any') 
@@ -13,18 +13,16 @@ groups=('vim-plugins')
 provides=('vim-nerdtree')
 conflicts=('vim-nerdtree')
 install="vimdoc.install"
-source=("git+https://github.com/scrooloose/nerdtree"
-        "vimdoc.install")
-sha512sums=('SKIP'
-            '37cb1bc1ba45d4626b6b274d39bacaa752679be31a7c16086aed71af9a071a911100748cc17df83808e95ff7bb57941b0b2246d485197a8e908b349466579c47')
+source=("git+https://github.com/scrooloose/nerdtree")
+sha512sums=('SKIP')            
 
 pkgver() {
-  cd ${_pkgname}
+  cd "${_pkgname}"
   printf "%s.%s.%s" "$(git describe --tags --abbrev=0)" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
-  cd ${srcdir}/${_pkgname}
+  cd "${srcdir}/${_pkgname}"
   install -d \
     "${pkgdir}/usr/share/vim/vimfiles/"{autoload,lib/nerdtree,doc,nerdtree_plugin,plugin,syntax}
   cp -dr lib/nerdtree/* "${pkgdir}/usr/share/vim/vimfiles/lib/nerdtree"
