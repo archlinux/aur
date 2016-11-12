@@ -48,8 +48,8 @@ pkgname=(linux-ck linux-ck-headers)
 _kernelname=-ck
 _srcname=linux-4.8
 pkgver=4.8.7
-pkgrel=1
-_ckpatchversion=6
+pkgrel=2
+_ckpatchversion=7
 arch=('i686' 'x86_64')
 url="https://wiki.archlinux.org/index.php/Linux-ck"
 license=('GPL2')
@@ -70,7 +70,7 @@ sha256sums=('3e9150065f193d3d94bcf46a1fe9f033c7ef7122ab71d75a7fb5a2f0c9a7e11a'
             'SKIP'
             '94213e7557d192d1054e352aec18e93275ed5a84abe190d43fd43847d1d86efe'
             'SKIP'
-            'ceca20aff1ac9f84cd46aeabc0645e88c130584bd2e93213db293087329abdef'
+            '65a9a1d4ab050fa3c4d5640197d8e72dbe99a4464c97b607003729047f5b96da'
             'cf0f984ebfbb8ca8ffee1a12fd791437064b9ebe0712d6f813fd5681d4840791'
             'e63d02c41fbdeff8b5511177d5e67c8a6f5141951c21576d8dee4b0fc7bb03b4'
             '58dba408b142d61d1ee2f59ad8a669e4e824e6838faa14597e0891f328342fea'
@@ -211,8 +211,8 @@ build() {
 }
 
 package_linux-ck() {
-	pkgdesc='Linux Kernel with the ck6 patchset featuring MuQSS CPU scheduler v0.135'
-	#_Kpkgdesc='Linux Kernel and modules with the ck6 patchset featuring MuQSS CPU scheduler v0.135'
+	pkgdesc='Linux Kernel with the ck7 patchset featuring MuQSS CPU scheduler v0.140'
+	#_Kpkgdesc='Linux Kernel and modules with the ck7 patchset featuring MuQSS CPU scheduler v0.140'
 	#pkgdesc="${_Kpkgdesc}"
 	depends=('coreutils' 'linux-firmware' 'mkinitcpio>=0.7')
 	optdepends=('crda: to set the correct wireless channels of your country' 'nvidia-ck: nVidia drivers for linux-ck' 'modprobed-db: Keeps track of EVERY kernel module that has ever been probed - useful for those of us who make localmodconfig')
