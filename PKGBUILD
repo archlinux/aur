@@ -1,17 +1,17 @@
 # Maintainer: Carl George < arch at cgtx dot us >
 
 pkgname="mkdocs"
-pkgver="0.15.3"
+pkgver="0.16.0"
 pkgrel="1"
 pkgdesc="Project documentation with Markdown."
 arch=("any")
 url="http://www.mkdocs.org"
 license=("BSD")
 makedepends=("python-setuptools")
-source=("https://pypi.python.org/packages/source/${pkgname:0:1}/${pkgname}/${pkgname}-${pkgver}.tar.gz"
+source=("https://files.pythonhosted.org/packages/source/${pkgname:0:1}/${pkgname}/${pkgname}-${pkgver}.tar.gz"
         "https://raw.githubusercontent.com/mkdocs/${pkgname}/${pkgver}/LICENSE"
         "${pkgname}.bash_completion")
-sha256sums=('39b993183dac9654d1b5eaa093be2d059aae5d89e0badf480b447a646c725d02'
+sha256sums=('ab674a1545713af8e2542f3732aa1cc84a233ac008aa1cab81ebab7b7a56bdf7'
             'b3869f379fafec1da2acb1d830817c73cc57549090a8c09b4402301fa7318d19'
             '1ed624fb056230b57e5a833b3467f648b99153dc1058f11c13ce25313c76e197')
 
