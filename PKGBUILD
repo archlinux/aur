@@ -7,7 +7,7 @@ pkgdesc='Medium interaction SSH honeypot designed to log brute force attacks and
 url='https://github.com/micheloosterhof/cowrie'
 arch=('any')
 license=('BSD')
-depends=('twisted' 'zope-interface' 'zope-interface' 'python2-crypto' 'python2-pyasn1' 'python2-cryptography'
+depends=('twisted' 'python2-zope-interface' 'python2-crypto' 'python2-pyasn1' 'python2-cryptography'
          'python2-gmpy2' 'python2-pyopenssl' 'mysql-python' 'python2-dateutil' 'python2-tftpy')
 makedepends=('git')
 backup=('etc/cowrie.cfg')
