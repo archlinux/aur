@@ -1,0 +1,12 @@
+pkgbase = xcursor-red-dot
+	pkgdesc = Red Dot cursor theme
+	pkgver = 2016.11.11
+	pkgrel = 1
+	url = https://store.kde.org/p/999529/
+	arch = any
+	license = GPL
+	source = https://raw.githubusercontent.com/i3-Arch/PKGBUILD/master/xcursor-red-dot/RedDot.tar.gz
+	md5sums = 9dee5b22abfedd495918f47c9c816dde
+
+pkgname = xcursor-red-dot
+
