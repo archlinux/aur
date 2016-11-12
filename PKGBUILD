@@ -2,14 +2,14 @@
 
 pkgbase='vte3-terminix-git'
 pkgname=("${pkgbase}" 'vte-terminix-common-git')
-pkgver=0.46.1+1.3.5.r16.g295f9c6
+pkgver=0.46.1+1.3.5.r32.ge3f0378
 _vtever=0.46.1
 pkgrel=1
 pkgdesc='Virtual Terminal Emulator widget for use with GTK3 with Fedora and Terminix patches'
 arch=('x86_64')
 url='https://github.com/gnunn1/terminix/tree/master/experimental/vte'
 license=('LGPL')
-depends=('gtk3' 'pcre2')
+depends=('gtk3' 'pcre2' 'gnutls')
 makedepends=('intltool' 'gobject-introspection' 'gtk-doc' 'vala' 'gperf' 'glade' 'git')
 options=('!emptydirs')
 # Fedora patches: http://pkgs.fedoraproject.org/cgit/rpms/vte291.git/tree/
