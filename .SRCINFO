@@ -1,6 +1,6 @@
 pkgbase = cryptomator
 	pkgdesc = Multiplatform transparent client-side encryption of your files in the cloud.
-	pkgver = 1.2.1
+	pkgver = 1.2.2
 	pkgrel = 1
 	url = https://cryptomator.org/
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = cryptomator
 	makedepends = apache-ant
 	depends = java-runtime=8
 	depends = java-openjfx
-	source = antkit-1.2.1.tar.gz::https://github.com/cryptomator/cryptomator/releases/download/1.2.1/antkit.tar.gz
+	source = antkit-1.2.2.tar.gz::https://github.com/cryptomator/cryptomator/releases/download/1.2.2/antkit.tar.gz
 	source = cryptomator.sh
 	source = cryptomator.desktop
 	source = cryptomator-vault.xml
