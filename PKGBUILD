@@ -8,14 +8,14 @@
 
 _pkgname=gitlab
 pkgname=gitlab-ee
-pkgver=8.13.3
-pkgrel=3
+pkgver=8.13.5
+pkgrel=1
 pkgdesc="Project management and code hosting application"
 arch=('i686' 'x86_64')
 url="https://gitlab.com/gitlab-org/gitlab-ce/tree/master#README"
 license=('MIT')
 conflicts=('gitlab')
-replaces=('gitlab')
+provides=('gitlab')
 depends=('ruby' 'git' 'ruby-bundler' 'gitlab-shell' 'gitlab-workhorse' 'openssh' 'redis' 'libxslt' 'icu' 'nodejs')
 makedepends=('cmake' 'postgresql' 'mariadb')
 optdepends=('postgresql: database backend'
@@ -44,7 +44,7 @@ source=("${pkgname}-${pkgver}.tar.gz::https://gitlab.com/gitlab-org/gitlab-ee/re
         nginx-ssl.conf.example
         lighttpd.conf.example)
 install='gitlab.install'
-sha256sums=('2c3f556292790a1a9b9d8378e66a46d2a29dbf21117fe18974bff5ff31bf1dc7'
+sha256sums=('bddd0b23e2179b5ca527c7e75b09ea631dbb1f5c5d2f3b88e94beafacb0807a6'
             '0dabb9c10f6ba49404c13d6be2d0d6cf1bf7e5a0b95f0dea566e33c356997307'
             '3f64de78d1221a0ddf75baed19d1706c625c143701d30ad918f15231aeecfb4f'
             'e16a68539eeb49d24d2ab4a53ff95e33c67264a674b611c006dc5c8a24f41e0e'
@@ -65,7 +65,7 @@ _datadir="/usr/share/webapps/${_pkgname}"
 _etcdir="/etc/webapps/${_pkgname}"
 _homedir="/var/lib/${_pkgname}"
 _logdir="/var/log/${_pkgname}"
-_commit=966f6c7f5e501b6ff1af675b28bfa1d4a9d4e4d5
+_commit="94cc667f4ad84bfedf8714db7e8b4ba6acbb1f9a"
 _srcdir="${pkgname}-v${pkgver/_/-}-ee-${_commit}"
 
 prepare() {

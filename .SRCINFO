@@ -1,7 +1,7 @@
 pkgbase = gitlab-ee
 	pkgdesc = Project management and code hosting application
-	pkgver = 8.13.3
-	pkgrel = 3
+	pkgver = 8.13.5
+	pkgrel = 1
 	url = https://gitlab.com/gitlab-org/gitlab-ce/tree/master#README
 	install = gitlab.install
 	arch = i686
@@ -24,14 +24,14 @@ pkgbase = gitlab-ee
 	optdepends = mysql: database backend
 	optdepends = python2-docutils: reStructuredText markup language support
 	optdepends = smtp-server: mail server in order to receive mail notifications
+	provides = gitlab
 	conflicts = gitlab
-	replaces = gitlab
 	backup = etc/webapps/gitlab/application.rb
 	backup = etc/webapps/gitlab/gitlab.yml
 	backup = etc/webapps/gitlab/resque.yml
 	backup = etc/webapps/gitlab/unicorn.rb
 	backup = etc/logrotate.d/gitlab
-	source = gitlab-ee-8.13.3.tar.gz::https://gitlab.com/gitlab-org/gitlab-ee/repository/archive.tar.gz?ref=v8.13.3-ee
+	source = gitlab-ee-8.13.5.tar.gz::https://gitlab.com/gitlab-org/gitlab-ee/repository/archive.tar.gz?ref=v8.13.5-ee
 	source = gitlab-unicorn.service
 	source = gitlab-sidekiq.service
 	source = gitlab-backup.service
@@ -47,7 +47,7 @@ pkgbase = gitlab-ee
 	source = nginx.conf.example
 	source = nginx-ssl.conf.example
 	source = lighttpd.conf.example
-	sha256sums = 2c3f556292790a1a9b9d8378e66a46d2a29dbf21117fe18974bff5ff31bf1dc7
+	sha256sums = bddd0b23e2179b5ca527c7e75b09ea631dbb1f5c5d2f3b88e94beafacb0807a6
 	sha256sums = 0dabb9c10f6ba49404c13d6be2d0d6cf1bf7e5a0b95f0dea566e33c356997307
 	sha256sums = 3f64de78d1221a0ddf75baed19d1706c625c143701d30ad918f15231aeecfb4f
 	sha256sums = e16a68539eeb49d24d2ab4a53ff95e33c67264a674b611c006dc5c8a24f41e0e
