@@ -1,0 +1,22 @@
+pkgbase = brother-mfc-5895cw
+	pkgdesc = LPR and CUPS driver for the Brother MFC-5895CW, aur package based on the brother-mfc-5890cn package by Morn
+	pkgver = 1.1.3
+	pkgrel = 6
+	url = http://solutions.brother.com/linux/en_us/
+	install = brother-mfc-5895cw.install
+	arch = i686
+	arch = x86_64
+	license = custom:brother commercial license
+	depends = cups
+	depends = lib32-glibc
+	source = http://www.brother.com/pub/bsc/linux/dlf/mfc5895cwlpr-1.1.3-4.i386.rpm
+	source = http://www.brother.com/pub/bsc/linux/dlf/mfc5895cwcupswrapper-1.1.3-6.i386.rpm
+	source = cupswrapper-license.txt
+	source = lpr-license.txt
+	md5sums = b31842e87b36fa70842cb55920dce0e0
+	md5sums = 723b0b266fa920830dcaf50e4da0e2c8
+	md5sums = 97ad0cffd216059e9d1d3121899d8646
+	md5sums = 5e87a3dc0f3e3438c088eda0f3565f0d
+
+pkgname = brother-mfc-5895cw
+
