@@ -11,7 +11,7 @@ pkgbase = strip-nondeterminism-git
 	provides = strip-nondeterminism
 	conflicts = strip-nondeterminism
 	options = !emptydirs
-	source = strip-nondeterminism-git::git+https://anonscm.debian.org/git/reproducible/strip-nondeterminism.git
+	source = strip-nondeterminism-git::git+https://anonscm.debian.org/git/reproducible/strip-nondeterminism.git#branch=master
 	sha512sums = SKIP
 
 pkgname = strip-nondeterminism-git

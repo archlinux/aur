@@ -12,7 +12,7 @@ makedepends=('git')
 options=('!emptydirs')
 provides=('strip-nondeterminism')
 conflicts=('strip-nondeterminism')
-source=(${pkgname}::git+https://anonscm.debian.org/git/reproducible/strip-nondeterminism.git)
+source=(${pkgname}::"git+https://anonscm.debian.org/git/reproducible/strip-nondeterminism.git#branch=master")
 sha512sums=('SKIP')
 
 pkgver() {
