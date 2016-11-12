@@ -5,7 +5,7 @@
 
 pkgname=mosh
 pkgver=1.2.6
-pkgrel=1
+pkgrel=2
 pkgdesc='Mobile shell, surviving disconnects with local echo and line editing'
 arch=('x86_64' 'i686')
 url='http://mosh.mit.edu/'
