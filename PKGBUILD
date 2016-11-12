@@ -1,87 +1,58 @@
-#Maintainer: max-k <max-k AT post DOT com>
-
+# Contributor: xsmile <sascha_r AT gmx DOT de>
+# Maintainer: max-k <max-k AT post DOT com>
 pkgname=pydio
-pkgver=6.4.2
+pkgver=7.0.1
 pkgrel=1
-pkgdesc='PHP file sharing platform, formerly AjaXplorer.'
+pkgdesc='Sync & share solution, formerly AjaXplorer'
 arch=('any')
-url='http://pyd.io/'
+url='https://pydio.com'
 license=('AGPL3')
-depends=('php>=5.3' 'php-mcrypt>=5.3' 'php-gd>=5.3')
-optdepends=('php-sqlite: Store your data in sqlite database'
-            'libssh2: File management functionalities over SSH2 [access.sftp]'
-            'smbclient: Browse a Samba Server [access.smb]'
-            'imagemagick: View PDF and various images formats [editor.imagick]'
-            'ghostscript: View PDF and various images formats [editor.imagick]'
-            'subversion: Extract SVN informations from workspace'
-            'php-libgit2-git: Keep tracks of modifications using a Git repo'
-            'pear-http-oauth: Allows accessing a dropbox account'
-            'php-ldap: Authentication datas are stored in an LDAP/AD directory'
-            'pear-mail-mimedecode: Email reader wich supports eml format'
-            'pear-http-webdavclient: Access a WebDAV server'
-            'php-aws-sdk: Access an AWS server'
-            'pecl-rsync: Use desktop sync client')
+depends=('php>=5.5.9'
+         'php-gd>=5.5.9'
+         'php-intl>=5.5.9'
+         'php-mcrypt>=5.5.9')
+optdepends=('mariadb: MySQL database back end'
+            'php-apcu: to use caching'
+            'php-imap: to browse mailboxes over IMAP and POP3 (access.imap)'
+            'libssh2: to manage files over SFTP (access.sftp)'
+            'pecl-ssh2: to manage files over SFTP (access.sftp)'
+            'smbclient: to mount SAMBA shares (access.smb)'
+            'zip: to create and modify zipfiles (action.powerfs)'
+            'ghostscript: to generate thumbnails (editor.imagick)'
+            'imagemagick: to generate thumbnails (editor.imagick)'
+            'librsync: to compute checksums/deltas and apply patches using rdiff (meta.filehasher)'
+            'pecl-rsync: to compute checksums/deltas and apply patches using rdiff (meta.filehasher)'
+            'git: to use Git-based versioning (meta.git)'
+            'pear-versioncontrol-git: to use Git-based versioning (meta.git)'
+            'udevil: to mount filesystems (meta.mount)')
 options=('!strip')
 install="${pkgname}.install"
-
-_srcroot="http://sourceforge.net/projects/ajaxplorer/files"
-_srcbase="${_srcroot}/${pkgname}/stable-channel"
-_gitbase="https://raw.githubusercontent.com/pydio/pydio-core/develop/dist/scripts/misc"
-
-source=("${_srcbase}/${pkgver}/${pkgname}-core-${pkgver}.tar.gz"
-        "${_gitbase}/5.2.5-6.0.0.mysql"
-        "${_gitbase}/5.2.5-6.0.0.pgsql"
-        "${_gitbase}/5.2.5-6.0.0.sqlite"
-        "bootstrap_context.php.patch"
-        "example_nginx_vhost.conf"
-        "example_nginx_vhost_ssl.conf"
+_srcbase="https://download.${pkgname}.com/pub/core/archives"
+source=("${_srcbase}/${pkgname}-core-${pkgver}.tar.gz"
         "${pkgname}.install")
-
-md5sums=('60005446c37fd4ede604ce90fca67fed'
-         'b93ccc2869b485a3c7cd760e5435645c'
-         '85c19235373da52b97e0b6073ba45635'
-         'e3c4ea819d6790c61c9b81dc48a34e05'
-         '4852094d1b423d62fee10bf5fde38b63'
-         'be74fee97c60b4ae7e8b194187b553ea'
-         '272007089a6c8ca65d1bdde705d91e05'
-         '66b7b02228b4147a0e87b112441da4bb')
+md5sums=('4937837372053db572044a435128e560'
+         '70d858a897b7add73d7554bb47f1ff6a')
 
 package() {
-  cd ${srcdir}/${pkgname}-core-${pkgver}
-
-  patch -p0 -i ${srcdir}/bootstrap_context.php.patch conf/bootstrap_context.php
+  cd "${srcdir}/${pkgname}-core-${pkgver}"
 
   local _INSTDIR="${pkgdir}/usr/share/webapps/${pkgname}"
   install -d "${_INSTDIR}"
-  cp -r *.php core phpunit plugins "${_INSTDIR}/"
+  cp -r .htaccess core plugins *.php robots.txt "${_INSTDIR}/"
 
-  local _CONFDIR="$pkgdir/etc/webapps/${pkgname}"
+  local _CONFDIR="${pkgdir}/etc/webapps/${pkgname}"
   install -d "${_CONFDIR}"
   cp -r conf/* "${_CONFDIR}/"
   ln -s "/etc/webapps/${pkgname}" "${_INSTDIR}/conf"
 
-  local _DATADIR="$pkgdir/var/lib/${pkgname}"
+  local _DATADIR="${pkgdir}/var/lib/${pkgname}"
   install -d "${_DATADIR}"
   cp -r data/* "${_DATADIR}/"
   ln -s "/var/lib/${pkgname}" "${_INSTDIR}/data"
   chgrp -R 33 "${_DATADIR}"
   chmod -R 770 "${_DATADIR}"
 
-  local _DOCDIR="$pkgdir/usr/share/doc/${pkgname}"
+  local _DOCDIR="${pkgdir}/usr/share/doc/${pkgname}"
   install -d "${_DOCDIR}"
-  install -Dm644 ${srcdir}/example_nginx_vhost.conf "${_DOCDIR}/"
-  install -Dm644 ${srcdir}/example_nginx_vhost_ssl.conf "${_DOCDIR}/"
-  install -d "${_DOCDIR}/upgrade"
-  install -Dm644 ${srcdir}/5.2.5-6.0.0.mysql "${_DOCDIR}/upgrade/"
-  install -Dm644 ${srcdir}/5.2.5-6.0.0.pgsql "${_DOCDIR}/upgrade/"
-  install -Dm644 ${srcdir}/5.2.5-6.0.0.sqlite "${_DOCDIR}/upgrade/"
-
-  local _FULLSRCDIR="${srcdir}/${pkgname}-core-${pkgver}"
-  install -Dm644 ${_FULLSRCDIR}/plugins/core.mailer/create.mysql \
-                 "${_DOCDIR}/upgrade/6.x.x-6.4.0.mysql"
-  install -Dm644 ${_FULLSRCDIR}/plugins/core.mailer/create.pgsql \
-                 "${_DOCDIR}/upgrade/6.x.x-6.4.0.pgsql"
-  install -Dm644 ${_FULLSRCDIR}/plugins/core.mailer/create.sqlite \
-                 "${_DOCDIR}/upgrade/6.x.x-6.4.0.sqlite"
+  install -Dm644 *.sample "${_DOCDIR}/"
 }
-

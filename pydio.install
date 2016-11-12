@@ -1,79 +1,54 @@
-post_install() {
-    echo
-    echo "Example vhosts for nginx are located in :"
-    echo "  /usr/share/doc/pydio/"
-    echo
-    echo "Please set these parameters in php.ini :"
-    echo "  file_uploads = On"
-    echo "  post_max_size = 20G"
-    echo "  upload_max_filesize = 20G"
-    echo "  max_file_uploads = 20000"
-    echo "  extension=gd.so"
-    echo "  extension=curl.so"
-    echo "  extension=exif.so"
-    echo "  extension=iconv.so"
-    echo "  extension=mcrypt.so"
-    echo
-    echo "It's advised to disable output buffering to increase performances :"
-    echo "  output_buffering = Off"
-    echo
-    echo "To use background tasks, also add /var/lib/pydio to open_basedir :"
-    echo "  open_basedir = /srv/http/:[...]:/var/lib/pydio/"
-    echo
+VAR_DIR="/var/lib/pydio"
+BIN_DIR="/usr/share/webapps/pydio"
+
+clean_cache() {
+    echo "Cleaning plugin i18n cache" >&2
+    rm -f /var/lib/pydio/data/cache/i18n/*.ser
+    echo "Cleaning plugin cache" >&2
+    rm -f /var/lib/pydio/data/cache/plugins_*.ser
+    rm -f /var/lib/pydio/data/cache/plugins_bootstrap.php
+    rm -f /var/lib/pydio/data/cache/plugins_repositories.php
 }
 
-pre_upgrade() {
-    if [ $(vercmp $2 6.0.0) -lt 0 ]; then
-        echo
-        echo "Be carefull. Don't upgrade if you use files to store your config."
-        echo
-        echo "First, change your configuration to use SQL configuration storage."
-        echo
-    fi
+post_install() {
+    cat << EOM
+Apply the following configuration options for pydio to work correctly.
+See https://pydio.com/en/docs/kb/system/installing-debiannginx,
+    https://pydio.com/en/docs/kb/system/installing-archlinux#content
+
+[/etc/php/php.ini]
+
+# enable extensions
+extension=gd.so
+extension=iconv.so
+extension=intl.so
+extension=mcrypt.so
+
+# allow larger uploads
+file_uploads = On
+# Max file size you want to upload (can be expressed in Gigabytes)
+post_max_size = 1024M
+upload_max_filesize = 1024M
+
+# improve performance
+output_buffering = Off
+
+# explicitly set the session path
+session.save_path = "/tmp"
+
+# allow background tasks to run
+open_basedir = [...]:/var/lib/pydio/
+
+Example configurations for Apache and Nginx servers can be found in:
+/usr/share/doc/pydio
+EOM
 }
 
 post_upgrade() {
-    if [ $(vercmp $2 6.0.0) -lt 0 ]; then
-        echo
-        echo "5.x -> 6.0 upgrade notice :"
-        echo
-        echo "Don't forget to to upgrade your database using scripts provided"
-        echo "in /usr/share/doc/pydio/upgrade."
-        echo
-        echo "Also, please shutdown your webserver and run the following commands :"
-        echo
-        echo "# rm -rf /var/lib/pydio/cache/*.ser"
-        echo "# rm -rf /var/lib/pydio/cache/i18n/*.ser"
-        echo "# rm -rf /usr/share/webapps/pydio/plugins/downloader.http"
-        echo "# rm -rf /usr/share/webapps/pydio/plugins/auth.cas"
-        echo
-        echo "If you use nginx, you need to upgrade your vhost using the"
-        echo "examples provided in /usr/share/doc/pydio/"
-        echo
-        echo "If you use apache, you need to place new .htaccess files following"
-        echo "instructions here :"
-        echo "https://pyd.io/upgrade-pydio-5-2-5-to-6-0-0/#Modify_htaccess"
-        echo
-        echo "If you have problems after upgrade, please go to :"
-        echo "https://pyd.io/f/topic/troubleshooting-upgrade-to-v6/"
-        echo
-    fi
-    if [ $(vercmp $2 6.4.0-2) -lt 0 ]; then
-        echo
-        echo "6.x -> 6.4 upgrade notice :"
-        echo
-        echo "Don't forget to to upgrade your database using scripts provided"
-        echo "in /usr/share/doc/pydio/upgrade."
-        echo
-        echo "Also, please shutdown your webserver and run the following commands :"
-        echo
-        echo "# rm -f var/lib/pydio/cache/plugins_*.*"
-        echo "# rm -f var/lib/pydio/cache/i18n/*.*"
-        echo
-        echo "If you have problems after upgrade, please go to :"
-        echo "https://pydio.com/en/community/releases/pydio-core/pydio-core-640-sharing-ux-performances"
-        echo "or https://pydio.com/forum/f/topic/6-3-1-to-6-4-0-upgrade-withing-application-shows-no-available-upgrade/"
-        echo
-    fi
-}
+    clean_cache
 
+    cat << EOM
+If you have issues after an update, please refer to the official forum:
+https://pydio.com/forum/f/forum/troubleshooting/core-install
+EOM
+}
