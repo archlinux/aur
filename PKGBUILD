@@ -3,20 +3,35 @@
 #Contributor: Nicola Bignami <nicola@kernel-panic.no-ip.net>
 #Contributor: Muhammed Uluyol <uluyol0@gmail.com>
 
-pkgname=foo2zjs
+pkgname=foo2zjs-nightly
 pkgver=20161108
 pkgrel=1
-pkgdesc="foo2zjs Printer Drivers. Includes also foo2hp, foo2hbpl, foo2oak, foo2xqx, foo2qpdl, foo2slx, foo2hiperc and foo2lava drivers."
+pkgdesc="foo2zjs Printer Drivers (automatically updated). Includes also foo2hp, foo2hbpl, foo2oak, foo2xqx, foo2qpdl, foo2slx, foo2hiperc and foo2lava drivers."
 url="http://foo2zjs.rkkda.com/"
 license=('GPL' 'custom')
 depends=('psutils' 'cups')
-conflicts=('foo2zjs-testing')
+conflicts=('foo2zjs')
+provides=('foo2zjs')
+replaces=('foo2zjs')
 makedepends=('unzip' 'bc' 'wget' 'foomatic-db-engine')
 optdepends=('tix: required by hplj10xx_gui.tcl')
 arch=('i686' 'x86_64')
 options=('!emptydirs' '!ccache')
 install='foo2zjs.install'
-source=("foo2zjs-$pkgver.tar.gz::http://foo2zjs.rkkda.com/foo2zjs.tar.gz"
+
+pkgver() {
+	local date=$(wget -qO- 'http://foo2zjs.rkkda.com' | sed -nre 's|.*Tarball last modified: <i>(.+)</i>.*|\1|p')
+	if ! [[ "$date" ]]; then
+		error "Could not extract package last modification date '$date', please report this to the maintainer"
+		return 1
+	fi
+
+	date +%Y%m%d -u -d "$date"
+}
+
+# `source` is evaluated before `pkgver()`, so a lazy downloader will not re-download the existing source file even if version changes.
+# Hence, manually include `pkgver()` in the source file name so that it will be re-downloaded if version changes.
+source=("foo2zjs-$(pkgver).tar.gz::http://foo2zjs.rkkda.com/foo2zjs.tar.gz"
         '0001-Makefile-DESTDIR-support.patch'
         '0002-Makefile-general-fixes.patch'
         '0003-Rework-firmware-loading.patch'
