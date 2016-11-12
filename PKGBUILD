@@ -2,8 +2,8 @@
 
 pkgbase=python-traits
 pkgname=('python2-traits' 'python-traits')
-pkgver=4.5.0
-pkgrel=2
+pkgver=4.6.0
+pkgrel=1
 pkgdesc="Explicitly typed attributes for Python"
 arch=('i686' 'x86_64')
 url="https://github.com/enthought/traits"
@@ -11,7 +11,7 @@ license=('BSD')
 makedepends=('python-setuptools' 'python-numpy' 'python2-setuptools' 'python2-numpy')
 
 source=("traits-${pkgver}.tar.gz::https://github.com/enthought/traits/archive/${pkgver}.tar.gz")
-md5sums=('b77b08837afd20c1254e5d94369712cd')
+md5sums=('32516d033347e983c12d8fa482642636')
 
 prepare() {
   cd "$srcdir"
