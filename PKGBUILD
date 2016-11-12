@@ -14,12 +14,10 @@ provides=('nzbhydra')
 conflicts=('nzbhydra')
 source=("${pkgname}::git+https://github.com/theotherp/nzbhydra.git"
         "nzbhydra.sh"
-        "nzbhydra.service"
-        "nzbhydra.install")
+        "nzbhydra.service")
 sha512sums=('SKIP'
             '83aacf4f4f33af8d8cb99f1063958b44773f04ba168aaba12a303d1944a74f8ca729c483c57e2e8b8cadb7fac706d7297fc2de505a1c5608a8c09ddeee7690bf'
-            'f0f79e0bb0aee5bce474811bb113593725772e31552aa48d74465565291005a977777469ce0a7b53c10800cffa16d952b63c368e2120cc2d0ed80f7288151f12'
-            'b3605cb1e8fb70c6ca246e82a0c9e10a1659d6907f5e18f0a39e63ff33cbc55b57cfc8ee113be0ae07e0cee08859009346377ac5a51ac17dc48ff906fb6873c7')
+            'f0f79e0bb0aee5bce474811bb113593725772e31552aa48d74465565291005a977777469ce0a7b53c10800cffa16d952b63c368e2120cc2d0ed80f7288151f12')
 
 pkgver() {
     cd "$pkgname"
