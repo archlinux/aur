@@ -42,7 +42,11 @@ package() {
 
     # Create path for .dsktop file
     mkdir -p $pkgdir/usr/share/applications/
+    mkdir -p $pkgdir/usr/share/stupidterm/
 
     # Copy .desktop file to package
     cat $srcdir/st.desktop > $pkgdir/usr/share/applications/st.desktop
+
+    cat $srcdir/stupidterm/stupidterm.ini \
+        > $pkgdir/usr/share/stupidterm/stupidterm.ini
 }
