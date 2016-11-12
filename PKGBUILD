@@ -46,7 +46,7 @@ sha256sums=('75df43dbba15dafec6b100115a0ee1e444769bf9189a8eee15cc3b8d1835ecc8'
             'a817509ce1bdaf4f2c68ba5a98a931de47ddcfe1bb9f6b8fb9ed7b36b0144f03')
 
 prepare() {
-  cd "${pkgname}"
+  cd foo2zjs
 
   for p in "${source[@]:1}"; do
     patch -Np1 -i "$srcdir/$p"
@@ -59,13 +59,13 @@ prepare() {
 }
 
 build() {
-  cd "${pkgname}"
+  cd foo2zjs
 
   make all ppd
 }
 
 package() {
-  cd "${pkgname}"
+  cd foo2zjs
 
   install -d "${pkgdir}"/usr/share/{applications,pixmaps,cups/model}
 
