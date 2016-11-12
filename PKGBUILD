@@ -11,7 +11,7 @@ validpgpkeys=('748231EBCBD808A14F5E85D28C004C2F93481F6B')
 
 pkgname=('nquake')
 pkgver=2.5
-pkgrel=5
+pkgrel=6
 pkgdesc="The easiest, quickest, and most popular QuakeWorld client."
 url="http://nquake.com/"
 license=('GPL2' 'custom')
@@ -65,10 +65,10 @@ sha512sums=('5dee11708c593201e4cfb85e9c4ecbaf76e22eb076da1544af06da31680c6271352
 	    'SKIP')
 
 prepare () {
-	unzip -j "qsw106.zip" "ID1/PAK0.PAK"
-	unzip -j "qsw106.zip" "LICINFO.TXT"
-	unzip -j "qsw106.zip" "README.TXT"
-	unzip -j "qsw106.zip" "SLICNSE.TXT"
+	unzip -o -j "qsw106.zip" "ID1/PAK0.PAK"
+	unzip -o -j "qsw106.zip" "LICINFO.TXT"
+	unzip -o -j "qsw106.zip" "README.TXT"
+	unzip -o -j "qsw106.zip" "SLICNSE.TXT"
 }
 
 package () {
