@@ -4,6 +4,16 @@ set -u
 set -e
 # set -x
 
+HASH=sha256
+
+# Check if running outside the initramfs environment
+if ! type resolve_device &>/dev/null; then
+  # Setup enough of the early userspace environment that resolve_device works
+  source /usr/lib/initcpio/init_functions
+  udevd_running=$(ps aux | grep udevd | grep -v grep | wc -l)
+  rootdelay=1
+fi
+
 usage () {
   cat <<HELPEOF
   nannycam -k keyfile -m hash -p hash [-e hash]
@@ -57,15 +67,19 @@ hash_mismatch () {
 
 There was a mismatch in the expected and actual hash values for
 critical boot programs. Either a misconfiguration has occurred or
-a malicious actor has modified this programs. It is advised that
-you restore the MBR, Post MBR Gap, and (if using EFI) the EFI Stub
-from secure backups. Do NOT enter your root device passphrase 
-unless you are certain this is a misconfiguration.
+a malicious actor has modified one or more of these programs. It 
+is advised that you restore the MBR, Post MBR Gap, and (if using 
+EFI) the EFI Stub from secure backups. Do NOT enter your root 
+device passphrase unless you are certain this is a 
+misconfiguration.
 
-         Expected Hash      Actual Hash
-MBR      $EXPECTED_MBR_HASH $ACTUAL_MBR_HASH
-MBR Gap  $EXPECTED_MBR_GAP_HASH $ACTUAL_MBR_GAP_HASH
-EFI Stub $EXPECTED_EFI_STUB_HASH $ACTUAL_EFI_STUB_HASH
+Hashing algorithm: $HASH
+MBR      (expected) $EXPECTED_MBR_HASH 
+MBR      (actual)   $ACTUAL_MBR_HASH
+MBR Gap  (expected) $EXPECTED_MBR_GAP_HASH
+MBR Gap  (actual)   $ACTUAL_MBR_GAP_HASH
+EFI Stub (expected) $EXPECTED_EFI_STUB_HASH
+EFI Stub (actual)   $ACTUAL_EFI_STUB_HASH
 
 WARNEOF
 ) >&2
@@ -76,16 +90,67 @@ WARNEOF
   done
 }
 
+determine_mbr_boot_device () {
+  local possibleDevices=$(parted -s -m -l \
+    | sed -e 's/^$/\x00/' \
+    | tr -d '\n' \
+    | tr '\0' '\n' \
+    | egrep ';([^:]*:){6}boot' \
+    | cut -f 2 -d ';' \
+    | cut -f 1 -d ':')
+  [ $(echo "$possibleDevices" | wc -l) -eq 1 ] \
+    || ( echo "Expected exactly one partition with boot flag set, aborting." >&2; exit 5 )
+  echo "$possibleDevices"
+}
+
 check_mbr () {
-  echo "TODO: Calculate MBR HASH"
+  local mbrDevice=$(determine_mbr_boot_device)
+  # dd if="$mbrDevice" of=/tmp/mbr.bin bs=512 count=1
+  ACTUAL_MBR_HASH="$(openssl dgst -$HASH /tmp/mbr.bin | cut -f 2 -d ' ')"
+  # rm /tmp/mbr.bin
+  [[ "$EXPECTED_MBR_HASH" == "$ACTUAL_MBR_HASH" ]]
 }
 
 check_mbr_gap () {
-  echo "TODO: Calculate MBR Gap Hash"
+  local mbrDevice=$(determine_mbr_boot_device)
+  # local part_start=$(parted -s -m "$mbrDevice" unit b print | egrep '^1:' | cut -f 2 -d ':' | tr -d 'Bb')
+  # local blocks=$(( part_start / 512 ))
+  # local check=$(( $blocks * 512 ))
+  # [ $part_start -eq $check ] || ( echo "Partition doesn't start at 512 byte boundary! Aborting." >&2; exit 3 )
+  # dd if="$mbrDevice" of=/tmp/gap.bin bs=512 skip=1 count=$blocks
+  ACTUAL_MBR_GAP_HASH="$(openssl dgst -$HASH /tmp/gap.bin | cut -f 2 -d ' ')"
+  # rm /tmp/gap.bin
+  [[ "$EXPECTED_MBR_GAP_HASH" == "$ACTUAL_MBR_GAP_HASH" ]]
+}
+
+check_already_mounted () {
+  local device="$1"
+  echo $(mount | grep "^$device on" | cut -f 3 -d ' ')
 }
 
 check_efi_stub () {
-  echo "TODO: Check EFI Stub hash"
+  # Don't bother checking efi stub if booting in MBR mode
+  if ! mount | grep efivarfs &>/dev/null; then
+    return 0
+  fi
+  # Determine which EFI stub was used
+  local bootinfo="$(efibootmgr -v)"
+  local currentNum=$(echo "$bootinfo" | egrep '^BootCurrent:' | cut -f 2 -d ' ')
+  local current=$(echo "$bootinfo" | grep "^Boot$currentNum\*")
+  # TODO: Support other boot devices other than ESP System Partitions
+  local partitionAndPath=$( echo "$current" | \
+    sed -nre 's_^.*HD\([0-9]+,GPT,([^,]{36}),[^)]+\)/File\(([^)]+)\)_\1\2_p')
+  local partitionUUID=$(echo "$partitionAndPath" | head -c 36 )
+  # TODO: Determine how escaped paths work with efibootmgr
+  local path=$(echo "$partitionAndPath" | tail -c +37 | tr '\\' '/' )
+  local mountDevice=$(resolve_device PARTUUID=$partitionUUID)
+  local mountPoint=$(check_already_mounted "$mountDevice")
+  if [ -z "$mountPoint" ]; then
+    mountPath="/tmp/efi"
+    mount $mountDevice $mountPoint
+  fi
+  ACTUAL_EFI_STUB_HASH=$(openssl dgst -$HASH "$mountPoint$path" | cut -f 2 -d ' ')
+  [[ "$EXPECTED_EFI_STUB_HASH" == "$ACTUAL_EFI_STUB_HASH" ]]
 }
 
 while getopts ":k:m:p:e:" opt; do
@@ -117,6 +182,11 @@ done
 [ -z ${EXPECTED_MBR_GAP_HASH:-} ] && err_required_arg p
 [ -z ${EXPECTED_EFI_STUB_HASH:-} ] && err_required_arg e
 
+if [[ "0" != "$(id -u)" ]]; then
+  echo "Must be run as root." >&2
+  exit 4
+fi
+
 ACTUAL_MBR_HASH="not checked"
 ACTUAL_MBR_GAP_HASH="not checked"
 ACTUAL_EFI_STUB_HASH="not checked"
@@ -126,12 +196,10 @@ if [ ! -f "$KEYFILE" ]; then
   exit 2
 fi
 
-check_mbr || hash_mismatch
-check_mbr_gap || hash_mismatch
-check_efi_stub || hash_mismatch
+check_mbr && check_mbr_gap && check_efi_stub || hash_mismatch
 
 DATE_TIME="$(date +%s)"
-echo -n "$DATE_TIME" | openssl pkeyutl -inkey "$KEYFILE" -sign | qrencode -t UTF8 -m0
+echo -n "$DATE_TIME" | openssl pkeyutl -inkey "$KEYFILE" -sign | qrencode -8 -t ANSIUTF8 -m1
 echo "$DATE_TIME"
 
 response=""

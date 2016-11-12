@@ -5,6 +5,7 @@ pkgbase = mkinitcpio-nannycam
 	url = https://wiki.archlinux.org/index.php/User:Mwberry/mkinitcpio-nannycam
 	arch = any
 	license = GPL2
+	depends = parted
 	depends = openssl
 	depends = qrencode
 	depends = bash

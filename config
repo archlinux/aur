@@ -1,0 +1,46 @@
+###############################
+# nannycam configuration file
+#
+# (this is an ash-shell snippet)
+################################
+
+# The authentication key is what is used to prove
+# that the encrypted boot partition has not been
+# completely replaced with one created by the attacker
+
+# Where to store the file in the initramfs
+auth_key_file=/boot_partition_auth.pem
+
+# RSA key size, in bits
+# Note: The size of the key determines the size of the
+# signature. The size of the signature determines the
+# size of the QR code that will be printed to the terminal.
+# Pick the largest key size that fits on your monitor
+auth_key_length=4096
+
+
+# Hashes of important boot programs
+
+# The hashing algorithm to use
+hash_alg=sha256
+
+# Expected hash values
+# Note: These are calculated for you each time mkinitcpio
+# runs. The only time you would want to uncomment these is
+# if the logic in the install hook incorrectly detects your
+# configuration and you want to override the logic.
+
+# The hash of the MBR 
+# (first 512 bytes of disk housing partition with boot flag set)
+# expected_mbr_hash=
+
+# The hash of the Post-MBR Gap
+# (bytes from the end of the MBR to the start of the first partition)
+# expected_mbr_gap_hash=
+
+# The hash of the EFI stub used to boot
+# (hash of the file invoked by the UEFI firmware, likely /EFI/grub/grubx64.efi)
+# Note: Only checked when booting via UEFI
+# Note: MBR and Post MBR Gap are still checked when booting via UEFI
+# expected_efi_stub_hash=
+
