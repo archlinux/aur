@@ -1,10 +1,10 @@
 # Maintainer: Levente Polyak <levente[at]leventepolyak[dot]net>
 
 pkgname=radamsa-git
-pkgver=0.5.325.5c67b3c
+pkgver=0.5.334.cbff4db
 pkgrel=1
-pkgdesc="General purpose mutation based fuzzer"
-url="https://github.com/aoh/radamsa"
+pkgdesc='General purpose mutation based fuzzer'
+url='https://github.com/aoh/radamsa'
 arch=('i686' 'x86_64')
 license=('MIT')
 depends=('glibc')
@@ -16,12 +16,14 @@ sha512sums=('SKIP')
 
 pkgver() {
   cd ${pkgname}
-  printf "%s.%s.%s" "$(git describe --tags --abbrev=0|cut -dv -f2)" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  printf "%s.%s.%s" "$(git describe --tags --abbrev=0|cut -dv -f2)" \
+    "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
   cd ${pkgname}
-  sed -ri '/make get-owl/d' Makefile
+  sed -r 's|(.*) bin/ol|\1|g' -i Makefile
+  sed -r 's|bin/ol |/usr/bin/ol |g' -i Makefile
 }
 
 build() {
