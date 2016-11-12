@@ -2,15 +2,14 @@
 # Contributor: Lance Chen <cyen0312@gmail.com>
 
 pkgname=enjarify-git
-pkgver=1.0.0.29.bf9033b
+pkgver=1.0.2.57.2a94b40
 pkgrel=1
-pkgdesc="Translates Dalvik bytecode to equivalent Java bytecode"
-url="https://github.com/google/enjarify"
+pkgdesc='Translates Dalvik bytecode to equivalent Java bytecode'
+url='https://github.com/google/enjarify'
 arch=('any')
 license=('Apache')
 depends=("python")
 makedepends=('git')
-checkdepends=('java-runtime')
 provides=('enjarify')
 conflicts=('enjarify')
 source=(${pkgname}::git+https://github.com/google/enjarify)
@@ -25,6 +24,9 @@ pkgver() {
 prepare() {
   cd ${pkgname}
   sed -r 's| -Xss515m||g' -i enjarify/runtests.py
+  sed 's|for bits in range(256):|for opts in [options.NONE, options.PRETTY, options.ALL]:|' -i enjarify/hashtests.py
+  sed '/options.Options/d' -i enjarify/hashtests.py
+  sed 's|bits|0|g' -i enjarify/hashtests.py
 }
 
 build() {
@@ -35,7 +37,7 @@ build() {
 
 check() {
   cd ${pkgname}
-  LC_CTYPE=en_US.UTF-8 python -m enjarify.runtests
+  LC_CTYPE=en_US.UTF-8 python -m enjarify.hashtests
 }
 
 package() {
