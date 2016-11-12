@@ -2,8 +2,8 @@ post_install() {
   post_remove
   echo "The aasjournal.bst file was installed in:"
   kpsewhich aasjournal.bst
-  echo "The aastex6.cls file was installed in:"
-  kpsewhich aastex6.cls
+  echo "The aastex61.cls file was installed in:"
+  kpsewhich aastex61.cls
 }
 
 post_upgrade() {

@@ -1,0 +1,30 @@
+From 9cc9f4b6f91293d69ecc334c222691c6775722c1 Mon Sep 17 00:00:00 2001
+From: Josiah Schwab <jschwab@gmail.com>
+Date: Sat, 12 Nov 2016 10:38:49 -0800
+Subject: [PATCH] Apply temporary Linux work around for V6.1
+
+http://journals.aas.org/authors/aastex/linux.html
+---
+ aastex61.cls | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/aastex61.cls b/aastex61.cls
+index 41adeb1..563ac9a 100644
+--- a/aastex61.cls
++++ b/aastex61.cls
+@@ -6318,9 +6318,9 @@ width 0pt\relax\fi}}}
+ }%
+ 
+ 
+-%% get rid of \jobname Notes being sent to .aux file:
+-\let\bibdata@app\relax
+-\def\pre@bibdata{}
++% %% get rid of \jobname Notes being sent to .aux file:
++% \let\bibdata@app\relax
++% \def\pre@bibdata{}
+ 
+ \def\frontmatter@author@produce@script{%
+   \begingroup
+-- 
+2.10.2
+
