@@ -1,26 +1,13 @@
 post_install() {
-  getent group cowrie > /dev/null || groupadd cowrie
-  getent passwd cowrie > /dev/null || \
+  getent group cowrie &> /dev/null || groupadd cowrie
+  getent passwd cowrie &> /dev/null || \
     useradd -d /opt/cowrie -g cowrie -s /bin/nologin cowrie
 
-  mkdir -p /opt/cowrie/log/tty /opt/cowrie/dl
   chown -R cowrie:cowrie /opt/cowrie
-
-  cat /usr/share/doc/cowrie-git/INSTALL
 }
 
 post_upgrade() {
   post_install
-}
-
-pre_remove() {
-  if [[ -f /opt/cowrie/cowrie.pid ]]; then
-    systemctl stop cowrie
-  fi
-}
-
-post_remove() {
-  userdel cowrie
 }
 
 # vim: ts=2 sw=2 et:
