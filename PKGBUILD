@@ -4,21 +4,23 @@
 pkgbase=linux-bcache-git
 _srcname=linux-4.7.0
 pkgver=4.7.0
-pkgrel=1.21
+pkgrel=1.1
 arch=('i686' 'x86_64')
 url="https://github.com/alyptik/linux-bcache-git"
 license=('GPL3')
 makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc' 'elfutils' 'git')
 options=('!strip')
-source=("${srcdir}/${_srcname}::git+http://evilpiepirate.org/git/linux-bcache.git#branch=bcache-dev"
+source=('linux-bcache-git::git+https://evilpiepirate.org/git/linux-bcache.git#branch=bcache-dev'
         'change-default-console-loglevel.patch'
         # standard config files for mkinitcpio ramdisk
         'linux.preset'
+        'config.custom'
         # the main kernel config files
         'config' 'config.x86_64')
 sha256sums=('SKIP'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
             '66f38f7c5da412714230d8736ca58d351117968630b093a50f75884161c47652'
+            '6626f29787cae5e7c5fe55460ea13571ce0db340f51d49af71484118731a75fe'
             '0e22f8e6086b91b3b5f7d59375879431332f2f3d187d6124d82f6837b4ac3894'
             '652ca340be5ea4fb36c0f69c457448ffcce96be0e32b48f9bf7ea5a77b3160c3')
 validpgpkeys=(
@@ -27,12 +29,16 @@ validpgpkeys=(
              )
 
 _kernelname=${pkgbase#linux}
+## Change to no to use default config
+custom='y'
+## Change to no to skip nconfig
+nconfig='y'
 
 prepare() {
   # Clone kernel bcache-dev kernel repository.
-  #git clone -b bcache-dev "https://evilpiepirate.org/git/linux-bcache.git" "${srcdir}/${_srcname}"
+  #git clone -b bcache-dev "https://evilpiepirate.org/git/linux-bcache.git" "${srcdir}/${pkgbase}"
 
-  cd "${srcdir}/${_srcname}"
+  cd "${srcdir}/${pkgbase}"
 
   # add upstream patch
   #patch -p1 -i "${srcdir}/patch-${pkgver}"
@@ -46,7 +52,8 @@ prepare() {
   patch -p1 -i "${srcdir}/change-default-console-loglevel.patch"
 
   if [ "${CARCH}" = "x86_64" ]; then
-    cat "${srcdir}/config.x86_64" > ./.config
+    [ "$custom" = 'y' ] && cat "${srcdir}/config.custom" > ./.config || cat "${srcdir}/config.x86_64" > ./.config
+    #cat  "/@media/microSDXC/arch-aur/linux-surfacepro3/sp3.config" > ./.config
   else
     cat "${srcdir}/config" > ./.config
   fi
@@ -69,12 +76,8 @@ prepare() {
   #make oldconfig # using old config from previous kernel version
   # ... or manually edit .config
   #make nconfig # new CLI menu for configuration
-  printf '\n \033[32m %s \033[0m ' "[Run interactive nconfig? (Y/n)]"; read -r; echo
-  case $REPLY in
-          [Yy]*|'') make nconfig ;; # new CLI menu for configuration
-          [Nn]*) printf ' \033[31m %s \n\033[0m ' "Continuing..."; make olddefconfig ;;
-          *) printf ' \033[31m %s \n\033[0m ' "Invalid input..."; return 1 ;;
-  esac
+
+  if [ "$nconfig" = y ]; then make nconfig; else gmake olddefconfig; fi
 
   # get kernel version
   make prepare
@@ -84,7 +87,7 @@ prepare() {
 }
 
 build() {
-  cd "${srcdir}/${_srcname}"
+  cd "${srcdir}/${pkgbase}"
 
   make ${MAKEFLAGS} LOCALVERSION= bzImage modules
 }
@@ -97,7 +100,7 @@ _package() {
   backup=("etc/mkinitcpio.d/${pkgbase}.preset")
   install=linux.install
 
-  cd "${srcdir}/${_srcname}"
+  cd "${srcdir}/${pkgbase}"
 
   KARCH=x86
 
@@ -153,7 +156,7 @@ _package-headers() {
 
   install -dm755 "${pkgdir}/usr/lib/modules/${_kernver}"
 
-  cd "${srcdir}/${_srcname}"
+  cd "${srcdir}/${pkgbase}"
   install -D -m644 Makefile \
     "${pkgdir}/usr/lib/modules/${_kernver}/build/Makefile"
   install -D -m644 kernel/Makefile \
@@ -279,7 +282,7 @@ _package-headers() {
 _package-docs() {
   pkgdesc="Kernel hackers manual - HTML documentation that comes with the ${pkgbase/linux/Linux} kernel"
 
-  cd "${srcdir}/${_srcname}"
+  cd "${srcdir}/${pkgbase}"
 
   mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build"
   cp -al Documentation "${pkgdir}/usr/lib/modules/${_kernver}/build"
