@@ -5,7 +5,7 @@
 _pkgname=powerlevel9k
 pkgname=zsh-theme-${_pkgname}
 pkgver=0.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Powerlevel9k theme for zsh'
 arch=('any')
 url='https://github.com/bhilburn/powerlevel9k'
@@ -21,7 +21,7 @@ optdepends=('oh-my-zsh-git: oh-my-zsh integration'
   'git: status of repository'
   'mercurial: status of repository')
  
-source=("https://github.com/bhilburn/powerlevel9k/archive/v${pkgver}.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/bhilburn/powerlevel9k/archive/v${pkgver}.tar.gz")
 sha512sums=('5e2167e20312c97965391592a4621d91678f1f9b8e89374380f38535e87dfa2c02db9bb5ff287c2642c9b9217cc3370444ed6c5fd7d7e3492d7f8bfd1fa02d73')
 provides=("zsh-theme-${_pkgname}")
 conflicts=("zsh-theme-${_pkgname}")
