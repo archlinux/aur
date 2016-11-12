@@ -1,0 +1,15 @@
+pkgbase = juman++
+        pkgdesc = Morphological Analyzer for Japanese
+        pkgver = 1.01
+        pkgrel = 1
+        url = http://nlp.ist.i.kyoto-u.ac.jp/index.php?JUMAN++
+        arch = i686
+        arch = x86_64
+        license = custom
+        depends = gperftools
+        depends = boost
+        depends = libunwind
+        source = http://nlp.ist.i.kyoto-u.ac.jp/DLcounter/lime.cgi?down=http://lotus.kuee.kyoto-u.ac.jp/nl-resource/jumanpp/jumanpp-1.01.tar.xz
+        sha1sums = ade88cc73f44d71de8d21ea89ca5608cb5e33332
+
+pkgname = juman++
