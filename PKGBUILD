@@ -1,7 +1,7 @@
 # Maintainer: Javier Torres <javitonino [at] gmail [dot] com>
 
 pkgname=php56-kolabformat
-pkgver=1.1.2
+pkgver=1.1.6
 pkgrel=1
 pkgdesc='PHP bindings for Kolab XML Format Schema Definitions Library'
 url='http://www.kolab.org'
@@ -12,7 +12,7 @@ makedepends=('cmake' 'boost' 'xsd' 'qt4' 'swig')
 provides=('php-kolabformat')
 source=("http://mirror.kolabsys.com/pub/releases/libkolabxml-${pkgver}.tar.gz"
         "php56.patch")
-sha256sums=('1de632572da1421c0e4b580cba763932bc943d457743abc7fb836e6200861fac'
+sha256sums=('e48d7f5de1860a381da27981f6c70de1c9f38c4cd536bc6558b6529ce95f0677'
             'c7162b0078d16d3a82d961b6da6b7862fae81e4a04b2e5fddeb7306af302f661')
 
 prepare() {
