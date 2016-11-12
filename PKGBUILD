@@ -10,7 +10,7 @@
 # under /usr/include/pd-l2ork.
 
 pkgname=pd-l2ork
-pkgver=20161016.r1719.c925f2c
+pkgver=20161111.r1721.8951fb0
 pkgrel=1
 pkgdesc="L2Ork (Linux Laptop Orchestra) version of PureData"
 url="http://l2ork.music.vt.edu/main/?page_id=56"
@@ -27,7 +27,7 @@ makedepends=('autoconf' 'automake' 'libtool' 'git' 'rsync')
 conflicts=('pd-l2ork')
 install=pd-l2ork.install
 options=('!makeflags')
-source=("$pkgname::git+https://github.com/pd-l2ork/pd.git#commit=c925f2ca34a0a3682fd68f82fe1f843389ecd2af"
+source=("$pkgname::git+https://github.com/pd-l2ork/pd.git#commit=8951fb0cba3706c12037c4cb63c617ea850f7584"
 	"Gem-pix_colorclassify.patch"
 	"RTcmix-pd-LCPLAY-stabilize.patch")
 md5sums=('SKIP'
