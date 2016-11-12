@@ -1,6 +1,6 @@
 pkgbase = pstate-frequency
 	pkgdesc = Easily control Intel p-state driver
-	pkgver = 3.6.1
+	pkgver = 3.6.3
 	pkgrel = 1
 	url = https://github.com/pyamsoft/pstate-frequency
 	arch = i686
@@ -9,9 +9,9 @@ pkgbase = pstate-frequency
 	optdepends = x86_energy_perf_policy: For the x86_energy_perf_policy-sleep.service
 	provides = pstate-frequency
 	conflicts = pstate-frequency
-	source = https://github.com/pyamsoft/pstate-frequency/archive/3.6.1.tar.gz
+	source = https://github.com/pyamsoft/pstate-frequency/archive/3.6.3.tar.gz
 	source = 00-fix-prefix.patch
-	sha256sums = 8c2491fe696569ed86be4a69dff0475c9de762faf6fc7ae452c7f0acd90d8150
+	sha256sums = 0d9fe82a70a0c7b78819b17ba96e22090a9ae5ffee6b18c5c4c26b1e638c9df9
 	sha256sums = e5423df20c03ef19448a78a1ae39e630d90f63c6c4e0962296ad292665575f0d
 
 pkgname = pstate-frequency
