@@ -1,6 +1,6 @@
 # Maintainer: Baptiste Jonglez <baptiste--aur at jonglez dot org>
 pkgname=libringclient-git
-pkgver=20160908
+pkgver=20161110
 pkgrel=1
 pkgdesc="Client communication library for ring.cx (formerly known as SFLphone)"
 arch=("i686" "x86_64")
