@@ -1,13 +1,17 @@
 #!/bin/bash
 
+_version=20161112.1
 
 ##### Dependencies. #####
 #
 # On Arch Linux, this script depends on the following packages (in brackets the bare commands it uses):
+#   * bash: For running this script. ('bash')
 #   * dnsmasq: For DHCP and DNS. ('dnsmasq')
+#   * iptables: For configuring NAT/ masquerading. ('iptables')
 #   * net-tools: For configuring IP information of the network interface. ('ifconfig')
 #   * wireless_tools: For configuration of wireless network interface. ('iwconfig')
 #   * wpa_supplicant: For WPA-encryption. ('wpa_supplicant', 'wpa_passphrase')
+#   * ... and standard tools like grep, sed, awk ...
 #
 ##### #####
 
@@ -20,6 +24,8 @@ _datetime="$(date +%Y-%m-%d_%H-%M-%S)"
 _iface_default="wlan0"
 _ip_default="192.168.101.3"
 _netmask_default="255.255.255.0"
+_out_iface_all_default="true"
+_out_iface_default="<all>"
 _dhcprange_lower_suffix_default="121"
 _dhcprange_upper_suffix_default="199"
 _macaddress_change_default="false"
@@ -29,9 +35,11 @@ _channel_default="8"
 _encryption_default="off"
 _enckey_default="please_specify_a_non_default_key"
 _wifimode_default="ad-hoc"
-_no_wifi_default="false" # Set to true if we do not wifi-configure the interface (e.g. if already configured or it's not wifi).
-_no_ipconfig_default="false" # Set to true if we do not want to ip-configure the interface (e.g. if already configured).
+_no_wifi_default="false"
+_no_ipconfig_default="false"
+_no_nat_default="false"
 _tftp_root_default="/tftpboot"
+_no_tftp_default="false"
 _verbose_default="false"
 _debug_default="false"
 _rundir_base_default="/var/run/adhocspot"
@@ -191,6 +199,68 @@ get_ipconfig() {
   fi
   
   echo "inet ${_ipaddr} ${_nmtext}${_updown}"
+}
+
+get_nat_interfaces() {
+  # Returns a newline-separated list of interfaces to add masquerading to their postrouting queue. Examines $_out_iface_all: If $_out_iface_all is true, returns all available interfaces whose name does not start with 'lo'. Otherwise, returns ${_out_iface}.
+  _nat_ifaces=""
+  if "${_out_iface_all}"; then
+    _nat_ifaces="$(ifconfig -a | grep -E '^[^[[:space:]]]*' | awk '{print $1}' | sed 's|\:$||g')"
+  else
+    _nat_ifaces="${_out_iface}"
+  fi
+  echo "${_nat_ifaces}"
+}
+
+get_rp_filter_status() {
+  # Arguments: $1: Space-, tab- or newline-separated list of interfaces to check rp_filter value.
+  if [ $# -lt 1 ]; then
+    exiterror "$0: In function 'get_nat_status': Error: Need list of interfaces as option."
+  fi
+  for _nat_iface in $1; do
+    echo "${_nat_iface} $(cat "/proc/sys/net/ipv4/conf/${_nat_iface}/rp_filter")"
+  done
+}
+
+get_ipv4_forward_status() {
+  cat "/proc/sys/net/ipv4/ip_forward"
+} 
+
+configure_nat() {
+  # Arguments:
+  # $1: Space-, tab- or newline-separated list of interfaces to add masquerading to their postrouting queue.
+  if [ $# -lt 1 ]; then
+    exiterror "$0: In function 'configure_nat': Error: Need list of interfaces as option."
+  fi
+  get_rp_filter_status "$1" > "${_rp_filter_statusfile}"
+  get_ipv4_forward_status > "${_ipv4_forward_statusfile}"
+  verbose "Configuring IPv4 forwarding"
+  echo 1 > /proc/sys/net/ipv4/ip_forward
+  for _nat_iface in $1; do
+    verbose "Configuring masquerading and disabling rp_filter on ${_nat_iface}."
+    iptables -t nat -A POSTROUTING -j MASQUERADE -o "${_nat_iface}"
+    echo 0 > "/proc/sys/net/ipv4/conf/${_nat_iface}/rp_filter"
+  done
+}
+
+deconfigure_nat() {
+  if [ -e "${_rp_filter_statusfile}" ]; then
+    cat "${_rp_filter_statusfile}" | while read _line; do
+      _nat_iface="$(echo "${_line}" | awk '{print $1}')"
+      _rp_value="$(echo "${_line}" | awk '{print $2}')"
+      verbose "Setting rp_filter to ${_rp_value} on ${_nat_iface}."
+      echo "${_rp_value}" > "/proc/sys/net/ipv4/conf/${_nat_iface}/rp_filter"
+    done
+    rm -f "${_rp_filter_statusfile}"
+  fi
+  if [ -e "${_ipv4_forward_statusfile}" ]; then
+    _fwd="$(cat "${_ipv4_forward_statusfile}")"
+    verbose "Setting IPv4 forwarding to ${_fwd}."
+    echo "${_fwd}" > /proc/sys/net/ipv4/ip_forward
+    rm -f "${_ipv4_forward_statusfile}"
+  fi
+  verbose "Removing all entries from the 'nat' firewall table."
+  iptables -t nat -F
 }
 
 configure_ip() {
@@ -381,14 +451,21 @@ start_dnsmasq() {
     # "--bind-interfaces"
     "--dhcp-range=${_dhcprange_lower},${_dhcprange_upper},24h"
     "--read-ethers"
-    "--enable-tftp"
-    "--tftp-root=${_dnsmasq_tftproot}"
-    "--tftp-no-fail"
     "--conf-file=/dev/null"
   )
+  if "${_no_tftp}"; then
+    _dnsmasq_tftp_options=(
+    )
+  else
+    _dnsmasq_tftp_options=(
+      "--enable-tftp"
+      "--tftp-root=${_dnsmasq_tftproot}"
+      "--tftp-no-fail"
+    )
+  fi
   
   verbose "Starting dnsmasq."
-  dnsmasq "${_dnsmasq_debug_options[@]}" "${_dnsmasq_general_options[@]}" || {
+  dnsmasq "${_dnsmasq_debug_options[@]}" "${_dnsmasq_general_options[@]}" "${_dnsmasq_tftp_options[@]}" || {
     _dnsmasq_error="$?"
     exiterror "$0: Error: dnsmasq failed to start with exitcode ${_dnsmasq_error}. Aborting." "${_dnsmasq_error}"
   }
@@ -447,6 +524,8 @@ string_whitelist() {
 _iface="${_iface_default}"
 _ip="${_ip_default}"
 _netmask="${_netmask_default}"
+_out_iface_all="${_out_iface_all_default}"
+_out_iface="${_out_iface_default}"
 # _dhcprange_lower is set after parsing the options.
 # _dhcprange_upper is set after parsing the options.
 _macaddress_change="${_macaddress_change_default}"
@@ -458,7 +537,9 @@ _enckey="${_enckey_default}"
 _wifimode="${_wifimode_default}"
 _no_wifi="${_no_wifi_default}"
 _no_ipconfig="${_no_ipconfig_default}"
+_no_nat="${_no_nat_default}"
 _tftp_root="${_tftp_root_default}"
+_no_tftp="${_no_tftp_default}"
 _verbose="${_verbose_default}"
 _debug="${_debug_default}"
 _rundir_base="${_rundir_base_default}"
@@ -473,22 +554,34 @@ printusage() {
   echo "  down | stop                       Stop the thing."
   echo "  stat | status | state | show      Show the status of the thing."
   echo "  -h   | --help | help              Print this message and exit."
+  echo "  -V   | --version                  Print version number and exit. (Version is: '${_version}'.)"
   echo ""
   echo "Arguments (all optional):"
   echo "  -h   | --help | help              Print this message and exit."
+  echo "  -V   | --version                  Print version number and exit. (Version is: '${_version}'.)"
   echo "  -v   | --verbose                  Print information as we go on/ start daemons verbosely."
   echo "  -d   | --debug                    Print debug output/ start daemons with debug output."
   echo "                                    Implies verbose."
-  echo "  -i   | --iface <iface>            Interface to use (default: ${_iface_default})."
+  echo "  -i   | --iface <iface>            Interface on which the connection should be made available"
+  echo "                                    (default: ${_iface_default})."
   echo "                                    Only characters out of the set [a-zA-Z0-9\._\-] are allowed."
-  echo "  -ip  | --ip <ip>                  IPv4-address to set the interface to (default: ${_ip_default})."
-  echo "  -nm  | --netmask <netmask>        Netmask to use (default: ${_netmask_default})."
-  echo "  -m   | --mac <MAC-address>        Set the MAC-address of the interface (defaults to"
-  echo "                                    the interface's native MAC-address)."
-  echo "  -ni  | --no-ipconfig              If specified, do not configure IP information for the"
+  echo "  -ip  | --ip <ip>                  IPv4-address to configure this interface to (default: ${_ip_default})."
+  echo "  -nm  | --netmask <netmask>        Netmask to use on this interface (default: ${_netmask_default})."
+  echo "  -m   | --mac <MAC-address>        Set the MAC-address of this interface (defaults to the"
+  echo "                                    interface's native MAC-address)."
+  echo "  -ni  | --no-ipconfig              If specified, do not configure IP information for this"
   echo "                                    interface. Useful e.g. if already configured."
   echo "                                    Specifying this option, the following won't be configured:" 
   echo "                                    IP-address, netmask, MAC-address."
+  echo "  -o   | --out-iface <iface>        If specified, configure masquerading ('NAT') only for"
+  echo "                                    packages leaving on this interface (usually this is your"
+  echo "                                    interface which connects to the internet, not the one"
+  echo "                                    specified by the option '-i' / '--iface')."
+  echo "                                    Only characters out of the set [a-zA-Z0-9\._\-] are allowed."
+  echo "                                    If not specified, NAT will be configured on all available non-"
+  echo "                                    local interfaces (determined by name starting with 'lo')."
+  echo "  -nn  | --no-nat                   If specified, do not configure and deconfigure network address"
+  echo "                                    translation, forwarding and masquerading."
   echo "  -dl  | --dhcp-lower <dhcp-ip>     Lower end of the range of IP-addresses to assign to"
   echo "                                    clients. The default is the first three numbers of our"
   echo "                                    IP-address, and then ${_dhcprange_lower_suffix_default}, e.g. ${_dhcprange_lower}"
@@ -510,8 +603,8 @@ printusage() {
   echo "                                    Specifying this option, the following won't be configured:" 
   echo "                                    WiFi-mode, ESSID, channel, encryption type, encryption key."
   echo "  -tf  | --tftp-root <dir>          Directory where to serve files for TFTP network boot from"
-  echo "                                    (default: ${_tftp_root_default}). Set to something nonextisting"
-  echo "                                    to disable functionality."
+  echo "                                    (default: ${_tftp_root_default})"
+  echo "  -nt  | --no-tftp                  If specified, do not provide a TFTP server."
   echo "  -r   | --rundir <directory>       Where to store and look for runtime information"
   echo "                                    (default: ${_rundir_base_default}). It get's created if nonextisting."
   echo ""
@@ -544,6 +637,10 @@ case "${_action}" in
     printusage
     exit 0
   ;;
+  "-V"|"--version")
+    msg "${_version}"
+    exit 0
+  ;;
   *)
     errmsg "$0: Error: Invalid action '${_action}' specified."
     errmsg ""
@@ -561,6 +658,12 @@ while [ $# -ge 1 ]; do
     "-h"|"--help"|"help")
       shift
       printusage
+      exit 0
+    ;;
+    
+    "-V"|"--version")
+      shift
+      msg "${_version}"
       exit 0
     ;;
     
@@ -609,6 +712,26 @@ while [ $# -ge 1 ]; do
     "-ni"|"--no-ipconfig")
       shift
       _no_ipconfig='true'
+    ;;
+    
+    "-o"|"--out-iface")
+      shift
+      if [ $# -ge 1 ]; then
+        _out_iface_all="false"
+        _out_iface="$1"
+      else
+        errmsg "$0: Error: Too few arguments for option '-o' or '--out-iface': Need to specify an interface."
+        errmsg ""
+        errmsg "$(printusage)"
+        errmsg ""
+        exiterror "Aborting." 16
+      fi
+      shift
+    ;;
+    
+    "-nn"|"--no-nat")
+      shift
+      _no_nat='true'
     ;;
     
     "-dl"|"--dhcp-lower")
@@ -801,6 +924,11 @@ while [ $# -ge 1 ]; do
       shift
     ;;
     
+    "-nt"|"--no-tftp")
+      shift
+      _no_tftp='true'
+    ;;
+    
     "-r"|"--rundir")
       shift
       if [ $# -ge 1 ]; then
@@ -855,6 +983,9 @@ _origmacfilebase='macaddress.orig'
 _origifconfigfilebase='ifconfig.orig'
 _wificonfiguredfilebase='wifi.orig'
 _startedatfilebase='datetime.txt'
+_rp_filter_statusfilebase='rp_filter.orig'
+_ipv4_forward_statusfilebase='ipv4_forward.orig'
+_nat_configuredfilebase='nat_configured'
 
 _wpa_ctrl="${_rundir}/${_wpa_ctrlfilebase}"
 _wpa_pidfile="${_rundir}/${_wpa_pidfilebase}"
@@ -865,6 +996,9 @@ _origmacfile="${_rundir}/${_origmacfilebase}"
 _origifconfigfile="${_rundir}/${_origifconfigfilebase}"
 _wificonfiguredfile="${_rundir}/${_wificonfiguredfilebase}"
 _startedatfile="${_rundir}/${_startedatfilebase}"
+_rp_filter_statusfile="${_rundir}/${_rp_filter_statusfilebase}"
+_ipv4_forward_statusfile="${_rundir}/${_ipv4_forward_statusfilebase}"
+_nat_configuredfile="${_rundir}/${_nat_configuredfilebase}"
 
 
 if "${_verbose}"; then
@@ -898,6 +1032,12 @@ case "${_action}" in
       configure_ip "${_iface}" "inet ${_ip} netmask ${_netmask} up"
     fi
     
+    if ! "${_no_nat}"; then
+      _nat_interfaces="$(get_nat_interfaces | tr '\n' ' ')"
+      configure_nat "${_nat_interfaces}"
+      echo "${_nat_interfaces}" > "${_nat_configuredfile}"
+    fi
+    
     start_dnsmasq
     
   ;;
@@ -908,6 +1048,11 @@ case "${_action}" in
       cd "${_rundir}"
     else
       errmsg "$0: Cannot bring down, since specified runtime information directory ${_rundir} does not exist."
+    fi
+    
+    if [ -e "${_nat_configuredfile}" ]; then
+      deconfigure_nat
+      rm -f "${_nat_configuredfile}"
     fi
     
     if [ -e "${_wpa_pidfile}" ]; then
@@ -959,6 +1104,13 @@ case "${_action}" in
           echo -n "ether $(get_macaddress "${_inst}")"; [ -e "${_instdir}/${_origmacfilebase}" ] && {
             echo -n " (Old: $(cat "${_instdir}/${_origmacfilebase}"))"
           } || true
+          echo ""
+          
+          [ -e "${_instdir}/${_nat_configuredfilebase}" ] && {
+            echo -n "NAT: Configured by us for interfaces $(cat "${_instdir}/${_nat_configuredfilebase}")."
+          } || {
+            echo -n "NAT: Not configured by us."
+          }
           echo ""
           
           [ -e "${_instdir}/${_wpa_pidfilebase}" ] && {

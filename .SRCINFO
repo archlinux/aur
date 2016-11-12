@@ -1,20 +1,21 @@
 pkgbase = adhocspot-script
 	pkgdesc = Bash script to easily configure your interface to share your internet connection and configure a DHCP and DNS and TFTP boot server to listen on it. IP, DHCP, DNS can be configured, and for WiFi interfaces also wireless mode and encryption.
-	pkgver = 20161025.1
-	pkgrel = 2
+	pkgver = 20161112.1
+	pkgrel = 1
 	epoch = 0
 	install = adhocspot-script.install
 	arch = any
 	license = custom: Public Domain
 	depends = bash
 	depends = dnsmasq
+	depends = iptables
 	depends = net-tools
 	depends = wireless_tools
 	depends = wpa_supplicant
 	source = adhocspot.sh
 	source = copying.txt
 	source = adhocspot-script.install
-	sha256sums = 777d22e0def2e66613e42531c8d1a802bbdce7cd9cf90ec1acd5981f7a981476
+	sha256sums = d19a5c94f26f64b6da277ae501e6c6b9c8ebb72ecc60739b80540e2dc1d25651
 	sha256sums = c3cbff25307e905545788f5c74cc137d79706c60549092f2a37919b93cf55ee3
 	sha256sums = f05052583b9d7ba8215897bc621fea38d18fea20e1040fcbda4fd2ab76fc8867
 
