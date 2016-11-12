@@ -1,0 +1,12 @@
+pkgbase = xcursor-neo-alien
+	pkgdesc = Neo Alien cursor theme
+	pkgver = 2016.11.11
+	pkgrel = 1
+	url = https://store.kde.org/p/999841/
+	arch = any
+	license = LGPL
+	source = https://raw.githubusercontent.com/i3-Arch/PKGBUILD/master/xcursor-neo-alien/NeoAlien.tar.gz
+	md5sums = accce3f87112c30ecc328f7ccef6b70c
+
+pkgname = xcursor-neo-alien
+
