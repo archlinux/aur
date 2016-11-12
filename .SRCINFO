@@ -5,6 +5,7 @@ pkgbase = python-ldap3
 	url = https://github.com/cannatag/ldap3
 	arch = i686
 	arch = x86_64
+	arch = armv6h
 	license = LGPL
 	makedepends = python-setuptools
 	depends = python
