@@ -6,9 +6,7 @@ pkgdesc="Substance Designer is a node-based non-destructive application for mate
 arch=('x86_64')
 url='https://www.allegorithmic.com/products/substance-designer'
 license=('custom')
-depends=('fontconfig' 'gcc-libs-multilib' 'glu' 'hicolor-icon-theme' 'libtiff3'
-)
-makedepends=('pkgextract')
+depends=('fontconfig' 'gcc-libs-multilib' 'glu' 'hicolor-icon-theme' 'libtiff3')
 options=('!strip')
 source=('https://alg-releases.s3.amazonaws.com/public_releases/substance-designer/5.x/Substance_Designer-5.5.1-1.el6.standard.full.x86_64.rpm'
         'substance-designer-icon.png'
