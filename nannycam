@@ -4,7 +4,9 @@ set -u
 set -e
 # set -x
 
-source nannycam.functions
+# Grab functions
+[ -f /usr/lib/nannycam/nannycam.functions ] && source /usr/lib/nannycam/nannycam.functions
+[ -f nannycam.functions ] && source nannycam.functions
 
 # Check if running outside the initramfs environment, setup env otherwise
 ensure_initramfs_environment
