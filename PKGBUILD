@@ -1,8 +1,8 @@
-# Maintainer: Mario Finelli <mario dot finelli at yahoo dot com>
+# Maintainer: Mario Finelli <mario at finel dot li>
 
 _npmname=express-generator
 pkgname=nodejs-$_npmname
-pkgver=4.13.4
+pkgver=4.14.0
 pkgrel=1
 pkgdesc="Express' application generator."
 arch=('any')
@@ -11,7 +11,7 @@ license=('MIT')
 depends=('nodejs' 'npm')
 source=(https://registry.npmjs.org/$_npmname/-/$_npmname-$pkgver.tgz)
 noextract=($_npmname-$pkgver.tgz)
-sha256sums=('68b21d309a305c4d301aebabaf4f4117548ed4895289824f95acccf64206c4ba')
+sha256sums=('71d455321d4864e1067a98b769b5133a2b82cc5992c32e7b51005dd553ed3af5')
 
 package() {
   cd "$srcdir"
