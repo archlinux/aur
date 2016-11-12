@@ -1,0 +1,140 @@
+#!/bin/ash
+
+set -u
+set -e
+# set -x
+
+usage () {
+  cat <<HELPEOF
+  nannycam -k keyfile -m hash -p hash [-e hash]
+
+    -k Signing Key
+    -m Expected MBR hash
+    -p Expected Post-MBR Gap hash
+    -e Expected EFI Stub hash
+  
+  nannycam helps protect against Evil Maid attacks against encrypted boot partitions.
+  First, nannycam hashes the MBR, Post-MBR gap, and (optionally) the named EFI stub
+  and compares them against expected values. Next, nannycam uses a private key to
+  sign the current date and time. It is expected that this key be stored inside the
+  encrypted boot partition. The signature is displayed as a QR code so that another
+  device can verify that the signature is valid and the date/time signed is recent.
+
+  If any of the hashes do not match, the boot process is paused. An error message is
+  displayed advising the user NOT to enter their root device encryption passphrase.
+  If the user feels there has been a misconfiguration, the user can continue the boot
+  sequence (potentially exposing their root encryption passphrase in the process).
+
+  The user must type (in uppercase) YES to continue the boot sequence after verifying
+  the date/time signature. If the signature does not validate, it is possible that 
+  the entire encrypted boot partition has been replaced with one that was crafted to
+  appear similar but might record and/or transmit the root encryption passphrase.
+
+  Presumably, if the encryption of the boot partition is secure, then the key stored
+  inside the encrypted boot partition cannot be known by an attacker. This prevents
+  wholesale replacement of the entire boot partition. Hashes taken of the MBR, Post-
+  MBR Gap, and EFI Stub assist in protecting against attackers replacing them in an
+  attempt to record the boot partition's encryption passphrase and subsequently 
+  extracting the private key material used to authenticate the boot partition.
+
+  nannycam does not prevent all Evil Maid attacks. It is of course possible for state
+  actors to launch hardware-level attacks, but even less powerful adversaries may be
+  clever enough to thwart these protections.
+HELPEOF
+}
+
+
+err_required_arg () {
+  echo "-$1 is a required option" >&2
+  exit 1
+}
+
+hash_mismatch () {
+  (cat <<WARNEOF
+*****************************************************************
+* WARNING: Unexpected hash. Do NOT enter root device passphrase *
+*****************************************************************
+
+There was a mismatch in the expected and actual hash values for
+critical boot programs. Either a misconfiguration has occurred or
+a malicious actor has modified this programs. It is advised that
+you restore the MBR, Post MBR Gap, and (if using EFI) the EFI Stub
+from secure backups. Do NOT enter your root device passphrase 
+unless you are certain this is a misconfiguration.
+
+         Expected Hash      Actual Hash
+MBR      $EXPECTED_MBR_HASH $ACTUAL_MBR_HASH
+MBR Gap  $EXPECTED_MBR_GAP_HASH $ACTUAL_MBR_GAP_HASH
+EFI Stub $EXPECTED_EFI_STUB_HASH $ACTUAL_EFI_STUB_HASH
+
+WARNEOF
+) >&2
+
+  local response=""
+  while [[ "$response" != "YES" ]]; do
+    read -p "Enter YES to continue booting (not recommended): " response
+  done
+}
+
+check_mbr () {
+  echo "TODO: Calculate MBR HASH"
+}
+
+check_mbr_gap () {
+  echo "TODO: Calculate MBR Gap Hash"
+}
+
+check_efi_stub () {
+  echo "TODO: Check EFI Stub hash"
+}
+
+while getopts ":k:m:p:e:" opt; do
+  case $opt in
+    k)
+      KEYFILE="$OPTARG"
+      ;;
+    m)
+      EXPECTED_MBR_HASH="$OPTARG"
+      ;;
+    p)
+      EXPECTED_MBR_GAP_HASH="$OPTARG"
+      ;;
+    e)
+      EXPECTED_EFI_STUB_HASH="$OPTARG"
+      ;;
+    \?)
+      usage >&2
+      exit 1
+      ;;
+    :)
+      echo "$OPTARG requires an argument" >&2
+      exit 1
+  esac
+done
+
+[ -z ${KEYFILE:-} ] && err_required_arg k
+[ -z ${EXPECTED_MBR_HASH:-} ] && err_required_arg m
+[ -z ${EXPECTED_MBR_GAP_HASH:-} ] && err_required_arg p
+[ -z ${EXPECTED_EFI_STUB_HASH:-} ] && err_required_arg e
+
+ACTUAL_MBR_HASH="not checked"
+ACTUAL_MBR_GAP_HASH="not checked"
+ACTUAL_EFI_STUB_HASH="not checked"
+
+if [ ! -f "$KEYFILE" ]; then
+  echo "Keyfile: $KEYFILE not found, aborting boot." >&2
+  exit 2
+fi
+
+check_mbr || hash_mismatch
+check_mbr_gap || hash_mismatch
+check_efi_stub || hash_mismatch
+
+DATE_TIME="$(date +%s)"
+echo -n "$DATE_TIME" | openssl pkeyutl -inkey "$KEYFILE" -sign | qrencode -t UTF8 -m0
+echo "$DATE_TIME"
+
+response=""
+while [[ "$response" != "YES" ]]; do
+  read -p "Enter YES if the signature is correct: " response
+done

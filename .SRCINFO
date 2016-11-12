@@ -1,0 +1,14 @@
+pkgbase = mkinitcpio-nannycam
+	pkgdesc = Assists protecting encrypted boot partitions from (some) Evil Maid attacks
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://wiki.archlinux.org/index.php/User:Mwberry/mkinitcpio-nannycam
+	arch = any
+	license = GPL2
+	depends = openssl
+	depends = qrencode
+	depends = bash
+	depends = coreutils
+
+pkgname = mkinitcpio-nannycam
+
