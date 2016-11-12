@@ -6,16 +6,20 @@ set -e
 
 source nannycam.functions
 
-HASH=sha256
-
 # Check if running outside the initramfs environment, setup env otherwise
 ensure_initramfs_environment
 
 # Parse options
-while getopts ":k:m:p:e:" opt; do
+while getopts ":k:h:q:m:p:e:" opt; do
   case $opt in
     k)
-      KEYFILE="$OPTARG"
+      AUTH_KEY_FILE="$OPTARG"
+      ;;
+    h)
+      HASH_ALG="$OPTARG"
+      ;;
+    q)
+      QR_OPTS="$OPTARG"
       ;;
     m)
       EXPECTED_MBR_HASH="$OPTARG"
@@ -36,7 +40,7 @@ while getopts ":k:m:p:e:" opt; do
   esac
 done
 
-[ -z ${KEYFILE:-} ] && err_required_arg k
+[ -z ${AUTH_KEY_FILE:-} ] && err_required_arg k
 [ -z ${EXPECTED_MBR_HASH:-} ] && err_required_arg m
 [ -z ${EXPECTED_MBR_GAP_HASH:-} ] && err_required_arg p
 [ -z ${EXPECTED_EFI_STUB_HASH:-} ] && err_required_arg e
@@ -48,15 +52,17 @@ ACTUAL_MBR_HASH="not checked"
 ACTUAL_MBR_GAP_HASH="not checked"
 ACTUAL_EFI_STUB_HASH="not checked"
 
-if [ ! -f "$KEYFILE" ]; then
-  echo "Keyfile: $KEYFILE not found, aborting boot." >&2
+if [ ! -f "$AUTH_KEY_FILE" ]; then
+  echo "Keyfile: $AUTH_KEY_FILE not found, aborting boot." >&2
   exit 2
 fi
 
 check_mbr && check_mbr_gap && check_efi_stub || hash_mismatch
 
 DATE_TIME="$(date +%s)"
-echo -n "$DATE_TIME" | openssl pkeyutl -inkey "$KEYFILE" -sign | qrencode -8 -t ANSIUTF8 -m1
+echo -n "$DATE_TIME" \
+  | openssl pkeyutl -inkey "$AUTH_KEY_FILE" -sign \
+  | qrencode -8 $QR_OPTS
 echo "$DATE_TIME"
 
 response=""
