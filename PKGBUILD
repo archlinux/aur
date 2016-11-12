@@ -12,10 +12,9 @@ makedepends=()
 source=()
 sha256sums=()
 
-package() {
-  msg "This package is now hosted in a private repository."
-  msg "Add this to your pacman.conf:"
-  msg "[rocrail]"
-  msg "SigLevel = Optional"
-  msg "Server = http://home.eelviny.me:8051/rocrail/"
-}
+msg "This package is now hosted in a private repository."
+msg "Add this to your pacman.conf:"
+msg "[rocrail]"
+msg "SigLevel = Optional"
+msg "Server = http://home.eelviny.me:8051/rocrail/"
+exit
