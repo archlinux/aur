@@ -12,6 +12,25 @@ ensure_initramfs_environment() {
   fi
 }
 
+ensure_mkcpinitio_environment() {
+  # This script is expected to be called from mkinitcpio, if not...
+  if [ -z ${BUILDROOT:-} ]; then
+    # ...then mock out enough of the environment to enable testing
+    saveOpts=$(set +o | egrep 'xtrace|errexit|nounset')
+    saveGlob=$(shopt -p | grep extglob)
+    shopt -s extglob
+    set +e
+    set +u
+    set +x
+      . "/usr/lib/initcpio/functions"
+    BUILDROOT=$(initialize_buildroot $(uname -r) $(mktemp -d --tmpdir mkinitcpio.XXXXXX))
+    _optgenimg=$(find /boot -name '*.img' 2>/dev/null | head -n 1)
+    _optquiet=1
+    eval "$saveOpts"
+    eval "$saveGlob"
+  fi
+}
+
 nannycam_usage () {
   cat <<HELPEOF
   nannycam -k keyfile -m hash -p hash [-e hash]
@@ -170,3 +189,34 @@ assert_root() {
     exit 4
   fi
 }
+
+
+assert_ephemeral() {
+  fsType=$(df "$1" | tail -n 1 | cut -f 1 -d ' ')
+  if [[ "tmpfs" != "$fsType" ]]; then
+    (cat <<TMPWARN
+"$1" is not on an ephemeral file system. Cowardly aborting in order to avoid
+leaking the private key that will authenticate the encrypted boot device.
+TMPWARN
+) >&2
+    exit 1
+  fi
+}
+
+assert_encrypted() {
+  fsMnt=$(df "$1" | tail -n 1 | egrep -o ' [^ ]+$' | tail -c +2)
+  isCrypt=$(lsblk -ro TYPE,MOUNTPOINT | egrep "$fsMnt$" | egrep '^crypt' | wc -l)
+  if [ ! $isCrypt -eq 1 ]; then
+    (cat <<DESTWARN
+Destination location for the initramfs image is not on an encrypted device.
+The nannycam software can only protect against Evil Maid style attacks if
+the initramfs (and therefore the authentication key) is stored inside an
+encrypted boot partition. Cowardly aborting in order to avoid leaking the
+private key.
+Image location: $_optgenimg
+DESTWARN
+) >&2
+    exit 2
+  fi 
+}
+

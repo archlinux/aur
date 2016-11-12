@@ -3,60 +3,23 @@
 set -e
 set -u
 
-# This script is expected to be called from mkinitcpio, if not...
-if [ -z ${BUILDROOT:-} ]; then
-  # ...then mock out enough of the environment to enable testing
-  saveOpts=$(set +o | egrep 'xtrace|errexit|nounset')
-  saveGlob=$(shopt -p | grep extglob)
-  shopt -s extglob
-  set +e
-  set +u
-  set +x
-    . "/usr/lib/initcpio/functions"
-  BUILDROOT=$(initialize_buildroot $(uname -r) $(mktemp -d --tmpdir mkinitcpio.XXXXXX))
-  _optgenimg=$(find /boot -name '*.img' 2>/dev/null | head -n 1)
-  _optquiet=1
-  eval "$saveOpts"
-  eval "$saveGlob"
-fi
+source nannycam.functions
 
-assert_ephemeral() {
-  fsType=$(df "$1" | tail -n 1 | cut -f 1 -d ' ')
-  if [[ "tmpfs" != "$fsType" ]]; then
-    (cat <<TMPWARN
-"$1" is not on an ephemeral file system. Cowardly aborting in order to avoid
-leaking the private key that will authenticate the encrypted boot device.
-TMPWARN
-) >&2
-    exit 1
-  fi
-}
+# This script is expected to be called from mkinitcpio, setup env otherwise
+ensure_mkcpinitio_environment
 
-assert_boot_part_encrypted() {
-  fsMnt=$(df "$_optgenimg" | tail -n 1 | egrep -o ' [^ ]+$' | tail -c +2)
-  isCrypt=$(lsblk -ro TYPE,MOUNTPOINT | egrep "$fsMnt$" | egrep '^crypt' | wc -l)
-  if [ ! $isCrypt -eq 1 ]; then
-    (cat <<DESTWARN
-Destination location for the initramfs image is not on an encrypted device.
-The nannycam software can only protect against Evil Maid style attacks if
-the initramfs (and therefore the authentication key) is stored inside an
-encrypted boot partition. Cowardly aborting in order to avoid leaking the
-private key.
-Image location: $_optgenimg
-DESTWARN
-) >&2
-    exit 2
-  fi 
-}
 
+# The BUILDROOT and _optgenimg varibles are set in mkinitcpio and I do feel
+# fairly bad for relying on the implementation details, but the interface
+# exposed by init_functions is not really sufficient for determining if the
+# private key will be safe. Better safe than sorry.
 assert_ephemeral "$BUILDROOT"
 assert_ephemeral "/tmp"
-assert_boot_part_encrypted
+assert_encrypted "$_optgenimg"
 
-if [ 0 -ne $(id -u) ]; then
-  echo "Must be running as root" >&2
-  exit 3
-fi
+# If any other process on the box reads the private key file then all the
+# protections are for naught.
+assert_root
 
 KEYFILE="/tmp/boot_partition_auth.pem"
 PUBFILE="/tmp/boot_partition_auth.pub"
