@@ -40,13 +40,13 @@ package() {
 
     make DESTDIR="${pkgdir}" prefix=/usr install
 
-    # Create path for .dsktop file
-    mkdir -p $pkgdir/usr/share/applications/
-    mkdir -p $pkgdir/usr/share/stupidterm/
+    # Create paths for .desktop and config
+    mkdir -p $pkgdir/usr/share/applications/ $pkgdir/usr/share/stupidterm/
 
     # Copy .desktop file to package
     cat $srcdir/st.desktop > $pkgdir/usr/share/applications/st.desktop
 
+    # Copy default config file
     cat $srcdir/stupidterm/stupidterm.ini \
         > $pkgdir/usr/share/stupidterm/stupidterm.ini
 }
