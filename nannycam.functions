@@ -122,7 +122,7 @@ determine_mbr_boot_device () {
 
 hash_mbr () {
   local mbrDevice=$(determine_mbr_boot_device)
-  dd if="$mbrDevice" of=/tmp/mbr.bin bs=512 count=1
+  dd if="$mbrDevice" of=/tmp/mbr.bin bs=512 count=1 &>/dev/null
   ACTUAL_MBR_HASH="$(openssl dgst -$HASH_ALG /tmp/mbr.bin | cut -f 2 -d ' ')"
   rm /tmp/mbr.bin 
 }
@@ -139,7 +139,7 @@ hash_mbr_gap () {
   local blocks=$(( part_start / 512 ))
   local check=$(( $blocks * 512 ))
   [ $part_start -eq $check ] || ( echo "Partition doesn't start at 512 byte boundary! Aborting." >&2; exit 3 )
-  dd if="$mbrDevice" of=/tmp/gap.bin bs=512 skip=1 count=$blocks
+  dd if="$mbrDevice" of=/tmp/gap.bin bs=512 skip=1 count=$blocks &> /dev/null
   ACTUAL_MBR_GAP_HASH="$(openssl dgst -$HASH_ALG /tmp/gap.bin | cut -f 2 -d ' ')"
   rm /tmp/gap.bin
 }
