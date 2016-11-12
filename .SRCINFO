@@ -1,7 +1,7 @@
 pkgbase = pyshark
 	pkgdesc = Python wrapper for tshark, allowing python packet parsing using wireshark dissectors
-	pkgver = 0.3.6
-	pkgrel = 2
+	pkgver = 0.3.6.2
+	pkgrel = 1
 	url = https://github.com/KimiNewt/pyshark
 	arch = any
 	license = MIT
@@ -20,8 +20,8 @@ pkgbase = pyshark
 	makedepends = python2-lxml
 	makedepends = python2-trollius
 	makedepends = python2-logbook
-	source = pyshark-0.3.6.tar.gz::https://github.com/KimiNewt/pyshark/archive/v0.3.6.tar.gz
-	sha512sums = 3a6ffbbab3c0b4a7d395314d96dd126ab3af0f34d6cdd0ddd37ac0a921eab809ed3eb1e3c39049fc6146423f261958c0b6439563da2143f816de8c0b4da0c0d0
+	source = pyshark-0.3.6.2.tar.gz::https://github.com/KimiNewt/pyshark/archive/v0.3.6.2.tar.gz
+	sha512sums = 41b5d045c8cdfff42b560e502639c778e7ee57917acb580424b40ca34a717d5eb6e4461864396dbe0b3e143fd68f38ef65e4424a25b725af7a6a9bb916bac268
 
 pkgname = python-pyshark
 	depends = wireshark-cli

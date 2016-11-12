@@ -2,8 +2,8 @@
 
 pkgbase=pyshark
 pkgname=('python-pyshark' 'python2-pyshark')
-pkgver=0.3.6
-pkgrel=2
+pkgver=0.3.6.2
+pkgrel=1
 pkgdesc='Python wrapper for tshark, allowing python packet parsing using wireshark dissectors'
 url='https://github.com/KimiNewt/pyshark'
 arch=('any')
@@ -12,7 +12,7 @@ makedepends=('wireshark-cli'
              'python-setuptools' 'python-mock' 'python-pytest' 'pypy3' 'python-lxml' 'python-trollius' 'python-logbook'
              'python2-setuptools' 'python2-mock' 'python2-pytest' 'pypy' 'python2-lxml' 'python2-trollius' 'python2-logbook')
 source=(${pkgbase}-${pkgver}.tar.gz::https://github.com/KimiNewt/pyshark/archive/v${pkgver}.tar.gz)
-sha512sums=('3a6ffbbab3c0b4a7d395314d96dd126ab3af0f34d6cdd0ddd37ac0a921eab809ed3eb1e3c39049fc6146423f261958c0b6439563da2143f816de8c0b4da0c0d0')
+sha512sums=('41b5d045c8cdfff42b560e502639c778e7ee57917acb580424b40ca34a717d5eb6e4461864396dbe0b3e143fd68f38ef65e4424a25b725af7a6a9bb916bac268')
 
 check() {
   cd ${pkgbase}-${pkgver}
@@ -20,9 +20,7 @@ check() {
     warning "Tests only work when the build user belongs to the 'wireshark' group!"
     return
   fi
-  ln -sf ../src/pyshark tests/pyshark
-  # does not pass on python3 yet
-  # py.test
+  py.test
   py.test2
 }
 
