@@ -1,7 +1,7 @@
 # Maintainer: lantw44 at gmail dot com
 
 pkgname=mingw-w64-gtk3
-pkgver=3.22.2
+pkgver=3.22.3
 pkgrel=1
 pkgdesc='GObject-based multi-platform GUI toolkit (mingw-w64)'
 arch=(any)
@@ -24,10 +24,20 @@ depends=(
   'mingw-w64-libepoxy>=1.0'
   'mingw-w64-pango>=1.37.3')
 options=(!strip !buildflags staticlibs)
-source=("https://download.gnome.org/sources/gtk+/${pkgver%.*}/gtk+-${pkgver}.tar.xz")
-sha256sums=('2343dcaed2fc237ef718136ff4110fef7eb1ebfe178a9b064aa21cd74ecb6946')
+source=("https://download.gnome.org/sources/gtk+/${pkgver%.*}/gtk+-${pkgver}.tar.xz"
+        'gtk3-gdkdisplay-win32-winnt.patch'
+        'gtk3-gdkscreen-win32-winnt.patch')
+sha256sums=('e190ab1a9a893861b8e8be341aa57bce8b7146d6445ebfe5a8ab64236fe82ed3'
+            'c3aadfa67e29adea61cec87bd65229d4fb8dc25301cb448bb59f0ead63829ae2'
+            '6af598b8e9bdace52485013c7b4393903ae829a1f3f637611cedbdee506861c3')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
+
+prepare() {
+  cd "${srcdir}/gtk+-${pkgver}"
+  patch -Np1 < "${srcdir}/${source[1]}"
+  patch -Np1 < "${srcdir}/${source[2]}"
+}
 
 build() {
   cd "${srcdir}/gtk+-${pkgver}"
