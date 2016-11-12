@@ -1,6 +1,6 @@
 # Maintainer: Baptiste Jonglez <baptiste--aur at jonglez dot org>
 pkgname=ring-daemon-git
-pkgver=20161104
+pkgver=20161111
 pkgrel=1
 pkgdesc="ring.cx is a secure and distributed voice, video and chat communication platform that requires no centralized server and leaves the power of privacy in the hands of the user (formerly known as SFLphone)"
 arch=("i686" "x86_64")
@@ -9,8 +9,8 @@ license=('GPL3')
 groups=("ring")
 depends=('opendht-git' 'yaml-cpp' 'alsa-lib' 'libpulse' 'jack' 'jsoncpp'
          'libsamplerate' 'libsndfile' 'dbus-c++' 'ffmpeg' 'udev' 'gnutls'
-         'expat' 'gsm' 'libupnp' 'libnatpmp' 'crypto++' 'libva'
-         'pjproject-savoirfairelinux' 'boost-libs' 'restbed')
+         'expat' 'gsm' 'libupnp' 'libnatpmp' 'crypto++' 'libva' 'boost-libs'
+         'pjproject-savoirfairelinux' 'restbed-latest')
 makedepends=('git' 'boost' 'msgpack-c')
 optdepends=('restbed: for the REST interface to the daemon (untested)')
 conflicts=('ring-daemon')
@@ -27,7 +27,6 @@ build() {
 
   msg2 'Building...'
   autoreconf --force --install --verbose
-  # To compile with restbed, add `--with-restbed` here.
   ./configure \
     --prefix=/usr \
     --sbindir=/usr/bin \
