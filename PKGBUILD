@@ -2,8 +2,8 @@
 # Contributor: Andrzej Giniewicz <gginiu@gmail.com>
 
 pkgname=gdcm
-pkgver=2.6.5
-pkgrel=6
+pkgver=2.6.6
+pkgrel=7
 pkgdesc='a C++ library for DICOM medical files'
 arch=('i686' 'x86_64')
 url='http://gdcm.sourceforge.net'
@@ -14,7 +14,7 @@ optdepends=('python2: python bindings'
             'swig: generate python wrappers')
 makedepends=('cmake')
 source=("http://sourceforge.net/projects/gdcm/files/gdcm%202.x/GDCM%20$pkgver/gdcm-$pkgver.tar.gz")
-sha512sums=('729b949a7a7567c81115a20b2c0d2bd6376ff869a23a48acdea5a855446e60b8d15acf4c3c5a52546e5b3f2e2785e2edccdbba923c51e25280b4e64cc883202e')
+sha512sums=('9bfa2e7c2f0e7ef15aa7b01ab1ea9e57f194da44b8d18f83e99cbb92f5191ad4535ebe28ffa4e14e38dcf7b8dbf682add08adc6b657a33795b20c4f28f91f247')
 
 build() {
   cd "$srcdir"
