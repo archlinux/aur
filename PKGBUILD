@@ -1,7 +1,7 @@
 # Maintainer: Christian Rebischke <chris.rebischke[at]archlinux[dot]org>
 pkgname=vim-devicons
 pkgver=0.8.5
-pkgrel=1
+pkgrel=2
 pkgdesc='Adds file type glyphs/icons to many popular Vim plugins such as: NERDTree, vim-airline, unite, vim-startify and many more'
 arch=('any')
 url='https://github.com/ryanoasis/vim-devicons'
