@@ -1,13 +1,13 @@
 #Maintainer: Christian Rebischke <Chris.Rebischke@archlinux.org>
 
 pkgname=viper-framework-git
-provides=viper-framework
-conflicts=viper-framework
-pkgver=1.2.633.e35789e
-pkgrel=1
+provides=("viper-framework")
+conflicts=("viper-framework")
+pkgver=v1.2.1133.cd7b753
+pkgrel=2
 pkgdesc="Git version of Viper the Binary Analysis Framework"
 arch=("any")
-url="https://github.com/botherder/viper"
+url="https://github.com/viper-framework/viper"
 license=("BSD")
 depends=(
 "python2-pyexiftool" "python2-pylzma" "python2-bottle" "python2-pyelftools" 
@@ -18,13 +18,12 @@ depends=(
 "python2-django" "python2-pymisp" "python2-scandir" "python2-pypssl"
 "python2-pypdns" "python2-pype32" "python2-pbkdf2" "python2-dateutil"
 "python2-requests-cache" "python2-cffi" "python2-cryptography"
-"python2-terminaltables" "python2-virustotal-api" "radare2-bindings") 
+"python2-terminaltables" "python2-virustotal-api" "radare2-bindings"
+"python2-enum34" "python2-idna" "python2-ipaddress" "python2-pycparser"
+"python2-six") 
 makedepends=("git")
-source=("git+https://github.com/botherder/viper"
-        "viper-framework.install")
-sha512sums=(
-"SKIP"
-"5f2446433205c4b04b7a2aad4c2262dfd54dc25a034a1b94f8de45a37a164c3fccdebdda60446148ddb940a5f84257426cbda21b7815d1e7b3cea5e9af54c0fe")
+source=("git+https://github.com/viper-framework/viper")
+sha512sums=("SKIP")
 install="viper-framework.install"
 pkgver() {
 	cd viper
@@ -38,7 +37,8 @@ build() {
 }
 
 package() {
-	cd "$srcdir/viper"
-	mkdir -p "$pkgdir/opt/viper/"
-	mv * "$pkgdir/opt/viper/"
+	cd "${srcdir}/viper"
+	mkdir -p "${pkgdir}/opt/viper/"
+	mv * "${pkgdir}/opt/viper/"
+  sed -i 's|#!/usr/bin/env python|#!/usr/bin/env python2|' "${pkgdir}/opt/viper/"viper-{api,cli,update,web}
 }
