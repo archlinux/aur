@@ -1,0 +1,20 @@
+pkgbase = gog-terra-nova-strike-force-centauri
+	pkgdesc = A tactical first-person shooter video game set in the 24th century.
+	pkgver = 2.0.0.2
+	pkgrel = 1
+	url = http://www.gog.com/game/terra_nova_strike_force_centauri
+	arch = any
+	groups = games
+	license = custom
+	depends = dosbox
+	depends = libpng12
+	depends = unionfs-fuse
+	optdepends = gendesk: generate menu icons
+	noextract = gog_terra_nova_strike_force_centauri_2.0.0.2.sh
+	source = local://gog_terra_nova_strike_force_centauri_2.0.0.2.sh
+	source = local://terra-nova-strike-force-centauri
+	sha256sums = ab86b7042aeaed7d44e4bde1a0bc1dda9a08fc2d086a8453ddc6efc76c89dd67
+	sha256sums = dc2af1dcdf014ee2412b35759aee999e85f9c0efd2bb3300951b6998aac66cc8
+
+pkgname = gog-terra-nova-strike-force-centauri
+

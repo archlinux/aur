@@ -1,0 +1,10 @@
+#!/usr/bin/bash
+gogdir="/opt/gog/terra-nova-strike-force-centauri"
+homedir="$HOME/.gog/terra-nova-strike-force-centauri"
+mkdir -p "$homedir"/{game,config/data}
+
+unionfs -o cow,relaxed_permissions "$homedir/config=RW:$gogdir=RO" "$homedir/game"
+
+dosbox -conf "$homedir/game/dosboxTerraNova.conf" \
+	-conf "$homedir/game/dosboxTerraNova_single.conf"
+fusermount -u "$homedir/game"
