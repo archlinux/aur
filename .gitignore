@@ -1,5 +1,6 @@
-*/src
-*/pkg
+dhtfs/
+src/
+pkg/
 *.gz
 *.xz
 *.bz2
@@ -10,5 +11,5 @@
 *.txt
 *.log
 *.scm
-*/*.pkg
-*/*.asc
+*.pkg
+*.asc
