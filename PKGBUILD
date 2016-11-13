@@ -6,12 +6,14 @@
 pkgname='xfce4-multiload-ng-plugin-gtk2'
 pkgdesc='Modern graphical system monitor, XFCE4 panel plugin'
 pkgver=1.4.2
-pkgrel=1
+pkgrel=2
 
 makedepends=('intltool')
 depends=('gtk2>=2.20.0' 'cairo' 'libxfce4util>=4.6.0' 'xfce4-panel>=4.6.0')
 
 conflicts=('xfce4-multiload-ng-plugin-gtk3' 'xfce4-multiload-ng-plugin-gtk2-git' 'xfce4-multiload-ng-plugin-gtk3-git')
+
+replaces=('xfce4-multiload-ng-plugin')
 
 source=("https://github.com/udda/multiload-ng/archive/v$pkgver.tar.gz")
 md5sums=('3c17d8483bc874b20c877a7d7897ab5e')
@@ -29,5 +31,5 @@ build() {
 
 package() {
     cd "multiload-ng-$pkgver"
-    make -C "xfce4" DESTDIR="$pkgdir" install
+    make DESTDIR="$pkgdir" install
 }
