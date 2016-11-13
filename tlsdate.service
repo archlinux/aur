@@ -1,5 +1,5 @@
 [Unit]
-Description=Secure parasitic time daemon
+Description=Secure parasitic rdate replacement
 After=network.target
 
 [Service]

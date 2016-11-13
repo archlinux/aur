@@ -1,55 +1,54 @@
-# Maintainer: skydrome <skydrome@tormail.org>
+# Maintainer: Levente Polyak <anthraxx[at]archlinux[dot]org>
+# Contributor: skydrome <skydrome@tormail.org>
 
 pkgname=tlsdate
 pkgver=0.0.13
-pkgrel=1
-pkgdesc="A secure rdate replacement to update local time over HTTPS"
-arch=('i686' 'x86_64' 'armv7h' 'armv6l' 'armv6h')
-url="https://github.com/ioerror/tlsdate"
+pkgrel=2
+pkgdesc='Secure rdate replacement to update local time over HTTPS'
+url='https://github.com/ioerror/tlsdate'
+arch=('i686' 'x86_64')
 license=('BSD')
-depends=('openssl' 'ca-certificates' 'libevent' 'dbus' 'zlib')
-options=('emptydirs')
-install='tlsdate.install'
+depends=('openssl' 'ca-certificates' 'libevent' 'dbus' 'zlib' 'libseccomp')
 backup=('etc/conf.d/tlsdate'
         'etc/tlsdate/tlsdated.conf')
-source=("https://github.com/ioerror/tlsdate/archive/tlsdate-${pkgver}.tar.gz"
-        #"tlsdate-$pkgver.zip::https://github.com/ioerror/tlsdate/archive/master.zip"
-        'tlsdate.conf.d'
-        'tlsdate.service')
-
-sha256sums=('90efdff87504b5159cb6a3eefa9ddd43723c073d49c4b3febba9e48fc1292bf9'
-            '1498a74913feb66c6e2e7d982f43b07fc48881947543969668a75ef4323503aa'
-            'deaac31649fa6dc6fc54ca3dec231cbdb2a58c6d4aa08cf5498599f42a100472')
+options=('emptydirs')
+install=tlsdate.install
+source=(https://github.com/ioerror/tlsdate/archive/tlsdate-${pkgver}.tar.gz
+        tlsdate.conf.d
+        tlsdate.service
+        no_sslv3.patch)
+sha512sums=('6ec9940884d2f7fb18d546c3081300355437208eb0c6e335dd056edd10b4383c211a49f00da84f68affa96a912be8071cbae941f117d5e96020ded4a0226bc33'
+            '0639dd4c7f4df14465da7a5efc8a59fa59bb0155ed0f453cab9cbcc74f22c320080b71ad5361ff2ebf83d64e8c205fbe605deb69a0cb503be5412eff5f1ac220'
+            '2b06abe8d7bc2133ca4f8d7cfbf63de4c2fad8356ea8d3f53e6d1c161c2ff86089c4d64f7de7ca6c6222db254ecaaccbc4706012fee50319d83860bfb3a2eab0'
+            '038590ebef55adae75a82fd4f697306ea56f9486f1b7ff1f9eb4c292f8ea2a960b720db72e100d1bb70f5b5e1391369a1fd9ce2e8b756e79152937289c159294')
 
 prepare() {
-    cd "$srcdir/$pkgname-$pkgname-$pkgver"
-    #cd "$srcdir/tlsdate-master"
-    ./autogen.sh
+  cd ${pkgname}-${pkgname}-${pkgver}
+  patch -p1 < "${srcdir}/no_sslv3.patch"
+  ./autogen.sh
 }
 
 build() {
-    cd "$srcdir/$pkgname-$pkgname-$pkgver"
-    #cd "$srcdir/tlsdate-master"
-
-    #--disable-seccomp-filter \
-    ./configure \
-        --prefix=/usr \
-        --sbindir=/usr/bin \
-        --sysconfdir=/etc \
-        --with-dbus-group=tlsdate \
-        --with-unpriv-group=tlsdate \
-        --with-unpriv-user=tlsdate
-    make
+  cd ${pkgname}-${pkgname}-${pkgver}
+  ./configure \
+      --prefix=/usr \
+      --sbindir=/usr/bin \
+      --sysconfdir=/etc \
+      --with-dbus-client-group=tlsdate \
+      --with-unpriv-group=tlsdate \
+      --with-unpriv-user=tlsdate \
+      --without-polarssl
+  make
 }
 
 package() {
-    cd "$srcdir/$pkgname-$pkgname-$pkgver"
-    #cd "$srcdir/tlsdate-master"
-
-    make DESTDIR="$pkgdir" install
-    rm -rf "$pkgdir/usr/lib/libtlsdate_compat.a"
-    install -dm750 "$pkgdir/var/cache/tlsdated"
-    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/tlsdate/LICENSE"
-    install -Dm644 "$srcdir/tlsdate.conf.d"  "$pkgdir/etc/conf.d/tlsdate"
-    install -Dm644 "$srcdir/tlsdate.service" "$pkgdir/usr/lib/systemd/system/tlsdate.service"
+  cd ${pkgname}-${pkgname}-${pkgver}
+  make DESTDIR="${pkgdir}" install
+  install -Dm 644 README -t "${pkgdir}/usr/share/doc/${pkgname}"
+  install -Dm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
+  install -Dm 644 "${srcdir}/tlsdate.conf.d" "${pkgdir}/etc/conf.d/tlsdate"
+  install -Dm 644 "${srcdir}/tlsdate.service" -t "${pkgdir}/usr/lib/systemd/system"
+  install -d "${pkgdir}/var/cache/tlsdated"
 }
+
+# vim: ts=2 sw=2 et:

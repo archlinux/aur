@@ -1,29 +1,29 @@
 pkgbase = tlsdate
-	pkgdesc = A secure rdate replacement to update local time over HTTPS
+	pkgdesc = Secure rdate replacement to update local time over HTTPS
 	pkgver = 0.0.13
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ioerror/tlsdate
 	install = tlsdate.install
 	arch = i686
 	arch = x86_64
-	arch = armv7h
-	arch = armv6l
-	arch = armv6h
 	license = BSD
 	depends = openssl
 	depends = ca-certificates
 	depends = libevent
 	depends = dbus
 	depends = zlib
+	depends = libseccomp
 	options = emptydirs
 	backup = etc/conf.d/tlsdate
 	backup = etc/tlsdate/tlsdated.conf
 	source = https://github.com/ioerror/tlsdate/archive/tlsdate-0.0.13.tar.gz
 	source = tlsdate.conf.d
 	source = tlsdate.service
-	sha256sums = 90efdff87504b5159cb6a3eefa9ddd43723c073d49c4b3febba9e48fc1292bf9
-	sha256sums = 1498a74913feb66c6e2e7d982f43b07fc48881947543969668a75ef4323503aa
-	sha256sums = deaac31649fa6dc6fc54ca3dec231cbdb2a58c6d4aa08cf5498599f42a100472
+	source = no_sslv3.patch
+	sha512sums = 6ec9940884d2f7fb18d546c3081300355437208eb0c6e335dd056edd10b4383c211a49f00da84f68affa96a912be8071cbae941f117d5e96020ded4a0226bc33
+	sha512sums = 0639dd4c7f4df14465da7a5efc8a59fa59bb0155ed0f453cab9cbcc74f22c320080b71ad5361ff2ebf83d64e8c205fbe605deb69a0cb503be5412eff5f1ac220
+	sha512sums = 2b06abe8d7bc2133ca4f8d7cfbf63de4c2fad8356ea8d3f53e6d1c161c2ff86089c4d64f7de7ca6c6222db254ecaaccbc4706012fee50319d83860bfb3a2eab0
+	sha512sums = 038590ebef55adae75a82fd4f697306ea56f9486f1b7ff1f9eb4c292f8ea2a960b720db72e100d1bb70f5b5e1391369a1fd9ce2e8b756e79152937289c159294
 
 pkgname = tlsdate
 
