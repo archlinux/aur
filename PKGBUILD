@@ -8,7 +8,7 @@ pkgdesc="Recursively browse the filesystem through openbox3 pipe menus. (with ic
 url="http://trizenx.blogspot.ro/2012/12/obbrowser.html"
 
 arch=('any')
-license=('GPLv3')
+license=('GPL3')
 
 depends=('perl>=5.14.0' 'perl-data-dump' 'perl-linux-desktopfiles>=0.08' 'perl-file-mimeinfo')
 source=("https://github.com/trizen/${pkgname}/archive/${pkgver}.tar.gz")
