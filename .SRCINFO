@@ -1,0 +1,24 @@
+pkgbase = gog-bit-trip-runner
+	pkgdesc = Race across the Moon, kicking down crystal walls and sliding under chomping moon-slugs!
+	pkgver = 2.0.0.1
+	pkgrel = 1
+	url = https://www.gog.com/game/bittrip_runner
+	arch = i686
+	arch = x86_64
+	groups = games
+	license = custom:EULA
+	depends = mesa
+	depends = libvorbis
+	depends = openal
+	depends = sdl
+	optdepends = gendesk: generate menu icons
+	provides = bit-trip-runner
+	conflicts = bit-trip-runner
+	noextract = gog_bit_trip_runner_2.0.0.1.sh
+	source = local://gog_bit_trip_runner_2.0.0.1.sh
+	source = local://bit-trip-runner
+	md5sums = b6f0fe70e1a2d9408967b8fd6bd881e1
+	md5sums = 55202f3110712a1d792666c6d9784bf6
+
+pkgname = gog-bit-trip-runner
+
