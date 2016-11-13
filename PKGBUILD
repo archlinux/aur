@@ -1,16 +1,15 @@
 # Maintainer: Sebastian Lau <lauseb644@gmail.com>
 # Contributor: RubenKelevra <cyrond@gmail.com>
 
-_mintrel=betsy
 _pkgname=nemo-seahorse
 pkgname="${_pkgname}-nonautilus"
-pkgver=3.0.0
-pkgrel=2
+pkgver=3.2.0
+pkgrel=1
 pkgdesc="An extension for Nemo which allows encryption and decryption of OpenPGP files using GnuPG. (without nautilus dependency)"
 arch=('i686' 'x86_64')
 url="https://github.com/linuxmint/nemo-extensions"
 license=('GPL2')
-depends=('libcryptui' 'nemo>=3.0' 'nemo<3.1' 'gcr>=3.4.0' 'gpgme>=1.2.0' )
+depends=('libcryptui' 'nemo>=3.2' 'gcr>=3.4.0' 'gpgme>=1.2.0' )
 makedepends=('intltool' 'gnupg' 'gnome-common' 'gnome-keyring')
 groups=('nemo-extensions')
 conflicts=('nemo-seahorse' 'seahorse-nautilus' 'nemo-seahorse-git')
@@ -19,14 +18,12 @@ provides=('nemo-seahorse')
 install=${pkgname}.install
 options=('!libtool' '!emptydirs')
 
-source=("${pkgname}.install"
-	"http://packages.linuxmint.com/pool/main/n/$_pkgname/${_pkgname}_${pkgver}%2b${_mintrel}.tar.gz")
-md5sums=('bb1003e1d7217fd9b9610f8cdd5a07aa'
-         'bcd8994810c00681a88b6ff3e5dcc9ae')
+source=("nemo-extensions-$pkgver.tar.gz::https://github.com/linuxmint/nemo-extensions/archive/$pkgver.tar.gz")
+md5sums=('623ef221f7a59e17d6eb4360a65c1bc7')
 
 
 prepare() {
-  cd ${_pkgname}-${pkgver}+${_mintrel}
+  cd "${srcdir}/nemo-extensions-${pkgver}/${_pkgname}"
 
   # Python2 fix
   find -type f | xargs sed -i 's@^#!.*python$@#!/usr/bin/python2@'
@@ -36,8 +33,8 @@ prepare() {
 }
 
 build() {
-  cd ${_pkgname}-${pkgver}+${_mintrel}
-    
+  cd "${srcdir}/nemo-extensions-${pkgver}/${_pkgname}"
+
   autoreconf -fi
   ./configure \
     --prefix=/usr \
@@ -49,7 +46,8 @@ build() {
 }
 
 package() {
-  cd ${_pkgname}-${pkgver}+${_mintrel}
+  cd "${srcdir}/nemo-extensions-${pkgver}/${_pkgname}"
+
   make DESTDIR="${pkgdir}" install
 }
 
