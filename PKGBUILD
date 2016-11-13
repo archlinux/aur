@@ -1,5 +1,5 @@
-pkgbase=('python-wrld')
-pkgname=('python-wrld')
+pkgbase=('wrld')
+pkgname=('wrld')
 _module='wrld'
 pkgver='0.3'
 pkgrel=1
