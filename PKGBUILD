@@ -1,18 +1,18 @@
 # Maintainer: Trizen <echo dHJpemVueEBnbWFpbC5jb20K | base64 -d>
 
 pkgname=sidef
-pkgver=2.32
-pkgrel=2
+pkgver=2.33
+pkgrel=1
 pkgdesc="A modern object-oriented programming language."
 arch=('any')
 url="https://github.com/trizen/${pkgname}"
-license=('GPLv3')
+license=('Artistic2.0')
 
 makedepends=()
-depends=('perl>=5.22.0' 'perl-data-dump' 'perl-math-gmpq>=0.41' 'perl-math-gmpz>=0.39' 'perl-math-mpfr>=3.29' 'perl-math-mpc')
+depends=('perl>=5.22.0' 'perl-data-dump' 'perl-math-gmpq>=0.41' 'perl-math-gmpz>=0.39' 'perl-math-mpfr>=3.29' 'perl-math-mpc' 'perl-math-prime-util-gmp>=0.41')
 
 source=("https://github.com/trizen/${pkgname}/archive/${pkgver}.tar.gz")
-sha256sums=('1812ed4c112256a8c3b608eb61547351905d53f881e97297634b78487b1134f0')
+sha256sums=('3865635893eb3f7098836aa36f4ff2a700c9a110a30a4541b11218b4dff0bcff')
 
 package() {
     cd "$pkgname-$pkgver"
