@@ -1,5 +1,6 @@
 # $Id: PKGBUILD, 2009/06/6$
-# Maintainer: Alad Wenter <https://wiki.archlinux.org/index.php/Special:EmailUser/Alad>
+# Maintainer: Jens John <asterisk@2ion.de>
+# Past maintainer: Alad Wenter <https://wiki.archlinux.org/index.php/Special:EmailUser/Alad>
 # Contributors:
 #     * Alireza Savand <alireza.savand@gmail.com>
 #     * Maxime de Roucy <maxime.deroucy@gmail.com>
@@ -10,7 +11,7 @@
 
 pkgname=alsaequal
 pkgver=0.6
-pkgrel=14
+pkgrel=15
 
 pkgdesc='Real-time adjustable equalizer plugin for ALSA sound server'
 url='http://www.thedigitalmachine.net/alsaequal.html'
@@ -21,7 +22,7 @@ depends=('alsa-lib' 'caps')
 optdepends=('swh-plugins: to use the mbeq equalizer (15-band)')
 install=alsaequal.install
 
-source=("http://www.thedigitalmachine.net/tools/alsaequal-$pkgver.tar.bz2"
+source=("https://launchpad.net/ubuntu/+archive/primary/+files/alsaequal_${pkgver}.orig.tar.bz2"
         'makefile.patch'
         'false_error.patch'
         'caps_9.x.patch')
