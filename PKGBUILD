@@ -6,7 +6,7 @@
 # https://github.com/stylemistake/bitwig-studio-aur
 
 pkgname='bitwig-studio'
-pkgver='1.3.13'
+pkgver='1.3.14'
 pkgrel='1'
 pkgdesc='Music production system for production, remixing and performance'
 arch=('x86_64')
