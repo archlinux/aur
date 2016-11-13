@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=GameVox
+Comment=GameVox App
+Exec=gamevox
+Icon=gamevox
+StartupNotify=false
+Categories=Network;Chat;InstantMessaging
+Type=Application
