@@ -1,9 +1,11 @@
 # $Id: PKGBUILD 255206 2015-12-10 04:47:53Z foutrelis $
 # Maintainer: Ionut Biru <ibiru@archlinux.org>
 
+MOZJS_DEBUG=
+
 pkgname=js45
 pkgver=45.0.2
-pkgrel=3
+pkgrel=4
 pkgdesc="JavaScript interpreter and libraries"
 arch=(i686 x86_64)
 url="https://developer.mozilla.org/en-US/docs/Mozilla/Projects/SpiderMonkey/Releases/45"
@@ -11,17 +13,22 @@ license=(MPL)
 depends=(nspr gcc-libs readline zlib icu)
 makedepends=(python2 zip libffi autoconf2.13 gcc5)
 options=(!staticlibs)
+[[ -z "$MOZJS_DEBUG" ]] || options+=(!strip)
 source=(https://people.mozilla.org/~sfink/mozjs-$pkgver.tar.bz2
         system-icu.patch
-        install-copy-files.patch)
+        install-copy-files.patch
+        link-mozglue.patch)
 md5sums=('2ca34f998d8b5ea79d8616dd26b5fbab'
          '2b0ef1e6ef45964be002fcaa2c90b6ba'
-         '6b8e25f10a529c0f8aa3dc95837c981e')
+         '6b8e25f10a529c0f8aa3dc95837c981e'
+         'ad646de016de6031bfe77b6b59e87078')
 
 prepare() {
   cd mozjs-$pkgver
   patch -p1 -i ../system-icu.patch
   patch -p1 -i ../install-copy-files.patch
+  # Workaround for https://bugzilla.mozilla.org/show_bug.cgi?id=1236085
+  patch -p1 -i ../link-mozglue.patch
   rm -r intl/icu
 
   cd js/src
@@ -38,9 +45,10 @@ build() {
   export CXX=g++-5
   export CPP=cpp-5
 
+  [[ -z "$MOZJS_DEBUG" ]] || DBG_OPTIONS='--enable-debug --disable-optimize'
   cd mozjs-$pkgver/js/src
   ./configure --prefix=/usr --with-system-nspr --enable-system-ffi \
-     --enable-readline --with-system-icu
+     --enable-readline --with-system-icu $DBG_OPTIONS
   make
 }
 

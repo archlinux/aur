@@ -1,0 +1,9 @@
+--- mozjs-45.0.2/js/src/js.pc.in.orig	2016-11-03 01:02:33.585358835 +0800
++++ mozjs-45.0.2/js/src/js.pc.in	2016-11-03 01:01:22.472023126 +0800
+@@ -7,5 +7,5 @@
+ Description: The Mozilla library for JavaScript
+ Version: @MOZILLA_VERSION@
+ Requires.private: @NSPR_PKGCONF_CHECK@
+-Libs: -L${libdir} -l@JS_LIBRARY_NAME@
++Libs: -L${libdir} -l@JS_LIBRARY_NAME@ -Wl,--whole-archive -lmozglue -Wl,--no-whole-archive
+ Cflags: -include ${includedir}/@JS_LIBRARY_NAME@/js/RequiredDefines.h -I${includedir}/@JS_LIBRARY_NAME@
