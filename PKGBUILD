@@ -2,10 +2,11 @@
 # Contributor: Fabian Melters <melters [at] gmail [dot] com>
 
 pkgname=pyrit
-pkgver=0.4.0
-pkgrel=3
-pkgdesc="WPA/WPA2-PSK attacking with gpu and cluster"
-url="https://code.google.com/p/pyrit"
+_pkgname=Pyrit
+pkgver=0.5.0
+pkgrel=1
+pkgdesc='The famous WPA precomputed cracker'
+url='https://github.com/JPaulMora/Pyrit'
 arch=('i686' 'x86_64')
 license=('GPL3')
 depends=('openssl' 'python2' 'zlib' 'libpcap')
@@ -16,24 +17,32 @@ optdepends=(
   'python2-sqlalchemy: storage support'
 )
 checkdepends=('python2-sqlalchemy' 'scapy')
-source=(${pkgname}-${pkgver}.tar.gz::https://${pkgname}.googlecode.com/files/${pkgname}-${pkgver}.tar.gz)
-sha512sums=('8111b3f6f1a94319f5e146db6c184eb391c03ca554b20ea7227237afbc546a064898835ad16007333bb63aa725079046d413be11dfc3ecb76c77b6ac5096f7e9')
+source=(${pkgname}-${pkgver}.tar.gz::https://github.com/JPaulMora/Pyrit/archive/v${pkgver}.tar.gz
+        scapy-2.3.2.patch)
+sha512sums=('912742cd7d9cd9231b9b3aa155a5170c0ba36c3865280423e100c1d12df34e093ee56305d8738d4f406abbfef9b1d540872872b8ef23d699466298d41289ad25'
+            '99d4ae2159be2d829337f3481cbb6580da1c6a2d2b6b28c7ed17348daa983859b7cd6ba3ee8575cbcba16efa27bf230bac075599b1fa0b531178dbdc45f853b2')
+
+prepare() {
+  cd ${_pkgname}-${pkgver}
+  patch -p1 < "${srcdir}/scapy-2.3.2.patch"
+}
 
 build() {
-  cd ${pkgname}-${pkgver}
+  cd ${_pkgname}-${pkgver}
   python2 setup.py build
 }
 
 check() {
-  cd ${pkgname}-${pkgver}/test
+  cd ${_pkgname}-${pkgver}/test
   local PYTHONVERSION="$(python2 -c 'import sys; print("{}.{}".format(sys.version_info.major, sys.version_info.minor))')"
   PYTHONPATH="../build/lib.linux-${CARCH}-${PYTHONVERSION}" \
     python2 test_pyrit.py
 }
 
 package() {
-  cd ${pkgname}-${pkgver}
-  python2 setup.py install -O1 --root="${pkgdir}"
+  cd ${_pkgname}-${pkgver}
+  python2 setup.py install -O1 --root="${pkgdir}" --skip-build
+  install -Dm 644 README.md CHANGELOG -t "${pkgdir}/usr/share/doc/${pkgname}"
 }
 
 # vim: ts=2 sw=2 et:
