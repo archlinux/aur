@@ -1,0 +1,14 @@
+pkgbase = cinnamon-applet-icingtaskmanager-git
+	pkgdesc = Cinnamon applet. Window List with App Grouping and Window Thumbnails for Cinnamon.
+	pkgver = 1
+	pkgrel = 1
+	url = https://github.com/jaszhix/icingtaskmanager
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = cinnamon
+	source = cinnamon-applet-icingtaskmanager-git::git+https://github.com/jaszhix/icingtaskmanager.git#branch=master
+	md5sums = SKIP
+
+pkgname = cinnamon-applet-icingtaskmanager-git
+
