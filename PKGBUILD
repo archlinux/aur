@@ -3,12 +3,12 @@
 pkgname=diodon
 arch=('i686' 'x86_64')
 pkgver=1.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="GTK+ clipboard manager"
 license=('GPL')
 url="https://launchpad.net/diodon"
 depends=('gconf' 'libgee06' 'libpeas' 'libunique3' 'libxtst' 'dconf' 'libappindicator3' 'desktop-file-utils' 'libgee' 'zeitgeist')
-makedepends=('vala')
+makedepends=('vala' 'intltool')
 source=("http://launchpad.net/diodon/trunk/${pkgver}/+download/${pkgname}-${pkgver}.tar.gz")
 install=$pkgname.install
 md5sums=('727b4be38549d295ab38777cfce5482f')
