@@ -9,9 +9,9 @@ arch=('i686' 'x86_64')
 url='http://geoclue.freedesktop.org/'
 license=('LGPL')
 depends=('dbus-glib' 'libxml2' 'dconf')
-makedepends=('networkmanager' 'libsoup-gnome' 'libxslt')
+makedepends=('networkmanager' 'libsoup' 'libxslt')
 optdepends=('networkmanager: geolocation'
-            'libsoup-gnome: Skyhook location provider')
+            'libsoup: Skyhook location provider')
 source=("http://freedesktop.org/~hadess/$pkgname-$pkgver.tar.gz")
 md5sums=('779245045bfeeec4853da8baaa3a18e6')
 
