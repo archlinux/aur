@@ -12,7 +12,6 @@ makedepends=('git')
 groups=('vim-plugins')
 provides=('vim-nerdtree')
 conflicts=('vim-nerdtree')
-install="vimdoc.install"
 source=("git+https://github.com/scrooloose/nerdtree")
 sha512sums=('SKIP')            
 
