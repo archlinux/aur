@@ -6,7 +6,7 @@ pkgrel=1
 pkgdesc="A pretty clever command-line units converter. (written in Sidef)"
 arch=('any')
 url="https://github.com/trizen/smart-units"
-license=('GPLv3')
+license=('GPL3')
 depends=('sidef')
 
 source=("https://github.com/trizen/${pkgname}/archive/${pkgver}.tar.gz")
