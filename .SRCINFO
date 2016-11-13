@@ -1,19 +1,20 @@
 pkgbase = gog-bio-menace
 	pkgdesc = Join top CIA tough guy, Snake Logan as he battles for his life against ferocious monsters created by an evil and twisted mastermind.
 	pkgver = 2.0.0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.gog.com/game/bio_menace
-	arch = i686
-	arch = x86_64
+	arch = any
 	groups = games
 	license = custom
+	depends = dosbox
+	depends = libpng12
 	depends = unionfs-fuse
 	optdepends = gendesk
 	noextract = gog_bio_menace_2.0.0.2.sh
 	source = local://gog_bio_menace_2.0.0.2.sh
 	source = local://bio-menace
 	sha256sums = 859c0bc36228f60ce4579ce4616dcba1fce56a511d1c594e7eb3ce7c4c6a1091
-	sha256sums = c2d2e0417ff493e619d70dfc37227e1c131be4158a5f0aacbe4fd712146a7679
+	sha256sums = aa1dee93292b63999352b075d8b941fadb03912cd70cada7da183ade8c91aabf
 
 pkgname = gog-bio-menace
 

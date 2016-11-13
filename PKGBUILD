@@ -4,9 +4,9 @@ pkgname=gog-bio-menace
 # Trim gog- prefix from launcher
 _appname=$(echo ${pkgname} | sed -e 's/gog-//')
 pkgver=2.0.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Join top CIA tough guy, Snake Logan as he battles for his life against ferocious monsters created by an evil and twisted mastermind."
-arch=("i686" "x86_64")
+arch=('any')
 url="http://www.gog.com/game/bio_menace"
 license=("custom")
 groups=("games")
@@ -14,20 +14,10 @@ source=("local://gog_bio_menace_${pkgver}.sh"
 	"local://${_appname}")
 noextract=("gog_bio_menace_${pkgver}.sh")
 sha256sums=('859c0bc36228f60ce4579ce4616dcba1fce56a511d1c594e7eb3ce7c4c6a1091'
-            'c2d2e0417ff493e619d70dfc37227e1c131be4158a5f0aacbe4fd712146a7679')
-depends=(unionfs-fuse)
+            'aa1dee93292b63999352b075d8b941fadb03912cd70cada7da183ade8c91aabf')
+depends=('dosbox' 'libpng12' 'unionfs-fuse')
 optdepends=('gendesk')
 PKGEXT=.pkg.tar
-
-# Exclude unneeded architecture
-case $CARCH in
-	x86_64)	_xarch=i686;
-		;;
-	i686)	_xarch=x86_64;
-		;;
-	*)	warning "Unsupported architecture: ${CARCH}"
-		;;
-esac
 
 prepare() {
 	cd ${srcdir}
@@ -45,10 +35,16 @@ prepare() {
 	fi
 
 	# extract mojo installer and suppress header warning for unzip
-	unzip "$(echo ${pkgname} | sed -e 's/-/_/g')_${pkgver}.sh" \
-		"data/noarch/*" -x "*${_xarch}*" || if [ $? -eq 1 ]; then
+	unzip -o "$(echo ${pkgname} | sed -e 's/-/_/g')_${pkgver}.sh" \
+		"data/noarch/*" -x "*dosbox/*" "*start.sh*" \
+		"*installer_readme.txt*" "*dosbox*.tar.gz" "*gog_com.shlib*" \
+		"*xdg-utils/*" "*gameinfo*" || if [ $? -eq 1 ]; then
 		msg "Data extraction successful.";
 		fi
+
+	for i in "${srcdir}/data/noarch/dosbox*.conf"; do
+		sed -i "s/\(mount C \"\)\(data\"\)/\1~\/.gog\/${_appname}\/game\/\2/" $i
+	done
 }
 
 package() {

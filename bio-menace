@@ -3,6 +3,7 @@ gogdir="/opt/gog/bio-menace"
 homedir="$HOME/.gog/bio-menace"
 mkdir -p "$homedir"/{game,config/data}
 
-unionfs "$homedir/config=RW:$gogdir=RO" "$homedir/game"
-"$homedir"/game/start.sh
+unionfs -o cow,relaxed_permissions "$homedir/config=RW:$gogdir=RO" "$homedir/game"
+dosbox -conf "$homedir/game/dosbox_biomenace.conf" \
+	-conf "$homedir/game/dosbox_biomenace_single.conf"
 fusermount -u "$homedir/game"
