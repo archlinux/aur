@@ -8,7 +8,7 @@ pkgdesc="An extensible lyrics fetcher, with daemon support for cmus and mocp."
 url="http://github.com/trizen/clyrics"
 
 arch=('any')
-license=('GPLv3')
+license=('GPL3')
 
 depends=('perl-www-mechanize' 'perl-io-html' 'perl-lwp-protocol-https')
 optdepends=('moc: daemon support for moc player'
