@@ -7,7 +7,7 @@
 
 pkgname='bitwig-studio'
 pkgver='1.3.14'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='Music production system for production, remixing and performance'
 arch=('x86_64')
 url='https://www.bitwig.com/'
