@@ -1,7 +1,7 @@
 # Maintainer: Grey Christoforo <first name [at] last name [dot] net>
 
 pkgname=owncloud-archive
-pkgver=9.1.0
+pkgver=9.1.2
 pkgrel=1
 pkgdesc="ownCloud server release, installed from the official .tar.bz2 archive"
 url="https://owncloud.org"
@@ -29,7 +29,7 @@ validpgpkeys=('E3036906AD9F30807351FAC32D5D5E97F6978A26')
 source=("https://download.owncloud.org/community/owncloud-${pkgver}.tar.bz2"{,.asc}
   "apache.example.conf"
   "set-oc-perms.sh")
-md5sums=('b044d7c92c6388608059b89327f4f924'
+md5sums=('2d4a1c6b23e616e98cef28e0db6ea4aa'
          'SKIP'
          'bf523e475fd8cf1e2048018952da5c34'
          '1ca5504c1b32fbbbe7b1710db6779744')
