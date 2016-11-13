@@ -6,7 +6,7 @@ pkgrel=1
 pkgdesc="Trizen's AUR Package Manager: A lightweight wrapper for AUR."
 arch=('any')
 url="https://github.com/trizen/trizen"
-license=('GPLv3');
+license=('GPL3');
 
 makedepends=('git')
 depends=(
