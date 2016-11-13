@@ -2,7 +2,7 @@
 
 pkgname=libva-headless
 _pkgname=libva
-pkgver=1.7.2
+pkgver=1.7.3
 pkgrel=1
 pkgdesc='Video Acceleration (VA) API for Linux for headless systems'
 arch=('i686' 'x86_64')
@@ -14,7 +14,7 @@ depends=('libdrm')
 optdepends=('libva-vdpau-driver: backend for Nvidia and AMD cards'
             'libva-intel-driver: backend for Intel cards')
 source=(http://freedesktop.org/software/vaapi/releases/${_pkgname}/${_pkgname}-$pkgver.tar.bz2)
-md5sums=('77d30af5a4bfaec6dddc2bdcbbd92ef5')
+sha1sums=('18e46f3d5a0e971eb0ec9fe14bc021e69eb13fb8')
 
 build() {
   cd ${_pkgname}-$pkgver

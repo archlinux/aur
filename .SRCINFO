@@ -1,6 +1,6 @@
 pkgbase = libva-headless
 	pkgdesc = Video Acceleration (VA) API for Linux for headless systems
-	pkgver = 1.7.2
+	pkgver = 1.7.3
 	pkgrel = 1
 	url = http://freedesktop.org/wiki/Software/vaapi
 	arch = i686
@@ -11,8 +11,8 @@ pkgbase = libva-headless
 	optdepends = libva-intel-driver: backend for Intel cards
 	provides = libva
 	conflicts = libva
-	source = http://freedesktop.org/software/vaapi/releases/libva/libva-1.7.2.tar.bz2
-	md5sums = 77d30af5a4bfaec6dddc2bdcbbd92ef5
+	source = http://freedesktop.org/software/vaapi/releases/libva/libva-1.7.3.tar.bz2
+	sha1sums = 18e46f3d5a0e971eb0ec9fe14bc021e69eb13fb8
 
 pkgname = libva-headless
 
