@@ -1,0 +1,20 @@
+pkgbase = gog-duke-nukem-2
+	pkgdesc = In the near future, the evil Rigelatins plan to enslave Earth and they kidnap Duke Nukem to use his brain to plot the attack for their forces.
+	pkgver = 2.0.0.2
+	pkgrel = 1
+	url = http://www.gog.com/
+	arch = any
+	groups = games
+	license = custom
+	depends = dosbox
+	depends = libpng12
+	depends = unionfs-fuse
+	optdepends = gendesk
+	noextract = gog_duke_nukem_2_2.0.0.2.sh
+	source = local://gog_duke_nukem_2_2.0.0.2.sh
+	source = local://duke-nukem-2
+	sha256sums = 191bf306732007a73d66ff18956c59aeecb1692db90f0138738d0fa075d4bf8a
+	sha256sums = 194b36f033582b9f79c6034f67910a8b0b25fad8c1beac695179209d5e9be661
+
+pkgname = gog-duke-nukem-2
+
