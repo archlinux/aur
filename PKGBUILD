@@ -1,6 +1,6 @@
 #Maintainer: Xyne <ac xunilhcra enyx, backwards>
 pkgname=ecryptfs-simple
-pkgver=2016.11.13.2
+pkgver=2016.11.13.4
 pkgrel=1
 pkgdesc='A very simple utility for working with eCryptfs.'
 arch=(i686 x86_64)
@@ -9,16 +9,16 @@ url="http://xyne.archlinux.ca/projects/ecryptfs-simple"
 depends=(ecryptfs-utils util-linux)
 makedepends=(cmake)
 source=(
-  http://xyne.archlinux.ca/projects/ecryptfs-simple/src/ecryptfs-simple-2016.11.13.2.tar.xz
-  http://xyne.archlinux.ca/projects/ecryptfs-simple/src/ecryptfs-simple-2016.11.13.2.tar.xz.sig
+  http://xyne.archlinux.ca/projects/ecryptfs-simple/src/ecryptfs-simple-2016.11.13.4.tar.xz
+  http://xyne.archlinux.ca/projects/ecryptfs-simple/src/ecryptfs-simple-2016.11.13.4.tar.xz.sig
 )
 sha512sums=(
-  b82916e1ce527bf9afc1a1d97bd4923d729db47cbc98c0663f2230d450af0b680afcebd6726de3a9d76f2a78f6362e2d56db4bdab85712f18d079d2c94a057dc
-  962bb2504db867d02ff7a2cba71bb7e9ae82602ee3b910df0d2f77747a68835690cff70757d218f94a995103fc73f62632e2af984c086dab8595c3f7ae05404d
+  4136679afae213cd1b8c53e33dde4dfe81ca27ef5cb2104ea1e1e4dc3a27cb1b2339eee86a3b224aacc060ae97fab960592afb4a5ff531d169158f54f1ed8106
+  c041735da5c72e45f572f601d545415b73318f041fbc759953408d56bc79831678819f2529e3ab19eaa601fb89a355a88e2e1b2eecca3cba3041c9122935e700
 )
 md5sums=(
-  6799cdc35d1f0aa86f7e6f0542a5282b
-  587e986da51ae48e30c9ce51c5d0359a
+  343811ca548396d8cc2c8310f0f33572
+  2661f64a11450de231e034b8b98c4c8e
 )
 validpgpkeys=('EC3CBE7F607D11E663149E811D1F0DC78F173680')
 
