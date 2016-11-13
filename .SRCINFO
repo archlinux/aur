@@ -1,7 +1,7 @@
 pkgbase = nyan
 	pkgdesc = a simple netcat wrapper
 	pkgver = 1.2.1
-	pkgrel = 1
+	pkgrel = 3
 	url = https://github.com/shibumi/nyan
 	arch = any
 	license = GPL3

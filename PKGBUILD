@@ -1,7 +1,7 @@
 # Maintainer: Christian Rebischke <chris.rebischke[at]archlinux[dot]org>
 pkgname='nyan'
 pkgver=1.2.1
-pkgrel=2
+pkgrel=3
 pkgdesc="a simple netcat wrapper"
 arch=('any')
 url="https://github.com/shibumi/nyan"
@@ -13,8 +13,7 @@ sha512sums=('c6c14766c5d1796a8cc713f265156b38600186bde96565ccad05118b3149eeb39ab
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
   install -D -m755 nyan.sh "${pkgdir}/usr/bin/nyan"
-  gzip nyan.1
-  install -D -m644 nyan.1.gz "${pkgdir}/usr/share/man/man1/nyan.1.gz"
+  install -D -m644 nyan.1 "${pkgdir}/usr/share/man/man1/nyan.1"
 }
 
 # vim:set et sw=2 ts=2 tw=79:
