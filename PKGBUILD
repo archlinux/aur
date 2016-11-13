@@ -56,8 +56,8 @@ md5sums=('ffc22a6191545b1a37d68987581f2ca7'
          '003bb22b96f9b29f61de47190f843791'
          '419f27776d367e0c06c76dac6f6c3485'
          'f09947a67691a2d78d20a3885889981c')
-md5sums_i686=('d4ef099c6284b6a669fc8b2079d98ad6')
-md5sums_x86_64=('de6db1934e3f519a8a2472ebd51afa3a')
+md5sums_i686=('35268b3badee2ea57e1a117ee1aeab7e')
+md5sums_x86_64=('c6985f6e7bd10f7e707ea59afe397c1e')
 
 package() {
     cd ${_pkgname}-${_major}
