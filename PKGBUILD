@@ -1,18 +1,16 @@
 # Maintainer: Ondrej Jirman <megous@megous.com>
 
 pkgname=megatools
-pkgver=1.9.97
+pkgver=1.9.98
 pkgrel=1
 pkgdesc="Command line client application for Mega.nz"
 arch=('i686' 'x86_64' 'armv7h')
 url="http://megatools.megous.com"
 license=('GPL')
-depends=('curl' 'glib-networking' 'fuse')
-makedepends=('gobject-introspection')
-optdepends=('gobject-introspection: Bindings support for JavaScript')
+depends=('curl')
 source=("http://megatools.megous.com/builds/megatools-${pkgver}.tar.gz")
 options=(!libtool)
-md5sums=('03523f83e76943b7c03c8b91655e8de3')
+sha256sums=('9b0521a4d27dbc417fc8e12610ac1e1da729bf6d6eb5bef927ef3670b372a16f')
 
 build() {
   cd "megatools-${pkgver}"
