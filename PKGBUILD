@@ -1,4 +1,5 @@
-# Maintainer: Martin Harvan <martinhrvn@gmail.com
+# Maintainer : Damien Flament <damien.flament___at___gmx___dot___com>
+# Contributor: Martin Harvan <martinhrvn___at___gmail___dot___com>
 _hkgname=leksah
 pkgname=leksah
 pkgver=0.12.1.3
