@@ -8,7 +8,6 @@ url='https://github.com/dhruvasagar/vim-table-mode'
 license=('vim-license')
 depends=('vim')
 groups=('vim-plugins')
-install="vimdoc.install"
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/dhruvasagar/${pkgname}/archive/v${pkgver}.tar.gz")
 sha512sums=('ccd001d7b06b007387d6c04e94e8016d4fddc91ba8b994fdb0b4607904189a89288236fa6794759218262fbc262ce60b1734586c3c4bd3ab5a0eda076161ebf9')
 
