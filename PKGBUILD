@@ -2,7 +2,7 @@
 
 pkgname="budgetwarrior-git"
 _pkgname="budgetwarrior"
-pkgver=0.4.1.1.r5.g13de1b0
+pkgver=0.4.1.2.r49.g58620fa
 pkgrel=1
 pkgdesc="Simple command line utility to helps keeping track of your expenses and the state of your budget."
 url="https://github.com/wichtounet/budgetwarrior"
@@ -24,6 +24,8 @@ pkgver() {
 
 prepare() {
     cd "${srcdir}/${_pkgname}/"
+    git submodule init
+    git submodule update
 }
 
 build() {
