@@ -1,0 +1,23 @@
+#!/usr/bin/bash
+
+# Select dosbox config
+case $1 in
+	single|server|settings|client)	_rottconf=$1;
+					;;
+	"")	_rottconf=single;
+		;;
+	*)	echo "Possible options: single server settings client";
+		break;
+		;;
+esac
+
+gogdir="/opt/gog/rise-of-the-triad-dark-war"
+homedir="$HOME/.gog/rise-of-the-triad-dark-war"
+mkdir -p "$homedir"/{game,config/data}
+
+unionfs -o cow,relaxed_permissions "$homedir/config=RW:$gogdir=RO" "$homedir/game"
+
+dosbox -conf "$homedir/game/dosboxRiseOTT.conf" \
+	-conf "$homedir/game/dosboxRiseOTT_$_rottconf.conf"
+fusermount -u "$homedir/game"
+unset _rottconf
