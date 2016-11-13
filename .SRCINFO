@@ -1,9 +1,8 @@
 pkgbase = vim-devicons
 	pkgdesc = Adds file type glyphs/icons to many popular Vim plugins such as: NERDTree, vim-airline, unite, vim-startify and many more
 	pkgver = 0.8.5
-	pkgrel = 1
+	pkgrel = 3
 	url = https://github.com/ryanoasis/vim-devicons
-	install = vimdoc.install
 	arch = any
 	groups = vim-plugins
 	license = MIT
