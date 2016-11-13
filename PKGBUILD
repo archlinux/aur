@@ -2,16 +2,16 @@
 # Contributor: FadeMind <fademind@gmail.com>
 
 pkgname=kdeartwork-aurorae-freeze
-pkgver=1.3
+_pkgname=Freeze
+pkgver=1.4
 pkgrel=1
 pkgdesc="Window decoration for Aurorae, based on Breeze and Dynamo."
 arch=('any')
-url="http://kde-look.org/content/show.php/Freeze?content=168737"
+url="https://store.kde.org/content/show.php/Freeze?content=168737"
 license=('GPL')
-#depends=('kdebase-workspace')
 depends=('plasma-workspace')
-source=("${pkgname}-${pkgver}.tar.gz::http://kde-look.org/CONTENT/content-files/168737-Freeze-${pkgver}.tar.gz")
-sha256sums=('f27f33cc980ee7be594a87377253b9ae455c2d7f5d71f553acb73276f9d87b37')
+source=("${pkgname}-${pkgver}.tar.gz::https://dl.opendesktop.org/api/files/download/id/1475187875/${_pkgname}-${pkgver}.tar.gz")
+sha512sums=('682cf9c04a2913ad40fc980f6a5a8a0830e20ff8fb02d4059262a2db14233df8ad052b28ea219d408c6b3df4bce6b07a39bd055bdd4ccfab357cc31c0ecf7b84')
 
 package() {
     cd "${srcdir}"
