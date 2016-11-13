@@ -1,7 +1,7 @@
 _npmname=geojsonhint
-_npmver=1.2.0
+_npmver=1.2.1
 pkgname=nodejs-geojsonhint # All lowercase
-pkgver=1.2.0
+pkgver=1.2.1
 pkgrel=1
 pkgdesc="Validate and sanity-check geojson files (geojsonlint)"
 arch=(any)
@@ -11,7 +11,6 @@ depends=('nodejs' 'npm' )
 optdepends=()
 source=(http://registry.npmjs.org/$_npmname/-/$_npmname-$_npmver.tgz)
 noextract=($_npmname-$_npmver.tgz)
-sha1sums=(750ee17419e08c29cbf552e867038c4565c521e5)
 
 package() {
   cd $srcdir
@@ -22,3 +21,4 @@ package() {
 }
 
 # vim:set ts=2 sw=2 et:
+sha1sums=('5348270ecac3c428b455cfedab245d40a5ae9fc7')
