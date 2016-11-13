@@ -5,7 +5,7 @@ pkgname=gog-rise-of-the-triad-dark-war
 # Trim gog- prefix from launcher
 _appname=$(echo ${pkgname} | sed -n 's/gog-//p')
 pkgver=2.0.0.8
-pkgrel=3
+pkgrel=4
 pkgdesc="Old-school first person shooter with an arcade feel."
 arch=('any')
 url="http://www.gog.com/game/rise_of_the_triad__dark_war"
@@ -79,7 +79,7 @@ package() {
 
 	for i in *.desktop; do
 		install -Dm644 "$i" \
-		"${pkgdir}/usr/share/applications/$i.desktop"
+		"${pkgdir}/usr/share/applications/$i"
 	done
 
 	cd ${srcdir}/data/noarch
