@@ -2,7 +2,7 @@
 # Contributor: Nabobalis <nabil.freij@gmail.com>
 pkgname=python2-ginga-git
 _gitname=ginga
-pkgver=r4.f8821e8
+pkgver=r5.664ab42
 pkgrel=1
 pkgdesc="	A viewer for astronomical data FITS (Flexible Image Transport System) files."
 arch=('i686' 'x86_64')
