@@ -12,7 +12,7 @@ depends=('bash' 'sqlite')
 install='browser-vacuum.install'
 options=('!strip')
 source=('https://raw.github.com/skydrome/random/master/shell/browser-vacuum.sh')
-sha256sums=('050b2ce85d5669968aad40d4d3c8a9c140bbaff55a4eb8d03132b4e17645f823')
+sha256sums=('1b8c22256a2832beff53765b4e622198882a50c2676cc417671c8c5883d40a5f')
 
 package() {
     cd "${srcdir}"
