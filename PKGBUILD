@@ -1,10 +1,10 @@
 # Maintainer : Christian Rebischke <chris.rebischke[at]archlinux[dot]org>
 # Contributor: Levente Polyak <anthraxx[at]archlinux[dot]org>
 pkgname=kippo-git
-pkgver=v0.9.282.d461745
+pkgver=v0.9.285.0d03635
 provides=('kippo') 
 conflicts=('kippo')
-pkgrel=1
+pkgrel=2
 pkgdesc="A medium interaction SSH honeypot designed to log brute force attacks and, most importantly, the entire shell interaction performed by the attacker"
 arch=('any')
 url="https://github.com/desaster/kippo"

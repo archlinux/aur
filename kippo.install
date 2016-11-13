@@ -16,7 +16,5 @@ pre_remove() {
   fi
 }
 
-post_remove() {
-    /usr/sbin/userdel kippo > /dev/null
-}
+
 # vim: ts=2 sw=2 et:
