@@ -2,7 +2,7 @@
 # Contributor: Justin Wilcox <nat1192 at gmail dot com>
 pkgname=restbed
 pkgver=4.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A framework for asynchronous RESTful functionality in C++11 applications"
 arch=('i686' 'x86_64')
 url="https://github.com/Corvusoft/restbed"
@@ -19,7 +19,6 @@ build() {
   cd build
   cmake .. \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DCMAKE_INSTALL_LIBDIR=lib \
     -DBUILD_SHARED=on
   make
 }
@@ -28,4 +27,7 @@ package() {
   cd "$srcdir/$pkgname/build"
 
   make DESTDIR="$pkgdir" install
+  mkdir -p "$pkgdir/usr/lib/"
+  mv "$pkgdir/usr/library/"*.so* "$pkgdir/usr/lib"
+  rmdir "$pkgdir/usr/library/"
 }
