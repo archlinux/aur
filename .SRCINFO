@@ -1,0 +1,12 @@
+pkgbase = xcursor-mayaserie-orange
+	pkgdesc = Maya Serie Orange cursor theme
+	pkgver = 2016.11.10
+	pkgrel = 1
+	url = https://store.kde.org/p/999900
+	arch = any
+	license = LGPL
+	source = https://raw.githubusercontent.com/i3-Arch/PKGBUILD/master/Maya-Serie/Maya-Orange.tar.gz
+	md5sums = 642110d97fc08256cf976e4e15a2c746
+
+pkgname = xcursor-mayaserie-orange
+
