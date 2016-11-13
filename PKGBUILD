@@ -26,7 +26,7 @@ pkgver() {
 }
 
 prepare() {
-	mkdir build
+	mkdir -p build
 }
 
 build() {
