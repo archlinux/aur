@@ -6,7 +6,7 @@ pkgrel=1
 pkgdesc="A simple menu generator for the Fluxbox Window Manager."
 arch=('any')
 url="https://github.com/trizen/$pkgname"
-license=('GPLv3')
+license=('GPL3')
 depends=('perl>=5.14.0' 'fluxbox' 'perl-data-dump' 'perl-linux-desktopfiles>=0.08')
 
 source=("https://github.com/trizen/${pkgname}/archive/${pkgver}.tar.gz")
