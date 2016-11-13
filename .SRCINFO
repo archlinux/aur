@@ -1,0 +1,20 @@
+pkgbase = gog-duke-nukem
+	pkgdesc = 2D platform game featuring the adventures of Duke Nukem.
+	pkgver = 2.0.0.2
+	pkgrel = 1
+	url = http://www.gog.com/
+	arch = any
+	groups = games
+	license = custom
+	depends = dosbox
+	depends = libpng12
+	depends = unionfs-fuse
+	optdepends = gendesk
+	noextract = gog_duke_nukem_2.0.0.2.sh
+	source = local://gog_duke_nukem_2.0.0.2.sh
+	source = local://duke-nukem
+	sha256sums = a703ee090b68a2bbab70976390d7707089a7bd310975384d0f137b5e14e55831
+	sha256sums = 6b902da2ff83d99ba43299e96e70aa7229ef0168ee6ec2411e5f5d752c4d1437
+
+pkgname = gog-duke-nukem
+

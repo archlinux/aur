@@ -1,0 +1,9 @@
+#!/usr/bin/bash
+gogdir="/opt/gog/duke-nukem"
+homedir="$HOME/.gog/duke-nukem"
+mkdir -p "$homedir"/{game,config/data}
+
+unionfs -o cow,relaxed_permissions "$homedir/config=RW:$gogdir=RO" "$homedir/game"
+dosbox -conf "$homedir/game/dosbox_duke.conf" \
+	-conf "$homedir/game/dosbox_duke_single.conf"
+fusermount -u "$homedir/game"
