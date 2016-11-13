@@ -1,5 +1,5 @@
 pkgname=mingw-w64-graphite
-pkgver=1.3.8
+pkgver=1.3.9
 pkgrel=1
 arch=(any)
 pkgdesc="reimplementation of the SIL Graphite text processing engine (mingw-w64)"
@@ -13,7 +13,7 @@ source=("https://github.com/silnrsi/graphite/releases/download/${pkgver}/graphit
 "002-graphite2-1.2.1-pkgconfig.patch"
 "003-graphite2-1.3.8-staticbuild.patch"
 "004-graphite2-1.3.8-dllimport-fix.patch")
-sha1sums=('0c802628dacf3bfa2c1654d7d72b76e20e1adc97'
+sha1sums=('0693e9eef87edf1792db247dd38794211666a1b9'
           '68c7b3c1c9e38f357a95e5b3b266d4afcfe78329'
           '4460d61e238892c421ae7771e3b36dc0b21d682c'
           'da2c20e50cd50a6cac422fd69459060a02311988'
