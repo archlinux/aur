@@ -1,17 +1,17 @@
 # Maintainer: Flat <Flat@imo.uto.moe>
 pkgname=parallel-rust
-pkgver=0.5.0
+pkgver=0.6.2
 pkgrel=1
 pkgdesc="Inspired by GNU Parallel, a command-line CPU load balancer written in Rust."
 arch=('i686' 'x86_64')
 url="https://github.com/mmstick/parallel"
 license=('MIT')
 depends=('gcc-libs-multilib')
-makedepends=('rust' 'cargo')
+makedepends=('rust-nightly' 'cargo-nightly')
 provides=('parallel')
 conflicts=('parallel')
 source=("https://github.com/mmstick/parallel/archive/$pkgver.tar.gz")
-md5sums=('68ced0c818ffa52a353698d5ed9c18ab')
+md5sums=('aaa869a144e0a7fd249626aa56b261cc')
 
 build() {
 	cd "parallel-$pkgver"
