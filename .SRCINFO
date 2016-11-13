@@ -1,7 +1,7 @@
 pkgbase = gog-akalabeth-world-of-doom
 	pkgdesc = Developed in 1979, Akalabeth is the first game made by the legendary creator of the Ultima Series, Richard Garriot.
 	pkgver = 2.0.0.3
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.gog.com/game/akalabeth_world_of_doom
 	arch = i686
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = gog-akalabeth-world-of-doom
 	license = custom:EULA
 	depends = libpng12
 	depends = unionfs-fuse
-	optdepends = gendesk
+	optdepends = gendesk: generate menu icons
 	source = local://gog_akalabeth_world_of_doom_2.0.0.3.sh
 	source = local://akalabeth-world-of-doom
 	sha256sums = 9b9af009e23423f386b231f3c9ad916b527c217f61631e42d4e81274bf1a30e1

@@ -1,0 +1,9 @@
+#!/usr/bin/bash
+gogdir="/opt/gog/akalabeth-world-of-doom"
+homedir="$HOME/.gog/akalabeth-world-of-doom"
+mkdir -p "$homedir"/{game,config/data}
+
+unionfs -o cow,relaxed_permissions "$homedir/config=RW:$gogdir=RO" "$homedir/game"
+dosbox -conf "$homedir/game/dosboxAkalabeth.conf" \
+	-conf "$homedir/game/dosboxAkalabeth_single.conf"
+fusermount -u "$homedir/game"
