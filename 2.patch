@@ -1,0 +1,49 @@
+--- tc-play-1.1/CMakeLists.txt.orig	2013-12-12 22:55:24.788832261 +0100
++++ tc-play-1.1/CMakeLists.txt	2013-12-12 22:56:16.099181617 +0100
+@@ -63,20 +63,6 @@
+ endif()
+ 
+ 
+-if (NOT LIB_SUFFIX)
+-	message(STATUS "")
+-	message(STATUS "LIB_SUFFIX variable is not defined. It will be autodetected now.")
+-	message(STATUS "You can set it manually with -DLIB_SUFFIX=<value> (e.g. 64).")
+-	if (CMAKE_SIZEOF_VOID_P EQUAL 8)
+-		message(STATUS "\nSetting LIB_SUFFIX=64\n")
+-		set (LIB_SUFFIX "64")
+-	else()
+-		message(STATUS "\nSetting LIB_SUFFIX=\n")
+-		set (LIB_SUFFIX "")
+-	endif()
+-endif()
+-
+-
+ 
+ add_executable(tcplay-bin main.c ${SRCS_COMMON} ${SRCS_LINUX} ${SRCS_PBKDF})
+ set_target_properties(tcplay-bin PROPERTIES OUTPUT_NAME tcplay)
+@@ -102,7 +88,7 @@
+ # Generate pkg-config file tcplay.pc
+ file(WRITE ${PROJECT_BINARY_DIR}/tcplay.pc "prefix=${CMAKE_INSTALL_PREFIX}
+ exec_prefix=${CMAKE_INSTALL_PREFIX}
+-libdir=${CMAKE_INSTALL_PREFIX}/lib${LIB_SUFFIX}
++libdir=${CMAKE_INSTALL_PREFIX}/lib
+ includedir=${CMAKE_INSTALL_PREFIX}/include
+ 
+ Name: libtcplay
+@@ -117,12 +103,12 @@
+ 
+ # Installation targets
+ install(TARGETS tcplay-bin tcplay-static tcplay-so
+-	RUNTIME DESTINATION sbin             COMPONENT bin
+-	LIBRARY DESTINATION lib${LIB_SUFFIX} COMPONENT lib
+-	ARCHIVE DESTINATION lib${LIB_SUFFIX} COMPONENT lib-dev
++	RUNTIME DESTINATION bin             COMPONENT bin
++	LIBRARY DESTINATION lib COMPONENT lib
++	ARCHIVE DESTINATION lib COMPONENT lib-dev
+ )
+ 
+-install(FILES ${PROJECT_BINARY_DIR}/tcplay.pc DESTINATION lib${LIB_SUFFIX}/pkgconfig COMPONENT lib-dev)
++install(FILES ${PROJECT_BINARY_DIR}/tcplay.pc DESTINATION lib/pkgconfig COMPONENT lib-dev)
+ 
+ install(FILES tcplay_api.h DESTINATION include        COMPONENT lib-dev)
+ install(FILES tcplay.3     DESTINATION share/man/man3 COMPONENT lib-dev)

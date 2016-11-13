@@ -1,0 +1,13 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 6238866..21fe3be 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -15,7 +15,7 @@ set (CFLAGS_WARN "-Wall -W -Wno-unused-parameter -Wstrict-prototypes -Wmissing-p
+ set (CFLAGS_DEBUG  "-O0 -g3 -DDEBUG")
+ set (CFLAGS_OPT    "-O3")
+ set (CFLAGS_VER    "-DMAJ_VER=${VERSION_MAJOR} -DMIN_VER=${VERSION_MINOR}")
+-set (CFLAGS_COMMON "-std=c99 -fPIE ${CFLAGS_LINUX} ${CFLAGS_WARN} ${CFLAGS_VER}")
++set (CFLAGS_COMMON "-std=c99 -fPIC ${CFLAGS_LINUX} ${CFLAGS_WARN} ${CFLAGS_VER}")
+ if ($ENV{DEBUG})
+ 	set (CFLAGS_COMMON "${CFLAGS_COMMON} ${CFLAGS_DEBUG}")
+ else()
