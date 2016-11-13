@@ -1,8 +1,8 @@
 # Maintainer: Forest Crossman <cyrozap at gmail dot com>
 
 pkgname=greenpak-designer
-_pkgver=5.06
-_pkgrel=2
+_pkgver=6.02
+_pkgrel=3
 pkgver=$_pkgver.$(printf "%03d" $_pkgrel)
 pkgrel=1
 pkgdesc="GreenPAK1-5 Designer"
@@ -17,7 +17,7 @@ options=('!strip')
 install=${pkgname}.install
 
 source=("http://www.silego.com/uploads/resources/GP1-5_Designer_v${pkgver}_LNX_Setup.zip")
-sha256sums=('3304e90957c2b19dd73ac0d73c7e87525134681faac64591dcc31ec28613b452')
+sha256sums=('99a7e0efa82f14a3b7cc14e5821a95323abb0bfd5c35263bbd74dc275bfd5c7b')
 
 if [[ $CARCH == 'i686' ]]; then
   _arch='i386'
@@ -27,7 +27,7 @@ fi
 
 package() {
   # Extract the proper package
-  ar p ${pkgname}_${_pkgver}-${_pkgrel}_${_arch}.deb data.tar.xz | \
+  ar p ${pkgname}_${_pkgver}-${_pkgrel}~Debian~jessie_${_arch}.deb data.tar.xz | \
     tar -xJ --exclude="usr/share/doc-base" --exclude="usr/share/lintian" -C "${pkgdir}"/
 
   # Move /lib files to /usr/lib
@@ -39,10 +39,10 @@ package() {
   rm -r "${pkgdir}/usr/local/${pkgname}/bin"/{platforms,QtWebEngineProcess}
 
   # Move binaries to /usr/bin
-  mv "${pkgdir}/usr/local/${pkgname}/bin" "${pkgdir}"/usr/bin
+  mv "${pkgdir}/usr/local/${pkgname}/bin"/* "${pkgdir}"/usr/bin
 
   # Remove unneeded libraries
-  rm -r "${pkgdir}/usr/local/${pkgname}/lib"/{graphviz,libcdt.so*,libcgraph.so*,libgvc.so*,libgvpr.so*,libpathplan.so*,libxdot.so*,libQt5*,libusb-1.0.so*}
+  rm -r "${pkgdir}/usr/local/${pkgname}/lib"/{libQt5*,libusb-1.0.so*}
 
   # Move libraries to subdirectory in /usr/lib
   install -dm 755 "${pkgdir}/usr/lib/${pkgname}"
@@ -50,7 +50,7 @@ package() {
   rm -r "${pkgdir}/usr/local/${pkgname}/lib"
 
   # Remove unneeded support files
-  rm -r "${pkgdir}/usr/local/${pkgname}"/{plugins,resources,translations}
+  rm -r "${pkgdir}/usr/local/${pkgname}"/{bin,plugins,qml,resources,translations}
 
   # Move supporting files to /usr/share
   mv "${pkgdir}/usr/local/${pkgname}" "${pkgdir}/usr/share/${pkgname}"
