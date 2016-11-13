@@ -9,7 +9,7 @@ pkgdesc="API for MISP."
 arch=('any')
 url="https://github.com/MISP/PyMISP/"
 license=('BSD2')
-source=("${_pyname}-${pkgver}.tar.gz::https://github.com/MISP/PyMISP/archive/v2.4.53.tar.gz")
+source=("${_pyname}-${pkgver}.tar.gz::https://github.com/MISP/PyMISP/archive/v${pkgver}.tar.gz")
 sha512sums=('fbdd28c337dc05ce8169a15dcc817b6f70a35217113a5f0f277d03ef66a351c41e5b0083257c187aebade3e0ecae82c6acffb032e687c754770518a44c063b65')
 
 package_python-pymisp() {
