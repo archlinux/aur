@@ -9,7 +9,7 @@ url='https://sourceforge.net/projects/ffx264/'
 license=(GPL2)
 depends=(ffmpeg)
 source=("http://downloads.sourceforge.net/project/$pkgname/$pkgname-$pkgver.tar.gz")
-md5sums=('d6fc91e7354eaf1427fe42827c636c43')
+sha256sums=('2dd42caf0f07a73c450e1ae0d375dbcc93bc62d95b21c56c7bd1d521d49c0e8d')
 
 prepare()
 {
