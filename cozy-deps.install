@@ -12,5 +12,5 @@ bold="${all_off}$(tput bold)"
 blue="${bold}$(tput setaf 4)"
 
 post_install() {
-    msg "Please not that this package comes from the Cozy community and is not an official Cozy port. Also, it only installs dependencies, not Cozy itself. For the full install procedure, please see https://wiki.archlinux.org/index.php/Cozy"
+    msg "Please note that this package comes from the Cozy community and is not an official Cozy port. Also, it only installs dependencies, not Cozy itself. For the full install procedure, please see https://wiki.archlinux.org/index.php/Cozy"
 }
