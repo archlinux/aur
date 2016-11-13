@@ -9,7 +9,7 @@ license=('MIT')
 depends=('vim')
 groups=('vim-plugins')
 install="vimdoc.install"
-source=("https://github.com/ryanoasis/vim-devicons/archive/v${pkgver}.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ryanoasis/vim-devicons/archive/v${pkgver}.tar.gz")
 sha512sums=('5212116d59d438ade193a4c82255e51c5be04e662765c9ddda372480c46680c3ddee726fa8fa8b8d1b3047e9c1435144e9c0847c63ee6ebd3c4eee943780ed37')
 
 package() {
