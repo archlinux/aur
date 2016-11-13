@@ -6,7 +6,7 @@ pkgrel=1
 pkgdesc="Find the planes' positions on a grid. (text-based game)"
 arch=('any')
 url="https://github.com/trizen/asciiplanes"
-license=('GPLv3')
+license=('GPL3')
 depends=('sidef>=2.30' 'perl-text-asciitable')
 
 source=("https://github.com/trizen/${pkgname}/archive/${pkgver}.tar.gz")
