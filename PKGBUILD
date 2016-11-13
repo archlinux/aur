@@ -2,8 +2,8 @@
 #Contributor: Author: Marko Haro - Found theme via MARKITOS66
 
 pkgname=xcursor-mayaserie-orange
-pkgver=2016.11.10
-pkgrel=1
+pkgver=2016.11.13
+pkgrel=2
 pkgdesc="Maya Serie Orange cursor theme"
 arch=('any')
 license=('LGPL')
