@@ -2,8 +2,9 @@
 
 name=watchghost
 pkgname=$name-git
-pkgver=0.1.0.git_99.0005a9e
+pkgver=0.1.0.git_110.600f606
 pkgrel=1
+epoch=1
 pkgdesc="Your invisible but loud monitoring pet"
 arch=('any')
 url='https://gitlab.com/localg-host/watchghost/'
@@ -13,6 +14,12 @@ makedepends=('python-setuptools')
 source=('git+https://gitlab.com/localg-host/watchghost.git')
 sha256sums=('SKIP')
 install=watchghost.install
+backup=(
+    'etc/watchghost/watchers'
+    'etc/watchghost/loggers'
+    'etc/watchghost/servers'
+    'etc/watchghost/groups'
+)
 
 pkgver(){
     cd $srcdir/$name

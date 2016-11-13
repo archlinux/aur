@@ -6,6 +6,11 @@ post_install() {
 post_upgrade() {
     systemd-sysusers watchghost.conf
     systemctl daemon-reload
+    systemctl is-active watchghost
+    active=$?
+    if [ $active -eq 0 ] ; then
+      systemctl restart watchghost
+    fi
 }
 
 pre_remove() {
