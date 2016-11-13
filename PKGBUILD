@@ -11,10 +11,10 @@
 
 pkgname=alsaequal
 pkgver=0.6
-pkgrel=15
+pkgrel=16
 
 pkgdesc='Real-time adjustable equalizer plugin for ALSA sound server'
-url='http://www.thedigitalmachine.net/alsaequal.html'
+url='https://web.archive.org/web/20161105202833/http://thedigitalmachine.net/alsaequal.html'
 license=('GPL2')
 arch=('i686' 'x86_64')
 

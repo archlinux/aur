@@ -1,8 +1,8 @@
 pkgbase = alsaequal
 	pkgdesc = Real-time adjustable equalizer plugin for ALSA sound server
 	pkgver = 0.6
-	pkgrel = 15
-	url = http://www.thedigitalmachine.net/alsaequal.html
+	pkgrel = 16
+	url = https://web.archive.org/web/20161105202833/http://thedigitalmachine.net/alsaequal.html
 	install = alsaequal.install
 	arch = i686
 	arch = x86_64
