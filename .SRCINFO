@@ -1,0 +1,21 @@
+pkgbase = geoclue
+	pkgdesc = Modular geoinformation service built on the D-Bus messaging system.
+	pkgver = 0.12.99
+	pkgrel = 3
+	url = http://geoclue.freedesktop.org/
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = networkmanager
+	makedepends = libsoup-gnome
+	makedepends = libxslt
+	depends = dbus-glib
+	depends = libxml2
+	depends = dconf
+	optdepends = networkmanager: geolocation
+	optdepends = libsoup-gnome: Skyhook location provider
+	source = http://freedesktop.org/~hadess/geoclue-0.12.99.tar.gz
+	md5sums = 779245045bfeeec4853da8baaa3a18e6
+
+pkgname = geoclue
+
