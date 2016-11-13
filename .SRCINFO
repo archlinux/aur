@@ -1,0 +1,20 @@
+pkgbase = gog-blake-stone-aliens-of-gold
+	pkgdesc = A classic shooter created using the Wolfenstein 3D engine.
+	pkgver = 2.0.0.5
+	pkgrel = 1
+	url = http://www.gog.com/game/blake_stone_aliens_of_gold
+	arch = any
+	groups = games
+	license = custom:EULA
+	depends = dosbox
+	depends = libpng12
+	depends = unionfs-fuse
+	optdepends = gendesk: create desktop icons
+	noextract = gog_blake_stone_aliens_of_gold_2.0.0.5.sh
+	source = local://gog_blake_stone_aliens_of_gold_2.0.0.5.sh
+	source = local://blake-stone-aliens-of-gold
+	sha256sums = 071315964031011fb327ce48c1200023d063234bbefa2378b354047177587394
+	sha256sums = 7439c7f727822cedab0011ba5ba37c0b532b9d4a325d35d297b97c9adc9acedd
+
+pkgname = gog-blake-stone-aliens-of-gold
+

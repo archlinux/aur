@@ -1,0 +1,9 @@
+#!/usr/bin/bash
+gogdir="/opt/gog/blake-stone-aliens-of-gold"
+homedir="$HOME/.gog/blake-stone-aliens-of-gold"
+mkdir -p "$homedir"/{game,config/data}
+
+unionfs -o cow,relaxed_permissions "$homedir/config=RW:$gogdir=RO" "$homedir/game"
+dosbox -conf "$homedir/game/dosbox_blake-stone-aog.conf" \
+	-conf "$homedir/game/dosbox_blake_aog_single.conf"
+fusermount -u "$homedir/game"
