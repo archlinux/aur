@@ -19,7 +19,7 @@ replaces=('bitwig-studio-demo')
 conflicts=('bitwig-studio-demo' 'bitwig-studio-demo-rc')
 options=(!strip)
 source=("https://downloads.bitwig.com/stable/${pkgver}/bitwig-studio-${pkgver}.deb")
-md5sums=('47019d722ae43847c668c5a7e3e7c8fe')
+md5sums=('53ae20b00baf831e72f09f13c60c29e9')
 
 package() {
   # Unpack package contents
