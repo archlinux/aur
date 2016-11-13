@@ -1,0 +1,20 @@
+pkgbase = gog-i-have-no-mouth-and-i-must-scream
+	pkgdesc = The last people on Earth are buried deep within the center of the earth, trapped in the bowels of an insane computer for the past hundred and nine years.
+	pkgver = 2.0.0.3
+	pkgrel = 1
+	url = http://www.gog.com/game/i_have_no_mouth_and_i_must_scream
+	arch = any
+	groups = games
+	license = custom:EULA
+	depends = dosbox
+	depends = libpng12
+	depends = unionfs-fuse
+	optdepends = gendesk
+	noextract = gog_i_have_no_mouth_and_i_must_scream_2.0.0.3.sh
+	source = local://gog_i_have_no_mouth_and_i_must_scream_2.0.0.3.sh
+	source = local://i-have-no-mouth-and-i-must-scream
+	sha256sums = 7eb03b5b4dcaea84a84dc37b5ddf67e78853ba77ae358d4a0da10dd42505e493
+	sha256sums = bad88b61fa0b41b1f016031985ac0953f59a208e3b1bdde3fd66e567ba32b0f9
+
+pkgname = gog-i-have-no-mouth-and-i-must-scream
+

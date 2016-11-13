@@ -1,0 +1,9 @@
+#!/bin/bash
+gogdir="/opt/gog/i-have-no-mouth-and-i-must-scream"
+homedir="$HOME/.gog/i-have-no-mouth-and-i-must-scream"
+mkdir -p "$homedir"/{game,config/data}
+
+unionfs -o cow,relaxed_permissions "$homedir/config=RW:$gogdir=RO" "$homedir/game"
+dosbox -conf "$homedir/game/dosboxnomouth.conf" \
+	-conf "$homedir/game/dosboxnomouth_single.conf"
+fusermount -u "$homedir/game"
