@@ -10,19 +10,19 @@ arch=('any')
 url="https://github.com/erocarrera/pefile"
 license=('MIT')
 makedepends=('python' 'python2' 'python-future' 'python2-future') 
-source=("https://github.com/erocarrera/pefile/releases/download/v2016.3.4/pefile-2016.3.4.tar.gz")
+source=("${pkgbase}-${pkgver}.tar.gz::https://github.com/erocarrera/pefile/releases/download/v2016.3.4/pefile-2016.3.4.tar.gz")
 sha512sums=('3befda46a772b03c41cbce37db2b16e50a2cdea60e2884ae003081e7a66c7f1cb083b0f74eaccdfbba5cf4f6913a6aedbe48e2a97f26d820c3c37fd9b6694ffc')
 
 prepare() {
-  cd ${srcdir}
-  cp -r pefile-${pkgver} pefile2-${pkgver}
+  cd "${srcdir}"
+  cp -r pefile-"${pkgver}" pefile2-"${pkgver}"
 }
 
 check() {
-  cd ${srcdir}/pefile-${pkgver} 
+  cd "${srcdir}/pefile-${pkgver}" 
   python setup.py check
   
-  cd ${srcdir}/pefile2-${pkgver} 
+  cd "${srcdir}/pefile2-${pkgver}" 
   python2 setup.py check  
 }
 
