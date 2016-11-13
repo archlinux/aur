@@ -1,15 +1,19 @@
 pkgbase = xprobe2
-	pkgdesc = xprobe2 is an active OS fingerprinting tool
+	pkgdesc = Active OS fingerprinting tool
 	pkgver = 0.3
-	pkgrel = 2
-	url = http://sourceforge.net/apps/mediawiki/xprobe/index.php?title=Main_Page
+	pkgrel = 3
+	url = https://sourceforge.net/projects/xprobe/
 	arch = i686
 	arch = x86_64
 	license = GPL2
-	depends = gcc
 	depends = libpcap
-	source = http://downloads.sourceforge.net/project/xprobe/xprobe2/Xprobe2%200.3/xprobe2-0.3.tar.gz
-	md5sums = 3ebb89ed9380038d368327816e34ec54
+	backup = etc/xprobe2/xprobe2.conf
+	source = http://downloads.sourceforge.net/project/xprobe/xprobe2/Xprobe2 0.3/xprobe2-0.3.tar.gz
+	source = fix-for-gcc4.3.patch
+	source = reproducible_build.patch
+	sha512sums = fd499ada22be5df3e01630948cb72d1a9e648e0c7bfaf2a688386a61c67bb36a326a9e2f3f2b9960a6a49128343010aafe8a3f04ec05e89420a1384215e41f21
+	sha512sums = 50fe71183e9717af0fcce97ecc2971b5be7024f07cb7acb5d019bf07d6549382936c8c6db860d18639e555263907654e1852054670cb3df5b618d62a1f47858b
+	sha512sums = 1ade43894b078521f16bf7609af551455211eb1b2e4c571bf23639abb530391f2474ad49f3a2f52c0298344691faa0e18250909d04b30156d5e2732df29399c5
 
 pkgname = xprobe2
 

@@ -1,0 +1,49 @@
+Author: Reiner Herrmann <reiner@reiner-h.de>
+Description: Sort order of object files in static libraries
+
+--- a/libs-external/USI++/src/Makefile.in
++++ b/libs-external/USI++/src/Makefile.in
+@@ -15,7 +15,7 @@
+ 	clear
+ 
+ usi++:icmp.o datalink.o ip.o misc.o udp.o tcp.o TX_IP.o Layer2.o arp.o
+-	ar cr libusi++.a *.o
++	ar cr libusi++.a `LC_ALL=C ls *.o`
+ #	ld *.o -Bshareable -o libusi++.so
+ 	$(RANLIB) libusi++.a
+ 	rm -f *.o
+--- a/src/xpmodules/alive_probe/Makefile.in
++++ b/src/xpmodules/alive_probe/Makefile.in
+@@ -42,7 +42,7 @@
+ all: alive_probe.a
+ 
+ alive_probe.a: icmp_ping.o tcp_ping.o udp_ping.o ttl_module portscan_module
+-	ar cr alive_probe.a *.o ttl_calc/*.o portscanner/*.o
++	ar cr alive_probe.a `LC_ALL=C ls *.o ttl_calc/*.o portscanner/*.o`
+ 	$(RANLIB) alive_probe.a
+ 
+ icmp_ping.o: icmp_ping.cc
+--- a/src/xpmodules/os_probe/Makefile.in
++++ b/src/xpmodules/os_probe/Makefile.in
+@@ -43,8 +43,8 @@
+ 
+ os_probe.a: icmp_port_unreach_mod icmp_echo_id_mod icmp_timestamp_mod \
+ icmp_inforeq_mod icmp_addrmask_mod tcp_handshake_mod tcp_rst_mod smb_mod snmp_mod
+-	ar cr os_probe.a icmp_port_unreach/*.o icmp_echo_id/*.o icmp_timestamp/*.o \
+-    icmp_inforeq/*.o icmp_addrmask/*.o tcp_handshake/*.o tcp_rst/*.o smb/*.o snmp/*.o
++	ar cr os_probe.a `LC_ALL=C ls icmp_port_unreach/*.o icmp_echo_id/*.o icmp_timestamp/*.o \
++    icmp_inforeq/*.o icmp_addrmask/*.o tcp_handshake/*.o tcp_rst/*.o smb/*.o snmp/*.o`
+ 	$(RANLIB) os_probe.a
+ 
+ 	
+--- a/src/xplib/Makefile.in
++++ b/src/xplib/Makefile.in
+@@ -44,7 +44,7 @@
+ all: libxplib.a
+ 
+ libxplib.a: $(OBJS)
+-	ar cr libxplib.a *.o
++	ar cr libxplib.a `LC_ALL=C ls *.o`
+ 	$(RANLIB) libxplib.a
+ 
+  .c.o: $(INCLUDES)
