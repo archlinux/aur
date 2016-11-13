@@ -5,13 +5,14 @@
 
 pkgname=wondershaper-git
 pkgver=20130306
-pkgrel=1
+pkgrel=2
 pkgdesc="Limit the bandwidth of one or more network adapters"
 arch=('any')
 url="https://github.com/magnific0/wondershaper"
 license=('GPL2')
 depends=('iproute')
 makedepends=('git')
+backup=('etc/conf.d/wondershaper.conf')
 source=("$pkgname"::'git://github.com/magnific0/wondershaper.git')
 md5sums=('SKIP')
 
