@@ -22,9 +22,10 @@ post_install() {
 rserve-sandbox-docker.service to run the server.\n\n"
 }
 
-pre_remove() {
-    # Remove /home/rserve
-    # Remove rserve usr and grp
-    # Remove rsd usr and grp
-    :
+post_remove() {
+    printf "\n\nTo remove images and containters: rm -rf /var/lib/docker \
+as described in \
+https://docs.docker.com/engine/installation/linux/archlinux/#/uninstallation\n"
+    printf "You can also remove /home/rserve\n"
+    printf "as well as rserve and rsd users and groups.\n\n"
 }
