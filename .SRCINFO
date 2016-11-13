@@ -1,12 +1,12 @@
 pkgbase = xfwm-axiom-theme
 	pkgdesc = Inspired by the metacity theme "fresh". Two xfwm themes are included, axiom for bright themes and axiomd for dark themes.
 	pkgver = 1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://xfce-look.org/content/show.php/axiom?content=90145
-	arch = i686
-	arch = x86_64
+	arch = any
 	license = GPL
-	source = http://xfce-look.org/CONTENT/content-files/90145-axiom.tar.gz
+	depends = xfwm4
+	source = https://dl.opendesktop.org/api/files/download/id/1461767736/90145-axiom.tar.gz
 	md5sums = e9fd9f41f671afa17b3efbf43f0008de
 
 pkgname = xfwm-axiom-theme
