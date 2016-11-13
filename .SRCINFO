@@ -1,0 +1,15 @@
+pkgbase = radeonjet-git
+	pkgdesc = A simple bash wrapper around AMDGPU's overclocking support
+	pkgver = 15.b3d58ef
+	pkgrel = 1
+	url = https://github.com/p4block/radeonjet
+	arch = any
+	license = GPL3
+	makedepends = git
+	provides = radeonjet
+	conflicts = radeonjet
+	source = git+https://github.com/p4block/radeonjet.git
+	md5sums = SKIP
+
+pkgname = radeonjet-git
+
