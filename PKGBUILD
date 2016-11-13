@@ -1,7 +1,7 @@
 # Maintainer: Levente Polyak <levente[at]leventepolyak[dot]net>
 
 pkgname=radamsa-git
-pkgver=0.5.334.cbff4db
+pkgver=0.5.338.b06460d
 pkgrel=1
 pkgdesc='General purpose mutation based fuzzer'
 url='https://github.com/aoh/radamsa'
@@ -30,7 +30,6 @@ build() {
   cd ${pkgname}
   make \
     USR_BIN_OL=/usr/bin/ol \
-    CFLAGS="${CFLAGS}" \
     OWL="/usr/bin/ovm /var/lib/owl-lisp/fasl/init.fasl"
 }
 

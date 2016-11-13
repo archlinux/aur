@@ -1,6 +1,6 @@
 pkgbase = radamsa-git
 	pkgdesc = General purpose mutation based fuzzer
-	pkgver = 0.5.334.cbff4db
+	pkgver = 0.5.338.b06460d
 	pkgrel = 1
 	url = https://github.com/aoh/radamsa
 	arch = i686
