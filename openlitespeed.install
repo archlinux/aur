@@ -1,9 +1,3 @@
 post_install() {
-    echo "For opening openlitespeed you have to run:"
-    echo "sudo /usr/local/lsws/bin/lswsctrl start"
-	echo "For stop:"
-	echo "sudo /usr/local/lsws/bin/lswsctrl stop"
-}
-post_upgrade() {
-   post_install
+    echo "Systemd service is openlitespeed"
 }

@@ -1,7 +1,7 @@
 pkgbase = openlitespeed
-	pkgdesc = Ahigh-performance, lightweight, open source HTTP server
+	pkgdesc = A high-performance, lightweight, open source HTTP server
 	pkgver = 1.4.23
-	pkgrel = 1
+	pkgrel = 2
 	url = http://open.litespeedtech.com/mediawiki/index.php/Downloads
 	install = openlitespeed.install
 	arch = x86_64
@@ -16,7 +16,9 @@ pkgbase = openlitespeed
 	depends = openssl
 	provides = openlitespeed
 	source = http://open.litespeedtech.com/packages/openlitespeed-1.4.23.tgz
+	source = openlitespeed.service
 	md5sums = 9b4fb1369ca1bc8ca0053d8aa0a7ddc3
+	md5sums = SKIP
 
 pkgname = openlitespeed
 

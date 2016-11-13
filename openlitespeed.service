@@ -1,0 +1,10 @@
+[Unit]
+Description=Openlitespeed
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+ExecStart=/usr/local/lsws/bin/lswsctrl start
+
+[Install]
+WantedBy=network.target
