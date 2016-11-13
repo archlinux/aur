@@ -7,7 +7,7 @@ pkgrel=1
 pkgdesc="A Gtk2 application for searching and streaming videos from YouTube."
 arch=('any')
 url="https://github.com/trizen/youtube-viewer"
-license=('GPLv3')
+license=('Artistic2.0')
 makedepends=('git' 'perl-module-build')
 
 provides=('youtube-viewer')
