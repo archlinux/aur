@@ -3,14 +3,14 @@
 
 pkgname=clamtk
 pkgver=5.23
-pkgrel=2
+pkgrel=3
 pkgdesc='Easy to use, light-weight, on-demand virus scanner for Linux systems'
 url='https://dave-theunsub.github.io/clamtk/'
 arch=('any')
 license=('GPL')
 depends=('clamav' 'perl' 'gtk2-perl' 'perl-locale-gettext' 'perl-libwww' 'perl-http-message'
          'perl-lwp-protocol-https' 'perl-text-csv' 'perl-json' 'python' 'zenity' 'desktop-file-utils'
-         'gnome-icon-theme' 'cronie')
+         'gnome-icon-theme' 'cron')
 source=(https://bitbucket.org/dave_theunsub/clamtk/downloads/clamtk-${pkgver}.tar.gz{,.asc}
         fix-gtk-icon.patch)
 sha512sums=('e7728c2e117a626bd725762ed9691ecc27a610bde9e56aca20282db0c9b9c5a6817697663eaa9520dc6db8f6ecf16a01a1fc44a478711127ebda974a1655fe5b'

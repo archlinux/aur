@@ -1,7 +1,7 @@
 pkgbase = clamtk
 	pkgdesc = Easy to use, light-weight, on-demand virus scanner for Linux systems
 	pkgver = 5.23
-	pkgrel = 2
+	pkgrel = 3
 	url = https://dave-theunsub.github.io/clamtk/
 	arch = any
 	license = GPL
@@ -18,7 +18,7 @@ pkgbase = clamtk
 	depends = zenity
 	depends = desktop-file-utils
 	depends = gnome-icon-theme
-	depends = cronie
+	depends = cron
 	source = https://bitbucket.org/dave_theunsub/clamtk/downloads/clamtk-5.23.tar.gz
 	source = https://bitbucket.org/dave_theunsub/clamtk/downloads/clamtk-5.23.tar.gz.asc
 	source = fix-gtk-icon.patch
