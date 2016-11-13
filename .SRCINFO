@@ -1,19 +1,22 @@
 pkgbase = gog-beneath-a-steel-sky
 	pkgdesc = All man's social problems are coming to a boil. Under the claustrophobic lid of a steel sky.
 	pkgver = 2.1.0.4
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.gog.com/game/beneath_a_steel_sky
-	arch = i686
-	arch = x86_64
+	arch = any
 	groups = games
-	license = custom:EULA custom:scummvm
-	depends = freetype2
+	license = custom:EULA
+	depends = libmpeg2
+	depends = zlib
+	depends = libjpeg-turbo
+	depends = scummvm
 	depends = unionfs-fuse
 	optdepends = gendesk
+	noextract = gog_beneath_a_steel_sky_2.1.0.4.sh
 	source = local://gog_beneath_a_steel_sky_2.1.0.4.sh
 	source = local://beneath-a-steel-sky
 	sha256sums = 1cd6c487b1f2f151874183aabb49026cb652faf33c1b326ea0edb1878eabadfb
-	sha256sums = 71c9b6d850c92c637cd44a502de8db01498e88af9829125f7fb9097b4575d60b
+	sha256sums = e02ba961a2fe793a4c09f68e32a72fdd58750acc32e688adf63e1c6f075f42a4
 
 pkgname = gog-beneath-a-steel-sky
 

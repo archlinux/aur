@@ -5,29 +5,20 @@ pkgname=gog-beneath-a-steel-sky
 # Trim gog- prefix from launcher
 _appname=$(echo ${pkgname} | sed -e 's/gog-//')
 pkgver=2.1.0.4
-pkgrel=1
+pkgrel=2
 pkgdesc="All man's social problems are coming to a boil. Under the claustrophobic lid of a steel sky. "
-arch=("i686" "x86_64")
+arch=('any')
 url="http://www.gog.com/game/beneath_a_steel_sky"
-license=("custom:EULA custom:scummvm")
+license=("custom:EULA")
 groups=("games")
 source=("local://gog_beneath_a_steel_sky_${pkgver}.sh"
 	"local://${_appname}")
+noextract=("gog_beneath_a_steel_sky_${pkgver}.sh")
 sha256sums=('1cd6c487b1f2f151874183aabb49026cb652faf33c1b326ea0edb1878eabadfb'
-            '71c9b6d850c92c637cd44a502de8db01498e88af9829125f7fb9097b4575d60b')
-depends=(freetype2 unionfs-fuse)
+            'e02ba961a2fe793a4c09f68e32a72fdd58750acc32e688adf63e1c6f075f42a4')
+depends=('libmpeg2' 'zlib' 'libjpeg-turbo' 'scummvm' 'unionfs-fuse')
 optdepends=('gendesk')
 PKGEXT=.pkg.tar
-
-# Exclude unneeded architecture
-case $CARCH in
-	x86_64)	_xarch=i686;
-		;;
-	i686)	_xarch=x86_64;
-		;;
-	*)	warning "Unsupported architecture: ${CARCH}"
-		;;
-esac
 
 prepare() {
 	cd ${srcdir}
@@ -45,10 +36,15 @@ prepare() {
 	fi
 
 	# extract mojo installer and suppress header warning for unzip
-	unzip "$(echo ${pkgname} | sed -e 's/-/_/g')_${pkgver}.sh" \
-		"data/noarch/*" -x "*${_xarch}*" || if [ $? -eq 1 ]; then
+	unzip -o "$(echo ${pkgname} | sed -e 's/-/_/g')_${pkgver}.sh" \
+		"data/noarch/*" -x "*scummvm/*" "*start.sh*" \
+		"*installer_readme.txt*" "*gog_com.shlib*" \
+		"*xdg-utils/*" "*gameinfo*" || if [ $? -eq 1 ]; then
 		msg "Data extraction successful.";
 		fi
+
+	# Edit config file for appropriate paths
+	sed -i "s/\(.*=\)\(data\)/\1~\/.gog\/${_appname}\/game\/\2/" data/noarch/beneath.ini
 }
 
 package() {
@@ -66,8 +62,6 @@ package() {
 		"${pkgdir}/usr/share/pixmaps/${_appname}.png"
 	ln -s "/opt/gog/${_appname}/docs/End User License Agreement.txt" \
 		"${pkgdir}/usr/share/licenses/${pkgname}/EULA"
-	ln -s "/opt/gog/${_appname}/docs/scummvm" \
-		"${pkgdir}/usr/share/licenses/${pkgname}/scummvm"
   	
 	install -Dm755 "${srcdir}/${_appname}" \
 		"${pkgdir}/usr/bin/${_appname}"

@@ -1,8 +1,8 @@
-#!/usr/bin/bash
+#!/bin/bash
 gogdir="/opt/gog/beneath-a-steel-sky"
 homedir="$HOME/.gog/beneath-a-steel-sky"
 mkdir -p "$homedir"/{game,config/data}
 
-unionfs "$homedir/config=RW:$gogdir=RO" "$homedir/game"
-"$homedir"/game/start.sh
+unionfs -o cow,relaxed_permissions "$homedir/config=RW:$gogdir=RO" "$homedir/game"
+scummvm -c "$homedir/game/beneath.ini"
 fusermount -u "$homedir/game"
