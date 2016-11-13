@@ -4,25 +4,25 @@ pkgbase=python-virustotal-api
 _pyname=virustotal-api
 pkgname=('python-virustotal-api' 'python2-virustotal-api')
 pkgver=1.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Virus Total Public/Private/Intel API"
 arch=('any')
 url="https://github.com/erocarrera/virustotal-api"
 license=('MIT')
 makedepends=('python' 'python2' 'python-setuptools' 'python2-setuptools') 
-source=("https://pypi.python.org/packages/source/v/${_pyname}/${_pyname}-${pkgver}.tar.gz")
+source=("${_pyname}-${pkgver}.tar.gz::https://pypi.python.org/packages/source/v/${_pyname}/${_pyname}-${pkgver}.tar.gz")
 sha512sums=('ed687b1b75532d23489bc9a9dffc99e60ee041fd3e87740e5738c0c274af31fad92e8de06560961f15e3a617cb896d0a2749c4f125ff5257c19e01595f1f3d0e')
 
 prepare() {
-  cd ${srcdir}
-  cp -r virustotal-api-${pkgver} virustotal-api2-${pkgver}
+  cd "${srcdir}"
+  cp -r virustotal-api-"${pkgver}" virustotal-api2-"${pkgver}"
 }
 
 check() {
-  cd ${srcdir}/virustotal-api-${pkgver} 
+  cd "${srcdir}/virustotal-api-${pkgver}" 
   python setup.py check
   
-  cd ${srcdir}/virustotal-api2-${pkgver} 
+  cd "${srcdir}/virustotal-api2-${pkgver}" 
   python2 setup.py check  
 }
 
