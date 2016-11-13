@@ -1,0 +1,20 @@
+pkgbase = gog-blood-one-unit-whole-blood
+	pkgdesc = You carved your soul to shreds in servitude to a dark god, but false promises and betrayal were your only reward.
+	pkgver = 2.0.0.6
+	pkgrel = 1
+	url = http://www.gog.com/game/one_unit_whole_blood
+	arch = any
+	groups = games
+	license = custom:EULA
+	depends = dosbox
+	depends = libpng12
+	depends = unionfs-fuse
+	optdepends = gendesk
+	noextract = gog_blood_one_unit_whole_blood_2.0.0.6.sh
+	source = local://gog_blood_one_unit_whole_blood_2.0.0.6.sh
+	source = local://blood-one-unit-whole-blood
+	sha256sums = 01a160ea8dd21f6f2084cf6f181ac05fecbd9a7db1bd3c77df054d8b24c4752b
+	sha256sums = 31d422242e50de14c2372763f5f3aa0159efa2c47cb01ab3173b86030c18b855
+
+pkgname = gog-blood-one-unit-whole-blood
+

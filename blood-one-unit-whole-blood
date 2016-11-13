@@ -1,0 +1,23 @@
+#!/usr/bin/bash
+
+# Select dosbox config
+case $1 in
+	single|server|settings|client|addon)	_bloodconf=$1;
+						;;
+	"")	_bloodconf=single;
+		;;
+	*)	echo "Possible options: single server settings client addon";
+		break;
+		;;
+esac
+
+gogdir="/opt/gog/blood-one-unit-whole-blood"
+homedir="$HOME/.gog/blood-one-unit-whole-blood"
+mkdir -p "$homedir"/{game,config/data}
+
+unionfs -o cow,relaxed_permissions "$homedir/config=RW:$gogdir=RO" "$homedir/game"
+
+dosbox -conf "$homedir/game/dosboxBlood.conf" \
+	-conf "$homedir/game/dosboxBlood_$_bloodconf.conf"
+fusermount -u "$homedir/game"
+unset _bloodconf
