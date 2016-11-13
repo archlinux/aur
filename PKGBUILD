@@ -2,7 +2,7 @@
 
 pkgname=viper-framework
 pkgver=1.2
-pkgrel=3
+pkgrel=4
 pkgdesc="Stable version of Viper the Binary Analysis Framework"
 arch=("any")
 url="https://github.com/botherder/viper"
@@ -14,7 +14,7 @@ depends=(
 "python2-pydeep" "ssdeep" "python2-ssdeep" "python2-beautifulsoup4" 
 "python2-pefile" "python2-crypto" "python2-olefile" "python2-oletools") 
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/botherder/viper/archive/v${pkgver}.tar.gz")
-sha512sums=("07ed69479a472a9c909ea57661af33fc8f5a50df4e3af627658dea26d1e5e7f0fef5baef783a4042506e4eb702e757dea8da8e7fd3002d0ae77c053d9f74aee2")
+sha512sums=('07ed69479a472a9c909ea57661af33fc8f5a50df4e3af627658dea26d1e5e7f0fef5baef783a4042506e4eb702e757dea8da8e7fd3002d0ae77c053d9f74aee2')
 install="viper-framework.install"
 
 build() {
@@ -27,4 +27,5 @@ package() {
   cd "${srcdir}/viper-${pkgver}"
   mkdir -p "${pkgdir}/opt/viper/"
   mv * "${pkgdir}/opt/viper/"
+  sed -i 's|#!/usr/bin/env python|#!/usr/bin/env python2|' "${pkgdir}/opt/viper/"{viper.py,api.py,web.py,update.py}
 }
