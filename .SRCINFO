@@ -1,14 +1,14 @@
 pkgbase = bs
 	pkgdesc = The classic game of Battleships against the computer. Ncurses.
-	pkgver = 2.9
+	pkgver = 2.10
 	pkgrel = 1
 	url = http://www.catb.org/~esr/bs/
 	arch = i686
 	arch = x86_64
 	license = GPL2
 	depends = ncurses
-	source = http://www.catb.org/~esr/bs//bs-2.9.tar.gz
-	md5sums = 4d4eec59c1789cffacf367d993e724f4
+	source = http://www.catb.org/~esr/bs/bs-2.10.tar.gz
+	sha1sums = 63179f97929c6cb9b6598440798e4ebd82069d4a
 
 pkgname = bs
 
