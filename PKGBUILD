@@ -1,5 +1,5 @@
-# $Id: PKGBUILD 135647 2015-06-21 02:57:30Z anatolik $
-# Maintainer:
+# Maintainer: L. Bradley LaBoon <me@bradleylaboon.com>
+# Contributor: Anatol Pomozov <anatol.pomozov+arch@gmail.com>
 # Contributor: Firmicus <francois.archlinux.org>
 # Contributor: Tom K <tomk@runbox.com>
 
