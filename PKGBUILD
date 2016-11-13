@@ -22,25 +22,25 @@ sha512sums=(
 install=kippo.install
 
 pkgver() {
-  cd $provides
+  cd ${provides}
   printf "%s.%s.%s" "$(git describe --tags --abbrev=0)" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
-  cd $provides
+  cd ${provides}
   sed -e 's|env python$|env python2|g' -i utils/*
   sed -e 's|/usr/bin/python$|/usr/bin/python2|g' -i utils/fsctl.py
   sed -e 's|kippo.cfg|/etc/kippo.cfg|g' -i kippo.tac
 }
 
 build() {
-  cd $provides
+  cd ${provides}
   python2 -m compileall .
   python2 -O -m compileall .
 }
 
 package() {
-  cd $provides
+  cd ${provides}
 
   install -Dm 644 kippo.cfg.dist "${pkgdir}/etc/kippo.cfg"
   install -Dm 644 ../kippo.service \
