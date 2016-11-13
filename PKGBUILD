@@ -48,8 +48,8 @@ source_i686=("http://www.java.net/download/java/jdk${_major}/archive/${_build}/b
 source_x86_64=("http://www.java.net/download/java/jdk${_major}/archive/${_build}/binaries/${_pkgname}-${_pkgver}-ea+${_build}_linux-x64_bin.tar.gz")
 md5sums=('855a74ddead31f8b30943ac1a7d3a7a6'
          'f09947a67691a2d78d20a3885889981c')
-md5sums_i686=('1f397620d5523d2ea0aebab0122a8533')
-md5sums_x86_64=('0b3615e4f0f7064afd3e6a8052dc9d87')
+md5sums_i686=('97bf00f0b03f41b2c2786f29c0350c80')
+md5sums_x86_64=('eb5c8cafd52e352e279b8a041cdfa595')
 
 package() {
     cd ${_pkgname}-${_major}
