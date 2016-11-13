@@ -1,0 +1,9 @@
+post_install() {
+  xdg-desktop-menu install --novendor /usr/share/applications/cryptomator.desktop
+  xdg-mime install /usr/share/mime/packages/cryptomator-vault.xml
+}
+pre_remove() {
+  xdg-desktop-menu uninstall --novendor /usr/share/applications/cryptomator.desktop
+  xdg-mime uninstall /usr/share/mime/packages/cryptomator-vault.xml
+}
+
