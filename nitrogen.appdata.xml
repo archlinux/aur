@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright 2014 l3ib <daf@minuslab.net> -->
+<application>
+  <id type="desktop">nitrogen.desktop</id>
+  <metadata_license>CC0-1.0</metadata_license>
+  <project_license>GPL-2.0+ and Zlib and CC-BY-SA-3.0</project_license>
+
+  <name>Nitrogen</name>
+  <summary>Background browser and setter for X windows</summary>
+
+  <description>
+    <p>
+      Nitrogen is a program that allows you to set the desktop background. Its
+      browser mode allows you to choose and apply a desktop background, and the
+      recall mode lets you apply the saved configuration from the command line.
+    </p>
+    <p>
+      It features Multihead and Xinerama awareness, inotify monitoring of browse
+      directory, lazy loading of thumbnails to conserve memory, and an
+      'automatic' set mode which determines the best mode to set an image based
+      on its size.
+    </p>
+  </description>
+
+  <screenshots>
+    <screenshot type="default" width="352" height="524">http://projects.l3ib.org/nitrogen/images/nitrogen-shot1.png</screenshot>
+    <screenshot width="475" height="560">http://projects.l3ib.org/nitrogen/images/nitrogen-ss-2.png</screenshot>
+  </screenshots>
+
+  <url type="homepage">http://projects.l3ib.org/nitrogen/</url>
+  <updatecontact>jwrigley7@gmail.com</updatecontact>
+</application>
