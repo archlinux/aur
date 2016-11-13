@@ -1,7 +1,7 @@
 # Maintainer: Levente Polyak <anthraxx[at]archlinux[dot]org>
 
 pkgname=strip-nondeterminism-git
-pkgver=0.028+4+gd1126e4
+pkgver=0.028+5+gb9d5b06
 pkgrel=1
 pkgdesc='Tool for stripping bits of non-deterministic information from files'
 url='https://anonscm.debian.org/git/reproducible/strip-nondeterminism.git'
@@ -23,7 +23,6 @@ pkgver() {
 prepare() {
   cd ${pkgname}
   sed -r 's|bin/dh_strip_nondeterminism ||g' -i Makefile.PL
-  sed -r '/dh_strip_nondeterminism/d' -i t/binaries.t
 }
 
 build() {
