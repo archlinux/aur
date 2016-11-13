@@ -8,7 +8,7 @@ url='https://github.com/tiagofumo/vim-nerdtree-syntax-highlight'
 license=('GPL')
 depends=('vim' 'vim-devicons' 'vim-nerdtree-git')
 groups=('vim-plugins')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/tiagofumo/vim-nerdtree-syntax-highlight/archive/v0.1.0.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/tiagofumo/vim-nerdtree-syntax-highlight/archive/v${pkgver}.tar.gz")
 sha512sums=('1197ca621d6534ececfa495ffb29fd96dfa1ffa8659ad726dfde1de61010676bb6e9b0fa77039d7963b06c23b7e9cfd9b3f4386ac03e6f45d8cb6021963c8df8')
             
 
