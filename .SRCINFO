@@ -1,0 +1,12 @@
+pkgbase = xcursor-tracer
+	pkgdesc = Tracer cursor theme
+	pkgver = 2016.11.12
+	pkgrel = 1
+	url = https://store.kde.org/p/999815/
+	arch = any
+	license = LGPL
+	source = https://raw.githubusercontent.com/i3-Arch/PKGBUILD/master/xcursor-tracer/tracer.tar.gz
+	md5sums = 4dea96b3f36df38f66f3463c1f32e374
+
+pkgname = xcursor-tracer
+
