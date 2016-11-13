@@ -8,7 +8,7 @@ pkgdesc="A fast pipe/static menu generator for the Openbox Window Manager (with 
 url="https://github.com/trizen/$pkgname"
 
 arch=('any')
-license=('GPLv3')
+license=('GPL3')
 
 depends=('openbox' 'perl>=5.14.0' 'perl-data-dump' 'perl-linux-desktopfiles>=0.09')
 source=("https://github.com/trizen/${pkgname}/archive/${pkgver}.tar.gz")
