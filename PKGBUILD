@@ -2,7 +2,7 @@
 _pkgname='cloud-buster'
 pkgname=cloud-buster-git
 pkgver=0.0.108.6d88178
-pkgrel=1
+pkgrel=2
 pkgdesc="A cloudflare-resolver"
 arch=('any')
 url="https://github.com/SageHack/cloud-buster"
@@ -27,7 +27,7 @@ build() {
 
 package() {
 	mkdir -p "${pkgdir}/usr/share/"
-	install -D -m755 "$srcdir/cloud-buster.sh" "${pkgdir}/usr/bin/cloud-buster"
+	install -D -m755 "${srcdir}/cloud-buster.sh" "${pkgdir}/usr/bin/cloud-buster"
 	cd "${srcdir}"
 	mv cloud-buster "${pkgdir}/usr/share/"
 }
