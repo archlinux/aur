@@ -1,7 +1,8 @@
-# Maintainer: Alad Wenter <https://wiki.archlinux.org/index.php/Special:EmailUser/Alad>
+# Maintainer: Morten Linderud <morten@linderud.pw> 
+# Contributor: Alad Wenter <https://wiki.archlinux.org/index.php/Special:EmailUser/Alad>
 
 pkgname=ttf-font-awesome
-pkgver=4.6.3
+pkgver=4.7.0
 pkgrel=1
 
 pkgdesc="Iconic font designed for Bootstrap"
@@ -11,7 +12,7 @@ license=('CCPL')
 depends=('fontconfig' 'xorg-font-utils')
 arch=('any')
 source=("https://github.com/FortAwesome/Font-Awesome/archive/v$pkgver.tar.gz")
-sha256sums=('669fb1210c64eda3f998c86941641f1bcd0af4450643daf8841cb62d2b6c71a4')
+sha256sums=('de512ba0e1dead382bbfce372cde74b3f18971d876fffb635ee9333f0db05d43')
 install=$pkgname.install
 
 package() {
