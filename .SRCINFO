@@ -1,0 +1,15 @@
+pkgbase = mlibtool-git
+	pkgdesc = libtool accelerator - replacement for sane systems, frontend for others
+	pkgver = r30.9ac89ba
+	pkgrel = 1
+	url = https://github.com/GregorR/mlibtool
+	arch = i686
+	arch = x86_64
+	license = ISC
+	depends = glibc
+	depends = sh
+	source = git+https://github.com/GregorR/mlibtool.git
+	md5sums = SKIP
+
+pkgname = mlibtool-git
+
