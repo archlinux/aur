@@ -1,0 +1,13 @@
+pkgbase = data_hacks
+	pkgdesc = Command line utilities for data analysis
+	pkgver = 0.3.1
+	pkgrel = 1
+	url = https://github.com/bitly/data_hacks
+	arch = any
+	license = GPL
+	depends = python2
+	source = https://github.com/bitly/data_hacks/archive/v0.3.1.tar.gz
+	sha256sums = 188afca43dba6a8267d76f2ffd961a50ded17313a2b273c90e3c9561007a4efa
+
+pkgname = data_hacks
+
