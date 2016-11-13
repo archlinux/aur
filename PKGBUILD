@@ -3,7 +3,7 @@
 # Contributor:  jyantis <yantis@yantis.net>
 
 _pkgname=powerlevel9k
-pkgname=zsh-theme-${_pkgname}
+pkgname=zsh-theme-"${_pkgname}"
 pkgver=0.5.0
 pkgrel=2
 pkgdesc='Powerlevel9k theme for zsh'
