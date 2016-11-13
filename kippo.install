@@ -5,22 +5,10 @@ post_install() {
 
   mkdir -p /opt/kippo/log/tty /opt/kippo/dl
   chown -R kippo:kippo /opt/kippo
-
-  cat /usr/share/doc/kippo/INSTALL
 }
 
 post_upgrade() {
   post_install
-}
-
-pre_remove() {
-  if [[ -f /opt/kippo/kippo.pid ]]; then
-    systemctl stop kippo
-  fi
-}
-
-post_remove() {
-  userdel kippo
 }
 
 # vim: ts=2 sw=2 et:

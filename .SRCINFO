@@ -7,16 +7,14 @@ pkgbase = kippo
 	arch = any
 	license = BSD
 	depends = twisted
-	depends = pycrypto
-	depends = zope-interface
+	depends = python2-pycrypto
+	depends = pyton2-zope-interface
 	depends = python2-pyasn1
 	backup = etc/kippo.cfg
 	source = kippo-0.9.tar.gz::https://github.com/desaster/kippo/archive/v0.9.tar.gz
 	source = kippo.service
-	source = INSTALL
 	sha512sums = 0e17c410ecb8e44ba3862f0bd6c2773d6fa768750d7917ba7f5fbfdec8ddfa63fbde0e0190bcd5361a6c5ea0bcb2017e24593c4181b5cb915a605723bce07a26
 	sha512sums = f815717a2abb7abf548e229be83f62d166f039e9018c30f6a1d47c48dfafe5d6bb417b046e3d5056ac69e6791fb26ba04f20718fa3593f77e41c09d1830ebb42
-	sha512sums = fd82f060af248b413e62d779a4a20c6d6f4972cc724503a8c60fe435955ad7b1829caf9b5a8ceca41a2d9cf02144ab9fa9d892b59012e52a81d9dbfa832d4106
 
 pkgname = kippo
 
