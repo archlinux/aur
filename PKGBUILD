@@ -7,7 +7,7 @@ pkgdesc='Cinnamon applet. Integrates the Ubuntu AppMenu (Global Menu) support in
 arch=('any')
 url='https://github.com/jake-phy/WindowIconList'
 license=('GPL')
-depends=('cinnamon')
+depends=('cinnamon' 'unity-gtk-module-standalone-bzr')
 makedepends=('git')
 provides=('cinnamon-applet-global-appmenu')
 conflicts=('cinnamon-applet-global-appmenu')
@@ -25,8 +25,10 @@ package() {
   cd "${pkgname}"
   install -dm0755 "${pkgdir}/${_appletdir}"
   find "${_appletname}" -maxdepth 1 -type f -exec install -m0644 '{}' "${pkgdir}/${_appletdir}" \;
+  install -dm0755 "${pkgdir}/${_appletdir}/interfaces-xml"
+  find "${_appletname}/interfaces-xml" -maxdepth 1 -type f -exec install -m0644 '{}' "${pkgdir}/${_appletdir}/interfaces-xml" \;
     
-  for mo in "${_appletname}/locale/mo/"*.mo; do
+  for mo in "${_appletname}/po/mo/"*.mo; do
     local lang=$(basename "$mo" .mo)
     install -dm0755 "${pkgdir}/usr/share/locale/${lang}/LC_MESSAGES"
     install -m0644 "$mo" "${pkgdir}/usr/share/locale/${lang}/LC_MESSAGES/${_appletname}.mo"
