@@ -3,7 +3,6 @@ pkgbase = zsh-theme-powerlevel9k
 	pkgver = 0.5.0
 	pkgrel = 2
 	url = https://github.com/bhilburn/powerlevel9k
-	install = zsh-theme-powerlevel9k.install
 	arch = any
 	license = custom
 	depends = zsh
@@ -17,8 +16,6 @@ pkgbase = zsh-theme-powerlevel9k
 	optdepends = acpi: battery monitoring
 	optdepends = git: status of repository
 	optdepends = mercurial: status of repository
-	provides = zsh-theme-powerlevel9k
-	conflicts = zsh-theme-powerlevel9k
 	source = zsh-theme-powerlevel9k-0.5.0.tar.gz::https://github.com/bhilburn/powerlevel9k/archive/v0.5.0.tar.gz
 	sha512sums = 5e2167e20312c97965391592a4621d91678f1f9b8e89374380f38535e87dfa2c02db9bb5ff287c2642c9b9217cc3370444ed6c5fd7d7e3492d7f8bfd1fa02d73
 

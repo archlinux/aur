@@ -23,9 +23,6 @@ optdepends=('oh-my-zsh-git: oh-my-zsh integration'
  
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/bhilburn/powerlevel9k/archive/v${pkgver}.tar.gz")
 sha512sums=('5e2167e20312c97965391592a4621d91678f1f9b8e89374380f38535e87dfa2c02db9bb5ff287c2642c9b9217cc3370444ed6c5fd7d7e3492d7f8bfd1fa02d73')
-provides=("zsh-theme-${_pkgname}")
-conflicts=("zsh-theme-${_pkgname}")
-install="zsh-theme-${_pkgname}.install"
 
 package(){
   cd "${srcdir}/${_pkgname}-${pkgver}"
