@@ -1,13 +1,12 @@
 post_install() {
-  getent passwd tlsdate > /dev/null || useradd -U -r -M -d /var/cache/tlsdated -s /bin/false tlsdate
-  mkdir -p /var/cache/tlsdated
+  getent group tlsdate &> /dev/null || groupadd tlsdate
+  getent passwd tlsdate &> /dev/null || \
+    useradd -M -r -d /var/cache/tlsdate -g tlsdate -s /bin/nologin tlsdate
   chown -R tlsdate:tlsdate /var/cache/tlsdated
 }
 
 post_upgrade() {
-  post_install $1
+  post_install
 }
 
-pre_remove() {
-  userdel tlsdate
-}
+# vim: ts=2 sw=2 et:

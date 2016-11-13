@@ -1,42 +1,45 @@
-# Maintainer: mutantmonkey <aur@mutantmonkey.in>
+# Maintainer: Levente Polyak <anthraxx[at]archlinux[dot]org>
+# Contributor: mutantmonkey <aur@mutantmonkey.in>
 # Contributor: skydrome <skydrome@tormail.org>
+
 pkgname=tlsdate-git
-pkgver=707.ae396da
-pkgrel=2
-pkgdesc="A secure rdate replacement to update local time over HTTPS, git version"
-arch=('i686' 'x86_64' 'armv6l' 'armv6h' 'arm7l' 'arm7h')
-url="https://github.com/ioerror/tlsdate"
+pkgver=0.0.13
+pkgrel=1
+epoch=1
+pkgdesc='Secure rdate replacement to update local time over HTTPS'
+url='https://github.com/ioerror/tlsdate'
+arch=('i686' 'x86_64')
 license=('BSD')
 depends=('openssl' 'ca-certificates' 'dbus' 'zlib' 'libevent' 'libseccomp')
-conflicts=('tlsdate')
-provides=('tlsdate')
-options=(emptydirs)
-install=tlsdate.install
+makedepends=('git')
 backup=('etc/conf.d/tlsdate'
         'etc/tlsdate/tlsdated.conf')
-source=('git+https://github.com/ioerror/tlsdate.git'
-        'tlsdate.conf.d'
-        'tlsdate.service'
-        'no_sslv3.patch')
-sha256sums=('SKIP'
-            '1498a74913feb66c6e2e7d982f43b07fc48881947543969668a75ef4323503aa'
-            'fe3fb8181be0a9214f351c64461680f603ea27b7b7c566c9eec189084783aa92'
-            '897661cd7a131e3b28678ffeb32477d44cccea7a4e069f9cbd27a1d17563a427')
+provides=('tlsdate')
+conflicts=('tlsdate')
+options=('emptydirs')
+install=tlsdate.install
+source=(${pkgname}::git+https://github.com/ioerror/tlsdate
+        tlsdate.conf.d
+        tlsdate.service
+        no_sslv3.patch)
+sha512sums=('SKIP'
+            '0639dd4c7f4df14465da7a5efc8a59fa59bb0155ed0f453cab9cbcc74f22c320080b71ad5361ff2ebf83d64e8c205fbe605deb69a0cb503be5412eff5f1ac220'
+            '2b06abe8d7bc2133ca4f8d7cfbf63de4c2fad8356ea8d3f53e6d1c161c2ff86089c4d64f7de7ca6c6222db254ecaaccbc4706012fee50319d83860bfb3a2eab0'
+            '038590ebef55adae75a82fd4f697306ea56f9486f1b7ff1f9eb4c292f8ea2a960b720db72e100d1bb70f5b5e1391369a1fd9ce2e8b756e79152937289c159294')
 
 pkgver() {
-  cd "$srcdir/tlsdate"
-  echo $(git rev-list --count master).$(git rev-parse --short master)
+  cd ${pkgname}
+  git describe --tags|sed -r 's|tlsdate-(.+)|\1|'|sed 's|-|+|g'
 }
 
 prepare() {
-  cd "$srcdir/tlsdate"
-  patch -N -p1 -i ../no_sslv3.patch
+  cd ${pkgname}
+  patch -p1 < "${srcdir}/no_sslv3.patch"
   ./autogen.sh
 }
 
 build() {
-  cd "$srcdir/tlsdate"
-
+  cd ${pkgname}
   ./configure \
       --prefix=/usr \
       --sbindir=/usr/bin \
@@ -49,12 +52,13 @@ build() {
 }
 
 package() {
-  cd "$srcdir/tlsdate"
-
-  make DESTDIR="$pkgdir" install
-  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/tlsdate/LICENSE"
-  install -Dm644 "$srcdir/tlsdate.conf.d"  "$pkgdir/etc/conf.d/tlsdate"
-  install -Dm644 "$srcdir/tlsdate.service" "$pkgdir/usr/lib/systemd/system/tlsdate.service"
+  cd ${pkgname}
+  make DESTDIR="${pkgdir}" install
+  install -Dm 644 README -t "${pkgdir}/usr/share/doc/${pkgname}"
+  install -Dm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
+  install -Dm 644 "${srcdir}/tlsdate.conf.d" "${pkgdir}/etc/conf.d/tlsdate"
+  install -Dm 644 "${srcdir}/tlsdate.service" -t "${pkgdir}/usr/lib/systemd/system"
+  install -d "${pkgdir}/var/cache/tlsdated"
 }
 
-# vim:set ts=2 sw=2 et:
+# vim: ts=2 sw=2 et:

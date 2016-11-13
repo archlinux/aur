@@ -1,5 +1,28 @@
+From b1afb00818c8d269c52d4b914e62fd5a9985df69 Mon Sep 17 00:00:00 2001
+From: Sebastian Andrzej Siewior <sebastian@breakpoint.cc>
+Date: Wed, 27 Apr 2016 21:10:03 +0200
+Subject: [PATCH] Drop explicit support SSLv3 and TLSv1
+
+There is no addedd value in using only SSLv3 or TLSv1. With current openssl
+implementation the sslv3 functions can be disabled and TLSv1 functions may be
+removed as well. Further the TLSv1 function offers the TLSv1 protocol while
+we have today upto TLSv1.2.
+
+Therefore I remove the explicit SSLv3 and TLSv1 functions and use only SSLv23
+function which is the only one which supports multiple SSL versions.
+
+Signed-off-by: Sebastian Andrzej Siewior <sebastian@breakpoint.cc>
+---
+ man/tlsdate.1              |  4 +---
+ src/tlsdate-helper-plan9.c | 38 ++++++++++++--------------------------
+ src/tlsdate-helper.c       | 44 +++++++++++++++-----------------------------
+ src/tlsdate-helper.h       |  2 --
+ src/tlsdate.c              |  6 +-----
+ src/tlsdate.h              |  2 --
+ 6 files changed, 29 insertions(+), 67 deletions(-)
+
 diff --git a/man/tlsdate.1 b/man/tlsdate.1
-index b052e48..b2ea687 100644
+index b052e48..fce06cd 100644
 --- a/man/tlsdate.1
 +++ b/man/tlsdate.1
 @@ -5,7 +5,7 @@
@@ -7,59 +30,222 @@ index b052e48..b2ea687 100644
  tlsdate \- secure parasitic rdate replacement
  .SH SYNOPSIS
 -.B tlsdate [\-hnvVstlw] [\-H [hostname]] [\-p [port]] [\-P [sslv23|sslv3|tlsv1]] \
-+.B tlsdate [\-hnvVstlw] [\-H [hostname]] [\-p [port]] [\-P [sslv23|tlsv1]] \
++.B tlsdate [\-hnvVstlw] [\-H [hostname]] [\-p [port]] \
  [\-\-certdir [dirname]] [\-x [\-\-proxy] proxy\-type://proxyhost:proxyport]
  .SH DESCRIPTION
  .B tlsdate
-@@ -30,7 +30,7 @@ Set remote hostname (default: 'google.com')
+@@ -30,8 +30,6 @@ Set remote hostname (default: 'google.com')
  Do not set the system clock to the time of the remote server
  .IP "\-p | \-\-port [port]"
  Set remote port (default: '443')
 -.IP "\-P | \-\-protocol [sslv23|sslv3|tlsv1]"
-+.IP "\-P | \-\-protocol [sslv23|tlsv1]"
- Set protocol to use when communicating with server (default: 'tlsv1')
+-Set protocol to use when communicating with server (default: 'tlsv1')
  .IP "\-C | \-\-certdir [dirname]"
  Set the local directory where certificates are located
+ (default: '/etc/ssl/certs')
 diff --git a/src/tlsdate-helper-plan9.c b/src/tlsdate-helper-plan9.c
-index 3c532aa..bd79cf5 100644
+index 3c532aa..369d168 100644
 --- a/src/tlsdate-helper-plan9.c
 +++ b/src/tlsdate-helper-plan9.c
-@@ -978,10 +978,6 @@ run_ssl (uint32_t *time_map, int time_is_an_illusion)
-   {
-     verb ("V: using SSLv23_client_method()\n");
-     ctx = SSL_CTX_new(SSLv23_client_method());
+@@ -974,23 +974,10 @@ run_ssl (uint32_t *time_map, int time_is_an_illusion)
+   SSL_library_init();
+ 
+   ctx = NULL;
+-  if (0 == strcmp("sslv23", protocol))
+-  {
+-    verb ("V: using SSLv23_client_method()\n");
+-    ctx = SSL_CTX_new(SSLv23_client_method());
 -  } else if (0 == strcmp("sslv3", protocol))
 -  {
 -    verb ("V: using SSLv3_client_method()\n");
 -    ctx = SSL_CTX_new(SSLv3_client_method());
-   } else if (0 == strcmp("tlsv1", protocol))
+-  } else if (0 == strcmp("tlsv1", protocol))
+-  {
+-    verb ("V: using TLSv1_client_method()\n");
+-    ctx = SSL_CTX_new(TLSv1_client_method());
+-  } else
+-    die("Unsupported protocol `%s'\n", protocol);
+-
++  verb ("V: using SSLv23_client_method()\n");
++  ctx = SSL_CTX_new(SSLv23_client_method());
+   if (ctx == NULL)
+-    die("OpenSSL failed to support protocol `%s'\n", protocol);
++    die("OpenSSL failed to support protocol `sslv23'\n");
+ 
+   verb("V: Using OpenSSL for SSL\n");
+   if (ca_racket)
+@@ -1077,20 +1064,19 @@ main(int argc, char **argv)
+   int timewarp;
+   int leap;
+ 
+-  if (argc != 12)
++  if (argc != 11)
+     return 1;
+   host = argv[1];
+   hostname_to_verify = argv[1];
+   port = argv[2];
+-  protocol = argv[3];
+-  ca_cert_container = argv[6];
+-  ca_racket = (0 != strcmp ("unchecked", argv[4]));
+-  verbose = (0 != strcmp ("quiet", argv[5]));
+-  setclock = (0 == strcmp ("setclock", argv[7]));
+-  showtime = (0 == strcmp ("showtime", argv[8]));
+-  timewarp = (0 == strcmp ("timewarp", argv[9]));
+-  leap = (0 == strcmp ("leapaway", argv[10]));
+-  proxy = (0 == strcmp ("none", argv[11]) ? NULL : argv[11]);
++  ca_cert_container = argv[5];
++  ca_racket = (0 != strcmp ("unchecked", argv[3]));
++  verbose = (0 != strcmp ("quiet", argv[4]));
++  setclock = (0 == strcmp ("setclock", argv[6]));
++  showtime = (0 == strcmp ("showtime", argv[7]));
++  timewarp = (0 == strcmp ("timewarp", argv[8]));
++  leap = (0 == strcmp ("leapaway", argv[9]));
++  proxy = (0 == strcmp ("none", argv[10]) ? NULL : argv[10]);
+ 
+   if (timewarp)
    {
-     verb ("V: using TLSv1_client_method()\n");
 diff --git a/src/tlsdate-helper.c b/src/tlsdate-helper.c
-index 877c67e..ba115e7 100644
+index 877c67e..1fe48d9 100644
 --- a/src/tlsdate-helper.c
 +++ b/src/tlsdate-helper.c
-@@ -1133,10 +1133,6 @@ run_ssl (uint32_t *time_map, int time_is_an_illusion, int http)
-   {
-     verb ("V: using SSLv23_client_method()");
-     ctx = SSL_CTX_new(SSLv23_client_method());
+@@ -1129,23 +1129,10 @@ run_ssl (uint32_t *time_map, int time_is_an_illusion, int http)
+   SSL_library_init();
+ 
+   ctx = NULL;
+-  if (0 == strcmp("sslv23", protocol))
+-  {
+-    verb ("V: using SSLv23_client_method()");
+-    ctx = SSL_CTX_new(SSLv23_client_method());
 -  } else if (0 == strcmp("sslv3", protocol))
 -  {
 -    verb ("V: using SSLv3_client_method()");
 -    ctx = SSL_CTX_new(SSLv3_client_method());
-   } else if (0 == strcmp("tlsv1", protocol))
-   {
-     verb ("V: using TLSv1_client_method()");
+-  } else if (0 == strcmp("tlsv1", protocol))
+-  {
+-    verb ("V: using TLSv1_client_method()");
+-    ctx = SSL_CTX_new(TLSv1_client_method());
+-  } else
+-    die("Unsupported protocol `%s'", protocol);
+-
++  verb ("V: using SSLv23_client_method()");
++  ctx = SSL_CTX_new(SSLv23_client_method());
+   if (ctx == NULL)
+-    die("OpenSSL failed to support protocol `%s'", protocol);
++    die("OpenSSL failed to support protocol `sslv23'");
+ 
+   verb("V: Using OpenSSL for SSL");
+   if (ca_racket)
+@@ -1257,23 +1244,22 @@ main(int argc, char **argv)
+   int leap;
+   int http;
+ 
+-  if (argc != 13)
++  if (argc != 12)
+     return 1;
+   host = argv[1];
+   hostname_to_verify = argv[1];
+   port = argv[2];
+-  protocol = argv[3];
+-  ca_cert_container = argv[6];
+-  ca_racket = (0 != strcmp ("unchecked", argv[4]));
+-  verbose = (0 != strcmp ("quiet", argv[5]));
+-  verbose_debug = (0 != strcmp ("verbose", argv[5]));
+-  setclock = (0 == strcmp ("setclock", argv[7]));
+-  showtime = (0 == strcmp ("showtime", argv[8]));
+-  showtime_raw = (0 == strcmp ("showtime=raw", argv[8]));
+-  timewarp = (0 == strcmp ("timewarp", argv[9]));
+-  leap = (0 == strcmp ("leapaway", argv[10]));
+-  proxy = (0 == strcmp ("none", argv[11]) ? NULL : argv[11]);
+-  http = (0 == (strcmp("http", argv[12])));
++  ca_cert_container = argv[5];
++  ca_racket = (0 != strcmp ("unchecked", argv[3]));
++  verbose = (0 != strcmp ("quiet", argv[4]));
++  verbose_debug = (0 != strcmp ("verbose", argv[4]));
++  setclock = (0 == strcmp ("setclock", argv[6]));
++  showtime = (0 == strcmp ("showtime", argv[7]));
++  showtime_raw = (0 == strcmp ("showtime=raw", argv[7]));
++  timewarp = (0 == strcmp ("timewarp", argv[8]));
++  leap = (0 == strcmp ("leapaway", argv[9]));
++  proxy = (0 == strcmp ("none", argv[10]) ? NULL : argv[10]);
++  http = (0 == (strcmp("http", argv[11])));
+ 
+   /* Initalize warp_time with RECENT_COMPILE_DATE */
+   clock_init_time(&warp_time, RECENT_COMPILE_DATE, 0);
+diff --git a/src/tlsdate-helper.h b/src/tlsdate-helper.h
+index 64e4092..810ee7e 100644
+--- a/src/tlsdate-helper.h
++++ b/src/tlsdate-helper.h
+@@ -118,8 +118,6 @@ static const char *hostname_to_verify;
+ 
+ static const char *port;
+ 
+-static const char *protocol;
+-
+ static char *proxy;
+ 
+ static const char *ca_cert_container;
 diff --git a/src/tlsdate.c b/src/tlsdate.c
-index dd7f993..b4404d7 100644
+index dd7f993..c85ca35 100644
 --- a/src/tlsdate.c
 +++ b/src/tlsdate.c
-@@ -88,7 +88,7 @@ usage (void)
+@@ -88,7 +88,6 @@ usage (void)
             " [-n|--dont-set-clock]\n"
             " [-H|--host] [hostname|ip]\n"
             " [-p|--port] [port number]\n"
 -           " [-P|--protocol] [sslv23|sslv3|tlsv1]\n"
-+           " [-P|--protocol] [sslv23|tlsv1]\n"
             " [-C|--certcontainer] [dirname|filename]\n"
             " [-v|--verbose]\n"
             " [-V|--showtime] [human|raw]\n"
+@@ -108,7 +107,6 @@ main (int argc, char **argv)
+   int setclock;
+   const char *host;
+   const char *port;
+-  const char *protocol;
+   const char *ca_cert_container;
+   int timewarp;
+   int leap;
+@@ -117,7 +115,6 @@ main (int argc, char **argv)
+ 
+   host = DEFAULT_HOST;
+   port = DEFAULT_PORT;
+-  protocol = DEFAULT_PROTOCOL;
+   ca_cert_container = DEFAULT_CERTFILE;
+   verbose = 0;
+   ca_racket = 1;
+@@ -176,7 +173,7 @@ main (int argc, char **argv)
+           port = optarg;
+           break;
+         case 'P':
+-          protocol = optarg;
++          /* ignore for compatibility */
+           break;
+         case 'n':
+           setclock = 0;
+@@ -219,7 +216,6 @@ main (int argc, char **argv)
+           "tlsdate",
+           host,
+           port,
+-          protocol,
+           (ca_racket ? "racket" : "unchecked"),
+           (verbose ? "verbose" : "quiet"),
+           ca_cert_container,
+diff --git a/src/tlsdate.h b/src/tlsdate.h
+index 52305eb..d236b67 100644
+--- a/src/tlsdate.h
++++ b/src/tlsdate.h
+@@ -27,7 +27,6 @@
+ #define DEFAULT_HOST "google.com"
+ #define DEFAULT_PORT "443"
+ #define DEFAULT_PROXY "none"
+-#define DEFAULT_PROTOCOL "tlsv1"
+ #define DEFAULT_CERTDIR "/etc/ssl/certs"
+ #define DEFAULT_CERTFILE TLSDATE_CERTFILE
+ #define DEFAULT_DAEMON_CACHEDIR "/var/cache/tlsdated"
+@@ -239,7 +238,6 @@ typedef struct
+   time_t manual_time;
+   char *host;
+   char *port;
+-  char *protocol;
+ } tlsdate_options_t;
+ 
+ #endif /* TLSDATE_H */
