@@ -5,7 +5,7 @@
 
 _pkgname=slic3r
 pkgname=${_pkgname}-prusa3d
-pkgver=1.31.4
+pkgver=1.31.5
 pkgrel=1
 pkgdesc="Updated Slic3r by Prusa3D with many bugfixes and new features"
 arch=('i686' 'x86_64' 'armv6' 'armv6h' 'armv7h')
@@ -34,6 +34,7 @@ md5sums=('SKIP'
 prepare() {
   cd "${srcdir}/Slic3r"
   patch -p1 -i "$srcdir/Move-Slic3r-data-to-usr-share-slic3r.patch"
+  sed -i "s/#define SLIC3R_VERSION .*/#define SLIC3R_VERSION \"$pkgver\"/" xs/src/libslic3r/libslic3r.h
 }
 
 build() {
