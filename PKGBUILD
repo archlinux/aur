@@ -2,7 +2,7 @@
 _pkgname=ctrlp.vim
 pkgname=vim-ctrlp-git
 pkgver=1.79.699.88b61e7
-pkgrel=1
+pkgrel=2
 pkgdesc='Full path fuzzy file, buffer, mru, tag, ... finder'
 arch=('any') 
 url='https://github.com/ctrlpvim/ctrlp.vim'
@@ -12,11 +12,8 @@ makedepends=('git')
 groups=('vim-plugins')
 provides=('vim-ctrlp')
 conflicts=('vim-ctrlp')
-install="vimdoc.install"
-source=("git+https://github.com/ctrlpvim/ctrlp.vim"
-        "vimdoc.install")
-sha512sums=('SKIP'
-            '37cb1bc1ba45d4626b6b274d39bacaa752679be31a7c16086aed71af9a071a911100748cc17df83808e95ff7bb57941b0b2246d485197a8e908b349466579c47')
+source=("git+https://github.com/ctrlpvim/ctrlp.vim")
+sha512sums=('SKIP')
 
 pkgver() {
   cd "${_pkgname}"
