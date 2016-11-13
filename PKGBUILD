@@ -9,7 +9,7 @@ url='https://sourceforge.net/projects/ffhevc/'
 license=(GPL2)
 depends=(ffmpeg)
 source=("http://downloads.sourceforge.net/project/$pkgname/$pkgname-$pkgver.tar.gz")
-md5sums=('3319219d8bdc7baedb6140d8b0196938')
+sha256sums=('5f280f203f652a2e4ea0474ce7b6a01b6c6caafa3ea9ede3e6f99a54e753f4e0')
 
 prepare()
 {
