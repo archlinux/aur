@@ -1,6 +1,6 @@
 pkgbase = react-native-cli
 	pkgdesc = The React Native CLI tools
-	pkgver = 1.0.0
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = http://facebook.github.io/react-native/
 	arch = any

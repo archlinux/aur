@@ -1,6 +1,6 @@
 # Maintainer: farwayer <farwayer@gmail.com>
 pkgname=react-native-cli
-pkgver=1.0.0
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="The React Native CLI tools"
 arch=(any)
