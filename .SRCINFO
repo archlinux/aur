@@ -1,7 +1,7 @@
 pkgbase = engauge
 	pkgdesc = A Digitizer for curves and scanned plots
 	pkgver = 9.5
-	pkgrel = 1
+	pkgrel = 2
 	url = http://markummitchell.github.io/engauge-digitizer/
 	install = engauge.install
 	arch = i686
@@ -13,7 +13,7 @@ pkgbase = engauge
 	optdepends = libpng12: For reading png image files
 	optdepends = libjpeg-turbo: For reading jpeg image files
 	optdepends = openjpeg: For reading jpeg2000 image files
-	source = engauge-9.5.tar.gz::https://github.com/markummitchell/engauge-digitizer/releases/v9.5.tar.gz
+	source = engauge-9.5.tar.gz::https://github.com/markummitchell/engauge-digitizer/archive/v9.5.tar.gz
 	source = engauge.desktop
 	md5sums = c45ee9b56796ba515901f9d9c05ecbc2
 	md5sums = 53def24f20c3d0178d3cf1b8c574fe15
