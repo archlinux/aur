@@ -1,12 +1,14 @@
 pkgbase = python-requests-cache
 	pkgdesc = Persistent cache for requests library
 	pkgver = 0.4.12
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/reclosedev/requests-cache
 	arch = any
 	license = BSD
 	makedepends = python
 	makedepends = python2
+	makedepends = python-setuptools
+	makedepends = python2-setuptools
 	source = requests-cache-0.4.12.tar.gz::https://github.com/reclosedev/requests-cache/archive/v0.4.12.tar.gz
 	sha512sums = 06d563d59c24f311209b81beb96130b75d1e849e0bb94ad636b3ac269eed7c89fdddfed8da86560473c4463425ea98953d30fb3da05efd614907855f130587fc
 

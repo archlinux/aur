@@ -3,7 +3,7 @@
 pkgbase=python-requests-cache
 _pyname=requests-cache
 pkgname=('python-requests-cache' 'python2-requests-cache')
-makedepends=('python' 'python2')
+makedepends=('python' 'python2' 'python-setuptools' 'python2-setuptools')
 pkgver=0.4.12
 pkgrel=2
 pkgdesc="Persistent cache for requests library"
