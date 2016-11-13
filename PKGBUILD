@@ -7,7 +7,7 @@ pkgrel=1
 pkgdesc="A command line utility for searching and streaming videos from YouTube."
 arch=('any')
 url="https://github.com/trizen/youtube-viewer"
-license=('GPLv3')
+license=('Artistic2.0')
 makedepends=('git' 'perl-module-build')
 
 provides=('youtube-viewer')
