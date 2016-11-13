@@ -1,21 +1,19 @@
 #Maintainer: Christian Rebischke <chris.rebischke[at]archlinux[dot]org>
 pkgname=inetsim
 pkgver=1.2.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Internet Services Simulation Suite"
 url="http://www.inetsim.org"
 depends=('perl-net-server' 'perl-net-dns' 'perl-ipc-shareable' 'perl-digest-sha1' 'perl-io-socket-ssl')
-install=inetsim.install
 arch=('any')
 license=('GPL')
 optdepends=('perlipq: Support for IP-based connection redirection')
-source=("http://www.inetsim.org/downloads/${pkgname}-${pkgver}.tar.gz"
-		"inetsim.service"
-    "inetsim.install")
+source=("${pkgname}-${pkgver}.tar.gz::http://www.inetsim.org/downloads/${pkgname}-${pkgver}.tar.gz"
+		"inetsim.service")
 
 sha512sums=('d8460deda14fc8d110307ec025348855982abf2bfc0c19efe2b07a93fdfb54d7245a9750087344fa9b4816f412eb7c8ac93d040dbeb5642a93bf07207e3365f1'
-            'f08b4f7ae13cb7c1dc380101dcc117502cc5979be0b1a23ec26aecf708ddaecd3dd4257fae505e3a338dd921f83c24b5b9f1d75d2d6bf2ea38397e255fc883bb'
-            'b994a7511cb1579a1cdb0ff8796615bbcff55677639883b907914b873d3dc8cefd58b2e09ae9cb4352e648482227b8c028910bbd526e6d3c101b968ce6aa679f')
+            'f08b4f7ae13cb7c1dc380101dcc117502cc5979be0b1a23ec26aecf708ddaecd3dd4257fae505e3a338dd921f83c24b5b9f1d75d2d6bf2ea38397e255fc883bb')
+install="inetsim.install"
 
 package() {
   mkdir -p "${pkgdir}/opt/"
