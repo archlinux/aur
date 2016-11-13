@@ -1,7 +1,7 @@
 # Maintainer: Levente Polyak <levente[at]leventepolyak[dot]net>
 
 pkgname=radamsa-git
-pkgver=0.5.338.b06460d
+pkgver=0.5.339.fa95381
 pkgrel=1
 pkgdesc='General purpose mutation based fuzzer'
 url='https://github.com/aoh/radamsa'
@@ -20,24 +20,19 @@ pkgver() {
     "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
-prepare() {
-  cd ${pkgname}
-  sed -r 's|(.*) bin/ol|\1|g' -i Makefile
-  sed -r 's|bin/ol |/usr/bin/ol |g' -i Makefile
-}
-
 build() {
   cd ${pkgname}
   make \
     USR_BIN_OL=/usr/bin/ol \
-    OWL="/usr/bin/ovm /var/lib/owl-lisp/fasl/init.fasl"
+    OWL="/usr/bin/ovm /var/lib/owl-lisp/fasl/init.fasl" \
+  build_radamsa
 }
 
 package() {
   cd ${pkgname}
   make DESTDIR="${pkgdir}" install
   install -Dm 644 README.md -t "${pkgdir}/usr/share/doc/${pkgname}"
-  install -Dm 644 LICENCE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm 644 LICENCE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
 
 # vim: ts=2 sw=2 et:
