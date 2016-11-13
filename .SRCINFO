@@ -1,0 +1,15 @@
+pkgbase = forever
+	pkgdesc = Program which loops forever.
+	pkgver = 0.2.1
+	pkgrel = 1
+	url = https://github.com/clarcharr/forever
+	arch = i686
+	arch = x86_64
+	license = CC0
+	makedepends = rust
+	source = git+https://github.com/clarcharr/forever#
+	validpgpkeys = 4BDA23A98EE4E049CBC3BA6C69DA5B388573EE35
+	sha256sums = SKIP
+
+pkgname = forever
+
