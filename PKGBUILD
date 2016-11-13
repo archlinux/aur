@@ -1,8 +1,8 @@
 # Maintainer: Christian Rebischke <Chris.Rebischke[at]archlinux[dot]org>
 _pkgname=awesome-terminal-fonts
-pkgname=${_pkgname}-git
+pkgname="${_pkgname}"-git
 pkgver=52.73f8840
-pkgrel=2
+pkgrel=3
 pkgdesc="fonts/icons for powerlines"
 arch=('any')
 url="https://github.com/gabrielelana/awesome-terminal-fonts"
@@ -16,7 +16,7 @@ source=("git+https://github.com/gabrielelana/awesome-terminal-fonts")
 sha512sums=('SKIP') 
 
 pkgver() {
-  cd ${_pkgname}
+  cd "${_pkgname}"
   printf "%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
