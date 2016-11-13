@@ -8,7 +8,7 @@ pkgdesc="Browse the filesystem through a tray Gtk2 status icon."
 url="https://github.com/trizen/${pkgname}"
 
 arch=('any')
-license=('GPLv3')
+license=('GPL3')
 
 depends=('perl>=5.16.0' 'gtk2-perl' 'perl-file-mimeinfo')
 source=("https://github.com/trizen/${pkgname}/archive/${pkgver}.tar.gz")
