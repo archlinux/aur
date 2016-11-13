@@ -1,3 +1,12 @@
+2016-10-13 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
+  * 2.1.6.7-1:
+    [!] ASF will no longer attempt to farm limited accounts, as Valve put hard cards restriction on them recently.
+    Added a few command aliases for !redeem variants.
+    Added !pause^ command (sticky pause). This is how !pause worked before steam family sharing improvements introduced recently.
+    Paused bot config property now works as sticky pause (like previously).
+    Improved logging module in various ways - if you're using custom logging config, you might want to check it out. There are many internal improvements, but nothing visible for people using ASF default built-in config.
+    ASF now includes new program icon, thanks to @stackia
+    Usual code improvements, optimizations and bugfixes.
 2016-10-31 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
   * 2.1.6.4-1:
     Fixed ASF not restarting itself on !restart and likewise
