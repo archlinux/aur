@@ -14,7 +14,3 @@ post_upgrade() {
   post_install $1
 }
 
-pre_remove() {
-  # remove users & groups
-  groupdel inetsim &> /dev/null
-}

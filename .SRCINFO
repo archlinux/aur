@@ -1,7 +1,7 @@
 pkgbase = inetsim
 	pkgdesc = Internet Services Simulation Suite
 	pkgver = 1.2.6
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.inetsim.org
 	install = inetsim.install
 	arch = any

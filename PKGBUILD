@@ -1,7 +1,7 @@
 #Maintainer: Christian Rebischke <chris.rebischke[at]archlinux[dot]org>
 pkgname=inetsim
 pkgver=1.2.6
-pkgrel=2
+pkgrel=3
 pkgdesc="Internet Services Simulation Suite"
 url="http://www.inetsim.org"
 depends=('perl-net-server' 'perl-net-dns' 'perl-ipc-shareable' 'perl-digest-sha1' 'perl-io-socket-ssl')
@@ -15,10 +15,13 @@ sha512sums=('d8460deda14fc8d110307ec025348855982abf2bfc0c19efe2b07a93fdfb54d7245
             'f08b4f7ae13cb7c1dc380101dcc117502cc5979be0b1a23ec26aecf708ddaecd3dd4257fae505e3a338dd921f83c24b5b9f1d75d2d6bf2ea38397e255fc883bb')
 install="inetsim.install"
 
+prepare() {
+  sed -i "s/\.\/lib/\/opt\/inetsim\/lib/" "${srcdir}/${pkgname}-${pkgver}/inetsim"
+}
+
 package() {
   mkdir -p "${pkgdir}/opt/"
   
-  sed -i "s/\.\/lib/\/opt\/inetsim\/lib/" "${srcdir}/${pkgname}-${pkgver}/inetsim"
   install -D -m644 "${srcdir}/inetsim.service" \
     "${pkgdir}/usr/lib/systemd/system/inetsim.service"
 
