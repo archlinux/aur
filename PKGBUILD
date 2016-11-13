@@ -2,13 +2,13 @@
 # Contributor: Justin Wilcox <nat1192 at gmail dot com>
 pkgname=restbed
 pkgver=4.0
-pkgrel=3
+pkgrel=4
 pkgdesc="A framework for asynchronous RESTful functionality in C++11 applications"
 arch=('i686' 'x86_64')
 url="https://github.com/Corvusoft/restbed"
 license=('AGPL3')
-depends=('openssl' 'asio')
-makedepends=('git' 'cmake')
+depends=('openssl')
+makedepends=('git' 'cmake' 'asio')
 source=("git+https://github.com/Corvusoft/restbed.git#tag=$pkgver")
 md5sums=('SKIP')
 
