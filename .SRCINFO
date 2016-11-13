@@ -1,0 +1,20 @@
+pkgbase = gog-blake-stone-planet-strike
+	pkgdesc = After a five year manhunt for the elusive Dr. Goldfire, the search has ended.
+	pkgver = 2.0.0.4
+	pkgrel = 1
+	url = http://www.gog.com/game/blake_stone_planet_strike
+	arch = any
+	groups = games
+	license = custom:EULA
+	depends = dosbox
+	depends = libpng12
+	depends = unionfs-fuse
+	optdepends = gendesk: create desktop icons
+	noextract = gog_blake_stone_planet_strike_2.0.0.4.sh
+	source = local://gog_blake_stone_planet_strike_2.0.0.4.sh
+	source = local://blake-stone-planet-strike
+	sha256sums = d24bad088cda7e5f37c6d394c86f6851f9ac1b394dbd1552d577d08db82bedb8
+	sha256sums = 5126f55cfd14359a3abaecd5287f7d8a6788b06463eaa75bf15979e09ab57c80
+
+pkgname = gog-blake-stone-planet-strike
+

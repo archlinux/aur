@@ -1,0 +1,9 @@
+#!/usr/bin/bash
+gogdir="/opt/gog/blake-stone-planet-strike"
+homedir="$HOME/.gog/blake-stone-planet-strike"
+mkdir -p "$homedir"/{game,config/data}
+
+unionfs -o cow,relaxed_permissions "$homedir/config=RW:$gogdir=RO" "$homedir/game"
+dosbox -conf "$homedir/game/dosboxBlakePS.conf" \
+	-conf "$homedir/game/dosboxBlakePS_single.conf"
+fusermount -u "$homedir/game"
