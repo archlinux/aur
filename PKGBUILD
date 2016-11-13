@@ -7,7 +7,7 @@ pkgver=1.1.2
 pkgrel=2
 pkgdesc="Virus Total Public/Private/Intel API"
 arch=('any')
-url="https://github.com/erocarrera/virustotal-api"
+url="https://github.com/blacktop/virustotal-api/"
 license=('MIT')
 makedepends=('python' 'python2' 'python-setuptools' 'python2-setuptools' 'python-future' 'python2-future') 
 source=("${_pyname}-${pkgver}.tar.gz::https://pypi.python.org/packages/source/v/${_pyname}/${_pyname}-${pkgver}.tar.gz")
@@ -27,13 +27,13 @@ check() {
 }
 
 package_python-virustotal-api() {
-  depends=('python')
+  depends=('python' 'python-future')
   cd "${srcdir}/virustotal-api-${pkgver}"
   python setup.py install --root "${pkgdir}" --optimize=1
 }
 
 package_python2-virustotal-api() {
-  depends=('python2')
+  depends=('python2' 'python2-future')
   cd "${srcdir}/virustotal-api2-${pkgver}"
   python2 setup.py install --root "${pkgdir}" --optimize=1
 }

@@ -2,7 +2,7 @@ pkgbase = python-virustotal-api
 	pkgdesc = Virus Total Public/Private/Intel API
 	pkgver = 1.1.2
 	pkgrel = 2
-	url = https://github.com/erocarrera/virustotal-api
+	url = https://github.com/blacktop/virustotal-api/
 	arch = any
 	license = MIT
 	makedepends = python
@@ -16,7 +16,9 @@ pkgbase = python-virustotal-api
 
 pkgname = python-virustotal-api
 	depends = python
+	depends = python-future
 
 pkgname = python2-virustotal-api
 	depends = python2
+	depends = python2-future
 
