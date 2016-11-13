@@ -5,7 +5,7 @@ pkgname=gog-rise-of-the-triad-dark-war
 # Trim gog- prefix from launcher
 _appname=$(echo ${pkgname} | sed -n 's/gog-//p')
 pkgver=2.0.0.8
-pkgrel=2
+pkgrel=3
 pkgdesc="Old-school first person shooter with an arcade feel."
 arch=('any')
 url="http://www.gog.com/game/rise_of_the_triad__dark_war"
@@ -13,9 +13,9 @@ license=("custom")
 groups=("games")
 source=("local://gog_rise_of_the_triad_dark_war_${pkgver}.sh"
 	"local://${_appname}")
-noextract=("gog_rise_of_the_triad_dark_war_${pkgver}.sh")
 sha256sums=('673c519bb35aefd69360ba989ee79faa1ae896e4655c3f96cb26a03f2562ec61'
             'd4df54d00db91d92c1f9a633cc28909c48161aac69e6a55a54abfb36a97057f8')
+noextract=("gog_rise_of_the_triad_dark_war_${pkgver}.sh")
 depends=('dosbox' 'libpng12' 'unionfs-fuse')
 optdepends=('gendesk: generate menu icons')
 PKGEXT=.pkg.tar
@@ -62,6 +62,11 @@ prepare() {
 	for i in "${srcdir}/data/noarch/dosbox*.conf"; do
 		sed -i "s/\(mount C \"\)\(data\"\)/\1~\/.gog\/${_appname}\/game\/\2/" $i
 	done
+	
+	# Extract MORELVLS.ZIP to data directory
+	unzip -o ${srcdir}/data/noarch/data/MORELVLS.ZIP \
+		-d ${srcdir}/data/noarch/data/ &&
+		rm ${srcdir}/data/noarch/data/MORELVLS.ZIP
 }
 
 package() {
@@ -71,7 +76,8 @@ package() {
 	
 	cd ${srcdir}
 	cp -r ./data/noarch/* "${pkgdir}"/opt/gog/${_appname}
-  	for i in *.desktop; do
+
+	for i in *.desktop; do
 		install -Dm644 "$i" \
 		"${pkgdir}/usr/share/applications/$i.desktop"
 	done

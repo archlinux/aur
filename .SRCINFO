@@ -1,7 +1,7 @@
 pkgbase = gog-rise-of-the-triad-dark-war
 	pkgdesc = Old-school first person shooter with an arcade feel.
 	pkgver = 2.0.0.8
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.gog.com/game/rise_of_the_triad__dark_war
 	arch = any
 	groups = games
