@@ -2,8 +2,8 @@
 # Contributor: Levente Polyak <anthraxx[at]archlinux[dot]org>
 _pkgname=binnavi
 pkgname=binnavi-git
-pkgver=v6.0.0.130.6b0b89c
-pkgrel=1
+pkgver=v6.1.0.279.356eaa8
+pkgrel=2
 pkgdesc="A binary analysis IDE that allows to inspect, navigate, edit and annotate control flow graphs and call graphs of disassembled code"
 url="https://github.com/google/binnavi"
 arch=('any')
@@ -24,7 +24,7 @@ pkgver() {
 build() {
   cd "${srcdir}/binnavi"
   JAVA_HOME="/usr/lib/jvm/java-8-openjdk"
-  mvn dependency:copy-dependencies -Dmaven.repo.local="${srcdir}/$pkgname-$pkgver"
+  mvn dependency:copy-dependencies -Dmaven.repo.local="${srcdir}/${pkgname}-${pkgver}"
     ant build-binnavi-fat-jar
 }
 
@@ -32,10 +32,10 @@ package() {
   mkdir -p "${pkgdir}/usr/share/java/binnavi"
   mkdir -p "${pkgdir}/usr/share/licenses/binnavi"
   mkdir -p "${pkgdir}/usr/share/binnavi"
-  cd "${srcdir}/$_pkgname/"
+  cd "${srcdir}/${_pkgname}/"
   mv README.md "${pkgdir}/usr/share/binnavi/"
   mv LICENSE "${pkgdir}/usr/share/licenses/binnavi"
-  cd "${srcdir}/$_pkgname/target/"
+  cd "${srcdir}/${_pkgname}/target/"
   mv binnavi-all.jar "${pkgdir}/usr/share/java/binnavi/"
   install -D -m755 "${srcdir}/binnavi.sh" "${pkgdir}/usr/bin/binnavi"
 }
