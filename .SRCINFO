@@ -9,14 +9,14 @@ pkgbase = python-virustotal-api
 	makedepends = python2
 	makedepends = python-setuptools
 	makedepends = python2-setuptools
+	makedepends = python-future
+	makedepends = python2-future
 	source = virustotal-api-1.1.2.tar.gz::https://pypi.python.org/packages/source/v/virustotal-api/virustotal-api-1.1.2.tar.gz
 	sha512sums = ed687b1b75532d23489bc9a9dffc99e60ee041fd3e87740e5738c0c274af31fad92e8de06560961f15e3a617cb896d0a2749c4f125ff5257c19e01595f1f3d0e
 
 pkgname = python-virustotal-api
 	depends = python
-	depends = python-future
 
 pkgname = python2-virustotal-api
 	depends = python2
-	depends = python2-future
 
