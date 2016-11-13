@@ -2,7 +2,7 @@
 
 pkgname='cinnamon-applet-icingtaskmanager-git'
 pkgver=r113.2174165
-pkgrel=1
+pkgrel=2
 pkgdesc='Cinnamon applet. Window List with App Grouping and Window Thumbnails for Cinnamon.'
 arch=('any')
 url='https://github.com/jaszhix/icingtaskmanager'
@@ -11,7 +11,7 @@ depends=('cinnamon')
 makedepends=('git')
 source=("${pkgname}::git+https://github.com/jaszhix/icingtaskmanager.git#branch=master")
 md5sums=(SKIP)
-_appletname='WindowListGroup@jake.phy@gmail.com'
+_appletname='IcingTaskManager@json'
 _appletdir="usr/share/cinnamon/applets/${_appletname}"
 
 pkgver() {
