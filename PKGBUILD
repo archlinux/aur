@@ -1,5 +1,5 @@
-# Maintainer : André Fettouhi <a.fettouhi@gmail.com>
-# Contributor : Dan McCurry <dan.mccurry at linux dot com>
+# Maintainer : Dan McCurry <dan.mccurry at linux dot com>
+# Contributor : André Fettouhi <a.fettouhi@gmail.com>
 
 pkgname=gog-rise-of-the-triad-dark-war
 # Trim gog- prefix from launcher
