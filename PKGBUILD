@@ -9,7 +9,7 @@
 pkgname=gajim-hg
 pkgrel=1
 pkgver=16204.6068cd819e0b
-pkgdesc="Jabber/XMPP instant messenger client written in PyGTK"
+pkgdesc="Jabber/XMPP instant messenger client written in Python with GTK+"
 arch=('any')
 url="http://hg.gajim.org/gajim"
 license=('GPL3')
