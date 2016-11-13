@@ -12,6 +12,7 @@ pkgbase = kdenlive-git
 	makedepends = git
 	makedepends = v4l-utils
 	depends = qt5-webkit
+	depends = qt5-quickcontrols
 	depends = kfilemetadata
 	depends = knewstuff
 	depends = knotifyconfig
