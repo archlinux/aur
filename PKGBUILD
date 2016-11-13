@@ -1,7 +1,7 @@
 # Maintainer: Ricardo (XenGi) Band <email@ricardo.band>
 _pkgname=virtualfish
 pkgname=python-$_pkgname
-pkgver=1.0.1
+pkgver=1.0.5
 pkgrel=1
 pkgdesc="A virtualenv wrapper for the Fish shell"
 arch=(any)
@@ -11,7 +11,7 @@ depends=('python-virtualenv' 'python-setuptools')
 options=(!emptydirs)
 install=
 source=("https://github.com/adambrenecki/$_pkgname/archive/$pkgver.tar.gz")
-sha1sums=("04c7e198428cd174282b0a4d49d50ffdd4c9589b")
+sha1sums=('a0a5f57ae917ac87de24be18b4a31a468f22c770')
 
 package() {
   cd "$srcdir/$_pkgname-$pkgver"
