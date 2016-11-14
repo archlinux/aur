@@ -1,8 +1,9 @@
 # Maintainer: Darshit Shah <darnir@gmail.com>
+# Contributor: Anthraxx
 
 pkgname=libpsl
 pkgver=0.15.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A Publix Suffic List library"
 arch=('i686' 'x86_64')
 url="https://github.com/rockdaboot/libpsl"
@@ -21,12 +22,12 @@ build() {
     --enable-man \
     --enable-builtin=libicu \
     --disable-runtime
-  make
+  LC_CTYPE=en_US.UTF-8 make
 }
 
 package() {
   cd "$srcdir/${pkgname}-${pkgver}"
-  make DESTDIR="$pkgdir/" install
+  LC_CTYPE=en_US.UTF-8 make DESTDIR="$pkgdir/" install
 
   install -m755 -d "${pkgdir}/usr/share/licenses/${pkgname}"
   install -m644 "${srcdir}/${pkgname}-${pkgver}/COPYING" \
