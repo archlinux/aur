@@ -6,7 +6,7 @@
 pkgname='multiload-ng-systray-gtk2'
 pkgdesc='Modern graphical system monitor, system tray version'
 pkgver=1.4.2
-pkgrel=1
+pkgrel=2
 
 makedepends=('intltool')
 depends=('gtk2>=2.20.0' 'cairo')
@@ -29,5 +29,5 @@ build() {
 
 package() {
     cd "multiload-ng-$pkgver"
-    make -C "systray" DESTDIR="$pkgdir" install
+    make DESTDIR="$pkgdir" install
 }
