@@ -7,7 +7,7 @@ arch=('i686' 'x86_64')
 url="http://code.google.com/p/gphotoframe/"
 license=('GPL3')
 groups=()
-depends=('pygtk' 'twisted' 'pyxdg' 'python2-gdata' 'python2-oauth')
+depends=('pygtk' 'twisted' 'pyxdg' 'python2-gdata' 'python2-oauth' 'python2-pyopenssl')
 makedepends=('python2-distutils-extra')
 optdepends=('python2-simplejson' 'python2-feedparser' 'python2-clutter' 
 'gnome-python-desktop')
