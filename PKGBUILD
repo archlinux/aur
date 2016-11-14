@@ -8,12 +8,12 @@
 
 pkgname=rednotebook
 pkgver=1.14
-pkgrel=3
+pkgrel=4
 pkgdesc="A simple desktop diary"
 arch=('any')
 url="http://rednotebook.sourceforge.net"
 license=('GPL2')
-depends=('python2' 'hicolor-icon-theme')
+depends=('python2-yaml' 'hicolor-icon-theme')
 optdepends=('python-chardet: Python3 module for character encoding auto-detection'
 	   'python2-gtkspellcheck: for spellchecking')
 source=("${pkgname}-${pkgver}.tar.gz::https://downloads.sourceforge.net/project/${pkgname}/${pkgname}-${pkgver}.tar.gz")
