@@ -1,0 +1,83 @@
+diff --git a/scripts/Makefile.am b/scripts/Makefile.am
+index 448057d..094bca4 100644
+--- a/scripts/Makefile.am
++++ b/scripts/Makefile.am
+@@ -48,6 +48,7 @@ LIBMAKEPKGDIRS = \
+ 	lint_pkgbuild \
+ 	source \
+ 	tidy \
++	buildenv_ext \
+ 	util
+ 
+ LIBMAKEPKG_IN = \
+@@ -93,6 +94,7 @@ LIBMAKEPKG_IN = \
+ 	libmakepkg/tidy/staticlibs.sh \
+ 	libmakepkg/tidy/strip.sh \
+ 	libmakepkg/tidy/zipman.sh \
++	libmakepkg/buildenv_ext.sh \
+ 	libmakepkg/util.sh \
+ 	libmakepkg/util/message.sh \
+ 	libmakepkg/util/option.sh \
+diff --git a/scripts/libmakepkg/buildenv_ext.sh.in b/scripts/libmakepkg/buildenv_ext.sh.in
+new file mode 100644
+index 0000000..d56afd9
+--- /dev/null
++++ b/scripts/libmakepkg/buildenv_ext.sh.in
+@@ -0,0 +1,43 @@
++#!/bin/bash
++#
++#   buildenv_ext.sh - addional functions for altering the build environment
++#   before compiliation
++#
++#   Copyright (c) 2015-2016 Pacman Development Team <pacman-dev@archlinux.org>
++#
++#   This program is free software; you can redistribute it and/or modify
++#   it under the terms of the GNU General Public License as published by
++#   the Free Software Foundation; either version 2 of the License, or
++#   (at your option) any later version.
++#
++#   This program is distributed in the hope that it will be useful,
++#   but WITHOUT ANY WARRANTY; without even the implied warranty of
++#   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++#   GNU General Public License for more details.
++#
++#   You should have received a copy of the GNU General Public License
++#   along with this program.  If not, see <http://www.gnu.org/licenses/>.
++#
++
++[[ -n "$LIBMAKEPKG_BUILDENV_EXT_SH" ]] && return
++LIBMAKEPKG_BUILDENV_EXT_SH=1
++
++LIBRARY=${LIBRARY:-'@libmakepkgdir@'}
++
++declare -a  exta_buildopts
++
++for lib in "$LIBRARY/buildenv_ext/"*.sh; do
++	source "$lib"
++done
++
++readonly -a extra_buildopts
++
++
++buildenv_ext() {
++
++	# options that alter compilation parameters
++	for func in ${extra_buildopts[@]}; do
++		$func
++	done
++
++}
+diff --git a/scripts/makepkg.sh.in b/scripts/makepkg.sh.in
+index 02398cf..8f4110f 100644
+--- a/scripts/makepkg.sh.in
++++ b/scripts/makepkg.sh.in
+@@ -395,6 +395,9 @@ prepare_buildenv() {
+ 		fi
+ 		export DISTCC_HOSTS
+ 	fi
++
++	# Check for BUILDENV extensions, use any that are requested (check buildenv and PKGBUILD opts)
++	buildenv_ext
+ }
+ 
+ run_function_safe() {
