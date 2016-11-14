@@ -1,7 +1,7 @@
 # Maintainer: Darshit Shah <darnir@gmail.com>
 
 pkgname=libpsl
-pkgver=0.14.0
+pkgver=0.15.0
 pkgrel=1
 pkgdesc="A Publix Suffic List library"
 arch=('i686' 'x86_64')
@@ -9,26 +9,23 @@ url="https://github.com/rockdaboot/libpsl"
 license=('MIT')
 depends=('icu>=55.1-1')
 makedepends=('libxslt' 'python2')
-source=("https://github.com/rockdaboot/libpsl/releases/download/${pkgname}-${pkgver}/${pkgname}-${pkgver}.tar.gz")
-
-prepare() {
-  cd "$srcdir/$pkgname-$pkgver"
-  sed -i 's/python$/python2/g' src/psl-make-dafsa
-}
+source=("https://github.com/rockdaboot/${pkgname}/releases/download/${pkgname}-${pkgver}/${pkgname}-${pkgver}.tar.gz")
+sha256sums=('b5946355d810fe03adc4194f1b5afe861547288c2ddba24bd3aa39a8f188a972')
 
 build() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$srcdir/${pkgname}-${pkgver}"
   ./configure \
     --prefix=/usr \
     --disable-static \
     --disable-dependency-tracking \
     --enable-man \
-    --enable-builtin=libicu
+    --enable-builtin=libicu \
+    --disable-runtime
   make
 }
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$srcdir/${pkgname}-${pkgver}"
   make DESTDIR="$pkgdir/" install
 
   install -m755 -d "${pkgdir}/usr/share/licenses/${pkgname}"
@@ -37,4 +34,3 @@ package() {
 }
 
 # vim: ts=2:sw=2:et
-md5sums=('ace83b37a37d94fa2dd543ccda80138b')
