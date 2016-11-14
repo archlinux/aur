@@ -4,14 +4,14 @@
 pkgname=python2-pybloomfiltermmap-git
 _gitname='pybloomfiltermmap'
 _gitroot='http://github.com/axiak/pybloomfiltermmap/'
-pkgver=r98.e34df25
+pkgver=r106.eea7ae5
 pkgrel=1
 pkgdesc="A Bloom filter (bloomfilter) for Python built on mmap. GIT version"
 arch=('any')
 url='http://github.com/axiak/pybloomfiltermmap/'
 license=('MIT')
 depends=('python2')
-makedepends=('git')
+makedepends=('git' 'python2-setuptools')
 options=('!emptydirs')
 
 conflicts=('python2-pybloomfiltermmap')
