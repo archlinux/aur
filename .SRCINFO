@@ -10,10 +10,10 @@ pkgbase = lxpanel-multiload-ng-plugin-gtk3
 	depends = gtk3
 	depends = cairo
 	depends = lxpanel-gtk3>=0.5.8
-	replaces = lxpanel-multiload-ng-applet-gtk3
 	conflicts = lxpanel-multiload-ng-plugin-gtk2
 	conflicts = lxpanel-multiload-ng-plugin-gtk2-git
 	conflicts = lxpanel-multiload-ng-plugin-gtk3-git
+	replaces = lxpanel-multiload-ng-applet-gtk3
 	source = https://github.com/udda/multiload-ng/archive/v1.4.2.tar.gz
 	md5sums = 3c17d8483bc874b20c877a7d7897ab5e
 
