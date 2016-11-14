@@ -1,0 +1,14 @@
+[Unit]
+Description=A plain-text based distributed social network
+Documentation=https://github.com/ajdiaz/timeline
+After=network.target
+Requires=dbus.socket
+
+[Service]
+ExecStart=/usr/bin/tl daemon start
+ExecStop=/usr/bin/tl daemon stop
+Restart=on-failure
+Type=forking
+
+[Install]
+WantedBy=default.target
