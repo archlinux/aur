@@ -1,4 +1,5 @@
-# Maintainer: Daniel Nagy <danielnagy at gmx de>
+# Maintainer : Damien Flament <damien.flament___at___gmx___dot___com>
+# Contributor: Daniel Nagy <danielnagy___at___gmx___dot___de>
 
 # custom variables
 _hkgname=archlinux
