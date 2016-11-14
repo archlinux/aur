@@ -17,7 +17,7 @@ conflicts=()
 replaces=()
 backup=()
 options=()
-install="${pkgname}.install"
+install='INSTALL'
 changelog=()
 source=("http://hackage.haskell.org/packages/${_hkgname}-${pkgver}/${_hkgname}-${pkgver}.tar.gz"
         "Hide_Data-Monoid_function.patch"
