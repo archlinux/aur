@@ -18,14 +18,14 @@
 # intel-media-sdk (experimental Intel QSV support only for x86_64)
 
 pkgname=ffmpeg-full-git
-pkgver=N.82332.gf6f1fc2
+pkgver=N.82400.gb1367f7
 pkgrel=1
 pkgdesc="Record, convert and stream audio and video (Git version with all possible libs)"
 arch=('i686' 'x86_64')
 url="http://www.ffmpeg.org/"
 license=('GPL3' 'custom:UNREDISTRIBUTABLE')
 depends=(
-    'alsa-lib' 'zlib' 'bzip2' 'libpng' 'chromaprint-fftw' 'fontconfig' 'frei0r-plugins'
+    'alsa-lib' 'zlib' 'bzip2' 'xz' 'libpng' 'chromaprint-fftw' 'fontconfig' 'frei0r-plugins'
     'libgcrypt' 'gmp' 'gnutls' 'glibc' 'ladspa' 'libass' 'libbluray' 'libbs2b' 'libcaca' 'celt'
     'libcdio-paranoia' 'libdc1394' 'libfdk-aac' 'flite-fpic' 'freetype2' 'fribidi' 'libgme'
     'gsm' 'libiec61883' 'libilbc' 'kvazaar' 'libmodplug' 'lame' 'netcdf' 'nut-multimedia-git'
@@ -174,6 +174,7 @@ build() {
 	        --enable-libzimg \
 	        --enable-libzmq \
 	        --enable-libzvbi \
+	        --enable-lzma \
 	        --enable-decklink \
 	        --enable-mediacodec \
 	        --enable-netcdf \
