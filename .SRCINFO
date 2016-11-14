@@ -1,7 +1,7 @@
 pkgbase = build-generator
 	pkgdesc = Generates jobs on a Jenkins server according to specifications
-	pkgver = 0.8.0.f9abadb
-	pkgrel = 3
+	pkgver = 0.8.1.2bb6060
+	pkgrel = 1
 	url = https://projects.cor-lab.org/projects/build-generator
 	arch = i686
 	arch = x86_64

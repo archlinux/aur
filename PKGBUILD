@@ -1,8 +1,8 @@
 # Maintainer: Johannes Wienke <languitar@semipol.de>
 
 pkgname='build-generator'
-pkgver=0.8.0.f9abadb
-pkgrel=3
+pkgver=0.8.1.2bb6060
+pkgrel=1
 pkgdesc='Generates jobs on a Jenkins server according to specifications'
 arch=('i686' 'x86_64')
 url='https://projects.cor-lab.org/projects/build-generator'
