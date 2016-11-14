@@ -1,12 +1,12 @@
-# Maintainer Alfredo Palhares <alfredo@palhares.me>
+# Maintainer: Alfredo Palhares <alfredo@palhares.me>
 
 pkgname=rancher-compose
 pkgver=0.11.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Docker compose compatible client to deploy to Rancher"
 url='https://github.com/rancher/rancher-compose'
 arch=('i686' 'x86_64')
-license=('MPL')
+license=('Apache')
 makedepends=('go' 'godep' 'git' 'docker')
 _gourl=github.com/rancher
 source=("${pkgname}::git+https://${_gourl}/${pkgname}.git#tag=v${pkgver}-rc10")

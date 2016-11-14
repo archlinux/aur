@@ -1,11 +1,11 @@
 pkgbase = rancher-compose
 	pkgdesc = Docker compose compatible client to deploy to Rancher
 	pkgver = 0.11.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/rancher/rancher-compose
 	arch = i686
 	arch = x86_64
-	license = MPL
+	license = Apache
 	makedepends = go
 	makedepends = godep
 	makedepends = git
