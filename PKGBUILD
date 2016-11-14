@@ -1,4 +1,5 @@
-# Maintainer: Rob Alexander <rob at robalexander dot me>
+# Maintainer: yubimusubi
+# Original Maintainer: Rob Alexander <rob at robalexander dot me>
 
 _pkgname=mopidy-gmusic
 pkgname=${_pkgname}-git
