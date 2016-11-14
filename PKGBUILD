@@ -4,7 +4,7 @@
 pkgname=python-icalendar-git
 _gitname='icalendar'
 _gitroot='https://github.com/collective/icalendar.git'
-pkgver=3.9.2.r2.g608b211
+pkgver=3.10.r4.gd277fb9
 pkgrel=1
 pkgdesc='A parser/generator of iCalendar files (RFC 2445)'
 arch=('any')
@@ -14,7 +14,7 @@ depends=('python' 'python-pytz' 'python-dateutil')
 provides=('python-icalendar')
 replaces=('python-icalendar')
 conflicts=('python-icalendar')
-makedepends=('python-distribute' 'git')
+makedepends=('python-setuptools' 'git')
 
 source=("$_gitname"::"git+$_gitroot")
 sha512sums=('SKIP')
