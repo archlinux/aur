@@ -59,14 +59,16 @@ backup=('etc/conf.d/libvirt-guests'
 	'etc/logrotate.d/libvirtd.uml'
 	'etc/sasl2/libvirt.conf')
 install="libvirt.install"
-source=("http://libvirt.org/sources/$pkgname-$pkgver.tar.xz"
+validpgpkeys=('C74415BA7C9C7F78F02E1DC34606B8A5DE95BC1F')
+source=("https://libvirt.org/sources/$pkgname-$pkgver.tar.xz"{,.asc}
 	libvirtd.conf.d
 	libvirtd-guests.conf.d
 	libvirt.tmpfiles.d)
-md5sums=('53ebd616857333fc3ce4dea3db986488'
-         '5e31269067dbd12ca871234450bb66bb'
-         '384fff96c6248d4f020f6fa66c32b357'
-         '020971887442ebbf1b6949e031c8dd3f')
+sha256sums=('b727c5f43ed3d7337ec2c2f2031ebd4207507978f68d00ad13d4f0f84aad6224'
+            'SKIP'
+            '9d0597bbf2bd7892420cebaf0563236fe1483b83ae95ee6263c1ce7f44a44134'
+            '0896c30100e9e40aee1eb4a2cf0cac2c0bdd5fd7b077b9d2680d90e77435ea66'
+            '5c26353833944db8dc97aa63843734519d6521bd8d88497d94d910ee9d3169d8')
 
 prepare() {
   cd "$srcdir/$pkgname-$pkgver"
