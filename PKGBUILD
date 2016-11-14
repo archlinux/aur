@@ -1,7 +1,7 @@
 
 # Maintainer: Bilal Elmoussaoui <bil.elmoussaoui@gmail.com>
 
-_pkgbase=hardcode-tray
+_pkgbase=hardcode-tray-git
 _gitname=Hardcode-Tray
 pkgname=$_pkgbase
 pkgver=r738.4e91e52
