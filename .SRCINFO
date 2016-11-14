@@ -1,7 +1,7 @@
 pkgbase = mate-multiload-ng-applet-gtk2-git
 	pkgdesc = Modern graphical system monitor, MATE panel applet
-	pkgver = r867.985cf4f
-	pkgrel = 1
+	pkgver = r898.1661963
+	pkgrel = 2
 	url = https://udda.github.io/multiload-ng/
 	arch = i686
 	arch = x86_64
