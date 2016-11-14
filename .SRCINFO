@@ -1,7 +1,7 @@
 pkgbase = envchain
 	pkgdesc = Set environment variables with D-Bus secret service
 	pkgver = 1.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/sorah/envchain
 	arch = i686
 	arch = x86_64
