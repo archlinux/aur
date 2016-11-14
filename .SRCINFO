@@ -1,7 +1,7 @@
 pkgbase = plotinus-git
 	pkgdesc = A searchable command palette in every modern GTK+ application
-	pkgver = 1
-	pkgrel = 2
+	pkgver = r2.aa73741
+	pkgrel = 1
 	url = http://github.com/p-e-w/plotinus
 	arch = any
 	license = GPL
