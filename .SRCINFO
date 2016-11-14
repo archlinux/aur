@@ -1,12 +1,11 @@
 pkgbase = libhttpseverywhere
 	pkgdesc = library to use HTTPSEverywhere in desktop applications
-	pkgver = 0.2.3
+	pkgver = 0.2.6
 	pkgrel = 1
-	url = https://github.com/grindhold/libhttpseverywhere/
+	url = https://git.gnome.org/browse/libhttpseverywhere
 	arch = i686
 	arch = x86_64
 	license = LGPL3
-	makedepends = git
 	makedepends = meson
 	makedepends = ninja
 	makedepends = vala
@@ -18,8 +17,8 @@ pkgbase = libhttpseverywhere
 	depends = libsoup
 	depends = glib2
 	depends = json-glib
-	source = https://github.com/grindhold/libhttpseverywhere/archive/0.2.3.tar.gz
-	md5sums = b7894aae892ae74a6c548710bba25a81
+	source = https://git.gnome.org/browse/libhttpseverywhere/snapshot/libhttpseverywhere-0.2.6.tar.xz
+	md5sums = 1341639f79dfb097a57a4211b503e774
 
 pkgname = libhttpseverywhere
 

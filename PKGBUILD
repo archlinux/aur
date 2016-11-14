@@ -2,15 +2,15 @@
 
 pkgname=libhttpseverywhere
 pkgrel=1
-pkgver=0.2.3
+pkgver=0.2.6
 pkgdesc="library to use HTTPSEverywhere in desktop applications"
 arch=('i686' 'x86_64')
-url="https://github.com/grindhold/libhttpseverywhere/"
+url="https://git.gnome.org/browse/libhttpseverywhere"
 license=('LGPL3')
 depends=('libgee' 'libxml2' 'libarchive' 'libsoup' 'glib2' 'json-glib')
-makedepends=('git' 'meson' 'ninja' 'vala' 'valadoc' 'gobject-introspection')
-source=(https://github.com/grindhold/libhttpseverywhere/archive/$pkgver.tar.gz)
-md5sums=('b7894aae892ae74a6c548710bba25a81')
+makedepends=('meson' 'ninja' 'vala' 'valadoc' 'gobject-introspection')
+source=(https://git.gnome.org/browse/libhttpseverywhere/snapshot/$pkgname-$pkgver.tar.xz)
+md5sums=('1341639f79dfb097a57a4211b503e774')
 
 prepare() {
 	cd "$srcdir/$pkgname-$pkgver"
@@ -25,5 +25,5 @@ build() {
 
 package() {
 	cd "$srcdir/$pkgname-$pkgver/build"
-	DESTDIR="$pkgdir/" ninja install
+	DESTDIR="$pkgdir" ninja install
 }
