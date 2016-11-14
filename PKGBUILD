@@ -2,7 +2,7 @@
 
 _pkgname=dtagfs
 pkgname=dtagfs-git
-pkgver=0.1.1.r0.g6d47d08
+pkgver=0.1.2.r0.g0adc5ba
 pkgrel=1
 pkgdesc="Tag-based FUSE virtual file system"
 arch=('i386' 'x86_64')
