@@ -1,7 +1,8 @@
-# Maintainer: Mitsu <archlinux AT suumitsu DOT eu>
+# Contributor: Mitsu <archlinux AT suumitsu DOT eu>
+# Maintainer: max-k <max-k AT post DOT com>
 
 pkgname=hubicfuse
-pkgver=2.1.0
+pkgver=3.0.0
 pkgrel=1
 pkgdesc="A fuse filesystem to access HubiC cloud storage"
 arch=('i686' 'x86_64')
@@ -12,7 +13,7 @@ license=('MIT')
 depends=('fuse' 'libxml2' 'json-c')
 makedepends=('gcc' 'libxml2' 'pkg-config' 'make')
 source=("$url/archive/v$pkgver.tar.gz")
-sha256sums=('ed681776afbe0416a5a1654decd5e2f7c739ebd2b96d3bbb71631aa63893d1d6')
+sha256sums=('27fa97d3320446facec4a7c387be7f12190a2852190b1de796a7c05f679790b3')
 
 build() {
 	cd "$srcdir/$pkgname-$pkgver"
