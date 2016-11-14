@@ -6,7 +6,7 @@
 
 pkgname=scidavis
 pkgver=1.14
-pkgrel=1
+pkgrel=2
 pkgdesc="Application for Scientific Data Analysis and Visualization, fork of QtiPlot"
 arch=('i686' 'x86_64')
 url="http://scidavis.sourceforge.net/"
@@ -37,6 +37,10 @@ package() {
 
   # remove liborigin files since it uses static library
   rm -rf "${pkgdir}/usr/local"
+
+  # install desktop file and icon
+  install -Dm644 "scidavis/scidavis.desktop" "${pkgdir}/usr/share/applications/scidavis.desktop"
+  install -Dm644 "scidavis/icons/scidavis.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/scidavis.svg"
 }
 
 
