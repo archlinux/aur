@@ -2,8 +2,8 @@
 
 _pkgname=timeline
 pkgname=${_pkgname}-git
-pkgver=1
-pkgrel=2
+pkgver=r17.6b714e5
+pkgrel=1
 pkgdesc="A plain-text based distributed social network build on top of git configuration manager"
 arch=('any')
 url="https://ajdiaz.me/timeline/"
