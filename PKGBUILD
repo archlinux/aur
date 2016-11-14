@@ -1,7 +1,7 @@
 # Maintainer: Damir Garifullin <gosugdr@gmail.com>
 
 pkgname=antibody
-pkgver=2.1.2
+pkgver=2.2.0
 pkgrel=1
 pkgdesc="A faster and simpler antigen written in Golang."
 arch=('i686' 'x86_64')
