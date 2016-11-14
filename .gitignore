@@ -1,4 +1,5 @@
 *.xz
+*.lzo
 /vlmcsd
 /pkg
 /src

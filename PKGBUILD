@@ -1,10 +1,10 @@
-# Maintainer: Austin Adams <aur@austinjadams.com>
+# Maintainer: phariseo <phariseo@hush.com>
 _pkgname=vlmcsd
 pkgname=$_pkgname-git
-pkgver=r8.213ac7d
+pkgver=r13.fcbbc40
 pkgrel=1
 pkgdesc="KMS Emulator in C (for activating Microsoft products)"
-arch=('i686' 'x86_64')
+arch=('i686' 'x86_64' 'aarch64')
 url="https://forums.mydigitallife.info/threads/50234-Emulated-KMS-Servers-on-non-Windows-platforms"
 license=('unknown')
 provides=('vlmcsd')
@@ -26,20 +26,26 @@ pkgver() {
 build() {
     cd "$_pkgname"
     make
+    cd man
     gzip -fk *.[0-9]
 }
 
 package() {
     cd "$_pkgname"
 
+    pushd bin
     for bin in vlmcs{d,}; do
         install -Dm755 $bin "$pkgdir"/usr/bin/$bin
     done
+    popd
 
+    pushd ../
     for unit in vlmcsd.service vlmcsd@.service vlmcsd.socket; do
         install -Dm644 "$srcdir"/$unit "$pkgdir"/usr/lib/systemd/system/$unit
     done
+    popd
 
+    pushd man
     for manpage in *.[0-9]; do
         section=${manpage##*.}
         install -Dm644 $manpage.gz "$pkgdir"/usr/share/man/man$section/$manpage.gz
