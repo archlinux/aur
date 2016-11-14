@@ -4,7 +4,7 @@
 pkgname=hatari2
 pkgnamereal=hatari
 pkgver=2.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc='An Atari ST and STE emulator'
 arch=('i686' 'x86_64')
 url='http://hatari.sourceforge.net/'
@@ -12,6 +12,7 @@ license=('GPL')
 depends=('sdl2' 'libpng' 'portaudio')
 optdepends=('zlib' 'portaudio' 'capsimage')
 makedepends=('cmake')
+conflicts=('hatari')
 source=("http://download.tuxfamily.org/${pkgnamereal}/${pkgver}/${pkgnamereal}-${pkgver}.tar.bz2"
 	'001-hatari-gentypes-python3-fix.diff')
 sha256sums=('52a447a59b6979d55d1525f3c4a21ec013e4371354d6683ede71546c5e6da577'
