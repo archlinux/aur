@@ -2,7 +2,7 @@
 
 pkgname=pt3-drv
 pkgver=2009.03.07
-pkgrel=3
+pkgrel=4
 install=pt3-drv.install
 pkgdesc="Japanese Driver for Earthsoft PT3 cards"
 groups=('earthsoft')
@@ -47,4 +47,10 @@ package() {
   mkdir -m755 -p "${pkgdir}/etc/modprobe.d/"
   echo "blacklist earth-pt3" >> pt3-blacklist.conf
   install -m644 pt3-blacklist.conf "${pkgdir}/etc/modprobe.d/pt3-blacklist.conf"
+  install -m644 etc/99-pt3.rules "${pkgdir}/etc/udev/rules.d/"
+
+
+  #Placeholder for the day when I learn how DKMS works
+  #install -m 644 {Makefile,vhba.c} "${pkgdir}"/usr/src/vhba-${pkgver}/
+  #install -m 644 ../dkms.conf "${pkgdir}"/usr/src/vhba-${pkgver}/
 }
