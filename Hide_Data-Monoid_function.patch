@@ -1,0 +1,26 @@
+From cad41dd53d764649b5dd01767b71781336dc0195 Mon Sep 17 00:00:00 2001
+From: "David J. Haines" <djhaines@gmx.com>
+Date: Sun, 4 Mar 2012 13:27:56 -0500
+Subject: [PATCH] Hide Data.Monoid's <> function due to conflict with
+ Text.PrettyPrint's (the one we want)
+
+---
+ Distribution/ArchLinux/PkgBuild.hs | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/Distribution/ArchLinux/PkgBuild.hs b/Distribution/ArchLinux/PkgBuild.hs
+index ae62888..d10dd6a 100644
+--- a/Distribution/ArchLinux/PkgBuild.hs
++++ b/Distribution/ArchLinux/PkgBuild.hs
+@@ -28,7 +28,7 @@ import Distribution.License
+ 
+ import Text.PrettyPrint
+ import Data.List
+-import Data.Monoid
++import Data.Monoid hiding ((<>))
+ import Debug.Trace
+ 
+ import Control.Monad
+-- 
+2.10.2
+

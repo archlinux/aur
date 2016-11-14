@@ -15,12 +15,18 @@ arch=('i686' 'x86_64')
 makedepends=()
 depends=("ghc")
 options=('strip' 'staticlibs')
-source=("http://hackage.haskell.org/packages/${_hkgname}-${pkgver}/${_hkgname}-${pkgver}.tar.gz")
+source=("http://hackage.haskell.org/packages/${_hkgname}-${pkgver}/${_hkgname}-${pkgver}.tar.gz"
+        "Hide_Data-Monoid_function.patch")
 install="${pkgname}.install"
-# PKGBUILD functions
+
+prepare() {
+  cd ${srcdir}/${_hkgname}-${pkgver}
+
+  patch -Np1 -i "${srcdir}/Hide_Data-Monoid_function.patch"
+}
+
 build() {
-    cd ${srcdir}/${_hkgname}-${pkgver}
-    patch -Np1 -i "${srcdir}/ghc74.patch" || return 1
+  cd ${srcdir}/${_hkgname}-${pkgver}
 
     runhaskell Setup configure -O -p --enable-split-objs --enable-shared \
         --prefix=/usr --docdir=/usr/share/doc/${pkgname} \
@@ -42,4 +48,5 @@ package() {
     install -D -m644 ${_licensefile} ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
     rm -f ${pkgdir}/usr/share/doc/${pkgname}/${_licensefile}
 }
-md5sums=('13b2e9336b31b3f7a3e5410308023ae5')
+md5sums=('13b2e9336b31b3f7a3e5410308023ae5'
+         'db16c7d948f0aed4909ae6a0bf7180a8')
