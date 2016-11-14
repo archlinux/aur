@@ -5,8 +5,8 @@
 
 pkgname='xfce4-multiload-ng-plugin-gtk3-git'
 pkgdesc='Modern graphical system monitor, XFCE4 panel plugin'
-pkgver=r873.061ad33
-pkgrel=1
+pkgver=r899.0c18e54
+pkgrel=2
 
 makedepends=('intltool' 'git')
 depends=('gtk3' 'cairo' 'libxfce4util>=4.12.0' 'xfce4-panel>=4.12.0')
@@ -29,7 +29,7 @@ build() {
 
 package() {
     cd "multiload-ng"
-    make -C "xfce4" DESTDIR="$pkgdir" install
+    make DESTDIR="$pkgdir" install
 }
 
 pkgver() {
