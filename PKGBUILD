@@ -2,7 +2,7 @@
 
 pkgname='build-generator'
 pkgver=0.8.0.f9abadb
-pkgrel=2
+pkgrel=3
 pkgdesc='Generates jobs on a Jenkins server according to specifications'
 arch=('i686' 'x86_64')
 url='https://projects.cor-lab.org/projects/build-generator'
