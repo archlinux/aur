@@ -1,35 +1,40 @@
+2016-11-14 Fabien Dubosson <fabien.dubosson@gmail.com>
+
+    * 1.0.2-1:
+    New upstream release
+
 2016-11-10 Fabien Dubosson <fabien.dubosson@gmail.com>
 
-    * 1.0.1-1
+    * 1.0.1-1:
     New upstream release
 
 2016-11-09 Fabien Dubosson <fabien.dubosson@gmail.com>
 
-    * 1.0-1
+    * 1.0-1:
     New upstream release
 
 2016-10-07 Fabien Dubosson <fabien.dubosson@gmail.com>
 
-    * 0.3.2-2
+    * 0.3.2-2:
     Fix dependency to python2-pyinsane
 
 2016-02-29 Fabien Dubosson <fabien.dubosson@gmail.com>
 
-    * 0.3.2-1
+    * 0.3.2-1:
     New upstream release
     Add missing dependencies: gnome-icon-theme-symbolic gnome-icon-theme
 
 2016-02-29 Fabien Dubosson <fabien.dubosson@gmail.com>
 
-    * 0.3.1.1-1
+    * 0.3.1.1-1:
     New upstream release
 
 2016-02-16 Fabien Dubosson <fabien.dubosson@gmail.com>
 
-    * 0.3.0.1-1
+    * 0.3.0.1-1:
     New upstream release
 
 2015-12-23 Fabien Dubosson <fabien.dubosson@gmail.com>
 
-    * 0.2.5-1
+    * 0.2.5-1:
     Package migrated to AUR4
