@@ -2,7 +2,7 @@
 # Contributor: Franco Masotti <franco dot masotti at student dot unife dot it>
 pkgname=rserve-sandbox-docker
 pkgver=r24.8499ca9
-pkgrel=1
+pkgrel=2
 pkgdesc="Docker spec for running Rserve in a sandbox"
 arch=('x86_64')
 url="https://github.com/frnmst/rserve-sandbox"

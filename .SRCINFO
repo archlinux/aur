@@ -1,7 +1,7 @@
 pkgbase = rserve-sandbox-docker
 	pkgdesc = Docker spec for running Rserve in a sandbox
 	pkgver = r24.8499ca9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/frnmst/rserve-sandbox
 	install = .install
 	arch = x86_64
