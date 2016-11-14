@@ -6,13 +6,13 @@
 
 pkgname=firefox-unbranded
 _pkgname=firefox
-pkgver=49.0.2
+pkgver=50.0
 pkgrel=1
 pkgdesc="Standalone web browser from mozilla.org - Unbranded version"
 arch=('i686' 'x86_64')
 license=('MPL' 'GPL' 'LGPL')
 url="https://www.mozilla.org/firefox/"
-provides=('firefox=49')
+provides=('firefox=50')
 conflicts=('firefox')
 depends=('gtk3' 'gtk2' 'mozilla-common' 'libxt' 'startup-notification' 'mime-types'
          'dbus-glib' 'alsa-lib' 'ffmpeg' 'libvpx' 'libevent' 'nss' 'hunspell'
@@ -28,7 +28,7 @@ source=(https://ftp.mozilla.org/pub/mozilla.org/firefox/releases/$pkgver/source/
         firefox-install-dir.patch
         vendor.js
         no-libnotify.patch)
-sha256sums=('67abe9202958c36bf60454c91065953aa8f6ede83ea1c0e9cdb870c3fc3d56d0'
+sha256sums=('5da027350aee148dc62cc1ca897db30510be87ca8eab5e67a7adc7a2479b8616'
 	    '84efbf7d1495fd0c89f684d618abfe1eb190ee336c13aee51e9ab706c910127f'
             '9f39e9d891a48b49490df0823d67f01d8cf0b3e8c5910190739e94190f768e76'
             'd86e41d87363656ee62e12543e2f5181aadcff448e406ef3218e91865ae775cd'
