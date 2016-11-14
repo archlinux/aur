@@ -50,7 +50,7 @@ index 0000000..d56afd9
 +
 +LIBRARY=${LIBRARY:-'@libmakepkgdir@'}
 +
-+declare -a  exta_buildopts
++declare -a extra_buildopts
 +
 +for lib in "$LIBRARY/buildenv_ext/"*.sh; do
 +	source "$lib"
