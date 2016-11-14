@@ -5,7 +5,7 @@
 
 pkgname=firejail-extras
 pkgver=0.9.44
-pkgrel=5
+pkgrel=6
 pkgdesc="Extra profiles for firejail"
 arch=('any')
 url="https://github.com/chiraag-nataraj/firejail-profiles"
