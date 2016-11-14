@@ -1,7 +1,7 @@
 # Maintainer: Tomasz Morawski (Kerrex) <romen3@linux.pl>
 
 pkgname=zezenia
-pkgver=573
+pkgver=580
 pkgrel=1
 pkgdesc="Zezenia Online is an actively developed free-to-play 2D MMORPG."
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ install=$pkgname.install
 provides=($pkgname)
 noextract=("$pkgname"_"$pkgver"_linux.zip)
 source=(https://s3-eu-west-1.amazonaws.com/zezeniamedia/client/"$pkgname"_"$pkgver"_linux.zip)
-md5sums=(ac13736a06065b4b7aa1ce12581c885d)
+md5sums=(8220a2f62c432b119cc830a7c7eb9292)
 
 build()
 {
