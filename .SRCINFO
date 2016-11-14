@@ -1,7 +1,7 @@
 pkgbase = multiload-ng-indicator-gtk2
 	pkgdesc = Modern graphical system monitor, AppIndicator plugin
 	pkgver = 1.4.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://udda.github.io/multiload-ng/
 	arch = i686
 	arch = x86_64
