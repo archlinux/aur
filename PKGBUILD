@@ -2,9 +2,9 @@
 # Contributor: scrawler@gmail.com
 
 pkgname=freeplane-git
-_NEXT_VERSION=1.5.x
-pkgver=1.5.x.0ffeb12
-pkgrel=2
+_NEXT_VERSION=1.6.x
+pkgver=1.6.x.71fed5b
+pkgrel=1
 pkgdesc="A Java mindmapping tool"
 arch=('any')
 url="https://github.com/freeplane/freeplane.git"
@@ -13,10 +13,10 @@ makedepends=('git' 'gradle')
 conflicts=('freeplane')
 provides=('freeplane')
 depends=('java-environment' 'desktop-file-utils')
-source=('git://github.com/freeplane/freeplane.git' 'freeplane.desktop' 'freeplane.run')
-md5sums=('SKIP'
-         '85d40893aef0b71f9ffdf2dec4fbb0f0'
-         'd72e3d0471338520f75a2fcf3ce536a7')
+source=('git://github.com/freeplane/freeplane.git#branch=1.6.x' 'freeplane.desktop' 'freeplane.run')
+sha256sums=('SKIP'
+            'cae931ab1e7747e1b090a13d11c4cc0e0cb5ae62ab342f997c885973df24e4e7'
+            '56ac3b9c1711a05f2d04f5587a27a9e05c5c06885d14027363e6c00d2614bc78')
 
 pkgver() {
 	cd "${pkgname%-*}"
@@ -27,7 +27,7 @@ pkgver() {
 
 build() {
 	cd "${pkgname%-*}"
-	gradle build 
+	gradle -Dorg.gradle.daemon=false build 
 }
 
 package() {
