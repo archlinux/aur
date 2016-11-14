@@ -3,7 +3,7 @@
 pkgname=halberd-git
 _gitname='halberd'
 _gitroot='https://github.com/jmbr/halberd.git'
-pkgver=r314.f7ed35e
+pkgver=r317.3d167a0
 pkgrel=1
 pkgdesc='Tool to discover HTTP load balancers'
 arch=('any')
@@ -12,7 +12,7 @@ license=('GPL')
 depends=('python2')
 provides=('halberd')
 conflicts=('halberd')
-makedepends=('python2-distribute' 'git' 'help2man' 'epydoc')
+makedepends=('python2-setuptools' 'git' 'help2man' 'epydoc')
 
 source=("$_gitname"::"git+$_gitroot")
 sha512sums=('SKIP')
