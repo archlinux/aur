@@ -1,0 +1,41 @@
+From b821b83c819aaee40eada56e77df536bf48c7d7e Mon Sep 17 00:00:00 2001
+From: Damien Flament <damien.flament@gmx.com>
+Date: Tue, 15 Nov 2016 00:34:01 +0100
+Subject: [PATCH] Make build pass.
+
+---
+ Main.hs | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/Main.hs b/Main.hs
+index 2a74b30..85fdd7e 100644
+--- a/Main.hs
++++ b/Main.hs
+@@ -37,7 +37,7 @@ import Paths_cabal2arch
+ import Data.Version (showVersion)
+ 
+ import System.Directory
+-import System.Exit
++import System.Exit hiding (die)
+ import System.FilePath
+ import System.IO
+ import System.Process hiding(cwd)
+@@ -205,7 +205,7 @@ findCabalFile file _cwd tmp = do
+                 Left (_,s,_) -> do
+                     hPutStrLn stderr s
+                     die $ "Couldn't download .cabal file: " ++ show url
+-                Right _ -> findPackageDesc tmp -- tmp dir
++                Right _ -> tryFindPackageDesc tmp -- tmp dir
+ 
+         -- it might be a .cabal file
+         Right f | ".cabal" `isSuffixOf` f -> do
+@@ -219,5 +219,5 @@ findCabalFile file _cwd tmp = do
+             b <- doesDirectoryExist dir
+             if not b
+                 then die $ "directory doesn't exist: " ++ show dir
+-                else findPackageDesc dir
++                else tryFindPackageDesc dir
+ 
+-- 
+2.10.2
+

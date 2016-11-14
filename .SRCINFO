@@ -1,7 +1,7 @@
 pkgbase = cabal2arch
 	pkgdesc = Create Arch Linux packages from Cabal packages.
 	pkgver = 1.2
-	pkgrel = 2
+	pkgrel = 3
 	url = http://github.com/archhaskell/
 	arch = i686
 	arch = x86_64
@@ -13,7 +13,9 @@ pkgbase = cabal2arch
 	options = strip
 	options = staticlibs
 	source = https://github.com/archhaskell/cabal2arch/archive/v1.2.tar.gz
-	sha1sums = 18936e2bafb6059f56b4814216ac5874ab54fe56
+	source = Make_build_pass.patch
+	md5sums = 68f08d55400a31927e63942f0ca5e462
+	md5sums = b22ef0e1bcc21f81b4dbd34e9599d441
 
 pkgname = cabal2arch
 
