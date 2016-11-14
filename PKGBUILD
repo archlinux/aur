@@ -1,6 +1,6 @@
 # Maintainer: Doyle Fermi <doylefermi@gmail.com>
 pkgname=wmail-bin-git
-pkgver=2.0.6
+pkgver=2.0.7
 pkgrel=1
 pkgdesc="A more up-to-date repo of the missing desktop client for Gmail & Google Inbox"
 arch=('x86_64')
@@ -19,7 +19,7 @@ source=(
   "app-v${pkgver}.png::https://raw.githubusercontent.com/Thomas101/wmail/v${pkgver}/assets/icons/app.png"
   "wmail.desktop")
 noextract=("wmail-linux-v${pkgver}.tar.gz")
-sha256sums=('fc3410287d140b231f35c751e62ea7bc3c0d764ca7917efc33a17b2e42fc1cf5'
+sha256sums=('40594010b233bfee19b0cce85f055495f6e21229bea79a249a9cb38812cac74f'
             '08d2f7997cddab19598ebf25dc88210992a1e220381046662929f61b240a906b'
             '47fb6b3c0d49280cfca89b034b1b714d64a1e158114abcc20a7b6c40faff9a7b')
 
