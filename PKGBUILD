@@ -1,7 +1,7 @@
 # Maintainer: Michael Straube <michael_straube web de>
 
 pkgname=x-corners
-pkgver=0.1.2
+pkgver=0.2.0
 pkgrel=1
 pkgdesc='A commandline tool to set up hot corners under X11'
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ url='https://github.com/mstraube/x-corners'
 depends=('libxi')
 makedepends=('libxfixes')
 source=("https://github.com/mstraube/$pkgname/archive/$pkgver.tar.gz")
-sha1sums=('0a6e4d213be3e8e574e07c5952e4d32d98e191f6')
+sha1sums=('320fc075b2cebe8fbcdeb339919b6888e6e288fa')
 
 build() {
   cd $pkgname-$pkgver
@@ -21,6 +21,6 @@ build() {
 package() {
   cd $pkgname-$pkgver
 
-  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
   make PREFIX=/usr DESTDIR="$pkgdir" install
 }
