@@ -1,0 +1,24 @@
+From 2b00d5632b3cea45e06ff19c7ed44463fddb0b01 Mon Sep 17 00:00:00 2001
+From: "David J. Haines" <djhaines@gmx.com>
+Date: Sun, 4 Mar 2012 16:29:40 -0500
+Subject: [PATCH] Add FlexibleInstances due to use of "instance Text String,"
+ which is invalid Haskell.
+
+---
+ Distribution/ArchLinux/PkgBuild.hs | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/Distribution/ArchLinux/PkgBuild.hs b/Distribution/ArchLinux/PkgBuild.hs
+index d10dd6a..487ed9e 100644
+--- a/Distribution/ArchLinux/PkgBuild.hs
++++ b/Distribution/ArchLinux/PkgBuild.hs
+@@ -1,5 +1,6 @@
+ {-# LANGUAGE TypeSynonymInstances       #-}
+ {-# LANGUAGE GeneralizedNewtypeDeriving #-}
++{-# LANGUAGE FlexibleInstances #-}
+ -- |
+ -- Module    : Distribution.ArchLinux.PkgBuild
+ -- Copyright : (c) Don Stewart, 2008-2010
+-- 
+2.10.2
+
