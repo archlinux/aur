@@ -11,7 +11,15 @@ pkgbase = haskell-archlinux
 	options = strip
 	options = staticlibs
 	source = http://hackage.haskell.org/packages/archlinux-1.3/archlinux-1.3.tar.gz
+	source = Hide_Data-Monoid_function.patch
+	source = Add_FlexibleInstances.patch
+	source = Adapt_to_Applicative-Monad.patch
+	source = Adapt_to_Cabal_1-22.patch
 	md5sums = 13b2e9336b31b3f7a3e5410308023ae5
+	md5sums = db16c7d948f0aed4909ae6a0bf7180a8
+	md5sums = 6a9bed2c0bb13fbc925a40c4571a7330
+	md5sums = 444868f76ba946afc96676eb47be1b81
+	md5sums = 228927282cee988a52255ef58e7e2f32
 
 pkgname = haskell-archlinux
 
