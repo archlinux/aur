@@ -1,0 +1,20 @@
+pkgbase = lrun-json
+	pkgdesc = Run command on Linux with resources limited.
+	pkgver = 1.1.5
+	pkgrel = 1
+	url = https://github.com/lackofdream/lrun
+	install = lrun.install
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = gcc>=4.4
+	makedepends = pkg-config
+	makedepends = ruby
+	depends = linux>=2.6.26
+	optdepends = libseccomp>=2.0
+	conflicts = lrun
+	source = lrun-1.1.5.tar.gz::https://github.com/lackofdream/lrun/archive/v1.1.5.tar.gz
+	sha256sums = cd451ac28afcb31ac1b20241ad47cdf8cf7dbd221bc0abd0ee83c956eb82a771
+
+pkgname = lrun-json
+
