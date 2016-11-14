@@ -1,0 +1,40 @@
+#!/usr/bin/bash
+#
+#   lto.sh - Compile with link-time optimization
+#
+#   Copyright (c) 2008-2016 Pacman Development Team <pacman-dev@archlinux.org>
+#
+#   This program is free software; you can redistribute it and/or modify
+#   it under the terms of the GNU General Public License as published by
+#   the Free Software Foundation; either version 2 of the License, or
+#   (at your option) any later version.
+#
+#   This program is distributed in the hope that it will be useful,
+#   but WITHOUT ANY WARRANTY; without even the implied warranty of
+#   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#   GNU General Public License for more details.
+#
+#   You should have received a copy of the GNU General Public License
+#   along with this program.  If not, see <http://www.gnu.org/licenses/>.
+#
+
+[[ -n "$LIBMAKEPKG_LTO_SH" ]] && return
+LIBMAKEPKG_LTO_SH=1
+
+LIBRARY=${LIBRARY:-'@libmakepkgdir@'}
+
+source "$LIBRARY/util/option.sh"
+
+extra_buildopts+=('lto')
+
+lto() {
+	if check_buildoption "lto" "y" && [[ -f "$(gcc -print-search-dirs | grep install | awk '{print $2 "liblto_plugin.so"}')" ]]; then
+		CFLAGS+=" -flto=$(getconf _NPROCESSORS_ONLN)"
+		CXXFLAGS+=" -flto=$(getconf _NPROCESSORS_ONLN)"
+		LDFLAGS+=" -fuse-linker-plugin"
+		LTOPLUGIN="$(gcc -print-search-dirs | grep install | awk '{print $2 "liblto_plugin.so"}')"
+		ARFLAGS+=" --plugin $LTOPLUGIN"
+		RANLIBFLAGS+=" --plugin $LTOPLUGIN"
+		NMFLAGS+=" --plugin $LTOPLUGIN"
+	fi
+}

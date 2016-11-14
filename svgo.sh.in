@@ -1,0 +1,44 @@
+#!/usr/bin/bash
+#
+#   svgo.sh - Compress SVG files using optsvg
+#
+#   Copyright (c) 2015-2016 Pacman Development Team <pacman-dev@archlinux.org>
+#
+#   This program is free software; you can redistribute it and/or modify
+#   it under the terms of the GNU General Public License as published by
+#   the Free Software Foundation; either version 2 of the License, or
+#   (at your option) any later version.
+#
+#   This program is distributed in the hope that it will be useful,
+#   but WITHOUT ANY WARRANTY; without even the implied warranty of
+#   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#   GNU General Public License for more details.
+#
+#   You should have received a copy of the GNU General Public License
+#   along with this program.  If not, see <http://www.gnu.org/licenses/>.
+#
+
+[[ -n "$LIBMAKEPKG_TIDY_SVGO_SH" ]] && return
+LIBMAKEPKG_TIDY_SVGO_SH=1
+
+LIBRARY=${LIBRARY:-'@libmakepkgdir@'}
+
+source "$LIBRARY/util/message.sh"
+source "$LIBRARY/util/option.sh"
+
+
+packaging_options+=('svgo')
+tidy_modify+=('tidy_svgo')
+
+tidy_svgo() {
+	if check_option "svgo" "y"; then
+		msg2 "$(gettext "Optimizing SVG images...")"
+		local svg
+		find . -type f -iname "*.svg" 2>/dev/null | while read -r svg ; do
+			if [[ $(file --brief --mime-type "$svg") = 'image/svg' ]]; then
+				svgo "${SVGOFLAGS[@]}" "$svg" &>/dev/null ||
+					warning "$(gettext "Could not optimize SVG image : %s")" "${svg/$pkgdir\//}"
+			fi
+		done
+	fi
+}
