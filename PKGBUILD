@@ -10,8 +10,10 @@ url="http://jocr.sourceforge.net/index.html"
 license=('GPL')
 depends=('glibc' 'netpbm')
 optdepends=('tk: to use the tk frontend')
-source=(http://www-e.uni-magdeburg.de/jschulen/ocr/gocr-${pkgver}.tar.gz)
-md5sums=('553ea40c2b3a1a0b03a30675d0e0aba1')
+validpgpkeys=('3816B803D578F5AD12FDFE065D330C4953BDFBE3')
+source=(https://www-e.uni-magdeburg.de/jschulen/ocr/gocr-${pkgver}.tar.gz{,.asc})
+sha256sums=('bc261244f887419cba6d962ec1ad58eefd77176885093c4a43061e7fd565f5b5'
+            'SKIP')
 
 build() {
   cd "$srcdir"/$pkgname-$pkgver
