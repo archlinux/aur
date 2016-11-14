@@ -1,9 +1,9 @@
---- build_visit2_10_3	2016-07-13 10:21:46.960665498 +0200
-+++ build_visit2_10_3.new	2016-07-13 13:15:57.205848552 +0200
-@@ -18575,6 +18575,50 @@
-     return 0;
- }
- 
+--- build_visit2_12_0	2016-11-14 11:33:10.689430637 +0100
++++ build_visit2_12_0.new	2016-11-14 11:35:32.026790825 +0100
+@@ -19335,6 +19335,49 @@
+ # *************************************************************************** #
+ #                            Function 6, build_vtk                            #
+ # *************************************************************************** #
 +function apply_vtk_gcc6_patch
 +{
 +   patch -p1 << \EOF
@@ -47,15 +47,14 @@
 +
 +    return 0;
 +}
-+
- function apply_vtk_610_patch_2
+ 
+ function apply_vtk_600_patch
  {
-    patch -p0 << \EOF
-@@ -18795,6 +18839,7 @@
+@@ -19733,6 +19776,7 @@
+     # also apply objc flag patch to 6.1.0
+     
      if [[ ${VTK_VERSION} == 6.1.0 ]] ; then
++        apply_vtk_gcc6_patch
          apply_vtk_600_patch
          apply_vtk_610_patch_2
-+        apply_vtk_gcc6_patch
-         if [[ "$OPSYS" == "Linux" ]] ; then
- 	   apply_vtk_610_patch
-         fi
+         apply_vtk_610_patch_3

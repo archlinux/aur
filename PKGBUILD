@@ -3,7 +3,7 @@
 
 pkgname=visit-build
 _pkgname=visit
-pkgver=2.11.0
+pkgver=2.12.0
 _pkgver=${pkgver//./_}
 pkgrel=1
 pkgdesc="Interactive parallel visualization and graphical analysis tool (built with build_visit)."
@@ -21,12 +21,12 @@ source=("https://portal.nersc.gov/svn/${_pkgname}/trunk/releases/${pkgver}/build
         'no_extract_visit.patch'
         "vtk_gcc6.patch"
         'qt5-qpa.patch')
-sha256sums=('96c2cf1a65024d6e2d68c55f56c3ee7df78d02776b1c50e76664ebd95a45f27f'
-            'f01b34c61081cd767199a3229c2012ab2344e01bc2df84965a3cd266e08ba5b5'
+sha256sums=('8338f8512abe559e6cece231160b873a221c0d24c0fcc6a0a962cc6071cd6515'
+            '5b4e1b9d5a0e7edaa64c53bab300c9c1e3a1a13494180156a4f25a9c6d078dd4'
             'd07a11e67ad646579fbc341f30e1eb63ebd38a5fbdd4f3ea36e8f460419028da'
             '8ec6767c3943c3b93c9817ef0d051799c5ebfac75e73e58175befd08bfd320e0'
             '6dfdf3fdf6e64437106fc4f9facc79e80ab204de12bb480c6209c6b3fc5b4e07'
-            'f08e867357837dd6e2fa8b20d033ad39aa0f59fc13d2333f7153d0eb83b2cb5a'
+            '77b1f762b05c660c2cb5f2b071533768fb6f905a2b7b14f4b4db29e0ada380bc'
             'a523dd42c61ccd6743f23d35e63518c4dd33a465fa024e4431f002932464f26b')
 
 options=(!emptydirs)
