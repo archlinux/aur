@@ -1,16 +1,16 @@
 pkgbase = antibody
 	pkgdesc = A faster and simpler antigen written in Golang.
-	pkgver = 2.1.2
+	pkgver = 2.2.0
 	pkgrel = 1
 	url = http://getantibody.github.io/
 	arch = i686
 	arch = x86_64
 	license = MIT
 	depends = zsh
-	source_i686 = https://github.com/getantibody/antibody/releases/download/v2.1.2/antibody_Linux_i386.tar.gz
-	sha256sums_i686 = 7ab173a6882b90f71e81a93d4ae220c40aa27ca78b96cf63d338fb91648917df
-	source_x86_64 = https://github.com/getantibody/antibody/releases/download/v2.1.2/antibody_Linux_x86_64.tar.gz
-	sha256sums_x86_64 = 7a658b685e2546dc51a979add4b4201d2264495f9650c969bf4c3de906806ec6
+	source_i686 = https://github.com/getantibody/antibody/releases/download/v2.2.0/antibody_Linux_i386.tar.gz
+	sha256sums_i686 = 265c73e981031c2cf93d26007dc639a21ba91c0cac66d34430942830f76d4ee2
+	source_x86_64 = https://github.com/getantibody/antibody/releases/download/v2.2.0/antibody_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = 265c73e981031c2cf93d26007dc639a21ba91c0cac66d34430942830f76d4ee2
 
 pkgname = antibody
 
