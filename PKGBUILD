@@ -1,7 +1,7 @@
 # Maintainer: Lukas Werling <lukas.werling@gmail.com>
 pkgname=elm-platform
-pkgver=0.17.1
-pkgrel=2
+pkgver=0.18.0
+pkgrel=1
 pkgdesc="Bundle of all core development tools for the Elm language."
 arch=('i686' 'x86_64')
 url="http://elm-lang.org"
@@ -15,25 +15,28 @@ source=(
   elm-make-${pkgver}.zip::https://github.com/elm-lang/elm-make/archive/${pkgver}.zip
   elm-reactor-${pkgver}.zip::https://github.com/elm-lang/elm-reactor/archive/${pkgver}.zip
   elm-repl-${pkgver}.zip::https://github.com/elm-lang/elm-repl/archive/${pkgver}.zip
-  https://github.com/elm-lang/elm-compiler/pull/1431.patch
 )
-sha256sums=('3daed1d5099e539945ed2c92cc37c46efed48b32e0adeb37e81788bf400dbd98'
-            'fbf34165dc22c1cc8b39750900d6c8644e7d7916377fffb6ddc2ea2eef263637'
-            'b948c211e893003e5d55f9ecb2fee8bb44b8d3e04bf778764952d8fd908766b3'
-            'b82e9e3220c5edc85321c0d9e524c237e4f2bed61b746e6bfb95af1fb1a53daa'
-            '4f32cd19ae6e85a56703723eb5ba23012109c1571e59c37465eddcfe92d8734b'
-            '4f11e645b4190eb3b0cbea7c641d4b28b307b811889f3b8206f45f6e53a5575b')
+sha256sums=('879a030cc750964bdfc821b6927edba94e8ade650b63c95478270287c040a372'
+            'a93a2777ee4488510c6e5f82fc7bd7299cbeed7e04004e833d5a8d6f43db44c8'
+            'dcd254ba3c30848bc3527fcab197f8608bc913ae0bee17f67cf97ebf7977dfa6'
+            '6c5525b2dd35ab6ccf6c5f7e6568bd0164711b8932e80f0caa4a8b9358509902'
+            '8eba195029a3824fdf690b634f70e925d167f6b3bb7e632dfb1f90900244c87b')
 
 prepare() {
   cd "$srcdir"
 
+  # Remove version from source directories. Cabal reads the version on the
+  # directory and fails if it does not exactly match the version given in the
+  # dependencies (e.g. 0.18.0 vs. 0.18). Without a version on the directory,
+  # Cabal will read the version given in the .cabal files instead.
+  mv elm-compiler-${pkgver} elm-compiler
+  mv elm-package-${pkgver} elm-package
+  mv elm-make-${pkgver} elm-make
+  mv elm-reactor-${pkgver} elm-reactor
+  mv elm-repl-${pkgver} elm-repl
+
   # This is currently necessary to build with GHC 8, see https://github.com/elm-lang/elm-compiler/issues/1397
   echo 'allow-newer: aeson,base,HTTP,time,transformers' > cabal.config
-
-  # GHC 8 compat
-  # https://github.com/Homebrew/homebrew-core/blob/8e62a010dbaf0f9626daa2cfae5d2aeea01a65ee/Formula/elm.rb#L43
-  cd elm-compiler-${pkgver}
-  patch -p1 < "$srcdir"/1431.patch
 }
 
 # This does not actually use the build script in the elm-lang/elm-platform
@@ -45,8 +48,8 @@ build() {
   cabal sandbox init
 
   # Split because elm-reactor depends on elm-make to be built.
-  repos1=(elm-compiler-$pkgver elm-make-$pkgver elm-package-$pkgver elm-repl-$pkgver)
-  repos2=(elm-reactor-$pkgver)
+  repos1=(elm-compiler elm-make elm-package elm-repl)
+  repos2=(elm-reactor)
   repos=("${repos1[@]}" "${repos2[@]}")
 
   cabal sandbox add-source ${repos[@]}
@@ -66,7 +69,7 @@ package() {
   install -Dm755 "$binpath/elm-reactor" "$pkgdir/usr/bin/elm-reactor"
   install -Dm755 "$binpath/elm-repl"    "$pkgdir/usr/bin/elm-repl"
 
-  install -Dm644 "elm-compiler-$pkgver/LICENSE" "$pkgdir/usr/share/licenses/elm-platform/LICENSE"
+  install -Dm644 "elm-compiler/LICENSE" "$pkgdir/usr/share/licenses/elm-platform/LICENSE"
 }
 
 # vim:set ts=2 sw=2 et:
