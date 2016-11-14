@@ -3,7 +3,7 @@
 # Contributor: Bartłomiej Piotrowski <nospam@bpiotrowski.pl>
 
 pkgname=openrc
-pkgver=0.21.7
+pkgver=0.22.3
 pkgrel=1
 pkgdesc='Dependency based init system that works with sysvinit.'
 arch=('i686' 'x86_64')
@@ -17,10 +17,11 @@ backup=(etc/openrc/inittab
         etc/openrc/conf.d/{bootmisc,consolefont,devfs,dmesg,fsck,hostname,hwclock,keymaps}
         etc/openrc/conf.d/{killprocs,localmount,modules,netmount,network,staticroute}
         etc/openrc/conf.d/{tmpfiles,urandom})
-source=(http://dev.gentoo.org/~williamh/dist/$pkgname-$pkgver.tar.bz2
+source=($pkgname-$pkgver::https://github.com/OpenRC/$pkgname/archive/$pkgver.tar.gz
         $pkgname.logrotate)
-md5sums=('5d368d55eece3e5ba4315a4c1ed3ee4a'
-         'ede356beae529d1b16b769c9da70ad52')
+# oldsourcelocation : http://dev.gentoo.org/~williamh/dist/$pkgname-$pkgver.tar.bz2
+sha512sums=('1eadb02c4c5cb3c6d210cfd1f3a10ba60c08041ba32b199fe9f8aa5edb7363a5b066ddce2a2dec9cd39e070c499d0a9ae0ac9eb1e0ecda854d5095b1b791f94d'
+            '690612fddfb2c4cf8f6b5ba7239b9faf29eb3d9b152ab4dcf62694aa2852780440d08cee56d98a9597607f446b3697c911269562821a8402bb5747cbbae34bd9')
 
 _makeargs=(BRANDING='Arch Linux')
 _makeargs+=(MKPAM=pam)

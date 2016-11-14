@@ -1,6 +1,6 @@
 pkgbase = openrc
 	pkgdesc = Dependency based init system that works with sysvinit.
-	pkgver = 0.21.7
+	pkgver = 0.22.3
 	pkgrel = 1
 	url = https://github.com/OpenRC/openrc/
 	arch = i686
@@ -29,10 +29,10 @@ pkgbase = openrc
 	backup = etc/openrc/conf.d/staticroute
 	backup = etc/openrc/conf.d/tmpfiles
 	backup = etc/openrc/conf.d/urandom
-	source = http://dev.gentoo.org/~williamh/dist/openrc-0.21.7.tar.bz2
+	source = openrc-0.22.3::https://github.com/OpenRC/openrc/archive/0.22.3.tar.gz
 	source = openrc.logrotate
-	md5sums = 5d368d55eece3e5ba4315a4c1ed3ee4a
-	md5sums = ede356beae529d1b16b769c9da70ad52
+	sha512sums = 1eadb02c4c5cb3c6d210cfd1f3a10ba60c08041ba32b199fe9f8aa5edb7363a5b066ddce2a2dec9cd39e070c499d0a9ae0ac9eb1e0ecda854d5095b1b791f94d
+	sha512sums = 690612fddfb2c4cf8f6b5ba7239b9faf29eb3d9b152ab4dcf62694aa2852780440d08cee56d98a9597607f446b3697c911269562821a8402bb5747cbbae34bd9
 
 pkgname = openrc
 
