@@ -11,7 +11,7 @@ depends=('python2-setuptools')
 conflicts=('caatinga-git')
 provides=('caatinga')
 source=(https://github.com/headmastersquall/caatinga/archive/caatinga-${pkgver}.tar.gz)
-md5sums=('eaf63bcad473dfd38b0a2fecfc89fb1c')
+sha256sums=('91a5c26cdbc24b115d005dfdc7e31bf047fc68faa09dc348a508e8d88b85bef7')
 
 package() {
     cd "${srcdir}"/"${pkgname}"-"${pkgname}"-"${pkgver}"
