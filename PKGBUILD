@@ -18,7 +18,7 @@ optdepends=("java-runtime>=$_major: Run the examples"
 options=('!strip')
 source=("http://www.java.net/download/java/jdk$_major/archive/$_build/binaries/javafx-${_pkgver}_linux-x86_demo.zip"
         'OTN-Early-Adopter-License-Terms.txt')
-md5sums=('673224c158aeca8bb45efe6c9884c94d'
+md5sums=('00aeaace61539c73859218e297b8c1b9'
          'f09947a67691a2d78d20a3885889981c')
 
 package() {
