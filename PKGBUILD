@@ -11,8 +11,8 @@ url="https://launchpad.net/cuneiform-linux"
 license=('BSD')
 depends=('imagemagick')
 makedepends=('cmake')
-source=(http://launchpad.net/cuneiform-linux/${_dpkgver}/${_dpkgver}/+download/cuneiform-linux-${pkgver}.tar.bz2)
-md5sums=('09fd160cdfc512f26442a7e91246598d')
+source=(https://launchpad.net/cuneiform-linux/${_dpkgver}/${_dpkgver}/+download/cuneiform-linux-${pkgver}.tar.bz2)
+sha256sums=('577e0d054de72086c33b4e8ae15033657776509b9a7af6eb272888eefcbdbbad')
 
 build() {
   cd "${srcdir}/${pkgname}-linux-${pkgver}"
