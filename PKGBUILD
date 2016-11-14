@@ -2,13 +2,13 @@
 
 pkgname='cinnamon-applet-icingtaskmanager-git'
 pkgver=r113.2174165
-pkgrel=2
+pkgrel=3
 pkgdesc='Cinnamon applet. Window List with App Grouping and Window Thumbnails for Cinnamon.'
 arch=('any')
 url='https://github.com/jaszhix/icingtaskmanager'
 license=('GPL')
 depends=('cinnamon')
-makedepends=('git')
+makedepends=('git' 'nodejs')
 source=("${pkgname}::git+https://github.com/jaszhix/icingtaskmanager.git#branch=master")
 md5sums=(SKIP)
 _appletname='IcingTaskManager@json'
@@ -21,10 +21,12 @@ pkgver() {
 
 package() {
   cd "${pkgname}"
+  npm install
+  ./node_modules/gulp/bin/gulp.js transpile
   install -dm0755 "${pkgdir}/${_appletdir}"
-  find "src" -maxdepth 1 -type f -exec install -m0644 '{}' "${pkgdir}/${_appletdir}" \;
+  find ${_appletname} -maxdepth 1 -type f -exec install -m0644 '{}' "${pkgdir}/${_appletdir}" \;
     
-  for mo in "src/locale/mo/"*.mo; do
+  for mo in "${_appletname}/locale/mo/"*.mo; do
     local lang=$(basename "$mo" .mo)
     install -dm0755 "${pkgdir}/usr/share/locale/${lang}/LC_MESSAGES"
     install -m0644 "$mo" "${pkgdir}/usr/share/locale/${lang}/LC_MESSAGES/${_appletname}.mo"
