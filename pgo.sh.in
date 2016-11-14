@@ -38,6 +38,7 @@ if [[ ! -w $PROFDEST ]] ; then
 fi
 
 pgo() {
+	[[ "$INFAKEROOT" == 1 ]] && return
 	if check_buildoption "pgo" "y"; then
 		if [ ! -d "$PROFDEST/$pkgbase.gen" ]; then
 			mkdir "$PROFDEST/$pkgbase.gen"
@@ -45,7 +46,6 @@ pgo() {
 			CXXFLAGS+=" -fprofile-generate -fprofile-dir=$PROFDEST/$pkgbase.gen"
 			LDFLAGS+=" -lgcov"
 		else
-                        [[ INFAKEROOT ]] && continue
 			[[ ! -d "$PROFDEST/$pkgbase.used" ]] && mv "$PROFDEST/$pkgbase.gen" "$PROFDEST/$pkgbase.used"
 			CFLAGS+=" -fprofile-correction -fprofile-use -fprofile-dir=$PROFDEST/$pkgbase.used"
 			CXXFLAGS+=" -fprofile-correction -fprofile-use -fprofile-dir=$PROFDEST/$pkgbase.used"
