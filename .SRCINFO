@@ -10,7 +10,6 @@ pkgbase = wallabag
 	depends = php-gd
 	depends = php-tidy
 	depends = pcre
-	optdepends = php-mysql: For MySQL storage
 	optdepends = php-pgsql: For postgres storage
 	optdepends = php-sqlite: For sqlite storage
 	optdepends = rabbitmq: For async import

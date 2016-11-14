@@ -14,7 +14,6 @@ depends=(
     'pcre'
 )
 optdepends=(
-    'php-mysql: For MySQL storage'
     'php-pgsql: For postgres storage'
     'php-sqlite: For sqlite storage'
     'rabbitmq: For async import'
