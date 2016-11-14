@@ -6,7 +6,7 @@
 pkgname='mate-multiload-ng-applet-gtk3'
 pkgdesc='Modern graphical system monitor, MATE panel applet'
 pkgver=1.4.2
-pkgrel=1
+pkgrel=2
 
 makedepends=('intltool')
 depends=('gtk3' 'cairo' 'mate-panel-gtk3>=1.7.0')
@@ -29,5 +29,5 @@ build() {
 
 package() {
     cd "multiload-ng-$pkgver"
-    make -C "mate" DESTDIR="$pkgdir" install
+    make DESTDIR="$pkgdir" install
 }
