@@ -1,8 +1,6 @@
 post_install() {
   /usr/bin/getent group nitrokey >/dev/null 2>&1 ||  usr/sbin/groupadd -r nitrokey &>/dev/null
   udevadm control --reload
-  xdg-icon-resource forceupdate --theme hicolor &> /dev/null
-  update-desktop-database -q
   echo "Don't forget to add users to the nitrokey group."
 }
 
@@ -11,8 +9,6 @@ post_upgrade() {
 }
 
 post_remove() {
-    xdg-icon-resource forceupdate --theme hicolor &> /dev/null
-    update-desktop-database -q
     if /usr/bin/getent group nitrokey >/dev/null 2>&1; then
         /usr/sbin/groupdel nitrokey
     fi

@@ -1,35 +1,36 @@
 # Maintainer: Christoph J. Thompson <thompsonc@protonmail.ch>
 
 pkgname=nitrokey-app
-pkgver=r477.g694e6a5
+pkgver=0.5.1
 pkgrel=1
 pkgdesc="Nitrokey management application"
 arch=('i686' 'x86_64')
 url="https://www.nitrokey.com"
 license=('GPL3')
-depends=('qt5-base' 'libusb>=1.0.0')
-makedepends=('git' 'cmake')
-source=("${pkgname}::git+https://github.com/Nitrokey/nitrokey-app")
+depends=('qt5-base' 'libusb>=1.0.0' 'hicolor-icon-theme')
+makedepends=('cmake')
 install=nitrokey-app.install
-sha256sums=('SKIP')
+source=("https://github.com/Nitrokey/nitrokey-app/archive/v$pkgver.tar.gz")
+sha1sums=('d099841bf01e4d6f47dadf2521a8fcb704be4344')
 
-pkgver() {
-  cd "${pkgname}"
-  printf "r%s.g%s" \
-    "$(git rev-list --count HEAD)" \
-    "$(git rev-parse --short HEAD)"
+prepare() {
+  cd $pkgname-$pkgver
+
+  sed -i 's|DESTINATION\ etc/bash_completion.d|DESTINATION\ usr/share/bash-completion/completions|' \
+    CMakeLists.txt
 }
 
 build() {
-  cd "${pkgname}"
-  sed -i 's|/etc/udev/rules.d|/usr/lib/udev/rules.d|g' CMakeLists.txt
-  sed -i 's|/etc/bash_completion.d|/usr/share/bash-completion/completions|g' \
-         CMakeLists.txt
-  cmake . -DCMAKE_INSTALL_PREFIX=/usr -DHAVE_LIBAPPINDICATOR=NO
+  cd $pkgname-$pkgver
+
+  cmake . \
+    -DCMAKE_INSTALL_PREFIX=/ \
+    -DHAVE_LIBAPPINDICATOR=NO
   make
 }
 
 package() {
-  cd "${pkgname}"
-  make DESTDIR="${pkgdir}" install
+  cd $pkgname-$pkgver
+
+  make DESTDIR="$pkgdir" install
 }
