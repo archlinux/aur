@@ -1,0 +1,16 @@
+pkgbase = ty3status-git
+	pkgdesc = ty3status is an i3status replacement written in typescript with first classes support for javascript blocks.
+	pkgver = 0.3.2.r1.g0633582
+	pkgrel = 1
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = nodejs
+	makedepends = npm
+	depends = nodejs
+	provides = ty3status
+	source = ty3status::git+https://github.com/mrkmg/ty3status.git
+	md5sums = SKIP
+
+pkgname = ty3status-git
+
