@@ -1,7 +1,7 @@
 # Maintainer: Leonidas Spyropoulos <artafinde at gmail dot com>
 
 pkgname=caatinga-git
-pkgver=44.c3a06ad
+pkgver=1.1.1.r2.g4821af9
 pkgrel=1
 pkgdesc="A command line backup program written in Python - Git Version"
 arch=('any')
@@ -11,32 +11,16 @@ depends=('python2-distribute')
 makedepends=('git')
 conflicts=('caatinga')
 provides=('caatinga')
-source=()
-md5sums=()
-
-_gitroot="https://github.com/headmastersquall/caatinga"
-_gitname="caatinga"
+source=('git://github.com/headmastersquall/caatinga')
+sha256sums=('SKIP')
 
 pkgver() {
-  cd $_gitname
-  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+  cd "${srcdir}/${pkgname%-git}"
+  git describe --long | sed 's/^caatinga-//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 package() {
-    cd ${srcdir}
-    msg "Connecting to GIT server.."
-
-    if [ -d ${_gitname} ] ; then
-        cd ${_gitname} && git pull origin
-        msg "The local files are updated."
-    else
-        git clone ${_gitroot} ${_gitname}
-    fi
-
-    msg "GIT checkout done or server timeout"
-    msg "Starting make.."
-    
-    cd ${srcdir}/${_gitname}
+    cd ${srcdir}/${pkgname%-git}
     python2 setup.py install --root="${pkgdir}/" --optimize=1
 }
 
