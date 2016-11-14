@@ -2,7 +2,7 @@
 # Previous maintainer: Jeff Parent <jecxjo@sdf.lonestar.org>
 _gitbase=pulsemixer
 pkgname=${_gitbase}-git
-pkgver=56.f088a91
+pkgver=67.4a7417a
 pkgrel=1
 epoch=1
 pkgdesc="cli and curses mixer for pulseaudio. Git version"
