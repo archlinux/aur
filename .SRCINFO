@@ -1,28 +1,34 @@
 pkgbase = usbguard
 	pkgdesc = USBGuard is a software framework for implementing USB device authorization policies
 	pkgver = 0.6.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/dkopecek/usbguard
 	arch = i686
 	arch = x86_64
 	license = GPL2
 	makedepends = git
+	makedepends = libxslt
 	depends = libqb-git
 	depends = libsodium
-	depends = gcc-libs-multilib
 	depends = libcap-ng
 	depends = protobuf
+	depends = polkit
 	depends = qt5-base
+	depends = qt5-svg
+	depends = qt5-tools
 	depends = hicolor-icon-theme
+	depends = dbus-glib
 	provides = usbguard
 	conflicts = usbguard-git
 	backup = etc/usbguard/usbguard-daemon.conf
 	backup = etc/usbguard/rules.conf
 	source = https://github.com/dkopecek/usbguard/releases/download/usbguard-0.6.2/usbguard-0.6.2.tar.gz
 	source = https://github.com/dkopecek/usbguard/releases/download/usbguard-0.6.2/usbguard-0.6.2.tar.gz.sig
+	source = include.patch
 	validpgpkeys = D36B9AB1E6809AF54691C23A3AEF037DB25991BC
 	sha256sums = dad33da0312b95a3a41434a7b5bbd03f5ec7096f6ea9ee238ad2f15908bc51fd
 	sha256sums = 244966be0712c0b41caa9db6f56f0c5cc45fd6845d378d1247c51932f678768c
+	sha256sums = 3a6ddb78a7f5c01a6a83c0a3337dd79a184ecb8a88d3adce1087e8beb4ca9c3f
 
 pkgname = usbguard
 

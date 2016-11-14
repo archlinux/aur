@@ -1,0 +1,24 @@
+diff --git a/src/Library/IPCClientPrivate.hpp b/src/Library/IPCClientPrivate.hpp
+index 728c282..9f2f0f3 100644
+--- a/src/Library/IPCClientPrivate.hpp
++++ b/src/Library/IPCClientPrivate.hpp
+@@ -33,6 +33,7 @@
+
+ #include <qb/qbipcc.h>
+ #include <qb/qbloop.h>
++#include <qb/qbhdb.h>
+
+ namespace usbguard {
+   class IPCClientPrivate
+diff --git a/src/Library/IPCServerPrivate.hpp b/src/Library/IPCServerPrivate.hpp
+index 1f93cb1..8774bbc 100644
+--- a/src/Library/IPCServerPrivate.hpp
++++ b/src/Library/IPCServerPrivate.hpp
+@@ -29,6 +29,7 @@
+
+ #include <qb/qbipcs.h>
+ #include <qb/qbloop.h>
++#include <qb/qbhdb.h>
+
+ #include "Devices.pb.h"
+ #include "Policy.pb.h"
