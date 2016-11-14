@@ -1,6 +1,6 @@
 [Desktop Entry]
 Name=Modelio
-Version=3.5.1
+Version=3.5.1.a
 Comment=The opensource modeling environment
 Exec=/opt/modelio/modelio %u
 Icon=/opt/modelio/icon.xpm

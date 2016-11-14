@@ -1,20 +1,18 @@
-Released on April 22th 2016
-
-New features:
-
-    New ‘Update model components’ feature.
-    New BPMN import/export feature.
+Released on November 24th 2015
 
 Evolutions:
 
-    Reorganisation of the Import/Export menu for Model, XMI and BPMN.
+    Diagrams layout assistant is now customizable.
+    Floating labels are no more taken into account by the layout assistant.
+    Views positions are now saved when closing a project.
 
 Fixes / Improvements:
 
-    Fix saving views positions.
+    Fixes in the Patterns feature.
+    Fix Use Cases edition boxes.
+    Fixes in Sequence diagrams.
+    Fixes in Activity diagrams.
     Fixes in XMI import/export.
-    Fixes in BPMN transformation commands.
-    Fixes in saving diagram styles.
 
 Notes:
 
