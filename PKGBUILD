@@ -3,7 +3,7 @@
 _basename=cogl
 pkgname="lib32-$_basename"
 pkgver=1.22.2
-pkgrel=1
+pkgrel=2
 pkgdesc="An object oriented GL/GLES Abstraction/Utility Layer (32-bit)"
 arch=('x86_64')
 url="http://www.clutter-project.org/"
@@ -15,10 +15,10 @@ _commit=f38cda9046913c3627c52108467ba90e53d18c33
 source=("git://git.gnome.org/cogl#commit=$_commit")
 sha256sums=('SKIP')
 
-pkgver() {
-  cd $_basename
-  git describe --long | sed 's/-/+/g'
-}
+#pkgver() {
+#  cd $_basename
+#  git describe --long | sed 's/-/+/g'
+#}
 
 prepare() {
   cd $_basename
