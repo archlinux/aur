@@ -2,7 +2,7 @@
 # Contributor: Dmitriy Morozov <archlinux@foxcub.org>
 pkgname=visit-bin
 _pkgname=visit
-pkgver=2.11.0
+pkgver=2.12.0
 _pkgver=${pkgver//./_}
 pkgrel=1
 pkgdesc="Interactive parallel visualization and graphical analysis tool"
@@ -20,8 +20,8 @@ source=("${_url}/${_pkgname}${_pkgver}.linux-x86_64-${_ver}.tar.gz"
         'visit.sh'
         'visit-libs.patch')
 noextract=("${_pkgname}${_pkgver}.linux-x86_64-${_ver}.tar.gz")
-sha256sums=('5735ed3f6a269151a029b8904199a405aee14cf6b41d075f9ddc5982814db33c'
-            '76e4e69f2064f0e4cc64da72e3dc9ed235578e955f610c2c32640e94a1caea94'
+sha256sums=('fb525e44a6eac8ad3d96742144a4df98e0a52fe1d7481a823c56b70e8a35607f'
+            'c0c9a321a43df15fb7c09d942b3ca3dbc00d8f3b7153432138a8e51fa1b42d7d'
             'd07a11e67ad646579fbc341f30e1eb63ebd38a5fbdd4f3ea36e8f460419028da'
             'abc1c05f6567281cb8654dfbe3d0ef87ec3537e8e60191ba0625d4f99feb27c7')
 
