@@ -2,7 +2,7 @@
 
 pkgname=libretro-mame-git
 pkgver=47749.04f191c
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
 pkgdesc="libretro implementation of MAME 2015. (Arcade)"
 url="https://github.com/libretro/mame"
@@ -24,7 +24,7 @@ pkgver() {
 
 build() {
   cd "${_gitname}"
-  make -f Makefile.libretro
+  make
 }
 
 package() {
