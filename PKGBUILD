@@ -12,10 +12,8 @@ arch=('any')
 url="http://pythonpaste.org/tempita/"
 license=('custom:MIT')
 makedepends=('python-distribute' 'python2-distribute')
-source=(http://pypi.python.org/packages/source/T/Tempita/Tempita-${pkgver}.tar.gz
+source=(https://pypi.python.org/packages/source/T/Tempita/Tempita-${pkgver}.tar.gz
 	$pkgbase-license.txt::http://pythonpaste.org/tempita/_sources/license.txt)
-md5sums=('4c2f17bb9d481821c41b6fbee904cea1'
-         'c66b85ddcd09296abff87601467724fd')
 
 package_python-tempita() {
   depends=('python')
