@@ -11,7 +11,8 @@ url="http://hg.honeyplanet.jp/pt1/"
 license=('custom')
 depends=('pcsclite')
 source=('http://hg.honeyplanet.jp/pt1/archive/c44e16dbb0e2.tar.bz2' 'Makefile.patch')
-md5sums=('805e4c7778e88521847b105eaf0b3e56' '9f6555c6c7956b03e1c42a5c0e3dde1f')
+md5sums=('805e4c7778e88521847b105eaf0b3e56'
+         '6c4650ffb526d302b05ac9c7fc8a7633')
 
 build() {
   patch -p0 -i $srcdir/Makefile.patch
