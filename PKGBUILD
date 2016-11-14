@@ -5,8 +5,8 @@
 
 pkgname='awn-applet-multiload-ng-gtk2-git'
 pkgdesc='Modern graphical system monitor, Avant Window Navigator applet'
-pkgver=r873.061ad33
-pkgrel=1
+pkgver=r898.1661963
+pkgrel=2
 
 makedepends=('intltool' 'git')
 depends=('gtk2>=2.20.0' 'cairo' 'avant-window-navigator>=0.3.9' 'glibmm>=2.16.0' 'gtkmm>=2.20')
@@ -29,7 +29,7 @@ build() {
 
 package() {
     cd "multiload-ng"
-    make -C "awn" DESTDIR="$pkgdir" install
+    make DESTDIR="$pkgdir" install
 }
 
 pkgver() {
