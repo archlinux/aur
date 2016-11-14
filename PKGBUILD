@@ -5,16 +5,15 @@
 
 pkgname=gtick
 pkgver=0.5.4
-pkgrel=2
+pkgrel=3
 pkgdesc="A Gtk metronome application supporting different meters and speeds"
 arch=('i686' 'x86_64')
-url="http://www.antcom.de/gtick/"
+url="http://launchpad.net/gtick"
 license=('GPL3')
 depends=('gtk2' 'libpulse')
 makedepends=('libsndfile')
 optdepends=('pulseaudio: pulseaudio sound system support')
-install="$pkgname.install"
-source=("http://www.antcom.de/gtick/download/$pkgname-$pkgver.tar.gz")
+source=("http://launchpad.net/gtick/0.5/0.5.4/+download/$pkgname-$pkgver.tar.gz")
 sha1sums=('4500d4d79904a422b2ad30aef7bb5787d7c8a396')
 
 build() {
