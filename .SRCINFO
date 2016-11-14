@@ -1,11 +1,11 @@
 pkgbase = classyshark
 	pkgdesc = Android executables browser. This is a standalone tool for Android developers.
 	pkgver = 7.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/google/android-classyshark
 	arch = any
 	license = Apache
-	depends = java-runtime>=7
+	depends = java-environment
 	noextract = ClassyShark.jar
 	source = https://github.com/google/android-classyshark/releases/download/7.1/ClassyShark.jar
 	source = classyshark

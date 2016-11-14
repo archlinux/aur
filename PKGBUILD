@@ -2,12 +2,12 @@
 
 pkgname=classyshark
 pkgver=7.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Android executables browser. This is a standalone tool for Android developers."
 arch=('any')
 url="https://github.com/google/android-classyshark"
 license=('Apache')
-depends=('java-runtime>=7')
+depends=('java-environment')
 source=("https://github.com/google/android-classyshark/releases/download/${pkgver}/ClassyShark.jar"
         'classyshark'
         'LICENSE.txt')
