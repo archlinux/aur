@@ -1,11 +1,10 @@
 # custom variables
 pkgname=haskell-archlinux
-HS_DIR=usr/share/haskell/${pkgname}
+HS_DIR=/usr/share/haskell/${pkgname}
 
 # functions
 post_install() {
     ${HS_DIR}/register.sh
-    (cd usr/share/doc/ghc/html/libraries; ./gen_contents_index)
 }
 
 pre_upgrade() {
@@ -14,13 +13,8 @@ pre_upgrade() {
 
 post_upgrade() {
     ${HS_DIR}/register.sh
-    (cd usr/share/doc/ghc/html/libraries; ./gen_contents_index)
 }
 
 pre_remove() {
     ${HS_DIR}/unregister.sh
-}
-
-post_remove() {
-    (cd usr/share/doc/ghc/html/libraries; ./gen_contents_index)
 }
