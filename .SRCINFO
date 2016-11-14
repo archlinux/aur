@@ -1,6 +1,6 @@
 pkgbase = shellcheck-git
 	pkgdesc = A shell script static analysis tool: Git Release
-	pkgver = 0.4.4.r0.be4df19
+	pkgver = 0.4.3.r75.g6b62b5b
 	pkgrel = 1
 	url = http://www.shellcheck.net/
 	arch = i686

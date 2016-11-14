@@ -4,7 +4,7 @@
 # Contributor: Earnestly <zibeon@gmail.com>
 
 pkgname=shellcheck-git
-pkgver=0.4.4.r0.be4df19
+pkgver=0.4.3.r75.g6b62b5b
 pkgrel=1
 pkgdesc="A shell script static analysis tool: Git Release"
 arch=(i686 x86_64)
