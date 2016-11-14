@@ -1,7 +1,7 @@
 pkgbase = haskell-archlinux
 	pkgdesc = Support for working with Arch Linux packages.
 	pkgver = 1.3
-	pkgrel = 3
+	pkgrel = 4
 	url = http://github.com/archhaskell/
 	install = haskell-archlinux.install
 	arch = i686
