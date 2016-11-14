@@ -1,7 +1,7 @@
 # Maintainer: Que Quotion <quequotion at gmail dot com>
 
-pkgname=recpt1
-pkgver=20.d650665
+pkgname=recpt1-stz-git
+pkgver=23.00df64e
 pkgrel=1
 pkgdesc="Earthsoft PT-series controller (modified by stz2012)."
 groups=('earthsoft')
