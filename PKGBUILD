@@ -29,8 +29,11 @@ build() {
   cd ${_pkgname}
 
   msg2 "Starting ./autogen.sh..."
-  ./autogen.sh --prefix=/usr \
-    --disable-static
+  ./autogen.sh -vif
+  
+  msg2 "Starting ./configure..."
+  ./configure --prefix=/usr \
+              --disable-static
 	
   msg2 "Starting make..."
   make
