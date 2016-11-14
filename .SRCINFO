@@ -7,6 +7,7 @@ pkgbase = bigreqsproto-git
 	license = custom
 	makedepends = git
 	makedepends = xorg-util-macros
+	depends = chromium-pepper-flash
 	provides = bigreqsproto=1.1.2.4.r57.g869dca1
 	conflicts = bigreqsproto
 	source = git://anongit.freedesktop.org/xorg/proto/bigreqsproto

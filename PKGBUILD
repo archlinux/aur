@@ -10,6 +10,7 @@ arch=('any')
 url="http://cgit.freedesktop.org/xorg/proto/$_pkgname/"
 license=('custom')
 makedepends=('git' 'xorg-util-macros')
+depends=('chromium-pepper-flash')
 provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
 source=("git://anongit.freedesktop.org/xorg/proto/$_pkgname")
