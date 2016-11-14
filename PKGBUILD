@@ -2,7 +2,7 @@
 # Contributer: Anthony Vitacco <anthony at littlegno dot me>
 # Original PKGBUILD: Ricardo Band <me at xengi dot de>
 pkgname=hstr-git
-pkgver=1.17.r65.gd92fb9b
+pkgver=1.21.r8.ga2905c6
 pkgrel=1
 pkgdesc="A command line utility that brings improved BASH command completion from the history. It aims to make completion easier and more efficient than Ctrl-r."
 arch=('i686' 'x86_64')
