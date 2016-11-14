@@ -3,7 +3,7 @@
 
 pkgname=libpsl
 pkgver=0.15.0
-pkgrel=3
+pkgrel=4
 pkgdesc="A Publix Suffic List library"
 arch=('i686' 'x86_64')
 url="https://github.com/rockdaboot/libpsl"
@@ -21,7 +21,8 @@ build() {
     --disable-dependency-tracking \
     --enable-man \
     --enable-builtin=libicu \
-    --disable-runtime
+    --enable-runtime=libicu
+
   LC_CTYPE=en_US.UTF-8 make
 }
 
