@@ -1,0 +1,37 @@
+From 7e29ed8264cc46cbdce1c90c9784b33373714c34 Mon Sep 17 00:00:00 2001
+From: Nikolay Orlyuk <virkony@gmail.com>
+Date: Sun, 31 May 2015 20:09:18 +0300
+Subject: [PATCH] adapt to Cabal-1.22
+
+---
+ Distribution/ArchLinux/CabalTranslation.hs | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/Distribution/ArchLinux/CabalTranslation.hs b/Distribution/ArchLinux/CabalTranslation.hs
+index 7669e97..a3f278c 100644
+--- a/Distribution/ArchLinux/CabalTranslation.hs
++++ b/Distribution/ArchLinux/CabalTranslation.hs
+@@ -43,7 +43,7 @@ preprocessCabal cabalsrc systemContext =
+         []
+         (const True) -- could check against prefered pkgs....
+         (Platform X86_64 buildOS) -- linux/x86_64
+-        (CompilerId GHC (Version [7,0,3] []))
++        (CompilerInfo (CompilerId GHC (Version [7,0,3] [])) NoAbiTag Nothing Nothing Nothing)
+ 
+         -- now constrain it to solve in the context of a modern ghc only
+         (corePackages systemContext ++ platformPackages systemContext)
+@@ -117,9 +117,9 @@ cabal2pkg' cabal archName release systemContext
+                 x@LGPL {} -> x
+                 l    -> UnknownLicense ("custom:"++ show l)
+     , arch_package = (arch_package stub) ++
+-         (if not (null (licenseFile cabal)) && (case license cabal of GPL {} -> False; LGPL {} -> False; _ -> True)
++         (if not (null (licenseFiles cabal)) && (case license cabal of GPL {} -> False; LGPL {} -> False; _ -> True)
+           then
+-              [ "install -D -m644 " ++ licenseFile cabal ++ " ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
++              [ "install -D -m644 " ++ unwords (licenseFiles cabal) ++ " ${pkgdir}/usr/share/licenses/${pkgname}/"
+               , "rm -f ${pkgdir}/usr/share/doc/${pkgname}/LICENSE"
+               ]
+           else []) }
+-- 
+2.10.2
+
