@@ -8,7 +8,7 @@ _licensefile=LICENSE
 # PKGBUILD options/directives
 pkgname=haskell-archlinux
 pkgver=1.3
-pkgrel=3
+pkgrel=4
 pkgdesc="Support for working with Arch Linux packages."
 url="http://github.com/archhaskell/"
 license=("BSD3")
