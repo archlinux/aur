@@ -4,7 +4,7 @@
 # Contributor: Andreas Harter <aur@andreas-harter.de>
  
 pkgname=keebuntu-git
-pkgver=0.5.6
+pkgver=0.6.0.r2.ga4abf97
 pkgrel=1
 pkgdesc="App indicator icon for keepass (for unity, cinnamon & gnome)"
 arch=(any)
