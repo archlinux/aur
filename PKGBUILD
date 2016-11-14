@@ -2,11 +2,11 @@
 # Maintainer: David Parrish <BM-2cU1Bk3fXVo9VrGpo2YQFJ1it31gSuAy5j>
 
 pkgname=pybitmessage-dev-git
-pkgver=0.6.0.r28.g36a04fd
+pkgver=0.6.1.r61.g612333a
 pkgrel=1
 pkgdesc="Decentralized and trustless P2P communications protocol for sending encrypted messages to another person or to many subscribers"
 arch=('i686' 'x86_64')
-depends=('openssl' 'python2' 'python2-pyqt4' 'qt4' 'sqlite')
+depends=('openssl' 'python2' 'python2-pyqt4' 'qt4' 'sqlite' 'python-msgpack')
 optdepends=('mpg123: MP3 sounds support'
             'alsa-utils: WAV sounds support')
 url="https://github.com/Bitmessage/PyBitmessage"
@@ -14,7 +14,7 @@ license=('MIT')
 source=("${pkgname}::git+https://github.com/Bitmessage/PyBitmessage.git#branch=v0.6"
             "bitmsglib_location.patch")
 sha256sums=('SKIP'
-            '22f1a248cc915e5b58b4b96b60c9fe71344c596d33be4e0fb87b719a5db65b77')
+            '95989a9c62780270df160470f860fee2d2115db835f56da9568681b11c5cfd37')
 provides=('pybitmessage')
 
 pkgver() {

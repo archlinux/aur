@@ -1,12 +1,13 @@
 diff --git a/src/proofofwork.py b/src/proofofwork.py
-index 9d53b39..bd5e85c 100644
+index 701f34b..4bcaac6 100644
 --- a/src/proofofwork.py
 +++ b/src/proofofwork.py
-@@ -200,7 +200,9 @@ if "win32" == sys.platform:
+@@ -223,7 +223,10 @@ if "win32" == sys.platform:
              bso = None
  else:
      try:
--        bso = ctypes.CDLL(os.path.join(codePath(), "bitmsghash", bitmsglib))
+-        bso = ctypes.CDLL(os.path.join(shared.codePath(), "bitmsghash", bitmsglib))
++
 +        # Modified by Arch Linux PKGBUILD
 +        # https://aur.archlinux.org/packages/pybitmessage-dev-git/
 +        bso = ctypes.CDLL(os.path.join("/usr/lib/pybitmessage-dev-git", bitmsglib))
