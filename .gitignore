@@ -1,2 +1,7 @@
+# Sources
 *.tar.gz
 /src/
+
+# Generated package
+*.pkg.tar.xz
+/pkg/
