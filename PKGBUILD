@@ -42,7 +42,7 @@ DOCS_PDF=        # Generate and install pdf documentation.
 #######################################################################
 
 pkgname=emacs-git
-pkgver=26.0.50.127317
+pkgver=26.0.50.127403
 pkgrel=1
 pkgdesc="GNU Emacs. Master development branch."
 arch=('i686' 'x86_64')
@@ -169,6 +169,13 @@ package() {
   chmod 775 "$pkgdir"/var/games
   chmod 775 "$pkgdir"/var/games/emacs
   chown -R root:games "$pkgdir"/var/games
+  
+  # The logic used to install systemd's user service is partially broken
+  # under Arch Linux model, because it adds $DESTDIR as prefix to the 
+  # final Exec targets. The fix is to hack it with an axe.
+  install -Dm644 etc/emacs.service "$pkgdir"/usr/lib/systemd/user/emacs.service
+  sed -i -e 's#\(ExecStart\=\)#\1\/usr\/bin\/#' -e 's#\(ExecStop\=\)#\1\/usr\/bin\/#' \
+    "$pkgdir"/usr/lib/systemd/user/emacs.service
 }
 
 # vim:set ft=sh ts=2 sw=2 et:
