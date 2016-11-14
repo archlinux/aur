@@ -3,7 +3,7 @@
 pkgname=shfmt
 _pkg=sh
 _name="${pkgname}"
-pkgver=0.3.0
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="Format shell programs"
 url="https://github.com/mvdan/${_pkg}"
