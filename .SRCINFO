@@ -10,6 +10,7 @@ pkgbase = pidgin-light
 	makedepends = ca-certificates
 	makedepends = perl-xml-parser
 	makedepends = intltool
+	makedepends = pkg-config
 	depends = startup-notification
 	depends = libidn
 	depends = nss

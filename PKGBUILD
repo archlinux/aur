@@ -15,7 +15,7 @@ url="http://pidgin.im/"
 license=('GPL')
 depends=('startup-notification' 'libidn' 'nss' 'python' 'gtkspell'
          'hicolor-icon-theme' 'libxml2' 'gtk-update-icon-cache')
-makedepends=('ca-certificates' 'perl-xml-parser' 'intltool')
+makedepends=('ca-certificates' 'perl-xml-parser' 'intltool' 'pkg-config')
 optdepends=('dbus-python: needed for purple-remote & purple-url-handler only' 'gstreamer0.10-good: sound')
 replaces=('gaim')
 provides=('pidgin' 'finch' 'libpurple')
