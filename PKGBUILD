@@ -7,7 +7,7 @@
 
 pkgbase=handbrake-git
 pkgname=('handbrake-gtk-git' 'handbrake-cli-git')
-pkgver=r7608
+pkgver=r7609
 pkgrel=1
 pkgdesc="Multiplatform, multithreaded DVD to MPEG-4/H264/Theora converter"
 arch=('i686' 'x86_64')
@@ -15,8 +15,6 @@ url="http://handbrake.fr/"
 license=('GPL')
 options=('!makeflags')
 md5sums=('SKIP')
-makedepends=('libnotify' 'git' 'cmake' 'intltool' 'python2'
-	     'gettext' 'subversion' 'yasm' 'jansson' 'paxtest')
 source=("git+https://github.com/HandBrake/HandBrake.git")
 md5sums=('SKIP')
 _gitname="HandBrake"
@@ -51,15 +49,16 @@ build() {
 
 package_handbrake-gtk-git() {
   pkgdesc="Multiplatform, multithreaded DVD to MPEG-4/H264/Theora converter (GUI version)"
-  depends=('gtk3' 'dbus-glib' 'gst-plugins-base-libs' 'jansson'
-	   'libnotify' 'libsamplerate' 'libx264' 'libtheora' 'lame'
-	   'libass' 'libgudev')
+  depends=('opus' 'jansson' 'libsamplerate' 'libx264' 'libtheora' 'lame' 'libass' 'gtk3'
+	   'dbus-glib' 'gst-plugins-base-libs' 'libgudev' 'libnotify')
   optdepends=('gst-plugins-bad: For Preview Window'
               'gst-plugins-good: For Preview Window'
               'gst-plugins-ugly: For Preview Window'
               'gst-libav: For Preview Window')
-  provides=('handbrake')
-  conflicts=('handbrake')
+  akedepends=('git' 'cmake' 'intltool' 'python2'
+	     'gettext' 'subversion' 'yasm' 'paxtest')
+  provides=('handbrake-gtk')
+  conflicts=('handbrake-gtk')
 
   cd "$srcdir"/"$_gitname"
   make -C "build" DESTDIR="$pkgdir/" install
@@ -72,11 +71,9 @@ package_handbrake-gtk-git() {
 
 package_handbrake-cli-git() {
   pkgdesc="Multiplatform, multithreaded DVD to MPEG-4/H264/Theora converter (CLI version)"
-  depends=('jansson' 'libsamplerate' 'libx264' 'libtheora' 'lame'
-	   'libass' 'libxml2')
+  depends=('opus' 'jansson' 'libsamplerate' 'libx264' 'libtheora' 'lame' 'libass' 'libxml2')
   makedepends=('cmake' 'intltool' 'python2' 'gettext' 'subversion' 'yasm' 'prelink')
   provides=('handbrake-cli')
   conflicts=('handbrake-cli')
-
   install -D -m755 "$srcdir/$_gitname/build/HandBrakeCLI" "$pkgdir/usr/bin/HandBrakeCLI"
 }
