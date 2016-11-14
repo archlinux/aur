@@ -1,6 +1,5 @@
 # Maintainer : Damien Flament <damien.flament___at___gmx___dot___com>
 # Contributor: Martin Harvan <martinhrvn___at___gmail___dot___com>
-_hkgname=leksah
 pkgname=leksah
 pkgver=0.12.1.3
 pkgrel=1
@@ -45,7 +44,7 @@ backup=()
 options=('strip')
 install=
 changelog=
-source=(http://hackage.haskell.org/packages/archive/${_hkgname}/${pkgver}/${_hkgname}-${pkgver}.tar.gz)
+source=(http://hackage.haskell.org/packages/archive/${pkgname}/${pkgver}/${pkgname}-${pkgver}.tar.gz)
 noextract=()
 md5sums=('7b239fbcd67d969890e299fb7afb5985')
 validpgpkeys=()
