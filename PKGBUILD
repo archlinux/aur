@@ -3,13 +3,13 @@
 
 pkgname=python-icalendar
 pkgver=3.10
-pkgrel=1
+pkgrel=2
 pkgdesc='A parser/generator of iCalendar files (RFC 2445)'
 arch=('any')
 url='http://pypi.python.org/pypi/icalendar/'
 license=('GPL')
 depends=('python' 'python-pytz' 'python-dateutil')
-makedepends=('python-distribute')
+makedepends=('python-setuptools')
 conflicts=('python-icalendar-git')
 
 source=("https://pypi.python.org/packages/3f/40/a479fd8d450e06ab0965227b3231ac3c4479dbaf424fdbdd1045809dc434/icalendar-3.10.tar.gz")
