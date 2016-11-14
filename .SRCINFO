@@ -1,0 +1,15 @@
+pkgbase = monitoring-plugins-afs
+	pkgdesc = Monitoring plugins for Nagios, Icinga etc. for OpenAFS servers
+	pkgver = 2.4
+	pkgrel = 1
+	url = https://www.eyrie.org/~eagle/software/afs-monitor/
+	arch = any
+	license = GPL
+	license = Perl-Artistic
+	source = http://archives.eyrie.org/software/afs/afs-monitor-2.4.tar.gz
+	source = http://archives.eyrie.org/software/afs/afs-monitor-2.4.tar.gz.asc
+	md5sums = 54ade3bf2bad0e4db814c4103f9e72be
+	md5sums = SKIP
+
+pkgname = monitoring-plugins-afs
+
