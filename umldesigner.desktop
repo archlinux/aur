@@ -1,6 +1,6 @@
 [Desktop Entry]
 Name=UMLDesigner
-Version=6.0.0
+Version=7.1.0
 Comment=Graphical tooling to edit and visualize UML models
 Exec=/opt/UMLDesigner/UMLDesigner %u
 Icon=/opt/UMLDesigner/icon.xpm

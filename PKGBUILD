@@ -6,7 +6,7 @@
 pkgname=umldesigner-bin
 
 # Version
-pkgver=6.0.0
+pkgver=7.1.0
 pkgrel=1
 #epoch=
 
@@ -31,22 +31,22 @@ license=('EPL')
 # Others
 #backup=()
 #options=()
-#install=actor
+#install=
 changelog=changelog
 
 # Sources
 source=("umldesigner.desktop")
-source_i686=("https://s3-eu-west-1.amazonaws.com/obeo-umldesigner-releases/6.0.0/UMLDesigner-linux.gtk.x86.zip")
-source_x86_64=("https://s3-eu-west-1.amazonaws.com/obeo-umldesigner-releases/6.0.0/UMLDesigner-linux.gtk.x86_64.zip")
+source_i686=("https://s3-eu-west-1.amazonaws.com/obeo-umldesigner-releases/${pkgver}/bundles/UMLDesigner-linux.gtk.x86.zip")
+source_x86_64=("https://s3-eu-west-1.amazonaws.com/obeo-umldesigner-releases/${pkgver}/bundles/UMLDesigner-linux.gtk.x86_64.zip")
 #noextract=()
 #validpgpkeys=()
 
 # Integrity
 #md5sums=('')
 #sha1sums=()
-sha256sums=('SKIP')
-sha256sums_i686=('ebaabf3dc2a9453f861556d4b7d57bfa9889d4aee43b9d26eba2823a5d8fae1d')
-sha256sums_x86_64=('e74878eefe8a2f1638139a62906f87b4528f5103b2c17323c90e644420f427e3')
+sha256sums=('bad49af9547d18919bf9aee581bc1bc9dd35fced3594179df12bb4a1588dc5da')
+sha256sums_i686=('3f5584d9b4c30d20af987fb7ca586491d9aa9e0cfaf169ad1924c53802e29410')
+sha256sums_x86_64=('dfe527425fb48c2e48a20dc210dcd25285a0db68631838f5cc3a562e1288c93d')
 
 #pkgver() {
 #}
