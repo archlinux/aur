@@ -1,7 +1,7 @@
 # Maintainer: Nissar Chababy <funilrys at outlook dot com>
 # Ex-Maintainer: K0n24d <konrad AT knauber DOT net>
 pkgname=urbackup2-client
-pkgver=2.0.34
+pkgver=2.0.35
 pkgrel=1
 pkgdesc="Client Server backup system"
 arch=('i686' 'x86_64' 'armv5' 'armv6h' 'armv6' 'armv7h' 'armv7' 'aarch64')
@@ -19,14 +19,14 @@ source=("https://www.urbackup.org/downloads/Client/${pkgver}/urbackup-client-${p
 	'lvm_create_filesystem_snapshot'
 	'lvm_remove_filesystem_snapshot')
 
-md5sums=('550a47791874c7bf413a72387c1912e0'
-         'fcdef7852b3d847c5c2468a619e7fba9'
-         'b5f82ed45105f9929e9b98eee8b288fc'
-         '5a3c106ff05e9939902272c936b653eb'
-         'b001546cc988ac8ea8646c9e1438316b'
-         'b3442a7228cbb9ce56da85ba219ad925'
-         'e17da398a0d4074a3aae23c46d93db0b'
-         'b8972631f9633b24b711bc831c972d42')
+sha512sums=('00bde13ed400894cc415f5debf3d4baa36a3803c4b8a34b44448e46e0fbdaf607c9950cd00e99609ca94e44562fb6b4ae9d878409737e84b7233e31b3e738845'
+         '416fb8f5f3687a3c369cc2b199d4c8b4170494f0a119566a91ac6a0c2f202dc5049804c10508b66ba657011b39be5ddd055091cd531a665b4398899f404086ca'
+         '860021ce5b8d92ff58e8286991162c7bab45493c3b9c87577a43764f6b416397448bb99b8fcb850c4c5853927cb0a8637792b75ff53ee7ee257da3f5d29ae3a7'
+         'fde5912b589a495dc03a26d174d7673ff746eed34d6b1ed64758b2dc2ec2ec53e02e6a28b04734a7112f16687b31d25123e99dbc69e9dcab48773675382ec582'
+         'a8b58bba1b8b0a6b70395f9fe4277eeee60a0ba534f4eddb999d719915c76b76facb54172e03b7b29b9f725a4d720e9b676b05e5081f7528570956e903fe59bd'
+         '238c286d451474a8721292f7e98b4f13600cb430c16a27ceb9551cc83705b8268a3f1202785fb5b61523f372b4e7e804fd20b7db62677621983d79a271aa106b'
+         'a2d4ba03ae15582d2cd74ff68c38ff0f90d75a6eb5c241f9a022b0652fa2dc9b184439f6bda9a9538645925f739503ee7b3fc7bb232589583cdeb6dc27d74e5c'
+         '9bdfefccdd9d6e37a77975324a7c417f3de2aa59e6da0bfde3c318b8c6f3d7f4629f3a41eebee548b9c572b8ed39640434cc08bd020d25362fddffc4426438de')
 
 CFLAGS="-march=native -O2 -pipe -fstack-protector-strong"
 CXXFLAGS="${CFLAGS} -ansi"
