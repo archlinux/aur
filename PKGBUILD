@@ -5,8 +5,8 @@
 
 pkgname='multiload-ng-systray-gtk3-git'
 pkgdesc='Modern graphical system monitor, system tray version'
-pkgver=r873.061ad33
-pkgrel=1
+pkgver=r898.1661963
+pkgrel=2
 
 makedepends=('intltool' 'git')
 depends=('gtk3' 'cairo')
@@ -29,7 +29,7 @@ build() {
 
 package() {
     cd "multiload-ng"
-    make -C "systray" DESTDIR="$pkgdir" install
+    make DESTDIR="$pkgdir" install
 }
 
 pkgver() {
