@@ -1,0 +1,14 @@
+pkgbase = libmongo-client
+	pkgdesc = Alternative C driver for MongoDB (obsolete)
+	pkgver = 0.1.8
+	pkgrel = 1
+	url = https://github.com/algernon/libmongo-client
+	arch = i686
+	arch = x86_64
+	license = Apache
+	depends = glib2
+	source = git+https://github.com/algernon/libmongo-client#tag=libmongo-client-0.1.8
+	sha512sums = SKIP
+
+pkgname = libmongo-client
+
