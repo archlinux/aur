@@ -1,0 +1,7 @@
+*.pkg.tar.xz
+*.swo
+*.swp
+*~
+pkg/
+rancher-compose/
+src/
