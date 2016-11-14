@@ -1,7 +1,7 @@
 # Maintainer: synapse84 <synapse84 at gmail dot com>
 
 pkgname=mumble-snapshot
-pkgver=1.3.0_1650_g30c779c
+pkgver=1.3.0_1685_g491363e
 pkgrel=1
 pkgdesc="A high quality voice chat program."
 arch=('i686' 'x86_64')
@@ -15,14 +15,14 @@ conflicts=('mumble')
 install=mumble.install
 source=("https://dl.mumble.info/mumble-${pkgver//_/\~}~snapshot.tar.gz"{,.sig})
 validpgpkeys=('3BD0ECA5925319AF89C25865B585609C5A2BE0C1')
-sha256sums=('f7a79d2a7070266289731a2fa71df1d33516867081b9020cae1b2c9c02905759'
+sha256sums=('f369cd1df39ff28b9f671cbdc9de024622ef0f7f2e71341618f5e04bd7428a0d'
             'SKIP')
 
 build() {
     cd $srcdir/mumble-${pkgver//_/\~}~snapshot
 
     qmake-qt5 main.pro \
-      CONFIG+="bundled-celt no-bundled-opus no-bundled-speex no-g15 no-xevie no-server no-embed-qt-translations no-update c++11" \
+      CONFIG+="bundled-celt no-bundled-opus no-bundled-speex no-g15 no-xevie no-server no-embed-qt-translations no-update" \
       DEFINES+="PLUGIN_PATH=/usr/lib/mumble"
 
     make release
