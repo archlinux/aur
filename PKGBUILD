@@ -24,7 +24,7 @@ backup=(etc/pacman.conf
 source=(git://git.archlinux.org/pacman.git
         buildenv_ext.patch)
 sha1sums=('SKIP'
-          'b649ed07328fcba7bb85d9012337709e2a15d9f3')
+          '0f3b272bd2afb83eca7af6595ab763ede2cccfdd')
 
 pkgver() {
   cd pacman
