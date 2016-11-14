@@ -2,9 +2,9 @@
 
 pkgname=opendetex
 pkgver=2.8.2
-pkgrel=1
-pkgdesc="Improved version of Detex - tool for extracting plain text from TeX and LaTeX sources"
-url="https://code.google.com/archive/p/opendetex/"
+pkgrel=2
+pkgdesc="Improved version of Detex - tool for extracting plain text from TeX and LaTeX sources (Piotr Kubowicz's fork)"
+url="https://github.com/pkubowicz/opendetex"
 arch=('i686' 'x86_64')
 license=('custom')
 source=("https://github.com/pkubowicz/opendetex/releases/download/v2.8.2/opendetex-2.8.2.tar.bz2")
