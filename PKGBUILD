@@ -3,7 +3,7 @@
 _pkgname=lemonbuddy
 pkgname="${_pkgname}-git"
 pkgver=2.2.6
-pkgrel=1
+pkgrel=2
 pkgdesc="A fast and easy-to-use tool for Lemonbar"
 arch=("i686" "x86_64")
 url="https://github.com/jaagr/lemonbuddy"
