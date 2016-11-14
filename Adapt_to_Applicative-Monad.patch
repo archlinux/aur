@@ -1,0 +1,60 @@
+From b42af62c0398350729bfd4ce582f126723b65d27 Mon Sep 17 00:00:00 2001
+From: Nikolay Orlyuk <virkony@gmail.com>
+Date: Sun, 31 May 2015 19:33:18 +0300
+Subject: [PATCH] adapt to Applicative-Monad
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Get rid of warnings in GHC 7.8.2:
+
+Distribution/ArchLinux/PkgBuild.hs:291:10: Warning:
+    ‘GetPKG’ is an instance of Monad but not Applicative - this will
+    become an error in GHC 7.10, under the Applicative-Monad Proposal.
+
+Distribution/ArchLinux/PkgBuild.hs:37:1: Warning:
+    Module ‘Control.Monad.Instances’ is deprecated:
+      This module now contains no instances and will be removed in the
+      future
+
+And error in 7.10.1:
+
+Distribution/ArchLinux/PkgBuild.hs:291:10:
+    No instance for (Applicative GetPKG)
+      arising from the superclasses of an instance declaration
+    In the instance declaration for ‘Monad GetPKG’
+
+Fix according to
+https://wiki.haskell.org/Functor-Applicative-Monad_Proposal#Missing_superclasses
+---
+ Distribution/ArchLinux/PkgBuild.hs | 6 +++++-
+ 1 file changed, 5 insertions(+), 1 deletion(-)
+
+diff --git a/Distribution/ArchLinux/PkgBuild.hs b/Distribution/ArchLinux/PkgBuild.hs
+index 487ed9e..6801531 100644
+--- a/Distribution/ArchLinux/PkgBuild.hs
++++ b/Distribution/ArchLinux/PkgBuild.hs
+@@ -32,8 +32,8 @@ import Data.List
+ import Data.Monoid hiding ((<>))
+ import Debug.Trace
+ 
++import Control.Applicative (Applicative(..))
+ import Control.Monad
+-import Control.Monad.Instances
+ import Data.Char
+ 
+ 
+@@ -288,6 +288,10 @@ newtype GetPKG a = GetPKG { un :: String -> Either String (a,String) }
+ 
+ instance Functor GetPKG where fmap = liftM
+ 
++instance Applicative GetPKG where
++    pure = return
++    (<*>) = ap
++
+ instance Monad GetPKG where
+   return x       = GetPKG (\s -> Right (x,s))
+   fail x         = GetPKG (\_ -> Left x)
+-- 
+2.10.2
+

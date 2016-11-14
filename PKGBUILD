@@ -17,7 +17,8 @@ depends=("ghc")
 options=('strip' 'staticlibs')
 source=("http://hackage.haskell.org/packages/${_hkgname}-${pkgver}/${_hkgname}-${pkgver}.tar.gz"
         "Hide_Data-Monoid_function.patch"
-        "Add_FlexibleInstances.patch")
+        "Add_FlexibleInstances.patch"
+        "Adapt_to_Applicative-Monad.patch")
 install="${pkgname}.install"
 
 prepare() {
@@ -25,6 +26,7 @@ prepare() {
 
   patch -Np1 -i "${srcdir}/Hide_Data-Monoid_function.patch"
   patch -Np1 -i "${srcdir}/Add_FlexibleInstances.patch"
+  patch -Np1 -i "${srcdir}/Adapt_to_Applicative-Monad.patch"
 }
 
 build() {
@@ -52,4 +54,5 @@ package() {
 }
 md5sums=('13b2e9336b31b3f7a3e5410308023ae5'
          'db16c7d948f0aed4909ae6a0bf7180a8'
-         '6a9bed2c0bb13fbc925a40c4571a7330')
+         '6a9bed2c0bb13fbc925a40c4571a7330'
+         '444868f76ba946afc96676eb47be1b81')
