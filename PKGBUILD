@@ -6,7 +6,7 @@ pkgver=0.6.1.r61.g612333a
 pkgrel=1
 pkgdesc="Decentralized and trustless P2P communications protocol for sending encrypted messages to another person or to many subscribers"
 arch=('i686' 'x86_64')
-depends=('openssl' 'python2' 'python2-pyqt4' 'qt4' 'sqlite' 'python-msgpack')
+depends=('openssl' 'python2' 'python2-pyqt4' 'qt4' 'sqlite' 'python2-msgpack')
 optdepends=('mpg123: MP3 sounds support'
             'alsa-utils: WAV sounds support')
 url="https://github.com/Bitmessage/PyBitmessage"
