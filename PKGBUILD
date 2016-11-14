@@ -4,8 +4,8 @@ _target=aarch64-linux-gnu
 pkgname=$_target-gcc
 pkgver=6.1.1
 _islver=0.17.1
-pkgrel=1
-_snapshot=6-20160505
+pkgrel=2
+_snapshot=6-20161110
 pkgdesc='The GNU Compiler Collection - cross compiler for ARM64 target'
 arch=(i686 x86_64)
 url='http://gcc.gnu.org/'
@@ -19,7 +19,7 @@ provides=($_target-gcc-stage1=$pkgver $_target-gcc-stage2=$pkgver)
 source=(#ftp://gcc.gnu.org/pub/gcc/releases/gcc-$pkgver/gcc-$pkgver.tar.bz2
         ftp://gcc.gnu.org/pub/gcc/snapshots/$_snapshot/gcc-$_snapshot.tar.bz2
         http://isl.gforge.inria.fr/isl-$_islver.tar.bz2)
-sha256sums=('56f11990e16febe0927ec784801e56bfba7ec78cb9452dc0be252f1373431eb4'
+sha256sums=('3ba28d28dc5d66c14313b16ddcf6e9d1c52cde5945d4b8931053ca836077adf7'
             'd6307bf9a59514087abac3cbaab3d99393a0abb519354f7e7834a8c842310daa')
 
 if [ -n "$_snapshot" ]; then
