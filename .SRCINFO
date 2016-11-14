@@ -1,7 +1,7 @@
 pkgbase = valum-git
 	pkgdesc = Web micro-framework written in Vala
-	pkgver = r1068.34c0db3
-	pkgrel = 3
+	pkgver = v0.3.0.rc.r1.gab49bc2
+	pkgrel = 1
 	url = https://github.com/valum-framework/valum
 	arch = i686
 	arch = x86_64
@@ -11,9 +11,11 @@ pkgbase = valum-git
 	makedepends = vala>=0.26
 	makedepends = meson>=0.33
 	makedepends = python>=3.4
+	makedepends = python-sphinx
 	depends = glib2>=2.40
 	depends = libsoup>=2.44
 	depends = fcgi
+	optdepends = valadoc: for building the docs
 	provides = valum
 	conflicts = valum
 	source = git://github.com/valum-framework/valum.git

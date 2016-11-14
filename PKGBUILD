@@ -1,8 +1,8 @@
 # Maintainer: Philipp Trommler <ph.trommler@gmail.com>
 # Contributor: Adria Arrufat <adria.arrufat+AUR@protonmail.ch>
 pkgname=valum-git
-pkgver=r1068.34c0db3
-pkgrel=3
+pkgver=v0.3.0.rc.r1.gab49bc2
+pkgrel=1
 pkgdesc="Web micro-framework written in Vala"
 arch=("i686" "x86_64")
 url="https://github.com/valum-framework/valum"
@@ -14,7 +14,9 @@ makedepends=("git"
              "ninja>=1.6.0"
              "vala>=0.26"
              "meson>=0.33"
-	     "python>=3.4")
+	     "python>=3.4"
+	     "python-sphinx")
+optdepends=("valadoc: for building the docs")
 provides=("valum")
 conflicts=("valum")
 source=("git://github.com/valum-framework/valum.git")
