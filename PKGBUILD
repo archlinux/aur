@@ -2,12 +2,12 @@
 
 pkgname='build-generator'
 pkgver=0.8.0.f9abadb
-pkgrel=1
+pkgrel=2
 pkgdesc='Generates jobs on a Jenkins server according to specifications'
 arch=('i686' 'x86_64')
 url='https://projects.cor-lab.org/projects/build-generator'
 license=('LGPL3')
-depends=('openssl')
+depends=('openssl' 'git' 'subversion' 'unp' 'mercurial' 'lsb-release' 'graphviz')
 makedepends=('git' 'cmake' 'sbcl' 'cl-launch')
 options=("!strip")
 source=("build-generator::git+https://code.cor-lab.org/git/build-generator#branch=0.8"
@@ -47,12 +47,22 @@ prepare() {
 build() {
     cd "${srcdir}/build-generator"
     export ASDF_OUTPUT_TRANSLATIONS="/:${srcdir}/fasl-cache"
+    export CC=cc
     "${srcdir}/cl-launch" -Q \
         -S "(:source-registry \
-             (:tree \""${srcdir}"\")                                    \
-             :ignore-inherited-configuration)"                              \
-        -s jenkins.project.commandline-interface                 \
-        --dump ! --output "build-generator"                             \
+             (:tree \""${srcdir}"\") \
+             :ignore-inherited-configuration)" \
+        -s jenkins.project.commandline-interface \
+        -F 'rune-dom::(defun adjust-vector-exponentially (vector new-dimension set-fill-pointer-p)
+  (let ((d (array-dimension vector 0)))
+    (when (< d new-dimension)
+      (loop
+          do (setf d (max 1 (* 2 d)))
+          while (< d new-dimension))
+      (adjust-array vector d))
+    (when set-fill-pointer-p
+      (setf (fill-pointer vector) new-dimension))))' \
+        --dump ! --output "build-generator" \
         -r "jenkins.project.commandline-interface:main"
 }
 
