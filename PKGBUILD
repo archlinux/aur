@@ -15,13 +15,13 @@ arch=('i686' 'x86_64')
 makedepends=()
 depends=("ghc")
 options=('strip' 'staticlibs')
-source=("http://hackage.haskell.org/packages/archive/${_hkgname}/${pkgver}/${_hkgname}-${pkgver}.tar.gz" "ghc74.patch")
+source=("http://hackage.haskell.org/packages/${_hkgname}-${pkgver}/${_hkgname}-${pkgver}.tar.gz")
 install="${pkgname}.install"
 # PKGBUILD functions
 build() {
     cd ${srcdir}/${_hkgname}-${pkgver}
     patch -Np1 -i "${srcdir}/ghc74.patch" || return 1
-    
+
     runhaskell Setup configure -O -p --enable-split-objs --enable-shared \
         --prefix=/usr --docdir=/usr/share/doc/${pkgname} \
         --libsubdir=\$compiler/site-local/\$pkgid
@@ -42,5 +42,4 @@ package() {
     install -D -m644 ${_licensefile} ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
     rm -f ${pkgdir}/usr/share/doc/${pkgname}/${_licensefile}
 }
-sha256sums=('a2cb945735719b5e40450ac9d5d8d6fe1b2b4c90043ce43040b82397867d3714'
-            '95b5c4a9696e46ea36476536796a880195f82913962d713bb7d911c7d1cb788d')
+md5sums=('13b2e9336b31b3f7a3e5410308023ae5')
