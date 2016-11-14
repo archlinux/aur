@@ -1,7 +1,7 @@
 pkgbase = universal-gcode-sender-git
-	pkgdesc = Java based GRBL compatible cross-paltform G-Code sender
-	pkgver = 1.0.8.r125.g48452ca
-	pkgrel = 2
+	pkgdesc = Java based GRBL compatible cross-platform G-Code sender
+	pkgver = 1.0.9.r762.g72d0c9d
+	pkgrel = 1
 	url = https://github.com/winder/Universal-G-Code-Sender
 	install = universal-gcode-sender-git.install
 	arch = any
