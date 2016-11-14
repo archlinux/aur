@@ -1,6 +1,6 @@
 pkgbase = urbackup2-server
 	pkgdesc = Client Server backup system
-	pkgver = 2.0.35
+	pkgver = 2.0.37
 	pkgrel = 2
 	url = http://www.urbackup.org/
 	install = urbackup.install
@@ -22,8 +22,8 @@ pkgbase = urbackup2-server
 	depends = fuse
 	depends = zlib
 	conflicts = urbackup-server
-	source = https://www.urbackup.org/downloads/Server/2.0.35/urbackup-server-2.0.35.tar.gz
-	md5sums = 3548a3958ab5640c8ca49604244f8c6d
+	source = https://www.urbackup.org/downloads/Server/2.0.37/urbackup-server-2.0.37.tar.gz
+	sha512sums = 5976a1567b1a86de84a3214f3ac89081bf761eeb3e04419437223ee32dfcd568b65a039ab13df7e117d74ff346621fda133df2cc910f0daeae0a67d7465818e2
 
 pkgname = urbackup2-server
 
