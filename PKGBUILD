@@ -1,7 +1,7 @@
 # Contributor: kaptoxic(at)yahoo-dot-com
 pkgname=gphotoframe-git
 pkgver=1.5.r158.gcc27a65
-pkgrel=1
+pkgrel=2
 pkgdesc="A photo frame gadget for the GNOME Desktop"
 arch=('i686' 'x86_64')
 url="http://code.google.com/p/gphotoframe/"
