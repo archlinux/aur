@@ -7,7 +7,7 @@
 
 pkgname=nginx-pam
 _pkgname=nginx
-pkgver=1.10.0
+pkgver=1.10.2
 pkgrel=1
 pkgdesc='Lightweight HTTP server and IMAP/POP3 proxy server with added pam directives'
 arch=('i686' 'x86_64')
@@ -27,12 +27,12 @@ backup=('etc/nginx/fastcgi.conf'
         'etc/nginx/win-utf'
         'etc/logrotate.d/nginx')
 install=nginx.install
-source=(https://github.com/stogh/ngx_http_auth_pam_module/archive/v1.4.tar.gz
+source=(https://github.com/sto/ngx_http_auth_pam_module/archive/v1.5.1.tar.gz
 	$url/download/nginx-$pkgver.tar.gz{,.asc}
         service
         logrotate)
-md5sums=('a5c0fb3af7158297c1457739947b9b0c'
-         'c184c873d2798c5ba92be95ed1209c02'
+md5sums=('1e0bbd4535386970d63f51064626bc9a'
+         'e8f5f4beed041e63eb97f9f4f55f3085'
          'SKIP'
          '80cc5f267dfc737484f653d8b48ac6cd'
          '4ddf076f128cd1738e0c0bba493903bb')
@@ -80,7 +80,7 @@ build() {
     --with-stream \
     --with-stream_ssl_module \
     --with-threads \
-    --add-module=${srcdir}/ngx_http_auth_pam_module-1.4 \
+    --add-module=${srcdir}/ngx_http_auth_pam_module-1.5.1 \
 
   make
 }
