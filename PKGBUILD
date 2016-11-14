@@ -4,17 +4,17 @@
 _pkgname=libofa
 pkgname=lib32-${_pkgname}
 pkgver=0.9.3
-pkgrel=5
+pkgrel=6
 pkgdesc="An open-source audio fingerprint by MusicIP (32 bit)"
 arch=('x86_64')
 url="http://code.google.com/p/musicip-libofa/"
 license=('GPL2' 'custom')
 depends=('lib32-expat' 'lib32-fftw' 'lib32-gcc-libs' "${_pkgname}")
 makedepends=('gcc-multilib' 'lib32-curl')
-source=("http://musicip-libofa.googlecode.com/files/${_pkgname}-${pkgver}.tar.gz"
-    'gcc-4.patch'
-    'gcc4.3.patch'
-    'gcc4.5.patch'
+source=("https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/musicip-libofa/${_pkgname}-${pkgver}.tar.gz"
+	'gcc-4.patch'
+	'gcc4.3.patch'
+	'gcc4.5.patch'
 	'libofa-0.9.3-curl-7.21.patch'
 	'libofa-0.9.3-gcc-4.7.patch')
 md5sums=('51507d2c4b432bd2755f48d58471696e'
