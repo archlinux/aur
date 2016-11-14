@@ -11,6 +11,7 @@ pkgbase = lxpanel-multiload-ng-plugin-gtk3-git
 	depends = gtk3
 	depends = cairo
 	depends = lxpanel-gtk3>=0.5.8
+	replaces = lxpanel-multiload-ng-applet-gtk3-git
 	conflicts = lxpanel-multiload-ng-plugin-gtk2
 	conflicts = lxpanel-multiload-ng-plugin-gtk3
 	conflicts = lxpanel-multiload-ng-plugin-gtk2-git
