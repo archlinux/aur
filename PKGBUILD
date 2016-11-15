@@ -25,7 +25,7 @@ source=("$_pkgbase::git://github.com/movim/movim#tag=$_tagname"
 install=movim.install
 sha256sums=('SKIP'
             '5c36a52a410a61f9af9daf9cd12e63b1ef7bab10dab9541b5d3cc8aa4805880c'
-            '4e9730b357b909912ea2f15ed8ca24189725f79d910da140800d586921c3e431')
+            '799b2c8ea7ef8b594f2af8fc4d9c93591d5085686c8fe0ddd369f89bafeb5e16')
 backup=("etc/webapps/$_pkgbase/db.inc.php"
         "etc/default/movim")
 
