@@ -1,7 +1,7 @@
 # Maintainer: Stefan Haller <fgrsnau@gmail.com>
 pkgname=recutils
 pkgver=1.7
-pkgrel=1
+pkgrel=2
 pkgdesc="Set of tools and libraries to access plain text databases called recfiles."
 arch=(i686 x86_64)
 url="https://www.gnu.org/software/recutils/"
@@ -12,7 +12,7 @@ md5sums=('187e90421cdf69ce649876324a20b452')
 
 build() {
 	cd "$pkgname-$pkgver"
-	./configure --prefix=/usr
+	./configure --prefix=/usr --with-bash-headers
 	make
 }
 
