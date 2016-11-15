@@ -6,7 +6,7 @@
 _pkgname=gitea
 _gourl="code.gitea.io"
 pkgname=gitea-git
-pkgver=4392.07a0753
+pkgver=4396.7596e41
 pkgrel=1
 pkgdesc='A painless self-hosted Git service.'
 url='https://gitea.io/'
@@ -20,6 +20,7 @@ depends=('go' 'git')
 makedepends=('go' 'git' 'patch')
 optdepends=('mariadb' 'postgresql' 'openssh')
 install=gitea.install
+backup=("var/lib/gitea/custom/conf/app.ini")
 conflicts=('gitea')
 options=('!strip' 'emptydirs')
 provides=('gitea')

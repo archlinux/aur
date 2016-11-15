@@ -1,6 +1,6 @@
 pkgbase = gitea-git
 	pkgdesc = A painless self-hosted Git service.
-	pkgver = 4392.07a0753
+	pkgver = 4396.7596e41
 	pkgrel = 1
 	url = https://gitea.io/
 	install = gitea.install
@@ -19,6 +19,7 @@ pkgbase = gitea-git
 	conflicts = gitea
 	options = !strip
 	options = emptydirs
+	backup = var/lib/gitea/custom/conf/app.ini
 	source = git://github.com/go-gitea/gitea.git#branch=master
 	source = gitea.service.patch
 	source = app.ini
