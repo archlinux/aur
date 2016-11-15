@@ -16,7 +16,7 @@ _language_vala_modern_ver=0.3.2
 _terminal_fusion_ver=2.4.2
 
 pkgname=${_pkgname}-editor-${_version}
-_pkgrel=2
+_pkgrel=3
 _pkgver=1.13.0
 pkgver="${_pkgver}.beta${_pkgrel}.m${_language_gfm2_ver}"
 _ver=$_pkgver-beta${_pkgrel}
@@ -31,9 +31,8 @@ makedepends=('git' 'npm')
 conflicts=('atom-editor-beta-bin' 'atom-editor-beta-arch')
 install=atom.install
 source=("${_pkgname}-${_pkgver}-${_version}${_pkgrel}.tar.gz::$url/archive/v${_pkgver}-${_version}${_pkgrel}.tar.gz"
-"${_pkgname}-${_version}.desktop"
-"${_pkgname}-${_version}")
-sha256sums=('c8883e98b4a9efe8055c4e2885dfbe8c94e0563e52d17626a8626b9cdff1e781'
+"${_pkgname}-${_version}.desktop")
+sha256sums=('0eb5f6bdc1d30b68d4996c84793e4a082f6e2347208f1b0586b1be192bd4fb54'
             'c62faaf2f50cddb1a834ccb33c95724076d2859c88baac7d9d676bc9c3afc8c6'
             '230563ed327833351d448e152ab8b146d2d2b7bdac42c7d39eef966b96b862fc')
 
@@ -81,9 +80,8 @@ package() {
   cp -r out/${_pkgname}-${_version}-${_ver}-${_arch}/* ${pkgdir}/usr/share/${_pkgname}-${_version}/
   mv ${pkgdir}/usr/share/${_pkgname}-${_version}/atom.png ${pkgdir}/usr/share/pixmaps/${_pkgname}-${_version}.png
   mv ${pkgdir}/usr/share/${_pkgname}-${_version}/LICENSE ${pkgdir}/usr/share/licenses/$pkgname/LICENSE
-  install -Dm755 $srcdir/${_pkgname}-${_version} ${pkgdir}/usr/bin/${_pkgname}-${_version}
   install -Dm644 $srcdir/${_pkgname}-${_version}.desktop ${pkgdir}/usr/share/applications/${_pkgname}-${_version}.desktop
-  rm ${pkgdir}/usr/share/${_pkgname}-${_version}/resources/app/atom.sh
+  cp ${pkgdir}/usr/share/${_pkgname}-${_version}/resources/app/atom.sh ${pkgdir}/usr/bin/atom-beta
   rm -rf ${pkgdir}/usr/share/${_pkgname}-${_version}/resources/app.asar.unpacked/resources
   ln -sf "/usr/share/${_pkgname}-${_version}/resources/app/apm/node_modules/.bin/apm" "${pkgdir}/usr/bin/apm-${_version}"
 
