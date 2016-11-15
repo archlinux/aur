@@ -5,8 +5,8 @@
 
 pkgname='lxpanel-multiload-ng-plugin-gtk3'
 pkgdesc='Modern graphical system monitor, LxPanel plugin'
-pkgver=1.4.2
-pkgrel=2
+pkgver=1.5.0
+pkgrel=1
 
 makedepends=('intltool')
 depends=('gtk3' 'cairo' 'lxpanel-gtk3>=0.5.8')
@@ -16,7 +16,7 @@ conflicts=('lxpanel-multiload-ng-plugin-gtk2' 'lxpanel-multiload-ng-plugin-gtk2-
 replaces=('lxpanel-multiload-ng-applet-gtk3')
 
 source=("https://github.com/udda/multiload-ng/archive/v$pkgver.tar.gz")
-md5sums=('3c17d8483bc874b20c877a7d7897ab5e')
+md5sums=('b42140a47788cc5cdbd46fbbfab9e644')
 
 arch=('i686' 'x86_64')
 url='https://udda.github.io/multiload-ng/'
