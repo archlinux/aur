@@ -1,7 +1,7 @@
 pkgbase = viper-framework
 	pkgdesc = Stable version of Viper the Binary Analysis Framework
 	pkgver = 1.2
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/botherder/viper
 	install = viper-framework.install
 	arch = any

@@ -2,7 +2,7 @@
 
 pkgname=viper-framework
 pkgver=1.2
-pkgrel=4
+pkgrel=5
 pkgdesc="Stable version of Viper the Binary Analysis Framework"
 arch=("any")
 url="https://github.com/botherder/viper"
