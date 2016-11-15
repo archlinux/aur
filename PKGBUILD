@@ -2,7 +2,7 @@
 # Upstream URL: https://github.com/actionless/oomox
 
 pkgname=oomox-git
-pkgver=0.25.0
+pkgver=1.0.rc1
 pkgrel=1
 pkgdesc="Graphical application for generating different color variations
 of Numix theme (GTK2, GTK3) and gnome-colors icon theme. Have a hack for HiDPI in gtk2."
