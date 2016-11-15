@@ -1,7 +1,7 @@
 # Maintainer: Kasei Wang <cnsdwpc at gmail.com>
 _pkgname=kcptun
 pkgname=$_pkgname-bin
-pkgver=20161105
+pkgver=20161111
 pkgrel=1
 pkgdesc="An extremely simple udp tunnel based on KCP"
 arch=("i686" "x86_64")
@@ -15,12 +15,12 @@ conflicts=("kcptun")
 if [ "$CARCH" = "i686" ]; then
   _arch="386"
   source=("https://github.com/xtaci/kcptun/releases/download/v$pkgver/kcptun-linux-$_arch-$pkgver.tar.gz")
-  md5sums=('334690906e8fcabbcb0d89fa1482581f')
+  md5sums=('7de2cafc0241f2e5ef035f7a0ba98997')
 fi
 if [ "$CARCH" = "x86_64" ]; then
   _arch="amd64"
   source=("https://github.com/xtaci/kcptun/releases/download/v$pkgver/kcptun-linux-$_arch-$pkgver.tar.gz")
-  md5sums=('0ce07c5dfe2d90bf6ffb65f565e67bf7')
+  md5sums=('ce253b046f0da77b4967aa3aff1b2964')
 fi
 source+=('example_client.json'
          'example_server.json'
@@ -28,7 +28,7 @@ source+=('example_client.json'
          'kcptun-server@.service')
 md5sums+=('a807ac981c0f99d6afea8a68459e2d64'
           '9946cc2e4556774defed6b35609b1665'
-          '14aea788db2ef1c791fe7436a1453655'
+          'a6cb3e4490f9cc7be81fd4d898870040'
           'c5f96c4dae2dd65941d0e8dcbdbb88bd')
 
 package() {

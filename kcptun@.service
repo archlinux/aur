@@ -6,6 +6,8 @@ After=network.target
 Type=simple
 User=nobody
 ExecStart=/usr/bin/kcptun_client -c /etc/kcptun/%i.json
+Restart=always
+RestartSec=5
 
 [Install]
 WantedBy=multi-user.target
