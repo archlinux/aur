@@ -15,7 +15,7 @@ sha512sums=('SKIP'
             'c0e99016e7cc28fde3c65842669686b0c20f0f885e6b4d53ecd0229a0f8e4a85b49957346fdea71a5bea100d9fd6ce62e3cffec407583445a4c01492bb96d3bf'
             '05990ca712cfbbad9a8f910972f4ac33395f040cd8950ce3692ddce555ca43cda7d2793cdea543a518290d43e8d3ac2282c85160af48e2c0826d43788084c21e')
 makedepends=('git')
-optdepends=('recpt1-szt-git: Earthsoft PT-series controller')
+optdepends=('recpt1-stz-git: Earthsoft PT-series controller')
 
 pkgver() {
   cd "recpt1"
