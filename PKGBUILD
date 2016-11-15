@@ -46,14 +46,4 @@ build() {
 package() {
   cd "$srcdir/trunk/build"
   make DESTDIR="$pkgdir/" install
-
-  mkdir -p "${pkgdir}/usr/lib"
-  mv "${pkgdir}/opt/lib/"* "${pkgdir}/usr/lib"
-  rm -r "${pkgdir}/opt/lib/" 
-
-  mkdir -p "${pkgdir}/usr/bin"
-  cd "$pkgdir/usr/bin"
-  ln -s "../../opt/ccViewer/ccViewer"
-  ln -s "../../opt/CloudCompare/CloudCompare"
-
 }
