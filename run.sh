@@ -70,7 +70,7 @@ startd()
             exec swipl --quiet -f "$pkg_dir"/run.pl
         ) &
         pid="$!"
-    } 1>/dev/null 2>/dev/null
+    }
 
     write_pid_file "$pid"
 }
@@ -123,26 +123,15 @@ write_pid_file()
     fi
 }
 
-killd()
-{
-    # kill action only if process exists.
-    if [ -f "$pid_file" ]; then
-        pid=$(cat "$pid_file")
-        ps -q $pid > /dev/null
-        if [ $? -eq 0 ]; then
-            kill -s TERM $pid
-        fi
-    fi
-}
-
 option_parser()
 {
-    getopts ":hks" opt "$@"
+    getopts ":hiks" opt "$@"
     case "$opt" in
-        h) help ;;
-        k) killd ;;
-        s) startd ;;
-        ?) help; return 1 ;;
+        h ) help            ;;
+        i ) init            ;;
+        k ) killd           ;;
+        s ) startd          ;;
+        ? ) help; return 1  ;;
     esac
 }
 

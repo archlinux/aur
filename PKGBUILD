@@ -2,12 +2,14 @@
 # Contributor: Franco Masotti <franco dot masotti at student dot unife dot it>
 pkgname=swish
 pkgver=r1124.071295b
-pkgrel=2
+pkgrel=3
 pkgdesc="SWI-Prolog for SHaring: a SWI-Prolog web IDE"
 arch=('x86_64')
 url="https://github.com/SWI-Prolog/swish"
 license=('BSD')
-depends=('swi-prolog-devel')
+depends=('libxinerama'
+         'libxpm'
+         'swi-prolog-devel')
 makedepends=('git'
              'bower'
              'sed')

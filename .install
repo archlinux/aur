@@ -6,11 +6,11 @@ post_install() {
 
     chown -R swish:swish /usr/share/swish
 
-    printf "\n\nYou can start and enable \
-swish.service to run the server.\n\n"
+    printf "\n\n%s\n\n" "You can start and enable \
+swish.service to run the server."
 }
 
 post_remove()
 {
-    printf "\n\nYou can remove swish user and group.\n\n"
+    printf "\n\n%s\n\n" "You can remove swish user and group."
 }

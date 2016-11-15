@@ -1,7 +1,7 @@
 pkgbase = swish
 	pkgdesc = SWI-Prolog for SHaring: a SWI-Prolog web IDE
 	pkgver = r1124.071295b
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/SWI-Prolog/swish
 	install = .install
 	arch = x86_64
@@ -9,6 +9,8 @@ pkgbase = swish
 	makedepends = git
 	makedepends = bower
 	makedepends = sed
+	depends = libxinerama
+	depends = libxpm
 	depends = swi-prolog-devel
 	conflicts = swish-cplint
 	source = git+https://github.com/SWI-Prolog/swish#branch=master
