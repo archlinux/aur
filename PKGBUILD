@@ -2,7 +2,7 @@
 # Maintainer: Danilo Bargen <aur at dbrgn dot ch>
 
 pkgname=cloudcompare-git
-pkgver=2.5.0.r830.g3cd1c04
+pkgver=2.6.2.r818.g51fb204
 pkgrel=1
 pkgdesc="A 3D point cloud (and triangular mesh) processing software"
 arch=('i686' 'x86_64')
@@ -10,6 +10,7 @@ url="http://www.danielgm.net/cc/"
 license=('GPL2')
 depends=('qt5-base' 'glu' 'mesa')
 makedepends=('git' 'cmake' 'pcl' 'doxygen')
+optdepends=('pcl' 'liblas')
 source=("git+https://github.com/cloudcompare/trunk")
 md5sums=('SKIP') 
 
@@ -39,7 +40,10 @@ build() {
 		  -DINSTALL_QEDL_PLUGIN=OFF \
 		  -DINSTALL_QPCV_PLUGIN=OFF \
 		  -DINSTALL_QDUMMY_PLUGIN=OFF \
-		  -DINSTALL_QSSAO_PLUGIN=OFF 
+		  -DINSTALL_QSSAO_PLUGIN=OFF \
+                  -DOPTION_USE_LIBLAS=ON \
+                  -DLIBLAS_INCLUDE_DIR=/usr/include/liblas/ \
+                  -DLIBLAS_RELEASE_LIBRARY_FILE=/usr/lib/liblas.so
   make -j$(nproc)
 }
 
