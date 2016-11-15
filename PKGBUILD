@@ -14,7 +14,7 @@ depends=('b25-stz-git' 'pcsclite')
 sha512sums=('SKIP')
 makedepends=('git')
 optdepends=('pt3-drv: Japanese Earthsoft PT-3 chardev driver'
-            'pt1-drv: Japanese Earthsoft PT-1/2 chardev driver')
+            'pt1-drv-stz-git: Japanese Earthsoft PT-1/2 chardev driver')
 
 pkgver() {
   cd "recpt1"
