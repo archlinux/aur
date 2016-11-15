@@ -4,7 +4,7 @@
 pkgname=racket-git
 pkgver=6.7.0.3.37601.85eee2b
 pkgrel=1
-pkgdesc="Minimal Racket installation, without useless DrRacket, from git"
+pkgdesc="Minimal Racket installation, without DrRacket, from git"
 arch=('i686' 'x86_64')
 url="http://racket-lang.org/"
 license=('LGPL')
