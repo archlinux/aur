@@ -5,8 +5,8 @@
 
 pkgname='multiload-ng-standalone-gtk2'
 pkgdesc='Modern graphical system monitor, standalone version'
-pkgver=1.4.2
-pkgrel=2
+pkgver=1.5.0
+pkgrel=1
 
 makedepends=('intltool')
 depends=('gtk2>=2.20.0' 'cairo')
@@ -14,7 +14,7 @@ depends=('gtk2>=2.20.0' 'cairo')
 conflicts=('multiload-ng-standalone-gtk3' 'multiload-ng-standalone-gtk2-git' 'multiload-ng-standalone-gtk3-git')
 
 source=("https://github.com/udda/multiload-ng/archive/v$pkgver.tar.gz")
-md5sums=('3c17d8483bc874b20c877a7d7897ab5e')
+md5sums=('b42140a47788cc5cdbd46fbbfab9e644')
 
 arch=('i686' 'x86_64')
 url='https://udda.github.io/multiload-ng/'
