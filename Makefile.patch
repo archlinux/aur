@@ -1,0 +1,39 @@
+--- src/recpt1/driver/Makefile	2016-11-15 16:58:49.419453906 +0900
++++ src/recpt1/driver/Makefile.new	2016-11-15 17:03:26.295762368 +0900
+@@ -3,8 +3,8 @@
+ EXTRA_CFLAGS += -Wformat=2
+ KVER ?= `uname -r`
+ 
+ KBUILD = /lib/modules/$(KVER)/build
+-INSTALL_DIR = /lib/modules/$(KVER)/kernel/drivers/video
++INSTALL_DIR = $(DESTDIR)/lib/modules/$(KVER)/kernel/drivers/video
+ 
+ all: ${TARGET}
+ 
+@@ -30,17 +30,17 @@
+ 	fi
+ 
+ uninstall:
+-	rm -vf $(INSTALL_DIR)/$(TARGET)* /etc/udev/rules.d/99-pt1.rules
++	rm -vf $(INSTALL_DIR)/$(TARGET)* $(DESTDIR)/etc/udev/rules.d/99-pt1.rules
+ 
+ dkms: $(TARGET)
+ 	if [ -d /etc/udev/rules.d -a ! -f /etc/udev/rules.d/99-pt1.rules ] ; then \
+-		install -m 644 etc/99-pt1.rules /etc/udev/rules.d ; \
++		install -m 644 etc/99-pt1.rules $(DESTDIR)/etc/udev/rules.d ; \
+ 	fi
+ 
+ install: uninstall dkms
+ 	install -d $(INSTALL_DIR)
+ 	install -m 644 $(TARGET) $(INSTALL_DIR)
+-	depmod -a $(KVER)
++	#depmod -a $(KVER)
+ 
+ install_compress: install
+ 	. $(KBUILD)/.config ; \
+@@ -51,4 +51,4 @@
+ 	elif [ $$CONFIG_DECOMPRESS_GZIP = "y" ] ; then \
+ 		gzip  -9 $(INSTALL_DIR)/$(TARGET); \
+ 	fi
+-	depmod -a $(KVER)
++	#depmod -a $(KVER)

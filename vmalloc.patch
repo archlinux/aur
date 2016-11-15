@@ -1,0 +1,10 @@
+--- src/recpt1/driver/pt1_pci.c	2016-11-15 16:53:42.654525258 +0900
++++ src/recpt1/driver/pt1_pci.c.new	2016-11-15 16:56:26.835127903 +0900
+@@ -10,6 +10,7 @@
+ #include <linux/interrupt.h>
+ #include <linux/version.h>
+ #include <linux/mutex.h>
++#include <linux/vmalloc.h>
+ 
+ #if LINUX_VERSION_CODE < KERNEL_VERSION(3,4,0)
+ #include <asm/system.h>
