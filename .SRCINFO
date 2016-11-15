@@ -1,0 +1,18 @@
+pkgbase = libsimplemail-qt-git
+	pkgdesc = An SMTP library written in C++ for Qt
+	pkgver = 20160317+133+dcdd51b
+	pkgrel = 1
+	url = https://github.com/cutelyst/simple-mail
+	arch = i686
+	arch = x86_64
+	license = LGPL2.1
+	makedepends = cmake
+	makedepends = git
+	depends = qt5-base
+	provides = libsimplemail-qt
+	conflicts = libsimplemail-qt
+	source = git+https://github.com/cutelyst/simple-mail.git
+	sha256sums = SKIP
+
+pkgname = libsimplemail-qt-git
+
