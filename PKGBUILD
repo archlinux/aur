@@ -3,7 +3,7 @@
 
 pkgname=jlink-systemview
 pkgver=2.38
-pkgrel=1
+pkgrel=3
 epoch=2
 pkgdesc="Segger SystemView for Linux"
 arch=('i686' 'x86_64')
@@ -36,7 +36,7 @@ package(){
             "${pkgdir}/usr/bin/" \
             "${pkgdir}/usr/share/doc/${pkgname}/"
 
-    cd ${srcdir}/SystemView*
+    cd ${srcdir}/SystemView
 
     # Bulk copy everything
     cp --preserve=mode -r SystemViewer Description Doc Sample "${pkgdir}/opt/SEGGER/SystemView"
