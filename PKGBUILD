@@ -3,7 +3,7 @@
 pkgname=gradio-git
 _gitname=gradio
 pkgver=5.0.0.beta2
-pkgrel=1
+pkgrel=2
 pkgdesc='A GTK3 app for finding and listening to internet radio stations'
 arch=('i686' 'x86_64')
 license=('GPL3')
@@ -22,7 +22,7 @@ provides=("gradio=$pkgver")
 
 build() {
 	cd "$srcdir/${_gitname}"
-	./autogen.sh
+	./autogen.sh --prefix=/usr
 	make
 }
 
