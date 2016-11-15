@@ -37,11 +37,9 @@ help()
 swish-cplint [OPTION]
 SWI-Prolog for SHaring: a SWI-Prolog web IDE integrated with the cplint suite
 
-The first time swish-cplint is executed, all SWI Prolog dependencies will be 
-installed.
-
 Only a single option is permitted.
     -h      print this help
+    -i      install dependencies
     -k      kill swish-cplint
     -s      start swish-cplint
 
@@ -54,20 +52,27 @@ and at: <https://github.com/friguzzi/cplint>
 EOF
 }
 
-initialize()
+init()
 {
-    if [ -f "$installed_file" ]; then
-        :
+    printf "%s\n" "This may take a while."
+    pushd "$pkg_dir"
+    $deps_installer
+    if [ $? -eq 0 ]; then
+        echo "# Don't touch this file" > "$installed_file"
+        echo "true" >> "$installed_file"
     else
-        printf "This may take a while.\n"
-        $deps_installer
-        if [ $? -eq 0 ]; then
-            echo "# Don't touch this file" > "$installed_file"
-            echo "true" >> "$installed_file"
-        else
-            printf "Install web dependencies error\n"
-            exit 1
-        fi
+        1>&2 printf "%s\n" "Install web dependencies error"
+        exit 1
+    fi
+}
+
+installed()
+{
+    if [ ! -f "$installed_file" ]; then
+        1>&2 printf "%s\n" "You need to run \
+'sudo -u swish swish-cplint -i' \
+first"
+        exit 1
     fi
 }
 
@@ -87,13 +92,15 @@ startd()
 {
     local pid=""
 
+    # The following means installed && { ... }
+    installed
     {
         (
             cd "$pkg_dir"
-            initialize && exec swipl --quiet -f "$pkg_dir"/run.pl
+            exec swipl --quiet -f "$pkg_dir"/run.pl
         ) &
         pid="$!"
-    } 1>/dev/null 2>/dev/null
+    } 1>&2
 
     write_pid_file "$pid"
 }
@@ -146,26 +153,15 @@ write_pid_file()
     fi
 }
 
-killd()
-{
-    # kill action only if process exists.
-    if [ -f "$pid_file" ]; then
-        pid=$(cat "$pid_file")
-        ps -q $pid > /dev/null
-        if [ $? -eq 0 ]; then
-            kill -s TERM $pid
-        fi
-    fi
-}
-
 option_parser()
 {
-    getopts ":hks" opt "$@"
+    getopts ":hiks" opt "$@"
     case "$opt" in
-        h) help ;;
-        k) killd ;;
-        s) startd ;;
-        ?) help; return 1 ;;
+        h ) help            ;;
+        i ) init            ;;
+        k ) killd           ;;
+        s ) startd          ;;
+        ? ) help; return 1  ;;
     esac
 }
 

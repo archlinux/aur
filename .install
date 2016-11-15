@@ -11,11 +11,15 @@ post_install() {
 
     chown -R swish:swish /usr/share/swish-cplint
 
-    printf "\n\nYou can start and enable \
-swish-cplint.service to run the server.\n\n"
+    printf "\n\n%s\n\n" "To initialize and download all the necessary \
+components you must run: \
+sudo -u swish swish-cplint -i"
+    printf "%s\n\n" "You can then start and enable \
+swish-cplint.service to run the server."
+
 }
 
 post_remove() {
-    printf "\n\nYou can remove /home/swish.\n"
-    printf "You can also remove swish user and group.\n\n"
+    printf "\n\n%s\n" "You can remove /home/swish."
+    printf "%s\n\n" "You can also remove swish user and group."
 }
