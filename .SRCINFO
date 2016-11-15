@@ -1,0 +1,21 @@
+pkgbase = cutelyst-git
+	pkgdesc = A Web Framework built on top of Qt, using the simple approach of Catalyst (Perl) framework
+	pkgver = 1.0.0+2+g2f101cb
+	pkgrel = 1
+	url = https://github.com/cutelyst/cutelyst
+	arch = i686
+	arch = x86_64
+	license = LGPL2.1
+	makedepends = cmake
+	makedepends = git
+	makedepends = uwsgi
+	depends = grantlee
+	depends = libsimplemail-qt
+	optdepends = uwsgi: for the uWSGI engine
+	provides = cutelyst
+	conflicts = cutelyst
+	source = git+https://github.com/cutelyst/cutelyst.git
+	sha256sums = SKIP
+
+pkgname = cutelyst-git
+
