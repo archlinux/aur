@@ -1,20 +1,18 @@
 # Maintainer: András Wacha <awacha aT gMaIl>
 pkgname=monitoring-plugins-afs
 pkgver=2.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Monitoring plugins for Nagios, Icinga etc. for OpenAFS servers"
 arch=('any')
 url="https://www.eyrie.org/~eagle/software/afs-monitor/"
 license=('GPL' 'Perl-Artistic')
-depends=()
+depends=('perl' 'monitoring-plugins')
 makedepends=()
 checkdepends=()
 source=("http://archives.eyrie.org/software/afs/afs-monitor-2.4.tar.gz"
         "http://archives.eyrie.org/software/afs/afs-monitor-2.4.tar.gz.asc")
 md5sums=('54ade3bf2bad0e4db814c4103f9e72be'
          'SKIP')
-
-#validpgpkeys=('7D80315C5736DE75')
 
 package() {
     echo $(pwd)
