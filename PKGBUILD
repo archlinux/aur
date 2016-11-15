@@ -1,4 +1,4 @@
-# Maintainer: Luca Weiss <WEI16416 (at) spengergasse (dot) at>
+# Maintainer: Luca Weiss <luca (at) z3ntu (dot) xyz>
 
 pkgname=kde1-kdetoys
 pkgver=1.1.2
@@ -11,7 +11,7 @@ groups=("kde1")
 depends=("qt1" "kde1-kdelibs")
 makedepends=("cmake")
 _commit="16f863f984ead0f72fdbfb05062e3e603b0e674b"
-source=("https://github.com/z3ntu/$pkgname/archive/$_commit.zip")
+source=("https://github.com/KDE/$pkgname/archive/$_commit.zip")
 sha256sums=('cc7d6a843f13b332a5da111f165756f4c8345b6a8940ef3b04c1325f4116e5de')
 
 #prepare() {
