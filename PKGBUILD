@@ -3,12 +3,12 @@
 _pkgname=podfox
 pkgname=$_pkgname-git
 pkgver=r71.cdcf304
-pkgrel=1
+pkgrel=2
 pkgdesc="Catch and manage podcasts from the terminal"
 arch=('any')
 url="https://github.com/brtmr/podfox"
 license=('GPL3')
-makedepends=('git')
+makedepends=('git' 'python-setuptools')
 depends=('python-colorama' 'python-docopt' 'python-feedparser' 'python-pycurl' 'python-requests')
 provides=($_pkgname)
 conflicts=($_pkgname)
