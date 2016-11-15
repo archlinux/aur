@@ -1,4 +1,4 @@
-From b4f90beaa96bb7ecf3e144f6d60b9fa9f3e9f582 Mon Sep 17 00:00:00 2001
+From 0d945f06faee49788191e3e28f797f72959b3583 Mon Sep 17 00:00:00 2001
 From: "Jan Alexander Steffens (heftig)" <jan.steffens@gmail.com>
 Date: Mon, 10 Oct 2016 16:34:28 +0200
 Subject: [PATCH] gdkscreen-x11: Fix screen and monitor size calculation
@@ -24,7 +24,7 @@ https://bugzilla.gnome.org/show_bug.cgi?id=772202
  1 file changed, 4 insertions(+), 12 deletions(-)
 
 diff --git a/gdk/x11/gdkscreen-x11.c b/gdk/x11/gdkscreen-x11.c
-index 450872d99df56b79..1852a7dea2ad18e4 100644
+index 7738a47adfed1484..28a43a69bedbe955 100644
 --- a/gdk/x11/gdkscreen-x11.c
 +++ b/gdk/x11/gdkscreen-x11.c
 @@ -49,6 +49,7 @@
@@ -36,14 +36,14 @@ index 450872d99df56b79..1852a7dea2ad18e4 100644
  enum
  {
 @@ -82,13 +83,13 @@ gdk_x11_screen_get_display (GdkScreen *screen)
- static gint
+ gint
  gdk_x11_screen_get_width (GdkScreen *screen)
  {
 -  return GDK_X11_SCREEN (screen)->width / GDK_X11_SCREEN (screen)->window_scale;
 +  return GDK_X11_SCREEN (screen)->width;
  }
  
- static gint
+ gint
  gdk_x11_screen_get_height (GdkScreen *screen)
  {
 -  return GDK_X11_SCREEN (screen)->height / GDK_X11_SCREEN (screen)->window_scale;
@@ -79,5 +79,5 @@ index 450872d99df56b79..1852a7dea2ad18e4 100644
  
  /*
 -- 
-2.10.0
+2.10.1
 

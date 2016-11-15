@@ -1,7 +1,7 @@
 # Maintainer: twilinx <twilinx@mesecons.net>
 
 pkgname=gtk3-typeahead
-pkgver=3.22.1+8+ge11df6c
+pkgver=3.22.3
 pkgrel=1
 conflicts=(gtk3)
 provides=("gtk3=$pkgver")
@@ -16,14 +16,14 @@ optdepends=('libcanberra: gtk3-widget-factory demo'
             'gtk3-print-backends: Printing')
 makedepends=(gobject-introspection libcanberra gtk-doc git colord rest libcups)
 license=(LGPL)
-_commit=e11df6cca0c400f964d815bbe575cf04cc178a7c  # gtk-3-22
+_commit=99fed96b4470cf02f8fa522551d2a05e01a1bf8a  # tags/3.22.3^0
 source=("git://git.gnome.org/gtk+#commit=$_commit"
         0001-gdkscreen-x11-Fix-screen-and-monitor-size-calculatio.patch
         settings.ini
         gtk-query-immodules-3.0.hook
         typeahead.patch)
 sha256sums=('SKIP'
-            '209fbfaa4b83daf5c249a1cb1a6762d607f6d63034e80e2324f2fb3586a4f348'
+            'f722a70cb1affac8bd054a43b726f57aba21d664144fcaf6d58f18e5bef78189'
             '01fc1d81dc82c4a052ac6e25bf9a04e7647267cc3017bc91f9ce3e63e5eb9202'
             'de46e5514ff39a7a65e01e485e874775ab1c0ad20b8e94ada43f4a6af1370845'
             'fc10c2ddef67e75cb83e64db1f6b9a8a127b3aaba931909a08f28b9d6ea415d0')
