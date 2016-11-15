@@ -1,0 +1,17 @@
+pkgbase = unuran
+	pkgdesc = A C library for generating non-uniform pseudorandom variates.
+	pkgver = 1.8.1
+	pkgrel = 1
+	url = http://statmath.wu.ac.at/unuran/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = make
+	depends = gsl
+	provides = unuran
+	options = !emptydirs
+	source = http://statmath.wu.ac.at/unuran/unuran-1.8.1.tar.gz
+	sha256sums = c270ae96857857dbac6450043df865e0517f52856ddbe5202fd35583b13c5193
+
+pkgname = unuran
+
