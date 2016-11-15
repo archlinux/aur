@@ -1,8 +1,7 @@
 # Maintainer: X0rg
 
 _gitname=darling
-pkgbase=$_gitname-mach-git
-pkgname=($_gitname-mach-git $_gitname-mach-dkms-git)
+pkgname=$_gitname-mach-git
 pkgver=r23.44cf244
 pkgrel=2
 pkgdesc="Darling's Linux kernel module (darling-mach)"
@@ -11,10 +10,8 @@ url="http://www.darlinghq.org"
 license=('GPL3')
 groups=('darling-git')
 makedepends=('git')
-source=('git+https://github.com/darlinghq/darling.git'
-        'dkms.conf')
-md5sums=('SKIP'
-         'ecdbe450d66128abda784cf6ec232f25')
+source=('git+https://github.com/darlinghq/darling.git')
+md5sums=('SKIP')
 
 pkgver() {
 	cd "$srcdir/$_gitname"
@@ -32,7 +29,7 @@ build() {
 	done
 }
 
-package_darling-mach-git() {
+package() {
 	install=$pkgname.install
 
 	cd "$srcdir/$_gitname/src/lkm"
@@ -43,27 +40,4 @@ package_darling-mach-git() {
 			make INSTALL_MOD_PATH="$pkgdir/usr" -C "$kernel/build" M=$PWD modules_install
 		fi
 	done
-}
-
-package_darling-mach-dkms-git() {
-	depends=('dkms')
-	optdepends=('linux-headers: Build the module for Arch kernel'
-	            'linux-lts-headers: Build the module for LTS Arch kernel')
-	conflicts=('darling-mach-git')
-	provides=('darling-mach-git')
-	_srcdest="$pkgdir/usr/src/darling-mach-$pkgver"
-
-	msg2 "Install module sources for DKMS..."
-	install -dm755 "$_srcdest"
-	cp -r "$srcdir/$_gitname/src/lkm"                        "$_srcdest"
-	cp -r "$srcdir/$_gitname/kernel-include"                 "$_srcdest"
-	cp -r "$srcdir/$_gitname/platform-include"               "$_srcdest"
-	cp -r "$srcdir/$_gitname/src/libc/include"               "$_srcdest/libc-include"
-	install -Dm644 "$srcdir/dkms.conf"                       "$_srcdest"
-
-	msg2 "Set configuration for DKMS..."
-	sed -i "s|/../../kernel-include|/../kernel-include|"     "$_srcdest/lkm/Makefile"
-	sed -i "s|/../../platform-include|/../platform-include|" "$_srcdest/lkm/Makefile"
-	sed -i "s|/../libc/include|/../libc-include|"            "$_srcdest/lkm/Makefile"
-	sed -i "s|@PKGVER@|$pkgver|g"                            "$_srcdest/dkms.conf"
 }
