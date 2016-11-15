@@ -40,18 +40,6 @@ build() {
 		  -DINSTALL_QPCV_PLUGIN=OFF \
 		  -DINSTALL_QDUMMY_PLUGIN=OFF \
 		  -DINSTALL_QSSAO_PLUGIN=OFF 
-
-  while true; do
-    read -p "Do you want to edit the cmake configuration? [y/N]" yn
- 	 yn=${yn:-n}
-    case $yn in
-       [Yy] )	cmake-gui .. 
-		  break;;
-       [Nn] )		  break;;
-#       * ) echo "Please answer y or n.";;
-    esac
-  done
-
   make -j$(nproc)
 }
 
