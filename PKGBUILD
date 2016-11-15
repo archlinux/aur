@@ -2,7 +2,7 @@
 pkgname=puush-qt
 pkgdesc="GUI frontend for puush which will create a system tray icon."
 pkgver=0.1
-pkgrel=3
+pkgrel=4
 arch=('i686' 'x86_64')
 url="https://github.com/jplsek/puush-qt"
 license=('BSD')
@@ -23,6 +23,6 @@ build() {
 
 package() {
 	cd $pkgname/build
-	install -D -m755 $pkgname "$pkgdir/usr/bin/$pkgname"
+	make INSTALL_ROOT=$pkgdir install
 }
 
