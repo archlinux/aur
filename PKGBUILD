@@ -4,7 +4,7 @@
 # The documentation fails to build right now
 
 pkgname=python-nss
-pkgver=1.0.0beta1
+pkgver=1.0.0
 pkgrel=1
 pkgdesc="Python 3 bindings for NSS and NSPR"
 arch=(i686 x86_64)
@@ -15,8 +15,8 @@ depends=(python nspr nss)
 makedepends=(python-setuptools)
 options=(!emptydirs)
 # Official mirror isn't working. We'll use Fedora's mirror
-source=("ftp://ftp.mozilla.org/pub/mozilla.org/security/python-nss/releases/PYNSS_RELEASE_${pkgver//./_}/src/python-nss-${pkgver}.tar.bz2")
-sha512sums=('acf3e119a2ceac7a939101ee45dede84c93f02f509f39d25a0f0c37ff2bd4628c6c4501175fbb188fa32e6899504a14ee0a54c885850d28373e7c467254277c0')
+source=("https://ftp.mozilla.org/pub/security/python-nss/releases/PYNSS_RELEASE_${pkgver//./_}/src/python-nss-${pkgver}.tar.bz2")
+sha512sums=('cf0ab25be1f31eca1e48253de43d8740556c9cb060ad13e6ab59bb277c8bb53d4e2d2d354ca23bcf178c5a522d01f5c1e00c4f473a2e3f8e9ab9eb5ec1677f99')
 
 build() {
   cd "python-nss-${pkgver}"
