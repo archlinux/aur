@@ -1,6 +1,6 @@
 pkgbase = nginx-nchan
 	pkgdesc = Nginx + Nchan - a flexible pub/sub server
-	pkgver = 1.10.1.nchan.1.0.3
+	pkgver = 1.10.2.nchan.1.0.5
 	pkgrel = 1
 	url = https://nchan.slact.net
 	arch = i686
@@ -27,12 +27,12 @@ pkgbase = nginx-nchan
 	backup = etc/nginx/conf/scgi_params
 	backup = etc/nginx/conf/uwsgi_params
 	backup = etc/logrotate.d/nginx
-	source = http://nginx.org/download/nginx-1.10.1.tar.gz
+	source = http://nginx.org/download/nginx-1.10.2.tar.gz
 	source = nginx.conf
 	source = nginx.logrotate
 	source = nginx.service
-	source = git+https://github.com/slact/nchan.git#tag=v1.0.3
-	md5sums = 088292d9caf6059ef328aa7dda332e44
+	source = git+https://github.com/slact/nchan.git#tag=v1.0.5
+	md5sums = e8f5f4beed041e63eb97f9f4f55f3085
 	md5sums = 845cab784b50f1666bbf89d7435ac7af
 	md5sums = 79031b58828462dec53a9faed9ddb36a
 	md5sums = 6696dc228a567506bca3096b5197c9db
