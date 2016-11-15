@@ -2,7 +2,7 @@
 
 pkgname=xflux-gui-git
 pkgver=r187.0b56204
-pkgrel=3
+pkgrel=4
 pkgdesc='Better lighting for Linux. Open source GUI for xflux'
 arch=(any)
 url='https://justgetflux.com/linux.html'
@@ -15,8 +15,7 @@ python2-pexpect
 python2-gconf
 xflux
 libindicator-gtk2
-# libappindicator-gtk2
-libappindicator-activate-gtk2 
+python2-libappindicator
 python2-xdg
 )
 makedepends=(git)
