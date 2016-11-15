@@ -47,8 +47,8 @@ _use_current=
 pkgname=(linux-ck linux-ck-headers)
 _kernelname=-ck
 _srcname=linux-4.8
-pkgver=4.8.7
-pkgrel=2
+pkgver=4.8.8
+pkgrel=1
 _ckpatchversion=7
 arch=('i686' 'x86_64')
 url="https://wiki.archlinux.org/index.php/Linux-ck"
@@ -68,7 +68,7 @@ source=("http://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
 'change-default-console-loglevel.patch')
 sha256sums=('3e9150065f193d3d94bcf46a1fe9f033c7ef7122ab71d75a7fb5a2f0c9a7e11a'
             'SKIP'
-            '94213e7557d192d1054e352aec18e93275ed5a84abe190d43fd43847d1d86efe'
+            '588b6537cb660c2f7d483aca13f7509a5fc86c60df32c167d40e81d6c7ab4f9c'
             'SKIP'
             '65a9a1d4ab050fa3c4d5640197d8e72dbe99a4464c97b607003729047f5b96da'
             'e1b8c54c3b81dfd526e24287436b16ec523715e6b3b96156c3e57af035ade127'
