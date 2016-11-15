@@ -3,12 +3,12 @@
 
 pkgname=cabal2arch
 pkgver=1.2
-pkgrel=4
+pkgrel=5
 pkgdesc="Create Arch Linux packages from Cabal packages."
 arch=('i686' 'x86_64')
 url="http://github.com/archhaskell/${pkgname}"
 license=("BSD3")
-depends=()
+depends=("wget")
 makedepends=("ghc"
              "haskell-archlinux"
              "haskell-cmdargs"
