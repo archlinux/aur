@@ -5,8 +5,8 @@
 # Contributor: Nathan Hulse <nat.hulse@gmail.com>
 
 pkgname=compiz
-pkgver=0.9.13.0
-pkgrel=8
+pkgver=0.9.13.1
+pkgrel=1
 pkgdesc="Composite manager for Aiglx and Xgl, with plugins and CCSM"
 arch=('i686' 'x86_64')
 url="https://launchpad.net/compiz"
@@ -21,15 +21,11 @@ provides=("compiz-core=${pkgver}" "compiz-bcop=${pkgver}" "ccsm=${pkgver}" "comp
 source=("https://launchpad.net/${pkgname}/${pkgver:0:6}/${pkgver}/+download/${pkgname}-${pkgver}.tar.bz2"
         "focus-prevention-disable.patch"
         "gtk-extents.patch"
-        "trailfocus-fix.patch"
-        "reverse-unity-config.patch"
-        "metacity322-branch-rollup.patch")
-sha256sums=('f08eb54d578be559e3e723f3fe4291a56f5c96b2fdfb9c9e74ebb6596a1ca702'
+        "reverse-unity-config.patch")
+sha256sums=('9854802ba2a072a497552a55cc03cce1e947ff68ed3755b484c218f688222cbf'
             'f4897590b0f677ba34767a29822f8f922a750daf66e8adf47be89f7c2550cf4b'
             '16ddb6311ce42d958505e21ca28faae5deeddce02cb558d55e648380274ba4d9'
-            '01e94ac52cd39eb5462a8505c7df61c7b14b05159de64f8700dfadb524bdb2ce'
-            '97778fde6eff779e10a03f5c03f26ffdda8bdb89091956fee19ce84d7d8c9ef9'
-            '4deb954e539853ab5297d0603b1dd7ce72361425d7d88e4e49c9351d91bf0a91')
+            '97778fde6eff779e10a03f5c03f26ffdda8bdb89091956fee19ce84d7d8c9ef9')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
@@ -49,12 +45,6 @@ prepare() {
 
   # Fix incorrect extents for GTK+ tooltips, csd etc
   patch -p1 -i "${srcdir}/gtk-extents.patch"
-
-  # Fix ambiguous function call in trailfocus plugin
-  patch -p1 -i "${srcdir}/trailfocus-fix.patch"
-
-  # Metacity 3.22 support
-  patch -p1 -i "${srcdir}/metacity322-branch-rollup.patch"
 }
 
 build() {
