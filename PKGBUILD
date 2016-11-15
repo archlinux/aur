@@ -5,8 +5,8 @@ _channel=developer
 
 _release_year=2016
 _release_month=11
-_release_day=13
-_release_time=00-40-06
+_release_day=14
+_release_time=00-40-05
 _release_version=51.0a2
 
 pkgname="${_name}-${_channel}-de"
@@ -35,6 +35,6 @@ package() {
   install -Dm644 $srcdir/vendor.js $pkgdir/opt/firefox-$_channel/browser/defaults/preferences/vendor.js
 }
 
-md5sums=('8b88a85429a20a5f3c360abd40e2a04c'
+md5sums=('a5d37f760eac91a3f18c3c7884974542'
          '5979b30b19cd645012ce518321fb16f1'
          '32618013911bf84445afce815e3875b1')
