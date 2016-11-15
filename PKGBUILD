@@ -5,7 +5,7 @@ _hkgname=archlinux
 
 pkgname=haskell-archlinux
 pkgver=1.3
-pkgrel=5
+pkgrel=6
 pkgdesc="Support for working with Arch Linux packages."
 arch=('i686' 'x86_64')
 url="https://github.com/archhaskell/archlinux"
@@ -19,7 +19,7 @@ backup=()
 options=('strip' 'staticlibs')
 install='INSTALL'
 changelog=()
-source=("http://hackage.haskell.org/packages/${_hkgname}-${pkgver}/${_hkgname}-${pkgver}.tar.gz"
+source=("http://hackage.haskell.org/package/${_hkgname}-${pkgver}/${_hkgname}-${pkgver}.tar.gz"
         "Hide_Data-Monoid_function.patch"
         "Add_FlexibleInstances.patch"
         "Adapt_to_Applicative-Monad.patch"

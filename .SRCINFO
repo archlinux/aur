@@ -1,7 +1,7 @@
 pkgbase = haskell-archlinux
 	pkgdesc = Support for working with Arch Linux packages.
 	pkgver = 1.3
-	pkgrel = 5
+	pkgrel = 6
 	url = https://github.com/archhaskell/archlinux
 	install = INSTALL
 	arch = i686
@@ -10,7 +10,7 @@ pkgbase = haskell-archlinux
 	depends = ghc
 	options = strip
 	options = staticlibs
-	source = http://hackage.haskell.org/packages/archlinux-1.3/archlinux-1.3.tar.gz
+	source = http://hackage.haskell.org/package/archlinux-1.3/archlinux-1.3.tar.gz
 	source = Hide_Data-Monoid_function.patch
 	source = Add_FlexibleInstances.patch
 	source = Adapt_to_Applicative-Monad.patch
