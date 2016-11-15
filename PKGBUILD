@@ -8,9 +8,8 @@ pkgdesc="A 3D point cloud (and triangular mesh) processing software"
 arch=('i686' 'x86_64')
 url="http://www.danielgm.net/cc/"
 license=('GPL2')
-depends=('qt4' 'glu' 'mesa')
-makedepends=('git' 'cmake' 'pcl')
-optdepends=('pcl')
+depends=('qt5-base' 'glu' 'mesa')
+makedepends=('git' 'cmake' 'pcl' 'doxygen')
 source=("git+https://github.com/cloudcompare/trunk")
 md5sums=('SKIP') 
 
