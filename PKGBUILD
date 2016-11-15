@@ -6,11 +6,11 @@ arch=('i686' 'x86_64')
 depends=('pcsclite' 'pcsc-tools' 'libusb-compat' 'openssh')
 makedepends=('libarchive')
 license=('custom')
-source_i686=('https://bitbucket.org/s3rj1k/etoken/raw/61f30bfcd0e0dbede3b888de09602a61a3653d64/Linux/Core/SafenetAuthenticationClient-core-9.0.43-0_i386.deb')
-source_x86_64=('https://bitbucket.org/s3rj1k/etoken/raw/61f30bfcd0e0dbede3b888de09602a61a3653d64/Linux/Core/SafenetAuthenticationClient-core-9.0.43-0_amd64.deb')
+source_i686=('http://packages.mirohost.net/etoken/Linux/Core/SafenetAuthenticationClient-core-9.0.43-0_i386.deb')
+source_x86_64=('http://packages.mirohost.net/etoken/Linux/Core/SafenetAuthenticationClient-core-9.0.43-0_amd64.deb')
 sha256sums_i686=('665cf6b1b1acdefdb6a3eca2845305c2ca03146e27fdf3c446ddcc0b5fe9d7da')
 sha256sums_x86_64=('43c0ddb2e4e7eaa2de530e5236661bef748401316679bc231a0620d89badbfdc')
-source+=('eToken.conf' 
+source+=('eToken.conf'
          'etoken.service'
          'etoken.module')
 sha256sums+=('85b850b820610e029428e577ca0e48f6fb7b4148ae8d702ca20b191963046c6c'
