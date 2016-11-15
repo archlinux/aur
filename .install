@@ -18,14 +18,18 @@ post_install() {
 
     chown -R rsd:rsd /usr/share/rserve-sandbox-docker
 
-    printf "\n\nYou can start and enable \
-rserve-sandbox-docker.service to run the server.\n\n"
+    printf "\n\n%s\n\n" "To initialize and download all the necessary \
+components you must run: \
+sudo -u rsd rserve-sandbox-docker -i"
+    printf "%s\n\n" "You can then start and enable \
+rserve-sandbox-docker.service to run the server."
 }
 
 post_remove() {
-    printf "\n\nTo remove images and containters: rm -rf /var/lib/docker \
+    printf "\n\n%s\n" "To remove images and containters: \
+rm -rf /var/lib/docker \
 as described in \
-https://docs.docker.com/engine/installation/linux/archlinux/#/uninstallation\n"
-    printf "You can also remove /home/rserve\n"
-    printf "as well as rserve and rsd users and groups.\n\n"
+<https://docs.docker.com/engine/installation/linux/archlinux/#/uninstallation>"
+    printf "%s\n\n" "You can also remove /home/rserve \
+as well as rserve and rsd users and groups."
 }
