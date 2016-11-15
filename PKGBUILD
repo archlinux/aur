@@ -11,10 +11,16 @@ pkgrel=1
 pkgdesc='A painless self-hosted Git service.'
 url='https://gitea.io/'
 license=('MIT')
-source=('git://github.com/go-gitea/gitea.git#branch=master' 'gitea.service.patch' 'app.ini')
+source=('git://github.com/go-gitea/gitea.git#branch=master'
+'gitea.service.patch'
+'app.ini'
+'gitea.sysusers'
+'gitea.tmpfiles')
 sha256sums=('SKIP'
             'f7b570315bd98a4e2d1c82ebdc2e78d76f6df49286ca4ac59cfb2b3f9985d1f9'
-            '3697c023a58737474d0a3dd815988516acca08324147edfb7035c46ba237219b')
+            '3697c023a58737474d0a3dd815988516acca08324147edfb7035c46ba237219b'
+            'd8efbf6f1e634548a3ee875c9a7444282966ffe76f2ed9532ee7b724a364264b'
+            '5631db5f47b41cdae180b98214e436856daec497949c68c1e13f70f12bbb855d')
 arch=('x86_64' 'i686')
 depends=('go' 'git')
 makedepends=('go' 'git' 'patch')
@@ -51,9 +57,12 @@ build() {
 
 package() {
   install -dm755 $pkgdir/var/lib/$_pkgname/{custom/conf,conf,data/{attachments,avatars,sessions,tmp},repo}
+  install -dm755 $pkgdir/var/log/gitea
   install -Dm755 "$srcdir/build/src/$_gourl/$_pkgname/$_pkgname" "$pkgdir/usr/bin/$_pkgname"
   install -Dm644 "$srcdir/build/src/$_gourl/$_pkgname/LICENSE" "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
   install -Dm644 "$srcdir/build/src/$_gourl/$_pkgname/scripts/systemd/gitea.service" "$pkgdir/usr/lib/systemd/system/gitea.service"
+  install -Dm644 "$srcdir/$_pkgname.sysusers" "$pkgdir/usr/lib/sysusers.d/gitea.conf"
+  install -Dm644 "$srcdir/$_pkgname.tmpfiles" "$pkgdir/usr/lib/tmpfiles.d/gitea.conf"
   install -Dm644 "$srcdir/app.ini" "$pkgdir/var/lib/$_pkgname/custom/conf/app.ini"
   cp -r $srcdir/build/src/$_gourl/$_pkgname/{conf,templates,public} $pkgdir/var/lib/$_pkgname
 }

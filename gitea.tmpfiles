@@ -1,0 +1,2 @@
+d /var/log/gitea 0755 gitea gitea -
+d /var/lib/gitea 0755 gitea gitea -

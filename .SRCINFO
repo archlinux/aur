@@ -23,9 +23,13 @@ pkgbase = gitea-git
 	source = git://github.com/go-gitea/gitea.git#branch=master
 	source = gitea.service.patch
 	source = app.ini
+	source = gitea.sysusers
+	source = gitea.tmpfiles
 	sha256sums = SKIP
 	sha256sums = f7b570315bd98a4e2d1c82ebdc2e78d76f6df49286ca4ac59cfb2b3f9985d1f9
 	sha256sums = 3697c023a58737474d0a3dd815988516acca08324147edfb7035c46ba237219b
+	sha256sums = d8efbf6f1e634548a3ee875c9a7444282966ffe76f2ed9532ee7b724a364264b
+	sha256sums = 5631db5f47b41cdae180b98214e436856daec497949c68c1e13f70f12bbb855d
 
 pkgname = gitea-git
 
