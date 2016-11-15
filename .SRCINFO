@@ -1,6 +1,6 @@
 pkgbase = firefox-nightly-zh-cn
 pkgdesc = Chinese Simplified For Firefox Nightly
-pkgver = 52.0a1
+pkgver = 53.0a1
 pkgrel = 1
 url = https://nightly.mozilla.org/
 install = firefox-nightly-zh-cn.install
