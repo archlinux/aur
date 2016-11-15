@@ -113,7 +113,6 @@ package() {
 
     chown -R ${web_user}:${web_user} "${pkgdir}/var/tmp/airtime"
     chown -R ${web_user}:${web_user} "${pkgdir}/var/log/airtime"
-    chown -R ${web_user}:${web_user} "${pkgdir}/etc/airtime"
     
 msg2 "Cleaning..."
     rm -r "${pkgdir}/etc/init"
