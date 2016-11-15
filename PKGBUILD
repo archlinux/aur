@@ -1,4 +1,4 @@
-# Maintainer: Luca Weiss <WEI16416 (at) spengergasse (dot) at>
+# Maintainer: Luca Weiss <luca (at) z3ntu (dot) xyz>
 
 pkgname=kde1-kdebase
 pkgver=1.1.2
