@@ -1,7 +1,7 @@
 pkgbase = rxvt-unicode-wcwidthcallback
 	pkgdesc = rxvt-unicode terminal emulator (urxvt) with wcwidth callback for better wide glyph handling of Xft fonts
 	pkgver = 9.22
-	pkgrel = 1
+	pkgrel = 2
 	url = http://software.schmorp.de/pkg/rxvt-unicode.html
 	arch = i686
 	arch = x86_64
@@ -26,7 +26,7 @@ pkgbase = rxvt-unicode-wcwidthcallback
 	sha1sums = cd204d608d114d39c80331efe0af0231ad6b7e18
 	sha1sums = b7fde1c46af45e831828738874f14b092b1e795f
 	sha1sums = dfbc8729c545105eff21e20ef3a4a3841a68a192
-	sha1sums = 1c138cb00670bbac7ef918d5f0050e17792bcbfb
+	sha1sums = af4cf72f84d07a35b7d99ab8030e7042450a305b
 
 pkgname = rxvt-unicode-wcwidthcallback
 

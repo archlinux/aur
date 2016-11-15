@@ -1,6 +1,6 @@
 diff --git a/README.md b/README.md
 new file mode 100644
-index 0000000..02243e9
+index 0000000..ef17fa7
 --- /dev/null
 +++ b/README.md
 @@ -0,0 +1,100 @@
@@ -49,8 +49,8 @@ index 0000000..02243e9
 +
 +See README.configure for the general/other options.
 +
-+A PKGBUILD for Arch is available at:
-+https://github.com/blueyed/PKGBUILD-rxvt-unicode-wcwidthcallback
++A package for Arch Linux is available in the AUR:
++https://aur.archlinux.org/packages/rxvt-unicode-wcwidthcallback
 +
 +### Setup
 +
@@ -713,10 +713,10 @@ index efb1509..24ea81e 100644
                       const text_t *text, int len,
 diff --git a/src/rxvtwcwidth.C b/src/rxvtwcwidth.C
 new file mode 100644
-index 0000000..21d949a
+index 0000000..da7c8bc
 --- /dev/null
 +++ b/src/rxvtwcwidth.C
-@@ -0,0 +1,209 @@
+@@ -0,0 +1,224 @@
 +/*
 + * Shared object to override wcwidth/wcswidth, which asks rxvt-unicode for the
 + * width of a char.
@@ -757,6 +757,21 @@ index 0000000..21d949a
 +
 +int _wcwidth(wchar_t c)
 +{
++  int orig_width;
++
++  // Handle zero-width combining characters (e.g. \u0301) properly first,
++  // but calling the original wcwidth(3).
++  // This is used by zsh's ./configure to detect brokwn wcwidth.  We would
++  // report 1 for it via e.g. "DejaVu Sans Mono".
++  orig_width = orig_wcwidth(c);
++  if (orig_width < 1)
++  {
++#ifdef DEBUG_WCWIDTH_CLIENT
++    fprintf(stderr, "_wcwidth: using orig_width for %lc: %i\n", c, orig_width);
++#endif
++    return orig_width;
++  }
++
 +  const char *wcwidth_socket_name = getenv("RXVT_WCWIDTH_SOCKET");
 +  if (!wcwidth_socket_name)
 +  {
@@ -768,14 +783,14 @@ index 0000000..21d949a
 +#endif
 +    }
 +    SOCKET_STATUS = 0;
-+    return orig_wcwidth(c);
++    return orig_width;
 +  }
 +  /*
 +   * connect errors etc, allowing to re-activate by via setting and unsetting
 +   * the socket name.
 +   */
 +  if (SOCKET_STATUS == -2)
-+    return orig_wcwidth(c);
++    return orig_width;
 +
 +  if (SOCKET_STATUS == 0)
 +  {
@@ -800,7 +815,7 @@ index 0000000..21d949a
 +  if (wcwidth_socket_fd == -1) {
 +    perror("wcwidth: could not open socket");
 +    SOCKET_STATUS = -2;
-+    return orig_wcwidth(c);
++    return orig_width;
 +  }
 +
 +  /* Bind socket to socket name. */
@@ -857,7 +872,7 @@ index 0000000..21d949a
 +        }
 +        SOCKET_STATUS = -2;
 +        close(wcwidth_socket_fd);
-+        return orig_wcwidth(c);
++        return orig_width;
 +      } while (1);
 +    }
 +    else
@@ -866,7 +881,7 @@ index 0000000..21d949a
 +          wcwidth_socket_name, strerror(errno));
 +      SOCKET_STATUS = -2;
 +      close(wcwidth_socket_fd);
-+      return orig_wcwidth(c);
++      return orig_width;
 +    }
 +  }
 +  fcntl(wcwidth_socket_fd, F_SETFL, orig_flags);
@@ -879,7 +894,7 @@ index 0000000..21d949a
 +  int width;
 +  if (ret == -1) {
 +    perror("write");
-+    width = orig_wcwidth(c);
++    width = orig_width;
 +  }
 +  else
 +  {
@@ -890,7 +905,7 @@ index 0000000..21d949a
 +    if (ret == -1)
 +    {
 +        perror("read");
-+        width = orig_wcwidth(c);
++        width = orig_width;
 +    }
 +    else
 +    {

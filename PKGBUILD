@@ -18,7 +18,7 @@
 _pkgname=rxvt-unicode
 pkgname=rxvt-unicode-wcwidthcallback
 pkgver=9.22
-pkgrel=1
+pkgrel=2
 pkgdesc='rxvt-unicode terminal emulator (urxvt) with wcwidth callback for better wide glyph handling of Xft fonts'
 arch=('i686' 'x86_64')
 url='http://software.schmorp.de/pkg/rxvt-unicode.html'
@@ -41,7 +41,7 @@ sha1sums=('e575b869782fbfed955f84f48b204ec888d91ba1'
           'cd204d608d114d39c80331efe0af0231ad6b7e18'
           'b7fde1c46af45e831828738874f14b092b1e795f'
           'dfbc8729c545105eff21e20ef3a4a3841a68a192'
-          '1c138cb00670bbac7ef918d5f0050e17792bcbfb')
+          'af4cf72f84d07a35b7d99ab8030e7042450a305b')
 
 prepare() {
   cd $_pkgname-$pkgver
