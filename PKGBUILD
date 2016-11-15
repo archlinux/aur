@@ -5,8 +5,8 @@
 
 pkgname='lxpanel-multiload-ng-plugin-gtk3-git'
 pkgdesc='Modern graphical system monitor, LxPanel plugin'
-pkgver=r899.0c18e54
-pkgrel=2
+pkgver=r907.66045e6
+pkgrel=1
 
 makedepends=('intltool' 'git')
 depends=('gtk3' 'cairo' 'lxpanel-gtk3>=0.5.8')
