@@ -1,6 +1,6 @@
 pkgbase = git-series
 	pkgdesc = Git extension that tracks changes to a patch series over time
-	pkgver = 0.8.10
+	pkgver = 0.9.0
 	pkgrel = 1
 	url = http://github.com/git-series/git-series
 	arch = i686
@@ -9,7 +9,7 @@ pkgbase = git-series
 	makedepends = rust
 	makedepends = cargo
 	depends = git
-	source = https://github.com/git-series/git-series/archive/0.8.10.tar.gz
+	source = https://github.com/git-series/git-series/archive/0.9.0.tar.gz
 	sha256sums = d70c9a2105c69fdd6059c04285ddb74b3b10852d9729dd8a14681b9bf36790be
 
 pkgname = git-series

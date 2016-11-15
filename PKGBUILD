@@ -1,7 +1,7 @@
 # Maintainer: Abdó Roig-Maranges <abdo.roig@gmail.com>
 
 pkgname=git-series
-pkgver=0.8.10
+pkgver=0.9.0
 pkgrel=1
 pkgdesc="Git extension that tracks changes to a patch series over time"
 arch=('i686' 'x86_64')
