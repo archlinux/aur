@@ -7,7 +7,7 @@
 pkgname=root-extra
 _pkgname=root
 pkgver=6.08.00
-pkgrel=1
+pkgrel=2
 provides=('root')
 conflicts=('root')
 pkgdesc='C++ data analysis framework and interpreter from CERN with extra features enabled.'
@@ -28,7 +28,7 @@ depends=('cfitsio'
 'libiodbc'
 'libmysqlclient'
 'postgresql-libs'
-'pythia'
+'pythia8'
 'python'
 'sqlite'
 'tex-gyre-fonts'  # solve the pixelized font problem as per Arch Wiki
