@@ -1,7 +1,7 @@
 # Maintainer: Vaporeon <vaporeon@tfwno.gf>
 
 pkgname=bsnes-plus-git
-pkgver=0.73r163.a55717a
+pkgver=0.73r252.701e7fd
 pkgrel=1
 pkgdesc='debug-oriented fork of bsnes v073'
 arch=('i686' 'x86_64')
@@ -22,7 +22,7 @@ pkgver() {
 }
 
 build() {
-  export QT_SELECT=4
+  export PATH=/usr/lib/qt4/bin/:$PATH
 
   cd "${srcdir}"/bsnes-plus/bsnes
 
