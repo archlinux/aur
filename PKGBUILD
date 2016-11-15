@@ -38,9 +38,6 @@ build() {
         ../extempore
 
   make extempore aot_extended assets
-
-  cd "${srcdir}/extempore/docs"
-  make man
 }
 
 package() {
@@ -51,9 +48,6 @@ package() {
   # emacs and vim files
   install -D "${srcdir}/extempore/extras/extempore.el" "${pkgdir}/usr/share/emacs/site-lisp/extempore/extempore.el"
   install -D "${srcdir}/extempore/extras/extempore.vim" "${pkgdir}/usr/share/vim/vimfiles/plugin/extempore.vim"
-
-  # manual page
-  install -D "${srcdir}/extempore/docs/_build/man/extempore.1" "${pkgdir}/usr/share/man/man1/extempore.1"
 
   install -d "${pkgdir}/usr/bin"
   ln -s /opt/extempore/extempore "${pkgdir}/usr/bin/extempore"
