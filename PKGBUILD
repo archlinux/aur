@@ -1,7 +1,7 @@
 # Contributor: gucong <gucong43216@gmail.com>
 pkgname=ibus-table-taiji
 _gitname="ibus-table-taiji"
-pkgver=dea55650
+pkgver=dea5565
 pkgrel=1
 pkgdesc="The Taiji (Chinese) Input Method for IBus Table"
 arch=('i686' 'x86_64')
