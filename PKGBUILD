@@ -1,4 +1,4 @@
-# $Id: PKGBUILD 185286 2016-08-05 12:21:10Z andyrtr $
+# $Id: PKGBUILD 192868 2016-10-21 13:33:26Z ronald $
 # Maintainer: Jaroslav Lichtblau <svetlemodry@archlinux.org>
 # Contributor: dibblethewrecker dibblethewrecker.at.jiwe.dot.org
 # Contributor: William Rea <sillywilly@gmail.com>
@@ -6,20 +6,20 @@
 pkgname=gdal-hdf4
 _pkgname=gdal
 pkgver=2.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A translator library for raster geospatial data formats, with support to HDF4 format (required to use MODIStsp tool: http://github.com/lbusett/MODIStsp)"
 arch=('i686' 'x86_64')
 url="http://www.gdal.org/"
 license=('custom')
-depends=('curl' 'geos' 'giflib' 'hdf5' 'libgeotiff' 'libjpeg-turbo' 'libpng' 'libspatialite' 'libtiff' 'netcdf' 'hdf4-nonetcdf'
-         'openjpeg2' 'poppler' 'python2' 'python2-numpy' 'cfitsio' 'sqlite' 'libmariadbclient' 'postgresql-libs')
+depends=('curl' 'geos' 'giflib' 'hdf5' 'libgeotiff' 'libjpeg-turbo' 'libpng' 'libspatialite' 'libtiff' 'netcdf'
+         'openjpeg2' 'poppler' 'python2' 'python2-numpy' 'cfitsio' 'sqlite' 'libmariadbclient' 'postgresql-libs' 'hdf4-nonetcdf')
 makedepends=('perl' 'swig' 'chrpath' 'doxygen')
 optdepends=('postgresql: postgresql database support'
             'mariadb: mariadb database support'
             'perl:  perl binding support')
+options=('!emptydirs')
 provides=('gdal')
 conflicts=('gdal')
-options=('!emptydirs')
 changelog=$_pkgname.changelog
 source=(http://download.osgeo.org/${_pkgname}/${pkgver}/${_pkgname}-${pkgver}.tar.xz)
 sha256sums=('87ce516ce757ad1edf1e21f007fbe232ed2e932af422e9893f40199711c41f92')
