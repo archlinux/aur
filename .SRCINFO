@@ -1,7 +1,7 @@
 pkgbase = megamario
 	pkgdesc = A Super Mario Bros. clone
 	pkgver = 1.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://sourceforge.net/projects/mmario
 	arch = i686
 	arch = x86_64

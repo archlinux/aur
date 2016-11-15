@@ -2,7 +2,7 @@
 
 pkgname=megamario
 pkgver=1.7
-pkgrel=1
+pkgrel=2
 pkgdesc="A Super Mario Bros. clone"
 arch=('i686' 'x86_64')
 url="https://sourceforge.net/projects/mmario"
@@ -35,4 +35,6 @@ package() {
 
   install -Dm644 megamario.desktop "$pkgdir"/usr/share/applications/megamario.desktop
   install -Dm644 megamario.png "$pkgdir"/usr/share/pixmaps/megamario.png
+
+  install -m644 CONTROLS.txt readme.txt "$pkgdir"/usr/share/megamario
 }
