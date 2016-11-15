@@ -1,0 +1,20 @@
+pkgbase = pythia8
+	pkgdesc = Generation of high-energy physics events.
+	pkgver = 8.2.19
+	pkgrel = 3
+	url = http://home.thep.lu.se/Pythia/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = bash
+	depends = boost-libs
+	provides = pythia
+	conflicts = pythia
+	options = !emptydirs
+	source = http://home.thep.lu.se/~torbjorn/pythia8/pythia8219.tgz
+	source = pythia.sh
+	md5sums = 3459b52b5da1deae52cbddefa6196feb
+	md5sums = 0320534e1be7155cfb8ee19c7f8480cc
+
+pkgname = pythia8
+
