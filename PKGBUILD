@@ -1,16 +1,16 @@
 # Maintainer: muttleyxd <muttdini[ at ]gmail.com>
 pkgname=arma3-linux-launcher-git
-pkgver=18.f859031
+pkgver=23.245a237
 pkgrel=1
-pkgdesc="Advanced launcher for ArmA 3 Linux version"
+pkgdesc="Advanced launcher for ArmA 3 on Linux"
 arch=('i686' 'x86_64')
-url="https://github.com/muttleyxd/arma3-linux-launcher"
+url="https://github.com/muttleyxd/arma3-unix-launcher"
 license=('MIT')
 depends=('gtkmm3' 'steam')
 makedepends=('cmake' 'git')
-provides=('arma3-linux-launcher')
-conflicts=('arma3-linux-launcher')
-source=("$pkgname::git://github.com/muttleyxd/arma3-linux-launcher.git")
+provides=('arma3-unix-launcher')
+conflicts=('arma3-unix-launcher')
+source=("$pkgname::git://github.com/muttleyxd/arma3-unix-launcher.git")
 md5sums=('SKIP')
 
 pkgver() 
