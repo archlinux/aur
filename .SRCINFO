@@ -1,7 +1,7 @@
 pkgbase = lxpanel-multiload-ng-plugin-gtk2
 	pkgdesc = Modern graphical system monitor, LxPanel plugin
-	pkgver = 1.4.2
-	pkgrel = 2
+	pkgver = 1.5.0
+	pkgrel = 1
 	url = https://udda.github.io/multiload-ng/
 	arch = i686
 	arch = x86_64
@@ -14,8 +14,8 @@ pkgbase = lxpanel-multiload-ng-plugin-gtk2
 	conflicts = lxpanel-multiload-ng-plugin-gtk2-git
 	conflicts = lxpanel-multiload-ng-plugin-gtk3-git
 	replaces = lxpanel-multiload-ng-applet-gtk2
-	source = https://github.com/udda/multiload-ng/archive/v1.4.2.tar.gz
-	md5sums = 3c17d8483bc874b20c877a7d7897ab5e
+	source = https://github.com/udda/multiload-ng/archive/v1.5.0.tar.gz
+	md5sums = b42140a47788cc5cdbd46fbbfab9e644
 
 pkgname = lxpanel-multiload-ng-plugin-gtk2
 
