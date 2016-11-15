@@ -5,7 +5,7 @@ _hkgname=archlinux
 
 pkgname=haskell-archlinux
 pkgver=1.3
-pkgrel=4
+pkgrel=5
 pkgdesc="Support for working with Arch Linux packages."
 arch=('i686' 'x86_64')
 url="https://github.com/archhaskell/archlinux"
@@ -16,7 +16,7 @@ provides=()
 conflicts=()
 replaces=()
 backup=()
-options=()
+options=('strip' 'staticlibs')
 install='INSTALL'
 changelog=()
 source=("http://hackage.haskell.org/packages/${_hkgname}-${pkgver}/${_hkgname}-${pkgver}.tar.gz"
