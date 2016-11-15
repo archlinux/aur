@@ -1,29 +1,36 @@
-# Maintainer: acounto <acounto@kamikakushi.net>
+# Maintainer: Que Quotion <quequotion@bugmenot.com>
+# Contributor: acounto <acounto@kamikakushi.net>
 
-pkgname=b25
-pkgver=0.2.4
-_foldername=pt1-c44e16dbb0e2
+pkgname=b25-stz-git
+pkgver=0.2.5
 pkgrel=1
-pkgdesc="ARIB B25 test program for Linux , based on a test program written by Kazuhiro MOGI."
+pkgdesc="ARIB25 test program and library (modified by stz2012)"
 groups=('earthsoft')
 arch=('i686' 'x86_64')
 url="http://hg.honeyplanet.jp/pt1/"
 license=('custom')
+provides=('b25')
+conflicts=('b25')
 depends=('pcsclite')
-source=('http://hg.honeyplanet.jp/pt1/archive/c44e16dbb0e2.tar.bz2' 'Makefile.patch')
-md5sums=('805e4c7778e88521847b105eaf0b3e56'
-         '6c4650ffb526d302b05ac9c7fc8a7633')
+optdepends=('recpt1-stz-git: Earthsoft PT-Series controller')
+source=('git+https://github.com/stz2012/libarib25.git'
+        'Makefile.patch')
+md5sums=('SKIP'
+         'e0d04b07c8187bd9fc3b144215591cbd')
+
+prepare() {
+  cd libarib25
+  patch -Np2 < ../Makefile.patch
+}
 
 build() {
-  patch -p0 -i $srcdir/Makefile.patch
-  cd $srcdir/$_foldername/arib25/src
+  cd libarib25/src
   make PREFIX=/usr
 }
 
 package() {
-  cd $srcdir/$_foldername/arib25/src
-  mkdir -p ${pkgdir}/usr/lib
-  mkdir -p ${pkgdir}/usr/bin
+  cd libarib25/src
+  mkdir -p ${pkgdir}/usr/{lib,bin}
   make PREFIX="${pkgdir}/usr" install
   make PREFIX="${pkgdir}/usr" install-headers
 }
