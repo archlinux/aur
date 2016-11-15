@@ -1,0 +1,15 @@
+pkgbase = numix-square-icon-theme
+	pkgdesc = A square-ish shaped icon theme from the Numix Project
+	pkgver = 16.11.09
+	pkgrel = 1
+	url = https://numixproject.org/
+	arch = any
+	license = GPL3
+	depends = numix-icon-theme-git
+	conflicts = numix-square-icon-theme-git
+	options = !strip
+	source = https://github.com/numixproject/numix-icon-theme-square/archive/16-11-09.tar.gz
+	sha256sums = 319569f996923f4e21f1aaff57db58e76e79df8542b4b31b217b7b2a43723dba
+
+pkgname = numix-square-icon-theme
+
