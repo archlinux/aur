@@ -1,0 +1,23 @@
+pkgbase = maven-team
+	pkgdesc = Takari Extensions for Apache Maven
+	pkgver = 1
+	pkgrel = 1
+	url = http://takari.io/book/30-team-maven.html
+	arch = any
+	license = Apache
+	depends = maven
+	provides = maven-team
+	conflicts = maven-team-git
+	noextract = takari-filemanager-0.8.3.jar
+	noextract = takari-smart-builder-0.4.1.jar
+	noextract = takari-local-repository-0.11.2.jar
+	options = !strip
+	source = http://repo1.maven.org/maven2/io/takari/takari-filemanager/0.8.3/takari-filemanager-0.8.3.jar
+	source = http://repo1.maven.org/maven2/io/takari/maven/takari-smart-builder/0.4.1/takari-smart-builder-0.4.1.jar
+	source = http://repo1.maven.org/maven2/io/takari/aether/takari-local-repository/0.11.2/takari-local-repository-0.11.2.jar
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = maven-team
+
