@@ -6,7 +6,7 @@ groups=('zarafa'
 	'kopano'
 	'zarafa-webapp-plugins')
 pkgver=1.1.0.49
-pkgrel=74
+pkgrel=75
 pkgdesc='Mdm plugin for Zarafa Webapp'
 arch=('any')
 source=("https://download.zarafa.com/community/beta/WebApp/plugins/MDM/1.1/beta1/fedora-22/zarafa-webapp-plugins-mdm-1.1.0-49.1.noarch.rpm"
