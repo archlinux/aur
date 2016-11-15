@@ -5,8 +5,8 @@
 
 pkgname='multiload-ng-standalone-gtk3-git'
 pkgdesc='Modern graphical system monitor, standalone version'
-pkgver=r899.0c18e54
-pkgrel=2
+pkgver=r907.66045e6
+pkgrel=1
 
 makedepends=('intltool' 'git')
 depends=('gtk3' 'cairo')
