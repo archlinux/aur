@@ -2,7 +2,7 @@
 
 pkgname=bsnes-plus-git
 pkgver=0.73r252.701e7fd
-pkgrel=1
+pkgrel=2
 pkgdesc='debug-oriented fork of bsnes v073'
 arch=('i686' 'x86_64')
 url='https://github.com/devinacker/bsnes-plus'
@@ -22,7 +22,7 @@ pkgver() {
 }
 
 build() {
-  export PATH=/usr/lib/qt4/bin/:$PATH
+  export qtpath=/usr/lib/qt4
 
   cd "${srcdir}"/bsnes-plus/bsnes
 
