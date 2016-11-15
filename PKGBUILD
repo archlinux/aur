@@ -26,9 +26,9 @@ build() {
   mkdir -p build && cd build
  
   cmake .. \
-     	  -DCMAKE_BUILD_TYPE=Release \
-		  -DCMAKE_INSTALL_PREFIX=/opt \
-	     -DBUILD_QPCL_PLUGIN_DOCUMENTATION=ON \
+     	          -DCMAKE_BUILD_TYPE=Release \
+		  -DCMAKE_INSTALL_PREFIX=/usr \
+	          -DBUILD_QPCL_PLUGIN_DOCUMENTATION=ON \
 	  	  -DINSTALL_QPCL_PLUGIN=ON \
 		  -DINSTALL_QSRA_PLUGIN=OFF \
 		  -DINSTALL_QPOISSON_RECON_PLUGIN=OFF \
