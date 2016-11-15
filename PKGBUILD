@@ -3,7 +3,7 @@
 
 _pkgbase=xorg-server
 pkgname=('xorg-server-dev' 'xorg-server-xephyr-dev' 'xorg-server-xdmx-dev' 'xorg-server-xvfb-dev' 'xorg-server-xnest-dev' 'xorg-server-xwayland-dev' 'xorg-server-common-dev' 'xorg-server-devel-dev')
-pkgver=1.18.99.902 # 1.19-RC2: https://lists.x.org/archives/xorg/2016-October/058420.html
+pkgver=1.19.0 # http://lists.x.org/archives/xorg/2016-November/058437.html
 pkgrel=1
 arch=('i686' 'x86_64')
 license=('custom')

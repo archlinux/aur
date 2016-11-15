@@ -1,5 +1,5 @@
 pkgbase = xorg-server-dev
-	pkgver = 1.18.99.902
+	pkgver = 1.19.0
 	pkgrel = 1
 	url = http://xorg.freedesktop.org
 	arch = i686
@@ -54,8 +54,8 @@ pkgbase = xorg-server-dev
 	makedepends = libunwind
 	makedepends = xfont2-git
 	makedepends = wayland-protocols	
-	source = http://xorg.freedesktop.org/releases/individual/xserver/xorg-server-1.18.99.902.tar.bz2
-	source = http://xorg.freedesktop.org/releases/individual/xserver/xorg-server-1.18.99.902.tar.bz2.sig
+	source = http://xorg.freedesktop.org/releases/individual/xserver/xorg-server-1.19.0.tar.bz2
+	source = http://xorg.freedesktop.org/releases/individual/xserver/xorg-server-1.19.0.tar.bz2.sig
 	source = xvfb-run
 	source = xvfb-run.1
 	sha256sums = f0c27ae3d20474674708d19b888f5d11c25c811e7ed8dba4e6318d581727e91f
