@@ -2,7 +2,7 @@
 # Contributor: acounto <acounto@kamikakushi.net>
 
 pkgname=b25-stz-git
-pkgver=0.2.5
+pkgver=0.2.5.09770e3
 pkgrel=1
 pkgdesc="ARIB25 test program and library (modified by stz2012)"
 groups=('earthsoft')
@@ -17,6 +17,11 @@ source=('git+https://github.com/stz2012/libarib25.git'
         'Makefile.patch')
 md5sums=('SKIP'
          'e0d04b07c8187bd9fc3b144215591cbd')
+
+pkgver() {
+  cd libarib25
+  echo "0.2.5.$(git rev-parse --short HEAD)"
+}
 
 prepare() {
   cd libarib25
