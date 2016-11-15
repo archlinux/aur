@@ -1,4 +1,4 @@
-# Maintainer: Luca Weiss <WEI16416 (at) spengergasse (dot) at>
+# Maintainer: Luca Weiss <luca (at) z3ntu (dot) xyz>
 
 pkgname=qt1
 pkgver=1.45
