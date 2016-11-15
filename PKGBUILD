@@ -1,7 +1,7 @@
 pkgname=luaposix
-pkgver=33.3.1
+pkgver=33.4.0
 pkgrel=1
-pkgdesc="Lua bindings for POSIX APIs and curses"
+pkgdesc="Lua bindings for POSIX APIs"
 arch=('i686' 'x86_64')
 url="https://luaposix.github.io/luaposix"
 license=('custom')
@@ -9,7 +9,7 @@ depends=('lua')
 makedepends=('luarocks')
 conflicts=()
 source=("https://luarocks.org/$pkgname-$pkgver-$pkgrel.src.rock")
-sha512sums=('e8a964ba93f3fd36e1582d068d06954f948e0cef184772bffe34291f16fb09c7e6a773327a68d5f9c49380b2ba32b0e5d8b1697e3d46bb4732221b22009f293e')
+sha512sums=('eca56c9e0e465c3b6d22b4bf41ead48d5b70201dbbabd72ee31f1866a25419e35f797ca5bc4b42727f9193b4481aca4d3eeb4489f206af951eb31cc7bf71bcde')
 
 package() {
   luarocks --tree="$pkgdir/usr" install "$pkgname-$pkgver-$pkgrel.src.rock"
