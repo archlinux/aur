@@ -1,0 +1,7 @@
+post_install() {
+    echo 'In order to use sonar-scanner, you have to run the'
+    echo 'following commands or re-login:'
+    echo
+    echo 'setenv SONAR_SCANNER_HOME "/opt/sonar-scanner"'
+    echo 'setenv PATH "${PATH}:${SONAR_SCANNER_HOME}/bin"'
+}
