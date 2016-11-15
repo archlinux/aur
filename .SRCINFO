@@ -1,7 +1,7 @@
 pkgbase = discord-canary
 	pkgdesc = Discord Canary linux release
 	pkgver = 0.0.11
-	pkgrel = 1
+	pkgrel = 2
 	url = https://discordapp.com/
 	install = DiscordCanary.install
 	arch = x86_64
