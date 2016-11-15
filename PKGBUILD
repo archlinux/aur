@@ -1,7 +1,7 @@
 # Maintainer: scan
 
 pkgname=dark-aurora-theme
-pkgver=3.20
+pkgver=3.20_3.22
 pkgrel=20161112
 pkgdesc="Dark Aurora Theme GNOME 3.20/3.22"
 arch=('any')
