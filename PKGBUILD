@@ -2,7 +2,7 @@
 # Contributor: Jakob Gahde <j5lx@fmail.co.uk>
 
 pkgname=radium
-pkgver=4.2.6
+pkgver=4.2.7
 pkgrel=1
 pkgdesc="A graphical music editor. A next generation tracker."
 arch=('i686' 'x86_64')
@@ -35,13 +35,11 @@ makedepends=(
 )
 options=(!strip)
 source=("https://github.com/kmatheussen/${pkgname}/archive/${pkgver}.tar.gz"
-        "https://github.com/kmatheussen/radium/commit/3d012688b2ae763d07b489ac8feb2ded619f7b80.patch"
         "faust-accept-clang-390.patch"
         "dont-empty-qt-library-paths.patch"
         "use-gcc5-for-pluginhost.patch"
         "use-system-vstsdk.patch")
-md5sums=('a6d45735ea5079302b6a87d63dcdd70b'
-         'e36c058b57be5835b49e02b468d3852a'
+md5sums=('26038c402857fdb314eb29cb74dcac88'
          '9c72bd466ead73e36b0c2d4297d76870'
          '77c202bc0a36562eb7b805ad6b7a85b3'
          '9c19006defeef7e317ec23ed8eae1b72'
@@ -49,9 +47,6 @@ md5sums=('a6d45735ea5079302b6a87d63dcdd70b'
 
 prepare() {
     cd "${pkgname}-${pkgver}"
-
-    # See https://groups.google.com/d/msg/radium-music-editor/Mt2-JLA7L0o/p3E8TdmrBQAJ
-    patch -Np1 < "${srcdir}/3d012688b2ae763d07b489ac8feb2ded619f7b80.patch"
 
     # Fix faust2 compilation on llvm 3.9.0
     patch -Np1 < "${srcdir}/faust-accept-clang-390.patch"
