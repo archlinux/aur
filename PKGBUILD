@@ -1,7 +1,7 @@
-# Maintainer: Vaporeon <vaporeon@tfwno.gf>
+# Maintainer: Vaporeon <vaporeon@vaporeon.io>
 
 pkgname=bsnes-classic-git
-pkgver=0.73r75.fb26195
+pkgver=0.73r83.038e2e0
 pkgrel=1
 pkgdesc='SNES emulator with Qt GUI and debugger'
 arch=('i686' 'x86_64')
@@ -22,7 +22,7 @@ pkgver() {
 }
 
 build() {
-  export QT_SELECT=4
+  export qtpath=/usr/lib/qt4/
 
   cd "${srcdir}"/bsnes-classic/bsnes
 
