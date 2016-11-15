@@ -1,0 +1,39 @@
+	From 1465fb6a5a6e033b958bd6ef06a6d6fee1a70500 Mon Sep 17 00:00:00 2001
+From: Raphael Costa <raphael_costa@ymail.com>
+Date: Sun, 4 Sep 2016 12:15:48 -0300
+Subject: [PATCH] Fix script
+
+---
+ backlight | 10 +++++-----
+ 1 file changed, 5 insertions(+), 5 deletions(-)
+
+diff --git a/backlight b/backlight
+index 0437456..647ff8d 100755
+--- a/backlight
++++ b/backlight
+@@ -7,9 +7,9 @@
+ start() {
+     ebegin 'Restoring the screen brightness'
+     
+-    for card in `basename $(find /sys/class/backlight/ -type l)`; do
+-        if [[ -r "/var/cache/backlight/$card-brightness-old" ]]; then
+-            cp "/var/cache/backlight/$card-brightness-old" "/sys/class/backlight/$card/brightness"
++    for card in `find /sys/class/backlight/ -type l`; do
++        if [[ -r "/var/cache/backlight/`basename $card`-brightness-old" ]]; then
++            cp "/var/cache/backlight/`basename $card`-brightness-old" "/sys/class/backlight/`basename $card`/brightness"
+         fi
+     done
+ 
+@@ -25,8 +25,8 @@ stop() {
+         chmod 755 '/var/cache/backlight/'
+     fi
+     
+-    for card in `basename $(find /sys/class/backlight/ -type l)`; do
+-        cp "/sys/class/backlight/$card/brightness" "/var/cache/backlight/$card-brightness-old"
++    for card in `find /sys/class/backlight/ -type l`; do
++        cp "/sys/class/backlight/`basename $card`/brightness" "/var/cache/backlight/`basename $card`-brightness-old"
+     done
+     eend $?
+ }
+-- 
+2.9.3
