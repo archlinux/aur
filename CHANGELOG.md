@@ -1,7 +1,10 @@
 # Change Log
 
-## [1.0.1](https://github.com/ari-zah/gaiasky/tree/1.0.1) (2016-11-11)
-[Full Changelog](https://github.com/ari-zah/gaiasky/compare/1.0.0...1.0.1)
+## [v1.0.2](https://github.com/ari-zah/gaiasky/tree/v1.0.2) (2016-11-14)
+[Full Changelog](https://github.com/ari-zah/gaiasky/compare/v1.0.1...v1.0.2)
+
+## [v1.0.1](https://github.com/ari-zah/gaiasky/tree/v1.0.1) (2016-11-11)
+[Full Changelog](https://github.com/ari-zah/gaiasky/compare/v1.0.0...v1.0.1)
 
 **Implemented enhancements:**
 
@@ -27,8 +30,8 @@
 - Gaia Sky crashes on Windows 10, Java 1.8.0\_101 [\#79](https://github.com/ari-zah/gaiasky/issues/79)
 - Please consider uploading gaiasandbox to Debian [\#39](https://github.com/ari-zah/gaiasky/issues/39)
 
-## [1.0.0](https://github.com/ari-zah/gaiasky/tree/1.0.0) (2016-09-13)
-[Full Changelog](https://github.com/ari-zah/gaiasky/compare/0.800b...1.0.0)
+## [v1.0.0](https://github.com/ari-zah/gaiasky/tree/v1.0.0) (2016-09-13)
+[Full Changelog](https://github.com/ari-zah/gaiasky/compare/0.800b...v1.0.0)
 
 **Implemented enhancements:**
 
