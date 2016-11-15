@@ -3,8 +3,9 @@
 # Contributor: kusakata <shohei atmark kusakata period com>
 
 pkgname=openspades-git
-pkgver=0.0.12.86.g86de403
-pkgrel=3
+_pkgname=openspades
+pkgver=0.0.12.155.gb6d4a50
+pkgrel=1
 pkgdesc="A clone of Voxlap Ace of Spades 0.75 (git version)"
 arch=('i686' 'x86_64')
 url="https://github.com/yvt/openspades"
@@ -24,7 +25,10 @@ pkgver() {
 
 build() {
   cd "$pkgname"
-  cmake -D CMAKE_INSTALL_PREFIX=/usr -D CMAKE_BUILD_TYPE=Release -D OPENSPADES_RESDIR=/usr/share/openspades-git/Resources -D OPENSPADES_INSTALL_RESOURCES=share/openspades-git/Resources -D OPENSPADES_INSTALL_BINARY=bin .
+  cmake -D CMAKE_INSTALL_PREFIX=/usr -D CMAKE_BUILD_TYPE=Release \
+        -D OPENSPADES_RESDIR=/usr/share/$_pkgname/Resources \
+        -D OPENSPADES_INSTALL_RESOURCES=share/$_pkgname/Resources \
+        -D OPENSPADES_INSTALL_BINARY=bin .
   make
 }
 
