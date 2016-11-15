@@ -161,6 +161,7 @@ build() {
   local _srcdir="${srcdir}/${_source_package_name}"
   local _bindir="${_srcdir}"
   local _basedir="${_srcdir}/qtbase"
+  local _waylanddir="${_srcdir}/qtwayland"
   local _declarativedir="${_srcdir}/qtdeclarative"
   local _webenginedir="${_srcdir}/qtwebengine"
   local _mkspec_dir="${_basedir}/mkspecs/devices/${_mkspec}"
@@ -193,6 +194,9 @@ if $_patching; then
 
   cd ${_basedir}
   patch -p1 < ${startdir}/0001-Check-lib64-as-well-as-lib.patch
+
+  cd ${_waylanddir}
+  patch -p1 < ${startdir}/0001-Fix-build-of-brcm-egl-client.patch
 
   # Work around our embarresing propensity to stomp on your own tailored build configuration
   sed -i "s/O[23]/Os/"  ${_basedir}/mkspecs/common/gcc-base.conf || exit 1
