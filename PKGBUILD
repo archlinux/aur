@@ -85,7 +85,12 @@ package() {
     install -d -m777 "${pkgdir}/var/tmp/airtime"
 
     install -d -m655 "${pkgdir}/etc/airtime"
-
+    install -d -m655 "${pkgdir}/usr/share/php/"
+#Zend
+    ln -sr /usr/share/zendframework "${pkgdir}/usr/share/php/Zend"
+    ln -sr /usr/share/zendframework "${pkgdir}/usr/share/php/libzend-framework-php"
+ 
+   install -D -m644 "airtime_mvc/build/airtime.example.conf" "${pkgdir}/etc/airtime/airtime.conf"
     install -D -m644 "installer/php/airtime.ini" "${pkgdir}/etc/php56/conf.d/airtime.ini"
     install -D -m644 ../httpd-airtime.conf "${pkgdir}/etc/httpd/conf/extra/httpd-airtime.conf"
 
@@ -125,4 +130,4 @@ md5sums=('SKIP'
          'fc4a319d43a96f0003f348c7ddd8aca2'
          '93f750480f7c49d72cdcdb10cd97c089'
          'd9c15aaa7b1da14acc99e047f58aac66'
-         '577ff7ba8f6fd84bf9b989ea07cdabde')
+         '8eefec225e6686d40cdebed21e7ae876')
