@@ -1,6 +1,6 @@
-diff -rupN a/include/atoms_rest.xmacro b/include/atoms_rest.xmacro
---- a/include/atoms_rest.xmacro	2016-03-06 10:17:18.000000000 -0500
-+++ b/include/atoms_rest.xmacro	2016-10-17 15:33:47.581857415 -0400
+diff -Nurp ../i3-4.13/include/atoms_rest.xmacro ./include/atoms_rest.xmacro
+--- ../i3-4.13/include/atoms_rest.xmacro	2016-11-08 19:54:01.000000000 +0100
++++ ./include/atoms_rest.xmacro	2016-11-13 14:14:05.086086381 +0100
 @@ -1,6 +1,7 @@
  xmacro(_NET_WM_USER_TIME)
  xmacro(_NET_STARTUP_ID)
@@ -9,38 +9,40 @@ diff -rupN a/include/atoms_rest.xmacro b/include/atoms_rest.xmacro
  xmacro(WM_PROTOCOLS)
  xmacro(WM_DELETE_WINDOW)
  xmacro(UTF8_STRING)
-diff -rupN a/include/data.h b/include/data.h
---- a/include/data.h	2016-03-06 10:17:18.000000000 -0500
-+++ b/include/data.h	2016-10-17 15:33:47.581857415 -0400
-@@ -426,6 +426,9 @@ struct Window {
+diff -Nurp ../i3-4.13/include/data.h ./include/data.h
+--- ../i3-4.13/include/data.h	2016-11-08 19:54:01.000000000 +0100
++++ ./include/data.h	2016-11-13 14:40:42.765019561 +0100
+@@ -440,6 +440,11 @@ struct Window {
  
      /* aspect ratio from WM_NORMAL_HINTS (MPlayer uses this for example) */
      double aspect_ratio;
 +
-+    /** Window icon, array of size 16x16 containing the ARGB pixels */
-+    uint32_t* icon;
++    /** Window icon, as array of ARGB pixels */
++    unsigned char *icon;
++    int icon_width;
++    int icon_height;
  };
  
  /**
-diff -rupN a/include/libi3.h b/include/libi3.h
---- a/include/libi3.h	2016-03-06 10:17:18.000000000 -0500
-+++ b/include/libi3.h	2016-10-17 15:33:47.581857415 -0400
-@@ -587,6 +587,11 @@ color_t draw_util_hex_to_color(const cha
+diff -Nurp ../i3-4.13/include/libi3.h ./include/libi3.h
+--- ../i3-4.13/include/libi3.h	2016-11-08 19:54:01.000000000 +0100
++++ ./include/libi3.h	2016-11-13 14:40:49.707019271 +0100
+@@ -586,6 +586,11 @@ color_t draw_util_hex_to_color(const cha
  void draw_util_text(i3String *text, surface_t *surface, color_t fg_color, color_t bg_color, int x, int y, int max_width);
  
  /**
 + * Draw the given image using libi3.
 + */
-+void draw_util_image(unsigned char *pixels, surface_t *surface, int x, int y, int width, int height);
++void draw_util_image(unsigned char *src, int src_width, int src_height, surface_t *surface, int x, int y, int width, int height);
 +
 +/**
   * Draws a filled rectangle.
   * This function is a convenience wrapper and takes care of flushing the
   * surface as well as restoring the cairo state.
-diff -rupN a/include/window.h b/include/window.h
---- a/include/window.h	2016-03-06 10:17:18.000000000 -0500
-+++ b/include/window.h	2016-10-17 15:33:47.585190738 -0400
-@@ -87,3 +87,9 @@ void window_update_hints(i3Window *win,
+diff -Nurp ../i3-4.13/include/window.h ./include/window.h
+--- ../i3-4.13/include/window.h	2016-11-08 19:54:01.000000000 +0100
++++ ./include/window.h	2016-11-13 14:14:05.088086381 +0100
+@@ -89,3 +89,9 @@ void window_update_hints(i3Window *win,
   *
   */
  void window_update_motif_hints(i3Window *win, xcb_get_property_reply_t *prop, border_style_t *motif_border_style);
@@ -50,11 +52,11 @@ diff -rupN a/include/window.h b/include/window.h
 + *
 + */
 +void window_update_icon(i3Window *win, xcb_get_property_reply_t *prop);
-diff -rupN a/libi3/draw_util.c b/libi3/draw_util.c
---- a/libi3/draw_util.c	2016-03-06 10:17:18.000000000 -0500
-+++ b/libi3/draw_util.c	2016-10-17 15:33:47.585190738 -0400
-@@ -153,6 +153,39 @@ void draw_util_text(i3String *text, surf
- #endif
+diff -Nurp ../i3-4.13/libi3/draw_util.c ./libi3/draw_util.c
+--- ../i3-4.13/libi3/draw_util.c	2016-11-08 19:54:01.000000000 +0100
++++ ./libi3/draw_util.c	2016-11-13 14:44:55.628008986 +0100
+@@ -135,6 +135,41 @@ void draw_util_text(i3String *text, surf
+     cairo_surface_mark_dirty(surface->surface);
  }
  
 +
@@ -64,39 +66,41 @@ diff -rupN a/libi3/draw_util.c b/libi3/draw_util.c
 + * surface as well as restoring the cairo state.
 + *
 + */
-+void draw_util_image(unsigned char *pixels, surface_t *surface, int x, int y, int width, int height) {
++void draw_util_image(unsigned char *src, int src_width, int src_height, surface_t *surface, int x, int y, int width, int height) {
 +    RETURN_UNLESS_SURFACE_INITIALIZED(surface);
 +
-+#if CAIRO_SUPPORT
++    cairo_surface_t *image;
++    double scale;
++
 +    cairo_save(surface->cr);
 +
-+    cairo_surface_t *image;
-+
 +    image = cairo_image_surface_create_for_data(
-+            pixels,
++            src,
 +            CAIRO_FORMAT_ARGB32,
-+            width,
-+            height,
-+            width * 4);
++            src_width,
++            src_height,
++            src_width * 4);
 +
-+    cairo_set_operator(surface->cr, CAIRO_OPERATOR_OVER);
-+    cairo_set_source_surface(surface->cr, image, x, y);
-+    cairo_rectangle(surface->cr, x, y, width, height);
-+    cairo_fill(surface->cr);
++    cairo_translate(surface->cr, x, y);
++
++    scale = MIN((double)width / src_width, (double)height / src_height);
++    cairo_scale(surface->cr, scale, scale);
++
++    cairo_set_source_surface(surface->cr, image, 0, 0);
++    cairo_paint(surface->cr);
 +
 +    cairo_surface_destroy(image);
 +
 +    cairo_restore(surface->cr);
-+#endif
 +}
 +
  /**
   * Draws a filled rectangle.
   * This function is a convenience wrapper and takes care of flushing the
-diff -rupN a/src/handlers.c b/src/handlers.c
---- a/src/handlers.c	2016-03-06 10:17:18.000000000 -0500
-+++ b/src/handlers.c	2016-10-17 15:33:47.585190738 -0400
-@@ -1295,6 +1295,20 @@ static bool handle_strut_partial_change(
+diff -Nurp ../i3-4.13/src/handlers.c ./src/handlers.c
+--- ../i3-4.13/src/handlers.c	2016-11-08 19:54:01.000000000 +0100
++++ ./src/handlers.c	2016-11-13 14:36:19.002030592 +0100
+@@ -1287,6 +1287,20 @@ static bool handle_strut_partial_change(
      return true;
  }
  
@@ -117,28 +121,28 @@ diff -rupN a/src/handlers.c b/src/handlers.c
  /* Returns false if the event could not be processed (e.g. the window could not
   * be found), true otherwise */
  typedef bool (*cb_property_handler_t)(void *data, xcb_connection_t *c, uint8_t state, xcb_window_t window, xcb_atom_t atom, xcb_get_property_reply_t *property);
-@@ -1315,7 +1329,8 @@ static struct property_handler_t propert
-     {0, 128, handle_windowrole_change},
+@@ -1308,7 +1322,8 @@ static struct property_handler_t propert
      {0, 128, handle_class_change},
      {0, UINT_MAX, handle_strut_partial_change},
--    {0, UINT_MAX, handle_window_type}};
-+    {0, UINT_MAX, handle_window_type},
+     {0, UINT_MAX, handle_window_type},
+-    {0, 5 * sizeof(uint64_t), handle_motif_hints_change}};
++    {0, 5 * sizeof(uint64_t), handle_motif_hints_change},
 +    {0, UINT_MAX, handle_windowicon_change}};
  #define NUM_HANDLERS (sizeof(property_handlers) / sizeof(struct property_handler_t))
  
  /*
-@@ -1336,6 +1351,7 @@ void property_handlers_init(void) {
-     property_handlers[7].atom = XCB_ATOM_WM_CLASS;
+@@ -1330,6 +1345,7 @@ void property_handlers_init(void) {
      property_handlers[8].atom = A__NET_WM_STRUT_PARTIAL;
      property_handlers[9].atom = A__NET_WM_WINDOW_TYPE;
-+    property_handlers[10].atom = A__NET_WM_ICON;
+     property_handlers[10].atom = A__MOTIF_WM_HINTS;
++    property_handlers[11].atom = A__NET_WM_ICON;
  }
  
  static void property_notify(uint8_t state, xcb_window_t window, xcb_atom_t atom) {
-diff -rupN a/src/manage.c b/src/manage.c
---- a/src/manage.c	2016-03-06 10:17:18.000000000 -0500
-+++ b/src/manage.c	2016-10-17 15:33:47.585190738 -0400
-@@ -92,6 +92,8 @@ void manage_window(xcb_window_t window,
+diff -Nurp ../i3-4.13/src/manage.c ./src/manage.c
+--- ../i3-4.13/src/manage.c	2016-11-08 19:54:01.000000000 +0100
++++ ./src/manage.c	2016-11-13 14:14:05.090086380 +0100
+@@ -91,6 +91,8 @@ void manage_window(xcb_window_t window,
          role_cookie, startup_id_cookie, wm_hints_cookie,
          wm_normal_hints_cookie, motif_wm_hints_cookie, wm_user_time_cookie, wm_desktop_cookie;
  
@@ -147,7 +151,7 @@ diff -rupN a/src/manage.c b/src/manage.c
      geomc = xcb_get_geometry(conn, d);
  
      /* Check if the window is mapped (it could be not mapped when intializing and
-@@ -163,6 +165,7 @@ void manage_window(xcb_window_t window,
+@@ -162,6 +164,7 @@ void manage_window(xcb_window_t window,
      motif_wm_hints_cookie = GET_PROPERTY(A__MOTIF_WM_HINTS, 5 * sizeof(uint64_t));
      wm_user_time_cookie = GET_PROPERTY(A__NET_WM_USER_TIME, UINT32_MAX);
      wm_desktop_cookie = GET_PROPERTY(A__NET_WM_DESKTOP, UINT32_MAX);
@@ -155,7 +159,7 @@ diff -rupN a/src/manage.c b/src/manage.c
  
      DLOG("Managing window 0x%08x\n", window);
  
-@@ -176,6 +179,7 @@ void manage_window(xcb_window_t window,
+@@ -177,6 +180,7 @@ void manage_window(xcb_window_t window,
      window_update_class(cwindow, xcb_get_property_reply(conn, class_cookie, NULL), true);
      window_update_name_legacy(cwindow, xcb_get_property_reply(conn, title_cookie, NULL), true);
      window_update_name(cwindow, xcb_get_property_reply(conn, utf8_title_cookie, NULL), true);
@@ -163,7 +167,7 @@ diff -rupN a/src/manage.c b/src/manage.c
      window_update_leader(cwindow, xcb_get_property_reply(conn, leader_cookie, NULL));
      window_update_transient_for(cwindow, xcb_get_property_reply(conn, transient_cookie, NULL));
      window_update_strut_partial(cwindow, xcb_get_property_reply(conn, strut_cookie, NULL));
-@@ -184,6 +188,8 @@ void manage_window(xcb_window_t window,
+@@ -185,6 +189,8 @@ void manage_window(xcb_window_t window,
      window_update_hints(cwindow, xcb_get_property_reply(conn, wm_hints_cookie, NULL), &urgency_hint);
      border_style_t motif_border_style = BS_NORMAL;
      window_update_motif_hints(cwindow, xcb_get_property_reply(conn, motif_wm_hints_cookie, NULL), &motif_border_style);
@@ -172,24 +176,24 @@ diff -rupN a/src/manage.c b/src/manage.c
      xcb_size_hints_t wm_size_hints;
      if (!xcb_icccm_get_wm_size_hints_reply(conn, wm_normal_hints_cookie, &wm_size_hints, NULL))
          memset(&wm_size_hints, '\0', sizeof(xcb_size_hints_t));
-diff -rupN a/src/render.c b/src/render.c
---- a/src/render.c	2016-03-06 10:17:18.000000000 -0500
-+++ b/src/render.c	2016-10-17 15:33:47.585190738 -0400
-@@ -127,6 +127,10 @@ void render_con(Con *con, bool render_fu
+diff -Nurp ../i3-4.13/src/render.c ./src/render.c
+--- ../i3-4.13/src/render.c	2016-11-08 19:54:01.000000000 +0100
++++ ./src/render.c	2016-11-13 14:26:45.732054568 +0100
+@@ -125,6 +125,10 @@ void render_con(Con *con, bool render_fu
      /* find the height for the decorations */
      params.deco_height = render_deco_height();
  
 +    /* minimum decoration height to allow icon to fit
-+     * not actuuly required, icon would be cropped otherwise */
++     * not actually required, icon would be cropped otherwise */
 +    params.deco_height = (params.deco_height < 16) ? 16 : params.deco_height;
 +
      /* precalculate the sizes to be able to correct rounding errors */
      params.sizes = precalculate_sizes(con, &params);
  
-diff -rupN a/src/window.c b/src/window.c
---- a/src/window.c	2016-03-06 10:17:18.000000000 -0500
-+++ b/src/window.c	2016-10-17 15:33:47.585190738 -0400
-@@ -19,6 +19,7 @@ void window_free(i3Window *win) {
+diff -Nurp ../i3-4.13/src/window.c ./src/window.c
+--- ../i3-4.13/src/window.c	2016-11-08 19:54:01.000000000 +0100
++++ ./src/window.c	2016-11-13 14:48:01.177001226 +0100
+@@ -17,6 +17,7 @@ void window_free(i3Window *win) {
      FREE(win->class_class);
      FREE(win->class_instance);
      i3string_free(win->name);
@@ -197,45 +201,17 @@ diff -rupN a/src/window.c b/src/window.c
      FREE(win->ran_assignments);
      FREE(win);
  }
-@@ -367,3 +368,88 @@ void window_update_motif_hints(i3Window
+@@ -365,3 +366,62 @@ void window_update_motif_hints(i3Window
  #undef MWM_DECOR_BORDER
  #undef MWM_DECOR_TITLE
  }
-+
-+/*
-+ * Copy and resize icon if needed
-+ */
-+void copy_icon_with_resize(uint32_t *dst, int width, int height, uint32_t* src, int s_width, int s_height)
-+{
-+    int i, j;
-+
-+    if (width == s_width && height == s_height) {
-+        /* easy case, same dimensions, just copy data */
-+        memcpy(dst, src, width*height*sizeof(uint32_t));
-+        return;
-+    }
-+
-+    uint32_t* row = src;
-+    int xstep = s_width / width;
-+    int ystep = s_height / height * s_width;
-+
-+    for (i=0; i < height; ++i) {
-+        uint32_t* ptr = row;
-+        for(j=0; j < width; ++j) {
-+            *dst++ = *ptr;
-+            ptr+=xstep;
-+        }
-+        row += ystep;
-+    }
-+}
-+
 +
 +void window_update_icon(i3Window *win, xcb_get_property_reply_t *prop)
 +{
 +    uint32_t *data = NULL;
 +    uint64_t len = 0;
 +
-+    if(!prop || prop->type != XCB_ATOM_CARDINAL || prop->format != 32) {
++    if (!prop || prop->type != XCB_ATOM_CARDINAL || prop->format != 32) {
 +        DLOG("_NET_WM_ICON is not set\n");
 +        FREE(prop);
 +        return;
@@ -260,7 +236,7 @@ diff -rupN a/src/window.c b/src/window.c
 +
 +        if (len == 0 || (crt_len >= 16*16 && crt_len < len)) {
 +            len = crt_len;
-+            data  = prop_value;
++            data = prop_value;
 +        }
 +        if (len == 16*16) {
 +            break; // found 16 pixels icon
@@ -280,27 +256,44 @@ diff -rupN a/src/window.c b/src/window.c
 +    LOG("Got _NET_WM_ICON of size: (%d,%d)\n", data[0], data[1]);
 +    win->name_x_changed = true; // trigger a redraw
 +
-+    FREE(win->icon);
-+    win->icon = malloc(16 * 16 * sizeof(uint32_t));
-+    copy_icon_with_resize(win->icon, 16, 16, data + 2, data[0], data[1]);
++    win->icon_width = data[0];
++    win->icon_height = data[1];
++
++    win->icon = malloc(len * 4);
++    memcpy(win->icon, &data[2], len * 4);
 +
 +    FREE(prop);
 +}
-diff -rupN a/src/x.c b/src/x.c
---- a/src/x.c	2016-03-06 10:17:18.000000000 -0500
-+++ b/src/x.c	2016-10-17 15:33:47.585190738 -0400
-@@ -571,6 +571,10 @@ void x_draw_decoration(Con *con) {
-     //DLOG("indent_level = %d, indent_mult = %d\n", indent_level, indent_mult);
-     int indent_px = (indent_level * 5) * indent_mult;
+diff -Nurp ../i3-4.13/src/x.c ./src/x.c
+--- ../i3-4.13/src/x.c	2016-11-08 19:54:01.000000000 +0100
++++ ./src/x.c	2016-11-13 14:48:26.856000152 +0100
+@@ -538,6 +538,7 @@ void x_draw_decoration(Con *con) {
  
-+    if (win->icon) {
-+        indent_px += 18;
-+    }
+     /* 6: draw the title */
+     int text_offset_y = (con->deco_rect.height - config.font.height) / 2;
++    int text_offset_x = 0;
+ 
+     struct Window *win = con->window;
+     if (win == NULL) {
+@@ -567,6 +568,9 @@ void x_draw_decoration(Con *con) {
+     if (win->name == NULL)
+         goto copy_pixmaps;
+ 
++    if (win->icon)
++        text_offset_x = 18;
 +
      int mark_width = 0;
      if (config.show_marks && !TAILQ_EMPTY(&(con->marks_head))) {
          char *formatted_mark = sstrdup("");
-@@ -611,6 +615,22 @@ void x_draw_decoration(Con *con) {
+@@ -602,12 +606,30 @@ void x_draw_decoration(Con *con) {
+     i3String *title = con->title_format == NULL ? win->name : con_parse_title_format(con);
+     draw_util_text(title, &(parent->frame_buffer),
+                    p->color->text, p->color->background,
+-                   con->deco_rect.x + logical_px(2),
++                   con->deco_rect.x + text_offset_x + logical_px(2),
+                    con->deco_rect.y + text_offset_y,
+-                   con->deco_rect.width - mark_width - 2 * logical_px(2));
++                   con->deco_rect.width - text_offset_x - mark_width - 2 * logical_px(2));
      if (con->title_format != NULL)
          I3STRING_FREE(title);
  
@@ -312,9 +305,11 @@ diff -rupN a/src/x.c b/src/x.c
 +        int icon_offset_y = (con->deco_rect.height - height) / 2;
 +
 +        draw_util_image(
-+                (unsigned char *)win->icon,
++                win->icon,
++                win->icon_width,
++                win->icon_height,
 +                &(parent->frame_buffer),
-+                con->deco_rect.x + indent_px - width,
++                con->deco_rect.x + text_offset_x - width,
 +                con->deco_rect.y + icon_offset_y,
 +                width,
 +                height);
