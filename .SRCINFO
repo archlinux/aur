@@ -1,0 +1,40 @@
+pkgbase = natron-plugins
+	pkgdesc = Extra OpenFX plugins for Natron
+	pkgver = 2.1.7
+	pkgrel = 1
+	url = https://github.com/olear/openfx-arena/tree/Natron-2.1.7
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	depends = swig
+	depends = swig2
+	depends = boost
+	depends = boost-libs
+	depends = freetype2
+	depends = openexr
+	depends = libraw
+	depends = openjpeg
+	depends = graphviz
+	depends = libxt
+	depends = bzip2
+	depends = libtool
+	depends = libcaca
+	depends = libjpeg
+	depends = libtiff
+	depends = glew
+	depends = libpng
+	depends = lcms
+	depends = gcc-libs-multilib
+	depends = imagemagick
+	depends = libcdr
+	depends = librsvg
+	depends = libtool
+	depends = libzip
+	depends = opencolorio
+	depends = poppler-glib
+	source = natron-plugins::git://github.com/NatronVFX/natron-plugins.git#tag=2.1.7
+	md5sums = SKIP
+
+pkgname = natron-plugins
+
