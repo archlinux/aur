@@ -36,7 +36,9 @@ case "$API" in
        source[0]="${pkgname}::git+https://github.com/xbmc/kodi-platform.git#commit=054a42f66" ;;
   16)  depends+=('libplatform-legacy')
        source[0]="${pkgname}::git+https://github.com/xbmc/kodi-platform.git#commit=15edaf78d" ;;
-  99)  depends+=('libplatform') ;;
+  17)  depends+=('p8-platform')
+       source[0]="${pkgname}::git+https://github.com/xbmc/kodi-platform.git#commit=c8188d826" ;;
+  99)  depends+=('p8-platform') ;;
   *)   error "Unknown API version. Follow instructions in PKGBUILD." && false
 esac
 
