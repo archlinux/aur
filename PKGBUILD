@@ -2,18 +2,18 @@
 
 _basename=GENie
 pkgname=${_basename,,}-git
-pkgver=r715.a184142
+pkgver=r249.a184142
 pkgrel=1
 pkgdesc="GENie project generator tool (a fork of premake by Branimir Karadžić)"
 arch=('x86_64' 'arm' 'i686')
 url='https://github.com/bkaradzic/GENie'
-makedepends=('git')
+makedepends=('git' 'awk' 'grep')
 source=("git+https://github.com/bkaradzic/GENie#branch=master")
 md5sums=('SKIP')
 
 pkgver() {
 	cd "${_basename}"
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	printf "r%s.%s" "$(grep -e 'VERSION\s' src/host/version.h | awk '{print $3}')" "$(git rev-parse --short HEAD)"
 }
 
 build() {
