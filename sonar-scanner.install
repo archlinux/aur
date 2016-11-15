@@ -2,8 +2,8 @@ post_install() {
     echo 'In order to use sonar-scanner, you have to run the'
     echo 'following commands. It will be done automatically at login.'
     echo
-    echo 'setenv SONAR_SCANNER_HOME "/opt/sonar-scanner"'
-    echo 'setenv PATH "${PATH}:${SONAR_SCANNER_HOME}/bin"'
+    echo 'export SONAR_SCANNER_HOME="/opt/sonar-scanner"'
+    echo 'export PATH="${PATH}:${SONAR_SCANNER_HOME}/bin"'
     echo
     echo 'You also need to configure your sonar host url'
     echo 'in /etc/sonar-scanner/sonar-scanner.properties'

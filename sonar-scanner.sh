@@ -1,3 +1,3 @@
 # Sonar-scanner environment file
-setenv SONAR_SCANNER_HOME "/opt/sonar-scanner"
-setenv PATH "${PATH}:${SONAR_SCANNER_HOME}/bin"
+export SONAR_SCANNER_HOME="/opt/sonar-scanner"
+export PATH="${PATH}:${SONAR_SCANNER_HOME}/bin"
