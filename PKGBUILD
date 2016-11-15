@@ -2,7 +2,7 @@
 # Contributor: Jan de Groot <jgc@archlinux.org>
 
 pkgname=glib2-patched-thumbnailer
-pkgver=2.50.1
+pkgver=2.50.2
 pkgrel=1
 pkgdesc="GLib2 patched with ahodesuka's thumbnailer patch."
 url="http://gist.github.com/ahodesuka/49c1d0eea4b64f24c4c7"
@@ -17,7 +17,7 @@ checkdepends=(desktop-file-utils dbus)
 options=('!docs' '!emptydirs')
 license=('LGPL')
 
-_commit=e44ea516afeb41d22cebf968b3ea5d9543856df2  # tags/2.50.1^0
+_commit=224f8171dceca920cfd8a4b446726b7610cdafd9  # tags/2.50.2^0
 _patchver=d0edf118e1c27700300038c1d82b3ff775c0216b
 
 source=("git://git.gnome.org/glib#commit=$_commit"
@@ -39,7 +39,7 @@ pkgver() {
 prepare() {
   cd glib
   patch -Rp1 -i ../revert-warn-glib-compile-schemas.patch
-  patch -Np1 -i ${srcdir}/glib-thumbnailer.patch
+  patch -Np1 -i ../glib-thumbnailer.patch
   NOCONFIGURE=1 ./autogen.sh
 }
 
@@ -53,12 +53,12 @@ build() {
   make
 }
 
-check() {
-  cd glib
-#  if ! make check; then
-#    make check
-#  fi
-}
+# check() {
+#   cd glib
+#   if ! make check; then
+#     make check
+#   fi
+# }
 
 package() {
   cd glib
