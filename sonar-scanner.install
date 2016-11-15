@@ -4,4 +4,11 @@ post_install() {
     echo
     echo 'setenv SONAR_SCANNER_HOME "/opt/sonar-scanner"'
     echo 'setenv PATH "${PATH}:${SONAR_SCANNER_HOME}/bin"'
+    echo
+    echo 'You also need to configure your sonar host url'
+    echo 'in /etc/sonar-scanner/sonar-scanner.properties'
+    echo
+    echo 'Please refer to the following documentation :'
+    echo 'http://docs.sonarqube.org/display/SCAN/Analyzing+with+SonarQube+Scanner'
+    echo ''
 }

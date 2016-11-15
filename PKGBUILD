@@ -1,7 +1,7 @@
-# Maintainer: Thomas Sarboni <max-kATpostDOTcom>
+# Maintainer: max-k <max-kATpostDOTcom>
 pkgname=sonar-scanner
 pkgver=2.8
-pkgrel=1
+pkgrel=2
 pkgdesc="Default launcher to analyze a project with SonarQube"
 arch=('any')
 url="http://www.sonarqube.org/"
@@ -10,13 +10,12 @@ depends=('java-runtime')
 provides=('sonar-runner')
 backup=("opt/$pkgname/conf/$pkgname.properties")
 install="$pkgname.install"
-changelog=
 source=("https://sonarsource.bintray.com/Distribution/$pkgname-cli/$pkgname-$pkgver.zip"
         "$pkgname.sh"
         "$pkgname.install")
 md5sums=('981936861fa622bb97ffc3a66afa1caa'
          '8d64e9d68709013a33f1b61070ca1c1f'
-         'de137b840a571bf54e1c5d3dc7efd7c0')
+         '6c6f62fabe7ca5e3468d0831a063485a')
 
 package() {
     mkdir -p "$pkgdir/etc/profile.d"
