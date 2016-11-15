@@ -1,6 +1,6 @@
 # Maintainer: Simon Hanna <simon dot hanna at serve-me dot info>
 pkgname=onionshare
-pkgver=0.9
+pkgver=0.9.2
 pkgrel=1
 pkgdesc="Lets you securely and anonymously share a file of any size with someone"
 url="https://github.com/micahflee/onionshare"
@@ -15,7 +15,7 @@ optdepends=(
           'tor-messenger-bin: tor-messenger can be used as an alternative to Tor Browser'
           )
 source=(https://github.com/micahflee/onionshare/archive/v$pkgver.tar.gz)
-sha512sums=('5a9a731629e3f00be355c73e1638eea5201e8fe57dc4cab623875add3d893bbe9ae134e020f2489b40c62e1017774423dc8260e2adc0dbc340936196c70e6b6d')
+sha512sums=('b1ce10783dcee6fef1d5ffbef252e6db32b2150fe9610345745d7e4bf10c25f1077bdaea80353cab6756521e20b179c72cad8daf6a5159a199a2dc727475759a')
 
 build() {
  	cd "$srcdir/onionshare-$pkgver"
