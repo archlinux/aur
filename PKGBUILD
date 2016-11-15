@@ -1,8 +1,8 @@
 # Maintainer: Philippe Proulx <eeppeliteloop@gmail.com>
 pkgname=barectf
-pkgver=2.2.0
+pkgver=2.2.1
 pkgrel=1
-pkgdesc="Generator of C99 code that can write native CTF out of a YAML configuration file"
+pkgdesc='Generator of ANSI C tracers which output CTF'
 arch=('any')
 url='http://barectf.org'
 license=('MIT')
@@ -11,7 +11,7 @@ makedepends=('python-setuptools')
 provides=('barectf')
 conflicts=('barectf')
 source=("https://github.com/efficios/barectf/archive/v$pkgver.tar.gz")
-md5sums=('24deb3ccfb457b370d8dd96d5f7fc422')
+md5sums=('aaded50522939a700f62024fba92bd6a')
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
