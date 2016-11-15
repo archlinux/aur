@@ -1,0 +1,18 @@
+pkgbase = dosbox-dune
+	pkgdesc = Dune - old DOS game, Floppy version, English, French and German langages
+	pkgver = 1.0
+	pkgrel = 1
+	url = http://www.abandonware-france.org/ltf_abandon/ltf_jeu.php?id=78
+	arch = any
+	license = Abandonware
+	depends = dosbox
+	depends = unzip
+	source = jeu-00078-dune-pcdos.7z::http://www.abandonware-france.org/telechargement/clic/http/1252/files/
+	source = dune-logo.png
+	source = run_dune.sh
+	md5sums = 24d83678e82a7b21e030bdd1d351f027
+	md5sums = 96f1deb7d3523ecbf9d3b05f9afb0e93
+	md5sums = 4057a22528e982118748ee78588ed025
+
+pkgname = dosbox-dune
+
