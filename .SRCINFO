@@ -1,0 +1,15 @@
+pkgbase = lcurses
+	pkgdesc = Lua bindings for curses
+	pkgver = 9.0.0
+	pkgrel = 1
+	url = https://luaposix.github.io/luaposix
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = luarocks
+	depends = lua
+	source = https://luarocks.org/lcurses-9.0.0-1.src.rock
+	sha512sums = 09225ab0bcd2a681ec81bdfc26446c943535474a81eef1e001fbb4d482a2d3dfa3482081424e7d89ce654787e39539720ffd588710ac16db1b665ee2692ab138
+
+pkgname = lcurses
+
