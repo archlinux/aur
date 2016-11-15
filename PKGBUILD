@@ -1,12 +1,12 @@
-# Maintainer: Konstantin Gizdov <arch@kge.pw>
-# Contributor: Frank Siegert <frank.siegert@googlemail.com>
-# Contributor: Scott Lawrence <bytbox@gmail.com>
+# Maintainer: Konstantin Gizdov < arch at kge dot pw >
+# Contributor: Frank Siegert < frank.siegert at googlemail dot com>
+# Contributor: Scott Lawrence < bytbox at gmail dot com >
 # Contributor: Thomas Dziedzic < gostrc at gmail >
-# Contributor: Sebastian Voecking <voeck@web.de>
+# Contributor: Sebastian Voecking < voeck at web dot de >
 
 pkgname=root
-pkgver=6.06.08
-pkgrel=2
+pkgver=6.08.00
+pkgrel=1
 pkgdesc='C++ data analysis framework and interpreter from CERN.'
 arch=('i686' 'x86_64')
 url='http://root.cern.ch'
@@ -15,6 +15,7 @@ makedepends=('cmake')
 depends=('cfitsio'
 'fftw'
 'ftgl'
+'gl2ps'
 'glew'
 'graphviz'
 'gsl'
@@ -28,6 +29,7 @@ depends=('cfitsio'
 'sqlite'
 'tex-gyre-fonts'  # solve the pixelized font problem as per Arch Wiki
 'unixodbc'
+'unuran'
 'xmlrpc-c'
 )
 optdepends=('gcc-fortran: Enable the Fortran components of ROOT'
@@ -35,33 +37,19 @@ optdepends=('gcc-fortran: Enable the Fortran components of ROOT'
 )
 options=('!emptydirs')
 source=("https://root.cern.ch/download/root_v${pkgver}.source.tar.gz"
-'call_PyErr_Clear_if_no_such_attribute.patch'
-'disable-gcc-abi-check.diff'
-'python3.diff'
 'root.sh'
 'root.xml'
 'rootd'
 'settings.cmake')
-sha256sums=('7cb836282014cce822ef589cad27811eb7a86d7fad45a871fa6b0e6319ec201a'
-            '437ed0fb2c46d5ca8e37cc689f87dfe12429f6a243d4e5cf2d395a177de7e90f'
-            'e03fff4accf7cee4e7329b305f1e0df7bf804dbced08d52566af789bc77ea0b0'
-            'd566bc44f0df1915ac81c41b8ef7eff0d9fec8728533b00b9e654a2a4eff9af1'
+sha256sums=('388b4158c6e5706418031060c52c4e6b89cd8856ba06bf11c550eeb1759615d9'
             '9d1f8e7ad923cb5450386edbbce085d258653c0160419cdd6ff154542cc32bd7'
             'b103d46705883590d9e07aafb890ec1150f63dc2ca5f40d67e6ebef49a6d0a32'
             '3c45b03761d5254142710b7004af0077f18efece7c95511910140d0542c8de8a'
-            'bde2d9538aca33c3a20a3723c22f4e4e2fef64e5918a6a71dc3a452502ab2663')
+            '69af839f04573c98e0ec2601395747dcc5b4eb00f1b877e7ed146eb779154ee2')
 prepare(){
-    ## https://sft.its.cern.ch/jira/browse/ROOT-6924
     cd ${pkgname}-${pkgver}
 
-    patch -p1 < ${srcdir}/python3.diff
     2to3 -w etc/dictpch/makepch.py 2>&1 > /dev/null
-
-    ## https://sft.its.cern.ch/jira/browse/ROOT-7640
-    patch -p1 < ${srcdir}/call_PyErr_Clear_if_no_such_attribute.patch
-
-    ## disable check newly introduced in 6.06.06
-    patch -p1 < ${srcdir}/disable-gcc-abi-check.diff
 }
 
 build() {
@@ -69,7 +57,7 @@ build() {
     cd ${srcdir}/build
 
     CFLAGS="${CFLAGS} -pthread" \
-    CXXFLAGS="${CXXFLAGS} -pthread -D_GLIBCXX_USE_CXX11_ABI=0" \
+    CXXFLAGS="${CXXFLAGS} -pthread" \
     LDFLAGS="${LDFLAGS} -pthread -Wl,--no-undefined" \
     cmake -C ${srcdir}/settings.cmake ${srcdir}/${pkgname}-${pkgver}
 
@@ -92,6 +80,9 @@ package() {
         ${pkgdir}/usr/share/applications/root-system-bin.desktop
     # replace @prefix@ with /usr for the desktop
     sed -e 's_@prefix@_/usr_' -i ${pkgdir}/usr/share/applications/root-system-bin.desktop
+
+    # fix python env call
+    sed -e 's/@python@/python/' -i ${pkgdir}/usr/lib/root/cmdLineUtils.py
 
     install -D -m644 ${srcdir}/${pkgname}-${pkgver}/build/package/debian/root-system-bin.png \
         ${pkgdir}/usr/share/icons/hicolor/48x48/apps/root-system-bin.png
