@@ -1,4 +1,4 @@
-# Maintainer: Que Quotion <quequotion at gmail dot com>
+# Maintainer: Que Quotion <quequotion@bugmenot.com>
 
 pkgname=recpt1-stz-git
 pkgver=23.00df64e
@@ -10,7 +10,7 @@ source=("git+https://github.com/stz2012/recpt1.git")
 url='https://github.com/stz2012/recpt1/'
 license=('unknown')
 provides=('recpt1')
-depends=('b25' 'pcsclite')
+depends=('b25-stz-git' 'pcsclite')
 sha512sums=('SKIP')
 makedepends=('git')
 optdepends=('pt3-drv: Japanese Earthsoft PT-3 chardev driver'
