@@ -52,7 +52,7 @@ build() {
     esac
   done
 
-  make
+  make -j$(nproc)
 }
 
 package() {
