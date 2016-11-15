@@ -1,0 +1,12 @@
+#!/bin/bash
+
+if [[ $UID -eq 0 ]]; then
+    echo "Do not run viper as root!"
+    exit 1
+elif groups $USER | grep &>/dev/null "\bviper\b"; then
+    cd /opt/viper
+    ./viper.py "$@"
+else
+    echo "You have to be in group 'viper'"
+    exit 1
+fi

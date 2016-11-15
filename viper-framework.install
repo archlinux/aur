@@ -1,7 +1,13 @@
-#!/bin/bash
-
 post_install(){
-  chmod  ugo+w /opt/viper
+  /usr/bin/getent group viper > /dev/null || /usr/sbin/groupadd viper
+  /usr/bin/getent passwd viper > /dev/null || \
+    /usr/bin/useradd -d /opt/viper -g viper -s /usr/bin/nologin viper
+
+  chmod 770 /opt/viper
+  chown -R viper:viper /opt/viper
+  chmod g+s /opt/viper
 }
 
-
+post_upgrade(){
+  post_install
+}
