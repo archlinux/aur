@@ -34,11 +34,23 @@ prepare() {
 
 build() {
     cd ${pkgname}-${pkgver}
-    runhaskell Setup configure -O --prefix=/usr --docdir=/usr/share/doc/${pkgname}
+
+    runhaskell Setup configure --ghc -O \
+                               --prefix='/usr' \
+                               --libsubdir='$compiler/site-local/$pkgid' \
+                               --docdir='$prefix/share/doc/$pkg' \
+                               --datadir='$prefix/share' \
+                               --datasubdir='$pkg'
     runhaskell Setup build
 }
 
 package() {
-    cd ${srcdir}/${pkgname}-${pkgver}
+    cd ${pkgname}-${pkgver}
+
+    install -D -m644 LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
+
     runhaskell Setup copy --destdir=${pkgdir}
+
+    rm -f ${pkgdir}/usr/share/doc/${pkgname}/LICENSE
+    rmdir --ignore-fail-on-non-empty -p ${pkgdir}/usr/share/doc/${pkgname}
 }
