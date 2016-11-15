@@ -1,6 +1,6 @@
 pkgbase = irker
 	pkgdesc = IRC client daemon accepting JSON notification requests
-	pkgver = 2.17
+	pkgver = 2.18
 	pkgrel = 1
 	url = http://www.catb.org/esr/irker/
 	arch = any
@@ -9,8 +9,8 @@ pkgbase = irker
 	makedepends = docbook-xml
 	makedepends = docbook-xsl
 	depends = python2
-	source = http://www.catb.org/~esr/irker/irker-2.17.tar.gz
-	sha1sums = ce95e791ca6b89fbad7120fc73bda4df599109e6
+	source = http://www.catb.org/~esr/irker/irker-2.18.tar.gz
+	md5sums = 41b3734439caf4b3263e0c6ef148b38b
 
 pkgname = irker
 

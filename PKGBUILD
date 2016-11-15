@@ -1,5 +1,5 @@
 pkgname=irker
-pkgver=2.17
+pkgver=2.18
 pkgrel=1
 
 pkgdesc="IRC client daemon accepting JSON notification requests"
@@ -12,7 +12,7 @@ makedepends=('xmlto' 'docbook-xml' 'docbook-xsl')
 
 source=("http://www.catb.org/~esr/irker/irker-$pkgver.tar.gz")
 
-sha1sums=('ce95e791ca6b89fbad7120fc73bda4df599109e6')
+md5sums=('41b3734439caf4b3263e0c6ef148b38b')
 
 build() {
 	cd irker-$pkgver
