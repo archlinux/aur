@@ -3,7 +3,7 @@
 
 pkgname=cabal2arch
 pkgver=1.2
-pkgrel=3
+pkgrel=4
 pkgdesc="Create Arch Linux packages from Cabal packages."
 arch=('i686' 'x86_64')
 url="http://github.com/archhaskell/${pkgname}"

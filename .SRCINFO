@@ -1,7 +1,7 @@
 pkgbase = cabal2arch
 	pkgdesc = Create Arch Linux packages from Cabal packages.
 	pkgver = 1.2
-	pkgrel = 3
+	pkgrel = 4
 	url = http://github.com/archhaskell/cabal2arch
 	arch = i686
 	arch = x86_64
