@@ -1,7 +1,7 @@
 pkgdesc="Takari Extensions for Apache Maven"
 pkgname="maven-team"
 pkgver=1
-pkgrel=1
+pkgrel=2
 url="http://takari.io/book/30-team-maven.html"
 arch=('any')
 license=('Apache')
@@ -60,6 +60,6 @@ package() {
     local target="$pkgdir/$home/lib/ext"
     
     mkdir -p "$target"
-    cp -a "$source/." "$target/"
+    cp -a -L "$source/." "$target/"
     
 }
