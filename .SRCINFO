@@ -4,6 +4,7 @@ pkgbase = kaku-bin
 	pkgrel = 2
 	url = http://kaku.rocks
 	arch = x86_64
+	arch = i686
 	license = MIT
 	depends = gconf
 	depends = gtk2
@@ -20,10 +21,12 @@ pkgbase = kaku-bin
 	conflicts = kaku
 	noextract = Kaku-1.8.0-x86_64.AppImage
 	options = !strip
-	source = https://github.com/EragonJ/Kaku/releases/download/1.8.0/Kaku-1.8.0-x86_64.AppImage
 	source = https://raw.githubusercontent.com/EragonJ/Kaku/master/LICENSE
-	sha1sums = 117924c08c7a85843803693fc62b74bf9806b75b
-	sha1sums = c83f356e593dd80c05d6b5cbc1769b3e5a2f3c10
+	sha512sums = 354016d1de60b330e50f996dcdf61989091b44b28f096f7cb83f83c006cb2d51ef3da94a49d2ba73b71bc294a206a524d38a6b3c0f5bf1cc3ac6048d57624b04
+	source_x86_64 = https://github.com/EragonJ/Kaku/releases/download/1.8.0/Kaku-1.8.0-x86_64.AppImage
+	sha512sums_x86_64 = e94f5238306e47f06c4093454da41a36ecf69ed8b1bcee576b8cfa4a2ffeadf0e8be3aa1af528df63700d20567038570454bf91104d8428eb5fd81ae82715bb8
+	source_i686 = https://github.com/EragonJ/Kaku/releases/download/1.8.0/Kaku-1.8.0-ia32.AppImage
+	sha512sums_i686 = 1a4d5e122d379a5e59ed8eed1b0e249689d58a4453552ddbaa3296945999a2f529ba3dac1721189fb1437b8b109899239a3164e7ab02b4654750a2fdf8dfcfe9
 
 pkgname = kaku-bin
 
