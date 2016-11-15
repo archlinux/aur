@@ -14,7 +14,7 @@ if [[ -n "$_piver" ]]; then
 fi
 
 pkgname="qcec"
-pkgver=0.1
+pkgver=0.2
 pkgrel=1
 pkgdesc="Qt CEC keyboard plugin for the Raspberry Pi"
 arch=("any")
