@@ -5,7 +5,7 @@
 
 _pkgname=conky
 pkgname=conky-cli
-pkgver=1.10.1
+pkgver=1.10.5
 pkgrel=1
 pkgdesc="Lightweight system monitor for X, without X11 dependencies"
 url='https://github.com/brndnmtthws/conky'
@@ -18,7 +18,7 @@ depends=('curl' 'lua' 'wireless_tools' 'libxml2')
 source=("https://github.com/brndnmtthws/${_pkgname}/archive/v${pkgver}.tar.gz"
         'lua53.patch')
 
-sha1sums=('97b59ec1daf54126b30516e8663a9cf1f218d8ae'
+sha1sums=('a560c356ce4c3e2918601743b57d19a18fe01a72'
           'a3a74542b6524e5663ad37aaba292b48e8bea3b1')
 
 prepare() {
