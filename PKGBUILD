@@ -2,7 +2,7 @@
 
 pkgname=pyston
 pkgver=0.5.1
-pkgrel=2
+pkgrel=3
 pkgdesc="An open-source Python implementation using JIT techniques."
 arch=('x86_64')
 license=('custom')
@@ -18,5 +18,8 @@ package() {
 	cd "${srcdir}/pyston-${pkgver}-linux64/"
 	cp -R * "${pkgdir}/opt/pyston"
 	ln -s "/opt/pyston/pyston" "${pkgdir}/usr/bin/pyston"
+
+	mkdir -p "${pkgdir}/usr/lib"
+	ln -s /usr/lib/libreadline.so.7 "${pkgdir}/usr/lib/libreadline.so.6"
 }
 
