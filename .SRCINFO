@@ -1,7 +1,7 @@
 pkgbase = viper-framework-git
 	pkgdesc = Git version of Viper the Binary Analysis Framework
 	pkgver = v1.2.1133.cd7b753
-	pkgrel = 2
+	pkgrel = 4
 	url = https://github.com/viper-framework/viper
 	install = viper-framework.install
 	arch = any
@@ -46,10 +46,17 @@ pkgbase = viper-framework-git
 	depends = python2-ipaddress
 	depends = python2-pycparser
 	depends = python2-six
+	depends = python2-yara
 	provides = viper-framework
 	conflicts = viper-framework
 	source = git+https://github.com/viper-framework/viper
+	source = viper-cli
+	source = viper-api
+	source = viper-web
 	sha512sums = SKIP
+	sha512sums = d34e99c52ebc5c836337ad88bf756a0404173d83aaac0620b15845833049c3c360c27180504a317b9773dde3064e42f14d29f0f32f1caad213b6277a78ca5c97
+	sha512sums = d34e99c52ebc5c836337ad88bf756a0404173d83aaac0620b15845833049c3c360c27180504a317b9773dde3064e42f14d29f0f32f1caad213b6277a78ca5c97
+	sha512sums = d34e99c52ebc5c836337ad88bf756a0404173d83aaac0620b15845833049c3c360c27180504a317b9773dde3064e42f14d29f0f32f1caad213b6277a78ca5c97
 
 pkgname = viper-framework-git
 
