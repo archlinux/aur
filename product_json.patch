@@ -1,6 +1,6 @@
 diff -rupN a/product.json b/product.json
---- a/product.json	2016-09-05 17:41:16.846929056 -0700
-+++ b/product.json	2016-09-05 17:39:51.536137928 -0700
+--- a/product.json	2016-09-08 14:48:45.419566181 -0700
++++ b/product.json	2016-09-08 14:49:43.000000000 -0700
 @@ -1,6 +1,6 @@
  {
  	"nameShort": "Code - OSS",

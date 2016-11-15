@@ -1,23 +1,33 @@
 # Maintainer: Michael Hansen <zrax0111 gmail com>
 
+# Set this to 0 if you want to include only the open-source Visual Studio Code
+# components.  This will cause the extension manager to work in a local-only
+# mode (you'll have to download and install extensions manually).
+[[ -z "$VSCODE_NONFREE" ]] && VSCODE_NONFREE=1
+
 pkgname=visual-studio-code-git
 pkgdesc='Visual Studio Code for Linux, Open Source version from git'
-pkgver=1.1.0.insider.r4276.g2a215cc
+pkgver=1.1.0.insider.r6983.gd3171a3
 pkgrel=1
 arch=('i686' 'x86_64')
 url='https://code.visualstudio.com/'
 license=('MIT')
-makedepends=('npm' 'gulp' 'python2')
-depends=('gtk2' 'gconf')
+makedepends=('npm' 'nodejs>=6.8.0' 'gulp' 'python2')
+depends=('gtk2' 'gconf' 'libnotify' 'libxss' 'libxtst' 'nss' 'alsa-lib')
 conflicts=('vscode-oss' 'visual-studio-code-oss')
 provides=('vscode-oss' 'visual-studio-code-oss')
 
 source=("git+https://github.com/Microsoft/vscode"
-        "${pkgname}.desktop"
-        'product_json.patch')
+        "${pkgname}.desktop")
 sha1sums=('SKIP'
-          'a42e461ed586ef0fd31ff911ad662135f4f602aa'
-          '34758e925f36cabe6167198c9bd11c12b07b2052')
+          'a42e461ed586ef0fd31ff911ad662135f4f602aa')
+
+if (( VSCODE_NONFREE )); then
+    source+=('product_json.patch')
+    sha1sums+=('ba8febe936932080610d899fdb57294fc2f9f614')
+    install="${pkgname}.nonfree.install"
+    license+=('proprietary')
+fi
 
 case "$CARCH" in
     i686)
@@ -40,20 +50,23 @@ pkgver() {
 prepare() {
     cd "${srcdir}/vscode"
 
-    patch -p1 -i "${srcdir}/product_json.patch"
-    local _commit=$(cd "${srcdir}/vscode" && git rev-parse HEAD)
-    local _datestamp=$(date -u -Is | sed 's/\+00:00/Z/')
-    sed -e "s/@COMMIT@/${_commit}/g" -e "s/@DATE@/${_datestamp}/" \
-        -i product.json
+    if (( VSCODE_NONFREE )); then
+        patch -p1 -i "${srcdir}/product_json.patch"
+        local _commit=$(cd "${srcdir}/vscode" && git rev-parse HEAD)
+        local _datestamp=$(date -u -Is | sed 's/\+00:00/Z/')
+        sed -e "s/@COMMIT@/${_commit}/" -e "s/@DATE@/${_datestamp}/" \
+            -i product.json
+    fi
 }
 
 build() {
     cd "${srcdir}/vscode"
 
-    ./scripts/npm.sh install
+    ./scripts/npm.sh install --arch=${_vscode_arch}
 
-    # The default memory limit is too low on some systems. This will set it
-    # to 2GB -- change it if this number doesn't work for your system
+    # The default memory limit is too low for current versions of node to
+    # successfully build vscode.  This will set it to 2GB -- change it if
+    # this number still doesn't work for your system.
     node --max_old_space_size=2048 /usr/bin/gulp vscode-linux-${_vscode_arch}
 }
 
@@ -63,7 +76,7 @@ package() {
 
     # Include symlink in system bin directory
     install -m 0755 -d "${pkgdir}/usr/bin"
-    ln -s '/opt/VSCode-OSS/code-oss' "${pkgdir}/usr/bin/${pkgname}"
+    ln -s '/opt/VSCode-OSS/bin/code-oss' "${pkgdir}/usr/bin/${pkgname}"
 
     # Add .desktop file
     install -D -m644 "${srcdir}/${pkgname}.desktop" \
