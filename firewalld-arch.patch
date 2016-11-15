@@ -1,8 +1,8 @@
-diff -rupN firewalld.orig/config/firewalld.service.in firewalld/config/firewalld.service.in
---- firewalld.orig/config/firewalld.service.in	2014-02-27 09:22:50.519837109 +0100
-+++ firewalld/config/firewalld.service.in	2014-02-27 09:26:47.452013636 +0100
-@@ -6,7 +6,7 @@ Before=NetworkManager.service
- Conflicts=iptables.service ip6tables.service ebtables.service
+diff -rupN firewalld-0.4.3.2.orig/config/firewalld.service.in firewalld-0.4.3.2/config/firewalld.service.in
+--- firewalld-0.4.3.2.orig/config/firewalld.service.in	2016-08-11 13:51:30.222192739 +0200
++++ firewalld-0.4.3.2/config/firewalld.service.in	2016-08-11 14:00:09.330037527 +0200
+@@ -9,7 +9,7 @@ Conflicts=iptables.service ip6tables.ser
+ Documentation=man:firewalld(1)
  
  [Service]
 -EnvironmentFile=-/etc/sysconfig/firewalld
@@ -10,10 +10,10 @@ diff -rupN firewalld.orig/config/firewalld.service.in firewalld/config/firewalld
  ExecStart=@sbindir@/firewalld --nofork --nopid $FIREWALLD_ARGS
  ExecReload=/bin/kill -HUP $MAINPID
  # supress to log debug and error output also to /var/log/messages
-diff -rupN firewalld.orig/config/Makefile.am firewalld/config/Makefile.am
---- firewalld.orig/config/Makefile.am	2014-02-27 09:22:50.519837109 +0100
-+++ firewalld/config/Makefile.am	2014-02-27 09:25:25.875010521 +0100
-@@ -143,12 +143,12 @@ firewalld.service: firewalld.service.in
+diff -rupN firewalld-0.4.3.2.orig/config/Makefile.am firewalld-0.4.3.2/config/Makefile.am
+--- firewalld-0.4.3.2.orig/config/Makefile.am	2016-08-11 13:51:30.222192739 +0200
++++ firewalld-0.4.3.2/config/Makefile.am	2016-08-11 14:00:59.039831081 +0200
+@@ -205,12 +205,12 @@ firewalld.service: firewalld.service.in
  	$(edit) $< >$@
  
  install-sysconfig:
@@ -28,63 +28,84 @@ diff -rupN firewalld.orig/config/Makefile.am firewalld/config/Makefile.am
 +	rm -f $(DESTDIR)$(sysconfdir)/conf.d/firewalld
 +	rmdir $(DESTDIR)$(sysconfdir)/conf.d || :
  
- install-init: install-sysconfig
- 	$(MKDIR_P) $(DESTDIR)$(sysconfdir)/rc.d/init.d
-diff -rupN firewalld.orig/firewalld.spec firewalld/firewalld.spec
---- firewalld.orig/firewalld.spec	2014-02-27 09:22:50.596501411 +0100
-+++ firewalld/firewalld.spec	2014-02-27 09:32:37.082641586 +0100
-@@ -128,7 +128,7 @@ fi
- %attr(0750,root,root) %dir %{_sysconfdir}/firewalld/services
- %attr(0750,root,root) %dir %{_sysconfdir}/firewalld/zones
+ install-rpmmacros:
+ 	$(MKDIR_P) $(DESTDIR)$(prefix)/lib/rpm/macros.d
+diff -rupN firewalld-0.4.3.2.orig/doc/xml/firewall-cmd.xml firewalld-0.4.3.2/doc/xml/firewall-cmd.xml
+--- firewalld-0.4.3.2.orig/doc/xml/firewall-cmd.xml	2016-08-11 13:51:30.235526017 +0200
++++ firewalld-0.4.3.2/doc/xml/firewall-cmd.xml	2016-08-11 14:02:21.729487648 +0200
+@@ -852,7 +852,7 @@ For interfaces that are not under contro
+ 	    </para>
+ 	    <para>
+ 	      As a end user you don't need this in most cases, because NetworkManager (or legacy network service) adds interfaces into zones automatically (according to <option>ZONE=</option> option from ifcfg-<replaceable>interface</replaceable> file) if <replaceable>NM_CONTROLLED=no</replaceable> is not set.
+-	      You should do it only if there's no /etc/sysconfig/network-scripts/ifcfg-<replaceable>interface</replaceable> file.
++	      You should do it only if there's no /etc/conf.d/network-scripts/ifcfg-<replaceable>interface</replaceable> file.
+ 	      If there is such file and you add interface to zone with this <option>--add-interface</option> option, make sure the zone is the same in both cases, otherwise the behaviour would be undefined.
+ 	      Please also have a look at the <citerefentry><refentrytitle>firewalld</refentrytitle><manvolnum>1</manvolnum></citerefentry> man page in the <replaceable>Concepts</replaceable> section.
+ 	      For permanent association of interface with a zone, see also 'How to set or change a zone for a connection?' in <citerefentry><refentrytitle>firewalld.zones</refentrytitle><manvolnum>5</manvolnum></citerefentry>.
+diff -rupN firewalld-0.4.3.2.orig/doc/xml/firewallctl.xml firewalld-0.4.3.2/doc/xml/firewallctl.xml
+--- firewalld-0.4.3.2.orig/doc/xml/firewallctl.xml	2016-08-11 13:51:30.235526017 +0200
++++ firewalld-0.4.3.2/doc/xml/firewallctl.xml	2016-08-11 14:01:52.559608802 +0200
+@@ -548,7 +548,7 @@ For interfaces that are not under contro
+ 	    </para>
+ 	    <para>
+ 	      As a end user you don't need to create or change zone bindings of interfaces in most cases, because NetworkManager (or legacy network service) adds interfaces into zones automatically (according to <option>ZONE=</option> option from ifcfg-<replaceable>interface</replaceable> file) if <replaceable>NM_CONTROLLED=no</replaceable> is not set.
+-	      You should do it only if there's no /etc/sysconfig/network-scripts/ifcfg-<replaceable>interface</replaceable> file.
++	      You should do it only if there's no /etc/conf.d/network-scripts/ifcfg-<replaceable>interface</replaceable> file.
+ 	      If there is such file and you add interface to zone with this <option>--add-interface</option> option, make sure the zone is the same in both cases, otherwise the behaviour would be undefined.
+ 	      Please also have a look at the <citerefentry><refentrytitle>firewalld</refentrytitle><manvolnum>1</manvolnum></citerefentry> man page in the <replaceable>Concepts</replaceable> section.
+ 	      For permanent association of interface with a zone, see also 'How to set or change a zone for a connection?' in <citerefentry><refentrytitle>firewalld.zones</refentrytitle><manvolnum>5</manvolnum></citerefentry>.
+diff -rupN firewalld-0.4.3.2.orig/doc/xml/firewalld.xml firewalld-0.4.3.2/doc/xml/firewalld.xml
+--- firewalld-0.4.3.2.orig/doc/xml/firewalld.xml	2016-08-11 13:51:30.235526017 +0200
++++ firewalld-0.4.3.2/doc/xml/firewalld.xml	2016-08-11 14:03:07.599297125 +0200
+@@ -130,7 +130,7 @@
+     </para>
+     <para>
+       You can add these interfaces to a zone with <command>firewall-cmd [--permanent] --zone=<replaceable>zone</replaceable> --add-interface=<replaceable>interface</replaceable></command>.
+-      If there is a /etc/sysconfig/network-scripts/ifcfg-<replaceable>interface</replaceable> file, firewalld tries to change the ZONE=<replaceable>zone</replaceable> setting in this file.
++      If there is a /etc/conf.d/network-scripts/ifcfg-<replaceable>interface</replaceable> file, firewalld tries to change the ZONE=<replaceable>zone</replaceable> setting in this file.
+     </para>
+     <para>
+       If firewalld gets reloaded, it will restore the interface bindings that were in place before reloading to keep interface bindings stable in the case of NetworkManager uncontrolled interfaces.
+diff -rupN firewalld-0.4.3.2.orig/doc/xml/firewall-offline-cmd.xml firewalld-0.4.3.2/doc/xml/firewall-offline-cmd.xml
+--- firewalld-0.4.3.2.orig/doc/xml/firewall-offline-cmd.xml	2016-08-11 13:51:30.235526017 +0200
++++ firewalld-0.4.3.2/doc/xml/firewall-offline-cmd.xml	2016-08-11 14:02:41.129407071 +0200
+@@ -68,7 +68,7 @@
+   <refsect1 id="options">
+     <title>Options</title>
+     <para>
+-      If no options are given, configuration from <command>/etc/sysconfig/system-config-firewall</command> will be migrated.
++      If no options are given, configuration from <command>/etc/conf.d/system-config-firewall</command> will be migrated.
+     </para>
+     <para>
+       The following options are supported:
+diff -rupN firewalld-0.4.3.2.orig/firewalld.spec firewalld-0.4.3.2/firewalld.spec
+--- firewalld-0.4.3.2.orig/firewalld.spec	2016-08-11 13:51:30.222192739 +0200
++++ firewalld-0.4.3.2/firewalld.spec	2016-08-11 14:03:48.909125535 +0200
+@@ -222,7 +222,7 @@ fi
+ %dir %{_datadir}/firewalld/tests
+ %{_datadir}/firewalld/tests
  %defattr(0644,root,root)
 -%config(noreplace) %{_sysconfdir}/sysconfig/firewalld
 +%config(noreplace) %{_sysconfdir}/conf.d/firewalld
  #%attr(0755,root,root) %{_initrddir}/firewalld
  %{_unitdir}/firewalld.service
  %config(noreplace) %{_sysconfdir}/dbus-1/system.d/FirewallD.conf
-diff -rupN firewalld.orig/src/firewall-offline-cmd firewalld/src/firewall-offline-cmd
---- firewalld.orig/src/firewall-offline-cmd	2014-02-27 09:22:50.616500794 +0100
-+++ firewalld/src/firewall-offline-cmd	2014-02-27 09:28:41.451288466 +0100
-@@ -44,7 +44,7 @@ def __usage():
-     print ("""
- Usage: firewall-offline-cmd [OPTIONS...]
+diff -rupN firewalld-0.4.3.2.orig/src/firewall/config/__init__.py.in firewalld-0.4.3.2/src/firewall/config/__init__.py.in
+--- firewalld-0.4.3.2.orig/src/firewall/config/__init__.py.in	2016-08-11 13:51:30.275525851 +0200
++++ firewalld-0.4.3.2/src/firewall/config/__init__.py.in	2016-08-11 14:05:29.355374948 +0200
+@@ -85,7 +85,7 @@ FIREWALLD_DIRECT = ETC_FIREWALLD + '/dir
  
--If no options are given, configuration from '/etc/sysconfig/system-config-firewall' will be migrated.
-+If no options are given, configuration from '/etc/conf.d/system-config-firewall' will be migrated.
+ LOCKDOWN_WHITELIST = ETC_FIREWALLD + '/lockdown-whitelist.xml'
  
- General Options
-   -h, --help           Prints a short help text and exists
-@@ -70,7 +70,7 @@ Lokkit Compatibility Options
-   --custom-rules=[<type>:][<table>:]<filename>
-                         Ignored option. Was used to add custom rules to the
-                         firewall (Example:
--                        ipv4:filter:/etc/sysconfig/ipv4_filter_addon)
-+                        ipv4:filter:/etc/conf.d/ipv4_filter_addon)
-   --forward-port=if=<interface>:port=<port>:proto=<protocol>[:toport=<destination port>][:toaddr=<destination address>]
-                         Forward the port with protocol for the interface to
-                         either another local destination port (no destination
-@@ -360,7 +360,7 @@ def __print_query_result(value):
-         __print_and_exit("no", 1)
+-SYSCONFIGDIR = '/etc/sysconfig'
++SYSCONFIGDIR = '/etc/conf.d'
+ IFCFGDIR = SYSCONFIGDIR + '/network-scripts'
  
- # system-config-firewall: fw_sysconfig
--CONFIG = '/etc/sysconfig/system-config-firewall'
-+CONFIG = '/etc/conf.d/system-config-firewall'
- def read_sysconfig_args():
-     filename = None
-     if os.path.exists(CONFIG) and os.path.isfile(CONFIG):
-@@ -523,7 +523,7 @@ parser_direct.add_argument("--get-all-ru
- if len(sys.argv) > 1:
-     a = parser.parse_args()
- else:
--    # migrate configuration from /etc/sysconfig/system-config-firewall
-+    # migrate configuration from /etc/conf.d/system-config-firewall
-     args = read_sysconfig_args()
-     if args:
-         a = parser.parse_args(args)
-diff -rupN firewalld.orig/src/tests/firewall-offline-cmd_test.sh firewalld/src/tests/firewall-offline-cmd_test.sh
---- firewalld.orig/src/tests/firewall-offline-cmd_test.sh	2014-02-27 09:22:50.676498942 +0100
-+++ firewalld/src/tests/firewall-offline-cmd_test.sh	2014-02-27 09:33:49.063368985 +0100
-@@ -162,7 +162,7 @@ assert_good     "--query-forward-port ${
+ SYSCTL_CONFIG = '/etc/sysctl.conf'
+diff -rupN firewalld-0.4.3.2.orig/src/tests/firewall-offline-cmd_test.sh firewalld-0.4.3.2/src/tests/firewall-offline-cmd_test.sh
+--- firewalld-0.4.3.2.orig/src/tests/firewall-offline-cmd_test.sh	2016-08-11 13:51:30.302192407 +0200
++++ firewalld-0.4.3.2/src/tests/firewall-offline-cmd_test.sh	2016-08-11 14:04:51.418865874 +0200
+@@ -176,7 +176,7 @@ assert_good     "--query-forward-port ${
  failures=0
  
  while true; do
@@ -93,7 +114,7 @@ diff -rupN firewalld.orig/src/tests/firewall-offline-cmd_test.sh firewalld/src/t
      case $yn in
          [Yy]* ) break;;
          [Nn]* ) exit;;
-@@ -187,14 +187,14 @@ fw_port2="port=333:proto=udp:toport=444"
+@@ -201,14 +201,14 @@ fw_port2="port=333:proto=udp:toport=444"
  lokkit_opts="--enabled --addmodule=abc --addmodule=efg --removemodule=xyz
   --trust=${trusted_iface1} --trust=${trusted_iface2}
   --masq=tun+ --masq=tap+ --port=7:tcp --port=666:udp
@@ -110,7 +131,7 @@ diff -rupN firewalld.orig/src/tests/firewall-offline-cmd_test.sh firewalld/src/t
  --enabled
  --addmodule=abc
  --addmodule=efg
-@@ -205,7 +205,7 @@ cat << EOF > /etc/sysconfig/system-confi
+@@ -219,7 +219,7 @@ cat << EOF > /etc/sysconfig/system-confi
  --masq=tap+
  --port=7:tcp
  --port=666:udp
@@ -119,7 +140,7 @@ diff -rupN firewalld.orig/src/tests/firewall-offline-cmd_test.sh firewalld/src/t
  --service=${service1}
  --service=${service2}
  --remove-service=${service3}
-@@ -215,7 +215,7 @@ cat << EOF > /etc/sysconfig/system-confi
+@@ -229,7 +229,7 @@ cat << EOF > /etc/sysconfig/system-confi
  --forward-port=if=ippp+:${fw_port2}
  EOF
  

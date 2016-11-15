@@ -1,7 +1,7 @@
 # Maintainer: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=firewalld-git
-pkgver=0.3.14.2.r190.d7d68f8
+pkgver=0.4.4.1.r1.490b492
 pkgrel=1
 pkgdesc='A firewall daemon with D-BUS interface providing a dynamic firewall'
 arch=('any')
@@ -22,7 +22,7 @@ install='firewalld.install'
 source=('git+https://github.com/t-woerner/firewalld.git'
         'firewalld-arch.patch')
 sha256sums=('SKIP'
-            '0e10b2dd4eb2b3ca436c9539c9cdd5e612c0f150f51f5c7d50743700437a2bee')
+            '5c0c49e125426d561c4099df639ab6dd7073a6d17ae1c130d235cc2397c568c2')
 
 pkgver() {
   cd firewalld
