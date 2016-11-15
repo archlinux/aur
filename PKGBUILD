@@ -33,7 +33,7 @@ install='pgmodeler.install'
 
 build() {
 	cd "$srcdir/$pkgname-${pkgver//_/-}"
-	patch -p1 < ../../patch_no_check_update.diff
+	patch -p1 < ../patch_no_check_update.diff
 
         # release is needed to get the full dummy and xml2object plugins
 	#qmake CONFIG+=release pgmodeler.pro
