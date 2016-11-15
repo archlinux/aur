@@ -6,7 +6,7 @@ pkgrel=11643
 pkgdesc="Rocrail - Model Railroad Control System"
 arch=('x86_64' 'i686')
 url='http://wiki.rocrail.net/'
-license=('Proprietary')
+license=('custom')
 depends=()
 makedepends=()
 source=()
@@ -16,5 +16,5 @@ msg "This package is now hosted in a private repository."
 msg "Add this to your pacman.conf:"
 msg "[rocrail]"
 msg "SigLevel = Optional"
-msg "Server = http://home.eelviny.me:8051/rocrail/"
+msg "Server = http://home.eelviny.me:8051/rocrail/$CARCH/"
 exit
