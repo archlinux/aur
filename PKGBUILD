@@ -5,8 +5,8 @@
 
 pkgname='mate-multiload-ng-applet-gtk2'
 pkgdesc='Modern graphical system monitor, MATE panel applet'
-pkgver=1.4.2
-pkgrel=2
+pkgver=1.5.0
+pkgrel=1
 
 makedepends=('intltool')
 depends=('gtk2>=2.20.0' 'cairo' 'mate-panel>=1.7.0')
@@ -14,7 +14,7 @@ depends=('gtk2>=2.20.0' 'cairo' 'mate-panel>=1.7.0')
 conflicts=('mate-multiload-ng-applet-gtk3' 'mate-multiload-ng-applet-gtk2-git' 'mate-multiload-ng-applet-gtk3-git')
 
 source=("https://github.com/udda/multiload-ng/archive/v$pkgver.tar.gz")
-md5sums=('3c17d8483bc874b20c877a7d7897ab5e')
+md5sums=('b42140a47788cc5cdbd46fbbfab9e644')
 
 arch=('i686' 'x86_64')
 url='https://udda.github.io/multiload-ng/'
