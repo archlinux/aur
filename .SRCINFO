@@ -5,7 +5,7 @@ pkgbase = rocrail
 	url = http://wiki.rocrail.net/
 	arch = x86_64
 	arch = i686
-	license = Proprietary
+	license = unknown
 
 pkgname = rocrail
 

@@ -6,7 +6,7 @@ pkgrel=11643
 pkgdesc="Rocrail - Model Railroad Control System"
 arch=('x86_64' 'i686')
 url='http://wiki.rocrail.net/'
-license=('custom')
+license=('unknown')
 depends=()
 makedepends=()
 source=()
@@ -17,4 +17,4 @@ msg "Add this to your pacman.conf:"
 msg "[rocrail]"
 msg "SigLevel = Optional"
 msg "Server = http://home.eelviny.me:8051/rocrail/$CARCH/"
-exit
+exit 1
