@@ -1,0 +1,4 @@
+92c92
+< err=`KRB5_CONFIG=$conf /usr/kerberos/bin/kinit -c "$cc" -k -t "$keytab" "$principal" 2>&1`
+---
+> err=`KRB5_CONFIG=$conf /usr/bin/kinit -c "$cc" -k -t "$keytab" "$principal" 2>&1`

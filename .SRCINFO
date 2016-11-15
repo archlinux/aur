@@ -1,0 +1,17 @@
+pkgbase = monitoring-plugins-kdc
+	pkgdesc = Monitoring plugin for Nagios, Icinga etc. for KDCs
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://exchange.nagios.org/directory/Plugins/Security/check_kdc/details
+	arch = any
+	license = GPL
+	license = Perl-Artistic
+	depends = perl
+	depends = monitoring-plugins
+	source = https://exchange.nagios.org/components/com_mtree/attachment.php?link_id=1287&cf_id=24
+	source = check_kdc.patch
+	md5sums = 2b86dee78f2f24540edbe846b6504043
+	md5sums = 9666e179db04e81904b80bea39cb1980
+
+pkgname = monitoring-plugins-kdc
+
