@@ -1,0 +1,23 @@
+--- src/main.cpp	2016-11-15 13:37:35.200989936 +0100
++++ src/main.cpp	2016-11-15 13:38:56.319271201 +0100
+@@ -413,7 +413,7 @@
+ 
+ 
+ fstream fin;
+-fin.open("mp3music/music_available.dat",ios::in);
++fin.open(DATADIR "mp3music/music_available.dat",ios::in);
+ if( fin.is_open() )
+ {
+ 	HighQualityMusicFound=1;
+
+--- src/functions.cpp	2016-11-15 13:39:30.621881376 +0100
++++ src/functions.cpp	2016-11-15 13:39:53.891391940 +0100
+@@ -447,7 +447,7 @@
+ 	}
+ 	else
+ 	{
+-		sprintf(tmp, "mp3music/%s",filename);
++		sprintf(tmp, DATADIR "mp3music/%s",filename);
+ 		tmp[strlen(tmp)-3]='m';
+ 		tmp[strlen(tmp)-2]='p';
+ 		tmp[strlen(tmp)-1]='3';

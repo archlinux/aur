@@ -1,0 +1,24 @@
+--- src/main.cpp	2016-11-15 13:37:35.200989936 +0100
++++ src/main.cpp	2016-11-15 13:42:10.985191374 +0100
+@@ -28,6 +28,7 @@
+ int targetfps=60;
+ 
+ 	static char szIniFile [MAX_PATH];
++	static char szLogFile [MAX_PATH];
+ 	static char szAppName [MAX_PATH];	
+ 	
+ 
+@@ -58,10 +59,12 @@
+ 	check_and_create_dir(szIniFile);
+ 	snprintf(szIniFile, MAX_PATH, "%s/.megamario/mario.ini",
+ 		home_dir? home_dir:".");
++	snprintf(szLogFile, MAX_PATH, "%s/.megamario/log.txt",
++		home_dir? home_dir:".");
+ 
+ #endif /* defined __unix__ */
+ 
+-	out_logfile.open ("log.txt");
++	out_logfile.open (szLogFile);
+ 
+ 	dictionary * d = iniparser_new(szIniFile);
+ 	pixelation = iniparser_getboolean (d, "Mario:Pixelation", 1);

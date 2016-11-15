@@ -1,0 +1,10 @@
+--- src/Global.h	2016-11-15 13:36:06.179558741 +0100
++++ src/Global.h	2016-11-15 13:36:36.495575590 +0100
+@@ -13,6 +13,7 @@
+ //C++'s
+ 
+ #include <stdlib.h>
++#include <limits.h>
+ //#include <stdio.h>
+ 
+ //#ifndef __unix__

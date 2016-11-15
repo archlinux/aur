@@ -1,0 +1,24 @@
+pkgbase = megamario
+	pkgdesc = A Super Mario Bros. clone
+	pkgver = 1.7
+	pkgrel = 1
+	url = https://sourceforge.net/projects/mmario
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = glu
+	depends = sdl_ttf
+	depends = sdl_image
+	depends = sdl_mixer
+	depends = mesa
+	source = http://downloads.sourceforge.net/mmario/MegaMario_v1.7_full.zip
+	source = fix-compile-error.patch
+	source = fix-mp3-path.patch
+	source = fix-logfile-path.patch
+	sha1sums = 71d777f06109a157ad0df7612cca02d8fe462538
+	sha1sums = 7339e7d728a0dd4eb0ee9bbb3d508a64ea13794e
+	sha1sums = 0d0d7fd3625d4f0c42dcc113483882a8732c154f
+	sha1sums = fbc7b86caabf5985ce32ec58861bc110363c74ae
+
+pkgname = megamario
+
