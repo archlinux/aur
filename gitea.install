@@ -1,10 +1,13 @@
 post_install() {
   systemd-sysusers gitea.conf
   systemd-tmpfiles --create gitea.conf
+  chown -R gitea:gitea /var/log/gitea
+  chown -R gitea:gitea /var/lib/gitea
+  systemctl daemon-reload
 }
 
 post_upgrade(){
-  systemd-tmpfiles --create gitea.conf
+  post_install $1
 
   echo ":: Consider restarting gitea.service"
 }
