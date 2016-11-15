@@ -11,7 +11,7 @@
 
 pkgname=firefox-esr-bin
 _pkgname=${pkgname/-bin/}
-pkgver=45.4.0
+pkgver=45.5.0
 pkgrel=1
 pkgdesc='Standalone web browser from mozilla.org - Extended Support Release'
 url='http://www.mozilla.org/en-US/firefox/organizations/'
@@ -24,10 +24,10 @@ optdepends=('libgnome: fixes file association/default browser issues on GNOME de
 provides=('firefox=45')
 license=('MPL' 'GPL' 'LGPL')
 install=$_pkgname.install
-sha512sums=('3ad773b077c52deb9436e106fb2d10ab87eac2c837da164e4022e797c5f6d3e352a64913465681cc925533e22052bb275f834b7bb7e1d3069cdec9c2bd2dea1f'
+sha512sums=('b084680a460a930c1e47e89954f61b33f59ae31ce0cc550ccf566fac0604ece7e28fea1a7e0d90ef4a1515f684a6f77be7f24619421d08998cc194c656287274'
             '2c2c70cb48202d47e7d3b376b8181e7398b23bb83f5da7724f6290709fe1ff3dca9d9c5666310982569beeeba39ec2d55a4372819f9914c79c6583de7eec06ba'
             '8942b11a7cb3761de1185491397185743adf49daa27a2806d14a328a2be8e2cb566c71dc6449016549cb3bd0d328cfe15944490be749a4add213194f6153c3d0')
-[[ "$CARCH" == "i686" ]] && sha512sums[0]='ed9f4d5865a3762954970af00aa70976ae1d92cc07ab7a66ed4b0e522aaf8001e98c05dfc83769db8fa626a0ad4d8dd85b7b33fd449daf5430acfbb20f01cb1f'
+[[ "$CARCH" == "i686" ]] && sha512sums[0]='a97c742df3f5be8bb8818861a1973ad039401c3ddd1bc5c9ff0d599a2f9f6826499cffc901a1ee8f63896b2a1c94a58addb8eaed7b25ed35e4d8f6df5480e83d'
 # if [[ -n "$FIREFOX_ESR_BIN_PREFER_OLDER" ]]; then
     # pkgver=38.8.0
     # provides=('firefox=38')
