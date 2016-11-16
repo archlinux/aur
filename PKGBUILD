@@ -22,7 +22,7 @@
 #   comment out the `prepare()` function or insert a `return` at the top of it.
 
 pkgname=archdroid-icon-theme
-pkgver=r114.ce01a58
+pkgver=r116.6c24461
 pkgrel=2
 pkgdesc="Port of Android 5/6 (Lollipop/Marshmallow)'s material design icons to Arch."
 arch=('any')
@@ -33,23 +33,21 @@ provides=("${pkgname}")
 conflicts=("${pkgname}" "${pkgname}-git")
 options=('!strip')
 install="${pkgname}.install"
+_commit="6c24461a4ff5db26b9a676d9465e5e50214ba133"
 # To revert to an older version, use an archive from here:
-#   https://raw.githubusercontent.com/GreenRaccoon23/archdroid-icon-theme/raw/master/bak
-source=("https://raw.githubusercontent.com/GreenRaccoon23/${pkgname}/master/${pkgname}.tar.xz")
-# If you see an error like this:
-#     ==> ERROR: One or more files did not pass the validity check!
-# then comment out or delete the line below.
+#   https://github.com/GreenRaccoon23/archdroid-icon-theme/raw/master/bak
+source=("https://raw.githubusercontent.com/GreenRaccoon23/${pkgname}/${_commit}/${pkgname}.tar.xz")
 md5sums=("db3cd391f7f1d7ed767b6cff4a85475c")
 
 prepare() {
   if fc-list | grep Roboto >/dev/null; then
-    return;
+    return 0;
   fi;
 
   error "Required font 'Roboto' is not installed.";
   error "Please install a font package which includes 'Roboto', such as:";
-  for e in ttf-roboto ttf-roboto-font ttf-google-fonts-git ttf-google-fonts-hg otf-google-fonts-hg; do
-    echo "${e}";
+  for f in ttf-roboto ttf-roboto-font ttf-google-fonts-git ttf-google-fonts-hg otf-google-fonts-hg; do
+    echo "${f}";
   done;
   return 1;
 };
