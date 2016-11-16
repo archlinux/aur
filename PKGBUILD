@@ -2,7 +2,7 @@
 
 pkgname=python2-rows
 _pkgname=rows
-pkgver=0.1.1
+pkgver=0.3.0
 pkgrel=2
 pkgdesc="A common, beautiful interface to tabular data, no matter the format"
 arch=('any')
@@ -11,10 +11,10 @@ license=('GPLv3')
 url="https://github.com/turicas/rows"
 
 source=("https://github.com/turicas/${_pkgname}/archive/v${pkgver}.tar.gz")
+md5sums=('d7c8377c269ea264b0051cb5869d0ba6')
 
 package() {
     cd $srcdir/$_pkgname-$pkgver
     python2 setup.py build
     python2 setup.py install --prefix=/usr --root "${pkgdir}" || return 1
 }
-md5sums=('a1bc82f02bda5a1f33139d11b1ecdac8')
