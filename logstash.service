@@ -1,12 +1,15 @@
 [Unit]
-Description=Logstash Agent
+Description=logstash
+After=elasticsearch.service
 
 [Service]
+Type=simple
 User=logstash
 Group=logstash
-Environment=LOGSTASH_CONF=/etc/logstash/conf.d
-WorkingDirectory=/opt/logstash
-ExecStart=/opt/logstash/bin/logstash agent -f $LOGSTASH_CONF
+Environment=LOGSTASH_CONF=/etc/logstash/
+ExecStart=/usr/share/logstash/bin/logstash "--path.settings" "$LOGSTASH_CONF"
+Restart=on-failure
+WorkingDirectory=/
 PrivateTmp=true
 
 [Install]
