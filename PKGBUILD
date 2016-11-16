@@ -20,7 +20,7 @@ makedepends=('go')
 md5sums=('SKIP')
 
 build() {
-	GOPATH=$srcdir
+	export GOPATH=$srcdir
 	go get github.com/fogleman/primitive
 }
 
