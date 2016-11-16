@@ -2,12 +2,12 @@
 
 pkgname=ocaml-theora
 pkgver=0.3.1
-pkgrel=1
+pkgrel=2
 license=('GPL2')
 arch=('i686' 'x86_64')
-pkgdesc=("OCaml binding to libtheora")
+pkgdesc="OCaml binding to libtheora"
 url="https://github.com/savonet/ocaml-theora"
-depends=('ocaml' 'libtheora')
+depends=('ocaml' 'libtheora' 'ocaml-ogg')
 makedepends=('ocaml-findlib')
 source=("https://github.com/savonet/ocaml-theora/releases/download/${pkgver}/${pkgname}-${pkgver}.tar.gz")
 options=('!strip')
