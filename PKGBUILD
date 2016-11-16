@@ -1,8 +1,8 @@
-# Maintainer: Vaporeon <vaporeon@tfwno.gf>
+# Maintainer: Vaporeon <vaporeon@vaporeon.io>
 
 pkgname=bsnes-plus-git
-pkgver=0.73r252.701e7fd
-pkgrel=2
+pkgver=0.73r256.45bf3b1
+pkgrel=1
 pkgdesc='debug-oriented fork of bsnes v073'
 arch=('i686' 'x86_64')
 url='https://github.com/devinacker/bsnes-plus'
@@ -12,7 +12,7 @@ makedepends=('mesa' 'git')
 source=("git+${url}.git"
         'bsnes')
 sha1sums=('SKIP'
-          '102a1295bfa6389a989f65d3037537f7d537e68b')
+          'e230b1393b9b24791ecdab14a92e26c5486fc14f')
 conflicts=('bsnes-plus' 'bsnes-classic')
 provides=('bsnes-plus')
 

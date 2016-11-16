@@ -1,6 +1,6 @@
 #!/bin/sh
 
 # Prompt for profile
-profile="$(zenity --list --radiolist --title 'Please select a profile' --column '' --column '' FALSE 'accuracy' TRUE 'compatibility')"
+profile="$(zenity --list --radiolist --title 'Please select a profile' --column '' --column '' TRUE 'accuracy' FALSE 'compatibility')"
 # Launch selected profile
 [[ -n $profile ]] && exec bsnes-$profile "$@"
