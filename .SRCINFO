@@ -1,0 +1,16 @@
+pkgbase = tmxlite-git
+	pkgdesc = Lightweight C++14 parser for Tiled tmx files
+	pkgver = v1.0.0.r0.gfa0845c
+	pkgrel = 1
+	url = https://github.com/fallahn/tmxlite
+	arch = x86_64
+	arch = x86
+	license = GPL
+	makedepends = git
+	provides = tmxlite
+	conflicts = tmxlite
+	source = tmxlite::git+https://github.com/fallahn/tmxlite.git#branch=master
+	md5sums = SKIP
+
+pkgname = tmxlite-git
+
