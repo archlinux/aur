@@ -4,7 +4,7 @@
 
 
 pkgname=pianoteq-stage
-pkgver=5.7.1
+pkgver=5.8.0
 pkgrel=1
 pkgdesc="Virtual piano instrument using physical modelling synthesis. Both standalone and plugin versions."
 arch=('i686' 'x86_64')
@@ -21,12 +21,12 @@ sha256sums=('94ee64cf6688a49d74f0bf70d811e7466abac103feeab17496a89f828afcc6d3')
 # Define the target archive filename:
 _pianoteqfilename=pianoteq_stage_linux_v${pkgver//./}.7z
 # Define its checksum:
-_pianoteqsha256sum=edad61486178a58cd16db986cdb52e8769b52fbd06b3f15e1d15b271c0625d56
+_pianoteqsha256sum=8a916406458f191228264d0411f9048490926264a8c03238de3d36a0aa972756
 
 prepare(){
         # the source package must be downloaded manually
         # this can be done by going to the link here:
-        # https://www.pianoteq.com/download?file=pianoteq_stage_linux_v571.7z
+        # https://www.pianoteq.com/download?file=pianoteq_stage_linux_v580.7z
         # the checksum will still be validated
 	if [ ! -f "../$_pianoteqfilename" ]
 	then
