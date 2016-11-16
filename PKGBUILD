@@ -1,4 +1,4 @@
-# Maintainer: Christian Zucchelli (@Chris_Zeta) <thewebcha@gmail.com>
+# Maintainer: Erik Westrup <erik.westrup@gmail.com>
 pkgname=zscreen
 pkgver=20150725
 pkgrel=1.4
