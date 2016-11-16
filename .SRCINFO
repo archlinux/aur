@@ -49,6 +49,7 @@ pkgname = php-zts
 	depends = libxml2
 	depends = curl
 	depends = libzip
+	provides = php
 	conflicts = php
 	replaces = php
 	backup = etc/php/php.ini

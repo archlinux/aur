@@ -1,4 +1,3 @@
-# $Id$
 # Maintainer: Aleksey Vasilenko <aleksey.vasilenko@gmail.com>
 
 pkgbase=php-zts
@@ -176,6 +175,7 @@ package_php-zts() {
 	depends=('libxml2' 'curl' 'libzip')
 	conflicts=('php')
 	replaces=('php')
+	provides=('php')
 	backup=('etc/php/php.ini')
 
 	cd ${srcdir}/build
