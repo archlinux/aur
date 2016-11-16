@@ -2,7 +2,7 @@
 
 _pkgname=olm
 pkgname=libolm
-pkgver=1.1.0
+pkgver=2.0.0
 pkgrel=1
 pkgdesc='An implementation of a well known cryptographic ratchet in C++'
 arch=('i686' 'x86_64' 'armv7h')
@@ -10,7 +10,7 @@ url="https://matrix.org/git/olm/"
 license=('Apache')
 depends=('gcc-libs')
 source=("https://matrix.org/git/$_pkgname/snapshot/$_pkgname-$pkgver.tar.bz2")
-md5sums=('8779c22200b639ef08cb338b187459e9')
+md5sums=('16f56c907acea900fb09eabfc0a6fccd')
 
 build() {
   cd "$srcdir/$_pkgname-$pkgver"
