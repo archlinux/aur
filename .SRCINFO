@@ -1,0 +1,13 @@
+pkgbase = meow-bin
+	pkgdesc = Application Menu Editor for GNOME
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://pnmougel.github.io/meow/
+	arch = any
+	license = GPL
+	depends = java-runtime
+	source = https://github.com/pnmougel/meow/raw/master/release/meow_1.0_all.deb
+	sha256sums = daa95e3585346c7b123d429466e9f62800ddf3ec0364b9a451ac0a17aff2d98b
+
+pkgname = meow-bin
+
