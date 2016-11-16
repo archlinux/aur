@@ -1,41 +1,45 @@
 pkgbase = gnome-settings-daemon-ubuntu
-	pkgdesc = The GNOME Settings daemon with Ubuntu's patches
-	pkgver = 3.20.1
+	pkgdesc = GNOME Settings Daemon
+	pkgver = 3.22.1
 	pkgrel = 1
-	url = http://www.gnome.org
+	url = https://git.gnome.org/browse/gnome-settings-daemon
 	arch = i686
 	arch = x86_64
 	groups = gnome
 	groups = unity
 	license = GPL
-	makedepends = intltool
-	makedepends = xf86-input-wacom
-	makedepends = libxslt
 	makedepends = docbook-xsl
-	makedepends = python2
+	makedepends = git
+	makedepends = gnome-common
+	makedepends = intltool
+	makedepends = libxslt
+	makedepends = python
+	makedepends = xf86-input-wacom
 	depends = dconf
+	depends = geoclue2
+	depends = geocode-glib
 	depends = gnome-desktop
 	depends = gsettings-desktop-schemas-ubuntu
+	depends = gtk3-print-backends
 	depends = libcanberra-pulse
+	depends = libgudev
+	depends = libgweather
 	depends = libnotify
+	depends = librsvg
 	depends = libsystemd
 	depends = libwacom
+	depends = nss
 	depends = pulseaudio
 	depends = pulseaudio-alsa
 	depends = upower
-	depends = librsvg
-	depends = libgweather
-	depends = geocode-glib
-	depends = geoclue2
-	depends = nss
-	depends = libgudev
-	provides = gnome-settings-daemon=3.20.1
+	provides = gnome-settings-daemon=3.22.1
 	conflicts = gnome-settings-daemon
-	options = !emptydirs
-	source = http://ftp.gnome.org/pub/gnome/sources/gnome-settings-daemon/3.20/gnome-settings-daemon-3.20.1.tar.xz
-	source = http://ppa.launchpad.net/gnome3-team/gnome3-staging/ubuntu/pool/main/g/gnome-settings-daemon/gnome-settings-daemon_3.20.1-2ubuntu1~ubuntu16.04.1.debian.tar.xz
-	sha512sums = 4d8ec7c8d508a0dead00c08ef591c9814bf1c33d0016626c6cd5153bd2aad601ea1146b0e5617465ee276b44d8d622b664817a83e045cece69c2be76c5e33a84
-	sha512sums = 8eb04cf39ad83c8ed1a1b5d280021f19fe87723be387d5569f1f85bf882f366c7bf8a42870726d91408b28d3b7b39011797eb06b625650123128936b73bf8eee
+	source = git://git.gnome.org/gnome-settings-daemon#commit=3ee42193f8772b5eb39b0b5a4d175b00abce033d
+	source = git://git.gnome.org/libgnome-volume-control
+	source = https://launchpad.net/ubuntu/+archive/primary/+files/gnome-settings-daemon_3.22.1-0ubuntu2.debian.tar.xz
+	sha512sums = SKIP
+	sha512sums = SKIP
+	sha512sums = c1e270e5a1eb89d929d7a5d6b5e538bee3798c64e66ad31b722dd857e80ea288095f6d74867c64708366e151a64ed1607c2584d75c578491cafcc1bf6c170e28
 
 pkgname = gnome-settings-daemon-ubuntu
 
