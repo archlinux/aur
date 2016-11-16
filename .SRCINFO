@@ -44,109 +44,108 @@ pkgbase = php
 	sha256sums = 640dba0d960bfeaae9ad38d2826d3f6b5d6c175a4d3e16664eefff29141faad5
 	sha256sums = d37ce253f1096df1702fe2b0272a0919e8a02cc9e05b868d5f54b506fc6ce0d3
 
-pkgname = php
+pkgname = php-zts
 	pkgdesc = PHP with ZTS enabled
 	depends = libxml2
 	depends = curl
 	depends = libzip
-	provides = php-ldap=7.0.13
-	conflicts = php-ldap
-	replaces = php-ldap
+	conflicts = php
+	replaces = php
 	backup = etc/php/php.ini
 
-pkgname = php-cgi
+pkgname = php-zts-cgi
 	pkgdesc = CGI and FCGI SAPI for PHP
-	depends = php
+	depends = php-zts
 
-pkgname = php-apache
+pkgname = php-zts-apache
 	pkgdesc = Apache SAPI for PHP
-	depends = php
+	depends = php-zts
 	depends = apache
 	backup = etc/httpd/conf/extra/php7_module.conf
 
-pkgname = php-fpm
+pkgname = php-zts-fpm
 	pkgdesc = FastCGI Process Manager for PHP
 	install = php-fpm.install
-	depends = php
+	depends = php-zts
 	depends = systemd
 	options = !emptydirs
 	backup = etc/php/php-fpm.conf
 	backup = etc/php/php-fpm.d/www.conf
 
-pkgname = php-embed
+pkgname = php-zts-embed
 	pkgdesc = Embedded PHP SAPI library
-	depends = php
+	depends = php-zts
 	depends = libsystemd
 	options = !emptydirs
 
-pkgname = php-phpdbg
+pkgname = php-zts-phpdbg
 	pkgdesc = Interactive PHP debugger
-	depends = php
+	depends = php-zts
 	options = !emptydirs
 
-pkgname = php-dblib
+pkgname = php-zts-dblib
 	pkgdesc = dblib module for PHP
-	depends = php
+	depends = php-zts
 	depends = freetds
 
-pkgname = php-enchant
+pkgname = php-zts-enchant
 	pkgdesc = enchant module for PHP
-	depends = php
+	depends = php-zts
 	depends = enchant
 
-pkgname = php-gd
+pkgname = php-zts-gd
 	pkgdesc = gd module for PHP
-	depends = php
+	depends = php-zts
 	depends = gd
 
-pkgname = php-imap
+pkgname = php-zts-imap
 	pkgdesc = imap module for PHP
-	depends = php
+	depends = php-zts
 	depends = c-client
 
-pkgname = php-intl
+pkgname = php-zts-intl
 	pkgdesc = intl module for PHP
-	depends = php
+	depends = php-zts
 	depends = icu
 
-pkgname = php-mcrypt
+pkgname = php-zts-mcrypt
 	pkgdesc = mcrypt module for PHP
-	depends = php
+	depends = php-zts
 	depends = libmcrypt
 	depends = libtool
 
-pkgname = php-odbc
+pkgname = php-zts-odbc
 	pkgdesc = ODBC modules for PHP
-	depends = php
+	depends = php-zts
 	depends = unixodbc
 
-pkgname = php-pgsql
+pkgname = php-zts-pgsql
 	pkgdesc = PostgreSQL modules for PHP
-	depends = php
+	depends = php-zts
 	depends = postgresql-libs
 
-pkgname = php-pspell
+pkgname = php-zts-pspell
 	pkgdesc = pspell module for PHP
-	depends = php
+	depends = php-zts
 	depends = aspell
 
-pkgname = php-snmp
+pkgname = php-zts-snmp
 	pkgdesc = snmp module for PHP
-	depends = php
+	depends = php-zts
 	depends = net-snmp
 
-pkgname = php-sqlite
+pkgname = php-zts-sqlite
 	pkgdesc = sqlite module for PHP
-	depends = php
+	depends = php-zts
 	depends = sqlite
 
-pkgname = php-tidy
+pkgname = php-zts-tidy
 	pkgdesc = tidy module for PHP
-	depends = php
+	depends = php-zts
 	depends = tidy
 
-pkgname = php-xsl
+pkgname = php-zts-xsl
 	pkgdesc = xsl module for PHP
-	depends = php
+	depends = php-zts
 	depends = libxslt
 
