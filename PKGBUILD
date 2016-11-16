@@ -3,7 +3,7 @@ pkgname=('qt5-styleplugins')
 _srcname='qtstyleplugins'
 pkgdesc='Additional style plugins for Qt5'
 pkgver='5.0.0'
-pkgrel='3'
+pkgrel='4'
 arch=('i686' 'x86_64')
 url="https://code.qt.io/cgit/qt/${_srcname}"
 license=('LGPL')
@@ -29,5 +29,4 @@ package() {
     cd "${srcdir}/${_srcname}"
 
     make INSTALL_ROOT="${pkgdir}" install
-    rm --recursive "${pkgdir}/usr/lib/cmake"
 }
