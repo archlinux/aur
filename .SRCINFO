@@ -1,7 +1,7 @@
 pkgbase = firefox-extension-flash-video-downloader
 	pkgdesc = download your favorite videos in 1 click
-	pkgver = 13.2.4
-	pkgrel = 2
+	pkgver = 15.0.3
+	pkgrel = 1
 	url = http://www.flashvideodownloader.org/
 	arch = any
 	license = MPLv1.1
@@ -11,7 +11,7 @@ pkgbase = firefox-extension-flash-video-downloader
 	noextract = firefox-extension-flash-video-downloader.zip
 	source = firefox-extension-flash-video-downloader.zip::https://addons.mozilla.org/firefox/downloads/latest/flash-video-downloader/platform:2/
 	source = .version::https://services.addons.mozilla.org/firefox/api/1.5/addon/flash-video-downloader
-	md5sums = 666d0302fedfb408f47e2c4fe94e7817
+	md5sums = 3ba7e32f2d9c7f5bbf55622002016881
 	md5sums = SKIP
 
 pkgname = firefox-extension-flash-video-downloader
