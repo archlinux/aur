@@ -7,14 +7,14 @@ validpgpkeys=('748231EBCBD808A14F5E85D28C004C2F93481F6B')
 
 pkgname=python-pychroot
 pkgver=0.9.16
-pkgrel=1
+pkgrel=2
 pkgdesc="A python library and CLI tool that simplifies chroot handling"
 arch=( 'i686' 'x86_64' )
 url="https://pypi.python.org/pypi/pychroot/"
 license=( 'BSD' )
 depends=( 'python' )
 makedepends=( 'python' 'python-snakeoil' )
-_pkgname=python-pychroot
+_pkgname=pychroot
 
 install=
 changelog=
@@ -25,11 +25,12 @@ sha512sums=('6e35c7b40ad27d234c855abf1857aa6579583d848b111559de21edfa0bc6987e08d
             'SKIP')
 
 build() {
-        cd "${srcdir}/${_pkgname}/src"
-        make prefix=${pkgdir}/usr
+	cd "${srcdir}/${_pkgname}-${pkgver}"
+        python3 setup.py build || return 1
 }
 
 package() {
-        install -D -m755 ${srcdir}/${_pkgname}/src/${_pkgname} ${pkgdir}/usr/bin/${_pkgname}
-        install -D -m644 ${srcdir}/${_pkgname}/docs/README.html.en ${pkgdir}/usr/share/doc/${_pkgname}/README.html
+	cd "${srcdir}/${_pkgname}-${pkgver}"
+	python3 setup.py install --root="${pkgdir}" --optimize=1 || return 1
+	install -D -m 0644 ${srcdir}/${_pkgname}-${pkgver}/LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
 }
