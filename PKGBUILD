@@ -2,10 +2,10 @@
 
 pkgname=ocaml-opus
 pkgver=0.1.1
-pkgrel=1
+pkgrel=2
 license=('GPL2')
 arch=('i686' 'x86_64')
-pkgdesc=("OCaml bindings for Opus audio codec")
+pkgdesc="OCaml bindings for Opus audio codec"
 url="https://github.com/savonet/ocaml-opus"
 depends=('ocaml' 'opus' 'ocaml-ogg')
 makedepends=('ocaml-findlib')
