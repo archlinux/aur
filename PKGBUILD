@@ -5,13 +5,13 @@
 
 pkgname=lib32-avahi
 pkgver=0.6.32
-pkgrel=2
+pkgrel=3
 _commit=4f334990f692ce08ab4ea2eece695f1592f535b2
 pkgdesc='Service Discovery for Linux using mDNS/DNS-SD -- compatible with Bonjour (32-bit)'
 arch=('x86_64')
 url='https://github.com/lathiat/avahi'
 license=('LGPL')
-depends=("${pkgname#lib32-}" 'expat' 'lib32-gdbm' 'lib32-glib2' 'lib32-libcap' 'lib32-libdaemon' 'lib32-libdbus')
+depends=("${pkgname#lib32-}" 'expat' 'lib32-gdbm' 'lib32-glib2' 'lib32-libcap' 'lib32-libdaemon' 'lib32-dbus')
 makedepends=('gcc-multilib' 'git' 'gobject-introspection' 'gtk-sharp-2' 'intltool' 'lib32-gtk2' 'lib32-gtk3' 'lib32-qt4'
              'pygtk' 'python-dbus' 'python2-dbus' 'mono' 'xmltoman')
 optdepends=('lib32-gtk3: gtk3 bindings'
