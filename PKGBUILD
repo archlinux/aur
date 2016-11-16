@@ -8,7 +8,7 @@ pkgrel=1
 arch=('i686' 'x86_64')
 license=('custom')
 groups=('xorg')
-url="http://xorg.freedesktop.org"
+url="https://xorg.freedesktop.org"
 makedepends=('pixman' 'libx11' 'mesa' 'libgl' 'xf86driproto' 'xcmiscproto' 'xtrans' 'bigreqsproto' 'randrproto' 
              'inputproto' 'fontsproto' 'videoproto' 'presentproto' 'compositeproto' 'recordproto' 'scrnsaverproto'
              'resourceproto' 'xineramaproto' 'libxkbfile' 'libxfont' 'renderproto' 'libpciaccess' 'libxv'
