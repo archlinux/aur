@@ -8,7 +8,7 @@ arch=('i686' 'x86_64')
 url="http://www.sourcefabric.org/en/airtime"
 license=('GPL3')
 phpver=56
-depends=('php$phpver' 'php$phpver-gd' 'php$phpver-pear' 'zendframework' 'php$phpver-pgsql'
+depends=("php$phpver" "php$phpver-gd" "php$phpver-pear" 'zendframework' "php$phpver-pgsql"
          'python2' 'python2-virtualenv' 'python2-pip'
          'python2-configobj' 'python2-anyjson' 'python2-amqplib'
          'python2-argparse' 'python2-configobj' 'python2-docopt'
