@@ -2,10 +2,10 @@
 
 pkgname=ocaml-ogg
 pkgver=0.5.0
-pkgrel=1
+pkgrel=2
 license=('LGPL2.1')
 arch=('i686' 'x86_64')
-pkgdesc=("OCaml binding to libogg")
+pkgdesc="OCaml binding to libogg"
 url="https://github.com/savonet/ocaml-ogg"
 depends=('ocaml' 'libogg')
 makedepends=('ocaml-findlib')
