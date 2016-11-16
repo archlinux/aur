@@ -7,7 +7,7 @@ validpgpkeys=('748231EBCBD808A14F5E85D28C004C2F93481F6B')
 
 pkgname=python-pychroot
 pkgver=0.9.16
-pkgrel=2
+pkgrel=3
 pkgdesc="A python library and CLI tool that simplifies chroot handling"
 arch=( 'i686' 'x86_64' )
 url="https://pypi.python.org/pypi/pychroot/"
@@ -30,7 +30,9 @@ build() {
 }
 
 package() {
+	PYVER=$(python --version | sed -re 's/^Python[[:space:]]*([0-9]\.[0-9])\.[0-9]*/\1/g')
 	cd "${srcdir}/${_pkgname}-${pkgver}"
 	python3 setup.py install --root="${pkgdir}" --optimize=1 || return 1
 	install -D -m 0644 ${srcdir}/${_pkgname}-${pkgver}/LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
+	ln -sf ${pkgdir}/usr/bin/${_pkgname} ${pkgdir}/usr/lib/python${PYVER}/site-packages/pychroot/scripts/__init__.py
 }
