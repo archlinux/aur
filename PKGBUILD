@@ -2,7 +2,7 @@
 # Contributor: FrozenCow <frozencow@gmail.com>
 
 pkgname=kitch
-pkgver=19.1.2
+pkgver=19.1.3
 pkgrel=1
 pkgdesc="The best way to play itch.io games."
 
@@ -17,7 +17,7 @@ install="kitch.install"
 
 # sic. - source is in itch repo, kitch is a dummy repo for canary-channel github releases
 source=("https://github.com/itchio/itch/archive/v${pkgver}-canary.tar.gz")
-sha256sums=('379200a6c7d6c962915ab5d545c408be1d25e87ccb37b01a081ee15cade01020')
+sha256sums=('c36a1a7e5875d415778122ddbc695ac711716d2000ef895de6f288ecf6eb5419')
 
 [ "$CARCH" = "i686" ]   && _ELECTRON_ARCH=ia32; _ITCH_ARCH=i386
 [ "$CARCH" = "x86_64" ] && _ELECTRON_ARCH=x64;  _ITCH_ARCH=amd64
@@ -34,7 +34,7 @@ prepare() {
 
 build() {
   cd "${srcdir}/itch-${pkgver}-canary"
-  export CI_BUILD_TAG="v19.1.2-canary"
+  export CI_BUILD_TAG="v19.1.3-canary"
   export CI_CHANNEL="canary"
 
   release/ci-compile.js
@@ -55,7 +55,7 @@ package() {
   cp -a "build/v${pkgver}-canary/kitch-linux-${_ELECTRON_ARCH}/." "${pkgdir}/usr/lib/kitch"
 
   install -d "${pkgdir}/usr/share/applications"
-  install -Dm644 linux-extras/kitch.desktop "${pkgdir}/usr/share/applications/kitch.desktop"
+  install -Dm644 linux-extras/io.itch.kitch.desktop "${pkgdir}/usr/share/applications/kitch.desktop"
 
   for icon in release/images/kitch-icons/icon*.png
   do
