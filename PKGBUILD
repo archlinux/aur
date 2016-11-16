@@ -1,9 +1,9 @@
 # Maintainer: Kevin Houdebert <kevin@qwazerty.eu>
 
 _npmname=aglio
-_npmver=2.2.1
+_npmver=2.3.0
 pkgname=nodejs-aglio # All lowercase
-pkgver=2.2.1
+pkgver=2.3.0
 pkgrel=1
 pkgdesc="An API Blueprint renderer with theme support that outputs static HTML"
 arch=(any)
@@ -13,7 +13,7 @@ depends=('nodejs' 'npm')
 optdepends=()
 source=(http://registry.npmjs.org/$_npmname/-/$_npmname-$_npmver.tgz)
 noextract=($_npmname-$_npmver.tgz)
-sha1sums=('c03ba6add1038105ba87aec52506b3122e1f8a8c')
+sha256sums=('521b860ac4795a0e9f1f66dac63a222d4c9e15c6914381cad1082ee41ee6cedc')
 
 package() {
   cd "$srcdir"
