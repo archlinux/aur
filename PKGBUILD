@@ -1,9 +1,9 @@
 #Maintainer: Raimar Buehmann <raimar at buehmann dot de>
 
 pkgname='eclipse-jubula-git'
-pkgver=4.0.0
-_buildNumber=384
-pkgrel=3
+pkgver=5.0.0
+_buildNumber=lastStableBuild
+pkgrel=1
 pkgdesc='Jubula plugins for Eclipse IDE to create functional GUI tests (gerrit version)'
 arch=('any')
 url='http://eclipse.org/jubula/'
@@ -14,7 +14,7 @@ conflicts=('eclipse-jubula')
 options=('!strip')
 source=(
 "https://hudson.eclipse.org/jubula/job/jubula-gerrit/${_buildNumber}/artifact/org.eclipse.jubula.core/org.eclipse.jubula.repo/target/org.eclipse.jubula.repo-${pkgver}-SNAPSHOT.zip")
-sha256sums=('02b5b24564cd87bb6dffdcccb89efc26ed1c14e88c3ce7bb5b5165d3280df6a5')
+sha256sums=('SKIP')
 
 package() {
   # remove features and plug-ins contain sources
