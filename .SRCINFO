@@ -1,0 +1,23 @@
+pkgbase = lunarglass-git
+	pkgdesc = LLVM IR and optimizer for shaders, including front-end adapters for GLSL and SPIR-V
+	pkgver = 20161115
+	pkgrel = 1
+	url = https://github.com/LunarG/LunarGLASS
+	arch = i686
+	arch = x86_64
+	license = unknown
+	makedepends = git
+	makedepends = cmake
+	makedepends = python
+	provides = lunarglass
+	conflicts = lunarglass
+	noextract = llvm-3.4.src.tar.gz
+	source = git+git://github.com/LunarG/LunarGLASS.git
+	source = git+git://github.com/KhronosGroup/glslang.git
+	source = http://llvm.org/releases/3.4/llvm-3.4.src.tar.gz
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = 46ed668a1ce38985120dbf6344cf6116
+
+pkgname = lunarglass-git
+
