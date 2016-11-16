@@ -1,0 +1,48 @@
+From 59b9003f551d19d87c429149eae7e36fce1175df Mon Sep 17 00:00:00 2001
+From: Xiao-Long Chen <chenxiaolong@cxl.epac.to>
+Date: Sat, 14 May 2016 19:30:20 -0400
+Subject: [PATCH] Revert "schemas: Scroll method key changes"
+
+This reverts commit 656aca6942c8417ddb3216063b97b7a1336076c9.
+---
+ headers/gdesktop-enums.h                             | 7 +++++++
+ schemas/org.gnome.desktop.peripherals.gschema.xml.in | 5 +++++
+ 2 files changed, 12 insertions(+)
+
+diff --git a/headers/gdesktop-enums.h b/headers/gdesktop-enums.h
+index 2ddca49..8386f61 100644
+--- a/headers/gdesktop-enums.h
++++ b/headers/gdesktop-enums.h
+@@ -164,6 +164,13 @@ typedef enum
+ 
+ typedef enum
+ {
++  G_DESKTOP_TOUCHPAD_SCROLL_METHOD_DISABLED,
++  G_DESKTOP_TOUCHPAD_SCROLL_METHOD_EDGE_SCROLLING,
++  G_DESKTOP_TOUCHPAD_SCROLL_METHOD_TWO_FINGER_SCROLLING
++} GDesktopTouchpadScrollMethod;
++
++typedef enum
++{
+   G_DESKTOP_TOUCHPAD_HANDEDNESS_RIGHT,
+   G_DESKTOP_TOUCHPAD_HANDEDNESS_LEFT,
+   G_DESKTOP_TOUCHPAD_HANDEDNESS_MOUSE
+diff --git a/schemas/org.gnome.desktop.peripherals.gschema.xml.in b/schemas/org.gnome.desktop.peripherals.gschema.xml.in
+index 9f109ef..2e6567a 100644
+--- a/schemas/org.gnome.desktop.peripherals.gschema.xml.in
++++ b/schemas/org.gnome.desktop.peripherals.gschema.xml.in
+@@ -8,6 +8,11 @@
+     <child name="touchscreen" schema="org.gnome.desktop.peripherals.touchscreen"/>
+   </schema>
+   <schema gettext-domain="@GETTEXT_PACKAGE@" id="org.gnome.desktop.peripherals.touchpad" path="/org/gnome/desktop/peripherals/touchpad/">
++    <key name="scroll-method" enum="org.gnome.desktop.GDesktopTouchpadScrollMethod">
++      <default>'two-finger-scrolling'</default>
++      <summary>Select the touchpad scroll method</summary>
++      <description>Select the touchpad scroll method. Supported values are: "disabled", "edge-scrolling", "two-finger-scrolling".</description>
++    </key>
+     <key name="edge-scrolling-enabled" type="b">
+       <default>true</default>
+       <summary>Whether edge scrolling is enabled</summary>
+-- 
+2.8.2
+
