@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=Sqlectron
+Comment=A simple and lightweight SQL client with cross database and platform support
+Exec="/opt/Sqlectron/Sqlectron"
+Terminal=false
+Type=Application
+Icon=Sqlectron
