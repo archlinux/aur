@@ -9,11 +9,11 @@
 # Based on linux-grsec package
 
 pkgbase=linux-libre-grsec-knock
-_pkgbasever=4.7-gnu
-_pkgver=4.7.10-gnu
+_pkgbasever=4.8-gnu
+_pkgver=4.8.8-gnu
 _grsecver=3.1
-_timestamp=201610262029
-_knockpatchver=4.7_1
+_timestamp=201611150756
+_knockpatchver=4.8_1
 
 _replacesarchkernel=('linux%') # '%' gets replaced with _kernelname
 _replacesoldkernels=() # '%' gets replaced with _kernelname
@@ -24,7 +24,7 @@ _archpkgver=${_pkgver%-*}.${_timestamp}
 epoch=1
 pkgver=${_pkgver//-/_}.r${_timestamp}
 pkgrel=1
-rcnrel=armv7-x3
+rcnrel=armv7-x4
 arch=('i686' 'x86_64' 'armv7h')
 url="https://wiki.parabola.nu/Grsecurity%2BKnock"
 license=('GPL2')
@@ -68,14 +68,17 @@ source=("http://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgbasever}/li
         '0007-set-default-cubietruck-led-triggers.patch'
         '0008-USB-armory-support.patch'
         '0009-ARM-dts-imx6ul-pico-hobbit-Add-Wifi-support.patch'
-        '0010-exynos4412-odroid-set-higher-minimum-buck2-regulator.patch')
-sha256sums=('f483e595e0ad9a9d1b3afd20e4ecb0b798cf16eb31e79a7b99311eb9c061032a'
+        '0010-exynos4412-odroid-set-higher-minimum-buck2-regulator.patch'
+        '0011-usb-musb-Call-pm_runtime-from-musb_gadget_queue.patch'
+        '0012-phy-twl4030-usb-better-handle-musb_mailbox-failure.patch'
+        '0013-Revert-gpu-drm-omapdrm-dss-of-add-missing-of_node_pu.patch')
+sha256sums=('d54e0f8a27e24f3666c19b395c19dba194635db26929c89e78ffa4b2b0e8ca3a'
             'SKIP'
-            '2c90eb1a33112512728f421e06a2f1b0004a6012fc83c638b1ae57626d2da250'
+            'e181d8175cbcda285b9c8864887907a89405517f00c12b0367c9717e2804a6a0'
             'SKIP'
-            '648d926d8e8d1fe9bd0b611b3591c85147cba1affaf3fbfd6357b8a35b2a15b8'
+            '1c92d99b389efb854c841dc52f0fbe5e6c07ee90d2a645d7207eaf42e501858a'
             'SKIP'
-            'ae7ea068d703220716591ed3d865238b7ac140181b83d7eb466cc9c140933113'
+            '4d231ec2fdd78d7053314e90617f3bf4e6b71f2546669743fa8399f439fec142'
             'SKIP'
             'bfd4a7f61febe63c880534dcb7c31c5b932dde6acf991810b41a939a93535494'
             'SKIP'
@@ -83,27 +86,30 @@ sha256sums=('f483e595e0ad9a9d1b3afd20e4ecb0b798cf16eb31e79a7b99311eb9c061032a'
             'SKIP'
             '6de8a8319271809ffdb072b68d53d155eef12438e6d04ff06a5a4db82c34fa8a'
             'SKIP'
-            'a53edf95e7e1380b2039bfe9e9b229420c9d1e129e7942342d9bdd8f97b3b513'
-            '4ddf7bee9a06d7948240986202b50c6cad496b87d239b074e94e5970ae63e269'
-            '147fea6d3b447b5b618df6d3455bebf7b62cf9c57cdff7dd4cc257fe3d8bffa6'
+            '94d07f15dff146f012e1999764e3f62a011896ae9d996e46135255c7fdf3da4f'
+            '5433ddbbf4d6d2fa55d416b7bdf0544019978b916b98a4c2fabb27979869ad49'
+            '678f486b72e7b91ddb3e566cf5132c4c66bf33260999edcc0a61974f4836cddb'
             'f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
             '0376bd5efa31d4e2a9d52558777cebd9f0941df8e1adab916c868bf0c05f2fc3'
             '351fd96be8cd5ebd0435c0a8a978673fc023e3b1026085e67f86d815b2285e25'
-            'e82cd603e71736851629ffc5e8b22eeb728f439471a87f1fbbd2fbb59280cf30'
+            '8c0efb7f602dd445b9c31357f0b27730a47ab3a496aea8ff0465ab8c3caa3ca2'
             'SKIP'
             '1fc7055041da895d5d023fcf0c5e06d00a3506ae98931138229dba7392e2c382'
             '34c74396b40f1a22a94c1e49e6ae1aaed2fb55f28225dfa9de2cb6f9f4607d21'
-            '1620f9ed6f52250c540a88d5182be0caf8b50b93f83c85fec02c225ae121c9c1'
-            'd61c4da6d06ad61b20058dd8684aba5dc581e75264834e3a03f958f941bfeea5'
-            'b0d21ae300fb667350323190a9217e7e19834f9c216627e927c01feda63341f8'
-            'de351f60a570b58cdebaaebd635323fe18dfca460603d3ed0cd5925bf0ea1f49'
-            '5b9f972315b1f885d21367cd20ccb8de16ad0fbece0aaec3e57028e07100e43e'
-            'f5350c011438f7d86078a6b3e490f067e362c84ad342dd21fd7ef1da23d5e451'
-            '9e99458cc054ab92de5845b78e9e2a4d701a5e358172baa00f927ca125e7e5d7'
-            'f5e9c9740938c632a932b40b64c13edba6d646156eb69e4e066e112d451e919a'
-            '9e23490f1539b026e58f2d5e5223cfde1e324176657856dea9565270d95e60ca'
-            'c37572b7188c07e1be371b1f759abdb1ec3c0b07658fda26233be15c2ab734c4')
+            '858eac5f4aadb7a4157a36b31d101d75d841a9c58199e580201d8305356044e3'
+            'eee25f5fa6e6b0fb3d5ab913521af67adf788b8613cad1b6d38711261f70646f'
+            'ece5581c6b19073ccb191a6c49d50cd17ff61916ab53c7eb3039e5ecbcf2d0e3'
+            '0b7f588d1bccef7ac116f4d64e8877aefdf9099f16177a75ffc0c1bcd5d2fff9'
+            '9b504e544345119660fc50875decc1b9ee59ca9783bc5b466461410b307974f2'
+            '1b2eb7f52cf0f5481bdaca484cbd3175b2e472e63e46887cc0ed003e39e57ff3'
+            'c7bba5a22db69e50ea8c7c7abc6bb8d133a30b27b2e7d77fc1f7e435f328366a'
+            'f485923217433862978af1029d6d0573b39d6779796fb8f85ab4d588466ec0d2'
+            '5b21335a3a23345f8296e9258c20f7d70d9668a771019f4ea52eda3e916915b5'
+            '616970b049d597e994930d323c5a5efdd3e1344275c53792840a1898a52bb5dd'
+            '9b0afd186edf6dae0fe0c89ca1c83e5cfa207640859d5c560defead6897478b2'
+            'e565ff56ec6b4dcb43a45cb4d79060d5311e6363f6f0dcfe209cb0efb49df65c'
+            '10055949d09efc74b1586df4d74531910b551a8a8e047ab3800942881e97c974')
 validpgpkeys=(
               '474402C8C582DAFBE389C427BCB7CF877E7D47A7' # Alexandre Oliva
               'C92BAA713B8D53D3CAE63FC9E6974752F9704456' # André Silva
@@ -160,6 +166,9 @@ prepare() {
     patch -p1 -i "${srcdir}/0008-USB-armory-support.patch"
     patch -p1 -i "${srcdir}/0009-ARM-dts-imx6ul-pico-hobbit-Add-Wifi-support.patch"
     patch -p1 -i "${srcdir}/0010-exynos4412-odroid-set-higher-minimum-buck2-regulator.patch"
+    patch -p1 -i "${srcdir}/0011-usb-musb-Call-pm_runtime-from-musb_gadget_queue.patch"
+    patch -p1 -i "${srcdir}/0012-phy-twl4030-usb-better-handle-musb_mailbox-failure.patch"
+    patch -p1 -i "${srcdir}/0013-Revert-gpu-drm-omapdrm-dss-of-add-missing-of_node_pu.patch"
   fi
 
   # add freedo as boot logo
