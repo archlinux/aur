@@ -2,10 +2,10 @@
 
 pkgname=ocaml-flac
 pkgver=0.1.2
-pkgrel=1
+pkgrel=2
 license=('GPL2')
 arch=('i686' 'x86_64')
-pkgdesc=("OCaml bindings to libFLAC")
+pkgdesc="OCaml bindings to libFLAC"
 url="https://github.com/savonet/ocaml-flac"
 depends=('ocaml' 'flac' 'ocaml-ogg')
 makedepends=('ocaml-findlib')
