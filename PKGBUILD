@@ -1,7 +1,7 @@
 # $Id$
 # Maintainer: Aleksey Vasilenko <aleksey.vasilenko@gmail.com>
 
-pkgbase=php
+pkgbase=php-zts
 pkgname=('php-zts'
          'php-zts-cgi'
          'php-zts-apache'
@@ -42,7 +42,7 @@ validpgpkeys=('1A4E8B7277C42E53DBA9C7B9BCAA30EA9C0D5763'
               '6E4F6AB321FDC07F2C332E3AC2BF0BC433CFC8B3')
 
 prepare() {
-	cd ${srcdir}/${pkgbase}-${pkgver}
+	cd ${srcdir}/php-${pkgver}
 
 	patch -p0 -i ${srcdir}/apache.patch
 	patch -p0 -i ${srcdir}/php-fpm.patch
@@ -50,7 +50,7 @@ prepare() {
 }
 
 build() {
-	local _phpconfig="--srcdir=../${pkgbase}-${pkgver} \
+	local _phpconfig="--srcdir=../php-${pkgver} \
 		--config-cache \
 		--prefix=/usr \
 		--sbindir=/usr/bin \
@@ -127,7 +127,7 @@ build() {
 
 	mkdir ${srcdir}/build
 	cd ${srcdir}/build
-	ln -s ../${pkgbase}-${pkgver}/configure
+	ln -s ../php-${pkgver}/configure
 	./configure ${_phpconfig} \
 		--enable-cgi \
 		--enable-fpm \
@@ -158,7 +158,7 @@ build() {
 }
 
 check() {
-	cd ${srcdir}/${pkgbase}-${pkgver}
+	cd ${srcdir}/php-${pkgver}
 
 	# Check if sendmail was configured correctly (FS#47600)
 	${srcdir}/build/sapi/cli/php -n -r 'echo ini_get("sendmail_path");' | grep -q '/usr/bin/sendmail'
@@ -180,7 +180,7 @@ package_php-zts() {
 
 	cd ${srcdir}/build
 	make -j1 INSTALL_ROOT=${pkgdir} install-{modules,cli,build,headers,programs,pharcmd}
-	install -D -m644 ${srcdir}/${pkgbase}-${pkgver}/php.ini-production ${pkgdir}/etc/php/php.ini
+	install -D -m644 ${srcdir}/php-${pkgver}/php.ini-production ${pkgdir}/etc/php/php.ini
 	install -d -m755 ${pkgdir}/etc/php/conf.d/
 
 	# remove static modules

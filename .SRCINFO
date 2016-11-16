@@ -1,4 +1,4 @@
-pkgbase = php
+pkgbase = php-zts
 	pkgver = 7.0.13
 	pkgrel = 1
 	url = http://www.php.net
