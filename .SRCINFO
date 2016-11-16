@@ -1,0 +1,16 @@
+pkgbase = php-pecl-yaml
+	pkgdesc = PHP YAML extension
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = http://pecl.php.net/package/yaml
+	arch = i686
+	arch = x86_64
+	license = MIT
+	depends = php
+	depends = php-pear
+	depends = libyaml
+	source = http://pecl.php.net/get/yaml-2.0.0.tgz
+	md5sums = 5bdb54d5cd62d41354434f4d2a1c11ee
+
+pkgname = php-pecl-yaml
+
