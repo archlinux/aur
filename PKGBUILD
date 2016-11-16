@@ -1,6 +1,6 @@
 # Maintainer: Lukas Jirkovsky <l.jirkovsky AT gmail.com>
 pkgname=rawtherapee-gtk3-git
-pkgver=3399.3473435
+pkgver=4021.8801570
 pkgrel=1
 pkgdesc="RAW photo editor"
 arch=('i686' 'x86_64')
@@ -10,8 +10,7 @@ depends=('fftw' 'gtk3' 'glibmm' 'gtkmm3' 'lcms2' 'libcanberra' 'libiptcdata' 'de
 makedepends=('cmake' 'git')
 provides=('rawtherapee')
 conflicts=('rawtherapee')
-install=rawtherapee.install
-source=('rawtherapee::git+https://github.com/Beep6581/RawTherapee.git#branch=gtk3')
+source=('rawtherapee::git+https://github.com/Beep6581/RawTherapee.git#branch=gtk3-bugfix')
 md5sums=('SKIP')
 
 pkgver() {
