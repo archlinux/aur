@@ -1,6 +1,6 @@
 pkgbase = lightdm-ubuntu
 	pkgdesc = A lightweight display manager
-	pkgver = 1.19.3
+	pkgver = 1.20.0
 	pkgrel = 1
 	url = https://launchpad.net/lightdm
 	arch = i686
@@ -23,7 +23,7 @@ pkgbase = lightdm-ubuntu
 	makedepends = qt4
 	makedepends = qt5-base
 	makedepends = vala
-	source = https://launchpad.net/ubuntu/+archive/primary/+files/lightdm_1.19.3-0ubuntu1.tar.gz
+	source = https://launchpad.net/ubuntu/+archive/primary/+files/lightdm_1.20.0-0ubuntu2.tar.gz
 	source = lightdm.service
 	source = lightdm.tmpfiles
 	source = lightdm.pam
@@ -32,7 +32,7 @@ pkgbase = lightdm-ubuntu
 	source = lightdm-default-config.patch
 	source = Xsession
 	source = 0001-guest-account-Add-default-GSettings-support.patch
-	sha512sums = 4c43309a5f0520047108646dcc8c5ede6da5f1478fd2ed7df30da738efe36129b1c98ab1872391a04b64ccf38afc3d28f99137a92fa824b3d0e60838490e2c97
+	sha512sums = 2ac7a8908c288c95f0866dfc61ea171434edad8d849eb8b24e8b4e3f23bfd593441e2884e19df3e34a95bac9e21d60f29279c2cfafdc4f62338296bd38d6f34e
 	sha512sums = d49344e79f6468ef06538068cbb12c37e313e02ade28984a75dad4d50e1e962372451908e9910ae60c74bd5230ae45e6a6346bb0f7c6af83c346a691f5714556
 	sha512sums = c359dbea59d9a38faa244fc52fa7fbe2a099984bdaa015e38046abfef71ed4941230b86a238c1691f04bda6f7608f403e99b04018a7cd5b7217fa89fc703af9f
 	sha512sums = cb912013a294f0801b357a43f3e5313ffa9ac5fcc493b2318843983388eb0b839c84060a97c355e12ca03f3b056644aa4a2bb8a74ed73a0f2405816b8d6efdc0
@@ -59,7 +59,7 @@ pkgname = lightdm-ubuntu
 	optdepends = lightdm-gtk-greeter: GTK greeter
 	optdepends = lightdm-kde-greeter: Qt greeter
 	optdepends = lightdm-unity-greeter: Default Ubuntu Greeter
-	provides = lightdm=1.19.3
+	provides = lightdm=1.20.0
 	conflicts = lightdm
 	backup = etc/apparmor.d/lightdm-guest-session
 	backup = etc/lightdm/keys.conf
@@ -74,7 +74,7 @@ pkgname = liblightdm-qt4-ubuntu
 	pkgdesc = LightDM Qt4 client library
 	depends = lightdm-ubuntu
 	depends = qt4
-	provides = liblightdm-qt4=1.19.3
+	provides = liblightdm-qt4=1.20.0
 	conflicts = liblightdm-qt4
 	options = !emptydirs
 
@@ -82,7 +82,7 @@ pkgname = liblightdm-qt5-ubuntu
 	pkgdesc = LightDM Qt5 client library
 	depends = lightdm-ubuntu
 	depends = qt5-base
-	provides = liblightdm-qt5=1.19.3
+	provides = liblightdm-qt5=1.20.0
 	conflicts = liblightdm-qt5
 	options = !emptydirs
 
