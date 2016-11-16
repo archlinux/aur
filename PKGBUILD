@@ -1,13 +1,14 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 pkgname=guile-emacs-git
 pkgver=116892.41120e0
-pkgrel=4
+pkgrel=5
 pkgdesc="branch of GNU Emacs that replaces Emacs' own EmacsLisp engine with that of Guile."
 arch=('i686' 'x86_64')
 url="http://www.emacswiki.org/emacs/GuileEmacs"
 license=('GPL3')
-depends=('librsvg' 'guile4emacs-git' 'giflib' 'gtk3' 'alsa-lib' 'imagemagick' 'gconf' 'gpm' 'm17n-lib' 'desktop-file-utils')
-makedepends=('git')
+depends=('guile4emacs-git' 'gtk3' 'alsa-lib' 'imagemagick'  'gpm'
+	 'm17n-lib' 'desktop-file-utils' 'gc' 'gnutls')
+makedepends=('git' 'clang' 'gconf')
 conflicts=('emacs' 'ctags')
 provides=('emacs' 'ctags')
 options=('!strip' '!makeflags')
