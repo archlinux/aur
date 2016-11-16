@@ -1,7 +1,7 @@
 pkgbase = plexwatch
 	pkgdesc = Notify and Log 'Now Playing' and 'Watched' content from a Plex Media Server + 'Recently Added' (...and more)
 	pkgver = 0.3.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/ljunkie/plexWatch
 	arch = any
 	license = unknown
@@ -14,6 +14,7 @@ pkgbase = plexwatch
 	depends = perl-json
 	depends = perl-dbd-sqlite
 	depends = perl-io-socket-ssl
+	depends = perl-lwp-protocol-https
 	optdepends = perl-net-twitter: Required ONLY if you use twitter
 	optdepends = perl-net-oauth: Required ONLY if you use twitter
 	optdepends = perl-growl-gntp: Required ONLY if you use GNTP

@@ -1,12 +1,22 @@
 # Maintainer: Sonic-Y3k <sonic.y3k@googlemail.com>
+# Contributor: Ben Copeland <ben@copeland.me.uk>
 pkgname=plexwatch
 pkgver=0.3.3
-pkgrel=2
+pkgrel=3
 pkgdesc="Notify and Log 'Now Playing' and 'Watched' content from a Plex Media Server + 'Recently Added' (...and more)"
 arch=('any')
 url="https://github.com/ljunkie/plexWatch"
 license=('unknown')
-depends=('plex-media-server' 'perl-libwww' 'perl-xml-simple' 'perl-dbi' 'perl-time-duration' 'perl-time-modules' 'perl-json' 'perl-dbd-sqlite' 'perl-io-socket-ssl')
+depends=('plex-media-server'
+         'perl-libwww'
+         'perl-xml-simple'
+         'perl-dbi'
+         'perl-time-duration'
+         'perl-time-modules'
+         'perl-json'
+         'perl-dbd-sqlite'
+         'perl-io-socket-ssl'
+         'perl-lwp-protocol-https')
 optdepends=('perl-net-twitter: Required ONLY if you use twitter'
             'perl-net-oauth: Required ONLY if you use twitter'
             'perl-growl-gntp: Required ONLY if you use GNTP'
