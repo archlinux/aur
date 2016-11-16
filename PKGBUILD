@@ -1,15 +1,13 @@
 pkgname=glcli
 pkgver=0.5
-pkgrel=4
+pkgrel=5
 pkgdesc="a GitLab CLI for project management"
-arch=('i386')
+arch=('x86_64')
 url=
 license=('GPL')
-depends=('libcurl3')
-optdepends=
-md5sums=('SKIP')
+depends=('wget' 'dpkg')
 
 package() {
-  wget https://pkg.celforyon.fr/pool/main/g/glcli/glcli_0.5.4_i386.deb -O/tmp/glcli_0.5.4_i386.deb
-  dpkg -i /tmp/glcli_0.5.4_i386.deb
+  wget https://pkg.celforyon.fr/pool/main/g/glcli/glcli_0.5.5_amd64.deb -O/tmp/glcli_0.5.5_amd64.deb
+  dpkg -i /tmp/glcli_0.5.5_amd64.deb
 }
