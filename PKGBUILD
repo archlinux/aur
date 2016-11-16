@@ -5,9 +5,9 @@
 # Contributor: Ace <a.mad.coder at gmail dot com>
 
 pkgname=unity-editor
-_version=5.4.1
-_build=f1
-_buildtag=20160913
+_version=5.4.2
+_build=f2
+_buildtag=20161111
 pkgver=${_version}${_build}+${_buildtag}
 pkgrel=1
 epoch=1
@@ -41,12 +41,12 @@ source=("http://download.unity3d.com/download_unity/linux/unity-editor-installer
         'monodevelop-unity'
         'unity-monodevelop.png')
 noextract=("unity-editor-installer-${pkgver}.sh")
-sha1sums=('dd55e85526e3b219585acee3186f4f23dc6b8f6b'
+sha1sums=('10db15d9d01a64b6ee9f35c6cf1bcd01c388d9a5'
           '4f7146c680fd2f96a5c3ff0c1982fef69cc61938'
           '9172be394811c35dba79d2e9ac7d5bbd5fabccdc'
           '8ffbfd8f4577b146d25217720ac6689c5d929e84'
           'd1ecf758c9816f964febf601d065b0354940d866')
-sha512sums=('44e41f949da3892c2fba1c9739ac37bb8c7c96967183670c5a4b9ac56c24948182dd1bd770b67e2384492900c3ca7ae0e959c45137565e06c1131f89d45373de'
+sha512sums=('8986360301d9e3aa0dbbb513ac62dc489ad006b38a2193b4202ebbf6763db7c5f77174bdfa7181ba547b8f5deb22298705b806b24ea2cf9392139e5dd54bf14c'
             'ec7dbf7007812cb3a261b7fb2b6a7861593276660400575d793fc16ac6c415e79ec58fa324d4d5110101149b4622b8b174b41aa4d203547b2e6267fd990a9e67'
             'bf8a4ab65a2fc7dc51ff02e5f46ce3be365b660f32fa9d70d5b284575c20766ccd6abe53eef1049ae76b78d86eaeb830ce73184b63abab1237a3e735a0897709'
             '26946ad2c759699763c1284a1f30380072da2911659992fa2471b436df1f0535b6eef61007f11c2e010e4a002663324e42ef5ae1417aa45e0ec99f4e3f0aafb7'
