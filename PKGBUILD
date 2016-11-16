@@ -16,6 +16,7 @@ url="https://github.com/fogleman/primitive"
 license=('MIT')
 provides=('primitive')
 source=('primitive-git::git+https://github.com/fogleman/primitive.git#branch=master')
+depends=('imagemagick')
 makedepends=('go')
 md5sums=('SKIP')
 
