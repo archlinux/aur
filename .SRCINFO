@@ -1,13 +1,13 @@
 pkgbase = tscheckpass
 	pkgdesc = User Password Checking for tsscreenlock
-	pkgver = 1.2
+	pkgver = 1.3
 	pkgrel = 0
 	url = https://github.com/vicr123/tscheckpass
 	arch = x86_64
 	license = GPL2
 	makedepends = qtchooser
 	makedepends = git
-	source = tscheckpass-1.2::git+https://github.com/vicr123/tscheckpass#branch=master
+	source = tscheckpass-1.3::git+https://github.com/vicr123/tscheckpass#branch=master
 	md5sums = SKIP
 
 pkgname = tscheckpass
