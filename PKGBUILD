@@ -23,7 +23,7 @@ package() {
   cd "${srcdir}/pthreads-${pkgver}"
 
   make INSTALL_ROOT="${pkgdir}" install
-  echo ';extension=pthreads.so' > pthreads.ini
+  echo 'extension=pthreads.so' > pthreads.ini
 
   install -Dm644 "pthreads.ini" "${pkgdir}/etc/php/conf.d/pthreads.ini"
   install -Dm644 "LICENSE"   "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
