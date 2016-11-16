@@ -1,6 +1,6 @@
 #
 # Automatically generated file; DO NOT EDIT.
-# Linux/arm 4.8.3-gnu-1-xen Kernel Configuration
+# Linux/arm 4.8.8-gnu-1-xen Kernel Configuration
 #
 CONFIG_ARM=y
 CONFIG_ARM_HAS_SG_CHAIN=y
@@ -1997,7 +1997,7 @@ CONFIG_MTD_NAND_RICOH=m
 # CONFIG_MTD_NAND_DOCG4 is not set
 CONFIG_MTD_NAND_CAFE=m
 CONFIG_MTD_NAND_PXA3xx=y
-# CONFIG_MTD_NAND_NANDSIM is not set
+CONFIG_MTD_NAND_NANDSIM=m
 # CONFIG_MTD_NAND_GPMI_NAND is not set
 # CONFIG_MTD_NAND_BRCMNAND is not set
 # CONFIG_MTD_NAND_PLATFORM is not set
@@ -2120,6 +2120,7 @@ CONFIG_SRAM=y
 CONFIG_VEXPRESS_SYSCFG=y
 CONFIG_BONE_CAPEMGR=y
 # CONFIG_DEV_OVERLAYMGR is not set
+CONFIG_TIEQEP=m
 CONFIG_C2PORT=m
 
 #
