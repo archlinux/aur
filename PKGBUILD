@@ -2,7 +2,7 @@
 pkgname=fsearch-git
 _gitname=fsearch
 pkgver=r219.9caee35
-pkgrel=1
+pkgrel=2
 pkgdesc="A fast file search utility. Git Version."
 arch=('i686' 'x86_64')
 url="https://cboxdoerfer.github.io/fsearch"

@@ -1,7 +1,7 @@
 pkgbase = fsearch-git
 	pkgdesc = A fast file search utility. Git Version.
 	pkgver = r219.9caee35
-	pkgrel = 1
+	pkgrel = 2
 	url = https://cboxdoerfer.github.io/fsearch
 	arch = i686
 	arch = x86_64
