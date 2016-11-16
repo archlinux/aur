@@ -15,7 +15,7 @@
 # In other words, download 'archdroid-icon-theme' instead of this package,
 #   unless you have a specific reason otherwise
 #   (e.g., 'archdroid-icon-theme' doesn't download correctly).
-#   
+#
 # Since this theme is comprised of svg images, it uses local fonts.
 #   The few icons which display text require the Roboto font.
 # If you do not have Roboto installed but want to install this theme anyway,
@@ -28,7 +28,7 @@
 #   will implement any additions you request.
 
 pkgname=archdroid-icon-theme-git
-pkgver=r114.ce01a58
+pkgver=r116.6c24461
 pkgrel=1
 pkgdesc="Port of Android 5/6 (Lollipop/Marshmallow)'s material design icons to Arch."
 arch=('any')
@@ -55,17 +55,17 @@ prepare() {
     return;
   fi;
 
-  error "Required font 'Roboto' is not installed."
-  error "Please install a font package which includes 'Roboto', such as:"
+  error "Required font 'Roboto' is not installed.";
+  error "Please install a font package which includes 'Roboto', such as:";
   for e in ttf-roboto ttf-roboto-font ttf-google-fonts-git ttf-google-fonts-hg otf-google-fonts-hg; do
     echo "${e}";
   done;
   return 1;
-}
+};
 
 package() {
-  msg2 "Installing ${pkgname%-*}..." ;
+  msg2 "Installing ${pkgname%-*}...";
   cd "${pkgname%-*}/${pkgname%-*}";
   install -dm 755 "${pkgdir}"/usr/share/icons/;
   cp -drf --no-preserve='ownership' . "${pkgdir}"/usr/share/icons/;
-}
+};
