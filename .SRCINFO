@@ -1,7 +1,7 @@
 pkgbase = qt5-styleplugins-git
 	pkgdesc = Additional style plugins for Qt5
 	pkgver = r28
-	pkgrel = 1
+	pkgrel = 2
 	url = https://code.qt.io/cgit/qt/qtstyleplugins
 	arch = i686
 	arch = x86_64
