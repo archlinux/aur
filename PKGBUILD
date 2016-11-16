@@ -1,8 +1,9 @@
 #Maintainer: Raimar Buehmann <raimar at buehmann dot de>
 
 pkgname=eclipse-jubula
-pkgver=3.1.0
-pkgrel=4
+pkgver=4.0.0
+_eclipseName=neon
+pkgrel=1
 pkgdesc='Jubula plugins for Eclipse IDE to create functional GUI tests'
 arch=('any')
 url='http://eclipse.org/jubula/'
@@ -10,9 +11,8 @@ license=('EPL')
 depends=('eclipse>=4.3.0', 'eclipse-mylyn')
 options=('!strip')
 source=(
-#"https://hudson.eclipse.org/hudson/job/jubula-luna/lastSuccessfulBuild/artifact/jubula/org.eclipse.jubula.site/target/org.eclipse.jubula.site-2.3.0-SNAPSHOT.zip")
-"https://hudson.eclipse.org/jubula/job/jubula-mars/lastSuccessfulBuild/artifact/org.eclipse.jubula.core/org.eclipse.jubula.repo/target/org.eclipse.jubula.repo-${pkgver}-SNAPSHOT.zip")
-sha256sums=('308bac8d9bfead185f18feb34d269a553348163e87acaa86606a298a50265170')
+"https://hudson.eclipse.org/jubula/job/jubula-${_eclipseName}/lastSuccessfulBuild/artifact/org.eclipse.jubula.core/org.eclipse.jubula.repo/target/org.eclipse.jubula.repo-${pkgver}-SNAPSHOT.zip")
+sha256sums=('67f7a5264b7ab3e469f3a7924e63eb27e21e1a8b867c8d4655826e5f91a4846a')
 
 package() {
   # remove features and plug-ins contain sources
