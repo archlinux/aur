@@ -15,8 +15,8 @@ pkgbase = r-cran-msbvar
 	depends = r-cran-coda
 	depends = r-cran-bit
 	depends = r-cran-mvtnorm
-	source = http://cran.r-project.org/src/contrib/Archive/MSBVAR/MSBVAR_0.9-1.tar.gz
-	md5sums = f5f613bff3b50ffe01278d887f093baf
+	source = http://cran.r-project.org/src/contrib/Archive/MSBVAR/MSBVAR_0.9-2.tar.gz
+	md5sums = 9a53d9456d91b9a1a59c2eeb3fb3f687
 
 pkgname = r-cran-msbvar
 
