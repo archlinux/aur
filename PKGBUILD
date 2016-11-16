@@ -13,7 +13,7 @@ conflicts=('upwork-beta' 'upwork-alpha')
 depends=('gtk2' 'nss' 'gconf' 'alsa-lib' 'glu' 'libxtst' 'gtkglext' 'libgcrypt15' 'libxss')
 install=upwork.install
 
-source=('LICENSE')
+source=("https://dl.devtrue.net/archlinux/upwork/LICENSE")
 md5sums=('56198f3b7f1d0371d89a044c3e110cdd')
 # how to get links Standart, Beta, Alpha: grep updates.getVersionToDownload ~/.Upwork/Upwork/Logs/* | tail -n 1 | grep -o 'http://[a-zA-Z/.0-9_]*.deb'
 source_x86_64=(upwork_amd64_${pkgver}.deb::http://updates.team.odesk.com/binaries/v${_rawver}_${_hashver}/upwork_amd64.deb)
