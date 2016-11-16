@@ -1,6 +1,6 @@
 pkgbase = vkplayer
 	pkgdesc = VK audio player built in Python & GTK3.
-	pkgver = 0.3
+	pkgver = 0.4
 	pkgrel = 1
 	url = http://github.com/and3rson/vkplayer
 	arch = any
