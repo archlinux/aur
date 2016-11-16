@@ -1,6 +1,6 @@
 pkgbase=swift-preview
 pkgname=(swift-preview swift-lldb-preview)
-_swiftver=3.0.1-GM-CANDIDATE
+_swiftver=3.0.2-PREVIEW-1
 pkgver=${_swiftver//-/.}
 pkgrel=1
 pkgdesc="The Swift programming language and debugger - preview release"
@@ -9,7 +9,7 @@ url="http://swift.org/"
 license=('apache')
 depends=('python2' 'libutil-linux' 'icu' 'libbsd' 'libedit' 'libxml2'
          'sqlite' 'ncurses' 'libkqueue')
-makedepends=('git' 'cmake' 'ninja' 'swig' 'clang>=3.8' 'python2-six' 'perl'
+makedepends=('git' 'cmake' 'ninja' 'swig' 'clang=3.8.1' 'python2-six' 'perl'
              'python2-sphinx')
 
 source=(
@@ -24,21 +24,22 @@ source=(
     "swift-corelibs-foundation-${_swiftver}.tar.gz::https://github.com/apple/swift-corelibs-foundation/archive/swift-${_swiftver}.tar.gz"
     "swift-corelibs-libdispatch-${_swiftver}.tar.gz::https://github.com/apple/swift-corelibs-libdispatch/archive/swift-${_swiftver}.tar.gz"
     "swift-integration-tests-${_swiftver}.tar.gz::https://github.com/apple/swift-integration-tests/archive/swift-${_swiftver}.tar.gz"
-    "swift-sphinx2.patch" "xar-1.6.patch"
+    "swift-sphinx2.patch" "xar-1.6.patch" "build-script.patch"
 )
-sha256sums=('9d760ca8b743d66a1def8082a8137a478785885fdbdcbd49e3e4fa19946e1750'
-            '4d287821eda15301252f527b5af5c3a15db88a8f623fd44e11e7f8ad976d185c'
-            '6d37588a7784639eb36ef74e00ad364000a688a4fdaa0e7fe0abc950e92e2f16'
-            '89e9a2d4a72a371667acf49bac9fe20dea66e09bfdb3ca486c257f2473f327da'
-            '9fb64e687aeb40ff0ca2b725ae7a67ca89a592469434c5a0158fdcf981e0c4f4'
-            '58148ea661409a56500df4f115b47266c649f777b7d6b23aea220eb7b8028ad6'
-            '4c8538f3bf8da11d93379d04fccecf8bc66f1f13d018bb75a09c8eb394d33f1d'
-            '945fdd01ef80b9ede2d6efb03912b282b43c056b02a98dd22c080fb8d83388db'
-            '19fcc113bd09688af60283e57acaf692a650bd915ea61ba73f067c9f7938bc8b'
-            '73f77593e0ddf9e90b3eece7dc0c73f422684967b9338a85be5b3969e3ae482e'
-            'bd4869b8fe17dcda4c68613af2c2efe898a26710c0d62643669c6aac93ff63ef'
+sha256sums=('7eeb7428fb1ad39d9158e0e2f6839fa8c7ca236b6567665c197a68ed15f316cb'
+            '0aa804ef07c08b9d272092fb5c09c098bc90b6ce7a30b59f6260b970c10d3e5a'
+            '31396e50669da0c74c4d92c1f939e033f331e9ffbdaa608dd8e2efeb14948116'
+            'c8e81cef4f304838e17a14688de996735eba7389a42674cbee6c8edb18fdc7a7'
+            '59afce8912f52becad53a2e42fe21c4c2e83a06375aea45ceec6a225f69e84e6'
+            '82094ce38226fd67a98277aaee6555e90abba9350d193898c532555f793efdbf'
+            'b4bea0895e9746c5e627a623401360a5dd7d5fd3f959c0a82b91874811344c11'
+            '823851e55b6c5057a403253cdf0801f63a041fbde9a5b896c1617d8114226f50'
+            '7cc4e87d833f4dcf7c8f5db4839e9b4c91df75bf82e17c2be544fabbb6959210'
+            '000032d13a51251246748a059d623fe0bc9eafde0c8e5eb90256cd545832e28f'
+            '8078957d2f1d42e1728e746eef33a79844239c213e1b1ff2bdeca1bf5244db53'
             '93bbe769666aab15b15d12e2423f213b39d6c47237eafc781569698c8367535f'
-            'df27c2bfeaed6335f49a8815b0b296fd5acc331a6a9361a40f7dfc69a7518da6')
+            'df27c2bfeaed6335f49a8815b0b296fd5acc331a6a9361a40f7dfc69a7518da6'
+            '9f2512df8c495e2b8bf19fe213e951cdd17df9207538ceb8ab59a30bd6a18e3f')
 
 prepare() {
     # Use python2 where appropriate
@@ -71,6 +72,9 @@ prepare() {
 
     # Fix for xar 1.6.1+ (backported from LLVM trunk)
     ( cd "${srcdir}/llvm" && patch -p1 -i "${srcdir}/xar-1.6.patch" )
+
+    # Typo in build-script
+    ( cd "${srcdir}/swift" && patch -p1 -i "${srcdir}/build-script.patch" )
 }
 
 build() {
