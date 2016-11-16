@@ -1,7 +1,7 @@
 pkgbase = root
 	pkgdesc = C++ data analysis framework and interpreter from CERN.
 	pkgver = 6.08.00
-	pkgrel = 1
+	pkgrel = 2
 	url = http://root.cern.ch
 	arch = i686
 	arch = x86_64
@@ -38,7 +38,7 @@ pkgbase = root
 	sha256sums = 9d1f8e7ad923cb5450386edbbce085d258653c0160419cdd6ff154542cc32bd7
 	sha256sums = b103d46705883590d9e07aafb890ec1150f63dc2ca5f40d67e6ebef49a6d0a32
 	sha256sums = 3c45b03761d5254142710b7004af0077f18efece7c95511910140d0542c8de8a
-	sha256sums = 69af839f04573c98e0ec2601395747dcc5b4eb00f1b877e7ed146eb779154ee2
+	sha256sums = 2ab78c9d285298ba8727389d9ff54d29aa9ed4325eaca88bc3b35327f48663ec
 
 pkgname = root
 
