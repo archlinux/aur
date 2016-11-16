@@ -44,7 +44,6 @@ pkgver() {
   echo -n .
 printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
-
 version-range() {
   if [ -z "$(sparql "?x em:type ?type. filter(?type in ('2', '64'))")" ] ||
     [ -n "$(sparql "?x em:strictCompatibility 'true'")" ] ||
@@ -78,7 +77,6 @@ version() {
     echo "=$version"
   fi
 }
-
 prepare_target() {
   local target=${pkgname%%-*}
   id="$(sparql '<urn:mozilla:install-manifest> em:id ?x')"
