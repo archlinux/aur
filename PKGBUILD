@@ -6,7 +6,7 @@ pkgdesc="distributed and parallel python "
 url="http://trac.mystic.cacr.caltech.edu/project/pathos/wiki.html"
 arch=(any)
 license=('BSD')
-makedepends=('python-setuptools' 'python2-setuptools' 'python-six' 'python2-six')
+makedepends=('python-setuptools' 'python2-setuptools' 'python-six' 'python2-six' 'python-dill' 'python2-dill')
 source=("https://github.com/uqfoundation/ppft/releases/download/ppft-${pkgver}/ppft-${pkgver}.tgz")
 sha1sums=('6b6610ad3194ae9773c9f802449b951498a738f0')
 
@@ -21,14 +21,14 @@ build() {
 }
 
 package_python-ppft() {
-  depends=('python-six')
+  depends=('python-six' 'python-dill')
 
   cd "${srcdir}/ppft-$pkgver"
   python setup.py install --root=${pkgdir}
 }
 
 package_python2-ppft() {
-  depends=('python2-six')
+  depends=('python2-six' 'python2-dill')
 
   cd "${srcdir}/ppft-$pkgver"
   python2 setup.py install --root=${pkgdir}
