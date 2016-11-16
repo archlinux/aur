@@ -24,14 +24,14 @@ package_python-ppft() {
   depends=('python-six' 'python-dill')
 
   cd "${srcdir}/ppft-$pkgver"
-  python setup.py install --root=${pkgdir}
+  python setup.py install --root=${pkgdir} --optimize=1
 }
 
 package_python2-ppft() {
   depends=('python2-six' 'python2-dill')
 
   cd "${srcdir}/ppft-$pkgver"
-  python2 setup.py install --root=${pkgdir}
+  python2 setup.py install --root=${pkgdir} --optimize=1
   mv ${pkgdir}/usr/bin/ppserver.py ${pkgdir}/usr/bin/ppserver2.py
 }
 
