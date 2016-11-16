@@ -1,7 +1,7 @@
 pkgbase = mozilla-extension-gnotifier
 	pkgdesc = Add-on for Firefox and Thunderbird. Replaces built-in notifications with the OS native notifications. It
 	pkgver = 1.9.7
-	pkgrel = 2
+	pkgrel = 3
 	url = https://addons.mozilla.org/mozilla/addon/gnotifier/
 	arch = any
 	license = GPL3

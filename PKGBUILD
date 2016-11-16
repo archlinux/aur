@@ -4,7 +4,7 @@
 
 pkgname=mozilla-extension-gnotifier
 pkgver=1.9.7
-pkgrel=2
+pkgrel=3
 pkgdesc='Add-on for Firefox and Thunderbird. Replaces built-in notifications with the OS native notifications. It'
 arch=('any')
 license=('GPL3')
@@ -44,11 +44,6 @@ query-version() {
   xmllint .version --xpath \
     "//application[appID='$2']/$1_version/text()"
 }
-
-build() {
-  rm -r resources lib/{windows,osx}.js
-}
-
 eval "package_$pkgname()" '{
   prepare_target
   cp --no-preserve=ownership,mode -r . "$destdir/$id"
