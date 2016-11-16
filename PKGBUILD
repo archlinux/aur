@@ -11,10 +11,10 @@ pkgdesc="Standalone Web Browser from Mozilla — Nightly build (${_lang})"
 url="https://nightly.mozilla.org/"
 _version='53.0a1'
 pkgver=53.0a1.20161116
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 license=('MPL' 'GPL' 'LGPL')
-depends=('alsa-lib' 'dbus-glib' 'gtk2' 'gtk3' 'libxt' 'nss' 'mime-types')
+depends=('alsa-lib' 'dbus-glib' 'libpulse' 'gtk2' 'gtk3' 'libxt' 'nss' 'mime-types')
 optdepends=('ffmpeg: h.264 video'
             'hunspell: spell checking'
             'hyphen: hyphenation')
