@@ -2,7 +2,7 @@
 
 _name=netbox
 pkgname=${_name}
-pkgver=1.7.0
+pkgver=1.7.1
 pkgrel=1
 pkgdesc="IP address management (IPAM) and data center infrastructure management (DCIM) tool."
 arch=('any')
@@ -40,7 +40,7 @@ source=("${url}/archive/v${pkgver}.tar.gz"
         "${_name}-system.service"
         "${_name}.tmpfile"
 				"gunicorn_config.py")
-sha256sums=('d80bbe6fad148e203be18c4db890f4d38142521a085244d831d735fb507ff0c0'
+sha256sums=('6c072e1f9cecd42e3c9e30472155c254ba4a305699df29581fa7fca3ed371c97'
             '12bb0253aea3dd763ee8bb1a17064256155b79e904a4350abf89cf4c65235951'
             '1028bac96ddcd18c10646dff26027b4891fcab4381436e2b6ea3302887a5586f'
             '7a5ae05cad7ec14193a43ef080776b5525c80b6258762a6cb6a108db83861ff9')
