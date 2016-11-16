@@ -64,7 +64,6 @@ for target in "${optdepends[@]}"; do
 done
 optdepends=()
 
-
 version-range() {
   if [ -z "$(sparql "?x em:type ?type. filter(?type in ('2', '64'))")" ] ||
     [ -n "$(sparql "?x em:strictCompatibility 'true'")" ] ||
@@ -98,7 +97,6 @@ version() {
     echo "=$version"
   fi
 }
-
 prepare_target() {
   local target=${pkgname%%-*}
   id="$(sparql '<urn:mozilla:install-manifest> em:id ?x')"
