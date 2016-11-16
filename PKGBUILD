@@ -6,7 +6,7 @@ _agent=n # agent is in seperate package check_mk-agent
 
 pkgname=check_mk
 pkgver=1.2.8p13
-pkgrel=1
+pkgrel=2
 pkgdesc="A comprehensive IT monitoring solution in the tradition of Nagios"
 license=('GPL2')
 arch=('any')
@@ -22,12 +22,14 @@ depends=( 'python2'
 optdepends=('pnp4nagios: Graphing performance data')
 source=(
   "https://mathias-kettner.de/download/${pkgname}-${pkgver}.tar.gz"
+  'init.d.check_mk'
   'check_mk_templates.cfg.patch'
   'mkp.patch'
   'check_mk.patch'
   'setup.sh.patch'
 )
 md5sums=('df04190dea014f586f2723a6fb6b5419'
+         '078175f2851419ae53346a06a42f9f2c'
          'e10a352fff0563bddeb788c7f9aee759'
          '5e8cb4a9ca2b7e17c1c902be43808653'
          'dff7c1d42947b4b54e2953dd31def78a'
@@ -52,6 +54,7 @@ package() {
     check_icmp_path='/usr/lib/monitoring-plugins/check_icmp' \
     apache_config_dir='/etc/httpd/conf/extra' \
     livesock='/var/nagios/rw/live' \
+    nagios_startscript='/usr/share/check_mk/init.d.check_mk' \
     nagios_version='4.2.2' \
       ./setup.sh
       
@@ -70,6 +73,9 @@ package() {
   ln -s "/usr/share/check_mk/agents/check_mk_agent.linux" "./usr/bin/check_mk_agent"
   ln -s "/usr/share/check_mk/agents/xinetd.conf" "./etc/xinetd.d/check_mk"
   ln -s "/usr/share/check_mk/agents/waitmax" "./usr/bin/waitmax"
+
+  # Add init.d dummy script
+  cp "${srcdir}/init.d.check_mk" "./usr/share/check_mk/init.d.check_mk"
   
   # Use proper webapps directory for apache config
   mkdir -p "./etc/webapps/check_mk"

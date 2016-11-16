@@ -1,0 +1,29 @@
+#!/bin/bash
+
+SERVICE=nagios
+
+stop() {
+    systemctl stop $SERVICE
+}
+
+start() {
+    systemctl start $SERVICE
+}
+
+restart() {
+    systemctl restart $SERVICE
+}
+
+case "$1" in
+    start)
+        start
+        ;;
+    stop)
+        stop
+        ;;
+    restart)
+        restart
+        ;;
+    *)
+        echo "Usage: $0 {start|stop|restart}"
+esac
