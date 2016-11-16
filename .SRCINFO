@@ -1,0 +1,19 @@
+pkgbase = cydia-impactor
+	pkgdesc = A GUI tool for working with mobile devices
+	pkgver = 0.9.34
+	pkgrel = 1
+	url = http://www.cydiaimpactor.com
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = gtk2
+	depends = fontconfig
+	depends = libudev0-shim
+	depends = ncurses5-compat-libs
+	source_i686 = https://cache.saurik.com/impactor/l32/Impactor32_0.9.34.tgz
+	md5sums_i686 = 20145bb235e9820c57a31f305a8fc2f6
+	source_x86_64 = https://cache.saurik.com/impactor/l64/Impactor64_0.9.34.tgz
+	md5sums_x86_64 = 5bd9269ba1b8eebf406f42da7e7ef26d
+
+pkgname = cydia-impactor
+
