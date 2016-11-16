@@ -15,8 +15,8 @@ depends=(e2fsprogs openssl libxml2 perl kmod krb5
   perl-lwp-protocol-https perl-class-methodmaker perl-net-ssleay )
 install=$pkgname.install
 source=(for-arch.patch)
-source_i686=(file://./VMware-vSphere-CLI-$_pkgver.i386.tar.gz)
-source_x86_64=(file://./VMware-vSphere-CLI-$_pkgver.x86_64.tar.gz)
+source_i686=(local://VMware-vSphere-CLI-$_pkgver.i386.tar.gz)
+source_x86_64=(local://VMware-vSphere-CLI-$_pkgver.x86_64.tar.gz)
 md5sums=('c46fcc7bac0d9b0c710f52cfe286d34a')
 md5sums_i686=('b54d011f10525044abac1876006245b0')
 md5sums_x86_64=('ea5e46142bc342558150f52da21aaf5e')
