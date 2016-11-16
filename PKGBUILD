@@ -7,8 +7,8 @@
 
 pkgbase=libindicator-ubuntu
 pkgname=(libindicator-gtk2-ubuntu libindicator-gtk3-ubuntu)
-_actual_ver=12.10.2
-_extra_ver=+16.04.20151208
+_actual_ver=16.10.0
+_extra_ver=+16.10.20160913
 pkgver=${_actual_ver}${_extra_ver/+/.}
 pkgrel=1
 pkgdesc="A set of symbols and convience functions that all indicators would like to use"
@@ -18,23 +18,11 @@ license=(GPL)
 makedepends=(gtk2-ubuntu gtk3-ubuntu glib2 ido-ubuntu)
 groups=(unity)
 source=("https://launchpad.net/ubuntu/+archive/primary/+files/${pkgbase/\-ubuntu/}_${_actual_ver}${_extra_ver}.orig.tar.gz")
-sha512sums=('350d5081075de0de31a046aaf439a08f15ce8fe3a07350519f55fd2df2caa47d8a4a4d538c114f4297fa37322802681de04cf588b4caaa40ba506c2e5922ef00')
-prepare() {
-  sed '/-Werror/s/$/ -Wno-deprecated-declarations/' -i ../src/libindicator-${_actual_ver}${_extra_ver}/Makefile.am
-  sed 's/LIBINDICATOR_LIBS+="$LIBM"/LIBINDICATOR_LIBS+=" $LIBM"/g' -i ../src/libindicator-${_actual_ver}${_extra_ver}/configure.ac
-  sed 's/LIBM="-lmw"/LIBM=" -lmw"/g' -i ../src/libindicator-${_actual_ver}${_extra_ver}/configure.ac
-  sed 's/LIBM="-lm"/LIBM=" -lm"/g' -i ../src/libindicator-${_actual_ver}${_extra_ver}/configure.ac
-  sed 's/LIBS="-lm  $LIBS"/LIBS=" -lm  $LIBS"/g' -i ../src/libindicator-${_actual_ver}${_extra_ver}/configure.ac
-  sed 's/LIBS="-lmw  $LIBS"/LIBS=" -lmw  $LIBS"/g' -i ../src/libindicator-${_actual_ver}${_extra_ver}/configure.ac
-
-  
-}
+sha512sums=('d5a82fa3ee9db1b85680c348041aee88fe83d3f221d6f5b5abd2d4ac0394ece8fdfc146db88ad3a945496c4c3654ce121c60907c26b307015334537ccb73ba48')
 
 build() {  
 
   export CFLAGS+=" -Wno-error=deprecated-declarations"
-
-  cd libindicator-${_actual_ver}${_extra_ver}
 
   autoreconf -vfi
  
@@ -61,7 +49,7 @@ package_libindicator-gtk2-ubuntu() {
   pkgdesc+=" (GTK+ 2 library)"
   depends=(cairo gtk2-ubuntu glib2)
 
-  cd libindicator-${_actual_ver}${_extra_ver}/build-gtk2
+  cd build-gtk2
 
   make -j1 DESTDIR="${pkgdir}/" install
 }
@@ -71,7 +59,7 @@ package_libindicator-gtk3-ubuntu() {
   depends=(gtk3-ubuntu glib2 ido-ubuntu)
   options+=(!emptydirs)
 
-  cd libindicator-${_actual_ver}${_extra_ver}/build-gtk3
+  cd build-gtk3
 
   make -j1 -C libindicator DESTDIR="${pkgdir}/" install
   make -j1 -C tools DESTDIR="${pkgdir}/" install
