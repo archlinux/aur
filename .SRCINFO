@@ -1,0 +1,15 @@
+pkgbase = cron-sentry
+	pkgdesc = Crontab sentry error reporter
+	pkgver = 0.6.3
+	pkgrel = 1
+	url = https://github.com/yipit/cron-sentry
+	arch = any
+	license = MIT
+	makedepends = python
+	makedepends = python-setuptools
+	depends = python
+	source = https://github.com/Yipit/cron-sentry/archive/v0.6.3.tar.gz
+	md5sums = 28d760488215dc0153aa7b2bffd6bbf4
+
+pkgname = cron-sentry
+
