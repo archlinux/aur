@@ -1,0 +1,18 @@
+pkgbase = dosbox-kyrandia-book1-fr
+	pkgdesc = Legend of Kyrandia, Book 1 - old DOS game, Floppy version, French langage
+	pkgver = 1.0
+	pkgrel = 1
+	url = http://www.abandonware-france.org/ltf_abandon/ltf_jeu.php?id=121
+	arch = any
+	license = Abandonware
+	depends = dosbox
+	depends = unzip
+	source = jeu-00121-legend_of_kyrandia-pcdos.7z::http://www.abandonware-france.org/telechargement/clic/http/2263/files/
+	source = kyrandia-book1-logo.png
+	source = run-kyrandia-book1-fr.sh
+	md5sums = ede23fe0ff1c8d250d5dc47555d3d978
+	md5sums = 6835d644837879fdfa7d31368e5a67ec
+	md5sums = 9ea4cd14deb1b043f8705d5aaf62a75a
+
+pkgname = dosbox-kyrandia-book1-fr
+
