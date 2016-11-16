@@ -2,7 +2,7 @@
 
 _gemname=gobject-introspection
 pkgname=ruby-$_gemname
-pkgver=3.0.9
+pkgver=3.1.0
 pkgrel=1
 pkgdesc='Ruby/GObjectIntrospection is a Ruby binding of GObjectIntrospection.'
 arch=(i686 x86_64)
@@ -12,7 +12,7 @@ depends=(ruby gobject-introspection ruby-glib2=$pkgver)
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-sha1sums=('3baa38264462b9b6ed826e8f2738d5a36afd8913')
+sha1sums=('ce25a1c2707377ef9486e70734a37357632f522b')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
