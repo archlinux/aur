@@ -3,17 +3,18 @@
 _gemname=coloration
 pkgname=ruby-$_gemname
 pkgver=0.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Convert Textmate color schemes to Vim, JEdit and KDevelop/Kate/Kwrite formats.'
 arch=('any')
 url='https://github.com/isa/coloration'
 license=(MIT)
 depends=(ruby
-	     ruby-bundler
-	     ruby-guard
-	     ruby-minitest
-	     ruby-yard
-	     )
+	     ruby-plist
+	     ruby-textpow19)
+makedepends=(ruby-bundler
+	         ruby-guard
+	         ruby-minitest
+	         ruby-yard)
 options=(!emptydirs)
 
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
