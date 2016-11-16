@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=Hyper
 Comment=JS/HTML/CSS Terminal
-Exec=Hyper
+Exec=hyper
 Icon=/usr/share/pixmaps/hyper.png
 Terminal=false
 Type=Application

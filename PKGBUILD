@@ -4,7 +4,7 @@
 
 pkgname=hyper
 pkgver=0.8.3
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="A terminal built on web technologies"
 arch=('any')
@@ -27,15 +27,18 @@ source=(
     "https://github.com/zeit/$pkgname/archive/${pkgver}.tar.gz"
     "https://raw.githubusercontent.com/zeit/art/master/hyper/mark/Hyper-Mark-120%403x.png"
     "Hyper.desktop"
+    "babel-loader.patch"
 )
 noextract=()
 md5sums=('5f894b0af6cef3c91da19f425b9c6d32'
          'f3481e14cba331160339b3b5ab78872b'
-         '8ccbe8d3e3b6cdc9bc5fd4301d368d5f')
+         '74cb7ba38e37332aa8300e4b6ba9c61c'
+         'aa0867111699f0e903779506ad03a373')
 validpgpkeys=()
 
 prepare() {
     cd "$pkgname-$pkgver"
+    patch -p2 < $srcdir/babel-loader.patch
     npm install
 }
 
@@ -55,7 +58,7 @@ package() {
 
     # link the binary to /usr/bin
     cd $pkgdir/usr/bin
-    ln -s "../lib/$pkgname/Hyper" Hyper
+    ln -s "../lib/$pkgname/hyper" hyper
 
     # # TODO: remove included electron libs and use the system ones by symlink
     # cd "$_libinstall"
