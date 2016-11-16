@@ -1,6 +1,6 @@
 # Maintainer: Daniel Souvignier <daniel.souvignier@gmail.com>
 pkgname=docker-rpm-builder
-pkgver=1.31.0
+pkgver=1.32.0
 pkgrel=1
 pkgdesc="A script to build rpms for different architectures using docker"
 arch=('any')
@@ -9,7 +9,7 @@ license=('Apache Public License 2.0')
 depends=('docker')
 makedepends=('python2-virtualenv')
 provides=('docker-rpm-builder')
-source=('docker-rpm-builder::git+https://github.com/alanfranz/docker-rpm-builder#branch=v1dev')
+source=('docker-rpm-builder::git+https://github.com/alanfranz/docker-rpm-builder#branch=v1')
 md5sums=('SKIP')
 
 pkgver() {

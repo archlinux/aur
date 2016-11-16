@@ -1,6 +1,6 @@
 pkgbase = docker-rpm-builder
 	pkgdesc = A script to build rpms for different architectures using docker
-	pkgver = 1.31.0
+	pkgver = 1.32.0
 	pkgrel = 1
 	url = https://github.com/alanfranz/docker-rpm-builder
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = docker-rpm-builder
 	makedepends = python2-virtualenv
 	depends = docker
 	provides = docker-rpm-builder
-	source = docker-rpm-builder::git+https://github.com/alanfranz/docker-rpm-builder#branch=v1dev
+	source = docker-rpm-builder::git+https://github.com/alanfranz/docker-rpm-builder#branch=v1
 	md5sums = SKIP
 
 pkgname = docker-rpm-builder
