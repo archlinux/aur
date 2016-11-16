@@ -3,9 +3,16 @@ post_install() {
   ln -s /usr/lib/libpcreposix.so usr/lib/j8/tools/regex/libjpcre.so
 }
 
+## arg 1:  the new package version
+## arg 2:  the old package version
 post_upgrade() {
   if [ $(vercmp $2 8.04.15.20160121-1) -lt 0 ]; then
     post_install
+  fi
+  if [ $(vercmp $2 8.05.08.20161116-1) -lt 0 ]; then
+    echo '>>> With this upgrade, the j user diretory becomes ~/.config/j8 instead of ~/j8'
+    echo '>>> Please move your data before running j8 next time (i.e. mv ~/j8 ~/.config/)'
+    echo '>>> Then, if you want, you can symlink ~/.config/j8 to your home directory'
   fi
 }
 
