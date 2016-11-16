@@ -42,9 +42,12 @@ query-version() {
 }
 
 pkgver() {
-  find -iname '*.json' -exec sed -n \
-    's/.*"version"\s*:\s*"\([[:digit:].]*\)"\s*,.*/\1/p' \
-    '{}' \; -quit 2>/dev/null | tr '\n' '.'
+  find xpi -name "gnotifier-$(
+    find -iname '*.json' -exec sed -n \
+      's/.*"version"\s*:\s*"\([[:digit:].]*\)"\s*,.*/\1/p' \
+      '{}' \; -quit 2>/dev/null
+    )*" -printf '%f\n' | sed 's/^gnotifier-\(.*\).xpi$/\1/;
+      s/-final$//;s/-//' | sort -n | head -n1 | tr '\n' '.'
 printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
