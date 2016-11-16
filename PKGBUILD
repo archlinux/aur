@@ -1,7 +1,7 @@
 _npmname=gulp-server-livereload
-_npmver=1.7.4
+_npmver=1.9.2
 pkgname=nodejs-gulp-server-livereload # All lowercase
-pkgver=1.7.4
+pkgver=1.9.2
 pkgrel=1
 pkgdesc="Gulp plugin to run a local webserver with livereload enabled via socket.io"
 arch=(any)
@@ -22,3 +22,4 @@ package() {
 }
 
 # vim:set ts=2 sw=2 et:
+sha1sums=('3db227f3463cfe4f29bf65a013baa162e2a740c6')
