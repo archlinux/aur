@@ -1,5 +1,6 @@
 post_install() {
-ln -s /opt/fenrir/fenrir-daemon /usr/bin/fenrir
+ln -s /opt/fenrir/fenrir /usr/bin/fenrir
+ln -s /opt/fenrir/fenrir-daemon /usr/bin/fenrir-daemon
 _alert
 }
 
