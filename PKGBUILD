@@ -24,14 +24,14 @@ package_python-pox() {
   depends=('python')
 
   cd "${srcdir}/pox-$pkgver"
-  python setup.py install --root=${pkgdir}
+  python setup.py install --root=${pkgdir} --optimize=1
 }
 
 package_python2-pox() {
   depends=('python2')
 
   cd "${srcdir}/pox-$pkgver"
-  python2 setup.py install --root=${pkgdir}
+  python2 setup.py install --root=${pkgdir} --optimize=1
   mv ${pkgdir}/usr/bin/pox_launcher.py ${pkgdir}/usr/bin/pox_launcher2.py
 }
 
