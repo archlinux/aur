@@ -3,7 +3,7 @@
 # You may find it convenient to file issues and pull requests there.
 
 pkgname=gnome-shell-extension-remove-dropdown-arrows-git
-pkgver=7
+pkgver=8
 pkgrel=1
 pkgdesc="Removes dropdown arrows from Top Bar menus which were introduced in Gnome 3.10."
 arch=(any)

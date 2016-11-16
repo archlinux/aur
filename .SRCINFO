@@ -1,6 +1,6 @@
 pkgbase = gnome-shell-extension-remove-dropdown-arrows-git
 	pkgdesc = Removes dropdown arrows from Top Bar menus which were introduced in Gnome 3.10.
-	pkgver = 7
+	pkgver = 8
 	pkgrel = 1
 	url = https://github.com/mpdeimos/gnome-shell-remove-dropdown-arrows#branch=master
 	install = notice.install
@@ -8,7 +8,7 @@ pkgbase = gnome-shell-extension-remove-dropdown-arrows-git
 	license = GPLv3
 	makedepends = git
 	depends = gnome-shell
-	provides = gnome-shell-extension-remove-dropdown-arrows=7
+	provides = gnome-shell-extension-remove-dropdown-arrows=8
 	conflicts = gnome-shell-extension-remove-dropdown-arrows
 	source = gnome-shell-extension-remove-dropdown-arrows::git+https://github.com/mpdeimos/gnome-shell-remove-dropdown-arrows#branch=master
 	md5sums = SKIP
