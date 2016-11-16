@@ -13,8 +13,8 @@ conflicts=('upwork' 'upwork-alpha')
 depends=('gtk2' 'nss' 'gconf' 'alsa-lib' 'glu' 'libxtst' 'gtkglext' 'libgcrypt15' 'libxss')
 install=upwork.install
 
-#source=('LICENSE')
-#md5sums=('56198f3b7f1d0371d89a044c3e110cdd')
+source=("https://dl.devtrue.net/archlinux/upwork/LICENSE")
+md5sums=('56198f3b7f1d0371d89a044c3e110cdd')
 md5sums_i686=('fca4e5f1cc2c8608ec6a1e56d14bc3c5')
 md5sums_x86_64=('410571fbfe8f3b59550e857d908ffa5a')
 
@@ -31,5 +31,5 @@ package() {
     cd "${srcdir}"
     cp -rp usr "${pkgdir}/usr"
 
-    #install -Dm644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    install -Dm644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
