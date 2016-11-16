@@ -1,7 +1,7 @@
 _npmname=geojsonhint
-_npmver=1.2.1
+_npmver=2.0.0
 pkgname=nodejs-geojsonhint # All lowercase
-pkgver=1.2.1
+pkgver=2.0.0
 pkgrel=1
 pkgdesc="Validate and sanity-check geojson files (geojsonlint)"
 arch=(any)
@@ -22,3 +22,4 @@ package() {
 
 # vim:set ts=2 sw=2 et:
 sha1sums=('5348270ecac3c428b455cfedab245d40a5ae9fc7')
+sha1sums=('054f780270f0efb69395fe8203e96098aeec0935')
