@@ -2,7 +2,7 @@
 # Contributor: Michał Siejak <my_fistname@my_lastname.pl>
 pkgname=xlsh-without-x
 pkgver=0.2.2
-pkgrel=5
+pkgrel=6
 pkgdesc="eXtended Login Shell - fast, minimalistic login replacement (without X support)"
 arch=('i686' 'x86_64')
 url="https://github.com/Nadrin/xlsh/wiki"
