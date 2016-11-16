@@ -1,6 +1,6 @@
 # Maintainer: Edison Ibañez <edison@opmbx.org>
 pkgname=camunda-modeler
-pkgver=1.2.2
+pkgver=1.4.0
 pkgrel=1
 pkgdesc="An integrated modeling solution for BPMN and DMN based on bpmn.io"
 arch=('i686' 'x86_64')
@@ -14,14 +14,14 @@ source=('camunda-modeler.sh'
         'camunda-modeler128.png')
 source_x86_64=("https://camunda.org/release/$pkgname/$pkgver/$pkgname-$pkgver-linux-x64.tar.gz")
 source_i686=("https://camunda.org/release/$pkgname/$pkgver/$pkgname-$pkgver-linux-ia32.tar.gz")
-
 md5sums=('9580e90224bd893ea6e070e399b25b01'
          'd13db3466242d0ab85e0152f3ceccded'
          'bc08d6679ab052bd7c936954f0a8d97c'
          '2d041c2f1a6cafa0d0079d207eb635fd'
          '22f05a8460e7b0d823dc65a2ee3f5a0e')
-md5sums_i686=('ff6ca0b40a2403244b588da1f2eeb9c3')
-md5sums_x86_64=('3213701f4376ac5630f4e555b8282338')
+md5sums_i686=('108980faa4c322fcf88cc5cb2faea44f')
+md5sums_x86_64=('69474bd9a617869a21388b64e6c60d9e')
+
 
 depends=('libnotify')
 
