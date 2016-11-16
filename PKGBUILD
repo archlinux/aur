@@ -3,14 +3,14 @@
 # You may find it convenient to file issues and pull requests there.
 
 pkgname=mozilla-extension-gnotifier
-pkgver=1.9.7
-pkgrel=3
+pkgver=1.9.8
+pkgrel=1
 pkgdesc='Add-on for Firefox and Thunderbird. Replaces built-in notifications with the OS native notifications. It'
 arch=('any')
 license=('GPL3')
 depends=('libnotify')
 optdepends=(firefox thunderbird)
-md5sums=('5cb3275123e67b9ca99502d875dc1d01')
+md5sums=('26d2c330045fa99b8983360197c03445')
 
 [ "$arch" ] || arch=('any')
 
