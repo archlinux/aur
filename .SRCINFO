@@ -1,0 +1,15 @@
+pkgbase = php-pecl-pthreads
+	pkgdesc = PHP pthreads extension
+	pkgver = 3.1.6
+	pkgrel = 1
+	url = http://pecl.php.net/package/pthreads
+	arch = i686
+	arch = x86_64
+	license = BSD
+	depends = php-zts
+	depends = php-pear
+	source = http://pecl.php.net/get/pthreads-3.1.6.tgz
+	md5sums = c7a9e9ccf693a3f0d419c2f952d65e23
+
+pkgname = php-pecl-pthreads
+
