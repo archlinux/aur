@@ -2,10 +2,10 @@
 
 pkgname=ocaml-vorbis
 pkgver=0.6.2
-pkgrel=1
+pkgrel=2
 license=('GPL2')
 arch=('i686' 'x86_64')
-pkgdesc=("OCaml bindings to lbvorbis")
+pkgdesc="OCaml bindings to lbvorbis"
 url="https://github.com/savonet/ocaml-vorbis"
 depends=('ocaml' 'libvorbis' 'ocaml-ogg')
 makedepends=('ocaml-findlib')
