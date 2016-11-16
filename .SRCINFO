@@ -1,7 +1,7 @@
 pkgbase = filezillasecure
 	pkgdesc = Fork of the well-known Filezilla client with password encryption
 	pkgver = 3.18.0
-	pkgrel = 2
+	pkgrel = 3
 	url = http://filezillasecure.com/
 	arch = i686
 	arch = x86_64
@@ -15,6 +15,7 @@ pkgbase = filezillasecure
 	depends = sqlite
 	depends = gnutls
 	depends = libfilezilla
+	conflicts = filezilla
 	source = filezillasecure-3.18.0.zip::http://www.filezillasecure.com/download.php?file=filezillasecure-3.18.0s_src.zip
 	md5sums = f58a2d0e37f73a4661e5f3630df57ece
 
