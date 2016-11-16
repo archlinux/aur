@@ -81,7 +81,7 @@ package_lib32-bluez-libs() {
 
 package_lib32-bluez-cups() {
   pkgdesc="CUPS printer backend for Bluetooth printers (32-bit)"
-  depends=('lib32-libdbus' 'lib32-glib2' 'cups')
+  depends=('lib32-dbus' 'lib32-glib2' 'cups')
 
   cd ${pkgbase#lib32-}-${pkgver}
   make DESTDIR=${pkgdir} install-cupsPROGRAMS
