@@ -1,0 +1,15 @@
+pkgbase = primitive-git
+	pkgdesc = Reproducing images with geometric primitives
+	pkgver = r144.37639cc
+	pkgrel = 1
+	url = https://github.com/fogleman/primitive
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	provides = primitive
+	source = primitive-git::git+https://github.com/fogleman/primitive.git#branch=master
+	md5sums = SKIP
+
+pkgname = primitive-git
+
