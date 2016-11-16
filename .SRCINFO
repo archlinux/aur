@@ -1,0 +1,15 @@
+pkgbase = php-pecl-weakref
+	pkgdesc = PHP weak reference extension
+	pkgver = 0.3.2
+	pkgrel = 1
+	url = http://pecl.php.net/package/weakref
+	arch = i686
+	arch = x86_64
+	license = PHP
+	depends = php
+	depends = php-pear
+	source = http://pecl.php.net/get/Weakref-0.3.2.tgz
+	md5sums = fe671e7b19334cea8b8f5f5e08d81155
+
+pkgname = php-pecl-weakref
+
