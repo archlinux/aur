@@ -2,10 +2,10 @@
 
 pkgname=ocaml-faad
 pkgver=0.3.3
-pkgrel=1
+pkgrel=2
 license=('GPL2')
 arch=('i686' 'x86_64')
-pkgdesc=("OCaml bindings for the libfaad AAC decoder library")
+pkgdesc="OCaml bindings for the libfaad AAC decoder library"
 url="https://github.com/savonet/ocaml-faad"
 depends=('ocaml' 'faad2')
 makedepends=('ocaml-findlib')
