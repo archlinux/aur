@@ -1,6 +1,6 @@
 # Maintainer: Simon Legner <Simon.Legner@gmail.com>
 pkgname=tilemaker-git
-pkgver=1.3.0.r3.g5a1b7b3
+pkgver=1.4.0.r2.g519e267
 pkgver() {
   cd "$pkgname"
   git describe --long --tags | sed 's/^v//;s/-/.r/;s/-/./'
