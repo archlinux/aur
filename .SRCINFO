@@ -1,12 +1,13 @@
 pkgbase = aruco
 	pkgdesc = Augmented reality library based on OpenCV
 	pkgver = 2.0.14
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.uco.es/investiga/grupos/ava/node/26
 	arch = i686
 	arch = x86_64
 	license = BSD
 	makedepends = cmake
+	depends = opencv
 	source = http://downloads.sourceforge.net/aruco/aruco-2.0.14.zip
 	md5sums = 43aa2cd578732884b71c4a0264c413f8
 
