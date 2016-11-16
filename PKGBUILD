@@ -6,7 +6,7 @@
 # The source is over 3 GiB, with an extra 3 GiB of dependencies downloaded in build(), and may take several hours to compile.
 
 pkgname='unreal-engine'
-pkgver=4.13.2
+pkgver=4.14.0
 pkgrel=1
 pkgdesc='A 3D game engine by Epic Games which can be used non-commercially for free.'
 arch=('x86_64')
@@ -17,23 +17,20 @@ license=('custom:UnrealEngine')
 source=(
   "git+ssh://git@github.com/EpicGames/UnrealEngine.git#tag=$pkgver-release"
   'UE4Editor.desktop'
-  '0001-ignore-return-value-error.patch'
-  '0002-remove-clang35-dependency.patch'
+  '0001-remove-clang35-dependency.patch'
 )
 md5sums=(
   'SKIP'
   'c7fc35a7eb9e23c0a9b7c593f7f9878d'
-  '08e0e6b8e6c9b186191a8419cc7bd435'
-  '604094f337176251bcfdacd3a21aa081'
+  '271579e814358390d210d57c724a3b00'
 )
 
 # seems these are no longer necessaryand package is 3 Gib smaller with default options
 #options=(!strip staticlibs)
 
-build() {
-  patch "$srcdir/UnrealEngine/Engine/Source/Programs/UnrealBuildTool/Linux/LinuxToolChain.cs" 0001-ignore-return-value-error.patch
-  patch "$srcdir/UnrealEngine/Engine/Build/BatchFiles/Linux/Setup.sh" 0002-remove-clang35-dependency.patch
-
+prepare() {
+  patch "$srcdir/UnrealEngine/Engine/Build/BatchFiles/Linux/Setup.sh" 0001-remove-clang35-dependency.patch
+  
   cd $srcdir/UnrealEngine
   
   # help to clean up old builds when there is a new version
@@ -41,7 +38,11 @@ build() {
 
   ./Setup.sh
   ./GenerateProjectFiles.sh
+}
 
+build() {
+
+  cd $srcdir/UnrealEngine
   # this should work instead of "git clean", but something leftover causes crashes
   #make ARGS=-clean
 
