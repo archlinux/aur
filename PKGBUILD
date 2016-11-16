@@ -2,14 +2,14 @@
 
 _gitname=elisa
 pkgname=$_gitname-git
-pkgver=r165.b62e9b9
+pkgver=r324.8ad8e87
 pkgrel=1
 arch=(i686 x86_64)
 pkgdesc="Elisa Music Player"
 url="https://quickgit.kde.org/?p=elisa.git"
 license=(GPL)
-depends=(baloo kirigami qt5-websockets)
-makedepends=(extra-cmake-modules git)
+depends=(baloo kirigami qt5-websockets qt5-multimedia kdeclarative)
+makedepends=(extra-cmake-modules git python)
 source=("git://anongit.kde.org/$_gitname.git")
 md5sums=('SKIP')
 
