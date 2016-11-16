@@ -28,7 +28,7 @@
 #   will implement any additions you request.
 
 pkgname=archdroid-icon-theme-git
-pkgver=r17.0e42cf8
+pkgver=r18.3450eb3
 pkgrel=1
 pkgdesc="Port of Android 5/6 (Lollipop/Marshmallow)'s material design icons to Arch."
 arch=('any')
