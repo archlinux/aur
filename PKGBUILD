@@ -1,6 +1,6 @@
 # Maintainer: Mattias Andrée <`base64 -d`(bWFhbmRyZWUK)@member.fsf.org>
 pkgname=rmixer
-pkgver=1.3
+pkgver=1.3.1
 pkgrel=1
 pkgdesc="Simple remote interface for the ALSA mixer"
 arch=('any')
@@ -11,7 +11,7 @@ makedepends=('java-environment>=7' 'texinfo' 'gzip' 'auto-auto-complete')
 provides=('rmixer')
 conflicts=('rmixer')
 source=(https://github.com/maandree/rmixer/archive/$pkgver.tar.gz)
-sha256sums=(6e64ff7cec81c540b9026dfb3816c8367add0a605c25ac2dee703f757f4e404b)
+sha256sums=(0409aaf04533677d3c1ced72ceb8dbac74b01d8bb5b79cdb6a7961284ac26f65)
 
 build() {
   cd rmixer-$pkgver
