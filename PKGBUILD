@@ -1,7 +1,7 @@
 # Contributor: Artur Gurov <artgur90@gmail.com>
 pkgname=tasksh
 pkgver=1.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc='A shell command that wraps Taskwarrior commands'
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
 url="https://tasktools.org/projects/tasksh.html"

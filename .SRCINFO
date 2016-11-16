@@ -1,7 +1,7 @@
 pkgbase = tasksh
 	pkgdesc = A shell command that wraps Taskwarrior commands
 	pkgver = 1.1.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://tasktools.org/projects/tasksh.html
 	arch = i686
 	arch = x86_64
