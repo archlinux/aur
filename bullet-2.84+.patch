@@ -1,0 +1,62 @@
+diff --git a/source/ogre/CHud.cpp b/source/ogre/CHud.cpp
+index e3ae43f..037fa2e 100644
+--- a/source/ogre/CHud.cpp
++++ b/source/ogre/CHud.cpp
+@@ -6,7 +6,9 @@
+ #include "common/data/SceneXml.h"
+ #include "common/CScene.h"
+ #include "../vdrift/settings.h"
++#ifndef BT_NO_PROFILE
+ #include <LinearMath/btQuickprof.h>
++#endif // BT_NO_PROFILE
+ #include <OgreManualObject.h>
+ #include <OgreSceneManager.h>
+ #include <OgreSceneNode.h>
+@@ -151,7 +153,7 @@ void CHud::UpdDbgTxtClr()
+ 	}
+ }
+ 
+-
++#ifndef BT_NO_PROFILE
+ ///  Bullet profiling text
+ //--------------------------------------------------------------------------------------------------------------
+ 
+@@ -214,3 +216,4 @@ void CHud::bltDumpAll(std::stringstream& os)
+ 
+ 	CProfileManager::Release_Iterator(profileIterator);
+ }
++#endif // BT_NO_PROFILE
+diff --git a/source/ogre/CHud.h b/source/ogre/CHud.h
+index ace2ca0..86c6150 100644
+--- a/source/ogre/CHud.h
++++ b/source/ogre/CHud.h
+@@ -154,7 +154,9 @@ public:
+ 	//  string utils
+ 	Ogre::String StrClr(Ogre::ColourValue c);
+ 
++#ifndef BT_NO_PROFILE
+ 	//  bullet debug text
+ 	void bltDumpRecursive(class CProfileIterator* profileIterator, int spacing, std::stringstream& os);
+ 	void bltDumpAll(std::stringstream& os);
++#endif // BT_NO_PROFILE
+ };
+diff --git a/source/ogre/Hud_Update.cpp b/source/ogre/Hud_Update.cpp
+index 18c650a..b33d808 100644
+--- a/source/ogre/Hud_Update.cpp
++++ b/source/ogre/Hud_Update.cpp
+@@ -597,6 +597,7 @@ void CHud::Update(int carId, float time)
+ 	}
+ 
+ 
++#ifndef BT_NO_PROFILE
+ 	//  bullet profiling text  --------
+ 	static bool oldBltTxt = false;
+ 	if (ov[1].oU)
+@@ -616,6 +617,7 @@ void CHud::Update(int carId, float time)
+ 			ov[1].oU->setCaption("");
+ 	}
+ 	oldBltTxt = pSet->bltProfilerTxt;
++#endif // BT_NO_PROFILE
+ 
+ 	
+ 	//  wheels slide, susp bars  --------
