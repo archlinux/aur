@@ -1,6 +1,6 @@
 pkgbase = konsole-blurry
 	pkgdesc = Konsole with blurry support
-	pkgver = 16.08.2
+	pkgver = 16.08.3
 	pkgrel = 1
 	url = http://kde.org/applications/system/konsole/
 	arch = i686
@@ -20,9 +20,9 @@ pkgbase = konsole-blurry
 	provides = konsole
 	conflicts = kdebase-konsole<4.14.3-2
 	replaces = kdebase-konsole
-	source = http://download.kde.org/stable/applications/16.08.2/src/konsole-16.08.2.tar.xz
+	source = http://download.kde.org/stable/applications/16.08.3/src/konsole-16.08.3.tar.xz
 	source = 0001-add-blur-effect-when-set-transparency.patch
-	sha1sums = 54eb92f656535c22879db5c23e15625d524a5e95
+	sha1sums = 43dee553c244cec68f23b7ee81568d6e147f69fe
 	sha1sums = b3f8b444181e8e6f60d15d160375c26804429e9b
 
 pkgname = konsole-blurry
