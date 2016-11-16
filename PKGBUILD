@@ -1,16 +1,16 @@
 # Maintainer: grimi <grimi at poczta dot fm>
 
 pkgname=numix-themes-green
-pkgver=2.6.5
+pkgver=2.6.6
 pkgrel=1
 pkgdesc="A flat and light theme with a modern look using Green color (GNOME, MATE, Openbox, Unity, XFCE)"
 arch=('any')
 url='http://numixproject.org/'
 license=('GPL3')
 depends=('gtk-engine-murrine')
-makedepends=('ruby-bundler' 'inkscape' 'optipng')
+makedepends=('ruby-bundler' 'inkscape')
 source=("${pkgname%-*}-${pkgver}.tar.gz::https://github.com/numixproject/numix-gtk-theme/archive/${pkgver}.tar.gz")
-sha1sums=('2ce78b143ea39d66b1411b43ea0a10b5c303de9f')
+sha1sums=('51fab48432dcd3308251cbb76435131a1e31820e')
 
 
 prepare() {
@@ -32,7 +32,6 @@ prepare() {
       sed -i 's/#f1544d/#697740/Ig'  "${FILE}"
       sed -i 's/#f0544c/#697740/Ig'  "${FILE}"
       sed -i 's/#f06860/#697740/Ig'  "${FILE}"
-      sed -i 's/#f44336/#697740/Ig'  "${FILE}"
       sed -i 's/#444444/#333333/g'   "${FILE}"
       sed -i 's/#444/#333/g'         "${FILE}"
       sed -i 's/Numix/Numix-Green/I' "${FILE}"

@@ -1,16 +1,15 @@
 pkgbase = numix-themes-green
 	pkgdesc = A flat and light theme with a modern look using Green color (GNOME, MATE, Openbox, Unity, XFCE)
-	pkgver = 2.6.5
+	pkgver = 2.6.6
 	pkgrel = 1
 	url = http://numixproject.org/
 	arch = any
 	license = GPL3
 	makedepends = ruby-bundler
 	makedepends = inkscape
-	makedepends = optipng
 	depends = gtk-engine-murrine
-	source = numix-themes-2.6.5.tar.gz::https://github.com/numixproject/numix-gtk-theme/archive/2.6.5.tar.gz
-	sha1sums = 2ce78b143ea39d66b1411b43ea0a10b5c303de9f
+	source = numix-themes-2.6.6.tar.gz::https://github.com/numixproject/numix-gtk-theme/archive/2.6.6.tar.gz
+	sha1sums = 51fab48432dcd3308251cbb76435131a1e31820e
 
 pkgname = numix-themes-green
 
