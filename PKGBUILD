@@ -7,14 +7,14 @@ validpgpkeys=('748231EBCBD808A14F5E85D28C004C2F93481F6B')
 
 pkgname=python-snakeoil
 pkgver=0.7.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Provides common functionality and useful optimizations"
 arch=( 'i686' 'x86_64' )
 url="https://pypi.python.org/pypi/snakeoil"
 license=('BSD' )
 depends=( 'python' )
 makedepends=( 'python' )
-_pkgname=python-snakeoil
+_pkgname=snakeoil
 
 install=
 changelog=
@@ -25,11 +25,12 @@ sha512sums=('1c0d03d50a1738cbb3cceecec9445585d089ea535657467871930cca7282d342678
             'SKIP')
 
 build() {
-        cd "${srcdir}/${_pkgname}/src"
-        make prefix=${pkgdir}/usr
+	cd "${srcdir}/${_pkgname}-${pkgver}"
+        python3 setup.py build || return 1
 }
 
 package() {
-        install -D -m755 ${srcdir}/${_pkgname}/src/${_pkgname} ${pkgdir}/usr/bin/${_pkgname}
-        install -D -m644 ${srcdir}/${_pkgname}/docs/README.html.en ${pkgdir}/usr/share/doc/${_pkgname}/README.html
+	cd "${srcdir}/${_pkgname}-${pkgver}"
+	python3 setup.py install --root="${pkgdir}" --optimize=1 || return 1
+	install -D -m 0644 ${srcdir}/${_pkgname}-${pkgver}/LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
 }
