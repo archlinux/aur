@@ -1,5 +1,6 @@
-pkgbase=python-pox
-pkgname=('python-pox' 'python2-pox')
+# pkgbase=python-pox
+# pkgname=('python-pox' 'python2-pox')
+pkgname=python-pox
 pkgver=0.2.2
 pkgrel=1
 pkgdesc="parallel graph management and execution in heterogeneous computing"
@@ -27,11 +28,11 @@ package_python-pox() {
   python setup.py install --root=${pkgdir} --optimize=1
 }
 
-package_python2-pox() {
-  depends=('python2')
-
-  cd "${srcdir}/pox-$pkgver"
-  python2 setup.py install --root=${pkgdir} --optimize=1
-  mv ${pkgdir}/usr/bin/pox_launcher.py ${pkgdir}/usr/bin/pox_launcher2.py
-}
+# package_python2-pox() {
+#   depends=('python2')
+# 
+#   cd "${srcdir}/pox-$pkgver"
+#   python2 setup.py install --root=${pkgdir} --optimize=1
+#   mv ${pkgdir}/usr/bin/pox_launcher.py ${pkgdir}/usr/bin/pox_launcher2.py
+# }
 
