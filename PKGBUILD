@@ -2,10 +2,10 @@
 
 pkgname=ocaml-fdkaac
 pkgver=0.2.1
-pkgrel=1
+pkgrel=2
 license=('GPL2')
 arch=('i686' 'x86_64')
-pkgdesc=("OCaml bingind for the fdk-aac library")
+pkgdesc="OCaml bingind for the fdk-aac library"
 url="https://github.com/savonet/ocaml-fdkaac"
 depends=('ocaml' 'libfdk-aac')
 makedepends=('ocaml-findlib')
