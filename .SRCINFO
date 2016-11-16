@@ -1,6 +1,6 @@
 pkgbase = evolution-rss-git
 	pkgdesc = RSS-Plugin for evolution
-	pkgver = 0.3.95.r40.gdc4e13f
+	pkgver = 0.3.95.r41.gc78ce39
 	pkgrel = 1
 	url = http://gnome.eu.org/evo/index.php/Evolution_RSS_Reader_Plugin
 	install = evolution-rss.install
