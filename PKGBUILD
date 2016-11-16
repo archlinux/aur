@@ -2,12 +2,12 @@
 
 pkgname=ocaml-aacplus
 pkgver=0.2.2
-pkgrel=1
+pkgrel=2
 license=('LGPL2.1')
 arch=('i686' 'x86_64')
-pkgdesc=("OCaml bindings for libaacplus")
+pkgdesc="OCaml bindings for libaacplus"
 url="https://github.com/savonet/ocaml-aacplus"
-depends=('ocaml' 'libaacplus')
+depends=('ocaml' 'libaacplus' 'fftw')
 makedepends=('ocaml-findlib')
 source=("https://github.com/savonet/ocaml-aacplus/releases/download/${pkgver}/${pkgname}-${pkgver}.tar.gz")
 options=('!strip')
