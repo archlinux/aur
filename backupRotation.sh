@@ -108,14 +108,14 @@ for source_path in "${!source_target_mappings[@]}"; do
     fi
     if eval "$backup_command"; then
         # Clean outdated daily backups.
-        find "$target_path" -mtime +"$number_of_daily_retention_days" -exec \
-            $cleanup_command {} \;
+        find "${target_path}/${daily_target_path}" -mtime \
+            +"$number_of_daily_retention_days" -exec $cleanup_command {} \;
         # Clean outdated weekly backups.
-        find "$target_path" -mtime +"$number_of_weekly_retention_days" -exec \
-            $cleanup_command {} \;
+        find "${target_path}/${weekly_target_path}" -mtime \
+            +"$number_of_weekly_retention_days" -exec $cleanup_command {} \;
         # Clean outdated monthly backups.
-        find "$target_path" -mtime +"$number_of_monthly_retention_days" -exec \
-            $cleanup_command {} \;
+        find "${target_path}/${monthly_target_path}" -mtime \
+            +"$number_of_monthly_retention_days" -exec $cleanup_command {} \;
     else
         message="Source files in \"$source_path\" should be backed up but aren't available."
         $verbose && echo "$message" &>/dev/stderr
