@@ -1,6 +1,6 @@
 pkgbase = ido-ubuntu
 	pkgdesc = Widgets and other objects used for indicators
-	pkgver = 13.10.0.15.10.20151002
+	pkgver = 13.10.0.17.04.20161028
 	pkgrel = 1
 	url = https://launchpad.net/ido
 	arch = i686
@@ -11,12 +11,10 @@ pkgbase = ido-ubuntu
 	makedepends = gtk-doc
 	makedepends = vala
 	makedepends = xorg-util-macros
-	depends = gtk3-ubuntu
-	provides = ido=13.10.0.15.10.20151002
-	conflicts = ido
-	source = https://launchpad.net/ubuntu/+archive/primary/+files/ido_13.10.0+15.10.20151002.orig.tar.gz
+	depends = gtk3
+	source = https://launchpad.net/ubuntu/+archive/primary/+files/ido_13.10.0+17.04.20161028.orig.tar.gz
 	source = 0001-Temporarily-disable-previous-button-drop-shadow-draw.patch
-	sha512sums = df6b991819da8c680b8019c4834bfe35ca2de8c22c4a49e8f2775da47ebd705df91b73bf95b98d0e9cd3cdad1244c75996febdf7c3a89f3eea258c12411ae398
+	sha512sums = 867157c9e316eb5ed69ebdf1017ed86990aabf7a885ba26acab36782f0f27e10b4621a7db15ac90335e808022490a98560d5ff443e6f697c578eed5868385ebd
 	sha512sums = 91d19642868a3859a860fc1a32541141472b8af46d9d2fa6983dd41ec6e0497ca6397a836a0921ba000e26be2be5b8d52ae74b0c5c29b4b73e4f6bce67f9b60d
 
 pkgname = ido-ubuntu
