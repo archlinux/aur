@@ -1,8 +1,8 @@
 # Maintainer: Jakob Gahde <j5lx@fmail.co.uk>
 
 pkgname=arc-firefox-theme
-pkgver=49.20160920
-pkgrel=2
+pkgver=50.20161114
+pkgrel=1
 pkgdesc="Official Arc Firefox theme"
 arch=('any')
 url="https://github.com/horst3180/${pkgname}/"
@@ -10,7 +10,7 @@ license=('custom:MPL2.0')
 depends=('firefox' 'arc-gtk-theme')
 makedepends=('zip' 'unzip')
 source=("https://github.com/horst3180/${pkgname}/archive/${pkgver}.tar.gz")
-sha256sums=('b8067dc9a5b1a53b29158be656b5c5e951894599076f3dbd1050e053e3602ab0')
+sha256sums=('c229c66a66cc37c275a42c8f11a848b377f07896ab01bc0d6812e8fc7ee3f2c3')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
