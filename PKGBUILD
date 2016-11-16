@@ -1,11 +1,13 @@
+# Maintainer: Xiao-Long Chen <chenxiaolong@cxl.epac.to>
 # Maintainer: Michael Healy <horsemanoffaith@gmail.com>
 
 # vercheck-pkgbuild: auto
-# vercheck-ubuntu: name=${pkgname}, repo=xenial
+# vercheck-ubuntu: name=${pkgname}, repo=yakkety
 
 pkgname=unity-settings-daemon
+_ubuntu_rel=0ubuntu1
 _actual_ver=15.04.1
-_extra_ver=+16.04.20160209
+_extra_ver=+16.10.20161003
 pkgver=${_actual_ver}${_extra_ver/\+/.}
 pkgrel=1
 pkgdesc="Unity Settings Daemon"
@@ -13,63 +15,76 @@ arch=(i686 x86_64)
 url="https://launchpad.net/unity-settings-daemon"
 license=(GPL)
 groups=(unity)
-depends=(gnome-settings-daemon-ubuntu gsettings-desktop-schemas-ubuntu fcitx
-         gperf hicolor-icon-theme ibus libappindicator-gtk3-ubuntu libcanberra-pulse
+depends=(fcitx gnome-settings-daemon-ubuntu gperf gsettings-desktop-schemas-ubuntu 
+          hicolor-icon-theme ibus libappindicator-gtk3-ubuntu libcanberra-pulse
          libnotify librsvg libsystemd libwacom libxkbfile mesa pulseaudio
          pulseaudio-alsa upower)
-makedepends=(intltool xf86-input-wacom libxslt docbook-xsl python2)
+makedepends=(docbook-xsl intltool libxslt python2 xf86-input-wacom)
 conflicts=(gnome-desktop-compat upower-compat)
-unity=settings-install-daemon.install
 #options=('!emptydirs')
 source=("https://launchpad.net/ubuntu/+archive/primary/+files/unity-settings-daemon_${_actual_ver}${_extra_ver}.orig.tar.gz"
+        "https://launchpad.net/ubuntu/+archive/primary/+files/unity-settings-daemon_${_actual_ver}${_extra_ver}-${_ubuntu_rel}.diff.gz"
         0001-Remove-accountsservice-dependency.patch
-        0002-Add-gnome-settings-daemon-3.12-rfkill-plugin.patch
-        0003-Use-GNOME-3.16-deprecated-schemas.patch)
-sha512sums=('a40ea34883e9a7d1726754c0ee154531296d58faba2b1fba008e0ad50fdf268ce8d055120d98d4be108b3dd31ab83e5aef6cab2cb74d0f6334b9237113f93a83'
-            '38e49274e9e12dabb7f5d6a2fd058aad94c749e46e44030cd6c550e544f9f0ef30f56effa8dd55b46a208221d04b179b3f16d4894e0e887820685b4c7b8273f2'
-            '3cb2735c15c3acb4bcbd78da1c31dddda2f707b48fec46294a705a7688d277040aa1f7891b8c56cbd73b4f138805006bd0a2d569b7b4ac8f4ac3f297d5abb6ac'
-            '9d036512105a20f1a2f045a7c6b87faedacb25748239babe3f79514c7899af74ab0e56e8d184406d183cdb2be6518f37681b03cdb6ce20901f0381b6bd0d7d68')
-
+        0001-usd-test-screensaver-proxy-fails-to-compile.patch)
+sha512sums=('d435f5b7000d2799fa1c099a69f10c0e5512d2dc243088fee41468aa632b7468cc0c0c55b7e44c793f194b03b5e40d5517c625a38cd80ee7d88b535ce01e9a91'
+            '316b48e0ea611460c2baf3847e36580de47de7f83f2f4c6adff619fc21caef4c8392917f6bed34b012a9d7553162ae34b17b6126749aff86acbf77357607f39e'
+            '2394d35355f31a1090c96a38f3e33930d70aa1683f1bc3c4b65fd6a70a9bf9e5a592109ed34dd2d5a07822b401a24d11d80a662aae850236434d89c37a9a9c89'
+            '576a239db5ca938b7255a3079f8b6d9228501bd5b50ef741933736a25546acb6cc60b3696732a941883e4c5165f4ff9860bfd3708f7bdf8c19c1d29212c6c1f8'
+            '9d036512105a20f1a2f045a7c6b87faedacb25748239babe3f79514c7899af74ab0e56e8d184406d183cdb2be6518f37681b03cdb6ce20901f0381b6bd0d7d68'
+            '0b6fa66ebecef51c54ca04ae5aec6c6e05450668865e544f4c5ed3b142dcb22301bae440f55dfeec8fc5534a3c818d8cba4d019c32f5e3441a588bea9b93dab8')
+            
 prepare() {
-  cd "${pkgname}-${_actual_ver}${_extra_ver}"
+    patch -p1 -i unity-settings-daemon_${_actual_ver}${_extra_ver}-${_ubuntu_rel}.diff
 
-  patch -p1 -i ../0001-Remove-accountsservice-dependency.patch
-  patch -p1 -i ../0002-Add-gnome-settings-daemon-3.12-rfkill-plugin.patch
-  patch -p1 -i ../0003-Use-GNOME-3.16-deprecated-schemas.patch
-
-  # Temporarily disable since it fails to link to glib
-  sed -i '/noinst_PROGRAMS += test-wm-button-layout-translations/d' plugins/xsettings/Makefile.am
+    patch -p1 -i 0001-Remove-accountsservice-dependency.patch
+    patch -p1 -i 0001-usd-test-screensaver-proxy-fails-to-compile.patch
 }
 
 build() {
-  cd "${pkgname}-${_actual_ver}${_extra_ver}"
+    autoreconf -vfi
+    intltoolize -f
 
-  autoreconf -vfi
-  intltoolize -f
+    ./configure \
+        --prefix=/usr \
+        --sysconfdir=/etc \
+        --localstatedir=/var \
+        --libexecdir=/usr/lib/unity-settings-daemon \
+        --disable-static \
+        --enable-systemd \
+        --enable-fcitx
 
-  ./configure \
-    --prefix=/usr \
-    --sysconfdir=/etc \
-    --localstatedir=/var \
-    --libexecdir=/usr/lib/unity-settings-daemon \
-    --disable-static \
-    --enable-systemd \
-    --enable-fcitx
+    # https://bugzilla.gnome.org/show_bug.cgi?id=656231
+    sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
 
-  # https://bugzilla.gnome.org/show_bug.cgi?id=656231
-  sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
-
-  make
+    make
 }
 
 package() {
-  cd "${pkgname}-${_actual_ver}${_extra_ver}"
-  make DESTDIR="${pkgdir}/" install
+    make DESTDIR="${pkgdir}/" install
 
-  install -dm755 "${pkgdir}/usr/bin/"
-  ln -s /usr/lib/unity-settings-daemon/unity-settings-daemon \
-    "${pkgdir}/usr/bin/unity-settings-daemon"
+    install -dm755 "${pkgdir}/usr/bin/"
+    ln -s /usr/lib/unity-settings-daemon/unity-settings-daemon \
+        "${pkgdir}/usr/bin/unity-settings-daemon"
 
-  # Use language packs
-  rm -r "${pkgdir}/usr/share/locale/"
+    install -Dm644 debian/unity-settings-daemon.user-session.upstart \
+        "${pkgdir}"/usr/share/upstart/sessions/unity-settings-daemon.conf
+    install -Dm644 debian/unity-settings-daemon.user-session.desktop \
+        "${pkgdir}"/usr/share/upstart/xdg/autostart/unity-settings-daemon.desktop
+
+    install -dm755 "${pkgdir}"/usr/lib/systemd/user/
+    install -m644 debian/user/unity-settings-daemon.service \
+        "${pkgdir}"/usr/lib/systemd/user/
+
+    # Required until unity7 gets a systemd unity with Requires=u-s-d
+    install -dm755 "${pkgdir}"/usr/lib/systemd/user/ubuntu-session.target.wants/
+    ln -s /usr/lib/systemd/user/unity-settings-daemon.service \
+        "${pkgdir}"/usr/lib/systemd/user/ubuntu-session.target.wants/
+
+    install -dm755 "${pkgdir}"/usr/share/upstart/systemd-session/upstart/
+    install -m644 debian/user/unity-settings-daemon.override \
+        "${pkgdir}"/usr/share/upstart/systemd-session/upstart/
+
+    # Use language packs
+    rm -r "${pkgdir}/usr/share/locale/"
+
 }

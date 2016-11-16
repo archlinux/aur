@@ -1,8 +1,7 @@
-From 901a7eca68c2ec03fb1db1549d961f2a442f893c Mon Sep 17 00:00:00 2001
+From a287822a26bfc068cbbd5d0cac4f5655851a7170 Mon Sep 17 00:00:00 2001
 From: Xiao-Long Chen <chenxiaolong@cxl.epac.to>
-Contributor: Michael Healy <horsemanoffaith@gmail.com>
 Date: Sun, 8 Jun 2014 16:23:30 -0400
-Subject: [PATCH 1/3] Remove accountsservice dependency
+Subject: [PATCH 1/2] Remove accountsservice dependency
 
 ---
  configure.ac                            |  2 +-
@@ -23,7 +22,7 @@ index c7ccda5..824d758 100644
  XKB_BASE=$($PKG_CONFIG --variable xkb_base xkeyboard-config)
  AC_SUBST(XKB_BASE)
 diff --git a/plugins/keyboard/gsd-keyboard-manager.c b/plugins/keyboard/gsd-keyboard-manager.c
-index d3c038f..4c9fbd2 100644
+index db214a0..9031009 100644
 --- a/plugins/keyboard/gsd-keyboard-manager.c
 +++ b/plugins/keyboard/gsd-keyboard-manager.c
 @@ -53,8 +53,6 @@
@@ -32,10 +31,10 @@ index d3c038f..4c9fbd2 100644
  
 -#include <act/act.h>
 -
- #include "gnome-settings-session.h"
+ #include "gnome-settings-bus.h"
  #include "gnome-settings-profile.h"
  #include "gsd-keyboard-manager.h"
-@@ -1042,67 +1040,6 @@ apply_xkb_settings (GsdKeyboardManager *manager,
+@@ -1052,67 +1050,6 @@ apply_xkb_settings (GsdKeyboardManager *manager,
          XkbLockModifiers (GDK_DISPLAY_XDISPLAY (gdk_display_get_default ()), XkbUseCoreKbd, LockMask, 0);
  }
  
@@ -103,7 +102,7 @@ index d3c038f..4c9fbd2 100644
  #ifdef HAVE_FCITX
  static gchar *
  get_xkb_name (const gchar *name)
-@@ -1651,8 +1588,6 @@ apply_input_sources_settings (GSettings          *settings,
+@@ -1661,8 +1598,6 @@ apply_input_sources_settings (GSettings          *settings,
          GVariant *sources;
          guint n_sources;
          guint current;
@@ -112,7 +111,7 @@ index d3c038f..4c9fbd2 100644
  
  #ifdef HAVE_FCITX
          if (priv->is_fcitx_active) {
-@@ -1694,13 +1629,6 @@ apply_input_sources_settings (GSettings          *settings,
+@@ -1704,13 +1639,6 @@ apply_input_sources_settings (GSettings          *settings,
                  goto exit;
          }
  
@@ -127,5 +126,5 @@ index d3c038f..4c9fbd2 100644
  
  exit:
 -- 
-2.3.7
+2.9.0
 
