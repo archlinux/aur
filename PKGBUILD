@@ -1,4 +1,5 @@
-# Maintainer: Luca Weiss <WEI16416@spengergasse.at>
+# Maintainer: Luca Weiss <luca (at) z3ntu (dot) xyz>
+
 pkgname=python-qtwaitingspinner-git
 pkgver=r85.79a5c81
 pkgrel=1
