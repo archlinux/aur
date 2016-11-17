@@ -1,0 +1,7 @@
+post_install() {
+	traktor_configure
+}
+post_upgrade() {
+	traktor_configure
+}
+

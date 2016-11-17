@@ -1,0 +1,19 @@
+pkgbase = traktor
+	pkgdesc = An automated Tor installer
+	pkgver = 1.3
+	pkgrel = 1
+	url = https://github.com/AmirrezaFiroozi/traktor/tree/ArchLinux
+	install = traktor.install
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	depends = tor
+	depends = obfsproxy
+	depends = polipo
+	depends = dnscrypt-proxy
+	optdepends = tor-browser-en-ir
+	source = traktor_arch.sh
+	md5sums = SKIP
+
+pkgname = traktor
+
