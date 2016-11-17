@@ -1,4 +1,4 @@
-# Maintainer: Luca Weiss <WEI16416@spengergasse.at>
+# Maintainer: Luca Weiss <luca (at) z3ntu (dot) xyz>
 
 pkgname=epson-tm-series-driver
 pkgver=2.0.3.0
