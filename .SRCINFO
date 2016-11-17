@@ -1,0 +1,29 @@
+pkgbase = python2-rsb-stable-git
+	pkgdesc = Robotics Service Bus Python implementation
+	pkgver = 0.15.0.7d0fc4d
+	pkgrel = 1
+	url = https://projects.cor-lab.org/projects/rsb
+	arch = any
+	license = LGPL3
+	checkdepends = spread-daemon
+	checkdepends = spread-python2
+	checkdepends = python2-nose
+	checkdepends = python2-pylint
+	checkdepends = python2-coverage
+	makedepends = git
+	makedepends = python2-setuptools
+	makedepends = rsb-proto-stable-git
+	makedepends = python2-nose
+	makedepends = python2-pylint
+	makedepends = python2-coverage
+	makedepends = python2-spread
+	depends = python2
+	depends = python2-protobuf
+	optdepends = spread-python2
+	provides = python2-rsb
+	conflicts = python2-rsb
+	source = python2-rsb::git+https://code.cor-lab.org/git/rsb.git.python#branch=0.15
+	md5sums = SKIP
+
+pkgname = python2-rsb-stable-git
+
