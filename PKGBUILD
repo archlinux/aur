@@ -1,8 +1,8 @@
-# Maintainer: Luca Weiss <WEI16416@spengergasse.at>
+# Maintainer: Luca Weiss <luca (at) z3ntu (dot) xyz>
 
 pkgname=ubuntu-device-flash-bzr
 _pkgname=ubuntu-device-flash
-pkgver=r227
+pkgver=r233
 pkgrel=1
 pkgdesc="Tools to work with Ubuntu Touch"
 url="https://launchpad.net/goget-ubuntu-touch"
