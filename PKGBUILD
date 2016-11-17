@@ -1,6 +1,6 @@
 # Maintainer: Shadowigor <shadowigorr at gmail dot com>
 pkgname="osync"
-pkgver=v1.1.4.r11.02d732b
+pkgver=v1.1.5.r9.90e6a39
 pkgrel=1
 pkgdesc="A two way filesync script"
 arch=("any")
