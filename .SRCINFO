@@ -1,0 +1,15 @@
+pkgbase = rdcli
+	pkgdesc = A simple CLI tool to unrestrict links with real-debrid.com
+	pkgver = 1.3.1
+	pkgrel = 1
+	url = https://github.com/jcherqui/rdcli
+	arch = any
+	license = MIT
+	makedepends = npm
+	depends = nodejs
+	noextract = rdcli-1.3.1.tgz
+	source = https://registry.npmjs.org/rdcli/-/rdcli-1.3.1.tgz
+	sha1sums = f64eb7656b289097dc4a6043199ec380b1fb7957
+
+pkgname = rdcli
+
