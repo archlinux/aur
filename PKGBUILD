@@ -1,4 +1,4 @@
-# Maintainer: Luca Weiss <WEI16416@spengergasse.at>
+# Maintainer: Luca Weiss <luca (at) z3ntu (dot) xyz>
 # Previous Maintainer: Denis Meiswinkel <denis.meiswinkel@gmail.com>
 # Contributor: Balló György <ballogyor+arch@gmail.com>
 
