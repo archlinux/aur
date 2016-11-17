@@ -8,7 +8,7 @@ _stable=4.8.8
 _patchver=4.8.9
 pkgver=${_patchver}rc1
 _rcpatch=patch-${_patchver}-rc1
-pkgrel=2
+pkgrel=3
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
 license=('GPL2')
@@ -35,8 +35,8 @@ sha256sums=('3e9150065f193d3d94bcf46a1fe9f033c7ef7122ab71d75a7fb5a2f0c9a7e11a'
             'SKIP'
             'c28da3bc54451c386b30456f3a5199f0149e22baed20bf2201aa3f297e98036b'
             'SKIP'
-            '2ac8818414beb7dbacbd3ad450c516e6ada804827132a7132f63b8189e5f5151'
-            '93a4ad4f6c7bb9296fddec436ed7477a5a5c11cf4d6e68482fa6610442cbcb1f'
+            '2fd479c42362075c3bea6c7c1737fd3e0c222245046d071fa10157d05397965f'
+            'b8597b9cd36e64c297eace4956dbad8a3511498f946602514a6c34bfdc6d113b'
             '834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0'
             'a8cae3381e5669a70e20e36562d7433f61b13d24ad8c688cf6c398d5128e2c02'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99')
