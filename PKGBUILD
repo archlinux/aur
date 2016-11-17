@@ -1,4 +1,4 @@
-# Maintainer: Luca Weiss <WEI16416 (at) spengergasse (dot) at>
+# Maintainer: Luca Weiss <luca (at) z3ntu (dot) xyz>
 
 pkgname=redshift-qt
 pkgver=0.2
