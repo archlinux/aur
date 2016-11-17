@@ -1,7 +1,8 @@
-# Maintainer : Özgür Sarıer <echo b3pndXJzYXJpZXIxMDExNjAxMTE1QGdtYWlsLmNvbQo= | base64 -d>
+# Maintainer: Luca Weiss <luca (at) z3ntu (dot) xyz>
+# Contributor: Özgür Sarıer <echo b3pndXJzYXJpZXIxMDExNjAxMTE1QGdtYWlsLmNvbQo= | base64 -d>
 
 pkgname=natron
-pkgver=2.1.7
+pkgver=2.1.8
 pkgrel=1
 pkgdesc="Open source compositing software. Node-graph based. Similar in functionalities to Adobe After Effects and Nuke by The Foundry."
 arch=("i686" "x86_64")
