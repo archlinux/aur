@@ -1,4 +1,5 @@
-# Maintainer: Luca Weiss <WEI16416@spengergasse.at>
+# Maintainer: Luca Weiss <luca (at) z3ntu (dot) xyz>
+
 pkgname=qtshutdownmenu-git
 pkgver=r4.314f35e
 pkgrel=1
