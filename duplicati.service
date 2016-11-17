@@ -1,7 +1,7 @@
 [Unit]
-Description=Duplicati per-user service
+Description=Duplicati
 After=network.target
- 
+
 [Service]
 ExecStart=/usr/bin/mono /opt/duplicati-latest/Duplicati.Server.exe --webservice-port=8200
 Restart=on-abort
