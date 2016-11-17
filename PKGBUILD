@@ -3,7 +3,7 @@
 pkgname=python-pox
 pkgver=0.2.2
 pkgrel=1
-pkgdesc="parallel graph management and execution in heterogeneous computing"
+pkgdesc="utilities for filesystem exploration and automated builds"
 url="http://trac.mystic.cacr.caltech.edu/project/pathos/wiki.html"
 arch=(any)
 license=('BSD')
