@@ -30,11 +30,5 @@ package() {
 	cd "${srcdir}/${_pkgname}/"
 	_kver=$(uname -r)
 	mkdir -p "${pkgdir}/usr/lib/modules/${_kver}/kernel/drivers/net/wireless/rtl8723bu/"
-	mkdir -p "${pkgdir}/usr/lib/firmware/rtl8723bu/" 
 	install -p -m 644 8723bu.ko "${pkgdir}/usr/lib/modules/${_kver}/kernel/drivers/net/wireless/rtl8723bu/"
-	install -p -m 644 rtl8723b_fw.bin "${pkgdir}/usr/lib/firmware/rtl8723bu/" 
-        install -p -m 644 rtl8723bu_ap_wowlan.bin "${pkgdir}/usr/lib/firmware/rtl8723bu/"
-	install -p -m 644 rtl8723bu_bt.bin "${pkgdir}/usr/lib/firmware/rtl8723bu/" 
-	install -p -m 644 rtl8723bu_nic.bin "${pkgdir}/usr/lib/firmware/rtl8723bu/"
-        install -p -m 644 rtl8723bu_wowlan.bin "${pkgdir}/usr/lib/firmware/rtl8723bu/"
 }
