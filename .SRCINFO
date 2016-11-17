@@ -1,0 +1,35 @@
+pkgbase = build-generator-stable-git
+	pkgdesc = Generates jobs on a Jenkins server according to specifications
+	pkgver = 0.8.4.415573d
+	pkgrel = 1
+	url = https://projects.cor-lab.org/projects/build-generator
+	arch = i686
+	arch = x86_64
+	license = LGPL3
+	makedepends = git
+	makedepends = cmake
+	makedepends = sbcl
+	makedepends = cl-launch
+	depends = openssl
+	depends = git
+	depends = subversion
+	depends = unp
+	depends = mercurial
+	depends = lsb-release
+	depends = graphviz
+	provides = build-generator
+	conflicts = build-generator
+	options = !strip
+	source = build-generator::git+https://code.cor-lab.org/git/build-generator#branch=0.8
+	source = configuration-options::git+https://github.com/scymtym/configuration.options
+	source = parser::git+https://github.com/scymtym/parser.ini
+	source = rosetta::git+https://code.cor-lab.org/git/rosetta.git.cl
+	source = architecture.builder-protocol::git+https://github.com/scymtym/architecture.builder-protocol
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = build-generator-stable-git
+
