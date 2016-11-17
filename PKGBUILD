@@ -3,9 +3,8 @@
 
 pkgname=duply
 _mainver=2.0
-#pkgver=$_mainver.0
-pkgver=$_mainver
-pkgrel=2
+pkgver=$_mainver.1
+pkgrel=1
 pkgdesc="A shell front end for duplicity. It manages backup job settings in profiles and allows to batch execute commands."
 arch=('any')
 url="http://duply.net/"
@@ -28,4 +27,4 @@ package() {
 }
 
 md5sums=('adcc36b695e44387747ecc70f0a35b72'
-         '68b8913f009e6c3c30cb280949b99a66')
+         'ea74bf9c4bd96d49d3f4b77d98d4ff7d')
