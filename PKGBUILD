@@ -21,7 +21,7 @@ arch=("any")
 url="http://www.github.com/sirspudd/qcec"
 license=("GPL3")
 makedepends=("qt-sdk-raspberry-pi${_piver}")
-depends=("qt-sdk-raspberry-pi-target-libs")
+depends=("qt-sdk-raspberry-pi${_piver}-target-libs")
 source=("git://github.com/sirspudd/${pkgname}.git#tag=${pkgver}")
 sha256sums=("SKIP")
 options=('!strip')
