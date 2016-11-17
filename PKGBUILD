@@ -1,5 +1,5 @@
 # Maintainer: Matt Monaco <net 0x01b matt>
-# Maintainer: Luca Weiss <WEI16416 "at" spengergasse "dot" at>
+# Maintainer: Luca Weiss <luca (at) z3ntu (dot) xyz>
 
 pkgname=xwiimote-git
 _pkgname=xwiimote
