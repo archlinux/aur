@@ -8,10 +8,10 @@ pkgver=r14.e4a9c4d
 pkgrel=1
 pkgdesc="Python wrapper for curve25519 library"
 url="https://github.com/tgalal/${_pkgname}"
-arch=('any')
+arch=('x86_64' 'i686')
 license=('GPL')
 depends=('python')
-makedepends=('python-setuptools')
+makedepends=('git' 'python-setuptools')
 conflicts=('python-axolotl-curve25519')
 provides=('python-axolotl-curve25519')
 source=('git://github.com/tgalal/python-axolotl-curve25519')
@@ -30,3 +30,5 @@ package() {
   cd "$srcdir/$_pkgname"
   python setup.py install --root="$pkgdir/" --optimize=1
 }
+
+# vim:set ts=2 sw=2 et:
