@@ -1,0 +1,21 @@
+pkgbase = python2-rst-converters-stable-git
+	pkgdesc = Robotics Systems Types converter for Python
+	pkgver = 0.15.0.12c14d2
+	pkgrel = 1
+	url = https://projects.cor-lab.org/projects/rst
+	arch = any
+	license = LGPL3
+	makedepends = git
+	makedepends = python2-setuptools
+	depends = python2
+	depends = python2-protobuf
+	depends = python2-rsb-stable-git
+	depends = rst-proto-stable-git
+	depends = python2-numpy
+	provides = python2-rst-converters
+	conflicts = python2-rst-converters
+	source = python2-rst-converters::git+https://code.cor-lab.org/git/rst.git.converters-python#branch=0.15
+	md5sums = SKIP
+
+pkgname = python2-rst-converters-stable-git
+
