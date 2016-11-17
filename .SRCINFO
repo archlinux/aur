@@ -1,0 +1,23 @@
+pkgbase = rsb-spread-cpp-stable-git
+	pkgdesc = Robotics Service Bus C++ spread transport
+	pkgver = 0.15.0.84e9019
+	pkgrel = 1
+	url = https://projects.cor-lab.org/projects/rsb
+	arch = i686
+	arch = x86_64
+	license = LGPL3
+	checkdepends = python2
+	makedepends = git
+	makedepends = cmake
+	depends = rsc-stable-git
+	depends = boost
+	depends = protobuf
+	depends = spread-daemon
+	depends = rsb-cpp-stable-git
+	provides = rsb-spread-cpp
+	conflicts = rsb-spread-cpp
+	source = rsb-spread-cpp::git+https://code.cor-lab.org/git/rsb.git.spread-cpp#branch=0.15
+	md5sums = SKIP
+
+pkgname = rsb-spread-cpp-stable-git
+
