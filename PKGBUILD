@@ -2,11 +2,7 @@
 
 pkgname=razercfg-git
 pkgrel=1
-pkgver=0.33.r40.ge50dac1
-pkgver() {
-  cd razercfg
-  git describe --long | sed 's/^razercfg-//;s/\([^-]*-g\)/r\1/;s/-/./g'
-}
+pkgver=0.35.r0.ga116db8
 install=razercfg-git.install
 pkgdesc='Configuration utility for Razer devices on Linux systems.'
 arch=('x86_64' 'i686')
@@ -19,6 +15,12 @@ depends=('libusb' 'python')
 provides=('razercfg' 'razercfg-git')
 conflicts=('razercfg' 'razercfg-git')
 md5sums=('SKIP')
+
+pkgver() {
+  cd razercfg
+  git describe --long | sed 's/^razercfg-//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
 build() {
   cd razercfg
   if [[ -d CMakeFiles ]]; then
@@ -27,7 +29,10 @@ build() {
   cmake . -DCMAKE_INSTALL_PREFIX='/usr'
   make
 }
-package_razercfg-git() {
+
+package() {
   cd razercfg
   make DESTDIR="$pkgdir/" install
 }
+
+# vim:set ts=2 sw=2 et:
