@@ -8,7 +8,7 @@ arch=('x86_64')
 url=https://github.com/tiffany352/rink-rs
 license=('MPL2')
 makedepends=('cargo')
-source=("$url/archive/v$pkgver.tar.gz")
+source=("rink-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
 sha512sums=('78510545d58961f0df35be25bb47aaecac7e173dc7dcb8ceea29975a4ab6a4e1c8f7dfb91c8df5ef525bd23c530d6e0c6b671c3033f25ffc1984063991f89688')
 
 build() {
