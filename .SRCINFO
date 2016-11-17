@@ -1,7 +1,7 @@
-pkgbase = deepin-terminal
+pkgbase = deepin-terminal-git
 	pkgdesc = Default terminal emulation application for Deepin
 	pkgver = 2.0.16
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/manateelazycat/deepin-terminal
 	arch = i686
 	arch = x86_64
@@ -20,5 +20,5 @@ pkgbase = deepin-terminal
 	source = git+https://github.com/manateelazycat/deepin-terminal.git
 	sha256sums = SKIP
 
-pkgname = deepin-terminal
+pkgname = deepin-terminal-git
 

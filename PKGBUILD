@@ -1,11 +1,11 @@
 # $Id$
-# Maintainer: Felix Yan <felixonmars@archlinux.org>
+# Maintainer: Kirigaya Kazushin <kirigaya@mkacg.com>
 # Contributor: Josip Ponjavic <josipponjavic at gmail dot com>
 # Contributor: Xu Fasheng <fasheng.xu[AT]gmail.com>
  
-pkgname=deepin-terminal
+pkgname=deepin-terminal-git
 pkgver=2.0.16
-pkgrel=2
+pkgrel=3
 pkgdesc='Default terminal emulation application for Deepin'
 arch=('i686' 'x86_64')
 url="https://github.com/manateelazycat/deepin-terminal"
