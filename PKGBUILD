@@ -1,6 +1,6 @@
 # Maintainer: Ales Katona <almindor@gmail.com>
 pkgname=etherwall
-pkgver=1.4.5
+pkgver=1.4.6
 pkgrel=1
 pkgdesc="Ethereum GUI Wallet (QT5)"
 arch=(i686 x86_64)
@@ -8,7 +8,7 @@ url="http://etherwall.com"
 license=('GPL3')
 depends=('qt5-declarative' 'qt5-graphicaleffects' 'qt5-quickcontrols' 'geth')
 source=("https://github.com/almindor/${pkgname}/archive/release/${pkgver}.tar.gz")
-md5sums=('e9b7420d4e4d25183aa345723c428e91')
+md5sums=('47b3ccb9590f61a3b514e9a26a68dcdc')
 
 build() {
   cd "$pkgname-release-$pkgver"
