@@ -1,8 +1,8 @@
 # Maintainer: Grey Christoforo <first name [at] last name [dot] net>
 
 pkgname=owncloud-daily
-pkgver=20160530
-pkgrel=2
+pkgver=20161117
+pkgrel=1
 pkgdesc="ownCloud server dialy build, installed from the official .tar.bz2 archive"
 url="https://owncloud.org"
 arch=('any')
@@ -29,7 +29,7 @@ validpgpkeys=('E3036906AD9F30807351FAC32D5D5E97F6978A26')
 source=("https://download.owncloud.org/community/daily/owncloud-daily-master.tar.bz2"
   "apache.example.conf"
   "set-oc-perms.sh")
-md5sums=('SKIP'
+md5sums=('25e62ed55749127bec5ced4b54a00159'
          'bf523e475fd8cf1e2048018952da5c34'
          '30333bf6beb39b5048fcb85c74e690c0')
 
@@ -41,7 +41,7 @@ prepare() {
 
 package() {
   install -d "${pkgdir}/usr/share/licenses/${pkgname}"
-  cp "${srcdir}"/owncloud/COPYING-* "${pkgdir}/usr/share/licenses/${pkgname}"
+  cp "${srcdir}"/owncloud/COPYING "${pkgdir}/usr/share/licenses/${pkgname}"
 
   mkdir -p "${pkgdir}/usr/share/webapps"
   cp -a owncloud "${pkgdir}/usr/share/webapps/."
