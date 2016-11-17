@@ -1,4 +1,4 @@
-# Maintainer: Luca Weiss <WEI16416@spengergasse.at>
+# Maintainer: Luca Weiss <luca (at) z3ntu (dot) xyz>
  
 pkgname=linux-steam-integration
 pkgver=0.2
