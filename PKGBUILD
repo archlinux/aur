@@ -2,7 +2,7 @@
 # Contributor: sh4nks <sh4nks7@gmail.com
 
 pkgname=lightdm-pantheon-greeter-bzr
-pkgver=r496
+pkgver=r499
 pkgrel=1
 pkgdesc='Pantheon greeter for LightDM'
 arch=('i686' 'x86_64')
@@ -19,7 +19,7 @@ install='lightdm-pantheon-greeter.install'
 source=('lightdm-pantheon-greeter::bzr+lp:pantheon-greeter'
         'lightdm-pantheon-greeter-paths.patch')
 sha256sums=('SKIP'
-            'fa66378d0c7f6aa08e4ec7c97f3503fe06290e79129d78313a66df7e84a61c07')
+            '2277e4a11c8945b72cca0ab116aaae86099ccd90833c18b7f74b400f6f674b7f')
 
 pkgver() {
   cd lightdm-pantheon-greeter
