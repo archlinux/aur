@@ -1,4 +1,4 @@
-# Maintainer: Luca Weiss <WEI16416@spengergasse.at>
+# Maintainer: Luca Weiss <luca (at) z3ntu (dot) xyz>
 # Thanks to "markzz" & "Philip 'Chais' Abernethy" for the besiege PKGBUILD file!
 
 # YOU MUST SUPPLY THE SH FILE INCLUDED WITH YOUR HUMBLE PURCHASE
