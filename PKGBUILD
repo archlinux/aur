@@ -2,7 +2,7 @@
 
 pkgname=nana
 pkgver=1.4.1
-pkgrel=1
+pkgrel=2
 pkgdesc="An opensource cross-platform GUI library written in modern C++11 for static linking"
 arch=("i686" "x86_64")
 url="http://nanapro.org/en-us/"
@@ -25,7 +25,8 @@ build() {
 
     cmake \
         -DCMAKE_BUILD_TYPE=Release \
-        -DCMAKE_INSTALL_PREFIX=/usr
+        -DCMAKE_INSTALL_PREFIX=/usr \
+        -DNANA_CMAKE_NANA_FILESYSTEM_FORCE=YES
 
     make
 }
