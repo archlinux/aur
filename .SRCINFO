@@ -1,0 +1,24 @@
+pkgbase = deepin-terminal
+	pkgdesc = Default terminal emulation application for Deepin
+	pkgver = 2.0.16
+	pkgrel = 2
+	url = https://github.com/manateelazycat/deepin-terminal
+	arch = i686
+	arch = x86_64
+	groups = deepin-extra
+	license = GPL3
+	makedepends = git
+	makedepends = vala
+	depends = vte3
+	depends = libsecret
+	depends = libgee
+	depends = libwnck3
+	depends = expect
+	depends = deepin-shortcut-viewer
+	depends = deepin-menu
+	options = !emptydirs
+	source = git+https://github.com/manateelazycat/deepin-terminal.git
+	sha256sums = SKIP
+
+pkgname = deepin-terminal
+
