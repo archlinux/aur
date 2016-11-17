@@ -7,6 +7,7 @@ pkgdesc="A waiting spinner for PyQt5"
 arch=('any')
 url="https://github.com/z3ntu/QtWaitingSpinner"
 license=('MIT')
+makedepends=('git')
 depends=('python')
 options=(!emptydirs)
 source=(python-qtwaitingspinner::git+https://github.com/z3ntu/QtWaitingSpinner)
@@ -22,3 +23,4 @@ package() {
   python setup.py install --root="$pkgdir/" --optimize=1
 }
 
+# vim:set ts=2 sw=2 et:
