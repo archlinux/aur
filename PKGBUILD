@@ -9,7 +9,7 @@ pkgname=(
 
 pkgbase=("zeroc-ice")
 pkgver=3.6.3
-pkgrel=1
+pkgrel=2
 pkgdesc="An object-oriented middleware that provides object-oriented Remote Procedure Call functionality"
 arch=("i686" "x86_64")
 url="https://zeroc.com"
@@ -62,8 +62,12 @@ package_zeroc-ice() {
     msg "Installing Ice for C++"
     make DESTDIR="${pkgdir}/" ${_make_args} install
 
+    rm -f ${pkgdir}/usr/bin/slice2py
+
     msg2 "Installing Ice License..."
     install -Dm644 ${srcdir}/ice-${pkgver}/ICE_LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
+    rm -f ${pkgdir}/usr/share/Ice-${pkgver}/LICENSE
+    rm -f ${pkgdir}/usr/share/Ice-${pkgver}/ICE_LICENSE
 
     if [ $CARCH = "x86_64" ]; then
         # NOTE: ${pkgdir}/usr/lib/ should already be empty
@@ -83,9 +87,6 @@ package_zeroc-ice() {
                    ${pkgdir}/usr/lib/systemd/system/icegridnode.service
     install -Dm644 ${srcdir}/ice-packaging-${pkgver}/ice/common/systemd/icegridregistry.service \
                    ${pkgdir}/usr/lib/systemd/system/icegridregistry.service
-
-    rm -f ${pkgdir}/usr/share/Ice-${pkgver}/LICENSE
-    rm -f ${pkgdir}/usr/share/Ice-${pkgver}/ICE_LICENSE
 }
 
 package_zeroc-ice-java() {
