@@ -3,7 +3,6 @@ pkgbase='ttf-go-git'
 pkgname=('ttf-go-mono-git' 'ttf-go-sans-git')
 pkgver=r192.b7f8df6
 pkgrel=1
-pkgdesc="The Go font family"
 arch=('any')
 url="https://go.googlesource.com/image"
 license=('BSD')
@@ -24,6 +23,8 @@ core_package() {
 }
 
 package_ttf-go-mono-git() {
+  pkgdesc="Monospace fonts from the Go font family"
+
   core_package
 
   for fn in $(ls "${srcdir}/repo/font/gofont/ttfs/"*.ttf | grep -i mono); do
@@ -32,6 +33,8 @@ package_ttf-go-mono-git() {
 }
 
 package_ttf-go-sans-git() {
+  pkgdesc="Sans-serif fonts from the Go font family"
+
   core_package
 
   for fn in $(ls "${srcdir}/repo/font/gofont/ttfs/"*.ttf | grep -vi mono); do
