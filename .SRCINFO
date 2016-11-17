@@ -1,0 +1,16 @@
+pkgbase = rtl8723bu-git
+	pkgdesc = Driver for RTL8723BU
+	pkgver = r193.4c9b566
+	pkgrel = 1
+	url = https://github.com/lwfinger/rtl8723bu
+	install = rtl8723bu-git.install
+	arch = any
+	license = GPL
+	provides = rtl8723bu
+	source = rtl8723bu-git::git+https://github.com/lwfinger/rtl8723bu
+	source = blacklist-rtl8723bu.conf
+	sha256sums = SKIP
+	sha256sums = dc6a9bfc6a796461da2219accc7a6ae755ea13253737630e1538f3d98aa7aff5
+
+pkgname = rtl8723bu-git
+
