@@ -32,6 +32,6 @@ case "$1" in
     $0 start
     ;;
   *)
-    echo "usage: $0 {start|stop|restart}"  
+    echo "usage: $0 {start|stop|restart}"
 esac
 exit 0
