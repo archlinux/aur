@@ -1,7 +1,8 @@
 # Maintainer: Christopher Price <pricechrispy at gmail dot com>
+# Contributor: Moritz Lipp <mlq@pwmt.org>
 pkgname=google-drive-ocamlfuse
 pkgver=0.5.25
-pkgrel=1
+pkgrel=2
 pkgdesc="FUSE filesystem backed by Google Drive, written in OCaml."
 arch=('x86_64' 'i686')
 url="http://gdfuse.forge.ocamlcore.org/"
@@ -15,7 +16,7 @@ options=('staticlibs')
 build() {
 	cd "$srcdir/$pkgname-$pkgver"
 
-	ocaml setup.ml -configure --prefix /usr --destdir "$pkgdir"
+	ocaml setup.ml -configure --prefix /usr --destdir "$pkgdir" --exec-prefix "$pkgdir/usr"
 
 	ocaml setup.ml -build
 }

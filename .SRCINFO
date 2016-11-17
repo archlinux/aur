@@ -1,7 +1,7 @@
 pkgbase = google-drive-ocamlfuse
 	pkgdesc = FUSE filesystem backed by Google Drive, written in OCaml.
 	pkgver = 0.5.25
-	pkgrel = 1
+	pkgrel = 2
 	url = http://gdfuse.forge.ocamlcore.org/
 	arch = x86_64
 	arch = i686
