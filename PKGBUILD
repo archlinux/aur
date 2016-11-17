@@ -17,11 +17,11 @@ optdepends=(
 )
 makedepends=()
 
-source=('https://github.com/dhiltgen/docker-machine-kvm/releases/download/v${pkgver}/docker-machine-driver-kvm')
+source=("https://github.com/dhiltgen/docker-machine-kvm/releases/download/v$pkgver/docker-machine-driver-kvm")
 sha256sums=('c4ff3eeb5b232aad41942feb8fb46aaaf8d54239408e2f6549468c997a845a31')
 
 package() {
-  cd ""
-  install -d "/usr/bin"
-  install -m755 docker-machine-driver-kvm "/usr/bin/docker-machine-driver-kvm"
+  cd "$srcdir"
+  install -d "$pkgdir/usr/bin"
+  install -m755 docker-machine-driver-kvm "$pkgdir/usr/bin/docker-machine-driver-kvm"
 }
