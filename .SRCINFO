@@ -1,0 +1,22 @@
+pkgbase = rsb-tools-cpp-stable-git
+	pkgdesc = Robotics Service Bus C++ tools
+	pkgver = 0.15.0.6c5e3b7
+	pkgrel = 1
+	url = https://projects.cor-lab.org/projects/rsb
+	arch = i686
+	arch = x86_64
+	license = LGPL3
+	checkdepends = python2
+	makedepends = git
+	makedepends = cmake
+	depends = rsc-stable-git
+	depends = boost
+	depends = protobuf
+	depends = rsb-cpp-stable-git
+	provides = rsb-tools-cpp
+	conflicts = rsb-tools-cpp
+	source = rsb-tools-cpp::git+https://code.cor-lab.org/git/rsb.git.tools-cpp#branch=0.15
+	md5sums = SKIP
+
+pkgname = rsb-tools-cpp-stable-git
+
