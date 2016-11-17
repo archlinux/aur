@@ -1,6 +1,6 @@
 pkgbase = openvr-git
 	pkgdesc = API and runtime that allows access to VR hardware from multiple vendors. Contains API and samples. The runtime is under SteamVR in Tools on Steam. Note: There's no compositor for linux, so try with hellovr -nocompositor
-	pkgver = 42.9a30d15
+	pkgver = 39.84e877f
 	pkgrel = 1
 	url = https://github.com/ValveSoftware/openvr
 	arch = x86_64
@@ -17,8 +17,10 @@ pkgbase = openvr-git
 	provides = openvr
 	options = !strip
 	options = staticlibs
-	source = git+https://github.com/ChristophHaag/openvr.git
+	source = git+https://github.com/ValveSoftware/openvr.git
+	source = countof.patch
 	md5sums = SKIP
+	md5sums = f488b62d4a88e9295adc8762cd82f551
 
 pkgname = openvr-git
 

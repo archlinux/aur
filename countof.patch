@@ -1,0 +1,17 @@
+diff --git a/samples/hellovr_opengl/hellovr_opengl_main.cpp b/samples/hellovr_opengl/hellovr_opengl_main.cpp
+index 64d1d47..dac2e9f 100644
+--- a/samples/hellovr_opengl/hellovr_opengl_main.cpp
++++ b/samples/hellovr_opengl/hellovr_opengl_main.cpp
+@@ -1276,6 +1276,12 @@ bool CMainApplication::SetupStereoRenderTargets()
+ 	return true;
+ }
+ 
++//http://www.g-truc.net/post-0708.html
++template <typename T, std::size_t N>
++constexpr std::size_t _countof(T const (&)[N]) noexcept
++{
++return N;
++}
+ 
+ //-----------------------------------------------------------------------------
+ // Purpose:
