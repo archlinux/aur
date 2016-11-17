@@ -1,8 +1,8 @@
-# Maintainer: Luca Weiss <WEI16416 (at) spengergasse (dot) at>
+# Maintainer: Luca Weiss <luca (at) z3ntu (dot) xyz>
 
 pkgname=python-libdesktop-git
 _pkgname=libdesktop
-pkgver=r32.660fdcc
+pkgver=r47.0f411e4
 pkgrel=1
 pkgdesc="OS and desktop integration made easy."
 arch=('any')
