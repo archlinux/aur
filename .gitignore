@@ -1,0 +1,10 @@
+# packages
+*.pkg.tar
+
+# sources
+*.zip
+LICENSE.html
+
+# temp dirs
+pkg/*
+src/*
