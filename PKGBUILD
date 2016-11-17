@@ -2,7 +2,8 @@
 
 pkgbase=python-case
 pkgname=('python-case' 'python2-case')
-pkgver=1.4.0
+pkgver=1.5.2
+_commit=d2eb04d9ef1ee2f1d3bca37cd9fb6b0ff8cc7405
 pkgrel=1
 pkgdesc="Python unittest Utilities"
 arch=('any')
@@ -10,7 +11,7 @@ license=('BSD')
 url="https://github.com/celery/case"
 makedepends=('python-nose' 'python2-nose' 'python2-mock' 'python2-unittest2' 'git')
 checkdepends=('python-coverage' 'python2-coverage')
-source=("git+https://github.com/celery/case.git#tag=v$pkgver")
+source=("git+https://github.com/celery/case.git#commit=$_commit")
 sha512sums=('SKIP')
 
 prepare() {
