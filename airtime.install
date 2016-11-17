@@ -15,7 +15,7 @@ post_install() {
   echo ""
   echo ">> In /etc/php56/php.ini"
   echo "> enable the following modules:"
-  echo "bcmath pgsql pdo_pgsql gd"
+  echo "bcmath pgsql pdo_pgsql gd posix"
   echo ""
   echo ">> Start rabbitmq"
   echo "systemctl start rabbitmq"
