@@ -1,5 +1,4 @@
-pkgbase = ttf-go-mono-git
-	pkgdesc = The Go font family
+pkgbase = ttf-go-git
 	pkgver = r192.b7f8df6
 	pkgrel = 1
 	url = https://go.googlesource.com/image
@@ -12,6 +11,8 @@ pkgbase = ttf-go-mono-git
 	md5sums = SKIP
 
 pkgname = ttf-go-mono-git
+	pkgdesc = Monospace fonts from the Go font family
 
 pkgname = ttf-go-sans-git
+	pkgdesc = Sans-serif fonts from the Go font family
 
