@@ -26,13 +26,13 @@ package_python-salib() {
   depends=('python-numpy')
 
   cd "${srcdir}/SALib-$pkgver"
-  python setup.py install --root=${pkgdir}
+  python setup.py install --root=${pkgdir} --optimize=1
 }
 
 package_python2-salib() {
   depends=('python2-numpy')
 
   cd "${srcdir}/SALib-$pkgver"
-  python2 setup.py install --root=${pkgdir}
+  python2 setup.py install --root=${pkgdir} --optimize=1
 }
 
