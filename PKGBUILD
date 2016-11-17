@@ -1,4 +1,5 @@
 # Maintainer: Josh VanderLinden <arch@cloudlery.com>
+pkgbase='ttf-go-git'
 pkgname=('ttf-go-mono-git' 'ttf-go-sans-git')
 pkgver=r192.b7f8df6
 pkgrel=1
