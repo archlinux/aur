@@ -1,4 +1,4 @@
-# Maintainer: Luca Weiss <WEI16416@spengergasse.at>
+# Maintainer: Luca Weiss <luca (at) z3ntu (dot) xyz>
 
 pkgname=xterm-fake
 pkgver=1
@@ -10,6 +10,7 @@ provides=('xterm')
 replaces=('xterm')
 conflicts=('xterm')
 install=xterm-fake.install
+
 package() {
-  cd .
+  true
 }
