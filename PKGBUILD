@@ -1,9 +1,9 @@
 # Maintainer: Martin Minka <martin dot minka at gmail dot com>
 # Author: Henk Westhuis <henk underscore westhuis at hotmail dot com>
 pkgname=gitextensions
-pkgver=248
-_pkgver=2.48.05
-pkgrel=5
+epoch=1
+pkgver=2.48.05
+pkgrel=1
 pkgdesc="Graphical user interface for Git that allows you control Git without using the commandline."
 arch=('any')
 url="http://code.google.com/p/gitextensions/"

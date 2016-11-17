@@ -1,8 +1,9 @@
 pkgbase = gitextensions
 	pkgdesc = Graphical user interface for Git that allows you control Git without using the commandline.
-	pkgver = 248
-	pkgrel = 5
 	url = http://code.google.com/p/gitextensions/
+	pkgver = 2.48.05
+	pkgrel = 1
+	epoch = 1
 	arch = any
 	license = GPL3
 	depends = mono
