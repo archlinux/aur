@@ -84,7 +84,6 @@ prepare() {
 
   # get kernel version
   make prepare
-  make localmodconfig
 
   # load configuration
   # Configure the kernel. Replace the line below with one of your choice.
