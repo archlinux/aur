@@ -1,0 +1,17 @@
+pkgbase = rsb-proto-stable-git
+	pkgdesc = Robotics Service Bus Communication Protocol
+	pkgver = 0.15.0.9553903
+	pkgrel = 1
+	url = https://projects.cor-lab.org/projects/rsb
+	arch = any
+	license = LGPL3
+	makedepends = git
+	makedepends = cmake
+	makedepends = rsc
+	provides = rsb-proto
+	conflicts = rsb-proto
+	source = rsb-proto::git+https://code.cor-lab.org/git/rsb.git.protocol#branch=0.15
+	md5sums = SKIP
+
+pkgname = rsb-proto-stable-git
+
