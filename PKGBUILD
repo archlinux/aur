@@ -1,4 +1,4 @@
-# Maintainer: Luca Weiss <WEI16416@spengergasse.at>
+# Maintainer: Luca Weiss <luca (at) z3ntu (dot) xyz>
 
 pkgname=f3-git
 pkgver=6.0.r17.gf3d067b
