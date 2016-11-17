@@ -3,7 +3,7 @@
 # First Linux Arch packager: Serge Victor <arch@random.re>
 
 pkgname=python2-flask-bootstrap
-pkgver=3.3.6.0
+pkgver=3.3.7.0
 pkgrel=1
 pkgdesc="Ready-to-use Twitter-bootstrap for use in Flask."
 arch=('any')
