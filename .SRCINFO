@@ -1,5 +1,5 @@
 pkgbase = libspf2
-	pkgdesc = Sender Policy Framework record checking
+	pkgdesc = Sender Policy Framework record checking library
 	pkgver = 1.2.10
 	pkgrel = 1
 	url = http://www.libspf2.org/
