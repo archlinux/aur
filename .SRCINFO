@@ -1,0 +1,30 @@
+pkgbase = rsb-tools-cl-stable-git
+	pkgdesc = Robotics Service Bus common lisp tools
+	pkgver = 0.15.0.b596630
+	pkgrel = 1
+	url = https://projects.cor-lab.org/projects/rsb
+	arch = i686
+	arch = x86_64
+	license = LGPL3
+	makedepends = git
+	makedepends = cmake
+	makedepends = rsc-stable-git
+	makedepends = rsb-proto-stable-git
+	makedepends = sbcl
+	depends = spread-daemon
+	provides = rsb-tools-cl
+	conflicts = rsb-tools-cl
+	options = !strip
+	source = rsb-tools-cl::git+https://code.cor-lab.org/git/rsb.git.tools-cl#branch=0.15
+	source = rsb-cl::git+https://code.cor-lab.org/git/rsb.git.cl#branch=0.15
+	source = cl-protobuf::git+https://github.com/scymtym/cl-protobuf
+	source = network.spread::git+https://github.com/scymtym/network.spread
+	source = architecture.builder-protocol::git+https://github.com/scymtym/architecture.builder-protocol
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = rsb-tools-cl-stable-git
+
