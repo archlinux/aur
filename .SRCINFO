@@ -1,0 +1,21 @@
+pkgbase = asn1c-git
+	pkgdesc = An ASN.1 compiler
+	pkgver = r1687.d6a7412
+	pkgrel = 1
+	url = http://lionet.info/asn1c/blog/
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = glibc
+	makedepends = git
+	makedepends = autoconf
+	makedepends = gcc
+	depends = glibc
+	provides = asn1c
+	conflicts = asn1c
+	options = !strip
+	source = git+https://github.com/vlm/asn1c.git
+	md5sums = SKIP
+
+pkgname = asn1c-git
+
