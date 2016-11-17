@@ -1,4 +1,4 @@
-# Maintainer: Luca Weiss <WEI16416@spengergasse.at>
+# Maintainer: Luca Weiss <luca (at) z3ntu (dot) xyz>
 # Previous Maintainer: Lauri Niskanen <ape@ape3000.com>
 
 pkgname=coffeelint
