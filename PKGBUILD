@@ -1,4 +1,4 @@
-# Maintainer: jcsiv <siviter dot jamie at gmx dot co dot uk>
+# Maintainer: Bash Booster <Booster.sdk@gmail.com>
 # Contributor: Riccardo Berto <riccardobrt@gmail.com>
 # Contributor: vbmithr
 # Contributor: Flamelab <panosfilip at gmail dot com>
@@ -6,19 +6,18 @@
 
 pkgname=xf86-video-ati-git
 _realpkgname=xf86-video-ati
-pkgver=7.5.0.r96.g0288a4b
+pkgver=7.8.0.r0.g5cbe1ee
 pkgrel=1
 pkgdesc="X.org ati video driver. Git version"
 arch=('i686' 'x86_64')
 url="http://xorg.freedesktop.org/"
 provides=("${_realpkgname}")
-depends=('libdrm>=2.4.41' 'systemd' 'mesa')
-makedepends=('xorg-server-devel' 'X-ABI-VIDEODRV_VERSION=20.0'  )
-conflicts=('xorg-server<1.16.0' 'xf86-video-ati' 'X-ABI-VIDEODRV_VERSION<20.0' 'X-ABI-VIDEODRV_VERSION>=21.0')
+depends=('libdrm' 'systemd' 'mesa')
+makedepends=('xorg-server-devel')
+conflicts=('xorg-server' 'xf86-video-ati')
 license=('custom')
 install=xf86-video-ati-git.install
-
-source=('xf86-video-ati::git://anongit.freedesktop.org/xorg/driver/xf86-video-ati#branch=master')
+source=('xf86-video-ati::git://anongit.freedesktop.org/xorg/driver/xf86-video-ati')
 md5sums=('SKIP')
 
 pkgver() {
