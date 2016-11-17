@@ -1,14 +1,14 @@
 # Contributor: Graziano Giuliani <graziano.giuliani@poste.it>
 pkgname=metview
-pkgver=4.7.0
-pkgrel=1
+pkgver=4.7.2
+pkgrel=2
 pkgdesc="ECMWF interactive meteorological application"
 arch=(i686 x86_64)
 url="https://software.ecmwf.int/wiki/display/METV/Metview"
 license=('APACHE')
 groups=(science)
 depends=( 'magics++>=2.22' mksh openmotif netcdf-cxx-legacy grib_api qtwebkit libxpm)
-makedepends=()
+makedepends=(emos)
 provides=()
 conflicts=()
 replaces=()
@@ -17,7 +17,7 @@ options=()
 install=
 source=(https://software.ecmwf.int/wiki/download/attachments/3964985/Metview-${pkgver}-Source.tar.gz)
 noextract=()
-md5sums=('8665335fa0d4e6f9bd0f0969fd20b960')
+md5sums=('b2e5ebede18fb3582935c32348b8de7d')
 
 build() {
   cd Metview-${pkgver}-Source
