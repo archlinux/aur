@@ -1,0 +1,14 @@
+pkgbase = neuropol-ttf
+	pkgdesc = Neuropol custom font
+	pkgver = 1.0
+	pkgrel = 1
+	url = http://www.dafont.com/neuropol.font
+	install = neuropol-ttf.install
+	arch = any
+	license = custom
+	provides = ttf-font
+	source = neuropol.zip::http://dl.dafont.com/dl/?f=neuropol
+	md5sums = d4be833b0d1f63af687878951982bd6c
+
+pkgname = neuropol-ttf
+

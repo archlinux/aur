@@ -1,0 +1,23 @@
+post_install() {
+  echo -n "rebuilding font cache... "
+  fc-cache -fs > /dev/null
+  mkfontscale /usr/share/fonts/TTF
+  mkfontdir /usr/share/fonts/TTF
+  echo "done."
+}
+
+post_upgrade() {
+  echo -n "rebuilding font cache... "
+  fc-cache /usr/share/fonts/TTF
+  mkfontscale /usr/share/fonts/TTF
+  mkfontdir /usr/share/fonts/TTF
+  echo "done."
+}
+
+post_remove() {
+  echo -n "rebuilding font cache... "
+  fc-cache /usr/share/fonts/TTF
+  mkfontscale /usr/share/fonts/TTF
+  mkfontdir /usr/share/fonts/TTF
+  echo "done."
+}
