@@ -2,13 +2,13 @@
 
 pkgname=('python2-kerberos')
 pkgver=1.2.5
-pkgrel=1
+pkgrel=2
 pkgdesc="A high-level wrapper for Kerberos (GSSAPI) operations"
 url="https://pypi.python.org/pypi/kerberos"
 arch=('any')
 license=('Apache License, Version 2.0')
 depends=('krb5')
-makedepends=('python' 'python-setuptools' 'python2' 'python2-setuptools')
+makedepends=('python2' 'python2-setuptools')
 source=(https://pypi.io/packages/source/k/kerberos/kerberos-${pkgver}.tar.gz)
 md5sums=('0df306b6bc0806bc480d4c282229d6ba')
 
