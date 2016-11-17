@@ -1,4 +1,4 @@
-# Contributor: Anonymous
+# Contributor: Caleb Maclennan <caleb@alerque.com>
 # Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-yaml-merge-simple'
@@ -8,11 +8,10 @@ pkgdesc="Recursively merge two or more YAMLs, simply"
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
-depends=('perl-hash-merge-simple>=0' 'perl-yaml-libyaml>=0' 'perl>=5.006')
+depends=('perl-hash-merge-simple' 'perl-yaml-libyaml' 'perl>=5.006')
 makedepends=()
 url='https://metacpan.org/release/YAML-Merge-Simple'
-source=('http://search.cpan.org/CPAN/authors/id/UNKNOWN-ORIGIN/YAML-Merge-Simple-0.01_01.tar.gz')
-md5sums=('2b023cc7c1ea2a28c23327af8e1c3438')
+source=('http://search.cpan.org/CPAN/authors/id/A/AN/ANDREFS/YAML-Merge-Simple-0.01_01.tar.gz')
 sha512sums=('0a1a9c9ac1e347bd96c293fffd724592fc38dfaa3bbb0581059f289b606496ebbd5a7d4e7310bdbc781ff9a1b768f1cd323f555b408dbced65b7183850cb9b2a')
 _distdir="YAML-Merge-Simple-0.01_01"
 
