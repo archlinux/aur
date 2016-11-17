@@ -1,4 +1,5 @@
-# Maintainer: Luca Weiss <WEI16416@spengergasse.at>
+# Maintainer: Luca Weiss <luca (at) z3ntu (dot) xyz>
+
 pkgname=python-pkgbuild-git
 pkgver=r7.7afcd99
 pkgrel=1
