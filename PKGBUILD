@@ -1,6 +1,6 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 pkgname=vm-bzr
-pkgver=8.2.0b1.r1512
+pkgver=8.2.0b1.r1516
 pkgrel=1
 pkgdesc="View Mail for Emacs"
 arch=('i686' 'x86_64')
