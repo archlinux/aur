@@ -7,22 +7,26 @@
 
 pkgname='unreal-engine'
 pkgver=4.14.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A 3D game engine by Epic Games which can be used non-commercially for free.'
 arch=('x86_64')
 url='https://www.unrealengine.com/'
 makedepends=('clang' 'mono' 'dos2unix' 'cmake')
 depends=('icu' 'xdg-user-dirs' 'sdl2' 'qt4' 'python')
 license=('custom:UnrealEngine')
+
 source=(
   "git+ssh://git@github.com/EpicGames/UnrealEngine.git#tag=$pkgver-release"
   'UE4Editor.desktop'
   '0001-remove-clang35-dependency.patch'
+  'IOS-Typo.patch'
 )
+
 md5sums=(
   'SKIP'
   'c7fc35a7eb9e23c0a9b7c593f7f9878d'
   '271579e814358390d210d57c724a3b00'
+  '3f8fc7334eb41fbe0531f89c0ee2e207'
 )
 
 # seems these are no longer necessaryand package is 3 Gib smaller with default options
@@ -30,12 +34,11 @@ md5sums=(
 
 prepare() {
   patch "$srcdir/UnrealEngine/Engine/Build/BatchFiles/Linux/Setup.sh" 0001-remove-clang35-dependency.patch
-  
+  patch "$srcdir/UnrealEngine/Engine/Source/Developer/iOS/IOSPlatformEditor/Private/IOSTargetSettingsCustomization.cpp" IOS-Typo.patch  
+
   cd $srcdir/UnrealEngine
-  
   # help to clean up old builds when there is a new version
   # git clean -xdf
-
   ./Setup.sh
   ./GenerateProjectFiles.sh
 }
