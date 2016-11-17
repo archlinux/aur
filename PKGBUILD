@@ -26,7 +26,7 @@ source=("chrome-linux-r$_build.zip::http://commondatastorage.googleapis.com/chro
         "$pkgname"_{16,22,24,32,48,64,128,256}.png
         'LICENSE')
 md5sums=('SKIP'
-         '6777e99bcfdb4c7a004b0e3b2ab54c84'
+         '01fc82f0fe5c673e3b1c1b4da66505ce'
          '1f7c85955a1b845105b3464186d82b97'
          '6cd41f6e08eee03c6553603fb0b6ecd7'
          '227eac16d1e737bed42742840b950d41'

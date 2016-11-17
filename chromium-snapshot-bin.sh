@@ -7,10 +7,8 @@ fi
 
 # Detect Pepper Flash
 if [[ -f /usr/lib/PepperFlash/libpepflashplayer.so ]]; then
-  PepperFlashLib="/usr/lib/PepperFlash/libpepflashplayer.so"
-  PepperFlashVersion="$(grep 'version' /usr/lib/PepperFlash/manifest.json | cut -d '"' -f4)"
-  CHROMIUM_USER_FLAGS+=" --ppapi-flash-path=$PepperFlashLib --ppapi-flash-version=$PepperFlashVersion"
-  continue
+  PepperVer="$(grep 'version' /usr/lib/PepperFlash/manifest.json | cut -d '"' -f4)"
+  CHROMIUM_USER_FLAGS+=" --ppapi-flash-path=/usr/lib/PepperFlash/libpepflashplayer.so --ppapi-flash-version=$PepperVer"
 fi
 
 # Let the wrapped binary know that it has been run through the wrapper.
