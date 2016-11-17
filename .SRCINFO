@@ -1,5 +1,5 @@
 pkgbase = graymilter-acme
-	pkgdesc = Blacklist mail filter module, by ACME Labs
+	pkgdesc = Simple graylist mail filter module, by ACME Labs
 	pkgver = 2.001
 	pkgrel = 1
 	url = http://www.acme.com/software/graymilter/
