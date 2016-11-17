@@ -1,7 +1,7 @@
 # Maintainer: Hendrik R. hendrikr_10 [at] yahoo [dot] de
 
 pkgname=riskofrain-hib
-pkgver=1.3.1
+pkgver=1.3.0
 pkgrel=2
 pkgdesc='A roguelike action platformer/adventure game with randomized elements. (Humble Bundle Version)'
 url='http://riskofraingame.com'
@@ -19,7 +19,6 @@ depends_x86_64=('lib32-libxrandr'
 options=()
 install=${pkgname}.install
 PKGEXT='.pkg.tar'
-#DLAGENTS+=('hib::/usr/bin/echo "Could not find %u. Manually download it to \"$PWD\", or set up a hib:// DLAGENT in /etc/makepkg.conf."; exit 1')
 DLAGENTS+=('hib::/bin/sh -c echo\ Could\ not\ find\ %u.\ Manually\ download\ it\ to\ \\"$PWD\\",\ or\ set\ up\ a\ hib://\ DLAGENT\ in\ /etc/makepkg.conf.;exit\ 1')
 _installer="Risk_of_Rain_v${pkgver}_DRM-Free_Linux_.zip"
 source=("hib://${_installer}"
