@@ -1,7 +1,7 @@
 # Maintainer: Lettier <gifcurry_aur [[@] lettier [[.]]]com>
 _hkgname=Gifcurry
 _licensefile=LICENSE
-_ver=2.0.0.2
+_ver=2.1.0.0
 _xrev=0
 
 pkgname=gifcurry
@@ -15,7 +15,7 @@ makedepends=("ghc=8.0.1-1" "cabal-install")
 depends=("gtk3")
 options=("strip" "staticlibs")
 source=("http://hackage.haskell.org/packages/archive/${_hkgname}/${_ver}/${_hkgname}-${_ver}.tar.gz")
-sha256sums=('1a7f269eda348fa34fe57f9a35cc810b304acc646f5146c4db2d72eb738c8b32')
+sha256sums=('51cf0949e4ea0ae9503887c0c8613d4bfee0b4bdce1d641cf0b2fd016124170c')
 
 build() {
     cd "${srcdir}/${_hkgname}-${_ver}"
