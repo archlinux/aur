@@ -13,7 +13,7 @@ pkgbase = cloudcross
 	replaces = grive2
 	options = !emptydirs
 	source = http://cloudcross.mastersoft24.ru/download/?v=1.0.3&r=pacman
-	md5sums = 38aa3686d9aed006d4ef570fb6e4354c
+	md5sums = 9b6a16081e6237fb867aa74756e1c795
 
 pkgname = cloudcross
 
