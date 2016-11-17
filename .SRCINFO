@@ -1,5 +1,5 @@
 pkgbase = spfmilter-acme
-	pkgdesc = Sender POlicy Framework mail filter module, by ACME Labs
+	pkgdesc = Sender Policy Framework mail filter module, by ACME Labs
 	pkgver = 2.001
 	pkgrel = 1
 	url = http://www.acme.com/software/spfmilter/
