@@ -1,0 +1,23 @@
+pkgbase = rst-proto-stable-git
+	pkgdesc = Robotics Systems Types library
+	pkgver = 0.15.0.0272643
+	pkgrel = 1
+	url = https://projects.cor-lab.org/projects/rst
+	arch = i686
+	arch = x86_64
+	license = LGPL3
+	makedepends = git
+	makedepends = cmake
+	makedepends = rsc-stable-git
+	depends = protobuf
+	depends = python2
+	depends = python2-protobuf
+	depends = apache-ant
+	depends = protobuf-java
+	provides = rst-proto
+	conflicts = rst-proto
+	source = rst-proto::git+https://code.cor-lab.org/git/rst.git.proto#branch=0.15
+	md5sums = SKIP
+
+pkgname = rst-proto-stable-git
+
