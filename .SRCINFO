@@ -1,0 +1,21 @@
+pkgbase = rsb-gstreamer-stable-git
+	pkgdesc = RSB GStreamer plugins
+	pkgver = 0.15.0.5f4e948
+	pkgrel = 1
+	url = https://projects.cor-lab.org/projects/rsb-gstreamer
+	arch = i686
+	arch = x86_64
+	license = LGPL3
+	makedepends = git
+	makedepends = cmake
+	depends = rsc-stable-git
+	depends = rsb-cpp-stable-git
+	depends = gstreamer0.10
+	depends = gstreamer0.10-base
+	provides = rsb-gstreamer
+	conflicts = rsb-gstreamer
+	source = rsb-gstreamer::git+https://code.cor-lab.org/git/rsb-gstreamer.git#branch=0.15
+	md5sums = SKIP
+
+pkgname = rsb-gstreamer-stable-git
+
