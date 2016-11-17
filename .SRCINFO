@@ -1,0 +1,21 @@
+pkgbase = rst-converters-cpp-stable-git
+	pkgdesc = Robotics Systems Types converters fro C++
+	pkgver = 0.15.0.27476c4
+	pkgrel = 1
+	url = https://projects.cor-lab.org/projects/rst
+	arch = i686
+	arch = x86_64
+	license = LGPL3
+	makedepends = git
+	makedepends = cmake
+	depends = rsc-stable-git
+	depends = boost
+	depends = rsb-cpp-stable-git
+	depends = opencv
+	provides = rst-converters-cpp
+	conflicts = rst-converters-cpp
+	source = rst-converters-cpp::git+https://code.cor-lab.org/git/rst.git.converters-cpp#branch=0.15
+	md5sums = SKIP
+
+pkgname = rst-converters-cpp-stable-git
+
