@@ -1,0 +1,14 @@
+pkgbase = sfcmilter-acme
+	pkgdesc = Sender forgery checker mail filter module, by ACME Labs
+	pkgver = 2.01
+	pkgrel = 1
+	url = http://www.acme.com/software/sfcmilter/
+	arch = x86_64
+	arch = i686
+	license = ACME Labs Freeware
+	makedepends = libmilter
+	source = http://www.acme.com/software/sfcmilter/sfcmilter-2.01.tar.gz
+	md5sums = 13e459153a0180d24dd6bac05e9e89b1
+
+pkgname = sfcmilter-acme
+
