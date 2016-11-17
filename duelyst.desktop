@@ -2,7 +2,7 @@
 Name=Duelyst
 Comment=A collectible card game played on a grid-like board
 Generic Name=Collectible Card Game
-Exec=duelyst
+Exec=duelyst -w
 Icon=duelyst
 Type=Application
 StartupNotify=true
