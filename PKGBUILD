@@ -7,7 +7,7 @@ pkgdesc="A small C++ library which can create and read Digital Cinema Packages u
 arch=('i686' 'x86_64')
 url="http://carlh.net/libdcp"
 license=('GPL')
-depends=('openssl' 'libxml++>=2.6' 'xmlsec' 'imagemagick' 'openjpeg2' 'libcxml>=0.15.1' 'libsigc++>=2.0' 'boost-libs>=1.61.0' 'libasdcp-cth>=0.1.2')
+depends=('openssl' 'libxml++>=2.6' 'xmlsec' 'imagemagick' 'openjpeg2' 'libcxml>=0.15.4' 'libsigc++>=2.0' 'boost-libs>=1.61.0' 'libasdcp-cth>=0.1.3')
 makedepends=('python2' 'boost>=1.60.0' 'python2' 'gcc' 'pkg-config')
 source=("http://carlh.net/downloads/${pkgname}/${pkgname}-${pkgver}.tar.bz2"  )
 sha512sums=('589634eb56bc23437752a9b32e849332cd8e0f04991c63f583ce06ab7343f02226bc1e2faead13edba2dab9bca86c89adaf83df7779c427f167e461c2d6dabbd')
