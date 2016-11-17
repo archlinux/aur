@@ -1,4 +1,4 @@
-# Maintainer: Luca Weiss <WEI16416 (at) spengergasse (dot) at>
+# Maintainer: Luca Weiss <luca (at) z3ntu (dot) xyz>
 
 # Sorry for stealing your logo from Twitter BrashMonkey, but I couldn't find any in the archive...
 
