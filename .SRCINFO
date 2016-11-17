@@ -1,0 +1,17 @@
+pkgbase = ttf-go-mono-git
+	pkgdesc = The Go font family
+	pkgver = r192.b7f8df6
+	pkgrel = 1
+	url = https://go.googlesource.com/image
+	install = ttf-go.install
+	arch = any
+	license = BSD
+	makedepends = git
+	depends = fontconfig
+	source = repo::git+https://go.googlesource.com/image
+	md5sums = SKIP
+
+pkgname = ttf-go-mono-git
+
+pkgname = ttf-go-sans-git
+
