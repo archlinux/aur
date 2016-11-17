@@ -1,4 +1,4 @@
-# Maintainer: Luca Weiss <WEI16416@spengergasse.at>
+# Maintainer: Luca Weiss <luca (at) z3ntu (dot) xyz>
 # Contributor: Oliver Kuster <oliver.kuster[at]gmail[dot]com>
   
 pkgname=ubuntu-device-flash
