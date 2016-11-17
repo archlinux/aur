@@ -1,0 +1,15 @@
+pkgbase = gauge-test-tool
+	pkgdesc = light weight cross-platform test automation tool
+	pkgver = 0.6.2
+	pkgrel = 1
+	url = https://github.com/getgauge/gauge
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = go
+	provides = gauge
+	source = https://github.com/getgauge/gauge/releases/download/v0.6.2/gauge-0.6.2-linux.x86_64.zip
+	md5sums = ecd7accc72da48694312a184e9d2efc4
+
+pkgname = gauge-test-tool
+
