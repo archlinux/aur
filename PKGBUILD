@@ -7,7 +7,7 @@ pkgdesc="A small C++ library which makes it marginally neater to parse XML using
 arch=('i686' 'x86_64')
 url="http://carlh.net/libcxml"
 license=('GPL')
-depends=('libxml++>=2.6' 'boost-libs>=1.61.0' 'libasdcp-cth>=0.1.3')
+depends=('libxml++>=2.6' 'boost-libs>=1.61.0' 'libasdcp-cth>=0.1.3' 'liblocked-sstream-git')
 makedepends=('python2' 'pkg-config' 'boost')
 source=("${pkgname}-${pkgver}.tar.bz2::http://carlh.net/downloads/libcxml/${pkgname}-${pkgver}.tar.bz2")
 #http://carlh.net/downloads/libcxml/libcxml-0.12.0.tar.bz2
