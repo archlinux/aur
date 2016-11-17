@@ -1,53 +1,40 @@
 # Maintainer: Danilo Kuehn <dk[at]nogo-software[dot]de>
 
-_name=packer
+_pkgname=packer
 pkgname=packer-io
-pkgver=0.11.0
+pkgver=0.12.0
 pkgrel=1
 pkgdesc="Packer is a tool for creating identical machine images for multiple platforms from a single source configuration."
 url="http://www.packer.io"
 arch=('x86_64' 'i686')
 license=('MPL2')
-depends=(unzip)
-optdepends=()
-conflicts=()
+depends=('glibc')
 if test "$CARCH" == i686; then
 source=(
-  "${_name}-${pkgver}.zip::https://releases.hashicorp.com/packer/${pkgver}/packer_${pkgver}_linux_386.zip"
+  "${_pkgname}-${pkgver}.zip::https://releases.hashicorp.com/packer/${pkgver}/packer_${pkgver}_linux_386.zip"
   'https://raw.githubusercontent.com/mitchellh/packer/master/contrib/zsh-completion/_packer'
 )
 sha256sums=(
-  'abc25443416641e2277c8d968c6557bf9a009f9dc6ece4f0932acbb53c6c6fee'
+  '1b63006e1799f530755910d48b0858d80f3e6300b245511f1bc8a082108b92b3'
   '070675905e14b839420282b280a15a7a72ed34c78ad403532ecd3ed5d9768459'
 )
 else
 source=(
-  "${_name}-${pkgver}.zip::https://releases.hashicorp.com/packer/${pkgver}/packer_${pkgver}_linux_amd64.zip"
+  "${_pkgname}-${pkgver}.zip::https://releases.hashicorp.com/packer/${pkgver}/packer_${pkgver}_linux_amd64.zip"
   'https://raw.githubusercontent.com/mitchellh/packer/master/contrib/zsh-completion/_packer'
 )
 sha256sums=(
-  '318ffffa13763eb6f29f28f572656356dc3dbf8d54c01ffddd1c5e2f08593adb'
+  'ce6362d527ba697e40b8c90a98d2034b7749e2357fa238b08536aed44f037073'
   '070675905e14b839420282b280a15a7a72ed34c78ad403532ecd3ed5d9768459'
 )
 fi
-noextract=(${source[@]%%::*})
 
-prepare() {
-  if [[ -e ${srcdir}/${_name}-${pkgver} ]]; then rm -rf ${srcdir}/${_name}-${pkgver}; fi
-  mkdir ${srcdir}/${_name}-${pkgver}
-  unzip -o ${_name}-${pkgver}.zip -d ${srcdir}/${_name}-${pkgver}
+build() {
+  sed 's/^#compdef packer/#compdef packer-io/' "${srcdir}/_packer" > "${srcdir}/_packer-io"
 }
 
 package() {
   install -dm755 "${pkgdir}/usr/bin"
-
-  cd "${srcdir}/${_name}-${pkgver}"
-  for file in `ls ${srcdir}/${_name}-${pkgver}`; do
-    if [ "$file" == "packer" ]; then
-      install -Dm755 "$file" "${pkgdir}/usr/bin/${file}-io"
-    else
-      install -Dm755 "$file" "${pkgdir}/usr/bin/${file}"
-    fi
-  done
-  install -Dm644 ${srcdir}/_packer ${pkgdir}/usr/share/zsh/site-functions/_packer
+  install -Dm755 "${srcdir}/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}-io"
+  install -Dm644 ${srcdir}/_packer-io ${pkgdir}/usr/share/zsh/site-functions/_packer-io
 }

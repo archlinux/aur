@@ -3,3 +3,4 @@ src/
 *.zip
 *.tar.gz
 *.pkg.tar.xz
+_packer
