@@ -12,6 +12,6 @@ md5sums=('c0c83ce432e1099ebc3ace31001edcee')
 
 package() {
   cd "$srcdir/PyAutoGUI-${pkgver}"
-  python setup.py install --prefix=/usr --root="$pkgdir"
+  python setup.py install --root="$pkgdir"  --optimize=1
 }
 
