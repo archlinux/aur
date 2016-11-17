@@ -109,7 +109,7 @@ $_float && _additional_configure_flags="$_additional_configure_flags -qreal floa
 
 # PKGBUILD vars
 
-pkgrel=3
+pkgrel=4
 pkgname="qt-sdk"
 
 if [[ -n ${_piver} ]]; then
@@ -241,6 +241,7 @@ if $_patching; then
 
   cd ${_waylanddir}
   patch -p1 < ${startdir}/0001-Fix-build-of-brcm-egl-client.patch
+  patch -p1 < ${startdir}/5.8.0-beta1-5b807802866c8df00cb3340d4f9bcc343be5973a.patch
 
   # Work around our embarresing propensity to stomp on your own tailored build configuration
   sed -i "s/O[23]/Os/"  ${_basedir}/mkspecs/common/gcc-base.conf || exit 1
