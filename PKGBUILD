@@ -13,8 +13,11 @@ source=("http://downloads.sourceforge.net/project/timeslottracker/TimeSlotTracke
 md5sums=('154c3b0777f2b94049f2d6b9d5dc2581')
 
 package() {
-	bsdtar xf data.tar.xz
-	chmod -R g-w usr
-	mv {etc,usr,var} "${pkgdir}"
+  bsdtar xf data.tar.xz
+  chmod -R g-w usr
+  mv {etc,usr,var} $pkgdir/
+  chmod -R 755 $pkgdir/etc
+  chmod -R 755 $pkgdir/var
 }
 
+# vim:set ts=2 sw=2 et:
