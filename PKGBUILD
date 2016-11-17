@@ -1,4 +1,4 @@
-# Maintainer: Luca Weiss <WEI16416@spengergasse.at>
+# Maintainer: Luca Weiss <luca (at) z3ntu (dot) xyz>
 # Contributor: Tommaso Sardelli <lacapannadelloziotom AT gmail DOT com>
 # Contributor: Philipp Joram <phijor AT t-online DOT de>
 
