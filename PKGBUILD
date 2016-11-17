@@ -3,7 +3,7 @@
 
 pkgname=docker-machine-kvm
 pkgver=0.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc="KVM driver for docker-machine"
 url="https://github.com/dhiltgen/docker-machine-kvm"
 license=('Apache')
@@ -11,6 +11,9 @@ arch=('x86_64')
 depends=(
   'docker-machine'
   'libvirt'
+  'firewalld'
+  'ebtables'
+  'dnsmasq'
 )
 optdepends=(
   'docker: to manage the containers in the machine'
