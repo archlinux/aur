@@ -1,7 +1,7 @@
 pkgbase = oomox-git
 	pkgdesc = Graphical application for generating different color variations of Numix theme (GTK2, GTK3) and gnome-colors icon theme. Have a hack for HiDPI in gtk2.
 	pkgver = 1.0.rc2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/actionless/oomox
 	arch = x86_64
 	arch = i686
@@ -17,6 +17,7 @@ pkgbase = oomox-git
 	optdepends = imagemagick: for icon theme generation
 	optdepends = inkscape: for icon theme generation
 	optdepends = gnome-colors-common-icon-theme: for using the generated icon theme
+	optdepends = gksu: for applying Spotify theme from GUI
 	source = git+https://github.com/actionless/oomox.git#branch=master
 	md5sums = SKIP
 
