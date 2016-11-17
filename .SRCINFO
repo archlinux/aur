@@ -1,0 +1,14 @@
+pkgbase = graymilter-acme
+	pkgdesc = Blacklist mail filter module, by ACME Labs
+	pkgver = 2.001
+	pkgrel = 1
+	url = http://www.acme.com/software/graymilter/
+	arch = x86_64
+	arch = i686
+	license = ACME Labs Freeware
+	makedepends = libmilter
+	source = http://www.acme.com/software/graymilter/graymilter-2.001.tar.gz
+	md5sums = c7498732d99927ec03e09946eae8a73e
+
+pkgname = graymilter-acme
+
