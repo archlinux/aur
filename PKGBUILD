@@ -5,7 +5,7 @@
 
 pkgname='xfce4-multiload-ng-plugin-gtk2-git'
 pkgdesc='Modern graphical system monitor, XFCE4 panel plugin'
-pkgver=r907.66045e6
+pkgver=r926.246cb4c
 pkgrel=1
 
 makedepends=('intltool' 'git')
