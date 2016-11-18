@@ -1,0 +1,101 @@
+--- gcc/config/arm/t-arm-elf.orig	2013-01-10 21:38:27.000000000 +0100
++++ gcc/config/arm/t-arm-elf	2013-06-02 00:02:10.473472897 +0200
+@@ -18,73 +18,29 @@
+ 
+ MULTILIB_OPTIONS     = marm/mthumb
+ MULTILIB_DIRNAMES    = arm thumb
+-MULTILIB_EXCEPTIONS  = 
+-MULTILIB_MATCHES     =
+ 
+-#MULTILIB_OPTIONS     += mcpu=fa526/mcpu=fa626/mcpu=fa606te/mcpu=fa626te/mcpu=fmp626/mcpu=fa726te
+-#MULTILIB_DIRNAMES    += fa526 fa626 fa606te fa626te fmp626 fa726te
+-#MULTILIB_EXCEPTIONS  += *mthumb*/*mcpu=fa526 *mthumb*/*mcpu=fa626
+-
+-#MULTILIB_OPTIONS      += march=armv7
+-#MULTILIB_DIRNAMES     += thumb2
+-#MULTILIB_EXCEPTIONS   += march=armv7* marm/*march=armv7*
+-#MULTILIB_MATCHES      += march?armv7=march?armv7-a
+-#MULTILIB_MATCHES      += march?armv7=march?armv7-r
+-#MULTILIB_MATCHES      += march?armv7=march?armv7-m
+-#MULTILIB_MATCHES      += march?armv7=mcpu?cortex-a8
+-#MULTILIB_MATCHES      += march?armv7=mcpu?cortex-r4
+-#MULTILIB_MATCHES      += march?armv7=mcpu?cortex-m3
+-
+-# Not quite true.  We can support hard-vfp calling in Thumb2, but how do we
+-# express that here?  Also, we really need architecture v5e or later
+-# (mcrr etc).
+-MULTILIB_OPTIONS       += mfloat-abi=hard
+-MULTILIB_DIRNAMES      += fpu
+-MULTILIB_EXCEPTIONS    += *mthumb/*mfloat-abi=hard*
+-#MULTILIB_EXCEPTIONS    += *mcpu=fa526/*mfloat-abi=hard*
+-#MULTILIB_EXCEPTIONS    += *mcpu=fa626/*mfloat-abi=hard*
+-
+-# MULTILIB_OPTIONS    += mcpu=ep9312
+-# MULTILIB_DIRNAMES   += ep9312
+-# MULTILIB_EXCEPTIONS += *mthumb/*mcpu=ep9312*
+-# 	
+-# MULTILIB_OPTIONS     += mlittle-endian/mbig-endian
+-# MULTILIB_DIRNAMES    += le be
+-# MULTILIB_MATCHES     += mbig-endian=mbe mlittle-endian=mle
+-# 
+-# MULTILIB_OPTIONS    += mfloat-abi=hard/mfloat-abi=soft
+-# MULTILIB_DIRNAMES   += fpu soft
+-# MULTILIB_EXCEPTIONS += *mthumb/*mfloat-abi=hard*
+-# 
+-# MULTILIB_OPTIONS    += mno-thumb-interwork/mthumb-interwork
+-# MULTILIB_DIRNAMES   += normal interwork
+-# 
+-# MULTILIB_OPTIONS    += fno-leading-underscore/fleading-underscore
+-# MULTILIB_DIRNAMES   += elf under
+-# 
+-# MULTILIB_OPTIONS    += mcpu=arm7
+-# MULTILIB_DIRNAMES   += nofmult
+-# MULTILIB_EXCEPTIONS += *mthumb*/*mcpu=arm7*
+-# # Note: the multilib_exceptions matches both -mthumb and
+-# # -mthumb-interwork
+-# #
+-# # We have to match all the arm cpu variants which do not have the
+-# # multiply instruction and treat them as if the user had specified
+-# # -mcpu=arm7.  Note that in the following the ? is interpreted as
+-# # an = for the purposes of matching command line options.
+-# # FIXME: There ought to be a better way to do this.
+-# MULTILIB_MATCHES    += mcpu?arm7=mcpu?arm7d
+-# MULTILIB_MATCHES    += mcpu?arm7=mcpu?arm7di
+-# MULTILIB_MATCHES    += mcpu?arm7=mcpu?arm70
+-# MULTILIB_MATCHES    += mcpu?arm7=mcpu?arm700
+-# MULTILIB_MATCHES    += mcpu?arm7=mcpu?arm700i
+-# MULTILIB_MATCHES    += mcpu?arm7=mcpu?arm710
+-# MULTILIB_MATCHES    += mcpu?arm7=mcpu?arm710c
+-# MULTILIB_MATCHES    += mcpu?arm7=mcpu?arm7100
+-# MULTILIB_MATCHES    += mcpu?arm7=mcpu?arm7500
+-# MULTILIB_MATCHES    += mcpu?arm7=mcpu?arm7500fe
+-# MULTILIB_MATCHES    += mcpu?arm7=mcpu?arm6
+-# MULTILIB_MATCHES    += mcpu?arm7=mcpu?arm60
+-# MULTILIB_MATCHES    += mcpu?arm7=mcpu?arm600
+-# MULTILIB_MATCHES    += mcpu?arm7=mcpu?arm610
+-# MULTILIB_MATCHES    += mcpu?arm7=mcpu?arm620
++# Only we don't actually want any ARM libraries.  Or vanilla thumb libraries.
++MULTILIB_EXCEPTIONS  = marm* mthumb
++
++# Build with any one of arm7tdmi, M0, M3 or M4 support.
++MULTILIB_OPTIONS    += mcpu=arm7tdmi-s/mcpu=cortex-m0/mcpu=cortex-m3/mcpu=cortex-m4
++MULTILIB_DIRNAMES   += arm7tdmi-s cortex-m0 cortex-m3 cortex-m4
++
++# These don't make any sense without thumb, because GCC likes to
++# tell you that you have to supply another commandline argument
++# rather than just setting it itself.
++MULTILIB_EXCEPTIONS += mcpu=arm7tdmi-s* mcpu=cortex-m0* mcpu=cortex-m3* mcpu=cortex-m4*
++
++# All this just to get mfloat-abi=hard mfpu=fpv4-sp-d16 only specified for the M4
++MULTILIB_OPTIONS    += mfloat-abi=hard mfpu=fpv4-sp-d16
++MULTILIB_DIRNAMES   += float-abi-hard fpuv4-sp-d16
++MULTILIB_EXCEPTIONS += mfloat* mthumb/mfloat*
++MULTILIB_EXCEPTIONS += mfpu* mthumb/mfpu*
++MULTILIB_EXCEPTIONS += mthumb/mcpu=cortex-m4/mfloat-abi=hard
++MULTILIB_EXCEPTIONS += mthumb/mcpu=cortex-m4/mfpu=fpv4-sp-d16
++MULTILIB_EXCEPTIONS += *arm7tdmi-s*mfloat-abi* *arm7tdmi-s*mfpu*
++MULTILIB_EXCEPTIONS += *cortex-m3*mfloat-abi* *cortex-m3*mfpu*
++MULTILIB_EXCEPTIONS += *cortex-m0*mfloat-abi* *cortex-m0*mfpu*
++
++EXTRA_MULTILIB_PARTS = crtbegin.o crtend.o crti.o crtn.o
++
