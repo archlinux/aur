@@ -2,8 +2,8 @@
 # Note: My first PKGBUILD ever, bare with me :) I have been inpired a lot in other PKGBUILDs, like google-chrome's one.
 
 pkgname=google-webdesigner
-pkgver=1.6.3.1004
-pkgrel=4
+pkgver=1.7.0.114
+pkgrel=1
 pkgdesc="Create engaging, interactive HTML5-based designs and motion graphics that can run on any device."
 arch=('x86_64')
 url="https://www.google.com/webdesigner"
@@ -15,7 +15,7 @@ options=('!emptydirs' '!strip')
 install=${pkgname}.install
 _source_arch="i386"
 [ "${CARCH}" = 'x86_64' ] && _source_arch="amd64"
-md5sums=('1b052ba2622b5d15d7961862f2a20af8')
+md5sums=('ae2ad8fbae17bed6a529051204b9f606')
 #[ "${CARCH}" = 'i686' ] && md5sums[0]='04ab693e6baa641ebcbdcc9512d4f57e' # i686 not tested by me
 source=("google-webdesigner_current_${_source_arch}.deb::https://dl.google.com/linux/direct/google-webdesigner_current_${_source_arch}.deb")
 
