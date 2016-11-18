@@ -3,7 +3,7 @@
 # Contributor: Max Roder <maxroder at web dot de>
 
 pkgname=tor-browser-bin
-pkgver=6.0.5
+pkgver=6.0.6
 _language='en-US'
 pkgrel=1
 pkgdesc="Tor Browser is +1 for privacy and -1 for mass surveillance"
@@ -24,13 +24,13 @@ source_x86_64=("https://dist.torproject.org/torbrowser/${pkgver}/tor-browser-lin
 source+=(tor-browser.desktop
          tor-browser.png
          tor-browser.sh)
-sha256sums_i686=('e0c3ce406b6de082692ce3db52b6e04053e205194b26fbf0eee9014be543d98d'
+sha256sums_i686=('9fb4a0142a6b2cf23d60983345f37f4090b047aa7c9e4145c0921fa2df7c1e61'
                  'SKIP')
-sha256sums_x86_64=('fc917bd702b1275cae3f7fa8036c3c44af9b4f003f3d4a8fbb9f6c0974277ad4'
+sha256sums_x86_64=('bd765a778e3a30f912b251c30ec4f1f4db02f2babfb34090c59ab7ecef5cac79'
                    'SKIP')
-sha512sums+=('eaa9f60d8b6343253c12c2438f3a6b805768b407ec43c34e88780ceec6a6f853c13b56749bccd73d7183402fd490a68c61de356728531744ca3b2f744fc92ffe'
-             '236338469e13b4991c2abb94d4844d0149bb98094f1661b0a41256df0400cfe9904882117aae9edbea9261d99aea42745e03d745b523243d9a75fa5151062e18'
-             '54ba3df337f07b3072636bf42b255de26eddde773e82f7588c4ed9cf29c20ea5522c460855151036dad307dc023c76266e57f530352bb129b6afef95bf28c038')
+sha1sums+=('922f966fa16ba30a01b8e8d6f44ddb0b5468725d'
+           'aa3f84762b5f0b39aea5e03befdb03c4f53e8078'
+           'e55d123744b57e23a02319243d64c24911a38e29')
 validpgpkeys=('8738A680B84B3031A630F2DB416F061063FEE659'
               'EF6E286DDA85EA2A4BA7DE684E2C6E8793298290')
 noextract_i686=("tor-browser-linux32-${pkgver}_${_language}.tar.xz")
@@ -43,6 +43,8 @@ package() {
     -e "s|REPL_VERSION|${pkgver}|g" \
     -e "s|REPL_LANGUAGE|${_language}|g" \
     tor-browser.sh
+
+  sed -e "s|REPL_COMMENT|${pkgdesc}|g" tor-browser.desktop
 
   install -Dm 0644 tor-browser.desktop \
     $pkgdir/usr/share/applications/tor-browser.desktop

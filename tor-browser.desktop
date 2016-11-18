@@ -2,7 +2,7 @@
 Type=Application
 Name=Tor Browser
 GenericName=Web Browser
-Comment=Tor Browser is +1 for privacy and -1 for mass surveillance
+Comment=REPL_COMMENT
 Categories=Network;
 Exec=/usr/bin/tor-browser
 Icon=/usr/share/pixmaps/tor-browser.png
