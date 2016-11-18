@@ -1,0 +1,14 @@
+pkgbase = mssql-tools-ubuntu
+	pkgdesc = Microsoft SQL Server for Linux tools
+	pkgver = 14.0.1.246
+	pkgrel = 1
+	url = https://docs.microsoft.com/en-us/sql/linux/sql-server-linux-setup-tools
+	arch = x86_64
+	license = unknown
+	depends = msodbcsql-ubuntu
+	noextract = mssql-tools_14.0.1.246-1_amd64.deb
+	source = https://packages.microsoft.com/ubuntu/16.04/prod/pool/main/m/mssql-tools/mssql-tools_14.0.1.246-1_amd64.deb
+	md5sums = 2ec49b644a3dc76aef098f769854d1ee
+
+pkgname = mssql-tools-ubuntu
+
