@@ -1,7 +1,7 @@
 # Maintainer: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=wingpanel-indicator-datetime
-pkgver=2.0
+pkgver=2.0.1
 pkgrel=1
 pkgdesc='Date & Time indicator for Wingpanel'
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ depends=('cairo' 'evolution-data-server' 'glib2' 'glibc' 'gtk3' 'libgee'
          'libgranite.so' 'libwingpanel-2.0.so')
 makedepends=('cmake' 'vala')
 source=("https://launchpad.net/wingpanel-indicator-datetime/loki/${pkgver}/+download/wingpanel-indicator-datetime-${pkgver}.tar.xz")
-sha256sums=('61e9337a72790f61a2fedc6f15ac8a83be0a5de48138fd627d5e5f15e349fc44')
+sha256sums=('87d996186ce2cf4ab09be7e8a5bea8f5f37608e98f0bdd7e22ac90280278d22b')
 
 prepare() {
   cd wingpanel-indicator-datetime-${pkgver}
