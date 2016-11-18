@@ -1,18 +1,14 @@
 pkgbase = rave-x-colors
-	pkgdesc = A vivid and classically styled icon theme based on Faenza. The inspiration for Mint-X, but with support for dark panels.
+	pkgdesc = A punchy, elegant icon theme in 12 awesome colors
 	pkgver = 2.1
-	pkgrel = 3
+	pkgrel = 4
 	url = http://www.ravefinity.com/p/rave-x-icon-theme.html
-	install = update-icon-cache.install
 	arch = any
-	license = custom:cc-by-sa-3.0
+	license = CCPL:by-sa
 	license = GPL2
 	options = !strip
-	options = !zipman
-	options = libtool
-	options = staticlibs
-	source = rave-x-colors-2.1.tar.gz::https://googledrive.com/host/0B7iDWdwgu9QAX25DaVJOT0NtR2M
-	md5sums = 23934c1e096be974694a46876e891fea
+	source = rave-x-colors-icons_2.1-trusty-Noobslab.com_all.deb::https://drive.google.com/uc?export=download&id=0B7iDWdwgu9QAQmxySUdpT3FIbmM
+	sha256sums = e313361039d22b8c917f6bf650fed5446597430a4e25599b0c55d46117285761
 
 pkgname = rave-x-colors
 

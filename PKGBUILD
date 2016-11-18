@@ -1,18 +1,21 @@
 # Maintainer: ThePilot <afuturepilotis at gmail dot com>
 pkgname=rave-x-colors
 pkgver=2.1
-pkgrel=3
-pkgdesc="A vivid and classically styled icon theme based on Faenza. The inspiration for Mint-X, but with support for dark panels."
+pkgrel=4
+pkgdesc="A punchy, elegant icon theme in 12 awesome colors"
 arch=('any')
 url="http://www.ravefinity.com/p/rave-x-icon-theme.html"
-license=('custom:cc-by-sa-3.0' 'GPL2')
-options=('!strip' '!zipman' 'libtool' 'staticlibs')
-install=update-icon-cache.install
-source=($pkgname-$pkgver.tar.gz::https://googledrive.com/host/0B7iDWdwgu9QAX25DaVJOT0NtR2M)
-md5sums=('23934c1e096be974694a46876e891fea')
+license=('CCPL:by-sa' 'GPL2')
+options=('!strip')
+_debpkg=rave-x-colors-icons_2.1-trusty-Noobslab.com_all.deb
+source=("${_debpkg}::https://drive.google.com/uc?export=download&id=0B7iDWdwgu9QAQmxySUdpT3FIbmM")
+sha256sums=('e313361039d22b8c917f6bf650fed5446597430a4e25599b0c55d46117285761')
+
+prepare() {
+  tar -xf data.tar.xz
+}
 
 package() {
- mkdir -p $pkgdir/usr/share/icons/
- cp -r $srcdir/* $pkgdir/usr/share/icons/
- rm "$pkgdir/usr/share/icons/RAVEX-Icon-Manual-Doc.txt" "$pkgdir/usr/share/icons/$pkgname-$pkgver.tar.gz"
+ install -d "$pkgdir"/usr/share/icons
+ cp -r usr/share/icons/* "$pkgdir"/usr/share/icons
 }
