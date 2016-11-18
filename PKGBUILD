@@ -2,7 +2,7 @@
 
 pkgname=logstash
 pkgver=5.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc='A tool for managing events and logs'
 arch=('any')
 url='https://www.elastic.co/products/logstash'
@@ -36,14 +36,14 @@ prepare() {
 package() {
   cd "$srcdir"
 
-  install -dm755 "$pkgdir"/opt
-  cp -a logstash-$pkgver "$pkgdir"/opt/logstash
+  install -dm755 "$pkgdir"/usr/share
+  cp -a logstash-$pkgver "$pkgdir"/usr/share/logstash
 
   install -Dm644 logstash.service "$pkgdir"/usr/lib/systemd/system/logstash.service
   install -Dm644 logstash@.service "$pkgdir"/usr/lib/systemd/system/logstash@.service
 	install -Dm644 user.conf "$pkgdir"/usr/lib/sysusers.d/logstash.conf
 
-  install -Dm644 bundle.config "$pkgdir"/opt/logstash/.bundle/config
+  install -Dm644 bundle.config "$pkgdir"/usr/share/logstash/.bundle/config
 
   install -dm755 "$pkgdir"/var/lib/logstash
   install -dm755 "$pkgdir"/etc/logstash/conf.d
