@@ -1,6 +1,6 @@
 pkgbase = meld-git
 	pkgdesc = Visual diff and merge tool
-	pkgver = 3.16.0.16.gca74bdc
+	pkgver = 3.16.0.184.18ff8a6
 	pkgrel = 1
 	url = http://meldmerge.org/
 	install = meld.install
@@ -10,14 +10,15 @@ pkgbase = meld-git
 	makedepends = gnome-doc-utils
 	makedepends = git
 	makedepends = itstool
-	depends = python2
+	depends = python>=3.3
 	depends = gtk3>=3.6
-	depends = glib2>=2.34
-	depends = python2-gobject>=3.6
-	depends = pygobject-devel>=3.6
-	depends = gtksourceview3>=3.6
-	optdepends = python2-dbus: open a new tab in an already running instance
-	optdepends = python2-gconf: gnome integration
+	depends = glib2>=2.36
+	depends = python3-gobject>=3.14
+	depends = pygobject-devel>=3.14
+	depends = gtksourceview3>=3.14
+	depends = python-cairo>=1.10.0-6
+	optdepends = python3-dbus: open a new tab in an already running instance
+	optdepends = python3-gconf: gnome integration
 	provides = meld
 	conflicts = meld
 	replaces = meld
