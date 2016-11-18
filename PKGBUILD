@@ -7,13 +7,13 @@ validpgpkeys=('748231EBCBD808A14F5E85D28C004C2F93481F6B')
 
 pkgname=python-snakeoil
 pkgver=0.7.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Provides common functionality and useful optimizations"
 arch=( 'i686' 'x86_64' )
 url="https://pypi.python.org/pypi/snakeoil"
 license=('BSD' )
 depends=( 'python' )
-makedepends=( 'python' )
+makedepends=( 'python' 'python-setuptools' )
 _pkgname=snakeoil
 
 install=
