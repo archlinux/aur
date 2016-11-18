@@ -1,0 +1,20 @@
+pkgbase = gog-pinball-illusions
+	pkgdesc = A pinball video game developed as a sequel of Pinball Fantasies and Pinball Dreams in 1995.
+	pkgver = 2.0.0.3
+	pkgrel = 1
+	url = http://www.gog.com/game/pinball_gold_pack
+	arch = any
+	groups = games
+	license = custom
+	depends = dosbox
+	depends = libpng12
+	depends = unionfs-fuse
+	optdepends = gendesk
+	noextract = gog_pinball_illusions_2.0.0.3.sh
+	source = local://gog_pinball_illusions_2.0.0.3.sh
+	source = local://pinball-illusions
+	md5sums = 6727c547f9f26a339b5356006e47d9d7
+	md5sums = a0aec1209b2ec37a0f5e9f38ba63be1d
+
+pkgname = gog-pinball-illusions
+
