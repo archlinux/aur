@@ -13,6 +13,8 @@ source=("http://www.libspf2.org/spf/$pkgname-$pkgver.tar.gz"
         "https://github.com/shevek/libspf2/commit/5852828582f556e73751076ad092f72acf7fc8b6.patch")
 md5sums=('7bb9937d0705649eaa8646de66dc3562'
          'ad28af7a2bdf4cd4520e1493766e3d07')
+sha256sums=('d91e3de81ae287a2976c44f60283bd3000d720e6a112dc7142eedf1831b821c9'
+            '1396d155665f52748cfc7e06e01a92cc98c65193f36e807b8b1de4fb31d4caec')
 
 prepare() {
     cd "$pkgname-$pkgver"
