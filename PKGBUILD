@@ -1,7 +1,7 @@
 # Maintainer: Ainola
 
 pkgname=gog-terraria
-pkgver=2.10.0.13
+pkgver=2.11.0.14
 pkgrel=1
 pkgdesc="The very world is at your fingertips as you fight for survival, fortune, and glory."
 url="http://terraria.org/"
@@ -10,7 +10,7 @@ arch=('i686' 'x86_64')
 depends=('sdl2')
 source=("gog://${pkgname//-/_}_${pkgver}.sh"
         "${pkgname}.desktop")
-sha256sums=('edf2b57a3dec3be4d93494c18cde89797244a36ff9ff25156d98ebfd93e3d907'
+sha256sums=('51023e3ab531292c28933c57e0e7714a65e90bfcf6cbb502d6e0314644b79291'
             '815bf359c2828cdefee1e33a978a84a2ebb538450197a5792b62e382ae3e3093')
 
 # You need to download the gog.com installer file manually or with lgogdownloader.
