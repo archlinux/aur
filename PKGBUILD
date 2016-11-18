@@ -2,11 +2,11 @@
 
 pkgname=ocaml-soundtouch
 pkgver=0.1.8
-pkgrel=2
+pkgrel=3
 license=('LGPL2.1')
 arch=('i686' 'x86_64')
 pkgdesc="OCaml bindings for the soundtouch audio library"
-url="https://github.com/savonet/ocaml-shine"
+url="https://github.com/savonet/ocaml-soundtouch"
 depends=('ocaml' 'soundtouch')
 makedepends=('ocaml-findlib')
 source=("https://github.com/savonet/ocaml-soundtouch/releases/download/${pkgver}/${pkgname}-${pkgver}.tar.gz")
