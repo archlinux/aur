@@ -1,6 +1,8 @@
---- ./test/com/facebook/buck/cli/ExternalTestRunnerIntegrationTest.java.orig	2016-04-22 15:23:01.347436678 -0700
-+++ ./test/com/facebook/buck/cli/ExternalTestRunnerIntegrationTest.java	2016-04-22 15:23:24.214103542 -0700
-@@ -72,9 +72,9 @@
+diff --git a/test/com/facebook/buck/cli/ExternalTestRunnerIntegrationTest.java b/test/com/facebook/buck/cli/ExternalTestRunnerIntegrationTest.java
+index 62ab929..6f055b2 100644
+--- a/test/com/facebook/buck/cli/ExternalTestRunnerIntegrationTest.java
++++ b/test/com/facebook/buck/cli/ExternalTestRunnerIntegrationTest.java
+@@ -72,9 +72,9 @@ public class ExternalTestRunnerIntegrationTest {
      result.assertSuccess();
      assertThat(
          result.getStdout(),
