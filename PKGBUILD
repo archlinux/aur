@@ -1,6 +1,6 @@
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=neateqn-git
-pkgver=0.r81.7f197b3
+pkgver=0.r82.7cbea75
 pkgrel=1
 epoch=
 pkgdesc="An eqn preprocessor for neatroff."
@@ -27,7 +27,7 @@ md5sums=('SKIP'
 
 pkgver() {
   cd $srcdir/$pkgname
-  printf "0.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
