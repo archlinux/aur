@@ -1,5 +1,5 @@
 pkgbase = gog-pinball-dreams-deluxe
-	pkgdesc = A pinball siulation video game originally released for the Amiga in 1992
+	pkgdesc = A pinball simulation video game originally released for the Amiga in 1992
 	pkgver = 2.0.0.3
 	pkgrel = 1
 	url = http://www.gog.com/game/pinball_gold_pack
