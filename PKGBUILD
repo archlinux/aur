@@ -1,6 +1,6 @@
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=neateqn-git
-pkgver=0.r82.7cbea75
+pkgver=r82.7cbea75
 pkgrel=1
 epoch=
 pkgdesc="An eqn preprocessor for neatroff."
