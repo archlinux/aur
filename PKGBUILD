@@ -18,7 +18,7 @@ conflicts=("${_pkgname}")
 
 source=("${_pkgname}::http://3hg.toile-libre.org/dontpanic/downloads/dontpanic-latest.tgz")
 	
-sha256sums=('14659abc766b2777963a9b744c92eeda338ab9395c2cf1ae7f4880d57a910026')
+sha256sums=('a15881591c7d2600b1ca8cdc64b8a6d761983f951a3e1c1c29aa3e5a01273199')
 
 pkgver() {
 	 #wget -qO- http://3hg.toile-libre.org/dontpanic/version
