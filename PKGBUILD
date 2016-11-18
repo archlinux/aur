@@ -11,6 +11,7 @@ depends=( 'libspf2' )
 makedepends=( 'libmilter' )
 source=("http://www.acme.com/software/$_pkgname/$_pkgname-$pkgver.tar.gz")
 md5sums=('29d9aedc959264fd793bc6095e4bdf83')
+sha256sums=('fe446200947a910dcabc8c26b7a038548a98abb653bb10a311e90c4071968e7d')
 
 build() {
     cd "$_pkgname-$pkgver"
