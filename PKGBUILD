@@ -2,7 +2,7 @@
 # Maintainer: Max Bruckner (FSMaxB)
 
 pkgname=json-sh
-pkgver=r99.022ec33
+pkgver=r103.a82c583
 pkgrel=1
 pkgdesc="command line json tool written in bash"
 arch=('any')
