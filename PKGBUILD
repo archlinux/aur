@@ -1,7 +1,7 @@
 # Maintainer: Daniel Leining <daniel@the-beach.co>
 
 pkgname=chunky
-pkgver=1.4.0
+pkgver=1.4.1
 basever=1.4
 pkgrel=1
 pkgdesc="Minecraft mapping and rendering tool"
@@ -12,7 +12,7 @@ depends=('java-environment' 'java-openjfx')
 makedepends=('gendesk')
 source=(https://launchpad.net/"$pkgname"/"$basever"/"$pkgver"/+download/Chunky-"$pkgver".zip
        chunky.sh)
-sha256sums=('81442706272a84caf6fa1ea9b814529024c65dd696982022d58b2974016b97af'
+sha256sums=('96294e00480e505f3dcdfe356a88529eaba9d3728192f9159e0e23c6c0e505dc'
             '73389b938eaaf1eeac656a762fe16fab68e89ab499d11ac8427e2177a5059c57')
 
 build() {
