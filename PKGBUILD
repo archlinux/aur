@@ -3,7 +3,7 @@
 
 pkgbase=linux-vfio
 _srcname=linux-4.8
-pkgver=4.8.7
+pkgver=4.8.8
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
@@ -23,7 +23,7 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         '0001-i915-Add-module-option-to-support-VGA-arbiter-on-HD-.patch')
 sha256sums=('3e9150065f193d3d94bcf46a1fe9f033c7ef7122ab71d75a7fb5a2f0c9a7e11a'
             'SKIP'
-            '94213e7557d192d1054e352aec18e93275ed5a84abe190d43fd43847d1d86efe'
+            '588b6537cb660c2f7d483aca13f7509a5fc86c60df32c167d40e81d6c7ab4f9c'
             'SKIP'
             'fdb743ebd87f2a6dc3e654774cf2b57c58fc5bc8d0ab2c3b0d6b89277d2b2116'
             '7e9e1c443aeba1c9b028493de13f0b170d99bedf876d1fbe2748b77c6fb24549'
