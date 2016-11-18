@@ -1,0 +1,30 @@
+pkgbase = python-dolfin-git
+	pkgdesc = the C++/Python interface of FEniCS, providing a consistent PSE (Problem Solving Environment) for ordinary and partial differential equations.
+	pkgver = 20161117
+	pkgrel = 1
+	url = https://bitbucket.org/fenics-project/dolfin
+	arch = i686
+	arch = x86_64
+	groups = fenics-git
+	license = GPL3
+	makedepends = git
+	makedepends = swig
+	depends = cppunit
+	depends = eigen
+	depends = gl2ps
+	depends = hdf5
+	depends = python-dijitso-git
+	depends = python-ffc-git
+	depends = python-instant-git
+	depends = python-ply
+	depends = python-six
+	depends = python-sympy
+	depends = slepc
+	depends = suitesparse
+	depends = scotch
+	options = !emptydirs
+	source = dolfin::git+https://bitbucket.org/fenics-project/dolfin.git#branch=master
+	md5sums = SKIP
+
+pkgname = python-dolfin-git
+
