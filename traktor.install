@@ -1,7 +1,16 @@
 post_install() {
-	traktor_configure
+        clear
+        echo
+        echo -e "If you tend to use tor on whole network you may run: traktor_tunnel"
+        echo -e "\n If you need to reconfigure traktor you may run: traktor_configure\n I will do it for you now"
+        sleep 10s
+	traktor_configure 
 }
 post_upgrade() {
+        clear
+        echo -e "If you tend to use tor on whole network you may run: traktor_tunnel"
+        echo -e "\n If you need to reconfigure traktor you may run: traktor_configure\n I will do it for you now"
+        sleep 10s
 	traktor_configure
 }
 

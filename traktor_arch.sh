@@ -3,10 +3,6 @@ clear
 
 echo -e "Traktor v1.3\nTor will be automatically installed and configured…\n\n"
 
-# Make tor log directory 
-sudo mkdir /var/log/tor/
-sudo chown tor:tor /var/log/tor/
-sudo chmod g+w /var/log/tor/
 # Write Bridge
 sudo wget https://AmirrezaFiroozi.github.io/traktor/torrcV3 -O /etc/tor/torrc > /dev/null
 
@@ -14,6 +10,13 @@ sudo wget https://AmirrezaFiroozi.github.io/traktor/torrcV3 -O /etc/tor/torrc > 
 #sudo sed -i '27s/PUx/ix/' /etc/apparmor.d/abstractions/tor
 #sudo apparmor_parser -r -v /etc/apparmor.d/system_tor
 
+# Make tor log directory 
+sudo systemctl start tor 1>/dev/null 2>&1
+sudo systemctl stop tor 1>/dev/null 2>&1
+
+sudo mkdir /var/log/tor/
+sudo chown tor:tor /var/log/tor/
+sudo chmod g+w /var/log/tor/
 # Write Polipo config
 echo 'logSyslog = true
 logFile = /var/log/polipo/polipo.log
@@ -23,20 +26,7 @@ socksParentProxy = "localhost:9050"
 socksProxyType = socks5' | sudo tee /etc/polipo/config > /dev/null
 sudo systemctl restart polipo
 
-echo "Do you want to use tor on whole network? [y/N]"
-echo "If press No you have to manually set proxy to SOCKS5 127.0.0.1:9050 or HTTP 127.0.0.1:8123"
 
-read -n 1 SELECT
-if [ "$SELECT" = "Y" -o "$SELECT" = "y" ]
-then
-	# Set IP and Port on HTTP and SOCKS
-	gsettings set org.gnome.system.proxy mode 'manual'
-	gsettings set org.gnome.system.proxy.http host 127.0.0.1
-	gsettings set org.gnome.system.proxy.http port 8123
-	gsettings set org.gnome.system.proxy.socks host 127.0.0.1
-	gsettings set org.gnome.system.proxy.socks port 9050
-	gsettings set org.gnome.system.proxy ignore-hosts "['localhost', '127.0.0.0/8', '::1', '192.168.0.0/16', '10.0.0.0/8', '172.16.0.0/12']"
-fi
 # Install Finish
 echo "Install Finished successfully…"
 sudo systemctl start tor 1>/dev/null 2>&1
