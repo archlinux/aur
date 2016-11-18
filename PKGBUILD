@@ -11,7 +11,7 @@
 _pkgname=playonlinux5
 pkgname=$_pkgname-git
 pkgver=r1262.6404de4
-pkgrel=4
+pkgrel=5
 epoch=2
 pkgdesc="GUI for managing Windows programs under linux (development version based on Java)"
 arch=('any')
@@ -20,10 +20,16 @@ license=('GPL')
 makedepends=('gradle' 'maven' 'java-openjfx' 'jdk8-openjdk')
 depends=('wine')
 options=(!strip)
-source=("$_pkgname::git://github.com/PlayOnLinux/POL-POM-5.git"
-        'PlayOnLinux5.desktop')
-md5sums=('SKIP'
-         '7fe925810fc7ec6d8745817b1c541e7b')
+source=(
+	"$_pkgname::git://github.com/PlayOnLinux/POL-POM-5.git"
+        'PlayOnLinux5.desktop'
+	'PlayOnLinux.sh'
+	)
+md5sums=(
+	'SKIP'
+	'7fe925810fc7ec6d8745817b1c541e7b'
+	'aaddf3cb2070b9329c01eb8b5f9d8438'
+	)
 
 pkgver() {
   cd "$_pkgname"
@@ -37,6 +43,7 @@ build() {
   cd "$_pkgname"
 
   # Set environment
+  # Use path to Java 8 for users nkt defaulted to Java 8 yet
   export JAVA_HOME="/usr/lib/jvm/java-8-openjdk"
 
   # Clean up
@@ -53,9 +60,7 @@ package() {
   cp -r phoenicis-dist/ "$pkgdir/opt/$_pkgname/"
 
   # Launcher
-  install -d "$pkgdir/usr/bin/"
-  ln -s "/opt/$_pkgname/PlayOnLinux.sh" "$pkgdir/usr/bin/$_pkgname"
-  sed -i 's|$(dirname $0)|/opt/playonlinux5|' "$pkgdir/opt/$_pkgname/PlayOnLinux.sh"
+  install -Dm755 "PlayOnLinux.sh"  "$pkgdir/usr/bin/PlayOnLinux.sh"
 
   # Icon + Desktop
   install -Dm644 "$srcdir/$_pkgname/phoenicis-javafx/target/classes/com/playonlinux/javafx/common/playonlinux.png" \

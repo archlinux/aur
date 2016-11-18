@@ -1,7 +1,7 @@
 pkgbase = playonlinux5-git
 	pkgdesc = GUI for managing Windows programs under linux (development version based on Java)
 	pkgver = r1262.6404de4
-	pkgrel = 4
+	pkgrel = 5
 	epoch = 2
 	url = http://www.playonlinux.com/
 	arch = any
@@ -14,8 +14,10 @@ pkgbase = playonlinux5-git
 	options = !strip
 	source = playonlinux5::git://github.com/PlayOnLinux/POL-POM-5.git
 	source = PlayOnLinux5.desktop
+	source = PlayOnLinux.sh
 	md5sums = SKIP
 	md5sums = 7fe925810fc7ec6d8745817b1c541e7b
+	md5sums = aaddf3cb2070b9329c01eb8b5f9d8438
 
 pkgname = playonlinux5-git
 
