@@ -6,7 +6,7 @@
 pkgbase=linux-userns
 _srcname=linux-4.8
 pkgver=4.8.8
-pkgrel=2
+pkgrel=3
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
 license=('GPL2')
@@ -32,7 +32,7 @@ sha256sums=('3e9150065f193d3d94bcf46a1fe9f033c7ef7122ab71d75a7fb5a2f0c9a7e11a'
             'SKIP'
             '2ac8818414beb7dbacbd3ad450c516e6ada804827132a7132f63b8189e5f5151'
             '93a4ad4f6c7bb9296fddec436ed7477a5a5c11cf4d6e68482fa6610442cbcb1f'
-            '2d4424928ae3c5f63ee618b4685580f4bd24faf1778553dbd961f85a88ea0910'
+            '05c711602acf454b2161a710f433d5e0a0744524bc056c4c0f90394892b9b440'
             'f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c'
             '01a6d59a55df1040127ced0412f44313b65356e3c680980210593ee43f2495aa'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99')

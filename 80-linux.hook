@@ -2,10 +2,10 @@
 Type = File
 Operation = Install
 Operation = Upgrade
-Target = boot/vmlinuz-linux
+Target = boot/vmlinuz-linux-userns
 Target = usr/lib/initcpio/*
 
 [Action]
 Description = Updating Arch Linux initramfs image
 When = PostTransaction
-Exec = /usr/bin/mkinitcpio -p linux
+Exec = /usr/bin/mkinitcpio -p linux-userns
