@@ -9,6 +9,7 @@ pkgbase = mdrgpalu-git
 	arch = armv7h
 	license = Unlicense
 	makedepends = git
+	optdepends = xclip: system-wide clipboard
 	provides = mdrgpalu
 	conflicts = mdrgpalu
 	source = git+https://github.com/emersion/mdrgpalu.git
