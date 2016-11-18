@@ -11,7 +11,7 @@
 _pkgname=playonlinux5
 pkgname=$_pkgname-git
 pkgver=r1262.6404de4
-pkgrel=3
+pkgrel=4
 epoch=2
 pkgdesc="GUI for managing Windows programs under linux (development version based on Java)"
 arch=('any')
@@ -54,7 +54,7 @@ package() {
 
   # Launcher
   install -d "$pkgdir/usr/bin/"
-  ln -s "/opt/$pkgname/PlayOnLinux.sh" "$pkgdir/usr/bin/$_pkgname"
+  ln -s "/opt/$_pkgname/PlayOnLinux.sh" "$pkgdir/usr/bin/$_pkgname"
   sed -i 's|$(dirname $0)|/opt/playonlinux5|' "$pkgdir/opt/$_pkgname/PlayOnLinux.sh"
 
   # Icon + Desktop
