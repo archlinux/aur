@@ -1,0 +1,15 @@
+pkgbase = mssql-tools
+	pkgdesc = Microsoft® SQL Server® Tools for Linux
+	pkgver = 14.0.1.246
+	pkgrel = 1
+	url = https://www.microsoft.com/en-us/sql-server/sql-server-vnext-including-Linux
+	arch = x86_64
+	license = unknown
+	makedepends = rpmextract
+	depends = mssql-msodbcsql
+	noextract = mssql-tools-14.0.1.246-1.x86_64.rpm
+	source = https://packages.microsoft.com/rhel/7/prod/mssql-tools-14.0.1.246-1.x86_64.rpm
+	md5sums = 7166ec85f1f2a753d9caa528eb940dff
+
+pkgname = mssql-tools
+
