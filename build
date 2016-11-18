@@ -9,7 +9,7 @@ build () {
 }
 
 clean () {
-  rm *.pkg.tar.xz *.tar.gz && rm -rf ./pkg ./src
+  rm *.pkg.tar.xz *.tar.gz ; rm -rf ./pkg ./src ; true
 }
 
 main () {
