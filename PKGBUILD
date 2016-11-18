@@ -1,6 +1,6 @@
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=neatroff-suite-git
-pkgver=0.r434.fb17e06
+pkgver=r437.0b264c8
 pkgrel=1
 epoch=
 pkgdesc="A complete neatroff typesetting system (neatmkfn, neatroff, neatpost, neateqn and neatrefer)."
@@ -35,15 +35,9 @@ source=("neatmkfn::git://repo.or.cz/neatmkfn.git"
         "http://litcave.rudi.ir/neatroff.pdf"
         "http://litcave.rudi.ir/neateqn.pdf")
 noextract=()
-md5sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP'
-         '936d68a71a5662b6a4d2da9e0820923b'
-         '38ff8a13e7b1dbce1eb20f41139b8e16')
-sha1sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP'
-          '2c7f129fc6d8911f0b9db9923a62e83862877fb5'
-          '3e7b33efbdb3a9f944fc16d3e0f97ebd8aca697c')
-sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP'
-            '41a104c0eaf41423da4d8fb3803fcbb4b53af92e7491e8d48d16e6e9e8adef5e'
-            '015589c6ceef39318d593dbc27cd19b307e536a2c18e4c44644e4d142ca92b9b')
+md5sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
+sha1sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
+sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
 
 ## Ghostscript Fonts Location:
 FP="/usr/share/fonts/Type1/"
@@ -56,7 +50,7 @@ MDIR=/usr/share/neatroff/tmac
 
 pkgver() {
   cd $srcdir/neatroff
-  printf "0.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
