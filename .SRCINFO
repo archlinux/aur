@@ -1,0 +1,16 @@
+pkgbase = python-instant-git
+	pkgdesc = A Python module allowing for instant inlining of C and C++ code in Python
+	pkgver = 20161101
+	pkgrel = 1
+	url = https://bitbucket.org/fenics-project/instant
+	arch = any
+	groups = fenics-git
+	license = GPL3
+	makedepends = git
+	depends = python
+	options = !emptydirs
+	source = instant::git+https://bitbucket.org/fenics-project/instant.git#branch=master
+	md5sums = SKIP
+
+pkgname = python-instant-git
+
