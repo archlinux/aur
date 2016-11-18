@@ -1,6 +1,6 @@
 pkgbase = genie-git
 	pkgdesc = GENie project generator tool (a fork of premake by Branimir Karadžić)
-	pkgver = r719.0565f60
+	pkgver = r719.cb74a63
 	pkgrel = 1
 	url = https://github.com/bkaradzic/GENie
 	arch = x86_64
