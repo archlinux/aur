@@ -5,7 +5,7 @@
 
 pkgname='mate-multiload-ng-applet-gtk3-git'
 pkgdesc='Modern graphical system monitor, MATE panel applet'
-pkgver=r907.66045e6
+pkgver=r926.246cb4c
 pkgrel=1
 
 makedepends=('intltool' 'git')
