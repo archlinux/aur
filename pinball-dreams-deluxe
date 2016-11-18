@@ -1,0 +1,12 @@
+#!/usr/bin/bash
+game=pinball-dreams-deluxe
+conf=DREAMSD
+
+gogdir="/opt/gog/${game}"
+homedir="$HOME/.gog/${game}"
+mkdir -p "$homedir"/{game,config/data}
+
+unionfs -o cow,relaxed_permissions "$homedir/config=RW:$gogdir=RO" "$homedir/game"
+dosbox -conf "$homedir/game/dosbox${conf}.conf" \
+	-conf "$homedir/game/dosbox${conf}_single.conf"
+fusermount -u "$homedir/game"

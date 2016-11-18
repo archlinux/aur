@@ -1,0 +1,20 @@
+pkgbase = gog-pinball-dreams-deluxe
+	pkgdesc = A pinball siulation video game originally released for the Amiga in 1992
+	pkgver = 2.0.0.3
+	pkgrel = 1
+	url = http://www.gog.com/game/pinball_gold_pack
+	arch = any
+	groups = games
+	license = custom
+	depends = dosbox
+	depends = libpng12
+	depends = unionfs-fuse
+	optdepends = gendesk
+	noextract = gog_pinball_dreams_deluxe_2.0.0.3.sh
+	source = local://gog_pinball_dreams_deluxe_2.0.0.3.sh
+	source = local://pinball-dreams-deluxe
+	md5sums = 41ed10bfc94d34e6b62ff52713b4c1c6
+	md5sums = 7c4e2579a1c89a64da9b9a6360789dc4
+
+pkgname = gog-pinball-dreams-deluxe
+
