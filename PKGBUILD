@@ -2,8 +2,8 @@
 # Note: My first PKGBUILD ever, bare with me :) I have been inpired a lot in other PKGBUILDs, like google-chrome's one.
 
 pkgname=google-webdesigner
-pkgver=1.7.0.114
-pkgrel=1
+pkgver=1.7.0.1114
+pkgrel=2
 pkgdesc="Create engaging, interactive HTML5-based designs and motion graphics that can run on any device."
 arch=('x86_64')
 url="https://www.google.com/webdesigner"
