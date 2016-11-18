@@ -1,7 +1,7 @@
 # Maintainer: AsamK <asamk ät gmx de>
 
 pkgname=signal-cli
-pkgver=0.5.0
+pkgver=0.5.1
 pkgrel=1
 pkgdesc="Provides a commandline and dbus interface for secure Signal/TextSecure messaging."
 arch=('any')
@@ -16,7 +16,7 @@ source=("https://github.com/AsamK/${pkgname}/archive/v${pkgver}.tar.gz"
         "${pkgname}.sysusers.conf"
         "${pkgname}.tmpfiles.conf")
 install="${pkgname}.install"
-sha256sums=('efa562cf45565a8b38675e2e45dd450aaea81fa928e1f371a19904c80d94f8cb'
+sha256sums=('67addeb2e0da9d3b345bed1cb635fefc1975ef9797dd4feedda46de9c690cd64'
             '82207f74775e3f455b90c268e5e3a92084e5d4a8c153f786ffa69567b6e2eee3'
             '873aee431878cbecf6162b51053e82ed758cadbca40bbb2614e5a82e5a99f32f'
             '37595731710de43eb132aaf21638dfe1fa56bf48231878fa1b8b31527694c006')
@@ -26,6 +26,10 @@ build() {
 	cd "${pkgname}-${pkgver}"
 
 	GRADLE_USER_HOME="${srcdir}/.gradle" gradle --no-daemon installDist
+
+	cd man
+	make
+	gzip -c ${pkgname}.1 > ${pkgname}.1.gz
 }
 
 package() {
@@ -34,6 +38,7 @@ package() {
 	                 "${pkgdir}/usr/lib/systemd/system/" \
 	                 "${pkgdir}/usr/lib/sysusers.d/" \
 	                 "${pkgdir}/usr/lib/tmpfiles.d/" \
+	                 "${pkgdir}/usr/share/man/man1/" \
 	                 "${pkgdir}/etc/dbus-1/system.d/"
 
 	cd "${srcdir}"
@@ -47,6 +52,8 @@ package() {
 	install -m644 "data/org.asamk.Signal.conf" "${pkgdir}/etc/dbus-1/system.d/"
 	install -m644 "data/${pkgname}@.service" "${pkgdir}/usr/lib/systemd/system/"
 	sed -i "s|%dir%|/usr|" "${pkgdir}/usr/lib/systemd/system/${pkgname}@.service"
+
+	install -m644 "man/${pkgname}.1.gz" "${pkgdir}/usr/share/man/man1/"
 
 	cd "build/install/${pkgname}"
 
