@@ -1,7 +1,7 @@
 pkgbase = simple-fb2-reader
 	pkgdesc = Simple FB2 book reader on GTK+3
 	pkgver = 1.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://github.com/Cactus64k/simple-fb2-reader
 	install = simple-fb2-reader.install
 	arch = i686

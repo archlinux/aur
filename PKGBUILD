@@ -2,7 +2,7 @@
 
 pkgname=simple-fb2-reader
 pkgver=1.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Simple FB2 book reader on GTK+3"
 arch=('i686' 'x86_64')
 url="http://github.com/Cactus64k/simple-fb2-reader"
