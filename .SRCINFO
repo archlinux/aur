@@ -1,0 +1,14 @@
+pkgbase = lightdm-webkit-theme-sequoia-git
+	pkgdesc = A simple LightDM theme
+	pkgver = r11.eadc43e
+	pkgrel = 1
+	url = https://github.com/naueramant/lightdm-webkit-sequoia
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = lightdm-webkit2-greeter
+	source = git+https://github.com/naueramant/lightdm-webkit-sequoia.git
+	md5sums = SKIP
+
+pkgname = lightdm-webkit-theme-sequoia-git
+
