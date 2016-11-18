@@ -1,12 +1,12 @@
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=neatrefer-git
-pkgver=0.r4.76d5759
+pkgver=r6.3e0ef14
 pkgrel=1
 epoch=
-pkgdesc="A small refer clone for managing bibliographic references."
+pkgdesc="A refer preprocessor for neatroff."
 arch=('i686' 'x86_64')
 url="http://litcave.rudi.ir/"
-license=('custom:BSD')
+license=('ISC')
 groups=()
 depends=('neatroff-git')
 makedepends=('git')
@@ -25,7 +25,7 @@ md5sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/$pkgname"
-  printf "0.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
