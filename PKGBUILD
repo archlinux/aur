@@ -2,7 +2,7 @@
 # Original Submitter: Wessel Dirksen "p-we" <wdirksen at gmail dot com>
 
 pkgname=tbs-dvb-drivers
-pkgver=v160919_4.6.3_1_ARCH
+pkgver=v161031_4.6.3_1_ARCH
 pkgrel=1
 pkgdesc="TBS proprietary DVB drivers + firmware"
 url="http://www.tbsdtv.com"
@@ -14,12 +14,12 @@ conflicts=('ffdecsawrapper' 'tbs-linux-drivers' 'tbs-dvb-drivers')
 provides=('tbs-dvb-drivers')
 install='tbs-dvb-drivers.install'
 
-_tbsver=v160919
+_tbsver=v161031
 
-source=("http://www.tbsdtv.com/download/document/common/tbs-linux-drivers_$_tbsver.zip"
+source=("http://www.tbsiptv.com/download/common/tbs-linux-drivers_$_tbsver.zip"
         'tbs-dvb-drivers.install') 
 
-sha256sums=('d29b1464d21f54f5e9d3fac466b18275695ba28734d545623bb1c3e17f810a63'
+sha256sums=('bc72d703e18e96b37afc2a7b2698bdaa4368f2b3811dd3477710be8534d0339c'
             '3fdfa6f14af91b3301f0f29c2a2386a7f84504688c766e714287ad8d450e2a57')
 
 pkgver() {
