@@ -1,12 +1,12 @@
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=neatroff-git
-pkgver=0.r432.7d5b285
+pkgver=r437.0b264c8
 pkgrel=1
 epoch=
 pkgdesc="An implementation of troff typesetting system in C programming language."
 arch=('i686' 'x86_64')
 url="http://litcave.rudi.ir/"
-license=('custom:BSD')
+license=('ISC')
 groups=()
 depends=('neatmkfn-git')
 makedepends=('git')
@@ -40,7 +40,7 @@ MDIR=/usr/share/neatroff/tmac
 
 pkgver() {
   cd $srcdir/$pkgname
-  printf "0.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
