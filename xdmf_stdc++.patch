@@ -1,0 +1,11 @@
+--- build_visit2_12_0	2016-11-14 11:29:58.588491632 +0100
++++ build_visit2_12_0.new	2016-11-16 18:07:16.462929363 +0100
+@@ -20565,7 +20565,7 @@
+                  -DCMAKE_BUILD_TYPE:STRING="${VISIT_BUILD_MODE}" \
+                  -DCMAKE_BUILD_WITH_INSTALL_RPATH:BOOL=ON \
+                  -DBUILD_SHARED_LIBS:BOOL=${XDMF_SHARED_LIBS}\
+-                 -DCMAKE_CXX_FLAGS:STRING="${CXXFLAGS} ${CXX_OPT_FLAGS}"\
++                 -DCMAKE_CXX_FLAGS:STRING="${CXXFLAGS} ${CXX_OPT_FLAGS} -std=c++98"\
+                  -DCMAKE_CXX_COMPILER:STRING=${CXX_COMPILER}\
+                  -DCMAKE_C_FLAGS:STRING="${CFLAGS} ${C_OPT_FLAGS}"\
+                  -DCMAKE_C_COMPILER:STRING=${C_COMPILER}\
