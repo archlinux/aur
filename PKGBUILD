@@ -8,9 +8,10 @@
 # Build notes:
 # http://wiki.playonlinux.com/index.php/Building_PlayOnLinux_5
 
-pkgname=playonlinux5-git
+_pkgname=playonlinux5
+pkgname=$_pkgname-git
 pkgver=r1262.6404de4
-pkgrel=2
+pkgrel=3
 epoch=1
 pkgdesc="GUI for managing Windows programs under linux (development version based on Java)"
 arch=('any')
@@ -19,13 +20,13 @@ license=('GPL')
 makedepends=('gradle' 'maven' 'java-openjfx' 'jdk8-openjdk')
 depends=('wine')
 options=(!strip)
-source=("$pkgname::git://github.com/PlayOnLinux/POL-POM-5.git"
+source=("$_pkgname::git://github.com/PlayOnLinux/POL-POM-5.git"
         'PlayOnLinux5.desktop')
 md5sums=('SKIP'
          '7fe925810fc7ec6d8745817b1c541e7b')
 
 pkgver() {
-  cd "$pkgname"
+  cd "$_pkgname"
   ( set -o pipefail
     git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
@@ -33,7 +34,7 @@ pkgver() {
 }
 
 build() {
-  cd "$pkgname"
+  cd "$_pkgname"
 
   # Set environment
   export JAVA_HOME="/usr/lib/jvm/java-8-openjdk"
@@ -48,16 +49,16 @@ build() {
 package() {
   # Extract
   install -d "$pkgdir/opt/"
-  bsdtar -xf "$pkgname/phoenicis-dist/target/phoenicis-dist.zip"
-  cp -r phoenicis-dist/ "$pkgdir/opt/$pkgname/"
+  bsdtar -xf "$_pkgname/phoenicis-dist/target/phoenicis-dist.zip"
+  cp -r phoenicis-dist/ "$pkgdir/opt/$_pkgname/"
 
   # Launcher
   install -d "$pkgdir/usr/bin/"
-  ln -s "/opt/$pkgname/PlayOnLinux.sh" "$pkgdir/usr/bin/playonlinux5"
-  sed -i 's|$(dirname $0)|/opt/playonlinux5|' "$pkgdir/opt/$pkgname/PlayOnLinux.sh"
+  ln -s "/opt/$pkgname/PlayOnLinux.sh" "$pkgdir/usr/bin/$_pkgname"
+  sed -i 's|$(dirname $0)|/opt/playonlinux5|' "$pkgdir/opt/$_pkgname/PlayOnLinux.sh"
 
   # Icon + Desktop
-  install -Dm644 "$srcdir/$pkgname/phoenicis-javafx/target/classes/com/playonlinux/javafx/common/playonlinux.png" \
+  install -Dm644 "$srcdir/$_pkgname/phoenicis-javafx/target/classes/com/playonlinux/javafx/common/playonlinux.png" \
                  "$pkgdir/usr/share/pixmaps/$pkgname.png"
   install -Dm644 PlayOnLinux5.desktop "$pkgdir/usr/share/applications/$pkgname.desktop"
 }
