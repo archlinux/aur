@@ -1,6 +1,6 @@
 # Maintainer: Kevin Gravier
 pkgname=ty3status-git
-pkgver=0.3.2.r1.g0633582
+pkgver=0.4.0.r1.g5b1710f
 pkgrel=1
 pkgdesc="ty3status is an i3status replacement written in typescript with first classes support for javascript blocks."
 arch=(any)
