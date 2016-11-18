@@ -185,7 +185,7 @@ cd "${srcdir}/linux-${__basekernel}"
    KARCH=x86
 
   # get kernel version
-  _kernver="$(make LOCALVERSION= kernelrelease)"
+  _kernver="$(make LOCALVERSION=${_append_kernel_custom_string} kernelrelease)"
   _basekernel=${_kernver%%-*}
   _basekernel=${_basekernel%.*}
 
