@@ -7,6 +7,12 @@ post_install() {
 	gtk-update-icon-cache -q -t -f /usr/share/icons/hicolor
 	echo "Updating mime database..."
 	update-mime-database /usr/share/mime
+
+  echo "============================"
+  echo "WARNING!!!"
+  echo "You must manually create the directory ~/.config/simple-fb2-reader if it does not exist."
+  echo "============================"
+
 }
 
 post_upgrade() {
