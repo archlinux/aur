@@ -2,7 +2,7 @@
 
 pkgname=sudx
 pkgver=1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Run \`su --login <user>\` shell via dbus-run-session, useful for running GUI/X applications as another user."
 url="https://github.com/yadieet/sudx"
 arch=('i686' 'x86_64')
@@ -13,10 +13,10 @@ options=('strip')
 ulmajver=2.28
 ulminver=2
 source=("https://www.kernel.org/pub/linux/utils/util-linux/v$ulmajver/util-linux-$ulmajver.$ulminver.tar."{xz,sign}
-        "https://raw.githubusercontent.com/yadieet/sudx/cc323723f1433850479aa2e8165ae413650994b5/sudx.patch")
+        "https://raw.githubusercontent.com/yadieet/sudx/d3f389c7daf33083fd113e6044abb2071864defe/sudx.patch")
 md5sums=('46a232a37bce45371a86d19300edc47a'
          'SKIP'
-         'e66ba93339ed45bebfc8a348b676b90f')
+         'e3498a9390d073a70b48781dcaf3a4b5')
 
 prepare() {
   cd "util-linux-$ulmajver.$ulminver"
