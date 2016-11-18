@@ -10,6 +10,7 @@ license=('ACME Labs Freeware')
 makedepends=( 'libmilter' )
 source=("http://www.acme.com/software/$_pkgname/$_pkgname-$pkgver.tar.gz")
 md5sums=('13e459153a0180d24dd6bac05e9e89b1')
+sha256sums=('ba8bf56a49cf071ead25590edf4cc1f3b9f4af4765500700268edc7854b0a9f8')
 
 build() {
     cd "$_pkgname-$pkgver"
