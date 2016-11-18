@@ -3,7 +3,7 @@
 pkgbase='swift'
 pkgname=('swift-im' 'swiften')
 pkgver=3.0
-pkgrel=2
+pkgrel=3
 arch=('i686' 'x86_64')
 pkgdesc='XMPP client written in C++ with Qt and Swiften'
 url="http://swift.im/"
