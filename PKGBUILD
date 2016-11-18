@@ -2,16 +2,15 @@
 
 pkgname=tex2page-git
 pkgver=20161116
-pkgrel=1
+pkgrel=2
 pkgdesc="Lisp program for making Web pages from TeX documents"
 arch=('any')
 url="https://github.com/ds26gte/tex2page"
 license=('custom')
 depends=('bash' 'guile')
 makedepends=('git' 'texlive-formatsextra' 'texlive-bibtexextra')
-source=("git+https://github.com/ds26gte/tex2page" end)
-md5sums=('SKIP'
-         '08020a685846b280394f4cd9949a677f')
+source=("git+https://github.com/ds26gte/tex2page")
+md5sums=('SKIP')
 _gitname="tex2page"
 
 pkgver() {
