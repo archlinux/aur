@@ -1,0 +1,7 @@
+# directories
+autoenv-git/
+pkg/
+src/
+
+# tarballs
+*.tar
