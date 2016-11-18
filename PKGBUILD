@@ -5,7 +5,7 @@
 
 pkgname='awn-applet-multiload-ng-gtk2-git'
 pkgdesc='Modern graphical system monitor, Avant Window Navigator applet'
-pkgver=r907.66045e6
+pkgver=r926.246cb4c
 pkgrel=1
 
 makedepends=('intltool' 'git')
