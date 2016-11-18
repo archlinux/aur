@@ -1,7 +1,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=tex2page-git
-pkgver=20161115
+pkgver=20161116
 pkgrel=1
 pkgdesc="Lisp program for making Web pages from TeX documents"
 arch=('any')
@@ -23,9 +23,6 @@ build() {
   cd "$_gitname"
   ./configure --dialect=guile --prefix=/usr
   # creating the documentation
-  cat story.tex $srcdir/end > story.new
-  mv story.new story.tex
-  xetex story
   yes "s"|xetex index || true
   makeindex index
   bibtex index
