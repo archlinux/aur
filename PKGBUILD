@@ -12,41 +12,46 @@ depends=('fontconfig' 'qt4' 'python2-pyside' 'python2-shiboken' 'boost-libs' 'pi
 makedepends=('git' 'expat' 'boost')
 optdepends=('openfx-arena: Extra OpenFX plugins for Natron includes text node')
 source=("$pkgname::git://github.com/MrKepzie/Natron.git#tag=$pkgver"
-	"https://github.com/MrKepzie/OpenColorIO-Configs/archive/Natron-v${pkgver%.*}.tar.gz"
-	"config.pri")
+        "git+https://github.com/devernay/openfx.git"
+        "git+https://github.com/MrKepzie/google-test.git"
+        "git+https://github.com/MrKepzie/google-mock.git"
+        "git+https://github.com/MrKepzie/SequenceParsing.git"
+        "https://github.com/MrKepzie/OpenColorIO-Configs/archive/Natron-v${pkgver%.*}.tar.gz"
+        "config.pri")
 md5sums=('SKIP'
          '4ca4eca4856cae50cfa4645a090258dd'
          '09f5ac67c0ad57eb853141b38eccb0ff')
 
 prepare() {
-	cd "$srcdir/$pkgname"
+  cd "$srcdir/$pkgname"
+  
+  mv "$srcdir/OpenColorIO-Configs-Natron-v${pkgver%.*}" "$srcdir/$pkgname/OpenColorIO-Configs"
 
-	mv "$srcdir/OpenColorIO-Configs-Natron-v${pkgver%.*}" "$srcdir/$pkgname/OpenColorIO-Configs"
-
-	# For OpenFX update
-	git submodule update -i --recursive
-
-	mv "${srcdir}/config.pri" "${srcdir}/${pkgname%%-*}/config.pri"
-
-	# Fix for gcc6 build issues
-	sed -i '1s/^/QMAKE_CXXFLAGS += -std=c++98\n/' Gui/Gui.pro
-	sed -i '1s/^/QMAKE_CXXFLAGS += -std=c++98\n/' Engine/Engine.pro
-	sed -i '1s/^/QMAKE_CXXFLAGS += -std=c++98\n/' Tests/Tests.pro
+  # Git submodules
+  git config submodule.libs/OpenFX.url $srcdir/openfx
+  git config submodule.Tests/google-mock.url $srcdir/google-mock
+  git config submodule.Tests/google-test.url $srcdir/google-test
+  git config submodule.libs/SequenceParsing.url $srcdir/SequenceParsing
+  git submodule update
+  
+  mv "${srcdir}/config.pri" "${srcdir}/${pkgname%%-*}/config.pri"
+  # Fix for gcc6 build issues
+  sed -i '1s/^/QMAKE_CXXFLAGS += -std=c++98\n/' Gui/Gui.pro
+  sed -i '1s/^/QMAKE_CXXFLAGS += -std=c++98\n/' Engine/Engine.pro
+  sed -i '1s/^/QMAKE_CXXFLAGS += -std=c++98\n/' Tests/Tests.pro
 }
 
 build() {
-	cd "$srcdir/$pkgname"
+  cd "$srcdir/$pkgname"
 
-	[[ -d build ]] && rm -r build; mkdir build; cd build
+  [[ -d build ]] && rm -r build; mkdir build; cd build
 
-	qmake-qt4 -r "$srcdir/natron/Project.pro" PREFIX=/usr CONFIG+=release DEFINES+=QT_NO_DEBUG_OUTPUT \
-	QMAKE_CFLAGS_RELEASE="${CFLAGS}" QMAKE_CXXFLAGS_RELEASE="${CXXFLAGS}" QMAKE_LFLAGS_RELEASE="${LDFLAGS}"
+  qmake-qt4 -r "$srcdir/natron/Project.pro" PREFIX=/usr CONFIG+=release DEFINES+=QT_NO_DEBUG_OUTPUT QMAKE_CFLAGS_RELEASE="${CFLAGS}" QMAKE_CXXFLAGS_RELEASE="${CXXFLAGS}" QMAKE_LFLAGS_RELEASE="${LDFLAGS}"
 
-	make
+  make
 }
 
 package() {
-	cd "$srcdir/$pkgname/build"
-
-	make INSTALL_ROOT="$pkgdir" install
+  cd "$srcdir/$pkgname/build"
+  make INSTALL_ROOT="$pkgdir" install
 }
