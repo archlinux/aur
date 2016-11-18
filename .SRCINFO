@@ -7,7 +7,7 @@ pkgbase = insomnia
 	arch = x86_64
 	options = !strip
 	options = !upx
-	source = https://downloads.insomnia.rest/linux/insomnia-3.7.3.deb
+	source = https://downloads.insomnia.rest/linux/insomnia_3.7.3_amd64.deb
 	md5sums = 2ab5599435186a8986a0e902651b518f
 
 pkgname = insomnia

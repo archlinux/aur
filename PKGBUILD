@@ -8,7 +8,7 @@ arch=('i686' 'x86_64')
 url="http://insomnia.rest/"
 options=('!strip' '!upx')
 
-source=("https://downloads.insomnia.rest/linux/insomnia-${pkgver}.deb")
+source=("https://downloads.insomnia.rest/linux/insomnia_${pkgver}_amd64.deb")
 md5sums=('2ab5599435186a8986a0e902651b518f')
 
 package() {
