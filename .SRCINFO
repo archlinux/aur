@@ -1,21 +1,22 @@
 pkgbase = gnome-multi-writer
 	pkgdesc = Write an ISO file to multiple USB devices at once
-	pkgver = 3.20.0
-	pkgrel = 2
+	pkgver = 3.22.1
+	pkgrel = 1
 	url = http://blogs.gnome.org/hughsie/2015/01/02/introducing-gnome-multiwriter/
-	install = gnome-multi-writer.install
 	arch = i686
 	arch = x86_64
 	license = GPL2
 	makedepends = intltool
 	makedepends = gnome-common
 	makedepends = gobject-introspection
-	makedepends = docbook2x
+	makedepends = docbook-utils
+	makedepends = docbook-sgml
 	depends = gtk3
 	depends = udisks2
 	depends = libcanberra
-	source = https://git.gnome.org/browse/gnome-multi-writer/snapshot/GNOME_MULTI_WRITER_3_20_0.tar.xz
-	sha256sums = ed1906decb1ff19d5c35bcc9e233d9b23e4f34d8b35c55bb6c7c908155f3859f
+	depends = libgusb
+	source = https://download.gnome.org/sources/gnome-multi-writer/3.22/gnome-multi-writer-3.22.1.tar.xz
+	sha256sums = 02fe592b9c6c3b1b76dc7436f10a60673b8e89fb0f81f8e99ae943f6ba139fb6
 
 pkgname = gnome-multi-writer
 

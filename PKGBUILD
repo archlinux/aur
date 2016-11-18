@@ -1,36 +1,36 @@
-#Contributor: M0Rf30
-#Maintainer: chron <chron at posteo dot de>
+# Maintainer: chron <chron at posteo dot de>
+# Contributor: M0Rf30
 
 pkgname=gnome-multi-writer
-_pkgname=GNOME_MULTI_WRITER
-pkgver=3.20.0
-_pkgver=3_20_0
-pkgrel=2
+pkgver=3.22.1
+pkgrel=1
 pkgdesc="Write an ISO file to multiple USB devices at once"
 arch=('i686' 'x86_64')
 url="http://blogs.gnome.org/hughsie/2015/01/02/introducing-gnome-multiwriter/"
 license=('GPL2')
-depends=('gtk3' 'udisks2' 'libcanberra')
-#TODO: Add docbook2x to makedepends, and fix resulting build errors
-makedepends=('intltool' 'gnome-common' 'gobject-introspection' 'docbook2x')
-source=(https://git.gnome.org/browse/gnome-multi-writer/snapshot/${_pkgname}_${_pkgver}.tar.xz)
-sha256sums=('ed1906decb1ff19d5c35bcc9e233d9b23e4f34d8b35c55bb6c7c908155f3859f')
-install=$pkgname.install
+depends=('gtk3' 'udisks2' 'libcanberra' 'libgusb')
+makedepends=('intltool' 'gnome-common' 'gobject-introspection' 'docbook-utils' 'docbook-sgml')
+source=(https://download.gnome.org/sources/gnome-multi-writer/3.22/${pkgname}-${pkgver}.tar.xz)
+sha256sums=('02fe592b9c6c3b1b76dc7436f10a60673b8e89fb0f81f8e99ae943f6ba139fb6')
+
+prepare() {
+  cd $srcdir/${pkgname}-${pkgver}
+  ./configure --prefix=/usr --libexecdir=/usr/lib/${pkgname}
+  sed -i "s/docbook2man \$?/jw -c \/usr\/share\/sgml\/docbook-sgml-4.5\/catalog -b man \$?/g" man/Makefile
+}
 
 build() {
-  cd $srcdir/${_pkgname}_${_pkgver}
-  ./autogen.sh --prefix=/usr
-  sed -i "s/docbook2man \$?/docbook2man --sgml \$?/g" man/Makefile
+  cd $srcdir/${pkgname}-${pkgver}
   make
 }
 
 check() {
-  cd $srcdir/${_pkgname}_${_pkgver}
+  cd $srcdir/${pkgname}-${pkgver}
   make check
 }
 
 package(){
-  cd $srcdir/${_pkgname}_${_pkgver}
+  cd $srcdir/${pkgname}-${pkgver}
   # Remove 'NoDisplay=false' from the .desktop file, otherwise it won't show up in dmenu
   sed -i "s/NoDisplay=false//g" data/org.gnome.MultiWriter.desktop
 
