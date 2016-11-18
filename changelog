@@ -1,4 +1,9 @@
-2016-10-13 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
+2016-11-18 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
+  * 2.1.6.8-1:
+    !addlicense can now also request free licenses from steam store (in addition to steam network).
+    Fixed GamesPlayedWhileIdle for limited accounts.
+    Usual code improvements, optimizations and bugfixes.
+2016-11-13 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
   * 2.1.6.7-1:
     [!] ASF will no longer attempt to farm limited accounts, as Valve put hard cards restriction on them recently.
     Added a few command aliases for !redeem variants.
