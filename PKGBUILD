@@ -1,8 +1,9 @@
-# Maintainer: Ben Reul <breul99<NOSPAM>gmail.com>
-# Contributer: Arthur D'Andréa Alemar
+# Maintainer: max-k <max-kATpostDOTcom>
+# Contributor: Ben Reul <breul99<NOSPAM>gmail.com>
+# Contributor: Arthur D'Andréa Alemar
 
 pkgname=prometheus
-pkgver=1.3.0
+pkgver=1.3.1
 pkgrel=1
 pkgdesc="An open-source service monitoring system and time series database."
 arch=('i686' 'x86_64')
@@ -14,7 +15,7 @@ install="$pkgname.install"
 backup=('etc/prometheus/prometheus.yml')
 source=("https://github.com/prometheus/prometheus/archive/v$pkgver.tar.gz"
         'prometheus.service')
-sha256sums=('df8845515085b5babf308ac871d6e939a51a8f2a865eb4dd5a058af99a7d0f5c'
+sha256sums=('6463369891cc9e748e1025a600bc948e95f276830c58b44689165d5d8de7f5f6'
             '2d689efe588302346b7065fef1b05be812e4a91df1a8d8845830c0b2397b2ac3')
 
 prepare() {
