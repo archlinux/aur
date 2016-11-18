@@ -72,12 +72,12 @@ _BATCH_MODE=n
 pkgname=('linux-pf')
 true && pkgname=('linux-pf' 'linux-pf-headers' 'linux-pf-preset-default')
 pkgver=${_basekernel}.${_pfrel}
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 url="http://pf.natalenko.name/"
 license=('GPL2')
 options=('!strip')
-makedepends=('git' 'xmlto' 'docbook-xsl' 'xz' 'bc' 'kmod')
+makedepends=('git' 'xmlto' 'docbook-xsl' 'xz' 'bc' 'kmod' 'elfutils')
 source=("ftp://www.kernel.org/pub/linux/kernel/v${_major}.x/linux-${_basekernel}.tar.xz"
 	'config' 'config.x86_64'		# the main kernel config files
 	'linux.preset'			        # standard config files for mkinitcpio ramdisk
@@ -85,6 +85,7 @@ source=("ftp://www.kernel.org/pub/linux/kernel/v${_major}.x/linux-${_basekernel}
 	"${_pfpatchhome}${_pfpatchname}.xz"	# the -pf patchset
         "git+$_aufs3#branch=aufs$_major.$_minor"
         "uksm-$_major.$_minor.patch"::"http://kerneldedup.org/download/uksm/0.1.2.5/uksm-0.1.2.5-for-v$_major.$_minor.patch"
+        "99-linux-pf.hook"
        )
 # 	'cx23885_move_CI_AC_registration_to_a_separate_function.patch'     
 
@@ -689,6 +690,8 @@ package_linux-pf-preset-default()
   # install fallback mkinitcpio.conf file and preset file for kernel
   install -D -m644 "${srcdir}/linux.preset" "${pkgdir}/etc/mkinitcpio.d/${pkgbase}.preset"
 
+  install -D -m644 "${srcdir}/99-linux-pf.hook" "${pkgdir}/usr/share/libalpm/hooks/99-linux-pf.hook"
+  
   # set correct depmod command for install
   #sed \
   #  -e  "s/KERNEL_NAME=.*/KERNEL_NAME=${_kernelname}/" \
@@ -706,10 +709,11 @@ pkgdesc="Linux kernel and modules with the pf-kernel patch [-ck patchset (BFS in
 
 # makepkg -g >>PKGBUILD
 sha256sums=('3e9150065f193d3d94bcf46a1fe9f033c7ef7122ab71d75a7fb5a2f0c9a7e11a'
-            'ce79aa721ea22a6368fbfa7769a3dbbb16d2c0e081bcbde693f7ea98a63519a6'
-            'a44b0f6396fa50e73653ccb8cf66db037770087f075154f5a72fd605f09eaa9c'
+            '3f1dd3cca72f2a2d5ba3a22cf10c21dc8221fa7109c689fcb4d2e76601109139'
+            'e6c3945cdb40d98099433ba508fc87075a4aad541d5001d20565a29ef9d3597f'
             '82d660caa11db0cd34fd550a049d7296b4a9dcd28f2a50c81418066d6e598864'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
             '83c67ff48689bb083e44b9cee1c5b67226bf887589081548e81d93a71a6dcf70'
             'SKIP'
-            '4473dbed2a84f4e81cc1e11ae5f8f72d076fa210d45e956d1967f96b6aa87a6d')
+            '4473dbed2a84f4e81cc1e11ae5f8f72d076fa210d45e956d1967f96b6aa87a6d'
+            'df07e00e8581fe282a5b92be9ee9bb37910eae3d2cc43eeb41df736b9f531f02')
