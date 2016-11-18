@@ -2,14 +2,14 @@
 
 pkgname=xf86-video-vmware
 pkgver=13.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="X.org vmware video driver"
 arch=(i686 x86_64)
-url="http://xorg.freedesktop.org/"
+url="https://xorg.freedesktop.org/"
 license=('custom')
 depends=('mesa')
-makedepends=('xorg-server-devel' 'X-ABI-VIDEODRV_VERSION=20')
-conflicts=('xorg-server<1.16' 'X-ABI-VIDEODRV_VERSION<20' 'X-ABI-VIDEODRV_VERSION>=21')
+makedepends=('xorg-server-devel' 'X-ABI-VIDEODRV_VERSION=23')
+conflicts=('xorg-server<1.19' 'X-ABI-VIDEODRV_VERSION<23' 'X-ABI-VIDEODRV_VERSION>=24')
 groups=('xorg-drivers')
 options=('!emptydirs')
 source=(${url}/releases/individual/driver/${pkgname}-${pkgver}.tar.bz2{,.sig})
