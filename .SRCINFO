@@ -1,0 +1,18 @@
+pkgbase = mdrgpalu-git
+	pkgdesc = A KISS command-line text editor
+	pkgver = v0.1.0.r3.ed19387
+	pkgrel = 1
+	url = https://github.com/emersion/mdrgpalu
+	arch = i686
+	arch = x86_64
+	arch = armv6h
+	arch = armv7h
+	license = Unlicense
+	makedepends = git
+	provides = mdrgpalu
+	conflicts = mdrgpalu
+	source = git+https://github.com/emersion/mdrgpalu.git
+	md5sums = SKIP
+
+pkgname = mdrgpalu-git
+
