@@ -1,0 +1,11 @@
+post_install()
+{
+  echo "Installing ODBC driver"
+  odbcinst -i -d -f /opt/microsoft/msodbcsql/etc/odbcinst.ini
+}
+
+post_remove()
+{
+  echo "Removing ODBC driver"
+  odbcinst -u -d -n "ODBC Driver 13 for SQL Server"
+}
