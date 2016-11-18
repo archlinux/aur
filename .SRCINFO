@@ -1,7 +1,7 @@
 pkgbase = gmvault
 	pkgdesc = Gmvault is a tool for backing up your gmail account and never lose email correspondence.
 	pkgver = 1.9.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://gmvault.org
 	arch = any
 	license = AGPL
@@ -10,10 +10,11 @@ pkgbase = gmvault
 	depends = python2-logbook
 	depends = python2-chardet
 	depends = python2-imapclient
+	depends = python2-backports.ssl
 	source = https://bitbucket.org/gaubert/gmvault-official-download/downloads/gmvault-v1.9.1-src.tar.gz
 	source = use-python2.patch
-	md5sums = 3a681c0175fd655646d34ae7fc03f42d
-	md5sums = 7d6b1d651a295d1a9fc00c42af59b02e
+	sha256sums = 51e670fbbdc4065f51514d2eb3ee65baeedaabfeb01c7987a3c6b5375c43d739
+	sha256sums = 5c35818f84858775871e2d762db83385a69aa2c35c56f57ce7c4867ef44382d1
 
 pkgname = gmvault
 
