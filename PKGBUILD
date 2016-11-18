@@ -2,7 +2,7 @@
 
 pkgname=cobalt
 _cratename=cobalt-bin
-pkgver=0.3.0
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="Static site generator written in Rust"
 url="https://github.com/cobalt-org/cobalt.rs"
@@ -11,7 +11,7 @@ depends=('openssl')
 arch=('i686' 'x86_64')
 license=('MIT')
 source=("$_cratename-$pkgver.tar.gz::https://crates.io/api/v1/crates/$_cratename/$pkgver/download")
-sha256sums=('196c8ab738440b4b42c6a87ae3a77acd8ac4009ae41706764c51a1f22738e168')
+sha256sums=('b0363ffc41f133a467ba059efdfa0c853719abe2482989e9e3622a0dfcacb46e')
 
 build() {
   cd "$_cratename-$pkgver"
