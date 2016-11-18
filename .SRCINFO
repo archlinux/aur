@@ -1,0 +1,20 @@
+pkgbase = gog-pinball-fantasies-deluxe
+	pkgdesc = A pinball game developed in late 1992 as a sequel to Pinball Dreams.
+	pkgver = 2.0.0.4
+	pkgrel = 1
+	url = http://www.gog.com/game/pinball_gold_pack
+	arch = any
+	groups = games
+	license = custom
+	depends = dosbox
+	depends = libpng12
+	depends = unionfs-fuse
+	optdepends = gendesk
+	noextract = gog_pinball_fantasies_deluxe_2.0.0.4.sh
+	source = local://gog_pinball_fantasies_deluxe_2.0.0.4.sh
+	source = local://pinball-fantasies-deluxe
+	md5sums = 9054d22a56d0956251550622943c6cd6
+	md5sums = 7cbf42a3c726786864dfff2f8dd9fa80
+
+pkgname = gog-pinball-fantasies-deluxe
+
