@@ -1,0 +1,17 @@
+pkgbase = cota-git
+	pkgdesc = Log parser for the /stats command in Shroud of the Avatar
+	pkgver = 60.bfa90ee
+	pkgrel = 1
+	url = https://github.com/Barugon/CotA
+	arch = i686
+	arch = x86_64
+	license = NONE
+	makedepends = git
+	depends = qt5-base
+	provides = cota
+	conflicts = cota
+	source = cota-git::git://github.com/Barugon/CotA.git
+	md5sums = SKIP
+
+pkgname = cota-git
+
