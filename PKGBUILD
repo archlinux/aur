@@ -5,7 +5,7 @@
 
 pkgname='awn-applet-multiload-ng-gtk2'
 pkgdesc='Modern graphical system monitor, Avant Window Navigator applet'
-pkgver=1.5.0
+pkgver=1.5.1
 pkgrel=1
 
 makedepends=('intltool')
@@ -14,7 +14,7 @@ depends=('gtk2>=2.20.0' 'cairo' 'avant-window-navigator>=0.3.9' 'glibmm>=2.16.0'
 conflicts=('awn-applet-multiload-ng-gtk3' 'awn-applet-multiload-ng-gtk2-git' 'awn-applet-multiload-ng-gtk3-git')
 
 source=("https://github.com/udda/multiload-ng/archive/v$pkgver.tar.gz")
-md5sums=('b42140a47788cc5cdbd46fbbfab9e644')
+md5sums=('9e58191382aa39a05a040ef7be794ab6')
 
 arch=('i686' 'x86_64')
 url='https://udda.github.io/multiload-ng/'
