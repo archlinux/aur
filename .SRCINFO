@@ -13,6 +13,8 @@ pkgbase = traktor
 	depends = dnscrypt-proxy
 	optdepends = tor-browser-en-ir
 	source = traktor_arch.sh
+	source = traktor_tunnel
+	md5sums = SKIP
 	md5sums = SKIP
 
 pkgname = traktor
