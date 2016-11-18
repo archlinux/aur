@@ -34,11 +34,10 @@ pkgdesc='A desktop oriented kernel and modules with Liquorix patches'
 __basekernel=4.8
 _minor=8
 pkgver=${__basekernel}.${_minor}
-pkgrel=1
+pkgrel=2
 lqxrel=1
-_kernelname=-lqx
 pkgbase=linux-lqx
-pkgname=('linux-lqx' 'linux-lqx-headers' 'linux-lqx-docs')
+# pkgname=('linux-lqx' 'linux-lqx-headers' 'linux-lqx-docs')
 _lqxpatchname="${pkgver}-${lqxrel}.patch"
 arch=('i686' 'x86_64')
 license=('GPL2')
@@ -51,14 +50,15 @@ else
 fi
 
 options=(!strip)
-install='linux-lqx.install'
+install='linux.install'
 source=("http://www.kernel.org/pub/linux/kernel/v4.x/linux-${__basekernel}.tar.xz"
         "http://www.kernel.org/pub/linux/kernel/v4.x/linux-${__basekernel}.tar.sign"
         "http://liquorix.net/sources/${_lqxpatchname}.gz"
         "http://liquorix.net/sources/${__basekernel}/config.i386"
         "http://liquorix.net/sources/${__basekernel}/config.i386-pae"
         "http://liquorix.net/sources/${__basekernel}/config.amd64"
-        "linux-lqx.preset")
+        "linux.preset"
+        "99-linux.hook")
 
 sha512sums=('a48a065f21e1c7c4de4cf8ca47b8b8d9a70f86b64e7cfa6e01be490f78895745b9c8790734b1d22182cf1f930fb87eaaa84e62ec8cc1f64ac4be9b949e7c0358'
             'SKIP'
@@ -66,13 +66,14 @@ sha512sums=('a48a065f21e1c7c4de4cf8ca47b8b8d9a70f86b64e7cfa6e01be490f78895745b9c
             '06645caf02475d662ac01107b7700b7abcbe8b1471a37c6f9e1a2b7109f68eb467ef4338d5811bf29ffb0bf48503c9793b3eef0a575717d88237bf5f2a31d784'
             '5cf69f87190b3f83ce58fe00f10d47c9026f9e2dade0c28878e26a7f5f78478dadeb22d613fb7a6cab41718ee8295378ee9551f3fda6e7bee7794617dbb57990'
             '38efb0c0002a8508b05980e0917a057260d536efdf5351b406206c14ae8b6713b310c505f27dc7eff1a971e49a23d5babb736ced857d1a61e59a05b780c23a5e'
-            'fe4dcd7b5ec06ec3ec4aa631531469f58f6a7111e2d33affa98a1b8a8d230c5fa7e25ffdf770fe5ce61f249b0ec0ecd69df2858c4029acee0efaadff957858fe')
+            '2dc6b0ba8f7dbf19d2446c5c5f1823587de89f4e28e9595937dd51a87755099656f2acec50e3e2546ea633ad1bfd1c722e0c2b91eef1d609103d8abdc0a7cbaf'
+            'd6faa67f3ef40052152254ae43fee031365d0b1524aa0718b659eb75afc21a3f79ea8d62d66ea311a800109bed545bc8f79e8752319cd378eef2cbd3a09aba22')
             
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
              )
 
-
+_kernelname=${pkgbase#linux}
 
 prepare() {
   KARCH=x86
@@ -168,62 +169,52 @@ prepare() {
 
 build() {
   cd ${srcdir}/linux-${__basekernel}
-  msg "Starting build."
+
   make ${MAKEFLAGS} LOCALVERSION=${_append_kernel_custom_string} bzImage modules
 }
 
-package_linux-lqx() {
+_package() {
 pkgdesc="A desktop oriented kernel and modules with Liquorix patches"
 depends=('coreutils' 'linux-firmware' 'mkinitcpio>=0.8')
 optdepends=('crda: to set the correct wireless channels of your country' 'nvidia-lqx: nVidia drivers for linux-lqx' 'linux-firmware: Firmware files for Linux')
-backup=("etc/mkinitcpio.d/linux-lqx.preset")
-install=linux-lqx.install
+backup=("etc/mkinitcpio.d/${pkgbase}.preset")
+install=linux.install
 
 cd "${srcdir}/linux-${__basekernel}"
 
-KARCH=x86
+   KARCH=x86
 
-# get kernel version
-_kernver="$(make LOCALVERSION=${_append_kernel_custom_string} kernelrelease)"
-_basekernel=${_kernver%%-*}
-_basekernel=${_basekernel%.*}
+  # get kernel version
+  _kernver="$(make LOCALVERSION= kernelrelease)"
+  _basekernel=${_kernver%%-*}
+  _basekernel=${_basekernel%.*}
 
 mkdir -p "${pkgdir}"/{lib/modules,lib/firmware,boot}
-make LOCALVERSION=${_append_kernel_custom_string} INSTALL_MOD_PATH="${pkgdir}" modules_install
-cp arch/$KARCH/boot/bzImage "${pkgdir}/boot/vmlinuz-linux-lqx"
+  make LOCALVERSION= INSTALL_MOD_PATH="${pkgdir}" modules_install
+  cp arch/$KARCH/boot/bzImage "${pkgdir}/boot/vmlinuz-${pkgbase}"
 
-############## add vmlinux
-##############install -D -m644 vmlinux "${pkgdir}/usr/src/linux-${_kernver}/vmlinux"
+  # set correct depmod command for install
+  sed -e "s|%PKGBASE%|${pkgbase}|g;s|%KERNVER%|${_kernver}|g" \
+    "${startdir}/${install}" > "${startdir}/${install}.pkg"
+  true && install=${install}.pkg
 
-# set correct depmod command for install
-cp -f "${startdir}/${install}" "${startdir}/${install}.pkg"
-true && install=${install}.pkg
-sed \
-	-e  "s/KERNEL_NAME=.*/KERNEL_NAME=-lqx/g" \
-	-e  "s/KERNEL_VERSION=.*/KERNEL_VERSION=${_kernver}/g" \
-	-i "${startdir}/linux-lqx.install"
+  # install mkinitcpio preset file for kernel
+  sed "s|%PKGBASE%|${pkgbase}|g" "${srcdir}/linux.preset" |
+    install -D -m644 /dev/stdin "${pkgdir}/etc/mkinitcpio.d/${pkgbase}.preset"
 
-# install fallback mkinitcpio.conf file and preset file for kernel
-install -D -m644 "${srcdir}/linux-lqx.preset" "${pkgdir}/etc/mkinitcpio.d/linux-lqx.preset"
+  # install pacman hook for initramfs regeneration
+  sed "s|%PKGBASE%|${pkgbase}|g" "${srcdir}/99-linux.hook" |
+    install -D -m644 /dev/stdin "${pkgdir}/usr/share/libalpm/hooks/99-${pkgbase}.hook"
 
-sed \
-	-e "1s|'linux.*'|'linux-lqx'|" \
-	-e "s|ALL_kver=.*|ALL_kver=\"/boot/vmlinuz-linux-lqx\"|g" \
-	-e "s|default_image=.*|default_image=\"/boot/initramfs-linux-lqx.img\"|g" \
-	-e "s|fallback_image=.*|fallback_image=\"/boot/initramfs-linux-lqx-fallback.img\"|g" \
-	-i "${pkgdir}/etc/mkinitcpio.d/linux-lqx.preset"
-
-# remove build and source links
-rm -f "${pkgdir}"/lib/modules/${_kernver}/{source,build}
-# remove the firmware
-rm -rf "${pkgdir}/lib/firmware"
-# gzip -9 all modules to save 100MB of space
-find "${pkgdir}" -name '*.ko' -exec gzip -9 {} \;
-# make room for external modules
-ln -s "../extramodules-${_basekernel}${_kernelname:lqx}" "${pkgdir}/lib/modules/${_kernver}/extramodules"
-# add real version for building modules and running depmod from post_install/upgrade
-mkdir -p "${pkgdir}/lib/modules/extramodules-${_basekernel}${_kernelname:lqx}"
-echo "${_kernver}" > "${pkgdir}/lib/modules/extramodules-${_basekernel}${_kernelname:lqx}/version"
+  # remove build and source links
+  rm -f "${pkgdir}"/lib/modules/${_kernver}/{source,build}
+  # remove the firmware
+  rm -rf "${pkgdir}/lib/firmware"
+  # make room for external modules
+  ln -s "../extramodules-${_basekernel}${_kernelname:--ARCH}" "${pkgdir}/lib/modules/${_kernver}/extramodules"
+  # add real version for building modules and running depmod from post_install/upgrade
+  mkdir -p "${pkgdir}/lib/modules/extramodules-${_basekernel}${_kernelname:--ARCH}"
+  echo "${_kernver}" > "${pkgdir}/lib/modules/extramodules-${_basekernel}${_kernelname:--ARCH}/version"
 
 # Now we call depmod...
 depmod -b "$pkgdir" -F System.map "$_kernver"
@@ -235,7 +226,7 @@ mv "$pkgdir/lib" "$pkgdir/usr"
 install -D -m644 vmlinux "${pkgdir}/usr/lib/modules/${_kernver}/build/vmlinux"
 }
 
-package_linux-lqx-headers() {
+_package-headers() {
 pkgdesc="Header files and scripts to build modules for linux-lqx."
 depends=('linux-lqx')
 
@@ -245,12 +236,6 @@ install -dm755 "${pkgdir}/usr/lib/modules/${_kernver}"
 
 cd "${srcdir}/linux-${__basekernel}"
 
-KARCH=x86
-
-# get kernel version
-_kernver="$(make LOCALVERSION=${_append_kernel_custom_string} kernelrelease)"
-_basekernel=${_kernver%%-*}
-_basekernel=${_basekernel%.*}
 
 install -D -m644 Makefile \
 	"${pkgdir}/usr/lib/modules/${_kernver}/build/Makefile"
@@ -382,21 +367,11 @@ done
 	 rm -rf "${pkgdir}"/usr/lib/modules/${_kernver}/build/arch/{alpha,arc,arm,arm26,arm64,avr32,blackfin,c6x,cris,frv,h8300,hexagon,ia64,m32r,m68k,m68knommu,metag,mips,microblaze,mn10300,openrisc,parisc,powerpc,ppc,s390,score,sh,sh64,sparc,sparc64,tile,unicore32,um,v850,xtensa}
 }
 
-
-package_linux-lqx-docs() {
+_package-docs() {
 pkgdesc="Kernel hackers manual - HTML documentation that comes with the linux-lqx kernel"
 depends=('linux-lqx' )
 
-
-
-cd "${srcdir}/linux-${__basekernel}"
-
-    KARCH=x86
-    
-    # get kernel version
-_kernver="$(make LOCALVERSION=${_append_kernel_custom_string} kernelrelease)"
-_basekernel=${_kernver%%-*}
-_basekernel=${_basekernel%.*}
+ cd "${srcdir}/linux-${__basekernel}"
 
   mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build"
   cp -al Documentation "${pkgdir}/usr/lib/modules/${_kernver}/build"
@@ -407,3 +382,10 @@ _basekernel=${_basekernel%.*}
   rm -f "${pkgdir}/usr/lib/modules/${_kernver}/build/Documentation/DocBook/Makefile"
 }
 
+pkgname=("${pkgbase}" "${pkgbase}-headers")
+for _p in ${pkgname[@]}; do
+  eval "package_${_p}() {
+    $(declare -f "_package${_p#${pkgbase}}")
+    _package${_p#${pkgbase}}
+  }"
+done
