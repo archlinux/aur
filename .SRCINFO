@@ -55,12 +55,12 @@ pkgbase = gtk4-git
 	sha512sums = 5cd50d93bb6bc203438a2a0764bd717409658e124058b18a1da26a21f10ef7564a16f32fc0633a68b45b2e303fa63a5efefeadd6b0bf1d7f474556df8cdb6c58
 	sha512sums = 1642d77622d61234e316e8fcbc803a6a5556c606e37e56aa5981ef2f2df85bfa959c31b5d1bff248b340760e1178281cb0d7abdf540c5f7d4b62cb383a67c685
 
-pkgname = gtk4-update-icon-cache
+pkgname = gtk4-update-icon-cache-git
 	pkgdesc = GTK+ icon cache updater
 	depends = gdk-pixbuf2
 	depends = hicolor-icon-theme
 
-pkgname = gtk4
+pkgname = gtk4-git
 	install = gtk4.install
 	depends = adwaita-icon-theme
 	depends = at-spi2-atk
@@ -89,10 +89,10 @@ pkgname = gtk4
 	depends = graphene>=1.2
 	depends = gtk-update-icon-cache
 
-pkgname = gtk4-print-backends
+pkgname = gtk4-print-backends-git
 	pkgdesc = Print backends for GTK4
 	groups = gnome
-	depends = gtk4
+	depends = gtk4-git
 	depends = rest
 	depends = colord
 	depends = libcups

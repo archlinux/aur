@@ -1,7 +1,7 @@
 # Maintainer: Andrew Crerar <andrew (at) crerar (dot) io>
 
 pkgbase=gtk4-git
-pkgname=(gtk4-update-icon-cache gtk4 gtk4-print-backends)
+pkgname=(gtk4-update-icon-cache-git gtk4-git gtk4-print-backends-git)
 pkgver=3.89.0.r990.g0a75bb4
 pkgrel=1
 pkgdesc="GObject-based multi-platform GUI toolkit (GIT Version)"
@@ -64,7 +64,7 @@ build() {
   make
 }
 
-package_gtk4() {
+package_gtk4-git() {
   depends+=(gtk-update-icon-cache)
   install="gtk4.install"
 
@@ -88,7 +88,7 @@ package_gtk4() {
   done
 }
 
-package_gtk4-update-icon-cache() {
+package_gtk4-update-icon-cache-git() {
   pkgdesc="GTK+ icon cache updater"
   depends=(gdk-pixbuf2 hicolor-icon-theme)
 
@@ -98,9 +98,9 @@ package_gtk4-update-icon-cache() {
   install -D ../gtk4-update-icon-cache.script "$pkgdir/usr/share/libalpm/scripts/gtk4-update-icon-cache"
 }
 
-package_gtk4-print-backends() {
+package_gtk4-print-backends-git() {
   pkgdesc="Print backends for GTK4"
-  depends=(gtk4 rest colord libcups)
+  depends=(gtk4-git rest colord libcups)
   groups=(gnome)
 
   mv print-backends/* "$pkgdir"
