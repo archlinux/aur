@@ -1,4 +1,5 @@
-# Maintainer: Vincent Post <centzilius@w1r3.org>
+# Maintainer: Vincent Post <cent@centzilius.de>
+# Contributor: KacperA
 # Contributor: Joao Cordeiro <jlcordeiro at gmail dot com>
 # Contributor: ahcaliskan
 # Contributor: bakerct
@@ -12,7 +13,7 @@ url="http://code.google.com/p/ntorrent"
 license=('GPL3')
 depends=('java-runtime')
 optdepends=("rtorrent")
-source=("http://ntorrent.googlecode.com/files/nTorrent-bin-${pkgver}.tar.bz2"
+source=("https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/ntorrent/nTorrent-bin-${pkgver}.tar.bz2"
 	'ntorrent.sh'
 	'ntorrent.desktop')
 md5sums=('1ea043bd77c21fb3969b55ed3008d7b4'
