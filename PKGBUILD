@@ -49,13 +49,12 @@ _use_current=
 ### Do not edit below this line unless you know what you're doing
 
 pkgbase=linux-rt-bfq
-pkgname=('linux-rt-bfq' 'linux-rt-bfq-headers' 'linux-rt-bfq-docs')
-_kernelname=-rt-bfq
+# pkgname=('linux-rt-bfq' 'linux-rt-bfq-headers' 'linux-rt-bfq-docs')
 _srcname=linux-4.8
 _pkgver=4.8.6
 _rtpatchver=rt5
 pkgver=${_pkgver}_${_rtpatchver}
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 url="http://algo.ing.unimo.it"
 license=('GPL2')
@@ -78,13 +77,22 @@ source=("http://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         "${_bfqpath}/0003-block-bfq-add-Early-Queue-Merge-EQM-to-BFQ-${_bfqrel}-to-.patch"
         "${_bfqpath}/0004-Turn-BFQ-${_bfqrel}-into-BFQ-${_bfqver}-for-4.8.0.patch"
         "http://repo-ck.com/source/gcc_patch/${_gcc_patch}.gz"
-        'linux-rt-bfq.preset'
         'change-default-console-loglevel.patch'
+        'fix-race-in-PRT-wait-for-completion-simple-wait-code_Nvidia-RT-160319.patch'
+         # the main kernel config files
         'config' 'config.x86_64'
-        'fix-race-in-PRT-wait-for-completion-simple-wait-code_Nvidia-RT-160319.patch')
+         # pacman hook for initramfs regeneration
+        '99-linux.hook'
+         # standard config files for mkinitcpio ramdisk
+        'linux.preset'
+        # patches from https://github.com/linusw/linux-bfq/commits/bfq-v8
+        '0005-BFQ-Fix.patch'
+        '0006-BFQ-Fix.patch')
         
+_kernelname=${pkgbase#linux}
+
 prepare() {
-    cd ${_srcname}
+  cd "${srcdir}/${_srcname}"
 
     ### Add upstream patch
         msg "Add upstream patch"
@@ -107,7 +115,7 @@ prepare() {
 
     ### Patch source with BFQ
         msg "Patching source with BFQ patches"
-        for p in "${srcdir}"/000{1,2,3,4}-*BFQ*.patch; do
+        for p in "${srcdir}"/000{1,2,3,4,5,6}-*BFQ*.patch; do
         msg " $p"
         patch -Np1 -i "$p"
         done
@@ -227,57 +235,53 @@ prepare() {
 }
 
 build() {
-    cd ${_srcname}
-    msg "Running make bzImage and modules"
-    make ${MAKEFLAGS} LOCALVERSION= bzImage modules
+  cd "${srcdir}/${_srcname}"
+
+  make ${MAKEFLAGS} LOCALVERSION= bzImage modules
 }
 
-package_linux-rt-bfq() {
+_package() {
     pkgdesc='Linux Kernel and modules with the RT patch and the  BFQ scheduler.'
     depends=('coreutils' 'linux-firmware' 'mkinitcpio>=0.7')
     optdepends=('crda: to set the correct wireless channels of your country' 'modprobed-db: Keeps track of EVERY kernel module that has ever been probed - useful for those of us who make localmodconfig')
-    backup=("etc/mkinitcpio.d/linux-rt-bfq.preset")
-    install=linux-rt-bfq.install
+    backup=("etc/mkinitcpio.d/${pkgbase}.preset")
+    install=linux.install
 
-    cd ${_srcname}
-
+    cd "${srcdir}/${_srcname}"
+    
     KARCH=x86
 
-    # get kernel version
+   # get kernel version
     _kernver="$(make LOCALVERSION= kernelrelease)"
     _basekernel=${_kernver%%-*}
     _basekernel=${_basekernel%.*}
 
     mkdir -p "${pkgdir}"/{lib/modules,lib/firmware,boot}
     make LOCALVERSION= INSTALL_MOD_PATH="${pkgdir}" modules_install
-    cp arch/$KARCH/boot/bzImage "${pkgdir}/boot/vmlinuz-linux-rt-bfq"
+    cp arch/$KARCH/boot/bzImage "${pkgdir}/boot/vmlinuz-${pkgbase}"
 
     # set correct depmod command for install
-    cp -f "${startdir}/${install}" "${startdir}/${install}.pkg"
+    sed -e "s|%PKGBASE%|${pkgbase}|g;s|%KERNVER%|${_kernver}|g" \
+    "${startdir}/${install}" > "${startdir}/${install}.pkg"
     true && install=${install}.pkg
-    sed \
-    -e "s/KERNEL_NAME=.*/KERNEL_NAME=-rt-bfq/g" \
-    -e "s/KERNEL_VERSION=.*/KERNEL_VERSION=${_kernver}/g" \
-    -i "${startdir}/${install}"
 
     # install mkinitcpio preset file for kernel
-    install -D -m644 "${srcdir}/linux-rt-bfq.preset" "${pkgdir}/etc/mkinitcpio.d/linux-rt-bfq.preset"
-    sed \
-    -e "1s|'linux.*'|'linux-rt-bfq'|" \
-    -e "s|ALL_kver=.*|ALL_kver=\"/boot/vmlinuz-linux-rt-bfq\"|" \
-    -e "s|default_image=.*|default_image=\"/boot/initramfs-linux-rt-bfq.img\"|" \
-    -e "s|fallback_image=.*|fallback_image=\"/boot/initramfs-linux-rt-bfq-fallback.img\"|" \
-    -i "${pkgdir}/etc/mkinitcpio.d/linux-rt-bfq.preset"
+    sed "s|%PKGBASE%|${pkgbase}|g" "${srcdir}/linux.preset" |
+    install -D -m644 /dev/stdin "${pkgdir}/etc/mkinitcpio.d/${pkgbase}.preset"
+
+    # install pacman hook for initramfs regeneration
+    sed "s|%PKGBASE%|${pkgbase}|g" "${srcdir}/99-linux.hook" |
+    install -D -m644 /dev/stdin "${pkgdir}/usr/share/libalpm/hooks/99-${pkgbase}.hook"
 
     # remove build and source links
     rm -f "${pkgdir}"/lib/modules/${_kernver}/{source,build}
     # remove the firmware
     rm -rf "${pkgdir}/lib/firmware"
     # make room for external modules
-    ln -s "../extramodules-${_basekernel}${_kernelname:bfq}" "${pkgdir}/lib/modules/${_kernver}/extramodules"
+    ln -s "../extramodules-${_basekernel}${_kernelname:--ARCH}" "${pkgdir}/lib/modules/${_kernver}/extramodules"
     # add real version for building modules and running depmod from post_install/upgrade
-    mkdir -p "${pkgdir}/lib/modules/extramodules-${_basekernel}${_kernelname:bfq}"
-    echo "${_kernver}" > "${pkgdir}/lib/modules/extramodules-${_basekernel}${_kernelname:bfq}/version"
+    mkdir -p "${pkgdir}/lib/modules/extramodules-${_basekernel}${_kernelname:--ARCH}"
+    echo "${_kernver}" > "${pkgdir}/lib/modules/extramodules-${_basekernel}${_kernelname:--ARCH}/version"
 
     # Now we call depmod...
     depmod -b "${pkgdir}" -F System.map "${_kernver}"
@@ -290,20 +294,13 @@ package_linux-rt-bfq() {
     install -D -m644 vmlinux "${pkgdir}/usr/lib/modules/${_kernver}/build/vmlinux"
 }
 
-package_linux-rt-bfq-headers() {
+_package-headers() {
     pkgdesc='Header files and scripts to build modules for linux-rt-bfq.'
     depends=('linux-rt-bfq')
 
     install -dm755 "${pkgdir}/usr/lib/modules/${_kernver}"
 
-    cd ${_srcname}
-    
-    KARCH=x86
-    
-     # get kernel version
-    _kernver="$(make LOCALVERSION= kernelrelease)"
-    _basekernel=${_kernver%%-*}
-    _basekernel=${_basekernel%.*}
+    cd "${srcdir}/${_srcname}"
 
     
         install -D -m644 Makefile \
@@ -435,18 +432,11 @@ package_linux-rt-bfq-headers() {
     rm -rf "${pkgdir}"/usr/lib/modules/${_kernver}/build/arch/{alpha,arm,arm26,arm64,avr32,blackfin,c6x,cris,frv,h8300,hexagon,ia64,m32r,m68k,m68knommu,mips,microblaze,mn10300,openrisc,parisc,powerpc,ppc,s390,score,sh,sh64,sparc,sparc64,tile,unicore32,um,v850,xtensa}
 }
 
-package_linux-rt-bfq-docs() {
+_package-docs() {
     pkgdesc="Kernel hackers manual - HTML documentation that comes with the linux-rt-bfq kernel"
     depends=('linux-rt-bfq')
   
-    cd ${_srcname}
-
-    KARCH=x86
-
-    # get kernel version
-    _kernver="$(make LOCALVERSION= kernelrelease)"
-    _basekernel=${_kernver%%-*}
-    _basekernel=${_basekernel%.*}
+    cd "${srcdir}/${_srcname}"
 
     mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build"
     cp -al Documentation "${pkgdir}/usr/lib/modules/${_kernver}/build"
@@ -456,6 +446,14 @@ package_linux-rt-bfq-docs() {
     # remove a file already in linux package
     rm -f "${pkgdir}/usr/lib/modules/${_kernver}/build/Documentation/DocBook/Makefile"
 }
+
+pkgname=("${pkgbase}" "${pkgbase}-headers" "${pkgbase}-docs")
+for _p in ${pkgname[@]}; do
+  eval "package_${_p}() {
+    $(declare -f "_package${_p#${pkgbase}}")
+    _package${_p#${pkgbase}}
+  }"
+done
 
 sha512sums=('a48a065f21e1c7c4de4cf8ca47b8b8d9a70f86b64e7cfa6e01be490f78895745b9c8790734b1d22182cf1f930fb87eaaa84e62ec8cc1f64ac4be9b949e7c0358'
             'SKIP'
@@ -467,12 +465,15 @@ sha512sums=('a48a065f21e1c7c4de4cf8ca47b8b8d9a70f86b64e7cfa6e01be490f78895745b9c
             'dc0649dfe2a5ce8e8879a62df29a4a1959eb1a84e5d896a9cb119d6a85a9bad1b17135371799e0be96532e17c66043d298e4a14b18fad3078a1f425108f888c9'
             '135afcffee2439e2260a71202658dce9ec5f555de3291b2d49a5cffdd953c6d7851b8a90e961576895555142a618e52220a7e4a46521ca4ba19d37df71887581'
             '87ae76889ab84ced46c237374c124786551982f8ff7325102af9153aed1ab7be72bec4db1f7516426c5ee34c5ce17221679eb2f129c5cbdeec05c0d3cb7f785d'
-            '62fdd5c0a060a051b64093d71fbb028781061ccb7a28c5b06739a0b24dac0945740d9b73ff170784f60005a589774bcc14f56523ec51557eb3a677f726ec34cf'
-            '14d530c8d727e5253474b3d46a7e30933bcc0aa9a6cf597ab6557c12779e2ce627d49258a3623f48421b48cd1a29012f7e3ff984387488c101d94d98fe0aae9d'
+            '8e8f407262f3f573654e7f0fceec6075fd2da0258a384206d28e5f59698168609e575f3d855adb8bb476b0684da409dab22f7ddc0f00e9c10c67debe4409c30b'
             'd9d28e02e964704ea96645a5107f8b65cae5f4fb4f537e224e5e3d087fd296cb770c29ac76e0ce95d173bc420ea87fb8f187d616672a60a0cae618b0ef15b8c8'
-            '3fba4c1c172aa823c58901656fcbd30241f7e60486619d1095447e4c902b94e4a9f568d68a124001951cff6e873ce55f338975808b30e3ba2ee2380561660133'
-            'a6200ad0c8bc44b97233c0cbd4c419c37727f06e735f2c6b60a28e94bfdc6d31d7f26d24f9f898c62fceefe08dfd3bdbd5d71acf2b5fcedbda8ea3881d284daa'
-            '86f717f596c613db3bc40624fd956ed379b8a2a20d1d99e076ae9061251fe9afba39cf536623eccd970258e124b8c2c05643e3d539f37bd910e02dc5dd498749')
+            '86f717f596c613db3bc40624fd956ed379b8a2a20d1d99e076ae9061251fe9afba39cf536623eccd970258e124b8c2c05643e3d539f37bd910e02dc5dd498749'
+            '8e7afab44b381b77ba45b3ef18a229ed0c12de6b6a4a353796b2e0e0214119d2c31eb30d250c4ece90a515eb56af6cdd1c02299a9a3b1d7a8cbb3ac65cb8fef2'
+            '71e98fdf610795c5ace42384d43d56a4c18ba7225525aca6947af57697b412a2fa078dda891850e17892e9d093808a504ba36351a867ba302fc7c70f8bb423e6'
+            'd6faa67f3ef40052152254ae43fee031365d0b1524aa0718b659eb75afc21a3f79ea8d62d66ea311a800109bed545bc8f79e8752319cd378eef2cbd3a09aba22'
+            '2dc6b0ba8f7dbf19d2446c5c5f1823587de89f4e28e9595937dd51a87755099656f2acec50e3e2546ea633ad1bfd1c722e0c2b91eef1d609103d8abdc0a7cbaf'
+            '3889679e288d51f6fecc7ed6581ccde34acbf1e4861f5c9ca237a1ad13158502757d3fc457d7b6caf1c8c99c9dba842265004154a71cffb8ec14e1030e49e312'
+            '3c3f3b6407d9a1a63cd91c2b5c35e6c932afa5bf33f1b2e8a530dbd9eacda8c8f956616c4cc9228657624da58e354ba5714252237d84ff3386fd65cf44f06ddc')
             
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds

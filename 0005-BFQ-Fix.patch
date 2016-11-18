@@ -1,0 +1,33 @@
+From 69f18bb587a4805b2b18bb4ba91dced87a8fda06 Mon Sep 17 00:00:00 2001
+From: Paolo Valente <paolo.valente@linaro.org>
+Date: Sat, 22 Oct 2016 15:26:33 +0200
+Subject: [PATCH 86/86] BUGFIX: Replace max wrongly used for modulo numbers
+
+Signed-off-by: Paolo Valente <paolo.valente@linaro.org>
+---
+ block/bfq-iosched.c | 10 +++++++---
+ 1 file changed, 7 insertions(+), 3 deletions(-)
+
+diff --git a/block/bfq-iosched.c b/block/bfq-iosched.c
+index eef6ff4..c161ff0 100644
+--- a/block/bfq-iosched.c
++++ b/block/bfq-iosched.c
+@@ -2179,9 +2179,13 @@ static void __bfq_set_in_service_queue(struct bfq_data *bfqd,
+ 			 * not only expires, but also remains with no
+ 			 * request.
+ 			 */
+-			bfqq->last_wr_start_finish += jiffies -
+-				max_t(unsigned long, bfqq->last_wr_start_finish,
+-				      bfqq->budget_timeout);
++			if (time_after(bfqq->budget_timeout,
++				       bfqq->last_wr_start_finish))
++				bfqq->last_wr_start_finish +=
++					jiffies - bfqq->budget_timeout;
++			else
++				bfqq->last_wr_start_finish = jiffies;
++
+ 			if (time_is_after_jiffies(bfqq->last_wr_start_finish)) {
+ 			       pr_crit(
+ 			       "BFQ WARNING:last %lu budget %lu jiffies %lu",
+Contact GitHub API Training Shop Blog About
+ 

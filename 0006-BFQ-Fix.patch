@@ -1,0 +1,24 @@
+From 69f18bb587a4805b2b18bb4ba91dced87a8fda06 Mon Sep 17 00:00:00 2001
+From: Paolo Valente <paolo.valente@linaro.org>
+Date: Sat, 22 Oct 2016 15:26:33 +0200
+Subject: [PATCH 86/86] BUGFIX: Remove wrong conversion in use of bfq_fifo_expirebug
+
+Signed-off-by: Paolo Valente <paolo.valente@linaro.org>
+---
+ block/bfq-iosched.c | 3 +--
+ 1 file changed, 1 insertions(+), 2 deletions(-)
+
+diff --git a/block/bfq-iosched.c b/block/bfq-iosched.c
+index eef6ff4..c161ff0 100644
+--- a/block/bfq-iosched.c
++++ b/block/bfq-iosched.c
+@@ -4268,8 +4268,7 @@
+ 
+ 	bfq_add_request(rq);
+ 
+-	rq->fifo_time = ktime_get_ns() +
+-	  jiffies_to_nsecs(bfqd->bfq_fifo_expire[rq_is_sync(rq)]);
++	rq->fifo_time = ktime_get_ns() + bfqd->bfq_fifo_expire[rq_is_sync(rq)];
+ 	list_add_tail(&rq->queuelist, &bfqq->fifo);
+ 
+ 	bfq_rq_enqueued(bfqd, bfqq, rq);
