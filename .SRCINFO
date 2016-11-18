@@ -1,0 +1,13 @@
+pkgbase = capitaine-cursors
+	pkgdesc = An x-cursor theme inspired by macOS and based on KDE Breeze
+	pkgver = r2
+	pkgrel = 1
+	url = https://github.com/keeferrourke/capitaine-cursors
+	arch = any
+	license = LGPL3
+	source = capitaine-cursors-r2.tar.gz::https://github.com/keeferrourke/capitaine-cursors/archive/r2.tar.gz
+	md5sums = c144c2f2884b7367951aa2fa98a9982a
+	sha256sums = 98aa7a0fd2593447688a6378089f8d9366a3f125976eda141bac54ded758acbd
+
+pkgname = capitaine-cursors
+
