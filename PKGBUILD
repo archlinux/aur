@@ -109,7 +109,7 @@ $_float && _additional_configure_flags="$_additional_configure_flags -qreal floa
 
 # PKGBUILD vars
 
-pkgrel=4
+pkgrel=5
 pkgname="qt-sdk"
 
 if [[ -n ${_piver} ]]; then
