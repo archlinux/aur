@@ -1,7 +1,7 @@
 # Maintainer: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=wingpanel-indicator-power
-pkgver=2.0
+pkgver=2.0.1
 pkgrel=1
 pkgdesc='Power indicator for Wingpanel'
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ depends=('bamf' 'glib2' 'glibc' 'gtk3' 'libgee' 'libgtop'
          'libgranite.so' 'libwingpanel-2.0.so')
 makedepends=('cmake' 'vala')
 source=("https://launchpad.net/wingpanel-indicator-power/loki/${pkgver}/+download/wingpanel-indicator-power-${pkgver}.tar.xz")
-sha256sums=('adf5c32342472a77ff68617af118d371e8cf4b84ab25dc3e63b5bac248edc333')
+sha256sums=('0c401bdaa7921afbfdbdc336f4eb4909940f3550ab30918f585713afdcb96ed1')
 
 prepare() {
   cd wingpanel-indicator-power-${pkgver}
