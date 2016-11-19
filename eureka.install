@@ -1,4 +1,0 @@
-post_install() {
-echo "You will need either Ultimate Doom or Doom 2 wad"
-echo "to work with Eureka."
-}

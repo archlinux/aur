@@ -1,0 +1,21 @@
+--- a/Makefile	2016-11-19 21:42:31.154905909 +0100
++++ b/Makefile	2016-11-19 21:43:18.114067788 +0100
+@@ -156,7 +156,8 @@
+ stripped: $(PROGRAM)
+ 	strip $(STRIP_FLAGS) $(PROGRAM)
+ 
+-install: stripped
++install:
++	install -d $(PREFIX)/bin
+ 	install -o root -m 755 $(PROGRAM) $(PREFIX)/bin/
+ 	install -d $(INSTALL_DIR)/games
+ 	install -d $(INSTALL_DIR)/common
+@@ -169,8 +170,6 @@
+ 	install -o root -m 644 common/*.* $(INSTALL_DIR)/common
+ 	install -o root -m 644 ports/*.* $(INSTALL_DIR)/ports
+ #	install -o root -m 644 mods/*.*  $(INSTALL_DIR)/mods
+-	xdg-desktop-menu  install --novendor misc/eureka.desktop
+-	xdg-icon-resource install --novendor --size 32 misc/eureka.xpm
+ 
+ uninstall:
+ 	rm -v $(PREFIX)/bin/$(PROGRAM)
