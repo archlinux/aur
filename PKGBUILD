@@ -1,7 +1,8 @@
 # Maintainer: Robin Broda <robin@broda.me>
 # Contributor: Robin Broda <robin@broda.me>
 
-pkgname='nextcloud-client-git-nokde'
+_name='nextcloud-client'
+pkgname="${_name}-git-nokde"
 pkgver='2.2.4'
 pkgrel='1'
 pkgdesc='Nextcloud desktop client (no kio/dolphin support)'
@@ -9,14 +10,22 @@ arch=('i686' 'x86_64')
 url='https://nextcloud.com/'
 license=('GPL2')
 depends=('qtkeychain' 'qt5-webkit' 'hicolor-icon-theme' 'xdg-utils')
-makedepends=('extra-cmake-modules' 'python-sphinx' 'qt5-tools' 'doxygen' 'qtkeychain')
+makedepends=('extra-cmake-modules' 'python-sphinx' 'qt5-tools' 'cmake')
 optdepends=('python2-nautilus: integration with Nautilus' 'nemo-python: integration with Nemo')
 conflicts=('nextcloud-client' 'nextcloud-client-git')
 provides=('mirall' 'mirall-git' 'nextcloud-client' 'nextcloud-client-git')
-source=("${pkgname}::git+https://github.com/nextcloud/client_theming.git")
-
-sha256sums=('SKIP')
+source=("${_name}::git+https://github.com/nextcloud/client_theming.git" "${_name}.service")
+sha256sums=('SKIP' '2dc7fdad6c7577548585e977ba6d148bdb3f35c55b79d05d0043773af09d661e')
 backup=('etc/Nextcloud/sync-exclude.lst')
+
+pkgver() {
+  if [[ -z "${_version}" ]]; then
+    cd ${srcdir}/${_name}
+    echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+  else
+    echo ${_version}
+  fi
+}
 
 prepare() {
   cd "${srcdir}/${pkgname}"
@@ -31,10 +40,9 @@ build() {
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DCMAKE_INSTALL_LIBDIR=lib \
         -DCMAKE_BUILD_TYPE=Release \
-        -DCMAKE_INSTALL_SYSCONFDIR=/etc/${pkgname}
-
+        -DCMAKE_INSTALL_SYSCONFDIR=/etc/${_name}
+	-DWITH_DOC=FALSE
   make
-  make doc-man
 }
 
 check() {
@@ -44,4 +52,5 @@ check() {
 package() {
   cd "${srcdir}/${pkgname}/build-linux"
   make DESTDIR="${pkgdir}" install
+  install -Dm644 ${srcdir}/${_name}.service ${pkgdir}/usr/lib/systemd/user/${_name}.service
 }
