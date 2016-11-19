@@ -1,7 +1,7 @@
 pkgbase = vulkan-caps-viewer
 	pkgdesc = Vulkan Hardware Capability Viewer
-	pkgver = 1.1
-	pkgrel = 2
+	pkgver = 1.2
+	pkgrel = 1
 	url = http://vulkan.gpuinfo.org/
 	arch = x86_64
 	license = GPL2
@@ -11,8 +11,8 @@ pkgbase = vulkan-caps-viewer
 	source = android_icon_256.png
 	sha1sums = 7ccdb4b4487b43bb428c32994092c00ca14f594a
 	sha1sums = 96c802c82c45626f3b6bdbb846d0f1f7e67ab28e
-	source_x86_64 = http://vulkan.gpuinfo.org/downloads/vulkancapsviewer_1_1_linux64.tar.gz
-	sha1sums_x86_64 = 971bb05dcce1229d43112955243d9358a78ae1b3
+	source_x86_64 = http://vulkan.gpuinfo.org/downloads/vulkancapsviewer_1_2_linux64.tar.gz
+	sha1sums_x86_64 = 89cf1dd968c69c5369c597cb59c0c29767cfcd09
 
 pkgname = vulkan-caps-viewer
 
