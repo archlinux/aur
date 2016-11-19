@@ -2,7 +2,7 @@
 # Contributor: Daniel Nagy <danielnagy at gmx de>
 
 pkgname=wireshark-git
-pkgver=2.3.0rc0+1430+g7531318
+pkgver=2.3.0rc0+1510+gc274046
 pkgrel=1
 pkgdesc="A free network protocol analyzer for Unix/Linux. GIT version"
 arch=('i686' 'x86_64')
