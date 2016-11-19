@@ -1,0 +1,11 @@
+[Trigger]
+Type = File
+Operation = Install
+Operation = Upgrade
+Target = boot/vmlinuz-linux-linode
+Target = usr/lib/initcpio/*
+
+[Action]
+Description = Updating linux-linode initramfs image
+When = PostTransaction
+Exec = /usr/bin/mkinitcpio -p linux-linode

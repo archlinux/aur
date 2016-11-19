@@ -5,16 +5,12 @@ export PATH='/usr/local/sbin:/usr/local/bin:/usr/bin'
 post_install () {
   echo ">>> Updating module dependencies. Please wait ..."
   depmod ${1##*:}${KERNEL_NAME}
-  echo ">>> Generating initial ramdisk, using mkinitcpio.  Please wait..."
-  mkinitcpio -p linux${KERNEL_NAME}
 }
 
 post_upgrade() {
   rm -f boot/initramfs-linux${KERNEL_NAME}-fallback.img
   echo ">>> Updating module dependencies. Please wait ..."
   depmod ${1##*:}${KERNEL_NAME}
-  echo ">>> Generating initial ramdisk, using mkinitcpio.  Please wait..."
-  mkinitcpio -p linux${KERNEL_NAME}
 }
 
 post_remove() {
