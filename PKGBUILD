@@ -1,7 +1,7 @@
 # Maintainer : Antoine Carpentier
 pkgname=quicklisp
 pkgver=0.1
-pkgrel=3
+pkgrel=4
 epoch=1
 pkgdesc="A library manager for Common Lisp"
 arch=('any')
