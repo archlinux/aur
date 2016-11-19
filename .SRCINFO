@@ -11,7 +11,7 @@ pkgbase = wm-switcher-git
 	optdepends = xfwm4: Switch to the Xfwm window manager
 	optdepends = compiz: Switch to the Compiz window manager
 	optdepends = openbox: Switch to the Openbox window manager
-	optdepends = compton: Use the Comptop compositor
+	optdepends = compton: Use the Compton compositor
 	source = git+https://github.com/xircon/wm-switcher.git
 	md5sums = SKIP
 

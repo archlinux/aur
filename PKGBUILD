@@ -10,7 +10,7 @@ optdepends=('metacity: Switch to the Metacity window manager'
 				'xfwm4: Switch to the Xfwm window manager'
 				'compiz: Switch to the Compiz window manager'
 				'openbox: Switch to the Openbox window manager'
-				'compton: Use the Comptop compositor')
+				'compton: Use the Compton compositor')
 
 source=("git+https://github.com/xircon/wm-switcher.git")
 md5sums=('SKIP')
