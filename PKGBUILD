@@ -1,7 +1,7 @@
 # Maintainer : Antoine Carpentier
 pkgname=asdf
 pkgver=3.1.7
-pkgrel=1
+pkgrel=2
 pkgdesc="A build facility for Common Lisp"
 arch=('any')
 url="https://common-lisp.net/project/asdf/"

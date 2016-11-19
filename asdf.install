@@ -2,5 +2,7 @@
 
 post_install()
 {
+  echo -e "\e[32m"
   echo "To load ASDF every time you start Lisp, copy the lines from /etc/default/asdf to your ~/sbclrc or ~/.ccl-init.lisp"
+  echo -e "\e[0m"
 }

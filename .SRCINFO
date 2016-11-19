@@ -1,7 +1,7 @@
 pkgbase = asdf
 	pkgdesc = A build facility for Common Lisp
 	pkgver = 3.1.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://common-lisp.net/project/asdf/
 	install = asdf.install
 	arch = any
