@@ -4,7 +4,7 @@
 # Contributor: Massimiliano Torromeo <massimiliano DOT torromeo AT google mail service>
 
 pkgname=virtuoso
-pkgver=7.2.2
+pkgver=7.2.4.2
 pkgrel=1
 arch=('x86_64')
 url='http://virtuoso.openlinksw.com/wiki/main/Main/'
@@ -18,7 +18,7 @@ replaces=('virtuoso-base')
 provides=('virtuoso-base')
 install=virtuoso.install
 source=("http://downloads.sourceforge.net/${pkgname}/${pkgname}-opensource-${pkgver}.tar.gz" virtuoso.service)
-md5sums=('f8f81c7bca8af66295dcde7aeadba06f'
+md5sums=('11b081934ab4698f0f341e1b410fc4fe'
          '4dc007d22588c5933650984a7863d4d0')
 
 prepare() {
