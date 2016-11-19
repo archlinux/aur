@@ -1,0 +1,35 @@
+diff --git a/app/dosboxsyndicate_client.conf b/app/dosboxsyndicate_client.conf
+--- a/app/dosboxsyndicate_client.conf
++++ b/app/dosboxsyndicate_client.conf
+@@ -2,11 +2,8 @@
+ ipx=true
+ 
+ [autoexec]
+-@echo off
+-mount c ".."
++mount c "."
+ c:
+-cls
+-IPXNET CONNECT 127.0.0.1
++IPXNET CONNECT 127.0.0.1 19900
+ netbios.exe
+-synd.exe
+-exit
++cls
+diff --git a/app/dosboxsyndicate_server.conf b/app/dosboxsyndicate_server.conf
+--- a/app/dosboxsyndicate_server.conf
++++ b/app/dosboxsyndicate_server.conf
+@@ -2,11 +2,7 @@
+ ipx=true
+ 
+ [autoexec]
+-@echo off
+-mount c ".."
++mount c "."
+ c:
+-cls
+-IPXNET STARTSERVER
++IPXNET STARTSERVER 19900
+ netbios.exe
+-synd.exe
+-exit

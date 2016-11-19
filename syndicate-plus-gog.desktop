@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=Syndicate
+Exec=syndicate
+Icon=syndicate
+Categories=Game;
+Terminal=false

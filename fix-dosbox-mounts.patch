@@ -1,0 +1,12 @@
+diff --git a/app/dosboxsyndicate_single.conf b/app/dosboxsyndicate_single.conf
+--- a/app/dosboxsyndicate_single.conf
++++ b/app/dosboxsyndicate_single.conf
+@@ -3,7 +3,7 @@ ipx=false
+ 
+ [autoexec]
+ @echo off
+-mount c ".."
++mount c "."
+ c:
+ cls
+ synd.exe
