@@ -6,7 +6,7 @@
 pkgbase=linux-userns
 _srcname=linux-4.8
 pkgver=4.8.8
-pkgrel=3
+pkgrel=4
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
 license=('GPL2')
@@ -19,7 +19,7 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         # the main kernel config files
         'config' 'config.x86_64'
         # pacman hook for initramfs regeneration
-        '80-linux.hook'
+        '80-linux-userns.hook'
         # standard config files for mkinitcpio ramdisk
         'linux.preset'
         'ubuntu-unprivileged-overlayfs.patch'
@@ -140,7 +140,7 @@ _package() {
     -i "${pkgdir}/etc/mkinitcpio.d/${pkgbase}.preset"
 
   # install pacman hook for initramfs regeneration
-  install -D -m644 "${srcdir}/80-linux.hook" "${pkgdir}/usr/share/libalpm/hooks/80-linux.hook"
+  install -D -m644 "${srcdir}/80-linux-userns.hook" "${pkgdir}/usr/share/libalpm/hooks/80-linux-userns.hook"
 
   # remove build and source links
   rm -f "${pkgdir}"/lib/modules/${_kernver}/{source,build}
