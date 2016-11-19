@@ -2,7 +2,7 @@
 # Contributor: Jonas Heinrich <onny@project-insanity.org>
 
 pkgname=signal
-pkgver=0.25.2
+pkgver=0.26.0
 pkgrel=1
 license=('GPL3')
 pkgdesc='Signal Private Messenger for the Desktop'
@@ -11,7 +11,7 @@ makedepends=('npm' 'ruby-sass')
 arch=("i686" "x86_64")
 url='https://whispersystems.org'
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/WhisperSystems/Signal-Desktop/archive/v${pkgver}.tar.gz")
-sha512sums=('0a3a3ecca39964642d18f0354b28224d1a4c541cab61a4447eef82c35843ee654cfdb99120e0f114aaadb49af0cb8a4f68eecd84dfc2f2f7f5357cb459477262')
+sha512sums=('10917972efc3d571eb64e28357e95b71b86ab3ecbc51fbe56af23e2f85ccec37bcfd249b2db6dd28315a4650aa99da5d967c178733ce575e54f946c2abde5e15')
 
 build() {
   cd "Signal-Desktop-${pkgver}"
