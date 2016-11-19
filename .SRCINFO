@@ -1,0 +1,14 @@
+pkgbase = bs1770gain
+	pkgdesc = A loudness scanner compliant with ITU-R BS.1770.
+	pkgver = 0.4.11
+	pkgrel = 1
+	url = http://bs1770gain.sourceforge.net
+	arch = x86_64
+	license = GPL2
+	depends = ffmpeg
+	depends = sox
+	source = http://http.debian.net/debian/pool/main/b/bs1770gain/bs1770gain_0.4.11.orig.tar.gz
+	sha512sums = 74fcd1fdb36a2999ae3bada3dc4c30a3acb9c9ceb46281751cf65e489bcafbcaae3f03894ea7f1d1333f936b06ee6181f5b81d8018a8f1749629f2ea16000897
+
+pkgname = bs1770gain
+
