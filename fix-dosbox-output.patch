@@ -1,0 +1,12 @@
+diff --git a/app/dosboxsc2000.conf b/app/dosboxsc2000.conf
+--- a/app/dosboxsc2000.conf
++++ b/app/dosboxsc2000.conf
+@@ -19,7 +19,7 @@ fullscreen=true
+ fulldouble=false
+ fullresolution=original
+ windowresolution=original
+-output=ddraw
++output=overlay
+ autolock=true
+ sensitivity=100
+ waitonerror=true

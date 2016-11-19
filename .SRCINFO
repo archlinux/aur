@@ -1,0 +1,30 @@
+pkgbase = simcity-2000-gog
+	pkgdesc = Now you can design any city you can imagine and SimCity 2000 will bring it, and its resident Sims, to life.
+	pkgver = 2.0.0.15
+	pkgrel = 1
+	url = https://www.gog.com/game/simcity_2000_special_edition
+	install = simcity-2000-gog.install
+	arch = any
+	groups = games
+	license = custom:eula
+	makedepends = innoextract
+	makedepends = icoutils
+	depends = dosbox
+	optdepends = unionfs-fuse: mounting game folder to home for savegames and settings
+	source = setup_sc2000_se_2.0.0.15.exe::gogdownloader://simcity_2000_special_edition/installer_win_en
+	source = simcity-2000-gog.desktop
+	source = simcity-2000-gog.sh
+	source = dosbox_windowed.conf
+	source = fix-dosbox-output.patch
+	source = fix-dosbox-mounts.patch
+	source = fix-permissions.sh
+	sha256sums = ae31e0600be24e23d0605ad5c8b002d7b4770a52e6e7f3b9e164c57edaa2740c
+	sha256sums = 471482788dbfe607758a13e338241c39f8e8af1efa37d8d4f17310ded2374707
+	sha256sums = 87aaf64369ff565df3ff5f72fdfc4a3ca4209cfa0ba21d7d9ed0d43e7bce0d4c
+	sha256sums = 50b601b33522677a9bcaf23edc833329067bb87ccda33039c0b95f0d4ddca578
+	sha256sums = f9e3d53e0d1098fef7ffbc488158ac32a5b2a4e9ff97fa0e54c99b14c24a1a59
+	sha256sums = 21f2ef32bb3c766329954dd7438a33c1afe48bd09a2d5644270240c415b1dca7
+	sha256sums = 29dbb68855c778d664f603bca889f7b156acaeed7a39f50bf35a60f13d6d0e12
+
+pkgname = simcity-2000-gog
+
