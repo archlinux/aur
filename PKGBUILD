@@ -1,5 +1,5 @@
 pkgname=spim-svn
-pkgver=690
+pkgver=691
 pkgrel=1
 pkgdesc="A MIPS32 simulator (SVN version)"
 arch=('i686' 'x86_64')
@@ -14,7 +14,8 @@ provides=('spim')
 _svntrunk='svn+http://svn.code.sf.net/p/spimsimulator/code'
 source=("${_svntrunk}/spim"
         "${_svntrunk}/CPU")
-md5sums=("SKIP" "SKIP")
+md5sums=('SKIP'
+         'SKIP')
 
 pkgver() {
   cd "${srcdir}/spim"
