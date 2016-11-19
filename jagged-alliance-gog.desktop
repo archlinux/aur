@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=Jagged Alliance
+Exec=jagged-alliance
+Icon=jagged-alliance
+Categories=Game;
+Terminal=false
