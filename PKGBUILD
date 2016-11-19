@@ -2,8 +2,8 @@
 # Contributor: Tetsumaki <http://goo.gl/YMBdA>
 
 pkgname=selfoss
-pkgver=2.15
-pkgrel=2
+pkgver=2.16
+pkgrel=1
 pkgdesc="The new multipurpose rss reader, live stream, mashup, aggregation web application"
 arch=('any')
 url="http://selfoss.aditu.de/"
@@ -22,14 +22,13 @@ backup=('etc/webapps/selfoss/config.ini'
         'usr/share/webapps/selfoss/config.ini')
 install=${pkgname}.install
 source=("https://github.com/SSilence/${pkgname}/releases/download/${pkgver}/${pkgname}-${pkgver}.zip")
-sha256sums=('6a42ad93054fc8b356ac23f5ffca7347032315fa2b7b289c98d9d6b55121576b')
+sha256sums=('805afbe3f11b7cd2025f9b7723612632a97881c534631a9daaeac92c623e7a7b')
 
 prepare() {
-  cd "${srcdir}/libs/f3"
+  cd "${srcdir}/data/fulltextrss/standard"
 
-  # Fix bug with f3 on php 7.0.7
-  sed -i "1185s/(\$this/(\$fw/" base.php
-  sed -i "1186s/this/fw/" base.php
+  # Fix error with translating pathname to UTF-8
+  mv p*rotin.com.txt perotin.com.txt
 }
 
 package() {
