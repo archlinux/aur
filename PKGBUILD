@@ -69,7 +69,7 @@ build() {
 }
 
 package_kodi-pre-release() {
-  pkgdesc="A software media player and entertainment hub for digital media."
+  pkgdesc="Beta or RC versions of a media player and entertainment hub for digital media."
 
   # depends expected for kodi plugins:
   # 'python2-pillow' 'python2-pybluez' 'python2-simplejson'
