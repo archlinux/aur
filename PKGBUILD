@@ -5,7 +5,7 @@
 pkgname=nvidia-ck
 pkgver=375.20
 _extramodules=extramodules-4.8-ck
-pkgrel=1
+pkgrel=3
 epoch=1
 _pkgdesc="NVIDIA drivers for linux-ck."
 pkgdesc="$_pkgdesc"
@@ -17,7 +17,7 @@ conflicts=('nvidia-340xx-ck' 'nvidia-304xx-ck' 'nvidia-275xx-ck' 'nvidia-319-ck'
 #groups=('ck-generic')
 #replaces=()
 license=('custom')
-install=nvidia-ck.install
+install=readme.install
 options=(!strip)
 source_i686=("http://us.download.nvidia.com/XFree86/Linux-x86/${pkgver}/NVIDIA-Linux-x86-${pkgver}.run")
 source_x86_64=("http://us.download.nvidia.com/XFree86/Linux-x86_64/${pkgver}/NVIDIA-Linux-x86_64-${pkgver}-no-compat32.run")
