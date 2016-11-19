@@ -5,9 +5,9 @@
 pkgbase=linux-zen           # Build -zen kernel
 #pkgbase=linux-custom       # Build kernel with a different name
 _srcname=linux-4.8
-_zenpatch=zen-4.8.8-6db7cb960e00f72970b0522ed7499836262ca6da.diff
-pkgver=4.8.8
-pkgrel=2
+_zenpatch=zen-4.8.9-4b32fc67f031534e240f26a9e43ddd468c4aca2b.diff
+pkgver=4.8.9
+pkgrel=1
 arch=('i686' 'x86_64')
 url="https://github.com/zen-kernel/zen-kernel"
 license=('GPL2')
@@ -22,7 +22,7 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         # the main kernel config files
         'config' 'config.x86_64'
         # pacman hook for initramfs regeneration
-        '80-linux.hook'
+        '99-linux.hook'
         # standard config files for mkinitcpio ramdisk
         'linux.preset'
         'change-default-console-loglevel.patch'
@@ -30,14 +30,14 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
 
 sha256sums=('3e9150065f193d3d94bcf46a1fe9f033c7ef7122ab71d75a7fb5a2f0c9a7e11a'
             'SKIP'
-            '588b6537cb660c2f7d483aca13f7509a5fc86c60df32c167d40e81d6c7ab4f9c'
+            '9f3c1924080a16ac2b8f054aa9d0490bc0ee4c6159e2fd10e5f6732b2e9604f6'
             'SKIP'
-            'a2591d37497a85fea60b89094882bdb17cc73ff44cbdf2c48960331131e75f44'
+            'e59205f72c3a260744751974653ac3936abf4621d01eb1218608fc44dce0a5dd'
             'SKIP'
-            '3b764e486dfb961518a3b514fbc35b78a67df3abed83173e752aced212a16c82'
-            '0a1194e0e5cdf73f4340fc73385f010fe4eb43125e9e6c45304bb91ff41e6278'
+            '4a575a783bcaef5fa0437eda07fee53b1a8c0a2d968f9f0872df7fb3afa82ca9'
+            '5e09ee114fbceb5f9d3c7299a2b04cad9dcee5399ea5152a98790e16f74d9e23'
             '834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0'
-            'a8cae3381e5669a70e20e36562d7433f61b13d24ad8c688cf6c398d5128e2c02'
+            'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99')
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
@@ -133,8 +133,8 @@ _package() {
     install -D -m644 /dev/stdin "${pkgdir}/etc/mkinitcpio.d/${pkgbase}.preset"
 
   # install pacman hook for initramfs regeneration
-  sed "s|%PKGBASE%|${pkgbase}|g" "${srcdir}/80-linux.hook" |
-    install -D -m644 /dev/stdin "${pkgdir}/usr/share/libalpm/hooks/80-${pkgbase}.hook"
+  sed "s|%PKGBASE%|${pkgbase}|g" "${srcdir}/99-linux.hook" |
+    install -D -m644 /dev/stdin "${pkgdir}/usr/share/libalpm/hooks/99-${pkgbase}.hook"
 
   # remove build and source links
   rm -f "${pkgdir}"/lib/modules/${_kernver}/{source,build}
