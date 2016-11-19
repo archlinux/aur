@@ -21,19 +21,19 @@ pkgver() {
 }
 
 prepare() {
-	cd "$srcdir/${_pkgname}"
+  cd "$srcdir/${_pkgname}"
   mkdir -p build
 
-  cd "$srcdir/${_pkgname}/build"
+  cd "build"
   cmake -DCMAKE_INSTALL_PREFIX="$pkgdir/usr" -DCMAKE_BUILD_TYPE=MinSizeRel  ..
 }
 
 build() {
-	cd "$srcdir/${_pkgname}/build"
-	make all
+  cd "$srcdir/${_pkgname}/build"
+  make all
 }
 
 package() {
-	cd "$srcdir/${_pkgname}/build"
-	make install
+  cd "$srcdir/${_pkgname}/build"
+  make install
 }
