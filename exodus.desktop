@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Exodus
+Exec=exodus %f
+Icon=exodus
+Comment=All-in-one app to secure, manage and exchange blockchain assets
+Categories=Utility;
+Terminal=false
+StartupNotify=true
