@@ -4,11 +4,11 @@
 
 pkgname=eureka
 pkgver=1.11
-pkgrel=2
+pkgrel=3
 pkgdesc="A map editor for the classic DOOM games"
 arch=('i686' 'x86_64')
 url="http://eureka-editor.sourceforge.net"
-license=('GPL2')
+license=('GPL')
 depends=('fltk')
 source=("https://download.sourceforge.net/eureka-editor/eureka-111-source.tar.gz"
         "makefile.patch")

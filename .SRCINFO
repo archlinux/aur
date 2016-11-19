@@ -1,11 +1,11 @@
 pkgbase = eureka
 	pkgdesc = A map editor for the classic DOOM games
 	pkgver = 1.11
-	pkgrel = 2
+	pkgrel = 3
 	url = http://eureka-editor.sourceforge.net
 	arch = i686
 	arch = x86_64
-	license = GPL2
+	license = GPL
 	depends = fltk
 	source = https://download.sourceforge.net/eureka-editor/eureka-111-source.tar.gz
 	source = makefile.patch
