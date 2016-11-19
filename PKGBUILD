@@ -81,7 +81,7 @@ sha256sums=('d54e0f8a27e24f3666c19b395c19dba194635db26929c89e78ffa4b2b0e8ca3a'
             'SKIP'
             'dfbe807b943cce69316fbf7aaceaa03adcd08aa2271c97c86c66caae6133e478'
             '62b1e18a16ea7b41be758fbc1bf002e9787f43ca29e2026aaa0fb0bf057b0fa5'
-            'c7c966c93ab7a7ec17495ad23a412c26c41c8c13992e52c7175ca731432327e2'
+            '0fba769f26ff2532000043ab51f0be349a8ab1fd931397cb33a579ddd71fc183'
             'f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
             '0376bd5efa31d4e2a9d52558777cebd9f0941df8e1adab916c868bf0c05f2fc3'
@@ -223,7 +223,7 @@ _package() {
               'paxd-libre: to enable PaX exploit mitigations and apply exceptions automatically')
   provides=("${_replacesarchkernel[@]/%/=${_archpkgver}}")
   conflicts=("${_replacesoldkernels[@]}" "${_replacesoldmodules[@]}")
-  replaces=("${_replacesarchkernel[@]}" "${_replacesoldkernels[@]}" "${_replacesoldmodules[@]}")
+  replaces=("${_replacesoldkernels[@]}" "${_replacesoldmodules[@]}")
   depends_i686=('mkinitcpio>=0.7')
   depends_x86_64=('mkinitcpio>=0.7')
   backup_i686=("etc/mkinitcpio.d/${pkgbase}.preset")
@@ -292,7 +292,7 @@ _package-headers() {
   pkgdesc="Header files and scripts for building modules for ${pkgbase^} kernel"
   provides=("${_replacesarchkernel[@]/%/-headers=${_archpkgver}}")
   conflicts=("${_replacesoldkernels[@]/%/-headers}")
-  replaces=("${_replacesarchkernel[@]/%/-headers}" "${_replacesoldkernels[@]/%/-headers}")
+  replaces=("${_replacesoldkernels[@]/%/-headers}")
 
   install -dm755 "${pkgdir}/usr/lib/modules/${_kernver}"
 
@@ -433,7 +433,7 @@ _package-docs() {
   pkgdesc="Kernel hackers manual - HTML documentation that comes with the ${pkgbase^} kernel"
   provides=("${_replacesarchkernel[@]/%/-docs=${_archpkgver}}")
   conflicts=("${_replacesoldkernels[@]/%/-docs}")
-  replaces=("${_replacesarchkernel[@]/%/-docs}" "${_replacesoldkernels[@]/%/-docs}")
+  replaces=("${_replacesoldkernels[@]/%/-docs}")
 
   cd "${srcdir}/${_srcname}"
 
