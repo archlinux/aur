@@ -21,7 +21,6 @@ package() {
 	rm $pkgdir/opt/$pkgname/{LICENSE*,version}
 	ln -s $pkgdir/opt/$pkgname/Exodus $pkgdir/usr/bin/$pkgname
 
-	install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 	install -Dm644 $srcdir/$pkgname.desktop $pkgdir/usr/share/applications/$pkgname.desktop
 
   chmod -R ugo+rX $pkgdir/opt
