@@ -1,6 +1,6 @@
 pkgbase = ruby-artii
 	pkgdesc = A Figlet-based ASCII art generator, useful for comand-line based ASCII Art Generation
-	pkgver = 2.1.1
+	pkgver = 2.1.2
 	pkgrel = 1
 	url = https://github.com/miketierney/artii
 	arch = any
@@ -9,9 +9,11 @@ pkgbase = ruby-artii
 	provides = artii
 	provides = ruby-artii
 	conflicts = artii
-	noextract = artii-2.1.1.gem
-	source = https://rubygems.org/downloads/artii-2.1.1.gem
-	sha256sums = 9b683c36f0eb5aa8c02c767d00cd7e70de1b84ff50396b47dc098789ec465861
+	noextract = artii-2.1.2.gem
+	source = https://rubygems.org/downloads/artii-2.1.2.gem
+	source = LICENSE
+	sha256sums = 15410369690634fccf801fd95ae9762c3b2b7254e17a07e77a069e5cd292bc49
+	sha256sums = 8b943160ff00be00386b1049f928fe846af996f5cc09950ffbfb5888a95a4320
 
 pkgname = ruby-artii
 
