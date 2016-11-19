@@ -1,0 +1,19 @@
+pkgbase = liblogicalaccess-git
+	pkgdesc = C++ RFID / NFC Library for Windows/Linux/Mac. For PC/SC, NFC, ISO compliant and proprietary hardware
+	pkgver = 1.85.0.r4.d539d93
+	pkgrel = 1
+	url = http://liblogicalaccess.islog.com
+	arch = any
+	license = LGPL
+	makedepends = cmake
+	makedepends = boost
+	depends = pcsclite
+	depends = boost-libs
+	depends = openssl
+	provides = liblogicalaccess
+	conflicts = liblogicalaccess
+	source = git+https://github.com/islog/liblogicalaccess.git
+	md5sums = SKIP
+
+pkgname = liblogicalaccess-git
+
