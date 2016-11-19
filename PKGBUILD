@@ -2,7 +2,7 @@
 
 _pkgname=egitu
 pkgname=$_pkgname
-pkgver=r250.d6fa4b5
+pkgver=r256.c92699b
 pkgrel=1
 pkgdesc="EFL Git user interface"
 url="http://www.enlightenment.org/"
