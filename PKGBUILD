@@ -11,7 +11,7 @@
 _pkgname=playonlinux5
 pkgname=$_pkgname-git
 pkgver=r1262.6404de4
-pkgrel=7
+pkgrel=8
 epoch=2
 pkgdesc="GUI for managing Windows programs under linux (development version based on Java)"
 arch=('any')
@@ -64,6 +64,6 @@ package() {
 
   # Icon + Desktop
   install -Dm644 "$srcdir/$_pkgname/phoenicis-javafx/target/classes/com/playonlinux/javafx/common/playonlinux.png" \
-                 "$pkgdir/usr/share/pixmaps/$pkgname.png"
+                 "$pkgdir/usr/share/pixmaps/$_pkgname.png"
   install -Dm644 PlayOnLinux5.desktop "$pkgdir/usr/share/applications/$_pkgname.desktop"
 }
