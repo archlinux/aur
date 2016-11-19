@@ -1,0 +1,27 @@
+pkgbase = arc-gotham-gtk-theme-git
+	pkgver = 636.dc4fdd8
+	pkgrel = 1
+	url = https://github.com/9sevendesign/arc-theme-gotham
+	arch = any
+	license = GPL3
+	depends = gtk3
+	depends = gtk-engine-murrine
+	optdepends = arc-icon-theme
+	source = git+https://github.com/9sevendesign/arc-theme-gotham.git
+	md5sums = SKIP
+
+pkgname = arc-gotham-gtk-theme-git
+	pkgdesc = A flat theme with transparent elements based on gotham vim scheme
+	provides = arc-gtk-theme
+	conflicts = arc-gtk-theme
+	replaces = gtk-theme-arc
+
+pkgname = arc-gotham-solid-gtk-theme-git
+	pkgdesc = A flat theme for GTK 3, GTK 2 and Gnome-Shell (without transparency)
+	provides = arc-gtk-theme
+	provides = arc-gotham-gtk-theme
+	conflicts = arc-gtk-theme
+	conflicts = gtk-theme-arc
+	conflicts = arc-gotham-gtk-theme
+	replaces = gtk-theme-arc-solid
+
