@@ -5,7 +5,7 @@ pkgver() {
     cd "${pkgname%-git}"
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
-pkgrel=1
+pkgrel=2
 pkgdesc="XMonad support for Gnome Flashback"
 arch=('any')
 url="https://github.com/tlonic/gnome-flashback-xmonad"
@@ -20,7 +20,7 @@ package() {
     mkdir -p "$pkgdir/usr/lib/gnome-flashback"
     mkdir -p "$pkgdir/usr/share/gnome-session/sessions"
     mkdir -p "$pkgdir/usr/share/applications"
-    cp "xmonad.desktop" "$pkgdir/usr/share/applications/gnome-flashback-xmonad.desktop"
+    cp "xmonad.desktop" "$pkgdir/usr/share/applications/xmonad.desktop"
     cp "gnome-flashback-xmonad.desktop" "$pkgdir/usr/share/xsessions/"
     cp "gnome-flashback-xmonad.session" "$pkgdir/usr/share/gnome-session/sessions/"
     cp "gnome-flashback-xmonad" "$pkgdir/usr/lib/gnome-flashback/"

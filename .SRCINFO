@@ -1,7 +1,7 @@
 pkgbase = gnome-flashback-xmonad
 	pkgdesc = XMonad support for Gnome Flashback
 	pkgver = r18.5ea1599
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/tlonic/gnome-flashback-xmonad
 	arch = any
 	license = GPL
