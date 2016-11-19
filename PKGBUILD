@@ -4,7 +4,7 @@
 _name='nextcloud-client'
 pkgname="${_name}-git-nokde"
 pkgver=66.8aade24
-pkgrel=1
+pkgrel=2
 pkgdesc='Nextcloud desktop client (no kio/dolphin support, with systemd user session service)'
 arch=('i686' 'x86_64')
 url='https://nextcloud.com/'
