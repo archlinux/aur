@@ -14,6 +14,10 @@ pkgbase = traktor
 	optdepends = tor-browser-en-ir
 	source = traktor_arch.sh
 	source = traktor_tunnel
+	source = traktor_untunnel
+	source = traktor_torrc-update
+	md5sums = SKIP
+	md5sums = SKIP
 	md5sums = SKIP
 	md5sums = SKIP
 

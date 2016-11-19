@@ -11,9 +11,9 @@ depends=('tor' 'obfsproxy' 'polipo' 'dnscrypt-proxy' )
 optdepends=('tor-browser-en-ir')
 
 install="traktor.install"
-md5sums=('SKIP' 'SKIP')
+md5sums=('SKIP' 'SKIP' 'SKIP' 'SKIP')
 changelog=
-source=("traktor_arch.sh" "traktor_tunnel")
+source=("traktor_arch.sh" "traktor_tunnel" "traktor_untunnel" "traktor_torrc-update")
 noextract=()
 
 package() {
@@ -21,5 +21,7 @@ cd "$srcdir"
     
     install -Dm 755 traktor_tunnel ${pkgdir}/usr/bin/traktor_tunnel
     install -Dm 755 traktor_arch.sh ${pkgdir}/usr/bin/traktor_configure
+    install -Dm 755 traktor_untunnel ${pkgdir}/usr/bin/traktor_untunnel
+    install -Dm 755 traktor_torrc-update ${pkgdir}/usr/bin/traktor_torrc-update
 }
 
