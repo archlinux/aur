@@ -1,0 +1,6 @@
+
+
+post_install()
+{
+  echo "To load ASDF every time you start Lisp, copy the lines from /etc/default/asdf to your ~/sbclrc or ~/.ccl-init.lisp"
+}
