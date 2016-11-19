@@ -1,18 +1,19 @@
 pkgbase = python-dill
 	pkgdesc = Serialize all of python (almost)
 	pkgver = 0.2.5
-	pkgrel = 2
+	pkgrel = 3
 	url = http://pypi.python.org/pypi/dill/
 	arch = any
 	license = BSD
 	source = http://pypi.python.org/packages/source/d/dill/dill-0.2.5.tgz
+	source = python2-dill.install
 	md5sums = 5b0c312f034914be2e230457747d9b6c
+	md5sums = 03858fb53bf5ae72e3f39f4346c9e40f
 
 pkgname = python-dill
 	depends = python
-	conflicts = python2-dill
 
 pkgname = python2-dill
+	install = python2-dill.install
 	depends = python2
-	conflicts = python-dill
 
