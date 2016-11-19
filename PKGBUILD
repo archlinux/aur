@@ -1,10 +1,11 @@
-# Maintainer: Christian Hesse <mail@eworm.de>
+# Maintainer: WorMzy Tykashi <wormzy.tykashi@gmail.com>
+# Contributor: Christian Hesse <mail@eworm.de>
 # Contributor: Florian Pritz <bluewind@xinu.at>
 # Contributor: Geoffroy Carrier <geoffroy.carrier@koon.fr>
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 
 pkgname=vimpager-git
-pkgver=2.06.r89.g0007949
+pkgver=2.06.r337.ga7d18ce
 pkgrel=1
 pkgdesc='A vim-based script to use as a PAGER - git checkout'
 arch=('any')
@@ -15,7 +16,7 @@ makedepends=('git' 'pandoc')
 conflicts=('vimpager')
 provides=('vimpager')
 backup=('etc/vimpagerrc')
-source=('git://github.com/rkitover/vimpager.git')
+source=('git+https://github.com/rkitover/vimpager.git')
 sha256sums=('SKIP')
 
 pkgver() {
@@ -38,7 +39,6 @@ package() {
 
 	make PREFIX="/usr" SYSCONFDIR="/etc" DESTDIR="${pkgdir}" install
 
-	install -d "${pkgdir}/usr/share/licenses/${pkgname%-git}/"
-	ln -s "/usr/share/licenses/vim/license.txt" "${pkgdir}/usr/share/licenses/${pkgname%-git}/license.txt"
+  install -Dm644 debian/copyright "$pkgdir/usr/share/licenses/vimpager/copyright"
 }
 
