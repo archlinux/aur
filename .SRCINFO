@@ -1,0 +1,18 @@
+pkgbase = cl-jupyter
+	pkgdesc = An enhanced interactive Shell for Common Lisp (based on the Jupyter protocol)
+	pkgver = 0.7
+	pkgrel = 1
+	url = https://github.com/fredokun/cl-jupyter
+	install = cl-jupyter.install
+	arch = any
+	license = https://github.com/fredokun/cl-jupyter/blob/master/LICENSE
+	depends = sbcl
+	depends = python
+	depends = jupyter-notebook
+	depends = quicklisp
+	depends = asdf
+	source = git+https://github.com/fredokun/cl-jupyter
+	sha256sums = SKIP
+
+pkgname = cl-jupyter
+

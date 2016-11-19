@@ -1,0 +1,5 @@
+
+post_install()
+{
+	echo "To install notebooks, run '/usr/lib/cl-jupyter/install-cl-jupyter.py' as a normal user"
+}
