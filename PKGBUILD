@@ -3,7 +3,7 @@
 pkgbase=holland
 pkgname=('holland' 'holland-common' 'holland-mysqldump' 'holland-mysqllvm'
          'holland-pgdump' 'holland-xtrabackup')
-pkgver=1.0.12
+pkgver=1.0.14
 pkgrel=1
 arch=('any')
 url="http://hollandbackup.org"
@@ -12,7 +12,7 @@ options=('emptydirs')
 makedepends=('python2-setuptools')
 source=("http://hollandbackup.org/releases/stable/1.0/${pkgbase}-${pkgver}.tar.gz"
         "holland.logrotate")
-md5sums=('ad86805874f2a0e77da3b926a3deb2ee'
+md5sums=('15a410e1b0f858f240e67daf7f531a43'
          '5b2d292dc7e1139fde8ab9439b0464ee')
 
 prepare() {
