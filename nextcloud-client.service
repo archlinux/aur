@@ -3,7 +3,7 @@ Description=Nextcloud client
 
 [Service]
 Type=simple
-ExecStart=/usr/bin/owncloud
+ExecStart=/usr/bin/nextcloud
 ExecReload=/bin/kill -HUP $MAINPID
 KillMode=process
 Restart=on-failure
