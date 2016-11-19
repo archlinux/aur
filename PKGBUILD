@@ -7,7 +7,7 @@ pkgrel=1
 
 depends=('python-pyqt4')
 optdepends=('metacity: Switch to the Metacity window manager'
-				'xfwm: Switch to the Xfwm window manager'
+				'xfwm4: Switch to the Xfwm window manager'
 				'compiz: Switch to the Compiz window manager'
 				'openbox: Switch to the Openbox window manager'
 				'compton: Use the Comptop compositor')
