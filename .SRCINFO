@@ -1,0 +1,15 @@
+pkgbase = spotlite
+	pkgdesc = Usenet spot database
+	pkgver = 2.0
+	pkgrel = 1
+	url = http://www.spot-net.nl/spotlite/
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = qtwebkit
+	depends = openssl098
+	source = http://www.spot-net.nl.vfcdn.net/downloads/spotlite/SpotLite(v2)Ubuntu.zip
+	md5sums = 095d2c11fad5e49ddd965d24d033dc71
+
+pkgname = spotlite
+
