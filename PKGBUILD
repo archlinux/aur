@@ -1,14 +1,14 @@
 # Maintainer: Giulio De Pasquale <me@giugl.io>
 pkgname=dike
-pkgver=6.4.0
-pkgrel=1
+pkgver=6.0
+pkgrel=2
 pkgdesc="Tool di firma e rinnovo online per i certificati digitali emessi da InfoCert S.p.A."
 arch=( 'i686' 'x86_64')
 url=""
 license=('custom:EULA')
 groups=()
 install=$pkgname.install
-depends=('python2-nautilus' 'libnotify' 'usb_modeswitch' 'pcsclite' 'pcsc-tools' 'gstreamer0.10' 'gstreamer0.10-base' 'libappindicator-gtk3')
+depends=('python2-nautilus' 'libnotify' 'usb_modeswitch' 'pcsclite' 'pcsc-tools' 'gstreamer0.10' 'gstreamer0.10-base' 'libappindicator-gtk2')
 source=('https://www.firma.infocert.it/pdf/licenza-dike6.pdf')
 source_i686=('https://rinnovofirma.infocert.it/download/i686/latest')
 source_x86_64=('https://rinnovofirma.infocert.it/download/x86_64/latest')
