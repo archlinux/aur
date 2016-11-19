@@ -5,7 +5,7 @@
 pkgname=nvidia-304xx-ck
 pkgver=304.132
 _extramodules=extramodules-4.8-ck
-pkgrel=4
+pkgrel=5
 _pkgdesc="NVIDIA drivers for linux-ck, 304xx legacy branch."
 pkgdesc="$_pkgdesc"
 arch=('i686' 'x86_64')
@@ -16,7 +16,7 @@ conflicts=('nvidia-340xx-ck' 'nvidia-ck' 'nvidia-275xx-ck' 'nvidia-319-ck' 'nvid
 #groups=('ck-generic')
 #replaces=()
 license=('custom')
-install=nvidia-304xx-ck.install
+install=readme.install
 options=(!strip)
 source=('disable-mtrr.patch')
 source_i686+=("http://us.download.nvidia.com/XFree86/Linux-x86/${pkgver}/NVIDIA-Linux-x86-${pkgver}.run")
