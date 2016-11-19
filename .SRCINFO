@@ -1,0 +1,17 @@
+pkgbase = simh-git
+	pkgdesc = The Computer History Simulation Project
+	pkgver = 4.0.Beta.1.757.gff95fb8
+	pkgrel = 1
+	url = http://simh.trailing-edge.com/
+	arch = i686
+	arch = x86_64
+	license = MIT
+	depends = libpcap
+	depends = unzip
+	provides = simh
+	conflicts = simh
+	source = git+https://github.com/simh/simh.git
+	sha512sums = SKIP
+
+pkgname = simh-git
+
