@@ -32,8 +32,7 @@ printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 
 package() {
   cd "$_gitname"
-  install -d $pkgdir/usr/bin
-  install -d $pkgdir/usr/share/texmf/arch/tlpkg/TeXLive
+  install -d $pkgdir/usr/{bin,share/texmf/arch/tlpkg/TeXLive}
   install -m755 tllocalmgr $pkgdir/usr/bin/
   cd tlpkg/TeXLive
   for _f in *; do
