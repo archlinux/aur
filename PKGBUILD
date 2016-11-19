@@ -3,7 +3,7 @@
 
 _pkgname=lmod
 pkgname=$_pkgname-git
-pkgver=6.5.11.r29.g3a81f6b
+pkgver=7.0.4.r0.gd7b7636
 pkgrel=1
 pkgdesc="An Environment Module System based on Lua, Reads TCL Modules, Supports a Software Hierarchy"
 arch=('i686' 'x86_64')
@@ -35,7 +35,8 @@ package() {
 
   make DESTDIR="$pkgdir" install
 
-  _pkgver=$(git log --tags --simplify-by-decoration --pretty="format:%d" | head -n 1 | cut -d " " -f 3 | tr -d ")")
+  # Need the main package version without git info.
+  _pkgver=$(echo ${pkgver} | cut -d "." -f 1-3 -)
   install License $pkgdir/usr/share/licenses/$pkgname/LICENSE
   install $pkgdir/opt/lmod/$_pkgver/share/man/cat1/module.1 $pkgdir/usr/share/man/cat1/modules.1
   rm -rf $pkgdir/opt/lmod/$_pkgver/share
