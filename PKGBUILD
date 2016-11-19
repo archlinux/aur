@@ -10,11 +10,11 @@ groups=()
 install=$pkgname.install
 depends=('python2-nautilus' 'libnotify' 'usb_modeswitch' 'pcsclite' 'pcsc-tools' 'gstreamer0.10' 'gstreamer0.10-base' 'libappindicator-gtk3')
 source=('https://www.firma.infocert.it/pdf/licenza-dike6.pdf')
-source_i686=('https://rinnovofirma.infocert.it/download/i686/latest/Dike6-installer-i686.deb')
-source_x86_64=('https://rinnovofirma.infocert.it/download/x86_64/latest/Dike6-installer-x86_64.deb')
+source_i686=('https://rinnovofirma.infocert.it/download/i686/latest')
+source_x86_64=('https://rinnovofirma.infocert.it/download/x86_64/latest')
 sha256sums=('c3c0df98ff788b40c31ff4915ebfcbcb71dea389733a71f71e7fe72f145120aa')
-sha256sums_i686=('a697f5ab00a8d4b9ff74196a711ed8bc5efaa1a6ba12a8fec5eabd0c9671fb62')
-sha256sums_x86_64=('a7cbd12b9827f01624f6b0391a0f96a904fefb05aa814405ac3dcc608333f4af')
+sha256sums_i686=('8cdafd635fa965ec90eac8727a8047ab155c57f7cea515d34f6edbc4d7086609')
+sha256sums_x86_64=('3e5f868f2b78777b86e19413fff1e2857d74813f901478512d6122eef244ef0b')
 
 package() {
     cd ${srcdir}
