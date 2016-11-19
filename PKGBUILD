@@ -24,7 +24,7 @@ package() {
 	cd "$srcdir"
 
 	install -Dm 0755 flasm       "$pkgdir/usr/bin/flasm"
-	install -Dm 0755 flasm.ini   "$pkgdir/etc/flasm.ini"
+	install -Dm 0644 flasm.ini   "$pkgdir/etc/flasm.ini"
 
 	install -Dm 0644 LICENSE.TXT "$pkgdir/usr/share/licenses/flasm/LICENSE.TXT"
 
