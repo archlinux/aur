@@ -1,6 +1,6 @@
 pkgbase = sysdweb
 	pkgdesc = Control systemd services through Web or REST API
-	pkgver = 0.1
+	pkgver = 0.2
 	pkgrel = 1
 	url = https://github.com/ogarcia/sysdweb
 	arch = any
@@ -10,8 +10,10 @@ pkgbase = sysdweb
 	depends = python-bottle
 	depends = python-dbus
 	backup = etc/sysdweb.conf
-	source = https://github.com/ogarcia/sysdweb/archive/0.1.tar.gz
-	sha256sums = d780c5628b0d8bf671681d0291b98e9faa0a45ee2f18629d071557e9b8c7334f
+	source = https://github.com/ogarcia/sysdweb/archive/0.2.tar.gz
+	source = sysdweb.patch
+	sha256sums = 77eeb41ece4b41ef440bfa49d8a488ace4d60c51df85461fa362ff98c444aa8f
+	sha256sums = 14764eebefa1a1037f915033cc3523a9140cd5066287315c8997cde5551a0148
 
 pkgname = sysdweb
 
