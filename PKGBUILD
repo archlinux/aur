@@ -4,7 +4,7 @@
 pkgbase=linux-lts-selinux
 #pkgbase=linux-lts-custom
 _srcname=linux-4.4
-pkgver=4.4.30
+pkgver=4.4.31
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
@@ -22,7 +22,7 @@ source=(https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.{xz,sign}
 # https://www.kernel.org/pub/linux/kernel/v4.x/sha256sums.asc
 sha256sums=('401d7c8fef594999a460d10c72c5a94e9c2e1022f16795ec51746b0d165418b2'
             'SKIP'
-            'c310c7f64fb00b728729eb5b7588a1b10573acf5bfef920d28fe1da348e121c6'
+            'cf3cfe911fdfd97a20c0a4e5039c31a53c2c811c26ef858070c0319061a7fa0d'
             'SKIP'
             'a77182fa8011f68567f857e88b140f0164c1c2fb8aae46e20f885a885e295079'
             '531d6394acb1c27e00ee74cbb62386a6d058f5381746b2b971da44cf7bb530bb'
