@@ -1,6 +1,6 @@
 #
 # Automatically generated file; DO NOT EDIT.
-# Linux/arm 4.4.21-gnu-1-lts-knock Kernel Configuration
+# Linux/arm 4.4.32-gnu-1-lts-knock Kernel Configuration
 #
 CONFIG_ARM=y
 CONFIG_ARM_HAS_SG_CHAIN=y
@@ -1871,7 +1871,7 @@ CONFIG_MTD_NAND_RICOH=m
 # CONFIG_MTD_NAND_DOCG4 is not set
 CONFIG_MTD_NAND_CAFE=m
 CONFIG_MTD_NAND_PXA3xx=y
-# CONFIG_MTD_NAND_NANDSIM is not set
+CONFIG_MTD_NAND_NANDSIM=m
 # CONFIG_MTD_NAND_GPMI_NAND is not set
 # CONFIG_MTD_NAND_BRCMNAND is not set
 # CONFIG_MTD_NAND_PLATFORM is not set

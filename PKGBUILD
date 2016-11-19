@@ -10,7 +10,7 @@
 
 pkgbase=linux-libre-lts-knock
 _pkgbasever=4.4-gnu
-_pkgver=4.4.31-gnu
+_pkgver=4.4.32-gnu
 _knockpatchver=4.2_2
 
 _replacesarchkernel=('linux%') # '%' gets replaced with _kernelname
@@ -65,7 +65,7 @@ source=("http://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgbasever}/li
         '0009-ARM-dts-dove-add-Dove-divider-clocks.patch')
 sha256sums=('f53e99866c751f21412737d1f06b0721e207f495c8c64f97dffb681795ee69a0'
             'SKIP'
-            '83afc7c44a53c588455c9b2af735f205bfcaa4b55a962f941ba65d2f9ba8932d'
+            '623273c387c9a5aa91c883192c7b54fe84cbdc1e23c5888dab44915945297bf7'
             'SKIP'
             'c7c4ab580f00dca4114c185812a963e73217e6bf86406c240d669026dc3f98a4'
             'SKIP'
@@ -77,14 +77,14 @@ sha256sums=('f53e99866c751f21412737d1f06b0721e207f495c8c64f97dffb681795ee69a0'
             'SKIP'
             '7cbda7707e8edfd28658da3ef3f58f5b6314a483d45757a7b2375d1c0450eaa1'
             '1aa649f7e8001391effb6edc65c8d47bf189301f8cc35fc23515141d8cbca14c'
-            '40c3c8de4b52ab344415ca1b1efb115fee931b3b146f1f378b7a61598e90149c'
+            '53b6d57b24bca3f54e40a72c7390fe939e3ea53ab89d88ad94df68846f2c40ac'
             'f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
             '5313df7cb5b4d005422bd4cd0dae956b2dadba8f3db904275aaf99ac53894375'
             'f0a10ea9a669e5200aa33656565c209718b24ff1add03ac5279c4a1f46ab8798'
             '96c6c7d4057b8d08238adae85d476c863c082770a182057163a45480511d35a8'
             '2ca85ee212ef8d8aab3d3c2a0cef304a355d86e7aa520e19471f56ace68a0cf4'
-            '4eb42be2173a8aba635c83737b4a72badbdd7e3452f78ce7a540bbeca36dc246'
+            '68f30252f3e945ea3c5244c4866d4a4dd046d31fcad694fdc103453bff997312'
             'SKIP'
             'a851312b26800a7e189b34547d5d4b2b62a18874f07335ac6f426c32b47c3817'
             '486976f36e1919eac5ee984cb9a8d23a972f23f22f8344eda47b487ea91047f4'
@@ -217,7 +217,7 @@ _package() {
               'openssh-knock: to use SSH with TCP Stealth support')
   provides=("${_replacesarchkernel[@]/%/=${_archpkgver}}")
   conflicts=("${_replacesoldkernels[@]}" "${_replacesoldmodules[@]}")
-  replaces=("${_replacesarchkernel[@]}" "${_replacesoldkernels[@]}" "${_replacesoldmodules[@]}")
+  replaces=("${_replacesoldkernels[@]}" "${_replacesoldmodules[@]}")
   depends_i686=('mkinitcpio>=0.7')
   depends_x86_64=('mkinitcpio>=0.7')
   backup_i686=("etc/mkinitcpio.d/${pkgbase}.preset")
@@ -286,7 +286,7 @@ _package-headers() {
   pkgdesc="Header files and scripts for building modules for ${pkgbase^} kernel"
   provides=("${_replacesarchkernel[@]/%/-headers=${_archpkgver}}")
   conflicts=("${_replacesoldkernels[@]/%/-headers}")
-  replaces=("${_replacesarchkernel[@]/%/-headers}" "${_replacesoldkernels[@]/%/-headers}")
+  replaces=("${_replacesoldkernels[@]/%/-headers}")
 
   install -dm755 "${pkgdir}/usr/lib/modules/${_kernver}"
 
@@ -421,7 +421,7 @@ _package-docs() {
   pkgdesc="Kernel hackers manual - HTML documentation that comes with the ${pkgbase^} kernel"
   provides=("${_replacesarchkernel[@]/%/-docs=${_archpkgver}}")
   conflicts=("${_replacesoldkernels[@]/%/-docs}")
-  replaces=("${_replacesarchkernel[@]/%/-docs}" "${_replacesoldkernels[@]/%/-docs}")
+  replaces=("${_replacesoldkernels[@]/%/-docs}")
 
   cd "${srcdir}/${_srcname}"
 
