@@ -1,0 +1,31 @@
+pkgbase = nextcloud-client-git-nokde
+	pkgdesc = Nextcloud desktop client (no kio/dolphin support)
+	pkgver = 2.2.4
+	pkgrel = 1
+	url = https://nextcloud.com/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = extra-cmake-modules
+	makedepends = python-sphinx
+	makedepends = qt5-tools
+	makedepends = doxygen
+	makedepends = qtkeychain
+	depends = qtkeychain
+	depends = qt5-webkit
+	depends = hicolor-icon-theme
+	depends = xdg-utils
+	optdepends = python2-nautilus: integration with Nautilus
+	optdepends = nemo-python: integration with Nemo
+	provides = mirall
+	provides = mirall-git
+	provides = nextcloud-client
+	provides = nextcloud-client-git
+	conflicts = nextcloud-client
+	conflicts = nextcloud-client-git
+	backup = etc/Nextcloud/sync-exclude.lst
+	source = nextcloud-client-git-nokde::git+https://github.com/nextcloud/client_theming.git
+	sha256sums = SKIP
+
+pkgname = nextcloud-client-git-nokde
+
