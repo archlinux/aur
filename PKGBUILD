@@ -2,7 +2,7 @@
 
 pkgname=terraria-server
 pkgver=1.3.4.3
-pkgrel=16
+pkgrel=17
 pkgdesc="Official dedicated server for Terraria"
 arch=('x86_64' 'x86')
 license=('unknown')
@@ -31,6 +31,7 @@ package() {
     install -m644 FNA.dll "${dest}/"
     install -m644 FNA.dll.config "${dest}/"
     install -m644 Ionic.Zip.CF.dll "${dest}/"
+    install -m644 Steamworks.NET.dll "${dest}/"
     install -m644 Newtonsoft.Json.dll "${dest}/"
     install -m644 TerrariaServer.exe "${dest}/"
     install -m755 TerrariaServer.bin.${CARCH} "${dest}/"
