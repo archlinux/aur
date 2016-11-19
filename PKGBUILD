@@ -16,7 +16,7 @@ install=$pkgname.install
 package()
 {
   echo -ne "(quicklisp-quickstart:install :path \"$pkgdir/usr/lib/$pkgname\")\n(quit)\n" | sbcl --no-userinit --load quicklisp.lisp
-  chmod 755 -R $pkgdir/usr/lib/$pkgname
+  chmod 777 -R $pkgdir/usr/lib/$pkgname
   mkdir -p $pkgdir/etc/default
   echo -ne "(load \"/usr/lib/$pkgname/setup\")\n" > $pkgdir/etc/default/$pkgname
 }
