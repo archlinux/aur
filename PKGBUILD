@@ -1,15 +1,15 @@
 # Maintainer: Celestial Walrus <aur@celestial.cf>
 
 pkgname=cava
-pkgver=0.4.0
+pkgver=0.4.2
 pkgrel=1
 pkgdesc='Console-based Audio Visualizer for Alsa'
-arch=(i686 x86_64)
+arch=('any')
 url='https://github.com/karlstav/cava'
-license=(MIT)
-depends=(fftw alsa-lib)
-source=(https://codeload.github.com/karlstav/cava/tar.gz/${pkgver})
-sha1sums=('ee65ddf3044b0b370341f5d32c5e7718bbf48bd6')
+license=('MIT')
+depends=('fftw' 'alsa-lib' 'ncurses')
+source=("https://github.com/karlstav/cava/archive/$pkgver.tar.gz")
+sha512sums=('6fec0afd70f0cee5103160df131fab675d37ee2e14fef5780c3348d22b82839cdb57f9878936f4f41c2313d852b9fd6537a462bcf3a8905a3ad39ee3b8531c98')
 
 build() {
   cd $pkgname-$pkgver
