@@ -1,3 +1,15 @@
+diff -ruN orig/src/vtedraw.cc new/src/vtedraw.cc
+--- orig/src/vtedraw.cc	2016-09-22 21:29:28.000000000 +0200
++++ new/src/vtedraw.cc	2016-10-22 19:23:31.706230944 +0200
+@@ -936,7 +936,7 @@ static gboolean
+ _vte_draw_unichar_is_local_graphic(vteunistr c)
+ {
+         /* Box Drawing & Block Elements */
+-        return (c >= 0x2500) && (c <= 0x259f);
++        return (c >= 0x2500) && (c <= 0x259f) && !((c >= 0x2591) && (c <= 0x2593));
+ }
+ 
+ #include "box_drawing.h"
 diff -ruN orig/doc/reference/vte-sections.txt new/doc/reference/vte-sections.txt
 --- orig/doc/reference/vte-sections.txt	2016-09-22 21:29:28.000000000 +0200
 +++ new/doc/reference/vte-sections.txt	2016-10-22 19:23:31.705230952 +0200
