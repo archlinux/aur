@@ -5,8 +5,8 @@
 
 pkgname=arachnophilia
 _pkgname=Arachnophilia
-pkgver=5.5.2914
-pkgrel=2
+pkgver=5.5.2922
+pkgrel=1
 pkgdesc="A web page development workshop and general programming tool"
 arch=('any')
 url="http://www.arachnoid.com/arachnophilia/index.php"
@@ -18,9 +18,9 @@ source=("http://www.arachnoid.com/$pkgname/$_pkgname.jar"
 	"http://www.arachnoid.com/arachnophilia/index.php"
         "${pkgname}.desktop"
         "${pkgname}.sh")
-md5sums=('2468516cad33b7e19bb7a11d0cafd2fb'
+md5sums=('746c016e691f342e4dbbd53967c90211'
          'b2c3dc9852bff89756c89f957089374f'
-         '9556ac44243b3181d088fdfe2fd55f1a'
+         'fc3d2d891e8d97b35e07b86eb7c8a223'
          'a41385032fe3a726321d02cd85f9ba55'
          '27010dd0f2b690ca78392dffcc25f210')
 DLAGENTS=('http::/usr/bin/curl -A "Mozilla/4.0" -fLC - --retry 3 --retry-delay 3 -o %o %u')
