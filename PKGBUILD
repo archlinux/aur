@@ -23,8 +23,10 @@ sha256sums=('SKIP'
             '5631db5f47b41cdae180b98214e436856daec497949c68c1e13f70f12bbb855d')
 arch=('x86_64' 'i686')
 depends=('go' 'git')
-makedepends=('go' 'git' 'patch')
-optdepends=('mariadb' 'postgresql' 'openssh')
+makedepends=('patch')
+optdepends=('mariadb: MariaDB database backend support'
+'postgresql: PostgreSQL database backend support'
+'openssh: SSH support')
 install=gitea.install
 backup=("var/lib/gitea/custom/conf/app.ini")
 conflicts=('gitea')
