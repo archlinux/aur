@@ -1,7 +1,7 @@
 # Maintainer: Antoine Carpentier <antoine.carpentier.info@gmail.com>
 pkgname=cl-jupyter
 pkgver=0.7
-pkgrel=2
+pkgrel=3
 pkgdesc="An enhanced interactive Shell for Common Lisp (based on the Jupyter protocol)"
 arch=('any')
 url="https://github.com/fredokun/$pkgname"

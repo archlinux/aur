@@ -1,7 +1,7 @@
 pkgbase = cl-jupyter
 	pkgdesc = An enhanced interactive Shell for Common Lisp (based on the Jupyter protocol)
 	pkgver = 0.7
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/fredokun/cl-jupyter
 	install = cl-jupyter.install
 	arch = any
