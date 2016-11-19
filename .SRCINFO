@@ -1,7 +1,7 @@
 pkgbase = vte3-ng-emoji-terminix-zsh-notify
 	pkgdesc = Enhanced Virtual Terminal Emulator widget for use with GTK3 (patched with support for fullwidth emoji, support for Terminix triggers and zsh notification support)
 	pkgver = 0.46.0.a
-	pkgrel = 1
+	pkgrel = 3
 	url = https://github.com/thestinger/vte-ng
 	arch = i686
 	arch = x86_64
@@ -16,7 +16,6 @@ pkgbase = vte3-ng-emoji-terminix-zsh-notify
 	depends = vte-common
 	depends = pcre2
 	optdepends = terminix: terminix support
-	optdepends = terminix-git: terminix support
 	provides = vte3=0.46.0
 	provides = vte3-select-text=0.46.0
 	provides = vte3-ng

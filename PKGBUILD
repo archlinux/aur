@@ -4,7 +4,7 @@
 pkgname=vte3-ng-emoji-terminix-zsh-notify
 _basever=0.46.0
 pkgver=$_basever.a
-pkgrel=2
+pkgrel=3
 pkgdesc="Enhanced Virtual Terminal Emulator widget for use with GTK3 
 (patched with support for fullwidth emoji, support for Terminix 
 triggers and zsh notification support)"
