@@ -1,12 +1,13 @@
 pkgname=simple-fb2-reader
 
 post_install() {
-  echo "============================"
-  echo "WARNING!!!"
-  echo "You must manually create the directory ~/.config/simple-fb2-reader if it does not exist."
-  echo "============================"
+  return 0
 }
 
 post_upgrade() {
+  post_install
+}
+
+post_remove() {
   post_install
 }

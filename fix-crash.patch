@@ -1,0 +1,208 @@
+diff --git a/README b/README
+index 26f8963..eb52d37 100644
+--- a/README
++++ b/README
+@@ -21,17 +21,17 @@ All features located in context menu.
+ 
+ Depends:
+ - libxml2		>= 2.9.1
+-- libgtk-3-0	>= 3.14.5
+-- libzip2		>= 0.11.2
+-- libsqlite3-0	>= 3.8.7.1
++- libgtk-3-0     	>= 3.14.5
++- libzip2        	>= 0.11.2
++- libsqlite3-0	  	>= 3.8.7.1
+ 
+ 
+ Build Depends:
+-- debhelper			>= 9.0.0
++- debhelper		>= 9.0.0
+ - libxml2-dev		>= 2.9.1
+ - libgtk-3-dev		>= 3.14.5
+ - libzip-dev		>= 0.11.2
+ - pkg-config		>= 0.28
+ - libc-dev-bin		>= 2.19
+-- gettext			>= 0.19.3
++- gettext		>= 0.19.3
+ - libsqlite3-dev 	>= 3.8.7.1
+diff --git a/src/formats/fb2/FictionBook/binary/binary.c b/src/formats/fb2/FictionBook/binary/binary.c
+index 5bea7a2..50c27ab 100644
+--- a/src/formats/fb2/FictionBook/binary/binary.c
++++ b/src/formats/fb2/FictionBook/binary/binary.c
+@@ -74,7 +74,7 @@ int get_pixbuf_from_base64(char* base64, GdkPixbuf** pixbuf)
+ 
+ 		if(gdk_pixbuf_loader_write(loader, out_buff, bytes_count, &loader_error) == FALSE)
+ 		{
+-			g_error("GdkPixbufLoader: %s", loader_error->message);
++			g_log(NULL, G_LOG_LEVEL_ERROR, "GdkPixbufLoader: %s", loader_error->message);
+ 			g_error_free(loader_error);
+ 			has_error = TRUE;
+ 
+@@ -90,7 +90,7 @@ int get_pixbuf_from_base64(char* base64, GdkPixbuf** pixbuf)
+ 
+ 	if(loader_error != NULL)
+ 	{
+-		g_error("GdkPixbufLoader: %s", loader_error->message);
++		g_log(NULL, G_LOG_LEVEL_ERROR, "GdkPixbufLoader: %s", loader_error->message);
+ 		g_error_free(loader_error);
+ 		has_error = TRUE;
+ 	}
+diff --git a/src/formats/fb2/FictionBook/body/image.c b/src/formats/fb2/FictionBook/body/image.c
+index 0f06077..e0b5273 100644
+--- a/src/formats/fb2/FictionBook/body/image.c
++++ b/src/formats/fb2/FictionBook/body/image.c
+@@ -31,7 +31,7 @@ int parse_fb2_image(APP* obj, xmlNode* parent_node, GtkTextIter* text_buff_end)
+ 				g_warning("Image %s not found in table", href_attr+1);
+ 		}
+ 		else
+-			g_error("Not local links not supported");
++			g_log(NULL, G_LOG_LEVEL_ERROR, "Not local links not supported");
+ 	}
+ 
+ 	xmlFree(href_attr);
+diff --git a/src/formats/fb2/FictionBook/body/section/image_inline.c b/src/formats/fb2/FictionBook/body/section/image_inline.c
+index 64cf4ee..e5db626 100644
+--- a/src/formats/fb2/FictionBook/body/section/image_inline.c
++++ b/src/formats/fb2/FictionBook/body/section/image_inline.c
+@@ -23,7 +23,7 @@ int parse_fb2_image_inline(APP* app, xmlNode* parent_node, GtkTextIter* text_buf
+ 				g_warning("Image %s not found in table", href_attr+1);
+ 		}
+ 		else
+-			g_error("Not local links not supported");
++			g_log(NULL, G_LOG_LEVEL_ERROR, "Not local links not supported");
+ 
+ 	}
+ 
+diff --git a/src/formats/fb2/fb2_parser.c b/src/formats/fb2/fb2_parser.c
+index 9de2dab..ef7fee4 100644
+--- a/src/formats/fb2/fb2_parser.c
++++ b/src/formats/fb2/fb2_parser.c
+@@ -32,7 +32,7 @@ int parse_fb2_file(APP* app, char* file_path)
+ 		xmlFreeDoc(doc);
+ 	}
+ 	else
+-		g_error("Failed to parsing fb2 file");
++		g_log(NULL, G_LOG_LEVEL_ERROR, "Failed to parsing fb2 file");
+ 
+ 	xmlCleanupParser();
+ 
+diff --git a/src/formats/fb2_zip/fb2_zip_parser.c b/src/formats/fb2_zip/fb2_zip_parser.c
+index 6331e2e..8d6c9fa 100644
+--- a/src/formats/fb2_zip/fb2_zip_parser.c
++++ b/src/formats/fb2_zip/fb2_zip_parser.c
+@@ -52,10 +52,10 @@ int parse_fb2_zip_file(APP* app, char* file_path)
+ 							xmlFreeDoc(doc);
+ 						}
+ 						else
+-							g_error("Xml is well parsed, but pointer is NULL");
++							g_log(NULL, G_LOG_LEVEL_ERROR, "Xml is well parsed, but pointer is NULL");
+ 					}
+ 					else
+-						g_error("Failed to parsing fb2 file");
++						g_log(NULL, G_LOG_LEVEL_ERROR, "Failed to parsing fb2 file");
+ 
+ 					xmlFreeParserCtxt(ctxt);
+ 
+@@ -63,13 +63,13 @@ int parse_fb2_zip_file(APP* app, char* file_path)
+ 						break;
+ 				}
+ 				else
+-					g_error("Failed to unpack fb2 file");
++					g_log(NULL, G_LOG_LEVEL_ERROR, "Failed to unpack fb2 file");
+ 			}
+ 		}
+ 		zip_close(f);
+ 	}
+ 	else
+-		g_error("Failed to open zip file");
++		g_log(NULL, G_LOG_LEVEL_ERROR, "Failed to open zip file");
+ 
+ 	return EXIT_SUCCESS;
+ }
+diff --git a/src/main.c b/src/main.c
+index ab81a7b..351f064 100644
+--- a/src/main.c
++++ b/src/main.c
+@@ -35,7 +35,7 @@ int main(int argc,	char *argv[])
+ 
+ 	if(g_option_context_parse(cmd_context, &cmd_count, &cmd_line, &error) == FALSE)
+ 	{
+-		g_error(error->message);
++		g_log(NULL, G_LOG_LEVEL_ERROR, "%s", error->message);
+ 		g_error_free(error);
+ 		error = NULL;
+ 	}
+diff --git a/src/reader/reader_app/reader_app_config.c b/src/reader/reader_app/reader_app_config.c
+index b6ce568..3faa918 100644
+--- a/src/reader/reader_app/reader_app_config.c
++++ b/src/reader/reader_app/reader_app_config.c
+@@ -6,6 +6,11 @@ int reader_app_config(APP* app)
+ 	assert(conf_dir != NULL);
+ 
+ 	GKeyFile* app_config		= g_key_file_new();
++
++	char* app_config_folder		= g_strdup_printf("%s/simple-fb2-reader/", conf_dir);
++	g_mkdir_with_parents(app_config_folder, 0755);
++	g_free(app_config_folder);
++
+ 	char* app_config_path		= g_strdup_printf("%s/simple-fb2-reader/config.cfg", conf_dir);
+ 	GError* error				= NULL;
+ 
+@@ -16,8 +21,8 @@ int reader_app_config(APP* app)
+ 		g_key_file_set_integer(app_config,	"app",				"y_pos", 480/2);
+ 		g_key_file_set_integer(app_config,	"app",				"width", 640);
+ 		g_key_file_set_integer(app_config,	"app",				"height", 480);
+-		g_key_file_set_boolean(app_config,"app",				"maximize", FALSE);
+-		g_key_file_set_boolean(app_config,"app",				"auto_scroll", FALSE);
++		g_key_file_set_boolean(app_config,	"app",				"maximize", FALSE);
++		g_key_file_set_boolean(app_config,	"app",				"auto_scroll", FALSE);
+ 		g_key_file_set_double(app_config,	"app",				"auto_scroll_divider", 4096);
+ 		g_key_file_set_double(app_config,	"app",				"font_scale", 1.0);
+ 
+diff --git a/src/reader/reader_book/reader_books_db.c b/src/reader/reader_book/reader_books_db.c
+index 0df0c34..928685b 100644
+--- a/src/reader/reader_book/reader_books_db.c
++++ b/src/reader/reader_book/reader_books_db.c
+@@ -12,25 +12,25 @@ int reader_books_db_init(APP* app)
+ 	{
+ 		if(sqlite3_exec(*db, "CREATE TABLE IF NOT EXISTS books(hash TEXT, line INT, line_offset INT);", NULL, NULL, NULL) != SQLITE_OK)
+ 		{
+-			g_error("Failed to create books table: %s", sqlite3_errmsg(*db));
++			g_log(NULL, G_LOG_LEVEL_ERROR, "SQLITE ERROR: %s", sqlite3_errmsg(*db));
+ 			return EXIT_FAILURE;
+ 		}
+ 
+ 		if(sqlite3_exec(*db, "CREATE TABLE IF NOT EXISTS recent_books(name TEXT, hash TEXT, path TEXT);", NULL, NULL, NULL) != SQLITE_OK)
+ 		{
+-			g_error("Failed to create recent_books table: %s", sqlite3_errmsg(*db));
++			g_log(NULL, G_LOG_LEVEL_ERROR, "SQLITE ERROR: %s", sqlite3_errmsg(*db));
+ 			return EXIT_FAILURE;
+ 		}
+ 
+ 		if(sqlite3_exec(*db, "DELETE FROM recent_books WHERE rowid <(SELECT MAX(rowid) FROM recent_books)-5;", NULL, NULL, NULL) != SQLITE_OK)
+ 		{
+-			g_error("Failed to create delete_tail trigger: %s", sqlite3_errmsg(*db));
++			g_log(NULL, G_LOG_LEVEL_ERROR, "SQLITE ERROR: %s", sqlite3_errmsg(*db));
+ 			return EXIT_FAILURE;
+ 		}
+ 	}
+ 	else
+ 	{
+-		g_error("Failed to open books database. %s", sqlite3_errmsg(*db));
++		g_log(NULL, G_LOG_LEVEL_ERROR, "SQLITE ERROR: %s", sqlite3_errmsg(*db));
+ 		return EXIT_FAILURE;
+ 	}
+ 
+diff --git a/src/reader/reader_start_screen.c b/src/reader/reader_start_screen.c
+index 2f4e55d..a6df26c 100644
+--- a/src/reader/reader_start_screen.c
++++ b/src/reader/reader_start_screen.c
+@@ -66,7 +66,7 @@ int reader_add_book_to_start_screen(APP* app, const char* book_title, const char
+ 		sqlite3_bind_text(insert_query, 2, book_hash, -1, NULL);
+ 		sqlite3_bind_text(insert_query, 3, book_path, -1, NULL);
+ 		if(sqlite3_step(insert_query) == SQLITE_ERROR)
+-			g_error("Failed add books in recent_table: %s", sqlite3_errmsg(db));
++			g_log(NULL, G_LOG_LEVEL_ERROR, "Failed add books in recent_table: %s", sqlite3_errmsg(db));
+ 		sqlite3_finalize(insert_query);
+ 	}
+ 	else
