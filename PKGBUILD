@@ -3,8 +3,8 @@
 
 _name='nextcloud-client'
 pkgname="${_name}-git-nokde"
-pkgver='2.2.4'
-pkgrel='1'
+pkgver=66.8aade24
+pkgrel=1
 pkgdesc='Nextcloud desktop client (no kio/dolphin support)'
 arch=('i686' 'x86_64')
 url='https://nextcloud.com/'
@@ -40,7 +40,7 @@ build() {
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DCMAKE_INSTALL_LIBDIR=lib \
         -DCMAKE_BUILD_TYPE=Release \
-        -DCMAKE_INSTALL_SYSCONFDIR=/etc/${_name}
+        -DCMAKE_INSTALL_SYSCONFDIR=/etc/${_name} \
 	-DWITH_DOC=FALSE
   make
 }
