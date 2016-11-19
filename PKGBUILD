@@ -213,7 +213,7 @@ _package() {
               'openssh-knock: to use SSH with TCP Stealth support')
   provides=("${_replacesarchkernel[@]/%/=${_archpkgver}}")
   conflicts=("${_replacesoldkernels[@]}" "${_replacesoldmodules[@]}")
-  replaces=("${_replacesarchkernel[@]}" "${_replacesoldkernels[@]}" "${_replacesoldmodules[@]}")
+  replaces=("${_replacesoldkernels[@]}" "${_replacesoldmodules[@]}")
   depends_i686=('mkinitcpio>=0.7')
   depends_x86_64=('mkinitcpio>=0.7')
   backup_i686=("etc/mkinitcpio.d/${pkgbase}.preset")
@@ -282,7 +282,7 @@ _package-headers() {
   pkgdesc="Header files and scripts for building modules for ${pkgbase^} kernel"
   provides=("${_replacesarchkernel[@]/%/-headers=${_archpkgver}}")
   conflicts=("${_replacesoldkernels[@]/%/-headers}")
-  replaces=("${_replacesarchkernel[@]/%/-headers}" "${_replacesoldkernels[@]/%/-headers}")
+  replaces=("${_replacesoldkernels[@]/%/-headers}")
 
   install -dm755 "${pkgdir}/usr/lib/modules/${_kernver}"
 
@@ -423,7 +423,7 @@ _package-docs() {
   pkgdesc="Kernel hackers manual - HTML documentation that comes with the ${pkgbase^} kernel"
   provides=("${_replacesarchkernel[@]/%/-docs=${_archpkgver}}")
   conflicts=("${_replacesoldkernels[@]/%/-docs}")
-  replaces=("${_replacesarchkernel[@]/%/-docs}" "${_replacesoldkernels[@]/%/-docs}")
+  replaces=("${_replacesoldkernels[@]/%/-docs}")
 
   cd "${srcdir}/${_srcname}"
 
