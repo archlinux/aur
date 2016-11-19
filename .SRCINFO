@@ -5,6 +5,7 @@ pkgbase = nw-gyp
 	url = https://github.com/rogerwang/nw-gyp
 	arch = any
 	license = MIT
+	makedepends = nodejs
 	depends = nodejs
 	optdepends = node-webkit: webkit runtime environment
 	noextract = nw-gyp-0.12.2.tgz

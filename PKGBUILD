@@ -10,6 +10,7 @@ url="https://github.com/rogerwang/nw-gyp"
 license=("MIT")
 depends=("nodejs")
 optdepends=("node-webkit: webkit runtime environment")
+makedepends=('nodejs')
 source=( "http://registry.npmjs.org/${_npmname}/-/${_npmname}-${pkgver}.tgz" )
 noextract=($_npmname-$pkgver.tgz)
 sha256sums=('33549526941baf147d60fab412b4028158bf293a396b79c3f521bcaff9e2aa0a')
@@ -21,4 +22,3 @@ package() {
   cd $_npmdir
   npm install -g --prefix "$pkgdir/usr" $_npmname@$pkgver
 }
-
