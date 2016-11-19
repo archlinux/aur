@@ -1,6 +1,6 @@
 # Maintainer: Amirreza Firoozi <firoozi128 dot af at gmail dot com>
 pkgname=traktor
-pkgver=1.3
+pkgver=1.3.5
 pkgrel=1
 epoch=
 pkgdesc="An automated Tor installer  "

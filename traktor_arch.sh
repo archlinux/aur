@@ -1,7 +1,7 @@
 #!/bin/bash
 clear
 
-echo -e "Traktor v1.3\nTor will be automatically installed and configured…\n\n"
+echo -e "Traktor v1.3.5\nTor will be automatically installed and configured…\n\n"
 
 # Write Bridge
 sudo wget https://AmirrezaFiroozi.github.io/traktor/torrcV3 -O /etc/tor/torrc > /dev/null
