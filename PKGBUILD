@@ -4,7 +4,7 @@
 pkgname=nvidia-340xx-ck
 pkgver=340.98
 _extramodules=extramodules-4.8-ck
-pkgrel=5
+pkgrel=6
 pkgdesc="NVIDIA drivers for linux-ck, 340xx legacy branch."
 arch=('i686' 'x86_64')
 url="http://www.nvidia.com/"
@@ -14,7 +14,7 @@ conflicts=('nvidia-ck' 'nvidia-304xx-ck' 'nvidia-275xx-ck' 'nvidia-319-ck' 'nvid
 #groups=('ck-generic')
 #replaces=()
 license=('custom')
-install=nvidia-340xx-ck.install
+install=readme.install
 options=(!strip)
 source_i686+=("http://us.download.nvidia.com/XFree86/Linux-x86/${pkgver}/NVIDIA-Linux-x86-${pkgver}.run")
 source_x86_64+=("http://us.download.nvidia.com/XFree86/Linux-x86_64/${pkgver}/NVIDIA-Linux-x86_64-${pkgver}-no-compat32.run")
