@@ -1,6 +1,6 @@
 pkgbase = lightdm-webkit-theme-sequoia-git
 	pkgdesc = A simple LightDM theme
-	pkgver = r11.eadc43e
+	pkgver = r18.f6a9d91
 	pkgrel = 1
 	url = https://github.com/naueramant/lightdm-webkit-sequoia
 	arch = any
