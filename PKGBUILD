@@ -30,7 +30,7 @@ pkgver() {
 prepare() {
   cd "${srcdir}/${_name}"
   git submodule update --init --recursive
-  mkdir "${srcdir}/${_name}/build-linux"
+  mkdir -p "${srcdir}/${_name}/build-linux"
 }
 
 build() {
