@@ -7,12 +7,12 @@ validpgpkeys=('748231EBCBD808A14F5E85D28C004C2F93481F6B')
 
 pkgname=python-pychroot
 pkgver=0.9.16
-pkgrel=3
+pkgrel=4
 pkgdesc="A python library and CLI tool that simplifies chroot handling"
 arch=( 'i686' 'x86_64' )
 url="https://pypi.python.org/pypi/pychroot/"
 license=( 'BSD' )
-depends=( 'python' )
+depends=( 'python' 'python-snakeoil' )
 makedepends=( 'python' 'python-snakeoil' )
 _pkgname=pychroot
 
