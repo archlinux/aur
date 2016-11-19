@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=Dungeon Keeper
+Exec=dungeon-keeper
+Icon=dungeon-keeper
+Categories=Game;
+Terminal=false

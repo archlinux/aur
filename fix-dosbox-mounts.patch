@@ -1,0 +1,42 @@
+diff --git a/app/dosboxdk_addon.conf b/app/dosboxdk_addon.conf
+--- a/app/dosboxdk_addon.conf
++++ b/app/dosboxdk_addon.conf
+@@ -5,8 +5,8 @@ ipx=false
+ [autoexec]
+ # Lines in this section will be run at startup.
+ @echo off
+-mount C ".."
+-imgmount d "..\game.inst" -t iso -fs iso
++mount C "."
++imgmount d "game.inst" -t iso -fs iso
+ c:
+ cls
+ deeper.exe
+diff --git a/app/dosboxdk_settings.conf b/app/dosboxdk_settings.conf
+--- a/app/dosboxdk_settings.conf
++++ b/app/dosboxdk_settings.conf
+@@ -7,8 +7,8 @@ ipx=false
+ 
+ [autoexec]
+ @echo off
+-mount c ".."
+-imgmount d "..\game.inst" -t iso -fs iso
++mount C "."
++imgmount d "game.inst" -t iso -fs iso
+ c:
+ cls
+ 
+diff --git a/app/dosboxdk_single.conf b/app/dosboxdk_single.conf
+--- a/app/dosboxdk_single.conf
++++ b/app/dosboxdk_single.conf
+@@ -5,8 +5,8 @@ ipx=false
+ [autoexec]
+ # Lines in this section will be run at startup.
+ @echo off
+-mount C ".."
+-imgmount d "..\game.inst" -t iso -fs iso
++mount C "."
++imgmount d "game.inst" -t iso -fs iso
+ c:
+ cls
+ keeper.exe

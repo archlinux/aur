@@ -1,0 +1,108 @@
+diff --git a/app/dosboxdk_client.conf b/app/dosboxdk_client.conf
+--- a/app/dosboxdk_client.conf
++++ b/app/dosboxdk_client.conf
+@@ -3,47 +3,5 @@ ipx=true
+ 
+ [autoexec]
+ # Lines in this section will be run at startup.
+-echo off
+-cls
+-IPXNET CONNECT 127.0.0.1
+-cls
+-@ECHO [40;1m
+-@ECHO  ----------------------------
+-@ECHO  Dungeon Keeper GOLD
+-@ECHO  ----------------------------
+-@ECHO     *MULTIPLAYER - CLIENT*  
+-@ECHO on
+-@ECHO off
+-@ECHO  1) Dungeon Keeper
+-@ECHO  2) Deeper Dungeons
+-@ECHO on
+-@ECHO off
+-@ECHO  ----------------------------
+-@ECHO  3) exit program             
+-@ECHO  ----------------------------
+-@ECHO [0m
+-@ECHO on 
+-@ECHO off
+-@choice /c123 /s Which game do you want to run? [1-3]: /n 
+-if errorlevel 3 goto exit
+-if errorlevel 2 goto deeper
+-if errorlevel 1 goto keeper
+-
+-:keeper
+-mount C ".."
+-imgmount d "..\game.inst" -t iso -fs iso
+-c:
+-cls
+-keeper.exe
+-exit
+-
+-:deeper
+-mount C ".."
+-imgmount d "..\game.inst" -t iso -fs iso
+-c:
+-cls
+-deeper.exe
+-exit
+-
+-:exit
+-exit
++@echo off
++IPXNET CONNECT 127.0.0.1 19900
+\ No newline at end of file
+diff --git a/app/dosboxdk_server.conf b/app/dosboxdk_server.conf
+--- a/app/dosboxdk_server.conf
++++ b/app/dosboxdk_server.conf
+@@ -4,48 +4,4 @@ ipx=true
+ [autoexec]
+ # Lines in this section will be run at startup.
+ @echo off
+-cls
+-IPXNET STARTSERVER
+-cls
+-@ECHO [40;1m
+-@ECHO  ----------------------------
+-@ECHO  Dungeon Keeper GOLD
+-@ECHO  ----------------------------
+-@ECHO     *MULTIPLAYER - HOST*  
+-@ECHO on
+-@ECHO off
+-@ECHO  1) Dungeon Keeper
+-@ECHO  2) Deeper Dungeons
+-@ECHO on
+-@ECHO off
+-@ECHO  ----------------------------
+-@ECHO  3) exit program             
+-@ECHO  ----------------------------
+-@ECHO [0m
+-@ECHO on 
+-@ECHO off
+-@choice /c123 /s Which game do you want to run? [1-3]: /n 
+-if errorlevel 3 goto exit
+-if errorlevel 2 goto deeper
+-if errorlevel 1 goto keeper
+-
+-:keeper
+-cls
+-mount C ".."
+-imgmount d "..\game.inst" -t iso -fs iso
+-c:
+-cls
+-keeper.exe
+-exit
+-
+-:deeper
+-cls
+-mount C ".."
+-imgmount d "..\game.inst" -t iso -fs iso
+-c:
+-cls
+-deeper.exe
+-exit
+-
+-:exit
+-exit
++IPXNET STARTSERVER 19900
+\ No newline at end of file

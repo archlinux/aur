@@ -1,0 +1,32 @@
+pkgbase = dungeon-keeper-gold-gog
+	pkgdesc = Construct and manage a dungeon, recruiting and catering for minions to run it and defend it from enemy invaders.
+	pkgver = 2.1.0.7
+	pkgrel = 1
+	url = https://www.gog.com/game/dungeon_keeper
+	install = dungeon-keeper-gold-gog.install
+	arch = any
+	groups = games
+	license = custom:eula
+	makedepends = innoextract
+	makedepends = icoutils
+	depends = dosbox
+	optdepends = unionfs-fuse: mounting game folder to home for savegames and settings
+	source = setup_dungeon_keeper_gold_2.1.0.7.exe::gogdownloader://dungeon_keeper/installer_win_en
+	source = dungeon-keeper-gold-gog.sh
+	source = dungeon-keeper-gold-gog.desktop
+	source = dosbox_windowed.conf
+	source = dosbox_ipx.conf
+	source = simple-net-config.patch
+	source = fix-dosbox-mounts.patch
+	source = fix-permissions.sh
+	sha256sums = d92ba5f824ce123b281fda9f103d80a0c00af8be06e3c565b596894053233f29
+	sha256sums = a7944e92e1109d5a741ac5147d9a82b911d5d67295d275e0db3bed076abc28fd
+	sha256sums = bdbab0f3525b380d81cea61713009251da55a13c222ee4b4117afec12e90d4f9
+	sha256sums = 50b601b33522677a9bcaf23edc833329067bb87ccda33039c0b95f0d4ddca578
+	sha256sums = e90b33464517fb8b8102f3667755302e01fa10b7bec3d660357f802685416ca8
+	sha256sums = 36f076e6e0aa21d51c98507e4036d30a93234c94dcb0f77752b7ce97caea4f0d
+	sha256sums = 0031fe886d4f163f38ae7a3cdfbafd0b7c43045aa16e4b23b128d0656a83a645
+	sha256sums = bbfa392edd4ac36e2c274d22b07bf2f9115e3f134b0b7c8b146538d2d0b36c2a
+
+pkgname = dungeon-keeper-gold-gog
+
