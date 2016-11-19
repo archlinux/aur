@@ -5,8 +5,8 @@
 pkgbase=linux               # Build stock -ARCH kernel
 #pkgbase=linux-custom       # Build kernel with a different name
 _srcname=linux-4.8
-pkgver=4.8.8
-pkgrel=2
+pkgver=4.8.9
+pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
 license=('GPL2')
@@ -27,10 +27,10 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
 
 sha256sums=('3e9150065f193d3d94bcf46a1fe9f033c7ef7122ab71d75a7fb5a2f0c9a7e11a'
             'SKIP'
-            '588b6537cb660c2f7d483aca13f7509a5fc86c60df32c167d40e81d6c7ab4f9c'
+            '9f3c1924080a16ac2b8f054aa9d0490bc0ee4c6159e2fd10e5f6732b2e9604f6'
             'SKIP'
-            '2ac8818414beb7dbacbd3ad450c516e6ada804827132a7132f63b8189e5f5151'
-            '93a4ad4f6c7bb9296fddec436ed7477a5a5c11cf4d6e68482fa6610442cbcb1f'
+            '2fd479c42362075c3bea6c7c1737fd3e0c222245046d071fa10157d05397965f'
+            'ae414d09d296fcf388e930ff919f975c03302ec2f595e2ae0c172422402b3a6e'
             '834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99')
