@@ -1,0 +1,5 @@
+pkg
+src
+liblogicalaccess
+*.pkg.tar.xz
+*.tar.gz

@@ -1,0 +1,619 @@
+diff -ruN orig/doc/reference/vte-sections.txt new/doc/reference/vte-sections.txt
+--- orig/doc/reference/vte-sections.txt	2016-09-22 21:29:28.000000000 +0200
++++ new/doc/reference/vte-sections.txt	2016-10-22 19:23:31.705230952 +0200
+@@ -41,6 +41,7 @@
+ vte_terminal_get_cursor_shape
+ vte_terminal_get_cursor_blink_mode
+ vte_terminal_set_cursor_blink_mode
++vte_terminal_set_scroll_speed
+ vte_terminal_set_scrollback_lines
+ vte_terminal_set_font
+ vte_terminal_get_font
+diff -ruN orig/src/app.vala new/src/app.vala
+--- orig/src/app.vala	2016-09-22 21:29:28.000000000 +0200
++++ new/src/app.vala	2016-10-22 19:23:31.706230944 +0200
+@@ -198,8 +198,8 @@
+   private uint launch_idle_id;
+ 
+   private string[] builtin_dingus = {
+-    "(((gopher|news|telnet|nntp|file|http|ftp|https)://)|(www|ftp)[-A-Za-z0-9]*\\.)[-A-Za-z0-9\\.]+(:[0-9]*)?",
+-    "(((gopher|news|telnet|nntp|file|http|ftp|https)://)|(www|ftp)[-A-Za-z0-9]*\\.)[-A-Za-z0-9\\.]+(:[0-9]*)?/[-A-Za-z0-9_\\$\\.\\+\\!\\*\\(\\),;:@&=\\?/~\\#\\%]*[^]'\\.}>\\) ,\\\"]"
++    "((((filesystem|gopher|news|telnet|nntp|file|http|ftp|https):)+//)|(www|ftp)[-A-Za-z0-9]*\\.)[-A-Za-z0-9\\.]+(:[0-9]*)?",
++    "((((filesystem|gopher|news|telnet|nntp|file|http|ftp|https):)+//)|(www|ftp)[-A-Za-z0-9]*\\.)[-A-Za-z0-9\\.]+(:[0-9]*)?/[-A-Za-z0-9_\\$\\.\\+\\!\\*\\(\\),;:@&=\\?/~\\#\\%]*[^]'\\.}>\\) ,\\\"]"
+   };
+ 
+   private const GLib.ActionEntry[] action_entries = {
+@@ -316,6 +316,8 @@
+     if (App.Options.object_notifications)
+       terminal.notify.connect(notify_cb);
+ 
++    terminal.notification_received.connect(notification_received_cb);
++
+     /* Settings */
+     if (App.Options.no_double_buffer)
+       terminal.set_double_buffered(false);
+@@ -339,6 +341,7 @@
+     terminal.set_rewrap_on_resize(!App.Options.no_rewrap);
+     terminal.set_scroll_on_output(false);
+     terminal.set_scroll_on_keystroke(true);
++    terminal.set_scroll_speed(App.Options.scroll_speed);
+     terminal.set_scrollback_lines(App.Options.scrollback_lines);
+ 
+     /* Style */
+@@ -779,6 +782,11 @@
+     set_title(terminal.get_window_title());
+   }
+ 
++  private void notification_received_cb(Vte.Terminal terminal, string summary, string? body)
++  {
++    print ("[%s]: %s\n", summary, body);
++  }
++
+ } /* class Window */
+ 
+ class App : Gtk.Application
+@@ -847,6 +855,7 @@
+     public static bool object_notifications = false;
+     public static string? output_filename = null;
+     public static bool reverse = false;
++    public static uint scroll_speed = 0;
+     public static int scrollback_lines = 512;
+     public static int transparency_percent = 0;
+     public static bool version = false;
+@@ -1038,6 +1047,8 @@
+         "Save terminal contents to file at exit", null },
+       { "reverse", 0, 0, OptionArg.NONE, ref reverse,
+         "Reverse foreground/background colors", null },
++      { "scroll-speed", 'n', 0, OptionArg.INT, ref scroll_speed,
++        "Specify the scroll speed", null },
+       { "scrollback-lines", 'n', 0, OptionArg.INT, ref scrollback_lines,
+         "Specify the number of scrollback-lines", null },
+       { "transparent", 'T', 0, OptionArg.INT, ref transparency_percent,
+diff -ruN orig/src/caps.cc new/src/caps.cc
+--- orig/src/caps.cc	2016-09-22 21:29:28.000000000 +0200
++++ new/src/caps.cc	2016-10-22 19:23:31.706230944 +0200
+@@ -255,6 +255,8 @@
+         ENTRY(OSC "118" BEL, "reset-tek-cursor-color")
+         ENTRY(OSC "119" BEL, "reset-highlight-foreground-color")
+         ENTRY(OSC "777;%s" BEL, "urxvt-777")
++        ENTRY(OSC "777;%s;%s;%s" BEL, "send-notification")
++        ENTRY(OSC "777;%s;%s" BEL, "send-notification")
+         ENTRY(OSC "1337;%s" BEL, "iterm2-1337")
+ 
+         COMMENT(/* Set text parameters, ST-terminated versions. */)
+@@ -292,6 +294,8 @@
+         ENTRY(OSC "118" ST, "reset-tek-cursor-color")
+         ENTRY(OSC "119" ST, "reset-highlight-foreground-color")
+         ENTRY(OSC "777;%s" ST, "urxvt-777")
++        ENTRY(OSC "777;%s;%s;%s" ST, "send-notification")
++        ENTRY(OSC "777;%s;%s" ST, "send-notification")
+         ENTRY(OSC "1337;%s" ST, "iterm2-1337")
+ 
+         COMMENT(/* These may be bogus, I can't find docs for them anywhere (#104154). */)
+diff -ruN orig/src/marshal.list new/src/marshal.list
+--- orig/src/marshal.list	2016-09-22 21:29:28.000000000 +0200
++++ new/src/marshal.list	2016-10-22 19:23:31.706230944 +0200
+@@ -1,4 +1,5 @@
+ VOID:INT,INT
+ VOID:OBJECT,OBJECT
++VOID:STRING,STRING
+ VOID:STRING,UINT
+ VOID:UINT,UINT
+diff -ruN orig/src/vte/vteterminal.h new/src/vte/vteterminal.h
+--- orig/src/vte/vteterminal.h	2016-09-22 21:29:28.000000000 +0200
++++ new/src/vte/vteterminal.h	2016-10-22 19:25:07.000000000 +0200
+@@ -104,8 +104,12 @@
+ 
+ 	void (*bell)(VteTerminal* terminal);
+ 
++        void (*terminal_screen_changed)(VteTerminal* terminal);
++
++        void (*notification_received)(VteTerminal* terminal, const gchar *summary, const gchar *body);
++
+         /* Padding for future expansion. */
+-        gpointer padding[16];
++        gpointer padding[14];
+ 
+         VteTerminalClassPrivate *priv;
+ };
+@@ -282,6 +286,10 @@
+ _VTE_PUBLIC
+ VteCursorShape vte_terminal_get_cursor_shape(VteTerminal *terminal) _VTE_GNUC_NONNULL(1);
+ 
++_VTE_PUBLIC
++void vte_terminal_set_scroll_speed(VteTerminal *terminal,
++                                   guint scroll_speed) _VTE_GNUC_NONNULL(1);
++
+ /* Set the number of scrollback lines, above or at an internal minimum. */
+ _VTE_PUBLIC
+ void vte_terminal_set_scrollback_lines(VteTerminal *terminal,
+diff -ruN orig/src/vte.cc new/src/vte.cc
+--- orig/src/vte.cc	2016-09-22 21:29:28.000000000 +0200
++++ new/src/vte.cc	2016-10-22 19:23:31.707230936 +0200
+@@ -123,6 +123,11 @@
+                 return 0;
+         if (G_UNLIKELY (g_unichar_iswide (c)))
+                 return 2;
++        if (G_UNLIKELY(0x25a0 <= c && c < 0x27c0 || // Geometric Shapes, Miscellaneous Symbols, Dingbats
++                       0x2b00 <= c && c < 0x2c00 || // Miscellaneous Symbols and Arrows
++                       0x1f300 <= c && c < 0x20000 || // Miscellaneous Symbols and Pictographs ... Supplemental Symbols and Pictographs
++                       0))
++                return 2;
+         if (G_LIKELY (utf8_ambiguous_width == 1))
+                 return 1;
+         if (G_UNLIKELY (g_unichar_iswide_cjk (c)))
+@@ -8292,6 +8297,9 @@
+ 
+ 	remove_update_timeout(this);
+ 
++	g_free (m_notification_summary);
++	g_free (m_notification_body);
++
+ 	/* discard title updates */
+         g_free(m_window_title);
+         g_free(m_window_title_changed);
+@@ -9608,6 +9616,7 @@
+ VteTerminalPrivate::widget_scroll(GdkEventScroll *event)
+ {
+ 	gdouble delta_x, delta_y;
++	gdouble scroll_speed;
+ 	gdouble v;
+ 	gint cnt, i;
+ 	int button;
+@@ -9661,7 +9670,13 @@
+ 		return;
+ 	}
+ 
+-	v = MAX (1., ceil (gtk_adjustment_get_page_increment (m_vadjustment) / 10.));
++	if (m_scroll_speed == 0) {
++		scroll_speed = ceil (gtk_adjustment_get_page_increment (m_vadjustment) / 10.);
++	} else {
++		scroll_speed = m_scroll_speed;
++	}
++
++	v = MAX (1., scroll_speed);
+ 	_vte_debug_print(VTE_DEBUG_EVENTS,
+ 			"Scroll speed is %d lines per non-smooth scroll unit\n",
+ 			(int) v);
+@@ -9878,6 +9893,16 @@
+ }
+ 
+ bool
++VteTerminalPrivate::set_scroll_speed(unsigned int scroll_speed)
++{
++        if (scroll_speed == m_scroll_speed)
++                return false;
++
++        m_scroll_speed = scroll_speed;
++        return true;
++}
++
++bool
+ VteTerminalPrivate::set_scrollback_lines(long lines)
+ {
+         glong low, high, next;
+@@ -10328,6 +10353,15 @@
+ 
+ 	emit_adjustment_changed();
+ 
++	if (m_notification_received) {
++                _vte_debug_print (VTE_DEBUG_SIGNALS,
++                                  "Emitting `notification-received'.\n");
++                g_signal_emit(object, signals[SIGNAL_NOTIFICATION_RECEIVED], 0,
++                              m_notification_summary,
++                              m_notification_body);
++                m_notification_received = FALSE;
++	}
++
+ 	if (m_window_title_changed) {
+ 		g_free (m_window_title);
+ 		m_window_title = m_window_title_changed;
+diff -ruN orig/src/vtegtk.cc new/src/vtegtk.cc
+--- orig/src/vtegtk.cc	2016-09-22 21:29:28.000000000 +0200
++++ new/src/vtegtk.cc	2016-10-22 19:23:31.708230928 +0200
+@@ -464,6 +464,9 @@
+                 case PROP_REWRAP_ON_RESIZE:
+                         g_value_set_boolean (value, vte_terminal_get_rewrap_on_resize (terminal));
+                         break;
++                case PROP_SCROLL_SPEED:
++                        g_value_set_uint (value, impl->m_scroll_speed);
++                        break;
+                 case PROP_SCROLLBACK_LINES:
+                         g_value_set_uint (value, impl->m_scrollback_lines);
+                         break;
+@@ -550,6 +553,9 @@
+                 case PROP_REWRAP_ON_RESIZE:
+                         vte_terminal_set_rewrap_on_resize (terminal, g_value_get_boolean (value));
+                         break;
++                case PROP_SCROLL_SPEED:
++                        vte_terminal_set_scroll_speed (terminal, g_value_get_uint (value));
++                        break;
+                 case PROP_SCROLLBACK_LINES:
+                         vte_terminal_set_scrollback_lines (terminal, g_value_get_uint (value));
+                         break;
+@@ -657,6 +663,7 @@
+ 	klass->child_exited = NULL;
+ 	klass->encoding_changed = NULL;
+ 	klass->char_size_changed = NULL;
++	klass->notification_received = NULL;
+ 	klass->window_title_changed = NULL;
+ 	klass->icon_title_changed = NULL;
+ 	klass->selection_changed = NULL;
+@@ -687,6 +694,8 @@
+ 
+         klass->bell = NULL;
+ 
++        klass->terminal_screen_changed = NULL;
++
+         /* GtkScrollable interface properties */
+         g_object_class_override_property (gobject_class, PROP_HADJUSTMENT, "hadjustment");
+         g_object_class_override_property (gobject_class, PROP_VADJUSTMENT, "vadjustment");
+@@ -733,6 +742,26 @@
+                              1, G_TYPE_INT);
+ 
+         /**
++         * VteTerminal::notification-received:
++         * @vteterminal: the object which received the signal
++         * @summary: The summary
++         * @body: (allow-none): Extra optional text
++         *
++         * Emitted when a process running in the terminal wants to
++         * send a notification to the desktop environment.
++         */
++        signals[SIGNAL_NOTIFICATION_RECEIVED] =
++                g_signal_new(I_("notification-received"),
++                             G_OBJECT_CLASS_TYPE(klass),
++                             G_SIGNAL_RUN_LAST,
++                             G_STRUCT_OFFSET(VteTerminalClass, notification_received),
++                             NULL,
++                             NULL,
++                             _vte_marshal_VOID__STRING_STRING,
++                             G_TYPE_NONE,
++                             2, G_TYPE_STRING, G_TYPE_STRING);
++
++        /**
+          * VteTerminal::window-title-changed:
+          * @vteterminal: the object which received the signal
+          *
+@@ -1206,6 +1235,23 @@
+                              G_TYPE_NONE, 0);
+ 
+         /**
++         * VteTerminal::screen-changed:
++         * @vteterminal: the object which received the signal
++         *
++         * This signal is emitted when the terminal screen changes between
++         * normal and alternate screen.
++         */
++        signals[SIGNAL_TERMINAL_SCREEN_CHANGED] =
++                g_signal_new(I_("terminal-screen-changed"),
++                             G_OBJECT_CLASS_TYPE(klass),
++                             G_SIGNAL_RUN_LAST,
++                             G_STRUCT_OFFSET(VteTerminalClass, bell),
++                             NULL,
++                             NULL,
++                             g_cclosure_marshal_VOID__VOID,
++                             G_TYPE_NONE, 1, G_TYPE_INT);
++
++        /**
+          * VteTerminal:allow-bold:
+          *
+          * Controls whether or not the terminal will attempt to draw bold text.
+@@ -1385,6 +1431,21 @@
+                                       (GParamFlags) (G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS | G_PARAM_EXPLICIT_NOTIFY));
+ 
+         /**
++         * VteTerminal:scroll-speed:
++         *
++         * The number of lines by which the buffer is moved when
++         * scrolling with a mouse wheel on top of the terminal
++         * Setting it to zero will cause the buffer to be moved by an
++         * amount depending on the number of visible rows the widget
++         * can display.
++         */
++        pspecs[PROP_SCROLL_SPEED] =
++                g_param_spec_uint ("scroll-speed", NULL, NULL,
++                                   0, G_MAXUINT,
++                                   0,
++                                   (GParamFlags) (G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS | G_PARAM_EXPLICIT_NOTIFY));
++
++        /**
+          * VteTerminal:scrollback-lines:
+          *
+          * The length of the scrollback buffer used by the terminal.  The size of
+@@ -3529,6 +3590,30 @@
+ }
+ 
+ /**
++ * vte_terminal_set_scroll_speed:
++ * @terminal: a #VteTerminal
++ * @scroll_speed: move the buffer by this number of lines while scrolling
++ *
++ * Sets the number of lines by which the buffer is moved when
++ * scrolling with a mouse wheel. Setting it to zero will cause the
++ * buffer to be moved by an amount depending on the number of visible
++ * rows the widget can display.
++ */
++void
++vte_terminal_set_scroll_speed(VteTerminal *terminal, guint scroll_speed)
++{
++        g_return_if_fail(VTE_IS_TERMINAL(terminal));
++
++        GObject *object = G_OBJECT(terminal);
++        g_object_freeze_notify(object);
++
++        if (IMPL(terminal)->set_scroll_speed(scroll_speed))
++                g_object_notify_by_pspec(object, pspecs[PROP_SCROLL_SPEED]);
++
++        g_object_thaw_notify(object);
++}
++
++/**
+  * vte_terminal_set_scrollback_lines:
+  * @terminal: a #VteTerminal
+  * @lines: the length of the history buffer
+diff -ruN orig/src/vtegtk.hh new/src/vtegtk.hh
+--- orig/src/vtegtk.hh	2016-09-22 21:29:28.000000000 +0200
++++ new/src/vtegtk.hh	2016-10-22 19:23:31.708230928 +0200
+@@ -51,10 +51,12 @@
+         SIGNAL_RESIZE_WINDOW,
+         SIGNAL_RESTORE_WINDOW,
+         SIGNAL_SELECTION_CHANGED,
++        SIGNAL_TERMINAL_SCREEN_CHANGED,
+         SIGNAL_TEXT_DELETED,
+         SIGNAL_TEXT_INSERTED,
+         SIGNAL_TEXT_MODIFIED,
+         SIGNAL_TEXT_SCROLLED,
++        SIGNAL_NOTIFICATION_RECEIVED,
+         SIGNAL_WINDOW_TITLE_CHANGED,
+         LAST_SIGNAL
+ };
+@@ -79,6 +81,7 @@
+         PROP_MOUSE_POINTER_AUTOHIDE,
+         PROP_PTY,
+         PROP_REWRAP_ON_RESIZE,
++        PROP_SCROLL_SPEED,
+         PROP_SCROLLBACK_LINES,
+         PROP_SCROLL_ON_KEYSTROKE,
+         PROP_SCROLL_ON_OUTPUT,
+diff -ruN orig/src/vteinternal.hh new/src/vteinternal.hh
+--- orig/src/vteinternal.hh	2016-09-22 21:29:28.000000000 +0200
++++ new/src/vteinternal.hh	2016-10-22 19:23:31.708230928 +0200
+@@ -385,6 +385,7 @@
+         gboolean m_scroll_on_output;
+         gboolean m_scroll_on_keystroke;
+         gboolean m_alternate_screen_scroll;
++        guint m_scroll_speed;
+         vte::grid::row_t m_scrollback_lines;
+ 
+         /* Restricted scrolling */
+@@ -493,6 +494,11 @@
+         gboolean m_cursor_moved_pending;
+         gboolean m_contents_changed_pending;
+ 
++	/* desktop notification */
++	gboolean m_notification_received;
++	gchar *m_notification_summary;
++	gchar *m_notification_body;
++
+ 	/* window name changes */
+         char* m_window_title;
+         char* m_window_title_changed;
+@@ -1088,6 +1094,7 @@
+         bool set_mouse_autohide(bool autohide);
+         bool set_pty(VtePty *pty);
+         bool set_rewrap_on_resize(bool rewrap);
++        bool set_scroll_speed(unsigned int scroll_speed);
+         bool set_scrollback_lines(long lines);
+         bool set_scroll_on_keystroke(bool scroll);
+         bool set_scroll_on_output(bool scroll);
+@@ -1181,6 +1188,8 @@
+                          vte::grid::row_t end_row);
+         void select_empty(vte::grid::column_t col,
+                           vte::grid::row_t row);
++
++        void emit_terminal_screen_changed(int screen);
+ };
+ 
+ extern GTimer *process_timer;
+diff -ruN orig/src/vteseq.cc new/src/vteseq.cc
+--- orig/src/vteseq.cc	2016-09-22 21:29:28.000000000 +0200
++++ new/src/vteseq.cc	2016-10-22 19:23:31.708230928 +0200
+@@ -25,6 +25,7 @@
+ #ifdef HAVE_SYS_SYSLIMITS_H
+ #include <sys/syslimits.h>
+ #endif
++#include <termios.h>
+ 
+ #include <glib.h>
+ 
+@@ -202,6 +203,13 @@
+         g_signal_emit(m_terminal, signals[SIGNAL_RESIZE_WINDOW], 0, columns, rows);
+ }
+ 
++/* Emit a "terminal-screen-changed" signal */
++void
++VteTerminalPrivate::emit_terminal_screen_changed(int screen)
++{
++        _vte_debug_print(VTE_DEBUG_SIGNALS, "Emitting `terminal_screen_changed'.\n");
++        g_signal_emit(m_terminal, signals[SIGNAL_TERMINAL_SCREEN_CHANGED], 0, screen);
++}
+ 
+ /* Some common functions */
+ 
+@@ -380,6 +388,9 @@
+ VteTerminalPrivate::seq_normal_screen()
+ {
+         seq_switch_screen(&m_normal_screen);
++
++        /* Emit signal */
++        emit_terminal_screen_changed(0);
+ }
+ 
+ void
+@@ -407,6 +418,9 @@
+ VteTerminalPrivate::seq_alternate_screen()
+ {
+         seq_switch_screen(&m_alternate_screen);
++
++        /* Emit signal */
++        emit_terminal_screen_changed(1);
+ }
+ 
+ /* Switch to normal screen and restore cursor (in this order). */
+@@ -1589,12 +1603,23 @@
+ void
+ VteTerminalPrivate::seq_backspace()
+ {
+-        ensure_cursor_is_onscreen();
++	ensure_cursor_is_onscreen();
+ 
+-        if (m_screen->cursor.col > 0) {
++	struct termios tio;
++	g_assert(tcgetattr(vte_pty_get_fd(m_pty), &tio) == 0);
++	if (tio.c_lflag & ICANON && tio.c_iflag & IUTF8) {
++		VteRowData *rowdata = ensure_row();
++		int col = m_screen->cursor.col;
++		if (col == 0)
++			;
++		else if (col > rowdata->len)
++			col--;
++		else
++			col = MAX(col - rowdata->cells[col-1].attr.columns, 0);
++		m_screen->cursor.col = col;
++	} else if (m_screen->cursor.col > 0)
+ 		/* There's room to move left, so do so. */
+-                m_screen->cursor.col--;
+-	}
++		m_screen->cursor.col--;
+ }
+ 
+ /* Cursor left N columns. */
+@@ -2322,6 +2347,96 @@
+ 	vte_sequence_handler_send_primary_device_attributes (that, params);
+ }
+ 
++static void
++vte_sequence_handler_send_notification (VteTerminalPrivate *that, GValueArray *params)
++{
++	GValue *value;
++	const char *end;
++	char *option = NULL;
++	char *str = NULL;
++	char *p, *validated;
++
++	g_clear_pointer (&that->m_notification_summary, g_free);
++	g_clear_pointer (&that->m_notification_body, g_free);
++
++	value = g_value_array_get_nth (params, 0);
++	if (value == NULL) {
++		goto out;
++	}
++
++	if (G_VALUE_HOLDS_STRING (value)) {
++		option = g_value_dup_string (value);
++	} else if (G_VALUE_HOLDS_POINTER (value)) {
++		option = that->ucs4_to_utf8 ((const guchar *)g_value_get_pointer (value));
++	} else {
++		goto out;
++	}
++
++	if (g_strcmp0 (option, "notify") != 0) {
++		goto out;
++	}
++
++	value = g_value_array_get_nth (params, 1);
++	if (value == NULL) {
++		goto out;
++	}
++
++	if (G_VALUE_HOLDS_STRING (value)) {
++		str = g_value_dup_string (value);
++	} else if (G_VALUE_HOLDS_POINTER (value)) {
++		str = that->ucs4_to_utf8 ((const guchar *)g_value_get_pointer (value));
++	} else {
++		goto out;
++	}
++
++	g_utf8_validate (str, strlen (str), &end);
++	validated = g_strndup (str, end - str);
++
++	/* No control characters allowed. */
++	for (p = validated; *p != '\0'; p++) {
++		if ((*p & 0x1f) == *p) {
++			*p = ' ';
++		}
++	}
++
++	that->m_notification_summary = validated;
++	g_free (str);
++
++	that->m_notification_received = TRUE;
++	if (params->n_values == 2) {
++		goto out;
++	}
++
++	value = g_value_array_get_nth (params, 2);
++	if (value == NULL) {
++		goto out;
++	}
++
++	if (G_VALUE_HOLDS_STRING (value)) {
++		str = g_value_dup_string (value);
++	} else if (G_VALUE_HOLDS_POINTER (value)) {
++		str = that->ucs4_to_utf8 ((const guchar *)g_value_get_pointer (value));
++	} else {
++		goto out;
++	}
++
++	g_utf8_validate (str, strlen (str), &end);
++	validated = g_strndup (str, end - str);
++
++	/* No control characters allowed. */
++	for (p = validated; *p != '\0'; p++) {
++		if ((*p & 0x1f) == *p) {
++			*p = ' ';
++		}
++	}
++
++	that->m_notification_body = validated;
++	g_free (str);
++
++ out:
++	g_free (option);
++}
++
+ /* Send secondary device attributes. */
+ static void
+ vte_sequence_handler_send_secondary_device_attributes (VteTerminalPrivate *that, GValueArray *params)
+diff -ruN orig/src/vteseq-n.gperf new/src/vteseq-n.gperf
+--- orig/src/vteseq-n.gperf	2016-09-22 21:29:28.000000000 +0200
++++ new/src/vteseq-n.gperf	2016-10-22 19:23:31.709230920 +0200
+@@ -170,3 +170,4 @@
+ "set-current-file-uri", VTE_SEQUENCE_HANDLER(vte_sequence_handler_set_current_file_uri)
+ "urxvt-777", VTE_SEQUENCE_HANDLER(vte_sequence_handler_urxvt_777)
+ "iterm2-1337", VTE_SEQUENCE_HANDLER(vte_sequence_handler_iterm2_1337)
++"send-notification", VTE_SEQUENCE_HANDLER(vte_sequence_handler_send_notification)
+diff -ruN orig/src/vte.sh new/src/vte.sh
+--- orig/src/vte.sh	2016-09-22 21:29:28.000000000 +0200
++++ new/src/vte.sh	2016-10-22 19:23:31.709230920 +0200
+@@ -46,13 +46,17 @@
+ }
+ 
+ __vte_osc7 () {
+-  printf "\033]7;file://%s%s\007" "${HOSTNAME:-}" "$(__vte_urlencode "${PWD}")"
++  last_command=$(history | tail -n1 - | cut -c8-)
++
++  printf "\033]777;notify;Command completed;%s\007\033]7;file://%s%s\007" "${last_command}" "${HOSTNAME:-}" "$(__vte_urlencode "${PWD}")"
+ }
+ 
+ __vte_prompt_command() {
++  local command=$(HISTTIMEFORMAT= history 1 | sed 's/^ *[0-9]\+ *//')
++  command="${command//;/ }"
+   local pwd='~'
+   [ "$PWD" != "$HOME" ] && pwd=${PWD/#$HOME\//\~\/}
+-  printf "\033]0;%s@%s:%s\007%s" "${USER}" "${HOSTNAME%%.*}" "${pwd}" "$(__vte_osc7)"
++  printf "\033]777;notify;Command completed;%s\007\033]0;%s@%s:%s\007%s" "${command}" "${USER}" "${HOSTNAME%%.*}" "${pwd}" "$(__vte_osc7)"
+ }
+ 
+ case "$TERM" in
