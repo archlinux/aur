@@ -1,5 +1,5 @@
 pkgbase = nw-gyp
-	pkgdesc = Native addon build tool for node-webkit
+	pkgdesc = Native addon build tool for nwjs-bin
 	pkgver = 0.12.2
 	pkgrel = 1
 	url = https://github.com/rogerwang/nw-gyp
@@ -7,7 +7,7 @@ pkgbase = nw-gyp
 	license = MIT
 	makedepends = nodejs
 	depends = nodejs
-	optdepends = node-webkit: webkit runtime environment
+	optdepends = nwjs-bin: webkit runtime environment
 	noextract = nw-gyp-0.12.2.tgz
 	source = http://registry.npmjs.org/nw-gyp/-/nw-gyp-0.12.2.tgz
 	sha256sums = 33549526941baf147d60fab412b4028158bf293a396b79c3f521bcaff9e2aa0a
