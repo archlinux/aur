@@ -3,7 +3,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=scribus-svn
-pkgver=21518
+pkgver=21520
 pkgrel=1
 pkgdesc="A desktop publishing program - Version from SVN"
 arch=('i686' 'x86_64')
@@ -51,4 +51,9 @@ package () {
   install -Dm644 scribus.desktop $pkgdir/usr/share/applications/scribus.desktop
   install -d "${pkgdir}"/usr/share/pixmaps
   ln -s /usr/share/scribus/icons/1_5_0/scribus.png "${pkgdir}"/usr/share/pixmaps/scribus.png
+  # move around some picture files
+  for i in AppIcon.png AllCaps.png Kapital.xpm Strike.xpm outlined.png shadow.png shade.png Revers.png
+  do install "$pkgdir"/usr/share/scribus/icons/1_5_0/$i "$pkgdir"/usr/share/scribus/icons/1_5_1/$i
+     rm "$pkgdir"/usr/share/scribus/icons/1_5_0/$i
+  done
 }
