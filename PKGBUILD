@@ -2,16 +2,16 @@
 
 pkgname=guile-git
 _gitname=guile
-pkgver=2.1.4.87.gfcb4348
+pkgver=2.1.4.93.g1e92511
 pkgrel=1
 pkgdesc="A portable, embeddable Scheme implementation (Git snapshot)"
 arch=('i686' 'x86_64')
 license=('GPL')
 makedepends=('git')
 optdepends=('texinfo: for using texinfo scheme sources')
-provides=('guile')
 depends=('gc' 'libtool' 'libffi' 'libunistring' 'gmp' 'readline')
 provides=('guile')
+conflicts=('guile4emacs')
 options=('!strip' '!makeflags' 'libtool')
 source=("git://git.sv.gnu.org/$_gitname.git")
 url="http://www.gnu.org/software/guile/"
