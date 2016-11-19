@@ -2,7 +2,7 @@
 pkgname=quicklisp
 pkgver=0.1
 pkgrel=1
-epoch=1
+epoch=2
 pkgdesc="A library manager for Common Lisp"
 arch=('any')
 url="https://www.quicklisp.org"
