@@ -15,7 +15,7 @@
 # archzfs github page.
 #
 pkgname="zfs-utils-linux"
-pkgver=0.6.5.8_4.8.8_1
+pkgver=0.6.5.8_4.8.8_2
 pkgrel=1
 pkgdesc="Kernel module support files for the Zettabyte File System."
 depends=("spl-linux" "linux=4.8.8")
