@@ -1,0 +1,14 @@
+pkgbase = hexitor
+	pkgdesc = A terminal hex editor
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/briansteffens/hexitor
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = ncurses
+	source = hexitor::git+https://github.com/briansteffens/hexitor.git
+	md5sums = SKIP
+
+pkgname = hexitor
+
