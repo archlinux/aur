@@ -6,9 +6,11 @@ pkgbase = dpaste
 	arch = i686
 	arch = x86_64
 	license = GPL3
-	depends = opendht-git
+	makedepends = opendht-git
+	makedepends = gnutls
 	source = git://github.com/sim590/dpaste
 	sha256sums = SKIP
+	makedepends_i686 = lib32-gnutls
 
 pkgname = dpaste
 

@@ -7,7 +7,9 @@ arch=('i686' 'x86_64')
 license=('GPL3')
 url='https://github.com/sim590/dpaste'
 source=('git://github.com/sim590/dpaste')
-depends=('opendht-git')
+makedepends=('opendht-git')
+makedepends_x86_64=('gnutls')
+makedepends_i686=('lib32-gnutls')
 sha256sums=('SKIP')
 
 pkgver() {
