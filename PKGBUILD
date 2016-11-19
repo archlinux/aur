@@ -6,8 +6,8 @@
 # Contributor: Alexander <iam.asm89@gmail.com>
 
 pkgname=hipchat
-pkgver=4.27.0.1658
-pkgrel=2
+pkgver=4.28.0.1659
+pkgrel=1
 pkgdesc="Persistent group chat using XMPP"
 arch=('x86_64')
 url="https://www.hipchat.com/linux"
@@ -16,7 +16,7 @@ depends=('fontconfig' 'libgl' 'libltdl' 'libxslt' 'hicolor-icon-theme'
          'libxcomposite' 'libxcursor' 'libxkbcommon' 'libxrandr' 'libxslt' 'libxss'
          'libpulse' 'xcb-util-keysyms' 'nss')
 source=("https://atlassian.artifactoryonline.com/atlassian/hipchat-apt-client/pool/HipChat4-${pkgver}-Linux.deb" "license.html")
-sha1sums=('0eeb0bf106205c9e3acccddd40b1cf60473e5d1d'
+sha1sums=('498b680e6ab72f61a4f81b9bbc454bf73b81d165'
           'd57436db297ab4313a5964bba05060e2c7e93e70')
 
 prepare() {
