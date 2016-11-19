@@ -1,0 +1,13 @@
+pkgbase = gtk-theme-vimix-aurora
+	pkgdesc = Gnome 3.20 & 3.22 theme based on Vimix Dark by VINCELIUICE.
+	pkgver = 1
+	pkgrel = 0
+	url = https://www.gnome-look.org/p/1161587/
+	arch = any
+	license = GPL
+	depends = gtk3>=3.20
+	source = vimix-aurora.tar.xz::https://dl.opendesktop.org/api/files/download?id=1479370833
+	sha256sums = 5fa7c393422619d99524e9ee17b9b592d3d0a7fd4f3fa814983e8df580fe26dc
+
+pkgname = gtk-theme-vimix-aurora
+
