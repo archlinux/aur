@@ -28,15 +28,15 @@ pkgver() {
 }
 
 prepare() {
-  cd "${srcdir}/${pkgname}"
+  cd "${srcdir}/${_name}"
   git submodule update --init --recursive
-  mkdir "${srcdir}/${pkgname}/build-linux"
+  mkdir "${srcdir}/${_name}/build-linux"
 }
 
 build() {
-  cd "${srcdir}/${pkgname}/build-linux"
+  cd "${srcdir}/${_name}/build-linux"
 
-  cmake -D OEM_THEME_DIR=${srcdir}/${pkgname}/nextcloudtheme ../client \
+  cmake -D OEM_THEME_DIR=${srcdir}/${_name}/nextcloudtheme ../client \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DCMAKE_INSTALL_LIBDIR=lib \
         -DCMAKE_BUILD_TYPE=Release \
@@ -46,11 +46,11 @@ build() {
 }
 
 check() {
-  sed -Ei 's|Icon(\[.*\])?=nextcloud|Icon\1=Nextcloud|g' "${srcdir}/${pkgname}/build-linux/src/gui/nextcloud.desktop"
+  sed -Ei 's|Icon(\[.*\])?=nextcloud|Icon\1=Nextcloud|g' "${srcdir}/${_name}/build-linux/src/gui/nextcloud.desktop"
 }
 
 package() {
-  cd "${srcdir}/${pkgname}/build-linux"
+  cd "${srcdir}/${_name}/build-linux"
   make DESTDIR="${pkgdir}" install
   install -Dm644 ${srcdir}/${_name}.service ${pkgdir}/usr/lib/systemd/user/${_name}.service
 }
