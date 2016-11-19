@@ -1,5 +1,5 @@
 pkgbase = nextcloud-client-git-nokde
-	pkgdesc = Nextcloud desktop client (no kio/dolphin support)
+	pkgdesc = Nextcloud desktop client (no kio/dolphin support, with systemd user session service)
 	pkgver = 66.8aade24
 	pkgrel = 1
 	url = https://nextcloud.com/
