@@ -1,8 +1,8 @@
-# Maintainer: Tbsc <me@tbscdev.xyz>
+# Maintainer: Tbsc <me in tbscdev point xyz>
 
 pkgname=ratslap-git
 pkgver=0.2.0.r2.g353fe44
-pkgrel=1
+pkgrel=2
 pkgdesc="Community made Linux drivers for Logitech mice (Currently only G300s)"
 arch=('i686' 'x86_64')
 url="https://gitlab.com/krayon/ratslap"
