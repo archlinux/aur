@@ -2,7 +2,7 @@
 pkgname=flasm
 pkgdesc='SWF (Flash) ActionScript bytecode assembler and disassembler'
 pkgver=1.63
-pkgrel=1
+pkgrel=2
 arch=(i686 x86_64)
 license=(custom:BSD)
 url='http://flasm.sourceforge.net/'
