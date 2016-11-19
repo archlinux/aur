@@ -2,8 +2,8 @@
 # Maintainer: naxuroqa <naxuroqa@gmail.com>
 
 pkgname=tox-prpl-git
-pkgver=0.4.2.r11.g18cc684
-pkgrel=2
+pkgver=0.4.2.r41.g5179021
+pkgrel=1
 pkgdesc='Tox protocol plugin for pidgin / libpurple - git checkout'
 arch=('i686' 'x86_64')
 url='http://tox.dhs.org/'
@@ -30,13 +30,6 @@ pkgver() {
 			"$(git rev-list --count master)" \
 			"$(git log -1 --format='%h')"
 	fi
-}
-
-prepare() {
-	cd tox-prpl/
-
-	# make it compile again with new api
-	git cherry-pick -n e547fa94
 }
 
 build() {
