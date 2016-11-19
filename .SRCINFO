@@ -1,0 +1,32 @@
+pkgbase = jagged-alliance-deadly-games-gog
+	pkgdesc = A turn-based tactics game developed as a sequel of Jagged Alliance and features new missions and a multiplayer mode.
+	pkgver = 2.0.0.2
+	pkgrel = 1
+	url = https://www.gog.com/game/jagged_alliance_deadly_games
+	install = jagged-alliance-deadly-games-gog.install
+	arch = any
+	groups = games
+	license = custom:eula
+	makedepends = innoextract
+	makedepends = icoutils
+	depends = dosbox
+	optdepends = unionfs-fuse: mounting game folder to home for savegames and settings
+	source = setup_ja_dg_2.0.0.2.exe::gogdownloader://jagged_alliance_deadly_games/installer_win_en
+	source = jagged-alliance-deadly-games-gog.sh
+	source = jagged-alliance-deadly-games-gog.desktop
+	source = dosbox_windowed.conf
+	source = dosbox_ipx.conf
+	source = simple-net-config.patch
+	source = fix-dosbox-mounts.patch
+	source = fix-permissions.sh
+	sha256sums = ba1cbc5f037f4e39b5cc4f89952f3995843cc3c34073eb6207537a286f0dec51
+	sha256sums = c82f0f84ff1af66da90182e11c3ce39c2b32ff8d8eb52d4a8b98073e52b92a9a
+	sha256sums = a036530c481cb7763ed778366d046636ca1695f8da1d518e98a72a4f86b4dc14
+	sha256sums = 50b601b33522677a9bcaf23edc833329067bb87ccda33039c0b95f0d4ddca578
+	sha256sums = e90b33464517fb8b8102f3667755302e01fa10b7bec3d660357f802685416ca8
+	sha256sums = fa78eb7a3cf09896d011bcf06ca509661db281151b5c1f54c28713f874fc6880
+	sha256sums = fd647a02d2d6894e5998d141281b269a6fd51fe0fd60774109f47d5feb7eed18
+	sha256sums = 5bd5ad321e40676448871190cfe55294279c3bf0703e71e97a28c138ebe44937
+
+pkgname = jagged-alliance-deadly-games-gog
+
