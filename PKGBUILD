@@ -1,7 +1,7 @@
 # Maintainer: Troy Engel <troyengel+arch@gmail.com>
 
 pkgname=xeroxprtdrv
-pkgver=5.20.558.3113
+pkgver=5.20.597.3452
 pkgrel=1
 pkgdesc="Xerox Unix Print Drivers"
 arch=('i686' 'x86_64')
@@ -12,15 +12,15 @@ options=('emptydirs')
 depends=('gcc-libs' 'libxinerama' 'libxcursor' 'libxdamage' 'libx11'
          'libxau' 'libxdmcp' 'xorg-xhost')
 
-if [ "$CARCH" == "i686" ]; then
-  source=("http://download.support.xerox.com/pub/drivers/CQ8580/drivers/linux/ar/Xeroxv5Pkg-Linuxi686-${pkgver}.rpm")
-  md5sums=('015dd0813b68330de0ed2e14b9063366')
-elif [ "$CARCH" == "x86_64" ]; then
-  source=("http://download.support.xerox.com/pub/drivers/CQ8580/drivers/linux/ar/Xeroxv5Pkg-Linuxx86_64-${pkgver}.rpm")
-  md5sums=('7cced720ba77c2fb745d23fc2836b1d7')
-fi
-source+=('xeroxprtdrv.license')
-md5sums+=('0a8eb0c1480a6ccc1ddab7cbb5e1bde4')
+source_i686=("http://download.support.xerox.com/pub/drivers/CQ8580/drivers/linux/ar/Xeroxv5Pkg-Linuxi686-${pkgver}.rpm"
+             'xeroxprtdrv.license')
+md5sums_i686=('cc21ce9ad8055ab7b1ca26b1f3095fc7'
+              '0a8eb0c1480a6ccc1ddab7cbb5e1bde4')
+md5sums_x86_64=('aed8f75952d26b99e61af259ca0428bd'
+                '0a8eb0c1480a6ccc1ddab7cbb5e1bde4')
+
+source_x86_64=("http://download.support.xerox.com/pub/drivers/CQ8580/drivers/linux/ar/Xeroxv5Pkg-Linuxx86_64-${pkgver}.rpm"
+               'xeroxprtdrv.license')
 
 package() {
   # remove RPM SElinux files, they delete these in RPM post-install
