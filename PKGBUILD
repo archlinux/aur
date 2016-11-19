@@ -1,7 +1,7 @@
 # Maintainer: Michael Kogan <michael.kogan at gmx dot net>
 
 pkgname='wm-switcher-git'
-pkgdesc='Simple GUI to switch window managers in Linux with minimal dependencies'
+pkgdesc='Simple GUI to switch window managers in Linux with minimal dependencies, git version'
 pkgver=r3.9c8525e
 pkgrel=1
 
