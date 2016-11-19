@@ -1,6 +1,6 @@
 pkgbase = egitu
 	pkgdesc = EFL Git user interface
-	pkgver = r250.d6fa4b5
+	pkgver = r256.c92699b
 	pkgrel = 1
 	url = http://www.enlightenment.org/
 	arch = i686
@@ -11,7 +11,7 @@ pkgbase = egitu
 	depends = git
 	depends = python
 	depends = python-efl
-	provides = egitu=r250.d6fa4b5
+	provides = egitu=r256.c92699b
 	conflicts = egitu
 	source = git+https://github.com/DaveMDS/egitu.git
 	sha256sums = SKIP
