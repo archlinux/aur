@@ -1,0 +1,10 @@
+
+
+post_install()
+{
+  echo "==== quicklisp installed ===="
+  echo "To load a system, use: (ql:quickload \"system-name\")"
+  echo "To find systems, use: (ql:system-apropos \"term\")"
+  echo "To load Quicklisp every time you start Lisp, copy the lines from /etc/default/quicklisp to your ~/sbclrc or ~/.ccl-init.lisp"
+  echo "For more information, see http://www.quicklisp.org/beta/"
+}

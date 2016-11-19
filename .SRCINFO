@@ -1,0 +1,17 @@
+pkgbase = quicklisp
+	pkgdesc = A library manager for Common Lisp
+	pkgver = 0.1
+	pkgrel = 1
+	epoch = 1
+	url = https://www.quicklisp.org
+	install = quicklisp.install
+	arch = any
+	license = bsd
+	makedepends = sbcl
+	optdepends = sbcl
+	optdepends = ccl-svn
+	source = https://beta.quicklisp.org/quicklisp.lisp
+	sha256sums = 4a7a5c2aebe0716417047854267397e24a44d0cce096127411e9ce9ccfeb2c17
+
+pkgname = quicklisp
+
