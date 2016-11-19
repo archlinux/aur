@@ -1,10 +1,6 @@
+# set needed variables
+export DEVKITPRO=/opt/devkitpro
+export DEVKITPPC=${DEVKITPRO}/devkitPPC
 
-# allow per-user override
-if [ -z $DEVKITPRO ]; then
-  export DEVKITPRO=/opt/devkitpro
-fi
-export DEVKITPPC=$DEVKITPRO/devkitPPC
-
-# add to paths
-export PATH=$PATH:$DEVKITPPC/bin
-export MANPATH=$MANPATH:$DEVKITPPC/man
+# add to path
+export PATH=${PATH}:${DEVKITPPC}/bin
