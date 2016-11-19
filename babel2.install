@@ -1,0 +1,8 @@
+
+
+post_install()
+{
+  echo -e "\e[32m"
+  echo "To load Babel2 every time you start Lisp, copy the lines from /etc/default/Babel2 to your ~/.sbclrc or ~/.ccl-init.lisp"
+  echo -e "\e[0m"
+}

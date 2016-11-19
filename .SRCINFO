@@ -1,0 +1,17 @@
+pkgbase = babel2
+	pkgdesc = A framework for FCG, IRL and multi-agent language game in Common Lisp
+	pkgver = 2
+	pkgrel = 1
+	url = http://emergent-languages.org/Babel2/
+	install = babel2.install
+	arch = any
+	license = apache
+	makedepends = unzip
+	depends = asdf
+	optdepends = sbcl
+	optdepends = ccl-svn
+	source = http://emergent-languages.org/Babel2/downloads/Babel2.zip
+	sha256sums = 0cba17a79a365c8cdc5c49be4a13cbf2c22ef22c3fb1f28b1957a67237d4e0f8
+
+pkgname = babel2
+
