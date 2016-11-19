@@ -6,8 +6,8 @@ _compile=0
 
 pkgname=vlc-plugin-fluidsynth
 pkgver=2.2.4
-pkgrel=6
-_pkgrel_status=+b2
+pkgrel=8
+_pkgrel_status=
 pkgdesc="FluidSynth plugin for VLC"
 arch=('i686' 'x86_64')
 url="http://www.videolan.org/vlc/"
@@ -23,8 +23,8 @@ if [ "${_compile}" -eq 0 ]; then
 	source_i686=("${pkgname}_${pkgver}-${pkgrel}${_pkgrel_status}_i386.deb::http://ftp.us.debian.org/debian/pool/main/v/vlc/${pkgname}_${pkgver}-${pkgrel}${_pkgrel_status}_i386.deb")
 	source_x86_64=("${pkgname}_${pkgver}-${pkgrel}${_pkgrel_status}_amd64.deb::http://ftp.us.debian.org/debian/pool/main/v/vlc/${pkgname}_${pkgver}-${pkgrel}${_pkgrel_status}_amd64.deb")
 
-md5sums_i686=('c2297b3910c18f2cf09d7a3a813f6720')
-md5sums_x86_64=('975bc2fce9b702f6f4f12649f3cff088')
+md5sums_i686=('d0ce9204b75c9efe6fc047e1ce6c8741')
+md5sums_x86_64=('23e9cf7310cd90576bb62deb203b698b')
 else
 	options=("!libtool" "!emptydirs")
 	source+=("git://git.videolan.org/${pkgname%%-*}/${pkgname%%-*}-${pkgver:0:3}.git")
@@ -97,8 +97,8 @@ fi
 package() {
 	if [ "${_compile}" -eq 0 ]; then
 		cd "${srcdir}/"
-  
-		install -Dm0755 "${srcdir}/data/usr/lib/vlc/plugins/codec/libfluidsynth_plugin.so" "$pkgdir/usr/lib/vlc/plugins/codec/libfluidsynth_plugin.so"
+		_bits=i386 ; [[ "$CARCH" = 'x86_64' ]] && _bits=x86_64
+		install -Dm0755 "${srcdir}/data/usr/lib/$_bits-linux-gnu/vlc/plugins/codec/libfluidsynth_plugin.so" "$pkgdir/usr/lib/vlc/plugins/codec/libfluidsynth_plugin.so"
 	else
 		cd "${srcdir}/${pkgname%%-*}-${pkgver:0:3}/modules/"
 		make DESTDIR="${pkgdir}" codec_LTLIBRARIES="libfluidsynth_plugin.la" install-codecLTLIBRARIES
