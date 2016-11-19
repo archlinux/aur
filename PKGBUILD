@@ -1,27 +1,22 @@
 # Maintainer: Jens Staal <staal1978@gmail.com>
 # Contributor: talavis <aur talavis eu>
 # Contributor: Bruno Vieira <mail@bmpvieira.com>
-pkgname=ugene
-pkgver=1.24.0
-pkgrel=1
-pkgdesc="A free cross-platform genome analysis suite."
-arch=('i686' 'x86_64')
-url="http://ugene.net/"
-license=('GPL')
-depends=('qt5-base' 'libxtst' 'glu' 'qtwebkit' 'desktop-file-utils' 'procps-ng' 'python' 'shared-mime-info'
-'qt5-svg' 'qt5-script')
-source=("${url}downloads/$pkgname-$pkgver.tar.gz")
-sha256sums=('98efe1b00c0c1df35df22094c57f3df96843225645aede5259f7fbb59d229557')
-install=$pkgname.install
 
-prepare() {
-  cd "$srcdir/$pkgname-$pkgver"
-  #nothing for now
-    
-}
+pkgname=ugene
+pkgver=1.25.0
+pkgrel=1
+pkgdesc="A free cross-platform genome analysis suite"
+arch=('i686' 'x86_64')
+url="http://ugene.net"
+license=('GPL')
+depends=('qt5-script' 'gt-svg' 'qt5-webkit' 'glu' 'procps-ng' 'python')
+makedepends=('qt5-tools')
+source=("https://github.com/ugeneunipro/ugene/archive/$pkgver.tar.gz")
+sha256sums=('4b592a1a0ff5efba5dbdbee134755d957d132d85b6cedfbf6f7ba4b03bcea5ee')
 
 build() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd $pkgname-$pkgver
+
   if [[ $CARCH == "i686" ]]
   then
     qmake-qt5 QMAKE_CFLAGS_ISYSTEM= PREFIX=/usr -r
@@ -33,7 +28,7 @@ build() {
 }
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd $pkgname-$pkgver
+
   make INSTALL_ROOT="$pkgdir" install
 }
-
