@@ -1,8 +1,11 @@
  
 post_install() {
-  echo "To use the toolchain right away, you have to set the environment variables in"
-  echo "your currently running shells by executing 'source /etc/profile.d/devkitppc.sh'!"
-  echo "This is done automatically for every shell opened from now on."
+  echo "To use the toolchain, environment variables have to be set in your shell."
+  echo "Files setting them for POSIX compatible shells (bash, zsh, ...) and fish are"
+  echo "provided and should be used automatically for shells opened from now on."
+  echo "To use the toolchain right away, use"
+  echo "  $ source /etc/profile.d/devkitppc.sh     # (for POSIX compatible)"
+  echo "  $ source /etc/fish/conf.d/devkitppc.fish # (for fish shell)"
 }
 
 post_upgrade() {
