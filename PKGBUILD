@@ -2,20 +2,20 @@
 
 pkgbase=mpv
 pkgname=mpv-light
-pkgver=0.21.0
-pkgrel=2
+pkgver=0.22.0
+pkgrel=1
 pkgdesc='Video player based on MPlayer/mplayer2, with selection of features.'
 arch=('i686' 'x86_64')
 license=('GPL')
 url='http://mpv.io'
-depends=('ffmpeg' 'lcms2' 'libxkbcommon' 'libxrandr' 'libxss' 'lua52' 'uchardet' 'hicolor-icon-theme')
+depends=('ffmpeg' 'libxkbcommon' 'libxrandr' 'libxss' 'lua52' 'uchardet' 'hicolor-icon-theme')
 makedepends=('mesa' 'python-docutils')
 optdepends=('youtube-dl: for video-sharing websites playback')
 options=('!emptydirs' '!buildflags')
 provides=("${pkgbase}")
 conflicts=("${pkgbase}")
 source=("${pkgbase}-${pkgver}.tar.gz::https://github.com/mpv-player/${pkgbase}/archive/v${pkgver}.tar.gz")
-sha256sums=('d05f8ece859c500ef1649cdfea911ec1529df1898b8fda3e217766dc28dc9bd3')
+sha256sums=('c0f9ac8f0e37a391d19007b333ef8787c2f45d75a0d4401c0098cde52c5082f6')
 
 prepare() {
   cd ${pkgbase}-${pkgver}

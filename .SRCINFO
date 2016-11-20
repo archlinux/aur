@@ -1,7 +1,7 @@
 pkgbase = mpv
 	pkgdesc = Video player based on MPlayer/mplayer2, with selection of features.
-	pkgver = 0.21.0
-	pkgrel = 2
+	pkgver = 0.22.0
+	pkgrel = 1
 	url = http://mpv.io
 	arch = i686
 	arch = x86_64
@@ -9,7 +9,6 @@ pkgbase = mpv
 	makedepends = mesa
 	makedepends = python-docutils
 	depends = ffmpeg
-	depends = lcms2
 	depends = libxkbcommon
 	depends = libxrandr
 	depends = libxss
@@ -21,8 +20,8 @@ pkgbase = mpv
 	conflicts = mpv
 	options = !emptydirs
 	options = !buildflags
-	source = mpv-0.21.0.tar.gz::https://github.com/mpv-player/mpv/archive/v0.21.0.tar.gz
-	sha256sums = d05f8ece859c500ef1649cdfea911ec1529df1898b8fda3e217766dc28dc9bd3
+	source = mpv-0.22.0.tar.gz::https://github.com/mpv-player/mpv/archive/v0.22.0.tar.gz
+	sha256sums = c0f9ac8f0e37a391d19007b333ef8787c2f45d75a0d4401c0098cde52c5082f6
 
 pkgname = mpv-light
 
