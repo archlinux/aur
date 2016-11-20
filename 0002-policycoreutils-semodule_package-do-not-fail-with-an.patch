@@ -1,0 +1,39 @@
+From bfa2be3b3a5b45b8ebda544b91464660d87b6e90 Mon Sep 17 00:00:00 2001
+From: Nicolas Iooss <nicolas.iooss@m4x.org>
+Date: Sun, 30 Oct 2016 22:27:22 +0100
+Subject: [PATCH] policycoreutils: semodule_package: do not fail with an empty
+ fc file
+
+When running sepolgen tests on a Linux 4.7 kernel, one test fails with
+the following message:
+
+    /usr/bin/semodule_package:  Failed to mmap
+    tmp/module_compile_test.mod.fc:  Invalid argument
+
+The .fc file is empty, which is why it cannot be used with mmap().
+Anyway the current code supports empty files (with if() conditions in
+main()) so do not try to mmap an empty file in file_to_data().
+
+Signed-off-by: Nicolas Iooss <nicolas.iooss@m4x.org>
+---
+ policycoreutils/semodule_package/semodule_package.c | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/policycoreutils/semodule_package/semodule_package.c b/policycoreutils/semodule_package/semodule_package.c
+index d2a5fd07bd71..e472054826a3 100644
+--- a/policycoreutils/semodule_package/semodule_package.c
++++ b/policycoreutils/semodule_package/semodule_package.c
+@@ -72,6 +72,10 @@ static int file_to_data(const char *path, char **data, size_t * len)
+ 			path, strerror(errno));
+ 		goto err;
+ 	}
++	if (!sb.st_size) {
++		*len = 0;
++		return 0;
++	}
+ 
+ 	*data = mmap(NULL, sb.st_size, PROT_READ, MAP_PRIVATE, fd, 0);
+ 	if (*data == MAP_FAILED) {
+-- 
+2.10.2
+
