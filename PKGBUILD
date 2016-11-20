@@ -3,7 +3,7 @@
 
 pkgname=z3-bin
 pkgver=4.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="An automatic high-performance theorem prover"
 arch=(i686 x86_64)
 url="http://research.microsoft.com/en-us/um/redmond/projects/z3"
@@ -17,8 +17,8 @@ md5sums=('243d48eb4c3531f323056040b94459ad')
     _arch="x64"
 }
 depends=('gcc-libs')
-makedepends=('git' 'python')
-optdepends=('python: bindings for python')
+makedepends=('python')
+optdepends=('python: Z3 bindings for python')
 conflicts=('z3' 'z3-git' 'z3-codeplex')
 provides=('z3')
 
