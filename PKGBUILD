@@ -3,7 +3,7 @@
 
 pkgname=mmonit
 pkgver=3.6.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Easy, proactive monitoring of Unix systems, network and cloud services. Conduct automatic maintenance and recovery and execute meaningful causal actions in error situations."
 arch=('x86_64')
 url="http://mmonit.com/"
@@ -11,7 +11,7 @@ license=('Commercial')
 #depends=('openssl')
 source=(https://mmonit.com/dist/$pkgname-$pkgver-linux-x64.tar.gz \
         mmonit.service)
-backup=('opt/mmonit/conf/server.xml' 'opt/mmonit/conf/web.xml')
+backup=('opt/mmonit/conf/server.xml' 'opt/mmonit/conf/web.xml' 'opt/mmonit/db/mmonit.db')
 
 package() {
   mkdir -p $pkgdir/opt/$pkgname || return 1
