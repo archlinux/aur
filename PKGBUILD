@@ -2,7 +2,7 @@
 # Maintainer: Danilo Bargen <aur at dbrgn dot ch>
 
 pkgname=geotag
-pkgver=0.099
+pkgver=0.101
 pkgrel=1
 pkgdesc="Geotag is an open source program that allows you match date/time information from photos with location information from a GPS unit or from a map"
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ source=("http://downloads.sourceforge.net/project/geotag/geotag/$pkgver/geotag-$
         "$pkgname.desktop"
         "$pkgname.sh")
 noextract=("geotag-$pkgver.jar")
-sha256sums=('cc685f025e78c48de79ebb70135c3f81ad4e66e395f069a3414738bbe371b8cb'
+sha256sums=('68101cc0dfffa518336a62ad417c7de5bfdd33da895b05a4f6f97415a4860686'
             '03e25f98f958a205fed56657e21c30f636b8f67bc0f5e41f88d6bf3bfa1fb3fe'
             'dd836097b81d0d4fea801ef4211d2e60befe6067e8ae3d29263bebcf268590bd')
 
