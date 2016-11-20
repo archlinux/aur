@@ -37,6 +37,7 @@ package_uzbl-core-next-git() {
 
   cd "$srcdir/$_gitname"
   make clean
+  local CFLAGS="--param=ssp-buffer-size=4"
   make DESTDIR="$pkgdir" PREFIX=/usr install-uzbl-core
 }
 
