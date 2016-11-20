@@ -1,7 +1,7 @@
 pkgbase = devkitppc-portlibs-tremor-lowmem
-	pkgdesc = Integer-only Ogg Vorbis decoder library (for Nintendo Gamecube/Wii homebrew development)
+	pkgdesc = Integer-only Ogg Vorbis decoder library (for Nintendo Gamecube/Wii/Wii U homebrew development)
 	pkgver = 20100725
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.xiph.org/vorbis/
 	arch = any
 	license = BSD

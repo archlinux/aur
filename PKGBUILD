@@ -3,8 +3,8 @@
 
 pkgname=devkitppc-portlibs-tremor-lowmem
 pkgver=20100725
-pkgrel=2
-pkgdesc='Integer-only Ogg Vorbis decoder library (for Nintendo Gamecube/Wii homebrew development)'
+pkgrel=3
+pkgdesc='Integer-only Ogg Vorbis decoder library (for Nintendo Gamecube/Wii/Wii U homebrew development)'
 arch=('any')
 url='http://www.xiph.org/vorbis/'
 license=('BSD')
@@ -16,9 +16,12 @@ sha256sums=('54a40ce5521f908b91b44bc9259ea499b8b7299b37b154c348614373ed79840c')
 build() {
   cd tremor-lowmem
 
+  # set environment
   source /etc/profile.d/devkitppc.sh
-  CFLAGS="-g -O2" ./autogen.sh --prefix="$DEVKITPRO/portlibs/ppc" \
-    --host=powerpc-eabi --disable-shared --enable-static
+  export CFLAGS="-g -O2 -ffunction-sections -fdata-sections"
+
+  ./autogen.sh --prefix="$DEVKITPRO/portlibs/ppc" --host=powerpc-eabi \
+    --disable-shared --enable-static
   make
 }
 
