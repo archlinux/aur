@@ -1,0 +1,20 @@
+pkgbase = ocemu
+	pkgdesc = OpenComputers Emulator in Lua
+	pkgver = 0.0
+	pkgrel = 1
+	url = https://github.com/gamax92/OCEmu
+	install = ocemu.install
+	arch = any
+	license = unknown
+	makedepends = git
+	makedepends = svn
+	makedepends = luarocks5.2
+	depends = lua52
+	depends = lua52-filesystem
+	depends = lua52-sec
+	depends = lua52-socket
+	source = ocemu::git+https://github.com/gamax92/OCEmu
+	md5sums = SKIP
+
+pkgname = ocemu
+

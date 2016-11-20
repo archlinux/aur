@@ -1,0 +1,6 @@
+pre_install() {
+    echo "Installing dependencies that are not on arch repos or aur"
+
+    luarocks-5.2 install luautf8 #--tree="/usr"
+    luarocks-5.2 install --server=http://luarocks.org/dev luaffi #--tree="/usr"
+}
