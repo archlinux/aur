@@ -2,10 +2,10 @@
 # Contributor: Tobias Powalowski <tpowa@archlinux.org>
 # Contributor: Thomas Baechler <thomas@archlinux.org>
 
-pkgbase=linux-rc       # Build kernel with a different name
+pkgbase=linux-rc
 _srcname=linux-4.8
-_stable=4.8.8
-_patchver=4.8.9
+_stable=4.8.9
+_patchver=4.8.10
 pkgver=${_patchver}rc1
 _rcpatch=patch-${_patchver}-rc1
 pkgrel=3
@@ -31,14 +31,14 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
 
 sha256sums=('3e9150065f193d3d94bcf46a1fe9f033c7ef7122ab71d75a7fb5a2f0c9a7e11a'
             'SKIP'
-            '588b6537cb660c2f7d483aca13f7509a5fc86c60df32c167d40e81d6c7ab4f9c'
+            '9f3c1924080a16ac2b8f054aa9d0490bc0ee4c6159e2fd10e5f6732b2e9604f6'
             'SKIP'
-            'c28da3bc54451c386b30456f3a5199f0149e22baed20bf2201aa3f297e98036b'
+            '00709d28e4a9bfeb986607fcf0990c27e91c1e8b4a28a0ef9c5caf5f07330c55'
             'SKIP'
             '2fd479c42362075c3bea6c7c1737fd3e0c222245046d071fa10157d05397965f'
-            'b8597b9cd36e64c297eace4956dbad8a3511498f946602514a6c34bfdc6d113b'
+            'ae414d09d296fcf388e930ff919f975c03302ec2f595e2ae0c172422402b3a6e'
             '834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0'
-            'a8cae3381e5669a70e20e36562d7433f61b13d24ad8c688cf6c398d5128e2c02'
+            'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99')
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
