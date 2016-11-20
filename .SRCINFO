@@ -1,6 +1,6 @@
 pkgbase = chromecastize-git
 	pkgdesc = Bash script to convert video files into Google Chromecast supported format.
-	pkgver = 43.ef7305a
+	pkgver = 59.c739cec
 	pkgrel = 1
 	url = https://github.com/bc-petrkotek/chromecastize
 	arch = any
@@ -9,9 +9,7 @@ pkgbase = chromecastize-git
 	depends = ffmpeg
 	depends = mediainfo
 	source = git+https://github.com/bc-petrkotek/chromecastize.git
-	source = https://patch-diff.githubusercontent.com/raw/bc-petrkotek/chromecastize/pull/25.patch
 	md5sums = SKIP
-	md5sums = 1b3bc12dbeabf8dbaa5b148d9c77296e
 
 pkgname = chromecastize-git
 
