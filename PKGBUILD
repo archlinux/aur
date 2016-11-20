@@ -4,7 +4,7 @@ _pkgname=idos-timetable-data-chaps-all
 pkgname="${_pkgname}-latest"
 epoch=0
 pkgver=2016_11_8
-pkgrel=1
+pkgrel=2
 pkgdesc="Timetable data for the timetable search engines by CHAPS: European railway, Czech/Slovak trains + bus, Czech public transport, some air transport. Note that some timetables need the purchased version of IDOS to run."
 arch=(any)
 url="http://chaps.cz/eng/download/idos/zip#kotvatt"
@@ -15,11 +15,11 @@ groups=(
        )
 
 depends=(
-         ### As long as the source of this package does not contain train time table, this package also does not depend on the common data.
-         # "idos-timetable-data-trains-common"
-         ### As long as the source of this package does not contain train time table, have this package depend on the train timetable packages.
-         "idos-timetable-data-chaps-trains-cz-latest"
-         "idos-timetable-data-chaps-trains-europe-latest"
+         # ### If the source of this package does not contain train time table, this package also does not depend on the common data.
+         "idos-timetable-data-trains-common"
+         # ### If the source of this package does not contain train time table, have this package depend on the train timetable packages.
+         # "idos-timetable-data-chaps-trains-cz-latest"
+         # "idos-timetable-data-chaps-trains-europe-latest"
         )
 
 makedepends=(
@@ -29,8 +29,8 @@ makedepends=(
 optdepends=(
             "idos-timetable-tariff: For showing prices."
             "idos-timetable-maps: For displaying routes on maps."
-            ### As long as the source of this package does not contain train time table, there is no need to optdepend on train additional information.
-            # "idos-timetable-additionalinfo-trains: For (links to) additional information about train composition and stations."
+            # ### If the source of this package does not contain train time table, there is no need to optdepend on train additional information.
+            "idos-timetable-additionalinfo-trains: For (links to) additional information about train composition and stations."
             "idos-timetable-additionalinfo-bus: For images of certain bus stations."
             "idos-timetable-additionalinfo-mhd-idsjmk: For photographs of public transport stops in the IDSJMK region."
             "idos-timetable-additionalinfo-mhd-pid: For photographs of public transport stops in the PID region."
@@ -41,17 +41,17 @@ provides=(
   "${_pkgname}=${pkgver}"
   
   "idos-timetable-data=${pkgver}"
-  ### As long as the source of this package does not contain train time table, it does not provide it.
-  # "idos-timetable-data-trains=${pkgver}"
-  # "idos-timetable-data-trains-cz=${pkgver}"
-  # "idos-timetable-data-trains-sk=${pkgver}"
-  # "idos-timetable-data-trains-europe=${pkgver}"
+  # ### If the source of this package does not contain train time table, it does not provide it.
+  "idos-timetable-data-trains=${pkgver}"
+  "idos-timetable-data-trains-cz=${pkgver}"
+  "idos-timetable-data-trains-sk=${pkgver}"
+  "idos-timetable-data-trains-europe=${pkgver}"
   "idos-timetable-data-bus=${pkgver}"
   "idos-timetable-data-mhd=${pkgver}"
   "idos-timetable-data-flights=${pkgver}"
   
-  # "idos-timetable-data-chaps-trains-cz=${pkgver}"
-  # "idos-timetable-data-chaps-trains-europe=${pkgver}"
+  "idos-timetable-data-chaps-trains-cz=${pkgver}"
+  "idos-timetable-data-chaps-trains-europe=${pkgver}"
   
   "idos-timetable-data-trains-idol=${pkgver}"
   "idos-timetable-data-trains-odis=${pkgver}"
@@ -183,10 +183,10 @@ provides=(
 conflicts=(
   "${_pkgname}"
   
-  ### As long as the source of this package does not contain train time table, it does not conflict with them.
-  # "idos-timetable-data-chaps-trains-europe"
-  # "idos-timetable-data-chaps-trains-cz"
-  # "idos-timetable-data-chaps-trains-sk"
+  # ### If the source of this package does not contain train time table, it does not conflict with them.
+  "idos-timetable-data-chaps-trains-europe"
+  "idos-timetable-data-chaps-trains-cz"
+  "idos-timetable-data-chaps-trains-sk"
   "idos-timetable-data-trains-idol"
   "idos-timetable-data-trains-odis"
   "idos-timetable-data-trains-pid"
