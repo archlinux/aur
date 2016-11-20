@@ -2,7 +2,7 @@
 
 pkgname=sorr
 pkgver=5.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Streets of Rage Remake (fan remake)"
 arch=('i686' 'x86_64')
 url="http://www.soronline.net/sorr.htm"
