@@ -19,6 +19,8 @@ md5sums=('243d48eb4c3531f323056040b94459ad')
 depends=('gcc-libs')
 makedepends=('git' 'python')
 optdepends=('python: bindings for python')
+conflicts=('z3' 'z3-git' 'z3-codeplex')
+provides=('z3')
 
 package() {
   cd "$srcdir/z3-${pkgver}-${_arch}-ubuntu-14.04"
