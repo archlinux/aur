@@ -3,18 +3,20 @@
 
 pkgname=xcursor-breeze
 epoch=1
-pkgver=5.5
+pkgver=5.8
+_pkgver=5.8.0
 pkgrel=1
-pkgdesc="Breeze cursor theme (KDE Plasma 5)"
+pkgdesc="Breeze cursor theme (KDE Plasma 5). This package is for usage in non-KDE Plasma desktops."
 arch=('any')
-url="https://quickgit.kde.org/?p=breeze.git"
+url="https://www.kde.org"
 license=('GPL')
 depends=('libxcursor')
 conflicts=('breeze')
-source=("breeze-cursors-${pkgver}.tgz::https://quickgit.kde.org/?p=breeze.git&a=snapshot&h=9b142a15d494c4d9d8cc48cb051357d39b508cd6&f=cursors%2FBreeze%2FBreeze&fmt=tgz")
-md5sums=('SKIP')
+source=("breeze-cursors-${pkgver}.tgz::http://download.kde.org/stable/plasma/${_pkgver}/breeze-${_pkgver}.tar.xz")
+sha1sums=('cd18191efc2059760eb04e95c874d58ecb97d599')
 
 package() {
   install -dm755 "$pkgdir"/usr/share/icons/
-  cp -r "$srcdir"/breeze/cursors/Breeze/Breeze/ "$pkgdir"/usr/share/icons/
+  cp -r "$srcdir"/breeze-${_pkgver}/cursors/Breeze/Breeze/           "$pkgdir"/usr/share/icons/
+  cp -r "$srcdir"/breeze-${_pkgver}/cursors/Breeze_Snow/Breeze_Snow/ "$pkgdir"/usr/share/icons/
 }
