@@ -3,7 +3,7 @@
 _pkgname=polybar
 pkgname="${_pkgname}-git"
 pkgver=2.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A fast and easy-to-use status bar"
 arch=("i686" "x86_64")
 url="https://github.com/jaagr/polybar"
