@@ -3,8 +3,8 @@
 
 pkgname=devkitppc-portlibs-libpng
 pkgver=1.5.4
-pkgrel=2
-pkgdesc='PNG format graphic files library (for Nintendo Gamecube/Wii homebrew development)'
+pkgrel=3
+pkgdesc='PNG format graphic files library (for Nintendo Gamecube/Wii/Wii U homebrew development)'
 arch=('any')
 url='http://www.libpng.org'
 license=('custom')
@@ -16,8 +16,11 @@ sha256sums=('9743d1a84e84b756e19707b09ca5874d7052c5dc65d6cc1a1e231998833f5529')
 build() {
   cd libpng-$pkgver
 
+  # set environment
   source /etc/profile.d/devkitppc.sh
-  export CFLAGS="-g -O2 -I$DEVKITPRO/portlibs/ppc/include -L$DEVKITPRO/portlibs/ppc/lib"
+  export CFLAGS="-g -O2 -ffunction-sections -fdata-sections \
+    -I$DEVKITPRO/portlibs/ppc/include -L$DEVKITPRO/portlibs/ppc/lib"
+
   ./configure --prefix="$DEVKITPRO/portlibs/ppc" --host=powerpc-eabi \
     --disable-shared --enable-static
   make
