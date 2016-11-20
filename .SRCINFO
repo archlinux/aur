@@ -1,0 +1,18 @@
+pkgbase = capers
+	pkgdesc = Play checkers against the computer and study draughts games from books
+	pkgver = 1.0
+	pkgrel = 1
+	url = http://arton.cunst.net/capers/index.html
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = pygtk
+	depends = gnome-python
+	source = git+https://github.com/hungerburg/capers.git#commit=90cf176
+	source = capers.sh
+	sha1sums = SKIP
+	sha1sums = 19e198944d3bc825102722483be6664ebfbf414e
+
+pkgname = capers
+
