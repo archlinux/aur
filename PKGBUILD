@@ -5,12 +5,12 @@
 
 pkgname=libim
 pkgver=3.12
-pkgrel=1
+pkgrel=2
 pkgdesc="Toolkit for Digital Imaging"
 arch=('i686' 'x86_64')
 url="http://www.tecgraf.puc-rio.br/im/"
 depends=('gcc-libs' 'zlib' 'libpng')
-optdepends=('lua: bindings for Lua are available'
+optdepends=('lua51: bindings for Lua are available'
             'fftw: for fft support')
 license=('custom')
 options=('staticlibs')
@@ -37,6 +37,7 @@ package() {
   install -m644 "$srcdir"/im-${pkgver}_Docs.pdf "$pkgdir"/usr/share/$pkgname
   install -m755 -d "$pkgdir"/usr/include/im
   install -m644 "$srcdir"/im/include/* "$pkgdir"/usr/include/im
-  mkdir -p "$pkgdir"/usr/share/licenses/libim
-  install -m644 "$srcdir"/LICENSE "$pkgdir"/usr/share/licenses/libim
+  install -Dm644 "$srcdir"/LICENSE "$pkgdir"/usr/share/licenses/libim/LICENSE
+  install -d "$pkgdir"/usr/lua/5.1/
+  install -Dm644 "$srcdir"/im/lib/Linux48_64/Lua51/*.so "$pkgdir"/usr/lua/5.1/
 }

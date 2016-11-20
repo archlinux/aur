@@ -1,7 +1,7 @@
 pkgbase = libim
 	pkgdesc = Toolkit for Digital Imaging
 	pkgver = 3.12
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.tecgraf.puc-rio.br/im/
 	arch = i686
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = libim
 	depends = gcc-libs
 	depends = zlib
 	depends = libpng
-	optdepends = lua: bindings for Lua are available
+	optdepends = lua51: bindings for Lua are available
 	optdepends = fftw: for fft support
 	noextract = im-3.12_Sources.tar.gz
 	options = staticlibs
