@@ -4,30 +4,37 @@
 pkgname=grrlib
 pkgver=4.3.2
 pkgrel=2
-pkgdesc="A graphics library for Wii homebrew developers."
+pkgdesc="A helper library for Nintendo Gamecube/Wii homebrew developers"
 arch=('any')
 url="http://grrlib.santo.fr/"
 license=('MIT')
 depends=("libfat-ogc")
 makedepends=("devkitppc")
-source=("http://grrlib.googlecode.com/files/GRRLIB%20${pkgver}.zip")
-sha256sums=('18b159f466ea93bfbc304921b9fe2cbba37eba7a9066dfa97c0766e7daddb7cd')
+source=("https://github.com/GRRLIB/GRRLIB/archive/$pkgver.tar.gz"
+        "https://github.com/GRRLIB/GRRLIB/releases/download/$pkgver/HTML-documentation.zip")
+sha256sums=('198e8d4f06cb1e6b7328569ca4ccb7e238e18cb2fc90225fd7e28b7583d16f49'
+            '44a2df2136825da162d047bfeec130e96825afd292d7eb4c02b15505611a7ded')
 options=(!strip staticlibs)
 
 build() {
+  # set environment
   source /etc/profile.d/devkitppc.sh
-
-  cd GRRLIB/GRRLIB
   unset CFLAGS
-  make
+
+  make -C GRRLIB-$pkgver/GRRLIB
 }
 
 package() {
-  cd GRRLIB/GRRLIB
-  DEVKITPRO="$pkgdir/$DEVKITPRO" make install
+  cd GRRLIB-$pkgver
+  DEVKITPRO="$pkgdir/$DEVKITPRO" make -C GRRLIB install
 
-  cd ..
-  install -Dm644 LICENCE.TXT "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
-  install -d "$pkgdir"/usr/share/doc/$pkgname
-  cp -rup doc examples README.html grrlib_logo.png "$pkgdir"/usr/share/doc/$pkgname
+  # license
+  install -Dm0644 LICENCE.TXT "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
+  # examples
+  install -d "$pkgdir"/usr/share/$pkgname
+  cp -rup examples "$pkgdir"/usr/share/$pkgname
+  # doc
+  install -d "$pkgdir"/usr/share/doc/$pkgname/doxygen
+  install -m0644 README.html grrlib_logo.png "$pkgdir"/usr/share/doc/$pkgname
+  cp -rup ../doc/* "$pkgdir"/usr/share/doc/$pkgname/doxygen
 }

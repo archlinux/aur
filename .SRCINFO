@@ -1,5 +1,5 @@
 pkgbase = grrlib
-	pkgdesc = A graphics library for Wii homebrew developers.
+	pkgdesc = A helper library for Nintendo Gamecube/Wii homebrew developers
 	pkgver = 4.3.2
 	pkgrel = 2
 	url = http://grrlib.santo.fr/
@@ -9,8 +9,10 @@ pkgbase = grrlib
 	depends = libfat-ogc
 	options = !strip
 	options = staticlibs
-	source = http://grrlib.googlecode.com/files/GRRLIB%204.3.2.zip
-	sha256sums = 18b159f466ea93bfbc304921b9fe2cbba37eba7a9066dfa97c0766e7daddb7cd
+	source = https://github.com/GRRLIB/GRRLIB/archive/4.3.2.tar.gz
+	source = https://github.com/GRRLIB/GRRLIB/releases/download/4.3.2/HTML-documentation.zip
+	sha256sums = 198e8d4f06cb1e6b7328569ca4ccb7e238e18cb2fc90225fd7e28b7583d16f49
+	sha256sums = 44a2df2136825da162d047bfeec130e96825afd292d7eb4c02b15505611a7ded
 
 pkgname = grrlib
 
