@@ -1,15 +1,15 @@
 pkgbase = libntfs-wii
 	pkgdesc = NTFS-3G filesystem access library (for Nintendo Gamecube/Wii homebrew development)
 	pkgver = 2013.1.13
-	pkgrel = 1
-	url = http://code.google.com/p/libntfs-wii/
+	pkgrel = 2
+	url = https://sourceforge.net/projects/libntfs-wii/
 	arch = any
 	license = GPL
 	makedepends = svn
 	depends = devkitppc
 	options = !strip
 	options = staticlibs
-	source = libntfs-wii-2013.1.13::svn+http://libntfs-wii.googlecode.com/svn/tags/libntfs-2013.1.13
+	source = libntfs-wii-2013.1.13::svn+http://svn.code.sf.net/p/libntfs-wii/code/tags/libntfs-2013.1.13
 	md5sums = SKIP
 
 pkgname = libntfs-wii
