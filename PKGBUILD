@@ -1,6 +1,6 @@
 # Maintainer: Andrzej Giniewicz <gginiu@gmail.com>
 pkgname=daggerfall-fixes
-pkgver=20120413
+pkgver=20161023
 pkgrel=1
 pkgdesc="The Elder Scrolls II: Daggerfall, unofficial fixes"
 arch=('any')
@@ -10,24 +10,26 @@ depends=("daggerfall")
 makedepends=("unzip")
 options=(!emptydirs)
 install="fixes.install"
-source=(http://images.uesp.net/9/9d/Fixqs001.zip
-        http://images.uesp.net/6/6f/SPELLS.zip
-        http://images.uesp.net/0/0c/BIOG00T0.zip
-        http://images.uesp.net/d/d6/FACTFIX.ZIP
-        http://images.uesp.net/e/ed/DF-POLITIC.PAK.zip
-        http://images.uesp.net/0/0f/DFQFIX.ZIP
-        http://images.uesp.net/9/95/Q0C00Y03.ZIP
-        http://images.uesp.net/b/b9/Dark-elves.zip
-        http://slushpool.dfworkshop.net/FILES/magicdef.zip
-        andyfall-fixes.patch magical_effects_fix.patch)
-noextract=(Fixqs001.zip SPELLS.zip BIOG00T0.zip FACTFIX.ZIP DF_POLITIC.PAK.zip
+source=("DFBIOGFIX_v1.1.zip::https://drive.google.com/uc?export=download&id=0B5d8Cfi4rIADR1NHc3hhUlpTbDQ"
+        "http://images.uesp.net/9/9d/Fixqs001.zip"
+        "http://images.uesp.net/6/6f/SPELLS.zip"
+        "http://images.uesp.net/0/0c/BIOG00T0.zip"
+        "http://images.uesp.net/d/d6/FACTFIX.ZIP"
+        "http://images.uesp.net/e/ed/DF-POLITIC.PAK.zip"
+        "http://images.uesp.net/0/0f/DFQFIX.ZIP"
+        "http://images.uesp.net/9/95/Q0C00Y03.ZIP"
+        "http://images.uesp.net/b/b9/Dark-elves.zip"
+        "http://slushpool.dfworkshop.net/FILES/magicdef.zip"
+        "andyfall-fixes.patch" "magical_effects_fix.patch")
+noextract=(DFBIOGFIX_v1.1.zip Fixqs001.zip SPELLS.zip BIOG00T0.zip FACTFIX.ZIP DF_POLITIC.PAK.zip
            Dark-elves.zip DFQFIX.ZIP Q0C00Y03.ZIP magicdef.zip)
-md5sums=('4b8d31d14f3ee8c7400bdf8c9768aa1c'
+md5sums=('a2872769f70dbe8dea475d94524d1740'
+         '4b8d31d14f3ee8c7400bdf8c9768aa1c'
          '1e7d295e27b3da4be5484ae6e898eaf9'
          '74a724074bf48b5cc64477d99f88f005'
          '42f248b13255d905148d448c2372732c'
          '1696cbc71f33d9d884a4d2d71b53649a'
-         'fce596f801cd40115033bbeb0ccc20c4'
+         '073bc139dea41cd8b52a425aef97c261'
          '27d0a087d4972cfdb267e0ada4967862'
          '6b1bcf37ec70752f2704657e736356e4'
          '8162c3e6cdc7284b7238155cb5a732e8'
@@ -85,6 +87,17 @@ package() {
   echo "mages_biography_fix" >> fixes.extends
 
   cd "$_target"
+  install -d biography_fixes/ARENA2
+  cd biography_fixes/ARENA2
+  unzip "$srcdir"/DFBIOGFIX_v1.1.zip
+  rm -r DFBIOGFIX\ v1.1/English/EV_Original
+  mv DFBIOGFIX\ v1.1/English/* .
+  rm -r DFBIOGFIX\ v1.1
+  cd "$_target"
+  echo "mages_biography_fix" > biography_fixes.extends
+  echo "biography_fixes" >> fixes.extends
+
+  cd "$_target"
   install -d faction_fix/ARENA2
   cd faction_fix/ARENA2
   unzip "$srcdir"/FACTFIX.ZIP
@@ -129,4 +142,3 @@ package() {
   cd "$_target"
   echo "extra_quests_patch-fixes" >> fixes.extends
 }
-
