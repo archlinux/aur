@@ -1,9 +1,8 @@
 # Maintainer: Lubosz Sarnecki <lubosz@gmail.com>
 # Original Maintainer: Micael Dias
 pkgname=luxblend25-hg
-pkgver=2140.f592c9565ec0
+pkgver=3776.59e50e577902
 pkgrel=1
-_blender=2.67
 pkgdesc="LuxRender exporter plugin for Blender"
 arch=('any')
 url="http://www.luxrender.net/"
@@ -11,7 +10,7 @@ license=('GPL')
 depends=('luxrender' 'blender')
 makedepends=('mercurial')
 conflicts=('luxblend25')
-source=("hg+http://src.luxrender.net/luxblend25")
+source=("hg+https://bitbucket.org/luxrender/luxblend25")
 md5sums=("SKIP")
 
 _hgrepo="luxblend25"
@@ -22,6 +21,7 @@ pkgver() {
 }
 
 package() {
+  _blender=$(blender -v | head -n1 | cut -f2 -d ' ')
   cd $_hgrepo
   install -d -m755 "$pkgdir"/usr/share/blender/$_blender/scripts/addons
   cp -a "$srcdir"/$_hgrepo/src/luxrender \
