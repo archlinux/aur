@@ -1,4 +1,4 @@
-# Contributor: kaptoxic(at)yahoo(dot)com
+# Maintainer: kaptoxic(at)yahoo(dot)com
 # Contributor: Paolo Herms
 
 pkgname=z3-bin
@@ -12,7 +12,7 @@ _arch="x86"
 source=("https://github.com/Z3Prover/z3/releases/download/z3-${pkgver}/z3-${pkgver}-x86-ubuntu-14.04.zip")
 md5sums=('243d48eb4c3531f323056040b94459ad')
 [[ "$CARCH" = x86_64 ]] && {
-    source="https://github.com/Z3Prover/z3/releases/download/z3-${pkgver}/z3-${pkgver}-x64-ubuntu-14.04.zip"
+    source=("https://github.com/Z3Prover/z3/releases/download/z3-${pkgver}/z3-${pkgver}-x64-ubuntu-14.04.zip")
     md5sums=('030fe472df4c6b2f16019e0ef12c8918')
     _arch="x64"
 }
