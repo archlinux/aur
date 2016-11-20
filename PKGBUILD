@@ -5,7 +5,7 @@
 
 pkgname=r-mkl
 pkgver=3.3.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Language and environment for statistical computing and graphics, linked with Intel's MKL."
 arch=('x86_64')
 license=('GPL')
@@ -103,7 +103,11 @@ build() {
       -lifport \
       -lpthread \
       -lm \
-      -ldl"
+      -ldl \
+      -lifcore \
+      -lifport"
+    # Including -lifcore and -lifport twice fixes
+    # compilation of some R packages (e.g. quantreg, igraph)
 
     export CC="icc"
     export CXX="icpc"

@@ -1,7 +1,7 @@
 pkgbase = r-mkl
 	pkgdesc = Language and environment for statistical computing and graphics, linked with Intel's MKL.
 	pkgver = 3.3.2
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.r-project.org/
 	install = r-mkl.install
 	arch = x86_64
