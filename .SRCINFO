@@ -1,0 +1,15 @@
+pkgbase = gnome-shell-extension-calc-git
+	pkgdesc = Simple gnome shell calculator in run dialog that you can use with alt+f2
+	pkgver = r10.26c8c65
+	pkgrel = 1
+	url = https://github.com/danigm/gnome-shell-calculator
+	install = gschemas.install
+	arch = any
+	license = GPL2
+	makedepends = git
+	depends = gnome-shell
+	source = git+https://github.com/danigm/gnome-shell-calculator
+	md5sums = SKIP
+
+pkgname = gnome-shell-extension-calc-git
+
