@@ -1,7 +1,7 @@
 pkgbase = devkitppc-portlibs-freetype2
-	pkgdesc = TrueType font rendering library (for Nintendo Gamecube/Wii homebrew development)
+	pkgdesc = TrueType font rendering library (for Nintendo Gamecube/Wii/Wii U homebrew development)
 	pkgver = 2.4.2
-	pkgrel = 2
+	pkgrel = 3
 	url = http://freetype.sourceforge.net
 	arch = any
 	license = GPL
