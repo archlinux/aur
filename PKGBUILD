@@ -1,7 +1,7 @@
 # Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=lsi-msm
-pkgver=16.02.00.04
+pkgver=16.05.04.00
 _pkgver="$(echo "${pkgver}" | sed 's/\./-/3')"
 pkgrel=1
 pkgdesc="LSI Logic MegaRAID Storage Manager Suite"
@@ -17,12 +17,14 @@ depends=('libxtst'
          'perl-net-snmp'
          'perl-term-readkey'
          'xdg-utils'
+         'gtk2'
          )
 depends_i686=('libxi'
               'libxft'
               'libpng12'
               'libxinerama'
               'libjpeg6-turbo'
+              'libxxf86vm'
               # 'xerces-c'
               )
 depends_x86_64=('lib32-libxi'
@@ -30,6 +32,7 @@ depends_x86_64=('lib32-libxi'
                 'lib32-libpng12'
                 'lib32-libxinerama'
                 'lib32-libjpeg6-turbo'
+                'lib32-libxxf86vm'
                 # 'lib32-xerces-c'
                 )
 makedepends=('icu'
@@ -37,11 +40,10 @@ makedepends=('icu'
              'sqlite'
              'lynx'
              )
-
           # OpenPegasus site don't like wget/curl. :/
 DLAGENTS=('https::/usr/bin/lynx -accept_all_cookies -cmd_script=lynx_script_for_download_pegasus %u'
-          'http::/usr/bin/curl -qb "" -fLC - --retry 3 --retry-delay 3 -o %o %u')
-
+          'http::/usr/bin/curl -LC - -O'
+          )
 source=('lynx_script_for_download_pegasus' #IMPORTANT for download pegasus zip. please don't move to other place
         'https://collaboration.opengroup.org/pegasus/documents/32572/pegasus-2.14.1.tar.gz'
         'msm_profile.sh'
@@ -54,24 +56,26 @@ source=('lynx_script_for_download_pegasus' #IMPORTANT for download pegasus zip. 
         'http://pkgs.fedoraproject.org/cgit/tog-pegasus.git/plain/pegasus-2.9.0-no-rpath.patch'
         'http://pkgs.fedoraproject.org/cgit/tog-pegasus.git/plain/pegasus-2.13.0-gcc5-build.patch'
         'http://pkgs.fedoraproject.org/cgit/tog-pegasus.git/plain/pegasus-2.14.1-build-fixes.patch'
-        'http://pkgs.fedoraproject.org/cgit/tog-pegasus.git/plain/pegasus-2.14.1-ssl-include.patch')
-source_i686=("${pkgver}_Linux-x86_MSM.tar.gz::http://docs.avagotech.com/docs-and-downloads/raid-controllers/raid-controllers-common-files/MSM_linux_x86_installer-${_pkgver}.tar.gz")
+        'http://pkgs.fedoraproject.org/cgit/tog-pegasus.git/plain/pegasus-2.14.1-ssl-include.patch'
+        )
+source_i686=("${pkgver}_Linux-x86_MSM.tar.gz::http://docs.avagotech.com/docs-and-downloads/raid-controllers/raid-controllers-common-files/MSM_linux_installer-${_pkgver}.tar.gz")
 source_x86_64=("${pkgver}_Linux-x64_MSM.tar.gz::http://docs.avagotech.com/docs-and-downloads/raid-controllers/raid-controllers-common-files/MSM_linux_x64_installer-${_pkgver}.tar.gz")
-sha1sums=('3e0e9a5b5bae72af361db01825242aefcfc3094a'
-          'c832eaf240f6dfba843c4937f7a935382d48b9be'
-          '0e5d7b71435760e3ef7c1e132ba05145ccbd1268'
-          '79fbe24898030db50295a6254e7c4627e2b51b7c'
-          'e52a1be05599cd7e5ecf1085311c00c7e16e4b43'
-          '08e484f4c1f177a81587d5e12f2b806baddcf199'
-          '73b553200ae2ccae980701d7324681529f551fc9'
-          '8f7da07466346443acc24df3608744a7d80a9124'
-          '262dd8efae4025516cc23a14c6854a49af650245'
-          '236728c6ebdcad97bec03cb99221577e086401ad'
-          'e8c0cea2589daebcd94ec2baf726391d4cd516cd'
-          'a4d642b7be3c3400539dac5014f66463dc567221'
-          '1eadb4d032cb7e7367317e61fee6a6e1f9f68868')
-sha1sums_i686=('f0e73ea96f37fc99761587a07f5f2c88fb95fd71')
-sha1sums_x86_64=('e8019072b1071d2043180fae907bc67fa67890fa')
+sha256sums=('72d24d357601b9df8a418a7e7851d3b55c32614394e5507146fe961e4712c5e8'
+            '9f2f13a35da218f3cb6e8478246ff7c4d3010560bb4d5de9cbf4272d48e353fb'
+            '11892783bc2569ad1f4bac0ec8f91f1e7e54c795f9b6454e93348a6ca0cf2a5b'
+            '605adcb662fb457609e81fb8916da7e88541e81dd0c112a8bb569d84df189bff'
+            'c33714f33698ab2aebb28b040ed78dba5efbda0429be51662fc635ba49fd235a'
+            '98bfc8d174cd2b056353742dc52c40f56bb77676e816f33184ab1de3e8108cfd'
+            '5c6e66b0d8f4ce479d6d5c8f4d841ed022d8207c7a4fdbab9d7423fb867ab0e2'
+            '9be6a8818ea1dccec65d48b86dd0cc62009dc3886229e3dce41192a241bd55c3'
+            'e3924bdb81a4dd2cedfb9c7ba669cb01b32f4c4e16b3af4c06f9a2426a9274d1'
+            '66141323d6de100d9a1805f614a950944e223a36026b62b1a823c8aa148f26df'
+            '8a68ecbd383f9121e54bd32f6094b2793367c15d8960ea5f92691e5b9bbcad99'
+            '5863314f2ff17c32bc340efd5241f809bc1372b8e2fde0b3a2e22c7ab9b64281'
+            '5de02253442ef8cb3b6f744fa4dd3237b66d96911ab8badd63336a7e1d28a429'
+            )
+sha256sums_i686=('e74ca40fc3d2c48daaed1b1e10d19271796e6073e9c57c56b0076e1d7731ee8d')
+sha256sums_x86_64=('95c104ea4f77c52df79e50cd22fb882928a578cc875ca3f5776e147bddf9f756')
 install=lsi-msm.install
 backup=('etc/lsi_mrdsnmp/LSI_StorSNMP.ini'
         'etc/lsi_mrdsnmp/sas/sas_TrapDestination.conf'
@@ -86,7 +90,8 @@ backup=('etc/lsi_mrdsnmp/LSI_StorSNMP.ini'
         'usr/share/MegaRAID_Storage_Manager/Framework/vivaldikeys2048'
         'usr/share/MegaRAID_Storage_Manager/MegaPopup/vivaldikey.properties'
         'usr/share/MegaRAID_Storage_Manager/MegaPopup/vivaldikeys'
-        'usr/share/MegaRAID_Storage_Manager/MegaPopup/vivaldikeys2048')
+        'usr/share/MegaRAID_Storage_Manager/MegaPopup/vivaldikeys2048'
+        )
 options=('!strip')
 
 _create_links() {
