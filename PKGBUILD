@@ -10,7 +10,7 @@ url="https://github.com/CristianHenzel/ClipIt/"
 _snapshot=a8de309ee006003ab3545d9abbe8c017a7400e62
 license=('GPL3')
 depends=('gtk2' 'libappindicator-gtk2')
-makedepends=('git' 'intltool')
+makedepends=('intltool')
 optdepends=('xdotool: for automatic paste')
 source=("${_pkgname}-${_snapshot}.tar.gz::${url}/archive/${_snapshot}.tar.gz"
         'pkg-config.patch::https://github.com/0x4d4c/ClipIt/commit/f106391cd739bf4005600646561a7425faef2964.diff'        
