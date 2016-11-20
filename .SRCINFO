@@ -1,7 +1,7 @@
 pkgbase = devkitppc-portlibs-libjpeg
-	pkgdesc = JPEG format graphic files library (for Nintendo Gamecube/Wii homebrew development)
+	pkgdesc = JPEG format graphic files library (for Nintendo Gamecube/Wii/Wii U homebrew development)
 	pkgver = 8d
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.ijg.org/
 	arch = any
 	license = custom

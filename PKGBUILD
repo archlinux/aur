@@ -2,8 +2,8 @@
 
 pkgname=devkitppc-portlibs-libjpeg
 pkgver=8d
-pkgrel=1
-pkgdesc='JPEG format graphic files library (for Nintendo Gamecube/Wii homebrew development)'
+pkgrel=2
+pkgdesc='JPEG format graphic files library (for Nintendo Gamecube/Wii/Wii U homebrew development)'
 arch=('any')
 url='http://www.ijg.org/'
 license=('custom')
@@ -15,9 +15,12 @@ sha256sums=('8315375a8bace8b903a9f22aa10e398572efabd35eb1c12d74c1515d32f1fba9')
 build() {
   cd jpeg-$pkgver
 
+  # set environment
   source /etc/profile.d/devkitppc.sh
-  CFLAGS="-g -O2" ./configure --prefix="$DEVKITPRO/portlibs/ppc" \
-    --host=powerpc-eabi --disable-shared --enable-static
+  export CFLAGS="-g -O2 -ffunction-sections -fdata-sections"
+
+  ./configure --prefix="$DEVKITPRO/portlibs/ppc" --host=powerpc-eabi \
+    --disable-shared --enable-static
   make libjpeg.la # only build library, no programs
 }
 
