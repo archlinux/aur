@@ -2,22 +2,20 @@
 # Contributor: Paolo Herms
 
 pkgname=z3-bin
-pkgver=4.1
+pkgver=4.5.0
 pkgrel=1
 pkgdesc="An automatic theorem prover"
 arch=(i686 x86_64)
 url="http://research.microsoft.com/en-us/um/redmond/projects/z3"
 license=('custom')
-source=("http://research.microsoft.com/projects/z3/z3-$pkgver.tar.gz" 
-    'http://research.microsoft.com/en-us/downloads/0a7db466-c2d7-4c51-8246-07e25900c7e7/Z%203%20MSR-LA%20(2007-07-07).txt')
-md5sums=('4b7b4836264a7969f052cea45057e55b'
-         'c5f05e7f2f95c796d5101069276d326f')
+source=("https://github.com/Z3Prover/z3/releases/download/z3-${pkgver}/z3-${pkgver}-x86-ubuntu-14.04.zip")
+md5sums=('243d48eb4c3531f323056040b94459ad')
 [[ "$CARCH" = x86_64 ]] && {
-    source[0]="http://research.microsoft.com/projects/z3/z3-x64-$pkgver.tar.gz"
-    md5sums[0]='c4beeb5e86fe8dc0baf35a2e2a51476e'
+    source="https://github.com/Z3Prover/z3/releases/download/z3-${pkgver}/z3-${pkgver}-x64-ubuntu-14.04.zip"
+    md5sums=('030fe472df4c6b2f16019e0ef12c8918')
 }
 
-build() {
+package() {
   install -D "$srcdir"/z3/bin/z3 "$pkgdir"/usr/bin/z3
 
   # python bindings
@@ -26,6 +24,6 @@ build() {
   install -m644 -D "$srcdir/{z3consts.py,z3core.py,z3num.py,z3poly.py,z3printer.py,z3.py,z3rcf.py,z3types.py,z3util.py}" "$pkgdir$pypath"
 
   # license
-  install -m644 -D "$srcdir/Z%203%20MSR-LA%20(2007-07-07).txt" "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
+  install -m644 -D "$srcdir/LICENSE.txt" "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
 
