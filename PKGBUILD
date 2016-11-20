@@ -5,7 +5,7 @@
 # Author: Wintershade <Wintershade AT google mail DOT com>
 
 pkgname=rpm-org
-pkgver=4.12.0.1
+pkgver=4.12.0.2
 _pkgver=$pkgver
 #_pkgver=4.12.0-rc1
 pkgrel=3
@@ -19,10 +19,9 @@ optdepends=('libdbus: systemd inhibit plugin')
 conflicts=('rpm' 'rpmextract')
 options=('!libtool')
 provides=("rpm=${pkgver}" 'rpmextract=1.0-4')
-#source=(http://rpm.org/releases/testing/rpm-${_pkgver}.tar.bz2
-source=(http://rpm.org/releases/rpm-4.12.x/rpm-${pkgver}.tar.bz2
+source=(https://github.com/rpm-software-management/rpm/releases/download/rpm-${pkgver}-release/rpm-${pkgver}.tar.bz2
 	rpmextract.sh rpmlib-filesystem-check.patch lua-5.3.patch)
-sha1sums=('d416bdb249b246b00b2d5d34c66e7f5a68a62524'
+sha1sums=('f32216a3bb342fff7a0e3c7d9fa452b7eaae19da'
           '74849919207885ae024f1ab8ed68a76474d67ad7'
           '0c5fa516dde1f10211af896c729e4b00c313e12b'
           'e8efa065eb42648ac431a48b083888ae77e8ae4b')
