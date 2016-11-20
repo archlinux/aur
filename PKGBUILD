@@ -57,13 +57,7 @@ package_uzbl-browser-next-git() {
   make DESTDIR="$pkgdir" PREFIX=/usr install-uzbl-browser
   # avoid conflicts
   rm -f $pkgdir/usr/bin/uzbl-core \
-        $pkgdir/usr/share/uzbl/docs/AUTHORS \
-        $pkgdir/usr/share/uzbl/docs/COMMUNITY.md \
-        $pkgdir/usr/share/uzbl/docs/CONTRIBUTING.md \
-        $pkgdir/usr/share/uzbl/docs/FAQ.md \
-        $pkgdir/usr/share/uzbl/docs/INSTALL.md \
-        $pkgdir/usr/share/uzbl/docs/README.md \
-        $pkgdir/usr/share/uzbl/docs/config.h \
+        $pkgdir/usr/share/uzbl/docs/* \
         $pkgdir/usr/bin/uzbl-tabbed \
         $pkgdir/usr/share/man/man1/uzbl-core.1
 }
