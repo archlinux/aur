@@ -1,6 +1,6 @@
 Defaults:aegir !requiretty
-aegir ALL=NOPASSWD: /usr/bin/systemctl reload-or-try-restart nginx.service
+aegir ALL=NOPASSWD: /usr/bin/systemctl try-reload-or-restart nginx.service
 aegir ALL=NOPASSWD: /usr/bin/nginx
 Defaults:http !requiretty
-http ALL=NOPASSWD: /usr/bin/systemctl reload-or-try-restart nginx.service
+http ALL=NOPASSWD: /usr/bin/systemctl try-reload-or-restart nginx.service
 http ALL=NOPASSWD: /usr/bin/nginx

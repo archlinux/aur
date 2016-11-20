@@ -1,8 +1,8 @@
 # Maintainer: James An <james@jamesan.ca>
 
 pkgname=aegir
-pkgver=7.x_3.7
-pkgrel=1
+pkgver=7.x_3.8
+pkgrel=2
 pkgdesc="Configuration for a dedicated Aegir server to host Drupal sites."
 arch=('any')
 url='http://aegirproject.org'
@@ -44,7 +44,7 @@ md5sums=('b0f2e5dca01b32c967cd823dab6b8779'
          '0c24b1bcf407429dd874c4979e949d1b'
          'f9ae0c781a7ccefc63329daaf81fca36'
          '0b53c23730e511946859d4e3c7fff982'
-         '0dab31966eada66adb159355ed814a54')
+         '28c3fdc6242c022a2aa832f7b91564bc')
 
 package() {
     msg2 'Adding config files'
