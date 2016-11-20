@@ -19,6 +19,10 @@ source=("$pkgname::git://github.com/MrKepzie/Natron.git#tag=$pkgver"
         "https://github.com/MrKepzie/OpenColorIO-Configs/archive/Natron-v${pkgver%.*}.tar.gz"
         "config.pri")
 md5sums=('SKIP'
+         'SKIP'
+         'SKIP'
+         'SKIP'
+         'SKIP'
          '4ca4eca4856cae50cfa4645a090258dd'
          '09f5ac67c0ad57eb853141b38eccb0ff')
 
