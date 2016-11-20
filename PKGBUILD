@@ -3,9 +3,9 @@
 # Contributor: Tiago Camargo <tcamargo@gmail.com>
 
 pkgname=libogc
-pkgver=1.8.12
-_pkgverexamples=20110620
-pkgrel=2
+pkgver=1.8.15
+_pkgverexamples=20161115
+pkgrel=1
 pkgdesc="Library for Nintendo Gamecube/Wii homebrew development"
 arch=('any')
 url="http://www.devkitpro.org"
@@ -18,13 +18,15 @@ source=("http://downloads.sourceforge.net/sourceforge/devkitpro/$pkgname-src-$pk
         "http://downloads.sourceforge.net/sourceforge/devkitpro/gamecube-examples-$_pkgverexamples.tar.bz2")
 noextract=("wii-examples-$_pkgverexamples.tar.bz2"
            "gamecube-examples-$_pkgverexamples.tar.bz2")
-sha256sums=('fecfcec4a4f3d3c1c459f8fa314a6fd00e920d69968c7c1a67f7894f14ca2d4e'
-            '5c48e1e847f5476bc81cf5a7f0a0e543dc9b8aeda49462210c3edb6aa2930f56'
-            'ffe95676f1203ab42c45757dbbccb47527aa61db2d4c45918003cfb57d4da461')
+sha256sums=('a8d29e346776fd4afeaebdfe01ded4b20b7e25e5363abb5629b623248c499ff0'
+            '451a656b3af9900be1f1ae1253573d13fb448a27818ed2a403174ec28a749e56'
+            '6ef8a17aa863916865aab635a6e026ec1eb16d52b1a196e555c84fe53ad6a19f')
 options=(!strip staticlibs)
 
 build() {
+  # set environment
   source /etc/profile.d/devkitppc.sh
+
   make
 }
 
@@ -34,8 +36,8 @@ package() {
   make install
   # examples
   install -d "$DEVKITPRO"/examples/{wii,gamecube}
-  bsdtar -x -f wii-examples-$_pkgverexamples.tar.bz2 -C "$DEVKITPRO"/examples/wii
-  bsdtar -x -f gamecube-examples-$_pkgverexamples.tar.bz2 -C "$DEVKITPRO"/examples/gamecube
+  bsdtar xf wii-examples-$_pkgverexamples.tar.bz2 -C "$DEVKITPRO"/examples/wii
+  bsdtar xf gamecube-examples-$_pkgverexamples.tar.bz2 -C "$DEVKITPRO"/examples/gamecube
   # fix permissions
   chown -R root:root "$DEVKITPRO"/examples
   find "$DEVKITPRO"/examples -type d -exec chmod +rx "{}" \+ 
