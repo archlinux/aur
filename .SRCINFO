@@ -1,0 +1,18 @@
+pkgbase = pyflowchart-git
+	pkgdesc = Application to help manage cirriculum flowcharts at CalPoly
+	pkgver = 0.9
+	pkgrel = 1
+	url = https://github.com/steelcowboy/PyFlowChart
+	arch = any
+	license = BSD
+	makedepends = git
+	makedepends = python-pip
+	makedepends = cython
+	depends = python-setuptools
+	depends = gobject-introspection
+	depends = python-gobject
+	source = git+https://github.com/steelcowboy/PyFlowChart.git
+	sha256sums = SKIP
+
+pkgname = pyflowchart-git
+
