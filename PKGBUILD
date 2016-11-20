@@ -1,6 +1,6 @@
 # Maintainer: Jason White <jasonaw0 at gmail dot com>
 pkgname=button
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc="A fast, correct, and robust build system"
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('sqlite' 'strace' 'button-lua')
 makedepends=('dmd' 'dub')
 source=("https://github.com/jasonwhite/$pkgname/archive/v$pkgver/$pkgname-$pkgver.tar.gz")
-md5sums=('6cdaa93e484db8bfe26f2e62fb96d3fa')
+md5sums=('4e10288ebcbf6d25d92f82dead5494ed')
 
 build() {
     cd "$pkgname-$pkgver"
