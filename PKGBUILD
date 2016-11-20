@@ -1,7 +1,7 @@
 # Maintainer: Philipp 'TamCore' B. <philipp [at] tamcore [dot] eu>
 
 pkgname=ghostwriter-git
-pkgver=v1.3.1.r19.g49af913
+pkgver=v1.4.2.r1.g812199f
 pkgrel=1
 pkgdesc="ghostwriter is a cross-platform, aesthetic, distraction-free Markdown editor."
 arch=(i686 x86_64)
@@ -11,9 +11,8 @@ source=(git://github.com/wereturtle/ghostwriter.git)
 sha256sums=('SKIP')
 conflicts=('ghostwriter')
 provides=('ghostwriter')
-makedepends=('git' 'qtchooser')
+makedepends=('git')
 depends=('qt5-base' 'qt5-webkit' 'hunspell' 'desktop-file-utils' 'gtk-update-icon-cache' 'markdown')
-install=ghostwriter.install
 optdepends=('hunspell: spell checking')
 
 pkgver() {
