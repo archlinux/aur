@@ -1,6 +1,6 @@
 pkgbase = acpilight
 	pkgdesc = A backward-compatibile xbacklight replacement based on ACPI
-	pkgver = r3.137001f
+	pkgver = r7.7c01b2f
 	pkgrel = 1
 	url = https://github.com/wavexx/acpilight
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = acpilight
 	depends = python
 	provides = xbacklight
 	conflicts = xorg-xbacklight
-	source = acpilight-r3.137001f.zip::https://github.com/wavexx/acpilight/archive/137001f.zip
-	md5sums = 938333c468100c11d7a05f6e23987191
+	source = acpilight-r7.7c01b2f.zip::https://github.com/wavexx/acpilight/archive/7c01b2f.zip
+	md5sums = bbef18ba80379782ff230f41434d7350
 
 pkgname = acpilight
 
