@@ -18,6 +18,7 @@ pkgbase = battle-isle-gog
 	source = dosboxbi1_desert.conf
 	source = dosboxbi1_moon.conf
 	source = dosbox_windowed.conf
+	source = fix-console-output.patch
 	source = fix-dosbox-mounts.patch
 	source = fix-permissions.sh
 	sha256sums = f3886b2700bfa47c8f5d9bb4a888509c3bfc1df688b711a92e12c5a76354e711
@@ -27,7 +28,8 @@ pkgbase = battle-isle-gog
 	sha256sums = a6cf2153a01f11ff2de01210db2739d36d4e6a4f93841b227df1d023ed953382
 	sha256sums = 7145cbfea303b682e415cfe020da23021ac5b04693a17fff74352c59556d40b1
 	sha256sums = 50b601b33522677a9bcaf23edc833329067bb87ccda33039c0b95f0d4ddca578
-	sha256sums = 33a8aaef4ac39dc93b1a4b28488c8c7531efde344570ae2e7691b530b9b83d9e
+	sha256sums = 1a11e5ecfdd602ce3412633bac3cfc6160a9b6039af407446d98000d34744ef6
+	sha256sums = 557c175620829a0b63d8bd4933ed114d88d6d00f83cda9791332bf1e0e68ed0a
 	sha256sums = 7e54dbe4aa0c5050afb7459e0faa1e3cf5c8a3c6747cca834d3acd00941add54
 
 pkgname = battle-isle-gog
