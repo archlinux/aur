@@ -1,0 +1,55 @@
+diff --git a/app/dosboxconstructor_client.conf b/app/dosboxconstructor_client.conf
+--- a/app/dosboxconstructor_client.conf
++++ b/app/dosboxconstructor_client.conf
+@@ -1,16 +1,6 @@
+ [IPX]
+-Enable=1
+-Connection=1
+ ipx=true
+ 
+ [autoexec]
+-# Lines in this section will be run at startup.
+-
+-@ECHO OFF
+-mount C ".."
+-imgmount d "..\const.gog" -t iso -fs iso
+-c:
++IPXNET CONNECT 127.0.0.1 19900
+ cls
+-IPXNET CONNECT 127.0.0.1
+-game.exe
+-exit
+diff --git a/app/dosboxconstructor_server.conf b/app/dosboxconstructor_server.conf
+--- a/app/dosboxconstructor_server.conf
++++ b/app/dosboxconstructor_server.conf
+@@ -1,16 +1,5 @@
+ [IPX]
+-Enable=1
+-Connection=1
+ ipx=true
+ 
+ [autoexec]
+-# Lines in this section will be run at startup.
+-
+-@ECHO OFF
+-mount C ".."
+-imgmount d "..\const.gog" -t iso -fs iso
+-c:
+-cls
+-IPXNET STARTSERVER
+-game.exe
+-exit
+\ No newline at end of file
++IPXNET STARTSERVER 19900
+diff --git a/app/dosboxconstructor_single.conf b/app/dosboxconstructor_single.conf
+--- a/app/dosboxconstructor_single.conf
++++ b/app/dosboxconstructor_single.conf
+@@ -1,7 +1,5 @@
+ [IPX]
+-Enable=1
+-Connection=1
+-ipx=true
++ipx=false
+ 
+ [autoexec]
+ # Lines in this section will be run at startup.

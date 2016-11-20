@@ -1,0 +1,16 @@
+post_install() {
+    echo "In order to save or change settings you have to use the fix-permissions.sh"
+    echo "script or install 'unionfs-fuse' to get the game folder mounted in your home dir."
+    echo ""
+    echo "Fix permissions: The default group is 'games'"
+    echo "/opt/constructor/fix-permissions.sh [group]"
+    echo ""
+    echo "Unionfs:"
+    echo 'LOWER_DIR=/opt/constructor'
+    echo 'UPPER_DIR=$HOME/.gog/constructor/config'
+    echo 'UNION_DIR=$HOME/.gog/constructor/game'
+}
+
+post_upgrade() {
+    post_install
+}
