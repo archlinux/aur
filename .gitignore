@@ -1,0 +1,7 @@
+*.tar.gz
+*.tar.xz
+*.pkg.tar
+*.sig
+pkg/
+src/
+panda/
