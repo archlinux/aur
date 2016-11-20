@@ -3,7 +3,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=krita-git
-pkgver=3.0.90r41313.88a03cd
+pkgver=3.0.91.153.gdecde84
 pkgrel=1
 pkgdesc="A free digital painting application. Digital Painting, Creative Freedom!. (GIT Version)"
 arch=('i686' 'x86_64')
@@ -43,8 +43,7 @@ options=('!makeflags')
 
 pkgver() {
   cd krita
-  _ver="$(cat CMakeLists.txt | grep -m3 -e KRITA_STABLE_VERSION_MAJOR -e KRITA_STABLE_VERSION_MINOR -e KRITA_VERSION_RELEASE | cut -d ')' -f1 | grep -o "[[:digit:]]*" | paste -sd'.')"
-  echo "${_ver}r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
+  git describe --tags |sed 's+-+.+g'|sed 's+^v++'
 }
 
 prepare() {
