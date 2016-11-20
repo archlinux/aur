@@ -1,0 +1,14 @@
+pkgbase = python-pocket
+	pkgdesc = api wrapper for getpocket.com
+	pkgver = 0.3.6
+	pkgrel = 1
+	url = https://github.com/tapanpandita/pocket/
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	source = https://pypi.python.org/packages/57/b6/cd79a0e237e733e2f8a196f4e9f4d30d99c769b809c5fbbea9e34400655d/pocket-0.3.6.tar.gz
+	sha512sums = 7cee6a5e0c5840cae136b264ba9404cdb9b17dbcc0b4051c55cb1e1e1ca3e014862081de5fe7bd687f5d4901f7e456d812091120325c3b5a5c5aeda8978da573
+
+pkgname = python-pocket
+
