@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=Battle Isle
+Exec=battle-isle
+Icon=battle-isle
+Categories=Game;
+Terminal=false

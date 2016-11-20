@@ -1,0 +1,11 @@
+diff --git a/app/dosboxbi1_single.conf b/app/dosboxbi1_single.conf
+--- a/app/dosboxbi1_single.conf
++++ b/app/dosboxbi1_single.conf
+@@ -3,6 +3,7 @@ ipx=false
+ 
+ [autoexec]
+ # Lines in this section will be run at startup.
++@echo off
+ cls
+ ECHO [1;33m[42mษออออออออออออออออออออออออออออออออออออออออออออออออออออป
+ ECHO บ -------------------------------------------------- บ

@@ -1,0 +1,30 @@
+diff --git a/app/dosboxbi1_single.conf b/app/dosboxbi1_single.conf
+--- a/app/dosboxbi1_single.conf
++++ b/app/dosboxbi1_single.conf
+@@ -25,7 +25,7 @@ if errorlevel 1 goto isle
+ 
+ :isle
+ cls
+-mount C "..\ISLE"
++mount C "isle"
+ c:
+ cls
+ bi.exe
+@@ -33,7 +33,7 @@ exit
+ 
+ :desert
+ cls
+-mount C "..\DESERT"
++mount C "desert"
+ c:
+ cls
+ DESERT.EXE
+@@ -41,7 +41,7 @@ exit
+ 
+ :moon
+ cls
+-mount C "..\MOON"
++mount C "moon"
+ c:
+ cls
+ MOON.EXE
