@@ -6,7 +6,7 @@ pkgdesc='Library for fingerprint readers'
 arch=('i686' 'x86_64')
 url='https://www.freedesktop.org/wiki/Software/fprint/libfprint/'
 license=('LGPL')
-depends=('libusb' 'nss' 'pixman')
+depends=('libusb' 'nss' 'pixman' 'glib2')
 makedepends=('git')
 provides=('libfprint')
 conflicts=('libfprint')
@@ -18,14 +18,20 @@ pkgver() {
     printf "%s" "$(git describe --long | sed 's/^V_//;s/\([^-]*-\)g/r\1/;s/[-_]/./g')"
 }
 
-build() {
+prepare() {
     cd "$srcdir/$pkgname"
 
     NOCONFIGURE=1 ./autogen.sh
+}
+
+build() {
+    cd "$srcdir/$pkgname"
 
     ./configure --prefix=/usr \
                 --sysconfdir=/etc \
                 --disable-static
+
+    sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
 
     make
 }
