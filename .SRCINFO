@@ -1,0 +1,15 @@
+pkgbase = gnome-shell-extension-transparent-osd-git
+	pkgdesc = Gnome shell extension to add transparency to the OSD
+	pkgver = r4.45f2400
+	pkgrel = 1
+	url = https://github.com/ipaq3870/gsext-transparent-osd
+	install = gschemas.install
+	arch = any
+	license = GPL2
+	makedepends = git
+	depends = gnome-shell
+	source = git+https://github.com/ipaq3870/gsext-transparent-osd
+	md5sums = SKIP
+
+pkgname = gnome-shell-extension-transparent-osd-git
+
