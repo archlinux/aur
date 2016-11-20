@@ -1,8 +1,8 @@
 pkgbase = libfat-ogc
 	pkgdesc = Library for acessing FAT filesystems from Nintendo Gamecube/Wii homebrew
 	pkgver = 1.0.14
-	pkgrel = 1
-	url = http://chishm.drunkencoders.com/libfat/
+	pkgrel = 2
+	url = http://www.chishm.com/libfat/
 	arch = any
 	license = custom
 	depends = libogc
