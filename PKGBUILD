@@ -3,7 +3,7 @@
 
 pkgbase=linux-vfio
 _srcname=linux-4.8
-pkgver=4.8.8
+pkgver=4.8.9
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
@@ -16,6 +16,8 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         "https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.sign"
         # the main kernel config files
         'config' 'config.x86_64'
+        # pacman hook for initramfs regeneration
+        '99-linux.hook'
         # standard config files for mkinitcpio ramdisk
         'linux.preset'
         'change-default-console-loglevel.patch'
@@ -23,11 +25,12 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         '0001-i915-Add-module-option-to-support-VGA-arbiter-on-HD-.patch')
 sha256sums=('3e9150065f193d3d94bcf46a1fe9f033c7ef7122ab71d75a7fb5a2f0c9a7e11a'
             'SKIP'
-            '588b6537cb660c2f7d483aca13f7509a5fc86c60df32c167d40e81d6c7ab4f9c'
+            '9f3c1924080a16ac2b8f054aa9d0490bc0ee4c6159e2fd10e5f6732b2e9604f6'
             'SKIP'
-            'fdb743ebd87f2a6dc3e654774cf2b57c58fc5bc8d0ab2c3b0d6b89277d2b2116'
-            '7e9e1c443aeba1c9b028493de13f0b170d99bedf876d1fbe2748b77c6fb24549'
-            'f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c'
+            '01dd9e64e4d5c2188fcbb5a48375c987b16f28f383fb42559a34e1a2c5a8ef2a'
+            '4111ac3a567c2fccd56368c36dad29753c0df4eae721b4a475bae20dae76855a'
+            '8f407ad5ff6eff106562ba001c36a281134ac9aa468a596aea660a4fe1fd60b5'
+            '99d0102c8065793096b8ea2ccc01c41fa3dcb96855f9f6f2c583b2372208c6f9'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
             'd36c589e3866535a9ac92911be64795967a05a6d300cc8b70abb79ea24b7b393'
             '97c6eaff4dfd2059835351afa9466b43569f3eb45f6c57094f57a3f3fad7ec85')
@@ -122,21 +125,17 @@ _package() {
   cp arch/$KARCH/boot/bzImage "${pkgdir}/boot/vmlinuz-${pkgbase}"
 
   # set correct depmod command for install
-  cp -f "${startdir}/${install}" "${startdir}/${install}.pkg"
+  sed -e "s|%PKGBASE%|${pkgbase}|g;s|%KERNVER%|${_kernver}|g" \
+    "${startdir}/${install}" > "${startdir}/${install}.pkg"
   true && install=${install}.pkg
-  sed \
-    -e  "s/KERNEL_NAME=.*/KERNEL_NAME=${_kernelname}/" \
-    -e  "s/KERNEL_VERSION=.*/KERNEL_VERSION=${_kernver}/" \
-    -i "${startdir}/${install}"
 
   # install mkinitcpio preset file for kernel
-  install -D -m644 "${srcdir}/linux.preset" "${pkgdir}/etc/mkinitcpio.d/${pkgbase}.preset"
-  sed \
-    -e "1s|'linux.*'|'${pkgbase}'|" \
-    -e "s|ALL_kver=.*|ALL_kver=\"/boot/vmlinuz-${pkgbase}\"|" \
-    -e "s|default_image=.*|default_image=\"/boot/initramfs-${pkgbase}.img\"|" \
-    -e "s|fallback_image=.*|fallback_image=\"/boot/initramfs-${pkgbase}-fallback.img\"|" \
-    -i "${pkgdir}/etc/mkinitcpio.d/${pkgbase}.preset"
+  sed "s|%PKGBASE%|${pkgbase}|g" "${srcdir}/linux.preset" |
+    install -D -m644 /dev/stdin "${pkgdir}/etc/mkinitcpio.d/${pkgbase}.preset"
+
+  # install pacman hook for initramfs regeneration
+  sed "s|%PKGBASE%|${pkgbase}|g" "${srcdir}/99-linux.hook" |
+    install -D -m644 /dev/stdin "${pkgdir}/usr/share/libalpm/hooks/99-${pkgbase}.hook"
 
   # remove build and source links
   rm -f "${pkgdir}"/lib/modules/${_kernver}/{source,build}
