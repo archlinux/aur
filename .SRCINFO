@@ -1,16 +1,18 @@
 pkgbase = libext2fs-wii
 	pkgdesc = Ext2/3/4 filesystem access library (for Nintendo Gamecube/Wii homebrew development)
 	pkgver = 1.0.5
-	pkgrel = 1
-	url = http://code.google.com/p/libext2fs-wii/
+	pkgrel = 2
+	url = https://sourceforge.net/projects/libext2fs-wii/
 	arch = any
 	license = GPL
 	makedepends = svn
 	depends = devkitppc
 	options = !strip
 	options = staticlibs
-	source = libext2fs-wii-1.0.5::svn+http://libext2fs-wii.googlecode.com/svn/tags/v1.0.5
-	md5sums = SKIP
+	source = libext2fs-wii-1.0.5::svn+http://svn.code.sf.net/p/libext2fs-wii/code/tags/v1.0.5
+	source = libext2fs-wii-fix_crc32_int_type.patch
+	sha256sums = SKIP
+	sha256sums = cd3b4e9e683b25095b6da85074402668066c4accab87a68184b4e9acf8ebb0b0
 
 pkgname = libext2fs-wii
 
