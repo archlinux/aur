@@ -1,0 +1,29 @@
+pkgbase = pasystray-gtk3-standalone
+	pkgdesc = PulseAudio system tray (a replacement for padevchooser gtk3 standalone version)
+	pkgver = 0.6.0
+	pkgrel = 1
+	url = https://github.com/christophgysin/pasystray
+	arch = i686
+	arch = x86_64
+	groups = multimedia
+	license = LGPL
+	makedepends = git
+	depends = gtk3
+	depends = libpulse
+	depends = libnotify
+	depends = avahi
+	depends = libx11
+	depends = gnome-icon-theme
+	depends = gtk-update-icon-cache
+	optdepends = pulseaudio: To control a local pulseaudio instance
+	optdepends = paman: Launch PulseAudio manager from tray icon
+	optdepends = pavucontrol: Launch PulseAudio mixer from tray icon
+	optdepends = pavumeter: Launch PulseAudio volume meter from tray icon
+	optdepends = paprefs: Launch PulseAudio preferences from tray icon
+	provides = pasystray
+	conflicts = pasystray
+	source = pasystray-0.6.0.tar.gz::https://github.com/christophgysin/pasystray/archive/0.6.0.tar.gz
+	md5sums = c7467ac2b75290bd086fc60f8243ad77
+
+pkgname = pasystray-gtk3-standalone
+
