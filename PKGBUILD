@@ -2,7 +2,7 @@
 # Contributor: FrozenCow <frozencow@gmail.com>
 
 pkgname=itch
-pkgver=19.0.0
+pkgver=20.0.0
 pkgrel=1
 pkgdesc="The best way to play itch.io games."
 
@@ -17,7 +17,7 @@ install="itch.install"
 
 # sic. - source is in itch repo, kitch is a dummy repo for canary-channel github releases
 source=("https://github.com/itchio/itch/archive/v${pkgver}.tar.gz")
-sha256sums=('5a5a193b498e363c584b809e16c5e5afbe88f5a34216488ed04ffaebcb702eab')
+sha256sums=('d75d95820806fdfbfd402dfe843afbdf027664567f3813dfa7a8fa97c76de875')
 
 [ "$CARCH" = "i686" ]   && _ELECTRON_ARCH=ia32; _ITCH_ARCH=i386
 [ "$CARCH" = "x86_64" ] && _ELECTRON_ARCH=x64;  _ITCH_ARCH=amd64
@@ -34,7 +34,7 @@ prepare() {
 
 build() {
   cd "${srcdir}/itch-${pkgver}"
-  export CI_BUILD_TAG="v19.0.0"
+  export CI_BUILD_TAG="v20.0.0"
   export CI_CHANNEL="stable"
 
   release/ci-compile.js
@@ -45,7 +45,7 @@ build() {
 
 check() {
   cd "${srcdir}/itch-${pkgver}"
-  node test/runner.js
+  node app/tests/runner.js
 }
 
 package() {
@@ -55,7 +55,7 @@ package() {
   cp -a "build/v${pkgver}/itch-linux-${_ELECTRON_ARCH}/." "${pkgdir}/usr/lib/itch"
 
   install -d "${pkgdir}/usr/share/applications"
-  install -Dm644 linux-extras/itch.desktop "${pkgdir}/usr/share/applications/itch.desktop"
+  install -Dm644 linux-extras/io.itch.itch.desktop "${pkgdir}/usr/share/applications/itch.desktop"
 
   for icon in release/images/itch-icons/icon*.png
   do
