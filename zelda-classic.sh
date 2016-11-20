@@ -1,33 +1,52 @@
-#!/bin/sh
+#!/bin/bash
 #
-# Zelda Classic launcher
+# Zelda Classic launcher - (c) carstene1ns 2013
 #
 # Does some magic juggling with the data files
 
-mkdir -p $HOME/.zelda-classic
+# Changelog:
+#  * 11-2016: Added XDG support
 
-if [ ! -f $HOME/.zelda-classic/1st.qst ]; then
+jail_dir=${XDG_CONFIG_HOME:-$HOME/.config}/zelda-classic
 
-  ln -s /opt/zelda-classic/{*.{qst,dat},zelda.nsf,samplesoundset,{zelda,zlaunch,zquest}-l} $HOME/.zelda-classic/
-  ln -s /usr/share/doc/zelda-classic/zquest.txt $HOME/.zelda-classic/
+# migrate files from old location
+jail_old=$HOME/.zelda-classic
+
+if [ ! -e $jail_dir ]; then
+  mkdir -p $jail_dir
+
+  if [ -e $jail_old ]; then
+    for f in $jail_old/{*.{qst,dat,nsf,txt},samplesoundset,{zelda,zlaunch,zquest}-l}; do
+      [ -L $f ] && rm $f
+    done
+
+    mv $jail_old/{ag.cfg,allegro.log,zc.{icn,lck,sav}} $jail_dir
+  fi
 
 fi
 
-cd $HOME/.zelda-classic
+# symlink files from installation directory
+for f in /opt/zelda-classic/{*.{qst,dat,nsf,so},samplesoundset,z*-l} \
+         /usr/share/doc/zelda-classic/zquest.txt; do
+  [ ! -e $jail_dir/${f##*/} ] && ln -s $f $jail_dir
+done
+
+# change to directory and launch
+cd $jail_dir
 
 case "${0##*/}" in
   zelda-classic)
-    ./zelda-l "$@"
-  ;;
+    exec ./zelda-l "$@"
+    ;;
   zelda-classic-zlaunch)
-    ./zlaunch-l "$@"
-  ;;
+    exec ./zlaunch-l "$@"
+    ;;
   zelda-classic-zquest)
-    ./zquest-l "$@"
-  ;;
+    exec ./zquest-l "$@"
+    ;;
   *)
     echo "Something is wrong with your Zelda Classic installation."
-  ;;
+    ;;
 esac
 
 cd - &>/dev/null

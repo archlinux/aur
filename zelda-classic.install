@@ -1,8 +1,16 @@
 
 post_install() {
-  echo "If you experience Errors, check/delete your ~/.zelda-classic directory."
+  echo " => If you experience problems, check/delete your zelda-classic directory,"
+  echo "    It is located in \$XDG_CONFIG_HOME, default: '~/.config/zelda-classic'."
 }
 
 post_upgrade() {
   post_install
+
+  # the launcher changed in that version
+  if [ $(vercmp $2 2.50.2.29-1) -lt 0 ]; then
+    echo " => This folder was formerly located at '~/.zelda-classic'. The launcher script"
+    echo "    tries to migrate settings and data files to the new location, however custom"
+    echo "    quests are not touched and should be moved manually."
+  fi
 }
