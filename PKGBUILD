@@ -9,7 +9,7 @@ license=('GPL3')
 depends=('python' 'python-aiohttp')
 makedepends=('python-setuptools')
 source=("https://github.com/TsarFox/chandere2/archive/v2.3.1.tar.gz")
-md5sums=('7204c5dab795be4eabead031827f5154')
+md5sums=('a68ad91d91d38810c4fd5938c812350e')
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
