@@ -1,0 +1,17 @@
+pkgbase = clipit
+	pkgdesc = Lightweight GTK+ clipboard manager (fork of Parcellite)
+	pkgver = 1.4.2
+	pkgrel = 6
+	url = http://gtkclipit.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = intltool
+	depends = gtk2
+	depends = librsvg
+	optdepends = xdotool: for automatic paste
+	source = https://github.com/downloads/shantzu/ClipIt/clipit-1.4.2.tar.gz
+	md5sums = 118175f26869adcf04909fdbb5021eff
+
+pkgname = clipit
+
