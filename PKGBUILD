@@ -3,14 +3,14 @@
 
 pkgname=jxplorer
 pkgver=3.3.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Java LDAP client'
 url='http://jxplorer.org/'
 license=('custom')
 arch=('any')
 depends=('java-runtime')
 makedepends=('setconf')
-source=("http://downloads.sourceforge.net/project/${pkgname}/${pkgname}/version/${pkgver}/$pkgname-$pkgver-linux-installer.run")
+source=("http://downloads.sourceforge.net/project/${pkgname}/${pkgname}/version%20${pkgver}/$pkgname-$pkgver-linux-installer.run")
 sha256sums=('7ff5ff0a124d8e16d7688ae093cfcd859f4be3104f3455cc59d4b15d55a61ffa')
 
 prepare() {
