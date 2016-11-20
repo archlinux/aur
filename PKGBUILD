@@ -1,3 +1,4 @@
+# Contributor: kaptoxic(at)yahoo(dot)com
 # Contributor: Paolo Herms
 
 pkgname=z3-bin
@@ -18,6 +19,13 @@ md5sums=('4b7b4836264a7969f052cea45057e55b'
 
 build() {
   install -D "$srcdir"/z3/bin/z3 "$pkgdir"/usr/bin/z3
+
+  # python bindings
+  # /usr/lib/python3.5/site-packages
+  pypath=$(python -c "from distutils.sysconfig import get_python_lib; print(get_python_lib())")
+  install -m644 -D "$srcdir/{z3consts.py,z3core.py,z3num.py,z3poly.py,z3printer.py,z3.py,z3rcf.py,z3types.py,z3util.py}" "$pkgdir$pypath"
+
+  # license
   install -m644 -D "$srcdir/Z%203%20MSR-LA%20(2007-07-07).txt" "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
 
