@@ -2,7 +2,7 @@
 # Contributor: mickael9 <mickael9 at gmail dot com>
 
 pkgname=factorio
-pkgver=0.13.20
+pkgver=0.14.20
 pkgrel=1
 pkgdesc="A 2D game about building and maintaining factories."
 arch=('i686' 'x86_64')
