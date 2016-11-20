@@ -1,0 +1,37 @@
+From 550c0122ee22c5c41bba6cd1ddd5a71529610ada Mon Sep 17 00:00:00 2001
+From: vmojzis <vmojzis@redhat.com>
+Date: Thu, 27 Oct 2016 13:52:36 +0200
+Subject: [PATCH] libselinux: fix pointer handling in realpath_not_final
+
+Loop designed for stripping leading "//" was changing
+the only pointer referencing block of memory allocated
+by "strdup", resulting in "free()" failure. The loop
+had no effect because "realpath" is used later on.
+
+Fixes: https://bugzilla.redhat.com/show_bug.cgi?id=1376598
+
+Signed-off-by: vmojzis <vmojzis@redhat.com>
+---
+ libselinux/src/matchpathcon.c | 6 ------
+ 1 file changed, 6 deletions(-)
+
+diff --git a/libselinux/src/matchpathcon.c b/libselinux/src/matchpathcon.c
+index 724eb65097d6..58b4144ac0bf 100644
+--- a/libselinux/src/matchpathcon.c
++++ b/libselinux/src/matchpathcon.c
+@@ -389,12 +389,6 @@ int realpath_not_final(const char *name, char *resolved_path)
+ 		goto out;
+ 	}
+ 
+-	/* strip leading // */
+-	while (tmp_path[len] && tmp_path[len] == '/' &&
+-	       tmp_path[len+1] && tmp_path[len+1] == '/') {
+-		tmp_path++;
+-		len++;
+-	}
+ 	last_component = strrchr(tmp_path, '/');
+ 
+ 	if (last_component == tmp_path) {
+-- 
+2.10.2
+

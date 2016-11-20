@@ -1,0 +1,82 @@
+From cc550202c358286c488aba45be2009d6f2d2746d Mon Sep 17 00:00:00 2001
+From: Laurent Bigonville <bigon@bigon.be>
+Date: Wed, 2 Nov 2016 16:24:31 +0100
+Subject: [PATCH] Revert "libselinux: support new python3 functions"
+
+With the reverted commit applied, some functions were returning arrays
+of bytes instead of python strings under python3 this was causing issues
+with string manipulation functions like split().
+
+Swig (checked with 3.0.7) is adding compatibility macros that take care
+of the differences between python2 and python3.
+
+This reverts commit 63df0f7ef12844b9b86cc293299671da772fcf84.
+
+Signed-off-by: Laurent Bigonville <bigon@bigon.be>
+---
+ libselinux/src/selinuxswig_python.i | 22 +++++++---------------
+ 1 file changed, 7 insertions(+), 15 deletions(-)
+
+diff --git a/libselinux/src/selinuxswig_python.i b/libselinux/src/selinuxswig_python.i
+index 8cea18d25dba..43df29153d7c 100644
+--- a/libselinux/src/selinuxswig_python.i
++++ b/libselinux/src/selinuxswig_python.i
+@@ -64,7 +64,7 @@ def install(src, dest):
+ 	PyObject* list = PyList_New(*$2);
+ 	int i;
+ 	for (i = 0; i < *$2; i++) {
+-		PyList_SetItem(list, i, PyBytes_FromString((*$1)[i]));
++		PyList_SetItem(list, i, PyString_FromString((*$1)[i]));
+ 	}
+ 	$result = SWIG_Python_AppendOutput($result, list);
+ }
+@@ -97,9 +97,7 @@ def install(src, dest):
+ 			len++;
+ 		plist = PyList_New(len);
+ 		for (i = 0; i < len; i++) {
+-			PyList_SetItem(plist, i,
+-                                       PyBytes_FromString((*$1)[i])
+-                                       );
++			PyList_SetItem(plist, i, PyString_FromString((*$1)[i]));
+ 		}
+ 	} else {
+ 		plist = PyList_New(0);
+@@ -116,9 +114,7 @@ def install(src, dest):
+ 	if (*$1) {
+ 		plist = PyList_New(result);
+ 		for (i = 0; i < result; i++) {
+-			PyList_SetItem(plist, i,
+-                                       PyBytes_FromString((*$1)[i])
+-                                       );
++			PyList_SetItem(plist, i, PyString_FromString((*$1)[i]));
+ 		}
+ 	} else {
+ 		plist = PyList_New(0);
+@@ -171,20 +167,16 @@ def install(src, dest):
+ 	$1 = (char**) malloc(size + 1);
+ 
+ 	for(i = 0; i < size; i++) {
+-		if (!PyBytes_Check(PySequence_GetItem($input, i))) {
+-			PyErr_SetString(PyExc_ValueError, "Sequence must contain only bytes");
+-
++		if (!PyString_Check(PySequence_GetItem($input, i))) {
++			PyErr_SetString(PyExc_ValueError, "Sequence must contain only strings");
+ 			return NULL;
+ 		}
+-
+ 	}
+ 		
+ 	for(i = 0; i < size; i++) {
+ 		s = PySequence_GetItem($input, i);
+-
+-		$1[i] = (char*) malloc(PyBytes_Size(s) + 1);
+-		strcpy($1[i], PyBytes_AsString(s));
+-
++		$1[i] = (char*) malloc(PyString_Size(s) + 1);
++		strcpy($1[i], PyString_AsString(s));
+ 	}
+ 	$1[size] = NULL;
+ }
+-- 
+2.10.2
+

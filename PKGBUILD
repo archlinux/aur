@@ -5,8 +5,8 @@
 # Contributor: Zezadas
 
 pkgname=libselinux
-pkgver=2.5
-pkgrel=3
+pkgver=2.6
+pkgrel=1
 pkgdesc="SELinux library and simple utilities"
 arch=('i686' 'x86_64' 'armv6h')
 url='http://userspace.selinuxproject.org'
@@ -20,33 +20,28 @@ optdepends=('python2: python2 bindings'
 conflicts=("selinux-usr-${pkgname}")
 provides=("selinux-usr-${pkgname}=${pkgver}-${pkgrel}")
 options=(!emptydirs)
-source=("https://raw.githubusercontent.com/wiki/SELinuxProject/selinux/files/releases/20160223/${pkgname}-${pkgver}.tar.gz"
+source=("https://raw.githubusercontent.com/wiki/SELinuxProject/selinux/files/releases/20161014/${pkgname}-${pkgver}.tar.gz"
         "libselinux.tmpfiles.d"
-        "0001-libselinux-only-mount-proc-if-necessary.patch"
-        "0002-Avoid-mounting-proc-outside-of-selinux_init_load_pol.patch"
-        "0003-libselinux-Change-the-location-of-_selinux-so.patch")
-sha256sums=('94c9e97706280bedcc288f784f67f2b9d3d6136c192b2c9f812115edba58514f'
+        '0001-libselinux-fix-pointer-handling-in-realpath_not_fina.patch'
+        '0002-Revert-libselinux-support-new-python3-functions.patch')
+sha256sums=('4ea2dde50665c202253ba5caac7738370ea0337c47b251ba981c60d24e1a118a'
             'afe23890fb2e12e6756e5d81bad3c3da33f38a95d072731c0422fbeb0b1fa1fc'
-            'da3ed20d45b7656c25411bcc31109a78b64265978839bbc06b25151a7231611c'
-            '1d20ae0d6fb39dd93258388297206980cb530b04511c4b16db247e05c84804a8'
-            '725ec5a452b899309626b5e75f16f068ac108f9652565c99aedc268fd1d3922d')
+            '4d7998c5368a6d13f5b730184b4e9ddb28dd42e1576f8daf12676ca468a935b3'
+            '82f598ab5c5d21b8b76e887fea43e5d8549f4e9a4047ba3a4cf1a6980ff22eec')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
-  sed -i 's|pkg-config --cflags ruby|pkg-config --cflags ruby-$(RUBYLIBVER)|' src/Makefile
-  sed -i 's|site_ruby|vendor_ruby|' src/Makefile
 
-  # Backport commits to fix issues when SELinux is disabled
-  # https://github.com/systemd/systemd/issues/3962#issuecomment-239827399
-  patch -Np2 -i "../0001-libselinux-only-mount-proc-if-necessary.patch"
-  patch -Np2 -i "../0002-Avoid-mounting-proc-outside-of-selinux_init_load_pol.patch"
-
-  # Backport commit to fix the Python wrapper with SWIG 3.0.10
-  patch -Np2 -i "../0003-libselinux-Change-the-location-of-_selinux-so.patch"
+  patch -Np2 -i '../0001-libselinux-fix-pointer-handling-in-realpath_not_fina.patch'
+  patch -Np2 -i '../0002-Revert-libselinux-support-new-python3-functions.patch'
 }
 
 build() {
   cd "${pkgname}-${pkgver}"
+
+  # Do not build deprecated rpm_execcon() interface. It is useless on Arch Linux anyway.
+  export DISABLE_RPM=y
+
   make swigify
   make all
   make PYTHON=python2 pywrap
@@ -56,10 +51,15 @@ build() {
 
 package(){
   cd "${pkgname}-${pkgver}"
+
+  export DISABLE_RPM=y
+
   make DESTDIR="${pkgdir}" USRBINDIR="${pkgdir}"/usr/bin LIBDIR="${pkgdir}"/usr/lib SHLIBDIR="${pkgdir}"/usr/lib install
   make DESTDIR="${pkgdir}" USRBINDIR="${pkgdir}"/usr/bin LIBDIR="${pkgdir}"/usr/lib SHLIBDIR="${pkgdir}"/usr/lib PYTHON=python2 install-pywrap
   make DESTDIR="${pkgdir}" USRBINDIR="${pkgdir}"/usr/bin LIBDIR="${pkgdir}"/usr/lib SHLIBDIR="${pkgdir}"/usr/lib PYTHON=python3 install-pywrap
   make DESTDIR="${pkgdir}" USRBINDIR="${pkgdir}"/usr/bin LIBDIR="${pkgdir}"/usr/lib SHLIBDIR="${pkgdir}"/usr/lib install-rubywrap
+  python2 -m compileall "${pkgdir}/$(python2 -c 'import site; print(site.getsitepackages()[0])')"
+  python3 -m compileall "${pkgdir}/$(python3 -c 'import site; print(site.getsitepackages()[0])')"
 
   install -Dm 0644 "${srcdir}"/libselinux.tmpfiles.d "${pkgdir}"/usr/lib/tmpfiles.d/libselinux.conf
 }

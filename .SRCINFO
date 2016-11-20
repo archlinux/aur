@@ -1,7 +1,7 @@
 pkgbase = libselinux
 	pkgdesc = SELinux library and simple utilities
-	pkgver = 2.5
-	pkgrel = 3
+	pkgver = 2.6
+	pkgrel = 1
 	url = http://userspace.selinuxproject.org
 	arch = i686
 	arch = x86_64
@@ -18,19 +18,17 @@ pkgbase = libselinux
 	optdepends = python2: python2 bindings
 	optdepends = python: python bindings
 	optdepends = ruby: ruby bindings
-	provides = selinux-usr-libselinux=2.5-3
+	provides = selinux-usr-libselinux=2.6-1
 	conflicts = selinux-usr-libselinux
 	options = !emptydirs
-	source = https://raw.githubusercontent.com/wiki/SELinuxProject/selinux/files/releases/20160223/libselinux-2.5.tar.gz
+	source = https://raw.githubusercontent.com/wiki/SELinuxProject/selinux/files/releases/20161014/libselinux-2.6.tar.gz
 	source = libselinux.tmpfiles.d
-	source = 0001-libselinux-only-mount-proc-if-necessary.patch
-	source = 0002-Avoid-mounting-proc-outside-of-selinux_init_load_pol.patch
-	source = 0003-libselinux-Change-the-location-of-_selinux-so.patch
-	sha256sums = 94c9e97706280bedcc288f784f67f2b9d3d6136c192b2c9f812115edba58514f
+	source = 0001-libselinux-fix-pointer-handling-in-realpath_not_fina.patch
+	source = 0002-Revert-libselinux-support-new-python3-functions.patch
+	sha256sums = 4ea2dde50665c202253ba5caac7738370ea0337c47b251ba981c60d24e1a118a
 	sha256sums = afe23890fb2e12e6756e5d81bad3c3da33f38a95d072731c0422fbeb0b1fa1fc
-	sha256sums = da3ed20d45b7656c25411bcc31109a78b64265978839bbc06b25151a7231611c
-	sha256sums = 1d20ae0d6fb39dd93258388297206980cb530b04511c4b16db247e05c84804a8
-	sha256sums = 725ec5a452b899309626b5e75f16f068ac108f9652565c99aedc268fd1d3922d
+	sha256sums = 4d7998c5368a6d13f5b730184b4e9ddb28dd42e1576f8daf12676ca468a935b3
+	sha256sums = 82f598ab5c5d21b8b76e887fea43e5d8549f4e9a4047ba3a4cf1a6980ff22eec
 
 pkgname = libselinux
 
