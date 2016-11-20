@@ -1,13 +1,12 @@
-diff -rupN old/etc/udev/rules.d/80-hasp.rules new/etc/udev/rules.d/80-hasp.rules
---- old/etc/udev/rules.d/80-hasp.rules	2015-08-20 09:15:07.000000000 -0400
-+++ new/etc/udev/rules.d/80-hasp.rules	2016-08-06 22:46:36.632611545 -0400
+--- old/etc/udev/rules.d/80-hasp.rules	2016-11-20 14:30:46.445417194 -0500
++++ new/etc/udev/rules.d/80-hasp.rules	2016-11-20 16:44:11.014504305 -0500
 @@ -6,7 +6,7 @@ ACTION=="remove", ENV{HASP}=="1", RUN+="
- ACTION=="add|change", SUBSYSTEM=="usb", ATTRS{idVendor}=="0529", ATTRS{idProduct}=="0003", KERNEL!="hiddev*", MODE="666", ENV{SENTINELHID}="1", SYMLINK+="aks/sentinelhid/%k"
+ ACTION=="add|change", SUBSYSTEM=="usb", ATTRS{idVendor}=="0529", ATTRS{idProduct}=="0003", KERNEL!="hiddev*", MODE="666", GROUP="plugdev", ENV{SENTINELHID}="1", SYMLINK+="aks/sentinelhid/%k"
  
  # Compatibility rules for kernel older than 2.6.22 (RedHat 5.x)
 -ACTION=="add", SUBSYSTEM=="usb_device", PHYSDEVBUS=="usb", SYSFS{idVendor}=="0529", SYSFS{idProduct}=="0001", MODE="664", ENV{HASP}="1", SYMLINK+="aks/hasp/%k", RUN+="/usr/sbin/aksusbd -c $root/aks/hasp/$kernel"
--ACTION=="add", SUBSYSTEM=="usb_device", PHYSDEVBUS=="usb", SYSFS{idVendor}=="0529", SYSFS{idProduct}=="0003", MODE="666", ENV{SENTINELHID}="1", SYMLINK+="aks/sentinelhid/%k"
+-ACTION=="add", SUBSYSTEM=="usb_device", PHYSDEVBUS=="usb", SYSFS{idVendor}=="0529", SYSFS{idProduct}=="0003", MODE="666", GROUP="plugdev", ENV{SENTINELHID}="1", SYMLINK+="aks/sentinelhid/%k"
 +#ACTION=="add", SUBSYSTEM=="usb_device", PHYSDEVBUS=="usb", SYSFS{idVendor}=="0529", SYSFS{idProduct}=="0001", MODE="664", ENV{HASP}="1", SYMLINK+="aks/hasp/%k", RUN+="/usr/sbin/aksusbd -c $root/aks/hasp/$kernel"
-+#ACTION=="add", SUBSYSTEM=="usb_device", PHYSDEVBUS=="usb", SYSFS{idVendor}=="0529", SYSFS{idProduct}=="0003", MODE="666", ENV{SENTINELHID}="1", SYMLINK+="aks/sentinelhid/%k"
++#ACTION=="add", SUBSYSTEM=="usb_device", PHYSDEVBUS=="usb", SYSFS{idVendor}=="0529", SYSFS{idProduct}=="0003", MODE="666", GROUP="plugdev", ENV{SENTINELHID}="1", SYMLINK+="aks/sentinelhid/%k"
  
  # eof
