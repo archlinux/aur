@@ -1,13 +1,14 @@
 pkgbase = znapzend
 	pkgdesc = ZnapZend is a ZFS centric backup tool. It relies on snapshot, send and receive todo its work. It has the built-in ability to manage both local snapshots as well as remote copies by thining them out as time progresses.
-	pkgver = 0.15.7
-	pkgrel = 4
+	pkgver = 0.16.0
+	pkgrel = 1
 	url = http://www.znapzend.org/
 	arch = any
 	license = GPL
 	depends = perl
 	depends = zfs
-	source = https://github.com/oetiker/znapzend/releases/download/v0.15.7/znapzend-0.15.7.tar.gz
+	source = https://github.com/oetiker/znapzend/releases/download/v0.16.0/znapzend-0.16.0.tar.gz
 	md5sums = c464e0799212f025c31859737c3ce4bc
 
 pkgname = znapzend
+
