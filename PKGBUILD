@@ -6,7 +6,7 @@ pkgdesc="A Python wrapper around the Twitter API"
 url="https://github.com/bear/python-twitter"
 arch=(any)
 license=('Apache')
-makedepends=('python-setuptools' 'python2-setuptools' 'python-requests-oauthlib' 'python-requests-oauthlib' 'python-future' 'python-future')
+makedepends=('python-setuptools' 'python2-setuptools' 'python-requests-oauthlib' 'python2-requests-oauthlib' 'python2-future' 'python-future')
 source=("https://pypi.python.org/packages/96/69/53b87d2b717a669eb8f46d6e1d180d0a691f3d303631ca6be80f9d036a2a/python-twitter-3.1.tar.gz")
 md5sums=('2e00d057a22db298709f768a96cc88ef')
 
