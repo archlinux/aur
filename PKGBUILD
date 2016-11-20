@@ -1,7 +1,7 @@
 # Maintainer: Gustavo alvarez <sl1pkn07@gmail.com>
 
 pkgname=kaudiocreator-git
-pkgver=1.3.r835.d8c20a8
+pkgver=1.3.r842.ec22d77
 pkgrel=1
 pkgdesc="A program for ripping and encoding Audio-CDs, encoding files from disk. (GIT version)"
 arch=('i686' 'x86_64')
@@ -11,13 +11,12 @@ depends=('kdelibs4support'
          'knotifyconfig'
          'kcmutils'
          'libdiscid'
-         'libkcddb-git'
-         'libkcompactdisc-git'
+         'libkcddb'
+         'libkcompactdisc'
          'taglib'
          'hicolor-icon-theme'
          )
 makedepends=('git'
-             'cmake'
              'extra-cmake-modules'
              'kdoctools'
              'doxygen'
@@ -28,9 +27,9 @@ provides=('kaudiocreator')
 source=('git://anongit.kde.org/kaudiocreator.git'
         'CMakeLists.txt.diff'
         )
-sha1sums=('SKIP'
-          '82ea32c207ffa6fc6c0b702a727ab05212e39eb1'
-          )
+sha256sums=('SKIP'
+            '4442783ba25b4a05ac76e8a0dbf72101798cf4a87b7b0979598e309df82cbb7d'
+            )
 
 pkgver() {
   cd kaudiocreator
@@ -51,7 +50,6 @@ build() {
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_BUILD_TYPE=Release \
     -DKDE_INSTALL_LIBDIR=lib \
-    -DKDE_INSTALL_USE_QT_SYS_PATHS=ON \
     -DBUILD_TESTING=OFF
   make
 }
