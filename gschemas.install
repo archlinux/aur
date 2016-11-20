@@ -1,0 +1,30 @@
+post_install() {
+  /usr/bin/glib-compile-schemas /usr/share/glib-2.0/schemas/
+  instructions_install
+}
+
+post_upgrade() {
+  /usr/bin/glib-compile-schemas /usr/share/glib-2.0/schemas/
+  instructions_upgrade
+}
+
+post_remove() {
+  /usr/bin/glib-compile-schemas /usr/share/glib-2.0/schemas/
+}
+
+instructions_install() {
+  /bin/cat << EOF
+
+Restart GNOME Shell ([Alt]+[F2], r).
+Activate the extension with gnome-tweak-tool.
+
+EOF
+}
+
+instructions_upgrade() {
+  /bin/cat << EOF
+
+Restart GNOME Shell ([Alt]+[F2], r) to load the upgraded extension.
+
+EOF
+}
