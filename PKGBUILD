@@ -2,7 +2,7 @@
 # Contributor: Michael Carlberg <c@rlberg.se>
 pkgname=polybar
 pkgver=2.3.1
-pkgrel=3
+pkgrel=4
 pkgdesc="A fast and easy-to-use status bar"
 arch=("i686" "x86_64")
 url="https://github.com/jaagr/polybar"
@@ -15,7 +15,7 @@ optdepends=("alsa-lib: volume module support"
             "i3ipc-glib-git: i3 module support"
             "ttf-unifont: Font used in example config"
             "siji-git: Font used in example config")
-makedepends=("cmake" "python2" "pkg-config" "boost")
+makedepends=("cmake" "python" "pkg-config" "boost")
 conflicts=("polybar-git" "lemonbuddy-git" "lemonbuddy")
 source=("${pkgname}::git+${url}.git#tag=${pkgver}")
 md5sums=("SKIP")
