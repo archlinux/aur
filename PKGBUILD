@@ -2,14 +2,13 @@
 
 pkgname="liblogcpp"
 pkgver=1.9.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A intuitive and highly customizable LGPL library for logging with C++."
 arch=('x86_64' 'i686' 'armv6h' 'armv7h')
 url="https://github.com/nullptrT/liblogcpp.git"
 license=('LGPL3')
-conflicts=('liblogcpp')
+conflicts=('liblogcpp-qt')
 provides=('liblogcpp=${pkgver}')
-replaces=('liblogcpp')
 depends=()
 makedepends=('cmake')
 source=("liblogcpp-v${pkgver}.tar.gz::https://github.com/nullptrT/liblogcpp/archive/${pkgver}.tar.gz")
