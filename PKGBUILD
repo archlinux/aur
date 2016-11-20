@@ -14,8 +14,7 @@ url="http://sourceforge.net/projects/trousers"
 license=('CPL')
 depends=('trousers' 'opencryptoki')
 source=(http://downloads.sourceforge.net/project/trousers/${pkgname}/${pkgver}/${pkgname}-${pkgver}.tar.gz)
-sha256sums=('13a1cb29d38d449cbc44d6384630d4827cc6ddb2ec8d9baa207e75ec1b134864'
-            '02c79d976f5d7f783638ec4ce82740ba02f5ea1bb6c45c58bd6ec8de34bc6d2e')
+sha256sums=('13a1cb29d38d449cbc44d6384630d4827cc6ddb2ec8d9baa207e75ec1b134864')
 
 build() {
   # the tarball for 1.3.9 doesn't have a parent directory
