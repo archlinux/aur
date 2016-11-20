@@ -1,4 +1,6 @@
 # Maintainer: Hugo Courtial <hugo [at] courtial [not colon] me>
+# Maintainer: Luca Weiss <luca (at) z3ntu (dot) xyz>
+
 pkgname=openfx-io
 pkgver=2.1.8
 pkgrel=1
