@@ -15,7 +15,7 @@ package_python2-tflearn() {
   makedepends=('python2-setuptools')
 
   cd "$srcdir/tflearn-$pkgver"
-  python setup.py install --root="$pkgdir/" --optimize=1
+  python2 setup.py install --root="$pkgdir/" --optimize=1
   install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
