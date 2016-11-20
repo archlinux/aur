@@ -21,7 +21,7 @@ prepare() {
   cd "${srcdir}"/gmail
 
   # Python 3 Port
-  wget https://github.com/charlierguo/gmail/pull/48.patch
+  wget -c https://github.com/charlierguo/gmail/pull/48.patch
   patch -p1 -i 48.patch
 }
 
