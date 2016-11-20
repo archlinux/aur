@@ -1,0 +1,26 @@
+From 2f7ebd500ef7e967803af5463d9033137a98ac00 Mon Sep 17 00:00:00 2001
+From: Vasily Khoruzhick <anarsoul@gmail.com>
+Date: Thu, 10 Nov 2016 14:25:28 -0800
+Subject: [PATCH] uru4k: increase threshold to detect encryption
+
+Otherwise we get false positives on devices without encryption
+---
+ libfprint/drivers/uru4000.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/libfprint/drivers/uru4000.c b/libfprint/drivers/uru4000.c
+index e07db50..ae32a6b 100644
+--- a/libfprint/drivers/uru4000.c
++++ b/libfprint/drivers/uru4000.c
+@@ -45,7 +45,7 @@
+ #define IMAGE_HEIGHT		290
+ #define IMAGE_WIDTH		384
+ 
+-#define ENC_THRESHOLD		1000
++#define ENC_THRESHOLD		5000
+ 
+ enum {
+ 	IRQDATA_SCANPWR_ON = 0x56aa,
+-- 
+2.10.2
+
