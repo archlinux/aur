@@ -1,6 +1,6 @@
 pkgbase = firefox-theme-ft-deepdark
 	pkgdesc = Smooth dark theme for Firefox
-	pkgver = 14.2.1
+	pkgver = 14.2.3
 	pkgrel = 1
 	url = https://addons.mozilla.org/firefox/addon/ft-deepdark/
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = firefox-theme-ft-deepdark
 	noextract = firefox-theme-ft-deepdark.zip
 	source = firefox-theme-ft-deepdark.zip::https://addons.mozilla.org/firefox/downloads/latest/ft-deepdark/platform:2/
 	source = .version::https://services.addons.mozilla.org/firefox/api/1.5/addon/ft-deepdark
-	md5sums = 14c4d1eb9f0bb71890db0624e2688e28
+	md5sums = 200e804c6a7db74e020bb1785848a3ef
 	md5sums = SKIP
 
 pkgname = firefox-theme-ft-deepdark
