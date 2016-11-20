@@ -3,7 +3,7 @@
 
 pkgname=selfoss-git
 _gitname=selfoss
-pkgver=2.15.r1.g7fdf087
+pkgver=2.16.r1.g5f9d438
 pkgrel=1
 pkgdesc="The new multipurpose rss reader, live stream, mashup, aggregation web application"
 arch=('any')
@@ -34,9 +34,11 @@ pkgver() {
 }
 
 prepare() {
-  cd "${srcdir}"/${_gitname}
-  git submodule init
-  git submodule update
+  cd "${srcdir}"/${_gitname}/data/fulltextrss/standard
+  git submodule update --init
+
+  # Fix error with translating pathname to UTF-8
+  mv p*rotin.com.txt perotin.com.txt
 }
 
 package() {
