@@ -7,8 +7,6 @@ url="http://trac.mystic.cacr.caltech.edu/project/pygmail/wiki.html"
 arch=(any)
 license=('MIT')
 makedepends=('python-setuptools' 'python2-setuptools')
-conflicts=('python-pygmail')
-provides=('python-pygmail')
 source=("git+https://github.com/charlierguo/gmail.git")
 md5sums=('SKIP')
 
@@ -37,6 +35,8 @@ build() {
 
 package_python-pygmail-git() {
   depends=('python')
+  conflicts=('python-pygmail')
+  provides=('python-pygmail')
 
   cd "${srcdir}/gmail"
   python setup.py install --root=${pkgdir} --optimize=1
@@ -44,6 +44,8 @@ package_python-pygmail-git() {
 
 package_python2-pygmail-git() {
   depends=('python2')
+  conflicts=('python2-pygmail')
+  provides=('python2-pygmail')
 
   cd "${srcdir}/gmail"
   python2 setup.py install --root=${pkgdir} --optimize=1
