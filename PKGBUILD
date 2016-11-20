@@ -19,10 +19,6 @@ package() {
 
     install --directory "$pkgdir/usr/share/webapps/drush/commands/$_pkgname"
     cp --archive * "$pkgdir/usr/share/webapps/drush/commands/$_pkgname"
-    #~ ls -l
-    # pwd
-
-    # ls -l "$pkgdir/usr/share/webapps/drush/commands/$_pkgname"
 
     msg2 'Moving doc files to /usr/share/doc'
     install --directory "$pkgdir/usr/share/doc/$_pkgname"
@@ -30,6 +26,4 @@ package() {
       mv $pkgdir/usr/share/{webapps/drush/commands,doc}/$_pkgname/$file
       ln --relative --symbolic $pkgdir/usr/share/{doc,webapps/drush/commands}/$_pkgname/$file
     done
-
-# echo "${option[@]}"
 }
