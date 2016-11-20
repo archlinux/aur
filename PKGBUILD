@@ -1,7 +1,7 @@
 # Maintainer: yadieet <yadieet@gmail.com>
 
 pkgname=sudx
-pkgver=1.4
+pkgver=1.5
 pkgrel=1
 pkgdesc="Run bash shell as another user with D-Bus enabled, useful for running GUI/X applications that need D-Bus."
 url="https://github.com/yadieet/sudx"
@@ -12,16 +12,16 @@ depends=('bash' 'dbus' "util-linux=$ulmajver.$ulminver")
 makedepends=('systemd' 'python')
 license=('GPL2')
 options=('strip')
-gcid=0b9ff3cf1ec1bc8a84836660c50f1120a350880a
+gcid=95c3f1d0ec5e83ee0e22bc8bd7304f88047f1661
 
 source=("https://www.kernel.org/pub/linux/utils/util-linux/v$ulmajver/util-linux-$ulmajver.$ulminver.tar.xz"
-        "sudx-$pkgver.patch::https://raw.githubusercontent.com/yadieet/sudx/$gcid/sudx.patch")
+        "sudx-$pkgver.c::https://raw.githubusercontent.com/yadieet/sudx/$gcid/sudx.c")
 md5sums=('46a232a37bce45371a86d19300edc47a'
-         '85278ea7962d11b38a32d80d13e6dd05')
+         '69d9d1566581a3acd9b14b360f843fae')
 
 prepare() {
   cd "util-linux-$ulmajver.$ulminver"
-  patch -p0 -i ../sudx-$pkgver.patch
+  cp ../sudx-$pkgver.c login-utils/su.c
 }
 
 build() {
