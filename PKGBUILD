@@ -1,8 +1,8 @@
 # Maintainer: Adam Reichold <adam.reichold@t-online.de>
 
 pkgname=qpdfview
-pkgver=0.4.16
-pkgrel=4
+pkgver=0.4.17beta1
+pkgrel=1
 pkgdesc='A tabbed PDF viewer using the poppler library.'
 arch=('i686' 'x86_64' 'armv7h')
 url='https://launchpad.net/qpdfview'
@@ -13,7 +13,7 @@ optdepends=('texlive-bin: for shared SyncTeX parser library (required at build t
             'djvulibre: for DjVu support (required at build time)')
 makedepends=('qt5-tools')
 source=("https://launchpad.net/$pkgname/trunk/$pkgver/+download/$pkgname-$pkgver.tar.gz")
-sha256sums=('fad416e8fefc3057fa1b8d12d964c7eccd16dffe0307a0d6e9d55a543294da7f')
+sha256sums=('a3bcc6b455c0640e95b393d6f4eabf05000ceb12f424d96f55bd3143bacc9fca')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
