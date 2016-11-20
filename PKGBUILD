@@ -3,8 +3,8 @@
 
 pkgname=devkitppc-portlibs-mxml
 pkgver=2.6
-pkgrel=3
-pkgdesc='Small XML parser library (for Nintendo Gamecube/Wii homebrew development)'
+pkgrel=4
+pkgdesc='Small XML parser library (for Nintendo Gamecube/Wii/Wii U homebrew development)'
 arch=('any')
 url='http://www.minixml.org/'
 license=('LGPL')
@@ -16,9 +16,12 @@ sha256sums=('780d4bc7c3b5ab207412487402cc56dff670521da8a57315ca0047c2d4667ad5')
 build() {
   cd mxml-$pkgver
 
+  # set environment
   source /etc/profile.d/devkitppc.sh
-  CFLAGS="-g -O2" ./configure --prefix="$DEVKITPRO/portlibs/ppc" \
-    --host=powerpc-eabi --disable-shared --enable-static
+  export CFLAGS="-g -O2 -ffunction-sections -fdata-sections"
+
+  ./configure --prefix="$DEVKITPRO/portlibs/ppc" --host=powerpc-eabi \
+    --disable-shared --enable-static
   make
 }
 
