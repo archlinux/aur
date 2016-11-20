@@ -1,26 +1,33 @@
-# $Id$
-# Maintainer: Blackleg <blackleg@openaliasbox.org>
+# Maintainer: sL1pKn07 <sl1pkn07@gmail.com
+# Contributor: Blackleg <blackleg@openaliasbox.org>
 
+DLAGENTS=("https::/usr/bin/curl -k -o %o %u")
 pkgname=ca-certificates-dnie
-pkgver=20151002
+pkgver=201609
 pkgrel=1
 pkgdesc="Spanish DNIE root certificates"
 arch=(any)
-url="http://www.dnielectronico.es"
+url='http://www.dnielectronico.es'
 license=('unknown')
-depends=('ca-certificates-utils' 'ca-certificates-fnmt')
-source=('http://www.dnielectronico.es/ZIP/ACRAIZ-SHA2.CAB'
-	'http://www.dnielectronico.es/ZIP/ACDNIE001-SHA2.zip'
-	'http://www.dnielectronico.es/ZIP/ACDNIE002-SHA2.zip'
-	'http://www.dnielectronico.es/ZIP/ACDNIE003-SHA2.zip')
-				
-sha256sums=('2e84b159b7b4de499e15ff237bb613f447dabd5bf1e92b78fc000ff38917fe18'
-            '67386025ca16e1720976d814ff0d3e4060851afeb394e3e5024f059e81aa3104'
-            '2426b2291fa92c041956b72d2c313184aae489124d5b1a3c7973ecd07b4af275'
-            'a93dd548f9f9501e1dc0f63171943fc9bc6c6adaae0762847120b38535e3c132')
+depends=('ca-certificates-utils'
+         'ca-certificates-fnmt'
+         )
+source=('https://www.dnielectronico.es/ZIP/ACRAIZ-DNIE2.cab'
+        'https://www.dnielectronico.es/ZIP/ACDNIE004.zip'
+        'https://www.dnielectronico.es/ZIP/AC_DNIE_005.zip'
+        'https://www.dnielectronico.es/ZIP/AC_DNIE_006.zip'
+        )
+
+sha256sums=('279745f40e4bd75f5ef72f2e02efe417a1a07e27fb5a9810fddbcfd40ac00f39'
+            'c31b68bb3eefadcbbfa3634f9cae733691ae40e4b7eeb6df9744676898cf7729'
+            '03ef90cb69a97ae66bed937f256960c6238c385d9defdaac08bba51d49be0ffc'
+            'b168e63cbb41ece42cb0688d1f250e020c56195de881e70c4e69e9d5c5f09b8d'
+            )
 
 package() {
-  local certdir="$pkgdir/usr/share/ca-certificates/trust-source/anchors"
-	mkdir -p "$certdir"
-  install -t "$certdir" -m644 *.crt
+  install -d "${pkgdir}/usr/share/ca-certificates/trust-source/anchors"
+  install -Dm644 "AC RAIZ DNIE 2.crt" "${pkgdir}/usr/share/ca-certificates/trust-source/anchors/AC_RAIZ_DNIE_2.crt"
+  install -Dm644 "AC DNIE 004.crt" "${pkgdir}/usr/share/ca-certificates/trust-source/anchors/AC_DNIE_004.crt"
+  install -Dm644 "AC_DNIE_005.crt" "${pkgdir}/usr/share/ca-certificates/trust-source/anchors/AC_DNIE_005.crt"
+  install -Dm644 "AC_DNIE_006.crt" "${pkgdir}/usr/share/ca-certificates/trust-source/anchors/AC_DNIE_006.crt"
 }
