@@ -4,7 +4,7 @@
 pkgname=z3-bin
 pkgver=4.5.0
 pkgrel=1
-pkgdesc="An automatic theorem prover"
+pkgdesc="An automatic high-performance theorem prover"
 arch=(i686 x86_64)
 url="http://research.microsoft.com/en-us/um/redmond/projects/z3"
 license=('MIT')
