@@ -30,6 +30,10 @@ package() {
   # license
   install -m644 -D LICENSE.txt "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 
+  # headers
+  mkdir "$pkgdir"/usr/include
+  install -m644 -D ./include/*.h "$pkgdir"/usr/include/
+
   # python bindings
   # /usr/lib/python3.5/site-packages
   pypath=$(python -c "from distutils.sysconfig import get_python_lib; print(get_python_lib())")
