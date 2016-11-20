@@ -1,0 +1,12 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=CLion EAP
+GenericName=clion
+Comment=C/C++ IDE. 30-day evaluation.
+Icon=clion-eap
+Exec="/usr/bin/clion-eap" %f
+Terminal=false
+Categories=Development;IDE;
+StartupNotify=true
+StartupWMClass=jetbrains-clion
