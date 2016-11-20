@@ -1,0 +1,15 @@
+pkgbase = gnome-shell-extension-autohide-battery-git
+	pkgdesc = GNOME Shell extension to hide battery icon, if battery is fully charged and AC is connected
+	pkgver = r33.8cc4bb1
+	pkgrel = 1
+	url = https://github.com/ai/autohide-battery.git
+	install = gschemas.install
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = gnome-shell
+	source = git+https://github.com/ai/autohide-battery.git
+	md5sums = SKIP
+
+pkgname = gnome-shell-extension-autohide-battery-git
+
