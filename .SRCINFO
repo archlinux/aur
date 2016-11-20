@@ -1,6 +1,6 @@
 pkgbase = button-lua
 	pkgdesc = Used with Button. Allows generating build descriptions with Lua.
-	pkgver = 0.0.3
+	pkgver = 0.0.4
 	pkgrel = 1
 	url = https://github.com/jasonwhite/button-lua
 	arch = i686
@@ -8,8 +8,8 @@ pkgbase = button-lua
 	license = MIT
 	makedepends = xxd
 	depends = lua
-	source = https://github.com/jasonwhite/button-lua/archive/v0.0.3/button-lua-0.0.3.tar.gz
-	md5sums = fd105bf2edf1b758c548e47dc7775bb3
+	source = https://github.com/jasonwhite/button-lua/archive/v0.0.4/button-lua-0.0.4.tar.gz
+	md5sums = 6cead1cfa812e7388f5a746ae8e3446f
 
 pkgname = button-lua
 
