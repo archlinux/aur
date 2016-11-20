@@ -1,7 +1,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=tex2page-git
-pkgver=20161118
+pkgver=20161119
 pkgrel=1
 pkgdesc="Lisp program for making Web pages from TeX documents"
 arch=('any')
@@ -16,6 +16,10 @@ _gitname="tex2page"
 pkgver() {
   cd "$_gitname"
   echo $(git log -1 --format="%cd" --date=short | sed 's|-||g')
+}
+
+prepare() {
+  sed -i 's+Latin Modern Mono+TeX Gyre Cursor:-liga+' "$_gitname"/tgtermes.tex
 }
 
 build() {
