@@ -1,0 +1,44 @@
+post_install() {
+	getent group plex > /dev/null || groupadd -g 1420 plex
+	if ! getent passwd plex > /dev/null; then
+		useradd -c 'plex media player user' -u 1420 -g plex -G audio,video,network,optical \
+			-d /var/lib/plexmediaplayer -s /usr/bin/nologin plex
+		passwd -l plex > /dev/null
+	fi
+}
+
+post_upgrade() {
+	post_install $1
+	if ! getent group plex | cut -d: -f3 | grep 1420 > /dev/null 2>&1; then
+		groupmod -g 1420 plex > /dev/null 2>&1
+	fi
+	if ! id -u plex | grep 1420 > /dev/null 2>&1; then
+		usermod -u 1420 plex > /dev/null 2>&1
+		if [[ $? -ne 0 ]]; then
+			echo "Changing uid of user \`plex' failed."
+			echo "It is recommended that the uid is changed."
+			echo "Stop all processes running under the plex user and reinstall"
+            echo "this package or change the uid manually. (usermod -u 1420 plex)"
+		fi
+		chown -R plex:plex /var/lib/plexmediaplayer
+	fi
+}
+
+post_remove() {
+	getent passwd plex > /dev/null 2>&1 && userdel plex
+	getent group plex > /dev/null 2>&1 && groupdel plex
+}
+
+pre_install() {
+	if [ -f /usr/lib/systemd/system/plexmediaplayer.service ]; then
+		/usr/bin/systemctl status plexmediaplayer.service &>/dev/null
+		if [[ $? -eq 0 ]]; then
+			# PMP is running via this service
+			/usr/bin/systemctl stop plexmediaplayer.service &>/dev/null
+		else
+			/bin/true
+		fi
+	else
+		/bin/true
+	fi
+}
