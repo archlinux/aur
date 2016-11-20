@@ -7,7 +7,7 @@ pkgdesc="Universal Radio Hacker - Hacking wireless protocols made easy"
 arch=('i686' 'x86_64')
 url="https://github.com/jopohl/urh"
 depends=('python>=3.4' 'python-pyqt5' 'python-numpy' 'python-psutil')
-makedepends=('gcc', 'python-setuptools')
+makedepends=('gcc' 'python-setuptools')
 optdepends=(
   'hackrf: for native hackrf backend'
   'gnuradio: for USRP gnuradio backend'

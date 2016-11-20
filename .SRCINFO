@@ -6,7 +6,7 @@ pkgbase = urh
 	arch = i686
 	arch = x86_64
 	license = Apache
-	makedepends = gcc,
+	makedepends = gcc
 	makedepends = python-setuptools
 	depends = python>=3.4
 	depends = python-pyqt5
