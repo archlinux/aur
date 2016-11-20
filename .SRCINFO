@@ -1,7 +1,7 @@
 pkgbase = jxplorer
 	pkgdesc = Java LDAP client
 	pkgver = 3.3.1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://jxplorer.org/
 	arch = any
 	license = custom
