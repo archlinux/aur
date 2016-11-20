@@ -26,6 +26,8 @@ build() {
 
 package_python-twitter3() {
   depends=('python')
+  provides=('python-twitter')
+  conflicts=('python-twitter')
 
   cd "${srcdir}/python-twitter-$pkgver"
   python setup.py install --root=${pkgdir} --optimize=1
@@ -33,6 +35,8 @@ package_python-twitter3() {
 
 package_python2-twitter3() {
   depends=('python2')
+  provides=('python2-twitter')
+  conflicts=('python2-twitter')
 
   cd "${srcdir}/python-twitter-$pkgver"
   python2 setup.py install --root=${pkgdir} --optimize=1
