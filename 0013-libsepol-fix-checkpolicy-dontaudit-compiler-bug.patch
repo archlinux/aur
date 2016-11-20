@@ -1,0 +1,51 @@
+From 00603062c7e9d74a76d62ee9806c9042ec7ad7fa Mon Sep 17 00:00:00 2001
+From: William Roberts <william.c.roberts@intel.com>
+Date: Tue, 15 Nov 2016 16:42:23 -0800
+Subject: [PATCH] libsepol: fix checkpolicy dontaudit compiler bug
+
+The combining logic for dontaudit rules was wrong, causing
+a dontaudit A B:C *; rule to be clobbered by a dontaudit A B:C p;
+rule.
+
+This is a reimplementation of:
+commit 6201bb5e258e2b5bcc04d502d6fbc05c69d21d71 ("libsepol:
+fix checkpolicy dontaudit compiler bug")
+that avoids the cumbersome pointer assignments on alloced.
+
+Reported-by: Nick Kralevich <nnk@google.com>
+Signed-off-by: William Roberts <william.c.roberts@intel.com>
+---
+ libsepol/src/expand.c | 10 ++++++----
+ 1 file changed, 6 insertions(+), 4 deletions(-)
+
+diff --git a/libsepol/src/expand.c b/libsepol/src/expand.c
+index 004a02949b98..3e16f586028c 100644
+--- a/libsepol/src/expand.c
++++ b/libsepol/src/expand.c
+@@ -1640,6 +1640,11 @@ static avtab_ptr_t find_avtab_node(sepol_handle_t * handle,
+ 
+ 	if (!node) {
+ 		memset(&avdatum, 0, sizeof avdatum);
++		/*
++		 * AUDITDENY, aka DONTAUDIT, are &= assigned, versus |= for
++		 * others. Initialize the data accordingly.
++		 */
++		avdatum.data = key->specified == AVTAB_AUDITDENY ? ~0 : 0;
+ 		/* this is used to get the node - insertion is actually unique */
+ 		node = avtab_insert_nonunique(avtab, key, &avdatum);
+ 		if (!node) {
+@@ -1850,10 +1855,7 @@ static int expand_avrule_helper(sepol_handle_t * handle,
+ 			 */
+ 			avdatump->data &= cur->data;
+ 		} else if (specified & AVRULE_DONTAUDIT) {
+-			if (avdatump->data)
+-				avdatump->data &= ~cur->data;
+-			else
+-				avdatump->data = ~cur->data;
++			avdatump->data &= ~cur->data;
+ 		} else if (specified & AVRULE_XPERMS) {
+ 			xperms = avdatump->xperms;
+ 			if (!xperms) {
+-- 
+2.10.2
+

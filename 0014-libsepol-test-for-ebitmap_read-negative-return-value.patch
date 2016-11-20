@@ -1,0 +1,46 @@
+From 800b7dba36d42367ca3653711028d0658c2f6ef3 Mon Sep 17 00:00:00 2001
+From: Nicolas Iooss <nicolas.iooss@m4x.org>
+Date: Wed, 16 Nov 2016 00:07:22 +0100
+Subject: [PATCH] libsepol: test for ebitmap_read() negative return value
+
+While fuzzing hll/pp, the fuzzer (AFL) crafted a policy which triggered
+the following message without making the policy loading fail (the
+program crashed with a segmentation fault later):
+
+    security: ebitmap: map size 192 does not match my size 64 (high bit
+    was 0)
+
+This is because ebitmap_read() returned -EINVAL and this value was
+handled as a successful return value by scope_index_read() because it
+was not -1.
+
+Signed-off-by: Nicolas Iooss <nicolas.iooss@m4x.org>
+---
+ libsepol/src/policydb.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/libsepol/src/policydb.c b/libsepol/src/policydb.c
+index cdb3cde6b5e2..edac57e5f64c 100644
+--- a/libsepol/src/policydb.c
++++ b/libsepol/src/policydb.c
+@@ -3447,7 +3447,7 @@ static int scope_index_read(scope_index_t * scope_index,
+ 	int rc;
+ 
+ 	for (i = 0; i < num_scope_syms; i++) {
+-		if (ebitmap_read(scope_index->scope + i, fp) == -1) {
++		if (ebitmap_read(scope_index->scope + i, fp) < 0) {
+ 			return -1;
+ 		}
+ 	}
+@@ -3465,7 +3465,7 @@ static int scope_index_read(scope_index_t * scope_index,
+ 		return -1;
+ 	}
+ 	for (i = 0; i < scope_index->class_perms_len; i++) {
+-		if (ebitmap_read(scope_index->class_perms_map + i, fp) == -1) {
++		if (ebitmap_read(scope_index->class_perms_map + i, fp) < 0) {
+ 			return -1;
+ 		}
+ 	}
+-- 
+2.10.2
+

@@ -1,0 +1,69 @@
+From 1672a15c4a69db6b917bc46ac5f01b07ca506ee3 Mon Sep 17 00:00:00 2001
+From: James Carter <jwcart2@tycho.nsa.gov>
+Date: Tue, 18 Oct 2016 14:49:46 -0400
+Subject: [PATCH] libsepol/cil: Verify alias in aliasactual statement is really
+ an alias
+
+Nicolas Iooss found while fuzzing secilc with AFL that the statement
+"(sensitivityaliasactual SENS SENS)" will cause a segfault.
+
+The segfault occurs because when the aliasactual is resolved the first
+identifier is assumed to refer to an alias structure, but it is not.
+
+Add a check to verify that the datum retrieved is actually an alias
+and exit with an error if it is not.
+
+Signed-off-by: James Carter <jwcart2@tycho.nsa.gov>
+---
+ libsepol/cil/src/cil_resolve_ast.c | 13 +++++++++----
+ 1 file changed, 9 insertions(+), 4 deletions(-)
+
+diff --git a/libsepol/cil/src/cil_resolve_ast.c b/libsepol/cil/src/cil_resolve_ast.c
+index f3f3e92739a3..149e4f4e7d42 100644
+--- a/libsepol/cil/src/cil_resolve_ast.c
++++ b/libsepol/cil/src/cil_resolve_ast.c
+@@ -452,7 +452,7 @@ exit:
+ 	return rc;
+ }
+ 
+-int cil_resolve_aliasactual(struct cil_tree_node *current, void *extra_args, enum cil_flavor flavor)
++int cil_resolve_aliasactual(struct cil_tree_node *current, void *extra_args, enum cil_flavor flavor, enum cil_flavor alias_flavor)
+ {
+ 	int rc = SEPOL_ERR;
+ 	enum cil_sym_index sym_index;
+@@ -465,10 +465,15 @@ int cil_resolve_aliasactual(struct cil_tree_node *current, void *extra_args, enu
+ 	if (rc != SEPOL_OK) {
+ 		goto exit;
+ 	}
++
+ 	rc = cil_resolve_name(current, aliasactual->alias_str, sym_index, extra_args, &alias_datum);
+ 	if (rc != SEPOL_OK) {
+ 		goto exit;
+ 	}
++	if (NODE(alias_datum)->flavor != alias_flavor) {
++		cil_log(CIL_ERR, "%s is not an alias\n",alias_datum->name);
++		goto exit;
++	}
+ 
+ 	rc = cil_resolve_name(current, aliasactual->actual_str, sym_index, extra_args, &actual_datum);
+ 	if (rc != SEPOL_OK) {
+@@ -3365,13 +3370,13 @@ int __cil_resolve_ast_node(struct cil_tree_node *node, void *extra_args)
+ 	case CIL_PASS_ALIAS1:
+ 		switch (node->flavor) {
+ 		case CIL_TYPEALIASACTUAL:
+-			rc = cil_resolve_aliasactual(node, args, CIL_TYPE);
++			rc = cil_resolve_aliasactual(node, args, CIL_TYPE, CIL_TYPEALIAS);
+ 			break;
+ 		case CIL_SENSALIASACTUAL:
+-			rc = cil_resolve_aliasactual(node, args, CIL_SENS);
++			rc = cil_resolve_aliasactual(node, args, CIL_SENS, CIL_SENSALIAS);
+ 			break;
+ 		case CIL_CATALIASACTUAL:
+-			rc = cil_resolve_aliasactual(node, args, CIL_CAT);
++			rc = cil_resolve_aliasactual(node, args, CIL_CAT, CIL_CATALIAS);
+ 			break;
+ 		default: 
+ 			break;
+-- 
+2.10.2
+

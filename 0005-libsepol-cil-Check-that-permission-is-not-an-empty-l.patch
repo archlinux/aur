@@ -1,0 +1,61 @@
+From 4ec8e698e8290d78a17de264a900654d312e3af0 Mon Sep 17 00:00:00 2001
+From: James Carter <jwcart2@tycho.nsa.gov>
+Date: Tue, 18 Oct 2016 14:41:41 -0400
+Subject: [PATCH] libsepol/cil: Check that permission is not an empty list
+
+Nicolas Iooss found while fuzzing secilc with AFL that the statement
+"(class C (()))" will cause a segfault.
+
+CIL expects a list of permissions in the class declaration and "(())"
+is a valid list. Each item of the list is expected to be an identifier
+and as the list is processed each item is checked to see if it is a
+list. An error is given if it is a list, otherwise the item is assumed
+to be an identifier. Unfortunately, the check only works if the list
+is not empty. In this case, the item passes the check and is assumed
+to be an identifier and a NULL is passed as the string for name
+verification. If name verification assumes that a non-NULL value will
+be passed in, a segfault will occur.
+
+Add a check for an empty list when processing a permission list and
+improve the error handling for permissions when building the AST.
+
+Signed-off-by: James Carter <jwcart2@tycho.nsa.gov>
+---
+ libsepol/cil/src/cil_build_ast.c | 7 +++++++
+ 1 file changed, 7 insertions(+)
+
+diff --git a/libsepol/cil/src/cil_build_ast.c b/libsepol/cil/src/cil_build_ast.c
+index ee283b535147..e4a0539f64ad 100644
+--- a/libsepol/cil/src/cil_build_ast.c
++++ b/libsepol/cil/src/cil_build_ast.c
+@@ -482,6 +482,10 @@ int cil_gen_perm(struct cil_db *db, struct cil_tree_node *parse_current, struct
+ 	cil_perm_init(&perm);
+ 
+ 	key = parse_current->data;
++	if (key == NULL) {
++		cil_log(CIL_ERR, "Bad permission\n");
++		goto exit;
++	}
+ 
+ 	rc = cil_gen_node(db, ast_node, (struct cil_symtab_datum*)perm, (hashtab_key_t)key, CIL_SYM_PERMS, flavor);
+ 	if (rc != SEPOL_OK) {
+@@ -529,6 +533,7 @@ int cil_gen_perm_nodes(struct cil_db *db, struct cil_tree_node *current_perm, st
+ 
+ 		rc = cil_gen_perm(db, current_perm, new_ast, flavor, num_perms);
+ 		if (rc != SEPOL_OK) {
++			cil_tree_node_destroy(&new_ast);
+ 			goto exit;
+ 		}
+ 
+@@ -546,6 +551,8 @@ int cil_gen_perm_nodes(struct cil_db *db, struct cil_tree_node *current_perm, st
+ 
+ exit:
+ 	cil_log(CIL_ERR, "Bad permissions\n");
++	cil_tree_children_destroy(ast_node);
++	cil_clear_node(ast_node);
+ 	return rc;
+ }
+ 
+-- 
+2.10.2
+

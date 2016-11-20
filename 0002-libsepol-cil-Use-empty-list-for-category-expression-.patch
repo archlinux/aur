@@ -1,0 +1,49 @@
+From ce235e6b3c08ef4d06d4ac034868a0dafaa5cdbc Mon Sep 17 00:00:00 2001
+From: James Carter <jwcart2@tycho.nsa.gov>
+Date: Tue, 18 Oct 2016 14:19:03 -0400
+Subject: [PATCH] libsepol/cil: Use empty list for category expression
+ evaluated as empty
+
+Nicolas Iooss found while fuzzing secilc with AFL that the following
+policy will cause a segfault.
+
+(category c0)
+(category c1)
+(categoryorder (c0 c1))
+(sensitivity s0)
+(sensitivitycategory s0 (not (all)))
+
+The expression "(not (all))" is evaluated as containing no categories.
+There is a check for the resulting empty list and the category datum
+expression is set to NULL. The segfault occurs because the datum
+expression is assumed to be non-NULL after evaluation.
+
+Assign the list to the datum expression even if it is empty.
+
+Signed-off-by: James Carter <jwcart2@tycho.nsa.gov>
+---
+ libsepol/cil/src/cil_post.c | 8 +-------
+ 1 file changed, 1 insertion(+), 7 deletions(-)
+
+diff --git a/libsepol/cil/src/cil_post.c b/libsepol/cil/src/cil_post.c
+index caf3321d09e1..687962eae5ee 100644
+--- a/libsepol/cil/src/cil_post.c
++++ b/libsepol/cil/src/cil_post.c
+@@ -865,13 +865,7 @@ static int __evaluate_cat_expression(struct cil_cats *cats, struct cil_db *db)
+ 
+ 	ebitmap_destroy(&bitmap);
+ 	cil_list_destroy(&cats->datum_expr, CIL_FALSE);
+-	if (new->head != NULL) { 
+-		cats->datum_expr = new;
+-	} else {
+-		/* empty list */
+-		cil_list_destroy(&new, CIL_FALSE);
+-		cats->datum_expr = NULL;
+-	}
++	cats->datum_expr = new;
+ 
+ 	cats->evaluated = CIL_TRUE;
+ 
+-- 
+2.10.2
+

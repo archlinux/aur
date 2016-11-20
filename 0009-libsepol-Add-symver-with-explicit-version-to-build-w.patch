@@ -1,0 +1,49 @@
+From 5786d4dd8a6390a103504c6be7264893bbb5c901 Mon Sep 17 00:00:00 2001
+From: Jason Zaman <jason@perfinion.com>
+Date: Mon, 31 Oct 2016 23:52:27 +0800
+Subject: [PATCH] libsepol: Add symver with explicit version to build with
+ ld.gold
+
+The blank default symver fails to compile with ld.gold. This updates the
+symver from blank to LIBSEPOL_1.0. The dynamic linker will first look
+for the symbol with the explicit version specified. If there is none, it
+will pick the first listed symbol so there is no breakage.
+This also matches how symvers are defined in libsemanage.
+
+Signed-off-by: Jason Zaman <jason@perfinion.com>
+---
+ libsepol/cil/src/cil.c | 10 +++++-----
+ 1 file changed, 5 insertions(+), 5 deletions(-)
+
+diff --git a/libsepol/cil/src/cil.c b/libsepol/cil/src/cil.c
+index 929ab196926d..9b1877328a97 100644
+--- a/libsepol/cil/src/cil.c
++++ b/libsepol/cil/src/cil.c
+@@ -53,19 +53,19 @@
+ #include "dso.h"
+ 
+ #ifndef DISABLE_SYMVER
+-asm(".symver cil_build_policydb_pdb,        cil_build_policydb@");
++asm(".symver cil_build_policydb_pdb,        cil_build_policydb@LIBSEPOL_1.0");
+ asm(".symver cil_build_policydb_create_pdb, cil_build_policydb@@LIBSEPOL_1.1");
+ 
+-asm(".symver cil_compile_pdb,   cil_compile@");
++asm(".symver cil_compile_pdb,   cil_compile@LIBSEPOL_1.0");
+ asm(".symver cil_compile_nopdb, cil_compile@@LIBSEPOL_1.1");
+ 
+-asm(".symver cil_userprefixes_to_string_pdb,   cil_userprefixes_to_string@");
++asm(".symver cil_userprefixes_to_string_pdb,   cil_userprefixes_to_string@LIBSEPOL_1.0");
+ asm(".symver cil_userprefixes_to_string_nopdb, cil_userprefixes_to_string@@LIBSEPOL_1.1");
+ 
+-asm(".symver cil_selinuxusers_to_string_pdb,   cil_selinuxusers_to_string@");
++asm(".symver cil_selinuxusers_to_string_pdb,   cil_selinuxusers_to_string@LIBSEPOL_1.0");
+ asm(".symver cil_selinuxusers_to_string_nopdb, cil_selinuxusers_to_string@@LIBSEPOL_1.1");
+ 
+-asm(".symver cil_filecons_to_string_pdb,   cil_filecons_to_string@");
++asm(".symver cil_filecons_to_string_pdb,   cil_filecons_to_string@LIBSEPOL_1.0");
+ asm(".symver cil_filecons_to_string_nopdb, cil_filecons_to_string@@LIBSEPOL_1.1");
+ #endif
+ 
+-- 
+2.10.2
+

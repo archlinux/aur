@@ -1,0 +1,28 @@
+From 7b7e779ed2834f6d40ea5f9f6ea9b936d67e936c Mon Sep 17 00:00:00 2001
+From: dcashman <dcashman@android.com>
+Date: Fri, 11 Nov 2016 11:12:44 -0800
+Subject: [PATCH] libsepol: cil: remove double-free.
+
+Test: Untested patch.
+Bug: https://code.google.com/p/android/issues/detail?id=226519
+Change-Id: Icaf992ba1487098f2c4f16ac1017012f611281e9
+Signed-off-by: Daniel Cashman <dcashman@android.com>
+---
+ libsepol/cil/src/cil_binary.c | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/libsepol/cil/src/cil_binary.c b/libsepol/cil/src/cil_binary.c
+index 540227290066..a813201f14c4 100644
+--- a/libsepol/cil/src/cil_binary.c
++++ b/libsepol/cil/src/cil_binary.c
+@@ -843,7 +843,6 @@ int cil_catalias_to_policydb(policydb_t *pdb, struct cil_alias *cil_alias)
+ 	key = cil_strdup(cil_alias->datum.fqn);
+ 	rc = symtab_insert(pdb, SYM_CATS, key, sepol_alias, SCOPE_DECL, 0, NULL);
+ 	if (rc != SEPOL_OK) {
+-		free(key);
+ 		goto exit;
+ 	}
+ 	sepol_alias->s.value = sepol_cat->s.value;
+-- 
+2.10.2
+
