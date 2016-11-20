@@ -28,8 +28,8 @@ pkgver() {
 package() {
   cd "${srcdir}/${_gitname}"
   mkdir -p ${pkgdir}/usr/bin/wpgtk/py
-  mkdir -p ${pkgdir}/usr/bin/wpgtk/src/gui
-  mkdir -p ${pkgdir}/usr/bin/wpgtk/src/data
+  mkdir -p ${pkgdir}/usr/bin/wpgtk/gui
+  mkdir -p ${pkgdir}/usr/bin/wpgtk/data
   install -D -m755 ./wpgtk/py/* ${pkgdir}/usr/bin/wpgtk/py
   install -D -m755 ./wpgtk/wpg.py ${pkgdir}/usr/bin/wpgtk/
   install -D -m755 ./wpgtk/gui/* ${pkgdir}/usr/bin/wpgtk/gui/
