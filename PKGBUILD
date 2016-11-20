@@ -3,8 +3,8 @@
 
 pkgname=devkitppc-portlibs-expat
 pkgver=2.0.1
-pkgrel=3
-pkgdesc='XML Parser library (for Nintendo Gamecube/Wii homebrew development)'
+pkgrel=4
+pkgdesc='XML Parser library (for Nintendo Gamecube/Wii/Wii U homebrew development)'
 arch=('any')
 url='http://expat.sourceforge.net/'
 license=('custom')
@@ -16,9 +16,12 @@ sha256sums=('b4565d5ef6caa6c66e9fe2a06830ab904595771e6a8a84524ac65553ec3b2b8f')
 build() {
   cd expat-$pkgver
 
+  # set environment
   source /etc/profile.d/devkitppc.sh
-  CFLAGS="-g -O2" ./configure --prefix="$DEVKITPRO/portlibs/ppc" \
-    --host=powerpc-eabi --disable-shared --enable-static
+  export CFLAGS="-g -O2 -ffunction-sections -fdata-sections"
+
+  ./configure --prefix="$DEVKITPRO/portlibs/ppc" --host=powerpc-eabi \
+    --disable-shared --enable-static
   make buildlib # only build library, no programs
 }
 
