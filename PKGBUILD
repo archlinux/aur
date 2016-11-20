@@ -16,6 +16,9 @@ md5sums=('243d48eb4c3531f323056040b94459ad')
     md5sums=('030fe472df4c6b2f16019e0ef12c8918')
     _arch="x64"
 }
+depends=('gcc-libs')
+makedepends=('git' 'python')
+optdepends=('python: bindings for python')
 
 package() {
   cd "$srcdir/z3-${pkgver}-${_arch}-ubuntu-14.04"
