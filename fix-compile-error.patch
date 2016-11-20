@@ -1,0 +1,10 @@
+--- a/src/qtsinglecoreapplication/qtlocalpeer.cpp	2016-11-20 15:14:09.966042018 +0100
++++ b/src/qtsinglecoreapplication/qtlocalpeer.cpp	2016-11-20 15:14:53.281832195 +0100
+@@ -41,6 +41,7 @@
+ 
+ #include "qtlocalpeer.h"
+ #include <QCoreApplication>
++#include <QDataStream>
+ #include <QTime>
+ 
+ #if defined(Q_OS_WIN)
