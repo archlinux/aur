@@ -1,7 +1,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=tex2page-git
-pkgver=20161119
+pkgver=20161120
 pkgrel=1
 pkgdesc="Lisp program for making Web pages from TeX documents"
 arch=('any')
