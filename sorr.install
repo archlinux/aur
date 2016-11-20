@@ -1,0 +1,10 @@
+#!/bin/bash
+
+cat<<- EOF
+
+NOTICE: Due to how the archive/game deployment
+was designed, you will need to add your user
+to the "games" group for settings to hold 
+during gameplay.
+
+EOF

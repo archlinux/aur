@@ -13,9 +13,11 @@ pkgbase = sorr
 	source = http://www.soronline.net/downloads/sorr_5.0.orig.tar.gz
 	source = http://www.soronline.net/downloads/SORRv051_REV030.zip
 	source = sorr
+	source = sorr.install
 	md5sums = SKIP
 	md5sums = 3951863625d44a2222630d47153a19e5
 	md5sums = 3d60078ecdd2582e383e477dfdc67ec4
+	md5sums = 17c72f90dc7e77ecae2f2b1543a1ad01
 
 pkgname = sorr
 
