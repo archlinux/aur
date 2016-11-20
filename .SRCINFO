@@ -1,6 +1,6 @@
 pkgbase = aseba-git
 	pkgdesc = A set of tools which allow beginners to program robots easily and efficiently.
-	pkgver = 1.5.3.r93.gc4a75de
+	pkgver = 1.5.3.r102.g8ccdc9d
 	pkgrel = 1
 	url = https://github.com/aseba-community/aseba
 	install = aseba-git.install
@@ -16,6 +16,7 @@ pkgbase = aseba-git
 	depends = sdl2
 	depends = protobuf
 	depends = qtwebkit
+	depends = avahi
 	provides = aseba
 	source = dashel::git+https://github.com/aseba-community/dashel.git
 	source = enki::git+https://github.com/enki-community/enki.git
