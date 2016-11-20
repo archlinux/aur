@@ -1,28 +1,26 @@
-# Maintainer: Philipp 'TamCore' B. <philipp [at] tamcore [dot] eu>
+# Maintainer: Jakob Gahde <j5lx@fmail.co.uk>
+# Contributor: Philipp 'TamCore' B. <philipp [at] tamcore [dot] eu>
 
 pkgname=ghostwriter
 pkgver=1.4.2
-pkgrel=1
-pkgdesc="ghostwriter is a cross-platform, aesthetic, distraction-free Markdown editor."
-arch=(i686 x86_64)
+pkgrel=2
+pkgdesc="A cross-platform, aesthetic, distraction-free Markdown editor"
+arch=('i686' 'x86_64')
 url="https://github.com/wereturtle/ghostwriter"
 license=('GPL3')
-source=("ghostwriter-${pkgver}.tar.gz::https://github.com/wereturtle/ghostwriter/archive/v${pkgver}.tar.gz")
-sha256sums=('775760d04c5a794c3810cffe9d1daa72ee123c77cc3041fc15a2052503899438')
-conflicts=('ghostwriter-git')
-provides=('ghostwriter-git')
-makedepends=('qtchooser')
-depends=('qt5-base' 'qt5-webkit' 'hunspell' 'desktop-file-utils' 'gtk-update-icon-cache' 'markdown')
-install=ghostwriter.install
-optdepends=('hunspell: spell checking')
+depends=('qt5-base' 'qt5-webkit' 'hunspell' 'markdown' 'hicolor-icon-theme')
+source=("https://github.com/wereturtle/ghostwriter/archive/v${pkgver}.tar.gz")
+md5sums=('22d664c44a5faf537004fb815b723746')
 
 build() {
-  cd "${pkgname}-${pkgver}"
+  cd "${srcdir}/${pkgname}-${pkgver}"
+
   qmake PREFIX=/usr
   make
 }
 
 package() {
-  cd "${pkgname}-${pkgver}"
-  make INSTALL_ROOT="$pkgdir/" install
+  cd "${srcdir}/${pkgname}-${pkgver}"
+
+  make install INSTALL_ROOT="${pkgdir}"
 }
