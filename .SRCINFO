@@ -6,6 +6,7 @@ pkgbase = esniper
 	arch = i686
 	arch = x86_64
 	arch = armv6h
+	arch = armv7h
 	arch = arm
 	license = BSD
 	depends = curl
