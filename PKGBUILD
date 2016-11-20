@@ -3,8 +3,8 @@
 _pkgname=idos-timetable-additionalinfo-chaps-bus
 pkgname="${_pkgname}-latest"
 epoch=0
-pkgver=2016_2_19
-pkgrel=3
+pkgver=2016_11_14
+pkgrel=1
 pkgdesc="Floor plans of some Czech bus stations/ stops, to be used with the timetable search engines by CHAPS."
 arch=('any')
 url="http://chaps.cz/eng/download/idos/zip#kotvainf"
