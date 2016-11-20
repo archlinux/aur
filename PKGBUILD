@@ -4,10 +4,11 @@ pkgname=sunxi-disp-tool
 pkgver=0.0.4
 pkgrel=1
 pkgdesc='Userspace utility to set sunxi disp2 HDMI resolution via ioctl'
-arch=('armv7h')
+arch=('aarch64')
 url='https://github.com/longsleep/sunxi-disp-tool'
 license=('BSD')
 makedepends=('go')
+options=('!strip')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/longsleep/${pkgname}/archive/ubuntu/xenial/${pkgver}.tar.gz")
 md5sums=('44c4de8ba58c575dca2b63f5bbfd854d')
 
