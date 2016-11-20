@@ -17,6 +17,7 @@ arch=('x86_64')
 options=(!strip)
 url="http://www.jetbrains.com/${_pkgname}"
 license=('custom')
+makedepends=('rsync')
 source=("https://download.jetbrains.com/cpp/${_dlname}-${_dlver}.tar.gz"
         "jetbrains-${pkgbase}.desktop")
 sha256sums=('61b81e6906ffc675253d2565f8e54425a4bbfae7e4650f9f42af2f90abfada9a'
