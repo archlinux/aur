@@ -7,15 +7,18 @@
 pkgbase=arc-gtk-theme
 _pkgname=arc-theme
 pkgname=('arc-gtk-theme' 'arc-solid-gtk-theme')
-pkgver=20161005
-pkgrel=3
+pkgver=20161119
+pkgrel=1
 arch=('any')
 url="https://github.com/horst3180/${_pkgname}"
 license=('GPL3')
 depends=('gtk3' 'gtk-engine-murrine')
 optdepends=('arc-icon-theme')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/horst3180/${_pkgname}/archive/${pkgver}.tar.gz")
-sha512sums=('cbdb73424f85532d756f2b7ed781fbc49598be44e01715490c0f95a60d7e1ab1c4f58a02f1a60bc9aec7f9625a9b7190ed680888af9c6fdf8a192b935c2ebe33')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/horst3180/${_pkgname}/archive/${pkgver}.tar.gz"
+"${pkgname}-${pkgver}.tar.gz.sig::https://github.com/horst3180/${_pkgname}/releases/download/20161119/${_pkgname}-${pkgver}.tar.gz.asc")
+validpgpkeys=('A46FD8E741A2A075898462CDC57DFF0D28DAAE97')
+sha512sums=('996d8583c4de654dc5979703c85ad3a0eeebef435a264df1b2c8044b9e62f4f74561294a16c5ebf9a213ec5ff7c23f94a360a76502321836bbb83b7396765da0'
+            'SKIP')
 
 build() {
         cd "${_pkgname}-$pkgver"
