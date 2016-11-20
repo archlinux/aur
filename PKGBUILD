@@ -7,14 +7,14 @@ validpgpkeys=('748231EBCBD808A14F5E85D28C004C2F93481F6B')
 
 pkgname=python-validators
 pkgver=0.11.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Python data validation for humans"
 arch=( 'i686' 'x86_64' )
 url="https://pypi.python.org/pypi/validators"
-license=( 'BSD' )
+license=( 'custom' )
 depends=( 'python' )
 makedepends=( 'python' )
-_pkgname=python-validators
+_pkgname=validators
 
 install=
 changelog=
@@ -25,11 +25,12 @@ sha512sums=('7b342568eda3629f3b6e62983814702f1d2e0335f5b4e717f8ecbfd235c8084ffa8
             'SKIP')
 
 build() {
-        cd "${srcdir}/${_pkgname}/src"
-        make prefix=${pkgdir}/usr
+	cd "${srcdir}/${_pkgname}-${pkgver}"
+        python3 setup.py build || return 1
 }
 
 package() {
-        install -D -m755 ${srcdir}/${_pkgname}/src/${_pkgname} ${pkgdir}/usr/bin/${_pkgname}
-        install -D -m644 ${srcdir}/${_pkgname}/docs/README.html.en ${pkgdir}/usr/share/doc/${_pkgname}/README.html
+	cd "${srcdir}/${_pkgname}-${pkgver}"
+	python3 setup.py install --root="${pkgdir}" --optimize=1 || return 1
+	install -D -m 0644 ${srcdir}/${_pkgname}-${pkgver}/LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
 }
