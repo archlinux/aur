@@ -1,8 +1,8 @@
-# Maintainer: Javier Tia <javier dot tia at gmail dot com>
+# Maintainer: Javier Tiá <javier dot tia at gmail dot com>
 
 _gemname=fit-commit
 pkgname="ruby-${_gemname}"
-pkgver=3.4.0
+pkgver=3.6.1
 pkgrel=1
 pkgdesc='A Git hook to validate your commit messages'
 arch=('any')
@@ -14,7 +14,7 @@ source=("https://rubygems.org/downloads/${_gemname}-${pkgver}.gem")
 noextract=("${_gemname}-${pkgver}.gem")
 provides=("${_gemname}=${pkgver}")
 install="${pkgname}.install"
-sha256sums=('cee05050825db140203371601b783315f578fcfd735b7006675d08c2e4f013a3')
+sha256sums=('94c10cf969743e81460f99cde1d4031aff1d684c65726b97cc8f4b2f46b0e975')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
