@@ -27,7 +27,7 @@ sha256sums=('28effa888ffc0aaffd535bd0166770564c82655415fb42bd8a1008f47d1fbfb4'
             'c67d1383c94e2fda4c25a70d5a5d4a90d692586ff7977eb5e9e82139f85e22dd'
             '83145c8323a987572607a4f3a4af5498a84f5974f2d60a698b15fb87f9d64d35'
             '8d5a12de57caf36af433f7c2890969b1a9fbd3ae5ce9d20d5706a5f67125ebd9')
-makedepends=('rpmextract')
+makedepends=('libarchive')
 conflicts=('ehaspd')
 install=$pkgname.install
 options=('!strip')
@@ -36,7 +36,7 @@ prepare(){
   cd $srcdir
 
   # Extract RPM into $srcdir:
-  rpmextract.sh ${_tarballname}/${pkgname}-${pkgver}-${_pkgrel}.i386.rpm
+  bsdtar -xvf ${_tarballname}/${pkgname}-${pkgver}-${_pkgrel}.i386.rpm
 
   # Comment out redundant legacy udev rules:
   patch -p1 < udev-rules.patch
