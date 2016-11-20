@@ -5,7 +5,7 @@
 require 'date'
 require 'net/http'
 
-FF_VERSION = "51.0a2"
+FF_VERSION = "52.0a2"
 
 # Check current version.
 pkgbuild = File.read "PKGBUILD"

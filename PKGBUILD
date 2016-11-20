@@ -5,9 +5,9 @@ _channel=developer
 
 _release_year=2016
 _release_month=11
-_release_day=14
-_release_time=00-40-05
-_release_version=51.0a2
+_release_day=20
+_release_time=00-40-06
+_release_version=52.0a2
 
 pkgname="${_name}-${_channel}-de"
 pkgdesc='Standalone web browser from mozilla.org, developer build - German'
