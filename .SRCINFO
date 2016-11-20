@@ -1,0 +1,15 @@
+pkgbase = gnome-shell-extension-no-topleft-hot-corner
+	pkgdesc = Gnome shell extension disabling hotcorners
+	pkgver = 14
+	pkgrel = 1
+	url = https://github.com/HROMANO/nohotcorner/
+	install = gschemas.install
+	arch = any
+	license = GPL2
+	makedepends = git
+	depends = gnome-shell
+	source = https://github.com/HROMANO/nohotcorner/archive/v14.0.tar.gz
+	md5sums = 2fc8061f21e121c7044ccc60f13eff3d
+
+pkgname = gnome-shell-extension-no-topleft-hot-corner
+
