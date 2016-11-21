@@ -1,0 +1,21 @@
+From: =?UTF-8?q?Sebastian=20Dr=C3=B6ge?= <slomo@circular-chaos.org>
+Date: Tue, 28 May 2013 11:49:29 +0200
+Subject: Use new-style GStreamer 1.0 raw audio caps in the WAV audio profile
+
+---
+ data/audio-profiles/wav.xml.in | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/data/audio-profiles/wav.xml.in b/data/audio-profiles/wav.xml.in
+index 6dc1bab..1759f3c 100644
+--- a/data/audio-profiles/wav.xml.in
++++ b/data/audio-profiles/wav.xml.in
+@@ -13,7 +13,7 @@
+             (gst-construct-pipeline
+                 "audioresample"
+                 "audioconvert" 
+-                (+ "audio/x-raw-int, "
++                (+ "audio/x-raw, "
+                    "format=(string)S16LE, "
+                    "rate=(int)44100, "
+                    "channels=(int)2" )

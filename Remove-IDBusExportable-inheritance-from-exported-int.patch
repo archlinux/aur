@@ -1,0 +1,132 @@
+From: Chow Loong Jin <hyperair@debian.org>
+Date: Sat, 1 Mar 2014 15:52:39 +0800
+Subject: Remove IDBusExportable inheritance from exported interfaces
+
+This fixes the crashes when attempting to control an existing instance of
+Banshee using the command-line interface.
+
+Bug-Debian: #731978
+Bug: https://bugzilla.gnome.org/show_bug.cgi?id=725446
+---
+ src/Core/Banshee.Services/Banshee.MediaEngine/IPlayerEngineService.cs | 2 +-
+ src/Core/Banshee.Services/Banshee.MediaEngine/PlayerEngineService.cs  | 2 +-
+ .../Banshee.PlaybackController/IPlaybackControllerService.cs          | 2 +-
+ .../Banshee.PlaybackController/PlaybackControllerService.cs           | 4 ++--
+ src/Core/Banshee.Services/Banshee.Sources/ISourceManager.cs           | 2 +-
+ src/Core/Banshee.ThickClient/Banshee.Gui/GlobalActions.cs             | 2 +-
+ src/Core/Banshee.ThickClient/Banshee.Gui/IClientWindow.cs             | 2 +-
+ src/Core/Banshee.ThickClient/Banshee.Gui/IGlobalUIActions.cs          | 4 ++--
+ 8 files changed, 10 insertions(+), 10 deletions(-)
+
+diff --git a/src/Core/Banshee.Services/Banshee.MediaEngine/IPlayerEngineService.cs b/src/Core/Banshee.Services/Banshee.MediaEngine/IPlayerEngineService.cs
+index fc935ac..f29cfa5 100644
+--- a/src/Core/Banshee.Services/Banshee.MediaEngine/IPlayerEngineService.cs
++++ b/src/Core/Banshee.Services/Banshee.MediaEngine/IPlayerEngineService.cs
+@@ -35,7 +35,7 @@ using Banshee.ServiceStack;
+ namespace Banshee.MediaEngine
+ {
+     [Interface("org.bansheeproject.Banshee.PlayerEngine")]
+-    public interface IPlayerEngineService : IDBusExportable
++    public interface IPlayerEngineService
+     {
+         event DBusPlayerEventHandler EventChanged;
+         event DBusPlayerStateHandler StateChanged;
+diff --git a/src/Core/Banshee.Services/Banshee.MediaEngine/PlayerEngineService.cs b/src/Core/Banshee.Services/Banshee.MediaEngine/PlayerEngineService.cs
+index 793b9cd..83cbe67 100644
+--- a/src/Core/Banshee.Services/Banshee.MediaEngine/PlayerEngineService.cs
++++ b/src/Core/Banshee.Services/Banshee.MediaEngine/PlayerEngineService.cs
+@@ -51,7 +51,7 @@ namespace Banshee.MediaEngine
+     public delegate bool TrackInterceptHandler (TrackInfo track);
+ 
+     public class PlayerEngineService : IInitializeService, IDelayedInitializeService,
+-        IRequiredService, IPlayerEngineService, IDisposable
++        IRequiredService, IPlayerEngineService, IDBusExportable, IDisposable
+     {
+         private List<PlayerEngine> engines = new List<PlayerEngine> ();
+         private PlayerEngine active_engine;
+diff --git a/src/Core/Banshee.Services/Banshee.PlaybackController/IPlaybackControllerService.cs b/src/Core/Banshee.Services/Banshee.PlaybackController/IPlaybackControllerService.cs
+index deb1feb..a764272 100644
+--- a/src/Core/Banshee.Services/Banshee.PlaybackController/IPlaybackControllerService.cs
++++ b/src/Core/Banshee.Services/Banshee.PlaybackController/IPlaybackControllerService.cs
+@@ -36,7 +36,7 @@ namespace Banshee.PlaybackController
+     public delegate void PlaybackControllerStoppedHandler ();
+ 
+     [Interface ("org.bansheeproject.Banshee.PlaybackController")]
+-    public interface IPlaybackControllerService : IDBusExportable
++    public interface IPlaybackControllerService
+     {
+         // FIXME: IPlaybackControllerExportable : IPlaybackController
+         // but DBus-Sharp has a design flaw where it only exports
+diff --git a/src/Core/Banshee.Services/Banshee.PlaybackController/PlaybackControllerService.cs b/src/Core/Banshee.Services/Banshee.PlaybackController/PlaybackControllerService.cs
+index 1b8020f..af700a6 100644
+--- a/src/Core/Banshee.Services/Banshee.PlaybackController/PlaybackControllerService.cs
++++ b/src/Core/Banshee.Services/Banshee.PlaybackController/PlaybackControllerService.cs
+@@ -38,8 +38,8 @@ using Banshee.MediaEngine;
+ 
+ namespace Banshee.PlaybackController
+ {
+-    public class PlaybackControllerService : IRequiredService, ICanonicalPlaybackController,
+-        IPlaybackController, IPlaybackControllerService
++    public class PlaybackControllerService : IDBusExportable, IRequiredService,
++        ICanonicalPlaybackController, IPlaybackController, IPlaybackControllerService
+     {
+         private enum Direction
+         {
+diff --git a/src/Core/Banshee.Services/Banshee.Sources/ISourceManager.cs b/src/Core/Banshee.Services/Banshee.Sources/ISourceManager.cs
+index 18203c7..4cfc697 100644
+--- a/src/Core/Banshee.Services/Banshee.Sources/ISourceManager.cs
++++ b/src/Core/Banshee.Services/Banshee.Sources/ISourceManager.cs
+@@ -36,7 +36,7 @@ using Banshee.ServiceStack;
+ namespace Banshee.Sources
+ {
+     [Interface("org.bansheeproject.Banshee.SourceManager")]
+-    public interface ISourceManager : IDBusExportable
++    public interface ISourceManager
+     {
+         //event SourceEventHandler SourceUpdated;
+         ISource ActiveSource { get; set; }
+diff --git a/src/Core/Banshee.ThickClient/Banshee.Gui/GlobalActions.cs b/src/Core/Banshee.ThickClient/Banshee.Gui/GlobalActions.cs
+index 48d10bc..1a33a2b 100644
+--- a/src/Core/Banshee.ThickClient/Banshee.Gui/GlobalActions.cs
++++ b/src/Core/Banshee.ThickClient/Banshee.Gui/GlobalActions.cs
+@@ -40,7 +40,7 @@ using Banshee.Playlist;
+ 
+ namespace Banshee.Gui
+ {
+-    public class GlobalActions : BansheeActionGroup, IGlobalUIActions
++    public class GlobalActions : BansheeActionGroup, IGlobalUIActions, IDBusExportable
+     {
+         public GlobalActions () : base ("Global")
+         {
+diff --git a/src/Core/Banshee.ThickClient/Banshee.Gui/IClientWindow.cs b/src/Core/Banshee.ThickClient/Banshee.Gui/IClientWindow.cs
+index 1d693b1..77604f7 100644
+--- a/src/Core/Banshee.ThickClient/Banshee.Gui/IClientWindow.cs
++++ b/src/Core/Banshee.ThickClient/Banshee.Gui/IClientWindow.cs
+@@ -34,7 +34,7 @@ using Banshee.ServiceStack;
+ namespace Banshee.Gui
+ {
+     [Interface ("org.bansheeproject.Banshee.ClientWindow")]
+-    public interface IClientWindow : IDBusExportable
++    public interface IClientWindow
+     {
+         void Present ();
+         void Hide ();
+diff --git a/src/Core/Banshee.ThickClient/Banshee.Gui/IGlobalUIActions.cs b/src/Core/Banshee.ThickClient/Banshee.Gui/IGlobalUIActions.cs
+index 34124c5..e9a53d0 100644
+--- a/src/Core/Banshee.ThickClient/Banshee.Gui/IGlobalUIActions.cs
++++ b/src/Core/Banshee.ThickClient/Banshee.Gui/IGlobalUIActions.cs
+@@ -32,11 +32,11 @@ using Banshee.ServiceStack;
+ namespace Banshee.Gui
+ {
+     [Interface ("org.bansheeproject.Banshee.GlobalUIActions")]
+-    public interface IGlobalUIActions : IDBusExportable
++    public interface IGlobalUIActions
+     {
+         void ShowImportDialog ();
+         void ShowAboutDialog ();
+         void ShowOpenLocationDialog ();
+         void ShowPreferencesDialog ();
+     }
+-}
+\ No newline at end of file
++}

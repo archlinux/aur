@@ -1,0 +1,62 @@
+From: =?UTF-8?q?Sebastian=20Dr=C3=B6ge?= <slomo@circular-chaos.org>
+Date: Tue, 28 May 2013 11:36:04 +0200
+Subject: Don't use the new-decoded-pad signal of decodebin
+
+It is not available anymore in 1.0 and pad-added should be used.
+---
+ libbanshee/banshee-bpmdetector.c | 8 ++++----
+ libbanshee/banshee-transcoder.c  | 8 ++++----
+ 2 files changed, 8 insertions(+), 8 deletions(-)
+
+diff --git a/libbanshee/banshee-bpmdetector.c b/libbanshee/banshee-bpmdetector.c
+index 68b0419..131d2e5 100644
+--- a/libbanshee/banshee-bpmdetector.c
++++ b/libbanshee/banshee-bpmdetector.c
+@@ -159,8 +159,8 @@ bbd_pipeline_bus_callback (GstBus *bus, GstMessage *message, gpointer data)
+ }
+ 
+ static void
+-bbd_new_decoded_pad(GstElement *decodebin, GstPad *pad, 
+-    gboolean last, gpointer data)
++bbd_pad_added(GstElement *decodebin, GstPad *pad, 
++    gpointer data)
+ {
+     GstCaps *caps;
+     GstStructure *str;
+@@ -244,8 +244,8 @@ bbd_pipeline_construct (BansheeBpmDetector *detector)
+     }
+ 
+     // decodebin and audioconvert are linked dynamically when the decodebin creates a new pad
+-    g_signal_connect(detector->decodebin, "new-decoded-pad", 
+-        G_CALLBACK(bbd_new_decoded_pad), detector);
++    g_signal_connect(detector->decodebin, "pad-added", 
++        G_CALLBACK(bbd_pad_added), detector);
+ 
+     if (!gst_element_link_many (detector->audioconvert, detector->bpmdetect, detector->fakesink, NULL)) {
+         bbd_raise_error (detector, _("Could not link pipeline elements"), NULL);
+diff --git a/libbanshee/banshee-transcoder.c b/libbanshee/banshee-transcoder.c
+index 0e241f0..f678838 100644
+--- a/libbanshee/banshee-transcoder.c
++++ b/libbanshee/banshee-transcoder.c
+@@ -185,8 +185,8 @@ gst_transcoder_build_encoder(const gchar *encoder_pipeline)
+ }    
+ 
+ static void
+-gst_transcoder_new_decoded_pad(GstElement *decodebin, GstPad *pad, 
+-    gboolean last, gpointer data)
++gst_transcoder_pad_added(GstElement *decodebin, GstPad *pad, 
++    gpointer data)
+ {
+     GstCaps *caps;
+     GstStructure *str;
+@@ -293,8 +293,8 @@ gst_transcoder_create_pipeline(GstTranscoder *transcoder,
+         
+     gst_element_link(source_elem, decoder_elem);
+ 
+-    g_signal_connect(decoder_elem, "new-decoded-pad", 
+-        G_CALLBACK(gst_transcoder_new_decoded_pad), transcoder);
++    g_signal_connect(decoder_elem, "pad-added", 
++        G_CALLBACK(gst_transcoder_pad_added), transcoder);
+ 
+     gst_bus_add_watch(gst_pipeline_get_bus(GST_PIPELINE(transcoder->pipeline)), 
+         gst_transcoder_bus_callback, transcoder);

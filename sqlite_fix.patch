@@ -1,0 +1,147 @@
+From 700ad9b1686d0b46073b7b2e6cea8e01e30d5f52 Mon Sep 17 00:00:00 2001
+From: Samuel Gyger <gygersamuel@gmail.com>
+Date: Fri, 12 Dec 2014 17:07:45 +0100
+Subject: Database: fix performance for the new SQLite's query planner
+ (bgo#740879)
+
+Starting with sqlite version 3.8.6, a new query planner is used.
+To get back the performance on filling the CoreCache Table,
+this commit provides hints to sqlite (using the UNLIKELY statement).
+But the UNLIKELY statement is only supported in version 3.8.1 and
+above, so in order not to raise the version of the dependency on
+sqlite, we can use this new clause conditionally.
+
+diff --git a/src/Core/Banshee.Services/Banshee.Collection.Database/DatabaseAlbumArtistListModel.cs b/src/Core/Banshee.Services/Banshee.Collection.Database/DatabaseAlbumArtistListModel.cs
+index dee9c81..e91018b 100644
+--- a/src/Core/Banshee.Services/Banshee.Collection.Database/DatabaseAlbumArtistListModel.cs
++++ b/src/Core/Banshee.Services/Banshee.Collection.Database/DatabaseAlbumArtistListModel.cs
+@@ -46,7 +46,7 @@ namespace Banshee.Collection.Database
+             ReloadFragmentFormat = @"
+                 FROM CoreArtists WHERE CoreArtists.ArtistID IN
+                     (SELECT CoreAlbums.ArtistID FROM CoreAlbums, CoreTracks, CoreCache{0}
+-                        WHERE CoreCache.ModelID = {1} AND
++                        WHERE {4}(CoreCache.ModelID = {1}) AND
+                               CoreTracks.AlbumID = CoreAlbums.AlbumID AND
+                               EXISTS (SELECT 1 FROM CoreArtists WHERE ArtistID = CoreAlbums.ArtistID) AND
+                               CoreCache.ItemID = {2} {3})
+diff --git a/src/Core/Banshee.Services/Banshee.Collection.Database/DatabaseAlbumListModel.cs b/src/Core/Banshee.Services/Banshee.Collection.Database/DatabaseAlbumListModel.cs
+index 0705eab..213f137 100644
+--- a/src/Core/Banshee.Services/Banshee.Collection.Database/DatabaseAlbumListModel.cs
++++ b/src/Core/Banshee.Services/Banshee.Collection.Database/DatabaseAlbumListModel.cs
+@@ -56,7 +56,7 @@ namespace Banshee.Collection.Database
+             ReloadFragmentFormat = @"
+                 FROM CoreAlbums WHERE CoreAlbums.AlbumID IN
+                         (SELECT CoreTracks.AlbumID FROM CoreTracks, CoreCache{0}
+-                            WHERE CoreCache.ModelID = {1} AND
++                            WHERE {4}(CoreCache.ModelID = {1}) AND
+                                   CoreCache.ItemId = {2} {3})
+                     ORDER BY CoreAlbums.TitleSortKey, CoreAlbums.ArtistNameSortKey";
+         }
+diff --git a/src/Core/Banshee.Services/Banshee.Collection.Database/DatabaseArtistListModel.cs b/src/Core/Banshee.Services/Banshee.Collection.Database/DatabaseArtistListModel.cs
+index f7a2b4b..171e9e2 100644
+--- a/src/Core/Banshee.Services/Banshee.Collection.Database/DatabaseArtistListModel.cs
++++ b/src/Core/Banshee.Services/Banshee.Collection.Database/DatabaseArtistListModel.cs
+@@ -49,7 +49,7 @@ namespace Banshee.Collection.Database
+             ReloadFragmentFormat = @"
+                 FROM CoreArtists WHERE CoreArtists.ArtistID IN
+                     (SELECT CoreTracks.ArtistID FROM CoreTracks, CoreCache{0}
+-                        WHERE CoreCache.ModelID = {1} AND
++                        WHERE {4}(CoreCache.ModelID = {1}) AND
+                               CoreCache.ItemID = {2} {3})
+                     ORDER BY NameSortKey";
+         }
+diff --git a/src/Core/Banshee.Services/Banshee.Collection.Database/DatabaseFilterListModel.cs b/src/Core/Banshee.Services/Banshee.Collection.Database/DatabaseFilterListModel.cs
+index 018a0f4..2a5d4fd 100644
+--- a/src/Core/Banshee.Services/Banshee.Collection.Database/DatabaseFilterListModel.cs
++++ b/src/Core/Banshee.Services/Banshee.Collection.Database/DatabaseFilterListModel.cs
+@@ -57,10 +57,10 @@ namespace Banshee.Collection.Database
+         }
+ 
+         protected readonly U select_all_item;
+-        private HyenaSqliteConnection connection;
++        private BansheeDbConnection connection;
+ 
+         public DatabaseFilterListModel (string name, string label, Banshee.Sources.DatabaseSource source,
+-                                        DatabaseTrackListModel trackModel, HyenaSqliteConnection connection, SqliteModelProvider<T> provider, U selectAllItem, string uuid)
++                                        DatabaseTrackListModel trackModel, BansheeDbConnection connection, SqliteModelProvider<T> provider, U selectAllItem, string uuid)
+             : base (trackModel)
+         {
+             this.source = source;
+@@ -124,7 +124,8 @@ namespace Banshee.Collection.Database
+                         "{0}.{1} AND CoreTracks.TrackID = {0}.{2}",
+                         FilteredModel.JoinTable, FilteredModel.JoinPrimaryKey, FilteredModel.JoinColumn)
+                     : "CoreTracks.TrackID",
+-                filtered ? GetFilterFragment () : ""
++                filtered ? GetFilterFragment () : "",
++                connection.LikelihoodSupport ? "UNLIKELY" : ""
+             );
+         }
+ 
+diff --git a/src/Core/Banshee.Services/Banshee.Collection.Database/DatabaseQueryFilterModel.cs b/src/Core/Banshee.Services/Banshee.Collection.Database/DatabaseQueryFilterModel.cs
+index a4c00fb..339e351 100644
+--- a/src/Core/Banshee.Services/Banshee.Collection.Database/DatabaseQueryFilterModel.cs
++++ b/src/Core/Banshee.Services/Banshee.Collection.Database/DatabaseQueryFilterModel.cs
+@@ -37,6 +37,7 @@ using Hyena.Data.Sqlite;
+ using Mono.Unix;
+ 
+ using Banshee.ServiceStack;
++using Banshee.Database;
+ 
+ namespace Banshee.Collection.Database
+ {
+@@ -51,7 +52,7 @@ namespace Banshee.Collection.Database
+         private string select_all_fmt;
+ 
+         public DatabaseQueryFilterModel (Banshee.Sources.DatabaseSource source, DatabaseTrackListModel trackModel,
+-            HyenaSqliteConnection connection, string select_all_fmt, string uuid, QueryField field, string filter_column)
++            BansheeDbConnection connection, string select_all_fmt, string uuid, QueryField field, string filter_column)
+             : base (field.Name, field.Label, source, trackModel, connection, QueryFilterInfo<T>.CreateProvider (filter_column, field), new QueryFilterInfo<T> (), String.Format ("{0}-{1}", uuid, field.Name))
+         {
+             this.field = field;
+@@ -59,7 +60,7 @@ namespace Banshee.Collection.Database
+ 
+             ReloadFragmentFormat = @"
+                 FROM CoreTracks, CoreCache{0}
+-                    WHERE CoreCache.ModelID = {1} AND CoreCache.ItemID = {2} {3}
++                    WHERE {4}(CoreCache.ModelID = {1}) AND CoreCache.ItemID = {2} {3}
+                     ORDER BY Value";
+ 
+             QueryFields = new QueryFieldSet (query_filter_field);
+diff --git a/src/Core/Banshee.Services/Banshee.Collection.Database/DatabaseYearListModel.cs b/src/Core/Banshee.Services/Banshee.Collection.Database/DatabaseYearListModel.cs
+index b58d1df..5f96d2f 100644
+--- a/src/Core/Banshee.Services/Banshee.Collection.Database/DatabaseYearListModel.cs
++++ b/src/Core/Banshee.Services/Banshee.Collection.Database/DatabaseYearListModel.cs
+@@ -47,7 +47,7 @@ namespace Banshee.Collection.Database
+                 FROM (SELECT MIN(CoreTracks.TrackID) AS TrackID, CoreTracks.Year FROM CoreTracks GROUP BY CoreTracks.Year) AS CoreTracks
+                 WHERE CoreTracks.Year IN
+                     (SELECT CoreTracks.Year FROM CoreTracks, CoreCache{0}
+-                        WHERE CoreCache.ModelID = {1} AND
++                        WHERE {4}(CoreCache.ModelID = {1}) AND
+                               CoreCache.ItemID = {2} {3})
+                     ORDER BY Year";
+         }
+diff --git a/src/Core/Banshee.Services/Banshee.Database/BansheeDbConnection.cs b/src/Core/Banshee.Services/Banshee.Database/BansheeDbConnection.cs
+index e9bbbf5..3ae0728 100644
+--- a/src/Core/Banshee.Services/Banshee.Database/BansheeDbConnection.cs
++++ b/src/Core/Banshee.Services/Banshee.Database/BansheeDbConnection.cs
+@@ -52,6 +52,20 @@ namespace Banshee.Database
+             get { return configuration; }
+         }
+ 
++        private bool? likelihood_support = null;
++        public bool LikelihoodSupport {
++            get {
++                if (!likelihood_support.HasValue) {
++		     // emulate the SQLITE_VERSION_NUMBER macro
++                    string[] v = Query<string> ("SELECT sqlite_version ()").Split ('.');
++                    likelihood_support = (Int32.Parse (v[0]) * 1000000 +
++                                          Int32.Parse (v[1]) * 1000 +
++                                          Int32.Parse (v[2])) >= 3008001;
++                }
++                return likelihood_support.Value;
++            }
++        }
++
+         public BansheeDbConnection () : this (DatabaseFile)
+         {
+

@@ -1,0 +1,1022 @@
+From: =?UTF-8?q?Sebastian=20Dr=C3=B6ge?= <sebastian.droege@collabora.co.uk>
+Date: Wed, 19 Sep 2012 11:34:06 +0200
+Subject: Initial port to GStreamer 1.0
+
+---
+ build/m4/banshee/gstreamer.m4                |   19 +++---
+ data/audio-profiles/wav.xml.in               |    5 +-
+ libbanshee/banshee-bpmdetector.c             |   11 ++--
+ libbanshee/banshee-gst.h                     |    4 +-
+ libbanshee/banshee-player-cdda.c             |    5 +-
+ libbanshee/banshee-player-dvd.c              |    4 +-
+ libbanshee/banshee-player-equalizer.c        |    4 +-
+ libbanshee/banshee-player-missing-elements.c |    2 +-
+ libbanshee/banshee-player-pipeline.c         |   37 ++++++-----
+ libbanshee/banshee-player-private.h          |   13 ++--
+ libbanshee/banshee-player-replaygain.c       |   29 ++++-----
+ libbanshee/banshee-player-video.c            |   89 +++++++++++++-------------
+ libbanshee/banshee-player-vis.c              |   88 ++++++++-----------------
+ libbanshee/banshee-player.c                  |   11 ++--
+ libbanshee/banshee-ripper.c                  |   16 ++---
+ libbanshee/banshee-tagger.c                  |    2 +-
+ libbanshee/banshee-transcoder.c              |   19 +++---
+ 17 files changed, 156 insertions(+), 202 deletions(-)
+
+diff --git a/build/m4/banshee/gstreamer.m4 b/build/m4/banshee/gstreamer.m4
+index 6267cce..917cf58 100644
+--- a/build/m4/banshee/gstreamer.m4
++++ b/build/m4/banshee/gstreamer.m4
+@@ -1,17 +1,18 @@
+ AC_DEFUN([BANSHEE_CHECK_GSTREAMER],
+ [
+-	GSTREAMER_REQUIRED_VERSION=0.10.26
++	GSTREAMER_REQUIRED_VERSION=0.11.99
+ 	AC_SUBST(GSTREAMER_REQUIRED_VERSION)
+ 
+ 	PKG_CHECK_MODULES(GST,
+-		gstreamer-0.10 >= $GSTREAMER_REQUIRED_VERSION
+-		gstreamer-base-0.10 >= $GSTREAMER_REQUIRED_VERSION
+-		gstreamer-plugins-base-0.10 >= $GSTREAMER_REQUIRED_VERSION
+-		gstreamer-controller-0.10 >= $GSTREAMER_REQUIRED_VERSION
+-		gstreamer-dataprotocol-0.10 >= $GSTREAMER_REQUIRED_VERSION
+-		gstreamer-fft-0.10 >= $GSTREAMER_REQUIRED_VERSION)
+-
+-	GST_LIBS="$GST_LIBS -lgstvideo-0.10 -lgstinterfaces-0.10 -lgstcdda-0.10 -lgstpbutils-0.10 -lgsttag-0.10"
++		gstreamer-1.0 >= $GSTREAMER_REQUIRED_VERSION
++		gstreamer-base-1.0 >= $GSTREAMER_REQUIRED_VERSION
++		gstreamer-controller-1.0 >= $GSTREAMER_REQUIRED_VERSION
++		gstreamer-plugins-base-1.0 >= $GSTREAMER_REQUIRED_VERSION
++		gstreamer-audio-1.0 >= $GSTREAMER_REQUIRED_VERSION
++		gstreamer-fft-1.0 >= $GSTREAMER_REQUIRED_VERSION
++		gstreamer-pbutils-1.0 >= $GSTREAMER_REQUIRED_VERSION
++		gstreamer-tag-1.0 >= $GSTREAMER_REQUIRED_VERSION
++		gstreamer-video-1.0 >= $GSTREAMER_REQUIRED_VERSION)
+ 
+ 	AC_SUBST(GST_CFLAGS)
+ 	AC_SUBST(GST_LIBS)
+diff --git a/data/audio-profiles/wav.xml.in b/data/audio-profiles/wav.xml.in
+index 35cd1d2..6dc1bab 100644
+--- a/data/audio-profiles/wav.xml.in
++++ b/data/audio-profiles/wav.xml.in
+@@ -14,10 +14,7 @@
+                 "audioresample"
+                 "audioconvert" 
+                 (+ "audio/x-raw-int, "
+-                   "endianness=(int)1234, "
+-                   "width=(int)16, "
+-                   "depth=(int)16, "
+-                   "signed=(boolean)true, "
++                   "format=(string)S16LE, "
+                    "rate=(int)44100, "
+                    "channels=(int)2" )
+                 "wavenc")
+diff --git a/libbanshee/banshee-bpmdetector.c b/libbanshee/banshee-bpmdetector.c
+index c06ffcb..68b0419 100644
+--- a/libbanshee/banshee-bpmdetector.c
++++ b/libbanshee/banshee-bpmdetector.c
+@@ -30,6 +30,7 @@
+ #  include "config.h"
+ #endif
+ 
++#include <stdio.h>
+ #include <string.h>
+ #include <glib/gi18n.h>
+ 
+@@ -50,7 +51,7 @@ struct BansheeBpmDetector {
+ 
+     /*
+      * You can run this pipeline on the cmd line with:
+-     * gst-launch -m filesrc location=/path/to/my.mp3 ! decodebin2 ! \
++     * gst-launch -m filesrc location=/path/to/my.mp3 ! decodebin ! \
+      *    audioconvert ! bpmdetect ! fakesink
+      */
+ 
+@@ -168,14 +169,14 @@ bbd_new_decoded_pad(GstElement *decodebin, GstPad *pad,
+ 
+     g_return_if_fail(detector != NULL);
+ 
+-    audiopad = gst_element_get_pad(detector->audioconvert, "sink");
++    audiopad = gst_element_get_static_pad(detector->audioconvert, "sink");
+     
+     if(GST_PAD_IS_LINKED(audiopad)) {
+         g_object_unref(audiopad);
+         return;
+     }
+ 
+-    caps = gst_pad_get_caps(pad);
++    caps = gst_pad_query_caps(pad, NULL);
+     str = gst_caps_get_structure(caps, 0);
+     
+     if(!g_strrstr(gst_structure_get_name(str), "audio")) {
+@@ -209,9 +210,9 @@ bbd_pipeline_construct (BansheeBpmDetector *detector)
+         return FALSE;
+     }
+   
+-    detector->decodebin = gst_element_factory_make ("decodebin2", "decodebin2");
++    detector->decodebin = gst_element_factory_make ("decodebin", "decodebin");
+     if (detector->decodebin == NULL) {
+-        bbd_raise_error (detector, _("Could not create decodebin2 plugin"), NULL);
++        bbd_raise_error (detector, _("Could not create decodebin plugin"), NULL);
+         return FALSE;
+     }
+ 
+diff --git a/libbanshee/banshee-gst.h b/libbanshee/banshee-gst.h
+index 85662cf..332f356 100644
+--- a/libbanshee/banshee-gst.h
++++ b/libbanshee/banshee-gst.h
+@@ -41,9 +41,11 @@
+ #define BANSHEE_GST_ITERATOR_ITERATE(iter,child_type,child_name,free,block) { \
+     gboolean iter##_done = FALSE; \
+     while (!iter##_done) { \
++        GValue child_value = {0, }; \
+         child_type child_name; \
+-        switch (gst_iterator_next (iter, (gpointer)&child_name)) { \
++        switch (gst_iterator_next (iter, &child_value)) { \
+             case GST_ITERATOR_OK: { \
++                child_name = (child_type) g_value_get_object(&child_value); \
+                 { block; } \
+                 break; \
+             } \
+diff --git a/libbanshee/banshee-player-cdda.c b/libbanshee/banshee-player-cdda.c
+index 8be2bdd..401edf0 100644
+--- a/libbanshee/banshee-player-cdda.c
++++ b/libbanshee/banshee-player-cdda.c
+@@ -28,7 +28,8 @@
+ // WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+ //
+ 
+-#include <gst/cdda/gstcddabasesrc.h>
++#include <stdlib.h>
++#include <gst/audio/gstaudiocdsrc.h>
+ #include "banshee-player-cdda.h"
+ 
+ // ---------------------------------------------------------------------------
+@@ -46,7 +47,7 @@ bp_cdda_get_cdda_source (GstElement *playbin)
+     
+     g_object_get (playbin, "source", &source, NULL);
+     
+-    if (source == NULL || !GST_IS_CDDA_BASE_SRC (source)) {
++    if (source == NULL || !GST_IS_AUDIO_CD_SRC (source)) {
+         if (source != NULL) {
+             g_object_unref (source);
+         }
+diff --git a/libbanshee/banshee-player-dvd.c b/libbanshee/banshee-player-dvd.c
+index 55d499c..991b506 100644
+--- a/libbanshee/banshee-player-dvd.c
++++ b/libbanshee/banshee-player-dvd.c
+@@ -296,7 +296,7 @@ bp_dvd_go_to_next_chapter (BansheePlayer *player)
+ {
+     gint64 index;
+     GstFormat format = gst_format_get_by_nick ("chapter");
+-    gst_element_query_position (player->playbin, &format, &index);
++    gst_element_query_position (player->playbin, format, &index);
+     gst_element_seek (player->playbin, 1.0, format, GST_SEEK_FLAG_FLUSH,
+         GST_SEEK_TYPE_SET, index + 1, GST_SEEK_TYPE_NONE, 0);
+ }
+@@ -306,7 +306,7 @@ bp_dvd_go_to_previous_chapter (BansheePlayer *player)
+ {
+     gint64 index;
+     GstFormat format = gst_format_get_by_nick ("chapter");
+-    gst_element_query_position (player->playbin, &format, &index);
++    gst_element_query_position (player->playbin, format, &index);
+     gst_element_seek (player->playbin, 1.0, format, GST_SEEK_FLAG_FLUSH,
+         GST_SEEK_TYPE_SET, index - 1, GST_SEEK_TYPE_NONE, 0);
+ }
+diff --git a/libbanshee/banshee-player-equalizer.c b/libbanshee/banshee-player-equalizer.c
+index a496ada..0cbb3b7 100644
+--- a/libbanshee/banshee-player-equalizer.c
++++ b/libbanshee/banshee-player-equalizer.c
+@@ -122,7 +122,7 @@ bp_equalizer_set_gain (BansheePlayer *player, guint bandnum, gdouble gain)
+     g_return_if_fail (IS_BANSHEE_PLAYER (player));
+     
+     if (player->equalizer != NULL) {
+-        GstObject *band;
++        GObject *band;
+ 
+         g_return_if_fail (bandnum < gst_child_proxy_get_children_count (GST_CHILD_PROXY (player->equalizer)));
+ 
+@@ -188,7 +188,7 @@ bp_equalizer_get_frequencies (BansheePlayer *player, gdouble **freq)
+     count = gst_child_proxy_get_children_count (GST_CHILD_PROXY (player->equalizer));
+     
+     for (i = 0; i < count; i++) {
+-        GstObject *band;
++        GObject *band;
+         
+         band = gst_child_proxy_get_child_by_index (GST_CHILD_PROXY (player->equalizer), i);
+         g_object_get (G_OBJECT (band), "freq", &(*freq)[i], NULL);
+diff --git a/libbanshee/banshee-player-missing-elements.c b/libbanshee/banshee-player-missing-elements.c
+index 20804c4..30118c5 100644
+--- a/libbanshee/banshee-player-missing-elements.c
++++ b/libbanshee/banshee-player-missing-elements.c
+@@ -170,7 +170,7 @@ _bp_missing_elements_handle_state_changed (BansheePlayer *player, GstState old,
+     }
+     #endif
+     
+-    install_return = gst_install_plugins_async (details, player->install_plugins_context, 
++    install_return = gst_install_plugins_async ((const gchar * const*) details, player->install_plugins_context, 
+         bp_missing_elements_handle_install_result, player);
+     
+     if (install_return != GST_INSTALL_PLUGINS_STARTED_OK) {
+diff --git a/libbanshee/banshee-player-pipeline.c b/libbanshee/banshee-player-pipeline.c
+index ed845f3..6c2af35 100644
+--- a/libbanshee/banshee-player-pipeline.c
++++ b/libbanshee/banshee-player-pipeline.c
+@@ -76,7 +76,7 @@ playbin_stream_changed_cb (GstElement * element, BansheePlayer *player)
+     GstMessage *msg;
+ 
+     // We're being called from the streaming thread, so don't do anything here
+-    msg = gst_message_new_application (GST_OBJECT (player->playbin), gst_structure_new ("stream-changed", NULL));
++    msg = gst_message_new_application (GST_OBJECT (player->playbin), gst_structure_new_empty ("stream-changed"));
+     gst_element_post_message (player->playbin, msg);
+ }
+ 
+@@ -218,6 +218,11 @@ bp_pipeline_bus_callback (GstBus *bus, GstMessage *message, gpointer userdata)
+             break;
+         }
+ 
++        case GST_MESSAGE_STREAM_START: {
++            bp_next_track_starting (player);
++            break;
++        }
++
+         case GST_MESSAGE_APPLICATION: {
+             const gchar * name;
+             const GstStructure * s = gst_message_get_structure (message);
+@@ -289,11 +294,11 @@ _bp_pipeline_construct (BansheePlayer *player)
+     
+     // Playbin is the core element that handles autoplugging (finding the right
+     // source and decoder elements) based on source URI and stream content
+-    player->playbin = gst_element_factory_make ("playbin2", "playbin");
++    player->playbin = gst_element_factory_make ("playbin", "playbin");
+ 
+ #ifdef ENABLE_GAPLESS
+     // FIXME: Connect a proxy about-to-finish callback that will generate a next-track-starting callback.
+-    // This can be removed once playbin2 generates its own next-track signal.
++    // This can be removed once playbin generates its own next-track signal.
+     // bgo#584987 - this is included in >= 0.10.26
+     g_signal_connect (player->playbin, "about-to-finish", G_CALLBACK (bp_about_to_finish_callback), player);
+ #endif //ENABLE_GAPLESS
+@@ -305,18 +310,13 @@ _bp_pipeline_construct (BansheePlayer *player)
+     g_signal_connect (player->playbin, "audio-changed", G_CALLBACK (playbin_stream_changed_cb), player);
+     g_signal_connect (player->playbin, "text-changed", G_CALLBACK (playbin_stream_changed_cb), player);
+ 
+-    // Try to find an audio sink, prefer gconf, which typically is set to auto these days,
+-    // fall back on auto, which should work on windows, and as a last ditch, try alsa
+-    audiosink = gst_element_factory_make ("gconfaudiosink", "audiosink");
+-    if (audiosink == NULL) {
+-        audiosink = gst_element_factory_make ("directsoundsink", "audiosink");
+-        if (audiosink != NULL) {
+-            g_object_set (G_OBJECT (audiosink), "volume", 1.0, NULL);
+-        } else {
+-            audiosink = gst_element_factory_make ("autoaudiosink", "audiosink");
+-            if (audiosink == NULL) {
+-                audiosink = gst_element_factory_make ("alsasink", "audiosink");
+-            }
++    audiosink = gst_element_factory_make ("directsoundsink", "audiosink");
++    if (audiosink != NULL) {
++        g_object_set (G_OBJECT (audiosink), "volume", 1.0, NULL);
++    } else {
++        audiosink = gst_element_factory_make ("autoaudiosink", "audiosink");
++        if (audiosink == NULL) {
++            audiosink = gst_element_factory_make ("alsasink", "audiosink");
+         }
+     }
+     
+@@ -341,7 +341,6 @@ _bp_pipeline_construct (BansheePlayer *player)
+         GstIterator *elem_iter = gst_bin_iterate_recurse (GST_BIN (audiosink));
+         BANSHEE_GST_ITERATOR_ITERATE (elem_iter, GstElement *, element, TRUE, {
+             player->audiosink_has_volume |= g_object_class_find_property (G_OBJECT_GET_CLASS (element), "volume") != NULL;
+-            gst_object_unref (element);
+         });
+     }
+     bp_debug ("Audiosink has volume: %s",
+@@ -383,7 +382,7 @@ _bp_pipeline_construct (BansheePlayer *player)
+     }
+    
+     // Ghost pad the audio bin so audio is passed from the bin into the tee
+-    teepad = gst_element_get_pad (player->audiotee, "sink");
++    teepad = gst_element_get_static_pad (player->audiotee, "sink");
+     gst_element_add_pad (player->audiobin, gst_ghost_pad_new ("sink", teepad));
+     gst_object_unref (teepad);
+ 
+@@ -411,8 +410,8 @@ _bp_pipeline_construct (BansheePlayer *player)
+     gst_bus_add_watch (bus, bp_pipeline_bus_callback, player);
+ 
+     // Link the first tee pad to the primary audio sink queue
+-    GstPad *sinkpad = gst_element_get_pad (audiosinkqueue, "sink");
+-    pad = gst_element_get_request_pad (player->audiotee, "src%d");
++    GstPad *sinkpad = gst_element_get_static_pad (audiosinkqueue, "sink");
++    pad = gst_element_get_request_pad (player->audiotee, "src_%u");
+     g_object_set(player->audiotee, "alloc-pad", pad, NULL);
+     gst_pad_link (pad, sinkpad);
+     gst_object_unref (GST_OBJECT (pad));
+diff --git a/libbanshee/banshee-player-private.h b/libbanshee/banshee-player-private.h
+index 9fed356..9346911 100644
+--- a/libbanshee/banshee-player-private.h
++++ b/libbanshee/banshee-player-private.h
+@@ -42,14 +42,14 @@
+ #include <gst/fft/gstfftf32.h>
+ #include <gst/pbutils/pbutils.h>
+ #include <gst/tag/tag.h>
+-#include <gst/interfaces/navigation.h>
++#include <gst/video/navigation.h>
+ 
+ #if defined(GDK_WINDOWING_X11)
+ #  include <gdk/gdkx.h>
+-#  include <gst/interfaces/xoverlay.h>
++#  include <gst/video/videooverlay.h>
+ #elif defined(GDK_WINDOWING_WIN32)
+ #  include <gdk/gdkwin32.h>
+-#  include <gst/interfaces/xoverlay.h>
++#  include <gst/video/videooverlay.h>
+ #endif
+ 
+ #include "banshee-gst.h"
+@@ -155,11 +155,11 @@ struct BansheePlayer {
+     // Video State
+     BpVideoDisplayContextType video_display_context_type;
+     #if defined(GDK_WINDOWING_X11)
+-    GstXOverlay *xoverlay;
++    GstVideoOverlay *video_overlay;
+     GdkWindow *video_window;
+     XID video_window_xid;
+     #elif defined(GDK_WINDOWING_WIN32)
+-    GstXOverlay *xoverlay;
++    GstVideoOverlay *video_overlay;
+     GdkWindow *video_window;
+     HWND video_window_xid;
+     #endif
+@@ -179,6 +179,8 @@ struct BansheePlayer {
+     GstFFTF32 *vis_fft;
+     GstFFTF32Complex *vis_fft_buffer;
+     gfloat *vis_fft_sample_buffer;
++    GstPad *vis_event_probe_pad;
++    gulong vis_event_probe_id;
+     
+     // Plugin Installer State
+     GdkWindow *window;
+@@ -197,6 +199,7 @@ struct BansheePlayer {
+     // http://replaygain.hydrogenaudio.org/player_scale.html
+     gdouble rg_gain_history[10];
+     gint history_size;
++    gulong rg_pad_block_id;
+ 
+     //dvd navigation
+     GstNavigation *navigation;
+diff --git a/libbanshee/banshee-player-replaygain.c b/libbanshee/banshee-player-replaygain.c
+index a479d4a..e42b197 100644
+--- a/libbanshee/banshee-player-replaygain.c
++++ b/libbanshee/banshee-player-replaygain.c
+@@ -79,17 +79,13 @@ static void on_target_gain_changed (GstElement *rgvolume, GParamSpec *pspec, Ban
+     _bp_rgvolume_print_volume (player);
+ }
+ 
+-static void
+-pad_block_cb (GstPad *srcPad, gboolean blocked, gpointer user_data)
++static GstPadProbeReturn
++pad_block_cb (GstPad *srcPad, GstPadProbeInfo *info, gpointer user_data)
+ {
+     BansheePlayer* player;
+ 
+-    if (!blocked) {
+-        return;
+-    }
+-
+     player = (BansheePlayer*) user_data;
+-    g_return_if_fail (IS_BANSHEE_PLAYER (player));
++    g_return_val_if_fail (IS_BANSHEE_PLAYER (player), GST_PAD_PROBE_OK);
+ 
+     // The pad_block_cb can get triggered multiple times, on different threads.
+     // Lock around the link/unlink code, so we don't end up going through here
+@@ -99,11 +95,9 @@ pad_block_cb (GstPad *srcPad, gboolean blocked, gpointer user_data)
+     if ((player->replaygain_enabled && player->rgvolume_in_pipeline) ||
+         (!player->replaygain_enabled && !player->rgvolume_in_pipeline)) {
+         // The pipeline is already in the correct state.  Unblock the pad, and return.
++        player->rg_pad_block_id = 0;
+         g_mutex_unlock (player->replaygain_mutex);
+-        if (gst_pad_is_blocked (srcPad)) {
+-            gst_pad_set_blocked_async (srcPad, FALSE, &pad_block_cb, player);
+-        }
+-        return;
++        return GST_PAD_PROBE_REMOVE;
+     }
+ 
+     if (player->rgvolume_in_pipeline) {
+@@ -139,13 +133,12 @@ pad_block_cb (GstPad *srcPad, gboolean blocked, gpointer user_data)
+     }
+ 
+     // Our state is now consistent
++    player->rg_pad_block_id = 0;
+     g_mutex_unlock (player->replaygain_mutex);
+ 
+-    if (gst_pad_is_blocked (srcPad)) {
+-        gst_pad_set_blocked_async (srcPad, FALSE, &pad_block_cb, player);
+-    }
+-
+     _bp_rgvolume_print_volume (player);
++
++    return GST_PAD_PROBE_REMOVE;
+ }
+ 
+ // ---------------------------------------------------------------------------
+@@ -187,9 +180,9 @@ void _bp_replaygain_pipeline_rebuild (BansheePlayer* player)
+     srcPad = gst_element_get_static_pad (player->before_rgvolume, "src");
+ 
+     if (gst_pad_is_active (srcPad) && !gst_pad_is_blocked (srcPad)) {
+-        gst_pad_set_blocked_async (srcPad, TRUE, &pad_block_cb, player);
+-    } else if (srcPad->block_callback == NULL) {
+-        pad_block_cb (srcPad, TRUE, player);
++        player->rg_pad_block_id = gst_pad_add_probe (srcPad, GST_PAD_PROBE_TYPE_BLOCK_DOWNSTREAM, &pad_block_cb, player, NULL);
++    } else if (!player->rg_pad_block_id) {
++        pad_block_cb (srcPad, NULL, player);
+     }
+ }
+ 
+diff --git a/libbanshee/banshee-player-video.c b/libbanshee/banshee-player-video.c
+index b901354..eb95c3f 100644
+--- a/libbanshee/banshee-player-video.c
++++ b/libbanshee/banshee-player-video.c
+@@ -37,54 +37,54 @@
+ #if defined(GDK_WINDOWING_X11) || defined(GDK_WINDOWING_WIN32)
+ 
+ static gboolean
+-bp_video_find_xoverlay (BansheePlayer *player)
++bp_video_find_video_overlay (BansheePlayer *player)
+ {
+     GstElement *video_sink = NULL;
+-    GstElement *xoverlay;
+-    GstXOverlay *previous_xoverlay;
+-    gboolean    found_xoverlay;
++    GstElement *video_overlay;
++    GstVideoOverlay *previous_video_overlay;
++    gboolean    found_video_overlay;
+ 
+     g_object_get (player->playbin, "video-sink", &video_sink, NULL);
+ 
+     g_mutex_lock (player->video_mutex);
+-    previous_xoverlay = player->xoverlay;
++    previous_video_overlay = player->video_overlay;
+ 
+     if (video_sink == NULL) {
+-        player->xoverlay = NULL;
+-        if (previous_xoverlay != NULL) {
+-            gst_object_unref (previous_xoverlay);
++        player->video_overlay = NULL;
++        if (previous_video_overlay != NULL) {
++            gst_object_unref (previous_video_overlay);
+         }
+         g_mutex_unlock (player->video_mutex);
+         return FALSE;
+     }
+    
+-    xoverlay = GST_IS_BIN (video_sink)
+-        ? gst_bin_get_by_interface (GST_BIN (video_sink), GST_TYPE_X_OVERLAY)
++    video_overlay = GST_IS_BIN (video_sink)
++        ? gst_bin_get_by_interface (GST_BIN (video_sink), GST_TYPE_VIDEO_OVERLAY)
+         : video_sink;
+     
+-    player->xoverlay = GST_IS_X_OVERLAY (xoverlay) ? GST_X_OVERLAY (xoverlay) : NULL;
++    player->video_overlay = GST_IS_VIDEO_OVERLAY (video_overlay) ? GST_VIDEO_OVERLAY (video_overlay) : NULL;
+     
+-    if (previous_xoverlay != NULL) {
+-        gst_object_unref (previous_xoverlay);
++    if (previous_video_overlay != NULL) {
++        gst_object_unref (previous_video_overlay);
+     }
+         
+ #if !defined(GDK_WINDOWING_WIN32) // We can't rely on aspect ratio from dshowvideosink
+-    if (player->xoverlay != NULL && g_object_class_find_property (
+-        G_OBJECT_GET_CLASS (player->xoverlay), "force-aspect-ratio")) {
+-        g_object_set (G_OBJECT (player->xoverlay), "force-aspect-ratio", TRUE, NULL);
++    if (player->video_overlay != NULL && g_object_class_find_property (
++        G_OBJECT_GET_CLASS (player->video_overlay), "force-aspect-ratio")) {
++        g_object_set (G_OBJECT (player->video_overlay), "force-aspect-ratio", TRUE, NULL);
+     }
+ #endif
+     
+-    if (player->xoverlay != NULL && g_object_class_find_property (
+-        G_OBJECT_GET_CLASS (player->xoverlay), "handle-events")) {
+-        g_object_set (G_OBJECT (player->xoverlay), "handle-events", FALSE, NULL);
++    if (player->video_overlay != NULL && g_object_class_find_property (
++        G_OBJECT_GET_CLASS (player->video_overlay), "handle-events")) {
++        g_object_set (G_OBJECT (player->video_overlay), "handle-events", FALSE, NULL);
+     }
+ 
+     gst_object_unref (video_sink);
+-    found_xoverlay = (player->xoverlay != NULL) ? TRUE : FALSE;
++    found_video_overlay = (player->video_overlay != NULL) ? TRUE : FALSE;
+ 
+     g_mutex_unlock (player->video_mutex);
+-    return found_xoverlay;
++    return found_video_overlay;
+ }
+ 
+ #endif /* GDK_WINDOWING_X11 || GDK_WINDOWING_WIN32 */
+@@ -130,27 +130,27 @@ bp_video_sink_element_added (GstBin *videosink, GstElement *element, BansheePlay
+     g_return_if_fail (IS_BANSHEE_PLAYER (player));
+ 
+     #if defined(GDK_WINDOWING_X11) || defined(GDK_WINDOWING_WIN32)
+-    bp_video_find_xoverlay (player);
++    bp_video_find_video_overlay (player);
+     #endif
+ }
+ 
+ static void
+ bp_video_bus_element_sync_message (GstBus *bus, GstMessage *message, BansheePlayer *player)
+ {
+-    gboolean found_xoverlay;
++    gboolean found_video_overlay;
+     
+     g_return_if_fail (IS_BANSHEE_PLAYER (player));
+ 
+     #if defined(GDK_WINDOWING_X11) || defined(GDK_WINDOWING_WIN32)
+ 
+-    if (message->structure == NULL || !gst_structure_has_name (message->structure, "prepare-xwindow-id")) {
++    if (!gst_is_video_overlay_prepare_window_handle_message (message)) {
+         return;
+     }
+ 
+-    found_xoverlay = bp_video_find_xoverlay (player);
++    found_video_overlay = bp_video_find_video_overlay (player);
+ 
+-    if (found_xoverlay) {
+-        gst_x_overlay_set_xwindow_id (player->xoverlay, player->video_window_xid);
++    if (found_video_overlay) {
++        gst_video_overlay_set_window_handle (player->video_overlay, player->video_window_xid);
+     }
+ 
+     #endif
+@@ -164,7 +164,7 @@ static void
+ cb_caps_set (GObject *obj, GParamSpec *pspec, BansheePlayer *p)
+ {
+     GstStructure * s = NULL;
+-    GstCaps * caps = gst_pad_get_negotiated_caps (GST_PAD (obj));
++    GstCaps * caps = gst_pad_get_current_caps (GST_PAD (obj));
+ 
+     if (G_UNLIKELY (!caps)) {
+         return;
+@@ -219,7 +219,7 @@ _bp_parse_stream_info (BansheePlayer *player)
+     }
+ 
+     if (G_LIKELY (vpad)) {
+-        GstCaps *caps = gst_pad_get_negotiated_caps (vpad);
++        GstCaps *caps = gst_pad_get_current_caps (vpad);
+         if (G_LIKELY (caps)) {
+             cb_caps_set (G_OBJECT (vpad), NULL, player);
+             gst_caps_unref (caps);
+@@ -249,21 +249,18 @@ _bp_video_pipeline_setup (BansheePlayer *player, GstBus *bus)
+ 
+     player->video_display_context_type = BP_VIDEO_DISPLAY_CONTEXT_GDK_WINDOW;
+     
+-    videosink = gst_element_factory_make ("gconfvideosink", "videosink");
++    videosink = gst_element_factory_make ("autovideosink", "videosink");
+     if (videosink == NULL) {
+-        videosink = gst_element_factory_make ("autovideosink", "videosink");
+-        if (videosink == NULL) {
+-            player->video_display_context_type = BP_VIDEO_DISPLAY_CONTEXT_UNSUPPORTED;
+-            videosink = gst_element_factory_make ("fakesink", "videosink");
+-            if (videosink != NULL) {
+-                g_object_set (G_OBJECT (videosink), "sync", TRUE, NULL);
+-            }
++        player->video_display_context_type = BP_VIDEO_DISPLAY_CONTEXT_UNSUPPORTED;
++        videosink = gst_element_factory_make ("fakesink", "videosink");
++        if (videosink != NULL) {
++            g_object_set (G_OBJECT (videosink), "sync", TRUE, NULL);
+         }
+     }
+     
+     g_object_set (G_OBJECT (player->playbin), "video-sink", videosink, NULL);
+     
+-    gst_bus_set_sync_handler (bus, gst_bus_sync_signal_handler, player);
++    gst_bus_set_sync_handler (bus, gst_bus_sync_signal_handler, player, NULL);
+     g_signal_connect (bus, "sync-message::element", G_CALLBACK (bp_video_bus_element_sync_message), player);
+         
+     if (GST_IS_BIN (videosink)) {
+@@ -349,21 +346,21 @@ bp_video_window_expose (BansheePlayer *player, GdkWindow *window, gboolean direc
+ {
+     g_return_if_fail (IS_BANSHEE_PLAYER (player));
+     
+-    if (direct && player->xoverlay != NULL && GST_IS_X_OVERLAY (player->xoverlay)) {
+-        gst_x_overlay_expose (player->xoverlay);
++    if (direct && player->video_overlay != NULL && GST_IS_VIDEO_OVERLAY (player->video_overlay)) {
++        gst_video_overlay_expose (player->video_overlay);
+         return;
+     }
+ 
+-    if (player->xoverlay == NULL && !bp_video_find_xoverlay (player)) {
++    if (player->video_overlay == NULL && !bp_video_find_video_overlay (player)) {
+         return;
+     }
+     
+-    gst_object_ref (player->xoverlay);
++    gst_object_ref (player->video_overlay);
+ 
+-    gst_x_overlay_set_xwindow_id (player->xoverlay, player->video_window_xid);
+-    gst_x_overlay_expose (player->xoverlay);
++    gst_video_overlay_set_window_handle (player->video_overlay, player->video_window_xid);
++    gst_video_overlay_expose (player->video_overlay);
+ 
+-    gst_object_unref (player->xoverlay);
++    gst_object_unref (player->video_overlay);
+ }
+ 
+ // MUST be called from the GTK main thread; calling it in OnRealized will do the right thing.
+@@ -379,7 +376,7 @@ bp_video_window_realize (BansheePlayer *player, GdkWindow *window)
+ //    //Explicitly create the native window.  GDK_WINDOW_XWINDOW will call this
+ //    //function anyway, but this way we can raise a more useful message should it fail.
+ //    if (!gdk_window_ensure_native (window)) {
+-//        banshee_log (BANSHEE_LOG_TYPE_ERROR, "player-video", "Couldn't create native window needed for GstXOverlay!");
++//        banshee_log (BANSHEE_LOG_TYPE_ERROR, "player-video", "Couldn't create native window needed for GstVideoOverlay!");
+ //    }
+ //#endif
+ 
+diff --git a/libbanshee/banshee-player-vis.c b/libbanshee/banshee-player-vis.c
+index 5787c87..7e7dc78 100644
+--- a/libbanshee/banshee-player-vis.c
++++ b/libbanshee/banshee-player-vis.c
+@@ -27,17 +27,17 @@
+ //
+ 
+ #include <math.h>
++#include <gst/audio/audio.h>
+ 
+ #include "banshee-player-vis.h"
+ 
+ #define SLICE_SIZE 735
+ 
+ static GstStaticCaps vis_data_sink_caps = GST_STATIC_CAPS (
+-    "audio/x-raw-float, "
++    "audio/x-raw, "
++    "format = (string) " GST_AUDIO_NE(F32) ", "
+     "rate = (int) 44100, "
+-    "channels = (int) 2, "
+-    "endianness = (int) BYTE_ORDER, "
+-    "width = (int) 32"
++    "channels = (int) 2"
+ );
+ 
+ // ---------------------------------------------------------------------------
+@@ -48,6 +48,7 @@ static void
+ bp_vis_pcm_handoff (GstElement *sink, GstBuffer *buffer, GstPad *pad, gpointer userdata)
+ {
+     BansheePlayer *player = (BansheePlayer*)userdata;
++    GstCaps *caps;
+     GstStructure *structure;
+     gint channels, wanted_size;
+     gfloat *data;
+@@ -69,14 +70,16 @@ bp_vis_pcm_handoff (GstElement *sink, GstBuffer *buffer, GstPad *pad, gpointer u
+         player->vis_thawing = FALSE;
+     }
+     
+-    structure = gst_caps_get_structure (gst_buffer_get_caps (buffer), 0);
++    caps = gst_pad_get_current_caps (pad);
++    structure = gst_caps_get_structure (caps, 0);
+     gst_structure_get_int (structure, "channels", &channels);
++    gst_caps_unref (caps);
+     
+     wanted_size = channels * SLICE_SIZE * sizeof (gfloat);
+ 
+-    gst_adapter_push (player->vis_buffer, gst_buffer_copy (buffer));
++    gst_adapter_push (player->vis_buffer, gst_buffer_ref (buffer));
+     
+-    while ((data = (gfloat *)gst_adapter_peek (player->vis_buffer, wanted_size)) != NULL) {
++    while ((data = (gfloat *)gst_adapter_map (player->vis_buffer, wanted_size)) != NULL) {
+         gfloat *deinterlaced = g_malloc (wanted_size);
+         gfloat *specbuf = g_new (gfloat, SLICE_SIZE * 2);
+ 
+@@ -124,6 +127,7 @@ bp_vis_pcm_handoff (GstElement *sink, GstBuffer *buffer, GstPad *pad, gpointer u
+         g_free (deinterlaced);
+         g_free (specbuf);
+ 
++        gst_adapter_unmap (player->vis_buffer);
+         gst_adapter_flush (player->vis_buffer, wanted_size);
+     }
+ }
+@@ -132,65 +136,28 @@ bp_vis_pcm_handoff (GstElement *sink, GstBuffer *buffer, GstPad *pad, gpointer u
+ // Internal Functions
+ // ---------------------------------------------------------------------------
+ 
+-static void
+-_bp_vis_pipeline_block_callback (GstPad *pad, gboolean blocked, gpointer data)
++static GstPadProbeReturn
++_bp_vis_pipeline_event_probe (GstPad *pad, GstPadProbeInfo *info, gpointer data)
+ {
+     BansheePlayer *player = (BansheePlayer *) data;
++    GstEvent *event;
+ 
+-    if (!blocked) {
+-        // Set thawing mode (discards buffers that are too old from the queue).
+-        player->vis_thawing = TRUE;
+-    }
+-}
+-
+-static void
+-_bp_vis_pipeline_set_blocked (BansheePlayer *player, gboolean blocked)
+-{
+-    GstPad *queue_sink;
+-
+-    if (player->vis_resampler == NULL)
+-        return;
+-
+-    queue_sink = gst_element_get_static_pad (player->vis_resampler, "src");
+-
+-    gst_pad_set_blocked_async (queue_sink, blocked, _bp_vis_pipeline_block_callback, (gpointer) player);
+-
+-    gst_object_unref (GST_OBJECT (queue_sink));
+-}
+-
+-static gboolean
+-_bp_vis_pipeline_event_probe (GstPad *pad, GstEvent *event, gpointer data)
+-{
+-    BansheePlayer *player = (BansheePlayer *) data;
++    if ((info->type & GST_PAD_PROBE_TYPE_EVENT_DOWNSTREAM) == 0)
++        return GST_PAD_PROBE_PASS;
+ 
++    event = GST_EVENT (info->data);
+     switch (GST_EVENT_TYPE (event)) {
+         case GST_EVENT_FLUSH_START:
+         case GST_EVENT_FLUSH_STOP:
+         case GST_EVENT_SEEK:
+-        case GST_EVENT_NEWSEGMENT:
++        case GST_EVENT_SEGMENT:
+         case GST_EVENT_CUSTOM_DOWNSTREAM:
+             player->vis_thawing = TRUE;
+ 
+         default: break;
+     }
+ 
+-    if (player->vis_enabled)
+-        return TRUE;
+-
+-    switch (GST_EVENT_TYPE (event)) {
+-    case GST_EVENT_EOS:
+-    case GST_EVENT_CUSTOM_DOWNSTREAM_OOB:
+-        _bp_vis_pipeline_set_blocked (player, FALSE);
+-        break;
+-    case GST_EVENT_CUSTOM_DOWNSTREAM:
+-    case GST_EVENT_NEWSEGMENT:
+-        _bp_vis_pipeline_set_blocked (player, TRUE);
+-        break;
+-
+-    default: break;
+-    }
+-
+-    return TRUE;
++    return GST_PAD_PROBE_PASS;
+ }
+ 
+ void
+@@ -212,9 +179,8 @@ _bp_vis_pipeline_setup (BansheePlayer *player)
+     // Core elements, if something fails here, it's the end of the world
+     audiosinkqueue = gst_element_factory_make ("queue", "vis-queue");
+ 
+-    pad = gst_element_get_static_pad (audiosinkqueue, "sink");
+-    gst_pad_add_event_probe (pad, G_CALLBACK (_bp_vis_pipeline_event_probe), player);
+-    gst_object_unref (GST_OBJECT (pad));
++    player->vis_event_probe_pad = gst_element_get_static_pad (audiosinkqueue, "sink");
++    player->vis_event_probe_id = gst_pad_add_probe (player->vis_event_probe_pad, GST_PAD_PROBE_TYPE_EVENT_DOWNSTREAM, _bp_vis_pipeline_event_probe, player, NULL);
+ 
+     resampler = gst_element_factory_make ("audioresample", "vis-resample");
+     converter = gst_element_factory_make ("audioconvert", "vis-convert");
+@@ -255,7 +221,7 @@ _bp_vis_pipeline_setup (BansheePlayer *player)
+                       converter, fakesink, NULL);
+     
+     pad = gst_element_get_static_pad (audiosinkqueue, "sink");
+-    teepad = gst_element_get_request_pad (player->audiotee, "src%d");
++    teepad = gst_element_get_request_pad (player->audiotee, "src_%u");
+     gst_pad_link (teepad, pad);
+     gst_object_unref (GST_OBJECT (teepad));
+     gst_object_unref (GST_OBJECT (pad));
+@@ -270,14 +236,17 @@ _bp_vis_pipeline_setup (BansheePlayer *player)
+     player->vis_resampler = resampler;
+     player->vis_thawing = FALSE;
+     player->vis_enabled = FALSE;
+-
+-    // Disable the pipeline till we hear otherwise from managed land.
+-    _bp_vis_pipeline_set_blocked (player, TRUE);
+ }
+ 
+ void
+ _bp_vis_pipeline_destroy (BansheePlayer *player)
+ {
++    if (player->vis_event_probe_pad) {
++        gst_pad_remove_probe (player->vis_event_probe_pad, player->vis_event_probe_id);
++        gst_object_unref (GST_OBJECT (player->vis_event_probe_pad));
++        player->vis_event_probe_pad = NULL;
++    }
++
+     if (player->vis_buffer != NULL) {
+         gst_object_unref (player->vis_buffer);
+         player->vis_buffer = NULL;
+@@ -315,6 +284,5 @@ bp_set_vis_data_callback (BansheePlayer *player, BansheePlayerVisDataCallback cb
+ 
+     player->vis_data_cb = cb;
+ 
+-    _bp_vis_pipeline_set_blocked (player, cb == NULL);
+     player->vis_enabled = cb != NULL;
+ }
+diff --git a/libbanshee/banshee-player.c b/libbanshee/banshee-player.c
+index c655a72..b8f98b8 100644
+--- a/libbanshee/banshee-player.c
++++ b/libbanshee/banshee-player.c
+@@ -250,12 +250,11 @@ bp_set_position (BansheePlayer *player, guint64 time_ms)
+ P_INVOKE guint64
+ bp_get_position (BansheePlayer *player)
+ {
+-    static GstFormat format = GST_FORMAT_TIME;
+     gint64 position;
+ 
+     g_return_val_if_fail (IS_BANSHEE_PLAYER (player), 0);
+ 
+-    if (player->playbin != NULL && gst_element_query_position (player->playbin, &format, &position)) {
++    if (player->playbin != NULL && gst_element_query_position (player->playbin, GST_FORMAT_TIME, &position)) {
+         return position / GST_MSECOND;
+     }
+     
+@@ -265,12 +264,11 @@ bp_get_position (BansheePlayer *player)
+ P_INVOKE guint64
+ bp_get_duration (BansheePlayer *player)
+ {
+-    static GstFormat format = GST_FORMAT_TIME;
+     gint64 duration;
+ 
+     g_return_val_if_fail (IS_BANSHEE_PLAYER (player), 0);
+ 
+-    if (player->playbin != NULL && gst_element_query_duration (player->playbin, &format, &duration)) {
++    if (player->playbin != NULL && gst_element_query_duration (player->playbin, GST_FORMAT_TIME, &duration)) {
+         return duration / GST_MSECOND;
+     }
+     
+@@ -446,7 +444,6 @@ bp_set_subtitle_uri (BansheePlayer *player, const gchar *uri)
+     g_return_if_fail (IS_BANSHEE_PLAYER (player));
+     gint64 pos = -1;
+     GstState state;
+-    GstFormat format = GST_FORMAT_BYTES;
+     gboolean paused = FALSE;
+ 
+     // Gstreamer playbin do not support to set suburi during playback
+@@ -454,7 +451,7 @@ bp_set_subtitle_uri (BansheePlayer *player, const gchar *uri)
+     gst_element_get_state (player->playbin, &state, NULL, 0);
+     paused = (state == GST_STATE_PAUSED);
+     if (state >= GST_STATE_PAUSED) {
+-        gst_element_query_position (player->playbin, &format, &pos);
++        gst_element_query_position (player->playbin, GST_FORMAT_BYTES, &pos);
+         gst_element_set_state (player->playbin, GST_STATE_READY);
+         // Force to wait asynch operation
+         gst_element_get_state (player->playbin, &state, NULL, -1);
+@@ -467,7 +464,7 @@ bp_set_subtitle_uri (BansheePlayer *player, const gchar *uri)
+     gst_element_get_state (player->playbin, &state, NULL, -1);
+ 
+     if (pos != -1) {
+-        gst_element_seek_simple (player->playbin, format, GST_SEEK_FLAG_FLUSH | GST_SEEK_FLAG_KEY_UNIT, pos);
++        gst_element_seek_simple (player->playbin, GST_FORMAT_BYTES, GST_SEEK_FLAG_FLUSH | GST_SEEK_FLAG_KEY_UNIT, pos);
+     }
+ }
+ 
+diff --git a/libbanshee/banshee-ripper.c b/libbanshee/banshee-ripper.c
+index e0e8c85..b3f8fed 100644
+--- a/libbanshee/banshee-ripper.c
++++ b/libbanshee/banshee-ripper.c
+@@ -85,7 +85,6 @@ br_raise_error (BansheeRipper *ripper, const gchar *error, const gchar *debug)
+ static gboolean
+ br_iterate_timeout (BansheeRipper *ripper)
+ {
+-    GstFormat format = GST_FORMAT_TIME;
+     GstState state;
+     gint64 position;
+     
+@@ -96,7 +95,7 @@ br_iterate_timeout (BansheeRipper *ripper)
+         return TRUE;
+     }
+ 
+-    if (!gst_element_query_position (ripper->cddasrc, &format, &position)) {
++    if (!gst_element_query_position (ripper->cddasrc, GST_FORMAT_TIME, &position)) {
+         return TRUE;
+     }
+     
+@@ -142,8 +141,9 @@ br_encoder_probe_mime_type (GstBin *bin)
+         GstIterator *pad_iter = gst_element_iterate_src_pads (element);
+         
+         BANSHEE_GST_ITERATOR_ITERATE (pad_iter, GstPad *, pad, TRUE, {
+-            GstStructure *str = GST_PAD_CAPS (pad) != NULL
+-                ? gst_caps_get_structure (GST_PAD_CAPS (pad), 0)
++            GstCaps *caps = gst_pad_get_current_caps (pad);
++            GstStructure *str = caps != NULL
++                ? gst_caps_get_structure (caps, 0)
+                 : NULL;
+ 
+             if (str != NULL) {
+@@ -171,11 +171,8 @@ br_encoder_probe_mime_type (GstBin *bin)
+                     preferred_mimetype = mimetype;    
+                 }
+             }
+-            
+-            gst_object_unref (pad);
++            gst_caps_unref (caps);
+         });
+-        
+-        gst_object_unref (element);
+     });
+ 
+     return preferred_mimetype;
+@@ -271,7 +268,7 @@ br_pipeline_construct (BansheeRipper *ripper)
+         return FALSE;
+     }
+ 
+-    ripper->cddasrc = gst_element_make_from_uri (GST_URI_SRC, "cdda://1", "cddasrc");
++    ripper->cddasrc = gst_element_make_from_uri (GST_URI_SRC, "cdda://1", "cddasrc", NULL);
+     if (ripper->cddasrc == NULL) {
+         br_raise_error (ripper, _("Could not initialize element from cdda URI"), NULL);
+         return FALSE;
+@@ -405,7 +402,6 @@ br_rip_track (BansheeRipper *ripper, gint track_number, gchar *output_path,
+             
+             // We'll warn the user in the UI if we can't tag the encoded audio files
+             *tagging_supported = TRUE;
+-            gst_object_unref (element);
+         }
+     });
+     
+diff --git a/libbanshee/banshee-tagger.c b/libbanshee/banshee-tagger.c
+index ca15e8f..762dfa9 100644
+--- a/libbanshee/banshee-tagger.c
++++ b/libbanshee/banshee-tagger.c
+@@ -69,7 +69,7 @@ bt_tag_list_foreach (const GstTagList *list, const gchar *tag, gpointer userdata
+ GstTagList *
+ bt_tag_list_new ()
+ {
+-    return gst_tag_list_new ();
++    return gst_tag_list_new_empty ();
+ }
+ 
+ void
+diff --git a/libbanshee/banshee-transcoder.c b/libbanshee/banshee-transcoder.c
+index 10fc35c..0e241f0 100644
+--- a/libbanshee/banshee-transcoder.c
++++ b/libbanshee/banshee-transcoder.c
+@@ -64,14 +64,13 @@ gst_transcoder_raise_error(GstTranscoder *transcoder, const gchar *error, const
+ static gboolean
+ gst_transcoder_iterate_timeout(GstTranscoder *transcoder)
+ {
+-    GstFormat format = GST_FORMAT_TIME;
+     gint64 position;
+     gint64 duration;
+ 
+     g_return_val_if_fail(transcoder != NULL, FALSE);
+ 
+-    if(!gst_element_query_duration(transcoder->pipeline, &format, &duration) ||
+-        !gst_element_query_position(transcoder->sink_bin, &format, &position)) {
++    if(!gst_element_query_duration(transcoder->pipeline, GST_FORMAT_TIME, &duration) ||
++        !gst_element_query_position(transcoder->sink_bin, GST_FORMAT_TIME, &position)) {
+         return TRUE;
+     }
+ 
+@@ -196,14 +195,14 @@ gst_transcoder_new_decoded_pad(GstElement *decodebin, GstPad *pad,
+ 
+     g_return_if_fail(transcoder != NULL);
+ 
+-    audiopad = gst_element_get_pad(transcoder->sink_bin, "sink");
++    audiopad = gst_element_get_static_pad(transcoder->sink_bin, "sink");
+     
+     if(GST_PAD_IS_LINKED(audiopad)) {
+         g_object_unref(audiopad);
+         return;
+     }
+ 
+-    caps = gst_pad_get_caps(pad);
++    caps = gst_pad_query_caps(pad, NULL);
+     str = gst_caps_get_structure(caps, 0);
+     
+     if(!g_strrstr(gst_structure_get_name(str), "audio")) {
+@@ -235,19 +234,19 @@ gst_transcoder_create_pipeline(GstTranscoder *transcoder,
+     
+     transcoder->pipeline = gst_pipeline_new("pipeline");
+ 
+-    source_elem = gst_element_make_from_uri(GST_URI_SRC, input_uri, "source");
++    source_elem = gst_element_make_from_uri(GST_URI_SRC, input_uri, "source", NULL);
+     if(source_elem == NULL) {
+         gst_transcoder_raise_error(transcoder, _("Could not create source element"), NULL);
+         return FALSE;
+     }
+ 
+-    decoder_elem = gst_element_factory_make("decodebin2", "decodebin2");
++    decoder_elem = gst_element_factory_make("decodebin", "decodebin");
+     if(decoder_elem == NULL) {
+-        gst_transcoder_raise_error(transcoder, _("Could not create decodebin2 plugin"), NULL);
++        gst_transcoder_raise_error(transcoder, _("Could not create decodebin plugin"), NULL);
+         return FALSE;
+     }
+     
+-    sink_elem = gst_element_make_from_uri(GST_URI_SINK, output_uri, "sink");
++    sink_elem = gst_element_make_from_uri(GST_URI_SINK, output_uri, "sink", NULL);
+     if(sink_elem == NULL) {
+         gst_transcoder_raise_error(transcoder, _("Could not create sink element"), NULL);
+         return FALSE;
+@@ -277,7 +276,7 @@ gst_transcoder_create_pipeline(GstTranscoder *transcoder,
+          return FALSE;
+     }
+ 
+-    encoder_pad = gst_element_get_pad(conv_elem, "sink");
++    encoder_pad = gst_element_get_static_pad(conv_elem, "sink");
+     if(encoder_pad == NULL) {
+         gst_transcoder_raise_error(transcoder, _("Could not get sink pad from encoder"), NULL);
+         return FALSE;

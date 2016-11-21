@@ -1,0 +1,66 @@
+From: Chow Loong Jin <hyperair@debian.org>
+Date: Mon, 25 Nov 2013 01:18:19 +0800
+Subject: Use dbus# 2
+
+---
+ build/m4/banshee/dbus.m4                                             | 4 ++--
+ build/pkg-config/banshee-collection-indexer.pc.in                    | 2 +-
+ build/pkg-config/banshee-core.pc.in                                  | 2 +-
+ src/Core/Banshee.Services/Banshee.ServiceStack/DBusServiceManager.cs | 5 +----
+ 4 files changed, 5 insertions(+), 8 deletions(-)
+
+diff --git a/build/m4/banshee/dbus.m4 b/build/m4/banshee/dbus.m4
+index 3b8579e..f76ff8c 100644
+--- a/build/m4/banshee/dbus.m4
++++ b/build/m4/banshee/dbus.m4
+@@ -1,9 +1,9 @@
+ AC_DEFUN([BANSHEE_CHECK_DBUS_SHARP],
+ [
+-	PKG_CHECK_MODULES(DBUS_SHARP_GLIB, dbus-sharp-glib-1.0 >= 0.5)
++	PKG_CHECK_MODULES(DBUS_SHARP_GLIB, dbus-sharp-glib-2.0 >= 0.5)
+ 	AC_SUBST(DBUS_SHARP_GLIB_LIBS)
+ 
+-	PKG_CHECK_MODULES(DBUS_SHARP, dbus-sharp-1.0 >= 0.7)
++	PKG_CHECK_MODULES(DBUS_SHARP, dbus-sharp-2.0 >= 0.7)
+ 	AC_SUBST(DBUS_SHARP_LIBS)
+ ])
+ 
+diff --git a/build/pkg-config/banshee-collection-indexer.pc.in b/build/pkg-config/banshee-collection-indexer.pc.in
+index 40636bb..a12b03c 100644
+--- a/build/pkg-config/banshee-collection-indexer.pc.in
++++ b/build/pkg-config/banshee-collection-indexer.pc.in
+@@ -7,6 +7,6 @@ Libraries=${bansheedir}/Banshee.CollectionIndexer.dll
+ Name: Banshee Collection Indexer Helper
+ Description: A library for applications to bundle to easily consume the Banshee Collection Indexer
+ Version: @VERSION@
+-Requires: dbus-sharp-1.0
++Requires: dbus-sharp-2.0
+ Libs: -r:${Libraries}
+ 
+diff --git a/build/pkg-config/banshee-core.pc.in b/build/pkg-config/banshee-core.pc.in
+index 9d4c3b9..c217dd8 100644
+--- a/build/pkg-config/banshee-core.pc.in
++++ b/build/pkg-config/banshee-core.pc.in
+@@ -6,5 +6,5 @@ bansheedir=${libdir}/@PACKAGE@
+ Name: Banshee Core
+ Description: Core APIs for the Banshee Media Framework
+ Version: @VERSION@
+-Requires: taglib-sharp dbus-sharp-1.0 dbus-sharp-glib-1.0 glib-sharp-2.0 mono-addins banshee-hyena banshee-hyena-data-sqlite banshee-musicbrainz
++Requires: taglib-sharp dbus-sharp-2.0 dbus-sharp-glib-2.0 glib-sharp-2.0 mono-addins banshee-hyena banshee-hyena-data-sqlite banshee-musicbrainz
+ Libs: -r:${bansheedir}/Banshee.Core.dll
+diff --git a/src/Core/Banshee.Services/Banshee.ServiceStack/DBusServiceManager.cs b/src/Core/Banshee.Services/Banshee.ServiceStack/DBusServiceManager.cs
+index 698cf02..96e3996 100644
+--- a/src/Core/Banshee.Services/Banshee.ServiceStack/DBusServiceManager.cs
++++ b/src/Core/Banshee.Services/Banshee.ServiceStack/DBusServiceManager.cs
+@@ -135,10 +135,7 @@ namespace Banshee.ServiceStack
+                 string bus_name = DBusConnection.MakeBusName (serviceName);
+ 
+                 Log.DebugFormat ("Registering remote object {0} ({1}) on {2}", path, o.GetType (), bus_name);
+-
+-                #pragma warning disable 0618
+-                Bus.Session.Register (bus_name, path, o);
+-                #pragma warning restore 0618
++                Bus.Session.Register (path, o);
+             }
+ 
+             return path;
