@@ -1,6 +1,6 @@
 pkgbase = clustal-omega
 	pkgdesc = Protein sequence alignment program
-	pkgver = 1.2.3
+	pkgver = 1.2.1
 	pkgrel = 1
 	url = http://www.clustal.org/omega/
 	arch = i686
@@ -10,9 +10,8 @@ pkgbase = clustal-omega
 	depends = argtable
 	options = libtool
 	options = staticlibs
-	source = http://www.clustal.org/omega/clustal-omega-1.2.3.tar.gz
-	md5sums = f92f6ddbc32afc8a8b3026de7f4e15d4
-	sha1sums = 7944a8a57fc00dcd56ad16bf9cd2f0914657d8a3
+	source = http://www.clustal.org/omega/clustal-omega-1.2.1.tar.gz
+	sha1sums = 50f67eb3244c25c9380e7afef0e157161535121b
 
 pkgname = clustal-omega
 
