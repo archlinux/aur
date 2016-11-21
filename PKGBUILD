@@ -1,16 +1,41 @@
-# Maintainer: Thomas Weißschuh <thomas t-8ch de>
+# $Id: PKGBUILD 171328 2016-04-18 11:00:47Z kkeen $
+# Maintainer: Kyle Keen <keenerd@gmail.com>
 
-pkgname=python-path
-pkgver=5.1
+pkgbase=python-path
+pkgname=(python-path python2-path)
+pkgver=9.0
 pkgrel=1
-pkgdesc='A module wrapper for os.path'
-url='https://github.com/jaraco/path.py'
+pkgdesc="Aka path.py, implements path objects as first-class entities"
 arch=('any')
+url="https://pypi.python.org/pypi/path.py"
 license=('MIT')
-source=("https://pypi.python.org/packages/source/p/path.py/path.py-${pkgver}.zip")
+depends=('python' 'python-setuptools')
+makedepends=('python-setuptools' 'python2-setuptools')
+#source=("https://pypi.python.org/packages/source/p/path.py/path.py-$pkgver.tar.gz")
+source=("https://files.pythonhosted.org/packages/source/p/path.py/path.py-$pkgver.tar.gz")
+md5sums=('3a8a95b2ff2955f928e696f2ff23255e')
 
-package() {
-  cd "$srcdir/path.py-${pkgver}"
-  python3 setup.py install --root="$pkgdir" --optimize=1
+# formerly a dependency of python-pickleshare
+# now used by nothing so back to the AUR
+
+prepare() {
+  cd "$srcdir"
+  cp -r path.py-$pkgver python2-path.py-$pkgver
 }
-sha256sums=('976b1392527c77383eb827de7fd44dacaf1297a63aa0df526f47af302f479d54')
+
+package_python-path() {
+  depends=('python' 'python-setuptools')
+  cd "$srcdir/path.py-$pkgver"
+  python3 setup.py install --prefix=/usr --root="$pkgdir" --optimize=0
+  install -d "$pkgdir/usr/share/licenses/$pkgname/"
+  head -n 21 path.py > "$pkgdir/usr/share/licenses/$pkgname/license.txt"
+}
+
+package_python2-path() {
+  depends=('python2' 'python2-setuptools')
+  cd "$srcdir/python2-path.py-$pkgver"
+  python2 setup.py install --prefix=/usr --root="$pkgdir" --optimize=0
+  install -d "$pkgdir/usr/share/licenses/$pkgname/"
+  head -n 21 path.py > "$pkgdir/usr/share/licenses/$pkgname/license.txt"
+}
+
