@@ -2,7 +2,7 @@
 # Contributor: Francois Boulogne <fboulogne@april.org>
 
 pkgname=paperwork
-pkgver=1.0.2
+pkgver=1.0.4
 pkgrel=1
 pkgdesc='A tool to make papers searchable - scan & forget'
 arch=('any')
@@ -19,8 +19,8 @@ makedepends=('python' 'python-setuptools' 'git')
 optdeps=('cuneiform: alternativer OCR')
 source=("paperwork-gui.tgz::https://github.com/jflesch/paperwork/archive/${pkgver}.tar.gz"
         "paperwork-backend.tgz::https://github.com/jflesch/paperwork-backend/archive/${pkgver}.tar.gz")
-md5sums=('f150753ed7f97c02c32441a266956a76'
-         '188b9befb1dcc85d91146eadc13fc4bd')
+md5sums=('26dc3d69583b1bec845860952e8c95fc'
+         '43f167e29691bb4654b1540e94781c6e')
 install=paperwork.install
 
 build() {
