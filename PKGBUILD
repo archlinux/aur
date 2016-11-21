@@ -5,7 +5,7 @@
 # Contributor: mefistofeles
 
 pkgname=mathics
-pkgver=0.9
+pkgver=1.0
 pkgrel=1
 arch=('any')
 pkgdesc='General-purpose online computer algebra system featuring Mathematica-compatible syntax and functions'
@@ -14,8 +14,8 @@ license=('GPL3')
 depends=('python2-dateutil' 'python2-ply>=3.4' 'python2-six' 'python2-sympy>=0.7.3' 'python2-django>=1.6' 'python2-colorama' 'python2-argparse' 'python2-interruptingcow')
 makedepends=('python2-setuptools')
 optdepends=('cython2: cython optimisations')
-source=("https://github.com/mathics/Mathics/releases/download/v${pkgver}/mathics-${pkgver}.tar.gz")
-md5sums=('101c4382611fad9118b52b90b3e687a5')
+source=("https://github.com/mathics/Mathics/releases/download/v${pkgver}/mathics-${pkgver}.tgz")
+sha256sums=('865f146738e220d4f3dfaea11bcef9330957963644a33f67a58255bc29741282')
 
 prepare() {
   cd "$pkgname-$pkgver"
