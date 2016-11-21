@@ -1,12 +1,12 @@
---- sapi/fpm/php-fpm.conf.in.orig	2014-05-05 09:58:32.055383183 +0200
-+++ sapi/fpm/php-fpm.conf.in	2014-05-05 10:00:54.398714767 +0200
+--- sapi/fpm/php-fpm.conf.in	2015-09-01 22:09:37.000000000 +0200
++++ sapi/fpm/php-fpm.conf.in	2016-11-21 16:01:35.849314621 +0100
 @@ -12,7 +12,7 @@
  ; Relative path can also be used. They will be prefixed by:
  ;  - the global prefix if it's been set (-p argument)
  ;  - @prefix@ otherwise
 -;include=etc/fpm.d/*.conf
 +include=/etc/php54/fpm.d/*.conf
-
+ 
  ;;;;;;;;;;;;;;;;;;
  ; Global Options ;
 @@ -22,7 +22,7 @@
@@ -15,7 +15,7 @@
  ; Default Value: none
 -;pid = run/php-fpm.pid
 +pid = /run/php54-fpm/php-fpm.pid
-
+ 
  ; Error log file
  ; If it's set to "syslog", log is sent to syslogd instead of being written
 @@ -42,7 +42,7 @@
@@ -24,7 +24,7 @@
  ; Default Value: php-fpm
 -;syslog.ident = php-fpm
 +syslog.ident = php54-fpm
-
+ 
  ; Log level
  ; Possible Values: alert, error, warning, notice, debug
 @@ -156,7 +156,8 @@
@@ -34,11 +34,11 @@
 -listen = 127.0.0.1:9000
 +;listen = 127.0.0.1:9000
 +listen = /run/php54-fpm/php-fpm.sock
-
+ 
  ; Set listen(2) backlog.
  ; Default Value: 128 (-1 on FreeBSD and OpenBSD)
 @@ -167,9 +168,9 @@
- ; BSD-derived systems allow connections regardless of permissions.
+ ; BSD-derived systems allow connections regardless of permissions. 
  ; Default Values: user and group are set as the running user
  ;                 mode is set to 0660
 -;listen.owner = @php_fpm_user@
@@ -47,7 +47,7 @@
 +listen.owner = @php_fpm_user@
 +listen.group = @php_fpm_group@
 +listen.mode = 0660
-
+  
  ; List of ipv4 addresses of FastCGI clients which are allowed to connect.
  ; Equivalent to the FCGI_WEB_SERVER_ADDRS environment variable in the original
 @@ -177,7 +178,7 @@
@@ -56,15 +56,17 @@
  ; Default Value: any
 -;listen.allowed_clients = 127.0.0.1
 +listen.allowed_clients = 127.0.0.1
-
+ 
  ; Specify the nice(2) priority to apply to the pool processes (only if set)
  ; The value can vary from -19 (highest priority) to 20 (lower priority)
-@@ -466,7 +467,7 @@
+@@ -466,8 +467,8 @@
  ; Chdir to this directory at the start.
  ; Note: relative path can be used.
  ; Default Value: current directory or / when chroot
 -;chdir = /var/www
+- 
 +;chdir = /srv/http
-
++
  ; Redirect worker stdout and stderr into main error log. If not set, stdout and
  ; stderr will be redirected to /dev/null according to FastCGI specs.
+ ; Note: on highloaded environement, this can cause some delay in the page
