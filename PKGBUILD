@@ -1,5 +1,5 @@
 pkgname=fortune-mod-darkwingduck
-pkgver=1512200741
+pkgver=1611021444
 pkgrel=1
 _ver=5
 pkgdesc="Fortune quotes from Darkwing Duck"
