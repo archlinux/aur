@@ -1,35 +1,26 @@
 # Maintainer: Daichi Shinozaki <dsdseg@gmail.com>
 # Contributor: 
-#_pkgver_minor=-rc3
-_pkgver_minor=
 _python2_ver_major=$(pacman -Qi python2|gawk '$1~/Version/{split($3,v,".");print v[1] "." v[2]}')
 pkgname=mesos
-pkgver=1.0.1
-pkgrel=2
+pkgver=1.1.0
+pkgrel=1
 pkgdesc="A cluster manager that simplifies the complexity of running applications on a shared pool of servers"
 arch=('i686' 'x86_64')
 url=http://mesos.apache.org/
 license=('Apache')
 groups=('science')
-install=$pkgname.install
-depends=('python2' 'curl' 'leveldb' 'java-environment' 'libunwind' 'google-glog'
-         'libnl>=3.2.26' 'apr' 'subversion' 'protobuf' 'python2-protobuf' 'python2-boto' 
-	 'python2-setuptools')
-makedepends=('java-environment' 'maven' 'http-parser' 'python2-http-parser' 'google-glog'
-             'gperftools' 'apr' 'subversion' 'protobuf'
-'python2-protobuf' 'python2-boto')
-conflicts=('python2-shutilwhich')
+depends=('python2' 'zlib' 'curl' 'java-environment' 'apr' 'subversion' 'cyrus-sasl' 'libnl>=3.2.28')
+makedepends=('maven' 'python2-setuptools')
+#conflicts=('python2-shutilwhich')
 source=("http://www.apache.org/dist/$pkgname/$pkgver/$pkgname-${pkgver}.tar.gz"
   "$pkgname-master.service"
-  "$pkgname-slave.service"
-  "$pkgname.install")
+  "$pkgname-slave.service")
 
 # official signature file:
-#  "http://www.apache.org/dist/$pkgname/$pkgver/$pkgname-${pkgver}.tar.gz.asc"
-md5sums=('1aaca00a0ffb20f4b31c2dcc2447c2c5'
+# "http://www.apache.org/dist/$pkgname/$pkgver/$pkgname-${pkgver}.tar.gz.asc"
+md5sums=('ff89748a6668425d462dcaa12608cf8a'
          'f313fac94525bf770bafa2392c8147c6'
-         '69df716316170056ff2a54c5299d8cb4'
-         '1447c9572f4bb8fbc22d016e4483950a')
+         '69df716316170056ff2a54c5299d8cb4')
 
 prepare() {
   cd "$srcdir/$pkgname-$pkgver${_pkgver_minor}"
@@ -48,20 +39,15 @@ prepare() {
 
 build() {
   cd "$srcdir/$pkgname-$pkgver${_pkgver_minor}"/build
-  PYTHON_VERSION=${_python2_ver_major} \
-  LIBS='-lprotobuf -lglog' \
-  CFLAGS=-Wno-error CXXFLAGS=-Wno-error ../configure \
-   --enable-optimize \
-   --prefix=/usr \
-   --sysconfdir=/etc \
-   --libexecdir=/usr/lib \
-   --exec-prefix=/usr \
-   --sbindir=/usr/bin \
-   --with-glog=/usr \
-   --with-leveldb=/usr \
-   --with-gperftools=/usr \
-   --with-network-isolator
-
+  PYTHON=python${_python2_ver_major} \
+  ../configure \
+  --enable-optimize \
+  --prefix=/usr \
+  --sysconfdir=/etc \
+  --libexecdir=/usr/lib \
+  --exec-prefix=/usr \
+  --sbindir=/usr/bin \
+  --with-network-isolator
  make
 }
 
@@ -75,15 +61,24 @@ check() {
 package() {
   mkdir -p $pkgdir/usr/lib/$pkgname
   cd "$srcdir/$pkgname-$pkgver${_pkgver_minor}"/build
-	make DESTDIR="$pkgdir/" install
+  make DESTDIR="$pkgdir/" install
   mkdir -p -m755 $pkgdir/usr/share/java/$pkgname 
   mkdir -p -m755 $pkgdir/var/{lib,log}/$pkgname
   install -m644 ./src/java/mesos.pom $pkgdir/usr/share/java/$pkgname/
   install -m644 ./src/java/target/*.jar $pkgdir/usr/share/java/$pkgname/
   mkdir -p -m755 $pkgdir/usr/lib/systemd/system
   install -m644 $srcdir/$pkgname-{master,slave}.service $pkgdir/usr/lib/systemd/system
-  
-  # python
-  cd ./src/python
+
+# python
+  pushd src/python
   python2 setup.py install --root="$pkgdir" --optimize=1
+  popd
+  pushd ${pkgdir}/usr/lib/python${_python2_ver_major}/site-packages
+  ls | grep -v mesos | xargs rm -rf
+  popd
+  pushd ${pkgdir}/usr/bin
+  rm -rf easy_install*
+  popd
+  chmod 755 ${pkgdir}/usr/lib/python${_python2_ver_major}
+  chmod 755 ${pkgdir}/usr/lib/python${_python2_ver_major}/site-packages
 }
