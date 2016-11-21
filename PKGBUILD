@@ -1,5 +1,5 @@
 pkgname=fortune-mod-eureka
-pkgver=1507252356
+pkgver=1605260125
 pkgrel=1
 _ver=5
 pkgdesc="Fortune quotes from Eureka"
