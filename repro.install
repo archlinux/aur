@@ -1,0 +1,10 @@
+post_install() {
+  if ! getent passwd repro >/dev/null; then
+    useradd -c 'repro user' -d '/var/lib/repro' -s /bin/nologin repro --system
+  fi
+  if [ ! -d '/var/lib/repro' ]; then
+    mkdir -p '/var/lib/repro'
+    touch '/var/lib/repro/users.txt'
+    chown -R repro:repro '/var/lib/repro'
+  fi
+}
