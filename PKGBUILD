@@ -10,7 +10,7 @@ arch=("any")
 url="http://multibootusb.org"
 license=("GPL")
 depends=("python2-pyqt4" "mtools" "util-linux" "parted")
-sha512sums=("0499902bd9d23728f578de73bcdaee8b3d1cd94b90f792a1a7f4968af9acbaeaf121febda8d95e3966f532bbffb965998585eff31f44a284fe1197daf57a4685")
+sha512sums=("eec328c76335cef87af6f470c199b8ecdd90d71536643d309d548c11a4c14a70a6240317a1ea1b95b75f0338d3c0fb28e820feb88dcc92dd14f208ca1f80e945")
 source=("http://downloads.sourceforge.net/project/$pkgname/${pkgver}/Source/$pkgname-${pkgver}.tar.gz")
 
 package () {
