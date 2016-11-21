@@ -1,7 +1,7 @@
 # Maintainer: Thomas "Ventto" Venriès <thomas.venries@gmail.com>
 
 pkgname=pearlfan
-pkgver=1.0
+pkgver=1.1
 pkgrel=1
 pkgdesc='Tool to control Pearl USB LED fan.'
 arch=('x86_64')
@@ -11,11 +11,11 @@ provides=("${pkgname}")
 conflicts=("${pkgname}")
 makedepends=('help2man' 'netpbm')
 source=("https://github.com/Ventto/${pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('c3861722d533db3a99859fb4a2a620a995be98479ea71d41f3565b6c4a85d82a')
+sha256sums=('64192de3348df713d999700f56e5c15b3c30f49773f22ea40f4cf5b056df923b')
 
 build() {
   cd ${srcdir}/${pkgname}-${pkgver}
-  make -f Makefile.libusb
+  make
   help2man -N -n "${pkgdesc}" -h -h -v -v ./${pkgname} | gzip - > ${pkgname}.1.gz
 }
 
