@@ -11,14 +11,16 @@ license=("GPL")
 depends=('fontconfig' 'qt4' 'python2-pyside' 'python2-shiboken' 'boost-libs' 'pixman' 'glfw-x11' 'cairo' 'openfx-io' 'openfx-misc')
 makedepends=('git' 'expat' 'boost')
 optdepends=('openfx-arena: Extra OpenFX plugins for Natron includes text node')
-source=("$pkgname::git://github.com/MrKepzie/Natron.git#tag=$pkgver"
+source=("$pkgname::git+https://github.com/MrKepzie/Natron.git#tag=$pkgver"
         "git+https://github.com/devernay/openfx.git"
         "git+https://github.com/MrKepzie/google-test.git"
         "git+https://github.com/MrKepzie/google-mock.git"
         "git+https://github.com/MrKepzie/SequenceParsing.git"
+        "git+https://github.com/MrKepzie/tinydir"
         "https://github.com/MrKepzie/OpenColorIO-Configs/archive/Natron-v${pkgver%.*}.tar.gz"
         "config.pri")
 md5sums=('SKIP'
+         'SKIP'
          'SKIP'
          'SKIP'
          'SKIP'
@@ -37,7 +39,12 @@ prepare() {
   git config submodule.Tests/google-test.url $srcdir/google-test
   git config submodule.libs/SequenceParsing.url $srcdir/SequenceParsing
   git submodule update
-  
+
+  cd libs/SequenceParsing
+  git config submodule.tinydir.url $srcdir/tinydir
+  git submodule update
+  cd ../..
+
   mv "${srcdir}/config.pri" "${srcdir}/${pkgname%%-*}/config.pri"
   # Fix for gcc6 build issues
   sed -i '1s/^/QMAKE_CXXFLAGS += -std=c++98\n/' Gui/Gui.pro
