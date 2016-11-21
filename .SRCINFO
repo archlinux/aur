@@ -1,0 +1,17 @@
+pkgbase = salientia-git
+	pkgdesc = Recursive dependency-traversing batch-engraver for GNU Lilypond
+	pkgver = _
+	pkgrel = 1
+	url = https://github.com/Beacon515L/salientia
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	depends = lilypond
+	provides = salientia
+	conflicts = salientia
+	source = git+https://github.com/Beacon515L/salientia.git
+	md5sums = SKIP
+
+pkgname = salientia-git
+
