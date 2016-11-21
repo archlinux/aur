@@ -1,6 +1,6 @@
---- php.ini-production	2012-03-29 06:17:59.000000000 +0200
-+++ php.ini-production	2012-03-30 10:46:21.181340861 +0200
-@@ -305,7 +305,7 @@
+--- php.ini-production.orig	2014-05-05 09:53:16.438718687 +0200
++++ php.ini-production	2014-05-05 09:54:37.502051360 +0200
+@@ -296,7 +296,7 @@
  ; or per-virtualhost web server configuration file. This directive is
  ; *NOT* affected by whether Safe Mode is turned On or Off.
  ; http://php.net/open-basedir
@@ -9,25 +9,61 @@
  
  ; This directive allows you to disable certain functions for security reasons.
  ; It receives a comma-delimited list of function names. This directive is
-@@ -702,7 +702,7 @@
+@@ -363,7 +363,7 @@
+ ; threat in any way, but it makes it possible to determine whether you use PHP
+ ; on your server or not.
+ ; http://php.net/expose-php
+-expose_php = On
++expose_php = Off
+ 
+ ;;;;;;;;;;;;;;;;;;;
+ ; Resource Limits ;
+@@ -389,7 +389,7 @@
+ ;max_input_nesting_level = 64
+ 
+ ; How many GET/POST/COOKIE input variables may be accepted
+-; max_input_vars = 1000
++max_input_vars = 10000
+ 
+ ; Maximum amount of memory a script may consume (128MB)
+ ; http://php.net/memory-limit
+@@ -574,7 +574,7 @@
+ ; Example:
+ ;error_log = php_errors.log
+ ; Log errors to syslog (Event Log on Windows).
+-;error_log = syslog
++error_log = syslog
+ 
+ ;windows.show_crt_warning
+ ; Default value: 0
+@@ -693,7 +693,7 @@
  ;;;;;;;;;;;;;;;;;;;;;;;;;
  
  ; UNIX: "/path1:/path2"
 -;include_path = ".:/php/includes"
-+include_path = ".:/usr/share/pear"
++include_path = ".:/opt/php54/share/pear"
  ;
  ; Windows: "\path1;\path2"
  ;include_path = ".;c:\php\includes"
-@@ -725,7 +725,7 @@
+@@ -716,7 +716,7 @@
  
  ; Directory in which the loadable extensions (modules) reside.
  ; http://php.net/extension-dir
 -; extension_dir = "./"
-+extension_dir = "/usr/lib/php/modules/"
++extension_dir = "/opt/php54/modules/"
  ; On windows:
  ; extension_dir = "ext"
  
-@@ -859,50 +859,47 @@
+@@ -788,7 +788,7 @@
+ 
+ ; Maximum allowed size for uploaded files.
+ ; http://php.net/upload-max-filesize
+-upload_max_filesize = 2M
++upload_max_filesize = 8M
+ 
+ ; Maximum number of files that can be uploaded via a single request
+ max_file_uploads = 20
+@@ -850,50 +850,47 @@
  ; If you only provide the name of the extension, PHP will look for it in its
  ; default extension directory.
  ;
@@ -76,7 +112,7 @@
 -;extension=php_xmlrpc.dll
 -;extension=php_xsl.dll
 +;extension=bcmath.so
-+;extension=bz2.so
++extension=bz2.so
 +;extension=calendar.so
 +extension=curl.so
 +;extension=dba.so

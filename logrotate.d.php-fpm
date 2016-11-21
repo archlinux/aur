@@ -1,8 +1,8 @@
-/var/log/php-fpm.log {
+/var/log/php54-fpm.log {
 	missingok
 	notifempty
 	delaycompress
 	postrotate
-		systemctl reload php-fpm.service || true
+		kill -USR1 `cat /run/php54-fpm/php-fpm.pid 2>/dev/null` 2>/dev/null || true
 	endscript
 }

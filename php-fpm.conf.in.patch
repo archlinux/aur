@@ -1,11 +1,11 @@
---- sapi/fpm/php-fpm.conf.in
-+++ sapi/fpm/php-fpm.conf.in
+--- sapi/fpm/php-fpm.conf.in.orig	2014-05-05 09:58:32.055383183 +0200
++++ sapi/fpm/php-fpm.conf.in	2014-05-05 10:00:54.398714767 +0200
 @@ -12,7 +12,7 @@
  ; Relative path can also be used. They will be prefixed by:
  ;  - the global prefix if it's been set (-p argument)
  ;  - @prefix@ otherwise
 -;include=etc/fpm.d/*.conf
-+;include=/etc/php/fpm.d/*.conf
++include=/etc/php54/fpm.d/*.conf
  
  ;;;;;;;;;;;;;;;;;;
  ; Global Options ;
@@ -14,17 +14,26 @@
  ; Note: the default prefix is @EXPANDED_LOCALSTATEDIR@
  ; Default Value: none
 -;pid = run/php-fpm.pid
-+pid = /run/php-fpm/php-fpm.pid
++pid = /run/php-fpm/php54-fpm.pid
  
  ; Error log file
  ; If it's set to "syslog", log is sent to syslogd instead of being written
+@@ -42,7 +42,7 @@
+ ; instances running on the same server, you can change the default value
+ ; which must suit common needs.
+ ; Default Value: php-fpm
+-;syslog.ident = php-fpm
++syslog.ident = php54-fpm
+ 
+ ; Log level
+ ; Possible Values: alert, error, warning, notice, debug
 @@ -156,7 +156,8 @@
  ;                            specific port;
  ;   '/path/to/unix/socket' - to listen on a unix socket.
  ; Note: This value is mandatory.
 -listen = 127.0.0.1:9000
 +;listen = 127.0.0.1:9000
-+listen = /run/php-fpm/php-fpm.sock
++listen = /run/php-fpm/php54-fpm.sock
  
  ; Set listen(2) backlog.
  ; Default Value: 128 (-1 on FreeBSD and OpenBSD)
@@ -41,6 +50,15 @@
   
  ; List of ipv4 addresses of FastCGI clients which are allowed to connect.
  ; Equivalent to the FCGI_WEB_SERVER_ADDRS environment variable in the original
+@@ -177,7 +178,7 @@
+ ; must be separated by a comma. If this value is left blank, connections will be
+ ; accepted from any ip address.
+ ; Default Value: any
+-;listen.allowed_clients = 127.0.0.1
++listen.allowed_clients = 127.0.0.1
+ 
+ ; Specify the nice(2) priority to apply to the pool processes (only if set)
+ ; The value can vary from -19 (highest priority) to 20 (lower priority)
 @@ -466,7 +467,7 @@
  ; Chdir to this directory at the start.
  ; Note: relative path can be used.
