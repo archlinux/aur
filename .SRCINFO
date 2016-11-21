@@ -1,0 +1,13 @@
+pkgbase = javafx-scenebuilder
+	pkgdesc = Gluon Scene Builder based on debian package, this version is regognized by Netbeans.
+	pkgver = 8.2.0
+	pkgrel = 1
+	url = http://gluonhq.com/labs/scene-builder/
+	arch = x86_64
+	arch = i686
+	license = BSD License
+	source = http://download.gluonhq.com/scenebuilder/8.2.0/install/linux/scenebuilder-8.2.0_x64_64.deb
+	sha1sums = b05d83cb64cffaa2ba07a4528f4b721752552182
+
+pkgname = javafx-scenebuilder
+
