@@ -1,5 +1,5 @@
-# Maintainer: Einhard Leichtfuß <archer@respiranto.de>
-# Contributor: Daniel Landau <daniel.landau@iki.fi>
+# Maintainer: Daniel Landau <daniel.landau@iki.fi>
+# Co-Maintainer: Einhard Leichtfuß <archer@respiranto.de>
 # Contributor: Xyne
 # Contributor: David Manouchehri <d@32t.ca>
 # Contributor: Alexander Fehr <pizzapunk gmail com>
