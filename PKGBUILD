@@ -1,5 +1,5 @@
 pkgname=fortune-mod-chuck
-pkgver=1602171302
+pkgver=1610270408
 pkgrel=1
 _ver=5
 pkgdesc="Fortune quotes from Chuck"
