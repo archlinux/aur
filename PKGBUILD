@@ -1,7 +1,7 @@
 # Maintainer: Jonne Haß <me@mrzyx.de>
 
 pkgname=dename
-pkgver=r31.a97771b
+pkgver=r166.efbb1c2
 pkgrel=1
 pkgdesc="NameCoin-style names using consensus instead of proof of work "
 arch=('x86_64' 'i686')
@@ -10,7 +10,7 @@ license=('Apache')
 depends=('bash')
 makedepends=('git' 'go' 'mercurial')
 options=('!strip' '!emptydirs')
-source=('git://github.com/andres-erbsen/dename.git')
+source=('git+https://github.com/andres-erbsen/dename.git')
 
 pkgver() {
   cd "$pkgname"
@@ -21,7 +21,7 @@ prepare() {
   cd "$srcdir"
   mkdir -p go
   export GOPATH="$srcdir/go"
-  go get code.google.com/p/gcfg
+  go get gopkg.in/gcfg.v1
   go get github.com/andres-erbsen/dename/client
 }
 
