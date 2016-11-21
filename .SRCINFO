@@ -1,12 +1,13 @@
 pkgbase = vulkan-caps-viewer
 	pkgdesc = Vulkan Hardware Capability Viewer
 	pkgver = 1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://vulkan.gpuinfo.org/
 	arch = x86_64
 	license = GPL2
 	depends = vulkan-icd-loader
 	depends = qt5-base
+	depends = qt5-x11extras
 	source = vulkan-caps-viewer.desktop
 	source = android_icon_256.png
 	sha1sums = 7ccdb4b4487b43bb428c32994092c00ca14f594a
