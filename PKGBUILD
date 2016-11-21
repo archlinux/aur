@@ -1,7 +1,7 @@
 # Maintainer: Michał Walenciak <kicer86@gmail.com>
 pkgname=easyexif
 pkgver=1.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Tiny ISO-compliant C++ EXIF parsing library, third-party dependency free."
 arch=('i686' 'x86_64')
 url="https://github.com/mayanklahiri/easyexif"
@@ -35,6 +35,6 @@ package()
     mkdir -p $pkgdir/usr/lib
     cp easyexif.a $pkgdir/usr/lib
 
-    mkdir -p $pkgdir/usr/include
-    cp exif.h $pkgdir/usr/include/
+    mkdir -p $pkgdir/usr/include/$pkgname
+    cp exif.h $pkgdir/usr/include/$pkgname/
 }
