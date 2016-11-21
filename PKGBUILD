@@ -79,6 +79,7 @@ package() {
 msg2 "Replace deprecated # with ; for php comment"
     find "${pkgdir}/etc/airtime/airtime.example.conf" -name "*.conf" -exec sed -i -re 's/^(\s*)#(.*)/\1;\2/g' {} \;
 
+    install -D -m644 ../airtime.tmpfiles.conf "${pkgdir}/usr/lib/tmpfiles.d/airtime.conf"
     install -D -m644 "airtime_mvc/build/airtime-php.logrotate" "${pkgdir}/etc/logrotate.d/airtime-php"
     install -D -m644 "python_apps/pypo/liquidsoap/airtime-liquidsoap.logrotate" "${pkgdir}/etc/logrotate.d/airtime-liquidsoap"
 
