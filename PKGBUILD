@@ -1,5 +1,5 @@
 pkgname=fortune-mod-mentalist
-pkgver=1604032026
+pkgver=1605142014
 pkgrel=1
 _ver=5
 pkgdesc="Fortune quotes from The Mentalist"
