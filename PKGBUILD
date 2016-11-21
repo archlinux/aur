@@ -35,7 +35,6 @@ makedepends=('git' 'python2' 'python2-setuptools')
 provides=('airtime')
 replaces=('airtime')
 backup=('etc/airtime/airtime.conf'
-        'etc/airtime/airtime.ini'
         'etc/logrotate.d/airtime-liquidsoap'
         'etc/logrotate.d/airtime-php')
 install=airtime.install
@@ -76,6 +75,10 @@ package() {
     install -D -m644 "LICENSE_3RD_PARTY" "${pkgdir}/usr/share/licenses/airtime/LICENSE_3RD_PARTY"
 
     install -D -m644 "airtime_mvc/build/airtime.example.conf" "${pkgdir}/etc/airtime/airtime.example.conf"
+
+msg2 "Replace deprecated # with ; for php comment"
+    find "${pkgdir}/etc/airtime/airtime.example.conf" -name "*.conf" -exec sed -i -re 's/^(\s*)#(.*)/\1;\2/g' {} \;
+
     install -D -m644 "airtime_mvc/build/airtime-php.logrotate" "${pkgdir}/etc/logrotate.d/airtime-php"
     install -D -m644 "python_apps/pypo/liquidsoap/airtime-liquidsoap.logrotate" "${pkgdir}/etc/logrotate.d/airtime-liquidsoap"
 
@@ -87,11 +90,13 @@ package() {
 
     install -d -m655 "${pkgdir}/etc/airtime"
     install -d -m655 "${pkgdir}/usr/share/php/"
-#Zend
+
+msg2 "Symlinking Zend Framework"
     ln -sr /usr/share/zendframework/library/ "${pkgdir}/usr/share/php/Zend"
     ln -sr /usr/share/zendframework/library "${pkgdir}/usr/share/php/libzend-framework-php"
  
     install -D -m644 "installer/php/airtime.ini" "${pkgdir}/etc/php$phpver/conf.d/airtime.ini"
+
     install -D -m644 ../httpd-airtime.conf "${pkgdir}/etc/httpd/conf/extra/httpd-airtime.conf"
 
     install -D -m644 ../airtime-media-monitor.service "${pkgdir}/usr/lib/systemd/system/airtime-media-monitor.service"
@@ -129,4 +134,4 @@ md5sums=('SKIP'
          'fc4a319d43a96f0003f348c7ddd8aca2'
          '93f750480f7c49d72cdcdb10cd97c089'
          'd9c15aaa7b1da14acc99e047f58aac66'
-         '3eb519eef9508bcf78447941d6e0bbde')
+         'ede75d7525316fe7b203b6b5c0f154cf')
