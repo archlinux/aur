@@ -305,7 +305,7 @@ package_php54-embed() {
 	depends=("${pkgbase}")
 	provides=("${_pkgbase}-embed=$pkgver")
 
-	install -D -m755 ${srcdir}/build-embed/libs/libphp5.so ${pkgdir}/usr/lib/libphp55.so
+	install -D -m755 ${srcdir}/build-embed/libs/libphp5.so ${pkgdir}/usr/lib/libphp54.so
 	install -D -m644 ${srcdir}/${_pkgbase}-${pkgver}/sapi/embed/php_embed.h ${pkgdir}/usr/include/${pkgbase}/sapi/embed/php_embed.h
 }
 
@@ -324,9 +324,9 @@ package_php54-pear() {
 	mv ${pkgdir}/usr/bin/{pecl,${pkgbase/php/pecl}}
 
 	# fix hardcoded php paths in pear
-	sed -i 's|/usr/bin/php|/usr/bin/php55|g' "${pkgdir}/usr/bin/pear55"
-	sed -i 's|PHP=php|PHP=php55|g' "${pkgdir}/usr/bin/pear55"
-	sed -i 's|s:7:"php_bin";s:12:"/usr/bin/php"|s:7:"php_bin";s:14:"/usr/bin/php55"|' "${pkgdir}/etc/${pkgbase}/pear.conf"
+	sed -i 's|/usr/bin/php|/usr/bin/php54|g' "${pkgdir}/usr/bin/pear54"
+	sed -i 's|PHP=php|PHP=php54|g' "${pkgdir}/usr/bin/pear54"
+	sed -i 's|s:7:"php_bin";s:12:"/usr/bin/php"|s:7:"php_bin";s:14:"/usr/bin/php54"|' "${pkgdir}/etc/${pkgbase}/pear.conf"
 }
 
 package_php54-enchant() {
