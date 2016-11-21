@@ -14,9 +14,9 @@ provides=("${_pkgbase}" "${_pkgbase}-gtk3")
 conflicts=("${_pkgbase}" "${_pkgbase}-gtk3")
 license=('GPL')
 depends=('dconf' 'dbus' 'desktop-file-utils' 'glib2' 'gtk3' 'gtk-update-icon-cache' 
-         'libsecret' 'libsm' 'libspectre' 'mate-desktop-dev'
+         'libsecret' 'libsm' 'libspectre' 'mate-desktop-dev' 'mathjax' 
          'poppler-glib' 'webkitgtk' 'zlib')
-makedepends=('caja-dev'
+makedepends=('caja-dev' 'djvulibre' 'gtk-doc>=1.13' 'intltool>=0.50.1' 'gobject-introspection' 'libgxps'
              'texlive-bin' 'yelp-tools' 'webkit2gtk')
 optdepends=('caja: Document Properties extension'
             'djvulibre: DjVu support'

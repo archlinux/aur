@@ -8,6 +8,11 @@ pkgbase = atril-dev
 	groups = mate-extra
 	license = GPL
 	makedepends = caja-dev
+	makedepends = djvulibre
+	makedepends = gtk-doc>=1.13
+	makedepends = intltool>=0.50.1
+	makedepends = gobject-introspection
+	makedepends = libgxps
 	makedepends = texlive-bin
 	makedepends = yelp-tools
 	makedepends = webkit2gtk
@@ -21,6 +26,7 @@ pkgbase = atril-dev
 	depends = libsm
 	depends = libspectre
 	depends = mate-desktop-dev
+	depends = mathjax
 	depends = poppler-glib
 	depends = webkitgtk
 	depends = zlib
