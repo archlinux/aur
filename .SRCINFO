@@ -1,13 +1,11 @@
 pkgbase = openlibrary
 	pkgdesc = Set of various toolkits
 	pkgver = 2.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Kicer86/openlibrary
 	arch = i686
 	arch = x86_64
 	license = LGPL3
-	makedepends = flex
-	makedepends = bison
 	makedepends = boost
 	makedepends = cmake
 	depends = qt5-base
