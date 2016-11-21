@@ -3,7 +3,7 @@
 # Contributor: Pieter Kokx <pieter@kokx.nl>
 
 pkgname=armory-goatpig-git
-pkgver=v0.95.0.r0.g374672b
+pkgver=v0.95.1.r2.gcc9eccf
 pkgrel=1
 pkgdesc="Armory Bitcoin wallet, built from new, official github repo w/auto selection of current python2 version"
 arch=('i686' 'x86_64')
