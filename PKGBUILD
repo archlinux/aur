@@ -6,7 +6,7 @@
 
 pkgname=emacs-lucid
 pkgver=25.1
-pkgrel=3
+pkgrel=4
 pkgdesc="The extensible, customizable, self-documenting real-time display editor (Lucid toolkit version)"
 arch=('i686' 'x86_64')
 url="http://www.gnu.org/software/emacs/emacs.html"
@@ -25,17 +25,13 @@ build() {
   ./configure \
       --prefix=/usr --sysconfdir=/etc --libexecdir=/usr/lib --localstatedir=/var \
       --with-x-toolkit=lucid --with-xft --without-gconf --without-gsettings \
-      --with-gameuser=:games
+      --with-gameuser=:games --program-transform-name='s/^ctags$/ctags.emacs/'
   make
 }
 
 package() {
   cd "$srcdir"/emacs-$pkgver
   make DESTDIR="$pkgdir" install
-
-  # remove conflict with ctags package
-  mv "$pkgdir"/usr/bin/{ctags,ctags.emacs}
-  mv "$pkgdir"/usr/share/man/man1/{ctags.1.gz,ctags.emacs.1}
 
   # fix user/root permissions on usr/share files
   find "$pkgdir"/usr/share/emacs/$pkgver -exec chown root:root {} \;
