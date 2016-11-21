@@ -33,7 +33,7 @@ makedepends=('extra-cmake-modules'
              'ki18n'
              'kitemviews'
              'kwindowsystem'
-             'imagemagick'
+             'pngcrush'
              )
 provides=('krita' 'calligra-krita')
 conflicts=('krita' 'calligra-krita')
@@ -52,7 +52,7 @@ prepare() {
   msg2 "Stripping PNG's"
   export IFS=$'\n'
   for i in $(find . -name '*.png' -type f); do
-    mogrify "${i}" &> /dev/null
+    pngcrush -e "${i}" &> /dev/null
   done
   export IFS=' '
 }
