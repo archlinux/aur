@@ -82,14 +82,14 @@ msg2 "Replace deprecated # with ; for php comment"
     install -D -m644 "airtime_mvc/build/airtime-php.logrotate" "${pkgdir}/etc/logrotate.d/airtime-php"
     install -D -m644 "python_apps/pypo/liquidsoap/airtime-liquidsoap.logrotate" "${pkgdir}/etc/logrotate.d/airtime-liquidsoap"
 
-    install -d -m777 "${pkgdir}/var/tmp/airtime/show-recorder/"
+    install -d -m755 "${pkgdir}/var/tmp/airtime/show-recorder/"
 
     install -d -m755 "${pkgdir}/var/log/airtime"
 
-    install -d -m777 "${pkgdir}/var/tmp/airtime"
+    install -d -m755 "${pkgdir}/var/tmp/airtime"
 
     install -d -m655 "${pkgdir}/etc/airtime"
-    install -d -m655 "${pkgdir}/usr/share/php/"
+    install -d -m755 "${pkgdir}/usr/share/php/"
 
 msg2 "Symlinking Zend Framework"
     ln -sr /usr/share/zendframework/library/ "${pkgdir}/usr/share/php/Zend"
@@ -113,7 +113,7 @@ msg2 "Symlinking Zend Framework"
     python2 "python_apps/pypo/setup.py" install \
         --root="${pkgdir}/" --optimize=1 --install-scripts=/usr/bin
 
-    chmod -R 777 "${pkgdir}/var/tmp/airtime"
+    chmod -R 755 "${pkgdir}/var/tmp/airtime"
     chmod -R 755 "${pkgdir}/var/log/airtime"
 
     chown -R ${web_user}:${web_user} "${pkgdir}/var/tmp/airtime"
