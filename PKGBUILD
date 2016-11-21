@@ -1,6 +1,6 @@
-# Maintainer: Jonne Haß <me@mrzyx.de>
+# Maintainer: Jonne Haß <me@jhass.eu>
 pkgname=nginx_ensite-git
-pkgver=0.24.3121106
+pkgver=0.56.fa4d72c
 pkgrel=1
 pkgdesc="enable/disable an nginx site/virtual host"
 arch=('any')
@@ -18,17 +18,17 @@ pkgver () {
 
 prepare() {  
   cd "$srcdir"/$pkgname
-  sed -i "s/\/etc\/init.d\/nginx reload/systemctl reload nginx/" nginx_ensite
+  sed -i "s/STARTUP_PROGRAM_NAME=\$(get_startup_program_name service)/STARTUP_PROGRAM_NAME=\$(get_startup_program_name systemctl reload nginx)/" bin/nginx_ensite
 }
 
 package() {
   cd "$srcdir"/$pkgname
 
-  install -Dm755 nginx_ensite                   "$pkgdir"/usr/bin/nginx_ensite
-  install -Dm755 nginx_dissite                  "$pkgdir"/usr/bin/nginx_dissite
-  install -Dm644 man/nginx_ensite.8             "$pkgdir"/usr/share/man/man8/nginx_ensite.8
-  install -Dm644 man/nginx_dissite.8            "$pkgdir"/usr/share/man/man8/nginx_dissite.8
-  install -Dm644 bash_completion.d/nginx-ensite "$pkgdir"/etc/bash_completion.d/nginx-ensite
+  install -Dm755 bin/nginx_ensite               "$pkgdir"/usr/bin/nginx_ensite
+  install -Dm755 bin/nginx_dissite              "$pkgdir"/usr/bin/nginx_dissite
+  install -Dm644 share/man/man8/nginx_ensite.8  "$pkgdir"/usr/share/man/man8/nginx_ensite.8
+  install -Dm644 share/man/man8/nginx_dissite.8 "$pkgdir"/usr/share/man/man8/nginx_dissite.8
+  install -Dm644 bash_completion.d/nginx_ensite "$pkgdir"/etc/bash_completion.d/nginx_ensite
   mkdir -p "$pkgdir"/etc/nginx/sites-available
   mkdir -p "$pkgdir"/etc/nginx/sites-enabled
 }
