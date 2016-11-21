@@ -2,10 +2,10 @@
 # Contributor:  eadrom <eadrom@archlinux.info>
 # Contributor:  Martin Wimpress <code@flexion.org>
 
-_ver=1.15
+_ver=1.17
 _pkgbase=eom
 pkgname="${_pkgbase}-dev"
-pkgver=${_ver}.1
+pkgver=${_ver}.0
 pkgrel=1
 pkgdesc="An image viewing and cataloging program for MATE"
 url="http://mate-desktop.org"
@@ -15,13 +15,13 @@ conflicts=("${_pkgbase}" "${_pkgbase}-gtk3")
 license=('GPL')
 depends=('dbus-glib' 'desktop-file-utils' 'glib2' 'gobject-introspection-runtime'
          'gtk3' 'gtk-update-icon-cache' 'exempi' 'lcms2' 'libexif' 'libjpeg-turbo'
-         'librsvg' 'mate-desktop-dev' 'pygtk' 'python2-gobject2'
+         'librsvg' 'mate-desktop-dev
          'startup-notification' 'zlib')
-makedepends=('gobject-introspection' 'mate-common-dev' 'yelp-tools' 'gtk3' 'mate-desktop-dev')
+makedepends=('gobject-introspection' 'mate-common-dev
 optdepends=('yelp: for reading MATE help documents')
 groups=('mate-extra')
 source=("http://pub.mate-desktop.org/releases/${_ver}/${_pkgbase}-${pkgver}.tar.xz")
-sha1sums=('9a5a60748f19d3eb510affa7f9e429528b24bf0f')
+sha1sums=('9c2d032f971a1296a2300c9cacdeb4cef931ac20')
 
 prepare() {
     cd "${srcdir}"
