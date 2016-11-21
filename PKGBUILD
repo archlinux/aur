@@ -51,7 +51,7 @@ prepare() {
     cd "$srcdir/airtime"
 #    grep -rl '/usr/bin/python' 'python_apps' 'utils' | xargs  sed -i "s%/usr/bin/python%/usr/bin/python2%g"
     grep -rl 'www-data' . | xargs  sed -i "s%www-data%http%g"
-    patch -Np1 -i ../php-errors.patch
+    patch -Np0 -i ../php-errors.patch
 }
 
 package() {
@@ -134,4 +134,5 @@ md5sums=('SKIP'
          'fc4a319d43a96f0003f348c7ddd8aca2'
          '93f750480f7c49d72cdcdb10cd97c089'
          'd9c15aaa7b1da14acc99e047f58aac66'
-         'dc67439d083d7e1caa7bb04308a3fcf5')
+         'dc67439d083d7e1caa7bb04308a3fcf5'
+         'f0d4f2b5a52b130475dfe571f0186dc6')
