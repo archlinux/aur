@@ -1,14 +1,14 @@
 # Maintainer: Michał Walenciak <kicer86@gmail.com>
 pkgname=photobroom
-pkgver=1.0.0
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="Photos managing tool"
 arch=('i686' 'x86_64')
 url="https://github.com/Kicer86/photobroom"
 license=('GPL3')
 groups=()
-depends=('qt5-base' 'exiv2')
-makedepends=('cmake' 'libkexiv2' 'boost' 'openlibrary' 'qt5-tools')
+depends=('jsoncpp' 'openlibrary' 'qt5-base')
+makedepends=('boost' 'cmake' 'easyexif' 'jsoncpp' 'openlibrary' 'qt5-tools')
 optdepends=()
 provides=()
 conflicts=()
@@ -19,9 +19,9 @@ install=
 changelog=
 source=(https://codeload.github.com/Kicer86/$pkgname/tar.gz/v$pkgver)
 noextract=()
-md5sums=('19d10c6f2474ff4f93de3524920ccf50')
+md5sums=('73cf679e90687c64f16a29546fd5262e')
 
-build() 
+build()
 {
     cd "$pkgname-$pkgver"
     mkdir -p build
@@ -30,9 +30,9 @@ build()
     make
 }
 
-package() 
+package()
 {
     cd "$pkgname-$pkgver"
     cd build
     make DESTDIR="$pkgdir/" install
-} 
+}
