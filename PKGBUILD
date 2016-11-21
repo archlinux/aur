@@ -1,5 +1,5 @@
 pkgname=fortune-mod-thenewsroom
-pkgver=1602121942
+pkgver=1611210044
 pkgrel=1
 _ver=5
 pkgdesc="Fortune quotes from The Newsroom"
