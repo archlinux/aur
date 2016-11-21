@@ -1,5 +1,5 @@
 pkgname=fortune-mod-sabrina
-pkgver=1510240601
+pkgver=1611101104
 pkgrel=1
 _ver=5
 pkgdesc="Fortune quotes from Sabrina, the Teenage Witch"
