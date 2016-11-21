@@ -1,14 +1,14 @@
 pkgbase = steins-gate
 	pkgdesc = Libre reimplementation of the Steins;Gate visual novel
 	pkgver = 0.5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://dev.pulsir.eu/krofna/
 	arch = i686
 	arch = x86_64
 	license = GPL3
 	makedepends = cmake
 	makedepends = boost
-	depends = libnpengine=0.5.0
+	depends = libnpengine>=0.5.0
 	source = steins-gate-0.5.0.tar.gz::https://github.com/FGRE/steins-gate-new/archive/v0.5.0.tar.gz
 	sha256sums = eb6eac88c50fbf25e3acf80b69b558e227087b70ec8b89e50641dfa5b33d663f
 
