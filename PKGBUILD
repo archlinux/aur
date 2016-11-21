@@ -1,5 +1,5 @@
 pkgname=fortune-mod-newgirl
-pkgver=1603232008
+pkgver=1610071915
 pkgrel=1
 _ver=5
 pkgdesc="Fortune quotes from New_Girl"
