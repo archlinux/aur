@@ -1,0 +1,19 @@
+pkgbase = python2-viivakoodi
+	pkgdesc = Barcode generator for Python. Fork of pyBarcode project.
+	pkgver = 0.8.0
+	pkgrel = 0
+	url = https://github.com/kxepal/viivakoodi
+	arch = any
+	license = GPL
+	source = viivakoodi-0.8.0.tar.gz::https://github.com/kxepal/viivakoodi/archive/0.8.0.tar.gz
+	sha256sums = e1a17dc24975d5242202cfbb7534d69dd14eeb26bdf8a10f056c7b04904fef1e
+
+pkgname = python2-viivakoodi
+	depends = python2
+	optdepends = python2-pillow
+	provides = python2-viivakoodi
+
+pkgname = python-viivakoodi
+	depends = python
+	optdepends = python-pillow
+	provides = python2-viivakoodi
