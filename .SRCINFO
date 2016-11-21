@@ -1,9 +1,8 @@
 pkgbase = brlcad-bin
 	pkgdesc = An extensive 3D solid modeling system.
-	pkgver = 7.24.2
+	pkgver = 7.26.0
 	pkgrel = 0
 	url = http://brlcad.org
-	arch = i686
 	arch = x86_64
 	license = LGPL
 	license = BSD
