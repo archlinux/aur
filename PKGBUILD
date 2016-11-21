@@ -1,14 +1,14 @@
 # Maintainer: Michał Walenciak <kicer86@gmail.com>
 pkgname=openlibrary
 pkgver=2.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Set of various toolkits"
 arch=('i686' 'x86_64')
 url="https://github.com/Kicer86/openlibrary"
 license=('LGPL3')
 groups=()
 depends=('qt5-base')
-makedepends=('flex' 'bison' 'boost' 'cmake')
+makedepends=('boost' 'cmake')
 optdepends=()
 provides=()
 conflicts=()
@@ -21,7 +21,7 @@ source=(https://codeload.github.com/Kicer86/$pkgname/tar.gz/v$pkgver)
 noextract=()
 md5sums=('837712af0ec3d71d37090728cd279eb9')
 
-build() 
+build()
 {
     cd "$pkgname-$pkgver"
     mkdir -p build
@@ -30,9 +30,9 @@ build()
     make
 }
 
-package() 
+package()
 {
     cd "$pkgname-$pkgver"
     cd build
     make DESTDIR="$pkgdir/" install
-} 
+}
