@@ -4,7 +4,7 @@ validpgpkeys=('748231EBCBD808A14F5E85D28C004C2F93481F6B')
 # News updates for packages can be followed at https://devblog.square-r00t.net
 pkgname=phrasendrescher
 pkgver="1.2.2b"
-pkgrel=2
+pkgrel=3
 pkgdesc="A modular and multi processing pass phrase cracking tool."
 arch=('i686' 'x86_64')
 url="http://www.leidecker.info/projects/phrasendrescher/"
@@ -14,7 +14,7 @@ depends=('')
 makedepends=('')
 _pkgname=${pkgname}
 provides=("phrasendrescher")
-#conflicts=("phrasendrescher")
+conflicts=("pd-extended")  # "pd-extended" has nothing to do with phrasendrescher... but it uses the same binary name/path. :/
 install=
 changelog=
 noextract=()
@@ -24,10 +24,13 @@ sha512sums=('ad66b3e2c26a382729dadfcb0d0eb7e430b763681fc0041a4efeed4bc070bba7968
             'SKIP')
 build() {
         cd "${srcdir}/${_pkgname}-${pkgver}"
+	#autoreconf
 	./configure --with-plugins --prefix=${pkgdir}/usr
         make
 }
 package() {
+        cd "${srcdir}/${_pkgname}-${pkgver}"
+	make install
 	gzip --force ${srcdir}/${_pkgname}-${pkgver}/man/pd.1
         install -D -m755 ${srcdir}/${_pkgname}-${pkgver}/src/pd ${pkgdir}/usr/bin/pd
 	install -d -m755 ${pkgdir}/usr/share/man/man1
