@@ -2,7 +2,7 @@
 _pkgname=pjproject
 pkgname=${_pkgname}-savoirfairelinux
 pkgver=2.5.5
-pkgrel=2
+pkgrel=3
 pkgdesc="Open source SIP stack and media stack, built with patches from SavoirFaire Linux (mostly GnuTLS support)"
 arch=('i686' 'x86_64')
 url="http://www.pjsip.org/"
@@ -38,7 +38,7 @@ prepare() {
 
 build() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
-  export CXXFLAGS="${CXXFLAGS} -fPIC"
+  export CXXFLAGS="${CXXFLAGS} -fPIC -DPJSIP_MAX_PKT_LEN=8000"
   export CFLAGS="${CXXFLAGS}"
   ./configure \
       --prefix=/usr \
