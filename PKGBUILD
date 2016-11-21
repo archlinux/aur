@@ -43,13 +43,15 @@ source=("airtime::git+https://github.com/sourcefabric/airtime"
         'airtime-liquidsoap.service'
         'airtime-playout.service'
         'airtime.tmpfiles.conf'
-	'httpd-airtime.conf')
+	'httpd-airtime.conf'
+	'php-errors.patch')
 branch=2.5.x
 
 prepare() {
     cd "$srcdir/airtime"
 #    grep -rl '/usr/bin/python' 'python_apps' 'utils' | xargs  sed -i "s%/usr/bin/python%/usr/bin/python2%g"
     grep -rl 'www-data' . | xargs  sed -i "s%www-data%http%g"
+    patch -Np1 -i ../php-errors.patch
 }
 
 package() {
