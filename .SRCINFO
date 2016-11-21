@@ -1,0 +1,20 @@
+pkgbase = onlyoffice-desktopeditors-portable
+	pkgdesc = Open-source office suite that combines text, spreadsheet and presentation editors.
+	pkgver = 4.1.2
+	pkgrel = 33
+	url = https://www.onlyoffice.com/
+	arch = x86_64
+	license = AGPL3
+	depends = desktop-file-utils
+	depends = hicolor-icon-theme
+	provides = onlyoffice-desktopeditors
+	conflicts = onlyoffice-bin
+	noextract = onlyoffice-desktopeditors-4.1.2-33-x64.tar.gz
+	options = !strip
+	source = http://download.onlyoffice.com/install/desktop/editors/linux/onlyoffice-desktopeditors-4.1.2-33-x64.tar.gz
+	source = onlyoffice-desktopeditors.desktop
+	sha256sums = ecfb80a9077433c4608268ef6b6bcfcb8f6401c8f503a335f70cac5cf73933d3
+	sha256sums = 831832357168cc494c75f40a7cee8eddb92ddb204100a635fbeab31e27f07a44
+
+pkgname = onlyoffice-desktopeditors-portable
+

@@ -1,0 +1,16 @@
+[Desktop Entry]
+Version=1.0
+Name=Desktop Editors
+Type=Application
+GenericName=ONLYOFFICE Desktop Editors
+Comment=Edit office documents
+Exec=onlyoffice-desktopeditors
+Terminal=false
+Icon=asc-de
+Categories=Office;
+#MimeType=text/txt;
+
+Actions=NewEditor;
+[Desktop Action NewEditor]
+Name=New Editor
+Exec=onlyoffice-desktopeditors
