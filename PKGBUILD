@@ -1,5 +1,4 @@
-# $Id$
-# Maintainer : Daniel Isenmann <daniel@archlinux.org>
+# Contributor: Daniel Isenmann <daniel@archlinux.org>
 # Contributor: György Balló <ballogy@freestart.hu>
 pkgname=gdata-sharp
 _pkgname=libgoogle-data-mono
