@@ -134,5 +134,5 @@ md5sums=('SKIP'
          'fc4a319d43a96f0003f348c7ddd8aca2'
          '93f750480f7c49d72cdcdb10cd97c089'
          'd9c15aaa7b1da14acc99e047f58aac66'
-         'dc67439d083d7e1caa7bb04308a3fcf5'
+         '6ee878012b7f1bdf6373ce1b7dd8ec5c'
          'f0d4f2b5a52b130475dfe571f0186dc6')
