@@ -44,8 +44,8 @@ _use_current=
 
 pkgbase=linux-ck
 _srcname=linux-4.8
-pkgver=4.8.9
-pkgrel=3
+pkgver=4.8.10
+pkgrel=1
 _ckpatchversion=7
 arch=('i686' 'x86_64')
 url="https://wiki.archlinux.org/index.php/Linux-ck"
@@ -70,12 +70,12 @@ source=("http://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         )
 sha256sums=('3e9150065f193d3d94bcf46a1fe9f033c7ef7122ab71d75a7fb5a2f0c9a7e11a'
             'SKIP'
-            '9f3c1924080a16ac2b8f054aa9d0490bc0ee4c6159e2fd10e5f6732b2e9604f6'
+            'd0ea1671c488957d7b1ef46a5107c47c16b37f2985ca7ee4c900ba0f89d40d3c'
             'SKIP'
             '65a9a1d4ab050fa3c4d5640197d8e72dbe99a4464c97b607003729047f5b96da'
             'e1b8c54c3b81dfd526e24287436b16ec523715e6b3b96156c3e57af035ade127'
-            '19420bbd39dc890ace90826b1691ba07cc0fa99c1ecf03725a01855961605c4d'
-            '5c6557ae77f83e1a6f49801d786f708323fb65d63eb30279fd2194ac23092583'
+            '0e2a8eadd0530c1d2270937141973f71810cfbddd379696fe291e0e91bc5ccb1'
+            '96d4e5932302c4b46fc7832b3f39d8da57ccd167cb1b89da2566c32a59a5d871'
             '834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99')
