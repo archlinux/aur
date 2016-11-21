@@ -1,5 +1,5 @@
 pkgname=fortune-mod-arresteddevelopment
-pkgver=1603131747
+pkgver=1606151120
 pkgrel=1
 _ver=5
 pkgdesc="Fortune quotes from Arrested Development"
