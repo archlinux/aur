@@ -1,0 +1,15 @@
+pkgbase = ivan
+	pkgdesc = Iter Vehemens ad Necem - a tile-graphics roguelike with limb dismembering
+	pkgver = 0.50.7
+	pkgrel = 1
+	url = https://attnam.com
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	depends = sdl
+	source = git+https://github.com/Attnam/ivan.git#tag=v0507
+	sha1sums = SKIP
+
+pkgname = ivan
+
