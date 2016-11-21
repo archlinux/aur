@@ -2,7 +2,7 @@
 # Contributor: Jakob Gahde <j5lx@fmail.co.uk>
 
 pkgname=radium
-pkgver=4.2.7
+pkgver=4.2.8
 pkgrel=1
 pkgdesc="A graphical music editor. A next generation tracker."
 arch=('i686' 'x86_64')
@@ -39,7 +39,7 @@ source=("https://github.com/kmatheussen/${pkgname}/archive/${pkgver}.tar.gz"
         "dont-empty-qt-library-paths.patch"
         "use-gcc5-for-pluginhost.patch"
         "use-system-vstsdk.patch")
-md5sums=('26038c402857fdb314eb29cb74dcac88'
+md5sums=('6549f8ef8ed3419afc1de9f700cea178'
          '9c72bd466ead73e36b0c2d4297d76870'
          '77c202bc0a36562eb7b805ad6b7a85b3'
          '9c19006defeef7e317ec23ed8eae1b72'
