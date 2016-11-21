@@ -7,15 +7,6 @@ pkgbase = atril-dev
 	arch = x86_64
 	groups = mate-extra
 	license = GPL
-	makedepends = caja-dev
-	makedepends = djvulibre
-	makedepends = gtk-doc>=1.13
-	makedepends = intltool>=0.50.1
-	makedepends = gobject-introspection
-	makedepends = libgxps
-	makedepends = texlive-bin
-	makedepends = yelp-tools
-	makedepends = webkit2gtk
 	depends = dconf
 	depends = dbus
 	depends = desktop-file-utils
@@ -25,11 +16,15 @@ pkgbase = atril-dev
 	depends = libsecret
 	depends = libsm
 	depends = libspectre
-	depends = mate-desktop-dev
-	depends = mathjax
-	depends = poppler-glib
-	depends = webkitgtk
-	depends = zlib
+	depends = mate-desktop-dev mathjax poppler-glib webkitgtk zlib) makedepends=(caja-dev
+	depends = djvulibre
+	depends = gtk-doc>=1.13
+	depends = intltool>=0.50.1
+	depends = gobject-introspection
+	depends = libgxps
+	depends = texlive-bin
+	depends = yelp-tools
+	depends = webkit2gtk
 	optdepends = caja: Document Properties extension
 	optdepends = djvulibre: DjVu support
 	optdepends = libgxps: XPS support
