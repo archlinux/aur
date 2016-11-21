@@ -1,7 +1,7 @@
 # Maintainer: carstene1ns <arch carsten-teibes de> - http://git.io/ctPKG
 
 pkgname=libnpengine
-pkgver=0.5.0
+pkgver=0.5.1
 pkgrel=1
 arch=('i686' 'x86_64')
 license=('LGPL3')
@@ -11,7 +11,7 @@ depends=("libnpa=$pkgver" 'boost-libs' 'sdl2' 'glew' 'libjpeg-turbo' 'libpng'
         'gst-plugins-base-libs' 'pango')
 makedepends=('cmake' 'boost')
 source=($pkgname-$pkgver.tar.gz::"https://github.com/FGRE/$pkgname-new/archive/v$pkgver.tar.gz")
-sha256sums=('094e605ffe82f601ed827504710515dad1c3450e5aa44d57355d376a62017e21')
+sha256sums=('11041427c5156da235a47fbdc03868653422b10557c77ef717b51e23e1e8a4a5')
 
 build() {
   cd $pkgname-new-$pkgver
