@@ -6,8 +6,8 @@ pkgbase = aegir
 	install = aegir.install
 	arch = any
 	license = GPL
-	depends = aegir-provision=7.x_3.8
-	depends = aegir-hostmaster=7.x_3.8
+	depends = aegir-provision
+	depends = aegir-hostmaster
 	depends = cron
 	depends = nginx
 	depends = php-fpm

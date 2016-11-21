@@ -8,8 +8,8 @@ arch=('any')
 url='http://aegirproject.org'
 license=('GPL')
 depends=(
-    "$pkgname-provision=$pkgver"
-    "$pkgname-hostmaster=$pkgver"
+    "$pkgname-provision"
+    "$pkgname-hostmaster"
     'cron'
     'nginx'
     'php-fpm'
