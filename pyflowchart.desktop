@@ -1,0 +1,5 @@
+[Desktop Entry]
+Name=PyFlowChart
+Comment=Create flowcharts for Cal Poly 
+Exec=pyflowchart  
+Type=Application
