@@ -3,7 +3,7 @@
 Name=Lightscribe
 Comment=4L: LaCie LightScribe Labeler for Linux
 Encoding=UTF-8
-Exec=4L-gui
+Exec=env LD_LIBRARY_PATH=/opt/4L/lib 4L-gui
 Icon=lightscribe
 Type=Application
 Icon=lightscribe.png

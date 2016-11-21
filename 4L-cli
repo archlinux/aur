@@ -1,0 +1,2 @@
+#!/usr/bin/bash
+/usr/bin/gksudo -k -- LD_LIBRARY_PATH=/opt/4L/lib /opt/4L/4L-cli.bin "$@"
