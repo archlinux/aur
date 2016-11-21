@@ -1,7 +1,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=emacs-lucid-git
-pkgver=26.0.50.r127314
+pkgver=26.0.50.r127496
 pkgrel=1
 pkgdesc="GNU Emacs. Official git master."
 arch=('i686' 'x86_64')
@@ -31,7 +31,7 @@ build() {
   cd "$srcdir/emacs"
   ./autogen.sh                                                            
   ac_cv_lib_gif_EGifPutExtensionLast=yes \
-    ./configure \
+    ./configure --program-transform-name='s/^ctags$/ctags.emacs/' \
     --prefix=/usr \
     --sysconfdir=/etc \
     --libexecdir=/usr/lib \
@@ -51,9 +51,6 @@ package() {
   cd "$srcdir/emacs"
   _mainver=$(grep AC_INIT configure.ac | sed -e 's/^.\+\ \([0-9]\+\.[0-9]\+\.[0-9]\+\).\+$/\1/')
   make DESTDIR="$pkgdir/" install install-pdf
-  # remove conflict with ctags package
-  mv "$pkgdir"/usr/bin/{ctags,ctags.emacs}
-  mv "$pkgdir"/usr/share/man/man1/{ctags.1.gz,ctags.emacs.1.gz}
   # fix user/root permissions on usr/share files
   find "$pkgdir"/usr/share/emacs/ -exec chown root:root {} \;
   # Delete compressed .el.gz files. Comment out if needed.
