@@ -24,7 +24,8 @@ options=(staticlibs !libtool !emptydirs !strip zipman docs)
 source=(https://launchpad.net/gcc-linaro/${_relver}/${_relverdate}/+download/gcc-linaro-${_relverdate}.tar.bz2
         http://releases.linaro.org/14.09/components/toolchain/newlib-linaro/newlib-${_newlibver}.tar.bz2
         gcc-${_relver}-multilib2.patch
-        gcc-${_relver}-no-exceptions.patch)
+        gcc-${_relver}-no-exceptions.patch
+        libc_name_p.patch)
 _basedir=gcc-linaro-${_relverdate}
 
 build() {
@@ -35,6 +36,7 @@ build() {
   cd ${srcdir}/${_basedir}
   patch -Np0 -i "${srcdir}/gcc-${_relver}-multilib2.patch"
   patch -Np0 -i "${srcdir}/gcc-${_relver}-no-exceptions.patch"
+  patch -Np1 -i "${srcdir}/libc_name_p.patch"
 
   mkdir build
   cd build
@@ -85,4 +87,5 @@ package() {
 sha256sums=('4fc5c9fb78882857f988bec979947fc2e55a3ea31640b7ace601bcee3c86fd37'
             'ed92e8547246834725a3c5743fa41d3f573e3e5d2e5066d433ac3c29e6676fc8'
             '104b9aa652804a56338470983e6975af1d1e5440eb8bddae3a01a966d2b332cf'
-            '3cd19aac3d1c4f46377bf6d82a0130686c6677ee5e817a702a34238f6a748dcd')
+            '3cd19aac3d1c4f46377bf6d82a0130686c6677ee5e817a702a34238f6a748dcd'
+            '9bc036c18d91593dc7cdece388723f38df9a7115d0c7857be35893f42ddda338')
