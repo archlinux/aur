@@ -1,3 +1,4 @@
+# Maintainer:  Νικόλαος Κυριάκος Φυτίλης <n-fit@live.com>
 # Contributor: Daniel Isenmann <daniel@archlinux.org>
 # Contributor: György Balló <ballogy@freestart.hu>
 pkgname=gudev-sharp
