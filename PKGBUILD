@@ -2,12 +2,12 @@
 
 pkgname='athena-jot'
 pkgver='9.0'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='print sequential or random data.'
 url='http://www.mit.edu/afs/athena/system/rhlinux/athena-9.0/free/SRPMS/athena-jot-9.0-3.src.rpm'
 arch=('x86_64' 'i686')
 license=('BSD')
-depends=('gcc' 'rpmextract')
+makedepends=('gcc')
 source=('http://www.mit.edu/afs/athena/system/rhlinux/athena-9.0/free/SRPMS/athena-jot-9.0-3.src.rpm')
 sha1sums=('ffb286569ea48159d760c3de0fd3749db92348c8')
 
