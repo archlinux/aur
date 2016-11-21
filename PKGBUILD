@@ -4,8 +4,8 @@ validpgpkeys=('748231EBCBD808A14F5E85D28C004C2F93481F6B')
 # News updates for packages can be followed at https://devblog.square-r00t.net
 pkgname=bdisk-git
 pkgver=0.0001
-pkgrel=1
-pkgdesc="An easy liveCD creator built in python. Supports hybrid ISOs/USB, iPXE, and UEFI"
+pkgrel=2
+pkgdesc="An easy liveCD creator built in python. Supports hybrid ISOs/USB, iPXE, and UEFI (undergoing rewrite)"
 arch=( 'i686' 'x86_64' )
 url="https://bdisk.square-r00t.net"
 license=( 'GPL3' )
@@ -15,7 +15,7 @@ _pkgname=bdisk
 install=
 changelog=
 noextract=()
-source=("bdisk::gitgit://git.square-r00t.net/bdisk.git")
+source=("bdisk::git+git://git.square-r00t.net/bdisk.git")
 # see https://wiki.archlinux.org/index.php/VCS_package_guidelines#Git_Submodules if you require git submodules
 sha512sums=('SKIP')
 pkgver() {
@@ -37,10 +37,8 @@ pkgver() {
   #)
 }
 build() {
-        cd "${srcdir}/${_pkgname}/src"
-        make prefix=${pkgdir}/usr
+	echo "TODO: This package doesn't install in a meaningful way. However, it will soon be a python package and CLI utility."
 }
 package() {
-        install -D -m755 ${srcdir}/${_pkgname}/src/${_pkgname} ${pkgdir}/usr/bin/${_pkgname}
-        install -D -m644 ${srcdir}/${_pkgname}/docs/README.html.en ${pkgdir}/usr/share/doc/${_pkgname}/README.html
+	echo "TODO: This package doesn't install in a meaningful way. However, it will soon be a python package and CLI utility."
 }
