@@ -1,6 +1,6 @@
 # Maintainer: Versus Void
 pkgname=axtls
-pkgver=2.0.1
+pkgver=1.5.4
 pkgrel=1
 pkgdesc="Highly configurable client/server TLSv1.2 library"
 arch=(x86_64 i686)
@@ -14,8 +14,8 @@ source=("http://downloads.sourceforge.net/sourceforge/${pkgname}/axTLS-${pkgver}
         ".config"
 	   )
 #noextract=()
-sha256sums=("6065adf95cf2d47fece86a91a48dfbdfeaa48e5ead9a1812231ecb1dcc8a2216"
-			"374fbc949782ad7854268924f0ed9069bc2ca712ab1f428be0c5eb657b1701d2"
+sha256sums=("24d50cc4f5908d06cfacb2a3916d91ed75c5b1441809e47bc45e1053d6ba5d91"
+			"28906cc3e4684f61791371d6de635618652bbc56e1b445ffcd397ffcc513ca8f"
 			"8e32ee043b3e704e58e938eb1b28a495f3d0d2fbb241dfa2b0654e2c2f40ddb2"
 			"17fcc8fe52357724a59c4bb2973274697bde3573160ac007306e788e3859e88f"
 		   )
