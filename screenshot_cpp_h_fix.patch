@@ -1,0 +1,75 @@
+diff -Naurp src-orig/Lightscreen-2.3/lightscreenwindow.cpp src-fixed/Lightscreen-2.3/lightscreenwindow.cpp
+--- lightscreenwindow.cpp	2016-10-30 17:52:35.000000000 -0400
++++ lightscreenwindow.cpp	2016-11-21 18:16:57.486217211 -0500
+@@ -206,7 +206,7 @@ void LightscreenWindow::cleanup(Screensh
+     }
+ 
+     if (settings()->value("options/playSound", false).toBool()) {
+-        if (options.result == Screenshot::Success) {
++        if (options.result == Screenshot::Success_) {
+             QSound::play("sounds/ls.screenshot.wav");
+         } else {
+ #ifdef Q_OS_WIN
+@@ -220,7 +220,7 @@ void LightscreenWindow::cleanup(Screensh
+ 
+     updateStatus();
+ 
+-    if (options.result != Screenshot::Success) {
++    if (options.result != Screenshot::Success_) {
+         return;
+     }
+ 
+@@ -377,7 +377,7 @@ void LightscreenWindow::executeArguments
+ void LightscreenWindow::notify(const Screenshot::Result &result)
+ {
+     switch (result) {
+-    case Screenshot::Success:
++    case Screenshot::Success_:
+         mTrayIcon->setIcon(QIcon(":/icons/lightscreen.yes"));
+ 
+         if (mHasTaskbarButton) {
+@@ -645,7 +645,7 @@ void LightscreenWindow::showScreenshotMe
+     QString title;
+     QString message;
+ 
+-    if (result == Screenshot::Success) {
++    if (result == Screenshot::Success_) {
+         title = QFileInfo(fileName).fileName();
+ 
+         if (settings()->value("file/target").toString().isEmpty()) {
+diff -Naurp src-orig/Lightscreen-2.3/tools/screenshot.cpp src-fixed/Lightscreen-2.3/tools/screenshot.cpp
+--- tools/screenshot.cpp	2016-10-30 17:52:35.000000000 -0400
++++ tools/screenshot.cpp	2016-11-21 18:16:40.246217313 -0500
+@@ -244,7 +244,7 @@ void Screenshot::save()
+         QApplication::clipboard()->setPixmap(mPixmap, QClipboard::Clipboard);
+ 
+         if (!mOptions.file) {
+-            result = Screenshot::Success;
++            result = Screenshot::Success_;
+         }
+     }
+ 
+@@ -254,9 +254,9 @@ void Screenshot::save()
+         if (name.isEmpty()) {
+             result = Screenshot::Cancel;
+         } else if (mUnloaded) {
+-            result = (QFile::rename(mUnloadFilename, fileName)) ? Screenshot::Success : Screenshot::Failure;
++            result = (QFile::rename(mUnloadFilename, fileName)) ? Screenshot::Success_ : Screenshot::Failure;
+         } else if (mPixmap.save(fileName, 0, mOptions.quality)) {
+-            result = Screenshot::Success;
++            result = Screenshot::Success_;
+         } else {
+             result = Screenshot::Failure;
+         }
+diff -Naurp src-orig/Lightscreen-2.3/tools/screenshot.h src-fixed/Lightscreen-2.3/tools/screenshot.h
+--- tools/screenshot.h	2016-10-30 17:52:35.000000000 -0400
++++ tools/screenshot.h	2016-11-21 18:16:31.439550699 -0500
+@@ -55,7 +55,7 @@ public:
+ 
+     enum Result {
+         Failure = 0,
+-        Success = 1,
++        Success_ = 1,
+         Cancel = 2
+     };
+     Q_ENUM(Result)
