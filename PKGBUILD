@@ -2,14 +2,14 @@
 
 pkgname=pyflowchart-git
 pkgver=0.9.1
-pkgrel=3
+pkgrel=4
 pkgdesc="Application to help manage curriculum flowcharts at CalPoly"
 arch=('any')
 url="https://github.com/steelcowboy/PyFlowChart"
 license=('BSD')
 depends=('python-setuptools' 'gobject-introspection' 'python-gobject')
 makedepends=('git' 'cython')
-source=("git+https://github.com/steelcowboy/PyFlowChart.git" "pyflowchart.desktop")
+source=("https://github.com/steelcowboy/PyFlowChart.git" "pyflowchart.desktop")
 sha256sums=('SKIP' '5f1cfdfd272605ac2db8a644ad07dd6a49eea91a90529b4b7994de45883c0b65')
 
 build() {
