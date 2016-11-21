@@ -1,0 +1,12 @@
+pkgbase = ttf-rubik
+	pkgdesc = Rubik Typeface
+	pkgver = 1.0
+	pkgrel = 0
+	url = http://hubertfischer.com/work/type-rubik
+	arch = any
+	license = custom:OFL
+	source = ttf-rubik-1.0::https://fonts.google.com/download?family=Rubik
+	sha256sums = a423f17a4ed912074de62b9f62688e204d3412511c1fb05dd4ef5a95cd7e5ddf
+
+pkgname = ttf-rubik
+
