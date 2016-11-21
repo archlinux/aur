@@ -1,4 +1,4 @@
-# Maintainer: Andreas Bilke <andreas@bilke.org>
+# Maintainer: Andreas Bilke <abilke at cosy dot sbg dot ac dot at>
 
 pkgname=python-powerlaw
 _pkgname=powerlaw
