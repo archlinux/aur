@@ -14,9 +14,9 @@ provides=("${_pkgbase}" "${_pkgbase}-gtk3")
 conflicts=("${_pkgbase}" "${_pkgbase}-gtk3")
 license=('GPL')
 depends=('dbus' 'desktop-file-utils' 'exempi' 'glib2' 'gtk3' 'gtk-update-icon-cache'
-         'gvfs' 'libexif' 'libunique3' 'libxt' 'mate-desktop-dev'' 'shared-mime-info'
+         'gvfs' 'libexif' 'libunique3' 'libxt' 'mate-desktop-dev' 'shared-mime-info'
          'startup-notification')
-makedepends=('gobject-introspection' 'mate-common-dev'')
+makedepends=('gobject-introspection' 'mate-common-dev')
 optdepends=('gstreamer: automatic media playback when mouseover'
             'gvfs-smb: To connect to Samba/Windows shares')
 groups=('mate')
