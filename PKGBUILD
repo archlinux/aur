@@ -3,7 +3,7 @@
 _pkgname=meld
 pkgname=$_pkgname-git
 pkgver=3.16.0.184.18ff8a6
-pkgrel=2
+pkgrel=3
 _realver=3.16.0.16
 pkgdesc='Visual diff and merge tool'
 arch=('any')
@@ -17,8 +17,7 @@ depends=('python>=3.3'
 	'gtksourceview3>=3.14'
         'python-cairo>=1.10.0-6')
 makedepends=('intltool' 'gnome-doc-utils' 'git' 'itstool')
-optdepends=('python-dbus: open a new tab in an already running instance'
-            'python-gconf: gnome integration')
+optdepends=('python-dbus: open a new tab in an already running instance')
 replaces=('meld')
 provides=("meld=${_realver}")
 conflicts=('meld-dev')
