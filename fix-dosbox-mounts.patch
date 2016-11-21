@@ -1,0 +1,25 @@
+diff --git a/app/dosboxbi2_single.conf b/app/dosboxbi2_single.conf
+--- a/app/dosboxbi2_single.conf
++++ b/app/dosboxbi2_single.conf
+@@ -25,8 +25,8 @@ if errorlevel 1 goto isle2
+ 
+ :isle2
+ cls
+-mount C "..\ISLE2"
+-imgmount d "..\ISLE2\BI2.inst" -t iso -fs iso
++mount C "isle2"
++imgmount d "isle2/bi2.inst" -t iso -fs iso
+ c:
+ cls
+ @BATTLE2.EXE ENG
+@@ -34,8 +34,8 @@ exit
+ 
+ :scenery
+ cls
+-mount C "..\SCENERY"
+-imgmount d "..\SCENERY\BI2scen.inst" -t iso -fs iso
++mount C "scenery"
++imgmount d "scenery/bi2scen.inst" -t iso -fs iso
+ c:
+ cls
+ @INTRO.EXE

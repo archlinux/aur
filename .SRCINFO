@@ -1,0 +1,34 @@
+pkgbase = battle-isle2-gog
+	pkgdesc = A turn-based tactics game which tells the story about the wars on the fictional planet, Chromos.
+	pkgver = 2.2.0.20
+	pkgrel = 1
+	url = https://www.gog.com/game/battle_isle_platinum
+	install = battle-isle2-gog.install
+	arch = any
+	groups = games
+	license = custom:eula
+	makedepends = innoextract
+	makedepends = icoutils
+	depends = dosbox
+	optdepends = unionfs-fuse: mounting game folder to home for savegames and settings
+	source = setup_battle_isle2_2.2.0.20.exe::gogdownloader://battle_isle2/installer_win_en
+	source = battle-isle2-gog.sh
+	source = battle-isle2-gog.desktop
+	source = dosboxbi2_main.conf
+	source = dosboxbi2_addon.conf
+	source = dosbox_windowed.conf
+	source = fix-image-cue.patch
+	source = fix-dosbox-mounts.patch
+	source = fix-permissions.sh
+	sha256sums = 8376ed695366a5495c216ca0ebf7153138318fa2ebff1c78a272b32b89dcbe6f
+	sha256sums = e59720ae6e516c7d78c1174d827ab90e49f084bff5c00204b6d717b1de2ab8cc
+	sha256sums = bb5c13954638d030c740805153aa25db3f94b21e0acef895022f1967d796fed4
+	sha256sums = 0331176b6b3e5505cb81e805cd90a3130bd861403b300b46ca7445aab4b2ca1a
+	sha256sums = 9407e1f77e8ccf1ed20504c42ce13560938e0d5b2412ae249d578a96acad8719
+	sha256sums = 50b601b33522677a9bcaf23edc833329067bb87ccda33039c0b95f0d4ddca578
+	sha256sums = c2164249e7e5968ad356001599f6301c5652bd8d4bed42d36f317ca92b4b2612
+	sha256sums = 1c1917bccab3e7ba21b4a518634122715809a62a9b09cf8a72c9a794db3f02fb
+	sha256sums = f85afa50c4adaf6c9c160da79b6ad77eadf334813f7bdb90eccbaf25bf85d54f
+
+pkgname = battle-isle2-gog
+
