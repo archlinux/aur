@@ -6,7 +6,7 @@
 pkgname=bin32-4l
 pkgver=1.0r6
 _realname=4L-1.0-r6
-pkgrel=9
+pkgrel=10
 pkgdesc="4L: LaCie LightScribe Labeler for Linux"
 arch=('x86_64')
 url="http://www.lacie.com/products/product.htm?pid=10803"
@@ -14,17 +14,15 @@ license=('unknown')
 install=4l.install
 depends=('lib32-fontconfig' 'lib32-gcc-libs' 'lib32-libxcursor' 'lib32-libxi' 'lib32-libxinerama' 'lib32-libxrandr' 'bin32-lightscribe')
 conflicts=('4l_x86_64')
-source=($_realname.i586.rpm::http://www.lacie.com/files/lacie-content/download/drivers/LaCie%20LightScribe%20Labeler%201.0%20Linux.rpm lightscribe.png lightscribe.desktop 4L-cli libstdc++.so.5::https://dl.dropboxusercontent.com/u/29095940/oss/libstdc%2B%2B.so.5)
+source=($_realname.i586.rpm::http://www.lacie.com/files/lacie-content/download/drivers/LaCie%20LightScribe%20Labeler%201.0%20Linux.rpm lightscribe.png lightscribe.desktop 4L-cli)
 md5sums=('11fc8b2daeaed2b61a567056413bdefd'
          '582b6cce827c8909115a31c7bc10d6ce'
          'c6e2b9fb763819213e48c7861ae23431'
-         '3c33a7b89acf9abfc5266b6a4e98e75f'
-         'ca9f92eb5fcb3598fabc2cc6c7125054')
+         '0fa508184d8e96ba5ba28999e075ed34')
 
 package() {
   cd $srcdir
   mkdir -p $pkgdir/{opt/4L/lib,usr/bin}
-  install -D -m644 $srcdir/libstdc++.so.5 $pkgdir/opt/4L/lib/libstdc++.so.5
   cp -R usr/4L $pkgdir/opt
   mv $pkgdir/opt/4L/4L-cli $pkgdir/opt/4L/4L-cli.bin
   install -m755 $srcdir/4L-cli $pkgdir/opt/4L
