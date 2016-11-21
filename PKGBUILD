@@ -2,7 +2,7 @@
 pkgname=vector-web
 _upstream_version=0.9.0
 pkgver="${_upstream_version//-/_}" # sometimes upstream uses hyphens; we can't
-pkgrel=1
+pkgrel=2
 pkgdesc="A glossy Matrix collaboration client for the web"
 arch=('any')
 url='https://github.com/vector-im/vector-web'
@@ -29,6 +29,7 @@ build() {
 
 check() {
     cd "$pkgname-$_upstream_version"
+    unset QT_QPA_PLATFORM # https://github.com/ariya/phantomjs/issues/14061
     npm run test
 }
 
