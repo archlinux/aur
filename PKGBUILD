@@ -2,8 +2,8 @@
 
 _pkgname=moderncv
 pkgname=texlive-moderncv-git
-pkgver=2.0.0.r4.g5a6a8f5
-pkgrel=2
+pkgver=v2.0.0.r10.g2033517
+pkgrel=1
 pkgdesc=" A modern curriculum vitae class for LaTeX"
 arch=('any')
 url="https://github.com/xdanaux/moderncv"
@@ -13,7 +13,7 @@ makedepends=('git')
 conflicts=('texlive-moderncv')
 provides=('texlive-moderncv')
 # I use my personal repo until xdanaux adds a tag in his repo
-source=("git+https://github.com/fcladera/moderncv.git")
+source=("git+https://github.com/xdanaux/moderncv.git")
 md5sums=('SKIP')
 
 pkgver() {
