@@ -1,6 +1,5 @@
 
-# $Id: PKGBUILD 141668 2011-11-02 03:17:12Z eric $
-# Maintainer: Daniel Isenmann <daniel@archlinux.org>
+# Contributor: Daniel Isenmann <daniel@archlinux.org>
 # Contributor: György Balló <ballogy@freestart.hu>
 
 pkgname=banshee
