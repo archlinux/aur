@@ -7,6 +7,15 @@ pkgbase = marco-dev
 	arch = x86_64
 	groups = mate
 	license = GPL
+	depends = glib2
+	depends = libcanberra
+	depends = libgtop
+	depends = libice
+	depends = libsm
+	depends = libxt
+	depends = mate-desktop-dev startup-notification zenity) makedepends=(mate-common-dev
+	depends = yelp-tools
+	optdepends = yelp: for reading MATE help documents
 	provides = marco
 	provides = marco-gtk3
 	conflicts = marco
