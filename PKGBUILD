@@ -1,12 +1,12 @@
-# Maintainer: Michael Duell <michael.duell@rub.de> PGP-Fingerprint: FF8C D50E 66E9 5491 F30C  B75E F32C 939C 5566 FF77
-# Co-Maintainer: Einhard Leichtfuß <archer@respiranto.de>
+# Maintainer: Einhard Leichtfuß <archer@respiranto.de>
+# Contributor: Michael Duell <michael.duell@rub.de> PGP-Fingerprint: FF8C D50E 66E9 5491 F30C  B75E F32C 939C 5566 FF77
 
 pkgname=thunderbird-enigmail-bin
 _pkg_main_ver=1.9
-pkgver=${_pkg_main_ver}.6
-pkgrel=2
+pkgver=${_pkg_main_ver}.6.1
+pkgrel=1
 pkgdesc="The Mozilla Thunderbird GnuPG encryption plugin for both 32 and 64 bit systems. Binary version."
-arch=('i686' 'x86_64')
+arch=('any')
 url="http://www.mozilla-enigmail.org/"
 license=('MPL')
 depends=('thunderbird')
