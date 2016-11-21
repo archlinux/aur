@@ -6,7 +6,7 @@
 pkgname=bluejeans
 pkgver=1.20.25
 pkgrel=1
-pkgdesc="BlueJeans app"
+pkgdesc="BlueJeans desktop app for video calls"
 arch=('x86_64')
 url="https://www.bluejeans.com"
 license=('Proprietary')
@@ -66,15 +66,11 @@ depends=('alsa-lib'
          'wayland'
          'xz'
          'zlib')
-makedepends=('rpmextract')
 install=bluejeans.install
 source=(https://swdl.bluejeans.com/desktop/linux/${pkgver%.*}/${pkgver}/bluejeans-${pkgver}.x86_64.rpm)
 sha256sums=('6507fee589042c88ab7818c26b01752866caed114b8592efbc6c58a7f74aebfc')
 
 package() {
-  # extract rpm
-  rpmextract.sh "bluejeans-${pkgver}.x86_64.rpm"
-
   # add bluejeans wrapper to /usr/bin
   mkdir -p "${pkgdir}/usr/bin"
   chmod +x "opt/bluejeans/bluejeans"
