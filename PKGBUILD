@@ -3,18 +3,18 @@
 pkgbase=python-flask-restful
 pkgname=('python-flask-restful' 'python2-flask-restful')
 _realname=Flask-RESTful
-pkgver=0.3.4
-pkgrel=3
+pkgver=0.3.5
+pkgrel=1
 pkgdesc='A Flask extension for creating REST APIs'
 _baseurl='https://pypi.python.org'
 url="${_baseurl}/pypi/${_realname}"
 arch=('any')
 license=('BSD')
-makedepends=('python-distribute' 'python2-distribute')
+makedepends=('python-distribute' 'python2-distribute' 'python-aniso8601>=0.82' 'python2-aniso8601>=0.82')
 conflicts=('python2-flask-restful-git')
 source=("${_baseurl}/packages/source/F/${_realname}/${_realname}-${pkgver}.tar.gz"
         'LICENSE')
-md5sums=('896aff2720fcd915aacfd5651eab20d1'
+md5sums=('eab04644697354c0e9ef0fa4c17fe607'
          '685bb55ed99a366bb431995f5eef2783')
 
 prepare() {
