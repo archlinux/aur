@@ -1,0 +1,14 @@
+--- src/gudev-sharp/configure.ac	2016-11-21 09:54:23.521457979 +0200
++++ configure.ac	2016-11-21 09:52:27.310764898 +0200
+@@ -17,9 +17,9 @@
+ PKG_CHECK_MODULES(BASE_DEPENDENCIES, gudev-1.0 >= $UDEV_REQUIRED_VERSION)
+ PKG_CHECK_MODULES(MONO_DEPENDENCY, mono >= $MONO_REQUIRED_VERSION, has_mono=true, has_mono=false)
+ 
+-GENERATED_SOURCES=generated/*.cs
++GENERATED_SOURCES='$(shell find generated -name \*.cs)'
+ AC_PATH_PROG(RUNTIME, mono, no)
+-AC_PATH_PROG(CSC, gmcs, no)
++AC_PATH_PROG(CSC, mcs, no)
+ LIB_PREFIX=.so
+ LIB_SUFFIX=
+ 

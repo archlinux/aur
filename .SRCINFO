@@ -1,0 +1,15 @@
+pkgbase = gudev-sharp
+	pkgdesc = Gudev mono bindings
+	pkgver = 0.1
+	pkgrel = 3
+	url = http://github.com/mono/gudev-sharp
+	arch = any
+	license = LGPL
+	depends = gtk-sharp-2
+	source = git+https://github.com/mono/gudev-sharp.git
+	source = actuallycompile.patch
+	md5sums = SKIP
+	md5sums = 9c836d7620949973050f966ca5da4827
+
+pkgname = gudev-sharp
+
