@@ -1,0 +1,13 @@
+pkgbase = gdata-sharp
+	pkgdesc = Provide a simple protocol for reading and writing data on the web.
+	pkgver = 1.7.0.1
+	pkgrel = 3
+	url = http://code.google.com/p/google-gdata/
+	arch = any
+	license = Apache
+	depends = mono
+	source = https://launchpad.net/ubuntu/+archive/primary/+files/gdata-sharp_1.7.0.1.orig.tar.gz
+	sha1sums = 69a643151baacfd6366e62c5cc7542b4c914cd46
+
+pkgname = gdata-sharp
+
