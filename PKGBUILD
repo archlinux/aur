@@ -1,5 +1,5 @@
 pkgname=fortune-mod-theshield
-pkgver=1504091531
+pkgver=1610170050
 pkgrel=1
 _ver=5
 pkgdesc="Fortune quotes from The Shield"
