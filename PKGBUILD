@@ -2,13 +2,13 @@
 
 pkgname=gammu-json
 pkgver=b61ff02
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple command-line utility to display received SMS messages as JSON, or delete messages, using libgammu."
 arch=("any")
 url="https://github.com/browndav/gammu-json"
 license=("GPL3")
 depends=("gammu")
-source=("git+${url}#commit=b61ff02")
+source=("git+${url}#commit=${pkgver}")
 sha256sums=('SKIP')
 
 build() {
