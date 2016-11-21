@@ -3,7 +3,7 @@
 
 pkgname=salientia-git
 pkgver=_
-pkgrel=1
+pkgrel=2
 pkgdesc="Recursive dependency-traversing batch-engraver for GNU Lilypond"
 arch=('i686' 'x86_64')
 url="https://github.com/Beacon515L/salientia"
@@ -28,6 +28,6 @@ package(){
 }
 
 pkgver() {
-  cd "$pkgname"
+  cd $srcdir/salientia
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
