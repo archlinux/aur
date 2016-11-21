@@ -1,7 +1,7 @@
 # Maintainer: qwence <queen.wenceslas@gmail.com>
 # Contributor: Mariusz Libera <mariusz.libera@gmail.com>
 pkgname=xcape
-pkgver=1.1
+pkgver=1.2
 pkgrel=1
 pkgdesc="Configure modifier keys to act as other keys when pressed and released on their own"
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ changelog=ChangeLog
 depends=('libxtst')
 conflicts=('xcape-git')
 source=("https://github.com/alols/xcape/archive/v${pkgver}.tar.gz")
-sha256sums=('69ae927a6b2b1268a809b9c3af7c4f94584458f022beb6e2ca3e6bc3ba8a6d4a')
+sha256sums=('a27ed884fd94f03058af65a39edfe3af3f2f8fbb76ba9920002a76be07fb2821')
 
 build() {
     cd "$pkgname-$pkgver"
