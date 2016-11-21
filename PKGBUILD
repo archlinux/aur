@@ -1,5 +1,5 @@
 pkgname=fortune-mod-2brokegirls
-pkgver=1604030839
+pkgver=1607160254
 pkgrel=1
 _ver=5
 pkgdesc="Fortune quotes from 2 Broke Girls"
