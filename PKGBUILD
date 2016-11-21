@@ -18,10 +18,6 @@ pkgver() {
   echo $(git log -1 --format="%cd" --date=short | sed 's|-||g')
 }
 
-prepare() {
-  sed -i 's+Latin Modern Mono+TeX Gyre Cursor:-liga+' "$_gitname"/tgtermes.tex
-}
-
 build() {
   cd "$_gitname"
   ./configure --dialect=guile --prefix=/usr
