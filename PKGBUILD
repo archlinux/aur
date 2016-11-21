@@ -6,13 +6,13 @@ validpgpkeys=('748231EBCBD808A14F5E85D28C004C2F93481F6B')
 pkgname=storcli
 _pkgname=StorCLI
 pkgver=1.20.15
-pkgrel=1
+pkgrel=2
 _pkgrel=1
 pkgdesc="CLI program for LSI MegaRAID cards, also works with some Dell PERC RAID cards (successor to megaraid-cli)"
 arch=('i686' 'x86_64')
 url="https://www.thomas-krenn.com/en/wiki/StorCLI"
 license=('custom')
-makedepends=('rpmextract')
+#makedepends=('rpmextract')  # no longer needed! see build()
 install=${pkgname}.install
 #conflicts=('megaraid-cli')
 
@@ -26,7 +26,9 @@ then
   _bits=''
 fi
 
-source=("https://square-r00t.net/files/arch/${pkgname}/${pkgver}_${_pkgname}.zip"
+# Thanks to sl1pkn07 on AUR for tracking down the actual URL for me!
+#source=("https://square-r00t.net/files/arch/${pkgname}/${pkgver}_${_pkgname}.zip"
+source=("http://docs.avagotech.com/docs-and-downloads/raid-controllers/raid-controllers-common-files/${pkgver}_${_pkgname}.zip"
 	"${pkgver}_${_pkgname}.zip.sig")
 sha512sums=('8d0bd39c005b26ad0eb3db045ae8f303eb36333b569c1be9d1e599c0845b2427f473015c4f75859dd283f8ec5072a3037f1a0810c9ad54b6b552a9c08bfdba05'
             'SKIP')
@@ -34,7 +36,9 @@ sha512sums=('8d0bd39c005b26ad0eb3db045ae8f303eb36333b569c1be9d1e599c0845b2427f47
 build() {
 	cd ${srcdir}/${pkgname}_All_OS/storcli_All_OS/Linux
 	# Ugh. Avago doesn't distribute binaries, only RPMs. Lame.
-        rpmextract.sh ${pkgname}-${pkgver}-${_pkgrel}.noarch.rpm
+        #rpmextract.sh ${pkgname}-${pkgver}-${_pkgrel}.noarch.rpm
+	# Thanks to sl1pkn07 on AUR for letting me know bsdtar can do RPMs now. Yay!
+	bsdtar -p -o -C . -xf ./${pkgname}-${pkgver}-${_pkgrel}.noarch.rpm
 }
 
 package() {
