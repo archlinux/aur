@@ -3,6 +3,6 @@
 	notifempty
 	delaycompress
 	postrotate
-		kill -USR1 `cat /run/php54-fpm/php-fpm.pid 2>/dev/null` 2>/dev/null || true
+                /bin/kill -SIGUSR1 `cat /run/php54-fpm/php-fpm.pid 2>/dev/null` 2>/dev/null || true
 	endscript
 }

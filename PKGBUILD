@@ -2,25 +2,26 @@
 # Maintainer: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
 
 pkgbase=php54
-pkgname=('php54'
-         'php54-cgi'
-         'php54-apache'
-         'php54-fpm'
-         'php54-embed'
-         'php54-pear'
-         'php54-enchant'
-         'php54-gd'
-         'php54-intl'
-         'php54-ldap'
-         'php54-mcrypt'
-         'php54-mssql'
-         'php54-odbc'
-         'php54-pgsql'
-         'php54-pspell'
-         'php54-snmp'
-         'php54-sqlite'
-         'php54-tidy'
-         'php54-xsl')
+_pkgbase=${pkgbase%54}
+pkgname=("${pkgbase}"
+         "${pkgbase}-cgi"
+         "${pkgbase}-apache"
+         "${pkgbase}-fpm"
+         "${pkgbase}-embed"
+         "${pkgbase}-pear"
+         "${pkgbase}-enchant"
+         "${pkgbase}-gd"
+         "${pkgbase}-intl"
+         "${pkgbase}-ldap"
+         "${pkgbase}-mcrypt"
+         "${pkgbase}-mssql"
+         "${pkgbase}-odbc"
+         "${pkgbase}-pgsql"
+         "${pkgbase}-pspell"
+         "${pkgbase}-snmp"
+         "${pkgbase}-sqlite"
+         "${pkgbase}-tidy"
+         "${pkgbase}-xsl")
 pkgver=5.4.45
 pkgrel=2
 pkgdesc="A general-purpose scripting language that is especially suited to web development"
@@ -32,12 +33,12 @@ makedepends=('apache' 'imap' 'postgresql-libs' 'libldap' 'postfix'
              'libmcrypt' 'tidyhtml' 'aspell' 'libltdl' 'libpng' 'libjpeg' 'icu'
              'curl' 'libxslt' 'openssl' 'bzip2' 'db' 'gmp' 'freetype2'
              'pkg-config' 'systemd')
-source=("http://php.net/distributions/${pkgbase%54}-${pkgver}.tar.bz2"
+source=("http://php.net/distributions/${_pkgbase}-${pkgver}.tar.bz2"
         'php.ini.patch' 'apache.conf' 'php-fpm.conf.in.patch'
         'logrotate.d.php-fpm' 'php-fpm.service' 'php-fpm.tmpfiles')
 
 prepare() {
-	cd ${srcdir}/${pkgbase%54}-${pkgver}
+	cd ${srcdir}/${_pkgbase}-${pkgver}
 
 	# fix man pages (bug #66842)
 	# sed '/.1 | xargs rm -f$/d' -i Makefile.global
@@ -56,21 +57,20 @@ prepare() {
 }
 
 build() {
-	local _phpconfig="--srcdir=../${pkgbase%54}-${pkgver} \
-		--config-cache \
-		--prefix=/opt/php54 \
-		--sysconfdir=/etc/php54 \
-		--localstatedir=/var \
-		--with-layout=GNU \
-		--with-config-file-path=/etc/php54 \
-		--with-config-file-scan-dir=/etc/php54/conf.d \
-		--enable-inline-optimization \
-		--disable-debug \
-		--disable-rpath \
-		--disable-static \
-		--enable-shared \
-		--mandir=/usr/share/man \
-		--without-pear \
+	local _phpconfig="--srcdir=../${_pkgbase}-${pkgver} \
+    --config-cache \
+    --prefix=/usr \
+    --sysconfdir=/etc/${pkgbase} \
+    --localstatedir=/var \
+    --libdir=/usr/lib/${pkgbase} \
+    --datarootdir=/usr/share/${pkgbase} \
+    --datadir=/usr/share/${pkgbase} \
+    --program-suffix=${pkgbase#php} \
+    --with-layout=GNU \
+    --with-config-file-path=/etc/${pkgbase} \
+    --with-config-file-scan-dir=/etc/${pkgbase}/conf.d \
+    --disable-rpath \
+    --without-pear \
 		"
 
 	local _phpextensions="--enable-bcmath=shared \
@@ -139,15 +139,15 @@ build() {
 		--without-db3 \
 		"
 
-	export EXTENSION_DIR=/opt/php54/modules
-	export PEAR_INSTALLDIR=/opt/php54/pear
+    export EXTENSION_DIR=/usr/lib/${pkgbase}/modules
+  	export PEAR_INSTALLDIR=/usr/share/${pkgbase}/pear
 
 	msg2 "Building CLI"
 	cd "$srcdir"
 	rm -rf build-php
 	mkdir build-php
 	cd build-php
-	ln -s ../${pkgbase%54}-${pkgver}/configure
+	ln -s ../${_pkgbase}-${pkgver}/configure
 	./configure ${_phpconfig} \
 		--disable-cgi \
 		--with-readline \
@@ -219,175 +219,227 @@ build() {
 
 package_php54() {
 	pkgdesc='An HTML-embedded scripting language'
-	provides=("php=$pkgver")
 	depends=('pcre' 'libxml2' 'bzip2' 'curl')
-	backup=('etc/php54/php.ini')
+  backup=("etc/${pkgbase}/php.ini")
+	provides=("${_pkgbase}=$pkgver")
 
-	cd ${srcdir}/build-php
-	make -j1 INSTALL_ROOT=${pkgdir} install
+  cd ${srcdir}/build-php
+  make -j1 INSTALL_ROOT=${pkgdir} install
 
-	# install php.ini
-	install -D -m644 ${srcdir}/${pkgbase%54}-${pkgver}/php.ini-production ${pkgdir}/etc/php54/php.ini
-	install -d -m755 ${pkgdir}/etc/php54/conf.d/
+  # install php.ini
+  install -D -m644 ${srcdir}/${_pkgbase}-${pkgver}/php.ini-production ${pkgdir}/etc/${pkgbase}/php.ini
+  install -d -m755 ${pkgdir}/etc/${pkgbase}/conf.d/
 
-	# links
-	install -dm755 "$pkgdir/usr/bin"
-	for bin in php phar; do
-		ln -s /opt/php54/bin/$bin "$pkgdir/usr/bin/${bin}54"
-	done
+  # remove static modules
+  rm -f ${pkgdir}/usr/lib/${pkgbase}/modules/*.a
+  # remove modules provided by sub packages
+  rm -f ${pkgdir}/usr/lib/${pkgbase}/modules/{enchant,gd,imap,intl,ldap,mcrypt,mssql,odbc,pdo_odbc,pgsql,pdo_pgsql,pspell,snmp,sqlite3,pdo_sqlite,tidy,xsl}.so
 
-	# remove conflicting files
-	rm -rf ${pkgdir}/usr/share/man
+  # remove empty directory
+  rmdir ${pkgdir}/usr/include/php/include
 
-	# remove static modules
-	rm -f ${pkgdir}/opt/php54/modules/*.a
-	# remove modules provided by sub packages
-	rm -f ${pkgdir}/opt/php54/modules/{enchant,gd,intl,ldap,mcrypt,mssql,odbc,pdo_odbc,pgsql,pdo_pgsql,pspell,snmp,sqlite3,pdo_sqlite,tidy,xsl}.so
-}
+  # move include directory
+  mv ${pkgdir}/usr/include/php ${pkgdir}/usr/include/${pkgbase}
+
+  # fix phar symlink
+  rm ${pkgdir}/usr/bin/phar
+  ln -sf phar.${pkgbase/php/phar} ${pkgdir}/usr/bin/${pkgbase/php/phar}
+
+  # rename executables
+  mv ${pkgdir}/usr/bin/phar.{phar,${pkgbase/php/phar}}
+
+  # rename man pages
+  mv ${pkgdir}/usr/share/man/man1/{phar,${pkgbase/php/phar}}.1
+  mv ${pkgdir}/usr/share/man/man1/phar.{phar,${pkgbase/php/phar}}.1
+
+  # fix paths in executables
+  sed -i "/^includedir=/c \includedir=/usr/include/${pkgbase}" ${pkgdir}/usr/bin/${pkgbase/php/phpize}
+  sed -i "/^include_dir=/c \include_dir=/usr/include/${pkgbase}" ${pkgdir}/usr/bin/${pkgbase/php/php-config}
+
+  # make phpize use php-config55
+  sed -i "/^\[  --with-php-config=/c \[  --with-php-config=PATH  Path to php-config [${pkgbase/php/php-config}]], ${pkgbase/php/php-config}, no)" ${pkgdir}/usr/lib/${pkgbase}/build/phpize.m4
+  }
 
 package_php54-cgi() {
 	pkgdesc='CGI and FCGI SAPI for PHP'
-	depends=('php54')
+	depends=("${pkgbase}")
+	provides=("${_pkgbase}-cgi=$pkgver")
 
-	install -D -m755 ${srcdir}/build-cgi/sapi/cgi/php-cgi ${pkgdir}/opt/php54/bin/php-cgi
+	install -D -m755 ${srcdir}/build-cgi/sapi/cgi/php-cgi ${pkgdir}/usr/bin/${pkgbase}-cgi
 }
 
 package_php54-apache() {
 	pkgdesc='Apache SAPI for PHP'
-# 	conflicts="php-apache"
-	depends=('php54' 'apache')
-	backup=('etc/httpd/conf/extra/php5_module.conf')
+	depends=("${pkgbase}" 'apache')
+	provides=("${_pkgbase}-apache=$pkgver")
+	backup=("etc/httpd/conf/extra/${pkgbase}_module.conf")
+	install='php-apache.install'
 
-	install -D -m755 ${srcdir}/build-apache/libs/libphp5.so ${pkgdir}/usr/lib/httpd/modules/libphp5.so
-	install -D -m644 ${srcdir}/apache.conf ${pkgdir}/etc/httpd/conf/extra/php5_module.conf
+	install -D -m755 ${srcdir}/build-apache/libs/libphp5.so ${pkgdir}/usr/lib/httpd/modules/lib${pkgbase}.so
+	install -D -m644 ${srcdir}/apache.conf ${pkgdir}/etc/httpd/conf/extra/${pkgbase}_module.conf
 }
 
 package_php54-fpm() {
 	pkgdesc='FastCGI Process Manager for PHP'
-	depends=('php54' 'systemd')
-	backup=('etc/php54/php-fpm.conf')
+	depends=("${pkgbase}" 'systemd')
+	provides=("${_pkgbase}-fpm=$pkgver")
+	backup=("etc/${pkgbase}/php-fpm.conf")
 	install='php-fpm.install'
 
-	install -D -m755 ${srcdir}/build-fpm/sapi/fpm/php-fpm ${pkgdir}/opt/php54/bin/php-fpm
-	install -D -m644 ${srcdir}/build-fpm/sapi/fpm/php-fpm.conf ${pkgdir}/etc/php54/php-fpm.conf
-	install -D -m644 ${srcdir}/logrotate.d.php-fpm ${pkgdir}/etc/logrotate.d/php54-fpm
-	install -d -m755 ${pkgdir}/etc/php54/fpm.d
-	install -D -m644 ${srcdir}/php-fpm.tmpfiles ${pkgdir}/usr/lib/tmpfiles.d/php54-fpm.conf
-	install -D -m644 ${srcdir}/php-fpm.service ${pkgdir}/usr/lib/systemd/system/php54-fpm.service
+	install -d -m755 ${pkgdir}/usr/bin
+	install -D -m755 ${srcdir}/build-fpm/sapi/fpm/php-fpm ${pkgdir}/usr/bin/${pkgbase}-fpm
+
+	install -D -m644 ${srcdir}/build-fpm/sapi/fpm/php-fpm.8 ${pkgdir}/usr/share/man/man8/${pkgbase}-fpm.8
+	install -D -m644 ${srcdir}/build-fpm/sapi/fpm/php-fpm.conf ${pkgdir}/etc/${pkgbase}/php-fpm.conf
+
+	install -d -m755 ${pkgdir}/etc/${pkgbase}/fpm.d
+	install -D -m644 ${srcdir}/php-fpm.tmpfiles ${pkgdir}/usr/lib/tmpfiles.d/${pkgbase}-fpm.conf
+	install -D -m644 ${srcdir}/php-fpm.service ${pkgdir}/usr/lib/systemd/system/${pkgbase}-fpm.service
+
+	install -d -m755 ${pkgdir}/etc/logrotate.d
+	install -D -m644 ${srcdir}/logrotate.d.php-fpm ${pkgdir}/etc/logrotate.d/${pkgbase}-fpm
 }
 
 package_php54-embed() {
-	pkgdesc='Embed SAPI for PHP'
-	depends=('php54')
+	pkgdesc='Embedded PHP SAPI library'
+	depends=("${pkgbase}")
+	provides=("${_pkgbase}-embed=$pkgver")
 
-	install -D -m755 ${srcdir}/build-embed/libs/libphp5.so ${pkgdir}/opt/php54/lib/libphp5.so
-	install -D -m644 ${srcdir}/php-${pkgver}/sapi/embed/php_embed.h ${pkgdir}/opt/php54/include/php/sapi/embed/php_embed.h
+	install -D -m755 ${srcdir}/build-embed/libs/libphp5.so ${pkgdir}/usr/lib/libphp55.so
+	install -D -m644 ${srcdir}/${_pkgbase}-${pkgver}/sapi/embed/php_embed.h ${pkgdir}/usr/include/${pkgbase}/sapi/embed/php_embed.h
 }
 
 package_php54-pear() {
 	pkgdesc='PHP Extension and Application Repository'
-	depends=('php54')
-	backup=('etc/php54/pear.conf')
+	depends=("${pkgbase}")
+	provides=("${_pkgbase}-pear=$pkgver")
+	backup=("etc/${pkgbase}/pear.conf")
 
 	cd ${srcdir}/build-pear
-	make -j1 install-pear INSTALL_ROOT=${pkgdir}
-	local i
-	while read i; do
-		[ ! -e "$i" ] || rm -rf "$i"
-	done < <(find ${pkgdir} -name '.*')
+	make install-pear INSTALL_ROOT=${pkgdir}
+	rm -rf ${pkgdir}/usr/share/${pkgbase}/pear/.{channels,depdb,depdblock,filemap,lock,registry}
 
-	# links
-	install -dm755 "$pkgdir/usr/bin"
-	for bin in pear pecl; do
-		ln -s /opt/php54/bin/$bin "$pkgdir/usr/bin/${bin}54"
-	done
+	mv ${pkgdir}/usr/bin/{pear,${pkgbase/php/pear}}
+	mv ${pkgdir}/usr/bin/{peardev,${pkgbase/php/peardev}}
+	mv ${pkgdir}/usr/bin/{pecl,${pkgbase/php/pecl}}
+
+	# fix hardcoded php paths in pear
+	sed -i 's|/usr/bin/php|/usr/bin/php55|g' "${pkgdir}/usr/bin/pear55"
+	sed -i 's|PHP=php|PHP=php55|g' "${pkgdir}/usr/bin/pear55"
+	sed -i 's|s:7:"php_bin";s:12:"/usr/bin/php"|s:7:"php_bin";s:14:"/usr/bin/php55"|' "${pkgdir}/etc/${pkgbase}/pear.conf"
 }
 
 package_php54-enchant() {
-	depends=('php54' 'enchant')
 	pkgdesc='enchant module for PHP'
-	install -D -m755 ${srcdir}/build-php/modules/enchant.so ${pkgdir}/opt/php54/modules/enchant.so
+	depends=("${pkgbase}" 'enchant')
+	provides=("${_pkgbase}-enchant=$pkgver")
+
+	install -D -m755 ${srcdir}/build-php/modules/enchant.so ${pkgdir}/usr/lib/${pkgbase}/modules/enchant.so
 }
 
 package_php54-gd() {
-	depends=('php54' 'libpng' 'libjpeg' 'freetype2')
 	pkgdesc='gd module for PHP'
-	install -D -m755 ${srcdir}/build-php/modules/gd.so ${pkgdir}/opt/php54/modules/gd.so
+	depends=("${pkgbase}" 'gd')
+	provides=("${_pkgbase}-gd=$pkgver")
+
+	install -D -m755 ${srcdir}/build-php/modules/gd.so ${pkgdir}/usr/lib/${pkgbase}/modules/gd.so
 }
 
 package_php54-intl() {
-	depends=('php54' 'icu')
 	pkgdesc='intl module for PHP'
-	install -D -m755 ${srcdir}/build-php/modules/intl.so ${pkgdir}/opt/php54/modules/intl.so
+	depends=("${pkgbase}" 'icu')
+	provides=("${_pkgbase}-intl=$pkgver")
+
+	install -D -m755 ${srcdir}/build-php/modules/intl.so ${pkgdir}/usr/lib/${pkgbase}/modules/intl.so
 }
 
 package_php54-ldap() {
-	depends=('php54' 'libldap')
 	pkgdesc='ldap module for PHP'
-	install -D -m755 ${srcdir}/build-php/modules/ldap.so ${pkgdir}/opt/php54/modules/ldap.so
+	depends=("${pkgbase}" 'libldap')
+	provides=("${pkgbase}-ldap=$pkgver")
+
+	install -D -m755 ${srcdir}/build-php/modules/ldap.so ${pkgdir}/usr/lib/${pkgbase}/modules/ldap.so
 }
 
 package_php54-mcrypt() {
-	depends=('php54' 'libmcrypt' 'libltdl')
 	pkgdesc='mcrypt module for PHP'
-	install -D -m755 ${srcdir}/build-php/modules/mcrypt.so ${pkgdir}/opt/php54/modules/mcrypt.so
+	depends=("${pkgbase}" 'libmcrypt' 'libltdl')
+	provides=("${_pkgbase}-mcrypt=$pkgver")
+
+	install -D -m755 ${srcdir}/build-php/modules/mcrypt.so ${pkgdir}/usr/lib/${pkgbase}/modules/mcrypt.so
 }
 
 package_php54-mssql() {
-	depends=('php54' 'freetds')
 	pkgdesc='mssql module for PHP'
-	install -D -m755 ${srcdir}/build-php/modules/mssql.so ${pkgdir}/opt/php54/modules/mssql.so
+	depends=("${pkgbase}" 'freetds')
+	provides=("${_pkgbase}-mssql=$pkgver")
+
+	install -D -m755 ${srcdir}/build-php/modules/mssql.so ${pkgdir}/usr/lib/${pkgbase}/modules/mssql.so
 }
 
 package_php54-odbc() {
-	depends=('php54' 'unixodbc')
 	pkgdesc='ODBC modules for PHP'
-	install -D -m755 ${srcdir}/build-php/modules/odbc.so ${pkgdir}/opt/php54/modules/odbc.so
-	install -D -m755 ${srcdir}/build-php/modules/pdo_odbc.so ${pkgdir}/opt/php54/modules/pdo_odbc.so
+	depends=("${pkgbase}" 'unixodbc')
+	provides=("${_pkgbase}-odbc=$pkgver")
+
+	install -D -m755 ${srcdir}/build-php/modules/odbc.so ${pkgdir}/usr/lib/${pkgbase}/modules/odbc.so
+	install -D -m755 ${srcdir}/build-php/modules/pdo_odbc.so ${pkgdir}/usr/lib/${pkgbase}/modules/pdo_odbc.so
 }
 
 package_php54-pgsql() {
-	depends=('php54' 'postgresql-libs')
 	pkgdesc='PostgreSQL modules for PHP'
-	install -D -m755 ${srcdir}/build-php/modules/pgsql.so ${pkgdir}/opt/php54/modules/pgsql.so
-	install -D -m755 ${srcdir}/build-php/modules/pdo_pgsql.so ${pkgdir}/opt/php54/modules/pdo_pgsql.so
+	depends=("${pkgbase}" 'postgresql-libs')
+	provides=("${_pkgbase}-pgsql=$pkgver")
+
+	install -D -m755 ${srcdir}/build-php/modules/pgsql.so ${pkgdir}/usr/lib/${pkgbase}/modules/pgsql.so
+	install -D -m755 ${srcdir}/build-php/modules/pdo_pgsql.so ${pkgdir}/usr/lib/${pkgbase}/modules/pdo_pgsql.so
 }
 
 package_php54-pspell() {
-	depends=('php54' 'aspell')
 	pkgdesc='pspell module for PHP'
-	install -D -m755 ${srcdir}/build-php/modules/pspell.so ${pkgdir}/opt/php54/modules/pspell.so
+	depends=("${pkgbase}" 'aspell')
+	provides=("${_pkgbase}-pspell=$pkgver")
+
+	install -D -m755 ${srcdir}/build-php/modules/pspell.so ${pkgdir}/usr/lib/${pkgbase}/modules/pspell.so
 }
 
 package_php54-snmp() {
-	depends=('php54' 'net-snmp')
 	pkgdesc='snmp module for PHP'
-	install -D -m755 ${srcdir}/build-php/modules/snmp.so ${pkgdir}/opt/php54/modules/snmp.so
+	depends=("${pkgbase}" 'net-snmp')
+	provides=("${_pkgbase}-snmp=$pkgver")
+
+	install -D -m755 ${srcdir}/build-php/modules/snmp.so ${pkgdir}/usr/lib/${pkgbase}/modules/snmp.so
 }
 
 package_php54-sqlite() {
-	depends=('php54' 'sqlite')
 	pkgdesc='sqlite module for PHP'
-	install -D -m755 ${srcdir}/build-php/modules/sqlite3.so ${pkgdir}/opt/php54/modules/sqlite3.so
-	install -D -m755 ${srcdir}/build-php/modules/pdo_sqlite.so ${pkgdir}/opt/php54/modules/pdo_sqlite.so
+	depends=("${pkgbase}" 'sqlite')
+	provides=("${_pkgbase}-sqlite=$pkgver")
+
+	install -D -m755 ${srcdir}/build-php/modules/sqlite3.so ${pkgdir}/usr/lib/${pkgbase}/modules/sqlite3.so
+	install -D -m755 ${srcdir}/build-php/modules/pdo_sqlite.so ${pkgdir}/usr/lib/${pkgbase}/modules/pdo_sqlite.so
 }
 
 package_php54-tidy() {
-	depends=('php54' 'tidyhtml')
 	pkgdesc='tidy module for PHP'
-	install -D -m755 ${srcdir}/build-php/modules/tidy.so ${pkgdir}/opt/php54/modules/tidy.so
+	depends=("${pkgbase}" 'tidyhtml')
+	provides=("${_pkgbase}-tidy=$pkgver")
+
+	install -D -m755 ${srcdir}/build-php/modules/tidy.so ${pkgdir}/usr/lib/${pkgbase}/modules/tidy.so
 }
 
 package_php54-xsl() {
-	depends=('php54' 'libxslt')
 	pkgdesc='xsl module for PHP'
-	install -D -m755 ${srcdir}/build-php/modules/xsl.so ${pkgdir}/opt/php54/modules/xsl.so
+	depends=("${pkgbase}" 'libxslt')
+	provides=("${_pkgbase}-xsl=$pkgver")
+
+	install -D -m755 ${srcdir}/build-php/modules/xsl.so ${pkgdir}/usr/lib/${pkgbase}/modules/xsl.so
 }
 
 sha256sums=('4e0d28b1554c95cfaea6fa2b64aac85433f158ce72bb571bcd5574f98f4c6582'
-            '5498ed2eb6ca5c96384873c2c83db36df82af79100e7543a6d0b17539e0304e2'
-            '6ee6ed48b8416390c56b2e32b75c79f85586431b5c44c48ed22ae6a8dbe68332'
-            '63d88e95e1ef6e9bed1a695cb56f4c1e2dc768077c64fce45f927b6bee8b1dbf'
-            '185d18221b09a43a0d5a05f9d3455f2f5514bb2b4751df98f297a3b4983c6fdb'
-            '72eb165f7074df22a623428b71b03269e7e4d41cae14da41166ec746ab18cd92'
-            '640dba0d960bfeaae9ad38d2826d3f6b5d6c175a4d3e16664eefff29141faad5')
+            '25e94a6caa31b7bbef7e4e7f0e79087f6b53aa45f138efbe3a279704aa3c0484'
+            '8b5b15f1c348d8897d837ea9894157d9630dc542bbb0dbc7ad93c5dc0235d1d5'
+            'a03c39a495a959eccab1534cc442199d1d06ded4d5acc135c40f395b49c3a449'
+            'c4caad0b782d175e3a463199903eb491e3f2f925e6068b72d9ce7bd9184014ba'
+            '92dc7a165e9e84b46b1a510c0d89642a8d3f0fc6787c0e7c3c4ba5080c06d1b3'
+            'ff65ed80264ff16e8ff8230d603a899947411538d96773dc098b399ab6c95919')

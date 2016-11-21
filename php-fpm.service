@@ -3,11 +3,11 @@ Description=The PHP 5.4 FastCGI Process Manager
 After=syslog.target network.target
 
 [Service]
-Type=forking
-PIDFile=/run/php-fpm/php54-fpm.pid
+Type=notify
+PIDFile=/run/php54-fpm/php-fpm.pid
 PrivateTmp=true
-ExecStart=/opt/php54/bin/php-fpm --pid /run/php-fpm/php54-fpm.pid
-ExecReload=/usr/bin/kill -USR2 $MAINPID
+ExecStart=/usr/bin/php54-fpm --nodaemonize --pid /run/php54-fpm/php-fpm.pid
+ExecReload=/bin/kill -USR2 $MAINPID
 
 [Install]
 WantedBy=multi-user.target
