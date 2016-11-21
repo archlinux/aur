@@ -4,7 +4,7 @@
 # delete the $srcdir directory before building
 
 pkgname=lilypond-git
-pkgver=2.19.51.1.1.ge45e1de
+pkgver=2.19.51.1.3.g4934b31
 pkgrel=1
 pkgdesc="An automated music engraving system (Git snapshot)"
 arch=('i686' 'x86_64')
@@ -12,8 +12,7 @@ url="http://lilypond.org/"
 license=('GPL')
 depends=('guile=2.0.13' 'pango' 'python2')
 makedepends=('fontforge' 'git' 'gsfonts' 't1utils' 'ghostscript'
-	     'dblatex' 'texlive-langcyrillic' 'tex-gyre-fonts'
-	     'texi2html' 'netpbm')
+	     'dblatex' 'texlive-langcyrillic' 'texi2html' 'netpbm')
 optdepends=('imagemagick: building HTML documentation'
             'ttf-kochi-substitute: building HTML documentation'
             'texi2html>=1.82: building HTML documentation'
