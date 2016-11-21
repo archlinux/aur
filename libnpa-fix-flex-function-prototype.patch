@@ -1,0 +1,53 @@
+From 3b3dfe69b694b6a8b67c53f87d605a6414fb0379 Mon Sep 17 00:00:00 2001
+From: Carsten Teibes <dev@f4ke.de>
+Date: Mon, 21 Nov 2016 01:13:22 +0100
+Subject: [PATCH] Fix flex function prototype for flex >= 2.6.1 Add explicit
+ flex/bison dependency for CMake
+
+---
+ CMakeLists.txt   | 5 +++--
+ include/flex.hpp | 5 ++---
+ 2 files changed, 5 insertions(+), 5 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index e3f10a1..5d5abe3 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -59,6 +59,7 @@ endif()
+ 
+ flex_target(lexer ${CMAKE_SOURCE_DIR}/src/lexer.l ${CMAKE_SOURCE_DIR}/src/lexer.cpp)
+ bison_target(parser ${CMAKE_SOURCE_DIR}/src/parser.y ${CMAKE_SOURCE_DIR}/src/parser.cpp)
++add_flex_bison_dependency(lexer parser)
+ 
+ add_library(npa SHARED
+     src/inpafile.cpp
+@@ -73,8 +74,8 @@ add_library(npa SHARED
+     src/npakeys.cpp
+     src/buffer.cpp
+     src/nsscompiler.cpp
+-    src/parser.cpp
+-    src/lexer.cpp
++    ${BISON_parser_OUTPUTS}
++    ${FLEX_lexer_OUTPUTS}
+     src/nsbconstants.cpp
+ )
+ target_link_libraries(npa ${Boost_LIBRARIES} ${ZLIB_LIBRARIES})
+diff --git a/include/flex.hpp b/include/flex.hpp
+index 6bce9bd..962fc25 100644
+--- a/include/flex.hpp
++++ b/include/flex.hpp
+@@ -3,9 +3,8 @@
+ 
+ typedef struct yy_buffer_state* YY_BUFFER_STATE;
+ extern int yyparse();
+-#if ((FLEX_VERSION_MAJOR) > 2 || \
+-    ((FLEX_VERSION_MAJOR == 2 && FLEX_VERSION_MINOR > 5) || \
+-    ((FLEX_VERSION_MAJOR == 2 && FLEX_VERSION_MINOR == 5 && FLEX_VERSION_PATCH > 35))))
++#if ((FLEX_VERSION_MAJOR == 2 && FLEX_VERSION_MINOR == 6 && FLEX_VERSION_PATCH == 0) || \
++    (FLEX_VERSION_MAJOR == 2 && FLEX_VERSION_MINOR == 5 && FLEX_VERSION_PATCH > 35))
+ extern YY_BUFFER_STATE yy_scan_bytes(const char* bytes, size_t len);
+ #else
+ extern YY_BUFFER_STATE yy_scan_bytes(const char* bytes, int len);
+-- 
+2.10.2
+
