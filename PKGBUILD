@@ -4,8 +4,8 @@
 
 _name=SuperCollider
 pkgname=supercollider-with-plugins
-pkgver=3.7.2
-pkgrel=2
+pkgver=3.8.0
+pkgrel=1
 pkgdesc="An environment and programming language for real time audio synthesis and algorithmic composition. Current version including sc3-plugins."
 arch=('i686' 'x86_64')
 conflicts=('supercollider' 'sc3-plugins-git')
@@ -21,8 +21,8 @@ optdepends=('emacs: emacs interface'
 source=("https://github.com/supercollider/supercollider/releases/download/Version-$pkgver/$_name-$pkgver-Source-linux.tar.bz2"
         "https://github.com/supercollider/sc3-plugins/archive/Version-$pkgver.tar.gz"
         "https://ccrma.stanford.edu/software/stk/release/stk-4.5.1.tar.gz")
-md5sums=('cb89a68bf599205d3c33ee1ee1e13ea0'
-         'b007e0fe7a82b49a1f2aeeded0e1169a'
+md5sums=('f9c077e92707ae187c5f10cfddccf291'
+         '3055c8f07144e08672b814b586985691'
          '87e1b1a24ec09f81321c01f2cdea513d')
 
 prepare() {
