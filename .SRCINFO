@@ -1,6 +1,6 @@
 pkgbase = tidb-bin
 	pkgdesc = A distributed NewSQL database compatible with MySQL protocol
-	pkgver = 0.0.1.20161115092053
+	pkgver = 0.0.1.20161121123732
 	pkgrel = 1
 	url = https://github.com/pingcap/tidb
 	arch = x86_64
