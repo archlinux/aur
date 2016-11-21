@@ -1,7 +1,7 @@
 # Maintainer: Mattias Andrée <`base64 -d`(bWFhbmRyZWUK)@member.fsf.org>
 
 pkgname=dooble
-pkgver=1.56a
+pkgver=1.56b
 pkgrel=1
 pkgdesc='A safe WebKit Web browser'
 url='http://dooble.sourceforge.net/'
@@ -9,8 +9,8 @@ arch=('i686' 'x86_64')
 license=('custom:3-clause BSD')
 depends=('libpng' 'qt5-base' 'qt5-webkit' 'openssl' 'libspoton=2015.06.17' "dooble-common=${pkgver}")
 makedepends=('libpng' 'qt5-base' 'qt5-webkit' 'openssl' 'qt5-tools' 'sed' 'coreutils')
-source=("dooble-${pkgver}.tar.gz::https://downloads.sourceforge.net/project/dooble/Version%20${pkgver}/Dooble.d.tar.gz?r=")
-sha256sums=('3c89e0767250aa52faadf07fb62f7090c908d12efebcca9b4ba26dc3e7beda09')
+source=("dooble-${pkgver}.tar.gz::https://downloads.sourceforge.net/project/dooble/Version%20${pkgver}/dooble-master.zip?r=")
+sha256sums=('c4e2df630473bf4f16431462424a2f91a7fb7e0918f32e4e8674a79076eda23d')
 
 # Dependency (from ldd output) tree:
 # libpng
@@ -53,7 +53,7 @@ sha256sums=('3c89e0767250aa52faadf07fb62f7090c908d12efebcca9b4ba26dc3e7beda09')
 
 build()
 {
-    cd "$srcdir/dooble.d/Version 1.x/"
+    cd "$srcdir/dooble-master/Version 1.x/"
     sed -i 's_-Werror__g' dooble.qt5.pro
     sed -i 's_-lspoton_-lspoton -lQt5PrintSupport_g' dooble.qt5.pro
     qmake-qt5 -o Makefile dooble.qt5.pro
@@ -68,7 +68,7 @@ build()
 
 package()
 {
-    cd "$srcdir/dooble.d/Version 1.x/"
+    cd "$srcdir/dooble-master/Version 1.x/"
     install -Dm755  Dooble         -- "${pkgdir}/usr/lib/${pkgname}/Dooble"
     install -Dm755  dooble.sh      -- "${pkgdir}/usr/bin/${pkgname}"
     install -Dm644  dooble.desktop -- "${pkgdir}/usr/share/applications/${pkgname}.desktop"
