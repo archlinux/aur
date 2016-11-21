@@ -32,14 +32,8 @@ package()
 {
     cd $pkgname
 
-
-    if [ "$CARCH" -eq "i686" ]; then
-        mkdir -p $pkgdir/usr/lib32
-        cp easyexif.a $pkgdir/usr/lib32/
-    else
-        mkdir -p $pkgdir/usr/lib64
-        cp easyexif.a $pkgdir/usr/lib64/
-    fi
+    mkdir -p $pkgdir/usr/lib
+    cp easyexif.a $pkgdir/usr/lib
 
     mkdir -p $pkgdir/usr/include
     cp exif.h $pkgdir/usr/include/
