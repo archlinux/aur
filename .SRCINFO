@@ -6,7 +6,9 @@ pkgbase = cnijfilter-ip2700series
 	arch = i686
 	arch = x86_64
 	license = custom
-	makedepends = rpmextract
+	depends = lib32-libcups
+	depends = lib32-popt
+	depends = libpng12
 	source = http://gdlp01.c-wss.com/gds/6/0100002716/01/cnijfilter-ip2700series-3.30-1-i386-rpm.tar.gz
 	md5sums = 77a18b685c8cf884e752414066473b9a
 

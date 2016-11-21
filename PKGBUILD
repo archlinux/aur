@@ -13,7 +13,6 @@ if [ "${CARCH}" = 'x86_64' ]; then
 elif [ "${CARCH}" = 'i686' ]; then
     depends=('libcups' 'popt' 'libpng12')
 fi
-makedepends=('rpmextract')
 source=(http://gdlp01.c-wss.com/gds/6/0100002716/01/${pkgname}-${pkgver}-1-i386-rpm.tar.gz)
 md5sums=('77a18b685c8cf884e752414066473b9a')
 
