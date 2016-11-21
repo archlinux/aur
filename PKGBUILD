@@ -1,8 +1,7 @@
 # Maintainer: Jim Heald <james.r.heald@gmail.com>
 
 pkgname=pyflowchart-git
-pkgver=0.9
-pkgrel=1
+pkgver=0.9.1
 pkgdesc="Application to help manage cirriculum flowcharts at CalPoly"
 arch=('any')
 url="https://github.com/steelcowboy/PyFlowChart"
