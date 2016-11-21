@@ -2,11 +2,11 @@
 # Contributor:  eadrom <eadrom@archlinux.info>
 # Contributor:  Martin Wimpress <code@flexion.org>
 
-_ver=1.15
+_ver=1.17
 _pkgbase=caja-extensions
 pkgname=('caja-extensions-common-dev' 'caja-gksu-dev' 'caja-image-converter-dev' 'caja-open-terminal-dev' 'caja-sendto-dev' 'caja-share-dev' 'caja-wallpaper-dev')
 pkgver=${_ver}.0
-pkgrel=4
+pkgrel=1
 pkgdesc="MATE extensions for Caja (GTK3 version)"
 url="http://mate-desktop.org"
 arch=("i686" "x86_64")
@@ -15,7 +15,7 @@ depends=("caja-dev" "dbus-glib" "gksu" "gtk3" "gupnp" "imagemagick" "samba")
 groups=("mate-extra")
 makedepends=("mate-common-dev" "caja-dev")
 source=("http://pub.mate-desktop.org/releases/${_ver}/${_pkgbase}-${pkgver}.tar.xz")
-sha1sums=("f4299e99fe889038834ab9743cf6418f01a777cc")
+sha1sums=("9b15862229c38445ef94afa600")
 
 prepare() {
     cd "${srcdir}"

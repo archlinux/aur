@@ -1,7 +1,7 @@
 pkgbase = caja-extensions-common-dev
 	pkgdesc = MATE extensions for Caja (GTK3 version)
-	pkgver = 1.15.0
-	pkgrel = 4
+	pkgver = 1.17.0
+	pkgrel = 1
 	url = http://mate-desktop.org
 	arch = i686
 	arch = x86_64
@@ -16,8 +16,8 @@ pkgbase = caja-extensions-common-dev
 	depends = gupnp
 	depends = imagemagick
 	depends = samba
-	source = http://pub.mate-desktop.org/releases/1.15/caja-extensions-1.15.0.tar.xz
-	sha1sums = f4299e99fe889038834ab9743cf6418f01a777cc
+	source = http://pub.mate-desktop.org/releases/1.17/caja-extensions-1.17.0.tar.xz
+	sha1sums = 9b15862229c38445ef94afa600
 
 pkgname = caja-extensions-common-dev
 	pkgdesc = Caja extensions common files (GTK3 version)
