@@ -1,0 +1,12 @@
+diff --git a/app/dosboxbi1hl_single.conf b/app/dosboxbi1hl_single.conf
+--- a/app/dosboxbi1hl_single.conf
++++ b/app/dosboxbi1hl_single.conf
+@@ -6,7 +6,7 @@ ipx=false
+ # Lines in this section will be run at startup.
+ 
+ @ECHO OFF
+-mount C ".."
++mount C "."
+ c:
+ cls
+ HL14-18.EXE

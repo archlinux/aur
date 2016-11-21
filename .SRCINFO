@@ -1,0 +1,28 @@
+pkgbase = historyline-1914-1918-gog
+	pkgdesc = A turn-based tactics game which takes the player through various battles of the First World War.
+	pkgver = 2.2.0.20
+	pkgrel = 1
+	url = https://www.gog.com/game/battle_isle_platinum
+	install = historyline-1914-1918-gog.install
+	arch = any
+	groups = games
+	license = custom:eula
+	makedepends = innoextract
+	makedepends = icoutils
+	depends = dosbox
+	optdepends = unionfs-fuse: mounting game folder to home for savegames and settings
+	source = setup_battle_isle_historyline_2.2.0.20.exe::gogdownloader://historyline_19141918/installer_win_en
+	source = historyline-1914-1918-gog.desktop
+	source = historyline-1914-1918-gog.sh
+	source = dosbox_windowed.conf
+	source = fix-dosbox-mounts.patch
+	source = fix-permissions.sh
+	sha256sums = bd2083c0e6ffc51ef214ce2b8bc3903751db575215ecb3354a6251b766e62891
+	sha256sums = 3e23da721bf92236f431cb6d1131ae2d0681afc162baa027167816d164c9567b
+	sha256sums = 96426337f51658c94be5ad91a21fefcec936d73e35d66a27e79ef69e93ddc428
+	sha256sums = 50b601b33522677a9bcaf23edc833329067bb87ccda33039c0b95f0d4ddca578
+	sha256sums = 9e8cfbbba458f19373df1c32c69cbc91c5c49d25d9cd0585b19839b9844ed3d3
+	sha256sums = 8cb0a355c97b243e495509fd63191ba93b8e2e89fc45bf636938f691580102d0
+
+pkgname = historyline-1914-1918-gog
+
