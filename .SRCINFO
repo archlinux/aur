@@ -16,6 +16,7 @@ pkgbase = rpm-org-413
 	depends = libarchive
 	depends = libcap
 	optdepends = libdbus: systemd inhibit plugin
+	provides = rpm-org
 	provides = rpm=4.13.0
 	provides = rpmextract=1.0-4
 	conflicts = rpm
