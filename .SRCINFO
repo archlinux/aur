@@ -23,7 +23,7 @@ pkgbase = volunode-git
 	depends = glu
 	depends = freeglut
 	options = !staticlibs
-	source = git+https://github.com/boinc-next/volunode#branch=develop
+	source = git+https://github.com/boinc-next/volunode
 	source = volunode.desktop
 	source = volunode.service
 	source = volunode.sysusers

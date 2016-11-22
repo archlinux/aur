@@ -5,7 +5,7 @@
 
 _username=boinc-next
 _reponame=volunode
-_ref="branch=develop"
+#_ref="#branch=develop"
 _pkgbase=volunode
 pkgname=${_pkgbase}-git
 pkgdesc="Next generation client for Berkeley Open Infrastructure for Network Computing."
@@ -18,7 +18,7 @@ depends=('glibmm' 'curl' 'libjpeg-turbo' 'glu' 'freeglut')
 makedepends=('libxslt' 'perl-xml-sax' 'git' 'curl' 'inetutils' 'libxmu' 'mesa' 'rsync')
 install=$_pkgbase.install
 options=('!staticlibs')
-source=("git+https://github.com/${_username}/${_reponame}#${_ref}"
+source=("git+https://github.com/${_username}/${_reponame}${_ref}"
          $_pkgbase.desktop
          $_pkgbase.service
          $_pkgbase.sysusers)
