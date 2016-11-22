@@ -1,7 +1,7 @@
 # Contributor: Spider.007 <archlinux AT spider007 DOT net>
 pkgname=stem
 pkgver=1.5.2
-pkgrel=2
+pkgrel=1
 pkgdesc="Python controller library for Tor"
 arch=('i686' 'x86_64')
 url="https://stem.torproject.org/"
