@@ -1,0 +1,19 @@
+pkgbase = morse-simulator-git
+	pkgdesc = MORSE: the Modular Open Robots Simulator Engine
+	pkgver = 1.4.r38.gb3d6273
+	pkgrel = 1
+	url = http://morse-simulator.github.io/
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = git
+	makedepends = cmake
+	depends = python>=3.3
+	depends = blender>=2.65
+	depends = python-numpy
+	provides = morse-simulator
+	source = morse::git+https://github.com/morse-simulator/morse.git
+	md5sums = SKIP
+
+pkgname = morse-simulator-git
+
