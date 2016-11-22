@@ -1,0 +1,7 @@
+pre_upgrade() {
+  if !pkg-config --cflags --libs gtk+-3.0 2>/dev/null
+  then
+    echo "Installing CLI version. If GUI build is desired, install gtk3 and
+    build Flips again."
+  fi
+}
