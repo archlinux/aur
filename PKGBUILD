@@ -2,7 +2,7 @@
 
 pkgname=nerd-fonts-dejavu-complete
 pkgver=0.9.0
-pkgrel=1
+pkgrel=2
 pkgdesc="All variants of Nerd-Font-patched DejaVu Sans Mono with complete+powerline option"
 arch=('any')
 url="https://github.com/ryanoasis/nerd-fonts"
