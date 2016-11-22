@@ -1,35 +1,18 @@
 pkgbase = python-doit
 	pkgdesc = doit automation tool
-	pkgver = 0.29.0
-	pkgrel = 3
+	pkgver = 0.30.0
+	pkgrel = 1
 	url = http://pydoit.org/
 	arch = any
 	license = MIT
-	makedepends = python
-	makedepends = python2
-	makedepends = python-setuptools
-	makedepends = python2-setuptools
-	makedepends = python-pyinotify
-	makedepends = python-six
-	makedepends = python-cloudpickle
-	makedepends = python2-pyinotify
-	makedepends = python2-six
-	makedepends = python2-cloudpickle
-	options = !emptydirs
-	source = https://pypi.io/packages/source/d/doit/doit-0.29.0.tar.gz
-	md5sums = 9968e1a669bad0a999212ab9f5c591a3
-
-pkgname = python-doit
 	depends = python
 	depends = python-pyinotify
 	depends = python-six
 	depends = python-setuptools
 	depends = python-cloudpickle
+	options = !emptydirs
+	source = https://pypi.io/packages/source/d/doit/doit-0.30.0.tar.gz
+	md5sums = fc312758d97e8a86da9c1e130a0bc572
 
-pkgname = python2-doit
-	depends = python2
-	depends = python2-pyinotify
-	depends = python2-six
-	depends = python2-setuptools
-	depends = python2-cloudpickle
+pkgname = python-doit
 
