@@ -4,13 +4,14 @@ _module=net
 _pkgname=moksha-modules-extra
 category=('moksha-modules-extra')
 pkgname=moksha-module-${_module}-git
-pkgver=1da72a0
+pkgver=8fd3c9b
 pkgrel=1
 pkgdesc="Moksha networking module (displays network usage) - built from git sources"
 arch=('i686' 'x86_64')
 url="http://mokshadesktop.org"
 license=('BSD')
 depends=('')
+makedepends=('git')
 source=("$_pkgname::git+https://github.com/JeffHoogland/moksha-modules-extra.git")
 sha256sums=('SKIP')
 
