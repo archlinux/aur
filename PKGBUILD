@@ -6,7 +6,7 @@
 
 pkgname=cernlib
 pkgver=2006_35
-pkgrel=2
+pkgrel=3
 _pkgver=2006-35
 _atlasver=3.8.4-1
 _atlascppver=0.6.2-1
@@ -14,7 +14,6 @@ pkgdesc="A large collection of general purpose libraries and modules maintained 
 arch=('x86_64' 'i686')
 url="http://cernlib.web.cern.ch/cernlib"
 license=('GPL')
-makedepends=(rpmextract)
 depends=(openmotif gcc-fortran lapack libxp)
 if [ "${CARCH}" = "x86_64" ]; then
     _rpmarch='x86_64'
@@ -86,19 +85,10 @@ elif [ "${CARCH}" = "i686" ]; then
                 '8574c92d59f7e2284f63f05ec2b6f7d87292d7e82ce327b1e65a16939ce7adbd')
 fi
 package() {
-    rm -r $srcdir/etc $srcdir/usr
-    cd "$srcdir"
-    for file in *.rpm; do
-      rpmextract.sh $file
-    done
-
     if [ "${CARCH}" = "x86_64" ]; then
         rm -r usr/lib64/cernlib/2006/bin
-        cd ${srcdir}
-        #rm usr/lib64/libg2c.so.0*
         mv usr/lib64 usr/lib
     fi
 
-    cd "$srcdir"
-    cp -a usr $pkgdir
+    cp -a ${srcdir}/usr $pkgdir
 }

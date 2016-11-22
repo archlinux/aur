@@ -1,12 +1,11 @@
 pkgbase = cernlib
 	pkgdesc = A large collection of general purpose libraries and modules maintained and offered in both source and object code form on the CERN central computers.
 	pkgver = 2006_35
-	pkgrel = 2
+	pkgrel = 3
 	url = http://cernlib.web.cern.ch/cernlib
 	arch = x86_64
 	arch = i686
 	license = GPL
-	makedepends = rpmextract
 	depends = openmotif
 	depends = gcc-fortran
 	depends = lapack
