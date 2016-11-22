@@ -3,8 +3,8 @@
 pkgname=fonts-ldco
 filename=LDCOFonts.rar
 pkgver="20161122"
-pkgrel=1
-pkgdesc="set of Hebrew fonts by Louis Davis and Co. in OTF, TTF, and WOFF formats."
+pkgrel=2
+pkgdesc="set of Hebrew fonts by Louis Davis and Co. in OTF and TTF formats."
 arch=('any')
 url="http://www.ldcodesign.com/%D7%98%D7%99%D7%A4%D7%95%D7%92%D7%A8%D7%A4%D7%99%D7%94/"
 license=('OFL')
