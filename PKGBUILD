@@ -2,14 +2,14 @@
 
 pkgname=c-lolcat
 pkgver=r34.8e95919
-pkgrel=3
+pkgrel=4
 pkgdesc="High-performance implementation of lolcat"
 arch=('i686' 'x86_64')
 url="https://github.com/jaseg/lolcat"
 license=('WTFPL')
 depends=()
 makedepends=()
-conflicts=('lolcat')
+conflicts=('lolcat' 'pyhton-lolcat')
 source=("$pkgname"::'git+https://github.com/jaseg/lolcat.git')
 sha256sums=('SKIP')
 
@@ -19,7 +19,7 @@ pkgver() {
 }
 
 prepare() {
-    cd "$pkgname"
+    cd "$srcdir/$pkgname"
     git submodule update --init musl
 }
 
