@@ -3,7 +3,7 @@ export GUI_ROOT_DIR=/opt/salome
 
 # local vars
 _pythonver=2.7
-_paraviewver=4.2
+_paraviewver=5.0
 _gui_path=$GUI_ROOT_DIR/bin/salome
 _gui_librarypath=$GUI_ROOT_DIR/lib/salome
 _gui_pythonpath=$GUI_ROOT_DIR/lib/python${_pythonver}/site-packages/salome
