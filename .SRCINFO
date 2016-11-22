@@ -6,7 +6,6 @@ pkgbase = raid-check-systemd
 	install = raid-check-systemd.install
 	arch = any
 	license = GPL
-	makedepends = rpmextract
 	depends = mdadm
 	depends = systemd
 	conflicts = raid-check

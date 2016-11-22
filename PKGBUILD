@@ -9,7 +9,7 @@ arch=('any')
 url="https://wiki.archlinux.org/index.php/RAID#Scrubbing"
 license=('GPL')
 depends=('mdadm' 'systemd')
-makedepends=('rpmextract')
+# makedepends=('rpmextract')
 conflicts=('raid-check')
 source=("http://mirror.centos.org/centos/7/os/x86_64/Packages/mdadm-$pkgver-$_cent_rel.el7.x86_64.rpm"
 	'raid-check.service'
