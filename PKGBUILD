@@ -6,15 +6,15 @@ _module="${_name}"
 _cmd="${_name}"
 
 pkgname=("python-${_module}" "python2-${_module}")
-pkgver=2.4.1
-pkgrel=3
+pkgver=2.5.0
+pkgrel=1
 pkgdesc="An awesome tool for web developers."
 arch=("any")
 url="https://github.com/lepture/python-livereload"
 license=("BSD")
 makedepends=("python-setuptools" "python2-setuptools")
 source=("https://files.pythonhosted.org/packages/source/${_name:0:1}/${_name}/${_name}-${pkgver}.tar.gz")
-sha256sums=('887cc9976d72d7616fa57c82c4ef5bf5da27e2350dfd6f65d3f44e86efc51b92')
+sha256sums=('bc708b46e22dff243c02e709c636ffeb8a64cdd019c95a215304e6ce183c4859')
 
 prepare() {
     cp -a "${srcdir}/${_name}-${pkgver}" "${srcdir}/${_name}-${pkgver}-python2"
