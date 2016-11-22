@@ -1,11 +1,12 @@
 pkgbase = easyexif-git
 	pkgdesc = Tiny ISO-compliant C++ EXIF parsing library, third-party dependency free.
 	pkgver = r34.a68a2cc
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mayanklahiri/easyexif
 	arch = i686
 	arch = x86_64
 	license = BSD-2-Clause
+	provides = easyexif
 	source = easyexif::git+https://github.com/mayanklahiri/easyexif.git
 	md5sums = SKIP
 
