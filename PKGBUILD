@@ -2,7 +2,7 @@
 
 pkgname=mailru-cloud
 pkgver=15.06.0108
-pkgrel=2
+pkgrel=3
 pkgdesc="Client for Mail.ru Cloud service"
 arch=('x86_64' 'i686')
 url="https://cloud.mail.ru/"
@@ -14,21 +14,10 @@ majver=15.06
 minver=0108
 fullname=mail.ru-cloud
 
-if [[ $CARCH == "i686" ]]; then
-    arc='i386'
-    source=("https://linuxdesktopcloud.mail.ru/rpm/default/$fullname-fedora-$majver-$minver.$arc.rpm")
-    sha256sums=("9d749702e729968c942819f474ae06fb1bf4662085e78b3f8f72515cfbe3b4c6")
-elif [[ ${CARCH} == "x86_64" ]]; then
-    arc=$CARCH
-    source=("https://linuxdesktopcloud.mail.ru/rpm/default/$fullname-fedora-$majver-$minver.$arc.rpm")
-    sha256sums=("c5393f01931d9e80882c32f927f3fb4151c8ea99b3ff268346b0a8c0b40ba348")
-fi
-
-if [[ $CARCH == "i686" ]]; then
-	arc='i386'
-elif [[ $CARCH == "x86_64" ]]; then
-	arc=$CARCH
-fi
+source_x86_64=("https://linuxdesktopcloud.mail.ru/rpm/default/mail.ru-cloud-fedora-15.06-0108.x86_64.rpm")
+source_i686=("https://linuxdesktopcloud.mail.ru/rpm/default/mail.ru-cloud-fedora-15.06-0108.i386.rpm")
+sha256sums_x86_64=("c5393f01931d9e80882c32f927f3fb4151c8ea99b3ff268346b0a8c0b40ba348")
+sha256sums_i686=("9d749702e729968c942819f474ae06fb1bf4662085e78b3f8f72515cfbe3b4c6")
 
 package() {
     cd "${srcdir}"

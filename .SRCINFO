@@ -1,7 +1,7 @@
 pkgbase = mailru-cloud
 	pkgdesc = Client for Mail.ru Cloud service
 	pkgver = 15.06.0108
-	pkgrel = 2
+	pkgrel = 3
 	url = https://cloud.mail.ru/
 	arch = x86_64
 	arch = i686
@@ -9,8 +9,10 @@ pkgbase = mailru-cloud
 	makedepends = rpmextract
 	depends = qt5-base
 	depends = qt5-x11extras
-	source = https://linuxdesktopcloud.mail.ru/rpm/default/mail.ru-cloud-fedora-15.06-0108.i386.rpm
-	sha256sums = 9d749702e729968c942819f474ae06fb1bf4662085e78b3f8f72515cfbe3b4c6
+	source_x86_64 = https://linuxdesktopcloud.mail.ru/rpm/default/mail.ru-cloud-fedora-15.06-0108.x86_64.rpm
+	sha256sums_x86_64 = c5393f01931d9e80882c32f927f3fb4151c8ea99b3ff268346b0a8c0b40ba348
+	source_i686 = https://linuxdesktopcloud.mail.ru/rpm/default/mail.ru-cloud-fedora-15.06-0108.i386.rpm
+	sha256sums_i686 = 9d749702e729968c942819f474ae06fb1bf4662085e78b3f8f72515cfbe3b4c6
 
 pkgname = mailru-cloud
 
