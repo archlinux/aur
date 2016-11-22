@@ -137,12 +137,7 @@ prepare()
     patch -p1 < ../steam.patch
     patch -p1 < ../heap_perf.patch
     
-    read -p "Do you want to apply the patch increasing the fragment samplers threshold (makes some DX11 games work, might break other stuff)? [y/N]" -n 1 -r
-    echo
-    if [[ $REPLY =~ ^[Yy]$ ]]
-    then
-        patch -p1 < ../increase_max_frag_samplers.patch
-    fi
+    #patch -p1 < ../increase_max_frag_samplers.patch
     
     patch -p1 < ../wbemprox_query_v2.patch
 
