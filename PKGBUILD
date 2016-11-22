@@ -3,7 +3,7 @@
 
 pkgname=('llvm33')
 pkgver=3.3
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 url="http://llvm.org/"
 pkgdesc="LLVM 3.3 (installed in /opt/llvm33/)"
@@ -41,6 +41,7 @@ build() {
 package() {
   mkdir -p "${pkgdir}/opt"
   mv "${srcdir}/llvm/Release" "${pkgdir}/opt/llvm33"
+  mv "${srcdir}/llvm/include" "${pkgdir}/opt/llvm33"
 }
 
 
