@@ -16,7 +16,7 @@ _gitname=snes9x2010
 source=("git+https://github.com/libretro/${_gitname}.git"
         "https://raw.github.com/libretro/libretro-super/master/dist/info/${_libname}.info")
 md5sums=('SKIP'
-         'SKIP')
+         'f21f6154247bda5eae3bb8f4438e86b2')
 
 pkgver() {
   cd "${_gitname}"
@@ -31,5 +31,5 @@ build() {
 package() {
   install -Dm644 "${_gitname}/docs/snes9x-license.txt" "${pkgdir}/usr/share/licenses/${pkgname}/license.txt"
   install -Dm644 "${_gitname}/${_libname}.so" "${pkgdir}/usr/lib/libretro/${_libname}.so"
-  install -Dm644 "${_libname}.info" "${pkgdir}/usr/lib/libretro/${_libname}.info"
+  install -Dm644 "${_libname}.info" "${pkgdir}/usr/share/libretro/info/${_libname}.info"
 }
