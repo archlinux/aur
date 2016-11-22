@@ -11,7 +11,7 @@
 
 pkgname=wine-gaming-nine
 pkgver=1.9.23
-pkgrel=1
+pkgrel=2
 
 _pkgbasever=${pkgver/rc/-rc}
 _winesrcdir="wine-patched-staging-$_pkgbasever"
