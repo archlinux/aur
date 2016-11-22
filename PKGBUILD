@@ -5,7 +5,7 @@
 
 pkgname=eigen2
 pkgver=2.0.17
-pkgrel=2
+pkgrel=3
 pkgdesc="A lightweight C++ template library for vector and matrix math, a.k.a. linear algebra"
 arch=('any')
 url='http://eigen.tuxfamily.org/index.php?title=Main_Page'
@@ -22,12 +22,6 @@ build() {
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr
   make
-}
-
-check(){
-    echo "Currently Does not build.  If you have any ideas how to fix this please contact me:  davidm@eagles.ewu.edu   -Dave"
-          
-    return 1
 }
 
 package() {
