@@ -26,7 +26,7 @@ source=("http://downloads.sourceforge.net/azureus/vuze/Vuze_${_stable_ver_flat}/
         "http://cf1.vuze.com/torrent/files/Azureus${_dev_ver_flat}-B${_dev_build}.jar"
          {blue,gray}_{16,32,64,128}.png)
 noextract=($(basename ${source[1]}))
-md5sums=('5382857d2f2d9ace13124912be6bbbab'
+md5sums=('be264f74dc37f728a5025f502f69c093'
          'SKIP'
          '5eba696cfcc430504706f476e13b2ade'
          'a4cae0c46a6ac56322753f96f52b8f74'
