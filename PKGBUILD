@@ -5,7 +5,7 @@
 
 pkgname=sstp-client
 pkgver=1.0.10
-pkgrel=3
+pkgrel=4
 pkgdesc="SSTP client stable revision"
 arch=("i686" "x86_64")
 url="http://sstp-client.sourceforge.net/"
@@ -13,7 +13,7 @@ license=('GPL2')
 conflicts=('sstp-client-svn-stable')
 provides=('sstp-client')
 depends=('libevent')
-makedepends=('gcc' 'ppp>=2.4.6' 'libevent')
+makedepends=('gcc' 'ppp>=2.4.6' 'libevent' 'libtool')
 optdepends=('ppp>=2.4.6' 'openssl')
 install=${pkgname}.install
 
