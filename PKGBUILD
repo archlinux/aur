@@ -5,7 +5,7 @@ pkgver=7.8.0
 pkgrel=1
 pkgdesc="Generic platform for Pre and Post-Processing for numerical simulation - KERNEL Module"
 url="http://www.salome-platform.org"
-depends=('python2' 'python2-numpy' 'boost-libs' 'omniorb416' 'omniorbpy36' 'omninotify-omniorb416' 'hdf5' 'graphviz' 'libxml2' 'cppunit' 'lapack' 'net-tools' 'openmpi')
+depends=('python2' 'python2-numpy' 'boost-libs' 'omniorb416' 'omniorbpy36' 'omninotify-omniorb416' 'hdf5_18' 'graphviz' 'libxml2' 'cppunit' 'lapack' 'net-tools' 'openmpi' 'libbatch')
 makedepends=('doxygen' 'python2-sphinx' 'git' 'swig2')
 arch=('i686' 'x86_64')
 license=('LGPL')
@@ -69,37 +69,57 @@ build() {
   mkdir -p "$srcdir/$_source/build"
   cd "$srcdir/$_source/build"
 
-  # -DCMAKE_CXX_STANDARD=98 \
+  local cmake_options=""
 
-  cmake .. \
-   	-DCMAKE_BUILD_TYPE=Debug \
-   	-DCMAKE_VERBOSE_MAKEFILE=On \
-	-DSALOME_CMAKE_DEBUG=On \
-     	-DCMAKE_INSTALL_PREFIX=${_installdir} \
-     	-DSALOME_USE_LIBBATCH=On \
-     	-DSALOME_USE_MPI=On \
-     	-DMPI_ROOT_DIR=/usr \
-     	-DPYTHON_EXECUTABLE=/usr/bin/python2 \
-     	-DPTHREAD_ROOT_DIR=/usr \
-     	-DBOOST_ROOT_DIR=/usr \
-     	-DCPPUNIT_ROOT_DIR=/usr \
-     	-DDOXYGEN_ROOT_DIR=/usr \
-     	-DGRAPHVIZ_ROOT_DIR=/usr \
-     	-DSPHINX_EXECUTABLE=/usr/bin/sphinx-build2 \
-     	-DSPHINX_APIDOC_EXECUTABLE=/usr/bin/sphinx-apidoc2 \
-     	-DOMNIORB_ROOT_DIR=/usr \
-     	-DOMNIORBPY_ROOT_DIR=/usr \
-     	-DSWIG_EXECUTABLE=/usr/bin/swig-2 \
-     	-DLIBXML2_ROOT_DIR=/usr \
-     	-DLibXml2_DIR=/usr/lib/cmake/libxml2 \
-     	-DLIBXML2_INCLUDE_DIR=/usr/include/libxml2
+  # generic options
+  cmake_options+=" -DCMAKE_BUILD_TYPE=Release"
+  cmake_options+=" -DCMAKE_INSTALL_PREFIX=${_installdir}"
 
-  # temporary workaround to solve a ug in cmake (bug 50672)
-  # see https://bugs.archlinux.org/task/50672
-  for _FILE in `grep -Rl " _FORTIFY_SOURCE=2" *`
-  do 
-    sed -e "s| _FORTIFY_SOURCE=2| -D_FORTIFY_SOURCE=2|" -i ${_FILE}
-  done
+  # debug options
+  cmake_options+=" -DCMAKE_VERBOSE_MAKEFILE:BOOL=OFF"
+  cmake_options+=" -DSALOME_CMAKE_DEBUG:BOOL=OFF"
+
+  # libbatch
+  cmake_options+=" -DSALOME_USE_LIBBATCH:BOOL=ON"
+
+  # mpi
+  cmake_options+=" -DSALOME_USE_MPI:BOOL=ON"
+  cmake_options+=" -DMPI_ROOT_DIR=/usr"
+
+  # python2
+  cmake_options+=" -DPYTHON_EXECUTABLE=/usr/bin/python2"
+
+  # sphinx-2
+  cmake_options+=" -DSPHINX_EXECUTABLE=/usr/bin/sphinx-build2"
+  cmake_options+=" -DSPHINX_APIDOC_EXECUTABLE=/usr/bin/sphinx-apidoc2"
+
+  # omniorb
+  cmake_options+=" -DOMNIORB_ROOT_DIR=/usr"
+  cmake_options+=" -DOMNIORBPY_ROOT_DIR=/usr"
+
+  # swig2
+  cmake_options+=" -DSWIG_EXECUTABLE=/usr/bin/swig-2"
+
+  # libxml2
+  cmake_options+=" -DLIBXML2_ROOT_DIR=/usr"
+  cmake_options+=" -DLibXml2_DIR=/usr/lib/cmake/libxml2"
+  cmake_options+=" -DLIBXML2_INCLUDE_DIR=/usr/include/libxml2"
+
+  # hdf5-1.8
+  cmake_options+=" -DHDF5_INCLUDE_DIRS:PATH=/usr/include/hdf5_18/"
+  cmake_options+=" -DHDF5_C_COMPILER_EXECUTABLE:FILEPATH=/usr/bin/h5cc_18"
+  cmake_options+=" -DHDF5_C_LIBRARY_hdf5:FILEPATH=/usr/lib/hdf5_18/libhdf5.so"
+  cmake_options+=" -DHDF5_DIFF_EXECUTABLE:FILEPATH=/usr/bin/h5diff_18"
+
+  # options for other system libraries
+  cmake_options+=" -DPTHREAD_ROOT_DIR=/usr"
+  cmake_options+=" -DBOOST_ROOT_DIR=/usr"
+  cmake_options+=" -DCPPUNIT_ROOT_DIR=/usr"
+  cmake_options+=" -DDOXYGEN_ROOT_DIR=/usr"
+  cmake_options+=" -DGRAPHVIZ_ROOT_DIR=/usr"
+
+  cmake ${cmake_options} ..
+
 
   make
 }
