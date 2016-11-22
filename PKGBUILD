@@ -6,7 +6,7 @@ groups=('zarafa'
 	'kopano'
         'zarafa-webapp-plugins')
 pkgver=1.0.31.28
-pkgrel=76
+pkgrel=77
 pkgdesc='Desktopnotifications plugin for Zarafa Webapp'
 arch=('any')
 source=("https://download.zarafa.com/community/final/WebApp/2.2.0/sle-12/zarafa-webapp-desktopnotifications-1.0.31-28.1.noarch.rpm"
