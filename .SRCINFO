@@ -1,6 +1,6 @@
 pkgbase = qemu-user-static-deb
 	pkgdesc = A generic and open source processor emulator which achieves a good emulation speed by using dynamic translation, statically linked.
-	pkgver = 2.7+dfsg_3
+	pkgver = 2.7+dfsg_3~bpo8+2
 	pkgrel = 1
 	url = http://wiki.qemu.org/Index.html
 	arch = i686
@@ -15,7 +15,7 @@ pkgbase = qemu-user-static-deb
 	provides = qemu-static
 	conflicts = qemu-user-static
 	conflicts = qemu-static
-	source = http://ftp.debian.org/debian/pool/main/q/qemu/qemu-user-static_2.7+dfsg-3_amd64.deb
+	source = http://ftp.debian.org/debian/pool/main/q/qemu/qemu-user-static_2.7+dfsg-3~bpo8+2_amd64.deb
 	md5sums = SKIP
 
 pkgname = qemu-user-static-deb
