@@ -1,0 +1,31 @@
+pkgbase = packagekit-git
+	pkgdesc = A system designed to make installation and updates of packages easier
+	pkgver = r4327.f537e89
+	pkgrel = 1
+	url = http://www.packagekit.org/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = gobject-introspection
+	makedepends = gtk-doc
+	makedepends = intltool
+	makedepends = networkmanager
+	makedepends = bash-completion
+	makedepends = vala
+	makedepends = autoconf-archive
+	depends = dbus-glib
+	depends = pacman>=5.0.0
+	depends = polkit
+	depends = shared-mime-info
+	depends = sqlite
+	optdepends = networkmanager: detect connection status
+	optdepends = bash-completion: command completion in bash
+	replaces = packagekit
+	backup = var/lib/PackageKit/transactions.db
+	backup = etc/PackageKit/alpm.d/pacman.conf
+	backup = etc/PackageKit/alpm.d/repos.list
+	source = git+https://github.com/hughsie/PackageKit.git
+	md5sums = SKIP
+
+pkgname = packagekit-git
+
