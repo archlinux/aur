@@ -5,7 +5,7 @@
 # Contributor: Dan Ziemba <zman0900@gmail.com>
 
 pkgname=network-ups-tools-git
-pkgver=v2.7.4.r55.gb0d8138
+pkgver=v2.7.4.r158.gfc5f808
 pkgrel=1
 pkgdesc="NUT is a collection of programs for monitoring and administering UPS hardware"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
@@ -56,7 +56,8 @@ build() {
     --sbindir=/usr/bin \
     --with-drvpath=/usr/lib/network-ups-tools \
     --sysconfdir=/etc/ups \
-    --with-openssl
+    --with-openssl \
+    --with-dev
   make
 }
 
