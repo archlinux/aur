@@ -3,7 +3,7 @@
 # Contributor: Daniele Paolella <dp@mcrservice.it>
 
 pkgname=('pypy-virtualenv' 'pypy3-virtualenv')
-pkgver=15.0.3
+pkgver=15.1.0
 pkgrel=1
 pkgdesc="Virtual Python Environment builder for pypy"
 url="https://virtualenv.pypa.io/"
@@ -11,8 +11,8 @@ arch=('any')
 license=('MIT')
 makedepends=('pypy' 'pypy3')
 source=("https://pypi.io/packages/source/v/virtualenv/virtualenv-$pkgver.tar.gz")
-md5sums=('a5a061ad8a37d973d27eb197d05d99bf')
-sha256sums=('6d9c760d3fc5fa0894b0f99b9de82a4647e1164f0b700a7f99055034bf548b1d')
+md5sums=('44e19f4134906fe2d75124427dc9b716')
+sha256sums=('02f8102c2436bb03b3ee6dede1919d1dac8a427541652e5ec95171ec8adbc93a')
 
 package_pypy-virtualenv() {
   depends=('pypy')
