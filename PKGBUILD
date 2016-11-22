@@ -10,8 +10,8 @@ pkgname=(clion clion-jre clion-cmake clion-gdb clion-lldb)
 _pkgname=clion
 _dlname=CLion
 # Make sure to use vercmp to check version is seen as newer. Bump epoch if not.
-pkgver=2016.2.3
-pkgrel=2
+pkgver=2016.3
+pkgrel=1
 # Bump when JetBrains uses silly letters in stable releases
 epoch=1
 pkgdesc="C/C++ IDE. Free 30-day trial."
@@ -22,7 +22,7 @@ license=('custom')
 makedepends=('rsync')
 source=("https://download.jetbrains.com/cpp/${_dlname}-${pkgver}.tar.gz"
         "jetbrains-${pkgbase}.desktop")
-sha256sums=('0d2fc6ecec4dfab15ba98021ed3d3e866c2d43e7c27b7e522e0161e76aa78fbd'
+sha256sums=('61b81e6906ffc675253d2565f8e54425a4bbfae7e4650f9f42af2f90abfada9a'
             '9f0f4335f410e0587018c85ebfcf4b65a7a47ad682a58972624378953ef288d6')
 noextract=("${_dlname}-${pkgver}.tar.gz")
 
