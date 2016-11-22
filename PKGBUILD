@@ -3,7 +3,7 @@
 
 pkgname=libfreenect2
 pkgver=0.2.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Open source drivers for the Kinect for Windows v2"
 arch=(i686 x86_64)
 url="http://openkinect.org"
@@ -22,6 +22,7 @@ prepare() {
 		-DCMAKE_BUILD_TYPE=Release \
 		-DENABLE_CXX11=ON \
 		-DENABLE_OPENCL=ON \
+		-DENABLE_CUDA=OFF \
 		-DBUILD_EXAMPLES=ON
 }
 

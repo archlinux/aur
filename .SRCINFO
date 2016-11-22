@@ -1,7 +1,7 @@
 pkgbase = libfreenect2
 	pkgdesc = Open source drivers for the Kinect for Windows v2
 	pkgver = 0.2.0
-	pkgrel = 2
+	pkgrel = 3
 	url = http://openkinect.org
 	arch = i686
 	arch = x86_64
