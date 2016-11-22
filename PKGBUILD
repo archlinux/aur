@@ -1,6 +1,6 @@
 # Maintainer: Brenton Horne <brentonhorne77 at gmail dot com>
 
-pkgver=1da72a0
+pkgver=8fd3c9b
 pkgrel=1
 _module=emprint
 _pkgname=moksha-modules-extra
@@ -11,6 +11,7 @@ arch=('i686' 'x86_64')
 url="http://mokshadesktop.org"
 license=('BSD')
 depends=('efl')
+makedepends=('git')
 source=("$_pkgname::git+https://github.com/JeffHoogland/moksha-modules-extra.git")
 sha256sums=('SKIP')
 
