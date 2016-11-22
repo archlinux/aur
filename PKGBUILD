@@ -2,13 +2,12 @@
 
 pkgname=visual-studio-code-insiders
 pkgver=1.8.0.1479711649
-pkgrel=1
+pkgrel=2
 pkgdesc="Editor for building and debugging modern web and cloud applications (insiders version)"
 arch=('x86_64' 'i686')
 url="https://code.visualstudio.com/"
 license=('custom: commercial')
-provides=('vscode','visualstudiocode','visual-studio-code')
-conflicts=('visual-studio-code')
+provides=('vscode','visualstudiocode')
 depends=(fontconfig libxtst gtk2 python cairo alsa-lib gconf nss gcc-libs libnotify libxss gvfs)
 source_x86_64=(code_x64_${pkgver}.tar.gz::https://vscode-update.azurewebsites.net/latest/linux-x64/insider
                ${pkgname}.desktop
