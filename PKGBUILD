@@ -1,7 +1,7 @@
 # Maintainer: Michael Schubert <mschu.dev at google mail>
 # Contributor: Ewoud Nuyts <ewoud.nuyts@gmail.com>
+
 pkgname=jessyink
-_pkgname=JessyInk
 pkgver=1.5.6
 pkgrel=1
 pkgdesc="JavaScript that turns a layered Inkscape SVG image into a presentation"
@@ -9,12 +9,20 @@ url="http://code.google.com/p/jessyink/"
 license=("GPL")
 arch=('i686' 'x86_64')
 depends=('inkscape' 'python-lxml')
-makedepends=('unzip')
-source=("http://jessyink.googlecode.com/files/$_pkgname-$pkgver.zip" )
-noextract=($_pkgname-$pkgver.zip)
-md5sums=('8cc06e004ede73f1fc94ed44f5193a64')
+source=("https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/${pkgname}/${pkgname}-${pkgver}.tar.gz")
+sha256sums=('7a69059cb130d2eccf06857b5ab8b17de4a62948a977fafb0fe0ebc726e43be4')
+# path within the archive starts with ${pkgname}-${pkgver}.tar.gz
+# so do not extract, but handle this manually
+noextract=("${pkgname}-${pkgver}.tar.gz")
 
 package() {
-    mkdir -p "$pkgdir"/usr/share/inkscape/
-    unzip -j -d "$pkgdir"/usr/share/inkscape/extensions/ $_pkgname-$pkgver.zip
+	cd "${srcdir}/"
+
+	bsdtar -s '/.tar.gz//' -xf "${pkgname}-${pkgver}.tar.gz"
+
+	cd "${pkgname}-${pkgver}/"
+
+	install -d "${pkgdir}"/usr/share/inkscape/extensions/
+	install -m0644 $(find inkscapeExtensions/ -type f) "${pkgdir}"/usr/share/inkscape/extensions/
 }
+
