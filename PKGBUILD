@@ -1,8 +1,8 @@
 # Maintainer: Ricardo (XenGi) Band <email@ricardo.band>
 
 pkgname=c-lolcat
-pkgver=r27.33ee440
-pkgrel=2
+pkgver=r34.8e95919
+pkgrel=3
 pkgdesc="High-performance implementation of lolcat"
 arch=('i686' 'x86_64')
 url="https://github.com/jaseg/lolcat"
@@ -16,6 +16,11 @@ sha256sums=('SKIP')
 pkgver() {
     cd "$srcdir/$pkgname"
     printf 'r%s.%s' "$(git rev-list --count HEAD)" "$(git describe --always)"
+}
+
+prepare() {
+    cd "$pkgname"
+    git submodule update --init musl
 }
 
 build() {
