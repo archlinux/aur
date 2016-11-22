@@ -34,7 +34,7 @@ sha512sums=('f42a57189b9f83ab8975d179a01108e7c077ca05d06e05e0a96dc15d41e9f032f44
 package() {
 
   install -dm0755 ${pkgdir}/usr/share/fonts/TTF
-  install -dm0755 ${pkgdir}/usr/share/licenses
+  install -dm0755 ${pkgdir}/usr/share/licenses/${pkgname}
   install -Dm0644 ${srcdir}/*.ttf ${pkgdir}/usr/share/fonts/TTF
   install -Dm0644 ${srcdir}/LICENSE ${pkgdir}/usr/share/licenses/${pkgname}
 
