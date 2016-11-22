@@ -1,7 +1,7 @@
-diff -Naur ParaView-v4.2.0-source.orig/VTK/IO/FFMPEG/vtkFFMPEGWriter.cxx ParaView-v4.2.0-source/VTK/IO/FFMPEG/vtkFFMPEGWriter.cxx
---- ParaView-v4.2.0-source.orig/VTK/IO/FFMPEG/vtkFFMPEGWriter.cxx	2016-05-13 11:21:34.322631568 +0200
-+++ ParaView-v4.2.0-source/VTK/IO/FFMPEG/vtkFFMPEGWriter.cxx	2016-05-13 15:45:28.098994000 +0200
-@@ -189,11 +189,11 @@
+diff -Naur ParaView-5.0.1p1.orig/VTK/IO/FFMPEG/vtkFFMPEGWriter.cxx ParaView-5.0.1p1/VTK/IO/FFMPEG/vtkFFMPEGWriter.cxx
+--- ParaView-5.0.1p1.orig/VTK/IO/FFMPEG/vtkFFMPEGWriter.cxx	2016-11-19 23:17:56.596094663 +0100
++++ ParaView-5.0.1p1/VTK/IO/FFMPEG/vtkFFMPEGWriter.cxx	2016-11-19 23:18:17.099178065 +0100
+@@ -191,11 +191,11 @@
    c->height = this->Dim[1];
    if (this->Writer->GetCompression())
      {
@@ -15,7 +15,7 @@ diff -Naur ParaView-v4.2.0-source.orig/VTK/IO/FFMPEG/vtkFFMPEGWriter.cxx ParaVie
      }
  
    //to do playback at actual recorded rate, this will need more work see also below
-@@ -272,13 +272,13 @@
+@@ -274,13 +274,13 @@
  #endif
  
    //for the output of the writer's input...
@@ -28,10 +28,10 @@ diff -Naur ParaView-v4.2.0-source.orig/VTK/IO/FFMPEG/vtkFFMPEGWriter.cxx ParaVie
      }
 -  int RGBsize = avpicture_get_size(PIX_FMT_RGB24, c->width, c->height);
 +  int RGBsize = avpicture_get_size(AV_PIX_FMT_RGB24, c->width, c->height);
-   unsigned char *rgb = new unsigned char[RGBsize];
+   unsigned char *rgb = (unsigned char *)av_malloc(sizeof(unsigned char) * RGBsize);
    if (!rgb)
      {
-@@ -286,10 +286,10 @@
+@@ -288,10 +288,10 @@
      return 0;
      }
    //The rgb buffer should get deleted when this->rgbInput is.
@@ -44,7 +44,7 @@ diff -Naur ParaView-v4.2.0-source.orig/VTK/IO/FFMPEG/vtkFFMPEGWriter.cxx ParaVie
    if (!this->yuvOutput)
      {
      vtkGenericWarningMacro (<< "Could not make yuvOutput avframe." );
-@@ -347,12 +347,12 @@
+@@ -349,12 +349,12 @@
    //convert that to YUV for input to the codec
  #ifdef VTK_FFMPEG_HAS_IMG_CONVERT
    img_convert((AVPicture *)this->yuvOutput, cc->pix_fmt,
