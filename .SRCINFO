@@ -1,0 +1,18 @@
+pkgbase = python2-doit
+	pkgdesc = doit automation tool
+	pkgver = 0.29.0
+	pkgrel = 3
+	url = http://pydoit.org/
+	arch = any
+	license = MIT
+	depends = python2
+	depends = python2-pyinotify
+	depends = python2-six
+	depends = python2-setuptools
+	depends = python2-cloudpickle
+	options = !emptydirs
+	source = https://pypi.io/packages/source/d/doit/doit-0.29.0.tar.gz
+	md5sums = 9968e1a669bad0a999212ab9f5c591a3
+
+pkgname = python2-doit
+
