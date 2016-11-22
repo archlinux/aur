@@ -1,10 +1,10 @@
 # Maintainer: Aleksey Filippov <sarum9in@gmail.com>
 
-_nanopbver=0.3.6
+_nanopbver=0.3.7
 
 pkgbase=grpc
 pkgname=('grpc' 'php-grpc')
-pkgver=1.0.0
+pkgver=1.0.1
 #_pkgver=release-$(echo $pkgver | tr . _)
 _pkgprefix=v
 _pkgver="$(echo "$pkgver" | tr _ -)"
@@ -13,14 +13,14 @@ pkgdesc="A high performance, open source, general RPC framework that puts mobile
 arch=('i686' 'x86_64')
 url='http://www.grpc.io/'
 license=('BSD')
-makedepends=('re2c' 'openssl' 'protobuf3' 'php')
+makedepends=('re2c' 'openssl' 'protobuf>=3' 'php')
 source=(
     https://github.com/$pkgname/$pkgname/archive/$_pkgprefix$_pkgver.tar.gz
     https://github.com/nanopb/nanopb/archive/nanopb-$_nanopbver.tar.gz
 )
 noextract=("nanopb-$_nanopbver.tar.gz")
-md5sums=('c8fe25263b6b15a8f23b8fdc8cf0824e'
-         '91457d973b48e3e71f4cbcee7761cdb1')
+md5sums=('ba89aa8ff41f7973236e63dd45fd95be'
+         '3b3141b1eaba4feb614314659da2d8f1')
 
 prepare() {
   cd "$srcdir/$pkgname-$_pkgver"
@@ -64,7 +64,7 @@ _install_dir() (
 )
 
 package_grpc() {
-  depends=('openssl' 'protobuf3')
+  depends=('openssl' 'protobuf>=3')
 
   cd "$srcdir/$pkgname-$_pkgver"
   _install_dir 755 bins/opt usr/bin
