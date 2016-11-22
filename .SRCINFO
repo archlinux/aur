@@ -1,7 +1,7 @@
 pkgbase = brother-mfc-9460cdn
 	pkgdesc = LPR and CUPS driver for the Brother MFC-9460CDN
 	pkgver = 1.1.1
-	pkgrel = 2
+	pkgrel = 3
 	url = http://welcome.solutions.brother.com/bsc/public_s/id/linux/en/index.html
 	install = brother-mfc-9460cdn.install
 	arch = i686
