@@ -4,7 +4,7 @@
 _icon="default"
 
 pkgname=vuze-dev
-pkgver=5.7.3.1_B27
+pkgver=5.7.4.1_B01
 pkgrel=1
 pkgdesc="A feature-rich Java-based BitTorrent client (previously called 'Azureus') - Bleeding edge version"
 arch=('i686' 'x86_64')
