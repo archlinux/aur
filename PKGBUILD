@@ -4,7 +4,7 @@
 pkgname=mssql-tools
 pkgver=14.0.1.246
 _prodver=${pkgver}-1
-pkgrel=1
+pkgrel=2
 pkgdesc="Microsoft® SQL Server® Tools for Linux"
 arch=('x86_64')
 url="https://www.microsoft.com/en-us/sql-server/sql-server-vnext-including-Linux"
@@ -21,6 +21,6 @@ package() {
   mkdir -p $pkgdir/usr/bin/
   chmod +x $pkgdir/opt/$pkgname/bin/sqlcmd-$pkgver
   chmod +x $pkgdir/opt/$pkgname/bin/bcp-$pkgver
-  ln -s $pkgdir/opt/$pkgname/bin/sqlcmd-$pkgver $pkgdir/usr/bin/sqlcmd
-  ln -s $pkgdir/opt/$pkgname/bin/bcp-$pkgver $pkgdir/usr/bin/bcp
+  ln -s /opt/$pkgname/bin/sqlcmd-$pkgver $pkgdir/usr/bin/sqlcmd
+  ln -s /opt/$pkgname/bin/bcp-$pkgver $pkgdir/usr/bin/bcp
 }

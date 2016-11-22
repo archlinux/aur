@@ -1,7 +1,7 @@
 pkgbase = mssql-tools
 	pkgdesc = Microsoft® SQL Server® Tools for Linux
 	pkgver = 14.0.1.246
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.microsoft.com/en-us/sql-server/sql-server-vnext-including-Linux
 	arch = x86_64
 	license = unknown
