@@ -1,14 +1,14 @@
 pkgbase = cli53
 	pkgdesc = Command line tool for Amazon Route 53
-	pkgver = 0.8.6
+	pkgver = 0.8.7
 	pkgrel = 1
 	arch = i686
 	arch = x86_64
 	license = BSD
 	makedepends = go>=1.5
 	makedepends = make
-	source = https://github.com/barnybug/cli53/archive/0.8.6.tar.gz
-	sha256sums = be1f97cf892c453410da69daa16141964d9fac6557447cadb0cb613ffe341c59
+	source = https://github.com/barnybug/cli53/archive/0.8.7.tar.gz
+	sha256sums = c05918a1c1e5e660bda4b6ca080234a5ccc7c02d8c5b5f9f761faa57f53fb95c
 
 pkgname = cli53
 
