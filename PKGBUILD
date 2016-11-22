@@ -8,7 +8,7 @@ arch=('i686' 'x86_64')
 url="https://github.com/FallingSnow/qpsnr"
 license=('GPL3')
 depends=('ffmpeg' 'gcc-libs')
-source=(git+https://github.com/FallingSnow/qpsnr.git)
+source=('git+https://github.com/FallingSnow/qpsnr.git#commit=8579ed9fffbb6608984471f045244c43c29ffb01')
 sha512sums=('SKIP')
 
 build() {
