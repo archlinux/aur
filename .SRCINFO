@@ -1,9 +1,9 @@
 pkgbase = mailru-cloud
 	pkgdesc = Client for Mail.ru Cloud service
 	pkgver = 15.06.0108
-	pkgrel = 1
+	pkgrel = 2
 	url = https://cloud.mail.ru/
-	arch = i386
+	arch = x86_64
 	arch = i686
 	license = custom
 	makedepends = rpmextract
