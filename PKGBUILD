@@ -6,7 +6,7 @@ pkgname='zarafa-postfixadmin'
 replaces=('zarafa-postfixadmin-worker')
 groups=('zarafa'
 	'kopano')
-pkgver=0.20
+pkgver=0.21
 pkgrel=77
 pkgdesc="A web based interface used to manage mailboxes, virtual domains and aliases created for Zarafa-Server with DB-Plugin and Postfix"
 arch=('any')
@@ -16,7 +16,14 @@ depends=('bash'
 	 'php'
 	 'php-imap'
 	 'mysql'
-	 'zarafa-server')
+	 'zarafa-server'
+	 
+	 # fetchmail
+	 'fetchmail'
+	 'perl-dbi'
+	 'perl-dbd-mysql'
+	 'perl-lockfile-simple'
+	 )
 makedepends=('git')
 install="install"
 source=("postfixadmin-${_postfixadminver}.tar.gz::http://downloads.sourceforge.net/postfixadmin/postfixadmin-${_postfixadminver}.tar.gz"
@@ -29,12 +36,15 @@ package_zarafa-postfixadmin() {
     ###
     _destdir_webapp=${pkgdir}/usr/share/webapps/${pkgname}
     _destdir_etc=${pkgdir}/etc/webapps/${pkgname}
+    _destdir_fetchmail=${pkgdir}/etc/fetchmail-all
+    _destdir_fetchmailpostfixadmin=${pkgdir}/etc/mail/postfixadmin
     _destdir_doc=${pkgdir}/usr/share/doc/${pkgname}
     _destdir_var=${pkgdir}/var/lib/${pkgname}
     _destdir_usr=${pkgdir}/usr/share/${pkgname}
     _destdir_systemd=${pkgdir}/usr/lib/systemd/system
     
-
+    install -dm755 ${_destdir_fetchmail}
+    install -dm755 ${_destdir_fetchmailpostfixadmin}
     install -dm755 ${_destdir_webapp}
     install -dm755 ${_destdir_etc}
     install -dm755 ${_destdir_doc}
@@ -57,7 +67,6 @@ package_zarafa-postfixadmin() {
     # etc
     cp ${_destdir_webapp}/config.inc.php ${_destdir_etc}/config.example.php
 
-
     # ZARAFA-POSTFIXADMIN
     ###
     cd ${srcdir}/zarafa-postfixadmin-${pkgver}
@@ -66,6 +75,8 @@ package_zarafa-postfixadmin() {
     # etc
     cp etc/nginx-location.conf ${_destdir_etc}
     cp etc/config.default.php ${_destdir_etc}/config.local.php
+    cp etc/config ${_destdir_fetchmail}
+    cp etc/fetchmail.conf ${_destdir_fetchmailpostfixadmin}
     
     # docs
     cp -r doc/* ${_destdir_doc}
@@ -86,5 +97,7 @@ package_zarafa-postfixadmin() {
 
     # usr
     mv usr/zarafa-postfixadmin.service ${_destdir_systemd}
+    mv usr/fetchmail-postfixadmin.service ${_destdir_systemd}
+    mv usr/fetchmail-postfixadmin.timer ${_destdir_systemd}
     mv usr/* ${_destdir_usr}
 }
