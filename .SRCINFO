@@ -1,6 +1,6 @@
 pkgbase = firefox-beta-bin
 	pkgdesc = Standalone web browser from mozilla.org - Beta
-	pkgver = 51.0b1
+	pkgver = 51.0b2
 	pkgrel = 1
 	url = https://www.mozilla.org/en-US/firefox/channel/#beta
 	install = firefox-beta-bin.install
@@ -26,15 +26,15 @@ pkgbase = firefox-beta-bin
 	optdepends = libpulse: PulseAudio driver
 	optdepends = networkmanager: Location detection via available WiFi networks
 	optdepends = upower: Battery API
-	provides = firefox=51.0b1
+	provides = firefox=51.0b2
 	source = firefox-beta-bin.desktop
 	source = firefox-beta-bin-safe.desktop
 	sha512sums = 702359fd891da5ac3b24124a328f70bac3034e9bbb33c1eb00da15420825ce3e13cf62bfdf5fe2ef9cc876a0e533422d7989af62e966123a21171293e5e4fa14
 	sha512sums = 776fccb247711d33621605dd0807c03528ffd0f9bc14f20b4f60f344589c1aad62e9377c22bcf583066c8c600cd86bf9db5b48e2c44924cd48a48c1c4a9c39a0
-	source_i686 = https://ftp.mozilla.org/pub/firefox/releases/51.0b1/linux-i686/en-US/firefox-51.0b1.tar.bz2
-	sha512sums_i686 = 5d3ad1335ef6e612850c5a5f88b11b8b3dcdaf967b3957154ce2134e75e721bcea743f33f9b6bd1154c4b7da090ca531e430fff144df12063b2e5defd711af1f
-	source_x86_64 = https://ftp.mozilla.org/pub/firefox/releases/51.0b1/linux-x86_64/en-US/firefox-51.0b1.tar.bz2
-	sha512sums_x86_64 = e547231c95d035d93465b0e04c54ed8951db672ec11cdd1ec4aa759e1ad10ff977080675a11774ee5af9cc4c8f6d4eb787556f2e40e374ce14b7f043dea9ad10
+	source_i686 = https://ftp.mozilla.org/pub/firefox/releases/51.0b2/linux-i686/en-US/firefox-51.0b2.tar.bz2
+	sha512sums_i686 = 308a93a48e15715c45162d69ac426f95acd032c0c1b35e124edf7ed3ef954a0a76398746e20060275f957dfd660ab3283af802b71394baa2062cdcf2f934b8d2
+	source_x86_64 = https://ftp.mozilla.org/pub/firefox/releases/51.0b2/linux-x86_64/en-US/firefox-51.0b2.tar.bz2
+	sha512sums_x86_64 = fc41bc8713f6f96a75cce9c0d982b9f43620a0be3d0b2f1562591d6127fc006212ab6c5daa5753d0671252d22aafacdd4dee4a560005c09af661da539f6ff3ef
 
 pkgname = firefox-beta-bin
 
