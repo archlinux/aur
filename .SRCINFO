@@ -1,12 +1,11 @@
 pkgbase = ppd-dell-5130cdn
 	pkgdesc = Printer only driver for the Dell 5130cdn Color Laser Printer
 	pkgver = 1.3
-	pkgrel = 4
+	pkgrel = 5
 	url = http://www.dell.com/support/home/us/en/04/product-support/product/dell-5130cdn/drivers
 	arch = i686
 	arch = x86_64
 	license = custom
-	makedepends = rpmextract
 	depends = cups
 	provides = ppd-dell-5130cdn
 	conflicts = dell_5130cdn_drivers
