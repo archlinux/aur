@@ -1,11 +1,11 @@
 --- Makefile.orig	2016-02-01 16:43:56.200859048 -0800
 +++ Makefile	2016-02-02 10:13:53.415950671 -0800
-@@ -130,7 +130,7 @@
+@@ -158,7 +158,7 @@
  	rm -f flow.odocl
  
  build-flow: $(BUILT_OBJECT_FILES) $(FLOWLIB)
 -	ocamlbuild  -no-links  $(INCLUDE_OPTS) $(LIB_OPTS) -lflags "$(LINKER_FLAGS)" src/flow.native
 +	ocamlbuild  -no-links  $(INCLUDE_OPTS) $(LIB_OPTS) -lflags "$(LINKER_FLAGS)" -ocamlopt "$(shell which ocamlopt.opt) -runtime-variant _pic" src/flow.native
  
- build-flow-with-ocp: build-flow-stubs-with-ocp
- 	[ -d _obuild ] || ocp-build init
+ %.ocp: %.ocp.fb scripts/utils.ml scripts/ocp_build_glob.ml
+         ocaml -I scripts -w -3 str.cma unix.cma scripts/ocp_build_glob.ml $(addsuffix .fb,$@) $@

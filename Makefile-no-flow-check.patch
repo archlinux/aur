@@ -1,0 +1,13 @@
+diff --git a/Makefile b/Makefile
+index e2c56aa..d46bedd 100644
+--- a/Makefile
++++ b/Makefile
+@@ -222,8 +222,6 @@ endif
+ 
+ do-test:
+ 	./runtests.sh bin/flow
+-	bin/flow check
+-	./tool test
+ 
+ test: build-flow copy-flow-files
+ 	${MAKE} do-test
