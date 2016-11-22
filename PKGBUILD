@@ -1,7 +1,7 @@
 # Maintainer: Brenton Horne <brentonhorne77 at gmail dot com>
 
 pkgname=('moksha-modules-extra-git' 'moksha-module-alarm-git' 'moksha-module-calendar-git' 'moksha-module-engage-git' 'moksha-module-flame-git' 'moksha-module-forecasts-git' 'moksha-module-mail-git' 'moksha-module-news-git' 'moksha-module-penguins-git' 'moksha-module-photo-git' 'moksha-module-places-git' 'moksha-module-rain-git' 'moksha-module-screenshot-git' 'moksha-module-share-git' 'moksha-module-slideshow-git' 'moksha-module-snow-git' 'moksha-module-tclock-git' 'moksha-module-trash-git' 'moksha-module-winlist-ng-git' 'moksha-module-winselector-git')
-pkgver=1da72a0
+pkgver=8fd3c9b
 pkgrel=1
 _pkgname=moksha-modules-extra
 pkgdesc="Extra Moksha modules"
@@ -9,7 +9,7 @@ arch=('i686' 'x86_64')
 url="http://mokshadesktop.org"
 license=('BSD')
 depends=('moksha')
-makedepends=('moksha-module-emprint-git')
+makedepends=('moksha-module-emprint-git' 'git')
 _module_list=(
   'alarm'
   'calendar'
