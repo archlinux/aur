@@ -1,0 +1,12 @@
+diff -aur --no-dereference package.pristine/pluginhost/JuceLibraryCode/modules/juce_core/maths/juce_NormalisableRange.h package.new/pluginhost/JuceLibraryCode/modules/juce_core/maths/juce_NormalisableRange.h
+--- package.pristine/pluginhost/JuceLibraryCode/modules/juce_core/maths/juce_NormalisableRange.h	2016-11-22 17:36:12.490115783 +0100
++++ package.new/pluginhost/JuceLibraryCode/modules/juce_core/maths/juce_NormalisableRange.h	2016-11-22 17:38:02.635866089 +0100
+@@ -130,7 +130,7 @@
+             if (skew != static_cast<ValueType> (1) && proportion > ValueType())
+                 proportion = std::exp (std::log (proportion) / skew);
+ 
+-                return start + (end - start) * proportion;
++            return start + (end - start) * proportion;
+         }
+ 
+         ValueType distanceFromMiddle = static_cast<ValueType> (2) * proportion - static_cast<ValueType> (1);

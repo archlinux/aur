@@ -3,7 +3,7 @@
 
 pkgname=radium
 pkgver=4.2.9
-pkgrel=1
+pkgrel=2
 pkgdesc="A graphical music editor. A next generation tracker."
 arch=('i686' 'x86_64')
 url="http://users.notam02.no/~kjetism/radium/"
@@ -26,7 +26,6 @@ depends=(
 )
 makedepends=(
     'cmake'
-    'gcc5'
     'boost'
     'llvm'
     'qt5-tools'
@@ -38,12 +37,12 @@ options=(!strip)
 source=("https://github.com/kmatheussen/${pkgname}/archive/${pkgver}.tar.gz"
         "faust-accept-clang-390.patch"
         "dont-empty-qt-library-paths.patch"
-        "use-gcc5-for-pluginhost.patch"
+        "fix-misleading-indentation.patch"
         "use-system-vstsdk.patch")
 md5sums=('61e8aa38ed8f464a7d6b85bc490674f8'
          '9c72bd466ead73e36b0c2d4297d76870'
          '77c202bc0a36562eb7b805ad6b7a85b3'
-         '9c19006defeef7e317ec23ed8eae1b72'
+         '1ca36c75ce4b3fed28c22753b8dc045a'
          '661c15bc037131c1ad8f8f11d3bc957f')
 
 prepare() {
@@ -55,11 +54,8 @@ prepare() {
     msg2 "Fixing QT_QPA_PLATFORM_PLUGIN_PATH problem"
     patch -Nsp1 < "${srcdir}/dont-empty-qt-library-paths.patch"
 
-    # Some parts of JUCE that Radium uses depend on unstandardized behaviour
-    # specific to GCC5, so they don't compile with Arch's regular GCC6 and we
-    # have to switch back manually
-    msg2 "Switching pluginhost build to GCC 5"
-    patch -Nsp1 < "${srcdir}/use-gcc5-for-pluginhost.patch"
+    msg2 "Fixing misleading indentation"
+    patch -Nsp1 < "${srcdir}/fix-misleading-indentation.patch"
 
     # Use the VST SDK from steinberg-vst36, so the user doesn't have to
     # manually put it into his home directory
