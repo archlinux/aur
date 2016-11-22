@@ -51,7 +51,8 @@ build() {
     cd "$srcdir/$pkgname-$pkgver"
     source /etc/profile.d/apache-ant.sh
     source /etc/profile.d/jre.sh
-
+    
+    export ANT_OPTS="-Dfile.encoding=UTF-8"
     ant preppkg-linux-only
 }
 
