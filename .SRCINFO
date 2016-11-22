@@ -1,0 +1,29 @@
+pkgbase = sopel-git
+	pkgdesc = An easy-to-use and highly extensible IRC Bot framework (Formerly Willie)
+	pkgver = 6.5.0.r0.gf6315f7
+	pkgrel = 1
+	url = http://sopel.chat
+	install = install
+	arch = any
+	license = custom:EFL
+	checkdepends = python-pytest
+	checkdepends = ipython
+	makedepends = git
+	makedepends = python-sphinx
+	depends = python-setuptools
+	depends = sqlite
+	depends = python-xmltodict
+	depends = python-pytz
+	depends = python-praw
+	depends = python-pyenchant
+	depends = python-pygeoip
+	provides = sopel
+	conflicts = sopel
+	backup = etc/sopel.cfg
+	source = git+https://github.com/sopel-irc/sopel.git
+	source = tmpfiles.d
+	md5sums = SKIP
+	md5sums = 8442d9ea410e80dfb67f864cc845af1b
+
+pkgname = sopel-git
+

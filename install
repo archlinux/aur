@@ -1,0 +1,6 @@
+post_upgrade() {
+  getent group sopel &>/dev/null || groupadd -r sopel >/dev/null
+  getent passwd sopel &>/dev/null || useradd -r -g sopel -d /var/lib/sopel -s /bin/false sopel >/dev/null
+  usr/bin/systemd-tmpfiles --create sopel.conf || true
+  chown sopel:sopel /var/log/sopel
+}
