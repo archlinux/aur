@@ -1,12 +1,12 @@
 # Maintainer: sumt <sumt at sci dot fi>
 pkgname=palemoon-i18n-default
 pkgver=26.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Pale Moon language pack for system active language."
 arch=('any')
 url="http://www.palemoon.org/langpacks.shtml"
 license=('MPL' 'GPL')
-depends=("palemoon>=$pkgver")
+depends=("palemoon>=$pkgver" 'palemoon<27.0.0')
 source=("lang-pref.js")
 md5sums=('c654129d7633ca682436825e6eb0aead')
 
