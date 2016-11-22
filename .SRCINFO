@@ -1,6 +1,6 @@
 pkgbase = bluez-ps3
 	pkgdesc = Daemons for the bluetooth protocol stack. Patched to support PS3 controllers, including Gasia/Shanwan clones
-	pkgver = 5.42
+	pkgver = 5.43
 	pkgrel = 1
 	url = https://github.com/luetzel/bluez
 	arch = i686

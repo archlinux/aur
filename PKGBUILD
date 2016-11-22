@@ -6,7 +6,7 @@
 
 pkgname=bluez-ps3
 _gitname=bluez
-pkgver=5.42
+pkgver=5.43
 pkgrel=1
 pkgdesc="Daemons for the bluetooth protocol stack. Patched to support PS3 controllers, including Gasia/Shanwan clones"
 url="https://github.com/luetzel/bluez"
