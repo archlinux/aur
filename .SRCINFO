@@ -21,9 +21,9 @@ pkgbase = sopel-git
 	conflicts = sopel
 	backup = etc/sopel.cfg
 	source = git+https://github.com/sopel-irc/sopel.git
-	source = tmpfiles.d
+	source = sopel.cfg
 	md5sums = SKIP
-	md5sums = 8442d9ea410e80dfb67f864cc845af1b
+	md5sums = 1363307140463925249767d6b0e71341
 
 pkgname = sopel-git
 

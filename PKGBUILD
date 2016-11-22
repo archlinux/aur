@@ -13,9 +13,11 @@ conflicts=('sopel')
 provides=('sopel')
 backup=('etc/sopel.cfg')
 source=("git+https://github.com/sopel-irc/sopel.git"
-         "tmpfiles.d")
+       "sopel.cfg")
 md5sums=('SKIP'
-         '8442d9ea410e80dfb67f864cc845af1b')
+         '1363307140463925249767d6b0e71341')
+
+
 install=install
 
 pkgver() {
@@ -44,12 +46,11 @@ package() {
   python setup.py install --root="$pkgdir" --optimize=1
 
   install -Dm644 COPYING "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-  install -Dm644 contrib/sopel.cfg "$pkgdir/etc/sopel.cfg"
+  install -Dm644 ../sopel.cfg "$pkgdir/etc/sopel.cfg"
   install -Dm644 contrib/sopel.service "$pkgdir/usr/lib/systemd/system/sopel.service"
   install -Dm644 contrib/sopel.conf "$pkgdir/usr/lib/tmpfiles.d/sopel.conf"
   install -Dm644 docs/build/man/sopel.1 "$pkgdir/usr/share/man/man1/sopel.1"
   
-  install -Dm644 ../tmpfiles.d "${pkgdir}"/usr/lib/tmpfiles.d/sopel.conf
   install -dm755 $pkgdir/var/lib/sopel
   install -dm755 $pkgdir/var/log/sopel
 }
