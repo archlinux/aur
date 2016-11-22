@@ -2,7 +2,7 @@
 pkgname=cadna_c
 pkgver=2.0.0
 pkgrel=1
-pkgdesc="Control of Accuracy and Debugging for Numerical Applications)"
+pkgdesc="Control of Accuracy and Debugging for Numerical Applications"
 arch=('i686' 'x86_64')
 url="http://www-pequan.lip6.fr/cadna/index.php"
 license=('LGPL')
