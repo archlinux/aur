@@ -1,11 +1,11 @@
 #Package from: Keidan <https://github.com/Keidan>
 #Maintainer : Sasasu <lizhaolong0123@gmail.com>
 pkgname=hex2bin
-pkgver=20161016
+pkgver=20161122
 pkgrel=1
 pkgdesc="Hex to binary converter."
 arch=('any')
-url="https://github.com/mike2718/moefmcmd.git"
+url="https://github.com/Keidan/hex2bin"
 license=('GPL3')
 depends=('gcc')
 makedepends=('git' 'make')
