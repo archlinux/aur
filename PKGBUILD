@@ -3,13 +3,13 @@
 
 pkgname=gcompris-qt
 pkgver=0.61
-pkgrel=1
-pkgdesc="High quality educational software suite comprising of numerous activities for children aged 2 to 10."
-arch=('x86_64')
+pkgrel=2
+pkgdesc="High quality educational software suite comprising of numerous activities for children aged 2 to 10. (Qt version)"
+arch=('x86_64' 'i686')
 url="http://gcompris.net/"
 license=('GPL3')
 depends=('qt5-multimedia' 'qt5-tools' 'qt5-declarative' 'qt5-svg' 'qt5-graphicaleffects' 'qt5-sensors'
-         'gnuchess' 'qml-box2d')
+         'qml-box2d')
 makedepends=('texinfo' 'intltool' 'git' 'extra-cmake-modules' 'python2' 'qt5-tools')
 source=("http://gcompris.net/download/qt/src/gcompris-qt-${pkgver}.tar.xz"
         'gcompris-qt.desktop'
