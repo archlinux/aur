@@ -1,7 +1,7 @@
 # Maintainer: Justin dray <justin@dray.be>
 pkgname=encryptr
 pkgver=2.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A zero-knowledge, cloud-based e-wallet / password manager powered by Crypton."
 url="https://encryptr.org/"
 arch=('i686' 'x86_64')
