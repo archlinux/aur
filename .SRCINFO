@@ -1,0 +1,23 @@
+pkgbase = xfce4-finder
+	pkgdesc = Smart and intuitive application finder, complete with theme and customization support.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/godlikemouse/xfce4-finder
+	arch = any
+	groups = xfce4
+	license = MIT
+	makedepends = automake
+	makedepends = autoconf
+	makedepends = xfce4-dev-tools
+	makedepends = git
+	depends = glib2
+	depends = gtkmm
+	depends = garcon
+	depends = xfconf
+	depends = libxfce4util
+	depends = libxfce4ui
+	source = https://github.com/godlikemouse/xfce4-finder.git
+	md5sums = SKIP
+
+pkgname = xfce4-finder
+
