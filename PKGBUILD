@@ -1,7 +1,7 @@
 # Maintainer: Ben Morgan <neembi@gmail.com>
 # vim: set ts=2 sw=2:
 pkgname=repoctl
-pkgver=0.15
+pkgver=0.16
 pkgrel=1
 pkgdesc="A supplement to repo-add and repo-remove which simplifies managing local repositories"
 arch=('i686' 'x86_64' 'armv7h')
@@ -11,7 +11,6 @@ depends=('pacman')
 makedepends=('go' 'xz')
 options=('!strip')
 source=(https://github.com/cassava/repoctl/releases/download/v${pkgver}/repoctl-${pkgver}.tar.gz)
-md5sums=('24f96a7380f742e10b0d22a981f6f50e')
 
 prepare() {
   dest="$srcdir/src/github.com/cassava"
@@ -45,3 +44,4 @@ package() {
   # Install completion files
   install -Dm644 contrib/zsh_completion "$pkgdir/usr/share/zsh/site-functions/_repoctl"
 }
+md5sums=('ad08ce91da8dec8ef48f3cf6777d7c25')

@@ -1,6 +1,6 @@
 pkgbase = repoctl
 	pkgdesc = A supplement to repo-add and repo-remove which simplifies managing local repositories
-	pkgver = 0.15
+	pkgver = 0.16
 	pkgrel = 1
 	url = https://github.com/cassava/repoctl
 	arch = i686
@@ -11,8 +11,8 @@ pkgbase = repoctl
 	makedepends = xz
 	depends = pacman
 	options = !strip
-	source = https://github.com/cassava/repoctl/releases/download/v0.15/repoctl-0.15.tar.gz
-	md5sums = 24f96a7380f742e10b0d22a981f6f50e
+	source = https://github.com/cassava/repoctl/releases/download/v0.16/repoctl-0.16.tar.gz
+	md5sums = ad08ce91da8dec8ef48f3cf6777d7c25
 
 pkgname = repoctl
 
