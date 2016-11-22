@@ -4,7 +4,7 @@
 _model="9460cdn"
 pkgname="brother-mfc-$_model"
 pkgver="1.1.1"
-pkgrel=2
+pkgrel=3
 pkgdesc="LPR and CUPS driver for the Brother MFC-9460CDN"
 arch=('i686' 'x86_64')
 url="http://welcome.solutions.brother.com/bsc/public_s/id/linux/en/index.html"
