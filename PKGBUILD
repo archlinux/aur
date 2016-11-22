@@ -24,9 +24,9 @@ sha512sums=('66a0617d8fce1b991f5fa7640d489b1f3fbb488c284551c4cfd275f4d66116f2f12
 build() {
   cp -Rf "$srcdir/res" "$srcdir/peazip-$pkgver.src"
   cd "$srcdir/peazip-$pkgver.src"
-  lazbuild --widgetset=qt --build-all project_pea.lpi && [ -f pea ]
-  lazbuild --widgetset=qt --build-all project_gwrap.lpi && [ -f pealauncher ]
-  lazbuild --widgetset=qt --build-all project_peach.lpi && [ -f peazip ]
+  lazbuild --lazarusdir=/usr/lib/lazarus --widgetset=qt --build-all project_pea.lpi && [ -f pea ]
+  lazbuild --lazarusdir=/usr/lib/lazarus --widgetset=qt --build-all project_gwrap.lpi && [ -f pealauncher ]
+  lazbuild --lazarusdir=/usr/lib/lazarus --widgetset=qt --build-all project_peach.lpi && [ -f peazip ]
   icotool -x -w 256 "./res/icons/PeaZip.ico" -o "$srcdir/peazip-$pkgver.src/peazip.png"
 }
 
