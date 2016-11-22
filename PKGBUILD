@@ -1,7 +1,7 @@
 # Maintainer: Jason Graves <j.graves@collaboradev.com>
 
 pkgname=xfce4-finder
-pkgver=20161122
+pkgver=1.0.0
 pkgrel=1
 pkgdesc="Smart and intuitive application finder, complete with theme and customization support."
 arch=('any')
