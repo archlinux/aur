@@ -11,7 +11,7 @@ updpkgsums
 rm *.tar.gz
 
 # Check if the checksums in the PKGBUILD file changed
-if [ -n "$(git diff PKGBUILD | grep '^+md5sums=(.*)$')" ]; then
+if [ -n "$(git diff PKGBUILD | grep '^+md5sums')" ]; then
   printf "Updated the checksums in the PKGBUILD file\n"
   git add PKGBUILD
   printf "Added the PKGBUILD file to the commit\n"
