@@ -8,7 +8,7 @@ pkgdesc="Gudev mono bindings"
 arch=('any')
 url="http://github.com/mono/gudev-sharp"
 license=('LGPL')
-depends=('gtk-sharp-2')
+depends=('gtk-sharp-3')
 source=('git+https://github.com/mono/gudev-sharp.git'
         'actuallycompile.patch')
 md5sums=('SKIP'
