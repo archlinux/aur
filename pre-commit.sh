@@ -1,18 +1,18 @@
 #!/usr/bin/env bash
 # git pre-commit hook:
-# - Generate the sha256sums in the PKGBUILD file and add it to the commit if needed
+# - Generate the checksums in the PKGBUILD file and add it to the commit if needed
 # - Generate the .SRCINFO file and add it to the commit if needed
 # - Validate the PKGBUILD file
 
-# Generate the sha256sums in the PKGBUILD file
+# Generate the checksums in the PKGBUILD file
 updpkgsums
 
 # Remove the archive downloaded by updpkgsums
 rm *.tar.gz
 
-# Check if the sha256sums in the PKGBUILD file changed
-if [ -n "$(git diff PKGBUILD | grep '^+sha256sums=(.*)$')" ]; then
-  printf "Updated the sha256sums in the PKGBUILD file\n"
+# Check if the checksums in the PKGBUILD file changed
+if [ -n "$(git diff PKGBUILD | grep '^+md5sums=(.*)$')" ]; then
+  printf "Updated the checksums in the PKGBUILD file\n"
   git add PKGBUILD
   printf "Added the PKGBUILD file to the commit\n"
 fi

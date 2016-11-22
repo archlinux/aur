@@ -64,10 +64,10 @@ repository's root directory to use it:
 $ mksrcinfo
 ```
 
-### 2. Generate the sha256sums in the PKGBUILD file
+### 2. Generate the checksums in the PKGBUILD file
 
 The script `updpkgsums` (which comes with `pacman`'s version 4.1 or greater) is
-a simple way to generate the sha256sums in the `PKGBUILD` file. It is as simple
+a simple way to generate the checksums in the `PKGBUILD` file. It is as simple
 as running the script in the repository's root directory:
 
 ```bash
