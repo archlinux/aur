@@ -1,20 +1,20 @@
 # Maintainer: Christopher Arndt <aur -at- chrisarndt -dot- de>
 
 pkgname=polyphone
-pkgver=1.7
+pkgver=1.8
 pkgrel=1
 pkgdesc="Graphical user interface for editing sf2 and sfz files"
 arch=('i686' 'x86_64')
-url="http://www.polyphone.fr/"
+url="http://www.polyphone-soundfonts.com/"
 license=('GPL')
-depends=('desktop-file-utils' 'qt5-svg' 'portaudio' 'shared-mime-info')
+depends=('qt5-svg' 'portaudio')
 makedepends=('gendesk')
 provides=(polyphone)
-source=("http://sourceforge.net/projects/$pkgname/files/$pkgname%20releases/$pkgver/$pkgname-$pkgver-src.zip"
+source=("$pkgname-$pkgver-src.zip::http://polyphone-soundfonts.com/en/download/file/76-polyphone-1-8-src-zip/latest/download?ae95d968569b61bc77f7b8559a14db4d=1"
         "$pkgname.desktop"
         "$pkgname.mime")
-install="$pkgname.install"
-md5sums=('8031470d1561a7e216d00eecb6a6f080'
+changelog='ChangeLog'
+md5sums=('75ec14ab98bcf80f360debd80c553733'
          'c796f82cd0ab742741de5c607cd87169'
          'f0808717b27757c80b508f6114a535ce')
 

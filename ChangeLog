@@ -1,0 +1,5 @@
+2016-11-22 Christopher Arndt <aur -at- chrisarndt -dot- de>
+
+	* 1.8-1 :
+	Removed install file (hooks take care of updating desktop files).
+	Removed uneeded dependencies.
