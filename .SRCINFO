@@ -1,0 +1,56 @@
+pkgbase = linux-lts-surface4
+	pkgver = 4.4.34
+	pkgrel = 1
+	url = http://www.kernel.org/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = xmlto
+	makedepends = docbook-xsl
+	makedepends = kmod
+	makedepends = inetutils
+	makedepends = bc
+	options = !strip
+	source = https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.4.tar.xz
+	source = https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.4.tar.sign
+	source = https://www.kernel.org/pub/linux/kernel/v4.x/patch-4.4.34.xz
+	source = https://www.kernel.org/pub/linux/kernel/v4.x/patch-4.4.34.sign
+	source = config
+	source = config.x86_64
+	source = linux-lts.preset
+	source = change-default-console-loglevel.patch
+	source = 0001-sdhci-revert.patch
+	source = 0002-surface-wifi.patch
+	source = 0003-surface-cover.patch
+	source = 0004-surface-pro4-button.patch
+	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
+	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
+	sha256sums = 401d7c8fef594999a460d10c72c5a94e9c2e1022f16795ec51746b0d165418b2
+	sha256sums = SKIP
+	sha256sums = b1e77807267aa3ec81e46c15b1a4be0c7169b6c19eb52cd371c4f58dd2183a9d
+	sha256sums = SKIP
+	sha256sums = e8d200b125b4391020c2bc1f43bf8f3a372f0bbdaf9bad71b31574edab7f908f
+	sha256sums = 236fc805c543cb774785f630bf37c7fdc2ff7c9904bb240ff70e0b7213058de5
+	sha256sums = 9e9e7ee3476e55e68390eda7e983fa18d44e76db5521f023fd2b388b1150bc40
+	sha256sums = 1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99
+	sha256sums = 5313df7cb5b4d005422bd4cd0dae956b2dadba8f3db904275aaf99ac53894375
+	sha256sums = c59a18d38d75fec7e9cc3b4efb6a997b3714c3156f6f80a6915bd16db409cde9
+	sha256sums = 26ed3893c370952f8310a0b2bdecdabf5e3185ad8e9100f1e2ef5260fdf52c84
+	sha256sums = 1a34eae36a3f686f1bc158d7d13564f009e30b8866c919d7fe14590e872f095d
+
+pkgname = linux-lts-surface4
+	pkgdesc = The Linux-lts-surface4 kernel and modules for Microsoft Surface Pro 4
+	install = linux-lts.install
+	depends = coreutils
+	depends = linux-firmware
+	depends = kmod
+	depends = mkinitcpio>=0.7
+	optdepends = crda: to set the correct wireless channels of your country
+	backup = etc/mkinitcpio.d/linux-lts-surface4.preset
+
+pkgname = linux-lts-surface4-headers
+	pkgdesc = Header files and scripts for building modules for Linux-lts-surface4 kernel for Microsoft Surface Pro 4
+
+pkgname = linux-lts-surface4-docs
+	pkgdesc = Kernel hackers manual - HTML documentation that comes with the Linux-lts-surface4 kernel for Microsoft Surface Pro 4
+
