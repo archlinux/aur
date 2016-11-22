@@ -15,19 +15,19 @@ conflicts=('omnetpp')
 
 if [ $(echo "55dc13b719666c22f20bcd8d166a4c9aad38f29d3c02548df7771f6ea870a928  omnetpp-5.0-src.tgz" | sha256sum -c --status; echo $?) -ne 0 ];
 then
-	   echo "Downloading file omnetpp-5.0-src.tgz with wget"
-		sh download.sh
+	echo "Downloading file omnetpp-5.0-src.tgz with wget"
+	sh download.sh
 fi
 
 source=(OMNeT++.desktop
-	 	  omnetpp.sh
-	  	  download.sh
-		  omnetpp-5.0-src.tgz::https://omnetpp.org/omnetpp/send/30-omnet-releases/2305-omnetpp-50-linux)
+	omnetpp.sh
+	download.sh
+	omnetpp-5.0-src.tgz::https://omnetpp.org/omnetpp/send/30-omnet-releases/2305-omnetpp-50-linux)
 
 sha256sums=('fe0660d45f8320378a9d3d1f0ed421e952d9fd5be8a6df6d72845a654d94b5d4'
-				'2e921bc540c09c9cf16a49a632fe399808ba798576967be4b078055a365f087e'
-				'af925e9a553e799123992050fb8d4c2c28ab4eb42f436a5e25d904b230a5eaf2'
-				'55dc13b719666c22f20bcd8d166a4c9aad38f29d3c02548df7771f6ea870a928')
+	'2e921bc540c09c9cf16a49a632fe399808ba798576967be4b078055a365f087e'
+	'af925e9a553e799123992050fb8d4c2c28ab4eb42f436a5e25d904b230a5eaf2'
+	'55dc13b719666c22f20bcd8d166a4c9aad38f29d3c02548df7771f6ea870a928')
 build() {
 	cd ${srcdir}/${_pkgname}-${pkgver}
 	PATH=${srcdir}/${_pkgname}-${pkgver}/bin:$PATH
