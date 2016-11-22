@@ -35,6 +35,7 @@ makedepends=('git' 'python2' 'python2-setuptools')
 provides=('airtime')
 replaces=('airtime')
 backup=('etc/airtime/airtime.conf'
+	'etc/airtime/airtime.ini'
         'etc/logrotate.d/airtime-liquidsoap'
         'etc/logrotate.d/airtime-php')
 install=airtime.install
@@ -49,7 +50,8 @@ branch=2.5.x
 
 prepare() {
     cd "$srcdir/airtime"
-#    grep -rl '/usr/bin/python' 'python_apps' 'utils' | xargs  sed -i "s%/usr/bin/python%/usr/bin/python2%g"
+    grep -rl '/usr/bin/python' 'python_apps' 'utils' | xargs  sed -i "s%/usr/bin/python%/usr/bin/python2%g"
+    grep -rl '/usr/bin/python' 'python_apps' 'utils' | xargs sed -i "s%/etc/airtime/airtime.conf%/etc/airtime/airtime.ini%g"
     grep -rl 'www-data' . | xargs  sed -i "s%www-data%http%g"
     patch -Np0 -i ../php-errors.patch
 }
@@ -77,6 +79,7 @@ package() {
     install -D -m644 "LICENSE_3RD_PARTY" "${pkgdir}/usr/share/licenses/airtime/LICENSE_3RD_PARTY"
 
     install -D -m644 "airtime_mvc/build/airtime.example.conf" "${pkgdir}/etc/airtime/airtime.example.conf"
+    install -D -m644 "airtime_mvc/build/airtime.example.conf" "${pkgdir}/etc/airtime/airtime.ini"
 
 msg2 "Replace deprecated # with ; for php comment"
     find "${pkgdir}/etc/airtime/airtime.example.conf" -name "*.conf" -exec sed -i -re 's/^(\s*)#(.*)/\1;\2/g' {} \;
