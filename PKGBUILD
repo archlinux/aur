@@ -1,14 +1,14 @@
 # Contributor: Andreas Amereller <andreas.amereller.dev@googlemail.com>
 pkgname=brother-hl2240d
 pkgver=2.0.4
-pkgrel=4
+pkgrel=5
 pkgdesc="Brother HL-2240D CUPS driver"
 arch=('i686' 'x86_64')
 url="http://www.brother.com"
 license=('custom:Brother Industries')
 groups=()
 depends=('glibc' 'cups')
-makedepends=('rpmextract')
+makedepends=()
 provides=()
 conflicts=()
 replaces=()
