@@ -1,6 +1,6 @@
 # Maintainer: Jakub Luzny (jakub@luzny.cz)
 pkgname=nrf5x-command-line-tools
-pkgver=9.0.0
+pkgver=9.1.0
 pkgrel=1
 pkgdesc="Tools for programming Nordic nRF51 MCU using J-Link"
 arch=('i686' 'x86_64')
@@ -10,11 +10,11 @@ depends=('jlink-software-and-documentation')
 provides=('nrfjprog')
 conflicts=('nrfjprog')
 options=()
-source_i686=("nRF5x-Command-Line-Tools_${pkgver//./_}_Linux-i386.tar::https://www.nordicsemi.com/eng/nordic/download_resource/52615/10/99891398")
-source_x86_64=("nRF5x-Command-Line-Tools_${pkgver//./_}_Linux-x86-64.tar::https://www.nordicsemi.com/eng/nordic/download_resource/51386/15/97799598")
+source_i686=("nRF5x-Command-Line-Tools_${pkgver//./_}_Linux-i386.tar::https://www.nordicsemi.com/eng/nordic/download_resource/52619/11/51428241")
+source_x86_64=("nRF5x-Command-Line-Tools_${pkgver//./_}_Linux-x86-64.tar::http://www.nordicsemi.com/eng/nordic/download_resource/51388/16/95160587")
 
-md5sums_i686=('bc1d9ade7720e8a8cb7769859c09a2fd')
-md5sums_x86_64=('d9d719e3428e2aba5efc4b95085fec9f')
+md5sums_i686=('7b44dcf98fcabb1e63773744bf1ab1b2')
+md5sums_x86_64=('f3103a5983d73a88507be70752c41377')
 
 package() {
     # Install nrfjprog and mergehex
