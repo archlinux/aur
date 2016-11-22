@@ -1,0 +1,21 @@
+pkgbase = brother-mfc-9460cdn
+	pkgdesc = LPR and CUPS driver for the Brother MFC-9460CDN
+	pkgver = 1.1.1
+	pkgrel = 1
+	url = http://welcome.solutions.brother.com/bsc/public_s/id/linux/en/index.html
+	install = brother-mfc-9460cdn.install
+	arch = i686
+	arch = x86_64
+	license = unknown
+	depends = tcsh
+	depends = deb2targz
+	depends = perl
+	depends = a2ps
+	depends = lib32-glibc
+	source = http://www.brother.com/pub/bsc/linux/dlf/mfc9460cdnlpr-1.1.1-5.i386.deb
+	source = http://www.brother.com/pub/bsc/linux/dlf/mfc9460cdncupswrapper-1.1.1-5.i386.deb
+	md5sums = 5c6e7ca447ee3c9d135d9fa9f2a2a469
+	md5sums = 7d6449e7cc163e5ccc6b83d34af46743
+
+pkgname = brother-mfc-9460cdn
+
