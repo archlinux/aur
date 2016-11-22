@@ -1,6 +1,6 @@
 pkgbase = tex2page-git
 	pkgdesc = Lisp program for making Web pages from TeX documents
-	pkgver = 20161120
+	pkgver = 20161121
 	pkgrel = 1
 	url = https://github.com/ds26gte/tex2page
 	arch = any
