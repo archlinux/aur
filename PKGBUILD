@@ -6,7 +6,7 @@
 
 pkgname=network-ups-tools
 pkgver=2.7.4
-pkgrel=2
+pkgrel=3
 pkgdesc="NUT is a collection of programs for monitoring and administering UPS hardware"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url="http://www.networkupstools.org/"
@@ -22,7 +22,7 @@ sha256sums=('980e82918c52d364605c0703a5dcf01f74ad2ef06e3d365949e43b7d406d25a7')
 build() {
   cd "$srcdir/nut-$pkgver"
   ./configure \
-	--without-wrap \
+    --without-wrap \
     --with-user=ups \
     --with-group=nut \
     --disable-static \
@@ -44,7 +44,8 @@ build() {
     --sbindir=/usr/bin \
     --with-drvpath=/usr/lib/network-ups-tools \
     --sysconfdir=/etc/ups \
-    --with-openssl
+    --with-openssl \
+    --with-dev
   make
 }
 
