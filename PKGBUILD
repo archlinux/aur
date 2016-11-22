@@ -1,8 +1,8 @@
 # Maintainer: Oleksandr Natalenko <oleksandr@natalenko.name>
 # Former maintainer: Andrew Lewis <nerf@judo.za.org>
 pkgname=rspamd
-pkgver=1.3.5
-pkgrel=1
+pkgver=1.4.0
+pkgrel=2
 epoch=
 pkgdesc="Fast, free and open-source spam filtering system."
 arch=('x86_64' 'i686' 'mips64el')
@@ -16,10 +16,36 @@ backup=('etc/rspamd/2tld.inc'
 		'etc/rspamd/composites.conf'
 		'etc/rspamd/dmarc_whitelist.inc'
 		'etc/rspamd/logging.inc'
+		'etc/rspamd/maillist.inc'
 		'etc/rspamd/metrics.conf'
+		'etc/rspamd/mid.inc'
 		'etc/rspamd/mime_types.inc'
 		'etc/rspamd/modules.conf'
+		'etc/rspamd/modules.d/chartable.conf'
+		'etc/rspamd/modules.d/dkim.conf'
+		'etc/rspamd/modules.d/dmarc.conf'
+		'etc/rspamd/modules.d/emails.conf'
+		'etc/rspamd/modules.d/fann_redis.conf'
+		'etc/rspamd/modules.d/forged_recipients.conf'
+		'etc/rspamd/modules.d/fuzzy_check.conf'
+		'etc/rspamd/modules.d/hfilter.conf'
+		'etc/rspamd/modules.d/ip_score.conf'
+		'etc/rspamd/modules.d/maillist.conf'
+		'etc/rspamd/modules.d/mid.conf'
+		'etc/rspamd/modules.d/mime_types.conf'
+		'etc/rspamd/modules.d/multimap.conf'
+		'etc/rspamd/modules.d/once_received.conf'
+		'etc/rspamd/modules.d/phishing.conf'
+		'etc/rspamd/modules.d/ratelimit.conf'
+		'etc/rspamd/modules.d/rbl.conf'
+		'etc/rspamd/modules.d/redis.conf'
+		'etc/rspamd/modules.d/regexp.conf'
+		'etc/rspamd/modules.d/rspamd_update.conf'
+		'etc/rspamd/modules.d/spf.conf'
+		'etc/rspamd/modules.d/surbl.conf'
+		'etc/rspamd/modules.d/whitelist.conf'
 		'etc/rspamd/options.inc'
+		'etc/rspamd/redirectors.inc'
 		'etc/rspamd/rspamd.conf'
 		'etc/rspamd/rspamd.systemd.conf'
 		'etc/rspamd/rspamd.sysvinit.conf'
@@ -27,33 +53,14 @@ backup=('etc/rspamd/2tld.inc'
 		'etc/rspamd/statistic.conf'
 		'etc/rspamd/surbl-whitelist.inc'
 		'etc/rspamd/worker-controller.inc'
-		'etc/rspamd/worker-normal.inc'
-		'etc/rspamd/modules.d/chartable.conf'
-		'etc/rspamd/modules.d/dkim.conf'
-		'etc/rspamd/modules.d/dmarc.conf'
-		'etc/rspamd/modules.d/emails.conf'
-		'etc/rspamd/modules.d/forged_recipients.conf'
-		'etc/rspamd/modules.d/fuzzy_check.conf'
-		'etc/rspamd/modules.d/hfilter.conf'
-		'etc/rspamd/modules.d/ip_score.conf'
-		'etc/rspamd/modules.d/maillist.conf'
-		'etc/rspamd/modules.d/mime_types.conf'
-		'etc/rspamd/modules.d/multimap.conf'
-		'etc/rspamd/modules.d/once_received.conf'
-		'etc/rspamd/modules.d/phishing.conf'
-		'etc/rspamd/modules.d/ratelimit.conf'
-		'etc/rspamd/modules.d/rbl.conf'
-		'etc/rspamd/modules.d/regexp.conf'
-		'etc/rspamd/modules.d/rspamd_update.conf'
-		'etc/rspamd/modules.d/spf.conf'
-		'etc/rspamd/modules.d/surbl.conf'
-		'etc/rspamd/modules.d/whitelist.conf')
+		'etc/rspamd/worker-fuzzy.inc'
+		'etc/rspamd/worker-normal.inc')
 
 install=rspamd.install
 
 source=("https://www.rspamd.com/downloads/${pkgname}-${pkgver}.tar.xz")
 
-sha256sums=('d4413ccfc238c3023e2b8a9441b101a6437f521f333fc9db2dd924d473fee696')
+sha256sums=('30c9acf93bdcc6c009524c8b2770931475929c6c9e948faa90d7412306055a1c')
 
 build() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
