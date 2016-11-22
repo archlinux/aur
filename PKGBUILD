@@ -9,7 +9,7 @@ depends=('python2' 'python2-numpy' 'boost-libs' 'omniorb416' 'omniorbpy36' 'hdf5
 makedepends=('doxygen' 'python2-sphinx' 'git' 'swig2')
 arch=('i686' 'x86_64')
 license=('LGPL')
-source=("salome-kernel.profile"  "http://files.salome-platform.org/Salome/Salome${pkgver}/src${pkgver}.tar.gz")
+source=("${pkgname}.profile" "http://files.salome-platform.org/Salome/Salome${pkgver}/src${pkgver}.tar.gz")
 options=(!makeflags)
 # options=(debug !strip)
 
