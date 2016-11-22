@@ -3,4 +3,5 @@ post_install() {
   getent passwd sopel &>/dev/null || useradd -r -g sopel -d /var/lib/sopel -s /bin/false sopel >/dev/null
   usr/bin/systemd-tmpfiles --create sopel.conf || true
   chown sopel:sopel /var/log/sopel
+  chown sopel:sopel /var/lib/sopel
 }

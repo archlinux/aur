@@ -50,5 +50,6 @@ package() {
   install -Dm644 docs/build/man/sopel.1 "$pkgdir/usr/share/man/man1/sopel.1"
   
   install -Dm644 ../tmpfiles.d "${pkgdir}"/usr/lib/tmpfiles.d/sopel.conf
+  install -dm755 $pkgdir/var/lib/sopel
   install -dm755 $pkgdir/var/log/sopel
 }
