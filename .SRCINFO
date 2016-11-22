@@ -1,11 +1,13 @@
 pkgbase = omnetpp-qt
-	pkgdesc = OMNeT++ Discrete Event Simulator. OMNeT++ is an extensible, modular, component-based C++ simulation library and framework, primarily for building network simulators.
+	pkgdesc = OMNeT++ Discrete Event Simulator. OMNeT++ is an extensible, modular, component-based C++ simulation library and framework, primarily for building network simulators: QT version
 	pkgver = 5.0
 	pkgrel = 1
 	url = http://www.omnetpp.org
 	arch = i686
 	arch = x86_64
 	license = custom
+	makedepends = sh
+	makedepends = wget
 	makedepends = qt4
 	makedepends = cmake
 	makedepends = gcc
@@ -32,9 +34,11 @@ pkgbase = omnetpp-qt
 	conflicts = omnetpp
 	source = OMNeT++.desktop
 	source = omnetpp.sh
+	source = download.sh
 	source = omnetpp-5.0-src.tgz::https://omnetpp.org/omnetpp/send/30-omnet-releases/2305-omnetpp-50-linux
 	sha256sums = fe0660d45f8320378a9d3d1f0ed421e952d9fd5be8a6df6d72845a654d94b5d4
 	sha256sums = 2e921bc540c09c9cf16a49a632fe399808ba798576967be4b078055a365f087e
+	sha256sums = af925e9a553e799123992050fb8d4c2c28ab4eb42f436a5e25d904b230a5eaf2
 	sha256sums = 55dc13b719666c22f20bcd8d166a4c9aad38f29d3c02548df7771f6ea870a928
 
 pkgname = omnetpp-qt
