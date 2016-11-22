@@ -2,9 +2,9 @@
 
 pkgname=panda-qemu-git
 pkgver=r1715.f758bee
-pkgrel=2
+pkgrel=3
 pkgdesc="An open-source Platform for Architecture-Neutral Dynamic Analysis"
-url="https://github.com/moyix/panda"
+url="https://github.com/panda-re/panda"
 arch=('x86_64')
 license=('GPLv2')
 
