@@ -1,12 +1,11 @@
 pkgbase = gsfonts-cyr
 	pkgdesc = URW and Postscript core35 fonts with Cyrillic support
 	pkgver = 2.4
-	pkgrel = 2
+	pkgrel = 3
 	url = http://sourceforge.net/projects/gs-fonts/
 	install = gsfonts-cyr.install
 	arch = any
 	license = GPL2
-	makedepends = rpmextract
 	depends = fontconfig
 	depends = xorg-font-utils
 	provides = gsfonts

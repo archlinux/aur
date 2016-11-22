@@ -4,12 +4,11 @@ pkgname=gsfonts-cyr
 pkgname_org=urw-fonts
 pkgver=2.4
 _fedorarel=17.fc20
-pkgrel=2
+pkgrel=3
 pkgdesc='URW and Postscript core35 fonts with Cyrillic support'
 url='http://sourceforge.net/projects/gs-fonts/'
 arch=('any')
 license=('GPL2')
-makedepends=('rpmextract')
 depends=('fontconfig' 'xorg-font-utils')
 conflicts=('gsfonts' 't1-urw-fonts-ib' 't1-urw-fonts-cyr-ib')
 provides=('gsfonts' 't1-urw-fonts-ib' 't1-urw-fonts-cyr-ib')
@@ -31,7 +30,6 @@ sha1sums=('0066723d9cd086cfdaecc57f7b216545a50924dd'
 
 build() {
   cd "${srcdir}"
-  rpmextract.sh "${pkgname_org}-${pkgver}-${_fedorarel}.src.rpm"
   bsdtar xf *.tar.bz2
 }
 
