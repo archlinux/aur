@@ -9,11 +9,12 @@ url="https://github.com/kubernetes/minikube"
 license=('Apache')
 arch=('x86_64')
 depends=(
-  'virtualbox'
   'net-tools'
 )
 optdepends=(
   'kubectl-bin: to manage the cluster'
+  'virtualbox'
+  'docker-machine-kvm'
 )
 makedepends=()
 
