@@ -45,8 +45,8 @@ _use_current=
 pkgbase=linux-ck
 _srcname=linux-4.8
 pkgver=4.8.10
-pkgrel=1
-_ckpatchversion=7
+pkgrel=2
+_ckpatchversion=8
 arch=('i686' 'x86_64')
 url="https://wiki.archlinux.org/index.php/Linux-ck"
 license=('GPL2')
@@ -72,10 +72,10 @@ sha256sums=('3e9150065f193d3d94bcf46a1fe9f033c7ef7122ab71d75a7fb5a2f0c9a7e11a'
             'SKIP'
             'd0ea1671c488957d7b1ef46a5107c47c16b37f2985ca7ee4c900ba0f89d40d3c'
             'SKIP'
-            '65a9a1d4ab050fa3c4d5640197d8e72dbe99a4464c97b607003729047f5b96da'
+            'cea596c606da2125946154a0121ea0516583f659ad823c93669ad5d25bbc3ef7'
             'e1b8c54c3b81dfd526e24287436b16ec523715e6b3b96156c3e57af035ade127'
-            '0e2a8eadd0530c1d2270937141973f71810cfbddd379696fe291e0e91bc5ccb1'
-            '96d4e5932302c4b46fc7832b3f39d8da57ccd167cb1b89da2566c32a59a5d871'
+            'c9a52842fe24e1e6c68e753ad8e5d142f9847c72a7bdc7aecef13c1d5f6580e6'
+            '9d96711c091686e3b9f477fa842f5c154038a7262384617f1ed871ef686aa958'
             '834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99')
@@ -115,15 +115,6 @@ prepare() {
   else
     cat "${srcdir}/config" > ./.config
   fi
-
-  # MuQSS is now a tickless scheduler. That means it can maintain its
-  # guaranteed low latency even in a build configured with a low Hz tick rate.
-  # To that end, it is now defaulting to 100Hz, and it is recommended to use
-  # this as the default choice for it leads to more throughput and power
-  # savings as well.
-  sed -i -e 's/^CONFIG_HZ_300=y/# CONFIG_HZ_300 is not set/' \
-    -i -e 's/^# CONFIG_HZ_100 is not set/CONFIG_HZ_100=y/' \
-    -i -e 's/^CONFIG_HZ=300/CONFIG_HZ=100/' .config
 
   ### Optionally disable NUMA for 64-bit kernels only
   # (x86 kernels do not support NUMA)
@@ -215,13 +206,12 @@ build() {
 }
 
 _package() {
-  pkgdesc="The ${pkgbase/linux/Linux} kernel and modules with the ck7 patchset featuring MuQSS CPU scheduler v0.140"
-  #_Kpkgdesc="The ${pkgbase/linux/Linux} kernel and modules with the ck7 patchset featuring MuQSS CPU scheduler v0.140"
+  pkgdesc="The ${pkgbase/linux/Linux} kernel and modules with the ck8 patchset featuring MuQSS CPU scheduler v0.144"
+  #_Kpkgdesc="The ${pkgbase/linux/Linux} kernel and modules with the ck8 patchset featuring MuQSS CPU scheduler v0.144"
   #pkgdesc="${_Kpkgdesc}"
   depends=('coreutils' 'linux-firmware' 'kmod' 'mkinitcpio>=0.7')
   optdepends=('crda: to set the correct wireless channels of your country')
   provides=("linux-ck=${pkgver}")
-  conflicts=('linux-ck-corex' 'linux-ck-p4' 'linux-ck-pentm' 'linux-ck-atom' 'linux-ck-core2' 'linux-ck-nehalem' 'linux-ck-sandybridge' 'linux-ck-ivybridge' 'linux-ck-broadwell' 'linux-ck-skylake' 'linux-ck-haswell' 'linux-ck-kx' 'linux-ck-k10' 'linux-ck-barcelona' 'linux-ck-bulldozer' 'linux-ck-piledriver' 'linux-ck-silvermont')
   backup=("etc/mkinitcpio.d/${pkgbase}.preset")
   install=linux.install
   #groups=('ck-generic')
@@ -279,7 +269,6 @@ _package-headers() {
   #pkgdesc="${_Hpkgdesc}"
   depends=('linux-ck') # added to keep kernel and headers packages matched
   provides=("linux-ck-headers=${pkgver}" "linux-headers=${pkgver}")
-  conflicts=('linux-ck-corex-headers' 'linux-ck-p4-headers' 'linux-ck-pentm-headers' 'linux-ck-atom-headers' 'linux-ck-core2-headers' 'linux-ck-nehalem-headers' 'linux-ck-sandybridge-headers' 'linux-ck-ivybridge-headers' 'linux-ck-haswell-headers' 'linux-ck-broadwell-headers' 'linux-ck-skylake-headers' 'linux-ck-kx-headers' 'linux-ck-k10-headers' 'linux-ck-barcelona-headers' 'linux-ck-bulldozer-headers' 'linux-ck-piledriver-headers' 'linux-ck-silvermont-headers')
   #groups=('ck-generic')
 
   install -dm755 "${pkgdir}/usr/lib/modules/${_kernver}"
