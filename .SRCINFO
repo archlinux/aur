@@ -1,7 +1,7 @@
 pkgbase = xf86-input-libinput-git
 	pkgdesc = Generic input driver for the X.Org server based on libinput - Git version
 	pkgver = 0.22.0.6.r200.ga61e156
-	pkgrel = 2
+	pkgrel = 3
 	url = https://cgit.freedesktop.org/xorg/driver/xf86-input-libinput/
 	arch = i686
 	arch = x86_64
