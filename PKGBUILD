@@ -2,33 +2,18 @@
 
 pkgname=lf
 pkgver=nightly
-pkgrel=1
-pkgdesc='lf: A terminal file manager, heavily inspired by ranger'
+pkgrel=2
+pkgdesc='lf: A terminal file manager, heavily inspired by ranger (Precompiled binary from official repository)'
 arch=('i686' 'x86_64')
 url='https://github.com/gokcehan/lf'
 license=('MIT') # https://github.com/gokcehan/lf/blob/master/LICENSE
-makedepends=('go')
 options=('!strip' '!emptydirs')
 provides=('lf')
-source=("https://github.com/gokcehan/lf/archive/$pkgver.tar.gz")
-sha256sums=('ec0548d2169ef7748d8e9922c814adc4d445eb4886f6e8a51e90f5fff5ed7d90')
-
-prepare() {
-  # Get lf's Go dependencies
-  mkdir -p go
-  export GOPATH="$srcdir/go"
-  go get github.com/nsf/termbox-go
-}
-
-build() {
-  # Build lf's binary
-  export GOPATH="$srcdir/go"
-  cd "lf-$pkgver"
-  go build
-}
+source_i686=("https://github.com/gokcehan/lf/releases/download/$pkgver/lf-linux-386.tar.gz")
+source_x86_64=("https://github.com/gokcehan/lf/releases/download/$pkgver/lf-linux-amd64.tar.gz")
+md5sums_i686=('ec80368879f1b5f7ff015dc059833473')
+md5sums_x86_64=('323ef3957df4a31bb6dc15ad0f56bf49')
 
 package() {
-  cd "lf-$pkgver"
-  install -Dm755 "lf-$pkgver" "$pkgdir/usr/bin/lf"
-  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/lf/LICENSE"
+  install -Dm755 "lf" "$pkgdir/usr/bin/lf"
 }
