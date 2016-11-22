@@ -5,8 +5,8 @@
 # Maintainer: SanskritFritz (gmail)
 
 pkgname=firehol
-pkgver=3.0.1
-pkgrel=2
+pkgver=3.0.2
+pkgrel=1
 epoch=2
 pkgdesc="The iptables stateful packet filtering firewall builder."
 url="http://firehol.sourceforge.net"
@@ -42,6 +42,6 @@ package() {
   touch "$pkgdir"/etc/firehol/fire{hol,qos}.conf
 }
 
-md5sums=('afee409b698ad0707340112ff0e811b2'
+md5sums=('04afb6b918a4f628c954d9363b8cbcb3'
          '6c6571af548273e1f172313e366532df'
          'ae9fc18b19a69149108e9f4ab9ba5de9')
