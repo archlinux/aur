@@ -9,7 +9,7 @@ url="http://www.sourcefabric.org/en/airtime"
 license=('GPL3')
 phpver=56
 depends=('alsa-utils'
-		'coreutils'
+	'coreutils'
 	'curl'
 	'ecasound'
 	'flac'
