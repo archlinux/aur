@@ -9,6 +9,7 @@ pkgbase = flips-git
 	makedepends = git
 	optdepends = gtk3: GUI support
 	provides = flips
+	conflicts = flips
 	source = git://github.com/Alcaro/Flips.git
 	md5sums = SKIP
 
