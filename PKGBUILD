@@ -100,7 +100,7 @@ msg2 "Creating folders and fixing permissions..."
     cp -r "airtime_mvc" "${pkgdir}/usr/share/airtime"
     cp -r "python_apps" "${pkgdir}/usr/share/airtime"
     cp -r "utils" "${pkgdir}/usr/share/airtime"
-	install -d -m755 "${pkgdir}/usr/share/doc/airtime/examples/"
+    install -d -m755 "${pkgdir}/usr/share/doc/airtime/examples/"
     cp -r "widgets" "${pkgdir}/usr/share/doc/airtime/examples/"
     install -d -m1777 "${pkgdir}/var/tmp/"
     install -d -m755 "${pkgdir}/var/tmp/airtime"
@@ -113,8 +113,8 @@ msg2 "Installing files..."
     install -D -m644 "CREDITS" "${pkgdir}/usr/share/doc/airtime/CREDITS"
     install -D -m644 "README" "${pkgdir}/usr/share/doc/airtime/README"
     install -D -m644 "changelog" "${pkgdir}/usr/share/doc/airtime/changelog"
-	install -D -m644 "LICENSE" "${pkgdir}/usr/share/doc/airtime/LICENSE"
-	install -D -m644 "LICENSE_3RD_PARTY" "${pkgdir}/usr/share/licenses/airtime/LICENSE_3RD_PARTY"
+    install -D -m644 "LICENSE" "${pkgdir}/usr/share/doc/airtime/LICENSE"
+    install -D -m644 "LICENSE_3RD_PARTY" "${pkgdir}/usr/share/licenses/airtime/LICENSE_3RD_PARTY"
     install -D -m644 "airtime_mvc/build/airtime.example.conf" "${pkgdir}/etc/airtime/airtime.example.conf"
     install -D -m644 "airtime_mvc/build/airtime.example.conf" "${pkgdir}/etc/airtime/airtime.ini"
 
@@ -132,7 +132,7 @@ msg2 "Symlinking Zend Framework..."
  
 msg2 "Copying Apache and Php confs..."    
     install -D -m644 "installer/php/airtime.ini" "${pkgdir}/etc/php$phpver/conf.d/airtime.ini"
-	install -D -m644 ../httpd-airtime.conf "${pkgdir}/etc/httpd/conf/extra/httpd-airtime.conf"
+    install -D -m644 ../httpd-airtime.conf "${pkgdir}/etc/httpd/conf/extra/httpd-airtime.conf"
 
 msg2 "Installing systemd services..."
     install -D -m644 ../airtime-media-monitor.service "${pkgdir}/usr/lib/systemd/system/airtime-media-monitor.service"
@@ -159,8 +159,8 @@ msg2 "Cleaning..."
 }
 
 pkgver() {
-  cd airtime
-  echo $(git rev-list --count $branch).$(git rev-parse --short $branch)
+    cd airtime
+    echo $(git rev-list --count $branch).$(git rev-parse --short $branch)
 }
 
 md5sums=('SKIP'
