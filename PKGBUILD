@@ -1,6 +1,6 @@
 # Maintainer: Liqueur Librazy <im@librazy.org>
 pkgname=tidb-bin
-pkgver=0.0.1.20161121123732
+pkgver=0.0.1.20161122125949
 pkgrel=1
 
 pkgdesc="A distributed NewSQL database compatible with MySQL protocol"
