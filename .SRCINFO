@@ -1,7 +1,7 @@
 pkgbase = dolphin-emu-faster-melee
 	pkgdesc = The FasterMelee build of the Dolphin Emulator
 	pkgver = 4.3
-	pkgrel = 2
+	pkgrel = 3
 	url = http://fastermelee.net
 	arch = x86_64
 	license = GPL
@@ -19,6 +19,9 @@ pkgbase = dolphin-emu-faster-melee
 	depends = xdg-utils
 	depends = wxgtk
 	optdepends = pulseaudio: PulseAudio backend
+	provides = dolphin-emu
+	conflicts = dolphin-emu
+	conflicts = dolphin-emu-git
 	options = !emptydirs
 	source = dolphin-emu-faster-melee::git+https://github.com/Tinob/Ishiiruka.git#commit=0b00f1f6267190a8bf9a3584497a35d8762eb0a9
 	source = GALE01.ini
