@@ -1,7 +1,7 @@
 # Maintainer: Michael Yang <ohmyarchlinux@gmail.com>
 
 pkgname=nlohmann_json-git
-pkgver=2.0.7.r1161.9ca00e4
+pkgver=2.0.7.r1170.ed61111
 pkgrel=1
 pkgdesc="JSON for Modern C++"
 arch=('i686' 'x86_64')
