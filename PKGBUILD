@@ -1,25 +1,48 @@
 # Maintainer: Aleksey Filippov <sarum9in@gmail.com>
-# Contributor: Maxwell Pray a.k.a. Synthead <synthead@gmail.com>
+# Maintainer: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
+# Contributor: Christopher Arndt <aur -at- chrisarndt -dot- de>
 
-_pkgname="pika-python3"
-pkgname="python-pika"
-pkgver=0.9.14rb1
+_pkgbase=pika
+pkgname=(python-${_pkgbase} python2-${_pkgbase})
+pkgver=0.10.0
 pkgrel=1
-pkgdesc="Python 3 fork of Pure Python RabbitMQ/AMQP 0-9-1 client library."
-arch=("any")
-url="https://github.com/renshawbay/pika-python3"
-license=("MPL2")
-depends=("python")
-options=("!emptydirs")
-source=("https://github.com/renshawbay/pika-python3/archive/$pkgver.tar.gz")
-sha1sums=('2d9d49ffe3eb6de5553d88d65fc49f5c93d5d666')
+pkgdesc="A pure-Python implementation of the AMQP 0-9-1 protocol"
+arch=(any)
+url="http://pika.readthedocs.org/"
+license=('GPL')
+depends=()
+makedepends=('python-setuptools' 'python2-setuptools')
+source=("https://pypi.python.org/packages/source/p/${_pkgbase}/${_pkgbase}-$pkgver.tar.gz")
+sha256sums=('7277b4d12a99efa4058782614d84138983f9f89d690bdfcea66290d810806459')
 
 build() {
-  cd "$srcdir/$_pkgname-$pkgver"
-  python setup.py build
+  cd "$srcdir/$_pkgbase-$pkgver"
+
+  rm -rf ../buildpy3; mkdir ../buildpy3
+  python setup.py build -b ../buildpy3
+
+  rm -rf ../buildpy2; mkdir ../buildpy2
+  python2 setup.py build -b ../buildpy2
 }
 
-package() {
-  cd "$srcdir/$_pkgname-$pkgver"
-  python setup.py install --root="${pkgdir}/" --optimize=1
+package_python-pika() {
+  depends=(python)
+
+  cd "$srcdir/$_pkgbase-$pkgver"
+  rm -rf build; ln -s ../buildpy3 build
+  python setup.py install --skip-build -O1 --root="$pkgdir"
+  install -m0644 -D "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+
+  chmod -R a+r "$pkgdir/usr/lib"
+}
+
+package_python2-pika() {
+  depends=(python2)
+
+  cd "$srcdir/$_pkgbase-$pkgver"
+  rm -rf build; ln -s ../buildpy2 build
+  python2 setup.py install --skip-build -O1 --root="$pkgdir"
+  install -m0644 -D "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+
+  chmod -R a+r "$pkgdir/usr/lib"
 }
