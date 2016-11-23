@@ -82,4 +82,5 @@ package() {
 	cp ovmf-x64/OVMF_CODE-pure-efi.fd $pkgdir/usr/lib/windows-gaming/ovmf-code.fd
 	cp ovmf-x64/OVMF_VARS-pure-efi.fd $pkgdir/usr/lib/windows-gaming/ovmf-vars.fd
 	install -D -m644 config-sample.toml $pkgdir/etc/windows-gaming-driver.toml
+	install -D -m644 windows.service $pkgdir/usr/lib/systemd/system/windows.service
 }
