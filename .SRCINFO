@@ -15,6 +15,7 @@ pkgbase = windows-gaming-git
 	optdepends = samba: shared folder support
 	provides = windows-gaming
 	conflicts = windows-gaming
+	backup = etc/windows-gaming-driver.toml
 	source = git+https://github.com/main--/windows-gaming.git
 	md5sums = SKIP
 
