@@ -1,6 +1,7 @@
 [Desktop Entry]
 Encoding=UTF-8
 Name=Visual Studio Code (Open Source)
+Comment=Source code editor and debugger for modern web and cloud applications
 Version=1.0
 Exec="/opt/VSCode-OSS/bin/code-oss" %F
 Icon=/opt/VSCode-OSS/resources/app/resources/linux/code.png
