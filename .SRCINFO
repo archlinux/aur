@@ -1,6 +1,6 @@
 pkgbase = lib32-mesa-git
 	pkgdesc = an open-source implementation of the OpenGL specification, git version for multilib applications
-	pkgver = 13.1.0_devel.86315.3fa10ff
+	pkgver = 13.1.0_devel.86870.28c781b
 	pkgrel = 1
 	url = http://mesa3d.sourceforge.net
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = lib32-mesa-git
 	makedepends = lib32-expat
 	makedepends = lib32-libx11
 	makedepends = glproto
-	makedepends = lib32-libdrm>=2.4.66
+	makedepends = lib32-libdrm
 	makedepends = dri2proto
 	makedepends = dri3proto
 	makedepends = presentproto
@@ -31,6 +31,7 @@ pkgbase = lib32-mesa-git
 	makedepends = mesa-vdpau-git
 	makedepends = mesa-libgl-git
 	makedepends = mesa-vulkan-intel-git
+	makedepends = mesa-vulkan-radeon-git
 	makedepends = lib32-llvm-libs-svn
 	makedepends = lib32-llvm-svn
 	makedepends = lib32-libxvmc

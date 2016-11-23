@@ -13,13 +13,13 @@
 pkgbase=lib32-mesa-git
 pkgname=('lib32-mesa-vdpau-git' 'lib32-mesa-vulkan-intel-git' 'lib32-mesa-vulkan-radeon-git' 'lib32-mesa-libgl-git' 'lib32-libva-mesa-driver-git' 'lib32-mesa-git')
 pkgdesc="an open-source implementation of the OpenGL specification, git version for multilib applications"
-pkgver=13.1.0_devel.86315.3fa10ff
+pkgver=13.1.0_devel.86870.28c781b
 pkgrel=1
 arch=('x86_64')
-makedepends=('python2' 'lib32-libxml2' 'lib32-expat' 'lib32-libx11' 'glproto' 'lib32-libdrm>=2.4.66' 'dri2proto' 'dri3proto' 'presentproto'
+makedepends=('python2' 'lib32-libxml2' 'lib32-expat' 'lib32-libx11' 'glproto' 'lib32-libdrm' 'dri2proto' 'dri3proto' 'presentproto'
              'lib32-libxshmfence' 'lib32-libxxf86vm' 'lib32-libxdamage' 'gcc-multilib' 'lib32-elfutils'  'lib32-systemd'
              'lib32-libvdpau' 'lib32-wayland' 'python2-mako' 'lib32-libtxc_dxtn' 'git' 'lib32-nettle'
-             'mesa-git' 'libva-mesa-driver-git' 'mesa-vdpau-git' 'mesa-libgl-git' 'mesa-vulkan-intel-git' 'lib32-llvm-libs-svn' 'lib32-llvm-svn' 'lib32-libxvmc'
+             'mesa-git' 'libva-mesa-driver-git' 'mesa-vdpau-git' 'mesa-libgl-git' 'mesa-vulkan-intel-git' 'mesa-vulkan-radeon-git' 'lib32-llvm-libs-svn' 'lib32-llvm-svn' 'lib32-libxvmc'
              )
 url="http://mesa3d.sourceforge.net"
 license=('custom')
