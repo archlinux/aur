@@ -55,7 +55,7 @@ build() {
     -DCMAKE_CXX_FLAGS='-fno-pie' \
     -DENABLE_LTO='TRUE' \
     -DUSE_SHARED_ENET='TRUE' \
-    -DDISTRIBUTOR='pyamsoft'
+    -DDISTRIBUTOR='aur.archlinux.org'
   make
 }
 
