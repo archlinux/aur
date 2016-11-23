@@ -1,7 +1,7 @@
 pkgbase = brother-dcpl2520dw
 	pkgdesc = Brother DCP-L2520DW lpr driver and CUPS wrapper.
 	pkgver = 3.2.0_1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://support.brother.com/g/b/downloadend.aspx?c=us&lang=en&prod=dcpl2520dw_us_eu&os=127&dlid=dlf101757_000&flang=4&type3=558
 	arch = i686
 	arch = x86_64
@@ -11,8 +11,6 @@ pkgbase = brother-dcpl2520dw
 	depends = cups
 	depends = lib32-glibc
 	optdepends = brscan4: scanner support.
-	noextract = dcpl2520dwlpr-3.2.0-1.i386.rpm
-	noextract = dcpl2520dwcupswrapper-3.2.0-1.i386.rpm
 	source = http://download.brother.com/welcome/dlf101757/dcpl2520dwlpr-3.2.0-1.i386.rpm
 	source = http://download.brother.com/welcome/dlf101758/dcpl2520dwcupswrapper-3.2.0-1.i386.rpm
 	source = 99-brprint.rules

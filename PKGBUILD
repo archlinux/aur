@@ -2,7 +2,7 @@
 
 pkgname=brother-dcpl2520dw
 pkgver=3.2.0_1
-pkgrel=1
+pkgrel=2
 pkgdesc="Brother DCP-L2520DW lpr driver and CUPS wrapper."
 arch=('i686' 'x86_64')
 url="http://support.brother.com/g/b/downloadend.aspx?c=us&lang=en&prod=dcpl2520dw_us_eu&os=127&dlid=dlf101757_000&flang=4&type3=558"
