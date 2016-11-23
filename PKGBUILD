@@ -2,7 +2,7 @@
 
 pkgname=owncloud-daily
 pkgver=20161117
-pkgrel=1
+pkgrel=2
 pkgdesc="ownCloud server dialy build, installed from the official .tar.bz2 archive"
 url="https://owncloud.org"
 arch=('any')
@@ -29,7 +29,7 @@ validpgpkeys=('E3036906AD9F30807351FAC32D5D5E97F6978A26')
 source=("https://download.owncloud.org/community/daily/owncloud-daily-master.tar.bz2"
   "apache.example.conf"
   "set-oc-perms.sh")
-md5sums=('25e62ed55749127bec5ced4b54a00159'
+md5sums=('SKIP'
          'bf523e475fd8cf1e2048018952da5c34'
          '30333bf6beb39b5048fcb85c74e690c0')
 
