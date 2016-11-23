@@ -1,0 +1,11 @@
+diff -aur ros_comm-release-release-indigo-rosconsole-1.11.19-0.pristine/include/ros/console.h ros_comm-release-release-indigo-rosconsole-1.11.19-0.new/include/ros/console.h
+--- ros_comm-release-release-indigo-rosconsole-1.11.19-0.pristine/include/ros/console.h	2016-04-19 19:12:10.000000000 +0200
++++ ros_comm-release-release-indigo-rosconsole-1.11.19-0.new/include/ros/console.h	2016-11-23 23:15:58.476704215 +0100
+@@ -40,6 +40,7 @@
+ #include <cstdarg>
+ #include <ros/macros.h>
+ #include <map>
++#include <vector>
+ 
+ #ifdef ROSCONSOLE_BACKEND_LOG4CXX
+ #include "log4cxx/level.h"
