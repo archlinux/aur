@@ -15,10 +15,6 @@ source=(
   "http://download.brother.com/welcome/dlf101758/dcpl2520dwcupswrapper-${pkgver/_/-}.i386.rpm"
   '99-brprint.rules'
 )
-noextract=(
-  "dcpl2520dwlpr-${pkgver/_/-}.i386.rpm"
-  "dcpl2520dwcupswrapper-${pkgver/_/-}.i386.rpm"
-)
 md5sums=(
   'de61fcda5985944d6dd1e5735cf7897b'
   '4beb9def6c55f7c97d6e654c77eaf4a8'
@@ -30,9 +26,6 @@ if test "$CARCH" == x86_64; then
 fi
 
 prepare() {
-  rpmextract.sh dcpl2520dwlpr-${pkgver/_/-}.i386.rpm
-
-  rpmextract.sh dcpl2520dwcupswrapper-${pkgver/_/-}.i386.rpm
   sed -i -e '47,53c my $basedir = "/opt/brother/Printers/DCPL2520DW";' \
     ${srcdir}/opt/brother/Printers/DCPL2520DW/cupswrapper/brother_lpdwrapper_DCPL2520DW
 }
