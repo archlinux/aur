@@ -1,13 +1,13 @@
 pkgbase = xf86-video-ati-git
 	pkgdesc = X.org ati video driver. Git version
-	pkgver = 7.8.0.r0.g5cbe1ee
+	pkgver = 7.8.0.r4.g13c6bc5
 	pkgrel = 1
 	url = http://xorg.freedesktop.org/
 	install = xf86-video-ati-git.install
 	arch = i686
 	arch = x86_64
 	license = custom
-	makedepends = xorg-server-devel
+	makedepends = xorg-server-devel>=1.18
 	depends = libdrm
 	depends = systemd
 	depends = mesa
