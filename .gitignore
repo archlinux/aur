@@ -1,6 +1,7 @@
 /autorevision.cache
 *.pkg.tar*
 *.src.tar*
-*.tar.gz
+*.tgz
+*.tgz.sig
 src
 pkg
