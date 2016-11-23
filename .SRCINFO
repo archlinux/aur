@@ -1,0 +1,22 @@
+pkgbase = windows-gaming-git
+	pkgdesc = Windows gaming utils
+	pkgver = r2.1589733
+	pkgrel = 1
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = rpmextract
+	makedepends = curl
+	makedepends = libarchive
+	makedepends = cargo
+	depends = qemu-headless
+	depends = sudo
+	depends = libsystemd
+	optdepends = samba: shared folder support
+	provides = windows-gaming
+	conflicts = windows-gaming
+	source = git+https://github.com/main--/windows-gaming.git
+	md5sums = SKIP
+
+pkgname = windows-gaming-git
+
