@@ -13,8 +13,8 @@ source=("${pkgname}_${pkgver}.deb::http://downloads.starleaf.com/breeze_download
 md5sums=('ea07fdd1a213dc30fbb51edc8e54331e')
 
 package() {
-  msg2 "Extracting starleaf-breeze_1.6.2.deb to $pkgdir/..."
-  bsdtar -xf starleaf-breeze_1.6.2.deb -C "$pkgdir/"
+  msg2 "Extracting starleaf-breeze_$pkgver.deb to $pkgdir/..."
+  bsdtar -xf starleaf-breeze_$pkgver.deb -C "$pkgdir/"
   bsdtar -xf "$pkgdir/data.tar.gz" -C "$pkgdir/"
   rm "$pkgdir"/control.tar.gz
   rm "$pkgdir"/data.tar.gz
