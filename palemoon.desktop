@@ -1,5 +1,4 @@
 [Desktop Entry]
-Version=1.0
 Name=Pale Moon
 GenericName=Web Browser
 GenericName[ar]=متصفح ويب
@@ -82,14 +81,12 @@ Comment[uk]=Перегляд сторінок Інтернету
 Comment[vi]=Để duyệt các trang web
 Comment[zh_CN]=浏览互联网
 Comment[zh_TW]=瀏覽網際網路
-Keywords=Internet;WWW;Browser;Web;Explorer
 Exec=palemoon %u
 Terminal=false
-X-MultipleArgs=false
 Type=Application
 Icon=palemoon
-Categories=Network;WebBrowser;Internet;
-MimeType=text/html;text/xml;application/xhtml+xml;application/xml;application/rss+xml;application/rdf+xml;image/gif;image/jpeg;image/png;x-scheme-handler/http;x-scheme-handler/https;x-scheme-handler/ftp;x-scheme-handler/chrome;video/webm;application/x-xpinstall;
+Categories=Network;WebBrowser;
+MimeType=text/html;text/xml;application/xhtml+xml;application/vnd.mozilla.xul+xml;text/mml;x-scheme-handler/http;x-scheme-handler/https;x-scheme-handler/ftp;
 StartupNotify=true
 Actions=NewTab;NewWindow;NewPrivateWindow;
 
@@ -178,7 +175,7 @@ Name[vi]=Mở thẻ mới
 Name[xh]=Vula ithebhu entsha
 Name[zh_CN]=打开新标签页
 Name[zh_TW]=開啟新分頁
-Exec=palemoon -new-tab about:newtab
+Exec=palemoon -new-tab https://start.palemoon.org
 
 [Desktop Action NewWindow]
 Name=Open new window
@@ -353,3 +350,4 @@ Name[xh]=Ifestile yangasese entsha
 Name[zh_CN]=新建隐私浏览窗口
 Name[zh_TW]=新增隱私視窗
 Exec=palemoon -private-window
+
