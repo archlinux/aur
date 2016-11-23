@@ -24,7 +24,7 @@ source=(
     "swift-corelibs-foundation-${_swiftver}.tar.gz::https://github.com/apple/swift-corelibs-foundation/archive/swift-${_swiftver}.tar.gz"
     "swift-corelibs-libdispatch-${_swiftver}.tar.gz::https://github.com/apple/swift-corelibs-libdispatch/archive/swift-${_swiftver}.tar.gz"
     "swift-integration-tests-${_swiftver}.tar.gz::https://github.com/apple/swift-integration-tests/archive/swift-${_swiftver}.tar.gz"
-    "swift-sphinx2.patch" "xar-1.6.patch"
+    "swift-sphinx2.patch" "xar-1.6.patch" "build-script.patch"
 )
 sha256sums=('5770cc45fe352d8a96d35ee35222cba0a47883b057e012a5464d411898afa074'
             '5cfaa08743b29e6c8a948654b71fef608a48953b3eb928c3049c07ca279275c9'
@@ -38,7 +38,8 @@ sha256sums=('5770cc45fe352d8a96d35ee35222cba0a47883b057e012a5464d411898afa074'
             'ccfd071018f69540fa5e2a6691d5cc5e401c3b2fa19651d38a3f915b4a0b5d36'
             'fc686e6fba5ab9c2520bde71031116cfe57d3230098ad3cdea513a2e367c61af'
             '93bbe769666aab15b15d12e2423f213b39d6c47237eafc781569698c8367535f'
-            'df27c2bfeaed6335f49a8815b0b296fd5acc331a6a9361a40f7dfc69a7518da6')
+            'df27c2bfeaed6335f49a8815b0b296fd5acc331a6a9361a40f7dfc69a7518da6'
+            '9f2512df8c495e2b8bf19fe213e951cdd17df9207538ceb8ab59a30bd6a18e3f')
 
 prepare() {
     # Use python2 where appropriate
@@ -71,6 +72,9 @@ prepare() {
 
     # Fix for xar 1.6.1+ (backported from LLVM trunk)
     ( cd "${srcdir}/llvm" && patch -p1 -i "${srcdir}/xar-1.6.patch" )
+
+    # Typo in build-script
+    ( cd "${srcdir}/swift" && patch -p1 -i "${srcdir}/build-script.patch" )
 }
 
 build() {
