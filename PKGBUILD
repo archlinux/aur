@@ -1,7 +1,7 @@
 # Maintainer: PenguinSnail
 
 pkgname=quick-back
-pkgver=3.0.0
+pkgver=3.0.1
 pkgrel=1
 pkgdesc="Quick, simple command line backup tool"
 arch=('any')
