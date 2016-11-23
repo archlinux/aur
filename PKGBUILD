@@ -1,8 +1,8 @@
 #Maintainer: M0Rf30
 
 pkgname=openbazaard-standalone
-pkgver=0.2.1
-pkgrel=3
+pkgver=0.2.3
+pkgrel=1
 pkgdesc="Server daemon for communication between client and OpenBazaar network"
 arch=(any)
 url="http://openbazaar.org"
@@ -29,21 +29,29 @@ package(){
   cp ../requirements.txt .
   cp ../${pkgname}.spec .
 
-msg2 "Creating an optimized standalone executable"
+
+
+msg2 "Creating an optimized standalone executable..."
   virtualenv2 env
+  
+msg2 "Fix for zope.interface..."
+  mkdir -p env/lib/python2.7/site-packages/zope
+  touch env/lib/python2.7/site-packages/zope/__init__.py
+
+msg2 "Activating virtualenv2..."  
   source env/bin/activate
   pip2 install -r requirements.txt
   pip2 install https://github.com/pyinstaller/pyinstaller/archive/master.zip
   pyinstaller -F ${pkgname}.spec
 
-msg2 "Symlinking to allow gui to automatically call daemon"
+msg2 "Symlinking to allow gui to automatically call daemon..."
   install -dm755 $pkgdir/opt
   ln -sr /var/lib/openbazaard $pkgdir/opt/OpenBazaar-Server
 
-msg2 "Install systemd service"
+msg2 "Installing systemd service..."
   install -Dm644 $srcdir/${pkgname}.service $pkgdir/usr/lib/systemd/system/openbazaard.service
 
-msg2 "Install conf file"
+msg2 "Installing conf file..."
   install -Dm644 $srcdir/${pkgname}.conf $pkgdir/etc/conf.d/openbazaard.conf
 
 msg2 "Install ${_pkgname} scripts"
@@ -51,8 +59,8 @@ msg2 "Install ${_pkgname} scripts"
   install -Dm755 ob.cfg $pkgdir/var/lib/openbazaard/ob.cfg
 }
 
-md5sums=('cd20444eaf5b4068422f61db5856aea4'
+md5sums=('870886a237503c6fd08c48a9884fb67a'
          '58f846fbc1742fea9d245b6f93f6db15'
          '7949d40abcd8bdaee27ff670d5b6c1c7'
          'e4d7b1c3fdceca262a517dd103f59260'
-         '83df086e201c60e2793180058bd7d1e9')
+         '6e5acb7867aee15e2b949a554836c2c9')
