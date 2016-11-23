@@ -1,4 +1,4 @@
-pkgbase = rpm-org-413
+pkgbase = rpm-org
 	pkgdesc = RPM Package Manager - RPM.org fork, used in major RPM distros
 	pkgver = 4.13.0
 	pkgrel = 1
@@ -31,5 +31,5 @@ pkgbase = rpm-org-413
 	sha1sums = 0c5fa516dde1f10211af896c729e4b00c313e12b
 	sha1sums = 456d4a2c9f71c2e3bfa5011800855a73a55aa5bc
 
-pkgname = rpm-org-413
+pkgname = rpm-org
 
