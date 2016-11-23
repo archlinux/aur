@@ -1,7 +1,7 @@
 # Maintainer: M0Rf30
 
 pkgname=python2-pyelliptic
-pkgver=1.5.5
+pkgver=1.5.7
 pkgrel=1
 pkgdesc="Python OpenSSL wrapper. For modern cryptography with ECC, AES, HMAC, Blowfish..."
 arch=(any)
@@ -16,4 +16,4 @@ package(){
   python2 setup.py install --root="$pkgdir"
 }
 
-md5sums=('5a914d132d22db2f34f56147de4d4ec1')
+md5sums=('39ab176ea768a0434c5a5f71611300e0')
