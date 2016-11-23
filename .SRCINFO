@@ -1,0 +1,16 @@
+pkgbase = hunspell-fr-revised-base
+	pkgdesc = French (1990 reform) hunspell dictionary. No symlink (fr_BE, fr_CA, etc)
+	pkgver = 5.7
+	pkgrel = 1
+	url = http://www.dicollecte.org/
+	arch = any
+	license = custom:MPLv2
+	optdepends = hunspell: the spell checking libraries and apps
+	provides = hunspell-fr
+	source = http://www.dicollecte.org/download/fr/hunspell-french-dictionaries-v5.7.zip
+	source = LICENSE
+	sha256sums = 275c19c202913f7d6ec2a7687d45120bd9277351d7ca0fc3dcd88faae81e483f
+	sha256sums = fab3dd6bdab226f1c08630b1dd917e11fcb4ec5e1e020e2c16f83a0a13863e85
+
+pkgname = hunspell-fr-revised-base
+
