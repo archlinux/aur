@@ -18,7 +18,7 @@ makedepends=('python2' 'python')
 optdepends=('libdbus: systemd inhibit plugin')
 conflicts=('rpm' 'rpmextract')
 options=('!libtool')
-provides=('rpm-org' "rpm=${pkgver}" 'rpmextract=1.0-4')
+provides=("rpm=${pkgver}" 'rpmextract=1.0-4')
 source=(https://github.com/rpm-software-management/rpm/releases/download/rpm-${pkgver}-release/rpm-${pkgver}.tar.bz2
 	rpmextract.sh rpmlib-filesystem-check.patch bfdfix.patch)
 sha1sums=('c6ce4f879ca6a75340921093105e5ef9d33381d3'
