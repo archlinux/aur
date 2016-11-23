@@ -1,6 +1,6 @@
 # Maintainer: Guillaume Gauvrit <guillaume@gauvr.it>
 pkgname=starleaf-breeze
-pkgver=1.6.2
+pkgver=1.6.12
 pkgrel=2
 pkgdesc="StarLeaf Breeze voice and video softclient"
 arch=('i686' 'x86_64')
