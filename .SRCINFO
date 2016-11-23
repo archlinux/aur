@@ -12,3 +12,17 @@ pkgbase = python-scipy-doc
 
 pkgname = python-scipy-doc
 
+pkgbase = python-scipy-doc
+	pkgdesc = Documentation for SciPy
+	pkgver = 0.18.1
+	pkgrel = 1
+	url = http://docs.scipy.org
+	arch = any
+	license = BSD
+	makedepends = unzip
+	noextract = python-scipy-doc-0.18.1.zip
+	source = python-scipy-doc-0.18.1.zip::https://docs.scipy.org/doc/scipy/scipy-html-0.18.1.zip
+	sha256sums = b6118abf9af19318b566521c1944d93f0dec57a7e533641348e5338f790e1279
+
+pkgname = python-scipy-doc
+
