@@ -1,9 +1,0 @@
-+++ src/gupnp-tools-0.8.12/src/av-cp/playlist-treeview.h	2016-10-28 11:00:20.944664625 +0200
-@@ -24,6 +24,7 @@
- #include <config.h>
- #include <gtk/gtk.h>
- #include <libgupnp-av/gupnp-av.h>
-+#include <libgupnp/gupnp-device-proxy.h>
- 
- typedef void (* MetadataFunc) (const char *metadata,
-                                gpointer    user_data);
