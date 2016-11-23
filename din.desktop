@@ -1,0 +1,11 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=DIN Is Noise
+GenericName=DIN Is Noise
+Comment=An sound synthesizer and musical instrument
+Exec=din
+Icon=din
+StartupNotify=true
+Terminal=false
+Type=Application
+Categories=Application;AudioVideo;Audio;Midi;Music;

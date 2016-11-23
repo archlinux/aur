@@ -1,0 +1,23 @@
+pkgbase = din
+	pkgdesc = A sound synthesizer and musical instrument.
+	pkgver = 25
+	pkgrel = 1
+	url = http://dinisnoise.org/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = boost
+	makedepends = subversion
+	depends = jack-audio-connection-kit
+	depends = libgl
+	depends = sdl
+	depends = tcl
+	source = svn+svn://jagernot.xyz/home/svn/din25
+	source = din.png
+	source = din.desktop
+	md5sums = SKIP
+	md5sums = 50ca4dc107eaa0d5b6a1efe21c469bd7
+	md5sums = e38840354b0f197079e6bbeda03c8613
+
+pkgname = din
+
