@@ -1,4 +1,5 @@
-# Maintainer : Frederic Bezies <fredbezies at gmail dot com>
+# Maintainer: Nissar Chababy <funilrys at outlook dot com>
+# Ex-Maintainer : Frederic Bezies <fredbezies at gmail dot com>
 # Contributor: Adria Arrufat <swiftscythe at gmail _dot_com>
 
 pkgname=cronopete
