@@ -14,7 +14,7 @@ noextract=("${source##*/}")
 sha256sums=('e3f147407433d4809d6636b56366aa6a2c7cac31cec02f81e4f38e7f889e92cd')
 
 package() {
-  install -Dm755 "${source##*/}" "$pkgdir"/usr/lib/firefox/browser/extensions/uMatrix@raymondhill.net.xpi
+  install -Dm644 "${source##*/}" "$pkgdir"/usr/lib/firefox/browser/extensions/uMatrix@raymondhill.net.xpi
 }
 
 # vim:set ts=2 sw=2 et:
