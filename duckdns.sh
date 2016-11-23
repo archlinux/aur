@@ -10,7 +10,7 @@ do
 	logger -t DuckDNS ${OUTPUT}
 	if [ "${OUTPUT}" == "KO" ]; then
 		logger -t DuckDNS "You should check if your domain/token is correct because the server responded negatively!"
-		$EXITCODE=1
+		EXITCODE=1
 	fi
 done
 
