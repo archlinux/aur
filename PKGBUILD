@@ -1,7 +1,7 @@
 # Maintainer: M0Rf30
 
 pkgname=python2-bleach
-pkgver=1.4.3
+pkgver=1.5
 pkgrel=1
 pkgdesc="An easy whitelist-based HTML-sanitizing tool"
 arch=('any')
@@ -21,4 +21,4 @@ package() {
   python2 setup.py install --root="${pkgdir}" --optimize=1
 }
 
-md5sums=('fbb724f677f272ecf26fba4e8b3ce968')
+md5sums=('c2b7c8c189ff86670a6e6edc3c86a63a')
