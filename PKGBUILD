@@ -1,7 +1,7 @@
 # Maintainer: Grey Christoforo <first name [at] last name [dot] net>
 
 pkgname=albion-online-launcher-bin
-pkgver=20161006110252
+pkgver=20161123103252
 pkgrel=1
 pkgdesc="The first true cross-platform Sandbox MMO -- launcher client"
 url="https://albiononline.com/"
@@ -12,7 +12,7 @@ optdepends=(albion-online-live-game-data-bin albion-online-staging-game-data-bin
 source=(${pkgname}-${pkgver}.zip::"https://live.albiononline.com/clients/${pkgver}/albion-online-setup" "albion-online-launcher.desktop")
 
 options=(!strip docs libtool emptydirs !zipman staticlibs !upx)
-md5sums=('9f71c43cecb15c28879cc66bb9bc6177'
+md5sums=('671c1b785b68c31928f0899f535ed855'
          '14b5dfae0a7b3b0dc5e2f2975aa4892c')
 
 package() {
