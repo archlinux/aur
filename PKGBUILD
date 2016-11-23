@@ -1,7 +1,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=emacs-lucid-git
-pkgver=26.0.50.r127505
+pkgver=26.0.50.r127507
 pkgrel=1
 pkgdesc="GNU Emacs. Official git master."
 arch=('i686' 'x86_64')
@@ -56,5 +56,5 @@ package() {
   find "$pkgdir"/usr/share/emacs/ -exec chown root:root {} \;
   # Delete compressed .el.gz files. Comment out if needed.
   # find "$pkgdir"/usr/share/emacs/ -name "*.el.gz" -exec rm {} \;
-  chmod g+x "$pkgdir"/var/games
+  chmod g+w "$pkgdir"/var/games
 }
