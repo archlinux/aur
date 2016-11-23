@@ -29,10 +29,11 @@ pkgdesc="Chromium Spin-off to enhance privacy by disabling data transmission to 
 arch=('i686' 'x86_64')
 url="http://www.chromium.org/"
 license=('BSD')
-depends=('gtk2' 'nss' 'alsa-lib' 'xdg-utils' 'libxss' 'libexif' 'libgcrypt'
-         'ttf-font' 'systemd' 'dbus' 'libpulse' 'perl' 'perl-file-basedir'
-         'pciutils' 'desktop-file-utils' 'hicolor-icon-theme')
-depends+=(${_system_libs[@]})
+depends=('gtk2' 'nss' 'alsa-lib' 'xdg-utils' 'bzip2' 'libevent' 'libxss'
+         'libexif' 'libjpeg' 'libpng' 'libgcrypt' 'ttf-font' 'systemd'
+         'dbus' 'flac' 'snappy' 'libwebp' 'libxslt' 're2'
+         'pciutils' 'libpulse' 'harfbuzz-icu' 'libsecret' 'libvpx'
+         'perl' 'perl-file-basedir' 'desktop-file-utils' 'hicolor-icon-theme')
 makedepends=('python2' 'gperf' 'yasm' 'mesa' 'ninja')
 makedepends_x86_64=('lib32-gcc-libs' 'lib32-zlib')
 optdepends=('kdebase-kdialog: needed for file dialogs in KDE'
