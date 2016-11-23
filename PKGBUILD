@@ -4,11 +4,11 @@
 # Contributor: Fernando M <f <at> beford.net>
 # Author: Wintershade <Wintershade AT google mail DOT com>
 
-pkgname=rpm-org
-pkgver=4.12.0.2
+pkgname=rpm-org-413
+pkgver=4.13.0
 _pkgver=$pkgver
 #_pkgver=4.12.0-rc1
-pkgrel=3
+pkgrel=1
 pkgdesc="RPM Package Manager - RPM.org fork, used in major RPM distros"
 arch=('i686' 'x86_64')
 url="http://www.rpm.org/"
@@ -18,19 +18,19 @@ makedepends=('python2' 'python')
 optdepends=('libdbus: systemd inhibit plugin')
 conflicts=('rpm' 'rpmextract')
 options=('!libtool')
-provides=("rpm=${pkgver}" 'rpmextract=1.0-4')
+provides=('rpm-org' "rpm=${pkgver}" 'rpmextract=1.0-4')
 source=(https://github.com/rpm-software-management/rpm/releases/download/rpm-${pkgver}-release/rpm-${pkgver}.tar.bz2
-	rpmextract.sh rpmlib-filesystem-check.patch lua-5.3.patch)
-sha1sums=('f32216a3bb342fff7a0e3c7d9fa452b7eaae19da'
+	rpmextract.sh rpmlib-filesystem-check.patch bfdfix.patch)
+sha1sums=('c6ce4f879ca6a75340921093105e5ef9d33381d3'
           '74849919207885ae024f1ab8ed68a76474d67ad7'
           '0c5fa516dde1f10211af896c729e4b00c313e12b'
-          'e8efa065eb42648ac431a48b083888ae77e8ae4b')
+          '456d4a2c9f71c2e3bfa5011800855a73a55aa5bc')
 
 prepare() {
 	cd ${srcdir}/rpm-${_pkgver}
 	patch -p1 < ../rpmlib-filesystem-check.patch
-	patch -p1 < ../lua-5.3.patch
-}
+	patch -p1 < ../bfdfix.patch
+	}
 
 
 build() {
