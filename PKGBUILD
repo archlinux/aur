@@ -13,7 +13,7 @@ noextract=("${source##*/}")
 sha256sums=('7b21cc85496dc3854b486e27c0e3e3af0f4cec87b0f0b2fa7e5d36d5a40623c2')
 
 package() {
-  install -Dm755 "${source##*/}" "$pkgdir"/usr/lib/firefox/browser/extensions/newtaboverride@agenedia.com.xpi
+  install -Dm644 "${source##*/}" "$pkgdir"/usr/lib/firefox/browser/extensions/newtaboverride@agenedia.com.xpi
 }
 
 # vim:set ts=2 sw=2 et:
