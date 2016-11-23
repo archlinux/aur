@@ -1,12 +1,10 @@
 pkgname=nmclient
 pkgver=3.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Novell Messenger Client for Linux"
 url="http://gwclient.provo.novell.com/"
 arch=('i686' 'x86_64')
 license=(custom)
-provides=('nmclient')
-conflictis=('nmclient2')
 depends=('bash' 'hicolor-icon-theme' 'desktop-file-utils')
 makedepends=('unzip' 'rpmextract')
 depends_i686=('jre' 'glib2' 'libxext' 'gtk2')
@@ -15,11 +13,14 @@ source=(https://gwclient.innerweb.novell.com/client/messenger/nim30linux.zip)
 md5sums=('e332649760df984b166d39c427d2ae9f')
 
 build() {
-    # just extract blob package
   rm -rf "$pkgname-$pkgver"
   mkdir "$pkgname-$pkgver"
   cd "$pkgname-$pkgver"
-  rpmextract.sh "$srcdir"/novell-messenger-client-3.0.2-20151117.x86_64.rpm
+  
+  msg2 "Extracting RPM file..."
+    # exclude jre from extraction to save 109M
+  bsdtar -xf "$srcdir"/novell-messenger-client-3.0.2-20151117.x86_64.rpm \
+        --exclude=jre
   chmod +rx opt usr
 }
 
@@ -32,10 +33,8 @@ package() {
          "$pkgdir"/usr/share/applications/ \
          "$pkgdir"/usr/share/icons/hicolor/48x48/apps/
   
-    # install data and doc files, excluding embedded JRE
-  for file in `ls opt/novell/messenger/client/ | egrep -v 'jre'`; do
-    cp -R opt/novell/messenger/client/$file "$pkgdir"/usr/share/nmclient/
-  done
+    # install data and doc files
+  cp -R opt/novell/messenger/client/* "$pkgdir"/usr/share/nmclient/
   
     # install  executable script, and fix java path and LD_LIBRARY_PATH
   mv "$pkgdir"/usr/share/nmclient/run-messenger "$pkgdir"/usr/bin/nmclient
