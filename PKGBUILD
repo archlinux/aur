@@ -99,8 +99,8 @@ package()
     make install DESTDIR="${pkgdir}"
 
     rm -rf "${pkgdir}"/run
-
-    chown root:root "${pkgdir}"/usr/share/trafficserver
+    rm -rf "${pkgdir}"/usr/lib/perl5/core_perl
+    rm -rf "${pkgdir}"/usr/share/trafficserver
 
     install -D -m 644 "${srcdir}"/trafficserver.tmpfiles \
         "${pkgdir}"/usr/lib/tmpfiles.d/trafficserver.conf
