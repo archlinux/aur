@@ -2,7 +2,7 @@
 
 pkgname=ffhevc
 pkgver=3.0.5
-pkgrel=2
+pkgrel=3
 pkgdesc='a small yet quite capable shell script for encoding video files to the H.265/HEVC video format using ffmpeg and libx265.'
 arch=(any)
 url='https://sourceforge.net/projects/ffhevc/'
@@ -14,5 +14,5 @@ sha256sums=('14c0ebe1c16c9e0f1049484bfb3270645df95e1d6abd6590764fb91d4c409909')
 package()
 {
     cd $pkgname-$pkgver
-    make install PREFIX="$pkgdir"
+    make install PREFIX="$pkgdir"/usr
 }
