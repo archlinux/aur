@@ -28,7 +28,8 @@ build() {
 
   msg2 "Extracting RPM file..."
   cd "$pkgname-$pkgver"
-  bsdtar -xf nmclient/novell-messenger-client-2.2.2-20150416.i586.rpm
+  bsdtar -xf nmclient/novell-messenger-client-2.2.2-20150416.i586.rpm \
+        --exclude=jre
   chmod +rx opt usr
 }
 
@@ -41,10 +42,8 @@ package() {
          "$pkgdir"/usr/share/applications/  \
          "$pkgdir"/usr/share/icons/hicolor/48x48/apps/
   
-    # install data and doc files, excluding embedded JRE
-  for file in `ls opt/novell/messenger/client/ | egrep -v 'jre'`; do
-    cp -R opt/novell/messenger/client/$file "$pkgdir"/usr/share/nmclient/
-  done
+    # install data and doc files
+  cp -R opt/novell/messenger/client/* "$pkgdir"/usr/share/nmclient/
   
     # install executable script, and fix java path and LD_LIBRARY_PATH
   mv "$pkgdir"/usr/share/nmclient/run-messenger "$pkgdir"/usr/bin/nmclient
