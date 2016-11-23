@@ -3,8 +3,8 @@
 
 pkgname=libdrm-git
 _pkgname=libdrm
-pkgver=5795.b38a4b2
-pkgrel=2
+pkgver=2.4.73.r9.g1924b67
+pkgrel=1
 pkgdesc="Userspace interface to kernel DRM services, master git version"
 arch=(i686 x86_64)
 license=('custom')
@@ -12,18 +12,19 @@ depends=('glibc' 'libpciaccess')
 makedepends=('valgrind' 'xorg-util-macros')
 checkdepends=('cairo' 'cunit')
 url="http://dri.freedesktop.org/"
-provides=('libdrm=2.4.66')
+provides=('libdrm')
 replaces=('libdrm')
 conflicts=('libdrm')
 
 source=('libdrm::git://anongit.freedesktop.org/mesa/drm#branch=master'
         COPYING)
-sha256sums=('SKIP'
-            '9631d4f694952e3e6ae5a05534c2e93e994e47d3413677a3a00e45c8cef6db93')
+sha512sums=('SKIP'
+            'b0ca349b882a4326b19f81f22804fabdb6fb7aef31cdc7b16b0a7ae191bfbb50c7daddb2fc4e6c33f1136af06d060a273de36f6f3412ea326f16fa4309fda660')
 
 pkgver() {
     cd "${srcdir}/${_pkgname}"
-    echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+#    echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+    git describe --long | sed 's/^libdrm-//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
