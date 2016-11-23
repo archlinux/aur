@@ -4,18 +4,35 @@
 # Contributor: Jan "heftig" Steffens <jan.steffens@gmail.com>
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 
+# Possible replacements are listed in build/linux/unbundle/replace_gn_files.py
+# Keys are the names in the above script; values are the dependencies in Arch
+declare -rgA _system_libs=(
+  [flac]=flac
+  [harfbuzz-ng]=harfbuzz-icu
+  [libjpeg]=libjpeg
+  [libpng]=libpng
+  [libvpx]=libvpx
+  [libwebp]=libwebp
+  #[libxml]=libxml2    # https://bugs.archlinux.org/task/29939
+  [libxslt]=libxslt
+  [re2]=re2
+  [snappy]=snappy
+  [yasm]=
+  #[zlib]=zlib         # Error during build
+)
+
 pkgname=inox
-pkgver=53.0.2785.101
+pkgver=54.0.2840.100
 pkgrel=1
 _launcher_ver=3
 pkgdesc="Chromium Spin-off to enhance privacy by disabling data transmission to Google"
 arch=('i686' 'x86_64')
 url="http://www.chromium.org/"
 license=('BSD')
-depends=('gtk2' 'nss' 'alsa-lib' 'xdg-utils' 'bzip2' 'libevent' 'libxss'
-         'libexif' 'libgcrypt' 'ttf-font' 'systemd' 'dbus' 'flac' 'snappy'
-         'pciutils' 'libpulse' 'harfbuzz' 'libsecret' 'libvpx'
-         'perl' 'perl-file-basedir' 'desktop-file-utils' 'hicolor-icon-theme')
+depends=('gtk2' 'nss' 'alsa-lib' 'xdg-utils' 'libxss' 'libexif' 'libgcrypt'
+         'ttf-font' 'systemd' 'dbus' 'libpulse' 'perl' 'perl-file-basedir'
+         'pciutils' 'desktop-file-utils' 'hicolor-icon-theme')
+depends+=(${_system_libs[@]})
 makedepends=('python2' 'gperf' 'yasm' 'mesa' 'ninja')
 makedepends_x86_64=('lib32-gcc-libs' 'lib32-zlib')
 optdepends=('kdebase-kdialog: needed for file dialogs in KDE'
@@ -27,6 +44,7 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/chrom
         chromium-launcher-$_launcher_ver.tar.gz::https://github.com/foutrelis/chromium-launcher/archive/v$_launcher_ver.tar.gz
         https://raw.githubusercontent.com/gcarq/inox-patchset/$pkgver/inox.desktop
         https://raw.githubusercontent.com/gcarq/inox-patchset/$pkgver/chromium-52.0.2743.116-unset-madv_free.patch
+        https://raw.githubusercontent.com/gcarq/inox-patchset/$pkgver/chromium-53.0.2785.92-last-commit-position.patch
         https://raw.githubusercontent.com/gcarq/inox-patchset/$pkgver/chromium-widevine.patch
         https://raw.githubusercontent.com/gcarq/inox-patchset/$pkgver/disable-battery-status-service.patch
         https://raw.githubusercontent.com/gcarq/inox-patchset/$pkgver/disable-autofill-download-manager.patch
@@ -46,23 +64,25 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/chrom
         https://raw.githubusercontent.com/gcarq/inox-patchset/$pkgver/chromium-sandbox-pie.patch
         https://raw.githubusercontent.com/gcarq/inox-patchset/$pkgver/disable-new-avatar-menu.patch
         https://raw.githubusercontent.com/gcarq/inox-patchset/$pkgver/disable-first-run-behaviour.patch
+        https://raw.githubusercontent.com/gcarq/inox-patchset/$pkgver/fix-building-without-safebrowsing.patch
         https://raw.githubusercontent.com/gcarq/inox-patchset/$pkgver/product_logo_{16,22,24,32,48,64,128,256}.png)
 
-sha256sums=('edc55ed74b11064251be35ee89cfd8d6c7055c607d35135c41246c6735c4aee0'
+sha256sums=('e2e7f54a780c93ec2e933af09e1126837e6cf940b57213d39f36d58df10c89df'
             '8b01fb4efe58146279858a754d90b49e5a38c9a0b36a1f84cbb7d12f92b84c28'
             'ff3f939a8757f482c1c5ba35c2c0f01ee80e2a2273c16238370081564350b148'
             '3b3aa9e28f29e6f539ed1c7832e79463b13128863a02e9c6fecd16c30d61c227'
+            'd3dc397956a26ec045e76c25c57a1fac5fc0acff94306b2a670daee7ba15709e'
             'd6fdcb922e5a7fbe15759d39ccc8ea4225821c44d98054ce0f23f9d1f00c9808'
             'c46e918f9e469aefdf4861967dcba98a30b3af0fedb5cb0f674efbdf253bc87a'
             '2d4b600d8085f1d5b3b4f30f8cfc6741558b1c8721dc19dd6b4de2b8dbedd80d'
             'a7329d7f3099f6b8dfe4b7addeb7abbca1cf079139a86c6483a51fed0190478e'
-            '6d56f80d8d5977e59551163d06b3ce1fee4efe1e2b2aea07863d6ac853071a63'
+            'b3fa783f09c5cd927d4af43c9c0a1f24744d840d5002c2e5a5c5af073fdbcf1b'
             '3a331e004ac84a493dced9a990f71119d3ef31ebbfd67b13a7ec194e835dea11'
             'c2bab92d8d237d341b79d868e814807c3f862d3b3c22a87bbf5e905853e516ae'
             'ed4471fa8a984ccea7fd1900a76865e65a8f5afb6a6390faa22a4758d77bbc07'
             '562eea848542f76537a9f3993bac397b523d0ce419416daf0bb4dd17f5203c7c'
             'b081462f645ffab7aaf2c310761c269329d3d22a36cf463dd0ba5ebb3da2141e'
-            '508ae6417ad5dc23581ca593ac19fa36cfdc019d16ac5e159b8cf1e5e1acb551'
+            'e325c598fa3357d7eac10a7635b63e8f543cd77d60ffc299b32560861fc16e67'
             'fe6eddac22aeb0cab1dfcf5932e6d996b7dc3f1a260f55f388a9c397f8cf3d00'
             '8412971b2814c1135375d5e5fc52f0f005ac15ed9e7625db59f7f5297f92727e'
             '55b75daf5aad2a8929c80837f986d4474993f781c0ffa4169e38483b0af6e385'
@@ -71,6 +91,7 @@ sha256sums=('edc55ed74b11064251be35ee89cfd8d6c7055c607d35135c41246c6735c4aee0'
             'cd0d2b665f9d39f7c25929f8e1b85b9a391b4a5a8a70d005cd815bbf2bb4e548'
             '9e37751dca4a2b60681ba14119bc3839685ae420686664de7dfc4245f9eeff3c'
             'c47efe038f502d4fe2b66e59347b01c58ee8739a8d8f050c6c1cc60752d24f13'
+            'a585eda5638c0e24bf77d5c363d92dfe6c8b0fa10f90b6aab0bdf5d6de8e5cd5'
             '71471fa4690894420f9e04a2e9a622af620d92ac2714a35f9a4c4e90fa3968dd'
             '4a533acefbbc1567b0d74a1c0903e9179b8c59c1beabe748850795815366e509'
             '7b88830c5e0e9819f514ad68aae885d427541a907e25607e47dee1b0f38975fd'
@@ -79,15 +100,6 @@ sha256sums=('edc55ed74b11064251be35ee89cfd8d6c7055c607d35135c41246c6735c4aee0'
             '53a1e8da18069eb4d6ab3af9c923c22a0f020241a4839c3140e3601052ddf6ff'
             '896993987d4ef9f0ac7db454f288117316c2c80ed0b6764019afd760db222dad'
             '3df9b3bbdc07fde63d9e400954dcc6ab6e0e5454f0ef6447570eef0549337354')
-
-# We can't build (P)NaCL on i686 because the toolchain is x86_64 only and the
-# instructions on how to build the toolchain from source don't work that well
-# (at least not from within the Chromium 39 source tree).
-# https://sites.google.com/a/chromium.org/dev/nativeclient/pnacl/building-pnacl-components-for-distribution-packagers
-_build_nacl=1
-if [[ $CARCH == i686 ]]; then
-  _build_nacl=0
-fi
 
 prepare() {
   cd "$srcdir/chromium-$pkgver"
@@ -103,6 +115,15 @@ prepare() {
 
   # Make it possible to remove third_party/adobe
   echo > "flapper_version.h"
+
+  # Disable MADV_FREE (if set by glibc)
+  # https://bugzilla.redhat.com/show_bug.cgi?id=1361157
+  patch -Np1 -i ../chromium-52.0.2743.116-unset-madv_free.patch
+
+  # Disable last_commit_position as we don't build from git repository
+  patch -Np1 -i ../chromium-53.0.2785.92-last-commit-position.patch
+
+  patch -Np1 -i ../fix-building-without-safebrowsing.patch
 
   # Apply Inox patches
   patch -Np1 -i ../disable-autofill-download-manager.patch
@@ -123,20 +144,11 @@ prepare() {
   patch -Np1 -i ../disable-first-run-behaviour.patch
   patch -Np1 -i ../disable-battery-status-service.patch
 
-  ## Fix linker errors if building with -Dsafe_browsing=0
-  #patch -Np1 -i ../fix-building-without-safebrowsing.patch
-
-  # Commentception – use bundled ICU due to build failures (50.0.2661.75)
-  # See https://crbug.com/584920 and https://crbug.com/592268
-  # ---
-  ## Remove bundled ICU; its header files appear to get picked up instead of
-  ## the system ones, leading to errors during the final link stage.
-  ## https://groups.google.com/a/chromium.org/d/topic/chromium-packagers/BNGvJc08B6Q
-  #find third_party/icu -type f \! -regex '.*\.\(gyp\|gypi\|isolate\)' -delete
-
-  # Disable MADV_FREE (if set by glibc)
-  # https://bugzilla.redhat.com/show_bug.cgi?id=1361157
-  patch -p1 -i "$srcdir"/chromium-52.0.2743.116-unset-madv_free.patch
+  # Work around bug in blink in which GCC 6 optimizes away null pointer checks
+  # https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=833524
+  # https://gcc.gnu.org/bugzilla/show_bug.cgi?id=68853#c2
+  sed -i '/config("compiler")/ a cflags_cc = [ "-fno-delete-null-pointer-checks" ]' \
+    build/config/linux/BUILD.gn
 
   # Use Python 2
   find . -name '*.py' -exec sed -i -r 's|/usr/bin/python$|&2|g' {} +
@@ -144,12 +156,22 @@ prepare() {
   mkdir -p "$srcdir/python2-path"
   ln -sf /usr/bin/python2 "$srcdir/python2-path/python"
 
-  # Download the PNaCL toolchain on x86_64; i686 toolchain is no longer provided
-  if (( $_build_nacl )); then
-    python2 build/download_nacl_toolchains.py \
-      --packages nacl_x86_newlib,pnacl_newlib,pnacl_translator \
-      sync --extract
-  fi
+  # Remove bundled libraries for which we will use the system copies; this
+  # *should* do what the remove_bundled_libraries.py script does, with the
+  # added benefit of not having to list all the remaining libraries
+  local _lib
+  for _lib in ${!_system_libs[@]} ${_system_libs[libjpeg]+libjpeg_turbo}; do
+    find -type f -path "*third_party/$_lib/*" \
+      \! -path "*third_party/$_lib/chromium/*" \
+      \! -path "*third_party/$_lib/google/*" \
+      \! -regex '.*\.\(gn\|gni\|isolate\|py\)' \
+      -delete
+  done
+
+  python2 build/linux/unbundle/replace_gn_files.py \
+    --system-libraries "${!_system_libs[@]}"
+
+  python2 third_party/libaddressinput/chromium/tools/update-strings.py
 
   # Patch Inox launcher
   cd "$srcdir/chromium-launcher-$_launcher_ver"
@@ -157,93 +179,56 @@ prepare() {
 }
 
 build() {
-  cd "$srcdir/chromium-launcher-$_launcher_ver"
-  make PREFIX=/usr
+  make -C "$srcdir/chromium-launcher-$_launcher_ver" PREFIX=/usr
 
   cd "$srcdir/chromium-$pkgver"
 
   export PATH="$srcdir/python2-path:$PATH"
+  export TMPDIR="$srcdir/temp"
+  mkdir -p "$TMPDIR"
 
-  # CFLAGS are passed through release_extra_cflags below
-  export -n CFLAGS CXXFLAGS
-
-  # Work around bug in v8 in which GCC 6 optimizes away null pointer checks
-  # https://bugs.chromium.org/p/v8/issues/detail?id=3782
-  # https://gcc.gnu.org/bugzilla/show_bug.cgi?id=69234
-  CFLAGS+=' '
-
-  local _inox_conf=(
-    -Dwerror=
-    -Dclang_use_chrome_plugins=0
-    -Dclang=1
-    -Dmake_clang_dir=/usr
-    -Dpython_ver=2.7
-    -Dlinux_link_gsettings=1
-    -Dlinux_link_libpci=1
-    -Dlinux_link_pulseaudio=1
-    -Dlinux_strip_binary=1
-    -Dlinux_use_bundled_binutils=0
-    -Dlinux_use_bundled_gold=0
-    -Dlinux_use_gold_flags=0
-    -Dicu_use_data_file_flag=1
-    -Dlogging_like_official_build=1
-    -Drelease_extra_cflags="$CFLAGS"
-    -Dffmpeg_branding=Chrome
-    -Dproprietary_codecs=1
-    -Duse_gnome_keyring=0
-    -Duse_system_bzip2=1
-    -Duse_system_flac=1
-    -Duse_system_ffmpeg=0
-    -Duse_system_harfbuzz=1
-    -Duse_system_icu=0
-    -Duse_system_libevent=1
-    -Duse_system_libjpeg=1
-    -Duse_system_libpng=1
-    -Duse_system_libvpx=1
-    -Duse_system_libxml=0
-    -Duse_system_snappy=1
-    -Duse_system_xdg_utils=1
-    -Duse_system_yasm=1
-    -Duse_system_zlib=0
-    -Dusb_ids_path=/usr/share/hwdata/usb.ids
-    -Duse_mojo=0
-    -Duse_gconf=0
-    -Duse_sysroot=0
-    -Denable_widevine=1
-    -Ddisable_fatal_linker_warnings=1
-    -Ddisable_glibc=1
-    -Denable_webrtc=0
-    -Denable_google_now=0
-    -Dremoting=0
-    -Dsafe_browsing_mode=0
-    -Denable_rlz=0
-    -Denable_hangout_services_extension=0
-    -Dbranding=Chromium
-    -Dgoogle_chrome_build=0
-    -Denable_web_speech=1
-    -Denable_wifi_bootstrapping=0
-    -Denable_speech_input=0
-    -Denable_pre_sync_backup=0
-    -Denable_print_preview=0
-    -Dtracing_like_official_build=1
-    -Dfieldtrial_testing_like_official_build=1
-    -Dflapper_version_h_file=flapper_version.h
-    -Dfastbuild=1
+  local _flags=(
+    'is_clang=false'
+    'symbol_level=0'
+    'is_debug=false'
+    'fatal_linker_warnings=false'
+    'treat_warnings_as_errors=false'
+    'fieldtrial_testing_like_official_build=false'
+    'remove_webcore_debug_symbols=true'
+    'ffmpeg_branding="Chrome"'
+    'proprietary_codecs=true'
+    'link_pulseaudio=true'
+    'linux_use_bundled_binutils=false'
+    'use_allocator="none"'
+    'use_cups=true'
+    'use_gconf=false'
+    'use_gnome_keyring=false'
+    'use_gold=false'
+    'use_gtk3=false'
+    'use_kerberos=true'
+    'use_pulseaudio=true'
+    'use_sysroot=false'
+    'enable_hangout_services_extension=false'
+    'enable_widevine=true'
+    'enable_nacl=false'
+    'enable_nacl_nonsfi=false'
+    'enable_rlz=false'
+    'enable_rlz_support=false'
+    'enable_remoting=false'
+    'enable_google_now=false'
+    'safe_browsing_mode=0'
+    'enable_webrtc=false'
+    'enable_hotwording=false'
+    'enable_print_preview=false'
     )
+#     'google_chrome_build=false'
+#     'enable_pre_sync_backup=false'
+#     'enable_wifi_bootstrapping=false'
+  python2 tools/gn/bootstrap/bootstrap.py --gn-gen-args "${_flags[*]}"
+  out/Release/gn gen out/Release --args="${_flags[*]}" \
+    --script-executable=/usr/bin/python2
 
-  if (( ! $_build_nacl )); then
-    _inox_conf+=(
-      -Ddisable_nacl=1
-      -Ddisable_pnacl=1
-    )
-  fi
-
-  set GYP_GENERATORS=ninja
-
-  python2 build/linux/unbundle/replace_gyp_files.py "${_inox_conf[@]}"
-  python2 build/gyp_chromium --depth=. "${_inox_conf[@]}"
-
-  ninja -C out/Release chrome chrome_sandbox chromedriver
+  ninja -C out/Release chrome chrome_sandbox chromedriver widevinecdmadapter
 }
 
 package() {
@@ -262,7 +247,7 @@ package() {
 
   install -D out/Release/chromedriver "$pkgdir/usr/lib/$pkgname/inoxdriver"
 
-  cp out/Release/{*.pak,*.bin,libwidevinecdmadapter.so} \
+  cp -a out/Release/{*.pak,*.bin,libwidevinecdmadapter.so,icudtl.dat} \
     "$pkgdir/usr/lib/$pkgname/"
 
   # Manually strip binaries so that 'nacl_irt_*.nexe' is left intact
