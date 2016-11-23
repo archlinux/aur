@@ -1,13 +1,13 @@
 # Maintainer: Andrey Zhidenkov <pensnarik@gmail.com>
 
 pkgname=pg_export
-pkgver=0.4
+pkgver=0.4.2
 pkgrel=1
 pkgdesc="Dumps PostgreSQL database structure on disk"
 arch=(any)
 depends=(postgresql)
 source=("https://github.com/pensnarik/pg_export/archive/v${pkgver}.tar.gz")
-md5sums=('4b1660cbfe52cb2a46d634ed25c78624')
+md5sums=('1185cc5895b4511b8431694ad6cba334')
 
 build() {
   cd $pkgname-$pkgver
