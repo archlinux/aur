@@ -5,7 +5,7 @@
  
  #install documentation here:
 -#DOCUMENTATION_INSTALL_DIR=$${RESOURCES_INSTALL_DIR}/documentation
-+DOCUMENTATION_INSTALL_DIR=$${RESOURCES_INSTALL_DIR}/doc
++DOCUMENTATION_INSTALL_DIR=/usr/share/doc/qtikz-git
  
  #install templates here:
  #TEMPLATES_INSTALL_DIR=$${RESOURCES_INSTALL_DIR}/templates

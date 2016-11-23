@@ -1,21 +1,21 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=qtikz-git
-pkgver=r196.ab7bd73
-pkgrel=3
+pkgver=r202.be66c8b
+pkgrel=1
 pkgdesc="Small application helping you to create TikZ diagrams"
 arch=('i686' 'x86_64')
 url="https://github.com/fhackenberger/ktikz"
 license=('GPL')
-depends=('poppler-qt5' 'shared-mime-info' 'desktop-file-utils')
-makedepends=('git' 'texlive-core' 'qt5-tools')
+depends=('poppler-qt4')
+makedepends=('git' 'texlive-core')
 provides=('qtikz')
 conflicts=('qtikz')
-source=("qtikz::git+https://github.com/fhackenberger/ktikz" config.diff makefile.diff)
+source=("qtikz::git+https://github.com/fhackenberger/ktikz" config.diff)
 md5sums=('SKIP'
-         'ff93a529fe32d095a6390a629c51bece'
-         '4eb8ee23d0762037887d1003daf55c30')
+         '97d5fd5f3cfdf691101c39ae35f69753')
 _gitname=qtikz
+options=('!makeflags')
 
 pkgver() {
   cd "$_gitname"
@@ -29,8 +29,8 @@ prepare() {
 
 build() {
   cd "$_gitname"
-  qmake qtikz.pro
-  patch -p0 -F3 < "$srcdir"/makefile.diff
+  qmake-qt4 qtikz.pro
+  
   make
 }
 
