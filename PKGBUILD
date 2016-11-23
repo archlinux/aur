@@ -4,7 +4,7 @@
 # Contributor: Andrey Vlasovskikh <andrey.vlasovskikh@gmail.com>
 
 pkgname=rider-eap
-_buildver=163.7608
+_buildver=163.8671
 _pkgver=1.0
 _eap="True"
 pkgver="${_pkgver}.${_buildver}"
@@ -15,14 +15,15 @@ options=('!strip')
 url="https://www.jetbrains.com/rider/"
 license=("custom")
 optdepends=('mono: .NET runtime')
-# makedepends=("wget")
+makedepends=("wget")
 provides=("rider")
 conflicts=("rider")
 groups=("development" "IDE" "editor" "jetbrains")
 
-source=("file://riderRS-${_buildver}.tar.gz"
+_srcfile="riderRS-${_buildver}.tar.gz"
+source=("http://download.jetbrains.com/resharper/${_srcfile}"
         "${pkgname}.desktop")
-sha256sums=('cbf1a0badd144ca1e48419e0c97f480b3da8a6c312af5ed783d0477699c9403f'
+sha256sums=($(wget -q "${source}.sha256" && cat "${_srcfile}.sha256" | cut -f1 -d" ")
             'c587386c310274e67aa1b0ae8e83dfd1c1987e2b911b389bb999ad06308a8a78')
 
 package() {
@@ -30,7 +31,6 @@ package() {
     install -dm 755 \
         "${pkgdir}/opt/${pkgname}" \
         "${pkgdir}/usr/bin/" \
-        "${pkgdir}/usr/share/licenses/${pkgname}/" \
         "${pkgdir}/usr/share/applications/"
 
     if [[ "True" = "${_eap}" ]]; then
