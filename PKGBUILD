@@ -3,14 +3,13 @@
 
 pkgname=iscan-plugin-gt-s600
 pkgver=2.1.2_1
-pkgrel=6
+pkgrel=7
 _bundlever=1.0.0
 pkgdesc="iscan plugin for Epson Perfection V10."
 arch=('i686' 'x86_64')
 url="http://download.ebz.epson.net/dsc/search/01/search/?OSC=LX"
 license=('custom:AVASYS')
 depends=('iscan')
-makedepends=('rpmextract')
 install=gt-s600.install
 sha1sums_x86_64=('b73bf2890251639f7d75523765281e8ced92c2e9')
 source_x86_64=(https://download2.ebz.epson.net/iscan/plugin/gt-s600/rpm/x64/iscan-gt-s600-bundle-$_bundlever.x64.rpm.tar.gz)
@@ -28,7 +27,7 @@ package() {
 	fi
 
 	cd "$srcdir"
-	rpmextract.sh "iscan-gt-s600-bundle-$_bundlever.$_arch.rpm/plugins/$pkgname-${pkgver//_/-}.$_arch_inner.rpm"
+	bsdtar -xf "iscan-gt-s600-bundle-$_bundlever.$_arch.rpm/plugins/$pkgname-${pkgver//_/-}.$_arch_inner.rpm"
 	mv usr "$pkgdir"
 
 	if [ "$CARCH" = "x86_64" ]
