@@ -1,6 +1,6 @@
 pkgbase = intellij-idea-ce
 	pkgdesc = Intellij Idea IDE (community version) with Intellij JDK
-	pkgver = 2016.2.5
+	pkgver = 2016.3
 	pkgrel = 5
 	url = http://www.jetbrains.com/idea/
 	arch = any
@@ -10,8 +10,8 @@ pkgbase = intellij-idea-ce
 	depends = giflib
 	depends = libxtst
 	options = !strip
-	source = https://download.jetbrains.com/idea/ideaIC-2016.2.5.tar.gz
-	sha256sums = 1bccc6689c5a140cc8e3b6496a07c7c7c2d2b403034aaff98ace0c9badd63734
+	source = https://download.jetbrains.com/idea/ideaIC-2016.3.tar.gz
+	sha256sums = c37dfa09707a894853fb65f3977a07cb5256d43c1698e0e8a4ae508b7a50e2ae
 
 pkgname = intellij-idea-ce
 
