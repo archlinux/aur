@@ -1,7 +1,7 @@
 # Maintainer: Samo Turk <samo.turk@gmail.com> 
 pkgname=rdkit
 _pkgname=RDKit
-pkgver=2016_03_4
+pkgver=2016_09_2
 pkgrel=1
 pkgdesc="RDKit - A collection of cheminformatics and machine-learning software written in C++ and Python."
 arch=("i686" "x86_64")
@@ -9,7 +9,7 @@ url="http://rdkit.org/"
 license=('New BSD License')
 depends=( 'bison' 'boost' 'boost-libs' 'cmake' 'flex' 'python2' 'python2-numpy' 'sqlite3' 'python2-cairocffi' 'python2-pillow')
 source=("https://github.com/rdkit/rdkit/archive/Release_${pkgver}.tar.gz" "http://www.inchi-trust.org/download/104/INCHI-1-API.zip")
-md5sums=('98a5b6389e4e98a1144215dc55aa1ceb' '8447bf108af12fe66eecba41bbc89918')
+md5sums=('f3f36667f5f1768540237cc4474e807b' '8447bf108af12fe66eecba41bbc89918')
 provides=('rdkit')
 conflicts=('rdkit','rdkit-git')
 
