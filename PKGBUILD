@@ -2,7 +2,7 @@
 
 pkgname=criterion
 pkgver=2.3.0
-_fullver=2.3.0-rc2
+_fullver=2.3.0
 pkgrel=1
 pkgdesc="A KISS, non-intrusive unit testing framework for C and C++"
 arch=('i686' 'x86_64')
