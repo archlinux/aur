@@ -8,7 +8,8 @@
 # Contributor: Simon Zilliken <simon____AT____zilliken____DOT____name>
 
 pkgname=paraview
-pkgver=5.2.0
+_pkgver=5.2.0
+pkgver=${_pkgver//-/.}
 pkgrel=1
 pkgdesc='Parallel Visualization Application using VTK'
 arch=('i686' 'x86_64')
@@ -21,7 +22,7 @@ depends=('qt5-tools' 'qt5-x11extras'  'qt5-xmlpatterns'
 makedepends=('cmake' 'mesa' 'gcc-fortran')
 optdepends=('python2-matplotlib: Needed to support equation rendering using MathText markup language'
             'python2-numpy: Needed for using some filters such as "Python Calculator"')
-source=("http://paraview.org/files/v${pkgver:0:3}/ParaView-v${pkgver}.tar.gz"
+source=("http://paraview.org/files/v${pkgver:0:3}/ParaView-v${_pkgver}.tar.gz"
         'paraview-desktop.patch'
         'vtk_hdf5_internal.patch')
 sha1sums=('c578cdad44673cd3311bd5c5fec52075ea923701'
@@ -29,7 +30,7 @@ sha1sums=('c578cdad44673cd3311bd5c5fec52075ea923701'
           'cbadaa87cd775d1edb1dbc1db4dedb9f3cdc4fd5')
 
 prepare() {
-  cd "${srcdir}/ParaView-v${pkgver}"
+  cd "${srcdir}/ParaView-v${_pkgver}"
 
   patch -p1 -i ../paraview-desktop.patch
   patch -p1 -i ../vtk_hdf5_internal.patch
@@ -70,7 +71,7 @@ build() {
     -DVTK_SMP_IMPLEMENTATION_TYPE:STRING=OpenMP \
     -DVTK_USE_SYSTEM_HDF5:BOOL=OFF \
     ${VTK_USE_SYSTEM_LIB} \
-    ../ParaView-v${pkgver}
+    ../ParaView-v${_pkgver}
 
   make
 }
@@ -81,5 +82,5 @@ package() {
   make DESTDIR="${pkgdir}" install
 
   #Install license
-  install -Dm644 "${srcdir}/ParaView-v${pkgver}/License_v1.2.txt" "${pkgdir}/usr/share/licenses/paraview/LICENSE"
+  install -Dm644 "${srcdir}/ParaView-v${_pkgver}/License_v1.2.txt" "${pkgdir}/usr/share/licenses/paraview/LICENSE"
 }
