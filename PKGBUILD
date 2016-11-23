@@ -49,7 +49,6 @@ pkgver() {
 
 prepare() {
 	cd "$srcdir/${pkgname%-git}"
-#	patch -p1 -i "$srcdir/${pkgname%-VCS}.patch"
 }
 
 build() {
@@ -62,22 +61,15 @@ build() {
 	# grab ovmf
         curl -o ovmf.rpm "https://www.kraxel.org/repos/jenkins/edk2/$(curl -s 'https://www.kraxel.org/repos/jenkins/edk2/' | grep -Eo 'edk2.git-ovmf-x64-[-\.a-z0-9]+\.noarch\.rpm' | head -n1)"
         rpm2cpio ovmf.rpm | bsdtar -xvf - --strip-components 4 './usr/share/edk2.git/ovmf-x64/OVMF_CODE-pure-efi.fd' './usr/share/edk2.git/ovmf-x64/OVMF_VARS-pure-efi.fd'
-
-#	./autogen.sh
-#	./configure --prefix=/usr
-#	make
 }
 
 check() {
 	cd "$srcdir/${pkgname%-git}"
-#	make -k check
 }
 
 package() {
 	cd "$srcdir/${pkgname%-git}"
 
-#	make DESTDIR="$pkgdir/" install
-#	install -D windows.sh $pkgdir/usr/lib/windows-gaming/windows.sh
 	install -D windows-gaming-driver/target/release/windows-gaming-driver $pkgdir/usr/lib/windows-gaming/windows-gaming-driver
 	cp ovmf-x64/OVMF_CODE-pure-efi.fd $pkgdir/usr/lib/windows-gaming/ovmf-code.fd
 	cp ovmf-x64/OVMF_VARS-pure-efi.fd $pkgdir/usr/lib/windows-gaming/ovmf-vars.fd
