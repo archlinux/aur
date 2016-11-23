@@ -9,9 +9,10 @@ url="http://www.chromium.org/"
 license=('BSD')
 provides=('inox')
 conflicts=('inox')
-depends=('gtk2' 'nss' 'alsa-lib' 'xdg-utils' 'bzip2' 'libevent' 'libxss' 'libvpx'
-         'libexif' 'libgcrypt' 'ttf-font' 'systemd' 'dbus' 'flac' 'snappy'
-         'pciutils' 'libpulse' 'harfbuzz' 'libsecret'
+depends=('gtk2' 'nss' 'alsa-lib' 'xdg-utils' 'bzip2' 'libevent' 'libxss'
+         'libexif' 'libjpeg' 'libpng' 'libgcrypt' 'ttf-font' 'systemd'
+         'dbus' 'flac' 'snappy' 'libwebp' 'libxslt' 're2'
+         'pciutils' 'libpulse' 'harfbuzz-icu' 'libsecret' 'libvpx'
          'perl' 'perl-file-basedir' 'desktop-file-utils' 'hicolor-icon-theme')
 optdepends=('kdebase-kdialog: needed for file dialogs in KDE'
             'gnome-keyring: for storing passwords in GNOME keyring'
