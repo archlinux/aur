@@ -12,6 +12,7 @@ pkgbase = nomachine
 	groups = network
 	license = custom:"NoMachine EULA"
 	depends = bash
+	depends = openssh
 	conflicts = nxmanager nxwebplayer nxserver nxnode nxclient
 	options = !strip
 	source_x86_64 = http://download.nomachine.com/download/5.1/Linux/nomachine_5.1.62_1_x86_64.tar.gz
