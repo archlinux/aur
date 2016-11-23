@@ -1,7 +1,7 @@
 pkgbase = atom-editor-bin
 	pkgdesc = Chrome-based text editor from Github - Precompiled binary from official repository
 	pkgver = 1.12.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/atom/atom
 	install = atom-editor-bin.install
 	arch = x86_64
@@ -17,6 +17,7 @@ pkgbase = atom-editor-bin
 	depends = desktop-file-utils
 	depends = alsa-lib
 	depends = libgnome-keyring
+	depends = libxss
 	optdepends = gvfs
 	provides = atom
 	provides = apm
