@@ -4,10 +4,10 @@
 # Contributor: David Manouchehri <manouchehri@riseup.net>
 
 pkgname=nomachine
-pkgver=5.1.54
+pkgver=5.1.62
 pkgrel_i686=1
 pkgrel_x86_64=1
-pkgrel_armv6h=1
+pkgrel_armv6h=3
 pkgrel_armv7h=1
 pkgrel_armv8h=1
 pkgrel=1
@@ -18,12 +18,12 @@ license=('custom:"NoMachine EULA"')
 arch=('x86_64' 'i686' 'armv6h' 'armv7h' 'armv8h')
 options=('!strip')
 conflicts=('nxmanager nxwebplayer nxserver nxnode nxclient')
-depends=('bash')
-sha512sums_x86_64=('7e8c1651582bb07aa5e54568df8186a132f353078b73069dc5b9885ae31df892c842588d77531dc79c6a5d5f2390e7a90200a057164ce1cf16df5872d2e2525a')
-sha512sums_i686=('a8b3ed882c767e2ecb72771aedec810c2e6067e3e9c973968873ea611a40a70c8d23d8f2a73d7bb900511fef986c003cb9150bea39d5ac90e450169111458251')
-sha512sums_armv6h=('c7a945298b9f79967f4a2b456701478e58f941a9bc73291750fba3d84a59cf0fdea232ce9382cd9c4252931ed27140efe9a2340dff809f06b6656f66b68c4c35')
-sha512sums_armv7h=('4b3a681635a27cd4ef090ddaadd3a77c42912df38b910a1fb25dd7d951cde3b9f69659c2f9e78368f4c999516ce7073846ed3f26dfda82d24f9f3e3b3063db4b')
-sha512sums_armv8h=('5612d533085cef92fcf31a8a3b20f12d736f73fcfcb7ca92ad2a3f878f5e7bc50ad6051ebc9b34317ab6dd345427f21c103986e10257271c33b0bed093d4fa70')
+depends=('bash' 'openssh')
+sha512sums_x86_64=('6504420c39b662e29ea53d95fcc06d82abce277da6762b51b0bb6f118cdc091b9e2e999d8b30dd2076e78fda360c4e143699841befb7d8574eb6434f599b787d')
+sha512sums_i686=('ffced4021a88956b65dc5cab85facc06de87939dc633c4e6770009b04e5e1adc9e6bcfc24642d4f26827e3412f157da98d97c01e6902e7599dad699513a7cfa4')
+sha512sums_armv6h=('9ab91382da9853a0569dac0f5f1d0829db0ec5e6b87afbfb4f3ae91d325dd424a7792de4549f9adddde883e8e3c461a0cc2e7f2c487b40c54d835d1781f41ea7')
+sha512sums_armv7h=('c1348720b6efb84d52c2dcf4dc83cfd306bfa945cb6d2240f4427226e74873c96f61142dd2d9646e8eda573057dc05c26d425c44d37b1cad29d114aebcb7cce7')
+sha512sums_armv8h=('6b591ffe1dbc864442e86f8248bdc7dcf2cc368299a5504548ec7fac37109078b59647942798225615a022b7de4a9b3f7593f682b6488052a59a36e28eb584be')
 source_x86_64=("http://download.nomachine.com/download/5.1/Linux/${pkgname}_${pkgver}_${pkgrel_x86_64}_x86_64.tar.gz")
 source_i686=("http://download.nomachine.com/download/5.1/Linux/${pkgname}_${pkgver}_${pkgrel_i686}_i686.tar.gz")
 source_armv6h=("http://download.nomachine.com/download/5.1/Linux/${pkgname}_${pkgver}_${pkgrel_armv6h}_armv6hl.tar.gz")
