@@ -1,7 +1,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=emacs-lucid-git
-pkgver=26.0.50.r127496
+pkgver=26.0.50.r127505
 pkgrel=1
 pkgdesc="GNU Emacs. Official git master."
 arch=('i686' 'x86_64')
@@ -42,7 +42,8 @@ build() {
     --with-sound \
     --without-gconf \
     --with-xft \
-    --without-xwidgets
+    --without-xwidgets \
+    --with-gameuser=:games 
   make
   make pdf
 }
@@ -54,10 +55,6 @@ package() {
   # fix user/root permissions on usr/share files
   find "$pkgdir"/usr/share/emacs/ -exec chown root:root {} \;
   # Delete compressed .el.gz files. Comment out if needed.
-  find "$pkgdir"/usr/share/emacs/ -name "*.el.gz" -exec rm {} \;
-  # fix perms on /var/games
-  chmod 775 "$pkgdir"/var/games
-  chmod 775 "$pkgdir"/var/games/emacs
-  chmod 664 "$pkgdir"/var/games/emacs/*
-  chown -R root:games "$pkgdir"/var/games
+  # find "$pkgdir"/usr/share/emacs/ -name "*.el.gz" -exec rm {} \;
+  chmod g+x "$pkgdir"/var/games
 }
