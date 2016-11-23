@@ -86,6 +86,13 @@ msg2 "Replacing python with python2..."
     grep -rl '/usr/bin/python' 'python_apps' 'utils' | xargs  sed -i "s%/usr/bin/python%/usr/bin/python2%g"
     grep -rl 'www-data' . | xargs  sed -i "s%www-data%http%g"
 
+msg2 "Replacing airtime.conf with airtime.ini for ConfigObj compatibility..."
+    cd python_apps
+    grep -rl '/etc/airtime/airtime.conf' | xargs sed -i "s%airtime.conf%airtime.ini%g"
+    cd ../utils
+    sed -i "s%airtime.conf%airtime.ini%g" upgrade.py airtime-import/airtime-import airtime-silan
+    cd ..
+
 msg2 "Fixing login web interface aspect ( __tostring exception )..."
     patch -Np0 -i ../php-errors.patch
 }
@@ -165,7 +172,7 @@ pkgver() {
 
 md5sums=('SKIP'
          'f42b444b6b06268a8c8695173b55391c'
-         'fc4a319d43a96f0003f348c7ddd8aca2'
+         '47a2530a9f0b483d9d2bedc4a4430dec'
          '93f750480f7c49d72cdcdb10cd97c089'
          'd9c15aaa7b1da14acc99e047f58aac66'
          '6ee878012b7f1bdf6373ce1b7dd8ec5c'

@@ -4,8 +4,7 @@ After=local-fs.target remote-fs.target network.target
 
 [Service]
 Type=simple
-User=http
-Group=http
+User=root
 ExecStart=/usr/bin/airtime-liquidsoap
 ExecReload=/usr/bin/kill -HUP $MAINPID
 
