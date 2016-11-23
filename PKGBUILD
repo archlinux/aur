@@ -1,7 +1,7 @@
 # Maintainer: PenguinSnail
 
 pkgname=quick-back-git
-pkgver=r20.099c96a
+pkgver=r24.a8b6436
 pkgrel=1
 pkgdesc="Quick, simple command line backup tool"
 arch=('any')
@@ -25,5 +25,7 @@ pkgver() {
 
 package() {
     install -D -m 755 $srcdir/$_gitname/quick-back $pkgdir/usr/bin/quick-back
+	gzip -c $srcdir/$_gitname/MANPAGE > $srcdir/$_gitname/quick-back.8.gz
+	install -D -m 755 $srcdir/$_gitname/quick-back.8.gz $pkgdir/usr/share/man/man8/quick-back.8.gz
 }
 
