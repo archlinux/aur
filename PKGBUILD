@@ -2,7 +2,7 @@
 
 _pkgsrcname=txjson-rpc
 pkgname=python2-${_pkgsrcname}
-pkgver=0.3.1
+pkgver=0.5
 pkgrel=1
 pkgdesc="Code for creating Twisted JSON-RPC servers and clients"
 url="https://pypi.python.org/pypi/txJSON-RPC"
@@ -12,14 +12,13 @@ depends=('python2' 'python2-twisted')
 source=("https://pypi.python.org/packages/source/t/txJSON-RPC/txJSON-RPC-${pkgver}.tar.gz")
 
 build() {
-  cd $srcdir/tx*
+  cd $srcdir/txJSON-RPC-$pkgver
   python2 setup.py build
 }
 
 package() {
-  cd $srcdir/tx*
+  cd $srcdir/txJSON-RPC-$pkgver
   python2 setup.py install --prefix=${pkgdir}/usr --root=$pkgdir --optimize=1
 }
 
-
-md5sums=('b9b9e59d1bad30ef15b38a99aa4b3c6e')
+md5sums=('1dafa2df893d9d068573671d3a87ca9b')
