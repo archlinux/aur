@@ -1,0 +1,938 @@
+diff --git a/phatch/actions/autocontrast.py b/phatch/actions/autocontrast.py
+index dd08071..35e5202 100644
+--- a/phatch/actions/autocontrast.py
++++ b/phatch/actions/autocontrast.py
+@@ -28,8 +28,8 @@ from lib.reverse_translation import _t
+ 
+ def init():
+     global Image, ImageOps, imtools
+-    import Image
+-    import ImageOps
++    from PIL import Image
++    from PIL import ImageOps
+     from lib import imtools
+ 
+ 
+diff --git a/phatch/actions/background.py b/phatch/actions/background.py
+index 2033d06..c0c7b63 100644
+--- a/phatch/actions/background.py
++++ b/phatch/actions/background.py
+@@ -30,7 +30,7 @@ from lib.imtools import fill_background_color, generate_layer, \
+ 
+ def init():
+     global Image, HTMLColorToRGBA
+-    import Image
++    from PIL import Image
+     from lib.colors import HTMLColorToRGBA
+ 
+ 
+diff --git a/phatch/actions/border.py b/phatch/actions/border.py
+index 4fea4f5..625efbd 100644
+--- a/phatch/actions/border.py
++++ b/phatch/actions/border.py
+@@ -30,8 +30,8 @@ from lib.imtools import has_transparency, has_alpha, get_alpha, \
+ 
+ def init():
+     global Image, ImageDraw
+-    import Image
+-    import ImageDraw
++    from PIL import Image
++    from PIL import ImageDraw
+ 
+ OPTIONS = [_t('Equal for all sides'), _t('Different for each side')]
+ 
+diff --git a/phatch/actions/brightness.py b/phatch/actions/brightness.py
+index bf4f320..1831304 100644
+--- a/phatch/actions/brightness.py
++++ b/phatch/actions/brightness.py
+@@ -28,8 +28,8 @@ from lib.reverse_translation import _t
+ 
+ def init():
+     global Image, ImageColor, imtools
+-    import Image
+-    import ImageColor
++    from PIL import Image
++    from PIL import ImageColor
+     from lib import imtools
+ 
+ 
+diff --git a/phatch/actions/canvas.py b/phatch/actions/canvas.py
+index bf9a931..ec8af5a 100644
+--- a/phatch/actions/canvas.py
++++ b/phatch/actions/canvas.py
+@@ -26,7 +26,7 @@ from lib.reverse_translation import _t
+ 
+ def init():
+     global Image
+-    import Image
++    from PIL import Image
+     global imtools
+     from lib import imtools
+     global HTMLColorToRGBA
+diff --git a/phatch/actions/color_to_alpha.py b/phatch/actions/color_to_alpha.py
+index a0d7eaa..3838a3b 100644
+--- a/phatch/actions/color_to_alpha.py
++++ b/phatch/actions/color_to_alpha.py
+@@ -38,9 +38,9 @@ OPTIONS = [
+ 
+ def init():
+     global Image, ImageOps, ImageMath, imtools
+-    import Image
+-    import ImageOps
+-    import ImageMath
++    from PIL import Image
++    from PIL import ImageOps
++    from PIL import ImageMath
+     from lib import imtools
+     global HTMLColorToRGBA
+     from lib.colors import HTMLColorToRGBA
+diff --git a/phatch/actions/colorize.py b/phatch/actions/colorize.py
+index 317c1d6..9c010ab 100644
+--- a/phatch/actions/colorize.py
++++ b/phatch/actions/colorize.py
+@@ -28,8 +28,8 @@ from lib.reverse_translation import _t
+ 
+ def init():
+     global Image, ImageOps, imtools
+-    import Image
+-    import ImageOps
++    from PIL import Image
++    from PIL import ImageOps
+     from lib import imtools
+ 
+ 
+diff --git a/phatch/actions/common.py b/phatch/actions/common.py
+index 2da9f09..b22af0d 100644
+--- a/phatch/actions/common.py
++++ b/phatch/actions/common.py
+@@ -28,8 +28,8 @@ from lib.reverse_translation import _t
+ 
+ def init():
+     global Image, ImageFilter, imtools
+-    import Image
+-    import ImageFilter
++    from PIL import Image
++    from PIL import ImageFilter
+     from lib import imtools
+ 
+ 
+diff --git a/phatch/actions/contour.py b/phatch/actions/contour.py
+index 7b0f60d..957c8b1 100644
+--- a/phatch/actions/contour.py
++++ b/phatch/actions/contour.py
+@@ -29,8 +29,8 @@ from lib.imtools import has_transparency, paste
+ 
+ def init():
+     global Image, ImageOps, imtools
+-    import Image
+-    import ImageOps
++    from PIL import Image
++    from PIL import ImageOps
+     from lib import imtools
+     global HTMLColorToRGBA
+     from lib.colors import HTMLColorToRGBA
+diff --git a/phatch/actions/contrast.py b/phatch/actions/contrast.py
+index a4ca7d2..be91cb7 100644
+--- a/phatch/actions/contrast.py
++++ b/phatch/actions/contrast.py
+@@ -28,8 +28,8 @@ from lib.reverse_translation import _t
+ 
+ def init():
+     global Image, ImageColor, imtools
+-    import Image
+-    import ImageColor
++    from PIL import Image
++    from PIL import ImageColor
+     from lib import imtools
+ 
+ 
+diff --git a/phatch/actions/crop.py b/phatch/actions/crop.py
+index 5d84892..a99b023 100644
+--- a/phatch/actions/crop.py
++++ b/phatch/actions/crop.py
+@@ -29,8 +29,8 @@ from lib.imtools import auto_crop
+ 
+ def init():
+     global Image, ImageOps
+-    import Image
+-    import ImageOps
++    from PIL import Image
++    from PIL import ImageOps
+ 
+ 
+ def crop(image, mode=None, all=0, left=0, right=0, top=0, bottom=0):
+diff --git a/phatch/actions/desaturate.py b/phatch/actions/desaturate.py
+index b27e736..e1b01d6 100644
+--- a/phatch/actions/desaturate.py
++++ b/phatch/actions/desaturate.py
+@@ -27,8 +27,8 @@ from lib.reverse_translation import _t
+ def init():
+     #lazy import
+     global Image, ImageOps, imtools
+-    import Image
+-    import ImageOps
++    from PIL import Image
++    from PIL import ImageOps
+     from lib import imtools
+ 
+ 
+diff --git a/phatch/actions/effect.py b/phatch/actions/effect.py
+index b6f5b2a..e2e2020 100644
+--- a/phatch/actions/effect.py
++++ b/phatch/actions/effect.py
+@@ -29,8 +29,8 @@ from lib.formField import IMAGE_EFFECTS
+ 
+ def init():
+     global Image, ImageFilter, imtools
+-    import Image
+-    import ImageFilter
++    from PIL import Image
++    from PIL import ImageFilter
+     from lib import imtools
+ 
+ 
+diff --git a/phatch/actions/equalize.py b/phatch/actions/equalize.py
+index 73d5bc4..a896934 100644
+--- a/phatch/actions/equalize.py
++++ b/phatch/actions/equalize.py
+@@ -27,8 +27,8 @@ from lib.reverse_translation import _t
+ def init():
+     #lazy import
+     global Image, ImageOps, imtools
+-    import Image
+-    import ImageOps
++    from PIL import Image
++    from PIL import ImageOps
+     from lib import imtools
+ 
+ 
+diff --git a/phatch/actions/fit.py b/phatch/actions/fit.py
+index 6dfb00e..1913753 100644
+--- a/phatch/actions/fit.py
++++ b/phatch/actions/fit.py
+@@ -26,8 +26,8 @@ from lib.reverse_translation import _t
+ 
+ def init():
+     global Image, ImageOps
+-    import Image
+-    import ImageOps
++    from PIL import Image
++    from PIL import ImageOps
+     global HTMLColorToRGBA
+     from lib.colors import HTMLColorToRGBA
+ 
+diff --git a/phatch/actions/grid.py b/phatch/actions/grid.py
+index 8e3af5d..6293b41 100644
+--- a/phatch/actions/grid.py
++++ b/phatch/actions/grid.py
+@@ -39,8 +39,8 @@ ZERO = ['', '0']
+ #---PIL
+ def init():
+     global Image, ImageColor, HTMLColorToRGBA, imtools
+-    import Image
+-    import ImageColor
++    from PIL import Image
++    from PIL import ImageColor
+     from lib import imtools
+     from lib.colors import HTMLColorToRGBA
+ 
+diff --git a/phatch/actions/highlight.py b/phatch/actions/highlight.py
+index e4470cb..3016698 100644
+--- a/phatch/actions/highlight.py
++++ b/phatch/actions/highlight.py
+@@ -31,8 +31,8 @@ from lib.imtools import has_transparency, paste
+ 
+ def init():
+     global Image, ImageMath, imtools
+-    import Image
+-    import ImageMath
++    from PIL import Image
++    from PIL import ImageMath
+     from lib import imtools
+ 
+ 
+diff --git a/phatch/actions/invert.py b/phatch/actions/invert.py
+index ce28d22..d1aaf2e 100644
+--- a/phatch/actions/invert.py
++++ b/phatch/actions/invert.py
+@@ -27,8 +27,8 @@ from lib.reverse_translation import _t
+ def init():
+     #lazy import
+     global Image, ImageChops, imtools
+-    import Image
+-    import ImageChops
++    from PIL import Image
++    from PIL import ImageChops
+     from lib import imtools
+ 
+ 
+diff --git a/phatch/actions/mask.py b/phatch/actions/mask.py
+index ce33584..c4d40c8 100644
+--- a/phatch/actions/mask.py
++++ b/phatch/actions/mask.py
+@@ -32,8 +32,8 @@ MASKS = [MASK]
+ 
+ def init():
+     global Image, ImageMath, imtools
+-    import Image
+-    import ImageMath
++    from PIL import Image
++    from PIL import ImageMath
+     from lib import imtools
+ 
+ 
+diff --git a/phatch/actions/maximum.py b/phatch/actions/maximum.py
+index 7cbbcd4..01df8f8 100644
+--- a/phatch/actions/maximum.py
++++ b/phatch/actions/maximum.py
+@@ -28,8 +28,8 @@ from lib.reverse_translation import _t
+ 
+ def init():
+     global Image, ImageFilter, imtools
+-    import Image
+-    import ImageFilter
++    from PIL import Image
++    from PIL import ImageFilter
+     from lib import imtools
+ 
+ 
+diff --git a/phatch/actions/median.py b/phatch/actions/median.py
+index 39940bd..efa5650 100644
+--- a/phatch/actions/median.py
++++ b/phatch/actions/median.py
+@@ -28,8 +28,8 @@ from lib.reverse_translation import _t
+ 
+ def init():
+     global Image, ImageFilter, imtools
+-    import Image
+-    import ImageFilter
++    from PIL import Image
++    from PIL import ImageFilter
+     from lib import imtools
+ 
+ 
+diff --git a/phatch/actions/minimum.py b/phatch/actions/minimum.py
+index 03d06be..6bb77de 100644
+--- a/phatch/actions/minimum.py
++++ b/phatch/actions/minimum.py
+@@ -28,8 +28,8 @@ from lib.reverse_translation import _t
+ 
+ def init():
+     global Image, ImageFilter, imtools
+-    import Image
+-    import ImageFilter
++    from PIL import Image
++    from PIL import ImageFilter
+     from lib import imtools
+ 
+ 
+diff --git a/phatch/actions/mirror.py b/phatch/actions/mirror.py
+index b2f9a22..63c626a 100644
+--- a/phatch/actions/mirror.py
++++ b/phatch/actions/mirror.py
+@@ -30,7 +30,7 @@ from lib.imtools import convert_safe_mode, paste
+ 
+ def init():
+     global Image
+-    import Image
++    from PIL import Image
+ 
+ # Declare constants here
+ 
+diff --git a/phatch/actions/offset.py b/phatch/actions/offset.py
+index 9f72d5c..e676bd8 100644
+--- a/phatch/actions/offset.py
++++ b/phatch/actions/offset.py
+@@ -28,7 +28,7 @@ from lib.reverse_translation import _t
+ 
+ def init():
+     global ImageChops
+-    import ImageChops
++    from PIL import ImageChops
+ 
+ 
+ def offset(image, horizontal_offset, vertical_offset=None):
+diff --git a/phatch/actions/perspective.py b/phatch/actions/perspective.py
+index 7f76fd7..86a27cf 100644
+--- a/phatch/actions/perspective.py
++++ b/phatch/actions/perspective.py
+@@ -28,7 +28,7 @@ from lib.reverse_translation import _t
+ 
+ def init():
+     global Image
+-    import Image
++    from PIL import Image
+ 
+     global math, r
+     import math
+diff --git a/phatch/actions/posterize.py b/phatch/actions/posterize.py
+index e25f85f..5b482cc 100644
+--- a/phatch/actions/posterize.py
++++ b/phatch/actions/posterize.py
+@@ -28,8 +28,8 @@ from lib.reverse_translation import _t
+ 
+ def init():
+     global Image, ImageOps, imtools
+-    import Image
+-    import ImageOps
++    from PIL import Image
++    from PIL import ImageOps
+     from lib import imtools
+ 
+ 
+diff --git a/phatch/actions/rank.py b/phatch/actions/rank.py
+index 2814183..c5d879c 100644
+--- a/phatch/actions/rank.py
++++ b/phatch/actions/rank.py
+@@ -28,8 +28,8 @@ from lib.reverse_translation import _t
+ 
+ def init():
+     global Image, ImageFilter, imtools
+-    import Image
+-    import ImageFilter
++    from PIL import Image
++    from PIL import ImageFilter
+     from lib import imtools
+ 
+ 
+diff --git a/phatch/actions/reflection.py b/phatch/actions/reflection.py
+index d229b44..143ce6c 100644
+--- a/phatch/actions/reflection.py
++++ b/phatch/actions/reflection.py
+@@ -29,9 +29,9 @@ from lib.imtools import has_alpha, has_transparency, paste
+ 
+ def init():
+     global Image, ImageColor, ImageFilter
+-    import Image
+-    import ImageColor
+-    import ImageFilter
++    from PIL import Image
++    from PIL import ImageColor
++    from PIL import ImageFilter
+     global HTMLColorToRGBA
+     from lib.colors import HTMLColorToRGBA
+ 
+diff --git a/phatch/actions/rotate.py b/phatch/actions/rotate.py
+index c98a03d..431509a 100644
+--- a/phatch/actions/rotate.py
++++ b/phatch/actions/rotate.py
+@@ -29,7 +29,7 @@ from lib.colors import HTMLColorToRGBA
+ 
+ def init():
+     global Image, imtools
+-    import Image
++    from PIL import Image
+     from lib import imtools
+ 
+ 
+diff --git a/phatch/actions/round.py b/phatch/actions/round.py
+index 06732cb..202e3a3 100644
+--- a/phatch/actions/round.py
++++ b/phatch/actions/round.py
+@@ -31,9 +31,9 @@ from lib.reverse_translation import _t
+ 
+ def init():
+     global Image, ImageChops, ImageDraw, imtools
+-    import Image
+-    import ImageChops
+-    import ImageDraw
++    from PIL import Image
++    from PIL import ImageChops
++    from PIL import ImageDraw
+     from lib import imtools
+ 
+ 
+diff --git a/phatch/actions/saturation.py b/phatch/actions/saturation.py
+index 2e81970..924c3fb 100644
+--- a/phatch/actions/saturation.py
++++ b/phatch/actions/saturation.py
+@@ -28,8 +28,8 @@ from lib.reverse_translation import _t
+ 
+ def init():
+     global Image, ImageChops, imtools
+-    import Image
+-    import ImageChops
++    from PIL import Image
++    from PIL import ImageChops
+     from lib import imtools
+ 
+ 
+diff --git a/phatch/actions/save.py b/phatch/actions/save.py
+index 43d2b10..f105c52 100644
+--- a/phatch/actions/save.py
++++ b/phatch/actions/save.py
+@@ -33,7 +33,7 @@ import os
+ 
+ def init():
+     global Image
+-    import Image
++    from PIL import Image
+     global get_quality, get_size, InvalidWriteFormatError
+     from lib.imtools import get_quality, get_size, InvalidWriteFormatError
+ 
+diff --git a/phatch/actions/scale.py b/phatch/actions/scale.py
+index 11f0b40..4b48ffa 100644
+--- a/phatch/actions/scale.py
++++ b/phatch/actions/scale.py
+@@ -24,7 +24,7 @@ from lib.reverse_translation import _t
+ 
+ def init():
+     global Image
+-    import Image
++    from PIL import Image
+ 
+ 
+ def preserve_proportions(x0, y0, x1, y1):
+diff --git a/phatch/actions/shadow.py b/phatch/actions/shadow.py
+index cb0b7e2..b080078 100644
+--- a/phatch/actions/shadow.py
++++ b/phatch/actions/shadow.py
+@@ -30,9 +30,9 @@ from lib.imtools import has_transparency, paste
+ def init():
+     #lazily import
+     global Image, ImageChops, ImageFilter, imtools
+-    import Image
+-    import ImageChops
+-    import ImageFilter
++    from PIL import Image
++    from PIL import ImageChops
++    from PIL import ImageFilter
+     from lib import imtools
+ 
+ 
+diff --git a/phatch/actions/sketch.py b/phatch/actions/sketch.py
+index 4f9398f..7836011 100644
+--- a/phatch/actions/sketch.py
++++ b/phatch/actions/sketch.py
+@@ -30,10 +30,10 @@ from lib.reverse_translation import _t
+ 
+ def init():
+     global Image, ImageMath, ImageOps, ImageFilter
+-    import Image
+-    import ImageMath
+-    import ImageOps
+-    import ImageFilter
++    from PIL import Image
++    from PIL import ImageMath
++    from PIL import ImageOps
++    from PIL import ImageFilter
+ 
+ 
+ def sketch(image, details_degree=1):
+diff --git a/phatch/actions/solarize.py b/phatch/actions/solarize.py
+index ac93bf6..ea41a1b 100644
+--- a/phatch/actions/solarize.py
++++ b/phatch/actions/solarize.py
+@@ -28,8 +28,8 @@ from lib.reverse_translation import _t
+ 
+ def init():
+     global Image, ImageOps, imtools
+-    import Image
+-    import ImageOps
++    from PIL import Image
++    from PIL import ImageOps
+     from lib import imtools
+ 
+ 
+diff --git a/phatch/actions/text.py b/phatch/actions/text.py
+index aa87b75..65d0817 100644
+--- a/phatch/actions/text.py
++++ b/phatch/actions/text.py
+@@ -26,9 +26,9 @@ from lib.reverse_translation import _t
+ 
+ def init():
+     global Image, ImageDraw, ImageFont
+-    import Image
+-    import ImageDraw
+-    import ImageFont
++    from PIL import Image
++    from PIL import ImageDraw
++    from PIL import ImageFont
+     global calculate_location, convert_safe_mode
+     from lib.imtools import calculate_location, convert_safe_mode
+ 
+diff --git a/phatch/actions/transpose.py b/phatch/actions/transpose.py
+index 1686817..50fb37d 100644
+--- a/phatch/actions/transpose.py
++++ b/phatch/actions/transpose.py
+@@ -28,7 +28,7 @@ from lib.reverse_translation import _t
+ 
+ def init():
+     global Image, imtools
+-    import Image
++    from PIL import Image
+     from lib import imtools
+ 
+ 
+diff --git a/phatch/actions/warm_up.py b/phatch/actions/warm_up.py
+index 9dc38ed..e775e42 100644
+--- a/phatch/actions/warm_up.py
++++ b/phatch/actions/warm_up.py
+@@ -34,9 +34,9 @@ from core.translation import _t
+ #---PIL
+ def init():
+     global Image, ImageMath, ImageColor, imtools
+-    import Image
+-    import ImageMath
+-    import ImageColor
++    from PIL import Image
++    from PIL import ImageMath
++    from PIL import ImageColor
+     from lib import imtools
+ 
+ 
+diff --git a/phatch/actions/watermark.py b/phatch/actions/watermark.py
+index 2a2b100..9b7f7f7 100644
+--- a/phatch/actions/watermark.py
++++ b/phatch/actions/watermark.py
+@@ -28,7 +28,7 @@ from lib.imtools import convert_safe_mode
+ def init():
+     #lazily import
+     global Image
+-    import Image
++    from PIL import Image
+     global generate_layer
+     from lib.imtools import generate_layer
+ 
+diff --git a/phatch/app.py b/phatch/app.py
+index ce1e668..8b978e8 100644
+--- a/phatch/app.py
++++ b/phatch/app.py
+@@ -148,6 +148,7 @@ Please install the graphical user interface package 'phatch' as well.
+ 
+ def import_pyWx():
+     try:
++        import phatch
+         from pyWx import gui
+     except ImportError:
+         sys.exit(PYWX_ERROR)
+diff --git a/phatch/core/config.py b/phatch/core/config.py
+index 7f1d670..51a7fa9 100644
+--- a/phatch/core/config.py
++++ b/phatch/core/config.py
+@@ -214,7 +214,7 @@ def init_config_paths(config_paths=None):
+     phatch_path = fix_python_path(config_paths.get('PHATCH_PYTHON_PATH', None))
+     #patches for pil <= 1.1.6 (ImportError=skip during build process)
+     try:
+-        import Image
++        from PIL import Image
+         if Image.VERSION < '1.1.7':
+             fix_python_path(os.path.join(phatch_path, 'other', 'pil_1_1_6'))
+     except ImportError:
+diff --git a/phatch/core/models.py b/phatch/core/models.py
+index 2404ec3..f331714 100644
+--- a/phatch/core/models.py
++++ b/phatch/core/models.py
+@@ -30,7 +30,7 @@ except NameError:
+ 
+ import os
+ 
+-import Image
++from PIL import Image
+ 
+ from lib.formField import files_dictionary, Form, Field, \
+     ImageDictionaryReadFileField, \
+diff --git a/phatch/core/pil.py b/phatch/core/pil.py
+index 19ff21f..5f220c9 100644
+--- a/phatch/core/pil.py
++++ b/phatch/core/pil.py
+@@ -30,7 +30,7 @@ import os
+ import re
+ import types
+ 
+-import Image
++from PIL import Image
+ 
+ #todo make this lazy
+ from lib import formField
+diff --git a/phatch/core/preview.py b/phatch/core/preview.py
+index c7cf66d..5e12c18 100644
+--- a/phatch/core/preview.py
++++ b/phatch/core/preview.py
+@@ -25,7 +25,7 @@ if __name__ == '__main__':
+     init_config_paths()
+ 
+ import os
+-import Image
++from PIL import Image
+ import api
+ from config import USER_PREVIEW_PATH
+ from lib import openImage
+diff --git a/phatch/data/info.py b/phatch/data/info.py
+index 6efa1b4..f2a8b3d 100644
+--- a/phatch/data/info.py
++++ b/phatch/data/info.py
+@@ -474,7 +474,7 @@ HEADER = "Phatch is the result of work by (in no particular order):"
+ 
+ def all_credits():
+     #PIL - Python Image Library
+-    import Image
++    from PIL import Image
+     pil_credits = PIL_CREDITS
+     pil_credits['name'] += ' %s' % Image.VERSION
+     if not (pil_credits in CREDITS['libraries']):
+diff --git a/phatch/lib/imtools.py b/phatch/lib/imtools.py
+index ae22acc..0a21c5e 100644
+--- a/phatch/lib/imtools.py
++++ b/phatch/lib/imtools.py
+@@ -20,10 +20,10 @@ from cStringIO import StringIO
+ from itertools import cycle
+ from urllib import urlopen
+ 
+-import Image
+-import ImageDraw
+-import ImageEnhance
+-import ImageOps
++from PIL import Image
++from PIL import ImageDraw
++from PIL import ImageEnhance
++from PIL import ImageOps
+ 
+ import system
+ 
+diff --git a/phatch/lib/metadata.py b/phatch/lib/metadata.py
+index ec4b76d..c666fd1 100644
+--- a/phatch/lib/metadata.py
++++ b/phatch/lib/metadata.py
+@@ -475,7 +475,7 @@ class _InfoPil(_InfoCache):
+             import openImage
+             cls.Image = openImage
+         except ImportError:
+-            import Image
++            from PIL import Image
+             cls.Image = Image
+ 
+     @classmethod
+@@ -495,7 +495,7 @@ class InfoPil(_InfoPil):
+     :type image: Pil.Image/function
+ 
+     >>> import pprint
+-    >>> import Image
++    >>> from PIL import Image
+     >>> image = Image.new('L',(1,2))
+     >>> info = InfoPil(image)
+     >>> info['format']
+@@ -715,7 +715,7 @@ class InfoPexif(_InfoPilMetadata):
+     DateTime('2010:03:03 11:03:08')
+     >>> pprint.pprint(info.dict.keys())
+     ['Pexif_DateTimeOriginal', 'orientation']
+-    >>> import Image
++    >>> from PIL import Image
+     >>> image = Image.open(filename)
+     >>> info = InfoPexif(image)
+     >>> info['Pexif_DateTimeOriginal']
+@@ -803,7 +803,7 @@ class InfoZexif(_InfoPilMetadata):
+     >>> info = InfoZexif(filename)
+     >>> info['Zexif_0x9202']
+     (128, 32)
+-    >>> import Image
++    >>> from PIL import Image
+     >>> image = Image.open(filename)
+     >>> info = InfoZexif(image)
+     >>> info['Zexif_0x9202']
+@@ -1425,7 +1425,7 @@ class InfoExtract:
+     """Create an info like dictionary which uses a collection of several
+     info instances and can evaluate Python expressions.
+ 
+-    >>> import Image
++    >>> from PIL import Image
+     >>> import pprint
+     >>> list(InfoExtract.get_vars_by_info(['mode'])[0].values())
+     [['mode', 'orientation']]
+diff --git a/phatch/lib/openImage.py b/phatch/lib/openImage.py
+index 2d2b07d..8e09232 100644
+--- a/phatch/lib/openImage.py
++++ b/phatch/lib/openImage.py
+@@ -18,7 +18,7 @@
+ import os
+ import re
+ 
+-import Image
++from PIL import Image
+ 
+ import imtools
+ import system
+diff --git a/phatch/lib/pyWx/dialogsInspector.py b/phatch/lib/pyWx/dialogsInspector.py
+index 8ff3511..02fd820 100644
+--- a/phatch/lib/pyWx/dialogsInspector.py
++++ b/phatch/lib/pyWx/dialogsInspector.py
+@@ -76,7 +76,6 @@ if __name__ == "__main__":
+     gettext.install("app") # replace with the appropriate catalog name
+ 
+     app = wx.PySimpleApp(0)
+-    wx.InitAllImageHandlers()
+     dialog = AddTagDialog(None, -1, "")
+     app.SetTopWindow(dialog)
+     dialog.Show()
+diff --git a/phatch/lib/pyWx/paint.py b/phatch/lib/pyWx/paint.py
+index 38f0c46..c07ac42 100644
+--- a/phatch/lib/pyWx/paint.py
++++ b/phatch/lib/pyWx/paint.py
+@@ -115,7 +115,6 @@ def example():
+ 
+     class TestApp(wx.App):
+         def OnInit(self):
+-            wx.InitAllImageHandlers()
+             frame = TestFrame(None, -1, "Test", size=(600, 400))
+             frame.EnableBackgroundPainting(frame)  # ,color=(245,245,255))
+             self.SetTopWindow(frame)
+diff --git a/phatch/lib/pyWx/treeEdit.py b/phatch/lib/pyWx/treeEdit.py
+index ba34300..bffa81e 100644
+--- a/phatch/lib/pyWx/treeEdit.py
++++ b/phatch/lib/pyWx/treeEdit.py
+@@ -115,7 +115,7 @@ class TreeMixin(treeDragDrop.Mixin):
+         wx_image = graphics.image(form.icon, icon_size)
+         form.icon_bitmap = wx.BitmapFromImage(wx_image)
+         # rescale(image, icon_size[0], icon_size[1])
+-        import Image
++        from PIL import Image
+         from wxPil import pil_wxImage, wxImage_pil
+         wx_image = pil_wxImage(wxImage_pil(wx_image).resize(icon_size,\
+                                                         Image.ANTIALIAS))
+diff --git a/phatch/lib/pyWx/wxPil.py b/phatch/lib/pyWx/wxPil.py
+index f5e45ca..12d917f 100644
+--- a/phatch/lib/pyWx/wxPil.py
++++ b/phatch/lib/pyWx/wxPil.py
+@@ -15,7 +15,7 @@
+ 
+ # Follows PEP8
+ 
+-import Image
++from PIL import Image
+ import wx
+ 
+ 
+@@ -24,14 +24,14 @@ def pil_wxImage(image):
+         image = image.convert('RGBA')
+     if image.mode == 'RGBA':
+         wx_image = wx.EmptyImage(*image.size)
+-        wx_image.SetData(image.convert("RGB").tostring())
++        wx_image.SetData(image.convert("RGB").tobytes())
+         wx_image.InitAlpha()
+         wx_image.SetAlphaData(
+-            image.convert("RGBA").split()[-1].tostring())
++            image.convert("RGBA").split()[-1].tobytes())
+     else:
+         wx_image = wx.EmptyImage(*image.size)
+         new_image = image.convert('RGB')
+-        data = new_image.tostring()
++        data = new_image.tobytes()
+         wx_image.SetData(data)
+     return wx_image
+ 
+@@ -41,13 +41,13 @@ def pil_wxBitmap(image):
+ 
+ 
+ def wxImage_pil(wx_image):
+-    size = wx_image.GetSize()
++    size = tuple(wx_image.GetSize())
+     image = Image.new('RGB', size)
+-    image.fromstring(wx_image.GetData())
++    image.frombytes(wx_image.GetData())
+     if wx_image.HasAlpha():
+         alpha = Image.new('L', size)
+         wx_alpha = wx_image.GetAlphaData()
+-        alpha.fromstring(wx_alpha)
++        alpha.frombytes(wx_alpha)
+         image = image.convert('RGBA')
+         image.putalpha(alpha)
+     return image
+diff --git a/phatch/lib/thumbnail.py b/phatch/lib/thumbnail.py
+index 397939e..48fccdd 100644
+--- a/phatch/lib/thumbnail.py
++++ b/phatch/lib/thumbnail.py
+@@ -28,7 +28,7 @@ import stat
+ import tempfile
+ import urllib
+ 
+-import Image
++from PIL import Image
+ 
+ import imtools
+ import system
+@@ -59,7 +59,7 @@ def get_filesize(filename, file_stat=None):
+ 
+ if FREEDESKTOP:
+ 
+-    import PngImagePlugin
++    from PIL import PngImagePlugin
+ 
+     FREEDESKTOP_SIZE = {
+         'normal': (128, 128),
+diff --git a/phatch/pyWx/dialogs.py b/phatch/pyWx/dialogs.py
+index bb21810..2aa16d2 100644
+--- a/phatch/pyWx/dialogs.py
++++ b/phatch/pyWx/dialogs.py
+@@ -529,7 +529,6 @@ def example():
+     class App(wx.App):
+ 
+         def OnInit(self):
+-            wx.InitAllImageHandlers()
+             frame = wx.Frame(None, -1, "")
+             self.SetTopWindow(frame)
+             frame.Show(False)
+diff --git a/phatch/pyWx/gui.py b/phatch/pyWx/gui.py
+index a67afcc..d89052b 100644
+--- a/phatch/pyWx/gui.py
++++ b/phatch/pyWx/gui.py
+@@ -1054,7 +1054,6 @@ class ImageInspectorApp(wx.App):
+         super(ImageInspectorApp, self).__init__(*args, **keyw)
+ 
+     def OnInit(self):
+-        wx.InitAllImageHandlers()
+         _theme()
+         frame = dialogs.ImageInspectorFrame(None,
+             size=dialogs.imageInspector.SIZE)
+@@ -1092,7 +1091,6 @@ class DropletFrame(DialogsMixin, wx.Frame, FrameReceiver):
+ class DropletMixin:
+ 
+     def OnInit(self):
+-        wx.InitAllImageHandlers()
+         #do all application initialisation
+         self.init()
+         api.init()
+@@ -1191,7 +1189,6 @@ class App(DropletMixin, wx.App):
+         super(App, self).__init__(*args, **keyw)
+ 
+     def OnInit(self):
+-        wx.InitAllImageHandlers()
+         #frame
+         self.splash = self._splash()
+         self.splash.CentreOnScreen()
+diff --git a/phatch/pyWx/wxGlade/dialogs.py b/phatch/pyWx/wxGlade/dialogs.py
+index 11c4040..515968f 100755
+--- a/phatch/pyWx/wxGlade/dialogs.py
++++ b/phatch/pyWx/wxGlade/dialogs.py
+@@ -369,7 +369,6 @@ if __name__ == "__main__":
+     gettext.install("app") # replace with the appropriate catalog name
+ 
+     app = wx.PySimpleApp(0)
+-    wx.InitAllImageHandlers()
+     aboutDialog = StatusDialog(None, -1, "")
+     app.SetTopWindow(aboutDialog)
+     aboutDialog.Show()
+diff --git a/phatch/pyWx/wxGlade/frame.py b/phatch/pyWx/wxGlade/frame.py
+index ce754c1..73d6a9f 100755
+--- a/phatch/pyWx/wxGlade/frame.py
++++ b/phatch/pyWx/wxGlade/frame.py
+@@ -383,7 +383,6 @@ class Frame(wx.Frame):
+ 
+ class App(wx.App):
+     def OnInit(self):
+-        wx.InitAllImageHandlers()
+         frame = Frame(None, -1, "")
+         self.SetTopWindow(frame)
+         frame.Show()
+diff --git a/phatch/templates/action.py b/phatch/templates/action.py
+index 87817fd..9f853d7 100644
+--- a/phatch/templates/action.py
++++ b/phatch/templates/action.py
+@@ -31,7 +31,7 @@ CHOICES = [_t('Description'), _t('Image')]
+ 
+ def init(cls=None):
+     global Image
+-    import Image
++    from PIL import Image
+ 
+ 
+ def foo(image, dpi, horizontal):
