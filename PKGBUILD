@@ -13,7 +13,7 @@
 
 pkgname=sqlgrey
 pkgver=1.8.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Postfix greylisting policy service with auto-white-listing with SQL database as storage backend."
 arch=('any')
 url="http://sqlgrey.sourceforge.net/"
@@ -69,7 +69,7 @@ package() {
   rmdir "$pkgdir"/etc/init.d
 
   # install systemd "unit file"
-  install -D -m755 "$srcdir"/sqlgrey.service "$pkgdir"/usr/lib/systemd/system/sqlgrey.service
+  install -D -m644 "$srcdir"/sqlgrey.service "$pkgdir"/usr/lib/systemd/system/sqlgrey.service
 }
 
 # vim:set ts=2 sw=2 et:
