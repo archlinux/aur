@@ -7,7 +7,7 @@ pkgdesc="Document Management Software"
 arch=('x86_64')
 url="http://www.ecodms.de/index.php/de/"
 license=('custom')
-depends=('bash libappindicator-gtk2 qt5-svg qt5-x11extras libpng12 freeimage')
+depends=('bash' 'libappindicator-gtk2' 'qt5-svg' 'qt5-x11extras' 'libpng12' 'freeimage')
 options=('!strip')
 install=${pkgname}.install
 
