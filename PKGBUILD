@@ -4,7 +4,7 @@
 
 pkgname=slic3r
 pkgver=1.2.9
-pkgrel=4
+pkgrel=5
 pkgdesc="Slic3r is an STL-to-GCODE translator for RepRap 3D printers, aiming to be a modern and fast alternative to Skeinforge."
 arch=('i686' 'x86_64') 
 url="http://slic3r.org/"
@@ -31,10 +31,12 @@ conflicts=('slic3r-git')
 BUILDENV+=('!check')
 source=("https://github.com/alexrj/Slic3r/archive/$pkgver.tar.gz"
 				'slic3r.desktop'
-				'slic3r')
+				'slic3r'
+        '6e5938c8330b5bdb6b85c3ca8dc188605ee56b98.patch')
 md5sums=('05ac7b137cbb7b12f442776e4c12dcc2'
          'cf0130330574a13b4372beb8f241d71e'
-         'a30a96504f11c95956dd8ce645b77504')
+         'a30a96504f11c95956dd8ce645b77504'
+         '182ca1abc80a6c2f48541c5ffbdb98ab')
 
 prepare() {
   export _src_dir="$srcdir/Slic3r-$pkgver"
@@ -54,7 +56,7 @@ prepare() {
   sed -i '/^warn \"Running Slic3r under Perl/,+1 s/^/\#/' ./lib/Slic3r.pm
 
   msg2 "Patching..."
-  patch -p1 -i ../../6e5938c8330b5bdb6b85c3ca8dc188605ee56b98.patch
+  patch -p1 -i $srcdir/6e5938c8330b5bdb6b85c3ca8dc188605ee56b98.patch
 }
 
 build() {
