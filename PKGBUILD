@@ -6,7 +6,7 @@
 # Contributor: Andreas Baumann <abaumann at yahoo dot com>
 
 pkgname=cgit-git
-pkgver=1.0.r1.gd88ec84
+pkgver=1.1.r0.g8e9ddd2
 pkgrel=1
 pkgdesc='A web interface for git written in plain C - git checkout'
 arch=('i686' 'x86_64')
