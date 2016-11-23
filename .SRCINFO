@@ -1,0 +1,14 @@
+pkgbase = thecalculator
+	pkgdesc = Powerful Calculator
+	pkgver = 1.0
+	pkgrel = 0
+	url = https://github.com/vicr123/thecalculator
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	depends = qt5-base
+	source = thecalculator-1.0::git+https://github.com/vicr123/thecalculator#branch=master
+	md5sums = SKIP
+
+pkgname = thecalculator
+
