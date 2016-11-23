@@ -23,10 +23,8 @@ echo $pkgver
    }
 
 package() {
-    mkdir $pkgdir/usr
-    mkdir $pkgdir/usr/bin
-    cd $srcdir/${_gitname}-${pkgver}
-    cp quick-back $pkgdir/usr/bin
-    chmod +x $pkgdir/usr/bin/quick-back
+	install -D -m 755 $srcdir/${_gitname}-${pkgver}/quick-back $pkgdir/usr/bin/quick-back
+	gzip -c $srcdir/${_gitname}-${pkgver}/MANPAGE > $srcdir/${_gitname}-${pkgver}/quick-back.8.gz
+	install -D -m 755 $srcdir/${_gitname}-${pkgver}/quick-back.8.gz $pkgdir/usr/share/man/man8/quick-back.8.gz
 }
 
