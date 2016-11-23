@@ -38,7 +38,14 @@ sha256sums=('SKIP'
             '62abf45f5064fac79aeead6340120be5beb8ad7a64f25fd85c07b45e3756df3f'
             'a2ab0e1b737ff8af5a0ccacc40147d331ba0abe5e19aac019add68e732289605')
 
+# shellcheck disable=SC2034
+provides=('dolphin-emu')
+
+# shellcheck disable=SC2034
+conflicts=('dolphin-emu' 'dolphin-emu-git')
+
 build() {
+  # shellcheck disable=SC2154
   cd "${srcdir}/${pkgname}" || {
         msg "Failed to cd into ${srcdir}/${pkgname}"
         return 1
@@ -70,6 +77,7 @@ package() {
         return 1
   }
 
+  # shellcheck disable=SC2154
   make DESTDIR="${pkgdir}" install
 
   install -Dm 644 ../Data/51-usb-device.rules -t "${pkgdir}"/usr/lib/udev/rules.d/
