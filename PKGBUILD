@@ -22,7 +22,7 @@ md5sums=('38002479c6ed62d5a1f54678330f5bd2')
 
 build() {
   cd "${srcdir}/$pkgname-$pkgver"
-  cmake -D 'CMAKE_INSTALL_PREFIX=/usr' .
+  cmake -D 'CMAKE_INSTALL_PREFIX=/usr' -D 'CMAKE_CXX_FLAGS=-Wno-narrowing' .
   make
 }
 
