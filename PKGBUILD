@@ -105,7 +105,7 @@ msg2 "Creating folders and fixing permissions..."
     install -d -m1777 "${pkgdir}/var/tmp/"
     install -d -m755 "${pkgdir}/var/tmp/airtime"
     install -d -m755 "${pkgdir}/var/tmp/airtime/show-recorder/"
-	install -d -m755 "${pkgdir}/var/log/airtime"
+    install -d -m755 "${pkgdir}/var/log/airtime"
     install -d -m655 "${pkgdir}/etc/airtime"
     install -d -m755 "${pkgdir}/usr/share/php/"
     
