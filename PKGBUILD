@@ -1,14 +1,14 @@
-# Submitter & Maintainer: Bastien Traverse <firstname at lastname dot email>
+# Maintainer: Bastien Traverse <firstname at lastname dot email>
 
 pkgname=primitive
 pkgver=r144.37639cc
-pkgrel=1
-pkgdesc="Reproducing images with geometric primitives"
+pkgrel=2
+pkgdesc='Reproducing images with geometric primitives'
 arch=('i686' 'x86_64')
-url="https://github.com/fogleman/primitive"
+url="https://github.com/fogleman/$pkgname"
 license=('MIT')
 makedepends=('go' 'git')
-source=('git+https://github.com/fogleman/primitive')
+source=("$pkgname::git+https://github.com/fogleman/$pkgname.git")
 md5sums=('SKIP')
 options=('!strip' '!emptydirs')
 
