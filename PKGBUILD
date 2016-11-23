@@ -4,7 +4,7 @@
 # Contributor: Fernando M <f <at> beford.net>
 # Author: Wintershade <Wintershade AT google mail DOT com>
 
-pkgname=rpm-org-413
+pkgname=rpm-org
 pkgver=4.13.0
 _pkgver=$pkgver
 #_pkgver=4.12.0-rc1
