@@ -1,6 +1,6 @@
 pkgbase = quick-back
 	pkgdesc = Quick, simple command line backup tool
-	pkgver = 2.1.0
+	pkgver = 3.0.0
 	pkgrel = 1
 	url = https://github.com/PenguinSnail/Quick-Back
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = quick-back
 	optdepends = arch-install-scripts: Repair backed-up fstab *experimental
 	provides = quick-back
 	conflicts = quick-back-git
-	source = https://github.com/PenguinSnail/Quick-Back/archive/2.1.0.tar.gz
+	source = https://github.com/PenguinSnail/Quick-Back/archive/3.0.0.tar.gz
 	md5sums = SKIP
 
 pkgname = quick-back
