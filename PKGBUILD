@@ -1,17 +1,23 @@
-# Maintainer: Maxwell Pray a.k.a. Synthead <synthead@gmail.com>
+# Contributor: Andrea Scarpino <andrea@archlinux.org>
+# Contributor: Maxwell Pray a.k.a. Synthead <synthead@gmail.com>
 
 _pkgname=jenkins-job-builder
 pkgname=python-$_pkgname
-pkgver=1.4.0
+pkgver=1.6.1
 pkgrel=1
-pkgdesc="Jenkins Job Builder takes simple descriptions of Jenkins jobs in YAML or JSON format and uses them to configure Jenkins."
-url="http://docs.openstack.org/infra/system-config/jjb.html"
-license=("Apache")
-arch=("i686" "x86_64")
-makedepends=("python-setuptools")
-depends=("python" "python-yaml" "python-pbr" "python-six" "python-python-jenkins")
-source=("https://pypi.python.org/packages/source/j/$_pkgname/$_pkgname-$pkgver.tar.gz")
-md5sums=("4f9610412c17888d60af5e6db90c388d")
+pkgdesc='Takes simple descriptions of Jenkins jobs in YAML or JSON format and uses them to configure Jenkins'
+url='http://docs.openstack.org/infra/system-config/jjb.html'
+license=('APACHE')
+arch=('any')
+makedepends=('python-setuptools')
+depends=('python-yaml' 'python-python-jenkins')
+source=("https://pypi.io/packages/source/j/$_pkgname/$_pkgname-$pkgver.tar.gz")
+md5sums=('a34d25d93937ea0a13a73414c85c6564')
+
+build() {
+  cd "$srcdir/$_pkgname-$pkgver"
+  python setup.py build
+}
 
 package() {
   cd "$srcdir/$_pkgname-$pkgver"
