@@ -1,7 +1,7 @@
 # Maintainer: FD <fxd@seznam.cz>
 
 pkgname=nomachine-enterprise-client
-pkgver=5.1.54
+pkgver=5.1.62
 pkgrel=1
 x64_rel=1
 i386_rel=1
@@ -14,11 +14,11 @@ conflicts=('nomachine nxmanager nxwebplayer nxserver nxnode nxclient')
 install=nm-ent-client.install
 
 if [ "${CARCH}" = "x86_64" ]; then
-  sha256sums=('33efb22ade205349ef02e04fcbbefcaca117743906d62c2c194a8fab8d390a49')
+  sha256sums=('a813ccf6ef22991d91675a59242f023a4456402e631fcbaabb1260d308d26ed4')
   _carch=_x86_64
   source=("http://download.nomachine.com/download/5.1/Linux/${pkgname}_${pkgver}_${x64_rel}${_carch}.tar.gz")
 elif [ "${CARCH}" = "i686" ]; then
-  sha256sums=('ad7181ebed0cc4166862850c4aa79800d2a639a4b8ac30e4b6542fb01baa1dbb')
+  sha256sums=('93e6935a7154a7dff42eeb96a051e83d3b0e63cdfd35f0dbb5b1387596571298')
   _carch=_i686
   source=("http://download.nomachine.com/download/5.1/Linux/${pkgname}_${pkgver}_${i386_rel}${_carch}.tar.gz")
 fi
