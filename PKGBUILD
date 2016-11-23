@@ -59,7 +59,7 @@ depends=('alsa-utils'
 	'vorbisgain'
 	'zendframework')
 optdepends=('apache: Apache webserver (webserver needed)'
-			'nginx: Nginx webserver (webserver needed)'
+            'nginx: Nginx webserver (webserver needed)'
             'postgresql: localy hosted Database server'
             'rabbitmq: localy hosted rabbitmq server')
 makedepends=('git' 'python2' 'python2-setuptools')
