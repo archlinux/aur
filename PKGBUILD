@@ -1,7 +1,7 @@
 # Maintainer : Antonio Orefice <xt7player@gmail.com>
 
 pkgname=xt7-player-mpv-git
-pkgver=20161026
+pkgver=20161123
 pkgrel=1
 pkgdesc="Aims to be an 'almost complete' but usable mpv gui"
 arch=('any')
@@ -28,7 +28,7 @@ depends=(
     'gambas3-gb-util-web'
     'gambas3-gb-web'
     
-    'mpv>=1:0.21.0'
+    'mpv>=1:0.22.0'
     'taglib'
     'youtube-dl>=2016.09.08'
     'wget'
