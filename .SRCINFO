@@ -1,6 +1,6 @@
 pkgbase = dict-foldoc
 	pkgdesc = The Free On-line Dictionary of Computing for dictd et al.
-	pkgver = 20161114_091249
+	pkgver = 20161122_234231
 	pkgrel = 1
 	url = https://foldoc.org/
 	install = dict-foldoc.install
