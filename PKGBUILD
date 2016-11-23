@@ -6,7 +6,7 @@ pkgdesc="Open source web browser based on Firefox focusing on efficiency."
 arch=('i686' 'x86_64')
 url="http://linux.palemoon.org/"
 license=('MPL' 'GPL' 'LGPL')
-depends=('gtk2' 'dbus-glib' 'desktop-file-utils' 'libxt' 'mime-types' 'alsa-lib' 'startup-notification')
+depends=('gtk2' 'dbus-glib' 'libxt' 'mime-types' 'nss' 'alsa-lib')
 optdepends=('libpulse: PulseAudio audio driver'
             'hunspell: spell checker and morphological analyzer'
             'hyphen: library for hyphenation and justification'
@@ -14,7 +14,6 @@ optdepends=('libpulse: PulseAudio audio driver'
             'gst-plugins-good: h.264 support')
 provides=("palemoon=$pkgver")
 conflicts=('palemoon')
-install=palemoon.install
 options=('!strip')
 source=(palemoon.desktop)
 source_i686=("palemoon-$pkgver.en-US.linux-i686.tar.bz2::http://linux.palemoon.org/installer/download.php?v=$pkgver&a=i686")
