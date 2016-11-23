@@ -1,7 +1,7 @@
 #Maintainer: M0Rf30
 
 pkgname=openbazaard
-pkgver=0.2.2
+pkgver=0.2.3
 pkgrel=1
 pkgdesc="Server daemon for communication between client and OpenBazaar network"
 arch=(any)
@@ -12,6 +12,7 @@ depends=(
 	python2-autobahn
 	python2-bitcointools
 	python2-bleach
+	python2-certifi
 	python2-gnupg-isis
 	python2-libbitcoinclient
 	python2-miniupnpc
@@ -67,11 +68,11 @@ msg2 "Symlinking to allow gui to automatically call daemon"
 msg2 "Python2 bytecode generation"
   cd $pkgdir/var/lib/${pkgname}/ && python2 -m compileall .
 
-  msg2 "Remove git folder"
+msg2 "Remove git folder"
   rm -rf $pkgdir/var/lib/${pkgname}/{.git*,.eslint*,.travis*}
 }
 
-md5sums=('5ef8f34155d9e871297821b964e85cb5'
+md5sums=('870886a237503c6fd08c48a9884fb67a'
          'df247302f02ad1af79e009fa75ced4bc'
          '7949d40abcd8bdaee27ff670d5b6c1c7'
          '3dccb27e5df2324880fde3f1b0972a2c')
