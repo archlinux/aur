@@ -4,16 +4,16 @@
 
 pkgname=lib32-libdrm-git
 _pkgname=libdrm
-pkgver=5795.b38a4b2
-pkgrel=2
+pkgver=2.4.73.r9.g1924b67
+pkgrel=1
 pkgdesc="Userspace interface to kernel DRM services, git 32-bit version"
 arch=(i686 x86_64)
 license=('custom')
-depends=('libdrm>=2.4.66' 'lib32-libpciaccess')
+depends=('libdrm-git' 'lib32-libpciaccess')
 makedepends=('gcc-multilib' 'valgrind-multilib' 'xorg-util-macros')
 checkdepends=('lib32-cairo' 'lib32-cunit')
 url="http://dri.freedesktop.org/"
-provides=('lib32-libdrm=2.4.66')
+provides=('lib32-libdrm')
 replaces=('lib32-libdrm')
 conflicts=('lib32-libdrm')
 
@@ -24,7 +24,8 @@ sha256sums=('SKIP'
 
 pkgver() {
     cd "${srcdir}/${_pkgname}"
-    echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+#    echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+    git describe --long | sed 's/^libdrm-//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
