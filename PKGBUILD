@@ -8,7 +8,7 @@ pkgdesc="A KISS, non-intrusive unit testing framework for C and C++"
 arch=('i686' 'x86_64')
 url="http://github.com/Snaipe/${pkgname}.git"
 license=('MIT')
-depends=('glibc' 'gettext')
+depends=('glibc' 'gettext' 'nanomsg' 'dyncall')
 source=("$pkgname"::"git://github.com/Snaipe/${pkgname}.git#tag=v${_fullver}")
 md5sums=('SKIP')
 
