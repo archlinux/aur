@@ -1,5 +1,5 @@
---- lib/perl/Makefile.in.orig	2016-08-17 08:10:18.804768153 -1000
-+++ lib/perl/Makefile.in	2016-08-17 08:10:46.160746491 -1000
+--- lib/perl/Makefile.in.orig	2016-11-22 08:10:18.804768153 -1000
++++ lib/perl/Makefile.in	2016-11-22 08:10:46.160746491 -1000
 @@ -708,16 +708,16 @@
  
  
@@ -8,7 +8,7 @@
 +	$(MAKE) -f Makefile-pl INSTALLDIRS=vendor
  
  install-exec-local: Makefile-pl
--	$(MAKE) -f Makefile-pl INSTALLDIRS=$(INSTALLDIRS) PREFIX=$(prefix) DESTDIR=$(DESTDIR) install
+-	$(MAKE) -f Makefile-pl INSTALLMAN3DIR=$(mandir)/man3 INSTALLDIRS=$(INSTALLDIRS) PREFIX=$(prefix) DESTDIR=$(DESTDIR) install
 +	$(MAKE) -f Makefile-pl INSTALLDIRS=vendor install
  
  # The perl build needs to have the source files in the current working directory, so we need to

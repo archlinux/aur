@@ -2,13 +2,13 @@
 # Contributor: David Roheim <david dot roheim at gmail dot com>
 
 pkgname='trafficserver'
-pkgver=6.2.0
-pkgrel=2
+pkgver=7.0.0
+pkgrel=1
 pkgdesc="Apache Traffic Server"
 url="http://trafficserver.apache.org/"
 license=('Apache')
 arch=('i686' 'x86_64')
-depends=('tcl' 'hwloc' 'curl' 'libunwind' 'pcre' 'libxml2' 'geoip')
+depends=('tcl' 'hwloc' 'curl' 'libunwind' 'pcre' 'geoip')
 makedepends=('flex' 'python2-sphinx')
 
 source=(
@@ -17,17 +17,17 @@ source=(
     trafficserver.service.in.patch
     trafficserver.lib_perl_Makefile.in.patch)
 
-md5sums=('481ae0af77f575166bbe6f335e27d250'
+md5sums=('532f4b5213bff3c444e238bbb0e323a5'
          '44b617f732eb1944a916f36cc393ab7b'
          '1a72eaf2dc694a5a60d949c9f3130e80'
-         '257988017b81baa7706de7cf8d897f5b')
+         '21cb3150aac3f1609f933dea08904592')
 
 install=${pkgname}.install
 changelog=${pkgname}.changelog
 
 backup=(
     'etc/trafficserver/congestion.config'
-    'etc/trafficserver/logs_xml.config'
+    'etc/trafficserver/logging.config'
     'etc/trafficserver/hosting.config'
     'etc/trafficserver/parent.config'
     'etc/trafficserver/records.config'
@@ -38,7 +38,6 @@ backup=(
     'etc/trafficserver/cluster.config'
     'etc/trafficserver/storage.config'
     'etc/trafficserver/volume.config'
-    'etc/trafficserver/icp.config'
     'etc/trafficserver/metrics.config'
     'etc/trafficserver/remap.config'
     'etc/trafficserver/ssl_multicert.config'
@@ -71,7 +70,6 @@ backup=(
     'etc/trafficserver/body_factory/default/request#invalid_content_length'
     'etc/trafficserver/body_factory/default/congestion#retryAfter'
     'etc/trafficserver/plugin.config'
-    'etc/trafficserver/stats.config.xml'
     'etc/trafficserver/log_hosts.config'
     'etc/trafficserver/ip_allow.config')
 

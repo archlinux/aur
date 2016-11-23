@@ -5,9 +5,9 @@ post_install() {
 post_upgrade() {
     # There are configuration changes required when upgrading to major
     # version 6.
-    if [[ "${2%%.*}" -lt 6 ]]; then
-        echo 'Please review your configuration when upgrading to v4:'
-        echo ' https://cwiki.apache.org/confluence/display/TS/Upgrading+to+v6.0'
+    if [[ "${2%%.*}" -lt 7 ]]; then
+        echo 'Please review your configuration when upgrading to v7:'
+        echo ' https://cwiki.apache.org/confluence/display/TS/Upgrading+to+v7.0'
     fi
 }
 
