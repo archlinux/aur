@@ -1,0 +1,18 @@
+pkgbase = rsb-process-monitor-git
+	pkgdesc = RSB process monitoring
+	pkgver = 2.0.r7.g668403b
+	pkgrel = 1
+	url = https://projects.cor-lab.org/projects/rsb-performance-monitor
+	arch = i686
+	arch = x86_64
+	license = LGPL3
+	makedepends = git
+	makedepends = cmake
+	depends = rsc-stable-git
+	depends = rst-proto-stable-git
+	depends = rsb-cpp-stable-git
+	source = rsb-process-monitor::git+https://code.cor-lab.org/git/rsb-performance-monitor.git.process-monitor#branch=master
+	md5sums = SKIP
+
+pkgname = rsb-process-monitor-git
+
