@@ -1,7 +1,8 @@
 # Maintainer: XavierCLL <xavier.corredor.llano (a) gmail.com>
 
 pkgname=pycharm-professional
-pkgver=2016.2.3
+pkgver=2016.3.0
+_pkgver=2016.3
 pkgrel=1
 pkgdesc="Powerful Python and Django IDE. Professional edition."
 arch=('any')
@@ -13,7 +14,7 @@ license=('custom')
 install=${pkgname}.install
 depends=('java-runtime-common' 'java-runtime>=8' 'ttf-font' 'libxtst' 'libxslt')
 makedepends=('python2-setuptools' 'python-setuptools')
-source=(https://download.jetbrains.com/python/$pkgname-$pkgver-no-jdk.tar.gz
+source=(https://download.jetbrains.com/python/$pkgname-$_pkgver-no-jdk.tar.gz
         'pycharm-professional.desktop'
         'pycharm-professional.install'
         'pycharm'
@@ -35,29 +36,29 @@ optdepends=('ipython2: For enhanced interactive Python shell v2 inside Pycharm'
             'python-pytest: For support testing inside Pycharm with Python 3'
             'python2-tox: Python environments for testing tool with Python 2'
             'python-tox: Python environments for testing tool with Python 3')
-sha256sums=('1b830c0eb2ee360ff45967c820b456987c830e283aacc8139bded2ba1bfac0d8'
+sha256sums=('192df48cdb9e2eac383f39a4a9cafb667be9ef7e183b85dc276623993fcbf722'
             '016db1860a8b36d408c827f90aeb04b9d55cf21ea36788a9d8510cc54fae1c49'
             'c1a74303d9e870918bd8068f761c8251b996694b1b96b3537fbca317679c4958'
             '43e79e5a786fc76385634dc0a9f1c3489b25031745b840b0822b059fc91d1060'
             'a90a2b645e733627fefe568ae82fc96716772c13b4431760a822c0c64b0596e9'
-            'dbe4055a0e4980dba5c5104b6a9ec30a3e429e4e3ef5ef92efef2627403e7ac5')
+            '09605bd8e6e44d20ee4f0f840df50f6991719856df1becd42dac4470d2b80eba')
 
 package() {
   # compile PyDev debugger used by PyCharm to speedup debugging
-  python2 $srcdir/pycharm-$pkgver/helpers/pydev/setup_cython.py build_ext --inplace
-  python3 $srcdir/pycharm-$pkgver/helpers/pydev/setup_cython.py build_ext --inplace
+  python2 $srcdir/pycharm-$_pkgver/helpers/pydev/setup_cython.py build_ext --inplace
+  python3 $srcdir/pycharm-$_pkgver/helpers/pydev/setup_cython.py build_ext --inplace
   
   # base
   cd $srcdir
   install -dm 755 $pkgdir/opt/$pkgname
-  cp -dr --no-preserve=ownership $srcdir/pycharm-$pkgver/* $pkgdir/opt/$pkgname
+  cp -dr --no-preserve=ownership $srcdir/pycharm-$_pkgver/* $pkgdir/opt/$pkgname
   install -dm 755 $pkgdir/usr/share/{applications,pixmaps}
   install -dm 755 $pkgdir/usr/bin/
   install -Dm 644 $pkgdir/opt/$pkgname/bin/pycharm.png $pkgdir/usr/share/pixmaps/pycharm.png
   
   # licenses
   install -dm 755 $pkgdir/usr/share/licenses/$pkgname/
-  cp -dr --no-preserve=ownership $srcdir/pycharm-$pkgver/license/* $pkgdir/usr/share/licenses/$pkgname
+  cp -dr --no-preserve=ownership $srcdir/pycharm-$_pkgver/license/* $pkgdir/usr/share/licenses/$pkgname
   
   # exec
   install -Dm 755 pycharm $pkgdir/usr/bin/
