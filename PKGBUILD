@@ -81,10 +81,12 @@ branch=2.5.x
 
 prepare() {
     cd "$srcdir/airtime"
-msg2 "Replace python with python2"    
+
+msg2 "Replacing python with python2"    
     grep -rl '/usr/bin/python' 'python_apps' 'utils' | xargs  sed -i "s%/usr/bin/python%/usr/bin/python2%g"
     grep -rl 'www-data' . | xargs  sed -i "s%www-data%http%g"
-msg2 "Fix login web interface aspect"
+
+msg2 "Fixing login web interface aspect ( __tostring exception )..."
     patch -Np0 -i ../php-errors.patch
 }
 
