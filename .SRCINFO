@@ -1,13 +1,13 @@
 pkgbase = php-redis
 	pkgdesc = PHP extension for interfacing with Redis
 	pkgver = 3.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://pecl.php.net/package/redis
 	arch = x86_64
 	arch = i686
+	arch = armv7h
 	license = PHP
 	depends = php>=7.0.0
-	depends = redis
 	conflicts = phpredis
 	conflicts = phpredis-git
 	conflicts = php-redis-git
