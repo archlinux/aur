@@ -1,8 +1,8 @@
 pkgbase = hdx-realtime-media-engine
 	pkgdesc = Plug-In for Citrix Receiver to support clear, crisp high-definition audio-video calls, particularly with Microsoft Skype® for Business.
-	pkgver = 2.1
+	pkgver = 2.1.200
 	pkgrel = 1
-	url = https://www.citrix.com/downloads/citrix-receiver/additional-client-software/hdx-realtime-media-engine-201.html
+	url = https://www.citrix.com/downloads/citrix-receiver/additional-client-software/
 	install = hdx-realtime-media-engine.install
 	arch = i686
 	arch = x86_64
@@ -14,12 +14,10 @@ pkgbase = hdx-realtime-media-engine
 	depends = icaclient
 	depends = lib32-libxv
 	depends = lib32-libpulse
-	source_i686 = HDX_RealTime_Media_Engine_2.1_for_Linux.zip::https://downloads.citrix.com/11448/HDX_RealTime_Media_Engine_2.1_for_Linux.zip?__gda__=1475655478_6de9b12107fa1538df877bd3c03e5699
-	md5sums_i686 = 99c03fa653d30870f05eb9fbc4b203c6
-	sha256sums_i686 = 3c5948391b8dd2fa537f8cb563d5e02ffcdcfa6d2f31e43c0e67f191113042d4
-	source_x86_64 = HDX_RealTime_Media_Engine_2.1_for_Linux_x64.zip::https://downloads.citrix.com/11922/HDX_RealTime_Media_Engine_2.1_for_Linux_x64.zip?__gda__=1475655479_e1b02cc3989dc204c437ace99fbf446b
-	md5sums_x86_64 = 3d408971ecad34efbe8f07c46fe7cbd9
-	sha256sums_x86_64 = 858b6c51f2657903e54a9a101469a6add8329dc5b488ce9ed03a1d8652af4610
+	source_i686 = HDX_RealTime_Media_Engine_2.1.200_for_Linux.zip::https://downloads.citrix.com/11448/HDX_RealTime_Media_Engine_2.1.200_for_Linux.zip?__gda__=1479916897_027a4bec80f7ff22c88decac50874697
+	sha256sums_i686 = 6247857bf363484dcd2da077b4c511b86a950dff7822d26169cb55d2253fdf01
+	source_x86_64 = HDX_RealTime_Media_Engine_2.1.200_for_Linux_x64.zip::https://downloads.citrix.com/11922/HDX_RealTime_Media_Engine_2.1.200_for_Linux_x64.zip?__gda__=1479916898_efc8db26b6861245fcb96ea5fdf6886b
+	sha256sums_x86_64 = 7a80c581f8ee83410d3562d5ee87ea92669533a464197324822aad9fdb25afc8
 
 pkgname = hdx-realtime-media-engine
 
