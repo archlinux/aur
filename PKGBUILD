@@ -35,6 +35,7 @@ depends=('alsa-utils'
 	"php$phpver-pear"
 	"php$phpver-pgsql"
 	'portaudio'
+	'postgresql'
 	'pwgen'
 	'python2'
 	'python2-amqplib'
@@ -60,7 +61,6 @@ depends=('alsa-utils'
 	'zendframework')
 optdepends=('apache: Apache webserver (webserver needed)'
             'nginx: Nginx webserver (webserver needed)'
-            'postgresql: localy hosted Database server'
             'rabbitmq: localy hosted rabbitmq server')
 makedepends=('git' 'python2' 'python2-setuptools')
 provides=('airtime')
