@@ -14,9 +14,9 @@ url="http://gwclient.provo.novell.com/"
 arch=('i686' 'x86_64')
 license=(custom)
 depends=('libgnome' 'gtk-update-icon-cache' 'desktop-file-utils' 'shared-mime-info')
-depends_i686=('glibc' 'libstdc++5' 'jre6' 'libxrender' 'libgnome' 'libxt')
+depends_i686=('glibc' 'libstdc++5' 'jre6' 'libxrender' 'libxt')
 depends_x86_64=('lib32-glibc' 'lib32-libstdc++5' 'bin32-jre6' 'lib32-libxrender' 'lib32-libxt')
-makedepends=('rpmextract' 'prelink')
+makedepends=('prelink')
 source=(https://gwclient.innerweb.novell.com/client/gw802linuxclientmulti.tar.gz
         groupwise.sh.in)
 md5sums=('16b1e563cc60b933ed2444e804ee7562'
@@ -42,19 +42,16 @@ package() {
                "$pkgdir"/usr/share/applications/              \
                "$pkgdir"/usr/share/icons/hicolor/48x48/apps/
     
-       msg2 "  Extracting tarball and removing embedded JRE and help files"
     [ -d "$pkgname-$pkgver" ] && rm -rf "$pkgname-$pkgver"
     mkdir "$pkgname-$pkgver"
     cd "$pkgname-$pkgver"
-    ls "$srcdir/gw${_version}-${_build}_client_linux_multi/novell-groupwise-client-${_version}-${_build}.i586.rpm" | xargs rpmextract.sh
 
-      # remove/comment this line to NOT remove all Help files
-      # (it will increase the package size in ~90MB)
-    rm -rf $GWDIR/lib/help
-    
-      # remove JRE; use distribution's JavaRE package instead
-    rm -rf $GWDIR/java
-    
+       msg2 "  Extracting tarball and removing embedded JRE and help files"
+      # The exclude filters save 51MB from java/ and 92M from help/.
+      # Remove exclude filter of help/ in order to have help files in the pkg
+    bsdtar xf "$srcdir/gw${_version}-${_build}_client_linux_multi/novell-groupwise-client-${_version}-${_build}.i586.rpm" \
+        --exclude=java --exclude=help
+
        msg2 "  Fixing lib's stack guard"
       # fix this lib's stack guard (eliminate warning in the console)
     execstack -c $GWDIR/lib/libgwapijni.so.1
