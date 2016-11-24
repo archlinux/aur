@@ -4,7 +4,7 @@ pkgdesc="ROS - turtlebot_description provides a complete 3D model of the TurtleB
 url='http://ros.org/wiki/turtlebot_description'
 
 pkgname='ros-indigo-turtlebot-description'
-pkgver='2.3.11'
+pkgver='2.3.13'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -13,7 +13,7 @@ license=('BSD')
 ros_makedepends=(ros-indigo-urdf
   ros-indigo-xacro
   ros-indigo-catkin)
-makedepends=('cmake' 'git' 'ros-build-tools'
+makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]})
 
 ros_depends=(ros-indigo-kobuki-description
@@ -22,10 +22,16 @@ ros_depends=(ros-indigo-kobuki-description
   ros-indigo-xacro)
 depends=(${ros_depends[@]})
 
-_tag=release/indigo/turtlebot_description/${pkgver}-${_pkgver_patch}
-_dir=turtlebot_description
-source=("${_dir}"::"git+https://github.com/turtlebot-release/turtlebot-release.git"#tag=${_tag})
-md5sums=('SKIP')
+# Git version (e.g. for debugging)
+# _tag=release/indigo/turtlebot_description/${pkgver}-${_pkgver_patch}
+# _dir=${pkgname}
+# source=("${_dir}"::"git+https://github.com/turtlebot-release/turtlebot-release.git"#tag=${_tag})
+# sha256sums=('SKIP')
+
+# Tarball version (faster download)
+_dir="turtlebot-release-release-indigo-turtlebot_description-${pkgver}-${_pkgver_patch}"
+source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/turtlebot-release/turtlebot-release/archive/release/indigo/turtlebot_description/${pkgver}-${_pkgver_patch}.tar.gz")
+sha256sums=('13449eb4ae03a43c3eb2a1417e27a5a8cac983b7d03f4112b518c05f981f3413')
 
 build() {
   # Use ROS environment variables
