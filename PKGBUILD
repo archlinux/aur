@@ -4,7 +4,7 @@
 
 _ver=1.17
 _pkgbase=mate-desktop
-pkgname="${_pkgbase}"
+pkgname="${_pkgbase}-dev"
 pkgver=${_ver}.0
 pkgrel=1
 pkgdesc="Library with common API for various MATE modules"
@@ -14,7 +14,7 @@ provides=("${_pkgbase}" "${_pkgbase}-gtk3")
 conflicts=("${_pkgbase}" "${_pkgbase}-gtk3")
 license=('GPL' 'LGPL')
 depends=('dconf' 'gtk3' 'startup-notification')
-makedepends=('gobject-introspection' 'mate-common>=1.17' 'yelp-tools')
+makedepends=('gobject-introspection' 'mate-common-dev' 'yelp-tools')
 source=("http://pub.mate-desktop.org/releases/${_ver}/${_pkgbase}-${pkgver}.tar.xz")
 sha1sums=('eb60fd8cd0289a86ac1e0e487e066423a6774c8f')
 
