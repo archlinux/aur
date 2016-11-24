@@ -4,7 +4,7 @@ pkgdesc="ROS - These are lightweight text streaming classes that connect to stan
 url='http://wiki.ros.org/ecl_streams'
 
 pkgname='ros-indigo-ecl-streams'
-pkgver='0.61.8'
+pkgver='0.61.15'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -18,7 +18,7 @@ ros_makedepends=(ros-indigo-ecl-devices
   ros-indigo-catkin
   ros-indigo-ecl-time
   ros-indigo-ecl-type-traits)
-makedepends=('cmake' 'git' 'ros-build-tools'
+makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]})
 
 ros_depends=(ros-indigo-ecl-devices
@@ -32,14 +32,14 @@ depends=(${ros_depends[@]})
 
 # Git version (e.g. for debugging)
 # _tag=release/indigo/ecl_streams/${pkgver}-${_pkgver_patch}
-# _dir=ecl_streams
+# _dir=${pkgname}
 # source=("${_dir}"::"git+https://github.com/yujinrobot-release/ecl_core-release.git"#tag=${_tag})
 # sha256sums=('SKIP')
 
 # Tarball version (faster download)
 _dir="ecl_core-release-release-indigo-ecl_streams-${pkgver}-${_pkgver_patch}"
-source=("https://github.com/yujinrobot-release/ecl_core-release/archive/release/indigo/ecl_streams/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('4e764880ce770cd4aaad9ee447d652cc5752e28ae937292d6a028788e7761f57')
+source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/yujinrobot-release/ecl_core-release/archive/release/indigo/ecl_streams/${pkgver}-${_pkgver_patch}.tar.gz")
+sha256sums=('74c2fbac63c56d1c913eb75d774dce0de572f5ae18fb8c39adcbf1fdab998010')
 
 build() {
   # Use ROS environment variables
