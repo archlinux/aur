@@ -6,8 +6,8 @@
 
 pkgname=phpstorm
 _pkgname=PhpStorm
-pkgver=2016.2.2
-_pkgver=162.2380.11
+pkgver=2016.3
+_pkgver=163.7743.50
 pkgrel=1
 pkgdesc="Lightweight and Smart PHP IDE"
 arch=('x86_64' 'i686')
@@ -18,8 +18,8 @@ optdepends=('java-environment>=8: use system java'
             'java-runtime-common: use system java')
 source=(https://download.jetbrains.com/webide/${_pkgname}-${pkgver}.tar.gz
         jetbrains-phpstorm.desktop)
-sha512sums=('33561abcf4e922b1186c23e995bad7649d78a1d31d5bd850a6ea0f09f928b991e59b91544a14b25e9139c086382ac8d9e98856ccc402a1c68cdc7d53c2e26d3a'
-            'b258ff195aa7d49e2e8e7b3eda4fc5d69f09e287411d912d8961b787d69b5d0f327589fc2cdce442edbaee7c685eadf2bf6d54d3ae5c720ba02bd1b5cdba3e74')
+sha512sums=('fa681f4f2cdeb546d7b1301ee57acb5cec66231e01921b6ef3d89c05f0ba1a50887bf56db523191a87e938b8d206860a363aa8ab1d2845a2400a17fdb8f1eb9c'
+            'fe312d7c637ec20bd946f2e22681243a51f29afc1052ae3fe5afd0fe01f77c222bf1e2c98f0afad8d5385466215653b7ffa8718da05b6dac100ba768ff2be1d6')
 
 package() {
   install -d -m 755 ${pkgdir}/opt/
@@ -33,5 +33,5 @@ package() {
 
   ln -s /opt/$pkgname/bin/${pkgname}.sh $pkgdir/usr/bin/${pkgname}
   install -D -m 644 ${srcdir}/jetbrains-${pkgname}.desktop ${pkgdir}/usr/share/applications/
-  install -D -m 644 "${pkgdir}/opt/${pkgname}/bin/webide.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
+  install -D -m 644 "${pkgdir}/opt/${pkgname}/bin/${pkgname}.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
 }
