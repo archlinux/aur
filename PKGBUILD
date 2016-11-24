@@ -12,25 +12,21 @@
 ### the software) then please do email me or post an AUR comment.
 
 pkgname=editix-free
-pkgver=020110
-_pkgver=2010
+pkgver=2016
 pkgrel=1
+epoch=1
 pkgdesc="EditiX is a powerful and easy to use XML editor, Visual Schema Editor, XQuery Editor and XSLT debugger"
 arch=('any')
 license=('custom')
 depends=('java-runtime')
 url="http://free.editix.com/"
-source=("http://free.editix.com/download/$pkgname-$_pkgver.tar.gz")
-md5sums=('a7dd16c50e2448e121fa618a75658b46')
-
-build() {
-	msg "Nothing to compile for $pkgname"
-}
+source=("http://www.editix.com/download/editix$pkgver.tar.gz")
+sha256sums=('55ead1a3eded1779c47a40083575de3aa4ce5ac8bb987371856775e1573e17b5')
 
 package() {
   # Licenses first, before we move the whole directory to opt
-  cd "$srcdir/${pkgname}-${_pkgver}"
-  for F in LICENSE.TXT LICENSE.html ; do
+  cd "$srcdir/editix${pkgver}"
+  for F in LICENSE.TXT ; do
     # Install to /usr and remove from distribution dir
     install -D -m644 $F "${pkgdir}/usr/share/licenses/${pkgname}/$F"
     rm -f $F
@@ -41,16 +37,16 @@ package() {
   # Install the compiled app to /opt
   cd "$srcdir"
   install -dm755 "$pkgdir/opt/"
-  cp -r ${pkgname}-${_pkgver} $pkgdir/opt/
+  cp -r editix${pkgver} $pkgdir/opt/
 
   # Create a symlink to /usr/bin
   install -dm755 "$pkgdir/usr/bin/"
-  ln -sf /opt/${pkgname}-${_pkgver}/bin/run.sh "$pkgdir/usr/bin/$pkgname"
-  chmod 755 "${pkgdir}/opt/${pkgname}-${_pkgver}/bin/run.sh"
+  ln -sf /opt/editix-${pkgver}/bin/run.sh "$pkgdir/usr/bin/$pkgname"
+  chmod 755 "${pkgdir}/opt/editix${pkgver}/bin/editix.sh"
 
   # Fix the run script
-  sed -e "s|^TOPDIR=.*\$|TOPDIR='/opt/${pkgname}-${_pkgver}/bin/';|g" \
-    -i "${pkgdir}/opt/${pkgname}-${_pkgver}/bin/run.sh"
+  sed -e "s|^TOPDIR=.*\$|TOPDIR='/opt/editix${pkgver}/bin/';|g" \
+    -i "${pkgdir}/opt/editix${pkgver}/bin/editix.sh"
 }
 
 # vim:set ts=2 sw=2 et:
