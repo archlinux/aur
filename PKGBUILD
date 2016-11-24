@@ -4,7 +4,7 @@
 
 _ver=1.17
 _pkgbase=mate-system-monitor
-pkgname="${_pkgbase}"
+pkgname="${_pkgbase}-dev"
 pkgver=${_ver}.0
 pkgrel=1
 pkgdesc="A system monitor for MATE (GTK3 version)"
@@ -14,7 +14,7 @@ provides=("${_pkgbase}" "${_pkgbase}-gtk3")
 conflicts=("${_pkgbase}" "${_pkgbase}-gtk3")
 license=('GPL')
 depends=('dconf' 'dbus-glib' 'glibmm' 'gtkmm3' 'libgtop' 'libwnck3' 'librsvg')
-makedepends=('docbook2x' 'mate-common>=1.17' 'yelp-tools')
+makedepends=('docbook2x' 'mate-common-dev' 'yelp-tools')
 optdepends=('yelp: for reading MATE help documents')
 groups=('mate-extra')
 source=("http://pub.mate-desktop.org/releases/${_ver}/${_pkgbase}-${pkgver}.tar.xz")
