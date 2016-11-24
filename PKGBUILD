@@ -1,23 +1,23 @@
-# Maintainer: Mohammadreza Abdollahzadeh <morealaz@gmail.com>
+# Maintainer: Mohammadreza Abdollahzadeh <morealaz at gmail dot com>
 
 pkgname=ttf-parastoo
-pkgver=0.12
+pkgver=1.0.0_alpha2
 pkgrel=1
-pkgdesc="A beautiful Persian font."
+pkgdesc="A beautiful Persian font based on ttf-gandom."
 arch=('any')
 url="https://rastikerdar.github.io/parastoo-font/"
 license=('OFL')
 groups=(persian-fonts)
-depends=('fontconfig' 'xorg-font-utils' 'unzip')
-source=("$pkgname.zip::https://github.com/rastikerdar/parastoo-font/releases/download/v$pkgver/parastoo-font-v$pkgver.zip")
-noextract=("$pkgname.zip")
+depends=('fontconfig' 'xorg-font-utils')
+source=("https://github.com/rastikerdar/parastoo-font/releases/download/v${pkgver//_/-}/parastoo-font-v${pkgver//_/-}.zip")
 install=$pkgname.install
-md5sums=('7f4c96c2b10a7862ab9ac134019c330c')
+md5sums=('e677e30be5deab22ec13b12c344073e8')
 
-prepare() {
-  unzip -o -LL -qq $pkgname.zip -d $srcdir/$pkgname/
-}
 package() {  
-  install -m 644 -Dt $pkgdir/usr/share/fonts/$pkgname $srcdir/$pkgname/parastoo*
-  install -Dm 644 $srcdir/$pkgname/license $pkgdir/usr/share/licenses/$pkgname/LICENSE    
+    install -d $pkgdir/usr/share/fonts/$pkgname
+    cp -a ./web/Parastoo*.{eot,ttf,woff} $pkgdir/usr/share/fonts/$pkgname/
+    cp -a ./web/{Farsi*,Without-Latin}/Parastoo*.{eot,ttf,woff} $pkgdir/usr/share/fonts/$pkgname/
+    cp -a ./print/Parastoo*.ttf $pkgdir/usr/share/fonts/$pkgname/
+    cp -a ./print/{Farsi*,Without-Latin}/Parastoo*.ttf $pkgdir/usr/share/fonts/$pkgname/
+    install -Dm644 ./LICENSE $pkgdir/usr/share/licenses/$pkgname/LICENSE  
 }
