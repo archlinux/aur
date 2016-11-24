@@ -1,7 +1,7 @@
 # Maintainer: Daniel Milde <daniel at milde dot cz>
 
 pkgname=webmin
-pkgver=1.810
+pkgver=1.820
 pkgrel=1
 pkgdesc="a web-based interface for system administration"
 arch=(i686 x86_64)
@@ -212,7 +212,7 @@ package() {
 }
 
 
-sha256sums=('427469f0de19f3a358487b8ca8db51f0a5f1f8227eea047532d7cbee6e191b78'
+sha256sums=('916e22225971a1aaa0d5dfe9eaa1bb7d4bf3dad6adaeb3da432d0e13120cfb48'
             '52a512ae2aa2fdf4e8a2a26e6bedd5a9cf9aa3cb6ab3c13e6f37d0dc71fe22b3'
             '5f14a8396a3a9e920fae530b61d080e5d0c8bf57a7bd9e179c520a3b3a58ea38'
             'a1bdc68e3b0970a5c8e5063bd882b0469664ca782b34faecee22af5c6c30dd11')
