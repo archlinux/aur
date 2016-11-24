@@ -1,8 +1,8 @@
 # Maintainer: Ingo Bürk <admin at airblader dot de>
 _pkgname=util-xrm
 pkgname=xcb-${_pkgname}-git
-pkgver=v1.0.r9.g38925b3
-pkgrel=2
+pkgver=v1.2.r0.ga45b3d0
+pkgrel=1
 pkgdesc='XCB utility functions for the X resource manager'
 arch=('i686' 'x86_64')
 url="https://github.com/Airblader/xcb-util-xrm"
@@ -16,7 +16,7 @@ md5sums=('SKIP')
 
 pkgver() {
     cd "$_pkgname"
-    git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+    git describe --tags --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
