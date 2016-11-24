@@ -14,12 +14,12 @@ provides=("${_pkgbase}" "${_pkgbase}-gtk3")
 conflicts=("${_pkgbase}" "${_pkgbase}-gtk3")
 license=('GPL')
 depends=('glib2' 'libcanberra' 'libgtop' 'libice' 'libsm' 'libxt'
-         'mate-desktop-dev'' 'startup-notification' 'zenity')
-makedepends=('mate-common-dev'' 'yelp-tools')
+         'mate-desktop-dev' 'startup-notification' 'zenity')
+makedepends=('mate-common-dev' 'yelp-tools')
 optdepends=('yelp: for reading MATE help documents')
 groups=('mate')
 source=("http://pub.mate-desktop.org/releases/${_ver}/${_pkgbase}-${pkgver}.tar.xz")
-sha1sums=('b9b3c14812fcb7ab5dfd2c3498eac639d2e63be6')
+sha1sums=('d8d165f75618a02eaa5a89b86c4e2c7ee4995d2f')
 
 prepare() {
     cd "${srcdir}"
