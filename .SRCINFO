@@ -1,10 +1,11 @@
 pkgbase = daemonize
 	pkgdesc = Run a program as a Unix daemon
 	pkgver = 1.7.5
-	pkgrel = 1
+	pkgrel = 2
 	url = http://bmc.github.com/daemonize/
 	arch = i686
 	arch = x86_64
+	arch = armv7h
 	license = BSD
 	makedepends = python-markdown
 	depends = glibc
