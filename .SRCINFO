@@ -1,6 +1,6 @@
 pkgbase = mate-media-dev
 	pkgdesc = MATE Media Tools (GTK3 version)
-	pkgver = 1.15.0
+	pkgver = 1.17.0
 	pkgrel = 1
 	url = http://mate-desktop.org
 	arch = i686
@@ -23,8 +23,8 @@ pkgbase = mate-media-dev
 	conflicts = mate-media-pulseaudio
 	replaces = mate-media-gstreamer
 	replaces = mate-media-pulseaudio
-	source = http://pub.mate-desktop.org/releases/1.15/mate-media-1.15.0.tar.xz
-	sha1sums = 13043b1dcf8e4fbe93dba44566eecd1e70870131
+	source = http://pub.mate-desktop.org/releases/1.17/mate-media-1.17.0.tar.xz
+	sha1sums = 2d4c73ea74ea11e93b87ce5cf65a7d0e75390d07
 
 pkgname = mate-media-dev
 

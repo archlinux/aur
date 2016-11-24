@@ -2,7 +2,7 @@
 # Contributor:  eadrom <eadrom@archlinux.info>
 # Contributor:  Martin Wimpress <code@flexion.org>
 
-_ver=1.15
+_ver=1.17
 _pkgbase=mate-media
 pkgname="${_pkgbase}-dev"
 pkgver=${_ver}.0
@@ -18,7 +18,7 @@ source=("http://pub.mate-desktop.org/releases/${_ver}/${_pkgbase}-${pkgver}.tar.
 groups=('mate-extra')
 replaces=("${_pkgbase}-gstreamer" "${_pkgbase}-pulseaudio")
 conflicts=("${_pkgbase}" "${_pkgbase}-gtk3" "${_pkgbase}-gstreamer" "${_pkgbase}-pulseaudio")
-sha1sums=('13043b1dcf8e4fbe93dba44566eecd1e70870131')
+sha1sums=('2d4c73ea74ea11e93b87ce5cf65a7d0e75390d07')
 
 prepare() {
     cd "${srcdir}"
