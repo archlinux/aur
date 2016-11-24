@@ -18,7 +18,7 @@
 _pkgname=rxvt-unicode
 pkgname=rxvt-unicode-wcwidthcallback
 pkgver=9.22
-pkgrel=2
+pkgrel=3
 pkgdesc='rxvt-unicode terminal emulator (urxvt) with wcwidth callback for better wide glyph handling of Xft fonts'
 arch=('i686' 'x86_64')
 url='http://software.schmorp.de/pkg/rxvt-unicode.html'
@@ -33,6 +33,7 @@ source=(http://dist.schmorp.de/rxvt-unicode/$_pkgname-$pkgver.tar.bz2
         'urxvt-tabbed.desktop'
         'line-spacing-fix.patch'
         'https://gist.githubusercontent.com/alexoj/df5bae7a4825cb596581/raw/75a1e75c2ae1ec5c0db68a29f8a6821e9e3d87a5/sgr-mouse-mode.patch'
+        'fix-smart-resize-with-x11-frame-borders.patch'  # will be in 9.23.
         # https://github.com/exg/rxvt-unicode/compare/master...blueyed:wcwidth-hack.diff
         'wcwidthcallback.patch')
 sha1sums=('e575b869782fbfed955f84f48b204ec888d91ba1'
@@ -41,6 +42,7 @@ sha1sums=('e575b869782fbfed955f84f48b204ec888d91ba1'
           'cd204d608d114d39c80331efe0af0231ad6b7e18'
           'b7fde1c46af45e831828738874f14b092b1e795f'
           'dfbc8729c545105eff21e20ef3a4a3841a68a192'
+          '6dfa49a211c48193c8d87fb9993ed459b2b4387b'
           'af4cf72f84d07a35b7d99ab8030e7042450a305b')
 
 prepare() {
@@ -54,6 +56,7 @@ prepare() {
 
   patch -p0 -i ../line-spacing-fix.patch
   patch -p0 -i ../sgr-mouse-mode.patch
+  patch -p1 -i ../fix-smart-resize-with-x11-frame-borders.patch
 
   # Remove new files to make the patch apply when rebuilding.  Is there a option for `patch`?!
   rm -f src/rxvtwcwidth.C src/rxvtwcwidth.h README.md
@@ -63,7 +66,6 @@ prepare() {
 build() {
   cd $_pkgname-$pkgver
 
-  # we disable smart-resize (FS#34807); will be fixed in 9.23.
   # do not specify --with-terminfo (FS#46424)
   ./configure \
     --prefix=/usr \
@@ -81,7 +83,7 @@ build() {
     --enable-rxvt-scroll \
     --enable-selectionscrolling \
     --enable-slipwheeling \
-    --disable-smart-resize \
+    --enable-smart-resize \
     --enable-startup-notification \
     --enable-transparency \
     --enable-unicode3 \

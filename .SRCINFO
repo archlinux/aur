@@ -1,7 +1,7 @@
 pkgbase = rxvt-unicode-wcwidthcallback
 	pkgdesc = rxvt-unicode terminal emulator (urxvt) with wcwidth callback for better wide glyph handling of Xft fonts
 	pkgver = 9.22
-	pkgrel = 2
+	pkgrel = 3
 	url = http://software.schmorp.de/pkg/rxvt-unicode.html
 	arch = i686
 	arch = x86_64
@@ -19,6 +19,7 @@ pkgbase = rxvt-unicode-wcwidthcallback
 	source = urxvt-tabbed.desktop
 	source = line-spacing-fix.patch
 	source = https://gist.githubusercontent.com/alexoj/df5bae7a4825cb596581/raw/75a1e75c2ae1ec5c0db68a29f8a6821e9e3d87a5/sgr-mouse-mode.patch
+	source = fix-smart-resize-with-x11-frame-borders.patch
 	source = wcwidthcallback.patch
 	sha1sums = e575b869782fbfed955f84f48b204ec888d91ba1
 	sha1sums = b5a4507f85ebb7bac589db2e07d9bc40106720d9
@@ -26,6 +27,7 @@ pkgbase = rxvt-unicode-wcwidthcallback
 	sha1sums = cd204d608d114d39c80331efe0af0231ad6b7e18
 	sha1sums = b7fde1c46af45e831828738874f14b092b1e795f
 	sha1sums = dfbc8729c545105eff21e20ef3a4a3841a68a192
+	sha1sums = 6dfa49a211c48193c8d87fb9993ed459b2b4387b
 	sha1sums = af4cf72f84d07a35b7d99ab8030e7042450a305b
 
 pkgname = rxvt-unicode-wcwidthcallback
