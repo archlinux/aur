@@ -4,7 +4,7 @@
 
 _ver=1.17
 _pkgbase=libmatekbd
-pkgname="${_pkgbase}-dev"
+pkgname="${_pkgbase}"
 pkgver=${_ver}.0
 pkgrel=1
 pkgdesc="MATE keyboard library (GTK3 version)"
@@ -15,7 +15,7 @@ conflicts=("${_pkgbase}" "${_pkgbase}-gtk3")
 license=('LGPL')
 groups=('mate')
 depends=('dconf' 'gtk3' 'iso-codes' 'libxklavier')
-makedepends=('mate-common-dev')
+makedepends=('mate-common>=1.17')
 source=("http://pub.mate-desktop.org/releases/${_ver}/${_pkgbase}-${pkgver}.tar.xz")
 sha1sums=('dadda672fdb78ab1b85cf8d55c91755b3be320ad')
 
