@@ -5,14 +5,14 @@ url='http://wiki.ros.org/rocon_app_utilities'
 
 pkgname='ros-indigo-rocon-app-utilities'
 pkgver='0.7.13'
-_pkgver_patch=0
+_pkgver_patch=1
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(ros-indigo-roslint
   ros-indigo-catkin)
-makedepends=('cmake' 'git' 'ros-build-tools'
+makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]}
   python2-catkin-pkg)
 
@@ -23,10 +23,16 @@ ros_depends=(ros-indigo-roslaunch
 depends=(${ros_depends[@]}
   python2-rospkg)
 
-_tag=release/indigo/rocon_app_utilities/${pkgver}-${_pkgver_patch}
-_dir=rocon_app_utilities
-source=("${_dir}"::"git+https://github.com/yujinrobot-release/rocon_app_platform-release.git"#tag=${_tag})
-md5sums=('SKIP')
+# Git version (e.g. for debugging)
+# _tag=release/indigo/rocon_app_utilities/${pkgver}-${_pkgver_patch}
+# _dir=${pkgname}
+# source=("${_dir}"::"git+https://github.com/yujinrobot-release/rocon_app_platform-release.git"#tag=${_tag})
+# sha256sums=('SKIP')
+
+# Tarball version (faster download)
+_dir="rocon_app_platform-release-release-indigo-rocon_app_utilities-${pkgver}-${_pkgver_patch}"
+source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/yujinrobot-release/rocon_app_platform-release/archive/release/indigo/rocon_app_utilities/${pkgver}-${_pkgver_patch}.tar.gz")
+sha256sums=('0925f11afb247509ece5c6851a1c2b7a6a4917e847619aac830c44af0c5103e5')
 
 build() {
   # Use ROS environment variables
