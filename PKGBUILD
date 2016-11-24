@@ -5,13 +5,13 @@ url='http://ros.org/wiki/rocon_hub_client'
 
 pkgname='ros-indigo-rocon-hub-client'
 pkgver='0.7.10'
-_pkgver_patch=0
+_pkgver_patch=1
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(ros-indigo-catkin)
-makedepends=('cmake' 'git' 'ros-build-tools'
+makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]})
 
 ros_depends=(ros-indigo-rocon-gateway-utils
@@ -20,10 +20,16 @@ ros_depends=(ros-indigo-rocon-gateway-utils
   ros-indigo-gateway-msgs)
 depends=(${ros_depends[@]})
 
-_tag=release/indigo/rocon_hub_client/${pkgver}-${_pkgver_patch}
-_dir=rocon_hub_client
-source=("${_dir}"::"git+https://github.com/yujinrobot-release/rocon_multimaster-release.git"#tag=${_tag})
-md5sums=('SKIP')
+# Git version (e.g. for debugging)
+# _tag=release/indigo/rocon_hub_client/${pkgver}-${_pkgver_patch}
+# _dir=${pkgname}
+# source=("${_dir}"::"git+https://github.com/yujinrobot-release/rocon_multimaster-release.git"#tag=${_tag})
+# sha256sums=('SKIP')
+
+# Tarball version (faster download)
+_dir="rocon_multimaster-release-release-indigo-rocon_hub_client-${pkgver}-${_pkgver_patch}"
+source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/yujinrobot-release/rocon_multimaster-release/archive/release/indigo/rocon_hub_client/${pkgver}-${_pkgver_patch}.tar.gz")
+sha256sums=('6dd572bac2819e30162fdd9ae9ad282df603008fd3dc5b3b387ca3e356b2f087')
 
 build() {
   # Use ROS environment variables
