@@ -15,7 +15,7 @@ optdepends=('python2-nautilus: integration with Nautilus' 'nemo-python: integrat
 conflicts=('nextcloud-client' 'nextcloud-client-git')
 provides=('mirall' 'mirall-git' 'nextcloud-client' 'nextcloud-client-git')
 source=("${_name}::git+https://github.com/nextcloud/client_theming.git" "${_name}.service")
-sha256sums=('SKIP' '2dc7fdad6c7577548585e977ba6d148bdb3f35c55b79d05d0043773af09d661e')
+sha256sums=('SKIP' '590d44296e12dd4389dc2bbd100b1f680f5ef6dee381469748525fd34af32009')
 backup=('etc/Nextcloud/sync-exclude.lst')
 
 pkgver() {
