@@ -4,7 +4,7 @@ pkgdesc="ROS -  amcl is a probabilistic localization system for a robot moving i
 url='http://wiki.ros.org/amcl'
 
 pkgname='ros-indigo-amcl'
-pkgver='1.12.7'
+pkgver='1.12.13'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -12,19 +12,21 @@ license=('LGPL')
 
 ros_makedepends=(ros-indigo-tf
   ros-indigo-roscpp
+  ros-indigo-rosbag
   ros-indigo-rostest
   ros-indigo-std-srvs
-  ros-indigo-nav-msgs
+  ros-indigo-message-filters
   ros-indigo-catkin
   ros-indigo-dynamic-reconfigure
-  ros-indigo-message-filters)
+  ros-indigo-nav-msgs)
 makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]})
 
-ros_depends=(ros-indigo-dynamic-reconfigure
+ros_depends=(ros-indigo-nav-msgs
+  ros-indigo-dynamic-reconfigure
   ros-indigo-tf
   ros-indigo-roscpp
-  ros-indigo-nav-msgs)
+  ros-indigo-rosbag)
 depends=(${ros_depends[@]})
 
 # Git version (e.g. for debugging)
@@ -36,7 +38,7 @@ depends=(${ros_depends[@]})
 # Tarball version (faster download)
 _dir="navigation-release-release-indigo-amcl-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/navigation-release/archive/release/indigo/amcl/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('ba328dbff19851f4a2988b6959cac0b969c9eef5d44512ed5dd1dd6cdfdbea4f')
+sha256sums=('7084576e4ff24a482c149fae794f1eefb0113674da5cae3fa56958bac2598eb2')
 
 build() {
   # Use ROS environment variables
