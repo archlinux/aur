@@ -4,7 +4,7 @@
 
 _ver=1.17
 _pkgbase=libmatemixer
-pkgname="${_pkgbase}"
+pkgname="${_pkgbase}-dev"
 pkgver=${_ver}.0
 pkgrel=1
 pkgdesc="Mixer library for MATE Desktop (GTK3 version)"
@@ -14,7 +14,7 @@ provides=("${_pkgbase}" "${_pkgbase}-gtk3")
 conflicts=("${_pkgbase}" "${_pkgbase}-gtk3")
 license=('LGPL')
 depends=('alsa-lib' 'libpulse')
-makedepends=('mate-common>=1.17')
+makedepends=('mate-common-dev')
 source=("http://pub.mate-desktop.org/releases/${_ver}/${_pkgbase}-${pkgver}.tar.xz")
 sha1sums=('c16d1f7df5fc1267f7e3caadfcc963730b3e5745')
 
