@@ -20,7 +20,7 @@ _enable_vaapi=0        # Patch for VAAPI HW acceleration NOTE: don't work in som
 ## -- Package and components information -- ##
 ##############################################
 pkgname=chromium-dev
-pkgver=56.0.2914.3
+pkgver=56.0.2924.3
 _launcher_ver=3
 pkgrel=1
 pkgdesc="The open-source project behind Google Chrome (Dev Channel)"
@@ -85,8 +85,8 @@ source=( #"https://gsdview.appspot.com/chromium-browser-official/chromium-${pkgv
         'https://raw.githubusercontent.com/gentoo/gentoo/master/www-client/chromium/files/chromium-system-ffmpeg-r4.patch'
         'https://raw.githubusercontent.com/gentoo/gentoo/master/www-client/chromium/files/chromium-system-jinja-r14.patch'
         # Misc Patches
-        "enable_vaapi_on_linux_${pkgver}.diff::https://raw.githubusercontent.com/saiarcot895/chromium-ubuntu-build/65ffd5a596f747d4aacdb93a68593ee6e40b36cc/debian/patches/enable_vaapi_on_linux.diff"
-        "specify-max-resolution_${pkgver}.patch::https://raw.githubusercontent.com/saiarcot895/chromium-ubuntu-build/65ffd5a596f747d4aacdb93a68593ee6e40b36cc/debian/patches/specify-max-resolution.patch"
+        "enable_vaapi_on_linux_${pkgver}.diff::https://raw.githubusercontent.com/saiarcot895/chromium-ubuntu-build/c2443d1d7815e55912a857e67685af03f276ea5d/debian/patches/enable_vaapi_on_linux.diff"
+        "specify-max-resolution_${pkgver}.patch::https://raw.githubusercontent.com/saiarcot895/chromium-ubuntu-build/c2443d1d7815e55912a857e67685af03f276ea5d/debian/patches/specify-max-resolution.patch"
         'minizip.patch'
         'unset-madv_free.patch'
         # Patch from crbug (chromium bugtracker)
@@ -101,7 +101,7 @@ sha256sums=( #"$(curl -sL https://gsdview.appspot.com/chromium-browser-official/
             'e3c474dbf3822a0be50695683bd8a2c9dfc82d41c1524a20b4581883c0c88986'
             'a9cb08fbac8ffcf6371edd7ab67833efd42c5b92938f1e2e7922d1d22d226db8'
             # Misc Patches
-            '33f3bf254f57fc9ee093c914cd41e5c3e74cd681b43c533d3fb173a08c8d44a9'
+            '1e8f671b0358cc22ab91bf5474d198c5c024d52567528b213a89a11d3675ab42'
             '025042ac038ea5fdaabc91e67b13a410d2cacd9afc2d74f89b36fdf2388d4afc'
             '95ba939b9372e533ecbcc9ca034f3e9fc6621d3bddabb57c4d092ea69fa6c840'
             '3b3aa9e28f29e6f539ed1c7832e79463b13128863a02e9c6fecd16c30d61c227'
@@ -150,6 +150,7 @@ fi
 # Build with GTK3?.
 if [ "${_use_gtk3}" = "1" ]; then
   depends+=('gtk3')
+  makedepends+=('gtk2') # https://crbug.com/668446
   _launcher_gtk='GTK=3'
   optdepends+=('libappindicator-gtk3: Needed for show systray icon in the panel in plasma-next (KF5)')
   _gtk3=true
