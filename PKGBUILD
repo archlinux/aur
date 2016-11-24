@@ -3,7 +3,7 @@
 
 pkgname=razercommander-git
 pkgver=1.0.3
-pkgrel=2
+pkgrel=3
 pkgdesc='A simple GTK control center for managing razer peripherals on Linux.'
 arch=('any')
 url='https://github.com/gabmus/razercommander'
@@ -19,6 +19,9 @@ package() {
   mkdir -p $pkgdir/usr/bin
   cp razercommander/razercommander.desktop.in $pkgdir/usr/share/applications/razercommander.desktop
   cp -r razercommander $pkgdir/usr/share/razercommander
-  echo -e "#\!/bin/sh\npython3 /usr/share/razercommander/main.py" > $pkgdir/usr/bin/razercommander
+  cat << EOF > $pkgdir/usr/bin/razercommander
+#!/bin/sh
+python3 /usr/share/razercommander/main.py
+EOF
   chmod +x $pkgdir/usr/bin/razercommander
 }
