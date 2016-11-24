@@ -4,7 +4,7 @@
 
 pkgname=('pidgin-hg' 'libpurple-hg' 'finch-hg')
 _hgname=pidgin
-pkgver=3.r37894.1cf07b94c6ca
+pkgver=3.r38189.c9b74a765767
 pkgrel=1
 pkgdesc="Multi-protocol instant messaging client. Latest mercurial build."
 arch=('i686' 'x86_64')
@@ -54,7 +54,6 @@ package_pidgin-hg() {
   depends=('libpurple-hg' 'startup-notification' 'gtkspell' 'libxss' 'libsm'
            'hicolor-icon-theme' 'dbus-glib' 'webkitgtk3' 'json-glib')
   optdepends=('aspell: for spelling correction')
-  install=$pkgname.install
   provides=('pidgin')
   conflicts=('pidgin')
 
@@ -90,10 +89,6 @@ package_libpurple-hg() {
   for _dir in libpurple share/sounds share/ca-certs m4macros po; do
     make -C "$_dir" DESTDIR="$pkgdir" install
   done
-
-  # Remove GConf schema file
-  rm "$pkgdir/etc/gconf/schemas/purple.schemas"
-  rmdir "$pkgdir"/etc{/gconf{/schemas,},}
 }
 
 package_finch-hg() {
