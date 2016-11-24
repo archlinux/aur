@@ -1,23 +1,21 @@
-# Maintainer: Mohammadreza Abdollahzadeh <morealaz@gmail.com>
+# Maintainer: Mohammadreza Abdollahzadeh <morealaz at gmail dot com>
 
 pkgname=ttf-vazir
-pkgver=3.1.0
+pkgver=5.1.1
 pkgrel=1
-pkgdesc="A beautiful Persian font."
+pkgdesc="A beautiful Persian font based on DejaVu font."
 arch=('any')
 url="https://rastikerdar.github.io/vazir-font/"
-license=('custom')
+license=('OFL')
 groups=(persian-fonts)
-depends=('fontconfig' 'xorg-font-utils' 'unzip')
-source=("$pkgname.zip::https://github.com/rastikerdar/vazir-font/releases/download/v${pkgver}/vazir-font-v${pkgver}.zip")
-noextract=("$pkgname.zip")
+depends=('fontconfig' 'xorg-font-utils')
+source=("https://github.com/rastikerdar/vazir-font/releases/download/v$pkgver/vazir-font-v$pkgver.zip")
 install=$pkgname.install
-md5sums=('9c309d307ae9e17df9bdcd610ce9505c')
+md5sums=('9d91938ce5ff0ea7224260605cd43440')
 
-prepare() {
-  unzip -o -LL -qq $pkgname.zip -d $srcdir/$pkgname/
-}
 package() {  
-  install -m 644 -Dt $pkgdir/usr/share/fonts/$pkgname $srcdir/$pkgname/vazir*
-  install -Dm 644 $srcdir/$pkgname/license $pkgdir/usr/share/licenses/$pkgname/LICENSE    
+    install -d $pkgdir/usr/share/fonts/$pkgname
+    cp -a ./Vazir*.{eot,ttf,woff} $pkgdir/usr/share/fonts/$pkgname/
+    cp -a ./{Farsi*,Without-Latin}/Vazir*.{eot,ttf,woff} $pkgdir/usr/share/fonts/$pkgname/
+    install -Dm644 ./LICENSE $pkgdir/usr/share/licenses/$pkgname/LICENSE    
 }
