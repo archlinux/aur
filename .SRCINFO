@@ -1,6 +1,6 @@
 pkgbase = linux-nvme
 	pkgver = 4.8.10
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.kernel.org/
 	arch = i686
 	arch = x86_64
@@ -20,6 +20,7 @@ pkgbase = linux-nvme
 	source = nvmepatch1-V4.patch
 	source = nvmepatch2-V4.patch
 	source = nvmepatch3-V4.patch
+	source = 99-linux.hook
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
 	sha256sums = 5190c3d1209aeda04168145bf50569dc0984f80467159b1dc50ad731e3285f10
@@ -31,7 +32,7 @@ pkgbase = linux-nvme
 	sha256sums = 45a2b0344a5bea44e6e2a803238eb24223aff42c3c03ea6957cf6373b3bb5f6c
 	sha256sums = da53dd78823199502cd9d3941096e09a3b744d52a43b7a2314be59bde9b1c88d
 	sha256sums = 7799f733063a426ba159e0cb1e90ca1755d05eee9b421f6b87c1867832baa038
-
+	sha256sums = 834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0
 pkgname = linux-nvme
 	pkgdesc = The Linux kernel with patches made by Andy Lutomirski 
 	install = linux.install

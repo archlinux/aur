@@ -1,7 +1,7 @@
 #
 # Maintainer: Paul Dunn <pwjdunn AT gmail DOT com>
 #
-# Based on the linux package by:
+# Id: PKGBUILD 277473 2016-09-30 19:28:40Z tpowa $
 # Maintainer: Tobias Powalowski <tpowa@archlinux.org>
 # Maintainer: Thomas Baechler <thomas@archlinux.org>
 
@@ -19,34 +19,40 @@
 # More at this wiki page ---> https://wiki.archlinux.org/index.php/Modprobed-db
 _localmodcfg=
 
-#pkgbase=linux-mainline               # Build stock -ARCH kernel
+#pkgbase=linux               # Build stock -ARCH kernel
 pkgbase=linux-nvme       # Build kernel with a different name
 _srcname=linux-4.8
-_patchname=patch-4.8.10
 pkgver=4.8.10
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
 license=('GPL2')
-makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc' 'elfutils')
+makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc' 'libelf')
 options=('!strip')
-source=("https://cdn.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
-        "https://cdn.kernel.org/pub/linux/kernel/v4.x/${_patchname}.xz"
-        #"https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.sign"
-        #"https://www.kernel.org/pub/linux/kernel/v4.x/testing/${_patchname}.sign"
+source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
+        "https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.sign"
+        "https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.xz"
+        "https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.sign"
         # the main kernel config files
         'config' 'config.x86_64'
+        # pacman hook for initramfs regeneration
+        '99-linux.hook'
         # standard config files for mkinitcpio ramdisk
         'linux.preset'
-	'nvmepatch1-V4.patch'
-	'nvmepatch2-V4.patch'
-	'nvmepatch3-V4.patch'
-	'change-default-console-loglevel.patch')
+        'nvmepatch1-V4.patch'
+        'nvmepatch2-V4.patch'
+        'nvmepatch3-V4.patch'
+        'change-default-console-loglevel.patch'
+        )
+
 sha256sums=('3e9150065f193d3d94bcf46a1fe9f033c7ef7122ab71d75a7fb5a2f0c9a7e11a'
-	    'd0ea1671c488957d7b1ef46a5107c47c16b37f2985ca7ee4c900ba0f89d40d3c'
-	    '749b19cac625284ba6abae2d3932465b64d41d0274a3c070ca2c556779bb2078'
-            '7d2bb66458b57d4df497ebb15a4ac130d08a0c084ae7845d0fe791a194efdb8e'
-            'f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c'
+            'SKIP'
+            'd0ea1671c488957d7b1ef46a5107c47c16b37f2985ca7ee4c900ba0f89d40d3c'
+            'SKIP'
+            '2ac8818414beb7dbacbd3ad450c516e6ada804827132a7132f63b8189e5f5151'
+            '41b9a64542befd2fea170776e8ec22a7d158dd3273633afc9b91662c448cd90a'
+            '834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0'
+            'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
             '45a2b0344a5bea44e6e2a803238eb24223aff42c3c03ea6957cf6373b3bb5f6c'
             'da53dd78823199502cd9d3941096e09a3b744d52a43b7a2314be59bde9b1c88d'
             '7799f733063a426ba159e0cb1e90ca1755d05eee9b421f6b87c1867832baa038'
@@ -61,12 +67,8 @@ _kernelname=${pkgbase#linux}
 prepare() {
   cd "${srcdir}/${_srcname}"
 
-  # mainline: not needed
   # add upstream patch
-  # patch -p1 -i "${srcdir}/patch-${pkgver}"
-
-  # mainline: add patch
-  patch -p1 -i "${srcdir}/${_patchname}" || true
+  patch -p1 -i "${srcdir}/patch-${pkgver}"
 
   # add latest fixes from stable queue, if needed
   # http://git.kernel.org/?p=linux/kernel/git/stable/stable-queue.git
@@ -74,7 +76,6 @@ prepare() {
   # set DEFAULT_CONSOLE_LOGLEVEL to 4 (same value as the 'quiet' kernel param)
   # remove this when a Kconfig knob is made available by upstream
   # (relevant patch sent upstream: https://lkml.org/lkml/2011/7/26/227)
-  
   patch -p1 -i "${srcdir}/change-default-console-loglevel.patch"
 
   # Added custom NVME patches in here
@@ -94,10 +95,13 @@ prepare() {
   fi
 
   # set extraversion to pkgrel
-  #sed -ri "s|^(EXTRAVERSION =).*|\1 -${pkgrel}|" Makefile
+  sed -ri "s|^(EXTRAVERSION =).*|\1 -${pkgrel}|" Makefile
 
   # don't run depmod on 'make install'. We'll do this ourselves in packaging
   sed -i '2iexit 0' scripts/depmod.sh
+
+  # get kernel version
+  make prepare
 
   # load configuration
   # Configure the kernel. Replace the line below with one of your choice.
@@ -105,23 +109,7 @@ prepare() {
   #make nconfig # new CLI menu for configuration
   #make xconfig # X-based configuration
   #make oldconfig # using old config from previous kernel version
-  make olddefconfig
   # ... or manually edit .config
-
-  # get kernel version
-  make prepare
-
-### Optionally load needed modules for the make localmodconfig
-# See https://aur.archlinux.org/packages/modprobed-db
-if [ -n "$_localmodcfg" ]; then
- msg "If you have modprobed-db installed, running it in recall mode now"
-   if [ -e /usr/bin/modprobed-db ]; then
-      [[ ! -x /usr/bin/sudo ]] && echo "Cannot call modprobe with sudo. Install via pacman -S sudo and configure to work with this user." && exit 1
-      sudo /usr/bin/modprobed-db recall
-   fi
- msg "Running Steven Rostedt's make localmodconfig now"
- make localmodconfig
-fi
 
   # rewrite configuration
   yes "" | make config >/dev/null
@@ -155,21 +143,17 @@ _package() {
   cp arch/$KARCH/boot/bzImage "${pkgdir}/boot/vmlinuz-${pkgbase}"
 
   # set correct depmod command for install
-  cp -f "${startdir}/${install}" "${startdir}/${install}.pkg"
+  sed -e "s|%PKGBASE%|${pkgbase}|g;s|%KERNVER%|${_kernver}|g" \
+    "${startdir}/${install}" > "${startdir}/${install}.pkg"
   true && install=${install}.pkg
-  sed \
-    -e  "s/KERNEL_NAME=.*/KERNEL_NAME=${_kernelname}/" \
-    -e  "s/KERNEL_VERSION=.*/KERNEL_VERSION=${_kernver}/" \
-    -i "${startdir}/${install}"
 
   # install mkinitcpio preset file for kernel
-  install -D -m644 "${srcdir}/linux.preset" "${pkgdir}/etc/mkinitcpio.d/${pkgbase}.preset"
-  sed \
-    -e "1s|'linux.*'|'${pkgbase}'|" \
-    -e "s|ALL_kver=.*|ALL_kver=\"/boot/vmlinuz-${pkgbase}\"|" \
-    -e "s|default_image=.*|default_image=\"/boot/initramfs-${pkgbase}.img\"|" \
-    -e "s|fallback_image=.*|fallback_image=\"/boot/initramfs-${pkgbase}-fallback.img\"|" \
-    -i "${pkgdir}/etc/mkinitcpio.d/${pkgbase}.preset"
+  sed "s|%PKGBASE%|${pkgbase}|g" "${srcdir}/linux.preset" |
+    install -D -m644 /dev/stdin "${pkgdir}/etc/mkinitcpio.d/${pkgbase}.preset"
+
+  # install pacman hook for initramfs regeneration
+  sed "s|%PKGBASE%|${pkgbase}|g" "${srcdir}/99-linux.hook" |
+    install -D -m644 /dev/stdin "${pkgdir}/usr/share/libalpm/hooks/99-${pkgbase}.hook"
 
   # remove build and source links
   rm -f "${pkgdir}"/lib/modules/${_kernver}/{source,build}
