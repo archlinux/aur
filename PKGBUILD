@@ -4,10 +4,10 @@ pkgdesc="ROS - ROS console output library."
 url='http://www.ros.org/wiki/rosconsole'
 
 pkgname='ros-indigo-rosconsole'
-pkgver='1.11.19'
+pkgver='1.11.20'
 _pkgver_patch=0
 arch=('any')
-pkgrel=2
+pkgrel=1
 license=('BSD')
 
 ros_makedepends=(ros-indigo-rosunit
@@ -37,8 +37,9 @@ depends=(${ros_depends[@]}
 
 # Tarball version (faster download)
 _dir="ros_comm-release-release-indigo-rosconsole-${pkgver}-${_pkgver_patch}"
-source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/ros_comm-release/archive/release/indigo/rosconsole/${pkgver}-${_pkgver_patch}.tar.gz" vector.patch)
-sha256sums=('6309256609db99f64f9e5db554e9dd42fa1eeab01a65de412f9dc31a1d8092a8'
+source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/ros_comm-release/archive/release/indigo/rosconsole/${pkgver}-${_pkgver_patch}.tar.gz"
+       vector.patch)
+sha256sums=('d0780a945de9739f98fa330d70a9fc78745f38fca4a8a75fdc2798ede939ad03'
             'd73b7b4dade0942de7a6a76dfbbaf6fe4f3c3fc6826c1df3164d1cfca8c3299b')
 
 prepare() {
