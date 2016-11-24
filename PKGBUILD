@@ -4,7 +4,7 @@ pkgdesc="ROS - Timing utilities are very dependent on the system api provided fo
 url='http://wiki.ros.org/ecl_time'
 
 pkgname='ros-indigo-ecl-time'
-pkgver='0.61.8'
+pkgver='0.61.15'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -17,7 +17,7 @@ ros_makedepends=(ros-indigo-ecl-errors
   ros-indigo-ecl-time-lite
   ros-indigo-ecl-config
   ros-indigo-catkin)
-makedepends=('cmake' 'git' 'ros-build-tools'
+makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]})
 
 ros_depends=(ros-indigo-ecl-errors
@@ -30,14 +30,14 @@ depends=(${ros_depends[@]})
 
 # Git version (e.g. for debugging)
 # _tag=release/indigo/ecl_time/${pkgver}-${_pkgver_patch}
-# _dir=ecl_time
+# _dir=${pkgname}
 # source=("${_dir}"::"git+https://github.com/yujinrobot-release/ecl_core-release.git"#tag=${_tag})
 # sha256sums=('SKIP')
 
 # Tarball version (faster download)
 _dir="ecl_core-release-release-indigo-ecl_time-${pkgver}-${_pkgver_patch}"
-source=("https://github.com/yujinrobot-release/ecl_core-release/archive/release/indigo/ecl_time/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('11d14ef1c0998f64ba9e0ee8bb9af04af2ce079c3398dda8452e9af0467741ce')
+source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/yujinrobot-release/ecl_core-release/archive/release/indigo/ecl_time/${pkgver}-${_pkgver_patch}.tar.gz")
+sha256sums=('0018ce969a5031dfc3dcc0228dbc3a1dd294bfdf76ae71b8e11bf418d0657680')
 
 build() {
   # Use ROS environment variables
