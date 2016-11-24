@@ -4,7 +4,7 @@ pkgdesc="ROS - Utilities for flashing and enabling Kobukis USB connection."
 url='http://ros.org/wiki/kobuki_ftdi'
 
 pkgname='ros-indigo-kobuki-ftdi'
-pkgver='0.6.1'
+pkgver='0.6.5'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -12,7 +12,7 @@ license=('BSD')
 
 ros_makedepends=(ros-indigo-ecl-command-line
   ros-indigo-catkin)
-makedepends=('cmake' 'git' 'ros-build-tools'
+makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]}
   libftdi
   libusb-compat)
@@ -22,10 +22,16 @@ depends=(${ros_depends[@]}
   libftdi
   libusb-compat)
 
-_tag=release/indigo/kobuki_ftdi/${pkgver}-${_pkgver_patch}
-_dir=kobuki_ftdi
-source=("${_dir}"::"git+https://github.com/yujinrobot-release/kobuki_core-release.git"#tag=${_tag})
-md5sums=('SKIP')
+# Git version (e.g. for debugging)
+# _tag=release/indigo/kobuki_ftdi/${pkgver}-${_pkgver_patch}
+# _dir=${pkgname}
+# source=("${_dir}"::"git+https://github.com/yujinrobot-release/kobuki_core-release.git"#tag=${_tag})
+# sha256sums=('SKIP')
+
+# Tarball version (faster download)
+_dir="kobuki_core-release-release-indigo-kobuki_ftdi-${pkgver}-${_pkgver_patch}"
+source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/yujinrobot-release/kobuki_core-release/archive/release/indigo/kobuki_ftdi/${pkgver}-${_pkgver_patch}.tar.gz")
+sha256sums=('d9e88a5cb772937e57fb9e3cdec103b8eb10be6d5934c0969e37eb26b169bf11')
 
 build() {
   # Use ROS environment variables
