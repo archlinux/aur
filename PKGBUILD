@@ -1,4 +1,5 @@
 # Maintainer: NicoHood <aur {at} nicohood {dot} de>
+# PGP ID: 97312D5EB9D7AE7D0BD4307351DAE9B7C1AE9161
 # Contributor: Tomas Schertel <tschertel at gmail dot com>
 # Contributor: Christopher Loen <christopherloen at gmail dot com>
 # Contributor: Peter Reschenhofer <peter.reschenhofer@gmail.com>
@@ -9,19 +10,20 @@
 
 pkgname=arduino
 pkgver=1.6.12
-pkgrel=3
+pkgrel=4
 epoch=1
 pkgdesc="Arduino prototyping platform SDK"
-arch=('i686' 'x86_64' 'armv6h' 'armv7h') # TODO remove arm once moved into community
+arch=('i686' 'x86_64')
 url="https://github.com/arduino/Arduino"
 license=('GPL' 'LGPL')
 depends=('gtk2' 'desktop-file-utils' 'shared-mime-info' 'java-runtime=8' 'arduino-builder')
 makedepends=('java-environment=8' 'apache-ant' 'unzip') # TODO remove unzip once all deps are resolved
 optdepends=('arduino-docs: Offline documentation for arduino'
-            'arduino-avr-core: AVR core with upstream avr-gcc and avrdude')
+            'arduino-avr-core: AVR core with upstream avr-gcc and avrdude'
+            'python2: Intel Galileo Board installation')
 options=(!strip)
 install="arduino.install"
-source=("https://github.com/arduino/Arduino/archive/${pkgver}.tar.gz"
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/arduino/Arduino/archive/${pkgver}.tar.gz"
         "https://github.com/arduino-libraries/WiFi101-FirmwareUpdater-Plugin/releases/download/v0.8.0/WiFi101-Updater-ArduinoIDE-Plugin-0.8.0.zip"
         "https://downloads.arduino.cc/libastylej-2.05.1-3.zip"
         "https://downloads.arduino.cc/liblistSerials/liblistSerials-1.1.4.zip"
@@ -57,7 +59,7 @@ build() {
     export PATH=/usr/lib/jvm/java-8-openjdk/jre/bin/:$PATH
 
     # Do not include their avr-core + tools and no docs. We build them seperately
-    ant clean build -Dlight_bundle=true -Dno_docs=true -Dlocal_sources=true
+    ant clean dist -Dversion=${pkgver} build -Dlight_bundle=true -Dno_docs=true -Dlocal_sources=true
 }
 
 package() {
@@ -74,6 +76,9 @@ package() {
 
     # Link arduino-builder, ctags, libastylej, libserialport and docs
     # TODO ctags, astyle libserialport do not work yet
+    # https://github.com/arduino/ctags/issues/12
+    # https://github.com/arduino/Arduino/issues/5538
+    # https://github.com/arduino/listSerialPortsC/issues/9
     rm "${pkgdir}/usr/share/arduino/arduino-builder"
     ln -s /usr/bin/arduino-builder "${pkgdir}/usr/share/arduino/arduino-builder"
     # ctags TODO -> patch platform.txt and not the binary ln

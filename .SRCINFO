@@ -1,14 +1,12 @@
 pkgbase = arduino
 	pkgdesc = Arduino prototyping platform SDK
 	pkgver = 1.6.12
-	pkgrel = 3
+	pkgrel = 4
 	epoch = 1
 	url = https://github.com/arduino/Arduino
 	install = arduino.install
 	arch = i686
 	arch = x86_64
-	arch = armv6h
-	arch = armv7h
 	license = GPL
 	license = LGPL
 	makedepends = java-environment=8
@@ -21,8 +19,9 @@ pkgbase = arduino
 	depends = arduino-builder
 	optdepends = arduino-docs: Offline documentation for arduino
 	optdepends = arduino-avr-core: AVR core with upstream avr-gcc and avrdude
+	optdepends = python2: Intel Galileo Board installation
 	options = !strip
-	source = https://github.com/arduino/Arduino/archive/1.6.12.tar.gz
+	source = arduino-1.6.12.tar.gz::https://github.com/arduino/Arduino/archive/1.6.12.tar.gz
 	source = https://github.com/arduino-libraries/WiFi101-FirmwareUpdater-Plugin/releases/download/v0.8.0/WiFi101-Updater-ArduinoIDE-Plugin-0.8.0.zip
 	source = https://downloads.arduino.cc/libastylej-2.05.1-3.zip
 	source = https://downloads.arduino.cc/liblistSerials/liblistSerials-1.1.4.zip
