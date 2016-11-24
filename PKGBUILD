@@ -4,7 +4,7 @@ pkgdesc="ROS - Some fast/convenient type converters, mostly for char strings or 
 url='http://wiki.ros.org/ecl_converters'
 
 pkgname='ros-indigo-ecl-converters'
-pkgver='0.61.8'
+pkgver='0.61.15'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -18,7 +18,7 @@ ros_makedepends=(ros-indigo-ecl-errors
   ros-indigo-ecl-mpl
   ros-indigo-ecl-config
   ros-indigo-ecl-type-traits)
-makedepends=('cmake' 'git' 'ros-build-tools'
+makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]})
 
 ros_depends=(ros-indigo-ecl-errors
@@ -32,14 +32,14 @@ depends=(${ros_depends[@]})
 
 # Git version (e.g. for debugging)
 # _tag=release/indigo/ecl_converters/${pkgver}-${_pkgver_patch}
-# _dir=ecl_converters
+# _dir=${pkgname}
 # source=("${_dir}"::"git+https://github.com/yujinrobot-release/ecl_core-release.git"#tag=${_tag})
 # sha256sums=('SKIP')
 
 # Tarball version (faster download)
 _dir="ecl_core-release-release-indigo-ecl_converters-${pkgver}-${_pkgver_patch}"
-source=("https://github.com/yujinrobot-release/ecl_core-release/archive/release/indigo/ecl_converters/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('5dcd5f2d396835b8afbe668a622892f415521a41a3ff80e5d88c68c62827bef2')
+source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/yujinrobot-release/ecl_core-release/archive/release/indigo/ecl_converters/${pkgver}-${_pkgver_patch}.tar.gz")
+sha256sums=('a5e3134a1f7398b8f8fb5fb3e878d57c6e1f4553aa85c675a3d1d6a262738b4f')
 
 build() {
   # Use ROS environment variables
