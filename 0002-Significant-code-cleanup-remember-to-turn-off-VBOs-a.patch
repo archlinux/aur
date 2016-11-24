@@ -1,0 +1,127 @@
+From 2df6b00f1d6f3e8bdfab0e047bb8a83eebc5245c Mon Sep 17 00:00:00 2001
+From: Joseph Lenox <lenox.joseph@gmail.com>
+Date: Thu, 17 Nov 2016 13:10:22 -0600
+Subject: [PATCH 2/3] Significant code cleanup; remember to turn off VBOs after
+ done with use to not interfere with other code.
+
+---
+ lib/Slic3r/GUI/3DScene.pm | 62 +++++++++++++++++++++++++++++------------------
+ 1 file changed, 39 insertions(+), 23 deletions(-)
+
+diff --git a/lib/Slic3r/GUI/3DScene.pm b/lib/Slic3r/GUI/3DScene.pm
+index 715be64..7f6f7ae 100644
+--- a/lib/Slic3r/GUI/3DScene.pm
++++ b/lib/Slic3r/GUI/3DScene.pm
+@@ -1,9 +1,9 @@
+ package Slic3r::GUI::3DScene::Base;
+ use strict;
+ use warnings;
+-
+ use Wx::Event qw(EVT_PAINT EVT_SIZE EVT_ERASE_BACKGROUND EVT_IDLE EVT_MOUSEWHEEL EVT_MOUSE_EVENTS);
+ # must load OpenGL *before* Wx::GLCanvas
++
+ use OpenGL qw(:glconstants :glfunctions :glufunctions :gluconstants);
+ use base qw(Wx::GLCanvas Class::Accessor);
+ use Math::Trig qw(asin);
+@@ -46,6 +46,8 @@ use constant GROUND_Z       => -0.02;
+ use constant DEFAULT_COLOR  => [1,1,0];
+ use constant SELECTED_COLOR => [0,1,0,1];
+ use constant HOVER_COLOR    => [0.4,0.9,0,1];
++use constant HAS_VBO        => 1;
++
+ 
+ # make OpenGL::Array thread-safe
+ {
+@@ -133,6 +137,7 @@ sub new {
+         $self->Refresh;
+     });
+     EVT_MOUSE_EVENTS($self, \&mouse_event);
++
+     
+     return $self;
+ }
+@@ -750,26 +755,27 @@ sub Render {
+     # draw ground
+     my $ground_z = GROUND_Z;
+     if ($self->bed_triangles) {
+-        my($VertexObjID,$NormalObjID,$ColorObjID);
+-        my $colors = OpenGL::Array->new_list(GL_FLOAT,(0.8,0.6,0.5,0.4));
+-        my $norms = OpenGL::Array->new_list(GL_FLOAT,(0,0,1));
+-        ($VertexObjID,$NormalObjID,$ColorObjID) =
+-            glGenBuffersARB_p(3);
+-        $self->bed_triangles->bind($VertexObjID);
+-        glBufferDataARB_p(GL_ARRAY_BUFFER_ARB, $self->bed_triangles, GL_STATIC_DRAW_ARB);
+-        glVertexPointer_c(3, GL_FLOAT, 0, 0);
+-        $norms->bind($NormalObjID);
+-        glBufferDataARB_p(GL_ARRAY_BUFFER_ARB, $norms, GL_STATIC_DRAW_ARB);
+-        glNormalPointer_c(GL_FLOAT, 0, 0);
++        my $norms = OpenGL::Array->new_list(GL_FLOAT,(0.0, 0.0, 1.0)); # common normal for both
+ 
+         glDisable(GL_DEPTH_TEST);
+-
++        
+         glEnable(GL_BLEND);
+         glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+         
+         glEnableClientState(GL_VERTEX_ARRAY);
+-        #glNormal3d(0,0,1);
+-        #glVertexPointer_p(3, $self->bed_triangles);
++        if (HAS_VBO) {
++            my ($triangle_vertex);
++            ($triangle_vertex) =
++                glGenBuffersARB_p(1);
++            $self->bed_triangles->bind($triangle_vertex);
++            glBufferDataARB_p(GL_ARRAY_BUFFER_ARB, $self->bed_triangles, GL_STATIC_DRAW_ARB);
++            glVertexPointer_c(3, GL_FLOAT, 0, 0);
++        } else {
++            # fall back on old behavior
++            glVertexPointer_p(3, $self->bed_triangles);
++        }
++        glColor4f(0.8, 0.6, 0.5, 0.4);
++        glNormal3d(0,0,1);
+         glDrawArrays(GL_TRIANGLES, 0, $self->bed_triangles->elements / 3);
+         glDisableClientState(GL_VERTEX_ARRAY);
+         
+@@ -777,21 +783,31 @@ sub Render {
+         # the object from below
+         glEnable(GL_DEPTH_TEST);
+     
+-        my($GridVertexObjID,$GridNormalObjID,$GridColorObjID);
+-        ($GridVertexObjID,$GridNormalObjID,$GridColorObjID) =
+-            glGenBuffersARB_p(3);
+-        glBufferDataARB_p(GL_ARRAY_BUFFER_ARB, $self->bed_grid_lines, GL_STATIC_DRAW_ARB);
+-        glVertexPointer_c(3, GL_FLOAT, 0, 0);
+         # draw grid
+         glLineWidth(3);
+-        glColor4f(0.2, 0.2, 0.2, 0.4);
+         glEnableClientState(GL_VERTEX_ARRAY);
+-
+-        #glVertexPointer_p(3, $self->bed_grid_lines);
++        if (HAS_VBO) {
++            my ($grid_vertex);
++            ($grid_vertex) =
++                glGenBuffersARB_p(1);
++            $self->bed_grid_lines->bind($grid_vertex);
++            glBufferDataARB_p(GL_ARRAY_BUFFER_ARB, $self->bed_grid_lines, GL_STATIC_DRAW_ARB);
++            glVertexPointer_c(3, GL_FLOAT, 0, 0);
++        } else {
++            # fall back on old behavior
++            glVertexPointer_p(3, $self->bed_grid_lines);
++        }
++        glColor4f(0.2, 0.2, 0.2, 0.4);
++        glNormal3d(0,0,1);
+         glDrawArrays(GL_LINES, 0, $self->bed_grid_lines->elements / 3);
+         glDisableClientState(GL_VERTEX_ARRAY);
+         
+         glDisable(GL_BLEND);
++        if (HAS_VBO) { 
++            # Turn off buffer objects to let the rest of the draw code work.
++            glBindBufferARB(GL_ARRAY_BUFFER_ARB, 0);
++            glBindBufferARB(GL_ELEMENT_ARRAY_BUFFER_ARB, 0);
++        }
+     }
+     
+     my $volumes_bb = $self->volumes_bounding_box;
+-- 
+2.10.2
+
