@@ -1,6 +1,6 @@
 pkgbase = mate-panel-dev
 	pkgdesc = The MATE Panel
-	pkgver = 1.15.1
+	pkgver = 1.17.0
 	pkgrel = 1
 	url = http://mate-desktop.org
 	arch = i686
@@ -34,8 +34,8 @@ pkgbase = mate-panel-dev
 	provides = mate-panel-gtk3
 	conflicts = mate-panel
 	conflicts = mate-panel-gtk3
-	source = http://pub.mate-desktop.org/releases/1.15/mate-panel-1.15.1.tar.xz
-	sha1sums = 7c492ec7de2f4254b4d6e4b2d20eeff56cf3ed40
+	source = http://pub.mate-desktop.org/releases/1.17/mate-panel-1.17.0.tar.xz
+	sha1sums = 39918d8e736c266bce78a76470842621db3786da
 
 pkgname = mate-panel-dev
 	pkgdesc = The MATE Panel (GTK3 version)
