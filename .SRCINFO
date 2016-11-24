@@ -1,6 +1,6 @@
 pkgbase = tortoisehg-hg
 	pkgdesc = Mercurial GUI front end
-	pkgver = 3.9.18102
+	pkgver = 4.0.18125
 	pkgrel = 1
 	url = http://tortoisehg.bitbucket.org/
 	arch = i686
