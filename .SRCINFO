@@ -1,0 +1,16 @@
+pkgbase = fqgrep
+	pkgdesc = An approximate sequence pattern matcher for FASTQ/FASTA files
+	pkgver = 0.4.4
+	pkgrel = 1
+	url = https://github.com/indraniel/fqgrep
+	arch = any
+	makedepends = libtool
+	makedepends = autoconf
+	makedepends = automake
+	depends = zlib
+	depends = tre
+	source = https://github.com/indraniel/fqgrep/archive/v0.4.4.tar.gz
+	md5sums = 18d5b1ad9926b302bfd92ed19f66bb34
+
+pkgname = fqgrep
+
