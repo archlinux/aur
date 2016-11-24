@@ -1,5 +1,12 @@
 # Maintainer: Leo Schwarz (evotopid) <mail@leoschwarz.com>
-# Contributor: John D Jones III AKA jnbek <jnbek1972 -_AT_- g m a i l -_Dot_- com> 
+# Based on PKGBUILDs:
+# • `firefox-developer` by John D Jones III AKA jnbek <jnbek1972 -_AT_- g m a i l -_Dot_- com>
+# • `firefox-developer-es-mx` by Icaro Perseo <icaroperseo[at]protonmail[dot]com>
+#
+# Hinweis: Es ist notwendig den PGP Schlüssel von "Mozilla Software Releases <release@mozilla.com>"
+#   zu importieren. Mehr Information unter: https://wiki.archlinux.org/index.php/GnuPG#Import_a_public_key
+#   $ gpg --recv-keys 14F26682D0916CDD81E37B6D61B7B526D98F0353
+
 _name=firefox
 _channel=developer
 
@@ -13,17 +20,21 @@ pkgname="${_name}-${_channel}-de"
 pkgdesc='Standalone web browser from mozilla.org, developer build - German'
 url='http://www.mozilla.org/firefox/developer'
 pkgver="${_release_version}_${_release_year}${_release_month}${_release_day}"
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 license=('MPL' 'GPL' 'LGPL')
-_file="${_name}-${_release_version}.de.linux-${CARCH}.tar.bz2"
+_file="${_name}-${_release_version}.de.linux-x86_64"
 _release_dir="${_release_year}-${_release_month}-${_release_day}-${_release_time}-mozilla-aurora-l10n"
-source=("firefox_$pkgver.tar.bz2::https://ftp.mozilla.org/pub/firefox/nightly/$_release_year/$_release_month/$_release_dir/$_file"
+source=("firefox_$pkgver.tar.bz2::https://ftp.mozilla.org/pub/firefox/nightly/$_release_year/$_release_month/$_release_dir/$_file.tar.bz2"
+        "firefox_$pkgver.checksums::https://ftp.mozilla.org/pub/firefox/nightly/$_release_year/$_release_month/$_release_dir/$_file.checksums"
+        "firefox_$pkgver.checksums.asc::https://ftp.mozilla.org/pub/firefox/nightly/$_release_year/$_release_month/$_release_dir/$_file.checksums.asc"
         "firefox-$_channel.desktop"
         "vendor.js")
 depends=('alsa-lib' 'libxt' 'libnotify' 'mime-types' 'nss' 'gtk2' 'gtk3' 'sqlite' 'dbus-glib')
 provides=(firefox-developer)
 conflicts=(firefox-developer)
+
+validpgpkeys=('14F26682D0916CDD81E37B6D61B7B526D98F0353')
 
 package() {
   install -d $pkgdir/{usr/{bin,share/{applications,pixmaps}},opt}
@@ -35,6 +46,8 @@ package() {
   install -Dm644 $srcdir/vendor.js $pkgdir/opt/firefox-$_channel/browser/defaults/preferences/vendor.js
 }
 
-md5sums=('b188292fbbb1ba3596fad47b2d6ef9f9'
-         '5979b30b19cd645012ce518321fb16f1'
-         '32618013911bf84445afce815e3875b1')
+sha256sums=('89378cface30e60b25ca110c3b48596048cba905452c88a38c387b7c7920ff7f'
+            '099980819a46ac31842adb48f7b852ca0b3119fb0b804028366a161f48af8095'
+            'SKIP'
+            '125c1809cbecf6c91081f3fe7017b42def6294d2dd36afca39812a16155cc433'
+            'a605391acbcf6096f1db3c8c31c75bcacbe067dbb341a8b7529718dd246cd38e')

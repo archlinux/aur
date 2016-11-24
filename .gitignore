@@ -3,4 +3,7 @@ src
 *.xz
 *.bz2
 *.tar
+*.gz
+*.checksums
+*.checksums.asc
 
