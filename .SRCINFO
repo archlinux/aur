@@ -1,7 +1,7 @@
 pkgbase = pearlfan
 	pkgdesc = Tool to control Pearl USB LED fan.
 	pkgver = 1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Ventto/pearlfan
 	arch = x86_64
 	license = GPL3
@@ -10,7 +10,7 @@ pkgbase = pearlfan
 	provides = pearlfan
 	conflicts = pearlfan
 	source = https://github.com/Ventto/pearlfan/archive/v1.1.tar.gz
-	sha256sums = 64192de3348df713d999700f56e5c15b3c30f49773f22ea40f4cf5b056df923b
+	sha256sums = 500a56f6ed87b00a674f498714c83dc136265efb73c43a9ed26409768903ebf0
 
 pkgname = pearlfan
 

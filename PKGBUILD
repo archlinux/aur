@@ -2,7 +2,7 @@
 
 pkgname=pearlfan
 pkgver=1.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Tool to control Pearl USB LED fan.'
 arch=('x86_64')
 url="https://github.com/Ventto/${pkgname}"
@@ -11,7 +11,7 @@ provides=("${pkgname}")
 conflicts=("${pkgname}")
 makedepends=('help2man' 'netpbm')
 source=("https://github.com/Ventto/${pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('64192de3348df713d999700f56e5c15b3c30f49773f22ea40f4cf5b056df923b')
+sha256sums=('500a56f6ed87b00a674f498714c83dc136265efb73c43a9ed26409768903ebf0')
 
 build() {
   cd ${srcdir}/${pkgname}-${pkgver}
