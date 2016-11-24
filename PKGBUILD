@@ -4,17 +4,18 @@ pkgdesc="ROS - Dock driving library for Kobuki."
 url='http://ros.org/wiki/kobuki_dock_drive'
 
 pkgname='ros-indigo-kobuki-dock-drive'
-pkgver='0.6.1'
+pkgver='0.6.5'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
 license=('BSD')
 
-ros_makedepends=(ros-indigo-ecl-linear-algebra
+ros_makedepends=(ros-indigo-catkin
+  ros-indigo-ecl-linear-algebra
   ros-indigo-ecl-geometry
   ros-indigo-ecl-threads
-  ros-indigo-catkin)
-makedepends=('cmake' 'git' 'ros-build-tools'
+  ros-indigo-ecl-build)
+makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]})
 
 ros_depends=(ros-indigo-ecl-linear-algebra
@@ -22,10 +23,16 @@ ros_depends=(ros-indigo-ecl-linear-algebra
   ros-indigo-ecl-threads)
 depends=(${ros_depends[@]})
 
-_tag=release/indigo/kobuki_dock_drive/${pkgver}-${_pkgver_patch}
-_dir=kobuki_dock_drive
-source=("${_dir}"::"git+https://github.com/yujinrobot-release/kobuki_core-release.git"#tag=${_tag})
-md5sums=('SKIP')
+# Git version (e.g. for debugging)
+# _tag=release/indigo/kobuki_dock_drive/${pkgver}-${_pkgver_patch}
+# _dir=${pkgname}
+# source=("${_dir}"::"git+https://github.com/yujinrobot-release/kobuki_core-release.git"#tag=${_tag})
+# sha256sums=('SKIP')
+
+# Tarball version (faster download)
+_dir="kobuki_core-release-release-indigo-kobuki_dock_drive-${pkgver}-${_pkgver_patch}"
+source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/yujinrobot-release/kobuki_core-release/archive/release/indigo/kobuki_dock_drive/${pkgver}-${_pkgver_patch}.tar.gz")
+sha256sums=('749cbcfff262903a9b0aad2f2f273e797e1ab89c303c43f9a1bd4338d6312eb6')
 
 build() {
   # Use ROS environment variables
