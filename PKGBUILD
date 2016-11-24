@@ -2,7 +2,7 @@
 
 pkgname=diary
 pkgver=0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Simple CLI diary"
 arch=("x86_64" "i686")
 url="https://github.com/in0rdr/diary"
@@ -17,7 +17,6 @@ build(){
 }
 
 package() {
-  install -dm755 ${pkgname} "${pkgdir}/usr/bin"
   cd "${srcdir}/${pkgname}-${pkgver//_/-}"
   install -dm755 "${pkgdir}/usr/bin"
   install -m755 ${pkgname} "${pkgdir}/usr/bin"
