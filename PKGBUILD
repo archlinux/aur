@@ -4,7 +4,7 @@ pkgdesc="ROS - Bumper/cliff to pointcloud nodelet: Publish bumpers and cliff sen
 url='http://ros.org/wiki/kobuki_bumper2pc'
 
 pkgname='ros-indigo-kobuki-bumper2pc'
-pkgver='0.6.6'
+pkgver='0.6.8'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -16,7 +16,7 @@ ros_makedepends=(ros-indigo-nodelet
   ros-indigo-kobuki-msgs
   ros-indigo-sensor-msgs
   ros-indigo-pluginlib)
-makedepends=('cmake' 'git' 'ros-build-tools'
+makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]})
 
 ros_depends=(ros-indigo-kobuki-msgs
@@ -26,10 +26,16 @@ ros_depends=(ros-indigo-kobuki-msgs
   ros-indigo-sensor-msgs)
 depends=(${ros_depends[@]})
 
-_tag=release/indigo/kobuki_bumper2pc/${pkgver}-${_pkgver_patch}
-_dir=kobuki_bumper2pc
-source=("${_dir}"::"git+https://github.com/yujinrobot-release/kobuki-release.git"#tag=${_tag})
-md5sums=('SKIP')
+# Git version (e.g. for debugging)
+# _tag=release/indigo/kobuki_bumper2pc/${pkgver}-${_pkgver_patch}
+# _dir=${pkgname}
+# source=("${_dir}"::"git+https://github.com/yujinrobot-release/kobuki-release.git"#tag=${_tag})
+# sha256sums=('SKIP')
+
+# Tarball version (faster download)
+_dir="kobuki-release-release-indigo-kobuki_bumper2pc-${pkgver}-${_pkgver_patch}"
+source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/yujinrobot-release/kobuki-release/archive/release/indigo/kobuki_bumper2pc/${pkgver}-${_pkgver_patch}.tar.gz")
+sha256sums=('67863948a4a76f00f05fc95f4e289b5f9abf9922c2843a49efcc08fb5df73b58')
 
 build() {
   # Use ROS environment variables
