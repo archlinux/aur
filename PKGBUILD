@@ -4,7 +4,7 @@ pkgdesc="ROS - turtlebot_navigation."
 url='http://ros.org/wiki/turtlebot_navigation'
 
 pkgname='ros-indigo-turtlebot-navigation'
-pkgver='2.3.3'
+pkgver='2.3.7'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -14,7 +14,7 @@ ros_makedepends=(ros-indigo-catkin
   ros-indigo-tf
   ros-indigo-roscpp
   ros-indigo-sensor-msgs)
-makedepends=('cmake' 'git' 'ros-build-tools'
+makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]})
 
 ros_depends=(ros-indigo-map-server
@@ -28,10 +28,16 @@ ros_depends=(ros-indigo-map-server
   ros-indigo-move-base)
 depends=(${ros_depends[@]})
 
-_tag=release/indigo/turtlebot_navigation/${pkgver}-${_pkgver_patch}
-_dir=turtlebot_navigation
-source=("${_dir}"::"git+https://github.com/turtlebot-release/turtlebot_apps-release.git"#tag=${_tag})
-md5sums=('SKIP')
+# Git version (e.g. for debugging)
+# _tag=release/indigo/turtlebot_navigation/${pkgver}-${_pkgver_patch}
+# _dir=${pkgname}
+# source=("${_dir}"::"git+https://github.com/turtlebot-release/turtlebot_apps-release.git"#tag=${_tag})
+# sha256sums=('SKIP')
+
+# Tarball version (faster download)
+_dir="turtlebot_apps-release-release-indigo-turtlebot_navigation-${pkgver}-${_pkgver_patch}"
+source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/turtlebot-release/turtlebot_apps-release/archive/release/indigo/turtlebot_navigation/${pkgver}-${_pkgver_patch}.tar.gz")
+sha256sums=('0475fa2fa81f5677e5fc5855f35dbb9d534a2096637438008d3e1e6c3f1f04b5')
 
 build() {
   # Use ROS environment variables
