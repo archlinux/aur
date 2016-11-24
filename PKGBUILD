@@ -4,7 +4,7 @@ pkgdesc="ROS - turtlebot_actions provides several basic actionlib actions for th
 url='http://ros.org/wiki/turtlebot_actions'
 
 pkgname='ros-indigo-turtlebot-actions'
-pkgver='2.3.3'
+pkgver='2.3.7'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -21,7 +21,7 @@ ros_makedepends=(ros-indigo-image-geometry
   ros-indigo-cmake-modules
   ros-indigo-tf
   ros-indigo-image-transport)
-makedepends=('cmake' 'git' 'ros-build-tools'
+makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]}
   eigen3)
 
@@ -38,10 +38,16 @@ ros_depends=(ros-indigo-image-geometry
 depends=(${ros_depends[@]}
   eigen3)
 
-_tag=release/indigo/turtlebot_actions/${pkgver}-${_pkgver_patch}
-_dir=turtlebot_actions
-source=("${_dir}"::"git+https://github.com/turtlebot-release/turtlebot_apps-release.git"#tag=${_tag})
-md5sums=('SKIP')
+# Git version (e.g. for debugging)
+# _tag=release/indigo/turtlebot_actions/${pkgver}-${_pkgver_patch}
+# _dir=${pkgname}
+# source=("${_dir}"::"git+https://github.com/turtlebot-release/turtlebot_apps-release.git"#tag=${_tag})
+# sha256sums=('SKIP')
+
+# Tarball version (faster download)
+_dir="turtlebot_apps-release-release-indigo-turtlebot_actions-${pkgver}-${_pkgver_patch}"
+source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/turtlebot-release/turtlebot_apps-release/archive/release/indigo/turtlebot_actions/${pkgver}-${_pkgver_patch}.tar.gz")
+sha256sums=('63efc4dfcd9d545aaa8a8d76f3311235c408e47400ce473473207cc8fa686880')
 
 build() {
   # Use ROS environment variables
