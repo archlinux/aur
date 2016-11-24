@@ -3,7 +3,7 @@
 pkgname=eclipse-jubula
 pkgver=4.0.0
 _eclipseName=neon
-_buildNumber=5
+_buildNumber=6
 pkgrel=2
 pkgdesc='Jubula plugins for Eclipse IDE to create functional GUI tests'
 arch=('any')
@@ -13,7 +13,7 @@ depends=('eclipse>=4.3.0', 'eclipse-mylyn')
 options=('!strip')
 source=(
 "https://hudson.eclipse.org/jubula/job/jubula-${_eclipseName}/${_buildNumber}/artifact/org.eclipse.jubula.core/org.eclipse.jubula.repo/target/org.eclipse.jubula.repo-${pkgver}-SNAPSHOT.zip")
-sha256sums=('67f7a5264b7ab3e469f3a7924e63eb27e21e1a8b867c8d4655826e5f91a4846a')
+sha256sums=('8daadcfc3ca1c1963881edf694101dbd793e760f5ab4d3165d4902acddc6cc6c')
 
 package() {
   # remove features and plug-ins contain sources
