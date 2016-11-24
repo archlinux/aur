@@ -4,7 +4,7 @@
 
 _ver=1.17
 _pkgbase=mate-settings-daemon
-pkgname="${_pkgbase}"
+pkgname="${_pkgbase}-dev"
 pkgver=${_ver}.0
 pkgrel=1
 pkgdesc="The MATE Settings daemon"
@@ -13,9 +13,9 @@ arch=('i686' 'x86_64')
 provides=("${_pkgbase}" "${_pkgbase}-gtk3")
 license=('GPL')
 depends=('dbus-glib' 'dconf' 'fontconfig' 'glib2' 'gtk3' 'gtk-update-icon-cache'
-         'libcanberra-pulse' 'libmatekbd>=1.17' 'libmatemixer>=1.17' 'libnotify'
-         'libxt' 'mate-desktop>=1.17' 'nss' 'polkit')
-makedepends=('mate-common>=1.17' 'gtk3' 'libmatekbd>=1.17' 'mate-desktop>=1.17')
+         'libcanberra-pulse' 'libmatekbd-dev' 'libmatemixer-dev' 'libnotify'
+         'libxt' 'mate-desktop-dev' 'nss' 'polkit')
+makedepends=('mate-common-dev' 'gtk3' 'libmatekbd-dev' 'mate-desktop-dev')
 groups=('mate')
 replaces=("${_pkgbase}-gstreamer" "${_pkgbase}-pulseaudio")
 conflicts=("${_pkgbase}" "${_pkgbase}-gtk3" "${_pkgbase}-gstreamer" "${_pkgbase}-pulseaudio")

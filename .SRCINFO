@@ -1,4 +1,4 @@
-pkgbase = mate-settings-daemon
+pkgbase = mate-settings-daemon-dev
 	pkgdesc = The MATE Settings daemon
 	pkgver = 1.17.0
 	pkgrel = 1
@@ -7,10 +7,10 @@ pkgbase = mate-settings-daemon
 	arch = x86_64
 	groups = mate
 	license = GPL
-	makedepends = mate-common>=1.17
+	makedepends = mate-common-dev
 	makedepends = gtk3
-	makedepends = libmatekbd>=1.17
-	makedepends = mate-desktop>=1.17
+	makedepends = libmatekbd-dev
+	makedepends = mate-desktop-dev
 	depends = dbus-glib
 	depends = dconf
 	depends = fontconfig
@@ -18,11 +18,11 @@ pkgbase = mate-settings-daemon
 	depends = gtk3
 	depends = gtk-update-icon-cache
 	depends = libcanberra-pulse
-	depends = libmatekbd>=1.17
-	depends = libmatemixer>=1.17
+	depends = libmatekbd-dev
+	depends = libmatemixer-dev
 	depends = libnotify
 	depends = libxt
-	depends = mate-desktop>=1.17
+	depends = mate-desktop-dev
 	depends = nss
 	depends = polkit
 	provides = mate-settings-daemon
@@ -36,6 +36,6 @@ pkgbase = mate-settings-daemon
 	source = http://pub.mate-desktop.org/releases/1.17/mate-settings-daemon-1.17.0.tar.xz
 	sha1sums = 24e8ff57d4a10a217a26d47b634412c38cba09db
 
-pkgname = mate-settings-daemon
+pkgname = mate-settings-daemon-dev
 	pkgdesc = The MATE Settings daemon (GTK3 version)
 
