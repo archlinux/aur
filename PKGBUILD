@@ -5,16 +5,16 @@ url='http://www.ros.org/wiki/rocon_std_msgs'
 
 pkgname='ros-indigo-rocon-std-msgs'
 pkgver='0.7.12'
-_pkgver_patch=0
+_pkgver_patch=1
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(ros-indigo-message-generation
   ros-indigo-catkin
   ros-indigo-rocon-service-pair-msgs
   ros-indigo-std-msgs)
-makedepends=('cmake' 'git' 'ros-build-tools'
+makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]})
 
 ros_depends=(ros-indigo-std-msgs
@@ -22,10 +22,16 @@ ros_depends=(ros-indigo-std-msgs
   ros-indigo-message-runtime)
 depends=(${ros_depends[@]})
 
-_tag=release/indigo/rocon_std_msgs/${pkgver}-${_pkgver_patch}
-_dir=rocon_std_msgs
-source=("${_dir}"::"git+https://github.com/yujinrobot-release/rocon_msgs-release.git"#tag=${_tag})
-md5sums=('SKIP')
+# Git version (e.g. for debugging)
+# _tag=release/indigo/rocon_std_msgs/${pkgver}-${_pkgver_patch}
+# _dir=${pkgname}
+# source=("${_dir}"::"git+https://github.com/yujinrobot-release/rocon_msgs-release.git"#tag=${_tag})
+# sha256sums=('SKIP')
+
+# Tarball version (faster download)
+_dir="rocon_msgs-release-release-indigo-rocon_std_msgs-${pkgver}-${_pkgver_patch}"
+source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/yujinrobot-release/rocon_msgs-release/archive/release/indigo/rocon_std_msgs/${pkgver}-${_pkgver_patch}.tar.gz")
+sha256sums=('040829f84d40d94b11d222bbe37a888e020ba1a0a8210bbc7f213b27643eda48')
 
 build() {
   # Use ROS environment variables
