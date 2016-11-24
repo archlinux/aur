@@ -1,6 +1,6 @@
 pkgbase = libfilteraudio-git
 	pkgdesc = An easy to use audio filtering library made from webrtc code
-	pkgver = r92.612c5a1
+	pkgver = 0.0.1.r0.gada2f4f
 	pkgrel = 1
 	url = https://github.com/irungentoo/filter_audio
 	arch = i686

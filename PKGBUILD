@@ -1,9 +1,10 @@
-# Maintainer: Håvard Pettersson <mail@haavard.me>
+# Maintainer: Jiachen Yang <farseerfc@gmail.com>
+# AUR Maintainer: Håvard Pettersson <mail@haavard.me>
 # Contributor: Ivan Shapovalov <intelfx100 at gmail dot com>
 
 _pkgname=libfilteraudio
 pkgname=libfilteraudio-git
-pkgver=r92.612c5a1
+pkgver=0.0.1.r0.gada2f4f
 pkgrel=1
 pkgdesc="An easy to use audio filtering library made from webrtc code"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
@@ -22,7 +23,10 @@ sha512sums=('SKIP'
 
 pkgver() {
     cd ${_pkgname}
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    ( set -o pipefail
+      git describe --long --tags 2>/dev/null | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g' ||
+          printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    )
 }
 
 build() {
