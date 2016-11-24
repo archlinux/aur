@@ -5,7 +5,7 @@
 _date=2016-11-23
 pkgname=rust-nightly-bin
 pkgver=1.15.0_2016.11.22
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 pkgdesc='Fast, concurrent, safe. The Rust programming language and its package manager, Cargo.'
 url='https://www.rust-lang.org/'
@@ -47,6 +47,9 @@ package() {
 
     # Remove cruft.
     rm "${pkgdir}/usr/lib/rustlib/"{manifest-*,install.log,uninstall.sh,components,rust-installer-version}
-    # Remove duplicate .so libraries (only need rlibs in rustlib).
-    find "${pkgdir}/usr/lib/rustlib/" -name "*.so" -delete
+
+    # Remove duplicate .so libraries and symlink to them.
+    # https://github.com/rust-lang/rust/issues/37971
+    find "${pkgdir}/usr/lib/rustlib/" -name "*.so" -exec ln -rfs -t "${pkgdir}/usr/lib/" {} +
+
 }
