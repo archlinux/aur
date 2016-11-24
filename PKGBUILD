@@ -4,7 +4,7 @@
 
 _ver=1.17
 _pkgbase=mate-panel
-pkgname="${_pkgbase}-dev"
+pkgname="${_pkgbase}"
 pkgver=${_ver}.0
 pkgrel=1
 pkgdesc="The MATE Panel"
@@ -14,10 +14,10 @@ provides=("${_pkgbase}" "${_pkgbase}-gtk3")
 conflicts=("${_pkgbase}" "${_pkgbase}-gtk3")
 license=('GPL')
 depends=('dbus-glib' 'dconf' 'glib2' 'gtk3' 'gtk-update-icon-cache' 'libwnck3'
-         'libcanberra' 'libice' 'libmateweather-dev' 'librsvg' 'libsm' 'libsoup'
-         'libxau' 'mate-menus-dev' 'mate-desktop-dev')
-makedepends=('gobject-introspection' 'mate-common-dev' 'yelp-tools' 'gtk3'
-             'libmateweather-dev' 'libwnck3' 'mate-desktop-dev')
+         'libcanberra' 'libice' 'libmateweather>=1.17' 'librsvg' 'libsm' 'libsoup'
+         'libxau' 'mate-menus>=1.17' 'mate-desktop>=1.17')
+makedepends=('gobject-introspection' 'mate-common>=1.17' 'yelp-tools' 'gtk3'
+             'libmateweather>=1.17' 'libwnck3' 'mate-desktop>=1.17')
 optdepends=('yelp: for reading MATE help documents')
 source=("http://pub.mate-desktop.org/releases/${_ver}/${_pkgbase}-${pkgver}.tar.xz")
 groups=('mate')
