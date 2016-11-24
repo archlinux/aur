@@ -14,7 +14,7 @@ source=(
 )
 url="https://github.com/docker/compose"
 license=("Apache")
-sha256sums=('3166bb74bc648e68c3154bc704fddf6bccf59f03a0c90fc48aefac034535e4ae'
+sha256sums=('eeca988428d29534fecdff2768fa2e8c293b812b1c77da8ab5daf7f441c92e5b'
             '5fdbf321e3a66c4de6d2c0e61a7504247aaf3304d6d41c557ce9131d20b0bd80')
 
 package() {
