@@ -1,4 +1,4 @@
-pkgbase = pycryptodome
+pkgbase = python-pycryptodome
 	pkgver = 3.4.3
 	pkgrel = 1
 	url = http://www.pycryptodome.org/
