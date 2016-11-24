@@ -4,7 +4,7 @@ pkgdesc="ROS - Automatic docking for Kobuki: Users owning a docking station for 
 url='http://ros.org/wiki/kobuki_auto_docking'
 
 pkgname='ros-indigo-kobuki-auto-docking'
-pkgver='0.6.6'
+pkgver='0.6.8'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -27,7 +27,7 @@ ros_makedepends=(ros-indigo-nodelet
   ros-indigo-ecl-linear-algebra
   ros-indigo-message-filters
   ros-indigo-pluginlib)
-makedepends=('cmake' 'git' 'ros-build-tools'
+makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]})
 
 ros_depends=(ros-indigo-yocs-cmd-vel-mux
@@ -49,10 +49,16 @@ ros_depends=(ros-indigo-yocs-cmd-vel-mux
   ros-indigo-pluginlib)
 depends=(${ros_depends[@]})
 
-_tag=release/indigo/kobuki_auto_docking/${pkgver}-${_pkgver_patch}
-_dir=kobuki_auto_docking
-source=("${_dir}"::"git+https://github.com/yujinrobot-release/kobuki-release.git"#tag=${_tag})
-md5sums=('SKIP')
+# Git version (e.g. for debugging)
+# _tag=release/indigo/kobuki_auto_docking/${pkgver}-${_pkgver_patch}
+# _dir=${pkgname}
+# source=("${_dir}"::"git+https://github.com/yujinrobot-release/kobuki-release.git"#tag=${_tag})
+# sha256sums=('SKIP')
+
+# Tarball version (faster download)
+_dir="kobuki-release-release-indigo-kobuki_auto_docking-${pkgver}-${_pkgver_patch}"
+source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/yujinrobot-release/kobuki-release/archive/release/indigo/kobuki_auto_docking/${pkgver}-${_pkgver_patch}.tar.gz")
+sha256sums=('8d65e653ef6c4ae2b9cc52711f4374490b649b3e30d9d05e434d69924d893d61')
 
 build() {
   # Use ROS environment variables
