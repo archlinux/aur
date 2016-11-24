@@ -4,7 +4,7 @@ pkgdesc="ROS - Provides teleoperation using joysticks or keyboard."
 url='http://ros.org/wiki/turtlebot_teleop'
 
 pkgname='ros-indigo-turtlebot-teleop'
-pkgver='2.3.11'
+pkgver='2.3.13'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -14,7 +14,7 @@ ros_makedepends=(ros-indigo-joy
   ros-indigo-catkin
   ros-indigo-roscpp
   ros-indigo-geometry-msgs)
-makedepends=('cmake' 'git' 'ros-build-tools'
+makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]})
 
 ros_depends=(ros-indigo-roscpp
@@ -25,10 +25,16 @@ ros_depends=(ros-indigo-roscpp
   ros-indigo-joy)
 depends=(${ros_depends[@]})
 
-_tag=release/indigo/turtlebot_teleop/${pkgver}-${_pkgver_patch}
-_dir=turtlebot_teleop
-source=("${_dir}"::"git+https://github.com/turtlebot-release/turtlebot-release.git"#tag=${_tag})
-md5sums=('SKIP')
+# Git version (e.g. for debugging)
+# _tag=release/indigo/turtlebot_teleop/${pkgver}-${_pkgver_patch}
+# _dir=${pkgname}
+# source=("${_dir}"::"git+https://github.com/turtlebot-release/turtlebot-release.git"#tag=${_tag})
+# sha256sums=('SKIP')
+
+# Tarball version (faster download)
+_dir="turtlebot-release-release-indigo-turtlebot_teleop-${pkgver}-${_pkgver_patch}"
+source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/turtlebot-release/turtlebot-release/archive/release/indigo/turtlebot_teleop/${pkgver}-${_pkgver_patch}.tar.gz")
+sha256sums=('efcfbb9cf2ecd36d6cba7bd88ca77918958814d0e5035fbcc798fafa35fa5eda')
 
 build() {
   # Use ROS environment variables
