@@ -4,7 +4,7 @@ pkgdesc="ROS - This package provides a recovery behavior for the navigation stac
 url='http://wiki.ros.org/clear_costmap_recovery'
 
 pkgname='ros-indigo-clear-costmap-recovery'
-pkgver='1.12.7'
+pkgver='1.12.13'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -38,7 +38,7 @@ depends=(${ros_depends[@]}
 # Tarball version (faster download)
 _dir="navigation-release-release-indigo-clear_costmap_recovery-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/navigation-release/archive/release/indigo/clear_costmap_recovery/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('a7c99b96eeca8c68167f016ab9457a8e47de572e2fa76002ce7d7f9058cd6015')
+sha256sums=('0e9634273acc2543009b6cb9834de6ee4dcf5a7fde1713e031b65cfde3aa0a59')
 
 build() {
   # Use ROS environment variables
