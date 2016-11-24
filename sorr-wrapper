@@ -5,34 +5,62 @@
 ## Where to store the session. This is an environment variable.
 SORR_SESSION="${SORR_SESSION:-$HOME/.sorr}"
 
-SORR_FOLDER="$(dirname "$(realpath "$0")")"
+sorr_folder="$(dirname "$(realpath "$0")")"
 
-prepare_folder() {
+## Make folder if non-existent.
+make_folder() {
 	[ ! -d "$SORR_SESSION/$1" ] && mkdir -p "$SORR_SESSION/$1"
 }
-prepare_symlink() {
-	## If symlink does not exist or is dangling.
+
+## Make symlink if non-existent or dangling.
+make_symlink() {
 	if [ ! -h "$SORR_SESSION/$1" ] || [ ! -e "$SORR_SESSION/$1" ]; then
-		ln -sf "$SORR_FOLDER/$1" "$SORR_SESSION/$1"
+		ln -sf "$sorr_folder/$1" "$SORR_SESSION/$1"
 	fi
 }
 
-prepare_folder
-[ ! -w "$SORR_SESSION" ] && echo "SORR_SESSION=$SORR_SESSION is not writable." >&2 && exit
+make_folder
+[ ! -w "$SORR_SESSION" ] && echo >&2 "SORR_SESSION=$SORR_SESSION is not writable." && exit 1
 
-prepare_symlink bgdc
-prepare_symlink bgdi
-prepare_symlink data
-prepare_symlink palettes
-prepare_symlink SorMaker.dat
-prepare_symlink SorR.dat
+for link in bgdc bgdi data palettes SorMaker.dat SorR.dat; do
+	make_symlink "$link"
+done
 
-prepare_folder mod
-prepare_folder mod/games
+make_folder mod
+make_folder mod/games
 
-prepare_symlink mod/music
-prepare_symlink mod/namesong.txt
-prepare_symlink mod/system.txt
+for link in music namesong.txt system.txt; do
+	make_symlink mod/"$link"
+done
+
+# Rename mod files to lowercase. This is necessary for mods to work.
+#
+# The -name check is not mandatory, but greatly improves the average
+# performance.
+#
+# To remain POSIX we need this tortuous find call.
+# The mini-script is followed by _ and {}.
+# When 'sh -c' executes a command, the next argument after the command is used
+# as $0 (the script's "name" in the process listing), and subsequent arguments
+# become the positional parameters ($1, $2, etc.).
+renamelower=$(cat <<'EOF'
+echo >&2 "Renaming mod files/folders to lowercase."
+for f; do
+	filename=${f##*/}
+
+	case "$f" in
+	*/*) dirname="${f%/*}" ;;
+	*) dirname="." ;;
+	esac
+
+	nf="$(echo "$filename" | awk '{print tolower($0)}')"
+	newname="${dirname}/${nf}"
+	[ -e "$newname" ] && echo >&2 "error: '$newname' exists" && continue
+	mv -nv "$f" "$newname"
+done
+EOF
+)
+find "$SORR_SESSION/mod/games" -depth -name '*[[:upper:]]*' -exec sh -c "$renamelower" _ {} +
 
 cd "$SORR_SESSION"
 LD_LIBRARY_PATH=./data ./bgdi ./SorR.dat

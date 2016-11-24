@@ -15,17 +15,9 @@ zlib
 Mods
 ====
 
-Mods can be installed in the 'mod/games' of the SORR_SESSION folder.  All files
-and folders need to be lower case. Since a lot of mods are distributed with
-various case rules, two scripts are provided to ease the renaming process:
-
-* renamelower FILES
-
-Ex: renamelower mod/games/mymod/*
-
-* renamelowerrec FOLDERS
-
-Ex: renamelowerrec mod/games
+Mods can be installed in the 'mod/games' of the SORR_SESSION folder. All files
+and folders need to be lower case. The launcher will make sure to rename them on
+startup.
 
 Links
 =====

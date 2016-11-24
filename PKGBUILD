@@ -2,7 +2,7 @@
 
 pkgname=streetsofrageremake
 pkgver=5.1
-pkgrel=3
+pkgrel=4
 pkgdesc="A remake of the classic Streets of Rage 1, 2 and 3 by Sega"
 arch=("i686" "x86_64")
 url="http://sorr.forumotion.net/t148-sor-v5-for-linux-debian-download-links"
@@ -17,15 +17,11 @@ install="sorr.install"
 source=("http://www.soronline.net/downloads/sorr_5.0.orig.tar.gz"
 	"http://www.soronline.net/downloads/SORRv051_REV030.zip"
 	"Readme.linux"
-	"sorr-wrapper"
-	"renamelower"
-	"renamelowerrec")
-sha1sums=("5c719296ab1cbc222897fba00453a18e495ee8c4"
-	"35323ee18ef7f010934501f3eae038710959399e"
-	"37e4ce2bfbf9b593d0c9a62c3dfada1b3190a123"
-	"f53dc4b099a5c70020596327e3a572ad0812e34a"
-	"545d34c1885b172afebad77349493025071a87ed"
-	"968775da5d7d296040b53efa4e822270efa460c6")
+	"sorr-wrapper")
+sha1sums=('5c719296ab1cbc222897fba00453a18e495ee8c4'
+          '35323ee18ef7f010934501f3eae038710959399e'
+          'e856777159b428b5e60b5ef78a8bbb8dd97e70fa'
+          '520bc41fa8e9f60304266b8e83d8b6fcd1878963')
 
 DLAGENTS=("http::/usr/bin/curl -fLC - --retry 3 --retry-delay 3 -o %o %u --referer http://www.soronline.net")
 
@@ -73,7 +69,4 @@ package() {
 
 	## Extra files.
 	install -Dm644 "Readme.linux" "$pkgdir/opt/sorr/Readme.linux"
-
-	## Utils to make mods compatible.
-	install -m755 renamelower renamelowerrec "$pkgdir/usr/bin/"
 }
