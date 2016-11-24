@@ -4,7 +4,7 @@ pkgdesc="ROS - map_server provides the map_server ROS Node, which offers map dat
 url='http://wiki.ros.org/map_server'
 
 pkgname='ros-indigo-map-server'
-pkgver='1.12.7'
+pkgver='1.12.13'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -37,7 +37,7 @@ depends=(${ros_depends[@]}
 # Tarball version (faster download)
 _dir="navigation-release-release-indigo-map_server-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/navigation-release/archive/release/indigo/map_server/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('71e2c9a67f14b5687cb2531f368f04fc08b6efcfbf4f120f9be72dbd58fc7d1f')
+sha256sums=('c6721f8b44461287ae1b1e703969dced24b057bc6457c25cc9ac284b3c451c7a')
 
 build() {
   # Use ROS environment variables
