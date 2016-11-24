@@ -4,7 +4,7 @@ pkgdesc="ROS - These tools inspect and describe your system with macros, types a
 url='http://wiki.ros.org/ecl_config'
 
 pkgname='ros-indigo-ecl-config'
-pkgver='0.61.4'
+pkgver='0.61.6'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -13,7 +13,7 @@ license=('BSD')
 ros_makedepends=(ros-indigo-ecl-license
   ros-indigo-catkin
   ros-indigo-ecl-build)
-makedepends=('cmake' 'git' 'ros-build-tools'
+makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]})
 
 ros_depends=(ros-indigo-ecl-license
@@ -22,14 +22,14 @@ depends=(${ros_depends[@]})
 
 # Git version (e.g. for debugging)
 # _tag=release/indigo/ecl_config/${pkgver}-${_pkgver_patch}
-# _dir=ecl_config
+# _dir=${pkgname}
 # source=("${_dir}"::"git+https://github.com/yujinrobot-release/ecl_lite-release.git"#tag=${_tag})
 # sha256sums=('SKIP')
 
 # Tarball version (faster download)
 _dir="ecl_lite-release-release-indigo-ecl_config-${pkgver}-${_pkgver_patch}"
-source=("https://github.com/yujinrobot-release/ecl_lite-release/archive/release/indigo/ecl_config/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('0b5b4ed2b351ddd086a1e2c9ca534b64482e94a5257aa519cefec50fead3b759')
+source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/yujinrobot-release/ecl_lite-release/archive/release/indigo/ecl_config/${pkgver}-${_pkgver_patch}.tar.gz")
+sha256sums=('9bfde34eae9c02f9de7331841ad10be82bd4a2ba803f83c2d12f18702f875f2a')
 
 build() {
   # Use ROS environment variables
