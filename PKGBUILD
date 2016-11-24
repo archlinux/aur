@@ -1,17 +1,17 @@
 # Maintainer: Jan Oliver Oelerich <janoliver@oelerich.org>
 pkgname=ovito-git
-pkgver=2.7.1.r1.ga5f0a09
+pkgver=a92b526
 pkgrel=1
 pkgdesc="Scientific visualization and analysis software for atomistic simulation data"
 arch=('i686' 'x86_64')
 url="http://www.ovito.org/"
 license=('GPLv3')
 provides=('ovito')
-depends=('python' 'zlib' 'tachyon' 'qscintilla-qt5' 'cgal')
+depends=('python' 'zlib' 'tachyon' 'qscintilla-qt5' 'cgal' 'povray')
 makedepends=('git' 'cmake' 'gcc' 'qt5-base' 'qt5-script' 'qt5-svg' 'qt5-imageformats')
 conflicts=('ovito')
 md5sums=('SKIP')
-source=('ovito'::'git+http://git.code.sf.net/p/ovito/git')
+source=('ovito'::'git+https://gitlab.com/stuko/ovito.git')
 _gitname="ovito"
 
 pkgver() {
