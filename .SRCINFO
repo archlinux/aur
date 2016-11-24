@@ -1,0 +1,25 @@
+pkgbase = pycryptodome
+	pkgver = 3.4.3
+	pkgrel = 1
+	url = http://www.pycryptodome.org/
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = gmp
+	makedepends = python-setuptools
+	makedepends = python2-setuptools
+	source = pycryptodome-3.4.3.tar.gz::https://github.com/Legrandin/pycryptodome/archive/v3.4.3.tar.gz
+	sha256sums = e10b7725deb6bcfc9500e5467ee68f68192bc4cbf5e89428eed73c3611fd6b24
+
+pkgname = python-pycryptodome
+	pkgdesc = Collection of cryptographic algorithms and protocols, implemented for use from Python 3.
+	depends = python
+	depends = gmp
+	conflicts = python-crypto
+
+pkgname = python2-pycryptodome
+	pkgdesc = Collection of cryptographic algorithms and protocols, implemented for use from Python 2.
+	depends = python2
+	depends = gmp
+	conflicts = python2-crypto
+
