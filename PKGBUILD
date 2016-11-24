@@ -1,7 +1,7 @@
 # Maintainer: Maxwell Anselm <silverhammermba+aur@gmail.com>
 
 pkgname=gcs
-pkgver=4.5.1
+pkgver=4.6.0
 pkgrel=1
 pkgdesc="WYSIWYG editor for building character sheets for GURPS 4th Edition"
 arch=('any')
@@ -15,7 +15,7 @@ source=(
 	'gcs.xml'
 )
 sha256sums=(
-	'8a7c4fabc6ae7ec53a9b5981f6a29489c42ce5ef94733fe92460421ae4a1efe8'
+	'ec33c9b725cf9ca08fddd8a95a6ac45bbc1b80b07897cc9e8a66e7f01ca03bac'
 	'25042c6759fd814e23bf9139e6f6c5f93f67eec826f55825db052f4ff84ce241'
 	'5b226260250972c1244f11be73c98bf43d3f30f428843c823c5a8a0ba01494ba'
 	'cddee2d3b844dddd3a346a7c15c26f76019c875cccc03b0be34489c4dd71a320'
