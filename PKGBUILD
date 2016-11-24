@@ -108,7 +108,7 @@ prepare() {
   if [ -n "$_localmodcfg" ]; then
    msg "If you have modprobed-db installed, running it in recall mode now"
      if [ -e /usr/bin/modprobed-db ]; then
-        [[ ! -x /usr/bin/sudo ]] && echo "Cannot call modprobe with sudo. Install$
+        [[ ! -x /usr/bin/sudo ]] && echo "Cannot call modprobe with sudo. Install via pacman -S sudo and configure to work with this user." && exit 1
         sudo /usr/bin/modprobed-db recall
      fi
    msg "Running Steven Rostedt's make localmodconfig now"
