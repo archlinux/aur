@@ -4,7 +4,7 @@ pkgdesc="ROS - ROS nodelet for Kobuki: ROS wrapper for the Kobuki driver."
 url='http://ros.org/wiki/kobuki_node'
 
 pkgname='ros-indigo-kobuki-node'
-pkgver='0.6.6'
+pkgver='0.6.8'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -32,7 +32,7 @@ ros_makedepends=(ros-indigo-geometry-msgs
   ros-indigo-nodelet
   ros-indigo-catkin
   ros-indigo-kobuki-msgs)
-makedepends=('cmake' 'git' 'ros-build-tools'
+makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]})
 
 ros_depends=(ros-indigo-capabilities
@@ -61,10 +61,16 @@ ros_depends=(ros-indigo-capabilities
   ros-indigo-kobuki-msgs)
 depends=(${ros_depends[@]})
 
-_tag=release/indigo/kobuki_node/${pkgver}-${_pkgver_patch}
-_dir=kobuki_node
-source=("${_dir}"::"git+https://github.com/yujinrobot-release/kobuki-release.git"#tag=${_tag})
-md5sums=('SKIP')
+# Git version (e.g. for debugging)
+# _tag=release/indigo/kobuki_node/${pkgver}-${_pkgver_patch}
+# _dir=${pkgname}
+# source=("${_dir}"::"git+https://github.com/yujinrobot-release/kobuki-release.git"#tag=${_tag})
+# sha256sums=('SKIP')
+
+# Tarball version (faster download)
+_dir="kobuki-release-release-indigo-kobuki_node-${pkgver}-${_pkgver_patch}"
+source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/yujinrobot-release/kobuki-release/archive/release/indigo/kobuki_node/${pkgver}-${_pkgver_patch}.tar.gz")
+sha256sums=('f7cdbf539798b23c8ff3c57d08c9825b8cf07ac76d16316755dff8d62ede037a')
 
 build() {
   # Use ROS environment variables
