@@ -4,7 +4,7 @@ pkgdesc="ROS - The formatters here simply format various input types to a specif
 url='http://wiki.ros.org/ecl_formatters'
 
 pkgname='ros-indigo-ecl-formatters'
-pkgver='0.61.8'
+pkgver='0.61.15'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -15,7 +15,7 @@ ros_makedepends=(ros-indigo-ecl-license
   ros-indigo-ecl-exceptions
   ros-indigo-ecl-config
   ros-indigo-catkin)
-makedepends=('cmake' 'git' 'ros-build-tools'
+makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]})
 
 ros_depends=(ros-indigo-ecl-license
@@ -26,14 +26,14 @@ depends=(${ros_depends[@]})
 
 # Git version (e.g. for debugging)
 # _tag=release/indigo/ecl_formatters/${pkgver}-${_pkgver_patch}
-# _dir=ecl_formatters
+# _dir=${pkgname}
 # source=("${_dir}"::"git+https://github.com/yujinrobot-release/ecl_core-release.git"#tag=${_tag})
 # sha256sums=('SKIP')
 
 # Tarball version (faster download)
 _dir="ecl_core-release-release-indigo-ecl_formatters-${pkgver}-${_pkgver_patch}"
-source=("https://github.com/yujinrobot-release/ecl_core-release/archive/release/indigo/ecl_formatters/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('c1980f9d511173f8507a73e2e62c1f86a09f70c4b82fe103104bbf59fd704bc8')
+source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/yujinrobot-release/ecl_core-release/archive/release/indigo/ecl_formatters/${pkgver}-${_pkgver_patch}.tar.gz")
+sha256sums=('db2ad8224ca7c652546ebc258112fcf6fda04c449cbf5725ac5042f241705885')
 
 build() {
   # Use ROS environment variables
