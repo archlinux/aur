@@ -5,7 +5,7 @@
 #
 # Hinweis: Es ist notwendig den PGP Schlüssel von "Mozilla Software Releases <release@mozilla.com>"
 #   zu importieren. Mehr Information unter: https://wiki.archlinux.org/index.php/GnuPG#Import_a_public_key
-#   $ gpg --recv-keys 14F26682D0916CDD81E37B6D61B7B526D98F0353
+#   $ gpg --keyserver pgp.mit.edu --recv-keys 14F26682D0916CDD81E37B6D61B7B526D98F0353
 
 _name=firefox
 _channel=developer
