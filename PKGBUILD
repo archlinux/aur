@@ -4,7 +4,7 @@ pkgdesc="ROS - Introduces a compile time concept checking mechanism that can be 
 url='http://wiki.ros.org/ecl_concepts'
 
 pkgname='ros-indigo-ecl-concepts'
-pkgver='0.61.8'
+pkgver='0.61.15'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -14,7 +14,7 @@ ros_makedepends=(ros-indigo-ecl-license
   ros-indigo-catkin
   ros-indigo-ecl-config
   ros-indigo-ecl-type-traits)
-makedepends=('cmake' 'git' 'ros-build-tools'
+makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]})
 
 ros_depends=(ros-indigo-ecl-license
@@ -24,14 +24,14 @@ depends=(${ros_depends[@]})
 
 # Git version (e.g. for debugging)
 # _tag=release/indigo/ecl_concepts/${pkgver}-${_pkgver_patch}
-# _dir=ecl_concepts
+# _dir=${pkgname}
 # source=("${_dir}"::"git+https://github.com/yujinrobot-release/ecl_core-release.git"#tag=${_tag})
 # sha256sums=('SKIP')
 
 # Tarball version (faster download)
 _dir="ecl_core-release-release-indigo-ecl_concepts-${pkgver}-${_pkgver_patch}"
-source=("https://github.com/yujinrobot-release/ecl_core-release/archive/release/indigo/ecl_concepts/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('c0075e0a9185d019887da041470b0854b9b69371ccb8564e0241f36f422dabc9')
+source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/yujinrobot-release/ecl_core-release/archive/release/indigo/ecl_concepts/${pkgver}-${_pkgver_patch}.tar.gz")
+sha256sums=('341b6de62d07c8a3375b2b5ce49ac711f16f6b48029364b82323ab9860969c43')
 
 build() {
   # Use ROS environment variables
