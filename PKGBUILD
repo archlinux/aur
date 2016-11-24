@@ -2,10 +2,10 @@
 # Contributor:  eadrom <eadrom@archlinux.info>
 # Contributor:  Martin Wimpress <code@flexion.org>
 
-_ver=1.15
+_ver=1.17
 _pkgbase=mate-user-share
 pkgname="${_pkgbase}-dev"
-pkgver=${_ver}.1
+pkgver=${_ver}.0
 pkgrel=1
 pkgdesc="User level public file sharing via WebDAV for MATE."
 url="http://mate-desktop.org"
@@ -19,7 +19,7 @@ makedepends=('caja-dev' 'libcanberra' 'libnotify' 'mate-common-dev' 'yelp-tools'
 optdepends=('yelp: for reading MATE help documents')
 groups=('mate-extra')
 source=("http://pub.mate-desktop.org/releases/${_ver}/${_pkgbase}-${pkgver}.tar.xz")
-sha1sums=('33e47919a8d40e74716f4287f70e4a5a40b315c8')
+sha1sums=('65daa62e5387cde1eee721784e6fa1ea7799c599')
 
 prepare() {
     cd "${srcdir}"

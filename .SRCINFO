@@ -1,6 +1,6 @@
 pkgbase = mate-user-share-dev
 	pkgdesc = User level public file sharing via WebDAV for MATE.
-	pkgver = 1.15.1
+	pkgver = 1.17.0
 	pkgrel = 1
 	url = http://mate-desktop.org
 	arch = i686
@@ -25,8 +25,8 @@ pkgbase = mate-user-share-dev
 	provides = mate-user-share-gtk3
 	conflicts = mate-user-share
 	conflicts = mate-user-share-gtk3
-	source = http://pub.mate-desktop.org/releases/1.15/mate-user-share-1.15.1.tar.xz
-	sha1sums = 33e47919a8d40e74716f4287f70e4a5a40b315c8
+	source = http://pub.mate-desktop.org/releases/1.17/mate-user-share-1.17.0.tar.xz
+	sha1sums = 65daa62e5387cde1eee721784e6fa1ea7799c599
 
 pkgname = mate-user-share-dev
 	pkgdesc = User level public file sharing via WebDAV for MATE. (GTK3 version)
