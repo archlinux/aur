@@ -1,6 +1,6 @@
 pkgname=caddy
 pkgver=0.9.3
-pkgrel=4
+pkgrel=5
 pkgdesc='A configurable, general-purpose HTTP/2 web server for any platform'
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 url='https://caddyserver.com'
@@ -10,13 +10,13 @@ makedepends=('go>=1.6' 'git')
 conflicts=('caddy-all-features' 'caddy-git' 'caddy-full-bin')
 
 gopkgname='github.com/mholt/caddy'
-source=("git+https://github.com/mholt/caddy#tag=v$pkgver")
+source=("git+https://github.com/mholt/caddy")
 md5sums=('SKIP')
 
 prepare() {
     cd $srcdir
-    rm -rf build
     export GOPATH="$srcdir/build"
+    rm -rf "$GOPATH/src/$gopkgname"
     mkdir -p "$GOPATH/src/$gopkgname"
     mv -Tv "$srcdir/caddy" "$GOPATH/src/$gopkgname"
     echo 'download dependencies'
