@@ -1,6 +1,6 @@
 pkgbase = kubeadm-git
 	pkgdesc = Tool to create a secure Kubernetes cluster
-	pkgver = r37648.44b7a9b
+	pkgver = r39510.124fb61
 	pkgrel = 1
 	url = http://kubernetes.io/docs/getting-started-guides/kubeadm/
 	install = kubeadm.install
@@ -18,13 +18,14 @@ pkgbase = kubeadm-git
 	depends = iptables
 	depends = socat
 	depends = docker
+	depends = cni-git
 	conflicts = kubernetes
 	source = git+https://github.com/kubernetes/kubernetes.git#branch=master
 	source = git+https://github.com/kubernetes/release.git#branch=master
 	source = kubeadm.install
 	sha256sums = SKIP
 	sha256sums = SKIP
-	sha256sums = 21c6e18fe0535b4a1b311e0d8586a126d4971b2745f5f630e1ff7df75fed4e6c
+	sha256sums = 52fb94c650014b4ca1aed2e3b5c3695d4e98b3d15cbe2637b51e3c52259320fb
 
 pkgname = kubeadm-git
 

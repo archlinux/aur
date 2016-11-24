@@ -2,7 +2,7 @@
 
 _pkgname=kubeadm
 pkgname=kubeadm-git
-pkgver=r37746.cab99c7
+pkgver=r39510.124fb61
 pkgrel=1
 pkgdesc="Tool to create a secure Kubernetes cluster"
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ url="http://kubernetes.io/docs/getting-started-guides/kubeadm/"
 license=('Apache')
 install=kubeadm.install
 conflicts=('kubernetes')
-depends=('glibc' 'bash' 'ebtables' 'ethtool' 'iptables' 'socat' 'docker')
+depends=('glibc' 'bash' 'ebtables' 'ethtool' 'iptables' 'socat' 'docker' 'cni-git')
 makedepends=('git' 'go' 'rsync' 'go-bindata-git')
 source=("git+https://github.com/kubernetes/kubernetes.git#branch=master"
         "git+https://github.com/kubernetes/release.git#branch=master"
@@ -34,7 +34,7 @@ package() {
   mkdir -p "${pkgdir}"/usr/bin
   [[ $CARCH == 'i686' ]] && install -Dm755 _output/local/bin/linux/386/{kubelet,kubectl,kubeadm} ${pkgdir}/usr/bin/
   [[ $CARCH == 'x86_64' ]] && install -Dm755 _output/local/bin/linux/amd64/{kubelet,kubectl,kubeadm} ${pkgdir}/usr/bin/
-  
+
   # install the place the kubelet defaults to put volumes
   install -d ${pkgdir}/var/lib/kubelet
 
@@ -43,7 +43,7 @@ package() {
   # install config files
   install -dm 755 ${pkgdir}/etc/systemd/system/kubelet.service.d/
   install -m 644 -t ${pkgdir}/etc/systemd/system/kubelet.service.d/ rpm/10-kubeadm.conf
-  
+
   # install service file
   install -dm 755 ${pkgdir}/usr/lib/systemd/system
   install -m 644 -t ${pkgdir}/usr/lib/systemd/system rpm/kubelet.service
