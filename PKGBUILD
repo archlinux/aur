@@ -4,7 +4,7 @@ pkgdesc="ROS - navfn provides a fast interpolated navigation function that can b
 url='http://wiki.ros.org/navfn'
 
 pkgname='ros-indigo-navfn'
-pkgver='1.12.7'
+pkgver='1.12.13'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -49,7 +49,7 @@ depends=(${ros_depends[@]})
 # Tarball version (faster download)
 _dir="navigation-release-release-indigo-navfn-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/navigation-release/archive/release/indigo/navfn/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('4f85e9306dfb329451e16b9b278bf0014b1719b0edae3714ece181e01abf9834')
+sha256sums=('b55bd7d2d4c0518c5110511b972847c72a13ddb7acc6e2ee488ba175ca89c908')
 
 build() {
   # Use ROS environment variables
