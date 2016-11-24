@@ -4,7 +4,7 @@ pkgdesc="ROS - Provides a signal/slot mechanism (in the same vein as qt sigslots
 url='http://ros.org/wiki/ecl_sigslots'
 
 pkgname='ros-indigo-ecl-sigslots'
-pkgver='0.61.8'
+pkgver='0.61.15'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -14,7 +14,7 @@ ros_makedepends=(ros-indigo-ecl-license
   ros-indigo-ecl-threads
   ros-indigo-ecl-config
   ros-indigo-catkin)
-makedepends=('cmake' 'git' 'ros-build-tools'
+makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]})
 
 ros_depends=(ros-indigo-ecl-license
@@ -24,14 +24,14 @@ depends=(${ros_depends[@]})
 
 # Git version (e.g. for debugging)
 # _tag=release/indigo/ecl_sigslots/${pkgver}-${_pkgver_patch}
-# _dir=ecl_sigslots
+# _dir=${pkgname}
 # source=("${_dir}"::"git+https://github.com/yujinrobot-release/ecl_core-release.git"#tag=${_tag})
 # sha256sums=('SKIP')
 
 # Tarball version (faster download)
 _dir="ecl_core-release-release-indigo-ecl_sigslots-${pkgver}-${_pkgver_patch}"
-source=("https://github.com/yujinrobot-release/ecl_core-release/archive/release/indigo/ecl_sigslots/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('006ac82443ceda1d620828f0abf2ffaceeae5e63c4d24d831e2f42b85a659909')
+source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/yujinrobot-release/ecl_core-release/archive/release/indigo/ecl_sigslots/${pkgver}-${_pkgver_patch}.tar.gz")
+sha256sums=('705f0bceaf37eecf054f857df049d3230da597a2f6a9624822f8dd5d2279816d')
 
 build() {
   # Use ROS environment variables
