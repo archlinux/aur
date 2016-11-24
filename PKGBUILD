@@ -17,12 +17,12 @@ source=('git+https://github.com/nylas/N1.git')
 sha512sums=('SKIP')
 
 pkgver() {
-  cd "$_pkgname"
+  cd "${_pkgname}"
   git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-  cd "$_pkgname"
+  cd "${_pkgname}"
 
   sed -e "s/<%= description %>/$pkgdesc/" \
     -e "s|<%= installDir %>|/usr|"\
@@ -32,20 +32,21 @@ build() {
     build/resources/linux/nylas.desktop.in > build/resources/linux/Nylas.desktop
 
   export PYTHON=python2
-  script/build --build-dir "$srcdir/nylas-build"
+  script/bootstrap
+  script/grunt build --build-dir "${srcdir}/nylas-build"
 }
 
 package() {
-  cd "$_pkgname"
+  cd "${_pkgname}"
 
-  script/grunt install --build-dir "$srcdir/nylas-build" --install-dir "$pkgdir/usr"
+  script/grunt install --build-dir "${srcdir}/nylas-build" --install-dir "${pkgdir}/usr"
 
   for s in 16 32 64 128 256 512; do
-    mkdir -p "$pkgdir"/usr/local/share/icons/hicolor/"$s"x"$s"/apps
-    cp -p "$srcdir"/nylas-build/icons/"$s".png \
-               "$pkgdir"/usr/local/share/icons/hicolor/"$s"x"$s"/apps/nylas.png
+    mkdir -p "${pkgdir}"/usr/local/share/icons/hicolor/"${s}"x"${s}"/apps
+    cp -p "${srcdir}"/nylas-build/icons/"${s}".png \
+               "${pkgdir}"/usr/local/share/icons/hicolor/"${s}"x"${s}"/apps/nylas.png
   done
 
-  install -Dm644 build/resources/linux/Nylas.desktop "$pkgdir/usr/share/applications/nylas.desktop"
-  install -Dm644 LICENSE.md "$pkgdir/usr/share/licenses/$pkgname/LICENSE.md"
+  install -Dm644 build/resources/linux/Nylas.desktop "${pkgdir}/usr/share/applications/nylas.desktop"
+  install -Dm644 LICENSE.md "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.md"
 }
