@@ -4,7 +4,7 @@ pkgdesc="ROS - Random walker app for Kobuki."
 url='http://ros.org/wiki/kobuki_random_walker'
 
 pkgname='ros-indigo-kobuki-random-walker'
-pkgver='0.6.6'
+pkgver='0.6.8'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -19,7 +19,7 @@ ros_makedepends=(ros-indigo-nodelet
   ros-indigo-kobuki-msgs
   ros-indigo-yocs-controllers
   ros-indigo-pluginlib)
-makedepends=('cmake' 'git' 'ros-build-tools'
+makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]})
 
 ros_depends=(ros-indigo-yocs-cmd-vel-mux
@@ -33,10 +33,16 @@ ros_depends=(ros-indigo-yocs-cmd-vel-mux
   ros-indigo-pluginlib)
 depends=(${ros_depends[@]})
 
-_tag=release/indigo/kobuki_random_walker/${pkgver}-${_pkgver_patch}
-_dir=kobuki_random_walker
-source=("${_dir}"::"git+https://github.com/yujinrobot-release/kobuki-release.git"#tag=${_tag})
-md5sums=('SKIP')
+# Git version (e.g. for debugging)
+# _tag=release/indigo/kobuki_random_walker/${pkgver}-${_pkgver_patch}
+# _dir=${pkgname}
+# source=("${_dir}"::"git+https://github.com/yujinrobot-release/kobuki-release.git"#tag=${_tag})
+# sha256sums=('SKIP')
+
+# Tarball version (faster download)
+_dir="kobuki-release-release-indigo-kobuki_random_walker-${pkgver}-${_pkgver_patch}"
+source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/yujinrobot-release/kobuki-release/archive/release/indigo/kobuki_random_walker/${pkgver}-${_pkgver_patch}.tar.gz")
+sha256sums=('be8e5302e1c03d0ab7f4eeea760cde57848d25e70dbe64b4b75405f22d74d449')
 
 build() {
   # Use ROS environment variables
