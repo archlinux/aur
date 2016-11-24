@@ -103,6 +103,18 @@ prepare() {
   # get kernel version
   make prepare
 
+  ### Optionally load needed modules for the make localmodconfig
+  # See https://aur.archlinux.org/packages/modprobed-db
+  if [ -n "$_localmodcfg" ]; then
+   msg "If you have modprobed-db installed, running it in recall mode now"
+     if [ -e /usr/bin/modprobed-db ]; then
+        [[ ! -x /usr/bin/sudo ]] && echo "Cannot call modprobe with sudo. Install$
+        sudo /usr/bin/modprobed-db recall
+     fi
+   msg "Running Steven Rostedt's make localmodconfig now"
+   make localmodconfig
+  fi
+
   # load configuration
   # Configure the kernel. Replace the line below with one of your choice.
   #make menuconfig # CLI menu for configuration
