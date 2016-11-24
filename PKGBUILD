@@ -2,10 +2,11 @@
 
 pkgname=diary
 pkgver=0.1
-pkgrel=0
+pkgrel=1
 pkgdesc="Simple CLI diary"
 arch=("x86_64" "i686")
 url="https://github.com/in0rdr/diary"
+depends=('ncurses')
 license=('MIT')
 source=("https://github.com/in0rdr/diary/archive/v${pkgver//_/-}.tar.gz")
 md5sums=('9a95da5d5569f991ebe33b04bcd38bbb')
