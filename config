@@ -1,6 +1,6 @@
 #
 # Automatically generated file; DO NOT EDIT.
-# Linux/x86 4.8.7 Kernel Configuration
+# Linux/x86 4.8.8 Kernel Configuration
 #
 # CONFIG_64BIT is not set
 CONFIG_X86_32=y
@@ -574,6 +574,7 @@ CONFIG_EFI=y
 CONFIG_EFI_STUB=y
 CONFIG_SECCOMP=y
 # CONFIG_HZ_100 is not set
+# CONFIG_HZ_128 is not set
 # CONFIG_HZ_250 is not set
 # CONFIG_HZ_300 is not set
 CONFIG_HZ_1000=y

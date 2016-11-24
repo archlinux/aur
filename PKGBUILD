@@ -10,7 +10,7 @@ _minor=8
 _basekernel=${_major}.${_minor}
 _srcname=linux-${_major}.${_minor}
 pkgbase=linux-pf
-_pfrel=7
+_pfrel=8
 _kernelname=-pf
 _pfpatchhome="http://pf.natalenko.name/sources/${_basekernel}/"
 _pfpatchname="patch-${_basekernel}${_kernelname}${_pfrel}"
@@ -72,7 +72,7 @@ _BATCH_MODE=n
 pkgname=('linux-pf')
 true && pkgname=('linux-pf' 'linux-pf-headers' 'linux-pf-preset-default')
 pkgver=${_basekernel}.${_pfrel}
-pkgrel=2
+pkgrel=1
 arch=('i686' 'x86_64')
 url="http://pf.natalenko.name/"
 license=('GPL2')
@@ -709,11 +709,11 @@ pkgdesc="Linux kernel and modules with the pf-kernel patch [-ck patchset (BFS in
 
 # makepkg -g >>PKGBUILD
 sha256sums=('3e9150065f193d3d94bcf46a1fe9f033c7ef7122ab71d75a7fb5a2f0c9a7e11a'
-            '3f1dd3cca72f2a2d5ba3a22cf10c21dc8221fa7109c689fcb4d2e76601109139'
-            'e6c3945cdb40d98099433ba508fc87075a4aad541d5001d20565a29ef9d3597f'
+            'f691af1934d1febbc05c84961f078c0c2ff99ae6f69905155c76d6cfd2417665'
+            '6f11a0c44cef1b31bef3e04ba0cfcc6861ecd45137e1023015011528d42636a4'
             '82d660caa11db0cd34fd550a049d7296b4a9dcd28f2a50c81418066d6e598864'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
-            '83c67ff48689bb083e44b9cee1c5b67226bf887589081548e81d93a71a6dcf70'
+            '2737a15ef112095abe5e6bf3c047d553c1ee2f6022d1414294a76212cf967108'
             'SKIP'
             '4473dbed2a84f4e81cc1e11ae5f8f72d076fa210d45e956d1967f96b6aa87a6d'
             'df07e00e8581fe282a5b92be9ee9bb37910eae3d2cc43eeb41df736b9f531f02')
