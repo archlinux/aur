@@ -4,7 +4,7 @@ pkgdesc="ROS - This package provides an implementation of a 2D costmap."
 url='http://wiki.ros.org/costmap_2d'
 
 pkgname='ros-indigo-costmap-2d'
-pkgver='1.12.7'
+pkgver='1.12.13'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -61,7 +61,7 @@ depends=(${ros_depends[@]})
 # Tarball version (faster download)
 _dir="navigation-release-release-indigo-costmap_2d-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/navigation-release/archive/release/indigo/costmap_2d/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('57de1b359f17420de9e91aaa3b2061917983fa08aad6fd7b4df5293757d70a88')
+sha256sums=('5417ab6fd1805b814f2ee388b65860c35d6d6b94861d96da1400d462de16f3e5')
 
 build() {
   # Use ROS environment variables
