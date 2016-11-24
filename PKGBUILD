@@ -2,14 +2,14 @@
 # Former Maintainer unknown (because the line in the PKGBUILD was accidentally removed).
 pkgname=python2-alembic
 pkgver=0.8.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Alembic is a lightweight database migration tool for usage with the SQLAlchemy Database Toolkit for Python 2."
 arch=('any')
 url="https://bitbucket.org/zzzeek/alembic"
 license=('MIT')
 depends=('python2' 'python2-sqlalchemy' 'python2-mako' 'python2-editor')
-source=(https://pypi.python.org/packages/source/a/alembic/alembic-${pkgver}.tar.gz
-        https://pypi.python.org/packages/source/a/alembic/alembic-${pkgver}.tar.gz.asc)
+source=(https://pypi.io/packages/source/a/alembic/alembic-${pkgver}.tar.gz
+        https://pypi.io/packages/source/a/alembic/alembic-${pkgver}.tar.gz.asc)
 
 
 sha256sums=('53403da066ef90cbc5a3f801f3dd39bbbfbc41b0a84eb8c1c806243b7e2c6466'
