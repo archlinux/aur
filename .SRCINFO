@@ -1,6 +1,6 @@
 pkgbase = python-caja-dev
 	pkgdesc = Python binding for Caja, to allow Caja property page and menu item extensions to be written in Python
-	pkgver = 1.15.0
+	pkgver = 1.17.0
 	pkgrel = 1
 	url = http://mate-desktop.org
 	arch = i686
@@ -14,8 +14,8 @@ pkgbase = python-caja-dev
 	provides = python-caja-gtk3
 	conflicts = python-caja
 	conflicts = python-caja-gtk3
-	source = http://pub.mate-desktop.org/releases/1.15/python-caja-1.15.0.tar.xz
-	sha1sums = ad7bbe4b2ec906bf22a458cbd5ae9c6ca3f035f7
+	source = http://pub.mate-desktop.org/releases/1.17/python-caja-1.17.0.tar.xz
+	sha1sums = 96c2631d3212830984539501b705edbe93180b8a
 
 pkgname = python-caja-dev
 	pkgdesc = Python binding for Caja, to allow Caja property page and menu item extensions to be written in Python (GTK3 version)

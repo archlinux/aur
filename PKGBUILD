@@ -2,7 +2,7 @@
 # Contributor:  eadrom <eadrom@archlinux.info>
 # Contributor:  Martin Wimpress <code@flexion.org>
 
-_ver=1.15
+_ver=1.17
 _pkgbase=python-caja
 pkgname="${_pkgbase}-dev"
 pkgver=${_ver}.0
@@ -17,7 +17,7 @@ license=('GPL')
 depends=('caja-dev' 'python2-gobject')
 makedepends=('mate-common-dev')
 source=("http://pub.mate-desktop.org/releases/${_ver}/${_pkgbase}-${pkgver}.tar.xz")
-sha1sums=('ad7bbe4b2ec906bf22a458cbd5ae9c6ca3f035f7')
+sha1sums=('96c2631d3212830984539501b705edbe93180b8a')
 
 prepare() {
     cd "${srcdir}/${_pkgbase}-${pkgver}"
