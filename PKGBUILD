@@ -3,12 +3,12 @@
 
 pkgname=razercommander-git
 pkgver=1.0.3
-pkgrel=3
+pkgrel=4
 pkgdesc='A simple GTK control center for managing razer peripherals on Linux.'
 arch=('any')
 url='https://github.com/gabmus/razercommander'
 license=('GPLv3')
-depends=('razer-driver-dkms' 'razer-daemon' 'python-razer' 'gtk3>=3.20','python')
+depends=('razer-driver-dkms' 'razer-daemon' 'python-razer' 'gtk3>=3.20' 'python')
 makedepends=('git')
 source=("razercommander::git+git://github.com/gabmus/razercommander")
 md5sums=('SKIP')
