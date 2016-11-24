@@ -2,7 +2,7 @@
 
 pkgname=arcus
 pkgver=2.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Communication library between internal components for Ultimaker software"
 url="https://github.com/Ultimaker/libArcus"
 arch=('x86_64')
@@ -10,7 +10,7 @@ arch=('any')
 license=('GPLv3')
 
 makedepends=('cmake')
-depends=('python' 'protobuf3' 'python-sip')
+depends=('python' 'protobuf' 'python-sip')
 source=(https://github.com/Ultimaker/libArcus/archive/${pkgver}.tar.gz)
 md5sums=('bb2ccd655de62b7d27613e275e85332a')
 
