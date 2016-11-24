@@ -5,7 +5,7 @@ arch=('any')
 url="https://github.com/nana-4/Flat-Plat"
 license=('GPL')
 makedepends=('git')
-depends=('gtk3>=3.22','gtk-engine-murrine', 'gnome-themes-standard')
+depends=('gtk3>=3.22' 'gtk-engine-murrine' 'gnome-themes-standard')
 optdepends=()
 provides=('flatplat-theme')
 conflicts=('flatplat-theme')
@@ -13,7 +13,7 @@ replaces=()
 source=(${pkgname}::git+https://github.com/nana-4/Flat-Plat.git)
 sha256sums=('SKIP')
 
-pkgver=r185.a3f3fab
+pkgver=r227.33c5675
 pkgver() {
   cd "$srcdir/${pkgname}"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
@@ -22,9 +22,8 @@ pkgrel=1
 
 package() {
   cd "$srcdir/${pkgname}"
-  install -dm 755 "${pkgdir}"/usr/share/themes/Flat-Plat
-  rm -f gnome-shell/*.sh gnome-shell/*.scss gnome-shell/Gemfile gnome-shell/HACKING gnome-shell/README
-  rm -f gtk-2.0/render-bits.sh gtk-2.0/assets.svg gtk-2.0/assets.txt
-  rm -f gtk-3.0/*.sh gtk-3.0/*.scss gtk-3.0/Gemfile gtk-3.0/README gtk-3.0/assets.svg gtk-3.0/assets.txt
-  cp -r --no-preserve='ownership,mode' 'gnome-shell' 'gtk-2.0' 'gtk-3.0' 'index.theme' "${pkgdir}"/usr/share/themes/Flat-Plat
+  for SCRIPT in scripts/*.sh; do \
+    sed -e "s|themedir=|themedir=${pkgdir}|g" -i $SCRIPT; \
+  done
+  ./install.sh
 }
