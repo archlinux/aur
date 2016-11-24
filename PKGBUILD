@@ -2,7 +2,7 @@
 # Generator  : CPANPLUS::Dist::Arch 1.27
 
 pkgname='perl-opengl'
-pkgver='0.6704'
+pkgver='0.70'
 pkgrel='2'
 pkgdesc="Interface to OpenGL drawing/imaging library"
 arch=('i686' 'x86_64')
@@ -11,10 +11,8 @@ options=('!emptydirs')
 depends=('perl' 'freeglut>=2.8.1' 'glu>=9.0.0')
 [ -z "$DISPLAY" ] && makedepends+=('xorg-server-xvfb')
 url='https://metacpan.org/release/OpenGL/'
-source=("https://cpan.metacpan.org/authors/id/C/CH/CHM/OpenGL-${pkgver}.tar.gz" \
-        'OpenGL-0.6704-Delete-functions-removed-from-Mesa.patch::http://pkgs.fedoraproject.org/cgit/perl-OpenGL.git/plain/OpenGL-0.6704-Delete-functions-removed-from-Mesa.patch?id=7498635332872268a0d4519723b44725e9a496dc')
-md5sums=('433e4f197d7200c219494a8604f3e06b'
-         '75ecc0b0751503fdc2fbad1301e9a1f4')
+source=("https://cpan.metacpan.org/authors/id/C/CH/CHM/OpenGL-${pkgver}.tar.gz")
+md5sums=('8b651500162e9b999347a06dc0664ab6')
 _distdir="OpenGL-$pkgver"
 
 prepare() {
@@ -23,9 +21,7 @@ prepare() {
     PERL_MM_OPT="INSTALLDIRS=vendor DESTDIR='$pkgdir'" \
     PERL_MB_OPT="--installdirs vendor --destdir '$pkgdir'" \
     MODULEBUILDRC=/dev/null
-  # Patch for newer mesa
-  cd "$srcdir/$_distdir"
-  patch -p1 < "$srcdir"'/OpenGL-0.6704-Delete-functions-removed-from-Mesa.patch'
+  #cd "$srcdir/$_distdir"
 }
 
 build() {
