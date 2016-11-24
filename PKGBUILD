@@ -4,7 +4,7 @@ pkgdesc="ROS - The containers included here are intended to extend the stl conta
 url='http://wiki.ros.org/ecl_containers'
 
 pkgname='ros-indigo-ecl-containers'
-pkgver='0.61.8'
+pkgver='0.61.15'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -20,7 +20,7 @@ ros_makedepends=(ros-indigo-ecl-errors
   ros-indigo-ecl-mpl
   ros-indigo-ecl-config
   ros-indigo-ecl-type-traits)
-makedepends=('cmake' 'git' 'ros-build-tools'
+makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]})
 
 ros_depends=(ros-indigo-ecl-errors
@@ -36,14 +36,14 @@ depends=(${ros_depends[@]})
 
 # Git version (e.g. for debugging)
 # _tag=release/indigo/ecl_containers/${pkgver}-${_pkgver_patch}
-# _dir=ecl_containers
+# _dir=${pkgname}
 # source=("${_dir}"::"git+https://github.com/yujinrobot-release/ecl_core-release.git"#tag=${_tag})
 # sha256sums=('SKIP')
 
 # Tarball version (faster download)
 _dir="ecl_core-release-release-indigo-ecl_containers-${pkgver}-${_pkgver_patch}"
-source=("https://github.com/yujinrobot-release/ecl_core-release/archive/release/indigo/ecl_containers/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('af60ba894a4740931aba65c187404e41170f406fefe63d10b9cdd9e412c23845')
+source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/yujinrobot-release/ecl_core-release/archive/release/indigo/ecl_containers/${pkgver}-${_pkgver_patch}.tar.gz")
+sha256sums=('5d8d07f69addb06be8f06e82a51362542f292d33818771e63ed2fc4a116a017a')
 
 build() {
   # Use ROS environment variables
