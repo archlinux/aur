@@ -1,4 +1,4 @@
-pkgbase = caja-dev
+pkgbase = caja
 	pkgdesc = File manager for the MATE desktop
 	pkgver = 1.17.1
 	pkgrel = 1
@@ -8,7 +8,7 @@ pkgbase = caja-dev
 	groups = mate
 	license = GPL
 	makedepends = gobject-introspection
-	makedepends = mate-common-dev
+	makedepends = mate-common>=1.17
 	depends = dbus
 	depends = desktop-file-utils
 	depends = exempi
@@ -19,7 +19,7 @@ pkgbase = caja-dev
 	depends = libexif
 	depends = libunique3
 	depends = libxt
-	depends = mate-desktop-dev
+	depends = mate-desktop>=1.17
 	depends = shared-mime-info
 	depends = startup-notification
 	optdepends = gstreamer: automatic media playback when mouseover
@@ -31,6 +31,6 @@ pkgbase = caja-dev
 	source = http://pub.mate-desktop.org/releases/1.17/caja-1.17.1.tar.xz
 	sha1sums = 5fd12a7a4e58bf3a82a1cb3125a4840a694ed7cf
 
-pkgname = caja-dev
+pkgname = caja
 	pkgdesc = File manager for the MATE desktop (GTK3 version)
 
