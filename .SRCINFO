@@ -1,0 +1,18 @@
+pkgbase = silentarmy-nvmod-git
+	pkgdesc = GPU Zcash Equihash solver optimized for Nvidia and CUDA 8
+	pkgver = v5.29.g016f8e8
+	pkgrel = 1
+	url = https://github.com/krnlx/silentarmy-nvmod
+	arch = i686
+	arch = x86_64
+	license = MIT
+	depends = libcl
+	depends = opencl-headers
+	depends = python
+	provides = silentarmy
+	conflicts = silentarmy, silentarmy-git
+	source = git+https://github.com/krnlx/silentarmy-nvmod.git
+	md5sums = SKIP
+
+pkgname = silentarmy-nvmod-git
+
