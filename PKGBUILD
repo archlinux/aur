@@ -4,7 +4,7 @@
 
 _ver=1.17
 _pkgbase=marco
-pkgname="${_pkgbase}-dev"
+pkgname="${_pkgbase}"
 pkgver=${_ver}.0
 pkgrel=1
 pkgdesc="A window manager for MATE"
@@ -14,8 +14,8 @@ provides=("${_pkgbase}" "${_pkgbase}-gtk3")
 conflicts=("${_pkgbase}" "${_pkgbase}-gtk3")
 license=('GPL')
 depends=('glib2' 'libcanberra' 'libgtop' 'libice' 'libsm' 'libxt'
-         'mate-desktop-dev' 'startup-notification' 'zenity')
-makedepends=('mate-common-dev' 'yelp-tools')
+         'mate-desktop>=1.17' 'startup-notification' 'zenity')
+makedepends=('mate-common>=1.17' 'yelp-tools')
 optdepends=('yelp: for reading MATE help documents')
 groups=('mate')
 source=("http://pub.mate-desktop.org/releases/${_ver}/${_pkgbase}-${pkgver}.tar.xz")

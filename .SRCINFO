@@ -1,4 +1,4 @@
-pkgbase = marco-dev
+pkgbase = marco
 	pkgdesc = A window manager for MATE
 	pkgver = 1.17.0
 	pkgrel = 1
@@ -7,7 +7,7 @@ pkgbase = marco-dev
 	arch = x86_64
 	groups = mate
 	license = GPL
-	makedepends = mate-common-dev
+	makedepends = mate-common>=1.17
 	makedepends = yelp-tools
 	depends = glib2
 	depends = libcanberra
@@ -15,7 +15,7 @@ pkgbase = marco-dev
 	depends = libice
 	depends = libsm
 	depends = libxt
-	depends = mate-desktop-dev
+	depends = mate-desktop>=1.17
 	depends = startup-notification
 	depends = zenity
 	optdepends = yelp: for reading MATE help documents
@@ -26,6 +26,6 @@ pkgbase = marco-dev
 	source = http://pub.mate-desktop.org/releases/1.17/marco-1.17.0.tar.xz
 	sha1sums = d8d165f75618a02eaa5a89b86c4e2c7ee4995d2f
 
-pkgname = marco-dev
+pkgname = marco
 	pkgdesc = A window manager for MATE (GTK3 version)
 
