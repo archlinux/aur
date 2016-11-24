@@ -4,40 +4,48 @@ pkgdesc="ROS - turtlebot_bringup provides roslaunch scripts for starting the Tur
 url='http://ros.org/wiki/turtlebot_bringup'
 
 pkgname='ros-indigo-turtlebot-bringup'
-pkgver='2.3.11'
+pkgver='2.3.13'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
 license=('BSD')
 
 ros_makedepends=(ros-indigo-catkin)
-makedepends=('cmake' 'git' 'ros-build-tools'
+makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]})
 
 ros_depends=(ros-indigo-openni2-launch
   ros-indigo-yocs-cmd-vel-mux
+  ros-indigo-realsense-camera
   ros-indigo-freenect-launch
   ros-indigo-kobuki-bumper2pc
   ros-indigo-turtlebot-description
   ros-indigo-zeroconf-avahi
   ros-indigo-depthimage-to-laserscan
   ros-indigo-create-node
-  ros-indigo-rocon-bubble-icons
   ros-indigo-rocon-app-manager
+  ros-indigo-astra-launch
   ros-indigo-robot-state-publisher
   ros-indigo-laptop-battery-monitor
   ros-indigo-kobuki-safety-controller
   ros-indigo-diagnostic-aggregator
   ros-indigo-robot-pose-ekf
   ros-indigo-turtlebot-capabilities
+  ros-indigo-rocon-bubble-icons
   ros-indigo-kobuki-capabilities
   ros-indigo-kobuki-node)
 depends=(${ros_depends[@]})
 
-_tag=release/indigo/turtlebot_bringup/${pkgver}-${_pkgver_patch}
-_dir=turtlebot_bringup
-source=("${_dir}"::"git+https://github.com/turtlebot-release/turtlebot-release.git"#tag=${_tag})
-md5sums=('SKIP')
+# Git version (e.g. for debugging)
+# _tag=release/indigo/turtlebot_bringup/${pkgver}-${_pkgver_patch}
+# _dir=${pkgname}
+# source=("${_dir}"::"git+https://github.com/turtlebot-release/turtlebot-release.git"#tag=${_tag})
+# sha256sums=('SKIP')
+
+# Tarball version (faster download)
+_dir="turtlebot-release-release-indigo-turtlebot_bringup-${pkgver}-${_pkgver_patch}"
+source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/turtlebot-release/turtlebot-release/archive/release/indigo/turtlebot_bringup/${pkgver}-${_pkgver_patch}.tar.gz")
+sha256sums=('7c7bb0d67535c45e468647421e1c98c75558a213e0a4b3944185c3ff2089a6ad')
 
 build() {
   # Use ROS environment variables
