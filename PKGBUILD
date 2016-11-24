@@ -4,14 +4,14 @@ pkgdesc="ROS - Robot apps for Kobuki."
 url='http://ros.org/wiki/kobuki_rapps'
 
 pkgname='ros-indigo-kobuki-rapps'
-pkgver='0.6.6'
+pkgver='0.6.8'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
 license=('BSD')
 
 ros_makedepends=(ros-indigo-catkin)
-makedepends=('cmake' 'git' 'ros-build-tools'
+makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]})
 
 ros_depends=(ros-indigo-kobuki-random-walker
@@ -19,10 +19,16 @@ ros_depends=(ros-indigo-kobuki-random-walker
   ros-indigo-nodelet)
 depends=(${ros_depends[@]})
 
-_tag=release/indigo/kobuki_rapps/${pkgver}-${_pkgver_patch}
-_dir=kobuki_rapps
-source=("${_dir}"::"git+https://github.com/yujinrobot-release/kobuki-release.git"#tag=${_tag})
-md5sums=('SKIP')
+# Git version (e.g. for debugging)
+# _tag=release/indigo/kobuki_rapps/${pkgver}-${_pkgver_patch}
+# _dir=${pkgname}
+# source=("${_dir}"::"git+https://github.com/yujinrobot-release/kobuki-release.git"#tag=${_tag})
+# sha256sums=('SKIP')
+
+# Tarball version (faster download)
+_dir="kobuki-release-release-indigo-kobuki_rapps-${pkgver}-${_pkgver_patch}"
+source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/yujinrobot-release/kobuki-release/archive/release/indigo/kobuki_rapps/${pkgver}-${_pkgver_patch}.tar.gz")
+sha256sums=('fb11e59e7df026614e2705c802f06bc85c3310ce44b5d6ca03c1d191352f0d77')
 
 build() {
   # Use ROS environment variables
