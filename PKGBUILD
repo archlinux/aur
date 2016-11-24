@@ -5,23 +5,29 @@ url='http://ros.org/wiki/rocon_bubble_icons'
 
 pkgname='ros-indigo-rocon-bubble-icons'
 pkgver='0.1.23'
-_pkgver_patch=0
+_pkgver_patch=1
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(ros-indigo-catkin)
-makedepends=('cmake' 'git' 'ros-build-tools'
+makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]}
   python2-catkin-pkg)
 
 ros_depends=()
 depends=(${ros_depends[@]})
 
-_tag=release/indigo/rocon_bubble_icons/${pkgver}-${_pkgver_patch}
-_dir=rocon_bubble_icons
-source=("${_dir}"::"git+https://github.com/yujinrobot-release/rocon_tools-release.git"#tag=${_tag})
-md5sums=('SKIP')
+# Git version (e.g. for debugging)
+# _tag=release/indigo/rocon_bubble_icons/${pkgver}-${_pkgver_patch}
+# _dir=${pkgname}
+# source=("${_dir}"::"git+https://github.com/yujinrobot-release/rocon_tools-release.git"#tag=${_tag})
+# sha256sums=('SKIP')
+
+# Tarball version (faster download)
+_dir="rocon_tools-release-release-indigo-rocon_bubble_icons-${pkgver}-${_pkgver_patch}"
+source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/yujinrobot-release/rocon_tools-release/archive/release/indigo/rocon_bubble_icons/${pkgver}-${_pkgver_patch}.tar.gz")
+sha256sums=('2de1f98b9cf38a6d96bfd037bd5343e68250a287ac613c3b656613454f298df8')
 
 build() {
   # Use ROS environment variables
