@@ -1,6 +1,6 @@
 pkgbase = mate-settings-daemon-dev
 	pkgdesc = The MATE Settings daemon
-	pkgver = 1.15.1
+	pkgver = 1.17.0
 	pkgrel = 1
 	url = http://mate-desktop.org
 	arch = i686
@@ -33,8 +33,8 @@ pkgbase = mate-settings-daemon-dev
 	conflicts = mate-settings-daemon-pulseaudio
 	replaces = mate-settings-daemon-gstreamer
 	replaces = mate-settings-daemon-pulseaudio
-	source = http://pub.mate-desktop.org/releases/1.15/mate-settings-daemon-1.15.1.tar.xz
-	sha1sums = a100e09d181b9fcb5633576e561c5e3591a20826
+	source = http://pub.mate-desktop.org/releases/1.17/mate-settings-daemon-1.17.0.tar.xz
+	sha1sums = 24e8ff57d4a10a217a26d47b634412c38cba09db
 
 pkgname = mate-settings-daemon-dev
 	pkgdesc = The MATE Settings daemon (GTK3 version)
