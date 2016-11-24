@@ -4,7 +4,7 @@ pkgdesc="ROS - Holds the action description and relevant messages for the move_b
 url='http://wiki.ros.org/move_base_msgs'
 
 pkgname='ros-indigo-move-base-msgs'
-pkgver='1.12.7'
+pkgver='1.12.13'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -31,7 +31,7 @@ depends=(${ros_depends[@]})
 # Tarball version (faster download)
 _dir="navigation-release-release-indigo-move_base_msgs-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/navigation-release/archive/release/indigo/move_base_msgs/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('6723722279b2ef9c9fa40cae2714b300686aad8792c9f3906699a5bd515c7562')
+sha256sums=('b920978e90f91569149ffa4ac3ed3510014c872670df6e5b4ea983c7d13cfe15')
 
 build() {
   # Use ROS environment variables
