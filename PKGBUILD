@@ -4,7 +4,7 @@ pkgdesc="ROS - Any tools relating to mathematical geometry."
 url='http://wiki.ros.org/ecl_geometry'
 
 pkgname='ros-indigo-ecl-geometry'
-pkgver='0.61.8'
+pkgver='0.61.15'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -21,7 +21,7 @@ ros_makedepends=(ros-indigo-ecl-license
   ros-indigo-catkin
   ros-indigo-ecl-linear-algebra
   ros-indigo-ecl-type-traits)
-makedepends=('cmake' 'git' 'ros-build-tools'
+makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]})
 
 ros_depends=(ros-indigo-ecl-license
@@ -38,14 +38,14 @@ depends=(${ros_depends[@]})
 
 # Git version (e.g. for debugging)
 # _tag=release/indigo/ecl_geometry/${pkgver}-${_pkgver_patch}
-# _dir=ecl_geometry
+# _dir=${pkgname}
 # source=("${_dir}"::"git+https://github.com/yujinrobot-release/ecl_core-release.git"#tag=${_tag})
 # sha256sums=('SKIP')
 
 # Tarball version (faster download)
 _dir="ecl_core-release-release-indigo-ecl_geometry-${pkgver}-${_pkgver_patch}"
-source=("https://github.com/yujinrobot-release/ecl_core-release/archive/release/indigo/ecl_geometry/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('481ac4d3be6d213fac798f9e749ac93631c39fe68735b62d8d3380169b6792ef')
+source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/yujinrobot-release/ecl_core-release/archive/release/indigo/ecl_geometry/${pkgver}-${_pkgver_patch}.tar.gz")
+sha256sums=('7df4cb33d7f8574652c99dd33b1050d5ab9a305426f0793be693024d24e897be')
 
 build() {
   # Use ROS environment variables
