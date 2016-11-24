@@ -3,9 +3,13 @@ post_install() {
     [[ -d /var/lib/factorio ]] || install -dm 770 -o factorio -g games /var/lib/factorio
 
     source /etc/conf.d/factorio
+    SAVE_FILE="/var/lib/factorio/${SAVE_NAME}.zip"
 
     # create empty game
-    [[ -f "/var/lib/factorio/${SAVE_NAME}.zip" ]] || su - factorio -s /bin/sh -c "factorio --create '${SAVE_NAME}.zip' 2>&1 >/dev/null"
+    if [[ ! -f "$SAVE_FILE" ]]; then
+        echo "Generating initial save file: $SAVE_FILE"
+        su - factorio -s /bin/sh -c "factorio --create '$SAVE_FILE' 2>&1 >/dev/null"
+    fi
 }
 
 post_upgrade() {
@@ -13,7 +17,8 @@ post_upgrade() {
     (( $(vercmp $2 '0.12.26-4') < 0 )) && post_install "$1" || true
     (( $(vercmp $2 '0.14.12-1') < 0 )) && {
         echo "AUTOSAVE_INTERVAL and AUTOSAVE_SLOTS must now be declared in /etc/factorio/server-settings.json"
-        echo "Please update /etc/factorio/server-settings.json and /etc/config.d/factorio now."
-        echo "Don't forget to run 'systemctl daemon-reload' before restarting your server."
+        echo "Please update /etc/factorio/server-settings.json and /etc/conf.d/factorio now."
+        echo
+        echo "The systemd service file has been updated, don't forget to run 'systemctl daemon-reload' before restarting factorio."
     } || true
 }

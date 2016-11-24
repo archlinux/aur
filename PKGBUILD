@@ -3,7 +3,7 @@
 # Inspiration for service and config files: https://github.com/Bisa/factorio-init
 
 pkgname=factorio-headless-experimental
-pkgver=0.14.20
+pkgver=0.14.21
 pkgrel=1
 pkgdesc="A 2D game about building and maintaining factories - Server version (experimental branch)"
 arch=('x86_64')
@@ -25,9 +25,9 @@ source=(LICENSE
 
 sha256sums=('67ec2f88afff5d7e0ca5fd3301b5d98655269c161a394368fa0ec49fbc0c0e21'
             '7416d16874f9f80ba82e433d0f2af1acbaf2b6e625eee8a68cd929424bfcba6b'
-            'c92b63cb77db2ded41d28cbe82bb99778c010b92758786683eef64fdd244937c'
+            'ae734267535437b98d1050e4a4b52e62d9985e479ffdc66193f2412af23d3877'
             '87dae15d1bcfb4683faea9c66498bd916bd27f8aa0dc724c4e21076dcf17da64'
-            'b665baef98de972d50367c10fdcec975d58e55509de275a27f0e848ab3d6aa45')
+            '9c2120c5ca15490ebe0fbbb13d23ce52cfa9d5643e329077da3ba0630876a42f')
 
 
 # no modifications needed, the executable looks for:
