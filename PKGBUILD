@@ -4,7 +4,7 @@
 
 pkgname=slic3r
 pkgver=1.2.9
-pkgrel=5
+pkgrel=6
 pkgdesc="Slic3r is an STL-to-GCODE translator for RepRap 3D printers, aiming to be a modern and fast alternative to Skeinforge."
 arch=('i686' 'x86_64') 
 url="http://slic3r.org/"
@@ -32,11 +32,13 @@ BUILDENV+=('!check')
 source=("https://github.com/alexrj/Slic3r/archive/$pkgver.tar.gz"
 				'slic3r.desktop'
 				'slic3r'
-        '6e5938c8330b5bdb6b85c3ca8dc188605ee56b98.patch')
+        '6e5938c8330b5bdb6b85c3ca8dc188605ee56b98.patch'
+        '0001-hamfisted-fix-for-opengl-0.70-problems-making-and-us.patch')
 md5sums=('05ac7b137cbb7b12f442776e4c12dcc2'
          'cf0130330574a13b4372beb8f241d71e'
          'a30a96504f11c95956dd8ce645b77504'
-         '182ca1abc80a6c2f48541c5ffbdb98ab')
+         '182ca1abc80a6c2f48541c5ffbdb98ab'
+         '78f3754e0d3df172a9d48d31ea9afb15')
 
 prepare() {
   export _src_dir="$srcdir/Slic3r-$pkgver"
@@ -57,6 +59,7 @@ prepare() {
 
   msg2 "Patching..."
   patch -p1 -i $srcdir/6e5938c8330b5bdb6b85c3ca8dc188605ee56b98.patch
+  patch -p1 -i $srcdir/0001-hamfisted-fix-for-opengl-0.70-problems-making-and-us.patch
 }
 
 build() {
