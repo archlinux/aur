@@ -4,7 +4,7 @@ pkgdesc="ROS - This package provides an implementation of the Dynamic Window App
 url='http://wiki.ros.org/dwa_local_planner'
 
 pkgname='ros-indigo-dwa-local-planner'
-pkgver='1.12.7'
+pkgver='1.12.13'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -45,7 +45,7 @@ depends=(${ros_depends[@]}
 # Tarball version (faster download)
 _dir="navigation-release-release-indigo-dwa_local_planner-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/navigation-release/archive/release/indigo/dwa_local_planner/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('f2a80d2277397486616c2e439fb049d5d0be63b99ad74df4f73794d069dddaff')
+sha256sums=('9a469f55d41275f5fe472912bca715ee7975b1da48a4fe9cac1ff8f383e49e3f')
 
 build() {
   # Use ROS environment variables
