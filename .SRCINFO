@@ -1,4 +1,4 @@
-pkgbase = mate-common
+pkgbase = mate-common-dev
 	pkgdesc = Common development macros for MATE (GTK3 version)
 	pkgver = 1.17.0
 	pkgrel = 1
@@ -20,5 +20,5 @@ pkgbase = mate-common
 	source = http://pub.mate-desktop.org/releases/1.17/mate-common-1.17.0.tar.xz
 	sha1sums = 58bb5b556e2e3bee0c73979d297baeb448d9147f
 
-pkgname = mate-common
+pkgname = mate-common-dev
 
