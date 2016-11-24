@@ -2,7 +2,7 @@
 
 pkgname=datagrip
 _pkgname=DataGrip
-pkgver=2016.2.6
+pkgver=2016.3
 pkgrel=1
 pkgdesc='Smart SQL Editor and Advanced Database Client Packed Together for Optimum Productivity'
 arch=('i686' 'x86_64')
@@ -15,8 +15,8 @@ provides=('0xdbe' '0xdbe-eap')
 conflicts=('0xdbe' '0xdbe-eap')
 source=(https://download.jetbrains.com/$pkgname/${pkgname}-${pkgver}.tar.gz
         jetbrains-datagrip.desktop)
-sha512sums=('e0c42671c0875b67e2b5e75270f255a2f5ad38038a595b1dca365b1c710efd697f5e1eb9175eccee38e490a4cd38822ba08f43eb404485b87059d7a218ca4055'
-            '76b68a198e50c9c89ce3638b7a4dd1a53dbe902396d0c9af77beb9243fcf9c503694cce1063e9535b8bf3e6f1912b2aa80ecf58285abc42f947f60a7fc4fb1d9')
+sha512sums=('be74eaf25040a55e045143c03b29f5e8158c72ff80921d23402716ad813253b699786eed73ffcf9ac2dc1fe740c3990b419e71df045fa6c4ea41dede2a3ea1c7'
+            '4c15861f80d5210e7aa641f4e851a6bcf035bfba83ff178a7ee99e7795328ee0e4928980607d4a6b68fb661bbd8c9ab7ab61f802453f6a7106351fea712d1572')
 
 package() {
   install -d -m 755 ${pkgdir}/opt/
@@ -30,5 +30,5 @@ package() {
 
   ln -s /opt/$pkgname/bin/${pkgname}.sh $pkgdir/usr/bin/${pkgname}
   install -D -m 644 ${srcdir}/jetbrains-${pkgname}.desktop ${pkgdir}/usr/share/applications/
-  install -D -m 644 "${pkgdir}/opt/${pkgname}/bin/product.png" "${pkgdir}/usr/share/pixmaps/product.png"
+  install -D -m 644 ${pkgdir}/opt/${pkgname}/bin/product.png ${pkgdir}/usr/share/pixmaps/product.png
 }
