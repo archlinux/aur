@@ -1,13 +1,13 @@
 # Maintainer: Josip Ponjavic <josipponjavic at gmail dot com>
 
 pkgname=streamlink-git
-pkgver=0.1.0.r15.ga6c70f7
+pkgver=0.1.0.r20.g2808eb6
 pkgrel=1
 pkgdesc='CLI program that launches streams from various streaming services in a custom video player (livestreamer fork)'
 arch=('any')
 url='https://streamlink.github.io/'
 license=('BSD')
-depends=('python-pycryptodome' 'python-requests<2.12' 'python-setuptools' 'rtmpdump')
+depends=('python-pycryptodome' 'python-requests' 'python-setuptools' 'rtmpdump')
 makedepends=('git' 'python-sphinx')
 optdepends=('python-librtmp: Required by the ustreamtv plugin to be able to use non-mobile streams.')
 provides=('streamlink')
@@ -22,6 +22,7 @@ pkgver() {
 
 build() {
   cd streamlink
+  sed -i 's/requests>=1.0,<2.12.0/requests>=1.0,<3.0/' setup.py
   python setup.py build_sphinx -b man
 }
 
