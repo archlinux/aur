@@ -1,23 +1,21 @@
-# Maintainer: Mohammadreza Abdollahzadeh <morealaz@gmail.com>
+# Maintainer: Mohammadreza Abdollahzadeh <morealaz at gmail dot com>
 
 pkgname=ttf-shabnam
-pkgver=0.9.1
+pkgver=1.0.2
 pkgrel=1
-pkgdesc="A beautiful Persian font."
+pkgdesc="A beautiful Persian font based on ttf-vazir."
 arch=('any')
 url="https://rastikerdar.github.io/shabnam-font/"
 license=('OFL')
 groups=(persian-fonts)
-depends=('fontconfig' 'xorg-font-utils' 'unzip')
-source=("$pkgname.zip::https://github.com/rastikerdar/shabnam-font/releases/download/v$pkgver/shabnam-font-v$pkgver.zip")
-noextract=("$pkgname.zip")
+depends=('fontconfig' 'xorg-font-utils')
+source=("https://github.com/rastikerdar/shabnam-font/releases/download/v$pkgver/shabnam-font-v$pkgver.zip")
 install=$pkgname.install
-md5sums=('5ea85651b30a1395b8a619013d6cc8ba')
+md5sums=('1a38d4fb4380dfed7a9b20bb9330b364')
 
-prepare() {
-  unzip -o -LL -qq $pkgname.zip -d $srcdir/$pkgname/
-}
 package() {  
-  install -m 644 -Dt $pkgdir/usr/share/fonts/$pkgname $srcdir/$pkgname/shabnam*
-  install -Dm 644 $srcdir/$pkgname/license $pkgdir/usr/share/licenses/$pkgname/LICENSE    
+    install -d $pkgdir/usr/share/fonts/$pkgname
+    cp -a ./Shabnam*.{eot,ttf,woff} $pkgdir/usr/share/fonts/$pkgname/
+    cp -a ./{Farsi*,Without-Latin}/Shabnam*.{eot,ttf,woff} $pkgdir/usr/share/fonts/$pkgname/
+    install -Dm644 ./LICENSE $pkgdir/usr/share/licenses/$pkgname/LICENSE    
 }
