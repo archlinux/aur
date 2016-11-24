@@ -4,7 +4,7 @@ pkgdesc="ROS - Keyboard teleoperation for Kobuki: relays commands from a keyboar
 url='http://ros.org/wiki/kobuki_keyop'
 
 pkgname='ros-indigo-kobuki-keyop'
-pkgver='0.6.6'
+pkgver='0.6.8'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -19,7 +19,7 @@ ros_makedepends=(ros-indigo-roscpp
   ros-indigo-catkin
   ros-indigo-kobuki-msgs
   ros-indigo-ecl-time)
-makedepends=('cmake' 'git' 'ros-build-tools'
+makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]})
 
 ros_depends=(ros-indigo-yocs-cmd-vel-mux
@@ -34,10 +34,16 @@ ros_depends=(ros-indigo-yocs-cmd-vel-mux
   ros-indigo-yocs-velocity-smoother)
 depends=(${ros_depends[@]})
 
-_tag=release/indigo/kobuki_keyop/${pkgver}-${_pkgver_patch}
-_dir=kobuki_keyop
-source=("${_dir}"::"git+https://github.com/yujinrobot-release/kobuki-release.git"#tag=${_tag})
-md5sums=('SKIP')
+# Git version (e.g. for debugging)
+# _tag=release/indigo/kobuki_keyop/${pkgver}-${_pkgver_patch}
+# _dir=${pkgname}
+# source=("${_dir}"::"git+https://github.com/yujinrobot-release/kobuki-release.git"#tag=${_tag})
+# sha256sums=('SKIP')
+
+# Tarball version (faster download)
+_dir="kobuki-release-release-indigo-kobuki_keyop-${pkgver}-${_pkgver_patch}"
+source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/yujinrobot-release/kobuki-release/archive/release/indigo/kobuki_keyop/${pkgver}-${_pkgver_patch}.tar.gz")
+sha256sums=('aedb3f73494a91c40218a37435a61a45f7d5e50445477cf345cab2840b7eca2f')
 
 build() {
   # Use ROS environment variables
