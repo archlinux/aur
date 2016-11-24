@@ -4,7 +4,7 @@ pkgdesc="ROS - Provides an extensible and standardised framework for input-outpu
 url='http://wiki.ros.org/ecl_devices'
 
 pkgname='ros-indigo-ecl-devices'
-pkgver='0.61.8'
+pkgver='0.61.15'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -19,7 +19,7 @@ ros_makedepends=(ros-indigo-ecl-errors
   ros-indigo-ecl-mpl
   ros-indigo-ecl-config
   ros-indigo-ecl-type-traits)
-makedepends=('cmake' 'git' 'ros-build-tools'
+makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]})
 
 ros_depends=(ros-indigo-ecl-errors
@@ -34,14 +34,14 @@ depends=(${ros_depends[@]})
 
 # Git version (e.g. for debugging)
 # _tag=release/indigo/ecl_devices/${pkgver}-${_pkgver_patch}
-# _dir=ecl_devices
+# _dir=${pkgname}
 # source=("${_dir}"::"git+https://github.com/yujinrobot-release/ecl_core-release.git"#tag=${_tag})
 # sha256sums=('SKIP')
 
 # Tarball version (faster download)
 _dir="ecl_core-release-release-indigo-ecl_devices-${pkgver}-${_pkgver_patch}"
-source=("https://github.com/yujinrobot-release/ecl_core-release/archive/release/indigo/ecl_devices/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('a6ab390dde0dde8b18a29e32924857f42e2138b214e0e124bbe9ad18d7b05de5')
+source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/yujinrobot-release/ecl_core-release/archive/release/indigo/ecl_devices/${pkgver}-${_pkgver_patch}.tar.gz")
+sha256sums=('455525b7cfa886850bde53b5555d055a04291dbee8d272a5e0a2bb1bbc19881d')
 
 build() {
   # Use ROS environment variables
