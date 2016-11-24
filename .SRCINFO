@@ -21,8 +21,8 @@ pkgbase = mesos
 	source = mesos-master.service
 	source = mesos-slave.service
 	md5sums = ff89748a6668425d462dcaa12608cf8a
-	md5sums = f313fac94525bf770bafa2392c8147c6
-	md5sums = 69df716316170056ff2a54c5299d8cb4
+	md5sums = 42e6bb21d7682b8a8f036c23532e4fe9
+	md5sums = 55cc5e556bb0622f5f913a1999f17766
 
 pkgname = mesos
 
