@@ -1,15 +1,15 @@
 pkgbase = quick-back-git
 	pkgdesc = Quick, simple command line backup tool
-	pkgver = r26.65f8e15
+	pkgver = r29.03c4e6a
 	pkgrel = 1
 	url = https://github.com/PenguinSnail/Quick-Back
 	arch = any
 	license = GPL3
 	makedepends = git
 	depends = rsync
+	depends = e2fsprogs
 	optdepends = arch-install-scripts: Repair backed-up fstab *experimental
 	provides = quick-back-git
-	conflicts = quick-back
 	source = git://github.com/PenguinSnail/Quick-Back
 	md5sums = SKIP
 
