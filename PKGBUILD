@@ -7,7 +7,7 @@ pkgname='ros-indigo-realsense-camera'
 pkgver='1.6.0'
 _pkgver_patch=0
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD 3-clause. See license attached')
 
 ros_makedepends=(ros-indigo-dynamic-reconfigure
@@ -42,7 +42,7 @@ ros_depends=(ros-indigo-dynamic-reconfigure
   ros-indigo-camera-info-manager
   ros-indigo-sensor-msgs
   ros-indigo-tf)
-depends=(${ros_depends[@]})
+depends=('gdal' ${ros_depends[@]})
 
 # Git version (e.g. for debugging)
 # _tag=release/indigo/realsense_camera/${pkgver}-${_pkgver_patch}
