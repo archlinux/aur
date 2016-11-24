@@ -12,7 +12,8 @@ depends=('jupyter' 'gconf')
 license=('AGPL3')
 install=rodeo.install
 md5sums_x86_64=('c99fed637b4f755d727fa1568a6d7119')
-source_x86_64=("https://github.com/yhat/rodeo/releases/download/v$pkgver/rodeo-$pkgver.deb")
+# https://github.com/yhat/rodeo/releases/download/v2.4.10/rodeo-2.4.10-amd64.deb
+source_x86_64=("https://github.com/yhat/rodeo/releases/download/v$pkgver/rodeo-$pkgver-amd64.deb")
 
 build() {
     cd "${srcdir}"
