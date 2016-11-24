@@ -4,7 +4,7 @@
 
 pkgname=rodeo
 pkgver=2.4.10
-pkgrel=2
+pkgrel=3
 pkgdesc="A data science IDE for Python"
 url='https://www.yhat.com/products/rodeo'
 arch=('x86_64')
@@ -19,7 +19,7 @@ build() {
     cd "${srcdir}"
     # bsdtar should be used, instead of tar, as makepkg uses it to decompress
     # archives, so it's automatically available
-    bsdtar -xf data.tar.gz
+    bsdtar -xf data.tar.xz
 }
 
 package() {
