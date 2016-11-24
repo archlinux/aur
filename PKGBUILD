@@ -4,7 +4,7 @@ pkgdesc="ROS - voxel_grid provides an implementation of an efficient 3D voxel gr
 url='http://wiki.ros.org/voxel_grid'
 
 pkgname='ros-indigo-voxel-grid'
-pkgver='1.12.7'
+pkgver='1.12.13'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -27,7 +27,7 @@ depends=(${ros_depends[@]})
 # Tarball version (faster download)
 _dir="navigation-release-release-indigo-voxel_grid-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/navigation-release/archive/release/indigo/voxel_grid/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('8c68ec36ae8fcbd43cbfbd2c285e3322f98f482ac9af64b02cd0d161971e9ab9')
+sha256sums=('a79a59944de4a00623fe7c1dd718d9b850fa1ae481d3abae5e97cc8c6082609b')
 
 build() {
   # Use ROS environment variables
