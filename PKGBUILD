@@ -1,11 +1,12 @@
 pkgname=fqgrep
 pkgver=0.4.4
 pkgrel=1
+license=('MIT')
 arch=(any)
 pkgdesc='An approximate sequence pattern matcher for FASTQ/FASTA files'
 url="https://github.com/indraniel/fqgrep"
 source=("$url/archive/v$pkgver.tar.gz")
-makedepends=(libtool autoconf automake)
+makedepends=(automake)
 depends=(zlib tre)
 md5sums=('18d5b1ad9926b302bfd92ed19f66bb34')
 
