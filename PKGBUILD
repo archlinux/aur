@@ -3,7 +3,7 @@
 
 pkgname=sile-git
 pkgdesc='Modern typesetting system inspired by TeX'
-pkgver=0.9.4.r177.gb66a302
+pkgver=0.9.4.r215.g803e49c
 _branch='master'
 pkgrel=1
 arch=(any)
@@ -13,6 +13,7 @@ provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=("git://github.com/alerque/${pkgname%-git}.git#branch=${_branch}")
 sha512sums=('SKIP')
+makedepends=('git')
 depends=('lua-lpeg'
          'lua-expat'
          'lua-filesystem'
