@@ -1,7 +1,7 @@
 pkgbase = anki-drive-sdk-git
 	pkgdesc = C implementation of message protocols and data parsing to communicate with Anki Drive vehicles
-	pkgver = 0.3.0.r29.20160429
-	pkgrel = 2
+	pkgver = 0.3.0.r30.20161116
+	pkgrel = 1
 	url = https://github.com/anki/drive-sdk
 	arch = i686
 	arch = x86_64
