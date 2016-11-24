@@ -1,0 +1,15 @@
+pkgbase = cni-git
+	pkgdesc = Specification and libraries for writing plugins to configure network interfaces in Linux containers
+	pkgver = r428.de002ff
+	pkgrel = 1
+	url = https://github.com/containernetworking/cni
+	arch = i686
+	arch = x86_64
+	license = apache
+	makedepends = git
+	makedepends = go
+	source = cni-git::git+https://github.com/containernetworking/cni.git#branch=master
+	sha512sums = SKIP
+
+pkgname = cni-git
+
