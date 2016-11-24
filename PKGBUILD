@@ -5,22 +5,28 @@ url='https://github.com/rbarrois/python-semanticversion'
 
 pkgname='ros-indigo-rocon-semantic-version'
 pkgver='0.1.23'
-_pkgver_patch=0
+_pkgver_patch=1
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(ros-indigo-catkin)
-makedepends=('cmake' 'git' 'ros-build-tools'
+makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]})
 
 ros_depends=()
 depends=(${ros_depends[@]})
 
-_tag=release/indigo/rocon_semantic_version/${pkgver}-${_pkgver_patch}
-_dir=rocon_semantic_version
-source=("${_dir}"::"git+https://github.com/yujinrobot-release/rocon_tools-release.git"#tag=${_tag})
-md5sums=('SKIP')
+# Git version (e.g. for debugging)
+# _tag=release/indigo/rocon_semantic_version/${pkgver}-${_pkgver_patch}
+# _dir=${pkgname}
+# source=("${_dir}"::"git+https://github.com/yujinrobot-release/rocon_tools-release.git"#tag=${_tag})
+# sha256sums=('SKIP')
+
+# Tarball version (faster download)
+_dir="rocon_tools-release-release-indigo-rocon_semantic_version-${pkgver}-${_pkgver_patch}"
+source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/yujinrobot-release/rocon_tools-release/archive/release/indigo/rocon_semantic_version/${pkgver}-${_pkgver_patch}.tar.gz")
+sha256sums=('4fbf8ad4dfe3410c421b85ee756679857156fc238d7e9b4808bbcc8df52755b8')
 
 build() {
   # Use ROS environment variables
