@@ -2,11 +2,11 @@
 # Contributor:  eadrom <eadrom@archlinux.info>
 # Contributor:  Martin Wimpress <code@flexion.org>
 
-_ver=1.15
+_ver=1.17
 _pkgbase=libmatekbd
 pkgname="${_pkgbase}-dev"
 pkgver=${_ver}.0
-pkgrel=2
+pkgrel=1
 pkgdesc="MATE keyboard library (GTK3 version)"
 url="http://mate-desktop.org"
 arch=('i686' 'x86_64')
@@ -17,7 +17,7 @@ groups=('mate')
 depends=('dconf' 'gtk3' 'iso-codes' 'libxklavier')
 makedepends=('mate-common-dev')
 source=("http://pub.mate-desktop.org/releases/${_ver}/${_pkgbase}-${pkgver}.tar.xz")
-sha1sums=('79886718fdca006066897b78beb4d77c939817d3')
+sha1sums=('dadda672fdb78ab1b85cf8d55c91755b3be320ad')
 
 prepare() {
     cd "${srcdir}"
