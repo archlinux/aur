@@ -1,6 +1,6 @@
 pkgbase = arangodb
 	pkgdesc = A multi-model NoSQL database, combining key-value, document and graph data models.
-	pkgver = 3.1.0
+	pkgver = 3.1.1
 	pkgrel = 1
 	url = https://www.arangodb.com/
 	install = arangodb.install
@@ -16,13 +16,13 @@ pkgbase = arangodb
 	depends = gcc-libs
 	depends = openssl
 	depends = systemd
-	provides = arangodb=3.1.0
+	provides = arangodb=3.1.1
 	conflicts = arangodb-latest
 	conflicts = arangodb-git
-	source = https://www.arangodb.com/repositories/Source/ArangoDB-3.1.0.tar.bz2
+	source = https://www.arangodb.com/repositories/Source/ArangoDB-3.1.1.tar.bz2
 	source = arangodb.service
 	source = arangodb-tmpfile.conf
-	sha256sums = d72a39dd3f2724dd81cbbed419b07c8bae8dbf658038036bfd79f083da50d454
+	sha256sums = a6c3479ce1a6af5acbc417360bc219b66b0aba9fe98b66b7920d26ac9f0d07e9
 	sha256sums = 40ccbb4034aedaa0d2b1d2922d0d9e53271dfa024f421105a988e1f65f1eef51
 	sha256sums = 736581ab917755c859d17b4015f68380384f924279aa61c9c160960018e1e4e4
 
