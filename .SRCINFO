@@ -1,4 +1,4 @@
-pkgbase = quick-back-git
+pkgbase = quick-back
 	pkgdesc = Quick, simple command line backup tool
 	pkgver = r26.65f8e15
 	pkgrel = 1
@@ -12,5 +12,5 @@ pkgbase = quick-back-git
 	source = git://github.com/PenguinSnail/Quick-Back
 	md5sums = SKIP
 
-pkgname = quick-back-git
+pkgname = quick-back
 
