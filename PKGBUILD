@@ -2,15 +2,15 @@
 # Contributor: Lukas Fleischer <archlinux at cryptocrack dot de>
 
 pkgname=zerofree
-pkgver=1.0.3
-pkgrel=3
+pkgver=1.0.4
+pkgrel=1
 pkgdesc='Scans for non-zero free blocks in an ext2 filesystem and fills them with zeroes'
 arch=('i686' 'x86_64')
-url='http://intgat.tigress.co.uk/rmy/uml/'
+url='https://frippery.org/uml/'
 license=('GPL')
 depends=('e2fsprogs')
-source=("http://intgat.tigress.co.uk/rmy/uml/${pkgname}-${pkgver}.tgz")
-sha256sums=('3acfda860be0f0ddcb5c982ff3b4475b1ee8cc35a90ae2a910e93261dbe0ccf6')
+source=("https://frippery.org/uml/${pkgname}-${pkgver}.tgz")
+sha256sums=('a7f9e293961eb653df55cf54774f2036924f31019814ead5554c393eecae6838')
 
 build() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
