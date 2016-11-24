@@ -6,7 +6,7 @@ _quagga='quagga'
 _cumulus='CumulusNetworks'
 pkgname="${_quagga}_cumulus"
 pkgver='0.99.23.1'
-pkgrel='3'
+pkgrel='4'
 pkgdesc="Routing daemon suite with ${_cumulus} patches. Support Multi-Instance OSPF."
 arch=('i686' 'x86_64')
 url="https://github.com/${_cumulus}/${_quagga}"
@@ -31,7 +31,8 @@ source=("http://download.savannah.gnu.org/releases/${_quagga}/${_quagga}-${pkgve
         "ripd.service"
         "ripngd.service"
         "zebra.service"
-        "${_quagga}-${_cumulus}-2.5.6_json-c.patch")
+        "${_quagga}-${_cumulus}-2.5.6_json-c.patch"
+        "${_quagga}-${_cumulus}-2.5.9_configure_shell.patch")
 sha256sums=('3abf2046bc27539ce2d17c238e06c8fd0d479a8e402580c6aa455808bd48e004'
             '091e57dfe070c70264079e436999dd629cbe18f03a4eaff29cd87718669e05de'
             'aadf4b9cf54397645b4ed4fdcf1cb2ed180aa83c714546faabf4bd62d122b984'
@@ -47,7 +48,8 @@ sha256sums=('3abf2046bc27539ce2d17c238e06c8fd0d479a8e402580c6aa455808bd48e004'
             '802df30eb809cda5f491e90442d06e7f939c54131f22969011b93937feb4b523'
             '4ffca2fbde6a6beacd3860adc582bc0d63da6761eb8906ec4f7c15ce5096a78e'
             '95cee83175150f4c5e96a3561478428bae55ad4adc599352993de219e2084066'
-            '8a41060483d3b3b8645ffb18519efc3799c7819d1cfedc12c33eeb72483bd312')
+            '8a41060483d3b3b8645ffb18519efc3799c7819d1cfedc12c33eeb72483bd312'
+            'f5804e4d0cc310fe5a8dce93574710a8183211a9c4d76befb91002e318aeaed2')
 
 prepare() {
   # Cumulus patch set loads to Debian dpkg sources
@@ -58,10 +60,13 @@ prepare() {
   for p in $(< "${srcdir}/patches/${_quagga}/series"); do
     echo -e "Applying ${_cumulus} patch: ${p}"
     patch -p1 -i "${srcdir}/patches/${_quagga}/${p}"
+    echo -e "---------------------------------------------\\n"
   done
 
   # json in Debian = json-c in Arch
   patch -p1 -i "${srcdir}/${_quagga}-${_cumulus}-2.5.6_json-c.patch"
+  # https://github.com/CumulusNetworks/quagga/commit/5fd1f74742debed7f5bfe5d9416f363906917ec5#diff-67e997bcfdac55191033d57a16d1408a
+  patch -p1 -i "${srcdir}/${_quagga}-${_cumulus}-2.5.9_configure_shell.patch"
 }
 
 build() {
