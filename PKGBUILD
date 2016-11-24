@@ -17,9 +17,9 @@ source=("http://downloads.sourceforge.net/${pkgname}/${pkgname}-${pkgver}.tar.gz
         "luabind_boost.patch"
 	      "boost_1.57.patch")
 
-md5sums=('8a323fb51d07dad5cfdb12c432793d55'
-         'd62ae6fc635300bc659df9dbb587ac53'
-         '92450a08bc1eed7957109a6c712b1d45')
+sha256sums=('80de5e04918678dd8e6dac3b22a34b3247f74bf744c719bae21faaa49649aaae'
+            '010026c1446b276e9e04f11851aca90c5172841cf421c3a31aef4ab442c80d7e'
+            '4d88455c7a1d5fe2356da07b1d008bdcfc82492a47dae8adefeb588939d3d714')
 
 build() {
   cd ${srcdir}/${pkgname}-${pkgver}
