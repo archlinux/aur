@@ -7,7 +7,7 @@
 
 _pkgname=thg
 pkgname=tortoisehg-hg
-pkgver=3.9.18102
+pkgver=4.0.18125
 pkgrel=1
 pkgdesc="Mercurial GUI front end"
 arch=('i686' 'x86_64')
@@ -46,6 +46,12 @@ package() {
     "${pkgdir}/usr/share/applications/thg.desktop"
   install -Dm 644 "icons/svg/thg_logo.svg" \
     "${pkgdir}/usr/share/pixmaps/thg_logo.svg"
+
+  # Remove files conflicting with Mercurial.
+  # https://bitbucket.org/tortoisehg/thg/issues/4629/
+  rm -f "${pkgdir}/usr/lib/python2.7/site-packages/hgext3rd/__init__.py" \
+    "${pkgdir}/usr/lib/python2.7/site-packages/hgext3rd/__init__.pyc" \
+    "${pkgdir}/usr/lib/python2.7/site-packages/hgext3rd/__init__.pyo"
 
   # Remove VCS leftovers.
   find "${pkgdir}" -type d -name .hg -exec rm -r '{}' +
