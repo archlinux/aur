@@ -4,24 +4,30 @@ pkgdesc="ROS - Capabilities for the TurtleBot."
 url='http://ros.org/wiki/turtlebot_capabilities'
 
 pkgname='ros-indigo-turtlebot-capabilities'
-pkgver='2.3.11'
+pkgver='2.3.13'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
 license=('BSD')
 
 ros_makedepends=(ros-indigo-catkin)
-makedepends=('cmake' 'git' 'ros-build-tools'
+makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]})
 
 ros_depends=(ros-indigo-capabilities
   ros-indigo-std-capabilities)
 depends=(${ros_depends[@]})
 
-_tag=release/indigo/turtlebot_capabilities/${pkgver}-${_pkgver_patch}
-_dir=turtlebot_capabilities
-source=("${_dir}"::"git+https://github.com/turtlebot-release/turtlebot-release.git"#tag=${_tag})
-md5sums=('SKIP')
+# Git version (e.g. for debugging)
+# _tag=release/indigo/turtlebot_capabilities/${pkgver}-${_pkgver_patch}
+# _dir=${pkgname}
+# source=("${_dir}"::"git+https://github.com/turtlebot-release/turtlebot-release.git"#tag=${_tag})
+# sha256sums=('SKIP')
+
+# Tarball version (faster download)
+_dir="turtlebot-release-release-indigo-turtlebot_capabilities-${pkgver}-${_pkgver_patch}"
+source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/turtlebot-release/turtlebot-release/archive/release/indigo/turtlebot_capabilities/${pkgver}-${_pkgver_patch}.tar.gz")
+sha256sums=('9019a01172f26875ff75291de99b28f207950f0ca8565834aed49ae5644ff91c')
 
 build() {
   # Use ROS environment variables
