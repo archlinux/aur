@@ -2,13 +2,12 @@
 
 pkgname=mailru-cloud
 pkgver=15.06.0108
-pkgrel=3
+pkgrel=4
 pkgdesc="Client for Mail.ru Cloud service"
 arch=('x86_64' 'i686')
 url="https://cloud.mail.ru/"
 license=("custom")
 depends=("qt5-base" "qt5-x11extras")
-makedepends=("rpmextract")
 
 majver=15.06
 minver=0108
