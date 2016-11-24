@@ -4,7 +4,7 @@ pkgdesc="ROS - C++ driver library for Kobuki: Pure C++ driver library for Kobuki
 url='http://ros.org/wiki/kobuki_driver'
 
 pkgname='ros-indigo-kobuki-driver'
-pkgver='0.6.1'
+pkgver='0.6.5'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -13,12 +13,13 @@ license=('BSD')
 ros_makedepends=(ros-indigo-ecl-mobile-robot
   ros-indigo-ecl-devices
   ros-indigo-ecl-converters
-  ros-indigo-catkin
+  ros-indigo-ecl-build
   ros-indigo-ecl-sigslots
   ros-indigo-ecl-time
   ros-indigo-ecl-geometry
-  ros-indigo-ecl-command-line)
-makedepends=('cmake' 'git' 'ros-build-tools'
+  ros-indigo-ecl-command-line
+  ros-indigo-catkin)
+makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]})
 
 ros_depends=(ros-indigo-ecl-mobile-robot
@@ -30,10 +31,16 @@ ros_depends=(ros-indigo-ecl-mobile-robot
   ros-indigo-ecl-command-line)
 depends=(${ros_depends[@]})
 
-_tag=release/indigo/kobuki_driver/${pkgver}-${_pkgver_patch}
-_dir=kobuki_driver
-source=("${_dir}"::"git+https://github.com/yujinrobot-release/kobuki_core-release.git"#tag=${_tag})
-md5sums=('SKIP')
+# Git version (e.g. for debugging)
+# _tag=release/indigo/kobuki_driver/${pkgver}-${_pkgver_patch}
+# _dir=${pkgname}
+# source=("${_dir}"::"git+https://github.com/yujinrobot-release/kobuki_core-release.git"#tag=${_tag})
+# sha256sums=('SKIP')
+
+# Tarball version (faster download)
+_dir="kobuki_core-release-release-indigo-kobuki_driver-${pkgver}-${_pkgver_patch}"
+source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/yujinrobot-release/kobuki_core-release/archive/release/indigo/kobuki_driver/${pkgver}-${_pkgver_patch}.tar.gz")
+sha256sums=('914281e6934314edda2c4740814382d9819aa9cff31823368e987501c0310378')
 
 build() {
   # Use ROS environment variables
