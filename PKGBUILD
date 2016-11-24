@@ -2,9 +2,9 @@
 # Contributor: ReNoM <renom@list.ru>
 
 pkgname=vmware-vcli
-_pkgver=6.0.0-3561779
+_pkgver=6.5.0-4566394
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="VMware vSphere Command-Line Interface (vCLI); run commands against vSphere and ESX/ESXi"
 arch=('i686' 'x86_64')
 url="https://developercenter.vmware.com/tool/vsphere_cli/6.0"
@@ -18,8 +18,8 @@ source=(for-arch.patch)
 source_i686=(local://VMware-vSphere-CLI-$_pkgver.i386.tar.gz)
 source_x86_64=(local://VMware-vSphere-CLI-$_pkgver.x86_64.tar.gz)
 md5sums=('c46fcc7bac0d9b0c710f52cfe286d34a')
-md5sums_i686=('b54d011f10525044abac1876006245b0')
-md5sums_x86_64=('ea5e46142bc342558150f52da21aaf5e')
+md5sums_i686=('2ae8153c4a93b732a4d51df42b3fe62e')
+md5sums_x86_64=('9611f161927ee13e0a175e759374ef83')
 
 build() {
   cd "vmware-vsphere-cli-distrib"
