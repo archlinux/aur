@@ -4,7 +4,7 @@
 
 pkgname=rodeo
 pkgver=2.4.10
-pkgrel=1
+pkgrel=2
 pkgdesc="A data science IDE for Python"
 url='https://www.yhat.com/products/rodeo'
 arch=('x86_64')
