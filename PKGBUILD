@@ -20,8 +20,8 @@ source_x86_64=("$pkgname.tar.bz2"::"https://www.dev47apps.com/files/600/$pkgname
 noextract=("$pkgname.tar.bz2")
 md5sums=('199d8f3dbc6697f06350b00de99f2274'
          '0f0e1d04146dd5be70d5028f144bd0a2')
-md5sums_i686=('b4b4bb43a4e4a46aab2c1b38cd0892c3')
-md5sums_x86_64=('743b71f1af4d90b5ced59c02fcbc925f')
+md5sums_i686=('c8baa64b3f1e1d9b9051ece23474e58f')
+md5sums_x86_64=('ad14437f0556d80f981d1027766afe29')
 
 prepare() {
   # Extract source from within leading arcqh-specific folder
