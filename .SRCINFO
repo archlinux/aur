@@ -1,7 +1,7 @@
 pkgbase = daemonize
 	pkgdesc = Run a program as a Unix daemon
-	pkgver = 1.7.5
-	pkgrel = 2
+	pkgver = 1.7.7
+	pkgrel = 1
 	url = http://bmc.github.com/daemonize/
 	arch = i686
 	arch = x86_64
@@ -11,8 +11,8 @@ pkgbase = daemonize
 	depends = glibc
 	provides = daemonize
 	conflicts = daemonize-git
-	source = daemonize-1.7.5.tar.gz::https://github.com/bmc/daemonize/tarball/release-1.7.5
-	md5sums = 4dce147e961a7f546e8d0e021a1b95a2
+	source = daemonize-1.7.7.tar.gz::https://github.com/bmc/daemonize/tarball/release-1.7.7
+	md5sums = 84877ef65f01ccf8cd5da1bf4045883e
 
 pkgname = daemonize
 
