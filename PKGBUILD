@@ -2,7 +2,7 @@
 # Contributor:  eadrom <eadrom@archlinux.info>
 # Contributor:  Martin Wimpress <code@flexion.org>
 
-_ver=1.15
+_ver=1.17
 _pkgbase=mate-system-monitor
 pkgname="${_pkgbase}-dev"
 pkgver=${_ver}.0
@@ -18,7 +18,7 @@ makedepends=('docbook2x' 'mate-common-dev' 'yelp-tools')
 optdepends=('yelp: for reading MATE help documents')
 groups=('mate-extra')
 source=("http://pub.mate-desktop.org/releases/${_ver}/${_pkgbase}-${pkgver}.tar.xz")
-sha1sums=('baa314bc4215d53678716aa1ce7d5b0d2e17edcb')
+sha1sums=('ced3bf3dd676b15a7066ef3539984e7657b6ff95')
 
 prepare() {
     cd "${srcdir}"
