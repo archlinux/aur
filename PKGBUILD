@@ -1,8 +1,7 @@
-# Maintainer: Simon Conseil <contact+aur at saimon dot org>
+# Maintainer: Michael DeGuzis <mdeguzis@gmail.com>
 
 pkgname=teleprompter-git
-_gitname=Teleprompter-Core
-pkgver=r103.1828c12
+pkgver=r104.9fe966d
 pkgrel=1
 pkgdesc="Professional-grade, multi-platform, free software teleprompter, installed through npm"
 arch=('any')
@@ -11,19 +10,19 @@ license=('GPLv3')
 depends=('git' 'nodejs')
 makedepends=('npm')
 options=(!emptydirs)
-source=('git+https://github.com/imaginaryfilms/Teleprompter-Core.git')
+source=('teleprompter-git::git+https://github.com/imaginaryfilms/Teleprompter-Core.git')
 sha256sums=('SKIP')
 
 pkgver() {
 
-  cd "$_gitname"
+  cd "$srcdir/$pkgname"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 
 }
 
 package() {
 
-  cd "$_gitname"
+  cd "$pkgname"
   mkdir -p $pkgdir/usr
   npm install --user root -g --prefix="$pkgdir/usr"
   install -D -m644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"

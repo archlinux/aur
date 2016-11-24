@@ -1,6 +1,6 @@
 pkgbase = teleprompter-git
 	pkgdesc = Professional-grade, multi-platform, free software teleprompter, installed through npm
-	pkgver = r103.1828c12
+	pkgver = r104.9fe966d
 	pkgrel = 1
 	url = www.imaginary.tech/teleprompter
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = teleprompter-git
 	depends = git
 	depends = nodejs
 	options = !emptydirs
-	source = git+https://github.com/imaginaryfilms/Teleprompter-Core.git
+	source = teleprompter-git::git+https://github.com/imaginaryfilms/Teleprompter-Core.git
 	sha256sums = SKIP
 
 pkgname = teleprompter-git
