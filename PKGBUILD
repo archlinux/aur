@@ -4,7 +4,7 @@ pkgdesc="ROS - A controller ensuring the safe operation of Kobuki."
 url='http://ros.org/wiki/kobuki_safety_controller'
 
 pkgname='ros-indigo-kobuki-safety-controller'
-pkgver='0.6.6'
+pkgver='0.6.8'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -19,7 +19,7 @@ ros_makedepends=(ros-indigo-nodelet
   ros-indigo-kobuki-msgs
   ros-indigo-yocs-controllers
   ros-indigo-pluginlib)
-makedepends=('cmake' 'git' 'ros-build-tools'
+makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]})
 
 ros_depends=(ros-indigo-nodelet
@@ -32,10 +32,16 @@ ros_depends=(ros-indigo-nodelet
   ros-indigo-pluginlib)
 depends=(${ros_depends[@]})
 
-_tag=release/indigo/kobuki_safety_controller/${pkgver}-${_pkgver_patch}
-_dir=kobuki_safety_controller
-source=("${_dir}"::"git+https://github.com/yujinrobot-release/kobuki-release.git"#tag=${_tag})
-md5sums=('SKIP')
+# Git version (e.g. for debugging)
+# _tag=release/indigo/kobuki_safety_controller/${pkgver}-${_pkgver_patch}
+# _dir=${pkgname}
+# source=("${_dir}"::"git+https://github.com/yujinrobot-release/kobuki-release.git"#tag=${_tag})
+# sha256sums=('SKIP')
+
+# Tarball version (faster download)
+_dir="kobuki-release-release-indigo-kobuki_safety_controller-${pkgver}-${_pkgver_patch}"
+source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/yujinrobot-release/kobuki-release/archive/release/indigo/kobuki_safety_controller/${pkgver}-${_pkgver_patch}.tar.gz")
+sha256sums=('f1ab17215fe7c58f78a1cca39bd3fb5d9ee07ae5d4e6b300fea80350c73f772a')
 
 build() {
   # Use ROS environment variables
