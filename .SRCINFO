@@ -1,0 +1,24 @@
+pkgbase = ttf-shlomo
+	pkgdesc = Derivatives of the Ezra SIL SR hebrew font.
+	pkgver = 1
+	pkgrel = 1
+	url = https://sites.google.com/site/orlaeinayim/introduction-to-fonts-with-hebrew-cantillation-marks
+	arch = any
+	license = custom:OFL
+	depends = fontconfig
+	depends = xorg-font-utils
+	source = Schlomo.ttf::https://sites.google.com/site/orlaeinayim/Shlomo.ttf?attredirects=0
+	source = SchlomoLightBold.ttf::https://sites.google.com/site/orlaeinayim/ShlomoLightBold.ttf?attredirects=0
+	source = SchlomoBold.ttf::https://sites.google.com/site/orlaeinayim/ShlomoBold.ttf?attredirects=0
+	source = SchlomoStam.ttf::https://sites.google.com/site/orlaeinayim/ShlomoStam.ttf?attredirects=0
+	source = SchlomosemiStam.ttf::https://sites.google.com/site/orlaeinayim/ShlomosemiStam.ttf?attredirects=0
+	source = OFL.txt::http://scripts.sil.org/cms/scripts/render_download.php?format=file&media_id=OFL_plaintext&filename=OFL.txt
+	sha1sums = 95450a27c8a646ae0295e67211e738824c229d89
+	sha1sums = 9206bae538bfc764901d9fd25fcbfcd57028cee8
+	sha1sums = 31c3c21c700000ca124b5ca8c5f846ecc8b0136c
+	sha1sums = 55cbeb9ccbb4ab5a53971f342bd0e7413a34a8e8
+	sha1sums = 3414918a9420dcb7eb68a7eaaaa5a6ccf13ef82f
+	sha1sums = 84e2137ba63c1983a1e36371fc7e08ef5d94542e
+
+pkgname = ttf-shlomo
+
