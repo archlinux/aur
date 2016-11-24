@@ -4,7 +4,7 @@
 
 _ver=1.17
 _pkgbase=mate-common
-pkgname="${_pkgbase}-dev"
+pkgname="${_pkgbase}"
 pkgver=${_ver}.0
 pkgrel=1
 pkgdesc="Common development macros for MATE (GTK3 version)"
