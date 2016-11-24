@@ -4,7 +4,7 @@ pkgdesc="ROS - This package provides simple support to cmath, filling in holes o
 url='http://wiki.ros.org/ecl_math'
 
 pkgname='ros-indigo-ecl-math'
-pkgver='0.61.8'
+pkgver='0.61.15'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -13,7 +13,7 @@ license=('BSD')
 ros_makedepends=(ros-indigo-ecl-license
   ros-indigo-catkin
   ros-indigo-ecl-type-traits)
-makedepends=('cmake' 'git' 'ros-build-tools'
+makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]})
 
 ros_depends=(ros-indigo-ecl-license
@@ -22,14 +22,14 @@ depends=(${ros_depends[@]})
 
 # Git version (e.g. for debugging)
 # _tag=release/indigo/ecl_math/${pkgver}-${_pkgver_patch}
-# _dir=ecl_math
+# _dir=${pkgname}
 # source=("${_dir}"::"git+https://github.com/yujinrobot-release/ecl_core-release.git"#tag=${_tag})
 # sha256sums=('SKIP')
 
 # Tarball version (faster download)
 _dir="ecl_core-release-release-indigo-ecl_math-${pkgver}-${_pkgver_patch}"
-source=("https://github.com/yujinrobot-release/ecl_core-release/archive/release/indigo/ecl_math/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('90da2b15332829daf76e341a0d1f5c2155f84c67afa26203ea26c5b8361d5749')
+source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/yujinrobot-release/ecl_core-release/archive/release/indigo/ecl_math/${pkgver}-${_pkgver_patch}.tar.gz")
+sha256sums=('99d7a6bcbe91a67af63adeec2f121479f0cbc9fd0060893b67d3478405e2868a')
 
 build() {
   # Use ROS environment variables
