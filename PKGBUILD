@@ -4,7 +4,7 @@ pkgdesc="ROS - The move_base package provides an implementation of an action (se
 url='http://wiki.ros.org/move_base'
 
 pkgname='ros-indigo-move-base'
-pkgver='1.12.7'
+pkgver='1.12.13'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -64,7 +64,7 @@ depends=(${ros_depends[@]})
 # Tarball version (faster download)
 _dir="navigation-release-release-indigo-move_base-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/navigation-release/archive/release/indigo/move_base/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('7da9d3fb9b101949be3e07c4d4fecb660f6a194138d7a771dd56298265b3acab')
+sha256sums=('0f29a66e4916d2227d94d8216801a777c3ca76fcdc8526e05f881f92da14725a')
 
 build() {
   # Use ROS environment variables
