@@ -2,7 +2,7 @@
 # Contributor:  eadrom <eadrom@archlinux.info>
 # Contributor:  Martin Wimpress <code@flexion.org>
 
-_ver=1.15
+_ver=1.17
 _pkgbase=mate-screensaver
 pkgname="${_pkgbase}-dev"
 pkgver=${_ver}.0
@@ -21,7 +21,7 @@ optdepends=('mate-power-manager: Add power management support.'
             'rss-glx: Really slick screensavers.')
 groups=('mate-extra')
 source=("http://pub.mate-desktop.org/releases/${_ver}/${_pkgbase}-${pkgver}.tar.xz")
-sha1sums=('8cf4d7faff9b9bec37d007cd1320673205824b66')
+sha1sums=('c676ba7203a4f8ef9279ea9fb0a05950a10b74f7')
 
 prepare() {
     cd "${srcdir}"
