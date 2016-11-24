@@ -2,12 +2,12 @@
 
 pkgname=streamlink
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='CLI program that launches streams from various streaming services in a custom video player (livestreamer fork)'
 arch=('any')
 url='https://streamlink.github.io/'
 license=('BSD')
-depends=('python-requests' 'python-setuptools' 'rtmpdump')
+depends=('python-requests<2.12' 'python-setuptools' 'rtmpdump')
 makedepends=('python-sphinx')
 optdepends=('python-librtmp: Required by the ustreamtv plugin to be able to use non-mobile streams.')
 source=("https://github.com/${pkgname}/${pkgname}/releases/download/${pkgver}/${pkgname}-${pkgver}.tar.gz"{,.asc})
