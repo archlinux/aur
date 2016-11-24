@@ -4,35 +4,43 @@ pkgdesc="ROS - Follower for the turtlebot."
 url='http://ros.org/wiki/turtlebot_apps'
 
 pkgname='ros-indigo-turtlebot-follower'
-pkgver='2.3.3'
+pkgver='2.3.7'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
 license=('BSD')
 
-ros_makedepends=(ros-indigo-pcl-ros
-  ros-indigo-nodelet
+ros_makedepends=(ros-indigo-nodelet
   ros-indigo-roscpp
+  ros-indigo-depth-image-proc
   ros-indigo-catkin
   ros-indigo-turtlebot-msgs
   ros-indigo-dynamic-reconfigure
   ros-indigo-visualization-msgs)
-makedepends=('cmake' 'git' 'ros-build-tools'
+makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]})
 
-ros_depends=(ros-indigo-pcl-ros
-  ros-indigo-nodelet
+ros_depends=(ros-indigo-nodelet
   ros-indigo-roscpp
+  ros-indigo-turtlebot-teleop
+  ros-indigo-depth-image-proc
   ros-indigo-turtlebot-bringup
   ros-indigo-turtlebot-msgs
+  ros-indigo-topic-tools
   ros-indigo-dynamic-reconfigure
   ros-indigo-visualization-msgs)
 depends=(${ros_depends[@]})
 
-_tag=release/indigo/turtlebot_follower/${pkgver}-${_pkgver_patch}
-_dir=turtlebot_follower
-source=("${_dir}"::"git+https://github.com/turtlebot-release/turtlebot_apps-release.git"#tag=${_tag})
-md5sums=('SKIP')
+# Git version (e.g. for debugging)
+# _tag=release/indigo/turtlebot_follower/${pkgver}-${_pkgver_patch}
+# _dir=${pkgname}
+# source=("${_dir}"::"git+https://github.com/turtlebot-release/turtlebot_apps-release.git"#tag=${_tag})
+# sha256sums=('SKIP')
+
+# Tarball version (faster download)
+_dir="turtlebot_apps-release-release-indigo-turtlebot_follower-${pkgver}-${_pkgver_patch}"
+source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/turtlebot-release/turtlebot_apps-release/archive/release/indigo/turtlebot_follower/${pkgver}-${_pkgver_patch}.tar.gz")
+sha256sums=('35b89ed1a971bc74a4348d494168c40241ac0cad57f478613b8d575764cc204a')
 
 build() {
   # Use ROS environment variables
