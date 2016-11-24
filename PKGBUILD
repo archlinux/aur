@@ -19,8 +19,8 @@ source=("http://www.apache.org/dist/$pkgname/$pkgver/$pkgname-${pkgver}.tar.gz"
 # official signature file:
 # "http://www.apache.org/dist/$pkgname/$pkgver/$pkgname-${pkgver}.tar.gz.asc"
 md5sums=('ff89748a6668425d462dcaa12608cf8a'
-         'f313fac94525bf770bafa2392c8147c6'
-         '69df716316170056ff2a54c5299d8cb4')
+         '42e6bb21d7682b8a8f036c23532e4fe9'
+         '55cc5e556bb0622f5f913a1999f17766')
 
 prepare() {
   cd "$srcdir/$pkgname-$pkgver${_pkgver_minor}"
