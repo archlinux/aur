@@ -1,26 +1,28 @@
 # Maintainer: Mohammadreza Abdollahzadeh <morealaz at gmail dot com>
 
 pkgname=persian-fonts
-pkgver=1
-pkgrel=4
+pkgver=18
+pkgrel=1
 pkgdesc='Meta package to install all Persian fonts.'
 arch=(any)
 url='https://www.archlinux.org/'
 license=(GPL)
 depends=('ttf-borna'
-         'ttf-sina'
-         'ttf-irfonts'
-         'ttf-x2'
-         'ttf-iran-nastaliq'
-         'ttf-vazir'
-         'ttf-samim'
-         'ttf-tanha'
-         'ttf-shabnam'
          'ttf-gandom'
-         'ttf-parastoo'
-         'ttf-persian-hm-xs2'
-         'ttf-persian-hm-ftx'
+         'ttf-iran-nastaliq'
          'ttf-iranian-sans'
          'ttf-iranian-serif'
+         'ttf-irfonts'
+         'ttf-parastoo'
+         'ttf-persian-hm-ftx'
+         'ttf-persian-hm-xs2'
+         'ttf-sahel'
+         'ttf-samim'
+         'ttf-shabnam'
+         'ttf-sina'
+         'ttf-tanha'
+         'ttf-vazir'
+         'ttf-vazir-code'
+         'ttf-x2'
          'ttf-yas'
 )
