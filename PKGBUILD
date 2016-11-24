@@ -1,23 +1,21 @@
-# Maintainer: Mohammadreza Abdollahzadeh <morealaz@gmail.com>
+# Maintainer: Mohammadreza Abdollahzadeh <morealaz at gmail dot com>
 
 pkgname=ttf-gandom
-pkgver=0.3
-pkgrel=2
-pkgdesc="A beautiful Persian font."
+pkgver=0.4.4
+pkgrel=1
+pkgdesc="A beautiful Persian font based on ttf-samim."
 arch=('any')
 url="https://rastikerdar.github.io/gandom-font/"
 license=('OFL')
 groups=(persian-fonts)
-depends=('fontconfig' 'xorg-font-utils' 'unzip')
-source=("$pkgname.zip::https://github.com/rastikerdar/gandom-font/releases/download/v$pkgver/gandom-font-v$pkgver.zip")
-noextract=("$pkgname.zip")
+depends=('fontconfig' 'xorg-font-utils')
+source=("https://github.com/rastikerdar/gandom-font/releases/download/v$pkgver/gandom-font-v$pkgver.zip")
 install=$pkgname.install
-md5sums=('0b30950c5bf6baa9fd363cd0059f1f9c')
+md5sums=('ef14a30dbd73a697211df2fcc0172d2c')
 
-prepare() {
-  unzip -o -LL -qq $pkgname.zip -d $srcdir/$pkgname/
-}
-package() {  
-  install -m 644 -Dt $pkgdir/usr/share/fonts/$pkgname $srcdir/$pkgname/gandom*
-  install -Dm 644 $srcdir/$pkgname/license $pkgdir/usr/share/licenses/$pkgname/LICENSE    
+package() {
+    install -d $pkgdir/usr/share/fonts/$pkgname
+    cp -a ./Gandom.{eot,ttf,woff} $pkgdir/usr/share/fonts/$pkgname/
+    cp -a ./{Farsi*,Without-Latin}/Gandom-*.{eot,ttf,woff} $pkgdir/usr/share/fonts/$pkgname/
+    install -Dm644 ./LICENSE $pkgdir/usr/share/licenses/$pkgname/LICENSE    
 }
