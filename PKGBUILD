@@ -5,23 +5,29 @@ url='http://pythonwifi.wikispot.org/'
 
 pkgname='ros-indigo-rocon-python-wifi'
 pkgver='0.1.23'
-_pkgver_patch=0
+_pkgver_patch=1
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('GPLv2')
 
 ros_makedepends=(ros-indigo-catkin)
-makedepends=('cmake' 'git' 'ros-build-tools'
+makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]}
   python2-catkin-pkg)
 
 ros_depends=()
 depends=(${ros_depends[@]})
 
-_tag=release/indigo/rocon_python_wifi/${pkgver}-${_pkgver_patch}
-_dir=rocon_python_wifi
-source=("${_dir}"::"git+https://github.com/yujinrobot-release/rocon_tools-release.git"#tag=${_tag})
-md5sums=('SKIP')
+# Git version (e.g. for debugging)
+# _tag=release/indigo/rocon_python_wifi/${pkgver}-${_pkgver_patch}
+# _dir=${pkgname}
+# source=("${_dir}"::"git+https://github.com/yujinrobot-release/rocon_tools-release.git"#tag=${_tag})
+# sha256sums=('SKIP')
+
+# Tarball version (faster download)
+_dir="rocon_tools-release-release-indigo-rocon_python_wifi-${pkgver}-${_pkgver_patch}"
+source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/yujinrobot-release/rocon_tools-release/archive/release/indigo/rocon_python_wifi/${pkgver}-${_pkgver_patch}.tar.gz")
+sha256sums=('61459f2a630e1db34de0812162f3cab2917e846ec20e11d10509eef25ea47317')
 
 build() {
   # Use ROS environment variables
