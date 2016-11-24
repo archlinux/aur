@@ -2,12 +2,12 @@
 
 pkgname=streamlink
 pkgver=0.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc='CLI program that launches streams from various streaming services in a custom video player (livestreamer fork)'
 arch=('any')
 url='https://streamlink.github.io/'
 license=('BSD')
-depends=('python-requests<2.12' 'python-setuptools' 'rtmpdump')
+depends=('python-requests' 'python-setuptools' 'rtmpdump')
 makedepends=('python-sphinx')
 optdepends=('python-librtmp: Required by the ustreamtv plugin to be able to use non-mobile streams.')
 source=("https://github.com/${pkgname}/${pkgname}/releases/download/${pkgver}/${pkgname}-${pkgver}.tar.gz"{,.asc})
@@ -16,6 +16,7 @@ sha256sums=('8284d16622e70e3b56e5f43695c418972c37d6073b21d51d79644405e55b1544' '
 
 build() {
   cd "${pkgname}-${pkgver}"
+  sed -i 's/requests>=1.0,<2.12.0/requests>=1.0,<3.0/' setup.py
   python setup.py build_sphinx -b man
 }
 
