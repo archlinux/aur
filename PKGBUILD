@@ -4,7 +4,7 @@ pkgdesc="ROS - Ecl frontend to a linear matrix package (currently eigen)."
 url='http://wiki.ros.org/ecl_linear_algebra'
 
 pkgname='ros-indigo-ecl-linear-algebra'
-pkgver='0.61.8'
+pkgver='0.61.15'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -12,17 +12,19 @@ license=('BSD')
 
 ros_makedepends=(ros-indigo-ecl-eigen
   ros-indigo-ecl-license
+  ros-indigo-ecl-converters
   ros-indigo-ecl-math
   ros-indigo-ecl-formatters
   ros-indigo-ecl-exceptions
   ros-indigo-ecl-build
   ros-indigo-catkin
   ros-indigo-sophus)
-makedepends=('cmake' 'git' 'ros-build-tools'
+makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]})
 
 ros_depends=(ros-indigo-ecl-eigen
   ros-indigo-ecl-license
+  ros-indigo-ecl-converters
   ros-indigo-ecl-math
   ros-indigo-ecl-formatters
   ros-indigo-ecl-exceptions
@@ -32,14 +34,14 @@ depends=(${ros_depends[@]})
 
 # Git version (e.g. for debugging)
 # _tag=release/indigo/ecl_linear_algebra/${pkgver}-${_pkgver_patch}
-# _dir=ecl_linear_algebra
+# _dir=${pkgname}
 # source=("${_dir}"::"git+https://github.com/yujinrobot-release/ecl_core-release.git"#tag=${_tag})
 # sha256sums=('SKIP')
 
 # Tarball version (faster download)
 _dir="ecl_core-release-release-indigo-ecl_linear_algebra-${pkgver}-${_pkgver_patch}"
-source=("https://github.com/yujinrobot-release/ecl_core-release/archive/release/indigo/ecl_linear_algebra/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('859a8b19859aa1ee96390d57dee0e5475c939633ade0bd2a9e7204541e1187b0')
+source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/yujinrobot-release/ecl_core-release/archive/release/indigo/ecl_linear_algebra/${pkgver}-${_pkgver_patch}.tar.gz")
+sha256sums=('86ae7fb28af0523d7b73b9ac0d6b39f32ade1f4259979a79dc280bd9dee854de')
 
 build() {
   # Use ROS environment variables
