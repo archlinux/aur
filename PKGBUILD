@@ -4,14 +4,14 @@ pkgdesc="ROS - C++ implementation of Lie Groups using Eigen."
 url='http://www.ros.org/'
 
 pkgname='ros-indigo-sophus'
-pkgver='0.9.0'
-_pkgver_patch=2
+pkgver='0.9.1'
+_pkgver_patch=0
 arch=('any')
-pkgrel=3
+pkgrel=1
 license=('BSD')
 
 ros_makedepends=()
-makedepends=('cmake' 'git' 'ros-build-tools'
+makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]}
   eigen3)
 
@@ -21,14 +21,19 @@ depends=(${ros_depends[@]}
 
 # Git version (e.g. for debugging)
 # _tag=release/indigo/sophus/${pkgver}-${_pkgver_patch}
-# _dir=sophus
+# _dir=${pkgname}
 # source=("${_dir}"::"git+https://github.com/yujinrobot-release/sophus-release.git"#tag=${_tag})
 # sha256sums=('SKIP')
 
 # Tarball version (faster download)
 _dir="sophus-release-release-indigo-sophus-${pkgver}-${_pkgver_patch}"
-source=("https://github.com/yujinrobot-release/sophus-release/archive/release/indigo/sophus/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('e6bf8334d3b08bc85e0bb44028fe6c3121057641d4a8d3a680a19ceda592c5c7')
+source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/yujinrobot-release/sophus-release/archive/release/indigo/sophus/${pkgver}-${_pkgver_patch}.tar.gz")
+sha256sums=('3fced8d28511d901e02bf37419d5e03a4e07d4198cf11e6745628aa827d84df7')
+
+prepare() {
+  cd ${_dir}
+  sed -i s/-Werror// CMakeLists.txt
+}
 
 build() {
   # Use ROS environment variables
