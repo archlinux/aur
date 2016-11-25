@@ -1,4 +1,5 @@
 *.[oa]
+*.pkg
 *.pkg.*
 *.xz
 *.zip

@@ -5,7 +5,7 @@
 
 pkgbase=linux-cik
 _srcname=linux-4.8
-pkgver=4.8.8
+pkgver=4.8.10
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
@@ -27,16 +27,16 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
 
 sha256sums=('3e9150065f193d3d94bcf46a1fe9f033c7ef7122ab71d75a7fb5a2f0c9a7e11a'
             'SKIP'
-            '588b6537cb660c2f7d483aca13f7509a5fc86c60df32c167d40e81d6c7ab4f9c'
+            'd0ea1671c488957d7b1ef46a5107c47c16b37f2985ca7ee4c900ba0f89d40d3c'
             'SKIP'
             # config
-            'cb0c20e586d4419b8cd14dcbf545a575fba6b2cd3ffb2a2c3e56873dcf3fdebe'
+            'd30eae8ce9d0164ab8d3fcac047eff7f0874dce7e7a30b8a0193d16f029c9245'
             # config.x86_64
-            '7374c052b9f633e5f7f1b85226093de99601a77a2b4e608858d512f3b5c6fde2'
+            'c149afccbb6222b60b76519fc60cecc3ed6331dfb9fa4f82b2db586c5b3034fd'
             # 99-linux-cik.hook
             '834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0'
             # linux-cik.preset
-            '974cab3b52cd094eb35caefb9722472ac398333978d487f8544b759eafe1b60e'
+            'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
             # change-default-console-loglevel.patch
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99')
 validpgpkeys=(
