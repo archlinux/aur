@@ -73,8 +73,8 @@ end
 if success
 	puts "Finishing update to version #{new_version}."
 
-	# Make sure the old src downloads don't exist anymore.
-	Dir["firefox_*.tar.bz2"].each {|f| File.unlink f}
+	# Clean old files.
+	system "git clean -fx"
 
 	# Update package sums & srcinfo.
 	system "updpkgsums"
