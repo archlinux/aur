@@ -1,118 +1,38 @@
-# This is a default template for a post-install scriptlet.
-# Uncomment only required functions and remove any functions
-# you don't need (and this header).
-
-## arg 1:  the new package version
-#pre_install() {
-  #echo "If you have not already done so, you can get your serial number from: http://students.autodesk.com"
-  #read -p "Please enter your serial number: " SERIALNUMBER
-  #read -p "Please enter your product id: " PRODUCTID
-  #echo ""
-#}
-
-## arg 1:  the new package version
 post_install() {
-  mkdir /usr/tmp
-  chmod 777 /usr/tmp
+    echo -e 'MAYA_LICENSE=unlimited\nMAYA_LICENSE_METHOD=standalone' > /usr/autodesk/maya2017/bin/License.env
 
-  cp /opt/Autodesk/Adlm/R11/lib64/libadlmPIT.so.11 /usr/lib/libadlmPIT.so.11
-  cp /opt/Autodesk/Adlm/R11/lib64/libadlmutil.so.11 /usr/lib/libadlmutil.so.11
+    /opt/Autodesk/Adlm/FLEXnet/bin/install_fnp.sh /opt/Autodesk/Adlm/FLEXnet/bin/FNPLicensingService
 
-  echo -e 'MAYA_LICENSE=unlimited\nMAYA_LICENSE_METHOD=standalone' > /usr/autodesk/maya2016/bin/License.env
+    read -r -d '' POSTINSTALLMGG << EOF
+## In order to activate Maya, you need to run its registration setup file and
+## enter your registration information.
 
-  #/usr/autodesk/maya2016/bin/adlmreg -i S $PRODUCTID $PRODUCTID 2016.0.0.F $SERIALNUMBER /var/opt/Autodesk/Adlm/Maya2016/MayaConfig.pit
+## Find the folder where your Maya package was built, look under maya-setup,
+## and run:
 
-  /opt/Autodesk/Adlm/FLEXnet/bin/install_fnp.sh /opt/Autodesk/Adlm/FLEXnet/bin/FNPLicensingService
+$ export LD_LIBRARY_PATH=/opt/Autodesk/Adlm/R12/lib64/
+$ sudo ./setup
 
-  ln -s /usr/lib/libssl.so /usr/autodesk/maya2016/lib/libssl.so.10
-  ln -s /usr/lib/libcrypto.so /usr/autodesk/maya2016/lib/libcrypto.so.10
+## When it asks for your registration information,
+## go to http://www.autodesk.com/education/free-software/maya
+## and create a student account. Next, select Maya 2017 for the version,
+## Linux as the operating system, and English for the language.
 
-  ln -s /usr/lib/libjpeg.so /usr/autodesk/maya2016/lib/libjpeg.so.62
-  ln -s /usr/lib/libtiff.so /usr/autodesk/maya2016/lib/libtiff.so.3
+## Follow the setup all the way through. Installation will fail, but that's
+## normal.
+    
+## Next, run Maya to activate the licence.
 
-  mkdir /usr/autodesk/maya2016/plugin-backups
-  mv /usr/autodesk/maya2016/plug-ins/bifrost /usr/autodesk/maya2016/plugin-backups/
+$ maya
 
-  read -r -d '' POSTINSTALLMGG << EOF
-######################################
-## Run this commands once after install
-######################################
-#export MAYA_LOCATION=/usr/autodesk/maya2016/
-#export LD_LIBRARY_PATH=/opt/Autodesk/Adlm/R11/lib64/
+## Maya uses the Alt key to move around, so if your window manager uses
+## pure Alt for moving the window around, change it to Meta or something.
 
-#nano mayainstall.c
-
-##add the following in nano, save and close
-#int main (void) {return 0;}
-
-#gcc mayainstall.c
-
-#if [ -f "/usr/bin/rpm" ] && sudo mv /usr/bin/rpm /usr/bin/rpm_backup
-
-#gcc mayainstall.c
-#sudo cp a.out /usr/bin/rpm
-
-#chmod +x /opt/Autodesk/MayaSetup/setup
-#sudo /opt/Autodesk/MayaSetup/setup
-
-##Then, follow the GUI, Accept, put your Serial Number and the 657G1 thing
-
-#sudo rm /usr/bin/rpm
-#if [ -f "/usr/bin/rpm_backup" ] && sudo mv /usr/bin/rpm_backup /usr/bin/rpm
-
-## Run once as sudo to activate the licence
-
-#sudo maya
-
-##If didn’t activate so go to https://registeronce.autodesk.com and when it asks you for request file, get from /tmp/MAYA2016en_USLongCode.xml while maya activation screen is open. You will get a file named Long_Response_Code.xml which will allow you to activate.
-
-## Close maya and run the following
-## Since Maya was ran once with sudo, reset the owner of the maya folder to user
-#sudo chown -R "$USER":"$USER" ~/maya
-
-## Close the file and you are almost done
-## Maya uses the windows key to move around, so disable the Unity hints so that they don't pop up
-##Install compizconfig-settings-manager
-##Disable Shortcut Hints Overlay
-##Uninstall it when you are done
+## If you use Plasma 5 with Kwin, which does use this behavior by default:
+## Go to System Settings -> Window Behavior -> Window Actions,
+## And change the Modifier Key for Inner Window to Meta
 
 EOF
 
-   echo "$POSTINSTALLMGG"
-
+    echo "$POSTINSTALLMGG"
 }
-
-## arg 1:  the new package version
-## arg 2:  the old package version
-#pre_upgrade() {
-	# do something here
-#}
-
-## arg 1:  the new package version
-## arg 2:  the old package version
-#post_upgrade() {
-	# do something here
-#}
-
-## arg 1:  the old package version
-pre_remove() {
-  rm /usr/lib/libadlmPIT.so.11
-  rm /usr/lib/libadlmutil.so.11
-
-  rm /usr/autodesk/maya2016/bin/License.env
-
-  rm /var/opt/Autodesk/Adlm/Maya2016/MayaConfig.pit
-
-  rm /usr/autodesk/maya2016/lib/libssl.so.10
-  rm /usr/autodesk/maya2016/lib/libcrypto.so.10
-
-  rm /usr/autodesk/maya2016/lib/libjpeg.so.62
-  rm /usr/autodesk/maya2016/lib/libtiff.so.3
-
-  rm -rf /usr/autodesk/maya2016/plugin-backups
-}
-
-## arg 1:  the old package version
-#post_remove() {
-	# do something here
-#}
