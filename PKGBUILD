@@ -1,13 +1,13 @@
 # Maintainer: Mohammadreza Abdollahzadeh <morealaz at gmail dot com>
 pkgname=freebsd-man-pages
 pkgver=11.0
-pkgrel=1
+pkgrel=2
 pkgdesc="The FreeBSD manual pages."
 arch=('i686' 'x86_64')
 url="https://www.freebsd.org/cgi/man.cgi"
 license=('BSD')
-provides=('$pkgname' 'freebsd-manpages')
-conflicts=('$pkgname' 'freebsd-manpages')
+provides=("$pkgname" 'freebsd-manpages')
+conflicts=("$pkgname" 'freebsd-manpages')
 source_i686=("ftp://ftp.freebsd.org/pub/FreeBSD/releases/i386/i386/$pkgver-RELEASE/base.txz")
 source_x86_64=("ftp://ftp.freebsd.org/pub/FreeBSD/releases/amd64/amd64/$pkgver-RELEASE/base.txz")
 md5sums_i686=('8ebbe0bd10a269434fb1e42693578306')
