@@ -2,7 +2,7 @@
 # Maintainer: jcherqui
 
 pkgname=rdcli
-pkgver=1.3.1
+pkgver=1.3.2
 pkgrel=1
 pkgdesc="A simple CLI tool to unrestrict links with real-debrid.com"
 arch=('any')
@@ -12,7 +12,7 @@ depends=('nodejs')
 makedepends=('npm')
 source=("https://registry.npmjs.org/$pkgname/-/$pkgname-$pkgver.tgz")
 noextract=($pkgname-$pkgver.tgz)
-sha1sums=('f64eb7656b289097dc4a6043199ec380b1fb7957')
+sha1sums=('0f8657bf1e08f53ad5b4a5b90c61f1e93492d2fa')
 
 package() {
   npm install -g --user root --prefix "$pkgdir"/usr "$srcdir"/$pkgname-$pkgver.tgz
