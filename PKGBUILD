@@ -1,5 +1,5 @@
 pkgname=python36
-pkgver=3.6.0b3
+pkgver=3.6.0b4
 pkgrel=1
 _pybasever=3.6
 _pymajver=3
@@ -12,7 +12,7 @@ makedepends=('tk' 'sqlite' 'valgrind' 'bluez-libs' 'mpdecimal' 'hardening-wrappe
 optdepends=('tk: for tkinter' 'sqlite')
 options=('!makeflags')
 source=(http://www.python.org/ftp/python/${_pybasever}.0/Python-${pkgver}.tar.xz)
-sha256sums=('b417a9024c8e5221c8b6bc154dd8e776653aed9d650f8e0d85d8ec82bf5c8fa5')
+sha256sums=('0afca41351ce9586becd398120ad2718252f93fffc134761c8fd80dc5144a979')
 # Maintainer: Tobias Kunze <rixx@cutebit.de>
 # Based on python33 script from: Rodolphe Breard <packages@what.tf> and Christopher Arndt <chris@chrisarndt.de>
 # Via the python34 adaption of Raphael Michel <mail@raphaelmichel.de>
