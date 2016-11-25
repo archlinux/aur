@@ -1,7 +1,6 @@
 # Maintainer: Quentin Bourgeois <quentin@bourgeois.eu>
 #
-# TODO: * Can we sign the PKGBUILD with GPG ?
-#       * viivakoodi require (python) argparse if python interpreter is 2.6, 
+# TODO: * viivakoodi require (python) argparse if python interpreter is 2.6, 
 #               3.0 or 3.1 => how to do that ?
 _libname=viivakoodi
 pkgname=("python2-$_libname" "python-$_libname")
