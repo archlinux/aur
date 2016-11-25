@@ -31,6 +31,7 @@ check() {
 }
 
 package_python-viivakoodi() {
+    # as python-3.0 and python-3.1 need argparse I force for every version
     depends=('python' 'python-argparse')
     makedepends=('python-setuptools')
     provides=('python2-viivakoodi')
@@ -41,6 +42,7 @@ package_python-viivakoodi() {
 }
 
 package_python2-viivakoodi() {
+    # as python2.6 need argparse I force for every version
     depends=('python2>=2.6' 'python2-argparse')          
     makedepends=('python2-setuptools')
     provides=('python2-viivakoodi')
