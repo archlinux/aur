@@ -12,15 +12,15 @@ _channel=developer
 
 _release_year=2016
 _release_month=11
-_release_day=23
-_release_time=00-40-21
+_release_day=25
+_release_time=00-40-06
 _release_version=52.0a2
 
 pkgname="${_name}-${_channel}-de"
 pkgdesc='Standalone web browser from mozilla.org, developer build - German'
 url='http://www.mozilla.org/firefox/developer'
 pkgver="${_release_version}_${_release_year}${_release_month}${_release_day}"
-pkgrel=2
+pkgrel=1
 arch=('x86_64')
 license=('MPL' 'GPL' 'LGPL')
 _file="${_name}-${_release_version}.de.linux-x86_64"
@@ -60,8 +60,8 @@ package() {
     install -Dm644 $srcdir/vendor.js $pkgdir/opt/firefox-$_channel/browser/defaults/preferences/vendor.js
 }
 
-sha512sums=('2e5e3048172ae89fcbffba128bc848f2a1dfb6eaee734173d5b6a9a13af80e8686ec049b3ba177b05887f3f754fe70be5c67580c7b8c24fe4a62c21864822ba3'
-            '8e2de2e696f611dbfbfb0df804e1caa4c6e132c11d97bba91f31e0d12901871f7a4e0790ed7181ec18c1b1f86417cea9f4a83b30e89992c8a865045bfeb8e5d2'
+sha512sums=('e8676cb2ef97e4e27d9ae3178bc54e09968ec08086531d2fc749b4ca8933262af6ecbe6d1b4c62ba77e3dc4d682e05e58c574d32f76c11a7f6c0c599f399ef28'
+            'e810687dfed306b8c3a84e8f4495ac03591ae0bfd6f00da6bb4da002f3d5f5ca416df55f93b5dfa3a39350a2a6235ec0bf69e1f7e3de65efc0091391e4215d25'
             'SKIP'
             'b109b884ed79e9e214541750a0fcac8d7d8891cc7f0e0d472b717a5b71e569ab5852534bceaab045a5b13a9290a7905604d08fe97e28c675a2266c30fe719cb6'
             'bae5a952d9b92e7a0ccc82f2caac3578e0368ea6676f0a4bc69d3ce276ef4f70802888f882dda53f9eb8e52911fb31e09ef497188bcd630762e1c0f5293cc010')
