@@ -1,0 +1,10 @@
+post_install() {
+  # Removing sys.so if needed, in order for Julia to start, see FS#39721
+  julia --version 2>/dev/null || rm /usr/lib/julia/sys.so
+}
+
+post_upgrade() {
+  post_install
+}
+
+# vim:set ts=2 sw=2 et:

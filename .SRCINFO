@@ -1,0 +1,46 @@
+pkgbase = julia
+	pkgdesc = High-level, high-performance, dynamic programming language (compiled with the Intel MKL library)
+	pkgver = 0.5.0
+	pkgrel = 1
+	url = http://julialang.org/
+	arch = x86_64
+	license = MIT
+	makedepends = python2
+	makedepends = libuv
+	makedepends = libunwind
+	makedepends = mpfr
+	makedepends = zlib
+	makedepends = suitesparse-mkl
+	makedepends = patchelf
+	makedepends = cmake
+	makedepends = pcre2
+	makedepends = openssl
+	makedepends = intel-mkl
+	makedepends = intel-compiler-base
+	makedepends = intel-fortran-compiler
+	makedepends = libgit2
+	conflicts = julia-git
+	conflicts = julia
+	options = !emptydirs
+	options = staticlibs
+	source = https://github.com/JuliaLang/julia/releases/download/v0.5.0/julia-0.5.0.tar.gz
+	md5sums = 9169b26bebf9844e671312daacc62db1
+
+pkgname = julia-mkl
+	install = sysfix.install
+	depends = libunwind
+	depends = mpfr
+	depends = zlib
+	depends = suitesparse-mkl
+	depends = pcre2
+	depends = libgit2
+	depends = openssl
+	depends = patchelf
+	depends = intel-mkl
+	optdepends = gnuplot: If using the Gaston Package from julia
+	backup = etc/ld.so.conf.d/julia.conf
+	backup = etc/julia/juliarc.jl
+
+pkgname = julia-mkl-docs
+	pkgdesc = Documentation and examples for Julia (package corresponding to the MKL version)
+
