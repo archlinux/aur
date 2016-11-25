@@ -36,7 +36,6 @@ package_python-viivakoodi() {
     makedepends=('python-setuptools')
     provides=('python2-viivakoodi')
     optdepends=('python-pillow')
-    
 
     cd "$srcdir/$_libname-$pkgver"
     python setup.py install --root="$pkgdir/" --optimize=1
