@@ -1,9 +1,9 @@
 # Maintainer: Alexander F Rødseth <xyproto@archlinux.org>
 
 pkgname=algernon
-pkgver=1.2.1
-pkgrel=4
-pkgdesc='Web server with built-in support for Lua, Markdown, HTTP/2, templates, SCSS and Redis'
+pkgver=1.3
+pkgrel=1
+pkgdesc='Webi/application server with built-in support for HTTP/2, Lua, Markdown and Pongo2'
 arch=('x86_64' 'i686')
 url='http://algernon.roboticoverlords.org/'
 license=('MIT')
@@ -13,41 +13,30 @@ optdepends=('redis: For using the Redis database backend'
             'postgresql: For using the PostgreSQL database backend')
 backup=('etc/algernon/serverconf.lua'
         'usr/lib/systemd/system/algernon.service')
-source=("git://github.com/xyproto/algernon#commit=8d43533")
+source=("git://github.com/xyproto/algernon#tag=$pkgver")
 md5sums=('SKIP')
 _gourl=github.com/xyproto/algernon
 
 prepare() {
   export GOROOT=/usr/lib/go
 
-  rm -rf build
-  mkdir -p build/go
-  cd build/go
-
-  for f in "$GOROOT/"*; do
-    ln -s "$f"
-  done
-
-  rm pkg
-  mkdir pkg
-  cd pkg
-
-  for f in "$GOROOT/pkg/"*; do
-    ln -s "$f"
-  done
+  rm -rf build; mkdir -p build/go; cd build/go
+  for f in "$GOROOT/"*; do ln -s "$f"; done
+  rm pkg; mkdir pkg; cd pkg
+  for f in "$GOROOT/pkg/"*; do ln -s "$f"; done
 
   export GOROOT="$srcdir/build/go"
   export GOPATH="$srcdir/build"
   export DESTPATH="$GOPATH/src/$_gourl"
 
   # Make sure $DESTPATH is empty, but exists
-  rm -rf "$DESTPATH"
-  mkdir -p "$DESTPATH"
+  rm -rf "$DESTPATH"; mkdir -p "$DESTPATH"
 
   mv "$srcdir/$pkgname" "$(dirname $DESTPATH)"
 
-  # Manage Go dependencies by using Glide
   cd "$GOPATH/src/$_gourl"
+
+  # Manage Go dependencies with Glide
   glide update
   glide install
 
