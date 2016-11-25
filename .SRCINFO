@@ -1,7 +1,7 @@
 pkgbase = gnome-shell-extension-redshift-git
 	pkgdesc = Redshift integration for GNOME Shell
 	pkgver = r29.8fd6a3b
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/tommie-lie/gnome-shell-extension-redshift
 	arch = any
 	license = GPL3
@@ -11,8 +11,11 @@ pkgbase = gnome-shell-extension-redshift-git
 	makedepends = pkg-config
 	makedepends = gnome-common
 	makedepends = intltool
+	makedepends = patch
 	source = git+https://github.com/tommie-lie/gnome-shell-extension-redshift
+	source = metadata.patch
 	md5sums = SKIP
+	md5sums = cf1f66a9f06d7e403221d82615a9eace
 
 pkgname = gnome-shell-extension-redshift-git
 
