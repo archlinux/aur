@@ -1,7 +1,7 @@
 # Maintainer: Timofey Titovets <nefelim4ag@gmail.com>
 
 pkgname=bees-git
-pkgver=1.0000000
+pkgver=6.1303fb9
 pkgrel=1
 pkgdesc="Best-Effort Extent-Same, a btrfs deduplicator daemon"
 arch=('any')
@@ -13,9 +13,20 @@ source=("$pkgname"::'git://github.com/Zygo/bees.git#branch=master')
 md5sums=('SKIP')
 
 pkgver() {
-	:
+	cd ${pkgname}
+	echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+}
+
+prepare() {
+	cd ${pkgname}
+	make
 }
 
 package() {
-	:
+	mkdir -p ${pkgdir}/usr/bin/
+	for file in ${pkgname}/bin/*; do
+		mv $file ${pkgdir}/usr/bin/
+	done
+	mkdir -p ${pkgdir}/usr/lib/
+	mv ${pkgname}/lib/libcrucible.so ${pkgdir}/usr/lib/
 }
