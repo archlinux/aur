@@ -2,7 +2,7 @@
 
 pkgname='build-generator-stable-git'
 pkgver=0.8.4.415573d
-pkgrel=1
+pkgrel=2
 pkgdesc='Generates jobs on a Jenkins server according to specifications'
 arch=('i686' 'x86_64')
 url='https://projects.cor-lab.org/projects/build-generator'
@@ -14,14 +14,16 @@ source=("build-generator::git+https://code.cor-lab.org/git/build-generator#branc
         "configuration-options::git+https://github.com/scymtym/configuration.options"
         "parser::git+https://github.com/scymtym/parser.ini"
         "rosetta::git+https://code.cor-lab.org/git/rosetta.git.cl"
-        "architecture.builder-protocol::git+https://github.com/scymtym/architecture.builder-protocol")
+        "architecture.builder-protocol.tar.gz::https://github.com/scymtym/architecture.builder-protocol/archive/release-0.5.tar.gz")
 md5sums=('SKIP'
          'SKIP'
          'SKIP'
          'SKIP'
-         'SKIP')
+         '8a0bca93913ee772fc9267485659552b')
 conflicts=('build-generator')
 provides=('build-generator')
+
+_qlver='2016-10-31'
 
 pkgver() {
     cd "${srcdir}/build-generator"
@@ -34,7 +36,13 @@ prepare() {
     then
         mkdir -p quicklisp
         curl -O http://beta.quicklisp.org/quicklisp.lisp
-        sbcl --noinform --no-userinit --disable-debugger --load quicklisp.lisp --eval '(quicklisp-quickstart:install :path "'"$(pwd)"'/quicklisp")' --quit
+        sbcl \
+            --noinform --no-userinit --disable-debugger \
+            --load quicklisp.lisp \
+            --eval '(quicklisp-quickstart:install
+                     :dist-version "quicklisp/'"${_qlver}"'"
+                     :path         "'"$(pwd)"'/quicklisp")' \
+            --quit
     fi
 
     # hack custom quicklisp path into cl-launch
@@ -52,7 +60,7 @@ build() {
     export CC=cc
     "${srcdir}/cl-launch" -Q \
         -S "(:source-registry \
-             (:tree \""${srcdir}"\") \
+             (:tree \""${srcdir}"\")
              :ignore-inherited-configuration)" \
         -s jenkins.project.commandline-interface \
         -F 'rune-dom::(defun adjust-vector-exponentially (vector new-dimension set-fill-pointer-p)
