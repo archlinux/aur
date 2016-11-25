@@ -9,7 +9,7 @@ license=('MIT')
 conflicts=('silentarmy, silentarmy-git')
 provides=('silentarmy')
 source=('git+https://github.com/krnlx/silentarmy-nvmod.git')
-depends=('libcl' 'opencl-headers' 'python')
+depends=('libcl' 'opencl-headers' 'python' 'opencl-nvidia')
 md5sums=('SKIP')
 
 _gitname='silentarmy-nvmod'
