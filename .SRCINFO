@@ -1,6 +1,6 @@
 pkgbase = qgis-ltr
 	pkgdesc = Geographic Information System (GIS) that supports vector, raster & database formats; Long Term Release
-	pkgver = 2.14.8
+	pkgver = 2.14.9
 	pkgrel = 1
 	url = http://qgis.org/
 	arch = i686
@@ -29,10 +29,10 @@ pkgbase = qgis-ltr
 	optdepends = python2-psycopg2: Processing plugin
 	optdepends = python2-pyspatialite: Processing plugin
 	optdepends = python2-yaml: Processing plugin
-	provides = qgis=2.14.8
+	provides = qgis=2.14.9
 	conflicts = qgis
-	source = https://qgis.org/downloads/qgis-2.14.8.tar.bz2
-	md5sums = 80aff36ff59315de48d662b0949b7827
+	source = https://qgis.org/downloads/qgis-2.14.9.tar.bz2
+	md5sums = 15c780da44599c852e1608c5fdcbd236
 
 pkgname = qgis-ltr
 
