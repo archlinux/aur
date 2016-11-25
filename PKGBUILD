@@ -5,7 +5,7 @@ pkgname=linux-linode
 _basekernel=4.8
 _kernelname=${pkgname#linux}
 _srcname=linux-${_basekernel}
-pkgver=${_basekernel}.8
+pkgver=${_basekernel}.10
 pkgrel=1
 arch=('i686' 'x86_64')
 url="https://github.com/yardenac/linux-linode"
@@ -20,7 +20,7 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar."{xz,sign}
         'hook'
         'preset')
 sha512sums=('a48a065f21e1c7c4de4cf8ca47b8b8d9a70f86b64e7cfa6e01be490f78895745b9c8790734b1d22182cf1f930fb87eaaa84e62ec8cc1f64ac4be9b949e7c0358' 'SKIP'
-            '4ad7b881c9fafaf446d00e53af22d1940ecf00291ed57d1706ad12725a7bf525abb1d17500d662409eccd77ed0e9c2a11580ce94d6b6344188f35bd9e49c2418' 'SKIP'
+            'c8ad31fe9d6a555e5b219cb4e751f633916a66e7d2d4b70a169dc55fe786d9b25000c29950fe39342c6a8a958ad036b4c642fab7e16ece6e6d76eafe794d9a92' 'SKIP'
             '211be6cff3c652cf635016f6ea55e95ba8e3dde78f77949f32d7952df389c0dbbaf10b03f813c906b31375e151cff922232c0adb15e7a2948f823ba44345efbd'
             '25bf894092daacf165e471b25d5259e5a21befdf1b06b385ff4d9acec000572a9217caf3ed2c90484031b36b6779ef4a3445261d79331ca06d6c2c81a2e22672'
             '2beaa01dc9679a66ccbbca0f4abeb0f77956651e3f83f114030b2ef344a16240124a549ccee2588b6a1179be6a66b4a8dc931e2c15c4d5282afeb85bb6ada210'
