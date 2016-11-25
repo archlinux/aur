@@ -1,7 +1,7 @@
 # Maintainer: Eduardo Sánchez Muñoz
 
 pkgname=(cling-git cling-jupyter-git)
-pkgver=r3344.bb14201
+pkgver=r3516.9157aad
 pkgrel=1
 pkgdesc="Interactive C++ interpreter built on the top of LLVM and Clang libraries."
 arch=('i686' 'x86_64')
@@ -12,13 +12,11 @@ source=(
     "llvm::git+http://root.cern.ch/git/llvm.git#branch=cling-patches"
     "clang::git+http://root.cern.ch/git/clang.git#branch=cling-patches"
     "cling::git+http://root.cern.ch/git/cling.git#branch=master"
-    "cling-jupyter-path.diff"
 )
 sha256sums=(
     'SKIP'
     'SKIP'
     'SKIP'
-    '9569ca1bfc0b675c86f51904de96ed47254490f7f9ba6bc8540210f9269898a9'
 )
 
 pkgver() {
@@ -34,9 +32,6 @@ prepare() {
     if [ ! -h "$srcdir/llvm/tools/cling" ]; then
         ln -s "$srcdir/cling" "$srcdir/llvm/tools/cling"
     fi
-    
-    cd "$srcdir/cling"
-    git apply "$srcdir/cling-jupyter-path.diff"
 }
 
 build() {
@@ -78,5 +73,5 @@ package_cling-jupyter-git() {
     
     cd "$srcdir/cling/tools/Jupyter/kernel"
     python3 setup.py install --prefix=/usr --root="$pkgdir"
-    jupyter-kernelspec install --prefix="$pkgdir/usr" cling
+    jupyter-kernelspec install --prefix="$pkgdir/usr" .
 }
