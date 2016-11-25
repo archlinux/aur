@@ -31,9 +31,10 @@ package() {
 	mv ${pkgname}/lib/libcrucible.so ${pkgdir}/usr/lib/
 
 	mkdir -p ${pkgdir}/etc/profile.d/
-	echo export BEESHOME=/var/lib/bees/ > ${pkgdir}/etc/profile.d/bees.sh
-	echo export BEESSTATUS=/run/bees.status
-
+	{
+		echo export BEESHOME=/var/lib/bees/
+		echo export BEESSTATUS=/run/bees.status 
+	} > ${pkgdir}/etc/profile.d/bees.sh
 	mkdir -p ${pkgdir}/var/lib/bees/
 	touch ${pkgdir}/var/lib/bees/beeshash.dat
 	chmod 700 ${pkgdir}/var/lib/bees/beeshash.dat
