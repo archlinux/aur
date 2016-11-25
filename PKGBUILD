@@ -1,8 +1,8 @@
 # Maintainer: Quentin Bourgeois <quentin@bourgeois.eu>
 #
-# TODO: * Can we put a check per pkgname ?
-#       * Can we sign the PKGBUILD with GPG ?
-#       * Check if python-pillow is the right deps for PIL
+# TODO: * Can we sign the PKGBUILD with GPG ?
+#       * viivakoodi require (python) argparse if python interpreter is 2.6, 
+#               3.0 or 3.1 => how to do that ?
 libname=viivakoodi
 pkgname=("python2-$libname" "python-$libname")
 softver=0.8
@@ -24,33 +24,31 @@ checkdepends=('python-tox' 'python-pylint' )
 checkdepends+=('python2-tox' 'python2-pylint') 
 
 check() {
-        cd "$srcdir/$libname-$pkgver"
-
-        msg "Testing $libname-$pkgver with python3"
-        python ./setup.py test
-}
-check() {
-        msg "I AM TESTING"
-}
-
-check_python-viivakoodi() {
-  msg "I A AM TESTING PYTHON3"                                  
+    cd "$srcdir/$libname-$pkgver"
+    
+    for py_int in python3 python2; do
+        msg "Testing $libname-$pkgver with $py_int"
+        "$py_int" ./test.py
+    done
 }
 
 package_python-viivakoodi() {
-  depends=('python')
-  provides=('python2-viivakoodi')
-  optdepends=('python-pillow')
+    depends=('python' 'python-argparse')
+    makedepends=('python-setuptools')
+    provides=('python2-viivakoodi')
+    optdepends=('python-pillow')
+    
 
-  cd "$srcdir/$libname-$pkgver"
-  python setup.py install --root="$pkgdir/" --optimize=1
+    cd "$srcdir/$libname-$pkgver"
+    python setup.py install --root="$pkgdir/" --optimize=1
 }
 
 package_python2-viivakoodi() {
-  depends=('python2')          
-  provides=('python2-viivakoodi')
-  optdepends=('python2-pillow')
+    depends=('python2>=2.6' 'python2-argparse')          
+    makedepends=('python2-setuptools')
+    provides=('python2-viivakoodi')
+    optdepends=('python2-pillow')
 
-  cd "$srcdir/$libname-$pkgver"
-  python2 setup.py install --root="$pkgdir/" --optimize=1
+    cd "$srcdir/$libname-$pkgver"
+    python2 setup.py install --root="$pkgdir/" --optimize=1
 }

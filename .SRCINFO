@@ -21,11 +21,13 @@ pkgbase = python2-viivakoodi
 	sha512sums = b7d04def3d2d441dc8287e69cf1eb7a7b6e91e5833fdab4cfa440741e2a79bc4624f887cafa052644fcb01ac24f5da98978e522304303f0c89145b9e8f2a3c43
 
 pkgname = python2-viivakoodi
-	depends = python2
+	depends = python2>=2.6
+	depends = python2-argparse
 	optdepends = python2-pillow
 	provides = python2-viivakoodi
 
 pkgname = python-viivakoodi
 	depends = python
+	depends = python-argparse
 	optdepends = python-pillow
 	provides = python2-viivakoodi
