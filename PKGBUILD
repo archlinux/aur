@@ -1,6 +1,6 @@
 # Maintainer: Israel Herraiz <isra@herraiz.org
 
-pkgbase=julia
+pkgbase=julia-mkl
 pkgname=('julia-mkl' 'julia-mkl-docs')
 pkgver=0.5.0
 pkgrel=1
@@ -24,7 +24,7 @@ build() {
   source /opt/intel/mkl/bin/mklvars.sh intel64
   source /opt/intel/composerxe/linux/bin/compilervars.sh intel64
   
-  make -C $pkgbase-$pkgver prefix=/usr sysconfdir=/etc \
+  make -C julia-$pkgver prefix=/usr sysconfdir=/etc \
     USEICC=1 \
     USEIFC=1 \
     USE_INTEL_MKL=1 \
@@ -47,7 +47,7 @@ package_julia-mkl() {
   source /opt/intel/mkl/bin/mklvars.sh intel64
   source /opt/intel/composerxe/linux/bin/compilervars.sh intel64
 
-  make -C $pkgbase-$pkgver DESTDIR="$pkgdir" \
+  make -C julia-$pkgver DESTDIR="$pkgdir" \
     prefix=/usr sysconfdir=/etc \
     USEICC=1 \
     USEIFC=1 \
@@ -79,11 +79,11 @@ package_julia-mkl() {
 
 package_julia-mkl-docs() {
   pkgdesc='Documentation and examples for Julia (package corresponding to the MKL version)'
-  cd "$pkgbase-$pkgver"
+  cd "julia-$pkgver"
 
   install -d "$pkgdir/usr/share/doc"
-  cp -rv doc "$pkgdir/usr/share/doc/$pkgbase"
-  cp -rv examples "$pkgdir/usr/share/doc/$pkgbase/examples"
+  cp -rv doc "$pkgdir/usr/share/doc/julia"
+  cp -rv examples "$pkgdir/usr/share/doc/julia/examples"
   install -Dm644 LICENSE.md "$pkgdir/usr/share/licenses/$pkgname/LICENSE.md"
 }
 

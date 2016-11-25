@@ -1,4 +1,4 @@
-pkgbase = julia
+pkgbase = julia-mkl
 	pkgdesc = High-level, high-performance, dynamic programming language (compiled with the Intel MKL library)
 	pkgver = 0.5.0
 	pkgrel = 1
