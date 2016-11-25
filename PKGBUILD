@@ -41,7 +41,7 @@ prepare() {
     valid_hash=$(grep -e "sha512.*linux-x86_64\.tar\.bz2" "firefox_$pkgver.checksums" | cut -d " " -f1)
     actual_hash=${sha512sums[0]}
 
-    if [ "$valid_hash" -ne "$actual_hash" ];
+    if [ "$valid_hash" != "$actual_hash" ];
     then
         error "SHA512 hash in this PKGBUILD was not correctly signed."
         exit 1
