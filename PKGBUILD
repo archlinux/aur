@@ -7,7 +7,7 @@
 
 
 pkgname=kdenlive-release-git
-pkgver=16.07.70.r7647.51c4bfa
+pkgver=16.11.80.r7960.69ea21c
 pkgrel=1
 pkgdesc="A non-linear video editor for Linux using the MLT video framework. KF5 Frameworks (Latest Applications GIT Version)"
 arch=('i686' 'x86_64')
@@ -28,7 +28,7 @@ provides=('kdenlive')
 conflicts=('kdenlive')
 #source=(${pkgname}::git://anongit.kde.org/kdenlive)
 #source=(git://anongit.kde.org/kdenlive) 
-source=('git://anongit.kde.org/kdenlive#branch=Applications/16.08')
+source=('git://anongit.kde.org/kdenlive#branch=Applications/16.12')
 sha1sums=('SKIP')
 install=$pkgname.install
 #options=(debug !strip)
