@@ -1,3 +1,19 @@
+2016-11-24 CubeTheThird <cubethethird@gmail.com>
+
+	* 4.2-1
+
+	Version bump.
+	See https://github.com/toolbox4minecraft/amidst/releases/tag/v4.2
+
+	Upstream changelog:
+    - added support up to Minecraft 1.11
+    - added meaningful error message for common modded Minecraft versions
+    - added menu entries for zooming
+    - adjusted keyboard shortcuts for zooming to be CTRL+G and CTRL+H
+    - added menu entry to display all logging messages (these are not updated after they are displayed)
+    - fixed bugs
+
+
 2016-06-23 CubeTheThird <cubethethird@gmail.com>
 
 	* 4.1-1 :

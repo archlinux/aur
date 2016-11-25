@@ -2,7 +2,7 @@
 # Contributor: CubeTheThird <cubethethird@gmail.com>
 
 pkgname=amidst
-_version='4.1'
+_version='4.2'
 pkgver=${_version//_/-}
 _jarver="v${_version}"
 _jarfile="${pkgname}-${_jarver/./-}.jar"
@@ -18,7 +18,7 @@ changelog=ChangeLog
 source=("https://github.com/toolbox4minecraft/amidst/releases/download/$_jarver/$_jarfile"
         amidst.desktop
         icon.png)
-md5sums=('1f3d6157e4d0339ad4f2d7996a0f88a6'
+md5sums=('da22f11add79ba0fb8ce30b8f979be2a'
          '3c6900ac68e3175768322e684f9f1bcb'
          '0d90c979cbd12aa7d08d05f5f3299ce7')
 
