@@ -1,7 +1,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 pkgname=scribus-indigo-git
 pkgver=r63.ff0ccb8
-pkgrel=1
+pkgrel=2
 pkgdesc="A desktop publishing program - indigo fork"
 arch=('i686' 'x86_64')
 depends=('hunspell' 'podofo' 'python2' 'libcups' 'graphicsmagick'
@@ -34,7 +34,7 @@ build() {
     -DCMAKE_INCLUDE_PATH=/usr/include/python2.7 \
     -DCMAKE_EXE_LINKER_FLAGS="-lQt5Quick -lQt5PrintSupport" \
     -DCMAKE_APPDATA_DIR=/usr/share/appdata \
-    -DQT_PREFIX="/usr" -DWANT_CPP11=1
+    -DQT_PREFIX="/usr" 
   make
 }
 
