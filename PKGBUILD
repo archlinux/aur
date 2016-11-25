@@ -7,9 +7,10 @@ pkgdesc="High performance NoSQL database"
 arch=('x86_64' 'i686')
 url="http://www.aerospike.com/"
 license=('AGPLv3')
-source=("http://artifacts.aerospike.com/aerospike-server-community/3.10.1/aerospike-server-community-3.10.1.tar.gz")
+source=("http://artifacts.aerospike.com/aerospike-server-community/3.10.1/aerospike-server-community-3.10.1.tar.gz",'http://aerospike.com/download/server/latest/artifact/ubuntu12')
+depends=('dpkg')
+sha512sums=('e3301f4a58dae5fa7e2e04d6ac11b03369254444e824b406182838ad0343fa338457a8117da296b817246f2c8c6ca231b612ecd55ce78bb2db40861045bcf2ca','1f3df2d335a026799ec150b106c539e1c7fb50fca88b818cca2ad8f0a3ce8f9f56ed86ca1b81f9dd6a2493157b7ca363d4f646f041b8f73880c4321b8adc612f')
 
-sha512sums=('e3301f4a58dae5fa7e2e04d6ac11b03369254444e824b406182838ad0343fa338457a8117da296b817246f2c8c6ca231b612ecd55ce78bb2db40861045bcf2ca')
 
 #prepare() {}
 
@@ -42,7 +43,13 @@ package() {
     install -Dm755 share/libexec/aerospike-status "${pkgdir}/usr/share/libexec/aerospike-status"
     install -Dm755 share/libexec/aerospike-stop "${pkgdir}/usr/share/libexec/aerospike-stop"
 
-    # TODO man pages
+    # TODO: man
+    #install -Dm755 share/man/aerospike-init.gz "${pkgdir}/usr/share/man/aerospike-init.man"
+    #install -Dm755 share/man/aerospike-destroy.gz "${pkgdir}/usr/share/man/aerospike-destroy.man"
+    #install -Dm755 share/man/aerospike-restart.gz "${pkgdir}/usr/share/man/aerospike-restart.man"
+    #install -Dm755 share/man/aerospike-start.gz "${pkgdir}/usr/share/man/aerospike-start.man"
+    #install -Dm755 share/man/aerospike-status.gz "${pkgdir}/usr/share/man/aerospike-status.man"
+    #install -Dm755 share/man/aerospike-stop.gz "${pkgdir}/usr/share/man/aerospike-stop.man"
 
     install -Dm755 share/udf/lua/external/llist.lua "${pkgdir}/usr/share/udf/lua/external/llist.lua"
     install -Dm755 share/udf/lua/external/lmap.lua "${pkgdir}/usr/share/udf/lua/external/lmap.lua"
@@ -62,4 +69,7 @@ package() {
     install -Dm755 share/udf/lua/stream_ops.lua "${pkgdir}/usr/share/udf/lua/stream_ops.lua"
 
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+
+    cd $srcdir/aerospike-server-community-3.10.1-ubuntu12.04/
+    # TODO: what to do with deb package?
 }
