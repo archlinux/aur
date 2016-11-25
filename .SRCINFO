@@ -1,0 +1,26 @@
+pkgbase = suitesparse-mkl
+	pkgdesc = A collection of sparse matrix libraries (compiled with the Intel MKL lib)
+	pkgver = 4.5.3
+	pkgrel = 1
+	url = http://faculty.cse.tamu.edu/davis/suitesparse.html
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = intel-compiler-base
+	makedepends = intel-fortran-compiler
+	makedepends = cmake
+	makedepends = chrpath
+	depends = metis
+	depends = intel-mkl
+	depends = intel-tbb
+	provides = umfpack
+	conflicts = umfpack
+	replaces = umfpack
+	options = staticlibs
+	source = http://faculty.cse.tamu.edu/davis/SuiteSparse/SuiteSparse-4.5.3.tar.gz
+	source = suitesparse-link-tbb.patch
+	sha1sums = 2403007be38266e3607edfbf3833bee7f6bcb0f1
+	sha1sums = 4f0b3836e8c3c1ec5be01f988f136cee4a2cb936
+
+pkgname = suitesparse-mkl
+
