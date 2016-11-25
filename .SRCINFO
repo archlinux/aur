@@ -1,14 +1,13 @@
 pkgbase = rsb-tools-cl-stable-git
 	pkgdesc = Robotics Service Bus common lisp tools
 	pkgver = 0.15.0.b596630
-	pkgrel = 1
+	pkgrel = 2
 	url = https://projects.cor-lab.org/projects/rsb
 	arch = i686
 	arch = x86_64
 	license = LGPL3
 	makedepends = git
 	makedepends = cmake
-	makedepends = rsc-stable-git
 	makedepends = rsb-proto-stable-git
 	makedepends = sbcl
 	depends = spread-daemon
@@ -17,14 +16,14 @@ pkgbase = rsb-tools-cl-stable-git
 	options = !strip
 	source = rsb-tools-cl::git+https://code.cor-lab.org/git/rsb.git.tools-cl#branch=0.15
 	source = rsb-cl::git+https://code.cor-lab.org/git/rsb.git.cl#branch=0.15
-	source = cl-protobuf::git+https://github.com/scymtym/cl-protobuf
-	source = network.spread::git+https://github.com/scymtym/network.spread
-	source = architecture.builder-protocol::git+https://github.com/scymtym/architecture.builder-protocol
+	source = cl-protobuf.tar.gz::https://github.com/scymtym/cl-protobuf/archive/release-0.1.tar.gz
+	source = network.spread.tar.gz::https://github.com/scymtym/network.spread/archive/release-0.2.1.tar.gz
+	source = architecture.builder-protocol.tar.gz::https://github.com/scymtym/architecture.builder-protocol/archive/release-0.5.tar.gz
 	md5sums = SKIP
 	md5sums = SKIP
-	md5sums = SKIP
-	md5sums = SKIP
-	md5sums = SKIP
+	md5sums = c5934f42b3f923564ea2debc207a5a3e
+	md5sums = 90626c3382e5704084f2df383662baa3
+	md5sums = 8a0bca93913ee772fc9267485659552b
 
 pkgname = rsb-tools-cl-stable-git
 

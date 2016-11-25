@@ -2,26 +2,28 @@
 
 pkgname='rsb-tools-cl-stable-git'
 pkgver=0.15.0.b596630
-pkgrel=1
+pkgrel=2
 pkgdesc='Robotics Service Bus common lisp tools'
 arch=('i686' 'x86_64')
 url='https://projects.cor-lab.org/projects/rsb'
 license=('LGPL3')
 depends=('spread-daemon')
-makedepends=('git' 'cmake' 'rsc-stable-git' 'rsb-proto-stable-git' 'sbcl')
+makedepends=('git' 'cmake' 'rsb-proto-stable-git' 'sbcl')
 options=("!strip")
 source=("rsb-tools-cl::git+https://code.cor-lab.org/git/rsb.git.tools-cl#branch=0.15"
         "rsb-cl::git+https://code.cor-lab.org/git/rsb.git.cl#branch=0.15"
-        "cl-protobuf::git+https://github.com/scymtym/cl-protobuf"
-        "network.spread::git+https://github.com/scymtym/network.spread"
-        "architecture.builder-protocol::git+https://github.com/scymtym/architecture.builder-protocol")
+        "cl-protobuf.tar.gz::https://github.com/scymtym/cl-protobuf/archive/release-0.1.tar.gz"
+        "network.spread.tar.gz::https://github.com/scymtym/network.spread/archive/release-0.2.1.tar.gz"
+        "architecture.builder-protocol.tar.gz::https://github.com/scymtym/architecture.builder-protocol/archive/release-0.5.tar.gz")
 md5sums=('SKIP'
          'SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP')
+         'c5934f42b3f923564ea2debc207a5a3e'
+         '90626c3382e5704084f2df383662baa3'
+         '8a0bca93913ee772fc9267485659552b')
 conflicts=('rsb-tools-cl')
 provides=('rsb-tools-cl')
+
+_qlver='2016-10-31'
 
 pkgver() {
     cd "${srcdir}/rsb-tools-cl"
@@ -34,8 +36,15 @@ prepare() {
     then
         mkdir -p quicklisp
         curl -O http://beta.quicklisp.org/quicklisp.lisp
-        sbcl --noinform --no-userinit --disable-debugger --load quicklisp.lisp --eval '(quicklisp-quickstart:install :path "'$(pwd)'/quicklisp")' --quit
+        sbcl \
+            --noinform --no-userinit --disable-debugger \
+            --load quicklisp.lisp \
+            --eval '(quicklisp-quickstart:install
+                     :dist-version "quicklisp/'"${_qlver}"'"
+                     :path         "'"$(pwd)"'/quicklisp")' \
+            --quit
     fi
+
     echo "\"/usr/share/rsbprotocol0.15/\"" > "${srcdir}/rsb-cl/protocol-directory.sexp"
 }
 
