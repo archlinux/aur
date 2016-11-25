@@ -3,17 +3,16 @@
 
 pkgbase=razer-drivers-git
 pkgname=('python-razer-git' 'razer-daemon-git' 'razer-driver-dkms-git')
-pkgver=1.0.13.r35.ged69d5b
+pkgver=1.0.17.r24.ga4e2da0
 pkgrel=1
 pkgdesc="An entirely open source driver and user-space daemon that allows you to manage your Razer peripherals on GNU/Linux."
 arch=('any')
 url="https://github.com/terrycain/razer_drivers"
 license=('GPL2')
-makedepends=('git' 'make')
+makedepends=('git' 'make' 'python')
 optdepends=('razercommander-git: gtk frontend for razer-drivers')
 source=("$pkgbase::git+https://github.com/terrycain/razer_drivers.git")
 md5sums=('SKIP')
-_pythondir=$(python3 -c 'import sys; print(sys.path[-1])')
 
 pkgver() {
   cd $pkgbase
@@ -22,6 +21,7 @@ pkgver() {
 
 package_python-razer-git() {
   _srcpkgdir="$srcdir/$pkgbase"
+  _pythondir=$(python -c 'import sys; print(sys.path[-1])')
   pkgdesc="A python library for controlling razer-daemon"
   depends=('razer-daemon' 'python' 'python-dbus' 'python-numpy')
   provides=('python-razer')
@@ -35,8 +35,9 @@ package_python-razer-git() {
 
 package_razer-daemon-git() {
   _srcpkgdir="$srcdir/$pkgbase"
+  _pythondir=$(python -c 'import sys; print(sys.path[-1])')
   pkgdesc="A daemon for controlling razer-driver"
-  depends=('razer-driver-dkms' 'python-dbus' 'python-gobject' 'python-setproctitle' 'xautomation' 'xdotool' 'libdbus' 'python-notify2')
+  depends=('razer-driver-dkms' 'python-dbus' 'python-gobject' 'python-setproctitle' 'xautomation' 'xdotool' 'libdbus' 'python-notify2' 'dbus-glib')
   provides=('razer-daemon')
   conflicts=('razer-daemon')
   install=$pkgname.install
