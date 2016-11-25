@@ -7,7 +7,7 @@ groups=('zarafa'
 	'kopano'
 	'zarafa-webapp-plugins')
 pkgver=1.0.30.59
-pkgrel=84
+pkgrel=85
 pkgdesc='Filepreviewer plugin for Zarafa Webapp'
 arch=('any')
 source=("https://download.zarafa.com/community/final/WebApp/2.2.0/sle-12/zarafa-webapp-plugins-filepreviewer-1.0.30-59.1.noarch.rpm"
