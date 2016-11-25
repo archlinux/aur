@@ -1,6 +1,6 @@
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=re2-git
-pkgver=2015.11.01.r23.g1fbcda1
+pkgver=2016.11.01.r7.gc4aa8c6
 pkgrel=1
 epoch=
 pkgdesc="A fast, safe, thread-friendly alternative to backtracking regular expression engines, a C++ library."
