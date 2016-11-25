@@ -36,18 +36,33 @@ conflicts=(firefox-developer)
 
 validpgpkeys=('14F26682D0916CDD81E37B6D61B7B526D98F0353')
 
-package() {
-  install -d $pkgdir/{usr/{bin,share/{applications,pixmaps}},opt}
-  cp -r firefox $pkgdir/opt/firefox-$_channel
+prepare() {
+    # Check if the hash provided in this PKGBUILD equals the one provided and signed by upstream.
+    valid_hash=$(grep -e "sha512.*linux-x86_64\.tar\.bz2" "firefox_$pkgver.checksums" | cut -d " " -f1)
+    actual_hash=${sha512sums[0]}
 
-  ln -s /opt/firefox-$_channel/firefox $pkgdir/usr/bin/firefox-$_channel
-  install -m644 $srcdir/firefox-$_channel.desktop $pkgdir/usr/share/applications/
-  install -m644 $srcdir/firefox/browser/icons/mozicon128.png $pkgdir/usr/share/pixmaps/firefox-${_channel}-icon.png
-  install -Dm644 $srcdir/vendor.js $pkgdir/opt/firefox-$_channel/browser/defaults/preferences/vendor.js
+    if [ "$valid_hash" -ne "$actual_hash" ];
+    then
+        error "SHA512 hash in this PKGBUILD was not correctly signed."
+        exit 1
+    else
+        echo "SHA512 hash in this PKGBUILD was signed correctly."
+    fi
 }
 
-sha256sums=('89378cface30e60b25ca110c3b48596048cba905452c88a38c387b7c7920ff7f'
-            '099980819a46ac31842adb48f7b852ca0b3119fb0b804028366a161f48af8095'
+package() {
+    install -d $pkgdir/{usr/{bin,share/{applications,pixmaps}},opt}
+    cp -r firefox $pkgdir/opt/firefox-$_channel
+
+    ln -s /opt/firefox-$_channel/firefox $pkgdir/usr/bin/firefox-$_channel
+    install -m644 $srcdir/firefox-$_channel.desktop $pkgdir/usr/share/applications/
+    install -m644 $srcdir/firefox/browser/icons/mozicon128.png $pkgdir/usr/share/pixmaps/firefox-${_channel}-icon.png
+    install -Dm644 $srcdir/vendor.js $pkgdir/opt/firefox-$_channel/browser/defaults/preferences/vendor.js
+}
+
+sha512sums=('2e5e3048172ae89fcbffba128bc848f2a1dfb6eaee734173d5b6a9a13af80e8686ec049b3ba177b05887f3f754fe70be5c67580c7b8c24fe4a62c21864822ba3'
+            '8e2de2e696f611dbfbfb0df804e1caa4c6e132c11d97bba91f31e0d12901871f7a4e0790ed7181ec18c1b1f86417cea9f4a83b30e89992c8a865045bfeb8e5d2'
             'SKIP'
-            '125c1809cbecf6c91081f3fe7017b42def6294d2dd36afca39812a16155cc433'
-            'a605391acbcf6096f1db3c8c31c75bcacbe067dbb341a8b7529718dd246cd38e')
+            'b109b884ed79e9e214541750a0fcac8d7d8891cc7f0e0d472b717a5b71e569ab5852534bceaab045a5b13a9290a7905604d08fe97e28c675a2266c30fe719cb6'
+            'bae5a952d9b92e7a0ccc82f2caac3578e0368ea6676f0a4bc69d3ce276ef4f70802888f882dda53f9eb8e52911fb31e09ef497188bcd630762e1c0f5293cc010')
+
