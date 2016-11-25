@@ -13,8 +13,8 @@ arch=('any')
 license=('GPL')
 url="https://git.pietma.com/pietma/com-pietma-${pkgname}"
 depends=('bash'
-	 'php'
-	 'php-imap'
+	 'php<7'
+	 'php-imap<7'
 	 'mysql'
 	 'zarafa-server'
 	 
