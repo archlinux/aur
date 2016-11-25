@@ -27,7 +27,7 @@ _COMPILER="GCC5"
 _pkgname="uefi-shell"
 pkgname="${_pkgname}-git"
 
-pkgver=19949.8c0b0b3
+pkgver=20052.ed72804
 pkgrel=1
 pkgdesc="UEFI Shell v2 - from Tianocore EDK2 - GIT Version"
 url="http://sourceforge.net/apps/mediawiki/tianocore/index.php?title=ShellPkg"
