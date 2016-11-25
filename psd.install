@@ -98,7 +98,7 @@ pre_upgrade() {
 	fi
 	
   # version 6.30 has minor changes to config file
-	if [ $(vercmp $2 6.29) -lt 0 ]; then
+	if [ $(vercmp $2 6.30) -lt 0 ]; then
 		echo '-> Recommend that you diff /usr/share/psd/psd.conf against ~/.config/psd/psd.conf'
 	fi
 }
