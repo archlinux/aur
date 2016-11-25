@@ -3,7 +3,7 @@
 
 pkgname=razercommander-git
 pkgver=1.0.3
-pkgrel=5
+pkgrel=6
 pkgdesc='A simple GTK control center for managing razer peripherals on Linux.'
 arch=('any')
 url='https://github.com/gabmus/razercommander'
