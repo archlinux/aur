@@ -1,0 +1,19 @@
+--- Makefile.orig	2009-04-19 18:51:18.000000000 +0200
++++ Makefile	2016-11-25 23:36:59.627644580 +0100
+@@ -26,14 +26,14 @@
+ 
+ CXXDEBUG = -g
+ CXXOPT = -O
+-CXXFLAGS = -Wall -Werror -Wextra -pedantic $(CXXOPT)   $(CXXDEBUG)
++CXXFLAGS ?= -Wall -Werror -Wextra -pedantic $(CXXOPT)   $(CXXDEBUG)
+ 
+ all:	$(PROGRAMS)
+ 
+ # ======================================================================
+ 
+ apetag: $(OBJECTS)
+-	$(CXX) $(CXXDEBUG) -o apetag $(OBJECTS)
++	$(CXX) $(LDFLAGS) -o apetag $(OBJECTS)
+ 
+ apetag.static: $(OBJECTS)
+ 	$(CXX) $(CXXDEBUG) -static -o apetag.static  $(OBJECTS)
