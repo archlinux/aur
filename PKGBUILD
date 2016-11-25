@@ -10,7 +10,7 @@ _pkgbase=volunode
 pkgname=${_pkgbase}-git
 pkgdesc="Next generation client for Berkeley Open Infrastructure for Network Computing."
 pkgver=r29416.c5b9184
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 url="https://github.com/$_username/${_reponame/}"
 license=('LGPL')
@@ -25,7 +25,7 @@ source=("git+https://github.com/${_username}/${_reponame}${_ref}"
 sha256sums=(
             'SKIP'
             'e41addacd2a1f508f7ac6803e53228fb580fb6b1fdf258322c4d0221d9ca90d1'
-            '42631ec573efc02408c12b4fab8d29432e3f558e0cebe30b1beeef8364594f15'
+            '18efc2641301f6bf8f7b8d685675769aa7a942fc134a96e416692328eeec8adb'
             'c7a03d70cce6206d071d99c13315977db4c4deac2cab52a236f0825325720907'
             )
 
