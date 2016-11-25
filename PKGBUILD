@@ -2,7 +2,7 @@
 
 _pkgbase=shadowcoin
 pkgname=shadowcoin-bin
-pkgver=1.5.0.2
+pkgver=1.5.0.3
 pkgrel=1
 pkgdesc="ShadowCoin Desktop Wallet with ShadowCoin daemon"
 arch=('x86_64')
@@ -16,7 +16,7 @@ source=("https://github.com/shadowproject/shadow/releases/download/v${pkgver}/um
         "shadowcoin.install"
         "shadowcoin.png")
 
-sha256sums=("3292c387945e62355d580989d69497f2214a042033918ecdc10d8116a4fd6207"
+sha256sums=("42500f4e824a4aae55280d2f4d95a6afe0057af01d95822ca7e67ebb0d15b594"
             "d7a4712754627efdf905ff91b713688908e6bf29af11a9d8ae7c5363539347a9"
             "182cdeff1b998085ac1ee41767ae91d90fd90c6b88ad65d3edd00acd5267b209"
             "d68dec59f74ed1586c21e72463f125c05fb0db032b9e7a96ca75a043f610765a")
