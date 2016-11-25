@@ -1,7 +1,7 @@
 pkgbase = cydia-impactor
 	pkgdesc = A GUI tool for working with mobile devices
 	pkgver = 0.9.34
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.cydiaimpactor.com
 	arch = i686
 	arch = x86_64

@@ -3,7 +3,7 @@
 pkgname=cydia-impactor
 _pkgname=Impactor
 pkgver=0.9.34
-pkgrel=1
+pkgrel=2
 pkgdesc="A GUI tool for working with mobile devices"
 arch=('i686' 'x86_64')
 url="http://www.cydiaimpactor.com"
@@ -18,10 +18,15 @@ package() {
 	cd "$srcdir/"
 
 	msg2 "Installing library"
-	mkdir -p "$pkgdir/usr/lib/"
+	mkdir -p "$pkgdir/usr/lib"
 	install -Dm755 $_pkgname.so "$pkgdir/usr/lib/"
 
-	msg2 "Installing binary"
+	msg2 "Installing dat file"
+	mkdir -p "$pkgdir/usr/share/$pkgname"
+	install -Dm644 $_pkgname.dat "$pkgdir/usr/share/$pkgname"
 	mkdir -p "$pkgdir/usr/bin"
+	ln -s "$pkgdir/usr/share/$pkgname/$_pkgname.dat" "$pkgdir/usr/bin"
+
+	msg2 "Installing binary"
 	install -Dm755 $_pkgname "$pkgdir/usr/bin/"
 }
