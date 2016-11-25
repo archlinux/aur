@@ -5,14 +5,14 @@
 
 pkgname=burpsuite
 pkgver=1.7.10
-pkgrel=3
+pkgrel=4
 pkgdesc="An integrated platform for performing security testing of web applications (free edition)."
 url="https://portswigger.net/burp/"
 depends=('java-runtime')
 arch=('any')
 license=('custom')
-noextract=("${pkgname}.jar")
-source=("${pkgname}.jar::https://portswigger.net/Burp/Releases/Download?productId=100&version=${pkgver}&type=Jar"
+noextract=("${pkgname}-${pkgver}.jar")
+source=("${pkgname}-${pkgver}.jar::https://portswigger.net/Burp/Releases/Download?productId=100&version=${pkgver}&type=Jar"
         LICENSE
         burpsuite.desktop
         icon64.png)
@@ -27,7 +27,7 @@ package() {
   mkdir -p ${pkgdir}/usr/share/{applications,pixmaps,${pkgname},licenses/${pkgname}}
 
   cd ${srcdir}
-  install -m644 ${pkgname}.jar ${pkgdir}/usr/share/${pkgname}/${pkgname}.jar
+  install -m644 ${pkgname}-${pkgver}.jar ${pkgdir}/usr/share/${pkgname}/${pkgname}.jar
   install -m644 LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/
   install -m644 burpsuite.desktop ${pkgdir}/usr/share/applications/
   install -m644 icon64.png ${pkgdir}/usr/share/pixmaps/burpsuite.png
