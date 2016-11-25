@@ -1,15 +1,15 @@
 #Maintainer truh <truhgoj[äT]truh(O)in>
 
 pkgname=aerospike-server-ce
-pkgver=3.6.0
+pkgver=3.10.1
 pkgrel=1
 pkgdesc="High performance NoSQL database"
 arch=('x86_64' 'i686')
 url="http://www.aerospike.com/"
 license=('AGPLv3')
-source=("http://www.aerospike.com/download/server/3.6.0/artifact/tgz")
+source=("http://artifacts.aerospike.com/aerospike-server-community/3.10.1/aerospike-server-community-3.10.1.tar.gz")
 
-sha512sums=('2c72f54ae0a2f20f5b7a6ed295c536d6841c99142c6d55c72382bf8c8e10dca5a515a492659ff25727b6950b1ce5b2befe1c189f793a46ab871de7b76ab6b999')
+sha512sums=('e3301f4a58dae5fa7e2e04d6ac11b03369254444e824b406182838ad0343fa338457a8117da296b817246f2c8c6ca231b612ecd55ce78bb2db40861045bcf2ca')
 
 #prepare() {}
 
