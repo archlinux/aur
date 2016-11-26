@@ -1,32 +1,20 @@
-# arg 1:  the new package version
-# arg 2:  the old package version
-
-KERNEL_NAME=
-KERNEL_VERSION=
-
 post_install () {
   # updating module dependencies
   echo ">>> Updating module dependencies. Please wait ..."
-  depmod ${KERNEL_VERSION}
+  depmod %KERNVER%
   if [ "$(uname -m)" = "armv7l" ]; then
     echo ">>> WARNING: Using this kernel requires an updated U-Boot!"
-  elif [ "$(uname -m)" = "x86_64" ] || [ "$(uname -m)" = "i686" ]; then
-    echo ">>> Generating initial ramdisk, using mkinitcpio. Please wait..."
-    mkinitcpio -p linux-libre${KERNEL_NAME}
   fi
 }
 
 post_upgrade() {
   # updating module dependencies
   echo ">>> Updating module dependencies. Please wait ..."
-  depmod ${KERNEL_VERSION}
+  depmod %KERNVER%
   if [ "$(uname -m)" = "x86_64" ] || [ "$(uname -m)" = "i686" ]; then
     if findmnt --fstab -uno SOURCE /boot &>/dev/null && ! mountpoint -q /boot; then
       echo "WARNING: /boot appears to be a separate partition but is not mounted."
     fi
-
-    echo ">>> Generating initial ramdisk, using mkinitcpio. Please wait..."
-    mkinitcpio -p linux-libre${KERNEL_NAME}
 
     if [ $(vercmp $2 3.13) -lt 0 ]; then
       echo ">>> WARNING: AT keyboard support is no longer built into the kernel."
@@ -39,7 +27,7 @@ post_upgrade() {
 if [ "$(uname -m)" = "x86_64" ] || [ "$(uname -m)" = "i686" ]; then
 post_remove() {
   # also remove the compat symlinks
-  rm -f boot/initramfs-linux-libre${KERNEL_NAME}.img
-  rm -f boot/initramfs-linux-libre${KERNEL_NAME}-fallback.img
+  rm -f boot/initramfs-%PKGBASE%.img
+  rm -f boot/initramfs-%PKGBASE%-fallback.img
 }
 fi
