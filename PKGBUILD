@@ -1,4 +1,4 @@
-# Maintainer: Quentin Bourgeois <quentin@bourgeois.eu>
+# Maintainer: Quentin Bourgeois <quentin+archlinux@bourgeois.eu>
 #
 # TODO: * viivakoodi require (python) argparse if python interpreter is 2.6, 
 #               3.0 or 3.1 => how to do that ?
@@ -28,13 +28,13 @@ noextract=()
 md5sums=()
 sha1sums=()
 sha256sums=('e1a17dc24975d5242202cfbb7534d69dd14eeb26bdf8a10f056c7b04904fef1e' 
-            'fdb179e3c7ac3433959194319161cce49c0738d95aacd3636f33684e9e82d8a3')
+            'c161bd90708ca20c841321139f7e8fe5ae53cb25f55d0327fea5b59ac401f8e9')
 sha384sums=('e2da627423221298dfc55be93ab07e42d8801f0fa63bcfc5ad6bfa689181bcd0e7eb9525abdfd20aa3637ae56999956b' 
-            'e700ff2499996eb73676c57175e9c36ad79be5245314d1b43939234d800d64aa844edf5b7b313bdd1415744994201d62')
+            'b92e09d3e801b55ec97e28b105d8033d6bace8fc869343331e1093bbb35aabe201432e43ea4487014c92b190a65c89f8')
 sha512sums=('b9f5fc859b3ec33a1cf264d5ede597ff79cd447043668cf433096bf0bf89e24e1a8bf05f7914420934bc6c03a66ec0df99a203136c3f6506e0fda8e3c6f619fd' 
-            'b7d04def3d2d441dc8287e69cf1eb7a7b6e91e5833fdab4cfa440741e2a79bc4624f887cafa052644fcb01ac24f5da98978e522304303f0c89145b9e8f2a3c43')
+            '68b6df665e76555489b9abc616fda11180c1c420e8a5dd74c191543335ee0b887fbba8115f7823aed676242b559af10141fc6a40c4b068a39b9e1038917dc29e')
 # quentin bourgeois GPG key no package dev but provide a signature of the archive used when creating PKGBUILD file
-validpgpkeys=('3486CBAC7F116CA71351B0D7F7181B2010660E6F') 
+validpgpkeys=('A5A90A2DE9D979C1BD0085CB8663D1331DD47615') 
 
 check() {
     cd "$srcdir/$_pylibname-$pkgver"
