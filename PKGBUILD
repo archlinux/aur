@@ -15,7 +15,7 @@ groups=()
 depends=()
 makedepends=()
 optdepends=('inkscape: tools for manipulating vector objects (eg: SVG files)')
-checkdepends=('python-tox' 'python-pylint' 'python2-tox' 'python2-pylint') 
+checkdepends=()
 provides=()
 conflicts=()
 replaces=()
@@ -51,8 +51,15 @@ package_python-viivakoodi() {
     depends+=('python' 'python-argparse')
     makedepends+=('python-setuptools')
     provides+=('python2-viivakoodi')
-    optdepends+=('python-pillow')
-
+    optdepends+=('python-sphinx: for building the project documentation'
+                 'python-sphinx-alabaster-theme: for building the project documentation'
+                 'python-pillow')
+    checkdepends+=('python-pylint'
+                   'python-pytest'
+                   'python-pytest-cov'
+                   'python-pytest-xdist'
+                   'python-mock'
+                   'python-tox')
     cd "$srcdir/$_pylibname-$pkgver"
     python setup.py install --root="$pkgdir/" --optimize=1
 
@@ -69,7 +76,15 @@ package_python2-viivakoodi() {
     depends+=('python2>=2.6' 'python2-argparse')          
     makedepends+=('python2-setuptools')
     provides+=('python2-viivakoodi')
-    optdepends+=('python2-pillow')
+    optdepends+=('python2-sphinx: for building the project documentation'
+                 'python2-sphinx-alabaster-theme: for building the project documentation'
+                 'python2-pillow')
+    checkdepends+=('python2-pylint'
+                   'python2-pytest'
+                   'python2-pytest-cov'
+                   'python2-pytest-xdist'
+                   'python2-mock'
+                   'python2-tox') 
 
     cd "$srcdir/$_pylibname-$pkgver"
     python2 setup.py install --root="$pkgdir/" --optimize=1
