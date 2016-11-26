@@ -2,7 +2,7 @@
 
 _pkgname=libsimplemail-qt
 pkgname=$_pkgname-git
-pkgver=20160317+133+dcdd51b
+pkgver=latest
 pkgrel=1
 pkgdesc='An SMTP library written in C++ for Qt'
 arch=('i686' 'x86_64')
