@@ -19,7 +19,9 @@ pkgbase = windows-gaming-git
 	conflicts = windows-gaming
 	backup = etc/windows-gaming-driver.toml
 	source = git+https://github.com/main--/windows-gaming.git
+	source = https://fedorapeople.org/groups/virt/virtio-win/direct-downloads/archive-virtio/virtio-win-0.1.126-2/virtio-win_amd64.vfd
 	md5sums = SKIP
+	md5sums = 954ca57735102d16e87a7c4caa979f67
 
 pkgname = windows-gaming-git
 

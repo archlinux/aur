@@ -24,9 +24,9 @@ replaces=()
 backup=('etc/windows-gaming-driver.toml')
 options=()
 install=
-source=('git+https://github.com/main--/windows-gaming.git')
+source=('git+https://github.com/main--/windows-gaming.git' 'https://fedorapeople.org/groups/virt/virtio-win/direct-downloads/archive-virtio/virtio-win-0.1.126-2/virtio-win_amd64.vfd')
 noextract=()
-md5sums=('SKIP')
+md5sums=('SKIP' '954ca57735102d16e87a7c4caa979f67')
 
 # Please refer to the 'USING VCS SOURCES' section of the PKGBUILD man page for
 # a description of each element in the source array.
@@ -80,6 +80,7 @@ package() {
 	cp ovmf-x64/OVMF_CODE-pure-efi.fd $pkgdir/usr/lib/windows-gaming/ovmf-code.fd
 	cp ovmf-x64/OVMF_VARS-pure-efi.fd $pkgdir/usr/lib/windows-gaming/ovmf-vars.fd
 	cp guest-agent/windows-gaming-ga.iso $pkgdir/usr/lib/windows-gaming/
+	cp ../virtio-win_amd64.vfd $pkgdir/usr/lib/windows-gaming/virtio-win.vfd
 	install -D -m644 config-sample.toml $pkgdir/etc/windows-gaming-driver.toml
 	install -D -m644 windows.service $pkgdir/usr/lib/systemd/system/windows.service
 }
