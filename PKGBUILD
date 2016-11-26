@@ -4,9 +4,8 @@
 #               3.0 or 3.1 => how to do that ?
 _pylibname=viivakoodi
 pkgname=("python2-$_pylibname" "python-$_pylibname")
-_softver=0.8
 pkgrel=0
-pkgver=$_softver.$pkgrel
+pkgver=0.8.$pkgrel
 pkgdesc='Barcode generator for Python. Fork of pyBarcode project.'
 arch=('x86_64')
 url="https://github.com/kxepal/$_pylibname"
