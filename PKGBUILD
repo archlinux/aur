@@ -5,9 +5,9 @@
 
 _npmname=mocha
 pkgname=nodejs-$_npmname
-pkgver=3.1.2
+pkgver=3.2.0
 pkgrel=1
-pkgdesc="simple, flexible, fun test framework"
+pkgdesc="Simple, flexible, fun test framework."
 arch=(any)
 url="https://mochajs.org"
 license=('MIT')
@@ -15,7 +15,7 @@ depends=('nodejs' 'npm')
 options=( '!strip' )
 source=(https://registry.npmjs.org/$_npmname/-/$_npmname-$pkgver.tgz)
 noextract=($_npmname-$pkgver.tgz)
-sha256sums=('3db7c91f75e7d59809eba87ce930d72c0368abb302ae0ad9894e240da903ab53')
+sha256sums=('909a629739cbe09e73465b0615d0a7cc634041d8395787c8e8976e1a925c01c2')
 
 package() {
   cd "$srcdir"
