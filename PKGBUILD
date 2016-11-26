@@ -59,6 +59,7 @@ package_python-viivakoodi() {
     checkdepends+=('python-pylint'
                    'python-pytest'
                    'python-pytest-cov'
+                   'python-pytest-pep8'
                    'python-pytest-xdist'
                    'python-mock'
                    'python-tox')

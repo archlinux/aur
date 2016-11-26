@@ -40,6 +40,7 @@ pkgname = python-viivakoodi
 	checkdepends = python-pylint
 	checkdepends = python-pytest
 	checkdepends = python-pytest-cov
+	checkdepends = python-pytest-pep8
 	checkdepends = python-pytest-xdist
 	checkdepends = python-mock
 	checkdepends = python-tox
