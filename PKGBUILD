@@ -1,6 +1,7 @@
-# Maintainer : arthur33 <sohieradrien@gmail.com>
+# Maintainer: Victor Dmitriyev <mrvvitek@gmail.com>
+# Contributor: arthur33 <sohieradrien@gmail.com>
 pkgname='smartdeblur-git'
-pkgver=20130304
+pkgver=20130530.24f4ab5
 pkgrel=1
 pkgdesc='A smart deblur program made by Y. Vladimir'
 arch=('i686' 'x86_64')
@@ -10,25 +11,25 @@ depends=('qt4' 'fftw')
 makedepends=('git')
 provides=('smartdeblur')
 
-_gitroot='https://github.com/Y-Vladimir/SmartDeblur.git'
-_gitname='SmartDeblur'
+source=("${pkgname}::git+https://github.com/Y-Vladimir/SmartDeblur.git")
+md5sums=('SKIP')
+
+pkgver() {
+    cd "${srcdir}/${pkgname}"
+    (
+    git show --format='%cI' -q master | sed 's/T.*//g;s/-//g'
+    echo .
+    git rev-parse --short master
+    ) | tr -d '\n'
+}
 
 build () {
-	cd "${srcdir}"
-	if [ -d "${_gitname}" ] ; then
-		msg "The files are updated"
-	else
-		git clone "${_gitroot}"
-	fi
-	cd "${_gitname}/src"
+	cd "${srcdir}/${pkgname}/src"
 	qmake-qt4
 	make
 }
 package() {
-	cd "${srcdir}/${_gitname}/src"
-	mkdir -p "${pkgdir}/usr/bin"
-	cp SmartDeblur "${pkgdir}/usr/bin/"
-	
-	chmod 0755 "${pkgdir}/usr/bin"
-	chmod 0755 "${pkgdir}/usr/bin/SmartDeblur"
+	cd "${srcdir}/${pkgname}/src"
+	install -dm755 "${pkgdir}/usr/bin/"
+	install -Dm755 SmartDeblur "${pkgdir}/usr/bin/"
 }
