@@ -10,9 +10,9 @@
 
 pkgbase=linux-libre-grsec
 _pkgbasever=4.8-gnu
-_pkgver=4.8.8-gnu
+_pkgver=4.8.10-gnu
 _grsecver=3.1
-_timestamp=201611150756
+_timestamp=201611210813
 
 _replacesarchkernel=('linux%') # '%' gets replaced with _kernelname
 _replacesoldkernels=() # '%' gets replaced with _kernelname
@@ -44,6 +44,8 @@ source=("http://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgbasever}/li
         "https://repo.parabola.nu/other/linux-libre/logos/logo_linux_vga16.ppm.sig"
         # the main kernel config files
         'config.i686' 'config.x86_64' 'config.armv7h'
+        # pacman hook for initramfs regeneration
+        '99-linux.hook'
         # standard config files for mkinitcpio ramdisk
         'linux.preset'
         'change-default-console-loglevel.patch'
@@ -69,9 +71,9 @@ source=("http://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgbasever}/li
         '0013-Revert-gpu-drm-omapdrm-dss-of-add-missing-of_node_pu.patch')
 sha256sums=('d54e0f8a27e24f3666c19b395c19dba194635db26929c89e78ffa4b2b0e8ca3a'
             'SKIP'
-            'e181d8175cbcda285b9c8864887907a89405517f00c12b0367c9717e2804a6a0'
+            '1582cc01f7c10fdb24a15d884e6d3c24331f54dcbe6dcae0e5ca8b58955dce0c'
             'SKIP'
-            '1c92d99b389efb854c841dc52f0fbe5e6c07ee90d2a645d7207eaf42e501858a'
+            '210250b853b2958c1d964dd891702d088b09ed2b11545eaabc29da2da37ccea7'
             'SKIP'
             'bfd4a7f61febe63c880534dcb7c31c5b932dde6acf991810b41a939a93535494'
             'SKIP'
@@ -82,11 +84,12 @@ sha256sums=('d54e0f8a27e24f3666c19b395c19dba194635db26929c89e78ffa4b2b0e8ca3a'
             'dfbe807b943cce69316fbf7aaceaa03adcd08aa2271c97c86c66caae6133e478'
             '62b1e18a16ea7b41be758fbc1bf002e9787f43ca29e2026aaa0fb0bf057b0fa5'
             '0fba769f26ff2532000043ab51f0be349a8ab1fd931397cb33a579ddd71fc183'
-            'f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c'
+            '834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0'
+            'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
             '0376bd5efa31d4e2a9d52558777cebd9f0941df8e1adab916c868bf0c05f2fc3'
             '351fd96be8cd5ebd0435c0a8a978673fc023e3b1026085e67f86d815b2285e25'
-            '8c0efb7f602dd445b9c31357f0b27730a47ab3a496aea8ff0465ab8c3caa3ca2'
+            '69967fdd2fdb18bf4aa15138658d5786949435342582e050c82b5594e23a860a'
             'SKIP'
             '1fc7055041da895d5d023fcf0c5e06d00a3506ae98931138229dba7392e2c382'
             '34c74396b40f1a22a94c1e49e6ae1aaed2fb55f28225dfa9de2cb6f9f4607d21'
@@ -247,22 +250,18 @@ _package() {
   fi
 
   # set correct depmod command for install
-  cp -f "${startdir}/${install}" "${startdir}/${install}.pkg"
+  sed -e "s|%PKGBASE%|${pkgbase}|g;s|%KERNVER%|${_kernver}|g" \
+    "${startdir}/${install}" > "${startdir}/${install}.pkg"
   true && install=${install}.pkg
-  sed \
-    -e  "s/KERNEL_NAME=.*/KERNEL_NAME=${_kernelname}/" \
-    -e  "s/KERNEL_VERSION=.*/KERNEL_VERSION=${_kernver}/" \
-    -i "${startdir}/${install}"
 
   if [ "${CARCH}" = "x86_64" ] || [ "${CARCH}" = "i686" ]; then
     # install mkinitcpio preset file for kernel
-    install -D -m644 "${srcdir}/linux.preset" "${pkgdir}/etc/mkinitcpio.d/${pkgbase}.preset"
-    sed \
-      -e "1s|'linux.*'|'${pkgbase}'|" \
-      -e "s|ALL_kver=.*|ALL_kver=\"/boot/vmlinuz-${pkgbase}\"|" \
-      -e "s|default_image=.*|default_image=\"/boot/initramfs-${pkgbase}.img\"|" \
-      -e "s|fallback_image=.*|fallback_image=\"/boot/initramfs-${pkgbase}-fallback.img\"|" \
-      -i "${pkgdir}/etc/mkinitcpio.d/${pkgbase}.preset"
+    sed "s|%PKGBASE%|${pkgbase}|g" "${srcdir}/linux.preset" |
+      install -D -m644 /dev/stdin "${pkgdir}/etc/mkinitcpio.d/${pkgbase}.preset"
+
+    # install pacman hook for initramfs regeneration
+    sed "s|%PKGBASE%|${pkgbase}|g" "${srcdir}/99-linux.hook" |
+      install -D -m644 /dev/stdin "${pkgdir}/usr/share/libalpm/hooks/99-${pkgbase}.hook"
   fi
 
   # remove build and source links
