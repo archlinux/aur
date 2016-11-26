@@ -56,8 +56,8 @@ package_python-viivakoodi() {
     python setup.py install --root="$pkgdir/" --optimize=1
 
     if [ -f LICENSE ]; then
-        mkdir -p "$pkgdir/usr/share/licenses/$pkgname/"
-        cp LICENSE "$pkgdir/usr/share/licenses/$pkgname/"
+        install -Dm0644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+        install -Dm0644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE.launcher"
     else
         warning "license file not found"
     fi
@@ -74,8 +74,8 @@ package_python2-viivakoodi() {
     python2 setup.py install --root="$pkgdir/" --optimize=1
 
     if [ -f LICENSE ]; then
-        mkdir -p "$pkgdir/usr/share/licenses/$pkgname/"
-        cp LICENSE "$pkgdir/usr/share/licenses/$pkgname/"
+        install -Dm0644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+        install -Dm0644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE.launcher"
     else
         warning "license file not found"
     fi
