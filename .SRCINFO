@@ -1,0 +1,16 @@
+pkgbase = mktorrent-git
+	pkgdesc = A simple command line utility to create BitTorrent metainfo files
+	pkgver = r69.886c3d1
+	pkgrel = 1
+	url = http://mktorrent.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	provides = mktorrent
+	conflicts = mktorrent
+	source = mktorrent::git+https://github.com/Rudde/mktorrent.git
+	md5sums = SKIP
+
+pkgname = mktorrent-git
+
