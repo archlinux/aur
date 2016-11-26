@@ -2,7 +2,7 @@
 # Contributor: Ner0 <darkelfdarkelf666@yahoo.co.uk>
 
 pkgname=pantheon-photos-bzr
-pkgver=r2900
+pkgver=r3071
 pkgrel=1
 pkgdesc='The Pantheon Photos Manager'
 arch=('i686' 'x86_64')
@@ -10,9 +10,9 @@ url='https://launchpad.net/pantheon-photos'
 license=('GPL3')
 groups=('pantheon-unstable')
 depends=('cairo' 'desktop-file-utils' 'gdk-pixbuf2' 'glib2' 'glibc'
-         'gst-plugins-base-libs' 'gstreamer' 'gtk3' 'json-glib' 'libexif'
-         'libgee' 'libgexiv2' 'libgphoto2'
-         'libraw' 'libsoup' 'libxml2' 'pango' 'rest' 'sqlite' 'webkit2gtk'
+         'geocode-glib' 'gst-plugins-base-libs' 'gstreamer' 'gtk3' 'json-glib'
+         'libexif' 'libgee' 'libgexiv2' 'libgphoto2' 'libraw' 'libsoup'
+         'libxml2' 'pango' 'rest' 'sqlite' 'webkit2gtk'
          'libgranite.so' 'libgudev-1.0.so')
 makedepends=('bzr' 'cmake' 'intltool' 'vala')
 provides=('pantheon-photos')
