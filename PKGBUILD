@@ -12,7 +12,7 @@ optdepends=('systemd: or optional scheduling of timed backdrop change'
 'cron: for optional scheduling of timed backdrop change')
 source=("http://repo-ck.com/source/$pkgname/$pkgname-$pkgver.tar.xz")
 install=readme.install
-sha256sums=('317736a1a0051e525f9124a51bf5fb12f10c93fe88005bfb2be1cbce97a239d6')
+sha256sums=('5ee05d6e5f4df30cbea43759df5cd580cb532f9b0592e2be76c6c034df049319')
 
 build() {
 	cd "$pkgname-$pkgver"
