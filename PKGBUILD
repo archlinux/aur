@@ -54,6 +54,13 @@ package_python-viivakoodi() {
 
     cd "$srcdir/$_pylibname-$pkgver"
     python setup.py install --root="$pkgdir/" --optimize=1
+
+    if [ -f LICENSE ]; then
+        mkdir -p "$pkgdir/usr/share/licenses/$pkgname/"
+        cp LICENSE "$pkgdir/usr/share/licenses/$pkgname/"
+    else
+        warning "license file not found"
+    fi
 }
 
 package_python2-viivakoodi() {
@@ -65,4 +72,11 @@ package_python2-viivakoodi() {
 
     cd "$srcdir/$_pylibname-$pkgver"
     python2 setup.py install --root="$pkgdir/" --optimize=1
+
+    if [ -f LICENSE ]; then
+        mkdir -p "$pkgdir/usr/share/licenses/$pkgname/"
+        cp LICENSE "$pkgdir/usr/share/licenses/$pkgname/"
+    else
+        warning "license file not found"
+    fi
 }
