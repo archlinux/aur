@@ -1,4 +1,5 @@
-# Maintainer : Sameed Pervaiz <greenbagels@teknik.io>
+# Maintainer : Christian Hofmann <chof@pfho.net>
+# Contributor : Sameed Pervaiz <greenbagels@teknik.io>
 # Contributor: Kaan Genç <aur@kaangenc.me>
 # Contributor: Sven-Hendrik Haase <sh@lutzhaase.com>
 # Contributor: Felix Yan <felixonmars@archlinux.org>
@@ -6,21 +7,23 @@
 
 pkgbase=nvidia-grsec
 pkgname=(nvidia-grsec nvidia-grsec-dkms)
-pkgver=367.35
-_extramodules=extramodules-4.6.4-grsec
-pkgrel=1
+pkgver=375.20
+_pkgver=367.35
+_extramodules=extramodules-4.8.10-grsec
+pkgrel=2
 pkgdesc="NVIDIA drivers for linux-grsec kernel"
 arch=('i686' 'x86_64')
 url="http://www.nvidia.com/"
-makedepends=('nvidia-libgl' "nvidia-utils=${pkgver}" 'linux-grsec' 'linux-grsec-headers>=4.5' 'linux-grsec-headers<4.6')
+makedepends=('nvidia-libgl' "nvidia-utils=${pkgver}" 'linux-grsec' 'linux-grsec-headers>=4.8')
 license=('custom')
 options=(!strip)
-source=("https://www.grsecurity.net/~paxguy1/nvidia-drivers-${pkgver}-pax.patch")
+# source=("https://www.grsecurity.net/~paxguy1/nvidia-drivers-${pkgver}-pax.patch")
+source=("nvidia-drivers-${_pkgver}-pax.patch")
 source_i686=("http://us.download.nvidia.com/XFree86/Linux-x86/${pkgver}/NVIDIA-Linux-x86-${pkgver}.run")
 source_x86_64=("http://us.download.nvidia.com/XFree86/Linux-x86_64/${pkgver}/NVIDIA-Linux-x86_64-${pkgver}-no-compat32.run")
-sha512sums=('33d2d308c04e9e39dd391fcfe22fe7bfb312a7f73af8eba80e7ac2fad8f424c2a8fce7008148badf8b6b72dc23a9948bb932d241588ab3fab19b132c098f04b2')
-sha512sums_i686=('3151995153a3c3857e291df933dbaeaad779544a39a9482980ccb89531ca924d71e6bf0e44767755c484c4b693cfaf01f55e61e3d82cef79f73c0b1964411f39')
-sha512sums_x86_64=('b86374ca954eb2c2d1efea35eeefefc6a80382734fe2e70d8ae3bf5faea284884104004c200f7b3b97d063847be488ca128c96757bc63e0a9d4dfefe40521acd')
+sha512sums=('5f0083fa80348399686cc45cd6a91eeddb947339381863ee72f0795ef027c677d8ce0ac591645c4573ad4d801035f13fb20cfebc8c93428da52f2d75f680a7c0')
+sha512sums_i686=('8f922b3cde613dbc5933f38fa3d57e37afe4ac68e3cd37894d7f8d42258290ddbab0fb5f51623c06fa3474718f6a55ee0187e23aa51e3131e050446986b96420')
+sha512sums_x86_64=('4e58242ed31121dfe429c1cc010f3ddf0ed33ae6c3ac9c8650dda2e0687786cfdb109d6f9c4e87fc1274f5f5dba06f58ec21d7da6c6bd69812b65ea01e9e98fa')
 
 [[ "$CARCH" = "i686" ]] && _pkg="NVIDIA-Linux-x86-${pkgver}"
 [[ "$CARCH" = "x86_64" ]] && _pkg="NVIDIA-Linux-x86_64-${pkgver}-no-compat32"
@@ -30,7 +33,7 @@ prepare() {
     cd "${_pkg}"
     # patches here
     # Using the updated grsecurity-provided patch
-    patch -Np1 -i "../nvidia-drivers-${pkgver}-pax.patch"
+    patch -Np1 -i "../nvidia-drivers-${_pkgver}-pax.patch"
 
     cp -a kernel kernel-dkms
     cd kernel-dkms
@@ -46,7 +49,7 @@ DEST_MODULE_LOCATION[2]="/kernel/drivers/video"\
 BUILT_MODULE_NAME[3]="nvidia-drm"\
 DEST_MODULE_LOCATION[3]="/kernel/drivers/video"' dkms.conf
 echo -e "# Only build for scoped kernels." >> dkms.conf
-echo -e "BUILD_EXCLUSIVE_KERNEL=\0042^4.6.*grsec$\0042" >> dkms.conf
+echo -e "BUILD_EXCLUSIVE_KERNEL=\0042^4.8.*grsec$\0042" >> dkms.conf
 }
 
 build() {
@@ -57,7 +60,7 @@ build() {
 
 package_nvidia-grsec() {
     pkgdesc="NVIDIA drivers for linux-grsec kernel"
-    depends=('linux-grsec>=4.6' 'linux-grsec<4.7' "nvidia-utils=${pkgver}" 'libgl')
+    depends=('linux-grsec>=4.8' "nvidia-utils=${pkgver}" 'libgl')
     install=nvidia-grsec.install
 
     install -D -m644 "${srcdir}/${_pkg}/kernel/nvidia.ko" \
