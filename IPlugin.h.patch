@@ -1,0 +1,11 @@
+--- Plugins/PluginSystem/IPlugin.h
++++ Plugins/PluginSystem/IPlugin.h
+@@ -12,7 +12,7 @@
+ #ifndef IPLUGIN_H
+ #define IPLUGIN_H
+ 
+-#include "QWidget.h"
++#include <QWidget>
+ #include "PluginSettingsModel.h"
+ 
+ #include <QString>

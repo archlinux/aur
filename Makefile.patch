@@ -1,0 +1,14 @@
+--- Makefile
++++ Makefile
+@@ -1320,7 +1320,10 @@
+
+ install_config: FORCE
+ 	@test -d $(INSTALL_ROOT)/etc/xdg/TUT || mkdir -p $(INSTALL_ROOT)/etc/xdg/TUT
+-	cp ./Administrative/releaseFiles/DefaultSettingsLinux.ini /etc/xdg/TUT/Kactus2.ini; (test -d /usr/lib64 && ln -f -s /usr/bin/Kactus2 /usr/lib64/libKactus2.so) || (test -d /lib/x86_64-linux-gnu && ln -f -s /usr/bin/Kactus2 /lib/x86_64-linux-gnu/libKactus2.so)
++	cp ./Administrative/releaseFiles/DefaultSettingsLinux.ini $(INSTALL_ROOT)/etc/xdg/TUT/Kactus2.ini
++	(test -d /usr/lib && (mkdir -p $(INSTALL_ROOT)/usr/lib ; ln -f -s /usr/bin/Kactus2 $(INSTALL_ROOT)/usr/lib/libKactus2.so)) || \
++	(test -d /usr/lib64 && (mkdir -p $(INSTALL_ROOT)/usr/lib64 ; ln -f -s /usr/bin/Kactus2 $(INSTALL_ROOT)/usr/lib64/libKactus2.so)) || \
++	(test -d /lib/x86_64-linux-gnu && (mkdir -p $(INSTALL_ROOT)/lib/x86_64-linux-gnu ; ln -f -s /usr/bin/Kactus2 $(INSTALL_ROOT)/lib/x86_64-linux-gnu/libKactus2.so))
+
+
+ install_library: FORCE
