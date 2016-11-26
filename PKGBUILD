@@ -12,7 +12,9 @@ license=('PSF')
 url="http://www.python.org/"
 depends=('db>=4.8' 'bzip2' 'gdbm' 'openssl' 'zlib' 'expat' 'sqlite3' 'libffi')
 makedepends=('gcc5' 'tk>=8.5.0')
-optdepends=('tk: for IDLE, pynche and modulator')
+optdepends=('tk: for IDLE, pynche and modulator'
+            'net-tools: arp, ifconfig and netstat are used in the uuid module')
+checkdepends=('net-tools')
 provides=(python2=${pkgver})
 changelog=ChangeLog
 source=(http://www.python.org/ftp/python/${pkgver}/Python-${pkgver}.tar.xz
@@ -29,7 +31,8 @@ source=(http://www.python.org/ftp/python/${pkgver}/Python-${pkgver}.tar.xz
         python-2.6-sqlite-test.patch
         python-2.6-ssl-nosslv3.patch
         python-2.6-tkinter-86.patch
-        python-2.6-whichdb-gdbm-1.9.patch)
+        python-2.6-whichdb-gdbm-1.9.patch
+        python-2.6-socket-test.patch)
 sha256sums=('cae7bb995006ea5b703d9d28446f694894c441fe4bfb95d561c0ac908cd06e41'
             '9fb0914357b43d4d6d5ea58ef7827cd0f5784792060e776dfa62d6e372b08f8e'
             'e92e300ef7844478c53c37d7c05a27adc714d11106e79537da4b3b8ef039d6cb'
@@ -44,7 +47,8 @@ sha256sums=('cae7bb995006ea5b703d9d28446f694894c441fe4bfb95d561c0ac908cd06e41'
             '9c01e3bb264eaf6444b76ba6f5265d79bda234b5542fe3d2b478628412186c1e'
             '15bcbd12b6b103db67d828dbf50e22965dc3037297a88616725188b6576d25bb'
             'dbbc72d9c71c065fe3700af4322a130d5c5c459b6ee512f66e7e5eb9e4971171'
-            'e0dc2156ca821eaaada49cf5e1e301fc828215288aae648a6e7e4d4da1b38050')
+            'e0dc2156ca821eaaada49cf5e1e301fc828215288aae648a6e7e4d4da1b38050'
+            '8e9d212f8b37c16949fe8707c4300e5721f5b92a40b5f6d0e464929cb7483002')
 
 prepare() {
   cd "${srcdir}/Python-${pkgver}"
@@ -80,6 +84,9 @@ prepare() {
 
   # http://bugs.python.org/issue27369
   patch -Np0 -i ${srcdir}/python-2.6-expat-2.2.patch
+
+  # CPython SVN r86565
+  patch -Np1 -i ${srcdir}/python-2.6-socket-test.patch
 
   # Ensure that we are using the system copy of various libraries
   # (expat, zlib and libffi), rather than copies shipped in the tarball
