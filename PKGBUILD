@@ -7,12 +7,12 @@ validpgpkeys=('748231EBCBD808A14F5E85D28C004C2F93481F6B')
 
 pkgname=python-validators
 pkgver=0.11.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Python data validation for humans"
 arch=( 'i686' 'x86_64' )
 url="https://pypi.python.org/pypi/validators"
 license=( 'custom' )
-depends=( 'python' )
+depends=( 'python' 'python-decorator' )
 makedepends=( 'python' )
 _pkgname=validators
 
