@@ -45,7 +45,7 @@ else
   _pkgname='urbackup-server'
 fi
 pkgname="${_pkgname}-git"
-pkgver=2.0.36.r0.g4a89689
+pkgver=2.0.38.r0.g85153c7
 pkgrel=1
 pkgdesc='Client/Server network backup for Windows and Linux, builds server or client'
 arch=('i686' 'x86_64')
