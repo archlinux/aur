@@ -1,0 +1,9 @@
+[Desktop Entry]
+Encoding=UTF-8
+Version=1.7
+Type=Application
+Terminal=false
+Exec=java -jar /usr/share/typetalk/TypeTalk.one-jar.jar
+Name=TypeTalk
+Icon=typetalk
+Type=Application
