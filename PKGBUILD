@@ -1,7 +1,7 @@
 # Maintainer: Simon Gomizelj <simongmzlj@gmail.com>
 
 pkgname=repose-git
-pkgver=6.2.9.g578eefd
+pkgver=7
 pkgver() {
   cd "repose"
   git describe | sed 's/^v//;s/-/./g'
