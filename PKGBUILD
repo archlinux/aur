@@ -17,11 +17,11 @@ backup=()
 options=()
 install="$pkgname.install"
 changelog="CHANGELOG"
-source=()
-noextract=("emacs-daemon.rc")
+source=("emacs-daemon.rc")
+md5sums=('99e69c5e740bcece750ce19574be0223')
 
 package() {
   # Creating need directories
   install -dm755 "$pkgdir/etc/init.d"
-  install -Dm755 "emacs-daemon.rc" $pkgdir/etc/init.d/emacs
+  install -Dm755 "$srcdir/emacs-daemon.rc" $pkgdir/etc/init.d/emacs
 }
