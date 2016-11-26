@@ -6,24 +6,22 @@
 # Contributor: 325.15 - patch : Ninez 
 
 pkgname=nvidia-340xx-rt
-pkgver=340.96
-_extramodules=extramodules-4.6-rt
-pkgrel=3
+pkgver=340.98
+_extramodules=extramodules-4.8-rt
+pkgrel=1
 pkgdesc="NVIDIA drivers for linux-rt, 340xx legacy branch"
 arch=('i686' 'x86_64')
 url="http://www.nvidia.com/"
-depends=('linux-rt>=4.6' 'linux-rt<4.7' 'libgl' "nvidia-340xx-utils=${pkgver}")
-makedepends=("nvidia-340xx-libgl=${pkgver}" "nvidia-340xx-utils=${pkgver}" 'linux-rt' 'linux-rt-headers>=4.6' 'linux-rt-headers<4.7')
+depends=('linux-rt>=4.8' 'linux-rt<4.9' 'libgl' "nvidia-340xx-utils=${pkgver}")
+makedepends=("nvidia-340xx-libgl=${pkgver}" "nvidia-340xx-utils=${pkgver}" 'linux-rt' 'linux-rt-headers>=4.8' 'linux-rt-headers<4.9')
 conflicts=('nvidia-rt' 'nvidia-last-rt' 'nvidia-rt-lts')
 license=('custom')
 install=${pkgname}.install
 options=(!strip)
 source_i686=("http://us.download.nvidia.com/XFree86/Linux-x86/${pkgver}/NVIDIA-Linux-x86-${pkgver}.run")
 source_x86_64=("http://us.download.nvidia.com/XFree86/Linux-x86_64/${pkgver}/NVIDIA-Linux-x86_64-${pkgver}-no-compat32.run")
-source=('linux-4.6.patch')
-md5sums=('1f2baa65fd351ae7a2fc3dfd71ffcbfe')
-md5sums_i686=('cb64b165b638671bcdc75bcf297b8d90')
-md5sums_x86_64=('7bdbcee13bade63227933d9217571882')
+md5sums_i686=('3ccb023eec137cbee0d2035c288b6bbe')
+md5sums_x86_64=('e8d1292d8d002a15e10ea349151fa8f2')
 
 [[ "$CARCH" = "i686" ]] && _pkg="NVIDIA-Linux-x86-${pkgver}"
 [[ "$CARCH" = "x86_64" ]] && _pkg="NVIDIA-Linux-x86_64-${pkgver}-no-compat32"
@@ -31,9 +29,6 @@ md5sums_x86_64=('7bdbcee13bade63227933d9217571882')
 prepare() {
     rm -Rf "${srcdir}/${_pkg}"
     sh "${_pkg}.run" --extract-only
-
-    cd "${_pkg}"
-    patch -p1 --no-backup-if-mismatch -i ../linux-4.6.patch
 }
 
 build() {
@@ -50,7 +45,7 @@ package() {
     install -D -m644 "${srcdir}/${_pkg}/kernel/nvidia.ko" \
         "${pkgdir}/usr/lib/modules/${_extramodules}/nvidia.ko"
     install -D -m644 "${srcdir}/${_pkg}/kernel/uvm/nvidia-uvm.ko" \
-    "${pkgdir}/usr/lib/modules/${_extramodules}/nvidia-uvm.ko"
+    	"${pkgdir}/usr/lib/modules/${_extramodules}/nvidia-uvm.ko"
     gzip "${pkgdir}/usr/lib/modules/${_extramodules}/"*.ko
     install -d -m755 "${pkgdir}/etc/modprobe.d"
     echo "blacklist nouveau" >> "${pkgdir}/etc/modprobe.d/${pkgname}.conf"
