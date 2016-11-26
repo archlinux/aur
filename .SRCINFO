@@ -1,18 +1,18 @@
 pkgbase = protobuf-java
 	pkgdesc = Google's data interchange format utility (java API).
-	pkgver = 2.6.1
+	pkgver = 3.0.0
 	pkgrel = 1
 	url = http://code.google.com/p/protobuf/
 	arch = any
 	license = custom:BSD
 	makedepends = java-environment
 	makedepends = maven
-	makedepends = protobuf>=2.6.1
+	makedepends = protobuf>=3.0.0
 	depends = java-environment
-	source = https://github.com/google/protobuf/releases/download/v2.6.1/protobuf-2.6.1.tar.gz
+	source = https://github.com/google/protobuf/releases/download/v3.0.0/protobuf-java-3.0.0.tar.gz
 	source = protobuf-java.patch
-	md5sums = f3916ce13b7fcb3072a1fa8cf02b2423
-	md5sums = 01a3244c88fc5ddfee07c658c0bc7df4
+	md5sums = c5002fc32110450d06252ad6c53bb879
+	md5sums = 43b422420bec658f0471fb3f4f9558c5
 
 pkgname = protobuf-java
 
