@@ -1,4 +1,7 @@
 2015-08-22 Christopher Arndt <chris@chrisarndt.de>
 
+	* 1.3.2.r17.af1f8ab-2 :
+	Changed URL to Github repo URl, since the homepage URL seems to be dead
+
 	* 1.3.2.r17.af1f8ab-1 :
 	Renamed from package 'lv2-ir-git'
