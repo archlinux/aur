@@ -1,0 +1,17 @@
+pkgbase = brother-hl1200
+	pkgdesc = Brother HL-1200 CUPS driver (based on the HL-1210W driver package). After installing this, connect the printer and install it from CUPS web interface (default localhost:631)
+	pkgver = 3.0.1
+	pkgrel = 1
+	url = http://support.brother.com/g/b/downloadlist.aspx?c=us_ot&lang=en&prod=hl1202_us&os=127
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = lib32-glibc
+	depends = cups>=2.1.2
+	source = http://download.brother.com/welcome/dlf101869/hl1200lpr-3.0.1-1.i386.rpm
+	source = http://download.brother.com/welcome/dlf101870/hl1200cupswrapper-3.0.1-1.i386.rpm
+	md5sums = de895b93a9cdb562c5b8be633ae6c0ad
+	md5sums = 79a5b0119985bc89c6dc16dfee6e9c1b
+
+pkgname = brother-hl1200
+
