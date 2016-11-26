@@ -23,10 +23,10 @@ prepare() {
 }
 
 package() {
-	#mkdir -p ${pkgdir}/usr/bin/
+	mkdir -p ${pkgdir}/usr/bin/
 	mkdir -p ${pkgdir}/usr/lib/bees/
 	mkdir -p ${pkgdir}/var/lib/bees/
 
 	mv ${pkgname}/lib/libcrucible.so ${pkgdir}/usr/lib/
-	mv ${pkgname}/bin/bees ${pkgdir}/usr/lib/bees/
+	mv ${pkgname}/bin/bees ${pkgdir}/usr/bin/
 }
