@@ -7,7 +7,7 @@
 # AUR dependencies
 # ----------------
 # libilbc kvazaar chromaprint-fftw libbs2b openh264 shine vo-amrwbenc
-# nut-multimedia-git xavs flite-fpic libmfx-git libopenmpt-svn
+# nut-multimedia-git xavs flite-fpic libmfx-git libopenmpt-svn zimg-git
 
 # AUR make dependencies
 # ---------------------
@@ -18,7 +18,7 @@
 # intel-media-sdk (experimental Intel QSV support only for x86_64)
 
 pkgname=ffmpeg-full-git
-pkgver=N.82400.gb1367f7
+pkgver=N.82645.g829db8e
 pkgrel=1
 pkgdesc="Record, convert and stream audio and video (Git version with all possible libs)"
 arch=('i686' 'x86_64')
@@ -32,7 +32,7 @@ depends=(
     'opencore-amr' 'opencv' 'openh264' 'openjpeg2' 'libopenmpt-svn' 'opus' 'pulseaudio'
     'rubberband' 'rtmpdump' 'schroedinger' 'shine' 'smbclient' 'libavc1394' 'snappy' 'libsoxr'
     'speex' 'libssh' 'tesseract' 'libtheora' 'twolame' 'v4l-utils' 'vid.stab' 'vo-amrwbenc'
-    'libvorbis' 'libvpx' 'wavpack' 'libwebp' 'libx264.so' 'x265' 'libxcb' 'xvidcore' 'zimg'
+    'libvorbis' 'libvpx' 'wavpack' 'libwebp' 'libx264.so' 'x265' 'libxcb' 'xvidcore' 'zimg-git'
     'zeromq' 'zvbi' 'openal' 'libva' 'libdrm' 'libva-intel-driver' 'opencl-headers' 'ocl-icd'
     'libvdpau' 'mesa' 'openssl' 'xavs' 'sdl2' 'java-environment' 'libmfx-git' 'libomxil-bellagio'
 )
