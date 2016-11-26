@@ -4,7 +4,7 @@
 
 pkgname=python26
 pkgver=2.6.9
-pkgrel=9
+pkgrel=10
 _pybasever=2.6
 pkgdesc="Legacy version Python 2.6 of the high-level scripting language"
 arch=('i686' 'x86_64' 'arm')
