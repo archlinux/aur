@@ -1,7 +1,7 @@
 # Maintainer: Ray Song <i@maskray.me>
 
 pkgname=vte3-ng-fullwidth-emoji
-_basever=0.46.0
+_basever=0.46.1
 pkgver=$_basever.a
 pkgrel=1
 pkgdesc="Enhanced Virtual Terminal Emulator widget for use with GTK3 (patched with support for fullwidth emoji)"
