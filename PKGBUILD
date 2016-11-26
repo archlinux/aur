@@ -1,6 +1,6 @@
 pkgname=mingw-w64-libgpg-error
-pkgver=1.24
-pkgrel=3
+pkgver=1.25
+pkgrel=1
 pkgdesc="Support library for libgcrypt (mingw-w64)"
 arch=(any)
 url="http://www.gnupg.org"
@@ -13,13 +13,14 @@ source=("ftp://ftp.gnupg.org/gcrypt/libgpg-error/libgpg-error-${pkgver}.tar.bz2"
 "02-fix-symbollist-on.mingw.patch"
 "05-w32-gen.all.patch"
 "07-windows-build.patch")
-sha1sums=('c3e5bd0c3ddea647416b429cd8e2ec755bad9d9e'
+sha1sums=('8ab7494e40f80f4138edc9516981bf4afe7d9dbf'
           'SKIP'
           'b32a305f593835132a610272aeb219165dc354c4'
           'a7bbc4637aba322cd43aa7c5a6d99faa8f801133'
           '07f1c34b3861bc2658d1cad4fafe895f654815df'
           '367b3b33da0ae3a8f959ae8535d6584a997ad6b8')
-validpgpkeys=('D8692123C4065DEA5E0F3AB5249B39D24F25E3B6') # Werner Koch
+validpgpkeys=('D8692123C4065DEA5E0F3AB5249B39D24F25E3B6'  # Werner Koch
+              '031EC2536E580D8EA286A9F22071B08A33BD3F06') # NIIBE Yutaka (GnuPG Release Key) <gniibe@fsij.org>
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 prepare() {
