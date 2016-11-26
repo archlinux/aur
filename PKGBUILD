@@ -9,9 +9,8 @@ arch=('i686' 'x86_64')
 url='http://dark-alex.org'
 license=('GPL')
 depends=('zlib')
-source=("http://leandroufcgprojects.googlecode.com/files/${pkgname}-${pkgver}.tar.gz")
-sha1sums=('0c16b9d7846fa1b62fdafc756478b34d524baf33')
-options=('!buildflags')
+source=("https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/leandroufcgprojects/${pkgname}-${pkgver}.tar.gz")
+sha256sums=('47a1c88518377110b006725b29ac6847bb4cfc8d918395235512d4053972e10b')
 
 build() {
   cd "${pkgname}"
