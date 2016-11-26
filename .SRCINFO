@@ -1,7 +1,7 @@
 pkgbase = emacs-openrc
-	pkgdesc = Init script for emacs daemon for openrc
+	pkgdesc = OpenRC emacs-daemon init script
 	pkgver = 1.0
-	pkgrel = 2
+	pkgrel = 3
 	install = emacs-openrc.install
 	changelog = CHANGELOG
 	arch = i686
