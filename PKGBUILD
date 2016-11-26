@@ -2,7 +2,7 @@
 
 pkgname="emacs-openrc"
 pkgver="1.0"
-pkgrel=1
+pkgrel=2
 pkgdesc="Init script for emacs daemon for openrc"
 arch=('i686' 'x86_64')
 license=('GPL3')
