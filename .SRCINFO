@@ -1,6 +1,6 @@
 pkgbase = domoticz-beta
 	pkgdesc = Web based home automation
-	pkgver = 3.5834b1259
+	pkgver = 3.5878b1268
 	pkgrel = 1
 	url = http://www.domoticz.com
 	install = domoticz-beta.install

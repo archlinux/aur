@@ -1,7 +1,7 @@
 # Maintainer: IanDury
 
 pkgname=domoticz-beta
-pkgver=3.5834b1259
+pkgver=3.5878b1268
 pkgrel=1
 pkgdesc="Web based home automation"
 arch=('x86_64' 'arm' 'armv6h' 'armv7h')
