@@ -1,7 +1,7 @@
 pkgbase = librevault-git
 	pkgdesc = File synchronization designed with privacy in mind
-	pkgver = 0.1.18.5.r0.86a6aef
-	pkgrel = 4
+	pkgver = 0.1.19.r44.de5f35d
+	pkgrel = 1
 	url = https://librevault.com/
 	arch = x86_64
 	arch = i686
@@ -12,7 +12,7 @@ pkgbase = librevault-git
 	makedepends = qt5-tools
 	depends = qt5-websockets
 	depends = qt5-svg
-	depends = protobuf3>=3.0.0-1
+	depends = protobuf
 	depends = boost-libs
 	depends = crypto++
 	provides = librevault
