@@ -1,6 +1,6 @@
 pkgbase = silicon-git
 	pkgdesc = A high performance, middleware oriented C++14 http web framework
-	pkgver = 0.1+11+gfc46119
+	pkgver = latest
 	pkgrel = 1
 	url = https://github.com/matt-42/silicon
 	arch = any

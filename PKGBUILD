@@ -2,7 +2,7 @@
 
 _pkgname=silicon
 pkgname=$_pkgname-git
-pkgver=0.1+11+gfc46119
+pkgver=latest
 pkgrel=1
 pkgdesc='A high performance, middleware oriented C++14 http web framework'
 arch=('any')
