@@ -1,7 +1,7 @@
 # Contributor: bubla <matej.tyc@gmail.com>
 pkgname=mingw-w64-libtiff
-pkgver=4.0.6
-pkgrel=2
+pkgver=4.0.7
+pkgrel=1
 pkgdesc="Library for manipulation of TIFF images (mingw-w64)"
 arch=(any)
 url="http://www.remotesensing.org/libtiff"
@@ -10,7 +10,7 @@ depends=(mingw-w64-libjpeg-turbo mingw-w64-zlib mingw-w64-xz libtiff)
 makedepends=(mingw-w64-configure)
 options=(staticlibs !buildflags !strip)
 source=("http://download.osgeo.org/libtiff/tiff-${pkgver}.tar.gz")
-sha1sums=('280e27704eaca5f592b82e71ac0c78b87395e2de')
+sha1sums=('2c1b64478e88f93522a42dd5271214a0e5eae648')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
