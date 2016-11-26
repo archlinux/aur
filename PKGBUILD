@@ -20,6 +20,17 @@ validpgpkeys=('3486CBAC7F116CA71351B0D7F7181B2010660E6F')
 optdepends=('inkscape: tools for manipulating vector objects (eg: SVG files)')
 checkdepends=('python-tox' 'python-pylint' ) 
 checkdepends+=('python2-tox' 'python2-pylint') 
+groups=()
+depends=()
+makedepends=()
+optdepends=()
+provides=()
+conflicts=()
+replaces=()
+backup=()
+options=()
+install=
+changelog=
 
 check() {
     cd "$srcdir/$_libname-$pkgver"
@@ -32,10 +43,10 @@ check() {
 
 package_python-viivakoodi() {
     # as python-3.0 and python-3.1 need argparse I force for every version
-    depends=('python' 'python-argparse')
-    makedepends=('python-setuptools')
-    provides=('python2-viivakoodi')
-    optdepends=('python-pillow')
+    depends+=('python' 'python-argparse')
+    makedepends+=('python-setuptools')
+    provides+=('python2-viivakoodi')
+    optdepends+=('python-pillow')
 
     cd "$srcdir/$_libname-$pkgver"
     python setup.py install --root="$pkgdir/" --optimize=1
@@ -43,10 +54,10 @@ package_python-viivakoodi() {
 
 package_python2-viivakoodi() {
     # as python2.6 need argparse I force for every version
-    depends=('python2>=2.6' 'python2-argparse')          
-    makedepends=('python2-setuptools')
-    provides=('python2-viivakoodi')
-    optdepends=('python2-pillow')
+    depends+=('python2>=2.6' 'python2-argparse')          
+    makedepends+=('python2-setuptools')
+    provides+=('python2-viivakoodi')
+    optdepends+=('python2-pillow')
 
     cd "$srcdir/$_libname-$pkgver"
     python2 setup.py install --root="$pkgdir/" --optimize=1
