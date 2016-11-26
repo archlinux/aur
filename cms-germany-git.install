@@ -1,14 +1,14 @@
 post_upgrade() {
   su -c \
-  "chown root:cmsuser /usr/local/bin/isolate && \
-  chmod 4750 /usr/local/bin/isolate && \
-  chown cmsuser:cmsuser /usr/local/include/cms && \
-  chown cmsuser:cmsuser /usr/local/share/cms && \
-  chown cmsuser:cmsuser /var/local/log/cms && \
-  chown cmsuser:cmsuser /var/local/cache/cms && \
-  chown cmsuser:cmsuser /var/local/lib/cms && \
-  chown cmsuser:cmsuser /var/local/run/cms && \
-  chown cmsuser:cmsuser /usr/local/etc/cms.conf && \
+  "chown root:cmsuser /usr/local/bin/isolate; \
+  chmod 4750 /usr/local/bin/isolate; \
+  chown cmsuser:cmsuser /usr/local/include/cms; \
+  chown cmsuser:cmsuser /usr/local/share/cms; \
+  chown cmsuser:cmsuser /var/local/log/cms; \
+  chown cmsuser:cmsuser /var/local/cache/cms; \
+  chown cmsuser:cmsuser /var/local/lib/cms; \
+  chown cmsuser:cmsuser /var/local/run/cms; \
+  chown cmsuser:cmsuser /usr/local/etc/cms.conf; \
   chown cmsuser:cmsuser /usr/local/etc/cms.ranking.conf" \
   - root
 }
@@ -21,7 +21,7 @@ post_install() {
   echo ">>> You should add yourself to the cmsuser group:"
   echo ">>>   # usermod -a -G cmsuser <your user>"
   echo ">>> Logout to make the change effective"
-  
+
   post_upgrade
 }
 
