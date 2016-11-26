@@ -1,0 +1,17 @@
+pkgbase = tunescope-git
+	pkgdesc = An oscilloscope style guitar tuner
+	pkgver = r3.0c2e5f8
+	pkgrel = 1
+	url = https://github.com/dack/tunescope
+	arch = any
+	license = GPL
+	makedepends = cmake
+	makedepends = jack
+	makedepends = glut
+	depends = jack
+	depends = glut
+	source = tunescope-git::git+https://github.com/dack/tunescope.git
+	md5sums = SKIP
+
+pkgname = tunescope-git
+
