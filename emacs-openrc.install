@@ -3,14 +3,14 @@ SERVICE_NAME_USER=emacs.$SUDO_USER
 DEFAULT_CONF_PATH=/etc/conf.d/$SERVICE_NAME_USER
 EMACS_DAEMON_PATH=/etc/init.d/$SERVICE_NAME
 EMACS_DAEMON_USER_PATH=$EMACS_DAEMON_PATH.$SUDO_USER
-VARS_EXPORTED="SHELL\|USER\|HOME\|LANG"
+VARS_EXPORTED="SHELL\|^USER=\|HOME\|LANG"
 
 post_install() {
   sudo ln -v -s -f $EMACS_DAEMON_PATH $EMACS_DAEMON_USER_PATH
   echo ":: Installed daemon for $SUDO_USER."
 
   echo ":: Getting useful vars from $SUDO_USER."
-  sudo -u $SUDO_USER env | grep $VARS_EXPORTED | sudo tee $DEFAULT_CONF_PATH
+  sudo -u $SUDO_USER env | grep $VARS_EXPORTED | sed "s/^/export /" | sudo tee $DEFAULT_CONF_PATH
   echo ":: Wrote default conf on $DEFAULT_CONF_PATH"
 
   echo ":: Add init script on openrc."
