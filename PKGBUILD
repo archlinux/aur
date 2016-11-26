@@ -3,13 +3,13 @@
 pkgname=sextractor-bin  
 _pkgname=sextractor
 pkgver=2.19.5
-pkgrel=1
+pkgrel=2
 pkgdesc="builds a catalogue of objects from an astronomical image"
 url="http://www.astromatic.net/software/sextractor"
 arch=('x86_64')
 license=('GPL')
 depends=()
-makedepends=('rpmextract')
+makedepends=()
 provides=('sextracator')
 conflicts=('sextractor')
 replaces=('sextractor')
@@ -19,8 +19,6 @@ sha1sums=('9992b239f2ff9c801ff81b1e830fe1244a3da216')
 
 build() {
   cd $srcdir
-  
-  rpmextract.sh ${_pkgname}-${pkgver}-1.${arch}.rpm
 }
 
 package() {
