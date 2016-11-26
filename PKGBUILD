@@ -1,7 +1,7 @@
 # Maintainer: Andrew Lin <andrewlin16 at gmail dot com>
 # Contributor: Simon Thorpe <simon at hivetechnology dot com dot au>
 pkgname=openmpt
-pkgver=1.26.06.00
+pkgver=1.26.07.00
 pkgrel=1
 pkgdesc="Audio module tracker formerly known as ModPlug Tracker"
 arch=('i686' 'x86_64')
@@ -12,8 +12,8 @@ makedepends=('gendesk' 'imagemagick')
 optdepends=('bash-completion: tab completion support')
 source_i686=("http://sagamusix.de/openmpt/download/OpenMPT-$pkgver.zip")
 source_x86_64=("http://sagamusix.de/openmpt/download/OpenMPT-$pkgver-x64.zip")
-sha1sums_i686=('b89bf2076f36cdd0b1d7002775132622c6e6aca0')
-sha1sums_x86_64=('09748b6e0fd4ecc13ba7f55f13bc06c6c1167df3')
+sha1sums_i686=('1744b18ae62617aa66f9920c4c3e1047321673c5')
+sha1sums_x86_64=('6adb9e70c6b563956f90736f8787c5c4fd2e50f9')
 
 prepare(){
   convert "$srcdir/OpenMPT-$pkgver/mpt.ico" "$srcdir/icon.png"
