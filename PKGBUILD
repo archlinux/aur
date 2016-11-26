@@ -2,7 +2,7 @@
 
 _pkgname=cutelyst
 pkgname=$_pkgname-git
-pkgver=1.0.0+2+g2f101cb
+pkgver=latest
 pkgrel=1
 pkgdesc='A Web Framework built on top of Qt, using the simple approach of Catalyst (Perl) framework'
 arch=('i686' 'x86_64')

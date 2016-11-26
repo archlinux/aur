@@ -1,6 +1,6 @@
 pkgbase = cutelyst-git
 	pkgdesc = A Web Framework built on top of Qt, using the simple approach of Catalyst (Perl) framework
-	pkgver = 1.0.0+2+g2f101cb
+	pkgver = latest
 	pkgrel = 1
 	url = https://github.com/cutelyst/cutelyst
 	arch = i686
