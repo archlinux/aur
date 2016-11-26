@@ -55,3 +55,4 @@ pkgname = python-viivakoodi
 	optdepends = python-sphinx-alabaster-theme: for building the project documentation
 	provides = 
 	provides = python2-viivakoodi
+
