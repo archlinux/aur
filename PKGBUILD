@@ -23,19 +23,10 @@ prepare() {
 }
 
 package() {
-	mkdir -p ${pkgdir}/usr/bin/
-	for file in ${pkgname}/bin/*; do
-		mv $file ${pkgdir}/usr/bin/
-	done
-	mkdir -p ${pkgdir}/usr/lib/
-	mv ${pkgname}/lib/libcrucible.so ${pkgdir}/usr/lib/
-
-	mkdir -p ${pkgdir}/etc/profile.d/
-	{
-		echo export BEESHOME=/var/lib/bees/
-		echo export BEESSTATUS=/run/bees.status 
-	} > ${pkgdir}/etc/profile.d/bees.sh
+	#mkdir -p ${pkgdir}/usr/bin/
+	mkdir -p ${pkgdir}/usr/lib/bees/
 	mkdir -p ${pkgdir}/var/lib/bees/
-	touch ${pkgdir}/var/lib/bees/beeshash.dat
-	chmod 700 ${pkgdir}/var/lib/bees/beeshash.dat
+
+	mv ${pkgname}/lib/libcrucible.so ${pkgdir}/usr/lib/
+	mv ${pkgname}/bin/bees ${pkgdir}/usr/lib/bees/
 }
