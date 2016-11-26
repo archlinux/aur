@@ -1,0 +1,66 @@
+#!/usr/bin/openrc-run
+# Copyright 2008-2016 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2 or later
+
+USER=${RC_SVCNAME##*.}
+: ${EMACS:=/usr/bin/emacs}
+: ${EMACS_OPTS:=--daemon}
+: ${EMACS_TIMEOUT:=5}
+SKIP_ARGB_VISUALS=1
+
+description="Start an Emacs server running in the background"
+
+depend() {
+    need localmount
+    after bootmisc dbus
+}
+
+checkconfig() {
+    if [ "${RC_VERSION:-0}" = "0" ]; then
+        eerror "This script cannot be used for baselayout-1."
+        return 1
+    fi
+
+    if [ "${USER}" = "${RC_SVCNAME}" ]; then
+          eerror "You have to create an init script for each user:"
+          eerror "ln -s emacs /etc/init.d/emacs.<user>"
+          return 1
+    fi
+
+    if ! id -u "${USER}" >/dev/null; then
+          eerror "${USER}: No such user"
+          return 1
+    fi
+
+    local has_daemon=$(${EMACS} -batch -q --no-site-file \
+    --eval "(princ (fboundp 'daemonp))")
+    if [ "${has_daemon}" != t ]; then
+          eerror "${EMACS} does not support running as a daemon"
+          return 1
+    fi
+}
+
+
+start() {
+    local HOME
+    checkconfig || return 1
+
+    eval HOME="~${USER}"
+    ebegin "Starting Emacs daemon for user ${USER}"
+    start-stop-daemon --start \
+    --chdir ${HOME} \
+    --user ${USER} \
+    --exec ${EMACS} -- ${EMACS_OPTS}
+
+    eend $?
+}
+
+stop() {
+    ebegin "Stopping Emacs daemon for user ${USER}"
+    start-stop-daemon --stop \
+    --retry "TERM/${EMACS_TIMEOUT}/KILL/5" \
+    --user ${USER} \
+    --exec ${EMACS} -- ${EMACS_OPTS}
+
+    eend $?
+}
