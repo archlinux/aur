@@ -3,12 +3,12 @@
 _pyname=conda-build
 pkgname=python-${_pyname}
 pkgver=2.0.9
-pkgrel=1
+pkgrel=2
 pkgdesc="Commands and tools for building conda packages"
 arch=('any')
 url="http://conda.pydata.org/docs/building/build.html"
 license=('BSD')
-depends=('patchelf' 'python' 'python-conda' 'python-conda-verify' 'python-filelock-git' 'python-jinja' 'python-pkginfo' 'python-pycrypto' 'python-yaml')
+depends=('patchelf' 'python' 'python-conda' 'python-conda-verify' 'python-filelock' 'python-jinja' 'python-pkginfo' 'python-pycrypto' 'python-yaml')
 provides=("$_pyname")
 options=(!emptydirs)
 source=(https://github.com/conda/$_pyname/archive/$pkgver.tar.gz)
