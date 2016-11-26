@@ -1,3 +1,13 @@
+2016-11-26 Yen Chi Hsuan <yan12125 -at- gmail -dot- com>
+
+	* 2.6.9-10 :
+	add patch to skip socket test when 'localhost' cannot be resolved
+
+2016-07-23 Christopher Arndt <aur -at- chrisarndt -dot- de>
+
+	* 2.6.9-9 :
+	add patch for expat 2.2 compatibility
+
 2016-05-26 Christopher Arndt <aur -at- chrisarndt -dot- de>
 
 	* 2.6.9-8 :
