@@ -2,6 +2,7 @@
 #
 # TODO: * viivakoodi require (python) argparse if python interpreter is 2.6, 
 #               3.0 or 3.1 => how to do that ?
+#       * review the different *-requirements.txt files
 _pylibname=viivakoodi
 pkgname=("python2-$_pylibname" "python-$_pylibname")
 pkgver=0.8.0
