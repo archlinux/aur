@@ -1,6 +1,7 @@
-# Maintainer: johnguant <rhys @t johnguant dot com>
+# Maintainer: Sandor Nagy <sandor dot nagy at kdemail dot net>
+# Contributor: johnguant <rhys @t johnguant dot com>
 
-_rev=r01
+_rev=r03
 _sdkver=5.1
 _sdkint=22
 pkgname=android-tv-x86-system-image-${_sdkint}
@@ -13,8 +14,8 @@ license=('custom')
 depends=("android-platform-${_sdkint}")
 optdepends=('qemu-kvm' 'libvirt')
 options=('!strip')
-source=("http://dl.google.com/android/repository/sys-img/android-tv/sysimg_atv_x86-${_sdkint}_${_rev}.zip")
-sha1sums=('51849acc07627b75c8941b15cbe659644aac4a55')
+source=("https://dl.google.com/android/repository/sys-img/android-tv/sysimg_atv_x86-${_sdkint}_${_rev}.zip")
+md5sums=('0d99844e00b3442c25c840a1256f694d')
 
 package() {
   install -Dm644 "${srcdir}/x86/NOTICE.txt" "${pkgdir}/usr/share/licenses/$pkgname/NOTICE.txt"
