@@ -1,6 +1,0 @@
-134,135c134,135
-<         if rootpath:
-<             path = path.replace(shelldict['pathsep'].join(rootpath), "")
----
->         #if rootpath:
->         #    path = path.replace(shelldict['pathsep'].join(rootpath), "")
