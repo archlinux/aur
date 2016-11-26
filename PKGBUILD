@@ -3,14 +3,14 @@
 
 pkgname=b43-tools
 pkgver=019
-pkgrel=1
+pkgrel=2
 pkgdesc="Tools for the Broadcom 43xx series WLAN chip"
-arch=('i686' 'x86_64')
+arch=('i686' 'x86_64' 'armv7h')
 url="https://github.com/mbuesch/b43-tools"
 license=('GPL2' 'GPL3')
 depends=('python2')
 makedepends=('bison' 'flex' 'python2')
-provides=('b43-fwcutter')
+provides=("b43-fwcutter=$pkgver")
 conflicts=('b43-fwcutter')
 source=("https://github.com/mbuesch/b43-tools/archive/b43-fwcutter-019.tar.gz")
 md5sums=('d8387ec57b8bced796b0f9231077501a')
