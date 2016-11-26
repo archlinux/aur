@@ -5,7 +5,7 @@
 _pylibname=viivakoodi
 pkgname=("python2-$_pylibname" "python-$_pylibname")
 pkgver=0.8.0
-pkgrel=0
+pkgrel=1
 pkgdesc='Barcode generator for Python. Fork of pyBarcode project.'
 arch=('x86_64')
 url="https://github.com/kxepal/$_pylibname"
