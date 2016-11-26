@@ -2,7 +2,7 @@
 
 pkgname='powershell-git'
 _pkgname='powershell'
-pkgver=6.0.0.alpha.10.73.g0c9abbc
+pkgver=6.0.0.alpha.13.8.gdcce8a2
 pkgrel=1
 pkgdesc="A cross-platform automation and configuration tool/framework."
 arch=('x86_64')
@@ -58,12 +58,16 @@ build() {
   make
   popd
 
+  PROOT_NO_SECCOMP=1 \
   proot -b "${srcdir}/os-release":/etc/os-release "${srcdir}/build.sh"
 }
 
 check() {
   cd "${_pkgname}"/src/libpsl-native
-  LANG=en_US.UTF-8 make test
+
+  PROOT_NO_SECCOMP=1 \
+  proot -b "${srcdir}/os-release":/etc/os-release \
+  make test
 }
 
 
