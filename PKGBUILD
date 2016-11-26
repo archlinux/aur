@@ -8,7 +8,7 @@
 
 # Maintainer: Your Name <youremail@domain.com>
 pkgname=windows-gaming-git # '-bzr', '-git', '-hg' or '-svn'
-pkgver=r5.61e377b
+pkgver=r6.6b3b148
 pkgrel=1
 pkgdesc="Windows gaming utils"
 arch=('x86_64')
@@ -17,7 +17,7 @@ license=('GPL')
 groups=()
 depends=('qemu-headless' 'sudo' 'libsystemd')
 optdepends=('samba: shared folder support')
-makedepends=('git' 'rpmextract' 'curl' 'libarchive' 'cargo') # 'bzr', 'git', 'mercurial' or 'subversion'
+makedepends=('git' 'rpmextract' 'curl' 'libarchive' 'cargo' 'mono' 'cdrkit') # 'bzr', 'git', 'mercurial' or 'subversion'
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 replaces=()
@@ -58,6 +58,12 @@ build() {
 	cargo build --release
 	cd ..
 
+	cd guest-agent
+	xbuild /p:Configuration=Release VfioService/VfioService.sln
+	cp VfioService/VfioService/bin/Release/VfioService.exe .
+	mkisofs -m VfioService -o windows-gaming-ga.iso -r -J -input-charset iso8859-1 -V "windows-gaming-ga" .
+	cd ..
+
 	# grab ovmf
         curl -o ovmf.rpm "https://www.kraxel.org/repos/jenkins/edk2/$(curl -s 'https://www.kraxel.org/repos/jenkins/edk2/' | grep -Eo 'edk2.git-ovmf-x64-[-\.a-z0-9]+\.noarch\.rpm' | head -n1)"
         rpm2cpio ovmf.rpm | bsdtar -xvf - --strip-components 4 './usr/share/edk2.git/ovmf-x64/OVMF_CODE-pure-efi.fd' './usr/share/edk2.git/ovmf-x64/OVMF_VARS-pure-efi.fd'
@@ -73,6 +79,7 @@ package() {
 	install -D windows-gaming-driver/target/release/windows-gaming-driver $pkgdir/usr/lib/windows-gaming/windows-gaming-driver
 	cp ovmf-x64/OVMF_CODE-pure-efi.fd $pkgdir/usr/lib/windows-gaming/ovmf-code.fd
 	cp ovmf-x64/OVMF_VARS-pure-efi.fd $pkgdir/usr/lib/windows-gaming/ovmf-vars.fd
+	cp guest-agent/windows-gaming-ga.iso $pkgdir/usr/lib/windows-gaming/
 	install -D -m644 config-sample.toml $pkgdir/etc/windows-gaming-driver.toml
 	install -D -m644 windows.service $pkgdir/usr/lib/systemd/system/windows.service
 }
