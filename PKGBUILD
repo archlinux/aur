@@ -1,16 +1,17 @@
 # Maintainer: Jeffrey E. Bedard <jefbed@gmail.com>
 pkgname=jbwm
-pkgver=1.50
-pkgrel=2
+pkgver=1.51
+pkgrel=1
 pkgdesc="minimalist X11 window manager, based on evilwm"
 arch=('x86_64' 'x86')
 url="https://github.com/jefbed/jbwm"
 license=('MIT')
-depends=('libxext')
+depends=('libxext' 'libxft')
 source=( "https://github.com/jefbed/jbwm/archive/$pkgver.tar.gz" )
 
 build() {
 	cd "$pkgname-$pkgver"
+	./configure
 	make
 }
 
@@ -18,8 +19,6 @@ package() {
 	cd "$pkgname-$pkgver"
 	install -d "${pkgdir}/usr/bin"
 	make DESTDIR="${pkgdir}" install
-	install -D -m644 LICENSE \
-		"${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
-md5sums=('5d6d2b43088f867fc6f3cea9c158b339')
+md5sums=('c12da78728c4a50dc298d4da02df562f')
