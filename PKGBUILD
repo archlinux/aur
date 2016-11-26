@@ -2,7 +2,7 @@
 
 _pkgname=iod
 pkgname=$_pkgname-git
-pkgver=1.0+112+g4d44d3c
+pkgver=latest
 pkgrel=1
 pkgdesc='Meta programming utilities for C++14'
 arch=('i686' 'x86_64')

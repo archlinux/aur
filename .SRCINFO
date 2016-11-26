@@ -1,6 +1,6 @@
 pkgbase = iod-git
 	pkgdesc = Meta programming utilities for C++14
-	pkgver = 1.0+112+g4d44d3c
+	pkgver = latest
 	pkgrel = 1
 	url = https://github.com/matt-42/iod
 	arch = i686
