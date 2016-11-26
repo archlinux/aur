@@ -2,7 +2,7 @@
 
 pkgname=cloudabi-toolchain
 pkgver=1
-pkgrel=1
+pkgrel=2
 pkgdesc="Full toolchain to compile for CloudABI."
 url='https://nuxi.nl/'
 license=(BSD)
@@ -10,7 +10,6 @@ arch=(any)
 
 depends=(
 	'cloudabi-clang'
-	'cloudabi-binutils'
 	'cloudabi-pkg-config'
 )
 
