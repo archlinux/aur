@@ -1,7 +1,7 @@
 # Maintainer: Daniel Maslowski <info@orangecms.org>
 
 pkgname=cypress
-pkgver=0.17.10
+pkgver=0.17.12
 pkgrel=1
 pkgdesc='test engine that runs unit and integration tests in your browser'
 arch=('x86_64')
@@ -14,7 +14,7 @@ source=(
   "cypress.zip::https://download.cypress.io/desktop/$pkgver?os=linux64"
   'cypress.desktop'
 )
-sha512sums=('4281702f626caba2d70953e2cc3967526365bc125cd31cdcf1c8394a0d50aa16e37c7037f6ad528e6611a3134c4f82d8944b99868453f363a07f8b3257d2076b'
+sha512sums=('d5f48d95136a9b2d47667afcb6305a6b3b3ac4700c6818330f964700ecefe86712a5a01c6ff67ec2a4c231adc3f23a16460ea79e8a44aa5e7ccb908920355a46'
             '1b48157cf3ddd21ca58e2cd3df7998c01966a02a544fdfc7c5eedf5aee8757c541d5dc9df64fcdee65256a29141fa491c638bf9cd98b4e9df5030ec98ebc4251')
 
 package() {
