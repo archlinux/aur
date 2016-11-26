@@ -52,6 +52,8 @@ package_python-viivakoodi() {
     makedepends+=('python-setuptools')
     provides+=('python2-viivakoodi')
     optdepends+=('python-pillow: render barcodes as images'
+                 'python-recommonmark: for building the project documentation'
+                 'python-semantic_version: for building the project documentation'
                  'python-sphinx: for building the project documentation'
                  'python-sphinx-alabaster-theme: for building the project documentation')
     checkdepends+=('python-pylint'
@@ -77,6 +79,7 @@ package_python2-viivakoodi() {
     makedepends+=('python2-setuptools')
     provides+=('python2-viivakoodi')
     optdepends+=('python2-pillow: render barcodes as images'
+                 'python2-recommonmark: for building the project documentation'
                  'python2-sphinx: for building the project documentation'
                  'python2-sphinx-alabaster-theme: for building the project documentation')
     checkdepends+=('python2-pylint'
