@@ -2,12 +2,12 @@
 
 pkgname=gfxbench
 pkgver=4.0.13
-pkgrel=3
+pkgrel=4
 pkgdesc="Unified graphics benchmark based on DXBenchmark (DirectX) and GLBenchmark (OpenGL ES)"
 url='https://gfxbench.com/'
 arch=('i686' 'x86_64')
 license=('custom')
-depends=('libpng12')
+depends=('libpng12' 'qt5-base' 'icu')
 _basename="gfxbench_gl-linux-qt-${pkgver}+community"
 source_i686=(  "${_basename}.sh::https://gfxbench.com/download/${_basename}_32bit.sh")
 source_x86_64=("${_basename}.sh::https://gfxbench.com/download/${_basename}_64bit.sh")
@@ -30,4 +30,13 @@ package() {
 
   # Fix path
   sed -i "s#${pkgdir}##" "${pkgdir}"/opt/"${pkgname}"/gfxbench_gl.desktop
+
+  # Remove unnecessary local copies of libs
+  rm "${pkgdir}"/opt/"${pkgname}"/libQt5*
+  rm "${pkgdir}"/opt/"${pkgname}"/libicu*
+  rm -r "${pkgdir}"/opt/"${pkgname}"/platforms/
+  rm -r "${pkgdir}"/opt/"${pkgname}"/xcbglintegrations/
+
+  # Remove start script, since we're not using the local libs anymore
+  rm "${pkgdir}"/opt/"${pkgname}"/start.sh
 }
