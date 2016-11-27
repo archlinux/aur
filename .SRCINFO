@@ -1,0 +1,15 @@
+pkgbase = cloog-isl14
+	pkgdesc = Library that generates loops for scanning polyhedra
+	pkgver = 0.18.4
+	pkgrel = 2
+	url = http://www.bastoul.net/cloog/
+	arch = i686
+	arch = x86_64
+	arch = armv7h
+	license = GPL
+	depends = isl14
+	source = http://www.bastoul.net/cloog/pages/download/cloog-0.18.4.tar.gz
+	md5sums = e531f725244856c92c9bba009ff44faf
+
+pkgname = cloog-isl14
+
