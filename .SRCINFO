@@ -1,0 +1,19 @@
+pkgbase = isl14
+	pkgdesc = Library for manipulating sets and relations of integer points bounded by linear constraints
+	pkgver = 0.14
+	pkgrel = 1
+	url = http://isl.gforge.inria.fr/
+	arch = i686
+	arch = x86_64
+	arch = armv7h
+	license = MIT
+	depends = gmp
+	provides = isl=0.14
+	conflicts = isl-git
+	conflicts = isl
+	options = !libtool
+	source = http://isl.gforge.inria.fr/isl-0.14.1.tar.xz
+	md5sums = 94fcd11e0b1c79250ae341affb1845ea
+
+pkgname = isl14
+
