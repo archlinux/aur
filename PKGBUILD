@@ -2,7 +2,7 @@
 
 pkgname=devkitarm
 pkgver=r45
-pkgrel=1
+pkgrel=2
 pkgdesc="An ARM toolchain for GP32, Nintendo DS and GBA homebrew development"
 arch=('i686' 'x86_64')
 url="http://www.devkitpro.org"
@@ -12,7 +12,7 @@ depends=('freeimage' 'python' 'flex' 'libmpc' 'libusb' 'guile')
 install=devkitarm.install
 source=("http://downloads.sourceforge.net/sourceforge/devkitpro/buildscripts-20151213.tar.bz2"
         "http://downloads.sourceforge.net/sourceforge/devkitpro/binutils-2.25.1.tar.bz2"
-        "http://mirrors.kernel.org/gnu/gcc/gcc-5.3.0/gcc-5.3.0.tar.bz2"
+        "http://downloads.sourceforge.net/sourceforge/devkitpro/gcc-5.3.0.tar.bz2"
         "http://downloads.sourceforge.net/sourceforge/devkitpro/newlib-2.2.0.tar.gz"
         "http://downloads.sourceforge.net/sourceforge/devkitpro/gdb-7.10.tar.bz2"
         "http://downloads.sourceforge.net/sourceforge/devkitpro/gbatools-1.0.0.tar.bz2"
@@ -29,6 +29,11 @@ source=("http://downloads.sourceforge.net/sourceforge/devkitpro/buildscripts-201
         "http://downloads.sourceforge.net/sourceforge/devkitpro/3dstools-1.1.1.tar.bz2"
         "http://downloads.sourceforge.net/sourceforge/devkitpro/picasso-2.1.0.tar.bz2"
         "devkitarm-skip-libs.patch"
+        "devkitarm-add-gcc-patch.patch"
+        "devkitarm-add-tool-patches.patch"
+        "fix-gcc-5.3.0-compilation-on-gcc-6.patch"
+        "fix-grit.patch"
+        "fix-gp32tools.patch"
         "devkitarm.sh")
 sha256sums=('dffe312bdcd86b30bbe91969fb82c8634b6e7171548c04ee8ebf52540de28818'
             'b5b14added7d78a8d1ca70b5cb75fef57ce2197264f4f5835326b0df22ac9f22'
@@ -49,6 +54,11 @@ sha256sums=('dffe312bdcd86b30bbe91969fb82c8634b6e7171548c04ee8ebf52540de28818'
             '6dbf15bb5cbeee826b6ffc608288f1267ed3696d725956943545c0572401d548'
             '79bf84b42da964918f6c8bb1294434ed1e10feab9a2b1f5a0183030637977650'
             '97b498aa26aba743e141115cd8f1169aa8411532f589c3c845233a299f5ecf74'
+            '6462b0911186b1b0167c74e2b146d7c09b17974c021ce37087e8c157b6cdd59f'
+            '27353ac1375867b8d07889a35515e144f3f989588fec4364adc6c5317d17ae4f'
+            'e22c5cb2748a8a62eacbd9401fcdd7a1239a469ab7811382e7564e7554ce2341'
+            'e8fd36de318e8a2726c24d7de0190e475da628456380032a708e0ab232d5e091'
+            'fce6e900ee23ebe0bdee1e6f58e02ba521598f5a1a74eb5798ee35ca1f27be3b'
             'fc5489fab5ee4ce5cd53c2e1549fd2958872a6777324920b89e03b88584072db')
 noextract=('binutils-2.25.1.tar.bz2' 'gcc-5.3.0.tar.bz2' 'newlib-2.2.0.tar.gz'
            'gdb-7.10.tar.bz2' 'gbatools-1.0.0.tar.bz2' 'gp32tools-1.0.1.tar.bz2'
@@ -78,6 +88,12 @@ END
   # fix search path to use correct tools
   sed 's|$PATH:$TOOLPATH/$package/bin|$TOOLPATH/$package/bin:$PATH|' -i \
     buildscripts/build-devkit.sh
+
+  # add patch to build gcc 5.3.0 on gcc >6
+  patch -Np0 < devkitarm-add-gcc-patch.patch
+
+  # add patch to build tools on gcc >6
+  patch -Np0 < devkitarm-add-tool-patches.patch
 
   # disable building of libraries, we have separate packages
   patch -Np0 < devkitarm-skip-libs.patch
