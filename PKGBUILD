@@ -18,10 +18,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd $_reponame
-  printf '%s+%s+%s' \
-    $(git log -1 --format='%cd' --date=short | sed 's/-//g') \
-    $(git rev-list --count HEAD) \
-    $(git rev-parse --short HEAD)
+  git describe --long --tags | sed -r 's/^r//;s/-/+/g'
 }
 
 build () {
