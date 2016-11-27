@@ -2,7 +2,7 @@
 # Contributor: Jonas Heinrich <onny@project-insanity.org>
 
 pkgname=nextcloud-app-calendar
-pkgver=1.4.0
+pkgver=1.4.1
 pkgrel=1
 pkgdesc="Calendar App for Nextcloud"
 arch=('any')
@@ -11,7 +11,7 @@ license=('AGPL')
 depends=('nextcloud')
 options=('!strip')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/nextcloud/calendar/releases/download/v$pkgver/calendar.tar.gz")
-sha512sums=("fd6e00d70bd09bd71338e875f34de7f17c8aee4ca3dc6df0a614035cce1a75f07a8113dd02b3f5a3f4d36f6182ba49ee31a71b1136a677f993f71ffebbe90082")
+sha512sums=("854ea0c3007451513b3ac267d66b6fa085e6af258be5816875416f4be68c29bf959fefd0ce553a0e8bae4ba340d74efe2909e03ee59b6e828280da57e4133aae")
 
 package() {
   install -d "${pkgdir}/usr/share/webapps/nextcloud/apps"
