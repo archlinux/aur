@@ -1,6 +1,6 @@
 pkgbase = quick-back-git
 	pkgdesc = Quick, simple command line backup tool
-	pkgver = r69.0ff9837
+	pkgver = r72.6bc32fc
 	pkgrel = 1
 	url = https://github.com/PenguinSnail/Quick-Back
 	arch = any
