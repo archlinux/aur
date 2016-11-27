@@ -1,13 +1,13 @@
 pkgbase = spacemacs-git
-	pkgdesc = The best editor is neither Emacs nor Vim, it's Emacs and Vim!
-	pkgver = 5512
-	pkgrel = 1
-	url = http://spacemacs.org/
-	arch = i686
-	arch = x86_64
-	depends = emacs
-	source = git+https://github.com/syl20bnr/spacemacs.git
-	md5sums = SKIP
+  pkgdesc = The best editor is neither Emacs nor Vim, it's Emacs and Vim!
+  pkgver = 5512
+  pkgrel = 1
+  url = http://spacemacs.org/
+  arch = i686
+  arch = x86_64
+  depends = emacs
+  source = git+https://github.com/syl20bnr/spacemacs.git
+  md5sums = SKIP
 
 pkgname = spacemacs-git
 
