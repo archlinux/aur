@@ -7,6 +7,8 @@ arch=('x86_64')
 url="https://github.com/Dade916/embree/tree/bvh_build"
 license=('Apache')
 depends=('intel-tbb')
+provides=('embree')
+conflicts=('embree')
 makedepends=('cmake' 'ispc' 'freeglut' 'libxmu' 'openexr' 'git')
 source=('git+https://github.com/Dade916/embree.git#branch=bvh_build')
 md5sums=('SKIP')
