@@ -3,7 +3,7 @@
 # https://aur.archlinux.org/packages/ghdl/
 
 pkgname=ghdl-gcc-git
-pkgver=0.34dev.git20161030
+pkgver=0.34dev.git20161119
 pkgrel=1
 arch=('i686' 'x86_64')
 pkgdesc='VHDL simulator - GCC flavour'
@@ -26,18 +26,20 @@ source=(
 	"ftp://ftp.gnu.org/gnu/gcc/gcc-${_gccver}/gcc-${_gccver}.tar.bz2"
 	"ftp://gcc.gnu.org/pub/gcc/infrastructure/isl-${_islver}.tar.bz2"
 	"ftp://gcc.gnu.org/pub/gcc/infrastructure/cloog-${_cloogver}.tar.gz"
+	"Makefile.patch"
 )
 md5sums=(
 	'SKIP'
 	'6f831b4d251872736e8e9cc09746f327'
 	'e039bfcfb6c2ab039b8ee69bf883e824'
 	'e34fca0540d840e5d0f6427e98c92252'
+	'5b0c20923b9fda2bd7f6caa6391bf125'
 )
 
 pkgver() {
 	cd "${srcdir}/ghdl"
 
-	# GHDL version (extracted from version.ads)
+	# GHDL version (extracted from version.in)
 	_distver=`sed -n -e 's/.*Ghdl_Ver .*"\(.*\)".*/\1/p' src/version.in | tr -d '-'`
 	# Date of the last git commit
 	_gitver=`git log -n 1 --date=short | sed -n -e 's/.*Date:\s*\([0-9-]*\).*/\1/p' | tr -d -`
@@ -105,19 +107,39 @@ build() {
 		--enable-lto \
 		#--without-cloog --without-isl
 
+	# Build GHDL
 	make
+
+	# Some fixes to enable launching GHDL without installing it
+	cd "${srcdir}/ghdl"
+	patch -p0 -N -i "${startdir}"/Makefile.patch || true
+
+	# Build VHDL libraries
+	make \
+		GHDL="${srcdir}/gcc-build/gcc/ghdl" \
+		ANALYZE_OPTS="--GHDL1=${srcdir}/gcc-build/gcc/ghdl1" \
+		STD_GHDL_FLAGS="--GHDL1=${srcdir}/gcc-build/gcc/ghdl1" \
+		vhdl.libs.all libs.vhdl.standard
+
+	# Compile runtime stuff
+	make libgrt.a
 }
 
 package() {
-	cd "${srcdir}/gcc-build"
 
-	# Make a full install
+	# Install GHDL
+	cd "${srcdir}/gcc-build"
+	make DESTDIR="${pkgdir}" install
+
+	# Install VHDL libraries and runtime
+	cd "${srcdir}/ghdl"
 	make DESTDIR="${pkgdir}" install
 
 	# Remove gcc-specific files, keep only what is related to ghdl
+	cd "${srcdir}/gcc-build"
 	rm -rf "${pkgdir}"/usr/{share/{locale,gcc-${_gccver},man/man7},include}
 	find "${pkgdir}"/usr/lib \
-		-maxdepth 1 -mindepth 1 -not -name 'gcc' \
+		-maxdepth 1 -mindepth 1 -not -name 'gcc' -not -name 'ghdl' \
 		-exec rm -rf '{}' +
 	find "${pkgdir}"/usr/lib/gcc/$(./gcc/xgcc -dumpmachine)/${_gccver} \
 		-maxdepth 1 -mindepth 1 -not -name 'vhdl' -not -name 'ghdl1' \
