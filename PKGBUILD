@@ -1,6 +1,6 @@
 # Maintainer: Aaron Brodersen <aaron at abrodersen dot com>
 pkgname=dotnet-cli
-pkgver="1.0.0_preview2_003131"
+pkgver="1.0.0_preview2_1_003177"
 pkgrel=1
 pkgdesc="A command line utility for building, testing, packaging and running .NET Core applications and libraries"
 arch=(x86_64)
@@ -16,69 +16,36 @@ backup=()
 options=(staticlibs)
 install=
 
-_coreclrver="1.0.4"
-_corefxver="1.0.0"
-_runtimever="1.0.1"
+_coreclrver="1.1.0"
+_runtimever="1.1.0"
 _sdkver=${pkgver//_/-}
 
 _coreclr="coreclr-${_coreclrver}"
-_corefx="corefx-${_corefxver}"
 
 source=(
   "${_coreclr}.tar.gz::https://github.com/dotnet/coreclr/archive/v${_coreclrver}.tar.gz"
-  "${_corefx}.tar.gz::https://github.com/dotnet/corefx/archive/v${_corefxver}.tar.gz"
   "${pkgname}-${pkgver}.tar.gz::https://dotnetcli.blob.core.windows.net/dotnet/preview/Binaries/${_sdkver}/dotnet-dev-fedora.23-x64.${_sdkver}.tar.gz"
-  'gcc6-github-pull-5304.patch'
-  'unused-attr-coreclr.patch'
-  'unused-attr-corefx.patch'
-  'glibc-readdir-corefx.patch')
+  'llvm-39-github-pull-8311.patch'
+  'llvm-39-move.patch')
 noextract=("${pkgname}-${pkgver}.tar.gz")
-sha256sums=('b49ba545fe632dfd5426669ca3300009a5ffd1ccf3c1cf82303dcf44044db33d'
-            '98f9475ea42e5d55ad9402424e342a6c0ea7351f3fb5805a602132969b44b774'
-            '8cd233fdf2d12eca47d558e70e90000aee34a75c718fc9f22d8680e6cb688047'
-            '0905f9f8e6e33a7a6e5f4acf9ec54ec3796400dce28f0d71c1d1d8bcd9b7e068'
-            '8a33c449312f90660d431177f7ee0a36894b75749f79ecf8995c64d82197af90'
-            '9ecdd0ca615b988b67cc4c6a9f5035fb3fb70b16d9281d07c17a28a784a6d4ab'
-            '210cc1c802f2fd284ebfa6bbf7f7997c616adb5959725b25028a2ca63a568f51')
+sha256sums=('edc1e416f07a71e2b3f70c1f1412e45a7396b3f0daac5bcb267d5f779b9d7444'
+            '9802a59b2e68c1fd2c91648503302066bf0ab09b1d286dd6264e2ccc75f50b09'
+            '581d6484626bbae820feb19d0613955fea333c025fb06d43a731a3db776686f7'
+            '84a0e56d00fd2f3f9f82b7d017652f03d4e7f80c6968d7fa1274f6e46af0ff3d')
 
 prepare() {
   cd "${srcdir}/${_coreclr}"
-  patch -p1 < "${srcdir}/gcc6-github-pull-5304.patch"
-  patch -p1 < "${srcdir}/unused-attr-coreclr.patch"
-
-  cd "${srcdir}/${_corefx}"
-  patch -p1 < "${srcdir}/unused-attr-corefx.patch"
-  patch -p1 < "${srcdir}/glibc-readdir-corefx.patch"
+  patch -p1 < "${srcdir}/llvm-39-github-pull-8311.patch"
+  patch -p1 < "${srcdir}/llvm-39-move.patch"
 }
 
 build() {
   cd "${srcdir}/${_coreclr}"
   ./build.sh x64 release
-
-  cd "${srcdir}/${_corefx}"
-  ./build.sh native x64 release
-
 }
 
 _coreclr_files=(
-  'libclrjit.so'
-  'libcoreclr.so'
-  'libcoreclrtraceptprovider.so'
-  'libdbgshim.so'
-  'libmscordaccore.so'
-  'libmscordbi.so'
-  'libsos.so'
-  'libsosplugin.so'
   'System.Globalization.Native.so'
-)
-
-_corefx_files=(
-  'System.IO.Compression.Native.so'
-  'System.Native.a'
-  'System.Native.so'
-  'System.Net.Http.Native.so'
-  'System.Net.Security.Native.so'
-  'System.Security.Cryptography.Native.so'
 )
 
 _copy_file() {
@@ -95,12 +62,6 @@ package() {
 
   for file in "${_coreclr_files[@]}"; do
       _copy_file "${_clrdir}/bin/Product/Linux.x64.Release/${file}" "${_outdir}"
-  done
-
-  local _fxdir="${srcdir}/${_corefx}"
-
-  for file in "${_corefx_files[@]}"; do
-      _copy_file "${_fxdir}/bin/Linux.x64.Release/Native/${file}" "${_outdir}"
   done
 
   mkdir -p "${pkgdir}/usr/bin/"

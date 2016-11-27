@@ -1,0 +1,28 @@
+From 7dfb2ed8614dea8c2fe757592436a38694e91ebc Mon Sep 17 00:00:00 2001
+From: Jan Vorlicek <janvorli@microsoft.com>
+Date: Fri, 28 Oct 2016 04:34:42 +0200
+Subject: [PATCH] Add missing std::move to one exception throw (#7865)
+
+We had the std::move missing in one of the exception throws. For some reason,
+the current clang didn't complain about it even though the copy constructor was
+deleted.
+---
+ src/vm/exceptionhandling.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/vm/exceptionhandling.cpp b/src/vm/exceptionhandling.cpp
+index e59f10e..ed155eb 100644
+--- a/src/vm/exceptionhandling.cpp
++++ b/src/vm/exceptionhandling.cpp
+@@ -4730,7 +4730,7 @@ VOID DECLSPEC_NORETURN DispatchManagedException(PAL_SEHException& ex, bool isHar
+         }
+     }
+ 
+-    throw ex;
++    throw std::move(ex);
+ }
+ 
+ #ifdef _AMD64_
+-- 
+2.10.2
+
