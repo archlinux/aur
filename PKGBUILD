@@ -3,11 +3,12 @@
 # Contributor: Eothred <yngve.levinsen@gmail.com> (for original spotify PKGBUILD)
 
 pkgname=spotio
-_pkgver=1.0.38.171
-_another_pkgver=g5e1cd7b2
-_yetanotherpkgrel=22
+_pkgver=1.0.42.151
+_another_pkgver=g19de0aa6
+_yetanotherpkgrel64=74
+_yetanotherpkgrel32=27
 pkgver=1.0.2_${_pkgver}.${_another_pkgver}.${_yetanotherpkgrel}
-pkgrel=2
+pkgrel=1
 pkgdesc="A proof-of-concept Rdio-inspired skin for Spotify."
 makedepends=('imagemagick')
 arch=('x86_64' 'i686')
@@ -24,16 +25,16 @@ source=('spotify'
 'spotio.desktop'
 'spotio.zip::https://github.com/devinhalladay/spotio/archive/master.zip')
 md5sums=('cfef2f72647980c639201c6ab39e8534'
-	 'ef25ddc5b6bf8fe1a0d64cbd79e1f7b4'
-	 'afbd86ae37f8752fc439edf4e81b7d8e'
-	 '8bb5b67c4483819e1c3e92f2c9350651'
-	 'SKIP')
+         'ef25ddc5b6bf8fe1a0d64cbd79e1f7b4'
+         'afbd86ae37f8752fc439edf4e81b7d8e'
+         '8bb5b67c4483819e1c3e92f2c9350651'
+         'SKIP')
+md5sums_x86_64=('dcce36b6956fd12baff87427357558d2')
+md5sums_i686=('c2840db7c82747591f8ab480da1dcca0')
 
-source_x86_64=("http://repository.spotify.com/pool/non-free/s/spotify-client/spotify-client_${_pkgver}.${_another_pkgver}-${_yetanotherpkgrel}_amd64.deb")
-md5sums_x86_64=('085e994bdc09f03b2ceb4cbe81752d75')
+source_x86_64=("http://repository.spotify.com/pool/non-free/s/spotify-client/spotify-client_${_pkgver}.${_another_pkgver}-${_yetanotherpkgrel64}_amd64.deb")
 
-source_i686=("http://repository.spotify.com/pool/non-free/s/spotify-client/spotify-client_${_pkgver}.${_another_pkgver}-${_yetanotherpkgrel}_i386.deb")
-md5sums_i686=('f6f106ecbb5e8b27616a6f76821d5106')
+source_i686=("http://repository.spotify.com/pool/non-free/s/spotify-client/spotify-client_${_pkgver}.${_another_pkgver}-${_yetanotherpkgrel32}_i386.deb")
 
 depends=("alsa-lib>=1.0.14" "gconf" "gtk2" "glib2" "nss" "libsystemd" "libxtst" "libx11" "libxss" "libcurl-compat" "desktop-file-utils" "rtmpdump")
 optdepends=('ffmpeg0.10: Adds support for playback of local files'
