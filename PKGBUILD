@@ -1,7 +1,7 @@
 # Maintainer: holomorph
 
 pkgname=geiser
-pkgver=0.8.1
+pkgver=0.9
 pkgrel=1
 pkgdesc='Emacs environment to hack in Scheme'
 arch=('any')
@@ -10,9 +10,8 @@ license=('BSD')
 optdepends=('racket: scheme implementation'
             'guile: scheme implementation'
             'chicken: scheme implementation')
-install=geiser.install
 source=("https://github.com/jaor/geiser/archive/$pkgver.tar.gz")
-sha256sums=('e891b6f488d7bd8056e8c2ff590e4862497703484282efa43d8ac1196d5a933d')
+sha256sums=('72f29b6dc48e8ac8ada50d1d9d781f0cb1c94985e0f6d187838d3e4322fb58a9')
 
 build() {
   cd "$pkgname-$pkgver"
