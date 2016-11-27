@@ -1,0 +1,9 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=PugDebug
+Comment=A standalone debugging client for PHP applications.
+Exec=/usr/bin/pugdebug
+Icon=/usr/share/pixmaps/pugdebug.png
+Terminal=false
+Type=Application
+Categories=Qt;Development;Debugger;	
