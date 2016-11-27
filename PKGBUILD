@@ -2,7 +2,7 @@
 
 pkgname=gnome-shell-extension-nohotcorner-git
 _gitname=nohotcorner
-pkgver=11.0.r4.ge300475
+pkgver=V14.0.r0.gf02c039
 pkgrel=1
 pkgdesc="Gnome-shell extension disabling hotcorners"
 arch=('any')
