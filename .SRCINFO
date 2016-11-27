@@ -1,15 +1,18 @@
 pkgbase = jbead
 	pkgdesc = A bead rope crochet design software
 	pkgver = 1.0.23
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.jbead.ch/
 	arch = any
 	license = GPL3
+	makedepends = unzip
 	depends = java-runtime
 	source = http://www.jbead.ch/releases/jbead_1.0.23_linux.tar.gz
 	source = jbead
+	source = jbead.desktop
 	md5sums = 992459d3e9a50ba47df741fec1a75b9c
 	md5sums = 646212e9c1c27773bf7c188466eb4ced
+	md5sums = ccdc5f8ffae08530108fd5aeaa2deb0f
 
 pkgname = jbead
 
