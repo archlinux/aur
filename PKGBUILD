@@ -1,30 +1,31 @@
 # Maintainer: Quentin Bourgeois <quentin+archlinux@bourgeois.eu>
 #
 # TODO: * review the different *-requirements.txt files
-_pylibname=viivakoodi
-pkgname=("python2-$_pylibname" "python-$_pylibname")
+pkgbase=viivakoodi
+pkgname=("python2-$pkgbase" "python-$pkgbase")
 pkgver=0.8.0
 pkgrel=1
 pkgdesc='Barcode generator for Python. Fork of pyBarcode project.'
 arch=('x86_64')
-url="https://github.com/kxepal/$_pylibname"
+url="https://github.com/kxepal/$pkgbase"
 license=('MIT')
+makedepends+=('python-setuptools'
+              'python2-setuptools')
 optdepends=('inkscape: open barcode generated in SVG format')
-source=("$_pylibname-$pkgver.tar.gz::https://github.com/kxepal/$_pylibname/archive/$pkgver.tar.gz")
+source=("$pkgbase-$pkgver.tar.gz::https://github.com/kxepal/$pkgbase/archive/$pkgver.tar.gz")
 sha256sums=('e1a17dc24975d5242202cfbb7534d69dd14eeb26bdf8a10f056c7b04904fef1e')
 
 check() {
-    cd "$srcdir/$_pylibname-$pkgver"
+    cd "$srcdir/$pkgbase-$pkgver"
     
     for py_int in python3 python2; do
-        msg "Testing $_pylibname-$pkgver with $py_int"
+        msg "Testing $pkgbase-$pkgver with $py_int"
         "$py_int" ./test.py
     done
 }
 
 package_python-viivakoodi() {
     depends+=('python')
-    makedepends+=('python-setuptools')
     provides+=('python2-viivakoodi')
     optdepends+=('python-pillow: render barcodes as images'
                  'python-recommonmark: for building the project documentation'
@@ -37,7 +38,7 @@ package_python-viivakoodi() {
                    'python-pytest-xdist'
                    'python-mock'
                    'python-tox')
-    cd "$srcdir/$_pylibname-$pkgver"
+    cd "$srcdir/$pkgbase-$pkgver"
     python setup.py install --root="$pkgdir/" --optimize=1
 
     if [ -f LICENSE ]; then
@@ -50,7 +51,6 @@ package_python-viivakoodi() {
 
 package_python2-viivakoodi() {
     depends+=('python2')
-    makedepends+=('python2-setuptools')
     provides+=('python2-viivakoodi')
     optdepends+=('python2-pillow: render barcodes as images'
                  'python2-recommonmark: for building the project documentation'
@@ -62,7 +62,7 @@ package_python2-viivakoodi() {
                    'python2-mock'
                    'python2-tox') 
 
-    cd "$srcdir/$_pylibname-$pkgver"
+    cd "$srcdir/$pkgbase-$pkgver"
     python2 setup.py install --root="$pkgdir/" --optimize=1
 
     if [ -f LICENSE ]; then
