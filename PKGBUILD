@@ -3,8 +3,8 @@
 # Contributor: Richard Jackson <rj@iinet.net.au>
 pkgname=abiword-gtk2
 _pkgname=abiword
-pkgver=3.0.1
-pkgrel=3
+pkgver=3.0.2
+pkgrel=1
 pkgdesc='Fully-featured word processor, GTk2, No plugins, Lite version'
 arch=('i686' 'x86_64')
 license=('GPL')
@@ -13,7 +13,7 @@ makedepends=('pkgconfig' 'boost')
 conflicts=('abiword' 'abiword-plugins')
 url='http://www.abisource.com'
 source=("$_pkgname-$pkgver.tar.gz::http://abisource.com/downloads/$_pkgname/$pkgver/source/$_pkgname-$pkgver.tar.gz")
-sha256sums=('e094f6fbf0afc5c5538b4894888e7c346f8ee8f49c9d24821dd696d0734865c6')
+sha256sums=('afbfd458fd02989d8b0c6362ba8a4c14686d89666f54cfdb5501bd2090cf3522')
 
 build() {
   cd $_pkgname-$pkgver
