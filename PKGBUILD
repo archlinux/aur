@@ -2,7 +2,7 @@
 
 pkgname=xdgmenumaker
 pkgver=1.3
-pkgrel=1
+pkgrel=2
 pkgdesc="xdgmenumaker creates generating menus using xdg information for blackbox, compizboxmenu, fluxbox, icewm, jwm, pekwm and windowmaker."
 url="https://github.com/gapan/$pkgname"
 arch=('any')
