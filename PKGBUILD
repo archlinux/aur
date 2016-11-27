@@ -9,7 +9,6 @@ url="https://github.com/kxepal/$pkgbase"
 license=('MIT')
 makedepends+=('python-setuptools'
               'python2-setuptools')
-optdepends=('inkscape: open barcode generated in SVG format')
 source=("$pkgbase-$pkgver.tar.gz::https://github.com/kxepal/$pkgbase/archive/$pkgver.tar.gz")
 sha256sums=('e1a17dc24975d5242202cfbb7534d69dd14eeb26bdf8a10f056c7b04904fef1e')
 
@@ -25,11 +24,7 @@ check() {
 package_python-viivakoodi() {
     depends+=('python')
     provides+=('python2-viivakoodi')
-    optdepends+=('python-pillow: render barcodes as images'
-                 'python-recommonmark: for building the project documentation'
-                 'python-semantic_version: for building the project documentation'
-                 'python-sphinx: for building the project documentation'
-                 'python-sphinx-alabaster-theme: for building the project documentation')
+    optdepends+=('python-pillow: render barcodes as images')
     checkdepends+=('python-pytest'
                    'python-pytest-cov'
                    'python-pytest-pep8'
@@ -50,10 +45,7 @@ package_python-viivakoodi() {
 package_python2-viivakoodi() {
     depends+=('python2')
     provides+=('python2-viivakoodi')
-    optdepends+=('python2-pillow: render barcodes as images'
-                 'python2-recommonmark: for building the project documentation'
-                 'python2-sphinx: for building the project documentation'
-                 'python2-sphinx-alabaster-theme: for building the project documentation')
+    optdepends+=('python2-pillow: render barcodes as images')
     checkdepends+=('python2-pytest'
                    'python2-pytest-cov'
                    'python2-pytest-xdist'
