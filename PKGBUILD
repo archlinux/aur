@@ -31,8 +31,7 @@ package_python-viivakoodi() {
                  'python-semantic_version: for building the project documentation'
                  'python-sphinx: for building the project documentation'
                  'python-sphinx-alabaster-theme: for building the project documentation')
-    checkdepends+=('python-pylint'
-                   'python-pytest'
+    checkdepends+=('python-pytest'
                    'python-pytest-cov'
                    'python-pytest-pep8'
                    'python-pytest-xdist'
@@ -57,8 +56,7 @@ package_python2-viivakoodi() {
                  'python2-recommonmark: for building the project documentation'
                  'python2-sphinx: for building the project documentation'
                  'python2-sphinx-alabaster-theme: for building the project documentation')
-    checkdepends+=('python2-pylint'
-                   'python2-pytest'
+    checkdepends+=('python2-pytest'
                    'python2-pytest-cov'
                    'python2-pytest-xdist'
                    'python2-mock'

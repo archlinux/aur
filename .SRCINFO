@@ -11,7 +11,6 @@ pkgbase = python2-viivakoodi
 
 pkgname = python2-viivakoodi
 	checkdepends = 
-	checkdepends = python2-pylint
 	checkdepends = python2-pytest
 	checkdepends = python2-pytest-cov
 	checkdepends = python2-pytest-xdist
@@ -29,7 +28,6 @@ pkgname = python2-viivakoodi
 
 pkgname = python-viivakoodi
 	checkdepends = 
-	checkdepends = python-pylint
 	checkdepends = python-pytest
 	checkdepends = python-pytest-cov
 	checkdepends = python-pytest-pep8
