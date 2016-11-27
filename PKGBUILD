@@ -1,28 +1,21 @@
-# Maintainer: A. Richard <dubitae@gmail.com>
-# Contributor: Atlanis <emallson@archlinux.us>
+# Maintainer: mitts <mittens2001@opmbx.org>
+
 pkgname=python2-validictory
-pkgver=0.9.1
-pkgrel=3
-pkgdesc="General purpose Python data validator that allows validation of arbitrary Python data structures."
+_pkgname=validictory
+pkgver=1.1.0
+pkgrel=1
+pkgdesc="General purpose python data validator"
 arch=('any')
-url="https://readthedocs.org/projects/validictory/"
+url="https://github.com/jamesturk/validictory"
 license=('MIT')
-groups=()
 depends=('python2')
 makedepends=('python2-setuptools')
-optdepends=()
-provides=()
-conflicts=()
-replaces=()
-backup=()
-options=(!emptydirs)
-install=
-changelog=
-source=("https://github.com/sunlightlabs/validictory/archive/0.9.1.tar.gz")
-noextract=()
-md5sums=('aee1a43aae0da08d49c7b949982ec169')
+source=("https://github.com/jamesturk/$_pkgname/archive/$pkgver.tar.gz")
+md5sums=('1662ca12b0fa906d2bdd501dfafaa2fc')
 
 package() {
-    cd "$srcdir/validictory-$pkgver"
+    cd "$srcdir/$_pkgname-$pkgver"
     python2 setup.py install --root="$pkgdir" --optimize=1
+
+    install -Dm644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
