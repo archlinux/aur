@@ -1,5 +1,5 @@
 pkgname=spacemacs-git
-pkgver=2
+pkgver=7126
 pkgrel=1
 epoch=
 pkgdesc="The best editor is neither Emacs nor Vim, it's Emacs and Vim!"
