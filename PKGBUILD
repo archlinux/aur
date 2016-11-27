@@ -15,16 +15,16 @@ conflicts=('libnice')
 makedepends=('gstreamer' 'gstreamer0.10' 'gtk-doc' 'autoconf')
 optdepends=('gstreamer' 'gstreamer0.10')
 git_sha=2803a0b4b70af9684e05ef5ed3f0c2fbca4b6c93
-source=(https://github.com/$pkgname/$pkgname/archive/$git_sha.tar.gz)
+source=(https://github.com/libnice/libnice/archive/$git_sha.tar.gz)
 md5sums=('6512c08aef0a19e6790488430e100040')
 
 build() {
-  cd $pkgname-$git_sha
+  cd libnice-$git_sha
   ./autogen.sh --prefix=/usr --disable-static
   make
 }
 
 package() {
-  cd $pkgname-$git_sha
+  cd libnice-$git_sha
   make DESTDIR="$pkgdir" install
 }
