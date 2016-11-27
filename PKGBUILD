@@ -12,5 +12,5 @@ noextract=('shitpost')
 
 package() {
     mkdir -p "${pkgdir}/usr/bin/"
-    install -D -m755 shitpost "${pkgdir}/usr/bin/"
+    install -D -m755 ../shitpost "${pkgdir}/usr/bin/"
 }

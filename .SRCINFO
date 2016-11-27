@@ -9,7 +9,6 @@ pkgbase = shitpost
 	depends = imagemagick
 	depends = ttf-ms-fonts
 	noextract = shitpost
-	md5sums = 7ed84dc6ec3a3593153520050be3ba50
 
 pkgname = shitpost
 
