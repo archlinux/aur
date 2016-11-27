@@ -1,8 +1,8 @@
 pkgbase = mopidy-local-images
 	pkgdesc = Mopidy local library proxy extension for handling embedded album art
 	pkgver = 1.0.0
-	pkgrel = 1
-	url = https://github.com/tkem/mopidy-local-images
+	pkgrel = 2
+	url = https://github.com/mopidy/mopidy-local-images
 	arch = any
 	license = APACHE
 	makedepends = python2
@@ -10,7 +10,7 @@ pkgbase = mopidy-local-images
 	depends = python2-pykka>=1.1.0
 	depends = mopidy>=1.1.0
 	depends = python2-uritools>=1.0
-	source = https://github.com/tkem/mopidy-local-images/archive/v1.0.0.tar.gz
+	source = https://github.com/mopidy/mopidy-local-images/archive/v1.0.0.tar.gz
 	md5sums = 5b209aa86a9598710cd892d2947538a9
 
 pkgname = mopidy-local-images
