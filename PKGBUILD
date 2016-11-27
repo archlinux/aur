@@ -14,7 +14,7 @@ source=("git+https://github.com/cryzed/bin.git"
         "aur-auto-vote.service.skel"
         "aur-auto-vote.timer")
 md5sums=('SKIP'
-         'f9c35855bb3190a4ded470fa58c7541b'
+         '7496d1d73a29a477a532d682d8715084'
          'f940f9816e5013c197d075d62c3cf64a')
 install="${pkgname}.install"
 
