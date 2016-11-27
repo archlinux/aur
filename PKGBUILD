@@ -1,13 +1,13 @@
 # Maintainer: Lukas Jirkovsky <l.jirkovsky@gmail.com>
 # Contributor: Alex Combas <alex.combas@gmail.com>
 pkgname=luxrays-hg
-pkgver=3573+.ce44b2b9fe6e+
+pkgver=3677+.a68fdb616d0a+
 pkgrel=1
 pkgdesc="Accelerate the ray intersection process by using GPUs"
 arch=('x86_64')
 url="http://www.luxrender.net/"
 license=('GPL')
-depends=('embree' 'libcl' 'libgl' 'openimageio')
+depends=('embree-bvh_build-git' 'libcl' 'libgl' 'openimageio')
 makedepends=('boost' 'cmake' 'freetype2' 'gtk3' 'libpng' 'mesa' 'opencl-headers' 'glew' 'freeglut'
              'mercurial')
 optdepends=('opencl-nvidia: OpenCL support for nVidia GPUs' \
@@ -20,7 +20,7 @@ optdepends=('opencl-nvidia: OpenCL support for nVidia GPUs' \
 options=('staticlibs')
 provides=('luxrays')
 conflicts=('luxrays')
-source=('luxrays::hg+https://bitbucket.org/luxrender/luxrays' \
+source=('luxrays::hg+https://bitbucket.org/luxrender/luxrays#branch=default' \
         force_python3.diff)
 md5sums=('SKIP'
          '36c9823246c2b575415c1709e065727c')
