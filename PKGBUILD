@@ -26,9 +26,6 @@ package_python-viivakoodi() {
     provides+=('python2-viivakoodi')
     optdepends+=('python-pillow: render barcodes as images')
     checkdepends+=('python-pytest'
-                   'python-pytest-cov'
-                   'python-pytest-pep8'
-                   'python-pytest-xdist'
                    'python-mock'
                    'python-tox')
     cd "$srcdir/$pkgbase-$pkgver"
@@ -47,8 +44,6 @@ package_python2-viivakoodi() {
     provides+=('python2-viivakoodi')
     optdepends+=('python2-pillow: render barcodes as images')
     checkdepends+=('python2-pytest'
-                   'python2-pytest-cov'
-                   'python2-pytest-xdist'
                    'python2-mock'
                    'python2-tox') 
 
