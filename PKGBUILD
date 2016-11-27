@@ -1,4 +1,4 @@
-# Maintainer: Sebastian Lau <archlinux _at_ slau _dot_ info>
+# Maintainer: Sebastian Lau <lauseb644 _at_ gmail _dot_ com>
 # Contributor: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 # Contributor: Jan de Groot <jgc@archlinux.org>
 # Contributor: Damian01w <damian01w@gmail.com>
@@ -7,16 +7,16 @@ _pkgbase=gdm
 pkgbase=gdm-plymouth
 pkgname=(gdm-plymouth libgdm-plymouth)
 pkgver=3.22.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Gnome Display Manager with Plymouth support."
 arch=(i686 x86_64)
 license=(GPL)
 url="http://www.gnome.org"
-depends=('plymouth' 'gnome-shell>=3.22.0' 'gnome-shell<3.25.0' 'gnome-session' 'upower' 'xorg-xrdb' 'xorg-server' 'xorg-server-xwayland' 'xorg-xhost')
+depends=('plymouth' 'gnome-shell>=3.22.0' 'gnome-session' 'upower' 'xorg-xrdb' 'xorg-server' 'xorg-server-xwayland' 'xorg-xhost')
 makedepends=('intltool' 'yelp-tools' 'gobject-introspection' 'git')
 checkdepends=('check')
-_commit=3d2aa559a4a7decc8b6568de6b41cf9f94170613
-source=("git://git.gnome.org/gdm#commit=$_commit"
+#_commit=4eb6575fdbd0e0dda9b209f6b4731edf990fde98   # tag=3.22.1
+source=("git://git.gnome.org/gdm#tag=$pkgver"
 	"0002-Xsession-Don-t-start-ssh-agent-by-default.patch")
 sha256sums=('SKIP'
             '63f99db7623f078e390bf755350e5793db8b2c4e06622caf42eddc63cd39ecca')
@@ -31,7 +31,6 @@ prepare() {
 
   patch -Np1 -i ../0002-Xsession-Don-t-start-ssh-agent-by-default.patch
 
-  AUTOPOINT='intltoolize --automake -c' autoreconf -fi
   NOCONFIGURE=1 ./autogen.sh
 }
 
@@ -81,7 +80,6 @@ package_gdm-plymouth() {
   cd $_pkgbase
   make DESTDIR="$pkgdir" install
 
-  chmod 711 "$pkgdir/var/log/gdm"
   rm -r "$pkgdir/var/run"
 
 ### Split libgdm
@@ -94,7 +92,6 @@ package_libgdm-plymouth() {
   depends=(systemd glib2)
   provides=("libgdm")
   conflicts=("libgdm")
-  install=libgdm-plymouth.install
 
   cd $_pkgbase
   make -C libgdm DESTDIR="$pkgdir" install
