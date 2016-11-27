@@ -1,7 +1,7 @@
 pkgbase = memo-notes
 	pkgdesc = memo: A CLI note taking application.
 	pkgver = 1.6
-	pkgrel = 3
+	pkgrel = 4
 	url = http://www.getmemo.org/
 	arch = i686
 	arch = x86_64
