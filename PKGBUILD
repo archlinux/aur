@@ -1,7 +1,7 @@
 _pkgname=rainicorn
 pkgname=$_pkgname-git
 pkgver=r43.dcd2b68
-arch=('x86' 'x86_64')
+arch=('i686' 'x86_64')
 pkgrel=1
 pkgdesc="Rainicorn is a tool intended for use by Rust IDEs."
 url="https://github.com/RustDT/Rainicorn"
