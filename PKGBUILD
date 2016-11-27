@@ -2,10 +2,10 @@
 # Contributor: Mohammad Alsaleh <msal@tormail.org>
 # Maintainer: Steven Allen <steven@stebalien.com>
 
-_date=2016-11-23
+_date=2016-11-26
 pkgname=rust-nightly-bin
-pkgver=1.15.0_2016.11.22
-pkgrel=2
+pkgver=1.15.0_2016.11.25
+pkgrel=1
 arch=('i686' 'x86_64')
 pkgdesc='Fast, concurrent, safe. The Rust programming language and its package manager, Cargo.'
 url='https://www.rust-lang.org/'
@@ -51,5 +51,4 @@ package() {
     # Remove duplicate .so libraries and symlink to them.
     # https://github.com/rust-lang/rust/issues/37971
     find "${pkgdir}/usr/lib/rustlib/" -name "*.so" -exec ln -rfs -t "${pkgdir}/usr/lib/" {} +
-
 }
