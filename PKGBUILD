@@ -21,19 +21,13 @@ backup=()
 options=()
 install=
 changelog=
-source=("$_pylibname-$pkgver.tar.gz::https://github.com/kxepal/$_pylibname/archive/$pkgver.tar.gz" 
-        "$_pylibname-$pkgver.tar.gz.sig::https://pki.bourgeois.eu/archlinux/aur/$_pylibname-$pkgver.tar.gz.sig")
+source=("$_pylibname-$pkgver.tar.gz::https://github.com/kxepal/$_pylibname/archive/$pkgver.tar.gz")
 noextract=()
 md5sums=()
 sha1sums=()
-sha256sums=('e1a17dc24975d5242202cfbb7534d69dd14eeb26bdf8a10f056c7b04904fef1e' 
-            'c161bd90708ca20c841321139f7e8fe5ae53cb25f55d0327fea5b59ac401f8e9')
-sha384sums=('e2da627423221298dfc55be93ab07e42d8801f0fa63bcfc5ad6bfa689181bcd0e7eb9525abdfd20aa3637ae56999956b' 
-            'b92e09d3e801b55ec97e28b105d8033d6bace8fc869343331e1093bbb35aabe201432e43ea4487014c92b190a65c89f8')
-sha512sums=('b9f5fc859b3ec33a1cf264d5ede597ff79cd447043668cf433096bf0bf89e24e1a8bf05f7914420934bc6c03a66ec0df99a203136c3f6506e0fda8e3c6f619fd' 
-            '68b6df665e76555489b9abc616fda11180c1c420e8a5dd74c191543335ee0b887fbba8115f7823aed676242b559af10141fc6a40c4b068a39b9e1038917dc29e')
-# quentin bourgeois GPG key no package dev but provide a signature of the archive used when creating PKGBUILD file
-validpgpkeys=('A5A90A2DE9D979C1BD0085CB8663D1331DD47615') 
+sha256sums=('e1a17dc24975d5242202cfbb7534d69dd14eeb26bdf8a10f056c7b04904fef1e')
+sha384sums=('e2da627423221298dfc55be93ab07e42d8801f0fa63bcfc5ad6bfa689181bcd0e7eb9525abdfd20aa3637ae56999956b')
+sha512sums=('b9f5fc859b3ec33a1cf264d5ede597ff79cd447043668cf433096bf0bf89e24e1a8bf05f7914420934bc6c03a66ec0df99a203136c3f6506e0fda8e3c6f619fd')
 
 check() {
     cd "$srcdir/$_pylibname-$pkgver"
