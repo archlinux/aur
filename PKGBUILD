@@ -31,12 +31,8 @@ package_python-viivakoodi() {
     cd "$srcdir/$pkgbase-$pkgver"
     python setup.py install --root="$pkgdir/" --optimize=1
 
-    if [ -f LICENSE ]; then
-        install -Dm0644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-        install -Dm0644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE.launcher"
-    else
-        warning "license file not found"
-    fi
+    install -Dm0644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    install -Dm0644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE.launcher"
 }
 
 package_python2-viivakoodi() {
@@ -50,10 +46,6 @@ package_python2-viivakoodi() {
     cd "$srcdir/$pkgbase-$pkgver"
     python2 setup.py install --root="$pkgdir/" --optimize=1
 
-    if [ -f LICENSE ]; then
-        install -Dm0644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-        install -Dm0644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE.launcher"
-    else
-        warning "license file not found"
-    fi
+    install -Dm0644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    install -Dm0644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE.launcher"
 }
