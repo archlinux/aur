@@ -1,5 +1,5 @@
 pkgname=reaper
-pkgver=5.20b10
+pkgver=5.29
 pkgrel=1
 pkgdesc="digital audio workstation"
 arch=('x86_64')
@@ -12,7 +12,7 @@ md5sums=('05445b30c89709cfebf857a10305e979'
          'SKIP')
 build() {
   cd "${srcdir}/WDL/WDL/swell"
-  sed -i 's#/usr/share/fonts/truetype/msttcorefonts#/usr/share/fonts/TTF#' "${srcdir}/WDL/WDL/swell/swell-gdi-lice.cpp"
+#  sed -i 's#/usr/share/fonts/truetype/msttcorefonts#/usr/share/fonts/TTF#' "${srcdir}/WDL/WDL/swell/swell-gdi-lice.cpp"
   make
 }
 
