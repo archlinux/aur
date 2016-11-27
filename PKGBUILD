@@ -6,7 +6,7 @@
 
 pkgname=fish-git
 _gitname="fish-shell"
-pkgver=2.3.0.r233.g7ef40f4
+pkgver=2.4.0.r167.g9ad1b86
 pkgrel=1
 epoch=2
 pkgdesc="User friendly shell intended mostly for interactive use."
@@ -32,7 +32,7 @@ pkgver() {
 build() {
 	cd "$srcdir/$_gitname"
 
-	autoconf
+	autoreconf --no-recursive
 	./configure --prefix=/usr --sysconfdir=/etc --docdir=/usr/share/doc/fish --without-included-pcre2
 	make
 }
