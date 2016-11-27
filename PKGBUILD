@@ -3,13 +3,13 @@
 
 pkgname=guile-json
 pkgrel=1
-pkgver=0.4.0
+pkgver=0.5.0
 pkgdesc='JSON module for Guile'
 url="https://github.com/aconchillo/guile-json"
 arch=('any')
 license=('LGPL')
 source=("http://download.savannah.gnu.org/releases/$pkgname/$pkgname-$pkgver.tar.gz")
-sha256sums=('0696062439ceb00d1026e9c352e8a6fac22de6fd6e38a9f5e7cc139ec511066c')
+sha256sums=('0dd9327f4d6edfcd7ca48c8d854bf4c0028ff276cc4f7ffcd72d5b9128190a51')
 
 build() {
   cd "$pkgname-$pkgver"
