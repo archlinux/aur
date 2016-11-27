@@ -1,7 +1,7 @@
 # Maintainer: PenguinSnail
 
 pkgname=quick-back-git
-pkgver=r72.6bc32fc
+pkgver=r84.f855d96
 pkgrel=1
 pkgdesc="Quick, simple command line backup tool"
 arch=('any')
