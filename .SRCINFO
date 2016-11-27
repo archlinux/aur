@@ -1,0 +1,20 @@
+pkgbase = kontalk
+	pkgdesc = Kontalk official platform independent desktop client
+	pkgver = 3.1.2
+	pkgrel = 1
+	url = https://kontalk.org/
+	arch = x86_64
+	license = GPL
+	depends = bash
+	depends = java-environment
+	source = https://github.com/kontalk/desktopclient-java/releases/download/v3.1.2/KontalkDesktop-3.1.2.zip
+	source = kontalk.sh
+	source = kontalk.desktop
+	source = kontalk.png
+	sha1sums = 2da6dfa9ef60e4febbc4fda2d8d79fc938c295be
+	sha1sums = 128e7bde45a0dabd855fb230471ddb7df06be0bc
+	sha1sums = 4f0247ea3d67adec34b5fc2d0874a5ad8850d24d
+	sha1sums = c39232bd242afc4fd5ceebe3d5633082ea8c97dc
+
+pkgname = kontalk
+

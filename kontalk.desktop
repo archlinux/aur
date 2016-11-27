@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Kontalk
+Comment=Kontalk official platform independent desktop client
+TryExec=kontalk
+Exec=kontalk %f
+Icon=kontalk
+Categories=Network;Java;
