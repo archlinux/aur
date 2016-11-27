@@ -1,11 +1,11 @@
 pkgname=kontalk
 pkgver=3.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Kontalk official platform independent desktop client"
 arch=('x86_64')
 url="https://kontalk.org/"
 license=('GPL')
-depends=('bash' 'java-environment')
+depends=('bash' 'java-environment>=8')
 source=("https://github.com/kontalk/desktopclient-java/releases/download/v$pkgver/KontalkDesktop-$pkgver.zip"
         "$pkgname.sh"
         "$pkgname.desktop"
