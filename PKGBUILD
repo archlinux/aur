@@ -1,32 +1,21 @@
-# Maintainer: A. Richard <dubitae@gmail.com>
+# Maintainer: mitts <mittens2001@opmbx.org>
+
 pkgname=python2-gpsoauth
-_pipyname=gpsoauth
-pkgver=0.2.0
-pkgrel=2
-pkgdesc="client library for Google Play Services OAuth"
+_pkgname=gpsoauth
+pkgver=0.4.0
+pkgrel=1
+pkgdesc="A python client library for Google Play Services OAuth."
 arch=('any')
 url="https://github.com/simon-weber/gpsoauth"
-license=('BSD')
-groups=()
-depends=(
-    'python2'
-    'python2-requests>=2.9'
-    'python2-pycryptodomex'
-)
+license=('GPL')
+depends=('python2-pycryptodomex>=3.0' 'python2-requests')
 makedepends=('python2-setuptools')
-optdepends=()
-provides=()
-conflicts=()
-replaces=()
-backup=()
-options=(!emptydirs)
-install=
-changelog=
-source=("https://pypi.python.org/packages/source/g/$_pipyname/$_pipyname-$pkgver.tar.gz")
-noextract=()
-md5sums=('549da992b843cb3bc5973145104cd77e')
+source=("https://github.com/simon-weber/$_pkgname/archive/$pkgver.tar.gz")
+md5sums=('f9b17147ab28aa4e7b7831b86affebf2')
 
 package() {
-    cd "$srcdir/$_pipyname-$pkgver"
+    cd "$srcdir/$_pkgname-$pkgver"
     python2 setup.py install --root="$pkgdir" --optimize=1
+
+    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
