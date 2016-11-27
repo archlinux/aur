@@ -7,16 +7,16 @@
 # Based on community/clementine PKGBUILD
 
 pkgname=clementine-git
-pkgver=1.3.1.r235.ge5ab3e7
+pkgver=1.3.1.r245.g5e7dd00
 pkgrel=1
 pkgdesc='A modern music player and library organizer'
 url='http://www.clementine-player.org/'
 license=('GPL')
 arch=('i686' 'x86_64')
 depends=('chromaprint' 'crypto++' 'fftw' 'gcc-libs' 'glew' 'glib2' 'glibc'
-         'gst-plugins-base-libs' 'gstreamer' 'libcdio' 'libechonest' 'libgl'
-         'libgpod' 'liblastfm' 'libmtp' 'libpulse' 'libx11' 'protobuf' 'qjson'
-         'qt4' 'sqlite' 'taglib' 'zlib')
+         'gst-plugins-base-libs' 'gstreamer' 'libcdio' 'libgl' 'libgpod'
+         'liblastfm' 'libmtp' 'libpulse' 'libx11' 'protobuf' 'qjson' 'qt4'
+         'sqlite' 'taglib' 'zlib')
 makedepends=('boost' 'cmake' 'mesa' 'sparsehash' 'git')
 optdepends=('gst-plugins-base: "Base" plugin libraries'
             'gst-plugins-good: "Good" plugin libraries'
