@@ -2,7 +2,7 @@
 
 pkgname=qtspell
 pkgver=0.8.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Spell checking for Qt text widgets"
 arch=('i686' 'x86_64')
 url="https://github.com/manisandro/qtspell"
@@ -20,7 +20,7 @@ build() {
   mkdir build
   cd build
  
-  cmake -DCMAKE_INSTALL_PREFIX=/usr ..
+  cmake -DUSE-QT5=true -DCMAKE_INSTALL_PREFIX=/usr ..
   
   make
 }
