@@ -11,4 +11,4 @@ ExecStop=/usr/bin/insync quit
 User=%I
 
 [Install]
-WantedBy=multi-user.target
+WantedBy=default.target
