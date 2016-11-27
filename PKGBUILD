@@ -1,7 +1,7 @@
 # Maintainer: Christian Hesse <mail@eworm.de>
 
 pkgname=tox-prpl
-pkgver=0.4.2
+pkgver=0.5.1
 pkgrel=1
 pkgdesc='Tox protocol plugin for pidgin / libpurple'
 arch=('i686' 'x86_64')
@@ -15,13 +15,6 @@ conflicts=('tox-prpl')
 provides=('tox-prpl')
 source=('git://github.com/jin-eld/tox-prpl.git')
 sha256sums=('SKIP')
-
-prepare() {
-	cd tox-prpl/
-
-	# make it compile again with new api
-	git cherry-pick -n e547fa94
-}
 
 build() {
 	cd tox-prpl/
