@@ -1,5 +1,5 @@
 update: clean wcwidthcallback.patch PKGBUILD .SRCINFO
-	
+
 PKGBUILD: wcwidthcallback.patch
 	updpkgsums
 

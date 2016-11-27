@@ -1,9 +1,9 @@
 diff --git a/README.md b/README.md
 new file mode 100644
-index 0000000..ef17fa7
+index 0000000..3d3e64f
 --- /dev/null
 +++ b/README.md
-@@ -0,0 +1,100 @@
+@@ -0,0 +1,97 @@
 +# Modified rxvt-unicode to get widths of glyphs from the font itself
 +
 +This is an experimental/modified version of rxvt-unicode to fix issues with
@@ -36,9 +36,8 @@ index 0000000..ef17fa7
 +## Installation
 +
 +There is no (working) `configure` switch to enable/disable it yet, so you can
-+do the normal `./configure`, e.g.
-+
-+    ./configure --enable-unicode3 --enable-256-color --disable-smart-resize
++do the normal `./configure`, see README.configure for the general/other
++options.
 +
 +There is however `--enable-debug-wcwidth`, which will output debugging
 +information to stderr, from where rxvt-unicode was started from.  It is
@@ -46,8 +45,6 @@ index 0000000..ef17fa7
 +
 +`--enable-wcwidthpreload` can be used to automatically set `LD_PRELOAD` for the
 +rxvt-unicode client.
-+
-+See README.configure for the general/other options.
 +
 +A package for Arch Linux is available in the AUR:
 +https://aur.archlinux.org/packages/rxvt-unicode-wcwidthcallback
@@ -713,10 +710,10 @@ index efb1509..24ea81e 100644
                       const text_t *text, int len,
 diff --git a/src/rxvtwcwidth.C b/src/rxvtwcwidth.C
 new file mode 100644
-index 0000000..da7c8bc
+index 0000000..1300be4
 --- /dev/null
 +++ b/src/rxvtwcwidth.C
-@@ -0,0 +1,224 @@
+@@ -0,0 +1,234 @@
 +/*
 + * Shared object to override wcwidth/wcswidth, which asks rxvt-unicode for the
 + * width of a char.
@@ -904,8 +901,18 @@ index 0000000..da7c8bc
 +    ret = read(wcwidth_socket_fd, &width, sizeof(int));
 +    if (ret == -1)
 +    {
-+        perror("read");
++#ifdef DEBUG_WCWIDTH_CLIENT
++      fprintf(stderr, "_wcwidth: read error: %s\n", strerror(errno));
++#endif
++      // Handle "Interrupted system call" once; might happen occasionally.
++      if (errno == EINTR)
++        ret = read(wcwidth_socket_fd, &width, sizeof(int));
++
++      if (ret == -1)
++      {
++        perror("_wcwidth: read");
 +        width = orig_width;
++      }
 +    }
 +    else
 +    {
