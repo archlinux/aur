@@ -1,6 +1,4 @@
 # Maintainer: Quentin Bourgeois <quentin+archlinux@bourgeois.eu>
-#
-# TODO: * review the different *-requirements.txt files
 pkgbase=viivakoodi
 pkgname=("python2-$pkgbase" "python-$pkgbase")
 pkgver=0.8.0
