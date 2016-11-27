@@ -1,6 +1,6 @@
 pkgbase = spacemacs-git
   pkgdesc = The best editor is neither Emacs nor Vim, it's Emacs and Vim!
-  pkgver = 5512
+  pkgver = 0.200.5
   pkgrel = 1
   url = http://spacemacs.org/
   arch = i686
