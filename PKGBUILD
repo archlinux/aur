@@ -22,6 +22,8 @@ package() {
     --skip-license \
     --prefix="${pkgdir}"/opt/"${pkgname}"
 
+  chown root: -R "${pkgdir}"/opt/"${pkgname}"/
+
   install -dm755 "${pkgdir}"/usr/bin
   ln -s /opt/"${pkgname}"/gfxbench_gl "${pkgdir}"/usr/bin/"${pkgname}"
 
