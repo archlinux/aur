@@ -5,7 +5,7 @@
 
 pkgname=memo-notes-git
 pkgver=1.6.r147
-pkgrel=1
+pkgrel=2
 pkgdesc="memo: A CLI note taking application."
 arch=('i686' 'x86_64')
 url="http://www.getmemo.org/"
