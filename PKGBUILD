@@ -1,25 +1,25 @@
-# Maintainer: Jakob Gahde <j5lx@fmail.co.uk>
+# Maintainer: John Trengrove <john@retrofilter.com>
+# Contributor: Jakob Gahde <j5lx@fmail.co.uk>
 # Contributor: Andrejs Mivreņiks <gim at fastmail dot fm>
 # Contributor: Vitaliy Berdinskikh ur6lad[at]i.ua
 
 pkgname=sqlite-jdbc
-pkgver=3.8.11.2
+pkgver=3.15.1
 pkgrel=1
 pkgdesc="JDBC driver for SQLite"
-arch=('i686' 'x86_64')
+arch=('any')
 url="https://github.com/xerial/sqlite-jdbc"
 license=('Apache')
-depends=('java-runtime')
+depends=('java-environment')
 makedepends=('java-environment' 'perl' 'maven' 'unzip')
-makedepends_x86_64=('lib32-glibc')
 source=("https://github.com/xerial/sqlite-jdbc/archive/${pkgver}.tar.gz")
-sha256sums=('e1f359d5f2a53dc2b4ee5cfc757b6cad3c85411fe7a09f8e331c3a3f8452be3c')
+sha256sums=('35ed8e6dccdcf97735c9e5bef1c4842f4ac8ee781a8fb67258a367072c1a233a')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
 
   export JAVA_HOME=/usr/lib/jvm/default
-  make
+  mvn package
 }
 
 package() {
