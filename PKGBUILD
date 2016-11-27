@@ -9,7 +9,6 @@ license=('unknown')
 url="https://redd.it/5ezk1f"
 depends=('imagemagick' 'ttf-ms-fonts')
 noextract=('shitpost')
-md5sums=('7ed84dc6ec3a3593153520050be3ba50')
 
 package() {
     mkdir -p "${pkgdir}/usr/bin/"
