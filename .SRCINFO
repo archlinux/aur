@@ -1,6 +1,6 @@
 pkgbase = tor-browser-en-ir
 	pkgdesc = Tor Browser Bundle: Anonymous browsing using firefox and tor, exactly the same as the tor-browser-en but not filtered in Iran
-	pkgver = 6.0.5
+	pkgver = 6.0.6
 	pkgrel = 1
 	url = https://github.com/AmirrezaFiroozi/t0r-browser-en-IR
 	install = tor-browser-en.install
@@ -28,14 +28,14 @@ pkgbase = tor-browser-en-ir
 	optdepends = gst-libav: h.264 video
 	optdepends = libpulse: PulseAudio audio driver
 	optdepends = libnotify: Gnome dialog boxes
-	source = https://github.com/AmirrezaFiroozi/t0r-browser-en-IR/archive/v1.1.tar.gz
+	source = https://github.com/AmirrezaFiroozi/t0r-browser-en-IR/archive/V1.2.tar.gz
 	validpgpkeys = 8738A680B84B3031A630F2DB416F061063FEE659
 	validpgpkeys = EF6E286DDA85EA2A4BA7DE684E2C6E8793298290
-	sha256sums = 99bd816257d6a4635d6282b7290c6667c11bcb897c2cf58e6ebbd720134d9a4a
-	source_x86_64 = https://dl.soshaw.net/tor-browser-linux64-6.0.5_en-US.tar.xz
-	sha256sums_x86_64 = fc917bd702b1275cae3f7fa8036c3c44af9b4f003f3d4a8fbb9f6c0974277ad4
-	source_i686 = https://dl.soshaw.net/tor-browser-linux32-6.0.5_en-US.tar.xz
-	sha256sums_i686 = e0c3ce406b6de082692ce3db52b6e04053e205194b26fbf0eee9014be543d98d
+	sha256sums = 1aa2ce913489af77fd46ed4d067f6a2a672e4746dccdfec2c466fe40c87722ff
+	source_x86_64 = http://5.9.232.164/files/tor/6.0.6/tor-browser-linux64-6.0.6_en-US.tar.xz
+	sha256sums_x86_64 = bd765a778e3a30f912b251c30ec4f1f4db02f2babfb34090c59ab7ecef5cac79
+	source_i686 = http://5.9.232.164/files/tor/6.0.6/tor-browser-linux32-6.0.6_en-US.tar.xz
+	sha256sums_i686 = 9fb4a0142a6b2cf23d60983345f37f4090b047aa7c9e4145c0921fa2df7c1e61
 
 pkgname = tor-browser-en-ir
 

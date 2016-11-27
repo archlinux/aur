@@ -6,7 +6,7 @@
 # AND (!) the first line in the .install file!
 
 pkgname='tor-browser-en-ir'
-pkgver='6.0.5'
+pkgver='6.0.6'
 _language='en-US'
 pkgrel=1
 pkgdesc='Tor Browser Bundle: Anonymous browsing using firefox and tor, exactly the same as the tor-browser-en but not filtered in Iran'
@@ -26,23 +26,25 @@ install="tor-browser-en.install"
 
 validpgpkeys=('8738A680B84B3031A630F2DB416F061063FEE659'
               'EF6E286DDA85EA2A4BA7DE684E2C6E8793298290')
-source_x86_64=("https://dl.soshaw.net/tor-browser-linux64-${pkgver}_${_language}.tar.xz")
-source_i686=("https://dl.soshaw.net/tor-browser-linux32-${pkgver}_${_language}.tar.xz")
-source+=("https://github.com/AmirrezaFiroozi/t0r-browser-en-IR/archive/v1.1.tar.gz")
 
-sha256sums_x86_64=('fc917bd702b1275cae3f7fa8036c3c44af9b4f003f3d4a8fbb9f6c0974277ad4' )
-sha256sums_i686=(  'e0c3ce406b6de082692ce3db52b6e04053e205194b26fbf0eee9014be543d98d' )
-sha256sums+=('99bd816257d6a4635d6282b7290c6667c11bcb897c2cf58e6ebbd720134d9a4a')
+source_x86_64=("http://5.9.232.164/files/tor/${pkgver}/tor-browser-linux64-${pkgver}_${_language}.tar.xz")
+source_i686=("http://5.9.232.164/files/tor/${pkgver}/tor-browser-linux32-${pkgver}_${_language}.tar.xz")
+
+source+=("https://github.com/AmirrezaFiroozi/t0r-browser-en-IR/archive/V1.2.tar.gz")
+
+sha256sums_x86_64=('bd765a778e3a30f912b251c30ec4f1f4db02f2babfb34090c59ab7ecef5cac79' )
+sha256sums_i686=(  '9fb4a0142a6b2cf23d60983345f37f4090b047aa7c9e4145c0921fa2df7c1e61' )
+sha256sums+=('1aa2ce913489af77fd46ed4d067f6a2a672e4746dccdfec2c466fe40c87722ff')
 
 noextract_x86_64=("tor-browser-linux64-${pkgver}_${_language}.tar.xz")
 noextract_i686=("tor-browser-linux32-${pkgver}_${_language}.tar.xz")
 
 package() {
    cd "${srcdir}"
-   cd "t0r-browser-en-IR-1.1/" 
+   cd "t0r-browser-en-IR-1.2/" 
    cp * ..
    cd "${srcdir}"
-   rm -rf "t0r-browser-en-IR-1.1"
+   rm -rf "t0r-browser-en-IR-1.2"
    sed -i "s/REPL_NAME/${pkgname}/g"       ${pkgname}.sh
    sed -i "s/REPL_VERSION/${pkgver}/g"	    ${pkgname}.sh
    sed -i "s/REPL_LANGUAGE/${_language}/g" ${pkgname}.sh
