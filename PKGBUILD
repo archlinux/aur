@@ -15,13 +15,13 @@ conflicts=("${_pkgbase}" "${_pkgbase}-gtk3")
 license=('GPL')
 depends=('dbus-glib' 'desktop-file-utils' 'glib2' 'gobject-introspection-runtime'
          'gtk3' 'gtk-update-icon-cache' 'exempi' 'lcms2' 'libexif' 'libjpeg-turbo'
-         'librsvg' 'mate-desktop-dev
+         'librsvg' 'mate-desktop-dev' 'pygtk' 'python2-gobject2'
          'startup-notification' 'zlib')
-makedepends=('gobject-introspection' 'mate-common-dev
+makedepends=('gobject-introspection' 'mate-common-dev' 'yelp-tools' 'gtk3' 'mate-desktop-dev')
 optdepends=('yelp: for reading MATE help documents')
 groups=('mate-extra')
 source=("http://pub.mate-desktop.org/releases/${_ver}/${_pkgbase}-${pkgver}.tar.xz")
-sha1sums=('9c2d032f971a1296a2300c9cacdeb4cef931ac20')
+sha1sums=('0f77cc87e201955410fde7c299127210789d44c1')
 
 prepare() {
     cd "${srcdir}"
