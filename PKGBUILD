@@ -4,7 +4,7 @@
 
 pkgname=libnice-git
 pkgver=0.1.13.1
-pkgrel=1
+pkgrel=2
 pkgdesc="An implementation of the IETF's draft ICE (for p2p UDP data streams)"
 arch=('i686' 'x86_64')
 url="http://nice.freedesktop.org"
@@ -20,7 +20,7 @@ md5sums=('6512c08aef0a19e6790488430e100040')
 
 build() {
   cd libnice-$git_sha
-  ./autogen.sh --prefix=/usr --disable-static
+  ./autogen.sh --prefix=/usr --disable-static --enable-compile-warnings=no 
   make
 }
 
