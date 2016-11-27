@@ -1,32 +1,18 @@
 pkgbase = gmusicproxy
-	pkgdesc = Let's stream Google Play Music using any media-player
-	pkgver = 0.9.8.r6.g8fec2d8
+	pkgdesc = Stream Google Play Music using any media-player
+	pkgver = 1.0.5
 	pkgrel = 1
 	url = https://github.com/diraimondo/gmusicproxy
 	arch = any
-	license = GPL3
+	license = GPL
 	makedepends = python2-setuptools
-	makedepends = git
-	depends = python2
-	depends = python2-netifaces
-	depends = python2-xdg
-	depends = python2-eyed3
-	depends = python2-daemon
-	depends = python2-requests
-	depends = python2-gmusicapi
-	depends = python2-certifi
-	depends = python2-gpsoauth
-	depends = python2-mechanize
-	depends = python-mechanicalsoup
-	provides = gmusicproxy
-	source = gmusicproxy::git+https://github.com/diraimondo/gmusicproxy.git
-	source = gmusicproxy.cfg.sample
-	source = gmusicproxy.user.service
-	source = gmusicproxy.system.service
-	sha256sums = SKIP
-	sha256sums = e69f5e5fff155917621ee65d91adf943d3d133e1d771578d7176ba3649f01363
-	sha256sums = b575dcd3f2aa734718b6d3dbd487c5a7ec3ff946c4532e1d9b3fe5e8461b88b9
-	sha256sums = 35b09e3873980df0bdd37baa6694c1b219b24a7f3550a5630f453381976d0f48
+	depends = python2-gmusicapi=9.0.0
+	depends = python2-netifaces>=0.10.4
+	depends = python2-xdg>=0.25
+	depends = python2-eyed3>=0.7.8
+	depends = python2-daemon>=2.0.5
+	source = https://github.com/diraimondo/gmusicproxy/archive/v1.0.5.tar.gz
+	md5sums = d101e1fbd1a0e0cceb6c5313e39cc531
 
 pkgname = gmusicproxy
 
