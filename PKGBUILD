@@ -4,7 +4,7 @@
 # Contributor: tlm
 
 pkgname=gimagereader
-pkgver=3.1.99
+pkgver=3.2.0
 pkgrel=1
 pkgdesc="A graphical frontend to tesseract-ocr"
 arch=('i686' 'x86_64')
@@ -18,7 +18,7 @@ install=${pkgname}.install
 source=(
   "https://github.com/manisandro/gImageReader/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.xz"
 )
-sha256sums=('ffc267c3703a0d9d93455d4e838282b1a7f7debce101a6ec5a01d3c7c9abe50c')
+sha256sums=('e31c6664f53503c8109135eadef74314cdbba649a26267ade7bbb9a63e33a5f2')
 
 build() {
   cd "$pkgname-$pkgver"
