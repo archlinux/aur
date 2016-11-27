@@ -1,9 +1,9 @@
 # Maintainer: OS Hazard <oshazard+aur@gmail.com>
 # Contributor: Kyle Keen <keenerd@gmail.com>
 pkgname=apacman
-pkgver=3.0
+pkgver=3.1
 pkgrel=1
-pkgdesc="AUR wrapper forked from packer"
+pkgdesc="AUR package manager helper and pacman wrapper, forked from packer adding many new features"
 url="http://github.com/oshazard/apacman"
 license=('GPL')
 arch=('any')
@@ -12,15 +12,17 @@ optdepends=('apacman-deps: Required AUR build depends'
             'apacman-utils: Useful AUR tools'
             'bash-bats: Run unit tests'
             'customizepkg: Tool to auto-patch AUR PKGBUILDs'
+            'git: Fetch old version of AUR PKGBUILDs'
             'pkgfile: Search local package metadata'
             'proot: Allows running unit tests as user'
             'man: Debug network errors'
             'rsync: Built-in ABS support')
 provides=('packer')
 source=("https://github.com/oshazard/apacman/releases/download/v${pkgver}/apacman-${pkgver}.tar.gz")
-md5sums=('339ef570f678c3d2366d57071e85cf2b')
+md5sums=('66950d9890b3f5a7eb07cd60b096b846')
 backup=('etc/apacman.conf')
 install=$pkgname.install
+options=('!strip')
 
 package() {
   cd "${srcdir}/apacman-${pkgver}"

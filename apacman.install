@@ -3,6 +3,7 @@ post_install(){
   echo "==> Must install apacman-deps meta package to compile packages from AUR"
   echo "==> Remove build depends with: pacman -Rss apacman-deps"
   id aurbuild >/dev/null 2>/dev/null || useradd -r -d /var/empty aurbuild
+  apacman --gendb
 }
 
 post_upgrade() {
