@@ -1,8 +1,8 @@
-# Maintainer: Mittens2001 <mittens2001@opmbx.org>
+# Maintainer: mitts <mittens2001@opmbx.org>
 
 pkgname=spm
 pkgver=1.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="simple password manager, a fork of mneum's tpm"
 arch=('any')
 url="https://notabug.org/kl3/spm"
@@ -15,5 +15,5 @@ package() {
   cd "$srcdir/spm"
   make PREFIX=/usr DESTDIR="$pkgdir/" install
 
-  install -Dm644 LICENSE "$pkgdir/usr/share/license/$pkgname/LICENSE"
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
