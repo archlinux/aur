@@ -1,0 +1,15 @@
+pkgbase = qstopmotion
+	pkgver = 2.3.2
+	pkgrel = 1
+	arch = x86_64
+	makedepends = cmake
+	makedepends = mercurial
+	depends = ffmpeg
+	depends = gstreamer
+	depends = gphoto2
+	depends = qt4
+	source = hg+http://hg.code.sf.net/p/qstopmotion/code
+	sha256sums = SKIP
+
+pkgname = qstopmotion
+
