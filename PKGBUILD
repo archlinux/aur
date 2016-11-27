@@ -1,8 +1,6 @@
 # Maintainer: Quentin Bourgeois <quentin+archlinux@bourgeois.eu>
 #
-# TODO: * viivakoodi require (python) argparse if python interpreter is 2.6, 
-#               3.0 or 3.1 => how to do that ?
-#       * review the different *-requirements.txt files
+# TODO: * review the different *-requirements.txt files
 _pylibname=viivakoodi
 pkgname=("python2-$_pylibname" "python-$_pylibname")
 pkgver=0.8.0
@@ -47,8 +45,7 @@ check() {
 }
 
 package_python-viivakoodi() {
-    # as python-3.0 and python-3.1 need argparse I force for every version
-    depends+=('python' 'python-argparse')
+    depends+=('python')
     makedepends+=('python-setuptools')
     provides+=('python2-viivakoodi')
     optdepends+=('python-pillow: render barcodes as images'
@@ -75,8 +72,7 @@ package_python-viivakoodi() {
 }
 
 package_python2-viivakoodi() {
-    # as python2.6 need argparse I force for every version
-    depends+=('python2>=2.6' 'python2-argparse')          
+    depends+=('python2')
     makedepends+=('python2-setuptools')
     provides+=('python2-viivakoodi')
     optdepends+=('python2-pillow: render barcodes as images'

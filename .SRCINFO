@@ -25,8 +25,7 @@ pkgname = python2-viivakoodi
 	checkdepends = python2-mock
 	checkdepends = python2-tox
 	depends = 
-	depends = python2>=2.6
-	depends = python2-argparse
+	depends = python2
 	optdepends = inkscape: tools for manipulating vector objects (eg: SVG files)
 	optdepends = python2-pillow: render barcodes as images
 	optdepends = python2-recommonmark: for building the project documentation
@@ -46,7 +45,6 @@ pkgname = python-viivakoodi
 	checkdepends = python-tox
 	depends = 
 	depends = python
-	depends = python-argparse
 	optdepends = inkscape: tools for manipulating vector objects (eg: SVG files)
 	optdepends = python-pillow: render barcodes as images
 	optdepends = python-recommonmark: for building the project documentation
@@ -55,4 +53,3 @@ pkgname = python-viivakoodi
 	optdepends = python-sphinx-alabaster-theme: for building the project documentation
 	provides = 
 	provides = python2-viivakoodi
-
