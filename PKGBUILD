@@ -9,7 +9,7 @@ arch=('any')
 url="http://xfce-look.org/content/show.php/GT3?content=106536"
 license=('Artistic 2.0')
 depends=()
-source=("http://xfce-look.org/CONTENT/content-files/106536-GT3-colors-pack.rar")
+source=("https://dl.opendesktop.org/api/files/download/id/1460735383/106536-GT3-colors-pack.rar")
 md5sums=('d72db50b650325c4679d5759d2fe8127')
 
 build() {
