@@ -4,7 +4,7 @@
 
 pkgname=csound
 pkgver=6.08.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A programming language for sound rendering and signal processing."
 arch=('i686' 'x86_64')
 url="http://csound.github.io"
@@ -16,10 +16,10 @@ optdepends=('csound-doc: The Canonical Csound Reference Manual'
             'java-environment: Java Wrapper'
             'python2: csnd6 python bindings'
             'vim-csound: Syntax Highlighting and Bindings for Vim')
-source=("https://github.com/csound/csound/archive/${pkgver}.tar.gz"
+source=("https://github.com/csound/csound/releases/download/b6.08.0/Csound6.08_manual_html.zip"
         "Custom.cmake"
         "csound.sh")
-sha256sums=('480bde5c07ac7fb8303b4c84c01710999815c2334501d007170adc9cdbf826a1'
+sha256sums=('1ac442112bcd3b9e698070e3e8cd30a71b6a9b02b403a1d43b736544ea2243b6'
             '81c9473ad3142c658afe2e509f3ae597b5349bba07f95d4ba03f420188786e57'
             '23db5bda78f13d5f16eceea085bba660d7b7012a89518e477d12dfef82dbadeb')
 
