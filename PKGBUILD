@@ -1,5 +1,5 @@
 pkgname=spacemacs-git
-pkgver=5512
+pkgver=2
 pkgrel=1
 epoch=
 pkgdesc="The best editor is neither Emacs nor Vim, it's Emacs and Vim!"
@@ -9,14 +9,14 @@ makedepends=('emacs')
 source=("git+https://github.com/syl20bnr/spacemacs.git")
 md5sums=('SKIP')
 pkgver() {
-  cd "$_pkgname"
+  cd spacemacs
   git rev-list --count HEAD
 }
 
 package() {
-	cd spacemacs
-	if [ ! -d ~/.emacs.d ]; then
-	  mkdir ~/.emacs.d
+  cd spacemacs
+  if [ ! -d ~/.emacs.d ]; then
+    mkdir ~/.emacs.d
   fi
-	cp -r * ~/.emacs.d
+  cp -r * ~/.emacs.d
 }
