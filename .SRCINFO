@@ -1,0 +1,15 @@
+pkgbase = pxl-git
+	pkgdesc = A little hack to display images in the terminal
+	pkgver = r20.9c3ae93
+	pkgrel = 1
+	url = https://github.com/ichinaski/pxl
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = go
+	makedepends = git
+	source = pxl-git::git+https://github.com/ichinaski/pxl
+	md5sums = SKIP
+
+pkgname = pxl-git
+
