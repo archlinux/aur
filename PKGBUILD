@@ -11,7 +11,7 @@ arch=('i686' 'x86_64')
 url="http://www.getmemo.org/"
 license=('custom')
 makedepends=('git')
-source=("$pkgname::git+https://gitlab.com/Rosvall/memo.git#tag=v$pkgver")
+source=("$pkgname::git+https://git-ssb.celehner.com/%25Ruk8qeLktKmQuSjVXW%2FZOR2PbnfsYt4B5WA0yxrK%2BrE%3D.sha256#tag=v$pkgver")
 
 sha256sums=('SKIP')
 
