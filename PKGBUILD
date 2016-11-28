@@ -2,7 +2,7 @@
 
 pkgname=snapcast
 pkgver=0.10.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Synchronous multi-room audio player"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url="https://github.com/badaix/snapcast"
@@ -33,11 +33,11 @@ prepare() {
         # submodule update barfs on vorbis which is in 0.10.0, but unused!
         # switch back to line below on next version!
         #git submodule update --init --recursive
-        git submodule update asio
-        git submodule update flac
-        git submodule update ogg
-        git submodule update popl
-        git submodule update tremor
+        git submodule update --init asio
+        git submodule update --init flac
+        git submodule update --init ogg
+        git submodule update --init popl
+        git submodule update --init tremor
 }
 
 build() {
