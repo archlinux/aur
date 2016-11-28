@@ -1,6 +1,6 @@
 pkgbase = jupyter-octave_kernel
 	pkgdesc = A Jupyter kernel for Octave
-	pkgver = 0.16.1
+	pkgver = 0.17.2
 	pkgrel = 1
 	url = https://github.com/Calysto/octave_kernel
 	arch = any
@@ -9,8 +9,8 @@ pkgbase = jupyter-octave_kernel
 	depends = jupyter-notebook
 	depends = octave
 	depends = python-oct2py
-	source = https://pypi.python.org/packages/67/e1/de6980e51757a197a36b9dc82ed10636aaa32e12272517a30596b21ac5a8/octave_kernel-0.16.1-py2.py3-none-any.whl
-	md5sums = 49032ec96b36cb54b8693933e989a2c8
+	source = https://pypi.python.org/packages/f9/4d/62261029810faf6492dd70ed87dfd2c164aac77f568bde11715941d8c3d9/octave_kernel-0.17.2-py2.py3-none-any.whl
+	sha384sums = d8a8521ee966bdcb6a530b7c211253bbf8e4fd1b40d493bf291331189add8c50bde824ad2bf46150a693cdc32526f7eb
 
 pkgname = jupyter-octave_kernel
 
