@@ -1,7 +1,9 @@
 pkgname=terasology
-pkgver=68
-_omega_ver=26
+_version=1.3.0
+_version_postfix=alpha6
+pkgver=${_version}${_version_postfix}
 pkgrel=1
+epoch=1
 pkgdesc="Yet another high resolution game with blocks like Minecraft!"
 arch=('x86_64' 'i686')
 license=('Apache')
@@ -12,11 +14,11 @@ makedepends=('unzip')
 source=(
     "$pkgname"
     "${pkgname}.desktop"
-    "http://jenkins.movingblocks.net/job/DistroOmegaRelease/${_omega_ver}/artifact/distros/omega/build/distributions/TerasologyOmega.zip"
+    "https://github.com/MovingBlocks/Terasology/releases/download/v${_version}/TerasologyOmega.zip"
 )
 sha512sums=('f94c1ac3d85e4fb91cc47056eeec3648d02be9090252401acb740af8c0580623c7ee57470d9e7317d6b577d613e317b5c16ec014f232ec68bc755e0eba7a975e'
             '737953ab10027100b6bd03ca60a3f1cd4fff503c4c5a1689b3e12ef8df66a3e3347c99d498e48dccc3be8d00e9e37fcab56d5c97bbb81dd310ce757979aa0276'
-            '399f6b944177cffef2ed027383afb8f97168c593a27894a198d8ed9e3291c2e222af32ff79c7088200bc161c220bec32f99c2d52bb01c30aff6faa3a1821ba44')
+            '66977bd64ef230dc128e36c380d70df8ee4e487e0cf033360fea20142b3633aa0cea7a53115e7870eff0a07183d56173cdef2e719c5eb32c86a669a62d1d494d')
 
 package() {
     cd "$srcdir"
@@ -27,7 +29,7 @@ package() {
     rm "${srcdir}/${pkgname}" "${srcdir}/${pkgname}.desktop" "${srcdir}/TerasologyOmega.zip"
 
     #extract and install icons
-    unzip -u libs/engine-* "org/terasology/icons/*"
+    unzip -u libs/engine-${_version}.jar "org/terasology/icons/*"
     pushd org/terasology/icons
     for icon in *
     do

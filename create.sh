@@ -1,7 +1,7 @@
 #!/bin/sh
 if [[ ! $# -eq "2" ]]; then
 	echo "Usage:"
-	echo "$0 version omega_version"
+	echo "$0 version version_postfix"
 	exit 1
 fi
 
@@ -9,10 +9,10 @@ rm -v TerasologyOmega.zip{,.part}
 rm -rv src/
 
 echo "Setting version to $1"
-sed -i "s/pkgver=.*/pkgver=$1/g" PKGBUILD
+sed -i "s/_version=.*/_version=$1/g" PKGBUILD
 
-echo "Setting Omega version to $2"
-sed -i "s/_omega_ver=.*/_omega_ver=$2/g" PKGBUILD
+echo "Setting version postfix to $2"
+sed -i "s/_verson_postfix=.*/_version_postfix=$2/g" PKGBUILD
 
 echo updpkgsums
 updpkgsums
