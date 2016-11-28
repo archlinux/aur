@@ -1,13 +1,13 @@
 # Maintainer: Chris Salzberg <chris@dejimata.com>
 
 pkgname=neomutt
-pkgver=20161104
+pkgver=20161126
 pkgrel=1
 pkgdesc='The New Mutt: powerful text-based mail client with all the best feature patches'
 url='http://www.neomutt.org/'
 license=('GPL')
 source=("https://github.com/neomutt/neomutt/archive/neomutt-$pkgver.tar.gz")
-md5sums=('aaf37d23a8329fc105ffa483b176782a')
+md5sums=('8ede154b30a961003088e2df3b23d074')
 arch=('i686' 'x86_64')
 depends=('openssl' 'gdbm' 'mime-types' 'libsasl' 'gnupg' 'gpgme' 'libidn' 'krb5' 'notmuch-runtime')
 optdepends=('urlview: for url menu')
@@ -39,7 +39,8 @@ build() {
     --with-sasl \
     --with-curses=/usr \
     --with-regex \
-    --with-idn
+    --with-idn \
+    --with-gdbm
 
   # Build it!
   make
