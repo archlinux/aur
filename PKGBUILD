@@ -2,7 +2,7 @@
 
 _pkgname=neomutt
 pkgname=neomutt-git
-pkgver=neomutt.20160916.r1.gd6b6ee9
+pkgver=neomutt.20161126.r1.g7d69f2a
 pkgrel=1
 pkgdesc='The New Mutt: powerful text-based mail client with all the best feature patches'
 url='http://www.neomutt.org/'
@@ -44,7 +44,8 @@ build() {
     --with-sasl \
     --with-curses=/usr \
     --with-regex \
-    --with-idn
+    --with-idn \
+    --with-gdbm
 
   # Build it!
   make
