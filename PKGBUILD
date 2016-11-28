@@ -2,7 +2,7 @@
 # Maintainer: Cyker Way <cykerway at gmail dot com>
 
 pkgname=spidermonkey
-pkgver=38
+pkgver=45.0.2
 pkgrel=1
 #epoch=
 pkgdesc="Mozilla's JavaScript engine."
@@ -23,18 +23,18 @@ makedepends=('gcc')
 #changelog=
 #noextract=()
 #validpgpkeys=()
-source=("$pkgname-$pkgver.tar.bz2::https://people.mozilla.org/~sstangl/mozjs-38.2.1.rc0.tar.bz2")
-sha256sums=('01994c758174bc173bcf4960f05ecb4da21014f09641a63b2952bbf9eeaa8b5c')
+source=("$pkgname-$pkgver.tar.bz2::https://people.mozilla.org/~sfink/mozjs-45.0.2.tar.bz2")
+md5sums=('2ca34f998d8b5ea79d8616dd26b5fbab')
 
 build() {
-	cd mozjs-38.0.0/js/src
+	cd mozjs-45.0.2/js/src
     CPPFLAGS="$CPPFLAGS -O2"
 	./configure --prefix=/usr
 	make
 }
 
 package() {
-	cd mozjs-38.0.0/js/src
+	cd mozjs-45.0.2/js/src
 	make DESTDIR="$pkgdir/" install
 }
 
