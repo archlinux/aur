@@ -1,6 +1,6 @@
 # Maintainer: johnguant <rhys @t johnguant dot com>
 
-_rev=r01
+_rev=r02
 _sdkver=7.1.1
 _sdkint=25
 pkgname=android-tv-x86-system-image-${_sdkint}
@@ -14,7 +14,7 @@ depends=("android-platform-${_sdkint}")
 optdepends=('qemu-kvm' 'libvirt')
 options=('!strip')
 source=("http://dl.google.com/android/repository/sys-img/android-tv/x86-${_sdkint}_${_rev}.zip")
-sha1sums=('d43bfb4c90943f491ee7b0d288431afacfa7f92e')
+sha1sums=('98ce693deff149428abd2196203ceb4d5e05b03e')
 
 package() {
   install -Dm644 "${srcdir}/x86/NOTICE.txt" "${pkgdir}/usr/share/licenses/$pkgname/NOTICE.txt"
