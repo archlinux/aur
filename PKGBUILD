@@ -2,16 +2,14 @@
 
 pkgbase=snes9x-git
 pkgname=('snes9x-git' 'snes9x-gtk-git')
-pkgver=1.53.r330.g2d0c3cf
+pkgver=1.53.r415.g1aae8f9
 pkgrel=1
 pkgdesc="Port of the Snes9x emulator (git version). Includes Gtk version."
 arch=('i686' 'x86_64')
 url="http://www.snes9x.com/"
 license=('LGPL')
 makedepends=('git' 'intltool' 'nasm' 'mesa' 'libpulse'  'libpng' 'sdl' 'gtk2' 'libxv'
-             'adwaita-icon-theme' 'autogen')
-provides=('snes9x' 'snes9x-gtk') 
-conflicts=('snes9x' 'snes9x-gtk') 
+             'adwaita-icon-theme' 'autogen' 'minizip')
 source=("$pkgname"::'git://github.com/snes9xgit/snes9x.git')
 sha1sums=('SKIP')
 
@@ -41,6 +39,8 @@ package_snes9x-git() {
 
   pkgdesc="A portable Emulator for the Super Nintendo Entertainment System"
   depends=('libpng' 'libxext' 'libsm')
+  conflicts=('snes9x')
+  provides=('snesx')
 
   cd ${pkgbase}/unix
   install -D -m755 snes9x "${pkgdir}/usr/bin/snes9x"
@@ -57,6 +57,8 @@ package_snes9x-gtk-git() {
   pkgdesc="A portable Emulator for the Super Nintendo Entertainment System - GTK version"
   license=('custom' 'LGPL')
   depends=('sdl' 'libpulse' 'gtk2' 'libxv' 'adwaita-icon-theme')
+  conflicts=('snes9x-gtk')
+  provides=('snes9x-gtk')
 
   cd ${pkgbase}/gtk
   make DESTDIR="${pkgdir}" install

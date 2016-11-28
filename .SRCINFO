@@ -1,6 +1,6 @@
 pkgbase = snes9x-git
 	pkgdesc = Port of the Snes9x emulator (git version). Includes Gtk version.
-	pkgver = 1.53.r330.g2d0c3cf
+	pkgver = 1.53.r415.g1aae8f9
 	pkgrel = 1
 	url = http://www.snes9x.com/
 	arch = i686
@@ -17,10 +17,7 @@ pkgbase = snes9x-git
 	makedepends = libxv
 	makedepends = adwaita-icon-theme
 	makedepends = autogen
-	provides = snes9x
-	provides = snes9x-gtk
-	conflicts = snes9x
-	conflicts = snes9x-gtk
+	makedepends = minizip
 	source = snes9x-git::git://github.com/snes9xgit/snes9x.git
 	sha1sums = SKIP
 
@@ -29,6 +26,8 @@ pkgname = snes9x-git
 	depends = libpng
 	depends = libxext
 	depends = libsm
+	provides = snesx
+	conflicts = snes9x
 
 pkgname = snes9x-gtk-git
 	pkgdesc = A portable Emulator for the Super Nintendo Entertainment System - GTK version
@@ -39,4 +38,6 @@ pkgname = snes9x-gtk-git
 	depends = gtk2
 	depends = libxv
 	depends = adwaita-icon-theme
+	provides = snes9x-gtk
+	conflicts = snes9x-gtk
 
