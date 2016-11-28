@@ -1,8 +1,8 @@
 # Maintainer: Colin Keenan <colinnkeenan at gmail dot com>
 
 pkgname=silentcast
-pkgver=2.3
-pkgrel=2
+pkgver=2.4
+pkgrel=1
 pkgdesc="Silent Screencast: video record your screen and make it into an animated gif"
 arch=('any')
 url="https://github.com/colinkeenan/silentcast"
@@ -19,6 +19,7 @@ package() {
   install -D -m755 silentcast "$pkgdir/usr/bin/silentcast"
   install -m755 genffcom "$pkgdir/usr/bin"
   install -m755 temptoanim "$pkgdir/usr/bin"
+  install -D -m755 silentcast.conf "$pkgdir/etc/silentcast.conf"
   install -D -m755 transparent_window.py "$pkgdir/usr/share/silentcast/transparent_window.py"
   install -m755 unity_indicator.py "$pkgdir/usr/share/silentcast"
   install -m644 stop?.png "$pkgdir/usr/share/silentcast"
