@@ -19,18 +19,18 @@ source=("${pkgname}-${pkgver}::https://github.com/multipath-tcp/${_srcname}/arch
 sha256sums=('a04a390a09b90d12e9648c2f4adeb4d0a29c5a3ca00a3d4d2679e95a2dd9cbc4')
 
 prepare() {
-  cd "${srcdir}/${_srcname}"
+  cd "${srcdir}/${_srcname}-${pkgver}"
   sed -i "s#/sbin#/bin#" Makefile
   sed -i "s#/usr##" man/Makefile
 }
 
 build() {
-  cd "${srcdir}/${_srcname}"
+  cd "${srcdir}/${_srcname}-${pkgver}"
   yes "" | make
 }
 
 package() {
-  cd "${srcdir}/${_srcname}"
+  cd "${srcdir}/${_srcname}-${pkgver}"
   make DESTDIR="${pkgdir}/usr" update
 
   # the following is provided by yp-tools
