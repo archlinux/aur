@@ -2,7 +2,7 @@
 
 pkgname=hp-health
 pkgver=10.40_1777.17
-pkgrel=1
+pkgrel=2
 pkgdesc="HP System Health Application and Command line Utility Package"
 arch=(i686 x86_64)
 url="http://downloads.linux.hpe.com/SDR/downloads/mcp"
@@ -28,7 +28,10 @@ package() {
 	cp -a sbin "$pkgdir"/usr/bin
 
 	cd "$pkgdir"/usr
-	[ -d lib64 ] && mv lib64 lib
+	if [ -d lib64 ]; then
+		mv lib64/* lib
+		rm -rf lib64
+	fi
 
 	install -Dm644 "$srcdir"/hpasmd.service lib/systemd/system/hpasmd.service
 	install -Dm644 "$srcdir"/hpasrd.service lib/systemd/system/hpasrd.service
