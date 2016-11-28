@@ -25,7 +25,7 @@ build() {
 }
 
 package() {
-  cd "${srcdir}/dpaste"
+  cd "${srcdir}/src/dpaste"
   install -Dpv dpaste ${pkgdir}/usr/bin/dpaste
 }
 # vim: ts=2 sw=2 et:
