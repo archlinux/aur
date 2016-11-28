@@ -13,7 +13,7 @@ optdepends=("libmemcached: For memcached cache storage."
             "luajit: For an embedded Lua VM.")
 makedepends=(git ninja vala meson)
 _commit=30c2b15f26cabbd62aa279deb88b652e43d05f0a
-source=("git://github.com/antono/valum.git#commit=${_commit}")
+source=("git://github.com/valum-framework/valum.git#commit=${_commit}")
 md5sums=("SKIP")
 
 pkgver() {
@@ -37,21 +37,7 @@ check() {
 package() {
   cd ${pkgname}/build
   ninja install
-
-  # hack: place installation in /usr/ and not /usr/local
-  # cd ${pkgdir}
-  # for d in `ls usr/local`; do
-  #   mv usr/local/$d usr/$d
-  # done
-  # mv usr/lib64 usr/lib
-  # rm -rf usr/local
-  # cd usr/lib/pkgconfig
-  # for f in `ls *pc`; do
-  #   sed -i $f -e "s/\/local//g"
-  # done
-  # end of hack
   cd ${srcdir}/valum
-
   install -Dm644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
