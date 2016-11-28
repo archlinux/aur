@@ -9,12 +9,12 @@ url="https://alkasir.com/"
 depends=('glibc')
 makedepends=('links') # Links is needed to download the license agreement
 optdepends=('google-chrome'
-            'google-chrome-beta'
-            'google-chrome-dev'
             'chromium'
 )
 licenseURL='https://alkasir.com/en/License.html'
-license=("custom:$licenseURL")
+license=("custom"
+         "$licenseURL"
+)
 pkgdesc="Alkasir is a cross-platform, open-source and robust website censorship circumvention tool that also maps censorship patterns around the world."
 source=("https://github.com/alkasir/alkasir/releases/download/$pkgver/alkasir-client_linux-$_arch.tar.gz"
         "alkasir-client.service")
