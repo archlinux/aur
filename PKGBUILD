@@ -31,7 +31,6 @@ build() {
 package() {
   cd "${srcdir}/${_pkgname}/${_pkgname}"
 
-  make DESTDIR=${pkgdir} install
-  #license
+  make DESTDIR="${pkgdir}" install
   install -D -m644 LICENSE_1_0.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
