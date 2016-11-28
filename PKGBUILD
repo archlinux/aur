@@ -10,8 +10,6 @@ groups=('science')
 depends=('bgmn'
 	'qt5-declarative'
 	'qt5-svg')
-depends_i686=('gcc-libs')
-depends_x86_64=('gcc-libs-multilib')
 provides=('profex')
 conflicts=('profex')
 source=("$url/wp-content/uploads/2016/10/${pkgname}-${pkgver}.tar.gz"
