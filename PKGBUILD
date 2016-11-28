@@ -2,11 +2,11 @@
 
 pkgname=libresonic
 pkgver=6.1
-pkgrel=2
+pkgrel=3
 pkgdesc="A free, web-based media streamer and jukebox."
 arch=('any')
 url="https://github.com/Libresonic/libresonic/"
-license=('CUSTOM')
+license=('GPL3')
 depends=('java-runtime-headless')
 conflicts=('subsonic' 'subsonic-kang' 'subsonic-kang-git' 'subsonic-beta')
 backup=('var/lib/libresonic/db' 'var/lib/libresonic/libresonic.properties' 'var/lib/libresonic/libresonic.sh')
