@@ -1,21 +1,21 @@
-_homedir=/opt/libresonic
-_playlistdir=/var/lib/libresonic/playlists
+_homedir=/var/lib/libresonic
+_playlistdir=/var/playlists
 
 post_install() {
-    chmod +x /opt/libresonic/subsonic.sh
-    getent group subsonic &>/dev/null || groupadd --system subsonic > /dev/null
-    getent passwd subsonic &>/dev/null || useradd --system \
-                                                  --home-dir /opt/libresonic \
+
+    getent group libresonic &>/dev/null || groupadd --system libresonic > /dev/null
+    getent passwd libresonic &>/dev/null || useradd --system \
+                                                  --home-dir /var/lib/libresonic \
                                                   --shell /usr/bin/nologin \
-                                                  --gid subsonic \
+                                                  --gid libresonic \
                                                   --groups audio \
-                                                  --comment "Subsonic user" \
-                                                  subsonic > /dev/null
-    passwd --lock subsonic > /dev/null
+                                                  --comment "Libresonic user" \
+                                                  libresonic > /dev/null
+    passwd --lock libresonic &> /dev/null
 
     fix_permissions
     echo "*************************************************"
-    echo "* Edit /etc/conf.d/libresonic.conf to configure libresonic *"
+    echo "* Edit /etc/libresonic.conf to configure libresonic *"
     echo "*************************************************"
 
     systemctl daemon-reload
@@ -28,45 +28,29 @@ pre_remove() {
 }
 
 post_remove() {
-    getent passwd subsonic &>/dev/null && userdel subsonic >/dev/null
-    getent group subsonic &>/dev/null && groupdel subsonic >/dev/null
+    getent passwd libresonic &>/dev/null && userdel libresonic &>/dev/null
+    getent group libresonic &>/dev/null && groupdel libresonic &>/dev/null
 }
 
 fix_permissions() {
-    chown -R subsonic:subsonic ${_homedir}
-    chown subsonic:subsonic ${_playlistdir}
+    chown -R libresonic:libresonic ${_homedir}
+    chown libresonic:libresonic ${_playlistdir}
 }
 
 pre_upgrade() {
-    rm -f /tmp/subsonic-was-active
+    rm -f /tmp/libresonic-was-active
     if [[ `systemctl is-active libresonic` == 'active' ]]; then
-        touch /tmp/subsonic-was-active
-        echo "Stopping subsonic"
+        touch /tmp/libresonic-was-active
+        echo "Stopping libresonic"
         systemctl stop libresonic
     fi
 }
 
 post_upgrade() {
     post_install
-
-        echo "!! Subsonic's home dir is now located in /opt/libresonic/db."
-        echo "   You will have to move the database located in "
-        echo "   /var/subsonic/db to this new location."
-        echo ""
-        echo "!! This package now runs subsonic as the user 'subsonic'."
-        echo "   You might need to edit permissions for your media folders."
-        rm -f /tmp/subsonic-was-active
-        echo ""
-        echo "!! Not restarting subsonic automatically."
-        echo "   You might need to change configs"
-	echo ""
-	echo "!! Service is now called libresonic.service."
-	echo ""
-	echo "!! If you are upgrading, you may remove your /var/subsonic folder (once you verify you have everything first)"
-
-    if [ -e /tmp/subsonic-was-active ]; then
-        echo "Starting subsonic"
+    if [ -e /tmp/libresonic-was-active ]; then
+        echo "Starting libresonic"
         systemctl start libresonic
-        rm /tmp/subsonic-was-active
+        rm /tmp/libresonic-was-active
     fi
 }

@@ -3,8 +3,8 @@ Description=Libresonic
 After=network.target
  
 [Service]
-User=subsonic
-ExecStart=/opt/libresonic/subsonic.sh
+User=libresonic
+ExecStart=/var/lib/libresonic/libresonic.sh
 ExecStop=/bin/kill -15 $MAINPID
 Type=forking
  
