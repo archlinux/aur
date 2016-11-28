@@ -2,7 +2,7 @@
 
 pkgbase='python-zipstream'
 pkgname=('python-zipstream' 'python2-zipstream')
-pkgver=1.1.3
+pkgver=1.1.4
 pkgrel=1
 pkgdesc="zip archive generator for streaming purposes"
 arch=(any)
@@ -13,7 +13,8 @@ depends=()
 makedepends=('python-setuptools' 'python2-setuptools')
 options=(!emptydirs)
 source=("${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('69116ade494c3138f9fa7e877906d4996af5f440e88e9ffebe0948683b38ef23')
+md5sums=('18e2344412f3c46426e5df6cece33d6b')
+sha256sums=('32a7a4bdb786914445589595273beffbbf9b6a0a3a3dc2cf19ea96114bd2abd7')
 
 package_python-zipstream() {
       cd "$srcdir/${pkgbase}-${pkgver}"
