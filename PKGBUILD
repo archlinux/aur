@@ -1,10 +1,10 @@
 pkgname=reaper
 pkgver=5.29
-pkgrel=1
+pkgrel=2
 pkgdesc="digital audio workstation"
 arch=('x86_64')
 url="http://www.reaper.fm"
-license=('GPL')
+license=('custom')
 depends=('gdk-pixbuf2' 'gtk3' 'jack')
 source=("http://www.landoleet.org/dev/${pkgname}_529_developer_linux_x86_64.tar.xz"
 	"git+http://www-dev.cockos.com/wdl/WDL.git")
@@ -18,10 +18,13 @@ build() {
 
 package() {
   DESTDIR="${pkgdir}/usr/lib/"
-  mkdir -p $DESTDIR
-  cp -R "${srcdir}/reaper_linux_x86_64/REAPER/" $DESTDIR
-  cp "${srcdir}/WDL/WDL/swell/libSwell.so" $DESTDIR/REAPER
+  LICENSEDIR="${pkgdir}/usr/share/licenses/reaper/"
+  mkdir -p "${DESTDIR}"
+  cp -R "${srcdir}/reaper_linux_x86_64/REAPER/" "${DESTDIR}"
+  cp "${srcdir}/WDL/WDL/swell/libSwell.so" "${DESTDIR}/REAPER"
   mkdir ${pkgdir}/usr/bin
   ln -s /usr/lib/REAPER/reaper5 ${pkgdir}/usr/bin/reaper5
+  mkdir -p "${LICENSEDIR}"
+  cp "${srcdir}/reaper_linux_x86_64/REAPER/license.txt" "${LICENSEDIR}/LICENSE"
 }
 
