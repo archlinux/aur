@@ -4,7 +4,7 @@
 pkgname=qt5-virtualkeyboard
 _qtver=5.7.0
 pkgver=${_qtver/-/}
-pkgrel=3
+pkgrel=4
 arch=('i686' 'x86_64')
 url='http://qt-project.org/'
 license=('GPL3')
