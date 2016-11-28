@@ -1,7 +1,7 @@
 # Maintainer: Mohammadreza Abdollahzadeh <morealaz at gmail dot com>
 
 pkgname=ttf-gandom
-pkgver=0.4.4
+pkgver=0.4.5
 pkgrel=1
 pkgdesc="A beautiful Persian font based on ttf-samim."
 arch=('any')
@@ -11,7 +11,7 @@ groups=(persian-fonts)
 depends=('fontconfig' 'xorg-font-utils')
 source=("https://github.com/rastikerdar/gandom-font/releases/download/v$pkgver/gandom-font-v$pkgver.zip")
 install=$pkgname.install
-md5sums=('ef14a30dbd73a697211df2fcc0172d2c')
+md5sums=('73c202be439c005067c4e6eb2c128232')
 
 package() {
     install -d $pkgdir/usr/share/fonts/$pkgname
