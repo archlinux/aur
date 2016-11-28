@@ -1,0 +1,17 @@
+pkgbase = bgmn-bin
+	pkgdesc = Rietveld refinement backend for Profex
+	pkgver = 4.2.22
+	pkgrel = 1
+	url = http://www.bgmn.de
+	arch = i686
+	arch = x86_64
+	groups = science
+	license = GPL2
+	depends = glibc
+	provides = bgmn
+	conflicts = bgmn
+	source = http://profex.doebelin.org/wp-content/uploads/2015/07/bgmnwin-4.2.22-x86_64.tar.gz
+	md5sums = 76f06f49d17e1b01ba4336d5c2cd9315
+
+pkgname = bgmn-bin
+
