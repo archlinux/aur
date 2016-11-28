@@ -1,11 +1,11 @@
 pkgname=mingw-w64-allegro
-pkgver=5.2.1.0
+pkgver=5.2.1.1
 pkgrel=1
 arch=(any)
 pkgdesc="Portable library mainly aimed at video game and multimedia programming (mingw-w64)"
 license=("custom")
 depends=(mingw-w64-crt)
-makedepends=(mingw-w64-cmake git mingw-w64-libtheora mingw-w64-physfs mingw-w64-freetype mingw-w64-flac mingw-w64-openal)
+makedepends=(mingw-w64-cmake git mingw-w64-libtheora mingw-w64-physfs mingw-w64-freetype mingw-w64-flac mingw-w64-openal mingw-w64-opusfile)
 options=(staticlibs !strip !buildflags)
 url="https://liballeg.org/"
 source=("git://github.com/liballeg/allegro${pkgver%%.*}.git#tag=$pkgver")
