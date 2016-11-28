@@ -8,12 +8,13 @@ pkgdesc="Openbox configuration tool. Qt port of ObConf"
 arch=("i686" "x86_64")
 url="http://lxqt.org"
 license=("GPL2")
-depends=("qt5-base" "openbox" "qt5-x11extras")
+depends=("qt5-base" "openbox" "qt5-x11extras" "gtk-update-icon-cache")
 makedepends=("cmake" "qt5-tools" "liblxqt" "git")
-provides=("$pkgname")
-conflicts=("$pkgname-git")
-source=("https://github.com/lxde/obconf-qt/archive/${pkgver}.tar.gz")
-sha256sums=('5cff74c0a4859b426302092de48c2c9e982cea6f3e00cdb2fa7a37ee6a306fea')
+source=("https://github.com/lxde/$pkgname/releases/download/$pkgver/$pkgname-$pkgver.tar.xz"
+        "https://github.com/lxde/$pkgname/releases/download/$pkgver/$pkgname-$pkgver.tar.xz.asc")
+validpgpkeys=(7C733BA5F585AAD669E4D23A42C9C8D3AF5EA5E3)
+sha256sums=('a7fdfa0ce2da8310b6ff5e3c7375efb18a99316335853af2c8624ca2faa13182'
+            'SKIP')
 
 build() {
 	mkdir -p build
