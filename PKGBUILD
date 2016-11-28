@@ -3,11 +3,11 @@
 # Contributor: Apostolos Bessas <mpessas at gmail dot com>
 
 pkgname=otf-gfs
-pkgver=20160720
+pkgver=20161128
 pkgrel=1
 pkgdesc='Selection of open type fonts from the Greek Font Society.'
 arch=(any)
-url='http://www.greekfontsociety.gr/pages/gr_typefaces1.html'
+url='http://www.greekfontsociety.gr'
 license=('custom')
 makedepends=('unzip')
 depends=()
@@ -35,10 +35,10 @@ source=("http://www.greekfontsociety.gr/_assets/fonts/GFS_Pyrsos.zip"
 	"http://www.greekfontsociety.gr/_assets/fonts/GFS_Baskerville.zip"
 	"http://www.greekfontsociety.gr/_assets/fonts/GFS_Bodoni_Classic.zip"
 	"http://www.greekfontsociety.gr/_assets/fonts/GFS_Complutum.zip")
-
+noextract=(${source[@]##*/})
 md5sums=('ad4bce50a20830c93bc6e4437f674e95'
-         'd6bfb548a31f352901b0a9ae77c7bbda'
-         'e00e5af737e5e74ae7f17660718461af'
+         'ed0fd6e096eaa27f1e4d75dab59b353b'
+         'fc4b7dd7537e5cd0b700bb897d71ae18'
          'b099427d71fdccb23820e386be8ccbd7'
          'c557a9e9e366b938d4c85ef15059b868'
          '3cba29df7b102c10c1612f15d0b6b6d3'
@@ -49,7 +49,7 @@ md5sums=('ad4bce50a20830c93bc6e4437f674e95'
          '7294978fb48cec9317d68d68378f2abb'
          '561eb499d90c5ba3606c9f4b5ed75f09'
          '81dedf8a53a2b0404a097c9504ebe19b'
-         '88b2bac8272b0220c590163aa3a5bb00'
+         '77c82259cf77c40f0a647d8e54780f37'
          'b2b4c8db6c51a7db93d614b29387ac42'
          '0c63e5ce5d1949d7ea98cf99baa53096'
          'b837d9b9945f67d6b88ab7572eb0a00c'
@@ -59,33 +59,32 @@ md5sums=('ad4bce50a20830c93bc6e4437f674e95'
          'a581c49e12f5feed39c56135b47a2f55'
          'b6857e9252be1141ad48276c7fc0a6b0')
 
-noextract=(${source[@]##*/})
 
 package() {
 cd "$srcdir"
-
-unzip GFS_Pyrsos.zip
-unzip GFS_Orpheus_Sans.zip
-unzip GFS_Orpheus.zip
-unzip GFS_Elpis.zip
-unzip GFS_Theokritos.zip
-unzip GFS_Artemisia.zip
-unzip GFS_NeoHellenic.zip
-unzip GFS_Olga.zip
-unzip GFS_Bodoni.zip
-unzip GFS_Didot_Display.zip
-unzip GFS_Didot.zip
-unzip GFS_Goschen.zip
-unzip GFS_Philostratos.zip
-unzip GFS_Orpheus_Classic.zip
-unzip GFS_Decker.zip
-unzip GFS_Solomos.zip
-unzip GFS_Porson.zip
-unzip GFS_Didot_Classic.zip
-unzip GFS_Gazis.zip
-unzip GFS_Baskerville.zip
-unzip GFS_Bodoni_Classic.zip
-unzip GFS_Complutum.zip
+_xlist="__MACOSX/* .OFL-FAQ.txt OFL-FAQ.txt OFL.txt"
+unzip GFS_Pyrsos.zip -x ${_xlist}
+unzip GFS_Orpheus_Sans.zip -x ${_xlist}
+unzip GFS_Orpheus.zip -x ${_xlist}
+unzip GFS_Elpis.zip -x ${_xlist}
+unzip GFS_Theokritos.zip -x ${_xlist}
+unzip GFS_Artemisia.zip -x ${_xlist}
+unzip GFS_NeoHellenic.zip -x ${_xlist}
+unzip GFS_Olga.zip -x ${_xlist}
+unzip GFS_Bodoni.zip -x ${_xlist}
+unzip GFS_Didot_Display.zip -x ${_xlist}
+unzip GFS_Didot.zip -x ${_xlist}
+unzip GFS_Goschen.zip -x ${_xlist}
+unzip GFS_Philostratos.zip -x ${_xlist}
+unzip GFS_Orpheus_Classic.zip -x ${_xlist}
+unzip GFS_Decker.zip -x ${_xlist}
+unzip GFS_Solomos.zip -x ${_xlist}
+unzip GFS_Porson.zip -x ${_xlist}
+unzip GFS_Didot_Classic.zip -x ${_xlist}
+unzip GFS_Gazis.zip -x ${_xlist}
+unzip GFS_Baskerville.zip -x ${_xlist}
+unzip GFS_Bodoni_Classic.zip -x ${_xlist}
+unzip GFS_Complutum.zip -x ${_xlist}
 
 install -d $pkgdir/usr/share/fonts/OTF/
 install -Dm644 $srcdir/GFS*/*otf $pkgdir/usr/share/fonts/OTF/
