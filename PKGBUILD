@@ -8,8 +8,8 @@
 pkgbase=linux-mainline               # Build stock -ARCH kernel
 #pkgbase=linux-custom       # Build kernel with a different name
 _srcname=linux-4.8
-_patchname=patch-4.9-rc6
-pkgver=4.9rc6
+_patchname=patch-4.9-rc7
+pkgver=4.9rc7
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
@@ -28,7 +28,7 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         'linux.preset'
         'change-default-console-loglevel.patch')
 sha256sums=('3e9150065f193d3d94bcf46a1fe9f033c7ef7122ab71d75a7fb5a2f0c9a7e11a'
-            '49be0d2cc396a0a62126e43930744416b92d572885499fc6eee3a59782fec1b0'
+            'b12b04c739743d0bebd287cca572caea9bfeea55810d850021533608508c5762'
             '2fd479c42362075c3bea6c7c1737fd3e0c222245046d071fa10157d05397965f'
             'ae414d09d296fcf388e930ff919f975c03302ec2f595e2ae0c172422402b3a6e'
             '834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0'
