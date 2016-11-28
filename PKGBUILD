@@ -8,9 +8,9 @@
 # Contributor: Tad Fisher <tadfisher at gmail dot com>
 
 pkgname=android-studio-canary
-pkgver=2.3.0.0
+pkgver=2.3.0.1
 pkgrel=1
-_build=162.3454121
+_build=162.3508619
 pkgdesc="The Official Android IDE. Canary branch"
 arch=('i686' 'x86_64')
 url="http://developer.android.com/sdk/installing/studio.html"
@@ -23,7 +23,7 @@ oidprovides=("android-studio=$pkgver")
 options=('!strip')
 source=("https://dl.google.com/dl/android/studio/ide-zips/$pkgver/android-studio-ide-$_build-linux.zip"
         "$pkgname.desktop")
-sha1sums=('6767862b34d8b837d7693ce6165dc55d0ff9676d'
+sha1sums=('0decf6f0cfd7ed6c5390e50eae462c6151d2c6aa'
           '4d7153ef796a332d5318e64b59ab5b5c92c5dca9')
 
 if [ "$CARCH" = "i686" ]; then
