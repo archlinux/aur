@@ -12,7 +12,7 @@ url="http://developer.android.com/sdk/index.html"
 license=('custom')
 depends=("android-platform-${_sdkint}")
 options=('!strip')
-source=("http://dl.google.com/android/repository/sys-img/android/sysimg_armeabi-v7a-${_sdkint}_${_rev}.zip")
+source=("http://dl.google.com/android/repository/sys-img/android/armeabi-v7a-${_sdkint}_${_rev}.zip")
 sha1sums=('3454546b4eed2d6c3dd06d47757d6da9f4176033')
 
 package() {
