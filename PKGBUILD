@@ -55,12 +55,12 @@ echo "####################################################################"
 else
 tar -zxf $srcdir/NX/etc/NX/server/packages/nxserver.tar.gz NX/etc/server-fedora.cfg.sample
 if [ $_autoservice = n ] && [ $_autofirewall = n ]; then
-sed -i 's/#EnableFirewallConfiguration 1/#EnableFirewallConfiguration 0/' NX/etc/server-fedora.cfg.sample
-sed -i 's/#StartNXDaemon Automatic/#StartNXDaemon Manual/' NX/etc/server-fedora.cfg.sample
+sed -i 's/#EnableFirewallConfiguration 1/EnableFirewallConfiguration 0/' NX/etc/server-fedora.cfg.sample
+sed -i 's/#StartNXDaemon Automatic/StartNXDaemon Manual/' NX/etc/server-fedora.cfg.sample
 elif [ $_autoservice = y ] && [ $_autofirewall = n ]; then
-sed -i 's/#EnableFirewallConfiguration 1/#EnableFirewallConfiguration 0/' NX/etc/server-fedora.cfg.sample
+sed -i 's/#EnableFirewallConfiguration 1/EnableFirewallConfiguration 0/' NX/etc/server-fedora.cfg.sample
 elif [ $_autoservice = n ] && [ $_autofirewall = y ]; then
-sed -i 's/#StartNXDaemon Automatic/#StartNXDaemon Manual/' NX/etc/server-fedora.cfg.sample
+sed -i 's/#StartNXDaemon Automatic/StartNXDaemon Manual/' NX/etc/server-fedora.cfg.sample
 fi
 gzip -d $srcdir/NX/etc/NX/server/packages/nxserver.tar.gz
 tar -rf $srcdir/NX/etc/NX/server/packages/nxserver.tar NX/etc/server-fedora.cfg.sample -C $srcdir/NX/etc/server-fedora.cfg.sample
