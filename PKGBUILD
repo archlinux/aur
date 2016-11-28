@@ -1,40 +1,51 @@
-# Maintainer: Saleem Rashid <spudowiar@outlook.com>
+# Maintainer: Saleem Rashid <trezor@saleemrashid.com>
 _pkgname=trezord
 pkgname="${_pkgname}-git"
 gitname="${_pkgname}"
 pkgrel=1
-pkgver=1.2.0.r259.ab3b262
+pkgver=1.2.0.r4.g490eb46
 pkgdesc='TREZOR Communication Daemon'
 url='http://bitcointrezor.com/'
 arch=('i686' 'x86_64')
 license=('LGPL3')
 provides=("${_pkgname}" 'trezor-bridge')
 conflicts=("${_pkgname}" 'trezor-bridge-bin')
-makedepends=('git' 'cmake' 'boost')
-depends=('boost-libs' 'protobuf' 'libmicrohttpd' 'jsoncpp' 'libusb')
+makedepends=('boost' 'cmake' 'git')
+depends=('boost-libs' 'jsoncpp' 'libmicrohttpd' 'libusb' 'protobuf')
 install="${_pkgname}.install"
 source=(
     "git://github.com/trezor/${gitname}.git"
-    "git://github.com/trezor/trezor-crypto.git"
+    'git://github.com/trezor/trezor-crypto.git'
+    'git://github.com/trezor/trezor-common.git'
     "${_pkgname}.sysusers"
 )
-sha256sums=('SKIP' 'SKIP' 'SKIP')
+sha256sums=(
+    'SKIP'
+    'SKIP'
+    'SKIP'
+    'a4106f04d8322836905c6d300c0fb54849063bbc258ef76e28acdbec7c1c4df4'
+)
 
 prepare() {
-    cd "${gitname}"
-    git submodule init vendor/trezor-crypto
-    git config submodule.vendor/trezor-crypto.url "${srcdir}/trezor-crypto"
+    cd "${srcdir}/${gitname}"
+    git submodule init 'vendor/trezor-crypto'
+    git config submodule.'vendor/trezor-crypto'.url "${srcdir}/trezor-crypto"
     git submodule update
 
-    # disable static linking
-    cd "${srcdir}/${gitname}"
-    sed -i '/if (NOT ${CMAKE_SYSTEM_NAME} MATCHES "Darwin")/,/endif(NOT ${CMAKE_SYSTEM_NAME} MATCHES "Darwin")/d' CMakeLists.txt
-    sed -i 's/NAMES json$/&cpp/' cmake/modules/Findjsoncpp.cmake
+    # Disable static linking
+    sed -i "/if (NOT ${CMAKE_SYSTEM_NAME} MATCHES \"Darwin\")/,/endif(NOT ${CMAKE_SYSTEM_NAME} MATCHES \"Darwin\")/d" CMakeLists.txt
+    sed -i "s/NAMES json$/&cpp/" cmake/modules/Findjsoncpp.cmake
+
+    # Generate Protocol Buffers
+    cd "${srcdir}/trezor-common/protob"
+    protoc --cpp_out="${srcdir}/${gitname}/src/config" config.proto
 }
 
 pkgver() {
     cd "${srcdir}/${gitname}"
-    printf "%s.r%s.%s" "$(< VERSION)" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    git describe --tags --long | sed \
+        -e 's/^v//' \
+        -e 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {

@@ -1,7 +1,8 @@
-/src
-/pkg
+src/
+pkg/
 
-/trezord
-/trezor-crypto
+trezor-common/
+trezor-crypto/
+trezord/
 
 *.pkg.tar.xz
