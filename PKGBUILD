@@ -5,7 +5,7 @@ _numixicons=
 
 pkgname=octopi-git
 _pkgname=octopi
-pkgver=0.8.0.r1008.e6fdecb
+pkgver=0.8.0.r1166.144c3f2
 pkgrel=1
 epoch=1
 pkgdesc="A powerful Pacman frontend using Qt5 libs"
@@ -14,7 +14,7 @@ url="https://github.com/aarnt/octopi"
 license=('GPL2')
 install=$pkgname.install
 makedepends=('git' 'qt5-base')
-depends=('qt5-quickcontrols' 'libnotify')
+depends=('qt5-quickcontrols' 'pacman' 'pkgfile' 'knotifications' 'alpm_octopi_utils' 'xterm')
 optdepends=('kdesu: for KDE'
             'gksu: for XFCE, Gnome, LXDE, Cinnamon'
             'gnome-keyring: for password management'
@@ -62,8 +62,8 @@ prepare() {
 
 build() {
   _cpucount=$(grep -c processor /proc/cpuinfo 2>/dev/null)
-  _jc=$((${cpucount:-1}))
-   
+  _jc=$((${_cpucount:-1}))
+
   cd "$srcdir/$_gitname"
   qmake-qt5 octopi.pro
   make -j $_jc
@@ -90,41 +90,21 @@ build() {
 }
 
 package() {
-   #Octopi main files
-   install -D -m755 ${srcdir}/$_gitname/bin/$_pkgname ${pkgdir}/usr/bin/$_pkgname
-   install -D -m644 ${srcdir}/$_gitname/$_pkgname.desktop ${pkgdir}/usr/share/applications/$_pkgname.desktop
-   install -D -m644 ${srcdir}/$_gitname/resources/images/${_pkgname}_green.png ${pkgdir}/usr/share/icons/$_pkgname.png
-   install -D -m644 ${srcdir}/$_gitname/resources/images/${_pkgname}_green.png ${pkgdir}/usr/share/icons/gnome/32x32/apps/$_pkgname.png
-   install -D -m644 ${srcdir}/$_gitname/resources/images/${_pkgname}_red.png ${pkgdir}/usr/share/icons/${_pkgname}_red.png
-   install -D -m644 ${srcdir}/$_gitname/resources/images/${_pkgname}_yellow.png ${pkgdir}/usr/share/icons/${_pkgname}_yellow.png
+   cd ${srcdir}/$_gitname
+   make INSTALL_ROOT=${pkgdir} install
 
-   #speedup files
-   install -D -m755 ${srcdir}/$_gitname/speedup/speedup-octopi.sh ${pkgdir}/usr/bin/speedup-octopi.sh
-   install -D -m644 ${srcdir}/$_gitname/speedup/${_pkgname}.service ${pkgdir}/etc/systemd/system/${_pkgname}.service
+   cd notifier/pacmanhelper
+   make INSTALL_ROOT=${pkgdir} install
+   cd ../..
 
-   #Pacmaneditor files
-   install -D -m755 ${srcdir}/$_gitname/repoeditor/bin/octopi-repoeditor ${pkgdir}/usr/bin/octopi-repoeditor
+   cd notifier/octopi-notifier
+   make INSTALL_ROOT=${pkgdir} install
+   cd ../..
 
-   #Cachecleaner files
-   install -D -m755 ${srcdir}/$_gitname/cachecleaner/bin/octopi-cachecleaner ${pkgdir}/usr/bin/octopi-cachecleaner
-   install -D -m644 ${srcdir}/$_gitname/cachecleaner/octopi-cachecleaner.desktop ${pkgdir}/usr/share/applications/octopi-cachecleaner.desktop
+   cd repoeditor
+   make INSTALL_ROOT=${pkgdir} install
+   cd ..
 
-   #Pacmanhelper service files
-   install -D -m755 ${srcdir}/$_gitname/notifier/bin/pacmanhelper ${pkgdir}/usr/lib/octopi/pacmanhelper
-
-   install -D -m644 ${srcdir}/$_gitname/notifier/pacmanhelper/polkit/org.octopi.pacman.policy ${pkgdir}/usr/share/polkit-1/actions/org.octopi.pacman.policy
-   install -D -m644 ${srcdir}/$_gitname/notifier/pacmanhelper/polkit/org.octopi.pacmanhelper.conf ${pkgdir}/etc/dbus-1/system.d/org.octopi.pacmanhelper.conf
-   install -D -m644 ${srcdir}/$_gitname/notifier/pacmanhelper/polkit/org.octopi.pacmanhelper.xml ${pkgdir}/usr/share/dbus-1/interfaces/org.octopi.pacmanhelper.xml
-   install -D -m644 ${srcdir}/$_gitname/notifier/pacmanhelper/polkit/org.octopi.pacmanhelper.service ${pkgdir}/usr/share/dbus-1/system-services/org.octopi.pacmanhelper.service
-
-   #Octopi-notifier file
-   install -D -m755 ${srcdir}/$_gitname/notifier/bin/octopi-notifier ${pkgdir}/usr/bin/octopi-notifier
-   install -D -m644 ${srcdir}/$_gitname/octopi-notifier.desktop ${pkgdir}/etc/xdg/autostart/octopi-notifier.desktop
-
-   #Octopi-repoeditor file
-   install -D -m755 ${srcdir}/$_gitname/repoeditor/bin/octopi-repoeditor ${pkgdir}/usr/bin/octopi-repoeditor
-
-   #Octopi-cachecleaner file
-   install -D -m755 ${srcdir}/$_gitname/cachecleaner/bin/octopi-cachecleaner ${pkgdir}/usr/bin/octopi-cachecleaner
-   install -D -m644 ${srcdir}/$_gitname/cachecleaner/octopi-cachecleaner.desktop ${pkgdir}/usr/share/applications/octopi-cachecleaner.desktop
+   cd cachecleaner
+   make INSTALL_ROOT=${pkgdir} install
 }
