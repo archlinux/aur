@@ -5,12 +5,12 @@
 # Contributor: Shinlun Hsieh <yngwiexx@yahoo.com.tw>
 pkgname=qmidiroute
 pkgver=0.4.0
-pkgrel=2
+pkgrel=3
 pkgdesc="a filter/router for MIDI events"
 arch=('i686' 'x86_64')
 url="http://alsamodular.sourceforge.net/"
 license=('GPL')
-depends=('alsa-lib' 'qt5-base' 'hicolor-icon-theme')
+depends=('alsa-lib' 'qt5-base' 'qt5-tools' 'hicolor-icon-theme')
 source=(http://downloads.sourceforge.net/alsamodular/$pkgname-$pkgver.tar.bz2)
 md5sums=('eac3b97814e372cef4068f2d06263269')
 

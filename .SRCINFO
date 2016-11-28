@@ -1,13 +1,14 @@
 pkgbase = qmidiroute
 	pkgdesc = a filter/router for MIDI events
 	pkgver = 0.4.0
-	pkgrel = 2
+	pkgrel = 3
 	url = http://alsamodular.sourceforge.net/
 	arch = i686
 	arch = x86_64
 	license = GPL
 	depends = alsa-lib
 	depends = qt5-base
+	depends = qt5-tools
 	depends = hicolor-icon-theme
 	source = http://downloads.sourceforge.net/alsamodular/qmidiroute-0.4.0.tar.bz2
 	md5sums = eac3b97814e372cef4068f2d06263269
