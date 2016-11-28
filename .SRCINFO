@@ -1,0 +1,30 @@
+pkgbase = monodevelop-git-nuget3
+	pkgdesc = An IDE primarily designed for C# and other .NET languages - built from git sources. WARNING: building this package will require you to download >500 MB worth of data.
+	pkgver = r47310
+	pkgrel = 1
+	url = http://www.monodevelop.com
+	arch = any
+	license = GPL
+	makedepends = rsync
+	makedepends = cmake
+	makedepends = git
+	makedepends = nuget3
+	makedepends = mono-pcl
+	depends = mono>=4.0.1
+	depends = mono-addins>=0.6.2
+	depends = gnome-sharp
+	depends = hicolor-icon-theme
+	depends = http-parser
+	depends = curl
+	depends = fsharp
+	optdepends = xsp: To run ASP.NET pages directly from monodevelop
+	provides = monodevelop
+	conflicts = monodevelop
+	conflicts = monodevelop-stable
+	conflicts = monodevelop-git
+	options = !makeflags
+	source = git://github.com/mono/monodevelop.git
+	md5sums = SKIP
+
+pkgname = monodevelop-git-nuget3
+
