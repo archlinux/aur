@@ -1,0 +1,20 @@
+diff -Naur collada-dom-2.4.0/dom/make/dom.mk collada-dom-2.4.0.new/dom/make/dom.mk
+--- collada-dom-2.4.0/dom/make/dom.mk	2008-10-09 23:01:48.000000000 +0200
++++ collada-dom-2.4.0.new/dom/make/dom.mk	2016-11-28 20:23:33.805712237 +0100
+@@ -58,9 +58,8 @@
+ endif
+ 
+ # minizip
+-includeOpts += -Iexternal-libs/minizip/include
+-libOpts += -Lbuild/$(buildID)-$(colladaVersion)$(debugSuffix)/
+-libOpts += -lminizip$(debugSuffix)
++includeOpts += -I/usr/include/minizip
++libOpts += -lminizip
+ # as we link minizip static on osx, we need to link against zlib, too.
+ ifeq ($(os),mac)
+ libOpts += -lz
+diff -Naur collada-dom-2.4.0/dom/make/installPrefix.mk collada-dom-2.4.0.new/dom/make/installPrefix.mk
+--- collada-dom-2.4.0/dom/make/installPrefix.mk	1970-01-01 01:00:00.000000000 +0100
++++ collada-dom-2.4.0.new/dom/make/installPrefix.mk	2016-11-28 20:23:33.805712237 +0100
+@@ -0,0 +1 @@
++installPrefix := /home/bartus/AUR/mitsuba-git/collada-dom-mitsuba/aur_collada-dom-mitsuba/pkg/collada-dom-mitsuba/usr
