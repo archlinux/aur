@@ -1,0 +1,33 @@
+pkgbase = mitsuba-git
+	pkgdesc = Mitsuba physically based renderer.
+	pkgver = v0.5.0.r160.g87efb7d
+	pkgrel = 1
+	url = http://mitsuba-renderer.org/
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = gcc5
+	makedepends = eigen
+	makedepends = scons
+	makedepends = git
+	depends = python
+	depends = xerces-c
+	depends = glew-1.13.0
+	depends = openexr
+	depends = libpng
+	depends = libjpeg
+	depends = qt4
+	depends = fftw
+	depends = collada-dom-mitsuba
+	depends = boost
+	depends = pcre
+	provides = mitsuba
+	conflicts = mitsuba
+	conflicts = mitsuba-hg
+	source = mitsuba::git+https://www.mitsuba-renderer.org/repos/mitsuba.git
+	source = python3.5.patch
+	sha256sums = SKIP
+	sha256sums = 7f25d33a750466d41d24c2a9b1e0b4a679c5a4345e993f98bf9de04efde1b9e1
+
+pkgname = mitsuba-git
+
