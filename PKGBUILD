@@ -2,20 +2,44 @@
 
 pkgbase=gtk4-git
 pkgname=(gtk4-update-icon-cache-git gtk4-git gtk4-print-backends-git)
-pkgver=3.89.0.r990.g0a75bb4
+pkgver=3.89.1.r35.g3efbb75
 pkgrel=1
 pkgdesc="GObject-based multi-platform GUI toolkit (GIT Version)"
 arch=('i686' 'x86_64')
 url="http://www.gtk.org/"
 license=('LGPL')
-depends=('adwaita-icon-theme' 'at-spi2-atk' 'atk-git' 'cairo' 'dconf'
-         'desktop-file-utils' 'glib2-git>=2.45.8' 'gdk-pixbuf2' 'json-glib'
-	 'libcups' 'libepoxy' 'librsvg' 'libxcomposite' 'libxcursor'
-	 'libxdamage' 'libxi' 'libxinerama' 'libxkbcommon' 'libxrandr' 'mesa'
-	 'pango-git' 'shared-mime-info' 'wayland-git>=1.9.91' 'wayland-protocols-git>=1.7'
-	 'graphene>=1.2')
-makedepends=('gobject-introspection-git' 'gtk-doc' 'git' 'colord' 'rest'
-             'libcups' 'autoconf-archive')
+depends=('adwaita-icon-theme'
+         'at-spi2-atk'
+	       'atk-git>=2.15.1'
+	       'cairo>=1.14.0'
+	       'dconf'
+         'desktop-file-utils'
+	       'glib2-git>=2.45.8'
+	       'gdk-pixbuf2>=2.30.0'
+	       'json-glib'
+	       'libcups' 
+	       'libepoxy>=1.0'
+         'librsvg' 
+         'libxcomposite'
+         'libxcursor'
+         'libxdamage'
+         'libxi'
+	       'libxinerama'
+         'libxkbcommon'
+         'libxrandr'
+         'mesa'
+	       'pango-git>=1.37.3'
+         'shared-mime-info'
+         'wayland-git>=1.9.91'
+         'wayland-protocols-git>=1.7'
+	       'graphene-git>=1.5.1')
+makedepends=('gobject-introspection-git'
+             'gtk-doc' 
+             'git'
+             'colord'
+             'rest'
+             'libcups'
+             'autoconf-archive')
 optdepends=('gnome-icon-theme: Default icon theme'
             'gnome-themes-standard: Default widget theme')
 conflicts=('gtk3 gtk3-git')
