@@ -1,6 +1,7 @@
+# Maintainer: Frederik Schwan <frederik dot schwan at linux dot com>
 # Contributor: Thomas Laroche <tho.laroche@gmail.com>
 # Contributor: Kristian Klausen <klausenbusk@hotmail.com>
-# Maintainer: Thomas Fanninger <thomas@fanninger.at>
+# Contributor: Thomas Fanninger <thomas@fanninger.at>
 
 pkgname=gitea
 pkgname=${pkgname}
