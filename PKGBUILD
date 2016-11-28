@@ -5,7 +5,8 @@ _numixicons=
 
 pkgname=octopi-git
 _pkgname=octopi
-pkgver=0.8.1.r0.g697e629
+_pkgver=0.8.1
+pkgver=$_pkgver".r1166.144c3f2"
 pkgrel=1
 epoch=1
 pkgdesc="A powerful Pacman frontend using Qt5 libs"
@@ -46,7 +47,7 @@ md5sums=('SKIP'
 
 pkgver() {
   cd ${srcdir}/$_gitname
-  printf "0.8.0.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  printf $_pkgver".r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
