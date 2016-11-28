@@ -1,7 +1,7 @@
 # Maintainer: Kyra Sierra <circleousdev@gmail.com>
 pkgname=toilet-git
 _pkgname=toilet
-pkgver=20161027
+pkgver=0.3
 pkgrel=1
 pkgdesc="free replacement for the FIGlet utility."
 arch=('x86_64' 'i686')
@@ -29,4 +29,5 @@ package() {
 	mkdir -p "$pkgdir"/usr/share/man/man1
 	install -Dm755 src/"$_pkgname" "$pkgdir"/usr/bin
 	install -Dm644 doc/"$_pkgname".1.gz "$pkgdir"/usr/share/man/man1
+	install -Dm644 COPYING "$pkgdir"/usr/share/licenses/"$_pkgname"/COPYING
 }

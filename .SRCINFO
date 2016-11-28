@@ -1,6 +1,6 @@
 pkgbase = toilet-git
 	pkgdesc = free replacement for the FIGlet utility.
-	pkgver = 20161027
+	pkgver = 0.3
 	pkgrel = 1
 	url = https://github.com/cacalabs/toilet
 	arch = x86_64
