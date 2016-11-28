@@ -6,46 +6,57 @@
 
 pkgname=bitdefender
 pkgver=7.7.1
-pkgrel=42
-_build=3
-_guiver=1.0
-_guibuild=3
+dist_build='7.7-1' # Build number for upstream .run package.
+pkgrel=43
+rpm_rel=1809
 pkgdesc="BitDefender's Personal UNIX Workstation Antivirus"
 arch=('i686' 'x86_64')
 url="http://www.bitdefender.com/"
 depends=('gtk2' 'libstdc++5' 'atk' 'fontconfig' 'libxext' 'libxrender' 'libxrandr' 'libxi' 'libxcursor' 'libxfixes' 'pango' 'glib2' 'libxinerama' 'libsm')
 install=bitdefender.install
 license=('custom')
-source=(http://dl.dropboxusercontent.com/s/x02eivja50i1k20/bitdefender-scanner-7.7.1-1809.i586.rpm?dl=0
-        http://dl.dropboxusercontent.com/s/a8klp4coaax7os4/bitdefender-scanner-gui-7.7.1-1809.i586.rpm?dl=0
-        bitdefender.sh
-        bitdefender.conf
-        http://download.bitdefender.com/updates/update_av32bit/cumulative.zip)
-md5sums=('SKIP'
-         'SKIP'
+source=('http://download.bitdefender.com/SMB/Workstation_Security_and_Management/BitDefender_Antivirus_Scanner_for_Unices/Unix/Current/EN_FR_BR_RO/Linux/BitDefender-Antivirus-Scanner-'$dist_build'-linux-i586.rpm.run'
+        'bitdefender.sh'
+        'bitdefender.conf'
+        'unpack.sh'
+        'http://download.bitdefender.com/updates/update_av32bit/cumulative.zip')
+md5sums=('6b20f789d057a37491eee3e429d351d3'
          'f74775c74b44ceabafcc0dbab0ff2318'
          '6df89a673aec1ad103745da47c50dc46'
+         '25e860fbd392db85da993ffeb9a0133c'
          'SKIP')
-         
-[ "$CARCH" = "x86_64" ] && source=(http://dl.dropboxusercontent.com/s/4730ybtsz2t2z1l/bitdefender-scanner-7.7.1-1809.x86_64.rpm?dl=0
-                                   http://dl.dropboxusercontent.com/s/lembl9kgbqh2xir/bitdefender-scanner-gui-7.7.1-1809.x86_64.rpm?dl=0
-                                   bitdefender.sh
-                                   bitdefender.conf
-                                   http://download.bitdefender.com/updates/update_av64bit/cumulative.zip)
-         
-[ "$CARCH" = "x86_64" ] && md5sums=('SKIP'
-                                    'SKIP'
+
+[ "$CARCH" = "x86_64" ] && source=('http://download.bitdefender.com/SMB/Workstation_Security_and_Management/BitDefender_Antivirus_Scanner_for_Unices/Unix/Current/EN_FR_BR_RO/Linux/BitDefender-Antivirus-Scanner-'$dist_build'-linux-amd64.rpm.run'
+                                   'bitdefender.sh'
+                                   'bitdefender.conf'
+                                   'unpack.sh'
+                                   'http://download.bitdefender.com/updates/update_av64bit/cumulative.zip')
+
+[ "$CARCH" = "x86_64" ] && md5sums=('1aebcf5798499b8b8c22eb86045a4a7f'
                                     'f74775c74b44ceabafcc0dbab0ff2318'
                                     '6df89a673aec1ad103745da47c50dc46'
+                                    '25e860fbd392db85da993ffeb9a0133c'
                                     'SKIP')
 
 package() {
+    rpm_base='./bitdefender-scanner-'$pkgver'-'$rpm_rel'.i586.rpm'
+    rpm_gui='./bitdefender-scanner-gui-'$pkgver'-'$rpm_rel'.i586.rpm'
+
+    if [ "$CARCH" == "x86_64" ]; then
+      rpm_base='./bitdefender-scanner-'$pkgver'-'$rpm_rel'.x86_64.rpm'
+      rpm_gui='./bitdefender-scanner-gui-'$pkgver'-'$rpm_rel'.x86_64.rpm'
+    fi
+
     cd $srcdir
+    bash -c './unpack.sh BitDefender-Antivirus-Scanner-'$dist_build'-linux-amd64.rpm.run'
+    bsdtar -x -f $rpm_base
+    bsdtar -x -f $rpm_gui
     cp -r $srcdir/opt $pkgdir
-#    cp -r $srcdir/usr $pkgdir
+    mkdir -p $pkgdir/usr/share/applications
+    ln -s /opt/BitDefender-scanner/share/applications/bdgui.desktop $pkgdir/usr/share/applications/bdgui.desktop
 
     # generate configuration
-    sed -i 's|\$\$DIR|/opt/BitDefender-scanner|g' $pkgdir/opt/BitDefender-scanner/etc/bdscan.conf.dist 
+    sed -i 's|\$\$DIR|/opt/BitDefender-scanner|g' $pkgdir/opt/BitDefender-scanner/etc/bdscan.conf.dist
     mv $pkgdir/opt/BitDefender-scanner/etc/bdscan.conf.dist $pkgdir/opt/BitDefender-scanner/etc/bdscan.conf
 
     # use existing key if avalible
@@ -58,7 +69,7 @@ package() {
     echo "LicenseAccepted = True" >> "$pkgdir/opt/BitDefender-scanner/etc/bdscan.conf"
 
     # generate GUI configuration
-    sed -i 's|\$\$DIR|/opt/BitDefender-scanner|g' $pkgdir/opt/BitDefender-scanner/etc/bdgui.conf.dist 
+    sed -i 's|\$\$DIR|/opt/BitDefender-scanner|g' $pkgdir/opt/BitDefender-scanner/etc/bdgui.conf.dist
     mv $pkgdir/opt/BitDefender-scanner/etc/bdgui.conf.dist $pkgdir/opt/BitDefender-scanner/etc/bdgui.conf
 
     # profile
@@ -82,21 +93,21 @@ package() {
     install -Dm644 $srcdir/bitdefender.conf $pkgdir/etc/ld.so.conf.d/bitdefender.conf
 
     # add bash completion
-    install -Dm 644 $pkgdir/opt/BitDefender-scanner/share/contrib/bash_completion/bdscan $pkgdir/etc/bash_completion.d/bdscan            
-    
+    install -Dm 644 $pkgdir/opt/BitDefender-scanner/share/contrib/bash_completion/bdscan $pkgdir/etc/bash_completion.d/bdscan
+
     # fix segfaulting
-    #  - http://unices.bitdefender.com/2011/11/01/bitdefender-antivirus-scanner-for-unices/    
+    #  - http://unices.bitdefender.com/2011/11/01/bitdefender-antivirus-scanner-for-unices/
     if [ "$CARCH" = "x86_64" ]; then
 #        rm $pkgdir/opt/BitDefender-scanner/var/lib/scan/bdcore.so
         install -Dm644 $srcdir/bdcore.so.linux-x86_64 $pkgdir/opt/BitDefender-scanner/var/lib/scan/bdcore.so.linux-x86_64
         ln -sf /opt/BitDefender-scanner/var/lib/scan/bdcore.so.linux-x86_64 $pkgdir/opt/BitDefender-scanner/var/lib/scan/bdcore.so
     else
-        rm $pkgdir/opt/BitDefender-scanner/var/lib/scan/bdcore.so    
+        rm $pkgdir/opt/BitDefender-scanner/var/lib/scan/bdcore.so
         install -Dm644 $srcdir/bdcore.so.linux-x86 $pkgdir/opt/BitDefender-scanner/var/lib/scan/bdcore.so.linux-x86
 	ln -sf /opt/BitDefender-scanner/var/lib/scan/bdcore.so.linux-x86 $pkgdir/opt/BitDefender-scanner/var/lib/scan/bdcore.so
     fi
 
     # latest deffinitions
         install -Dm644 $srcdir/Plugins/* $pkgdir/opt/BitDefender-scanner/var/lib/scan/Plugins
-    
+
 }
