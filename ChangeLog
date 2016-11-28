@@ -1,3 +1,8 @@
+2016-11-28 Christopher Arndt <aur -at- chrisarndt -dot- de>
+
+	* 0.9.2.r153.47b947d
+	fixed pkgver()
+
 2016-08-14 Christopher Arndt <aur -at- chrisarndt -dot- de>
 
 	* 0.9.1.r127.3d95dff-2:

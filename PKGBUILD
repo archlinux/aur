@@ -2,8 +2,8 @@
 
 _pkgname=dexed-vst
 pkgname="${_pkgname}-git"
-pkgver=0.9.1.r127.3d95dff
-pkgrel=2
+pkgver=0.9.2.r153.47b947d
+pkgrel=1
 pkgdesc="A VST plugin synth closely modelled on the Yamaha DX7"
 arch=('i686' 'x86_64')
 url="http://asb2m10.github.io/dexed/"
@@ -21,14 +21,14 @@ changelog=ChangeLog
 pkgver() {
   cd "${srcdir}/${_pkgname}"
 
-  ver=$(cpp -dM Source/Dexed.h | grep DEXED_VERSION | cut -d '"' -f 2)
+  local ver=$(cpp -dM Source/Dexed.h | grep '^#define DEXED_ID' | cut -d '"' -f 2)
   echo "$ver.r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
 }
 
 prepare() {
   cd "$srcdir/${_pkgname}"
   msg2 "Fixing VST3 SDK include paths in Makefile..."
-  sed -i -e "s|-I ~/src/vstsdk2.4|-I /usr/lib/vst36|" Builds/Linux/Makefile
+  sed -i -e "s|-I ~/src/vstsdk2.4|-I /usr/include/vst36|" Builds/Linux/Makefile
 
   msg2 "Fixing VST3 SDK include paths in JUCE sources..."
   for file in \
