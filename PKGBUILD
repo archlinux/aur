@@ -5,7 +5,7 @@ _numixicons=
 
 pkgname=octopi-git
 _pkgname=octopi
-pkgver=0.8.0.r1166.144c3f2
+pkgver=0.8.1.r1166.144c3f2
 pkgrel=1
 epoch=1
 pkgdesc="A powerful Pacman frontend using Qt5 libs"
