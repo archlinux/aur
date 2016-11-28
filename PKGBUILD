@@ -2,7 +2,7 @@
 pkgname=tsocks-ipv6
 pkgver=1.8beta6
 GIT_COMMIT=be36c83a7326c75123fa019a4cb53792ecd8f689
-pkgrel=1
+pkgrel=2
 pkgdesc='Transparent SOCKS proxying library, with IPv6 support'
 url='https://github.com/Elysion-tcfa/tsocks'
 license=('GPL')
@@ -16,7 +16,7 @@ sha1sums=('52625a176ed9e7beb76d8666e88122da538156ac'
 sha256sums=('76c4ac3cde166b3b84653e6788203bdcea2a313edb13c7aefaf9c69a64c76ea8'
             '0fcdd40b820b9ee2da2625f80ed5badd4326825a1cc89dc9596f202e405a0699')
 conflicts=("tsocks")
-
+provides=("tsocks")
 
 build() {
 	cd "${srcdir}/tsocks-${GIT_COMMIT}"
