@@ -3,13 +3,13 @@
 
 pkgname=abgx360gui
 pkgver=1.0.2
-pkgrel=3
+pkgrel=4
 pkgdesc="A GTK frontend for abgx360"
 arch=('i686' 'x86_64')
 license=('unknown')
 url="http://abgx360.xecuter.com/"
 depends=('abgx360' 'wxgtk2.8' 'xterm')
-source=(http://dl.dropbox.com/u/59058148/${pkgname}-${pkgver}.tar.gz
+source=(http://abgx360.xecuter.com/dl/${pkgname}-${pkgver}.tar.gz
         abgx360gui.desktop
         abgx360gui.png
         abgx360gui_TopBitmap_XPM.xpm.patch)
