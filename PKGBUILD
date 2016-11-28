@@ -25,7 +25,7 @@ optdepends=('caja: Document Properties extension'
             'yelp: for reading MATE help documents')
 groups=('mate-extra')
 source=("http://pub.mate-desktop.org/releases/${_ver}/${_pkgbase}-${pkgver}.tar.xz")
-sha1sums=('0573c0afdc81f29115409c42e06bd4fecb785302')
+sha1sums=('8c36867a654056b9cf122988f8fe859e76d0648f')
 
 prepare() {
     cd "${srcdir}"
