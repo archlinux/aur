@@ -5,10 +5,10 @@ pkgver=0.4.7
 pkgrel=1
 arch=(
   'x86_64'
-  'i386'
+  'i686'
 )
 
-if [ "$arch" == "x86_64" ]
+if [ "$CARCH" == "x86_64" ]
 then
   _arch="amd64"
 else
@@ -28,9 +28,15 @@ license=("custom"
 pkgdesc="Alkasir is a cross-platform, open-source and robust website censorship circumvention tool that also maps censorship patterns around the world."
 source=("https://github.com/alkasir/alkasir/releases/download/$pkgver/alkasir-client_linux-$_arch.tar.gz"
         "alkasir-client.service")
-md5sums=('8490b46497d51de548341cf81d7989ee'
-         '8068200941009b41885ffa93659f7f6e'
-)
+md5sums=('8068200941009b41885ffa93659f7f6e')
+
+if [ "$CARCH" == "x86_64" ]
+then
+  md5sums=('8490b46497d51de548341cf81d7989ee' $md5sums)
+else
+  md5sums=('0c51a3a0a43d1af3a76f6e8860fca301' $md5sums)
+fi
+
 install="alkasir-client.install"
 
 _pkgarchive="alkasir-client-linux-$_arch"
