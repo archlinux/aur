@@ -11,7 +11,7 @@ _js_provider=qml
 
 _reponame=tageditor
 pkgname=tageditor
-pkgver=2.0.0
+pkgver=2.1.0
 pkgrel=1
 arch=('i686' 'x86_64')
 pkgdesc='A tag editor with Qt GUI and command-line interface supporting MP4/M4A/AAC (iTunes), ID3, Vorbis, Opus and Matroska'
@@ -24,8 +24,8 @@ depends=('qtutilities' 'tagparser' 'desktop-file-utils' 'xdg-utils')
 [[ $_js_provider == qml ]] && depends+=('qt5-declarative')
 makedepends=('cmake' 'qt5-tools')
 url="https://github.com/Martchus/${_reponame}"
-source=("${_reponame}-${pkgver}.tar.gz::https://github.com/Martchus/${_reponame}/archive/v${pkgver}.tar.gz")
-sha256sums=('b3818112660b14b5e50c2b2f9521a1aaa1dafc12145e340fc5b210ee36056e41')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Martchus/${_reponame}/archive/v${pkgver}.tar.gz")
+sha256sums=('cc443c1e62e28553b4877f676c4a511da9d6c556e1b26dda52bc7c8aaee7c3f3')
 
 build() {
   cd "$srcdir/${PROJECT_DIR_NAME:-$_reponame-$pkgver}"
