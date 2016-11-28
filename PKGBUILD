@@ -2,28 +2,21 @@
 # Adapted from the net-tools package in [core].
 pkgname=net-tools-mptcp
 _srcname=net-tools
-_mptcpv=0.91
-pkgver=0.91.1.r0.g888d808
+pkgver=0.91.1
 pkgrel=1
-epoch=1
+epoch=2
 pkgdesc="Configuration tools for Linux networking, with Multipath TCP support"
 arch=('i686' 'x86_64')
 license=('GPL2')
 url="http://multipath-tcp.org/pmwiki.php/Users/Tools"
 depends=('glibc')
-makedepends=('git')
 provides=('net-tools')
 # mptcp-net-tools is the old name of the AUR package
 conflicts=('mptcp-net-tools' 'net-tools')
 # Build fails with -jX for X > 1.  Force sequential build
 options=(!makeflags)
-source=("git://github.com/multipath-tcp/net-tools#branch=mptcp_v${_mptcpv}")
-sha1sums=('SKIP')
-
-pkgver() {
-  cd "${srcdir}/${_srcname}"
-  git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
-}
+source=("${pkgname}-${pkgver}::https://github.com/multipath-tcp/${_srcname}/archive/v${pkgver}.tar.gz")
+sha256sums=('a04a390a09b90d12e9648c2f4adeb4d0a29c5a3ca00a3d4d2679e95a2dd9cbc4')
 
 prepare() {
   cd "${srcdir}/${_srcname}"
@@ -38,7 +31,7 @@ build() {
 
 package() {
   cd "${srcdir}/${_srcname}"
-  make DESTDIR=${pkgdir}/usr update
+  make DESTDIR="${pkgdir}/usr" update
 
   # the following is provided by yp-tools
   rm "${pkgdir}"/usr/bin/{nis,yp}domainname
