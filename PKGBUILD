@@ -7,11 +7,11 @@ pkgdesc="Web micro-framework written in Vala"
 arch=("i686" "x86_64")
 url="https://github.com/valum-framework/valum"
 license=("LGPL3")
-depends=(vala glib2 libsoup libgee ctpl fcgi)
+depends=(vala glib2 libsoup)
 optdepends=("libmemcached: For memcached cache storage."
             "memcached: For memcached cache storage."
             "luajit: For an embedded Lua VM.")
-makedepends=(git ninja vala meson)
+makedepends=(git vala meson)
 _commit=30c2b15f26cabbd62aa279deb88b652e43d05f0a
 source=("git://github.com/valum-framework/valum.git#commit=${_commit}")
 md5sums=("SKIP")
