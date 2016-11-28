@@ -4,7 +4,7 @@
 _pkgname=mopidy-gmusic
 pkgname=${_pkgname}-git
 pkgver=2.0.0.r0.gc15a926
-pkgrel=1
+pkgrel=2
 pkgdesc="Mopidy extension for playing music from Google Play Music"
 arch=('any')
 url="https://github.com/mopidy/mopidy-gmusic"
@@ -14,7 +14,6 @@ depends=(
     'python2'
     'python2-cachetools'
     'python2-gmusicapi'
-    'python2-gmusicapi-git'
     'python2-gpsoauth>=0.4.0'
     'python2-pycryptodomex'
     'python2-pykka'
