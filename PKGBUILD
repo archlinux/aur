@@ -1,7 +1,7 @@
 # Maintainer: Wayne Hartmann (DH4) <wayne@bitstorm.pw>
 
 pkgname=protocase-designer
-pkgver=4.4.8
+pkgver=4.5.2
 pkgrel=1
 
 pkgdesc="The fastest and easiest way to design, price, and build custom electronics enclosures."
@@ -10,14 +10,14 @@ url="http://www.protocasedesigner.com/"
 depends=('java-runtime-common' 'jre7-openjdk')
 #install=protocase-designer.install
 license=('custom')
-source=(http://www.protocasedesigner.com/RELEASE/protocaseDesigner-linux-i586-4.4.8.tar.gz
+source=('http://www.protocasedesigner.com/RELEASE/protocaseDesigner-linux-i586-'$pkgver'.tar.gz'
 	ProtocaseDesigner.desktop)
-md5sums=('5f313ca4e923136f75a6b4cb0deba678'
+md5sums=('790133b8c4bf8baea3691024b0c9105b'
 	 'f66d02094444eac61f468371589fcc9c')
          
-[ "$CARCH" = "x86_64" ] && source=(http://www.protocasedesigner.com/RELEASE/protocaseDesigner-linux-amd64-4.4.8.tar.gz
+[ "$CARCH" = "x86_64" ] && source=('http://www.protocasedesigner.com/RELEASE/protocaseDesigner-linux-amd64-'$pkgver'.tar.gz'
 				   ProtocaseDesigner.desktop)
-[ "$CARCH" = "x86_64" ] && md5sums=('488d5ef878132acbabba6e9fc77c72bc'
+[ "$CARCH" = "x86_64" ] && md5sums=('ccd28b8c4daab6142ff3212a7920c3d8'
 				    'f66d02094444eac61f468371589fcc9c')
 
 package() {
