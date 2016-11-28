@@ -7,7 +7,7 @@ arch=("i686" "x86_64")
 url="http://bdsync.rolf-fokkens.nl/"
 license=('GPL')
 depends=("openssl" "zlib")
-source=("https://github.com/TargetHolding/$pkgname/archive/$pkgver.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/TargetHolding/$pkgname/archive/$pkgver.tar.gz")
 md5sums=('2c0139a71e0ee1cf0413afaab5c33263')
 
 build() {
