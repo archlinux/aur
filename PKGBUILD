@@ -1,6 +1,6 @@
 # Maintainer: kevku <kevku@gmx.com>
 pkgname=kodi-addon-inputstream-smoothstream-git
-pkgver=r39.081c6c4
+pkgver=r40.b15e6e6
 pkgrel=1
 pkgdesc="SmoothStreamingMedia file addon for Kodi 17+"
 arch=('x86_64' 'i686')
