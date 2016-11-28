@@ -11,12 +11,12 @@ _language_ini_desktop_ver=1.18.3
 _language_liquid_ver=0.5.1
 _language_patch2_url="${_fus_url}/language-patch2"
 _language_patch2_ver=1.0.0
-_language_unix_shell_ver=0.39.0
+_language_unix_shell_ver=0.40.1
 _language_vala_modern_ver=0.3.2
 _terminal_fusion_ver=2.4.2
 
 pkgname=${_pkgname}-editor-${_version}
-_pkgrel=5
+_pkgrel=6
 _pkgver=1.13.0
 pkgver="${_pkgver}.beta${_pkgrel}.m${_language_gfm2_ver}"
 _ver=$_pkgver-beta${_pkgrel}
@@ -32,7 +32,7 @@ conflicts=('atom-editor-beta-bin' 'atom-editor-beta-arch')
 install=atom.install
 source=("${_pkgname}-${_pkgver}-${_version}${_pkgrel}.tar.gz::$url/archive/v${_pkgver}-${_version}${_pkgrel}.tar.gz"
 "${_pkgname}-${_version}.desktop")
-sha256sums=('5ae6482665762624c5a1f6e7455ba2d9e435ad92cbc62a1febc351e8d43b060f'
+sha256sums=('fb39ee602591007e6b0beefbbe617aa6bb1d49e89c3e5bcfbb0f7c83e11e925e'
             'c62faaf2f50cddb1a834ccb33c95724076d2859c88baac7d9d676bc9c3afc8c6')
 
 prepare() {
