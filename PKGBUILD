@@ -12,7 +12,7 @@ url="http://developer.android.com/sdk/index.html"
 license=('custom')
 depends=("android-platform-${_sdkint}")
 options=('!strip')
-source=("http://dl.google.com/android/repository/sys-img/android/sysimg_arm64-v8a-${_sdkint}_${_rev}.zip")
+source=("http://dl.google.com/android/repository/sys-img/android/arm64-v8a-${_sdkint}_${_rev}.zip")
 sha1sums=('e8ab2e49e4efe4b064232b33b5eeaded61437d7f')
 
 package() {
