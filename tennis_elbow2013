@@ -1,0 +1,3 @@
+#!/bin/bash
+cd /usr/share/TennisElbow2013
+exec ./TennisElbow2013 "$@"

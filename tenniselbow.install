@@ -1,0 +1,8 @@
+post_install() {
+ echo "Make sure you're a member of games group before running the game."
+ echo ""
+ echo "In case you've purchased the game, place Key.txt"
+ echo "file into /usr/share/TennisElbow2013"
+ /bin/true
+}
+

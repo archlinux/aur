@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=Tennis Elbow 2013
+Comment=Tennis Game
+Exec=tennis_elbow2013
+Icon=tenniselbow
+Terminal=false
+Type=Application
+Categories=Game;ActionGame;
+StartupNotify=true
