@@ -1,7 +1,7 @@
 # Maintainer: Lev Levitsky <levlev@mail.ru>
 pkgbase='percolator-bin'
 pkgname=('percolator' 'percolator-converters' 'elude')
-pkgver=3.00
+pkgver=3.01
 pkgrel=1
 epoch=
 pkgdesc="Software for postprocessing of shotgun proteomics data + format converters + Elude tool"
@@ -12,7 +12,7 @@ depends=('gcc-libs')
 provides=("${pkgname%-bin}")
 conflicts=("${pkgname%-bin}-git")
 source=("https://github.com/percolator/percolator/releases/download/rel-${pkgver/./-}/ubuntu64_release.tar.gz")
-md5sums=('ccf32cb8d0ce812d94a5e2f5704f4f5c')
+md5sums=('da8aaceea85758297227a74f277cc255')
 package_percolator() {
 	pkgdesc="Percolator and qvality, two post processors for shotgun proteomics data."
 	provides=("${pkgname[0]}")
