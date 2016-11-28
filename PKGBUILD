@@ -1,10 +1,10 @@
 # Maintainer: Brendan Abolivier <brendan@cozycloud.cc>
 pkgname=cozy-desktop-gui
 pkgver=0.16.0
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="File synchronisation client for Cozy"
-arch=('i686' 'x86_64' 'aarch64')
+arch=('x86_64' 'aarch64')
 url="https://cozy.io/"
 license=('AGPLv3')
 groups=()
