@@ -54,11 +54,11 @@ build() {
       --disable-v4l2 \
       --disable-video \
       --disable-sound
-  make -j1 dep
-  make -j1
+  make dep
+  make
 }
 
 package() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
-  make -j1 DESTDIR="${pkgdir}" install
+  make DESTDIR="${pkgdir}" install
 }
