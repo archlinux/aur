@@ -1,6 +1,6 @@
 pkgbase = gophish
 	pkgdesc = Open-Source Phishing Framework
-	pkgver = 0.1.2
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://getgophish.com/
 	install = gophish.install
@@ -9,11 +9,11 @@ pkgbase = gophish
 	license = MIT
 	depends = glibc
 	source = gophish.service
-	md5sums = 2b2d6aace9ebf753f06d6fd2ffaaf51d
-	source_i686 = https://github.com/gophish/gophish/releases/download/v0.1.2/gophish_linux_32bit.zip
-	md5sums_i686 = 76d3f31b414680c1bbca38fe6058b3b7
-	source_x86_64 = https://github.com/gophish/gophish/releases/download/v0.1.2/gophish_linux_64bit.zip
-	md5sums_x86_64 = a3209d15430c468a878bfbe3febd67ce
+	sha512sums = 1204011f4b5da6caa87e13a949adfb535da0535f9b50bf1ce5f88307a2275cd15ecbf873d377ed65ad6b773c0df3fe857da48a8477e2cc3570d3b403083076c6
+	source_i686 = https://github.com/gophish/gophish/releases/download/v0.2.0/gophish-v0.2-linux-32bit.zip
+	sha512sums_i686 = 3e0bc4b421b66726c058f160fcc7a783907662b0c59ffa21df174a2e10d1da6bed5af5be498ccfe07c426c6bdc843283bfd84a2c417cb3be50d93c5fcbf8c0c1
+	source_x86_64 = https://github.com/gophish/gophish/releases/download/v0.2.0/gophish-v0.2-linux-64bit.zip
+	sha512sums_x86_64 = ea4c57a9b970ae28776c4ab0f13840fea866448ed05004968160ae9fa873cff0f50f8e7a05cffc8321fc7d316114b05ab7aef35553f0c95198a624156aa13a65
 
 pkgname = gophish
 
