@@ -19,8 +19,6 @@ pkgname = python2-viivakoodi
 	depends = python2
 	optdepends = 
 	optdepends = python2-pillow: render barcodes as images
-	provides = 
-	provides = python2-viivakoodi
 
 pkgname = python-viivakoodi
 	checkdepends = 
@@ -31,5 +29,3 @@ pkgname = python-viivakoodi
 	depends = python
 	optdepends = 
 	optdepends = python-pillow: render barcodes as images
-	provides = 
-	provides = python2-viivakoodi
