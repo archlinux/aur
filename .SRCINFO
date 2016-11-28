@@ -17,6 +17,7 @@ pkgbase = profex
 	source = local://profex.desktop
 	md5sums = b5308154260ef9f6f811f9d072a8d28a
 	md5sums = d67ab02738497d00e200af6ee572d92b
+	depends_i686 = gcc-libs
 
 pkgname = profex
 

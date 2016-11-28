@@ -10,21 +10,14 @@ groups=('science')
 depends=('bgmn'
 	'qt5-declarative'
 	'qt5-svg')
-optdepends=()
+depends_i686=('gcc-libs')
+depends_x86_64=('gcc-libs-multilib')
 provides=('profex')
 conflicts=('profex')
 source=("$url/wp-content/uploads/2016/10/${pkgname}-${pkgver}.tar.gz"
 	"local://profex.desktop")
 md5sums=('b5308154260ef9f6f811f9d072a8d28a'
          'd67ab02738497d00e200af6ee572d92b')
-case $CARCH in
-	i686)	depends+=('gcc-libs');
-		;;
-	x86_64)	depends+=('gcc-libs-multilib');
-		;;
-	*)	error "Unsupported architecture.";
-		;;
-esac
 
 prepare() {
 	cd "$pkgname-$pkgver"
