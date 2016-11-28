@@ -1,40 +1,37 @@
 # Maintainer: Federico Giuliani <federico.giuliani86@gmail.com>
 
 pkgname=libresonic
-pkgver=6.0.1
-_subver=6.0
-pkgrel=3
-
-pkgdesc="Media streaming software"
-url="https://github.com/Libresonic/libresonic"
+pkgver=6.1
+pkgrel=1
+pkgdesc="A free, web-based media streamer and jukebox."
 arch=('any')
-license=('GPL')
-depends=('bash' 'java-environment')
+url="https://github.com/Libresonic/libresonic/"
+license=('GPL3')
+depends=('java-runtime-headless')
 conflicts=('subsonic' 'subsonic-kang' 'subsonic-kang-git' 'subsonic-beta')
-backup=('opt/libresonic/subsonic.properties' 'opt/libresonic/subsonic.sh')
-noextract=('libresonic-v${pkgver}.war')
-install='libresonic.install'
-source=("http://prdownloads.sourceforge.net/subsonic/subsonic-${_subver}-standalone.tar.gz"
-        "https://github.com/Libresonic/libresonic/releases/download/v${pkgver}/libresonic-v${pkgver}.war"
+backup=('var/lib/libresonic/db' 'var/lib/libresonic/libresonic.properties' 'var/lib/libresonic/libresonic.sh')
+noextract=(libresonic-v${pkgver}.war libresonic-booter-jar-with-dependencies.jar)
+install=$pkgname.install
+source=(https://jenkins.undocumented.software/job/libresonic/232/artifact/libresonic-booter/target/libresonic-booter-jar-with-dependencies.jar
+        https://github.com/Libresonic/libresonic/releases/download/v${pkgver}/libresonic-v${pkgver}.war
+        'libresonic.sh'
         'libresonic.service')
 
 package() {
-  war_name="libresonic-v${pkgver}.war"
-  install -dm 755 "${pkgdir}"/{opt/libresonic,etc/conf.d,usr/lib/systemd/system,/var/lib/libresonic/playlists}
-  cp -dr --no-preserve='ownership' * "${pkgdir}"/opt/libresonic/
-  cp --no-preserve='ownership' "${war_name}" "${pkgdir}"/opt/libresonic/subsonic.war
-  find "${pkgdir}"/opt/libresonic/ -type d -exec chmod 755 {} \;
-  find "${pkgdir}"/opt/libresonic/ -type f -exec chmod 664 {} \;
-  sed -i 's/SUBSONIC_HOME=\/var\/subsonic/SUBSONIC_HOME=\/opt\/libresonic/' "${pkgdir}"/opt/libresonic/subsonic.sh
-  sed -i 's/\/var/\/var\/lib\/libresonic/' "${pkgdir}"/opt/libresonic/subsonic.sh
-  touch "${pkgdir}"/opt/libresonic/subsonic.properties
-  ln -fs /opt/libresonic/subsonic.sh "${pkgdir}"/etc/conf.d/libresonic.conf
-  install -m 644 libresonic.service "${pkgdir}"/usr/lib/systemd/system/
-  rm -f "${pkgdir}"/opt/libresonic/{subsonic.bat,subsonic-"${_subver}"-standalone.tar.gz,"${war_name}",libresonic.service}
+  cd ${srcdir}
+  mkdir -p $pkgdir/var/lib/libresonic
+  mkdir -p $pkgdir/var/playlists
+  mkdir -p $pkgdir/usr/lib/systemd/system
+  mkdir -p $pkgdir/etc/
+  sed -i 's/LIBRESONIC_HOME=\/var\/libresonic/LIBRESONIC_HOME=\/var\/lib\/libresonic/' libresonic.sh
+  mv libresonic-v${pkgver}.war libresonic.war
+  cp  * $pkgdir/var/lib/libresonic
+  ln -fs /var/lib/libresonic/libresonic.sh $pkgdir/etc/libresonic.conf
+  cp $srcdir/libresonic.service $pkgdir/usr/lib/systemd/system
+  chmod +x $pkgdir/var/lib/libresonic/libresonic.sh
 }
 
-sha256sums=('df14d05e3b52f07486782e3e16922688968c95b0c8cc4987941bc3b9cea7872b'
-            '52413b38ffb4e035f2d450faadc1cc52d5bd7bc65e9cd9223696a728d3ac9fba'
-            '8d2ceae3cd0e14aeef9efd3281813dd4c0db411b950cbea6c4caf48a793dedce')
-
-# vim: ts=2 sw=2 et:
+sha256sums=('042ab6833a8fa351712ff34899d6c0ba0024e420f16f81661a17405df081f246'
+            '34e4771f730f6de17aa2ba039cfab26772af3ab08e3f0c36d3f0c7a6e315a8e0'
+            'f1f4a22efb411d1f31f834f9f229e81c39d7f4db720281d9b0862c2f1b4d0697'
+            'afcef7b8ce8ceab58569440ed17d5828f39da072ea0d6e3e9fb82ac2feafcf9f')
