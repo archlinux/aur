@@ -19,7 +19,7 @@ provides=("${pkgname/x86-/x86_}-${_apilevel}")
 conflicts=("${pkgname/x86-/x86_}-${_apilevel}")
 options=('!strip' '!upx')
 PKGEXT='.pkg.tar'
-source=("http://dl.google.com/android/repository/sys-img/android/sysimg_${_arch}-${_apilevel}_${_rev}.zip"
+source=("http://dl.google.com/android/repository/sys-img/android/${_arch}-${_apilevel}_${_rev}.zip"
         "source.properties")
 sha1sums=('a379932395ced0a8f572b39c396d86e08827a9ba'
           '15a76e74cf65b144fe45663ac7f0a73d9d34d090')
