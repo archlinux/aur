@@ -1,7 +1,7 @@
 # Maintainer: Bjoern Franke <bjo@nord-west.org>
 pkgname=python2-cachetools
 _pypiname=cachetools
-pkgver=1.0.0
+pkgver=2.0.0
 pkgrel=1
 pkgdesc="Extensible memoizing collections and decorators"
 arch=('any')
@@ -10,8 +10,8 @@ license=('MIT')
 makedepends=('python2-pip')
 depends=('python2')
 options=(!emptydirs)
-source=(https://pypi.python.org/packages/source/c/${_pypiname}/${_pypiname}-$pkgver.tar.gz)
-md5sums=('bc7addc2b29a18f6ff7f3c4a7071c41e')
+source=("https://pypi.io/packages/source/c/cachetools/cachetools-${pkgver}.tar.gz")
+sha256sums=('715a7202240dc20dbe83abdb2d804d543e2d4f07af146f53c82166bd75f3a628')
 
 
 package() {

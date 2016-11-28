@@ -1,6 +1,6 @@
 pkgbase = python2-cachetools
 	pkgdesc = Extensible memoizing collections and decorators
-	pkgver = 1.0.0
+	pkgver = 2.0.0
 	pkgrel = 1
 	url = https://pypi.python.org/pypi/cachetools/1.0.0
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = python2-cachetools
 	makedepends = python2-pip
 	depends = python2
 	options = !emptydirs
-	source = https://pypi.python.org/packages/source/c/cachetools/cachetools-1.0.0.tar.gz
-	md5sums = bc7addc2b29a18f6ff7f3c4a7071c41e
+	source = https://pypi.io/packages/source/c/cachetools/cachetools-2.0.0.tar.gz
+	sha256sums = 715a7202240dc20dbe83abdb2d804d543e2d4f07af146f53c82166bd75f3a628
 
 pkgname = python2-cachetools
 
