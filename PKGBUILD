@@ -4,13 +4,13 @@
 # Contributor: Thomas Fanninger <thomas@fanninger.at>
 
 pkgname=gitea
-pkgname=${pkgname}
+_gourl=github.com/go-gitea
 pkgver=0.9.97
 pkgrel=1
 pkgdesc="Git with a cup of tea, forked from Gogs. Is a Self Hosted Git Service in the Go Programming Language."
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 changelog=$pkgname.changelog
-url="http://gitea.io"
+url='http://gitea.io'
 license=('MIT')
 depends=('git')
 optdepends=('sqlite: SQLite support'
@@ -26,11 +26,9 @@ backup=('srv/gitea/conf/app.ini')
 
 install=gitea.install
 
-_gourl=github.com/go-gitea
 source=('gitea.service'
         'app.ini.patch'
         "https://github.com/go-gitea/${pkgname}/releases/tag/v${pkgver}")
-
 sha512sums=('2b4303f850e3b13b2fc3c9f0bc5820dae431d228002b35f01be0d4bfbcf05de8dcec2a559a85e318b609e4a4d492d44306eadf5f6508fd72333b198661bb0bb7'
             '809c7668a508e792a32eed7242d9bd1093137668aef7baada0bf7064a1fbb1610468dbf632c9548e268f92b97a61ee0b947a95560b15f88a22588da2d50801c2'
             'f64a8b2d3d2cf7a11b4188320c38fe1ebdf6c5d4a0d31af8181c8a05a48d0f829e6cc93f0a57f56a5d253081ae738b5e05ff1c4c5507406726269f0879bc8050')
