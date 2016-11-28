@@ -1,4 +1,5 @@
 # Maintainer: FennecTECH <FennecTECH@gmail.com>
+# Contributor: Wayne Hartmann <wayne@bitstorm.pw>
 # Contributor: Martin Wimpress <code@flexion.org>
 # Contributor: Johannes <maeulen@awp-shop.de>
 # Contributor: Heiko Baums <heiko@baums-on-web.de>
