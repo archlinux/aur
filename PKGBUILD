@@ -7,17 +7,18 @@
 
 _npmname=forever
 pkgname=nodejs-forever # All lowercase
-pkgver=0.15.2
+pkgver=0.15.3
 pkgrel=1
 pkgdesc="A simple CLI tool for ensuring that a given node script runs continuously (i.e. forever)"
 arch=(any)
 url="http://github.com/nodejitsu/forever"
 license=()
 depends=('nodejs' )
+makedepends=('npm')
 optdepends=()
 source=(http://registry.npmjs.org/$_npmname/-/$_npmname-$pkgver.tgz)
 noextract=($_npmname-$pkgver.tgz)
-sha1sums=('fbf21a791ac76bc1a9149a322bc177f338cf5cf9')
+sha1sums=('77d9d7e15fd2f511ad9d84a110c7dd8fc8ecebc2')
 
 package() {
   cd "$srcdir"
