@@ -31,12 +31,16 @@ prepare() {
    then
      links -dump "$licenseURL" > "$srcdir/$_pkgarchive/LICENSE"
    fi
+   if [ "$_arch" == "386" ]
+   then
+     sed -i 's/amd64/386/g' "$srcdir/alkasir-client.service" # Alter the paths in the service file for 32bit systems
+   fi
 }
 
 package() {
    mkdir -p "$pkgdir/opt/$pkgname-linux-$_arch"
 
-   cp -a "$srcdir/$_pkgarchive/." "$pkgdir/opt/$pkgname-linux-amd64/"
+   cp -a "$srcdir/$_pkgarchive/." "$pkgdir/opt/$pkgname-linux-$_arch/"
 
    install -D -m644 "$srcdir/$pkgname.service" "$pkgdir/usr/lib/systemd/user/$pkgname.service"
 

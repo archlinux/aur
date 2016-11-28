@@ -7,8 +7,6 @@ post_install() {
 }
 
 post_upgrade() {
-    # This won't work with the 32bit version
-    # To Do:
-    #   * Fix Me
-    chown -R root:root /opt/alkasir-client-linux-amd64
+    chown -R root:root /opt/alkasir-client-linux-amd64 &> /dev/null 2>&1
+    chown -R root:root /opt/alkasir-client-linux-386 &> /dev/null 2>&1
 }
