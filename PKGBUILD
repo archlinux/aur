@@ -5,7 +5,7 @@
 
 pkgname=postgresql-9.5
 pkgver=9.5.4
-pkgrel=1
+pkgrel=3
 arch=('i686' 'x86_64')
 url="http://www.postgresql.org/"
 pkgdesc="A powerful, open source object-relational database system"

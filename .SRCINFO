@@ -1,7 +1,7 @@
 pkgbase = postgresql-9.5
 	pkgdesc = A powerful, open source object-relational database system
 	pkgver = 9.5.4
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.postgresql.org/
 	install = postgresql.install
 	arch = i686
@@ -38,7 +38,7 @@ pkgbase = postgresql-9.5
 	sha256sums = 6abb842764bbed74ea4a269d24f1e73d1c0b1d8ecd6e2e6fb5fb10590298605e
 	sha256sums = c69b614731fdd3f4e127540814f5999f423363523c5209e252e19b1d4362ad68
 	sha256sums = 7e086d70e0dcaa6ce45693b4e826ce92d770192b3aff5642319b1ef279d88dc4
-	sha256sums = b3ed31e5882e5bdf4515d488d3f2db874ff5561be3091eab29810f831038a888
+	sha256sums = 20a8716745ff3690275ff088ea394d397063d4c5e159ca26d0d91462146bc74b
 
 pkgname = postgresql-9.5
 
