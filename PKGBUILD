@@ -1,4 +1,4 @@
-# Maintainer: Wilson E. Alvarez <wilson.e.alvarez@hotmail.com>
+# Maintainer: Wilson E. Alvarez <wilson.e.alvarez1@gmail.com>
 # Contributor: Etzos <supercodingmonkey @ gmail.com>
 # Contributer: Gordin <9ordin @t gmail dot com>
 # Contributor: Geequlim <geequlim@gmail.com>
