@@ -5,7 +5,7 @@
 
 pkgname=r-mkl
 pkgver=3.3.2
-pkgrel=3
+pkgrel=4
 pkgdesc="Language and environment for statistical computing and graphics, linked with Intel's MKL."
 arch=('x86_64')
 license=('GPL')
@@ -89,7 +89,7 @@ build() {
     source /opt/intel/composerxe/linux/bin/compilervars.sh ${_intel_arch}
     _intel_cc_opt=" -O3 -qno-opt-matmul -xHost -m64 -qopenmp -ipo -fp-model precise -fp-model source -qopt-mem-layout-trans=2 -diag-disable=188,308"
     export MAIN_LDFLAGS=" -qopenmp"
-    export FLIBS=" -lgfortran"
+    export FLIBS=" -lgfortran -lifcore -lifport"
 
     _mkllibs=" -L${MKLROOT}/lib/${_intel_arch} \
       -l${_intel_lib} \
