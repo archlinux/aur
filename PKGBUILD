@@ -2,10 +2,10 @@
 # Contributor:  eadrom <eadrom@archlinux.info>
 # Contributor:  Martin Wimpress <code@flexion.org>
 
-_ver=1.15
+_ver=1.17
 _pkgbase=mate-power-manager
 pkgname="${_pkgbase}-dev"
-pkgver=${_ver}.1
+pkgver=${_ver}.0
 pkgrel=1
 pkgdesc="Power management tool for the MATE desktop"
 url="http://mate-desktop.org"
@@ -21,7 +21,7 @@ optdepends=('mate-panel: Set brightness and inhibit power management from the pa
             'yelp: for reading MATE help documents')
 source=("http://pub.mate-desktop.org/releases/${_ver}/${_pkgbase}-${pkgver}.tar.xz")
 groups=('mate-extra')
-sha1sums=('c8e0c7d40cd457327f79fbf966168bae925b144d')
+sha1sums=('dbd991820c7e332bd2d01ee519466a3c65f1d662')
 
 prepare() {
     cd "${srcdir}/${_pkgbase}-${pkgver}"
