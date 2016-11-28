@@ -25,5 +25,6 @@ pkgbase = nomachine
 	sha512sums_armv7h = c1348720b6efb84d52c2dcf4dc83cfd306bfa945cb6d2240f4427226e74873c96f61142dd2d9646e8eda573057dc05c26d425c44d37b1cad29d114aebcb7cce7
 	source_armv8h = http://download.nomachine.com/download/5.1/Linux/nomachine_5.1.62_1_aarch64.tar.gz
 	sha512sums_armv8h = 6b591ffe1dbc864442e86f8248bdc7dcf2cc368299a5504548ec7fac37109078b59647942798225615a022b7de4a9b3f7593f682b6488052a59a36e28eb584be
+
 pkgname = nomachine
 

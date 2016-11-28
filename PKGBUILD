@@ -3,6 +3,13 @@
 # Contributor: olav-st <olav.s.th@gmail.com>
 # Contributor: David Manouchehri <manouchehri@riseup.net>
 
+### BUILD OPTIONS
+# Set to n to disable nomachine service autostart
+_autoservice=y
+# Set to n to disable firewall autorules
+_autofirewall=y
+### END BUILD OPTIONS
+
 pkgname=nomachine
 pkgver=5.1.62
 pkgrel_i686=1
@@ -31,11 +38,42 @@ source_armv7h=("http://download.nomachine.com/download/5.1/Linux/${pkgname}_${pk
 source_armv8h=("http://download.nomachine.com/download/5.1/Linux/${pkgname}_${pkgver}_${pkgrel_armv8h}_aarch64.tar.gz")
 install=nomachine.install
 
+prepare()
+{
+#Fix Fedora Version Var
+tar -zxf $srcdir/NX/etc/NX/server/packages/nxclient.tar.gz NX/scripts/setup/nxclient
+sed -i 's/    majorFedoraVersion.*/    majorFedoraVersion=23/' $srcdir/NX/scripts/setup/nxclient
+gzip -d $srcdir/NX/etc/NX/server/packages/nxclient.tar.gz
+tar -rf $srcdir/NX/etc/NX/server/packages/nxclient.tar NX/scripts/setup/nxclient  -C $srcdir/NX/scripts/setup/nxclient
+gzip $srcdir/NX/etc/NX/server/packages/nxclient.tar
+rm -fr $srcdir/NX/scripts*
+#Change Automatic Service Start And/Or Firewall Automatic Rules If Apply
+if [ $_autoservice = y ] && [ $_autofirewall = y ]; then
+echo "####################################################################"
+echo "#No Changes To Automatic Service Start And Firewall Automatic Rules#"
+echo "####################################################################"
+else
+tar -zxf $srcdir/NX/etc/NX/server/packages/nxserver.tar.gz NX/etc/server-fedora.cfg.sample
+if [ $_autoservice = n ] && [ $_autofirewall = n ]; then
+sed -i 's/#EnableFirewallConfiguration 1/#EnableFirewallConfiguration 0/' NX/etc/server-fedora.cfg.sample
+sed -i 's/#StartNXDaemon Automatic/#StartNXDaemon Manual/' NX/etc/server-fedora.cfg.sample
+elif [ $_autoservice = y ] && [ $_autofirewall = n ]; then
+sed -i 's/#EnableFirewallConfiguration 1/#EnableFirewallConfiguration 0/' NX/etc/server-fedora.cfg.sample
+elif [ $_autoservice = n ] && [ $_autofirewall = y ]; then
+sed -i 's/#StartNXDaemon Automatic/#StartNXDaemon Manual/' NX/etc/server-fedora.cfg.sample
+fi
+gzip -d $srcdir/NX/etc/NX/server/packages/nxserver.tar.gz
+tar -rf $srcdir/NX/etc/NX/server/packages/nxserver.tar NX/etc/server-fedora.cfg.sample -C $srcdir/NX/etc/server-fedora.cfg.sample
+gzip $srcdir/NX/etc/NX/server/packages/nxserver.tar
+rm -fr $srcdir/NX/etc/server-fedora.cfg.sample
+fi
+}
+
 package()
 {
-  cd "$srcdir"
-  mkdir "$srcdir/NX/etc" -p
-  install -d "$pkgdir/usr/"
-  cp -a NX "$pkgdir/usr/NX"
+cd "$srcdir"
+mkdir "$srcdir/NX/etc" -p
+install -d "$pkgdir/usr/"
+cp -a NX "$pkgdir/usr/NX"
 }
 
