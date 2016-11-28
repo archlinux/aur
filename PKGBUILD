@@ -1,6 +1,6 @@
 # Maintainer: kevku <kevku@gmx.com>
 pkgname=kodi-addon-inputstream-rtmp-git
-pkgver=r12.70cb86f
+pkgver=r28.55437ac
 pkgrel=1
 pkgdesc="librtmp support for Kodi 17+"
 arch=('x86_64' 'i686')
@@ -21,8 +21,6 @@ build() {
 	cd "$srcdir/$pkgname"
         cmake \
             -DCMAKE_INSTALL_PREFIX=/usr \
-            -DCMAKE_INSTALL_LIBDIR=/usr/lib \
-            -DCMAKE_INSTALL_LIBDIR_NOARCH=/usr/lib \
             -DCMAKE_BUILD_TYPE=Release
 	make
 }

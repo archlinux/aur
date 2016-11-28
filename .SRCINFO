@@ -1,6 +1,6 @@
 pkgbase = kodi-addon-inputstream-rtmp-git
 	pkgdesc = librtmp support for Kodi 17+
-	pkgver = r12.70cb86f
+	pkgver = r28.55437ac
 	pkgrel = 1
 	url = https://github.com/notspiff/inputstream.rtmp
 	arch = x86_64
