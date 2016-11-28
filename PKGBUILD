@@ -1,7 +1,7 @@
 # Maintainer: Bart De Vries <devriesb@gmail.com>
 
 pkgname=snapcast
-pkgver=0.9.0
+pkgver=0.10.0
 pkgrel=1
 pkgdesc="Synchronous multi-room audio player"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
@@ -30,7 +30,14 @@ prepare() {
         cd "$pkgname"
         patch -p1 -i "$srcdir/$pkgname-systemd.patch"
         cd externals
-        git submodule update --init --recursive
+        # submodule update barfs on vorbis which is in 0.10.0, but unused!
+        # switch back to line below on next version!
+        #git submodule update --init --recursive
+        git submodule update asio
+        git submodule update flac
+        git submodule update ogg
+        git submodule update popl
+        git submodule update tremor
 }
 
 build() {
