@@ -10,7 +10,7 @@ arch=('any')
 url="https://github.com/tista500/${_pkgname}"
 license=('GPLv2')
 depends=('gtk2' 'gtk3' 'gdk-pixbuf2' 'gtk-engine-murrine')
-makedepends=('git' 'inkscape' 'glib2' 'libxml2' 'ruby-bundler' 'ruby-sass')
+makedepends=('git' 'inkscape' 'glib2' 'libxml2' 'sassc')
 source=(${_pkgname}::"git+https://github.com/tista500/${_pkgname}.git")
 sha256sums=('SKIP')
 conflicts=('adapta-gtk-theme')
@@ -30,7 +30,7 @@ pkgver() {
 
 build() {
 	cd "${srcdir}/${_pkgname}"
-	./autogen.sh --prefix=/usr --enable-chrome --enable-plank --with-selection_color=${_selection_color1} --with-second_selction_color=${_selection_color2} --with-accent_color=${_accent_color} --with-suggestion_color=${_suggestion_color} --with-destruction_color=${_destruction_color}
+	./autogen.sh --prefix=/usr --enable-parallel --enable-chrome --enable-plank --with-selection_color=${_selection_color1} --with-second_selction_color=${_selection_color2} --with-accent_color=${_accent_color} --with-suggestion_color=${_suggestion_color} --with-destruction_color=${_destruction_color}
 }
 
 package() {
