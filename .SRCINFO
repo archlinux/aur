@@ -1,0 +1,22 @@
+pkgbase = profex
+	pkgdesc = Open source XRD and Rietveld refinement.
+	pkgver = 3.10.2
+	pkgrel = 1
+	url = http://profex.doebelin.org
+	arch = i686
+	arch = x86_64
+	groups = science
+	license = GPL2
+	depends = bgmn
+	depends = qt5-declarative
+	depends = qt5-svg
+	depends = gcc-libs-multilib
+	provides = profex
+	conflicts = profex
+	source = http://profex.doebelin.org/wp-content/uploads/2016/10/profex-3.10.2.tar.gz
+	source = local://profex.desktop
+	md5sums = b5308154260ef9f6f811f9d072a8d28a
+	md5sums = d67ab02738497d00e200af6ee572d92b
+
+pkgname = profex
+

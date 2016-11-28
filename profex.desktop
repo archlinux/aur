@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=Profex
+Comment=Open source XRD and Rietveld refinement.
+Exec=profex
+Icon=profex
+Terminal=false
+StartupNotify=false
+Categories=Application;Education;
