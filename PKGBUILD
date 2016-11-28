@@ -1,15 +1,17 @@
 # Maintainer:  <gucong43216@gmail.com>
+
 pkgname=ospray
 pkgver=1.1.1
-pkgrel=1
+pkgrel=3
 pkgdesc="A Ray Tracing Based Rendering Engine for High-Fidelity Visualization"
 arch=('i686' 'x86_64')
 url="http://www.ospray.org/"
 license=('Apache')
-depends=('qt4>=4.6' 'ispc' 'intel-tbb' 'embree')
+depends=('qt4>=4.6' 'ispc' 'intel-tbb' 'embree-isa' 'freeglut' 'imagemagick')
 makedepends=('cmake')
-source=(https://github.com/ospray/OSPRay/archive/v$pkgver.tar.gz)
+source=("https://github.com/ospray/OSPRay/archive/v$pkgver.tar.gz")
 md5sums=('9185e6de4cf12faa971e2cc1f5757b81')
+
 
 prepare() {
   cd "$srcdir"
@@ -23,11 +25,11 @@ build() {
 
   export embree_DIR=/usr
 
-  # EMBREE_MAX_ISA=AVX2 for Haswell and newer
-  # https://en.wikipedia.org/wiki/Advanced_Vector_Extensions
+  # MAX_ISA is detected in package aur/embree-isa
   cmake -DCMAKE_INSTALL_PREFIX:PATH=/usr \
+        -DCMAKE_INSTALL_LIBDIR=lib \
         -DOSPRAY_USE_EXTERNAL_EMBREE:BOOL=ON \
-        -DEMBREE_MAX_ISA:STRING=AVX2 \
+        -DUSE_IMAGE_MAGICK:BOOL=ON \
         ../OSPRay-$pkgver
   make
 }
@@ -37,10 +39,8 @@ package() {
 
   make DESTDIR="$pkgdir" install
 
-  mv $pkgdir/usr/lib{64,}
-
-  rm $pkgdir/usr/lib/libtbb*
-  rm $pkgdir/usr/lib/libembree*
+  rm -f $pkgdir/usr/lib/libtbb*
+  rm -f $pkgdir/usr/lib/libembree*
 }
 
 # vim:set ts=2 sw=2 et:
