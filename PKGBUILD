@@ -12,7 +12,7 @@ optdepends=('libappindicator-gtk2: necessary when running KDE Plasma 5 desktop t
 install=${pkgname}.install
 
 source=($url"/archive/v"$pkgver".tar.gz")
-md5sums=('f7ce00817cfa11a22a65d324fedcce78')
+md5sums=('f3be42817fa07f33df14bd7177c87511')
 
 package() {
   cd "$pkgname-$pkgver"
