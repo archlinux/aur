@@ -15,7 +15,7 @@ _arch="x86_64"
 [ "$CARCH" == 'i686' ] && _arch="x86_32"
 
 _filename="genode-toolchain-${pkgver}-${_arch}.tar.bz2"
-source=("http://dfn.dl.sourceforge.net/project/genode/genode-toolchain/${pkgver}/${_filename}")
+source=("http://downloads.sourceforge.net/project/genode/genode-toolchain/${pkgver}/${_filename}")
 md5sums=('f02280f676cd0ac602e2413f4ae31d46')
 [ "$CARCH" == 'i686' ] && md5sums=('7846c41758f4fb8dff639e784652ee71')
 noextract=(${_filename})
