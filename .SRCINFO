@@ -1,7 +1,7 @@
 pkgbase = python2-gmusicapi
 	pkgdesc = An unofficial client library for Google Music
 	pkgver = 10.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/simon-weber/gmusicapi
 	arch = any
 	license = BSD
