@@ -18,8 +18,10 @@ depends=('bzip2' 'freetype2' 'glu' 'libxml2' 'python2-matplotlib' 'mesa'
          'openmpi' 'python2-numpy' 'libpng' 'zlib'
          'libxt' 'qt5-x11extras' 'qt5-tools' 'qt5-xmlpatterns' 'boost')
 makedepends=('cmake' 'gcc-fortran' 'git' 'llvm')
-source=("git+https://gitlab.kitware.com/paraview/paraview-superbuild.git#tag=v${pkgver}")
-sha1sums=('SKIP')
+source=("git+https://gitlab.kitware.com/paraview/paraview-superbuild.git#tag=v${pkgver}"
+        "paraview-superbuild.sh")
+sha1sums=('SKIP'
+          'bb389666a765ff558233fced708e3a9c991b0650')
 
 prepare() {
   cd "${srcdir}/${pkgname}"
@@ -114,4 +116,8 @@ package() {
   cd "${srcdir}/build"
 
   make DESTDIR="${pkgdir}" install
+
+  # Install script to set path
+  install -Dm755 "${srcdir}/paraview-superbuild.sh" \
+    "${pkgdir}/etc/profile.d/paraview-superbuild.sh"
 }
