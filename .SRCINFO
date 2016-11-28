@@ -1,0 +1,26 @@
+pkgbase = libagar
+	pkgdesc = A compact, efficient and fully thread-safe cross-platform GUI toolkit, styled using CSS
+	pkgver = 1.5.0
+	pkgrel = 1
+	url = http://libagar.org/
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = mesa
+	depends = freetype2
+	depends = fontconfig
+	depends = sdl
+	depends = libxinerama
+	depends = libgl
+	depends = libpng
+	depends = libjpeg
+	depends = libsndfile
+	source = http://stable.hypertriton.com/agar/agar-1.5.0.tar.gz
+	source = http://stable.hypertriton.com/agar/agar-1.5.0.tar.gz.asc
+	validpgpkeys = 8F28B81160F8C10E53EBF5F13AF102AD3D6A0EB9
+	validpgpkeys = CB9457749A4E7A9AECF43B20F5BB8092C0BB1FFA
+	sha256sums = 82342ded342c578141984befe9318f3d376176e5f427ae3278f8985f26663c00
+	sha256sums = SKIP
+
+pkgname = libagar
+
