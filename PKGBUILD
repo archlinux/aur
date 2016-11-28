@@ -1,7 +1,7 @@
 # Maintainer: Guillaume Hayot <postblue@postblue.info>
 pkgname=ghost-desktop
 pkgver=1.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Ghost Desktop is a beautiful desktop application that allows you to easily manage multiple Ghost blogs and work without distractions."
 arch=('x86_64' 'i686') 
 url="https://github.com/TryGhost/Ghost-Desktop"
@@ -31,7 +31,8 @@ package() {
     # Change paths to match pkgname
     mv "${pkgdir}/usr/share/Ghost" "${pkgdir}/usr/share/${pkgname}"
     mv "${pkgdir}/usr/share/applications/Ghost.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
-    sed -i "s/=Ghost/=${pkgname}/" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
+    sed -i "s/Exec=Ghost/Exec=${pkgname}/" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
+    sed -i "s/Icon=Ghost/Icon=${pkgname}/" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
     mv "${pkgdir}/usr/share/doc/Ghost" "${pkgdir}/usr/share/doc/${pkgname}"
     mv "${pkgdir}/usr/share/pixmaps/Ghost.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
     
