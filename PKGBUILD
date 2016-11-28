@@ -10,16 +10,10 @@ groups=('science')
 depends=('glibc')
 provides=('bgmn')
 conflicts=('bgmn')
-case ${CARCH} in
-	i686)	source+=("http://profex.doebelin.org/wp-content/uploads/2014/09/bgmnwin-${pkgver}-${CARCH}.tar.gz");
-		md5sums+=('4a5e777e24cee0f59820336fb16f6461')
-		;;
-	x86_64)	source+=("http://profex.doebelin.org/wp-content/uploads/2015/07/bgmnwin-${pkgver}-${CARCH}.tar.gz");
-		md5sums+=('76f06f49d17e1b01ba4336d5c2cd9315');
-		;;
-	*)	error "Unsupported architecture.";
-		;;
-esac
+source_i686=("http://profex.doebelin.org/wp-content/uploads/2014/09/bgmnwin-${pkgver}-i686.tar.gz")
+md5sums_i686=('4a5e777e24cee0f59820336fb16f6461')
+md5sums_x86_64=('76f06f49d17e1b01ba4336d5c2cd9315')
+source_x86_64=("http://profex.doebelin.org/wp-content/uploads/2015/07/bgmnwin-${pkgver}-x86_64.tar.gz")
 
 package() {
 	mkdir -p "${pkgdir}/opt/${pkgname%-bin}"

@@ -10,8 +10,10 @@ pkgbase = bgmn-bin
 	depends = glibc
 	provides = bgmn
 	conflicts = bgmn
-	source = http://profex.doebelin.org/wp-content/uploads/2015/07/bgmnwin-4.2.22-x86_64.tar.gz
-	md5sums = 76f06f49d17e1b01ba4336d5c2cd9315
+	source_i686 = http://profex.doebelin.org/wp-content/uploads/2014/09/bgmnwin-4.2.22-i686.tar.gz
+	md5sums_i686 = 4a5e777e24cee0f59820336fb16f6461
+	source_x86_64 = http://profex.doebelin.org/wp-content/uploads/2015/07/bgmnwin-4.2.22-x86_64.tar.gz
+	md5sums_x86_64 = 76f06f49d17e1b01ba4336d5c2cd9315
 
 pkgname = bgmn-bin
 
