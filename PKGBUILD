@@ -1,5 +1,5 @@
 pkgname=fusiondirectory-plugin-supann
-pkgver=1.0.15
+pkgver=1.0.17
 pkgrel=1
 pkgdesc="This Plugin aims to provide a full LDAP interface to SUPANN schema"
 arch=("any")
@@ -10,7 +10,7 @@ depends=("fusiondirectory>=$pkgver")
 install=fusiondirectory-plugin-supann.install
 source=("http://repos.fusiondirectory.org/sources/1.0/fusiondirectory/fusiondirectory-plugins-${pkgver}.tar.gz"
 "http://repos.fusiondirectory.org/sources/1.0/fusiondirectory/fusiondirectory-${pkgver}.tar.gz")
-md5sums=('65b87009fb2960da42274008c16a6284' 'a4fc56bf04e93dffd128b190041b4803')
+md5sums=('64c06ceb4618de6c667fd6a1ae1f7f51' 'c7833692302b9836a42836391b3bb3f9')
 
 package() {
 cd ./fusiondirectory-plugins-${pkgver}
