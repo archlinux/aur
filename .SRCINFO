@@ -11,7 +11,8 @@ pkgbase = silentarmy-nvmod-git
 	depends = python
 	depends = opencl-nvidia
 	provides = silentarmy
-	conflicts = silentarmy, silentarmy-git
+	conflicts = silentarmy
+	conflicts = silentarmy-git
 	source = git+https://github.com/krnlx/silentarmy-nvmod.git
 	md5sums = SKIP
 

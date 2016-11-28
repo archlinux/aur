@@ -21,7 +21,11 @@ pkgver() {
 
 build() {
   cd "$srcdir/$_gitname"
-  make
+
+  # Inject CFLAGS from /etc/makepkg.conf
+  sed -i "s/CFLAGS *= */&${CFLAGS} /" Makefile
+
+  make ${MAKEFLAGS}
 }
 
 check() {
