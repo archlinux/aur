@@ -1,0 +1,10 @@
+diff --git i/setup.cfg w/setup.cfg
+index 2dfe955fdbcb5f63..8d568e8ce4785fbb 100644
+--- i/setup.cfg
++++ w/setup.cfg
+@@ -1,5 +1,4 @@
+ [egg_info]
+-tag_build = -dev
+ tag_svn_revision = false
+ 
+ [build_docs]
