@@ -1,0 +1,11 @@
+diff -aur --no-dereference package.pristine/phpdoc package.new/phpdoc
+--- package.pristine/phpdoc	2016-11-29 00:37:36.309025526 +0100
++++ package.new/phpdoc	2016-11-29 00:37:53.202230764 +0100
+@@ -1,6 +1,6 @@
+ #!/bin/sh
+ if [ -z "$PHP" ]; then
+-   PHP=`which php`
++   PHP=`which php56`
+ fi
+ (exec $PHP -C -q -d output_buffering=1 "$0" "$@") 2>/dev/null
+ if [ "$?" -ne "0" ]; then
