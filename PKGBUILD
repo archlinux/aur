@@ -14,7 +14,7 @@ conflicts=('iproute2')
 options=('staticlibs' '!makeflags')
 backup=('etc/iproute2/ematch_map' 'etc/iproute2/rt_dsfield' 'etc/iproute2/rt_protos' \
 	'etc/iproute2/rt_realms' 'etc/iproute2/rt_scopes' 'etc/iproute2/rt_tables')
-source=("https://github.com/multipath-tcp/$pkgname/archive/v$pkgver.tar.gz"
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/multipath-tcp/$pkgname/archive/v$pkgver.tar.gz"
         "iproute2-fhs.patch"
         "unwanted-link-help.patch")
 sha256sums=('c115591ea271b894c795d6be8840dac11d2cf71a712956dd40b1c685ad6f77f7'
