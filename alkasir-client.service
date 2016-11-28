@@ -2,9 +2,6 @@
 Description=Alkasir Client Service
 
 [Service]
-# Won't work with 32bit version
-# To Do:
-#   * Fix Me
 ExecStart=/opt/alkasir-client-linux-amd64/alkasir-client_linux_amd64
 Restart=on-failure
 

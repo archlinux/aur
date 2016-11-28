@@ -7,6 +7,6 @@ post_install() {
 }
 
 post_upgrade() {
-    chown -R root:root /opt/alkasir-client-linux-amd64 &> /dev/null 2>&1
-    chown -R root:root /opt/alkasir-client-linux-386 &> /dev/null 2>&1
+    chown -R root:root /opt/alkasir-client-linux-amd64 &> /dev/null 2>&1 || true
+    chown -R root:root /opt/alkasir-client-linux-386 &> /dev/null 2>&1 || true
 }

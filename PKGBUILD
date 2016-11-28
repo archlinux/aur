@@ -3,8 +3,18 @@
 pkgname='alkasir-client'
 pkgver=0.4.7
 pkgrel=1
-arch=('x86_64')
-_arch="amd64" # Change to '386' to install the 32 bit client
+arch=(
+  'x86_64'
+  'i386'
+)
+
+if [ "$arch" == "x86_64" ]
+then
+  _arch="amd64"
+else
+  _arch="386"
+fi
+
 url="https://alkasir.com/"
 depends=('glibc')
 makedepends=('links') # Links is needed to download the license agreement
@@ -19,7 +29,7 @@ pkgdesc="Alkasir is a cross-platform, open-source and robust website censorship 
 source=("https://github.com/alkasir/alkasir/releases/download/$pkgver/alkasir-client_linux-$_arch.tar.gz"
         "alkasir-client.service")
 md5sums=('8490b46497d51de548341cf81d7989ee'
-         '741b2eee3c554d555f932cf0011da922'
+         '8068200941009b41885ffa93659f7f6e'
 )
 install="alkasir-client.install"
 
