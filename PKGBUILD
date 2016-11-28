@@ -1,4 +1,5 @@
-# Maintainer: Sven-Hendrik Haase <sh@lutzhaase.com>
+# Maintainer: Daniel Egeberg <daniel.egeberg@gmail.com>
+# Contributor: Sven-Hendrik Haase <sh@lutzhaase.com>
 # Contributor: TingPing <tingping@tingping.se>
 
 pkgname=plex-media-player
