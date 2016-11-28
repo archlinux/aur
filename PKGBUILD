@@ -5,9 +5,9 @@
 
 pkgbase=deluge-split
 _pkgbase=deluge
-pkgname=("${_pkgbase}-common" "${_pkgbase}-daemon" "${_pkgbase}-gtk" "${_pkgbase}-web" "${_pkgbase}-console")
+pkgname=("${_pkgbase}-common" "${_pkgbase}-daemon" "${_pkgbase}-gtk" "${_pkgbase}-web")
 pkgver=1.3.13+2+g6c73105
-pkgrel=2
+pkgrel=3
 arch=('any')
 url="http://deluge-torrent.org/"
 license=('GPL3')
@@ -65,10 +65,14 @@ package_deluge-daemon() {
   cd "$_pkgbase"
   python2 setup.py install --prefix=/usr --root="$pkgdir" --optimize=1
 
-  rm -f  "$pkgdir"/usr/bin/deluge-{gtk,web,console}
-  rm -f  "$pkgdir"/usr/share/man/man1/deluge-{gtk,web,console}.1
-  rm -rf "$pkgdir"/usr/lib/
+  rm -f  "$pkgdir"/usr/bin/deluge-{gtk,web}
+  rm -f  "$pkgdir"/usr/share/man/man1/deluge-{gtk,web}.1
   rm -rf "$pkgdir"/usr/share/{icons,pixmaps,applications}
+  rm -rf "$pkgdir"/usr/lib/python2.7/site-packages/deluge/*.{py,pyc,pyo,so}
+  rm -rf "$pkgdir"/usr/lib/python2.7/site-packages/deluge/{i18n,data,core,plugins}
+  rm -rf "$pkgdir"/usr/lib/python2.7/site-packages/deluge/ui/{gtkui,web}
+  rm -f  "$pkgdir"/usr/lib/python2.7/site-packages/deluge/ui/*.{py,pyc,pyo}
+  rm -rf "$pkgdir"/usr/lib/python2.7/site-packages/deluge-1.3.13-py2.7.egg-info/
 
   install -Dm644 ../deluged.service "$pkgdir"/usr/lib/systemd/system/deluged.service
 
@@ -114,25 +118,6 @@ package_deluge-web() {
   rm -rf "$pkgdir"/usr/share/{icons,pixmaps,applications}
 
   install -Dm644 ../deluge-web.service "$pkgdir/usr/lib/systemd/system/deluge-web.service"
-}
-
-package_deluge-console() {
-  pkgdesc="Deluge CLI frontend"
-  depends=("deluge-common=${pkgver}")
-  conflicts=('deluge')
-  groups=("$pkgbase")
-
-  cd "$_pkgbase"
-  python2 setup.py install --prefix=/usr --root="$pkgdir" --optimize=1
-
-  find "$pkgdir/usr/bin" ! -name 'deluge-console' -type f -exec rm -f {} +
-  find "$pkgdir/usr/share/man/man1" ! -name 'deluge-console.1' -type f -exec rm -f {} +
-  rm -rf "$pkgdir"/usr/lib/python2.7/site-packages/deluge/*.{py,pyc,pyo,so}
-  rm -rf "$pkgdir"/usr/lib/python2.7/site-packages/deluge/{i18n,data,core,plugins}
-  rm -rf "$pkgdir"/usr/lib/python2.7/site-packages/deluge/ui/{gtkui,web}
-  rm -f  "$pkgdir"/usr/lib/python2.7/site-packages/deluge/ui/*.{py,pyc,pyo}
-  rm -rf "$pkgdir"/usr/lib/python2.7/site-packages/deluge-1.3.13-py2.7.egg-info/
-  rm -rf "$pkgdir"/usr/share/{icons,pixmaps,applications}
 }
 
 # vim:set ts=2 sw=2 et:
