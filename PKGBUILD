@@ -26,7 +26,7 @@ package() {
   # Provide some examples
   for i in examples/*
   do
-    install -D -m 644 $i $pkgdir/usr/share/$pkgname/$i
+    install -D -m 644 "$i" "$pkgdir/usr/share/$pkgname/$i"
   done
 }
 
