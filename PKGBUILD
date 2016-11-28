@@ -19,6 +19,8 @@ pkgver() {
 
 build() {
   cd "${srcdir}/dpaste"
+  ./autogen.sh
+  ./configure --disable-debug
   make
 }
 
