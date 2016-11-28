@@ -31,8 +31,8 @@ package() {
     # Change paths to match pkgname
     mv "${pkgdir}/usr/share/Ghost" "${pkgdir}/usr/share/${pkgname}"
     mv "${pkgdir}/usr/share/applications/Ghost.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
-    sed -i "s/Exec=Ghost/Exec=${pkgname}/" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
-    sed -i "s/Icon=Ghost/Icon=${pkgname}/" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
+    sed -i "s/=Ghost/=${pkgname}/" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
+    sed -i "s/Name=ghost-desktop/Name=Ghost Desktop/" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
     mv "${pkgdir}/usr/share/doc/Ghost" "${pkgdir}/usr/share/doc/${pkgname}"
     mv "${pkgdir}/usr/share/pixmaps/Ghost.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
     
