@@ -2,7 +2,7 @@
 
 _basename=newtx
 pkgname=texlive-"$_basename"
-pkgver=1.5
+pkgver=1.514
 pkgrel=1
 pkgdesc="Alternative uses of the TX fonts, with improved metrics."
 arch=('any')
@@ -14,7 +14,7 @@ source=("http://mirrors.ctan.org/install/fonts/$_basename.tds.zip"
 	"lppl.txt::http://latex-project.org/lppl/lppl-1-3c.txt")
 noextract=("$_basename.tds.zip")
 install=$pkgname.install
-sha1sums=('486b379ea9c8731183e1f747ad0e537f85577053'
+sha1sums=('f38090797c64ada29b50cfcb0313f53228cf20ce'
           '47438d5b2ab351796b64b62da105432ab71369ab')
 
 package() {
