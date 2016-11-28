@@ -2,7 +2,7 @@
 
 pkbase=python-oct2py
 pkgname=('python-oct2py' 'python2-oct2py')
-pkgver=3.5.9
+pkgver=3.6.5
 pkgrel=1
 pkgdesc="Python to GNU Octave bridge."
 arch=('any')
@@ -10,7 +10,7 @@ url="http://github.com/blink1073/oct2py"
 license=('MIT')
 makedepends=('python-setuptools' 'python2-setuptools')
 source=("https://github.com/blink1073/oct2py/archive/v${pkgver}.tar.gz")
-md5sums=('039ea66d10383ad5bbe0b8387e8b1fb7')
+md5sums=('51be4ecb5753be557e4b0f666bf4028c')
 
 build() {
   cp -r "${srcdir}"/oct2py-$pkgver "${srcdir}"/oct2py-$pkgver-py2
@@ -26,14 +26,14 @@ package_python-oct2py() {
   depends=('python-scipy' 'octave')
 
   cd "${srcdir}"/oct2py-$pkgver
-  python setup.py install --root="${pkgdir}"
+  python setup.py install --root="${pkgdir}" --optimize=1
 }
 
 package_python2-oct2py() {
   depends=('python2-scipy' 'octave')
 
   cd "${srcdir}"/oct2py-$pkgver-py2
-  python2 setup.py install --root="${pkgdir}"
+  python2 setup.py install --root="${pkgdir}" --optimize=1
 }
 
 
