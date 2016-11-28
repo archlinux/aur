@@ -3,9 +3,9 @@
 # Contributor: Splex
 
 pkgname=kokua-secondlife
-pkgver=4.1.1.39717
-_pkgver=4_1_1_39717
-_pkgprever=4.1.1
+pkgver=4.1.2.40000
+_pkgver=4_1_2_40000
+_pkgprever=4.1.2
 pkgrel=1
 pkgdesc="An Open Source third party viewer for Second Life® (secondlife), only."
 url="http://www.kokuaviewer.org"
@@ -23,10 +23,10 @@ source_x86_64=("http://downloads.sourceforge.net/project/kokua.team-purple.p/Kok
 		'kokua-secondlife.desktop'
 		'kokua-secondlife.launcher')
 
-md5sums_i686=('0321d6cabf3c0467da790b8fa5b2ac74'
+md5sums_i686=('77d7f904efca87043c199eaa4afb5af9'
               '3893a2c8ae9cb8e2adb4d7c47750029b'
               'e12fd7bd333f4f810dec66f1be17c71c')
-md5sums_x86_64=('ab8346f97ea7afd94a7f58fead0c6539'
+md5sums_x86_64=('a5bc4786bfa7e21ab8573574b6a4decd'
                 '3893a2c8ae9cb8e2adb4d7c47750029b'
                 'e12fd7bd333f4f810dec66f1be17c71c')
 
