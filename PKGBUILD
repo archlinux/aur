@@ -7,7 +7,6 @@ pkgname=gitea
 pkgname=${pkgname}
 pkgver=0.9.97
 pkgrel=1
-epoch=1
 pkgdesc="Git with a cup of tea, forked from Gogs. Is a Self Hosted Git Service in the Go Programming Language."
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 changelog=$pkgname.changelog
