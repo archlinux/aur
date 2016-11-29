@@ -1,6 +1,6 @@
 # Maintainer: substanceof <vk-cli.dev[at]ya[dot]ru>
 pkgname=vk-cli-git
-pkgver=0.7.4.r968.c7078b7
+pkgver=0.7.4.r970.295f8e5
 pkgrel=1
 pkgdesc="A console (ncurses) client for vk.com written in D (git upstream)"
 arch=('x86_64' 'i686')
