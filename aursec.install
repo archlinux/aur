@@ -1,0 +1,14 @@
+# Create the user and group if they don't exist
+
+post_install() {
+  if ! getent group aursec >/dev/null; then
+    groupadd --system aursec
+  fi
+  if ! getent passwd aursec >/dev/null; then
+    useradd --system -c 'aursec daemon user' -g aursec -d /var/aursec/ -s /bin/bash aursec
+  fi
+}
+
+post_upgrade() {
+  post_install $1
+}
