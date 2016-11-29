@@ -20,7 +20,7 @@ pkgver() {
 build() {
   cd $pkgname
   ./bootstrap.sh
-  ./configure --prefix=/usr --sysconfdir=/etc \
+  CC=clang ./configure --prefix=/usr --sysconfdir=/etc \
     --with-gconf-schema-file-dir=/usr/share/gconf/schemas \
     --disable-nls
   make
