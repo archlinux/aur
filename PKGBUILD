@@ -22,7 +22,8 @@ check() {
 }
 
 package_python-viivakoodi() {
-    depends+=('python')
+    depends+=('python'
+              'python-setuptools')
     optdepends+=('python-pillow: render barcodes as images')
     checkdepends+=('python-pytest'
                    'python-mock'
@@ -35,7 +36,8 @@ package_python-viivakoodi() {
 }
 
 package_python2-viivakoodi() {
-    depends+=('python2')
+    depends+=('python2'
+              'python2-setuptools')
     optdepends+=('python2-pillow: render barcodes as images')
     checkdepends+=('python2-pytest'
                    'python2-mock'
