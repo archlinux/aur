@@ -1,8 +1,8 @@
 # Maintainer: Tomislav Ivek <tomislav.ivek@gmail.com>
 
 pkgname=('conan')
-pkgver=0.15.0
-pkgrel=2
+pkgver=0.16.0
+pkgrel=1
 pkgdesc="A distributed, open source, C/C++ package manager."
 arch=('any')
 url="https://conan.io"
@@ -17,15 +17,10 @@ depends=('python-pyjwt>=1.4.0' 'python-pyjwt<1.5.0'
          'python-patch=1.16'
          'python-fasteners>=0.14.1'
          'python-six>=1.10.0'
+         'python-node-semver=0.1.1'
          'python-bottle>=0.12.8' 'python-bottle<0.13')
-source=("https://github.com/conan-io/conan/archive/${pkgver}.tar.gz" "python-requests-2.12.1.patch")
-sha512sums=('9ec341a1e33465970f3311a1248eb3841eb5d709e545cea5aeb2bc82f2c92afc2ad01cc6a6ccbdf0102e3d677c9fa72c2bd9f4aaebcd86c3789c584c362a996e'
-            '12433a712567c5bd8cba9bdcfbe12ec8d4a2b4b313dd122ae9078198a356fff2b3db23937dd8fc0c93ab240e1effc24efe60b2032a203ac0f590586e3b6921fd')
-
-prepare() {
-  cd "$srcdir/conan-$pkgver"
-  patch -p1 <../python-requests-2.12.1.patch
-}
+source=("https://github.com/conan-io/conan/archive/${pkgver}.tar.gz")
+sha512sums=('078bf08b2f63812f204b9070590a3deb1ec338d702b81a918076ecedf8598bd5c309d05c3deccc3d735b35770847b4acaee37a81f0f0b2e5dd2c2165afdca41d')
 
 build() {
   cd "$srcdir/conan-$pkgver"
