@@ -17,7 +17,7 @@ install=neovim-qt.install
 build() {
   mkdir -p "${srcdir}/build"
   cd "${srcdir}/build"
-  cmake "../neovim-qt-${pkgver}"
+  cmake "../neovim-qt-${pkgver}" -DCMAKE_INSTALL_PREFIX=/usr
   make
 }
 
