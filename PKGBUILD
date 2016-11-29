@@ -2,19 +2,26 @@
 # Maintainer: Akira Ohgaki <akiraohgaki@gmail.com>
 
 pkgname=xdgurl
-pkgver=1.0.0
+pkgver=2.0.2
 pkgrel=1
-pkgdesc="An install helper program for desktop stuff."
-arch=('any')
-url="https://github.com/xdgurl/xdgurl"
+pkgdesc='An install helper program for desktop stuff.'
+arch=('i686' 'x86_64')
+url="https://github.com/$pkgname/$pkgname"
 license=('GPL3')
-depends=('tk')
+depends=('qt5-base>=5.3.0'
+        'qt5-declarative>=5.3.0'
+        'qt5-quickcontrols>=5.3.0'
+        'qt5-svg>=5.3.0')
 source=("$url/archive/release-$pkgver.tar.gz")
-md5sums=('b5a4ee26888696153dc35b434adc312c')
+md5sums=('8100db8a612df65b766d08b3996defd3')
+
+build() {
+    cd "$pkgname-release-$pkgver"
+    qmake PREFIX='/usr'
+    make
+}
 
 package() {
     cd "$pkgname-release-$pkgver"
-
-    install -D -m 755 "src/$pkgname.py" "$pkgdir/usr/bin/$pkgname"
-    install -D -m 644 "src/$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
+    make INSTALL_ROOT="$pkgdir" install
 }
