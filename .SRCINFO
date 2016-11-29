@@ -1,6 +1,6 @@
 pkgbase = mate-utils-dev
 	pkgdesc = Common MATE utilities for viewing disk usage, logs and fonts, taking screenshots, managing dictionaries and searching files
-	pkgver = 1.15.1
+	pkgver = 1.17.0
 	pkgrel = 1
 	url = http://mate-desktop.org
 	arch = i686
@@ -26,8 +26,8 @@ pkgbase = mate-utils-dev
 	provides = mate-utils-gtk3
 	conflicts = mate-utils
 	conflicts = mate-utils-gtk3
-	source = http://pub.mate-desktop.org/releases/1.15/mate-utils-1.15.1.tar.xz
-	sha1sums = 93f68f74aeaeb149f44150b4cce328ea55836584
+	source = http://pub.mate-desktop.org/releases/1.17/mate-utils-1.17.0.tar.xz
+	sha1sums = cc531fc0e2118a97da6e2fe2c24bb0805a6fa1f2
 
 pkgname = mate-utils-dev
 	pkgdesc = Common MATE utilities for viewing disk usage, logs and fonts, taking screenshots, managing dictionaries and searching files (GTK3 version)
