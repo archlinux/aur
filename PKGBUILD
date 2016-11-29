@@ -7,7 +7,7 @@ pkgbase=deluge-split
 _pkgbase=deluge
 pkgname=("${_pkgbase}-common" "${_pkgbase}-daemon" "${_pkgbase}-gtk" "${_pkgbase}-web" "${_pkgbase}-console")
 pkgver=1.3.13+2+g6c73105
-pkgrel=5
+pkgrel=6
 arch=('any')
 url="http://deluge-torrent.org/"
 license=('GPL3')
@@ -54,6 +54,7 @@ package_deluge-common() {
   rm -f  "$pkgdir"/usr/lib/python2.7/site-packages/deluge/*.py{c,o}
   rm -f  "$pkgdir"/usr/lib/python2.7/site-packages/deluge/core/*.py{c,o}
   rm -f  "$pkgdir"/usr/lib/python2.7/site-packages/deluge/ui/*.py{c,o}
+  rm -f  "$pkgdir"/usr/lib/python2.7/site-packages/deluge/plugins/*.py{c,o}
   rm -rf "$pkgdir"/usr/lib/python2.7/site-packages/deluge/ui/{web,gtkui,console}
 }
 
