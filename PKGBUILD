@@ -5,12 +5,12 @@ pkgname=uplink-hib
 _pkgname=uplink
 pkgver=1.6_1
 _pkgver=1.6-1
-pkgrel=8
+pkgrel=9
 pkgdesc='A futuristic computer crime game (requires uplink from Humble Bundle)'
 arch=('i686' 'x86_64')
 url='http://www.introversion.co.uk/uplink'
 license=('custom')
-depends=('mesa' 'libjpeg6-turbo' 'sdl_mixer' 'libtiff3' 'freetype2')
+depends=('mesa' 'libjpeg6-turbo' 'sdl_mixer' 'freetype2')
 conflicts=('uplink')
 source=("${_pkgname}.desktop")
 sha256sums=('4998ac81d6fd071355cd421b3206c69470f929613dfcc97361a12194e8cfbfaa')
@@ -54,8 +54,6 @@ package() {
   rm "${pkgdir}/opt/${_pkgname}/${_libi}/libjpeg.so.62.0.0"
   rm "${pkgdir}/opt/${_pkgname}/${_libi}/libSDL-1.2.so.0"
   rm "${pkgdir}/opt/${_pkgname}/${_libi}/libSDL-1.2.so.0.11.3"
-  rm "${pkgdir}/opt/${_pkgname}/${_libi}/libtiff.so.3"
-  rm "${pkgdir}/opt/${_pkgname}/${_libi}/libtiff.so.3.8.2"
 
   # Fix permissions
   chmod -R 644 "${pkgdir}/opt/${_pkgname}"
