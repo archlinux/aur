@@ -1,7 +1,7 @@
 pkgbase = java-bluecove
 	pkgdesc = JSR-82 Java implementation
 	pkgver = 2.1.0
-	pkgrel = 2
+	pkgrel = 3
 	url = http://bluecove.org/
 	arch = i686
 	arch = x86_64
@@ -9,6 +9,7 @@ pkgbase = java-bluecove
 	license = GPL3
 	depends = java-runtime
 	depends = bluez
+	depends = bluez-libs
 	noextract = bluecove-2.1.0.jar
 	noextract = bluecove-gpl-2.1.0.jar
 	source = http://downloads.sourceforge.net/sourceforge/bluecove/bluecove-2.1.0.jar

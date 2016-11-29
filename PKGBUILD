@@ -3,12 +3,12 @@
 
 pkgname=java-bluecove
 pkgver=2.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc='JSR-82 Java implementation'
 arch=('i686' 'x86_64')
 url='http://bluecove.org/'
 license=('APACHE' 'GPL3')
-depends=('java-runtime' 'bluez')
+depends=('java-runtime' 'bluez' 'bluez-libs')
 
 source=(http://downloads.sourceforge.net/sourceforge/bluecove/bluecove-${pkgver}.jar
         http://downloads.sourceforge.net/sourceforge/bluecove/bluecove-gpl-${pkgver}.jar)
