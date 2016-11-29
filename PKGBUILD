@@ -32,8 +32,8 @@ package_python-viivakoodi() {
     cd "$srcdir/$pkgbase-$pkgver"
     python setup.py install --root="$pkgdir/" --optimize=1
 
-    install -Dm0644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-    install -Dm0644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE.launcher"
+    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE.launcher"
 }
 
 package_python2-viivakoodi() {
@@ -47,6 +47,6 @@ package_python2-viivakoodi() {
     cd "$srcdir/$pkgbase-$pkgver"
     python2 setup.py install --root="$pkgdir/" --optimize=1
 
-    install -Dm0644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-    install -Dm0644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE.launcher"
+    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE.launcher"
 }
