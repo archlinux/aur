@@ -5,7 +5,7 @@
 
 # Maintainer: Your Name <youremail@domain.com>
 pkgname=timedoctorpro
-pkgver=1.4.75.13
+pkgver=1.4.75.14
 urlver=$(echo $pkgver|sed 's/\.\([^.]*\)$/-\1/')
 pkgrel=1
 arch=('x86_64')
@@ -17,7 +17,7 @@ license=('proprietary')
 depends=('libx11' 'libxcb' 'zlib' 'qt4' 'opencv2')
 
 source=("https://updates.timedoctor.com/download/_production/tdpro/linux-ubuntu-16.04/timedoctorpro_${urlver}ubuntu16.04_amd64.deb")
-md5sums=('5529730788fd82ecf549eacd92006a1a')
+md5sums=('0d50154852f5f10bd8e470066f61a523')
 
 package() {
         cd $pkgdir
