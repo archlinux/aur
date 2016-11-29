@@ -21,7 +21,7 @@ md5sums=('SKIP')
 
 pkgver() {
   cd "${srcdir}/${_pkgbasename}"
-  # cutting off 'qtractor_' prefix that presents in the git tag + remaining underscores (it's ugly but gets the job done).
+  # cutting off the 'qtractor_' prefix present in the git tag + remaining underscores (ugly but gets the job done).
   git describe --long | sed 's/^qtractor_//;s/\([^-]*-g\)/r\1/;s/-/./g' | sed 's/\_/./g'
 }
 
