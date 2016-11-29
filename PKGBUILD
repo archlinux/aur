@@ -8,8 +8,6 @@ pkgdesc='Barcode generator for Python. Fork of pyBarcode project.'
 arch=('any')
 url="https://github.com/kxepal/$pkgbase"
 license=('MIT')
-makedepends+=('python-setuptools'
-              'python2-setuptools')
 source=("$pkgbase-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
 sha256sums=('e1a17dc24975d5242202cfbb7534d69dd14eeb26bdf8a10f056c7b04904fef1e')
 
