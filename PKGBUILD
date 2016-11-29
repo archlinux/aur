@@ -4,8 +4,8 @@
 pkgbase=linux-next-git
 #pkgname=("${pkgbase}")
 _srcname=linux-next
-pkgver=20161127
-pkgrel=3
+pkgver=20161128
+pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
 license=('GPL2')
@@ -15,10 +15,10 @@ source=( git://git.kernel.org/pub/scm/linux/kernel/git/next/linux-next.git
          # the main kernel config files
          'config' 'config.x86_64'
          # standard config files for mkinitcpio ramdisk
-         'linux.preset' 'change-default-console-loglevel.patch' )
+         'linux.preset' 'change-default-console-loglevel.patch' '99-linux.hook' )
 md5sums=('SKIP'
          'SKIP' 'SKIP'
-         'SKIP' 'SKIP' )
+         'SKIP' 'SKIP' 'SKIP' )
 
 _kernelname=${pkgbase#linux}
 
