@@ -1,7 +1,7 @@
 # Maintainer: David Parrish <daveparrish@gmail.com>
 
 pkgname=bitaddress-git
-pkgver=3.2.0.r0.g8a0c686
+pkgver=3.2.3.r0.gaf91e78
 pkgrel=1
 pkgdesc="JavaScript Client-Side Bitcoin Wallet Generator"
 arch=('any')
@@ -29,7 +29,7 @@ build() {
 
 package() {
   # Install License (License is in README)
-  install -Dm644 $pkgname/README "$pkgdir/usr/share/licenses/$pkgname/README"
+  install -Dm644 $pkgname/README.md "$pkgdir/usr/share/licenses/$pkgname/README.md"
 
   # Install html file
   install -Dm644 $pkgname/bitaddress.org.html "$pkgdir/usr/share/$pkgname/bitaddress.org.html"
