@@ -1,0 +1,15 @@
+pkgbase = debug_assert-git
+	pkgdesc = Simple, flexible and modular assertion macro
+	pkgver = r5.0fa4470
+	pkgrel = 1
+	url = https://github.com/foonathan/debug_assert
+	arch = any
+	license = MIT
+	makedepends = git
+	provides = debug_assert
+	conflicts = debug_assert
+	source = git+https://github.com/foonathan/debug_assert.git
+	md5sums = SKIP
+
+pkgname = debug_assert-git
+
