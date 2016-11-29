@@ -1,10 +1,11 @@
 conf_note() {
   printf '%s\n' \
-    'All current and previous configuration and diagram history in' \
-    '  $XDG_CONFIG_HOME/bonitasoft/ and' \
-    '  $XDG_DATA_HOME/bonitasoft/' \
-    'is considered frozen. Default configuration and empty history' \
-    'in newly created directories is used instead.'
+    'The previous Bonita BPM versioned configuration and diagram history in' \
+    '    $XDG_CONFIG_HOME/bonitasoft/' \
+    'and' \
+    '    $XDG_DATA_HOME/bonitasoft/' \
+    'will be left intact by this newly installed Bonita BPM version, which' \
+    "uses it's own versioned directories instead (next to the previous ones)."
 }
 
 post_install() {
