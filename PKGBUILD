@@ -15,16 +15,16 @@ md5sums=('a98655922ee624a7aa8fdae161afdfa9' 'a7f1df8c2d785c859ae60eb1c5742407')
 build() {
   cd $srcdir
   tar xf sgi-fonts.tar.gz
-  patch -p0 < sgi-fonts.patch || return 1
+  patch -p0 < sgi-fonts.patch
   cd $pkgname
-  xmkmf || return 1
-  sed '/^          FONTDIR = /s/${datarootdir}\/fonts\/X11/\/usr\/share\/fonts/' -i Makefile || return 1
-  sed '/^      FONTROOTDIR = /s/${datarootdir}\/fonts\/X11/\/usr\/share\/fonts/' -i Makefile || return 1
-  make || return 1
+  xmkmf
+  sed '/^          FONTDIR = /s/${datarootdir}\/fonts\/X11/\/usr\/share\/fonts/' -i Makefile
+  sed '/^      FONTROOTDIR = /s/${datarootdir}\/fonts\/X11/\/usr\/share\/fonts/' -i Makefile
+  make
 }
 package() {
   cd $srcdir/$pkgname
-  make DESTDIR=$pkgdir install || return 1
+  make DESTDIR=$pkgdir install
   cd $pkgdir/usr/share/fonts/misc
   mv sgi/*.pcf.gz ./
   rm -Rf sgi
