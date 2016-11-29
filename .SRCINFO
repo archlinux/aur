@@ -1,0 +1,13 @@
+pkgbase = neoleo
+	pkgdesc = Fork of the GNU oleo lightweight spreadsheet
+	pkgver = 3.0.1
+	pkgrel = 1
+	url = https://github.com/blippy/neoleo
+	arch = i686
+	arch = x86_64
+	license = GPL
+	source = https://github.com/blippy/neoleo/releases/download/v3.0.1/neoleo-3.0.1.tar.gz
+	md5sums = 802229a004de2c4a4b0efea78355f655
+
+pkgname = neoleo
+
