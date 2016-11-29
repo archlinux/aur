@@ -6,10 +6,11 @@
 # See http://scarybeastsecurity.blogspot.com/2011/07/alert-vsftpd-download-backdoored.html for reason of this step.
 # If you have problems with gpg, you can remove check() function, and all will be ok.
 
-pkgname=cassandra
+pkgname=cassandra21
+_pkgname=cassandra
 pkgver=2.1.16
 pkgrel=1
-pkgdesc='Apache Cassandra NoSQL database'
+pkgdesc='Apache Cassandra NoSQL database 2.1.x'
 arch=('any')
 url='http://cassandra.apache.org/'
 license=('APACHE')
@@ -17,6 +18,7 @@ depends=('java-runtime')
 makedepends=('gnupg')
 checkdepends=('wget')
 optdepends=('python: to use Python CLI administration scripts')
+conflicts=('cassandra')
 backup=(etc/cassandra/cassandra-env.sh
         etc/cassandra/cassandra-rackdc.properties
         etc/cassandra/cassandra-topology.properties
@@ -25,7 +27,7 @@ backup=(etc/cassandra/cassandra-env.sh
         etc/cassandra/logback.xml
         etc/cassandra/logback-tools.xml)
 install=cassandra.install
-_url_tgz="http://www.apache.org/dist/${pkgname}/${pkgver}/apache-${pkgname}-${pkgver}-bin.tar.gz"
+_url_tgz="http://www.apache.org/dist/${_pkgname}/${pkgver}/apache-${_pkgname}-${pkgver}-bin.tar.gz"
 source=("${_url_tgz}"
         '01_fix_cassandra_home_path.patch'
         'cassandra.install'
@@ -56,7 +58,7 @@ check() {
 
   # no need to add signature to package dependences
   echo "${_url_tgz}.asc"
-  wget --quiet -O - "${_url_tgz}.asc" | gpg --verify - "apache-${pkgname}-${pkgver}-bin.tar.gz"
+  wget --quiet -O - "${_url_tgz}.asc" | gpg --verify - "apache-${_pkgname}-${pkgver}-bin.tar.gz"
   msg2 "Detached GPG signature is valid."
 }
 
