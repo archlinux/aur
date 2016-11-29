@@ -11,7 +11,7 @@ depends_i686=('sdl' 'openal')
 depends_x86_64=('lib32-sdl' 'lib32-openal')
 # AUR helpers tend to use older, cached versions if the source name/url never changes.
 source=("BinkLinuxPlayer-$pkgver.7z"::"http://www.radgametools.com/down/Bink/BinkLinuxPlayer.7z")
-sha256sums=('a1ff8884a24413cc9b23ca347ded8c58abc713dc5a68618c9f48476694d7bc27')
+sha256sums=('80a9a111eb92bf5d7ed19550d6b6ea0342058bae86659129545644c4567813df')
 license=('custom')
 
 package() {
