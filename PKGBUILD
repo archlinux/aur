@@ -5,7 +5,7 @@
 
 _pkgbasename=qtractor
 pkgname=${_pkgbasename}-git
-pkgver=qtractor_0_8_0.r0.gca80cfb
+pkgver=0.8.0.r0.gca80cfb
 pkgrel=1
 pkgdesc="Audio/MIDI multitrack sequencer"
 arch=('i686' 'x86_64')
@@ -21,8 +21,8 @@ md5sums=('SKIP')
 
 pkgver() {
   cd "${srcdir}/${_pkgbasename}"
-  git describe --long | sed -r 's/([^-]*-g)/r\1/;s/-/./g'
-
+  # cutting off 'qtractor_' prefix that presents in the git tag + remaining underscores (it's ugly but gets the job done).
+  git describe --long | sed 's/^qtractor_//;s/\([^-]*-g\)/r\1/;s/-/./g' | sed 's/\_/./g'
 }
 
 build() {
