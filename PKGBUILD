@@ -2,10 +2,10 @@
 
 pkgname=buku
 pkgver=2.7
-pkgrel=0
+pkgrel=1
 pkgdesc="cmdline bookmark management utility written in Python3 and SQLite3"
 arch=('any')
-depends=('python' 'python-beautifulsoup4' 'python-cryptography' 'sqlite')
+depends=('python' 'python-beautifulsoup4' 'python-cryptography' 'python-requests' 'python-urllib3')
 makedepends=('make')
 url="https://github.com/jarun/Buku"
 license=('GPL3')
