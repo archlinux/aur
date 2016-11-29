@@ -1,4 +1,5 @@
-# Maintainer: Vlad M. <vlad@archlinux.net>
+# Maintainer: Jiachen Yang <farseerfc@gmail.com>
+# Contributor: Vlad M. <vlad@archlinux.net>
 # Contributor: Håvard Pettersson <mail@haavard.me>
 # Contributor: Florian Hahn <flo at fhahn dot com>
 
@@ -6,7 +7,7 @@ _pkgname=toxic
 pkgname=toxic-git
 pkgdesc='CLI Frontend in ncurses for Tox'
 license=('GPL3')
-pkgver=0.7.0.r4.g8827082
+pkgver=0.7.1.r15.gf858714
 pkgrel=1
 depends=('curl'
          'desktop-file-utils'
