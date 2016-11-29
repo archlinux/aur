@@ -2,12 +2,12 @@
 
 pkgname=check_lm_sensors
 pkgver=4.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Nagios plugin to monitor the values of on board sensors and hard disk temperatures"
 arch=('any')
 url="https://github.com/matteocorti/check_lm_sensors"
 license=('GPL')
-depends=('perl-monitoring-plugin' 'perl-readonly')
+depends=('perl-monitoring-plugin' 'perl-readonly' 'perl-list-moreutils')
 optdepends=('sudo: check localhost without authentication' 'hddtemp: check HDD temperatures')
 source=("https://github.com/matteocorti/${pkgname}/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.gz"
     'sudo.patch'
