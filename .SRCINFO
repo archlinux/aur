@@ -11,23 +11,17 @@ pkgbase = viivakoodi
 	sha256sums = e1a17dc24975d5242202cfbb7534d69dd14eeb26bdf8a10f056c7b04904fef1e
 
 pkgname = python2-viivakoodi
-	checkdepends = 
 	checkdepends = python2-pytest
 	checkdepends = python2-mock
 	checkdepends = python2-tox
-	depends = 
 	depends = python2
 	depends = python2-setuptools
-	optdepends = 
 	optdepends = python2-pillow: render barcodes as images
 
 pkgname = python-viivakoodi
-	checkdepends = 
 	checkdepends = python-pytest
 	checkdepends = python-mock
 	checkdepends = python-tox
-	depends = 
 	depends = python
 	depends = python-setuptools
-	optdepends = 
 	optdepends = python-pillow: render barcodes as images

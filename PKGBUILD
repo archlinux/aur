@@ -23,12 +23,12 @@ check() {
 }
 
 package_python-viivakoodi() {
-    depends+=('python'
-              'python-setuptools')
-    optdepends+=('python-pillow: render barcodes as images')
-    checkdepends+=('python-pytest'
-                   'python-mock'
-                   'python-tox')
+    depends=('python'
+             'python-setuptools')
+    optdepends=('python-pillow: render barcodes as images')
+    checkdepends=('python-pytest'
+                  'python-mock'
+                  'python-tox')
     cd "$srcdir/$pkgbase-$pkgver"
     python setup.py install --root="$pkgdir/" --optimize=1
 
@@ -37,12 +37,12 @@ package_python-viivakoodi() {
 }
 
 package_python2-viivakoodi() {
-    depends+=('python2'
-              'python2-setuptools')
-    optdepends+=('python2-pillow: render barcodes as images')
-    checkdepends+=('python2-pytest'
-                   'python2-mock'
-                   'python2-tox') 
+    depends=('python2'
+             'python2-setuptools')
+    optdepends=('python2-pillow: render barcodes as images')
+    checkdepends=('python2-pytest'
+                  'python2-mock'
+                  'python2-tox') 
 
     cd "$srcdir/$pkgbase-$pkgver"
     python2 setup.py install --root="$pkgdir/" --optimize=1
