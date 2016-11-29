@@ -1,15 +1,12 @@
 pkgbase = uchiwa
 	pkgdesc = A simple dashboard for the Sensu monitoring framework, built with Go and AngularJS.
-	pkgver = 0.18.2
+	pkgver = 0.20.2
 	pkgrel = 1
 	url = https://www.uchiwa.io/
 	install = uchiwa.install
 	arch = x86_64
 	arch = i686
 	license = MIT
-	makedepends = rpmextract
-	makedepends = rsync
-	makedepends = wget
 	depends = python2
 	depends = bash
 	options = emptydirs
@@ -17,10 +14,10 @@ pkgbase = uchiwa
 	source = uchiwa.service
 	md5sums = 598261aece4dcb18f35ce5435b652d8a
 	md5sums = a7222f9eac2a36b5e5c27a7377831dc5
-	source_x86_64 = http://dl.bintray.com/palourde/uchiwa/uchiwa-0.18.2-1.x86_64.rpm
-	md5sums_x86_64 = 123691c9f09c63196e00e82b5c082b60
-	source_i686 = http://dl.bintray.com/palourde/uchiwa/uchiwa-0.18.2-1.i386.rpm
-	md5sums_i686 = e92a6e0d543d722137b52485a90e5220
+	source_x86_64 = http://dl.bintray.com/palourde/uchiwa/uchiwa-0.20.2-1.x86_64.rpm
+	md5sums_x86_64 = 16da5ede5f2ed09623546318a6aaa7d2
+	source_i686 = http://dl.bintray.com/palourde/uchiwa/uchiwa-0.20.2-1.i386.rpm
+	md5sums_i686 = c7ee4a97e199ae343df7773efaad9ffa
 
 pkgname = uchiwa
 
