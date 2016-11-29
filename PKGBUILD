@@ -13,7 +13,7 @@ optdepends=()
 makedepends=('vala' 'cmake')
 conflicts=('go-for-it-git' 'go-for-it-bzr')
 source=(release_v${pkgver}.tar.gz::https://github.com/mank319/Go-For-It/archive/release_v${pkgver}.tar.gz)
-sha256sums=('8e8cb8f3e755f06f3088a1c32efd583af45b70e16222dd66ca876412a955b99b')
+sha256sums=('e26245b5abc1199a7f12b36e69fd29620aa2dad0988c415f2c4e391539f88ce6')
 
 prepare() {
   mv ${srcdir}/Go-For-It-release_v${pkgver}/* ${srcdir}/
