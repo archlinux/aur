@@ -1,4 +1,5 @@
 # Maintainer: Quentin Bourgeois <quentin+archlinux@bourgeois.eu>
+
 pkgbase=viivakoodi
 pkgname=("python2-$pkgbase" "python-$pkgbase")
 pkgver=0.8.0
