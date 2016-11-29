@@ -7,7 +7,7 @@ pkgbase=deluge-split
 _pkgbase=deluge
 pkgname=("${_pkgbase}-common" "${_pkgbase}-daemon" "${_pkgbase}-gtk" "${_pkgbase}-web" "${_pkgbase}-console")
 pkgver=1.3.13+2+g6c73105
-pkgrel=4
+pkgrel=5
 arch=('any')
 url="http://deluge-torrent.org/"
 license=('GPL3')
@@ -80,7 +80,8 @@ package_deluge-daemon() {
 package_deluge-gtk() {
   pkgdesc="Deluge GTK frontend"
   depends=("deluge-common=${pkgver}" 'pygtk' 'librsvg' 'python2-notify')
-  optdepends=('python2-notify: libnotify notifications')
+  optdepends=('geoip-database: display country flags in peer tab'
+              'python2-notify: libnotify notifications')
   conflicts=('deluge')
   groups=("$pkgbase")
 
@@ -114,7 +115,7 @@ package_deluge-web() {
   rm -f  "$pkgdir"/usr/lib/python2.7/site-packages/deluge/ui/*.{py,pyc,pyo}
   rm -f  "$pkgdir"/usr/lib/python2.7/site-packages/deluge/ui/web/*.{pyc,pyo}
   rm -rf "$pkgdir"/usr/lib/python2.7/site-packages/deluge-1.3.13-py2.7.egg-info/
-  rm -rf "$pkgdir"/usr/share/{icons,applications}
+  rm -rf "$pkgdir"/usr/share/{icons,pixmaps,applications}
 
   install -Dm644 ../deluge-web.service "$pkgdir/usr/lib/systemd/system/deluge-web.service"
 }
