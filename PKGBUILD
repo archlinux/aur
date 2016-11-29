@@ -3,13 +3,13 @@
 # Contributor: Robert Orzanna <orschiro@googlemail.com>
 
 pkgname=oblogout-blurlock
-pkgver=20151008
+pkgver=20161129
 pkgrel=1
 pkgdesc="Systemd/OpenRC-compatible logout script for Openbox, Fluxbox and others. Including blurlock and additional new button themes by UgoYak"
 url="https://github.com/oberon2007/oblogout-blurlock"
 
 _repo=oblogout-blurlock
-_snapshot=505ef3b2e6f051051814609f9ec32e86aea716b3
+_snapshot=14268047d4fa51cf1da6fd7e07b00d0435d2713a
 _forkname=oblogout-fork
 _forkroot="git://github.com/Cloudef/oblogout-fork.git"
 
@@ -31,7 +31,7 @@ conflicts=('fluxlogout'
 replaces=('fluxlogout')
 backup=('etc/oblogout.conf')
 source=("$_repo-$pkgver.tar.gz::$url/archive/$_snapshot.tar.gz")
-md5sums=('b7d8fe3685045ce55f922c36524e45f9')
+md5sums=('952160ec206595d25c8e51727954fbeb')
 
 build() {
   cd "$srcdir"
@@ -59,6 +59,7 @@ package() {
   install -dm755 $pkgdir/usr/share/themes
   cp -r $srcdir/$_repo-$_snapshot/themes/* $pkgdir/usr/share/themes
 
+  install -m755 blurlock $pkgdir/usr/bin/
   install -m755 fluxboxexit $pkgdir/usr/bin
   install -m755 ob_blurlock $pkgdir/usr/bin
   install -m755 oblogout_blur $pkgdir/usr/bin
