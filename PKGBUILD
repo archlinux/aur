@@ -3,16 +3,14 @@
 pkgname='fava'
 _pkgname='beancount-fava'
 pkgdesc='Web interface for beancount'
-pkgver=0.3.0
+pkgver=1.1
 pkgrel=1
 arch=('any')
-url='https://aumayr.github.io/fava/'
+url='https://github.com/beancount/fava'
 license=('GPL')
-source=("https://github.com/aumayr/${pkgname}/releases/download/v${pkgver}/${_pkgname}-${pkgver}.tar.gz")
-sha256sums=('d70ed37a35fa3adeaca519e6eb7ef4ee0b8190dd69f64ce04e8e0b5f15d0bca8')
-depends=('beancount' 'python-click' 'python-pygments' 'python-beancount-pygments-lexer'
-         'python-markdown2' 'python-flask' 'python-flask-babel' 'python-livereload')
-conflicts=('beancount-hg')
+source=("https://github.com/beancount/fava/releases/download/v${pkgver}/${_pkgname}-${pkgver}.tar.gz")
+sha256sums=('d25197cf5c9aa634ad8940825f3b4d041812aebab95dba09849d306ee420c65f')
+depends=('beancount' 'python-click' 'python-markdown2' 'python-flask' 'python-flask-babel')
 
 package () {
   cd "${_pkgname}-${pkgver}"
