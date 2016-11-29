@@ -3,7 +3,7 @@
 # Contributor: Ner0
 
 pkgname=nemo-git
-pkgver=3.0.6.r32.g0d9fc38
+pkgver=3.2.0.r4.g5dc6f4a
 pkgrel=1
 pkgdesc="Cinnamon file manager, git-version"
 arch=('i686' 'x86_64')
@@ -29,10 +29,10 @@ makedepends=('autoconf-archive'
     'python-gobject'
     'python2-gobject'
     'python-polib')
+optdepends=('ffmpegthumbnailer: support for video thumbnails')
 conflicts=('nemo')
 provides=('nemo')
 options=('!emptydirs')
-install=nemo.install
 source=("git+https://github.com/linuxmint/nemo#branch=$_branch")
 sha256sums=('SKIP')
 
@@ -70,4 +70,7 @@ package() {
   cd $srcdir/nemo
 
   make DESTDIR="$pkgdir" install
+  
+  # Remove D-Bus activation file to avoid conflict with nautilus-desktop
+  rm "$pkgdir/usr/share/dbus-1/services/org.nemo.freedesktop.FileManager1.service"
 }
