@@ -1,0 +1,26 @@
+diff --git a/src/activities/menu/Menu.qml b/src/activities/menu/Menu.qml
+index 2195311..6706a97 100644
+--- a/src/activities/menu/Menu.qml
++++ b/src/activities/menu/Menu.qml
+@@ -125,6 +125,11 @@ ActivityBase {
+         fillMode: Image.PreserveAspectCrop
+ 
+         function loadActivity() {
++            // @TODO init of item would be better in setsource but it crashes on Qt5.6
++            // https://bugreports.qt.io/browse/QTBUG-49793
++            activityLoader.item.audioVoices = audioVoices
++            activityLoader.item.audioEffects = audioEffects
++            activityLoader.item.loading = loading
+             pageView.push(activityLoader.item)
+         }
+ 
+@@ -419,9 +424,6 @@ ActivityBase {
+                     ActivityInfoTree.currentActivity = ActivityInfoTree.menuTree[index]
+                     activityLoader.setSource("qrc:/gcompris/src/activities/" + ActivityInfoTree.menuTree[index].name,
+                                              {
+-                                                 'audioVoices': audioVoices,
+-                                                 'audioEffects': audioEffects,
+-                                                 'loading': loading,
+                                                  'menu': menuActivity,
+                                                  'activityInfo': ActivityInfoTree.currentActivity
+                                              })
