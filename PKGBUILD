@@ -3,7 +3,7 @@
 
 _pkgname=godot
 pkgname=${_pkgname}-git
-pkgver=2.1.r3700.564ba76
+pkgver=2.2.r5989.ab637bc
 pkgrel=1
 pkgdesc="Godot Game Engine: An advanced, feature packed, multi-platform 2D and 3D game engine."
 url="http://www.godotengine.org"
@@ -35,8 +35,8 @@ sha256sums=(
 
 pkgver() {
     cd "${srcdir}/${_pkgname}"
-    _major=$(cat version.py|grep "major" | sed 's/major=//')
-    _minor=$(cat version.py|grep "minor" | sed 's/minor=//')
+    _major=$(cat version.py|grep "major" | sed 's/major = //')
+    _minor=$(cat version.py|grep "minor" | sed 's/minor = //')
     _revision=$(printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)")
     echo "${_major}.${_minor}.${_revision}"
     
