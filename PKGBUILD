@@ -1,7 +1,7 @@
 # Maintainer: Filipe Verri <filipeverri@gmail.com>
 
 pkgname=debug_assert-git
-pkgver=r5.0fa4470
+pkgver=r6.eb0b01e
 pkgrel=1
 pkgdesc="Simple, flexible and modular assertion macro"
 arch=('any')
@@ -24,4 +24,5 @@ pkgver() {
 package() {
   mkdir -p "$pkgdir/usr/include"
   cp "$srcdir/${pkgname%-git}/debug_assert.hpp" "$pkgdir/usr/include"
+  install -D -m644 "$srcdir/${pkgname%-git}/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
