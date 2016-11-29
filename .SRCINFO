@@ -1,15 +1,15 @@
 pkgbase = libgestures
 	pkgdesc = Chromium OS gestures library
 	pkgver = 2.0.3
-	pkgrel = 3
-	url = http://github.com/hugegreenbug/libgestures
+	pkgrel = 4
+	url = http://github.com/galliumos/libgestures
 	arch = i686
 	arch = x86_64
 	license = custom:chromiumos
 	makedepends = git
 	depends = jsoncpp
 	provides = libgestures=$pkgver
-	source = libgestures::git+https://github.com/hugegreenbug/libgestures.git
+	source = libgestures::git+https://github.com/galliumos/libgestures.git
 	md5sums = SKIP
 
 pkgname = libgestures
