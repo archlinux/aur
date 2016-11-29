@@ -1,8 +1,8 @@
 # Maintainer: dumblob <dumblob@gmail.com>
 # Contributor: dumblob <dumblob@gmail.com>
 
-pkgver=7.2.2
-pkgrel=2
+pkgver=7.3.3
+pkgrel=1
 
 _basename=bonita-bpm-community
 _basenamever="${_basename}-$pkgver"
@@ -17,8 +17,8 @@ arch=('i686' 'x86_64')
 source_x86_64=("http://download.forge.objectweb.org/bonita/BonitaBPMCommunity-${pkgver}-x86_64.run")
 # http://www.bonitasoft.com/products/download/bonita-bpm-linux-6-4-2-32bit?skip=true
 source_i686=(  "http://download.forge.objectweb.org/bonita/BonitaBPMCommunity-${pkgver}-x86.run")
-sha256sums_x86_64=('d69ed52e8fbd4fdcb393d19101e64f8e7bb82993919f5446a52f20bed374ddcd')  # 7.2.2
-sha256sums_i686=(  '0467df04a8505d4ac2494bf132ddad73c947f7f394a03684292e2bd45f3aa83f')  # 7.2.2
+sha256sums_x86_64=("8ef5769410df746167828bea7fd3b95974bd5ee85df1bf3477bbc07a6d0350d7")  # 7.3.3
+sha256sums_i686=(  "d6d1c8e611471f779996eb4434cc185ed94147f63442c5c3299346a120f11cdc")  # 7.3.3
 install=bonita-bpm-community.install
 
 depends=('ffmpeg-compat' 'java-environment' 'libxslt' 'python' 'gtk2')
@@ -27,7 +27,6 @@ makedepends=()
 # FIXME may be needed: libavformat.so.52 libgstreamer-lite.so libavcodec.so.52
 optdepends=(
   'jre7-openjdk-headless: PROVIDES libverify.so libjli.so libfontmanager.so libjava.so libawt.so libnio.so libjvm.so libnet.so libmawt.so'
-  'openjdk6:              PROVIDES libverify.so libjli.so libfontmanager.so libjava.so libawt.so libnio.so libjvm.so libnet.so libmawt.so'
   'cuda-toolkit:          PROVIDES libverify.so libjli.so libfontmanager.so libjava.so libawt.so libnio.so libjvm.so libnet.so libmawt.so libJdbcOdbc.so'
   'libnet:                PROVIDES libnet.so'
   'jre7-openjdk:          PROVIDES libmawt.so'
@@ -37,6 +36,21 @@ provides=('bonita-bpm-community')
 conflicts=()
 
 build() {
+#  # use: makepkgg -cf --skipchecksums
+#  {
+#    #wget "$source_x86_64"
+#    wget -c "$source_i686"
+#    printf 'sha256sums_x86_64=("%s")  # %s\n' \
+#      "$(sha256sum "$(basename "$source_x86_64")" | cut -b -64)" "$pkgver"
+#    printf 'sha256sums_i686=(  "%s")  # %s\n' \
+#      "$(sha256sum "$(basename "$source_i686"  )" | cut -b -64)" "$pkgver"
+#    false
+#  }
+
+  [ "$(ls -1 *.run | wc -l)" -eq 1 ] || {
+    printf '%sERR Multiple *.run files found.\n'
+    false
+  }
   chmod +x *.run
   ./*.run --mode unattended --prefix "$_prefix/$_basenamever"
 
