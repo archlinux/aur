@@ -8,7 +8,7 @@
 pkgbase=handbrake-git
 pkgname=('handbrake-gtk-git' 'handbrake-cli-git')
 pkgver=r7619
-pkgrel=1
+pkgrel=2
 pkgdesc="Multiplatform, multithreaded DVD to MPEG-4/H264/Theora converter"
 arch=('i686' 'x86_64')
 url="http://handbrake.fr/"
@@ -55,7 +55,7 @@ package_handbrake-gtk-git() {
               'gst-plugins-good: For Preview Window'
               'gst-plugins-ugly: For Preview Window'
               'gst-libav: For Preview Window')
-  akedepends=('git' 'cmake' 'intltool' 'python2'
+  makedepends=('git' 'cmake' 'intltool' 'python2'
 	     'gettext' 'subversion' 'yasm' 'paxtest')
   provides=('handbrake-gtk')
   conflicts=('handbrake-gtk')
