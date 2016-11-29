@@ -1,15 +1,15 @@
-# Maintainer: Frederic Bezies <fredbezies at gmail dot com>
+# Maintainer: Edgard Castro <castro@edgard.org>
+# Contributor: Frederic Bezies <fredbezies at gmail dot com>
 # Contributor: FadeMind <fademind@gmail.com>
 
 pkgname=papirus-icon-theme-gtk-git
-pkgver=20161014
+pkgver=20161129
 pkgrel=1
 pkgdesc="Papirus icon theme for GTK (git version)"
 url="https://github.com/PapirusDevelopmentTeam/${pkgname%-git}"
 arch=('any')
-license=('GPL')
-depends=('gtk-update-icon-cache')
-makedepends=('git' 'make')
+license=('LGPL3')
+makedepends=('git')
 conflicts=('papirus-gtk-icon-theme' 'papirus-gtk-icon-theme-git' 'papirus-icon-theme-gtk')
 options=('!strip')
 source=("${pkgname}::git+${url}.git")
@@ -21,5 +21,7 @@ pkgver() {
 }
 
 package() {
-    make -C "${pkgname}" install DESTDIR="$pkgdir"
+    cd ${pkgname}
+    install -dm 755 "${pkgdir}"/usr/share/icons
+    cp -dr --no-preserve='ownership' Papirus{,-Dark} "${pkgdir}"/usr/share/icons/
 }
