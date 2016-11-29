@@ -1,7 +1,7 @@
 pkgbase = kodi-addon-inputstream-adaptive-git
 	pkgdesc = InputStream client for adaptive streams for Kodi 17+
 	pkgver = r14.bd70c53
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/liberty-developer/inputstream.adaptive
 	arch = x86_64
 	arch = i686

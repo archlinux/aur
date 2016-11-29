@@ -1,7 +1,7 @@
 # Maintainer: kevku <kevku@gmx.com>
 pkgname=kodi-addon-inputstream-adaptive-git
 pkgver=r14.bd70c53
-pkgrel=1
+pkgrel=2
 pkgdesc="InputStream client for adaptive streams for Kodi 17+"
 arch=('x86_64' 'i686')
 url="https://github.com/liberty-developer/inputstream.adaptive"
@@ -36,7 +36,8 @@ build() {
 
 package() {
 	cd "$srcdir/$pkgname"
+	make DESTDIR="$pkgdir/" install
+        sed -i 's|special://home/cdm|/usr/lib/kodi/addons/inputstream.adaptive/decrypter|g' "$pkgdir/usr/share/kodi/addons/inputstream.adaptive/resources/settings.xml"
 	install -Dm644 wvdecrypter/libssd_wv.so "$pkgdir/usr/lib/kodi/addons/inputstream.adaptive/decrypter/libssd_wv.so"
         ln -sf /usr/lib/chromium/libwidevinecdm.so "$pkgdir/usr/lib/kodi/addons/inputstream.adaptive/decrypter/libwidevinecdm.so"
-	make DESTDIR="$pkgdir/" install
 }
