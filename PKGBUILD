@@ -6,10 +6,11 @@
 # Contributor: Scias <shining [dot] scias [at] gmail [dot] com>
 # Contributor: darzki <darzki [at] o2 [dot] pl>
 # Contributor: N30N <archlinux [at] alunamation [dot] com>
+# Contributor: Marcin Nowak <marcin [dot] j [dot] nowak [at] gmail [dot] com>
 
 pkgname=lwks-beta
-pkgver=12.5.E
-pkgrel=1
+pkgver=14.0.0.0
+pkgrel=90691
 pkgdesc="Lightworks is a professional video editing suite"
 arch=('x86_64')
 url="http://www.lwks.com/"
@@ -17,24 +18,41 @@ license=('custom')
 depends=('gtk3' 'portaudio' 'libgl' 'glu' 'ffmpeg' 'ffmpeg-compat' 'libedit' 'nvidia-cg-toolkit')
 optdepends=('nvidia-utils: only for nVidia users')
 provides=('lightworks')
-conflicts=('lightworks')
-source=("http://www.lwks.com/dmpub/lwks-$pkgver-amd64.deb")
-sha256sums=('a4865ee9333a1f795d8427c87c8615a789346ad3443e743b95151be673eadddc')
+conflicts=('lightworks', 'lwks')
+source=(
+    "http://downloads.lwks.com/Lightworks-Beta-$pkgrel-$pkgver.deb"
+    "http://ala.seblu.net/packages/p/portaudio/portaudio-19_20140130-3-x86_64.pkg.tar.xz"
+    )
+
+sha256sums=(
+    '1525760c16438c0f8858213fe04a689d778ca6ff8933f39a498de8110b533079'
+    '1c6722888cf4ab5cbf4bdfd6272b7d524f0ee547f443a98cf554d6fa8ae5c1ca'
+    )
 
 package() {
-	msg2 "Extracting data.tar.gz"
-	bsdtar -zxf data.tar.gz -C "$pkgdir"
+    msg2 "Extracting data.tar.xz"
+    bsdtar -zxf data.tar.xz -C "$pkgdir"
 
-	msg2 "Moving udev folder from /lib to /usr/lib"
-	mv "$pkgdir"/lib/udev "$pkgdir"/usr/lib
-	rmdir "$pkgdir"/lib
+    msg2 "Extracting compatible PortAudio 19_20140130"
+    mkdir "$pkgdir/portaudio"
+    tar -xf portaudio-19_20140130-3-x86_64.pkg.tar.xz -C "$pkgdir/portaudio"
 
-	msg2 "Copying copyright file and creating a license dir"
-	install -Dm644 "$pkgdir"/usr/share/doc/lightworks/copyright \
-	"$pkgdir"/usr/share/licenses/lightworks/copyright
-	ln -sr "$pkgdir"/usr/share/licenses/lightworks "$pkgdir"/usr/share/licenses/$pkgname
+    msg2 "Moving udev folder from /lib to /usr/lib"
+    mv "$pkgdir"/lib/udev "$pkgdir"/usr/lib
+    rmdir "$pkgdir"/lib
 
-	msg2 "Changing some needed permissions"
-	chmod a+rw "$pkgdir"/usr/share/lightworks/Preferences
-	chmod a+rw "$pkgdir"/usr/share/lightworks/"Audio Mixes"
+    msg2 "Copying copyright file and creating a license dir"
+    install -Dm644 "$pkgdir"/usr/share/doc/lightworks/copyright \
+    "$pkgdir"/usr/share/licenses/lightworks/copyright
+    ln -sr "$pkgdir"/usr/share/licenses/lightworks "$pkgdir"/usr/share/licenses/$pkgname
+
+    msg2 "Changing some needed permissions"
+    chmod a+rw "$pkgdir"/usr/share/lightworks/Preferences
+    chmod a+rw "$pkgdir"/usr/share/lightworks/"Audio Mixes"
+
+    msg2 "Copying portaudio files"
+    install -Dm644 "$pkgdir"/portaudio/usr/lib/libportaudio*.so* "$pkgdir"/usr/lib/lightworks/
+
+    msg2 "Cleaning up portaudio files"
+    rm -rf "$pkgdir/portaudio"
 }
