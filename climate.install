@@ -1,6 +1,14 @@
 ## arg 1:  the new package version
 post_install() {
-  true;
+    echo "
+In order to use certain commands, you may want to install these node/npm packages:
+
+    $ npm install -g http-server is-up-cli is-online-cli
+
+And these python/pip packages:
+
+    $ pip install httpstat
+"
 }
 
 ## arg 1:  the old package version
