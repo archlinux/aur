@@ -2,7 +2,7 @@
 
 pkgname=emojione-picker-git
 pkgver=0.1.r37.gcb5f504
-pkgrel=1
+pkgrel=2
 pkgdesc='Emoji picker based on icons by Emojione '
 arch=('any')
 url='https://github.com/gentakojima/emojione-picker-ubuntu'
@@ -26,8 +26,8 @@ prepare() {
 
 package() {
   cd 'emojione-picker-ubuntu'
-  export _INSTALL_PREFIX="${pkgdir}/usr/local/"
+  export _INSTALL_PREFIX="${pkgdir}/usr/"
   export _AUTOSTART_DIR="${pkgdir}/etc/xdg/autostart"
-  export _APP_DIR="${pkgdir}/usr/local/share/applications"
+  export _APP_DIR="${pkgdir}/usr/share/applications"
   ./install_for_pkgbuild.sh
 }
