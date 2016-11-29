@@ -1,56 +1,37 @@
 # Maintainer: Bernhard Landauer <oberon@manjaro.org>
-# Maintainer: Richard Schwab <mail NOSPAM w.tf-w.tf>
+# Contributor: Nikias Bassen
+# Contributor: Martin Szulecki
 
 pkgname=libiphone-git
-pkgver=1.2.0.r13.gdf1f5c4
+_pkgname=libimobiledevice
+pkgver=1.2.0.r41.ga1c7285
 pkgrel=1
-pkgdesc="libiphone is a software library that talks the native Apple USB protocols that the iPhone uses. (no cython support for now)"
-url="http://libimobiledevice.org/"
+pkgdesc="libimobiledevice is a software library that talks the protocols to support iPhone and iPod Touch devices on Linux"
+url="http://www.libimobiledevice.org/"
 arch=('i686' 'x86_64')
-license=('GPL')
-depends=('gnutls'
-#	'fuse'
-#	'glib2'
-	'libplist'
-	'libusb'
-#	'libxml2'
-#	'libxml++' 
-	'usbmuxd')
-makedepends=('autoconf'
-	'automake'
-	'gcc'
-	'git'
-	'make'
-	'pkgconfig')
-optdepends=('doxygen: Documentation')
-provides=('libiphone')
-source=('libiphone::git+http://git.sukimashita.com/libimobiledevice.git'
-	'SSLv23.patch')
-md5sums=('SKIP'
-         '1cf25e39d353e02c7c8daaa41bd671e9')
+license=('GPL2' 'LGPL2.1')
+depends=('gnutls' 'openssl' 'libplist' 'libusbmuxd')
+optdepends=('cython: Python bindings'
+            'doxygen: Documentation')
+makedepends=('git')
+provides=('libiphone' "$_pkgname")
+conflicts=('libiphone' "$_pkgname")
 
-prepare() {
-	cd libiphone
-	patch -p1 < ../SSLv23.patch
-}
+source=("git+https://github.com/$_pkgname/$_pkgname.git")
+sha512sums=('SKIP')
 
 pkgver() {
-	cd libiphone
+	cd $_pkgname
 	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-	cd libiphone
-
-	msg "Configuring..."
-
-	./autogen.sh --prefix=/usr --without-cython
-
-	msg "Starting make..."
+	cd $_pkgname
+	PYTHON=/usr/bin/python2 ./autogen.sh --prefix=/usr
 	make
 }
 
 package() {
-	cd libiphone
-	make DESTDIR=${pkgdir} install
+	cd $_pkgname
+	make DESTDIR="$pkgdir" install
 }
