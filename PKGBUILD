@@ -10,7 +10,7 @@
 pkgname=paraview-superbuild
 pkgver=5.2.0
 pkgrel=1
-pkgdesc='Parallel Visualization Application using VTK'
+pkgdesc='Parallel Visualization Application using VTK (built using superbuild system)'
 arch=('i686' 'x86_64')
 url='http://www.paraview.org'
 license=('custom')
@@ -22,6 +22,8 @@ source=("git+https://gitlab.kitware.com/paraview/paraview-superbuild.git#tag=v${
         "paraview-superbuild.sh")
 sha1sums=('SKIP'
           'bb389666a765ff558233fced708e3a9c991b0650')
+conflicts=('paraview')
+provides=('paraview')
 
 prepare() {
   cd "${srcdir}/${pkgname}"
