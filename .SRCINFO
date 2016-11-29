@@ -1,7 +1,7 @@
 pkgbase = python-aiohttp
 	pkgdesc = http client/server for asyncio
 	pkgver = 1.1.5
-	pkgrel = 1
+	pkgrel = 2
 	url = http://pypi.python.org/pypi/aiohttp
 	arch = i686
 	arch = x86_64
@@ -15,6 +15,7 @@ pkgbase = python-aiohttp
 	depends = python-chardet
 	depends = python-multidict
 	depends = python-async-timeout
+	depends = python-yarl
 	noextract = aiohttp-1.1.5-cp35-cp35m-manylinux1_i686.whl
 	noextract = aiohttp-1.1.5-cp35-cp35m-manylinux1_x86_64.whl
 	source_i686 = https://files.pythonhosted.org/packages/cp35/a/aiohttp/aiohttp-1.1.5-cp35-cp35m-manylinux1_i686.whl

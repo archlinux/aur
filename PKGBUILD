@@ -2,12 +2,12 @@
 _name=aiohttp
 pkgname=python-aiohttp
 pkgver=1.1.5
-pkgrel=1
+pkgrel=2
 pkgdesc='http client/server for asyncio'
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="http://pypi.python.org/pypi/$_name"
 license=('Apache')
-depends=('python>=3.5' 'python-chardet' 'python-multidict' 'python-async-timeout')
+depends=('python>=3.5' 'python-chardet' 'python-multidict' 'python-async-timeout' 'python-yarl')
 makedepends=('python-pip')
 
 # binary packages
