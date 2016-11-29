@@ -1,6 +1,6 @@
 # Maintainer: Chris Nixon <chris.nixon@sigma.me.uk>
 pkgname="tesseract-ocr-git"
-pkgver=3.04.rc1.r66.g941d870
+pkgver=3.05.00dev.r511.gdd9452c
 pkgrel=1
 pkgdesc="OCR Engine developed at HP Labs and now sponsored by Google."
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ license=('Apache')
 groups=()
 depends=('gcc-libs' 'libtiff' 'libpng' 'leptonica' 'giflib' 'libjpeg')
 optdepends=('cairo' 'icu' 'pango')
-source=('tesseract-ocr::git+https://code.google.com/p/tesseract-ocr')
+source=('tesseract-ocr::git+https://github.com/tesseract-ocr/tesseract')
 makedepends=('git' 'pango' 'icu' 'cairo')
 provides=('tesseract')
 conflicts=('tesseract')
