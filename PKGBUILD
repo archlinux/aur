@@ -10,7 +10,7 @@ license=('MIT')
 makedepends=('git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-depends=('debug_assert')
+depends=('debug_assert-git')
 source=('git+https://github.com/foonathan/type_safe.git')
 md5sums=('SKIP')
 
@@ -25,4 +25,5 @@ pkgver() {
 package() {
   mkdir -p "$pkgdir/usr/include"
   cp -R "$srcdir/${pkgname%-git}/include/type_safe" "$pkgdir/usr/include"
+  install -D -m644 "$srcdir/${pkgname%-git}/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
