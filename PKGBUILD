@@ -8,7 +8,6 @@ url="https://www.uchiwa.io/"
 license=('MIT')
 install="${pkgname}.install"
 depends=('python2' 'bash')
-makedepends=('rpmextract' 'rsync' 'wget')
 options=('emptydirs')
 source_i686=("http://dl.bintray.com/palourde/uchiwa/uchiwa-${pkgver}-1.i386.rpm")
 source_x86_64=("http://dl.bintray.com/palourde/uchiwa/uchiwa-${pkgver}-1.x86_64.rpm")
@@ -29,7 +28,7 @@ package() {
     rm $srcdir/etc/init.d/uchiwa
     rm -rf $srcdir/etc/init.d
 
-    rsync -ruDq $srcdir/* $pkgdir
+    cp -R $srcdir/* $pkgdir
     install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
     install -D -m644 ${pkgname}.service "${pkgdir}/usr/lib/systemd/system/${pkgname}.service"
 }
