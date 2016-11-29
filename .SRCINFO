@@ -1,23 +1,23 @@
 pkgbase = kmozillahelper-kf5
-	pkgdesc = Mozilla KDE Integration. KF5 port with kdelibs4support.
-	pkgver = 0.6.4
-	pkgrel = 3
-	url = https://build.opensuse.org/package/show/openSUSE:Factory/mozilla-kde4-integration
+	pkgdesc = Mozilla KDE Integration with KF5 support
+	pkgver = 0.6.4.r10.g0219317
+	pkgrel = 1
+	url = https://github.com/openSUSE/kmozillahelper
 	arch = i686
 	arch = x86_64
 	license = MIT
 	makedepends = cmake
-	makedepends = automoc4
 	makedepends = extra-cmake-modules
-	depends = kdelibs4support
+	depends = kio
+	depends = ki18n
+	depends = knotifications
+	depends = kwindowsystem
 	provides = kmozillahelper-frameworks
 	provides = kmozillahelper
 	conflicts = kmozillahelper-frameworks
 	conflicts = kmozillahelper
-	source = kmozillahelper-0.6.4.tar.gz::https://github.com/openSUSE/kmozillahelper/archive/0.6.4.tar.gz
-	source = port_to_kf5.patch
-	md5sums = 0c7252a1937514f84cad21615c8eeacc
-	md5sums = a1f5a226ad839339c4a24b9bf671e2d5
+	source = git+https://github.com/openSUSE/kmozillahelper.git
+	md5sums = SKIP
 
 pkgname = kmozillahelper-kf5
 
