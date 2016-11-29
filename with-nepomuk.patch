@@ -1,0 +1,16 @@
+--- rekonq-2.4.2/CMakeLists.txt~	2014-03-08 10:35:22.003986721 +0000
++++ rekonq-2.4.2/CMakeLists.txt	2014-03-08 10:38:34.075974545 +0000
+@@ -48,9 +48,11 @@
+ # ==================================================================================
+ # optional nepomuk requirements
+ 
+-FIND_PACKAGE(Soprano)
++if(WITH_NEPOMUK)
++  FIND_PACKAGE(Soprano)
+ 
+-FIND_PACKAGE(NepomukCore 0.1.0)
++  FIND_PACKAGE(NepomukCore 0.1.0)
++endif()
+ 
+ IF(SOPRANO_FOUND AND NepomukCore_FOUND)
+     ADD_DEFINITIONS(-DHAVE_NEPOMUK)

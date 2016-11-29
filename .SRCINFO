@@ -1,0 +1,20 @@
+pkgbase = rekonq
+	pkgdesc = A WebKit based web browser for KDE
+	pkgver = 2.4.2
+	pkgrel = 6
+	url = http://rekonq.kde.org/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	makedepends = automoc4
+	depends = kdebase-keditbookmarks
+	depends = qoauth-qt4
+	optdepends = kdebase-konqueror: search engines support
+	source = http://downloads.sourceforge.net/rekonq/rekonq-2.4.2.tar.xz
+	source = with-nepomuk.patch
+	sha256sums = e9805b32f592ca5809bd1632c624c57fc0109ce98b73a8b8e3ebd04e9c875126
+	sha256sums = 19db70a6c9d3b323b58e07f4ca5b6193a2bd0fcba87c86019ea0f78987a22c69
+
+pkgname = rekonq
+
