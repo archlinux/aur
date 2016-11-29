@@ -1,16 +1,16 @@
 # Maintainer: Filipe Verri <filipeverri@gmail.com>
 
 pkgname=standardese-git
-pkgver=0.3
+pkgver=0.3.r0.ga870d7b
 pkgrel=1
 pkgdesc="A (work-in-progress) nextgen Doxygen for C++"
 arch=('i686' 'x86_64')
 url="https://github.com/foonathan/standardese"
 license=('MIT')
-depends=('clang>=3.7.1' 'boost>=1.55')
-makedepends=('git' 'cmake')
+depends=('clang>=3.7.1' 'boost-libs>=1.55' 'cmark')
+makedepends=('git' 'cmake' 'boost>=1.55')
 provides=("${pkgname%-git}")
-conflicts=("${pkgname%-git}")
+conflicts=("${pkgname%-git}" 'spdlog-git')
 source=('git+https://github.com/foonathan/standardese.git')
 md5sums=('SKIP')
 
@@ -23,11 +23,12 @@ build() {
   cd "$srcdir/${pkgname%-git}"
   mkdir build
   cd build
-  cmake -DSTANDARDESE_BUILD_TEST=OFF ..
+  cmake -DSTANDARDESE_BUILD_TEST=OFF -DCMAKE_INSTALL_PREFIX="$pkgdir/usr" ..
   make
 }
 
 package() {
   cd "$srcdir/${pkgname%-git}/build"
-  make DESTDIR="$pkgdir/" install
+  make install
+  install -D -m644 "../LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
