@@ -22,7 +22,6 @@ pkgbase = python-dolfin-git
 	depends = slepc
 	depends = suitesparse
 	depends = scotch
-	depends = vtk
 	options = !emptydirs
 	source = dolfin::git+https://bitbucket.org/fenics-project/dolfin.git#branch=master
 	md5sums = SKIP
