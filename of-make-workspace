@@ -53,4 +53,4 @@ ln -s /opt/openFrameworks/other
 ln -s /opt/openFrameworks/README.md
 ln -s /opt/openFrameworks/scripts
 
-ln -s scripts/$PG/projectGenerator
+ln -s $PG/projectGenerator

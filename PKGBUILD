@@ -1,8 +1,8 @@
 # Maintainer: Marco Pompili <aur@emarcs.org>
 
 pkgname=openframeworks
-pkgver=0.9.3
-pkgrel=3
+pkgver=0.9.8
+pkgrel=1
 pkgdesc="An open source C++ toolkit for creative coding."
 url="http://openframeworks.cc/"
 arch=('x86_64' 'i686')
@@ -17,16 +17,14 @@ install=openframeworks.install
 [[ "$CARCH" == "i686" ]] && _arch="linux" || _arch="linux64"
 _name="of_v${pkgver}_${_arch}_release"
 
-source=("rtAudio.patch"
-				"of-make-workspace")
+source=("rtAudio.patch" "of-make-workspace")
 
 source_i686=("http://www.openframeworks.cc/versions/v${pkgver}/of_v${pkgver}_linux_release.tar.gz")
 source_x86_64=("http://www.openframeworks.cc/versions/v${pkgver}/of_v${pkgver}_linux64_release.tar.gz")
-
 md5sums=('31600cdc597a275295fa35cf178f83c0'
-         '924d38c4371b0d706a0f0c73accc75a0')
-md5sums_x86_64=('95c5f436a66489ed1ca460bf593bdbe1')
-md5sums_i686=('5b9a6cf3e8ba372eba59a13cb403ea00')
+         'd4a0cfda1970138b71d28f1cd81220da')
+md5sums_x86_64=('df607d735617005e795234c834d91746')
+md5sums_i686=('452002f4246fd0c9ab4ff5a4dc2f2111')
 
 prepare() {
 	export OF_ROOT=${srcdir}/${_name}
@@ -40,22 +38,22 @@ prepare() {
 		LIBSPATH=linux
 	fi
 
-	sys_cores=$(getconf _NPROCESSORS_ONLN)
-	if [ $sys_cores -gt 1 ]; then
-		cores=$(($sys_cores-1))
-	else
-		cores=1
-	fi
-
-	msg2 "Found $sys_cores core/s, set sail!"
-
 	GCC_MAJOR_GT_4=$(expr `gcc -dumpversion | cut -f1 -d.` \> 4)
 	if [ $GCC_MAJOR_GT_4 -eq 1 ]; then
-
 		msg2 "Rebuilding POCO libraries for gcc5, this could take a while..."
 
-    cd ${OF_ROOT}/scripts/apothecary
-    ./apothecary -j${cores} update poco
+		sys_cores=$(getconf _NPROCESSORS_ONLN)
+
+		if [ $sys_cores -gt 1 ]; then
+			cores=$(($sys_cores-1))
+		else
+			cores=1
+		fi
+
+		msg2 "Found $sys_cores core/s, set sail!"
+
+		cd ${OF_ROOT}/scripts/apothecary
+		./apothecary -j${cores} update poco
 	fi
 
 	msg2 "Fix RtAudio.h path"
