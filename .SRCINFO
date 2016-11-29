@@ -1,16 +1,19 @@
 pkgbase = ddns
 	pkgdesc = Automatic provisioning of Dynamic DNS.
-	pkgver = 1.0.1
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://github.com/kcolford/ddns
 	arch = any
 	license = GPL
-	depends = bind-tools
 	depends = bash
-	depends = curl
+	depends = bind-tools
+	depends = coreutils
+	depends = sed
 	optdepends = bind: for tsig-keygen
-	source = https://github.com/kcolford/ddns/archive/v1.0.1.tar.gz
-	md5sums = dd7e4a31e0413d6dc2ab266a66fa8099
+	optdepends = curl: for looking up your ip address
+	optdepends = ssh: for updating SSHFP records
+	source = https://github.com/kcolford/ddns/archive/v1.1.0.tar.gz
+	md5sums = 33fb5885e1416f4a7987a2ca35300dcf
 
 pkgname = ddns
 
