@@ -1,5 +1,5 @@
 pkgname=fftw-mpi
-pkgver=3.3.4
+pkgver=3.3.5
 pkgrel=1
 pkgdesc="fftw, compiled with MPI and OpenMP support"
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ makedepends=('gcc-fortran')
 source=("http://www.fftw.org/fftw-${pkgver}.tar.gz")
 provides=('fftw')
 install=fftw.install
-sha1sums=('fd508bac8ac13b3a46152c54b7ac885b69734262')
+sha1sums=('875831a7ab87d278f21ac0c3453f12d5ee807da4')
 
 # notes:
 # http://www.fftw.org/fftw2_doc/fftw_6.html#SEC69
