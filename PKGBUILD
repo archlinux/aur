@@ -5,7 +5,7 @@
 
 pkgname=murmur-ice
 pkgver=1.2.17
-pkgrel=1
+pkgrel=2
 pkgdesc="The voice chat application server for Mumble"
 arch=('i686' 'x86_64')
 url="https://github.com/mumble-voip/mumble"
@@ -22,7 +22,7 @@ source=(https://github.com/mumble-voip/mumble/releases/download/${pkgver}/mumble
 build() {
   cd ${srcdir}/mumble-$pkgver
 
-  qmake-qt4 main.pro CONFIG+="no-client"
+  qmake-qt4 main.pro CONFIG+="no-client" QMAKE_CXXFLAGS+="-std=c++03"
   make release
 }
 
