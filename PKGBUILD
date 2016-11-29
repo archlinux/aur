@@ -5,21 +5,20 @@
 
 pkgname=emacs-pretest
 _pkgname=emacs
-pkgver=25.1
-_pkgver=25.1-rc2
-pkgrel=0.2
+pkgver=25.1.90
+pkgrel=1
 pkgdesc="The extensible, customizable, self-documenting real-time display editor -- pretest version"
 arch=('i686' 'x86_64')
 url="http://www.gnu.org/software/emacs/emacs.html"
 license=('GPL3')
-depends=('gtk3' 'gpm' 'm17n-lib' 'alsa-lib' 'imagemagick')
+depends=('gtk3' 'gpm' 'giflib' 'm17n-lib' 'desktop-file-utils' 'alsa-lib' 'imagemagick' 'zlib')
 install=$pkgname.install
 provides=('emacs')
 conflicts=('emacs')
-source=(ftp://alpha.gnu.org/gnu/emacs/pretest/$_pkgname-$_pkgver.tar.xz{,.sig})
-sha384sums=('9ec2a501102f30ae9f520ebcb9f7e36cf6543aac9cd0cbca12d1fb33516ec2943bfe913605ea0a254c3adfb446bf41ed'
+source=(ftp://alpha.gnu.org/gnu/emacs/pretest/$_pkgname-$pkgver.tar.xz{,.sig})
+sha512sums=('9d20f83d62598b74466e2b12bd09388b27099708aba831806dc5c0710071499b1796b3e986e0fa35384873d0f5faa5dec2866dce297a7cc7136a77a2bb1e0bcd'
             'SKIP')
-validpgpkeys=('28D3BED851FDF3AB57FEF93C233587A47C207910')
+validpgkkeys=('28D3BED851FDF3AB57FEF93C233587A47C207910')
 
 build() {
   cd "$srcdir"/$_pkgname-$pkgver
@@ -34,7 +33,7 @@ build() {
                   --without-gconf
                   --with-sound=alsa
                   --with-x-toolkit=gtk3
-                  --with-gameuser=:games
+                  --with-game-user=:games
                   --with-modules)
   ./configure "${confopts[@]}"
   make
