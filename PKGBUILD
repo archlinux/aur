@@ -1,7 +1,7 @@
 # Maintainer: demian <mikar ατ gmx δοτ de>
 pkgname=blockify
 pkgver=3.6.3
-pkgrel=2
+pkgrel=3
 pkgdesc="Mutes Spotify advertisements."
 arch=("any")
 url="https://github.com/mikar/${pkgname}"
@@ -16,7 +16,7 @@ depends=("spotify"
          "wmctrl")
 makedepends=("python-setuptools")
 optdepends=("pulseaudio: mute spotify sink instead of system sound")
-source=("https://github.com/mikar/${pkgname}/archive/v${pkgver}.tar.gz")
+source=("blockify-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz") 
 
 package() {
     cd "$srcdir"/${pkgname}-${pkgver}
