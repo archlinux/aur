@@ -3,7 +3,7 @@
 
 pkgname=binkplayer
 pkgver=2.6c
-pkgrel=1
+pkgrel=2
 pkgdesc="Bink Video Player"
 url="http://www.radgametools.com/bnkmain.htm"
 arch=('i686' 'x86_64')
