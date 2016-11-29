@@ -3,13 +3,13 @@
 
 pkgname=steam-native-runtime
 pkgver=1.0.0.52
-pkgrel=8
+pkgrel=9
 pkgdesc='Native replacement for the Steam runtime'
 arch=('i686' 'x86_64')
 url='https://wiki.archlinux.org/index.php/Steam/Troubleshooting#Native_runtime'
 license=('None')
 depends=('alsa-lib' 'alsa-plugins' 'atk' 'cairo' 'curl' 'dbus-glib'
-         'fontconfig' 'freetype2' 'gconf' 'gdk-pixbuf2' 'glew1.10'
+         'fontconfig' 'freetype2' 'freeglut' 'gconf' 'gdk-pixbuf2' 'glew1.10'
          'glib2' 'glu' 'gtk2' 'libappindicator-gtk2' 'libcaca' 'libcanberra'
          'libcups' 'libcurl-compat' 'libcurl-gnutls' 'dbus' 'libdrm'
          'libgcrypt15' 'libice' 'libjpeg6' 'libnm-glib' 'libpng12' 'libpulse'
@@ -18,12 +18,12 @@ depends=('alsa-lib' 'alsa-plugins' 'atk' 'cairo' 'curl' 'dbus-glib'
          'libxft' 'libxi' 'libxinerama' 'libxmu' 'libxrandr' 'libxrender'
          'libxtst' 'libxxf86vm' 'nspr' 'nss' 'openal' 'pango' 'sdl' 'sdl2'
          'sdl2_image' 'sdl2_mixer' 'sdl2_ttf' 'sdl_image' 'sdl_mixer'
-         'sdl_ttf' 'vulkan-icd-loader')
+         'sdl_ttf' 'vulkan-icd-loader' 'librsvg')
 depends_x86_64=('lib32-alsa-lib' 'lib32-alsa-plugins' 'lib32-atk' 'lib32-cairo'
                 'lib32-curl' 'lib32-dbus-glib' 'lib32-fontconfig'
-                'lib32-freetype2' 'lib32-gconf' 'lib32-gdk-pixbuf2'
-                'lib32-glew1.10' 'lib32-glib2' 'lib32-glu' 'lib32-gtk2'
-                'lib32-libappindicator-gtk2' 'lib32-libcaca'
+                'lib32-freetype2' 'lib32-freeglut' 'lib32-gconf'
+                'lib32-gdk-pixbuf2' 'lib32-glew1.10' 'lib32-glib2' 'lib32-glu'
+                'lib32-gtk2' 'lib32-libappindicator-gtk2' 'lib32-libcaca'
                 'lib32-libcanberra' 'lib32-libcups' 'lib32-libcurl-compat'
                 'lib32-libcurl-gnutls' 'lib32-dbus' 'lib32-libdrm'
                 'lib32-libgcrypt15' 'lib32-libice' 'lib32-libjpeg6'
