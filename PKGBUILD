@@ -1,18 +1,21 @@
-# Maintainer: George Eleftheriou <eleftg>
+# Contributor: George Eleftheriou <eleftg>
 # Contributor: Mathias Anselmann <mathias.anselmann@gmail.com>
 # Contributor: Stéphane Gaudreault <stephane@archlinux.org>
 # Contributor: Thomas Dziedzic < gostrc at gmail >
 # Contributor: Michele Mocciola <mickele>
 # Contributor: Simon Zilliken <simon____AT____zilliken____DOT____name>
+# Maintainer: gucong <gucong43216@gmail.com>
 
 pkgname=paraview-manta
-pkgver=5.2.0
-pkgrel=1
-pkgdesc='Parallel Visualization Application using VTK (with MantaView plugin, Qt4, legacy OpenGL backend)'
+_pkgver=5.2.0
+pkgver=${_pkgver//-/.}
+pkgrel=2
+pkgdesc='Parallel Visualization Application using VTK (with MantaView plugin, Qt4, legacy OpenGL, OSPRay, Dev files)'
 arch=('i686' 'x86_64')
 url='http://www.paraview.org'
 license=('custom')
-depends=('qtwebkit' 'openmpi' 'python2' 'ffmpeg' 'boost' 'glew'
+depends=('qtwebkit'
+         'openmpi' 'python2' 'ffmpeg' 'boost' 'glew'
 	     'expat' 'freetype2' 'libjpeg' 'libxml2' 'libtheora' 'libpng' 'libtiff' 'zlib'
          'manta' 'ospray')
 makedepends=('cmake' 'mesa' 'gcc-fortran')
@@ -20,22 +23,24 @@ optdepends=('python2-matplotlib: Needed to support equation rendering using Math
 	        'python2-numpy: Needed for using some filters such as "Python Calculator"')
 conflicts=('paraview')
 provides=('paraview')
-source=("http://paraview.org/files/v${pkgver:0:3}/ParaView-v${pkgver}.tar.gz"
+source=("http://paraview.org/files/v${pkgver:0:3}/ParaView-v${_pkgver}.tar.gz"
         'paraview-desktop.patch'
+        'vtk_hdf5_internal.patch'
         'paraview-mantaview.patch')
 sha1sums=('c578cdad44673cd3311bd5c5fec52075ea923701'
           'd7da23daca34cd015294c4d2f702cdc4a81f0853'
+          'cbadaa87cd775d1edb1dbc1db4dedb9f3cdc4fd5'
           'edd6f34c0a715f86e2304bb3458afb4f17562528')
 
 prepare() {
-  cd "${srcdir}/ParaView-v${pkgver}"
+  cd "${srcdir}/ParaView-v${_pkgver}"
 
   patch -p1 -i ../paraview-desktop.patch
+  patch -p1 -i ../vtk_hdf5_internal.patch
   patch -p1 -i ../paraview-mantaview.patch
 
   rm -rf "${srcdir}/build"
-  mkdir "${srcdir}/build"
-  cd "${srcdir}/build"
+  mkdir -p "${srcdir}/build"
 }
 
 build() {
@@ -76,7 +81,7 @@ build() {
       -DMANTA_BUILD:PATH=/usr \
       -DMANTA_SOURCE:PATH=/usr/include \
       ${VTK_USE_SYSTEM_LIB} \
-      ../ParaView-v${pkgver}
+      ../ParaView-v${_pkgver}
 
   make
 }
@@ -87,5 +92,5 @@ package() {
   make DESTDIR="${pkgdir}" install
 
   #Install license
-  install -Dm644 "${srcdir}/ParaView-v${pkgver}/License_v1.2.txt" "${pkgdir}/usr/share/licenses/paraview/LICENSE"
+  install -Dm644 "${srcdir}/ParaView-v${_pkgver}/License_v1.2.txt" "${pkgdir}/usr/share/licenses/paraview/LICENSE"
 }
