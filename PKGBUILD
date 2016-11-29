@@ -39,4 +39,5 @@ package() {
 	install -Dm644 wvdecrypter/libssd_wv.so "$pkgdir/usr/lib/kodi/addons/inputstream.mpd/decrypter/libssd_wv.so"
 	ln -sf /usr/lib/chromium/libwidevinecdm.so "$pkgdir/usr/lib/kodi/addons/inputstream.mpd/decrypter/libwidevinecdm.so"
 	make DESTDIR="$pkgdir/" install
+        sed -i 's|special://home/cdm|/usr/lib/kodi/addons/inputstream.mpd/decrypter|g' "$pkgdir/usr/share/kodi/addons/inputstream.mpd/resources/settings.xml"
 }
