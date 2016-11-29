@@ -1,4 +1,5 @@
-# Maintainer: James An <james@jamesan.ca>
+# Maintainer: Edgard Castro <castro@edgard.org>
+# Contributor: James An <james@jamesan.ca>
 # Contributor: Helge Willum Larsen <helgesdk@gmail.com>
 # Contributor: Ng Oon-Ee <ngoonee.talk@gmail.com>
 # Contributor: Byron Clark <byron@theclarkfamily.name> (auto-disper-git)
@@ -7,7 +8,7 @@
 
 _pkgname=autorandr
 pkgname=autorandr-git
-pkgver=r210.582290b
+pkgver=r240.53d29f9
 pkgrel=1
 pkgdesc='Auto-detect the connect display hardware and load the appropiate X11 setup using xrandr. Formerly autodisper. No disper support.'
 arch=('any')
@@ -31,11 +32,9 @@ install="$pkgname.install"
 source=(
   "$_pkgname"::"git+https://github.com/phillipberndt/$_pkgname.git"
   "$pkgname.install"
-  systemd-unit-dir.patch
 )
-md5sums=('SKIP'
-         'bedb41a350cdf6983872119aef71fed6'
-         '04ccd2e108878ee07fbb3282a3f7f75f')
+sha256sums=('SKIP'
+         '60c035d6f433d388ef1d3acec084dcd021158cbec79e9807e78cc368cb499690')
 
 pkgver() {
   cd "$_pkgname"
@@ -44,11 +43,6 @@ pkgver() {
     git describe --long --tag | sed -r 's/([^-]*-g)/r\1/;s/-/./g' ||
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
   ) 2>/dev/null
-}
-
-prepare() {
-  cd "$_pkgname"
-  patch -p1 -i ../systemd-unit-dir.patch
 }
 
 package() {
