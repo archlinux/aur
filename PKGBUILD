@@ -8,10 +8,12 @@ arch=('any')
 url="https://github.com/kcolford/$pkgname"
 license=('GPL')
 groups=()
-depends=('bind-tools' 'bash' 'curl')
+depends=('bash' 'bind-tools' 'coreutils' 'sed')
 makedepends=()
 checkdepends=()
-optdepends=('bind: for tsig-keygen')
+optdepends=('bind: for tsig-keygen'
+	    'curl: for looking up your ip address'
+	    'ssh: for updating SSHFP records')
 provides=()
 conflicts=()
 replaces=()
