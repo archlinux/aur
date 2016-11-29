@@ -2,7 +2,7 @@
 # Contributor: Sven-Hendrik Haase <sh@lutzhaase.com>
 
 pkgname=mingw-w64-sfml
-pkgver=2.4.0
+pkgver=2.4.1
 pkgrel=1
 pkgdesc='A simple, fast, cross-platform, and object-oriented multimedia API (mingw-w64)'
 arch=('any')
