@@ -8,7 +8,7 @@
 
 # Maintainer: Your Name <youremail@domain.com>
 pkgname=windows-gaming-git # '-bzr', '-git', '-hg' or '-svn'
-pkgver=r6.6b3b148
+pkgver=r11.18f0e7c
 pkgrel=1
 pkgdesc="Windows gaming utils"
 arch=('x86_64')

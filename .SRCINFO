@@ -1,6 +1,6 @@
 pkgbase = windows-gaming-git
 	pkgdesc = Windows gaming utils
-	pkgver = r6.6b3b148
+	pkgver = r11.18f0e7c
 	pkgrel = 1
 	arch = x86_64
 	license = GPL
