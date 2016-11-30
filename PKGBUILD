@@ -1,6 +1,6 @@
 # Maintainer: Kieran Colford <kieran@kcolford.com>
 pkgname=ddns
-pkgver=1.1.0
+pkgver=1.1.1
 pkgrel=1
 epoch=
 pkgdesc="Automatic provisioning of Dynamic DNS."
@@ -13,7 +13,7 @@ makedepends=()
 checkdepends=()
 optdepends=('bind: for tsig-keygen'
 	    'curl: for looking up your ip address'
-	    'ssh: for updating SSHFP records')
+	    'openssh: for updating SSHFP records')
 provides=()
 conflicts=()
 replaces=()
@@ -22,7 +22,7 @@ options=()
 install=
 changelog=
 source=("$url/archive/v$pkgver.tar.gz")
-md5sums=('33fb5885e1416f4a7987a2ca35300dcf')
+md5sums=('51b4a4d4a5b95532d6418f9f56566749')
 noextract=()
 
 package() {
