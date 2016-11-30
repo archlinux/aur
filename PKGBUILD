@@ -17,9 +17,9 @@ options=(!strip !buildflags staticlibs)
 source=(http://downloads.sourceforge.net/sourceforge/boost/boost_${_boostver}.tar.bz2
         boost-mingw.patch
         python_jam.patch)
-md5sums=('d6eef4b4cacb2183f2bf265a5a03a354'
+md5sums=('5fb94629535c19e48703bdb2b2e9490f'
          '01f5f0d6b915d3b04dbabfd6db40f1e9'
-         '7bedbab26c2a457e2019bfa86ccb9007')
+         '086cece11abae7e60a8f3d41f7833f3d')
 
 _architectures=('i686-w64-mingw32' 'x86_64-w64-mingw32')
 
@@ -38,7 +38,7 @@ _bjam() {
 	        variant=release \
 	        threading=multi \
 	        threadapi=win32 \
-	        link=static \
+	        link=static,shared \
 	        runtime-link=shared \
 	        --prefix="${pkgdir}/usr/${_arch}" \
 	        --user-config=user-config.jam \

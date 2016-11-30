@@ -21,9 +21,9 @@ pkgbase = mingw-w64-boost-python
 	source = http://downloads.sourceforge.net/sourceforge/boost/boost_1_62_0.tar.bz2
 	source = boost-mingw.patch
 	source = python_jam.patch
-	md5sums = d6eef4b4cacb2183f2bf265a5a03a354
+	md5sums = 5fb94629535c19e48703bdb2b2e9490f
 	md5sums = 01f5f0d6b915d3b04dbabfd6db40f1e9
-	md5sums = 7bedbab26c2a457e2019bfa86ccb9007
+	md5sums = 086cece11abae7e60a8f3d41f7833f3d
 
 pkgname = mingw-w64-boost-python
 
