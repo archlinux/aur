@@ -17,7 +17,7 @@ makedepends=('cmake' 'boost' 'mesa' 'qt4' "luxrays-hg" 'python' 'opencl-headers'
              'eos_portable_archive' 'mercurial')
 provides=('luxrender')
 conflicts=('luxrender')
-source=('lux::hg+https://bitbucket.org/luxrender/lux'
+source=('lux::hg+https://bitbucket.org/luxrender/lux#branch=default'
         force_python3.diff)
 md5sums=('SKIP'
          '42692e65eabc5828693e2682e94b7c64')
