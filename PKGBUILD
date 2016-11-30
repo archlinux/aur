@@ -4,8 +4,8 @@
 # Contributor: Huulivoide
 # Contributor: Fernando Carmona Varo <ferkiwi @t gmail dot com>
 pkgname=solarus
-pkgver=1.5.0
-pkgrel=2
+pkgver=1.5.1
+pkgrel=1
 epoch=
 pkgdesc="An open-source Zelda-like 2D game engine used by the games zsxd and zsdx."
 arch=('i686' 'x86_64')
@@ -25,7 +25,7 @@ install=
 changelog=
 source=(http://www.zelda-solarus.com/downloads/$pkgname/$pkgname-$pkgver-src.tar.gz)
 noextract=()
-md5sums=('4cf3a71937231911d25e45c3da6b4bb2')
+md5sums=('647a5908e33721febf3b7dce1dbd9c39')
 
 
 build() {
