@@ -13,7 +13,7 @@ license=("BSD")
 depends=('nodejs')
 makedepends=('npm')
 optdepends=(
-        'libtinfo: required by elm repl'
+        'libtinfo5: required by elm repl'
     )
 source=("http://registry.npmjs.org/$_pkgname/-/$_pkgname-$pkgver.tgz")
 sha256sums=('2c189789b3b7a097c35b4370a0bfb2afe806b70e7bf9d402f174d528eea034d5')
