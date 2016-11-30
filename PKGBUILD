@@ -2,14 +2,14 @@
 
 pkgname=dark-aurora-theme
 pkgver=3.20_3.22
-pkgrel=20161121
+pkgrel=20161124
 pkgdesc="Dark Aurora Theme GNOME 3.20/3.22"
 arch=('any')
 url="https://www.gnome-look.org/p/1143475"
 license=('GPL')
 optdepends=('gnome-tweak-tool: A tool to customize advanced GNOME 3 options.')
-source=("Dark-Aurora.tar.xz::https://dl.opendesktop.org/api/files/download/id/1479719547/Dark-Aurora.tar.xz")
-sha256sums=('3259a8be44493ab5f3b2b455b6dae7725e0646b160c2b9a83968bf81feb3eaaa')
+source=("Dark-Aurora.tar.xz::https://dl.opendesktop.org/api/files/download/id/1480011363/Dark-Aurora.tar.xz")
+sha256sums=('d3519771c19547a26a062fcc5a8624893fbecdda6846a68acea5b0cd0b4a318e')
 
 package() {
 	install -d ${pkgdir}/usr/share/themes
