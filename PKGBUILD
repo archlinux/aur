@@ -2,11 +2,11 @@
 
 pkgname=debug_assert-git
 pkgver=r6.eb0b01e
-pkgrel=1
+pkgrel=2
 pkgdesc="Simple, flexible and modular assertion macro"
 arch=('any')
 url="https://github.com/foonathan/debug_assert"
-license=('MIT')
+license=('ZLIB')
 makedepends=('git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
