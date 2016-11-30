@@ -2,7 +2,7 @@
 
 pkgname=aursec-git
 pkgver=v0.0.6b.r0.473765f
-pkgrel=1
+pkgrel=2
 pkgdesc='Verify AUR package sources against hashes stored in a blockchain.'
 arch=('x86_64' 'x86' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/clawoflight/${pkgname%-git}"
@@ -17,7 +17,7 @@ checkdepends=(shellcheck)
 #optdepends=()
 
 #changelog="CHANGELOG"
-source=("git+ssh://git@github.com/clawoflight/${pkgname%-git}.git")
+source=("git+https://github.com/clawoflight/${pkgname%-git}.git")
 sha256sums=('SKIP')
 validpgpkeys=('871F10477DB3DDED5FC447B226C7E577EF967808')
 install=aursec-git.install
