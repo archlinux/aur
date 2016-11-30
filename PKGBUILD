@@ -23,5 +23,5 @@ package() {
     chmod -R go-w "${pkgdir}"/usr
 
     mkdir -p ${pkgdir}/usr/bin
-    ln -s /opt/Insomnia/Insomnia ${pkgdir}/usr/bin/insomnia
+    ln -s /opt/Insomnia/insomnia ${pkgdir}/usr/bin/insomnia
 }
