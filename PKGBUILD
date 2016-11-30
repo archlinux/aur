@@ -34,6 +34,8 @@ package() {
   install -Dm644 $srcdir/$pkgname/go  ${pkgdir}/usr/share/$pkgname
 
   msg "Installing hamintonian files"
+  [ -d ${pkgdir}/usr/share/$pkgname/vec ] || install -d ${pkgdir}/usr/share/$pkgname/vec
+
   [ -d ${pkgdir}/usr/share/$pkgname/hamil ] || install -d ${pkgdir}/usr/share/$pkgname/hamil
   install -Dm644 $srcdir/hamil/*  ${pkgdir}/usr/share/$pkgname/hamil
 
