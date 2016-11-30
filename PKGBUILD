@@ -7,7 +7,7 @@ pkgbase=deluge-split
 _pkgbase=deluge
 pkgname=("${_pkgbase}-common" "${_pkgbase}-daemon" "${_pkgbase}-gtk" "${_pkgbase}-web" "${_pkgbase}-console")
 pkgver=1.3.13+2+g6c73105
-pkgrel=6
+pkgrel=7
 arch=('any')
 url="http://deluge-torrent.org/"
 license=('GPL3')
@@ -51,10 +51,6 @@ package_deluge-common() {
 
   rm -rf "$pkgdir"/usr/bin/
   rm -rf "$pkgdir"/usr/share/
-  rm -f  "$pkgdir"/usr/lib/python2.7/site-packages/deluge/*.py{c,o}
-  rm -f  "$pkgdir"/usr/lib/python2.7/site-packages/deluge/core/*.py{c,o}
-  rm -f  "$pkgdir"/usr/lib/python2.7/site-packages/deluge/ui/*.py{c,o}
-  rm -f  "$pkgdir"/usr/lib/python2.7/site-packages/deluge/plugins/*.py{c,o}
   rm -rf "$pkgdir"/usr/lib/python2.7/site-packages/deluge/ui/{web,gtkui,console}
 }
 
@@ -91,10 +87,9 @@ package_deluge-gtk() {
 
   find   "$pkgdir"/usr/bin ! -name 'deluge-gtk' -type f -exec rm -f {} +
   find   "$pkgdir/usr/share/man/man1" ! -name 'deluge-gtk.1' -type f -exec rm -f {} +
-  rm -rf "$pkgdir"/usr/lib/python2.7/site-packages/deluge/*.{py,pyc,pyo,so}
+  rm -r  "$pkgdir"/usr/lib/python2.7/site-packages/deluge/*.{py,pyc,pyo}
   rm -rf "$pkgdir"/usr/lib/python2.7/site-packages/deluge/{i18n,data,core,plugins}
   rm -f  "$pkgdir"/usr/lib/python2.7/site-packages/deluge/ui/*.{py,pyc,pyo}
-  rm -f  "$pkgdir"/usr/lib/python2.7/site-packages/deluge/ui/gtkui/*.{pyc,pyo}
   rm -rf "$pkgdir"/usr/lib/python2.7/site-packages/deluge/ui/{web,console}
   rm -rf "$pkgdir"/usr/lib/python2.7/site-packages/deluge-1.3.13-py2.7.egg-info/
 }
@@ -110,11 +105,10 @@ package_deluge-web() {
 
   find "$pkgdir/usr/bin" ! -name 'deluge-web' -type f -exec rm -f {} +
   find "$pkgdir/usr/share/man/man1" ! -name 'deluge-web.1' -type f -exec rm -f {} +
-  rm -rf "$pkgdir"/usr/lib/python2.7/site-packages/deluge/*.{py,pyc,pyo,so}
+  rm -f  "$pkgdir"/usr/lib/python2.7/site-packages/deluge/*.{py,pyc,pyo}
   rm -rf "$pkgdir"/usr/lib/python2.7/site-packages/deluge/{i18n,data,core,plugins}
   rm -rf "$pkgdir"/usr/lib/python2.7/site-packages/deluge/ui/{gtkui,console}
   rm -f  "$pkgdir"/usr/lib/python2.7/site-packages/deluge/ui/*.{py,pyc,pyo}
-  rm -f  "$pkgdir"/usr/lib/python2.7/site-packages/deluge/ui/web/*.{pyc,pyo}
   rm -rf "$pkgdir"/usr/lib/python2.7/site-packages/deluge-1.3.13-py2.7.egg-info/
   rm -rf "$pkgdir"/usr/share/{icons,pixmaps,applications}
 
@@ -132,12 +126,10 @@ package_deluge-console() {
 
   find "$pkgdir/usr/bin" ! -name 'deluge-console' -type f -exec rm -f {} +
   find "$pkgdir/usr/share/man/man1" ! -name 'deluge-console.1' -type f -exec rm -f {} +
-  rm -rf "$pkgdir"/usr/lib/python2.7/site-packages/deluge/*.{py,pyc,pyo,so}
+  rm -f  "$pkgdir"/usr/lib/python2.7/site-packages/deluge/*.{py,pyc,pyo}
   rm -rf "$pkgdir"/usr/lib/python2.7/site-packages/deluge/{i18n,data,core,plugins}
   rm -rf "$pkgdir"/usr/lib/python2.7/site-packages/deluge/ui/{gtkui,web}
   rm -f  "$pkgdir"/usr/lib/python2.7/site-packages/deluge/ui/*.{py,pyc,pyo}
-  rm -f  "$pkgdir"/usr/lib/python2.7/site-packages/deluge/ui/console/*.{pyc,pyo}
-  rm -f  "$pkgdir"/usr/lib/python2.7/site-packages/deluge/ui/console/commands/*.{pyc,pyo}
   rm -rf "$pkgdir"/usr/lib/python2.7/site-packages/deluge-1.3.13-py2.7.egg-info/
   rm -rf "$pkgdir"/usr/share/{icons,pixmaps,applications}
 }
