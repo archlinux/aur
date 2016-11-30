@@ -12,7 +12,7 @@ _remove_bundled_jre=
 
 pkgname=intellij-idea-ce-eap
 _pkgname=idea-IC
-_buildver=163.7743.44
+_buildver=163.9166.7
 _veryear=2016
 _verrelease=3
 _verextra=
