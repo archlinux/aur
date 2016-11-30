@@ -1,7 +1,7 @@
 pkgdesc="Zinc is a stand-alone version of sbt's incremental compiler"
 pkgname="zinc"
-pkgver=0.3.11
-pkgrel=4
+pkgver=0.3.13
+pkgrel=1
 url="https://github.com/typesafehub/zinc"
 arch=('any')
 license=('Apache')
