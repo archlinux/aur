@@ -10,7 +10,7 @@ arch=('i686' 'x86_64')
 url="https://github.com/xournalpp/xournalpp"
 license=('GPL3')
 makedepends=('git' 'cmake' 'gettext' 'boost')
-depends=('gtk2' 'boost-libs' 'glib2' 'libglade' 'poppler-glib' 'glibmm' 'texlive-bin' 'desktop-file-utils')
+depends=('gtk2' 'boost-libs' 'glib2' 'libglade' 'poppler-glib' 'glibmm' 'desktop-file-utils')
 provides=("xournal=${pkgver}" "xournal-dmgerman=${pkgver} xournalpp=${pkgver}")
 conflicts=('xournal' 'xournalpp' 'xournal-dmgerman' 'xournal-image-patched' 'xournalpp-svn')
 install="xournalpp.install"
@@ -29,7 +29,7 @@ prepare() {
 	mkdir -p "${srcdir}/${_pkgname}/build"
 	cd "${srcdir}/${_pkgname}/build"
 
-	cmake -DENABLE_OS="OFF" -DENABLE_MATHTEX="ON" -DCMAKE_INSTALL_PREFIX="/usr/" ..
+	cmake -DENABLE_OS="OFF" -DENABLE_MATHTEX="OFF" -DCMAKE_INSTALL_PREFIX="/usr/" ..
 }
 
 build() {
