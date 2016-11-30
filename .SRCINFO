@@ -1,7 +1,7 @@
 pkgbase = krita-git
-	pkgdesc = A free digital painting application. Digital Painting, Creative Freedom!. (GIT Version)
+	pkgdesc = A free digital painting application. Digital Painting, Creative Freedom! (GIT Version)
 	pkgver = 3.0.91.153.gdecde84
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.krita.org
 	arch = i686
 	arch = x86_64
@@ -34,7 +34,7 @@ pkgbase = krita-git
 	conflicts = krita
 	conflicts = calligra-krita
 	options = !makeflags
-	source = git://anongit.kde.org/krita.git
+	source = git+https://github.com/KDE/krita.git
 	sha1sums = SKIP
 
 pkgname = krita-git

@@ -4,8 +4,8 @@
 
 pkgname=krita-git
 pkgver=3.0.91.153.gdecde84
-pkgrel=1
-pkgdesc="A free digital painting application. Digital Painting, Creative Freedom!. (GIT Version)"
+pkgrel=2
+pkgdesc="A free digital painting application. Digital Painting, Creative Freedom! (GIT Version)"
 arch=('i686' 'x86_64')
 url='http://www.krita.org'
 license=('GPL2')
@@ -37,7 +37,7 @@ makedepends=('extra-cmake-modules'
              )
 provides=('krita' 'calligra-krita')
 conflicts=('krita' 'calligra-krita')
-source=('git://anongit.kde.org/krita.git')
+source=('git+https://github.com/KDE/krita.git')
 sha1sums=('SKIP')
 options=('!makeflags')
 
