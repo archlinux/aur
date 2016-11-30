@@ -3,7 +3,7 @@
 
 pkgname=sc-im
 pkgver=0.3.0
-pkgrel=2
+pkgrel=3
 pkgdesc='A spreadsheet program based on SC'
 arch=('i686' 'x86_64')
 url='https://github.com/andmarti1424/sc-im'
@@ -19,6 +19,8 @@ prepare() {
   cd "$pkgname-$pkgver/src"
   # required to make properly
   sed -i 's/#include <ncursesw\/curses.h>/#include <ncurses.h>/' *.c *.h
+  # apply patch to make backspace work
+  patch <../../../fix_backspace.patch
 }
 
 build() {
