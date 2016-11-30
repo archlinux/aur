@@ -2,7 +2,7 @@
 
 pkgname=aursec-git
 pkgver=v0.0.6b.r0.473765f
-pkgrel=2
+pkgrel=3
 pkgdesc='Verify AUR package sources against hashes stored in a blockchain.'
 arch=('x86_64' 'x86' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/clawoflight/${pkgname%-git}"
@@ -12,7 +12,7 @@ provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 
 depends=(firejail geth vim)
-makedepends=(pandoc)
+makedepends=(pandoc git)
 checkdepends=(shellcheck)
 #optdepends=()
 
