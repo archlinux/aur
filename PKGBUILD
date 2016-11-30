@@ -6,14 +6,14 @@
 # https://bugzilla.novell.com/768506
 # https://bugzilla.novell.com/765524
 
-_kver=4.6
+_kver=4.8
 _gitroot=git://repo.or.cz/linux.git
 _gitcommit=linux-$_kver.y
 _cur_kernel="$(uname -r)"
 
 pkgname=synaptics-led
 pkgver=$_kver
-pkgrel=4
+pkgrel=1
 arch=(i686 x86_64)
 license=(GPL2)
 url="https://github.com/mmonaco/PKGBUILDs"
@@ -23,31 +23,34 @@ makedepends=(git linux-headers)
 install="$pkgname.install"
 
 source=(
-	SHA256SUMS_for_4
+	SHA256SUMS
 	"$pkgname.install"
-	0003-patch_for_kernel_4.patch
+	kernel.patch
 )
 
-sha256sums=('447b4adaadab3e64a2e45fc0df1d67a657e295af97f8585b5828bce9f287e7bd'
+sha256sums=('557131bc0d81dd14336fd8ae38efe2c6936c85accd82703af784dc621cf0927a'
             'b46af61822e8ec8639faa1b60dd3b6b1a64e24854611902499b9f81d2691e22c'
-            'a9174dacd49aa0e24f260d339dea2687e82a4a4c410c29bc015a910e263f74d6')
+            '5b4222fe4336ebe9e9a17f6814c69393a3e9a13831b038aed1ede846868d6623')
 
 build() {
 
-	cd "$srcdir"
-
 	msg2 "Getting source from $_gitroot"
+	cd "$srcdir"
 	git archive --remote="$_gitroot" "$_gitcommit" drivers/input/mouse | tar -x
 
-	cd "drivers/input/mouse"
-
 	msg2 "Performing Integrity Check"
-	sha256sum --quiet -c "$srcdir/SHA256SUMS_for_4"
+	cd "drivers/input/mouse"
+	sha256sum --quiet -c "$srcdir/SHA256SUMS"
 
 	msg2 "Patching source"
-	patch -p4 -i "$srcdir/0003-patch_for_kernel_4.patch"
+    cd "${srcdir}"
+	for p in ../*.patch; do
+      msg2 "Applying patch: $p"
+      patch -p1 -i "$p"
+    done
 
 	msg2 "Building psmouse.ko"
+	cd "drivers/input/mouse"
 	make -C "/usr/lib/modules/$_cur_kernel/build" M="$PWD" psmouse.ko
 
 	msg2 "Compressing psmouse.ko.gz"
@@ -55,17 +58,18 @@ build() {
 }
 
 package() {
-
 	cd "$srcdir/drivers/input/mouse"
 
 	# determin dir name in /usr/lib/modules/
-	# for lts kernel you can make like this (if it not only one):
-	#_EXTRAMODULES=$(ls /usr/lib/modules | grep extra |grep lts)
+
 	_EXTRAMODULES=$(ls /usr/lib/modules | grep extra)
+
+	# for lts or ARCH kernel you can make like this (if it not only one):
+	#_EXTRAMODULES=$(ls /usr/lib/modules | grep extra |grep lts)
+	#_EXTRAMODULES=$(ls /usr/lib/modules | grep extra |grep ARCH)
 
 	install -D -m 0644 psmouse.ko.gz "$pkgdir/usr/lib/modules/${_EXTRAMODULES}/psmouse.ko.gz"
 
-	# if you have not one kernel installed, you should change install string or EXTRAMODULES determin:
+	# if you have not one kernel installed, you should change install string for EXTRAMODULES manualy:
 	# install -D -m 0644 psmouse.ko.gz "$pkgdir/usr/lib/modules/{YOUR_EXTRAMODULES_DIR}/psmouse.ko.gz"
-
 }

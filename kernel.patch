@@ -1,6 +1,7 @@
---- a/drivers/input/mouse/Kconfig
-+++ b/drivers/input/mouse/Kconfig
-@@ -78,6 +78,15 @@
+diff -ur old/drivers/input/mouse/Kconfig new/drivers/input/mouse/Kconfig
+--- old/drivers/input/mouse/Kconfig	2016-11-26 11:57:13.000000000 +0300
++++ new/drivers/input/mouse/Kconfig	2016-11-28 15:23:20.404814951 +0300
+@@ -88,6 +88,15 @@
  
           If unsure, say Y.
  
@@ -16,9 +17,9 @@
  config MOUSE_PS2_LIFEBOOK
  	bool "Fujitsu Lifebook PS/2 mouse protocol extension" if EXPERT
  	default y
-
---- a/drivers/input/mouse/synaptics.c
-+++ b/drivers/input/mouse/synaptics.c
+diff -ur old/drivers/input/mouse/synaptics.c new/drivers/input/mouse/synaptics.c
+--- old/drivers/input/mouse/synaptics.c	2016-11-26 11:57:13.000000000 +0300
++++ new/drivers/input/mouse/synaptics.c	2016-11-28 15:27:28.091341662 +0300
 @@ -29,6 +29,7 @@
  #include <linux/input/mt.h>
  #include <linux/serio.h>
@@ -27,14 +28,14 @@
  #include <linux/slab.h>
  #include "psmouse.h"
  #include "synaptics.h"
-@@ -649,6 +650,139 @@
+@@ -659,6 +660,139 @@
  	serio_register_port(serio);
  }
  
 +#if 1
 +/*
 + * LED handling:
-+ * Some Synaptics devices have an embeded LED at the top-left corner.
++ * Some Synaptics devices have an embeded LED at the top-left orner.
 + */
 +
 +struct synaptics_led {
@@ -167,7 +168,7 @@
  /*****************************************************************************
   *	Functions to interpret the absolute mode packets
   ****************************************************************************/
-@@ -1295,6 +1429,7 @@
+@@ -1304,6 +1438,7 @@
  		device_remove_file(&psmouse->ps2dev.serio->dev,
  				   &psmouse_attr_disable_gesture.dattr);
  
@@ -175,16 +176,16 @@
  	synaptics_reset(psmouse);
  	kfree(priv);
  	psmouse->private = NULL;
-@@ -1352,6 +1487,8 @@
- 			    old_priv.ext_cap, priv->ext_cap);
+@@ -1362,6 +1497,8 @@
  		return -1;
  	}
-+
-+	synaptics_sync_led(psmouse);
  
++	synaptics_sync_led(psmouse);
++
  	return 0;
  }
-@@ -1492,6 +1497,9 @@
+ 
+@@ -1492,6 +1629,9 @@
  		     priv->capabilities, priv->ext_cap, priv->ext_cap_0c,
  		     priv->ext_cap_10, priv->board_id, priv->firmware_id);
  
@@ -194,9 +195,9 @@
  	set_input_params(psmouse, priv);
  
  	/*
-
---- a/drivers/input/mouse/synaptics.h
-+++ b/drivers/input/mouse/synaptics.h
+diff -ur old/drivers/input/mouse/synaptics.h new/drivers/input/mouse/synaptics.h
+--- old/drivers/input/mouse/synaptics.h	2016-11-26 11:57:13.000000000 +0300
++++ new/drivers/input/mouse/synaptics.h	2016-11-28 15:29:08.441039455 +0300
 @@ -161,6 +161,8 @@
  	signed char scroll;
  };
@@ -206,7 +207,7 @@
  struct synaptics_data {
  	/* Data read from the touchpad */
  	unsigned long int model_id;		/* Model-ID */
-@@ -196,6 +198,7 @@
+@@ -197,6 +199,7 @@
  	bool					press;
  	bool					report_press;
  	bool					is_forcepad;
@@ -214,4 +215,3 @@
  };
  
  void synaptics_module_init(void);
-
