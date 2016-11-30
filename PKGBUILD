@@ -3,7 +3,7 @@
 _pyname=conda
 pkgname=python-conda
 pkgver=4.2.12
-pkgrel=2
+pkgrel=3
 pkgdesc="OS-agnostic, system-level binary package manager and ecosystem"
 arch=('any')
 url="http://conda.pydata.org/docs/"
@@ -22,6 +22,7 @@ sha512sums=('bc5c85fa0c6824e4e9ee29ad57331f0e342905be84ee450643644e4a71c3bb77b50
 
 package() {
   cd "$srcdir/${_pyname}-$pkgver"
+  echo $pkgver > conda/.version
   python setup.py install --root="$pkgdir/" --optimize=1
   install -Dm 644 shell/conda.fish $pkgdir/usr/share/fish/functions/conda.fish
   install -Dm 644 LICENSE.txt $pkgdir/usr/share/licenses/${pkgname}/LICENSE.txt
