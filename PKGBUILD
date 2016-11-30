@@ -30,4 +30,7 @@ package() {
   [ -d ${pkgdir}/usr/share/doc/${pkgname} ] || install -d ${pkgdir}/usr/share/doc/${pkgname}
   cp -r  ${srcdir}/${pkgname}-${pkgver}/doc/tex/Manual/Tv_user-manual ${pkgdir}/usr/share/doc/${pkgname}/
   install -Dm644 $srcdir/${pkgname}-${pkgver}/doc/tex/Manual/Tv_user-manual.ps.gz ${pkgdir}/usr/share/doc/${pkgname}/
+
+  ## remove WARNING: Package contains reference to $srcdir
+  rm ${pkgdir}/usr/share/doc/tv/Tv_user-manual/images.log
 }
