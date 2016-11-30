@@ -1,4 +1,4 @@
-pkgname="tor-browser-en"
+pkgname="tor-browser-pt"
 
 pre_install() {
 	echo
@@ -35,7 +35,7 @@ post_upgrade() {
 
 post_remove() {
 	echo 
-	echo "==> You have to remove the tor-brower directory in your home"
+	echo "==> You have to remove the tor-browser directory in your home"
 	echo "==> directory by hand: As your normal user, do:"
 	echo "==> "
 	echo "==> rm -rf ~/.${pkgname}"
