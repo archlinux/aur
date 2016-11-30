@@ -1,11 +1,11 @@
 # Maintainer: Jason Graves <j.graves@collaboradev.com>
 
 pkgname=xfce4-finder
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="Smart and intuitive application finder, complete with theme and customization support."
 arch=('any')
-url='https://github.com/godlikemouse/xfce4-finder'
+url="https://github.com/godlikemouse/xfce4-finder/archive/$pkgver.tar.gz"
 license=('MIT')
 groups=('xfce4')
 depends=('glib2' 'gtkmm3' 'garcon' 'xfconf' 'libxfce4util' 'libxfce4ui')
