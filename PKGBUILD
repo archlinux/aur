@@ -1,7 +1,7 @@
 #pkgbase=linux               # Build stock -ARCH kernel
 pkgbase=linux-covolunablu-gaming       # Build kernel with a different name
 _srcname=linux-4.8
-pkgver=4.8.4
+pkgver=4.8.11
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
@@ -21,6 +21,8 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         "https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.sign"
         # the main kernel config files
         'config' 'config.x86_64'
+        # pacman hook for initramfs regeneration
+        '99-linux.hook'
         # standard config files for mkinitcpio ramdisk
         'linux.preset'
         'change-default-console-loglevel.patch'
@@ -28,21 +30,22 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         'http://algo.ing.unimo.it/people/paolo/disk_sched/patches/4.8.0-v8r4/0002-block-introduce-the-BFQ-v7r11-I-O-sched-to-be-ported.patch'
         'http://algo.ing.unimo.it/people/paolo/disk_sched/patches/4.8.0-v8r4/0003-block-bfq-add-Early-Queue-Merge-EQM-to-BFQ-v7r11-to-.patch'
         'http://algo.ing.unimo.it/people/paolo/disk_sched/patches/4.8.0-v8r4/0004-Turn-BFQ-v7r11-into-BFQ-v8r4-for-4.8.0.patch'
-        "https://raw.githubusercontent.com/ValveSoftware/steamos_kernel/8e9ecc9caee1ae1d18c2cc4572729ef355091b6e/drivers/input/joystick/xpad.c")
+        "https://raw.githubusercontent.com/ValveSoftware/steamos_kernel/376295e81ec217038c5467424ab317906ea3b3e3/drivers/input/joystick/xpad.c")
 
 sha256sums=('3e9150065f193d3d94bcf46a1fe9f033c7ef7122ab71d75a7fb5a2f0c9a7e11a'
             'SKIP'
-            '86e246b19253ee3aa971403a5990376a5e33667122f7c8742cc0ee807f204403'
+            '53d84946cbe641a2a74ed6cbdd35840bb4947cefd34a764c31b7dac5cde5c696'
             'SKIP'
             'f105551388ad00732eecbdb0037092597482970fe88af2634916ade8674410c7'
-            'd6057b86cbccb96b4f7a78932a0e70c46e635e9d017af6337cc28ab2bb67c1b9'
+            'd85f8d4e7c7672ba9bb25bcb95e8442acd9b4d784161b292c27b9f5cee95bcd7'
+            '834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0'
             'f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
             '1dabd969b18b7e09e2ffeffe4c2430dbc26e5df9868563d54ca95f45c690262f'
             'c8d17a7893d5780fd0c90311470160dcc842b81621b30671150e2e3224be86d2'
             'e47ea5b1c2f20cfade4e6a85bff1320dac84ac638e48ef4eec7285fe9e1e1def'
             'c3c96e304aef378f0cc6e1fb18eeabe176e6ba918d13060c105f3d8cabc85f59'
-            'a1d3a169196c07de2a2ab6bee89e1def9e09e1d06da4cd4dfa03fefc972928e1')
+            'b40f90abeaec479cadf189fe185353cd70cde76349433ab618b9e776ab31133f')
 
 
 validpgpkeys=(
@@ -136,21 +139,17 @@ _package() {
   cp arch/$KARCH/boot/bzImage "${pkgdir}/boot/vmlinuz-${pkgbase}"
 
   # set correct depmod command for install
-  cp -f "${startdir}/${install}" "${startdir}/${install}.pkg"
+  sed -e "s|%PKGBASE%|${pkgbase}|g;s|%KERNVER%|${_kernver}|g" \
+    "${startdir}/${install}" > "${startdir}/${install}.pkg"
   true && install=${install}.pkg
-  sed \
-    -e  "s/KERNEL_NAME=.*/KERNEL_NAME=${_kernelname}/" \
-    -e  "s/KERNEL_VERSION=.*/KERNEL_VERSION=${_kernver}/" \
-    -i "${startdir}/${install}"
 
   # install mkinitcpio preset file for kernel
-  install -D -m644 "${srcdir}/linux.preset" "${pkgdir}/etc/mkinitcpio.d/${pkgbase}.preset"
-  sed \
-    -e "1s|'linux.*'|'${pkgbase}'|" \
-    -e "s|ALL_kver=.*|ALL_kver=\"/boot/vmlinuz-${pkgbase}\"|" \
-    -e "s|default_image=.*|default_image=\"/boot/initramfs-${pkgbase}.img\"|" \
-    -e "s|fallback_image=.*|fallback_image=\"/boot/initramfs-${pkgbase}-fallback.img\"|" \
-    -i "${pkgdir}/etc/mkinitcpio.d/${pkgbase}.preset"
+  sed "s|%PKGBASE%|${pkgbase}|g" "${srcdir}/linux.preset" |
+    install -D -m644 /dev/stdin "${pkgdir}/etc/mkinitcpio.d/${pkgbase}.preset"
+
+  # install pacman hook for initramfs regeneration
+  sed "s|%PKGBASE%|${pkgbase}|g" "${srcdir}/99-linux.hook" |
+    install -D -m644 /dev/stdin "${pkgdir}/usr/share/libalpm/hooks/99-${pkgbase}.hook"
 
   # remove build and source links
   rm -f "${pkgdir}"/lib/modules/${_kernver}/{source,build}
