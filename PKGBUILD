@@ -2,7 +2,7 @@
 
 _pkgname=gnusocial
 pkgname=python-${_pkgname}
-pkgver=1.2.0
+pkgver=1.4.0
 pkgrel=1
 pkgdesc="GNU Social API for Python 3"
 arch=('any')
@@ -11,8 +11,8 @@ license=('GPL3')
 depends=('python' 'python-requests')
 makedepends=('python-setuptools')
 source=("https://gitgud.io/dtluna/pygnusocial/repository/archive.tar.gz?ref=v${pkgver}")
-sha512sums=('44c1d1bd5e4053b20c56cd97068e04e2cfcf79d19a6626b531a627f86967970f23a91dca451b6a47e0bc63c02d08b60a7719bc33c80059127cb1ddf85164f3de')
+sha512sums=('d7fee48fde34e203bac94b6d42ee39da8019852adbd2f25fe027121857ffd96ae0b9ebbe3016a28655be5b9165b025a5dad9dddbf7c92ad288a548b55d57516f')
 package() {
-  cd "${srcdir}/py${_pkgname}-v${pkgver}-1d960ca733a6bd5f051aa23e4f2150bfffd712c5/"
+  cd "${srcdir}/py${_pkgname}-v${pkgver}-39b3db206a23db02677476a2c40e1fa007171c0b/"
   python setup.py install --root="${pkgdir}/" --optimize=1
 }
