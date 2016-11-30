@@ -2,13 +2,13 @@
 
 pkgname=tv
 pkgver=1.9.13
-pkgrel=4
+pkgrel=5
 pkgdesc="Spectra- and matrix-analysis program developed at IKP, Köln, Germany"
 url="http://www.ikp.uni-koeln.de/misc/doc/Tv_user-manual/Tv_user-manual.html"
 arch=('x86_64' 'i686')
 license=('custon')
 #http://www.ikp.uni-koeln.de/misc/doc/Tv_user-manual/node229.html
-depends=('mfile' 'xaw3d' 'readline')
+depends=('mfile' 'xaw3d')
 makedepends=('latex2html')
 options=('!emptydirs')
 
