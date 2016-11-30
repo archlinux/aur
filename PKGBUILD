@@ -14,6 +14,9 @@ sha256sums=('2feb763ee71642c49f3792e730928447b54c450999c522841f1c95cad46eb313')
 backup=('etc/php/conf.d/sqlsrv.ini')
 
 build() {
+	cd "$srcdir"/msphpsql-$pkgver-Linux/source
+	sh packagize.sh
+
 	for ext in sqlsrv pdo_sqlsrv; do
 		cd "$srcdir"/msphpsql-$pkgver-Linux/source/$ext
 		phpize
