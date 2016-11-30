@@ -1,0 +1,44 @@
+pkgbase = gnome-settings-daemon-redshift
+	pkgdesc = GNOME Settings Daemon with a patch to support changing the color temerature
+	pkgver = 3.22.1
+	pkgrel = 1
+	url = https://git.gnome.org/browse/gnome-settings-daemon
+	arch = i686
+	arch = x86_64
+	groups = gnome
+	license = GPL
+	makedepends = intltool
+	makedepends = xf86-input-wacom
+	makedepends = libxslt
+	makedepends = docbook-xsl
+	makedepends = python
+	makedepends = git
+	makedepends = gnome-common
+	depends = dconf
+	depends = gnome-desktop
+	depends = gsettings-desktop-schemas
+	depends = libcanberra-pulse
+	depends = libnotify
+	depends = libsystemd
+	depends = libwacom
+	depends = pulseaudio
+	depends = pulseaudio-alsa
+	depends = upower
+	depends = librsvg
+	depends = libgweather
+	depends = geocode-glib
+	depends = geoclue2
+	depends = nss
+	depends = libgudev
+	depends = gtk3-print-backends
+	provides = gnome-settings-daemon
+	conflicts = gnome-settings-daemon
+	source = git://git.gnome.org/gnome-settings-daemon#commit=3ee42193f8772b5eb39b0b5a4d175b00abce033d
+	source = git://git.gnome.org/libgnome-volume-control
+	source = https://raw.githubusercontent.com/benzea/gnome-shell-extension-redshift/master/patches/gsd-3.22-color-Add-ability-to-change-the-color-temperature-of.patch
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = gnome-settings-daemon-redshift
+
