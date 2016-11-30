@@ -1,7 +1,7 @@
 pkgbase = bible-kjv
 	pkgdesc = King James Bible, Concordance, and Command-Line Viewer
 	pkgver = 4.29
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.debian.org/
 	arch = i686
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = bible-kjv
 	source = http://ftp.debian.org/debian/pool/main/b/bible-kjv/bible-kjv_4.29.tar.gz
 	source = makefile.patch
 	md5sums = e08a001de6e436cb4554ffcb19c24d37
-	md5sums = 08416954dd098d84d800fa0fa07bea71
+	md5sums = 17018de81419f5bc227669aa03639c0d
 
 pkgname = bible-kjv
 
