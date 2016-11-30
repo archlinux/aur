@@ -33,6 +33,10 @@ package() {
   [ -d ${pkgdir}/usr/share/$pkgname ] || install -d ${pkgdir}/usr/share/$pkgname
   install -Dm644 $srcdir/$pkgname/go  ${pkgdir}/usr/share/$pkgname
 
+  msg "Installing hamintonian files"
+  [ -d ${pkgdir}/usr/share/$pkgname/hamil ] || install -d ${pkgdir}/usr/share/$pkgname/hamil
+  install -Dm644 $srcdir/hamil/*  ${pkgdir}/usr/share/$pkgname/hamil
+
   msg "Installing documentation and examples"
   [ -d ${pkgdir}/usr/share/$pkgname/Exercises ] || install -d ${pkgdir}/usr/share/$pkgname/Exercises
   install -Dm644 $srcdir/Exercises/*  ${pkgdir}/usr/share/$pkgname/Exercises
