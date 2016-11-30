@@ -9,7 +9,7 @@ arch=('i686' 'x86_64')
 url="http://blogs.gnome.org/hughsie/2015/01/02/introducing-gnome-multiwriter/"
 license=('GPL2')
 depends=('gtk3' 'udisks2' 'libcanberra' 'libgusb')
-makedepends=('intltool' 'gnome-common' 'gobject-introspection' 'docbook-utils' 'docbook-sgml')
+makedepends=('intltool' 'gnome-common' 'gobject-introspection' 'docbook-utils' 'docbook-sgml' 'perl-sgmls')
 source=(https://download.gnome.org/sources/gnome-multi-writer/3.22/${pkgname}-${pkgver}.tar.xz)
 sha256sums=('02fe592b9c6c3b1b76dc7436f10a60673b8e89fb0f81f8e99ae943f6ba139fb6')
 
@@ -31,7 +31,8 @@ check() {
 
 package(){
   cd $srcdir/${pkgname}-${pkgver}
-  # Remove 'NoDisplay=false' from the .desktop file, otherwise it won't show up in dmenu
+  # Remove 'NoDisplay=false' from the .desktop file, or it won't show up in dmenu
+  # You can comment this out if you're using gnome
   sed -i "s/NoDisplay=false//g" data/org.gnome.MultiWriter.desktop
 
   install -D -m644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
