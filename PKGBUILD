@@ -4,8 +4,8 @@
 
 pkgbase=linux-rc
 _srcname=linux-4.8
-_stable=4.8.10
-_patchver=4.8.11
+_stable=4.8.11
+_patchver=4.8.12
 pkgver=${_patchver}rc1
 _rcpatch=patch-${_patchver}-rc1
 pkgrel=1
@@ -31,9 +31,9 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
 
 sha256sums=('3e9150065f193d3d94bcf46a1fe9f033c7ef7122ab71d75a7fb5a2f0c9a7e11a'
             'SKIP'
-            'd0ea1671c488957d7b1ef46a5107c47c16b37f2985ca7ee4c900ba0f89d40d3c'
+            '53d84946cbe641a2a74ed6cbdd35840bb4947cefd34a764c31b7dac5cde5c696'
             'SKIP'
-            '76c760d340cb20ef0ceffcaf45990c3fc7c2eb5aa60e01c25c48b09661d88ac7'
+            '70851d4c2a4550202e5d9d3e0bf9aacd9a17901cd496a7ce89179cecfd9f0939'
             'SKIP'
             '2ac8818414beb7dbacbd3ad450c516e6ada804827132a7132f63b8189e5f5151'
             '41b9a64542befd2fea170776e8ec22a7d158dd3273633afc9b91662c448cd90a'
