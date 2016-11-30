@@ -1,6 +1,6 @@
 # Maintainer: spider-mario <spidermario@free.fr>
 pkgname=zyn-fusion
-pkgver=3.0.0
+pkgver=3.0.1
 pkgrel=1
 pkgdesc="ZynAddSubFX with a new interactive UI"
 arch=('x86_64')
@@ -11,8 +11,8 @@ makedepends=('chrpath')
 provides=('zynaddsubfx')
 conflicts=('zynaddsubfx')
 options=('!strip')
-source=("file://zyn-fusion-$pkgver-linux-x86_62.tar.bz2") # Yeah…
-sha512sums=('7189d412f707f16747dcd9965877fa0410709bac18c794d6800cc70973ae84893c52edfc7391638adc31e23287f190d0ebe41a9b899018b35dfa8b91453a9a39')
+source=("file://zyn-fusion-$pkgver-linux.tar.bz2")
+sha512sums=('e06daac52c9c174843bdfb19912232816d0126e337ad97feeaf038b8735a389591eccc863164c6cc467065159608e69e82a60baf47476bd6268f2ffcead2117a')
 
 build() {
 	cd "$pkgname"
@@ -34,5 +34,5 @@ package() {
 	ln -s /opt/"$pkgname"/ZynAddSubFX.lv2{,presets} "$pkgdir"/usr/lib/lv2/
 
 	install -d "$pkgdir"/usr/share/licenses/"$pkgname"
-	ln -s /opt/"$pkgname"/zyn-fusion-ELUA.txt "$pkgdir"/usr/share/licenses/"$pkgname"/LICENSE # Not a typo either…
+	ln -s /opt/"$pkgname"/zyn-fusion-ELUA.txt "$pkgdir"/usr/share/licenses/"$pkgname"/LICENSE # Not a typo…
 }
