@@ -22,8 +22,8 @@
 set -e
 
 # filled by the PKGBUILD
-NAME='tor-messenger'
-VERSION='REPL_VERSION'
+NAME="tor-messenger"
+VERSION="REPL_VERSION"
 LANGUAGE="REPL_LANGUAGE"
 
 ARCH=$(getconf LONG_BIT)
