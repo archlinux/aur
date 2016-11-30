@@ -1,9 +1,8 @@
 # Maintainer: Adria Arrufat (archdria) <adria.arrufat+AUR@protonmail.ch>
 
 pkgname=tensorflow
-pkgver=0.11.0rc0+1550+g6bf2cc7
+pkgver=0.12.0+rc0
 pkgrel=1
-
 pkgdesc="Library for computation using data flow graphs for scalable machine learning"
 url="https://tensorflow.org/"
 license=('Apache2')
@@ -13,7 +12,8 @@ conflicts=('tensorflow' 'libtensorflow')
 makedepends=('git' 'bazel' 'gcc5' 'python-numpy')
 optdepends=('cuda: GPU support'
             'cudnn: GPU support')
-source=("git+https://github.com/tensorflow/tensorflow"
+_commit=48408fc0e26669998cdb7f28604d163b0feb8130
+source=("git+https://github.com/tensorflow/tensorflow#commit=$_commit"
         "${pkgname}.pc")
 md5sums=('SKIP'
          '46d0ac65eb8e5c3960ea2a4752f98e29')
@@ -28,6 +28,7 @@ prepare() {
   export GCC_HOST_COMPILER_PATH=/usr/bin/gcc-5
   export PYTHON_BIN_PATH=/usr/bin/python
   export PYTHON_LIB_PATH=/usr/lib/python3.5/site-packages
+  export TF_NEED_OPENCL=0
   if (pacman -Q cuda &>/dev/null && pacman -Q cudnn &>/dev/null); then
     msg2 "CUDA support enabled"
     _build_opts="--config=cuda"
