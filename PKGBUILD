@@ -2,7 +2,7 @@
 
 pkgname=aursec
 pkgver=0.0.6a
-pkgrel=1
+pkgrel=2
 pkgdesc='Verify AUR package sources against hashes stored in a blockchain.'
 arch=('x86_64' 'x86' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/clawoflight/$pkgname"
@@ -26,7 +26,7 @@ build() {
 
 check() {
 	cd "$srcdir/$pkgname-$pkgver/aursec"
-	make check
+	make -k check
 }
 
 package() {
