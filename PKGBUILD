@@ -4,7 +4,7 @@
 
 pkgname=xephem
 pkgver=3.7.7
-pkgrel=2
+pkgrel=3
 pkgdesc="The Serious Interactive Astronomical Software Ephemeris"
 arch=('i686' 'x86_64')
 url="http://www.clearskyinstitute.com/xephem/xephem.html"
