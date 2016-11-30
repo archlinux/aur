@@ -13,7 +13,7 @@
 pkgname=sudo-masochist
 _sudover=1.8.18p1
 pkgver=${_sudover/p/.p}
-pkgrel=3
+pkgrel=4
 pkgdesc="Sudo with a lot of extra insults"
 arch=('i686' 'x86_64')
 url="https://www.sudo.ws/sudo/"
@@ -52,6 +52,8 @@ build() {
     --with-ldap-conf-file=/etc/openldap/ldap.conf \
     --with-env-editor \
     --with-passprompt="[sudo] password for %p: " \
+    --with-passwd-tries=20 \
+    --with-insults \
     --with-all-insults
   make
 }
