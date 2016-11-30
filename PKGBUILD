@@ -18,6 +18,7 @@ md5sums=('27c67061a89085bf2b0d4e9deb758a79')
 build() {
   #cd ${srcdir}/$pkgname-$pkgver/
   cd ${srcdir}/${pkgname}-${pkgver}/GUI/$pkgname
+  export MAKEFLAGS="-j1"
   make MOTIF=/usr/lib/ 
 }
 
