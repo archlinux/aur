@@ -1,19 +1,18 @@
 pkgbase = python-pyfr
 	pkgdesc = Python based framework for solving advection-diffusion type problems on streaming architectures
-	pkgver = 0.8.0
+	pkgver = 1.5.0
 	pkgrel = 1
 	url = http://www.pyfr.org/
 	arch = i686
 	arch = x86_64
 	license = BSD
 	makedepends = python-setuptools
-	depends = python-h5py
-	depends = python-numpy
-	depends = python-mpmath
-	depends = python-pytools
-	depends = python-mako
-	depends = python-mpi4py
-	depends = python-appdirs
+	depends = python-gimmik>=2.0
+	depends = python-h5py>=2.6
+	depends = python-numpy>=1.8
+	depends = python-pytools>2016.2.1
+	depends = python-mako>=1.0.0
+	depends = python-mpi4py>2.0
 	optdepends = metis: needed for running PyFR in parallel
 	optdepends = ptscotch-openmpi: needed for running PyFR in parallel
 	optdepends = python-pycuda: needed for CUDA Backend
@@ -21,8 +20,8 @@ pkgbase = python-pyfr
 	optdepends = clblas: needed for OpenCL Backend
 	optdepends = cblas: OpenMP Backend
 	optdepends = openblas: Optimized BLAS
-	source = http://www.pyfr.org/download/PyFR-0.8.0.zip
-	sha256sums = dce2c04183b8c533bd2498fb867cf5896f6f969808b3b0ec9c1fc293e956e9ba
+	source = http://www.pyfr.org/download/PyFR-1.5.0.zip
+	sha256sums = 84fc65fdcc2e7c446abddbedcf1e44a842593f8a04c3c8927f1c5742266c6333
 
 pkgname = python-pyfr
 

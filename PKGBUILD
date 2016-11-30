@@ -1,7 +1,7 @@
 # Maintainer: Masoud <mpoloton@gmail.com>
 
 pkgname=('python-pyfr')
-pkgver=0.8.0
+pkgver=1.5.0
 pkgrel=1
 pkgdesc="Python based framework for solving advection-diffusion type problems on streaming architectures"
 arch=('i686' 'x86_64')
@@ -10,7 +10,13 @@ license=('BSD')
 makedepends=('python-setuptools')
 source=("http://www.pyfr.org/download/PyFR-${pkgver}.zip")
 #mpi4py
-depends=( 'python-h5py' 'python-numpy' 'python-mpmath' 'python-pytools' 'python-mako' 'python-mpi4py' 'python-appdirs')
+depends=( 'python-gimmik>=2.0'
+	  'python-h5py>=2.6'
+	  'python-numpy>=1.8'
+	  'python-pytools>2016.2.1'
+	  'python-mako>=1.0.0'
+	  'python-mpi4py>2.0')
+
 optdepends=('metis: needed for running PyFR in parallel'
 	    'ptscotch-openmpi: needed for running PyFR in parallel' 
 	    'python-pycuda: needed for CUDA Backend' 
@@ -19,7 +25,7 @@ optdepends=('metis: needed for running PyFR in parallel'
             'cblas: OpenMP Backend'
             'openblas: Optimized BLAS' )
             
-sha256sums=('dce2c04183b8c533bd2498fb867cf5896f6f969808b3b0ec9c1fc293e956e9ba')
+sha256sums=('84fc65fdcc2e7c446abddbedcf1e44a842593f8a04c3c8927f1c5742266c6333')
 
 
 build() {
