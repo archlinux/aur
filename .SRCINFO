@@ -1,0 +1,15 @@
+pkgbase = aspell-id
+	pkgdesc = Indonesian dictionary for aspell
+	pkgver = 1.2
+	pkgrel = 1
+	url = http://aspell.net/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = aspell
+	source = ftp://ftp.gnu.org/gnu/aspell/dict/id/aspell5-id-1.2-0.tar.bz2
+	md5sums = 9136385a6ce0ff0d113427ab3c974254
+	sha256sums = 523912082848d891746dbb233f2ddb2cdbab6750dc76c38b3f6e000c9eb37308
+
+pkgname = aspell-id
+
