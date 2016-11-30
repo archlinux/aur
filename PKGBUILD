@@ -3,7 +3,7 @@
 # Contributor: Pablo Lezaeta <prflr88 (arro'a) gmail (puntocom)>
 
 pkgname=firefox-mega
-pkgver=3.6.11
+pkgver=3.6.17
 pkgrel=1
 groups=("firefox-addons")
 pkgdesc="MEGA extension for Firefox; enables better support for mega.co.nz downloads"
@@ -12,7 +12,7 @@ url="http://mega.co.nz"
 license=("BSD")
 groups=("firefox-addons")
 source=("https://mega.nz/meganz.xpi")
-sha512sums=('4f36fe96b7f8760dde6d94df408880dbaa07070d750c729417387349588671a2b71b8a2a907c75cf6b04996f8219193501347409e40a0c6c0b881bb0a3fe4eea')
+sha512sums=('1e0b34355de2fc1e8e7fab32f7fc134bc6aa667e0461bdc7c109202a46f712a32036a0ed151d4cd64dd785294c91bff15022af8720ed1bd08c9fb5b5f8cd5d73')
 package(){
 	depends=("firefox")
 
