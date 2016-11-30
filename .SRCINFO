@@ -1,0 +1,19 @@
+pkgbase = docker-volume-gvfs-git
+	pkgdesc = Docker GvFS (ftp, ssh, smb, ...) Volume Plugin
+	pkgver = 0.1.a994eba
+	pkgrel = 1
+	url = https://github.com/sapk/docker-volume-gvfs
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = go
+	depends = gvfs
+	optdepends = gvfs-smb: for mounting smb
+	provides = docker-volume-gvfs
+	conflicts = docker-volume-gvfs
+	source = git://github.com/sapk/docker-volume-gvfs
+	sha1sums = SKIP
+
+pkgname = docker-volume-gvfs-git
+
