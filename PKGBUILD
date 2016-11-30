@@ -1,11 +1,11 @@
 # Maintainer: Nissar Chababy <funilrys at outlook dot com>
 # Ex-Maintainer: Bartłomiej Piotrowski <bpiotrowski@archlinux.org>
 
-_ngx_ver=1.10.0
+_ngx_ver=1.11.2
 _mod_name=headers-more
 
 pkgname=nginx-mod-headers-more-git
-pkgver=0.31
+pkgver=0.32
 pkgrel=3
 pkgdesc='Nginx module for setting and clearing input and output headers'
 arch=('i686' 'x86_64')
@@ -15,8 +15,8 @@ depends=("nginx=$_ngx_ver")
 makedepends=('git')
 source=(https://github.com/openresty/${_mod_name}-more-nginx-module/archive/v${pkgver}.tar.gz
         http://nginx.org/download/nginx-${_ngx_ver}.tar.gz)
-md5sums=('256add046870dc0338e1553977c57c00'
-         'c184c873d2798c5ba92be95ed1209c02')
+sha512sums=('e42582b45c3111de3940bbeb67ce161aca2d55adcfb00c61c12256fa0e36221d38723013f36edbcf6d1b520f8dfb49d4657df8a956e66d36e68425afad382bd1'
+         '56fb66dd7267780acaa186679f3abefcddb3dd7701d0d87518e98c83b62cd171f40e4ce47cec0a42d31181d57856c9ba820ded001975bd50c9c09dcf409b11bf')
 
 _ngx_flags=(
   --with-file-aio
@@ -65,4 +65,3 @@ package() {
   sed -n '487,512p' "$srcdir"/${_mod_name}-nginx-module/README.markdown > \
     "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
-
