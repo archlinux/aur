@@ -1,8 +1,8 @@
 # Contributor: Florian Walch <florian.walch@gmx.at>
 # Maintainer: Robin Baumgartner <robin@baumgartners.ch>
 pkgname=trytond
-pkgver=4.0.4
-_pkgdir=4.0
+pkgver=4.2.0
+_pkgdir=4.2
 pkgrel=1
 pkgdesc="A three-tiers high-level general purpose application platform (server application)"
 arch=('any')
@@ -10,12 +10,12 @@ url="http://www.tryton.org/"
 license=('GPL3')
 depends=('python2>=2.7' 'python2-lxml' 'python2-relatorio>=0.2.0'
          'python2-genshi>=0.5' 'python2-dateutil' 'python2-polib'
-         'python2-sql')
+         'python2-sql>=0.4' 'python2-werkzeug' 'python2-wrapt')
 optdepends=('python2-psycopg2: support for PostgreSQL database'
-  'python2-pywebdav: support for WebDAV feature'
+  'unoconv: support for document conversion'
   'python2-pydot: support for displaying workflow graphs'
-  'python2-pytz: timezone support'
-  'python2-pyopenssl: support for SSL connection')
+  'python2-levenshtein'
+  'python2-bcrypt')
 makedepends=('python2-distribute')
 backup=('etc/trytond.conf')
 install="trytond.install"
@@ -23,7 +23,7 @@ source=("http://downloads.tryton.org/$_pkgdir/$pkgname-$pkgver.tar.gz"
         "http://downloads.tryton.org/$_pkgdir/$pkgname-$pkgver.tar.gz.asc"
         'trytond.conf'
         'trytond.service')
-md5sums=('f365f693ab8072e42286f8f2e7898c87'
+md5sums=('cbf1f45e45c7754a954f3fcd80fc18a1'
          'SKIP'
          'db21177e78e6983d85feb14436f5a7ba'
          'c3318e663c17194d71f6ef4ded16b293')
