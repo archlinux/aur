@@ -2,7 +2,7 @@
 # Contributor: FrozenCow <frozencow@gmail.com>
 
 pkgname=itch
-pkgver=21.0.3
+pkgver=21.0.4
 pkgrel=1
 pkgdesc="The best way to play itch.io games."
 
@@ -17,7 +17,7 @@ install="itch.install"
 
 # sic. - source is in itch repo, kitch is a dummy repo for canary-channel github releases
 source=("https://github.com/itchio/itch/archive/v${pkgver}.tar.gz")
-sha256sums=('7d52c97e662f8c68d19918f4578263a720b450735bf6b62f9b30f52a9f2d7c07')
+sha256sums=('dea05acdddf8bd12ac996564fa709e134cda74eb9cc7741c93ce7684dd9c988c')
 
 [ "$CARCH" = "i686" ]   && _ELECTRON_ARCH=ia32; _ITCH_ARCH=i386
 [ "$CARCH" = "x86_64" ] && _ELECTRON_ARCH=x64;  _ITCH_ARCH=amd64
@@ -34,7 +34,7 @@ prepare() {
 
 build() {
   cd "${srcdir}/itch-${pkgver}"
-  export CI_BUILD_TAG="v21.0.3"
+  export CI_BUILD_TAG="v21.0.4"
   export CI_CHANNEL="stable"
 
   release/ci-compile.js
