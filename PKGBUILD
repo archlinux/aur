@@ -5,18 +5,18 @@
 
 pkgbase=mesa-nosystemd
 pkgname=('opencl-mesa-nosystemd' 'vulkan-intel-nosystemd' 'vulkan-radeon-nosystemd' 'libva-mesa-driver-nosystemd' 'mesa-vdpau-nosystemd' 'mesa-nosystemd' 'mesa-libgl-nosystemd')
-pkgver=13.0.1
+pkgver=13.0.2
 pkgrel=1
 arch=('i686' 'x86_64')
 makedepends=('python2-mako' 'libxml2' 'libx11' 'glproto' 'libdrm' 'dri2proto' 'dri3proto' 'presentproto' 
              'libxshmfence' 'libxxf86vm' 'libxdamage' 'libvdpau' 'libva' 'wayland' 'elfutils' 'llvm'
-             'libudev.so' 'libomxil-bellagio' 'libgcrypt' 'libclc' 'clang')
+             'libomxil-bellagio' 'libgcrypt' 'libclc' 'clang')
 url="http://mesa3d.sourceforge.net"
 license=('custom')
 source=(ftp://ftp.freedesktop.org/pub/mesa/${pkgver}/mesa-${pkgver}.tar.xz{,.sig}
         LICENSE
         remove-libpthread-stubs.patch)
-sha256sums=('71962fb2bf77d33b0ad4a565b490dbbeaf4619099c6d9722f04a73187957a731'
+sha256sums=('a6ed622645f4ed61da418bf65adde5bcc4bb79023c36ba7d6b45b389da4416d5'
             'SKIP'
             '7fdc119cf53c8ca65396ea73f6d10af641ba41ea1dd2bd44a824726e01c8b3f2'
             '75ab53ad44b95204c788a2988e97a5cb963bdbf6072a5466949a2afb79821c8f')
@@ -91,8 +91,8 @@ package_opencl-mesa-nosystemd() {
 
 package_vulkan-intel-nosystemd() {
   pkgdesc="Intel's Vulkan mesa driver"
-  depends=('vulkan-icd-loader' 'libgcrypt' 'wayland' 'libx11' 'libxshmfence')
-  provides=('vulkan-intel')
+  depends=('libgcrypt' 'wayland' 'libx11' 'libxshmfence')
+  provides=('vulkan-driver' 'vulkan-intel')
   conflicts=('vulkan-intel')
   replaces=('vulkan-intel')
 
@@ -109,9 +109,8 @@ package_vulkan-intel-nosystemd() {
 
 package_vulkan-radeon-nosystemd() {
   pkgdesc="Radeon's Vulkan mesa driver"
-  depends=('vulkan-icd-loader' 'libgcrypt' 'wayland' 'libx11' 'libxshmfence' 'libelf'
-           'libdrm' 'llvm-libs')
-  provides=('vulkan-radeon')
+  depends=('libgcrypt' 'wayland' 'libx11' 'libxshmfence' 'libelf' 'libdrm' 'llvm-libs')
+  provides=('vulkan-driver' 'vulkan-radeon')
   conflicts=('vulkan-radeon')
   replaces=('vulkan-radeon')
 
