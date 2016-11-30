@@ -1,0 +1,17 @@
+pkgbase = gnome-shell-extension-redshift-native-git
+	pkgdesc = A native redshift implementation for GNOME
+	pkgver = 28.9768ef4
+	pkgrel = 1
+	url = https://github.com/benzea/gnome-shell-extension-redshift
+	arch = any
+	license = GPL2
+	makedepends = git
+	makedepends = zip
+	makedepends = unzip
+	depends = gnome-shell>=3.22
+	depends = gnome-settings-daemon-redshift
+	source = git://github.com/benzea/gnome-shell-extension-redshift.git
+	sha256sums = SKIP
+
+pkgname = gnome-shell-extension-redshift-native-git
+
