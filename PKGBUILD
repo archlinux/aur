@@ -6,7 +6,7 @@
 
 pkgname=emacs-lucid
 pkgver=25.1
-pkgrel=4
+pkgrel=5
 pkgdesc="The extensible, customizable, self-documenting real-time display editor (Lucid toolkit version)"
 arch=('i686' 'x86_64')
 url="http://www.gnu.org/software/emacs/emacs.html"
@@ -22,10 +22,16 @@ md5sums=('4f3d42fb22823a659e16bfa89078a74c'
 
 build() {
   cd "$srcdir"/emacs-$pkgver
+
+  # For the hardening-wrapper package.  Emacs doesn't support building
+  # with PIE (https://debbugs.gnu.org/cgi/bugreport.cgi?bug=18784).
+  export HARDENING_PIE=0
+
   ./configure \
       --prefix=/usr --sysconfdir=/etc --libexecdir=/usr/lib --localstatedir=/var \
       --with-x-toolkit=lucid --with-xft --without-gconf --without-gsettings \
       --with-gameuser=:games --program-transform-name='s/^ctags$/ctags.emacs/'
+
   make
 }
 
