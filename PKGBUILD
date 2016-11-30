@@ -38,7 +38,7 @@ _bjam() {
 	        variant=release \
 	        threading=multi \
 	        threadapi=win32 \
-	        link=static,shared \
+	        link=static \
 	        runtime-link=shared \
 	        --prefix="${pkgdir}/usr/${_arch}" \
 	        --user-config=user-config.jam \
