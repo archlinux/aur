@@ -2,12 +2,12 @@
 
 pkgname=check_ipmi_sensor
 pkgver=3.11
-pkgrel=2
+pkgrel=3
 pkgdesc='IPMI Sensor Monitoring Plugin'
 arch=('any')
 url='https://github.com/thomas-krenn/check_ipmi_sensor_v3'
 license=('GPL')
-depends=('nagios' 'freeipmi' 'perl-ipc-run')
+depends=('freeipmi' 'perl-ipc-run')
 optdepends=('sudo: check localhost without authentication')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/thomas-krenn/check_ipmi_sensor_v3/archive/v${pkgver}.tar.gz"
 	'sudo')
