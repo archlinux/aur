@@ -5,6 +5,8 @@ pkgbase = viivakoodi
 	url = https://github.com/kxepal/viivakoodi
 	arch = any
 	license = MIT
+	makedepends = python-setuptools
+	makedepends = python2-setuptools
 	source = viivakoodi-0.8.0.tar.gz::https://github.com/kxepal/viivakoodi/archive/0.8.0.tar.gz
 	sha256sums = e1a17dc24975d5242202cfbb7534d69dd14eeb26bdf8a10f056c7b04904fef1e
 
@@ -12,7 +14,6 @@ pkgname = python2-viivakoodi
 	checkdepends = python2-pytest
 	checkdepends = python2-mock
 	checkdepends = python2-tox
-	depends = python2
 	depends = python2-setuptools
 	optdepends = python2-pillow: render barcodes as images
 
@@ -20,6 +21,5 @@ pkgname = python-viivakoodi
 	checkdepends = python-pytest
 	checkdepends = python-mock
 	checkdepends = python-tox
-	depends = python
 	depends = python-setuptools
 	optdepends = python-pillow: render barcodes as images

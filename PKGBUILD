@@ -10,6 +10,8 @@ url="https://github.com/kxepal/$pkgbase"
 license=('MIT')
 source=("$pkgbase-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
 sha256sums=('e1a17dc24975d5242202cfbb7534d69dd14eeb26bdf8a10f056c7b04904fef1e')
+makedepends=('python-setuptools'
+             'python2-setuptools')
 
 check() {
     cd "$srcdir/$pkgbase-$pkgver"
