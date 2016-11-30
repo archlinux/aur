@@ -1,0 +1,15 @@
+pkgbase = python-gimmik
+	pkgdesc = Generator of Matrix Multiplication Kernels - GiMMiK - is a tool for generation of high performance matrix multiplication kernel code for various accelerator platforms.
+	pkgver = 2.1
+	pkgrel = 1
+	url = https://github.com/vincentlab/GiMMiK
+	arch = any
+	license = BSD
+	makedepends = python-setuptools
+	depends = python-numpy>=1.8
+	depends = python-mako>=1.0.0
+	source = https://github.com/vincentlab/GiMMiK/archive/v2.1.tar.gz
+	sha256sums = ed8d90e99ff13b5dd796709abc42f880e3022af98591ed8254aa3e0f89b9bc0e
+
+pkgname = python-gimmik
+
