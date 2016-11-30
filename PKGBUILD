@@ -2,7 +2,7 @@
 
 _gemname=rubocop
 pkgname=ruby-${_gemname}
-pkgver=0.45.0
+pkgver=0.46.0
 pkgrel=1
 pkgdesc="Automatic Ruby code style checking tool."
 arch=('any')
@@ -14,7 +14,7 @@ source=(
 	"https://rubygems.org/downloads/${_gemname}-${pkgver}.gem"
 )
 sha256sums=(
-	'c579b99be005868127c26d18d8ebfc2e71ed4ebacf781896a837cac6f128248f'
+	'0c5087c157b6070319d06cab7594f9f72b5478344a2568b7029875a081c20418'
 )
 
 package() {
