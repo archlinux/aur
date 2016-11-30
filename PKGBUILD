@@ -1,7 +1,7 @@
 # Maintainer: Xunhua Guo <xunhua.guo@gmail.com>
 
 pkgname=mariadb-jdbc
-pkgver=1.5.2
+pkgver=1.5.5
 pkgrel=1
 pkgdesc="The official JDBC driver (Java library) for MariaDB"
 arch=('any')
@@ -13,7 +13,7 @@ provides=('mysql-jdbc')
 replaces=('mysql-jdbc')
 source=("https://downloads.mariadb.com/enterprise/x18t-d36g/connectors/java/connector-java-${pkgver}/mariadb-java-client-${pkgver}.jar")
 
-md5sums=("1d3f436315b49bcbc5cd0412e1d4c444")
+md5sums=("a970952cc321b82a1ae7d8fe7c36dec6")
 
 package() {
     install -D -m755 \
