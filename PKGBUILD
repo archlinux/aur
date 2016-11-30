@@ -1,21 +1,21 @@
 # Maintainer: Tommaso Sardelli <lacapannadelloziotom AT gmail DOT com>
 
 pkgname=gajim-plugin-omemo-git
-_pkgname=gajim-omemo
-pkgver=0.5.1.r12.g8220821
+pkgver=r856.2b6fd6b
 pkgrel=1
 pkgdesc="Gajim plugin for OMEMO Multi-End Message and Object Encryption."
 arch=(any)
-url="https://github.com/omemo/${_pkgname}"
+url="https://dev.gajim.org/gajim/gajim-plugins/wikis/OmemoGajimPlugin"
 license=('GPL')
-depends=("gajim" "python2-axolotl-git")
+depends=("gajim" "python2-setuptools" "python2-axolotl-git" "python2-cryptography")
+makedepends=("git")
 provides=('gajim-plugin-omemo')
 conflicts=('gajim-plugin-omemo')
-source=("git://github.com/omemo/gajim-omemo")
+source=("git+https://dev.gajim.org/gajim/gajim-plugins.git")
 sha512sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/$_pkgname"
+  cd "$srcdir"/gajim-plugins/omemo
   ( set -o pipefail
     git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
@@ -23,9 +23,10 @@ pkgver() {
 }
 
 package() {
-  cd $srcdir/gajim-omemo
+  cd $srcdir/gajim-plugins/omemo
+  rm -r CHANGELOG COPYING pkgs
   install -d ${pkgdir}/usr/share/gajim/plugins/omemo
-  cp -r * ${pkgdir}/usr/share/gajim/plugins/omemo/
+  cp -r ./* ${pkgdir}/usr/share/gajim/plugins/omemo/
 }
 
 # vim:set ts=2 sw=2 et:
