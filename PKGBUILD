@@ -22,21 +22,27 @@ _gitname='gprbuild'
 
 library_kinds="static shared"
 
-build() {
+
+prepare()
+{
   cd "$srcdir"
-  msg "Connecting to GIT server...."
 
   if [[ -d "$_gitname" ]]; then
-    cd "$_gitname" && git pull origin
-    msg "The local files are updated."
+    msg "gprbuild git repository exists."
   else
+    msg "Connecting to GIT server...."
+
     git clone "$_gitroot" "$_gitname"
     cd "$_gitname"
+
+    git checkout 0f2542be82b7a4edd89b564205202b16a0f1dfd3
+    msg "GIT checkout done or server timeout"
   fi
+}
 
-  git checkout 0f2542be82b7a4edd89b564205202b16a0f1dfd3
 
-  msg "GIT checkout done or server timeout"
+build() {
+  cd "$srcdir/$_gitname"
 
   for k in $library_kinds
   do
