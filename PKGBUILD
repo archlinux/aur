@@ -1,9 +1,11 @@
-# Contributor: Michael Gerdau <mgd@qata.de>
+# Maintainer: Michael Gerdau <mgd@qata.de>
+# Maintainer: jason ryan <jasonwryan@gmail.com>
+# Contributor: Drathir <drathir87@gmail.com>
 # Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-cryptx'
 pkgver='0.044'
-pkgrel='1'
+pkgrel='2'
 pkgdesc="Crypto toolkit (self-contained no external libraries needed)"
 arch=('i686' 'x86_64')
 license=('PerlArtistic' 'GPL')
