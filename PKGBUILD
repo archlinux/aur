@@ -3,7 +3,7 @@
 # Contributor: Julien Deswaef (juego) <juego@requiem4tv.com>
 
 pkgname=python-tensorflow-git
-pkgver=0.10.0.r1362.g4addf4b
+pkgver=0.11.0.r2839.g9a765d6
 pkgrel=1
 
 pkgdesc="Open source software library for numerical computation using data flow graphs."
@@ -14,14 +14,12 @@ arch=('i686' 'x86_64')
 
 provides=('python-tensorflow')
 conflicts=('python-tensorflow')
-depends=('python-numpy' 'swig' 'python-wheel' 'python-protobuf3')
+depends=('python-numpy' 'swig' 'python-wheel' 'python-protobuf')
 makedepends=('git' 'python-pip' 'bazel' 'rsync' 'gcc5')
 optdepends=('cuda: GPU support'
             'cudnn: GPU support')
-source=("git+https://github.com/tensorflow/tensorflow"
-        "fix_cuda_compilation.patch")
-md5sums=('SKIP'
-         '3db030a479228df99419145f77571981')
+source=("git+https://github.com/tensorflow/tensorflow")
+md5sums=('SKIP')
 
 pkgver() {
   cd "${srcdir}/tensorflow"
@@ -38,12 +36,10 @@ prepare() {
     mkdir -p ${srcdir}/tmp
   fi
 
-  # fix build on Arch Linux
-  # see https://github.com/tensorflow/tensorflow/issues/1346
-  patch -Np1 -i ../fix_cuda_compilation.patch
-
   # setup environment variables
   export GCC_HOST_COMPILER_PATH=/usr/bin/gcc-5
+  export PYTHON_BIN_PATH=/usr/bin/python
+  export PYTHON_LIB_PATH=/usr/lib/python3.5/site-packages
   if (pacman -Q cuda &>/dev/null && pacman -Q cudnn &>/dev/null); then
     msg2 "CUDA support enabled"
     _build_opts="--config=cuda"
@@ -60,6 +56,11 @@ prepare() {
     export TF_NEED_CUDA=0
   fi
 
+  # disable Google Cloud Platform support
+  export TF_NEED_GCP=0
+  # disable Hadoop File System support
+  export TF_NEED_HDFS=0
+
   # make sure the proxy variables are in all caps, otherwise bazel ignores them
   export HTTP_PROXY=`echo $http_proxy | sed -e 's/\/$//'`
   export HTTPS_PROXY=`echo $https_proxy | sed -e 's/\/$//'`
@@ -70,7 +71,7 @@ build() {
 
   cd "${srcdir}/tensorflow"
 
-  PYTHON_BIN_PATH=/usr/bin/python ./configure
+  ./configure
   bazel build -c opt ${_build_opts} //tensorflow/tools/pip_package:build_pip_package
 
   msg2 "Building pip package..."
