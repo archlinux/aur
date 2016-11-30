@@ -1,19 +1,20 @@
 # Maintainer: Lukas Jirkovsky <l.jirkovsky@gmail.com>
 pkgname=luxrender-hg
-pkgver=4882+.203f2dad3260+
+pkgver=4912+.55596283ec1e+
 pkgrel=1
 pkgdesc="Rendering system for physically correct, unbiased image synthesis"
 arch=('x86_64')
 url="http://www.luxrender.net/"
 license=('GPL')
-depends=('boost-libs' 'embree' 'freeimage' 'openexr' 'openimageio' 'libpng' 'libcl' 'libgl' 'fftw')
+depends=('boost-libs' 'freeimage' 'openexr' 'openimageio' 'libpng' 'libcl' 'libgl' 'fftw'
+         'embree-bvh_build-git')
 optdepends=('luxblend25: Blender exporter' 'qt4: Qt GUI' \
             'python: pylux Python interface'
             'opencl-nvidia: OpenCL support for nVidia GPUs' \
             'amdapp-sdk: OpenCL support for AMD GPUs' \
             'intel-opencl-runtime: OpenCL support for Intel CPUs')
 makedepends=('cmake' 'boost' 'mesa' 'qt4' "luxrays-hg" 'python' 'opencl-headers'
-             'mercurial' )
+             'eos_portable_archive' 'mercurial')
 provides=('luxrender')
 conflicts=('luxrender')
 source=('lux::hg+https://bitbucket.org/luxrender/lux'
@@ -29,7 +30,10 @@ pkgver() {
 prepare() {
   cd "$srcdir/lux"
 
+  # force use of python 3 with boost_python
   patch -Np1 < "$srcdir/force_python3.diff"
+  # the build requires some extensions
+  sed -i 's|std=c++11|std=gnu++11|' CMakeLists.txt
 }
 
 build() {
