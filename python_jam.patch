@@ -1,0 +1,12 @@
+--- tools/build/src/tools/python.jam	2013-05-21 06:14:18.000000000 +0200
++++ tools/build/src/tools/python.jam	2014-04-02 20:02:34.647406880 +0200
+@@ -645,8 +645,7 @@
+ 
+         case aix : return  <library>pthread <library>dl ;
+ 
+-        case * : return  <library>pthread <library>dl
+-            <toolset>gcc:<library>util <toolset-intel:platform>linux:<library>util ;
++        case * : return  <library>pthread ;
+     }
+ }
+ 
