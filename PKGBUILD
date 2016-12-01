@@ -13,29 +13,31 @@ source=("git+https://github.com/cpp-ftw/ccsh.git")
 md5sums=(SKIP)
 
 pkgver() {
-  cd "${pkgname}"
+  cd "ccsh"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package_ccsh-git() {
-  cd "${pkgname}"
+  cd "ccsh"
   
   cmake . -DWITH_LIB=ON -DWITH_TEST=OFF -DWITH_CLING=OFF
   make
   
-  install -Dm644 "$srcdir/lib/libccsh_lib.so" "$pkgdir/usr/lib/libccsh_lib.so"
+  install -Dm644 "$srcdir/ccsh/lib/libccsh_lib.so" "$pkgdir/usr/lib/libccsh_lib.so"
   
   install -dm755 "$pkgdir/usr/include/ccsh"
-  install -Dm644 $srcdir/include/ccsh/* "$pkgdir/usr/include/ccsh"
+  install -Dm644 $srcdir/ccsh/include/ccsh/* "$pkgdir/usr/include/ccsh"
 }
 
 package_ccsh-shell-git() {
-  depends=('ccsh-git')
+  depends=('ccsh-git' 'cling-git')
+  
+  cd "ccsh"
   
   cmake . -DWITH_LIB=OFF -DWITH_TEST=OFF -DWITH_CLING=ON 
   make
   
-  install -Dm755 "$srcdir/ccsh" "$pkgdir/usr/bin/ccsh"
+  install -Dm755 "$srcdir/ccsh/ccsh" "$pkgdir/usr/bin/ccsh"
   install -Dm644 "$srcdir/ccsh/ui/clingrc.hpp" "$pkgdir/etc/ccsh/clingrc.hpp"
 }
 
@@ -43,10 +45,10 @@ package_ccsh-shell-git() {
 package_ccsh-wrappers-core-git() {
   depends=('ccsh-git')
 	
-  install -Dm755 "$srcdir/wrappers/ccsh/" "$pkgdir/usr/include/ccsh"
+  cd "ccsh"
 
-  install -dm755 "$pkgdir/usr/wrappers/ccsh/core"
-  install -Dm644 "$srcdir/wrappers/ccsh/core.hpp" "$pkgdir/usr/include/ccsh/core.hpp"
-  install -Dm644 $srcdir/wrappers/ccsh/core/* "$pkgdir/usr/include/ccsh"
+  install -Dm644 "$srcdir/ccsh/wrappers/ccsh/core.hpp" "$pkgdir/usr/include/ccsh/core.hpp"
+  install -dm755 "$pkgdir/usr/include/ccsh/core"
+  install -Dm644 $srcdir/ccsh/wrappers/ccsh/core/* "$pkgdir/usr/include/ccsh/core"
 }
 
