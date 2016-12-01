@@ -36,18 +36,18 @@ build() {
     -DCMAKE_BUILD_TYPE=Release \
     ../${_gitname}
 
-  uudecode -o package/flightgear.png package/flightgear.png.uue
+  uudecode -o ../${_gitname}/package/flightgear.png ../${_gitname}/package/flightgear.png.uue
   make || return 1
-  sed -i 's|Exec=.*|Exec=fgfs --fg-root=/usr/share/flightgear --launcher|' package/flightgear.desktop
+  sed -i 's|Exec=.*|Exec=fgfs --fg-root=/usr/share/flightgear --launcher|' ../${_gitname}/package/flightgear.desktop
 }
 
 package(){
   cd "${srcdir}/${_gitname}-build/"
   make DESTDIR="$pkgdir" install
 
-  install -Dm0644 package/flightgear.desktop $pkgdir/usr/share/applications/flightgear.desktop
-  install -Dm0644 package/flightgear.ico $pkgdir/usr/share/icons/flightgear.ico
-  install -Dm0644 package/flightgear.png $pkgdir/usr/share/icons/flightgear.png
-  install -Dm0644 scripts/completion/fg-completion.bash $pkgdir/usr/share/bash-completion/completions/fgfs
+  install -Dm0644 ../${_gitname}/package/flightgear.desktop $pkgdir/usr/share/applications/flightgear.desktop
+  install -Dm0644 ../${_gitname}/package/flightgear.ico $pkgdir/usr/share/icons/flightgear.ico
+  install -Dm0644 ../${_gitname}/package/flightgear.png $pkgdir/usr/share/icons/flightgear.png
+  install -Dm0644 ../${_gitname}/scripts/completion/fg-completion.bash $pkgdir/usr/share/bash-completion/completions/fgfs
 }
 
