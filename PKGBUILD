@@ -2,7 +2,7 @@
 
 pkgname=openframeworks
 pkgver=0.9.8
-pkgrel=1
+pkgrel=2
 pkgdesc="An open source C++ toolkit for creative coding."
 url="http://openframeworks.cc/"
 arch=('x86_64' 'i686')
@@ -23,8 +23,8 @@ source_i686=("http://www.openframeworks.cc/versions/v${pkgver}/of_v${pkgver}_lin
 source_x86_64=("http://www.openframeworks.cc/versions/v${pkgver}/of_v${pkgver}_linux64_release.tar.gz")
 md5sums=('31600cdc597a275295fa35cf178f83c0'
          'd4a0cfda1970138b71d28f1cd81220da')
-md5sums_x86_64=('df607d735617005e795234c834d91746')
-md5sums_i686=('452002f4246fd0c9ab4ff5a4dc2f2111')
+md5sums_x86_64=('58816a7b9d87bb745d15cbcbed24f95b')
+md5sums_i686=('00b7d47b096e602ef346c50447f22639')
 
 prepare() {
 	export OF_ROOT=${srcdir}/${_name}
