@@ -2,7 +2,7 @@
 # Maintainer: Luca Weiss <luca (at) z3ntu (dot) xyz>
 
 pkgname=openfx-misc
-pkgver=2.1.8
+pkgver=2.1.9
 pkgrel=1
 arch=("i686" "x86_64")
 pkgdesc="Miscellaneous OpenFX plugins"
