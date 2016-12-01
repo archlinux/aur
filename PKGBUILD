@@ -14,10 +14,15 @@ changelog=
 source=("$pkgname::git+$_ghuser$pkgname.git")
 md5sums=(SKIP)
 
+_TEMP_GOPATH="$GOPATH"
+
 build() {
 	cd $pkgname
+	export GOPATH="$(pwd)"
+	go get ./...
 	go install gotwitch.go
 	go build gotwitch.go
+	export GOPATH="$_TEMP_GOPATH"
 }
 
 package() {
