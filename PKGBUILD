@@ -2,7 +2,7 @@
 # Generator  : CPANPLUS::Dist::Arch 1.19
 
 pkgname='perl-file-next'
-pkgver=1.12
+pkgver=1.16
 pkgrel=1
 pkgdesc="File-finding iterator"
 arch=('any')
@@ -12,8 +12,8 @@ depends=('perl')
 makedepends=()
 url='http://search.cpan.org/dist/File-Next'
 source=("http://search.cpan.org/CPAN/authors/id/P/PE/PETDANCE/File-Next-$pkgver.tar.gz")
-md5sums=('725e888d1600fed62cd89b9dac989304')
-sha512sums=('eb742ed03f91463946ffe9d2ddade77f794996f4007ba6ae924255cf028d14959a3263c254ef9e7bed1e10ec40a244364743c40b2f34c2160064059b1f4c6f2f')
+md5sums=('103bc329cd2b64ec270ac53a7dacb378')
+sha512sums=('42c812b8927a18e1f01758a2218f37f2079083117763b41adcee1eb4947b36b1379405707304b948fddd4640e2c34070f4dcd0f217fb60b7ba765efe98be8ad3')
 _distdir="File-Next-$pkgver"
 
 build() {
