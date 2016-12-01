@@ -10,9 +10,9 @@
 
 pkgbase=kodi-pre-release
 pkgname=('kodi-pre-release' 'kodi-eventclients-pre-release')
-pkgver=17.0b5
+pkgver=17.0b6
 _codename=Krypton
-pkgrel=4
+pkgrel=1
 arch=('i686' 'x86_64')
 url="http://kodi.tv"
 license=('GPL2')
@@ -29,7 +29,7 @@ makedepends=(
 source=(
   "kodi-$pkgver-$_codename.tar.gz::https://github.com/xbmc/xbmc/archive/$pkgver-$_codename.tar.gz"
 )
-sha256sums=('e27d31c24de77f5f6b79f32d60c4e34787a2f98dcd7a15339ab6cf290f10a15d')
+sha256sums=('961330e0b833793a6d58a00f29b58869dab643a24bf7622b790a43a2dde6fa4b')
 
 prepare() {
   cd "$srcdir/xbmc-$pkgver-$_codename"
