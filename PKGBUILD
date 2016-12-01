@@ -1,4 +1,4 @@
-# Maintainer: Ignacio Collado <nacho_16_89 at hotmail dot com>
+# Maintainer: Ignacio Collado <nachohc89 at gmail dot com>
 
 _pkgbase=8192eu
 pkgname=8192eu-dkms
