@@ -7,7 +7,7 @@ arch=('any')
 makedepends=('git')
 url="https://github.com/Corvusoft/kashmir-dependency"
 license=('custom:boost')
-source=("kashmir::git://github.com/Corvusoft/kashmir-dependency#commit=2f3913f49c4ac7f9bff9224db5178f6f8f0ff3ee")
+source=("kashmir::git+https://github.com/Corvusoft/kashmir-dependency#commit=2f3913f49c4ac7f9bff9224db5178f6f8f0ff3ee")
 md5sums=('SKIP')
 
 pkgver() {
