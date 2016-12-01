@@ -5,13 +5,13 @@ pkgver=1.7.1
 pkgrel=2
 pkgdesc="A loop-avoiding distance-vector routing protocol"
 arch=('i686' 'x86_64')
-url="http://www.pps.univ-paris-diderot.fr/~jch/software/babel/"
+url="https://www.irif.fr/~jch/software/babel/"
 license=('MIT')
 depends=('glibc')
 optdepends=('ahcpd: for autoconfiguration of addresses and other informations')
 backup=('etc/babeld.conf')
-source=("http://www.pps.univ-paris-diderot.fr/~jch/software/files/$pkgname-$pkgver.tar.gz"
-  "http://www.pps.univ-paris-diderot.fr/~jch/software/files/$pkgname-$pkgver.tar.gz.asc"
+source=("https://www.irif.fr/~jch/software/files/$pkgname-$pkgver.tar.gz"
+  "https://www.irif.fr/~jch/software/files/$pkgname-$pkgver.tar.gz.asc"
   "babeld.conf"
   "babeld.service")
 md5sums=('2f71794d4e67f8a5352164ce33611549'
