@@ -6,8 +6,8 @@ pkgrel=1
 pkgdesc="Python command line tool for compiling and deploying QGIS plugins"
 arch=('any')
 url="http://g-sherman.github.io/plugin_build_tool/"
-license=('GPLv2')
-depends=('python2')
+license=('GPL2')
+depends=('python2' 'python2-sphinx')
 source=("https://github.com/g-sherman/plugin_build_tool/archive/v$pkgver.tar.gz")
 sha256sums=('d07eede906977d8982c139b5b7b3cbf3569d76a5a2abe7d873f70a4e3a716808')
 
