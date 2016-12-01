@@ -2,18 +2,17 @@
 # PGP ID: 97312D5EB9D7AE7D0BD4307351DAE9B7C1AE9161
 
 pkgname=arduino-builder
-pkgver=1.3.21
-pkgrel=2
+pkgver=1.3.22
+pkgrel=1
 pkgdesc="A command line tool for compiling Arduino sketches"
 arch=('i686' 'x86_64')
 url="https://github.com/arduino/arduino-builder"
 license=('GPL')
-depends=('')
 makedepends=('go' 'git' 'unzip')
 optdepends=('ctags')
 options=(!strip)
 source=("https://github.com/arduino/arduino-builder/archive/${pkgver}.tar.gz")
-sha512sums=('9d724585294f1107fb0d1f55cfbbe831a15e11460d5152329fb76e2794ac8b98f62b0c149cb8bb6de8cbe6090222c0f199478f7030c6505f49561e891a27ed04')
+sha512sums=('1e569825ea9ab4915ff676579480d8806e4a14ff1afd284fd3e839d11fda6c049ec0f0cbb832c8eb034364fac47ab7d94a01bd0b40f167526da968d13fddabf0')
 
 build() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
