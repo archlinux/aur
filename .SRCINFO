@@ -1,9 +1,8 @@
 pkgbase = gmapcatcher
 	pkgdesc = GMapCatcher is an offline maps viewer
 	pkgver = 0.8.0.4
-	pkgrel = 1
-	url = http://code.google.com/p/gmapcatcher
-	install = gmapcatcher.install
+	pkgrel = 2
+	url = https://github.com/heldersepu/gmapcatcher
 	arch = i686
 	arch = x86_64
 	license = GPL2
@@ -14,10 +13,10 @@ pkgbase = gmapcatcher
 	depends = python2-gobject2
 	provides = gmapcatcher
 	conflicts = gmapcatcher-svn
-	source = http://gmapcatcher.googlecode.com/files/mapcatcher_0.8.0.4.tar.gz
 	source = gmapcatcher.png
-	md5sums = 2485bac859e6d7f0135b47329117d301
-	md5sums = bc0ce84192f1a60087662310c24cab8f
+	source = https://github.com/ValHue/AUR-PKGBUILDs/raw/master/gmapcatcher/mapcatcher_0.8.0.4.tar.gz
+	sha256sums = d3421d3a2ad41f0d9de1e1aa76366a8c6a1811da80f29d1dba2b853662ee29d1
+	sha256sums = 9cc969e9c4fb7fe42e7afb33b5bf60a868c626e2ec957d3003daeecdaa1dae76
 
 pkgname = gmapcatcher
 
