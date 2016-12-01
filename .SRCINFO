@@ -1,0 +1,13 @@
+pkgbase = amdgpocl
+	pkgdesc = OpenCL userspace driver as provided in the amdgpu-pro driver stack. This package is intended to work along with the free amdgpu stack.
+	pkgver = 16.40.348864
+	pkgrel = 1
+	url = http://www.amd.com
+	arch = x86_64
+	license = custom:AMD
+	makedepends = wget
+	source = https://www2.ati.com/drivers/linux/ubuntu/amdgpu-pro-16.40-348864.tar.xz
+	sha256sums = 59d6b1d975164ff45f6e6be5af6bcc061bf9ef6378ac5757bdb4e67840a706b0
+
+pkgname = amdgpocl
+
