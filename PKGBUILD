@@ -8,7 +8,7 @@ arch=('i686' 'x86_64')
 url="http://erebusrpg.sourceforge.net/"
 license=("GPL3")
 depends=('sfml' 'qt4')
-source=("$pkgname-$pkgver::http://launchpad.net/erebus/trunk/$pkgver/+download/erebussrc.zip"
+source=("$pkgname-$pkgver::https://launchpad.net/erebus/trunk/$pkgver/+download/erebussrc.zip"
         "erebus.sh")
 
 build() {
