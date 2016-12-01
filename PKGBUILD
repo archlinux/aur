@@ -1,6 +1,6 @@
 # Maintainer: Fabian <plusfabi[AT+thegoogleadress]>
 pkgname=pokemon-revolution-online-bin
-pkgver=0.95.7.20161030
+pkgver=0.95.8.20161201MERRYCHRISTMAS
 pkgrel=1
 pkgdesc="A free-to-play, fan-made, MMO game that is predicated around the official Pokémon games."
 arch=('x86_64')
@@ -27,8 +27,8 @@ package() {
     
     __DLDIR=$(xdg-user-dir DOWNLOAD) ##downloaddirectory
     __DDLA="http://tiny.cc/PROLinux" ##download link
-    __DDLFN="PROLinux64.zip" ##filename
-    __DDLFMD5="5d6033a29357b78129bf1bbfe529eb55" #md5sum
+    __DDLFN="PROXmasLinux.zip" ##filename
+    __DDLFMD5="6ee28befaee8a13a564bfc8fd28f1a9f" #md5sum
     
     ## "Something's missing"? -> No One Cares - Atreyu c;
     if [ ! -f ${__DLDIR}/${__DDLFN} ]; then
