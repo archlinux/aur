@@ -3,7 +3,7 @@
 # Contributor: Max Roder <maxroder at web dot de>
 
 pkgname=tor-browser-bin
-pkgver=6.0.6
+pkgver=6.0.7
 _language='en-US'
 pkgrel=1
 pkgdesc="Tor Browser is +1 for privacy and -1 for mass surveillance"
@@ -24,9 +24,9 @@ source_x86_64=("https://dist.torproject.org/torbrowser/${pkgver}/tor-browser-lin
 source+=(tor-browser.desktop
          tor-browser.png
          tor-browser.sh)
-sha256sums_i686=('9fb4a0142a6b2cf23d60983345f37f4090b047aa7c9e4145c0921fa2df7c1e61'
+sha256sums_i686=('c3bbcd5c13c58ba34d6b1cc24a8077a4fc4b097e61c70ccbae7bf5c7aac3e89b'
                  'SKIP')
-sha256sums_x86_64=('bd765a778e3a30f912b251c30ec4f1f4db02f2babfb34090c59ab7ecef5cac79'
+sha256sums_x86_64=('041e14a23173ebaa330ae954a8de8429366ae47030e433bbe7e2145bfbc68fd2'
                    'SKIP')
 sha1sums+=('922f966fa16ba30a01b8e8d6f44ddb0b5468725d'
            'aa3f84762b5f0b39aea5e03befdb03c4f53e8078'
