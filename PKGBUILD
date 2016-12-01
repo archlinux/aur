@@ -11,6 +11,7 @@ depends=('aria2' 'vorbis-tools' 'libnotify' 'python' 'python-pyqt5' 'qt5-svg')
 optdepends=('firefox-flashgot: for integrating with firefox.')
 provides=("${pkgname}" "persepolis")
 conflicts=("${pkgname}" "persepolis")
+install=$pkgname.install
 source=("${pkgname}.tar.gz::https://github.com/persepolisdm/persepolis/archive/${pkgver}.tar.gz")
 md5sums=('048ce74b8f8e4d0ef00ebe909f9f55cc')
 
