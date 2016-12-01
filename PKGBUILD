@@ -1,7 +1,7 @@
 # Maintainer: Mohammadreza Abdollahzadeh <morealaz at gmail dot com>
 
 pkgname=ttf-sahel
-pkgver=1.0.0_alpha6
+pkgver=1.0.0_alpha8
 pkgrel=1
 pkgdesc="A beautiful Persian font."
 arch=('any')
@@ -11,7 +11,7 @@ groups=(persian-fonts)
 depends=('fontconfig' 'xorg-font-utils')
 source=("https://github.com/rastikerdar/sahel-font/releases/download/v${pkgver//_/-}/sahel-font-v${pkgver//_/-}.zip")
 install=$pkgname.install
-md5sums=('c760041995f30522fecb2223de5b7662')
+md5sums=('680db0c5d8a6bcf7b12499437bb7d0a4')
 
 package() {  
     install -d $pkgdir/usr/share/fonts/$pkgname
