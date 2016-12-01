@@ -1,0 +1,15 @@
+pkgbase = r-cran-gsubfn
+	pkgdesc = gsub with a replacement function
+	pkgver = 0.6.6
+	pkgrel = 1
+	url = http://cran.r-project.org/web/packages/gsubfn/index.html
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = r
+	depends = r-cran-proto
+	source = http://cran.r-project.org/src/contrib/gsubfn_0.6-6.tar.gz
+	md5sums = 94195ff3502706c736d9c593c07252bc
+
+pkgname = r-cran-gsubfn
+
