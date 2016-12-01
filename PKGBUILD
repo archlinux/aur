@@ -172,7 +172,7 @@ package_nvidia-utils-full-beta() {
               'gtk3: nvidia-settings (GTK+ v3)'
               'opencl-nvidia-full-beta: OpenCL support'
               'xorg-server-devel: nvidia-xconfig')
-  provides=("nvidia-utils=$pkgver" 'nvidia-settings' 'libglvnd')
+  provides=("nvidia-utils=$pkgver" 'nvidia-settings' 'libglvnd' 'vulkan-driver')
   conflicts=('nvidia-utils' 'nvidia-settings' 'libglvnd')
   backup=('etc/X11/xorg.conf.d/20-nvidia.conf')
   install=$pkgname.install
@@ -426,7 +426,7 @@ package_lib32-nvidia-utils-full-beta() {
   pkgdesc="NVIDIA driver utilities and libraries for 'nvidia-full-beta' (32-bit)"
   depends=('lib32-zlib' 'lib32-gcc-libs')
   optdepends=('lib32-opencl-nvidia-full-beta: OpenCL support')
-  provides=("lib32-nvidia-utils=$pkgver" 'lib32-libglvnd')
+  provides=("lib32-nvidia-utils=$pkgver" 'lib32-libglvnd' 'lib32-vulkan-driver')
   conflicts=('lib32-nvidia-utils' 'lib32-libglvnd')
   cd $_pkg
 
