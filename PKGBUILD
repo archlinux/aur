@@ -11,7 +11,7 @@ depends=("sdl" "sdl_image" "sdl_mixer" "sdl_sound" "libsigc++"
          "xvidcore"
          "loki-lib")
 makedepends=("boost" "zip")
-source=("http://downloads.sourceforge.net/project/asc-hq/ASC%20Source/$pkgver/asc-${pkgver}.0.tar.bz2"
+source=("https://downloads.sourceforge.net/project/asc-hq/ASC%20Source/$pkgver/asc-${pkgver}.0.tar.bz2"
         "http://www.asc-hq.org/music/frontiers.ogg"
         "http://www.asc-hq.org/music/time_to_strike.ogg"
         "http://www.asc-hq.org/music/machine_wars.ogg")
