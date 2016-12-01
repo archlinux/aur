@@ -4,7 +4,7 @@
 pkgname=texlive-mnras
 pkgdesc="Package for preparing papers in the journal Monthly Notices of the Royal Astronomical Society"
 pkgver=3.0
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 url="http://mirrors.ctan.org/macros/latex/contrib/mnras"
 depends=('texlive-core')
@@ -17,11 +17,11 @@ package() {
   cd "$srcdir/mnras"
 
   # install current files (v3)
-  install -Dm644 mnras.cls $pkgdir/usr/share/texmf-dist/tex/latex/mnras/mnras.cls
-  install -Dm644 mnras.bst $pkgdir/usr/share/texmf-dist/bibtex/bst/mnras/mnras.bst
+  install -Dm644 mnras.cls $pkgdir/usr/share/texmf/tex/latex/mnras/mnras.cls
+  install -Dm644 mnras.bst $pkgdir/usr/share/texmf/bibtex/bst/mnras/mnras.bst
 
   # install legacy files (v2.2)
-  install -Dm644 legacy/mn2e.cls $pkgdir/usr/share/texmf-dist/tex/latex/mnras/mn2e.cls
-  install -Dm644 legacy/mn2e.bst $pkgdir/usr/share/texmf-dist/bibtex/bst/mnras/mn2e.bst
+  install -Dm644 legacy/mn2e.cls $pkgdir/usr/share/texmf/tex/latex/mnras/mn2e.cls
+  install -Dm644 legacy/mn2e.bst $pkgdir/usr/share/texmf/bibtex/bst/mnras/mn2e.bst
 
 }

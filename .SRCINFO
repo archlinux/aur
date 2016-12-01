@@ -1,7 +1,7 @@
 pkgbase = texlive-mnras
 	pkgdesc = Package for preparing papers in the journal Monthly Notices of the Royal Astronomical Society
 	pkgver = 3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://mirrors.ctan.org/macros/latex/contrib/mnras
 	install = texlive-mnras.install
 	arch = i686
