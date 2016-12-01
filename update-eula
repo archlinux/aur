@@ -16,7 +16,7 @@ EOF
 
 # Download updated EULA, convert to plain text
 curl -s $TOS_SW_URL \
-  | xmllint --html --xpath "//section[@id='content']" - 2> /dev/null \
+  | xmllint --html --xpath "//section[@id='section-content']" - 2> /dev/null \
   | elinks -dump \
   | sed '/Quick jump/,$d' \
   | sed -r ':loop; s/([^ ])  +([^ ])/\1 \2/g; t loop' \
