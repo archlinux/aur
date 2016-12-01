@@ -2,14 +2,14 @@
 
 _pkgname=diodon
 pkgname=$_pkgname-bzr
-pkgver=r469
+pkgver=r520
 pkgrel=1
 pkgdesc="GTK+ clipboard manager"
 arch=('any')
 url="https://launchpad.net/diodon"
 license=('GPL2')
-depends=('gconf' 'gtk-update-icon-cache' 'libgee06' 'libpeas' 'libunique3' 'libxtst' 'libzeitgeist' 'dconf' 'libappindicator-gtk3')
-makedepends=('bzr' 'vala' 'xorg-server-xvfb')
+depends=('dconf' 'desktop-file-utils' 'gconf' 'libappindicator3' 'libgee' 'libpeas' 'libunique3' 'libxtst' 'xorg-server-xvfb' 'zeitgeist')
+makedepends=('bzr' 'intltool' 'vala')
 provides=($_pkgname)
 conflicts=($_pkgname)
 install=$pkgname.install
@@ -23,9 +23,9 @@ pkgver() {
 
 prepare() {
   cd $pkgname
-  # Uncomment the following lines to disable the tests
-  #rm -rf tests/*
-  #touch tests/wscript_build
+  # Comment the following to enable the tests
+  rm -rf tests/*
+  touch tests/wscript_build
 }
 
 build() {
@@ -36,6 +36,6 @@ build() {
 
 package() {
   cd $pkgname
-  python2 ./waf install --destdir="$pkgdir"
+  python2 ./waf install --destdir="$pkgdir/"
 }
 
