@@ -1,19 +1,21 @@
 # Maintainer: Glen Dsouza <gdsouza@linuxmail.org>
 # Contributor: jmf <jmf at mesecons dot net>
 # Contributor: Pascal Groschwitz <p.groschwitz@googlemail.com>
+
 pkgname=flightgear-git
-pkgver=20161108
+pkgver=20161201
 pkgrel=1
 _gitname=flightgear
 pkgdesc="An open-source, multi-platform flight simulator"
 arch=('i686' 'x86_64')
 url="http://flightgear.org/"
 license=('GPL')
-depends=('libxmu' 'libxi' 'zlib' 'libxrandr' 'glu' 'openal' 'qt5-base' 'fgdata-git' 'openscenegraph')
-optdepends=()
-makedepends=('boost' 'cmake' 'mesa' 'sharutils' 'simgear-git')
-provides=('flightgear-git')
+depends=('libxmu' 'libxi' 'zlib' 'libxrandr' 'glu' 'openal' 'fgdata-git' 'openscenegraph' 'subversion')
+optdepends=('qt5-base: fgfs --launcher')
+makedepends=('boost' 'cmake' 'mesa' 'sharutils' 'simgear-git' 'qt5-base')
+provides=('flightgear-git' 'flightgear')
 conflicts=('flightgear')
+options=('!makeflags')
 source=(git://git.code.sf.net/p/flightgear/flightgear)
 md5sums=('SKIP')
 
@@ -24,20 +26,24 @@ pkgver() {
 build() {
   cd ${srcdir}/${_gitname}
   git checkout next
+  mkdir -p ${srcdir}/${_gitname}-build
+  cd "${srcdir}/${_gitname}-build/"
   cmake \
-  -DCMAKE_INSTALL_PREFIX=/usr \
-  -DENABLE_QT=1 \
-  -DFG_DATA_DIR:STRING="/usr/share/flightgear" \
-  -DCMAKE_INSTALL_LIBDIR=/usr/lib \
-  -DCMAKE_BUILD_TYPE=Debug .
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DENABLE_QT=1 \
+    -DFG_DATA_DIR:STRING="/usr/share/flightgear" \
+    -DCMAKE_INSTALL_LIBDIR=/usr/lib \
+    -DCMAKE_BUILD_TYPE=Release \
+    ../${_gitname}
+
   uudecode -o package/flightgear.png package/flightgear.png.uue
   make || return 1
   sed -i 's|Exec=.*|Exec=fgfs --fg-root=/usr/share/flightgear --launcher|' package/flightgear.desktop
 }
 
 package(){
-  cd "$srcdir/${_gitname}"
-  make DESTDIR="${pkgdir}/" install
+  cd "${srcdir}/${_gitname}-build/"
+  make DESTDIR="$pkgdir" install
 
   install -Dm0644 package/flightgear.desktop $pkgdir/usr/share/applications/flightgear.desktop
   install -Dm0644 package/flightgear.ico $pkgdir/usr/share/icons/flightgear.ico
