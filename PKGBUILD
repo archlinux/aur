@@ -1,8 +1,9 @@
-# Maintainer: Glen Dsouza <glen@teameos.org>
+# Maintainer: Glen D'souza <gdsouza@linuxmail.org>
 # Contributor: jmf <jmf at mesecons dot net>
 # Contributor: Pascal Groschwitz <p.groschwitz@googlemail.com>
+
 pkgname=fgdata-git
-pkgver=20160416
+pkgver=20161201
 pkgrel=1
 _gitname="fgdata"
 pkgdesc="Base data for the flightgear flight simulator."
@@ -29,7 +30,7 @@ package(){
   cd "${srcdir}/${_gitname}"
   mkdir -p ${pkgdir}/usr/share/flightgear
   mv * ${pkgdir}/usr/share/flightgear || return 1
-  chown root.users ${pkgdir}/usr/share/flightgear/
-	ln -s ${pkgdir}/usr/share/FlightGear/ ${pkgdir}/usr/share/flightgear/
-} 
+  chown root:root ${pkgdir}/usr/share/flightgear/
+  ln -s ${pkgdir}/usr/share/FlightGear/ ${pkgdir}/usr/share/flightgear/
+}
 
