@@ -2,7 +2,7 @@
 
 pkgname=libcec-git
 epoch=1
-pkgver=3.1.0.25.g62b8520
+pkgver=4.0.0.3.r0.g209884d
 pkgrel=1
 pkgdesc="Pulse-Eight's libcec for the Pulse-Eight USB-CEC adapter"
 arch=('i686' 'x86_64')
@@ -18,7 +18,7 @@ md5sums=('SKIP')
 
 pkgver() {
   cd "$srcdir"/libcec
-  git describe --tags | sed 's|libcec-||;s|-|.|g'
+  git describe --long --tags | sed 's!^libcec-!!;s!\([^-]*-g\)!r\1!;s!-!.!g'
 }
 
 build() {
