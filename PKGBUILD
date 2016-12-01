@@ -1,6 +1,6 @@
 # Maintainer: Fabian Beuke <mail@beuke.org>
 pkgname=dripcap
-pkgver=0.3.10
+pkgver=0.4.9
 pkgrel=1
 arch=('x86_64')
 pkgdesc="Caffeinated Packet Analyzer"
