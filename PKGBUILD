@@ -4,11 +4,11 @@ pkgver=8.4pl6
 pkgrel=2
 pkgdesc='HTML documentation for coq, a formal proof management system.'
 arch=('any')
-url='http://coq.inria.fr/'
+url='https://coq.inria.fr/'
 license=('GPL')
 options=('!emptydirs')
-source=("coq-refman-${pkgver}.tar.gz::http://coq.inria.fr/distrib/V$pkgver/files/refman.tar.gz"
-        "coq-stdlib-${pkgver}.tar.gz::http://coq.inria.fr/distrib/V$pkgver/files/stdlib.tar.gz")
+source=("coq-refman-${pkgver}.tar.gz::https://coq.inria.fr/distrib/V$pkgver/files/refman.tar.gz"
+        "coq-stdlib-${pkgver}.tar.gz::https://coq.inria.fr/distrib/V$pkgver/files/stdlib.tar.gz")
 md5sums=('f926cf1938b1ab5eabba7a9640d08258'
          'e9d908bd87c1a5c3bb8a8ae863fc94fe')
 
