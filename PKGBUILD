@@ -1,6 +1,6 @@
 # Maintainer: procrastinator
 pkgname=gyazo
-pkgver=1.1
+pkgver=1.2.1
 pkgrel=1
 pkgdesc="Launch the Gyazo app and drag your mouse to grab the screen. "
 arch=('any')
@@ -10,7 +10,7 @@ groups=(multimedia)
 depends=('ruby' 'xclip' 'imagemagick')
 conflicts=('gyazo-git')
 source=("https://github.com/gyazo/Gyazo-for-Linux/archive/${pkgver}.tar.gz")
-sha256sums=('31a9a612fe8a656fff73c3382a582cf38448251cd9b15ef5de94a00cc77aa114')
+sha256sums=('c3a2a336a5f2515fc7cf71b07619ac9dc78e1db78bc326f8979b74d7ed4132e6')
 
 package() {
 	cd "${srcdir}"
