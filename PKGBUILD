@@ -16,7 +16,8 @@ pkgdesc="A large collection of general purpose libraries and modules maintained 
 arch=('x86_64')
 url="http://cernlib.web.cern.ch/cernlib"
 license=('GPL')
-depends=(openmotif gcc-fortran lapack lib32-libxp cernlib)
+depends=(gcc-fortran lib32-lapack lib32-libxp cernlib)
+optdepends=(lib32-lesstif lib32-libxpm)
     _rpmarch=i686
     URLROOT=http://archives.fedoraproject.org/pub/archive/fedora/linux/releases/16/Everything/x86_64/os/Packages
     source=($URLROOT/cernlib-${_pkgver}.fc14.${_rpmarch}.rpm \
@@ -61,16 +62,17 @@ prepare() {
 }
 package() {
     echo '===> removing conflict files'
-    rm -rf ${srcdir}/usr/share/cernlib
-#    rm -r ${srcdir}/usr/share/man/man1
-    rm -rf ${srcdir}/usr/share/aclocal
-    rm -rf ${srcdir}/usr/share/doc/cernlib-2006
-    rm -rf ${srcdir}/usr/share/doc/g2clib-devel-1.2.2
-    rm -rf ${srcdir}/usr/share/doc/cernlib-devel-2006
-    rm -rf ${srcdir}/usr/share/doc/xbae-4.60.4
-    rm -rf ${srcdir}/usr/include/cernlib
-    rm -rf ${srcdir}/usr/include/packlib.h
-    rm -rf ${srcdir}/usr/include/grib2.h
-    rm -rf ${srcdir}/usr/include/Xbae
     cp -r ${srcdir}/usr $pkgdir
+    rm -rf ${pkgdir}/usr/share/cernlib
+#    rm -r ${pkgdir}/usr/share/man/man1
+    rm -rf ${pkgdir}/usr/share/aclocal
+    rm -rf ${pkgdir}/usr/share/doc/cernlib-2006
+    rm -rf ${pkgdir}/usr/share/doc/g2clib-devel-1.2.2
+    rm -rf ${pkgdir}/usr/share/doc/cernlib-devel-2006
+    rm -rf ${pkgdir}/usr/share/doc/xbae-4.60.4
+    rm -rf ${pkgdir}/usr/include/cernlib
+    rm -rf ${pkgdir}/usr/include/packlib.h
+    rm -rf ${pkgdir}/usr/include/grib2.h
+    rm -rf ${pkgdir}/usr/include/cblas.h
+    rm -rf ${pkgdir}/usr/include/Xbae
 }
