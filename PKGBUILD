@@ -2,7 +2,7 @@
 
 pkgname=mendeleydesktop-dev
 pkgshortname=mendeleydesktop
-pkgver=1.17.3 #_dev6
+pkgver=1.17.4 #_dev6
 pkgrel=1
 pkgdesc="Academic software for managing and sharing research papers (desktop client)"
 url=https://www.mendeley.com/release-notes/development/
@@ -11,15 +11,15 @@ depends=(qt5-webengine qt5-svg qt5-webkit)
 conflicts=(mendeleydesktop)
 license=(custom:mendeley_eula)
 install=mendeleydesktop.install
-md5sums=('' '44c54032370c2a7cbc6667af6d19acf7')
+sha256sums=('' '4603511767b23ba44820b1742e82043a667822146bcd3ebc8e9bdcfdb87ed050')
 
 if [[ $CARCH = i686 ]];then
   _arch=i486
-  md5sums[0]='ea9ba4db9f364d7ab0a5f248b1f43333'
+  sha256sums[0]='1c7488c59771539c05faa733d605ec41e2c93f4ea6a46f54d791b55913478b38'
 
 else
   _arch=$CARCH
-  md5sums[0]='6a62509d18a9f9046b7bbb2a2904a269'
+  sha256sums[0]='df0eb406133a4774639e9c84a2bcaf25c6c419606c9c895d307e9a3cb6c0e2ab'
 fi
 
 if which gconftool-2 &>/dev/null;then
@@ -58,7 +58,7 @@ package() {
 #make sure you remove any old versions of ".desktop" file of mendeley in #~/.local/share/applications/,
 #because mendeley will automatically create one there.
 #__EOF__
-    #rm -rf "$pkgdir"/opt/"$pkgshortname"/lib/qt
+    rm -rf "$pkgdir"/opt/"$pkgshortname"/lib/qt
 
     #Remove unneeded lines if gconf is not installed.
     if ! which gconftool-2 &>/dev/null;then
