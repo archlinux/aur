@@ -1,0 +1,33 @@
+pkgbase = lib32-cernlib
+	pkgdesc = A large collection of general purpose libraries and modules maintained and offered in both source and object code form on the CERN central computers.
+	pkgver = 2006_35
+	pkgrel = 3
+	url = http://cernlib.web.cern.ch/cernlib
+	arch = x86_64
+	license = GPL
+	depends = openmotif
+	depends = gcc-fortran
+	depends = lapack
+	depends = lib32-libxp
+	depends = cernlib
+	source = http://archives.fedoraproject.org/pub/archive/fedora/linux/releases/16/Everything/x86_64/os/Packages/cernlib-2006-35.fc14.i686.rpm
+	source = http://archives.fedoraproject.org/pub/archive/fedora/linux/releases/16/Everything/x86_64/os/Packages/cernlib-devel-2006-35.fc14.i686.rpm
+	source = http://archives.fedoraproject.org/pub/archive/fedora/linux/releases/16/Everything/x86_64/os/Packages/atlas-sse-3.8.4-1.fc16.i686.rpm
+	source = http://archives.fedoraproject.org/pub/archive/fedora/linux/releases/16/Everything/x86_64/os/Packages/atlas-sse-devel-3.8.4-1.fc16.i686.rpm
+	source = http://archives.fedoraproject.org/pub/archive/fedora/linux/releases/16/Everything/x86_64/os/Packages/atlascpp-0.6.2-1.fc16.i686.rpm
+	source = http://archives.fedoraproject.org/pub/archive/fedora/linux/releases/16/Everything/x86_64/os/Packages/atlascpp-devel-0.6.2-1.fc16.i686.rpm
+	source = http://archives.fedoraproject.org/pub/archive/fedora/linux/releases/16/Everything/x86_64/os/Packages/xbae-4.60.4-13.fc15.i686.rpm
+	source = http://archives.fedoraproject.org/pub/archive/fedora/linux/releases/16/Everything/x86_64/os/Packages/g2clib-devel-1.2.2-2.fc16.i686.rpm
+	source = http://archives.fedoraproject.org/pub/archive/fedora/linux/releases/16/Everything/x86_64/os/Packages/compat-libf2c-34-3.4.6-22.fc15.i686.rpm
+	sha256sums = 9c81ea4b261b80dd9afcdd7a18710bdc2efda42f7c72639d4edf26652d8d2b18
+	sha256sums = 1333bd68da5cfb47ec3c5b1ffe9d076c0a1916ae06f88779a8aadd2e4bec7dec
+	sha256sums = f26a402e50320a8d262399f0527ec1eaf8abd1f0fadd7b51433d30128158e4b7
+	sha256sums = aff9fd839cd897f359cd660f918699375e488fe3a21ef8a91f3ab8a4104acf05
+	sha256sums = e65780d6042b1a7d70c2a412cf8325cd1f6bdb7bcbecc8c9f6a8f2d5f2c1fab7
+	sha256sums = 7af716a293c4fee523607eb2bc8427ce23cda6b555c112ce97730318044a58b4
+	sha256sums = 9308250700192b246e8f1dcade59b87eaa97db631061b27535026b8771429e81
+	sha256sums = 3c642d47796ec4b859b853bca4ba72907f4b2fc11ce82f6ba45e53e664b32e8d
+	sha256sums = b1fffeb7aa9b9fd8bb9712113fcd0c29eebacd57a05f94e24ba164a04d36aca5
+
+pkgname = lib32-cernlib
+
