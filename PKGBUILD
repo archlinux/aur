@@ -1,8 +1,8 @@
-# Maintainer: laptander <dev-laptander a|t yandex d|o|t ru>
+# Maintainer: Andrew Shark <ashark at linuxcomp ru>
 # Previously contributed by zekeer
 
 pkgname=kdeneur
-pkgver=0.19.0
+pkgver=0.20.0
 pkgrel=1
 pkgdesc="KDE frontend for X Neural Switcher (XNeur)"
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ license=('GPLv3')
 depends=('qt4' 'kdelibs' 'kdelibs4support' "xneur>=${pkgver}")
 makedepends=('gcc' 'make')
 source=("https://raw.githubusercontent.com/AndrewCrewKuznetsov/xneur-devel/master/dists/$pkgver/kdeneur_$pkgver.orig.tar.gz")
-md5sums=('a0a33464c581d4e976f71837de08c07b')
+md5sums=('ad32965516923317b4151b106292385d')
  
 build() {
     cd ${srcdir}/${pkgname}-${pkgver}
