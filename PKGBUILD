@@ -12,7 +12,7 @@ license=('custom:boost')
 makedepends=('git' 'boost')
 conflicts=("${_pkgname}")
 provides=("${_pkgname}")
-source=("git://github.com/chriskohlhoff/${_pkgname}#commit=14db6371b338339383aacaed29b0fa352259645a")
+source=("git+https://github.com/chriskohlhoff/${_pkgname}#commit=14db6371b338339383aacaed29b0fa352259645a")
 md5sums=('SKIP')
 
 pkgver() {
