@@ -7,4 +7,4 @@ unset GTK_IM_MODULE
 export PATH=/opt/Unity/Editor:$PATH
 
 mkdir -p ~/.local/share/unity3d/Packages
-exec /opt/Unity/Editor/Unity "$@"
+exec /opt/Unity/Editor/Unity -no-throttle-updates "$@"

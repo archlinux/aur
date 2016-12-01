@@ -5,9 +5,9 @@
 # Contributor: Ace <a.mad.coder at gmail dot com>
 
 pkgname=unity-editor
-_version=5.4.2
-_build=f2
-_buildtag=20161111
+_version=5.5.0
+_build=f3
+_buildtag=20161125
 pkgver=${_version}${_build}+${_buildtag}
 pkgrel=1
 epoch=1
@@ -41,14 +41,14 @@ source=("http://download.unity3d.com/download_unity/linux/unity-editor-installer
         'monodevelop-unity'
         'unity-monodevelop.png')
 noextract=("unity-editor-installer-${pkgver}.sh")
-sha1sums=('10db15d9d01a64b6ee9f35c6cf1bcd01c388d9a5'
-          '4f7146c680fd2f96a5c3ff0c1982fef69cc61938'
-          '9172be394811c35dba79d2e9ac7d5bbd5fabccdc'
+sha1sums=('c283c3ce99f84465a5b5b69297c5ef87f8da2cc4'
+          '263b78ee586a632b9905f84661b96e9c6339f553'
+          'c3727d6851a3ffd0aef9b380e2485eed9f02ef6b'
           '8ffbfd8f4577b146d25217720ac6689c5d929e84'
           'd1ecf758c9816f964febf601d065b0354940d866')
-sha512sums=('8986360301d9e3aa0dbbb513ac62dc489ad006b38a2193b4202ebbf6763db7c5f77174bdfa7181ba547b8f5deb22298705b806b24ea2cf9392139e5dd54bf14c'
-            'ec7dbf7007812cb3a261b7fb2b6a7861593276660400575d793fc16ac6c415e79ec58fa324d4d5110101149b4622b8b174b41aa4d203547b2e6267fd990a9e67'
-            'bf8a4ab65a2fc7dc51ff02e5f46ce3be365b660f32fa9d70d5b284575c20766ccd6abe53eef1049ae76b78d86eaeb830ce73184b63abab1237a3e735a0897709'
+sha512sums=('90800187934c05ad55137f8a4d70fd6f442d6cf8370e998026159b5024b4a3b61b27f2e27759328e250740764aef00610dcd0a40bd96b1e383fa7353a6f2712b'
+            '65d7d28d7ea821badd12c21da578b682908bc021d912be2c82ee14e8814ebc836016ff1794a2f5b4a92886b6642c457a90784e4595c92c118054f3f12c89dee2'
+            'ef907b215996354dd4f76cae79687952e11937510823ec836bc984180803b5deb3fd5a055092e258ca3a2293b90ce0da7f0c8cdb7862d546d843e092b3dbc3a0'
             '26946ad2c759699763c1284a1f30380072da2911659992fa2471b436df1f0535b6eef61007f11c2e010e4a002663324e42ef5ae1417aa45e0ec99f4e3f0aafb7'
             '44676f54d83357721bee844d1e0e997e584b2148c871dbf24385976dda840f37e4cf4a1796fa17dec90fac539bac58e0e47fa0af0abc98e4cf795f735b23c1b0')
 options=(!strip)
@@ -69,7 +69,7 @@ build() {
 }
 
 package() {
-  local extraction_dir="${srcdir}/unity-editor-${_version}${_build}"
+  local extraction_dir="${srcdir}/unity-editor-${_version}x${_build}Linux"
 
   mkdir -p "${pkgdir}/opt/"
   mv ${extraction_dir} ${pkgdir}/opt/Unity
