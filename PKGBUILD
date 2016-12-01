@@ -36,13 +36,13 @@ build() {
 }
  
 package() {
-	cd "$srcdir/cloudcross-$pkgver-$pkgrel/build"
+	cd "$srcdir/cloudcross-v$pkgver-$pkgrel/build"
 	
 	mkdir -p "${pkgdir}/usr/bin"
         mkdir -p "${pkgdir}/usr/share/man/man0"
 	
-	cp "$srcdir/cloudcross-$pkgver-$pkgrel/build/ccross" "${pkgdir}/usr/bin"
-        cp "$srcdir/cloudcross-$pkgver-$pkgrel/doc/ccross" "${pkgdir}/usr/share/man/man0"
+	cp "$srcdir/cloudcross-v$pkgver-$pkgrel/build/ccross" "${pkgdir}/usr/bin"
+        cp "$srcdir/cloudcross-v$pkgver-$pkgrel/doc/ccross" "${pkgdir}/usr/share/man/man0"
 	
 	#ln -s "${pkgdir}/usr/bin/ccross" "${pkgdir}/usr/bin/CloudCross" 
 	#ln -s "${pkgdir}/usr/bin/ccross" "${pkgdir}/usr/bin/grive2" 
