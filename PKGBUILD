@@ -10,7 +10,7 @@ makedepends=('git' 'msgpack-c' 'cmake' 'cython')
 optdepends=('python: to use the Python bindings')
 url="https://github.com/savoirfairelinux/opendht"
 license=('GPL3')
-source=("git://github.com/savoirfairelinux/opendht#commit=2d9f6241a9df64c2231b3a3f7ccd85619b67899e")
+source=("git+https://github.com/savoirfairelinux/opendht#commit=2d9f6241a9df64c2231b3a3f7ccd85619b67899e")
 md5sums=('SKIP')
 
 pkgver() {
