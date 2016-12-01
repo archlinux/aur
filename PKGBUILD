@@ -18,12 +18,12 @@ source=("${pkgname}::git+https://github.com/darenk/${_pkgbasename}.git")
 md5sums=('SKIP')
 
 pkgver() {
-    cd ${srcdir}/${pkgname}
-    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+	cd ${srcdir}/${pkgname}
+	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-    cd ${srcdir}/${pkgname}
+	cd ${srcdir}/${pkgname}
 
 	export CFLAGS="-mtune=generic"
 	./configure --prefix=/usr
@@ -31,6 +31,6 @@ build() {
 }
 
 package() {
-    cd ${srcdir}/${pkgname}
+	cd ${srcdir}/${pkgname}
 	make DESTDIR="$pkgdir/" install
 }
