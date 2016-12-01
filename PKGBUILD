@@ -1,14 +1,14 @@
 # AUR/linux-lts-tomoyo PKGBUILD
 # Maintainer: dysphoria <>
 #
-# arch/core/linux-lts $Id: PKGBUILD 265036 2016-04-16 07:05:34Z andyrtr $
+# arch/core/linux-lts $Id: PKGBUILD 282141 2016-11-27 21:42:11Z andyrtr $
 # Contributor: Andreas Radke <andyrtr@archlinux.org>
 # Contributor: Tobias Powalowski <tpowa@archlinux.org>
 # Contributor: Thomas Baechler <thomas@archlinux.org>
 
 pkgbase=linux-lts-tomoyo
 _srcname=linux-4.4
-pkgver=4.4.31
+pkgver=4.4.35
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
@@ -20,18 +20,17 @@ source=(https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.{xz,sign}
         # the main kernel config files
         'config' 'config.x86_64'
         # standard config files for mkinitcpio ramdisk
-        "$pkgbase.preset"
+        "${pkgbase}.preset"
         'change-default-console-loglevel.patch'
         '0001-sdhci-revert.patch')
-
 # https://www.kernel.org/pub/linux/kernel/v4.x/sha256sums.asc
 sha256sums=('401d7c8fef594999a460d10c72c5a94e9c2e1022f16795ec51746b0d165418b2'
             'SKIP'
-            'cf3cfe911fdfd97a20c0a4e5039c31a53c2c811c26ef858070c0319061a7fa0d'
+            '5d0cc352645127191767e1c33f78c48dfdee7022fe425639a4c95a901d5e5c77'
             'SKIP'
             'b11702727b1503e5a613946790978481d34d8ecc6870337fadd3ce1ef084a8e2'
             '68c7296ff2f5f55d69e83aa4d20f925df740b1eb1e6bdb0f13e8a170360ed09f'
-            '4e1fcb722d069ce8bf8c4e720e42a400a91b9aa73304d8a47e34814b5fd210db'
+            '1f036f7464da54ae510630f0edb69faa115287f86d9f17641197ffda8cfd49e0'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
             '5313df7cb5b4d005422bd4cd0dae956b2dadba8f3db904275aaf99ac53894375')
 validpgpkeys=('ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds <torvalds@linux-foundation.org>
@@ -68,8 +67,8 @@ prepare() {
   msg "Enabling TOMOYO Linux..."
   sed -i -e 's,# CONFIG_SECURITY_TOMOYO is not set,CONFIG_SECURITY_TOMOYO=y\nCONFIG_SECURITY_TOMOYO_MAX_ACCEPT_ENTRY=2048\nCONFIG_SECURITY_TOMYO_MAX_AUDIT_LOG=1024\n# CONFIG_SECURITY_TOMOYO_OMIT_USERSPACE_LOADER is not set\nCONFIG_SECURITY_TOMOYO_POLICY_LOADER="/sbin/tomoyo-init"\nCONFIG_SECURITY_TOMOYO_ACTIVATION_TRIGGER="/usr/lib/systemd/systemd",' \
       -i -e 's/CONFIG_DEFAULT_SECURITY_DAC=y/# CONFIG_DEFAULT_SECURITY_DAC is not set/' \
-      -i -e '/CONFIG_DEFAULT_SECURITY=/ s,"","tomoyo",' ./.config
-
+      -i -e 's/CONFIG_DEFAULT_SECURITY_YAMA=y/# CONFIG_DEFAULT_SECURITY_YAMA is not set/' \
+      -i -e '/CONFIG_DEFAULT_SECURITY=""/ s,"","tomoyo",' ./.config
   if [ "${_kernelname}" != "" ]; then
     sed -i "s|CONFIG_LOCALVERSION=.*|CONFIG_LOCALVERSION=\"${_kernelname}\"|g" ./.config
     sed -i "s|CONFIG_LOCALVERSION_AUTO=.*|CONFIG_LOCALVERSION_AUTO=n|" ./.config
@@ -107,9 +106,7 @@ _package() {
   [ "${pkgbase}" = "linux" ] && groups=('base')
   depends=('coreutils' 'linux-firmware' 'kmod' 'mkinitcpio>=0.7')
   optdepends=('crda: to set the correct wireless channels of your country')
-  provides=("kernel26${_kernelname}=${pkgver}" "linux-tomoyo=${pkgver}")
-  conflicts=("kernel26${_kernelname}")
-  replaces=("kernel26${_kernelname}")
+  provides=("linux-tomoyo=${pkgver}")
   backup=("etc/mkinitcpio.d/${pkgbase}.preset")
   install=${pkgbase}.install
 
@@ -166,9 +163,6 @@ _package() {
 
 _package-headers() {
   pkgdesc="Header files and scripts for building modules for ${pkgbase/linux/Linux} kernel"
-  provides=("kernel26${_kernelname}-headers=${pkgver}")
-  conflicts=("kernel26${_kernelname}-headers")
-  replaces=("kernel26${_kernelname}-headers")
 
   install -dm755 "${pkgdir}/usr/lib/modules/${_kernver}"
 
@@ -289,9 +283,6 @@ _package-headers() {
 
 _package-docs() {
   pkgdesc="Kernel hackers manual - HTML documentation that comes with the ${pkgbase/linux/Linux} kernel"
-  provides=("kernel26${_kernelname}-docs=${pkgver}")
-  conflicts=("kernel26${_kernelname}-docs")
-  replaces=("kernel26${_kernelname}-docs")
 
   cd "${srcdir}/${_srcname}"
 
