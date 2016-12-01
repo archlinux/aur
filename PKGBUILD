@@ -1,10 +1,11 @@
 # Maintainer: Hans-Nikolai Viessmann <hv15 AT hw.ac.uk>
 # Contributor: Guten Ye
 
-pkgname='rutorrent-autodl-irssi-community'
 _pkgname='autodl-rutorrent-community'
-pkgver=1.62
-pkgrel=3
+_installdir='usr/share/webapps/rutorrent/plugins/autodl-irssi'
+pkgname='rutorrent-autodl-irssi-community'
+pkgver=1.62.1
+pkgrel=1
 pkgdesc='Community fork of the autodl-irssi rutorrent plugin.'
 arch=('any')
 url='https://github.com/autodl-community/autodl-rutorrent'
@@ -14,8 +15,9 @@ depends=('rutorrent' "autodl-irssi-community=${pkgver}")
 provides=('rutorrent-autodl-irssi')
 replaces=('rutorrent-autodl-irssi-svn')
 conflicts=('rutorrent-autodl-irssi-svn')
+backup=("${_installdir}/conf.php")
 source=("https://github.com/autodl-community/autodl-rutorrent/archive/community-v${pkgver}.tar.gz")
-md5sums=('e5880da80fdda8e75c5b97a140c5a6d1')
+md5sums=('db96b75f9ad6500bca5536a3e9f3ce49')
 
 build() {
   cd "$srcdir/$_pkgname-v$pkgver"
@@ -25,8 +27,8 @@ build() {
 package() {
   cd "$srcdir/$_pkgname-v$pkgver"
 
-  install -dm755 "$pkgdir/usr/share/webapps/rutorrent/plugins/autodl-irssi"
-  cp -r * "$pkgdir/usr/share/webapps/rutorrent/plugins/autodl-irssi"
+  install -dm755 "$pkgdir/$_installdir"
+  cp -r * "$pkgdir/$_installdir"
 }
 
 # vim:set ts=2 sw=2 et:
