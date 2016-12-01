@@ -1,6 +1,6 @@
 # Maintainer: Sonic-Y3k <sonic.y3k@googlemail.com>
 pkgname='vlmcsd-svn'
-pkgver=svn1003
+pkgver=svn1005
 pkgrel=1
 pkgdesc="KMS activation using vlmcs."
 arch=('any')
@@ -10,10 +10,10 @@ depends=('glibc')
 makedepends=('clang' 'p7zip')
 replaces=('vlmcsd')
 conflicts=('vlmcsd')
-source=('vlmcsd.7z::http://meson.ad-file.net/download/7FfhSylL5/d1e2afc3fcc8386db8020d80b699ba65d4136b33/vlmcsd-svn1003-2016-08-27-Hotbird64-source-only.7z'
+source=('vlmcsd.7z::http://polariton.ad-file.net/download/7kz6wHksJ/7d4bc7fd0a9837a7ad7a64ceeef9fd4177aa57fe/vlmcsd-1105-2016-11-28-Hotbird64-source-only.7z'
         'vlmcsd.service')
 install='vlmcsd.install'
-sha256sums=("a8dc74dff0b6b23b584547fce681ec2b3b741a3ff503053b6e19f7c6b86af343"
+sha256sums=("99cd018f796ae727bb9e60fd7d18bb7af2986a3b0d4a11b7d9d4b43e4e5852c1"
             "d6e0eafab2223e83a265ac9879217189e5a17a79ccf7323f21c9d8916cc10a82")
 noextract=('vlmcsd.7z')
 
