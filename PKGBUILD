@@ -2,9 +2,9 @@
 
 _themename=urbanlifestyle
 pkgname=sddm-${_themename}-theme
-pkgver=0.3.3
+pkgver=0.4.0
 pkgrel=1
-pkgdesc='A simple and colorful SDDM theme.'
+pkgdesc='A simple and colorful SDDM theme'
 arch=('any')
 url='https://github.com/AlfredoRamos/sddm-urbanlifestyle-theme'
 license=('GPL3')
@@ -19,7 +19,7 @@ source=(
 )
 
 sha512sums=(
-	'74d48667bf95ea686ec3e2154eb0493c3304e1850d0bd327c40042a733456b56c233b671bfb595e6d1dc5ed2c643bfa8a815297ae0a0a2fbc5022abe7ab4cdda'
+	'55d8508c1e9b32222bdb7b179b60c8972e21098b6eb4fd8cf84d9a1950386e5897004ae58c301f195d36852aaa0f782dd75b5b6a09e8a0cdba67239f7f9572ab'
 )
 
 package() {
