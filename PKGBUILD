@@ -6,35 +6,25 @@
 # Contributor: Massimiliano Brocchini <brocchini@netseven.it>
 
 pkgname=camlp5-transitional
-_baseversion=6.14
-_patchlevel=0
-#pkgver=${_baseversion}.${_patchlevel}
-pkgver=${_baseversion}
+_relversion=617
+pkgver=6.17
 pkgrel=1
 arch=('i686' 'x86_64')
 pkgdesc='A preprocessor-pretty-printer of OCaml. (transitional)'
 conflicts=('camlp5')
-url='http://camlp5.gforge.inria.fr/'
+url='https://camlp5.github.io/'
 license=('BSD')
 depends=('ocaml')
-sha1sums=('2cde94fc53195f9acb39592a9a74d4f36114df38')
-sha256sums=('09f9ed12893d2ec39c88106af2306865c966096bedce0250f2fe52b67d2480e2')
-sha512sums=('7dd57b8725953099726fc2e5f6dda01ed74485a4bbf41cb30ccd2163ee38bc6dff36fd83069c58d7990522527d266c9e180a8e333b36a42bc216315dc88a25e9')
-source=("http://camlp5.gforge.inria.fr/distrib/src/camlp5-${_baseversion}.tgz")
-# upstream likes to release occasional patches instead of releasing new versions
-for i in $(seq ${_patchlevel}); do
-  source+=("http://camlp5.gforge.inria.fr/distrib/src/patch-${_baseversion}-${i}")
-done
+sha1sums=('cfe65be4bb6334ffad742a3060a6fee7bb0b5bf3')
+sha256sums=('8fa2a46a7030b1194862650cbb71ab52a10a0174890560a8b6edf236f8937414')
+sha512sums=('c4bf32eb79202d6127375b940fe77fc57c7dc5f8c6763b50ba23ab52ae9f3edb0ba15148109af2f6f4808619348d78e927cfdf29901bf1141b17de0d3fd8ff30')
+source=("https://github.com/camlp5/camlp5/archive/rel${_relversion}.tar.gz")
 options=('staticlibs')
 
 build() {
-  cd camlp5-${_baseversion}
+  cd camlp5-rel${_relversion}
 
-  for i in $(seq ${_patchlevel}); do
-    patch -Np0 -i ${srcdir}/patch-${_baseversion}-${i}
-  done
-
-  cd ${srcdir}/camlp5-${_baseversion}
+  cd ${srcdir}/camlp5-rel${_relversion}
 
   ./configure \
     -prefix '/usr' \
@@ -45,7 +35,7 @@ build() {
 }
 
 package() {
-  cd camlp5-${_baseversion}
+  cd camlp5-rel${_relversion}
 
   make DESTDIR=${pkgdir} install
 
