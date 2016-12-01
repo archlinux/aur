@@ -2,7 +2,7 @@
 pkgname=wire-desktop-git
 _pkgname=wire-desktop
 _name=wire
-pkgver=2.11.2678.r0.gd96ef74
+pkgver=2.11.2678.r1.g1dece6c
 pkgrel=1
 pkgdesc='Modern, private messenger. Based on Electron.'
 arch=('x86_64' 'i686')
@@ -57,8 +57,8 @@ package() {
   install -Dm644 ${srcdir}/${_pkgname}/electron/img/wire.png ${pkgdir}/usr/share/pixmaps/${_name}.png
 
   # Place license files
-  install -Dm644 "${pkgdir}/usr/lib/${_name}/LICENSE" "${pkgdir}/usr/share/licenses/${_name}/LICENSE"
+  install -Dm644 "${pkgdir}/usr/lib/${_name}/LICENSE.electron.txt" "${pkgdir}/usr/share/licenses/${_name}/LICENSE.electron.txt"
   install -Dm644 "${pkgdir}/usr/lib/${_name}/LICENSES.chromium.html" "${pkgdir}/usr/share/licenses/${_name}/LICENSES.chromium.html"
-  rm "${pkgdir}/usr/lib/${_name}/LICENSE"
+  rm "${pkgdir}/usr/lib/${_name}/LICENSE.electron.txt"
   rm "${pkgdir}/usr/lib/${_name}/LICENSES.chromium.html"
 }
