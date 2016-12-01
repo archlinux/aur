@@ -4,7 +4,7 @@
 
 pkgname=sume-git
 _pkgbasename=sume
-pkgver=0.0.1.r8.gdbd8120
+pkgver=0.0.1.r12.gd11f51a
 pkgrel=1
 pkgdesc="Surface metrology command line tool and library."
 arch=('i686' 'x86_64')
