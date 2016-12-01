@@ -1,14 +1,5 @@
-pkgbase=arc-kde-git
-pkgname=(
-  'arc-plasma-theme-git'
-  'arc-aurorae-theme-git'
-  'arc-kvantum-theme-git'
-  'arc-color-schemes-git'
-  'arc-konsole-colorscheme-git'
-  'arc-konversation-theme-git'
-  'arc-yakuake-theme-git'
-  'arc-wallpapers-git'
-)
+_pkgbase=arc-kde
+pkgbase=${_pkgbase}-git
 pkgver=20161201
 pkgrel=1
 pkgdesc='Arc customization for Plasma 5 (git version)'
@@ -29,7 +20,7 @@ pkgver(){
     git log -1 --format="%cd" --date=short | tr -d '-'
 }
 
-package_arc-plasma-theme-git () {
+_package-plasma-theme-git () {
   pkgdesc="Arc plasma theme (git version)"
   depends=('plasma-desktop')
   install=${pkgname}.install
@@ -39,7 +30,7 @@ package_arc-plasma-theme-git () {
   cp --no-preserve=mode,ownership -r plasma ${pkgdir}/usr/share
 }
 
-package_arc-aurorae-theme-git () {
+_package-aurorae-theme-git () {
   pkgdesc="Arc decorations for Kwin (git version)"
   depends=('kwin')
 
@@ -48,7 +39,7 @@ package_arc-aurorae-theme-git () {
   cp --no-preserve=mode,ownership -r aurorae ${pkgdir}/usr/share
 }
 
-package_arc-kvantum-theme-git () {
+_package-kvantum-theme-git () {
   pkgdesc="Arc theme for Kvantum theme engine (git version)"
   depends=(qt{4,5}-style-kvantum-svn kvantum-tools-qt5-svn)
 
@@ -57,7 +48,7 @@ package_arc-kvantum-theme-git () {
   cp --no-preserve=mode,ownership -r Kvantum ${pkgdir}/usr/share
 }
 
-package_arc-color-schemes-git () {
+_package-color-schemes-git () {
   pkgdesc="Arc color scheme for KDE (git version)"
   depends=('plasma-desktop')
 
@@ -66,7 +57,7 @@ package_arc-color-schemes-git () {
   cp --no-preserve=mode,ownership -r color-schemes ${pkgdir}/usr/share
 }
 
-package_arc-konsole-colorscheme-git () {
+_package-konsole-colorscheme-git () {
   pkgdesc="Arc color scheme for Konsole (git version)"
   depends=('konsole')
 
@@ -75,7 +66,7 @@ package_arc-konsole-colorscheme-git () {
   cp --no-preserve=mode,ownership -r konsole ${pkgdir}/usr/share
 }
 
-package_arc-konversation-theme-git () {
+_package-konversation-theme-git () {
   pkgdesc="Arc color scheme for Konversation (git version)"
   depends=('konversation')
 
@@ -84,7 +75,7 @@ package_arc-konversation-theme-git () {
   cp --no-preserve=mode,ownership -r konversation ${pkgdir}/usr/share
 }
 
-package_arc-yakuake-theme-git () {
+_package-yakuake-theme-git () {
   pkgdesc="Arc color scheme for Yakuake (git version)"
   depends=('yakuake')
 
@@ -94,7 +85,7 @@ package_arc-yakuake-theme-git () {
   mv ${pkgdir}/usr/share/yakuake/{kns_skins,skins}
 }
 
-package_arc-wallpapers-git () {
+_package-wallpapers-git () {
   pkgdesc="Arc Wallpapers Suite (git version)"
   depends=('plasma-desktop')
 
@@ -102,3 +93,20 @@ package_arc-wallpapers-git () {
   mkdir -p ${pkgdir}/usr/share
   cp --no-preserve=mode,ownership -r wallpapers ${pkgdir}/usr/share
 }
+
+pkgname=(
+  "${_pkgbase}-plasma-theme-git"
+  "${_pkgbase}-aurorae-theme-git"
+  "${_pkgbase}-kvantum-theme-git"
+  "${_pkgbase}-color-schemes-git"
+  "${_pkgbase}-konsole-colorscheme-git"
+  "${_pkgbase}-konversation-theme-git"
+  "${_pkgbase}-yakuake-theme-git"
+  "${_pkgbase}-wallpapers-git"
+)
+for _p in ${pkgname[@]}; do
+  eval "package_${_p}() {
+    $(declare -f "_package${_p#${_pkgbase}}")
+    _package${_p#${_pkgbase}}
+  }"
+done
