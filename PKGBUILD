@@ -1,7 +1,7 @@
 # Maintainer: Mohammadreza Abdollahzadeh <morealaz at gmail dot com>
 
 pkgname='persepolis-git'
-pkgver=2.2.2_unstable.r21.g3a4e1dd
+pkgver=2.2.2_unstable.r31.g7acf4ec
 pkgrel=1
 pkgdesc="A graphical front-end for aria2 download manager with lots of features (Github version)."
 arch=('any')
@@ -12,6 +12,7 @@ makedepends=('git')
 optdepends=('firefox-flashgot: for integrating with firefox')
 provides=("${pkgname}" "persepolis")
 conflicts=("${pkgname}" "persepolis")
+install=$pkgname.install
 source=("${pkgname}::git+https://github.com/persepolisdm/persepolis.git")
 md5sums=('SKIP')
 
