@@ -1,8 +1,9 @@
-# Maintainer: Glen Dsouza <glen@teameos.org>
+# Maintainer: Glen D'souza <gdsouza@linuxmail.org>
 # Contributor: jmf <jmf at mesecons dot net>
 # Contributor: Pascal Groschwitz <p.groschwitz@googlemail.com>
+
 pkgname=simgear-git
-pkgver=20160906
+pkgver=20161201
 pkgrel=1
 _gitname=simgear
 pkgdesc="A set of open-source libraries designed to be used as building blocks for quickly assembling 3d simulations, games, and visualization applications."
@@ -10,10 +11,10 @@ arch=('i686' 'x86_64')
 url="http://simgear.sourceforge.net/"
 license=('GPL')
 depends=('glu' 'glut' 'freealut' 'plib' 'openscenegraph')
-optdepends=()
 makedepends=('boost' 'cmake' 'mesa')
-provides=('simgear-git')
+provides=('simgear-git' 'simgear')
 conflicts=('simgear')
+options=('!makeflags' 'staticlibs')
 source=(git://git.code.sf.net/p/flightgear/simgear
         getKern.patch)
 md5sums=('SKIP'
