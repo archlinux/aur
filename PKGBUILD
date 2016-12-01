@@ -8,6 +8,8 @@ arch=('x86_64')
 url='http://www.amd.com'
 license=('custom:AMD')
 makedepends=('wget')
+depends=('ocl-icd')
+optdepends=('linux-cik: amdgpu support for CIK cards (Bonaire/Hawaii series)')
 
 DLAGENTS='https::/usr/bin/wget --referer http://support.amd.com/en-us/kb-articles/Pages/AMD-Radeon-GPU-PRO-Linux-Beta-Driver%E2%80%93Release-Notes.aspx -N %u'
 

@@ -6,6 +6,8 @@ pkgbase = amdgpocl
 	arch = x86_64
 	license = custom:AMD
 	makedepends = wget
+	depends = ocl-icd
+	optdepends = linux-cik: amdgpu support for CIK cards (Bonaire/Hawaii series)
 	source = https://www2.ati.com/drivers/linux/ubuntu/amdgpu-pro-16.40-348864.tar.xz
 	sha256sums = 59d6b1d975164ff45f6e6be5af6bcc061bf9ef6378ac5757bdb4e67840a706b0
 
