@@ -103,7 +103,7 @@ package_lib32-nvidia-utils-beta() {
   pkgdesc="NVIDIA driver utilities and libraries (beta version) (32-bit)"
   depends=('lib32-zlib' 'lib32-gcc-libs')
   optdepends=('lib32-opencl-nvidia-beta: OpenCL support')
-  provides=("lib32-nvidia-utils=$pkgver" 'lib32-libglvnd')
+  provides=("lib32-nvidia-utils=$pkgver" 'lib32-libglvnd' 'lib32-vulkan-driver')
   conflicts=('lib32-nvidia-utils' 'lib32-libglvnd')
   cd $_pkg
 

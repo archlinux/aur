@@ -15,6 +15,7 @@ pkgname = lib32-nvidia-utils-beta
 	optdepends = lib32-opencl-nvidia-beta: OpenCL support
 	provides = lib32-nvidia-utils=375.20
 	provides = lib32-libglvnd
+	provides = lib32-vulkan-driver
 	conflicts = lib32-nvidia-utils
 	conflicts = lib32-libglvnd
 
