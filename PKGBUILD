@@ -12,7 +12,7 @@ depends=('zlib' 'sh' 'gcc-libs')
 makedepends=('time' 'gcc-fortran')
 conflicts=('hdf5')
 provides=('hdf5')
-source=(ftp://ftp.hdfgroup.org/HDF5/current/src/${_pkgname}-${pkgver/_/-}.tar.bz2)
+source=(ftp://ftp.hdfgroup.org/HDF5/releases/${_pkgname}-${pkgver/_/-}/src/${_pkgname}-${pkgver/_/-}.tar.bz2)
 sha1sums=('640f1a46cb1b353339695355b4fca42df05be765')
 
 build() {
