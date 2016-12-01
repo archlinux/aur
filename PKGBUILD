@@ -3,14 +3,15 @@
 # Contributor: Gordin <9ordin @t gmail d@t com>
 
 pkgname=screenkey-git
-pkgver=0.3.67216f6
+pkgver=0.9.1b9d6c2
 pkgrel=1
 pkgdesc="Screencast tool to show your keys inspired by Screenflick, based on key-mon. Active fork with new features."
 arch=('any')
 url="https://github.com/wavexx/screenkey"
 license=('GPL3')
-depends=('python2' 'pygtk' 'python2-xlib' 'python2-keybinder2' 'xorg-xmodmap')
+depends=('python2' 'pygtk' 'libx11')
 makedepends=('git' 'python2-distutils-extra' 'python2-setuptools')
+optdepends=('slop' 'ttf-font-awesome')
 source=("$pkgname"::"git+https://github.com/wavexx/screenkey.git")
 sha1sums=('SKIP')
 conflicts=('screenkey')
