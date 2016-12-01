@@ -24,6 +24,7 @@ pkgname = nvidia-utils-beta
 	provides = nvidia-utils=375.20
 	provides = nvidia-settings
 	provides = libglvnd
+	provides = vulkan-driver
 	conflicts = nvidia-utils
 	conflicts = nvidia-settings
 	conflicts = libglvnd
