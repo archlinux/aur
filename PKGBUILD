@@ -3,7 +3,7 @@ _pkgbasename=gx-lv2
 pkgname=${_pkgbasename}-git
 pkgver=0.8
 pkgrel=1
-pkgdesc="Extra Gx effects collection in LV2 format not included in Guitarix"
+pkgdesc="Additional Guitarix effects in LV2 format"
 arch=('i686' 'x86_64')
 url="https://github.com/brummer10?tab=repositories"
 license=('GPL3')
