@@ -11,7 +11,7 @@ depends=('openssl')
 conflicts=('restbed')
 provides=('restbed')
 makedepends=('git' 'cmake' 'kashmir' 'asio-latest')
-source=("git://github.com/Corvusoft/restbed#commit=a98d431dd6c0bc0f5774c830c3df3356553b0add")
+source=("git+https://github.com/Corvusoft/restbed#commit=a98d431dd6c0bc0f5774c830c3df3356553b0add")
 md5sums=('SKIP')
 
 pkgver() {
