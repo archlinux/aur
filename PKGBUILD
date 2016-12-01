@@ -2,14 +2,16 @@
 
 _gitname=telepathy-morse
 pkgname=telepathy-morse-git
-pkgver=r111.d03fc33
+pkgver=r145.9429155
 pkgrel=1
 pkgdesc="Telepathy Connection Manager for the Telegram network"
 arch=(i686 x86_64)
 url="https://projects.kde.org/telepathy-morse/"
 license=(GPL)
-depends=(telepathy-qt5 telegram-qt-git)
+depends=(telepathy-qt telegram-qt)
 makedepends=(cmake git)
+provides=(telepathy-morse)
+conflicts=(telepathy-morse)
 source=("git+https://github.com/TelepathyQt/$_gitname")
 md5sums=('SKIP')
 
