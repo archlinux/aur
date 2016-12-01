@@ -4,25 +4,16 @@
 
 pkgname=libsnappy
 pkgver=1.1.3
-pkgrel=3
+pkgrel=4
 pkgdesc="A fast compression/decompression library"
 arch=('i686' 'x86_64')
 makedepends=('autoconf' 'automake' 'git' 'libtool' 'm4' 'make' 'pkg-config')
 url="https://google.github.io/snappy/"
 license=('BSD')
-source=($pkgname-$pkgver::git+https://github.com/google/snappy
-        pkg-config.diff::https://github.com/deviance/snappy/commit/d2cb73b6ac1839462fcea926c7e73d1e627bd699.diff)
-sha256sums=('SKIP'
-            '596a9246a24822cd83abaa88ca3846fbaa1d50b5dcc4ebe23bf29ff2e19241d8')
+source=($pkgname-$pkgver::git+https://github.com/google/snappy)
+sha256sums=('SKIP')
 provides=('snappy')
 conflicts=('snappy')
-
-prepare() {
-  cd "$srcdir/$pkgname-$pkgver"
-
-  msg2 'Fixing pkg-config...'
-  git apply "$srcdir/pkg-config.diff"
-}
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
@@ -50,6 +41,4 @@ package() {
 
   msg2 'Installing...'
   make DESTDIR="$pkgdir" install
-  cp -dpr --no-preserve=ownership "$pkgdir/usr/lib/pkgconfig/snappy.pc" \
-    "$pkgdir/usr/lib/pkgconfig/libsnappy.pc"
 }
