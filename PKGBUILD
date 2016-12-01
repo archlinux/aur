@@ -2,8 +2,8 @@
 
 _pkgname=molequeue
 pkgname="${_pkgname}-git"
-pkgver=0.8.0.r784.fdcdbfb
-pkgrel=2
+pkgver=0.8.0.r792.0d6fbba
+pkgrel=3
 pkgdesc="Desktop integration of high performance computing resources"
 url="http://www.openchemistry.org/projects/molequeue"
 arch=("i686" "x86_64")
@@ -12,10 +12,8 @@ depends=("qt5-base")
 makedepends=("git" "cmake")
 conflicts=("${_pkgname}")
 provides=("${_pkgname}")
-source=("git://github.com/OpenChemistry/${_pkgname}.git"
-        "cmake_generateexportheader.patch")
-sha256sums=("SKIP"
-           "642d023be9456f71dd974693454a7817206548f4dcf086bd8e84eb1b1a1d0ea5")
+source=("git://github.com/OpenChemistry/${_pkgname}.git")
+sha256sums=("SKIP")
 
 pkgver() {
   cd "${srcdir}/${_pkgname}"
@@ -24,11 +22,6 @@ pkgver() {
          "${_parent_ver}" \
          "$(git rev-list --count HEAD)" \
          "$(git rev-parse --short HEAD)"
-}
-
-prepare() {
-  cd "${srcdir}/${_pkgname}"
-  patch -p1 < "${srcdir}"/cmake_generateexportheader.patch
 }
 
 build() {
