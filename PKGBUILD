@@ -2,7 +2,7 @@
 # Maintainer: Luca Weiss <luca (at) z3ntu (dot) xyz>
 
 pkgname=openfx-io
-pkgver=2.1.8
+pkgver=2.1.9
 pkgrel=1
 arch=("i686" "x86_64")
 pkgdesc="A set of Readers/Writers plugins written using the OpenFX standard"
@@ -14,8 +14,10 @@ makedepends=("git" "expat" "boost")
 source=("$pkgname::git+https://github.com/MrKepzie/openfx-io.git#tag=Natron-$pkgver"
         'git+https://github.com/devernay/openfx.git'
         'git+https://github.com/MrKepzie/SequenceParsing'
-        'git+https://github.com/devernay/openfx-supportext.git')
+        'git+https://github.com/devernay/openfx-supportext.git'
+        'git+https://github.com/MrKepzie/tinydir')
 md5sums=('SKIP'
+         'SKIP'
          'SKIP'
          'SKIP'
          'SKIP')
@@ -26,6 +28,10 @@ prepare() {
   git config submodule.openfx.url $srcdir/openfx
   git config submodule.IOSupport/SequenceParsing.url $srcdir/SequenceParsing
   git config submodule.SupportExt.url $srcdir/openfx-supportext
+  git submodule update
+
+  cd IOSupport/SequenceParsing
+  git config submodule.tinydir.url $srcdir/tinydir
   git submodule update
 }
 
