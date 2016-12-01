@@ -26,7 +26,7 @@ md5sums=("594a362a7d657414df2bae505853ace9")
 
 build() {
 
-	cd "$srcdir/cloudcross-$pkgver-$pkgrel"
+	cd "$srcdir/cloudcross-v$pkgver-$pkgrel"
 	
 	rm -rf build
 	mkdir build
