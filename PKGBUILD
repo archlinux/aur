@@ -1,7 +1,7 @@
 # Maintainer: Christian Hesse <mail@eworm.de>
 
 pkgname=openvpn-git
-pkgver=2.4.beta2.r0.g9bc2be7
+pkgver=2.4.beta2.r11.gce91c18
 pkgrel=1
 pkgdesc='An easy-to-use, robust and highly configurable VPN (Virtual Private Network) - git checkout'
 arch=(i686 x86_64)
@@ -14,9 +14,11 @@ provides=('openvpn=2.4.0' 'openvpn-dev')
 license=('custom')
 # for 2.3.x release branch use: git://git.code.sf.net/p/openvpn/openvpn#branch=release/2.3
 source=('git://git.code.sf.net/p/openvpn/openvpn'
-        '0001-systemd.patch')
+        '0001-plugin.patch'
+        '0002-systemd.patch')
 sha256sums=('SKIP'
-            '21d09aea89ab3c61239ab4f619ba5885bbd89a45424efb249b108877ed03529e')
+            'b8254067b4ef5d157d87267a76938d86f101972303c7ff20131cc9f28659a30c'
+            'f7784be28282ad36a7f03140d828912506dfcc0babee08551b63b67bfa0074ea')
 
 pkgver() {
 	cd openvpn/
@@ -36,8 +38,11 @@ pkgver() {
 prepare() {
 	cd openvpn/
 
-	# modifications to upstream systemd units
-	patch -Np1 < "${srcdir}"/0001-systemd.patch
+	# plugin path
+	patch -Np1 < "${srcdir}"/0001-plugin.patch
+
+	# modifications to upstream systemd integration
+	patch -Np1 < "${srcdir}"/0002-systemd.patch
 }
 
 build() {
