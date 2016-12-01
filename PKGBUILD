@@ -1,7 +1,7 @@
 # Maintainer: vorpalblade77@gmail.com
 pkgname=python-steamcontroller-git
 _pkgname=steamcontroller
-pkgver=02f27c4
+pkgver=r104.fe66e53
 pkgrel=1
 pkgdesc="Standalone userland driver for the Steam controller"
 arch=('i686' 'x86_64')
@@ -21,7 +21,11 @@ install='steamcontroller.install'
 
 pkgver() {
 	cd "${srcdir}/${_pkgname}"
-	git describe --always | sed -E 's/([^-]*-g)/r\1/;s/-/./g'
+	( set -o pipefail
+	git describe --long 2>/dev/null | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g' ||
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	      )
+#	git describe --always | sed -E 's/([^-]*-g)/r\1/;s/-/./g'
 }
 
 build() {
