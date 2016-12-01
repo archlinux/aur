@@ -1,7 +1,7 @@
 pkgbase = python-pyfr
 	pkgdesc = Python based framework for solving advection-diffusion type problems on streaming architectures
 	pkgver = 1.5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.pyfr.org/
 	arch = i686
 	arch = x86_64
@@ -10,16 +10,19 @@ pkgbase = python-pyfr
 	depends = python-gimmik>=2.0
 	depends = python-h5py>=2.6
 	depends = python-numpy>=1.8
-	depends = python-pytools>2016.2.1
+	depends = python-pytools>=2016.2.1
 	depends = python-mako>=1.0.0
-	depends = python-mpi4py>2.0
-	optdepends = metis: needed for running PyFR in parallel
-	optdepends = ptscotch-openmpi: needed for running PyFR in parallel
-	optdepends = python-pycuda: needed for CUDA Backend
-	optdepends = python-pyopencl: needed for OpenCL Backend
-	optdepends = clblas: needed for OpenCL Backend
-	optdepends = cblas: OpenMP Backend
-	optdepends = openblas: Optimized BLAS
+	depends = python-mpi4py>=2.0
+	optdepends = metis>=5.0: needed for running PyFR in parallel
+	optdepends = scotch>=6.0: needed for running PyFR in parallel
+	optdepends = python-pymic: needed for Xeon Phi MIC backend
+	optdepends = python-pycuda>=2015.1: needed for CUDA backend
+	optdepends = cuda>=4.2: needed for CUDA backend
+	optdepends = python-pyopencl: needed for OpenCL backend
+	optdepends = clblas: needed for OpenCL backend
+	optdepends = cblas: needed for OpenMP backend
+	optdepends = openblas: alternative blas for OpenMP backend
+	optdepends = cgns>=3.3: for importing CGNS meshes
 	source = http://www.pyfr.org/download/PyFR-1.5.0.zip
 	sha256sums = 84fc65fdcc2e7c446abddbedcf1e44a842593f8a04c3c8927f1c5742266c6333
 
