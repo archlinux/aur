@@ -8,8 +8,8 @@
 # Contributor: Ricardo Band <me [at] xengi [dot] de>
 
 pkgname=popcorntime
-pkgver=0.3.9
-pkgrel=5
+pkgver=0.3.10
+pkgrel=1
 pkgdesc="Stream movies from torrents. Skip the downloads. Launch, click, watch."
 arch=('i686' 'x86_64')
 url="http://popcorntime.sh/"
@@ -34,10 +34,11 @@ optdepends=('net-tools: vpn.ht client')
 options=('!strip')
 #install="popcorntime.install"
 # Needed variables for sources downloads
-_commit_hash="65fc7c322bf92c5b526c1c1042e87ce0d0e6e085"
+_commit_hash="tag=0.3.10"
+
 _pkgname="popcorn-desktop"
 source=(
-	"${_pkgname}_${pkgver}::git+https://github.com/popcorn-official/popcorn-desktop/#commit=${_commit_hash}"
+	"${_pkgname}_${pkgver}::git+https://github.com/popcorn-official/popcorn-desktop/#${_commit_hash}"
 	"popcorntime.desktop"
 )
 sha256sums=('SKIP'
@@ -54,10 +55,14 @@ prepare() {
 	cd "${srcdir}/${_srcdir}"
 
 	msg2 "Installing npm and bower dependencies..."
-	npm install
-
-	msg2 "Fixing wrong gulp installation issue..."
-	npm install gulp
+	# Using a different folder for the cache, makes the system cleaner
+	_cache=`npm config get cache`
+	npm config set cache "$srcdir/npm_cache"
+	# Actually install the stuff
+	msg2 "Cache changed from $_cache to `npm config get cache`, ready to install"
+	npm install #-dd install
+	# Restore the cache directory
+	npm config set cache ${_cache}
 }
 
 build() {
