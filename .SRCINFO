@@ -12,10 +12,11 @@ pkgbase = ccsh-git
 	source = git+https://github.com/cpp-ftw/ccsh.git
 	md5sums = SKIP
 
-pkgname = ccsh-git
+pkgname = ccsh-lib-git
 
 pkgname = ccsh-shell-git
 	depends = ccsh-git
+	depends = cling-git
 
 pkgname = ccsh-wrappers-core-git
 	depends = ccsh-git

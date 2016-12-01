@@ -1,6 +1,7 @@
 # Maintainer: dobragab <dobragab@gmail.com>
 
-pkgname=('ccsh-git' 'ccsh-shell-git' 'ccsh-wrappers-core-git')
+pkgbase=('ccsh-git')
+pkgname=('ccsh-lib-git' 'ccsh-shell-git' 'ccsh-wrappers-core-git')
 pkgver=r83.d0f0cf5
 pkgrel=1
 pkgdesc='C++ shell'
@@ -17,7 +18,7 @@ pkgver() {
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
-package_ccsh-git() {
+package_ccsh-lib-git() {
   cd "ccsh"
   
   cmake . -DWITH_LIB=ON -DWITH_TEST=OFF -DWITH_CLING=OFF
