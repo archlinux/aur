@@ -1,0 +1,14 @@
+pkgbase = r-cran-proto
+	pkgdesc = prototype-based object system
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = http://cran.r-project.org/web/packages/proto/index.html
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = r
+	source = http://cran.r-project.org/src/contrib/proto_1.0.0.tar.gz
+	md5sums = ba74c21febd5282d73e97ccaf5ebbb84
+
+pkgname = r-cran-proto
+
