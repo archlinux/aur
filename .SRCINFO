@@ -1,6 +1,6 @@
 pkgbase = yay
 	pkgdesc = Yet another yogurt. Pacman wrapper with AUR support written in go.
-	pkgver = 1.60
+	pkgver = 1.61
 	pkgrel = 1
 	arch = i686
 	arch = x86_64
