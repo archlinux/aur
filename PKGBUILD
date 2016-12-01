@@ -2,13 +2,13 @@
 
 pkgname=ntpsec
 pkgver=0.9.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Security-hardened Network Time Protocol implementation"
 arch=('i686' 'x86_64')
 url="https://www.ntpsec.org/"
 license=('custom')
 depends=('avahi' 'libevent' 'libseccomp' 'python')
-makedepends=('asciidoc' 'pps-tools')
+makedepends=('asciidoc' 'pps-tools' 'w3m')
 optdepends=('gnuplot: for ntpviz'
             'libevent: for ntpdig'
             'python-psutil: Optional for ntpviz, allows running with ionice'
