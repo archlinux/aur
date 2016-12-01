@@ -1,12 +1,12 @@
 pkgname=microemulator
 pkgver=2.0.4
-pkgrel=1
+pkgrel=2
 arch=('any')
 pkgdesc="This is Java 2 Micro Edition (J2ME) CLDC/MIDP Emulator."
-url="http://www.microemu.org/"
+url="https://sourceforge.net/projects/microemulator/"
 license=('GPL')
 depends=('java-runtime')
-source=(http://microemu.googlecode.com/files/$pkgname-$pkgver.zip
+source=(https://sourceforge.net/projects/$pkgname/files/$pkgname/$pkgver/$pkgname-$pkgver.zip
         microemulator.launcher microemulator.desktop config2.xml)
 
 md5sums=('d4a859a9aae5d90e25f11146abf1e27a'
