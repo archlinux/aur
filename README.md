@@ -1,5 +1,5 @@
 # amdgpocl
-OpenCL on amdgpu for Arch
+OpenCL on amdgpu for Arch, also in the [AUR](https://aur.archlinux.org/packages/opencl-amd/)
 
 This package allows the usage of AMD's proprietary user-space OpenCL driver along with the free amdgpu stack. It should work with upstream amdgpu and Mesa. Inspired by [this blog post](http://www.gearsongallium.com/?p=2960).
 
