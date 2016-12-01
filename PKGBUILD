@@ -2,13 +2,13 @@
 
 _gitname=telegram-qt
 pkgname=telegram-qt-git
-pkgver=r618.c91b15a
+pkgver=r716.a0e5734
 pkgrel=1
 pkgdesc="Qt bindings for the Telegram protocol"
 arch=(i686 x86_64)
 url="https://projects.kde.org/telegram-qt/"
 license=(GPL)
-depends=(zlib)
+depends=(qt5-base)
 makedepends=(cmake git)
 provides=(telegram-qt)
 conflicts=(telegram-qt)
