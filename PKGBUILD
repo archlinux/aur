@@ -1,17 +1,17 @@
 # Maintainer: Bennett Piater <bennett at piater dot name>
 
 pkgname=aursec-git
-pkgver=v0.0.6b.r0.473765f
-pkgrel=3
+pkgver=v0.0.6b.r3.bff1e32
+pkgrel=1
 pkgdesc='Verify AUR package sources against hashes stored in a blockchain.'
-arch=('x86_64' 'x86' 'arm' 'armv6h' 'armv7h' 'aarch64')
+arch=(any)
 url="https://github.com/clawoflight/${pkgname%-git}"
 license=('custom:MPL2')
 
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 
-depends=(firejail geth vim)
+depends=(firejail geth vim bc)
 makedepends=(pandoc git)
 checkdepends=(shellcheck)
 #optdepends=()
