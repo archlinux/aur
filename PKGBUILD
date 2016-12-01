@@ -1,6 +1,6 @@
 # Maintainer: wolftankk <wolftankk@gmail.com>
 pkgname=php-phalcon
-pkgver=3.0.1
+pkgver=3.0.2
 pkgrel=1
 pkgdesc="Web framework delivered as a C-extension for PHP"
 url="http://phalconphp.com"
@@ -15,7 +15,7 @@ source=(
 	"https://github.com/phalcon/cphalcon/archive/v$pkgver.zip"
 )
 
-sha256sums=('d7b2f8483d2343c74490df3e496ea882403a078b71ce1d3319ee20e16f8ae639')
+sha256sums=('269c885961c5b24cb89b79d73cc31007bd79d6e2233c93aeb43a56fc588f4a45')
 
 #get php version
 PHP_FULL_VERSION=`php-config --version`
@@ -46,7 +46,7 @@ build() {
   if [ $($CC -dumpversion | cut -f1 -d.) -ge 4 ]; then
 	  $CC $CFLAGS -fvisibility=hidden t.c -o t 2> t.t && export CFLAGS="$CFLAGS -fvisibility=hidden"
   fi
-  #gcc $CFLAGS -flto t.c -o t 2> t.t && { export CFLAGS="$CFLAGS -flto"; export LDFLAGS="$LDFLAGS $CFLAGS"; }
+
   rm -f t.t t.c t
 
 
