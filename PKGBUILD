@@ -2,7 +2,7 @@
 # Contributor: noonov <noonov@gmail.com>
 
 pkgname=ttf-umeplus
-pkgver=20160402
+pkgver=20161108
 pkgrel=1
 pkgdesc="Modified Ume and M+ fonts for Japanese"
 url="http://www.geocities.jp/ep3797/modified_fonts_01.html"
@@ -10,8 +10,8 @@ license=('custom')
 arch=('any')
 depends=('fontconfig' 'xorg-font-utils')
 install=ttf.install
-source=(http://jaist.dl.osdn.jp/users/10/10368/umeplus-fonts-${pkgver}.tar.xz)
-sha256sums=('4838485a46a5c22e6efce01c52c2fbe61fa0bd62698c735f168f8bff25d79d06')
+source=(http://jaist.dl.osdn.jp/users/11/11274/umeplus-fonts-${pkgver}.tar.xz)
+sha256sums=('0f5d38131e000e3ca622f05198dbbd2b3ddafdba55dc8b2e76a4fab05c7178ad')
 
 package() {
   cd ${srcdir}/umeplus-fonts-${pkgver}
