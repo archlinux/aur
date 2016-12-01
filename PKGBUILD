@@ -1,6 +1,6 @@
 # Maintainer: grmat <grmat@sub.red>
 
-pkgname=amdgpocl
+pkgname=opencl-amd
 pkgdesc="OpenCL userspace driver as provided in the amdgpu-pro driver stack. This package is intended to work along with the free amdgpu stack."
 pkgver=16.40.348864
 pkgrel=1
@@ -10,6 +10,7 @@ license=('custom:AMD')
 makedepends=('wget')
 depends=('ocl-icd')
 optdepends=('linux-cik: amdgpu support for CIK cards (Bonaire/Hawaii series)')
+conflicts=('amdgpocl')
 
 DLAGENTS='https::/usr/bin/wget --referer http://support.amd.com/en-us/kb-articles/Pages/AMD-Radeon-GPU-PRO-Linux-Beta-Driver%E2%80%93Release-Notes.aspx -N %u'
 
