@@ -5,10 +5,10 @@ pkgver=1.2
 pkgrel=1
 pkgdesc="Internet2 utility tools"
 arch=("i686" "x86_64")
-url="http://software.internet2.edu/"
+url="https://software.internet2.edu/"
 license=('Apache')
 depends=("glibc")
-source=("http://software.internet2.edu/sources/$_pkgname/$_pkgname-$pkgver.tar.gz")
+source=("https://software.internet2.edu/sources/$_pkgname/$_pkgname-$pkgver.tar.gz")
 md5sums=('08762c549e63a8102bfa9fe9a0f09c5f')
 
 build() {
