@@ -7,7 +7,7 @@ pkgver=0.28.0
 pkgrel=1
 pkgdesc="SUMO is an open source, highly portable, microscopic and continuous road traffic simulation package designed to handle large road networks"
 arch=('i686' 'x86_64')
-url="http://${pkgbase}-sim.org"
+url="http://sumo.dlr.de"
 license=('GPL')
 depends=('gcc-libs' 'glibc' 'fox' 'xerces-c' 'glu' 'libgl' 'proj' 'gdal')
 makedepends=('make' 'gcc' 'help2man')
@@ -17,8 +17,8 @@ source=("${pkgbase}-src-${pkgver}.tar.gz::http://prdownloads.sourceforge.net/${p
         "${pkgbase}.sh"
         "${pkgbase}.install")
 
-sha256sums=('4494190bd6570646df7a020befe25bc66355377273d922753685737c0d38bfdf'
-            '2fd50a818a49b047b3b147d40610e93a2f5c5a5ea234c8b232ab68c14fb4ece5'
+sha256sums=('4e3c31b5e052349c00a1f00f50fcba9c598a93a047a0d66f56f2260e9373f201'
+            '03a6578286b55e564244255afe7723153c0cc891a1cc66a220110d176df43f66'
             '0500ba9cdf827cceae9a9bce66094bdb077300c94b0040bdd710afb92d0d4849'
             '16db32dbba617f8a38f5d103ce3af7cc70ab4cbf5b50e30be5d7f13ee6ea2f4f'
             'eeb0e9f85d72f06937462ceac90cc7f5bb55b56022472c476c137ee95b9fa56b')
@@ -37,7 +37,7 @@ prepare() {
         fi
     done
 
-    # remove odd build flags
+    # remove specific build flags so that the options from makepkg.conf are honored
     sed -i 's/-O2//g' configure
     sed -i 's/-D_FORTIFY_SOURCE=2//g' configure
     sed -i 's/-DNDEBUG//g' configure
@@ -84,6 +84,7 @@ package_sumo() {
     install -m0755 ${srcdir}/${pkgbase}-${pkgver}/bin/${pkgbase} ${pkgdir}/usr/bin/
     install -m0755 ${srcdir}/${pkgbase}-${pkgver}/bin/${pkgbase}-gui ${pkgdir}/usr/bin/
     install -m0755 ${srcdir}/${pkgbase}-${pkgver}/bin/TraCITestClient ${pkgdir}/usr/bin/
+    install -m0755 ${srcdir}/${pkgbase}-${pkgver}/bin/netedit ${pkgdir}/usr/bin/
 
 
     SAVEIFS=$IFS
@@ -170,3 +171,5 @@ package_sumo-doc() {
 
     rm -rf ${pkgdir}/usr/share/doc/${pkgbase}/man
 }
+
+
