@@ -16,7 +16,7 @@ optdepends=(
   "qt5-style-kvantum-svn: For Kvantum Theme"
   "kvantum-tools-qt5-svn: For Kvantum Theme"
   "konsole: For Konsole color schemes"
-  "konveration: For konversation theme"
+  "konversation: For konversation theme"
   "yakuake: For Yakuake theme"
 )
 source=("${pkgname}::git+${url}.git")
