@@ -1,6 +1,6 @@
 pkgbase = chandere2
 	pkgdesc = An asynchronous image/file downloader and thread archiver for imageboards.
-	pkgver = 2.3.1.post1
+	pkgver = 2.4.0
 	pkgrel = 2
 	url = https://github.com/TsarFox/chandere2
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = chandere2
 	makedepends = python-setuptools
 	depends = python
 	depends = python-aiohttp
-	source = https://github.com/TsarFox/chandere2/archive/v2.3.1.post1.tar.gz
-	md5sums = 7846d3e4387128a8be782299384f0849
+	source = https://github.com/TsarFox/chandere2/archive/v2.4.0.tar.gz
+	md5sums = e7f87c49af0982e4da6d72377dd8e654
 
 pkgname = chandere2
 
