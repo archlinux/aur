@@ -1,7 +1,7 @@
 # Maintainer: Dan McCurry <dan.mccurry at linux dot com>
 pkgname=fullprof-suite
 pkgver=2016.07
-pkgrel=1
+pkgrel=2
 pkgdesc="Crystallographic tools for Rietveld, profile matching & integrated intensity refinements of X-Ray and/or neutron data."
 arch=('i686' 'x86_64')
 url="https://www.ill.eu/sites/fullprof"
@@ -42,7 +42,7 @@ prepare() {
 
 	for i in $(find ${srcdir}/${pkgname}/. \
 		-maxdepth 1 -executable -type f -printf "%P "); do
-		sed -e "s/\(exec.*\)/\1$i/" \
+		sed -e "s/\(exec.*\)/\1$i \"\$\@\"/" \
 			${srcdir}/fullprof-bin > ${srcdir}/bin/fullprof-$i
 	done
 }	
