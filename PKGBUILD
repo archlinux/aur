@@ -1,7 +1,7 @@
 # Maintainer: Cedric Girard <girard.cedric@gmail.com>
 _pythonmod=boto3
 pkgname=python2-boto3
-pkgver=1.4.1
+pkgver=1.4.2
 pkgrel=1
 pkgdesc="The AWS SDK for Python"
 arch=('any')
@@ -17,7 +17,7 @@ depends=(
     )
 makedepends=('python2-setuptools')
 source=("https://pypi.io/packages/source/${_pythonmod:0:1}/${_pythonmod}/${_pythonmod}-$pkgver.tar.gz")
-md5sums=('ff4d033bbb6932b140056337b1c3de85')
+md5sums=('afed98def1ee5b98bc693913ac97438c')
 
 build() {
   cd ${srcdir}/${_pythonmod}-$pkgver
