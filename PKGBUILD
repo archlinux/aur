@@ -18,12 +18,13 @@ source=("https://github.com/vmware/pyvcloud/archive/$pkgver.tar.gz")
 sha256sums=('962b4b3808fa032508544508210d6e0e5b985ae4935ec63ae93313f3c5be07ca')
 
 prepare() {
-    cp -a $_pkgname{,-py2}-$pkgver
+    test -d "$srcdir"/$_pkgname-py2-$pkgver || mkdir "$srcdir"/$_pkgname-py2-$pkgver
+    cp -a "$srcdir"/$_pkgname{-$pkgver/.,-py2-$pkgver/}
 
     find $_pkgname-$pkgver/pyvcloud -name \*.py -exec \
-      sed -i "s:^#!.*bin.*python:#!/usr/bin/env python3:" {} +
+      sed -i "s:^#!.*bin.*python$:#!/usr/bin/env python3:" {} +
     find $_pkgname-py2-$pkgver/pyvcloud -name \*.py -exec \
-      sed -i "s:^#!.*bin.*python:#!/usr/bin/env python2:" {} +
+      sed -i "s:^#!.*bin.*python$:#!/usr/bin/env python2:" {} +
 }
 
 package_python-pyvcloud() {
