@@ -2,7 +2,7 @@
 
 pkgname=aursec-git
 pkgver=v0.0.6b.r3.bff1e32
-pkgrel=1
+pkgrel=2
 pkgdesc='Verify AUR package sources against hashes stored in a blockchain.'
 arch=(any)
 url="https://github.com/clawoflight/${pkgname%-git}"
