@@ -1,7 +1,7 @@
 pkgbase = kbbi-qt
 	pkgdesc = Kamus Besar Bahasa Indonesia Luring.
 	pkgver = 1.0
-	pkgrel = 1
+	pkgrel = 3
 	url = https://github.com/bgli/kbbi-qt
 	arch = i686
 	arch = x86_64
@@ -11,8 +11,6 @@ pkgbase = kbbi-qt
 	makedepends = git
 	depends = qt5-base
 	source = kbbi-qt::git+https://github.com/bgli/kbbi-qt.git
-	source = kbbi-qt.desktop
-	md5sums = SKIP
 	md5sums = SKIP
 
 pkgname = kbbi-qt
