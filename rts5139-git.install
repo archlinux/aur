@@ -1,0 +1,18 @@
+post_install() {
+    echo "blacklist rtsx_usb_sdmmc" >> /etc/modprobe.d/blacklist.conf
+    echo "blacklist rtsx_usb_ms" >> /etc/modprobe.d/blacklist.conf
+    echo "blacklist rtsx_usb" >> /etc/modprobe.d/blacklist.conf
+    depmod -a
+}
+
+post_upgrade() {
+    depmod -a
+}
+
+pre_remove() {
+    sed -i '/blacklist rtsx*/d' /etc/modprobe.d/blacklist.conf
+}
+
+post_remove() {
+  depmod -a
+}
