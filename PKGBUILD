@@ -2,7 +2,7 @@
  
 pkgname=guacamole-client
 pkgver=0.9.9
-pkgrel=2
+pkgrel=3
 pkgdesc="Java and Maven components of Guacamole"
 arch=('any')
 url="http://guacamole.sourceforge.net/"
@@ -10,7 +10,7 @@ license=('GPL3')
  
 replaces=('guacamole')
  
-depends=('java-runtime' 'tomcat7' 'guacamole-server')
+depends=('java-runtime' 'tomcat7')
  
 makedepends=('maven')
  
