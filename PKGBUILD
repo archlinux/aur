@@ -1,4 +1,4 @@
-# Maintainer: Chocobo1
+# Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=chewing-editor-git
 pkgver=0.1.1.r30.g637be39
