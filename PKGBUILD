@@ -1,6 +1,6 @@
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=vddiff-git
-pkgver=r21.2312b7b
+pkgver=r280.d7b974d
 pkgrel=1
 epoch=
 pkgdesc="Text terminal directory diff tool"
