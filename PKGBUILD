@@ -40,7 +40,7 @@ makedepends=('qt5-declarative'
 provides=('elektra')
 conflicts=('elektra')
 source=('elektra::git+https://github.com/ElektraInitiative/libelektra.git')
-sha1sums=('SKIP')
+sha256sums=('SKIP')
 
 pkgver() {
   cd elektra
