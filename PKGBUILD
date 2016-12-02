@@ -2,7 +2,7 @@
 # If you would like to contribute, place a comment or send an email.
 # These profiles may not work for all setups, they're only tested on my desktop.
 pkgname=firejail-profiles
-pkgver=1.1
+pkgver=1.2
 pkgrel=1
 pkgdesc="Extra profiles for firejail"
 arch=('any')
