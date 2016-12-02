@@ -1,11 +1,11 @@
 # Maintainer: FadeMind <fademind@gmail.com>
 
 pkgname=arc-dark-suite-git
-pkgver=20160807
+pkgver=20161202
 pkgrel=1
 pkgdesc='Arc-Dark customization for Plasma 5 (git version)'
 arch=('any')
-url='https://github.com/varlesh/Arc-Dark-KDE'
+url='https://github.com/PapirusDevelopmentTeam/arc-kde'
 license=('CCPL:by-sa')
 options=('!strip')
 makedepends=('git' 'make')
@@ -28,5 +28,12 @@ pkgver(){
 }
 
 package() {
-    make -C "${pkgname}" install DESTDIR="$pkgdir"
+    mkdir -p $pkgdir/usr/share
+    cp -r $srcdir/$pkgname/aurorae $pkgdir/usr/share/
+    cp -r $srcdir/$pkgname/color-schemes $pkgdir/usr/share/
+    cp -r $srcdir/$pkgname/konsole $pkgdir/usr/share/
+    cp -r $srcdir/$pkgname/Kvantum $pkgdir/usr/share/
+    cp -r $srcdir/$pkgname/yakuake $pkgdir/usr/share/
+    cp -r $srcdir/$pkgname/wallpapers $pkgdir/usr/share/
+    cp -r $srcdir/$pkgname/konversation $pkgdir/usr/share/
 }
