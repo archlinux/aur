@@ -4,12 +4,12 @@
 
 pkgname=erlang-cl
 pkgver=1.2.1
-pkgrel=2
+pkgrel=3
 arch=('x86_64' 'i686')
 pkgdesc='OpenCL binding for Erlang'
 url='http://github.com/tonyrog/cl'
 license=('MIT')
-depends=('erlang' 'libcl' 'bash')
+depends=('erlang' 'opencl-icd-loader' 'bash')
 replaces=('cl')
 makedepends=('opencl-headers' 'rebar' 'git')
 source=("$pkgname::git://github.com/tonyrog/cl.git#tag=cl-1.2.1")
