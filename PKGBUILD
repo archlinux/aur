@@ -7,7 +7,6 @@ pkgdesc="Open broadcast software for scheduling and station management."
 arch=('i686' 'x86_64')
 url="http://www.sourcefabric.org/en/airtime"
 license=('GPL3')
-phpver=56
 depends=('alsa-utils'
 	'coreutils'
 	'curl'
@@ -30,10 +29,10 @@ depends=('alsa-utils'
 	'opus'
 	'patch'
 	'perl'
-	"php$phpver"
-	"php$phpver-gd"
-	"php$phpver-pear"
-	"php$phpver-pgsql"
+	"php"
+	"php-gd"
+	"php-pear"
+	"php-pgsql"
 	'portaudio'
 	'postgresql'
 	'pwgen'
@@ -138,7 +137,7 @@ msg2 "Symlinking Zend Framework..."
     ln -sr /usr/share/zendframework/library "${pkgdir}/usr/share/php/libzend-framework-php"
  
 msg2 "Copying Apache and Php confs..."    
-    install -D -m644 "installer/php/airtime.ini" "${pkgdir}/etc/php$phpver/conf.d/airtime.ini"
+    install -D -m644 "installer/php/airtime.ini" "${pkgdir}/etc/php/conf.d/airtime.ini"
     install -D -m644 ../httpd-airtime.conf "${pkgdir}/etc/httpd/conf/extra/httpd-airtime.conf"
 
 msg2 "Installing systemd services..."

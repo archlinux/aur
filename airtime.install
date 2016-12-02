@@ -13,7 +13,7 @@ post_install() {
   echo "# Airtime"
   echo "Include conf/extra/httpd-airtime.conf"
   echo ""
-  echo ">> In /etc/php56/php.ini"
+  echo ">> In /etc/php/php.ini"
   echo "> enable the following modules:"
   echo "bcmath pgsql pdo_pgsql gd posix"
   echo "> select your timezone:" 
