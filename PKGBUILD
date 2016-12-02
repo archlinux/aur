@@ -5,10 +5,10 @@ pkgname=('elektra-git'
          'python-elektra-git'
          'python2-elektra-git'
          'lua52-elektra-git'
-         'elektra-glib-git'
          'java-elektra-git'
+         'ruby-elektra-git'
          )
-pkgver=0.8.16.4.g19b3225
+pkgver=0.8.19.317.gd605fb0
 pkgrel=1
 pkgdesc="A universal hierarchical configuration store. (GIT version)"
 arch=('i686' 'x86_64')
@@ -22,19 +22,19 @@ makedepends=('qt5-declarative'
              'git'
              'cmake'
              'boost'
+             'botan-1.10'
              'doxygen'
              'graphviz'
              'swig'
              'lua52'
              'python2-cheetah'
              'python'
-             'lua52'
-             'gobject-introspection'
              'java-environment=8'
              'ruby-ronn'
              'tcl'
              'jna'
              'curl'
+             'ruby'
              'hicolor-icon-theme'
              )
 provides=('elektra')
@@ -71,7 +71,8 @@ build() {
     -DPLUGINS='ALL;-experimental' \
     -DBINDINGS=ALL \
     -DLUA_INCLUDE_DIR=/usr/include/lua5.2 \
-    -DJAVA_INCLUDE_PATH="${JAVA_HOME}/include"
+    -DJAVA_INCLUDE_PATH="${JAVA_HOME}/include" \
+    -DCMAKE_SKIP_INSTALL_RPATH=ON
 
   LC_ALL=C make
 }
@@ -84,10 +85,12 @@ package_elektra-git() {
   optdepends=('curl: curl plugin'
               'augeas: augeas plugin'
               'yajl: yajl plugin'
+              'botan-1.10: Crypto plugin'
+              'libgit2: GIT plugin'
               'qt5-declarative: qt-gui'
               'qt5-quickcontrols: qt-gui'
               'discount: qt-gui'
-              'python-elektra-git: Python bindings'
+              'python-elektra-git: Python bindings and find-tools'
               'python2-elektra-git: Python 2 bindings and gen tool'
               'lua52-elektra-git: Lua52 bindings'
               'elektra-glib-git: Glib bindings'
@@ -98,27 +101,23 @@ package_elektra-git() {
 
   make -C build DESTDIR="${pkgdir}" install
 
-  install -Dm644 elektra/doc/COPYING "${pkgdir}/usr/share/licenses/elektra-git/LICENSE"
+  install -Dm644 elektra/doc/LICENSE.md "${pkgdir}/usr/share/licenses/elektra-git/LICENSE.md"
 
   # fix references to SRCDIR
   for i in $(find ${pkgdir}/usr/share/doc -type f); do sed "s|${srcdir}|/usr/share/doc|g" -i ${i} ;done
 
-  rm -fr "${pkgdir}/usr/include/elektra/"gelektra-k*
-
-  rm -fr "${pkgdir}/usr/lib/"girepository*
-  rm -fr "${pkgdir}/usr/lib/pkgconfig/"gelektra*.pc
+  rm -fr "${pkgdir}/usr/lib/ruby"
   rm -fr "${pkgdir}/usr/lib/lua"
   rm -fr "${pkgdir}/usr/lib/"python*
 
-  rm -fr "${pkgdir}/usr/lib/"libgelektra-*
-
   rm -fr "${pkgdir}/usr/lib/elektra/tool_exec/gen"
+  rm -fr "${pkgdir}/usr/lib/elektra/tool_exec/find-tools"
 
   rm -fr "${pkgdir}/usr/lib/elektra/"libelektra-{python,python2,lua,jni}.so
 
-  rm -fr "${pkgdir}/usr/share/"gir-*
   rm -fr "${pkgdir}/usr/share/lua"
   rm -fr "${pkgdir}/usr/share/java"
+
   rm -fr "${pkgdir}/usr/share/elektra/test_data"/{lua,python,python2}
 }
 
@@ -131,10 +130,10 @@ package_python-elektra-git() {
   conflicts=('python-elektra')
 
   make -C build/src/bindings/swig/python DESTDIR="${pkgdir}" install
-  make -C build/src/bindings/gi/python DESTDIR="${pkgdir}" install
   make -C build/src/plugins/python DESTDIR="${pkgdir}" install
+  install -Dm755 ${srcdir}/elektra/scripts/find-tools "${pkgdir}/usr/lib/tools_exec/find-tools"
 
-  install -Dm644 elektra/doc/COPYING "${pkgdir}/usr/share/licenses/python-elektra-git/LICENSE"
+  install -Dm644 elektra/doc/LICENSE.md "${pkgdir}/usr/share/licenses/python-elektra-git/LICENSE.md"
 }
 package_python2-elektra-git() {
   pkgdesc="Python2 bindings for Elektra. (GIT version)"
@@ -148,7 +147,20 @@ package_python2-elektra-git() {
   make -C build/src/plugins/python2 DESTDIR="${pkgdir}" install
   make -C build/src/tools/gen DESTDIR="${pkgdir}" install
 
-  install -Dm644 elektra/doc/COPYING "${pkgdir}/usr/share/licenses/python2-elektra-git/LICENSE"
+  install -Dm644 elektra/doc/LICENSE.md "${pkgdir}/usr/share/licenses/python2-elektra-git/LICENSE.md"
+}
+
+package_ruby-elektra-git() {
+  pkgdesc="Ruby bindings for Elektra. (GIT version)"
+  depends=('elektra-git'
+           'ruby'
+           )
+  provides=('lua52-elektra')
+  conflicts=('lua52-elektra')
+
+  make -C build/src/bindings/swig/ruby DESTDIR="${pkgdir}" install
+
+  install -Dm644 elektra/doc/LICENSE.md "${pkgdir}/usr/share/licenses/ruby-elektra-git/LICENSE.md"
 }
 
 package_lua52-elektra-git() {
@@ -160,26 +172,9 @@ package_lua52-elektra-git() {
   conflicts=('lua52-elektra')
 
   make -C build/src/bindings/swig/lua DESTDIR="${pkgdir}" install
-  make -C build/src/bindings/gi/lua DESTDIR="${pkgdir}" install
   make -C build/src/plugins/lua DESTDIR="${pkgdir}" install
 
-  install -Dm644 elektra/doc/COPYING "${pkgdir}/usr/share/licenses/lua52-elektra-git/LICENSE"
-}
-
-package_elektra-glib-git() {
-  pkgdesc="Glib bindings for Elektra. (GIT version)"
-  depends=('elektra-git'
-           'glib2'
-           )
-  provides=('elektra-glib')
-  conflicts=('elektra-glib')
-
-  make -C build/src/bindings/gi DESTDIR="${pkgdir}" install
-  make -C build/src/bindings/glib DESTDIR="${pkgdir}" install
-  install -Dm644 elektra/doc/COPYING "${pkgdir}/usr/share/licenses/elektra-glib-git/LICENSE"
-
-  rm -fr "${pkgdir}/usr/lib/"python*
-  rm -fr "${pkgdir}/usr/share/lua"
+  install -Dm644 elektra/doc/LICENSE.md "${pkgdir}/usr/share/licenses/lua52-elektra-git/LICENSE.md"
 }
 
 package_java-elektra-git() {
@@ -195,5 +190,5 @@ package_java-elektra-git() {
   make -C build/src/bindings/jna DESTDIR="${pkgdir}" install
   make -C build/src/plugins/jni DESTDIR="${pkgdir}" install
 
-  install -Dm644 elektra/doc/COPYING "${pkgdir}/usr/share/licenses/java-elektra-git/LICENSE"
+  install -Dm644 elektra/doc/LICENSE.md "${pkgdir}/usr/share/licenses/java-elektra-git/LICENSE.md"
 }
