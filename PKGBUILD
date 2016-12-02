@@ -2,10 +2,10 @@
 # Contributor:  eadrom <eadrom@archlinux.info>
 # Contributor:  Martin Wimpress <code@flexion.org>
 
-_ver=1.15
+_ver=1.17
 _pkgbase=mate-applets
 pkgname="${_pkgbase}-dev"
-pkgver=${_ver}.2
+pkgver=${_ver}.0
 pkgrel=1
 pkgdesc="Applets for MATE panel"
 arch=('i686' 'x86_64')
@@ -20,7 +20,7 @@ optdepends=('fortune-mod: for displaying fortune cookies in the Wanda the Fish a
             'yelp: for reading MATE help documents')
 groups=('mate-extra')
 source=("http://pub.mate-desktop.org/releases/${_ver}/${_pkgbase}-${pkgver}.tar.xz")
-sha1sums=('af544d2d7c027b0d7b7e0688f93c343853e919d2')
+sha1sums=('64742a98be03cf89099dbdd14e7b6baf2f9a0c2f')
 
 prepare() {
     cd "${srcdir}"
