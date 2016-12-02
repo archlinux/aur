@@ -29,10 +29,10 @@ depends=('alsa-utils'
 	'opus'
 	'patch'
 	'perl'
-	"php"
-	"php-gd"
-	"php-pear"
-	"php-pgsql"
+	'php'
+	'php-gd'
+	'php-pear'
+	'php-pgsql'
 	'portaudio'
 	'postgresql'
 	'pwgen'
@@ -50,6 +50,7 @@ depends=('alsa-utils'
 	'python2-pytz'
 	'python2-virtualenv'
 	'python2-wsgiref'
+	'rabbitmq'
 	'silan'
 	'sudo'
 	'tar'
@@ -58,9 +59,10 @@ depends=('alsa-utils'
 	'vorbis-tools'
 	'vorbisgain'
 	'zendframework')
+
 optdepends=('apache: Apache webserver (webserver needed)'
-            'nginx: Nginx webserver (webserver needed)'
-            'rabbitmq: localy hosted rabbitmq server')
+            'nginx: Nginx webserver (webserver needed)')
+
 makedepends=('git' 'python2' 'python2-setuptools')
 provides=('airtime')
 replaces=('airtime')
@@ -69,6 +71,7 @@ backup=('etc/airtime/airtime.conf'
         'etc/logrotate.d/airtime-liquidsoap'
         'etc/logrotate.d/airtime-php')
 install=airtime.install
+
 source=("airtime::git+https://github.com/sourcefabric/airtime"
         'airtime-media-monitor.service'
         'airtime-liquidsoap.service'
@@ -76,6 +79,7 @@ source=("airtime::git+https://github.com/sourcefabric/airtime"
         'airtime.tmpfiles.conf'
 	'httpd-airtime.conf'
 	'php-errors.patch')
+
 branch=2.5.x
 
 prepare() {
