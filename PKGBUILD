@@ -5,8 +5,8 @@
 # All my PKGBUILDs are managed at https://github.com/eli-schwartz/pkgbuilds
 
 pkgname=qbittorrent-git
-pkgver=3.3.7.r663.ga42b4ef
-pkgrel=2
+pkgver=3.3.7.r739.gf7194ee
+pkgrel=1
 pkgdesc="A bittorrent client powered by C++, Qt5 and the good libtorrent library (development version)"
 arch=('i686' 'x86_64')
 url="http://www.qbittorrent.org/"
@@ -26,6 +26,14 @@ pkgver() {
   _rev=$(git rev-list --count release-${_tag}..HEAD)
   _hash=$(git rev-parse --short HEAD)
   printf "%s.r%s.g%s" "$_tag" "$_rev" "$_hash"
+}
+
+prepare() {
+  cd ${pkgname%-*}/src
+
+  # Remove this once libtorrent-rasterbar 1.1.2 is released and packaged
+  # See: https://github.com/qbittorrent/qBittorrent/issues/5888
+  git revert --no-commit afe930cbeec5a1f8a397baf322eda9a8c4b58c80
 }
 
 build() {
