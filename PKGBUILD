@@ -6,7 +6,7 @@
 _pkgname="rts5139"
 pkgname=("${_pkgname}-git")
 pkgver=r6.97512d1
-pkgrel=1
+pkgrel=2
 pkgdesc="A kernel module for Realtek RTS5129/RTS5139 Card Reader Controller"
 url="https://github.com/asymingt/${_pkgname}"
 arch=('any')
@@ -15,7 +15,7 @@ depends=('')
 makedepends=('git' 'linux-headers')
 provides=("${_pkgname}")
 install="${pkgname}.install"
-source=("git+https://github.com/asymingt/${_pkgname}.git")
+source=(git+https://github.com/asymingt/${_pkgname}.git)
 sha256sums=('SKIP')
 
 _kernver=`uname -r`

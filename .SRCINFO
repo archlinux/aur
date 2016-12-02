@@ -1,7 +1,7 @@
 pkgbase = rts5139-git
 	pkgdesc = A kernel module for Realtek RTS5129/RTS5139 Card Reader Controller
 	pkgver = r6.97512d1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/asymingt/rts5139
 	install = rts5139-git.install
 	arch = any
