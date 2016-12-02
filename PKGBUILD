@@ -1,29 +1,28 @@
-# Maintainer: Stanisław Pitucha <viraptor@gmail.com>
-pkgname="pvs-studio"
-pkgver="6.10.19280.1.1"
+# Maintainer: Marat Moustafine <m-dash-moustafine-at-yandex-dot-ru>
+
+pkgname=pvs-studio
+pkgver=6.11.20138.1
 pkgrel=1
-epoch=
-pkgdesc="Static Code Analyzer for C, C++ and C#"
-arch=('x86_64')
-url="http://www.viva64.com/en/pvs-studio/"
+pkgdesc='Static code analyzer for C, C++ and C#'
+arch=('i686' 'x86_64')
+url=http://www.viva64.com/en/$pkgname
 license=('unknown')
-groups=()
-depends=()
-makedepends=()
-checkdepends=()
-optdepends=()
-provides=()
-conflicts=()
-replaces=()
-backup=()
-options=()
-source=("http://files.viva64.com/$pkgname-${pkgver%.*}-${pkgver##*.}.x86_64.tgz")
-noextract=()
-md5sums=('5befc43afd49f9437800ff1e9b5f0db0')
-validpgpkeys=()
+depends_i686=('qemu-headless-arch-extra')
+optdepends=('how-to-use-pvs-studio-free: for adding special comments to a source code')
+options=('!strip')
+install=$pkgname.install
+source=(http://files.viva64.com/$pkgname-$pkgver-${arch[1]}.tgz)
+source_i686=($pkgname.binfmt.d)
+sha256sums=('96b2041155e6a428804a992a5d974c98bb66ad6eecc19186854e1ec8e3de178d')
+sha256sums_i686=('fd7b1f7b48aa84205c1c0f60f630f1a33504e0e4904c5b0e8ae2477494899c97')
 
 package() {
-	mkdir -p "$pkgdir/usr/bin" "$pkgdir/usr/share/pvs-studio"
-	tar -x -f $(basename "${source[0]}") -C "$pkgdir/usr/bin" plog-converter pvs-studio pvs-studio-analyzer
-	tar -x -f $(basename "${source[0]}") -C "$pkgdir/usr/share/pvs-studio" README.md
+  if [ $CARCH == i686 ]; then
+    install -Dm644 $pkgname.binfmt.d $pkgdir/usr/lib/binfmt.d/$pkgname.conf
+  fi
+
+  cd $pkgname-$pkgver-${arch[1]}/bin
+  install -Dm755 $pkgname $pkgdir/usr/bin/$pkgname
+  install -Dm755 $pkgname-analyzer $pkgdir/usr/bin/$pkgname-analyzer
+  install -Dm755 plog-converter $pkgdir/usr/bin/plog-converter
 }

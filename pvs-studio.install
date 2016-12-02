@@ -1,0 +1,15 @@
+post_install() {
+  if [ $(uname -m) == i686 ] && [ ! -f /proc/sys/fs/binfmt_misc/pvs-studio ]; then
+    cat /usr/lib/binfmt.d/pvs-studio.conf > /proc/sys/fs/binfmt_misc/register
+  fi
+}
+
+post_upgrade() {
+  post_install
+}
+
+post_remove() {
+  if [ -f /proc/sys/fs/binfmt_misc/pvs-studio ]; then
+    echo -1 > /proc/sys/fs/binfmt_misc/pvs-studio
+  fi
+}
