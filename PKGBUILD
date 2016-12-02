@@ -1,7 +1,7 @@
 # Maintainer: Philippe Proulx <pproulx@efficios.com>
 
 pkgname=('python-babeltrace')
-pkgver=1.4.0
+pkgver=1.5.0
 pkgrel=1
 pkgdesc='Babeltrace Python bindings'
 arch=('i686' 'x86_64')
@@ -9,9 +9,9 @@ url="http://diamon.org/babeltrace"
 license=('LGPL2.1' 'GPL2' 'MIT')
 source=(http://www.efficios.com/files/babeltrace/babeltrace-${pkgver}.tar.bz2)
 makedepends=('swig>=2.0.0')
-depends=('babeltrace>=1.4.0' 'python')
+depends=('babeltrace>=1.5.0' 'python')
 options=('!libtool')
-sha1sums=('3b162480ee883625e8581bf163817f78a4b6487b')
+sha1sums=('13f106951c418632a2155ebe3cea51fa4929e748')
 
 build()
 {
