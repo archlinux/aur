@@ -1,15 +1,21 @@
 pkgbase = python-nibabel
 	pkgdesc = Python library for reading and writing of some common neuroimaging file formats
-	pkgver = 2.0.0
+	pkgver = 2.1.0
 	pkgrel = 1
 	url = http://nipy.org/nibabel
 	arch = i686
 	arch = x86_64
-	license = BSD
+	license = MIT
 	makedepends = python-setuptools
+	makedepends = python-nose
+	makedepends = python-mock
 	depends = python
-	source = https://pypi.python.org/packages/source/n/nibabel/nibabel-2.0.0.tar.gz
-	md5sums = befa2fcbd242496a83007a47aad538de
+	depends = python-numpy>=1.5
+	optdepends = python-scipy: for full SPM-ANALYZE support
+	optdepends = python-pydicom>=0.9.7: for DICOM support
+	optdepends = python-pillow: for PNG conversion in DICOMFS
+	source = https://github.com/nipy/nibabel/archive/2.1.0.tar.gz
+	md5sums = f6e213894939aece4619e3a45259dfbd
 
 pkgname = python-nibabel
 
