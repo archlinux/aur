@@ -18,6 +18,7 @@ depends=('openssl' 'zlib' 'icu' 'libuv' 'http-parser' 'c-ares') # 'v8')
 makedepends=('python2' 'procps-ng' 'git')
 optdepends=('npm: nodejs package manager')
 conflicts=('nodejs')
+provides=('nodejs')
 source=("nodejs::git+https://github.com/nodejs/node.git#tag=v$pkgver")
 sha256sums=('SKIP')
 
