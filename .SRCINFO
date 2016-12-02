@@ -1,0 +1,20 @@
+pkgbase = how-to-use-pvs-studio-free-git
+	pkgdesc = An utility that adds special comments to a source code for analyzing the code by PVS-Studio for free
+	pkgver = latest
+	pkgrel = 1
+	url = https://github.com/viva64/how-to-use-pvs-studio-free
+	arch = i686
+	arch = x86_64
+	license = APACHE
+	makedepends = cmake
+	makedepends = git
+	optdepends = pvs-studio: for the PVS-Studio code analyzer
+	provides = how-to-use-pvs-studio-free
+	conflicts = how-to-use-pvs-studio-free
+	source = git+https://github.com/viva64/how-to-use-pvs-studio-free.git
+	source = add-comments-to-headers-too.patch
+	sha256sums = SKIP
+	sha256sums = 8de3ba2cc20f9752edc2e9932a6bc2c92bec2fddc24ee5c01a9fd587c93c6878
+
+pkgname = how-to-use-pvs-studio-free-git
+
