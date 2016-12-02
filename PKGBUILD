@@ -3,12 +3,12 @@
 pkgname=mattercontrol
 _pkgname=MatterControl
 pkgver=1.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Software solution for 3D printers"
 arch=("i386" "x86_64")
 license=('custom')
 url="http://www.mattercontrol.com"
-depends=('mono' 'lib32-glibc')
+depends=('mono' 'lib32-glibc' 'gtk-sharp-2')
 makedepends=('git' 'nuget')
 provides=('mattercontrol')
 install="mattercontrol.install"
