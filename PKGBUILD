@@ -3,7 +3,7 @@
 # Contributor: Timothée Ravier <tim@siosm.fr>
 
 pkgname=multipath-tools-git
-pkgver=2036.0feb18e
+pkgver=2057.437a440
 pkgrel=1
 pkgdesc="Tools to drive the Device Mapper multipathing driver (contains kpartx)"
 url="http://christophe.varoqui.free.fr/"
