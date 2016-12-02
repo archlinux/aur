@@ -2,7 +2,7 @@
 # Maintainer: ilikenwf/Matt Parnell <parwok@gmail.com>
 
 pkgname=openoffice-uglyfix-freetype2
-pkgver=2.6.3
+pkgver=2.7
 pkgrel=1
 pkgdesc="Compiles freetype2 .so files and puts them in the openoffice/libreoffice directory to fix font ugliness"
 arch=(i686 x86_64)
@@ -12,7 +12,7 @@ depends=('zlib' 'libreoffice')
 options=('!libtool')
 source=(http://downloads.sourceforge.net/sourceforge/freetype/freetype-${pkgver}.tar.bz2
 	openoffice.patch)    
-md5sums=('0037b25a8c090bc8a1218e867b32beb1'
+md5sums=('be4601619827b7935e1d861745923a68'
          '1f909d5c71b810c68a50dea33995a713')
 
 prepare()
