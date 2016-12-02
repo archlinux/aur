@@ -1,0 +1,27 @@
+From f59a3272f50ebae0cdc4dbebbd52539da09f3b4d Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?R=C3=A9mi=20Denis-Courmont?= <remi@remlab.net>
+Date: Thu, 1 Dec 2016 19:23:36 +0200
+Subject: [PATCH] qt: remove stray flags
+
+---
+ modules/gui/qt/Makefile.am | 4 ----
+ 1 file changed, 4 deletions(-)
+
+diff --git a/modules/gui/qt/Makefile.am b/modules/gui/qt/Makefile.am
+index feef2e9..d0cdc07 100644
+--- a/modules/gui/qt/Makefile.am
++++ b/modules/gui/qt/Makefile.am
+@@ -30,10 +30,6 @@ libqt_plugin_la_LIBADD += $(WAYLAND_CLIENT_LIBS)
+ endif
+ if HAVE_WIN32
+ libqt_plugin_la_LIBADD += $(LIBCOM) -lcomctl32 -luuid
+-else
+-if !HAVE_OS2
+-libqt_plugin_la_LIBADD += $(X_LIBS) $(X_PRE_LIB) -lX11
+-endif
+ endif
+ 
+ gui_LTLIBRARIES =  $(LTLIBqt)
+-- 
+2.10.2
+
