@@ -8,8 +8,8 @@
 #pkgbase=linux               # Build stock -ARCH kernel
 pkgbase=linux-rt             # Build kernel with a different name
 _srcname=linux-4.8
-_pkgver=4.8.6
-_rtpatchver=rt5
+_pkgver=4.8.11
+_rtpatchver=rt7
 pkgver=${_pkgver}_${_rtpatchver}
 pkgrel=1
 arch=('i686' 'x86_64')
@@ -32,9 +32,9 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
 
 sha256sums=('3e9150065f193d3d94bcf46a1fe9f033c7ef7122ab71d75a7fb5a2f0c9a7e11a'
             'SKIP'
-            '3ac0ea443ac8a7aa40f8d5ce8ec33b84abbad4dbfc567c7699df728c2c21df37'
+            '53d84946cbe641a2a74ed6cbdd35840bb4947cefd34a764c31b7dac5cde5c696'
             'SKIP'
-            'f0e1bc55ec0288e54e84cc35a9e16a9df93be3772fda58b654ece6260f12699a'
+            'f258a256ebdb51ceabbe1e482706756437c7113c6d987025203468bfb8601f9a'
             'SKIP'
             '109cec8e65336ac29b51f37ff8a581f1dfde7d42e4fb024b444fa51a635266bc'
             'db2720d989a930022a27ca02e213f6cd3e006bfc59eb29d5e09bb925e682d9e0'
