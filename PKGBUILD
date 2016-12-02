@@ -1,14 +1,14 @@
 # Maintainer: Arthur Zamarin <arthurzam@gmail.com> 
 
 pkgname=openlibm
-pkgver=0.4.1
+pkgver=0.5.4
 pkgrel=1
 pkgdesc="standalone implementation of C mathematical functions"
 arch=(i686 x86_64)
 url="https://github.com/JuliaLang/$pkgname"
 license=('BSD')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/JuliaLang/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('d6269849348027b0a02ef5f7707968185017b4bb9607acd2fd7348ba28c69833')
+sha256sums=('9a8ae1d17825a4a6a4c013d36a7f4348b27c47eedb6549c521ecc9c79d021c13')
 
 prepare() {
   cd "$srcdir/$pkgname-$pkgver"
