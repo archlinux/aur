@@ -6,46 +6,44 @@
 # Contributor: phillipberndt (maintainer of the current autorandr)
 # Contributor: wertarbyte (original author of auto-disper and autorandr)
 
-_pkgname=autorandr
 pkgname=autorandr-git
-pkgver=r240.53d29f9
+pkgver=r244.9b1ef49
 pkgrel=1
-pkgdesc='Auto-detect the connect display hardware and load the appropiate X11 setup using xrandr. Formerly autodisper. No disper support.'
+pkgdesc="Auto-detect the connect display hardware and load the appropiate X11 setup using xrandr. Formerly autodisper. No disper support."
 arch=('any')
-url="https://github.com/phillipberndt/autorandr"
+url="https://github.com/phillipberndt/${pkgname%-git}"
 license=('GPL3')
 depends=('python' 'xorg-xrandr')
 makedepends=('git')
 optdepends=(
-  'pm-utils: For changing autorandr profile on thaw/resume'
-  'python2: For using autorandr_monitor'
-  'xorg-xdpyinfo: For detecting the primary XRandR output'
+  "pm-utils: For changing autorandr profile on thaw/resume"
+  "python2: For using autorandr_monitor"
+  "xorg-xdpyinfo: For detecting the primary XRandR output"
 )
-provides=('autorandr')
+provides=("${pkgname%-git}")
 conflicts=(
-  'autorandr'
-  'auto-disper-git'
-  'autorandr-asch-git'
-  'autorandr-phillipberndt-git'
+  "${pkgname%-git}"
+  "auto-disper-git"
+  "autorandr-asch-git"
+  "autorandr-phillipberndt-git"
 )
-install="$pkgname.install"
+install="${pkgname}.install"
 source=(
-  "$_pkgname"::"git+https://github.com/phillipberndt/$_pkgname.git"
-  "$pkgname.install"
+  "${pkgname}::git+${url}.git"
+  "${pkgname}.install"
 )
 sha256sums=('SKIP'
-         '60c035d6f433d388ef1d3acec084dcd021158cbec79e9807e78cc368cb499690')
+            '60c035d6f433d388ef1d3acec084dcd021158cbec79e9807e78cc368cb499690')
 
 pkgver() {
-  cd "$_pkgname"
-  (
-    set -o pipefail
+  cd "${srcdir}/${pkgname}"
+  ( set -o pipefail
     git describe --long --tag | sed -r 's/([^-]*-g)/r\1/;s/-/./g' ||
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
   ) 2>/dev/null
 }
 
 package() {
-  cd "$_pkgname"
-  make DESTDIR="$pkgdir" PREFIX=/usr install
+  cd "${srcdir}/${pkgname}"
+  make DESTDIR="${pkgdir}" PREFIX=/usr install
 }

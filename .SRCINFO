@@ -1,6 +1,6 @@
 pkgbase = autorandr-git
 	pkgdesc = Auto-detect the connect display hardware and load the appropiate X11 setup using xrandr. Formerly autodisper. No disper support.
-	pkgver = r240.53d29f9
+	pkgver = r244.9b1ef49
 	pkgrel = 1
 	url = https://github.com/phillipberndt/autorandr
 	install = autorandr-git.install
@@ -17,7 +17,7 @@ pkgbase = autorandr-git
 	conflicts = auto-disper-git
 	conflicts = autorandr-asch-git
 	conflicts = autorandr-phillipberndt-git
-	source = autorandr::git+https://github.com/phillipberndt/autorandr.git
+	source = autorandr-git::git+https://github.com/phillipberndt/autorandr.git
 	source = autorandr-git.install
 	sha256sums = SKIP
 	sha256sums = 60c035d6f433d388ef1d3acec084dcd021158cbec79e9807e78cc368cb499690
