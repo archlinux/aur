@@ -12,7 +12,7 @@ replaces=("$pkgname-git")
 backup=("etc/$pkgname.conf")
 source=("$url/archive/$pkgver.tar.gz")
 install=install.sh
-md5sums=('36908d6c40b87e12a205cb32491c6cb7')
+sha256sums=('b8a2354e75095e2301eaa7a6d0d616e32efe696943182851de6ded1fb5ef3cb4')
 
 package() {
   cd "$pkgname-$pkgver"
