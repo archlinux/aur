@@ -6,8 +6,8 @@ epoch=1
 arch=('i686' 'x86_64')
 url='http://www.videolan.org/developers/x264.html'
 license=('GPL')
-depends=('glibc' 'ffmpeg-compat-54')
-makedepends=('yasm' 'git' 'ffmpeg')
+depends=('glibc')
+makedepends=('yasm' 'git' 'ffmpeg-compat-54')
 provides=('libx264.so.142')
 source=(git://git.videolan.org/x264.git#commit=021c0dc6c95c x264.diff config.diff)
 md5sums=('SKIP' ef101f648e40ef4b945c28a0630cf5f2 49f92d3237f84b97ed404239cd79c1d8)
