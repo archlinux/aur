@@ -5,6 +5,7 @@ whitelist ${HOME}/.cache/mozilla/firefox
 
 whitelist ${HOME}/.config/kdeglobals
 whitelist ${HOME}/.config/pulse
+whitelist ${HOME}/.config/user-dirs.dirs
 whitelist ${HOME}/.config/user-dirs.locale
 
 noblacklist ${HOME}/.mozilla
@@ -13,9 +14,11 @@ whitelist ${HOME}/.mozilla
 whitelist ${HOME}/.nv
 whitelist ${HOME}/.mime.types
 
+noblacklist /run/dbus
 noblacklist /run/firejail
-noblacklist /run/user
 noblacklist /run/systemd
+noblacklist /run/udev
+noblacklist /run/user
 blacklist /run/.*
 blacklist /run/*
 
