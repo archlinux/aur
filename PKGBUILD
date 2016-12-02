@@ -48,7 +48,7 @@ package() {
   install -Dm755 Game/blockattack \
     "$pkgdir"/usr/lib/block-attack/blockattack
 
-  install -Dm755 "$srcdir/block-attack" \
+  install -Dm755 ../block-attack \
     "$pkgdir"/usr/bin/block-attack
 
   rm "$pkgdir"/usr/share/games/block-attack/blockattack
