@@ -1,6 +1,6 @@
 # Maintainer: Siôn le Roux <sinisterstuf@gmail.com>
 pkgname=scmpuff
-pkgver=0.1.1
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="Add numbered shortcuts to common git commands"
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ depends=('git')
 optdepends=('bash: shell integration'
             'zsh: shell integration')
 source=("https://github.com/mroth/${pkgname}/releases/download/v${pkgver}/${pkgname}_${pkgver}_linux_386.tar.gz")
-md5sums=('10c643d8d8bad3b15c2ade24b2253526')
+md5sums=('c7cdca8b1bd43acce6a3f63c0cc3f95b')
 
 package() {
   install -Dm755 -t "${pkgdir}/usr/bin/" "${srcdir}/${pkgname}_${pkgver}_linux_386/${pkgname}"
