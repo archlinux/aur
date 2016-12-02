@@ -1,0 +1,77 @@
+# Maintainer: Karel Kočí <cynerd@email.cz>
+
+pkgname=openssl-purify
+_ver=1.0.2j
+# use a pacman compatible version scheme
+pkgver=${_ver/[a-z]/.${_ver//[0-9.]/}}
+pkgrel=1
+pkgdesc='The Open Source toolkit for Secure Sockets Layer and Transport Layer Security compiled with PURIFY flag'
+arch=('i686' 'x86_64')
+url='https://www.openssl.org'
+license=('custom:BSD')
+depends=('perl')
+conflicts=('openssl')
+provides=('openssl')
+optdepends=('ca-certificates')
+options=('!makeflags')
+backup=('etc/ssl/openssl.cnf')
+source=("https://www.openssl.org/source/openssl-${_ver}.tar.gz"
+        "https://www.openssl.org/source/openssl-${_ver}.tar.gz.asc"
+        'no-rpath.patch'
+        'ssl3-test-failure.patch'
+        'ca-dir.patch')
+md5sums=('96322138f0b69e61b7212bc53d5e912b'
+         'SKIP'
+         'dc78d3d06baffc16217519242ce92478'
+         '62fc492252edd3283871632bb77fadbe'
+         '3bf51be3a1bbd262be46dc619f92aa90')
+validpgpkeys=('8657ABB260F056B1E5190839D9C4D26D0E604491')
+
+prepare() {
+	cd $srcdir/openssl-$_ver
+
+	# remove rpath: http://bugs.archlinux.org/task/14367
+	patch -p0 -i $srcdir/no-rpath.patch
+
+	# disable a test that fails when ssl3 is disabled
+	patch -p1 -i $srcdir/ssl3-test-failure.patch
+
+	# set ca dir to /etc/ssl by default
+	patch -p0 -i $srcdir/ca-dir.patch
+}
+
+build() {
+	cd $srcdir/openssl-$_ver
+
+	if [ "${CARCH}" == 'x86_64' ]; then
+		openssltarget='linux-x86_64'
+		optflags='enable-ec_nistp_64_gcc_128'
+	elif [ "${CARCH}" == 'i686' ]; then
+		openssltarget='linux-elf'
+		optflags=''
+	fi
+
+	# mark stack as non-executable: http://bugs.archlinux.org/task/12434
+	./Configure --prefix=/usr --openssldir=/etc/ssl --libdir=lib \
+		shared no-ssl3-method ${optflags} \
+		"${openssltarget}" \
+		"-Wa,--noexecstack ${CPPFLAGS} ${CFLAGS} ${LDFLAGS} -DPURIFY"
+
+	make depend
+	make
+}
+
+check() {
+	cd $srcdir/openssl-$_ver
+	# the test fails due to missing write permissions in /etc/ssl
+	# revert this patch for make test
+	patch -p0 -R -i $srcdir/ca-dir.patch
+	make test
+	patch -p0 -i $srcdir/ca-dir.patch
+}
+
+package() {
+	cd $srcdir/openssl-$_ver
+	make INSTALL_PREFIX=$pkgdir MANDIR=/usr/share/man MANSUFFIX=ssl install
+	install -D -m644 LICENSE $pkgdir/usr/share/licenses/openssl/LICENSE
+}
