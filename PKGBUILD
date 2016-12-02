@@ -1,7 +1,7 @@
 # Maintainer: Miguel Revilla <yo@miguelrevilla.com>
 
 pkgname=medialibrary-git
-pkgver=1084.f2ef773
+pkgver=1098.9220a4d
 pkgrel=1
 pkgdesc="VideoLAN Media Library"
 arch=('i686' 'x86_64')
