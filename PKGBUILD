@@ -1,5 +1,4 @@
 # Maintainer: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
-# Contributor: Aliaksiej Artamonaŭ <aliaksiej.artamonau@gmail.com>
 
 pkgname=vagrant-libvirt
 pkgver=0.0.36
