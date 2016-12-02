@@ -1,0 +1,19 @@
+pkgbase = python-pyvcloud
+	pkgdesc = VMware vCloud Python SDK
+	pkgver = 16
+	pkgrel = 1
+	url = https://pypi.python.org/pypi/pyvcloud/
+	arch = any
+	license = Apache
+	makedepends = python2-setuptools
+	source = https://github.com/vmware/pyvcloud/archive/16.tar.gz
+	sha256sums = 962b4b3808fa032508544508210d6e0e5b985ae4935ec63ae93313f3c5be07ca
+
+pkgname = python2-pyvcloud
+	depends = python2
+	depends = python2-iptools
+	depends = python2-lxml
+	depends = python2-netaddr
+	depends = python2-requests
+	depends = python2-progressbar
+
