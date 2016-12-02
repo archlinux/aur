@@ -10,7 +10,6 @@ url='http://openlp.org/'
 license=('GPLv2')
 provides=('openlp')
 conflicts=('openlp')
-checkdepends=('python-mock' 'python-nose')
 makedepends=('qt5-tools' 'bzr')
 depends=('python' 'python-pyqt5' 'phonon'
          'python-chardet' 'python-lxml' 'python-six'
@@ -33,15 +32,10 @@ pkgver() {
   printf "r%s" "$(bzr revno)"
 }
 
-build() {
-  cd "$srcdir/trunk"
-  python setup.py build
-}
-
-check() {
-  cd "$srcdir/trunk"
-  nosetests -v tests
-}
+#check() {
+#  cd "$srcdir/trunk"
+#  nosetests -v tests
+#}
 
 package() {
   cd "$srcdir/trunk"
