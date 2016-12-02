@@ -19,7 +19,7 @@
 
 #Originally by Mykal Anderson
 
-
+# Patched by Declan Hoare 2016-12-02: use PNG instead of GIF for temp files to preserve quality
 
 #Begin
 
@@ -72,30 +72,29 @@ fext=${base##*.}
 pref=${base%.*}
 
 #Upscale the image if it's too shitty. This is required to make the text readable as it's generated to fit the pixels of the original
-convert -resize 1024x1024\< "$image_file" shitpost-temp-resize.gif
+convert -resize 1024x1024\< "$image_file" shitpost-temp-resize.png
 
 #Get the height and width of the image to use later to size the overlays. Clipped height keeps things locked in the top and bottom fifth of the image.
-image_width=`identify -format "%[width]" shitpost-temp-resize.gif`
-image_height=`identify -format "%[height]" shitpost-temp-resize.gif`
+image_width=`identify -format "%[width]" shitpost-temp-resize.png`
+image_height=`identify -format "%[height]" shitpost-temp-resize.png`
 clipped_height=$(($image_height/5))
 stroke_width=$(($clipped_height/40))
 
 
-convert -background none -fill white -stroke black -strokewidth "$stroke_width" -size "$image_width"x"$clipped_height" -gravity Center -font 'Impact' caption:"$top_text" temp-top-text.gif
-convert -background none -fill white -stroke black -strokewidth "$stroke_width" -size "$image_width"x"$clipped_height" -gravity Center -font 'Impact' caption:"$bottom_text" temp-bottom-text.gif
-composite -gravity north temp-top-text.gif shitpost-temp-resize.gif shitpost-temp-composite.gif
-composite -gravity south temp-bottom-text.gif shitpost-temp-composite.gif shitpost-"$pref"."$fext"
+convert -background none -fill white -stroke black -strokewidth "$stroke_width" -size "$image_width"x"$clipped_height" -gravity Center -font 'Impact' caption:"$top_text" temp-top-text.png
+convert -background none -fill white -stroke black -strokewidth "$stroke_width" -size "$image_width"x"$clipped_height" -gravity Center -font 'Impact' caption:"$bottom_text" temp-bottom-text.png
+composite -gravity north temp-top-text.png shitpost-temp-resize.png shitpost-temp-composite.png
+composite -gravity south temp-bottom-text.png shitpost-temp-composite.png shitpost-"$pref"."$fext"
 
 
 #Clean up
-rm temp-top-text.gif
-rm temp-bottom-text.gif
-rm shitpost-temp-resize.gif
-rm shitpost-temp-composite.gif
+rm temp-top-text.png
+rm temp-bottom-text.png
+rm shitpost-temp-resize.png
+rm shitpost-temp-composite.png
 
 #Announce the results
 echo "Created file "$PWD"/shitpost-"$pref"."$fext""
 
 exit 0
-
 #End
