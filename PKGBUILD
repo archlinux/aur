@@ -6,7 +6,7 @@
 _pkgname="rts5139"
 pkgname=("${_pkgname}-git")
 pkgver=r6.97512d1
-pkgrel=2
+pkgrel=3
 pkgdesc="A kernel module for Realtek RTS5129/RTS5139 Card Reader Controller"
 url="https://github.com/asymingt/${_pkgname}"
 arch=('any')
@@ -15,7 +15,7 @@ depends=('')
 makedepends=('git' 'linux-headers')
 provides=("${_pkgname}")
 install="${pkgname}.install"
-source=(git+https://github.com/asymingt/${_pkgname}.git)
+source=("git://github.com/asymingt/${_pkgname}.git")
 sha256sums=('SKIP')
 
 _kernver=`uname -r`
@@ -40,11 +40,11 @@ build() {
 
 package() {
   cd "${_pkgname}"
-  install -dm755 "${pkgdir}/etc/modules-load.d/"
+  install -dm 755 "${pkgdir}/etc/modules-load.d/"
   install -m 644 rts5139.conf "${pkgdir}/etc/modules-load.d/"
-  install -dm755 "${pkgdir}/lib/modules/${_kernver}/kernel/drivers/scsi/"
-  install -m 644 rts5139.ko "${pkgdir}/lib/modules/${_kernver}/kernel/drivers/scsi/"
-  gzip "${pkgdir}/lib/modules/${_kernver}/kernel/drivers/scsi/rts5139.ko"
+  install -dm 755 "${pkgdir}/usr/lib/modules/${_kernver}/kernel/drivers/scsi/"
+  install -m 644 rts5139.ko "${pkgdir}/usr/lib/modules/${_kernver}/kernel/drivers/scsi/"
+  gzip "${pkgdir}/usr/lib/modules/${_kernver}/kernel/drivers/scsi/rts5139.ko"
 }
 
 # vim:set ts=4 sw=2 ft=sh et:
