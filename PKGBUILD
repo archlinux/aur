@@ -3,7 +3,10 @@
 
 pkgname=qstopmotion
 pkgver=2.3.2
-pkgrel=2
+pkgrel=3
+pkgdesc="An application for creating stop-motion animation movies."
+url="http://www.qstopmotion.org/"
+license=('GPL')
 arch=('x86_64')
 depends=('ffmpeg' 'gstreamer' 'gphoto2' 'qt4')
 makedepends=('cmake')

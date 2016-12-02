@@ -1,7 +1,10 @@
 pkgbase = qstopmotion
+	pkgdesc = An application for creating stop-motion animation movies.
 	pkgver = 2.3.2
-	pkgrel = 2
+	pkgrel = 3
+	url = http://www.qstopmotion.org/
 	arch = x86_64
+	license = GPL
 	makedepends = cmake
 	depends = ffmpeg
 	depends = gstreamer
@@ -11,4 +14,3 @@ pkgbase = qstopmotion
 	sha256sums = 756d8f85b395c2916957332e33f5f45a4975f384121e3048bda4b158aa7c6bc1
 
 pkgname = qstopmotion
-
