@@ -1,11 +1,11 @@
 pkgname=dotnet-bin
 pkgver="1.1.0"
-pkgrel=1
+pkgrel=2
 pkgdesc="Develop web sites and services that run on Linux, Windows and macOS with the blazing fast and modular platform provided by .NET Core and ASP.NET Core."
 arch=(x86_64)
 url="https://www.microsoft.com/net/core"
 groups=()
-depends=('lldb' 'libunwind' 'icu55' 'lttng-ust' 'openssl' 'curl')
+depends=('lldb' 'libunwind' 'icu55' 'lttng-ust' 'openssl' 'curl' 'libcurl-compat')
 makedepends=('tar' 'gettext')
 provides=('dotnet')
 conflicts=()
