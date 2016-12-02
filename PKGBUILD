@@ -3,7 +3,7 @@
 
 pkgname=steam-native-runtime
 pkgver=1.0.0.52
-pkgrel=9
+pkgrel=10
 pkgdesc='Native replacement for the Steam runtime'
 arch=('i686' 'x86_64')
 url='https://wiki.archlinux.org/index.php/Steam/Troubleshooting#Native_runtime'
@@ -18,7 +18,7 @@ depends=('alsa-lib' 'alsa-plugins' 'atk' 'cairo' 'curl' 'dbus-glib'
          'libxft' 'libxi' 'libxinerama' 'libxmu' 'libxrandr' 'libxrender'
          'libxtst' 'libxxf86vm' 'nspr' 'nss' 'openal' 'pango' 'sdl' 'sdl2'
          'sdl2_image' 'sdl2_mixer' 'sdl2_ttf' 'sdl_image' 'sdl_mixer'
-         'sdl_ttf' 'vulkan-icd-loader' 'librsvg')
+         'sdl_ttf' 'librsvg')
 depends_x86_64=('lib32-alsa-lib' 'lib32-alsa-plugins' 'lib32-atk' 'lib32-cairo'
                 'lib32-curl' 'lib32-dbus-glib' 'lib32-fontconfig'
                 'lib32-freetype2' 'lib32-freeglut' 'lib32-gconf'
@@ -38,6 +38,8 @@ depends_x86_64=('lib32-alsa-lib' 'lib32-alsa-plugins' 'lib32-atk' 'lib32-cairo'
                 'lib32-pango' 'lib32-sdl' 'lib32-sdl2' 'lib32-sdl2_image'
                 'lib32-sdl2_mixer' 'lib32-sdl2_ttf' 'lib32-sdl_image'
                 'lib32-sdl_mixer' 'lib32-sdl_ttf')
+optdepends=('vulkan-icd-loader: vulkan support')
+
 replaces=('steam-libs')
 
 # vim: ts=2 sw=2 et:
