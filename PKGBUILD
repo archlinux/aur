@@ -1,7 +1,7 @@
 # Maintainer: dobragab <dobragab@gmail.com>
 
-pkgbase=('ccsh-git')
-pkgname=('ccsh-lib-git' 'ccsh-shell-git' 'ccsh-wrappers-core-git')
+pkgname=('ccsh-lib-git' 'ccsh-wrappers-core-git')
+groups=('ccsh-git')
 pkgver=r83.d0f0cf5
 pkgrel=1
 pkgdesc='C++ shell'
@@ -30,21 +30,8 @@ package_ccsh-lib-git() {
   install -Dm644 $srcdir/ccsh/include/ccsh/* "$pkgdir/usr/include/ccsh"
 }
 
-package_ccsh-shell-git() {
-  depends=('ccsh-git' 'cling-git')
-  
-  cd "ccsh"
-  
-  cmake . -DWITH_LIB=OFF -DWITH_TEST=OFF -DWITH_CLING=ON 
-  make
-  
-  install -Dm755 "$srcdir/ccsh/ccsh" "$pkgdir/usr/bin/ccsh"
-  install -Dm644 "$srcdir/ccsh/ui/clingrc.hpp" "$pkgdir/etc/ccsh/clingrc.hpp"
-}
-
-
 package_ccsh-wrappers-core-git() {
-  depends=('ccsh-git')
+  depends=('ccsh-lib-git')
 	
   cd "ccsh"
 
