@@ -7,6 +7,11 @@ post_install() {
   if ! getent passwd aursec >/dev/null; then
     useradd --system -c 'aursec daemon user' -g aursec -d /var/aursec/ -s /bin/bash aursec
   fi
+
+  echo "==> Please run 'aursec-init' and start and enable
+       aursec-blockchain.service
+       aursec-blockhain-mine.timer
+   before using aursync."
 }
 
 post_upgrade() {
