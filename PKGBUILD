@@ -35,6 +35,10 @@ md5sums=('be264f74dc37f728a5025f502f69c093'
          'db19086ba7bd8eefee05538f4c65aa68')
 
 package() {
+  # Remove previous mod
+  rm -rf VPEM_*
+  
+  # Cd in place
   cd vuze
 
   msg2 "Creating directory structure..."
@@ -86,7 +90,8 @@ package() {
       -i "$pkgdir"/usr/share/applications/vuze-extreme-mod.desktop
 
   msg2 "Installing Extreme Mod..."
-  bsdtar -xf "$srcdir"/$(basename ${source[1]}) -C "$pkgdir"/opt/vuze-extreme-mod/
+  bsdtar -xf "$srcdir"/$(basename ${source[1]})
+  mv "$srcdir"/VPEM_*/* "$pkgdir"/opt/vuze-extreme-mod/
 
   # Different icons for menus and systray
   if [[ $_icon = blue ]] || [[ $_icon = gray ]]; then
