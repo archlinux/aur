@@ -5,7 +5,7 @@
 
 pkgname=r-mkl
 pkgver=3.3.2
-pkgrel=4
+pkgrel=5
 pkgdesc="Language and environment for statistical computing and graphics, linked with Intel's MKL."
 arch=('x86_64')
 license=('GPL')
@@ -86,7 +86,7 @@ build() {
   source /opt/intel/mkl/bin/mklvars.sh ${_intel_arch}
 
   if [ $_CC = "icc" ]; then
-    source /opt/intel/composerxe/linux/bin/compilervars.sh ${_intel_arch}
+    source ${MKLROOT}/../bin/compilervars.sh ${_intel_arch}
     _intel_cc_opt=" -O3 -qno-opt-matmul -xHost -m64 -qopenmp -ipo -fp-model precise -fp-model source -qopt-mem-layout-trans=2 -diag-disable=188,308"
     export MAIN_LDFLAGS=" -qopenmp"
     export FLIBS=" -lgfortran -lifcore -lifport"
@@ -96,14 +96,12 @@ build() {
       -lmkl_intel_thread \
       -lmkl_core \
       -liomp5 \
-      -lsvml \
-      -lirc \
-      -lunwind \
-      -lifcore \
-      -lifport \
       -lpthread \
       -lm \
       -ldl \
+      -lsvml \
+      -lirc \
+      -lunwind \
       -lifcore \
       -lifport"
     # Including -lifcore and -lifport twice fixes
