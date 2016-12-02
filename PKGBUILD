@@ -10,7 +10,7 @@ url="https://aur.archlinux.org/packages/firejail-profiles/"
 license=('GPL2')
 source=("firefox-restricted.profile"
         "teamspeak3.profile")
-sha256sums=('bb2f00f2c2cbad1ff5862017dd9bd9627fa0d5cd0069b19b808e8ea2c8714816'
+sha256sums=('b8f467106258564915701bac0155503a6693f2e6cac055afac45ff16d42a75a5'
             '4ac55e7034f289a21710a8771da56771850e6baed728cb2bc03b881dcee757dc')
 
 package() {
