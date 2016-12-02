@@ -6,7 +6,7 @@
 pkgbase=mesa-nosystemd
 pkgname=('opencl-mesa-nosystemd' 'vulkan-intel-nosystemd' 'vulkan-radeon-nosystemd' 'libva-mesa-driver-nosystemd' 'mesa-vdpau-nosystemd' 'mesa-nosystemd' 'mesa-libgl-nosystemd')
 pkgver=13.0.2
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 makedepends=('python2-mako' 'libxml2' 'libx11' 'glproto' 'libdrm' 'dri2proto' 'dri3proto' 'presentproto' 
              'libxshmfence' 'libxxf86vm' 'libxdamage' 'libvdpau' 'libva' 'wayland' 'elfutils' 'llvm'
@@ -72,12 +72,12 @@ build() {
 
 package_opencl-mesa-nosystemd() {
   pkgdesc="OpenCL support for AMD/ATI Radeon mesa drivers"
-  depends=('expat' 'libdrm' 'libelf' 'libgcrypt' 'opencl-icd-loader' 'libclc' 'clang')
-  provides=('opencl-mesa')
+  depends=('expat' 'libdrm' 'libelf' 'libgcrypt' 'libclc' 'clang')
+  optdepends=('opencl-headers: headers necessary for OpenCL development')
+  provides=('opencl-driver' 'opencl-mesa')
   conflicts=('opencl-mesa')
   replaces=('opencl-mesa')
-  optdepends=('opencl-headers: headers necessary for OpenCL development')
-  
+
   install -m755 -d ${pkgdir}/etc
   cp -rv ${srcdir}/fakeinstall/etc/OpenCL ${pkgdir}/etc/
   
