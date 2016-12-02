@@ -12,7 +12,7 @@ pkgbase = abakus
 	makedepends = bison
 	depends = kdebase-runtime
 	depends = mpfr
-	source = http://purinchu.net/abakus/abakus-0.92.tar.bz2
+	source = https://purinchu.net/abakus/abakus-0.92.tar.bz2
 	sha1sums = b03e5d378015345f0c49f89f3590cd36bbcc21b6
 
 pkgname = abakus
