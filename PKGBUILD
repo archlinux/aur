@@ -25,7 +25,6 @@ build() {
   cd x264
   ./configure --prefix=/usr \
     --enable-shared --enable-pic
-    pwd
     patch -p3 < ../config.diff
   make
 }
