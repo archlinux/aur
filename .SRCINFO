@@ -1,4 +1,4 @@
-pkgbase = ccsh-lib-git
+pkgbase = ccsh-git
 	pkgdesc = C++ shell
 	pkgver = r83.d0f0cf5
 	pkgrel = 1
@@ -13,8 +13,8 @@ pkgbase = ccsh-lib-git
 	source = git+https://github.com/cpp-ftw/ccsh.git
 	md5sums = SKIP
 
-pkgname = ccsh-lib-git
+pkgname = ccsh-git
 
 pkgname = ccsh-wrappers-core-git
-	depends = ccsh-lib-git
+	depends = ccsh-git
 
