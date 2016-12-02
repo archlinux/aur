@@ -1,4 +1,4 @@
-# Maintainer: Chocobo1
+# Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=igb
 pkgver=5.3.5.4
