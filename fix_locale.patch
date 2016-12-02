@@ -1,0 +1,19 @@
+diff -Naur meshlab.orig/src/meshlab/main.cpp meshlab/src/meshlab/main.cpp
+--- meshlab.orig/src/meshlab/main.cpp	2016-10-30 19:47:18.130692500 +0100
++++ meshlab/src/meshlab/main.cpp	2016-10-30 19:49:14.529497595 +0100
+@@ -20,6 +20,7 @@
+ * for more details.                                                         *
+ *                                                                           *
+ ****************************************************************************/
++#include <locale.h>
+ #include <common/mlapplication.h>
+ #include <QMessageBox>
+ #include "mainwindow.h"
+@@ -29,6 +30,7 @@
+ {
+ 
+     MeshLabApplication app(argc, argv);
++    setlocale(LC_ALL, "C");
+     QLocale::setDefault(QLocale::C);
+     QCoreApplication::setOrganizationName(MeshLabApplication::organization());
+ #if QT_VERSION >= 0x050100

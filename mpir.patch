@@ -1,0 +1,13 @@
+diff -Naur meshlab.orig/src/meshlabplugins/filter_csg/filter_csg.pro meshlab/src/meshlabplugins/filter_csg/filter_csg.pro
+--- meshlab.orig/src/meshlabplugins/filter_csg/filter_csg.pro	2016-10-31 01:44:11.031564544 +0100
++++ meshlab/src/meshlabplugins/filter_csg/filter_csg.pro	2016-10-31 01:45:21.254082268 +0100
+@@ -20,5 +20,7 @@
+ win32-msvc2010:LIBS		 += ../../external/lib/win32-msvc2008/mpirxx.lib ../../external/lib/win32-msvc2008/mpir.lib
+ win32-msvc2012:LIBS		 += ../../external/lib/win32-msvc2008/mpirxx.lib ../../external/lib/win32-msvc2008/mpir.lib
+ win32-msvc2015:LIBS		 += ../../external/lib/win32-msvc2015/mpirxx.lib ../../external/lib/win32-msvc2015/mpir.lib
+-linux-g++-64:INCLUDEPATH += ../../external/inc/linux-g++-64/mpir-2.4.0
+-linux-g++-64:LIBS += ../../external/lib/linux-g++-64/libmpirxx.a ../../external/lib/linux-g++-64/libmpir.a
++unix:LIBS += -lmpirxx -lmpir
++linux-g++-:LIBS += -lmpirxx -lmpir
++linux-g++-32:LIBS += -lmpirxx -lmpir
++linux-g++-64:LIBS += -lmpirxx -lmpir
