@@ -1,23 +1,24 @@
 # Maintainer: Quentin Bourgeois <quentin+archlinux@bourgeois.eu>
 
-pkgbase=python-viivakoodi
-pkgname=("python2-${pkgbase}" "python-${pkgbase}")
+_pymodule=viivakoodi
+pkgbase=python-${pymodule}
+pkgname=("python2-${_pymodule}" "python-${_pymodule}")
 pkgver=0.8.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Barcode generator for Python. Fork of pyBarcode project.'
 arch=('any')
-url="https://github.com/kxepal/${pkgbase}"
+url="https://github.com/kxepal/${_pymodule}"
 license=('MIT')
-source=("${pkgbase}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
+source=("${_pymodule}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
 sha256sums=('e1a17dc24975d5242202cfbb7534d69dd14eeb26bdf8a10f056c7b04904fef1e')
 makedepends=('python-setuptools'
              'python2-setuptools')
 
 check() {
-    cd "${srcdir}/${pkgbase}-${pkgver}"
+    cd "${srcdir}/${_pymodule}-${pkgver}"
     
     for py_int in python3 python2; do
-        msg "Testing ${pkgbase}-${pkgver} with ${py_int}"
+        msg "Testing ${_pymodule}-${pkgver} with ${py_int}"
         "${py_int}" ./test.py
     done
 }
@@ -28,7 +29,7 @@ package_python-viivakoodi() {
     checkdepends=('python-pytest'
                   'python-mock'
                   'python-tox')
-    cd "${srcdir}/${pkgbase}-${pkgver}"
+    cd "${srcdir}/${_pymodule}-${pkgver}"
     python setup.py install --root="${pkgdir}/" --optimize=1
 
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
@@ -42,7 +43,7 @@ package_python2-viivakoodi() {
                   'python2-mock'
                   'python2-tox') 
 
-    cd "${srcdir}/${pkgbase}-${pkgver}"
+    cd "${srcdir}/${_pymodule}-${pkgver}"
     python2 setup.py install --root="${pkgdir}/" --optimize=1
 
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
