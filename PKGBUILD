@@ -1,20 +1,20 @@
 # Maintainer: Philippe Proulx <pproulx@efficios.com>
 
 pkgname=('python-lttngust' 'python2-lttngust')
-pkgver=2.8.1
+pkgver=2.9.0
 pkgrel=1
 pkgdesc='LTTng-UST Python agent'
 arch=('any')
 url='http://lttng.org/'
 license=('LGPL2.1' 'GPL2' 'MIT')
 source=("http://lttng.org/files/lttng-ust/lttng-ust-$pkgver.tar.bz2")
-depends=('liblttng-ust-python-agent>=2.8.1')
+depends=('liblttng-ust-python-agent>=2.9.0')
 optdepends=(
     'lttng-tools: LTTng tracing control tools'
     'babeltrace: trace viewer'
 )
 options=('!libtool')
-sha1sums=('8bebdcbcb453d2643fb226dbe92de61764f1ee3b')
+sha1sums=('9937eae64540821b8597cce081e92be76e6b5568')
 
 build()
 {
