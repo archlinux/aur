@@ -1,0 +1,6 @@
+*~
+*.tmp
+*.pkg.tar.xz
+pkg/*
+src/*
+Rolling
