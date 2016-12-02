@@ -8,13 +8,13 @@
 
 pkgbase=sagemath-git
 pkgname=(sagemath-git sagemath-jupyter-git)
-pkgver=7.5.beta2.r0.g470c42a
+pkgver=7.5.beta5.r0.g163489e
 pkgrel=1
 pkgdesc="Open Source Mathematics Software, free alternative to Magma, Maple, Mathematica, and Matlab"
 arch=(i686 x86_64)
 url="http://www.sagemath.org"
 license=(GPL)
-depends=(ipython2 ppl palp brial singular cliquer maxima-ecl gfan sympow tachyon nauty python2-rpy2 python2-fpylll
+depends=(ipython2 ppl palp brial cliquer maxima-ecl gfan sympow tachyon nauty python2-rpy2 python2-fpylll
   python2-matplotlib python2-scipy python2-sympy python2-networkx python2-pillow python2-future libgap flintqs lcalc lrcalc arb
   eclib gmp-ecm zn_poly gd python2-cvxopt pynac linbox rubiks pari-galdata pari-seadata-small planarity rankwidth
   sage-data-combinatorial_designs sage-data-elliptic_curves sage-data-graphs sage-data-polytopes_db sage-data-conway_polynomials)
@@ -31,19 +31,20 @@ makedepends=(cython2 boost ratpoints symmetrica fflas-ffpack python2-jinja coin-
   mcqd coxeter3 cryptominisat modular_decomposition bliss-graphs tdlib python2-pkgconfig meataxe git) # libfes
 source=("git://git.sagemath.org/sage.git#branch=develop" 
         env.patch skip-check.patch cython-sys-path.patch is-package-installed.patch package.patch disable-fes.patch
-        jupyter-path.patch test-optional.patch python-2.7.11.patch ecm-7.patch increase-rtol.patch)
+        jupyter-path.patch test-optional.patch python-2.7.11.patch ecm-7.patch increase-rtol.patch pynac-0.7.1.patch)
 md5sums=('SKIP'
          '70b7c1c5da6400e1ae48cf1e5a2d2879'
          '17771a1e59e14535cc837a189d3cb8a7'
          '0de8f29a99a48e2ca2a13045f122c386'
-         '5dca842e4440e4ef235ae18c1b1f20e3'
+         '409b0a2c520eb33281b5f262afcb6c76'
          'ccfd5b1bc4796f414f1531be52504dd7'
          'a40b32a7b5d83379745b538be85064c8'
          'e618d534f42428e298e12b1aa94c1a31'
          '921017fd2d9dadbb6b602ac0476bfd58'
          'ef927896f2071b442b1d07d7e69f5f3a'
          'e4a91dcedbc5e617919e5a9bf1310f24'
-         '1db8db7bfed5f991d55ae11d810ff5cb')
+         '1db8db7bfed5f991d55ae11d810ff5cb'
+         '59b963e9c04cc733eaec1f427353fe28')
 
 pkgver() {
   cd sage
@@ -82,11 +83,13 @@ prepare(){
   patch -p0 -i ../disable-fes.patch
 # replace is_package_installed usage http://trac.sagemath.org/ticket/20377
   patch -p1 -i ../is-package-installed.patch
+# port to pynac 0.7.1
+  patch -p1 -i ../pynac-0.7.1.patch
 
 # use python2
   sed -e 's|#!/usr/bin/env python|#!/usr/bin/env python2|' -e 's|exec python|exec python2|' -i src/bin/*
   sed -e 's|cython {OPT}|cython2 {OPT}|' -e 's|python setup.py|python2 setup.py|' -i src/sage/misc/cython.py
-  sed -e 's|exec ipython|exec ipython2|' -e 's|cygdb|cygdb2|' -i src/bin/sage
+  sed -e 's|exec ipython|exec ipython2|' -e 's|cygdb|cygdb2|g' -i src/bin/sage
   sed -e "s|'cython'|'cython2'|" -i src/bin/sage-cython
   sed -e 's|python -c|python2 -c|' -i src/generate_py_source.mk
 }
@@ -142,7 +145,7 @@ package_sagemath-git() {
 
 package_sagemath-jupyter-git() {
   pkgdesc='Jupyter kernel for SageMath'
-  depends=(sagemath python2-jupyter_client jupyter-widgetsnbextension python-ipywidgets mathjax)
+  depends=(sagemath python2-jupyter_client python2-ipywidgets jupyter-notebook mathjax)
   optdepends=('sage-notebook-exporter: convert flask notebooks to Jupyter')
 
   cd sage/src
