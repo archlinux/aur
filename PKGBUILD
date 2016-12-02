@@ -1,6 +1,6 @@
 pkgname=dotnet-bin
 pkgver="1.1.0"
-pkgrel=2
+pkgrel=3
 pkgdesc="Develop web sites and services that run on Linux, Windows and macOS with the blazing fast and modular platform provided by .NET Core and ASP.NET Core."
 arch=(x86_64)
 url="https://www.microsoft.com/net/core"
@@ -22,6 +22,10 @@ package() {
   mkdir -p "${pkgdir}/usr/bin"
   rm -rf "${srcdir}/dotnet.tar.gz"
   mv "${srcdir}"/* "${pkgdir}/opt/dotnet/"
-  ln -s "/opt/dotnet/dotnet" "${pkgdir}/usr/bin/dotnet"
+  cat > "${pkgdir}/usr/bin/dotnet" <<EOF
+#!/bin/sh
+LD_PRELOAD=libcurl.so.3 exec /opt/dotnet/dotnet "\$@"
+EOF
+  chmod +x /usr/bin/dotnet
   chown -R 0:0 "${pkgdir}/opt/dotnet"
 }

@@ -1,7 +1,7 @@
 pkgbase = dotnet-bin
 	pkgdesc = Develop web sites and services that run on Linux, Windows and macOS with the blazing fast and modular platform provided by .NET Core and ASP.NET Core.
 	pkgver = 1.1.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.microsoft.com/net/core
 	arch = x86_64
 	makedepends = tar
