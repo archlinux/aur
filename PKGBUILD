@@ -1,7 +1,7 @@
 # $Id$
 # Maintainer: John K. Luebs <jkluebs@luebsphoto.com>
 pkgname=xiccd
-pkgver=0.2.2
+pkgver=0.2.3
 pkgrel=1
 pkgdesc="Simple bridge between colord and X"
 arch=(i686 x86_64)
@@ -9,7 +9,7 @@ url="https://github.com/agalakhov/xiccd"
 license=(GPL)
 depends=(colord libxrandr)
 source=(https://github.com/agalakhov/${pkgname}/archive/v${pkgver}.tar.gz)
-sha1sums=('45831c211fe7eafc13c36f0fce9549c42373380d')
+sha1sums=('2dc46b778e280fbccad473ba9323ecd45e36c043')
 
 build() {
   cd $pkgname-$pkgver
