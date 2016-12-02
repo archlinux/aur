@@ -3,7 +3,7 @@
 # Contributor: Markus Opitz <mastero23 at gmail dot com>
 
 pkgname=lttng-modules
-pkgver=2.8.3
+pkgver=2.9.0
 pkgrel=1
 pkgdesc="LTTng kernel modules"
 arch=('i686' 'x86_64')
@@ -17,7 +17,7 @@ optdepends=(
 )
 install=${pkgname}.install
 source=(http://lttng.org/files/${pkgname}/${pkgname}-${pkgver}.tar.bz2)
-sha1sums=('862705784a54962f70226004f1fd0bf77f73f10f')
+sha1sums=('819ee1c2a5a821b7fdc1c2fc102ef3079c32aad7')
 
 build()
 {
