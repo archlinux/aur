@@ -2,7 +2,7 @@
 
 pkgbase=python-braintree
 pkgname=(python-braintree python2-braintree)
-pkgver=3.31.0
+pkgver=3.32.0
 pkgrel=1
 pkgdesc="Braintree Python Library"
 arch=('any')
