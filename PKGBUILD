@@ -8,7 +8,7 @@ license=("GPL3")
 arch=("any")
 depends=("encfs" "fuse" "zenity" "xdg-utils")
 source=("$url/archive/$pkgver.tar.gz")
-md5sums=('20e4596c8925a869cfa52e5b61a668e1')
+sha256sums=('1559afbba51bfddb14663b9c9000a4c12b2bfade94c6c283171a9c52e03412a5')
 
 package() {
   cd "$pkgname-$pkgver"
