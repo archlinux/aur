@@ -1,4 +1,4 @@
-# Maintainer: Chocobo1
+# Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=libtorrent-rasterbar-1_0-git
 pkgver=1.0.10.r9.ga166c3f
