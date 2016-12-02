@@ -2,8 +2,8 @@
 # Contributor: Manuel Mendez <mmendez534 at gmail dot com>
 
 pkgname=lttng-ust
-pkgver=2.8.1
-pkgrel=2
+pkgver=2.9.0
+pkgrel=1
 pkgdesc="LTTng user space tracing libraries for LTTng"
 arch=('i686' 'x86_64')
 url="http://lttng.org/"
@@ -15,7 +15,7 @@ optdepends=(
     'babeltrace: trace viewer'
 )
 source=(http://lttng.org/files/${pkgname}/${pkgname}-${pkgver}.tar.bz2)
-sha1sums=('8bebdcbcb453d2643fb226dbe92de61764f1ee3b')
+sha1sums=('9937eae64540821b8597cce081e92be76e6b5568')
 
 build()
 {
