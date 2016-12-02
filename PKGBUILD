@@ -10,7 +10,7 @@ depends=("python-html2text")
 backup=("etc/$pkgname.conf")
 source=("$url/archive/$pkgver.tar.gz")
 install=install.sh
-md5sums=('1e5f591d2b3c4d80a651a3bad5cd3a17')
+sha256sums=('5ecb10584a2854451be4e646d293a97785d93544d45e52345dc4bc2963b36bee')
 
 package() {
   cd "$pkgname-$pkgver"
