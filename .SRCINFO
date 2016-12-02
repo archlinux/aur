@@ -1,0 +1,32 @@
+pkgbase = poseidon-browser-git
+	pkgdesc = A fast, minimal and lightweight browser.
+	pkgver = r58.4f4642d
+	pkgrel = 1
+	url = https://github.com/sidus-dev/poseidon
+	arch = any
+	license = GPL3
+	license = MIT
+	makedepends = git
+	depends = python3
+	depends = python-gobject
+	depends = python-decorator
+	depends = python-six
+	depends = python-requests
+	depends = python-pillow
+	depends = python-cairo
+	depends = pyopenssl
+	depends = gtk3
+	depends = gtksourceview3
+	depends = webkit2gtk>=2.12.3
+	optdepends = gst-libav: HTML5 H264 videos support
+	optdepends = gst-plugins-base: HTML5 OGG videos support
+	optdepends = gst-plugins-good: HTML5 H264 and WebM videos support
+	optdepends = evince: Embed PDFs support
+	optdepends = vte3: Embed terminal support
+	optdepends = flashplugin: Adobe Flash Player
+	optdepends = icedtea-web: Free web browser plugin to run applets written in Java and an implementation of Java Web Start
+	source = poseidon-browser-git::git+https://github.com/sidus-dev/poseidon.git
+	md5sums = SKIP
+
+pkgname = poseidon-browser-git
+
