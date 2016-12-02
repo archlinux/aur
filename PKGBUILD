@@ -18,7 +18,7 @@ package() {
   install -d -m 755 "$pkgdir"/usr/share/froggix/data
   install -m 644 froggix.py README "$pkgdir"/usr/share/froggix
   install -m 644 data/* "$pkgdir"/usr/share/froggix/data
-  install -D -m 755 "$srcdir/froggix.sh" "$pkgdir"/usr/bin/froggix
+  install -D -m 755 ../froggix.sh "$pkgdir"/usr/bin/froggix
   install -D -m 644 Credits_and_Licenses "$pkgdir"/usr/share/licenses/$pkgname/Credits_and_Licenses
   chmod 666 "$pkgdir"/usr/share/froggix/data/highscores.dat
 }
