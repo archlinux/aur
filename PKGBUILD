@@ -1,10 +1,10 @@
 
 pkgname=oyranos-git
-pkgver=0.9.5.681.gf48ba00
+pkgver=0.9.5.1244.ge4f9616
 pkgrel=1
 pkgdesc="A Colour Management System (CMS) on operating system level. (GIT version)"
 arch=('i686' 'x86_64')
-url='http://www.oyranos.org/kolormanager'
+url='http://www.oyranos.org'
 license=('BSD')
 
 depends=('libxcm-git'
@@ -39,8 +39,7 @@ optdepends=('xcalib'
 conflicts=('oyranos')
 provides=('oyranos')
 source=('git+https://github.com/oyranos-cms/oyranos.git')
-sha1sums=('SKIP')
-install=oyranos-git.install
+sha256sums=('SKIP')
 
 pkgver() {
   cd oyranos
@@ -49,14 +48,17 @@ pkgver() {
 
 prepare() {
   mkdir -p build
+
+  # Force build in Qt5 mode when both frameworks is installed
+  sed '2d' -i oyranos/src/tools/qcmsevents/CMakeLists.txt
 }
 
 build() {
   cd build
   cmake ../oyranos \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DCMAKE_BUILD_TYPE=Release \
-    -DUSE_Qt4=OFF
+    -DCMAKE_BUILD_TYPE=Release
+
   make
 }
 
