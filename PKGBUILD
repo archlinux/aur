@@ -1,6 +1,6 @@
 # Maintainer: Dylan Araps <dylan.araps@gmail.com>
 pkgname=neofetch
-pkgver=1.9.1
+pkgver=2.0
 pkgrel=1
 pkgdesc="CLI script to show your system's info and display an image using w3m."
 arch=('any')
@@ -11,14 +11,18 @@ depends=('bash')
 optdepends=(
   'amarok: Current Song'
   'banshee: Current Song'
+  'clementine: Current Song'
   'cmus: Current Song'
   'deadbeef: Current Song'
   'feh: Wallpaper Display'
+  'gnome-music: Current Song'
   'gpmdp-remote: Current Song'
   'imagemagick: Image cropping / Thumbnail creation'
+  'lollypop: Current Song'
   'moc: Current Song'
   'mpc: Current Song'
   'nitrogen: Wallpaper Display'
+  'pragha: Current Song'
   'rhythmbox: Current Song'
   'scrot: Take a screenshot'
   'spotify: Current Song'
@@ -30,7 +34,7 @@ optdepends=(
   'xorg-xwininfo: See https://github.com/dylanaraps/neofetch/wiki/Images-in-the-terminal'
 )
 source=("https://github.com/dylanaraps/${pkgname}/archive/${pkgver}.tar.gz")
-md5sums=('5bc35839ccdd096abb61bda0d6a28f27')
+md5sums=('7f85e8ed34d93807dafd23bb3fb16ef2')
 
 package() {
   cd "$srcdir/$pkgname-$pkgver/"
