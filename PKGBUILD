@@ -11,7 +11,7 @@ depends=('gcc-libs' 'sh')
 options=('!emptydirs')
 provides=('sccs')
 source=(http://ftp.gnu.org/gnu/$pkgname/$_PKGNAME-$pkgver.tar.gz)
-md5sums=('e1a973092577012f0c25421e7005f0f1')
+sha256sums=('30146f96c26c2a4c6b742bc8a498993ec6ea9f289becaaf566866488600b2994')
 
 build() {
   cd "$srcdir/$_PKGNAME-$pkgver"
