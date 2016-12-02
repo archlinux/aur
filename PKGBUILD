@@ -2,8 +2,8 @@
 
 pkgname=mattercontrol
 _pkgname=MatterControl
-pkgver=1.5.3
-pkgrel=2
+pkgver=1.6.0
+pkgrel=1
 pkgdesc="Software solution for 3D printers"
 arch=("i386" "x86_64")
 license=('custom')
@@ -19,7 +19,7 @@ source=(git://github.com/MatterHackers/MatterControl.git
 	'mattercontrol.install')
 sha256sums=('SKIP'
             '4954c0de00d6701d37c15c73d3509d0d91e67339c08afa3b273e9343dfd5cc61'
-            '0dcc1674e524acbd475034c0b7b8e6e3daa29a9a4d1ddb642d2b8a0b9af63025'
+            'f82724678f8d3912f3632dc150945a5a88fc1fde79267c4c270b97343cabfd3a'
             '6470dfabd982109638c2e9fc01acca51dc1109ce07aec261dbc4c86ead9f9927'
             '9d7b9c5a3751e6fbbc1a2f5c092ba6fad610251db0009afde98290998ae9b949')
 
@@ -33,6 +33,11 @@ build() {
 
 	xbuild /p:Configuration=Release MatterControl.sln
 	#mdtool build -c:Release MatterControl.sln
+
+	# GTK File Dialogs
+	xbuild /p:Configuration=Release Submodules/agg-sharp/GtkFileDialogs/GtkFileDialogs.csproj
+	cp Submodules/agg-sharp/GtkFileDialogs/obj/Release/GtkFileDialogs.dll* bin/Release/
+	rm bin/Release/WindowsFileDialogs.dll*
 
 	# Serial Helper
 	cd Submodules/agg-sharp/SerialPortCommunication/SerialHelper
