@@ -1,7 +1,7 @@
 # Maintainer: Michael Lojkovic <mikelojkovic@gmail.com>
 
 pkgname=gtk-theme-windows10
-pkgver=0.9.9_AU
+pkgver=0.9.9_AU_SP3
 pkgrel=1
 pkgdesc="GTK 3.x Theme made to emulate a Windows 10 environment on Linux machines."
 arch=('any')
@@ -10,11 +10,11 @@ license=('GPL')
 depends=('gtk-engines' 'gtk-engine-murrine')
 optdepends=('gnome-themes-standard' 'windows10-tint2rc')
 changelog=${pkgname}.changelog
-source=("https://github.com/Elbullazul/Windows-10/releases/download/v${pkgver//_/-}/Windows.10.Light.v0.9.9.SP1.tar.gz")
-sha1sums=('e61b5b40f67e2ea870c7d51be7a68664d3cf1c54')
+source=("https://codeload.github.com/B00merang-Project/Windows-10/zip/Rolling")
+sha1sums=('d91bcaef6347faf99afd906bbf5c503c962a1b3d')
 
 package() {
-  	cd Windows\ 10\ Light
+  	cd Windows-10-Rolling/Windows\ 10\ Light
 
   	# create theme dir
   	install -d -m 755 "$pkgdir/usr/share/themes/Windows10"
