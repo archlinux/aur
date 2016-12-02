@@ -1,7 +1,7 @@
 pkgbase = conan
 	pkgdesc = A distributed, open source, C/C++ package manager.
 	pkgver = 0.16.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://conan.io
 	arch = any
 	license = MIT
@@ -12,8 +12,6 @@ pkgbase = conan
 	depends = python-requests<2.13.0
 	depends = python-colorama>=0.3.3
 	depends = python-colorama<0.4.0
-	depends = python-passlib>=1.6.5
-	depends = python-passlib<1.8.0
 	depends = python-boto>=2.38.0
 	depends = python-boto<2.44.0
 	depends = python-yaml>=3.11
@@ -25,9 +23,9 @@ pkgbase = conan
 	depends = python-bottle>=0.12.8
 	depends = python-bottle<0.13
 	source = https://github.com/conan-io/conan/archive/0.16.0.tar.gz
-	source = passlib-1.7.0.patch
+	source = drop-passlib.patch
 	sha512sums = 078bf08b2f63812f204b9070590a3deb1ec338d702b81a918076ecedf8598bd5c309d05c3deccc3d735b35770847b4acaee37a81f0f0b2e5dd2c2165afdca41d
-	sha512sums = cec321ce5c34cd254dd1aac434b210cda93444deb7c8fc24cf3abe3847ea7786d6ffcb3ef2d5366ed0a5ba8d0eade09b205f5993279fdd5de871e6dba32ed702
+	sha512sums = 3b57353283dd280892e980b6c5bf5b74d0676c1cd42ac1a59a150634f69225086243ac6e2c23e07556b62a71ec36402e69534d4921189a7dfff546f190828fe0
 
 pkgname = conan
 

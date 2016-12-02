@@ -1,12 +1,11 @@
 diff -aur conan-pristine/conans/requirements.txt conan-new/conans/requirements.txt
---- conan-pristine/conans/requirements.txt	2016-12-01 13:30:24.345128165 +0100
-+++ conan-new/conans/requirements.txt	2016-12-01 13:30:39.745170545 +0100
-@@ -1,7 +1,7 @@
+--- conan-pristine/conans/requirements.txt	2016-12-02 12:52:55.370495904 +0100
++++ conan-new/conans/requirements.txt	2016-12-02 12:53:09.243816098 +0100
+@@ -1,7 +1,6 @@
  PyJWT>=1.4.0, <1.5.0
  requests>=2.7.0, <2.13.0
  colorama>=0.3.3, <0.4.0
 -passlib>=1.6.5, <1.7.0
-+passlib>=1.6.5, <1.8.0
  boto>=2.38.0, <2.44.0
  PyYAML>=3.11, <3.13.0
  patch==1.16
