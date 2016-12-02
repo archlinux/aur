@@ -9,7 +9,6 @@ arch=('i686' 'x86_64')
 url="http://support-ph.canon-asia.com/contents/PH/EN/0100466201.html"
 license=('unknown')
 depends=('cups' 'popt' 'libxml2' 'gtk2' 'libtiff' 'libpng')
-optdepends=('scangearmp-mg2500')
 source=("http://gdlp01.c-wss.com/gds/1/0100005501/01/cnijfilter-mg2500series-$pkgver-$pkgrel-rpm.tar.gz")
 md5sums=('37fd638ae176fad74fd656f6cb719ead')
 
