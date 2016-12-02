@@ -1,10 +1,10 @@
 # Maintainer: Quentin Bourgeois <quentin+archlinux@bourgeois.eu>
 
 _pymodule=viivakoodi
-pkgbase=python-${pymodule}
+pkgbase=python-${_pymodule}
 pkgname=("python2-${_pymodule}" "python-${_pymodule}")
 pkgver=0.8.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Barcode generator for Python. Fork of pyBarcode project.'
 arch=('any')
 url="https://github.com/kxepal/${_pymodule}"
