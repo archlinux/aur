@@ -1,9 +1,9 @@
-# Maintainer: Michael Straube <michael_straube@web.de>
+# Maintainer: Michael Straube <straubem@gmx.de>
 # Contributor: Kaan Kasım <kaankasim88@gmail.com>
 
 pkgname=doomretro
-pkgver=2.3.6
-pkgrel=2
+pkgver=2.3.7
+pkgrel=1
 pkgdesc='The classic, refined DOOM source port'
 arch=('i686' 'x86_64')
 url='http://doomretro.com'
@@ -13,7 +13,7 @@ optdepends=('timidity++: for music playback')
 makedepends=('cmake')
 conflicts=('doom-retro-git')
 source=("https://github.com/bradharding/doomretro/archive/v$pkgver.tar.gz")
-sha1sums=('cb581aa9a0fada72996af785af3594b8718a0d1e')
+sha1sums=('eafa144315a7adde42870c90d5b4261573d94b25')
 
 build() {
   cd $pkgname-$pkgver
