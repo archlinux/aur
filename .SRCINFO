@@ -1,16 +1,16 @@
 pkgbase = ruby-xapian-ruby
 	pkgdesc = xapian libraries and ruby bindings
-	pkgver = 1.2.21
+	pkgver = 1.2.22
 	pkgrel = 1
 	url = https://github.com/garaio/xapian-ruby
 	arch = i686
 	arch = x86_64
 	depends = ruby
 	depends = xapian-core
-	noextract = xapian-ruby-1.2.21.gem
+	noextract = xapian-ruby-1.2.22.gem
 	options = !emptydirs
-	source = https://rubygems.org/downloads/xapian-ruby-1.2.21.gem
-	sha1sums = 8155fccc68623048fdc3e14060122f2e5fe0ade7
+	source = https://rubygems.org/downloads/xapian-ruby-1.2.22.gem
+	md5sums = 36447304f7cab78bcef5ff2608451e6c
 
 pkgname = ruby-xapian-ruby
 

@@ -2,7 +2,7 @@
 
 _gemname=xapian-ruby
 pkgname=ruby-$_gemname
-pkgver=1.2.21
+pkgver=1.2.22
 pkgrel=1
 pkgdesc='xapian libraries and ruby bindings'
 arch=(i686 x86_64)
@@ -12,7 +12,7 @@ depends=('ruby' 'xapian-core')
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-sha1sums=('8155fccc68623048fdc3e14060122f2e5fe0ade7')
+md5sums=('36447304f7cab78bcef5ff2608451e6c')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
