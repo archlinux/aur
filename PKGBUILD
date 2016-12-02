@@ -1,18 +1,18 @@
 # Maintainer: Viachaslau Khalikin <vkhinegret@gmail.com>
 
 pkgname=phoenix-emu-project
-pkgver=2.7
-pkgrel=2
+pkgver=2.8
+pkgrel=1
 pkgdesc="An emulator of 3DO consoles. 100% compatible!"
 url="http://www.arts-union.ru/node/23"
 license=('custom')
 arch=('x86_64')
 depends=('qt5-base' 'openal' 'glu')
-source=("http://www.arts-union.ru/sites/default/files/ph27-lin-x64.zip"
+source=("http://www.arts-union.ru/sites/default/files/ph28-lin-x64.zip"
         phoenix-emu-project.desktop
         phoenix-emu-project
         translation.xml.eng)
-md5sums=('4ee74204154e36f0085b5720326e5c07'
+md5sums=('a82514312aee59b0addd7cb75591ef86'
          '7f9b5652c512887d7e034cc8c07b2045'
          '2dda6097a84eadaee848c31fe86001bd'
          '9077a8400eb3c4e06183b7fd9974f50f')
