@@ -1,7 +1,9 @@
+# Maintainer: Marcus Behrendt <marcus dot behrendt dot eightysix(in numbers) at bigbrothergoogle dot com
+
 pkgname=arc-kde-git
 pkgver=20161202
 pkgrel=1
-pkgdesc='Arc customization for Plasma 5 (git version)'
+pkgdesc='Arc customization mainly for Plasma 5 (git version)'
 arch=('any')
 url='https://github.com/PapirusDevelopmentTeam/arc-kde'
 license=('GPLv3')
@@ -29,8 +31,6 @@ pkgver(){
 }
 
 package() {
-  pkgdesc="Arc plasma theme (git version)"
-
   cd ${srcdir}/${pkgbase}
   mkdir -p ${pkgdir}/usr/share
 
