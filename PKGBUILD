@@ -1,4 +1,4 @@
-# Maintainer: Michael Straube <michael_straube web de>
+# Maintainer: Michael Straube <straubem@gmx.de>
 # Contributor: pj1031999 <pj1031999@gmail.com>
 # Contributor: Michal Docekal <docekal@gmail.com>
 # Contributor: Laurie Clark-Michalek <bluepeppers (at) archlinux (dot) us>
@@ -11,7 +11,7 @@ arch=('i686' 'x86_64')
 url="http://sourceforge.net/projects/blockattack"
 license=('GPL')
 depends=('enet' 'physfs' 'sdl_mixer' 'sdl_image' 'sdl_ttf')
-source=("http://downloads.sourceforge.net/blockattack/blockattack-$pkgver.tar.bz2"
+source=("https://downloads.sourceforge.net/blockattack/blockattack-$pkgver.tar.bz2"
         "block-attack.patch"
         "block-attack")
 sha1sums=('fb3cbe97e7ce3a59f1a6d304a86823bec4b47fd0'
@@ -22,7 +22,7 @@ prepare() {
   cd blockattack-$pkgver
 
   # patch the Makefile
-  patch -p0 < "$srcdir/block-attack.patch"
+  patch -p0 -i ../block-attack.patch
 }
 
 build() {
@@ -40,16 +40,16 @@ package() {
   find "$pkgdir" -type d -exec chmod 755 {} \;
 
   install -Dm644 source/misc/blockattack.desktop \
-    "$pkgdir/usr/share/applications/block-attack.desktop"
+    "$pkgdir"/usr/share/applications/block-attack.desktop
 
   install -Dm644 Game/gfx/icon.png \
-    "$pkgdir/usr/share/pixmaps/block-attack.png"
+    "$pkgdir"/usr/share/pixmaps/block-attack.png
 
   install -Dm755 Game/blockattack \
-    "$pkgdir/usr/lib/block-attack/blockattack"
+    "$pkgdir"/usr/lib/block-attack/blockattack
 
   install -Dm755 "$srcdir/block-attack" \
-    "$pkgdir/usr/bin/block-attack"
+    "$pkgdir"/usr/bin/block-attack
 
-  rm "$pkgdir/usr/share/games/block-attack/blockattack"
+  rm "$pkgdir"/usr/share/games/block-attack/blockattack
 }
