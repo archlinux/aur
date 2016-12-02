@@ -9,7 +9,6 @@ arch=('i686' 'x86_64')
 url="http://support-ph.canon-asia.com/contents/PH/EN/0100466201.html"
 license=('unknown')
 depends=('cups' 'popt' 'libxml2' 'gtk2' 'libtiff' 'libpng')
-makedepends=('rpmextract')
 optdepends=('scangearmp-mg2500')
 source=("http://gdlp01.c-wss.com/gds/1/0100005501/01/cnijfilter-mg2500series-$pkgver-$pkgrel-rpm.tar.gz")
 md5sums=('37fd638ae176fad74fd656f6cb719ead')
@@ -21,7 +20,7 @@ build() {
     rpmfile=$(find "$srcdir" -name "cnijfilter-common-$pkgver*i386*.rpm")
   fi
 
-  rpmextract.sh $rpmfile
+  bsdtar -xf $rpmfile
 
   mv usr/local/share/locale/ja/LC_MESSAGES/cnijlgmon2.mo usr/local/share/locale/ja/LC_MESSAGES/cnijlgmon2_ja.mo
   mv usr/local/share/locale/zh/LC_MESSAGES/cnijlgmon2.mo usr/local/share/locale/zh/LC_MESSAGES/cnijlgmon2_zh.mo
