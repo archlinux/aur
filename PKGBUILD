@@ -3,16 +3,11 @@
 # Contributor: Ionut Biru <ibiru@archlinux.org>
 # Contributor: Hugo Doria <hugo@archlinux.org>
 
-# Only .pyc and .pyo files are provided with this package; .py are stripped out
-# as they are not used/needed.  For reference, Cas, a deluge developer notes
-# that the self-contained package (inc python) provided by upstream for windows
-# contains only pyc files.
-
 pkgbase=deluge-split
 _pkgbase=deluge
 pkgname=("${_pkgbase}-common" "${_pkgbase}-daemon" "${_pkgbase}-gtk" "${_pkgbase}-web" "${_pkgbase}-console")
 pkgver=1.3.13+2+g6c73105
-pkgrel=8
+pkgrel=9
 arch=('any')
 url="http://deluge-torrent.org/"
 license=('GPL3')
@@ -54,7 +49,6 @@ package_deluge-common() {
   cd "$_pkgbase"
   python2 setup.py install --prefix=/usr --root="$pkgdir" --optimize=1
 
-  find   "$pkgdir" -name '*.py' -type f -exec rm -f {} +
   rm -rf "$pkgdir"/usr/bin/
   rm -rf "$pkgdir"/usr/share/
   rm -rf "$pkgdir"/usr/lib/python2.7/site-packages/deluge/ui/{web,gtkui,console}
@@ -69,7 +63,6 @@ package_deluge-daemon() {
   cd "$_pkgbase"
   python2 setup.py install --prefix=/usr --root="$pkgdir" --optimize=1
 
-  find   "$pkgdir" -name '*.py' -type f -exec rm -f {} +
   rm -f  "$pkgdir"/usr/bin/deluge-{gtk,web,console}
   rm -f  "$pkgdir"/usr/share/man/man1/deluge-{gtk,web,console}.1
   rm -rf "$pkgdir"/usr/lib/
@@ -110,7 +103,6 @@ package_deluge-web() {
   cd "$_pkgbase"
   python2 setup.py install --prefix=/usr --root="$pkgdir" --optimize=1
 
-  find   "$pkgdir" -name '*.py' -type f -exec rm -f {} +
   find   "$pkgdir/usr/bin" ! -name 'deluge-web' -type f -exec rm -f {} +
   find   "$pkgdir/usr/share/man/man1" ! -name 'deluge-web.1' -type f -exec rm -f {} +
   rm -f  "$pkgdir"/usr/lib/python2.7/site-packages/deluge/*.{py,pyc,pyo}
@@ -132,7 +124,6 @@ package_deluge-console() {
   cd "$_pkgbase"
   python2 setup.py install --prefix=/usr --root="$pkgdir" --optimize=1
 
-  find   "$pkgdir" -name '*.py' -type f -exec rm -f {} +
   find   "$pkgdir/usr/bin" ! -name 'deluge-console' -type f -exec rm -f {} +
   find   "$pkgdir/usr/share/man/man1" ! -name 'deluge-console.1' -type f -exec rm -f {} +
   rm -f  "$pkgdir"/usr/lib/python2.7/site-packages/deluge/*.{py,pyc,pyo}
