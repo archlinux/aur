@@ -1,10 +1,3 @@
-# $Id$
-# Maintainer: Bastien Traverse <firstname at lastname dot email>
-# Contributor: masterme120
-# Contributor: runical
-# Contributor: oozyslug <oozyslug at gmail dot com>
-# Submitter: Bastien Traverse <firstname at lastname dot email>
-
 pkgname=yay-bin
 pkgver=1.70
 pkgrel=1
