@@ -1,7 +1,7 @@
 # Maintainer: Alex Palaistras <alex+archlinux@deuill.org>
 
 pkgname=binaryninja-demo
-pkgver=1.0.7
+pkgver=1.0
 pkgrel=1
 pkgdesc="Binary Ninja is a binary multi-tool and reversing platform"
 arch=('x86_64')
@@ -14,9 +14,9 @@ source=(
 	"binaryninja-demo.desktop"
 )
 sha1sums=(
-	'490891e7e1ad5bbf2d047ee420699e1e74b84345'
+	'SKIP'
 	'de0caa6928230dc5eb0dda8b45b9f03d4db294a2'
-	'20fe20fdfef3eee049c257adae4b3c00113455da'
+	'4d039660be12df5f13ab3b848f413fa9f2f41e87'
 	'b650efdf8b007b5c9245fed32dca304ddde07f65'
 )
 install='binaryninja-demo.install'
