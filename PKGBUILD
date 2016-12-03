@@ -1,11 +1,12 @@
 # Maintainer: Kochetkov Andrey <gornet@gmail.com>
 # Contributor: Fabian Schoelzel <myfirstname.mylastname@googlemail.com>
+# Contributor: Simon Perry <aur [at] sanxion [dot] net>
 
 pkgname=pyfa
-pkgver=1.24.0
+pkgver=1.25.0
 pkgrel=1
-everelname="yc.118.8"
-everelver=1.4
+everelname="ascension"
+everelver=1.9
 pkgdesc="EVE Online Fitting Assistant"
 arch=('any')
 url="http://github.com/DarkFenX/Pyfa"
@@ -29,6 +30,6 @@ package() {
   install "${srcdir}"/pyfa-start.sh "${pkgdir}"/usr/bin/pyfa || return 1
 }
 
-md5sums=('79f2b573dc67af32ea5a7ea0fbdd714f'
-         '320b6ab6bbd88458c09c32b6233327af'
+md5sums=('2c0017fec4ff42dc5968acd9a5a1262a'
+         'ba7d4e6618b48eff1e1452674e1846b0'
          '9937192cfce7f5e16e9cf26086f1899c')
