@@ -9,7 +9,7 @@ url="http://www.airspayce.com/mikem/bcm2835/"
 license=('GPL2')
 provides=('bcm2835')
 source=("http://www.airspayce.com/mikem/$pkgname/$pkgname-$pkgver.tar.gz")
-md5sums=('258caf3437012d09a651e1852d0bd60c')
+sha512sums=('94887f04616c3bea4e2cb5d265068208958777feffb88ccbb33a03e9d8b8a7f06f06d9744dae45cd33d24f17a29ae1fff437a23521084667a57de8208855105c')
 
 build() {
   cd "$pkgname-$pkgver"
