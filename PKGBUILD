@@ -370,15 +370,15 @@ package_nvidia-full-beta-all() {
 
 package_lib32-opencl-nvidia-full-beta-all() {
   pkgdesc="NVIDIA's OpenCL implemention for 'lib32-nvidia-utils-full-beta-all' "
-  depends=('lib32-libcl' 'lib32-zlib' 'lib32-gcc-libs')
+  depends=('lib32-zlib' 'lib32-gcc-libs')
   optdepends=('opencl-headers: headers necessary for OpenCL development')
-  provides=('lib32-opencl-nvidia')
+  provides=('lib32-opencl-nvidia' 'lib32-opencl-driver')
   conflicts=('lib32-opencl-nvidia')
   cd $_pkg
 
   # OpenCL
-  install -Dm755 libnvidia-compiler.so.$pkgver "$pkgdir"/usr/lib32/libnvidia-compiler.so.$pkgver
-  install -Dm755 libnvidia-opencl.so.$pkgver "$pkgdir"/usr/lib32/libnvidia-opencl.so.$pkgver
+  install -Dm755 32/libnvidia-compiler.so.$pkgver "$pkgdir"/usr/lib32/libnvidia-compiler.so.$pkgver
+  install -Dm755 32/libnvidia-opencl.so.$pkgver "$pkgdir"/usr/lib32/libnvidia-opencl.so.$pkgver
 
   # create missing soname links
   _create_links
@@ -390,9 +390,9 @@ package_lib32-opencl-nvidia-full-beta-all() {
 
 package_lib32-nvidia-libgl-full-beta-all() {
   pkgdesc="NVIDIA driver library symlinks for 'lib32-nvidia-utils-full-beta-all'"
-  depends=('lib32-nvidia-utils-full-beta-all')
-  provides=('lib32-libgl' 'lib32-nvidia-libgl')
-  conflicts=('lib32-libgl' 'lib32-nvidia-libgl' 'lib32-mesa<10.1.0-2')
+  depends=('lib32-nvidia-utils-full-beta-all' 'nvidia-libgl-full-betaf-all')
+  provides=('lib32-libgl' 'lib32-libegl' 'lib32-libgles' 'lib32-nvidia-libgl')
+  conflicts=('lib32-libgl' 'lib32-libegl' 'lib32-libgles' 'lib32-nvidia-libgl')
   cd $_pkg
 
   # libGL (link)
@@ -432,7 +432,7 @@ package_lib32-nvidia-libgl-full-beta-all() {
 
 package_lib32-nvidia-utils-full-beta-all() {
   pkgdesc="NVIDIA driver utilities and libraries for 'nvidia-full-beta-all' (32-bit)"
-  depends=('lib32-zlib' 'lib32-gcc-libs')
+  depends=('lib32-zlib' 'lib32-gcc-libs' 'nvidia-utils-full-beta-all')
   optdepends=('lib32-opencl-nvidia-full-beta-all: OpenCL support')
   provides=("lib32-nvidia-utils=$pkgver" 'lib32-libglvnd' 'lib32-vulkan-driver')
   conflicts=('lib32-nvidia-utils' 'lib32-libglvnd')
