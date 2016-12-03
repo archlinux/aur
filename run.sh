@@ -33,12 +33,12 @@ help()
 {
     cat<<-EOF
 swish [OPTION]
-SWI-Prolog for SHaring: a SWI-Prolog web IDE integrated with the cplint suite
+SWI-Prolog for SHaring: a SWI-Prolog web IDE
 
 Only a single option is permitted.
     -h      print this help
-    -k      kill swish-cplint
-    -s      start swish-cplint
+    -k      kill swish
+    -s      start swish
 
 Exit status:
  0  if OK,
@@ -58,6 +58,11 @@ killd()
             kill -s TERM $pid
         fi
     fi
+}
+
+init()
+{
+    :
 }
 
 startd()
