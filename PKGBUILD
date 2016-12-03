@@ -8,7 +8,7 @@ url=https://github.com/geeeeeeeeek/electronic-wechat
 arch=(i686 x86_64)
 replaces=('electronic-wechat' 'electronic-wechat-git')
 conflicts=('electronic-wechat' 'electronic-wechat-git')
-depends=()
+depends=('gconf')
 license=(MIT)
 
 
