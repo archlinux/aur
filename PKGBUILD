@@ -1,13 +1,13 @@
 # Maintainer: Victor Hermann Chiletto <victor dot vasconceloschiletto at gmail dot com>
 
 pkgname=livestreamer-gtkmm3-git
-pkgver=r21.f5c1e8f
-pkgrel=2
-pkgdesc="A GTKMM3 UI for livestreamer"
+pkgver=r22.65f50cc
+pkgrel=1
+pkgdesc="A GTKMM3 UI for streamlink"
 arch=('i686' 'x86_64')
 url="https://github.com/vitorhnn/livestreamer-gtkmm3"
 license=('MIT') 
-depends=('gtkmm3' 'desktop-file-utils' 'livestreamer')
+depends=('gtkmm3' 'desktop-file-utils' 'streamlink')
 makedepends=('git' 'cmake')
 provides=('livestreamer-gtkmm3')
 conflicts=('livestreamer-gtkmm3')
