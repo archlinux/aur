@@ -1,0 +1,22 @@
+pkgbase = lm32-elf-gdb
+	pkgdesc = The GNU Debugger for LM32
+	pkgver = 7.12
+	pkgrel = 1
+	url = http://www.gnu.org/software/gdb/
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	depends = python
+	depends = guile
+	depends = ncurses
+	depends = expat
+	depends = xz
+	options = !emptydirs
+	source = ftp://ftp.gnu.org/gnu/gdb/gdb-7.12.tar.xz
+	source = ftp://ftp.gnu.org/gnu/gdb/gdb-7.12.tar.xz.sig
+	validpgpkeys = F40ADB902B24264AA42E50BF92EDB04BFF325CF3
+	sha256sums = 834ff3c5948b30718343ea57b11cbc3235d7995c6a4f3a5cecec8c8114164f94
+	sha256sums = SKIP
+
+pkgname = lm32-elf-gdb
+
