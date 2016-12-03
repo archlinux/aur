@@ -2,13 +2,14 @@
 
 _pkgname=sslh
 pkgname=$_pkgname-git
-pkgver=1.17.r38.g8f39c10
+pkgver=1.18.r9.gf02ce38
 pkgrel=1
 pkgdesc="Network port multiplexer. Allows sharing of HTTP, SSL, SSH, OpenVPN, tinc, XMPP, etc. on the same port"
 arch=('i686' 'x86_64')
 url='http://www.rutschle.net/tech/sslh.shtml'
 license=('GPL2')
-depends=('libcap' 'libconfig' 'systemd')
+#depends=('libcap' 'libconfig' 'libwrap' 'systemd')
+depends=('libconfig' 'libwrap' 'systemd')
 makedepends=('git')
 provides=($_pkgname)
 conflicts=($_pkgname)
@@ -32,15 +33,17 @@ prepare() {
 
 build() {
   cd $pkgname
-  make VERSION=\"v$pkgver\" USELIBCAP=1 USELIBCONFIG=1 USESYSTEMD=1
+  #make VERSION=\"v$pkgver\" USELIBCAP=1 USELIBCONFIG=1 USELIBWRAP=1 USESYSTEMD=1
+  make VERSION=\"v$pkgver\" USELIBCAP= USELIBCONFIG=1 USELIBWRAP=1 USESYSTEMD=1
 }
 
 package() {
-  # Default Arch Linux config
+  # Default config
   install -Dm644 sslh.conf "$pkgdir/etc/sslh.conf"
 
   # Systemd
   install -Dm644 sslh.sysusers "$pkgdir/usr/lib/sysusers.d/sslh.conf"
+
   cd $pkgname
   install -Dm644 scripts/etc.sysconfig.sslh "$pkgdir/etc/conf.d/sslh"
   install -Dm644 scripts/systemd.sslh.service "$pkgdir/usr/lib/systemd/system/sslh.service"
@@ -56,7 +59,5 @@ package() {
   # Examples
   install -Dm644 basic.cfg "$pkgdir/usr/share/doc/$pkgname/basic.cfg"
   install -Dm644 example.cfg "$pkgdir/usr/share/doc/$pkgname/example.cfg"
-
 }
 
-# vim:set ts=2 sw=2 et:
