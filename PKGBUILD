@@ -2,14 +2,14 @@
 
 _pkgname=wxgtk
 pkgname=$_pkgname-git
-pkgver=r60833.a03df74
+pkgver=r62004.4775853
 pkgrel=1
 pkgdesc='Cross-Platform GUI Library - GTK+ port'
-arch=("i686" "x86_64")
+arch=('i686' 'x86_64')
 url='https://www.wxwidgets.org'
-license=("custom: wxWindows Library Licence")
-depends=('gtk2' 'webkitgtk2' 'libmspack' 'gstreamer0.10-base' 'libnotify')
-makedepends=('git' 'glu')
+license=('custom: wxWindows Library Licence')
+depends=('gtk3' 'webkitgtk' 'libmspack' 'gst-plugins-bad' 'libnotify')
+makedepends=('git' 'cppunit' 'glu')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=("${_pkgname}::git+https://github.com/wxWidgets/wxWidgets.git")
@@ -23,7 +23,7 @@ pkgver() {
 build() {
   cd $_pkgname
   ./autogen.sh
-  ./configure --prefix=/usr --with-gtk=2 --with-libmspack
+  ./configure --prefix=/usr --with-gtk=3 --enable-stl --with-libmspack
   make
   make -C locale allmo
 }
