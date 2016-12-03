@@ -21,12 +21,10 @@ source=("rana.cpp" "helper.h" "makefile")
 noextract=()
 
 build() {
-  cd "$pkgname"
   make
 }
 
 package() {
-  cd "$pkgname"
   sudo make install
 }
 
