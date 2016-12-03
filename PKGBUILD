@@ -11,7 +11,7 @@ depends=('python2-distribute')
 makedepends=('git')
 conflicts=('caatinga')
 provides=('caatinga')
-source=('git://github.com/headmastersquall/caatinga')
+source=('git+https://github.com/headmastersquall/caatinga')
 sha256sums=('SKIP')
 
 pkgver() {
