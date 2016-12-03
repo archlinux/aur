@@ -3,7 +3,7 @@
 
 pkgname=freeplane-git
 _NEXT_VERSION=1.6.x
-pkgver=1.6.x.71fed5b
+pkgver=1.6.x.15c33c0
 pkgrel=1
 pkgdesc="A Java mindmapping tool"
 arch=('any')
@@ -13,7 +13,7 @@ makedepends=('git' 'gradle')
 conflicts=('freeplane')
 provides=('freeplane')
 depends=('java-environment' 'desktop-file-utils')
-source=('git://github.com/freeplane/freeplane.git#branch=1.6.x' 'freeplane.desktop' 'freeplane.run')
+source=('git+https://github.com/freeplane/freeplane.git#branch=1.6.x' 'freeplane.desktop' 'freeplane.run')
 sha256sums=('SKIP'
             'cae931ab1e7747e1b090a13d11c4cc0e0cb5ae62ab342f997c885973df24e4e7'
             '56ac3b9c1711a05f2d04f5587a27a9e05c5c06885d14027363e6c00d2614bc78')
