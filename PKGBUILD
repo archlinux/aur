@@ -2,9 +2,9 @@
 # Contributor: Matthew Wardrop <mister.wardrop@gmail.com>
 
 pkgbase=linux-surfacepro3-rt
-_srcname=linux-4.8.6
-pkgver=4.8.6
-pkgrel=2.0
+_srcname=linux-4.8.11
+pkgver=4.8.11
+pkgrel=2.1
 arch=('i686' 'x86_64')
 url="https://github.com/alyptik/linux-surfacepro3-rt"
 license=('GPL2')
@@ -12,8 +12,8 @@ makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc' 'elfutils')
 options=('!strip')
 source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         "https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.sign"
-        "https://www.kernel.org/pub/linux/kernel/projects/rt/${pkgver%.*}/older/patch-${pkgver}-rt5.patch.xz"
-        "https://www.kernel.org/pub/linux/kernel/projects/rt/${pkgver%.*}/older/patch-${pkgver}-rt5.patch.sign"
+        "https://www.kernel.org/pub/linux/kernel/projects/rt/${pkgver%.*}/older/patch-${pkgver}-rt7.patch.xz"
+        "https://www.kernel.org/pub/linux/kernel/projects/rt/${pkgver%.*}/older/patch-${pkgver}-rt7.patch.sign"
         # Brain Fuck Scheduler & other personal patches
         'https://raw.githubusercontent.com/alyptik/linux-surfacepro3-rt/github/bfq.patch'
         'https://raw.githubusercontent.com/alyptik/linux-surfacepro3-rt/github/bfs.patch'
@@ -36,9 +36,9 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         'change-default-console-loglevel.patch'
 )
 
-sha256sums=('74744e00420856cfc8049fa3b3a55e57a116994226a498ef56801bc9492df36b'
+sha256sums=('cc0f42f408ba3e51f8b0e93e3d8050ff18569456d286cb2a1aca3327dd06890f'
             'SKIP'
-            'f0e1bc55ec0288e54e84cc35a9e16a9df93be3772fda58b654ece6260f12699a'
+            'f258a256ebdb51ceabbe1e482706756437c7113c6d987025203468bfb8601f9a'
             'SKIP'
             '242d32d0fe819852e74d93b8a044cf24a40a9474d6f00ca93a19aa98298dcefa'
             '51f91681b708149fe91e565f5c40811477428e2aa86f8726a20e0e7c55c5407c'
@@ -91,7 +91,7 @@ prepare() {
   if [ "$personal" = 'y' ]; then for i in block init kconfig xattr xfs; do patch -p1 -i "${srcdir}/${i}.patch"; done; fi
 
   # Add RT patches
-  patch -p1 -i "${srcdir}/patch-${pkgver}-rt5.patch"
+  patch -p1 -i ${srcdir}/patch-${pkgver}*.patch
 
   # set DEFAULT_CONSOLE_LOGLEVEL to 4 (same value as the 'quiet' kernel param)
   # remove this when a Kconfig knob is made available by upstream
