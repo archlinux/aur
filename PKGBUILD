@@ -3,7 +3,7 @@
 
 pkgname=chruby
 pkgver=0.3.9
-pkgrel=1
+pkgrel=3
 pkgdesc="Changes the current ruby. Supports both zsh and bash."
 arch=(any)
 url="https://github.com/postmodern/chruby"
@@ -12,7 +12,7 @@ depends=('bash')
 optdepends=('zsh')
 makedepends=('gnupg')
 install=${pkgname}.install
-source=(https://github.com/postmodern/${pkgname}/archive/v${pkgver}.tar.gz profile.d-chruby.sh)
+source=("https://github.com/postmodern/${pkgname}/archive/v${pkgver}.tar.gz" profile.d-chruby.sh)
 sha256sums=('7220a96e355b8a613929881c091ca85ec809153988d7d691299e0a16806b42fd'
             '8256f38a8908654c4d75793774cbb85da324d73ce0137c647f43e852e6618b54')
 
