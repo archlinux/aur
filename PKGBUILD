@@ -1,13 +1,13 @@
 # Maintainer: Donald Webster <fryfrog@gmail.com>
 
 pkgname=sanoid-git
-pkgver=r88.50b258c
-pkgrel=2
+pkgver=r112.e993060
+pkgrel=1
 pkgdesc="Sanoid is a policy-driven snapshot management tool for ZFS filesystems."
 arch=('any')
 url='https://github.com/jimsalterjrs/sanoid'
 license=('GPL')
-depends=('perl' 'perl-config-inifiles')
+depends=('perl' 'perl-config-inifiles' 'pv' 'lzop' 'mbuffer')
 conflicts=('sanoid')
 provides=('sanoid')
 source=("sanoid-git::git+https://github.com/jimsalterjrs/sanoid.git")
