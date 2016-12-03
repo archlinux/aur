@@ -22,5 +22,6 @@ build() {
 package() {
 	cd $pkgname
 	make ROOTFS="$pkgdir" BIN="$pkgdir"/usr/bin install manuals
+	mv "$pkgdir"/usr/bin/amptest{,.plc}
 	install -D -m 644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
