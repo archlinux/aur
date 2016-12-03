@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond < yahoo-com: danielbermond >
 
 pkgname=wine-staging-git
-pkgver=1.9.10.r16.g5eb1d3c+wine.1.9.11.r0.g81c700e
+pkgver=1.9.23.r0.g5403b21+wine.1.9.23.r0.g02d7230
 pkgrel=1
 pkgdesc="A compatibility layer for running Windows programs (staging branch, Git version)"
 arch=('i686' 'x86_64')
@@ -41,7 +41,7 @@ makedepends=('git' 'autoconf' 'ncurses' 'bison' 'perl' 'fontforge' 'flex'
   'libxcomposite'         'lib32-libxcomposite'
   'mesa'                  'lib32-mesa'
   'libgl'                 'lib32-libgl'
-  'libcl'                 'lib32-libcl'
+  'opencl-icd-loader'     'lib32-opencl-icd-loader'
   'libxslt'               'lib32-libxslt'
   'libpulse'              'lib32-libpulse'
   'libva'                 'lib32-libva'
@@ -65,7 +65,7 @@ optdepends=(
   'libxcomposite'         'lib32-libxcomposite'
   'libxinerama'           'lib32-libxinerama'
   'ncurses'               'lib32-ncurses'
-  'libcl'                 'lib32-libcl'
+  'opencl-icd-loader'     'lib32-opencl-icd-loader'
   'libxslt'               'lib32-libxslt'
   'libtxc_dxtn'           'lib32-libtxc_dxtn'
   'libva'                 'lib32-libva'
