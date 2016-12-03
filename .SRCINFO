@@ -8,7 +8,7 @@ pkgbase = sdlhana
 	license = GPL
 	depends = sdl
 	depends = gcc-libs
-	source = http://nongnu.uib.no/sdlhana/sdlhana-0.34.tar.bz2
+	source = https://nongnu.uib.no/sdlhana/sdlhana-0.34.tar.bz2
 	sha1sums = f6ce75fa8025795321fc1ca757f44a03ba1ca5e6
 
 pkgname = sdlhana
