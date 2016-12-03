@@ -7,10 +7,11 @@ pkgdesc="Caffeinated Packet Analyzer"
 url="https://dripcap.org/"
 license=('MIT')
 depends=('wget')
-sha256sums=('SKIP')
-
-source=(http://mirror.easyname.at/blackarch/blackarch/os/${arch}/${pkgname}-${pkgver}-${pkgrel}-${arch}.pkg.tar.xz)
+sha1sums=('c3877f607a4084c5c9ff278358e0ec8466570618')
+source=("https://github.com/dripcap/dripcap/releases/download/v${pkgver}/dripcap-linux-amd64.deb")
 
 package() {
-  tar xJvf ${pkgname}-${pkgver}-${pkgrel}-${arch}.pkg.tar.xz -C ${pkgdir}/
+  bsdtar xf data.tar.gz
+  chmod -R g-w usr
+  mv usr "${pkgdir}"
 }

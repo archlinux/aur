@@ -6,8 +6,8 @@ pkgbase = dripcap
 	arch = x86_64
 	license = MIT
 	depends = wget
-	source = http://mirror.easyname.at/blackarch/blackarch/os/x86_64/dripcap-0.4.9-1-x86_64.pkg.tar.xz
-	sha256sums = SKIP
+	source = https://github.com/dripcap/dripcap/releases/download/v0.4.9/dripcap-linux-amd64.deb
+	sha1sums = c3877f607a4084c5c9ff278358e0ec8466570618
 
 pkgname = dripcap
 
