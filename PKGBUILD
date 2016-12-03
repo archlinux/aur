@@ -1,4 +1,4 @@
-# Maintainer: Michael Straube <michael_straube@web.de>
+# Maintainer: Michael Straube <straubem@gmx.de>
 
 pkgname=megamario
 pkgver=1.7
@@ -9,7 +9,7 @@ url="https://sourceforge.net/projects/mmario"
 license=('LGPL')
 depends=('sdl_ttf' 'sdl_image' 'sdl_mixer' 'mesa')
 makedepends=('glu')
-source=("http://downloads.sourceforge.net/mmario/MegaMario_v${pkgver}_full.zip"
+source=("https://downloads.sourceforge.net/mmario/MegaMario_v${pkgver}_full.zip"
         "fix-compile-error.patch"
         "fix-mp3-path.patch"
         "fix-logfile-path.patch")
@@ -19,9 +19,9 @@ sha1sums=('71d777f06109a157ad0df7612cca02d8fe462538'
           'fbc7b86caabf5985ce32ec58861bc110363c74ae')
 
 prepare() {
-  patch -p0 -i "$srcdir"/fix-compile-error.patch
-  patch -p0 -i "$srcdir"/fix-mp3-path.patch
-  patch -p0 -i "$srcdir"/fix-logfile-path.patch
+  patch -p0 -i fix-compile-error.patch
+  patch -p0 -i fix-mp3-path.patch
+  patch -p0 -i fix-logfile-path.patch
 }
 
 build() {
