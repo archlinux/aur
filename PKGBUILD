@@ -5,7 +5,7 @@
 
 pkgname=mingw-w64-readline
 _basever=7.0
-_patchlevel=000
+_patchlevel=001
 pkgver=$_basever.$_patchlevel
 pkgrel=1
 pkgdesc="MinGW port of readline for editing typed command lines (mingw-w64)"
@@ -25,12 +25,14 @@ fi
 
 md5sums=('205b03a87fc83dab653b628c59b9fc91'
          'SKIP'
-         'e1564909905d0670fca91da3dc4053f7')
+         'e1564909905d0670fca91da3dc4053f7'
+         'e299384458a4cbefaaac3f30e9cc2bba'
+         'SKIP')
 validpgpkeys=(7C0135FB088AAF6C66C650B9BB5869F064EA74AB)
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
-build() {
+prepare() {
   cd "${srcdir}/readline-${_basever}"
 
   for (( p=1; p<=$((10#${_patchlevel})); p++ )); do
@@ -39,10 +41,14 @@ build() {
   done
 
   msg "applying the patch from MXE project"
-  patch -Nfp1 -i $srcdir/readline-1.patch
+  patch -Np1 -i $srcdir/readline-1.patch
 
   # Remove RPATH from shared objects (FS#14366)
-  sed 's|-Wl,-rpath,$(libdir) ||g' support/shobj-conf
+  sed -i 's|-Wl,-rpath,$(libdir) ||g' support/shobj-conf
+}
+
+build() {
+  cd "${srcdir}/readline-${_basever}"
 
   for _arch in ${_architectures}; do
     unset LDFLAGS
