@@ -24,7 +24,11 @@ onlinebestmatch() {
   local semverspec="$2";
 
   local json="$(npm view --json "$package@$semverspec")"
-  local version="$(echo "$json" | jq -r '.version')"
+  if [ $(echo "$json" | jq -r '.version?//"INVALID"') = "INVALID" ]; then
+    json=$(echo "$json" | jq '.[0]')
+  fi
+  local version="$(echo "$json" | jq -r '.version' | head -n1)"
+
   local latestversion="$(echo "$json" | jq '.versions | .[]' | xargs semver -r "$semverspec" | tail -n1)"
   if [ "$version" != "$latestversion" ]; then
     json="$(npm view --json "$package@$latestversion")"
@@ -92,7 +96,20 @@ createlist() {
 
 downloaddeps
 
-createlist source sourcelist > threelists
-createlist sha1sums sha1sumslist >> threelists
-createlist noextract noextractlist >> threelists
+# sorting entries...
+cd "$targetdepspath/"
+cat sourcelist | gawk '{ n=n+1; print n, $0; }' > a
+cat sha1sumslist | gawk '{ n=n+1; print n, $0; }' > b
+cat noextractlist | gawk '{ n=n+1; print n, $0; }' > c
+cat c | gawk '{ print $2, $1 }' | sort | gawk '{ n=n+1; print $2, n; }' | sort --numeric-sort | gawk '{ print $2 }' > order
+paste order a | sort --numeric-sort | gawk '{ print $3 }' > aaa
+paste order b | sort --numeric-sort | gawk '{ print $3 }' > bbb
+paste order c | sort --numeric-sort | gawk '{ print $3 }' > ccc
+createlist source aaa > threelists
+createlist sha1sums bbb >> threelists
+createlist noextract ccc >> threelists
+
+#createlist source sourcelist > threelists
+#createlist sha1sums sha1sumslist >> threelists
+#createlist noextract noextractlist >> threelists
 
