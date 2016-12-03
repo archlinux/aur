@@ -1,0 +1,16 @@
+pkgbase = rana-git
+	pkgdesc = A better syntax for SGML
+	pkgver = 1.0
+	pkgrel = 0
+	url = https://github.com/deeepaaa/rana
+	arch = any
+	license = GPL
+	source = rana.cpp
+	source = helper.h
+	source = makefile
+	md5sums = dc0207309bec551f42e97ecab4a68af9
+	md5sums = 0338aafc1549cf8bd7a2f1244bf40a05
+	md5sums = fefdd71b67679e5022f412da536392fd
+
+pkgname = rana-git
+

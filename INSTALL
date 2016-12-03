@@ -1,0 +1,3 @@
+Build the "rana" executable using "make" or "make rana".
+It can then be run from the current directory, or installed using "sudo make install".
+"make clean" and "make uninstall" work as expected.
