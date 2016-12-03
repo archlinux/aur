@@ -1,7 +1,7 @@
 # Maintainer: Tomislav Ivek <tomislav.ivek@gmail.com>
 
 pkgname=conan-git
-pkgver=0.15.0.r25.g2f54b0d
+pkgver=0.16.0.r11.gfcd75f3
 pkgrel=1
 pkgdesc="A distributed, open source, C/C++ package manager."
 arch=('any')
@@ -11,7 +11,6 @@ depends=('python'
          'python-pyjwt>=1.4.0' 'python-pyjwt<1.5.0'
          'python-requests>=2.7.0' 'python-requests<2.13.0'
          'python-colorama>=0.3.3' 'python-colorama<0.4.0'
-         'python-passlib>=1.6.5' 'python-passlib<1.7.0'
          'python-boto>=2.38.0' 'python-boto<2.44.0'
          'python-yaml>=3.11' 'python-yaml<3.13.0'
          'python-patch=1.16'
