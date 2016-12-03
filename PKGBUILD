@@ -1,3 +1,4 @@
+# Maintainer: Jguer <joaogg3 at gmail dot com>
 pkgname=yay-bin
 pkgver=1.70
 pkgrel=1
