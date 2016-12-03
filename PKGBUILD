@@ -1,7 +1,7 @@
 # Maintainer: Anna Ivanova <kalterfx@gmail.com>
 
 pkgname=noticeditor-git
-pkgver=1.1
+pkgver=344.12cc720
 pkgrel=1
 pkgdesc="The Notice Editor"
 arch=('i686' 'x86_64')
@@ -11,6 +11,12 @@ depends=('java-runtime' 'java-openjfx')
 makedepends=('java-environment' 'java-openjfx' 'gradle')
 source=("git+https://github.com/TemporaryTeam/NoticEditor")
 md5sums=('SKIP')
+
+pkgver()
+{
+	cd "$srcdir/NoticEditor"
+	echo "$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
+}
 
 build() {
 	cd "$srcdir/NoticEditor"
