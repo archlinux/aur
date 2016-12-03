@@ -8,50 +8,59 @@
 #_GPU_TARGET=Maxwell
 # Can also be one of these: sm20 sm30 sm35 sm50
 _GPU_TARGET=sm30
+# Set _USE_CMAKE=1 to use CMake
+_USE_CMAKE=0
 ##### End
 
 pkgname=magma
-pkgver=2.1.0
-pkgrel=2
+pkgver=2.2.0
+pkgrel=1
 pkgdesc="Provides a dense linear algebra library similar to LAPACK but for heterogeneous/hybrid architectures, starting with current 'Multicore+GPU' systems. (with CUDA)"
 arch=("i686" "x86_64")
 url="http://icl.cs.utk.edu/magma/"
 license=(custom)
-depends=("cuda>=6.5.0" "gcc-libs-multilib" "gsl" "python" "cblas")
+depends=("cuda>=6.5.0" "gcc-libs-multilib" "gsl" "python" "openblas-lapack")
 makedepends=("gcc-fortran")
 options=('staticlibs')
-sha1sums=('8bf2dce79bc55e414aae0bc858956f8bd08b9c91')
+sha1sums=('7f884e4c80dd296939174282d69d19cc1cca71a5')
 source=("http://icl.cs.utk.edu/projectsfiles/magma/downloads/magma-${pkgver}.tar.gz")
 
 build() {
 	cd "${srcdir}/magma-${pkgver}"
 
-    # Fix Makefile
-    cp make.inc.openblas make.inc
-    sed -i "/#GPU_TARGET ?=/c GPU_TARGET = ${_GPU_TARGET}" make.inc
-    sed -i '/#CUDADIR/c CUDADIR   = /opt/cuda' make.inc
-    sed -i '/#OPENBLASDIR/c OPENBLASDIR   = /usr/lib' make.inc
-    sed -i 's^-L$(OPENBLASDIR)/lib^-L$(OPENBLASDIR)^g' make.inc
+    if ((_USE_CMAKE == 0))
+    then
+        # Modify Makefile
+        cp make.inc-examples/make.inc.openblas make.inc
+        sed -i "/#GPU_TARGET ?=/c GPU_TARGET = ${_GPU_TARGET}" make.inc
+        sed -i '/#CUDADIR/c CUDADIR   = /opt/cuda' make.inc
+        sed -i '/#OPENBLASDIR/c OPENBLASDIR   = /usr/lib' make.inc
+        sed -i 's^-L$(OPENBLASDIR)/lib^-L$(OPENBLASDIR)^g' make.inc
 
-    make clean
-    make lib
-    #make test
-    make sparse
-
-    # FIXME: there is no shared library
-    #mkdir build && cd build
-    #cmake -DGPU_TARGET=${_GPU_TARGET} \
-    #    -DCUDA_HOST_COMPILER=/opt/cuda/bin/gcc \
-    #    -DCMAKE_INSTALL_PREFIX=/opt/magma ..
-    #make
+        make clean
+        make lib
+        make sparse
+        make test
+    else
+        # FIXME: there is no shared library
+        mkdir build && cd build
+        cmake -DGPU_TARGET=${_GPU_TARGET} \
+            -DCUDA_HOST_COMPILER=/opt/cuda/bin/gcc \
+            -DCMAKE_INSTALL_PREFIX=/opt/magma ..
+        make
+    fi
 }
 
 package() {
-    cd "${srcdir}/magma-${pkgver}"
-    make prefix="${pkgdir}/opt/magma" install
-
-    #cd "${srcdir}/magma-${pkgver}/build"
-    #make DESTDIR="${pkgdir}" install
+    if ((_USE_CMAKE == 0))
+    then
+        cd "${srcdir}/magma-${pkgver}"
+        make prefix="${pkgdir}/opt/magma" install
+        #rm "${pkgdir}/opt/magma/include/*.mod"
+    else
+        cd "${srcdir}/magma-${pkgver}/build"
+        make DESTDIR="${pkgdir}" install
+    fi
 
     mkdir -p ${pkgdir}/opt/magma/example
     cp -ru ${srcdir}/magma-${pkgver}/example/* ${pkgdir}/opt/magma/example/
