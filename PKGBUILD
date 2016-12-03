@@ -8,7 +8,7 @@ pkgdesc="Qt Graphic Editor"
 arch=(i686 x86_64)
 url="http://opendesktop.org/content/show.php/Belle?content=155259"
 license=('GPL')
-depends=('qt4')
+depends=('qt4' 'qt51-webkit')
 #source=("http://opendesktop.org/CONTENT/content-files/155259-${_name}-${pkgver}a.tar.gz" "${pkgname}.desktop")
 #source=(http://download.savannah.gnu.org/releases/${pkgname}/${_name}_${pkgver}a-src.tar.gz "${pkgname}.desktop")
 source=("https://github.com/fr33mind/Belle/archive/${pkgver}a.tar.gz" "${pkgname}.desktop")
