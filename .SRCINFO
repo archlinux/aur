@@ -1,6 +1,6 @@
 pkgbase = kodi-devel
 	pkgdesc = Kodi Media Center monthly development releases
-	pkgver = 17.0b5
+	pkgver = 17.0b6
 	pkgrel = 1
 	url = http://xbmc.org
 	arch = i686
@@ -57,8 +57,8 @@ pkgbase = kodi-devel
 	makedepends = xorg-xdpyinfo
 	makedepends = yajl
 	makedepends = zip
-	source = https://github.com/xbmc/xbmc/archive/17.0b5-Krypton.tar.gz
-	sha256sums = e27d31c24de77f5f6b79f32d60c4e34787a2f98dcd7a15339ab6cf290f10a15d
+	source = https://github.com/xbmc/xbmc/archive/17.0b6-Krypton.tar.gz
+	sha256sums = 961330e0b833793a6d58a00f29b58869dab643a24bf7622b790a43a2dde6fa4b
 
 pkgname = kodi-devel
 	install = kodi-devel.install
