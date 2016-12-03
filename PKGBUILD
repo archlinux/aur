@@ -1,7 +1,7 @@
 # Maintainer: Adrien Prost-Boucle <adrien.prost-boucle@laposte.net>
 
 pkgname=kactus2-git
-pkgver=3.2.225.0.svn2627
+pkgver=3.2.298.0.svn2649
 pkgrel=1
 
 pkgdesc="Open source IP-XACT-based tool for ASIC, FPGA and embedded systems design"
@@ -14,14 +14,10 @@ makedepends=('qt5-tools')
 
 source=(
 	'svn://svn.code.sf.net/p/kactus2/code/trunk'
-	'Kactus2.pri.patch'
-	'IPlugin.h.patch'
 	'Makefile.patch'
 )
 md5sums=(
 	'SKIP'
-	'71f78b07b45d926833160a251da484cc'
-	'0463894cd56b192df5e42b231f86874f'
 	'4f6cd25d0891c11dd4adca5610d3ef55'
 )
 
@@ -36,18 +32,12 @@ pkgver() {
 	echo $_distver.svn$_svnver;
 }
 
-prepare() {
-	cd "trunk"
-
-	patch -p0 -N -i "${startdir}"/Kactus2.pri.patch || true
-	patch -p0 -N -i "${startdir}"/IPlugin.h.patch || true
-}
-
 build() {
 	cd "trunk"
 
 	./configure --prefix=/usr
 
+	# Patch the generated Makefile: fix some install recipes
 	patch -p0 -N -i "${startdir}"/Makefile.patch
 
 	make
