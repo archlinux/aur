@@ -8,7 +8,7 @@ _buildver=163.8671
 _pkgver=1.0
 _eap="True"
 pkgver="${_pkgver}.${_buildver}"
-pkgrel=1
+pkgrel=2
 pkgdesc="A cross-platform C# IDE by JetBrains."
 arch=('any')
 options=('!strip')
@@ -21,7 +21,7 @@ conflicts=("rider")
 groups=("development" "IDE" "editor" "jetbrains")
 
 _srcfile="riderRS-${_buildver}.tar.gz"
-source=("http://download.jetbrains.com/resharper/${_srcfile}"
+source=("https://download.jetbrains.com/resharper/${_srcfile}"
         "${pkgname}.desktop")
 sha256sums=($(wget -q "${source}.sha256" && cat "${_srcfile}.sha256" | cut -f1 -d" ")
             'c587386c310274e67aa1b0ae8e83dfd1c1987e2b911b389bb999ad06308a8a78')
