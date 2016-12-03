@@ -1,5 +1,5 @@
 pkgname=mingw-w64-hunspell
-pkgver=1.5.3
+pkgver=1.5.4
 pkgrel=1
 pkgdesc="Spell checker and morphological analyzer library (mingw-w64)"
 arch=(any)
@@ -11,7 +11,7 @@ optdepends=(mingw-w64-readline)
 options=(!strip !buildflags staticlibs !debug !emptydirs)
 source=("https://github.com/hunspell/hunspell/archive/v${pkgver}.tar.gz"
 "0005-windows-sub-dicts-paths.patch")
-md5sums=('f7d54255e79b8457f5880b3c966e62c2'
+md5sums=('9849a2381bacbeb2714034ad825bede8'
          '8f3f269734623b2c57521202877c51bd')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
