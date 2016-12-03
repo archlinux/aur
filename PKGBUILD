@@ -2,10 +2,10 @@
 # Contributor:  eadrom <eadrom@archlinux.info>
 # Contributor:  Martin Wimpress <code@flexion.org>
 
-_ver=1.15
+_ver=1.17
 _pkgbase=mate-control-center
 pkgname="${_pkgbase}-dev"
-pkgver=${_ver}.2
+pkgver=${_ver}.0
 pkgrel=1
 pkgdesc="The Control Center for MATE"
 url="http://mate-desktop.org"
@@ -23,7 +23,7 @@ makedepends=('docbook2x' 'mate-common-dev' 'yelp-tools' 'libmatekbd' 'libunique3
 optdepends=('yelp: for reading MATE help documents')
 groups=('mate')
 source=("http://pub.mate-desktop.org/releases/${_ver}/${_pkgbase}-${pkgver}.tar.xz")
-sha1sums=('b8b8f2d6e9571af0f8c5a29f171a738c83435f60')
+sha1sums=('09791e63894221ee005d51b4589e6c5cf6c4ccfc')
 
 prepare() {
     cd "${srcdir}"
