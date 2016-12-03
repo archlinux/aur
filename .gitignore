@@ -1,3 +1,4 @@
 pkg/
 src/
-encfsui-
+*.tar
+*.[gx]z
