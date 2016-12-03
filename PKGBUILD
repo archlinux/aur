@@ -1,14 +1,14 @@
 # Maintainer: Michiel <code@m01.eu>
 pkgname=m2m-aligner
 pkgver=1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Many-to-Many alignment model"
 arch=('i686' 'x86_64')
 url="https://code.google.com/p/m2m-aligner/"
 license=('MIT')
 groups=('base-devel')
 depends=('gcc-libs')
-source=(https://$pkgname.googlecode.com/files/$pkgname-$pkgver.tar.gz)
+source=(https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/$pkgname/$pkgname-$pkgver.tar.gz)
 sha1sums=('7aa1406a367835dd88a3b898d9dc5d104eabea61')
 
 build() {
