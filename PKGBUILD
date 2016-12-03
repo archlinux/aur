@@ -2,7 +2,7 @@
 
 pkgname=php-memcache
 pkgver=3.0.8
-pkgrel=4
+pkgrel=5
 _commit=fdbd46bbc6f53ed6e024521895e142cbfc9b3340
 pkgdesc="Memcache module for PHP"
 arch=('i686' 'x86_64')
@@ -26,7 +26,12 @@ prepare() {
   # Remove flaky tests
   #   [tests/040.phpt] memcache->increment()/decrement() with multiple keys
   #   [tests/042.phpt] memcache->set() with multiple values
-  rm tests/{040,042}.phpt
+  #   strange keys [tests/005.phpt]
+  #   ini_set('session.save_handler') [tests/036.phpt]
+  #   ini_set('memcache.session_redundancy') [tests/044.phpt]
+  #   ini_set('session.save_handler') with unix domain socket [tests/053.phpt]
+  #   session locking [tests/057.phpt]
+  rm tests/{005,036,040,042,044,053,057}.phpt
 }
 
 build() {
