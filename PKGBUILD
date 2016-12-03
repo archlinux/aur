@@ -12,9 +12,9 @@ arch=('i686' 'x86_64')
 url="https://forums.taleworlds.com/index.php?topic=72279.0"
 license=('GPL')
 depends=('qt5-base' 'glew' 'glu')
-makedepends=('icoutils' 'subversion' 'git')
+makedepends=('icoutils' 'git' 'coreutils') # add coreutils for nproc
 install=openbrf.install
-source=('git+https://github.com/cfcohen/openbrf.git' 'svn://svn.code.sf.net/p/vcg/code/trunk/vcglib')
+source=('git+https://github.com/cfcohen/openbrf' 'git+https://github.com/cnr-isti-vclab/vcglib')
 md5sums=('SKIP' 'SKIP')
 
 pkgver()
@@ -26,12 +26,16 @@ build()
 {
 	cd "openbrf"
 
+	# extract all the Windows icon sub-images, we can later grab the 256px
+	# version and use it in Linux as XDG PNG icon.
 	icotool -x openBrf.ico
 
 	# use the correct location for our VCG lib, instead of the custom hardcoded path
-	sed -e "s/VCGLIB = \/home\/cory\/Source\/VCGLib/VCGLIB = ..\/vcglib/" openBrf.pro --in-place
+	sed -e "s/VCGLIB = /VCGLIB = ..\/vcglib\/ #/" openBrf.pro --in-place
+
+	# build it as fast as possible, but leaving a free CPU core for other stuff!
 	qmake -makefile openBrf.pro
-	make -j 4
+	make -j $[`nproc` - 1]
 }
 
 package()
@@ -75,6 +79,7 @@ EOF
   <generic-icon name="openbrf"/>
   <acronym>BRF</acronym>
   <comment>Mount&amp;Blade Binary Resource File</comment>
+  <comment xml:lang="es">Recurso binario de Mount&amp;Blade</comment>
   <glob pattern="*.brf"/>
 </mime-type>
 </mime-info>

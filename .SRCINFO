@@ -8,13 +8,13 @@ pkgbase = openbrf
 	arch = x86_64
 	license = GPL
 	makedepends = icoutils
-	makedepends = subversion
 	makedepends = git
+	makedepends = coreutils
 	depends = qt5-base
 	depends = glew
 	depends = glu
-	source = git+https://github.com/cfcohen/openbrf.git
-	source = svn://svn.code.sf.net/p/vcg/code/trunk/vcglib
+	source = git+https://github.com/cfcohen/openbrf
+	source = git+https://github.com/cnr-isti-vclab/vcglib
 	md5sums = SKIP
 	md5sums = SKIP
 
