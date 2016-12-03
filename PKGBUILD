@@ -2,7 +2,7 @@
 # Previously contributed by StormBlast and Vyazovoi
 
 pkgname=gxneur
-pkgver=0.19.0
+pkgver=0.20.0
 pkgrel=1
 pkgdesc='GTK frontend for XNeur'
 url="http://www.xneur.ru"
@@ -10,11 +10,10 @@ arch=('i686' 'x86_64')
 license=('GPL')
 depends=('libglade' "xneur>=$pkgver" 'gconf')
 source=("https://raw.githubusercontent.com/AndrewCrewKuznetsov/xneur-devel/master/dists/$pkgver/gxneur_$pkgver.orig.tar.gz")
-md5sums=('42f43cdc16517c84ef1b6ac64b8b9fb3')
+md5sums=('fbd9099e998f49a95ff44d6c922097d2')
 
 build() {
    cd $srcdir/$pkgname-$pkgver
-CPPFLAGS="-Wno-misleading-indentation -Wno-unused-variable"
    ./configure --prefix=/usr
    make
 }
