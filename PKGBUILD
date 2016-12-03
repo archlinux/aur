@@ -9,7 +9,7 @@ arch=("any")
 depends=("python")
 source=("$url/archive/$pkgver.tar.gz")
 install=install.sh
-sha256sums=('d97326de1ac44186de0243f2755f44ca037b488acba669c967df4404df11d39e')
+md5sums=('5bb5924bd40d51471ff9db78da877ace')
 
 package() {
   cd "$pkgname-$pkgver"
