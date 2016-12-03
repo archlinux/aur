@@ -1,14 +1,14 @@
-# Maintainer: Michael Straube <michael_straube@web.de>
+# Maintainer: Michael Straube <straubem@gmx.de>
 # Contributor: Sven Schneider <archlinux.sandmann@googlemail.com>
 # Contributor: Jason Melton <jason.melton@gmail.com>
 
 pkgname=stuntrally
 pkgver=2.6
-pkgrel=1
+pkgrel=2
 pkgdesc="A 3D racing game based on VDrift and OGRE with track editor"
 arch=('i686' 'x86_64')
 license=('GPL3')
-url="https://github.com/stuntrally/stuntrally"
+url="http://stuntrally.tuxfamily.org"
 depends=('ogre>=1.9' 'mygui' 'sdl2' 'libvorbis' 'enet' 'bullet' 'openal' 'hicolor-icon-theme')
 makedepends=('cmake' 'boost')
 source=("stuntrally-$pkgver.tar.gz::https://github.com/stuntrally/stuntrally/archive/$pkgver.tar.gz"
@@ -25,16 +25,19 @@ prepare() {
 
   # https://github.com/stuntrally/stuntrally/commit/58e9d66
   patch -p1 -i ../bullet-2.84+.patch
+
+  # https://github.com/stuntrally/stuntrally/commit/f7703d8
   patch -p1 -i ../gcc-6.patch
-}
 
-build() {
-  cd $pkgname-$pkgver
-
+  # copy tracks into source directory
   mkdir data/tracks
   cp -r ../tracks-$pkgver/* data/tracks
 
-  mkdir build && cd build
+  mkdir build
+}
+
+build() {
+  cd $pkgname-$pkgver/build
 
   cmake .. \
     -DCMAKE_INSTALL_PREFIX=/usr \
