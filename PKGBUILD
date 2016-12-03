@@ -3,7 +3,7 @@
 
 pkgname=zulucrypt
 pkgver=5.0.2
-pkgrel=1
+pkgrel=2
 _altpkgname=zuluCrypt
 pkgdesc="A cli and gui frontend to cryptsetup"
 url="http://mhogomchungu.github.io/${_altpkgname}"
@@ -18,7 +18,6 @@ source=("https://github.com/mhogomchungu/zuluCrypt/releases/download/${pkgver}/$
 md5sums=('d19196a647ecc3c75e48f396ae041234')
 sha256sums=('36441c7444e9e45ce6b0dbc47dbecf8d17226edc49eecd4ad0b93c9729cbccae')
 changelog=${pkgname}.changelog
-install=${pkgname}.install
 
 build() {
   cd "${srcdir}/${_altpkgname}-${pkgver}"

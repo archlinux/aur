@@ -1,9 +1,8 @@
 pkgbase = zulucrypt
 	pkgdesc = A cli and gui frontend to cryptsetup
 	pkgver = 5.0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://mhogomchungu.github.io/zuluCrypt
-	install = zulucrypt.install
 	changelog = zulucrypt.changelog
 	arch = x86_64
 	arch = i686
