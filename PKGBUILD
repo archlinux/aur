@@ -1,4 +1,4 @@
-# Maintainer: Michael Straube <michael_straube@web.de>
+# Maintainer: Michael Straube <straubem@gmx.de>
 # Contributor: Loui Chang <louipc dot ist at no spam gmail company>
 
 pkgname=tomatoes
@@ -9,8 +9,8 @@ url="http://tomatoes.sourceforge.net"
 license=('ZLIB')
 arch=('i686' 'x86_64')
 depends=('sdl_image' 'sdl_mixer' 'glu')
-source=("http://downloads.sourceforge.net/$pkgname/$pkgname-linux-src-$pkgver.tar.bz2"
-        "http://downloads.sourceforge.net/$pkgname/$pkgname-linux-1.5.tar.bz2"
+source=("https://downloads.sourceforge.net/$pkgname/$pkgname-linux-src-$pkgver.tar.bz2"
+        "https://downloads.sourceforge.net/$pkgname/$pkgname-linux-1.5.tar.bz2"
         "0001-tomatoes-1.55-makefile-Append-to-compile-flags.patch"
         "0002-tomatoes-1.55-Quell-const-char-conversion-warnings.patch"
         "0003-tomatoes-1.55-config-hiscore-file-saving-loading.patch"
