@@ -2,7 +2,7 @@
 # Contributor: Franco Masotti <franco dot masotti at student dot unife dot it>
 pkgname=swish-cplint
 pkgver=r1673.4e5dd96
-pkgrel=4
+pkgrel=5
 pkgdesc="SWI-Prolog for SHaring: a SWI-Prolog web IDE integrated with the cplint suite"
 arch=('x86_64')
 url="https://github.com/friguzzi/swish"
@@ -10,6 +10,7 @@ license=('BSD')
 depends=('libxinerama'
          'libxpm'
          'git'
+         'graphviz'
          'swi-prolog-devel'
          'rserve-sandbox-docker')
 makedepends=('git'
