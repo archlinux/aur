@@ -26,6 +26,6 @@ package() {
 #!/bin/sh
 LD_PRELOAD=libcurl.so.3 exec /opt/dotnet/dotnet "\$@"
 EOF
-  chmod +x /usr/bin/dotnet
+  chmod +x "${pkgdir}/usr/bin/dotnet"
   chown -R 0:0 "${pkgdir}/opt/dotnet"
 }
