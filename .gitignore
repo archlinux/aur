@@ -1,6 +1,5 @@
 *.pkg.tar*
 *.src.tar*
-*.gz
-*.sig
+/ntpsec/
 src
 pkg
