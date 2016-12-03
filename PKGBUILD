@@ -2,8 +2,8 @@
 
 pkgname=belle
 _name=Belle
-pkgver=0.5
-pkgrel=2
+pkgver=0.6
+pkgrel=1
 pkgdesc="Qt Graphic Editor"
 arch=(i686 x86_64)
 url="http://opendesktop.org/content/show.php/Belle?content=155259"
@@ -13,7 +13,7 @@ depends=('qt4')
 #source=(http://download.savannah.gnu.org/releases/${pkgname}/${_name}_${pkgver}a-src.tar.gz "${pkgname}.desktop")
 source=("https://github.com/fr33mind/Belle/archive/${pkgver}a.tar.gz" "${pkgname}.desktop")
 
-md5sums=('2ae62f9a8e1f79790a987050006a82e1'
+md5sums=('3965f85976767d48609e623b1f11bc8e'
          '4ee8afc35b6c725e6be1e720d00ad3fc')
 
 package() {
