@@ -7,8 +7,8 @@
 # All my PKGBUILDs are managed at https://github.com/Martchus/PKGBUILDs where
 # you also find the URL of a binary repository.
 
-pkgname=mingw-w64-angleproject
-pkgver=2.1.r6289.f097e23
+pkgname=(mingw-w64-angleproject{,-samples})
+pkgver=2.1.r6381.9f09037
 pkgrel=1
 pkgdesc='ANGLE project (mingw-w64)'
 arch=('any')
@@ -17,7 +17,8 @@ license=('BSD')
 depends=('mingw-w64-crt')
 makedepends=('mingw-w64-gcc' 'git' 'gyp-git' 'depot-tools-git' 'python' 'python2')
 options=('!strip' '!buildflags' 'staticlibs')
-source=('angleproject::git+https://chromium.googlesource.com/angle/angle#commit=f097e23'
+source=('angleproject::git+https://chromium.googlesource.com/angle/anglecommit=f097e23'
+        'additional-mingw-header::git+https://github.com/Martchus/additional-mingw-header.git'
         'additional-mingw-header::git+https://github.com/Martchus/additional-mingw-header.git#commit=7a8f394'
         '0001-Provide-workaround-for-building-static-libs.patch'
         '0002-Provide-Windows-XP-support.patch'
@@ -26,17 +27,22 @@ source=('angleproject::git+https://chromium.googlesource.com/angle/angle#commit=
         '0005-Export-shader-API-via-libGLESv2.dll.patch'
         '0006-Make-GLintptr-and-GLsizeiptr-match-those-from-Qt-5.patch'
         '0007-Remove-copy_scripts-target.patch'
-        '0008-Fix-generation-of-commit_id.h.patch')
+        '0008-Fix-generation-of-commit_id.h.patch'
+        '0009-Ensure-dependencies-of-samples-are-found.patch'
+        '0010-Win32_system_utils.cpp-Make-implicit-cast-explicit.patch')
 sha256sums=('SKIP'
             'SKIP'
-            'b90c65737137d3e4f146fcd7fcb7c1893f071888046c8125c41470a800b4ac72'
-            'e79008c38c429937985812e525c71292bd612f6a3844abb328d2837fd69ce763'
-            '08e47bb775a032a470f9fc995f1a06721b0431c30c2b7a79ca083ea06d0a9622'
-            'd7a0c9de5c91aa9d5364fa453240309d30c0a17ea85dde979c85b836916ae11e'
-            '50db99bc4f7fc8d68fc1ae5d5826f1938714b9f5a06d62ece718a02d1b0d4a2d'
-            '7dc50ef89e3af1b99d41ba25e1ad7acb62a0abd4008a23b298aa3c224751934a'
-            '66852b4499763955f27906599567a0a4712218d5e739feb550a8a13eaa2d43f0'
-            '521251e4ffd280f4344de1ece6393820b57517c457dbb695a673d865d71b5ed2')
+            'SKIP'
+            '59bc63ccf6d46db725bac5e259941677586315553cb545c51c2fb339e7c586c6'
+            '595d5f807b69947d55d4b6285b5dc687cc16d15b6a8c56ec79f496001bbd1f2e'
+            '2c5de1623d3ee2a8818063edaea287d1d684785a3443b4f7a2db482c45c59194'
+            'd2ed2cf0518fc09b472b17db857d979189b660135347b4c19be8e7352c032ed4'
+            'a214c2bb6a1472843227b27cf6963113e4e42e5051dfa4ba9dbdfd353da887b5'
+            '34e363820e24df349b5798526bd7040aaf5224086310d92901b71b2e5285cd96'
+            '8098e5f6999ffb15761a4bea668e14fbe9af9af94c2ec504fd6b6421198a938a'
+            '9a17c871dfcef1bde47d54a12ba1d3ad88c2349d3bede4b12fa9c9453f0a1129'
+            '106e5607986669bba430d1b021e180f27c595d31d3ba239cad26583f423eccd2'
+            '2b195f1238b433fb68564f9c53adfc0d715cc4908c4ab0b9dd5977c88b763620')
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
 
 #pkgver() {
@@ -76,7 +82,7 @@ build() {
   # Set common build flags and make sure all header files are found
   local CXXFLAGS_COMMON="\
     -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions --param=ssp-buffer-size=4 -std=c++11 -msse2\
-    -DUNICODE -D_UNICODE -DANGLE_WINDOWS_XP_SUPPORT\
+    -DUNICODE -D_UNICODE -DANGLE_WINDOWS_XP_SUPPORT -D_USE_MATH_DEFINES\
     -I${srcdir}/angleproject/include\
     -I${srcdir}/angleproject/sysinclude\
     -I${srcdir}/angleproject/src\
@@ -86,7 +92,7 @@ build() {
   export GYP_GENERATORS=ninja
 
   for _arch in ${_architectures}; do
-    mkdir -p build-${_arch} && pushd build-${_arch}
+    mkdir -p build-${_arch}-shared && pushd build-${_arch}-shared
 
     # Set ar/compiler and architecture specific compiler flags
     export CC="${_arch}-gcc"
@@ -104,12 +110,15 @@ build() {
     fi
 
     # Compose args for gyp and ninja
-    local gyp_args="-D use_ozone=0 -D OS=win -D TARGET=$target -D MSVS_VERSION='' --depth . -I ../build/common.gypi ../src/angle.gyp"
+    local gyp_args="-D use_ozone=0 -D use_x11=0 -D OS=win -D TARGET=$target -D MSVS_VERSION='' --depth . -I ../gyp/common.gypi ../src/angle.gyp"
     local ninja_args="-C out/Release -j $(nproc)"
 
     # Build shared libs
-    gyp $gyp_args
+    gyp $gyp_args ../samples/samples.gyp
     ninja $ninja_args
+
+    popd
+    mkdir -p build-${_arch}-static && pushd build-${_arch}-static
 
     # Build static libs
     gyp $gyp_args -D angle_gl_library_type=static_library
@@ -126,20 +135,57 @@ build() {
   done
 }
 
-package() {
+package_mingw-w64-angleproject() {
+  depends=('mingw-w64-crt')
+
   for _arch in ${_architectures}; do
-    cd "${srcdir}/angleproject/build-${_arch}"
     mkdir -p "${pkgdir}/usr/${_arch}/"{bin,lib,include}
-    install out/Release/lib/libGLESv2.so "${pkgdir}/usr/${_arch}/bin/libGLESv2.dll"
-    install out/Release/lib/libEGL.so "${pkgdir}/usr/${_arch}/bin/libEGL.dll"
+
+    # shared build
+    cd "${srcdir}/angleproject/build-${_arch}-shared/out/Release"
     install \
-        out/Release/libGLESv2.dll.a \
-        out/Release/libEGL.dll.a \
-        out/Release/src/lib*.a \
+        lib/libGLESv2.so \
+        "${pkgdir}/usr/${_arch}/bin/libGLESv2.dll"
+    install \
+        lib/libEGL.so \
+        "${pkgdir}/usr/${_arch}/bin/libEGL.dll"
+    install \
+        libGLESv2.dll.a \
+        libEGL.dll.a \
+        src/lib*.a \
         "${pkgdir}/usr/${_arch}/lib/"
-    cp -Rv ../include/* "${pkgdir}/usr/${_arch}/include/"
+    cp -Rv \
+        ../../../include/* \
+        "${pkgdir}/usr/${_arch}/include/"
+
+    # static build
+    cd "${srcdir}/angleproject/build-${_arch}-static/out/Release"
+    install \
+        src/lib*.a \
+        "${pkgdir}/usr/${_arch}/lib/"
 
     ${_arch}-strip --strip-unneeded "${pkgdir}/usr/${_arch}/bin/"*.dll
     ${_arch}-strip -g "${pkgdir}/usr/${_arch}/lib/"*.a
   done
 }
+
+package_mingw-w64-angleproject-samples() {
+  pkgdesc='ANGLE project samples (mingw-w64)'
+  depends=('mingw-w64-angleproject')
+
+  for _arch in ${_architectures}; do
+    mkdir -p "${pkgdir}/usr/${_arch}/"{bin,share/angleproject}
+
+    cd "${srcdir}/angleproject/build-${_arch}-shared/out/Release"
+    for sample in $(find . -maxdepth 1 -type f -not -iname '*.*'); do
+      install "$sample" "${pkgdir}/usr/${_arch}/bin/$sample.exe"
+    done
+    install \
+        *.tga \
+        *.glsl \
+        "${pkgdir}/usr/${_arch}/share/angleproject"
+
+    ${_arch}-strip --strip-all "${pkgdir}/usr/${_arch}/bin/"*.exe
+  done
+}
+

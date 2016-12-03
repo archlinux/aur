@@ -1,7 +1,7 @@
-From 5cb25e912901941875d7a4498d6a3e668b6069c3 Mon Sep 17 00:00:00 2001
+From 788c799af2c1e8e8e9aa0ddb51341c5f0eb94eaa Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sun, 25 Sep 2016 23:03:18 +0200
-Subject: [PATCH 3/8] Fix dynamic libraries
+Subject: [PATCH 03/10] Fix dynamic libraries
 
 - Create import libs
 - Use correct *.def file
@@ -15,7 +15,7 @@ Subject: [PATCH 3/8] Fix dynamic libraries
  create mode 100644 src/libGLESv2/libGLESv2_mingw32.def
 
 diff --git a/src/libEGL.gypi b/src/libEGL.gypi
-index 813b006..1176136 100644
+index 86158a6..05a2c24 100644
 --- a/src/libEGL.gypi
 +++ b/src/libEGL.gypi
 @@ -34,6 +34,12 @@
@@ -91,10 +91,10 @@ index 0000000..6cecc64
 +    eglCreatePlatformPixmapSurface@16   @46
 +    eglWaitSync@12                      @47
 diff --git a/src/libGLESv2.gypi b/src/libGLESv2.gypi
-index 39600c6..dac2dae 100644
+index d0dc945..325ffc8 100644
 --- a/src/libGLESv2.gypi
 +++ b/src/libGLESv2.gypi
-@@ -1052,6 +1052,12 @@
+@@ -1067,6 +1067,12 @@
                  {
                      'msvs_requires_importlibrary' : 'true',
                  }],

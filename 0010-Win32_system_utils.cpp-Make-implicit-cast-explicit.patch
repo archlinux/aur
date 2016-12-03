@@ -1,0 +1,26 @@
+From fafa411904d7f8814298c5b82d107a7aeccf5ed7 Mon Sep 17 00:00:00 2001
+From: Martchus <martchus@gmx.net>
+Date: Fri, 2 Dec 2016 23:58:32 +0100
+Subject: [PATCH 10/10] Win32_system_utils.cpp: Make implicit cast explicit
+
+Required to build with mingw-w64
+---
+ util/windows/win32/Win32_system_utils.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/util/windows/win32/Win32_system_utils.cpp b/util/windows/win32/Win32_system_utils.cpp
+index a9fd97f..83eb626 100644
+--- a/util/windows/win32/Win32_system_utils.cpp
++++ b/util/windows/win32/Win32_system_utils.cpp
+@@ -52,7 +52,7 @@ void *Win32Library::getSymbol(const std::string &symbolName)
+         return nullptr;
+     }
+ 
+-    return GetProcAddress(mModule, symbolName.c_str());
++    return reinterpret_cast<void *>(GetProcAddress(mModule, symbolName.c_str()));
+ }
+ 
+ Library *loadLibrary(const std::string &libraryName)
+-- 
+2.10.2
+

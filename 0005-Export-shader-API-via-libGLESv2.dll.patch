@@ -1,7 +1,7 @@
-From ccff4861fa86aa66aedc680f65c00aa0b190e7a9 Mon Sep 17 00:00:00 2001
+From 7b0e3346df5a0c8a6b5dd2215a4ecbb659082f5a Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sun, 25 Sep 2016 23:07:03 +0200
-Subject: [PATCH 5/8] Export shader API via libGLESv2.dll
+Subject: [PATCH 05/10] Export shader API via libGLESv2.dll
 
 Required by Qt WebKit
 ---
@@ -10,7 +10,7 @@ Required by Qt WebKit
  2 files changed, 22 insertions(+)
 
 diff --git a/src/compiler/translator/ShaderLang.cpp b/src/compiler/translator/ShaderLang.cpp
-index 37b1114..c9397b4 100644
+index b776ca5..15918be 100644
 --- a/src/compiler/translator/ShaderLang.cpp
 +++ b/src/compiler/translator/ShaderLang.cpp
 @@ -9,6 +9,17 @@

@@ -1,7 +1,7 @@
-From 17a753984f0385f1d54133b7809bfa6b37c3aa32 Mon Sep 17 00:00:00 2001
+From ff82c98d45686bdd081c51e3e32b5d88cea33780 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Tue, 9 Aug 2016 18:35:55 +0200
-Subject: [PATCH 1/8] Provide workaround for building static libs
+Subject: [PATCH 01/10] Provide workaround for building static libs
 
 See: https://bugs.chromium.org/p/angleproject/issues/detail?id=1251
 

@@ -1,7 +1,7 @@
-From 1ea025fac01f94d61d254309418ef470c36cbd4c Mon Sep 17 00:00:00 2001
+From 09d3f7afd742870db9e177f43b8962043bd972ff Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sun, 6 Nov 2016 17:57:18 +0100
-Subject: [PATCH 7/8] Remove copy_scripts target
+Subject: [PATCH 07/10] Remove copy_scripts target
 
 Executing .bat scripts on Linux is a no-go
 ---
@@ -11,7 +11,7 @@ Executing .bat scripts on Linux is a no-go
  3 files changed, 85 deletions(-)
 
 diff --git a/BUILD.gn b/BUILD.gn
-index 3ade282..8842d96 100644
+index 4232008..f3ecf89 100644
 --- a/BUILD.gn
 +++ b/BUILD.gn
 @@ -60,17 +60,6 @@ config("extra_warnings") {
@@ -31,8 +31,8 @@ index 3ade282..8842d96 100644
 -
  angle_undefine_configs = [ "//build/config/compiler:default_include_dirs" ]
  
- static_library("translator") {
-@@ -421,12 +410,6 @@ static_library("libANGLE") {
+ # Holds the shared includes so we only need to list them once.
+@@ -396,12 +385,6 @@ static_library("libANGLE") {
      ":libANGLE_config",
      ":internal_config",
    ]
@@ -46,7 +46,7 @@ index 3ade282..8842d96 100644
  
  config("shared_library_public_config") {
 diff --git a/src/angle.gyp b/src/angle.gyp
-index 578f0f3..083c760 100644
+index e4e8ba9..7a4061d 100644
 --- a/src/angle.gyp
 +++ b/src/angle.gyp
 @@ -169,27 +169,6 @@
@@ -57,7 +57,7 @@ index 578f0f3..083c760 100644
 -        {
 -            'target_name': 'copy_scripts',
 -            'type': 'none',
--            'includes': [ '../build/common_defines.gypi', ],
+-            'includes': [ '../gyp/common_defines.gypi', ],
 -            'hard_dependency': 1,
 -            'copies':
 -            [
@@ -80,7 +80,7 @@ index 578f0f3..083c760 100644
 @@ -201,7 +180,6 @@
                      'target_name': 'commit_id',
                      'type': 'none',
-                     'includes': [ '../build/common_defines.gypi', ],
+                     'includes': [ '../gyp/common_defines.gypi', ],
 -                    'dependencies': [ 'copy_scripts', ],
                      'hard_dependency': 1,
                      'actions':
@@ -97,7 +97,7 @@ index 578f0f3..083c760 100644
 -                    'target_name': 'copy_compiler_dll',
 -                    'type': 'none',
 -                    'dependencies': [ 'copy_scripts', ],
--                    'includes': [ '../build/common_defines.gypi', ],
+-                    'includes': [ '../gyp/common_defines.gypi', ],
 -                    'conditions':
 -                    [
 -                        ['angle_build_winrt==0',
@@ -131,10 +131,10 @@ index 578f0f3..083c760 100644
      ] # conditions
  }
 diff --git a/src/libGLESv2.gypi b/src/libGLESv2.gypi
-index 1267cc2..56c3e99 100644
+index cd69e44..506147e 100644
 --- a/src/libGLESv2.gypi
 +++ b/src/libGLESv2.gypi
-@@ -1020,13 +1020,6 @@
+@@ -1035,13 +1035,6 @@
                          'ANGLE_ENABLE_NULL',
                      ],
                  }],

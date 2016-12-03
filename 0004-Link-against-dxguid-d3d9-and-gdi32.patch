@@ -1,15 +1,16 @@
-From d3d4fba06e0e8f0c80a1573b1a002ac76bbe9c5b Mon Sep 17 00:00:00 2001
+From 1d4cb8b14bb7d52ccec0828bcd489e683afb2aa7 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sun, 25 Sep 2016 23:05:02 +0200
-Subject: [PATCH 4/8] Link against dxguid, d3d9 and gdi32
+Subject: [PATCH 04/10] Link against dxguid, d3d9 and gdi32
 
 ---
  src/libEGL.gypi    | 3 +++
  src/libGLESv2.gypi | 3 +++
- 2 files changed, 6 insertions(+)
+ util/util.gyp      | 7 +++++++
+ 3 files changed, 13 insertions(+)
 
 diff --git a/src/libEGL.gypi b/src/libEGL.gypi
-index 1176136..03fb651 100644
+index 05a2c24..aaa8bbf 100644
 --- a/src/libEGL.gypi
 +++ b/src/libEGL.gypi
 @@ -41,6 +41,9 @@
@@ -23,10 +24,10 @@ index 1176136..03fb651 100644
      ],
  }
 diff --git a/src/libGLESv2.gypi b/src/libGLESv2.gypi
-index dac2dae..1267cc2 100644
+index 325ffc8..cd69e44 100644
 --- a/src/libGLESv2.gypi
 +++ b/src/libGLESv2.gypi
-@@ -1059,6 +1059,9 @@
+@@ -1074,6 +1074,9 @@
                      'ldflags': [ '-Wl,--out-implib,libGLESv2.dll.a ../../../src/libGLESv2/libGLESv2.def' ],
                  }],
              ],
@@ -36,6 +37,24 @@ index dac2dae..1267cc2 100644
          },
      ],
  }
+diff --git a/util/util.gyp b/util/util.gyp
+index 08d4951..b8e08c1 100644
+--- a/util/util.gyp
++++ b/util/util.gyp
+@@ -144,6 +144,13 @@
+                     [
+                         '<@(util_win32_sources)',
+                     ],
++                    'link_settings':
++                    {
++                        'libraries':
++                        [
++                            '-lgdi32',
++                        ]
++                    },
+                 }],
+                 ['OS=="win" and angle_build_winrt==1',
+                 {
 -- 
 2.10.2
 

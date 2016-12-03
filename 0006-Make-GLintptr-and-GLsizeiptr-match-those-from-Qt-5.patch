@@ -1,7 +1,7 @@
-From b8ed09b39d8ce1d846a48bafc15490277bbedb2f Mon Sep 17 00:00:00 2001
+From a870a46b2058f7c966533edd726269a6ddd6ce5a Mon Sep 17 00:00:00 2001
 From: Jose Santiago <jsantiago@haivision.com>
 Date: Thu, 3 Nov 2016 09:38:19 -0500
-Subject: [PATCH 6/8] Make GLintptr and GLsizeiptr match those from Qt 5
+Subject: [PATCH 06/10] Make GLintptr and GLsizeiptr match those from Qt 5
 
 Fix compiling mingw-w64-qt5-base-dynamic and mingw-w64-qt5-webkit
 ---

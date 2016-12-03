@@ -1,7 +1,7 @@
-From 9d67527bab497a3c0030ddc4b2f7467f58bf3a85 Mon Sep 17 00:00:00 2001
+From 8e25f3d25b3a3817e0e5b3aab5968a21e64b8c7e Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Tue, 9 Aug 2016 19:15:20 +0200
-Subject: [PATCH 2/8] Provide Windows XP support
+Subject: [PATCH 02/10] Provide Windows XP support
 
 ---
  src/common/string_utils.cpp | 2 +-

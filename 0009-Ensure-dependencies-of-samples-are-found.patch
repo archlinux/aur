@@ -1,0 +1,80 @@
+From 4c6bc08c7b66806b4284275a25d5ffa3aa72c666 Mon Sep 17 00:00:00 2001
+From: Martchus <martchus@gmx.net>
+Date: Fri, 2 Dec 2016 23:55:03 +0100
+Subject: [PATCH 09/10] Ensure dependencies of samples are found
+
+---
+ samples/samples.gyp | 10 +++++-----
+ util/util.gyp       | 16 ++++++++--------
+ 2 files changed, 13 insertions(+), 13 deletions(-)
+
+diff --git a/samples/samples.gyp b/samples/samples.gyp
+index 66bda6d..3bcd2d5 100644
+--- a/samples/samples.gyp
++++ b/samples/samples.gyp
+@@ -19,17 +19,17 @@
+             'includes': [ '../gyp/common_defines.gypi', ],
+             'dependencies':
+             [
+-                '<(angle_path)/src/angle.gyp:libEGL',
+-                '<(angle_path)/src/angle.gyp:libGLESv2',
+-                '<(angle_path)/util/util.gyp:angle_util',
++                '../src/angle.gyp:libEGL',
++                '../src/angle.gyp:libGLESv2',
++                '../util/util.gyp:angle_util',
+             ],
+             'export_dependent_settings':
+             [
+-                '<(angle_path)/util/util.gyp:angle_util',
++                '../util/util.gyp:angle_util',
+             ],
+             'include_dirs':
+             [
+-                '<(angle_path)/include',
++                '../include',
+                 'sample_util',
+             ],
+             'sources':
+diff --git a/util/util.gyp b/util/util.gyp
+index b8e08c1..9c8c0af 100644
+--- a/util/util.gyp
++++ b/util/util.gyp
+@@ -100,18 +100,18 @@
+             'includes': [ '../gyp/common_defines.gypi', ],
+             'dependencies':
+             [
+-                '<(angle_path)/src/angle.gyp:angle_common',
+-                '<(angle_path)/src/angle.gyp:libEGL',
+-                '<(angle_path)/src/angle.gyp:libGLESv2',
++                '../src/angle.gyp:angle_common',
++                '../src/angle.gyp:libEGL',
++                '../src/angle.gyp:libGLESv2',
+             ],
+             'export_dependent_settings':
+             [
+-                '<(angle_path)/src/angle.gyp:angle_common',
++                '../src/angle.gyp:angle_common',
+             ],
+             'include_dirs':
+             [
+-                '<(angle_path)/include',
+-                '<(angle_path)/util',
++                '../include',
++                '../util',
+             ],
+             'sources':
+             [
+@@ -127,8 +127,8 @@
+             {
+                 'include_dirs':
+                 [
+-                    '<(angle_path)/include',
+-                    '<(angle_path)/util',
++                    '../include',
++                    '../util',
+                 ],
+                 'defines':
+                 [
+-- 
+2.10.2
+

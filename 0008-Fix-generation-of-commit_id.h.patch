@@ -1,7 +1,7 @@
-From 0232cb7cec579dae6ecb8d1b4c7d7d66b3771adf Mon Sep 17 00:00:00 2001
+From d4a2be49fbffa30f026ae9cbadfda2f882fc9ad9 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sun, 6 Nov 2016 18:46:15 +0100
-Subject: [PATCH 8/8] Fix generation of commit_id.h
+Subject: [PATCH 08/10] Fix generation of commit_id.h
 
 This might break compiling when not
 executing ninja in subdir of source tee
@@ -10,7 +10,7 @@ executing ninja in subdir of source tee
  1 file changed, 2 insertions(+), 2 deletions(-)
 
 diff --git a/src/angle.gyp b/src/angle.gyp
-index 083c760..0c149f3 100644
+index 7a4061d..090b391 100644
 --- a/src/angle.gyp
 +++ b/src/angle.gyp
 @@ -8,7 +8,7 @@
