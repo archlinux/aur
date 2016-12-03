@@ -1,11 +1,11 @@
 #Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=libxcm-git
-pkgver=0.5.3.34.gbb28687
+pkgver=0.5.3.41.g29efdc3
 pkgrel=1
 pkgdesc="A library containing the a reference implementation of the net-color specs. (GIT version)"
 arch=('i686' 'x86_64')
-url="http://www.oyranos.org/libxcm/"
+url='http://www.oyranos.org/libxcm'
 license=('BSD')
 depends=('libxfixes'
          'libxmu'
@@ -14,7 +14,7 @@ makedepends=('git')
 conflicts=('libxcm')
 provides=('libxcm')
 source=("git+https://github.com/oyranos-cms/libxcm.git")
-md5sums=('SKIP')
+sha256sums=('SKIP')
 
 pkgver() {
   cd libxcm
@@ -23,19 +23,18 @@ pkgver() {
 
 prepare() {
   cd libxcm
-
   autoreconf -f
 }
 
 build() {
   cd libxcm
-  LDFLAGS+=" -lm" ./configure \
+  ./configure \
     --prefix=/usr
   make
 }
 
 package() {
   make -C libxcm DESTDIR="${pkgdir}" install
-  install -Dm644 libxcm/docs/COPYING "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm644 libxcm/docs/COPYING.md "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.md"
 }
 
