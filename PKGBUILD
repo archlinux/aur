@@ -1,8 +1,8 @@
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=perl6-file-temp
-pkgver=0.0.2
-pkgrel=2
+pkgver=0.0.5
+pkgrel=1
 pkgdesc="Create temporary files"
 arch=('any')
 depends=('perl6' 'perl6-file-directory-tree')
