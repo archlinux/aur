@@ -20,6 +20,7 @@ import dbus.glib
 import SimpleHTTPServer
 import BaseHTTPServer
 import signal
+import socket
 
 avahi_service = None
 
@@ -99,6 +100,9 @@ class AvahiPublisher:
 	def unpublish(self):
 		self.group.Reset()
 
+class HTTPServerV6(BaseHTTPServer.HTTPServer):
+  address_family = socket.AF_INET6
+
 def main(args):
 	import optparse
 	parser = optparse.OptionParser()
@@ -125,7 +129,7 @@ def main(args):
 	
 	os.chdir('/var/cache/pacman/pkg')
 	handler = SimpleHTTPServer.SimpleHTTPRequestHandler
-	httpd = BaseHTTPServer.HTTPServer(('', port), handler)
+	httpd = HTTPServerV6(('', port), handler)
 
 	try:
 		httpd.serve_forever()
