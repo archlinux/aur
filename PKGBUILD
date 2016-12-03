@@ -5,10 +5,10 @@
 
 pkgname=neovim-fugitive
 pkgver=2.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A Git wrapper so awesome, it should be illegal"
 arch=('any')
-url="https://github.com/tpope/neovim-fugitive"
+url="https://github.com/tpope/vim-fugitive"
 license=('custom:vim')
 groups=('neovim-plugins')
 depends=('neovim')
