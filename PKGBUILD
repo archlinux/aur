@@ -1,7 +1,7 @@
 # Maintainer: Michael Yang <ohmyarchlinux@gmail.com>
 
 pkgname=spdlog-git
-pkgver=1.0.0.r1059.9ccb6af
+pkgver=1.0.0.r1082.68cc3e6
 pkgrel=1
 pkgdesc="Very fast, header only, C++ logging library"
 arch=('any')
