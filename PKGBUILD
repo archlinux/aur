@@ -5,7 +5,7 @@
 # Contributor: Jesus Alvarez <jeezusjr@gmail.com>
 
 pkgname=nim-git
-pkgver=20160405
+pkgver=20161201
 pkgrel=1
 pkgdesc="Compiled, garbage-collected systems programming language which has an excellent productivity/performance ratio"
 arch=('i686' 'x86_64')
@@ -29,20 +29,7 @@ prepare() {
   cd ${pkgname%-git}
 
   msg2 'Copying csources...'
-  cp -dpr --no-preserve=ownership "$srcdir/csources" .
-
-  # https://bugs.archlinux.org/task/48118
-  msg2 'Fixing doc comments...'
-  sed -i 's,\.\./doc/astspec\.txt,/usr/share/doc/nim/astspec.txt,' \
-    lib/core/macros.nim
-  sed -i 's,\.\./doc/regexprs\.txt,/usr/share/doc/nim/regexprs.txt,' \
-    lib/impure/re.nim
-  sed -i 's,doc/mytest\.cfg,/usr/share/doc/nim/mytest.cfg,' \
-    lib/pure/parsecfg.nim
-  sed -i 's,\.\./doc/pegdocs\.txt,/usr/share/doc/nim/pegdocs.txt,' \
-    lib/pure/pegs.nim
-  sed -i 's,\.\./doc/subexes\.txt,/usr/share/doc/nim/subexes.txt,' \
-    lib/pure/subexes.nim
+  git clone --local "$srcdir/csources"
 }
 
 build() {
