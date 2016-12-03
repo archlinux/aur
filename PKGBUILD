@@ -1,7 +1,7 @@
 # Maintainer: Pieter Goetschalckx <3.14.e.ter at gmail dot com>
 
 pkgname=webkit2png-git
-pkgver=r98.520112e
+pkgver=r115.4a82a81
 pkgrel=1
 pkgdesc="Takes screenshots using webkit"
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ makedepends=('git')
 source=("$pkgname::git+https://github.com/adamn/python-webkit2png.git"
         "webkit2png.patch")
 sha256sums=('SKIP'
-            '71c900fe1523ed7333454a517f8ce3db5dd6e35edb02f83833dfb82d5d3dcde3')
+            '0d07aa551c657ea6635a02a4f0962fde59f25bf30890d0ff043cf70f3d07a330')
 
 pkgver() {
   cd "$pkgname"
