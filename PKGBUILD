@@ -7,6 +7,7 @@ pkgver=375.20
 pkgrel=1
 arch=('x86_64')
 url="http://www.nvidia.com/"
+makedepends=('nvidia-libgl-beta')  # To avoid conflict during installation in the build chroot
 license=('custom:NVIDIA')
 options=('!strip')
 _pkg="NVIDIA-Linux-x86-$pkgver"
@@ -39,9 +40,9 @@ prepare() {
 
 package_lib32-opencl-nvidia-beta() {
   pkgdesc="NVIDIA's OpenCL implemention for 'lib32-nvidia-utils-beta' "
-  depends=('lib32-libcl' 'lib32-zlib' 'lib32-gcc-libs')
+  depends=('lib32-zlib' 'lib32-gcc-libs')
   optdepends=('opencl-headers: headers necessary for OpenCL development')
-  provides=('lib32-opencl-nvidia')
+  provides=('lib32-opencl-nvidia' 'lib32-opencl-driver')
   conflicts=('lib32-opencl-nvidia')
   cd $_pkg
 
@@ -59,9 +60,10 @@ package_lib32-opencl-nvidia-beta() {
 
 package_lib32-nvidia-libgl-beta() {
   pkgdesc="NVIDIA driver library symlinks for 'lib32-nvidia-utils-beta'"
-  depends=('lib32-nvidia-utils-beta')
-  provides=('lib32-libgl' 'lib32-nvidia-libgl')
-  conflicts=('lib32-libgl' 'lib32-nvidia-libgl' 'lib32-mesa<10.1.0-2')
+  depends=('lib32-nvidia-utils-beta' 'nvidia-libgl-beta')
+  provides=('lib32-libgl' 'lib32-libegl' 'lib32-libgles' 'lib32-nvidia-libgl')
+  conflicts=('lib32-libgl' 'lib32-libegl' 'lib32-libgles' 'lib32-nvidia-libgl')
+  replaces=('lib32-nvidia-utils<=313.26-1')
   cd $_pkg
 
   # libGL (link)
@@ -101,7 +103,7 @@ package_lib32-nvidia-libgl-beta() {
 
 package_lib32-nvidia-utils-beta() {
   pkgdesc="NVIDIA driver utilities and libraries (beta version) (32-bit)"
-  depends=('lib32-zlib' 'lib32-gcc-libs')
+  depends=('lib32-zlib' 'lib32-gcc-libs' 'nvidia-utils-beta')
   optdepends=('lib32-opencl-nvidia-beta: OpenCL support')
   provides=("lib32-nvidia-utils=$pkgver" 'lib32-libglvnd' 'lib32-vulkan-driver')
   conflicts=('lib32-nvidia-utils' 'lib32-libglvnd')
