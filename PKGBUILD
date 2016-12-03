@@ -1,5 +1,5 @@
 # Maintainer: Your Name <youremail@domain.com>
-pkgname=rana
+pkgname=aur-rana-git
 pkgver=1.0
 pkgrel=0
 pkgdesc="A better syntax for SGML"
