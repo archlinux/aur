@@ -2,7 +2,7 @@
 
 _pkgname=megasync
 pkgname="${_pkgname}-qt5"
-pkgver=2.9.8
+pkgver=2.9.10
 pkgrel=1
 pkgdesc="Sync your files to your Mega account (qt5 version)"
 arch=('i686' 'x86_64')
@@ -14,7 +14,7 @@ optdepends=("nautilus-megasync: for integration with nautilus")
 provides=("megasync=${pkgver}")
 conflicts=('megatools' 'megasync')
 source=("https://mega.nz/linux/MEGAsync/Debian_8.0/${_pkgname}_${pkgver}.orig.tar.gz")
-md5sums=('2f69968f02096bec83b8967c8102e342')
+md5sums=('9e8fc07533555de5eb8dfe832647097a')
 
 build() {
     export QT_SELECT=5
