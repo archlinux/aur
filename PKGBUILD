@@ -1,4 +1,4 @@
-# Maintainer: Michael Straube <michael_straube web de>
+# Maintainer: Michael Straube <straubem@gmx.de>
 
 pkgname=floodit
 pkgver=0.1.1
@@ -22,17 +22,17 @@ prepare() {
 
   sed -i 's/python/python2/' game.py
 
-  patch -p0 < "$srcdir/fix-savepath.patch"
+  patch -p0 < "$srcdir"/fix-savepath.patch
 }
 
 package() {
   cd FloodIt-$pkgver
 
-  install -dm755 "$pkgdir/usr/share/games/floodit"
-  cp -r data resources game.py "$pkgdir/usr/share/games/floodit/"
+  install -d "$pkgdir"/usr/share/games/floodit
+  cp -r data resources game.py "$pkgdir"/usr/share/games/floodit
 
-  install -Dm755 "$srcdir/floodit" "$pkgdir/usr/bin/floodit"
+  install -Dm755 "$srcdir"/floodit "$pkgdir"/usr/bin/floodit
 
-  install -Dm644 "$srcdir/floodit.desktop" \
-    "$pkgdir/usr/share/applications/floodit.desktop"
+  install -Dm644 "$srcdir"/floodit.desktop \
+    "$pkgdir"/usr/share/applications/floodit.desktop
 }
