@@ -1,7 +1,7 @@
 # Maintainer: Mathias Bragagia <youremail@domain.com>
 pkgname=numix-bevel-icon-theme
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Bevel icon theme from the Numix project"
 arch=('any')
 url="https://slackbuilds.org/repository/14.2/desktop/numix-icon-theme-bevel/"
@@ -25,5 +25,5 @@ package() {
 	mkdir $pkgdir/usr/
 	mkdir $pkgdir/usr/share/
 	mkdir $pkgdir/usr/share/icons/
-	mv -T $srcdir/numix-icon-theme-bevel-1.0+201410212340~8~ubuntu14.10.1/Numix-Bevel $pkgdir/usr/share/icons/
+	mv $srcdir/numix-icon-theme-bevel-1.0+201410212340~8~ubuntu14.10.1/Numix-Bevel $pkgdir/usr/share/icons/
 }
