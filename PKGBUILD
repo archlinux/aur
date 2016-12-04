@@ -1,36 +1,35 @@
 # Maintainer: Sebastian Meyer <mail@bastimeyer.de>
 
-pkgname=livestreamer-twitch-gui-git
-_pkgname=livestreamer-twitch-gui
-pkgver=1242.039630b
+pkgname=streamlink-twitch-gui-git
+_pkgname=streamlink-twitch-gui
+pkgver=1419.ecd0dd3
 pkgrel=1
-pkgdesc="A multi platform Twitch.tv browser for Livestreamer"
+pkgdesc="A multi platform Twitch.tv browser for Streamlink"
 arch=("i686" "x86_64")
-url="https://github.com/bastimeyer/livestreamer-twitch-gui"
+url="https://github.com/streamlink/streamlink-twitch-gui"
 license=("MIT")
-provides=("livestreamer-twitch-gui")
-conflicts=("livestreamer-twitch-gui")
+provides=("streamlink-twitch-gui")
+conflicts=("streamlink-twitch-gui")
 depends=(
 	"alsa-lib"
 	"gconf"
+	"glib2"
 	"gtk2"
-	"libnotify"
 	"libxtst"
-	"livestreamer"
 	"nss"
+	"streamlink"
 	"xdg-utils"
-	"xorg-xwininfo"
 )
 makedepends=(
 	"git"
 	"nodejs"
 	"npm"
 	"bower"
-	"nodejs-grunt-cli"
+	"grunt-cli"
 )
 options=(!strip)
 install=${pkgname}.install
-source=(${_pkgname}::"git+https://github.com/bastimeyer/${_pkgname}.git")
+source=(${_pkgname}::"git+https://github.com/streamlink/${_pkgname}.git")
 sha256sums=("SKIP")
 
 pkgver() {
