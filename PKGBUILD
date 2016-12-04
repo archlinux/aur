@@ -9,7 +9,8 @@ pkgdesc="Extra OpenFX plugins for Natron"
 url="https://github.com/olear/openfx-arena/tree/Natron-$pkgver"
 license=("GPL2")
 makedepends=("git")
-depends=("gcc-libs-multilib" "imagemagick" "libcdr" "librsvg" "libtool" "libzip" "opencolorio" "poppler-glib")
+depends=("imagemagick" "libcdr" "librsvg" "libtool" "libzip" "opencolorio" "poppler-glib")
+depends_x86_64=("gcc-libs-multilib")
 source=("$pkgname::git://github.com/olear/openfx-arena.git#tag=Natron-$pkgver"
         "git+https://github.com/devernay/openfx.git"
         "git+https://github.com/devernay/openfx-supportext.git"
