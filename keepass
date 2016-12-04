@@ -1,0 +1,2 @@
+#!/bin/sh
+exec mono --verify-all /usr/share/keepass/KeePass.exe "$@"
