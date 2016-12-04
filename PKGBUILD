@@ -6,7 +6,7 @@ pkgver=0.2a
 pkgrel=1
 pkgdesc="binarix - a matrix styled linux console locker"
 arch=('i686' 'x86_64')
-url="http://raffi.at/view/code/$pkgname"
+url="https://gitlab.com/reck1610/binarix"
 license=('GPL2')
 depends=('ncurses' 'glibc')
 source=("$pkgname-$pkgver.tar.gz::https://gitlab.com/reck1610/binarix/repository/archive.tar.gz?ref=release%2F0.2a")
