@@ -1,4 +1,4 @@
-# Maintainer: Michael Straube <michael_straube web de>
+# Maintainer: Michael Straube <straubem@gmx.de>
 # Contributor: megadriver <megadriver at gmx dot com>
 
 pkgname=barbie-seahorse-adventures
@@ -25,15 +25,15 @@ prepare() {
 package() {
   cd barbie-$pkgver
 
-  install -dm755 "$pkgdir/usr/share/games/barbie"
+  install -d "$pkgdir"/usr/share/games/barbie
 
-  install -m755 run_game.py "$pkgdir/usr/share/games/barbie/"
-  install -m644 README.txt "$pkgdir/usr/share/games/barbie/"
-  cp -r lib data "$pkgdir/usr/share/games/barbie/"
+  install -m755 run_game.py "$pkgdir"/usr/share/games/barbie
+  install -m644 README.txt "$pkgdir"/usr/share/games/barbie
+  cp -r lib data "$pkgdir"/usr/share/games/barbie
   rm "$pkgdir"/usr/share/games/barbie/data/*.txt
 
-  install -Dm644 icon128.png "$pkgdir/usr/share/pixmaps/barbie.png"
-  install -Dm644 "$srcdir/barbie.desktop" "$pkgdir/usr/share/applications/barbie.desktop"
+  install -Dm644 icon128.png "$pkgdir"/usr/share/pixmaps/barbie.png
+  install -Dm644 ../barbie.desktop "$pkgdir"/usr/share/applications/barbie.desktop
 
-  install -Dm755 "$srcdir/barbie" "$pkgdir/usr/bin/barbie"
+  install -Dm755 ../barbie "$pkgdir"/usr/bin/barbie
 }
