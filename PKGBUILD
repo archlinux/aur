@@ -1,7 +1,7 @@
 # Maintainer: Wes Barnett <wes at wbarnett dot us>
 pkgname=snap-sync
 pkgver=0.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Use snapper snapshots to backup to external drive"
 arch=(any)
 url="https://github.com/wesbarnett/snap-sync"
@@ -10,7 +10,7 @@ depends=(snapper)
 source=(${url}/archive/${pkgver}.tar.gz
         ${url}/releases/download/${pkgver}/${pkgver}.tar.gz.sig)
 validpgpkeys=('8535CEF3F3C38EE69555BF67E4B5E45AA3B8C5C3')
-sha256sums=('b558e48b42a404820a4b792306a9882b80fc5358381e2a5bdf69f1352839c8b0'
+sha512sums=('7839943f73c232db4eb76670b18429db5c5faa2038b1788e2c39cb2f9b3c72bf20157858a519d547416576d07fccf4535c634405d629ca637ba7fa504940443d'
             'SKIP')
 
 package() {
