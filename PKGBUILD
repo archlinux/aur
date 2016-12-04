@@ -1,4 +1,4 @@
-# Maintainer: Marat Moustafine <m-dash-moustafine-at-yandex-dot-ru>
+# Maintainer: Marat Moustafine <moustafine-@t-tuta-d.t-io>
 
 _pkgname=how-to-use-pvs-studio-free
 pkgname=$_pkgname-git
