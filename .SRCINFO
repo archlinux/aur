@@ -1,0 +1,15 @@
+pkgbase = ruby-running-sushi
+	pkgdesc = Running Sushi, software to keep cookbooks, clients, databags, environments, nodes, roles and users in sync
+	pkgver = 0.4.1
+	pkgrel = 1
+	url = https://github.com/One-com/running_sushi
+	arch = i686
+	arch = x86_64
+	makedepends = chef-dk
+	depends = chef-client
+	depends = chef-diff
+	source = git+https://github.com/One-com/running_sushi.git
+	sha1sums = SKIP
+
+pkgname = ruby-running-sushi
+
