@@ -1,0 +1,17 @@
+pkgbase = hunspell-de-base
+	pkgdesc = German hunspell dictionaries, no de_BE, de_LI and de_LU symlinks
+	pkgver = 20151222
+	pkgrel = 1
+	url = http://www.j3e.de/ispell/igerman98/
+	arch = any
+	license = GPL
+	makedepends = hunspell
+	makedepends = ispell
+	optdepends = hunspell: the spell checking libraries and apps
+	provides = hunspell-de
+	conflicts = hunspell-de
+	source = http://www.j3e.de/ispell/igerman98/dict/igerman98-20151222.tar.bz2
+	md5sums = d4cc73954389454e4045e0c4c6824813
+
+pkgname = hunspell-de-base
+
