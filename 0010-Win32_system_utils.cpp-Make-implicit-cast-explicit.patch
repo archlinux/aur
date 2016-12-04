@@ -1,4 +1,4 @@
-From fafa411904d7f8814298c5b82d107a7aeccf5ed7 Mon Sep 17 00:00:00 2001
+From ae4406a714e49c7884e0e19825af3b33aa6f6910 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Fri, 2 Dec 2016 23:58:32 +0100
 Subject: [PATCH 10/10] Win32_system_utils.cpp: Make implicit cast explicit

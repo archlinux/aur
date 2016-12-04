@@ -1,4 +1,4 @@
-From a870a46b2058f7c966533edd726269a6ddd6ce5a Mon Sep 17 00:00:00 2001
+From b62e8044a6c8b3bcb076641cbd9fae0ee0e7aa31 Mon Sep 17 00:00:00 2001
 From: Jose Santiago <jsantiago@haivision.com>
 Date: Thu, 3 Nov 2016 09:38:19 -0500
 Subject: [PATCH 06/10] Make GLintptr and GLsizeiptr match those from Qt 5

@@ -7,19 +7,31 @@
 # All my PKGBUILDs are managed at https://github.com/Martchus/PKGBUILDs where
 # you also find the URL of a binary repository.
 
-pkgname=(mingw-w64-angleproject{,-samples})
+# Patches are managed under https://github.com/Martchus/angle/tree/mingw-w64
+
+_latest_git=
+
 pkgver=2.1.r6381.9f09037
-pkgrel=1
-pkgdesc='ANGLE project (mingw-w64)'
+if [[ $_latest_git ]]; then
+  pkgname=(mingw-w64-angleproject{,-samples}-git)
+  pkgdesc='ANGLE project (mingw-w64, git version)'
+  _angle_commit=
+  _header_commit=
+else
+  pkgname=(mingw-w64-angleproject{,-samples})
+  pkgdesc='ANGLE project (mingw-w64)'
+  _angle_commit="#commit=${pkgver##*.}"
+  _header_commit='#commit=7a8f394'
+fi
+pkgrel=2
 arch=('any')
 url='https://chromium.googlesource.com/angle/angle/+/master/README.md'
 license=('BSD')
 depends=('mingw-w64-crt')
 makedepends=('mingw-w64-gcc' 'git' 'gyp-git' 'depot-tools-git' 'python' 'python2')
 options=('!strip' '!buildflags' 'staticlibs')
-source=('angleproject::git+https://chromium.googlesource.com/angle/anglecommit=f097e23'
-        'additional-mingw-header::git+https://github.com/Martchus/additional-mingw-header.git'
-        'additional-mingw-header::git+https://github.com/Martchus/additional-mingw-header.git#commit=7a8f394'
+source=("angleproject::git+https://chromium.googlesource.com/angle/angle$_angle_commit"
+        "additional-mingw-header::git+https://github.com/Martchus/additional-mingw-header.git$_header_commit"
         '0001-Provide-workaround-for-building-static-libs.patch'
         '0002-Provide-Windows-XP-support.patch'
         '0003-Fix-dynamic-libraries.patch'
@@ -32,24 +44,25 @@ source=('angleproject::git+https://chromium.googlesource.com/angle/anglecommit=f
         '0010-Win32_system_utils.cpp-Make-implicit-cast-explicit.patch')
 sha256sums=('SKIP'
             'SKIP'
-            'SKIP'
             '59bc63ccf6d46db725bac5e259941677586315553cb545c51c2fb339e7c586c6'
             '595d5f807b69947d55d4b6285b5dc687cc16d15b6a8c56ec79f496001bbd1f2e'
             '2c5de1623d3ee2a8818063edaea287d1d684785a3443b4f7a2db482c45c59194'
             'd2ed2cf0518fc09b472b17db857d979189b660135347b4c19be8e7352c032ed4'
-            'a214c2bb6a1472843227b27cf6963113e4e42e5051dfa4ba9dbdfd353da887b5'
-            '34e363820e24df349b5798526bd7040aaf5224086310d92901b71b2e5285cd96'
-            '8098e5f6999ffb15761a4bea668e14fbe9af9af94c2ec504fd6b6421198a938a'
-            '9a17c871dfcef1bde47d54a12ba1d3ad88c2349d3bede4b12fa9c9453f0a1129'
-            '106e5607986669bba430d1b021e180f27c595d31d3ba239cad26583f423eccd2'
-            '2b195f1238b433fb68564f9c53adfc0d715cc4908c4ab0b9dd5977c88b763620')
+            'd017726a8953ef409dc614f87b2b99d91725c3d9f1c6bc7d4043301cfb1ce032'
+            '8e17fd1b3bfa95c1f8f82a05b3697dfbd26a9c87ba5c3f8e3b5c8dfdccddbaa2'
+            '26add1c1ce33db65a102d63926d429e4cc3c61e505a622ef0e1faa0ed1867c40'
+            '5239b6bcd38a282adc38a45a7e420752b6f79310553fba19b9a5ae8b70eec31f'
+            'd665d266cb4d9b00f70d97df6859b455476beed4af5566a5fc0b4d75ddaaf5cc'
+            'cab5b50139148c882a409ddb38df80019648151beb4735e115e92f2fc5677326')
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
 
-#pkgver() {
-#  cd "$srcdir/angleproject"
-#  grep -E "^#define ANGLE_M..OR_VERSION [0-9]+$" src/common/version.h | sed 's/#define ANGLE_M..OR_VERSION //' | tr '\n' '.'
-#  printf "r%s.%s\n" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-#}
+if [[ $_latest_git ]]; then
+  pkgver() {
+    cd "$srcdir/angleproject"
+    grep -E "^#define ANGLE_M..OR_VERSION [0-9]+$" src/common/version.h | sed 's/#define ANGLE_M..OR_VERSION //' | tr '\n' '.'
+    printf "r%s.%s\n" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  }
+fi
 
 prepare() {
   cd "${srcdir}/angleproject"
@@ -137,6 +150,10 @@ build() {
 
 package_mingw-w64-angleproject() {
   depends=('mingw-w64-crt')
+  if [[ $_latest_git ]]; then
+    provides=('mingw-w64-angleproject')
+    conflicts=('mingw-w64-angleproject')
+  fi
 
   for _arch in ${_architectures}; do
     mkdir -p "${pkgdir}/usr/${_arch}/"{bin,lib,include}
@@ -149,6 +166,9 @@ package_mingw-w64-angleproject() {
     install \
         lib/libEGL.so \
         "${pkgdir}/usr/${_arch}/bin/libEGL.dll"
+    install \
+        lib/libangle_util.so \
+        "${pkgdir}/usr/${_arch}/bin/libangle_util.dll"
     install \
         libGLESv2.dll.a \
         libEGL.dll.a \
@@ -170,8 +190,15 @@ package_mingw-w64-angleproject() {
 }
 
 package_mingw-w64-angleproject-samples() {
-  pkgdesc='ANGLE project samples (mingw-w64)'
-  depends=('mingw-w64-angleproject')
+  if [[ $_latest_git ]]; then
+    pkgdesc='ANGLE project samples (mingw-w64, git version)'
+    depends=('mingw-w64-angleproject-git')
+    provides=('mingw-w64-angleproject-samples')
+    conflicts=('mingw-w64-angleproject-samples')
+  else
+    pkgdesc='ANGLE project samples (mingw-w64)'
+    depends=('mingw-w64-angleproject')
+  fi
 
   for _arch in ${_architectures}; do
     mkdir -p "${pkgdir}/usr/${_arch}/"{bin,share/angleproject}
@@ -189,3 +216,11 @@ package_mingw-w64-angleproject-samples() {
   done
 }
 
+if [[ $_latest_git ]]; then
+  package_mingw-w64-angleproject-git() {
+    package_mingw-w64-angleproject
+  }
+  package_mingw-w64-angleproject-samples-git() {
+    package_mingw-w64-angleproject-samples
+  }
+fi

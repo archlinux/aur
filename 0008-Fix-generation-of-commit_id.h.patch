@@ -1,4 +1,4 @@
-From d4a2be49fbffa30f026ae9cbadfda2f882fc9ad9 Mon Sep 17 00:00:00 2001
+From 78917f02abc3501bb4ae0cdad82c22dfb2fbbad5 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sun, 6 Nov 2016 18:46:15 +0100
 Subject: [PATCH 08/10] Fix generation of commit_id.h

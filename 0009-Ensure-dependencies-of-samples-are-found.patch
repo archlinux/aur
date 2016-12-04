@@ -1,4 +1,4 @@
-From 4c6bc08c7b66806b4284275a25d5ffa3aa72c666 Mon Sep 17 00:00:00 2001
+From c4b523154d5fce693fe9c163f505fcea8d897547 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Fri, 2 Dec 2016 23:55:03 +0100
 Subject: [PATCH 09/10] Ensure dependencies of samples are found

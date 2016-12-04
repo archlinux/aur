@@ -1,4 +1,4 @@
-From 09d3f7afd742870db9e177f43b8962043bd972ff Mon Sep 17 00:00:00 2001
+From 815ed9402c0da91ee607bc61414c77d350f4a009 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sun, 6 Nov 2016 17:57:18 +0100
 Subject: [PATCH 07/10] Remove copy_scripts target
