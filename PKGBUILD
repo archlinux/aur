@@ -1,4 +1,4 @@
-# Maintainer: Michael Straube <michael_straube web de>
+# Maintainer: Michael Straube <straubem@gmx.de>
 
 pkgname=zoomtools
 pkgver=12222006
@@ -17,7 +17,7 @@ sha1sums=('fe7908999571fbf30d53a390dfeb6a6b2b9fedc9'
 prepare() {
   cd $pkgname-$pkgver
 
-  patch -p 0 < "$srcdir/makefile.patch"
+  patch -p0 < ../makefile.patch
 }
 
 build() {
@@ -30,13 +30,13 @@ build() {
 package() {
   cd $pkgbase-$pkgver
 
-  install -d -m 755 "$pkgdir/usr/bin"
+  install -d "$pkgdir"/usr/bin
 
-  for f in mid2seq mrs8_bintool ps02_to_ps04 ps02_tool ps04_tool zoom2wav; do
-    install -m 755 cmdline/$f "$pkgdir/usr/bin/"
+  for _f in mid2seq mrs8_bintool ps02_to_ps04 ps02_tool ps04_tool zoom2wav; do
+    install -m 755 cmdline/$_f "$pkgdir"/usr/bin
   done
 
-  for f in mrs8 ps02; do
-    install -m 755 gui/$f "$pkgdir/usr/bin/"
+  for _f in mrs8 ps02; do
+    install -m 755 gui/$_f "$pkgdir"/usr/bin
   done
 }
