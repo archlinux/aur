@@ -1,7 +1,7 @@
 # Maintainer: Conor Anderson <conor.anderson@mail.utoronto.ca>
 pkgname=wire-desktop
 _pkgname=wire
-pkgver=2.11.2678
+pkgver=2.11.2679
 pkgrel=1
 pkgdesc='Modern, private messenger. Based on Electron.'
 arch=('x86_64' 'i686')
@@ -12,7 +12,7 @@ depends=('nss' 'alsa-lib' 'libxss' 'gconf' 'gtk2' 'libxtst')
 makedepends=('yarn' 'grunt-cli' 'gendesk' 'python2')
 provides=('wire-desktop')
 source=("https://github.com/wireapp/wire-desktop/archive/release/"$pkgver".tar.gz")        
-sha256sums=('d34b344ad80becbd0f8cebe9f8f199bf497e6a468ea28d2de3c255e9fc6cb396')
+sha256sums=('1e78a3ae77e02d4116487da4046d8543725cfae1651da6680a475b9fedb19483')
 
 prepare() {
   gendesk -f -n --name=Wire --pkgname=${_pkgname} --pkgdesc="${pkgdesc}" --exec="${_pkgname}" --categories="Network"
@@ -51,8 +51,8 @@ package() {
   install -Dm644 ${srcdir}/${pkgname}-release-${pkgver}/electron/img/wire.png ${pkgdir}/usr/share/pixmaps/${_pkgname}.png
 
   # Place license files
-  install -Dm644 "${pkgdir}/usr/lib/${_pkgname}/LICENSE" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
+  install -Dm644 "${pkgdir}/usr/lib/${_pkgname}/LICENSE.electron.txt" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE.electron.txt"
   install -Dm644 "${pkgdir}/usr/lib/${_pkgname}/LICENSES.chromium.html" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSES.chromium.html"
-  rm "${pkgdir}/usr/lib/${_pkgname}/LICENSE"
+  rm "${pkgdir}/usr/lib/${_pkgname}/LICENSE.electron.txt"
   rm "${pkgdir}/usr/lib/${_pkgname}/LICENSES.chromium.html"
 }
