@@ -1,15 +1,15 @@
 # Contributor: Lari Tikkanen <lartza@wippies.com>
-# Maintainer: josephgbr <rafael.f.f1@gmail.com>
+# Maintainer: Rafael Fontenelle <rafaelff@gnome.org>
 
 pkgname=teeworlds-git
-pkgver=0.7.start.574.ge592d1b
+pkgver=0.7.start.770.g0a8ce05
 pkgrel=1
 pkgdesc='Multiplayer 2D shooter'
 arch=('i686' 'x86_64')
 url="http://teeworlds.com"
 license=('custom')
 depends=('alsa-lib' 'glu' 'mesa' 'gcc-libs' 'sdl2' 'freetype2')
-makedepends=('python' 'git' 'bam' 'imagemagick' 'gendesk')
+makedepends=('python' 'git' 'bam' 'imagemagick')
 provides=('teeworlds')
 conflicts=('teeworlds')
 source=(git+https://github.com/teeworlds/teeworlds.git
@@ -24,8 +24,6 @@ pkgver() {
 
 prepare() {
   convert "teeworlds/other/icons/Teeworlds.ico" "$srcdir/teeworlds.png"
-  gendesk -f -n --pkgname "teeworlds" --pkgdesc "$pkgdesc" \
-    --name 'Teeworlds' --categories 'Game;ArcadeGame'
     
   cd teeworlds
   git submodule init
@@ -43,7 +41,7 @@ package() {
   cd teeworlds
   
   install -dm755 "$pkgdir"/usr/bin \
-                 "$pkgdir"/usr/share/{applications,pixmaps} \
+                 "$pkgdir"/usr/share/{applications,pixmaps,appdata} \
                  "$pkgdir"/usr/share/{licenses/teeworlds,teeworlds/data}
   
    # Install data files
@@ -53,7 +51,7 @@ package() {
   install -m755 build/$CARCH/debug/teeworlds_srv "$pkgdir"/usr/bin/teeworlds_srv
 
   install -m644 license.txt "$pkgdir"/usr/share/licenses/teeworlds/
-  install -m644 ../teeworlds.desktop "$pkgdir"/usr/share/applications/
+  install -m644 other/teeworlds.appdata.xml "$pkgdir"/usr/share/appdata/
+  install -m644 other/teeworlds.desktop "$pkgdir"/usr/share/applications/
   install -m644 ../teeworlds-0.png "$pkgdir"/usr/share/pixmaps/teeworlds.png
-
 }
