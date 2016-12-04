@@ -1,21 +1,23 @@
 pkgbase = xfce4-pulseaudio-plugin
 	pkgdesc = Pulseaudio plugin for Xfce4 panel
 	pkgver = 0.2.4
-	pkgrel = 1
-	url = http://goodies.xfce.org/projects/panel-plugins/xfce4-pulseaudio-plugin
-	install = xfce4-pulseaudio-plugin.install
+	pkgrel = 2
+	url = https://goodies.xfce.org/projects/panel-plugins/xfce4-pulseaudio-plugin
 	arch = i686
 	arch = x86_64
 	groups = xfce4-goodies
 	license = GPL2
 	makedepends = intltool
+	makedepends = libnotify
+	makedepends = dbus-glib
 	depends = xfce4-panel>=4.11.0
 	depends = libpulse
 	depends = libkeybinder3
-	optdepends = ido: appindicator support
+	depends = gtk-update-icon-cache
 	optdepends = pavucontrol: default pulseaudio mixer
+	optdepends = libnotify: volume notifications
 	source = http://archive.xfce.org/src/panel-plugins/xfce4-pulseaudio-plugin/0.2/xfce4-pulseaudio-plugin-0.2.4.tar.bz2
-	sha256sums = 8d9330ddf1d44a864a36d566cce4b76d4f859c5984bba7653d7dc39aa24d5c3e
+	sha512sums = b53ab48e282a506fc7fe91fa70520f0db32f2f73653a0210681bf7389f13441d5af8f855604b59817b1fe7a3f41e2d4fe52b052ac0c3479f3f4e37b2afedb193
 
 pkgname = xfce4-pulseaudio-plugin
 
