@@ -1,20 +1,32 @@
 --- build/linux/Makefile 2008-03-19 21:58:51.000000000 +0100
-+++ build/linux/Makefile 2016-06-07 16:28:15.246592633 +0200
-@@ -3,7 +3,7 @@
++++ build/linux/Makefile 2016-12-04 15:10:08.422279840 +0100
+@@ -3,9 +3,9 @@
  PREFIX = /usr
  EXTRADIR = ./build/linux
  
 -GAMEDIR = $(PREFIX)/games
 +GAMEDIR = $(PREFIX)/bin
  STARTUP = $(GAMEDIR)/$(EXE)
- BINDIR = $(PREFIX)/share/games/$(EXE)
+-BINDIR = $(PREFIX)/share/games/$(EXE)
++BINDIR = $(PREFIX)/share/$(EXE)
  ICNDIR = $(PREFIX)/share/pixmaps
-@@ -67,7 +67,8 @@
- 	@$(CP) "$(EXE)" $(DATA) "$(BINDIR)"
+ APPDIR = $(PREFIX)/share/applications
+ 
+@@ -63,11 +63,15 @@
+ install: all
+ 	@$(ECHO) " o Creating install directory $(BINDIR)"
+ 	@$(MD) "$(BINDIR)"
+-	@$(ECHO) " o Installing game and data to $(BINDIR)"
+-	@$(CP) "$(EXE)" $(DATA) "$(BINDIR)"
++	@$(ECHO) " o Installing data to $(BINDIR)"
++	@$(CP) $(DATA) "$(BINDIR)"
++	@$(ECHO) " o Installing binary to $(PREFIX)/lib/$(EXE)"
++	@$(MD) "$(PREFIX)/lib/$(EXE)"
++	@$(CP) "$(EXE)" "$(PREFIX)/lib/$(EXE)"
  	@$(ECHO) " o Creating startup script $(STARTUP)"
  	@$(MD) "$(GAMEDIR)"
 -	@$(ECHO) "cd \"$(BINDIR)\"; ./$(EXE); cd -" >"$(STARTUP)"
-+	@$(ECHO) "cd \"/usr/share/games/roadfighter/\"; ./$(EXE); cd -" >"$(STARTUP)"
++	@$(ECHO) "cd \"/usr/share/roadfighter/\"; /lib/$(EXE)/$(EXE); cd -" >"$(STARTUP)"
 +#	@$(ECHO) "cd \"$(BINDIR)\"; ./$(EXE); cd -" >"$(STARTUP)"
  	@$(CHMOD) 755 "$(STARTUP)"
  	@$(ECHO) " o Creating application menu entry"
