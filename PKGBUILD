@@ -3,7 +3,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=scribus-svn
-pkgver=21562
+pkgver=21566
 pkgrel=1
 pkgdesc="A desktop publishing program - Version from SVN"
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ url="http://www.scribus.net"
 depends=('hunspell' 'podofo' 'python2' 'libcups' 'graphicsmagick'
 	 'poppler' 'libcdr' 'libvisio' 'libpagemaker' 'harfbuzz-icu'
 	 'qt5-declarative' 'libmspub' 'openscenegraph')
-makedepends=('subversion' 'cmake' 'qt5-tools')
+makedepends=('subversion' 'cmake' 'qt5-tools' 'dos2unix')
 optdepends=('lib2geom: for mesh distortion')
 conflicts=('scribus')
 provides=('scribus')
@@ -29,6 +29,7 @@ pkgver() {
 
 prepare() {
   cd "$srcdir"/$_svnmod/Scribus/scribus/plugins/scriptplugin
+  dos2unix scripts/Ligatursatz.py
   find . -type f -name "*.py" -exec sed -i '1s+python$+python2+' {} \;
 }
 

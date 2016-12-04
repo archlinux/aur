@@ -1,6 +1,6 @@
 pkgbase = scribus-svn
 	pkgdesc = A desktop publishing program - Version from SVN
-	pkgver = 21562
+	pkgver = 21566
 	pkgrel = 1
 	url = http://www.scribus.net
 	arch = i686
@@ -10,6 +10,7 @@ pkgbase = scribus-svn
 	makedepends = subversion
 	makedepends = cmake
 	makedepends = qt5-tools
+	makedepends = dos2unix
 	depends = hunspell
 	depends = podofo
 	depends = python2
