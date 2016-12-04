@@ -11,6 +11,7 @@ pkgbase = libarcus-git
 	makedepends = git
 	makedepends = cmake
 	depends = protobuf3
+	makedepends = sip
 	provides = libarcus
 	conflicts = libarcus
 	source = git+https://github.com/Ultimaker/libArcus.git

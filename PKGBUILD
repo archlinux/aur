@@ -9,7 +9,7 @@ license=('GPL2')
 provides=('libarcus')
 conflicts=('libarcus')
 depends=('protobuf3')
-makedepends=('git' 'cmake')
+makedepends=('git' 'cmake' 'sip')
 source=('git+https://github.com/Ultimaker/libArcus.git')
 md5sums=('SKIP')
 
