@@ -2,21 +2,22 @@
 
 pkgbase='python-pydirl'
 pkgname=('python-pydirl' 'python2-pydirl')
-pkgver=0.3
+pkgver=0.3.1
 pkgrel=1
 pkgdesc="simple static webserver and directory listing"
-arch=(any)
+arch=('any')
 url="https://github.com/ael-code/pydirl"
 license=('GPL3')
 options=(!emptydirs)
 makedepends=('python-setuptools' 'python2-setuptools')
 source=("${url}/archive/v${pkgver}.tar.gz")
-md5sums=('532fd35b539cb1ddbae29fbc1a660fc0')
-sha1sums=('7681db3e2cd00497fdc719fdf09f7482404d6330')
-sha256sums=('5d423927ca2b2d7219a4cd00a4cdd86a4e763e304edaf5a77f2553cecb48ae01')
+md5sums=('24040519acce329c793f6bf5d1fd2242')
+sha1sums=('151397d0fb5e2b44171bb4e846ee25477bddc2cc')
+sha256sums=('66fe375e85c407fc3f61f595ede78c64a0131841dbfc94c8d26a920b2bfe6fec')
 
 package_python-pydirl() {
-    depends=('python-gevent'
+    depends=('python'
+             'python-gevent'
              'python-flask'
              'python-click'
              'python-zipstream'
@@ -27,7 +28,8 @@ package_python-pydirl() {
   }
 
 package_python2-pydirl() {
-    depends=('python2-gevent'
+    depends=('python2'
+             'python2-gevent'
              'python2-flask'
              'python2-click'
              'python2-zipstream'
