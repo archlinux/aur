@@ -22,18 +22,18 @@ build() {
 
     ./bootstrap   
     ./configure --prefix=/usr --sbindir=/usr/bin/ \
-	--sysconfdir=/etc --localstatedir=/var \
+    --sysconfdir=/etc --localstatedir=/var \
     --enable-statusfile \
     --disable-static \
     --enable-shared \
-	--enable-largelimits \
-	--enable-miniportal \
-	--enable-chilliredir \
-	--enable-chilliproxy \
+    --enable-largelimits \
+    --enable-miniportal \
+    --enable-chilliredir \
+    --enable-chilliproxy \
     --enable-chilliscript \
-	--with-poll \
-	--with-openssl \
-	--enable-chilliradsec 
+    --with-poll \
+    --with-openssl \
+    --enable-chilliradsec 
     make
 }
 
@@ -45,7 +45,5 @@ msg2 "Installing systemd unit for ${pkgname}"
     install -Dm0644 ../chilli.service $pkgdir/usr/lib/systemd/system/chilli.service
 }
 
-md5sums=('26e02689f632ad27ad599bc0d9f5ae3d'
-         '828147e21eac257c3b700ea7f4ca3d98')
 md5sums=('26e02689f632ad27ad599bc0d9f5ae3d'
          '828147e21eac257c3b700ea7f4ca3d98')
