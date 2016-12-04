@@ -2,21 +2,21 @@
 # Contributor: reck1610 <reck1610@gmail.com>
 
 pkgname=binarix
-pkgver=0.2a
+pkgver=0.3
 pkgrel=1
 pkgdesc="binarix - a matrix styled linux console locker"
 arch=('i686' 'x86_64')
-url="http://raffi.at/view/code/$pkgname"
+url="https://gitlab.com/reck1610/binarix"
 license=('GPL2')
 depends=('ncurses' 'glibc')
-source=("http://raffi.at/code/$pkgname-$pkgver.tar.gz" "$pkgname.patch")
-md5sums=('177638b1265c9866a7d0e048493fe67b'
-         'd6a8fb386a10a2576eff2b32e8ca6df5')
+source=("$pkgname-$pkgver.tar.gz::https://gitlab.com/reck1610/$pkgname/repository/archive.tar.gz?ref=release%2F$pkgver")
+md5sums=('3690cb489a9502589031cb9e4f63bf7f')
 
 build() {
-  mv "$srcdir/$pkgname" "$srcdir/$pkgname-$pkgver"
+  cd "$srcdir"
+  mv "$pkgname-release/"$(ls "$pkgname-release") "$pkgname-$pkgver"
+  rm -rf "$pkgname-release"
   cd "$srcdir/$pkgname-$pkgver"
-  patch -p1 -i "$srcdir/$pkgname.patch" "$pkgname.c"
   make all
 }
 
