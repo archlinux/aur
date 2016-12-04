@@ -2,7 +2,7 @@
 
 pkgname=firefox-cookie-controller
 pkgver=5.7
-pkgrel=1
+pkgrel=2
 pkgdesc='Buttons for managing cookies, cookie permissions, and site cookie exceptions.'
 url=https://addons.mozilla.org/en-US/firefox/addon/cookie-controller
 arch=('any')
