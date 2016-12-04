@@ -1,0 +1,19 @@
+pkgbase = homegear-enocean-git
+	pkgdesc = Homegear plugin for Enocean communication
+	pkgver = 0.6.21.2009e63
+	pkgrel = 1
+	url = https://github.com/Homegear/Homegear-EnOcean
+	arch = armv7h
+	arch = x86_64
+	license = GPL
+	makedepends = gcc-libs
+	makedepends = git
+	depends = gcc-libs
+	depends = homegear>=0.6.0
+	provides = homegear-enocean
+	backup = etc/homegear/families/enocean.conf
+	source = git+https://github.com/Homegear/Homegear-EnOcean
+	md5sums = SKIP
+
+pkgname = homegear-enocean-git
+
