@@ -3,7 +3,7 @@
 # Maintainer: Albert Graef <aggraef@gmail.com>
 
 pkgname=pure-pcre-git
-pkgver=r5652.82501d5
+pkgver=r5657.656b595
 pkgrel=1
 pkgdesc="Pure is a modern-style functional programming language based on term rewriting (variant with Perl regex support)."
 arch=("i686" "x86_64")
