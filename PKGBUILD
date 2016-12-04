@@ -1,4 +1,4 @@
-# Maintainer: Michael Straube <michael_straube web de>
+# Maintainer: Michael Straube <straubem@gmx.de>
 # Contributor: Christian Rebischke <echo Q2hyaXMuUmViaXNjaGtlQGdtYWlsLmNvbQo= | base64 -d>
 
 pkgname=kover
@@ -10,7 +10,7 @@ url="http://lisas.de/kover/"
 license=('GPL2')
 depends=('kdebase-runtime' 'libcdio')
 makedepends=('pkgconfig' 'cmake' 'automoc4')
-source=(https://lisas.de/kover/$pkgname-$pkgver.tar.bz2)
+source=("https://lisas.de/kover/$pkgname-$pkgver.tar.bz2")
 sha1sums=('3557d9d2cd38bae89c0287bb924a77c5f1d0bb96')
 
 build() {
