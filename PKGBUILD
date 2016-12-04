@@ -1,4 +1,4 @@
-# Maintainer: Michael Straube <michael_straube@web.de>
+# Maintainer: Michael Straube <straubem@gmx.de>
 # Contributor: Jaroslav Lichtblau <dragonlord@aur.archlinux.org>
 # Contributor: Geoffroy Carrier <geoffroy.carrier@koon.fr>
 # Contributor: Ewoud Nuyts <ewoud.nuyts@gmail.com>
@@ -12,7 +12,7 @@ arch=('i686' 'x86_64')
 url='http://guichaz.free.fr/gliv/'
 license=('GPL')
 depends=('gtkglext')
-source=(http://guichaz.free.fr/gliv/files/$pkgname-$pkgver.tar.bz2)
+source=("http://guichaz.free.fr/gliv/files/$pkgname-$pkgver.tar.bz2")
 sha1sums=('b040a08ac81d17e7dd872d67662378f4f95f7820')
 
 build() {
