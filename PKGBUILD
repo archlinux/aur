@@ -43,6 +43,8 @@ package() {
     
 msg2 "Installing systemd unit for ${pkgname}"    
     install -Dm0644 ../chilli.service $pkgdir/usr/lib/systemd/system/chilli.service
+
+    rm -rf ${pkgdir}/etc/init.d
 }
 
 md5sums=('26e02689f632ad27ad599bc0d9f5ae3d'
