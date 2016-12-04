@@ -1,7 +1,7 @@
 # Maintainer: Luke Chen Shui <chenshuiluke@gmail.com>
 pkgname=blitz-request
 pkgver=1.0.0.3
-pkgrel=3
+pkgrel=4
 epoch=
 pkgdesc="The best commandline REST API and stress tester. "
 arch=('i686' 'x86_64')
@@ -17,6 +17,7 @@ package() {
 	cp ../blitz-request.sh $pkgdir/usr/bin/blitz-request
 	cp blitz-request.jar $pkgdir/usr/bin
 	chmod a+x $pkgdir/usr/bin/blitz-request
+	chmod a+x $pkgdir/usr/bin/blitz-request.jar
 }
 
 
