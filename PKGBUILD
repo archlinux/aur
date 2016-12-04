@@ -5,19 +5,19 @@
 # Contributor: Olaf Leidinger <leidola@newcon.de>
 
 pkgname=gscan2pdf
-pkgver=1.5.5
+pkgver=1.6.0
 pkgrel=1
 pkgdesc='A GUI with OCR capability to produce PDFs or DjVus from scanned documents'
 arch=('any')
 url='http://gscan2pdf.sourceforge.net/'
 license=('GPL')
-depends=('imagemagick' 'perl-config-general' 'perl-goo-canvas' 'perl-gtk2-ex-simple-list' 'perl-gtk2-imageview' 'perl-data-uuid' 'perl-filesys-df' 'perl-html-parser' 'perl-list-moreutils' 
+depends=('imagemagick' 'perl-config-general' 'perl-date-calc' 'perl-goo-canvas' 'perl-gtk2-ex-simple-list' 'perl-gtk2-imageview' 'perl-data-uuid' 'perl-filesys-df' 'perl-html-parser' 'perl-list-moreutils' 
 	'perl-locale-gettext' 'perl-log-log4perl' 
 	'perl-pdf-api2' 'perl-proc-processtable' 'perl-readonly' 'perl-sane' 'perl-set-intspan'
 	  'perl-try-tiny' 'unpaper')
 optdepends=('djvulibre' 'gocr' 'ocropus' 'xdg-utils' 'tesseract' 'cuneiform' 'perl-gtk2-ex-podviewer' )
 source=("http://downloads.sourceforge.net/$pkgname/$pkgname-$pkgver.tar.xz")
-sha512sums=('8f6f41158a6dd33a4d23f2607c5345a64633fe852a4cec39eaf6256a15363b60d91b6884362eb1fa498d0d98a362a91d6b8ed60d077d4a4459976e42762584df')
+sha512sums=('33a77d53b9d63e6f817b5a722699dc34b63ec9c17156d6832facfb989d7a56c8f5adb9c883c1b42263b8293c3f213a8259fa0f6ed25906353bd634bd7fe95e61')
 
 build() {
   cd ${srcdir}/${pkgname}-${pkgver}
