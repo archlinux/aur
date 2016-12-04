@@ -1,4 +1,4 @@
-# Maintainer: Marat Moustafine <m-dash-moustafine-at-yandex-dot-ru>
+# Maintainer: Marat Moustafine <moustafine-@t-tuta-d.t-io>
 
 pkgname=pvs-studio
 pkgver=6.11.20138.1
