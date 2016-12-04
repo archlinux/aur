@@ -1,2 +1,2 @@
 #!/bin/bash
-java -jar blitz-request.jar
+java -jar /usr/bin/blitz-request.jar
