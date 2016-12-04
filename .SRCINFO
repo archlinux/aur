@@ -1,0 +1,17 @@
+pkgbase = glove-git
+	pkgdesc = GloVe model for distributed word representation
+	pkgver = 71.c0d838f
+	pkgrel = 1
+	url = https://github.com/stanfordnlp/GloVe
+	arch = i686
+	arch = x86_64
+	license = Apache,2.0
+	makedepends = make
+	makedepends = gcc
+	makedepends = git
+	provides = glove
+	source = git://github.com/stanfordnlp/GloVe.git
+	md5sums = SKIP
+
+pkgname = glove-git
+
