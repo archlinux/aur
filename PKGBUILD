@@ -3,7 +3,7 @@
 pkgbase=libretro-mednafen-psx-git
 pkgname=('libretro-mednafen-psx-git' 'libretro-mednafen-psx-hw-git')
 _gitname=beetle-psx-libretro
-pkgver=1308.89d29d0
+pkgver=1402.f8569b2
 pkgrel=1
 pkgdesc="libretro implementation of Mednafen PSX"
 arch=('i686' 'x86_64')
@@ -26,6 +26,7 @@ build()
 	cd "$_gitname"
 	make
 	sed -ri "s/(HAVE_OPENGL ?= ?)0/\11/" Makefile
+	sed -ri "s/(HAVE_VULKAN ?= ?)0/\11/" Makefile
 	make clean
 	make
 }
@@ -42,6 +43,8 @@ package_libretro-mednafen-psx-git()
 
 package_libretro-mednafen-psx-hw-git()
 {
+	depends=('libgl' 'vulkan-driver')
+	
 	sed -ie "s/display_version =.*/display_version = \"${pkgver}\"/" $srcdir/$_gitname.info
 	sed -i 's/Beetle PSX/Beetle PSX HW/g' $srcdir/$_gitname.info
 	install -v -Dm644 $srcdir/$_gitname.info $pkgdir/usr/share/libretro/info/mednafen_psx_hw_libretro.info
