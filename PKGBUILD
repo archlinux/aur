@@ -2,7 +2,7 @@
 
 pkgname=yarn-vm-git
 pkgver=r12.3219110
-pkgrel=1
+pkgrel=2
 pkgdesc='A small embeddable VM with a custom instruction set and everything stored in a statically allocated memory space.'
 arch=('any')
 url='https://github.com/WetDesertRock/Yarn'
@@ -25,6 +25,7 @@ build() {
 package() {
   cd "$srcdir/Yarn"
   install -Dm755 bin/yarn -t "$pkgdir/usr/bin/"
+  install -Dm755 tools/assemble.py "$pkgdir/usr/bin/yarn-assemble.py"
 }
 
 

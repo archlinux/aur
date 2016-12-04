@@ -1,7 +1,7 @@
 pkgbase = yarn-vm-git
 	pkgdesc = A small embeddable VM with a custom instruction set and everything stored in a statically allocated memory space.
 	pkgver = r12.3219110
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/WetDesertRock/Yarn
 	arch = any
 	license = MIT
