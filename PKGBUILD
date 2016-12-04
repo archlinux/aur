@@ -1,12 +1,12 @@
 # Maintainer: Ryo Munakata <afpacket@gmail.com>
 pkgname=glmark2-git
-pkgver=r825.fa71af2
+pkgver=r835.f413c5b
 pkgrel=1
 pkgdesc="OpenGL (ES) 2.0 benchmark (X11, Wayland, DRM)"
 arch=('i686' 'x86_64')
 url="https://launchpad.net/glmark2"
 license=('GPL3')
-depends=('libjpeg-turbo' 'libpng12' 'libx11' 'libxcb' 'libgl' 'wayland')
+depends=('libjpeg-turbo' 'libpng12' 'libx11' 'libxcb' 'wayland' 'libgl' 'libgles')
 makedepends=('git' 'python2')
 conflicts=('glmark2')
 provides=('glmark2')
@@ -36,8 +36,7 @@ build() {
     cd "${srcdir}/${pkgname}"
     python2 ./waf configure \
         --prefix=/usr \
-        --with-flavors=${GM2_FLAVORS} \
-        --no-werror
+        --with-flavors=${GM2_FLAVORS}
     python2 ./waf -j4
 }
 
