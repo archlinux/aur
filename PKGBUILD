@@ -11,6 +11,7 @@ license=('GPL3')
 depends=('bash' 'gmp')
 optdepends=()
 options=('staticlibs' '!emptydirs' '!makeflags')
+install="${pkgname}.install"
 source=("http://downloads.sourceforge.net/project/ats2-lang/ats2-lang/ats2-postiats-${pkgver}/${_pkgname}-${pkgver}.tgz")
 sha256sums=('84defed32417273183d404db1cd2f54cd41e31c6527a7378ef914e7b43ad0f55')
 
