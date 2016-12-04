@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=Gmsh
 Comment=Automatic 3D finite element mesh generator
-Icon=/usr/share/pixmaps/gmsh/solid_64x64.png
+Icon=gmsh
 Exec=gmsh
 Encoding=UTF-8
 Terminal=false
