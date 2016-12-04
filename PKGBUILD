@@ -1,7 +1,7 @@
 # Maintainer: Virgil Dupras <hsoft@hardcoded.net>
 # Maintainer: Bijaya Dangol <dangoldbj23@gmail.com>
 pkgname=dupeguru
-pkgver=4.0.2
+pkgver=4.0.3
 pkgrel=2
 pkgdesc="Find duplicate files on your system"
 arch=(any)
@@ -15,7 +15,7 @@ source=(
     http://download.hardcoded.net/$pkgname-src-$pkgver.tar.gz
 )
 md5sums=(
-'fb3a149a8134f79bd58e4a49fb082f37'
+'ed3b4a049c436cacb0a068438a8d6131'
 )
 provides=("dupeguru")
 conflicts=("dupeguru-se" "dupeguru-pe" "dupeguru-me")
