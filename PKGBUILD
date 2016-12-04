@@ -2,7 +2,7 @@
 
 _gitname=akonadi-ews
 pkgname=$_gitname-git
-pkgver=r280.53e2b80
+pkgver=r297.ca1cc7d
 pkgrel=1
 pkgdesc="Resource agent for Microsoft Exchange using Exchange Web Services (EWS) protocol"
 arch=('i686' 'x86_64')
