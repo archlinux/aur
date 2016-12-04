@@ -13,7 +13,7 @@ optdepends=(
   "plasma-desktop: For Plasma desktop theme"
   "gtk-theme-arc-git: A flat theme with transparent elements for GTK 3, GTK 2 and Gnome-Shell (git version)"
   "arc-firefox-theme-git: Arc Firefox theme (git version)"
-  "kwin: For Arorae decorations"
+  "kwin: For Aurorae decorations"
   "qt4-style-kvantum-svn: For Kvantum Theme"
   "qt5-style-kvantum-svn: For Kvantum Theme"
   "kvantum-tools-qt5-svn: For Kvantum Theme"
