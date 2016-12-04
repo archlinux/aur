@@ -1,7 +1,7 @@
 # Maintainer: Drew DeVault <sir@cmpwn.com>
 pkgname=sway-git
 _pkgname=sway
-pkgver=r1461.54c635c
+pkgver=r2030.35b8d18
 pkgrel=1
 license=('MIT')
 pkgdesc='i3 compatible window manager for Wayland'
@@ -25,6 +25,7 @@ source=("${pkgname%-*}::git+https://github.com/SirCmpwn/sway.git")
 sha1sums=('SKIP')
 provides=('sway')
 conflicts=('sway')
+install=sway-git.install
 
 pkgver() {
 	cd "${srcdir}/${_pkgname}"
