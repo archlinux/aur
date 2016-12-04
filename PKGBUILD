@@ -12,7 +12,7 @@ url='http://keepass.info/'
 license=('GPL')
 depends=('mono' 'desktop-file-utils' 'xdg-utils' 'shared-mime-info' 'gtk-update-icon-cache')
 conflicts=('keepass')
-provides=('keepass')
+provides=('keepass=2.34')
 makedepends=('icoutils')
 optdepends=('xdotool: if you want to use auto-type'
             'xsel: clipboard operations in order to work around Mono clipboard bugs')
