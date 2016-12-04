@@ -1,4 +1,4 @@
-# Maintainer: Michael Straube <michael_straube web de>
+# Contributor: Michael Straube <straubem gmx de>
 
 pkgname=leave
 pkgver=1.12
