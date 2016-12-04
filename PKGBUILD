@@ -3,7 +3,7 @@
 
 pkgname=pure-readline
 pkgver=0.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple interface to the GNU readline and BSD editline libraries for Pure"
 arch=("i686" "x86_64")
 license=('custom')
