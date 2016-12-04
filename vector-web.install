@@ -1,8 +1,9 @@
 _config_instructions() {
   cat <<EOF
 
-    Clients will recieve the optional configuration file
-    /etc/webapps/vector-web/config.json if present.
+    Clients will receive the optional configuration file
+    /etc/webapps/vector-web/config.json
+    if present.
 
     A sample configuration is available at
     /etc/webapps/vector-web/config.sample.json
