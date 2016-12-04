@@ -21,8 +21,8 @@ build() {
 }
 
 package() {
-  mkdir "$pkgdir/bin/"
+  mkdir -p "$pkgdir/usr/bin/"
   cd "$srcdir/$pkgname-$pkgver"
-  install -m4555 -o root $pkgname "$pkgdir/bin/"
+  install -m4555 -o root $pkgname "$pkgdir/usr/bin/"
 }
 
