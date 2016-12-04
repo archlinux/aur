@@ -1,0 +1,15 @@
+pkgbase = now-font
+	pkgdesc = Now Font
+	pkgver = 24
+	pkgrel = 1
+	url = https://fontlibrary.org/en/font/now
+	install = now-font.install
+	arch = any
+	makedepends = unzip
+	depends = fontconfig
+	depends = xorg-font-utils
+	source = https://fontlibrary.org/assets/downloads/now/92f81dc6f3ba4a48ba3e70f5e826207d/now.zip
+	md5sums = 92f81dc6f3ba4a48ba3e70f5e826207d
+
+pkgname = now-font
+
