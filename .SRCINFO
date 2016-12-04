@@ -1,0 +1,22 @@
+pkgbase = planck-git
+	pkgdesc = A stand-alone ClojureScript REPL
+	pkgver = r1067.b818bb8
+	pkgrel = 1
+	url = http://planck-repl.org/
+	arch = x86_64
+	license = EPL-1.0
+	makedepends = git
+	makedepends = java-environment
+	makedepends = cmake
+	makedepends = maven
+	makedepends = leiningen
+	depends = webkitgtk
+	depends = libzip
+	depends = zlib
+	provides = planck
+	conflicts = planck
+	source = planck-git::git+https://github.com/mfikes/planck
+	sha256sums = SKIP
+
+pkgname = planck-git
+
