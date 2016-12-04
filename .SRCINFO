@@ -1,6 +1,6 @@
 pkgbase = concrete5
 	pkgdesc = A PHP-based open source content management system
-	pkgver = 5.7.5.9
+	pkgver = 8.0.0
 	pkgrel = 1
 	url = http://www.concrete5.org/
 	install = concrete5.install
@@ -13,8 +13,8 @@ pkgbase = concrete5
 	optdepends = cherokee: Web server to run concrete5
 	optdepends = lighttpd: Web server to run concrete5
 	options = !strip
-	source = http://www.concrete5.org/releases/concrete5.7.5.9.zip
-	sha256sums = dedcd8900a9ee8b4a1910f5fb17dc062172033f028483a634de2507097cf64f2
+	source = http://www.concrete5.org/releases/concrete5-8.0.0.zip
+	sha256sums = 8840d1588fdbdc9ef572ab9def8cfe1e4e59f7bb15a26ab95f1217d0c0d5f29b
 
 pkgname = concrete5
 
