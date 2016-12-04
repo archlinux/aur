@@ -1,4 +1,5 @@
-# Maintainer: valvetime <valvetimepackages@gmail.com>
+# Maintainer: Masoud <mpoloton@gmail.com>
+# Contributor: valvetime <valvetimepackages@gmail.com>
 # Contributor: Tom Swartz <tom@tswartz.net>
 
 pkgname=soapysdr-git
