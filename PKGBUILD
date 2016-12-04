@@ -2,11 +2,11 @@
 # Contributor: FadeMind <fademind@gmail.com>
 
 pkgname=papirus-color-scheme
-_commit=4d3a807 # 7 digits
-pkgver=20160615
+_commit=3574833 # 7 digits
+pkgver=20161203
 pkgrel=1
 pkgdesc="Papirus color scheme for KDE"
-url="https://github.com/PapirusDevelopmentTeam/${pkgname}"
+url="https://github.com/icaroperseo/${pkgname}"
 arch=('any')
 license=('GPL')
 depends=('plasma-desktop')
