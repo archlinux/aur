@@ -2,11 +2,11 @@
 # Contributor: FadeMind <fademind@gmail.com>
 
 pkgname=papirus-plasma-theme
-_commit=ece39e5 # 7 digits
-pkgver=20160811
+_commit=b26b93e # 7 digits
+pkgver=20161203
 pkgrel=1
 pkgdesc="Papirus plasma theme for KDE"
-url="https://github.com/PapirusDevelopmentTeam/${pkgname}"
+url="https://github.com/icaroperseo/${pkgname}"
 arch=('any')
 license=('GPL')
 depends=('plasma-desktop')
