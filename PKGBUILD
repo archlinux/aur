@@ -9,8 +9,7 @@ arch=('i686' 'x86_64')
 url="https://gitlab.com/reck1610/binarix"
 license=('GPL2')
 depends=('ncurses' 'glibc')
-source=("$pkgname-$pkgver.tar.gz::https://gitlab.com/reck1610/binarix/repository/archive.tar.gz?ref=release%2F0.2a")
-#source=("http://raffi.at/code/$pkgname-$pkgver.tar.gz" "$pkgname.patch")
+source=("$pkgname-$pkgver.tar.gz::https://gitlab.com/reck1610/$pkgname/repository/archive.tar.gz?ref=release%2F$pkgver")
 md5sums=('2e1ea4611e5e0824885d919f26a9e9b2')
 
 build() {
