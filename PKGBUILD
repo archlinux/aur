@@ -1,7 +1,7 @@
 #Maintainer: Frederick Gnodtke <fgnodtke at cronosx dot de>
 
 pkgname=python2-pysonic
-pkgver=0.5.1
+pkgver=0.6.2
 pkgrel=1
 pkgdesc="A python library to wrap the Subsonic REST API"
 arch=('any')
@@ -12,7 +12,7 @@ depends=(
 makedepends=('python2')
 provides=('python2-pysonic')
 source=("https://github.com/crustymonkey/py-sonic/archive/${pkgver}.tar.gz")
-sha256sums=('a1d44fd008c63da8f968c2c07a51097ff78b1990937600a3e81c80a06e35a0b7')
+sha256sums=('6199be3cb76f6949e827db57f5731a2c894e2d2912ca6895c71ade8d31e3f450')
 
 package() {
   cd "$srcdir/py-sonic-$pkgver"

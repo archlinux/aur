@@ -1,6 +1,6 @@
 pkgbase = python2-pysonic
 	pkgdesc = A python library to wrap the Subsonic REST API
-	pkgver = 0.5.1
+	pkgver = 0.6.2
 	pkgrel = 1
 	url = https://github.com/crustymonkey/py-sonic
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = python2-pysonic
 	makedepends = python2
 	depends = python2-setuptools
 	provides = python2-pysonic
-	source = https://github.com/crustymonkey/py-sonic/archive/0.5.1.tar.gz
-	sha256sums = a1d44fd008c63da8f968c2c07a51097ff78b1990937600a3e81c80a06e35a0b7
+	source = https://github.com/crustymonkey/py-sonic/archive/0.6.2.tar.gz
+	sha256sums = 6199be3cb76f6949e827db57f5731a2c894e2d2912ca6895c71ade8d31e3f450
 
 pkgname = python2-pysonic
 
