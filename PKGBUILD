@@ -4,7 +4,7 @@
 
 pkgname=archey3
 pkgver=0.5
-pkgrel=5
+pkgrel=6
 pkgdesc='Output a logo and various system information'
 arch=('any')
 url='https://lclarkmichalek.github.io/archey3/'
@@ -15,10 +15,6 @@ optdepends=('imagemagick: for default screenshot command'
             'python-logbook: alternative logging system')
 source=('git://github.com/lclarkmichalek/archey3#commit=1c7e137')
 md5sums=('SKIP')
-
-pkgver() {
-  grep pkgver= "$pkgname/PKGBUILD" | cut -d= -f2
-}
 
 package() {
   cd "$pkgname"
