@@ -2,7 +2,7 @@
 
 pkgbase=moc_notify-git
 pkgname=$pkgbase
-pkgver=2.0
+pkgver=2.1
 pkgrel=1
 _gitname=moc_notify
 _gittag="v.${pkgver}"
