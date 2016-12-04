@@ -7,14 +7,14 @@
 
 pkgname=tpm-tools
 pkgver=1.3.9
-pkgrel=1
+pkgrel=2
 pkgdesc="Tools to manage and diagnose a TPM"
 arch=('i686' 'x86_64')
 url="http://sourceforge.net/projects/trousers"
 license=('CPL')
 depends=('trousers' 'opencryptoki')
 source=(http://downloads.sourceforge.net/project/trousers/${pkgname}/${pkgver}/${pkgname}-${pkgver}.tar.gz)
-sha256sums=('13a1cb29d38d449cbc44d6384630d4827cc6ddb2ec8d9baa207e75ec1b134864')
+sha256sums=('ea126c5cd2ada56beb5118a141a498053f2d85f56263d215784f0ed86fff4213')
 
 build() {
   # the tarball for 1.3.9 doesn't have a parent directory
