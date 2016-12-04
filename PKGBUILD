@@ -1,6 +1,6 @@
 # Maintainer: Ammann Max <maximilian.ammann@googlemail.com>
 pkgname=golden-cheetah-git
-pkgver=v4.0.DEV1601.r525.9361996
+pkgver=V3.4.r34.18f4606
 pkgrel=1
 pkgdesc="Cycling Power Analysis Software. We believe that cyclists and triathletes should be able to download their power data to the
 computer of their choice, analyze it in whatever way they see fit, and share their methods of
@@ -12,13 +12,13 @@ makedepends=(bison flex 'gcc' 'make' 'qt5-tools' )
 depends=('qt5-base' 'qt5-svg' qt5-location qt5-declarative qt5-webchannel qt5-sensors qt5-serialport qt5-webkit qt5-multimedia qt5-script qt5-connectivity vlc)
 optdepends=('vlc' 'qwtplot3d-svn' 'srmio' 'libftd2xx' 'libkml' 'libical' 'libusb' 'libsamplerate')
 options=('!strip' '!buildflags' 'staticlibs')
-source=('golden-cheetah::git+https://github.com/GoldenCheetah/GoldenCheetah.git#commit=93619967cf56dbebec737ed119d0e8e4a2b01687'
+source=('golden-cheetah::git+https://github.com/GoldenCheetah/GoldenCheetah.git'
 GoldenCheetah.desktop gc.png gcconfig.pri)
 md5sums=('SKIP' af5e5a4376ee82ccfb69aa455b35a2d9 e1fb382b4a7316da1ffd435e45e50c4a '3857988a67fdf94b999fc05753ac2494')
 
 pkgver() {
   cd "${srcdir}/golden-cheetah"
-  printf "%s" "$(git describe --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
+  printf "%s" "$(git describe --long --tags | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
 }
 
 build() {
