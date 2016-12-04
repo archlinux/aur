@@ -11,7 +11,7 @@ depends=('firefox')
 conflicts=('firefox-extension-cookie-controller')
 source=("https://addons.cdn.mozilla.net/user-media/addons/334572/cookie_controller-$pkgver-fx.xpi")
 noextract=("${source##*/}")
-sha512sums=('317698ea2acd4284f775ed6ab15a11734dddbe38fdb481de3c7090128c73163588a377feb466a8bfd72b70cdcb19cec3eae8d88a7adc2507f92840d763cf761c')
+sha512sums=('136b3168335b20332d5894a6885025aa65b4d7d747e9f5fd12f5f106284a0e1e730e02edfd77d5c900cda6b1f87f7e6d62e8c73f9ab0d3413fb9c804de6a5fc4')
 
 package() {
   install -Dm644 "${source##*/}" "$pkgdir"/usr/lib/firefox/browser/extensions/{ac2cfa60-bc96-11e0-962b-0800200c9a66}.xpi
