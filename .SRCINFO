@@ -1,0 +1,16 @@
+pkgbase = qm-dsp
+	pkgdesc = A C++ library of functions for DSP and Music Informatics purposes
+	pkgver = 1.7.1
+	pkgrel = 1
+	url = http://ardour.org/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	provides = qm-dsp
+	conflicts = qm-dsp
+	source = qm-dsp-1.7.1::git://github.com/c4dm/qm-dsp.git#tag=v1.7.1
+	md5sums = SKIP
+
+pkgname = qm-dsp
+
