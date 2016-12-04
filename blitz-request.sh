@@ -1,2 +1,2 @@
 #!/bin/bash
-java -jar /usr/bin/blitz-request.jar
+exec java -jar /usr/bin/blitz-request.jar "$@"

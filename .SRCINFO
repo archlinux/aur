@@ -1,7 +1,7 @@
 pkgbase = blitz-request
 	pkgdesc = The best commandline REST API and stress tester.
 	pkgver = 1.0.0.3
-	pkgrel = 5
+	pkgrel = 6
 	url = https://github.com/chenshuiluke/blitz-request
 	arch = i686
 	arch = x86_64
