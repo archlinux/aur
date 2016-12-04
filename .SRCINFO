@@ -1,7 +1,7 @@
 pkgbase = f1spirit
-	pkgdesc = Unofficial remake of Konami's F-1 Spirit for the MSX
+	pkgdesc = Classic MSX race game remade by Brain Games
 	pkgver = 0.rc9.1615
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.braingames.getput.com/f1spirit
 	arch = i686
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = f1spirit
 	source = http://braingames.jorito.net/f1spirit/f1spirit.src_0.rc9-1615.tgz
 	source = f1spirit.patch
 	sha1sums = 90a6a0a3b5f7dc18a3497d32bb580bf47e688c95
-	sha1sums = a7e262034860818b9cc0533d281eced6d764c1f3
+	sha1sums = c718f3e0bab5b47a4305a3acd95bef3fd67391a2
 
 pkgname = f1spirit
 

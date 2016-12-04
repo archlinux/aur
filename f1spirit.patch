@@ -1,14 +1,17 @@
---- build/linux/Makefile 2016-06-07 15:16:05.308003998 +0200
-+++ build/linux/Makefile 2016-06-07 15:16:40.267337641 +0200
-@@ -3,7 +3,7 @@
+--- build/linux/Makefile 2009-02-06 11:12:51.000000000 +0100
++++ build/linux/Makefile 2016-12-04 14:31:53.053087733 +0100
+@@ -3,9 +3,9 @@
  PREFIX = /usr
  EXTRADIR = ./build/linux
  
 -GAMEDIR = $(PREFIX)/games
 +GAMEDIR = $(PREFIX)/bin
  STARTUP = $(GAMEDIR)/$(EXE)
- BINDIR = $(PREFIX)/share/games/$(EXE)
+-BINDIR = $(PREFIX)/share/games/$(EXE)
++BINDIR = $(PREFIX)/share/$(EXE)
  ICNDIR = $(PREFIX)/share/pixmaps
+ APPDIR = $(PREFIX)/share/applications
+ 
 @@ -38,7 +38,7 @@
  	$(SRC)/Vector.o					$(SRC)/weather.o				\
  	$(SRC)/filehandling.o			$(SRC)/CarEngineSound.o
@@ -18,6 +21,26 @@
  #CFLAGS = -g3 -O3 -Wall `sdl-config --cflags` `curl-config --cflags` -I/usr/X11R6/include
  CFLAGS = -g3 -O3 -Wno-write-strings `sdl-config --cflags` `curl-config --cflags` -I/usr/X11R6/include
  LDFLAGS = `sdl-config --libs` `curl-config --libs` -L/usr/X11R6/lib/ -lSDL_image -lSDL_mixer -lSDL_net -lGL -lGLU
+@@ -66,12 +66,16 @@
+ install: all
+ 	@$(ECHO) " o Creating install directory $(BINDIR)"
+ 	@$(MD) "$(BINDIR)"
+-	@$(ECHO) " o Installing game and data to $(BINDIR)"
+-	@$(CP) "$(EXE)" $(DATA) "$(BINDIR)"
++	@$(MD) "$(PREFIX)/lib/$(EXE)"
++	@$(ECHO) " o Installing data to $(BINDIR)"
++	@$(CP) $(DATA) "$(BINDIR)"
++	@$(ECHO) " o Installing binary to $(PREFIX)/lib/$(EXE)/$(EXE)"
++	@$(MD) "$(PREFIX)/lib/$(EXE)"
++	@$(CP) "$(EXE)" "$(PREFIX)/lib/$(EXE)"
+ 	@$(ECHO) " o Creating startup script $(STARTUP)"
+ 	@$(MD) "$(GAMEDIR)"
+ 	@$(ECHO) "#!/bin/sh" >"$(STARTUP)"
+-	@$(ECHO) "cd \"/usr/share/games/f1spirit/\"; ./$(EXE); cd -" >>"$(STARTUP)"
++	@$(ECHO) "cd \"/usr/share/f1spirit/\"; /lib/$(EXE)/$(EXE); cd -" >>"$(STARTUP)"
+ #	@$(ECHO) "cd \"$(BINDIR)\"; ./$(EXE); cd -" >>"$(STARTUP)"
+ 	@$(CHMOD) 755 "$(STARTUP)"
+ 	@$(ECHO) " o Creating application menu entry"
 
 --- sources/auxiliar.cpp  2016-06-07 15:06:20.295822247 +0200
 +++ sources/auxiliar.cpp  2016-06-07 15:07:16.164757181 +0200
