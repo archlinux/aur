@@ -8,7 +8,7 @@
 
 pkgname=mpv-ahjolinna-git
 _gitname=mpv
-pkgver=0.21.0.0.g3f5b41d
+pkgver=44200.g796b48b
 pkgrel=1
 pkgdesc='Video player based on MPlayer/mplayer2 (git version)'
 arch=('x86_64')
@@ -47,7 +47,7 @@ makedepends+=('libva')
 optdepends+=('libva: for open source driver users')
     fi
     
-provides=('mpv')
+  provides=('mpv=1:0.22.0')
 conflicts=('mpv' 'mpv-vapoursynth' 'mpv-ahjolinna-build-git' 'mpv-build-git' )
 options=('!emptydirs')
 source=('git+https://github.com/mpv-player/mpv'
@@ -70,12 +70,12 @@ sha256sums=('SKIP'
 
 pkgver() {
   cd "$srcdir/$_gitname"
-  _curtag="$(git rev-list --tags --max-count=1)"
-  _tagver="$(git describe --tags $_curtag | sed -e 's:^v::' -e 's:-:_:g')"
-  _commits="$(git rev-list --count HEAD --since=$_tagver)"
-  _sha="$(git rev-parse --short HEAD)"
-  printf "%s.%s.g%s" $_tagver $_commits $_sha
-  #msg "$(git rev-list --count HEAD).g$(git rev-parse --short HEAD)"
+  #_curtag="$(git rev-list --tags --max-count=1)"
+  #_tagver="$(git describe --tags $_curtag | sed -e 's:^v::' -e 's:-:_:g')"
+  #_commits="$(git rev-list --count HEAD --since=$_tagver)"
+  #_sha="$(git rev-parse --short HEAD)"
+  #printf "%s.%s.g%s" $_tagver $_commits $_sha
+  echo "$(git rev-list --count HEAD).g$(git rev-parse --short HEAD)"
 }
 
 prepare() {
@@ -104,7 +104,7 @@ if [[ $_libvdpau = 1 ]] || [ -f /usr/bin/nvidia-settings ] ; then
        _hwaccel="--enable-vaapi-hwaccel"
   fi
 
-  waf configure \
+ ./waf configure \
     --prefix=/usr \
   --confdir=/etc/mpv \
   --disable-test \
@@ -127,12 +127,12 @@ if [[ $_libvdpau = 1 ]] || [ -f /usr/bin/nvidia-settings ] ; then
   --lua=luajit \
   --enable-libavdevice \
   --enable-vapoursynth
-waf build
+./waf build
 }
 
 package() {
   cd "$srcdir/$_gitname"
-  waf install --destdir="${pkgdir}" 
+  ./waf install --destdir="${pkgdir}" 
 
 
  # install the .desktop files
