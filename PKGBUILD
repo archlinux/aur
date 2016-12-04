@@ -4,11 +4,11 @@ pkgbase=elektra-git
 pkgname=('elektra-git'
          'python-elektra-git'
          'python2-elektra-git'
-         'lua52-elektra-git'
+         'lua-elektra-git'
          'java-elektra-git'
          'ruby-elektra-git'
          )
-pkgver=0.8.19.317.gd605fb0
+pkgver=0.8.19.323.g198bb88
 pkgrel=1
 pkgdesc="A universal hierarchical configuration store. (GIT version)"
 arch=('i686' 'x86_64')
@@ -26,7 +26,7 @@ makedepends=('qt5-declarative'
              'doxygen'
              'graphviz'
              'swig'
-             'lua52'
+             'lua'
              'python2-cheetah'
              'python'
              'java-environment=8'
@@ -70,7 +70,11 @@ build() {
     -DTOOLS=ALL \
     -DPLUGINS='ALL;-experimental' \
     -DBINDINGS=ALL \
-    -DLUA_INCLUDE_DIR=/usr/include/lua5.2 \
+    -DLUA_EXECUTABLE=/usr/bin/lua \
+    -DLUA_LIBRARY=/usr/lib/liblua.so \
+    -DLUA_INCLUDE_DIR=/usr/include \
+    -DTARGET_LUA_CMOD_FOLDER=lib/lua/5.3 \
+    -DTARGET_LUA_LMOD_FOLDER=share/lua/5.3 \
     -DJAVA_INCLUDE_PATH="${JAVA_HOME}/include" \
     -DCMAKE_SKIP_INSTALL_RPATH=ON
 
@@ -92,7 +96,7 @@ package_elektra-git() {
               'discount: qt-gui'
               'python-elektra-git: Python bindings and find-tools'
               'python2-elektra-git: Python 2 bindings and gen tool'
-              'lua52-elektra-git: Lua52 bindings'
+              'lua-elektra-git: Lua52 bindings'
               'elektra-glib-git: Glib bindings'
               'java-elektra-git: Java bindings'
               )
@@ -155,21 +159,21 @@ package_ruby-elektra-git() {
   depends=('elektra-git'
            'ruby'
            )
-  provides=('lua52-elektra')
-  conflicts=('lua52-elektra')
+  provides=('ruby-elektra')
+  conflicts=('ruby-elektra')
 
   make -C build/src/bindings/swig/ruby DESTDIR="${pkgdir}" install
 
   install -Dm644 elektra/doc/LICENSE.md "${pkgdir}/usr/share/licenses/ruby-elektra-git/LICENSE.md"
 }
 
-package_lua52-elektra-git() {
-  pkgdesc="LUA52 bindings for Elektra. (GIT version)"
+package_lua-elektra-git() {
+  pkgdesc="LUA bindings for Elektra. (GIT version)"
   depends=('elektra-git'
-           'lua52'
+           'lua'
            )
-  provides=('lua52-elektra')
-  conflicts=('lua52-elektra')
+  provides=('lua-elektra')
+  conflicts=('lua-elektra')
 
   make -C build/src/bindings/swig/lua DESTDIR="${pkgdir}" install
   make -C build/src/plugins/lua DESTDIR="${pkgdir}" install
