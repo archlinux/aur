@@ -10,9 +10,10 @@ url="http://www.ldcodesign.com/%D7%98%D7%99%D7%A4%D7%95%D7%92%D7%A8%D7%A4%D7%99%
 license=('OFL')
 depends=(fontconfig xorg-fonts-encodings xorg-mkfontscale xorg-mkfontdir)
 
-source=("http://ldcodesign.com/downloads/typography/$filename" fonts-ldco.install)
+source=("http://ldcodesign.com/downloads/typography/$filename" $pkgname.install)
 sha256sums=('4147c9fc7e787c8a34483399caf77b13f8d50798e80eb7be1edc01d7105aa926'
 		'745a621aa8d8a9f8ef6cd017da94e0103db9e8c3e749dcc8613139d1a57a2fe0')
+install=$pkgname.install
 
 package() {
 
