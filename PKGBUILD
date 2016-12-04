@@ -9,14 +9,16 @@ arch=('i686' 'x86_64')
 url="http://raffi.at/view/code/$pkgname"
 license=('GPL2')
 depends=('ncurses' 'glibc')
-source=("http://raffi.at/code/$pkgname-$pkgver.tar.gz" "$pkgname.patch")
-md5sums=('177638b1265c9866a7d0e048493fe67b'
-         'd6a8fb386a10a2576eff2b32e8ca6df5')
+source=("$pkgname-$pkgver.tar.gz::https://gitlab.com/reck1610/binarix/repository/archive.tar.gz?ref=release%2F0.2a")
+#source=("http://raffi.at/code/$pkgname-$pkgver.tar.gz" "$pkgname.patch")
+md5sums=('2e1ea4611e5e0824885d919f26a9e9b2')
 
 build() {
-  mv "$srcdir/$pkgname" "$srcdir/$pkgname-$pkgver"
+  cd "$srcdir"
+  mv "$pkgname-release/"$(ls "$pkgname-release") "$pkgname-$pkgver"
+  rm -rf "$pkgname-release"
   cd "$srcdir/$pkgname-$pkgver"
-  patch -p1 -i "$srcdir/$pkgname.patch" "$pkgname.c"
+  #patch -p1 -i "$srcdir/$pkgname.patch" "$pkgname.c"
   make all
 }
 
