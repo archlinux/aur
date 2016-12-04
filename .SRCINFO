@@ -1,7 +1,7 @@
 pkgbase = thermald
 	pkgdesc = The Linux Thermal Daemon program from 01.org
 	pkgver = 1.5.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://01.org/linux-thermal-daemon
 	arch = i686
 	arch = x86_64
@@ -9,8 +9,6 @@ pkgbase = thermald
 	makedepends = systemd
 	depends = dbus-glib
 	depends = libxml2
-	provides = thermald
-	conflicts = thermald
 	backup = etc/thermald/thermal-conf.xml
 	source = thermald-1.5.4.tar.gz::https://github.com/01org/thermal_daemon/archive/v1.5.4.tar.gz
 	source = modules-load-thermald.conf
