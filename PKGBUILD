@@ -3,7 +3,7 @@
 
 pkgname=htmlcompressor
 pkgver=1.5.3
-pkgrel=2
+pkgrel=3
 pkgdesc="HTML compressor and minifier."
 arch=(any)
 url="http://code.google.com/p/htmlcompressor/"
@@ -12,7 +12,7 @@ depends=(java-runtime)
 optdepends=('yuicompressor: inline css and javascript compression'
 'closure-compiler: inline javascript compression')
 source=(
-    "http://${pkgname}.googlecode.com/files/${pkgname}-${pkgver}.jar"
+    "https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/${pkgname}/${pkgname}-${pkgver}.jar"
     "htmlcompressor.sh"
     )
 sha256sums=('88894e330cdb0e418e805136d424f4c262236b1aa3683e51037cdb66310cb0f9'
