@@ -1,0 +1,14 @@
+pkgbase = ruby-chef-diff
+	pkgdesc = Chef Diff is a library for calculating what Chef objects where modified between two revisions
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/One-com/chef_diff
+	arch = i686
+	arch = x86_64
+	makedepends = chef-dk
+	depends = chef-client
+	source = git+https://github.com/One-com/chef_diff.git
+	sha1sums = SKIP
+
+pkgname = ruby-chef-diff
+
