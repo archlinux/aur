@@ -31,7 +31,20 @@ cleanuptemp() {
 		rm "${LIST}"
 	fi
 }
-
+sortdb() {
+	DB_DIR="/var/cache/pacman-ps"
+	if [ ! -f "${DB_DIR}/files.db.sorted" ]; then
+		if (( "$EUID" != 0 )); then
+    	echo "Please run as root or sudo, to process the database."
+    	exit 1
+		fi
+		sort -u -k 2,2 "${DB_DIR}/files.db" > "${DB_DIR}/files.db-"
+		rm "${DB_DIR}/files.db"
+		mv "${DB_DIR}/files.db-" "${DB_DIR}/files.db"
+	  touch "${DB_DIR}/files.db.sorted"
+	fi
+}
+sortdb
 DB_FILE="/var/cache/pacman-ps/files.db"
 # Get the resolved filename of the currently running script
 RUN=$(readlink -f "$0")
@@ -40,17 +53,23 @@ RUNDIR=$(dirname "${RUN}")
 # If a file called ps-lsof is found in the same directory as pacman-ps use that
 if [ -f "${RUNDIR}/ps-lsof" ]; then
 	PS_LSOF_CMD="${RUNDIR}/ps-lsof -q"
+	#printf "using ps-lsof -q\n"
+elif [ -f "${RUNDIR}/ps-lsof.pl" ]; then
+	PS_LSOF_CMD="${RUNDIR}/ps-lsof.pl"
+	#printf "Using ps-lsof.pl\n"
 # Otherwise, if we find a ps-lsof.sh file, use that to call ps-lsof
 elif [ -f "${RUNDIR}/ps-lsof.sh" ]; then
 	PS_LSOF_CMD="${RUNDIR}/ps-lsof.sh -q"
+	#printf "Using ps-lsof.sh -q\n"
 else
 	echo "Could not find ps-lsof or ps-lsof.sh"
 	echo "Make sure it is in the same folder as pacman-ps or pacman-ps.sh"
 	exit 1
 fi
 
+
 # Get the output from ps-lsof and sort it so that 'join' will be happy
-PS_LSOF_OUTPUT=$($PS_LSOF_CMD | sort -k 2,2)
+PS_LSOF_OUTPUT=$(${PS_LSOF_CMD} | sort -k 2,2)
 # If ps-lsof doesn't output anything, our work here is done
 if [ "${PS_LSOF_OUTPUT}" = "" ]; then
 	exit 0

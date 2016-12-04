@@ -8,7 +8,8 @@
 # a list of package names seperated by a newline from stdin.  It then will add
 # the file listing to the DB_DIR/files.db
 DB_DIR="/var/cache/pacman-ps"
-xargs -I '{}' pacman -Ql '{}' | sort -u -k 2,2 - ${DB_DIR}/files.db > ${DB_DIR}/files.db-
+xargs -I '{}' pacman -Ql '{}' >> "${DB_DIR}/files.db"
+if [ -f "${DB_DIR}/files.db.sorted" ]; then
+  rm "${DB_DIR}/files.db.sorted"
+fi
 wait
-rm ${DB_DIR}/files.db
-mv ${DB_DIR}/files.db- ${DB_DIR}/files.db
