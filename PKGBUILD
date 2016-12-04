@@ -1,8 +1,8 @@
-# Maintainer: Michael Straube <michael_straube web de>
+# Maintainer: Michael Straube <straubem@gmx.de>
 
 pkgname=goonies
 pkgver=1.4.1528
-pkgrel=1
+pkgrel=2
 pkgdesc="Unofficial remake of Konami's The Goonies for the MSX"
 arch=('i686' 'x86_64')
 license=('unknown')
@@ -11,13 +11,13 @@ depends=('sdl_image' 'sdl_mixer' 'glu')
 source=("http://braingames.jorito.net/goonies/downloads/$pkgname.src_$pkgver.tgz"
         goonies.patch)
 sha1sums=('a2be53b74e9744ca72fdd1913f2dab1912170534'
-          '780e4bacf811b63431718f24e33e799f017bf726')
+          '931f5b2effc39324d60c5ea3d344b21ceaad7fcf')
 
 prepare() {
   cd $pkgname-$pkgver
 
   # fix compile errors and bin path
-  patch -p0 < "$srcdir/goonies.patch"
+  patch -p0 < ../goonies.patch
 }
 
 build() {
@@ -29,5 +29,5 @@ build() {
 package() {
   cd $pkgname-$pkgver
 
-  make PREFIX="$pkgdir/usr" install
+  make PREFIX="$pkgdir"/usr install
 }

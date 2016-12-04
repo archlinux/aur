@@ -1,14 +1,17 @@
---- build/linux/Makefile 2016-06-07 16:59:56.225909535 +0200
-+++ build/linux/Makefile 2016-06-07 17:05:44.756102836 +0200
-@@ -3,7 +3,7 @@
+--- build/linux/Makefile 2009-03-12 11:05:30.000000000 +0100
++++ build/linux/Makefile 2016-12-04 15:27:46.029273929 +0100
+@@ -3,9 +3,9 @@
  PREFIX = /usr
  EXTRADIR = ./build/linux
  
 -GAMEDIR = $(PREFIX)/games
 +GAMEDIR = $(PREFIX)/bin
  STARTUP = $(GAMEDIR)/$(EXE)
- BINDIR = $(PREFIX)/share/games/$(EXE)
+-BINDIR = $(PREFIX)/share/games/$(EXE)
++BINDIR = $(PREFIX)/share/$(EXE)
  ICNDIR = $(PREFIX)/share/pixmaps
+ APPDIR = $(PREFIX)/share/applications
+ 
 @@ -56,7 +56,7 @@
  	$(SRC)/Symbol.o			$(SRC)/TheGooniesApp.o \
  	$(SRC)/TheGoonies.o		$(SRC)/Vector.o
@@ -18,12 +21,22 @@
  CFLAGS = -g3 -O3 -Wno-write-strings `sdl-config --cflags` -I/usr/X11R6/include
  LDFLAGS = `sdl-config --libs` -L/usr/X11R6/lib/ -lSDL_image -lSDL_mixer -lGL -lGLU
  RM = rm -f
-@@ -88,7 +88,8 @@
+@@ -83,12 +83,16 @@
+ install: all
+ 	@$(ECHO) " o Creating install directory $(BINDIR)"
+ 	@$(MD) "$(BINDIR)"
+-	@$(ECHO) " o Installing game and data to $(BINDIR)"
+-	@$(CP) "$(EXE)" $(DATA) "$(BINDIR)"
++	@$(ECHO) " o Installing data to $(BINDIR)"
++	@$(CP) $(DATA) "$(BINDIR)"
++	@$(ECHO) " o Installing binary to $(PREFIX)/lib/$(EXE)"
++	@$(MD) "$(PREFIX)/lib/$(EXE)"
++	@$(CP) "$(EXE)" "$(PREFIX)/lib/$(EXE)"
  	@$(ECHO) " o Creating startup script $(STARTUP)"
  	@$(MD) "$(GAMEDIR)"
  	@$(ECHO) "#!/bin/sh" >"$(STARTUP)"
 -	@$(ECHO) "cd \"$(BINDIR)\" && ./$(EXE)" >>"$(STARTUP)"
-+	@$(ECHO) "cd \"/usr/share/games/goonies/\" && ./$(EXE)" >>"$(STARTUP)"
++	@$(ECHO) "cd \"/usr/share/goonies/\" && /lib/$(EXE)/$(EXE)" >>"$(STARTUP)"
 +#	@$(ECHO) "cd \"$(BINDIR)\" && ./$(EXE)" >>"$(STARTUP)"
  	@$(CHMOD) 755 "$(STARTUP)"
  	@$(ECHO) " o Creating application menu entry"
