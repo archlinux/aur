@@ -2,7 +2,7 @@
 
 pkgname=sdlpop
 pkgver=1.16
-pkgrel=3
+pkgrel=4
 pkgdesc="An open-source port of Prince of Persia"
 arch=('i686' 'x86_64')
 license=('GPL3')
@@ -22,12 +22,11 @@ build() {
 package() {
   cd SDLPoP-$pkgver
 
-  install -d "$pkgdir"/usr/{lib/sdlpop,share/{sdlpop,doc/sdlpop}}
+  install -d "$pkgdir"/usr/{lib/sdlpop,share/sdlpop}
 
   install -m 755 prince "$pkgdir"/usr/lib/sdlpop
   install -m 644 SDLPoP.ini *.DAT "$pkgdir"/usr/share/sdlpop
-  install -m 644 doc/* "$pkgdir"/usr/share/doc/sdlpop
-  cp -r data "$pkgdir"/usr/share/sdlpop
+  cp -r data doc "$pkgdir"/usr/share/sdlpop
 
   install -D -m 755 ../prince "$pkgdir"/usr/bin/prince
 }
