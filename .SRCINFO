@@ -1,7 +1,7 @@
 pkgbase = caddy
 	pkgdesc = A configurable, general-purpose HTTP/2 web server for any platform
 	pkgver = 0.9.3
-	pkgrel = 5
+	pkgrel = 6
 	url = https://caddyserver.com
 	install = caddy.install
 	arch = i686

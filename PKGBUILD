@@ -1,6 +1,6 @@
 pkgname=caddy
 pkgver=0.9.3
-pkgrel=5
+pkgrel=6
 pkgdesc='A configurable, general-purpose HTTP/2 web server for any platform'
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 url='https://caddyserver.com'
@@ -15,6 +15,7 @@ md5sums=('SKIP')
 
 prepare() {
     cd $srcdir
+    patch -Np1 < ../setcap.patch
     export GOPATH="$srcdir/build"
     rm -rf "$GOPATH/src/$gopkgname"
     mkdir -p "$GOPATH/src/$gopkgname"
