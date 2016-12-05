@@ -1,11 +1,12 @@
-# Maintainer: sxe <sxxe@gmx.de>
-# Based on the wine package in the community repository
+# Maintainer: Sidney Crestani <sidneycrestani@archlinux.net>
+# Old Maintainer: sxe <sxxe@gmx.de>
+# Based on the wine package in the multilib repository
 
 pkgname=wine-git
 _gitname="wine"
-pkgver=1.9.9.r118.ge1970c8
+pkgver=1.9.24.r105.g1d3b944
 pkgrel=1
-pkgdesc="A compatibility layer for running Windows programs. Latest GIT version."
+pkgdesc="A compatibility layer for running Windows programs. GIT version."
 url="http://www.winehq.com"
 arch=('i686' 'x86_64')
 options=(staticlibs)
@@ -50,13 +51,15 @@ makedepends=(autoconf ncurses bison perl fontforge flex
   alsa-lib              lib32-alsa-lib
   libxcomposite         lib32-libxcomposite
   mesa                  lib32-mesa
-  libcl                 lib32-libcl
+  mesa-libgl            lib32-mesa-libgl
+  opencl-icd-loader     lib32-opencl-icd-loader
   libxslt               lib32-libxslt
   gst-plugins-base-libs lib32-gst-plugins-base-libs
   samba
   opencl-headers
   git
 )
+
   
 optdepends=(
   giflib                lib32-giflib
@@ -73,7 +76,7 @@ optdepends=(
   libxcomposite         lib32-libxcomposite
   libxinerama           lib32-libxinerama
   ncurses               lib32-ncurses
-  libcl                 lib32-libcl
+  opencl-icd-loader     lib32-opencl-icd-loader
   libxslt               lib32-libxslt
   gst-plugins-base-libs lib32-gst-plugins-base-libs
   cups
@@ -97,6 +100,7 @@ pkgver() {
   #date +%Y%m%d
   cd "$srcdir/$pkgname"
   git describe --always --long | sed -E 's/([^-]*-g)/r\1/;s/-/./g;s/^wine.//'
+	      
 }
 
 prepare() {
