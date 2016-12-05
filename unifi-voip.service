@@ -1,0 +1,12 @@
+[Unit]
+Description=Ubiquiti VoIP UniFi Server
+After=network.target
+
+[Service]
+User=unifi
+WorkingDirectory=/usr/lib/unifi-voip
+ExecStart=/usr/bin/java -jar /usr/lib/unifi-voip/lib/ace.jar start
+ExecStop=/usr/bin/java -jar /usr/lib/unifi-voip/lib/ace.jar stop
+
+[Install]
+WantedBy=multi-user.target

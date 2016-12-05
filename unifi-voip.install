@@ -1,0 +1,8 @@
+# arg 1:  the new package version
+post_install() {
+  # https://wiki.archlinux.org/index.php/DeveloperWiki:UID_/_GID_Database
+  systemd-sysusers unifi-voip.conf
+  :
+}
+
+# vim:set ts=2 sw=2 et:

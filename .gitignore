@@ -1,0 +1,8 @@
+*
+!.gitignore
+!PKGBUILD
+!.SRCINFO
+!LICENSE
+!unifi-voip.install
+!unifi-voip.service
+!unifi-voip.sysusers
