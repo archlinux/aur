@@ -15,7 +15,7 @@ optdepends=(
 	'gstreamer: GStreamer support (recommended)'
 	'libpulse: Pulse Audio support'
 	'portaudio: PortAudio support'
-	'libsecret: Store passwords in keyring'
+	'libsecret: Store passwords in keyring (requires a compatible keyring application like gnome-keyring)'
 	'libnotify: Desktop notifications'
 	'libappindicator-gtk3: App indicator support')
 provides=(roger)
