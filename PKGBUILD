@@ -4,7 +4,7 @@
 _build_doc=ON
 _build_apps=ON
 pkgname=openmesh
-pkgver=6.2
+pkgver=6.3
 pkgrel=1
 pkgdesc="A generic and efficient data structure for representing and manipulating polygonal meshes"
 arch=('i686' 'x86_64')
@@ -15,8 +15,8 @@ optdepends=('qt4: for using included applications' )
 install=openmesh.install
 source=("${pkgname}-${pkgver}.tar.bz2::http://www.openmesh.org/media/Releases/${pkgver}/OpenMesh-${pkgver}.tar.bz2"
     doc-install.patch)
-md5sums=('6297105b2c6f74d21e1d6244fbf651ab'
-         '451950dabec420fedd596fc740aa0c8f')
+md5sums=('07a301c8a5f5649de6f19cbe83762cb3'
+         '25554594b88aada3219f3c233e80eb9b')
 
 if [[ "${_build_doc}" == "ON" && "${_build_apps}" == "ON" ]]; then
     makedepends=('cmake' 'qt4' 'graphviz' 'doxygen')

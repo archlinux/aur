@@ -1,5 +1,5 @@
---- OpenMesh-6.2/Doc/CMakeLists.txt.orig	2015-07-23 20:32:21.999279134 +0200
-+++ OpenMesh-6.2/Doc/CMakeLists.txt	2015-07-23 20:34:36.777897182 +0200
+--- OpenMesh-6.3/Doc/CMakeLists.txt.orig	2016-10-23 20:32:21.999279134 +0200
++++ OpenMesh-6.3/Doc/CMakeLists.txt	2016-10-23 20:34:36.777897182 +0200
 @@ -2,14 +2,12 @@
  
  IF (DOXYGEN_FOUND)
