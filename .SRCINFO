@@ -1,7 +1,7 @@
 pkgbase = creak-git
 	pkgdesc = Performs some of the most famous MITM attack on target addresses located in a local network.
 	pkgver = 20161118.r38
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/codepr/creak
 	arch = any
 	license = GPL3

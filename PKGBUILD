@@ -3,7 +3,7 @@
 
 pkgname=creak-git
 pkgver=20161118.r38
-pkgrel=1
+pkgrel=2
 arch=('any')
 pkgdesc="Performs some of the most famous MITM attack on target addresses located in a local network."
 url="https://github.com/codepr/creak"
@@ -28,14 +28,15 @@ pkgver() {
 	cd ${pkgname}
 	install -dm755 "${pkgdir}/usr/bin"
 	install -dm755 "${pkgdir}/usr/share/${pkgname}"
-
+	install -Dm 644 README.md -t "${pkgdir}/usr/share/doc/${pkgname}"
+	install -Dm 644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 	cp -a --no-preserve=ownership * "${pkgdir}/usr/share/${pkgname}"
 
 	cat > "${pkgdir}/usr/bin/creak" << XXZ
 	#!/usr/bin/env bash
 	cd /usr/share/${pkgname}
-		      python2 creak.py "\$@"
+	python2 creak.py "\$@"
 XXZ
-		      chmod 755 "${pkgdir}/usr/bin/creak"
+	chmod 755 "${pkgdir}/usr/bin/creak"
 	      }
 	      
