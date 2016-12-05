@@ -1,19 +1,17 @@
 # Maintainer: Allen Zhong <moeallenz@gmail.com>
 pkgname=asar-apache
 pkgver=r54
-pkgrel=1
+pkgrel=2
 pkgdesc="A System Activity Reporter of apache httpd"
 arch=(i686 x86_64)
 url="http://code.google.com/p/python-asar/"
 license=('GPL2')
 depends=('apache')
-source=("http://python-asar.googlecode.com/svn-history/$pkgver/trunk/asar-apache-agent/asar_apache_agent.c"
-	"http://python-asar.googlecode.com/svn-history/$pkgver/trunk/asar-apache-agent/asar_apache_gather.c")
-md5sums=('ae8af0c209828408496c8a09adf51102'
-         '5fdf7a14172fb6ed70c707231e57c359')
+source=("https://storage.googleapis.com/google-code-archive-source/v2/code.google.com/python-asar/source-archive.zip")
+md5sums=('857d51f08ea5c3b3f70d946b76ec3747')
 
 build() {
-  cd "$srcdir"
+  cd "$srcdir"/python-asar/trunk/asar-apache-agent/
 
   sed -i 's/\/tmp/\/var\/log\/httpd/g' *.c
   gcc -o asar_apache_agent asar_apache_agent.c
@@ -21,7 +19,7 @@ build() {
 }
 
 package() {
-  cd "$srcdir"
+  cd "$srcdir"/python-asar/trunk/asar-apache-agent/
   install -d "$pkgdir"/usr/sbin
   install -Dm755 asar_apache_agent "$pkgdir"/usr/sbin/
   install -Dm755 asar_apache_gather "$pkgdir"/usr/sbin/
