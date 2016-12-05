@@ -2,7 +2,7 @@
 # Contributor: Dean Galvin <deangalvin3@gmail.com>
 pkgname="home-assistant"
 pkgdesc='Home Assistant is an open-source home automation platform running on Python 3'
-pkgver=0.33.4
+pkgver=0.34.2
 pkgrel=1
 url="https://home-assistant.io/"
 license=('MIT')
@@ -10,13 +10,13 @@ arch=('any')
 replaces=('python-home-assistant')
 makedepends=('python-setuptools')
 # NB: this package will install additional python packages in /var/lib/hass/lib depending on components present in the configuration files.
-depends=('python>=3.4' 'python-pip' 'python-requests' 'python-yaml' 'python-pytz>=2016.6.1' 'python-vincenty' 'python-jinja>=2' 'python-voluptuous>=0.9.3' 'python-netifaces' 'python-webcolors' 'python-async-timeout' 'python-aiohttp')
+depends=('python>=3.4' 'python-pip' 'python-requests' 'python-yaml' 'python-pytz>=2016.6.1' 'python-vincenty' 'python-jinja>=2' 'python-voluptuous>=0.9.3' 'python-netifaces' 'python-webcolors' 'python-async-timeout' 'python-aiohttp>=1.1.5')
 optdepends=('git: install component requirements from github'
             'net-tools: necessary for nmap discovery')
 conflicts=('python-home-assistant' 'python-home-assistant-git')
 source=("https://github.com/${pkgname}/${pkgname}/archive/${pkgver}.tar.gz"
         "home-assistant.service")
-sha256sums=('4946fbba5c9951d4b587f4a5048a45b8636d3d5da9e9858899bb81aa30225bfc'
+sha256sums=('29b2bb3c6cda5da3d1a4f977a244118bdf70ab6bad4fbd468327e5e8ed4a9107'
             'SKIP')
 backup=('var/lib/hass/configuration.yaml')
 install='hass.install'
@@ -31,7 +31,7 @@ prepare() {
   # typing package is a backport of standard library < 3.5
   replace 'typing>=3,<4' '' setup.py
 
-  replace 'async_timeout==1.0.0' 'async_timeout>=1.0.0' setup.py
+  replace 'aiohttp==1.1.6' 'aiohttp>=1.1.5' setup.py
 }
 
 replace() {
