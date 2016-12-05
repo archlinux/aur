@@ -5,8 +5,7 @@ pkgdesc="C++ Bayesian networks library"
 license=('GPL')
 arch=('i686' 'x86_64')
 url="https://forge.lip6.fr/projects/aGrUM/wiki"
-depends=('gcc-libs')
-optdepends=('python: python bindings')
+depends=('python-pydotplus' 'python-matplotlib' 'ipython')
 makedepends=('cmake' 'cococpp' 'swig' 'python')
 source=("agrum-${pkgver}::git+git://forge.lip6.fr/aGrUM#tag=${pkgver}")
 md5sums=('SKIP')
