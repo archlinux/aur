@@ -1,7 +1,7 @@
 # Maintainer: Josh Ellithorpe <quest at mac dot com>
 
 pkgname=visago
-pkgver=0.3.6
+pkgver=0.4.0
 pkgrel=0
 pkgdesc="Visual AI Aggregator."
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ makedepends=('go' 'git')
 options=('!strip' '!emptydirs')
 provides=("s=${pkgver}")
 source=("https://github.com/zquestz/${pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('8d67f3aa19797ffe2498db13a2f3910814e06bb56771a26e6f48fbef4fa57266')
+sha256sums=('cc5a9bbdcc46533a49ffb490a815b097ab1d42622539ab2dc334a6e3fa8257ea')
 _gourl="github.com/zquestz/${pkgname}"
 
 build() {
