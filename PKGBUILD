@@ -4,7 +4,7 @@
 pkgname=vmware-vcli
 _pkgver=6.5.0-4566394
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=2
 pkgdesc="VMware vSphere Command-Line Interface (vCLI); run commands against vSphere and ESX/ESXi"
 arch=('i686' 'x86_64')
 url="https://developercenter.vmware.com/tool/vsphere_cli/6.0"
@@ -45,4 +45,8 @@ package() {
   rmdir "$pkgdir"/lib
 
   chmod +x "$pkgdir"/usr/lib/vmware-vcli/bin/esxcli/esxcli
+
+  # Having this causes some python programs to throw errors and this seems
+  # OK without it
+  rm "$pkgdir"/usr/bin/six.pyc
 }
