@@ -2,7 +2,7 @@
 
 pkgbase=wireguard-git
 pkgname=(wireguard-dkms-git wireguard-tools-git)
-pkgver=0.0.20160808.r0.g1352143
+pkgver=0.0.20161129.r3.ge029184
 pkgrel=1
 pkgdesc='next generation secure network tunnel - git checkout'
 arch=('x86_64' 'i686')
@@ -30,17 +30,20 @@ pkgver() {
 }
 
 prepare() {
-	sed -i '/^include/d' WireGuard/src/Makefile
+	cd WireGuard/
+
+	sed -i '/^include/d' src/Makefile
+
+	find contrib/examples/ -name '.gitignore' -delete
 }
 
 build() {
-	cd WireGuard/src/tools/
+	cd WireGuard/
 
-	make
+	make -C src/tools/
 }
 
 package_wireguard-dkms-git() {
-	arch=('any')
 	depends=('dkms')
 	provides=('wireguard-dkms')
 	conflicts=('wireguard-dkms')
@@ -59,8 +62,11 @@ package_wireguard-tools-git() {
 	provides=('wireguard-tools')
 	conflicts=('wireguard-tools')
 
-	cd WireGuard/src/tools/
+	cd WireGuard/
 
-	make DESTDIR="${pkgdir}/" install
+	make -C src/tools/ DESTDIR="${pkgdir}/" install
+
+	install -d -m0755 "${pkgdir}"/usr/share/${pkgbase}/
+	cp -r contrib/examples/ "${pkgdir}"/usr/share/${pkgbase}/
 }
 
