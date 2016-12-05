@@ -7,8 +7,7 @@ arch=('any')
 url="https://www.gnome-look.org/p/999965/"
 source=("https://www.dropbox.com/s/blps54ojd81yh73/Alkano.tgz")
 makedepends=('tar')
-
-sha256sums=('SKIP')
+sha256sums=('6d3ca78ec27787f7ddbdef7fd05eeb55cacbdc09ac2d1c5b85034e0cfb148495')
 
 package() {
 	cd $srcdir/Alkano
