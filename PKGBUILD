@@ -2,7 +2,7 @@
 
 _gemname=azure-armrest
 pkgname=ruby-$_gemname
-pkgver=0.3.7
+pkgver=0.3.13
 pkgrel=1
 pkgdesc="This is a Ruby interface for Azure using the newer REST API"
 arch=(any)
@@ -12,7 +12,7 @@ depends=('ruby' 'ruby-activesupport' 'ruby-addressable' 'ruby-azure-signature' '
 makedepends=('rubygems')
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-sha256sums=('1ba82f17d472b5c978692ce76a36f644f8d14bf239cfa1a8db1418795e104b50')
+sha256sums=('ffdd86f34327c66fd19a0bfb6800dffee1702211a466d9b7e5438a2cac13d8b9')
 
 package() {
   cd "$srcdir"
