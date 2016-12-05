@@ -1,4 +1,5 @@
-# Maintainer: Arthur Zamarin <arthurzam@gmail.com>
+# Maintainer: Jiachen Yang <farseerfc@gmail.com>
+# Contributor: Arthur Zamarin <arthurzam@gmail.com>
 # Contributor: Ferik <djferik at gmail dot com>
 # Contributor for Qt5 version: pavbaranov
 
