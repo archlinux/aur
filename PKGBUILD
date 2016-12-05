@@ -4,18 +4,18 @@
 # Contributor: William Rea <sillywilly@gmail.com>
 pkgname=postgis-sfcgal
 _pkgname=${pkgname%-sfcgal}
-pkgver=2.2.0
+pkgver=2.3.1
 pkgrel=1
 pkgdesc="Adds support for geographic objects to PostgreSQL and includes SFCGAL support for experimental 3D functions"
 arch=('i686' 'x86_64')
 url="http://postgis.net/"
 license=('GPL')
-depends=('postgresql' 'gdal' 'geos' 'json-c' 'cgal' 'sfcgal' 'libxml2' 'libxslt')
+depends=('postgresql' 'gdal' 'geos' 'json-c' 'sfcgal' 'libxml2' 'libxslt')
 changelog=$pkgname.changelog
 provides=("$_pkgname=$pkgver")
 conflicts=($_pkgname)
 source=("http://download.osgeo.org/postgis/source/${_pkgname}-${pkgver}.tar.gz")
-sha256sums=('66f0f8480d535959b8bb9abb5ee5d602d1001413ca770df120baf3de627f9e91')
+md5sums=('29d78ebf4542af94ad518508a27d47af')
 
 build() {
   cd ${_pkgname}-${pkgver}
