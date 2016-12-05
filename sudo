@@ -1,2 +1,2 @@
-nagios ALL = NOPASSWD: /usr/bin/mdadm --detail --scan
-nagios ALL = NOPASSWD: /usr/bin/mdadm --detail /dev/md*
+icinga,nagios,nrpe ALL = NOPASSWD: /usr/bin/mdadm --detail --scan
+icinga,nagios,nrpe ALL = NOPASSWD: /usr/bin/mdadm --detail /dev/md*

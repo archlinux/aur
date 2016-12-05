@@ -2,7 +2,7 @@
 
 pkgname=check_md_raid
 pkgver=0.7.2
-pkgrel=8
+pkgrel=9
 pkgdesc="Linux Software RAID Monitoring Plugin for Nagios"
 arch=('any')
 url="http://exchange.nagios.org/directory/Plugins/Operating-Systems/Linux/Linux-Software-Raid-Plugin-for-32-2Dbit-and-64-2Dbit-systems/details"
@@ -20,7 +20,7 @@ sha256sums=('b85f0a77215870839cb18a74d9e38b594eaeda5c44ddc88aff8d2c2246f506f7'
             '527d98535f4cda98a468ea69f6a3cfb3a53e27ecbd2affc553985be70e29125a'
             '6267ecf8aff1da308216675f94e9e91f91349ed3b1054b8c8c1dc4d08ef632ad'
             '542d756357f4e8afd16962015428efccabb9f4410c873556a2b8d6e0cc37ca69'
-            '4ffbd86b293665cd39a468257e3bf3fe35ce3cd429d7df576ef330762ad727d7')
+            '4882cf971684deb2afd6e1deb3883272dd41ed544576619f816498c6111c16cc')
 
 build() {
 	cp ${pkgname}-${pkgver}.py ${pkgname}
