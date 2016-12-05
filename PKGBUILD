@@ -1,23 +1,37 @@
-# Maintainer: 100best <jm.100best@hotmail.com>
+# Maintainer: 100best <jm dot 100best at gmail dot com>
 
+_pkgname=terravox
 pkgname=terravox-git
-pkgver=0.0.3.git
+pkgver=v0.0.3.c7f5d21
 pkgrel=1
-pkgdesc="Simple heightmap Editor for Voxlap5 VXL (512x512 only)"
+pkgdesc="Simple heightmap Editor for Voxlap5 VXL (512x512 only) (git 
+version)"
 url="https://github.com/yvt/terravox"
 arch=('x86_64' 'i686')
 license=('MIT')
 makedepends=('git')
 depends=('qt5-base' 'luajit')
 optdepends=('openspades-git' 'pysnip-git')
-source=('git+https://github.com/yvt/terravox.git')
+provides=('terravox')
+conflicts=('terravox')
+source=("$pkgname"::'git+https://github.com/yvt/terravox.git')
 md5sums=('SKIP')
 
-package() {
-  cd $srcdir/terravox
+pkgver() {
+  cd $srcdir/$pkgname
+  echo "$(git describe --tags | sed 's/-/+/g').$(git describe --always | sed 's|-|.|g')"
+}
+
+build() {
+  cd $srcdir/$pkgname
   qmake Terravox.pro
   make
-  mkdir $pkgdir/usr
-  mkdir $pkgdir/usr/bin
-  mv Terravox $pkgdir/usr/bin
+}
+
+package() {
+  cd $srcdir/$pkgname
+  mkdir -p $pkgdir/usr/share/licenses/$_pkgname
+  mkdir -p $pkgdir/usr/bin
+  cp -R LICENSE.txt $pkgdir/usr/share/licenses/$_pkgname/LICENSE
+  cp -R Terravox $pkgdir/usr/bin  
 }
