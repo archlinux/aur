@@ -3,7 +3,7 @@
 
 pkgname=tsar-git
 _gitname=tsar
-pkgver=0.154.dfc6ac8
+pkgver=0.241.297a2db
 pkgrel=1
 pkgdesc="Taobao System Activity Reporter"
 arch=('i686' 'x86_64')
@@ -13,8 +13,8 @@ depends=('glibc')
 makedepends=('git')
 backup=('etc/tsar/tsar.conf')
 source=("git://github.com/alibaba/$_gitname.git"
-	"fix_module_path.patch"
-	"fix_apache_log.patch")
+        "fix_module_path.patch"
+        "fix_apache_log.patch")
 sha1sums=('SKIP'
           'fcb802d50a4d374b05e9453e688ea6e9e5e40d4d'
           '3ad26fcbc9bcbb886caa58e3315eb02edb65534f')
@@ -36,7 +36,7 @@ package() {
 
   install -d "$pkgdir"/usr/lib/tsar/modules
   cp modules/*.so "$pkgdir"/usr/lib/tsar/modules/
-  
+
   install -Dm755 src/tsar "$pkgdir"/usr/bin/tsar
 
   install -Dm644 conf/tsar.conf "$pkgdir"/etc/tsar/tsar.conf
