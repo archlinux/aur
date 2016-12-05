@@ -2,12 +2,12 @@
 
 pkgname=kronosnet-git
 pkgver=0.0.r1101.g3cea157
-pkgrel=2
+pkgrel=3
 pkgdesc="VPNs on steroids"
 arch=('i686' 'x86_64')
 url="http://www.kronosnet.org/"
 license=('GPL2')
-makedepends=('git' 'libqb')
+makedepends=('git' 'libqb-git')
 depends=('nss')
 provides=('kronosnet')
 conflicts=('kronosnet')
