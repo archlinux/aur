@@ -1,0 +1,21 @@
+pkgbase = creak-git
+	pkgdesc = Performs some of the most famous MITM attack on target addresses located in a local network.
+	pkgver = 20161118.r38
+	pkgrel = 1
+	url = https://github.com/codepr/creak
+	arch = any
+	license = GPL3
+	makedepends = python2-setuptools
+	makedepends = git
+	depends = python2
+	depends = python2-dpkt
+	depends = python2-pypcap
+	depends = scapy
+	depends = libdnet
+	provides = creak
+	conflicts = creak
+	source = creak-git::git+https://github.com/codepr/creak.git
+	sha512sums = SKIP
+
+pkgname = creak-git
+
