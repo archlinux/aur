@@ -14,6 +14,8 @@ function installdir() {
 }
 
 post_install() {
+    systemd-tmpfiles --create
+    
     # template cache needs to be writeable
     installdir http:http 0700 0600 /var/lib/zarafa-postfixadmin
 

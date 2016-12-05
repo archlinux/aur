@@ -6,7 +6,7 @@ pkgname='zarafa-postfixadmin'
 replaces=('zarafa-postfixadmin-worker')
 groups=('zarafa'
 	'kopano')
-pkgver=0.21
+pkgver=0.22
 pkgrel=89
 pkgdesc="A web based interface used to manage mailboxes, virtual domains and aliases created for Zarafa-Server with DB-Plugin and Postfix"
 arch=('any')
@@ -95,9 +95,9 @@ package_zarafa-postfixadmin() {
     install -dm755 ${_destdir_usr}
     install -dm755 ${_destdir_systemd}
 
+    # systemd
+    cp systemd/* ${_destdir_systemd}
+    
     # usr
-    mv usr/zarafa-postfixadmin.service ${_destdir_systemd}
-    mv usr/fetchmail-postfixadmin.service ${_destdir_systemd}
-    mv usr/fetchmail-postfixadmin.timer ${_destdir_systemd}
     mv usr/* ${_destdir_usr}
 }
