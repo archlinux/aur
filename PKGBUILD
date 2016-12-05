@@ -9,7 +9,7 @@ _ngx_acc_rev=2.0.3
 
 pkgname=nginx-accesskey
 _pkgname=nginx
-pkgver=1.8.0
+pkgver=1.10.2
 pkgrel=1
 pkgdesc='Lightweight HTTP server and IMAP/POP3 proxy server, with ngx_http_accesskey_module.'
 arch=('i686' 'x86_64')
@@ -32,7 +32,7 @@ source=($url/download/nginx-$pkgver.tar.gz
         http://wiki.nginx.org/images/5/51/Nginx-accesskey-$_ngx_acc_rev.tar.gz
         service
         logrotate)
-sha256sums=('23cca1239990c818d8f6da118320c4979aadf5386deda691b1b7c2c96b9df3d5'
+sha256sums=('1045ac4987a396e2fa5d0011daf8987b612dd2f05181b67507da68cbe7d765c2'
             'd9e94321e78a02de16c57f3e048fd31059fd8116ed03d6de7180f435c52502b1'
             '4ecbc33ce4bf2965996f51b0c7edb677904ba5cff9a32e93e1487a428d3a751b'
             '8700222687c1848f7669faaa23708adc92d6634de156b8935b5b9a9b062ce6e9')
@@ -58,8 +58,8 @@ build() {
         --http-fastcgi-temp-path=/var/lib/nginx/fastcgi \
         --http-scgi-temp-path=/var/lib/nginx/scgi \
         --http-uwsgi-temp-path=/var/lib/nginx/uwsgi \
-        --with-imap \
-        --with-imap_ssl_module \
+        --with-mail \
+        --with-mail_ssl_module \
         --with-ipv6 \
         --with-pcre-jit \
         --with-file-aio \
@@ -67,7 +67,6 @@ build() {
         --with-http_gunzip_module \
         --with-http_gzip_static_module \
         --with-http_realip_module \
-        --with-http_spdy_module \
         --with-http_ssl_module \
         --with-http_stub_status_module \
         --with-http_addition_module \
@@ -76,7 +75,7 @@ build() {
         --with-http_mp4_module \
         --with-http_secure_link_module \
         --with-http_sub_module \
-	--add-module="$srcdir"/nginx-accesskey-$_ngx_acc_rev
+        --add-module="$srcdir"/nginx-accesskey-$_ngx_acc_rev
     make
 }
 
