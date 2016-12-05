@@ -1,0 +1,15 @@
+pkgbase = lua-term
+	pkgdesc = Terminal functions for Lua
+	pkgver = 0.7
+	pkgrel = 1
+	url = https://github.com/hoelzro/lua-term
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = luarocks
+	depends = lua
+	source = https://luarocks.org/lua-term-0.7-1.rockspec
+	sha256sums = e2edece302c1c14ba2b416d973c095801e7f32c50d156ea46f21e37bb82c2f65
+
+pkgname = lua-term
+
