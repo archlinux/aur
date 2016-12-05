@@ -9,7 +9,7 @@ arch=('i686' 'x86_64')
 url="http://bazel.io/"
 license=('Apache')
 depends=('java-environment>=8' 'libarchive' 'zip' 'unzip')
-makedepends=('git' 'protobuf' 'gcc-multilib')
+makedepends=('git' 'protobuf')
 options=('!distcc' '!strip')
 source=("https://github.com/bazelbuild/bazel/archive/${pkgver}.tar.gz")
 sha512sums=('f2758fc61c2dee8f5c3a95cab368f831526b42f7e5281c8e0f0810437b21edd9ffe1a18aa09fd86f7d80e3fc385006a9a82596910297cca30c49c43db7bfa30a')
