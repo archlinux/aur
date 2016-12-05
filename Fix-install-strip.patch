@@ -1,0 +1,36 @@
+From da180154a36f14169ed80da310e378ae38516ba8 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Karel=20Ko=C4=8D=C3=AD?= <karel.koci@nic.cz>
+Date: Mon, 5 Dec 2016 07:41:40 +0100
+Subject: [PATCH 1/2] Fix install strip
+
+Strip can be used only on executables, adding it to all install
+commands causes error on some systems.
+---
+ Makefile | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/Makefile b/Makefile
+index 2cc363c..539342a 100644
+--- a/Makefile
++++ b/Makefile
+@@ -2,7 +2,7 @@ CFLAGS = -O2 -Wall -g
+ LDLIBS = -llockdev
+ 
+ PREFIX ?= /usr/local
+-INSTALL ?= install -s
++INSTALL ?= install
+ 
+ all: sterm
+ 
+@@ -11,7 +11,7 @@ clean:
+ 
+ install: all
+ 	$(INSTALL) -d $(DESTDIR)$(PREFIX)/bin
+-	$(INSTALL) -m 755 sterm $(DESTDIR)$(PREFIX)/bin
++	$(INSTALL) -s -m 755 sterm $(DESTDIR)$(PREFIX)/bin
+ ifneq ($(NO_MAN),1)
+ 	$(INSTALL) -d $(DESTDIR)$(PREFIX)/share/man/man1
+ 	$(INSTALL) -m 644 sterm.man $(DESTDIR)$(PREFIX)/share/man/man1/sterm.1
+-- 
+2.10.2
+
