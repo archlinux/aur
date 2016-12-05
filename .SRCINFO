@@ -1,7 +1,7 @@
 pkgbase = thunar-extended
 	pkgdesc = Thunar with split view, cursor audio preview and extra options for trash, desktop files and user actions
 	pkgver = 1.6.10
-	pkgrel = 4
+	pkgrel = 5
 	url = http://thunar.xfce.org
 	arch = i686
 	arch = x86_64
@@ -22,7 +22,7 @@ pkgbase = thunar-extended
 	depends = libxfce4util
 	depends = libxfce4ui
 	depends = libpng
-	depends = gstreamer0.10
+	depends = gstreamer
 	optdepends = gvfs: for trash support, mounting with udisk and remote filesystems
 	optdepends = gamin: for monitoring file changes without gvfs
 	optdepends = xfce4-panel: for trash applet

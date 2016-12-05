@@ -2,7 +2,7 @@
 
 pkgname=thunar-extended
 pkgver=1.6.10
-pkgrel=4
+pkgrel=5
 pkgdesc="Thunar with split view, cursor audio preview and extra options for trash, desktop files and user actions"
 arch=(i686 x86_64)
 license=('GPL2' 'LGPL2.1')
@@ -12,7 +12,7 @@ conflicts=('thunar')
 replaces=('thunar')
 provides=('thunar=1.6.10')
 depends=('desktop-file-utils' 'libexif' 'hicolor-icon-theme' 'libnotify' 'udev' \
-         'gtk2' 'exo' 'libxfce4util' 'libxfce4ui' 'libpng' 'gstreamer0.10')
+         'gtk2' 'exo' 'libxfce4util' 'libxfce4ui' 'libpng' 'gstreamer')
 makedepends=('intltool' 'pkgconfig' 'xfce4-panel' 'xfce4-dev-tools')
 optdepends=('gvfs: for trash support, mounting with udisk and remote filesystems'
 	    'gamin: for monitoring file changes without gvfs'
