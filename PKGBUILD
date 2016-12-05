@@ -2,7 +2,7 @@
 # Contributor: Eric Forgeot < http://ifiction.free.fr >
 
 pkgname=glulxe-term
-pkgver=052
+pkgver=053
 pkgrel=1
 pkgdesc="Glulxe is an interpreter for the Glulx virtual machine."
 arch=(i686 x86_64)
@@ -12,7 +12,7 @@ groups=(inform)
 depends=('ncurses')
 source=("http://www.ifarchive.org/if-archive/programming/glulx/interpreters/glulxe/glulxe-${pkgver}.tar.gz" "http://www.ifarchive.org/if-archive/programming/glk/implementations/glktermw-104.tar.gz")
 
-md5sums=('8e3b25accb5d051db60930e9898754b1'
+md5sums=('8553ed3bfa364b117b9d332a8f383bba'
          '050aeb964140f7e11f555e06a23ccb1d')
 
 build() {
