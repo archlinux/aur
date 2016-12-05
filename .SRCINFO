@@ -1,0 +1,15 @@
+pkgbase = lua-mediator
+	pkgdesc = Event handling through channels
+	pkgver = 1.1.2
+	pkgrel = 1
+	url = http://olivinelabs.com/mediator_lua/
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = luarocks
+	depends = lua
+	source = https://luarocks.org/mediator_lua-1.1.2-0.rockspec
+	sha256sums = 751debefe0aa00fa93c0ae6371922055289e9948b0231d1430c214118fdb3f3b
+
+pkgname = lua-mediator
+
