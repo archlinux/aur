@@ -3,7 +3,7 @@
 pkgname=gajim-plugin-omemo
 _pkgname=omemo
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Gajim plugin for OMEMO Multi-End Message and Object Encryption."
 arch=(any)
 url="https://dev.gajim.org/gajim/gajim-plugins/wikis/OmemoGajimPlugin"
@@ -12,13 +12,13 @@ depends=("gajim" "python2-qrcode" "python2-setuptools" "python2-cryptography" "p
 provides=('gajim-plugin-omemo')
 conflicts=('gajim-plugin-omemo-git')
 source=("https://ftp.gajim.org/plugins_0.16_zip/${_pkgname}.zip")
-sha512sums=('1df65b15dfbdc220c3df328b81f5cdb8e92cd43845e7b93a1f93fc6a76f408560b66284477c346e9f48f4c200a482d8f48b5ed6bdd139f13bc8700a0dbc3167a')
+sha512sums=('9364d9d20c12975ee2c4a6b71ce3b1a010fdfe3f93a74f926272679190c59d1391e55eaa11bfc6f4b8eee0b56affca6785dad720d51d501b43aeff8be1bc291b')
 
 package() {
   cd ${srcdir}/${_pkgname}
 
   # Remove unnecessary files
-  rm -r CHANGELOG COPYING pkgs setup.cfg
+  rm -r CHANGELOG COPYING setup.cfg
 
   # Install the plugin
   install -d ${pkgdir}/usr/share/gajim/plugins/omemo
