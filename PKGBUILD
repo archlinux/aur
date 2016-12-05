@@ -4,11 +4,9 @@ pkgname=unifi-voip
 pkgver=1.0.5
 _pkgver="1.0.5-kxe7d9"
 pkgrel=1
-pkgdesc='Centralized management system for Ubiquiti UniFi AP'
+pkgdesc='Centralized management system for Ubiquiti UniFi VoIP hardware'
 arch=('any')
 url='https://community.ubnt.com/unifi'
-# We are allowed to ship the software in our repository
-# https://mailman.archlinux.org/mailman/private/arch-dev/2014-August/015690.html
 license=('custom')
 depends=('mongodb' 'java-runtime-headless' 'fontconfig')
 conflicts=('tomcat-native')
