@@ -1,15 +1,15 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 pkgname=scribus-indigo-git
-pkgver=r68.4cfc7b2
+pkgver=r70.2697525
 pkgrel=1
 pkgdesc="A desktop publishing program - indigo fork"
 arch=('i686' 'x86_64')
 depends=('hunspell' 'podofo' 'python2' 'libcups' 'graphicsmagick'
-	 'poppler' 'libcdr' 'libvisio' 'libpagemaker'
+	 'poppler' 'libcdr' 'libvisio' 'libpagemaker' 'harfbuzz-icu'
 	 'qt5-declarative' 'libmspub' 'openscenegraph')
 url="https://github.com/nitramr/scribus-indigo/wiki"
 license=('GPL' 'LGPL')
-makedepends=('git' 'cmake' 'qt5-tools')
+makedepends=('git' 'cmake' 'qt5-tools' 'dos2unix')
 provides=('scribus')
 conflicts=('scribus')
 source=("git+https://github.com/nitramr/scribus-indigo.git")
@@ -23,6 +23,7 @@ pkgver() {
 
 prepare() {
   cd "$_gitname"/scribus/plugins/scriptplugin
+  dos2unix scripts/Ligatursatz.py
   find . -type f -name "*.py" -exec sed -i '1s+python$+python2+' {} \;
 }
   
