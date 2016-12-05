@@ -2,7 +2,7 @@
 #Contributor: Yan Burdonsky <psyrccio@gmail.com>
 pkgname=mandelbulber2-git
 _pkgname=mandelbulber2
-pkgver=20161014
+pkgver=20161205
 pkgrel=1
 pkgdesc="3D application designed to render 3D fractals such as the Mandelbulb, Mandelbox, BulbBox, JuliaBulb, Menger Sponge, and Iterated Function Systems. Git version."
 arch=('any')
