@@ -2,7 +2,7 @@
 # Maintainer : Colin Arnott <arnottcr@gmail.com>
 
 pkgname=purple-skypeweb-git
-pkgver=20160708.1.1.32.g32b8255
+pkgver=20161205.1.2.2.7.g6fa665a
 pkgrel=1
 arch=('any')
 license=('GPLv3')
