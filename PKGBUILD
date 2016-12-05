@@ -2,7 +2,7 @@
 
 pkgname=kronosnet-git
 pkgver=0.0.r1101.g3cea157
-pkgrel=1
+pkgrel=2
 pkgdesc="VPNs on steroids"
 arch=('i686' 'x86_64')
 url="http://www.kronosnet.org/"
@@ -29,7 +29,7 @@ prepare() {
 
 build() {
   cd $pkgname
-  ./configure
+  ./configure --libdir=/usr/lib
   make V=0
 }
 

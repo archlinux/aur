@@ -1,7 +1,7 @@
 pkgbase = kronosnet-git
 	pkgdesc = VPNs on steroids
 	pkgver = 0.0.r1101.g3cea157
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.kronosnet.org/
 	arch = i686
 	arch = x86_64
