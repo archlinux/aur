@@ -1,7 +1,7 @@
 # Maintainer: Philipp Wolfer <ph.wolfer@gmail.com>
 pkgname=roger-router
-pkgver=1.9.2
-pkgrel=4
+pkgver=1.9.3
+pkgrel=1
 pkgdesc="Roger Router"
 arch=('i686' 'x86_64')
 url="https://www.tabos.org/"
@@ -26,7 +26,7 @@ source=(
 	address-book.svg
 	)
 sha1sums=(
-	'b0de17edcf32ac686e941b06fd8e83f5999b8b85'
+	'b5c5a38ceb0e6db02684e552367deea981652875'
 	'eea8152ef5472bf2e52f05651485ba3c60eb8e3f'
 	)
 
