@@ -14,7 +14,8 @@ conflicts=("${pkgname%-git}")
 source=("git://github.com/alerque/${pkgname%-git}.git#branch=${_branch}")
 sha512sums=('SKIP')
 makedepends=('git')
-depends=('lua-lpeg'
+depends=('lua-cosmo'
+         'lua-lpeg'
          'lua-expat'
          'lua-filesystem'
          'lua-zlib'
