@@ -4,15 +4,15 @@
 validpgpkeys=('748231EBCBD808A14F5E85D28C004C2F93481F6B')
 
 pkgname=quake2world-git
-pkgver=r2493.f1fb32c
-pkgrel=3
+pkgver=r3140.ac83e5e
+pkgrel=1
 pkgdesc="A free, stand-alone, multiplayer-only iteration of Quake2"
 arch=('i686' 'x86_64')
 url="http://quetoo.org"
 license=('GPL')
 source=(git+https://github.com/jdolan/quake2world.git)
 sha512sums=('SKIP')
-depends=('sdl2' 'curl' 'sdl2_image' 'sdl2_mixer')
+depends=('sdl2' 'curl' 'sdl2_image' 'sdl2_mixer' 'objectivelymvc-git')
 makedepends=('sdl2' 'sdl2_mixer' 'sdl2_image' 'physfs')
 optdepends=(
 'quake2world-data-git: the game data files'
