@@ -32,10 +32,10 @@ _use_32bit_pae="no"	# "yes": Use the PAE config for 32-bit
 
 pkgdesc='A desktop oriented kernel and modules with Liquorix patches'
 __basekernel=4.8
-_minor=11
+_minor=12
 pkgver=${__basekernel}.${_minor}
-pkgrel=1
-lqxrel=1
+pkgrel=2
+lqxrel=2
 pkgbase=linux-lqx
 # pkgname=('linux-lqx' 'linux-lqx-headers' 'linux-lqx-docs')
 _lqxpatchname="${pkgver}-${lqxrel}.patch"
@@ -51,21 +51,21 @@ fi
 
 options=(!strip)
 install='linux.install'
-source=("http://www.kernel.org/pub/linux/kernel/v4.x/linux-${__basekernel}.tar.xz"
-        "http://www.kernel.org/pub/linux/kernel/v4.x/linux-${__basekernel}.tar.sign"
-        "http://liquorix.net/sources/${_lqxpatchname}.gz"
-        "http://liquorix.net/sources/${__basekernel}/config.i386"
-        "http://liquorix.net/sources/${__basekernel}/config.i386-pae"
-        "http://liquorix.net/sources/${__basekernel}/config.amd64"
+source=("https://www.kernel.org/pub/linux/kernel/v4.x/linux-${__basekernel}.tar.xz"
+        "https://www.kernel.org/pub/linux/kernel/v4.x/linux-${__basekernel}.tar.sign"
+        "https://liquorix.net/sources/${_lqxpatchname}.gz"
+        "https://liquorix.net/sources/${__basekernel}/config.i386"
+        "https://liquorix.net/sources/${__basekernel}/config.i386-pae"
+        "https://liquorix.net/sources/${__basekernel}/config.amd64"
         "linux.preset"
         "99-linux.hook")
 
 sha512sums=('a48a065f21e1c7c4de4cf8ca47b8b8d9a70f86b64e7cfa6e01be490f78895745b9c8790734b1d22182cf1f930fb87eaaa84e62ec8cc1f64ac4be9b949e7c0358'
             'SKIP'
-            'ae65d63dbfb9065f29e1bee86ba452a2dfdd52a7c2445591f21a22632566ea1f7877b4863753929882da715410d80a764ceb8904f3fc698fa425d1a83048b963'
-            'b6d3cb1e068c7fa9b03956a7b57b5912c661a4275517b9a15f142373a8db953728819f3839168a02cb28712a322c243606c5ca452d79cf1d68a8231d9c2e908e'
-            '65ee4cba60b79ac968f40fe7b1d7b40b57a08af99e162c07ee2ba33d414101d800cc082e15e11e3e891fa49c03e6ca49592c6611eb8755acd9777eef04bfd1ce'
-            'aaca1ee61133db9795ad045ddd66dc59cfc253b1a398c966bbf67cc204e2e8c6d6499d75526ec1d462b8042f947e4252db56bfea10331a14a96d440a287f3aa2'
+            'cfe7fbd4960d722fc4ec5e8f465446b396ad00b5cab1580d382f978ddd8d92d840b18bba99efc3b7eb667dce2c75ec00e24e01d28d3726ecd3b77ddd43c275d9'
+            '7738cf5b9235e28fbbd65e8f8f1e32572ce9aa626c60301000a215494f76ab97cb74b691e735ef396870859c25ed836f9274c1df1f6b45f06e6db26adbe2c43b'
+            '46df0d7514b9e8e547184e3eb6c9a43c9c47590c0271290815b9410a6ca417ff35a48a446f8159d5d7f72f17b018679a3e3e5bc952a4cd3304f9e3dfb448445d'
+            'b4677c64a3097dfa5bebefa02abb5465b14887fc84d65ef9baaab6183b53d8fdfade27332de98c684cfeb6fd45a2efd9ed03dc381908d31ab42de6e39c06b3ba'
             '2dc6b0ba8f7dbf19d2446c5c5f1823587de89f4e28e9595937dd51a87755099656f2acec50e3e2546ea633ad1bfd1c722e0c2b91eef1d609103d8abdc0a7cbaf'
             'd6faa67f3ef40052152254ae43fee031365d0b1524aa0718b659eb75afc21a3f79ea8d62d66ea311a800109bed545bc8f79e8752319cd378eef2cbd3a09aba22')
             
