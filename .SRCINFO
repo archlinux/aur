@@ -7,7 +7,11 @@ pkgbase = brother-lpr-drivers-ac
 	arch = x86_64
 	license = GPL
 	license = custom:brother commercial license
-	source = http://mirrors.kernel.org/ubuntu/pool/multiverse/b/brother-lpr-drivers-ac/brother-lpr-drivers-ac_1.0.3-1-0ubuntu1_.deb
+	depends = brother-lpr-drivers-common
+	depends = a2ps
+	depends = lib32-glibc
+	source = http://mirrors.kernel.org/ubuntu/pool/multiverse/b/brother-lpr-drivers-ac/brother-lpr-drivers-ac_1.0.3-1-0ubuntu4_amd64.deb
+	md5sums = 7beb2abc3406c25f2b9408b3e1cb3b87
 
 pkgname = brother-lpr-drivers-ac
 

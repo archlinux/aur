@@ -9,14 +9,15 @@ license=('GPL' 'custom:brother commercial license')
 url="http://solutions.brother.com/linux/en_us/index.html"
 arch=('i686' 'x86_64')
 [ $CARCH == "x86_64" ] && _a="amd64" && md5sums=(
-  'dcf91f4625af3abc7871859e2818fa65') && depends=('brother-lpr-drivers-common' 'a2ps' 'lib32-glibc')
+  '7beb2abc3406c25f2b9408b3e1cb3b87') && depends=('brother-lpr-drivers-common' 'a2ps' 'lib32-glibc')
 [ $CARCH == "i686" ] && _a="i386" && md5sums=(
-  '814b9c79c125771b50fc4a43dd0c5d86') && depends=('brother-lpr-drivers-common' 'a2ps')
-source=(http://mirrors.kernel.org/ubuntu/pool/multiverse/b/${pkgname}/${pkgname}_${pkgver}-1-0ubuntu1_${_a}.deb)
+  '7369c4d71f98cbfc7d6a11b3d616042e') && depends=('brother-lpr-drivers-common' 'a2ps')
+
+source=(http://mirrors.kernel.org/ubuntu/pool/multiverse/b/${pkgname}/${pkgname}_${pkgver}-1-0ubuntu4_${_a}.deb)
 
 build() {
  cd $srcdir || return 1
- ar -x ${pkgname}_${pkgver}-1-0ubuntu1_${_a}.deb || return 1
+ ar -x ${pkgname}_${pkgver}-1-0ubuntu4_${_a}.deb || return 1
 } 
 
 package() {
