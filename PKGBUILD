@@ -12,7 +12,7 @@ depends=('brother-lpr-drivers-common' 'cups')
   'c656345afbb951780958069e2aed9db2')
 [ $CARCH == "i686" ] && _a="i386" && md5sums=(
   '90c39c2270f9b3d231f5f930e208e73e')
-source=(http://mirrors.kernel.org/ubuntu/pool/multiverse/b/${pkgname}/${pkgname}_${pkgver}-10-0ubuntu5_${_a}.deb)
+source=(http://de.archive.ubuntu.com/ubuntu/pool/multiverse/b/${pkgname}/${pkgname}_${pkgver}-10-0ubuntu5_${_a}.deb)
 
 build() {
  cd $srcdir || return 1

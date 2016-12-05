@@ -9,7 +9,8 @@ pkgbase = brother-cups-wrapper-common
 	license = custom:brother commercial license
 	depends = brother-lpr-drivers-common
 	depends = cups
-	source = http://mirrors.kernel.org/ubuntu/pool/multiverse/b/brother-cups-wrapper-common/brother-cups-wrapper-common_1.0.0-10-0ubuntu5_.deb
+	source = http://de.archive.ubuntu.com/ubuntu/pool/multiverse/b/brother-cups-wrapper-common/brother-cups-wrapper-common_1.0.0-10-0ubuntu5_amd64.deb
+	md5sums = c656345afbb951780958069e2aed9db2
 
 pkgname = brother-cups-wrapper-common
 
