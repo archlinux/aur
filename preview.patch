@@ -1,24 +1,44 @@
-diff -rudp Thunar-1.6.6.orig/configure.ac Thunar-1.6.6/configure.ac
---- Thunar-1.6.6.orig/configure.ac	2015-03-09 23:51:51.000000000 -0400
-+++ Thunar-1.6.6/configure.ac	2015-03-09 23:58:51.000000000 -0400
-@@ -181,6 +181,14 @@ XDT_CHECK_OPTIONAL_PACKAGE([LIBSTARTUP_N
-                            [0.4], [startup-notification],
-                            [startup notification library])
+diff -ru Thunar-1.6.10.orig/configure.ac Thunar-1.6.10/configure.ac
+--- Thunar-1.6.10.orig/configure.ac	2016-12-05 04:11:30.000000000 -0500
++++ Thunar-1.6.10/configure.ac	2016-12-05 04:24:20.000000000 -0500
+@@ -112,6 +112,19 @@
+             [HELPER_PATH_PREFIX="$libdir"])
+ AC_SUBST([HELPER_PATH_PREFIX])
+ 
++dnl ******************************
++dnl *** Allow either gstreamer ***
++dnl ******************************
++AC_ARG_WITH([gstreamer],
++            [AC_HELP_STRING([--with-gstreamer=0.10|1.0],
++                            [which gstreamer version to compile against (default: 1.0)])],
++            [case "$with_gstreamer" in
++                0.10|1.0) ;;
++                *) AC_MSG_ERROR([invalid gstreamer version specified]) ;;
++             esac],
++            [with_gstreamer=1.0]
++)
++
+ dnl ***********************************************
+ dnl *** Work-around system-specific limitations ***
+ dnl ***********************************************
+@@ -173,6 +186,14 @@
+ XDT_CHECK_OPTIONAL_PACKAGE([DBUS], [dbus-glib-1],
+                            [0.34], [dbus], [D-BUS support])
  
 +dnl *************************************************
 +dnl *** Optional support for gstreamer            ***
 +dnl *************************************************
 +XDT_CHECK_OPTIONAL_PACKAGE([GSTREAMER],
-+                           [gstreamer-0.10],
-+                           [0.10], [gstreamer],
++                           [gstreamer-${with_gstreamer}],
++                           [${with_gstreamer}], [gstreamer],
 +                           [nautilus-like mouseover preview])
 +
  dnl ***************************************************************
  dnl *** Optional support for GUDev (required for thunar-volman) ***
  dnl ***************************************************************
-@@ -294,6 +302,11 @@ echo "* Startup Notification:
+@@ -267,6 +288,11 @@
  else
- echo "* Startup Notification:               no"
+ echo "* GIO UNIX features:                  no"
  fi
 +if test x"$GSTREAMER_FOUND" = x"yes"; then
 +echo "* GStreamer:			      yes"
@@ -28,10 +48,10 @@ diff -rudp Thunar-1.6.6.orig/configure.ac Thunar-1.6.6/configure.ac
  if test x"$GUDEV_FOUND" = x"yes"; then
  echo "* GUDev (required for thunar-volman): yes"
  else
-diff -rudp Thunar-1.6.6.orig/thunar/Makefile.am Thunar-1.6.6/thunar/Makefile.am
---- Thunar-1.6.6.orig/thunar/Makefile.am	2015-03-09 23:51:51.000000000 -0400
-+++ Thunar-1.6.6/thunar/Makefile.am	2015-03-09 23:58:51.000000000 -0400
-@@ -271,6 +271,14 @@ thunar_LDADD +=								\
+diff -ru Thunar-1.6.10.orig/thunar/Makefile.am Thunar-1.6.10/thunar/Makefile.am
+--- Thunar-1.6.10.orig/thunar/Makefile.am	2016-12-05 04:11:30.000000000 -0500
++++ Thunar-1.6.10/thunar/Makefile.am	2016-12-05 04:11:39.000000000 -0500
+@@ -269,6 +269,14 @@
  	$(DBUS_LIBS)
  endif
  
@@ -46,10 +66,10 @@ diff -rudp Thunar-1.6.6.orig/thunar/Makefile.am Thunar-1.6.6/thunar/Makefile.am
  if HAVE_GIO_UNIX
  thunar_CFLAGS +=							\
  	$(GIO_UNIX_CFLAGS)
-diff -rudp Thunar-1.6.6.orig/thunar/thunar-abstract-icon-view.c Thunar-1.6.6/thunar/thunar-abstract-icon-view.c
---- Thunar-1.6.6.orig/thunar/thunar-abstract-icon-view.c	2015-03-09 23:51:51.000000000 -0400
-+++ Thunar-1.6.6/thunar/thunar-abstract-icon-view.c	2015-03-10 00:04:16.000000000 -0400
-@@ -483,9 +483,16 @@ thunar_abstract_icon_view_button_press_e
+diff -ru Thunar-1.6.10.orig/thunar/thunar-abstract-icon-view.c Thunar-1.6.10/thunar/thunar-abstract-icon-view.c
+--- Thunar-1.6.10.orig/thunar/thunar-abstract-icon-view.c	2016-12-05 04:11:30.000000000 -0500
++++ Thunar-1.6.10/thunar/thunar-abstract-icon-view.c	2016-12-05 04:11:39.000000000 -0500
+@@ -483,9 +483,16 @@
    ThunarPreferences *preferences;
    gboolean           in_tab;
    const gchar       *action_name;
@@ -66,7 +86,7 @@ diff -rudp Thunar-1.6.6.orig/thunar/thunar-abstract-icon-view.c Thunar-1.6.6/thu
        /* open the context menu on right clicks */
        if (exo_icon_view_get_item_at_pos (view, event->x, event->y, &path, NULL))
          {
-@@ -511,12 +518,21 @@ thunar_abstract_icon_view_button_press_e
+@@ -511,12 +518,21 @@
        
            /* open the context menu */
            thunar_standard_view_context_menu (THUNAR_STANDARD_VIEW (abstract_icon_view), event->button, event->time);
@@ -89,7 +109,7 @@ diff -rudp Thunar-1.6.6.orig/thunar/thunar-abstract-icon-view.c Thunar-1.6.6/thu
        /* unselect all currently selected items */
        exo_icon_view_unselect_all (view);
  
-@@ -552,6 +568,11 @@ thunar_abstract_icon_view_button_press_e
+@@ -552,6 +568,11 @@
  
            /* cleanup */
            gtk_tree_path_free (path);
@@ -101,7 +121,7 @@ diff -rudp Thunar-1.6.6.orig/thunar/thunar-abstract-icon-view.c Thunar-1.6.6/thu
          }
        else if (event->type == GDK_BUTTON_PRESS)
          {
-@@ -583,6 +604,9 @@ thunar_abstract_icon_view_button_release
+@@ -583,6 +604,9 @@
                                                  ThunarAbstractIconView *abstract_icon_view)
  {
    GtkAction *action;
@@ -111,7 +131,7 @@ diff -rudp Thunar-1.6.6.orig/thunar/thunar-abstract-icon-view.c Thunar-1.6.6/thu
  
    _thunar_return_val_if_fail (EXO_IS_ICON_VIEW (view), FALSE);
    _thunar_return_val_if_fail (THUNAR_IS_ABSTRACT_ICON_VIEW (abstract_icon_view), FALSE);
-@@ -610,6 +634,11 @@ thunar_abstract_icon_view_button_release
+@@ -610,6 +634,11 @@
    /* redraw the abstract_icon view */
    gtk_widget_queue_draw (GTK_WIDGET (view));
  
@@ -123,9 +143,9 @@ diff -rudp Thunar-1.6.6.orig/thunar/thunar-abstract-icon-view.c Thunar-1.6.6/thu
    return FALSE;
  }
  
-diff -rudp Thunar-1.6.6.orig/thunar/thunar-standard-view.c Thunar-1.6.6/thunar/thunar-standard-view.c
---- Thunar-1.6.6.orig/thunar/thunar-standard-view.c	2015-03-09 23:51:51.000000000 -0400
-+++ Thunar-1.6.6/thunar/thunar-standard-view.c	2015-03-09 23:58:51.000000000 -0400
+diff -ru Thunar-1.6.10.orig/thunar/thunar-standard-view.c Thunar-1.6.10/thunar/thunar-standard-view.c
+--- Thunar-1.6.10.orig/thunar/thunar-standard-view.c	2016-12-05 04:11:30.000000000 -0500
++++ Thunar-1.6.10/thunar/thunar-standard-view.c	2016-12-05 04:11:39.000000000 -0500
 @@ -31,6 +31,7 @@
  #endif
  
@@ -143,7 +163,7 @@ diff -rudp Thunar-1.6.6.orig/thunar/thunar-standard-view.c Thunar-1.6.6/thunar/t
  #define THUNAR_STANDARD_VIEW_GET_PRIVATE(obj) (G_TYPE_INSTANCE_GET_PRIVATE ((obj), THUNAR_TYPE_STANDARD_VIEW, ThunarStandardViewPrivate))
  
  
-@@ -280,6 +281,7 @@ static gboolean             thunar_stand
+@@ -287,6 +288,7 @@
  static void                 thunar_standard_view_drag_scroll_timer_destroy  (gpointer                  user_data);
  static gboolean             thunar_standard_view_drag_timer                 (gpointer                  user_data);
  static void                 thunar_standard_view_drag_timer_destroy         (gpointer                  user_data);
@@ -151,7 +171,7 @@ diff -rudp Thunar-1.6.6.orig/thunar/thunar-standard-view.c Thunar-1.6.6/thunar/t
  static void                 thunar_standard_view_finished_thumbnailing      (ThunarThumbnailer        *thumbnailer,
                                                                               guint                     request,
                                                                               ThunarStandardView       *standard_view);
-@@ -768,6 +770,15 @@ thunar_standard_view_constructor (GType
+@@ -780,6 +782,15 @@
    /* stay informed about changes to the sort column/order */
    g_signal_connect (G_OBJECT (standard_view->model), "sort-column-changed", G_CALLBACK (thunar_standard_view_sort_column_changed), standard_view);
  
@@ -167,7 +187,7 @@ diff -rudp Thunar-1.6.6.orig/thunar/thunar-standard-view.c Thunar-1.6.6/thunar/t
    /* setup support to navigate using a horizontal mouse wheel and the back and forward buttons */
    g_signal_connect (G_OBJECT (view), "scroll-event", G_CALLBACK (thunar_standard_view_scroll_event), object);
    g_signal_connect (G_OBJECT (view), "button-press-event", G_CALLBACK (thunar_standard_view_button_press_event), object);
-@@ -908,6 +919,12 @@ thunar_standard_view_finalize (GObject *
+@@ -924,6 +935,12 @@
  
    /* release the scroll_to_files hash table */
    g_hash_table_destroy (standard_view->priv->scroll_to_files);
@@ -180,7 +200,7 @@ diff -rudp Thunar-1.6.6.orig/thunar/thunar-standard-view.c Thunar-1.6.6/thunar/t
  
    (*G_OBJECT_CLASS (thunar_standard_view_parent_class)->finalize) (object);
  }
-@@ -3007,6 +3024,214 @@ thunar_standard_view_motion_notify_event
+@@ -3043,6 +3060,214 @@
  
  
  
@@ -395,7 +415,7 @@ diff -rudp Thunar-1.6.6.orig/thunar/thunar-standard-view.c Thunar-1.6.6/thunar/t
  static gboolean
  thunar_standard_view_scroll_event (GtkWidget          *view,
                                     GdkEventScroll     *event,
-@@ -3851,7 +4076,15 @@ thunar_standard_view_drag_scroll_timer (
+@@ -3945,7 +4170,15 @@
  static void
  thunar_standard_view_drag_scroll_timer_destroy (gpointer user_data)
  {
@@ -412,10 +432,10 @@ diff -rudp Thunar-1.6.6.orig/thunar/thunar-standard-view.c Thunar-1.6.6/thunar/t
  }
  
  
-diff -rudp Thunar-1.6.6.orig/thunar/thunar-standard-view.h Thunar-1.6.6/thunar/thunar-standard-view.h
---- Thunar-1.6.6.orig/thunar/thunar-standard-view.h	2015-03-09 23:51:51.000000000 -0400
-+++ Thunar-1.6.6/thunar/thunar-standard-view.h	2015-03-09 23:58:51.000000000 -0400
-@@ -26,6 +26,10 @@
+diff -ru Thunar-1.6.10.orig/thunar/thunar-standard-view.h Thunar-1.6.10/thunar/thunar-standard-view.h
+--- Thunar-1.6.10.orig/thunar/thunar-standard-view.h	2016-12-05 04:11:30.000000000 -0500
++++ Thunar-1.6.10/thunar/thunar-standard-view.h	2016-12-05 04:11:39.000000000 -0500
+@@ -27,6 +27,10 @@
  #include <thunar/thunar-preferences.h>
  #include <thunar/thunar-view.h>
  
@@ -426,7 +446,7 @@ diff -rudp Thunar-1.6.6.orig/thunar/thunar-standard-view.h Thunar-1.6.6/thunar/t
  G_BEGIN_DECLS;
  
  typedef struct _ThunarStandardViewPrivate ThunarStandardViewPrivate;
-@@ -138,6 +142,11 @@ struct _ThunarStandardView
+@@ -139,6 +143,11 @@
    ExoBinding                *loading_binding;
    gboolean                   loading;
  
@@ -438,9 +458,9 @@ diff -rudp Thunar-1.6.6.orig/thunar/thunar-standard-view.h Thunar-1.6.6/thunar/t
    ThunarStandardViewPrivate *priv;
  };
  
-@@ -152,6 +161,10 @@ void  thunar_standard_view_queue_popup
+@@ -159,6 +168,10 @@
  
- void  thunar_standard_view_selection_changed  (ThunarStandardView *standard_view);
+ ThunarHistory *thunar_standard_view_copy_history  (ThunarStandardView *standard_view);
  
 +gboolean thunar_standard_view_try_preview (GtkWidget          *real_view,
 +						  GdkEventMotion     *event,

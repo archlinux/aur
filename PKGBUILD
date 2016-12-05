@@ -2,7 +2,7 @@
 
 pkgname=thunar-extended
 pkgver=1.6.10
-pkgrel=3
+pkgrel=4
 pkgdesc="Thunar with split view, cursor audio preview and extra options for trash, desktop files and user actions"
 arch=(i686 x86_64)
 license=('GPL2' 'LGPL2.1')
@@ -61,6 +61,6 @@ package() {
 md5sums=('3089e1dca6e408641b07cd9c759dea5e'
          'd87f154a5fbd3709511ded0c9b9b0317'
          '69aa416e8694b8b608f767769b6dcd98'
-         '6302de8c5061fbf769bc2b24e67256f9'
+         '60d3bb7fc185f5f881b5884bd7f28c87'
          'ce443cf896934131427b7789da130097'
 	 '053c83b6d88d2e01d1aa7fe7b5dd8a6e')
