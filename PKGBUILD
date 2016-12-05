@@ -11,7 +11,7 @@
 
 pkgname=wine-gaming-nine
 pkgver=1.9.23
-pkgrel=2
+pkgrel=3
 
 _pkgbasever=${pkgver/rc/-rc}
 _winesrcdir="wine-patched-staging-$_pkgbasever"
@@ -77,7 +77,7 @@ makedepends=(autoconf ncurses bison perl fontforge flex
   libxcomposite   lib32-libxcomposite
   mesa            lib32-mesa
   libgl           lib32-libgl
-  libcl           lib32-libcl
+  ocl-icd         lib32-ocl-icd
   libxslt         lib32-libxslt
   libpulse        lib32-libpulse
   libva           lib32-libva
