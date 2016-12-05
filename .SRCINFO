@@ -1,0 +1,26 @@
+pkgbase = pacemaker-git
+	pkgdesc = pacemaker stable package, contains the latest stable version
+	pkgver = 1.1.16.r26.g4ed1507
+	pkgrel = 2
+	url = https://github.com/ClusterLabs/pacemaker/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = libxml2
+	makedepends = inkscape
+	makedepends = libqb-git
+	depends = gnutls
+	depends = glib2
+	depends = pam
+	depends = libtool
+	depends = python
+	depends = libxslt
+	depends = corosync-git
+	depends = libesmtp
+	provides = pacemaker
+	conflicts = pacemaker
+	source = pacemaker-git::git+https://github.com/ClusterLabs/pacemaker.git
+	md5sums = SKIP
+
+pkgname = pacemaker-git
+
