@@ -9,17 +9,13 @@ cat <<-EOF
 
 	To get suspend working properly you must do the following:
 
-	Add disable_mode=1 and processor.ignore_ppc=1 to your kernel boot options.
+	Add disable_mode=1 to your kernel boot options.
 	In my case I use grub so I appended this to GRUB_CMDLINE_LINUX
 	in /etc/default/grub and then ran the following command as root:
 	grub-mkconfig -o /boot/grub/grub.cfg
 
-	disable_mode=1 allows waking correctly from suspend
-	processor.ignore_ppc=1 allows changing the CPU frequency when on battery
-
-	Install rc-local from the AUR and add the following to /etc/rc.local:
-	awk '$3 ~ "enabled" {print $1}' /proc/acpi/wakeup | xargs -I{} echo "{}" > /proc/acpi/wakeup
-	echo LID0 > /proc/acpi/wakeup
+	Create /etc/tmpfiles.d/wakeup.conf with the contents:
+	w /proc/acpi/wakeup - - - - LID0
 
 EOF
 }
