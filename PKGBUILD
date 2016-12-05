@@ -1,3 +1,4 @@
+# Contributor: Michael Straube <straubem gmx de>
 # Contributor: xantares <xantares09 at hotmail dot com>
 
 pkgname=combblas
@@ -14,29 +15,33 @@ source=("http://gauss.cs.ucsb.edu/~aydin/CombBLAS_FILES/CombBLAS_beta_15_0.tgz"
 sha1sums=('e2a9ff8d33c03f6e2a68d7c64098d3c1120364dc'
           'bf87cca1a5e476826933677b4084c3decbb4147e')
 
+prepare() {
+  mkdir CombBLAS/build
+  ln -s "$srcdir"/TESTDATA CombBLAS/build/TESTDATA
+}
+
 build() {
-  install -d CombBLAS/build
   cd CombBLAS/build
 
-  cmake -DCMAKE_INSTALL_PREFIX=/usr \
-    -DBUILD_SHARED_LIBS=ON ..
+  cmake ..\
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DBUILD_SHARED_LIBS=ON
   make
 }
 
 check() {
   cd CombBLAS/build
 
-  ln -s "$srcdir/TESTDATA" TESTDATA
   make test
 }
 
 package() {
   cd CombBLAS/build
 
-  install -d -m 755 "$pkgdir"/usr/{lib,include/combblas}
+  install -d "$pkgdir"/usr/{lib,include/combblas}
 
-  install -m 644 ../*.h "$pkgdir/usr/include/combblas/"
-  install -m 755 *.so "$pkgdir/usr/lib/"
+  install -m 644 ../*.h "$pkgdir"/usr/include/combblas/
+  install -m 755 *.so "$pkgdir"/usr/lib/
 
-  install -D -m 644 ../LICENSE  "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -D -m 644 ../LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
