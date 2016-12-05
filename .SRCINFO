@@ -8,6 +8,8 @@ pkgbase = ttf-inconsolata-g
 	license = unknown
 	depends = fontconfig
 	depends = xorg-font-utils
+	provides = ttf-inconsolata-g
+	conflicts = ttf-inconsolata-g
 	source = http://www.fantascienza.net/leonardo/ar/inconsolatag/inconsolata-g_font.zip
 	md5sums = c36e53cb9022f8096fb78a0aae00cbb0
 
