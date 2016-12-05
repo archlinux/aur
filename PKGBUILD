@@ -2,7 +2,7 @@
 
 _pkgname=libui
 pkgname=${_pkgname}-git
-pkgver=alpha3.1.r169.g86c4485
+pkgver=alpha3.1.r281.g5fa7ba4
 pkgrel=1
 pkgdesc='A portable GUI library for C'
 arch=('i686' 'x86_64')
@@ -35,5 +35,4 @@ package() {
   install build/out/libui.so.0 ${pkgdir}/usr/lib/
   install ui.h ${pkgdir}/usr/include/
   install ui_unix.h ${pkgdir}/usr/include/
-  install uitable.h ${pkgdir}/usr/include/
 }
