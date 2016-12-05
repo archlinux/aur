@@ -1,4 +1,5 @@
-# Maintainer: Miguel Revilla <yo@miguelrevilla.com>
+# Maintainer: Jiachen Yang <farseerfc@gmail.com>
+# Contributor: Miguel Revilla <yo@miguelrevilla.com>
 # Contributor: Ferik <djferik at gmail dot com>
 
 pkgname=masterpdfeditor
