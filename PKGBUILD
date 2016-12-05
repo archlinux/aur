@@ -3,7 +3,7 @@
 
 _gemname=forgiva
 pkgname=$_gemname
-pkgver=1.0.1.2
+pkgver=1.0.1.4
 pkgrel=1
 pkgdesc='The new-age password manager'
 arch=(any)
@@ -13,7 +13,7 @@ depends=(ruby ruby-highline)
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-sha1sums=('deda7f2b8dcf41822ac88b6c6231cc296a280987')
+sha1sums=('879a6b790cbc3eaacc65e43cbcdd586ea98066f6')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
