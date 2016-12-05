@@ -1,6 +1,6 @@
 pkgbase = brave
 	pkgdesc = Web browser that blocks ads and trackers by default.
-	pkgver = 0.12.11
+	pkgver = 0.12.12
 	pkgrel = 1
 	url = https://www.brave.com/
 	arch = x86_64
@@ -15,9 +15,9 @@ pkgbase = brave
 	depends = libxss
 	depends = ttf-font
 	provides = brave-browser
-	source = https://github.com/brave/browser-laptop/archive/v0.12.11dev.tar.gz
+	source = https://github.com/brave/browser-laptop/archive/v0.12.12dev.tar.gz
 	source = brave.desktop
-	sha512sums = 81a354d0ffdad73ccaace888b88d8d20b3c9eea1099b4695e16c2b9be42b88ac4fcb03d272e93615e16b1556a0e9f0e1e4f0cf6c62f768a7bcdcf9efda5b14be
+	sha512sums = c8d1046effd7c965f937ee0de0d4007563c198e3a9148781bfad1665a050f0e3e2635eb4bd39e78ceb3a0de544d959837b094637af852cadfdd37e3e3e7d52c1
 	sha512sums = 337de1b406c89418fb27a49b1a9fa4cfef94eefbf2901bc60f5ddac0b9094924e940fcbcb233cbbeff2742e6b3c26cc6dbdb75cd29798eff8c8be92fce0df2e7
 
 pkgname = brave
