@@ -1,4 +1,6 @@
-#Maintainer: ovi chis <sonekken@gmail.com>
+# Maintainer: Brian Bidulock <bidulock@openss7.org>
+# Contributor: ovi chis <sonekken@gmail.com>
+
 pkgname=corosync-git
 pkgver=2.4.1.r36.g4939c75
 pkgrel=3
@@ -37,8 +39,6 @@ build() {
 	      --disable-upstart \
               --enable-snmp \
 	      --enable-xmlconf \
-	      --enable-qdevices \
-	      --enable-qnetd \
               --with-systemddir=/usr/lib/systemd/system \
               --with-tmpfilesdir=/usr/lib/tmpfiles.d
   make V=0
