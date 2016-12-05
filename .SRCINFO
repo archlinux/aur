@@ -19,9 +19,9 @@ pkgbase = broadcom-wl
 	sha256sums = 583335a6edb2ed1094977c401643d3e60471c6bc5c3ea81f45910a9cccb06032
 	sha256sums = 30ce1d5e8bf78aee487d0f3ac76756e1060777f70ed1a9cf95215c3a52cfbe2e
 	sha256sums = 833af3b209d6a101d9094db16480bda2ad9a85797059b0ae0b13235ad3818e9c
-	source_i686 = http://www.broadcom.com/docs/linux_sta/hybrid-v35-nodebug-pcoem-6_30_223_271.tar.gz
+	source_i686 = https://docs.broadcom.com/docs-and-downloads/docs/linux_sta/hybrid-v35-nodebug-pcoem-6_30_223_271.tar.gz
 	sha256sums_i686 = 4f8b70b293ac8cc5c70e571ad5d1878d0f29d133a46fe7869868d9c19b5058cd
-	source_x86_64 = http://www.broadcom.com/docs/linux_sta/hybrid-v35_64-nodebug-pcoem-6_30_223_271.tar.gz
+	source_x86_64 = https://docs.broadcom.com/docs-and-downloads/docs/linux_sta/hybrid-v35_64-nodebug-pcoem-6_30_223_271.tar.gz
 	sha256sums_x86_64 = 5f79774d5beec8f7636b59c0fb07a03108eef1e3fd3245638b20858c714144be
 
 pkgname = broadcom-wl
