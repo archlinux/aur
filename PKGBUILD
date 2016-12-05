@@ -1,7 +1,7 @@
 _npmname=emoj
-_npmver=0.3.0
+_npmver=0.4.0
 pkgname=nodejs-emoj
-pkgver=0.3.0
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="Find relevant emoji from text on the command-line"
 arch=(any)
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('nodejs' 'emojione-color-font')
 source=(http://registry.npmjs.org/$_npmname/-/$_npmname-$_npmver.tgz)
 noextract=($_npmname-$_npmver.tgz)
-sha1sums=('9b87917bc0a1abed65f52046e5e07912f7d8532c')
+sha1sums=('0d551065b180ff476b7b109a5c3116a89ded5ea8')
 
 package() {
   cd $srcdir
