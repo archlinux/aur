@@ -1,0 +1,15 @@
+pkgbase = colm
+	pkgdesc = Programming language designed for analysis and transformation of computer languages
+	pkgver = 0.12.0
+	pkgrel = 1
+	url = https://www.colm.net/open-source/colm/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = gcc
+	depends = gcc-libs
+	source = https://www.colm.net/files/colm/colm-0.12.0.tar.gz
+	sha1sums = 6376377515c8c497e87b7bddf31e9f2d85bb8aa6
+
+pkgname = colm
+
