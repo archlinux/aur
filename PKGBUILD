@@ -5,7 +5,7 @@
 
 pkgname='multiload-ng-systray-gtk2-git'
 pkgdesc='Modern graphical system monitor, system tray version'
-pkgver=r926.246cb4c
+pkgver=r933.bc23d06
 pkgrel=1
 
 makedepends=('intltool' 'git')
