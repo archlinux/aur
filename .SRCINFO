@@ -1,7 +1,7 @@
 pkgbase = nginx-accesskey
 	pkgdesc = Lightweight HTTP server and IMAP/POP3 proxy server, with ngx_http_accesskey_module.
 	pkgver = 1.10.2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://nginx.org
 	install = nginx.install
 	arch = i686

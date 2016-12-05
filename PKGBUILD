@@ -10,7 +10,7 @@ _ngx_acc_rev=2.0.3
 pkgname=nginx-accesskey
 _pkgname=nginx
 pkgver=1.10.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Lightweight HTTP server and IMAP/POP3 proxy server, with ngx_http_accesskey_module.'
 arch=('i686' 'x86_64')
 url='http://nginx.org'
@@ -68,6 +68,7 @@ build() {
         --with-http_gzip_static_module \
         --with-http_realip_module \
         --with-http_ssl_module \
+        --with-http_v2_module \
         --with-http_stub_status_module \
         --with-http_addition_module \
         --with-http_degradation_module \
