@@ -6,7 +6,7 @@
 
 pkgname=broadcom-wl-ck
 pkgver=6.30.223.271
-pkgrel=28
+pkgrel=29
 _pkgdesc='Broadcom 802.11abgn hybrid Linux networking device driver for linux-ck.'
 _extramodules="extramodules-4.8-ck"
 _kernver="$(cat /usr/lib/modules/${_extramodules}/version)"
@@ -24,8 +24,8 @@ source=('modprobe.d'
 '002-rdtscl.patch'
 '003-linux47.patch'
 'linux48.patch')
-source_i686+=("http://www.broadcom.com/docs/linux_sta/hybrid-v35-nodebug-pcoem-${pkgver//./_}.tar.gz")
-source_x86_64+=("http://www.broadcom.com/docs/linux_sta/hybrid-v35_64-nodebug-pcoem-${pkgver//./_}.tar.gz")
+source_i686+=("https://docs.broadcom.com/docs-and-downloads/docs/linux_sta/hybrid-v35-nodebug-pcoem-${pkgver//./_}.tar.gz")
+source_x86_64+=("http://www.broadcom.com/docs-and-downloads/docs/linux_sta/hybrid-v35_64-nodebug-pcoem-${pkgver//./_}.tar.gz")
 sha256sums=('b4aca51ac5ed20cb79057437be7baf3650563b7a9d5efc515f0b9b34fbb9dc32'
             '2f70be509aac743bec2cc3a19377be311a60a1c0e4a70ddd63ea89fae5df08ac'
             '32e505a651fdb9fd5e4870a9d6de21dd703dead768c2b3340a2ca46671a5852f'
