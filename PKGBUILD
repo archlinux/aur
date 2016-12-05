@@ -1,13 +1,13 @@
 #Maintainer: ovi chis <sonekken@gmail.com>
 pkgname=corosync-git
 pkgver=2.4.1.r36.g4939c75
-pkgrel=2
+pkgrel=3
 pkgdesc="Cluster engine for nodal communication systems with additional features for implementing high availability within applications."
 arch=('i686' 'x86_64')
 url="http://www.corosync.org/"
 license=('BSD')
 makedepends=('git')
-depends=('nss' 'libstatgrab' 'net-snmp' 'libdbus' 'libqb' 'kronosnet-git')
+depends=('nss' 'libstatgrab' 'net-snmp' 'libdbus' 'libqb-git' 'kronosnet-git')
 provides=('corosync')
 conflicts=('corosync1' 'corosync')
 source=("$pkgname::git+https://github.com/corosync/corosync.git"
