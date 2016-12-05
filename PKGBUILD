@@ -5,14 +5,12 @@
 pkgname=wine-git
 _gitname="wine"
 pkgver=1.9.24.r105.g1d3b944
-pkgrel=2
+pkgrel=3
 pkgdesc="A compatibility layer for running Windows programs. GIT version."
 url="http://www.winehq.com"
 arch=('i686' 'x86_64')
 options=(staticlibs)
 license=(LGPL)
-conflicts=('wine')
-provides=('wine')
 source=('wine-git::git://source.winehq.org/git/wine.git'
         '30-win32-aliases.conf')
 md5sums=('SKIP'
@@ -92,8 +90,8 @@ if [[ $CARCH == i686 ]]; then
   optdepends=(${optdepends[@]/*32-*/})
 else
   makedepends=(${makedepends[@]} ${_depends[@]})
-  provides=("bin32-wine=$pkgver" "wine-wow64=$pkgver")
-  conflicts=('bin32-wine' 'wine-wow64')
+  provides=("bin32-wine=$pkgver" "wine=$pkgver" "wine-wow64=$pkgver")
+  conflicts=('bin32-wine' 'wine' 'wine-wow64')
   replaces=('bin32-wine')
 fi
 
