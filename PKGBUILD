@@ -2,7 +2,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=inkscape-092-bzr
-pkgver=r15232
+pkgver=r15233
 pkgrel=1
 pkgdesc="An Open Source vector graphics editor, using Scalable Vector Graphics (SVG) file format"
 url="https://launchpad.net/inkscape"
@@ -15,7 +15,7 @@ optdepends=('python2-numpy: some extensions'
             'uniconvertor: reading/writing to some proprietary formats'
  	    'gtkspell3: for spelling'
 	    'ruby: for simplepath extension')
-makedepends=('boost' 'intltool' 'bzr' 'gettext' 'pango' 'fontconfig')
+makedepends=('boost' 'intltool' 'bzr' 'gettext' 'pango' 'fontconfig' 'python')
 provides=('inkscape')
 conflicts=('inkscape')
 options=('!libtool' '!makeflags')
@@ -38,6 +38,7 @@ prepare() {
   sed -i 's|"python"|"python2"|g' src/main.cpp
   sed -i '1s|/usr/bin/env python\>|/usr/bin/env python2|g' share/extensions/ink2canvas/svg.py
   sed -i '1s|/usr/bin/env python\>|/usr/bin/env python2|g' share/extensions/ink2canvas/canvas.py
+  sed -i '1s|/usr/bin/env python3\>|/usr/bin/env python2|g' CMakeScripts/cmake_consistency_check.py
 }
 
 build() {
@@ -49,6 +50,7 @@ build() {
 	-DCMAKE_INSTALL_PREFIX=/usr \
 	-DCMAKE_BUILD_TYPE=RELEASE \
 	-DWITH_DBUS=OFF
+  sed -i 's|"python"|"python2"|g' ../share/filters/CMakeLists.txt
   make 
 }
 
