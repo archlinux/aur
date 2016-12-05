@@ -2,7 +2,7 @@
 #			Jake <ja.ke@posteo.de>
 
 pkgname=next
-pkgver=1.460
+pkgver=1.462
 pkgrel=1
 pkgdesc="CGM rc Heli Flight Simulator"
 arch=('i686' 'x86_64')
@@ -15,7 +15,7 @@ source=(	'http://www.cgm-online.com/secure_rc-heli-simulator/cgm-rc-heli-simulat
 		'next.sh'
 		'next.LICENSE')
 
-sha256sums=(	'7ff6770fa1d9d083b1f7469f5269ee7363154f917cae92171f81d594f8c32715'
+sha256sums=(	'd891e4c011718a8ee29397780dc7da3905d5b153f131758654936c61a76c9939'
 		'31972ec9835d29109e490a54b49865dd69084c5552344cfe2fec9b534a5fa8a2'
 		'167bf2f656980495a5de69cc6fb0eb1063ddf065d021525cb73cf4e10425c2d8'
 		'1c180e06f0c2cd380c10581b5c760c2e6fc94bd0d97790e16b85e8135d6f071c')
