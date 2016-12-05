@@ -1,7 +1,7 @@
 # Maintainer: Clemens Brunner <clemens dot brunner at gmail dot com>
 pkgname=libbiosig
 pkgver=1.8.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Provides reading and writing routines for different biosignal data formats"
 arch=('i686' 'x86_64')
 url="http://biosig.sourceforge.net/"
@@ -14,7 +14,7 @@ provides=()
 conflicts=()
 replaces=()
 backup=()
-options=()
+options=(staticlibs)
 install=
 changelog=
 source=(https://sourceforge.net/projects/biosig/files/BioSig%20for%20C_C%2B%2B/src/biosig4c%2B%2B-1.8.4.src.tar.gz
@@ -32,8 +32,9 @@ build() {
 package() {
   mkdir -p "$pkgdir/usr/include"
   mkdir -p "$pkgdir/usr/lib"
-  cp "$srcdir/biosig4c++-$pkgver/biosig.h" "$pkgdir/usr/include"
-  cp "$srcdir/biosig4c++-$pkgver/gdftime.h" "$pkgdir/usr/include"
-  cp "$srcdir/biosig4c++-$pkgver/libbiosig.a" "$pkgdir/usr/lib"
-  cp "$srcdir/biosig4c++-$pkgver/libbiosig.so" "$pkgdir/usr/lib"
+  cp "$srcdir/biosig4c++-$pkgver/biosig.h" "$pkgdir/usr/include/"
+  cp "$srcdir/biosig4c++-$pkgver/gdftime.h" "$pkgdir/usr/include/"
+  cp "$srcdir/biosig4c++-$pkgver/libbiosig.a" "$pkgdir/usr/lib/"
+  cp "$srcdir/biosig4c++-$pkgver/libbiosig.so.$pkgver" "$pkgdir/usr/lib/"
+  ln -s "$srcdir/biosig4c++-$pkgver/libbiosig.so.$pkgver" "$pkgdir/usr/lib/libbiosig.so"
 }
