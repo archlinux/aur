@@ -1,0 +1,17 @@
+pkgbase = schemegen-git
+	pkgdesc = Color scheme generator and config manager
+	pkgver = r8.9d5a2fb
+	pkgrel = 1
+	url = https://github.com/NBonaparte/schemegen
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = python
+	depends = python-pillow
+	provides = schemegen
+	conflicts = schemegen
+	source = schemegen-git::git+https://github.com/NBonaparte/schemegen.git
+	sha256sums = SKIP
+
+pkgname = schemegen-git
+
