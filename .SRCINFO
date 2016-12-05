@@ -1,0 +1,21 @@
+pkgbase = python-wpiformat-git
+	pkgdesc = Linters and formatters for ensuring WPILib\'s source code conforms to its style guide
+	pkgver = 2016.47
+	pkgrel = 1
+	url = http://github.com/wpilibsuite/styleguide
+	arch = i686
+	arch = x86_64
+	license = custom=FRC-BSD
+	checkdepends = python-pytest-runner
+	checkdepends = python-pip
+	checkdepends = git
+	makedepends = git
+	depends = clang
+	depends = yapf
+	provides = python-wpiformat
+	conflicts = python-wpiformat
+	source = git+git://github.com/wpilibsuite/styleguide
+	md5sums = SKIP
+
+pkgname = python-wpiformat-git
+
