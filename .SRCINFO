@@ -1,0 +1,23 @@
+pkgbase = lua-busted
+	pkgdesc = Elegant Lua unit testing.
+	pkgver = 2.0.rc3
+	pkgrel = 1
+	url = http://olivinelabs.com/busted/
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = luarocks
+	depends = lua
+	depends = lua-cliargs
+	depends = lua-filesystem
+	depends = lua-dkjson
+	depends = lua-say
+	depends = lua-luassert
+	depends = lua-ansicolors
+	depends = lua-penlight
+	depends = lua-mediator
+	source = https://luarocks.org/busted-2.0.rc3-0.src.rock
+	sha256sums = bfe8e672528bf8b062c20a64f607bf3a6c46cf28c1d8ab7eae6812e41d64e183
+
+pkgname = lua-busted
+
