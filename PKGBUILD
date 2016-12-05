@@ -13,22 +13,22 @@ url="http://www.memsource.com/"
 install=${pkgname}.install
 
 if [ "$CARCH" = "i686" ]; then
-  depends=('qt4' 
-           'bzip2' 
-           'libsm' 
-           'libx11' 
-           'libxrender' 
-           'freetype2' 
-           'fontconfig' 
+  depends=('qt4'
+           'bzip2'
+           'libsm'
+           'libx11'
+           'libxrender'
+           'freetype2'
+           'fontconfig'
            'libpng12')
 elif [ "$CARCH" = "x86_64" ]; then
-  depends=('lib32-qt4' 
-           'lib32-bzip2' 
-           'lib32-libsm' 
-           'lib32-libx11' 
-           'lib32-libxrender' 
-           'lib32-freetype2' 
-           'lib32-fontconfig' 
+  depends=('lib32-qt4'
+           'lib32-bzip2'
+           'lib32-libsm'
+           'lib32-libx11'
+           'lib32-libxrender'
+           'lib32-freetype2'
+           'lib32-fontconfig'
            'lib32-libpng12')
 fi
 depends+=('shared-mime-info')
@@ -37,7 +37,7 @@ makedepends=('imagemagick')
 
 options=('!strip')
 source=("http://download.memsource.com/production/updates/memsource-editor/linux/${_platform}/archive/install/${_pkg}-${pkgver}-${_platform}.run"
-        "memsource-editor.desktop" 
+        "memsource-editor.desktop"
         "memsource-editor.xml"
         "memsource"
         "license.desktop")
@@ -52,7 +52,7 @@ build() {
   install -d ${srcdir}/build
   cd ${srcdir}/build
   chmod +x ../${_pkg}-${pkgver}-${_platform}.run
-    
+
   install -d ${srcdir}/build/Desktop
   echo XDG_DESKTOP_DIR=\${srcdir}/build/Desktop\ > ${srcdir}/build/user-dirs.dirs
   export XDG_CONFIG_HOME=${srcdir}/build
@@ -75,7 +75,7 @@ package() {
   install -Dm 644 ${srcdir}/memsource-editor.desktop ${pkgdir}/usr/share/applications/
   install -Dm 644 ${srcdir}/memsource-editor.xml ${pkgdir}/usr/share/mime/packages/
   install -Dm 755 ${srcdir}/license.desktop ${pkgdir}/usr/share/licenses/memsource-editor/
-  
+
   for sz in 16 24 32 36 48 64 96 128 192 256; do
     install -d ${pkgdir}/usr/share/icons/hicolor/${sz}x${sz}/apps
     convert ${srcdir}/build/memsource-editor/app.png -resize ${sz}x${sz} \
