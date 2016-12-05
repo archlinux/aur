@@ -5,13 +5,14 @@
 pkgname=wine-git
 _gitname="wine"
 pkgver=1.9.24.r105.g1d3b944
-pkgrel=1
+pkgrel=2
 pkgdesc="A compatibility layer for running Windows programs. GIT version."
 url="http://www.winehq.com"
 arch=('i686' 'x86_64')
 options=(staticlibs)
 license=(LGPL)
-
+conflicts=('wine')
+provides=('wine')
 source=('wine-git::git://source.winehq.org/git/wine.git'
         '30-win32-aliases.conf')
 md5sums=('SKIP'

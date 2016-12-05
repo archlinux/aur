@@ -1,7 +1,7 @@
 pkgbase = wine-git
 	pkgdesc = A compatibility layer for running Windows programs. GIT version.
 	pkgver = 1.9.24.r105.g1d3b944
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.winehq.com
 	arch = i686
 	arch = x86_64
