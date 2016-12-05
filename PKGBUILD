@@ -1,4 +1,8 @@
+# $Id$
 # Maintainer: Nils Czernia <nils[at]czserver.de>
+# Based on the offical 'communiti/unifi' package from:
+#    Maintainer: Sébastien "Seblu" Luttringer <seblu@archlinux.org>
+#    Contributor: Frederik Schwan frederik dot schwan at linux dot com>
 
 pkgname=unifi-voip
 pkgver=1.0.5
