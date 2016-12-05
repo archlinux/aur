@@ -1,8 +1,8 @@
-# Contributer : Jo De Boeck <deboeck.jo@gmail.com>
 # Maintainer : Colin Arnott <arnottcr@gmail.com>
+# Contributer : Jo De Boeck <deboeck.jo@gmail.com>
 
 pkgname=purple-skypeweb-git
-pkgver=20161205.1.2.2.7.g6fa665a
+pkgver=r953.6fa665a
 pkgrel=1
 arch=('any')
 license=('GPLv3')
@@ -18,7 +18,7 @@ md5sums=('SKIP')
 
 pkgver() {
     cd "$srcdir/$pkgname"
-    echo `date +%Y%m%d`.`git describe --tags | sed "s/-/./g"`
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 
 }
 
