@@ -1,8 +1,7 @@
 # Maintainer: Laurent Treguier <laurent@treguier.org>
 
 pkgname=oomox
-pkgver=1.0.rc4
-_pkgver=1.0-rc4
+pkgver=1.0.0
 pkgrel=1
 pkgdesc='Graphical application for generating different color variations of Numix theme (GTK2, GTK3), gnome-colors and ArchDroid icon themes.
 Have a hack for HiDPI in gtk2.'
@@ -11,6 +10,8 @@ url='https://github.com/actionless/oomox'
 license=('GPL3')
 depends=(
     'bash'
+    'bc'
+    'zip'
     'glib2'
     'gdk-pixbuf2'
     'ruby-sass'
@@ -28,7 +29,7 @@ optdepends=(
 provides=('oomox')
 conflicts=('oomox-git')
 source=(
-    "https://github.com/actionless/oomox/archive/${_pkgver}.tar.gz"
+    "https://github.com/actionless/oomox/archive/${pkgver}.tar.gz"
     'oomox-cli'
     'oomox-gui'
     'oomox-gnome-colors-icons-cli'
@@ -36,7 +37,7 @@ source=(
     'oomoxify-cli'
     'oomox.desktop'
 )
-md5sums=('94855f80cbfb08a1cf9e5b7d4bbca908'
+md5sums=('a2ebfdfdf47d76a7c812d1ad82f7fa24'
          'cf96db21684e4e0df1f9a14b3aae65bb'
          '0d156463416bbc2260c073c15b7f2a70'
          '57cfcc4141ce6e346da7ab8bab411b14'
@@ -46,7 +47,7 @@ md5sums=('94855f80cbfb08a1cf9e5b7d4bbca908'
 
 package() {
     install -d "${pkgdir}/opt/oomox"
-    mv "${srcdir}/${pkgname}-${_pkgver}"/* "${pkgdir}/opt/oomox"
+    mv "${srcdir}/${pkgname}-${pkgver}"/* "${pkgdir}/opt/oomox"
     install -d "${pkgdir}/usr/bin/"
     install -d "${pkgdir}/usr/share/applications/"
 
