@@ -2,8 +2,8 @@
 # Contributor: Andre Klitzing <andre () incubo () de>
 
 pkgname=pgrouting
-pkgver=2.2.3
-pkgrel=2
+pkgver=2.3.0
+pkgrel=1
 pkgdesc="Adds routing functionality to PostGIS/PostgreSQL"
 arch=('i686' 'x86_64')
 url="http://pgrouting.org/"
