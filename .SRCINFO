@@ -1,0 +1,15 @@
+pkgbase = lua-cliargs
+	pkgdesc = A command-line argument parser.
+	pkgver = 3.0
+	pkgrel = 1
+	url = https://github.com/amireh/lua_cliargs
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = luarocks
+	depends = lua
+	source = https://luarocks.org/lua_cliargs-3.0-2.src.rock
+	sha256sums = 3c79981292aab72dbfba9eb5c006bb37c5f42ee73d7062b15fdd840c00b70d63
+
+pkgname = lua-cliargs
+
