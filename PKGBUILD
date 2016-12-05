@@ -5,7 +5,7 @@
 
 pkgname='multiload-ng-indicator-gtk2-git'
 pkgdesc='Modern graphical system monitor, AppIndicator plugin'
-pkgver=r926.246cb4c
+pkgver=r933.bc23d06
 pkgrel=1
 
 makedepends=('intltool' 'git')
