@@ -3,7 +3,7 @@
 
 pkgname=winbox
 pkgver=3.7
-pkgrel=1
+pkgrel=2
 pkgdesc="Mikrotik RouterOS GUI Configurator (wine)"
 url="http://www.mikrotik.com"
 arch=('x86_64' 'i686')
@@ -13,7 +13,7 @@ optdepends=(
   'ttf-ms-fonts: for better fonts'
 )
 install=${pkgname}.install
-source=("http://download2.mikrotik.com/routeros/winbox/${pkgver}/${pkgname}.exe"
+source=("${pkgname}-${pkgver}.exe::http://download2.mikrotik.com/routeros/winbox/${pkgver}/${pkgname}.exe"
         "${pkgname}.desktop"
         "${pkgname}.png"
         "${pkgname}")
@@ -23,7 +23,7 @@ sha256sums=('103ed06f0dd09c9eb39777a2c6e4078ad4680a999c4b8497b569098731dc2258'
             'e7d6a2ffc0eda07ac40db88d92629bf8b1e2fa9433f3b74b1eef3437c1d0f6c6')
 
 package() {
-  install -Dm755 "${srcdir}/${pkgname}.exe" "${pkgdir}/usr/share/${pkgname}/${pkgname}.exe"
+  install -Dm755 "${srcdir}/${pkgname}-${pkgver}.exe" "${pkgdir}/usr/share/${pkgname}/${pkgname}.exe"
   install -Dm755 "${srcdir}/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
   install -Dm655 "${srcdir}/${pkgname}.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
   install -Dm655 "${srcdir}/${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
