@@ -1,7 +1,7 @@
 #Maintainer: ovi chis <sonekken@gmail.com>
 pkgname=corosync-git
 pkgver=2.4.1.r36.g4939c75
-pkgrel=1
+pkgrel=2
 pkgdesc="Cluster engine for nodal communication systems with additional features for implementing high availability within applications."
 arch=('i686' 'x86_64')
 url="http://www.corosync.org/"
@@ -30,11 +30,17 @@ build() {
               --sysconfdir=/etc \
               --libdir=/usr/lib \
               --localstatedir=/var \
-              --enable-systemd \
-              --enable-monitoring \
-              --enable-snmp \
               --enable-dbus \
-              --with-systemddir=/usr/lib/systemd/system
+              --enable-monitoring \
+              --enable-watchdog \
+              --enable-systemd \
+	      --disable-upstart \
+              --enable-snmp \
+	      --enable-xmlconf \
+	      --enable-qdevices \
+	      --enable-qnetd \
+              --with-systemddir=/usr/lib/systemd/system \
+              --with-tmpfilesdir=/usr/lib/tmpfiles.d
   make V=0
 }
 
