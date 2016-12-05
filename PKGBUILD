@@ -1,29 +1,28 @@
 # Maintainer: Nils Bars <arch@nbars.de>
-
+ 
 pkgname=cutecom
-pkgver=0.22.0
+pkgver=0.30.4
 pkgrel=1
 pkgdesc="A graphical serial terminal"
 arch=('i686' 'x86_64')
-url="http://cutecom.sourceforge.net"
-license=('GPL2')
-depends=('qt4')
+url="https://github.com/neundorf/CuteCom/archive"
+license=('GPL3')
+depends=('qt5-serialport')
 makedepends=('cmake')
-source=(${url}/${pkgname}-${pkgver}.tar.gz)
-
+source=(${url}/v${pkgver}.zip)
+ 
 build() {
-  cd ${srcdir}/${pkgname}-${pkgver}
-
-  cmake -DQT_QMAKE_EXECUTABLE=qmake4 .
+  cd ${srcdir}/CuteCom-${pkgver}
+ 
+  cmake .
   make || return 1
 }
-
+ 
 package() {
-  cd ${srcdir}/${pkgname}-${pkgver}
+  cd ${srcdir}/CuteCom-${pkgver}
   install -D -m 644 cutecom.desktop ${pkgdir}/usr/share/applications/cutecom.desktop
   install -D -m 755 cutecom ${pkgdir}/usr/bin/cutecom
   install -D -m 644 cutecom.1 ${pkgdir}/usr/share/man/man1/cutecom.1
 }
-
-md5sums=('dd85ceecf5a60b4d9e4b21a338920561')
-sha256sums=('1b6620a6159cf3d50bb36cce544e91486817df7f1d553bf239d6db6108dd2ea5')
+ 
+md5sums=('315c8161a45e124ce3ab3ee106e28a01')
