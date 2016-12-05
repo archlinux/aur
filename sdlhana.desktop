@@ -1,0 +1,8 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=SDLHana
+Type=Application
+Comment=SDL-based Hanafuda game
+Exec=/usr/bin/sdlhana
+Icon=sdlhana.xpm
+Categories=Application;Game;CardGame;
