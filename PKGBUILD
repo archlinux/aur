@@ -1,7 +1,7 @@
 # Maintainer: Dan Maftei <dan.maftei@gmail.com>
 pkgname='molden'
 pkgver=5.7
-pkgrel=1
+pkgrel=2
 pkgdesc="A program for molecular and electronic structure visualization"
 arch=('i686' 'x86_64')
 url="http://www.cmbi.ru.nl/molden/"
@@ -29,7 +29,7 @@ install=
 changelog=
 source=(ftp://ftp.cmbi.ru.nl/pub/molgraph/molden/$pkgname$pkgver.tar.gz)
 noextract=()
-md5sums=('63516d4c2ba178d534fc48b6720d421a')
+md5sums=('38ba16dc5728fc2f38232a8850a9acbe')
 
 build() {
   cd "$pkgname$pkgver"
