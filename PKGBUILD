@@ -1,4 +1,4 @@
-# Maintainer: Andrea Agosti <cifvts at gmail dot com>
+# Maintainer: Sidney Crestani (sidneycrestani@yahoo.com)
 
 pkgname=ttf-inconsolata-g
 pkgver=20090213
