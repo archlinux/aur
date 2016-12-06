@@ -2,7 +2,7 @@
 
 pkgname="python-pyocr"
 _pkgname="pyocr"
-pkgver="0.4.2"
+pkgver="0.4.3"
 pkgrel="1"
 pkgdesc="A Python wrapper for OCR engines (Tesseract, Cuneiform, etc)"
 url="https://github.com/jflesch/pyocr"
@@ -12,7 +12,7 @@ license=('GPL3')
 arch=('any')
 changelog="ChangeLog"
 source=("https://github.com/jflesch/${_pkgname}/archive/${pkgver}.tar.gz")
-md5sums=('a6baa1339574cbfd33ddeb0cdc104cdf')
+md5sums=('8bbcf6cfd0c11fd0ab0cb73f8fd471ee')
 
 build() {
     cd ${srcdir}/${_pkgname}-${pkgver}
