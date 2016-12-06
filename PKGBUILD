@@ -13,5 +13,5 @@ md5sums=('bd5025c83aacd4bddc52980b30d77453')
 
 package() {
   mkdir -p $pkgdir/usr/share/openspades/Resources
-  cp -R font-unifont.pak $pkgdir/usr/share/openspades/Resources 
+  cp font-unifont.pak $pkgdir/usr/share/openspades/Resources 
 }
