@@ -25,5 +25,5 @@ build() {
 
 package() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
-  install -D -m755 "default.phar" "${pkgdir}/usr/bin/php-compat-info"
+  install -D -m755 "default.phar" "${pkgdir}/usr/bin/phpcompatinfo"
 }
