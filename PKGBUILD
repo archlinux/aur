@@ -1,6 +1,6 @@
 pkgname=wp-cli
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A command-line tool for managing WordPress"
 url="http://wp-cli.org/"
 arch=('any')
@@ -17,13 +17,13 @@ md5sums=('155256f4119b616aae2dd760d33403b3'
          'f8acb424f1460428796451679631be86')
 
 prepare() {
-  if [[ -n $(php -r '$phar = new Phar("test.phar", 0,"wp-cli.phar");' 2>&1 | grep "Class 'Phar' not found") ]]; then
+  if [[ -n $(php -dphar.readonly=0 -r '$phar = new Phar("test.phar", 0,"wp-cli.phar");' 2>&1 | grep "Class 'Phar' not found") ]]; then
     echo "Error: Phar extension not found! Enable the phar extension in your php.ini"
     echo "Also be sure to disable the readonly setting for the phar extension: Set phar.readonly to Off"
     return 1
   fi
 
-  if [[ -n $(php -r '$phar = new Phar("test.phar", 0,"wp-cli.phar");' 2>&1 | grep "phar.readonly") ]]; then
+  if [[ -n $(php -dphar.readonly=0 -r '$phar = new Phar("test.phar", 0,"wp-cli.phar");' 2>&1 | grep "phar.readonly") ]]; then
     echo "Error: Phar readonly setting is enabled!"
     echo "Disable the readonly setting for the phar extension in your php.ini: Set phar.readonly to Off"
     return 1
