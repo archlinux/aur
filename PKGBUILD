@@ -9,7 +9,7 @@ arch=('i686' 'x86_64')
 url="http://libcec.pulse-eight.com/"
 license=('GPL')
 makedepends=('cmake')
-depends=('udev' 'lockdev' 'libxrandr')
+depends=('udev' 'lockdev' 'libxrandr' 'p8-platform')
 source=("$_gitname::git+git://github.com/Pulse-Eight/$_gitname#tag=libcec-$pkgver")
 sha256sums=('SKIP')
 
