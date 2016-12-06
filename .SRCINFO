@@ -1,0 +1,24 @@
+pkgbase = openboard-develop
+	pkgdesc = Interactive whiteboard software for schools and universities
+	pkgver = 1.3.4
+	pkgrel = 1
+	url = http://openboard.ch/index.en.html
+	arch = x86_64
+	arch = i686
+	license = GPL3
+	depends = qt5-base
+	depends = qt5-multimedia
+	depends = qt5-svg
+	depends = qt5-script
+	depends = qt5-webkit
+	depends = libpaper
+	depends = bzip2
+	source = https://github.com/OpenBoard-org/OpenBoard/archive/v1.3.4.tar.gz
+	source = https://github.com/OpenBoard-org/OpenBoard-ThirdParty/archive/master.zip
+	source = std-abs.patch
+	md5sums = a7dfe30d25de9285307fdab8c9b9aa20
+	md5sums = fa1ff089f0bcc15d2a510bb90cdd3002
+	md5sums = 32689b48f23d7f513f6172c10c93aa00
+
+pkgname = openboard-develop
+
