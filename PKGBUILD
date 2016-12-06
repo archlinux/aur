@@ -5,7 +5,7 @@
 pkgname=wine-git
 _gitname="wine"
 pkgver=1.9.24.r105.g1d3b944
-pkgrel=3
+pkgrel=4
 pkgdesc="A compatibility layer for running Windows programs. GIT version."
 url="http://www.winehq.com"
 arch=('i686' 'x86_64')
@@ -50,7 +50,7 @@ makedepends=(autoconf ncurses bison perl fontforge flex
   alsa-lib              lib32-alsa-lib
   libxcomposite         lib32-libxcomposite
   mesa                  lib32-mesa
-  mesa-libgl            lib32-mesa-libgl
+  libgl            	lib32-libgl
   opencl-icd-loader     lib32-opencl-icd-loader
   libxslt               lib32-libxslt
   gst-plugins-base-libs lib32-gst-plugins-base-libs
