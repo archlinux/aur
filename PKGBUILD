@@ -3,48 +3,14 @@
 
 pkgname=mutt-kz
 pkgver=1.6.0.1
-pkgrel=1
-pkgdesc="Mutt with notmuch support and another improvements."
+pkgrel=2
+pkgdesc="Transitional package from mutt-kz to neomutt"
 url="https://github.com/karelzak/mutt-kz"
 arch=(i686 x86_64)
 license=('GPL')
-depends=('libidn' 'krb5' 'notmuch-runtime')
-makedepends=('git' 'gnupg' 'libxslt')
-conflicts=('mutt')
-provides=('mutt')
+depends=('neomutt')
 options=('!strip')
-source=("https://github.com/karelzak/$pkgname/archive/v$pkgver.tar.gz")
-md5sums=('42a47d32888366b220b99f5183b5a487')
-
-build() {
-  cd "$srcdir/$pkgname-$pkgver"
-
-  ././prepare
-  ./configure --enable-notmuch \
-    --prefix=/usr \
-    --sysconfdir=/etc \
-    --enable-gpgme \
-    --enable-pop \
-    --enable-imap \
-    --enable-smtp \
-    --enable-pgp \
-    --enable-hcache \
-    --with-curses=/usr \
-    --with-regex \
-    --with-gss=/usr \
-    --with-ssl=/usr \
-    --with-sasl \
-    --with-idn
-
-  make
-}
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
-  make DESTDIR="$pkgdir" install
-
-  rm "${pkgdir}"/usr/bin/{flea,muttbug}
-  rm "${pkgdir}"/usr/share/man/man1/{flea,muttbug}.1
-  rm "${pkgdir}"/etc/mime.types{,.dist}
-  install -Dm644 contrib/gpg.rc "${pkgdir}/etc/Muttrc.gpg.dist"
+  true
 }
