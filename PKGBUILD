@@ -1,8 +1,9 @@
 # Maintainer: Daniel Nagy <danielnagy at gmx de>
+# Maintainer: Sascha Pfau
 
 _realname=CuteMarkEd
 pkgname=cutemarked
-pkgver=0.11.2
+pkgver=0.11.3
 pkgrel=1
 pkgdesc="Qt Markdown Editor"
 url="https://github.com/cloose/CuteMarkEd"
@@ -11,11 +12,13 @@ license=( "GPL2" )
 depends=( "qt5-webkit" "hunspell" "discount>=2.1.7" )
 makedepends=( 'qt5-tools' )
 source=( "https://github.com/cloose/CuteMarkEd/archive/v$pkgver.tar.gz" )
-sha256sums=('907d4548ed42cd62e1b2d0498505fc1069e8297b365725ca2b4ac7fcf05b78f1')
+sha256sums=('78a41808c2f0452375810abdff76eeaaee012f8d1368a2b8772ec6b4d2ceeec8')
 
 prepare() {
   cd $srcdir/$_realname-$pkgver
   sed -i -e "s,#include <discount/mkdio.h>,#include <mkdio.h>,g" app-static/converter/discountmarkdownconverter.cpp
+  # Fix: Add FencedCode option
+  sed -i -e "s,unsigned long converterOptions = MKD_TOC | MKD_NOSTYLE;,unsigned long converterOptions = MKD_TOC | MKD_NOSTYLE | MKD_FENCEDCODE;,g" app-static/converter/discountmarkdownconverter.cpp
 }
 
 build() {
