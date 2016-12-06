@@ -5,8 +5,8 @@
 # Maintainer: Flow
 
 pkgname=rslsync
-pkgver=2.4.2
-pkgrel=2
+pkgver=2.4.3
+pkgrel=1
 pkgdesc="Resilio Sync (ex:BitTorrent Sync) - automatically sync files via secure, distributed technology"
 license=("custom:resilio")
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
@@ -23,11 +23,11 @@ source_x86_64=("rslsync_x64-${pkgver}.tar.gz::https://download-cdn.resilio.com/s
 sha256sums=('4483cbe3fff81281666d8fbe8c9b8d7d27c38ba7a3d3752a865f1ab8c1f212db'
             'ba4b0ee3303027122e67345d4bf852f911a56f213f98c9eaa198c69d903fd8a1'
             'acc08bf5a321a0ae1ee58aee64af524508359db6305d2164d43bb84a2a3fc7c4')
-sha256sums_i686=('6aad4ed30027c0071392aeedafeaed850acdb58a4c18405245d55ed22e7cb28e')
-sha256sums_x86_64=('df7f3cf0d5fca711b0b97d446dd517f7a532e894ec33b7b052078d8cc8581580')
-sha256sums_arm=('93259316c74b7ca7ff64728c2340a0c5d5f048d2f4d50b91bdc9d02c2fb5f5ad')
-sha256sums_armv6h=('93259316c74b7ca7ff64728c2340a0c5d5f048d2f4d50b91bdc9d02c2fb5f5ad')
-sha256sums_armv7h=('e809f47f2d8d0c89b7f67cc7578cec9663c19af44d857a5a0848c6a57c3759fa')
+sha256sums_i686=('8af33f2a2493fc3476b86abcbd1f45c715408c502d200173e802882fba2c3213')
+sha256sums_x86_64=('baedc5f316705bd2f74097776eba6b4d9f4ba02531353c2a3d4938e18d05815a')
+sha256sums_arm=('76b67df6b931921dc3a47544fd710e4dfa567400d63c9ddd7c009540b56bac20')
+sha256sums_armv6h=('76b67df6b931921dc3a47544fd710e4dfa567400d63c9ddd7c009540b56bac20')
+sha256sums_armv7h=('11055fd739698bb0f7438a5bbdff51babeb9b69fa2f0035e7e86e91bc95abc7a')
 
 package() {
   # install main binary
