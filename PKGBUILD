@@ -15,10 +15,10 @@ source=("stuntrally-$pkgver.tar.gz::https://github.com/stuntrally/stuntrally/arc
         "tracks-$pkgver.tar.gz::https://github.com/stuntrally/tracks/archive/$pkgver.tar.gz"
         "bullet-2.84+.patch"
         "gcc-6.patch")
-sha1sums=('730da7d909df08ff203109be9972d6e352c1c420'
-          'f6ea70030d9d21e6bc9c015379f1ccd257a72631'
-          '40fdc27fbbc1422bfc89516042e51a3c44b2195c'
-          '15bbedd295414e191cf93d7278c79bf8c35ec809')
+sha256sums=('8cc309d27d26f78dcc596440547d68b5e41d02ef830df2d52d38611d45ebbaca'
+            '4bce700516a2a178ac04cfbf7df2887ba42225802f5a3e670f770ea01345687b'
+            'af250a702886de0210516f28c8babc5c20d9cb42eda516cc808a43fa25df6d41'
+            '0b66fa790aac2b6f06739ea1c1dad317fbbf6ddc394bef9fe33f2c77a58126d4')
 
 prepare() {
   cd $pkgname-$pkgver
