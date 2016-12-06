@@ -1,6 +1,6 @@
 pkgbase = conky-lua-archers
 	pkgdesc = A free, light-weight system monitor for X with lua enabled for Arch based distros
-	pkgver = 1.10.5
+	pkgver = 1.10.6
 	pkgrel = 1
 	url = https://github.com/brndnmtthws/conky
 	arch = i686
@@ -37,9 +37,9 @@ pkgbase = conky-lua-archers
 	replaces = conky
 	options = strip
 	options = !debug
-	source = https://github.com/brndnmtthws/conky/archive/v1.10.5.tar.gz
+	source = https://github.com/brndnmtthws/conky/archive/v1.10.6.tar.gz
 	source = asciime.patch
-	sha1sums = a560c356ce4c3e2918601743b57d19a18fe01a72
+	sha1sums = 54cb3322dc3a969f1fda03383012c61d57261345
 	sha1sums = b07407c2be11cee7bd50e046024b89cf2579c448
 
 pkgname = conky-lua-archers
