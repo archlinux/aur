@@ -12,7 +12,7 @@ license=('GPL2')
 depends=('kdebase-runtime' 'mpfr')
 makedepends=('cmake' 'automoc4' 'flex' 'bison')
 source=("https://purinchu.net/abakus/$pkgname-$pkgver.tar.bz2")
-sha1sums=('b03e5d378015345f0c49f89f3590cd36bbcc21b6')
+sha256sums=('9c873307bdcc8ab06a73de8bbc80fa933bf58ed64d3e1958f46635b61df39c5d')
 
 build() {
   cd $pkgname-$pkgver
