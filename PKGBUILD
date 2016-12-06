@@ -1,7 +1,7 @@
 # Maintainer: Ben Fox-Moore <ben.foxmoore@gmail.com>
 pkgname=streamlink-twitch-gui
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A multi platform Twitch.tv browser for Streamlink"
 arch=("i686" "x86_64")
 url="https://github.com/streamlink/streamlink-twitch-gui"
@@ -38,6 +38,8 @@ package() {
 	sed -i "s:CHECKNEWVERSIONS=true:CHECKNEWVERSIONS=false:g" start.sh
 
 	cp -R * "$pkgdir/opt/$pkgname"
+
+	chmod -R g+r,o+r "$pkgdir/opt/$pkgname"
 
 	ln -s "/opt/$pkgname/start.sh" "$pkgdir/usr/bin/$pkgname"
 	ln -s "/usr/lib/libudev.so" "$pkgdir/opt/$pkgname/libudev.so.0"
