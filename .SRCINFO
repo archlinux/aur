@@ -1,0 +1,14 @@
+pkgbase = icu57
+	pkgdesc = International Components for Unicode library
+	pkgver = 57.1
+	pkgrel = 1
+	url = http://www.icu-project.org/
+	arch = i686
+	arch = x86_64
+	license = custom:"icu"
+	depends = gcc-libs>=4.7.1-5
+	source = http://download.icu-project.org/files/icu4c/57.1/icu4c-57_1-src.tgz
+	sha256sums = ff8c67cb65949b1e7808f2359f2b80f722697048e90e7cfc382ec1fe229e9581
+
+pkgname = icu57
+
