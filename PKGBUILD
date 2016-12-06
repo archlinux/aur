@@ -7,12 +7,12 @@ pkgbase=linux-pf-lts
 _major=4
 _minor=4
 _patchlevel=36
-_pfpatchlevel=35
+_pfpatchlevel=36
 #_subversion=1
 _basekernel=${_major}.${_minor}
 _srcname=linux-${_basekernel}
 _pfrel=10
-pkgrel=1
+pkgrel=2
 _kernelname=-pf
 _pfpatchhome="http://pf.natalenko.name/sources/${_basekernel}/"
 _pfpatchname="patch-${_basekernel}${_kernelname}${_pfrel}"
@@ -385,7 +385,7 @@ _package() {
          ;;
      K10)
          pkgname="${pkgbase}-k10"
-         pkgdesc="§{_pkgdesc} AMD K10 optimized"
+         pkgdesc="${_pkgdesc} AMD K10 optimized"
          ;;
      BARCELONA)
          pkgname="${pkgbase}-barcelona"
@@ -483,7 +483,7 @@ _package() {
   msg  "${pkgdesc}"
   echo "    ========================================"
   echo
-
+exit
  ### package_linux-pf-lts
 
   cd "${srcdir}/linux-${_basekernel}"
@@ -702,5 +702,4 @@ sha256sums=('401d7c8fef594999a460d10c72c5a94e9c2e1022f16795ec51746b0d165418b2'
             '03ed4eb4a35d42ae6beaaa5e6fdbada4244ed6c343944bba6462defaa6fed0bf'
             '51ea665cfec42d9f9c7796af2b060b7edbdeb367e42811f8c02667ad729f6b19'
             '9e1e81d80afac6f316e53947e1b081017090081cd30e6c4c473420b77af4b52b'
-            '7b6b1c448a95e0b60d2bff66de1003499f6023d6d4e5e98aee2e66fb483318de'
-            'aa31f002c45a5fef46015ca26d33270913834e777df44cbd672a0fd61a18b393')
+            'cb4d3fc91475d90179f88fe9994081b8fe37c2b6c2976778425d8e61a5a6541a')
