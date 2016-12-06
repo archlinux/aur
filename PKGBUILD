@@ -2,26 +2,22 @@
 
 _pkgname=ratox
 pkgname=$_pkgname-git
-pkgver=0.0.0.390
+pkgver=0.3.0.452
 pkgrel=1
 pkgdesc="FIFO based tox client"
 arch=('i686' 'x86_64')
-url="https://github.com/pranomostro/ratox"
+url="http://git.z3bra.org/ratox/log.html"
 license=('custom')
-depends=('glibc' 'toxcore')
+depends=('toxcore')
 makedepends=('git')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
-source=("$_pkgname::git+https://github.com/pranomostro/ratox.git")
+source=("$_pkgname::git+git://git.z3bra.org/ratox")
 sha256sums=('SKIP')
 
 pkgver() {
   cd "$_pkgname"
-  echo "0.0.0.$(git rev-list --count HEAD)"
-}
-
-prepare() {
-  cd "$_pkgname"
+  echo $(grep "^VERSION =" config.mk | cut -d " " -f3).0.$(git rev-list --count HEAD)
 }
 
 build() {
