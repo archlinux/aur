@@ -1,6 +1,6 @@
 # Maintainer: Kieran Colford <kieran@kcolford.com>
 pkgname=ddns-git
-pkgver=r34.8d5a0e1
+pkgver=r35.7555260
 pkgrel=1
 pkgdesc="Automatic provisioning of dynamic DNS"
 arch=('any')
@@ -30,9 +30,9 @@ pkgver() {
 package() {
   cd "$srcdir/ddns"
 
-  install -Dm755 ddns.sh "$pkgdir/usr/bin/ddns.sh"
+  install -Dm755 ddns "$pkgdir/usr/bin/ddns"
   install -Dm644 ddns.conf "$pkgdir/etc/ddns.conf"
   install -Dm644 systemd/ddns.service "$pkgdir/usr/lib/systemd/system/ddns.service"
   install -Dm644 systemd/ddns.timer "$pkgdir/usr/lib/systemd/system/ddns.timer"
-  mkdir -pm700 "$pkgdir/etc/ddns/"
+  mkdir -pm755 "$pkgdir/etc/ddns/"
 }
