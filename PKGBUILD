@@ -3,11 +3,11 @@
 
 _pkgname='bigloo'
 pkgname="${_pkgname}-devel"
-epoch=21
+epoch=22
 _pkgver='4.3a'
-_pkgsuffix='beta21Nov16'
+_pkgsuffix='beta05Dec16'
 pkgver="${_pkgver}"."${_pkgsuffix}"
-pkgrel=2
+pkgrel=1
 pkgdesc="Fast scheme compiler"
 arch=('i686' 'x86_64')
 url="http://www-sop.inria.fr/mimosa/fp/Bigloo/"
@@ -20,7 +20,7 @@ provides=('bigloo=$pkgver')
 conflicts=('bigloo')
 options=('!makeflags' 'libtool' 'staticlibs' '!strip')
 source=("ftp://ftp-sop.inria.fr/indes/fp/Bigloo/${_pkgname}${_pkgver}-${_pkgsuffix}.tar.gz" "satisfy-ldconfig.sh")
-sha256sums=('577ddfb03e1402e4c97f22ab20d77bf07b1cd361829367cfef21c9d25c6c7551'
+sha256sums=('7a795727eb31c20df938c7b3b21459a7021842111730f21880e06829d7645d03'
             'b45d2dc176f2b8c6496da9bfaad76d9398172dbef288984f6415824c1c93a4c2')
 
 prepare() {
@@ -30,9 +30,9 @@ prepare() {
 
 build() {
   cd "${srcdir}/${_pkgname}${_pkgver}"
-
+LANG=C
   CFLAGS+=" -fPIC" ./configure --prefix=/usr \
-    --enable-ssl \
+    --disable-ssl \
     --enable-sqlite \
     --enable-alsa \
     --enable-gstreamer \
