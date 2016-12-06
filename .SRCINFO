@@ -1,7 +1,7 @@
 pkgbase = php-compat-info
 	pkgdesc = Library that find out the minimum version and the extensions required for a piece of code to run.
 	pkgver = 5.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://php5.laurent-laville.org/compatinfo/
 	arch = any
 	license = BSD

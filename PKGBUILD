@@ -4,7 +4,7 @@
 _pkgname=php-compat-info
 pkgname=${_pkgname}
 pkgver=5.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Library that find out the minimum version and the extensions required for a piece of code to run."
 arch=('any')
 url="http://php5.laurent-laville.org/compatinfo/"
@@ -25,5 +25,5 @@ build() {
 
 package() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
-  install -D -m755 "default.phar" "${pkgdir}/usr/bin/compatinfo"
+  install -D -m755 "default.phar" "${pkgdir}/usr/bin/php-compat-info"
 }
