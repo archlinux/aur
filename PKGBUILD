@@ -1,4 +1,4 @@
-# Maintainer: Michael Straube <straubem gmx de>
+# Maintainer: Michael Straube <straubem@gmx.de>
 
 pkgname=froggix
 pkgver=0.1
@@ -12,10 +12,10 @@ source=("https://downloads.sourceforge.net/froggix/Froggix.tar.gz"
         "highscore-path.patch"
         "froggix.desktop"
         "froggix.sh")
-sha1sums=('1e8bd04bd35c294f6108b302601243059a4fa59a'
-          'ba835e79d2e0e0f63c2f926f86302f6bf4796384'
-          '46f8ddf4e4a5b55d4e0065d6f0548a71f41aee4c'
-          '323a47ad618dbf296a40256b57c0be9c2eb49bad')
+sha256sums=('7d5426e6c64fbd44255b40ba33f39baf823f9fb4e85ad771e20c7bac0d7c6eb3'
+            'a3635b29f144a580fa3b08d55234de37e61c4fbb0ae584c345ed2f65b08ef2a3'
+            '922a725cd9c2f1b67066d3c9c5f2579f6002178e55a09c5e6890bd136c4c46c6'
+            '7e6c380cedbc20ffd338b508afecd7617252dd137ae3cd5139b095b73f819276')
 
 prepare() {
   cd $pkgname
