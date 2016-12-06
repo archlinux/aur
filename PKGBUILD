@@ -10,8 +10,8 @@ url="http://www.braingames.getput.com/goonies"
 depends=('sdl_image' 'sdl_mixer' 'glu')
 source=("http://braingames.jorito.net/goonies/downloads/$pkgname.src_$pkgver.tgz"
         goonies.patch)
-sha1sums=('a2be53b74e9744ca72fdd1913f2dab1912170534'
-          '931f5b2effc39324d60c5ea3d344b21ceaad7fcf')
+sha256sums=('9e9c1e67a41dfae512e975b6931828cdc82f07397921ca0a41a81c3020a73799'
+            '841f8e5d8d93958f358443b929b15ba036e463b68e948e6147a3bd5c7cf29a5f')
 
 prepare() {
   cd $pkgname-$pkgver
