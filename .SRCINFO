@@ -15,10 +15,10 @@ pkgbase = megamario
 	source = fix-compile-error.patch
 	source = fix-mp3-path.patch
 	source = fix-logfile-path.patch
-	sha1sums = 71d777f06109a157ad0df7612cca02d8fe462538
-	sha1sums = 7339e7d728a0dd4eb0ee9bbb3d508a64ea13794e
-	sha1sums = 0d0d7fd3625d4f0c42dcc113483882a8732c154f
-	sha1sums = fbc7b86caabf5985ce32ec58861bc110363c74ae
+	sha256sums = 243ebf03cb1e5c5e7cead48d9a988ffb9a1c94f9427f71ea559ad047486c9e72
+	sha256sums = 2665b31e5014868a4df71f4e0565dac4c50b703f9d539be8ee1d24688fdde070
+	sha256sums = ff1286986ca125b888802e205f5291e3a30ccd15433744e9fa18fd1ec0ee9e2f
+	sha256sums = 02361dd4bc005d13d6010d42179b1aaa3d4ea6bd8a02f47ddf8b10ea4215bd34
 
 pkgname = megamario
 
