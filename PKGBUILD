@@ -9,7 +9,7 @@ url="https://packages.debian.org/jessie/fluxbox"
 license=('custom:Expat')
 arch=('any')
 source=("http://http.debian.net/debian/pool/main/f/fluxbox/fluxbox_$pkgver-$_debpkgrel.debian.tar.xz")
-sha1sums=('7afa1a1e61566500b76aa89656bb9a92e3126eaf')
+sha256sums=('0c3d66e6585d6f46f1f569b514a0e39e551d8598ba52b1b13325690b9aa25fef')
 
 prepare() {
   # extract the license from copyright file
@@ -17,7 +17,7 @@ prepare() {
   sed -n '40,58p' debian/copyright >> LICENSE
 
   # change wallpaper path in the style file
-  sed -i 's#share/images#share/backgrounds#' \
+  sed -i 's|share/images|share/backgrounds|' \
     debian/additional-themes/Debian/debian-dark
 }
 
