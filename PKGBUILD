@@ -7,9 +7,9 @@
 
 _pkgname=audacious-plugins
 pkgname=$_pkgname-gtk3
-pkgver=3.8
+pkgver=3.8.1
 _pkgver=$pkgver-gtk3
-pkgrel=2
+pkgrel=1
 pkgdesc="Plugins for Audacious"
 arch=('i686' 'x86_64')
 url="http://audacious-media-player.org/"
@@ -52,7 +52,7 @@ optdepends=('alsa-lib: Advanced Linux Sound Arch. output'
             'libcue: CUE playlist format')
 
 source=(http://distfiles.audacious-media-player.org/$_pkgname-$_pkgver.tar.bz2)
-sha1sums=('1c06b879c1db7e9f70858645faed784eca08c9fc')
+sha1sums=('536c1bb65512c50386cc8681575d2bc3b7541b24')
 
 build() {
   cd "$srcdir/$_pkgname-$_pkgver"
