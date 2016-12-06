@@ -10,8 +10,8 @@ url="http://www2.braingames.getput.com/roadf"
 depends=('sdl_image' 'sdl_mixer' 'sdl_sound' 'sdl_ttf')
 source=("http://braingames.jorito.net/roadfighter/downloads/$pkgname.src_$pkgver.tgz"
         "roadfighter.patch")
-sha1sums=('e6cacf74065fcd27838c66b4c57998f9fdbc2874'
-          '058acadfb585619ab03e63a0859c5f2659b817a3')
+sha256sums=('c6ed315c4b2bf25d598ffa6b5dfd471e7f187ff29b86fd3213054fb6be7c57e7'
+            '34de8f4b76220e493b4d44554d448e743a7ea2ea5a58e49208e954a19a861de5')
 
 prepare() {
   cd $pkgname-$pkgver
