@@ -1,6 +1,6 @@
 # Contributor: Filip Brcic <brcha@gna.org>
 pkgname=mingw-w64-dbus
-pkgver=1.10.12
+pkgver=1.10.14
 pkgrel=1
 arch=(any)
 pkgdesc="Freedesktop.org message bus system (mingw-w64)"
@@ -13,7 +13,7 @@ replaces=(mingw-w64-libdbus)
 license=("custom" "GPL")
 url="http://www.freedesktop.org/wiki/Software/dbus"
 source=("http://dbus.freedesktop.org/releases/dbus/dbus-$pkgver.tar.gz"{,.asc})
-md5sums=('bacef77336bbe588efa3124102d5fcdb'
+md5sums=('3f7b013ce8f641cd4c897acda0ef3467'
          'SKIP')
 validpgpkeys=('DA98F25C0871C49A59EAFF2C4DE8FF2A63C7CC90'  # Simon McVittie <simon.mcvittie@collabora.co.uk>
               '3C8672A0F49637FE064AC30F52A43A1E4B77B059') # Simon McVittie <simon.mcvittie@collabora.co.uk>
