@@ -39,8 +39,8 @@ install="${pkgname%-git}.install"
 source=("refind::git+http://git.code.sf.net/p/refind/code#branch=master"
         'refind_linux.conf')
 
-sha256sums=('SKIP'
-            '098b703516cf10ffcc21193af7524a72c347970471a5e839dd1a79f65f81d763')
+sha512sums=('SKIP'
+            'd54b1a0b135594de9a8583a50f54de6daf3c8e38f1bc453794fa3959e826989a44a286e14cf8d8cb2eb04a1e97c984e62292a03e92c98aed044373381bca52d8')
 
 if [[ "${_USE_GNU_EFI}" == '1' ]]; then
 
@@ -61,7 +61,7 @@ else
 	_COMPILER='GCC48'
 
 	source+=("${_TIANO_DIR_}::git+https://github.com/tianocore/edk2.git#branch=${_UDK_VERSION}")
-	sha256sums+=('SKIP')
+	sha512sums+=('SKIP')
 
 fi
 
