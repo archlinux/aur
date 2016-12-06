@@ -1,7 +1,8 @@
 # Maintainer: Jenya Sovetkin <e.sovetkin@gmail.com>
+# Contributors: https://aur.archlinux.org/account/f4bio
 pkgname=mkinitcpio-openswap
-pkgver=0.0.0
-pkgrel=3
+pkgver=0.1.0
+pkgrel=1
 pkgdesc="mkinitcpio hook to open swap at boot time"
 arch=(any)
 license=('unknown')
@@ -12,9 +13,9 @@ install="usage.install"
 source=('openswap.hook'
         'openswap.install'
         'openswap.conf')
-md5sums=('a5b52e3c3b5dc592f41567b21ec2e9cf'
-         'ae743e0fd95cc1c07705cf7c472416b1'
-         '101861982a5e2ad64a32a158894bbbea')
+sha256sums=('ec55cff2d8f71eae70535e706445edb41f416350245b7aa7b322581fd3b38bae'
+            '94dd98a953bab2244215a2b20767cdc9500fc438bed9ec27cae72a73766c6b86'
+            '9f3533fa36d26f3baeacb56ec34850fb1ad6968374ca1215c9a74bf3faed5606')
                           
 
 package() {  
