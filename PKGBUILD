@@ -10,8 +10,8 @@ url="https://www.randelshofer.ch/cubetwister"
 depends=('bash' 'java-runtime')
 source=("https://www.randelshofer.ch/cubetwister/files/$pkgname-$pkgver.zip"
         "cubetwister")
-sha1sums=('6eb906af88163fcc6675a1b7304d05f2f689a869'
-          'c61a4890127702f17411ba2adef0bec8ad1fd18f')
+sha256sums=('b471c797ea77fda6936c0ec4c5f50338171dc7f5436be732d74b677288d49d84'
+            'dad28b8f8fbae86ba88707492135c302bb6616ab817f49894d3da58498016889')
 
 package() {
   cd "CubeTwister $pkgver"
