@@ -1,8 +1,8 @@
 # Maintainer: Lev Lybin <aur@devtrue.net>
 
 pkgname=synology-cloud-station-drive
-pkgver=4339
-_sver=4.2.0
+pkgver=4374
+_sver=4.2.1
 pkgrel=1
 pkgdesc="An application which sync files between your computers and Synology NAS"
 arch=('i686' 'x86_64')
@@ -12,8 +12,8 @@ optdepends=('nautilus: For nautilus integration')
 install=synology-cloud-station-drive.install
 
 source_x86_64=(https://global.download.synology.com/download/Tools/CloudStationDrive/${_sver}-${pkgver}/Ubuntu/Installer/x86_64/synology-cloud-station-drive-${pkgver}.x86_64.deb)
-md5sums_i686=('728affc0dcadf76661077c3bb43742ec')
-md5sums_x86_64=('d4fe9838d3fb3ca75dcc3585737e2721')
+md5sums_i686=('857d6eb269dffeee676263e81c7de918')
+md5sums_x86_64=('27e71450b6879a45fc0f6b85ddbbc3b4')
 source_i686=(https://global.download.synology.com/download/Tools/CloudStationDrive/${_sver}-${pkgver}/Ubuntu/Installer/i686/synology-cloud-station-drive-${pkgver}.i686.deb)
 
 
