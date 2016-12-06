@@ -1,4 +1,4 @@
-# Maintainer: Michael Straube <michael_straube@web.de>
+# Maintainer: Michael Straube <straubem@gmx.de>
 # Contributor: Felix Yan <felixonmars@archlinux.org>
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 # Contributor: Antonio Rojas <arojas@archlinux.org>
@@ -15,9 +15,9 @@ depends=('fontconfig' 'xorg-fonts-encodings' 'xorg-font-utils')
 makedepends=('extra-cmake-modules' 'fontforge')
 provides=('ttf-font')
 options=('!emptydirs')
-install=${pkgname}.install
-source=("http://download.kde.org/stable/plasma/${pkgver}/oxygen-fonts-${pkgver}.tar.xz")
-md5sums=('8d8ab61a65642a18a40de9f3945ce584')
+install=$pkgname.install
+source=("http://download.kde.org/stable/plasma/$pkgver/oxygen-fonts-$pkgver.tar.xz")
+sha256sums=('a02f6580e9a53cb16694a99adbb6dbf76f17584f3e97f469a22286299507838c')
 
 prepare() {
   mkdir build
@@ -25,7 +25,8 @@ prepare() {
 
 build() {
   cd build
-  cmake ../oxygen-fonts-${pkgver} \
+
+  cmake ../oxygen-fonts-$pkgver \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_BUILD_TYPE=Release \
     -DLIB_INSTALL_DIR=lib \
@@ -35,14 +36,15 @@ build() {
 
 package() {
   cd build
-  make DESTDIR="${pkgdir}" install
+
+  make DESTDIR="$pkgdir" install
 
   # Fix install path
-  install -d "${pkgdir}"/usr/share/fonts/TTF
-  mv "${pkgdir}"/usr/share/fonts/truetype/oxygen/*.ttf \
-    "${pkgdir}"/usr/share/fonts/TTF/
+  install -d "$pkgdir"/usr/share/fonts/TTF
+  mv "$pkgdir"/usr/share/fonts/truetype/oxygen/*.ttf \
+    "$pkgdir"/usr/share/fonts/TTF/
 
-  install -d "${pkgdir}"/usr/share/licenses/${pkgname}
-  install -m644 "${srcdir}"/oxygen-fonts-${pkgver}/COPYING-{GPL+FE.txt,OFL} \
-    "${pkgdir}"/usr/share/licenses/${pkgname}
+  install -d "$pkgdir"/usr/share/licenses/$pkgname
+  install -m644 "$srcdir"/oxygen-fonts-$pkgver/COPYING-{GPL+FE.txt,OFL} \
+    "$pkgdir"/usr/share/licenses/$pkgname
 }

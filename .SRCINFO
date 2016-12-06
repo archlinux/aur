@@ -18,7 +18,7 @@ pkgbase = ttf-oxygen
 	provides = ttf-font
 	options = !emptydirs
 	source = http://download.kde.org/stable/plasma/5.4.3/oxygen-fonts-5.4.3.tar.xz
-	md5sums = 8d8ab61a65642a18a40de9f3945ce584
+	sha256sums = a02f6580e9a53cb16694a99adbb6dbf76f17584f3e97f469a22286299507838c
 
 pkgname = ttf-oxygen
 
