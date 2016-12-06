@@ -9,7 +9,7 @@ pkgbase = x-corners
 	makedepends = libxfixes
 	depends = libxi
 	source = https://github.com/mstraube/x-corners/archive/0.2.0.tar.gz
-	sha1sums = 320fc075b2cebe8fbcdeb339919b6888e6e288fa
+	sha256sums = a2c2e8f7a6ca71bd8ed36a8c7a9e3505137fb60ff211e2fc567c4d52ba9ce0fc
 
 pkgname = x-corners
 
