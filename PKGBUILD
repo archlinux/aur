@@ -2,10 +2,10 @@
 # Contributor: Anton Bazhenov <anton.bazhenov at gmail>
 # Contributor: Mick Elliot <micke at sfu dot ca>
 pkgname=mesquite
-pkgver=3.10
-_pkgver=310-Linux
-buildver=build-765
-pkgrel=2
+pkgver=3.11
+_pkgver=311-Linux
+buildver=build-766
+pkgrel=1
 pkgdesc="A modular, extendible software for evolutionary biology, designed to help biologists organize and analyze comparative data about organisms"
 arch=('any')
 url="http://mesquiteproject.wikispaces.com"
@@ -16,7 +16,7 @@ source=(https://github.com/MesquiteProject/MesquiteCore/releases/download/v$pkgv
         $pkgname.desktop
 	$pkgname.sh
         )
-md5sums=('6d993e949730451991c8f754ead4b852'
+md5sums=('5fb0d9e683a389ba682e572cad978e40'
          '8b62ba93f95aab14a8643bf5b939f465'
          '279160bcf1544a78e0b0372279bfa68d'
 	 'f6ff62edbf95e40d21c7bceadb35ecfe'
