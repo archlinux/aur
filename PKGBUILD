@@ -14,7 +14,7 @@ depends=('qt5-base')
 makedepends=('cmake')
 optdepends=('chocolate-doom' 'prboom' 'zdoom' 'prboom-plus')
 source=("$pkgname-$pkgver.tar.gz::https://gitlab.com/sdcofer70/enyo-doom/repository/archive.tar.gz?ref=$pkgver")
-md5sums=('ea54bc6c8d46855aab16fe101bea7866')
+sha256sums=('14f2125b677d7e2b160546ef49602ce690ef8a09512040deca723e55add4639f')
 
 build() {
   cd $pkgname-$pkgver-$_commit
