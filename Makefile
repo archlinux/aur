@@ -2,7 +2,9 @@ VER=0.0.3-1
 # Be sure to update this in PKGBUILD
 
 build:
-	if [ -d larryshell ]; then cd larryshell && git pull; else git clone git@github.com:Devon-Austin-Wood-Thomas/larryshell larryshell && cd larryshell; fi
+	if [ -d larryshell ]; then \
+		cd larryshell && git pull; \
+	else git clone git@github.com:Devon-Austin-Wood-Thomas/larryshell larryshell; fi
 	tar cvf $(VER).tar.gz \
 		larryshell/larryshell \
 		larryshell/larryshellrc \
