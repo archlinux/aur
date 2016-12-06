@@ -4,14 +4,14 @@
 # Credits to respective maintainers
 
 pkgbase=linux-pf-lts
-_major=3
-_minor=14
-_patchlevel=79
-_pfpatchlevel=33
+_major=4
+_minor=4
+_patchlevel=36
+_pfpatchlevel=35
 #_subversion=1
 _basekernel=${_major}.${_minor}
 _srcname=linux-${_basekernel}
-_pfrel=6
+_pfrel=10
 pkgrel=1
 _kernelname=-pf
 _pfpatchhome="http://pf.natalenko.name/sources/${_basekernel}/"
@@ -42,25 +42,21 @@ license=('GPL2')
 makedepends=('git' 'xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc')
 options=('!strip')
 # That voodoo that you do
-_incr=($(for i in $(seq -w ${_pfpatchlevel} $((_patchlevel-1)) ); do echo https://www.kernel.org/pub/linux/kernel/v3.x/incr/patch-3.14.$i-$((i+1)).xz; done))
-source=(https://www.kernel.org/pub/linux/kernel/v3.x/${_srcname}.tar.{xz,sign}
+_incr=($(for i in $(seq -w ${_pfpatchlevel} $((_patchlevel-1)) ); do echo https://www.kernel.org/pub/linux/kernel/v4.x/incr/patch-4.4.$i-$((i+1)).xz; done))
+source=(https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.{xz,sign}
         # the main kernel config files
         'config' 'config.x86_64'
         # standard config files for mkinitcpio ramdisk
         "$pkgbase.preset"
-        'change-default-console-loglevel.patch'
-        '0001-Bluetooth-allocate-static-minor-for-vhci.patch'
-        '0002-module-allow-multiple-calls-to-MODULE_DEVICE_TABLE-p.patch'
-        '0003-module-remove-MODULE_GENERIC_TABLE.patch'
-        '0006-genksyms-fix-typeof-handling.patch'
-        'gcc5_buildfixes.diff'
+        '0001-sdhci-revert.patch'
         'logo_linux_clut224.ppm.bz2'		#\
         'logo_linux_mono.pbm.bz2'		#-> the Arch Linux boot logos
         'logo_linux_vga16.ppm.bz2'		#/
         "${_pfpatchhome}${_pfpatchname}.xz"	# the -pf patchset
-        ${_incr[@]}				# the incremental kernel patches
-        'bfs-sched.patch'
-)
+        ${_incr[@]})				# the incremental kernel patches
+validpgpkeys=('ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds <torvalds@linux-foundation.org>
+              '647F28654894E3BD457199BE38DBBDC86092693E' # Greg Kroah-Hartman (Linux kernel stable release signing key) <greg@kroah.com>
+             )
 
 _aufs3git="http://git.code.sf.net/p/aufs/aufs3-standalone"
 _aufs3name=aufs3-standalone
@@ -112,50 +108,16 @@ prepare() {
      fi
   fi
 
-  # linux-lts patches
-   msg "Applying linux-lts patches"
-
-  # add upstream patch
-  #  patch -p1 -i "${srcdir}/patch-${pkgver}"
-
-  # buildfixes for gcc5
-  # https://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/drivers/scsi/qla2xxx/qla_nx2.c?id=9493c2422cae272d6f1f567cbb424195defe4176
-  # https://lkml.org/lkml/2014/11/9/27
-  # https://lkml.org/lkml/2014/12/14/55
-  patch -p1 -i "${srcdir}/gcc5_buildfixes.diff"  # add latest fixes from stable queue, if needed
-  # http://git.kernel.org/?p=linux/kernel/git/stable/stable-queue.git
-
-  # set DEFAULT_CONSOLE_LOGLEVEL to 4 (same value as the 'quiet' kernel param)
-  # remove this when a Kconfig knob is made available by upstream
-  # (relevant patch sent upstream: https://lkml.org/lkml/2011/7/26/227)
-  patch -p1 -i "${srcdir}/change-default-console-loglevel.patch"
-
-  # Fix vhci warning in kmod (to restore every kernel maintainer's sanity)
-  patch -p1 -i "${srcdir}/0001-Bluetooth-allocate-static-minor-for-vhci.patch"
-
-  # Fix atkbd aliases
-  patch -p1 -i "${srcdir}/0002-module-allow-multiple-calls-to-MODULE_DEVICE_TABLE-p.patch"
-  patch -p1 -i "${srcdir}/0003-module-remove-MODULE_GENERIC_TABLE.patch"
-
-  # Fix generation of symbol CRCs
-  # http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=dc53324060f324e8af6867f57bf4891c13c6ef18
-  patch -p1 -i "${srcdir}/0006-genksyms-fix-typeof-handling.patch"
-
-  msg "End of linux-lts patches"
+  # revert http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=9faac7b95ea4f9e83b7a914084cc81ef1632fd91
+  # fixes #47778 sdhci broken on some boards
+  # https://bugzilla.kernel.org/show_bug.cgi?id=106541
+  patch -Rp1 -i "${srcdir}/0001-sdhci-revert.patch"
 
   # Incremental patches
-#  for _incrpatch in "${srcdir}/patch-${_basekernel}.??-??.xz"; do
-
   for _incrpatch in "${srcdir}"/patch-${_basekernel}.??-??; do
     msg "Patching ${_incrpatch} -- Makefile fails are harmless"
     patch -Np1 -i "${_incrpatch}" || true
   done
-
-  # Fix "too few arguments to function 'should_resched'" in bfs.c
-  patch -p0 -i "${srcdir}/bfs-sched.patch"
-
-  # added gcc 4.7.1 support for Kconfig and menuconfig
-  #zcat "${srcdir}/kernel-39-gcc48-1.patch.gz" | patch -Np1
 
   if [ "${CARCH}" = "x86_64" ]; then
     cat "${srcdir}/config.x86_64" > ./.config
@@ -369,7 +331,7 @@ build() {
   make ${MAKEFLAGS} LOCALVERSION= bzImage modules
 }
 
-package_linux-pf-lts() {
+_package() {
  _pkgdesc="Linux kernel and modules with the pf-kernel patchset [-ck patch (BFS included), TuxOnIce, BFQ, UKSM] and aufs3. Long-term support."
  pkgdesc=${_pkgdesc}
  [ "${pkgbase}" = "linux" ] && groups=('base')
@@ -542,15 +504,13 @@ package_linux-pf-lts() {
   # set correct depmod command for install
   cp -f "${startdir}/${install}" "${startdir}/${install}.pkg"
   true && install=${install}.pkg
-
   sed \
     -e "s/KERNEL_NAME=.*/KERNEL_NAME=${_kernelname}/" \
     -e "s/KERNEL_VERSION=.*/KERNEL_VERSION=${_kernver}/" \
     -i "${startdir}/${install}"
 
   # install mkinitcpio preset file for kernel
-  install -D -m644 "${srcdir}/${pkgbase}.preset" \
-    "${pkgdir}/etc/mkinitcpio.d/${pkgbase}.preset"
+  install -D -m644 "${srcdir}/${pkgbase}.preset" "${pkgdir}/etc/mkinitcpio.d/${pkgbase}.preset"
   sed \
     -e "1s|'linux.*'|'${pkgbase}'|" \
     -e "s|ALL_kver=.*|ALL_kver=\"/boot/vmlinuz-${pkgbase}\"|" \
@@ -562,15 +522,11 @@ package_linux-pf-lts() {
   rm -f "${pkgdir}"/lib/modules/${_kernver}/{source,build}
   # remove the firmware
   rm -rf "${pkgdir}/lib/firmware"
-  # gzip -9 all modules to save 100MB of space
-  find "${pkgdir}" -name '*.ko' -exec gzip -9 {} \;
   # make room for external modules
-  ln -s "../extramodules-${_basekernel}${_kernelname:--ARCH}" \
-    "${pkgdir}/lib/modules/${_kernver}/extramodules"
+  ln -s "../extramodules-${_basekernel}${_kernelname:--ARCH}" "${pkgdir}/lib/modules/${_kernver}/extramodules"
   # add real version for building modules and running depmod from post_install/upgrade
   mkdir -p "${pkgdir}/lib/modules/extramodules-${_basekernel}${_kernelname:--ARCH}"
-  echo "${_kernver}" > \
-    "${pkgdir}/lib/modules/extramodules-${_basekernel}${_kernelname:--ARCH}/version"
+  echo "${_kernver}" > "${pkgdir}/lib/modules/extramodules-${_basekernel}${_kernelname:--ARCH}/version"
 
   # Now we call depmod...
   depmod -b "${pkgdir}" -F System.map "${_kernver}"
@@ -590,7 +546,7 @@ package_linux-pf-lts() {
 }
 
 
-package_linux-pf-lts-headers() {
+_package-headers() {
   pkgdesc="Header files and scripts for building modules for linux-pf-lts kernel."
 #  IFS=' ' read -a conflicts <<<${_conflicts}
 #  conflicts=( ${_conflicts[@]} )
@@ -646,12 +602,10 @@ package_linux-pf-lts-headers() {
   cp arch/${KARCH}/Makefile "${pkgdir}/usr/lib/modules/${_kernver}/build/arch/${KARCH}/"
 
   if [ "${CARCH}" = "i686" ]; then
-    cp arch/${KARCH}/Makefile_32.cpu \
-      "${pkgdir}/usr/lib/modules/${_kernver}/build/arch/${KARCH}/"
+    cp arch/${KARCH}/Makefile_32.cpu "${pkgdir}/usr/lib/modules/${_kernver}/build/arch/${KARCH}/"
   fi
 
-  cp arch/${KARCH}/kernel/asm-offsets.s \
-    "${pkgdir}/usr/lib/modules/${_kernver}/build/arch/${KARCH}/kernel/"
+  cp arch/${KARCH}/kernel/asm-offsets.s "${pkgdir}/usr/lib/modules/${_kernver}/build/arch/${KARCH}/kernel/"
 
   # add docbook makefile
   install -D -m644 Documentation/DocBook/Makefile \
@@ -673,41 +627,33 @@ package_linux-pf-lts-headers() {
   # in reference to:
   # http://bugs.archlinux.org/task/9912
   mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build/drivers/media/dvb-core"
-  cp drivers/media/dvb-core/*.h \
-    "${pkgdir}/usr/lib/modules/${_kernver}/build/drivers/media/dvb-core/"
+  cp drivers/media/dvb-core/*.h "${pkgdir}/usr/lib/modules/${_kernver}/build/drivers/media/dvb-core/"
   # and...
   # http://bugs.archlinux.org/task/11194
   mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build/include/config/dvb/"
-  cp include/config/dvb/*.h \
-    "${pkgdir}/usr/lib/modules/${_kernver}/build/include/config/dvb/"
+  cp include/config/dvb/*.h "${pkgdir}/usr/lib/modules/${_kernver}/build/include/config/dvb/"
 
   # add dvb headers for http://mcentral.de/hg/~mrec/em28xx-new
   # in reference to:
   # http://bugs.archlinux.org/task/13146
   mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build/drivers/media/dvb-frontends/"
-  cp drivers/media/dvb-frontends/lgdt330x.h \
-    "${pkgdir}/usr/lib/modules/${_kernver}/build/drivers/media/dvb-frontends/"
+  cp drivers/media/dvb-frontends/lgdt330x.h "${pkgdir}/usr/lib/modules/${_kernver}/build/drivers/media/dvb-frontends/"
   mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build/drivers/media/i2c/"
-  cp drivers/media/i2c/msp3400-driver.h \
-    "${pkgdir}/usr/lib/modules/${_kernver}/build/drivers/media/i2c/"
+  cp drivers/media/i2c/msp3400-driver.h "${pkgdir}/usr/lib/modules/${_kernver}/build/drivers/media/i2c/"
 
   # add dvb headers
   # in reference to:
   # http://bugs.archlinux.org/task/20402
   mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build/drivers/media/usb/dvb-usb"
-  cp drivers/media/usb/dvb-usb/*.h \
-    "${pkgdir}/usr/lib/modules/${_kernver}/build/drivers/media/usb/dvb-usb/"
+  cp drivers/media/usb/dvb-usb/*.h "${pkgdir}/usr/lib/modules/${_kernver}/build/drivers/media/usb/dvb-usb/"
   mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build/drivers/media/dvb-frontends"
-  cp drivers/media/dvb-frontends/*.h \
-    "${pkgdir}/usr/lib/modules/${_kernver}/build/drivers/media/dvb-frontends/"
+  cp drivers/media/dvb-frontends/*.h "${pkgdir}/usr/lib/modules/${_kernver}/build/drivers/media/dvb-frontends/"
   mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build/drivers/media/tuners"
-  cp drivers/media/tuners/*.h \
-    "${pkgdir}/usr/lib/modules/${_kernver}/build/drivers/media/tuners/"
+  cp drivers/media/tuners/*.h "${pkgdir}/usr/lib/modules/${_kernver}/build/drivers/media/tuners/"
 
   # add xfs and shmem for aufs building
   mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build/fs/xfs"
   mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build/mm"
-  cp fs/xfs/xfs_sb.h "${pkgdir}/usr/lib/modules/${_kernver}/build/fs/xfs/xfs_sb.h"
 
   # copy in Kconfig files
   for i in $(find . -name "Kconfig*"); do
@@ -734,84 +680,27 @@ package_linux-pf-lts-headers() {
   rm -rf "${pkgdir}"/usr/lib/modules/${_kernver}/build/arch/{alpha,arc,arm,arm26,arm64,avr32,blackfin,c6x,cris,frv,h8300,hexagon,ia64,m32r,m68k,m68knommu,metag,mips,microblaze,mn10300,openrisc,parisc,powerpc,ppc,s390,score,sh,sh64,sparc,sparc64,tile,unicore32,um,v850,xtensa}
 # end c/p
 
-  # Add version.h for dumb binary blob installers which aren't
-#  cd "${pkgdir}/usr/src/linux-${_kernver}/include/linux/"
-#  [[ -e version.h ]] || ln -s ../generated/uapi/linux/version.h
-
+  # remove a file already in linux package
+  rm -f "${pkgdir}/usr/lib/modules/${_kernver}/build/Documentation/DocBook/Makefile"
 }
 
-# Work around the AUR parser
-#pkgdesc="Linux kernel and modules with the pf-kernel patchset [-ck patch (BFS included), TuxOnIce, BFQ, UKSM] and aufs3. Long-term support."
-
-
-#pkgname=("${pkgbase}" "${pkgbase}-headers")
-#for _p in ${pkgname[@]}; do
-#  eval "package_${_p}() {
-#    $(declare -f "_package${_p#${pkgbase}}")
-#    _package${_p#${pkgbase}}
-#  }"
-#done
+pkgname=("${pkgbase}" "${pkgbase}-headers")
+for _p in ${pkgname[@]}; do
+  eval "package_${_p}() {
+    $(declare -f "_package${_p#${pkgbase}}")
+    _package${_p#${pkgbase}}
+  }"
+done
 
 # makepkg -g >>PKGBUILD
-sha256sums=('61558aa490855f42b6340d1a1596be47454909629327c49a5e4e10268065dffa'
+sha256sums=('401d7c8fef594999a460d10c72c5a94e9c2e1022f16795ec51746b0d165418b2'
             'SKIP'
-            'fd4769f86fbe34bf95d26abd6a61ce06ffea9982a782612e60fffdb830927b39'
-            'c9ec6e9493c871fe2390efed7d7a29ab447135117e9c06739d599f1c0ebe4ea4'
+            '15d9c10ede703dc06abd8ae9c68b4099637b32a27d2b2625eecd0ded317cec21'
+            'a5983205b7d13985566e96ab9fa7053b03c73769bbfa6ed67897131e9cc131c0'
             '1f036f7464da54ae510630f0edb69faa115287f86d9f17641197ffda8cfd49e0'
-            'faced4eb4c47c4eb1a9ee8a5bf8a7c4b49d6b4d78efbe426e410730e6267d182'
-            '6d72e14552df59e6310f16c176806c408355951724cd5b48a47bf01591b8be02'
-            '52dec83a8805a8642d74d764494acda863e0aa23e3d249e80d4b457e20a3fd29'
-            '65d58f63215ee3c5f9c4fc6bce36fc5311a6c7dbdbe1ad29de40647b47ff9c0d'
-            'cf2e7a2d00787f754028e7459688c2755a406e632ce48b60952fa4ff7ed6f4b7'
-            '9c89039a0f876888fda3be6f574bca5a120e3587d8342747bbc0723b0b4cde7a'
+            '5313df7cb5b4d005422bd4cd0dae956b2dadba8f3db904275aaf99ac53894375'
             '03ed4eb4a35d42ae6beaaa5e6fdbada4244ed6c343944bba6462defaa6fed0bf'
             '51ea665cfec42d9f9c7796af2b060b7edbdeb367e42811f8c02667ad729f6b19'
             '9e1e81d80afac6f316e53947e1b081017090081cd30e6c4c473420b77af4b52b'
-            '3b71affbe4b00da4cb31116449d69ac3d0f00d228feaf4f2cc4d747330bedba4'
-            '06e080fb001112bb2418539058e987688d9658a927153ae79c967c11860e3b68'
-            'd60662a9f6b2696c20b6fbd12f365913eeb98d5edefca34587092eac9cb49774'
-            'a8602dc9e1591ecea14e2f3de06d20970828915b7ff2194b2bc31845b8ff5927'
-            'e7f9c907cd19aa6ca2f5c3363a5f3cd1d0b4e4c4229fbe2ded6c83356bfdf6c6'
-            '4ae4de332c46eb0bae95268ecb57a51579894ef354b75dcf09d8720b0c331164'
-            '17829b034090336a2137c87a9447a696a988f4c91b4b6eec197fb8525f578eec'
-            'd9bd56619b609f9b37f1301af0f539dfd47f2e7ad8f9682f4a7c0ce30b2baf82'
-            'de9202050d916e4b2426ec5630d15165c22b3911b7dbf5f02068daeb453fb330'
-            '1c105726eb1ceda96f7db33fdfe269fea405d7599ca5b57aabe8af565638d427'
-            '1b7c21229775206bc0a7a44a5f9af23ea7ff0b7c9fdb1bad0e6536097c93b4cc'
-            '585481b0cb3d830ed61f480acaec12d93b96ff3a72f845446bbc517b258d07e9'
-            '349d7b0cd95c801da729a023f852ee0a7bb07cdb28965e3a07dc76b7563975dd'
-            '73b3c346337fa765ce5051c9e52ccd9e7444632ed675ee36926e396f0ca07872'
-            'f82378ee91d9dc9c2f848c73155f516b157752e3810c8187b5f370ca4e0375ea'
-            'c52712a05759a89c746f03e6b75e36b6d81d8a7585f522a45630c53d6253a692'
-            'fb73e37497ef06f1948e49dbd90700d3da477cddb2a1f0ec254f1cd0b16b85f1'
-            '5f3f624d3a845a94e378f7027a6b43d2a66ed0e542929deb6036b11f2e21e40a'
-            '52d0cb16fb2583425cee4cf5cbd7caad6d0fd8f4231e1bc88cf572f014ee3ec7'
-            '0413914be2412b48e54c67d2c97edb8e5d08dbed139fb161c3270552ca5e89f4'
-            '10f00463928d4c3e985c12e4297ca442db4303e402a0915df58db5356a69fc47'
-            'aec5ece89c5ea49fa6d4c4458040f4ef3c780d64d8faf3d70e03f745fed1b14b'
-            'ead51735d1a2543a3e9854692385744a734eb3ef720bd64a24a65f63983a06c5'
-            '1a37ea7c547d5277a09901404e81e5e601d6b0dc71d1ec4f3dd2a8cd3adb3882'
-            'e5aa4f29255aa59955d8acaa794bc159e80f421bbf4520269ce4ac67ea59e47a'
-            'c392558a1f111905b392f293f36f0bdf0a3632f124a9ab9c37403526822f548d'
-            'd7b39272e4ee7b11d4593f84179b09508b91232edf29f92667f5e5fc60162d6b'
-            'a2a3a81e20ed3bbc0bed32c94ef7d0afd3164a34a3b681c17e3ae2ab2056d011'
-            'b9b07391aecd9610b3f802bcd0d51dccc90f6b68a9f77349e57ea3c0580e96a8'
-            '23d1e0fe61e421f5e61c59a7b35a38ca505f10f7eb367954e5102503b377a3e5'
-            '3788b4149635aeadaee1a78a2706ac0477004729527fbe9cb0ad53fdd8a58f5a'
-            'aaa6ecbbacd0d292c98a29be20a355f5764f69ae4a63c32e00439ff01a7b3fd7'
-            'da7ee7a2866e089b05aefc831326083e752937c650ee4186bff5574f48f27f40'
-            '8298092c14cf02a02ff2265d591acd05ce8c70fd789eacf38e4e1ee08fa6a01f'
-            'd824e47de882f676ca61c569c0e58982d007c79ec2a16ad5131680b3623c2a05'
-            '645be0aa141614c5042b9315f90cb4bcde382dacce7265da19e0cf604c0ac58a'
-            '428fac5b3a62d718991b72e0850f7dbbc21c43262a28a2c2630ca224a62edefa'
-            'e8def22d8032bc0b438c0ba05651cf528e800c9b9ef54a059cae35050667c622'
-            '1cd1e1d7ac2aae18501966ae38d57cf2c8cb5cedc6666f3a14801390a197ae5b'
-            'ab73cbc933f782361f088975a41c4fead9d42cf3fcde6e30dd8685d5b2178454'
-            '70715d8719fde3c7299e2867f810e5a75a7bfcfc28bab0f3e0715a9cac32bea1'
-            'fcea651d5310719c3926c893e4213cb3d2890b6b346210a37b016373e087db90'
-            '3f29242be19c727b83e0b245ccc983c299024a6c48323a2d86fb428013a6607a'
-            '989b0b046aad1b91e9b5e8a32e776d1d1f5577dc1aaf1c502295e67914b641dc'
-            '3aa34b9d238b8df9bb0475547ae4df5771969310bd2cb9f1fe043abbbab5b320'
-            '68d71fd2b4293c9b278c244c6b77e58f91174bcf0c2faafa695994ba36b3bd94'
-            'acfdf66c132c0e4d29adc062362db07ec3fa3006435314da0d80aeb25c96e287'
-            'a2789e82f980cb886ccea88d2d94e622ecde47b4eb006b94ceb6b944ed4c7833')
+            '7b6b1c448a95e0b60d2bff66de1003499f6023d6d4e5e98aee2e66fb483318de'
+            'aa31f002c45a5fef46015ca26d33270913834e777df44cbd672a0fd61a18b393')
