@@ -2,7 +2,7 @@
 
 pkgbase=invoke
 pkgname=(invoke python2-invoke)
-pkgver=0.13.0
+pkgver=0.14.0
 pkgrel=1
 pkgdesc="Task execution tool & library"
 url="http://pyinvoke.org"
@@ -59,7 +59,7 @@ package_python2-invoke() {
 	mv invoke invoke2
 }
 
-sha256sums=('1a1992fac5292b97448d1c85dc0793e309c4c376acbc39ff067056d71fdc241d'
+sha256sums=('5daa0882831ab56611b870851a7ad4025152623f83812ff32fd70dbf62fc1bee'
             '5c0fdc6b454253d117d71705a65922d74f2e8e56de905dcfee6460692e47e9ce'
             '58a7a1e82bf02afb74b0093ffd4f8f5045e7aa86dd6606e75d8a4ef69bc2dea6'
             '2fd9da1f67d2fbe48d0a3ddb570e2fad6600c29d1298ce017466edc688c576c7')
