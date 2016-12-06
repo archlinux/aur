@@ -52,7 +52,7 @@ pkgbase=linux-bfq
 # pkgname=('linux-bfq' 'linux-bfq-headers' 'linux-bfq-docs')
 _srcname=linux-4.8
 pkgver=4.8.12
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 url="http://algo.ing.unimo.it"
 license=('GPL2')
@@ -80,6 +80,7 @@ source=("http://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         '99-linux.hook'
          # standard config files for mkinitcpio ramdisk
         'linux.preset'
+        'fix_race_condition_in_packet_set_ring.diff'
         # patches from https://github.com/linusw/linux-bfq/commits/bfq-v8
         '0005-BFQ-Fix.patch'
         '0006-BFQ-Fix.patch')
@@ -98,6 +99,11 @@ prepare() {
     # (relevant patch sent upstream: https://lkml.org/lkml/2011/7/26/227)
         msg "Patching set DEFAULT_CONSOLE_LOGLEVEL to 4"
         patch -p1 -i "${srcdir}/change-default-console-loglevel.patch"
+        
+    ###  fix a race condition that allows to gain root
+    # https://marc.info/?l=linux-netdev&m=148054660230570&w=2
+         msg "Fix a race condition that allows to gain root"
+         patch -p1 -i "${srcdir}/fix_race_condition_in_packet_set_ring.diff"    
 
     ### Patch source with BFQ
         msg "Patching source with BFQ patches"
@@ -456,6 +462,7 @@ sha512sums=('a48a065f21e1c7c4de4cf8ca47b8b8d9a70f86b64e7cfa6e01be490f78895745b9c
             '94fbb7e67b77bb8911b69cdb23bbb74317e75a4ed786e4c6486bf2927042f9374e932ea879d1b250837e42c628abf7082fd6f895a2257c5d3ad652f6a520306a'
             'd6faa67f3ef40052152254ae43fee031365d0b1524aa0718b659eb75afc21a3f79ea8d62d66ea311a800109bed545bc8f79e8752319cd378eef2cbd3a09aba22'
             '2dc6b0ba8f7dbf19d2446c5c5f1823587de89f4e28e9595937dd51a87755099656f2acec50e3e2546ea633ad1bfd1c722e0c2b91eef1d609103d8abdc0a7cbaf'
+            'fd5800dcc1b9e7825892dfaedf78d9b64f354695992c9a1b0014e66664c6f0f4c80989439df360c994aab03dc4aa1f4e3481f153a6b4383c9e39da93c8d235d0'
             '3889679e288d51f6fecc7ed6581ccde34acbf1e4861f5c9ca237a1ad13158502757d3fc457d7b6caf1c8c99c9dba842265004154a71cffb8ec14e1030e49e312'
             '3c3f3b6407d9a1a63cd91c2b5c35e6c932afa5bf33f1b2e8a530dbd9eacda8c8f956616c4cc9228657624da58e354ba5714252237d84ff3386fd65cf44f06ddc')
             
