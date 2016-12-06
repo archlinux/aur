@@ -1,7 +1,7 @@
 # Maintainer: Thomas Weißschuh <thomas t-8ch de>
 
 pkgdesc='The iconic font designed for Bootstrap'
-pkgver=4.6.3
+pkgver=4.7.0
 pkgrel=1
 pkgname='otf-font-awesome'
 url='http://fontawesome.io'
@@ -16,4 +16,4 @@ package() {
 		"$pkgdir"/usr/share/fonts/OTF/FontAwesome.otf
 }
 
-sha256sums=('669fb1210c64eda3f998c86941641f1bcd0af4450643daf8841cb62d2b6c71a4')
+sha256sums=('de512ba0e1dead382bbfce372cde74b3f18971d876fffb635ee9333f0db05d43')
