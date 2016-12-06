@@ -1,3 +1,5 @@
+# Maintainer: 100best <jm dot 100best at gmail dot com>
+
 pkgname=openspades-font-unifont
 pkgver=unknown
 pkgrel=1
