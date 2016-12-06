@@ -1,7 +1,7 @@
 
 pkgname=nginx-mainline-passenger
 pkgver=1.11.1
-pkgrel=3
+pkgrel=4
 pkgdesc='Lightweight HTTP server and IMAP/POP3 proxy server, mainline release, including support for Phusion Passenger as a static module.'
 arch=('i686' 'x86_64')
 url='http://nginx.org'
@@ -99,6 +99,8 @@ package() {
 
   rm "$pkgdir"/etc/nginx/*.default "$pkgdir"/etc/nginx/nginx.conf
   install -Dm644 ../nginx.conf "$pkgdir"/etc/nginx/
+
+  mkdir "$pkgdir"/etc/nginx/sites
 
   install -d "$pkgdir"/var/lib/nginx
   install -dm700 "$pkgdir"/var/lib/nginx/proxy
