@@ -1,6 +1,6 @@
 # Maintainer: Claudio d'Angelis <claudiodangelis at gmail dot com>
 pkgname=postman-bin
-pkgver=4.9.0
+pkgver=4.9.1
 pkgrel=1
 pkgdesc="Build, test, and document your APIs faster"
 arch=('x86_64')
@@ -10,7 +10,7 @@ source=(
 	"Postman-linux-x64-${pkgver}.tar.gz::https://dl.pstmn.io/download/latest/linux?arch=64"
 )
 md5sums=(
-	"6af3f53f3f3dd8451e75fbd923bf4ae2"
+	"bf8aa61631ad846ff1d7772cb4988646"
 )
 
 package() {
