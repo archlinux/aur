@@ -2,7 +2,7 @@
 pkgname=neofetch
 pkgver=2.0
 pkgrel=1
-pkgdesc="CLI script to show your system's info and display an image using w3m."
+pkgdesc="A CLI system information tool written in BASH that supports displaying images."
 arch=('any')
 url="https://github.com/dylanaraps/$pkgname"
 license=('MIT')
