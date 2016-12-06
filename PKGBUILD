@@ -4,12 +4,12 @@
 _pkgname=ultrastardxwp
 pkgname=${_pkgname}-git
 pkgver=r20.915f975
-pkgrel=1
+pkgrel=2
 pkgdesc="UltraStar Deluxe WorldParty is a free and open source karaoke game. It allows up to six players to sing along with music using microphones in order to score points, depending on the pitch of the voice and the rhythm of singing."
 arch=("i686" "x86_64")
 url="http://ultrastar-es.org"
 license=("GPL")
-depends=("ffmpeg2.8" "lua" "pcre" "portaudio" "sdl2" "sdl2_mixer" "sdl2_ttf" "sdl2_image" "sqlite" "ttf-dejavu" "ttf-freefont")
+depends=("ffmpeg2.8" "lua" "pcre" "portaudio" "sdl2" "sdl2_gfx" "sdl2_mixer" "sdl2_ttf" "sdl2_image" "sdl2_net" "sqlite" "ttf-dejavu" "ttf-freefont")
 makedepends=("git" "fpc")  
 optdepends=()
 conflicts=("${pkgname}")
