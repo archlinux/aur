@@ -10,7 +10,8 @@ license=('MIT')
 depends=('bash')
 provides=("${pkgname}")
 conflicts=("${pkgname}")
-makedepends=('')
+makedepends=('git' 'libnotify')
+optdepends=('notification-daemon')
 source=("https://github.com/Ventto/${pkgname}/archive/master.tar.gz")
 sha256sums=('SKIP')
 
@@ -21,5 +22,5 @@ build() {
 
 package() {
   cd ${pkgname}-master
-  make DESTDIR="${pkgdir}/" install
+  make DESTDIR="${pkgdir}" install
 }
