@@ -2,7 +2,7 @@ diff --git a/pjproject/pjsip/src/pjsip/sip_transport.c b/pjproject_new/pjsip/src
 index 4b2cc1a..22e3603 100644
 --- a/pjsip/src/pjsip/sip_transport.c
 +++ b/pjsip/src/pjsip/sip_transport.c
-@@ -1179,22 +1179,22 @@ PJ_DEF(pj_status_t) pjsip_tpmgr_register_tpfactory( pjsip_tpmgr *mgr,
+@@ -1248,22 +1248,22 @@ PJ_DEF(pj_status_t) pjsip_tpmgr_register_tpfactory( pjsip_tpmgr *mgr,
  
      pj_lock_acquire(mgr->lock);
  
@@ -36,7 +36,7 @@ index 4b2cc1a..22e3603 100644
      }
  
      pj_list_insert_before(&mgr->factory_list, tpf);
-@@ -1909,13 +1909,11 @@ PJ_DEF(pj_status_t) pjsip_tpmgr_acquire_transport2(pjsip_tpmgr *mgr,
+@@ -2047,13 +2047,11 @@ PJ_DEF(pj_status_t) pjsip_tpmgr_acquire_transport2(pjsip_tpmgr *mgr,
  	pj_memcpy(&key.rem_addr, remote, addr_len);
  
  	transport = (pjsip_transport*)
@@ -52,15 +52,15 @@ index 4b2cc1a..22e3603 100644
  	    /* Ignore address for loop transports. */
  	    if (type == PJSIP_TRANSPORT_LOOP ||
  		     type == PJSIP_TRANSPORT_LOOP_DGRAM)
-@@ -1954,6 +1952,11 @@ PJ_DEF(pj_status_t) pjsip_tpmgr_acquire_transport2(pjsip_tpmgr *mgr,
- 	    return PJ_SUCCESS;
- 	}
+@@ -2135,6 +2135,11 @@ PJ_DEF(pj_status_t) pjsip_tpmgr_acquire_transport2(pjsip_tpmgr *mgr,
+ 	    }
  
-+    if (flag & PJSIP_TRANSPORT_SECURE) {
-+        TRACE_((THIS_FILE, "Can't create new TLS transport with no provided suitable TLS listener."));
-+        return PJSIP_ETPNOTSUITABLE;
-+    }
-+
- 	/*
- 	 * Transport not found!
- 	 * Find factory that can create such transport.
+ 	} else {
++        /* Make sure we don't use another factory than the one given if secure flag is set */
++        if (flag & PJSIP_TRANSPORT_SECURE) {
++            TRACE_((THIS_FILE, "Can't create new TLS transport with no provided suitable TLS listener."));
++            return PJSIP_ETPNOTSUITABLE;
++        }
+ 
+ 	    /* Find factory with type matches the destination type */
+ 	    factory = mgr->factory_list.next;
