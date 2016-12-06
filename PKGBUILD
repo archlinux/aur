@@ -13,8 +13,8 @@ arch=('i686' 'x86_64')
 depends=('sdl_image' 'sdl_ttf' 'xdg-utils')
 source=("https://downloads.sourceforge.net/$pkgname/$pkgname-$pkgver.tar.gz"
         "gcc6.patch")
-sha1sums=('bdfc3d88fbc852fa728c9981f83c9dd048d159ae'
-          'ad7a6186f5729beeb77d4b54df3e8b03038a9eb8')
+sha256sums=('5d7c04f37d6b4a1821594512c7ddbc8189f968e08ecfd5af55231302f2f917d8'
+            '7b674fbfc81d7105fe667a267217f89cbe50012e06065626d778e4d4563de54f')
 
 prepare() {
   cd $pkgname-$pkgver
