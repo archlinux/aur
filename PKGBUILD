@@ -7,7 +7,7 @@ pkgver=6.30.223.271
 pkgrel=10
 pkgdesc="Broadcom 802.11 Linux STA wireless driver"
 arch=('i686' 'x86_64')
-url="https://www.broadcom.com/support/802.11"
+url="https://www.broadcom.com/support/download-search/?pf=Wireless+LAN+Infrastructure"
 license=('custom')
 depends=('dkms')
 optdepends=('linux-headers: build modules against the Arch kernel'
@@ -22,8 +22,8 @@ source=('broadcom-wl-dkms.conf'
         '002-rdtscl.patch'
         '003-linux47.patch'
         '004-linux48.patch')
-source_i686=("http://www.broadcom.com/docs/linux_sta/hybrid-v35-nodebug-pcoem-${pkgver//./_}.tar.gz")
-source_x86_64=("http://www.broadcom.com/docs/linux_sta/hybrid-v35_64-nodebug-pcoem-${pkgver//./_}.tar.gz")
+source_i686=("https://docs.broadcom.com/docs-and-downloads/docs/linux_sta/hybrid-v35-nodebug-pcoem-${pkgver//./_}.tar.gz")
+source_x86_64=("https://docs.broadcom.com/docs-and-downloads/docs/linux_sta/hybrid-v35_64-nodebug-pcoem-${pkgver//./_}.tar.gz")
 sha256sums=('b97bc588420d1542f73279e71975ccb5d81d75e534e7b5717e01d6e6adf6a283'
             'a453cfd7c8ad5b04afa6a55189b445356090b52fd480c2b5ec843bfeec72b9bf'
             '32e505a651fdb9fd5e4870a9d6de21dd703dead768c2b3340a2ca46671a5852f'
