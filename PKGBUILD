@@ -20,14 +20,15 @@
 # Contributor: solar (authatieventsd' patch s/-1/255)
 # Contributor: kolasa (part of 4.3 kernel patches)
 # Contributor: gentoo (part of 4.3 kernel patches)
-# Contributor: 	Philip Muller @ Manjaro (4.4 kernel patch)
-# Contributor: 	aslmaswd (acpi main script)
+# Contributor: Philip Muller @ Manjaro (4.4 kernel patch)
+# Contributor: aslmaswd (acpi main script)
+# Contributor: npfeiler (libcl/ocl-icd cleaning)
 
 # PKGEXT='.pkg.tar.gz' # imho time to pack this pkg into tar.xz is too long, unfortunatelly yaourt got problems when ext is different from .pkg.tar.xz - V
 
 pkgname=catalyst-test
 pkgver=15.12
-pkgrel=10
+pkgrel=11
 # _betano=1.0
 _amdver=15.302
 pkgdesc="AMD/ATI Catalyst drivers for linux AKA Crimson. catalyst-dkms + catalyst-utils + lib32-catalyst-utils + experimental powerXpress suppport. PRE-GCN Radeons ARE NOT SUPPORTED"
@@ -41,8 +42,8 @@ optdepends=('qt4: to run ATi Catalyst Control Center (amdcccle)'
 	    'opencl-headers: headers necessary for OpenCL development'
 	    'acpid: acpi event support  / atieventsd'
 	    'procps-ng: brings pgrep used in acpi event support')
-conflicts=('libgl' 'catalyst' 'catalyst-daemon' 'catalyst-generator' 'catalyst-hook' 'catalyst-utils' 'libcl' 'catalyst-dkms' 'mesa-libgl' 'mesa-libgl-git')
-provides=('libgl' "libatical=${pkgver}" "catalyst=${pkgver}" "catalyst-utils=${pkgver}" "catalyst-hook=${pkgver}" "catalyst-libgl=${pkgver}" "opencl-catalyst=${pkgver}" 'libcl' 'dri' 'libtxc_dxtn' 'mesa-libgl' 'mesa-libgl-git')
+conflicts=('libgl' 'catalyst' 'catalyst-daemon' 'catalyst-generator' 'catalyst-hook' 'catalyst-utils' 'catalyst-dkms' 'mesa-libgl' 'mesa-libgl-git')
+provides=('libgl' "libatical=${pkgver}" "catalyst=${pkgver}" "catalyst-utils=${pkgver}" "catalyst-hook=${pkgver}" "catalyst-libgl=${pkgver}" "opencl-catalyst=${pkgver}" 'dri' 'libtxc_dxtn' 'mesa-libgl' 'mesa-libgl-git')
 
 if [ "${CARCH}" = "x86_64" ]; then
  warning "x86_64 system detected"
@@ -50,8 +51,8 @@ if [ "${CARCH}" = "x86_64" ]; then
   if [[ `cat /etc/pacman.conf | grep -c "#\[multilib]"` = 0 ]]; then
     warning "OK, lib32-catalyst-utils will be added to the package"
     depends+=('lib32-libxext' 'lib32-libdrm' 'lib32-libxinerama' 'lib32-mesa>=10.1.0-4')
-    conflicts+=('lib32-libgl' 'lib32-catalyst-utils' 'lib32-libcl' 'lib32-mesa-libgl' 'lib32-mesa-libgl-git')
-    provides+=('lib32-libgl' "lib32-catalyst-utils=${pkgver}" "lib32-catalyst-libgl=${pkgver}" "lib32-opencl-catalyst=${pkgver}" 'lib32-dri' 'lib32-libtxc_dxtn' 'lib32-libcl' 'lib32-mesa-libgl' 'lib32-mesa-libgl-git')
+    conflicts+=('lib32-libgl' 'lib32-catalyst-utils' 'lib32-mesa-libgl' 'lib32-mesa-libgl-git')
+    provides+=('lib32-libgl' "lib32-catalyst-utils=${pkgver}" "lib32-catalyst-libgl=${pkgver}" "lib32-opencl-catalyst=${pkgver}" 'lib32-dri' 'lib32-libtxc_dxtn' 'lib32-mesa-libgl' 'lib32-mesa-libgl-git')
       else
 	warning "lib32-catalyst-utils will NOT be added to the package"
   fi
@@ -201,6 +202,7 @@ package() {
       install -m644 X11R6/${_lib}/*.cap ${pkgdir}/usr/lib
       install -m755 X11R6/${_lib}/modules/dri/*.so ${pkgdir}/usr/lib/xorg/modules/dri
       install -m755 ${_lib}/*.so* ${pkgdir}/usr/lib
+      rm ${pkgdir}/usr/lib/libOpenCL.so.1 # ocl-icd provides this
 #       install -m755 ${_lib}/hsa/* ${pkgdir}/usr/lib/hsa		#removed in 14.1
 
     ## QT libs (only 2 files) - un-comment 2 lines below if you don't want to install qt package
@@ -212,7 +214,6 @@ package() {
       ln -snf libfglrx_dm.so.1.0 ${pkgdir}/usr/lib/libfglrx_dm.so
       ln -snf libatiuki.so.1.0 ${pkgdir}/usr/lib/libatiuki.so.1
       ln -snf libatiuki.so.1.0 ${pkgdir}/usr/lib/libatiuki.so
-      ln -snf libOpenCL.so.1 ${pkgdir}/usr/lib/libOpenCL.so
 
       ln -snf /usr/lib/fglrx/fglrx-libGL.so.1.2 ${pkgdir}/usr/lib/fglrx/libGL.so.1.2.0
       ln -snf /usr/lib/fglrx/fglrx-libGL.so.1.2 ${pkgdir}/usr/lib/fglrx/libGL.so.1
@@ -342,6 +343,7 @@ package() {
 	install -dm755 ${pkgdir}/usr/lib32/xorg/modules/dri
 #	install -dm755 ${pkgdir}/usr/lib32/hsa		#removed in 14.1
 	install -m755 lib/*.so* ${pkgdir}/usr/lib32
+	rm ${pkgdir}/usr/lib32/libOpenCL.so.1 # lib32-ocl-icd provides this
 #	install -m755 lib/hsa/* ${pkgdir}/usr/lib32/hsa		#removed in 14.1
 	install -m755 X11R6/lib/fglrx/fglrx-libGL.so.1.2 ${pkgdir}/usr/lib32/fglrx
 	install -m755 X11R6/lib/libAMDXvBA.so.1.0 ${pkgdir}/usr/lib32
@@ -360,7 +362,6 @@ package() {
 	ln -sf /usr/lib32/libXvBAW.so.1.0	${pkgdir}/usr/lib32/libXvBAW.so
 	ln -sf /usr/lib32/libatiuki.so.1.0	${pkgdir}/usr/lib32/libatiuki.so.1
 	ln -sf /usr/lib32/libatiuki.so.1.0	${pkgdir}/usr/lib32/libatiuki.so
-	ln -sf /usr/lib32/libOpenCL.so.1	${pkgdir}/usr/lib32/libOpenCL.so
 
 	ln -sf /usr/lib32/fglrx/fglrx-libGL.so.1.2 ${pkgdir}/usr/lib32/fglrx/libGL.so.1.2.0
 	ln -sf /usr/lib32/fglrx/fglrx-libGL.so.1.2 ${pkgdir}/usr/lib32/fglrx/libGL.so.1
