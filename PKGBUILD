@@ -10,8 +10,8 @@ url="http://www.braingames.getput.com/f1spirit"
 depends=('sdl_image' 'sdl_mixer' 'sdl_net' 'glu' 'curl')
 source=("http://braingames.jorito.net/f1spirit/f1spirit.src_0.rc9-1615.tgz"
         "f1spirit.patch")
-sha1sums=('90a6a0a3b5f7dc18a3497d32bb580bf47e688c95'
-          'c718f3e0bab5b47a4305a3acd95bef3fd67391a2')
+sha256sums=('fc1778dcec68ccd31b9da893abee67e64a7931a34c75a63f8563355b810acbd7'
+            'a7b76bd1ed09c6144fc7ab94ba4568fb3a10dbdac5b7e907e1a1c09b7d2b0464')
 
 prepare() {
   cd $pkgname-$pkgver
