@@ -14,10 +14,18 @@ function installdir() {
 }
 
 post_install() {
+    systemd-sysusers
     systemd-tmpfiles --create
     
     # template cache needs to be writeable
     installdir http:http 0700 0600 /var/lib/zarafa-postfixadmin
 
-    installdir http:http 0700 0600 /etc/webapps/zarafa-postfixadmin
+    # etc
+    _etc=/etc/webapps/zarafa-postfixadmin
+    installdir http:http 0700 0600 ${_etc}
+    install --backup=simple --suffix .pacsave -o http -g http -m 0600  ${_etc}/config.local.php.example ${_etc}/config.local.php
+
+    # fetchmail
+    installdir fetchmail:fetchmail 0700 0600 /etc/mail/postfixadmin
+    install --backup=simple --suffix .pacsave -o fetchmail -g fetchmail -m 0600  /etc/mail/postfixadmin/fetchmail.conf.example /etc/mail/postfixadmin/fetchmail.conf
 }

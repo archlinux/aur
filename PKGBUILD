@@ -6,7 +6,7 @@ pkgname='zarafa-postfixadmin'
 replaces=('zarafa-postfixadmin-worker')
 groups=('zarafa'
 	'kopano')
-pkgver=0.22
+pkgver=0.24
 pkgrel=89
 pkgdesc="A web based interface used to manage mailboxes, virtual domains and aliases created for Zarafa-Server with DB-Plugin and Postfix"
 arch=('any')
@@ -36,14 +36,12 @@ package_zarafa-postfixadmin() {
     ###
     _destdir_webapp=${pkgdir}/usr/share/webapps/${pkgname}
     _destdir_etc=${pkgdir}/etc/webapps/${pkgname}
-    _destdir_fetchmail=${pkgdir}/etc/fetchmail-all
     _destdir_fetchmailpostfixadmin=${pkgdir}/etc/mail/postfixadmin
     _destdir_doc=${pkgdir}/usr/share/doc/${pkgname}
     _destdir_var=${pkgdir}/var/lib/${pkgname}
     _destdir_usr=${pkgdir}/usr/share/${pkgname}
     _destdir_systemd=${pkgdir}/usr/lib/systemd/system
     
-    install -dm755 ${_destdir_fetchmail}
     install -dm755 ${_destdir_fetchmailpostfixadmin}
     install -dm755 ${_destdir_webapp}
     install -dm755 ${_destdir_etc}
@@ -65,18 +63,17 @@ package_zarafa-postfixadmin() {
     rm -rf ${_destdir_webapp}/debian
 
     # etc
-    cp ${_destdir_webapp}/config.inc.php ${_destdir_etc}/config.example.php
+    cp ${_destdir_webapp}/config.inc.php ${_destdir_etc}/config.php.example
 
     # ZARAFA-POSTFIXADMIN
     ###
     cd ${srcdir}/zarafa-postfixadmin-${pkgver}
-    cp etc/config.local.php ${_destdir_webapp}
+    cp webapp/config.local.php ${_destdir_webapp}
     
     # etc
     cp etc/nginx-location.conf ${_destdir_etc}
-    cp etc/config.default.php ${_destdir_etc}/config.local.php
-    cp etc/config ${_destdir_fetchmail}
-    cp etc/fetchmail.conf ${_destdir_fetchmailpostfixadmin}
+    cp etc/config.local.php ${_destdir_etc}/config.local.php.example
+    cp etc/fetchmail.conf ${_destdir_fetchmailpostfixadmin}/fetchmail.conf.example
     
     # docs
     cp -r doc/* ${_destdir_doc}
@@ -99,5 +96,5 @@ package_zarafa-postfixadmin() {
     cp systemd/* ${_destdir_systemd}
     
     # usr
-    mv usr/* ${_destdir_usr}
+    cp usr/* ${_destdir_usr}
 }
