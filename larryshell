@@ -1,0 +1,5 @@
+#!/bin/bash
+
+SCRIPTPATH="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+
+bash --init-file $SCRIPTPATH/larryshellrc
