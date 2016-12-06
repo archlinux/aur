@@ -1,6 +1,6 @@
 pkgbase = freelan-git
 	pkgdesc = A peer-to-peer, secure, easy-to-setup, multi-platform, open-source, highly-configurable VPN software.
-	pkgver = r3730.43062cd
+	pkgver = r3731.d248bb5
 	pkgrel = 1
 	url = https://github.com/freelan-developers/freelan
 	arch = any

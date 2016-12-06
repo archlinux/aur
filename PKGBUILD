@@ -1,7 +1,7 @@
 # Maintainer: SplitFire (split7fire at yandex.ru)
 
 pkgname=freelan-git
-pkgver=r3730.43062cd
+pkgver=r3731.d248bb5
 pkgrel=1
 pkgdesc="A peer-to-peer, secure, easy-to-setup, multi-platform, open-source, highly-configurable VPN software."
 arch=('any')
@@ -20,6 +20,5 @@ pkgver() {
 
 package() {
   cd "$srcdir/$pkgname"
-  mkdir -p $pkgdir/usr/bin
-    scons install prefix=$pkgdir/usr/bin
+    scons install prefix=$pkgdir/ bin_prefix=$pkgdir/usr
 }
