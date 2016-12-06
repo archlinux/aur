@@ -8,7 +8,7 @@
 
 _pkgname=gitlab
 pkgname=gitlab-ee
-pkgver=8.13.5
+pkgver=8.14.3
 pkgrel=1
 pkgdesc="Project management and code hosting application"
 arch=('i686' 'x86_64')
@@ -16,7 +16,7 @@ url="https://gitlab.com/gitlab-org/gitlab-ce/tree/master#README"
 license=('MIT')
 conflicts=('gitlab')
 provides=('gitlab')
-depends=('ruby' 'git' 'ruby-bundler' 'gitlab-shell' 'gitlab-workhorse' 'openssh' 'redis' 'libxslt' 'icu' 'nodejs')
+depends=('ruby' 'git' 'ruby-bundler' 'gitlab-workhorse' 'openssh' 'redis' 'libxslt' 'icu' 'nodejs')
 makedepends=('cmake' 'postgresql' 'mariadb')
 optdepends=('postgresql: database backend'
             'mysql: database backend'
@@ -44,7 +44,7 @@ source=("${pkgname}-${pkgver}.tar.gz::https://gitlab.com/gitlab-org/gitlab-ee/re
         nginx-ssl.conf.example
         lighttpd.conf.example)
 install='gitlab.install'
-sha256sums=('bddd0b23e2179b5ca527c7e75b09ea631dbb1f5c5d2f3b88e94beafacb0807a6'
+sha256sums=('e067eff7446583f44ed0c6f38f1f8fa95a63c71d567df00bff8298c0d9b05a68'
             '0dabb9c10f6ba49404c13d6be2d0d6cf1bf7e5a0b95f0dea566e33c356997307'
             '3f64de78d1221a0ddf75baed19d1706c625c143701d30ad918f15231aeecfb4f'
             'e16a68539eeb49d24d2ab4a53ff95e33c67264a674b611c006dc5c8a24f41e0e'
@@ -65,7 +65,7 @@ _datadir="/usr/share/webapps/${_pkgname}"
 _etcdir="/etc/webapps/${_pkgname}"
 _homedir="/var/lib/${_pkgname}"
 _logdir="/var/log/${_pkgname}"
-_commit="94cc667f4ad84bfedf8714db7e8b4ba6acbb1f9a"
+_commit="8282833d84c2b7840fbe7db3a883f0f9f9507a18"
 _srcdir="${pkgname}-v${pkgver/_/-}-ee-${_commit}"
 
 prepare() {
@@ -100,7 +100,7 @@ prepare() {
 
   msg2 "Patching redis connection in resque.yml"
   sed -e "s|production: unix:/var/run/redis/redis.sock|production: redis://localhost:6379|" \
-      config/resque.yml.example > config/resque.yml
+      config/resque.yml.example > config/resque.yml.patched
 
   msg2 "Setting up systemd service files ..."
   for service_file in gitlab-sidekiq.service gitlab-unicorn.service gitlab.logrotate gitlab-backup.service gitlab-mailroom.service; do
@@ -123,15 +123,19 @@ build() {
 
   # We'll temporarily stick this in here so we can build the assets
   cp config/database.yml.postgresql.orig config/database.yml
+  cp config/resque.yml.example config/resque.yml
+  sed -i 's/url.*/nope.sock/g' config/resque.yml
 
-  sed -i '/ensure_secret_token/d' config/initializers/gitlab_shell_secret_token.rb
-  bundle exec rake assets:precompile RAILS_ENV=production
+  bundle exec rake assets:precompile RAILS_ENV=production --trace
+
   # After building assets, clean this up again
   rm config/database.yml config/database.yml.postgresql.orig
+  mv config/resque.yml.patched config/resque.yml
 }
 
 package() {
   cd "${srcdir}/${_srcdir}"
+  depends+=('gitlab-shell>=4.0.0')
 
   install -d "${pkgdir}/usr/share/webapps"
 
