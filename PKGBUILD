@@ -11,8 +11,8 @@ depends=('gtk2' 'pangox-compat')
 options=('!makeflags')
 source=("http://www.engens.com/dwight/dl/$pkgname-12222005.tar.gz"
         "makefile.patch")
-sha1sums=('fe7908999571fbf30d53a390dfeb6a6b2b9fedc9'
-          '91611ca89d79f0a83440b6bf8228b7efca326f34')
+sha256sums=('9a78ff8c78d52e3446e5b8c5c946d79a6a720ec61d317886e02985566591e963'
+            '1c38c2aad712dac918b4b2d253ef286bbf0419695c467180d43404d17d2add50')
 
 prepare() {
   cd $pkgname-$pkgver
