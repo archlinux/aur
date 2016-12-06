@@ -1,20 +1,17 @@
---- Makefile	2016-11-22 22:50:31.000000000 +0100
-+++ Makefile	2016-12-05 13:41:19.562296658 +0100
-@@ -194,7 +194,7 @@
+--- biosig-dev.h.orig	2016-12-06 08:36:05.404602913 +0100
++++ biosig-dev.h	2016-12-06 08:37:49.637939685 +0100
+@@ -67,13 +67,7 @@
+ #endif
+ #endif
  
- ifeq (,$(findstring MINGW, $(shell uname)))
-              ### MXE_OCTAVE does not provid ZLIB
--DEFINES      += -D=WITH_ZLIB
-+#DEFINES      += -D=WITH_ZLIB
- endif
+-#ifdef WITH_CHOLMOD
+-    #ifdef __APPLE__
+-        #include <cholmod.h>
+-    #else
+-        #include <suitesparse/cholmod.h>
+-    #endif
+-#endif
++#include <cholmod.h>
  
- DEFINES      += -D=WITH_PTHREAD
-@@ -202,7 +202,7 @@
- DEFINES      += -D=__4HAERTEL__
- DEFINES      += -D=WITH_FAMOS
- DEFINES      += -D=WITH_FIFF
--DEFINES      += -D=WITH_CHOLMOD
-+#DEFINES      += -D=WITH_CHOLMOD
- DEFINES      += -D=WITHOUT_NETWORK
- #DEFINES      += -D=WITH_SCP3
- #DEFINES      += -D=WITH_HDF
+ #ifdef WITH_HDF5
+     #include <hdf5.h>

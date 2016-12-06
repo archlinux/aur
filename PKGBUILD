@@ -1,13 +1,13 @@
 # Maintainer: Clemens Brunner <clemens dot brunner at gmail dot com>
 pkgname=libbiosig
 pkgver=1.8.4
-pkgrel=2
+pkgrel=3
 pkgdesc="Provides reading and writing routines for different biosignal data formats"
 arch=('i686' 'x86_64')
 url="http://biosig.sourceforge.net/"
 license=('GPL')
 groups=()
-depends=()
+depends=('zlib' 'suitesparse')
 makedepends=()
 optdepends=()
 provides=()
@@ -21,10 +21,10 @@ source=(https://sourceforge.net/projects/biosig/files/BioSig%20for%20C_C%2B%2B/s
         libbiosig.patch)
 noextract=()
 sha1sums=('8eac7b700ef99dda906f0ed93986a5a07b72d693'
-          'e92db239599e8d13d9532fff561f236d89a922ae')
+          '15de767cea2d33bbabf1bb0166527f790de074d3')
 
 build() {
-  patch "$srcdir/biosig4c++-$pkgver/Makefile" libbiosig.patch
+  patch "$srcdir/biosig4c++-$pkgver/biosig-dev.h" libbiosig.patch
   cd "$srcdir/biosig4c++-$pkgver"
   make libbiosig
 }
