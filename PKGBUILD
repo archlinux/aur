@@ -12,8 +12,8 @@ url='https://fbb-git.github.io/yodl/'
 license=('GPL3')
 depends=('bash')
 makedepends=('icmake>=8.00.00')
-source=("${pkgname}-${pkgver}.tar.gz::http://github.com/fbb-git/${pkgname}/archive/${pkgver}.tar.gz")
-sha256sums=('958497939d9f3d1c6d0e2e74f7592d5a98f9ddb6f95c50c1247e41600d2765b7')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/fbb-git/${pkgname}/archive/${pkgver}.tar.gz")
+sha512sums=('a88ab79657661262f4ccce4fd307ba41a05bcefbb534a2b5ed84115ab592ddf3ce883747aad5c028e73142ec91815ee86e1ae16ab9d319fe2045a2b0a08ab42c')
 
 build() {
 	cd "${srcdir}/${pkgname}-${pkgver}/${pkgname}"
