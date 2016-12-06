@@ -6,7 +6,7 @@ arch=('any')
 license=('MIT')
 depends=('bash')
 source=("https://jhoughton.me/larryshell/${pkgver}-${pkgrel}.tar.gz")
-md5sums=('c7b759216aae8e6c923407116ecda668')
+md5sums=('20f36a10e722a02146c9e3b982030774')
 
 package() {
     cd $srcdir
