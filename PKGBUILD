@@ -1,6 +1,6 @@
 # Maintainer: Andrew Crerar <andrew (at) crerar (dot) io>
 # Contributor: Valentin Churavy <v.churavy@gmail.com>
-# Contributor: Romain Reignier <rom.reignier@gmail.com> (ARM support)
+# Contributor: Romain Reignier <rom.reignier@gmail.com>
 # Contributor: Fabien Dubosson <fabien.dubosson@gmail.com>
 # Contributor: David Manouchehri <david@davidmanouchehri.com>
 # Contributor: CHEN Xing <cxcxcxcx@gmail.com>
@@ -26,7 +26,7 @@ optdepends=('opencv-samples'
             'python-numpy: Python 3 interface'
             'python2-numpy: Python 2 interface')
 conflicts=('opencv' 'opencv-git')
-provides=('${_name}=${pkgver}')
+provides=("${_name}=${pkgver}")
 source=('git+https://github.com/opencv/opencv.git'
         'git+https://github.com/opencv/opencv_contrib.git')
 sha512sums=('SKIP'

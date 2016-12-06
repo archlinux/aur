@@ -22,7 +22,7 @@ pkgbase = opencv-git
 	optdepends = opencl-icd-loader: For coding with OpenCL
 	optdepends = python-numpy: Python 3 interface
 	optdepends = python2-numpy: Python 2 interface
-	provides = ${_name}=${pkgver}
+	provides = opencv=3.1.0.r1844.g37cbcf0
 	conflicts = opencv
 	conflicts = opencv-git
 	source = git+https://github.com/opencv/opencv.git
