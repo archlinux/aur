@@ -1,0 +1,13 @@
+pkgbase = openspades-font-unifont
+	pkgdesc = GNU Unifont (Generic Unicode Font) for OpenSpades.
+	pkgver = unknown
+	pkgrel = 1
+	url = http://openspades.yvt.jp
+	arch = any
+	license = GPL
+	depends = openspades
+	source = https://yvt.jp/files/programs/osppaks/font-unifont.pak
+	md5sums = bd5025c83aacd4bddc52980b30d77453
+
+pkgname = openspades-font-unifont
+
