@@ -3,7 +3,7 @@
 pkgname=ravkavonline
 pkgver="1.0.0"
 pkgrel=2
-pkgdesc="Ravkav Online client"
+pkgdesc="Ravkav Online client - unofficial package"
 arch=('x86_64')
 url="https://ravkavonline.co.il/"
 license=('custom' 'MIT')
