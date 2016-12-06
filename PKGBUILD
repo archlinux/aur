@@ -1,5 +1,5 @@
 pkgname=larryshell
-pkgver=0.0.1
+pkgver=0.0.2
 pkgrel=1
 pkgdesc="LarryShell modifies bash to create a more affluent command-line interface."
 arch=('any')
