@@ -3,7 +3,7 @@
 
 pkgname=crystal-git
 pkgver=0.20.0.r17.gd13e650
-_last_release="0.20.0-1"
+_last_release="0.20.1-1"
 pkgrel=1
 pkgdesc="The Crystal Programming Language"
 arch=('i686' 'x86_64')
@@ -18,7 +18,7 @@ optdepends=('shards: To make the crystal deps command work'
             'libxml2: For XML support')
 conflicts=('crystal')
 provides=('crystal')
-source=("git://github.com/crystal-lang/crystal.git")
+source=("git+https://github.com/crystal-lang/crystal.git")
 source_i686+=("https://github.com/crystal-lang/crystal/releases/download/${_last_release/-*/}/${pkgname/-git/}-$_last_release-linux-i686.tar.gz")
 source_x86_64+=("https://github.com/crystal-lang/crystal/releases/download/${_last_release/-*/}/${pkgname/-git/}-$_last_release-linux-x86_64.tar.gz")
 
@@ -74,5 +74,5 @@ package() {
 }
 
 sha256sums=('SKIP')
-sha256sums_i686=('008cf927a4add816c038d2c07e2e9953c1cdaf5df9d696aefee9990bc84174ba')
-sha256sums_x86_64=('55f309882b71f1722b00e63c5e91bcf8be54865b9bc9e7bb85f333b94990e298')
+sha256sums_i686=('6d7a5d95b2f914312ad189cc3d3f96aeba181eee43b7382bed9347b963c5cf69')
+sha256sums_x86_64=('d049af7b3c2ea08e3f1c961156f952cfe4ae38f967da38a755e93fdba4c8a07b')
