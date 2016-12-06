@@ -1,6 +1,6 @@
 # Maintainer: Kieran Colford <kieran@kcolford.com>
 pkgname=ddns-git
-pkgver=r35.7555260
+pkgver=r36.b96486a
 pkgrel=1
 pkgdesc="Automatic provisioning of dynamic DNS"
 arch=('any')
@@ -15,7 +15,7 @@ optdepends=('bind: for tsig-keygen'
 provides=('ddns')
 conflicts=('ddns')
 replaces=()
-backup=()
+backup=('etc/ddns.conf')
 options=()
 install=
 source=('ddns::git+https://github.com/kcolford/ddns')
