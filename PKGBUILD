@@ -4,7 +4,7 @@
 _pkgname=php-compat-info
 pkgname=${_pkgname}
 pkgver=5.0.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Library that find out the minimum version and the extensions required for a piece of code to run."
 arch=('any')
 url="http://php5.laurent-laville.org/compatinfo/"
