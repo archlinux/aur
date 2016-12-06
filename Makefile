@@ -4,5 +4,6 @@ build:
 	tar cvf $(VER).tar.gz larryshell larryshellrc larryshell-errors.txt
 	md5sum $(VER).tar.gz
 	cp $(VER).tar.gz /srv/http/larryshell
+	makepkg --printsrcinfo > .SRCINFO
 clean:
 	rm -r src pkg *.tar*
