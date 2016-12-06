@@ -11,7 +11,7 @@ license=('GPL2')
 depends=('kdebase-runtime' 'libcdio')
 makedepends=('pkgconfig' 'cmake' 'automoc4')
 source=("https://lisas.de/kover/$pkgname-$pkgver.tar.bz2")
-sha1sums=('3557d9d2cd38bae89c0287bb924a77c5f1d0bb96')
+sha256sums=('87494299d5dd7a51bbf3a1739f372da680744f14271c43d8495eca15f1f2480a')
 
 build() {
   cd $pkgname-$pkgver
