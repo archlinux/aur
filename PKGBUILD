@@ -2,52 +2,52 @@
 # Contributor: FzerorubigD <Fzerorubigd {AT} GMail {DOT} com>
 
 pkgname=gpaste-git
-pkgver=3.20+3+g3503fca
+pkgver=3.22.1+23+g0923e96
 pkgrel=1
 pkgdesc="Clipboard management system"
 url="http://www.imagination-land.org/tags/GPaste.html"
 license=(GPL3)
 arch=(i686 x86_64)
 depends=(gtk3)
-makedepends=(git intltool vala appstream-glib gobject-introspection gnome-shell gnome-control-center)
+makedepends=(intltool vala appstream-glib gobject-introspection gnome-shell gnome-control-center git)
 optdepends=("wgetpaste: Upload clipboard contents")
 provides=("gpaste=$pkgver")
 conflicts=(gpaste)
-options=('!emptydirs')
-install=gpaste.install
-source=("git+https://github.com/Keruspe/GPaste#branch=gpaste-3.20")
+options=(!emptydirs)
+source=("$pkgname::git+https://github.com/keruspe/gpaste.git#branch=master")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd GPaste
-  git describe --long | sed 's/^v//;s/-/+/g'
+  cd $pkgname
+  git describe --tags | sed 's/^v//;s/-/+/g'
 }
 
 prepare() {
-  cd GPaste
-  ./autogen.sh
+  cd $pkgname
+  NOCONFIGURE=1 ./autogen.sh
 }
 
 build() {
-  cd GPaste
-  ./configure --prefix=/usr \
-    --libexecdir=/usr/lib \
-    --sysconfdir=/etc \
-    --enable-vala
+  cd $pkgname
+  ./configure --prefix=/usr --libexecdir=/usr/lib --sysconfdir=/etc \
+    --enable-vala --enable-applet
   make
 }
 
 check () {
-  cd GPaste
-  make -k check || :
+  cd $pkgname
+  make check
 }
 
 package() {
-  cd GPaste
+  cd $pkgname
   make DESTDIR="$pkgdir" install
 
   install -Dm644 data/completions/gpaste-client \
     "$pkgdir/usr/share/bash-completion/completions/gpaste-client"
   install -Dm644 data/completions/_gpaste-client \
     "$pkgdir/usr/share/zsh/site-functions/_gpaste-client"
+
+  # Don't autostart the applet, ever
+  rm "$pkgdir/etc/xdg/autostart/org.gnome.GPaste.Applet.desktop"
 }
