@@ -1,0 +1,24 @@
+pkgbase = blockattack
+	pkgdesc = An open source clone of Tetris Attack based on SDL
+	pkgver = 2.0.1
+	pkgrel = 1
+	url = http://www.blockattack.net
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	makedepends = boost
+	makedepends = utf8cpp
+	makedepends = zip
+	depends = boost-libs
+	depends = jsoncpp
+	depends = sdl2_mixer
+	depends = sdl2_image
+	depends = sdl2_ttf
+	depends = physfs
+	depends = hicolor-icon-theme
+	source = https://github.com/blockattack/blockattack-game/archive/v2.0.1.tar.gz
+	sha256sums = 14ad07c196dd61ef3aa233e9060ba7aa61139123d06177d92adfea1195a6ee53
+
+pkgname = blockattack
+
