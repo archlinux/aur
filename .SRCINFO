@@ -12,7 +12,7 @@ pkgbase = phototonic
 	optdepends = qt5-imageformats: TIFF and TGA support
 	optdepends = qt5-svg: SVG support
 	source = phototonic-1.7.13.tar.gz::https://github.com/oferkv/phototonic/archive/c1998178dfc49275c716250914ee1aac910ab908.tar.gz
-	md5sums = 6c65ca3cb26f575c3983bcde15246ada
+	sha256sums = 28994936d559c8ffd92da661460c7b7e404455ef88293fcfc1d7de0640612852
 
 pkgname = phototonic
 

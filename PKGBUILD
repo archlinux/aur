@@ -11,7 +11,7 @@ license=('GPL3')
 depends=('qt5-base' 'exiv2' 'hicolor-icon-theme')
 optdepends=('qt5-imageformats: TIFF and TGA support' 'qt5-svg: SVG support')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/oferkv/phototonic/archive/$_commit.tar.gz")
-md5sums=('6c65ca3cb26f575c3983bcde15246ada')
+sha256sums=('28994936d559c8ffd92da661460c7b7e404455ef88293fcfc1d7de0640612852')
 
 build() {
   cd $pkgname-$_commit
