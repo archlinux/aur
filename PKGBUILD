@@ -2,16 +2,16 @@
 # Contributor: Jonas Heinrich <onny@project-insanity.org>
 
 pkgname=nextcloud-app-contacts
-pkgver=0.0.0.193
+pkgver=1.5.2
 pkgrel=1
-pkgdesc="Calendar App for Nextcloud"
+pkgdesc="Contacts app for Nextcloud"
 arch=('any')
 url="https://github.com/owncloud/contacts"
 license=('AGPL')
 depends=('nextcloud')
 options=('!strip')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/owncloud/contacts/releases/download/v$pkgver/contacts.tar.gz")
-sha512sums=("7fce0e66333555ee22b362f475a6704be2ced55ffab73b176a080898947f240d4a8c107aa9a8c15c57f4bbad9e8d94bf361b3b4e3efbc4b320a10dcc65f20430")
+source=("$pkgname-$pkgver.tar.gz::https://github.com/nextcloud/contacts/releases/download/v${pkgver}/contacts.tar.gz")
+sha512sums=("7a845cd6edb1d56e7a568b4f47d139b19b952f6fcd5dbf5ca4af8bcfdfac59b74560befdfacebe9609d56d6edc74cb968e3c89ccaab8feb21090f311ec3e3044")
 
 package() {
   install -d "${pkgdir}/usr/share/webapps/nextcloud/apps"
