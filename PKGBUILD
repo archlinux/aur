@@ -11,7 +11,7 @@ arch=('x86_64' 'i686')
 license=('MIT')
 makedepends=('git')
 depends=('qt5-base' 'luajit')
-optdepends=('openspades-git' 'pysnip-git')
+optdepends=('openspades' 'pysnip-git')
 provides=('terravox')
 conflicts=('terravox')
 source=("$pkgname"::'git+https://github.com/yvt/terravox.git')
@@ -32,6 +32,6 @@ package() {
   cd $srcdir/$pkgname
   mkdir -p $pkgdir/usr/share/licenses/$_pkgname
   mkdir -p $pkgdir/usr/bin
-  cp -R LICENSE.txt $pkgdir/usr/share/licenses/$_pkgname/LICENSE
-  cp -R Terravox $pkgdir/usr/bin  
+  cp LICENSE.txt $pkgdir/usr/share/licenses/$_pkgname/LICENSE
+  cp Terravox $pkgdir/usr/bin  
 }
