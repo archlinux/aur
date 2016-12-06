@@ -1,7 +1,7 @@
-# Maintainer: Thomas Haider <t.haider@deprecate.de>
+# Maintainer: Gatlin Johnson <gatlin@niltag.net>
 
 pkgname=ttf-comic-neue
-pkgver=2.2
+pkgver=2.3
 pkgrel=1
 pkgdesc="Comic Neue aspires to be the casual script choice for everyone including the typographically savvy."
 arch=('any')
@@ -10,7 +10,7 @@ url="http://comicneue.com"
 depends=('fontconfig')
 install=ttf-comic-neue.install
 source=("http://comicneue.com/comic-neue-${pkgver}.zip" ttf-comic-neue.install)
-sha256sums=('d67c7de093b3555a525a29db1999b7759723208f514f5fca117201d63b94b5b6'
+sha256sums=('f3a7500eb477d03a865249dd3fa5ecff516d12d11d5d8494c8164fd4ee842599'
             '2459fa08887f819049afac36d7e7e23d7b9f58eb39c35ce02b17ce1096885c16')
 
 package() {
