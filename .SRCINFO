@@ -2,11 +2,12 @@ pkgbase = larryshell
 	pkgdesc = LarryShell modifies bash to create a more affluent command-line interface.
 	pkgver = 0.0.3
 	pkgrel = 1
+	url = https://github.com/Devon-Austin-Wood-Thomas/larryshell
 	arch = any
 	license = MIT
 	depends = bash
 	source = https://jhoughton.me/larryshell/0.0.3-1.tar.gz
-	md5sums = 17dead60547b754820cbe222d18ee0d3
+	md5sums = 6dff677c9f44666c0e78770ce426619b
 
 pkgname = larryshell
 
