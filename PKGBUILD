@@ -2,12 +2,11 @@
 # Based on the DCP-J552DW PKGBUILD -> Marius Rejdak <mariuswol at gmail dot com>
 pkgname=brother-dcpj562dw
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Driver for the Brother DCP-J562DW wifi multifunctional printer"
 url="http://solutions.brother.com/linux/en_us/index.html"
 license=('custom:brother')
 depends=('a2ps' 'cups')
-makedepends=('rpmextract')
 install='brother-dcpj562dw.install'
 arch=('i686' 'x86_64')
 
