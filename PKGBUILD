@@ -12,8 +12,8 @@ depends=('openmpi')
 makedepends=('cmake')
 source=("http://gauss.cs.ucsb.edu/~aydin/CombBLAS_FILES/CombBLAS_beta_15_0.tgz"
         "http://gauss.cs.ucsb.edu/~aydin/CombBLAS_FILES/testdata_combblas1.2.1.tgz")
-sha1sums=('e2a9ff8d33c03f6e2a68d7c64098d3c1120364dc'
-          'bf87cca1a5e476826933677b4084c3decbb4147e')
+sha256sums=('626f26f34dce8e2cc2c189d3ab52dbc2959268c71755f6e7dca5ba5f9302ade5'
+            '003bd04528ee89b543b5d123f8dd9d248c8f45a917278b46962a100c4516f505')
 
 prepare() {
   mkdir CombBLAS/build
