@@ -4,7 +4,8 @@ build ()
     grep "crypt_swap_name="  /etc/openswap.conf >> "$BUILDROOT/openswap.conf"
     grep "keyfile_device="   /etc/openswap.conf >> "$BUILDROOT/openswap.conf"
     grep "keyfile_filename=" /etc/openswap.conf >> "$BUILDROOT/openswap.conf"
-    grep "miscellaneous="    /etc/openswap.conf >> "$BUILDROOT/openswap.conf"
+    grep "keyfile_device_mount_options=" /etc/openswap.conf >> "$BUILDROOT/openswap.conf"
+    grep "cryptsetup_options=" /etc/openswap.conf >> "$BUILDROOT/openswap.conf"
 
     source "$BUILDROOT/openswap.conf"
 
