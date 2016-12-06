@@ -2,7 +2,7 @@
 
 pkgname=streamlink-twitch-gui-git
 _pkgname=streamlink-twitch-gui
-pkgver=1419.ecd0dd3
+pkgver=1422.ebacba2
 pkgrel=1
 pkgdesc="A multi platform Twitch.tv browser for Streamlink"
 arch=("i686" "x86_64")
@@ -55,6 +55,9 @@ package() {
 	install -d "${pkgdir}/opt/${_pkgname}"
 	install -d "${pkgdir}/usr/bin/"
 	cp -R * "${pkgdir}/opt/${_pkgname}"
+
+	# fix file permissions
+	chmod -R g+r,o+r "${pkgdir}/opt/${_pkgname}"
 
 	# sym link from /usr/bin/${_pkgname} to start.sh
 	ln -s "/opt/${_pkgname}/start.sh" "${pkgdir}/usr/bin/${_pkgname}"
