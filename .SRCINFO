@@ -1,13 +1,13 @@
 pkgbase = deis-workflow-cli-bin
 	pkgdesc = Deis Workflow CLI is a command line utility used to interact with the Deis open source PaaS
-	pkgver = 2.9.0
+	pkgver = 2.9.1
 	pkgrel = 1
 	url = https://github.com/deis/workflow-cli
 	arch = x86_64
 	license = APACHE
-	source = https://storage.googleapis.com/workflow-cli-release/v2.9.0/deis-v2.9.0-linux-amd64
-	md5sums = 64c5f75e0f756e3d9e9a1f3974f09295
-	sha256sums = 4b57f7930febc1712a9f333f7496419585fe1571e8a86dadc595d9fb6f821c38
+	source = https://storage.googleapis.com/workflow-cli-release/v2.9.1/deis-v2.9.1-linux-amd64
+	md5sums = 8566885144feb84de2310107ba3d0152
+	sha256sums = c7712311b087926a7543be739401dc19bc9c565a8102e0718bbf74a29a847340
 
 pkgname = deis-workflow-cli-bin
 
