@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Name=Voxel Quest
+Comment=Voxel role playing game
+Exec=voxelquest
+Icon=voxelquest
+Terminal=false
+Type=Application
+StartupNotify=true
+Categories=Game;
