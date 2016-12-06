@@ -15,7 +15,7 @@ source=('openswap.hook'
         'openswap.conf')
 sha256sums=('ec55cff2d8f71eae70535e706445edb41f416350245b7aa7b322581fd3b38bae'
             '94dd98a953bab2244215a2b20767cdc9500fc438bed9ec27cae72a73766c6b86'
-            '9f3533fa36d26f3baeacb56ec34850fb1ad6968374ca1215c9a74bf3faed5606')
+            '3308f2679bb7c962d98adf2684d25390025d025e3d30bc1e773e3522311ad325')
                           
 
 package() {  
