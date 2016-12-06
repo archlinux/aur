@@ -1,7 +1,7 @@
 # Maintainer: Conor Anderson <conor.anderson@mail.utoronto.ca>
 pkgname=gnome-shell-extension-redshift-git
 _pkgname=${pkgname%-git}
-pkgver=r29.8fd6a3b
+pkgver=r31.5c2c24f
 pkgrel=1
 pkgdesc="Redshift integration for GNOME Shell"
 arch=('any')
