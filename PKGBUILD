@@ -14,7 +14,7 @@ url="http://www.yabasic.de/"
 depends=('libx11' 'libsm' 'ncurses')
 makedepends=('libxt')
 source=("http://www.yabasic.de/download/$pkgname-$pkgver.tar.gz")
-md5sums=('39d39449615e7bd9e955ba2a3af7365b')
+sha256sums=('ea39ae1bdcff964cbd9deda5fd50b21200dcb7ff240471a23a2cf0ce654c5f21')
 
 build() {
   cd $pkgname-$pkgver
