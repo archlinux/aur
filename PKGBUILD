@@ -1,4 +1,4 @@
-# Maintainer: Michael Straube <michael_straube@web.de>
+# Maintainer: Michael Straube <straubem@gmx.de>
 # Contributor: Frederic Bezies <fredbezies at gmail dot com>
 # Contributor: Valsu [arch(at)hylia.de]
 
@@ -12,8 +12,8 @@ license=('GPL')
 depends=('fltk')
 source=("https://download.sourceforge.net/eureka-editor/eureka-111-source.tar.gz"
         "makefile.patch")
-sha1sums=('7e19a139e71893a85aff49520b5e9a9e55224ccc'
-          'd84f90164b8561d673f673255028a0a4c7b63f2a')
+sha256sums=('c29988b7e974ce61e7744ace8f768db48af926b453e604016faafc8b9e479735'
+            '925edf9d4f9a52776df0e011e1c9fd1b978adb3043f4d8d56ae4caa9c558d71b')
 
 prepare() {
   cd $pkgname-$pkgver-source
