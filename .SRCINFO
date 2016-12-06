@@ -1,7 +1,7 @@
 pkgbase = nginx-mainline-passenger
 	pkgdesc = Lightweight HTTP server and IMAP/POP3 proxy server, mainline release, including support for Phusion Passenger as a static module.
 	pkgver = 1.11.1
-	pkgrel = 2
+	pkgrel = 3
 	url = http://nginx.org
 	install = nginx.install
 	arch = i686
@@ -33,7 +33,7 @@ pkgbase = nginx-mainline-passenger
 	md5sums = 0f3900165b11c417854535f3538913cb
 	md5sums = ce9a06bcaf66ec4a3c4eb59b636e0dfd
 	md5sums = 3441ce77cdd1aab6f0ab7e212698a8a7
-	md5sums = 929c2b1278c96058bb91b822c55933be
+	md5sums = d0283e8ebaa61ffa7a458e7aca512911
 
 pkgname = nginx-mainline-passenger
 
