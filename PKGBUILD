@@ -1,6 +1,6 @@
 # Maintainer: Dylan Araps <dylan.araps@gmail.com>
 pkgname=neofetch
-pkgver=2.0
+pkgver=2.0.1
 pkgrel=1
 pkgdesc="A CLI system information tool written in BASH that supports displaying images."
 arch=('any')
@@ -16,9 +16,12 @@ optdepends=(
   'deadbeef: Current Song'
   'feh: Wallpaper Display'
   'gnome-music: Current Song'
+  'gnome-screenshot: Take a screenshot'
   'gpmdp-remote: Current Song'
-  'imagemagick: Image cropping / Thumbnail creation'
+  'imagemagick: Image cropping / Thumbnail creation / Take a screenshot'
+  'imlib2: Take a screenshot'
   'lollypop: Current Song'
+  'maim: Take a screenshot'
   'moc: Current Song'
   'mpc: Current Song'
   'nitrogen: Wallpaper Display'
@@ -34,7 +37,7 @@ optdepends=(
   'xorg-xwininfo: See https://github.com/dylanaraps/neofetch/wiki/Images-in-the-terminal'
 )
 source=("https://github.com/dylanaraps/${pkgname}/archive/${pkgver}.tar.gz")
-md5sums=('7f85e8ed34d93807dafd23bb3fb16ef2')
+md5sums=('f02dafb8347bb25de7a70d97c392e695')
 
 package() {
   cd "$srcdir/$pkgname-$pkgver/"
