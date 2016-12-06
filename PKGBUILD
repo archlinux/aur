@@ -1,4 +1,4 @@
-# Contributor: Michael Straube <straubem gmx de>
+# Contributor: Michael Straube <straubem@gmx.de>
 
 pkgname=leave
 pkgver=1.12
@@ -8,8 +8,8 @@ arch=('i686' 'x86_64')
 url="https://launchpad.net/ubuntu/+source/leave/1.12-2.1"
 license=('BSD')
 depends=('glibc')
-source=("https://launchpad.net/ubuntu/+archive/primary/+files/${pkgname}_${pkgver}.orig.tar.gz")
-sha1sums=('499943d84f0425c4c774563b0d1ae911f565ad1e')
+source=("https://launchpad.net/ubuntu/+archive/primary/+files/leave_$pkgver.orig.tar.gz")
+sha256sums=('de30529de8abf49004da4120ca352d5c588a657f8845e44d5e83a4860e6bbe1f')
 
 prepare() {
   cd $pkgname-$pkgver
