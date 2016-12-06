@@ -1,0 +1,12 @@
+diff -ruN gbcflsh_1.1_src.orig/src/const.h gbcflsh_1.1_src/src/const.h
+--- gbcflsh_1.1_src.orig/src/const.h	2016-12-06 15:28:19.006226548 +0100
++++ gbcflsh_1.1_src/src/const.h	2016-12-06 15:28:34.782848109 +0100
+@@ -32,7 +32,7 @@
+ #endif
+ 
+ /* return values and errors */
+-enum error_t
++enum _error
+ { TIMEOUT = -1, FILEERROR_O = -2, FILEERROR_W = -3, FILEERROR_R =
+     -4, SEND_ERROR = -5,
+   BAD_PACKET = -6, BAD_PARAMS = -7, PORT_ERROR = -8, WRONG_SIZE = -9
