@@ -16,13 +16,13 @@ source=("https://downloads.sourceforge.net/$pkgname/$pkgname-linux-src-$pkgver.t
         "0003-tomatoes-1.55-config-hiscore-file-saving-loading.patch"
         "config.cfg"
         "tomatoes.desktop")
-sha1sums=('aa123a5fa9c8c0223c602c0cffe8a5bb0ebad60c'
-          '8dc306617800f7ccc1e8610fb39e87d8181c482d'
-          '65faa7dc05d4f5629339cf4150f5dcbf2626e3a5'
-          '6ad404f67a05781efe8787773e352af1a2922c60'
-          '77c85236c92f1746aa1b9ec0f42951b15a73eda9'
-          'e241ac2f76abad1f618e20f8e2d0089cdfa555af'
-          'c87f8bbbb536d34a07d5eccc5d58a31d394d6ed3')
+sha256sums=('126d001532ee5b81cc95e1a86a274d11669b8c8f65c8235ae2e9b8fbdfab4a60'
+            '69a3af1994cb58409be9b469e1aa4bdb91c405d99071c7431526640ec53d1300'
+            '49b2944b268efcfc660da682dfbc2404558e52ba034cc39d310e8c74ed89646c'
+            '4f9e72fcb3d4427ec633d9ce6f3bb73179cfac1dba55f1ff7f68725f63f1d55d'
+            '0dcab19428d4904d1d5ab0099b23f6d9f3f53399303166ad3cea6e743efcd9bf'
+            '2eecb4195eebf9b9bfb331630eb552bfbff0f67af738960b730d638e9c814238'
+            '15588e33cd9cd532857bb54310d6cd31a75a3f1f0de5b524a0b701c6a317fec7')
 
 prepare() {
   cd $pkgname-$pkgver
@@ -37,7 +37,7 @@ prepare() {
 build() {
   cd $pkgname-$pkgver
 
-  LDFLAGS="/usr/lib/libSDL-1.2.so.0"
+  LDFLAGS=/usr/lib/libSDL-1.2.so.0
 
   make \
     MPKDIR=/usr/share/tomatoes/ \
