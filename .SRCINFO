@@ -6,13 +6,12 @@ pkgbase = capers
 	arch = i686
 	arch = x86_64
 	license = GPL
-	makedepends = git
 	depends = pygtk
 	depends = gnome-python
-	source = git+https://github.com/hungerburg/capers.git#commit=90cf176
+	source = capers.tar.gz::https://github.com/hungerburg/capers/archive/90cf1769b8ae935e304994f0f3155c218c42ce39.tar.gz
 	source = capers.sh
-	sha1sums = SKIP
-	sha1sums = 19e198944d3bc825102722483be6664ebfbf414e
+	sha256sums = 1d5f5be3d9c38d3e36e56e7c6a20a529cf47f047c34b90863ba2f805fbd729a4
+	sha256sums = e3b0d4f5662406868d3fd5d082f7727c693b4e8dd1b9f57c2192f5eb56ffe8f6
 
 pkgname = capers
 
