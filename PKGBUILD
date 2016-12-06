@@ -12,8 +12,8 @@ license=('GPL3')
 depends=('gtkmm' 'libxml++')
 source=("https://download.savannah.gnu.org/releases/galois/source/galois-$pkgver.tar.gz"
         "fix-install-path.patch")
-sha1sums=('72659cc08123b4c43678e3c68f43b29ff41c3a9e'
-          '588e1df837e64165c011da4afe48db83f8135d2f')
+sha256sums=('a168ae6514da1eda5afd761fa4eeaf510d79988d450a716a0c41ce978d99e447'
+            'c4247271776f7b5df2b6bb92911c25a9ba3c30796171de5cd7dc1bd78e5a800d')
 
 prepare() {
   patch -p0 < fix-install-path.patch
