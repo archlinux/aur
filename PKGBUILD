@@ -1,6 +1,6 @@
 # Maintainer: D. Can Celasun <dcelasun[at]gmail[dot]com>
 pkgname=n1
-pkgver=0.4.204
+pkgver=0.4.401
 pkgrel=1
 pkgdesc="A new mail client for Mac, Linux and Windows, built on the modern web and designed to be extended."
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('gtk2' 'libgnome-keyring' 'gnome-keyring' 'desktop-file-utils' 'python2' 'gconf' 'nodejs' 'libnotify' 'libxtst' 'nss' 'alsa-lib' 'libxss')
 source=(https://github.com/nylas/N1/releases/download/${pkgver}/N1-${pkgver}.deb)
 install=${pkgname}.install
-md5sums=('979ad5c5bb8e1973d1bcffbbdee0be0c')
+md5sums=('a5361c4276c77171a55e3fd4f18d54fb')
 package() {
     msg2 "Extracting data.tar.gz..."
     bsdtar -xf data.tar.gz -C "${pkgdir}/"
@@ -23,7 +23,7 @@ package() {
     find "${pkgdir}"/usr/bin -type f -exec chmod 755 {} \;
     find "${pkgdir}"/usr -type d -exec chmod 755 {} \;
     chmod 755 "${pkgdir}"/usr/share/nylas/nylas
-    chmod 755 "${pkgdir}"/usr/share/nylas/resources/app/apm/bin/{node,apm}
+    chmod 755 "${pkgdir}"/usr/share/nylas/resources/apm/bin/{node,apm}
 
     mkdir -p "${pkgdir}"/usr/share/licenses/nylas-n1/
 
