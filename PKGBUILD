@@ -13,7 +13,7 @@ optdepends=('timidity++: for music playback')
 makedepends=('cmake')
 conflicts=('doom-retro-git')
 source=("https://github.com/bradharding/doomretro/archive/v$pkgver.tar.gz")
-sha1sums=('eafa144315a7adde42870c90d5b4261573d94b25')
+sha256sums=('8902d0c10b81e0aac311138938841e4537496e9680011bf89f308859099c656b')
 
 build() {
   cd $pkgname-$pkgver
