@@ -10,7 +10,7 @@ arch=('x86_64' 'i686')
 url="http://sineridergame.com/"
 license=('custom:freeware' 'unknown')
 groups=()
-depends=('glibc' 'glu' 'libgl' 'libx11' 'libxext' 'libxcursor' 'libxrandr' 'gcc-libs' 'expat' 'libglapi' 'libxdamage' 'libxfixes' 'libxcb' 'libxshmfence' 'libxxf86vm' 'libdrm' 'libxrender' 'libxau' 'libxdmcp')
+depends=('glibc' 'glu' 'libgl' 'libx11' 'libxext' 'libxcursor' 'libxrandr' 'gcc-libs' 'expat' 'libxdamage' 'libxfixes' 'libxcb' 'libxshmfence' 'libxxf86vm' 'libdrm' 'libxrender' 'libxau' 'libxdmcp')
 makedepends=()
 checkdepends=()
 optdepends=()
@@ -57,5 +57,5 @@ package()
 	chmod +x "$pkgdir/usr/bin/sinerider"
 
 	install -Dm 755 "sinerider.desktop" "$pkgdir/usr/share/applications/sinerider.desktop"
-	install -Dm 644 "$srcdir/SineRider_Data/Resources/UnityPlayer.png" "$pkgdir/usr/share/icons/hicolor/128x128/apps/sinerider.png"
+	install -Dm 644 "$srcdir/SineRider_Data/Resources/UnityPlayer.png" "$pkgdir/usr/share/pixmaps/sinerider.png"
 }

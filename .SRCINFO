@@ -17,7 +17,6 @@ pkgbase = sinerider
 	depends = libxrandr
 	depends = gcc-libs
 	depends = expat
-	depends = libglapi
 	depends = libxdamage
 	depends = libxfixes
 	depends = libxcb
