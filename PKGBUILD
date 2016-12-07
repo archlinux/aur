@@ -12,6 +12,8 @@ arch=(i686 x86_64)
 license=(GPL3)
 depends=(sane dconf gtk3 colord libgusb packagekit)
 makedepends=(yelp-tools intltool vala)
+provides=(simple-scan)
+conflicts=(simple-scan)
 source=(https://launchpad.net/$pkgname/${pkgver:0:4}/$pkgver/+download/$pkgname-$pkgver.tar.xz)
 sha256sums=('a88719f6142ddfa24d154d1093c67b27ac491c059ac5c87cba3b36ebc04b21a6')
 
