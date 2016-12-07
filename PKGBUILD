@@ -4,7 +4,7 @@
 
 pkgname=mp3diags
 pkgver=1.2.03
-pkgrel=2
+pkgrel=3
 pkgdesc="Identify issues with your MP3 files, fix those issues and make other changes"
 url="http://mp3diags.sourceforge.net/"
 license=("GPL")
@@ -12,7 +12,6 @@ arch=("i686" "x86_64")
 depends=("boost-libs" "qt4")
 makedepends=("boost")
 optdepends=('mp3gain: MP3 normalization support')
-install=mp3diags.install
 source=("http://downloads.sourceforge.net/project/mp3diags/mp3diags-src/MP3Diags-${pkgver}.tar.gz")
 sha1sums=('53a699b809781819988a17b7558b9c0aab08d76a')
 
