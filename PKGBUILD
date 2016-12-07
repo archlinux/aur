@@ -5,13 +5,13 @@
 
 pkgname=pacemaker
 pkgver=1.1.16
-pkgrel=1
+pkgrel=2
 pkgdesc="advanced, scalable high-availability cluster resource manager"
 arch=('i686' 'x86_64')
 url="https://github.com/ClusterLabs/${pkgname}/"
 license=('GPL2')
-makedepends=('libxml2' 'inkscape' 'libqb-git')
-depends=('gnutls' 'glib2' 'pam' 'libtool' 'python' 'libxslt' 'corosync-git' 'libesmtp')
+makedepends=('libxml2' 'inkscape' 'libqb')
+depends=('gnutls' 'glib2' 'pam' 'libtool' 'python' 'libxslt' 'corosync' 'libesmtp')
 source=("https://github.com/ClusterLabs/$pkgname/archive/Pacemaker-$pkgver.tar.gz")
 md5sums=('a3b9d075bc9114ff698966e57e50bb12')
 
