@@ -33,11 +33,19 @@ provides=('libavcodec.so' 'libavdevice.so' 'libavfilter.so' 'libavformat.so'
           'libswscale.so'
           'ffmpeg')
 source=(https://ffmpeg.org/releases/ffmpeg-$pkgver.tar.xz{,.asc}
-        UNREDISTRIBUTABLE.txt)
+        UNREDISTRIBUTABLE.txt
+        chromaprint_1.4_fix.patch)
 validpgpkeys=('FCF986EA15E6E293A5644F10B4322F04D67658D8') # ffmpeg-devel
 sha256sums=('88f70c1b8cab108f494ecbab5ba302cdb35d59a84cea88008b5fe49be068d5da'
             'SKIP'
-            'e0c1b126862072a71e18b9580a6b01afc76a54aa6e642d2c413ba0ac9d3010c4')
+            'e0c1b126862072a71e18b9580a6b01afc76a54aa6e642d2c413ba0ac9d3010c4'
+            '3e078076251aeaf4271a2f17cf3fff0bc49deea8d0217a57f23abd37b571f8a4')
+
+prepare() {
+  cd ${pkgname%-full}-$pkgver
+
+  patch -p1 -i ../chromaprint_1.4_fix.patch
+}
 
 build() {
   cd ${pkgname%-full}-$pkgver
