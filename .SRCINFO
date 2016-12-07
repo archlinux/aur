@@ -1,11 +1,12 @@
 pkgbase = pacemaker-git
-	pkgdesc = pacemaker stable package, contains the latest stable version
-	pkgver = 1.1.16.r26.g4ed1507
-	pkgrel = 2
+	pkgdesc = advanced, scalable high-availability cluster resource manager
+	pkgver = 1.1.16.r34.gefb87a0
+	pkgrel = 1
 	url = https://github.com/ClusterLabs/pacemaker/
 	arch = i686
 	arch = x86_64
 	license = GPL2
+	makedepends = git
 	makedepends = libxml2
 	makedepends = inkscape
 	makedepends = libqb-git

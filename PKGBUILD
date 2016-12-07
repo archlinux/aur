@@ -4,17 +4,18 @@
 # Contributor: Tim Meusel <tim@bastelfreak.de>
 
 pkgname=pacemaker-git
-pkgver=1.1.16.r26.g4ed1507
-pkgrel=2
-pkgdesc="pacemaker stable package, contains the latest stable version"
+_pkgname=pacemaker
+pkgver=1.1.16.r34.gefb87a0
+pkgrel=1
+pkgdesc="advanced, scalable high-availability cluster resource manager"
 arch=('i686' 'x86_64')
-url="https://github.com/ClusterLabs/pacemaker/"
+url="https://github.com/ClusterLabs/${_pkgname}/"
 license=('GPL2')
-makedepends=('libxml2' 'inkscape' 'libqb-git')
+makedepends=('git' 'libxml2' 'inkscape' 'libqb-git')
 depends=('gnutls' 'glib2' 'pam' 'libtool' 'python' 'libxslt' 'corosync-git' 'libesmtp')
-provides=('pacemaker')
-conflicts=('pacemaker')
-source=("$pkgname::git+https://github.com/ClusterLabs/pacemaker.git")
+provides=(${_pkgname})
+conflicts=(${_pkgname})
+source=("$pkgname::git+https://github.com/ClusterLabs/${_pkgname}.git")
 md5sums=('SKIP')
 
 pkgver() {
@@ -24,13 +25,12 @@ pkgver() {
 
 prepare() {
   cd $pkgname
-  mkdir -p m4
-  autoreconf -fiv
+  ./autogen.sh
 }
 
 build() {
   cd $pkgname
-  CPPFLAGS=-D_FORTIFY_SOURCE=0
+  CPPFLAGS=-D_FORTIFY_SOURCE=0 \
   ./configure --sbindir=/usr/bin \
               --sysconfdir=/etc \
               --libdir=/usr/lib \
