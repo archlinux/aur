@@ -7,7 +7,7 @@
 
 pkgbase=dbus-selinux
 pkgname=(dbus-selinux dbus-docs-selinux)
-pkgver=1.10.12
+pkgver=1.10.14
 pkgrel=1
 pkgdesc="Freedesktop.org message bus system with SELinux support"
 url="https://wiki.freedesktop.org/www/Software/dbus/"
@@ -15,23 +15,28 @@ arch=(i686 x86_64)
 license=(GPL custom)
 groups=('selinux')
 depends=(libsystemd-selinux expat)
-makedepends=(systemd-selinux xmlto docbook-xsl python yelp-tools doxygen audit libselinux)
-source=(https://dbus.freedesktop.org/releases/${pkgbase/-selinux}/${pkgbase/-selinux}-$pkgver.tar.gz{,.asc}
+makedepends=(systemd-selinux xmlto docbook-xsl python yelp-tools doxygen git audit libselinux)
+_commit=449d6b313d2023360cf0af063cf23232901dd00b  # tags/dbus-1.10.14^0
+source=("git+https://anongit.freedesktop.org/git/dbus/dbus#commit=$_commit"
         0001-Drop-Install-sections-from-user-services.patch)
-sha256sums=('210a79430b276eafc6406c71705e9140d25b9956d18068df98a70156dc0e475d'
-            'SKIP'
+sha256sums=('SKIP'
             '48135124680bd9ea2d7d2bd2a9f457608d97bd9aa7cb4f4396e26a1c2c91af3e')
 validpgpkeys=('DA98F25C0871C49A59EAFF2C4DE8FF2A63C7CC90'  # Simon McVittie <simon.mcvittie@collabora.co.uk>
               '3C8672A0F49637FE064AC30F52A43A1E4B77B059') # Simon McVittie <simon.mcvittie@collabora.co.uk>
 
+pkgver() {
+  cd ${pkgbase/-selinux}
+  git describe --tags | sed 's/^dbus-//;s/-/+/g'
+}
+
 prepare() {
-  cd ${pkgbase/-selinux}-$pkgver
+  cd ${pkgbase/-selinux}
   patch -Np1 -i ../0001-Drop-Install-sections-from-user-services.patch
-  autoreconf -fvi
+  NOCONFIGURE=1 ./autogen.sh
 }
 
 build() {
-  cd ${pkgbase/-selinux}-$pkgver
+  cd ${pkgbase/-selinux}
   ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var \
       --libexecdir=/usr/lib/dbus-1.0 --with-dbus-user=dbus \
       --with-system-pid-file=/run/dbus/pid \
@@ -46,7 +51,7 @@ build() {
 }
 
 check() {
-  cd ${pkgbase/-selinux}-$pkgver
+  cd ${pkgbase/-selinux}
   make check
 }
 
@@ -55,7 +60,7 @@ package_dbus-selinux() {
   conflicts=(libdbus libdbus-selinux "${pkgname/-selinux}" "selinux-${pkgname/-selinux}")
   replaces=(libdbus libdbus-selinux)
 
-  cd ${pkgbase/-selinux}-$pkgver
+  cd ${pkgbase/-selinux}
 
   make DESTDIR="$pkgdir" install
 
