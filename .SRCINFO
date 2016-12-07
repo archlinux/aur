@@ -17,7 +17,7 @@ pkgbase = simple-scan-3.12
 	depends = packagekit
 	provides = simple-scan
 	conflicts = simple-scan
-	source = https://launchpad.net/simple-scan-3.12/3.12/3.12.0/+download/simple-scan-3.12-3.12.0.tar.xz
+	source = https://launchpad.net/simple-scan/3.12/3.12.0/+download/simple-scan-3.12.0.tar.xz
 	sha256sums = a88719f6142ddfa24d154d1093c67b27ac491c059ac5c87cba3b36ebc04b21a6
 
 pkgname = simple-scan-3.12
