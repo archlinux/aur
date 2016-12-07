@@ -6,9 +6,10 @@ _debug=n
 
 # Compile from a specific commit?
 _commit=HEAD
+_branch=feature-bind
 
 pkgname=libtorrent-pyro-git
-pkgver=20161115
+pkgver=20161207
 pkgrel=1
 pkgdesc='BitTorrent library written in C++ (git version)'
 url='https://rakshasa.github.io/rtorrent'
@@ -23,7 +24,7 @@ install=libtorrent-pyro.install
 [[ $_debug = 'n' ]] &&
     _debug='--disable-debug' || options=(!strip)
 
-source=("git://github.com/rakshasa/libtorrent.git#commit=$_commit")
+source=("git://github.com/rakshasa/libtorrent.git#branch=$_branch")
 md5sums=('SKIP')
 
 pkgver() {
