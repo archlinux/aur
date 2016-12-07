@@ -1,10 +1,10 @@
 pkgbase = mullvad
 	pkgdesc = VPN Client for Mullvad.net, a bitcoin-friendly VPN for anonymity and privacy
 	pkgver = 61
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.mullvad.net
 	arch = any
-	license = unknown
+	license = GPLv2
 	depends = openvpn
 	depends = resolvconf
 	depends = python2

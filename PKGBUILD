@@ -3,11 +3,11 @@
 #and many thanks to the previous maintainer mxtm
 pkgname=mullvad
 pkgver=61
-pkgrel=1
+pkgrel=2
 pkgdesc="VPN Client for Mullvad.net, a bitcoin-friendly VPN for anonymity and privacy"
 url="https://www.mullvad.net"
 arch=('any')
-license=('unknown')
+license=('GPLv2')
 depends=('openvpn' 'resolvconf' 'python2' 'python2-appdirs' 'gksu' 'wxpython' 'obfsproxy' 'python2-ipaddr' 'python2-netifaces' 'python2-psutil' 'net-tools')
 makedepends=()
 conflicts=()
