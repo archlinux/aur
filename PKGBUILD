@@ -5,7 +5,7 @@
 
 pkgname=lxpanel-gtk3
 _pkgname=lxpanel
-pkgver=0.8.2
+pkgver=0.9.1
 pkgrel=1
 pkgdesc='Lightweight X11 desktop panel for LXDE (GTK+ 3 version)'
 arch=('i686' 'x86_64')
@@ -16,16 +16,11 @@ depends=('alsa-lib' 'menu-cache' 'lxmenu-data' 'libfm-gtk3' 'libkeybinder3')
 makedepends=('intltool' 'docbook-xml' 'docbook-xsl' 'wireless_tools')
 optdepends=('wireless_tools: netstat plugin')
 conflicts=($_pkgname)
-source=(http://downloads.sourceforge.net/lxde/$_pkgname-$pkgver.tar.xz
-        gtk3.patch)
-sha256sums=('516ac4c83494ee99b2a0d2466458519a9a2668272eeff6d2162af3683b634104'
-            'b2a0ea2f41cc65615255d044b2a9413fd1e8adf8ba70b7b742d0f3aee1d2d4f5')
+source=(http://downloads.sourceforge.net/lxde/$_pkgname-$pkgver.tar.xz)
+sha256sums=('11c7be044616c457cd18555758ae00c953c118cbfe0b0d6f4010bdacecc751b1')
 
 prepare() {
   cd $_pkgname-$pkgver
-
-  # Port to GTK+ 3
-  patch -Np1 -i ../gtk3.patch
 
   # Disable pager plugin as it breaks panel layout with GTK+ 3
   # https://sourceforge.net/p/lxde/bugs/773/
