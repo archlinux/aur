@@ -1,7 +1,7 @@
 # Maintainer: Christian Hesse <mail@eworm.de>
 
 pkgname=openvpn-git
-pkgver=2.4.rc1.r0.ge739d7f
+pkgver=2.4.rc1.r4.g212ef1a
 pkgrel=1
 pkgdesc='An easy-to-use, robust and highly configurable VPN (Virtual Private Network) - git checkout'
 arch=(i686 x86_64)
@@ -12,8 +12,8 @@ makedepends=('git' 'systemd')
 conflicts=('openvpn' 'openvpn-dev')
 provides=('openvpn=2.4.0' 'openvpn-dev')
 license=('custom')
-# for 2.3.x release branch use: git://git.code.sf.net/p/openvpn/openvpn#branch=release/2.3
-source=('git://git.code.sf.net/p/openvpn/openvpn'
+# for 2.3.x release branch append: #branch=release/2.3
+source=('git://github.com/OpenVPN/openvpn.git'
         '0001-plugin.patch')
 sha256sums=('SKIP'
             'b8254067b4ef5d157d87267a76938d86f101972303c7ff20131cc9f28659a30c')
@@ -49,7 +49,6 @@ build() {
 		--prefix=/usr \
 		--sbindir=/usr/bin \
 		--enable-iproute2 \
-		--enable-password-save \
 		--enable-pkcs11 \
 		--enable-plugins \
 		--enable-systemd \
