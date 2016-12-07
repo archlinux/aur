@@ -3,7 +3,7 @@
 #
 
 pkgname=ffmpeg-full
-pkgver=3.2
+pkgver=3.2.2
 pkgrel=1
 epoch=1
 pkgdesc='Complete solution to record, convert and stream audio and video (with all options)'
@@ -19,10 +19,10 @@ depends=('alsa-lib' 'bzip2' 'fontconfig' 'fribidi' 'glibc' 'gmp' 'gnutls' 'gsm'
          'libvidstab.so' 'libvorbisenc.so' 'libvorbis.so' 'libvpx.so'
          'libx264.so' 'libx265.so' 'libxvidcore.so'
          'celt' 'chromaprint-fftw' 'faac' 'frei0r-plugins' 'kvazaar'
-         'ladspa' 'libbs2b' 'libcaca' 'libcdio-paranoia' 'libcl' 'libdc1394'
+         'ladspa' 'libbs2b' 'libcaca' 'libcdio-paranoia' 'libdc1394'
          'libebur128' 'libfdk-aac' 'libgme' 'libilbc' 'libmfx-git' 'libopenmpt'
-         'libxv' 'java-environment-common' 'mesa' 'nut-multimedia-git' 'openal'
-         'opencl-headers' 'openh264' 'rubberband' 'rtmpdump' 'shine'
+         'libxv' 'java-environment-common' 'mesa' 'nut-multimedia-git' 'ocl-icd'
+         'openal' 'opencl-headers' 'openh264' 'rubberband' 'rtmpdump' 'shine'
          'smbclient' 'snappy' 'tesseract' 'twolame' 'vid.stab' 'vo-aacenc'
          'vo-amrwbenc' 'wavpack' 'xavs' 'zeromq' 'zimg' 'zvbi')
 makedepends=('hardening-wrapper' 'intel-media-sdk' 'libvdpau' 'yasm')
@@ -36,7 +36,7 @@ source=(https://ffmpeg.org/releases/ffmpeg-$pkgver.tar.xz{,.asc}
         UNREDISTRIBUTABLE.txt
         chromaprint_1.4_fix.patch)
 validpgpkeys=('FCF986EA15E6E293A5644F10B4322F04D67658D8') # ffmpeg-devel
-sha256sums=('88f70c1b8cab108f494ecbab5ba302cdb35d59a84cea88008b5fe49be068d5da'
+sha256sums=('3f01bd1fe1a17a277f8c84869e5d9192b4b978cb660872aa2b54c3cc8a2fedfc'
             'SKIP'
             'e0c1b126862072a71e18b9580a6b01afc76a54aa6e642d2c413ba0ac9d3010c4'
             '3e078076251aeaf4271a2f17cf3fff0bc49deea8d0217a57f23abd37b571f8a4')
@@ -152,9 +152,9 @@ build() {
 package() {
   cd ${pkgname%-full}-$pkgver
 
-  make DESTDIR="$pkgdir" install install-man
-  install -Dm755 tools/qt-faststart "$pkgdir"/usr/bin/qt-faststart
-  install -Dm644 "$srcdir"/UNREDISTRIBUTABLE.txt "$pkgdir/usr/share/licenses/$pkgname/UNREDISTRIBUTABLE.txt"
+  make DESTDIR="${pkgdir}" install install-man
+  install -Dm 755 tools/qt-faststart "${pkgdir}"/usr/bin/
+  install -Dm 644 "$srcdir"/UNREDISTRIBUTABLE.txt "${pkgdir}/usr/share/licenses/$pkgname/UNREDISTRIBUTABLE.txt"
 }
 
 # vim:set ts=2 sw=2 et:
