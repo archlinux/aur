@@ -1,0 +1,10 @@
+--- Makefile	2016-12-08 00:07:30.596899373 +0100
++++ Makefile	2016-12-08 00:10:59.820236503 +0100
+@@ -61,7 +61,6 @@
+ 		${PREFIX}/share/icons/hicolor/scalable/apps/easy-ebook-viewer.svg
+ 	install -m 644 misc/easy-ebook-viewer.desktop \
+ 		${PREFIX}/share/applications/easy-ebook-viewer.desktop
+-	gtk-update-icon-cache -f ${PREFIX}/share/icons/hicolor/
+ 
+ clean:
+ 	rm -f easy-ebook-viewer

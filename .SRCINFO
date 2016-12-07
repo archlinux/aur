@@ -1,0 +1,24 @@
+pkgbase = ebook-viewer-git
+	pkgdesc = Modern GTK Python Ebook Reader app to easily read epub files
+	pkgver = r77.2350a74
+	pkgrel = 1
+	url = https://github.com/michaldaniel/Ebook-Viewer/
+	install = ebook-viewer.install
+	arch = any
+	license = GPL3
+	makedepends = git
+	makedepends = make
+	depends = python
+	depends = gtk3
+	depends = gobject-introspection
+	depends = libwebkit3
+	depends = python-gobject
+	provides = ebook-viewer
+	conflicts = ebook-viewer
+	source = ebook-viewer::git+https://github.com/michaldaniel/Ebook-Viewer.git#branch=master
+	source = Makefile.patch
+	sha256sums = SKIP
+	sha256sums = 20b83b38d7939652d19d473ff1769d481793cdca56d3d87e17261874b8563316
+
+pkgname = ebook-viewer-git
+
