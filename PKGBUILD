@@ -6,9 +6,10 @@ _debug=n
 
 # Compile from a specific commit?
 _commit=HEAD
+_branch=feature-bind
 
 pkgname=rtorrent-pyro-git
-pkgver=20160810
+pkgver=20161207
 pkgrel=1
 pkgdesc="Ncurses BitTorrent client based on libTorrent - rTorrent-git with Pyroscope patches"
 url="https://github.com/pyroscope/rtorrent-ps"
@@ -26,7 +27,7 @@ backup=('usr/share/doc/rtorrent/rtorrent.rc.sample')
     _debug='--disable-debug' || options=(!strip)
 
 _url="https://raw.githubusercontent.com/pyroscope/rtorrent-ps/master/patches"
-source=("git://github.com/rakshasa/rtorrent.git#commit=$_commit"
+source=("git://github.com/rakshasa/rtorrent.git#branch=$_branch"
         "rtorrent.rc.sample"
         "${_url}/ps-ui_pyroscope_all.patch"
         "${_url}/pyroscope.patch"
@@ -41,7 +42,7 @@ md5sums=('SKIP'
          'bd04a0699b80c8042e1cf63a7e0e4222'
          '0a2bbaf74c7160ba33876dcc2f050f14'
          '75b2f47edad1f27eb0aca495c6474089'
-         '23e215888c8c45cfc6b816b02f473c1b'
+         'afd9f0e9ed816069b584e19c88b0a4bb'
          '1258acfc82c50a8f452ace87fef0b416')
 
 pkgver() {
