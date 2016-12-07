@@ -1,4 +1,4 @@
-# Maintainer: Michael Straube <michael_straube web de>
+# Maintainer: Michael Straube <straubem@gmx.de>
 
 pkgname=actiona
 pkgver=3.9.2
@@ -10,7 +10,7 @@ license=('GPL3')
 depends=('qt5-script' 'qt5-xmlpatterns' 'qt5-x11extras' 'qt5-multimedia' 'opencv' 'libnotify')
 makedepends=('qt5-tools' 'boost')
 source=("https://github.com/Jmgr/$pkgname/archive/v$pkgver.tar.gz")
-sha1sums=('ba01c13e32624d1d61d6e13e036efbf711102c77')
+sha256sums=('5e4b6f41b93a435818572b5ab1523329429ae07c18216743150306c9c1e54b25')
 
 build() {
   cd $pkgname-$pkgver
