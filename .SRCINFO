@@ -9,7 +9,6 @@ pkgbase = chomp
 	makedepends = cmake
 	depends = cimg
 	depends = boost>=1.58.0
-	depends = xproto
 	source = https://github.com/shaunharker/CHomP/archive/v1.2.tar.gz
 	md5sums = 6ffeb70f421b37fe771647573e0971dc
 
