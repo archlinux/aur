@@ -34,6 +34,7 @@ makedepends=(
     'ocaml-ctypes'
     'ocaml-findlib'
     'python2'
+    'python2-requests'
     'python2-sphinx'
     'subversion'
 )
