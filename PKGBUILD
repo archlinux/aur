@@ -3,7 +3,7 @@
 _pkgorg=nettools
 _pkgname=n-acd
 pkgdesc="IPv4 Address Conflict Detection"
-pkgver=r40.a55f547
+pkgver=r49.1480c42
 pkgrel=1
 
 pkgname=$_pkgname-git
@@ -11,8 +11,7 @@ arch=('i686' 'x86_64')
 url="https://github.com/$_pkgorg/$_pkgname"
 license=('Apache')
 depends=('glibc')
-makedepends=('git')
-options=('debug' '!strip')
+makedepends=('git' 'meson')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=("$pkgname::git+https://github.com/$_pkgorg/$_pkgname")
@@ -25,17 +24,17 @@ pkgver() {
 }
 
 build() {
-  cd "$pkgname"
-  ./autogen.sh c
-  make
+  rm -Rf "build"
+  meson --prefix=/usr --buildtype=release "$pkgname" "build"
+  ninja -C "build"
 }
 
 check() {
-  cd "$pkgname"
-  make check
+  # XXX: Skipping tests is only supported with meson-0.37
+  # ninja -v -C "build" test
+  :
 }
 
 package() {
-  cd "$pkgname"
-  make DESTDIR="$pkgdir" install
+  DESTDIR="$pkgdir" ninja -v -C "build" install
 }
