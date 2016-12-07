@@ -1,5 +1,9 @@
-VER=0.0.3-1
+PKGVER=0.0.4
+REL=1
+VER="$(PKGVER)-$(REL)"
 # Be sure to update this in PKGBUILD
+
+EOL=$
 
 build:
 	if [ -d larryshell ]; then \
@@ -10,6 +14,8 @@ build:
 		larryshell/larryshellrc \
 		larryshell/larryshell-errors.txt
 	cp $(VER).tar.gz /srv/http/larryshell
+	perl -pi -e "s/(pkgver=).*$(EOL)/\1'$(PKGVER)'/" PKGBUILD
+	perl -pi -e "s/(pkgrel=).*$(EOL)/\1'$(REL)'/" PKGBUILD
 	perl -pi -e "s/(md5sums=)\((.*)\)/\1('`md5sum $(VER).tar.gz | cut -d " " -f1`')/" PKGBUILD
 	makepkg --printsrcinfo > .SRCINFO
 clean:
