@@ -17,6 +17,7 @@ pkgbase = refind-efi-git
 	optdepends = python: For refind-mkdefault script
 	optdepends = sbsigntools: For EFI binary signing (Secure Boot support)
 	optdepends = preloader-signed: For pre-signed shim loader (Secure Boot support)
+	optdepends = shim-signed: For pre-signed shim loader (Secure Boot support)
 	provides = refind-efi=0.10.4.r504.082b678
 	conflicts = refind-efi
 	options = !strip
