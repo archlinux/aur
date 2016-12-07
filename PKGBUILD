@@ -3,15 +3,17 @@
 pkgname=mattercontrol
 _pkgname=MatterControl
 pkgver=1.6.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Software solution for 3D printers"
 arch=("i386" "x86_64")
 license=('custom')
 url="http://www.mattercontrol.com"
 depends=('mono' 'lib32-glibc' 'gtk-sharp-2')
+optdepends=('mattercontrol-plugins: Closed source plugins for cloud functionality')
 makedepends=('git' 'nuget')
 provides=('mattercontrol')
 install="mattercontrol.install"
+commit=356157d1548216e80b2aa36f19914d96f523d587
 source=(git://github.com/MatterHackers/MatterControl.git
 	'mattercontrol'
 	'mattercontrol.desktop'
@@ -26,7 +28,8 @@ sha256sums=('SKIP'
 build() {
 	cd "${srcdir}"/${_pkgname}
 
-	git checkout ${pkgver}
+	#git checkout ${pkgver}
+	git checkout ${commit}
 	git submodule update --init --recursive
 	mozroots --import --sync
 	nuget restore MatterControl.sln
