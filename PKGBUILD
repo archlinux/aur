@@ -1,17 +1,18 @@
 # Maintainer: Brian Bidulock <bidulock@openss7.org>
 
 pkgname=kronosnet-git
+_pkgname=kronosnet
 pkgver=0.0.r1101.g3cea157
-pkgrel=3
+pkgrel=4
 pkgdesc="VPNs on steroids"
 arch=('i686' 'x86_64')
 url="http://www.kronosnet.org/"
 license=('GPL2')
-makedepends=('git' 'libqb-git')
+makedepends=('git')
 depends=('nss')
-provides=('kronosnet')
-conflicts=('kronosnet')
-source=("$pkgname::git+https://github.com/fabbione/kronosnet.git")
+provides=($_pkgname)
+conflicts=($_pkgname)
+source=("$pkgname::git+https://github.com/fabbione/$_pkgname.git")
 md5sums=('SKIP')
 
 pkgver() {
@@ -23,13 +24,15 @@ prepare() {
   cd $pkgname
   sed -e 's,rx_thread = NULL;,rx_thread = 0;,' -i libknet/tests/knet_bench.c
   sed -e 's,%zu,%ld,g' -i libknet/tests/api_knet_link_get_ping_timers.c
-  mkdir -p m4
-  autoreconf -fiv
+  ./autogen.sh
 }
 
 build() {
   cd $pkgname
-  ./configure --libdir=/usr/lib
+  ./configure --libdir=/usr/lib \
+              --sbindir=/usr/bin \
+              --enable-publicandocs \
+              --with-systemddir=/usr/lib/systemd/system
   make V=0
 }
 
