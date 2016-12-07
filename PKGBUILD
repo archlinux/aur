@@ -2,7 +2,7 @@
 
 pkgname=papirus-libreoffice-theme-git
 pkgver=20161127
-pkgrel=1
+pkgrel=2
 pkgdesc="Papirus theme for LibreOffice (git version)"
 url="https://github.com/PapirusDevelopmentTeam/${pkgname%-git}"
 arch=('any')
@@ -21,6 +21,6 @@ pkgver() {
 
 package() {
   cd ${pkgname}
-  mkdir -p ${pkgdir}/usr/share/libreoffice/share/config
-  cp --no-preserve=mode,ownership -r images_papirus.zip images_papirus_dark.zip  ${pkgdir}/usr/share/libreoffice/share/config
+  mkdir -p ${pkgdir}/usr/lib/libreoffice/share/config
+  cp --no-preserve=mode,ownership -r images_papirus.zip images_papirus_dark.zip  ${pkgdir}/usr/lib/libreoffice/share/config
 }
