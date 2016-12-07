@@ -2,16 +2,18 @@
 # !!IMPORTANT!! ONLY FOR RASPBERRY PI
 
 pkgname=waveshare35a
-pkgver=151020
-pkgrel=2
+pkgurl="4/4b"
+pkgver=161112
+pkgrel=1
 pkgdesc="Overlay for waveshare 3.5inch RPi LCD (A)"
 url="http://www.waveshare.net"
 arch=('armv6h' 'armv7h')
-source=("http://www.waveshare.net/w/upload/9/9d/LCD-show-${pkgver}.tar.gz")
-md5sums=("833ac8e8c5a8a1fd4ee9139d66557994")
+source=("http://www.waveshare.net/w/upload/${pkgurl}/LCD-show-${pkgver}.tar.gz")
+md5sums=("e91fbcfbd0fe19b1f8a9bda4a5005f82")
 install="waveshare35a.install"
 
 package() {
   cd "${srcdir}/LCD-show"
   install -Dm644 waveshare35a-overlay.dtb "${pkgdir}/boot/overlays/waveshare35a-overlay.dtb"
+  install -Dm644 waveshare35a-overlay.dtb "${pkgdir}/boot/overlays/waveshare35a.dtbo"
 }
