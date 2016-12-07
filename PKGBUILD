@@ -1,9 +1,10 @@
-# Maintainer: Fabien Dubosson <fabien.dubosson@gmail.com>
+# Maintainer: Benjamin Wilhelm <aur@hedgehogcode.de>
+# Package creator: Fabien Dubosson <fabien.dubosson@gmail.com>
 
 pkgname="knime-desktop-full"
 _pkgname="knime-desktop"
 _upstream_name="knime"
-pkgver="3.2.1"
+pkgver="3.3.0"
 pkgrel="1"
 pkgdesc="A user-friendly graphical workbench for the entire data analysis process (with all free extensions)"
 url="http://www.knime.org/"
@@ -23,11 +24,11 @@ source=("https://download.knime.org/analytics-platform/linux/${_upstream_name}-f
         'knime.sh'
         'knime-desktop.desktop'
         'LICENSE')
-md5sums=('195b567381655208bb88519e86e3b7f0'
+md5sums=('62cbb14ef6addde930b1dda2869d386d'
          '597314dbe6d4aae1d8381388d83d4b81'
          '8ec3f57e90588fac3f202e0509db2d08'
          '9e93e4def16f04f7808bddb48da3c009')
-[ "${CARCH}" = 'x86_64' ] && md5sums[0]='45c8ffce0ba576038feefedb78f77e17'
+[ "${CARCH}" = 'x86_64' ] && md5sums[0]='8f4a570f176ad47fbc5487e00419efc4'
 
 package() {
     installpath="/usr/share/java"

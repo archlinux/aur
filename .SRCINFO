@@ -2,7 +2,7 @@
 # Tue May  3 10:47:04 UTC 2016
 pkgbase = knime-desktop-full
 	pkgdesc = A user-friendly graphical workbench for the entire data analysis process (with all free extensions)
-	pkgver = 3.2.1
+	pkgver = 3.3.0
 	pkgrel = 1
 	url = http://www.knime.org/
 	changelog = ChangeLog
@@ -21,7 +21,7 @@ pkgbase = knime-desktop-full
 	source = knime.sh
 	source = knime-desktop.desktop
 	source = LICENSE
-	md5sums = 195b567381655208bb88519e86e3b7f0
+	md5sums = 62cbb14ef6addde930b1dda2869d386d
 	md5sums = 597314dbe6d4aae1d8381388d83d4b81
 	md5sums = 8ec3f57e90588fac3f202e0509db2d08
 	md5sums = 9e93e4def16f04f7808bddb48da3c009
