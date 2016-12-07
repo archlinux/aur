@@ -1,0 +1,13 @@
+pkgbase = shim-signed
+	pkgdesc = UEFI shim loader
+	pkgver = 0.8.f10
+	pkgrel = 1
+	url = https://apps.fedoraproject.org/packages/shim-signed
+	arch = any
+	license = BSD
+	options = !strip
+	source = https://kojipkgs.fedoraproject.org//packages/shim-signed/0.8/10/x86_64/shim-0.8-10.x86_64.rpm
+	sha512sums = 213e38ddf8027e740f9de011ee5cb576fbfa2d00963a830ce613efa9363a28a21afa024842e37a4576f93d00450a5753e63886595a4e1980b6d22ff110b7c9f2
+
+pkgname = shim-signed
+
