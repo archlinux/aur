@@ -12,15 +12,15 @@ provides=("${pkgname}")
 conflicts=("${pkgname}")
 makedepends=('git' 'libnotify')
 optdepends=('notification-daemon')
-source=("https://github.com/Ventto/${pkgname}/archive/master.tar.gz")
+source=("https://github.com/Ventto/${pkgname}/archive/v${pkgver}.tar.gz")
 sha256sums=('SKIP')
 
 build() {
-  cd ${pkgname}-master
+  cd ${pkgname}-${pkgver}
   make
 }
 
 package() {
-  cd ${pkgname}-master
+  cd ${pkgname}-${pkgver}
   make DESTDIR="${pkgdir}" install
 }
