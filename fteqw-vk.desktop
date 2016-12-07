@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=FTE Quake (Vulkan)
+Comment=FTE Quake OpenGL using the Vulkan API
+Exec=/usr/bin/fteqw-vk
+Icon=/usr/share/pixmaps/fteqw.png
+Terminal=false
+Type=Application
+Categories=Game;
+MimeType=x-scheme-handler/steam;
