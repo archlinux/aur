@@ -2,7 +2,7 @@
 pkgname=eccodes
 pkgver=2.0.2
 _attnum=45757960
-pkgrel=1
+pkgrel=2
 pkgdesc="ECMWF decoding library for GRIB, BUFR and GTS"
 arch=('i686' 'x86_64')
 url="https://software.ecmwf.int/wiki/display/ECC/ecCodes+Home"
@@ -10,7 +10,7 @@ license=('Apache')
 depends=('openjpeg' 'libpng' 'python2' 'netcdf')
 optdepends=('libaec: for compression' 'jasper: as an alternative to openjpeg')
 makedepends=('gcc-fortran' 'python2' 'python2-numpy' 'cmake')
-conflicts=('grib_def' 'libbufr-ecmwf')
+conflicts=('grib_api' 'libbufr-ecmwf')
 source=(http://software.ecmwf.int/wiki/download/attachments/${_attnum}/${pkgname}-${pkgver}-Source.tar.gz)
 md5sums=('dec29b6850401d99b0e0344844b2bf4a')
 
