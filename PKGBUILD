@@ -4,7 +4,7 @@
 pkgname=python-tensorflow
 pkgver=0.12.0rc0
 _pkgver=0.12.0-rc0
-pkgrel=1
+pkgrel=2
 
 pkgdesc="Computation using data flow graphs for scalable machine learning."
 url="https://tensorflow.org/"
