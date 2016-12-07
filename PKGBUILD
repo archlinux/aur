@@ -5,12 +5,13 @@
 pkgname=lockdev
 pkgver=1.0.3_1.6
 _pkgver=1.0.3
-pkgrel=2
+pkgrel=3
 pkgdesc='Run-time shared library for locking devices, using _both_ FSSTND and SVr4 methods.'
 url='http://packages.qa.debian.org/l/lockdev.html'
 license=("GPL")
 arch=('i686' 'x86_64')
-depends=('glibc')
+depends=('glibc' 'systemd')
+install=$pkgname.install
 source=("http://ftp.debian.org/debian/pool/main/l/${pkgname}/${pkgname}_${_pkgver}.orig.tar.gz"
 	"http://ftp.debian.org/debian/pool/main/l/${pkgname}/${pkgname}_${pkgver/_/-}.diff.gz"
 	'build.patch'
@@ -36,4 +37,9 @@ build() {
 package() {
   cd "${pkgname}-${_pkgver}"
   make basedir="${pkgdir}/usr" install
+
+  # Setup lock directory
+  install -dm755 "$pkgdir"/usr/lib/{sysusers,tmpfiles}.d
+  echo 'g lock - - -' > "$pkgdir/usr/lib/sysusers.d/$pkgname.conf"
+  echo 'd /run/lock/lockdev 0775 root lock -' > "$pkgdir/usr/lib/tmpfiles.d/$pkgname.conf"
 }
