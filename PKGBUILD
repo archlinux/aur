@@ -7,7 +7,7 @@
 pkgname=phpstorm
 _pkgname=PhpStorm
 pkgver=2016.3.1
-_pkgver=163.7743.50
+_pkgver=163.9735.1
 pkgrel=1
 pkgdesc="Lightweight and Smart PHP IDE"
 arch=('x86_64' 'i686')
