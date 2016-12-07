@@ -1,0 +1,17 @@
+pkgbase = chomp
+	pkgdesc = Computation Homology Project software
+	pkgver = 1.2
+	pkgrel = 1
+	url = https://github.com/shaunharker/CHomP
+	arch = i686
+	arch = x86_64
+	license = custom:MIT
+	makedepends = cmake
+	depends = cimg
+	depends = boost>=1.58.0
+	depends = xproto
+	source = https://github.com/shaunharker/CHomP/archive/v1.2.tar.gz
+	md5sums = 6ffeb70f421b37fe771647573e0971dc
+
+pkgname = chomp
+
