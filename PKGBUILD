@@ -3,7 +3,7 @@
 pkgname=ftequake-svn
 _svndir=trunk
 pkgver=r5020
-pkgrel=3
+pkgrel=1
 pkgdesc="Engine for Quake 1,2,3 and Hexen 2"
 arch=('i686' 'x86_64')
 url="http://fte.triptohell.info"
