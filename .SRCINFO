@@ -1,6 +1,6 @@
 pkgbase = fteqw
 	pkgdesc = FTE QuakeWorld. Engine for Quake 1,2,3 and Hexen 2
-	pkgver = r5016
+	pkgver = r5026
 	pkgrel = 1
 	url = http://fte.triptohell.info
 	arch = i686
@@ -20,7 +20,7 @@ pkgbase = fteqw
 	depends = vulkan-validation-layers
 	provides = fteqw
 	conflicts = fteqw-svn
-	source = svn+http://svn.code.sf.net/p/fteqw/code/trunk#revision=r5016
+	source = svn+http://svn.code.sf.net/p/fteqw/code/trunk#revision=r5026
 	source = fteqw-gl.desktop
 	source = fteqw-mingl.desktop
 	source = fteqw-sv.desktop
