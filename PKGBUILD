@@ -1,5 +1,5 @@
 pkgname=skypeforlinux
-pkgver=1.12.0.4
+pkgver=1.13.0.3
 pkgrel=1
 pkgdesc="Skype for Linux WebRTC Alpha"
 arch=(x86_64 i686)
@@ -9,16 +9,19 @@ depends=(electron libgnome-keyring)
 makedepends=(asar npm python2)
 source=(https://repo.skype.com/deb/pool/main/s/$pkgname/${pkgname}_${pkgver}_amd64.deb
         $pkgname.sh)
-sha256sums=('5a938754e9fd96d32b0a585ff92ac34a2fe329467bddf474223bfd0620e2a89e'
+sha256sums=('a495a55b28d2ae16c9adea86c606eca30d48df410e02be2d488cab776bb84dc1'
             '0aca67c5c2cd1be1e7b7a2d2f126cdf0310f8a85985c1aba31540fcc2892eafa')
 
 prepare() {
   tar -xf data.tar.xz
   asar extract usr/share/skypeforlinux/resources/app.asar skypeforlinux
-  rm -r skypeforlinux/node_modules
+  mv skypeforlinux/node_modules/skype-electron-wrapper .
+  rm -r skypeforlinux/node_modules/*
+  sed -i '13i\"dependencies": {"skype-electron-wrapper": "*"},' skypeforlinux/package.json
 }
 
 build() {
+  mv skype-electron-wrapper skypeforlinux/node_modules
   cd $pkgname
   export npm_config_target=$(</usr/lib/electron/version)
   export npm_config_disturl=https://atom.io/download/atom-shell
