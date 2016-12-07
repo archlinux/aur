@@ -8,7 +8,7 @@ pkgname=gdal-filegdb
 _pkgname=gdal
 _pkgver=2.1
 pkgver=2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A translator library for vector and raster geospatial data formats (PDF, FileGDB, KMZ support)"
 arch=('i686' 'x86_64')
 url="http://www.gdal.org/"
@@ -24,7 +24,8 @@ depends=('geos' 'proj'
          'json-c'
          'jdk7-openjdk'
          'libwebp'
-         'libkml')
+         'libkml'
+         'filegdb-api')
 makedepends=('perl'
              'swig'
              'chrpath'
@@ -32,9 +33,11 @@ makedepends=('perl'
              'doxygen')
 changelog=$pkgname.changelog
 source=("$_pkgname-$_pkgver::svn+https://svn.osgeo.org/gdal/branches/${_pkgver}/gdal"
-        'gdal-python-install.patch')
+        'gdal-python-install.patch'
+        'jasper-1.900.31.diff')
 md5sums=('SKIP'
-         '82031431f25e6a617ec030e73a9959c3')
+         '82031431f25e6a617ec030e73a9959c3'
+         '1ed27c60854aded847cdadee45413bb2')
 provides=("$_pkgname=$_pkgver")
 conflicts=("$_pkgname")
 
@@ -47,7 +50,7 @@ pkgver() {
 prepare() {
   cd "${srcdir}/${_pkgname}-${_pkgver}"
 
-  #patch -Np0 -i "${srcdir}"/gdal-python-install.patch
+  patch -Np1 --binary -i "${srcdir}"/jasper-1.900.31.diff
 
   # python2 fixes
   sed -i 's_python python1.5_python2 python python1.5_' configure
@@ -63,14 +66,18 @@ build() {
   cd "${srcdir}/${_pkgname}-${_pkgver}"
 
   export CFLAGS+=" -fno-strict-aliasing"
+
   # bug 23654
   export LDFLAGS+=" -Wl,--as-needed"
-  
+
+  # bug 6656
+  export CXXFLAGS+=" -D_GLIBCXX_USE_CXX11_ABI=0"
+
   ./configure --prefix=/usr --with-netcdf --with-libtiff --with-sqlite3 \
               --with-geotiff --with-mysql=/usr/bin/mysql_config --with-python=/usr/bin/python2 --with-jpeg12 \
               --without-libtool --with-curl --with-hdf5 --with-perl --with-geos --with-openjpeg \
               --with-png --with-poppler --with-spatialite --with-pcre --without-grass --with-liblzma \
-              --with-odbc --with-libkml --with-opencl --with-libjson-c --with-mdb=yes --with-webp \
+              --with-fgdb=/usr --with-odbc --with-libkml --with-opencl --with-libjson-c --with-mdb=yes --with-webp \
               --with-java=/usr/lib/jvm/java-7-openjdk --with-jvm-lib=/usr/lib/jvm/java-7-openjdk/jre/lib/amd64/server --with-jvm-lib-add-rpath=yes \
 
   # workaround for bug #13646
