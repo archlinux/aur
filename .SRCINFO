@@ -1,5 +1,5 @@
 pkgbase = batify
-	pkgdesc = Easy way to set battery level warnings using an udev rule and libnotify.
+	pkgdesc = Easy and cross-distros way to set battery level warnings using udev and libnotify.
 	pkgver = 0.7
 	pkgrel = 1
 	url = https://github.com/Ventto/batify.git

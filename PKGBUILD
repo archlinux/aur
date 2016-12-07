@@ -3,7 +3,7 @@
 pkgname=batify
 pkgver=0.7
 pkgrel=1
-pkgdesc='Easy way to set battery level warnings using an udev rule and libnotify.'
+pkgdesc='Easy and cross-distros way to set battery level warnings using udev and libnotify.'
 arch=('any')
 url="https://github.com/Ventto/${pkgname}.git"
 license=('MIT')
