@@ -1,0 +1,5 @@
+*.gz
+*.xz
+*-git/
+pkg/
+src/

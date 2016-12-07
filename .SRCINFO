@@ -1,0 +1,19 @@
+pkgbase = n-acd-git
+	pkgdesc = IPv4 Address Conflict Detection
+	pkgver = r40.a55f547
+	pkgrel = 1
+	url = https://github.com/nettools/n-acd
+	arch = i686
+	arch = x86_64
+	license = Apache
+	makedepends = git
+	depends = glibc
+	provides = n-acd
+	conflicts = n-acd
+	options = debug
+	options = !strip
+	source = n-acd-git::git+https://github.com/nettools/n-acd
+	md5sums = SKIP
+
+pkgname = n-acd-git
+
