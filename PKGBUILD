@@ -51,7 +51,9 @@ prepare() {
 build() {
   cd "${srcdir}/${_gitname}/builders/cmake"
 
-  cmake -DCRTMPSERVER_INSTALL_PREFIX=/usr
+  cmake \
+    -DCMAKE_CXX_FLAGS="-std=c++03 -Wno-c++11-compat" \
+    -DCRTMPSERVER_INSTALL_PREFIX=/usr
 
   make -j1
 }
