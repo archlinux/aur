@@ -1,0 +1,16 @@
+pkgbase = cgum-git
+	pkgdesc = cgum
+	pkgver = 8.5ce519f
+	pkgrel = 1
+	url = https://github.com/GumTreeDiff/cgum
+	arch = i686
+	arch = x86_64
+	license = lGPL
+	makedepends = ocaml
+	conflicts = cgum
+	replaces = cgum
+	source = git://github.com/GumTreeDiff/cgum.git
+	sha256sums = SKIP
+
+pkgname = cgum-git
+
