@@ -2,17 +2,17 @@
 # Contributor: Alexandre G <alex foo lecairn bar org>
 
 pkgname=figtree
-pkgver=1.4.2
-pkgrel=2
+pkgver=1.4.3
+pkgrel=1
 pkgdesc='Graphical viewer of phylogenetic trees'
 arch=('any')
 url='http://tree.bio.ed.ac.uk/software/figtree'
 license=('GPL2')  # as stated in http://code.google.com/p/figtree/
 depends=('java-environment')
-source=("$pkgname-$pkgver.tar.gz::http://tree.bio.ed.ac.uk/download.php?id=90&num=3"
+source=("$pkgname-$pkgver.tar.gz::http://tree.bio.ed.ac.uk/download.php?id=96&num=3"
         "${pkgname}.patch"
         "${pkgname}.desktop")
-sha256sums=('5064509fbe8cf069c6b0f8fdacf8c3f651971b11956484ce98a18a114ce1a096'
+sha256sums=('f497d4dd3a6d220f6b62495b6f47a12ade50d87dbd8d6089f168e94d202f937b'
             '8387f23770fed27566b01c9cf1b95f958cade55a90d63916bf7edee383c33321'
             '93aaadf4db141c57c5a84fe6e9e875af5091c9fe468f41adb8ce6c02ed214ab3')
 
