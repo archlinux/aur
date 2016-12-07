@@ -50,7 +50,7 @@ diff -ru gnupg-2.1.11/g10/keygen.c gnupg-2.1.11-patched/g10/keygen.c
        break;
 +
 +    case PUBKEY_ALGO_RSA:
-+      max=(opt.flags.large_rsa?14336:4096);
++      *max=(opt.flags.large_rsa?14336:4096);
 +      break;
      }
  
