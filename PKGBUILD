@@ -1,16 +1,15 @@
-# Maintainer: FadeMind <fademind@gmail.com>
+# Maintainer: Marcus Behrendt <marcus dot behrendt dot eightysix(in numbers) at bigbrothergoogle dot com
 
 pkgname=papirus-libreoffice-theme-git
-pkgver=20160803
+pkgver=20161127
 pkgrel=1
 pkgdesc="Papirus theme for LibreOffice (git version)"
 url="https://github.com/PapirusDevelopmentTeam/${pkgname%-git}"
 arch=('any')
 license=('GPL')
-depends=('plasma-desktop')
-makedepends=('git' 'make')
+depends=('libreoffice')
+makedepends=('git')
 conflicts=('papirus-libreoffice-theme' 'libreoffice-papirus-theme' 'libreoffice-papirus-theme-git')
-optdepends=('libreoffice' 'libreoffice-fresh-rpm')
 options=('!strip')
 source=("${pkgname}::git+${url}.git")
 sha256sums=('SKIP')
@@ -21,5 +20,7 @@ pkgver() {
 }
 
 package() {
-    make -C "${pkgname}" install DESTDIR="$pkgdir"
+  cd ${pkgname}
+  mkdir -p ${pkgdir}/usr/share/libreoffice/share/config
+  cp --no-preserve=mode,ownership -r images_papirus.zip images_papirus_dark.zip  ${pkgdir}/usr/share/libreoffice/share/config
 }
