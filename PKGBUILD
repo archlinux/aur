@@ -5,14 +5,14 @@
 
 pkgname=bs
 pkgver=2.10
-pkgrel=1
+pkgrel=2
 pkgdesc="The classic game of Battleships against the computer. Ncurses."
 arch=('i686' 'x86_64')
-url="http://www.catb.org/~esr/bs/"
+url="https://www.catb.org/~esr/bs/"
 license=('GPL2')
-depends=('ncurses')
+depends=('ncurses' 'hicolor-icon-theme')
 source=("http://www.catb.org/~esr/bs/bs-$pkgver.tar.gz")
-sha1sums=('63179f97929c6cb9b6598440798e4ebd82069d4a')
+sha256sums=('1f8c1541fd13f481ff96df26d668658a7465da064801ae22ee584bd50f3a3107')
 
 build() {
   cd $pkgname-$pkgver
@@ -23,6 +23,5 @@ build() {
 package() {
   cd $pkgname-$pkgver
 
-  install -Dm755 bs "$pkgdir"/usr/bin/bs
-  install -Dm644 bs.6 "$pkgdir"/usr/share/man/man6/bs.6
+  make DESTDIR="$pkgdir" install
 }
