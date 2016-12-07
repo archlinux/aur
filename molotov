@@ -2,12 +2,11 @@
 
 [ -z "$XDG_DATA_DIRS" ] && export XDG_DATA_DIRS=$HOME/.local/share:/usr/share
 # Avoid useless question about adding a start icon
-if [ -f "$HOME/.local/share/applications/appimagekit-Molotov.desktop" ]; then
-    sed -i "s/^X-AppImage-Version=.*$/X-AppImage-Version=MOLOTOV_VERSION/" "$HOME/.local/share/applications/appimagekit-Molotov.desktop"
-
-elif [ ! -f "$HOME/.local/share/applications/appimagekit-Molotov.desktop" ]; then
-    cp /usr/share/applications/Molotov.desktop "$HOME/.local/share/applications/appimagekit-Molotov.desktop"
-    echo "NoDisplay=true" >> "$HOME/.local/share/applications/appimagekit-Molotov.desktop"
-    echo "Hidden=true" >> "$HOME/.local/share/applications/appimagekit-Molotov.desktop"
-fi
+# if [ ! -f "$HOME/.local/share/applications/appimagekit-Molotov.desktop" ]; then
+#     cp /usr/share/applications/appimagekit-Molotov.desktop "$HOME/.local/share/applications/appimagekit-Molotov.desktop"
+#     echo "NoDisplay=true" >> "$HOME/.local/share/applications/appimagekit-Molotov.desktop"
+#     echo "Hidden=true" >> "$HOME/.local/share/applications/appimagekit-Molotov.desktop"
+#     chmod 755 "$HOME/.local/share/applications/appimagekit-Molotov.desktop"
+# fi
+export SKIP=yes
 exec /opt/appimages/Molotov-MOLOTOV_VERSION.AppImage
