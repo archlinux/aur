@@ -10,7 +10,7 @@ license=('LPPL')
 depends=('texlive-core' 'texlive-bibtexextra' 'texlive-fontsextra' 'texlive-formatsextra' 'texlive-genericextra' 'texlive-latexextra' 'texlive-science')
 provides=('texlive-tubslatex')
 conflicts=('texlive-tubslatex')
-source=("http://tubslatex.ejoerns.de/1.1.0/tubslatex_1.1.0.tds.zip" "$pkgname.maps" "CONTENTS")
+source=("http://tubslatex.ejoerns.de/$pkgver/tubslatex_$pkgver.tds.zip" "$pkgname.maps" "CONTENTS")
 md5sums=('3768f97ff43dc5cdf5faa52d42b18dd5' '9308c3138886469377a8d975a43cde39' '8a5b8f3b01c2a08af1350c34da1638bf')
 sha512sums=('bad54c632d0413a98b163fd393d280f68196733d6c34c4d6fed59919075112c96813f56d389ef06fd3f5163328e06b692a0e9df400f27881b42581d9d7ff6f78' 'ef2db742d543ccde08d40386b4625b8bfdfda50354f18d7e256ad732901cbd4046c776bcf2d79b5ec0950cd51310a9e4709586473fbdb3925240faec92e15b1f' '7d3fdbfe1c80d7da2f73a7bdcf3c347b8114778f7d358b82ef75d9472341df3449b389fb79f9b915eb24273715422b2ab1c9bee29f349fa3c401f8014eaee34c')
 
