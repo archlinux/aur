@@ -4,9 +4,9 @@
 
 pkgname=netlogo-beta
 _pkgname=netlogo
-pkgver=6.0.BETA1
-_pkgver=6.0-BETA1
-pkgrel=4
+pkgver=6.0.BETA2
+_pkgver=6.0-BETA2
+pkgrel=1
 pkgdesc="A multi-agent programmable modeling environment. Beta version"
 arch=('i686' 'x86_64')
 [ "$CARCH" = "i686"  ] && _NARCH=32
@@ -22,23 +22,19 @@ source=(netlogo.png)
 source_i686=(http://ccl.northwestern.edu/netlogo/$_pkgver/NetLogo-$_pkgver-$_NARCH.tgz)
 source_x86_64=(http://ccl.northwestern.edu/netlogo/$_pkgver/NetLogo-$_pkgver-$_NARCH.tgz)
 md5sums=('4ee488fc0c5c07fad84cf1c24e44556d')
-md5sums_i686=('8f2039bdacaa3ce3ffd26350c9e966df')
-md5sums_x86_64=('2c51b7dd8a7f125c68474f6c796cbf90')
+md5sums_i686=('f618a6470e5cb02d9a3878a8bf7532d6')
+md5sums_x86_64=('d04781bf95c9c47e4170b8665aca1bfe')
 
 prepare() {
     gendesk -n --pkgname "$_pkgname" --pkgdesc "$pkgdesc" --name='NetLogo' --exec="/opt/$pkgname/NetLogo"
-	gendesk -n --pkgname "${_pkgname}3D" --pkgdesc "$pkgdesc" --name='NetLogo3D' --exec="/opt/$pkgname/NetLogo3D"
-
 }
 
 package() {
     install -Dm644 "$_pkgname.desktop" "$pkgdir/usr/share/applications/$_pkgname.desktop"
-    install -Dm644 "${_pkgname}3D.desktop" "$pkgdir/usr/share/applications/${_pkgname}3D.desktop"
     install -Dm644 "$_pkgname.png" "$pkgdir/usr/share/pixmaps/$_pkgname.png"
-	install -Dm644 "$_pkgname.png" "$pkgdir/usr/share/pixmaps/${_pkgname}3D.png"
 
     mkdir -p "$pkgdir/usr/bin" "$pkgdir/opt/$pkgname"
-    cd "$srcdir/$_pkgname-$_pkgver-$_NARCH" || exit
+    cd "$srcdir/NetLogo $_pkgver" || exit
     cp -r ./* "$pkgdir/opt/$pkgname"
 
     for file in {NetLogo,NetLogo3D,NetLogoLogging,HubNetClient}; do
