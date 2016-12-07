@@ -5,13 +5,13 @@
 pkgname=conky-lua-archers
 _pkgname=conky
 pkgver=1.10.6
-pkgrel=1
+pkgrel=2
 pkgdesc="A free, light-weight system monitor for X with lua enabled for Arch based distros"
 arch=('i686' 'x86_64')
 url="https://github.com/brndnmtthws/conky"
 license=('GPL3' 'BSD')
 replaces=('torsmo' 'conky')
-provides=('conky=1.10.4_pre')
+provides=("conky=${pkgver}")
 conflicts=('conky' 'conky-lua' 'conky-lua-arch' 'conky-lua-nv' 'conky-lua-archers-git')
 depends=(
 	'alsa-lib'
