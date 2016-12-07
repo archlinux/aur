@@ -16,9 +16,9 @@ conflicts=('nixnote' 'nixnote2-git' 'nixnote-beta')
 replaces=('nixnote')
 source=("nixnote2.desktop")
 sha256sums=('6c88cd5ae3f5c18e342fcf5165891b22d99818d3fe2ac2b124262b8ba23bb4d1')
-source_x86_64=("http://download2.polytechnic.edu.na/pub4/sourceforge/n/ne/nevernote/${_pkgver}/${_pkgname}-2.0-${_beta_release}_amd64.tar.gz")
+source_x86_64=("https://downloads.sourceforge.net/project/nevernote/${_pkgver}/${_pkgname}-2.0-${_beta_release}_amd64.tar.gz")
 sha256sums_x86_64=('00713e824b214702812aecbf2d4ede8734766fa38f630f39c42b9ac64ad84327')
-source_i686=("http://download2.polytechnic.edu.na/pub4/sourceforge/n/ne/nevernote/${_pkgver}/${_pkgname}-2.0-${_beta_release}_i386.tar.gz")
+source_i686=("https://downloads.sourceforge.net/project/nevernote/${_pkgver}/${_pkgname}-2.0-${_beta_release}_i386.tar.gz")
 sha256sums_i686=('2e18534f3875337cc2eb05bdf0ef201272705d370a694019146bd04199633516')
 
 package() {
