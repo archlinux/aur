@@ -1,0 +1,9 @@
+src/
+pkg/
+*.rpm
+*.tar
+*.tar.*
+*.pkg.tar*
+*.zip
+*.sig
+*.log*
