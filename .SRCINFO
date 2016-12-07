@@ -1,25 +1,19 @@
 pkgbase = corosync-git
 	pkgdesc = Cluster engine for nodal communication systems with additional features for implementing high availability within applications.
-	pkgver = 2.4.1.r36.g4939c75
-	pkgrel = 3
+	pkgver = 2.4.2.r8.gd6c7ade
+	pkgrel = 1
 	url = http://www.corosync.org/
 	arch = i686
 	arch = x86_64
 	license = BSD
 	makedepends = git
-	depends = nss
 	depends = libstatgrab
 	depends = net-snmp
 	depends = libdbus
-	depends = libqb-git
-	depends = kronosnet-git
 	provides = corosync
-	conflicts = corosync1
 	conflicts = corosync
-	source = corosync-git::git+https://github.com/corosync/corosync.git
-	source = corosync.service
+	source = corosync-git::git+https://github.com/corosync/corosync.git#branch=needle
 	md5sums = SKIP
-	md5sums = 93d77bf4963852cf842497d5da92dc82
 
 pkgname = corosync-git
 

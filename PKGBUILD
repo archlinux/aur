@@ -2,18 +2,19 @@
 # Contributor: ovi chis <sonekken@gmail.com>
 
 pkgname=corosync-git
-pkgver=2.4.1.r36.g4939c75
-pkgrel=3
+_pkgname=corosync
+pkgver=2.4.2.r8.gd6c7ade
+pkgrel=1
 pkgdesc="Cluster engine for nodal communication systems with additional features for implementing high availability within applications."
 arch=('i686' 'x86_64')
 url="http://www.corosync.org/"
 license=('BSD')
 makedepends=('git')
-depends=('nss' 'libstatgrab' 'net-snmp' 'libdbus' 'libqb-git' 'kronosnet-git')
-provides=('corosync')
-conflicts=('corosync1' 'corosync')
-source=("$pkgname::git+https://github.com/corosync/corosync.git"
-    "corosync.service")
+depends=('libstatgrab' 'net-snmp' 'libdbus')
+provides=(${_pkgname})
+conflicts=(${_pkgname})
+source=("$pkgname::git+https://github.com/corosync/${_pkgname}.git#branch=needle")
+md5sums=('SKIP')
 
 pkgver() {
   cd $pkgname
@@ -22,8 +23,7 @@ pkgver() {
 
 prepare() {
   cd $pkgname
-  mkdir -p m4
-  autoreconf -fiv
+  ./autogen.sh
 }
 
 build() {
@@ -36,9 +36,9 @@ build() {
               --enable-monitoring \
               --enable-watchdog \
               --enable-systemd \
-	      --disable-upstart \
+              --disable-upstart \
               --enable-snmp \
-	      --enable-xmlconf \
+              --enable-xmlconf \
               --with-systemddir=/usr/lib/systemd/system \
               --with-tmpfilesdir=/usr/lib/tmpfiles.d
   make V=0
@@ -48,7 +48,10 @@ package() {
   cd $pkgname
   make DESTDIR="${pkgdir}" install
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/$pkgname/LICENSE"
+  rm -fr "${pkgdir}/var/log"
+  install -Dm644 /dev/null "${pkgdir}/usr/lib/tmpfiles.d/corosync.conf"
+  echo "d /var/log/cluster 0755 root root -" \
+    >"${pkgdir}/usr/lib/tmpfiles.d/corosync.conf"
 }
 
-md5sums=('SKIP'
-         '93d77bf4963852cf842497d5da92dc82')
+# vim: set sw=2 et:
