@@ -1,6 +1,6 @@
 pkgbase = papirus-icon-theme-git
 	pkgdesc = Papirus icon theme (git version)
-	pkgver = r434.f2d7509
+	pkgver = r478.2cb684c
 	pkgrel = 1
 	url = https://github.com/PapirusDevelopmentTeam/papirus-icon-theme
 	arch = any

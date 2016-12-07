@@ -1,9 +1,11 @@
 # Maintainer: Edgard Castro <castro@edgard.org>
 # Contributor: Frederic Bezies <fredbezies at gmail dot com>
 # Contributor: FadeMind <fademind@gmail.com>
+# Contributor: Icaro Perseo <icaroperseo[at]protonmail[dot]com>
+# Contributor: Lucas Saliés Brum <lucas@archlinux.com.br>
 
 pkgname=papirus-icon-theme-git
-pkgver=r434.f2d7509
+pkgver=r478.2cb684c
 pkgrel=1
 pkgdesc="Papirus icon theme (git version)"
 url="https://github.com/PapirusDevelopmentTeam/${pkgname%-git}"
