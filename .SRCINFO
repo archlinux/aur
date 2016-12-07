@@ -1,0 +1,26 @@
+pkgbase = python-dryscrape
+	pkgdesc = a lightweight Javascript-aware, headless web scraping library for Python
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/niklasb/dryscrape
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	makedepends = python2-setuptools
+	source = https://files.pythonhosted.org/packages/source/d/dryscrape/dryscrape-1.0.tar.gz
+	md5sums = 267e380a8efaf9cd8fd94de1639d3198
+
+pkgname = python-dryscrape
+	depends = 
+	depends = python
+	depends = python-xvfbwrapper
+	depends = python-lxml
+	depends = python-webkit-server
+
+pkgname = python2-dryscrape
+	depends = 
+	depends = python2
+	depends = python2-xvfbwrapper
+	depends = python2-lxml
+	depends = python2-webkit-server
+
