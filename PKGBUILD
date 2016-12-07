@@ -19,7 +19,7 @@ optdepends=('gvfs: for trash support, mounting with udisks and remote filesystem
             'udisks: alternative for mounting volumes'
             'xarchiver: archive management')
 conflicts=($_pkgname)
-source=(http://downloads.sourceforge.net/$_pkgname/$_pkgname-$pkgver.tar.xz)
+source=(https://downloads.sourceforge.net/$_pkgname/$_pkgname-$pkgver.tar.xz)
 md5sums=('19764c2f59653724c8713e0064fa6829')
 
 build() {
