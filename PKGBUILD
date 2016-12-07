@@ -21,7 +21,8 @@ md5sums=('95db8f2072b9acd6f79ed42da3d6db79'
 
 if [[ $CARCH == 'i686' ]]; then
   depends+=(libpulse qt4 libxss libxv libxcursor v4l-utils qtwebkit)
-  optdepends+=('libcanberra: XDG sound support')
+  optdepends+=('libcanberra: XDG sound support'
+               'lib32-alsa-plugins: microphone support') 
 else
   depends+=(lib32-{libpulse,qt4,libxss,libxv,libxcursor,v4l-utils})
   optdepends+=('lib32-libcanberra: XDG sound support')
