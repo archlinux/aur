@@ -1,6 +1,6 @@
 pkgbase = bibfix
 	pkgdesc = Fixes unescaped acronyms in titles in bibtex files
-	pkgver = 0.1.1
+	pkgver = 0.2
 	pkgrel = 1
 	url = https://github.com/languitar/bibfix
 	arch = any
@@ -9,8 +9,8 @@ pkgbase = bibfix
 	makedepends = python-setuptools
 	depends = python3
 	depends = python-bibtexparser
-	source = https://github.com/languitar/bibfix/archive/release-0.1.1.tar.gz
-	md5sums = 452c49a15fec5dcc1a3dd7e644f5716b
+	source = https://github.com/languitar/bibfix/archive/release-0.2.tar.gz
+	md5sums = 77895250267e86b00cf7b82f939109f7
 
 pkgname = bibfix
 
