@@ -16,7 +16,7 @@ depends=('alsa-lib' 'menu-cache' 'lxmenu-data' 'libfm-gtk3' 'libkeybinder3')
 makedepends=('intltool' 'docbook-xml' 'docbook-xsl' 'wireless_tools')
 optdepends=('wireless_tools: netstat plugin')
 conflicts=($_pkgname)
-source=(http://downloads.sourceforge.net/lxde/$_pkgname-$pkgver.tar.xz)
+source=(https://downloads.sourceforge.net/lxde/$_pkgname-$pkgver.tar.xz)
 sha256sums=('11c7be044616c457cd18555758ae00c953c118cbfe0b0d6f4010bdacecc751b1')
 
 prepare() {
