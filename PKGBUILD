@@ -13,7 +13,7 @@ groups=('lxde-gtk3')
 depends=('lxappearance-gtk3' 'openbox' 'libobrender.so')
 makedepends=('intltool')
 conflicts=($_pkgname)
-source=(http://downloads.sourceforge.net/lxde/$_pkgname-$pkgver.tar.xz)
+source=(https://downloads.sourceforge.net/lxde/$_pkgname-$pkgver.tar.xz)
 md5sums=('ae0076d489aa786f5d573f7ff592a4ab')
 
 prepare() {
