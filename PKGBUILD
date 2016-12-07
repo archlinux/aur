@@ -5,11 +5,11 @@ pkgver=1.0.5faf6ec
 pkgrel=1
 pkgdesc="a pacman wrapper with syntax from debian's apt"
 arch=('i686' 'x86_64')
-url="https://github.com/arcetera/aptpac"
+url="https://github.com/alefir/aptpac"
 license=('WTFPL')
 depends=('sudo')
 makedepends=('git')
-source=('git://github.com/arcetera/aptpac.git')
+source=('git://github.com/alefir/aptpac.git')
 md5sums=('SKIP')
 _gitname='aptpac'
 
