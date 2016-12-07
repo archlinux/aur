@@ -1,6 +1,6 @@
 # Maintainer: Clayton Craft <clayton@craftyguy.net>
 pkgname=fmo
-pkgver=1.0
+pkgver=1.1
 pkgrel=1
 pkgdesc="A tool for locating installed AUR orphans."
 arch=('i686' 'x86_64')
@@ -9,8 +9,8 @@ license=('GPL3')
 depends=('cower')
 provides=("${pkgname}")
 conflicts=("${pkgname}")
-source=('https://github.com/craftyguy/fmo/archive/1.0.tar.gz')
-md5sums=('0c38355f1030a29bd9957b0b9f009f84')
+source=("https://github.com/craftyguy/fmo/archive/${pkgver}.tar.gz")
+md5sums=('16c339707debdebfc2e8b0fcc26a5186')
 prepare() {
         cd "$pkgname-$pkgver"
 }
