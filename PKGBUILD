@@ -2,21 +2,26 @@
 # Contributor: Sam Stuewe <halosghost at archlinux dot info>
 
 pkgname=hashcat-git
-pkgver=3.00.1214.69e3e39
+pkgver=3.20.2949.2039e2c
 pkgrel=1
 pkgdesc='Multithreaded advanced password recovery utility'
 url='https://hashcat.net/hashcat'
 arch=('i686' 'x86_64')
-depends=('gmp' 'libcl')
-optdepends=('libxnvctrl: NVIDIA X driver configuration support'
-            'opencl-nvidia: OpenCL support for NVIDIA'
-            'opencl-mesa: OpenCL support for AMD/ATI Radeon mesa drivers')
+depends=('gmp' 'opencl-icd-loader')
+optdepends=('libxnvctrl: NVIDIA X driver configuration support')
 makedepends=('git' 'opencl-headers')
 license=('MIT')
 provides=('hashcat')
 conflicts=('hashcat')
-source=(${pkgname}::git+https://github.com/hashcat/hashcat)
-sha512sums=('SKIP')
+source=(${pkgname}::git+https://github.com/hashcat/hashcat
+        fix-make-flags.patch)
+sha512sums=('SKIP'
+            '04d86c0480c221f3e781534b0a9a50950a376a8c798ebee8042446f5d2e11f78677f7c670deb5f132fcf38c962ea13c64ac522e2a18712efbad559a5077dc211')
+
+prepare() {
+  cd ${pkgname}
+  patch -p1 < "${srcdir}/fix-make-flags.patch"
+}
 
 pkgver() {
   cd ${pkgname}
