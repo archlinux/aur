@@ -3,7 +3,7 @@
 pkgname=con2fbmap
 pkgver=2.1
 pkgrel=28
-pkgdesc="Shows and sets mapping between consoles and framebuffer devices"
+pkgdesc="shows and sets mapping between consoles and framebuffer devices"
 url="http://debian.org"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 source=("http://ftp.lanet.kr/debian/pool/main/f/fbset/fbset_2.1-28.debian.tar.xz")
