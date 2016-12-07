@@ -26,13 +26,18 @@ md5sums=('c6ad0aed7ec21a264487c1e5a21054a8'
 build() {
   cd "$srcdir/tensorflow-${_pkgver}"
 
+  # Some of this are set to the default value just to avoid an interactive prompt while building.
   export PYTHON_BIN_PATH=/usr/bin/python
+  export PYTHON_LIB_PATH=$($PYTHON_BIN_PATH -c 'import site; print(site.getsitepackages()[0])')
   export TF_NEED_GCP=0
   export TF_NEED_HDFS=0
   export TF_NEED_OPENCL=0
   export TF_NEED_CUDA=1
+  export TF_CUDA_COMPUTE_CAPABILITIES="3.5,5.2"
   export CUDA_TOOLKIT_PATH=/opt/cuda
   export CUDNN_INSTALL_PATH=/opt/cuda
+  export TF_CUDA_VERSION=$($CUDA_TOOLKIT_PATH/bin/nvcc --version | sed -n 's/^.*release \(.*\),.*/\1/p')
+  export TF_CUDNN_VERSION=$(sed -n 's/^#define CUDNN_MAJOR\s*\(.*\).*/\1/p' $CUDNN_INSTALL_PATH/include/cudnn.h)
   export GCC_HOST_COMPILER_PATH=/usr/bin/gcc-5
 
   ./configure
