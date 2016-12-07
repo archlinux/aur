@@ -1,3 +1,7 @@
+2016-12-07 SaultDon <sault.don gmail>
+    * 2.1-2
+    * added patch to build against jasper 1.900.31
+
 2016-08-09 SaultDon <sault.don gmail>
     * 2.0-1
     * updated to latest release
