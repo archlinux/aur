@@ -1,4 +1,5 @@
-# Maintainer: Jens Staal <staal1978@gmail.com>
+# Maintainer: Michael Straube <straubem@gmx.de>
+# Contributor: Jens Staal <staal1978@gmail.com>
 # Contributor: talavis <aur talavis eu>
 # Contributor: Bruno Vieira <mail@bmpvieira.com>
 
@@ -17,13 +18,16 @@ sha256sums=('4b592a1a0ff5efba5dbdbee134755d957d132d85b6cedfbf6f7ba4b03bcea5ee')
 build() {
   cd $pkgname-$pkgver
 
-  if [[ $CARCH == "i686" ]]
-  then
-    qmake-qt5 QMAKE_CFLAGS_ISYSTEM= PREFIX=/usr -r
-  elif [[ $CARCH == "x86_64" ]]
-  then
-    qmake-qt5 CONFIG+=x64 QMAKE_CFLAGS_ISYSTEM= PREFIX=/usr -r
+  _ARCH=
+
+  if [[ $CARCH == "x86_64" ]]; then
+    _ARCH=x64
   fi
+
+  qmake-qt5 -r \
+    PREFIX=/usr \
+    CONFIG+=$_ARCH \
+    QMAKE_CFLAGS_ISYSTEM=
   make
 }
 
