@@ -22,7 +22,7 @@
 #remove the # in front of commands to enable them.
 
 #Load a world and automatically start the server.
-#Make sure to set the correct permissions - the folder needs to be owned and writable to 'terraria', otherwise the server will crash!
+#Make sure to set the correct permissions - the folder needs to be owned and writable by 'terraria', otherwise the server will crash!
 #world=/srv/terraria/world1.wld
 
 #Creates a new world if none is found. World size is specified by: 1(small), 2(medium), and 3(large).
