@@ -1,0 +1,22 @@
+pkgbase = simple-scan-3.12
+	pkgdesc = Simple scanning utility - the version before they broke everything
+	pkgver = 3.12.0
+	pkgrel = 1
+	url = http://launchpad.net/simple-scan
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = yelp-tools
+	makedepends = intltool
+	makedepends = vala
+	depends = sane
+	depends = dconf
+	depends = gtk3
+	depends = colord
+	depends = libgusb
+	depends = packagekit
+	source = https://launchpad.net/simple-scan-3.12/3.12/3.12.0/+download/simple-scan-3.12-3.12.0.tar.xz
+	sha256sums = a88719f6142ddfa24d154d1093c67b27ac491c059ac5c87cba3b36ebc04b21a6
+
+pkgname = simple-scan-3.12
+
