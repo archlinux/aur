@@ -8,7 +8,7 @@ url="http://csiuo.com/drupal/content/ncurses-life"
 license=('custom:copyright')
 depends=('perl-curses')
 source=(http://csiuo.com/drupal/content/ncurses-life)
-md5sums=('f55af73a004b6c049e8da97173fefb7d')
+md5sums=('SKIP')
 
 build() {
   cd "$srcdir"
