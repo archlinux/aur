@@ -16,13 +16,18 @@ url='https://rakshasa.github.io/rtorrent'
 license=('GPL')
 arch=('i686' 'x86_64' 'armv7h')
 depends=('openssl')
-makedepends=('git' 'cppunit')
+makedepends=('git')
 conflicts=('libtorrent' 'libtorrent-git')
 provides=('libtorrent')
 install=libtorrent-pyro.install
 
 [[ $_debug = 'n' ]] &&
-    _debug='--disable-debug' || options=(!strip)
+    _debug='--disable-debug' ||
+{
+    _debug='--enable-extra-debug'
+    depends+=('cppunit')
+    options=(!strip)
+}
 
 source=("git://github.com/rakshasa/libtorrent.git#branch=$_branch")
 md5sums=('SKIP')
@@ -50,6 +55,14 @@ build() {
         --with-posix-fallocate
     make
 }
+
+check() {
+    [[ ! $_debug = 'n' ]] && {
+        cd "$srcdir/libtorrent"
+        make check
+    }
+}
+
 
 package() {
     make -C "$srcdir/libtorrent" DESTDIR="$pkgdir" install
