@@ -1,0 +1,11 @@
+LDCad license agreement (v2).
+
+LDCad, the software from here on, is freeware and may be used non-commercially without charge by anyone.
+
+Using the software to (partly) create material to be sold later on is only permitted when done at a small (non corporate) scale. In such cases a single unit of the aforementioned material must be donated to the author as a form of payment.
+
+The author (Roland Melkert) does not guarantee perfect operation of the software, nor can he be held responsible for any damage or loss resulting from the use of the software in anyway.
+
+By using the software you agree with the contents of this document and therefore agree with the license.
+
+For questions and contact- or additional information visit melkert.net/LDCad.
