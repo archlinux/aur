@@ -1,8 +1,8 @@
 # Contributor: Brian F.G. <bidulock@openss7.org>
 # Maintainer: Alexandr Boiko <brdcom@ya.ru>
 pkgname=accel-ppp
-pkgver=1.11.0
-pkgrel=2
+pkgver=1.11.1
+pkgrel=1
 pkgdesc="High performance PPTP/L2TP/PPPoE/IPoE server"
 arch=('i686' 'x86_64')
 url="http://sourceforge.net/apps/trac/accel-ppp/"
@@ -70,7 +70,7 @@ package() {
 	install -Dm0644 "$srcdir/$pkgname-$pkgver/COPYING" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
-md5sums=('2a840be652604795a1cbba8d2c6cb7fe'
+md5sums=('d64f5cb26a5d3fbc09268215e29174e5'
          '0536dd60960e76cf5a6cdbf0518782d8'
          '816dd5ea9534a077dfd63b6cd529738a'
          '312fd63b9688a05b71a6b33ddd3a9f4b'
