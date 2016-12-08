@@ -1,0 +1,17 @@
+pkgbase = neet-git
+	pkgdesc = A script to easily play and manage your anime/drama/series
+	pkgver = r63.87d4719
+	pkgrel = 1
+	url = https://github.com/onodera-punpun/neet
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = fish
+	optdepends = mpv: default media player
+	provides = neet
+	conflicts = neet
+	source = neet::git+https://github.com/onodera-punpun/neet.git
+	md5sums = SKIP
+
+pkgname = neet-git
+
