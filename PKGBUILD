@@ -12,7 +12,7 @@ _channel=developer
 
 _release_year=2016
 _release_month=12
-_release_day=06
+_release_day=07
 _release_time=00-40-03
 _release_version=52.0a2
 
@@ -60,8 +60,8 @@ package() {
     install -Dm644 $srcdir/vendor.js $pkgdir/opt/firefox-$_channel/browser/defaults/preferences/vendor.js
 }
 
-sha512sums=('5b76cc997336b1843f37a0f20c96c3129e258f828bd68387f6b995ed81641825ad6a1c4c31426674928fbb0e5803cfdc22b98824ed940934ebecdf6a964c6be0'
-            '8dc4f74b60407ba2f10fb60e70a5394b45488c8f40008b863a052ad087a737263fe9c5344d2dbd79d00dff460804e006447f2077fa4b5da6b2dc74a41e218e53'
+sha512sums=('29cb60f90f6df1a5a5d346c68ce41565bb184c2fa297f2751adaaddb5fc618c7cc714d1373f123f41d65021def15df30cf53ffd4c6eafffca387ef0c87dd6ea9'
+            '757efb3c691369739331fc58f4e6453e8828b2a1072c172e905f724bfa8f0c875c696769b2470599f1a2ea7adadc20fc8a2ce5da2b5d03220cd294926375a8c9'
             'SKIP'
             'b109b884ed79e9e214541750a0fcac8d7d8891cc7f0e0d472b717a5b71e569ab5852534bceaab045a5b13a9290a7905604d08fe97e28c675a2266c30fe719cb6'
             'bae5a952d9b92e7a0ccc82f2caac3578e0368ea6676f0a4bc69d3ce276ef4f70802888f882dda53f9eb8e52911fb31e09ef497188bcd630762e1c0f5293cc010')
