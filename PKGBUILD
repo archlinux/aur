@@ -54,7 +54,7 @@ _srcname=linux-4.8
 _pkgver=4.8.11
 _rtpatchver=rt7
 pkgver=${_pkgver}_${_rtpatchver}
-pkgrel=2
+pkgrel=3
 arch=('i686' 'x86_64')
 url="http://algo.ing.unimo.it"
 license=('GPL2')
@@ -86,6 +86,7 @@ source=("http://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
          # standard config files for mkinitcpio ramdisk
         'linux.preset'
         'fix_race_condition_in_packet_set_ring.diff'
+        'net_handle_no_dst_on_skb_in_icmp6_send.patch'
         # patches from https://github.com/linusw/linux-bfq/commits/bfq-v8
         '0005-BFQ-Fix.patch'
         '0006-BFQ-Fix.patch')
@@ -118,6 +119,10 @@ prepare() {
     # https://marc.info/?l=linux-netdev&m=148054660230570&w=2
          msg "Fix a race condition that allows to gain root"
          patch -p1 -i "${srcdir}/fix_race_condition_in_packet_set_ring.diff"
+         
+    ### fix https://bugzilla.kernel.org/show_bug.cgi?id=189851
+        msg "Fix https://bugzilla.kernel.org/show_bug.cgi?id=189851"
+        patch -p1 -i "${srcdir}/net_handle_no_dst_on_skb_in_icmp6_send.patch"     
 
     ### Patch source with BFQ
         msg "Patching source with BFQ patches"
@@ -479,6 +484,7 @@ sha512sums=('a48a065f21e1c7c4de4cf8ca47b8b8d9a70f86b64e7cfa6e01be490f78895745b9c
             'd6faa67f3ef40052152254ae43fee031365d0b1524aa0718b659eb75afc21a3f79ea8d62d66ea311a800109bed545bc8f79e8752319cd378eef2cbd3a09aba22'
             '2dc6b0ba8f7dbf19d2446c5c5f1823587de89f4e28e9595937dd51a87755099656f2acec50e3e2546ea633ad1bfd1c722e0c2b91eef1d609103d8abdc0a7cbaf'
             'fd5800dcc1b9e7825892dfaedf78d9b64f354695992c9a1b0014e66664c6f0f4c80989439df360c994aab03dc4aa1f4e3481f153a6b4383c9e39da93c8d235d0'
+            'c53bd47527adbd2599a583e05a7d24f930dc4e86b1de017486588205ad6f262a51a4551593bc7a1218c96541ea073ea03b770278d947b1cd0d2801311fcc80e5'
             '3889679e288d51f6fecc7ed6581ccde34acbf1e4861f5c9ca237a1ad13158502757d3fc457d7b6caf1c8c99c9dba842265004154a71cffb8ec14e1030e49e312'
             '3c3f3b6407d9a1a63cd91c2b5c35e6c932afa5bf33f1b2e8a530dbd9eacda8c8f956616c4cc9228657624da58e354ba5714252237d84ff3386fd65cf44f06ddc')
             
