@@ -1,10 +1,10 @@
 # Maintainer: Wieland Hoffmann <the_mineo@web.de>
 pkgname=chromaprint-git
-pkgver=v1.3.1.r5.9e30d9c
+pkgver=v1.4.r14.a81b23a
 pkgrel=1
 pkgdesc="Client library, written in C++, for extracting audio fingerprints. "
 arch=('i686' 'x86_64')
-url="http://wiki.acoustid.org/wiki/Chromaprint"
+url="https://acoustid.org/chromaprint"
 license=('LGPL')
 provides=('chromaprint')
 conflicts=('chromaprint-bzr' 'chromaprint')
