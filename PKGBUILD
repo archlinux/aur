@@ -23,7 +23,7 @@ sha256sums=('SKIP'
             '4954c0de00d6701d37c15c73d3509d0d91e67339c08afa3b273e9343dfd5cc61'
             'f82724678f8d3912f3632dc150945a5a88fc1fde79267c4c270b97343cabfd3a'
             '6470dfabd982109638c2e9fc01acca51dc1109ce07aec261dbc4c86ead9f9927'
-            '9d7b9c5a3751e6fbbc1a2f5c092ba6fad610251db0009afde98290998ae9b949')
+            '41e907de000d6b57c7788229a36ff4b247de928597401631e2b1036fdf97aa77')
 
 build() {
 	cd "${srcdir}"/${_pkgname}
