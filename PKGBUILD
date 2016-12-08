@@ -11,13 +11,13 @@
 _qt_module=qtscxml
 pkgname="mingw-w64-qt5-scxml"
 pkgver=5.7.0
-pkgrel=2
+pkgrel=3
 arch=('i686' 'x86_64')
 pkgdesc="Static and runtime integration of SCXML models into Qt code (mingw-w64)"
 depends=('mingw-w64-qt5-declarative')
 makedepends=('mingw-w64-gcc')
 options=('!strip' '!buildflags' 'staticlibs')
-license=('GPL3' 'LGPL')
+license=('GPL3' 'LGPL3' 'FDL' 'custom')
 url="https://www.qt.io/"
 _pkgfqn="${_qt_module}-opensource-src-${pkgver}"
 source=("https://download.qt.io/official_releases/qt/${pkgver:0:3}/${pkgver}/submodules/${_pkgfqn}.tar.xz")
