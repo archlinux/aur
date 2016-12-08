@@ -1,6 +1,6 @@
 # former Maintainer: Bjoern Franke <bjo@nord-west.org>
 pkgname=hibiscus
-pkgver=2.6.18
+pkgver=2.6.19
 _pkgver=2.6
 pkgrel=1
 pkgdesc="HBCI banking plugin for jameica."
@@ -13,7 +13,7 @@ optdepends=('pcsclite')
 options=('!strip')
 install=hibiscus.install
 source=("${pkgname}-${pkgver}::https://www.willuhn.de/projects/hibiscus/releases/${_pkgver}/${pkgname}.zip" "hibiscus.desktop")
-sha512sums=('07c38fb025b4509be0fa7a94ddc2edf48704c9aec67137996e6fa9338d82b03aa0b0ba6e8d8212160350fae67948f892d7002a52f3e24cfdcaf9b601fe849bab'
+sha512sums=('37a029b6c042736c0bb807e8c01d2b77e2cf020c8f4d1ff66e65fb880210d3a6d2249c41bca5095e620c48691284b98268476aaf3cb29d749f6fe946dea312c5'
             'ceea9cc5cf438893b2f5dfe46f46840448353f35719216ccca0b8dd12369d4e3c91d393c7c8b5b842a64537c61864ce8ca48e1895bb3f41c5083794399a21925')
 
 package() {
