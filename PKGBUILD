@@ -23,13 +23,13 @@
 pkgname=ffmpeg-full-nvenc
 _pkgbasename=ffmpeg
 pkgver=3.2.2
-pkgrel=3
+pkgrel=4
 epoch=1
 pkgdesc="Record, convert, and stream audio and video (all codecs including Nvidia NVENC)"
 arch=('i686' 'x86_64')
 url="http://ffmpeg.org/"
 license=('GPL' 'custom:UNREDISTRIBUTABLE')
-depends=('alsa-lib' 'bzip2' 'celt' 'flite' 'fontconfig' 'frei0r-plugins'
+depends=('alsa-lib' 'bzip2' 'celt' 'chromaprint-fftw' 'flite' 'fontconfig' 'frei0r-plugins'
          'fribidi' 'glibc' 'gnutls' 'gsm' 'jack' 'kvazaar' 'ladspa' 'lame' 'libass' 
          'libavc1394' 'libbluray' 'libbs2b' 'libcaca' 'libcdio-paranoia' 'libdc1394'
          'libebur128' 'libfdk-aac' 'libgme' 'libiec61883' 'libilbc' 'libmfx-git' 
@@ -51,11 +51,18 @@ provides=('libavcodec.so' 'libavdevice.so' 'libavfilter.so' 'libavformat.so'
           'libavresample.so' 'libavutil.so' 'libpostproc.so' 'libswresample.so'
           'libswscale.so' 'ffmpeg' 'qt-faststart')
 source=(https://ffmpeg.org/releases/$_pkgbasename-$pkgver.tar.xz{,.asc}
-        'UNREDISTRIBUTABLE.txt')
+        'UNREDISTRIBUTABLE.txt'
+        'chromaprint1.4.patch')
 validpgpkeys=('FCF986EA15E6E293A5644F10B4322F04D67658D8')
 sha256sums=('3f01bd1fe1a17a277f8c84869e5d9192b4b978cb660872aa2b54c3cc8a2fedfc'
             'SKIP'
-            'e0c1b126862072a71e18b9580a6b01afc76a54aa6e642d2c413ba0ac9d3010c4')
+            'e0c1b126862072a71e18b9580a6b01afc76a54aa6e642d2c413ba0ac9d3010c4'
+            '0fd1fa85ed784191b20683e9309a4ac7e4464249de13fe42676e2445320afb94')
+
+prepare() {
+  cd "$_pkgbasename-$pkgver"
+  patch -p1 < ../chromaprint1.4.patch
+}
 
 build() {
   cd $_pkgbasename-$pkgver
@@ -109,7 +116,7 @@ build() {
     \
     --enable-avisynth \
     --enable-audiotoolbox \
-    --disable-chromaprint \
+    --enable-chromaprint \
     --enable-decoder=atrac3 \
     --enable-decoder=atrac3p \
     --enable-bzlib \
