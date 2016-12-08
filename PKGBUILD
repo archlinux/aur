@@ -1,9 +1,10 @@
 # Maintainer: surefire@cryptomile.net
 
 pkgname=tor-torrc.d
-pkgdesc='Collects separate configurations from /etc/tor/torrc.d/*.torrc into a single torrc before running tor service'
 pkgver=1
 pkgrel=2
+pkgdesc='Collects separate configurations from /etc/tor/torrc.d/*.torrc into a single torrc before running tor service'
+url='https://aur.archlinux.org/packages/tor-torrc.d'
 arch=('any')
 license=('MIT')
 depends=('tor')
