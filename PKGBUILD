@@ -12,7 +12,7 @@ makedepends=("rubygems")
 source=("http://gems.rubyforge.org/gems/${_gemname}-${pkgver}.gem")
 noextract=("${_gemname}-${pkgver}.gem")
 options=(!strip)
-sha512sums=('0cd9314ad551128d3d9dd234b3998ed8a96d1a038ed92288485538873be76e5034233e205f16491031ebdade9501593133ea8bfd7b0288bfd83c03de034a5bc7')
+sha512sums=('3e4725c960e8f404f9702323deec6d77a3ef8bcaba9b679483c7de2be1ea327a2a8a7f67cb6beaa1a3c473e573600cc7b228aceceaa37f0a522cf9b2892e0351')
 
 package() {
 	local _gemdir="$(ruby -rubygems -e'puts Gem.default_dir')"
