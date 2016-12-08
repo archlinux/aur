@@ -8,12 +8,14 @@
 # Includes dynamic and static versions; if only one version is requried, just
 # set $NO_STATIC_LIBS or $NO_SHARED_LIBS.
 
+# All patches are managed at https://github.com/Martchus/qtdeclarative
+
 _qt_module=qtdeclarative
 pkgname=mingw-w64-qt5-declarative
 pkgver=5.7.0
-pkgrel=2
+pkgrel=6
 arch=('i686' 'x86_64')
-pkgdesc="Classes for QML and JavaScript languages (mingw-w64)"
+pkgdesc='Classes for QML and JavaScript languages (mingw-w64)'
 depends=('mingw-w64-qt5-base')
 makedepends=('mingw-w64-gcc' 'python')
 options=(!strip !buildflags staticlibs)
@@ -22,11 +24,13 @@ license=('GPL3' 'LGPL3' 'FDL' 'custom')
 url="https://www.qt.io/"
 _pkgfqn="${_qt_module}-opensource-src-${pkgver}"
 source=("https://download.qt.io/official_releases/qt/${pkgver:0:3}/${pkgver}/submodules/${_pkgfqn}.tar.xz"
-        "qt5-build-qmldevtools-as-shared-library.patch"
-        "qt5-declarative-gcc6.patch")
+        '0001-Build-QML-dev-tools-as-shared-library.patch'
+        '0002-Fix-i686-segfaults-with-GCC-6.patch'
+        '0003-Ensure-static-plugins-are-exported.patch')
 md5sums=('0d9e461aa54dba4793253fa2eb501f9b'
-         '8f90ec8c2379b85de0b04847865b230c'
-         'fb2a2a118b356a0a4635111f2e0b0ee6')
+         '1d70fdbe290a1c0d2562cd975224c219'
+         'a11b3a584566e144a821c66f8ec53e26'
+         '8d6740a6fad763f2c42c9c56022f8567')
 
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
 [[ $NO_STATIC_LIBS ]] || \
@@ -39,11 +43,10 @@ _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
 prepare() {
   cd "${srcdir}/${_pkgfqn}"
 
-  # Build native/non-cross library Qt5QmlDevTools as shared library
-  patch -p1 -i "${srcdir}"/qt5-build-qmldevtools-as-shared-library.patch
-
-  # Fix i686 segfaults with GCC 6 https://bugreports.qt.io/browse/QTBUG-52057 (Fedora patch)
-  patch -p1 -i "${srcdir}"/qt5-declarative-gcc6.patch
+  # Apply patches; further descriptions can be found in patch files itself
+  for patch in "$srcdir/"*.patch; do
+    patch -p1 -i "$patch"
+  done
 }
 
 build() {
