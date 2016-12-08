@@ -1,5 +1,5 @@
 pkgname=nodejs-lts-boron
-pkgver=6.9.1
+pkgver=6.9.2
 pkgrel=1
 pkgdesc='Evented I/O for V8 javascript (LTS release: Boron)'
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ optdepends=('npm: nodejs package manager')
 provides=('nodejs')
 conflicts=('nodejs')
 source=("https://nodejs.org/dist/v$pkgver/node-v$pkgver.tar.xz")
-sha256sums=('0bdd8d1305777cc8cd206129ea494d6c6ce56001868dd80147aff531d6df0729')
+sha256sums=('f41b320b37ce23a34dbc597040e71535ea4f6baa2342bc526bb45f5f9aa9c9fb')
 
 prepare() {
   cd node-v$pkgver
