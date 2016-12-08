@@ -1,0 +1,27 @@
+From 41f31abf629018e7e937aca6edbec022a01a1522 Mon Sep 17 00:00:00 2001
+From: Martchus <martchus@gmx.net>
+Date: Sun, 18 Sep 2016 14:24:01 +0200
+Subject: [PATCH 14/26] Fix linking against static pcre
+
+---
+ src/corelib/tools/qregularexpression.cpp | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/src/corelib/tools/qregularexpression.cpp b/src/corelib/tools/qregularexpression.cpp
+index e7f86dd..63fc683 100644
+--- a/src/corelib/tools/qregularexpression.cpp
++++ b/src/corelib/tools/qregularexpression.cpp
+@@ -54,6 +54,10 @@
+ #include <QtCore/qatomic.h>
+ #include <QtCore/qdatastream.h>
+ 
++#ifdef QT_STATIC
++#define PCRE_STATIC
++#endif
++
+ #include <pcre.h>
+ 
+ QT_BEGIN_NAMESPACE
+-- 
+2.10.2
+

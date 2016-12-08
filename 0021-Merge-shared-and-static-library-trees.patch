@@ -1,0 +1,122 @@
+From 9aec74947e4726660486236f083ca485f05625c7 Mon Sep 17 00:00:00 2001
+From: Martchus <martchus@gmx.net>
+Date: Sun, 18 Sep 2016 18:45:08 +0200
+Subject: [PATCH 21/26] Merge shared and static library trees
+
+Allow installation of shared and static build in the same prefix
+---
+ configure                         |  6 ++++++
+ mkspecs/features/default_post.prf |  8 ++++++++
+ mkspecs/features/qt.prf           | 12 ++++++++++++
+ mkspecs/features/spec_pre.prf     | 11 ++++++++---
+ qmake/generators/makefile.cpp     |  9 ++++++---
+ 5 files changed, 40 insertions(+), 6 deletions(-)
+
+diff --git a/configure b/configure
+index cf879ff..b4c75c6 100755
+--- a/configure
++++ b/configure
+@@ -7181,6 +7181,12 @@ host_build {
+ }
+ QT_CONFIG += $QT_CONFIG
+ 
++contains(CONFIG, static) {
++    CONFIG -= shared
++    QT_CONFIG += static jpeg gif
++    QT_CONFIG -= shared
++}
++
+ #versioning
+ QT_VERSION = $QT_VERSION
+ QT_MAJOR_VERSION = $QT_MAJOR_VERSION
+diff --git a/mkspecs/features/default_post.prf b/mkspecs/features/default_post.prf
+index e7e9a5b..799278d 100644
+--- a/mkspecs/features/default_post.prf
++++ b/mkspecs/features/default_post.prf
+@@ -120,3 +120,11 @@ c++11|c++14|c++1z {
+ 
+ QMAKE_INCDIR += $$QMAKE_INCDIR_POST
+ QMAKE_LIBDIR += $$QMAKE_LIBDIR_POST
++
++win32:contains(CONFIG, static) {
++    DEFINES += QT_STATIC QT_DESIGNER_STATIC
++    DEFINES -= QT_SHARED
++    contains(QT_CONFIG, angle): DEFINES += QT_OPENGL_ES_2_ANGLE_STATIC
++    QMAKE_LFLAGS += -static -static-libstdc++ -static-libgcc
++    QMAKE_EXT_PRL=.static.prl # prevents qmake from finding the prl file for shared libs
++}
+diff --git a/mkspecs/features/qt.prf b/mkspecs/features/qt.prf
+index 03ec36a..c4d7beb 100644
+--- a/mkspecs/features/qt.prf
++++ b/mkspecs/features/qt.prf
+@@ -150,6 +150,18 @@ for(ever) {
+             !isEmpty(MODULE_WINRT_CAPABILITIES_DEVICE): \
+                 WINRT_MANIFEST.capabilities_device_default += $$MODULE_WINRT_CAPABILITIES_DEVICE
+         }
++
++        win32:CONFIG(static) {
++            isEqual(MODULE_NAME, QtCore) {
++                LIBS$$var_sfx += $$QMAKE_LIBS_CORE
++            } else:isEqual(MODULE_NAME, QtGui) {
++                LIBS$$var_sfx += $$QMAKE_LIBS_GUI
++            } else:isEqual(MODULE_NAME, QtNetwork) {
++                LIBS$$var_sfx += $$QMAKE_LIBS_NETWORK
++            } else:isEqual(MODULE_NAME, QtOpenGL) {
++                LIBS$$var_sfx += $$QMAKE_LIBS_OPENGL
++            }
++        }
+     }
+     !isEmpty(BAD_QT):error("Unknown module(s) in QT$$var_sfx: $$replace(BAD_QT, _private$, -private)")
+ 
+diff --git a/mkspecs/features/spec_pre.prf b/mkspecs/features/spec_pre.prf
+index 090f348..05d2863 100644
+--- a/mkspecs/features/spec_pre.prf
++++ b/mkspecs/features/spec_pre.prf
+@@ -14,9 +14,14 @@ QMAKE_EXT_H             = .h .hpp .hh .hxx
+ QMAKE_EXT_H_MOC         = .cpp
+ QMAKE_EXT_JS            = .js
+ QMAKE_EXT_LEX           = .l
+-QMAKE_EXT_LIBTOOL       = .la
+-QMAKE_EXT_PKGCONFIG     = .pc
+-QMAKE_EXT_PRL           = .prl
++QMAKE_EXT_PKGCONFIG = .pc
++contains(CONFIG, static) {
++    QMAKE_EXT_LIBTOOL   = .static.la
++    QMAKE_EXT_PRL       = .static.prl
++} else {
++    QMAKE_EXT_LIBTOOL   = .la
++    QMAKE_EXT_PRL       = .prl
++}
+ QMAKE_EXT_UI            = .ui
+ QMAKE_EXT_YACC          = .y
+ 
+diff --git a/qmake/generators/makefile.cpp b/qmake/generators/makefile.cpp
+index b4792fe..edd7918 100644
+--- a/qmake/generators/makefile.cpp
++++ b/qmake/generators/makefile.cpp
+@@ -3166,6 +3166,9 @@ MakefileGenerator::pkgConfigFileName(bool fixify, bool onlyPrependDestdir)
+     if (project->isActiveConfig("debug")) {
+         ret += "d";
+     }
++    if (project->isActiveConfig("staticlib")) {
++        ret.insert(0, QStringLiteral("Static"));
++    }
+     ret += Option::pkgcfg_ext;
+     QString subdir = project->first("QMAKE_PKGCONFIG_DESTDIR").toQString();
+     if(!subdir.isEmpty()) {
+@@ -3339,9 +3342,9 @@ MakefileGenerator::writePkgConfigFile()
+     t << endl;
+ 
+     // requires
+-    const QString requires = project->values("QMAKE_PKGCONFIG_REQUIRES").join(' ');
+-    if (!requires.isEmpty()) {
+-        t << "Requires: " << requires << endl;
++    t << "Requires:";
++    for (const auto &required : project->values("QMAKE_PKGCONFIG_REQUIRES")) {
++        t << (project->isActiveConfig("staticlib") ? QStringLiteral(" Static") : QStringLiteral(" ")) << required.toQString();
+     }
+ 
+     t << endl;
+-- 
+2.10.2
+
