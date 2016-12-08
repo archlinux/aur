@@ -1,0 +1,21 @@
+diff -Naur ./bs-2.10.orig/Makefile ./bs-2.10/Makefile
+--- ./bs-2.10.orig/Makefile	2016-12-08 10:54:14.164589590 -0500
++++ ./bs-2.10/Makefile	2016-12-08 10:54:46.243780672 -0500
+@@ -5,7 +5,7 @@
+ CC = gcc
+ 
+ # DESTDIR support
+-DESTDIR = 
++DESTDIR =
+ 
+ bs: bs.c
+ 	$(CC) $(CFLAGS) -o bs bs.c -lncurses
+@@ -35,7 +35,7 @@
+ 	install -m 0644 bs.xml $(DESTDIR)/usr/share/appdata/
+ 
+ uninstall:
+-	rm -f /usr/bin/bs /usr/share/man/man6/bs.6
++	rm -f $(DESTDIR)/usr/bin/bs $(DESTDIR)/usr/share/man/man6/bs.6
+ 
+ SOURCES = README COPYING NEWS control bs.c Makefile bs.xml battleship.png bs.desktop
+ 
