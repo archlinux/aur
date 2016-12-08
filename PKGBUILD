@@ -2,7 +2,7 @@
 
 pkgname=ftequake-svn
 _svndir=trunk
-pkgver=r5020
+pkgver=r5029
 pkgrel=1
 pkgdesc="FTE QuakeWorld. Engine for Quake 1,2,3 and Hexen 2 (svn-latest)"
 arch=('i686' 'x86_64')
@@ -29,7 +29,7 @@ md5sums=('SKIP'
 	 '8dd76f7027810a6d20fa1db654151e9a'
 	 '0c1246661ff0e3c27ed0f31ae65bb6ea')
 
-pkver() {
+pkgver() {
 
   cd $_svndir
   local ver="$(svnversion)"
