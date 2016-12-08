@@ -11,13 +11,13 @@
 _qt_module=qtsensors
 pkgname=mingw-w64-qt5-sensors
 pkgver=5.7.0
-pkgrel=2
+pkgrel=3
 arch=('any')
 pkgdesc="Provides access to sensor hardware and motion gesture recognition (mingw-w64)"
 depends=(mingw-w64-qt5-base mingw-w64-qt5-declarative)
 makedepends=(mingw-w64-gcc)
 options=(!strip !buildflags staticlibs)
-license=("custom, FDL, GPL3, LGPL")
+license=('GPL3' 'LGPL' 'FDL' 'custom')
 groups=(mingw-w64-qt mingw-w64-qt5)
 url="https://www.qt.io/"
 _pkgfqn="${_qt_module}-opensource-src-${pkgver}"
