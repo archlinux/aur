@@ -14,7 +14,7 @@ sha256sums=('d55b30c25e54f5ef8f6b15b09c8fd5f37e718ad5c3f8bc3115ada19ea9b4bc68'
             '852bcc033a46c62f99fb5ffd43b3241ba2c0c440c6034aa2114505f2c4f03c4a')
 
 package() {
-    mkdir -p "${pkgdir}"/usr/share/keepass/plugins
-    install -m644 KeePassQuickUnlock.plgx "${pkgdir}"/usr/share/keepass/plugins/
-    install -Dm644 LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
+    mkdir -p "${pkgdir}/usr/share/keepass/plugins"
+    install -m644 KeePassQuickUnlock.plgx "${pkgdir}/usr/share/keepass/plugins/"
+    install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
