@@ -12,10 +12,12 @@
 # For QWebViewPlugin, add mingw-w64-qt5-webkit to dependencies
 # For QAxWidgetPlugin, add mingw-w64-qt5-activeqt to dependencies
 
+# All patches are managed at https://github.com/Martchus/qttools
+
 _qt_module=qttools
 pkgname="mingw-w64-qt5-tools"
 pkgver=5.7.0
-pkgrel=2
+pkgrel=3
 arch=('i686' 'x86_64')
 pkgdesc="A cross-platform application and UI framework (Development Tools, QtHelp; mingw-w64)"
 depends=('mingw-w64-qt5-declarative')
@@ -25,9 +27,9 @@ license=('GPL3' 'LGPL3' 'FDL' 'custom')
 url="https://www.qt.io/"
 _pkgfqn="${_qt_module}-opensource-src-${pkgver}"
 source=("https://download.qt.io/official_releases/qt/${pkgver:0:3}/${pkgver}/submodules/${_pkgfqn}.tar.xz"
-        "qt5-fix-linguist-cmake-macro.patch")
+        '0001-Fix-linguist-macro.patch')
 md5sums=('29eb3fd31582b5801e264c62d1158553'
-         'ffc29956ebb79ba4fe8cac0b447c4214')
+         '3528c03fc5332ca448e9114bd6be78b1')
 
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
 [[ $NO_STATIC_LIBS ]] || \
@@ -40,10 +42,10 @@ _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
 prepare() {
   cd "${srcdir}/${_pkgfqn}"
 
-  # Somehow the linguist macro stopped working for me. CMake always appended
-  # and extra Qt5::lupdate/Qt5::lrelease to the command when invoking lupdate/lrelease.
-  # This patch resolves the IMPORTED_LOCATION manually which seems to work.
-  patch -p0 -i ../qt5-fix-linguist-cmake-macro.patch
+  # Apply patches; further descriptions can be found in patch files itself
+  for patch in "$srcdir/"*.patch; do
+    patch -p1 -i "$patch"
+  done
 }
 
 build() {
