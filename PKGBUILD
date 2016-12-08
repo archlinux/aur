@@ -2,7 +2,7 @@
 
 _gemname=chunky_png
 pkgname=ruby-${_gemname}
-pkgver=1.3.7
+pkgver=1.3.8
 pkgrel=1
 pkgdesc='Read/write access to PNG images in pure Ruby'
 arch=('any')
