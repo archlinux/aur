@@ -1,0 +1,13 @@
+pkgbase = pacmantheme
+	pkgdesc = pacmantheme - play the pacman theme song with the motherboard buzzer
+	pkgver = 20161207
+	pkgrel = 1
+	url = https://raw.githubusercontent.com/andrea993/pacmantheme/master/pacmantheme
+	arch = any
+	license = GPL2
+	depends = ruby
+	source = https://raw.githubusercontent.com/andrea993/pacmantheme/master/pacmantheme
+	sha256sums = 27a895aa47bd30eea62dfb33f0e23c55ac3764cabc8f0cfdbba404f6cabec5a0
+
+pkgname = pacmantheme
+
