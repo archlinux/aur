@@ -1,0 +1,13 @@
+pkgbase = getopts
+	pkgdesc = getopts(1) for fish
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://github.com/fisherman/getopts
+	arch = any
+	license = MIT
+	depends = fish
+	source = https://github.com/fisherman/getopts/archive/1.1.0.tar.gz
+	md5sums = 860ececc55ffe333b09005339f695640
+
+pkgname = getopts
+
