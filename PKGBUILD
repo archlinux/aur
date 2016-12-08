@@ -8,7 +8,7 @@ arch=('x86_64' 'x86' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/clawoflight/$pkgname"
 license=('custom:MPL2')
 
-depends=(firejail geth vim)
+depends=(bc firejail geth vim)
 makedepends=(pandoc)
 checkdepends=(shellcheck)
 #optdepends=()
