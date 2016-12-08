@@ -6,7 +6,7 @@
 
 pkgbase=nim-git
 pkgname=('nim-git' 'nimble-git' 'nimsuggest-git')
-pkgver=20161201
+pkgver=20161208
 pkgrel=1
 arch=('i686' 'x86_64')
 groups=('nim')
@@ -77,7 +77,6 @@ package_nim-git() {
   ./koch install "$pkgdir"
   install -Dm 755 bin/{nim,nimgrep} -t "$pkgdir/usr/bin"
 
-
   cd "$pkgdir/nim"
   install -dm 755 "$pkgdir/etc" "$pkgdir/usr/lib/nim"
   find lib -mindepth 1 -maxdepth 1 -exec \
@@ -111,12 +110,10 @@ package_nimble-git() {
   cd "$srcdir/nimble"
 
   msg2 'Installing Nimble license...'
-  install -Dm 644 "$srcdir/nimble/license.txt" \
-          -t "$pkgdir/usr/share/licenses/nimble"
+  install -Dm 644 license.txt -t "$pkgdir/usr/share/licenses/nimble"
 
   msg2 'Installing Nimble documentation...'
-  install -Dm 644 changelog.markdown readme.markdown todo.markdown \
-          -t "$pkgdir/usr/share/doc/nimble"
+  install -Dm 644 *.markdown -t "$pkgdir/usr/share/doc/nimble"
 
   msg2 'Installing Nimble...'
   install -Dm 755 "$srcdir/Nim/bin/nimble" -t "$pkgdir/usr/bin"
