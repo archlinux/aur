@@ -2,7 +2,7 @@
 
 pkgname=linenoise
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A small self-contained alternative to readline and libedit"
 arch=('i686' 'x86_64')
 url="https://github.com/antirez/linenoise"
@@ -18,5 +18,6 @@ build() {
 
 package() {
 	cd "$pkgname-$pkgver"
+    install -D -m644 ./linenoise.h $pkgdir/usr/include/linenoise.h
  	install -D -m644 ./liblinenoise.so $pkgdir/usr/lib/liblinenoise.so
 }
