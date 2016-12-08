@@ -1,7 +1,7 @@
 diff -uprNEBZ --suppress-blank-empty a/src/main.cpp b/src/main.cpp
---- a/src/main.cpp	2015-11-21 01:53:20.445038202 -0600
-+++ b/src/main.cpp	2015-11-21 01:57:13.407056516 -0600
-@@ -64,7 +64,7 @@ along with Freeminer.  If not, see <http
+--- a/src/main.cpp	2016-12-07 18:10:06.000000000 -0600
++++ b/src/main.cpp	2016-12-07 23:39:37.707828396 -0600
+@@ -57,7 +57,7 @@ along with Freeminer.  If not, see <http
 
  #if USE_ENET
  // todo: move to connection

@@ -4,7 +4,7 @@
 
 _pkgname=freeminer
 pkgname=${_pkgname}-git
-pkgver=0.4.13.7.1695.gaf93462
+pkgver=0.4.14.8.769.ge9e73d7
 pkgrel=2
 pkgdesc='An open source sandbox game inspired by Minecraft. Development version.'
 arch=('i686' 'x86_64')
@@ -23,36 +23,36 @@ source=(
 	"git+https://github.com/${_pkgname}/${_pkgname}.git"
 	"git+https://github.com/${_pkgname}/default.git"
 	"git+https://github.com/kaadmy/pixture.git"
-	'enet_shared_lib.patch'
+	'fix_enet_lib.patch'
 )
 sha512sums=(
 	'SKIP'
 	'SKIP'
 	'SKIP'
-	'ac51ee33df27f9fb3bdf16c50b2a9da602d6c55bba7afe21492d0056cdfefa5f84ccfb306c23bd2bcf22066ca3ef2a952110ba0de350602393754f0466383004'
+	'8bdd0226cce1a8773feb840f90c392481d5486ef2bca5b144c1626df33a0bda861d93ccfb451eb5013aa42ab6fe2b029f44c02e9b85b32ed80a6668985deeb62'
 )
 
 pkgver() {
 	# Updating package version
 	cd "${srcdir}"/${_pkgname}
-	git describe --long --tags | sed 's/-/./g'
+	git describe --long --tags 2>/dev/null | sed 's/-/./g'
 }
 
 prepare() {
 	cd "${srcdir}"/${_pkgname}
 	
 	# Use Arch's enet lib
-	patch -Np1 < ../enet_shared_lib.patch
+	patch -Np1 < ../fix_enet_lib.patch
 	
-	# Remove src/msgpack-c src/enet and src/jsoncpp submodules
-	git submodule deinit src/{msgpack-c,enet,jsoncpp}
-	git rm --cached src/{msgpack-c,enet,jsoncpp}
-	git config -f .gitmodules --remove-section submodule.src/msgpack-c
-	git config -f .gitmodules --remove-section submodule.src/enet
-	git config -f .gitmodules --remove-section submodule.src/jsoncpp
+	# Remove msgpack-c, enet and jsoncpp submodules
+	git submodule deinit src/external/{msgpack-c,enet,jsoncpp}
+	git rm --cached src/external/{msgpack-c,enet,jsoncpp}
+	git config -f .gitmodules --remove-section submodule.src/external/msgpack-c
+	git config -f .gitmodules --remove-section submodule.src/external/enet
+	git config -f .gitmodules --remove-section submodule.src/external/jsoncpp
 	git add .gitmodules
 	
-	# Config submodules
+	# Configure submodules
 	git config submodule.games/default.url "${srcdir}"/default
 	git config submodule.games/pixture.url "${srcdir}"/pixture
 	git submodule update --init
