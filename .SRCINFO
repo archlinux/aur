@@ -1,0 +1,21 @@
+pkgbase = vp
+	pkgdesc = Virtual Pascal IDE & compiler
+	pkgver = 2.1.279
+	pkgrel = 1
+	url = http://vpascal.ning.com/
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = unrar
+	depends = lib32-glibc
+	options = !strip
+	backup = opt/vp21/bin.lnx/vp.vpo
+	source = vp21b279.zip::http://outpostbbs.net/files/vp21b279.zip
+	md5sums = ed0ea436b15cba55c35f72ffbe87f26c
+	sha1sums = bcc679532668fae986fe9c194a5331cbb7863a29
+	sha224sums = 6d23cb93787fb475f09cecfa3523fc5d2e690aa56b48869957178f93
+	sha256sums = 786b4f5da3863ea4cedc614aaf94c90004dc67b7e1ae09d8c829a84199262ac9
+	depends_i686 = glibc
+
+pkgname = vp
+
