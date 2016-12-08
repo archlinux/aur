@@ -1,0 +1,25 @@
+From 96cc0debf89c8c17413cc0d28a57f962ce20653e Mon Sep 17 00:00:00 2001
+From: Martchus <martchus@gmx.net>
+Date: Sun, 18 Sep 2016 18:58:25 +0200
+Subject: [PATCH 25/26] Use shared/static version of PostgreSQL
+
+---
+ config.tests/unix/psql/psql.pro | 6 +++++-
+ 1 file changed, 5 insertions(+), 1 deletion(-)
+
+diff --git a/config.tests/unix/psql/psql.pro b/config.tests/unix/psql/psql.pro
+index d0f3761..58f1638 100644
+--- a/config.tests/unix/psql/psql.pro
++++ b/config.tests/unix/psql/psql.pro
+@@ -1,3 +1,7 @@
+ SOURCES = psql.cpp
+ CONFIG -= qt dylib
+-LIBS *= -lpq
++contains(CONFIG, static) {
++    LIBS *= -lpq -lintl -liconv -lssl -lcrypto -lwldap32 -lshfolder -lwsock32 -lws2_32 -lsecur32 -lgdi32
++} else {
++    LIBS *= -lpq
++}
+-- 
+2.10.2
+

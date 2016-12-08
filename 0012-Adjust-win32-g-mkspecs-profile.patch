@@ -1,16 +1,30 @@
---- mkspecs/win32-g++/qmake.conf.orig	2016-06-14 16:22:02.779947341 +0200
-+++ mkspecs/win32-g++/qmake.conf	2016-06-14 16:38:56.298752668 +0200
-@@ -25,7 +25,7 @@
+From c92196a9e56f233e4db9256496361a98764d6bcf Mon Sep 17 00:00:00 2001
+From: Martchus <martchus@gmx.net>
+Date: Sun, 18 Sep 2016 14:15:08 +0200
+Subject: [PATCH 12/26] Adjust win32-g++ mkspecs profile
+
+- Use default compile flags for mingw-w64 packages
+  under Arch Linux
+- Adjust libraries and tools
+---
+ mkspecs/win32-g++/qmake.conf | 25 +++++++++++++++----------
+ 1 file changed, 15 insertions(+), 10 deletions(-)
+
+diff --git a/mkspecs/win32-g++/qmake.conf b/mkspecs/win32-g++/qmake.conf
+index c5f6353..db92487 100644
+--- a/mkspecs/win32-g++/qmake.conf
++++ b/mkspecs/win32-g++/qmake.conf
+@@ -26,7 +26,7 @@ QMAKE_LEX               = flex
  QMAKE_LEXFLAGS          =
- QMAKE_YACC              = byacc
+ QMAKE_YACC              = bison -y
  QMAKE_YACCFLAGS         = -d
 -QMAKE_CFLAGS            = -pipe -fno-keep-inline-dllexport
 +QMAKE_CFLAGS            = -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions --param=ssp-buffer-size=4 -fno-keep-inline-dllexport $${CROSS_COMPILE_CFLAGS}
  QMAKE_CFLAGS_DEPS       = -M
  QMAKE_CFLAGS_WARN_ON    = -Wall -Wextra
  QMAKE_CFLAGS_WARN_OFF   = -w
-@@ -67,10 +67,10 @@
-
+@@ -74,10 +74,10 @@ QMAKE_RUN_CXX_IMP       = $(CXX) -c $(CXXFLAGS) $(INCPATH) -o $@ $<
+ 
  QMAKE_LINK              = $${CROSS_COMPILE}g++
  QMAKE_LINK_C            = $${CROSS_COMPILE}gcc
 -QMAKE_LFLAGS            =
@@ -22,15 +36,15 @@
  QMAKE_LFLAGS_DEBUG      =
  QMAKE_LFLAGS_CONSOLE    = -Wl,-subsystem,console
  QMAKE_LFLAGS_WINDOWS    = -Wl,-subsystem,windows
-@@ -95,21 +95,26 @@
+@@ -95,21 +95,26 @@ QMAKE_EXTENSION_STATICLIB = a
  QMAKE_LIB_EXTENSIONS    = a dll.a
-
+ 
  QMAKE_LIBS              =
 -QMAKE_LIBS_CORE         = -lole32 -luuid -lws2_32 -ladvapi32 -lshell32 -luser32 -lkernel32
 -QMAKE_LIBS_GUI          = -lgdi32 -lcomdlg32 -loleaut32 -limm32 -lwinmm -lws2_32 -lole32 -luuid -luser32 -ladvapi32
 -QMAKE_LIBS_NETWORK      = -lws2_32
 +QMAKE_LIBS_CORE         = -lole32 -luuid -lws2_32 -ladvapi32 -lshell32 -luser32 -lkernel32 -lz -lpcre16
-+QMAKE_LIBS_GUI          = -lgdi32 -lcomdlg32 -loleaut32 -limm32 -lwinmm -lws2_32 -lole32 -luuid -luser32 -ladvapi32 -ljpeg -lpng -lharfbuzz -lglib-2.0 -lintl -lwinmm
++QMAKE_LIBS_GUI          = -lgdi32 -lcomdlg32 -loleaut32 -limm32 -lwinmm -lws2_32 -lole32 -luuid -luser32 -ladvapi32 -ljpeg -lpng $$system($${CROSS_COMPILE}pkg-config --static --libs harfbuzz) $$system($${CROSS_COMPILE}pkg-config --static --libs freetype2)
 +QMAKE_LIBS_NETWORK      = -lws2_32 -lcrypt32 -ldnsapi
  QMAKE_LIBS_OPENGL       = -lglu32 -lopengl32 -lgdi32 -luser32
 -QMAKE_LIBS_OPENGL_ES2   = -l$${LIBEGL_NAME} -l$${LIBGLESV2_NAME} -lgdi32 -luser32
@@ -40,14 +54,14 @@
  QMAKE_LIBS_COMPAT       = -ladvapi32 -lshell32 -lcomdlg32 -luser32 -lgdi32 -lws2_32
 -QMAKE_LIBS_QT_ENTRY     = -lmingw32 -lqtmain
 +QMAKE_LIBS_QT_ENTRY     = -lmingw32 -lqt5main
-
+ 
 -QMAKE_IDL               = midl
 +QMAKE_IDL               = $${CROSS_COMPILE}widl
  QMAKE_LIB               = $${CROSS_COMPILE}ar -rc
  QMAKE_RC                = $${CROSS_COMPILE}windres
 +QMAKE_DLLTOOL           = $${CROSS_COMPILE}dlltool
 +QMAKE_LRELEASE          = $${CROSS_COMPILE}lrelease-qt5
-
+ 
  QMAKE_STRIP             = $${CROSS_COMPILE}strip
  QMAKE_STRIPFLAGS_LIB   += --strip-unneeded
  QMAKE_OBJCOPY           = $${CROSS_COMPILE}objcopy
@@ -56,3 +70,6 @@
 +PKG_CONFIG              = $${CROSS_COMPILE}pkg-config
 +
  load(qt_config)
+-- 
+2.10.2
+

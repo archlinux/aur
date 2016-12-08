@@ -1,0 +1,33 @@
+From 24392ab66af0cc0ed385a793921d641ef53d7afb Mon Sep 17 00:00:00 2001
+From: Martchus <martchus@gmx.net>
+Date: Sun, 18 Sep 2016 14:01:14 +0200
+Subject: [PATCH 10/26] Prevent debug library names in pkg-config files
+
+qmake generates the pkgconfig .pc files two times, once for the
+release build and once for the debug build (which we're not actually
+building in this package). For both generations the exact same
+pkgconfig file name is used. This causes references to the debug
+build ending up in the .pc files which are unwanted
+Prevent this from happening by giving the pkgconfig .pc
+files for the debug build an unique file name.
+---
+ qmake/generators/makefile.cpp | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/qmake/generators/makefile.cpp b/qmake/generators/makefile.cpp
+index a3f71ba..b4792fe 100644
+--- a/qmake/generators/makefile.cpp
++++ b/qmake/generators/makefile.cpp
+@@ -3163,6 +3163,9 @@ MakefileGenerator::pkgConfigFileName(bool fixify, bool onlyPrependDestdir)
+         if (dot != -1)
+             ret = ret.left(dot);
+     }
++    if (project->isActiveConfig("debug")) {
++        ret += "d";
++    }
+     ret += Option::pkgcfg_ext;
+     QString subdir = project->first("QMAKE_PKGCONFIG_DESTDIR").toQString();
+     if(!subdir.isEmpty()) {
+-- 
+2.10.2
+
