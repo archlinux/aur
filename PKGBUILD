@@ -51,5 +51,6 @@ package() {
 
 	# Fix for the license configuration manager
 	# https://forums.xilinx.com/t5/Installation-and-Licensing/ISE-14-7-on-CentOS-6-4-missing-libQt-Network-so-workaround/td-p/379325
-	ln -s ${pkgdir}/usr/lib64/libQtNetwork.so ${pkgdir}/usr/lib64/libQt_Network.so
+	install -d ${pkgdir}/usr/lib
+	ln -s /usr/lib/libQtNetwork.so ${pkgdir}/usr/lib/libQt_Network.so
 }
