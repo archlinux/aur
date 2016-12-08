@@ -9,13 +9,13 @@ arch=('i686' 'x86_64')
 url='http://forum.doom9.org/showthread.php?t=171379'
 license=('GPL')
 depends=('vapoursynth'
-         'libcl'
+         'opencl-icd-loader'
          )
 makedepends=('git'
              'opencl-headers'
              )
 source=("${_plug}-${pkgver}.tar.gz::https://github.com/Khanattila/KNLMeansCL/archive/v${pkgver}.tar.gz")
-sha1sums=('cebed3e2b42bba162854abc26a88dda11174165a')
+sha256sums=('cebed3e2b42bba162854abc26a88dda11174165a')
 
 build() {
   cd "KNLMeansCL-${pkgver}"
