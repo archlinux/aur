@@ -19,7 +19,7 @@ source=("http://prdownloads.sourceforge.net/sourceforge/scidavis/${pkgname}-${pk
         "https://sourceforge.net/p/scidavis/scidavis-bugs/_discuss/thread/fa133ad9/b8d8/attachment/scidavis-qwt5.patch")
 md5sums=('6b5fd39c17ed67cd64c77ac214099b2e'
          '89247212a4fdaa34894a6562fa2b2457'
-         '28877fda6842869aa07d0bec50c49fa5')
+         '4166c8637deb81bce31d5ee511586245')
 install="${pkgname}.install"
 
 prepare() {
