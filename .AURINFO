@@ -1,7 +1,7 @@
 pkgbase = videogen
 	pkgdesc = generates modelines for videocards
 	pkgver = 0.33
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.dynaweb.hu/opensource/videogen/
 	arch = i686
 	arch = x86_64
