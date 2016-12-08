@@ -4,9 +4,9 @@
 pkgname=mkosi-git
 pkgver=r108.692044d
 pkgrel=1
-pkgdesc="Build Legacy-Free OS Images"
+pkgdesc='Build Legacy-Free OS Images'
 arch=('any')
-url="https://github.com/systemd/mkosi"
+url='https://github.com/systemd/mkosi'
 license=('LGPL2.1')
 depends=('python')
 makedepends=('python-setuptools')
