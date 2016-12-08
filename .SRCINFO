@@ -1,0 +1,36 @@
+pkgbase = bro-git
+	pkgdesc = A powerful framework for network analysis and security monitoring. (IDS Intrusion Detection System)
+	pkgver = 2.5.r19.g04d41dc
+	pkgrel = 1
+	url = https://www.bro.org
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = git
+	makedepends = fakeroot
+	makedepends = binutils
+	makedepends = cmake
+	makedepends = make
+	makedepends = gcc
+	makedepends = flex
+	makedepends = bison
+	makedepends = swig
+	depends = bash
+	depends = libpcap
+	depends = openssl
+	depends = zlib
+	depends = python
+	optdepends = geoip
+	optdepends = gperftools
+	optdepends = sendmail
+	optdepends = curl
+	optdepends = actor-framework
+	backup = etc/bro/broctl.cfg
+	backup = etc/bro/networks.cfg
+	backup = etc/bro/node.cfg
+	backup = etc/bro/broccoli.conf
+	source = bro-git::git://git.bro.org/bro
+	md5sums = SKIP
+
+pkgname = bro-git
+

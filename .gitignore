@@ -1,0 +1,7 @@
+# Ignored folders
+src/
+bro-git/
+
+# Ignored files
+*.pkg.tar.xz
+
