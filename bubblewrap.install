@@ -1,30 +1,13 @@
 # vim: ft=sh ts=4 sw=4 et
 
-_kernel_has_USER_NS () {
-    local CONFIG_USER_NS
-	if [[ -r /proc/config.gz ]] ; then
-		eval "$(zgrep '^CONFIG_USER_NS=' /proc/config.gz)"
-		if [[ -n ${CONFIG_USER_NS} && ${CONFIG_USER_NS} != n ]] ; then
-            return 0
-		fi
-	fi
-    return 1
-}
-
 post_install () {
-    if _kernel_has_USER_NS ; then
-    	setcap cap_sys_admin,cap_net_admin,cap_sys_chroot,cap_setuid,cap_setgid+ep /usr/bin/bwrap
-    else
-        echo "== The /usr/bin/bwrap binary has been installed setuid root."
-        echo "   If you will be using a kernel with the USER_NS option enabled,"
-        echo "   you may want to use capabilities instead. For this, run:"
-        echo ""
-        echo "    # chmod u-s /usr/bin/bwrap"
-    	echo "    # setcap cap_sys_admin,cap_net_admin,cap_sys_chroot,cap_setuid,cap_setgid+ep \\"
-        echo "       /usr/bin/bwrap"
-        echo ""
-        chmod u+s /usr/bin/bwrap
-    fi
+    echo "== The /usr/bin/bwrap binary has been installed setuid root."
+    echo "   If you will be using a kernel with the USER_NS option enabled,"
+    echo "   you may want to use disable the setuid bit. For this, run:"
+    echo ""
+    echo "    # chmod u-s /usr/bin/bwrap"
+    echo ""
+    chmod u+s /usr/bin/bwrap
 }
 
 post_upgrade () {
