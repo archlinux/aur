@@ -6,8 +6,8 @@
 # Contributor: Angel 'angvp' Velasquez <angvp@archlinux.com.ve>
 
 pkgname=mantisbt
-pkgver=1.3.2
-pkgrel=2
+pkgver=1.3.4
+pkgrel=1
 pkgdesc='Web-based issue tracking system'
 arch=('any')
 url='https://www.mantisbt.org/'
@@ -23,7 +23,7 @@ optdepends=('apache: Web server to run MantisBT'
 backup=('etc/webapps/mantisbt/config_inc.php')
 install='mantisbt.install'
 source=("https://downloads.sourceforge.net/mantisbt/mantisbt-${pkgver}.tar.gz")
-sha256sums=('d7e9d8456cff931b298fcb8d09597323bcb39b4d2d6d90d151af7f82ccc09938')
+sha256sums=('59527902f067f6ecd3795b94719b2cc671bcc3c0b20cbc92501c9e1e646ee964')
 
 package() {
   install -dm 755 "${pkgdir}"/{etc/webapps/mantisbt,usr/share/webapps}
