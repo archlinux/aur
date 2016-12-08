@@ -1,8 +1,8 @@
 # Maintainer: Renaud Littolff <rlittolff@gmail.com>
 
 pkgname=mongobooster
-_shortpkgver=3.1
-pkgver=3.1.5
+_shortpkgver=3.2
+pkgver=3.2.1
 pkgrel=1
 pkgdesc="The Smartest MongoDB Admin GUI"
 arch=('x86_64')
@@ -11,7 +11,7 @@ options=('!strip' '!upx')
 depends=('nss' 'libxtst' 'gcc-libs-multilib' 'alsa-lib' 'gconf' 'gtk2')
 
 source_x86_64=("https://s3.amazonaws.com/mongobooster/download/${_shortpkgver}/mongobooster-${pkgver}-amd64.deb")
-md5sums_x86_64=('44a92fa2d3e1661e044994ec8316403e')
+md5sums_x86_64=('52ef217c9cae0a66bc7d215ec7d12b0c')
 
 package() {
     cd "${srcdir}"
