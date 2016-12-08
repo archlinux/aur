@@ -1,19 +1,20 @@
-# Maintainer: Conor Anderson <conor.anderson@mail.utoronto.ca>
+# Maintainer: Conor Anderson <conor@conr.ca>
 pkgname=wire-desktop-git
 _pkgname=wire-desktop
 _name=wire
-pkgver=2.11.2681.r1.g7a20d9d
+pkgver=2.11.2685.r0.gf0db563
 pkgrel=1
 pkgdesc='Modern, private messenger. Based on Electron.'
 arch=('x86_64' 'i686')
 url='https://wire.com/'
 license=('GPL3')
 conflicts=('wire-desktop-bin' 'wire-desktop')
-depends=('nss' 'alsa-lib' 'libxss' 'gconf' 'gtk2' 'libxtst')
-makedepends=('yarn' 'grunt-cli' 'gendesk' 'python2')
+depends=('alsa-lib' 'gconf' 'gtk2' 'libxss' 'libxtst' 'nss')
+makedepends=('gendesk' 'grunt-cli' 'npm' 'python2' 'yarn')
 provides=('wire-desktop')
 source=("git://github.com/wireapp/wire-desktop.git")
 sha256sums=('SKIP')
+install="$pkgname".install
 
 pkgver() {
   cd ${srcdir}/${_pkgname}
