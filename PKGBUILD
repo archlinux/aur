@@ -2,7 +2,7 @@
 
 pkgname=molotov
 pkgver=1.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Molotov gives a streaming access to french TV channels."
 arch=('i686' 'x86_64')
 url="http://www.molotov.tv/"
@@ -21,6 +21,7 @@ build() {
   echo "Categories=Video;Player;AudioVideo;" >> Molotov.desktop
 
   sed -i "s/MOLOTOV_VERSION/${pkgver}/g" molotov
+  chmod 755 usr/share/icons
 }
 
 package() {
