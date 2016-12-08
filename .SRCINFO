@@ -1,25 +1,27 @@
 pkgbase = wire-desktop
 	pkgdesc = Modern, private messenger. Based on Electron.
-	pkgver = 2.11.2681
+	pkgver = 2.11.2685
 	pkgrel = 1
 	url = https://wire.com/
+	install = wire-desktop.install
 	arch = x86_64
 	arch = i686
 	license = GPL3
-	makedepends = yarn
-	makedepends = grunt-cli
 	makedepends = gendesk
+	makedepends = grunt-cli
+	makedepends = npm
 	makedepends = python2
-	depends = nss
+	makedepends = yarn
 	depends = alsa-lib
-	depends = libxss
 	depends = gconf
 	depends = gtk2
+	depends = libxss
 	depends = libxtst
+	depends = nss
 	provides = wire-desktop
 	conflicts = wire-desktop-bin
-	source = https://github.com/wireapp/wire-desktop/archive/release/2.11.2681.tar.gz
-	sha256sums = 17b5808f9af58923943cd1fcb896454f868880ba40c1a229ec3f689989e26595
+	source = https://github.com/wireapp/wire-desktop/archive/release/2.11.2685.tar.gz
+	sha256sums = e68ccb04d1f0741e0b703c7cff37d0d208ae696bf3cbb7f2f0da9c1283d50b5f
 
 pkgname = wire-desktop
 
