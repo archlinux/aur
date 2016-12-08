@@ -1,6 +1,6 @@
 pkgbase = hashcat-git
 	pkgdesc = Multithreaded advanced password recovery utility
-	pkgver = 3.20.2949.2039e2c
+	pkgver = 3.20.2954.fa598a4
 	pkgrel = 1
 	url = https://hashcat.net/hashcat
 	arch = i686
@@ -14,9 +14,7 @@ pkgbase = hashcat-git
 	provides = hashcat
 	conflicts = hashcat
 	source = hashcat-git::git+https://github.com/hashcat/hashcat
-	source = fix-make-flags.patch
 	sha512sums = SKIP
-	sha512sums = 04d86c0480c221f3e781534b0a9a50950a376a8c798ebee8042446f5d2e11f78677f7c670deb5f132fcf38c962ea13c64ac522e2a18712efbad559a5077dc211
 
 pkgname = hashcat-git
 
