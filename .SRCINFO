@@ -1,7 +1,7 @@
 pkgbase = shncpd-git
 	pkgdesc = implementation of the Home Networking Control Protocol (HNCP) and associated protocols
 	pkgver = 141
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jech/shncpd
 	arch = i686
 	arch = x86_64
