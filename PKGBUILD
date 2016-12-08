@@ -5,7 +5,7 @@
 
 _pkgname=lmms
 pkgname=lmms-qt5-git
-pkgver=1.1.90.r437.g05ace7e
+pkgver=1.1.90.r448.g3ee60b2
 pkgrel=1
 pkgdesc='The Linux MultiMedia Studio (Qt5 Version).'
 url='http://lmms.io'
@@ -36,7 +36,7 @@ pkgver() {
 build() {
   cd -- "$srcdir/$_pkgname"
   cmake -DCMAKE_INSTALL_PREFIX=/usr -DWANT_QT5=ON -DCMAKE_BUILD_TYPE=RelWithDebInfo
-  make -j${nproc}
+  make -j$(nproc)
 }
 
 package() {
