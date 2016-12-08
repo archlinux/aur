@@ -1,7 +1,7 @@
 # Maintainer: Jonas Heinrich <onny@project-insanity.org>
 # Contributor: Jonas Heinrich <onny@project-insanity.org>
 
-pkgname=nextcloud-app-mail
+pkgname=nextcloud-app-mail-git
 pkgver=0.2.0.r1093.g3540188
 pkgrel=1
 pkgdesc="An email app for NextCloud"
@@ -11,6 +11,8 @@ license=('AGPL')
 makedepends=('npm' 'nodejs' 'php')
 depends=('nextcloud')
 options=('!strip')
+provides=('nextcloud-app-mail')
+conflicts=('nextcloud-app-mail')
 source=("git+https://github.com/nextcloud/mail.git")
 sha512sums=("SKIP")
 
