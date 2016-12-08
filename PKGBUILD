@@ -3,7 +3,7 @@
 pkgname='texlive-vub'
 pkgver="1.3.0"
 pkgrel=1
-pkgdesc='Provides the titlepage and style elements for the Vrije Universiteit Brussel.'
+pkgdesc='Provides a titlepage, a beamer template and other style elements for the Vrije Universiteit Brussel.'
 url='https://gitlab.com/rubdos/texlive-vub/'
 license=(
  'LPPL'
