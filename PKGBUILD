@@ -10,13 +10,13 @@
 _qt_module=qtserialport
 pkgname="mingw-w64-qt5-serialport"
 pkgver=5.7.0
-pkgrel=2
+pkgrel=3
 arch=('any')
 pkgdesc="Provides access to hardware and virtual serial ports (mingw-w64)"
 depends=('mingw-w64-qt5-base')
 makedepends=('mingw-w64-gcc')
 options=('!strip' '!buildflags' 'staticlibs')
-license=('LGPL')
+license=('GPL3' 'LGPL3' 'FDL' 'custom')
 url="https://www.qt.io/"
 _pkgfqn="${_qt_module}-opensource-src-$pkgver"
 source=("https://download.qt.io/official_releases/qt/${pkgver:0:3}/$pkgver/submodules/qtserialport-opensource-src-$pkgver.tar.xz")
