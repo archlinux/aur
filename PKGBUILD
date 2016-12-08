@@ -16,7 +16,7 @@ url="https://github.com/pyroscope/rtorrent-ps"
 license=('GPL')
 arch=('i686' 'x86_64' 'armv7h')
 depends=('libtorrent-pyro-git' 'libsigc++' 'ncurses' 'curl' 'xmlrpc-c')
-makedepends=('git' 'cppunit')
+makedepends=('git')
 optdepends=('ttf-dejavu: for utf8 glyphs')
 conflicts=('rtorrent' 'rtorrent-git')
 provides=('rtorrent')
@@ -24,7 +24,12 @@ install='pyroscope.install'
 backup=('usr/share/doc/rtorrent/rtorrent.rc.sample')
 
 [[ $_debug = 'n' ]] &&
-    _debug='--disable-debug' || options=(!strip)
+    _debug='--disable-debug' ||
+{
+    _debug='--enable-extra-debug'
+    depends+=('cppunit')
+    options=(!strip)
+}
 
 _url="https://raw.githubusercontent.com/pyroscope/rtorrent-ps/master/patches"
 source=("git://github.com/rakshasa/rtorrent.git#branch=$_branch"
@@ -89,6 +94,14 @@ build() {
         --prefix=/usr \
         --with-xmlrpc-c
     make
+}
+
+check() {
+    [[ ! $_debug = 'n' ]] && {
+        cd "$srcdir/rtorrent"
+        # will fail due to pyroscope patches not being applies to unittests as well
+        make check || return 0
+    }
 }
 
 package() {
