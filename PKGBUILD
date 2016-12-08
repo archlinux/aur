@@ -7,12 +7,12 @@ pkgver=1.2.0
 _gitrev=481
 _gitver=b45bbf24
 _fullname="$pkgname-$pkgver.$_gitrev-$_gitver"
-pkgrel=2
+pkgrel=3
 pkgdesc='Next generation Plex Desktop Client'
 arch=('i686' 'x86_64')
 license=('GPL')
 url='https://github.com/plexinc/plex-media-player'
-depends=('mpv' 'qt5-webengine>=5.6' 'libcec3' 'sdl2' 'qt5-x11extras' 'qt5-quickcontrols' 'p8-platform')
+depends=('mpv' 'qt5-webengine>=5.6' 'libcec3' 'sdl2' 'qt5-x11extras' 'qt5-quickcontrols' 'p8-platform' 'protobuf')
 makedepends=('cmake' 'conan')
 source=("$_fullname.tar.gz::https://github.com/plexinc/plex-media-player/archive/v${pkgver}.${_gitrev}-${_gitver}.tar.gz"
         'plex-media-player.desktop')
