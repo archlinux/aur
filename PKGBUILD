@@ -6,23 +6,27 @@
 # Includes dynamic and static versions; if only one version is requried, just
 # set $NO_STATIC_LIBS or $NO_SHARED_LIBS.
 
+# All patches are managed at https://github.com/Martchus/qtmultimedia
+
 _qt_module=qtmultimedia
 pkgname=mingw-w64-qt5-multimedia
 pkgver=5.7.0
-pkgrel=2
+pkgrel=4
 arch=('any')
-pkgdesc="Classes for audio, video, radio and camera functionality (mingw-w64)"
-depends=(mingw-w64-qt5-base mingw-w64-qt5-declarative)
-makedepends=(mingw-w64-gcc)
+pkgdesc='Classes for audio, video, radio and camera functionality (mingw-w64)'
+depends=('mingw-w64-qt5-base' 'mingw-w64-qt5-declarative')
+makedepends=('mingw-w64-gcc')
 options=(!strip !buildflags staticlibs)
 groups=(mingw-w64-qt mingw-w64-qt5)
-license=("custom, FDL, GPL3, LGPL")
-url="https://www.qt.io/"
+license=('GPL3' 'LGPL' 'FDL' 'custom')
+url='https://www.qt.io/'
 _pkgfqn="${_qt_module}-opensource-src-${pkgver}"
 source=("https://download.qt.io/official_releases/qt/${pkgver:0:3}/${pkgver}/submodules/${_pkgfqn}.tar.xz"
-        "qt5-qtmultimedia-mingw-w64-vsnprintf-workaround.patch")
+        '0001-Recorder-includes-to-prevent-conflict-with-vsnprintf.patch'
+        '0002-Fix-build-with-ANGLE.patch')
 md5sums=('44c1b9a1dfb0e8b13f2d9571829500ee'
-         'c21ff895212a17dc0a748aeadb67601d')
+         '7fcbd5f8d487921448290fe2c20f5c64'
+         'a4fc0aecda3de244960fa41675cdda0d')
 
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
 [[ $NO_STATIC_LIBS ]] || \
@@ -40,11 +44,11 @@ link_header_files() {
 
 prepare() {
   cd "${srcdir}/${_pkgfqn}"
-  # Some files #include <dshow.h>
-  # This is a C header which also #include's stdio.h which adds a #define vsnprintf
-  # This #define vsnprint conflicts with QtCore/qstring.h so reorder the includes
-  # a bit to prevent this situation
-  patch -p0 -i ../qt5-qtmultimedia-mingw-w64-vsnprintf-workaround.patch
+
+  # Apply patches; further descriptions can be found in patch files itself
+  for patch in "$srcdir/"*.patch; do
+    patch -p1 -i "$patch"
+  done
 }
 
 build() {
