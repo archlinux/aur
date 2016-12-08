@@ -1,0 +1,6 @@
+# vim: ft=sh ts=2 sw=2 et:
+
+post_install() {
+  systemd-sysusers quagga.conf
+  systemd-tmpfiles --create quagga.conf
+}
