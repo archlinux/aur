@@ -24,7 +24,8 @@ makedepends=(git)
 options=(!emptydirs !libtool)
 install=$pkgname.install
 source=(https://github.com/hobarrera/$_gitname/archive/v$pkgver.zip)
-sha256sums=('146453c963f1f316151857e4e00537eded035158c0b00b66c9955d704c4d4df1')
+sha256sums=('c7e61cfc7ad66bf34b9c8159a4d7b5b3356b69e6f6e75e103ec5cc1c7c585cd4')
+
 prepare() {
     cd $_gitname-$pkgver/
     find -name '*.py' -type f -exec sed -ri 's:^#!/usr/bin/(env )?python$:&2:' '{}' \;
