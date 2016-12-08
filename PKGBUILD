@@ -2,7 +2,7 @@
 # Contributor: Dave Reisner <dreisner@archlinux.org>
 
 pkgname=mkosi-git
-pkgver=r108.692044d
+pkgver=r134.f5cafba
 pkgrel=1
 pkgdesc='Build Legacy-Free OS Images'
 arch=('any')
@@ -13,9 +13,13 @@ makedepends=('python-setuptools')
 optdepends=('dnf: build Fedora images'
             'debootstrap: build Debian or Ubuntu images'
             'arch-install-scripts: build Arch images'
+            'gnupg: sign images'
             'xz: compress images with xz'
             'btrfs-progs: raw_btrfs and subvolume output formats'
             'dosfstools: build bootable images'
+            'squashfs-tools: raw_squashfs output format'
+            'tar: tar output format'
+            'cryptsetup: add dm-verity partitions'
             'edk2-ovmf: run bootable images in QEMU')
 provides=('mkosi')
 conflicts=('mkosi')
