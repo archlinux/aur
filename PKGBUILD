@@ -1,12 +1,12 @@
 # Maintainer: Christian Hesse <mail@eworm.de>
 
 pkgname=vis-git
-pkgver=0.2.r349.g010dcd6
-pkgrel=2
+pkgver=0.2.r531.gea79b9f
+pkgrel=1
 pkgdesc='modern, legacy free, simple yet efficient vim-like editor - git checkout'
 arch=('i686' 'x86_64')
 url='http://www.brain-dump.org/projects/vis/'
-depends=('ncurses' 'libtermkey' 'lua' 'lua-lpeg')
+depends=('ncurses' 'libtermkey' 'lua' 'lua-lpeg' 'file')
 makedepends=('git' 'markdown')
 checkdepends=('vim')
 conflicts=('vis')
@@ -46,9 +46,6 @@ build() {
 		--prefix=/usr
 
 	make
-
-	markdown README.md > README.html
-	markdown lexers/README.md > lexers/README.html
 }
 
 check() {
@@ -61,12 +58,5 @@ package() {
 	cd vis/
 
 	make DESTDIR="${pkgdir}" install
-
-	install -D -m0644 'LICENSE' "${pkgdir}/usr/share/licenses/vis/LICENSE"
-	install -D -m0644 'README.md' "${pkgdir}/usr/share/doc/vis/README.md"
-	install -D -m0644 'README.html' "${pkgdir}/usr/share/doc/vis/README.html"
-
-	ln -s ../../vis/lexers/README.md "${pkgdir}/usr/share/doc/vis/README-lexers.md"
-	ln -s ../../vis/lexers/README.html "${pkgdir}/usr/share/doc/vis/README-lexers.html"
 }
 
