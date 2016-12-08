@@ -1,9 +1,9 @@
 # Maintainer: Norbert Pfeiler <norbert.pfeiler+aur ät gmail.com>
 
 pkgname=cotire
-_cotirever=1.7.8
-_cmakever=3.7
-_cmakegooduntil=3.8
+_cotirever=1.7.9
+_cmakever=3.6
+_cmakegooduntil=3.7
 pkgver=${_cotirever}_${_cmakever}
 pkgrel=1
 pkgdesc='CMake module to speed up builds. By fully automating techniques like precompiled header usage and single compilation unit builds for C and C++'
@@ -12,7 +12,7 @@ license=('custom')
 conflicts=("cmake>=$_cmakegooduntil") # the Modules dir changes every major release
 url='https://github.com/sakra/cotire'
 source=("https://github.com/sakra/cotire/archive/$pkgname-$_cotirever.tar.gz")
-md5sums=('c5d41296dd179e390dc368686c8ccfdf')
+md5sums=('7b5f43886bf4fac6fdda3d0b704a928e')
 
 package() {
   cd "$pkgname-$pkgname-$_cotirever"
