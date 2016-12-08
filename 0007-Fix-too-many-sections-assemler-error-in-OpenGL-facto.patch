@@ -1,0 +1,27 @@
+From 20e2f7b8353a9828ca2dc2d8d0d93357ddfefbc7 Mon Sep 17 00:00:00 2001
+From: Martchus <martchus@gmx.net>
+Date: Sun, 18 Sep 2016 13:48:51 +0200
+Subject: [PATCH 07/26] Fix too many sections assemler error in OpenGL factory
+
+On x86_64 qopenglversionfunctionsfactory.o exceeds the
+limit of 32768 sections.
+Hence the assembler option -mbig-obj is required.
+---
+ src/gui/opengl/opengl.pri | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/src/gui/opengl/opengl.pri b/src/gui/opengl/opengl.pri
+index b13f258..8a9093f 100644
+--- a/src/gui/opengl/opengl.pri
++++ b/src/gui/opengl/opengl.pri
+@@ -4,6 +4,7 @@ contains(QT_CONFIG, opengl):CONFIG += opengl
+ contains(QT_CONFIG, opengles2):CONFIG += opengles2
+ 
+ contains(QT_CONFIG, opengl)|contains(QT_CONFIG, opengles2) {
++    mingw:QMAKE_CXXFLAGS+="-Wa,-mbig-obj"
+ 
+     HEADERS += opengl/qopengl.h \
+                opengl/qopengl_p.h \
+-- 
+2.10.2
+

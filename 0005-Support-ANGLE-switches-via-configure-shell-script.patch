@@ -1,6 +1,20 @@
---- configure.orig	2016-06-10 08:48:56.000000000 +0200
-+++ configure	2016-09-04 20:38:55.345362982 +0200
-@@ -1287,6 +1287,7 @@
+From 443ebf3f1644a5111fae06cfa248c641d96e1ffb Mon Sep 17 00:00:00 2001
+From: Martchus <martchus@gmx.net>
+Date: Sun, 18 Sep 2016 13:36:53 +0200
+Subject: [PATCH 05/26] Support ANGLE switches via configure shell script
+
+Required when cross-compiling with mingw-w64 because in
+this case executing configure.bat is not appropriate
+---
+ configure                         | 26 ++++++++++++++++++++++++--
+ src/gui/opengl/qopenglfunctions.h |  2 --
+ 2 files changed, 24 insertions(+), 4 deletions(-)
+
+diff --git a/configure b/configure
+index de2c3ec..cf879ff 100755
+--- a/configure
++++ b/configure
+@@ -1287,6 +1287,7 @@ while [ "$#" -gt 0 ]; do
          ;;
      opengl)
          if  [ "$VAL" = "auto" ] || [ "$VAL" = "desktop" ] ||
@@ -8,7 +22,7 @@
              [ "$VAL" = "yes" ] || [ "$VAL" = "no" ] ||
              [ "$VAL" = "es2" ]; then
              CFG_OPENGL="$VAL"
-@@ -5312,7 +5313,7 @@
+@@ -5312,7 +5313,7 @@ if [ "$XPLATFORM_MINGW" = "yes" ]; then
      fi
      if [ "$CFG_OPENGL" = "auto" ] || [ "$CFG_OPENGL" = "yes" ]; then
          if compileTest x11/opengl "OpenGL"; then
@@ -17,7 +31,7 @@
          elif compileTest unix/opengles2 "OpenGL ES 2.0"; then
              CFG_OPENGL=es2
          else
-@@ -5348,6 +5349,17 @@
+@@ -5348,6 +5349,17 @@ if [ "$XPLATFORM_MINGW" = "yes" ]; then
              echo " ${XQMAKESPEC}."
              exit 1
          fi
@@ -35,7 +49,7 @@
      elif [ "$CFG_OPENGL" = "desktop" ]; then
          # Desktop OpenGL support
          compileTest x11/opengl "OpenGL"
-@@ -6423,6 +6435,16 @@
+@@ -6423,6 +6435,16 @@ if [ "$CFG_OPENGL" = "es2" ]; then
      QT_CONFIG="$QT_CONFIG opengles2"
  fi
  
@@ -52,7 +66,7 @@
  if [ "$CFG_SHARED" = "yes" ]; then
      QT_CONFIG="$QT_CONFIG shared"
      QTCONFIG_CONFIG="$QTCONFIG_CONFIG shared"
-@@ -7474,7 +7496,7 @@
+@@ -7474,7 +7496,7 @@ report_support "    OpenSSL .............." "$CFG_OPENSSL" yes "loading librarie
  report_support "  NIS ...................." "$CFG_NIS"
  report_support "  OpenGL / OpenVG:"
  report_support "    EGL .................." "$CFG_EGL"
@@ -61,8 +75,10 @@
  report_support "    OpenVG ..............." "$CFG_OPENVG-$CFG_OPENVG_SHIVA" yes-yes "ShivaVG" yes-no "native"
  report_support "  PCRE ..................." "$CFG_PCRE" yes "system library" qt "bundled copy"
  if [ -n "$PKG_CONFIG" ]; then
---- src/gui/opengl/qopenglfunctions.h.orig	2016-06-10 08:48:56.000000000 +0200
-+++ src/gui/opengl/qopenglfunctions.h	2016-09-04 20:36:07.801522904 +0200
+diff --git a/src/gui/opengl/qopenglfunctions.h b/src/gui/opengl/qopenglfunctions.h
+index f6cd0e5..17214a0 100644
+--- a/src/gui/opengl/qopenglfunctions.h
++++ b/src/gui/opengl/qopenglfunctions.h
 @@ -56,9 +56,7 @@
  
  //#define Q_ENABLE_OPENGL_FUNCTIONS_DEBUG
@@ -73,3 +89,6 @@
  
  #ifdef Q_ENABLE_OPENGL_FUNCTIONS_DEBUG
  #include <stdio.h>
+-- 
+2.10.2
+
