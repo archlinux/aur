@@ -3,10 +3,13 @@ pkgbase=('python-dryscrape')
 pkgname=('python-dryscrape' 'python2-dryscrape')
 _module='dryscrape'
 pkgver='1.0'
-pkgrel=1
+pkgrel=2
 pkgdesc="a lightweight Javascript-aware, headless web scraping library for Python"
 url="https://github.com/niklasb/dryscrape"
-depends=()
+# Unfortunately changing depends inside the package() function
+# Will not resolve for packages Inside the aur(for yaourt),
+# therefore I will need to depend on both versions of the packages.
+depends=('python-xvfbwrapper' 'python-lxml' 'python-webkit-server' 'python2-xvfbwrapper' 'python2-lxml' 'python2-webkit-server')
 makedepends=('python-setuptools' 'python2-setuptools')
 license=('MIT')
 arch=('any')
@@ -26,14 +29,14 @@ build() {
 }
 
 package_python-dryscrape() {
-    depends+=('python' 'python-xvfbwrapper' 'python-lxml' 'python-webkit-server')
+    depends+=('python')
     cd "${srcdir}/${_module}-${pkgver}"
     install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/python-dryscrape/LICENSE"
     python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
 }
 
 package_python2-dryscrape() {
-    depends+=('python2' 'python2-xvfbwrapper' 'python2-lxml' 'python2-webkit-server')
+    depends+=('python2')
     cd "${srcdir}/${_module}-${pkgver}-python2"
     install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/python2-dryscrape/LICENSE"
     python2 setup.py install --root="${pkgdir}" --optimize=1 --skip-build
