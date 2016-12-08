@@ -9,11 +9,11 @@ url="https://www.duckdns.org"
 backup=("etc/duckdns.d/default.cfg")
 
 source=('default.cfg' 'duckdns.service' 'duckdns.timer' 'duckdns.sh')
-md5sums=('4cad7ae6c25b8148916fc702f4846a6f'
-         'b478880b19c7c403c8f8b2e80292c789'
-         '891ca4358eca8d9c2c1994aa3025fa04'
-         '1bcd62ec5cec5ca5618d2dd2901c66e1')
 
+md5sums=('4cad7ae6c25b8148916fc702f4846a6f'
+         'd6f285cc57f685e1c63a80ff060936eb'
+         '891ca4358eca8d9c2c1994aa3025fa04'
+         'a2814a1a18af9eaaa6891509b21814c3')
 
 package() {
 	
