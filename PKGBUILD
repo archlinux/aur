@@ -2,7 +2,7 @@
 
 _basename=GENie
 pkgname=${_basename,,}-git
-pkgver=r726.3b341fe
+pkgver=r726.24b38db
 pkgrel=1
 pkgdesc="GENie project generator tool (a fork of premake by Branimir Karadžić)"
 arch=('x86_64' 'arm' 'i686')
