@@ -8,22 +8,22 @@
 # Contributor: TIanyi Cui <tianyicui@gmail.com>
 
 pkgname=nodejs6
-pkgver=6.9.1
+pkgver=6.9.2
 pkgrel=1
 pkgdesc='v6 of nodejs evented I/O for V8 javascript'
 arch=('i686' 'x86_64')
 url='http://nodejs.org/'
 license=('MIT')
-depends=('openssl' 'zlib' 'icu' 'libuv' 'http-parser' 'c-ares') # 'v8')
-makedepends=('python2' 'procps-ng' 'git')
+depends=('openssl' 'zlib' 'icu' 'libuv' 'http-parser' 'c-ares')
+makedepends=('python2' 'procps-ng')
 optdepends=('npm: nodejs package manager')
 conflicts=('nodejs')
 provides=('nodejs')
-source=("nodejs::git+https://github.com/nodejs/node.git#tag=v$pkgver")
-sha256sums=('SKIP')
+source=("https://github.com/nodejs/node/archive/v$pkgver.tar.gz")
+sha256sums=('750b98520c3dee716f045711d7fcce81ad4816b49002aa4cfa8336d54a84d001')
 
 prepare() {
-  cd nodejs
+  cd node-$pkgver
 
   msg 'Fixing for python2 name... will take a while...'
   find -type f -exec sed \
@@ -37,7 +37,7 @@ prepare() {
 }
 
 build() {
-  cd nodejs
+  cd node-$pkgver
 
   export PYTHON=python2
   ./configure \
@@ -55,12 +55,12 @@ build() {
 }
 
 check() {
-  cd nodejs
+  cd node-$pkgver
   make test
 }
 
 package() {
-  cd nodejs
+  cd node-$pkgver
 
   make DESTDIR="$pkgdir" install
 
