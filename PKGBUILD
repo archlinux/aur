@@ -1,6 +1,6 @@
 # Maintainer: Tudor Roman <tudurom@gmail.com>
 pkgname=windowchef
-pkgver=0.2.3
+pkgver=0.2.4
 pkgrel=1
 pkgdesc="A stacking window manager that cooks windows with orders from the Waitron"
 arch=("i686" "x86_64" "armv7h" "aarch64")
@@ -10,7 +10,7 @@ depends=("libxcb" "xcb-util-wm")
 optdepends=("sxhkd" "wmutils-git" "lemonbar")
 conflicts=('windowchef-git')
 source=("https://github.com/tudurom/$pkgname/archive/v${pkgver}.tar.gz")
-md5sums=("f8d1eec051dcadfd190912962dc5d3dc")
+md5sums=("a831ddb887a64e82890c3a243287604c")
 
 build() {
 	cd "$pkgname-$pkgver"
