@@ -2,7 +2,7 @@
 
 pkgname=hfsutils
 pkgver=3.2.6
-pkgrel=7
+pkgrel=8
 pkgdesc="A comprehensive software to permit manipulation of HFS volumes"
 arch=("i686" "x86_64")
 url="http://www.mars.org/home/rob/proj/hfs/"
@@ -38,25 +38,25 @@ prepare() {
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
-  ./configure --prefix=${pkgdir}/usr \
-  	--sbindir=/usr/bin \
-  	--bindir=/usr/bin \
-	--mandir=/usr/share/man \
+  ./configure --prefix="${pkgdir}/usr" \
+  	--sbindir="/usr/bin" \
+  	--bindir="/usr/bin" \
+	--mandir="/usr/share/man" \
 	--without-tcl --without-tk
 
   make prefix="${pkgdir}/usr" \
   	MANDEST="${pkgdir}/usr/share/man" \
   	DESTDIR="${pkgdir}/usr" \
-  	BINDEST=${pkgdir}/usr/bin \
-	SBINDEST=${pkgdir}/usr/bin
+  	BINDEST="${pkgdir}/usr/bin" \
+	SBINDEST="${pkgdir}/usr/bin"
   # change the without to with to add tcl and/or tk support
 
   cd "${srcdir}/${pkgname}-${pkgver}/hfsck"
   make prefix="${pkgdir}/usr" \
   	MANDEST="${pkgdir}/usr/share/man" \
   	DESTDIR="${pkgdir}/usr" \
-  	BINDEST=${pkgdir}/usr/bin \
-	SBINDEST=${pkgdir}/usr/bin
+  	BINDEST="${pkgdir}/usr/bin" \
+	SBINDEST="${pkgdir}/usr/bin"
 }
 
 #check() {
@@ -71,8 +71,8 @@ package() {
   make prefix="${pkgdir}/usr" \
   	MANDEST="${pkgdir}/usr/share/man" \
   	DESTDIR="${pkgdir}/usr" \
-  	BINDEST=${pkgdir}/usr/bin \
-  	SBINDEST=${pkgdir}/usr/bin \
+  	BINDEST="${pkgdir}/usr/bin" \
+  	SBINDEST="${pkgdir}/usr/bin" \
   	install
 
   # Faulty makefile, install hfsck
