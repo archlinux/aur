@@ -35,6 +35,6 @@ package() {
 	cp -a raumserverDaemon $pkgdir/opt/
 	install -D raumserverDaemon.service -t $pkgdir/usr/lib/systemd/system/
 }
-md5sums=('f06138232b435d55179c6f38eba35a5f')
+md5sums=('6b904581addae2b081cf572ac1b882f7')
 md5sums_armv7h=('2b882d56bba12b20f18818733f5779b4')
 md5sums_x86_64=('7492b99c96573b69e2563d84cc7b1cd0')
