@@ -3,7 +3,7 @@
 # Contributor: Pascal Groschwitz <p.groschwitz@googlemail.com>
 
 pkgname=flightgear-git
-pkgver=20161201
+pkgver=20161209
 pkgrel=1
 _gitname=flightgear
 pkgdesc="An open-source, multi-platform flight simulator"
@@ -34,6 +34,7 @@ build() {
     -DFG_DATA_DIR:STRING="/usr/share/flightgear" \
     -DCMAKE_INSTALL_LIBDIR=/usr/lib \
     -DCMAKE_BUILD_TYPE=Release \
+    -DSIMGEAR_SHARED:BOOL="ON" \
     ../${_gitname}
 
   uudecode -o ../${_gitname}/package/flightgear.png ../${_gitname}/package/flightgear.png.uue
