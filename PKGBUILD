@@ -10,9 +10,9 @@
 
 pkgbase=linux-libre-grsec-xen
 _pkgbasever=4.8-gnu
-_pkgver=4.8.10-gnu
+_pkgver=4.8.12-gnu
 _grsecver=3.1
-_timestamp=201611210813
+_timestamp=201612062306
 
 _replacesarchkernel=('linux%') # '%' gets replaced with _kernelname
 _replacesoldkernels=() # '%' gets replaced with _kernelname
@@ -30,10 +30,10 @@ license=('GPL2')
 makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc' 'libelf')
 makedepends_armv7h=('git')
 options=('!strip')
-source=("http://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgbasever}/linux-libre-${_pkgbasever}.tar.xz"
-        "http://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgbasever}/linux-libre-${_pkgbasever}.tar.xz.sign"
-        "http://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgver}/patch-${_pkgbasever}-${_pkgver}.xz"
-        "http://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgver}/patch-${_pkgbasever}-${_pkgver}.xz.sign"
+source=("https://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgbasever}/linux-libre-${_pkgbasever}.tar.xz"
+        "https://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgbasever}/linux-libre-${_pkgbasever}.tar.xz.sign"
+        "https://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgver}/patch-${_pkgbasever}-${_pkgver}.xz"
+        "https://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgver}/patch-${_pkgbasever}-${_pkgver}.xz.sign"
         "https://repo.parabola.nu/other/grsecurity-libre/test/grsecurity-libre-${_grsecver}-${_pkgver%-*}-${_timestamp}.patch"
         "https://repo.parabola.nu/other/grsecurity-libre/test/grsecurity-libre-${_grsecver}-${_pkgver%-*}-${_timestamp}.patch.sig"
         "https://repo.parabola.nu/other/linux-libre/logos/logo_linux_clut224.ppm"
@@ -71,9 +71,9 @@ source=("http://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgbasever}/li
         '0013-Revert-gpu-drm-omapdrm-dss-of-add-missing-of_node_pu.patch')
 sha256sums=('d54e0f8a27e24f3666c19b395c19dba194635db26929c89e78ffa4b2b0e8ca3a'
             'SKIP'
-            '1582cc01f7c10fdb24a15d884e6d3c24331f54dcbe6dcae0e5ca8b58955dce0c'
+            '2305f73842bf41755c082900694d2f756787a9d5f7c37fd6a8ec387405e944ae'
             'SKIP'
-            '210250b853b2958c1d964dd891702d088b09ed2b11545eaabc29da2da37ccea7'
+            'b4a4490f7b59c21738bb6d599839f92407a4c07fe0e9c9a4ee245902843e9133'
             'SKIP'
             'bfd4a7f61febe63c880534dcb7c31c5b932dde6acf991810b41a939a93535494'
             'SKIP'
@@ -83,13 +83,13 @@ sha256sums=('d54e0f8a27e24f3666c19b395c19dba194635db26929c89e78ffa4b2b0e8ca3a'
             'SKIP'
             'f3eab4b8522494815337717af286b3ac9b869031c1141df88c79141998f3a185'
             '00d7f50599804e0a20397a3cef2a00f99dc1ed9772aef7aa734e181b5396114e'
-            '5bde233cb7d703bb671bb5d51039bb353069b4a53abe15aaf879c28d1c20c483'
+            'cd845813381e83e4f40a8bb8fe1719d70635e04f5c48c88cf57353a6a1dcbb74'
             '834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
             '0376bd5efa31d4e2a9d52558777cebd9f0941df8e1adab916c868bf0c05f2fc3'
             '351fd96be8cd5ebd0435c0a8a978673fc023e3b1026085e67f86d815b2285e25'
-            '69967fdd2fdb18bf4aa15138658d5786949435342582e050c82b5594e23a860a'
+            'e7f6152959693930be67527ea230a33fc85402aa78fbdc84df01c6ba8c2e60df'
             'SKIP'
             '1fc7055041da895d5d023fcf0c5e06d00a3506ae98931138229dba7392e2c382'
             '34c74396b40f1a22a94c1e49e6ae1aaed2fb55f28225dfa9de2cb6f9f4607d21'
