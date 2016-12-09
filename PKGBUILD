@@ -1,7 +1,7 @@
 # Maintainer: Ben Wolsieffer <benwolsieffer@gmail.com>
 pkgname=ldcad
 pkgver=1.5
-pkgrel=1
+pkgrel=2
 pkgdesc="A multiplatform LDraw (virtual LEGO) editor that lets you edit LDraw model documents in real-time"
 arch=('i686' 'x86_64')
 url="http://www.melkert.net/LDCad"
@@ -41,6 +41,9 @@ package() {
 	# Run installer
 	cd "${srcdir}/${_srcname}"
 	./setup.sh
+	
+	# Move mime file so it doesn't conflict with other packages
+	mv "${pkgdir}/usr/share/mime/packages/ldraw.xml" "${pkgdir}/usr/share/mime/packages/ldcad.xml"
 	
 	# Remove references to $pkgdir in config and desktop file
 	sed -i -e "s:$pkgdir::" \
