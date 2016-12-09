@@ -1,45 +1,42 @@
-# Maintainer: Padfoot <padfoot at exemail dot com dot au>
+# Maintainer: Bernhard Landauer <oberon@manjaro.org>
 # Contributor: Mr_Men <tetcheve at gmail dot com>
 # Contributor: Hasan Gormus aka hsngrms <hsngrms at yandex dot com>
 # Contributor: uwinkelvos <uwinkelvos at gmx dot de>
 
 pkgname=nvidiabl
 pkgver=0.88
-pkgrel=3
+pkgrel=4
 pkgdesc="Backlight driver for NVidia graphics adapters"
-
-arch=('x86_64' 
-      'i686')
+arch=('x86_64' 'i686')
 url="https://github.com/guillaumezin/nvidiabl"
 license=('GPL')
-
-makedepends=('linux-headers'
-             'unzip')
+makedepends=('linux-headers')
 conflicts=('nvidia-bl' 'nvidiablctl')
-
-install=nvidiabl.install
-source=(https://github.com/guillaumezin/nvidiabl/archive/master.zip 
-        nvidiabl-master.patch)
-md5sums=('5fdda33fedcb78320c1581e84b395d39'
-         '79e5699da970908d6ec8dba114df87cb')
+install=$pkgname.install
+source=("https://github.com/guillaumezin/$pkgname/archive/master.zip"
+        $pkgname-master.patch
+        kernel-4.8.patch)
+md5sums=('c1cec85b0a9f4469d433a2756bdb2497'
+         '79e5699da970908d6ec8dba114df87cb'
+         'd94abebc5f40586fbed015d9fab29a37')
 
 prepare() {
-  cd "${srcdir}/nvidiabl-master/"
-  patch -p1 -i "${srcdir}/nvidiabl-master.patch"
+  cd $pkgname-master
+  patch -p1 -i ../$pkgname-master.patch
+  patch -p1 -i ../kernel-4.8.patch
 }
 
 build() {
-  cd "${srcdir}/nvidiabl-master/"
+  cd $pkgnmame-master
   make
 }
 
 package() {
-  cd "${srcdir}/nvidiabl-master/"
+  cd pkgnmame-master
   _extramodules="extramodules-$(uname -r | cut -f-2 -d'.')-$(uname -r|sed -e 's/.*-//g')"
-  _MODPATH="${pkgdir}/usr/lib/modules/${_extramodules}/"
-  install -d "${_MODPATH}"
-  install -d "${pkgdir}/usr/bin/"
-
-  install -m 644 "${srcdir}/nvidiabl-master/nvidiabl.ko" "${_MODPATH}"
-  install -m 755 scripts/usr/local/sbin/nvidiablctl "${pkgdir}/usr/bin/"
+  _MODPATH="$pkgdir/usr/lib/modules/$_extramodules/"
+  install -d "$_MODPATH"
+  install -d "$pkgdi}/usr/bin/"
+  install -m 644 "$pkgnmame-master/$pkgnmame.ko" "$_MODPATH"
+  install -m 755 scripts/usr/local/sbin/${pkgnmame}ctl "$pkgdir/usr/bin/"
 }

@@ -1,0 +1,25 @@
+diff -Npur nvidiabl-master/nvidiabl-models.c nvidiabl/nvidiabl-models.c
+--- nvidiabl-master/nvidiabl-models.c	2014-04-07 23:16:19.000000000 +0200
++++ nvidiabl/nvidiabl-models.c	2016-09-17 13:30:28.505868405 +0200
+@@ -334,7 +334,7 @@ void nvidiabl_force_model(struct driver_
+  * The list of supported devices was primarily taken from NvClock,
+  * but only contains the mobile chips.
+  */
+-DEFINE_PCI_DEVICE_TABLE(nvidiabl_device_table) = {
++const struct pci_device_id nvidiabl_device_table[] = {
+ 
+ #include "nvidiabl-gpu.h"
+   
+diff -Npur nvidiabl-master/nvidiabl-models.h nvidiabl/nvidiabl-models.h
+--- nvidiabl-master/nvidiabl-models.h	2014-04-07 23:16:19.000000000 +0200
++++ nvidiabl/nvidiabl-models.h	2016-09-17 13:25:35.857314666 +0200
+@@ -21,6 +21,6 @@
+ 
+ extern void nvidiabl_force_model(struct driver_data **driver_data);
+ 
+-extern DEFINE_PCI_DEVICE_TABLE(nvidiabl_device_table);
++extern const struct pci_device_id nvidiabl_device_table[];
+ 
+-#endif
+\ Kein Zeilenumbruch am Dateiende.
++#endif
