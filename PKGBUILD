@@ -1,7 +1,7 @@
 # Maintainer: 100best <jm dot 100best at gmail dot com>
 
 _pkgname=terravox
-pkgname=terravox-git
+pkgname=$_pkgname-git
 pkgver=v0.0.3.c7f5d21
 pkgrel=1
 pkgdesc="Simple heightmap Editor for Voxlap5 VXL (512x512 only) (git 
