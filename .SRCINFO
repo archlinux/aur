@@ -1,7 +1,7 @@
 pkgbase = nvidia-grsec
 	pkgdesc = NVIDIA drivers for linux-grsec kernel
 	pkgver = 375.20
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.nvidia.com/
 	arch = i686
 	arch = x86_64
@@ -31,4 +31,6 @@ pkgname = nvidia-grsec-dkms
 	depends = nvidia-utils=375.20
 	depends = libgl
 	optdepends = linux-grsec-headers: build modules against the grsec kernel
+	conflicts = 
 	conflicts = nvidia-grsec
+
