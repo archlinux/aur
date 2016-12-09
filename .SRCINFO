@@ -1,0 +1,22 @@
+pkgbase = raumserver
+	pkgdesc = A app/service/deamon to control the Raumfeld Multiroomsystem via HTTP-Requests
+	pkgver = 1.0.2
+	pkgrel = 1
+	url = https://github.com/ChriD/Raumserver
+	arch = armv7h
+	arch = x86_64
+	license = unknown
+	makedepends = unzip
+	depends = libunwind
+	noextract = raumserverDaemon_linux_ARMV7HF.zip
+	noextract = raumserverDaemon_linux_X64.zip
+	backup = opt/raumserverDaemon/settings.xml
+	source = raumserverDaemon.service
+	md5sums = f06138232b435d55179c6f38eba35a5f
+	source_armv7h = http://bassmaniacs.com/data/appBinaries/raumserver/currentVersion/raumserverDaemon_linux_ARMV7HF.zip
+	md5sums_armv7h = 2b882d56bba12b20f18818733f5779b4
+	source_x86_64 = http://bassmaniacs.com/data/appBinaries/raumserver/currentVersion/raumserverDaemon_linux_X64.zip
+	md5sums_x86_64 = 7492b99c96573b69e2563d84cc7b1cd0
+
+pkgname = raumserver
+

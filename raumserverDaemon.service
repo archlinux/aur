@@ -1,0 +1,11 @@
+[Unit]
+Description=raumsrv-Daemon-server
+After=syslog.target network.target 
+
+[Service]
+Type=simple
+WorkingDirectory=/opt/raumserverDaemon/
+ExecStart=/opt/raumserverDaemon/raumsrvDaemon
+
+[Install]
+WantedBy=multi-user.target
