@@ -2,13 +2,13 @@
 
 pkgname=foobar2000
 pkgver=1.3.13
-pkgrel=1
+pkgrel=2
 pkgdesc="An advanced freeware audio player (uses Wine)."
 arch=(i686 x86_64)
 url="http://www.foobar2000.org/"
 license=('custom')
 depends=(wine desktop-file-utils)
-makedepends=(unarchiver wget)
+makedepends=(p7zip wget)
 source=("foobar2000_v$pkgver.exe::https://www.foobar2000.org/download"
         "LICENSE"
         "${pkgname}.sh"
@@ -24,13 +24,11 @@ DLAGENTS=('https::/usr/bin/wget -nH --cut-dirs=3 -r -l 2 -A exe %u')
 
 package() {
   # unpack NSIS installer .exe into destination
-  unar -q -D -e windows-1252 -o "${pkgdir}/usr/share/${pkgname}" "${srcdir}/${pkgname}_v${pkgver}.exe"
+  7z x "${pkgname}_v${pkgver}.exe" -x'!$PLUGINSDIR' -x'!$R0' -x'!icons' \
+    -x'!foobar2000 Shell Associations Updater.exe' -o"${pkgdir}/usr/share/${pkgname}"
 
-  # remove NSIS installer directory & unneeded files in portable mode
-  rm -fr "${pkgdir}/usr/share/${pkgname}/NSIS Plugins Directory" \
-            "${pkgdir}/usr/share/${pkgname}/icons" \
-            "${pkgdir}/usr/share/${pkgname}/foobar2000 Shell Associations Updater.exe" \
-            "${pkgdir}/usr/share/${pkgname}/Register R0"
+  # correct filesystem permissions
+  find "${pkgdir}" -type d -execdir chmod 755 {} +
 
   # run foobar2000 in portable mode
   touch "${pkgdir}/usr/share/${pkgname}/portable_mode_enabled"
