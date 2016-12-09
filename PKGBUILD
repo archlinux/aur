@@ -1,7 +1,7 @@
 # Maintainer: Seppia <seppia@seppio.fish>
 pkgname=otbluh-git
-pkgver=r76.a0ae5aa
-pkgrel=2
+pkgver=r77.9dd9ac1
+pkgrel=1
 pkgdesc="simple one time pad implementation with key generating support"
 arch=('i686' 'x86_64' 'aarch64')
 url="https://git.eigenlab.org/seppia/onetimebluh"
