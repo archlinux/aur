@@ -5,7 +5,7 @@
 
 pkgname=bumblebee-git
 _gitname=bumblebee
-pkgver=3.2.1.r18.3c6f9c9
+pkgver=3.2.1.r45.c322bd8
 pkgrel=1
 pkgdesc="NVIDIA Optimus support for Linux through VirtualGL or primus"
 arch=('i686' 'x86_64')
@@ -70,8 +70,6 @@ package() {
     install -D -m644 "scripts/systemd/bumblebeed.service" "${pkgdir}/usr/lib/systemd/system/bumblebeed.service"
     sed -i "s/sbin/bin/" "${pkgdir}/usr/lib/systemd/system/bumblebeed.service"
 
-    # Make bash_completion work
-    mv -v "${pkgdir}/etc/bash_completion.d/bumblebee" "${pkgdir}/etc/bash_completion.d/optirun"
     #Install udev rule to prevent GH-#144
     install -D -m644 "conf/99-bumblebee-nvidia-dev.rules" "${pkgdir}/usr/lib/udev/rules.d/99-bumblebee-nvidia-dev.rules"
 }
