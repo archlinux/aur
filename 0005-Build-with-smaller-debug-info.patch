@@ -1,0 +1,110 @@
+From 24d4206f6cd79ae3f6ed70897fbf327aed0730bb Mon Sep 17 00:00:00 2001
+From: Martchus <martchus@gmx.net>
+Date: Sun, 25 Sep 2016 22:13:44 +0200
+Subject: [PATCH 5/9] Build with smaller debug info
+
+Avoid exceeding 4 GB size limit
+---
+ Source/JavaScriptCore/JavaScriptCore.pri | 6 ++++++
+ Source/WTF/WTF.pri                       | 6 ++++++
+ Source/WebCore/WebCore.pri               | 7 +++++++
+ Source/WebKit/WebKit1.pri                | 6 ++++++
+ Source/WebKit2/WebKit2.pri               | 6 ++++++
+ 5 files changed, 31 insertions(+)
+
+diff --git a/Source/JavaScriptCore/JavaScriptCore.pri b/Source/JavaScriptCore/JavaScriptCore.pri
+index dec9d42..910fc4e 100644
+--- a/Source/JavaScriptCore/JavaScriptCore.pri
++++ b/Source/JavaScriptCore/JavaScriptCore.pri
+@@ -7,6 +7,12 @@
+ 
+ SOURCE_DIR = $${ROOT_WEBKIT_DIR}/Source/JavaScriptCore
+ 
++#equals(QT_ARCH, s390)|equals(QT_ARCH, arm)|equals(QT_ARCH, mips)|equals(QT_ARCH, i386)|equals(QT_ARCH, i686)|equals(QT_ARCH, x86_64) {
++#    message("JavaScriptCore workaround for QtWebkit: do not build with -g, but with -g1")
++#    QMAKE_CXXFLAGS -= -g
++#    QMAKE_CXXFLAGS += -g1
++#}
++
+ JAVASCRIPTCORE_GENERATED_SOURCES_DIR = $${ROOT_BUILD_DIR}/Source/JavaScriptCore/$${GENERATED_SOURCES_DESTDIR}
+ 
+ INCLUDEPATH += \
+diff --git a/Source/WTF/WTF.pri b/Source/WTF/WTF.pri
+index e762387..86900ce 100644
+--- a/Source/WTF/WTF.pri
++++ b/Source/WTF/WTF.pri
+@@ -8,6 +8,12 @@
+ # All external modules should include WTF headers by prefixing with "wtf" (#include <wtf/some/thing.h>).
+ INCLUDEPATH += $$PWD
+ 
++#equals(QT_ARCH, s390)|equals(QT_ARCH, arm)|equals(QT_ARCH, mips)|equals(QT_ARCH, i386)|equals(QT_ARCH, i686)|equals(QT_ARCH, x86_64) {
++#    message("WTF workaround for QtWebkit: do not build with -g, but with -g1")
++#    QMAKE_CXXFLAGS -= -g
++#    QMAKE_CXXFLAGS += -g1
++#}
++
+ mac {
+     # Mac OS does ship libicu but not the associated header files.
+     # Therefore WebKit provides adequate header files.
+diff --git a/Source/WebCore/WebCore.pri b/Source/WebCore/WebCore.pri
+index 37cde57..ddad897 100644
+--- a/Source/WebCore/WebCore.pri
++++ b/Source/WebCore/WebCore.pri
+@@ -7,6 +7,12 @@
+ 
+ SOURCE_DIR = $${ROOT_WEBKIT_DIR}/Source/WebCore
+ 
++equals(QT_ARCH, s390)|equals(QT_ARCH, arm)|equals(QT_ARCH, mips)|equals(QT_ARCH, i386)|equals(QT_ARCH, i686)|equals(QT_ARCH, x86_64) {
++    message("WebCore workaround for QtWebkit: do not build with -g, but with -g1")
++    QMAKE_CXXFLAGS -= -g
++    QMAKE_CXXFLAGS += -g1
++}
++
+ QT *= network sql core-private gui-private
+ 
+ WEBCORE_GENERATED_SOURCES_DIR = $${ROOT_BUILD_DIR}/Source/WebCore/$${GENERATED_SOURCES_DESTDIR}
+@@ -316,6 +322,7 @@ mac {
+ unix:!mac:*-g++*:QMAKE_CXXFLAGS += -fdata-sections
+ unix:!mac:*-g++*:QMAKE_LFLAGS += -Wl,--gc-sections
+ linux*-g++*:QMAKE_LFLAGS += $$QMAKE_LFLAGS_NOUNDEF
++win32:!equals(QT_ARCH, powerpc):!equals(QT_ARCH, s390):!equals(QT_ARCH, mips):!equals(QT_ARCH, arm):QMAKE_LFLAGS += -Wl,--no-keep-memory -Wl,--reduce-memory-overheads
+ 
+ enable_fast_mobile_scrolling: DEFINES += ENABLE_FAST_MOBILE_SCROLLING=1
+ 
+diff --git a/Source/WebKit/WebKit1.pri b/Source/WebKit/WebKit1.pri
+index 6fc1829..d86b846 100644
+--- a/Source/WebKit/WebKit1.pri
++++ b/Source/WebKit/WebKit1.pri
+@@ -7,6 +7,12 @@
+ 
+ SOURCE_DIR = $${ROOT_WEBKIT_DIR}/Source/WebKit
+ 
++#equals(QT_ARCH, s390)|equals(QT_ARCH, arm)|equals(QT_ARCH, mips)|equals(QT_ARCH, i386)|equals(QT_ARCH, i686)|equals(QT_ARCH, x86_64) {
++#    message("WebKit workaround for QtWebkit: do not build with -g, but with -g1")
++#    QMAKE_CXXFLAGS -= -g
++#    QMAKE_CXXFLAGS += -g1
++#}
++
+ INCLUDEPATH += \
+     $$SOURCE_DIR/qt/Api \
+     $$SOURCE_DIR/qt/WebCoreSupport \
+diff --git a/Source/WebKit2/WebKit2.pri b/Source/WebKit2/WebKit2.pri
+index 3611524..f54b9ca 100644
+--- a/Source/WebKit2/WebKit2.pri
++++ b/Source/WebKit2/WebKit2.pri
+@@ -9,6 +9,12 @@ SOURCE_DIR = $${ROOT_WEBKIT_DIR}/Source/WebKit2
+ 
+ WEBKIT2_GENERATED_SOURCES_DIR = $${ROOT_BUILD_DIR}/Source/WebKit2/$${GENERATED_SOURCES_DESTDIR}
+ 
++#equals(QT_ARCH, s390)|equals(QT_ARCH, arm)|equals(QT_ARCH, mips)|equals(QT_ARCH, i386)|equals(QT_ARCH, i686)|equals(QT_ARCH, x86_64) {
++#    message("WebKit2 workaround for QtWebkit: do not build with -g, but with -g1")
++#    QMAKE_CXXFLAGS -= -g
++#    QMAKE_CXXFLAGS += -g1
++#}
++
+ INCLUDEPATH += \
+     $$SOURCE_DIR \
+     $$SOURCE_DIR/Platform \
+-- 
+2.10.2
+

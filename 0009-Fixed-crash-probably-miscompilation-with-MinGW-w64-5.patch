@@ -1,0 +1,51 @@
+From e60cb272ada8e08297c85e22039d6b9a4c9d575c Mon Sep 17 00:00:00 2001
+From: Konstantin Tokarev <annulen@yandex.ru>
+Date: Fri, 4 Nov 2016 00:44:49 +0300
+Subject: [PATCH 9/9] Fixed crash (probably miscompilation) with MinGW-w64
+ 5.3.0
+
+Change-Id: Iac1c5fe1879abfaa299ec909e5928912c2354126
+---
+ Source/WebKit/qt/WidgetApi/qwebframe.cpp | 10 ----------
+ Source/WebKit/qt/WidgetApi/qwebframe_p.h |  4 ++--
+ 2 files changed, 2 insertions(+), 12 deletions(-)
+
+diff --git a/Source/WebKit/qt/WidgetApi/qwebframe.cpp b/Source/WebKit/qt/WidgetApi/qwebframe.cpp
+index dd08725..1cec124 100644
+--- a/Source/WebKit/qt/WidgetApi/qwebframe.cpp
++++ b/Source/WebKit/qt/WidgetApi/qwebframe.cpp
+@@ -119,16 +119,6 @@ QWebFrameAdapter* QWebFramePrivate::createChildFrame(QWebFrameData* frameData)
+     return newFrame->d;
+ }
+ 
+-QWebFrame *QWebFramePrivate::apiHandle()
+-{
+-    return q;
+-}
+-
+-QObject *QWebFramePrivate::handle()
+-{
+-    return q;
+-}
+-
+ void QWebFramePrivate::contentsSizeDidChange(const QSize &size)
+ {
+     emit q->contentsSizeChanged(size);
+diff --git a/Source/WebKit/qt/WidgetApi/qwebframe_p.h b/Source/WebKit/qt/WidgetApi/qwebframe_p.h
+index 2a1c202..25fbdc3 100644
+--- a/Source/WebKit/qt/WidgetApi/qwebframe_p.h
++++ b/Source/WebKit/qt/WidgetApi/qwebframe_p.h
+@@ -49,8 +49,8 @@ public:
+     static QWebFrame* kit(const QWebFrameAdapter*);
+ 
+     // Adapter implementation
+-    virtual QWebFrame* apiHandle() OVERRIDE;
+-    virtual QObject* handle() OVERRIDE;
++    virtual QWebFrame* apiHandle() OVERRIDE { return q; }
++    virtual QObject* handle() OVERRIDE { return q; }
+     virtual void contentsSizeDidChange(const QSize &) OVERRIDE;
+     virtual int scrollBarPolicy(Qt::Orientation) const OVERRIDE;
+     virtual void emitUrlChanged() OVERRIDE;
+-- 
+2.10.2
+

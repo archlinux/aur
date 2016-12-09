@@ -1,0 +1,36 @@
+From 4ab08227b87a186d18f9e1806a2405099ac109ed Mon Sep 17 00:00:00 2001
+From: Martchus <martchus@gmx.net>
+Date: Sat, 5 Nov 2016 12:46:27 +0100
+Subject: [PATCH 8/9] Link against ANGLE even if Qt is configured not to
+
+---
+ Source/WebCore/WebCore.pri | 12 ++++--------
+ 1 file changed, 4 insertions(+), 8 deletions(-)
+
+diff --git a/Source/WebCore/WebCore.pri b/Source/WebCore/WebCore.pri
+index ddad897..f69e224 100644
+--- a/Source/WebCore/WebCore.pri
++++ b/Source/WebCore/WebCore.pri
+@@ -215,15 +215,11 @@ enable?(WEB_AUDIO) {
+ use?(3D_GRAPHICS) {
+     win32: {
+         mingw: {
+-            # Make sure OpenGL libs are after the webcore lib so MinGW can resolve symbols
+-            contains(QT_CONFIG, opengles2) {
+-                CONFIG(debug, debug|release):contains(QT_CONFIG, angle) {
+-                    LIBS += $$QMAKE_LIBS_OPENGL_ES2_DEBUG
+-                } else {
+-                    LIBS += $$QMAKE_LIBS_OPENGL_ES2
+-                }
++            # Always link against ANGLE
++            CONFIG(debug, debug|release):contains(QT_CONFIG, angle) {
++                LIBS += $$QMAKE_LIBS_OPENGL_ES2_DEBUG
+             } else {
+-                LIBS += $$QMAKE_LIBS_OPENGL
++                LIBS += $$QMAKE_LIBS_OPENGL_ES2
+             }
+         }
+     } else {
+-- 
+2.10.2
+

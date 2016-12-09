@@ -1,0 +1,25 @@
+From f879e4f9efd0cca7acd1f09953bc645107a42d21 Mon Sep 17 00:00:00 2001
+From: Martchus <martchus@gmx.net>
+Date: Sun, 25 Sep 2016 21:56:42 +0200
+Subject: [PATCH 2/9] Use pkg-config
+
+---
+ Tools/qmake/mkspecs/features/win32/default_pre.prf | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/Tools/qmake/mkspecs/features/win32/default_pre.prf b/Tools/qmake/mkspecs/features/win32/default_pre.prf
+index b306c3b..95592c2 100644
+--- a/Tools/qmake/mkspecs/features/win32/default_pre.prf
++++ b/Tools/qmake/mkspecs/features/win32/default_pre.prf
+@@ -4,6 +4,8 @@
+ # See 'Tools/qmake/README' for an overview of the build system
+ # -------------------------------------------------------------------
+ 
++CONFIG += link_pkgconfig
++
+ load(default_pre)
+ 
+ debug: CONFIG += use_all_in_one_files
+-- 
+2.10.2
+

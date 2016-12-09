@@ -1,0 +1,27 @@
+From 27c479ef693e765326b22d2f4cd1424593711f18 Mon Sep 17 00:00:00 2001
+From: Martchus <martchus@gmx.net>
+Date: Sun, 25 Sep 2016 21:53:59 +0200
+Subject: [PATCH 1/9] Use correct ICU libs
+
+The ICU libraries used for cross-compilation are named
+exactly the same as their native Linux counterpart
+---
+ Source/WTF/WTF.pri | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/Source/WTF/WTF.pri b/Source/WTF/WTF.pri
+index b4f7765..e762387 100644
+--- a/Source/WTF/WTF.pri
++++ b/Source/WTF/WTF.pri
+@@ -14,7 +14,7 @@ mac {
+     INCLUDEPATH = $${ROOT_WEBKIT_DIR}/Source/WTF/icu $$INCLUDEPATH
+     LIBS += -licucore
+ } else:!use?(wchar_unicode): {
+-    win32 {
++    win32:!mingw {
+         CONFIG(static, static|shared) {
+             CONFIG(debug, debug|release) {
+                 LIBS += -lsicuind -lsicuucd -lsicudtd
+-- 
+2.10.2
+
