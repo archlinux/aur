@@ -1,4 +1,4 @@
-pkgbase = raumserver
+pkgbase = raumserver-bin
 	pkgdesc = A app/service/deamon to control the Raumfeld Multiroomsystem via HTTP-Requests
 	pkgver = 1.0.2
 	pkgrel = 1
