@@ -1,26 +1,26 @@
 # Maintainer: Noel Kuntze <noel@familie-kuntze.de>
 
 pkgname=pcs-git
-pkgver=r1281.8982045
+_pkgname=pcs
+pkgver=0.9.155.r26.ge2d32f1
 pkgrel=1
 pkgdesc='pacemaker corosync shell utility for cluster configuration'
-arch=('i686' 'x86_64')
+arch=('any')
 url='http://clusterlabs.org/'
-license=('GPLv2')
-makedepends=('unzip')
-depends=('glibc' 'openssl' 'python2')
-source=('pcs-git::git+https://github.com/feist/pcs')
+license=('GPL2')
+depends=('python')
+provides=($_pkgname)
+conflicts=($_pkgname)
+source=("$pkgname::git+https://github.com/ClusterLabs/$_pkgname")
 md5sums=('SKIP')
 
 pkgver() {
   cd "${srcdir}/${pkgname}"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  git describe --tags --long|sed -E 's,^[^0-9]*,,;s,-([0-9]*),.r\1,;s,-,.,g'
 }
 
 package() {
-  cd "${srcdir}/${pkgname}"
-  make DESTDIR=${pkgdir} install
-  mkdir -p ${pkgdir}/usr/bin
-  mv ${pkgdir}/usr/sbin/* ${pkgdir}/usr/bin/
-  rmdir ${pkgdir}/usr/sbin
+  cd $pkgname
+  make DESTDIR="${pkgdir}" install
+  mv "${pkgdir}/usr/sbin" "${pkgdir}/usr/bin"
 }
