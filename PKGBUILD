@@ -1,16 +1,17 @@
 pkgname=performer-git
 pkgver=r24.bb992d5
-pkgrel=1
+pkgrel=2
 pkgdesc="Audio session manager for live music performances"
 arch=('i686' 'x86_64')
 url="https://github.com/progwolff/performer"
 provides=('performer-git')
 license=("GPL")
 depends=('carla' 'qt5-base' 'qt5-declarative') 
-makedepends=('git' 'extra-cmake-modules' 'qt5-tools' 'python')
+makedepends=('git' 'cmake' 'qt5-tools' 'python')
 optdepends=(
     'kdebase-runtime: KDE integration'
-    'kparts: display notes or chords with okular-git'
+    'extra-cmake-modules: KDE integration'
+    'kparts: display notes or chords with okular'
     'okular-git: display notes or chords'
     'qt5-webengine: display notes or chords')
 source=('performer::git+https://github.com/progwolff/performer.git')
