@@ -43,6 +43,7 @@ build() {
 		--sysconfdir=/etc \
 		--sbindir=/usr/bin \
 		--libexecdir=/usr/lib/gnupg \
+        --enable-maintainer-mode \
         --enable-symcryptrun \
         --enable-large-secmem
 	make
