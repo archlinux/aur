@@ -4,10 +4,10 @@
 
 _appname_=vlc
 pkgname=${_appname_}-nightly
-pkgver=3.0.0v20161126
+pkgver=3.0.0v20161209
 _pkgver=3.0.0
-_snapshot_=20161126
-_snapver_=0240
+_snapshot_=20161209
+_snapver_=0236
 _nightly_=${_snapshot_}-${_snapver_}
 pkgrel=1
 pkgdesc="A multi-platform MPEG, VCD/DVD, and DivX player - nightly snapshot"
@@ -62,7 +62,7 @@ replaces=("${_appname_}-plugin")
 #backup=("usr/share/${_appname_}/lua/http/.hosts"
 #        "usr/share/${_appname_}/lua/http/dialogs/.hosts")
 options=("!libtool" "!emptydirs" "debug")
-source=("http://nightlies.videolan.org/build/source/vlc-${_pkgver}-${_nightly_}-git.tar.xz"  "update-vlc-plugin-cache.hook")
+source=("http://nightlies.videolan.org/build/source/vlc-${_pkgver}-${_nightly_}-git.tar.xz"  "update-vlc-plugin-cache.hook" "https://git.archlinux.org/svntogit/packages.git/plain/trunk/lua53_compat.patch?h=packages/vlc")
 
 pkgver() {
  printf 3.0.0v$_snapshot_
@@ -72,7 +72,7 @@ build() {
 	cd "${_appname_}-3.0.0-git"
   RCC=/usr/bin/rcc-qt5
 	./bootstrap
-
+  patch -Np1 -i "${srcdir}/vlc"
 	# Patch
 	sed -i -e 's:truetype/ttf-dejavu:TTF:g' modules/visualization/projectm.cpp
   sed -i -e 's:truetype/freefont:TTF:g' modules/text_renderer/freetype/freetype.c
@@ -112,5 +112,6 @@ package() {
   install -Dm644 "$srcdir"/update-vlc-plugin-cache.hook "$pkgdir"/usr/share/libalpm/hooks/update-vlc-plugin-cache.hook
 }
 
-sha1sums=('264e3000531e912247de1b380f76c64e79deb7fb'
-          'c3a35ba4dbd6c8e4e5b032664f50b9f0dcf579ee')
+sha1sums=('766c892a151191ec7599794d63b2f1bc3b36760a'
+          'c3a35ba4dbd6c8e4e5b032664f50b9f0dcf579ee'
+          '5d7dba23756ff577a90b8631b187fbeac1f94e17')
