@@ -1,7 +1,7 @@
 # Maintainer: Ben Alex <ben.alex@acegi.com.au>
 
 pkgname=ib-tws
-pkgver=961.1b
+pkgver=961.1c
 pkgrel=1
 pkgdesc='Electronic trading platform from discount brokerage firm Interactive Brokers'
 arch=('any')
@@ -21,7 +21,7 @@ md5sums=('e1cae2de592add7133bb08123e8db1ad'
          '9205b5eade96d69f8e470cc52c30db4a'
          'c95eeb41fec3aae6ad5e82703a39060c'
          'ffa9fcfb623850e5c9e796040bdbd052'
-         'f39d8ee34c5ddbeff84a161dcca099f0')
+         'fe796817148df26b24e8cb5abc4412fb')
 
 
 build() {
