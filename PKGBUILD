@@ -22,12 +22,10 @@ install=$pkgname.install
 _channel=beta
 source=("google-chrome-${_channel}_${pkgver}_amd64.deb::https://dl.google.com/linux/direct/google-chrome-${_channel}_current_amd64.deb"
         "$url/browser/privacy/eula_text.html"
-        'google-chrome-beta.sh'
-        'StartupWMClass-and-GNOME3-context-menu.patch')
+        'google-chrome-beta.sh')
 md5sums=('b73709611e144a58e5080bc1aaf0e665'
          'SKIP'
-         'ca16d5162eed85b1ba4e6b9fc37f9e35'
-         '1cc8a4f5310d51234973ca5bbb8d75ae')
+         'ca16d5162eed85b1ba4e6b9fc37f9e35')
 
 package() {
   msg2 "Extracting the data.tar.xz..."
@@ -49,12 +47,8 @@ package() {
   # License
   install -Dm644 eula_text.html "$pkgdir"/usr/share/licenses/google-chrome-$_channel/eula_text.html
 
-  #msg2 "Fixing Chrome icon resolution..."
-  #sed -i "/Exec=/i\StartupWMClass=Google-chrome-$_channel" "$pkgdir"/usr/share/applications/google-chrome-$_channel.desktop
-
-  msg2 "Fixing Chrome icon resolution and GNOME 3 context menu..."
-  cd "$pkgdir"
-  patch -p0 -i "$srcdir"/StartupWMClass-and-GNOME3-context-menu.patch
+  msg2 "Fixing Chrome icon resolution..."
+  sed -i "/Exec=/i\StartupWMClass=Google-chrome-$_channel" "$pkgdir"/usr/share/applications/google-chrome-$_channel.desktop
 
   msg2 "Removing Debian Cron job and duplicate product logos..."
   rm -r "$pkgdir"/etc/cron.daily/ "$pkgdir"/opt/google/chrome-$_channel/cron/

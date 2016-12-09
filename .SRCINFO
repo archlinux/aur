@@ -33,11 +33,9 @@ pkgbase = google-chrome-beta
 	source = google-chrome-beta_56.0.2924.21_amd64.deb::https://dl.google.com/linux/direct/google-chrome-beta_current_amd64.deb
 	source = https://www.google.com/chrome/browser/privacy/eula_text.html
 	source = google-chrome-beta.sh
-	source = StartupWMClass-and-GNOME3-context-menu.patch
 	md5sums = b73709611e144a58e5080bc1aaf0e665
 	md5sums = SKIP
 	md5sums = ca16d5162eed85b1ba4e6b9fc37f9e35
-	md5sums = 1cc8a4f5310d51234973ca5bbb8d75ae
 
 pkgname = google-chrome-beta
 
