@@ -1,16 +1,17 @@
-# Maintainer: Vlad M. <vlad@archlinux.net>
+# Maintainer: Bernhard Landauer <oberon@manjaro.org>
 # Contributor: Håvard Pettersson <mail@haavard.me>
 # Contributor: Madotsuki <madotsuki at cock dot li>
 
 _pkgname=utox
-pkgname=utox-git
-pkgver=0.9.3.r7.g757b223
+pkgname=$_pkgname-git
+pkgver=0.9.8.r338.ge1d0cf5
 pkgrel=1
 pkgdesc='Lightweight Tox client'
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
-url='https://github.com/GrayHatter/uTox'
+url='https://github.com/uTox/uTox'
 license=('GPL3')
-depends=('desktop-file-utils'
+depends=('c-toxcore'
+         'desktop-file-utils'
          'fontconfig'
          'libfilteraudio-git'
          'hicolor-icon-theme'
@@ -18,13 +19,12 @@ depends=('desktop-file-utils'
          'libxext'
          'libxrender'
          'openal'
-         'toxcore'
          'v4l-utils')
 makedepends=('git')
 optdepends=('gtk3: GTK file picker')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
-source=("$pkgname::git+https://github.com/GrayHatter/uTox")
+source=("$pkgname::git+$url")
 md5sums=('SKIP')
 
 pkgver() {
@@ -34,6 +34,7 @@ pkgver() {
 
 build() {
   cd "$pkgname"
+  cmake -DCMAKE_INSTALL_PREFIX=/usr .
   make
 }
 
