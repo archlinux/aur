@@ -2,7 +2,7 @@
 
 pkgbase=wireguard-git
 pkgname=(wireguard-dkms-git wireguard-tools-git)
-pkgver=0.0.20161129.r12.gda4514f
+pkgver=0.0.20161209.r0.gc93b5eb
 pkgrel=1
 pkgdesc='next generation secure network tunnel - git checkout'
 arch=('x86_64' 'i686')
