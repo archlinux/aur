@@ -3,7 +3,7 @@
 # Contributor: Tim Meusel <tim@bastelfreak.de>
 
 pkgname=pacemaker-stable
-pkgver=1.1.14
+pkgver=1.1.16
 pkgrel=1
 pkgdesc="pacemaker stable package, contains the latest stable version"
 arch=('x86_64')
@@ -13,7 +13,7 @@ makedepends=('autoconf' 'libxml2'  'corosync' 'inkscape' 'libqb')
 depends=('gnutls' 'libdbus' 'glib2' 'pam' 'libtool' 'python' 'libxslt')
 provides=('pacemaker')
 source=("https://github.com/ClusterLabs/pacemaker/archive/Pacemaker-${pkgver}.tar.gz")
-sha256sums=('2f73043a5de5e66a47462d37cd68c4c6861f71a03c0ea02eb4ae2b1a550cd7b0')
+sha256sums=('dffcae035975669a66ab545d45216a637496a251ee2114fa03d58acfcc969202')
 
 prepare() {
   cd ${srcdir}/pacemaker-Pacemaker-${pkgver}
