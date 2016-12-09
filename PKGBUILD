@@ -2,12 +2,13 @@
 # Maintainer: Levente Polyak <anthraxx[at]archlinux[dot]org>
 
 pkgname=steam-native-runtime
-pkgver=1.0.0.52
-pkgrel=11
+pkgver=1.0.0.54
+pkgrel=1
 pkgdesc='Native replacement for the Steam runtime'
 arch=('i686' 'x86_64')
 url='https://wiki.archlinux.org/index.php/Steam/Troubleshooting#Native_runtime'
 license=('None')
+replaces=('steam-libs')
 depends=('alsa-lib' 'alsa-plugins' 'atk' 'cairo' 'curl' 'dbus-glib'
          'fontconfig' 'freetype2' 'freeglut' 'gconf' 'gdk-pixbuf2' 'glew1.10'
          'glib2' 'glu' 'gtk2' 'libappindicator-gtk2' 'libcaca' 'libcanberra'
@@ -39,6 +40,18 @@ depends_x86_64=('lib32-alsa-lib' 'lib32-alsa-plugins' 'lib32-atk' 'lib32-cairo'
                 'lib32-sdl2_mixer' 'lib32-sdl2_ttf' 'lib32-sdl_image'
                 'lib32-sdl_mixer' 'lib32-sdl_ttf')
 
-replaces=('steam-libs')
+package() {
+  install -d "${pkgdir}/usr/lib/steam"
+  ln -sf /usr/lib/libcurl.so.3 "${pkgdir}/usr/lib/steam/libcurl.so.3"
+  ln -sf /usr/lib/libcurl.so.4.2.0 "${pkgdir}/usr/lib/steam/libcurl.so.4"
+  ln -sf /usr/lib/libcurl.so.4.2.0 "${pkgdir}/usr/lib/steam/libcurl.so.4.2.0"
+  if [ "${CARCH}" == "x86_64" ]; then
+    install -d "${pkgdir}/usr/lib32/steam"
+    ln -sf /usr/lib32/libcurl.so.3 "${pkgdir}/usr/lib32/steam/libcurl.so.3"
+    ln -sf /usr/lib32/libcurl.so.4.2.0 "${pkgdir}/usr/lib32/steam/libcurl.so.4"
+    ln -sf /usr/lib32/libcurl.so.4.2.0 "${pkgdir}/usr/lib32/steam/libcurl.so.4.2.0"
+  fi
+}
 
 # vim: ts=2 sw=2 et:
+
