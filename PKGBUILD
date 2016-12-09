@@ -3,8 +3,8 @@
 # Submitter: Fredrik Tegenfeldt <fredrik.tegenfeldt@unige.ch>
 
 pkgname=slurm-llnl
-pkgver=16.05.6
-pkgrel=2
+pkgver=16.05.7
+pkgrel=1
 pkgdesc="Simple Linux Utility for Resource Management"
 arch=('i686' 'x86_64')
 url="http://www.schedmd.com"
@@ -33,13 +33,13 @@ source=("slurm-tmpfiles.conf"
 	"slurmctld.service"
 	"slurmd.service"
 	"slurmdbd.service"
-	"http://www.schedmd.com/download/total/slurm-${pkgver}.tar.bz2")
-md5sums=('0594bc219f4fd8a0e8663330619829b5'
-         'cae664b8ef44d01783dade9088e25b53'
-         '5545ddfc50e0f517ee59fff054a3f866'
-         '54181476ea043812e658ddf08d997734'
-         'f5b4e5e24ad8bdffb12a3bdb6b08d2de'
-         '0c7911e52443e9f5ad1fc381085ec183')
+	"https://www.schedmd.com/download/total/slurm-${pkgver}.tar.bz2")
+sha512sums=('61f07699353d607ec43bab2a4fe29b4a380dab10108619e67ca2737193ab044a6e263179f7def932660acefd34c790c9d2b301cd6a49d92b8b80deeb1c7b8011'
+            'f74dacaaffa35fa11a62bb9efa492bb4ef9b197748f28c15210f362382da27ec1dd88a57a48fc6807029c93c9033c82e11545ea36622c683ae7bd09970ef8710'
+            'a1c2478a049dc1c024d773a73f363da6c9106d9533137f919394e8213376cb9167c8fcca7b038d1c45c441a1adce4524ccb68b6dd269a1000aba11b84b5352d5'
+            'ae2d0275bc9e0aac15d0d1dd4913b70ed4d4032e76c9c6ffdeae345c55834219f6495429d1d1c9129779221d6d08bada1228ccdb1c671b05d4a92ed6088bf55c'
+            '56459e20d7f2624a8e8dd2982693b257e65df22c3609d991afdc1b2f79adaefc0586a76fd5fdd7dc2bdd39b3af0c91f38ddc4b1139081968903450bc28aca304'
+            '386ce454ccedcec51d3bbf1687f2700ca7ecac61490c939ef623c190a0bc03ac4f5ad22f152dbf1896b55f72b03510d22c8d2d29201dcf225aed33c51bb8fa42')
 
 
 build() {
