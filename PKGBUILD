@@ -7,7 +7,7 @@
 pkgname=gnupg-large-rsa
 _pkgname=gnupg
 pkgver=2.1.16
-pkgrel=1
+pkgrel=2
 pkgdesc='Complete and free implementation of the OpenPGP standard - with fixes to make large RSA keys really work (and even bigger keys)'
 url='http://www.gnupg.org/'
 license=('GPL')
