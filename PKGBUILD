@@ -1,9 +1,9 @@
 # Maintainer: Thomas "Ventto" Venriès <thomas.venries@gmail.com>
 
 pkgname=batify
-pkgver=0.7
+pkgver=0.8
 pkgrel=1
-pkgdesc='Easy and cross-distros way to set battery level warnings using udev and libnotify.'
+pkgdesc='Minimalist way to set battery level warnings using udev and libnotify (for X single-user system).'
 arch=('any')
 url="https://github.com/Ventto/${pkgname}.git"
 license=('MIT')
