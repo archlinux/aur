@@ -13,7 +13,7 @@ pkgbase = dupeguru
 	depends = python-polib
 	depends = python-send2trash
 	source = http://download.hardcoded.net/dupeguru-src-4.0.2.tar.gz
-	md5sums = fb3a149a8134f79bd58e4a49fb082f37 
+	md5sums = ed3b4a049c436cacb0a068438a8d6131
 
 pkgname = dupeguru
 
