@@ -1,6 +1,6 @@
 # Maintainer: Tony Morello <tony@morellowebdesign.com>
 pkgname=trash
-pkgver=1.3
+pkgver=1.4
 pkgrel=1
 epoch=
 pkgdesc="A CLI trash can (recycle bin)"
