@@ -17,7 +17,7 @@ sha1sums=('SKIP')
 
 build() {
   cd "$srcdir/$_gitname"
-  cmake -DCMAKE_INSTALL_LIBDIR=/usr/lib
+  cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_LIBDIR=/usr/lib
   make
 }
 
