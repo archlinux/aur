@@ -1,21 +1,21 @@
---- Makefile.orig	2016-06-22 10:28:31.839738730 +0200
-+++ Makefile	2016-06-22 10:29:10.636809346 +0200
-@@ -65,7 +65,6 @@
+--- Makefile.old	2016-12-09 17:41:06.744056816 +0100
++++ Makefile	2016-12-09 17:47:12.430739851 +0100
+@@ -79,7 +79,6 @@
  	ln -sf ../share/monkeysphere/keytrans $(DESTDIR)$(PREFIX)/bin/openpgp2ssh
  	ln -sf ../share/monkeysphere/keytrans $(DESTDIR)$(PREFIX)/bin/openpgp2pem
  	ln -sf ../share/monkeysphere/keytrans $(DESTDIR)$(PREFIX)/bin/openpgp2spki
 -	install -m 0755 src/agent-transfer/agent-transfer $(DESTDIR)$(PREFIX)/bin
- 	install -m 0744 src/transitions/* $(DESTDIR)$(PREFIX)/share/monkeysphere/transitions
- 	sed -i 's:__SYSSHAREDIR_PREFIX__:$(PREFIX):' $(DESTDIR)$(PREFIX)/share/monkeysphere/transitions/0.23
- 	sed -i 's:__SYSSHAREDIR_PREFIX__:$(PREFIX):' $(DESTDIR)$(PREFIX)/share/monkeysphere/transitions/0.28
-@@ -83,7 +82,9 @@
- installman:
+ 	install -m 0744 replaced/src/transitions/* $(DESTDIR)$(PREFIX)/share/monkeysphere/transitions
+ 	install -m 0644 src/transitions/README.txt $(DESTDIR)$(PREFIX)/share/monkeysphere/transitions
+ 	install -m 0644 src/share/m/* $(DESTDIR)$(PREFIX)/share/monkeysphere/m
+@@ -94,7 +93,9 @@
+ 
+ installman: $(REPLACED_COMPRESSED_MANPAGES)
  	mkdir -p $(DESTDIR)$(MANPREFIX)/man1 $(DESTDIR)$(MANPREFIX)/man7 $(DESTDIR)$(MANPREFIX)/man8
- 	gzip -n man/*/*
--	install man/man1/* $(DESTDIR)$(MANPREFIX)/man1
-+	install man/man1/monkeysphere.1.gz $(DESTDIR)$(MANPREFIX)/man1
-+	install man/man1/openpgp2ssh.1.gz $(DESTDIR)$(MANPREFIX)/man1
-+	install man/man1/openpgp2ssh.1.gz $(DESTDIR)$(MANPREFIX)/man1
- 	install man/man7/* $(DESTDIR)$(MANPREFIX)/man7
- 	install man/man8/* $(DESTDIR)$(MANPREFIX)/man8
- 	ln -s openpgp2ssh.1.gz $(DESTDIR)$(MANPREFIX)/man1/openpgp2pem.1.gz
+-	install replaced/man/man1/* $(DESTDIR)$(MANPREFIX)/man1
++	install replaced/man/man1/monkeysphere.1.gz $(DESTDIR)$(MANPREFIX)/man1
++	install replaced/man/man1/openpgp2ssh.1.gz $(DESTDIR)$(MANPREFIX)/man1
++	install replaced/man/man1/pem2openpgp.1.gz $(DESTDIR)$(MANPREFIX)/man1
+ 	install replaced/man/man7/* $(DESTDIR)$(MANPREFIX)/man7
+ 	install replaced/man/man8/* $(DESTDIR)$(MANPREFIX)/man8
+ 	ln -sf openpgp2ssh.1.gz $(DESTDIR)$(MANPREFIX)/man1/openpgp2pem.1.gz
