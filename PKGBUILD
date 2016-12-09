@@ -7,7 +7,7 @@ _npmname2=gitbook-cli
 _npmver2=2.3.0
 pkgname=nodejs-$_npmname
 pkgver=$_npmver
-pkgrel=1
+pkgrel=2
 pkgdesc='Library and cmd utility to generate GitBooks'
 arch=(any)
 url='http://www.gitbook.io/'
@@ -28,8 +28,8 @@ package() {
   local _npmdir="$pkgdir/usr/lib/node_modules/"
   mkdir -p $_npmdir
   cd $_npmdir
-  npm install -g --prefix "$pkgdir/usr" $_npmname@$_npmver
-  npm install -g --prefix "$pkgdir/usr" $_npmname2@$_npmver2
+  npm install --user root -g --prefix "$pkgdir/usr" $_npmname@$_npmver
+  npm install --user root -g --prefix "$pkgdir/usr" $_npmname2@$_npmver2
 }
 
 # vim:set ts=2 sw=2 et:
