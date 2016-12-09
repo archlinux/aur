@@ -1,11 +1,11 @@
 # Maintainer: Crotok <crotok [at] mailbox [dot] org>
 
 pkgname=streamstudio-bin
-pkgver=2.9.9.8
+pkgver=3.3.2
 pkgrel=1
 pkgdesc="Provide a popcorntime clone for streaming movies directly from T411, Cpasbien, Songza, Twitch, Piratebay, Youtube and Dailymotion"
 arch=('x86_64' 'i686')
-url="https://www.streamstudio.me/"
+url="https://www.streamstudio.cc/"
 license=('GPL3')
 depends=('libnotify' 'desktop-file-utils' 'ttf-font' 'gconf' 'nss' 'libxtst' 'gtk2' 'alsa-lib')
 optdepends=('ttf-liberation: open source ttf fonts')
@@ -13,7 +13,7 @@ provides=('streamstudio')
 conflicts=('streamstudio')
 options=('!strip')
 install="streamstudio.install"
-sha256sums=('c193f976c733d89b23995cd92255e5f01a5aba0677bebacfc2995a1e5d1d6e6f'
+sha256sums=('0156c8731edd0c3e43b81eaf52aad40132ed5b6dbb1784e37f65e1dd2dc71377'
             'b082d39935fd289695ad9a10c9adc3cbe9963555cd410d1d83ceb9055463275b'
             '4dc8715a81bfd1297f99b3e5f41f9f50936bbf7779b9bc4ef9231261053b76ea')
 
@@ -21,10 +21,10 @@ _platform='64'
 
 if [ "$CARCH" = 'i686' ]; then
   _platform='32'
-  sha256sums[0]='4597d79f6167053cbd35ef5edec9d649545746256119b3aacaa15d1334ad0268'
+  sha256sums[0]='31fe9cd355834df81d6b1ba53396a4509f47fbc28ffdc7e9e8882dc4044ab739'
 fi
 
-source=("https://streamstudio.me/StreamStudio/streamstudio-${_platform}.zip"
+source=("https://download.streamstudio.cc/streamstudio-${_platform}.zip"
         "streamstudio.desktop"
         "streamstudio.install")
 
