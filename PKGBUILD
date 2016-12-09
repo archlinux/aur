@@ -13,11 +13,11 @@ pkgbase=llvm-debug
 pkgname=('llvm-debug' 'llvm-libs-debug' 'clang-debug' 'clang-analyzer-debug' 'clang-tools-extra-debug')
 _pkgname='llvm'
 pkgver=258811
-pkgrel=4
+pkgrel=5
 arch=('i686' 'x86_64')
 url="http://llvm.org"
 license=('custom:University of Illinois')
-makedepends=('subversion' 'libffi' 'python2' 'python2-sphinx' 'python2-requests' 'chrpath')
+makedepends=('subversion' 'libffi' 'python2' 'python-sphinx' 'python-requests' 'chrpath')
 
 # this is always the latest svn so debug info can be useful
 options=('staticlibs' '!strip')
