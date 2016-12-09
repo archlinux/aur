@@ -1,0 +1,13 @@
+pre_install() {
+        echo "Be advised that the package you are currently installing should be downloaded through"
+        echo "NXP's License Wall at https://www.nxp.com/kds"
+        echo "By installing this package you agree to the terms of this license."
+        echo "A copy of the License is available in /usr/share/licenses/kinetis-design-studio"
+}
+
+
+post_install() {
+        echo "Warning! If you want to be able to install or update plugins"
+        echo "in KDS, you either need to launch it as root, or"
+        echo "chown the /opt/Freescale/KDS_v3/ folder to your user."
+}

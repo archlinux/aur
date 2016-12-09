@@ -1,0 +1,25 @@
+pkgbase = kinetis-design-studio
+	pkgdesc = IDE for the Kinetis microcontrollers range from NXP. Based on Eclipse.
+	pkgver = 3.2.0
+	pkgrel = 1
+	url = http://www.nxp.com/KDS
+	arch = x86_64
+	license = custom:"NXP"
+	depends = glibc
+	depends = libusb-compat
+	depends = libxt
+	depends = nss
+	depends = java-environment
+	depends = libxslt
+	depends = gconf
+	depends = gtk2
+	depends = alsa-lib
+	depends = libxtst
+	options = !strip
+	source = https://freescaleesd.flexnetoperations.com/337170/727/9802727/kinetis-design-studio-3.2.0-1.x86_64.rpm
+	source = LICENSE
+	sha1sums = 188e9bfa9fb73de16f1f173a2279f59c8ceaabd4
+	sha1sums = 0d067fc6e11d07896e8aba9a94f5fc600bcd1e4e
+
+pkgname = kinetis-design-studio
+
