@@ -10,6 +10,7 @@ pkgbase = docker-volume-gvfs-git
 	makedepends = go
 	depends = gvfs
 	optdepends = gvfs-smb: for mounting smb
+	optdepends = gvfs-nfs: for mounting nfs
 	provides = docker-volume-gvfs
 	conflicts = docker-volume-gvfs
 	source = git://github.com/sapk/docker-volume-gvfs

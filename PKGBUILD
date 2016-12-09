@@ -10,7 +10,8 @@ arch=(i686 x86_64)
 url='https://github.com/sapk/docker-volume-gvfs'
 license=(MIT)
 depends=("gvfs")
-optdepends=('gvfs-smb: for mounting smb')
+optdepends=('gvfs-smb: for mounting smb'
+            'gvfs-nfs: for mounting nfs')
 makedepends=('git' 'go')
 provides=("docker-volume-gvfs")
 conflicts=("docker-volume-gvfs")
