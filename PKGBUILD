@@ -2,7 +2,7 @@
 
 pkgname=opencl-amd
 pkgdesc="OpenCL userspace driver as provided in the amdgpu-pro driver stack. This package is intended to work along with the free amdgpu stack."
-pkgver=16.40.348864
+pkgver=16.50.362463
 pkgrel=1
 arch=('x86_64')
 url='http://www.amd.com'
@@ -12,15 +12,15 @@ depends=('ocl-icd')
 optdepends=('linux-cik: amdgpu support for CIK cards (Bonaire/Hawaii series)')
 conflicts=('amdgpocl')
 
-DLAGENTS='https::/usr/bin/wget --referer http://support.amd.com/en-us/kb-articles/Pages/AMD-Radeon-GPU-PRO-Linux-Beta-Driver%E2%80%93Release-Notes.aspx -N %u'
+DLAGENTS='https::/usr/bin/wget --referer https://support.amd.com/en-us/kb-articles/Pages/AMDGPU-PRO-Driver-for-Linux-Release-Notes.aspx -N %u'
 
 prefix='amdgpu-pro-'
-major='16.40'
-minor='348864'
+major='16.50'
+minor='362463'
 shared="opt/amdgpu-pro/lib/x86_64-linux-gnu"
 
 source=("https://www2.ati.com/drivers/linux/ubuntu/${prefix}${major}-${minor}.tar.xz")
-sha256sums=('59d6b1d975164ff45f6e6be5af6bcc061bf9ef6378ac5757bdb4e67840a706b0')
+sha256sums=('a959013fd641a07107af65d9dd54a019ddcc4a14f467d5d620fabc3497aa88f2')
 
 pkgver() {
 	echo "${major}.${minor}"
@@ -36,7 +36,7 @@ build() {
 
 	mkdir "${srcdir}/libdrm"
 	cd "${srcdir}/libdrm"
-	ar x "${srcdir}/${prefix}${major}-${minor}/libdrm-amdgpu-pro-amdgpu1_2.4.66-${minor}_amd64.deb"
+	ar x "${srcdir}/${prefix}${major}-${minor}/libdrm-amdgpu-pro-amdgpu1_2.4.70-${minor}_amd64.deb"
 	tar xJf data.tar.xz
 	cd ${shared}
 	rm "libdrm_amdgpu.so.1"
