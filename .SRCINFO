@@ -1,0 +1,13 @@
+pkgbase = icc-x360-qhd
+	pkgdesc = An ICC profile for the HP Spectre x360 with QHD screen (created on a Spectre x360 4231 using a colormunki Display colorimeter)
+	pkgver = 1.0.0
+	pkgrel = 0
+	url = https://wiki.archlinux.org/index.php/HP_Spectre_x360_4231
+	arch = any
+	license = public domain
+	provides = icc-x360-qhd
+	source = git+https://github.com/ente76/icc-x360-qhd.git
+	md5sums = SKIP
+
+pkgname = icc-x360-qhd
+
