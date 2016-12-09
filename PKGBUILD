@@ -10,9 +10,9 @@
 
 pkgbase=linux-libre-rt
 _pkgbasever=4.8-gnu
-_pkgver=4.8.6-gnu
+_pkgver=4.8.11-gnu
 _rtbasever=4.8
-_rtpatchver=rt5
+_rtpatchver=rt7
 
 _replacesarchkernel=('linux%') # '%' gets replaced with _kernelname
 _replacesoldkernels=() # '%' gets replaced with _kernelname
@@ -21,7 +21,7 @@ _replacesoldmodules=() # '%' gets replaced with _kernelname
 _srcname=linux-${_pkgbasever%-*}
 _archpkgver=${_pkgver%-*}_${_rtpatchver}
 pkgver=${_pkgver//-/_}.${_rtpatchver}
-pkgrel=1
+pkgrel=2
 rcnrel=armv7-x4
 arch=('i686' 'x86_64' 'armv7h')
 url="https://rt.wiki.kernel.org/"
@@ -29,12 +29,12 @@ license=('GPL2')
 makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc' 'libelf')
 makedepends_armv7h=('git')
 options=('!strip')
-source=("http://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgbasever}/linux-libre-${_pkgbasever}.tar.xz"
-        "http://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgbasever}/linux-libre-${_pkgbasever}.tar.xz.sign"
-        "http://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgver}/patch-${_pkgbasever}-${_pkgver}.xz"
-        "http://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgver}/patch-${_pkgbasever}-${_pkgver}.xz.sign"
-        "http://www.kernel.org/pub/linux/kernel/projects/rt/${_rtbasever}/older/patch-${_pkgver%-*}-${_rtpatchver}.patch.xz"
-        "http://www.kernel.org/pub/linux/kernel/projects/rt/${_rtbasever}/older/patch-${_pkgver%-*}-${_rtpatchver}.patch.sign"
+source=("https://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgbasever}/linux-libre-${_pkgbasever}.tar.xz"
+        "https://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgbasever}/linux-libre-${_pkgbasever}.tar.xz.sign"
+        "https://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgver}/patch-${_pkgbasever}-${_pkgver}.xz"
+        "https://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgver}/patch-${_pkgbasever}-${_pkgver}.xz.sign"
+        "https://www.kernel.org/pub/linux/kernel/projects/rt/${_rtbasever}/older/patch-${_pkgver%-*}-${_rtpatchver}.patch.xz"
+        "https://www.kernel.org/pub/linux/kernel/projects/rt/${_rtbasever}/older/patch-${_pkgver%-*}-${_rtpatchver}.patch.sign"
         "https://repo.parabola.nu/other/linux-libre/logos/logo_linux_clut224.ppm"
         "https://repo.parabola.nu/other/linux-libre/logos/logo_linux_clut224.ppm.sig"
         "https://repo.parabola.nu/other/linux-libre/logos/logo_linux_mono.pbm"
@@ -43,9 +43,12 @@ source=("http://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgbasever}/li
         "https://repo.parabola.nu/other/linux-libre/logos/logo_linux_vga16.ppm.sig"
         # the main kernel config files
         'config.i686' 'config.x86_64' 'config.armv7h'
+        # pacman hook for initramfs regeneration
+        '99-linux.hook'
         # standard config files for mkinitcpio ramdisk
         'linux.preset'
         'change-default-console-loglevel.patch'
+        'fix_race_condition_in_packet_set_ring.diff'
         '0001-usb-serial-gadget-no-TTY-hangup-on-USB-disconnect-WI.patch'
         '0002-fix-Atmel-maXTouch-touchscreen-support.patch'
         # armv7h patches
@@ -61,15 +64,14 @@ source=("http://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgbasever}/li
         '0008-USB-armory-support.patch'
         '0009-ARM-dts-imx6ul-pico-hobbit-Add-Wifi-support.patch'
         '0010-exynos4412-odroid-set-higher-minimum-buck2-regulator.patch'
-        '0011-usb-musb-Fix-hardirq-safe-hardirq-unsafe-lock-order-.patch'
-        '0012-usb-musb-Call-pm_runtime-from-musb_gadget_queue.patch'
-        '0013-phy-twl4030-usb-better-handle-musb_mailbox-failure.patch'
-        '0014-Revert-gpu-drm-omapdrm-dss-of-add-missing-of_node_pu.patch')
+        '0011-usb-musb-Call-pm_runtime-from-musb_gadget_queue.patch'
+        '0012-phy-twl4030-usb-better-handle-musb_mailbox-failure.patch'
+        '0013-Revert-gpu-drm-omapdrm-dss-of-add-missing-of_node_pu.patch')
 sha256sums=('d54e0f8a27e24f3666c19b395c19dba194635db26929c89e78ffa4b2b0e8ca3a'
             'SKIP'
-            '35d6ed23a6a2fc10ef864cd06dfe9b0ea37f722961a75d7e34375c4b483de207'
+            '4485fe9df1be80a5095b8662233a5c7e9a82afb1fe11f9f97475036bb94a972f'
             'SKIP'
-            'f0e1bc55ec0288e54e84cc35a9e16a9df93be3772fda58b654ece6260f12699a'
+            'f258a256ebdb51ceabbe1e482706756437c7113c6d987025203468bfb8601f9a'
             'SKIP'
             'bfd4a7f61febe63c880534dcb7c31c5b932dde6acf991810b41a939a93535494'
             'SKIP'
@@ -79,27 +81,28 @@ sha256sums=('d54e0f8a27e24f3666c19b395c19dba194635db26929c89e78ffa4b2b0e8ca3a'
             'SKIP'
             'cde14ecb6628addddce0854e1d6ff87df1627d56dc56b03a64fa957eb821b10f'
             'c45f0960bca7e0e063d41e0691eefb5cf9db85fdbf35bb6243881d5a32f7f870'
-            '4f41fd9878ae11dd9927f05c491b0680555d1c8afd4e5bc496ebc064a5e4ccd1'
-            'f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c'
+            'c9d891b21f106e0e47d52f34c598ef56901b22302a26dc3a3247522b7eb9feae'
+            '834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0'
+            'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
+            'ad1ee95f906f88d31fcdb9273cd08e02e8eda177449f0c98dc1bff8cbf1483c2'
             '0376bd5efa31d4e2a9d52558777cebd9f0941df8e1adab916c868bf0c05f2fc3'
             '351fd96be8cd5ebd0435c0a8a978673fc023e3b1026085e67f86d815b2285e25'
-            '60220f4dbb85febaba6094ec876481c08a2ba5643974c3a91679df3225f97619'
+            '20b46f54f296f553b75b53f7a1e3dd88c8d84fb92ce839916a243e39fd2f3940'
             'SKIP'
-            'ed9595e2736386e70f9c16ce2d933885bd2f298fa6f8e95dd10c93d99c8addf7'
-            'c17b6f6fe8c1949472d6f4421ca498dda386933e2640b8fe18e907fb9a1cdf11'
-            '6d376399d862c201ef953b663a8008849a8cb4e154d9918d919ab24bf3263c4e'
-            'c0cd1d852e266ac493dcbfe5c25bf64d995344268e0754a1405906e48b1d9e7f'
-            'b974cb919fb4b836df87d5c5088ce4a886b9f49683d143708faacf689357939a'
-            'df91889cc95f4748419b59f5ebf352e489b4d8ccaa7c27b9021cc3c1fbc0fe57'
-            'b1b96244a7301addd1a73965362741d262240eac5482d005e64ff8a60a6e1ac4'
-            '117ae47c9de4ecee666fb85bbe26b4f4733ac114b6746483c4f7c1474ff0b3b0'
-            '122fecf9a187f0182d67d6f7bded420ebf6ff1a8a49e536232d52a6a133466b0'
-            '9ca332918ade3685aafabb7d68bfc4fc68c5133dafefd0540f30e9a1a1063d90'
-            '412819f091e13f541605f935bc1f39c266fc8bc5e396142241c078e2c11be90e'
-            'a90170710bba55f6b0c4a01261e10a669644777e5f70ce1f75ec8e9f33f40bf7'
-            '6561eccea49c9467e86d926932f16a6b93a293e9cbc5a1bb9ca6934f7eba663b'
-            'aac8865bd9c0a583f3d589215683332931049a60a666b2dace37e70d7e68592d')
+            '858eac5f4aadb7a4157a36b31d101d75d841a9c58199e580201d8305356044e3'
+            'eee25f5fa6e6b0fb3d5ab913521af67adf788b8613cad1b6d38711261f70646f'
+            'ece5581c6b19073ccb191a6c49d50cd17ff61916ab53c7eb3039e5ecbcf2d0e3'
+            '0b7f588d1bccef7ac116f4d64e8877aefdf9099f16177a75ffc0c1bcd5d2fff9'
+            '9b504e544345119660fc50875decc1b9ee59ca9783bc5b466461410b307974f2'
+            '1b2eb7f52cf0f5481bdaca484cbd3175b2e472e63e46887cc0ed003e39e57ff3'
+            'c7bba5a22db69e50ea8c7c7abc6bb8d133a30b27b2e7d77fc1f7e435f328366a'
+            'f485923217433862978af1029d6d0573b39d6779796fb8f85ab4d588466ec0d2'
+            '5b21335a3a23345f8296e9258c20f7d70d9668a771019f4ea52eda3e916915b5'
+            '616970b049d597e994930d323c5a5efdd3e1344275c53792840a1898a52bb5dd'
+            '9b0afd186edf6dae0fe0c89ca1c83e5cfa207640859d5c560defead6897478b2'
+            'e565ff56ec6b4dcb43a45cb4d79060d5311e6363f6f0dcfe209cb0efb49df65c'
+            '10055949d09efc74b1586df4d74531910b551a8a8e047ab3800942881e97c974')
 validpgpkeys=(
               '474402C8C582DAFBE389C427BCB7CF877E7D47A7' # Alexandre Oliva
               'C92BAA713B8D53D3CAE63FC9E6974752F9704456' # André Silva
@@ -149,15 +152,18 @@ prepare() {
     patch -p1 -i "${srcdir}/0008-USB-armory-support.patch"
     patch -p1 -i "${srcdir}/0009-ARM-dts-imx6ul-pico-hobbit-Add-Wifi-support.patch"
     patch -p1 -i "${srcdir}/0010-exynos4412-odroid-set-higher-minimum-buck2-regulator.patch"
-    patch -p1 -i "${srcdir}/0011-usb-musb-Fix-hardirq-safe-hardirq-unsafe-lock-order-.patch"
-    patch -p1 -i "${srcdir}/0012-usb-musb-Call-pm_runtime-from-musb_gadget_queue.patch"
-    patch -p1 -i "${srcdir}/0013-phy-twl4030-usb-better-handle-musb_mailbox-failure.patch"
-    patch -p1 -i "${srcdir}/0014-Revert-gpu-drm-omapdrm-dss-of-add-missing-of_node_pu.patch"
+    patch -p1 -i "${srcdir}/0011-usb-musb-Call-pm_runtime-from-musb_gadget_queue.patch"
+    patch -p1 -i "${srcdir}/0012-phy-twl4030-usb-better-handle-musb_mailbox-failure.patch"
+    patch -p1 -i "${srcdir}/0013-Revert-gpu-drm-omapdrm-dss-of-add-missing-of_node_pu.patch"
   fi
 
   # add freedo as boot logo
   install -m644 -t drivers/video/logo \
     "${srcdir}/logo_linux_"{clut224.ppm,vga16.ppm,mono.pbm}
+
+  # fix a race condition that allows to gain root
+  # https://marc.info/?l=linux-netdev&m=148054660230570&w=2
+  patch -p1 -i "${srcdir}/fix_race_condition_in_packet_set_ring.diff"
 
   # add latest fixes from stable queue, if needed
   # http://git.kernel.org/?p=linux/kernel/git/stable/stable-queue.git
@@ -240,22 +246,18 @@ _package() {
   fi
 
   # set correct depmod command for install
-  cp -f "${startdir}/${install}" "${startdir}/${install}.pkg"
+  sed -e "s|%PKGBASE%|${pkgbase}|g;s|%KERNVER%|${_kernver}|g" \
+    "${startdir}/${install}" > "${startdir}/${install}.pkg"
   true && install=${install}.pkg
-  sed \
-    -e  "s/KERNEL_NAME=.*/KERNEL_NAME=${_kernelname}/" \
-    -e  "s/KERNEL_VERSION=.*/KERNEL_VERSION=${_kernver}/" \
-    -i "${startdir}/${install}"
 
   if [ "${CARCH}" = "x86_64" ] || [ "${CARCH}" = "i686" ]; then
     # install mkinitcpio preset file for kernel
-    install -D -m644 "${srcdir}/linux.preset" "${pkgdir}/etc/mkinitcpio.d/${pkgbase}.preset"
-    sed \
-      -e "1s|'linux.*'|'${pkgbase}'|" \
-      -e "s|ALL_kver=.*|ALL_kver=\"/boot/vmlinuz-${pkgbase}\"|" \
-      -e "s|default_image=.*|default_image=\"/boot/initramfs-${pkgbase}.img\"|" \
-      -e "s|fallback_image=.*|fallback_image=\"/boot/initramfs-${pkgbase}-fallback.img\"|" \
-      -i "${pkgdir}/etc/mkinitcpio.d/${pkgbase}.preset"
+    sed "s|%PKGBASE%|${pkgbase}|g" "${srcdir}/linux.preset" |
+      install -D -m644 /dev/stdin "${pkgdir}/etc/mkinitcpio.d/${pkgbase}.preset"
+
+    # install pacman hook for initramfs regeneration
+    sed "s|%PKGBASE%|${pkgbase}|g" "${srcdir}/99-linux.hook" |
+      install -D -m644 /dev/stdin "${pkgdir}/usr/share/libalpm/hooks/99-${pkgbase}.hook"
   fi
 
   # remove build and source links
