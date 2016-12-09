@@ -10,7 +10,7 @@
 
 _name=vlc
 pkgname=vlc-git
-pkgver=3.0.0.r10142.gbe8f61c
+pkgver=3.0.0.r10257.g1dc4df3
 pkgrel=1
 pkgdesc="A multi-platform MPEG, VCD/DVD, and DivX player (GIT Version)"
 arch=('i686' 'x86_64')
@@ -62,11 +62,10 @@ backup=('usr/share/vlc/lua/http/.hosts'
         'usr/share/vlc/lua/http/dialogs/.hosts')
 options=('!emptydirs')
 install="${_name}.install"
-source=('git://git.videolan.org/vlc.git' 'lua53_compat.patch' 'qt_flags.patch')
+source=('git://git.videolan.org/vlc.git'
+        'lua53_compat.patch')
 sha512sums=('SKIP'
-            '33cda373aa1fb3ee19a78748e2687f2b93c8662c9fda62ecd122a2e649df8edaceb54dda3991bc38c80737945a143a9e65baa2743a483bb737bb94cd590dc25f'
-            '01d3252dd138a3bed29cdd484ac25d29b28883c51009e9b7a33fd1a27b85755c0f33e611516ab6ab1cff4e652a8d1f9c0e8717d049364a1d039b0d1b73909a4c')
-
+            '33cda373aa1fb3ee19a78748e2687f2b93c8662c9fda62ecd122a2e649df8edaceb54dda3991bc38c80737945a143a9e65baa2743a483bb737bb94cd590dc25f')
 pkgver() {
   cd "${srcdir}/${_name}"
   printf "%s.r%s.g%s\n" "$(grep 'AC_INIT' configure.ac | sed 's/[^0-9\.]*//g')" "$(git describe --tags --long | cut -d '-' -f 3)" "$(git rev-parse --short HEAD)"
@@ -77,7 +76,6 @@ prepare() {
 
   sed -i -e 's:truetype/ttf-dejavu:TTF:g' modules/visualization/projectm.cpp
   patch -p1 -i "${srcdir}/lua53_compat.patch"
-  patch -p1 -R -i "${srcdir}/qt_flags.patch"
 }
 
 build() {
