@@ -16,7 +16,7 @@ install="$_pkgname.install"
 source=("https://github.com/TokTok/$pkgname/archive/v$pkgver.tar.gz"
         "$_pkgname.conf")
 sha256sums=('6c479aa553d70c17438f851d0610151ddb80b19b3f506a0611550a9fe4ccc59b'
-            'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855')
+            'd76356ee1501cb59a5be5936d8002b22318599d3e83ea89bef1fb3b2d791a0bf')
 
 prepare() {
   cd $pkgname-$pkgver
