@@ -3,7 +3,7 @@
 # Contributor: Pascal Groschwitz <p.groschwitz@googlemail.com>
 
 pkgname=simgear-git
-pkgver=20161201
+pkgver=20161209
 pkgrel=1
 _gitname=simgear
 pkgdesc="A set of open-source libraries designed to be used as building blocks for quickly assembling 3d simulations, games, and visualization applications."
@@ -35,7 +35,13 @@ build() {
   git checkout next
   mkdir ${srcdir}/${_gitname}-build/
   cd "${srcdir}/${_gitname}-build/"
-  cmake ../${_gitname} -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_LIBDIR=/usr/lib -DCMAKE_BUILD_TYPE=Release
+  cmake \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_INSTALL_LIBDIR=/usr/lib \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DENABLE_DNS:BOOL="ON" \
+    -DSIMGEAR_SHARED:BOOL="ON" \
+    ../${_gitname}
   make || return 1
 }
 
