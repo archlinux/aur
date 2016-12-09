@@ -1,0 +1,25 @@
+From 1211bbef06d5342c7753b48f94fd5407568d712c Mon Sep 17 00:00:00 2001
+From: Alexander Shishenko <alex@shishenko.com>
+Date: Fri, 9 Dec 2016 20:37:22 +0300
+Subject: [PATCH 1/1] Fixed #90. Thanks, @mikken !
+
+---
+ CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 530c791..118d00b 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -309,7 +309,7 @@ endif()
+ ## ICU (needed for boost::locale and Qt)
+ add_library(icu INTERFACE)
+ if(OS_LINUX)
+-	find_package(ICU REQUIRED COMPONENTS i18n io le lx uc data)
++	find_package(ICU REQUIRED COMPONENTS i18n io uc data)
+ 	target_link_libraries(icu INTERFACE ICU::ICU)
+ 	target_link_libraries(icu INTERFACE dl)
+ endif()
+-- 
+2.10.2
+
