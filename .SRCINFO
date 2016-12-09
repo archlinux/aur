@@ -1,0 +1,21 @@
+pkgbase = rfled-server-git
+	pkgdesc = Golang binary to emulate a LimitlessLED WiFi Bridge 4.0 unit.
+	pkgver = r20.68cbf57
+	pkgrel = 1
+	url = https://github.com/riptidewave93/RFLED-Server
+	arch = x86_64
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = go
+	depends = glibc
+	provides = rfled-server
+	conflicts = rfled-server
+	source = rfled-server::git+https://github.com/riptidewave93/RFLED-Server.git
+	source = rfled-server.service
+	md5sums = SKIP
+	md5sums = ba63d4f5ccdb521a8225b6c00c503649
+
+pkgname = rfled-server-git
+
