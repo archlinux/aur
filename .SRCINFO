@@ -1,5 +1,5 @@
 pkgbase = linux-macbook
-	pkgver = 4.8.12
+	pkgver = 4.8.13
 	pkgrel = 1
 	url = http://www.kernel.org/
 	arch = i686
@@ -14,8 +14,8 @@ pkgbase = linux-macbook
 	options = !strip
 	source = https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.8.tar.xz
 	source = https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.8.tar.sign
-	source = https://www.kernel.org/pub/linux/kernel/v4.x/patch-4.8.12.xz
-	source = https://www.kernel.org/pub/linux/kernel/v4.x/patch-4.8.12.sign
+	source = https://www.kernel.org/pub/linux/kernel/v4.x/patch-4.8.13.xz
+	source = https://www.kernel.org/pub/linux/kernel/v4.x/patch-4.8.13.sign
 	source = config
 	source = config.x86_64
 	source = linux-macbook.preset
@@ -28,7 +28,7 @@ pkgbase = linux-macbook
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
 	sha256sums = 3e9150065f193d3d94bcf46a1fe9f033c7ef7122ab71d75a7fb5a2f0c9a7e11a
 	sha256sums = SKIP
-	sha256sums = 9a498761be20c10db6b30fac095e0591173d4046c19585bcdd7a72ca8503eb87
+	sha256sums = f0e2f7f738e1a639956e01ba7ef8d3df40ecb5c7586eb366bcd4af70049a7a3c
 	sha256sums = SKIP
 	sha256sums = 1e72cd2e9e1fa8bf1478f7a7d9b9719d1fd2d1754dbe915a6b6d7e0d0a92da0a
 	sha256sums = 8646ab1d39f1755de240a27dd1970be39b8b81b1f1caca0dd77c0a4b157292d9
@@ -52,12 +52,12 @@ pkgname = linux-macbook
 pkgname = linux-macbook-headers
 	pkgdesc = Header files and scripts for building modules for Linux-macbook kernel (with brightness key and suspend patches)
 	depends = linux-macbook
-	provides = linux-macbook-headers=4.8.12
-	provides = linux-headers=4.8.12
+	provides = linux-macbook-headers=4.8.13
+	provides = linux-headers=4.8.13
 
 pkgname = linux-macbook-docs
 	pkgdesc = Kernel hackers manual - HTML documentation that comes with the Linux-macbook kernel (with brightness key and suspend patches)
 	depends = linux-macbook
-	provides = linux-macbook-docs=4.8.12
-	provides = linux-docs=4.8.12
+	provides = linux-macbook-docs=4.8.13
+	provides = linux-docs=4.8.13
 

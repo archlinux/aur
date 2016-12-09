@@ -6,7 +6,7 @@
 pkgbase=linux-macbook       # Build kernel with a different name
 _kernelname=-macbook
 _srcname=linux-4.8
-pkgver=4.8.12
+pkgver=4.8.13
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
@@ -29,7 +29,7 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
 
 sha256sums=('3e9150065f193d3d94bcf46a1fe9f033c7ef7122ab71d75a7fb5a2f0c9a7e11a'
             'SKIP'
-            '9a498761be20c10db6b30fac095e0591173d4046c19585bcdd7a72ca8503eb87'
+            'f0e2f7f738e1a639956e01ba7ef8d3df40ecb5c7586eb366bcd4af70049a7a3c'
             'SKIP'
             '1e72cd2e9e1fa8bf1478f7a7d9b9719d1fd2d1754dbe915a6b6d7e0d0a92da0a'
             '8646ab1d39f1755de240a27dd1970be39b8b81b1f1caca0dd77c0a4b157292d9'
