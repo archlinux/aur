@@ -3,8 +3,8 @@
 
 pkgname=parsoid-git
 _pkgname=parsoid
-pkgver=v0.3.0.r804.g4de49e2
-pkgrel=3
+pkgver=v0.3.0.r975.g2e0b30e
+pkgrel=1
 pkgdesc="A bidirectional wikitext parser and runtime"
 arch=('any')
 url="https://www.mediawiki.org/wiki/Parsoid"
@@ -24,14 +24,14 @@ source=("git+https://gerrit.wikimedia.org/r/p/mediawiki/services/parsoid"
         "parsoid.install")
 sha512sums=("SKIP"
             "b4f8a2fc5119fa4741d79c66b5bb2282b274018ad548d383c6007fbe66d14ee1de6744a2cdcf1f8453ca055f48716598b42d3faecd29b81f61c06a54df64ed7d"
-            "78c32c5a74e2293b8d42ff06715f738dc18ae266d4e77f7ec6acba87726091af397de7f4ad91a990d5e98ce27002c2290626f83249bea08b17e14b4dccb87376")
+            "3b6fdba7a211ccfb038cd1fbe38214b439ce873d6c5bf99187e0c2be19052c2f28ebd322ddf5696f676ee426f177fec828399f859bda6cc4592518e9fa5bbdf5")
 options=('!strip')
 install="parsoid.install"
 pkgver() {
   cd "$_pkgname"
   git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g' 
 }
-build() {
+build() { 
     cd $srcdir/parsoid
     npm install
 }

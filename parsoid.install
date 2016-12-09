@@ -13,10 +13,11 @@ note() {
 }
 
 _update() {
-    chown -R parsoid:parsoid /usr/share/webapps/parsoid
     if ! getent passwd parsoid &>/dev/null; then
         msg_blue "Adding user 'parsoid'"
         useradd -m -r -U -d /usr/share/webapps/parsoid -s /bin/false parsoid &>/dev/null
+        chown -R parsoid /usr/share/webapps/parsoid
+	chgrp -R parsoid /usr/share/webapps/parsoid
     fi
 }
 
