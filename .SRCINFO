@@ -18,5 +18,5 @@ pkgbase = raumserver-bin
 	source_x86_64 = http://bassmaniacs.com/data/appBinaries/raumserver/currentVersion/raumserverDaemon_linux_X64.zip
 	md5sums_x86_64 = 7492b99c96573b69e2563d84cc7b1cd0
 
-pkgname = raumserver
+pkgname = raumserver-bin
 
