@@ -6,7 +6,7 @@
 
 pkgname=linuxsampler-svn
 _pkgname="${pkgname%-svn}"
-pkgver=r2887
+pkgver=r3050
 pkgrel=1
 pkgdesc="Sampler backend, including sampler engine, audio and MIDI drivers, network layer (LSCP) API and native C++ API"
 arch=("i686" "x86_64")
@@ -19,10 +19,10 @@ provides=('linuxsampler')
 conflicts=('linuxsampler')
 options=("libtool")
 source=("$pkgname"::"svn+https://svn.linuxsampler.org/svn/$_pkgname/trunk"
-        "http://www.steinberg.net/sdk_downloads/vstsdk360_22_11_2013_build_100.zip"
+        "http://www.steinberg.net/sdk_downloads/vstsdk366_27_06_2016_build_61.zip"
         "license.txt")
 sha256sums=('SKIP'
-            '74e41da563a1c91e86677530936cb46a15f1af76b29d4c1877134cf29eafb718'
+            '71c609fe74d4bfef9e76e9dd26ebc699105bb7a614ee4cc68550c4bb46c8fa15'
             'fe9613dc00d4dafdbe9132ba00e82b0c6f333c53dffe02e29a8dfe1753c7b622')
 
 pkgver() {
