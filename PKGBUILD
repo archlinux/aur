@@ -1,12 +1,12 @@
-# $Id: PKGBUILD 280867 2016-11-15 21:11:04Z heftig $
+# $Id: PKGBUILD 282440 2016-12-01 10:01:48Z foutrelis $
 # Maintainer: Brian Bidulock <bidulock@openss7.org>
 # Contributor: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
-# Contributor : Ionut Biru <ibiru@archlinux.org>
+# Contributor: Ionut Biru <ibiru@archlinux.org>
 # Contributor: Jakub Schmidtke <sjakub@gmail.com>
 
 pkgname=firefox-gtk2
 _pkgname=firefox
-pkgver=50.0
+pkgver=50.0.2
 pkgrel=1
 pkgdesc="Standalone web browser from mozilla.org"
 arch=('i686' 'x86_64')
@@ -31,12 +31,12 @@ source=(https://ftp.mozilla.org/pub/mozilla.org/firefox/releases/$pkgver/source/
         vendor.js
         firefox-symbolic.svg
         fix-wifi-scanner.diff)
-sha256sums=('5da027350aee148dc62cc1ca897db30510be87ca8eab5e67a7adc7a2479b8616'
+sha256sums=('aa770cb8552bdcf4a7e8bb0ecde27d41ee5b2a972335c6b24dd3afb4d911dfe3'
             '5488e59d08787927337b343c74a999e62e36ba1a0715f3ecb1c314e2ff8f1961'
             '75c526e9669b91b4fe5dcea650a1e8419220abb2e9564184f0d984c71eae82e8'
             'd86e41d87363656ee62e12543e2f5181aadcff448e406ef3218e91865ae775cd'
             'f61ea706ce6905f568b9bdafd1b044b58f20737426f0aa5019ddb9b64031a269'
-            '4b50e9aec03432e21b44d18c4c97b2630bace606b033f7d556c9d3e3eb0f4fa4'
+            '93c5df00f409988bbfa890ac175103476ead3af68f7501973ee70bd11dc472f8'
             'a2474b32b9b2d7e0fb53a4c89715507ad1c194bef77713d798fa39d507def9e9'
             '9765bca5d63fb5525bbd0520b7ab1d27cabaed697e2fc7791400abc3fa4f13b8')
 validpgpkeys=('2B90598A745E992F315E22C58AB132963A06537A')
