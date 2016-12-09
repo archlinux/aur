@@ -3,7 +3,7 @@
 pkgname=samsung_magician
 pkgver=2.0
 pkgrel=1
-pkgdesc="Commandline utility for Samsung SSDs"
+pkgdesc="Commandline utility for Samsung PM863 and SM863 Series"
 url="http://www.samsung.com"
 arch=('x86_64' 'i686')
 license=('custom')
