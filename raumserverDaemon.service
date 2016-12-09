@@ -3,7 +3,7 @@ Description=raumsrv-Daemon-server
 After=syslog.target network.target 
 
 [Service]
-Type=simple
+Type=forking
 WorkingDirectory=/opt/raumserverDaemon/
 ExecStart=/opt/raumserverDaemon/raumsrvDaemon
 
