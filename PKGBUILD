@@ -1,29 +1,30 @@
-# Maintainer: Bartłomiej Bułat <bartek (dot) bulat (at) gmail (dot) com>
+# Maintainer: Zhang Hai <dreaming.in.code.zh@gmail.com>
+# Contributor: Bartłomiej Bułat <bartek (dot) bulat (at) gmail (dot) com>
+
 pkgname=deadbeef-gnome-mmkeys-git
-pkgver=1.1
+_pkgname=deadbeef-gnome-mmkeys
+pkgver=r34
 pkgrel=1
-epoch=
 pkgdesc="DeaDBeeF player Gnome (via DBus) multimedia keys plugin"
-arch=(i386 x86_64)
-url="https://github.com/barthez/deadbeef-gnome-mmkeys"
+url="https://github.com/DreaminginCodeZH/deadbeef-gnome-mmkeys"
+arch=('x86_64' 'i686')
 license=('GPL')
-depends=(deadbeef glib2)
-makedepends=(make git)
-source=(git+https://github.com/barthez/deadbeef-gnome-mmkeys.git)
-md5sums=('SKIP')
+depends=('deadbeef' 'glib2')
+makedepends=('git')
+source=(git+https://github.com/DreaminginCodeZH/deadbeef-gnome-mmkeys.git)
+sha256sums=('SKIP')
 
 pkgver() {
-  cd decast
-  printf "r""$(git rev-list --count HEAD)"
+  cd "${srcdir}/${_pkgname}"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
-
 build() {
-	cd "$srcdir/deadbeef-gnome-mmkeys"
-	make
+  cd "${srcdir}/${_pkgname}"
+  make
 }
 
 package() {
-	cd "$srcdir/deadbeef-gnome-mmkeys"
-	make ROOTDIR="$pkgdir/" install
+  cd "${srcdir}/${_pkgname}"
+  make ROOTDIR="${pkgdir}/" install
 }
