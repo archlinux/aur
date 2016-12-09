@@ -11,7 +11,7 @@ pkgver=4.8.12
 
 #Use the base branch:
 [[ "$pkgver" = *.*.* ]] && _kernel="${pkgver%.*}" || _kernel="${pkgver}"
-pkgrel=2
+pkgrel=3
 arch=('i686' 'x86_64')
 url='http://www.kernel.org/'
 license=('GPL2')
