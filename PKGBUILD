@@ -1,5 +1,5 @@
 # Maintainer: Ronny R <ronny-aur[at]adke*org>
-pkgname=raumserver
+pkgname=raumserver-bin
 pkgver=1.0.2
 pkgrel=1
 epoch=
@@ -11,8 +11,8 @@ depends=('libunwind')
 makedepends=('unzip')
 backup=('opt/raumserverDaemon/settings.xml')
 source=("raumserverDaemon.service")
-source_armv7h=("http://bassmaniacs.com/data/appBinaries/$pkgname/currentVersion/raumserverDaemon_linux_ARMV7HF.zip")
-source_x86_64=("http://bassmaniacs.com/data/appBinaries/$pkgname/currentVersion/raumserverDaemon_linux_X64.zip")
+source_armv7h=("http://bassmaniacs.com/data/appBinaries/raumserver/currentVersion/raumserverDaemon_linux_ARMV7HF.zip")
+source_x86_64=("http://bassmaniacs.com/data/appBinaries/raumserver/currentVersion/raumserverDaemon_linux_X64.zip")
 noextract=("raumserverDaemon_linux_ARMV7HF.zip" "raumserverDaemon_linux_X64.zip")
 
 prepare() {
