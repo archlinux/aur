@@ -1,4 +1,4 @@
-# Maintainer: 100best <jm.100best@hotmail.com>
+# Maintainer: 100best <jm dot 100best at gmail dot com>
 
 pkgname=udefrag
 pkgver=5.0.0AB.7
@@ -14,17 +14,18 @@ md5sums=('20cdd938bed3efa5161aefc0ad08ba00'
          '56db0ac242fceda8f38444e4a8cc173b')
 
 prepare() {
-  mv udefrag.patch $srcdir/ultradefrag-5.0.0AB.7
+  cp udefrag.patch $srcdir/ultradefrag-5.0.0AB.7
   cd $srcdir/ultradefrag-5.0.0AB.7
-  patch -p1 -i udefrag.patch
+  patch -p 1 -i udefrag.patch
+}
+
+build() {
+  cd $srcdir/ultradefrag-5.0.0AB.7/src
+  make
 }
 
 package() {
-  cd $srcdir/ultradefrag-5.0.0AB.7/src
-  make
-  cd $srcdir
-  mkdir usr
-  mkdir usr/bin
-  mv $srcdir/ultradefrag-5.0.0AB.7/src/udefrag $srcdir/usr/bin
-  mv $srcdir/usr $pkgdir
+  cd $srcdir/ultradefrag-5.0.0AB.7/src 
+  mkdir -p $pkgdir/usr/bin
+  cp udefrag $pkgdir/usr/bin
 }
