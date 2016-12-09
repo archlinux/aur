@@ -1,0 +1,19 @@
+pkgbase = spotify-dl-git
+	pkgdesc = Script that allows you to download Spotify songs or playlists
+	pkgver = r8.0fad56e
+	pkgrel = 1
+	url = https://github.com/invicnaper/spotify-dl
+	arch = any
+	license = LGPL3
+	makedepends = git
+	depends = python2-beautifulsoup4
+	depends = youtube-dl
+	provides = spotify-dl
+	conflicts = spotify-dl
+	source = spotify-dl::git+https://github.com/invicnaper/spotify-dl#branch=master
+	source = 01-change-hashbang.patch
+	sha256sums = SKIP
+	sha256sums = 34b8600fd2c39707ab481373e9feee8a7f0acd3ac06cad64966224fe276f44c4
+
+pkgname = spotify-dl-git
+

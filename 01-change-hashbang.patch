@@ -1,0 +1,10 @@
+diff --git a/spotify-dl.py b/spotify-dl.py
+index cb22e68..7829dca 100755
+--- a/spotify-dl.py
++++ b/spotify-dl.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/python
++#!/usr/bin/env python2
+ 
+ #from googleapiclient.discovery import build
+ #from apiclient.errors import HttpError
