@@ -6,20 +6,20 @@
 # https://github.com/stylemistake/bitwig-studio-aur
 
 pkgname='bitwig-studio'
-pkgver='1.3.14'
-pkgrel='2'
-pkgdesc='Music production system for production, remixing and performance'
+pkgver='1.3.15'
+pkgrel='1'
+pkgdesc='Digital audio workstation for music production, remixing and live performance'
 arch=('x86_64')
 url='https://www.bitwig.com/'
 license=('custom')
 depends=('jack' 'xdg-utils' 'zenity' 'xcb-util-wm' 'libbsd')
 optdepends=('alsa-lib' 'oss' 'ffmpeg: MP3 support')
 provides=('bitwig-studio')
-replaces=('bitwig-studio-demo')
-conflicts=('bitwig-studio-demo' 'bitwig-studio-demo-rc')
+replaces=()
+conflicts=()
 options=(!strip)
 source=("https://downloads.bitwig.com/stable/${pkgver}/bitwig-studio-${pkgver}.deb")
-md5sums=('53ae20b00baf831e72f09f13c60c29e9')
+md5sums=('401a1b9c437095903430b701bec6e699')
 
 package() {
   # Unpack package contents
