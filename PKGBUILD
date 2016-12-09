@@ -13,7 +13,7 @@ conflicts=("${pkgname%-git}")
 source=('rfled-server::git+https://github.com/riptidewave93/RFLED-Server.git'
 	'rfled-server.service')
 md5sums=('SKIP'
-         'ba63d4f5ccdb521a8225b6c00c503649')
+         'a71bdffc37ea6e4ea8e24a3731793798')
 
 pkgver() {
 	cd "$srcdir/${pkgname%-git}"
