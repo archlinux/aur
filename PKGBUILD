@@ -6,11 +6,13 @@ arch=('i686' 'x86_64')
 url="https://github.com/progwolff/performer"
 provides=('performer-git')
 license=("GPL")
-depends=('carla' 'kdebase-runtime') 
+depends=('carla' 'qt5-base' 'qt5-declarative') 
 makedepends=('git' 'extra-cmake-modules' 'qt5-tools' 'python')
 optdepends=(
+    'kdebase-runtime: KDE integration'
     'kparts: display notes or chords with okular-git'
-    'okular-git: display notes or chords')
+    'okular-git: display notes or chords'
+    'qt5-webengine: display notes or chords')
 source=('performer::git+https://github.com/progwolff/performer.git')
 md5sums=('SKIP')
 
