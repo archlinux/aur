@@ -3,13 +3,13 @@
 # Contributor: hardfalcon <?>
 _pkgname=libnfc
 pkgname="${_pkgname}-git"
-pkgver=1.7.1.r28.gef74d81
+pkgver=1.7.1.r101.ge9a750f
 pkgrel=1
 pkgdesc='Platform independent Near Field Communication (NFC) library'
 arch=('i686' 'x86_64')
 url="http://nfc-tools.org/"
 license=('LGPL3')
-depends=('pcsclite' 'libusb')
+depends=('pcsclite' 'libusb-compat')
 makedepends=('doxygen' 'zip' 'git')
 provides=("libnfc=${pkgver}")
 conflicts=(libnfc libnfc-svn)
@@ -24,6 +24,10 @@ pkgver() {
 
 prepare() {
     cd ${srcdir}/${_pkgname}
+    #Hotfixing Bug
+    if [ ! -e README-Windows.txt ]; then
+        ln -s README-Windows.{md,txt}
+    fi
     ./make_release.sh
     #autoreconf -vis
     ./configure --prefix /usr --enable-doc
