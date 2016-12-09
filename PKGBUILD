@@ -1,14 +1,14 @@
-# Maintainer: Your Name <seppia@seppio.fish>
+# Maintainer: Seppia <seppia@seppio.fish>
 pkgname=otbluh-git
 pkgver=r76.a0ae5aa
-pkgrel=1
+pkgrel=2
 pkgdesc="simple one time pad implementation with key generating support"
-arch=('x86' 'x86_64' 'aarch64')
+arch=('i686' 'x86_64' 'aarch64')
 url="https://git.eigenlab.org/seppia/onetimebluh"
 license=('GPLv3')
 groups=()
 depends=('openssl')
-makedepends=('git' 'openssl')
+makedepends=('git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 replaces=()
