@@ -2,7 +2,7 @@
 
 pkgbase=gtk4-git
 pkgname=(gtk4-update-icon-cache-git gtk4-git gtk4-print-backends-git)
-pkgver=3.89.1.r56.g975a3fa
+pkgver=3.89.1.r116.g87ae588
 pkgrel=1
 pkgdesc="GObject-based multi-platform GUI toolkit (GIT Version)"
 arch=('i686' 'x86_64')
@@ -14,7 +14,7 @@ depends=('adwaita-icon-theme'
          'cairo>=1.14.0'
          'dconf'
          'desktop-file-utils'
-         'glib2-git>=2.45.8'
+         'glib2-git>=2.49.4'
          'gdk-pixbuf2>=2.30.0'
          'json-glib'
          'libcups'
@@ -42,7 +42,7 @@ makedepends=('gobject-introspection-git'
              'autoconf-archive')
 optdepends=('gnome-icon-theme: Default icon theme'
             'gnome-themes-standard: Default widget theme')
-conflicts=('gtk3 gtk3-git')
+conflicts=('gtk3' 'gtk3-git')
 backup=('usr/share/gtk-4.0/settings.ini')
 source=('git://git.gnome.org/gtk+'
         'gtk4.install'
