@@ -1,0 +1,22 @@
+--- GNUmakefile.orig	2016-12-09 11:10:15.681092009 +0200
++++ GNUmakefile	2016-12-09 11:29:26.822994751 +0200
+@@ -52,13 +52,13 @@
+ # "OBJS += sandbox-null.o" and recompile.
+ # PLEASE TELL ME IF IT DOESN'T WORK.
+ 
+-ifeq ($(shell pkg-config --exists libseccomp && echo 1),1)
+-OBJS	+= sandbox-seccomp.o
+-LIBADD	+= $(shell pkg-config --libs libseccomp)
+-CFLAGS	+= $(shell pkg-config --cflags libseccomp)
+-else
++# ifeq ($(shell pkg-config --exists libseccomp && echo 1),1)
++# OBJS	+= sandbox-seccomp.o
++# LIBADD	+= $(shell pkg-config --libs libseccomp)
++# CFLAGS	+= $(shell pkg-config --cflags libseccomp)
++# else
+ OBJS	+= sandbox-null.o
+-endif
++# endif
+ 
+ else ifeq ($(shell uname), Darwin)
+ 

@@ -1,18 +1,19 @@
 _libressl_ver='2.5.0'
 pkgname='acme-client'
 pkgdesc="Secure Let's Encrypt client"
-pkgver='0.1.14'
-pkgrel='2'
+pkgver='0.1.15'
+pkgrel='1'
 license=('BSD')
 url='https://kristaps.bsd.lv/acme-client/'
 arch=('x86_64' 'i686')
 depends=('libbsd')
 source=("https://github.com/kristapsdz/acme-client-portable/archive/VERSION_${pkgver//\./_}.tar.gz"
 		"http://ftp.openbsd.org/pub/OpenBSD/LibreSSL/libressl-${_libressl_ver}.tar.gz"
-		README.archlinux)
-sha512sums=('03058da278da9c5a53940a5ba289e1d2eac52e57ef565fb061e9d2093b8baac77f7ec299a4deecfac9b02286d62d9fac198595ca2ba7d2b502be5adc4a41b5ab'
+		README.archlinux acme-client-no-seccomp.patch)
+sha512sums=('3d78dc152aceaf1712f2deb19923a1b998b1f93cf86b4e0c1918abcd01e074318ee4874dec17aadf07cdfbd4ab266c4985608aecfddbbd785314e96a147d84eb'
             '6372b27f1696e957389646a05b0572ad6936443b34fee0e57153b063831e00318fa1b434e3e0369f0c3df872e15ad3bee2f85db0851021444612f2a6f266a332'
-            '0a1d1baad45510687e66fafb44459a503f6688a73f7ceb402c204b096dee4e56ea2e9f71ed6f59421b81acf854a3d39395739a5a063c1536d557e3eccac6cee4')
+            '0a1d1baad45510687e66fafb44459a503f6688a73f7ceb402c204b096dee4e56ea2e9f71ed6f59421b81acf854a3d39395739a5a063c1536d557e3eccac6cee4'
+            'f8ff25c0f1933f2f6d6c5f6f4605147f62ff7b88bbdad6b20182f1bec4a04a6ffad362e0fc1cc44796223cc70240de5abb55daa9ac4e4bfb47e2f3e863788f47')
 replaces=('letskencrypt')
 provides=('letskencrypt')
 
@@ -20,6 +21,9 @@ prepare () {
 	cd "${srcdir}/${pkgname}-portable-VERSION_${pkgver//\./_}"
 	# Remove this definition, we'll pass a value below.
 	sed -i -e '/^#define[[:space:]]\+WWW_DIR\b/d' main.c
+
+	# TODO: Remove patch once seccomp sandboxing works with glibc.
+	patch -p0 < "${srcdir}/acme-client-no-seccomp.patch"
 }
 
 build () {
