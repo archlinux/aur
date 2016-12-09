@@ -17,7 +17,7 @@ md5sums=('92339dda322e1dd2615f013960a91c4b')
 prepare() {
   cd $srcdir/revbayes-$pkgver-release
 
-  rm -rf boost_1_55_0
+  rm -rf boost_*
 
   mkdir -p build
 
