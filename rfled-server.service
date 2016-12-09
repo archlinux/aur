@@ -4,7 +4,7 @@ After=syslog.target network.target
 
 [Service]
 Type=simple
-ExecStart=/usr/sbin/rfled-server -serial /dev/ttyLEDBridge0
+ExecStart=/usr/bin/rfled-server -serial /dev/ttyLEDBridge0
 
 [Install]
 WantedBy=multi-user.target

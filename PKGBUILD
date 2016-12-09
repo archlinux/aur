@@ -36,10 +36,10 @@ package() {
 	cd "$srcdir/${pkgname%-git}"
 	case "$CARCH" in
 		armv7h)
-			install -D -T -m744 -o root:root "bin/rfled-server-armv7" $pkgdir/usr/sbin/rfled-server
+			install -D -T -m744 -o root:root "bin/rfled-server-armv7" $pkgdir/usr/bin/rfled-server
 			;;
 		x86_64)
-			install -D -T -m744 -o root -g root "bin/rfled-server-amd64" $pkgdir/usr/sbin/rfled-server
+			install -D -T -m744 -o root -g root "bin/rfled-server-amd64" $pkgdir/usr/bin/rfled-server
 			;;
 	esac
 }
