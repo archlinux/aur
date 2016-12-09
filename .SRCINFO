@@ -1,6 +1,6 @@
 pkgbase = julia-mkl-git
 	pkgdesc = High-level, high-performance, dynamic programming language (compiled with the Intel MKL library)
-	pkgver = 0.6.0.dev.r34222.g03c2464
+	pkgver = 0.6.0.dev.r34444.g0486ac3
 	pkgrel = 1
 	url = http://julialang.org
 	arch = x86_64
