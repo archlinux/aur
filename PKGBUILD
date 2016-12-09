@@ -48,6 +48,7 @@ prepare() {
 
   # Extract libe_sqlite.so by executing ManagerServer.exe
   # on port 1 to fail on purpose.
+  # ref: https://forum.manager.io/t/manager-does-not-start-after-recent-update-on-ubuntu/7950/19
   cd "$srcdir/opt/manager-accounting"
   mono ManagerServer.exe -port 1 2>&1 > /dev/null
 }
