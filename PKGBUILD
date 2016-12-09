@@ -2,7 +2,7 @@
 # Maintainer: Bijaya Dangol <dangoldbj23@gmail.com>
 pkgname=dupeguru
 pkgver=4.0.3
-pkgrel=2
+pkgrel=3
 pkgdesc="Find duplicate files on your system"
 arch=(any)
 url="http://www.hardcoded.net/dupeguru/"

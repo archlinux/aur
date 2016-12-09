@@ -1,7 +1,7 @@
 pkgbase = dupeguru
 	pkgdesc = Find duplicate files on your system
-	pkgver = 4.0.2
-	pkgrel = 2
+	pkgver = 4.0.3
+	pkgrel = 3
 	url = http://www.hardcoded.net/dupeguru/
 	arch = any
 	license = BSD
