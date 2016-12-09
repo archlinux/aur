@@ -2,7 +2,7 @@
 # Contributor: François M. <francois5537 @ gmail.com>
 
 pkgname=manager-accounting
-pkgver=16.10.20
+pkgver=16.12.31
 pkgrel=1
 pkgdesc='Manager is free accounting software for small business'
 arch=('i686' 'x86_64')
@@ -45,6 +45,11 @@ prepare() {
   # Extract, patch
   tar --strip-components=1 -zxvf "${pkgname}_${_pkgver}.tar.gz"
   patch -p1 -i fix-path.patch
+
+  # Extract libe_sqlite.so by executing ManagerServer.exe
+  # on port 1 to fail on purpose.
+  cd "$srcdir/opt/manager-accounting"
+  mono ManagerServer.exe -port 1 2>&1 > /dev/null
 }
 
 package() {
