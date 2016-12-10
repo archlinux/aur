@@ -1,9 +1,9 @@
 # Maintainer: Alexander F Rødseth <xyproto@archlinux.org>
 
 pkgname=algernon
-pkgver=1.3
+pkgver=1.3.1
 pkgrel=1
-pkgdesc='Webi/application server with built-in support for HTTP/2, Lua, Markdown and Pongo2'
+pkgdesc='Web/application server with built-in support for Lua and Markdown'
 arch=('x86_64' 'i686')
 url='http://algernon.roboticoverlords.org/'
 license=('MIT')
