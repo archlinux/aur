@@ -1,0 +1,68 @@
+--- cutecom-0.22.0/qcppdialogimpl.cpp
++++ cutecom-0.22.0/qcppdialogimpl.cpp
+@@ -101,6 +101,7 @@
+ 
+    connect(m_sendPb, SIGNAL(clicked()), this, SLOT(sendFile()));
+    connect(m_sendBreakPb, SIGNAL(clicked()), this, SLOT(sendBreak()));
++   connect(m_ctrlc, SIGNAL(clicked()), this, SLOT(sendCtrlc()));
+    connect(m_aboutPb, SIGNAL(clicked()), this, SLOT(showAboutMsg()));
+    connect(m_quitPb, SIGNAL(clicked()), this, SLOT(close()));
+ 
+@@ -597,6 +598,15 @@
+     }
+ }
+ 
++void QCPPDialogImpl::sendCtrlc()
++{
++    QKeyEvent keyEvent(QEvent::KeyPress,Qt::Key_C, Qt::ControlModifier);
++    QApplication::sendEvent(m_cmdLe, &keyEvent);
++
++    QKeyEvent key_release(QKeyEvent::KeyRelease, Qt::Key_C, Qt::ControlModifier);
++    QApplication::sendEvent(m_cmdLe, &key_release);
++}
++
+ void QCPPDialogImpl::killSz()
+ {
+    if (m_sz==0)
+@@ -1008,6 +1018,7 @@
+    m_protoPb->setEnabled(true);
+    m_closePb->setEnabled(true);
+    m_sendBreakPb->setEnabled(true);
++   m_ctrlc->setEnabled(true);
+ 
+    m_cmdLe->setFocus();
+ 
+@@ -1063,6 +1074,7 @@
+    m_protoPb->setEnabled(false);
+    m_closePb->setEnabled(false);
+    m_sendBreakPb->setEnabled(false);
++   m_ctrlc->setEnabled(false);
+ 
+    m_connectPb->setFocus();
+ 
+--- cutecom-0.22.0/cutecommdlg.ui
++++ cutecom-0.22.0/cutecommdlg.ui
+@@ -561,6 +561,13 @@
+           </widget>
+          </item>
+          <item>
++          <widget class="QPushButton" name="m_ctrlc">
++           <property name="text">
++            <string>Ctrl+C</string>
++           </property>
++          </widget>
++         </item>
++         <item>
+           <spacer>
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+--- cutecom-0.22.0/qcppdialogimpl.h
++++ cutecom-0.22.0/qcppdialogimpl.h
+@@ -51,6 +51,7 @@
+       void readData(int fd);
+       void sendFile();
+       void sendBreak();
++      void sendCtrlc();
+       void showAboutMsg();
+ 
+       void oldCmdClicked(QListWidgetItem* item);

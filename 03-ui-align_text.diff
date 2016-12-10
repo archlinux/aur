@@ -1,0 +1,73 @@
+--- cutecom-0.22.0/cutecommdlg.ui
++++ cutecom-0.22.0/cutecommdlg.ui
+@@ -33,6 +33,9 @@
+        <property name="text">
+         <string>Stop bits:</string>
+        </property>
++       <property name="alignment">
++        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
++       </property>
+        <property name="wordWrap">
+         <bool>false</bool>
+        </property>
+@@ -56,6 +59,9 @@
+        <property name="text">
+         <string>Data bits:</string>
+        </property>
++       <property name="alignment">
++        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
++       </property>
+        <property name="wordWrap">
+         <bool>false</bool>
+        </property>
+@@ -106,6 +112,9 @@
+        <property name="text">
+         <string>Device:</string>
+        </property>
++       <property name="alignment">
++        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
++       </property>
+        <property name="wordWrap">
+         <bool>false</bool>
+        </property>
+@@ -156,6 +165,9 @@
+        <property name="text">
+         <string>Baud rate:</string>
+        </property>
++       <property name="alignment">
++        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
++       </property>
+        <property name="wordWrap">
+         <bool>false</bool>
+        </property>
+@@ -180,11 +192,17 @@
+      </item>
+      <item row="0" column="3" rowspan="4">
+       <layout class="QVBoxLayout">
++       <property name="spacing">
++        <number>0</number>
++       </property>
+        <property name="bottomMargin">
+         <number>0</number>
+        </property>
+        <item>
+         <layout class="QHBoxLayout">
++         <property name="spacing">
++          <number>-1</number>
++         </property>
+          <item>
+           <widget class="QLabel" name="textLabel4">
+            <property name="text">
+@@ -231,6 +249,12 @@
+        </item>
+        <item>
+         <layout class="QGridLayout">
++         <property name="horizontalSpacing">
++          <number>-1</number>
++         </property>
++         <property name="verticalSpacing">
++          <number>0</number>
++         </property>
+          <item row="0" column="2">
+           <widget class="QCheckBox" name="m_hardwareCb">
+            <property name="toolTip">

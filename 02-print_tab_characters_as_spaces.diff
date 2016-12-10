@@ -1,0 +1,72 @@
+--- cutecom-0.22.0/qcppdialogimpl.cpp
++++ cutecom-0.22.0/qcppdialogimpl.cpp
+@@ -1322,7 +1322,7 @@
+       return;
+    }
+ 
+-   const char* c=m_buf;
++   const char *c = m_buf;
+    if (m_sz!=0)
+    {
+ //      std::cerr<<"readData() "<<bytesRead<<std::endl;
+@@ -1347,8 +1347,7 @@
+             snprintf(buf, 16, "%08x: ", m_hexBytes);
+             text+=buf;
+          }
+-         unsigned int b=*c;
+-         snprintf(buf, 16, "%02x ", b & 0xff);
++         snprintf(buf, 16, "%02hhx ", *c);
+          text+=buf;
+ 
+          m_hexBytes++;
+@@ -1363,33 +1362,29 @@
+       }
+       else
+       {
+-         // also print a newline for \r, and print only one newline for \r\n
+-         if ((isprint(*c)) || (*c=='\n') || (*c=='\r'))
+-         {
+-            if (*c=='\r')
+-            {
+-               text+='\n';
+-            }
+-            else if (*c=='\n')
++         switch (*c) {
++         case '\n':
++               if (m_previousChar == '\r') break;
++               // fall through
++         case '\r':
++               text += '\n';
++               break;
++         case '\t':
++               text += "    ";
++               break;
++         default:
++            if (isprint(*c))
+             {
+-               if (m_previousChar != '\r')
+-               {
+-                  text+='\n';
+-               }
++               text += *c;
+             }
+             else
+             {
+-               text+=(*c);
++               unsigned int b = *c;
++               snprintf(buf, 16, "\\0x%02x", b & 0xff);
++               text += buf;
+             }
+-
+-            m_previousChar = *c;
+-         }
+-         else
+-         {
+-            unsigned int b=*c;
+-            snprintf(buf, 16, "\\0x%02x", b & 0xff);
+-            text+=buf;
+          }
++         m_previousChar = *c;
+       }
+       c++;
+    }
