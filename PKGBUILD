@@ -13,6 +13,11 @@ source=("http://downloads.sourceforge.net/structuresynth/StructureSynth-Source-v
 md5sums=('862705c5bc9e778094046399f44d6c26')
 install=${pkgname}.install
 
+prepare() {
+  cd "$srcdir/Structure Synth Source Code/"
+  sed -i '125 { s|return false;|return NULL;| }' SyntopiaCore/GLEngine/Raytracer/VoxelStepper.cpp
+}
+
 build() {
   cd "$srcdir/Structure Synth Source Code/"
 
