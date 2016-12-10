@@ -3,7 +3,7 @@
 pkgname=pi-hole-standalone
 _pkgname=pi-hole
 pkgver=2.9.5
-pkgrel=1
+pkgrel=2
 pkgdesc='The Pi-hole is an advertising-aware DNS/Web server. Arch alteration for standalone PC.'
 arch=('any')
 license=('GPL2')
@@ -25,7 +25,7 @@ source=(https://github.com/$_pkgname/$_pkgname/archive/v$pkgver.tar.gz
 
 md5sums=('b383a2741e556a3680b3ae312a18cfba'
          'bc28e67029222243ba2ca9b3a1855469'
-         '4bba639dcff6dd53c7d73e2fa1079f1f'
+         'c39b31cbad16482630196704167afe2a'
          '1b2e808b699a6b58647641f12379f65d'
          '047f13d4ac97877f724f87b002aaee63'
          'd42a864f88299998f8233c0bc0dd093d'
