@@ -1,7 +1,7 @@
 # Maintainer:  Oliver Jaksch <arch-aur@com-in.de>
 
 pkgname=libretro-stella-git
-pkgver=158.82d6e59
+pkgver=161.1207fe7
 pkgrel=1
 pkgdesc="libretro implementation of Stella. (Atari 2600)"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
@@ -29,5 +29,5 @@ build() {
 
 package() {
   install -Dm644 "${_gitname}/${_libname}.so" "${pkgdir}/usr/lib/libretro/${_libname}.so"
-  install -Dm644 "${_libname}.info" "${pkgdir}/usr/lib/libretro/${_libname}.info"
+  install -Dm644 "${_libname}.info" "${pkgdir}/usr/share/libretro/info/${_libname}.info"
 }
