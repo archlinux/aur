@@ -1,0 +1,14 @@
+pkgbase = merlin-linkage
+	pkgdesc = Bioinformatics linkage analysis tool
+	pkgver = 1.1.2
+	pkgrel = 1
+	url = https://csg.sph.umich.edu/abecasis/Merlin
+	arch = i686
+	arch = x86_64
+	license = custom:merlin
+	depends = zlib
+	source = https://csg.sph.umich.edu/abecasis/Merlin/download/merlin-1.1.2.tar.gz
+	sha256sums = aa3c087b1c717209389705bf2ace4c24884575014a561dff250c0be93fe1e411
+
+pkgname = merlin-linkage
+
