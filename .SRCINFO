@@ -1,7 +1,7 @@
 pkgbase = catalyst-test
-	pkgdesc = AMD/ATI Catalyst drivers for linux AKA Crimson. catalyst-dkms + catalyst-utils + lib32-catalyst-utils + experimental powerXpress suppport. PRE-GCN Radeons ARE NOT SUPPORTED
+	pkgdesc = AMD/ATI Catalyst drivers for linux AKA Crimson. catalyst-dkms + catalyst-utils + lib32-catalyst-utils + experimental powerXpress suppport. PRE-GCN Radeons are optionally supported
 	pkgver = 15.12
-	pkgrel = 11
+	pkgrel = 12
 	url = http://www.amd.com
 	install = catalyst-test.install
 	arch = i686
@@ -9,7 +9,7 @@ pkgbase = catalyst-test
 	license = custom
 	depends = dkms
 	depends = linux>=3.0
-	depends = linux<4.9
+	depends = linux<4.10
 	depends = linux-headers
 	depends = xorg-server>=1.7.0
 	depends = xorg-server<1.18.0
@@ -29,6 +29,7 @@ pkgbase = catalyst-test
 	optdepends = opencl-headers: headers necessary for OpenCL development
 	optdepends = acpid: acpi event support / atieventsd
 	optdepends = procps-ng: brings pgrep used in acpi event support
+	optdepends = opencl-icd-loader: OpenCL ICD Bindings
 	provides = libgl
 	provides = libatical=15.12
 	provides = catalyst=15.12
@@ -40,6 +41,7 @@ pkgbase = catalyst-test
 	provides = libtxc_dxtn
 	provides = mesa-libgl
 	provides = mesa-libgl-git
+	provides = opencl-driver
 	conflicts = libgl
 	conflicts = catalyst
 	conflicts = catalyst-daemon
@@ -79,6 +81,8 @@ pkgbase = catalyst-test
 	source = dkms.conf
 	source = makesh-dont-check-gcc-version.patch
 	source = 4.7-arch-cpu_has_pge-v2.patch
+	source = 4.9_over_4.6-arch-get_user_pages_remote.patch
+	source = catalyst-15.9_control_file.tar.gz
 	md5sums = 39808c8a9bcc9041f1305e3531b60622
 	md5sums = af7fb8ee4fc96fd54c5b483e33dc71c4
 	md5sums = bdafe749e046bfddee2d1c5e90eabd83
@@ -105,6 +109,8 @@ pkgbase = catalyst-test
 	md5sums = 23d569abfdd7de433d76e003e4b3ccf9
 	md5sums = 10829e3b992b3e80a6e78c8e27748703
 	md5sums = 37eef5103a11d8136979463e7bc31091
+	md5sums = 194cb44e9e2ab0e65b6267aca66d0400
+	md5sums = e98e50bebe96b08ca680aed6ca505356
 
 pkgname = catalyst-test
 
