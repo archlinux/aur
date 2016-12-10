@@ -1,6 +1,6 @@
 pkgbase = amule-adnza-daemon-svn
 	pkgdesc = aMule patched for Fastweb Network (Italy) by Adunanza forum. (Only Daemon, CLI tools and Webserver)
-	pkgver = 458
+	pkgver = 563
 	pkgrel = 1
 	url = http://amule-adunanza.sourceforge.net/
 	install = amule-daemon.install
