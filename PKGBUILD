@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond < yahoo-com: danielbermond >
 
 pkgname=lzma_alone
-pkgver=16.02
+pkgver=16.04
 pkgrel=1
 pkgdesc="An algorithm used to perform lossless data compression"
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ license=('custom')
 depends=('gcc-libs')
 source=("http://www.7-zip.org/a/lzma$(echo ${pkgver} | tr -d '.').7z")
 noextract=("lzma$(echo ${pkgver} | tr -d '.').7z")
-sha256sums=('98e6c9b2f6ce07bc14fecc96a230f197b2c1f9b85b8598bcd5cc471be0b46037')
+sha256sums=('edf8690e9d5ae0dbe80751e3df247bb4e1b497b100c4af5b95fc50a5c2e5b04f')
 
 prepare(){
 	mkdir -p lzma-sdk-"$pkgver"
