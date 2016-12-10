@@ -43,4 +43,4 @@ package() {
   rm ${pkgdir}/usr/bin/fitscopy
   rm ${pkgdir}/usr/bin/imcopy
 }
-md5sums=('b7b3277bb9779ef19b06b8e2377a63d4')
+md5sums=('564efc92af2f6fc06013a8051ebd4857')
