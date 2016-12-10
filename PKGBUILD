@@ -7,8 +7,10 @@
 # Possible replacements are listed in build/linux/unbundle/replace_gn_files.py
 # Keys are the names in the above script; values are the dependencies in Arch
 declare -rgA _system_libs=(
+  [ffmpeg]=ffmpeg
   [flac]=flac
   [harfbuzz-ng]=harfbuzz-icu
+  [icu]=icu
   [libjpeg]=libjpeg
   [libpng]=libpng
   [libvpx]=libvpx
@@ -18,34 +20,34 @@ declare -rgA _system_libs=(
   [re2]=re2
   [snappy]=snappy
   [yasm]=
-  #[zlib]=zlib         # Error during build
+  [zlib]=minizip
 )
 
 pkgname=inox
-pkgver=54.0.2840.100
+pkgver=55.0.2883.75
 pkgrel=1
 _launcher_ver=3
 pkgdesc="Chromium Spin-off to enhance privacy by disabling data transmission to Google"
 arch=('i686' 'x86_64')
-url="http://www.chromium.org/"
+url="http://www.chromium.org/Home"
 license=('BSD')
-depends=('gtk2' 'nss' 'alsa-lib' 'xdg-utils' 'bzip2' 'libevent' 'libxss'
-         'libexif' 'libjpeg' 'libpng' 'libgcrypt' 'ttf-font' 'systemd'
-         'dbus' 'flac' 'snappy' 'libwebp' 'libxslt' 're2'
+depends=('gtk2' 'nss' 'alsa-lib' 'xdg-utils' 'bzip2' 'ffmpeg' 'icu' 'libevent'
+         'libxss' 'libexif' 'libjpeg' 'libpng' 'libgcrypt' 'ttf-font' 'systemd'
+         'dbus' 'flac' 'snappy' 'libwebp' 'libxslt' 're2' 'minizip'
          'pciutils' 'libpulse' 'harfbuzz-icu' 'libsecret' 'libvpx'
          'perl' 'perl-file-basedir' 'desktop-file-utils' 'hicolor-icon-theme')
-makedepends=('python2' 'gperf' 'yasm' 'mesa' 'ninja')
+makedepends=('python2' 'gperf' 'yasm' 'mesa' 'ninja' 'git')
 makedepends_x86_64=('lib32-gcc-libs' 'lib32-zlib')
 optdepends=('kdebase-kdialog: needed for file dialogs in KDE'
             'gnome-keyring: for storing passwords in GNOME keyring'
             'kwallet: for storing passwords in KWallet')
-options=('!strip')
 install=inox.install
 source=(https://commondatastorage.googleapis.com/chromium-browser-official/chromium-$pkgver.tar.xz
         chromium-launcher-$_launcher_ver.tar.gz::https://github.com/foutrelis/chromium-launcher/archive/v$_launcher_ver.tar.gz
         https://raw.githubusercontent.com/gcarq/inox-patchset/$pkgver/inox.desktop
         https://raw.githubusercontent.com/gcarq/inox-patchset/$pkgver/chromium-52.0.2743.116-unset-madv_free.patch
-        https://raw.githubusercontent.com/gcarq/inox-patchset/$pkgver/chromium-53.0.2785.92-last-commit-position.patch
+        https://raw.githubusercontent.com/gcarq/inox-patchset/$pkgver/chromium-system-ffmpeg-r4.patch
+        https://raw.githubusercontent.com/gcarq/inox-patchset/$pkgver/chromium-icu58.patch
         https://raw.githubusercontent.com/gcarq/inox-patchset/$pkgver/chromium-widevine.patch
         https://raw.githubusercontent.com/gcarq/inox-patchset/$pkgver/disable-battery-status-service.patch
         https://raw.githubusercontent.com/gcarq/inox-patchset/$pkgver/disable-autofill-download-manager.patch
@@ -68,14 +70,15 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/chrom
         https://raw.githubusercontent.com/gcarq/inox-patchset/$pkgver/fix-building-without-safebrowsing.patch
         https://raw.githubusercontent.com/gcarq/inox-patchset/$pkgver/product_logo_{16,22,24,32,48,64,128,256}.png)
 
-sha256sums=('e2e7f54a780c93ec2e933af09e1126837e6cf940b57213d39f36d58df10c89df'
+sha256sums=('5bcf7180935bebc7648f7e2577f612da681f7846127f79dac22630ded9984e55'
             '8b01fb4efe58146279858a754d90b49e5a38c9a0b36a1f84cbb7d12f92b84c28'
             'ff3f939a8757f482c1c5ba35c2c0f01ee80e2a2273c16238370081564350b148'
             '3b3aa9e28f29e6f539ed1c7832e79463b13128863a02e9c6fecd16c30d61c227'
-            'd3dc397956a26ec045e76c25c57a1fac5fc0acff94306b2a670daee7ba15709e'
+            'e3c474dbf3822a0be50695683bd8a2c9dfc82d41c1524a20b4581883c0c88986'
+            'fad964da0295a6a7b4393778e717ebdfd37dec33fe78beb2c639abd3973deb7a'
             'd6fdcb922e5a7fbe15759d39ccc8ea4225821c44d98054ce0f23f9d1f00c9808'
             'c46e918f9e469aefdf4861967dcba98a30b3af0fedb5cb0f674efbdf253bc87a'
-            '2d4b600d8085f1d5b3b4f30f8cfc6741558b1c8721dc19dd6b4de2b8dbedd80d'
+            'e64ec33773d31ea599ec3436a728f5a2d9a6a2c07e69ec70176d051a5144553a'
             'a7329d7f3099f6b8dfe4b7addeb7abbca1cf079139a86c6483a51fed0190478e'
             'b3fa783f09c5cd927d4af43c9c0a1f24744d840d5002c2e5a5c5af073fdbcf1b'
             '3a331e004ac84a493dced9a990f71119d3ef31ebbfd67b13a7ec194e835dea11'
@@ -89,10 +92,10 @@ sha256sums=('e2e7f54a780c93ec2e933af09e1126837e6cf940b57213d39f36d58df10c89df'
             '55b75daf5aad2a8929c80837f986d4474993f781c0ffa4169e38483b0af6e385'
             '0362593751abc09bbf2244109c93068fc9a40a51ba4dbd17bb2b107ff50d7dce'
             '9e1ce0c47dd51595f13a6f611de39573022c7ff59fc003ab775a5319ebfedad8'
-            'cd0d2b665f9d39f7c25929f8e1b85b9a391b4a5a8a70d005cd815bbf2bb4e548'
+            'bb28fcc1a2fd37ee972b2b02014bbb467cc1baef85c9e6c998b11e97d47c9ac9'
             '9e37751dca4a2b60681ba14119bc3839685ae420686664de7dfc4245f9eeff3c'
             'c47efe038f502d4fe2b66e59347b01c58ee8739a8d8f050c6c1cc60752d24f13'
-            'a585eda5638c0e24bf77d5c363d92dfe6c8b0fa10f90b6aab0bdf5d6de8e5cd5'
+            '94a8bc6bc33c781c676da1fc4d2901a89e0c71c9284a007520d025a580e1cf36'
             '71471fa4690894420f9e04a2e9a622af620d92ac2714a35f9a4c4e90fa3968dd'
             '4a533acefbbc1567b0d74a1c0903e9179b8c59c1beabe748850795815366e509'
             '7b88830c5e0e9819f514ad68aae885d427541a907e25607e47dee1b0f38975fd'
@@ -117,12 +120,13 @@ prepare() {
   # Make it possible to remove third_party/adobe
   echo > "flapper_version.h"
 
+  # Build fixes from Gentoo
+  patch -Np1 -i ../chromium-system-ffmpeg-r4.patch
+  patch -Np1 -i ../chromium-icu58.patch
+
   # Disable MADV_FREE (if set by glibc)
   # https://bugzilla.redhat.com/show_bug.cgi?id=1361157
   patch -Np1 -i ../chromium-52.0.2743.116-unset-madv_free.patch
-
-  # Disable last_commit_position as we don't build from git repository
-  patch -Np1 -i ../chromium-53.0.2785.92-last-commit-position.patch
 
   patch -Np1 -i ../fix-building-without-safebrowsing.patch
 
@@ -165,6 +169,7 @@ prepare() {
     find -type f -path "*third_party/$_lib/*" \
       \! -path "*third_party/$_lib/chromium/*" \
       \! -path "*third_party/$_lib/google/*" \
+      \! -path "*base/third_party/icu/*" \
       \! -regex '.*\.\(gn\|gni\|isolate\|py\)' \
       -delete
   done
@@ -200,7 +205,6 @@ build() {
     'proprietary_codecs=true'
     'link_pulseaudio=true'
     'linux_use_bundled_binutils=false'
-    'use_allocator="none"'
     'use_cups=true'
     'use_gconf=false'
     'use_gnome_keyring=false'
@@ -222,9 +226,6 @@ build() {
     'enable_hotwording=false'
     'enable_print_preview=false'
     )
-#     'google_chrome_build=false'
-#     'enable_pre_sync_backup=false'
-#     'enable_wifi_bootstrapping=false'
   python2 tools/gn/bootstrap/bootstrap.py --gn-gen-args "${_flags[*]}"
   out/Release/gn gen out/Release --args="${_flags[*]}" \
     --script-executable=/usr/bin/python2
@@ -248,19 +249,8 @@ package() {
 
   install -D out/Release/chromedriver "$pkgdir/usr/lib/$pkgname/inoxdriver"
 
-  cp -a out/Release/{*.pak,*.bin,libwidevinecdmadapter.so,icudtl.dat} \
+  cp -a out/Release/{*.pak,*.bin,libwidevinecdmadapter.so} \
     "$pkgdir/usr/lib/$pkgname/"
-
-  # Manually strip binaries so that 'nacl_irt_*.nexe' is left intact
-  strip $STRIP_BINARIES "$pkgdir/usr/lib/$pkgname/"{"$pkgname",chrome-sandbox} \
-    "$pkgdir/usr/lib/$pkgname/inoxdriver"
-  strip $STRIP_SHARED "$pkgdir/usr/lib/$pkgname/libwidevinecdmadapter.so"
-
-  if (( $_build_nacl )); then
-    cp out/Release/nacl_helper{,_bootstrap} out/Release/nacl_irt_*.nexe \
-      "$pkgdir/usr/lib/$pkgname/"
-    strip $STRIP_BINARIES "$pkgdir/usr/lib/$pkgname/"nacl_helper{,_bootstrap}
-  fi
 
   cp -a out/Release/locales "$pkgdir/usr/lib/$pkgname/"
 
@@ -277,8 +267,6 @@ package() {
   ln -s /usr/lib/$pkgname/inoxdriver "$pkgdir/usr/bin/inoxdriver"
 
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-
-  install -Dm644 out/Release/icudtl.dat "${pkgdir}/usr/lib/$pkgname/icudtl.dat"
 }
 
 # vim:set ts=2 sw=2 et:
