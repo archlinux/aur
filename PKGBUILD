@@ -5,10 +5,10 @@
 
 pkgbase=linux-cik
 _srcname=linux-4.8
-pkgver=4.8.12
+pkgver=4.8.13
 pkgrel=1
 arch=('i686' 'x86_64')
-url="http://www.kernel.org/"
+url="https://www.kernel.org/"
 license=('GPL2')
 makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc' 'libelf')
 options=('!strip')
@@ -23,11 +23,15 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         # standard config files for mkinitcpio ramdisk
         'linux-cik.preset'
         'change-default-console-loglevel.patch'
+        'fix_race_condition_in_packet_set_ring.diff'
+        'net_handle_no_dst_on_skb_in_icmp6_send.patch'
         )
 
-sha256sums=('3e9150065f193d3d94bcf46a1fe9f033c7ef7122ab71d75a7fb5a2f0c9a7e11a'
+sha256sums=(# kernel
+            '3e9150065f193d3d94bcf46a1fe9f033c7ef7122ab71d75a7fb5a2f0c9a7e11a'
             'SKIP'
-            '9a498761be20c10db6b30fac095e0591173d4046c19585bcdd7a72ca8503eb87'
+            # patch
+            'f0e2f7f738e1a639956e01ba7ef8d3df40ecb5c7586eb366bcd4af70049a7a3c'
             'SKIP'
             # config
             'd30eae8ce9d0164ab8d3fcac047eff7f0874dce7e7a30b8a0193d16f029c9245'
@@ -38,7 +42,12 @@ sha256sums=('3e9150065f193d3d94bcf46a1fe9f033c7ef7122ab71d75a7fb5a2f0c9a7e11a'
             # linux-cik.preset
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
             # change-default-console-loglevel.patch
-            '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99')
+            '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
+            # fix_race_condition_in_packet_set_ring.diff
+            'ad1ee95f906f88d31fcdb9273cd08e02e8eda177449f0c98dc1bff8cbf1483c2'
+            # net_handle_no_dst_on_skb_in_icmp6_send.patch
+            'b595a1588bafb3d732841cd1b73633970706914f57f2d215c9f1494212d13989'
+            )
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
               '647F28654894E3BD457199BE38DBBDC86092693E' # Greg Kroah-Hartman
@@ -56,6 +65,13 @@ prepare() {
 
   # add upstream patch
   patch -p1 -i "${srcdir}/patch-${pkgver}"
+
+  # fix a race condition that allows to gain root
+  # https://marc.info/?l=linux-netdev&m=148054660230570&w=2
+  patch -p1 -i "${srcdir}/fix_race_condition_in_packet_set_ring.diff"
+
+  # https://bugzilla.kernel.org/show_bug.cgi?id=189851
+  patch -p1 -i "${srcdir}/net_handle_no_dst_on_skb_in_icmp6_send.patch"
 
   # add latest fixes from stable queue, if needed
   # http://git.kernel.org/?p=linux/kernel/git/stable/stable-queue.git
@@ -155,7 +171,7 @@ _package() {
   mv "${pkgdir}/lib" "${pkgdir}/usr/"
 
   # add vmlinux
-  install -D -m644 vmlinux "${pkgdir}/usr/lib/modules/${_kernver}/build/vmlinux" 
+  install -D -m644 vmlinux "${pkgdir}/usr/lib/modules/${_kernver}/build/vmlinux"
 }
 
 _package-headers() {
@@ -259,7 +275,7 @@ _package-headers() {
   # add objtool for external module building and enabled VALIDATION_STACK option
   if [ -f tools/objtool/objtool ];  then
       mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build/tools/objtool"
-      cp -a tools/objtool/objtool ${pkgdir}/usr/lib/modules/${_kernver}/build/tools/objtool/ 
+      cp -a tools/objtool/objtool ${pkgdir}/usr/lib/modules/${_kernver}/build/tools/objtool/
   fi
 
   chown -R root.root "${pkgdir}/usr/lib/modules/${_kernver}/build"
