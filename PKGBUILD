@@ -1,15 +1,15 @@
-# Maintainer: Sebastian Lau <lauseb644@gmail.com>
+# Maintainer: Sebastian Lau <lauseb644 _at_ gmail.com>
 # Contributor: American_Jesus <american.jesus.pt AT gmail DOT com>
 
 pkgname=nemo-dropbox
 pkgver=3.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Dropbox for Linux - Nemo extension"
 arch=('i686' 'x86_64')
 url="https://github.com/linuxmint/nemo-extensions"
 license=('custom:CC-BY-ND-3' 'GPL')
-depends=('libnotify' 'nemo>=3.2' 'hicolor-icon-theme' 'dropbox')
-makedepends=('python2-docutils' 'python2' 'pygtk')
+depends=('nemo>=3.2' 'dropbox' 'python2-pygpgme')
+makedepends=('python2-docutils' 'python2' 'pygtk' 'glib2')
 conflicts=('nautilus-dropbox' 'caja-dropbox')
 install=${pkgname}.install
 options=('!libtool' '!emptydirs')
@@ -35,11 +35,14 @@ build() {
 
 package() {
   cd "${srcdir}/nemo-extensions-${pkgver}/${pkgname}"
+
   make DESTDIR="${pkgdir}" install
+
   # remove executables and depend on 'dropbox' package
   rm "${pkgdir}/usr/bin/dropbox"
   rm "${pkgdir}/usr/share/applications/dropbox.desktop"
   rm "${pkgdir}/usr/share/man/man1/dropbox.1"
+
   # install the common license
   install -Dm644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}/COPYING"
 }
