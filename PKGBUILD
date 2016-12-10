@@ -2,14 +2,14 @@
 
 pkgname=simsu
 pkgver=1.3.3
-pkgrel=1
+pkgrel=2
 pkgdesc='A basic Sudoku game'
 arch=('i686' 'x86_64')
 url="http://gottcode.org/$pkgname/"
 license=('GPL3')
 depends=('qt5-base')
 makedepends=('qt5-tools')
-source=("http://gottcode.org/$pkgname/$pkgname-$pkgver-src.tar.bz2")
+source=("https://gottcode.org/$pkgname/$pkgname-$pkgver-src.tar.bz2")
 sha256sums=('0a279c0e22ad1c39edcdfbabac53427d5bf79cc757547483e3f99f6b3bd9c948')
 
 build() {
