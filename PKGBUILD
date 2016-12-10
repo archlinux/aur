@@ -1,26 +1,29 @@
 # Maintainer: Kyle Keen <keenerd@gmail.com>
+
+# if you want 32 bit, 1.2.10 was the last version supported
+
 pkgname=saleae-logic
-pkgver=1.2.10
+pkgver=1.2.11
 pkgrel=1
 pkgdesc="High speed USB logic analyzer."
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="http://www.saleae.com/"
 license=('unknown')  # closed source, none given
 depends=('gcc-libs' 'gtk2' 'libice')
 
-source_i686=("http://downloads.saleae.com/logic/$pkgver/Logic%20$pkgver%20(32-bit).zip"
-             "http://downloads.saleae.com/Logic%20Guide.pdf"
-             "http://kmkeen.com/tmp/133473-SaleaeLogic.svg"
-             "saleae-logic.desktop")
+#source_i686=("http://downloads.saleae.com/logic/$pkgver/Logic%20$pkgver%20(32-bit).zip"
+#             "http://downloads.saleae.com/Logic%20Guide.pdf"
+#             "http://kmkeen.com/tmp/133473-SaleaeLogic.svg"
+#             "saleae-logic.desktop")
 source_x86_64=("http://downloads.saleae.com/logic/$pkgver/Logic%20$pkgver%20(64-bit).zip"
                "http://downloads.saleae.com/Logic%20Guide.pdf"
                "http://kmkeen.com/tmp/133473-SaleaeLogic.svg"
                "saleae-logic.desktop")
-md5sums_i686=('8833a206468e501ef5b6907b146913b3'
-              '836db7ec757b1e6453602ed4831d4765'
-              '96aac500508492509d8e47645a826af8'
-              '120198dc1ce881e4959da215dc1ab8f5')
-md5sums_x86_64=('4a621715c73cba3237ae72c04647c53f'
+#md5sums_i686=('8833a206468e501ef5b6907b146913b3'
+#              '836db7ec757b1e6453602ed4831d4765'
+#              '96aac500508492509d8e47645a826af8'
+#              '120198dc1ce881e4959da215dc1ab8f5')
+md5sums_x86_64=('1050b80e3fa32233b8ebd51ff16cd7b5'
                 '836db7ec757b1e6453602ed4831d4765'
                 '96aac500508492509d8e47645a826af8'
                 '120198dc1ce881e4959da215dc1ab8f5')
