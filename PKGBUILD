@@ -3,7 +3,7 @@
 # Contributor: Kamil Biduś <kamil.bidus@gmail.com>
 
 pkgname=aseprite
-pkgver=1.1.9
+pkgver=1.1.11
 pkgrel=1
 pkgdesc='Create animated sprites and pixel art'
 arch=('x86_64' 'i686')
@@ -11,7 +11,7 @@ url='http://www.aseprite.org/'
 license=('custom')
 depends=('pixman' 'curl' 'giflib' 'zlib' 'libpng' 'libjpeg-turbo' 'tinyxml' 'freetype2' 'libwebp')
 makedepends=('cmake')
-conflicts=('aseprite-git' 'aseprite-gpl')
+conflicts=('aseprite-git' 'aseprite-gpl' 'cmark' 'gtest')
 source=("git+https://github.com/aseprite/aseprite.git#tag=v${pkgver}"
         "aseprite.desktop")
 sha256sums=('SKIP'
@@ -20,10 +20,12 @@ sha256sums=('SKIP'
 build() {
   cd "$pkgname"
 
-  less EULA.txt
-  echo "Do you accept the EULA? yes/NO"
-  read reply
-  [ "$reply" == "yes" ] || exit 1
+  if [ -z "$ASEPRITE_ACCEPT_EULA" ]; then
+    less EULA.txt
+    echo "Do you accept the EULA? yes/NO (set ASEPRITE_ACCEPT_EULA=yes to skip this message)"
+    read reply
+    [ "$reply" == "yes" ] || exit 1
+  fi
 
   mkdir -p build && cd build
   git submodule update --init --recursive
@@ -41,13 +43,13 @@ build() {
     -DUSE_SHARED_FREETYPE=ON \
     -DFREETYPE_INCLUDE_DIR=/usr/include/freetype2 \
     -DCMAKE_INSTALL_PREFIX:STRING=/usr ..
-  make aseprite
+  make 
 }
 
 package() {
   cd "$pkgname"/build
 
-  make DESTDIR="$pkgdir/" install/fast
+  make DESTDIR="$pkgdir/" install
   install -Dm644 "$srcdir/$pkgname.desktop" \
     "$pkgdir/usr/share/applications/$pkgname.desktop"
   install -Dm644 "../data/icons/ase48.png" \
