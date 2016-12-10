@@ -1,0 +1,30 @@
+pkgbase = brother-mfc-j5910dw
+	pkgdesc = LPR and CUPS driver for the Brother MFC-J5910DW printer
+	pkgver = 3.0.0
+	pkgrel = 1
+	url = http://solutions.brother.com/linux/en_us/
+	arch = i686
+	arch = x86_64
+	license = custom:Brother Industries
+	depends = cups
+	depends = ghostscript
+	depends = psutils
+	depends = a2ps
+	depends = sed
+	depends = grep
+	depends = lib32-glibc
+	optdepends = ttf-dejavu: printing text files from lpr
+	optdepends = brscan4: Scanner support
+	source = http://download.brother.com/welcome/dlf006597/mfcj5910dwlpr-3.0.0-1.i386.rpm
+	source = http://download.brother.com/welcome/dlf006599/mfcj5910dwcupswrapper-3.0.0-1.i386.rpm
+	source = http://download.brother.com/welcome/dlf006810/mfcj5910dw_cupswrapper_GPL_source_3.0.0-1.tar.gz
+	source = cupswrapper-license.txt
+	source = lpr-license.txt
+	sha256sums = 7e029e2b6545105968c91456d8d1ccc7b3c5eaa2ecfb3deb0ebf8b61f250bb8e
+	sha256sums = 4741d32f5a3c60d00688ae45aedebddc3491b9ef52d4dfee429f6fa98c8e2c0f
+	sha256sums = 0f592b90f19f7cf79b730c09402014c9269fcfe46968a03b413d5f2300a9b69e
+	sha256sums = 2c6aa6a641332e5c87e971ac2a8beae13b059747bdba331bbd515914770d72d9
+	sha256sums = 9d85a8aafdaac8fac80e04234ad2acf5642bbf0b91ee582d2a89519a55f6dd67
+
+pkgname = brother-mfc-j5910dw
+
