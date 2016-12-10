@@ -17,6 +17,7 @@ pkgbase = amule-adnza-daemon-svn
 	depends = libpng
 	depends = boost-libs
 	optdepends = kamule: AmuleGUI for KDE
+	provides = amule
 	conflicts = amule
 	source = svn+https://svn.code.sf.net/p/amule-adunanza/code/branches/MoonRiver/
 	source = amuled.service

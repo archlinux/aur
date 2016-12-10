@@ -18,6 +18,7 @@ makedepends=('ccache'
 	     'subversion'
              )
 conflicts=('amule')
+provides=('amule')
 optdepends=('kamule: AmuleGUI for KDE')
 source=('svn+https://svn.code.sf.net/p/amule-adunanza/code/branches/MoonRiver/'
 	'amuled.service'
