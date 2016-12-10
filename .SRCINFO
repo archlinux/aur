@@ -1,0 +1,24 @@
+pkgbase = ttf-dejavu-emojiless
+	pkgdesc = Derivate of DejaVu without characters listed as emoji, in order not to override color fonts
+	pkgver = 2.37
+	pkgrel = 1
+	url = http://dejavu-fonts.org/wiki/Main_Page
+	arch = any
+	license = custom
+	makedepends = fontforge
+	depends = fontconfig
+	depends = xorg-fonts-encodings
+	depends = xorg-mkfontscale
+	depends = xorg-mkfontdir
+	provides = ttf-font
+	provides = ttf-dejavu
+	conflicts = ttf-dejavu
+	source = http://downloads.sourceforge.net/project/dejavu/dejavu/2.37/dejavu-fonts-ttf-2.37.tar.bz2
+	source = https://github.com/iamcal/emoji-data/raw/master/emoji.json
+	source = cleaner.py
+	sha256sums = fa9ca4d13871dd122f61258a80d01751d603b4d3ee14095d65453b4e846e17d7
+	sha256sums = SKIP
+	sha256sums = 415ba5000c5dbaf15b56d91d137a60ee257b5ef31c17cb2fd54ed015220b1f8c
+
+pkgname = ttf-dejavu-emojiless
+
