@@ -3,7 +3,7 @@
 
 pkgbase=python-kombu
 pkgname=('python-kombu' 'python2-kombu')
-pkgver=4.0.0
+pkgver=4.0.1
 pkgrel=1
 pkgdesc='A messaging library for Python'
 arch=('any')
@@ -11,12 +11,13 @@ url="http://kombu.readthedocs.org/"
 license=('BSD')
 options=('!emptydirs')
 makedepends=('python-amqp' 'python2-amqp' 'python-setuptools' 'python2-setuptools' 'git')
-checkdepends=('python-redis' 'python2-redis' 'python-yaml' 'python2-yaml' 'python-msgpack' 'python2-msgpack'
-              'python2-boto' 'python-pycurl' 'python2-pycurl' 'python-pytest-runner' 'python2-pytest-runner'
-              'python-case' 'python2-case' 'python2-pymongo' 'python-pytz' 'python2-pytz'
-              'python-couchdb' 'python2-couchdb' 'python-sqlalchemy' 'python2-sqlalchemy'
-              'python-pyro' 'python2-pyro')
-              # 'python-boto' 'python-pymongo' 'python2-librabbitmq'
+checkdepends=('python-pytest-runner' 'python2-pytest-runner' 'python-redis' 'python2-redis'
+              'python-yaml' 'python2-yaml' 'python-msgpack' 'python2-msgpack' 'python2-boto'
+              'python-pycurl' 'python2-pycurl' 'python-case' 'python2-case' 'python-pymongo'
+              'python2-pymongo' 'python-pytz' 'python2-pytz' 'python-couchdb' 'python2-couchdb'
+              'python-sqlalchemy' 'python2-sqlalchemy' 'python-pyro' 'python2-pyro'
+              'python2-librabbitmq')
+              # 'python-boto'
               # https://github.com/celery/kombu/issues/661
               # https://github.com/celery/kombu/issues/662
               # https://github.com/celery/kombu/issues/663
