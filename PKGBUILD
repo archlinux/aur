@@ -7,7 +7,7 @@ groups=('zarafa'
 replaces=('zarafa-server-arm')
 pkgver=7.2.4.29
 _pkgmajver=7.2
-pkgrel=99
+pkgrel=100
 pkgdesc="Open Source Groupware Solution"
 arch=('armv7h'
       'armv6h'
@@ -125,14 +125,12 @@ source=("https://download.zarafa.com/community/final/${_pkgmajver}/${pkgver}/zcp
 	'zarafa-tools::git+https://github.com/zarafagroupware/zarafa-tools.git'
 	'python-zarafa::git+https://github.com/zarafagroupware/python-zarafa.git'
 	'zarafa-inspector::git+https://github.com/zarafagroupware/zarafa-inspector.git'
-	'zarafa-pietma::git+https://git.pietma.com/pietma/com-pietma-zarafa.git#tag=v0.7'	
-	'zarafa-sysusers.conf')
+	'zarafa-pietma::git+https://git.pietma.com/pietma/com-pietma-zarafa.git#tag=v0.8')
 md5sums=('0790d8314fa4aef9788e5020be832535'
          'SKIP'
          'SKIP'
          'SKIP'
-         'SKIP'
-         '90eefac8740a8e30a5ccca221c1af426')
+         'SKIP')
 
 prepare() {
   cd ${srcdir}/zcp-${pkgver}
@@ -241,7 +239,6 @@ package() {
   # spooler.cfg
   setconf "allow_send_to_everyone" "no" "${pkgdir}/usr/share/doc/zarafa/example-config/spooler.cfg"
 
-    
   # presence.cfg
   setconf "plugins" "xmpp" "${pkgdir}/usr/share/doc/zarafa/example-config/presence.cfg"  
 
@@ -250,16 +247,17 @@ package() {
   setconf "imap_generate_utf8" "no" "${cfg}"  
   setconf "imap_public_folders" "yes" "${cfg}"  
   
-  # FIXES
-  cd ${srcdir}
-  # set home directory
-  cp -f zarafa-sysusers.conf ${pkgdir}/usr/lib/sysusers.d/
+  
+  # PIETMA
+  ###
+  cd ${srcdir}/zarafa-pietma
+  mkdir -p ${pkgdir}/usr/share/doc/zarafa
+  cp -LRf doc/* ${pkgdir}/usr/share/doc/zarafa
+  cp -LRf usr/* ${pkgdir}/usr
+  
   
   # ADDITIONS
-  cd ${srcdir}/zarafa-pietma
-  mkdir -p ${pkgdir}/usr/share/doc/zarafa/zarafa-pietma
-  cp -LR utils/* ${pkgdir}/usr/share/doc/zarafa/zarafa-pietma/
-  
+  ###
   cd ${srcdir}/zarafa-tools
   mkdir -p ${pkgdir}/usr/share/doc/zarafa/zarafa-tools
   cp -LR * ${pkgdir}/usr/share/doc/zarafa/zarafa-tools/
