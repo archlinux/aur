@@ -15,7 +15,7 @@
 # archzfs github page.
 #
 pkgname="spl-linux-git"
-pkgver=0.7.0_rc2_r3_g4934925_4.8.12_2
+pkgver=0.7.0_rc2_r4_gf200b83_4.8.12_3
 pkgrel=1
 pkgdesc="Solaris Porting Layer kernel modules."
 depends=("spl-utils-linux-git" "kmod" "linux=4.8.12")
@@ -35,8 +35,8 @@ build() {
     cd "${srcdir}/spl"
     ./autogen.sh
     ./configure --prefix=/usr --libdir=/usr/lib --sbindir=/usr/bin \
-                --with-linux=/usr/lib/modules/4.8.12-2-ARCH/build \
-                --with-linux-obj=/usr/lib/modules/4.8.12-2-ARCH/build \
+                --with-linux=/usr/lib/modules/4.8.12-3-ARCH/build \
+                --with-linux-obj=/usr/lib/modules/4.8.12-3-ARCH/build \
                 --with-config=kernel
     make
 }
@@ -46,5 +46,5 @@ package() {
     make DESTDIR="${pkgdir}" install
     mv "${pkgdir}/lib" "${pkgdir}/usr/"
     # Remove reference to ${srcdir}
-    sed -i "s+${srcdir}++" ${pkgdir}/usr/src/spl-*/4.8.12-2-ARCH/Module.symvers
+    sed -i "s+${srcdir}++" ${pkgdir}/usr/src/spl-*/4.8.12-3-ARCH/Module.symvers
 }
