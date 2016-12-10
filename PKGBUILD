@@ -1,7 +1,7 @@
 # Maintainer: Andrea Venturini <andrea.ventutini@tiscali.it>
 
 pkgname=amule-adnza-daemon-svn
-pkgver=458
+pkgver=563
 pkgrel=1
 pkgdesc='aMule patched for Fastweb Network (Italy) by Adunanza forum. (Only Daemon, CLI tools and Webserver)'
 url='http://amule-adunanza.sourceforge.net/'
