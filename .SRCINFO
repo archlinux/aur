@@ -1,0 +1,31 @@
+pkgbase = megasync-headless
+	pkgdesc = Sync local directory with your MEGA account. CLI tools only. Subset of the original MEGA SDK.
+	pkgver = v2.8.0.0.g2c9286c
+	pkgrel = 1
+	url = https://mega.co.nz/#sync
+	install = megasync-headless.install
+	arch = x86_64
+	license = custom:MEGA
+	makedepends = git
+	depends = c-ares
+	depends = curl
+	depends = crypto++
+	depends = zlib
+	depends = sqlite
+	depends = openssl
+	provides = megasync
+	conflicts = megasync
+	conflicts = megasync-git
+	conflicts = megatools
+	options = !buildflags
+	backup = usr/lib/systemd/system/megasyncd.service
+	backup = etc/conf.d/megasync.conf
+	source = git+https://github.com/meganz/sdk.git#tag=v2.8.0
+	source = megasyncd.service
+	source = megasync.conf
+	sha1sums = SKIP
+	sha1sums = SKIP
+	sha1sums = SKIP
+
+pkgname = megasync-headless
+

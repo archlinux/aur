@@ -1,0 +1,8 @@
+*
+!.gitignore
+!PKGBUILD
+!README
+!megasyncd.service
+!megasync.conf
+!megasync-headless.install
+!.SRCINFO
