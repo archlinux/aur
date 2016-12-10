@@ -15,7 +15,7 @@
 # archzfs github page.
 #
 pkgname="spl-utils-linux"
-pkgver=0.6.5.8_4.8.12_2
+pkgver=0.6.5.8_4.8.12_3
 pkgrel=1
 pkgdesc="Solaris Porting Layer kernel module support files."
 arch=("x86_64")
