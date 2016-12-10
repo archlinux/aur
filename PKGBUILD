@@ -4,7 +4,7 @@
 pkgname=shutter-bzr
 _realname=shutter
 pkgver=1278
-pkgrel=7
+pkgrel=8
 pkgdesc="A featureful screenshot tool (formerly gscrot) - Mario Kemper's Experimental branch"
 arch=('i686' 'x86_64')
 url="http://shutter-project.org/"
@@ -33,7 +33,7 @@ source=('bug_1396368.patch'
 			'bug_1618310.patch'
 			'CVE-2015-0854.patch')
 md5sums=('0d35f8b2439cb5634fe75d3210d6c3e9'
-			'7ee557dbbc0d12f7a1dfdb29b062783c'
+			'6ba9ded906a6de88a29fdc62a411af25'
 			'8eed7a77e7a0c488d01a3cbc415dfb5a')
 
 _bzrtrunk=lp:shutter
