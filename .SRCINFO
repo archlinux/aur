@@ -1,13 +1,13 @@
 pkgbase = mdm-themes-html
 	pkgdesc = HTML themes for the MDM Display Manager
-	pkgver = 2.0.10
-	pkgrel = 3
+	pkgver = 2.0.13
+	pkgrel = 1
 	url = http://packages.linuxmint.com
 	arch = any
 	license = GPL3
 	depends = mdm-display-manager
-	source = http://packages.linuxmint.com/pool/main/m/mint-mdm-themes-html/mint-mdm-themes-html_2.0.10.tar.xz
-	sha256sums = b1c704e40f980e1a213130a78bec743d723eae4076787c7a909efccdc020e77c
+	source = http://packages.linuxmint.com/pool/main/m/mint-mdm-themes-html/mint-mdm-themes-html_2.0.13.tar.xz
+	sha256sums = 21045c22272763d5ce5b97aa02dc5edc73ebc5b5c0da70cba93ecbc020fd788d
 
 pkgname = mdm-themes-html
 
