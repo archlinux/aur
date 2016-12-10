@@ -12,7 +12,7 @@ pkgbase = dupeguru
 	depends = python-hsaudiotag3k
 	depends = python-polib
 	depends = python-send2trash
-	source = http://download.hardcoded.net/dupeguru-src-4.0.2.tar.gz
+	source = http://download.hardcoded.net/dupeguru-src-4.0.3.tar.gz
 	md5sums = ed3b4a049c436cacb0a068438a8d6131
 
 pkgname = dupeguru
