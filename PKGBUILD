@@ -4,8 +4,8 @@
 
 _pkgname=cairo
 pkgname=cairo-coloredemoji
-pkgver=1.14.6
-pkgrel=2
+pkgver=1.14.8
+pkgrel=1
 pkgdesc="Cairo vector graphics library (patched with support for colored emoji)"
 arch=(i686 x86_64)
 license=('LGPL' 'MPL')
@@ -21,8 +21,8 @@ replaces=('cairo-xcb' 'cairo')
 conflicts=('cairo')
 source=(http://cairographics.org/releases/cairo-$pkgver.tar.xz
         colored-emoji.patch)
-sha1sums=('0a59324e6cbe031b5b898ff8b9e2ffceb9d114f5'
-          '3e927952bc111eb75277724118f5852d2d5da91e')
+sha1sums=('c6f7b99986f93c9df78653c3e6a3b5043f65145e'
+          '929874e10c796b8795e679c44c0c2667c2f4ed8a')
 
 prepare() {
     patch -p1 < ../colored-emoji.patch
