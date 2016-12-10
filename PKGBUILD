@@ -1,7 +1,7 @@
 # Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=d2vwitch-git
-pkgver=v1.16.g73919e1
+pkgver=v2.0.g184e599
 pkgrel=1
 pkgdesc="Cross-platform D2V creator. (GIT version)"
 arch=('i686' 'x86_64')
@@ -19,9 +19,11 @@ makedepends=('git')
 provides=('d2vwitch')
 conflicts=('d2vwitch')
 source=('d2vwitch::git+https://github.com/dubhater/D2VWitch.git'
-        'd2vwitch.desktop')
-sha1sums=('SKIP'
-          '146fa44a5e8bba029592d63cbd55b1a4d4184578')
+        'd2vwitch.desktop'
+        )
+sha256sums=('SKIP'
+            '6d9204fc7dab73b19976241ce5a4e74fed5c3d264796b782c02d783dd8f1bbb0'
+            )
 
 pkgver() {
   cd d2vwitch
@@ -44,4 +46,7 @@ package() {
   make -C d2vwitch DESTDIR="${pkgdir}" install
 
   install -Dm644 "${srcdir}/d2vwitch.desktop" "${pkgdir}/usr/share/applications/d2vwitch.desktop"
+
+  install -d "${pkgdir}/usr/share/licenses/${pkgname}"
+  head -n+16 d2vwitch/src/Audio.cpp | tail -n 15 > "${pkgdir}/usr/share/licenses/${pkgname}/ISC"
 }
