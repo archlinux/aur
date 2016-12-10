@@ -5,12 +5,12 @@
 
 pkgname=intel-opencl-sdk
 pkgver=2016_6.2.0.1761
-pkgrel=1
+pkgrel=2
 pkgdesc="Intel SDK for OpenCL Applications"
 arch=('x86_64')
 url="https://software.intel.com/en-us/intel-opencl/download"
 license=('custom:intel')
-depends=('libcl' 'libpng12' 'opencl-headers')
+depends=('opencl-icd-loader' 'libpng12' 'opencl-headers')
 optdepends=('intel-opencl-runtime: OpenCL runtime for Intel Core and Xeon processors')
 install=intel-opencl-sdk.install
 source=(http://registrationcenter-download.intel.com/akdlm/irc_nas/9552/intel_sdk_for_opencl_${pkgver}_x64.tgz)
