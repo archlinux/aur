@@ -4,7 +4,7 @@
 # Contributor: numeral <numerical@gmail.com>
 
 pkgname=python-bleach
-pkgver=1.4.3
+pkgver=1.5.0
 pkgrel=1
 pkgdesc="An easy whitelist-based HTML-sanitizing tool"
 arch=('any')
@@ -12,8 +12,8 @@ license=('Apache')
 url="http://pypi.python.org/pypi/bleach"
 depends=('python-html5lib')
 makedepends=('python-setuptools')
-source=("https://pypi.python.org/packages/e0/e0/8c5cc2822d2035d64cf7b4278077a7ec1e0afde7e9051128f722ec8cd97a/bleach-${pkgver}.tar.gz")
-sha256sums=('1293061adb5a9eebb7b260516e691785ac08cc1646c8976aeda7db9dbb1c6f4b')
+source=("https://pypi.python.org/packages/99/00/25a8fce4de102bf6e3cc76bc4ea60685b2fee33bde1b34830c70cacc26a7/bleach-${pkgver}.tar.gz")
+sha256sums=('978e758599b54cd3caa2e160d74102879b230ea8dc93871d0783721eef58bc65')
 
 build() {
   cd "${srcdir}/bleach-${pkgver}"
