@@ -1,4 +1,5 @@
 # Maintainer: Francois Menning <f.menning@protonmail.com>
+# Contributor: Frederik Schwan <frederik dot schwan at linux dot com>
 # Contributor: Thomas Fanninger <thomas@fanninger.at>
 # Contributor: Alexander F Rødseth <xyproto@archlinux.org>
 # Contributor: Thomas Laroche <tho.laroche@gmail.com>
@@ -6,7 +7,7 @@
 _pkgname=gitea
 _gourl="code.gitea.io"
 pkgname=gitea-git
-pkgver=4396.7596e41
+pkgver=4607.cbcb436
 pkgrel=1
 pkgdesc='A painless self-hosted Git service.'
 url='https://gitea.io/'
@@ -21,12 +22,15 @@ sha256sums=('SKIP'
             'ec5398cd2ef1bf25bce2ad7f9cb260b43d6e6e9c4ebfb3228212979e36660280'
             'd8efbf6f1e634548a3ee875c9a7444282966ffe76f2ed9532ee7b724a364264b'
             '5631db5f47b41cdae180b98214e436856daec497949c68c1e13f70f12bbb855d')
-arch=('x86_64' 'i686')
-depends=('go' 'git')
-makedepends=('patch')
-optdepends=('mariadb: MariaDB database backend support'
-'postgresql: PostgreSQL database backend support'
-'openssh: SSH support')
+arch=('x86_64' 'i686' 'armv6h' 'armv7h')
+depends=('go')
+makedepends=('patch' 'git')
+optdepends=('mariadb: MariaDB database support'
+            'postgresql: PostgreSQL database support'
+            'sqlite: SQLite database support'
+            'redis: Redis session support'
+            'memcached: MemCached session support'
+            'openssh: Git over SSH support')
 install=gitea.install
 backup=("var/lib/gitea/custom/conf/app.ini")
 conflicts=('gitea')
@@ -34,39 +38,37 @@ options=('!strip' 'emptydirs')
 provides=('gitea')
 
 pkgver() {
-  cd "$srcdir/build/src/$_gourl/$_pkgname"
+  cd "${srcdir}/src/${_gourl}/${_pkgname}"
   echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
 }
 
 prepare() {
-  mkdir -p build/go; cd build/go
-  for f in "/usr/lib/go/"*; do ln -s "$f"; done
-  rm pkg; mkdir pkg; cd pkg
-  for f in "/usr/lib/go/pkg/"*; do ln -s "$f"; done
-  export GOROOT="$srcdir/build/go"
-  export GOPATH="$srcdir/build"
-  mkdir -p "$GOPATH/src/$_gourl"
-  mv "$srcdir/$_pkgname/" "$GOPATH/src/$_gourl/"
+  mkdir -p "${srcdir}/src/${_gourl}"
+  mv "${_pkgname}" "${srcdir}/src/${_gourl}/${_pkgname}"
+
+  # build with tags
+  msg2 "Build with tags"
+  GOPATH="${srcdir}" go get -tags "sqlite redis memcache" "${_gourl}/${_pkgname}"
 
   # patch
-  patch -Np1 -i "$srcdir/gitea.service.patch" "$srcdir/build/src/$_gourl/$_pkgname/scripts/systemd/gitea.service"
+  msg2 "Patch gitea.service"
+  patch -Np1 -i "${srcdir}/gitea.service.patch" "${srcdir}/src/${_gourl}/${_pkgname}/scripts/systemd/gitea.service"
 }
 
 build() {
-  cd "$GOPATH/src/$_gourl/$_pkgname"
-  go fix && go build
+  cd ${srcdir}/src/${_gourl}/${_pkgname}
+  GOPATH="${srcdir}" go fix
+  GOPATH="${srcdir}" go build -tags "sqlite redis memcache cert"
 }
 
 package() {
-  install -dm755 $pkgdir/var/lib/$_pkgname/{custom/conf,conf,data/{attachments,avatars,sessions,tmp},repo}
-  install -dm755 $pkgdir/var/log/gitea
-  install -Dm755 "$srcdir/build/src/$_gourl/$_pkgname/$_pkgname" "$pkgdir/usr/bin/$_pkgname"
-  install -Dm644 "$srcdir/build/src/$_gourl/$_pkgname/LICENSE" "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
-  install -Dm644 "$srcdir/build/src/$_gourl/$_pkgname/scripts/systemd/gitea.service" "$pkgdir/usr/lib/systemd/system/gitea.service"
-  install -Dm644 "$srcdir/$_pkgname.sysusers" "$pkgdir/usr/lib/sysusers.d/gitea.conf"
-  install -Dm644 "$srcdir/$_pkgname.tmpfiles" "$pkgdir/usr/lib/tmpfiles.d/gitea.conf"
-  install -Dm644 "$srcdir/app.ini" "$pkgdir/var/lib/$_pkgname/custom/conf/app.ini"
-  cp -r $srcdir/build/src/$_gourl/$_pkgname/{conf,templates,public} $pkgdir/var/lib/$_pkgname
+  install -dm755 ${pkgdir}/var/lib/${_pkgname}/{custom/conf,conf,data/{attachments,avatars,sessions,tmp},repo}
+  install -dm755 ${pkgdir}/var/log/gitea
+  install -Dm755 "${srcdir}/src/${_gourl}/${_pkgname}/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
+  install -Dm644 "${srcdir}/src/${_gourl}/${_pkgname}/LICENSE" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
+  install -Dm644 "${srcdir}/src/${_gourl}/${_pkgname}/scripts/systemd/gitea.service" "${pkgdir}/usr/lib/systemd/system/gitea.service"
+  install -Dm644 "${srcdir}/${_pkgname}.sysusers" "${pkgdir}/usr/lib/sysusers.d/gitea.conf"
+  install -Dm644 "${srcdir}/${_pkgname}.tmpfiles" "${pkgdir}/usr/lib/tmpfiles.d/gitea.conf"
+  install -Dm644 "${srcdir}/app.ini" "${pkgdir}/var/lib/${_pkgname}/custom/conf/app.ini"
+  cp -r ${srcdir}/src/${_gourl}/${_pkgname}/{conf,templates,public} ${pkgdir}/var/lib/${_pkgname}
 }
-
-# vim: ft=sh ts=2 sw=2 et
