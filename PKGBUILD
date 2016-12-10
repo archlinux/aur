@@ -2,11 +2,11 @@ pkgname=armsimsharp
 pkgver=2.1
 pkgrel=0
 pkgdesc='A desktop application for simulating the execution of ARM assembly language programs.'
-url="http://webhome.cs.uvic.ca/~nigelh/ARMSim-V${pkgver}"
+url="https://webhome.cs.uvic.ca/~nigelh/ARMSim-V${pkgver}"
 license=('GPL')
 arch=('any')
 depends=('arm-none-eabi-binutils' 'mono')
-source=("${pkgname}" "${pkgname}.patch" "http://webhome.cs.uvic.ca/~nigelh/ARMSim-V${pkgver}/LinuxFiles/ARMSimLinuxFiles.zip")
+source=("${pkgname}" "${pkgname}.patch" "https://webhome.cs.uvic.ca/~nigelh/ARMSim-V${pkgver}/LinuxFiles/ARMSimLinuxFiles.zip")
 sha256sums=('SKIP' 'SKIP' '53d7c46165b10ad8777fac8e5ee76ce4fca47ac1d606d5fa7fbfc09810527884')
 
 
