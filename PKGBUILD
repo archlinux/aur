@@ -1,9 +1,9 @@
 # Author: Dominic Radermacher <dominic.radermacher@gmail.com>
 pkgname=ptouch
-pkgver=1.3.2
+pkgver=1.3.3
 pkgrel=1
 pkgdesc="Command line tool to print text or graphic labels on Brother P-touch printers like PT-2430PC"
-arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+arch=('x86_64' 'i686' 'armv7h' 'armv6h')
 url="http://mockmoon-cybernetics.ch/computer/p-touch2430pc/"
 license=('GPL2')
 makedepends=('git' 'autoconf')
@@ -25,7 +25,6 @@ pkgver() {
 
 build() {
 	cd ${srcdir}/ptouch-print
-	touch ./AUTHORS
 	autoreconf -i
 	./configure --prefix=/usr
 	make
