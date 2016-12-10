@@ -1,0 +1,21 @@
+pkgbase = jsignpdf-bin
+	pkgdesc = Digital sign PDF files with X.509 certificates.
+	pkgver = 1.6.1
+	pkgrel = 2
+	url = http://jsignpdf.sourceforge.net/
+	arch = any
+	license = LGPL
+	license = MPL
+	depends = java-runtime>=8
+	provides = jsignpdf
+	source = http://ncu.dl.sourceforge.net/project/jsignpdf/stable/JSignPdf%201.6.1/JSignPdf-1.6.1.zip
+	source = jsignpdf.sh
+	source = jsignpdf.png
+	source = jsignpdf.desktop
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = jsignpdf-bin
+
