@@ -2,7 +2,7 @@
 
 pkgname=python-tappy
 _prjname=tap.py
-pkgver=1.8
+pkgver=2.1
 pkgrel=1
 pkgdesc="Test Anything Protocol (TAP) tools for Python"
 arch=(any)
@@ -10,9 +10,9 @@ url="https://pypi.python.org/pypi/tap.py"
 license=('BSD')
 depends=('python')
 options=(!emptydirs)
-source=(https://pypi.python.org/packages/source/t/${_prjname}/${_prjname}-${pkgver}.tar.gz)
-md5sums=('fa48198ddf0ac8f183c32d252b25e827')
-sha256sums=('b2b325d159272e476e90eb1783de4436b70b62f59abbdecc42c9967fa92c5549')
+source=(https://files.pythonhosted.org/packages/source/t/${_prjname}/${_prjname}-${pkgver}.tar.gz)
+md5sums=('0a21cc983235e8cb526b2772dd216076')
+sha256sums=('3b03e72ec9f0f081290a8e855888526f07dbec4eb986420ce7d9733aa22aafe8')
 
 package() {
   cd "$srcdir/$_prjname-$pkgver"
