@@ -1,25 +1,23 @@
-# Maintainer: Stephen Smith <stephen304@gmail.com>
 pkgname=armsimsharp
-pkgver=1.91
-pkgrel=1
-pkgdesc="The ARMSim# program."
-arch=(any)
-url="http://armsim.cs.uvic.ca/index.html"
-depends=(mono)
-source=("http://armsim.cs.uvic.ca/Downloads/ARMSim-191-MAC.zip" "ARMSim.exe.config.patch" "armsimsharp")
-md5sums=('ea523500526e19c73965b4fb8108163f'
-         '9d411f7f252516fa289756efe6eed5cd'
-         '815e1e557b89f634b136a252c6fc61db')
+pkgver=2.1
+pkgrel=0
+pkgdesc='A desktop application for simulating the execution of ARM assembly language programs.'
+url="http://webhome.cs.uvic.ca/~nigelh/ARMSim-V${pkgver}"
+license=('GPL')
+arch=('any')
+depends=('arm-none-eabi-binutils' 'mono')
+source=("${pkgname}" "${pkgname}.patch" "http://webhome.cs.uvic.ca/~nigelh/ARMSim-V${pkgver}/LinuxFiles/ARMSimLinuxFiles.zip")
+sha256sums=('SKIP' 'SKIP' '53d7c46165b10ad8777fac8e5ee76ce4fca47ac1d606d5fa7fbfc09810527884')
+
 
 prepare() {
-  rm ARMSim-191-MAC.zip
-  patch -d "${srcdir}" < ARMSim.exe.config.patch
-  rm ARMSim.exe.config.patch
+    patch --quiet --strip=0 "--directory=${srcdir}" "--input=${srcdir}/${pkgname}.patch"
+    ln --symbolic /usr/bin/arm-none-eabi-as "${srcdir}/arm-none-eabi-as"
 }
 
+
 package() {
-  install -d "$pkgdir/opt/armsimsharp"
-  install -Dm755 "$pkgname" "$pkgdir/usr/bin/$pkgname"
-  rm armsimsharp
-  install -Dm644 "$srcdir/"* "$pkgdir/opt/armsimsharp/"
+    install -D --mode=u=rwx,go=rx "--target-directory=${pkgdir}/usr/bin" "${srcdir}/${pkgname}"
+    install -D --mode=u=rw,go=r "--target-directory=${pkgdir}/opt/${pkgname}" "${srcdir}"/*.{config,dll,exe}
+    cp --no-dereference "${srcdir}/arm-none-eabi-as" "${pkgdir}/opt/${pkgname}"
 }
