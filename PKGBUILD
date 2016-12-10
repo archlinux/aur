@@ -1,17 +1,17 @@
 # AUR/linux-lts-tomoyo PKGBUILD
 # Maintainer: dysphoria <>
 #
-# arch/core/linux-lts $Id: PKGBUILD 282141 2016-11-27 21:42:11Z andyrtr $
+# arch/core/linux-lts $Id: PKGBUILD 282965 2016-12-09 19:16:43Z andyrtr $
 # Contributor: Andreas Radke <andyrtr@archlinux.org>
 # Contributor: Tobias Powalowski <tpowa@archlinux.org>
 # Contributor: Thomas Baechler <thomas@archlinux.org>
 
 pkgbase=linux-lts-tomoyo
 _srcname=linux-4.4
-pkgver=4.4.35
+pkgver=4.4.37
 pkgrel=1
 arch=('i686' 'x86_64')
-url="http://www.kernel.org/"
+url="https://www.kernel.org/"
 license=('GPL2')
 makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc')
 options=('!strip')
@@ -19,20 +19,25 @@ source=(https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.{xz,sign}
         https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.{xz,sign}
         # the main kernel config files
         'config' 'config.x86_64'
+        # pacman hook for initramfs regeneration
+        '99-linux.hook'
         # standard config files for mkinitcpio ramdisk
         "${pkgbase}.preset"
         'change-default-console-loglevel.patch'
-        '0001-sdhci-revert.patch')
+        '0001-sdhci-revert.patch'
+        'fix_race_condition_in_packet_set_ring.diff')
 # https://www.kernel.org/pub/linux/kernel/v4.x/sha256sums.asc
 sha256sums=('401d7c8fef594999a460d10c72c5a94e9c2e1022f16795ec51746b0d165418b2'
             'SKIP'
-            '5d0cc352645127191767e1c33f78c48dfdee7022fe425639a4c95a901d5e5c77'
+            '1dfa256765585bf85a17b7129d717761e12338c654a3a3a803f1d967ccfa54f3'
             'SKIP'
             'b11702727b1503e5a613946790978481d34d8ecc6870337fadd3ce1ef084a8e2'
             '68c7296ff2f5f55d69e83aa4d20f925df740b1eb1e6bdb0f13e8a170360ed09f'
+            '834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0'
             '9f6b59eccb57337034593a254e7a1bf106de8090c24e651ab728a00c37e00e80'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
-            '5313df7cb5b4d005422bd4cd0dae956b2dadba8f3db904275aaf99ac53894375')
+            '5313df7cb5b4d005422bd4cd0dae956b2dadba8f3db904275aaf99ac53894375'
+            'ad1ee95f906f88d31fcdb9273cd08e02e8eda177449f0c98dc1bff8cbf1483c2')
 validpgpkeys=('ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds <torvalds@linux-foundation.org>
               '647F28654894E3BD457199BE38DBBDC86092693E' # Greg Kroah-Hartman (Linux kernel stable release signing key) <greg@kroah.com>
              )
@@ -43,6 +48,10 @@ prepare() {
 
   # add upstream patch
   patch -p1 -i "${srcdir}/patch-${pkgver}"
+
+  # fix a race condition that allows to gain root
+  # https://marc.info/?l=linux-netdev&m=148054660230570&w=2
+  patch -p1 -i "${srcdir}/fix_race_condition_in_packet_set_ring.diff"
 
   # add latest fixes from stable queue, if needed
   # http://git.kernel.org/?p=linux/kernel/git/stable/stable-queue.git
@@ -139,6 +148,10 @@ _package() {
     -e "s|default_image=.*|default_image=\"/boot/initramfs-${pkgbase}.img\"|" \
     -e "s|fallback_image=.*|fallback_image=\"/boot/initramfs-${pkgbase}-fallback.img\"|" \
     -i "${pkgdir}/etc/mkinitcpio.d/${pkgbase}.preset"
+
+  # install pacman hook for initramfs regeneration
+  sed "s|%PKGBASE%|${pkgbase}|g" "${srcdir}/99-linux.hook" |
+    install -D -m644 /dev/stdin "${pkgdir}/usr/share/libalpm/hooks/99-${pkgbase}.hook"
 
   # remove build and source links
   rm -f "${pkgdir}"/lib/modules/${_kernver}/{source,build}
