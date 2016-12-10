@@ -1,7 +1,7 @@
 # Maintainer: Nicola Fontana <ntd@entidi.it>
 
 pkgname=pforth-git
-pkgver=c232a93
+pkgver=20160529
 pkgrel=1
 pkgdesc='A portable implementation of the Forth programming language written in ANSI C'
 arch=(any)
@@ -16,7 +16,7 @@ source=('git+https://github.com/philburk/pforth.git')
 md5sums=('SKIP')
 
 pkgver() {
-  cd "$pkgname"
+  cd "$srcdir/pforth"
   git show -s --format="%ci" HEAD | sed -e 's/-//g' -e 's/ .*//'
 }
 
