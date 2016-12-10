@@ -1,0 +1,10 @@
+[Unit]
+Description=aMule Adunanza Daemon
+After=network.target
+
+[Service]
+User=%I
+ExecStart=/usr/bin/amuled
+
+[Install]
+WantedBy=multi-user.target

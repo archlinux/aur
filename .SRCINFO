@@ -1,0 +1,33 @@
+pkgbase = amule-adnza-daemon-svn
+	pkgdesc = aMule patched for Fastweb Network (Italy) by Adunanza forum. (Only Daemon, CLI tools and Webserver)
+	pkgver = 458
+	pkgrel = 1
+	url = http://amule-adunanza.sourceforge.net/
+	install = amule-daemon.install
+	arch = i686
+	arch = x86_64
+	arch = armv7h
+	license = GPL
+	makedepends = ccache
+	makedepends = boost
+	makedepends = subversion
+	depends = wxbase-light
+	depends = crypto++
+	depends = libupnp
+	depends = libpng
+	depends = boost-libs
+	optdepends = kamule: AmuleGUI for KDE
+	conflicts = amule
+	source = svn+https://svn.code.sf.net/p/amule-adunanza/code/branches/MoonRiver/
+	source = amuled.service
+	source = amuled@.service
+	source = amuleweb.service
+	source = amule.sysuser
+	sha1sums = SKIP
+	sha1sums = 6c5cc047fc0c7e91b5f0904ced43bec76b3f2889
+	sha1sums = 306822f859ec994b1ef8f231920cf74e2aedc8e9
+	sha1sums = 05135172914890d2be2487b6686416c17cfa3fac
+	sha1sums = 266dd97212b5e269f6c9b0665880cd76e68d83ea
+
+pkgname = amule-adnza-daemon-svn
+
