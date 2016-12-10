@@ -18,15 +18,15 @@ sha256sums=('4b592a1a0ff5efba5dbdbee134755d957d132d85b6cedfbf6f7ba4b03bcea5ee')
 build() {
   cd $pkgname-$pkgver
 
-  _ARCH=
+  _UGENE_ARCH=
 
   if [[ $CARCH == "x86_64" ]]; then
-    _ARCH=x64
+    _UGENE_ARCH=x64
   fi
 
   qmake-qt5 -r \
     PREFIX=/usr \
-    CONFIG+=$_ARCH \
+    CONFIG+=$_UGENE_ARCH \
     QMAKE_CFLAGS_ISYSTEM=
   make
 }
