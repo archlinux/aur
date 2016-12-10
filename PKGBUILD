@@ -2,14 +2,14 @@
 
 _gitname=solarized_sddm_theme
 pkgname=solarized-sddm-theme
-pkgver=0.1.4
+pkgver=0.1.5
 pkgrel=1
 pkgdesc="A solarized SDDM theme"
 arch=('any')
 url="https://github.com/MalditoBarbudo/solarized_sddm_theme"
 license=('GPL')
 
-depends=('sddm>=0.13.0')
+depends=('sddm>=0.14.0')
 makedepends=('git')
 optdepends=('otf-raleway: raleway font support'
             'ttf-impallari-raleway-family: raleway font support'
