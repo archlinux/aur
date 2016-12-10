@@ -5,7 +5,7 @@ pkgrel=1
 pkgdesc="Awesome terminal fonts patching strategy"
 arch=("any")
 url="https://github.com/gabrielelana/awesome-terminal-fonts"
-license=("MIT")
+license=("OFL")
 source=("https://github.com/gabrielelana/awesome-terminal-fonts/archive/patching-strategy.zip")
 md5sums=("0c79d62c79db1846da944f620408b196")
 
