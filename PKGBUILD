@@ -2,14 +2,14 @@
 
 pkgname=connectagram
 pkgver=1.2.4
-pkgrel=1
+pkgrel=2
 pkgdesc='A word unscrambling game'
 arch=('i686' 'x86_64')
 url="http://gottcode.org/$pkgname/"
 license=('GPL3')
 depends=('qt5-base')
 makedepends=('qt5-tools')
-source=("http://gottcode.org/$pkgname/$pkgname-$pkgver-src.tar.bz2")
+source=("https://gottcode.org/$pkgname/$pkgname-$pkgver-src.tar.bz2")
 sha256sums=('94467d41f89cd3f24afaed9fe0f905a4daa45d803088e25a8bba55ea48f25102')
 
 build() {
