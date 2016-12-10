@@ -1,8 +1,8 @@
 # Maintainer: Miguel de Val-Borro <miguel at archlinux dot net>
 # Contributor: 天苯 <universebenzene at sina dot com>
 pkgname=astrometry.net
-pkgver=0.67
-pkgrel=11
+pkgver=0.69
+pkgrel=1
 pkgdesc="Automatic recognition of astronomical images"
 arch=('i686' 'x86_64')
 url="http://astrometry.net/"
