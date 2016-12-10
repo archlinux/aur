@@ -10,6 +10,7 @@ license=("GPL")
 depends=('bzip2' 'cairo' 'libpng' 'libjpeg-turbo' 'python2' 'python2-astropy'
 'python2-numpy' 'netpbm' 'cfitsio' 'gsl')
 makedepends=('make' 'gcc')
+backup=(etc/astrometry.cfg)
 install=astrometry.net.install
 source=("https://github.com/dstndstn/${pkgname}/archive/${pkgver}.tar.gz")
 
