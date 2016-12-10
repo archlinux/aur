@@ -1,7 +1,7 @@
 # Maintainer: gaelic <gaelic@cargal.org>
 pkgname=librevault-daemon-git
 _pkgname=librevault
-pkgver=0.1.19
+pkgver=0.1.19.r63.1211bbe
 pkgrel=1
 pkgdesc="File synchronization designed with privacy in mind, daemon only"
 arch=(x86_64 i686)
