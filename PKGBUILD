@@ -13,8 +13,8 @@ conflicts=("micro-git")
 source_x86_64=("https://github.com/zyedidia/micro/releases/download/v${pkgver}/micro-${pkgver}-linux64.tar.gz")
 source_i686=("https://github.com/zyedidia/micro/releases/download/v${pkgver}/micro-${pkgver}-linux32.tar.gz")
 
-sha256sums_x86_64=('243886ba707aad421de415f6d7c9a52888e5a7a8420bfd647b4053750a5912cf')
-sha256sums_i686=('80b76c7400970d778fd035201c57c223c212a52c1f85ac90a20c19622ed469f6')
+sha256sums_x86_64=('80b76c7400970d778fd035201c57c223c212a52c1f85ac90a20c19622ed469f6')
+sha256sums_i686=('243886ba707aad421de415f6d7c9a52888e5a7a8420bfd647b4053750a5912cf')
 
 package(){
  install -Dm755 "${srcdir}/${pkgname}-${pkgver}/micro" "${pkgdir}/usr/bin/micro"
