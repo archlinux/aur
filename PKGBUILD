@@ -24,11 +24,11 @@ optdepends=('cython2: to compile cython code' 'python2-pkgconfig: to compile cyt
   'coin-or-cbc: COIN backend for numerical computations' 'coin-or-csdp: for computing Lovász theta-function of graphs'
   'buckygen: for generating fullerene graphs' 'plantri: for generating some classes of graphs' 'benzene: for generating fusenes and benzenoids'
   'modular_decomposition: modular decomposition of graphs' 'ffmpeg: to export animations to video' 'imagemagick: to show animations'
-  'coxeter3: Coxeter groups implementation' 'cryptominisat: SAT solver' 'gap-data: for computing Galois groups'
+  'coxeter3: Coxeter groups implementation' 'cryptominisat2: SAT solver' 'gap-data: for computing Galois groups'
   'lrs: Algorithms for linear reverse search used in game theory and for computing volume of polytopes'
   'libhomfly: for computing the homfly polynomial of links' 'libbraiding: for computing in braid groups')
 makedepends=(cython2 boost ratpoints symmetrica fflas-ffpack python2-jinja coin-or-cbc libhomfly libbraiding
-  mcqd coxeter3 cryptominisat modular_decomposition bliss-graphs tdlib python2-pkgconfig meataxe git) # libfes
+  mcqd coxeter3 cryptominisat2 modular_decomposition bliss-graphs tdlib python2-pkgconfig meataxe git) # libfes
 source=("git://git.sagemath.org/sage.git#branch=develop" 
         env.patch skip-check.patch cython-sys-path.patch is-package-installed.patch package.patch disable-fes.patch
         jupyter-path.patch test-optional.patch python-2.7.11.patch ecm-7.patch increase-rtol.patch pynac-0.7.1.patch)
