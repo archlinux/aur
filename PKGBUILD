@@ -8,7 +8,7 @@ arch=('any')
 url="http://www.ravefinity.com/p/vibrancy-colors-gtk-icon-theme.html"
 license=('CCPL:by-sa' 'GPL2')
 options=('!strip')
-source=("v$pkgver.tar.gz::http://download2141.mediafire.com/xqn8wpqnin3g/i25blth6npp23h5/Vibrancy-Colors-GTK-Icon-Theme-v-2-7.tar.gz")
+source=("v$pkgver.tar.gz::https://www.dropbox.com/s/sealvky0fzusfix/Vibrancy-Colors-GTK-Icon-Theme-v-2-7.tar.gz")
 sha1sums=('0a42fb74af7463215f126e9aff9f1ba4fb50d258')
 
 package() {
