@@ -1,0 +1,18 @@
+pkgbase = cookie-cadger
+	pkgdesc = An auditing tool for Wi-Fi or wired Ethernet connections.
+	pkgver = 1.08
+	pkgrel = 1
+	url = https://cookiecadger.com/
+	arch = any
+	groups = blackarch
+	groups = blackarch-fuzzer
+	groups = blackarch-scanner
+	license = custom:FreeBSD
+	depends = java-environment
+	depends = wireshark-cli
+	noextract = CookieCadger-1.08.jar
+	source = https://www.cookiecadger.com/files/CookieCadger-1.08.jar
+	sha1sums = a5d511fc53fae2028fe86f19f14804fa3fd23b19
+
+pkgname = cookie-cadger
+
