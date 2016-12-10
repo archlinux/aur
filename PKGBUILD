@@ -2,7 +2,7 @@
  
 pkgname=linux-steam-integration-git
 _pkgname=linux-steam-integration
-pkgver=0.2.r4.g6659905
+pkgver=0.3.r0.ge3360b7
 pkgrel=1
 pkgdesc="Helper for enabling better Steam integration on Linux"
 url="https://github.com/solus-project/linux-steam-integration"
@@ -13,15 +13,10 @@ makedepends=('git')
 optdepends=('steam-native-runtime: A package for installing all required deps for the native runtime.')
 provides=('linux-steam-integration')
 conflicts=('linux-steam-integration')
-install=linux-steam-integration.install
 source=("git+https://github.com/solus-project/linux-steam-integration.git"
-        "move-steam-lsi.sh"
-        "remove-steam-lsi.sh"
-        "steam-lsi.hook")
-md5sums=('SKIP'
-         '26e6bf6604d7b31d40b27d87de797ec2'
-         'acf726dbec295c8275c09d7d1995e9b1'
-         'd6e67475f32c37156a04fb608fd3d518')
+        "git+https://github.com/ikeydoherty/libnica.git")
+sha512sums=('SKIP'
+         'SKIP')
 
 pkgver() {
   cd $srcdir/$_pkgname
@@ -30,21 +25,19 @@ pkgver() {
 
 prepare() {
   cd $srcdir/$_pkgname
-  ./autogen.sh --enable-frontend 
+  git config submodule.src/libnica.url $srcdir/libnica
+  git submodule update
 }
 
 build() {
   cd $srcdir/$_pkgname
+  ./autogen.sh --enable-frontend --disable-replace-steam
   make
 }
 
 package() {
   cd $srcdir/$_pkgname
   make DESTDIR="$pkgdir/" install
-  mv $pkgdir/usr/bin/steam $pkgdir/usr/bin/steam_lsi
-  install -D -m 644 $srcdir/steam-lsi.hook $pkgdir/usr/share/libalpm/hooks/steam-lsi.hook
-  install -d $pkgdir/usr/lib/steam
-  install -D -m 755 $srcdir/*move-steam-lsi.sh $pkgdir/usr/lib/steam/
 }
 
 # vim:set ts=2 sw=2 et:
