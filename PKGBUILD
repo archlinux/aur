@@ -8,7 +8,7 @@
 
 pkgname=mpv-ahjolinna-git
 _gitname=mpv
-pkgver=44200.g796b48b
+pkgver=44217.g82855be
 pkgrel=1
 pkgdesc='Video player based on MPlayer/mplayer2 (git version)'
 arch=('x86_64')
@@ -52,7 +52,7 @@ conflicts=('mpv' 'mpv-vapoursynth' 'mpv-ahjolinna-build-git' 'mpv-build-git' )
 options=('!emptydirs')
 source=('git+https://github.com/mpv-player/mpv'
         'find-deps.py'
-         "ftp://ftp.ritual.org/common/ColorManagement/BT.709_Profiles.zip"
+         "https://github.com/ahjolinna/mpv-conf/raw/master/PKGBUILD/BT.709_Profiles.zip"
          "https://github.com/ahjolinna/mpv-conf/raw/master/PKGBUILD/mpv.tar.gz"
         'mpv-hq.desktop'
          'mpv-lq.desktop'
