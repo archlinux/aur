@@ -1,6 +1,6 @@
 pkgbase = sky
 	pkgdesc = Lync and Skype for Business client on Linux
-	pkgver = 2.1.6407_1
+	pkgver = 2.1.6418_1
 	pkgrel = 1
 	url = http://tel.red
 	install = sky.install
@@ -17,8 +17,8 @@ pkgbase = sky
 	depends = qt5-base>=5.6
 	depends = qt5-base<5.8.0
 	options = !strip
-	source_x86_64 = https://tel.red/repos/debian/pool/non-free/sky_2.1.6407-1debian+jessie_amd64.deb
-	sha256sums_x86_64 = 5be84231ef48e355fef0fed65f55c7a9f3649be44584fb4a8d17ef01039af167
+	source_x86_64 = https://tel.red/repos/debian/pool/non-free/sky_2.1.6418-1debian+jessie_amd64.deb
+	sha256sums_x86_64 = b977a24dad1132e0506bdd7a6d32fead56fb4600bed59b4e2ff7676d748463ac
 
 pkgname = sky
 
