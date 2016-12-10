@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=DB-Main
 Comment=A free data-modeling and data-architecture tool
-Exec=dbmain
+Exec=/usr/bin/dbmain
 Icon=dbmain
 Terminal=false
 Type=Application
