@@ -2,7 +2,7 @@
 _dbtype=mysql
 _pkgname=zabbix
 pkgname=${_pkgname}-server-${_dbtype}
-pkgver=3.2.1
+pkgver=3.2.2
 pkgrel=1
 pkgdesc="Zabbix is an enterprise-class open source distributed monitoring solution."
 arch=("i686"
@@ -32,9 +32,9 @@ install="${_pkgname}-server.install"
 options=("emptydirs")
 source=("http://downloads.sourceforge.net/sourceforge/${_pkgname}/${_pkgname}-${pkgver}.tar.gz"
         "${_pkgname}-server.install")
-md5sums=("4f363b923ef2b5eefddee8dfc5f51e2b"
+md5sums=("6f47f9d2bb14492c1e1ef08d32af441e"
          "ff761cbdafa70b6c4b26a39b8115ac64")
-sha1sums=("bb70b4bc66f97d90993a9bb7027bd94e9a4c1c02"
+sha1sums=("81a0437a735a3ad049a6b4ef432bc5c597275eb9"
           "173b60c310ae9453a0e75429b0917ad8bbf31e6f")
 
 prepare() {
