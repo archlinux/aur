@@ -1,7 +1,7 @@
 pkgbase = xmobar-alsa
 	pkgdesc = A Minimalistic Text Based Status Bar compiled with ALSA
-	pkgver = 0.23.1
-	pkgrel = 2
+	pkgver = 0.24.3
+	pkgrel = 1
 	url = http://hackage.haskell.org/package/xmobar
 	arch = i686
 	arch = x86_64
@@ -18,7 +18,7 @@ pkgbase = xmobar-alsa
 	makedepends = haskell-regex-compat
 	makedepends = haskell-http
 	depends = haskell-alsa-core>=0.5.0
-	depends = haskell-alsa-mixer>=0.2.0
+	depends = haskell-alsa-mixer>0.2.0.2
 	depends = gmp
 	depends = libxft
 	depends = libxinerama
@@ -26,8 +26,8 @@ pkgbase = xmobar-alsa
 	depends = libxrandr
 	depends = libxpm
 	conflicts = xmobar
-	source = http://hackage.haskell.org/packages/archive/xmobar/0.23.1/xmobar-0.23.1.tar.gz
-	md5sums = f97a10f049796f55cc3d13ee68d07eac
+	source = http://hackage.haskell.org/packages/archive/xmobar/0.24.3/xmobar-0.24.3.tar.gz
+	md5sums = 8d0b8e12da0346ab74b113b83bed11d0
 
 pkgname = xmobar-alsa
 
