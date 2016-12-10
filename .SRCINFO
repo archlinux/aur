@@ -1,14 +1,15 @@
 pkgbase = ssrc
 	pkgdesc = Fast and high quality sampling rate converter
-	pkgver = 1.30
-	pkgrel = 5
+	pkgver = 1.33
+	pkgrel = 1
 	url = http://shibatch.sourceforge.net
 	arch = i686
 	arch = x86_64
 	license = LGPL
 	depends = glibc
-	source = http://shibatch.sourceforge.net/download/ssrc-1.30.tgz
-	md5sums = a14b3c4f97c52e37e9cfeb65fc61f2bf
+	options = !makeflags
+	source = http://shibatch.sourceforge.net/download/ssrc-1.33.tar.gz
+	sha256sums = a663082ca11d049a20d7598328e1646c9220d68005d793f992fc0618806d713a
 
 pkgname = ssrc
 
