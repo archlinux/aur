@@ -1,6 +1,6 @@
 pkgbase = cbmc
 	pkgdesc = Bounded Model Checking for ANSI-C
-	pkgver = 5.5
+	pkgver = 5.6
 	pkgrel = 1
 	url = http://www.cprover.org/cbmc/
 	arch = i686
@@ -16,8 +16,8 @@ pkgbase = cbmc
 	conflicts = cbmc
 	conflicts = cbmc-git
 	conflicts = cbmc-bin
-	source = https://github.com/diffblue/cbmc/archive/cbmc-5.5.tar.gz
-	sha256sums = 748dbdfe37fb91b2755fdeaa61d20aa0b3a18df184d6be6ec283e7f2492537d9
+	source = https://github.com/diffblue/cbmc/archive/cbmc-5.6.tar.gz
+	sha256sums = c6bef63ec42816d0add995ea3b2a5344845cc31f0a6b9e4b8a18df8bb8ad904f
 
 pkgname = cbmc
 
