@@ -1,0 +1,15 @@
+pkgbase = efiedit
+	pkgdesc = Efibootmgr wrapper to view and edit boot entries
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/Juma7C9/Efiedit
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	depends = efibootmgr
+	options = strip
+	source = https://github.com/Juma7C9/Efiedit/releases/download/v1.0/efiedit-1.0.tar.xz
+	sha256sums = 35a1393f9bf43bdecb7b98ccdcd23e202cee8bf04190f773f53138159af51bd7
+
+pkgname = efiedit
+
