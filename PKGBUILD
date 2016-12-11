@@ -4,7 +4,7 @@
 # Author: Christopher Reimer <mail+vdr4arch[at]c-reimer[dot]de>
 # Maintainer: Julian Xhokaxhiu <info@julianxhokaxhiu.com>
 pkgname=oscam-git
-pkgver=r10293.9cf1393
+pkgver=11286
 pkgrel=1
 pkgdesc="Open Source Conditional Access Module software"
 url="http://www.streamboard.tv/oscam"
@@ -15,7 +15,7 @@ makedepends=('git' 'pcsclite')
 optdepends=('pcsclite: for use with PC/SC readers'
             'ccid: PC/SC reader generic driver')
 install='oscam.install'
-source=("git+https://github.com/nx111/oscam.git"
+source=("git+http://www.oscam.cc/git/oscam-mirror"
         'oscam.service'
         'oscam.sysuser')
 md5sums=('SKIP'
@@ -23,12 +23,12 @@ md5sums=('SKIP'
          'be0d9d7a5fdd8cf4918c4ea91cebd989')
 
 pkgver() {
-  cd "$srcdir/oscam"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  cd "$srcdir/oscam-mirror"
+  git log -1 | grep git-svn-id | cut -d'@' -f2 | cut -d' ' -f1
 }
 
 build() {
-  cd "$srcdir/oscam"
+  cd "$srcdir/oscam-mirror"
 
   make CONF_DIR=/var/lib/oscam \
        USE_SSL=1 \
@@ -40,7 +40,7 @@ build() {
 }
 
 package() {
-  cd "$srcdir/oscam"
+  cd "$srcdir/oscam-mirror"
 
   #Install binaries
   install -Dm755 oscam "$pkgdir/usr/bin/oscam"
