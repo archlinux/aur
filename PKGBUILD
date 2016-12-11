@@ -4,7 +4,7 @@
 
 pkgname=('gcc49')
 _pkgver=4.9
-_pkgver_minor=3
+_pkgver_minor=4
 pkgver=${_pkgver}.${_pkgver_minor}
 _islver=0.12.2
 _cloogver=0.18.1
@@ -18,12 +18,10 @@ checkdepends=('dejagnu' 'inetutils')
 options=('!emptydirs')
 source=("ftp://gcc.gnu.org/pub/gcc/releases/gcc-${pkgver}/gcc-${pkgver}.tar.bz2"
         "ftp://gcc.gnu.org/pub/gcc/infrastructure/isl-${_islver}.tar.bz2"
-        "ftp://gcc.gnu.org/pub/gcc/infrastructure/cloog-${_cloogver}.tar.gz"
-        "gcc-4.9-fix-build-with-gcc-6.patch")
-md5sums=('6f831b4d251872736e8e9cc09746f327'
+        "ftp://gcc.gnu.org/pub/gcc/infrastructure/cloog-${_cloogver}.tar.gz")
+md5sums=('87c24a4090c1577ba817ec6882602491'
          'e039bfcfb6c2ab039b8ee69bf883e824'
-         'e34fca0540d840e5d0f6427e98c92252'
-         '91f27a8002df38cf2ca971ca80feb9d7')
+         'e34fca0540d840e5d0f6427e98c92252')
 
 _basedir=gcc-${pkgver}
 _libdir="usr/lib/gcc/$CHOST/$pkgver"
@@ -38,9 +36,6 @@ prepare() {
   # Do not run fixincludes
   sed -i 's@\./fixinc\.sh@-c true@' gcc/Makefile.in
   
-  # fix build with GCC 6
-  patch -p1 < "${srcdir}/gcc-4.9-fix-build-with-gcc-6.patch"
-
   # Arch Linux installs x86_64 libraries /lib
   [[ $CARCH == "x86_64" ]] && sed -i '/m64=/s/lib64/lib/' gcc/config/i386/t-linux64
 
