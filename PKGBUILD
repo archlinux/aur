@@ -10,7 +10,7 @@
 pkgbase=libappindicator-ubuntu
 pkgname=(libappindicator-gtk2-ubuntu libappindicator-gtk3-ubuntu)
 _actual_ver=12.10.1
-_extra_ver=+16.10.20160905
+_extra_ver=+17.04.20161129
 pkgver=${_actual_ver}${_extra_ver/\+/.}
 pkgrel=1
 pkgdesc="A library to allow applications to export a menu into the Unity Menu bar"
@@ -23,8 +23,8 @@ source=("https://launchpad.net/ubuntu/+archive/primary/+files/${pkgbase/\-*/}_${
         0001-Glib.Timeout-fix.patch
         0002-Fix-mono-nunit-pkgconfig-name.patch
         0003-Fix-Mono-assemblies-directory.patch)
-sha512sums=('96385c9078af9c3ae1eedebce9b7e82414a46fe7602c93843c90c6fc38eb865f8dc2cfce421cc92ad8cd7bf52c6f2e7b11b79a00a88a7644e0e5235ff7e19e75'
-            'e717a7e50ec4828bc4ea1701a4f707ddc695e16dfab2487c0e4f2f85ac50d2d215c99450e4191f0e29d402f0b28bf7b71d5cf2321d3b3b27b396a8bf8f3a393b'
+sha512sums=('9ef7c14350bc9397f5aafb31ba399b55674b5034ac59a9ec69b24e403e0e9bd056ace03861ad7671e9c5ce4d998adb58e718e7a31125affc6bb5d1f49aa50d1f'
+            '3303fa39c4f2e0d9d092735ae7b457873cf4b3a3b0dd5c1f492728ae4f12dc3f0f123a1b003d81e9b5164b13dea71d598fae01fd667c24cf6983155d58cecb4c'
             'ea1822c3a09ef4c59d91b267d2ea0d0c9003c04ea0d8d4fb6a73e1b51084faccafbf41d6390a9c0e1326fd3334421539bdbb86a2a5e5022fa96e9d5196ef2d1d'
             '22e15f875a636bbbf8b1e80867a219b4b47b334d1bfe759f4ce79bf3665fc63af36b57fddb6c92aa7db148b5ea9ed789e510a9b23d87324b1b48695ad1ca9bc7')
 
