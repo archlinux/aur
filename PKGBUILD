@@ -2,7 +2,7 @@
 # Contributor: marlock
 
 pkgname=android-udev-git
-pkgver=223
+pkgver=20161014.r2.g9c9baf8
 pkgrel=1
 pkgdesc='Udev rules to connect Android devices to your linux box'
 arch=('any')
@@ -26,7 +26,7 @@ package() {
 
 pkgver() {
   cd android-udev
-  echo $(git rev-list --count master)
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 md5sums=('SKIP')
