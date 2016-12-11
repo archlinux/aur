@@ -1,6 +1,6 @@
 pkgbase = acme-client-git
 	pkgdesc = Yet another ACME client, specifically for Let's Encrypt, but one with a strong focus on security. Written in C.
-	pkgver = 0.1.14.r0.gc5c0c27
+	pkgver = 0.1.15.r2.g1613a32
 	pkgrel = 1
 	url = https://kristaps.bsd.lv/acme-client/
 	arch = x86_64

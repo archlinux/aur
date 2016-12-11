@@ -1,8 +1,7 @@
 # Maintainer: surefire@cryptomile.net
 
 pkgname=acme-client-git
-_pkgname=acme-client
-pkgver=0.1.14.r0.gc5c0c27
+pkgver=0.1.15.r2.g1613a32
 pkgrel=1
 arch=('x86_64' 'i686' 'armv7h')
 license=('BSD')
@@ -36,6 +35,13 @@ pkgver() {
 	git describe --long --tags | sed 's/VERSION_//;s/\([^-]*-g\)/r\1/;s/[-_]/./g'
 }
 
+prepare() {
+	cd "${pkgname}"
+
+	# Disable libseccomp
+	sed -i GNUmakefile -e '/pkg-config --exists libseccomp/ s/echo 1/echo 0/'
+}
+
 build() {
 	cd "libressl-${_sslver}"
 	./configure --disable-shared --enable-static
@@ -52,10 +58,10 @@ package() {
 
 	install -Dm755 -t "${pkgdir}/usr/bin" acme-client
 	install -Dm644 -t "${pkgdir}/usr/share/man/man1" acme-client.1
-	install -Dm644 -t "${pkgdir}/usr/share/licenses/${_pkgname}" LICENSE.md
+	install -Dm644 -t "${pkgdir}/usr/share/licenses/acme-client" LICENSE.md
 
 	install -Dm644 -t "${pkgdir}/usr/lib/systemd/system" ../acme@.{timer,service}
 	install -Dm644 -t "${pkgdir}/etc/acme" ../example.conf
 
-	install -dm0755 "${pkgdir}/var/lib/acme/accounts" "${pkgdir}/var/lib/acme/certs"
+	install -dm0755 "${pkgdir}/var/lib/acme"/{accounts,certs}
 }
