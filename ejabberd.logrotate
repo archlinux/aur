@@ -1,4 +1,5 @@
 /var/log/ejabberd/ejabberd.log {
+     su jabber jabber
      weekly
      missingok
      rotate 10
@@ -7,6 +8,6 @@
      ifempty
      nomail
      sharedscripts
-     postrotate ejabberdctl --node ejabberd reopen-log > /dev/null
+     postrotate ejabberdctl reopen-log > /dev/null
      endscript
 }
