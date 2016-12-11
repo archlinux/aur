@@ -10,10 +10,10 @@ arch=('i686' 'x86_64')
 url="https://github.com/kodi-pvr/${_gitname}"
 license=('GPL')
 groups=('kodi')
-makedepends=('cmake' 'git' 'kodi-platform-git')
+makedepends=('cmake' 'git')
 provides=('kodi-addon-pvr-iptvsimple');
 conflicts=('kodi-addon-pvr-iptvsimple');
-depends=('kodi')
+depends=('kodi' 'kodi-platform-git')
 source=("git+https://github.com/kodi-pvr/${_gitname}.git#branch=Jarvis")
 md5sums=('SKIP')
 
