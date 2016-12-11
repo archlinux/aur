@@ -5,7 +5,7 @@
 # Contributor: moostik <mooostik_at_gmail.com>
 
 pkgname=veusz
-pkgver=1.24
+pkgver=1.25
 pkgrel=1
 pkgdesc="A scientific plotting and graphing package, designed to create publication-ready Postscript or PDF output"
 arch=('i686' 'x86_64')
@@ -20,7 +20,7 @@ optdepends=('python2-pyfits: for reading files in FITS format'
 install='veusz.install'
 source=("http://download.gna.org/${pkgname}/${pkgname}-${pkgver}.tar.gz"
         "${pkgname}.desktop")
-md5sums=('44e491b2accec1857d1e2336f52187ad'
+md5sums=('b99ce07dfe583f8382b1a95f9d1787bf'
          '3823fe5961f3975a4dff2967aadaa14f')
 
 build() {
