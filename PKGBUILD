@@ -2,7 +2,7 @@
 
 _npmname=create-react-app
 pkgname="nodejs-${_npmname}"
-pkgver=0.5.0
+pkgver=1.0.2
 pkgrel=1
 pkgdesc="Create React apps with no build configuration"
 arch=(any)
@@ -13,7 +13,7 @@ makedepends=('npm')
 options=('!emptydirs')
 source=("https://registry.npmjs.org/${_npmname}/-/${_npmname}-${pkgver}.tgz")
 noextract=(${_npmname}-${pkgver}.tgz)
-sha384sums=('c9c9af490483d075427aa40c0870237302b6781e6939abfb687451117f927ced19c1a3b5bb12b286ff2e1c58e191698d')
+sha384sums=('ee13cb08cd53f4900aeea3634a4382da43f8cfc6293d959ca6f125e111f5671f8b2e1242dd9f5decd84dd8761aabb793')
 
 package() {
     cd "$srcdir"
