@@ -1,5 +1,7 @@
 # Maintainer: dreieck
 
+# PKGBUILD last time manually edited: At least on 2016-12-11.
+
 _pkgname=ttf-timetable
 pkgname="${_pkgname}-latest"
 pkgver=1.33.r20160330
