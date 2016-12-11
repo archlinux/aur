@@ -2,7 +2,7 @@
 _pkgname=nerdtree
 pkgname=vim-nerdtree-git
 pkgver=5.0.0.887.eee431d
-pkgrel=2
+pkgrel=3
 pkgdesc='Tree explorer plugin for navigating the filesystem'
 arch=('any') 
 url='https://github.com/scrooloose/nerdtree'
@@ -31,7 +31,7 @@ package() {
     "${pkgdir}/usr/share/vim/vimfiles/nerdtree_plugin/"
   install -m644 plugin/NERD_tree.vim "${pkgdir}/usr/share/vim/vimfiles/plugin/"
   install -m644 syntax/nerdtree.vim "${pkgdir}/usr/share/vim/vimfiles/syntax/"
-  install -D -m644 LICENCE "${pkgdir}/user/share/licenses/${_pkgname}/LICENSE"
+  install -D -m644 LICENCE "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
 }
 
 # vim:set et sw=2 ts=2 tw=79:
