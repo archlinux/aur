@@ -1,5 +1,5 @@
 pkgname=gien
-pkgver=0.3.1
+pkgver=0.3.2
 pkgrel=1
 pkgdesc="Export Github issue tracker and wiki contents to local email storage"
 arch=('any')
@@ -19,12 +19,12 @@ sha256sums=(SKIP)
 build()
 {
   cd "$srcdir/${pkgname}-master"
-  make
+  python setup.py build
 }
 
 package()
 {
   cd "$srcdir/${pkgname}-master"
-  make DESTDIR="$pkgdir/" install
+  python setup.py install -O1 --skip-build --root="$pkgdir"
 }
 
