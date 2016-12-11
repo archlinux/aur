@@ -2,15 +2,15 @@
 # Contributor: Thomas Nordenmark <t.nordenmark@gmail.com>
 
 pkgname=compton-conf
-pkgver=0.2.0
-pkgrel=2
+pkgver=0.2.1
+pkgrel=1
 pkgdesc='A graphical configuration tool for Compton X composite manager'
 arch=('i686' 'x86_64')
 url='https://github.com/lxde/compton-conf'
 license=('LGPL2.1')
 
 depends=('qt5-base' 'libconfig')
-makedepends=('cmake' 'qt5-tools' 'liblxqt')
+makedepends=('cmake' 'qt5-tools' 'lxqt-build-tools')
 provides=("${pkgname}=${pkgver}")
 conflicts=("${pkgname}-git")
 
@@ -22,7 +22,7 @@ validpgpkeys=(
 	'7C733BA5F585AAD669E4D23A42C9C8D3AF5EA5E3' # Alf Gaida
 )
 sha256sums=(
-	'56d5f15ec024a8657e4b8cc4305fd12f90f8b1cce60f445bc4644c91d599df68'
+	'f97a6d992adff317614785229d14eefa5dff350ecd5d608d6a30ee993adfa1dd'
 	'SKIP' # GPG signature
 	'c5ba13d98faae4efe2ec4a5aff8def3a35fae4f2762a6395847ae8734964d5e3'
 )
