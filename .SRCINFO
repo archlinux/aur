@@ -1,7 +1,7 @@
 pkgbase = brutal-doom-64
 	pkgdesc = Brutal Doom 64 via the GzDoom engine.
 	pkgver = 2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.moddb.com/mods/brutal-doom-64
 	install = brutal-doom-64.install
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = brutal-doom-64
 	source = http://libregeek.org/Linux/game-files/brutal-doom-64/bd64gamev2.pk3
 	source = http://libregeek.org/Linux/game-files/brutal-doom-64/bd64mapsv2.pk3
 	source = http://libregeek.org/Linux/game-files/brutal-doom-64/zd64music.pk3
-	source = http://libregeek.org/Linux/game-files/brutal-doom-64/stannouncerpack.pkg
+	source = http://libregeek.org/Linux/game-files/brutal-doom-64/stannouncerpack.pk3
 	source = brutal-doom-64.desktop
 	source = brutal-doom-64.png
 	source = brutal-doom-64

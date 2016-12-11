@@ -2,7 +2,7 @@
 # Mod: http://www.moddb.com/mods/brutal-doom-64/
 pkgname=brutal-doom-64
 pkgver=2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Brutal Doom 64 via the GzDoom engine."
 arch=(any)
 url="http://www.moddb.com/mods/brutal-doom-64"
@@ -14,7 +14,7 @@ source=(
 	'http://libregeek.org/Linux/game-files/brutal-doom-64/bd64gamev2.pk3'
 	'http://libregeek.org/Linux/game-files/brutal-doom-64/bd64mapsv2.pk3'
 	'http://libregeek.org/Linux/game-files/brutal-doom-64/zd64music.pk3'
-	'http://libregeek.org/Linux/game-files/brutal-doom-64/stannouncerpack.pkg'
+	'http://libregeek.org/Linux/game-files/brutal-doom-64/stannouncerpack.pk3'
 	'brutal-doom-64.desktop'
 	'brutal-doom-64.png'
 	'brutal-doom-64'
