@@ -15,7 +15,7 @@ conflicts=("${_pkgbase}" "${_pkgbase}-gtk3")
 license=('GPL')
 depends=('bzip2' 'desktop-file-utils' 'glib2' 'gtk3' 'gtk-update-icon-cache' 'gzip'
          'libarchive' 'tar')
-makedepends=('caja-dev'' 'intltool>=0.50.1' 'yelp-tools')
+makedepends=('caja-dev' 'intltool>=0.50.1' 'yelp-tools')
 optdepends=('caja: file archiver extension'
             'unrar: for RAR uncompression'
             'zip: for ZIP archives' 'unzip: for ZIP archives'
@@ -25,7 +25,7 @@ optdepends=('caja: file archiver extension'
 groups=('mate-extra')
 source=("http://pub.mate-desktop.org/releases/${_ver}/${_pkgbase}-${pkgver}.tar.xz"
         fr-rpm-bsdtar.patch)
-sha1sums=('90865e0c59bec33ed899c3a0a8d2787aa09d526b'
+sha1sums=('c61a7a0d2084c6c7693fdf4e08083ebe7f8d1e79'
           '219b05a979bf6f249aaae27964f02345fd81168d')
 
 prepare() {

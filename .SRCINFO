@@ -7,6 +7,9 @@ pkgbase = engrampa-dev
 	arch = x86_64
 	groups = mate-extra
 	license = GPL
+	makedepends = caja-dev
+	makedepends = intltool>=0.50.1
+	makedepends = yelp-tools
 	depends = bzip2
 	depends = desktop-file-utils
 	depends = glib2
@@ -29,7 +32,7 @@ pkgbase = engrampa-dev
 	conflicts = engrampa-gtk3
 	source = http://pub.mate-desktop.org/releases/1.17/engrampa-1.17.0.tar.xz
 	source = fr-rpm-bsdtar.patch
-	sha1sums = 90865e0c59bec33ed899c3a0a8d2787aa09d526b
+	sha1sums = c61a7a0d2084c6c7693fdf4e08083ebe7f8d1e79
 	sha1sums = 219b05a979bf6f249aaae27964f02345fd81168d
 
 pkgname = engrampa-dev
