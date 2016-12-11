@@ -2,14 +2,14 @@
 
 pkgname=salome-kernel
 pkgver=7.8.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Generic platform for Pre and Post-Processing for numerical simulation - KERNEL Module"
 url="http://www.salome-platform.org"
-depends=('python2' 'python2-numpy' 'boost-libs' 'omniorb416' 'omniorbpy36' 'hdf5_18' 'graphviz' 'libxml2' 'cppunit' 'lapack' 'net-tools' 'openmpi' 'libbatch')
+depends=('python2' 'python2-numpy' 'boost-libs' 'omniorb416' 'omniorbpy36' 'hdf5-salome' 'graphviz' 'libxml2' 'cppunit' 'lapack' 'net-tools' 'openmpi' 'libbatch')
 makedepends=('doxygen' 'python2-sphinx' 'swig2' 'boost')
 arch=('i686' 'x86_64')
 license=('LGPL')
-source=("${pkgname}.profile" "http://files.salome-platform.org/Salome/Salome${pkgver}/src${pkgver}.tar.gz")
+source=("${pkgname}.sh" "http://files.salome-platform.org/Salome/Salome${pkgver}/src${pkgver}.tar.gz")
 options=(!makeflags)
 # options=(debug !strip)
 
@@ -84,7 +84,6 @@ build() {
 
   # mpi
   cmake_options+=" -DSALOME_USE_MPI:BOOL=ON"
-  cmake_options+=" -DMPI_ROOT_DIR=/usr"
 
   # python2
   cmake_options+=" -DPYTHON_EXECUTABLE=/usr/bin/python2"
@@ -107,6 +106,7 @@ build() {
 
   # hdf5-1.8
   cmake_options+=" -DHDF5_INCLUDE_DIRS:PATH=/usr/include/hdf5_18/"
+  cmake_options+=" -DHDF5_INCLUDE_DIR:PATH=/usr/include/hdf5_18/"
   cmake_options+=" -DHDF5_C_COMPILER_EXECUTABLE:FILEPATH=/usr/bin/h5cc_18"
   cmake_options+=" -DHDF5_C_LIBRARY_hdf5:FILEPATH=/usr/lib/hdf5_18/libhdf5.so"
   cmake_options+=" -DHDF5_DIFF_EXECUTABLE:FILEPATH=/usr/bin/h5diff_18"
@@ -136,7 +136,6 @@ package() {
   done
   for _FILE in `find -L ${pkgdir}${_installdir}/bin/salome/test/ -iname "*.cmake"`
   do
-    msg ${_FILE}
     sed -i -e "s| python | python2 |" ${_FILE}
   done
 
@@ -157,12 +156,12 @@ package() {
   ln -s /tmp "${pkgdir}${_installdir}/USERS"
 
   # install profile
-  install -D -m755 "${srcdir}/${pkgname}.profile" \
+  install -D -m755 "${srcdir}/${pkgname}.sh" \
                    "${pkgdir}${_profiledir}/${pkgname}.sh"
 
   # install link to launcher in /usr/bin
   install -d -m755 "${pkgdir}/usr/bin"
   ln -s "${_installdir}/salome" "${pkgdir}/usr/bin/salome"
 }
-md5sums=('caa0cf581852ab625fff04a9f0100f5b'
+md5sums=('6cc4e82fde36b648a47a11d320033129'
          '0f6de10ad9d9c646fce3ca21a7dab46a')
