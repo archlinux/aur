@@ -1,6 +1,6 @@
 pkgbase = catalyst-utils
 	pkgver = 15.9
-	pkgrel = 3
+	pkgrel = 5
 	url = http://www.amd.com
 	arch = i686
 	arch = x86_64
@@ -77,6 +77,6 @@ pkgname = opencl-catalyst
 	pkgdesc = AMD/ATI drivers. OpenCL implemention for AMD Catalyst
 	depends = gcc-libs
 	optdepends = opencl-headers: headers necessary for OpenCL development
-	provides = libcl
-	conflicts = libcl
+	optdepends = opencl-icd-loader: OpenCL ICD Bindings
+	provides = opencl-driver
 

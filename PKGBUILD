@@ -6,13 +6,14 @@
 # Contributor: zoqaeski (authatieventsd' patch for lightdm)
 # Contributor: zoopp
 # Contributor: solar (authatieventsd' patch s/-1/255)
-# Contributor: 	aslmaswd (acpi main script)
+# Contributor: aslmaswd (acpi main script)
+# Contributor: npfeiler (libcl/opencl-icd-loader cleaning)
 
 pkgbase=catalyst-utils
 pkgname=('catalyst-utils' 'catalyst-libgl' 'opencl-catalyst')
 
 pkgver=15.9
-pkgrel=3
+pkgrel=5
 _amdver=15.201.1151
 arch=('i686' 'x86_64')
 url="http://www.amd.com"
@@ -100,11 +101,12 @@ package_catalyst-libgl() {
 
 package_opencl-catalyst() {
       pkgdesc="AMD/ATI drivers. OpenCL implemention for AMD Catalyst"
-      provides=('libcl')
-      conflicts=('libcl')
+      provides=('opencl-driver')
       depends=('gcc-libs')
-      optdepends=('opencl-headers: headers necessary for OpenCL development')
-      
+      optdepends=('opencl-headers: headers necessary for OpenCL development'
+                'opencl-icd-loader: OpenCL ICD Bindings')
+
+
       if [ "${CARCH}" = "i686" ]; then
 	cd ${srcdir}/archive_files/arch/x86
 	_arc=32
@@ -120,8 +122,8 @@ package_opencl-catalyst() {
 
       install -m755 -d ${pkgdir}/usr/lib
       install -m755 usr/${_lib}/libamdocl*.so ${pkgdir}/usr/lib
-      install -m755 usr/${_lib}/libOpenCL.so.1 ${pkgdir}/usr/lib
-      ln -s libOpenCL.so.1 ${pkgdir}/usr/lib/libOpenCL.so
+#       install -m755 usr/${_lib}/libOpenCL.so.1 ${pkgdir}/usr/lib      #opencl-icd-loader provides this
+#       ln -s libOpenCL.so.1 ${pkgdir}/usr/lib/libOpenCL.so
 
       install -m755 -d ${pkgdir}/usr/bin
       install -m755 usr/bin/clinfo ${pkgdir}/usr/bin
