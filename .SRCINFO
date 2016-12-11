@@ -1,0 +1,13 @@
+pkgbase = fortify
+	pkgdesc = Fortify Rust Builder is a 3D base design tool for the game Rust (http://playrust.com)
+	pkgver = 1.5.4
+	pkgrel = 1
+	url = https://rustwiki.info/39/fortify-rust-builder-download/
+	arch = any
+	license = custom
+	depends = mono
+	source = https://www.dropbox.com/s/l552wcn9iu3nyqm/Fortify1_54linux.zip?dl=1
+	sha256sums = f195dac64416688901c5c22d0cca9f60734a11f7ac2d4277731443351c985c41
+
+pkgname = fortify
+
