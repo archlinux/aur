@@ -1,0 +1,20 @@
+post_install () {
+  depmod -a
+  echo "==> Use 'modprobe latency-tracker$TRACKER' to load the various latency tracker modules. See usage documentation there "https://github.com/efficios/latency-tracker"."
+
+}
+
+post_upgrade() {
+    post_install $1
+
+}
+
+post_remove() {
+  depmod -a
+
+}
+
+op=$1
+shift
+
+$op $*
