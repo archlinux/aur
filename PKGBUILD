@@ -4,7 +4,7 @@
 
 pkgname=exiftool
 pkgver=10.36
-pkgrel=2
+pkgrel=3
 pkgdesc="Read, write and edit meta information in a wide variety of images."
 arch=('any')
 url="http://www.sno.phy.queensu.ca/~phil/exiftool/"
@@ -15,4 +15,5 @@ sha512sums=('SKIP')
 noextract=('tool')
 
 package() {
+  echo "The package you're looking for is perl-image-exiftool! Uninstall this one."
 }

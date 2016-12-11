@@ -7,6 +7,9 @@ pkgbase = exiftool
 	license = GPL-1.0
 	license = Artistic-1.0-Perl
 	depends = perl-image-exiftool
+	noextract = tool
+	source = tool::https://www.archlinux.org/packages/extra/any/perl-image-exiftool/
+	sha512sums = SKIP
 
 pkgname = exiftool
 
