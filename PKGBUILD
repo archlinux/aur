@@ -11,7 +11,7 @@ pkgrel=2
 pkgdesc="MED stands for Modelisation et Echanges de Donnees, i.e. Data Modelization and Exchanges - This version is built to be linked against salome-med on x86_64"
 url="http://www.code-aster.org/outils/med/"
 license=('LGPL')
-depends=('hdf5_18' 'python2')
+depends=('hdf5-salome' 'python2')
 makedepends=('gcc-fortran' 'coreutils' 'swig')
 optdepends=('tk')
 provides=("med={pkgver}")
