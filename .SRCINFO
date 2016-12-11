@@ -1,0 +1,15 @@
+pkgbase = vim-multiple-cursors-git
+	pkgdesc = True Sublime Text style multiple selections for Vim
+	pkgver = latest
+	pkgrel = 1
+	url = https://github.com/terryma/vim-multiple-cursors
+	install = vimdoc.install
+	arch = any
+	groups = vim-plugins
+	license = MIT
+	makedepends = git
+	source = git://github.com/terryma/vim-multiple-cursors.git
+	md5sums = SKIP
+
+pkgname = vim-multiple-cursors-git
+
