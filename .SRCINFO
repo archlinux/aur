@@ -1,14 +1,14 @@
 pkgbase = pydio-sync
 	pkgdesc = Pydio synchronisation client
 	pkgver = 1.2.7
-	pkgrel = 4
+	pkgrel = 5
 	url = https://pydio.com
 	arch = i686
 	arch = x86_64
 	license = GPL3
 	depends = qt5-webkit
 	depends = libsm
-	depends = gstreamer0.10-base,
+	depends = gstreamer0.10-base
 	depends = gnome-keyring
 	provides = pydio-sync
 	conflicts = pydio-sync-git
