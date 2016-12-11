@@ -1,7 +1,7 @@
 # Maintainer: BlackEagle < ike DOT devolder AT gmail DOT com >
 
 pkgname=opera-developer-ffmpeg-codecs
-pkgver=55.0.2883.19
+pkgver=56.0.2914.3
 pkgrel=1
 pkgdesc="additional support for proprietary codecs for opera-developer"
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ url="https://ffmpeg.org/"
 license=('LGPL2.1')
 depends=('gcc-libs' 'zlib')
 makedepends=(
-  'gtk2' 'libexif' 'libpulse' 'libxss' 'ninja' 'nss' 'pciutils' 'python2'
+  'gtk2' 'gtk3' 'libexif' 'libpulse' 'libxss' 'ninja' 'nss' 'pciutils' 'python2'
   'xdg-utils'
 )
 options=('!strip')
@@ -17,7 +17,7 @@ source=(
   "https://commondatastorage.googleapis.com/chromium-browser-official/chromium-$pkgver.tar.xz"
   'chromium-last-commit-position-r1.patch'
 )
-sha256sums=('a4e8d470994571796e76558217f54335937f4d9e686e993f1e6a2f464452d2f4'
+sha256sums=('f64c788adeb1060a58c737af37f8973abb8fb9cc765c1a841d3700b3cb4a1fdd'
             'd3dc397956a26ec045e76c25c57a1fac5fc0acff94306b2a670daee7ba15709e')
 
 
