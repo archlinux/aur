@@ -1,12 +1,15 @@
 # Maintainer: dreieck
 
+# PKGBUILD last time manually edited: At least on 2016-12-11.
+
 _pkgname=idos-timetable-data-zsr-sk
 pkgname="${_pkgname}-latest"
 epoch=0
-pkgver=2016_11_16
+pkgver=2016_12_06
 pkgrel=1
 pkgdesc="Timetable data for the offline railway and other public transport timetable search engines by CHAPS: Slovak train data, provided by ŽSR."
 arch=(any)
+# url="http://www.zsr.sk/slovensky.html?page_id=378"
 url="http://www.zsr.sk/slovensky/cestovny-poriadok-vlakov-osobnej-dopravy-elis-cp-2015-2016-a-aktualizacia-dat-na-stiahnutie.html?page_id=378"
 license=('custom')
 
@@ -45,18 +48,25 @@ conflicts=(
   "${_pkgname}"
 )
 
-_get_download_url() {
+_get_download_url_2016() {
   wget -O- -nv "${url}" | grep -i 'vlak16sk.exe' | sed -n "s|^.*<a href=[\"']\([^\"']*\)[\"'].*$|\1|p"
 }
 
-_source0="$(_get_download_url)"
+_get_download_url_2017() {
+  wget -O- -nv "${url}" | grep -i 'vlak17sk.exe' | sed -n "s|^.*<a href=[\"']\([^\"']*\)[\"'].*$|\1|p"
+}
+
+_source0="$(_get_download_url_2017)"
+_source1="$(_get_download_url_2016)"
 
 source=(
-  "vlak16sk.exe::${_source0}"
+  "vlak17sk.exe::${_source0}"
+  "vlak16sk.exe::${_source1}"
   "license-dummy.txt"
 )
 
 sha256sums=(
+  'SKIP'
   'SKIP'
   "14279a732be7d04304ff3860d54e0cf8c1a8ba0a46343eaf9b7ce3a105815946"
 )
@@ -78,6 +88,7 @@ package() {
 
   cd "${_instdir}" && {
     7z x "${srcdir}/vlak16sk.exe"
+    7z x -y "${srcdir}/vlak17sk.exe"
     chmod 755 Data*
     chmod 644 Data*/*
   }
