@@ -14,6 +14,7 @@ source=("https://www.irif.fr/~jch/software/files/$pkgname-$pkgver.tar.gz"
   "https://www.irif.fr/~jch/software/files/$pkgname-$pkgver.tar.gz.asc"
   "babeld.conf"
   "babeld.service")
+validpgpkeys=('F8E70AAD74D32CAC27B9AFD62652C881EADB5526')
 md5sums=('eb1c66c382e9181c418ebd84e52b5af2'
          'SKIP'
          '2b009a8f97eb038fbd7e73c5dd341bf5'
