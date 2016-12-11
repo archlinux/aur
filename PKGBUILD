@@ -4,8 +4,8 @@
 pkgname=vkquake-git
 _gitname=vkquake
 pkgver=0.92.r0.g0c9e826
-pkgrel=1
-pkgdesc="A modern Quake 1 engine. Forked from Fitzquake. This version contains Vulkan API support."
+pkgrel=2
+pkgdesc="A modern Quake 1 engine. Forked from Fitzquake. This version contains Vulkan API support (git-latest)."
 arch=('i686' 'x86_64')
 conflicts=('vkquake')
 provides=('vkquake')
