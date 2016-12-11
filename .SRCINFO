@@ -1,0 +1,15 @@
+pkgbase = haskell-half
+	pkgdesc = Half-precision floating-point
+	pkgver = 0.2.2.3
+	pkgrel = 1
+	url = http://github.com/ekmett/half
+	install = haskell-half.install
+	arch = any
+	license = custom:BSD3
+	makedepends = ghc
+	depends = haskell-base-compat
+	source = http://hackage.haskell.org/packages/archive/half/0.2.2.3/half-0.2.2.3.tar.gz
+	md5sums = 855ea2931dd4d3bd5f93e222d1391369
+
+pkgname = haskell-half
+
