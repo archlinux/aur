@@ -2,10 +2,10 @@
 # Contributor:  eadrom <eadrom@archlinux.info>
 # Contributor:  Martin Wimpress <code@flexion.org>
 
-_ver=1.15
+_ver=1.17
 _pkgbase=mate-terminal
 pkgname="${_pkgbase}-dev"
-pkgver=${_ver}.1
+pkgver=${_ver}.0
 pkgrel=1
 pkgdesc="The MATE Terminal Emulator"
 url="http://mate-desktop.org"
@@ -18,7 +18,7 @@ makedepends=('docbook2x' 'intltool>=0.50.1' 'yelp-tools' 'vte3' 'mate-desktop-de
 optdepends=('yelp: for reading MATE help documents')
 groups=('mate-extra')
 source=("http://pub.mate-desktop.org/releases/${_ver}/${_pkgbase}-${pkgver}.tar.xz")
-sha1sums=('8e2a0b01743082fd4c7fe4fa5aaa2b91e9379c93')
+sha1sums=('f5aed77835b45c197c632525177aee18f480c33c')
 
 prepare() {
     cd "${srcdir}"

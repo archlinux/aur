@@ -1,6 +1,6 @@
 pkgbase = mate-terminal-dev
 	pkgdesc = The MATE Terminal Emulator
-	pkgver = 1.15.1
+	pkgver = 1.17.0
 	pkgrel = 1
 	url = http://mate-desktop.org
 	arch = i686
@@ -23,8 +23,8 @@ pkgbase = mate-terminal-dev
 	provides = mate-terminal-gtk3
 	conflicts = mate-terminal
 	conflicts = mate-terminal-gtk3
-	source = http://pub.mate-desktop.org/releases/1.15/mate-terminal-1.15.1.tar.xz
-	sha1sums = 8e2a0b01743082fd4c7fe4fa5aaa2b91e9379c93
+	source = http://pub.mate-desktop.org/releases/1.17/mate-terminal-1.17.0.tar.xz
+	sha1sums = f5aed77835b45c197c632525177aee18f480c33c
 
 pkgname = mate-terminal-dev
 	pkgdesc = The MATE Terminal Emulator (GTK3 version)
