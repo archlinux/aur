@@ -1,15 +1,15 @@
 # Maintainer: Po-An,Yang(Antonio) <yanganto@gmail.com>
 pkgname=ibus-array
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 epoch=
 pkgdesc="A full function array ibus input method"
 arch=('any')
-url="https://code.google.com/p/ibus-array/"
+url="https://github.com/lexical/ibus-array/"
 license=('GPL2')
 groups=()
 depends=('ibus')
-makedepends=('base-devel')
+makedepends=()
 checkdepends=()
 optdepends=()
 provides=()
@@ -19,14 +19,16 @@ backup=()
 options=()
 install=
 changelog=
-source=("http://ibus-array.googlecode.com/svn/tarballs/ibus-array-0.1.0.tgz")
-noextract=("ibus-array-0.1.0.tgz")
-md5sums=("e4578c1b7ebf20cc19010b53b42ef20c")
+source=("https://github.com/lexical/ibus-array/archive/release-0.1.1.tar.gz")
+noextract=()
+md5sums=("16211a9b2632c060292926893280e737")
 validpgpkeys=()
 
 prepare() {
-	tar -zxvf ibus-array-0.1.0.tgz
-	$srcdir/autogen.sh
+	rm release-0.1.1.tar.gz
+	mv ibus-array-release-0.1.1/* ./
+	rmdir ibus-array-release-0.1.1
+	./autogen.sh
 }
 build() {
 	./configure --prefix=/usr \
