@@ -1,0 +1,5 @@
+#!/bin/sh
+
+# Hooks to toggle chrony online state
+ExecUpPost="chronyc online"
+ExecDownPre="chronyc offline"

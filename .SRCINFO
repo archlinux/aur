@@ -1,0 +1,17 @@
+pkgbase = netctl-dispatcher-chrony
+	pkgdesc = A netctl dispatcher script for chrony
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/bertptrs/netctl-dispatcher-chrony
+	arch = any
+	license = MIT
+	depends = netctl
+	depends = wpa_actiond
+	depends = chrony
+	source = chrony-dispatcher
+	source = LICENSE
+	sha256sums = 247dfce5e8c1378375906c89a4cf87b4e0705048de096f27472755628b45dd31
+	sha256sums = b1ee9aba3fc4444990dd0f7b3e757b36575d68ed79516c19fd6f692badc2ed47
+
+pkgname = netctl-dispatcher-chrony
+
