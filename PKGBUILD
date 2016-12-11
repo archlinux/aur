@@ -1,20 +1,20 @@
-# Contributor: John D Jones III <j[nospace]n[nospace]b[nospace]e[nospace]k[nospace]1972 -_AT_- the domain name google offers a mail service at ending in dot com>
-# Generator  : CPANPLUS::Dist::Arch 1.25
+# Contributor: John D Jones III AKA jnbek <jnbek1972 -_AT_- g m a i l -_Dot_- com>
+# Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-html-todocbook'
-pkgver='0.03'
-pkgrel='2'
-pkgdesc="Converts an XHTML file into DocBook."
+pkgver='0.0301'
+pkgrel='1'
+pkgdesc=""
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
 depends=('perl-getopt-argvfile>=1.09' 'perl-html-simpleparse' 'perl-xml-libxml' 'perl-xml-libxslt')
 makedepends=()
-url='http://search.cpan.org/dist/html2dbk'
-source=('http://search.cpan.org/CPAN/authors/id/R/RU/RUBYKAT/html2dbk-0.03.tar.gz')
-md5sums=('757e2a57afa7768e1a8f2db27a468f86')
-sha512sums=('ac3b2f610d2968da3fbe0cd4d00d5e8405da70aaca6b47a4c74f6d0311d53b1ca7fc2925dfb3b9ac959f52459e0b7e33ecf4b624f22054e1fce93f89891d2f91')
-_distdir="html2dbk-0.03"
+url='https://metacpan.org/release/html2dbk'
+source=('http://search.cpan.org/CPAN/authors/id/R/RU/RUBYKAT/html2dbk-0.0301.tar.gz')
+md5sums=('150e3613abe63eacfa090a51052aab59')
+sha512sums=('2ec813f067439ab8b14ab662ef4e6471118e77dfa1af4e4c7fd3934c7025fd307e92eb4f6a69642bcb6aad4da42ed7ff3c5b6fb4f5eefbb256f63fc479a2d115')
+_distdir="html2dbk-0.0301"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
@@ -24,21 +24,21 @@ build() {
       MODULEBUILDRC=/dev/null
 
     cd "$srcdir/$_distdir"
-    /usr/bin/perl Makefile.PL
-    make
+    /usr/bin/perl Build.PL
+    /usr/bin/perl Build
   )
 }
 
 check() {
   cd "$srcdir/$_distdir"
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""
-    make test
+    /usr/bin/perl Build test
   )
 }
 
 package() {
   cd "$srcdir/$_distdir"
-  make install
+  /usr/bin/perl Build install
 
   find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
 }
