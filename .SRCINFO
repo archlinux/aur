@@ -1,6 +1,6 @@
 pkgbase = mesa-git
 	pkgdesc = an open-source implementation of the OpenGL specification, git version
-	pkgver = 13.1.0_devel.86866.72c00e7
+	pkgver = 13.1.0_devel.87261.b58d1ee
 	pkgrel = 1
 	url = http://mesa3d.sourceforge.net
 	arch = i686
@@ -23,7 +23,6 @@ pkgbase = mesa-git
 	makedepends = elfutils
 	makedepends = llvm-svn
 	makedepends = libomxil-bellagio
-	makedepends = libcl
 	makedepends = libclc
 	makedepends = clang-svn
 	makedepends = git
@@ -33,7 +32,7 @@ pkgbase = mesa-git
 	makedepends = libxvmc
 	makedepends = vulkan-icd-loader
 	makedepends = libgcrypt
-	source = mesa::git://anongit.freedesktop.org/mesa/mesa#branch=master
+	source = mesa::git+https://anongit.freedesktop.org/git/mesa/mesa.git
 	source = LICENSE
 	source = disable-pthread-stubs-on-linux.patch
 	sha512sums = SKIP
@@ -42,56 +41,75 @@ pkgbase = mesa-git
 
 pkgname = opencl-mesa-git
 	pkgdesc = OpenCL support for AMD/ATI Radeon Mesa drivers
-	depends = libxfixes
-	depends = libxext
-	depends = libcl
 	depends = libclc
+	depends = mesa-git=13.1.0_devel.87261.b58d1ee
+	depends = llvm-libs-svn
+	depends = libdrm
+	depends = libelf
+	depends = expat
 	depends = nettle
-	depends = mesa-git=13.1.0_devel.86866.72c00e7
 	optdepends = opencl-headers: headers necessary for OpenCL development
 	provides = opencl-mesa=13.1.0-devel
+	provides = opencl-driver
 	conflicts = opencl-mesa
 	replaces = opencl-mesa
 
 pkgname = mesa-vulkan-intel-git
 	pkgdesc = Vulkan driver for selected intel graphic chipsets
-	depends = vulkan-icd-loader
-	depends = libgcrypt
 	depends = wayland
-	depends = libxcb
-	depends = mesa-git=13.1.0_devel.86866.72c00e7
+	depends = mesa-git=13.1.0_devel.87261.b58d1ee
+	depends = libxshmfence
+	depends = libx11
+	depends = nettle
 	provides = vulkan-intel
+	provides = vulkan-driver
 	conflicts = vulkan-intel
 	replaces = vulkan-intel
 
 pkgname = mesa-vulkan-radeon-git
 	pkgdesc = Vulkan mesa driver for selected amd gpus (git version)
-	depends = vulkan-icd-loader
-	depends = libgcrypt
 	depends = wayland
-	depends = libxcb
+	depends = libxshmfence
+	depends = libdrm
+	depends = libelf
+	depends = libx11
+	depends = nettle
+	depends = llvm-libs-svn
 	provides = vulkan-radeon
+	provides = vulkan-driver
 	conflicts = vulkan-radeon
 	replaces = vulkan-radeon
 
 pkgname = libva-mesa-driver-git
 	pkgdesc = VA-API implementation for gallium
+	depends = expat
+	depends = libx11
+	depends = libxshmfence
+	depends = libelf
+	depends = libdrm
+	depends = llvm-libs-svn
 	depends = nettle
-	depends = mesa-git=13.1.0_devel.86866.72c00e7
+	depends = mesa-git=13.1.0_devel.87261.b58d1ee
 	provides = libva-mesa-driver=13.1.0-devel
 	conflicts = libva-mesa-driver
 
 pkgname = mesa-vdpau-git
 	pkgdesc = Mesa VDPAU drivers
+	depends = libelf
+	depends = libx11
+	depends = libxshmfence
+	depends = libdrm
+	depends = expat
+	depends = llvm-libs-svn
 	depends = nettle
-	depends = mesa-git=13.1.0_devel.86866.72c00e7
+	depends = mesa-git=13.1.0_devel.87261.b58d1ee
 	provides = mesa-vdpau=13.1.0-devel
 	conflicts = mesa-vdpau
 	replaces = mesa-vdpau
 
 pkgname = mesa-libgl-git
 	pkgdesc = Mesa 3-D graphics library
-	depends = mesa-git=13.1.0_devel.86866.72c00e7
+	depends = mesa-git=13.1.0_devel.87261.b58d1ee
 	provides = mesa-libgl=13.1.0-devel
 	provides = libgl=13.1.0-devel
 	provides = libgles

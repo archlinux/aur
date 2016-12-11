@@ -12,16 +12,16 @@
 pkgbase=mesa-git
 pkgname=('opencl-mesa-git' 'mesa-vulkan-intel-git' 'mesa-vulkan-radeon-git' 'libva-mesa-driver-git' 'mesa-vdpau-git' 'mesa-libgl-git' 'mesa-git')
 pkgdesc="an open-source implementation of the OpenGL specification, git version"
-pkgver=13.1.0_devel.86866.72c00e7
+pkgver=13.1.0_devel.87261.b58d1ee
 pkgrel=1
 arch=('i686' 'x86_64')
 makedepends=('python2-mako' 'libxml2' 'libx11' 'glproto' 'libdrm' 'dri2proto' 'dri3proto' 'presentproto' 
              'libxshmfence' 'libxxf86vm'  'libxdamage' 'libvdpau' 'libva' 'wayland' 'elfutils' 'llvm-svn'
-             'libomxil-bellagio' 'libcl' 'libclc' 'clang-svn' 'git' 'nettle' 'libtxc_dxtn' 'ocl-icd'
+             'libomxil-bellagio' 'libclc' 'clang-svn' 'git' 'nettle' 'libtxc_dxtn' 'ocl-icd'
              'libxvmc' 'vulkan-icd-loader' 'libgcrypt')
 url="http://mesa3d.sourceforge.net"
 license=('custom')
-source=('mesa::git://anongit.freedesktop.org/mesa/mesa#branch=master'
+source=('mesa::git+https://anongit.freedesktop.org/git/mesa/mesa.git'
         'LICENSE'
         'disable-pthread-stubs-on-linux.patch'
 )
@@ -121,9 +121,9 @@ build () {
 
 package_opencl-mesa-git () {
   pkgdesc="OpenCL support for AMD/ATI Radeon Mesa drivers"
-  depends=('libxfixes' 'libxext' 'libcl' 'libclc' 'nettle' "mesa-git=${pkgver}")
+  depends=('libclc' "mesa-git=${pkgver}" 'llvm-libs-svn' 'libdrm' 'libelf' 'expat' 'nettle')
   optdepends=('opencl-headers: headers necessary for OpenCL development')
-  provides=("opencl-mesa=$(_mesaver)")
+  provides=("opencl-mesa=$(_mesaver)" 'opencl-driver')
   replaces=('opencl-mesa')
   conflicts=('opencl-mesa')
 
@@ -141,8 +141,8 @@ package_opencl-mesa-git () {
 package_mesa-vulkan-intel-git() {
   # using vulkan-intel-git would be better, but that package already exists
   pkgdesc="Vulkan driver for selected intel graphic chipsets"
-  depends=('vulkan-icd-loader' 'libgcrypt' 'wayland' 'libxcb' "mesa-git=${pkgver}")
-  provides=('vulkan-intel')
+  depends=('wayland' "mesa-git=${pkgver}" 'libxshmfence' 'libx11' 'nettle')
+  provides=('vulkan-intel' 'vulkan-driver')
   replaces=('vulkan-intel')
   conflicts=('vulkan-intel')
   
@@ -162,8 +162,8 @@ package_mesa-vulkan-intel-git() {
 
 package_mesa-vulkan-radeon-git() {
   pkgdesc="Vulkan mesa driver for selected amd gpus (git version)"
-  depends=('vulkan-icd-loader' 'libgcrypt' 'wayland' 'libxcb')
-  provides=('vulkan-radeon')
+  depends=('wayland' 'libxshmfence' 'libdrm' 'libelf' 'libx11' 'nettle' 'llvm-libs-svn')
+  provides=('vulkan-radeon' 'vulkan-driver')
   replaces=('vulkan-radeon')
   conflicts=('vulkan-radeon')
   
@@ -179,7 +179,7 @@ package_mesa-vulkan-radeon-git() {
 
 package_libva-mesa-driver-git() {
   pkgdesc="VA-API implementation for gallium"
-  depends=('nettle' "mesa-git=${pkgver}")
+  depends=('expat' 'libx11' 'libxshmfence' 'libelf' 'libdrm' 'llvm-libs-svn' 'nettle' "mesa-git=${pkgver}")
   provides=("libva-mesa-driver=$(_mesaver)")
   conflicts=('libva-mesa-driver')
 
@@ -193,7 +193,7 @@ package_libva-mesa-driver-git() {
 
 package_mesa-vdpau-git() {
   pkgdesc="Mesa VDPAU drivers"
-  depends=('nettle' "mesa-git=${pkgver}")
+  depends=('libelf' 'libx11' 'libxshmfence' 'libdrm' 'expat' 'llvm-libs-svn' 'nettle' "mesa-git=${pkgver}")
   provides=("mesa-vdpau=$(_mesaver)")
   replaces=('mesa-vdpau')
   conflicts=('mesa-vdpau')
