@@ -2,7 +2,7 @@
 # Contributor: Phillip Schichtel <phillip.public@schich.tel>
 
 pkgname=adapta-gtk-theme-git
-pkgver=3.89.1.57.r1.3903051
+pkgver=3.89.1.113
 pkgrel=1
 pkgdesc='An adaptive Gtk+ theme based on Material Design Guidelines'
 arch=('any')
