@@ -1,0 +1,19 @@
+post_install() {
+
+	if hash systemd-sysusers &> /dev/null; then
+		systemd-sysusers gogs.conf
+	fi
+
+	if hash systemd-tmpfiles &> /dev/null; then
+		systemd-tmpfiles --create gogs.conf
+	fi
+
+cat <<EOF
+>>>
+	You need finish setup:
+	1) systemctl start gogs.service
+	2) Open http://localhost:3000
+>>>
+EOF
+	
+}

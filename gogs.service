@@ -1,0 +1,15 @@
+[Unit]
+Description=Gogs (Go Git Service)
+After=network.target
+
+[Service]
+Type=simple
+User=gogs
+Group=gogs
+Environment="GOGS_WORK_DIR=/var/lib/gogs"
+WorkingDirectory=/var/lib/gogs
+ExecStart=/usr/bin/gogs web
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
