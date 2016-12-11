@@ -1,6 +1,6 @@
 pkgbase = pithos-git
 	pkgdesc = Native Pandora Radio client
-	pkgver = 1.2.1.r8.g16d9381
+	pkgver = 1.2.1.r27.g5b85365
 	pkgrel = 1
 	url = https://pithos.github.io/
 	arch = any
@@ -23,7 +23,6 @@ pkgbase = pithos-git
 	optdepends = python-pacparser: PAC proxy support
 	optdepends = python-pylast: Last.fm scrobbling support
 	optdepends = python-systemd: Logging to the system journal
-	optdepends = libnotify: Notification support
 	provides = pithos
 	conflicts = pithos-bzr
 	conflicts = pithos
