@@ -1,0 +1,27 @@
+pkgbase = xtables-addons-rawnat
+	pkgdesc = xtables-addons-rawnat is a set of additional extensions for the Xtables packet filter that is present in the Linux kernel. This includes the RAWNAT patch.
+	pkgver = 2.11
+	pkgrel = 1
+	url = https://github.com/VittGam/xtables-addons-rawnat
+	install = xtables-addons-rawnat.install
+	arch = i686
+	arch = x86_64
+	arch = aarch64
+	license = GPL2
+	makedepends = linux-api-headers
+	makedepends = linux-headers
+	makedepends = libtool
+	makedepends = gcc
+	makedepends = pkg-config
+	depends = iptables
+	depends = glibc
+	depends = linux
+	provides = xtables-addons
+	provides = xtables-addons-dkms
+	conflicts = xtables-addons
+	conflicts = xtables-addons-dkms
+	source = https://github.com/VittGam/xtables-addons-rawnat/archive/v2.11-rawnat.tar.gz
+	sha512sums = 02fd586556721c0d5f235606572bf3eb40893d67418667e69062aafff6fb05a32bca29f271768431544234dd898df38a1f9edd75ce0bab240692cd02024ba6de
+
+pkgname = xtables-addons-rawnat
+
