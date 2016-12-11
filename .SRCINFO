@@ -1,0 +1,19 @@
+pkgbase = mtrx-git
+	pkgdesc = Transmit and receive low-latency audio via UDP unicast or multicast, using the Opus codec.
+	pkgver = r9.f20a87c
+	pkgrel = 1
+	url = https://github.com/VittGam/mtrx
+	arch = i686
+	arch = x86_64
+	arch = aarch64
+	license = GPLv3
+	makedepends = git
+	depends = alsa-lib
+	depends = opus
+	provides = mtrx
+	conflicts = mtrx
+	source = mtrx-git::git+https://github.com/VittGam/mtrx.git
+	sha512sums = SKIP
+
+pkgname = mtrx-git
+
