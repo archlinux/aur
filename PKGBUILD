@@ -23,25 +23,31 @@ options=('!strip')
 package_tsmuxer-cli-ng() {
   pkgdesc="Transport Stream muxer. New Generation (3D capable). CLI"
   provides=('tsmuxer-cli')
+  depends_i686=('gcc-libs'
+                'freetype2'
+                )
+  depends_x86_64=('lib32-gcc-libs'
+                  'lib32-freetype2'
+                  )
   conflicts=('tsmuxer' 'tsmuxer-cli')
 
   install -Dm755 tsMuxeR "${pkgdir}/usr/bin/tsmuxer"
+  (cd ${pkgdir}/usr/bin; upx -d -q tsmuxer &>/dev/null)
 }
 
 package_tsmuxer-gui-ng() {
   pkgdesc="Transport Stream muxer. New Generation (3D capable). GUI"
   depends_i686=('gcc-libs'
-                'freetype2'
                 'qt4'
                 )
   depends_x86_64=('lib32-gcc-libs'
-                  'lib32-freetype2'
                   'lib32-qt4'
                   )
   provides=('tsmuxer-gui')
   conflicts=('tsmuxer' 'tsmuxer-gui')
 
   install -Dm755 tsMuxerGUI "${pkgdir}/usr/bin/tsmuxergui"
+  (cd ${pkgdir}/usr/bin; upx -d -q tsmuxergui &>/dev/null)
 
   install -Dm644 tsmuxergui.desktop "${pkgdir}/usr/share/applications/tsmuxergui.desktop"
   install -Dm644 tsmuxergui.png "${pkgdir}/usr/share/pixmaps/tsMuxergui.png"
