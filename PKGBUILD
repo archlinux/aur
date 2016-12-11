@@ -8,7 +8,7 @@
 
 _pkgname=gitlab
 pkgname=gitlab-ee
-pkgver=8.14.3
+pkgver=8.14.4
 pkgrel=1
 pkgdesc="Project management and code hosting application"
 arch=('i686' 'x86_64')
@@ -44,7 +44,7 @@ source=("${pkgname}-${pkgver}.tar.gz::https://gitlab.com/gitlab-org/gitlab-ee/re
         nginx-ssl.conf.example
         lighttpd.conf.example)
 install='gitlab.install'
-sha256sums=('e067eff7446583f44ed0c6f38f1f8fa95a63c71d567df00bff8298c0d9b05a68'
+sha256sums=('791f0b89abc8a734b6ab61d7f9101313dbdf821918e5278153b97215dce19aca'
             '0dabb9c10f6ba49404c13d6be2d0d6cf1bf7e5a0b95f0dea566e33c356997307'
             '3f64de78d1221a0ddf75baed19d1706c625c143701d30ad918f15231aeecfb4f'
             'e16a68539eeb49d24d2ab4a53ff95e33c67264a674b611c006dc5c8a24f41e0e'
@@ -65,7 +65,7 @@ _datadir="/usr/share/webapps/${_pkgname}"
 _etcdir="/etc/webapps/${_pkgname}"
 _homedir="/var/lib/${_pkgname}"
 _logdir="/var/log/${_pkgname}"
-_commit="8282833d84c2b7840fbe7db3a883f0f9f9507a18"
+_commit="8c04d014d5b165b5ad397c455098e81986a8b1d7"
 _srcdir="${pkgname}-v${pkgver/_/-}-ee-${_commit}"
 
 prepare() {
