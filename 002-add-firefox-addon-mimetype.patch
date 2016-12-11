@@ -1,0 +1,30 @@
+diff '--color=auto' -aur a/src/fr-command-zip.c b/src/fr-command-zip.c
+--- a/src/fr-command-zip.c	2016-04-07 04:37:58.000000000 -0700
++++ b/src/fr-command-zip.c	2016-11-26 15:18:06.990065648 -0700
+@@ -383,6 +383,7 @@
+ 
+ const char *zip_mime_type[] = { "application/x-cbz",
+ 				"application/x-ms-dos-executable",
++				"application/x-xpinstall",
+ 				"application/zip",
+ 				NULL };
+ 
+diff '--color=auto' -aur a/src/fr-init.c b/src/fr-init.c
+--- a/src/fr-init.c	2016-04-07 04:37:58.000000000 -0700
++++ b/src/fr-init.c	2016-11-26 15:01:15.596721442 -0700
+@@ -97,6 +97,7 @@
+ 	{ "application/x-tarz",                 ".tar.Z",    N_("Tar compressed with compress (.tar.Z)"), 0 },
+ 	{ "application/x-stuffit",              ".sit",      NULL, 0 },
+ 	{ "application/x-war",                  ".war",      N_("War (.war)"), 0 },
++	{ "application/x-xpinstall",            ".xpi",      N_("Firefox Addon Installer (.xpi)"), 0 },
+ 	{ "application/x-xz",                   ".xz",       N_("Xz (.xz)"), 0 },
+ 	{ "application/x-xz-compressed-tar",    ".tar.xz",   N_("Tar compressed with xz (.tar.xz)"), 0 },
+ 	{ "application/x-zoo",                  ".zoo",      N_("Zoo (.zoo)"), 0 },
+@@ -155,6 +156,7 @@
+ 	{ ".tzo", "application/x-lzop-compressed-tar" },
+ 	{ ".war", "application/x-war" },
+ 	{ ".wim", "application/x-ms-wim" },
++	{ ".xpi", "application/x-xpinstall" },
+ 	{ ".xz", "application/x-xz" },
+ 	{ ".z", "application/x-gzip" },
+ 	{ ".Z", "application/x-compress" },

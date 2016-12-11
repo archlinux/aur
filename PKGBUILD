@@ -7,6 +7,8 @@
 #   without Caja dependency and with Thunar integration
 #   with some non-GTK3 changes backported from subsequent upstream versions
 #     I'm not a developer, so don't expect too much. :)
+#   I also added the Firefox .xpi mimetype to make working with extensions easier.
+#     If you don't want that, comment out the patch in the prepare() array below.
 #
 # note: if you get "No suitable archive manager found" errors, you need
 #       to adjust Xfce Settings > MIME Type Editor associations for Engrampa
@@ -14,8 +16,9 @@
 pkgname=engrampa-thunar-gtk2
 _pkgname=engrampa
 _ver=1.14
+_patchver=1.17.0
 pkgver=${_ver}.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Archive manipulator from MATE without Caja dependency (GTK2 version)"
 url="http://mate-desktop.org"
 arch=('i686' 'x86_64')
@@ -32,18 +35,22 @@ replaces=('engrampa')
 source=("http://pub.mate-desktop.org/releases/${_ver}/${_pkgname}-${pkgver}.tar.xz"
         'fr-rpm-bsdtar.patch'
         'engrampa.tap'
-        'engrampa-1.16.0-changes.patch')
+        "001-engrampa-${_patchver}-changes.patch"
+        '002-add-firefox-addon-mimetype.patch')
 sha1sums=('1245f5203b37b842cfaf818781b17cd22f1234b1'
           '219b05a979bf6f249aaae27964f02345fd81168d'
           '84f023a660c77cf046cff71d1d890f7de5af4110'
-          '75cef1a9940d317a18580151e64cd491cd238f56')
+          '5a199fa595f86ee5e324ea5c7d3412ff3e29bb7b'
+          '616ed7f0fe0fc2a2f25106963052fc0d7f063d6b')
 
 prepare() {
     cd "${srcdir}/${_pkgname}-${pkgver}"
     # this patch 'depends' on libarchive
     patch -Np1 -i "${srcdir}/fr-rpm-bsdtar.patch"
     # patch to apply some non-GTK3 changes from subsequent upstream versions
-    patch -Np1 -i "${srcdir}/engrampa-1.16.0-changes.patch"
+    patch -Np1 -i "${srcdir}/001-engrampa-${_patchver}-changes.patch"
+    # patch to add Firefox Addon .xpi mimetype
+    patch -Np1 -i "${srcdir}/002-add-firefox-addon-mimetype.patch"
 }
 
 build() {

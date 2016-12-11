@@ -1,6 +1,6 @@
-diff -aur a/src/file-data.c b/src/file-data.c
+diff '--color=auto' -aur a/src/file-data.c b/src/file-data.c
 --- a/src/file-data.c	2016-04-07 04:37:58.000000000 -0700
-+++ b/src/file-data.c	2016-07-28 00:24:43.000000000 -0700
++++ b/src/file-data.c	2016-06-10 01:41:48.000000000 -0700
 @@ -37,7 +37,7 @@
  	fdata->content_type = NULL;
  	fdata->free_original_path = FALSE;
@@ -107,9 +107,9 @@ diff -aur a/src/file-data.c b/src/file-data.c
 +
  	return -1;
  }
-diff -aur a/src/file-data.h b/src/file-data.h
+diff '--color=auto' -aur a/src/file-data.h b/src/file-data.h
 --- a/src/file-data.h	2016-04-07 04:37:58.000000000 -0700
-+++ b/src/file-data.h	2016-07-28 00:24:43.000000000 -0700
++++ b/src/file-data.h	2016-06-10 01:41:48.000000000 -0700
 @@ -40,13 +40,14 @@
  	gboolean    dir;              /* Whether this is a directory listed in the archive */
  	goffset     dir_size;
@@ -151,9 +151,9 @@ diff -aur a/src/file-data.h b/src/file-data.h
 +				               const char    *path);
  
  #endif /* FILE_DATA_H */
-diff -aur a/src/fr-command-7z.c b/src/fr-command-7z.c
+diff '--color=auto' -aur a/src/fr-command-7z.c b/src/fr-command-7z.c
 --- a/src/fr-command-7z.c	2016-04-07 04:37:58.000000000 -0700
-+++ b/src/fr-command-7z.c	2016-09-13 21:04:59.000000000 -0700
++++ b/src/fr-command-7z.c	2016-09-26 01:58:20.000000000 -0700
 @@ -39,7 +39,8 @@
  static void fr_command_7z_class_init  (FrCommand7zClass *class);
  static void fr_command_7z_init        (FrCommand        *afile);
@@ -261,9 +261,61 @@ diff -aur a/src/fr-command-7z.c b/src/fr-command-7z.c
  				capabilities |= FR_COMMAND_CAN_READ;
  		}
  		else
-diff -aur a/src/fr-init.c b/src/fr-init.c
+diff '--color=auto' -aur a/src/fr-command-lha.c b/src/fr-command-lha.c
+--- a/src/fr-command-lha.c	2016-04-07 04:37:58.000000000 -0700
++++ b/src/fr-command-lha.c	2016-09-26 01:58:20.000000000 -0700
+@@ -120,6 +120,11 @@
+ 		fields[i++] = g_strdup ("");
+ 		line += strlen ("[unknown]");
+ 	}
++	else if (strncmp (line, "[Amiga]", 7) == 0) {
++		fields[i++] = g_strdup ("");
++		fields[i++] = g_strdup ("");
++		line += strlen ("[Amiga]");
++	}
+ 
+ 	scan = eat_spaces (line);
+ 	for (; i < n_fields; i++) {
+@@ -150,6 +155,9 @@
+ 	if (strncmp (line, "[unknown]", 9) == 0)
+ 		n--;
+ 
++	if (strncmp (line, "[Amiga]", 7) == 0)
++		n--;
++
+ 	field = eat_spaces (line);
+ 	for (i = 0; i < n; i++) {
+ 		field = strchr (field, ' ');
+diff '--color=auto' -aur a/src/fr-command-tar.c b/src/fr-command-tar.c
+--- a/src/fr-command-tar.c	2016-05-21 07:44:10.000000000 -0700
++++ b/src/fr-command-tar.c	2016-11-24 13:07:21.000000000 -0700
+@@ -198,7 +198,10 @@
+ 		fr_process_add_arg (comm->process, "-z");
+ 
+ 	else if (is_mime_type (comm->mime_type, "application/x-bzip-compressed-tar"))
+-		fr_process_add_arg (comm->process, "--use-compress-program=bzip2");
++		if (is_program_in_path ("lbzip2"))
++			fr_process_add_arg (comm->process, "--use-compress-program=lbzip2");
++		else
++			fr_process_add_arg (comm->process, "--use-compress-program=bzip2");
+ 
+ 	else if (is_mime_type (comm->mime_type, "application/x-tarz")) {
+ 		if (is_program_in_path ("gzip"))
+@@ -216,7 +219,10 @@
+ 		fr_process_add_arg (comm->process, "--use-compress-program=lzma");
+ 
+ 	else if (is_mime_type (comm->mime_type, "application/x-xz-compressed-tar"))
+-		fr_process_add_arg (comm->process, "--use-compress-program=xz");
++		if (is_program_in_path ("pixz"))
++			fr_process_add_arg (comm->process, "--use-compress-program=pixz");
++		else
++			fr_process_add_arg (comm->process, "--use-compress-program=xz");
+ 
+ 	else if (is_mime_type (comm->mime_type, "application/x-lzop-compressed-tar"))
+ 		fr_process_add_arg (comm->process, "--use-compress-program=lzop");
+diff '--color=auto' -aur a/src/fr-init.c b/src/fr-init.c
 --- a/src/fr-init.c	2016-04-07 04:37:58.000000000 -0700
-+++ b/src/fr-init.c	2016-09-20 17:27:10.182630316 -0700
++++ b/src/fr-init.c	2016-12-10 17:51:06.636727000 -0700
 @@ -342,6 +342,7 @@
  
  	register_command (FR_TYPE_COMMAND_TAR);
