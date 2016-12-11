@@ -1,8 +1,8 @@
 # Maintainer: Your Name <aur@passcod.name>
 pkgname=sirikali-git
-pkgver=1.2.2.r6.1c9f36f
-pkgrel=1
-pkgdesc="A Qt/C++ GUI front end to cryfs,gocryptfs,securefs and encfs"
+pkgver=1.99.999
+pkgrel=2
+pkgdesc="A Qt/C++ GUI front end to cryfs, gocryptfs, securefs and encfs"
 arch=('i686' 'x86_64')
 url="https://mhogomchungu.github.io/sirikali/"
 license=('GPL')
