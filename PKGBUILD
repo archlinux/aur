@@ -1,6 +1,6 @@
 pkgname=pywinery
 pkgver=0.3.4
-pkgrel=2
+pkgrel=1
 pkgdesc="Graphical and simple wine-prefix manager which allows you to launch apps and manage configuration of separate prefixes."
 license=('GPLv3')
 url='https://github.com/ergoithz/pywinery'
