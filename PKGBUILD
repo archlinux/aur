@@ -1,7 +1,7 @@
 # Maintainer: M0Rf30
 
 pkgname=airtime-git
-pkgver=12396.4940c73
+pkgver=airtime.2.5.2.1.r71.g4940c73
 pkgrel=1
 pkgdesc="Open broadcast software for scheduling and station management."
 arch=('i686' 'x86_64')
@@ -170,7 +170,7 @@ msg2 "Cleaning..."
 
 pkgver() {
     cd airtime
-    echo $(git rev-list --count $branch).$(git rev-parse --short $branch)
+    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 md5sums=('SKIP'
