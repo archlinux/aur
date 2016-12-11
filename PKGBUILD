@@ -7,8 +7,8 @@
 
 pkgbase=lightdm-ubuntu
 pkgname=(lightdm-ubuntu liblightdm-qt4-ubuntu liblightdm-qt5-ubuntu)
-_ubuntu_rel=0ubuntu2
-pkgver=1.20.0
+_ubuntu_rel=0ubuntu1
+pkgver=1.21.3
 pkgrel=1
 pkgdesc="A lightweight display manager"
 arch=(i686 x86_64)
@@ -27,7 +27,7 @@ source=("https://launchpad.net/ubuntu/+archive/primary/+files/lightdm_${pkgver}-
         lightdm-default-config.patch
         Xsession
         0001-guest-account-Add-default-GSettings-support.patch)
-sha512sums=('2ac7a8908c288c95f0866dfc61ea171434edad8d849eb8b24e8b4e3f23bfd593441e2884e19df3e34a95bac9e21d60f29279c2cfafdc4f62338296bd38d6f34e'
+sha512sums=('3d5317e8951443136731b86816b9c7dfde4c42223f5a60e6575c99aa95f6910c40cb3da18d95a9e157a0255b95c540be87ff2aec46d7c5eb8a5315af84885c3c'
             'd49344e79f6468ef06538068cbb12c37e313e02ade28984a75dad4d50e1e962372451908e9910ae60c74bd5230ae45e6a6346bb0f7c6af83c346a691f5714556'
             'c359dbea59d9a38faa244fc52fa7fbe2a099984bdaa015e38046abfef71ed4941230b86a238c1691f04bda6f7608f403e99b04018a7cd5b7217fa89fc703af9f'
             'cb912013a294f0801b357a43f3e5313ffa9ac5fcc493b2318843983388eb0b839c84060a97c355e12ca03f3b056644aa4a2bb8a74ed73a0f2405816b8d6efdc0'
