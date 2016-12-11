@@ -1,11 +1,13 @@
 # Maintainer: dreieck
 
+# PKGBUILD last time manually edited: At least on 2016-12-11.
+
 _pkgname=idos-timetable-browser-license-installer
 pkgname="${_pkgname}-latest"
 epoch=1
-_pkgver=2015_2016
-pkgver=2015_2016
-pkgrel=6
+_pkgver=2016_2017
+pkgver="${_pkgver}"
+pkgrel=1
 pkgdesc="If you purchased IDOS for Windows by CHAPS, then this installs the license. You need to enter your ZIP-extraction-code and your setup-code during installation. Runs an interactive GUI software via wine during installation."
 arch=('i686' 'x86_64')
 url="http://www.chaps.cz/eng/download/idos-install/"
