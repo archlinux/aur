@@ -16,8 +16,7 @@ depends=('ghc'
          'haskell-half'
          'haskell-fixed'
          'haskell-base-compat'
-         'haskell-transformers-base'
-         'haskell-bytestring-builder')
+         'haskell-transformers-base')
 options=('strip')
 source=(http://hackage.haskell.org/packages/archive/${_hspkgname}/${pkgver}/${_hspkgname}-${pkgver}.tar.gz)
 install=${pkgname}.install
