@@ -1,4 +1,4 @@
-# Maintainer: Xiao-Long Chen <chenxiaolong@cxl.epac.to>
+# Maintainer: Michael Healy <horsemanoffaith@gmail.com>
 # Contributor: Christopher Reimer <github@creimer.net>
 
 # vercheck-pkgbuild: auto
@@ -11,22 +11,23 @@ _use_ppa=true
 
 pkgname=gtk3-ubuntu
 _ubuntu_rel=1ubuntu1~ubuntu16.10.1
-pkgver=3.22.4
+pkgver=3.22.5
 pkgrel=1
 pkgdesc="GObject-based multi-platform toolkit"
 arch=(i686 x86_64)
 url="http://www.gtk.org/"
 install=gtk3.install
-depends=(adwaita-icon-theme at-spi2-atk atk cairo colord desktop-file-utils gdk-pixbuf2 gtk-update-icon-cache json-glib libcups libepoxy librsvg libxcomposite libxcursor libxdamage libxi libxinerama libxkbcommon  libxrandr mesa pango rest shared-mime-info wayland wayland-protocols)
-makedepends=(colord git gobject-introspection gtk-doc libcanberra libcups rest)
-optdepends=('libcanberra: gtk3-widget-factory demo'
-	    'gtk3-print-backends: Printing')
+depends=(adwaita-icon-theme at-spi2-atk atk cairo colord desktop-file-utils gdk-pixbuf2 
+	gtk-update-icon-cache json-glib libcups libepoxy librsvg libxcomposite libxcursor
+	libxdamage libxi libxinerama libxkbcommon libxrandr pango rest shared-mime-info wayland
+	wayland-protocols)
+makedepends=(gobject-introspection gtk-doc libcanberra)
+optdepends=('libcanberra: gtk3-widget-factory demo')
 provides=("gtk3=${pkgver}")
 conflicts=(gtk3)
 license=(LGPL)
-_commit=4569bb372f838a9a68c9b134ef18865abe77001c  # tags/3.22.4^0
-source=("git://git.gnome.org/gtk+#commit=${_commit}"
-        settings.ini
+source=("https://download.gnome.org/sources/gtk+/${pkgver%.*}/gtk+-${pkgver}.tar.xz"
+	settings.ini
         gtk-query-immodules-3.0.hook)
 
 if [[ "${_use_ppa}" != "true" ]]; then
@@ -35,18 +36,13 @@ else
   source+=("http://ppa.launchpad.net/gnome3-team/gnome3-staging/ubuntu/pool/main/g/gtk+3.0/gtk+3.0_${_ubuntu_ver:-${pkgver}}-${_ubuntu_rel}.debian.tar.xz")
 fi
 
-sha512sums=('SKIP'
+sha512sums=('f1969612a89c67fb0414843f3cc51ce91894c9fdfdf6b6e00472d761848b5b1be529d35f2da43c26d345e4b39e81980d2de53d16f194d96775ba21f3c6d0926c'
             'ad2c0b0388f4169592b9574f0b3db673a969b7c4721548c4ac7c438eddbcdc378fcaac04e2b6c858a1562cc23ddf4804e5f7be08068340b7c9365e2b11ddcfb8'
             'f0ffd95544863f2e10fda81488b4727aa9a8a35a7d39fb96872db6664d03442db2b58af788b5990825c7b3a83681f7220ca481409cca5421dfb39b9a3bbac9ac'
-            '29c3b0369cf81b46843abbda090162da29ae63dca9e54ca32c25b1eea6a55325f2203e71c8af7ad3d7a98bb9c69d4c0d3c9d4bd591eb460ba8b907c745f38863')
-
-pkgver() {
-    cd gtk+
-    git describe --tags | sed 's/-/+/g'
-}
+            '2bc7fb9828393149327f448e9992b70ac4fc9ede3abd8de9a2700cb26be4203d4a77a075300c6dd3b46aa3bd777bfe6b95e50065341061f618158011cb01aeb2')
 
 prepare() {
-    cd gtk+
+    cd "gtk+-${pkgver}"
 
     local patches=(
         016_no_offscreen_widgets_grabbing.patch
@@ -55,15 +51,12 @@ prepare() {
         073_treeview_almost_fixed.patch
         074_eventbox_scroll_mask.patch
         no-accessibility-dump.patch
-        reftest-known-fail.patch
         bzg_gtkcellrenderer_grabbing_modifier.patch
         ubuntu_gtk_custom_menu_items.patch
         print-dialog-show-options-of-remote-dnssd-printers.patch
         uimanager-guard-against-nested-node-updates.patch
         x-canonical-accel.patch
         message-dialog-restore-traditional-look-on-unity.patch
-        0001-gtk-reftest-Force-icon-theme-to-Adwaita.patch
-        restore_filechooser_typeaheadfind
         0001-calendar-always-emit-day-selected-once.patch
         0001-gtkwindow-set-transparent-background-color.patch
         ubuntu_fileselector_behaviour.patch
@@ -80,7 +73,7 @@ prepare() {
 }
 
 build() {
-    cd gtk+
+    cd "gtk+-${pkgver}"
 
     CXX=/bin/false ./configure \
         --prefix=/usr \
@@ -90,7 +83,7 @@ build() {
         --enable-x11-backend \
         --enable-broadway-backend \
         --enable-wayland-backend \
-	--enable-gtk-doc
+        --enable-gtk-doc
 
     #https://bugzilla.gnome.org/show_bug.cgi?id=655517
     sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
@@ -99,7 +92,7 @@ build() {
 }
 
 package() {
-    cd gtk+
+    cd "gtk+-${pkgver}"
     make DESTDIR="${pkgdir}" install
 
     install -Dm644 ../settings.ini \
