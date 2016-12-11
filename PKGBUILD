@@ -7,7 +7,7 @@
 
 pkgbase=ppsspp-git
 pkgname=('ppsspp-git' 'ppsspp-qt-git')
-pkgver=1.3.r146.9c08b60
+pkgver=1.3.r191.aa964ea
 pkgrel=1
 pkgdesc='A PSP emulator written in C++'
 arch=('i686' 'x86_64')
@@ -19,9 +19,11 @@ depends=('gcc-libs' 'glew' 'glibc' 'libgl' 'libzip' 'sdl2' 'zlib'
 makedepends=('cmake' 'git' 'glu' 'qt5-multimedia' 'qt5-tools')
 source=('git+https://github.com/hrydgard/ppsspp.git'
         'git+https://github.com/hrydgard/ppsspp-lang.git'
+        'git+https://github.com/hrydgard/ppsspp-glslang.git'
         'ppsspp-armips::git+https://github.com/Kingcom/armips.git'
         'ppsspp.desktop')
 sha256sums=('SKIP'
+            'SKIP'
             'SKIP'
             'SKIP'
             '1c332702d0aeced07df7e12ba8530bc3f19a52bc76c355f6c84c141becfd46d8')
@@ -35,7 +37,7 @@ pkgver() {
 prepare() {
   cd ppsspp
 
-  for submodule in assets/lang ext/armips; do
+  for submodule in assets/lang ext/{armips,glslang}; do
     git submodule init ${submodule}
     git config submodule.${submodule}.url ../ppsspp-${submodule#*/}
     git submodule update ${submodule}
