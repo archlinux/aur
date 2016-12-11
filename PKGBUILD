@@ -1,5 +1,4 @@
-# Maintainer: Daniel Nagy <danielnagy at gmx de>
-# Contributor: Austin Robinson <austin.rbsn@gmail.com>
+# Maintainer: Carlos E. Garcia <carlos@cgarcia.org>
 
 _hspkgname=OpenGLRaw
 pkgname=haskell-openglraw
