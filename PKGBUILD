@@ -1,5 +1,4 @@
 # Maintainer: Michael Healy <horsemanoffaith@gmail.com>
-# Maintainer: Xiao-Long Chen <chenxiaolong@cxl.epac.to>
 # Original Maintainer: György Balló <ballogy@freestart.hu>
 # Contributor: Christopher Reimer <github@creimer.net>
 
@@ -9,15 +8,16 @@
 # vercheck-gnome: name=gtk+, majorver=2.24
 
 pkgname=gtk2-ubuntu
-_ubuntu_rel=4ubuntu2
-_ubuntu_ver=2.24.30
+_ubuntu_rel=1ubuntu1
+_ubuntu_ver=2.24.31
 pkgver=2.24.31
-pkgrel=1
+pkgrel=2
 pkgdesc="GObject-based multi-platform GUI toolkit (legacy)"
 arch=(i686 x86_64)
 url="http://www.gtk.org/"
 license=(LGPL)
-depends=(atk cairo desktop-file-utils gtk-update-icon-cache libcups librsvg libxcomposite 		libxcursor libxdamage libxi libxinerama libxrandr pango shared-mime-info)
+depends=(atk cairo desktop-file-utils gtk-update-icon-cache libcups librsvg libxcomposite 
+         libxcursor libxdamage libxi libxinerama libxrandr pango shared-mime-info)
 makedepends=(gobject-introspection gtk-doc python2)
 optdepends=('adwaita-icon-theme: Default icon theme'
 	    'gnome-themes-standard: Default widget theme')
@@ -30,7 +30,7 @@ source=("http://ftp.gnome.org/pub/gnome/sources/gtk+/2.24/gtk+-${pkgver}.tar.xz"
         gtk-query-immodules-2.0.hook
         xid-collision-debug.patch)
 sha512sums=('75b846661308d94b5236e7e1c367deabf57753792ca87e92f9769822dd5ec90e00cd8d5574adcc12162e3702e1ae6dc152278a1d218f9bd9e4d1c8dc1dd520c1'
-            'd6d97558e03dea63b2dfcc4c5a01ab9ceb5b5802b0dcecfd7ac9c52127d4966cc311748066b8f1eb85f489bbb48af7a0316db2074c4c9c40668115eda495320f'
+            '2c081180df781c37cf9bdf55a7eb449a95a561bc7fa60fcc6ec0f611c5e2a3e9d5ac91d961dcc65083739f1d56c69f36f0ef44f0eac537fca97893c4bcec73b6'
             'b124433dd4b20d1d62f073df87e253ca23b3b51625cce55f29a220a4369eda5108c0de07fdc686f570232322c3ff04f7758383f2be5aeace40f843907aa3696d'
             'be7a807046f27e5796f6069dfd2c88f9b7508e3b9e209d97c1575e0d809b279aacacd0e1247f1f7643fa47eede2d987bf433cd17cea0524526ad31982ae8d90d'
             '89e3223c86731a76b12d39245f1ec4cf8b4860ab1d11d74a10e5deb0db302f20b4bb5d9034da1d8aeb96369dbdeddcdd2f28943270dc501476c694562b960159')
