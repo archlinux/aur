@@ -48,6 +48,7 @@ build() {
   # mpi
   cmake_options+=" -DSALOME_USE_MPI:BOOL=ON"
   cmake_options+=" -DMEDCOUPLING_USE_MPI:BOOL=ON"
+  cmake_options+=" -DMEDCOUPLING_BUILD_DOC:BOOL=OFF"
 
   # python2
   cmake_options+=" -DPYTHON_EXECUTABLE:FILEPATH=/usr/bin/python2"
