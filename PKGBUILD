@@ -1,7 +1,7 @@
 # Maintainer: M0Rf30
 
 pkgname=iortcw-data
-pkgver=1.42d
+pkgver=1.5a
 pkgrel=1
 pkgdesc="Return to Castle Wolfenstein Single Player pk3s files (shared use)"
 arch=('any')
@@ -27,4 +27,4 @@ package() {
   ln -s -r /opt/wolf-data/mp_pak2.pk3   $pkgdir/opt/iortcw-data/
 }
 
-md5sums=('d4888a63b2b473ef82b7df850bc07d64')
+md5sums=('291a37caa9d65d0b81f767918b76fa56')
