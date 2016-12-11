@@ -2,7 +2,7 @@
 # Co-Maintainer: Maxence Sartiaux <contact+aur@makz.me>
 pkgname=pydio-sync
 pkgver=1.2.7
-pkgrel=3
+pkgrel=4
 pkgdesc="Pydio synchronisation client"
 arch=('i686' 'x86_64')
 url="https://pydio.com"
@@ -10,7 +10,7 @@ license=('GPL3')
 conflicts=('pydio-sync-git' 'pydio-sync-ui-git' 'pydio-sync-latest')
 provides=('pydio-sync')
 options=(!strip)
-depends=('qt5-webkit' 'libsm' 'gstreamer0.10-base')
+depends=('qt5-webkit' 'libsm' 'gstreamer0.10-base', 'gnome-keyring')
 source=("https://download.pydio.com/pub/pydio-sync/release/$pkgver/PydioSync-Linux-Binaries-v$pkgver.tar.gz"
         "pydio.desktop"
 	"pydio-sync.png")
