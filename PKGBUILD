@@ -1,7 +1,7 @@
 # Maintainer: Joermungand <joermungand at gmail dot com>
 pkgname=carla-bridges-win32-git
-pkgver=3222.3f9bd01
-pkgrel=2
+pkgver=3382.0e81fd3
+pkgrel=1
 pkgdesc="Carla win32 bridge"
 arch=('i686' 'x86_64')
 url="http://kxstudio.sf.net/carla"
@@ -11,9 +11,9 @@ provides=('carla-bridges-win32')
 depends=('mingw-w64-crt' 'mingw-w64-winpthreads' 'mingw-w64-pkg-config' 'wine' 'carla-git')
 makedepends=('git' 'mingw-w64-gcc')
 source=("$pkgname"::'git://github.com/falkTX/Carla.git'
-        'http://www.steinberg.net/sdk_downloads/vstsdk360_22_11_2013_build_100.zip')
+        'http://www.steinberg.net/sdk_downloads/vstsdk366_27_06_2016_build_61.zip')
 md5sums=('SKIP'
-         '1ac422ebb4aa2e86061278412c347b55')
+         '6485724a5a07abedde6c415c5f6ac4e8')
 
   _path=$PATH
   _cflags=$CFLAGS
