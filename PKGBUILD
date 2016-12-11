@@ -1,6 +1,6 @@
 pkgname=batman-adv-legacy-dkms
 pkgver=20161206
-pkgrel=1
+pkgrel=2
 pkgdesc='batman kernel module (legacy version based on compat 14, dkms package)'
 arch=('any')
 url='https://github.com/freifunk-gluon/batman-adv-legacy/'
@@ -15,4 +15,6 @@ package() {
 	install -dm755 "${pkgdir}/usr/src/${pkgbase}-${pkgver}/"
 
 	cp -r "${srcdir}"/batman-adv-legacy/* "${pkgdir}/usr/src/${pkgbase}-${pkgver}/"
+
+	sed -i "s/^PACKAGE_VERSION=.*$/PACKAGE_VERSION=${pkgver}/" "${pkgdir}/usr/src/${pkgbase}-${pkgver}/dkms.conf"
 }
