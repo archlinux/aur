@@ -7,12 +7,12 @@
 pkgname=paraview-salome
 pkgver=5.0.1p1
 _salomever=7.8.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Parallel Visualization Application using VTK - This version is built to be linked against salome modules'
 arch=('i686' 'x86_64')
 url='http://www.paraview.org'
 license=('custom')
-depends=('qtwebkit' 'python2' 'ffmpeg' 'boost' 'expat' 'freetype2' 'hdf5' 'libjpeg' 'libxml2' 'libtheora' 'libpng' 'libtiff' 'zlib' 'protobuf' 'openmpi' 'gl2ps')
+depends=('qtwebkit' 'python2' 'ffmpeg' 'boost' 'expat' 'freetype2' 'hdf5-salome' 'libjpeg' 'libxml2' 'libtheora' 'libpng' 'libtiff' 'zlib' 'protobuf' 'openmpi' 'gl2ps')
 makedepends=('cmake' 'mesa' 'eigen3' 'doxygen')
 optdepends=('python2-matplotlib: Needed to support equation rendering using MathText markup language' 'python2-numpy: Needed for using some filters such as "Python Calculator"')
 source=("http://files.salome-platform.org/Salome/Salome${_salomever}/SALOME-${_salomever}-OPENSOURCE-DB08.tgz"
@@ -75,6 +75,21 @@ build() {
   cmake_options+=" -DVTK_NO_PYTHON_THREADS:BOOL=OFF"
   cmake_options+=" -DVTK_REPORT_OPENGL_ERRORS:BOOL=OFF"
   cmake_options+=" -DVTK_PYTHON_FULL_THREADSAFE=ON"
+
+  ## OpenGL2 backend for performance improvment
+  # https://blog.kitware.com/new-opengl-rendering-in-vtk/ 
+  # it isn't already supported in salome-gui
+  # cmake_options+=" -DVTK_RENDERING_BACKEND=OpenGL2"
+
+  # gl2ps settings
+  # activating VTK_RENDERING_BACKEND=OpenGL2, gl2ps on archlinux repository is
+  # too old; you must use gl2ps on the package (change to OFF following option)
+  cmake_options+=" -DVTK_USE_SYSTEM_GL2PS:BOOL=ON"
+  
+  ### OpenMP to speed computation of some filters
+  # https://blog.kitware.com/simple-parallel-computing-with-vtksmptools-2/
+  # https://blog.kitware.com/accelerated-filters-in-paraview-5/
+  cmake_options+=" -DVTK_SMP_IMPLEMENTATION_TYPE=OpenMP"
   
   # Qt settings
   cmake_options+=" -DPARAVIEW_BUILD_QT_GUI:BOOL=ON"
@@ -119,9 +134,6 @@ build() {
 
   # Boost settings
   cmake_options+=" -DBOOST_ROOT=/usr"
-
-  # gl2ps settings
-  cmake_options+=" -DVTK_USE_SYSTEM_GL2PS:BOOL=ON"
 
   # libxml2 settings
   cmake_options+=" -DVTK_USE_SYSTEM_LIBXML2:BOOL=ON"
