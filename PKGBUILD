@@ -3,6 +3,7 @@
 # Contributor: Manuel Gaul <inkaine@hotmail.com>
 # Contributor: Enverex & kidoz
 # Contributor: zoopp
+# Contributor: npfeiler (libcl/opencl-icd-loader cleaning)
 
 _pkgbasename=catalyst-utils
 
@@ -10,7 +11,7 @@ pkgbase=lib32-$_pkgbasename
 pkgname=('lib32-catalyst-utils' 'lib32-catalyst-libgl' 'lib32-opencl-catalyst')
 
 pkgver=15.9
-pkgrel=2
+pkgrel=5
 _amdver=15.201.1151
 url="http://www.amd.com"
 arch=(x86_64)
@@ -65,10 +66,10 @@ package_lib32-catalyst-libgl() {
 
 package_lib32-opencl-catalyst() {
       pkgdesc="AMD/ATI drivers. OpenCL implemention for AMD Catalyst (32-bit)"
-      provides=('lib32-libcl')
-      conflicts=('lib32-libcl')
       depends=('lib32-gcc-libs')
-      optdepends=('opencl-headers: headers necessary for OpenCL development')
+      optdepends=('opencl-headers: headers necessary for OpenCL development'
+                'lib32-opencl-icd-loader: OpenCL ICD Bindings (32-bit)')
+      provides=('lib32-opencl-driver')
 
       install -m755 -d ${pkgdir}/etc/OpenCL/vendors
       install -m644 ${srcdir}/archive_files/arch/x86/etc/OpenCL/vendors/amdocl32.icd ${pkgdir}/etc/OpenCL/vendors
@@ -76,8 +77,8 @@ package_lib32-opencl-catalyst() {
       cd ${srcdir}/archive_files/arch/x86
       install -m755 -d ${pkgdir}/usr/lib32
       install -m755 usr/lib/libamdocl*.so ${pkgdir}/usr/lib32
-      install -m755 usr/lib/libOpenCL.so.1 ${pkgdir}/usr/lib32
-      ln -s libOpenCL.so.1 ${pkgdir}/usr/lib32/libOpenCL.so
+#       install -m755 usr/lib/libOpenCL.so.1 ${pkgdir}/usr/lib32        #lib32-opencl-icd-loader provides this
+#       ln -s libOpenCL.so.1 ${pkgdir}/usr/lib32/libOpenCL.so
 
      # License
       install -m755 -d ${pkgdir}/usr/share/licenses

@@ -1,6 +1,6 @@
 pkgbase = lib32-catalyst-utils
 	pkgver = 15.9
-	pkgrel = 2
+	pkgrel = 5
 	url = http://www.amd.com
 	arch = x86_64
 	license = custom
@@ -42,6 +42,6 @@ pkgname = lib32-opencl-catalyst
 	pkgdesc = AMD/ATI drivers. OpenCL implemention for AMD Catalyst (32-bit)
 	depends = lib32-gcc-libs
 	optdepends = opencl-headers: headers necessary for OpenCL development
-	provides = lib32-libcl
-	conflicts = lib32-libcl
+	optdepends = lib32-opencl-icd-loader: OpenCL ICD Bindings (32-bit)
+	provides = lib32-opencl-driver
 
