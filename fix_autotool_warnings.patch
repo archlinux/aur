@@ -1,0 +1,35 @@
+diff --git a/configure.ac b/configure.ac
+index 8811df1..385ec2c 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -3,7 +3,7 @@
+ # -------------------------------------------------------------------------------
+ AC_PREREQ([2.5])
+ AC_INIT([clipit], [1.4.3], [oss@rspwn.com])
+-AM_INIT_AUTOMAKE([AC_PACKAGE_TARNAME()], [AC_PACKAGE_VERSION()])
++AM_INIT_AUTOMAKE
+ 
+ AC_CONFIG_MACRO_DIR([m4])
+ 
+@@ -36,7 +36,7 @@ clipitlocaledir='${prefix}/${DATADIRNAME}/locale'
+ AC_SUBST(clipitlocaledir)
+ 
+ AM_GNU_GETTEXT([external])
+-AM_GNU_GETTEXT_VERSION(0.18.1)
++AM_GNU_GETTEXT_VERSION(0.19)
+ 
+ # -------------------------------------------------------------------------------
+ # Application indicator.
+diff --git a/src/Makefile.am b/src/Makefile.am
+index 36933a0..281816b 100644
+--- a/src/Makefile.am
++++ b/src/Makefile.am
+@@ -1,7 +1,5 @@
+-AM_CPPFLAGS = -I$(top_srcdir)
+ AM_CFLAGS = -Wall -g -DCLIPITLOCALEDIR=\""$(clipitlocaledir)"\"
+-## FIXME!!!
+-INCLUDES = $(GTK_CFLAGS) $(APPINDICATOR_CFLAGS)
++AM_CPPFLAGS = -I$(top_srcdir) $(GTK_CFLAGS) $(APPINDICATOR_CFLAGS)
+ LDADD = $(GTK_LIBS) $(APPINDICATOR_LIBS) $(X11_LIBS)
+ AM_LDFLAGS = -Wl,--as-needed
+ 
