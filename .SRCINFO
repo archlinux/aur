@@ -1,0 +1,13 @@
+pkgbase = aur
+	pkgdesc = ArchLinux Package Manager helper
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://github.com/avelino/aur
+	arch = x86_64
+	license = MIT
+	depends = curl
+	depends = pacman
+	options = !emptydirs
+
+pkgname = aur
+
