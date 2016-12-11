@@ -3,7 +3,8 @@
 pkgname=megasync-headless
 pkgver=v2.8.0.0.g2c9286c
 pkgrel=1
-pkgdesc="Sync local directory with your MEGA account. CLI tools only. Subset of the original MEGA SDK."
+pkgdesc="Daemon to sync a local directory with your MEGA account on a headless system. Part of the original 
+mega.nz SDK".
 arch=('x86_64')
 url='https://mega.co.nz/#sync'
 license=('custom:MEGA')
