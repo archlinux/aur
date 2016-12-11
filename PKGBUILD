@@ -32,7 +32,7 @@ conflicts=('atom-editor-beta-bin' 'atom-editor-beta-arch')
 install=atom.install
 source=("${_pkgname}-${_pkgver}-${_version}${_pkgrel}.tar.gz::$url/archive/v${_pkgver}-${_version}${_pkgrel}.tar.gz"
 "${_pkgname}-${_version}.desktop")
-sha256sums=('fb39ee602591007e6b0beefbbe617aa6bb1d49e89c3e5bcfbb0f7c83e11e925e'
+sha256sums=('c866cf13b20fa4a3a9cc87c0bdf005e88fa5b26995e9c02c70c6905055413b62'
             'c62faaf2f50cddb1a834ccb33c95724076d2859c88baac7d9d676bc9c3afc8c6')
 
 prepare() {
