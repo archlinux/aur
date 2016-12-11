@@ -42,7 +42,7 @@ package_tsmuxer-ng-cli-bin() {
   (cd ${pkgdir}/usr/bin; upx -d -q tsmuxer &>/dev/null)
 }
 
-package_tsmuxer-gui-ng-bin() {
+package_tsmuxer-ng-gui-bin() {
   pkgdesc="Transport Stream muxer. New Generation (3D capable). GUI"
   depends_i686=('gcc-libs'
                 'qt4'
