@@ -1,7 +1,7 @@
 # Maintainer: Einhard Leichtfuß <archer@respiranto.de>
 pkgname=freesweep
-pkgver=0.92
-pkgrel=2
+pkgver=1.0.1
+pkgrel=1
 pkgdesc="a console minesweeper-style game written in C for *nix"
 arch=('x86_64' 'i686')
 url="http://freecode.com/projects/freesweep"
@@ -9,8 +9,8 @@ license=('GPL')
 depends=('ncurses')
 backup=('etc/sweeprc' "var/games/$pkgname/sweeptimes")
 install=$pkgname.install
-source=("https://freesweep.googlecode.com/files/freesweep-0.92.tar.gz")
-md5sums=('e9ac8d2bc63b5d37863c731e13e023da')
+source=("https://github.com/rwestlund/freesweep/archive/v${pkgver}.tar.gz")
+sha512sums=('8270c77940225c8ebf0912ac896eaaaabd81775a82877650f3b9c2e0cf3b6a296b73f02ebc26e8fe526fc56f3807d9a2809f46e44b3d8507f011f9cf2c794099')
 
 # Scores do not really work currently; They are saved,
 # but for some reason not read / parsed correctly by the program,
@@ -19,7 +19,7 @@ md5sums=('e9ac8d2bc63b5d37863c731e13e023da')
 # Furthermore it is doubtable whether /var/games/$pkgname
 # is an appropriate location, regarding the Arch Packaging Guidelines.
 # The alternative would be /var/lib/$pkgname.
-# If you change this don't forget to adjust install() appropriately.
+# If you change this, don't forget to adjust package() appropriately.
 _scoresdir="/var/games/$pkgname"
 #_scoresdir="/var/lib/$pkgname"
 
@@ -50,7 +50,8 @@ package()
 	install -m 755 -d "$pkgdir/usr/share/man/man6"
 	install -m 644 -t "$pkgdir/usr/share/man/man6/" freesweep.6
 	install -m 755 -d "$pkgdir/usr/share/doc/$pkgname"
-	install -m 644 -t "$pkgdir/usr/share/doc/$pkgname/" README
+	install -m 644 -t "$pkgdir/usr/share/doc/$pkgname/" README.md
+	install -m 644 -t "$pkgdir/usr/share/doc/$pkgname/" TODO
 
 	# Comment this line out, if you don't need it:
 	install -m 775 -g games -d "$pkgdir/var/games"
