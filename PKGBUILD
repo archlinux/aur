@@ -1,4 +1,4 @@
-# Maintainer: Your Name <aur@passcod.name>
+# Maintainer: Félix Saparelli <aur@passcod.name>
 pkgname=sirikali-git
 pkgver=1.99.999
 pkgrel=2
