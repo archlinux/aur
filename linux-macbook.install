@@ -14,8 +14,8 @@ cat <<-EOF
 	in /etc/default/grub and then ran the following command as root:
 	grub-mkconfig -o /boot/grub/grub.cfg
 
-	Create /etc/tmpfiles.d/wakeup.conf with the contents:
-	w /proc/acpi/wakeup - - - - LID0
+	Enable the macbook-wakeup service for suspend/resume on LID events:
+	systemctl enable --now macbook-wakeup.service
 
 EOF
 }
