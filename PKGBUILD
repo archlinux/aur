@@ -1,9 +1,9 @@
 # Maintainer: Jeffrey E. Bedard <jefbed@gmail.com>
 pkgname=jbxvt-git
-pkgver=0.7
+pkgver=0.8
 pkgrel=1
 pkgdesc="xcb terminal emulator"
-arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url="https://github.com/jefbed/jbxvt"
 license=('MIT')
 depends=('xcb-util-keysyms' 'libutempter')
@@ -36,8 +36,3 @@ package() {
   install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 # vim:set ts=2 sw=2 et:
-
-
-
-
-
