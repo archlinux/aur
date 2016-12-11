@@ -7,7 +7,7 @@
 
 pkgname=devscripts-git 
 _gitname=devscripts 
-pkgver=2.16.7.r9.ge27bff6 
+pkgver=2.16.12.r0.g2343096 
 pkgrel=1 pkgdesc="Scripts to make the life of a Debian Package maintainer easier (git-latest)" 
 arch=('any') 
 url="https://anonscm.debian.org/git/collab-maint/devscripts.git" 
