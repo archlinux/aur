@@ -4,7 +4,7 @@
 
 pkgname=rst2html5
 pkgver=0.5.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Transform restructuredtext documents to html5 + twitter's bootstrap css, deck.js or reveal.js"
 arch=('any')
 url=https://marianoguerra.github.com/rst2html5
@@ -17,6 +17,7 @@ package() {
   local tmp=${source##*/}
   cd $pkgname-${tmp%\.*}
   python setup.py install --root="$pkgdir/" --optimize=1
+  mv "$pkgdir"/usr/bin/rst2html5{,-mg}
   install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
 
