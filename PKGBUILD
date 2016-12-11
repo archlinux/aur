@@ -1,17 +1,17 @@
+# Maintainer: Carlos E. Garcia <carlos@cgarcia.org>
 
-# Maintainer: Andre Bauer <novamoon@ts.3v.fi>
 pkgname=jeveassets
-pkgver=2.10.5
-pkgrel=5
+pkgver=3.1.4
+pkgrel=1
 pkgdesc="Out-of-game asset manager for Eve-Online, written in Java"
 arch=('any')
 url="http://eve.nikr.net/jeveasset"
 license=('GPL2')
-depends=('jre7-openjdk' 'unzip')
+depends=('jre8-openjdk' 'unzip')
 install=$pkgname.install
-source=("http://eve.nikr.net/jeveassets/jeveassets-2.10.5.zip"
-"$pkgname.desktop" "$pkgname.png" "$pkgname.sh")
-md5sums=('3fecd6861e609ebc574e6bb822e7a5f6'
+source=("http://eve.nikr.net/${pkgname}/${pkgname}-${pkgver}.zip"
+        "$pkgname.desktop" "$pkgname.png" "$pkgname.sh")
+md5sums=('35e4fad818cfe2b276cce1952511bd50'
          'fe76109bee617582dc94e35a572070d6'
          '706a6b2856a3aa9e26952078534faa8d'
          '349f0b0edae2c5df570142d43071a7f1')
@@ -24,7 +24,7 @@ package() {
 
 	install -d "$pkgdir/usr/bin/"
 	cp -dr --no-preserve=ownership "$srcdir/jeveassets.sh" "$pkgdir/usr/bin"
-	
+
 	install -Dm755 "$startdir/jeveassets.sh" "$pkgdir/usr/bin/jeveassets.sh"
 
 	install -d "$pkgdir/usr/share/applications/"
