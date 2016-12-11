@@ -13,7 +13,6 @@ pkgbase = megasync-headless
 	depends = zlib
 	depends = sqlite
 	depends = openssl
-	provides = megasync
 	conflicts = megasync
 	conflicts = megasync-git
 	conflicts = megatools

@@ -19,7 +19,6 @@ conflicts=('megasync'
 	   'megasync-git'
            'megatools'
            )
-provides=('megasync')
 depends=('c-ares'
          'curl'
          'crypto++'
