@@ -2,7 +2,7 @@
 
 pkgname=salome-gui
 pkgver=7.8.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Generic platform for Pre and Post-Processing for numerical simulation - GUI Module"
 url="http://www.salome-platform.org"
 depends=("salome-kernel>=${pkgver}" 'salome-kernel<7.9.0' 'qt4' 'python2-pyqt4' 'opencascade>=6.9.0' 'qwt' 'paraview-salome=5.0.1p1' 'sip')
@@ -11,7 +11,7 @@ arch=('i686' 'x86_64')
 conflicts=()
 provides=()
 license=('LGPL')
-source=("${pkgname}.profile" "salome.desktop" "http://files.salome-platform.org/Salome/Salome${pkgver}/src${pkgver}.tar.gz")
+source=("${pkgname}.sh" "salome.desktop" "http://files.salome-platform.org/Salome/Salome${pkgver}/src${pkgver}.tar.gz")
 
 _source=GUI_SRC
 #_source=gui
@@ -81,6 +81,9 @@ build() {
   # python2
   cmake_options+=" -DPYTHON_EXECUTABLE=/usr/bin/python2"
 
+  # mpi
+  cmake_options+=" -DSALOME_USE_MPI:BOOL=ON"
+
   # qwt
   cmake_options+=" -DQWT_ROOT_DIR=/usr"
 
@@ -126,7 +129,7 @@ package() {
   done
 
   # install profile
-  install -D -m755 "${srcdir}/${pkgname}.profile" \
+  install -D -m755 "${srcdir}/${pkgname}.sh" \
                    "${pkgdir}${_profiledir}/${pkgname}.sh"
 
   # install menu entry
@@ -144,6 +147,6 @@ package() {
   ln -s ${_installdir}/share/salome/resources/gui/SalomeApp.xml ${pkgdir}${_installdir}
   ln -s ${_installdir}/share/salome/resources/gui/LightApp.xml ${pkgdir}${_installdir}
 }
-md5sums=('73cd7110827ebb24ae6d2fac087fc4e0'
+md5sums=('fd7abc074e23a95ed3dabe841faa7586'
          'a102063b779e332914ef0b73843e928a'
-         '0f6de10ad9d9c646fce3ca21a7dab46a')
+         '943a8b7e70c2b5fe6ff9257d0eaaeebb')
