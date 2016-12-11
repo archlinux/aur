@@ -11,7 +11,7 @@
 pkgbase=amdapp-sdk
 pkgname=('amdapp-sdk' 'amdapp-sdk-opencv' 'amdapp-sdk-nocatalyst' 'amdapp-sdk-docs')
 pkgver=3.0
-pkgrel=21
+pkgrel=22
 arch=('i686' 'x86_64')
 url="http://developer.amd.com/tools-and-sdks/opencl-zone/amd-accelerated-parallel-processing-app-sdk/"
 license=("custom")
@@ -120,7 +120,7 @@ package_amdapp-sdk() {
 pkgdesc="AMD Accelerated Parallel Processing (APP) SDK, 3.0 with OpenCL 2.0 support."
 install=amdapp-sdk.install
 provides=('opencl' 'amdstream')
-depends=('libcl' 'libgl' 'llvm' 'gcc-libs' 'mesa' 'glut' 'glew' 'glu')
+depends=('opencl-icd-loader' 'libgl' 'llvm' 'gcc-libs' 'mesa' 'glut' 'glew' 'glu')
 conflicts=('amdstream')
 optdepends=(
 	    'opencl-headers: for development'
@@ -209,7 +209,7 @@ conflicts=('catalyst-utils')
 
 package_amdapp-sdk-opencv() {
 pkgdesc="AMD Accelerated Parallel Processing (APP) SDK, 3.0 with OpenCL 2.0 support. OpenCVUtils and opencv samples"
-depends=('libcl' 'libgl' 'llvm' 'gcc-libs' 'mesa' 'glut' 'glew' 'opencv')
+depends=('opencl-icd-loader' 'libgl' 'llvm' 'gcc-libs' 'mesa' 'glut' 'glew' 'opencv')
 install=amdapp-sdk-opencv.install
 
   cd ${srcdir}/${_subdir}
