@@ -1,7 +1,7 @@
 # Maintainer: M0Rf30
 
 pkgname=iortcw-it
-pkgver=1.42d
+pkgver=1.5a
 pkgrel=1
 pkgdesc="Return to Castle Wolfenstein Single Player Italian Language File"
 arch=('any')
@@ -18,5 +18,6 @@ package() {
     mkdir -p $pkgdir/opt/iortcw/main
     cp Language.cfg $pkgdir/opt/iortcw/main/
 }
+
 
 md5sums=('23d82460f778b1aa47ee26f60b11f404')
