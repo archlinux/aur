@@ -8,8 +8,7 @@
 # Based on community/morituri and aur/morituri-git PKGBUILDs
 
 pkgname=whipper-git
-_gitname=whipper
-pkgver=0.2.3.r112.g5a59f3c
+pkgver=0.4.0.r3.g71335e1
 pkgrel=1
 pkgdesc="A Unix CD ripper aiming for accuracy over speed -- forked from morituri"
 arch=('any')
@@ -34,34 +33,30 @@ makedepends=(
     'git'
     'python2-gobject2'
     )
-optdepends=()
 provides=('whipper')
-conflicts=('morituri' 'whipper')
-install=$pkgname.install
-source=('git+https://github.com/JoeLametta/whipper.git')
+conflicts=('whipper')
+source=("${pkgname/-git}::git+${url}.git")
 md5sums=('SKIP')
 
 pkgver() {
-    cd "$srcdir/$_gitname"
+    cd "$srcdir/${pkgname/-git}"
     # Cutting off "v" prefix present in the git tag
     git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
-    cd "$srcdir/$_gitname"
+    cd "$srcdir/${pkgname/-git}"
     git submodule init
     git submodule update
 }
 
 build() {
-    cd "$srcdir/$_gitname"
+    cd "$srcdir/${pkgname/-git}"
     export PYTHON=$(which python2)
     python2 setup.py build
 }
 
 package() {
-    cd "$srcdir/$_gitname"
+    cd "$srcdir/${pkgname/-git}"
     python2 setup.py install --root="${pkgdir}"/ --optimize=1
 }
-
-# vim: ft=sh:ts=4:sw=4:et
