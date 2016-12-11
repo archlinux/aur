@@ -2,7 +2,7 @@
 
 _pkgname=openbazaar
 pkgname=${_pkgname}-git
-pkgver=610.6cb5a6b
+pkgver=2.0.0.r66.g9ab64bc
 pkgrel=1
 pkgdesc="Front-end Electron application for talking with the OpenBazaar daemon (Latest devel version)" 
 arch=(any)
@@ -43,7 +43,7 @@ msg2 "Installing icons and desktop menu entry"
 
 pkgver() {
   cd ${_pkgname}
-  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 md5sums=('SKIP'
