@@ -13,13 +13,13 @@ optdepends=('sqlite: SQLite support'
             'postgresql: PostgreSQL support'
             'redis: Redis support'
             'memcached: MemCached support'
-			'openssh: GIT over SSH support')
+            'openssh: GIT over SSH support')
 makedepends=('go' 'git' 'glide')
 source=('git+https://github.com/gogits/gogs.git#branch=master'
         'git+https://github.com/jteeuwen/go-bindata.git' #Because сommunity package is very outdated
         'gogs.service'
-		'gogs.sysusers'
-		'gogs.tmpfiles')
+        'gogs.sysusers'
+        'gogs.tmpfiles')
 md5sums=('SKIP'
          'SKIP'
          '4ea1610580f7e7de4259025f8980942d'
@@ -41,8 +41,8 @@ prepare() {
 	glide install
 
 	sed -i conf/app.ini \
-		-e '/^RUN_USER/         c \RUN_USER = gogs' \
-		-e '/^STATIC_ROOT_PATH/ c \STATIC_ROOT_PATH = /usr/share/gogs' \
+	    -e '/^RUN_USER/         c \RUN_USER = gogs' \
+	    -e '/^STATIC_ROOT_PATH/ c \STATIC_ROOT_PATH = /usr/share/gogs' \
 	;
 }
 
