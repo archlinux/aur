@@ -1,3 +1,10 @@
+## 1.11.6-1
+* headers-more-0.32
+* psol-1.12.34.1-beta
+* modsecurity-2.9.1
+* naxsi-0.55.1
+* disable socket.patch
+
 ## 1.11.3-2
 * header-more-0.30
 

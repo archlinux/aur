@@ -3,8 +3,8 @@
 
 pkgname=nginx-devel
 _pkgname=nginx
-pkgver=1.11.3
-pkgrel=2
+pkgver=1.11.6
+pkgrel=1
 pkgdesc='Lightweight HTTP server and IMAP/POP3 proxy server - development version'
 url="http://nginx.org"
 arch=(i686 x86_64 armv6h)
@@ -22,7 +22,7 @@ _add2source() {
 # naxsi: Application firewall {{{2
 # @link http://code.google.com/p/naxsi/
 # @link https://github.com/nbs-system/naxsi/tags
-_naxsi_ver=0.54
+_naxsi_ver=0.55.1
 #_naxsi_url="http://naxsi.googlecode.com/files/naxsi-core-${_naxsi_ver}.tgz"
 _naxsi_url="naxsi-${_naxsi_ver}.tar.gz::https://github.com/nbs-system/naxsi/archive/${_naxsi_ver}.tar.gz"
 _add2source naxsi $_naxsi_url
@@ -36,6 +36,7 @@ _add2source socket socket.patch::https://lynthium.com/systemd_socket_nginx_${_sy
 # @link http://pushmodule.slact.net/
 _push_ver=0.731
 _push_url="https://github.com/slact/nginx_http_push_module/archive/v${_push_ver}.tar.gz"
+_push_url="https://codeload.github.com/slact/nchan/tar.gz/v${_push_ver}"
 _add2source push $_push_url
 
 # concat: concatenate files in a given context: CSS and JS files usually {{{2
@@ -47,6 +48,7 @@ _add2source concat $_concat_url
 
 # sflow: Operational performance monitoring with standard sFlow protoco {{{2
 # @link http://nginx-sflow-module.googlecode.com/
+# @link https://github.com/m0zes/nginx-sflow-module
 _sflow_ver=0.9.10
 _sflow_url="https://github.com/m0zes/nginx-sflow-module/archive/release-${_sflow_ver}.tar.gz"
 _add2source sflow $_sflow_url
@@ -67,23 +69,23 @@ _add2source http_auth_pam $_http_auth_pam_url
 # ngx_headers_more: Set and clear input and output headers...more than "add"! {{{2
 # @link http://wiki.nginx.org/HttpHeadersMoreModule
 # @link https://github.com/openresty/headers-more-nginx-module/releases
-_headers_more_ver=0.30
+_headers_more_ver=0.32
 _headers_more_url="headers_more-${_headers_more_ver}.tar.gz::https://github.com/agentzh/headers-more-nginx-module/archive/v${_headers_more_ver}.tar.gz"
 _add2source headers_more $_headers_more_url
 
 # ModSecurity: Web application firewall {{{2
 # @link http://www.modsecurity.org/projects/modsecurity/nginx/index.html
-_modsecurity_ver=2.9.0
+_modsecurity_ver=2.9.1
 _modsecurity_url="http://www.modsecurity.org/tarball/$_modsecurity_ver/modsecurity-apache_${_modsecurity_ver}.tar.gz"
 _add2source modsecurity $_modsecurity_url
 
 # PageSpeed {{{2
 # @link https://developers.google.com/speed/pagespeed/module/build_ngx_pagespeed_from_source
 # @link https://github.com/pagespeed/ngx_pagespeed/releases
-_psol_ver=1.9.32.10-beta
-_psol_url="https://github.com/pagespeed/ngx_pagespeed/archive/release-${_psol_ver}.zip"
+_psol_ver=1.12.34.1-beta
+_psol_url="https://github.com/pagespeed/ngx_pagespeed/archive/v${_psol_ver}.tar.gz"
 _add2source psol $_psol_url
-_psol_name="ngx_pagespeed-release-${_psol_ver}"
+_psol_name="ngx_pagespeed-${_psol_ver}"
 
 # echo-nginx-module(git) {{{2
 # @link https://github.com/openresty/echo-nginx-module
@@ -148,19 +150,19 @@ ${_modules_URL[*]}
 )
 validpgpkeys=(
 )
-sha256sums=('4a667f40f9f3917069db1dea1f2d5baa612f1fa19378aadf71502e846a424610'
+sha256sums=('3153abbb518e2d9c032e1b127da3dc0028ad36cd4679e5f3be0b8afa33bc85bd'
             '05fdc0c0483410944b988d7f4beabb00bec4a44a41bd13ebc9b78585da7d3f9b'
             '272907d3213d69dac3bd6024d6d150caa23cb67d4f121e4171f34ba5581f9e98'
             'e299680e919a97c7ec06b62e4fabc3b5ead837fe486a5f87260bd16d0b51e112'
             '9174cfea524ed4839062dc267d1b561db9f512407682982be42979f98cbdfff7'
             '989b76a9157b7d24788f6b56027d1883d69a744e91d517bca290a88919864b63'
-            '9cc2c09405bc71f78ef26a8b6d70afcea3fccbe8125df70cb0cfc480133daba5'
-            'dd0c893fcf5af90a4f3c76a5750df9c39cba486ecb93cf76624af29f809ec345'
-            '2aad309a9313c21c7c06ee4e71a39c99d4d829e31c8b3e7d76f8c964ea8047f5'
-            '7c3fac8c506bbf8b9c381e995af3fc4e1460363ad24dbfd5ead900b68dfcf6b2'
-            '1b7d69a9210cf434804eb574618869fba2ddc95d3b0aea7c57205f7a15e920a4'
+            'c6d9dab8ea1fc997031007e2e8f47cced01417e203cd88d53a9fe9f6ae138720'
+            '228dea08c44a9a1d9756b49c736cfeaaa99eae16f2d5afef7047f75c7eef8246'
             '001d6592200acc23f0492e1386e7acd37c2977cb967c30320994ece1d30428de'
-            'e2bbf789966c1f80094d88d9085a81bde082b2054f8e38e0db571ca49208f434'
+            '958cc5a7a7430f93fac0fd6f8b9aa92fc1801efce0cda797d6029d44080a9b24'
+            '45dd0df7a6b0b6aa9c64eb8c39a8e294d659d87fb18e192cf58f1402f3cdb0a8'
+            'dd0c893fcf5af90a4f3c76a5750df9c39cba486ecb93cf76624af29f809ec345'
+            '1b7d69a9210cf434804eb574618869fba2ddc95d3b0aea7c57205f7a15e920a4'
             '3b27e9eb0478cbba65ba0beb844c5361e2e2f9c21e5bee8803ea9e707f4bbb47')
 add_module() {
   local module=$1 && shift
@@ -231,17 +233,17 @@ _tmpdir=/var/lib/nginx
 _logdir=/var/log/nginx
 build() {
   # nginx env
-  _piddir=/run
-  _lockdir=/var/lock
+  local _piddir=/run
+  local _lockdir=/var/lock
 
-  _user=http
-  _group=http
+  local _user=http
+  local _group=http
   cd ${_pkgname}-$pkgver
 #   msg2 "Adding optional systemd socket activation support"
-  patch -Np1 -i "$srcdir/socket.patch"
+#   patch -Np1 -i "$srcdir/socket.patch"
 
   # build options
-  _configure_params=(
+  local _configure_params=(
       --prefix=$_cfgdir
       --sbin-path=/usr/bin/nginx
       --conf-path=$_cfgdir/nginx.conf
@@ -254,7 +256,7 @@ build() {
 
       --with-file-aio
       --with-ipv6
-      --with-systemd
+#       --with-systemd
 
       --http-log-path=$_logdir/access.log
       --http-client-body-temp-path=$_tmpdir/client-body
@@ -385,7 +387,7 @@ package() {
   install -Dm644 "$srcdir"/nginx.logrotate "$pkgdir"/etc/logrotate.d/nginx
   install -Dm644 "$srcdir"/nginx.service "$pkgdir"/usr/lib/systemd/system/nginx.service
   install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/nginx-devel/LICENSE
-  install -Dm644 "$srcdir"/nginx.socket "$pkgdir"/usr/lib/systemd/system/nginx.socket
+#   install -Dm644 "$srcdir"/nginx.socket "$pkgdir"/usr/lib/systemd/system/nginx.socket
   rmdir "$pkgdir"/run
 
   # man
