@@ -2,18 +2,19 @@
 # Contributor: jdarch <jda -dot- cloud -plus- archlinux -at- gmail -dot- com>
 
 pkgname=clfft
-pkgver=2.12.0
+pkgver=2.12.2
 pkgrel=1
 pkgdesc="A software library containing FFT functions written in OpenCL"
 arch=("i686" "x86_64")
 url="https://github.com/clMathLibraries/clFFT"
 license=('APACHE')
-depends=('libcl')
+depends=('ocl-icd')
 makedepends=('opencl-headers' 'cmake')
 checkdepends=('fftw' 'gtest')
 
 source=("https://github.com/clMathLibraries/clFFT/archive/v${pkgver}.tar.gz")
-sha512sums=('8ee21847f2877989a1b6a62f62807e2cfd6d6845ed36702de775eb9dbccfed898e9969cce7bb93827745b5d65a5d91aaf07c565c92e65b6fefe3028efa9c23c9')
+
+sha512sums=('19e9a4e06f76ae7c7808d1188677d5553c43598886a75328b7801ab2ca68e35206839a58fe2f958a44a6f7c83284dc9461cd0e21c37d1042bf82e24aad066be8')
 
 if [ "$CARCH" == "x86_64" ]; then
 _bits=64
