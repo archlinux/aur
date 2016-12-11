@@ -1,8 +1,8 @@
 # Maintainer: Tony Lambiris <tony@criticalstack.com>
 pkgname=kolide-git
-pkgver=r58.ebf59ed
+pkgver=r62.720f425
 _pkgname=kolide
-pkgrel=4
+pkgrel=1
 pkgdesc="osquery command and control"
 url="https://www.kolide.co/"
 arch=('x86_64' 'i686')
@@ -15,10 +15,10 @@ source=('git+https://github.com/kolide/kolide.git' 'kolide.sysusers')
 md5sums=('SKIP'
          '4934e838c831a12242550ae5e762a77a')
 
-pkgver() {
-	cd "${srcdir}/${_pkgname}"
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
+#pkgver() {
+#	cd "${srcdir}/${_pkgname}"
+#	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+#}
 
 prepare() {
 	cd "${srcdir}"
