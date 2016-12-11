@@ -10,6 +10,7 @@ pkgdesc="Transport Stream muxer. New Generation (3D capable)"
 arch=('i686' 'x86_64')
 url='http://forum.doom9.org/showthread.php?t=168539'
 license=('custom')
+makedepends=('upx')
 source=("tsmuxer-${pkgver}.tar.gz::https://docs.google.com/uc?authuser=0&id=0B0VmPcEZTp8NekJxLUVJRWMwejQ&export=download"
         'tsmuxergui.desktop'
         'tsmuxergui.png'
