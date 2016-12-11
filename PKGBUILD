@@ -5,7 +5,7 @@
 _pkgname=idos-timetable-data-inprop-mhd-presov
 pkgname="${_pkgname}-latest"
 epoch=0
-pkgver=2016_10_25
+pkgver=2016_12_6
 pkgrel=1
 pkgdesc="Prešov public transport data for the IDOS timetable browser, data provided by INPROP."
 arch=(any)
