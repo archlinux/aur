@@ -4,7 +4,7 @@
 
 pkgname=('nvidia-utils-beta' 'nvidia-libgl-beta' 'opencl-nvidia-beta')
 pkgver=375.20
-pkgrel=2
+pkgrel=3
 arch=('i686' 'x86_64')
 url="http://www.nvidia.com/"
 license=('custom:NVIDIA')
@@ -52,9 +52,9 @@ prepare() {
 
 package_opencl-nvidia-beta() {
   pkgdesc="NVIDIA's OpenCL implemention for 'nvidia-utils-beta'"
-  depends=('libcl' 'zlib')
+  depends=('zlib')
   optdepends=('opencl-headers: headers necessary for OpenCL development')
-  provides=('opencl-nvidia')
+  provides=('opencl-nvidia' 'opencl-driver')
   conflicts=('opencl-nvidia')
   cd $_pkg
 
