@@ -1,7 +1,7 @@
 pkgbase = catalyst-total
 	pkgdesc = AMD/ATI Catalyst drivers for linux. catalyst-dkms + catalyst-utils + lib32-catalyst-utils + experimental powerXpress suppport. Radeons HD 2 3 4 xxx ARE NOT SUPPORTED
 	pkgver = 15.9
-	pkgrel = 14
+	pkgrel = 16
 	url = http://www.amd.com
 	install = catalyst-total.install
 	arch = i686
@@ -9,7 +9,7 @@ pkgbase = catalyst-total
 	license = custom
 	depends = dkms
 	depends = linux>=3.0
-	depends = linux<4.9
+	depends = linux<4.10
 	depends = linux-headers
 	depends = xorg-server>=1.7.0
 	depends = xorg-server<1.18.0
@@ -29,6 +29,7 @@ pkgbase = catalyst-total
 	optdepends = opencl-headers: headers necessary for OpenCL development
 	optdepends = acpid: acpi event support / atieventsd
 	optdepends = procps-ng: brings pgrep used in acpi event support
+	optdepends = opencl-icd-loader: OpenCL ICD Bindings
 	provides = libgl
 	provides = libatical=15.9
 	provides = catalyst=15.9
@@ -36,18 +37,17 @@ pkgbase = catalyst-total
 	provides = catalyst-hook=15.9
 	provides = catalyst-libgl=15.9
 	provides = opencl-catalyst=15.9
-	provides = libcl
 	provides = dri
 	provides = libtxc_dxtn
 	provides = mesa-libgl
 	provides = mesa-libgl-git
+	provides = opencl-driver
 	conflicts = libgl
 	conflicts = catalyst
 	conflicts = catalyst-daemon
 	conflicts = catalyst-generator
 	conflicts = catalyst-hook
 	conflicts = catalyst-utils
-	conflicts = libcl
 	conflicts = catalyst-dkms
 	conflicts = mesa-libgl
 	conflicts = mesa-libgl-git
@@ -82,6 +82,7 @@ pkgbase = catalyst-total
 	source = dkms.conf
 	source = makesh-dont-check-gcc-version.patch
 	source = 4.7-arch-cpu_has_pge-v2.patch
+	source = 4.9_over_4.6-arch-get_user_pages_remote.patch
 	md5sums = d2de2df6946b452c266a3c892e6e46ff
 	md5sums = af7fb8ee4fc96fd54c5b483e33dc71c4
 	md5sums = bdafe749e046bfddee2d1c5e90eabd83
@@ -109,6 +110,7 @@ pkgbase = catalyst-total
 	md5sums = 23d569abfdd7de433d76e003e4b3ccf9
 	md5sums = 10829e3b992b3e80a6e78c8e27748703
 	md5sums = 37eef5103a11d8136979463e7bc31091
+	md5sums = 194cb44e9e2ab0e65b6267aca66d0400
 
 pkgname = catalyst-total
 
