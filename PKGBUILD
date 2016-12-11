@@ -1,14 +1,14 @@
 # Contributor: mickele
 pkgname=parmetis3
 pkgver=3.2.0
-pkgrel=3
+pkgrel=1
 pkgdesc="A parallel graph partitioning library"
 url="http://glaros.dtc.umn.edu/gkhome/metis/parmetis/overview"
 arch=('i686' 'x86_64')
 provides=('metis4')
 conflicts=('metis4')
-license="custom"
-depends=(openmpi)
+license=('custom')
+depends=('openmpi')
 makedepends=()
 source=("http://glaros.dtc.umn.edu/gkhome/fetch/sw/parmetis/ParMetis-${pkgver}.tar.gz" "cmake.tar.gz" "idxtype.h" "parmetis-idxtype.diff" "metis-idxtype.diff")
 
