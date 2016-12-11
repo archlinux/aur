@@ -1,8 +1,8 @@
 # Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgbase=tsmuxer-ng-bin
-pkgname=('tsmuxer-cli-ng-bin'
-         'tsmuxer-gui-ng-bin'
+pkgname=('tsmuxer-ng-cli-bin'
+         'tsmuxer-ng-gui-bin'
          )
 pkgver=2.6.11
 pkgrel=1
@@ -21,7 +21,7 @@ sha256sums=('815a383aebc67e59b6e541b927ce14480efed9d103fe99e74ced9ea381f61764'
             )
 options=('!strip')
 
-package_tsmuxer-cli-ng-bin() {
+package_tsmuxer-ng-cli-bin() {
   pkgdesc="Transport Stream muxer. New Generation (3D capable). CLI"
   depends_i686=('gcc-libs'
                 'freetype2'
@@ -30,10 +30,12 @@ package_tsmuxer-cli-ng-bin() {
                   'lib32-freetype2'
                   )
   provides=('tsmuxer-cli'
-            'tsmuxer-cli-bin'
+            'tsmuxer-ng-cli'
             )
   conflicts=('tsmuxer'
              'tsmuxer-cli'
+             'tsmuxer-cli-ng'
+             'tsmuxer-ng-cli'
              )
 
   install -Dm755 tsMuxeR "${pkgdir}/usr/bin/tsmuxer"
@@ -48,11 +50,13 @@ package_tsmuxer-gui-ng-bin() {
   depends_x86_64=('lib32-gcc-libs'
                   'lib32-qt4'
                   )
-  provides=('tsmuxer-gui-bin' 
-            'tsmuxer-gui'
+  provides=('tsmuxer-gui'
+            'tsmuxer-ng-gui'
             )
-  conflicts=('tsmuxer' 
+  conflicts=('tsmuxer'
              'tsmuxer-gui'
+             'tsmuxer-gui-ng'
+             'tsmuxer-ng-gui'
              )
 
   install -Dm755 tsMuxerGUI "${pkgdir}/usr/bin/tsmuxergui"
