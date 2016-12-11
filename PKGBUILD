@@ -1,9 +1,5 @@
 # Maintainer: Daniel Bermond < yahoo-com: danielbermond >
 
-# FFmpeg compiled from Git repository with all possible libraries.
-# At the current moment only the 'mmal' option is not enabled because it is a
-# hardware related library that is not for x86. All other options are enabled.
-
 # AUR dependencies
 # ----------------
 # libilbc kvazaar chromaprint-fftw libbs2b openh264 shine vo-amrwbenc
@@ -18,7 +14,7 @@
 # intel-media-sdk (experimental Intel QSV support only for x86_64)
 
 pkgname=ffmpeg-full-git
-pkgver=N.82751.g83a75bf
+pkgver=N.82833.gedb4f5d
 pkgrel=1
 pkgdesc="Record, convert and stream audio and video (Git version with all possible libs)"
 arch=('i686' 'x86_64')
@@ -188,7 +184,6 @@ build() {
 	        --enable-xlib \
 	        --enable-zlib \
 	        \
-	        --enable-audiotoolbox \
 	        $_cuda \
 	        $_cuvid \
 	        --enable-libmfx \
@@ -197,7 +192,6 @@ build() {
 	        --enable-omx \
 	        --enable-omx-rpi \
 	        --enable-vaapi \
-	        --enable-vda \
 	        --enable-vdpau \
 	        --enable-videotoolbox
 	
