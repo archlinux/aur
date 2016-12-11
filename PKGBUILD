@@ -2,7 +2,7 @@
 # Contributor: [Vitaliy Berdinskikh](mailto:ur6lad@archlinux.org.ua) aka UR6LAD
 
 pkgname=fldigi
-pkgver=3.23.16
+pkgver=3.23.17
 pkgrel=1
 pkgdesc="Digital Modem Program for Amateur Radio"
 arch=('i686' 'x86_64')
@@ -15,7 +15,7 @@ optdepends=('hamlib: rig control through hamlib'
 	'pulseaudio: pulseaudio support'
 	'xmlrpc-c: XML-RPC control')
 source=(http://downloads.sourceforge.net/$pkgname/$pkgname-$pkgver.tar.gz)
-sha512sums=('5443d871cc0f42ab09cec3a4b207ecf7ebe6acb3a46adf76839494b81dca28047cc1ce041d342ec54ae91cc5efdcd8895cdd6c7463e9d8325005a93ed6e38e34')
+sha512sums=('362e57e14fa1a05ea4fdd2415996117af47878c37beb4d63e2d4ab57ca7f20e0b47c49b69bf35fcd7a8e7558c1e6329785087c8bcfcf8b8958f197af3c8381bb')
 
 build() {
 	cd "$srcdir"
