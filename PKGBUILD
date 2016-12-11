@@ -5,17 +5,19 @@ pkgname=('tsmuxer-cli-ng'
          'tsmuxer-gui-ng'
          )
 pkgver=2.6.11
-pkgrel=2
+pkgrel=3
 pkgdesc="Transport Stream muxer. New Generation (3D capable)"
 arch=('i686' 'x86_64')
 url='http://forum.doom9.org/showthread.php?t=168539'
 license=('custom')
 source=("tsmuxer-${pkgver}.tar.gz::https://docs.google.com/uc?authuser=0&id=0B0VmPcEZTp8NekJxLUVJRWMwejQ&export=download"
-        "tsMuxerGUI.desktop"
-        "tsMuxerGUI.png")
-sha1sums=('aa3a7d45ddf4ca77b5e94c8602081ac0e56e4015'
-          '6708b8ff7d7401e142a7d64c0fd588c365e009c1'
-          '07a5eab9c7b3579d73bc80461ba566954f26d1e4')
+        'tsmuxergui.desktop'
+        'tsmuxergui.png'
+        )
+sha256sums=('815a383aebc67e59b6e541b927ce14480efed9d103fe99e74ced9ea381f61764'
+            'aed84b10da52849c14acb6bfb8b806c9675e4c8bcf781590712bbedc332b443f'
+            '5d1a6b9e88a82d40a0159d95bb596a7dc4502d7164364098e4cc3ddef72632c0'
+            )
 options=('!strip')
 
 package_tsmuxer-cli-ng() {
@@ -23,7 +25,7 @@ package_tsmuxer-cli-ng() {
   provides=('tsmuxer-cli')
   conflicts=('tsmuxer' 'tsmuxer-cli')
 
-  install -Dm755 tsMuxeR "${pkgdir}/usr/bin/tsMuxeR"
+  install -Dm755 tsMuxeR "${pkgdir}/usr/bin/tsmuxer"
 }
 
 package_tsmuxer-gui-ng() {
@@ -38,10 +40,9 @@ package_tsmuxer-gui-ng() {
                   )
   provides=('tsmuxer-gui')
   conflicts=('tsmuxer' 'tsmuxer-gui')
-  install="tsmuxer-ng.install"
 
-  install -Dm755 tsMuxerGUI "${pkgdir}/usr/bin/tsMuxerGUI"
+  install -Dm755 tsMuxerGUI "${pkgdir}/usr/bin/tsmuxergui"
 
-  install -Dm644 tsMuxerGUI.desktop "${pkgdir}/usr/share/applications/tsMuxerGUI.desktop"
-  install -Dm644 tsMuxerGUI.png "${pkgdir}/usr/share/pixmaps/tsMuxerGUI.png"
+  install -Dm644 tsmuxergui.desktop "${pkgdir}/usr/share/applications/tsmuxergui.desktop"
+  install -Dm644 tsmuxergui.png "${pkgdir}/usr/share/pixmaps/tsMuxergui.png"
 }
