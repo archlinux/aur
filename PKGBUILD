@@ -1,7 +1,7 @@
 # Maintainer: Python Shell <pythonshell@yeah.net>
 
 pkgname=cbmc-git
-pkgver=cbmc.5.5.r81.8f47419
+pkgver=cbmc.5.5.r387.5ec88cd
 pkgrel=1
 pkgdesc="Bounded Model Checking for ANSI-C"
 arch=('i686' 'x86_64')
@@ -16,7 +16,7 @@ md5sums=('SKIP')
 
 pkgver() {
     cd "$srcdir/$pkgname"
-	printf "%s" "$(git describe --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
+    printf "%s" "$(git describe --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
 }
 
 build() {
