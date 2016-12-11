@@ -53,10 +53,10 @@ pkgname = nvidia-libgl-full-beta-all
 
 pkgname = opencl-nvidia-full-beta-all
 	pkgdesc = NVIDIA's OpenCL implemention for 'nvidia-utils-full-beta-all'
-	depends = libcl
 	depends = zlib
 	optdepends = opencl-headers: headers necessary for OpenCL development
 	provides = opencl-nvidia
+   provides = opencl-driver
 	conflicts = opencl-nvidia
 
 pkgname = lib32-nvidia-utils-full-beta-all

@@ -108,9 +108,9 @@ build() {
 
 package_opencl-nvidia-full-beta-all() {
   pkgdesc="NVIDIA's OpenCL implemention for 'nvidia-utils-full-beta-all'"
-  depends=('libcl' 'zlib')
+  depends=('zlib')
   optdepends=('opencl-headers: headers necessary for OpenCL development')
-  provides=('opencl-nvidia')
+  provides=('opencl-nvidia' 'opencl-driver')
   conflicts=('opencl-nvidia')
   cd $_pkg
 
