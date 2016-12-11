@@ -1,7 +1,7 @@
 # Maintainer: Simon Legner <Simon.Legner@gmail.com>
 pkgname=osmium-tool
-pkgver=1.4.0
-pkgrel=2
+pkgver=1.4.1
+pkgrel=1
 pkgdesc="Command line tool for working with OpenStreetMap data based on the Osmium library"
 arch=('i686' 'x86_64')
 depends=('boost-libs' 'expat')
@@ -28,5 +28,5 @@ package() {
 	make DESTDIR="$pkgdir/" install
 }
 
-sha1sums=('3b8f53fea8975ecb2ce19baf4877ad9d1e5661bb')
-sha256sums=('115b0e4fb303251a5c8377e9834944a164215f76d0e83867d5e83d52ae2abc1e')
+sha1sums=('1908b4f54a650a49e99ee7ec9621b4bc17818e39')
+sha256sums=('1263a2836df59874c733d22184027ae414372682e28f80725cacdc3b2e4b8b64')
