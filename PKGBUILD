@@ -1,7 +1,7 @@
 # Maintainer: Baptiste Jonglez <baptiste--aur at jonglez dot org>
 pkgname=npiet
-pkgver=1.3d
-pkgrel=2
+pkgver=1.3e
+pkgrel=1
 pkgdesc="An interpreter for piet programs. Also includes npietedit and npiet-foogol"
 arch=('i686' 'x86_64')
 url="https://www.bertnase.de/npiet/"
@@ -9,9 +9,9 @@ license=('GPL')
 depends=('libpng' 'gd' 'giflib')
 optdepends=('tk: for npietedit')
 source=("https://www.bertnase.de/npiet/$pkgname-$pkgver.tar.gz")
-md5sums=('bb1c8c66a6859cd758bffad87da7a091')
-sha1sums=('75b0858c427873e662adb0243289c53dcd868d7f')
-sha256sums=('62aeabec58b672e8bfc8024183103462d8c7ca93bff7b6803c5d7bdd45c864c5')
+md5sums=('c593a39278ec13b3bff9e451208c92f1')
+sha1sums=('344ed62bd5a62afbb001951a07493504892de33c')
+sha256sums=('e819c766d12e1dfaf71561429486ed85b6ae4438da6e7ee06871ab5ce58231c5')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
