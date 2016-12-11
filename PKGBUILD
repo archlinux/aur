@@ -2,7 +2,7 @@
 # Contributor: Julien Nicoulaud <julien.nicoulaud@gmail.com>
 pkgname=yourkit
 _version=2016.02
-_build=43
+_build=44
 pkgver=${_version}b${_build}
 pkgrel=1
 pkgdesc="Java CPU and memory profiler."
@@ -15,7 +15,7 @@ optdepends=('intellij-idea-community-edition: A Java IDE that integrates with Yo
             'netbeans: A Java IDE that integrates with Yourkit')
 options=(!strip)
 source=(http://www.yourkit.com/download/yjp-${_version}-b${_build}-linux.tar.bz2)
-sha256sums=('09ff6cbe8dc6a5d2b0cc45d2296b7d08601d3cbe090153b7ccae2f19b0126e5f')
+sha256sums=('690d24c183fb6bc7b5194dd457dbd56cf24d1ae124cd913ef062fd92e662bb59')
 
 build() {
   msg2 "Generate scripts for /usr/bin..."
