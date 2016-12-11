@@ -1,0 +1,15 @@
+pkgbase = haskell-fixed
+	pkgdesc = Signed 15.16 precision fixed point arithmetic
+	pkgver = 0.2.1.1
+	pkgrel = 1
+	url = http://github.com/ekmett/fixed
+	install = haskell-fixed.install
+	arch = any
+	license = custom:BSD3
+	makedepends = ghc
+	depends = haskell-base-compat
+	source = http://hackage.haskell.org/packages/archive/fixed/0.2.1.1/fixed-0.2.1.1.tar.gz
+	md5sums = 352e57267013d5c6962311ae266f4715
+
+pkgname = haskell-fixed
+
