@@ -2,7 +2,7 @@
 
 pkgname=python-progressbar2
 _pkgname=python-progressbar
-pkgver=3.10.1
+pkgver=3.11.0
 pkgrel=1
 pkgdesc="Progressbar library to provide visual (yet text based) progress to long running operations"
 arch=('any')
@@ -11,11 +11,13 @@ license=('BSD')
 depends=('python' 'python-utils')
 provides=('python-progressbar')
 conflicts=('python-progressbar')
-source=("https://github.com/WoLpH/${_pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('dba3166cd005a9a724a56992661483991a4f5ef25f9d1a5b164767f32c57e7dc')
+#source=("https://github.com/WoLpH/${_pkgname}/archive/v${pkgver}.tar.gz")
+source=("https://github.com/WoLpH/${_pkgname}/archive/e4c99940f33dd8227696d812c56d4cdabff79acc.zip")
+sha256sums=('b0fbe51de6848608fe0cb9efe5cf975c29054f4c53ccdf3e8a41209472c85569')
 
 package() {
-  cd "${srcdir}/${_pkgname}-${pkgver}"
+  #cd "${srcdir}/${_pkgname}-${pkgver}"
+  cd "${srcdir}/${_pkgname}-"*
 
   install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
   python setup.py install --prefix=/usr --root="${pkgdir}" --optimize=1
