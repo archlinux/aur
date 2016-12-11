@@ -1,27 +1,18 @@
-# Maintainer: Félix Saparelli <aur@passcod.name>
+# Oops, lapse of mind and I created a package for something that's already in
+# extra. Leaving it as merely depending on the actual package, AUR maintainers
+# feel free to wipe it.
+
 pkgname=exiftool
 pkgver=10.36
-pkgrel=1
+pkgrel=2
 pkgdesc="Read, write and edit meta information in a wide variety of images."
 arch=('any')
 url="http://www.sno.phy.queensu.ca/~phil/exiftool/"
 license=('GPL-1.0' 'Artistic-1.0-Perl')
-depends=('perl')
-source=("http://www.sno.phy.queensu.ca/~phil/exiftool/Image-ExifTool-$pkgver.tar.gz")
-sha512sums=('e6075755cd7510166995100459f80fb90d356c7a0d1073d414324c43386fa2487a28588e8035dbdb9815dc0b6df7044643916f85bfd68d659fb30f8350242685')
-
-build() {
-	cd "Image-ExifTool-$pkgver"
-	perl Makefile.PL
-	make
-}
-
-check() {
-	cd "Image-ExifTool-$pkgver"
-	make -k test
-}
+depends=('perl-image-exiftool')
+source=('tool::https://www.archlinux.org/packages/extra/any/perl-image-exiftool/')
+sha512sums=('SKIP')
+noextract=('tool')
 
 package() {
-	cd "Image-ExifTool-$pkgver"
-	make DESTDIR="$pkgdir/" install
 }
