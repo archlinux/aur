@@ -23,7 +23,7 @@
 pkgname=ffmpeg-full-nvenc
 _pkgbasename=ffmpeg
 pkgver=3.2.2
-pkgrel=4
+pkgrel=5
 epoch=1
 pkgdesc="Record, convert, and stream audio and video (all codecs including Nvidia NVENC)"
 arch=('i686' 'x86_64')
@@ -115,7 +115,6 @@ build() {
     \
     \
     --enable-avisynth \
-    --enable-audiotoolbox \
     --enable-chromaprint \
     --enable-decoder=atrac3 \
     --enable-decoder=atrac3p \
@@ -194,7 +193,6 @@ build() {
     --enable-openssl \
     --enable-sdl2 \
     --enable-vaapi \
-    --enable-vda \
     --enable-vdpau \
     --enable-videotoolbox \
     --enable-x11grab \
