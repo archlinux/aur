@@ -63,5 +63,5 @@ package_tsmuxer-ng-gui-bin() {
   (cd ${pkgdir}/usr/bin; upx -d -q tsmuxergui &>/dev/null)
 
   install -Dm644 tsmuxergui.desktop "${pkgdir}/usr/share/applications/tsmuxergui.desktop"
-  install -Dm644 tsmuxergui.png "${pkgdir}/usr/share/pixmaps/tsMuxergui.png"
+  install -Dm644 tsmuxergui.png "${pkgdir}/usr/share/pixmaps/tsmuxergui.png"
 }
