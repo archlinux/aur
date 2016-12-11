@@ -20,7 +20,7 @@ sha256sums=('815a383aebc67e59b6e541b927ce14480efed9d103fe99e74ced9ea381f61764'
             )
 options=('!strip')
 
-package_tsmuxer-cli-ng() {
+package_tsmuxer-cli-ng-bin() {
   pkgdesc="Transport Stream muxer. New Generation (3D capable). CLI"
   depends_i686=('gcc-libs'
                 'freetype2'
@@ -39,7 +39,7 @@ package_tsmuxer-cli-ng() {
   (cd ${pkgdir}/usr/bin; upx -d -q tsmuxer &>/dev/null)
 }
 
-package_tsmuxer-gui-ng() {
+package_tsmuxer-gui-ng-bin() {
   pkgdesc="Transport Stream muxer. New Generation (3D capable). GUI"
   depends_i686=('gcc-libs'
                 'qt4'
