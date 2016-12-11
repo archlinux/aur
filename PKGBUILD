@@ -2,7 +2,7 @@
 
 pkgname=gis-weather
 pkgver=0.8.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Customizable weather widget"
 arch=('i686' 'x86_64')
 url="http://sourceforge.net/projects/gis-weather"
@@ -14,7 +14,7 @@ provides=()
 conflicts=('gis-weather-git')
 
 source=(${url}/files/gis-weather/${pkgver}/gis-weather_${pkgver}_all.deb/download)
-md5sums=('5a01e61f9d6826817d48e040d5ed056b')
+md5sums=('911cf73b421d36fd1a7e81e05b054966')
 
 package() {
   cd "$srcdir"
