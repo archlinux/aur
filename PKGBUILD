@@ -1,5 +1,7 @@
 # Maintainer: dreieck
 
+# PKGBUILD last time manually edited: At least on 2016-12-11.
+
 _pkgname=idos-timetable-additionalinfo-chaps-trains
 pkgname="${_pkgname}-latest"
 epoch=0
