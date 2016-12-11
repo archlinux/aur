@@ -2,10 +2,10 @@
 # tracks: https://projects.archlinux.org/svntogit/packages.git/log/trunk?h=packages/linux
 
 pkgname=linux-linode
-_basekernel=4.8
+_basekernel=4.9
 _kernelname=${pkgname#linux}
 _srcname=linux-${_basekernel}
-pkgver=${_basekernel}.14
+pkgver=${_basekernel}.0
 pkgrel=1
 arch=('i686' 'x86_64')
 url="https://github.com/yardenac/linux-linode"
@@ -13,16 +13,14 @@ license=(GPL2)
 makedepends=(xmlto docbook-xsl kmod inetutils bc 'gcc>=4.9.0')
 options=('!strip')
 source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar."{xz,sign}
-        "https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}."{xz,sign}
-        'net_handle_no_dst_on_skb_in_icmp6_send.patch'
+#        "https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}."{xz,sign}
         'config'
         'config.x86_64'
         'menu.lst'
         'hook'
         'preset')
-sha512sums=('a48a065f21e1c7c4de4cf8ca47b8b8d9a70f86b64e7cfa6e01be490f78895745b9c8790734b1d22182cf1f930fb87eaaa84e62ec8cc1f64ac4be9b949e7c0358' 'SKIP'
-            '374b849aac6736f3a8d7afd224d51a5f4bab5c0fefaa8738982bae7188687149b7775e53878efe25466b4c0d40769b284e8af55c1d3bae500bccdbf565c0453a' 'SKIP'
-            'c53bd47527adbd2599a583e05a7d24f930dc4e86b1de017486588205ad6f262a51a4551593bc7a1218c96541ea073ea03b770278d947b1cd0d2801311fcc80e5'
+sha512sums=('bf67ff812cc3cb7e5059e82cc5db0d9a7c5637f7ed9a42e4730c715bf7047c81ed3a571225f92a33ef0b6d65f35595bc32d773356646df2627da55e9bc7f1f1a' 'SKIP'
+#            '374b849aac6736f3a8d7afd224d51a5f4bab5c0fefaa8738982bae7188687149b7775e53878efe25466b4c0d40769b284e8af55c1d3bae500bccdbf565c0453a' 'SKIP'
             '211be6cff3c652cf635016f6ea55e95ba8e3dde78f77949f32d7952df389c0dbbaf10b03f813c906b31375e151cff922232c0adb15e7a2948f823ba44345efbd'
             '25bf894092daacf165e471b25d5259e5a21befdf1b06b385ff4d9acec000572a9217caf3ed2c90484031b36b6779ef4a3445261d79331ca06d6c2c81a2e22672'
             '2beaa01dc9679a66ccbbca0f4abeb0f77956651e3f83f114030b2ef344a16240124a549ccee2588b6a1179be6a66b4a8dc931e2c15c4d5282afeb85bb6ada210'
@@ -41,8 +39,7 @@ install=install
 
 prepare() {
   cd "${srcdir}/${_srcname}"
-  patch -p1 -i "${srcdir}/patch-${pkgver}"
-  patch -p1 -i "${srcdir}/net_handle_no_dst_on_skb_in_icmp6_send.patch"
+#  patch -p1 -i "${srcdir}/patch-${pkgver}"
   if [ "${CARCH}" = "x86_64" ]; then
     cat "${srcdir}/config.x86_64" > ./.config
   else
