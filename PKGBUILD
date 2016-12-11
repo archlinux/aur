@@ -20,7 +20,7 @@ pkgver() {
 
 prepare() {
 	cd "$srcdir/${pkgname%-git}"
-	mkdir build
+	mkdir -p build
 }
 
 build() {
