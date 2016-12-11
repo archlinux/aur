@@ -1,7 +1,7 @@
 pkgbase = mitamae
 	pkgdesc = Configuration management tool embedding mruby
 	pkgver = 1.1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/k0kubun/mitamae
 	arch = i686
 	arch = x86_64
@@ -9,8 +9,11 @@ pkgbase = mitamae
 	makedepends = ruby
 	makedepends = git
 	depends = glibc
+	depends = openssl
 	source = https://github.com/k0kubun/mitamae/archive/v1.1.2.tar.gz
+	source = build_config.rb
 	sha512sums = 57d2c4fe093ee729e8d35799dcafc1b5ea92e34dd7a3ab17e3f2ce0fef612368d3b5d09f2a9d18891fc52ff24ae18ff755b4ff8319bcd0ba534b436cd78df893
+	sha512sums = 8910ff0a465e821021de68713161c0a43ad6344a868430c6b8c1384ab1d50980968bedc3feb26cdb48556e318015784e9c11325495184da5358aa61143b0e4aa
 
 pkgname = mitamae
 
