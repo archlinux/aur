@@ -5,7 +5,7 @@ pkgname=('tsmuxer-cli-ng-bin'
          'tsmuxer-gui-ng-bin'
          )
 pkgver=2.6.11
-pkgrel=3
+pkgrel=1
 pkgdesc="Transport Stream muxer. New Generation (3D capable)"
 arch=('i686' 'x86_64')
 url='http://forum.doom9.org/showthread.php?t=168539'
