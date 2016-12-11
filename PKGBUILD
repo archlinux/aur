@@ -2,16 +2,15 @@
 _pipname=visitor
 pkgbase=python-visitor
 pkgname=('python2-visitor' 'python-visitor')
-pkgver=0.1.2
+pkgver=0.1.3
 pkgrel=1
 pkgdesc="A tiny pythonic visitor implementation."
 arch=('any')
 url="https://github.com/mbr/visitor"
 license=('MIT')
 makedepends=('python2-setuptools' 'python-setuptools')
-source=("https://pypi.python.org/packages/source/${_pipname:0:1}/$_pipname/$_pipname-$pkgver.tar.gz")
-md5sums=('e9471b44e5d426b0adf5d27694598be0')
-
+source=("https://pypi.python.org/packages/d7/58/785fcd6de4210049da5fafe62301b197f044f3835393594be368547142b0/$_pipname-$pkgver.tar.gz")
+md5sums=('94a024ed0ec1b02b4497c15267d319ca')
 
 prepare() {
     cp -R $_pipname-$pkgver python2-$_pipname-$pkgver
@@ -30,7 +29,7 @@ depends=('python2')
 package_python-visitor() {
 depends=('python')
 
-    cd $_pipname-$pkgver 
+    cd $_pipname-$pkgver
     python setup.py install --root="$pkgdir/" --optimize=1
 
     chmod -R a+r $pkgdir/usr/lib/python*/site-packages/*info/
