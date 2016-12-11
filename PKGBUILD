@@ -1,6 +1,6 @@
 _github_name='persistentlist'
 pkgname="python-${_github_name}"
-pkgver=0.3
+pkgver=0.4
 pkgrel=1
 pkgdesc="Persistentlist is a simple persistent list carrying n objects, the last objects being appended at the end of the list."
 url="https://github.com/chaica/persistentlist"
@@ -18,4 +18,4 @@ package() {
   python3 setup.py install --prefix=/usr --root="${pkgdir}"
 }
 
-md5sums=('ff16d048246e43a15585e1da08d6b460')
+md5sums=('9b1a0264fe2dd6cf4c3f5521c9872376')

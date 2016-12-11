@@ -1,6 +1,6 @@
 pkgbase = python-persistentlist
 	pkgdesc = Persistentlist is a simple persistent list carrying n objects, the last objects being appended at the end of the list.
-	pkgver = 0.3
+	pkgver = 0.4
 	pkgrel = 1
 	url = https://github.com/chaica/persistentlist
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = python-persistentlist
 	makedepends = python
 	makedepends = python-setuptools
 	depends = python
-	source = https://github.com/chaica/persistentlist/archive/0.3.tar.gz
-	md5sums = ff16d048246e43a15585e1da08d6b460
+	source = https://github.com/chaica/persistentlist/archive/0.4.tar.gz
+	md5sums = 9b1a0264fe2dd6cf4c3f5521c9872376
 
 pkgname = python-persistentlist
 
