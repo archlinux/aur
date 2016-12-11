@@ -14,7 +14,6 @@ pkgbase = haskell-openglraw
 	depends = haskell-fixed
 	depends = haskell-base-compat
 	depends = haskell-transformers-base
-	depends = haskell-bytestring-builder
 	options = strip
 	source = http://hackage.haskell.org/packages/archive/OpenGLRaw/3.2.4.0/OpenGLRaw-3.2.4.0.tar.gz
 	md5sums = 54553e989777d336c9ae97a45d273701
