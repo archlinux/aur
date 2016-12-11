@@ -1,7 +1,7 @@
 # Maintainer: Simon Legner <Simon.Legner@gmail.com>
 pkgname=osmium-tool
 pkgver=1.4.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Command line tool for working with OpenStreetMap data based on the Osmium library"
 arch=('i686' 'x86_64')
 depends=('boost-libs' 'expat')
@@ -26,6 +26,7 @@ check() {
 package() {
 	cd "$pkgname-$pkgver/build"
 	make DESTDIR="$pkgdir/" install
+	install -Dm644 ../zsh_completion/_osmium "${pkgdir}/usr/share/zsh/site-functions/_osmium"
 }
 
 sha1sums=('1908b4f54a650a49e99ee7ec9621b4bc17818e39')
