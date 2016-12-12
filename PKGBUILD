@@ -4,7 +4,7 @@
 pkgname=dict-wn
 pkgver=3.1
 _debver=3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="WordNet for dictd et al."
 arch=('any')
 url="https://wordnet.princeton.edu/"
@@ -57,6 +57,6 @@ package() {
 	# Note, that the documentation will be for the old version.
 	install -m 0644 -t "${pkgdir}/usr/share/doc/${pkgname}/" AUTHORS COPYING NEWS README
 	
-	mkdir -p "{$pkgdir}/usr/share/licenses/dict-wn"
+	mkdir -p "${pkgdir}/usr/share/licenses/dict-wn"
 	ln -s /usr/share/doc/dict-wn/COPYING "${pkgdir}/usr/share/licenses/dict-wn"
 }
