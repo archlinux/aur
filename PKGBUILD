@@ -1,7 +1,11 @@
 # Maintainer: Peter Varo <hello@petervaro.com>
 
 pkgname=vim-multiple-cursors-git
-pkgver=latest
+pkgver=r194.51d0717
+pkgver() {
+    cd "vim-multiple-cursors"
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
 pkgrel=1
 pkgdesc="True Sublime Text style multiple selections for Vim"
 arch=('any')
