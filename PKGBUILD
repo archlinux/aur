@@ -1,6 +1,6 @@
 # Maintainer: Wieland Hoffmann <the_mineo@web.de>
 pkgname=chromaprint-git
-pkgver=v1.4.r14.a81b23a
+pkgver=v1.4.r22.c945fdd
 pkgrel=1
 pkgdesc="Client library, written in C++, for extracting audio fingerprints. "
 arch=('i686' 'x86_64')
@@ -20,7 +20,7 @@ pkgver() {
 
 build() {
     cd "$srcdir/chromaprint"
-    cmake -DCMAKE_INSTALL_PREFIX=/usr -DBUILD_EXAMPLES=ON .
+    cmake -DCMAKE_INSTALL_PREFIX=/usr -DBUILD_TOOLS=ON .
 }
 
 package() {
