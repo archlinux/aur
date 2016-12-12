@@ -13,7 +13,7 @@ md5sums=('SKIP')
 
 build() {
   cd "$srcdir/gtk-sharp"
-  ./configure --prefix=/usr
+  ./autogen.sh --prefix=/usr
   make
 }
 
