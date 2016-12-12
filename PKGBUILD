@@ -51,10 +51,10 @@ _use_current=
 pkgbase=linux-rt-bfq
 # pkgname=('linux-rt-bfq' 'linux-rt-bfq-headers' 'linux-rt-bfq-docs')
 _srcname=linux-4.8
-_pkgver=4.8.11
-_rtpatchver=rt7
+_pkgver=4.8.14
+_rtpatchver=rt8
 pkgver=${_pkgver}_${_rtpatchver}
-pkgrel=3
+pkgrel=1
 arch=('i686' 'x86_64')
 url="http://algo.ing.unimo.it"
 license=('GPL2')
@@ -85,8 +85,8 @@ source=("http://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         '99-linux.hook'
          # standard config files for mkinitcpio ramdisk
         'linux.preset'
-        'fix_race_condition_in_packet_set_ring.diff'
         'net_handle_no_dst_on_skb_in_icmp6_send.patch'
+        '0001-x86-fpu-Fix-invalid-FPU-ptrace-state-after-execve.patch'
         # patches from https://github.com/linusw/linux-bfq/commits/bfq-v8
         '0005-BFQ-Fix.patch'
         '0006-BFQ-Fix.patch')
@@ -115,14 +115,14 @@ prepare() {
         msg "Patching set DEFAULT_CONSOLE_LOGLEVEL to 4"
         patch -p1 -i "${srcdir}/change-default-console-loglevel.patch"
         
-   ###  fix a race condition that allows to gain root
-    # https://marc.info/?l=linux-netdev&m=148054660230570&w=2
-         msg "Fix a race condition that allows to gain root"
-         patch -p1 -i "${srcdir}/fix_race_condition_in_packet_set_ring.diff"
-         
     ### fix https://bugzilla.kernel.org/show_bug.cgi?id=189851
         msg "Fix https://bugzilla.kernel.org/show_bug.cgi?id=189851"
-        patch -p1 -i "${srcdir}/net_handle_no_dst_on_skb_in_icmp6_send.patch"     
+        patch -p1 -i "${srcdir}/net_handle_no_dst_on_skb_in_icmp6_send.patch"
+    
+    ### Revert a commit that causes memory corruption in i686 chroots on our
+    # build server ("valgrind bash" immediately crashes)
+        msg "Revert a commit that causes memory corruption in i686 chroots on our build server"
+        patch -Rp1 -i "${srcdir}/0001-x86-fpu-Fix-invalid-FPU-ptrace-state-after-execve.patch"    
 
     ### Patch source with BFQ
         msg "Patching source with BFQ patches"
@@ -468,9 +468,9 @@ done
 
 sha512sums=('a48a065f21e1c7c4de4cf8ca47b8b8d9a70f86b64e7cfa6e01be490f78895745b9c8790734b1d22182cf1f930fb87eaaa84e62ec8cc1f64ac4be9b949e7c0358'
             'SKIP'
-            'b77fd9fa3ae1e5f80ffe555ecec7d7f5b60cad3efc81d51f66a486f5d3ce862083a1553fa3e148452fab62a25d2d953abf5c23c7a51fe094b9c0946e09dbc30b'
+            '374b849aac6736f3a8d7afd224d51a5f4bab5c0fefaa8738982bae7188687149b7775e53878efe25466b4c0d40769b284e8af55c1d3bae500bccdbf565c0453a'
             'SKIP'
-            'd6e20493065fcab333cfa64c58c1147161d4120bc8982a7626134fd5a1941c764a06e7f0e4207368ffb02a718df03d956d54cdf1a6c0fa0c4a9e2eb64ce9238f'
+            'b3381b7e283358b2903a06da200aec58bb70326d6bba6eb5f1790b0e84f4849230286d903fa491ef8221b8fe13bea02775206152ce9cb706c791c3c63f111db6'
             'SKIP'
             '95a7b9dc5a6c378b19e199285b5c1c397ca0ca0cf03c42d185b57da68329e59d59294d1879998f4020a0dee10d36c550acf30f28970c82adb2e7604c86424178'
             'dc0649dfe2a5ce8e8879a62df29a4a1959eb1a84e5d896a9cb119d6a85a9bad1b17135371799e0be96532e17c66043d298e4a14b18fad3078a1f425108f888c9'
@@ -483,8 +483,8 @@ sha512sums=('a48a065f21e1c7c4de4cf8ca47b8b8d9a70f86b64e7cfa6e01be490f78895745b9c
             'a6200ad0c8bc44b97233c0cbd4c419c37727f06e735f2c6b60a28e94bfdc6d31d7f26d24f9f898c62fceefe08dfd3bdbd5d71acf2b5fcedbda8ea3881d284daa'
             'd6faa67f3ef40052152254ae43fee031365d0b1524aa0718b659eb75afc21a3f79ea8d62d66ea311a800109bed545bc8f79e8752319cd378eef2cbd3a09aba22'
             '2dc6b0ba8f7dbf19d2446c5c5f1823587de89f4e28e9595937dd51a87755099656f2acec50e3e2546ea633ad1bfd1c722e0c2b91eef1d609103d8abdc0a7cbaf'
-            'fd5800dcc1b9e7825892dfaedf78d9b64f354695992c9a1b0014e66664c6f0f4c80989439df360c994aab03dc4aa1f4e3481f153a6b4383c9e39da93c8d235d0'
             'c53bd47527adbd2599a583e05a7d24f930dc4e86b1de017486588205ad6f262a51a4551593bc7a1218c96541ea073ea03b770278d947b1cd0d2801311fcc80e5'
+            '002d5e0ccfa5824c1750912a6400ff722672d6587b74ba66b1127cf1228048f604bba107617cf4f4477884039af4d4d196cf1b74cefe43b0bddc82270f11940d'
             '3889679e288d51f6fecc7ed6581ccde34acbf1e4861f5c9ca237a1ad13158502757d3fc457d7b6caf1c8c99c9dba842265004154a71cffb8ec14e1030e49e312'
             '3c3f3b6407d9a1a63cd91c2b5c35e6c932afa5bf33f1b2e8a530dbd9eacda8c8f956616c4cc9228657624da58e354ba5714252237d84ff3386fd65cf44f06ddc')
             
