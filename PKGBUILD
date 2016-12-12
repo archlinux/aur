@@ -11,7 +11,7 @@
 
 pkgname=cairo-compmgr
 pkgver=0.3.1
-pkgrel=14
+pkgrel=15
 epoch=2
 pkgdesc="A Cairo based composite manager"
 arch=(i686 x86_64)
