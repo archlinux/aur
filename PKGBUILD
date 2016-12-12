@@ -1,19 +1,19 @@
 # Maintainer: Raphael Simon <simon.raphael@gmail.com>
 
 pkgbase=linux-samus4
-pkgver=4.8
-pkgrel=12
+pkgver=4.9
+pkgrel=1
 arch=('x86_64')
 url="https://github.com/raphael/linux-samus"
 license=('GPL2')
 makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc' 'lzop')
 options=('!strip')
-source=("https://github.com/raphael/linux-samus/archive/v4.8-12.tar.gz"
+source=("https://github.com/raphael/linux-samus/archive/v4.9-1.tar.gz"
         "config"
         "linux.preset"
         )
 _kernelname=${pkgbase#linux}
-_linuxsrc=linux-samus-4.8-12/build/linux/
+_linuxsrc=linux-samus-4.9-1/build/linux/
 
 # $srcdir is: /home/raphael/src/kernel-pkg/src
 prepare() {
@@ -48,7 +48,8 @@ _package() {
   KARCH=x86
 
   # get kernel version
-  _kernver="$(make kernelrelease)"
+  #_kernver="$(make kernelrelease)"
+  _kernver="4.9.0-ph"
   _basekernel=${_kernver%%-*}
   _basekernel=${_basekernel%.*}
 
@@ -244,7 +245,6 @@ for _p in ${pkgname[@]}; do
   }"
 done
 
-# vim:set ts=8 sts=2 sw=2 et:
-md5sums=('036caed87b106b55bda636ce828e4d2b'
-         'df9cb07395265843421b9f3fb074352c'
+md5sums=('959e28547a7a764a2637f010e53191f7'
+         'fc724fbe7a4a2d2334a689a89e955652'
          '5aae464a8085b2f3adcdcaff29853d04')
