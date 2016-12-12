@@ -2,7 +2,7 @@
 
 # Common metadata
 pkgname='pico-8'
-pkgver='0.1.9b'
+pkgver='0.1.10b'
 pkgrel=1
 pkgdesc="A fantasy console for making, sharing and playing tiny games and other computer programs."
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
@@ -26,9 +26,9 @@ _file_zip_arm="pico-8_${pkgver}_${_arch_arm}.zip"
 # Source files hashes (SHA-512)
 _file_desktop_hash="f63b8f4d32b7183c9785a418c7e8d2ea98343edd90c8553397c7d1776b888eb2b49f0308ec7918bde6c41c9a53b6a00318a533d264fa20e0bbd3d8a9f88c2244"
 _file_mime_hash="0497c602acbffdbec285ffcdb43ebe55adc793c051ce792933ba2d8d431229f2a938434cd760fbf92133ad6b9604c996b563276166fa883a619cd7313acd4f92"
-_file_zip_i686_hash="4b68f5ae1bb72fbdee5050603071823cce6e833301aa6863260f6499e34012e59b9b5cfd14369dbaf61a6fa20fc3e7dbf26d943ac4f8b2cb0ff761ab643888fd"
-_file_zip_x86_64_hash="cbfcbb5de747f26917bbb72fafbadfab2126ec9b3a7cac452f166901998621412ffa6071d2b94b26a5d66c2d4dea3789c51e184c59632fc3509e7005a422ea00"
-_file_zip_arm_hash="515720d08090145a83af0475730df681fd2f71741bd23197b1a40930d7e1aec8f7167b0c68d110fe059dcb4b8f78040f27c990c6cd4cae4efd0de110796aa717"
+_file_zip_i686_hash="132aa3fd5f096c9d7c15b0ce1e69e9eb082e4578e6ec130a0efece9d5f35df791cc2b3b58d35f8f5bba42320ebd83c164432cb7595f01dd02fffd301783ae347"
+_file_zip_x86_64_hash="61f2990a64e6326300912d33d07cdddc8c2b6882b686674389204cf42718467314c01c2c4b241ca2f49c53dc318734b47f9f909e3e92b237be3992e57e7df312"
+_file_zip_arm_hash="b4733810b692829e7c1a29aa53e716ce650b851caaba73158b4a6ab36c5d2c5e1bb6da6a463b6e25158d46ab5f4b33e433cc78f66af6fbe4506c1f0f5578414d"
 
 # Source declaration
 source=("${_file_desktop}" "${_file_mime}")
@@ -53,7 +53,11 @@ sha512sums_armv7h=("${_file_zip_arm_hash}")
 # Prepares sources for building
 prepare () {
   # Moves content of the subfolder named pico-8 to src root
-  mv "./pico-8/"* .
+  if [ "${_platform}" = "${_arch_i686}" ]; then 
+    mv "./pico-8_i386/"* .
+  else
+    mv "./pico-8/"* .
+  fi
 
   # Changes licence and icon filenames in order to comply naming conventions
   mv "license.txt" "LICENSE"
