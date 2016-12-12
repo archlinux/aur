@@ -1,0 +1,15 @@
+pkgbase = r-cran-rcpp
+	pkgdesc = Seamless R and C++ Integration
+	pkgver = 0.12.8
+	pkgrel = 1
+	url = http://cran.r-project.org/web/packages/Rcpp/index.html
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	license = GPL3
+	depends = r
+	source = http://cran.r-project.org/src/contrib/Rcpp_0.12.8.tar.gz
+	md5sums = 1e878b7bdc3fd23a2cd4a33572613aae
+
+pkgname = r-cran-rcpp
+
