@@ -1,12 +1,13 @@
 pkgbase = r-cran-stringi
 	pkgdesc = fast, correct, consistent, portable, convenient character string processing
 	pkgver = 1.1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://cran.r-project.org/web/packages/stringi/index.html
 	arch = i686
 	arch = x86_64
 	license = GPL2
 	depends = r
+	depends = icu>=50
 	source = http://cran.r-project.org/src/contrib/stringi_1.1.2.tar.gz
 	md5sums = 0ec2faa62643e1900734c0eaf5096648
 
