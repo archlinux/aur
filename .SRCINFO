@@ -1,6 +1,6 @@
 pkgbase = xolonium-fonts
 	pkgdesc = Xolonium Fonts created for Xonotic <http://www.xonotic.org>
-	pkgver = 4.0
+	pkgver = 4.1
 	pkgrel = 1
 	url = https://fontlibrary.org/en/font/xolonium
 	install = xolonium-fonts.install
@@ -9,8 +9,8 @@ pkgbase = xolonium-fonts
 	depends = fontconfig
 	depends = xorg-font-utils
 	provides = ttf-font
-	source = xolonium-4.0.zip::https://fontlibrary.org/assets/downloads/xolonium/38b086e531b4f1562471bbcec9ff61c9/xolonium.zip
-	sha256sums = 045e2c4411f3e3d8eb60a98fafaad8672328f0224b17667a9927d0b2699e50e1
+	source = xolonium-4.1.zip::https://fontlibrary.org/assets/downloads/xolonium/e00c124f3e1b130e5ec2a7eee2f4f1b8/xolonium.zip
+	sha256sums = c3fe7355675f40c0f66379e772a0b0a1e4c346eb43b6b719cf160a61d3b0b046
 
 pkgname = xolonium-fonts
 
