@@ -13,7 +13,7 @@ md5sums=('SKIP')
 
 build() {
   cd "$srcdir/gtk-sharp"
-  ./bootstrap-2-12 --prefix=/usr
+  ./bootstrap-2.12 --prefix=/usr
   make
 }
 
