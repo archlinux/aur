@@ -1,6 +1,6 @@
 pkgname=mingw-w64-openjpeg2
 pkgver=2.1.2
-pkgrel=2
+pkgrel=3
 arch=(any)
 pkgdesc="An open source JPEG 2000 codec, version ${pkgver} (mingw-w64)"
 license=("custom: BSD")
@@ -11,11 +11,13 @@ url="https://www.openjpeg.org"
 source=("https://github.com/uclouvain/openjpeg/archive/v$pkgver.tar.gz"
 "0001-fix-install-for-dlls.all.patch"
 "0003-versioned-dlls.mingw.patch"
-"0005-sock-jpip.all.patch")
-md5sums=('40a7bfdcc66280b3c1402a0eb1a27624'
-         'c71b7576d88fdd7613f318297cb0c8be'
-         'f8fd65a4d5b1dfc219b648325d33b389'
-         'f4f5174de862b6803702d6eaa83da4da')
+"0005-sock-jpip.all.patch"
+"repair_bugs_of_871_and_872.patch")
+sha256sums=('4ce77b6ef538ef090d9bde1d5eeff8b3069ab56c4906f083475517c2c023dfa7'
+            '3f3bde353ca3432f157258164c5e3c345af82ca3a9d5a68f815c3030b01cbc32'
+            'a221300d278f1a57b1ea5c70314702cd4234a2560ed2335bd5940fd921e78eda'
+            'b7b22dca26d5fd98ca5bc6ce775bbbabebc0e10fcf07fd0afb54d580699b8312'
+            'e352e9480925a31804d965c673545eeaa32d0a47605abaaa09b515ca956058ba')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
@@ -24,6 +26,7 @@ prepare() {
   patch -p1 -i ${srcdir}/0001-fix-install-for-dlls.all.patch
   patch -p1 -i ${srcdir}/0003-versioned-dlls.mingw.patch
   patch -p1 -i ${srcdir}/0005-sock-jpip.all.patch
+  patch -Np1 -i  ../repair_bugs_of_871_and_872.patch
 }
 
 build() {
