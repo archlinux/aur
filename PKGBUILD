@@ -1,7 +1,8 @@
 #
 # Maintainer: Paul Dunn <pwjdunn AT gmail DOT com>
+
 #
-# Id: PKGBUILD 277473 2016-09-30 19:28:40Z tpowa $
+# Based on the linux package by:
 # Maintainer: Tobias Powalowski <tpowa@archlinux.org>
 # Maintainer: Thomas Baechler <thomas@archlinux.org>
 
@@ -19,10 +20,10 @@
 # More at this wiki page ---> https://wiki.archlinux.org/index.php/Modprobed-db
 _localmodcfg=
 
-#pkgbase=linux               # Build stock -ARCH kernel
-pkgbase=linux-nvme       # Build kernel with a different name
-_srcname=linux-4.8
-pkgver=4.8.13
+pkgbase=linux-nvme               # Build stock -ARCH kernel
+#pkgbase=linux-custom       # Build kernel with a different name
+_srcname=linux-4.9
+pkgver=4.9
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
@@ -31,32 +32,34 @@ makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc' 'libelf')
 options=('!strip')
 source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         "https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.sign"
-        "https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.xz"
-        "https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.sign"
+        #"https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.xz"
+        #"https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.sign"
         # the main kernel config files
         'config' 'config.x86_64'
         # pacman hook for initramfs regeneration
         '99-linux.hook'
         # standard config files for mkinitcpio ramdisk
         'linux.preset'
-        'nvmepatch1-V4.patch'
-        'nvmepatch2-V4.patch'
-        'nvmepatch3-V4.patch'
         'change-default-console-loglevel.patch'
-        )
-
-sha256sums=('3e9150065f193d3d94bcf46a1fe9f033c7ef7122ab71d75a7fb5a2f0c9a7e11a'
-            'SKIP'
-            'f0e2f7f738e1a639956e01ba7ef8d3df40ecb5c7586eb366bcd4af70049a7a3c'
-            'SKIP'
-            '2ac8818414beb7dbacbd3ad450c516e6ada804827132a7132f63b8189e5f5151'
+	'APST.patch'
+	'pm_qos1.patch'
+        'pm_qos2.patch'
+        'pm_qos3.patch'
+        'nvme.patch'
+)
+sha256sums=('029098dcffab74875e086ae970e3828456838da6e0ba22ce3f64ef764f3d7f1a'
+            '8e49bebf2cff105987c06303f0608a49af2e8204088f0f9b29e58a2bf5f56e00'
+	    '2ac8818414beb7dbacbd3ad450c516e6ada804827132a7132f63b8189e5f5151'
             '41b9a64542befd2fea170776e8ec22a7d158dd3273633afc9b91662c448cd90a'
             '834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
-            '45a2b0344a5bea44e6e2a803238eb24223aff42c3c03ea6957cf6373b3bb5f6c'
-            'da53dd78823199502cd9d3941096e09a3b744d52a43b7a2314be59bde9b1c88d'
-            '7799f733063a426ba159e0cb1e90ca1755d05eee9b421f6b87c1867832baa038'
-            '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99')
+            '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
+	    '8ba7d5596b65c7705958836ab93ac714dbccdcd7e806be49f667ed427eff3e83'
+	    '88893fcd9612ddda60133670a83153dc44b4b13a8a05f7a4e2173ffbc6973164'
+            '945de39f2f52c78b4a500ff55c8e062d501cce3b3b739ea14ce76c6c77dc668d'
+            'e5b6308dd489f7000a7d418bfdad32c850cd5d193ce9ca97b83515f3ae815413'
+            '14191cd53057be7de90d5d1abb1e86c4a6022f5d8520f6fd30021a587d5ce565'
+)
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
               '647F28654894E3BD457199BE38DBBDC86092693E' # Greg Kroah-Hartman
@@ -67,8 +70,12 @@ _kernelname=${pkgbase#linux}
 prepare() {
   cd "${srcdir}/${_srcname}"
 
+  # mainline: not needed
   # add upstream patch
-  patch -p1 -i "${srcdir}/patch-${pkgver}"
+  # patch -p1 -i "${srcdir}/patch-${pkgver}"
+
+  # mainline: add patch
+  patch -p1 -i "${srcdir}/${_patchname}" || true
 
   # add latest fixes from stable queue, if needed
   # http://git.kernel.org/?p=linux/kernel/git/stable/stable-queue.git
@@ -78,10 +85,12 @@ prepare() {
   # (relevant patch sent upstream: https://lkml.org/lkml/2011/7/26/227)
   patch -p1 -i "${srcdir}/change-default-console-loglevel.patch"
 
-  # Added custom NVME patches in here
-  patch -p1 -i "${srcdir}/nvmepatch1-V4.patch"
-  patch -p1 -i "${srcdir}/nvmepatch2-V4.patch"
-  patch -p1 -i "${srcdir}/nvmepatch3-V4.patch"
+  # Added APST NVME patch here
+  patch -p1 -i "${srcdir}/APST.patch"
+  patch -p1 -i "${srcdir}/pm_qos1.patch"
+  patch -p1 -i "${srcdir}/pm_qos2.patch"
+  patch -p1 -i "${srcdir}/pm_qos3.patch"
+  patch -p1 -i "${srcdir}/nvme.patch"
 
   if [ "${CARCH}" = "x86_64" ]; then
     cat "${srcdir}/config.x86_64" > ./.config
@@ -95,10 +104,19 @@ prepare() {
   fi
 
   # set extraversion to pkgrel
-  sed -ri "s|^(EXTRAVERSION =).*|\1 -${pkgrel}|" Makefile
+  #sed -ri "s|^(EXTRAVERSION =).*|\1 -${pkgrel}|" Makefile
 
   # don't run depmod on 'make install'. We'll do this ourselves in packaging
   sed -i '2iexit 0' scripts/depmod.sh
+
+  # load configuration
+  # Configure the kernel. Replace the line below with one of your choice.
+  #make menuconfig # CLI menu for configuration
+  #make nconfig # new CLI menu for configuration
+  #make xconfig # X-based configuration
+  #make oldconfig # using old config from previous kernel version
+  make olddefconfig
+  # ... or manually edit .config
 
   # get kernel version
   make prepare
@@ -114,14 +132,6 @@ prepare() {
    msg "Running Steven Rostedt's make localmodconfig now"
    make localmodconfig
   fi
-
-  # load configuration
-  # Configure the kernel. Replace the line below with one of your choice.
-  #make menuconfig # CLI menu for configuration
-  #make nconfig # new CLI menu for configuration
-  #make xconfig # X-based configuration
-  #make oldconfig # using old config from previous kernel version
-  # ... or manually edit .config
 
   # rewrite configuration
   yes "" | make config >/dev/null
@@ -309,7 +319,7 @@ _package-headers() {
 
   # remove unneeded architectures
   rm -rf "${pkgdir}"/usr/lib/modules/${_kernver}/build/arch/{alpha,arc,arm,arm26,arm64,avr32,blackfin,c6x,cris,frv,h8300,hexagon,ia64,m32r,m68k,m68knommu,metag,mips,microblaze,mn10300,openrisc,parisc,powerpc,ppc,s390,score,sh,sh64,sparc,sparc64,tile,unicore32,um,v850,xtensa}
-  
+
   # remove a files already in linux-docs package
   rm -f "${pkgdir}/usr/lib/modules/${_kernver}/build/Documentation/kbuild/Kconfig.recursion-issue-01"
   rm -f "${pkgdir}/usr/lib/modules/${_kernver}/build/Documentation/kbuild/Kconfig.recursion-issue-02"
