@@ -2,7 +2,7 @@
 
 _pkgname=epiphany
 pkgname=$_pkgname-git
-pkgver=3.23.1.2.7.g0f21f4b
+pkgver=3.23.3
 pkgrel=1
 install=epiphany.install
 pkgdesc="A GNOME web browser based on the WebKit rendering engine."
@@ -43,6 +43,7 @@ build() {
   cd "$srcdir/$_pkgname"
   ./autogen.sh --prefix=/usr --sysconfdir=/etc \
       --localstatedir=/var --disable-maintainer-mode \
+      --with-libhttpseverywhere --enable-firefox-sync \
       --enable-debug --disable-Werror
   make
 }
