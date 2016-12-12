@@ -1,6 +1,6 @@
 pkgbase = sume-git
 	pkgdesc = Surface metrology command line tool and library.
-	pkgver = 0.0.1.r12.gd11f51a
+	pkgver = 0.0.1.r33.gbb45491
 	pkgrel = 1
 	url = https://github.com/darenk/sume
 	arch = i686
@@ -8,6 +8,7 @@ pkgbase = sume-git
 	license = GPL
 	depends = pkg-config
 	depends = cpio
+	depends = libpng
 	depends = zlib
 	depends = libarchive
 	depends = xz
