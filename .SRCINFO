@@ -1,0 +1,32 @@
+pkgbase = mono-alpha
+	pkgdesc = Free implementation of the .NET platform including runtime and compiler. Alpha version.
+	pkgver = 4.8.0
+	pkgrel = 1
+	url = http://www.mono-project.com/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	license = LGPL2.1
+	license = MPL
+	license = BSD
+	license = custom=MITX11
+	license = custom=MSPL
+	makedepends = git
+	depends = zlib
+	depends = libgdiplus
+	depends = sh
+	depends = python
+	depends = ca-certificates
+	depends = mono
+	provides = monodoc
+	provides = mono
+	conflicts = monodoc
+	conflicts = mono
+	options = !makeflags
+	source = git://github.com/mono/mono.git
+	source = mono.binfmt.d
+	md5sums = SKIP
+	md5sums = b9ef8a65fea497acf176cca16c1e2402
+
+pkgname = mono-alpha
+
