@@ -1,0 +1,21 @@
+pkgbase = r-cran-ggplot2
+	pkgdesc = Create Elegant Data Visualisations Using the Grammar of Graphics
+	pkgver = 2.2.0
+	pkgrel = 1
+	url = http://cran.r-project.org/web/packages/ggplot2/index.html
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = r
+	depends = r-cran-digest
+	depends = r-cran-gtable>=0.1.1
+	depends = r-cran-plyr>=1.7.1
+	depends = r-cran-reshape2
+	depends = r-cran-scales>=0.4.1
+	depends = r-cran-tibble
+	depends = r-cran-lazyeval
+	source = http://cran.r-project.org/src/contrib/ggplot2_2.2.0.tar.gz
+	md5sums = af42e7ac71e9bf566f03ef0ce7b2d56c
+
+pkgname = r-cran-ggplot2
+
