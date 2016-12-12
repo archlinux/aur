@@ -1,7 +1,7 @@
 # Maintainer: Brian Bidulock <bidulock@openss7.org>
 pkgname=bluez-tools
 pkgver=0.1.38
-pkgrel=4
+pkgrel=5
 pkgdesc="A set of tools to manage bluetooth devices for linux from the cli"
 arch=('i686' 'x86_64')
 url="http://code.google.com/p/$pkgname/"
@@ -14,7 +14,7 @@ md5sums=('8fbe1986d05d699b7d8078c2d5f3db5e')
 build() {
   cd "$srcdir/$pkgname-$pkgver-662e"
   ./configure --prefix=/usr --sysconfdir=/etc --mandir=/usr/share/man
-  make || return 1
+  make
 }
 package() {
   cd "$srcdir/$pkgname-$pkgver-662e"
