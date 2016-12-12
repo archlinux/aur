@@ -1,0 +1,18 @@
+pkgbase = pg_cron-git
+	pkgdesc = Run periodic jobs in PostgreSQL directly
+	pkgver = v0.1.r8.gd525a61
+	pkgrel = 1
+	url = https://github.com/citusdata/pg_cron/
+	arch = i686
+	arch = x86_64
+	arch = armv5h
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
+	license = MIT
+	depends = postgresql-libs
+	source = git+https://github.com/citusdata/pg_cron.git
+	sha512sums = SKIP
+
+pkgname = pg_cron-git
+
