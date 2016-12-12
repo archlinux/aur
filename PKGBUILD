@@ -20,7 +20,6 @@ checkdepends=('gdb' 'file')
 optdepends=('tk: for IDLE'
             'python2-setuptools'
             'python2-pip')
-conflicts=('python<3')
 source=("git://github.com/naftaliharris/python2.8#commit=4a5bbc7"
         'descr_ref.patch')
 sha256sums=('SKIP'
