@@ -1,25 +1,24 @@
 # Maintainer: ant32 <antreimer@gmail.com>
 # Contributor: rubenvb vanboxem <dottie> ruben <attie> gmail <dottie> com
+# Contributor: rkitover <rkitover@gmail.com>
+
+_targets="i686-w64-mingw32 x86_64-w64-mingw32"
+
 pkgname=mingw-w64-crt-git
-pkgver=4.0.rc1.r7.gc440466
+pkgver=5.0.rc2.r126.gb48e3ac
 pkgrel=1
 pkgdesc='MinGW-w64 CRT for Windows'
 arch=('any')
 url='http://mingw-w64.sourceforge.net'
 license=('custom')
 groups=('mingw-w64-toolchain' 'mingw-w64')
-depends=()
-makedepends=('git' 'mingw-w64-gcc-base' 'mingw-w64-binutils' 'mingw-w64-headers-git')
-optdepends=()
-provides=('mingw-w64-crt' 'mingw-w64-crt-svn')
-conflicts=('mingw-w64-crt' 'mingw-w64-crt-svn')
-replaces=('mingw-w64-crt-svn')
-backup=()
+makedepends=('git' 'mingw-w64-gcc' 'mingw-w64-binutils' 'mingw-w64-headers')
+provides=('mingw-w64-crt')
+conflicts=('mingw-w64-crt')
 options=('!strip' '!buildflags' 'staticlibs' '!emptydirs')
 source=(git://git.code.sf.net/p/mingw-w64/mingw-w64)
 md5sums=(SKIP)
 
-_targets="i686-w64-mingw32 x86_64-w64-mingw32"
 
 pkgver() {
   cd "$srcdir/mingw-w64"
@@ -59,4 +58,3 @@ package() {
     make DESTDIR=${pkgdir} install
   done
 }
-
