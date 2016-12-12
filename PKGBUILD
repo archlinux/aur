@@ -3,12 +3,12 @@
 pkgname=cdo
 pkgver=1.7.2
 fileID=12760
-pkgrel=0
-pkgdesc="CDO is a collection of command line Operators to manipulate and analyse Climate model Data. Supported data formats are GRIB, netCDF, SERVICE, EXTRA and IEG. There are more than 400 operators available."
+pkgrel=1
+pkgdesc="Command line tool manipulate and analyse Climate model Data. Supported data formats are GRIB, netCDF, SERVICE, EXTRA and IEG. There are more than 400 operators available."
 url="https://code.zmaw.de/projects/cdo"
 license=('GPLv2')
-depends=('netcdf' 'hdf5' 'proj' 'szip' 'grib_api' 'udunits' 'fftw' 'curl')
-makedepends=('netcdf' 'hdf5' 'proj' 'szip' 'grib_api' 'udunits' 'fftw' 'curl')
+depends=('netcdf' 'hdf5' 'proj' 'szip' 'grib_api' 'udunits' 'fftw' 'curl' 'jasper' 'magics++')
+makedepends=('netcdf' 'hdf5' 'proj' 'szip' 'grib_api' 'udunits' 'fftw' 'curl' 'jasper' 'magics++')
 provides=()
 conflicts=()
 replaces=()
@@ -29,7 +29,11 @@ build() {
     --with-fftw3 \
     --with-curl=/usr \
     --with-grib_api=/usr \
-    CFLAGS="-g -O3 -std=gnu99 -Wall -fopenmp -march=native " LIBS="-lpng -lopenjpeg"
+    --with-magics=/usr \
+    --with-libxml2=/usr \
+    CFLAGS="-g -O3 -std=gnu99 -Wall -fopenmp -march=native " \
+    LIBS="-ljasper -lpng -lopenjpeg" \
+    CPPFLAGS="-I/usr/include/magics -I/usr/include/libxml2"
   make -j12 || return 
 
 
