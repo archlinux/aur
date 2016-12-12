@@ -1,6 +1,6 @@
 pkgbase = generic-service-handler
 	pkgdesc = easy service handling
-	pkgver = 1.0.2
+	pkgver = 1.0.3
 	pkgrel = 8
 	url = http://torben.website/genericServiceHandler
 	arch = any
