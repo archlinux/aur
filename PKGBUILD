@@ -6,18 +6,16 @@
 
 pkgname=darkice
 pkgver=1.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Live audio streamer. Reads from audio interface, encodes, sends to streaming server."
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url="http://www.darkice.org/"
 license=('GPL')
 depends=('lame' 'libpulse' 'faac' 'libaacplus' 'jack' 'twolame' 'opus' 'libsamplerate' 'fftw')
-source=('darkice::git+https://github.com/Ouack23/darkice.git#branch=master' 
-'https://aur.archlinux.org/cgit/aur.git/plain/service?h=darkice')
+source=('darkice::git+https://github.com/Ouack23/darkice.git#branch=master'  'service')
 md5sums=('SKIP' '1c1cde0a5c03a2190a48275c03016eb8')
 
 build() {
-  mv "service?h=darkice" service
 
   cd "$srcdir/$pkgname/$pkgname/trunk"
 

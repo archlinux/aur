@@ -1,7 +1,7 @@
 pkgbase = darkice
 	pkgdesc = Live audio streamer. Reads from audio interface, encodes, sends to streaming server.
 	pkgver = 1.3
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.darkice.org/
 	arch = i686
 	arch = x86_64
@@ -18,7 +18,7 @@ pkgbase = darkice
 	depends = libsamplerate
 	depends = fftw
 	source = darkice::git+https://github.com/Ouack23/darkice.git#branch=master
-	source = https://aur.archlinux.org/cgit/aur.git/plain/service?h=darkice
+	source = service
 	md5sums = SKIP
 	md5sums = 1c1cde0a5c03a2190a48275c03016eb8
 
