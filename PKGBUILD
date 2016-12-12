@@ -1,6 +1,6 @@
 # Maintainer: M0Rf30
 pkgname=iortcw-git
-pkgver=600
+pkgver=1.5a.r10.g411bcb7
 pkgrel=1
 pkgdesc="Merge of ioquake3 features and fixes into Return to Castle Wolfenstein"
 arch=('i686' 'x86_64')
@@ -11,10 +11,10 @@ conflicts=('iortcw-svn')
 replaces=('iortcw-svn')
 makedepends=('cmake' 'git')
 optdepends=(
-"iortcw-de: Deutsch Language"
-"iortcw-es: Espanol  Language"
-"iortcw-fr: Francais Language"
-"iortcw-it: Italian Language"
+	"iortcw-de: Deutsch Language"
+	"iortcw-es: Espanol  Language"
+	"iortcw-fr: Francais Language"
+	"iortcw-it: Italian Language"
 )
 install='iortcw-git.install'
 source=("git+https://github.com/iortcw/iortcw.git"
@@ -26,7 +26,7 @@ source=("git+https://github.com/iortcw/iortcw.git"
 
 pkgver() {
   cd "$srcdir/iortcw"
-  echo $(git rev-list --count master)
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
