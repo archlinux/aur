@@ -4,7 +4,7 @@
 _pkgname=monotonic
 pkgname=python-monotonic
 pkgver=1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="An implementation of time.monotonic() for Python 2 & < 3.3"
 url="https://pypi.python.org/pypi/monotonic"
 license=('Apache')
