@@ -116,6 +116,25 @@ for source_path in "${!source_target_mappings[@]}"; do
         # Clean outdated monthly backups.
         find "${target_path}/${monthly_target_path}" -mtime \
             +"$number_of_monthly_retention_days" -exec $cleanup_command {} \;
+        message="Source files in \"$source_path\" from node \"$NODE_NAME\" successfully backed up to \"${target_file_path}${target_file_extension}\"."
+        $verbose && echo "$message" &>/dev/stderr
+        if hash msmtp && [[ "$sender_e_mail_address" != '' ]]; then
+            for e_mail_address in \
+                $(echo "${source_target_mappings[$source_path]}" | \
+                grep ' .+$' --only-matching --extended-regexp)
+            do
+                msmtp -t <<EOF
+From: $sender_e_mail_address
+To: $e_mail_address
+Reply-To: $replier_e_mail_address
+Date: $(date)
+Subject: Source files doesn't exist.
+
+$message
+
+EOF
+            done
+        fi
     else
         message="Source files in \"$source_path\" should be backed up but aren't available."
         $verbose && echo "$message" &>/dev/stderr
