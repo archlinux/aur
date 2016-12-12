@@ -3,18 +3,18 @@
 # Contributor: Pierre Schmitz <pierre@archlinux.de>
 
 pkgname=cmake
-pkgver=3.6.3
+pkgver=3.7.1
 pkgrel=1
 pkgdesc='A cross-platform open-source make system'
 arch=('i686' 'x86_64')
 url="http://www.cmake.org/"
 license=('custom')
-depends=('curl' 'libarchive' 'shared-mime-info' 'jsoncpp')
+depends=('curl' 'libarchive' 'shared-mime-info' 'jsoncpp' 'libuv')
 makedepends=('qt5-base' 'python-sphinx' 'emacs')
 optdepends=('qt5-base: cmake-gui'
             'libxkbcommon-x11: cmake-gui')
 source=("https://www.cmake.org/files/v${pkgver%.*}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('7d73ee4fae572eb2d7cd3feb48971aea903bb30a20ea5ae8b4da826d8ccad5fe')
+sha256sums=('449a5bce64dbd4d5b9517ebd1a1248ed197add6ad27934478976fd5f1f9330e1')
 
 prepare() {
   cd ${pkgname}-${pkgver}
@@ -39,11 +39,9 @@ package() {
 
   vimpath="${pkgdir}/usr/share/vim/vimfiles"
   install -d "${vimpath}"/{help,indent,syntax}
-  ln -s /usr/share/cmake-${pkgver%.*}/editors/vim/cmake-help.vim \
-    "${vimpath}"/help/
-  ln -s /usr/share/cmake-${pkgver%.*}/editors/vim/cmake-indent.vim \
+  ln -s /usr/share/cmake-${pkgver%.*}/editors/vim/indent/cmake.vim \
     "${vimpath}"/indent/
-  ln -s /usr/share/cmake-${pkgver%.*}/editors/vim/cmake-syntax.vim \
+  ln -s /usr/share/cmake-${pkgver%.*}/editors/vim/syntax/cmake.vim \
     "${vimpath}"/syntax/
 
   install -d "${pkgdir}"/usr/share/emacs/site-lisp/
