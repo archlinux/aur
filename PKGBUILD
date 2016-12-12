@@ -1,4 +1,4 @@
-pkgname=gtk-sharp-3-git
+pkgname=gtk-sharp-2-git
 pkgver=2.12
 pkgrel=1
 pkgdesc="C# bindings for GTK+ 2, built from sources."

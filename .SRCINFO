@@ -1,4 +1,4 @@
-pkgbase = gtk-sharp-3-git
+pkgbase = gtk-sharp-2-git
 	pkgdesc = C# bindings for GTK+ 2, built from sources.
 	pkgver = 2.12
 	pkgrel = 1
@@ -13,5 +13,5 @@ pkgbase = gtk-sharp-3-git
 	source = git://github.com/mono/gtk-sharp.git#branch=gtk-sharp-2-12-branch
 	md5sums = SKIP
 
-pkgname = gtk-sharp-3-git
+pkgname = gtk-sharp-2-git
 
