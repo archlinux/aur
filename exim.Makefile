@@ -405,9 +405,9 @@ WITH_OLD_DEMIME=yes
 # installed on your system (www.libspf2.org). Depending on where it is installed
 # you may have to edit the CFLAGS and LDFLAGS lines.
 
-# EXPERIMENTAL_SPF=yes
+EXPERIMENTAL_SPF=yes
 # CFLAGS  += -I/usr/local/include
-# LDFLAGS += -lspf2
+LDFLAGS += -lspf2
 
 # Uncomment the following lines to add SRS (Sender rewriting scheme) support.
 # You need to have libsrs_alt installed on your system (srs.mirtol.com).
