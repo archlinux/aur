@@ -1,6 +1,6 @@
 pkgbase = vim-indentline-git
 	pkgdesc = A vim plugin to display the indention levels with thin vertical lines
-	pkgver = latest
+	pkgver = r166.86b9824
 	pkgrel = 1
 	url = https://github.com/Yggdroot/indentLine
 	install = vimdoc.install

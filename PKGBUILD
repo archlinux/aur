@@ -1,7 +1,11 @@
 # Maintainer: Peter Varo <hello@petervaro.com>
 
 pkgname=vim-indentline-git
-pkgver=latest
+pkgver=r166.86b9824
+pkgver() {
+    cd "indentLine"
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
 pkgrel=1
 pkgdesc="A vim plugin to display the indention levels with thin vertical lines"
 arch=('any')
