@@ -1,7 +1,7 @@
 pkgbase = alterego
 	pkgdesc = You control a hero who has a phantom twin, his alter ego
 	pkgver = 1.0
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.retrosouls.net/?page_id=614
 	arch = any
 	license = custom:free
@@ -10,9 +10,9 @@ pkgbase = alterego
 	source = http://www.retrosouls.net/files/AlterEgo_Linux.tar.gz
 	source = alterego.desktop
 	source = ae1-150x150.png
-	md5sums = d018fbfdc0b15b8ac090e918c14b58aa
-	md5sums = 46d530b31311a689932dd2a9025dd2a3
-	md5sums = f3ed74ec7da62c8f88f81a7c2012d040
+	sha256sums = 5766a21d292658c0ffc30d523c510e44e943df42f53df4d08702e035e8eeda8b
+	sha256sums = 979a8d6bfbca2209b18e7c5b33d9eb8ecf4f17850c9c36c3a19b7ab3963e6d1b
+	sha256sums = 960ed1417b8db64ceadf6331f2e3abbad7a83aa9770090b41bd1961411e1a225
 
 pkgname = alterego
 
