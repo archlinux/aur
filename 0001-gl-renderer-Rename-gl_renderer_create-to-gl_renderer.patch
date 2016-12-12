@@ -1,7 +1,7 @@
-From 1f96676539f06d5b92bccf98a1d388cad0bf0c41 Mon Sep 17 00:00:00 2001
+From b573a9c1037449125398c49578e286f2da6dcc29 Mon Sep 17 00:00:00 2001
 From: "Miguel A. Vico" <mvicomoya@nvidia.com>
 Date: Wed, 30 Mar 2016 15:44:09 +0200
-Subject: [PATCH 01/11] gl-renderer: Rename gl_renderer_create to
+Subject: [PATCH 01/12] gl-renderer: Rename gl_renderer_create to
  gl_renderer_display_create
 X-NVConfidentiality: public
 
@@ -11,44 +11,62 @@ what the function does.
 
 Signed-off-by: Miguel A Vico Moya <mvicomoya@nvidia.com>
 Reviewed-by: James Jones <jajones@nvidia.com>
-
-[aplattner@nvidia.com: rebased on top of Weston 1.12.0]
 ---
- libweston/compositor-drm.c     | 2 +-
- libweston/compositor-wayland.c | 2 +-
- libweston/compositor-x11.c     | 5 +++--
- libweston/gl-renderer.c        | 4 ++--
- libweston/gl-renderer.h        | 2 +-
- 5 files changed, 8 insertions(+), 7 deletions(-)
+ libweston/compositor-drm.c     | 12 ++++++------
+ libweston/compositor-wayland.c | 12 ++++++------
+ libweston/compositor-x11.c     |  5 +++--
+ libweston/gl-renderer.c        |  4 ++--
+ libweston/gl-renderer.h        | 12 ++++++------
+ 5 files changed, 23 insertions(+), 22 deletions(-)
 
 diff --git a/libweston/compositor-drm.c b/libweston/compositor-drm.c
-index 8319d7cf3ede..4046c8d6435c 100644
+index 8319d7cf3ede..c6ec767489ee 100644
 --- a/libweston/compositor-drm.c
 +++ b/libweston/compositor-drm.c
-@@ -1619,7 +1619,7 @@ drm_backend_create_gl_renderer(struct drm_backend *b)
+@@ -1619,12 +1619,12 @@ drm_backend_create_gl_renderer(struct drm_backend *b)
  
  	if (format[1])
  		n_formats = 3;
 -	if (gl_renderer->create(b->compositor,
+-				EGL_PLATFORM_GBM_KHR,
+-				(void *)b->gbm,
+-				gl_renderer->opaque_attribs,
+-				format,
+-				n_formats) < 0) {
 +	if (gl_renderer->display_create(b->compositor,
- 				EGL_PLATFORM_GBM_KHR,
- 				(void *)b->gbm,
- 				gl_renderer->opaque_attribs,
++					EGL_PLATFORM_GBM_KHR,
++					(void *)b->gbm,
++					gl_renderer->opaque_attribs,
++					format,
++					n_formats) < 0) {
+ 		return -1;
+ 	}
+ 
 diff --git a/libweston/compositor-wayland.c b/libweston/compositor-wayland.c
-index c223baa3db26..1a9db60cd644 100644
+index c223baa3db26..621e59ecac5a 100644
 --- a/libweston/compositor-wayland.c
 +++ b/libweston/compositor-wayland.c
-@@ -2220,7 +2220,7 @@ wayland_backend_create(struct weston_compositor *compositor,
+@@ -2220,12 +2220,12 @@ wayland_backend_create(struct weston_compositor *compositor,
  	}
  
  	if (!b->use_pixman) {
 -		if (gl_renderer->create(compositor,
+-					EGL_PLATFORM_WAYLAND_KHR,
+-					b->parent.wl_display,
+-					gl_renderer->alpha_attribs,
+-					NULL,
+-					0) < 0) {
 +		if (gl_renderer->display_create(compositor,
- 					EGL_PLATFORM_WAYLAND_KHR,
- 					b->parent.wl_display,
- 					gl_renderer->alpha_attribs,
++						EGL_PLATFORM_WAYLAND_KHR,
++						b->parent.wl_display,
++						gl_renderer->alpha_attribs,
++						NULL,
++						0) < 0) {
+ 			weston_log("Failed to initialize the GL renderer; "
+ 				   "falling back to pixman.\n");
+ 			b->use_pixman = 1;
 diff --git a/libweston/compositor-x11.c b/libweston/compositor-x11.c
-index 3e0d20fbb768..97e151b27b71 100644
+index 3e0d20fbb768..84747a052d10 100644
 --- a/libweston/compositor-x11.c
 +++ b/libweston/compositor-x11.c
 @@ -1582,8 +1582,9 @@ init_gl_renderer(struct x11_backend *b)
@@ -58,8 +76,8 @@ index 3e0d20fbb768..97e151b27b71 100644
 -	ret = gl_renderer->create(b->compositor, EGL_PLATFORM_X11_KHR, (void *) b->dpy,
 -				  gl_renderer->opaque_attribs, NULL, 0);
 +	ret = gl_renderer->display_create(b->compositor, EGL_PLATFORM_X11_KHR,
-+	                                  (void *) b->dpy,
-+	                                  gl_renderer->opaque_attribs, NULL, 0);
++					  (void *) b->dpy,
++					  gl_renderer->opaque_attribs, NULL, 0);
  
  	return ret;
  }
@@ -86,18 +104,28 @@ index 031576bcf997..9d5d65b03e46 100644
  	.output_create = gl_renderer_output_create,
  	.output_destroy = gl_renderer_output_destroy,
 diff --git a/libweston/gl-renderer.h b/libweston/gl-renderer.h
-index 37d000fefb85..71d5aab51c76 100644
+index 37d000fefb85..32ba1536b60e 100644
 --- a/libweston/gl-renderer.h
 +++ b/libweston/gl-renderer.h
-@@ -60,7 +60,7 @@ struct gl_renderer_interface {
+@@ -60,12 +60,12 @@ struct gl_renderer_interface {
  	const EGLint *opaque_attribs;
  	const EGLint *alpha_attribs;
  
 -	int (*create)(struct weston_compositor *ec,
+-		      EGLenum platform,
+-		      void *native_window,
+-		      const EGLint *attribs,
+-		      const EGLint *visual_id,
+-		      const int n_ids);
 +	int (*display_create)(struct weston_compositor *ec,
- 		      EGLenum platform,
- 		      void *native_window,
- 		      const EGLint *attribs,
++			      EGLenum platform,
++			      void *native_window,
++			      const EGLint *attribs,
++			      const EGLint *visual_id,
++			      const int n_ids);
+ 
+ 	EGLDisplay (*display)(struct weston_compositor *ec);
+ 
 -- 
-2.10.0
+2.10.2
 

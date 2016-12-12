@@ -1,7 +1,7 @@
-From 4e02c69b513e5cb02451c794a9ed5091c74abc04 Mon Sep 17 00:00:00 2001
+From d8ff7f97e20b05ae5889a42590df5614845d1f7f Mon Sep 17 00:00:00 2001
 From: "Miguel A. Vico" <mvicomoya@nvidia.com>
 Date: Wed, 30 Mar 2016 15:17:01 +0200
-Subject: [PATCH 04/11] gl-renderer: Add <platform_attribs> param to
+Subject: [PATCH 04/12] gl-renderer: Add <platform_attribs> param to
  gl_renderer_display_create
 X-NVConfidentiality: public
 
@@ -12,8 +12,6 @@ parameter to gl_renderer_display_create().
 Signed-off-by: Miguel A Vico Moya <mvicomoya@nvidia.com>
 Reviewed-by: Andy Ritger <aritger@nvidia.com>
 Reviewed-by: James Jones <jajones@nvidia.com>
-
-[aplattner@nvidia.com: rebased on top of Weston 1.12.0]
 ---
  libweston/compositor-drm.c     | 1 +
  libweston/compositor-wayland.c | 1 +
@@ -23,44 +21,44 @@ Reviewed-by: James Jones <jajones@nvidia.com>
  5 files changed, 7 insertions(+), 4 deletions(-)
 
 diff --git a/libweston/compositor-drm.c b/libweston/compositor-drm.c
-index 87cd7be22344..888881880e16 100644
+index d10734a6e777..df357c3c809b 100644
 --- a/libweston/compositor-drm.c
 +++ b/libweston/compositor-drm.c
 @@ -1622,6 +1622,7 @@ drm_backend_create_gl_renderer(struct drm_backend *b)
  	if (gl_renderer->display_create(b->compositor,
- 				EGL_PLATFORM_GBM_KHR,
- 				(void *)b->gbm,
-+				NULL,
- 				gl_renderer->opaque_attribs,
- 				format,
- 				n_formats) < 0) {
+ 					EGL_PLATFORM_GBM_KHR,
+ 					(void *)b->gbm,
++					NULL,
+ 					gl_renderer->opaque_attribs,
+ 					format,
+ 					n_formats) < 0) {
 diff --git a/libweston/compositor-wayland.c b/libweston/compositor-wayland.c
-index b434700fa0ff..359a3c85624f 100644
+index 6370f6a2ecb3..7655f8d3e4c8 100644
 --- a/libweston/compositor-wayland.c
 +++ b/libweston/compositor-wayland.c
 @@ -2223,6 +2223,7 @@ wayland_backend_create(struct weston_compositor *compositor,
  		if (gl_renderer->display_create(compositor,
- 					EGL_PLATFORM_WAYLAND_KHR,
- 					b->parent.wl_display,
-+					NULL,
- 					gl_renderer->alpha_attribs,
- 					NULL,
- 					0) < 0) {
+ 						EGL_PLATFORM_WAYLAND_KHR,
+ 						b->parent.wl_display,
++						NULL,
+ 						gl_renderer->alpha_attribs,
+ 						NULL,
+ 						0) < 0) {
 diff --git a/libweston/compositor-x11.c b/libweston/compositor-x11.c
-index 0664e220d10f..8b03274814dc 100644
+index ef98f74bb9da..a8246b1ee221 100644
 --- a/libweston/compositor-x11.c
 +++ b/libweston/compositor-x11.c
-@@ -1583,7 +1583,7 @@ init_gl_renderer(struct x11_backend *b)
+@@ -1584,7 +1584,7 @@ init_gl_renderer(struct x11_backend *b)
  		return -1;
  
  	ret = gl_renderer->display_create(b->compositor, EGL_PLATFORM_X11_KHR,
--	                                  (void *) b->dpy,
-+	                                  (void *) b->dpy, NULL,
- 	                                  gl_renderer->opaque_attribs, NULL, 0);
+-					  (void *) b->dpy,
++					  (void *) b->dpy, NULL,
+ 					  gl_renderer->opaque_attribs, NULL, 0);
  
  	return ret;
 diff --git a/libweston/gl-renderer.c b/libweston/gl-renderer.c
-index e11c22cf3f05..729abd62c0d6 100644
+index bb5c079eed92..736394a53eed 100644
 --- a/libweston/gl-renderer.c
 +++ b/libweston/gl-renderer.c
 @@ -2891,8 +2891,8 @@ gl_renderer_create_pbuffer_surface(struct gl_renderer *gr) {
@@ -84,17 +82,17 @@ index e11c22cf3f05..729abd62c0d6 100644
  	}
  
 diff --git a/libweston/gl-renderer.h b/libweston/gl-renderer.h
-index 9d6648680533..02f8011247db 100644
+index 1835d2536670..b47ea07feaf0 100644
 --- a/libweston/gl-renderer.h
 +++ b/libweston/gl-renderer.h
 @@ -63,6 +63,7 @@ struct gl_renderer_interface {
  	int (*display_create)(struct weston_compositor *ec,
- 		      EGLenum platform,
- 		      void *native_window,
-+		      const EGLint *platform_attribs,
- 		      const EGLint *config_attribs,
- 		      const EGLint *visual_id,
- 		      const int n_ids);
+ 			      EGLenum platform,
+ 			      void *native_window,
++			      const EGLint *platform_attribs,
+ 			      const EGLint *config_attribs,
+ 			      const EGLint *visual_id,
+ 			      const int n_ids);
 -- 
-2.10.0
+2.10.2
 

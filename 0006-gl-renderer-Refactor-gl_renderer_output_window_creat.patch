@@ -1,7 +1,7 @@
-From d53c17a0c190f240b71e573c03bdf3abb264126f Mon Sep 17 00:00:00 2001
+From c481d05b7284ec9a8d46267052b773b44043905a Mon Sep 17 00:00:00 2001
 From: "Miguel A. Vico" <mvicomoya@nvidia.com>
 Date: Fri, 26 Feb 2016 15:44:59 +0100
-Subject: [PATCH 06/11] gl-renderer: Refactor
+Subject: [PATCH 06/12] gl-renderer: Refactor
  gl_renderer_output_window_create()
 X-NVConfidentiality: public
 
@@ -15,14 +15,12 @@ Bonus: Fix EGLSurface leakage upon gl_renderer_setup() failure.
 Signed-off-by: Miguel A Vico Moya <mvicomoya@nvidia.com>
 Reviewed-by: Andy Ritger <aritger@nvidia.com>
 Reviewed-by: James Jones <jajones@nvidia.com>
-
-[aplattner@nvidia.com: rebased on top of Weston 1.12.0]
 ---
- libweston/gl-renderer.c | 87 +++++++++++++++++++++++++++++++++----------------
- 1 file changed, 59 insertions(+), 28 deletions(-)
+ libweston/gl-renderer.c | 99 ++++++++++++++++++++++++++++++++-----------------
+ 1 file changed, 65 insertions(+), 34 deletions(-)
 
 diff --git a/libweston/gl-renderer.c b/libweston/gl-renderer.c
-index dd04caa87102..067e677f8a7b 100644
+index 3ffd0dd8e3b7..508f8b92797e 100644
 --- a/libweston/gl-renderer.c
 +++ b/libweston/gl-renderer.c
 @@ -1,6 +1,7 @@
@@ -39,17 +37,23 @@ index dd04caa87102..067e677f8a7b 100644
  
 -static int
 -gl_renderer_output_window_create(struct weston_output *output,
-+static EGLSurface
-+gl_renderer_create_window_surface(struct gl_renderer *gr,
- 			  EGLNativeWindowType window_for_legacy,
- 			  void *window_for_platform,
- 			  const EGLint *config_attribs,
- 			  const EGLint *visual_id,
- 			  int n_ids)
- {
+-				 EGLNativeWindowType window_for_legacy,
+-				 void *window_for_platform,
+-				 const EGLint *config_attribs,
+-				 const EGLint *visual_id,
+-				 int n_ids)
+-{
 -	struct weston_compositor *ec = output->compositor;
 -	struct gl_renderer *gr = get_renderer(ec);
 -	struct gl_output_state *go;
++static EGLSurface
++gl_renderer_create_window_surface(struct gl_renderer *gr,
++				  EGLNativeWindowType window_for_legacy,
++				  void *window_for_platform,
++				  const EGLint *config_attribs,
++				  const EGLint *visual_id,
++				  int n_ids)
++{
 +	EGLSurface egl_surface = EGL_NO_SURFACE;
  	EGLConfig egl_config;
 -	int i;
@@ -87,7 +91,7 @@ index dd04caa87102..067e677f8a7b 100644
 +
 +static int
 +gl_renderer_output_create(struct weston_output *output,
-+                          EGLSurface surface)
++			  EGLSurface surface)
 +{
 +	struct gl_output_state *go;
 +	int i;
@@ -128,11 +132,11 @@ index dd04caa87102..067e677f8a7b 100644
  
 +static int
 +gl_renderer_output_window_create(struct weston_output *output,
-+                                 EGLNativeWindowType window_for_legacy,
-+                                 void *window_for_platform,
-+                                 const EGLint *config_attribs,
-+                                 const EGLint *visual_id,
-+                                 int n_ids)
++				 EGLNativeWindowType window_for_legacy,
++				 void *window_for_platform,
++				 const EGLint *config_attribs,
++				 const EGLint *visual_id,
++				 int n_ids)
 +{
 +	struct weston_compositor *ec = output->compositor;
 +	struct gl_renderer *gr = get_renderer(ec);
@@ -160,5 +164,5 @@ index dd04caa87102..067e677f8a7b 100644
  gl_renderer_output_destroy(struct weston_output *output)
  {
 -- 
-2.10.0
+2.10.2
 

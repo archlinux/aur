@@ -4,7 +4,7 @@
 
 pkgname=weston-eglstream
 pkgver=1.12.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Reference implementation of a Wayland compositor with EGLStream support'
 arch=('i686' 'x86_64')
 url='http://wayland.freedesktop.org'
@@ -24,19 +24,21 @@ source=("http://wayland.freedesktop.org/releases/weston-$pkgver.tar.xz"
           '0008-gl-renderer-Add-support-for-EGLDevice-composited-fra.patch'
           '0009-gl-renderer-Add-EGL-client-support-for-EGLStream-fra.patch'
           '0010-compositor-drm-Gracefully-handle-vblank-and-flip-inv.patch'
-          '0011-compositor-drm-Add-support-for-EGLDevice-EGLOutput.patch')
+          '0011-compositor-drm-Add-support-for-EGLDevice-EGLOutput.patch'
+          '0012-Add-nvidia-release-notes-file.patch')
 sha256sums=('ac7ac2a32e3b9f50131fccded5d2326bd36b2226712d90b61999118a09af5033'
-            'f8186d1d5229e838ca77b655792a3b0b4d9c329859df1d900d501f5ef4aec1af'
-            'f600db2a8e71697a229b4f7f8052992b5ad41a99e273adf7119cb9e428de59a9'
-            'bb807ce209fbf0381bc2fb61ad3251ecf0f266dfb20f90a54cc3c2517b6ba1b8'
-            '09fcb3685832ac3c891004029cc2863ea999b18af2ce3f9806bc208a8da368b5'
-            '02e232526a7c4ad3b543645135eddd5f945a8531e1436bfccebccf07b193fd87'
-            'c789174b8f44f5c8835ad125f9f3a3b3637e2ca47c8ec1424202dc0b96cfb266'
-            '4a3ed4667158da25511f113df87e93bb73dd053a7593fb754486f3a44495f617'
-            'c3a4dbe92e5e16fc486a389dc5e09e55ff064c4e7ac96cdf2bc7edc4f7bd0387'
-            'f3bab7e342e8267b8f60a33a3fdd839fb3461869945b55783e2a726119394aab'
-            '995691ee0dbdd21b864d806281c832ea6ed42623315176d9774a0a078999029a'
-            'd12b9820df5331dd0bb7e99a28a862009e0def600166d735dda330ea41e8b15e')
+            'dc51d39b460385eff7694f11aa3096896a58246f0d0ffdcd77ac9d07bf4781d7'
+            'e9088f7fa816d8c04bfa0abfcbb0c33b436cea157efce03663202131bcf8a053'
+            '2abc0c12a7c3465c2289e6940f538cf6cb46f4f9c57eff1884b15134a460ef2e'
+            '9e9cb4ee001d62c09753994225d944b3eb90788d29b69b1d3ffead38c09c8934'
+            '7492e7d6b3d4d8a95433cbc845117746e48047794422c28b37c16fe60078a6f8'
+            'd7ae91ed894a17d578371be877ebd0ab2204522f5f17388ea3ef0714afe85bba'
+            '1a703d7743b55ccbe934389b1c4430f4f4535f4864439b86097b80d1b42e7e2c'
+            'd5a8fddd8ddae650a283915478e8d41669a1dcc953df4317b5d178e14221fa4a'
+            'fb759e98bffb406904366b735f7f50f2726a2a1c6700a9cf544d4c763f46bbfa'
+            '8b6ef50772bf02adb951266ad5d973a701dd147fc168d8d6fa7cbafe0900dbda'
+            '7838e7de7ac5b7fe4e98392235907333d4977939a487ff4cf2a2bd8756fc49cb'
+            'f916ded74db76cfe3566654b5dc5a90b214a1572ffd7c15aa5e577ceabc22ab4')
 
 prepare() {
 	cd weston-$pkgver
@@ -52,6 +54,7 @@ prepare() {
 	patch -Np1 -i "${srcdir}/0009-gl-renderer-Add-EGL-client-support-for-EGLStream-fra.patch"
 	patch -Np1 -i "${srcdir}/0010-compositor-drm-Gracefully-handle-vblank-and-flip-inv.patch"
 	patch -Np1 -i "${srcdir}/0011-compositor-drm-Add-support-for-EGLDevice-EGLOutput.patch"
+	patch -Np1 -i "${srcdir}/0012-Add-nvidia-release-notes-file.patch"
 }
 
 build() {

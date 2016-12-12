@@ -1,7 +1,7 @@
-From 4aeeb96a3381cc2bde66ca437f150a6764cf0c95 Mon Sep 17 00:00:00 2001
+From 91a4ade03a1d92f275a046dcf1b616b551e8bbc5 Mon Sep 17 00:00:00 2001
 From: "Miguel A. Vico" <mvicomoya@nvidia.com>
 Date: Wed, 30 Mar 2016 15:09:14 +0200
-Subject: [PATCH 02/11] gl-renderer: Rename gl_renderer::output_create to
+Subject: [PATCH 02/12] gl-renderer: Rename gl_renderer::output_create to
  output_window_create
 X-NVConfidentiality: public
 
@@ -12,68 +12,107 @@ of what the function does.
 Signed-off-by: Miguel A Vico Moya <mvicomoya@nvidia.com>
 Reviewed-by: Andy Ritger <aritger@nvidia.com>
 Reviewed-by: James Jones <jajones@nvidia.com>
-
-[aplattner@nvidia.com: rebased on top of Weston 1.12.0]
 ---
- libweston/compositor-drm.c     | 2 +-
- libweston/compositor-wayland.c | 2 +-
- libweston/compositor-x11.c     | 2 +-
- libweston/gl-renderer.c        | 4 ++--
- libweston/gl-renderer.h        | 2 +-
- 5 files changed, 6 insertions(+), 6 deletions(-)
+ libweston/compositor-drm.c     | 12 ++++++------
+ libweston/compositor-wayland.c | 12 ++++++------
+ libweston/compositor-x11.c     | 13 +++++++------
+ libweston/gl-renderer.c        | 14 +++++++-------
+ libweston/gl-renderer.h        | 12 ++++++------
+ 5 files changed, 32 insertions(+), 31 deletions(-)
 
 diff --git a/libweston/compositor-drm.c b/libweston/compositor-drm.c
-index 4046c8d6435c..87cd7be22344 100644
+index c6ec767489ee..d10734a6e777 100644
 --- a/libweston/compositor-drm.c
 +++ b/libweston/compositor-drm.c
-@@ -1886,7 +1886,7 @@ drm_output_init_egl(struct drm_output *output, struct drm_backend *b)
+@@ -1886,12 +1886,12 @@ drm_output_init_egl(struct drm_output *output, struct drm_backend *b)
  
  	if (format[1])
  		n_formats = 2;
 -	if (gl_renderer->output_create(&output->base,
+-				       (EGLNativeWindowType)output->gbm_surface,
+-				       output->gbm_surface,
+-				       gl_renderer->opaque_attribs,
+-				       format,
+-				       n_formats) < 0) {
 +	if (gl_renderer->output_window_create(&output->base,
- 				       (EGLNativeWindowType)output->gbm_surface,
- 				       output->gbm_surface,
- 				       gl_renderer->opaque_attribs,
++					      (EGLNativeWindowType)output->gbm_surface,
++					      output->gbm_surface,
++					      gl_renderer->opaque_attribs,
++					      format,
++					      n_formats) < 0) {
+ 		weston_log("failed to create gl renderer output state\n");
+ 		gbm_surface_destroy(output->gbm_surface);
+ 		return -1;
 diff --git a/libweston/compositor-wayland.c b/libweston/compositor-wayland.c
-index 1a9db60cd644..b434700fa0ff 100644
+index 621e59ecac5a..6370f6a2ecb3 100644
 --- a/libweston/compositor-wayland.c
 +++ b/libweston/compositor-wayland.c
-@@ -671,7 +671,7 @@ wayland_output_init_gl_renderer(struct wayland_output *output)
+@@ -671,12 +671,12 @@ wayland_output_init_gl_renderer(struct wayland_output *output)
  		return -1;
  	}
  
 -	if (gl_renderer->output_create(&output->base,
+-				       output->gl.egl_window,
+-				       output->gl.egl_window,
+-				       gl_renderer->alpha_attribs,
+-				       NULL,
+-				       0) < 0)
 +	if (gl_renderer->output_window_create(&output->base,
- 				       output->gl.egl_window,
- 				       output->gl.egl_window,
- 				       gl_renderer->alpha_attribs,
++					      output->gl.egl_window,
++					      output->gl.egl_window,
++					      gl_renderer->alpha_attribs,
++					      NULL,
++					      0) < 0)
+ 		goto cleanup_window;
+ 
+ 	return 0;
 diff --git a/libweston/compositor-x11.c b/libweston/compositor-x11.c
-index 97e151b27b71..0664e220d10f 100644
+index 84747a052d10..ef98f74bb9da 100644
 --- a/libweston/compositor-x11.c
 +++ b/libweston/compositor-x11.c
-@@ -953,7 +953,7 @@ x11_backend_create_output(struct x11_backend *b, int x, int y,
+@@ -953,12 +953,13 @@ x11_backend_create_output(struct x11_backend *b, int x, int y,
  		 * but eglCreateWindowSurface takes a Window. */
  		Window xid = (Window) output->window;
  
 -		ret = gl_renderer->output_create(&output->base,
-+		ret = gl_renderer->output_window_create(&output->base,
- 						 (EGLNativeWindowType) output->window,
- 						 &xid,
- 						 gl_renderer->opaque_attribs,
+-						 (EGLNativeWindowType) output->window,
+-						 &xid,
+-						 gl_renderer->opaque_attribs,
+-						 NULL,
+-						 0);
++		ret = gl_renderer->output_window_create(
++					&output->base,
++					(EGLNativeWindowType) output->window,
++					&xid,
++					gl_renderer->opaque_attribs,
++					NULL,
++					0);
+ 		if (ret < 0)
+ 			return NULL;
+ 	}
 diff --git a/libweston/gl-renderer.c b/libweston/gl-renderer.c
-index 9d5d65b03e46..0015268d210a 100644
+index 9d5d65b03e46..7e6a707406ad 100644
 --- a/libweston/gl-renderer.c
 +++ b/libweston/gl-renderer.c
-@@ -2544,7 +2544,7 @@ static int
+@@ -2544,12 +2544,12 @@ static int
  gl_renderer_setup(struct weston_compositor *ec, EGLSurface egl_surface);
  
  static int
 -gl_renderer_output_create(struct weston_output *output,
+-			  EGLNativeWindowType window_for_legacy,
+-			  void *window_for_platform,
+-			  const EGLint *attribs,
+-			  const EGLint *visual_id,
+-			  int n_ids)
 +gl_renderer_output_window_create(struct weston_output *output,
- 			  EGLNativeWindowType window_for_legacy,
- 			  void *window_for_platform,
- 			  const EGLint *attribs,
++				 EGLNativeWindowType window_for_legacy,
++				 void *window_for_platform,
++				 const EGLint *attribs,
++				 const EGLint *visual_id,
++				 int n_ids)
+ {
+ 	struct weston_compositor *ec = output->compositor;
+ 	struct gl_renderer *gr = get_renderer(ec);
 @@ -3183,7 +3183,7 @@ WL_EXPORT struct gl_renderer_interface gl_renderer_interface = {
  
  	.display_create = gl_renderer_display_create,
@@ -84,18 +123,28 @@ index 9d5d65b03e46..0015268d210a 100644
  	.output_surface = gl_renderer_output_surface,
  	.output_set_border = gl_renderer_output_set_border,
 diff --git a/libweston/gl-renderer.h b/libweston/gl-renderer.h
-index 71d5aab51c76..5b3b68a8e4fa 100644
+index 32ba1536b60e..ee32790463aa 100644
 --- a/libweston/gl-renderer.h
 +++ b/libweston/gl-renderer.h
-@@ -69,7 +69,7 @@ struct gl_renderer_interface {
+@@ -69,12 +69,12 @@ struct gl_renderer_interface {
  
  	EGLDisplay (*display)(struct weston_compositor *ec);
  
 -	int (*output_create)(struct weston_output *output,
+-			     EGLNativeWindowType window_for_legacy,
+-			     void *window_for_platform,
+-			     const EGLint *attribs,
+-			     const EGLint *visual_id,
+-			     const int n_ids);
 +	int (*output_window_create)(struct weston_output *output,
- 			     EGLNativeWindowType window_for_legacy,
- 			     void *window_for_platform,
- 			     const EGLint *attribs,
++				    EGLNativeWindowType window_for_legacy,
++				    void *window_for_platform,
++				    const EGLint *attribs,
++				    const EGLint *visual_id,
++				    const int n_ids);
+ 
+ 	void (*output_destroy)(struct weston_output *output);
+ 
 -- 
-2.10.0
+2.10.2
 

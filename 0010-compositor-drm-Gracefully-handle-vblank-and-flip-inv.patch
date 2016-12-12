@@ -1,7 +1,7 @@
-From 3aabc17a3b83d255d3a2fd2f597746af20c9647e Mon Sep 17 00:00:00 2001
+From e08b0882b29ce39ef67742a1caa53af4b6bb18bd Mon Sep 17 00:00:00 2001
 From: "Miguel A. Vico" <mvicomoya@nvidia.com>
 Date: Tue, 1 Mar 2016 22:19:14 +0100
-Subject: [PATCH 10/11] compositor-drm: Gracefully handle vblank and flip
+Subject: [PATCH 10/12] compositor-drm: Gracefully handle vblank and flip
  invalid timestamps
 X-NVConfidentiality: public
 
@@ -17,14 +17,12 @@ situations above.
 
 Signed-off-by: Miguel A Vico Moya <mvicomoya@nvidia.com>
 Reviewed-by: Andy Ritger <aritger@nvidia.com>
-
-[aplattner@nvidia.com: rebased on top of Weston 1.12.0]
 ---
- libweston/compositor-drm.c | 26 +++++++++++++++++++++++---
- 1 file changed, 23 insertions(+), 3 deletions(-)
+ libweston/compositor-drm.c | 28 +++++++++++++++++++++++++---
+ 1 file changed, 25 insertions(+), 3 deletions(-)
 
 diff --git a/libweston/compositor-drm.c b/libweston/compositor-drm.c
-index 888881880e16..d1cb21c6b37a 100644
+index df357c3c809b..044633f7c740 100644
 --- a/libweston/compositor-drm.c
 +++ b/libweston/compositor-drm.c
 @@ -1,6 +1,7 @@
@@ -42,9 +40,9 @@ index 888881880e16..d1cb21c6b37a 100644
 -	/* Error ret or zero timestamp means failure to get valid timestamp */
 -	if ((ret == 0) && (vbl.reply.tval_sec > 0 || vbl.reply.tval_usec > 0)) {
 +	if (ret) {
-+		/* Immediate query failed. It may always fail so we'll never get a valid
-+		 * timestamp to update msc and call into finish frame. Hence, jump to
-+		 * finish frame here.
++		/* Immediate query failed. It may always fail so we'll never get
++		 * a valid timestamp to update msc and call into finish frame.
++		 * Hence, jump to finish frame here.
 +		 */
 +		goto finish_frame;
 +	}
@@ -63,18 +61,20 @@ index 888881880e16..d1cb21c6b37a 100644
  	 * Use pageflip fallback.
  	 */
  	fb_id = output->current->fb_id;
-@@ -907,6 +916,17 @@ page_flip_handler(int fd, unsigned int frame,
+@@ -907,6 +916,19 @@ page_flip_handler(int fd, unsigned int frame,
  	else if (!output->vblank_pending) {
  		ts.tv_sec = sec;
  		ts.tv_nsec = usec * 1000;
 +
-+		/* Zero timestamp means failure to get valid timestamp, so immediately
-+		 * finish frame
++		/* Zero timestamp means failure to get valid timestamp, so
++		 * immediately finish frame
 +		 *
-+		 * FIXME: Driver should never return an invalid page flip timestamp */
++		 * FIXME: Driver should never return an invalid page flip
++		 *        timestamp */
 +		if (ts.tv_sec == 0 && ts.tv_nsec == 0) {
-+			weston_compositor_read_presentation_clock(output->base.compositor,
-+			                                          &ts);
++			weston_compositor_read_presentation_clock(
++							output->base.compositor,
++							&ts);
 +			flags = WP_PRESENTATION_FEEDBACK_INVALID;
 +		}
 +
@@ -82,5 +82,5 @@ index 888881880e16..d1cb21c6b37a 100644
  
  		/* We can't call this from frame_notify, because the output's
 -- 
-2.10.0
+2.10.2
 

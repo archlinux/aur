@@ -1,7 +1,7 @@
-From 31f40175f702c8799bd69d5d9612d90e247501f3 Mon Sep 17 00:00:00 2001
+From 12f63391c5a05d1b6176ac91d8a00b3e9982f996 Mon Sep 17 00:00:00 2001
 From: "Miguel A. Vico" <mvicomoya@nvidia.com>
 Date: Wed, 30 Mar 2016 15:23:49 +0200
-Subject: [PATCH 03/11] gl-renderer: Rename <attribs> param of gl_renderer to
+Subject: [PATCH 03/12] gl-renderer: Rename <attribs> param of gl_renderer to
  <config_attribs>
 X-NVConfidentiality: public
 
@@ -13,25 +13,23 @@ to <config_attribs>
 Signed-off-by: Miguel A Vico Moya <mvicomoya@nvidia.com>
 Reviewed-by: Andy Ritger <aritger@nvidia.com>
 Reviewed-by: James Jones <jajones@nvidia.com>
-
-[aplattner@nvidia.com: rebased on top of Weston 1.12.0]
 ---
  libweston/gl-renderer.c | 8 ++++----
  libweston/gl-renderer.h | 4 ++--
  2 files changed, 6 insertions(+), 6 deletions(-)
 
 diff --git a/libweston/gl-renderer.c b/libweston/gl-renderer.c
-index 0015268d210a..e11c22cf3f05 100644
+index 7e6a707406ad..bb5c079eed92 100644
 --- a/libweston/gl-renderer.c
 +++ b/libweston/gl-renderer.c
 @@ -2547,7 +2547,7 @@ static int
  gl_renderer_output_window_create(struct weston_output *output,
- 			  EGLNativeWindowType window_for_legacy,
- 			  void *window_for_platform,
--			  const EGLint *attribs,
-+			  const EGLint *config_attribs,
- 			  const EGLint *visual_id,
- 			  int n_ids)
+ 				 EGLNativeWindowType window_for_legacy,
+ 				 void *window_for_platform,
+-				 const EGLint *attribs,
++				 const EGLint *config_attribs,
+ 				 const EGLint *visual_id,
+ 				 int n_ids)
  {
 @@ -2557,7 +2557,7 @@ gl_renderer_output_window_create(struct weston_output *output,
  	EGLConfig egl_config;
@@ -61,27 +59,27 @@ index 0015268d210a..e11c22cf3f05 100644
  		weston_log("failed to choose EGL config\n");
  		goto fail_terminate;
 diff --git a/libweston/gl-renderer.h b/libweston/gl-renderer.h
-index 5b3b68a8e4fa..9d6648680533 100644
+index ee32790463aa..1835d2536670 100644
 --- a/libweston/gl-renderer.h
 +++ b/libweston/gl-renderer.h
 @@ -63,7 +63,7 @@ struct gl_renderer_interface {
  	int (*display_create)(struct weston_compositor *ec,
- 		      EGLenum platform,
- 		      void *native_window,
--		      const EGLint *attribs,
-+		      const EGLint *config_attribs,
- 		      const EGLint *visual_id,
- 		      const int n_ids);
+ 			      EGLenum platform,
+ 			      void *native_window,
+-			      const EGLint *attribs,
++			      const EGLint *config_attribs,
+ 			      const EGLint *visual_id,
+ 			      const int n_ids);
  
 @@ -72,7 +72,7 @@ struct gl_renderer_interface {
  	int (*output_window_create)(struct weston_output *output,
- 			     EGLNativeWindowType window_for_legacy,
- 			     void *window_for_platform,
--			     const EGLint *attribs,
-+			     const EGLint *config_attribs,
- 			     const EGLint *visual_id,
- 			     const int n_ids);
+ 				    EGLNativeWindowType window_for_legacy,
+ 				    void *window_for_platform,
+-				    const EGLint *attribs,
++				    const EGLint *config_attribs,
+ 				    const EGLint *visual_id,
+ 				    const int n_ids);
  
 -- 
-2.10.0
+2.10.2
 
