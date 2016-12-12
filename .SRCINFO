@@ -11,9 +11,9 @@ pkgbase = alterego-dreamwalker
 	source = http://www.retrosouls.net/desura/ae2fulllinux.zip
 	source = alterego-dreamwalker.desktop
 	source = aed.png
-	md5sums = 14a9d9124252978dd163352b36bd0756
-	md5sums = 2989ea7911bab17a97415b7518a810d0
-	md5sums = 89d2ad5981016852a0b38430ec623455
+	sha256sums = ff846b62737a280fcc38edd49820f977c8740e8aacbf5f054b6db5c3810c380a
+	sha256sums = b451d57ebad7f04c59bc484a480c2590c217cf119b6428409e29cc3763b12b25
+	sha256sums = 4b32fa385bc4bbadabc7a1573ec52f6014f7f99ed942fd3aa9a2e0816a3da6dd
 
 pkgname = alterego-dreamwalker
 

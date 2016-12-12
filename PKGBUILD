@@ -10,9 +10,9 @@ depends=('mono' 'openal' 'sdl_mixer')
 source=('http://www.retrosouls.net/desura/ae2fulllinux.zip'
         'alterego-dreamwalker.desktop'
         'aed.png')
-md5sums=('14a9d9124252978dd163352b36bd0756'
-         '2989ea7911bab17a97415b7518a810d0'
-         '89d2ad5981016852a0b38430ec623455')
+sha256sums=('ff846b62737a280fcc38edd49820f977c8740e8aacbf5f054b6db5c3810c380a'
+            'b451d57ebad7f04c59bc484a480c2590c217cf119b6428409e29cc3763b12b25'
+            '4b32fa385bc4bbadabc7a1573ec52f6014f7f99ed942fd3aa9a2e0816a3da6dd')
 
 prepare() {
   cd Full/AlterEgo_DreamWalker
@@ -27,15 +27,15 @@ prepare() {
 package() {
   cd Full/AlterEgo_DreamWalker
 
-  install -Dm755 AlterEgo2.sh "$pkgdir/usr/bin/alterego-dreamwalker"
+  install -Dm755 AlterEgo2.sh "$pkgdir"/usr/bin/alterego-dreamwalker
   rm AlterEgo2.sh
 
-  install -dm755 "$pkgdir/usr/share/games/alterego-dreamwalker"
-  cp -r * "$pkgdir/usr/share/games/alterego-dreamwalker/"
+  install -dm755 "$pkgdir"/usr/share/games/alterego-dreamwalker
+  cp -r * "$pkgdir"/usr/share/games/alterego-dreamwalker/
 
-  install -Dm644 "$srcdir/alterego-dreamwalker.desktop" \
-    "$pkgdir/usr/share/applications/alterego-dreamwalker.desktop"
+  install -Dm644 "$srcdir"/alterego-dreamwalker.desktop \
+    "$pkgdir"/usr/share/applications/alterego-dreamwalker.desktop
 
-  install -Dm644 "$srcdir/aed.png" \
-    "$pkgdir/usr/share/pixmaps/alterego-dreamwalker.png"
+  install -Dm644 "$srcdir"/aed.png \
+    "$pkgdir"/usr/share/pixmaps/alterego-dreamwalker.png
 }
