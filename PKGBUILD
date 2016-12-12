@@ -1,7 +1,7 @@
 
 # Maintainer: Victor Tran <vicr12345 at gmail dot com>
 pkgname=theshell
-pkgver=5.0
+pkgver=5.2
 pkgrel=0
 pkgdesc="Desktop Shell that gets out of your way"
 arch=("x86_64")
@@ -9,7 +9,7 @@ url="https://github.com/vicr123/theshell"
 license=('GPL3')
 depends=('kwidgetsaddons' 'xdg-utils' 'wmctrl' 'kwin' 
 'networkmanager' 'xorg-xbacklight' 'redshift' 'tsscreenlock' 
-'libcups' 'qt5-base'
+'libcups' 'qt5-base' 'ts-qtplatform'
 'qt5-location' 'kscreen' 'kdepimlibs4' 'akonadi' 'ts-polkitagent' 'ts-bt')
 optdepends=('alsa-utils: for volume controls'
 	    'pocketsphinx: for theWave'
