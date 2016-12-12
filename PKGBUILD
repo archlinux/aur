@@ -1,7 +1,7 @@
 # Maintainer: Luis Sarmiento < Luis.Sarmiento-ala-nuclear.lu.se >
 pkgname='geant4'
-pkgver=10.2.2
-_pkgver=10.02.p02
+pkgver=10.3
+_pkgver=10.03
 pkgrel=1
 pkgdesc="A simulation toolkit for particle physics interactions."
 depends=('cmake>=2.8.2'
@@ -45,8 +45,8 @@ options=('!emptydirs')
 install="${pkgname}.install"
 source=("http://geant4.cern.ch/support/source/${pkgname}.${_pkgver}.tar.gz"
   "${pkgname}.install")
-md5sums=('6aae1d0fc743b0edc358c5c8fbe48657'
-         '8b7f137c5f36006a8589d717059b5464')
+md5sums=('3abe0c530158630b2b650bfde383466c'
+         'bfe6791027de966cad240d8584c6b657')
 
 ## Remove this if you want to keep an even smaller package
 ## No need to wait for compression when just installing it.
@@ -110,8 +110,8 @@ package() {
   cd ${srcdir}/build
   make DESTDIR="${pkgdir}" install
 
-  echo 'pushd /usr/bin &> /dev/null && source geant4.sh  && popd &>/dev/null' > ${srcdir}/geant4.profile.sh
-  echo 'pushd /usr/bin &> /dev/null && source geant4.csh && popd &>/dev/null' > ${srcdir}/geant4.profile.csh
+  echo 'pushd /usr/bin &> /dev/null && source geant4.sh  && popd &> /dev/null' > ${srcdir}/geant4.profile.sh
+  echo 'pushd /usr/bin >& /dev/null && source geant4.csh && popd >& /dev/null' > ${srcdir}/geant4.profile.csh
   install -d ${pkgdir}/etc/profile.d
   install -m755 ${srcdir}/geant4.profile.sh  ${pkgdir}/etc/profile.d/geant4.sh
   install -m755 ${srcdir}/geant4.profile.csh ${pkgdir}/etc/profile.d/geant4.csh

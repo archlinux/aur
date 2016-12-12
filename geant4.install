@@ -1,16 +1,16 @@
 #!/bin/sh
 
 _init() {
-    variables=("G4NEUTRONHPDATA" \
+    variables=("G4ABLADATA" \
+                   "G4ENSDFSTATEDATA" \
                    "G4LEDATA" \
                    "G4LEVELGAMMADATA" \
-                   "G4RADIOACTIVEDATA" \
+                   "G4NEUTRONHPDATA" \
                    "G4NEUTRONXSDATA" \
                    "G4PIIDATA" \
+                   "G4RADIOACTIVEDATA" \
                    "G4REALSURFACEDATA" \
-                   "G4SAIDXSDATA" \
-                   "G4ABLADATA" \
-                   "G4ENSDFSTATEDATA")
+                   "G4SAIDXSDATA" )
 
 shell=("sh" "csh")
 
