@@ -1,6 +1,5 @@
-# Messed by FabioLolix :/ loli_fabio@protonmail.com
-# https://github.com/FabioLolix
-# Contributor: Bernhard Landauer <oberon@manjaro.org>
+# Maintainer: Bernhard Landauer <oberon@manjaro.org>
+# Maintainer: Fabio Loli <loli_fabio@protonmail.com>
 
 _pkgname=Neobarok
 pkgname=${_pkgname,,}
