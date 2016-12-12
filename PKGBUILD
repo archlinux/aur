@@ -10,7 +10,7 @@
 # 3.0 unported license. see http://creativecommons.org/licenses/by/3.0/deed.de
 # endregion
 pkgname=filelinker
-pkgver=1.0.5
+pkgver=1.0.6
 pkgrel=14
 pkgdesc='keeps hard links in sync.'
 arch=('any')
