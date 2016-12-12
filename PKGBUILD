@@ -15,7 +15,6 @@ url='https://github.com/naftaliharris/python2.8'
 depends=('bzip2' 'gdbm' 'openssl' 'zlib' 'expat' 'sqlite' 'libffi')
 makedepends=('tk' 'bluez-libs' 'hardening-wrapper' 'git')
 conflicts=('python2')
-replaces=('python2')
 provides=('python2')
 checkdepends=('gdb' 'file')
 optdepends=('tk: for IDLE'
