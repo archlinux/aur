@@ -56,6 +56,7 @@ prepare() {
 
   # Revert a commit that causes memory corruption in i686 chroots on our
   # build server ("valgrind bash" immediately crashes)
+  # https://bugzilla.kernel.org/show_bug.cgi?id=190061
   patch -Rp1 -i "${srcdir}/0001-x86-fpu-Fix-invalid-FPU-ptrace-state-after-execve.patch"
 
   # add latest fixes from stable queue, if needed
