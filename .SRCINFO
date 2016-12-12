@@ -1,0 +1,15 @@
+pkgbase = r-cran-munsell
+	pkgdesc = Utilities for Using Munsell Colours
+	pkgver = 0.4.3
+	pkgrel = 1
+	url = http://cran.r-project.org/web/packages/munsell/index.html
+	arch = i686
+	arch = x86_64
+	license = MIT
+	depends = r
+	depends = r-cran-colorspace
+	source = http://cran.r-project.org/src/contrib/munsell_0.4.3.tar.gz
+	md5sums = ebd205323dc37c948f499ee08be9c476
+
+pkgname = r-cran-munsell
+
