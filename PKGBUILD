@@ -15,11 +15,11 @@
 # archzfs github page.
 #
 pkgname="zfs-linux-git"
-pkgver=0.7.0_rc2_r78_gd57f03e_4.8.12_3
+pkgver=0.7.0_rc2_r79_g02730c3_4.8.13_1
 pkgrel=1
 pkgdesc="Kernel modules for the Zettabyte File System."
-depends=("kmod" "spl-linux-git" "zfs-utils-linux-git" "linux=4.8.12")
-makedepends=("linux-headers=4.8.12" "git")
+depends=("kmod" "spl-linux-git" "zfs-utils-linux-git" "linux=4.8.13")
+makedepends=("linux-headers=4.8.13" "git")
 arch=("x86_64")
 url="http://zfsonlinux.org/"
 source=("git+https://github.com/zfsonlinux/zfs.git")
@@ -37,8 +37,8 @@ build() {
     ./configure --prefix=/usr --sysconfdir=/etc --sbindir=/usr/bin --libdir=/usr/lib \
                 --datadir=/usr/share --includedir=/usr/include --with-udevdir=/lib/udev \
                 --libexecdir=/usr/lib/zfs-0.6.5.8 --with-config=kernel \
-                --with-linux=/usr/lib/modules/4.8.12-3-ARCH/build \
-                --with-linux-obj=/usr/lib/modules/4.8.12-3-ARCH/build
+                --with-linux=/usr/lib/modules/4.8.13-1-ARCH/build \
+                --with-linux-obj=/usr/lib/modules/4.8.13-1-ARCH/build
     make
 }
 
@@ -48,5 +48,5 @@ package() {
     cp -r "${pkgdir}"/{lib,usr}
     rm -r "${pkgdir}"/lib
     # Remove reference to ${srcdir}
-    sed -i "s+${srcdir}++" ${pkgdir}/usr/src/zfs-*/4.8.12-3-ARCH/Module.symvers
+    sed -i "s+${srcdir}++" ${pkgdir}/usr/src/zfs-*/4.8.13-1-ARCH/Module.symvers
 }
