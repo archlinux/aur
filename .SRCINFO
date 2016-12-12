@@ -1,0 +1,14 @@
+pkgbase = byaccj
+	pkgdesc = An extension of the Berkeley YACC-compatible parser generator.
+	pkgver = 1.15
+	pkgrel = 1
+	url = http://byaccj.sourceforge.net/
+	arch = any
+	license = custom: public domain
+	source = https://downloads.sourceforge.net/project/byaccj/byaccj/1.15/byaccj1.15_src.tar.gz
+	source = makefile.patch
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = byaccj
+
