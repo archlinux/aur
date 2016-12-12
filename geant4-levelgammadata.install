@@ -3,7 +3,7 @@
 _varname='G4LEVELGAMMADATA'
 _packagename='geant4-levelgammadata'
 _foldername='PhotonEvaporation'
-_dataversion=3.2
+_dataversion=4.3
 
 _add() {
     echo "export ${_varname}=/usr/share/${_packagename}/${_foldername}${_dataversion}" >> /etc/profile.d/geant4.sh

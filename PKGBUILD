@@ -2,7 +2,7 @@
 pkgname=geant4-levelgammadata
 _dataname="G4PhotonEvaporation"
 _foldername="PhotonEvaporation"
-pkgver=3.2
+pkgver=4.3
 pkgrel=1
 pkgdesc="Data files for photon evaporation"
 url="http://geant4.cern.ch/"
@@ -14,8 +14,8 @@ depends=('geant4>=10.2.0')
 install="${pkgname}.install"
 source=("http://geant4.cern.ch/support/source/${_dataname}.${pkgver}.tar.gz"
   "${pkgname}.install")
-md5sums=('01d5ba17f615d3def01f7c0c6b19bd69'
-         '2439230629434938a0a05d4031c9d779')
+md5sums=('012fcdeaa517efebba5770e6c1cbd882'
+         '3e112da8ac3dafa3f9a5e21fefe5ea56')
 
 ## Remove this if you want to keep an even smaller package
 ## No need to wait for compression when just installing it.
