@@ -9,7 +9,7 @@ arch=('i686' 'x86_64')
 url='http://www.mnemosyne-proj.org'
 license=('GPL')
 depends=('python-pyqt5' 'python-matplotlib' 'python-cherrypy' 'python-webob')
-makedepends=('python2-setuptools')
+makedepends=('python-setuptools')
 optdepends=('texlive-core: support for mathematical formulae in cards'
             'ttf-ms-fonts: support for non-latin labels on statistic plots')
 conflicts=('mnemosyne-bzr')
