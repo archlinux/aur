@@ -1,6 +1,6 @@
 pkgbase = jfbview
 	pkgdesc = a PDF and image viewer for the Linux framebuffer
-	pkgver = 0.5.2
+	pkgver = 0.5.3
 	pkgrel = 1
 	url = http://seasonofcode.com/pages/jfbview.html
 	arch = i686
@@ -12,8 +12,8 @@ pkgbase = jfbview
 	depends = jbig2dec
 	conflicts = jfbpdf
 	replaces = jfbpdf
-	source = https://github.com/jichu4n/JFBView/archive/0.5.2.tar.gz
-	sha512sums = 7b21245ac37bcc75fb9d49eaf0e733ffe0aebbe203ebe782e1c79deefe102fec38fd1bc43b6cbc510cd0ac4fd45482472f76e0c2fdcdf7cbf31bbb69d5a77b85
+	source = https://github.com/jichu4n/JFBView/archive/0.5.3.tar.gz
+	sha512sums = 873c4d717e573ea0bd22a9e620ac7e369aeef34fac9a97af2b8ac13a24f291d997a646bc9397c380a280b61875930e1ecc5d4e3240bab4ebf45ac02a3000c486
 
 pkgname = jfbview
 
