@@ -6,13 +6,13 @@
 pkgbase=linux-pf-lts
 _major=4
 _minor=4
-_patchlevel=36
+_patchlevel=38
 _pfpatchlevel=36
 #_subversion=1
 _basekernel=${_major}.${_minor}
 _srcname=linux-${_basekernel}
 _pfrel=10
-pkgrel=2
+pkgrel=1
 _kernelname=-pf
 _pfpatchhome="http://pf.natalenko.name/sources/${_basekernel}/"
 _pfpatchname="patch-${_basekernel}${_kernelname}${_pfrel}"
@@ -48,12 +48,27 @@ source=(https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.{xz,sign}
         'config' 'config.x86_64'
         # standard config files for mkinitcpio ramdisk
         "$pkgbase.preset"
+        # pacman hook for initramfs regeneration
+        '99-linux.hook'
         '0001-sdhci-revert.patch'
         'logo_linux_clut224.ppm.bz2'		#\
         'logo_linux_mono.pbm.bz2'		#-> the Arch Linux boot logos
         'logo_linux_vga16.ppm.bz2'		#/
         "${_pfpatchhome}${_pfpatchname}.xz"	# the -pf patchset
         ${_incr[@]})				# the incremental kernel patches
+sha256sums=('401d7c8fef594999a460d10c72c5a94e9c2e1022f16795ec51746b0d165418b2'
+            'SKIP'
+            '15d9c10ede703dc06abd8ae9c68b4099637b32a27d2b2625eecd0ded317cec21'
+            'a5983205b7d13985566e96ab9fa7053b03c73769bbfa6ed67897131e9cc131c0'
+            '1f036f7464da54ae510630f0edb69faa115287f86d9f17641197ffda8cfd49e0'
+            '834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0'
+            '5313df7cb5b4d005422bd4cd0dae956b2dadba8f3db904275aaf99ac53894375'
+            '03ed4eb4a35d42ae6beaaa5e6fdbada4244ed6c343944bba6462defaa6fed0bf'
+            '51ea665cfec42d9f9c7796af2b060b7edbdeb367e42811f8c02667ad729f6b19'
+            '9e1e81d80afac6f316e53947e1b081017090081cd30e6c4c473420b77af4b52b'
+            'cb4d3fc91475d90179f88fe9994081b8fe37c2b6c2976778425d8e61a5a6541a'
+            'fd1481ed7d6a35a820bbb912d6899fbbc392b505fd1f6643c0060cd9c5f1494a'
+            'ee9869b1f354c3991f33e8bb7754b6b4143f4a44f5833da1fa0da2c1c8ac0f5c')
 validpgpkeys=('ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds <torvalds@linux-foundation.org>
               '647F28654894E3BD457199BE38DBBDC86092693E' # Greg Kroah-Hartman (Linux kernel stable release signing key) <greg@kroah.com>
              )
@@ -65,7 +80,7 @@ _kernelname=${pkgbase#linux}
 # '
 
 prepare() {
-  cd "${srcdir}/linux-${_basekernel}"
+  cd "${srcdir}/${_srcname}"
 
 
   # This is for me, to test the PKGBUILD
@@ -160,7 +175,7 @@ prepare() {
 }
 
 build() {
-  cd "${srcdir}/linux-${_basekernel}"
+  cd "${srcdir}/${_srcname}"
   #----------------------------------------
 
   if [[ "$_BATCH" != "y" ]]; then		# for batch building
@@ -332,11 +347,12 @@ build() {
 }
 
 _package() {
+msg "Running package-${pkgbase}()"
  _pkgdesc="Linux kernel and modules with the pf-kernel patchset [-ck patch (BFS included), TuxOnIce, BFQ, UKSM] and aufs3. Long-term support."
  pkgdesc=${_pkgdesc}
  [ "${pkgbase}" = "linux" ] && groups=('base')
  depends=('coreutils' 'linux-firmware' 'kmod' 'mkinitcpio>=0.7')
- optdepends=('linux-docs: Kernel hackers manual - HTML documentation that comes with the Linux kernel.'
+ optdepends=('linux-lts-docs: Kernel hackers manual - HTML documentation that comes with the Linux kernel.'
 	    'crda: to set the correct wireless channels of your country'
 	    'pm-utils: utilities and scripts for suspend and hibernate power management'
 	    'tuxonice-userui: TuxOnIce userspace user interface'
@@ -359,7 +375,7 @@ _package() {
  install="$pkgbase.install"
 
  #'
-  cd "${srcdir}/linux-${_basekernel}"
+  cd "${srcdir}/${_srcname}"
 
   # Remove undeeded aufs3 git tree
   rm -fr aufs3 2>/dev/null
@@ -483,8 +499,6 @@ _package() {
   msg  "${pkgdesc}"
   echo "    ========================================"
   echo
-exit
- ### package_linux-pf-lts
 
   cd "${srcdir}/linux-${_basekernel}"
 
@@ -518,6 +532,10 @@ exit
     -e "s|fallback_image=.*|fallback_image=\"/boot/initramfs-${pkgbase}-fallback.img\"|" \
     -i "${pkgdir}/etc/mkinitcpio.d/${pkgbase}.preset"
 
+  # install pacman hook for initramfs regeneration
+  sed "s|%PKGBASE%|${pkgbase}|g" "${srcdir}/99-linux.hook" |
+    install -D -m644 /dev/stdin "${pkgdir}/usr/share/libalpm/hooks/99-${pkgbase}.hook"
+
   # remove build and source links
   rm -f "${pkgdir}"/lib/modules/${_kernver}/{source,build}
   # remove the firmware
@@ -545,8 +563,8 @@ exit
   true && pkgname="${pkgnameopt}"
 }
 
-
 _package-headers() {
+msg "Running package-${pkgbase}()"
   pkgdesc="Header files and scripts for building modules for linux-pf-lts kernel."
 #  IFS=' ' read -a conflicts <<<${_conflicts}
 #  conflicts=( ${_conflicts[@]} )
@@ -678,6 +696,7 @@ _package-headers() {
 
   # remove unneeded architectures
   rm -rf "${pkgdir}"/usr/lib/modules/${_kernver}/build/arch/{alpha,arc,arm,arm26,arm64,avr32,blackfin,c6x,cris,frv,h8300,hexagon,ia64,m32r,m68k,m68knommu,metag,mips,microblaze,mn10300,openrisc,parisc,powerpc,ppc,s390,score,sh,sh64,sparc,sparc64,tile,unicore32,um,v850,xtensa}
+
 # end c/p
 
   # remove a file already in linux package
@@ -691,15 +710,3 @@ for _p in ${pkgname[@]}; do
     _package${_p#${pkgbase}}
   }"
 done
-
-# makepkg -g >>PKGBUILD
-sha256sums=('401d7c8fef594999a460d10c72c5a94e9c2e1022f16795ec51746b0d165418b2'
-            'SKIP'
-            '15d9c10ede703dc06abd8ae9c68b4099637b32a27d2b2625eecd0ded317cec21'
-            'a5983205b7d13985566e96ab9fa7053b03c73769bbfa6ed67897131e9cc131c0'
-            '1f036f7464da54ae510630f0edb69faa115287f86d9f17641197ffda8cfd49e0'
-            '5313df7cb5b4d005422bd4cd0dae956b2dadba8f3db904275aaf99ac53894375'
-            '03ed4eb4a35d42ae6beaaa5e6fdbada4244ed6c343944bba6462defaa6fed0bf'
-            '51ea665cfec42d9f9c7796af2b060b7edbdeb367e42811f8c02667ad729f6b19'
-            '9e1e81d80afac6f316e53947e1b081017090081cd30e6c4c473420b77af4b52b'
-            'cb4d3fc91475d90179f88fe9994081b8fe37c2b6c2976778425d8e61a5a6541a')

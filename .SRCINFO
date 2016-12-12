@@ -1,6 +1,6 @@
 pkgbase = linux-pf-lts
-	pkgver = 4.4.36
-	pkgrel = 2
+	pkgver = 4.4.38
+	pkgrel = 1
 	url = http://pf.natalenko.name/
 	arch = i686
 	arch = x86_64
@@ -17,11 +17,14 @@ pkgbase = linux-pf-lts
 	source = config
 	source = config.x86_64
 	source = linux-pf-lts.preset
+	source = 99-linux.hook
 	source = 0001-sdhci-revert.patch
 	source = logo_linux_clut224.ppm.bz2
 	source = logo_linux_mono.pbm.bz2
 	source = logo_linux_vga16.ppm.bz2
 	source = http://pf.natalenko.name/sources/4.4/patch-4.4-pf10.xz
+	source = https://www.kernel.org/pub/linux/kernel/v4.x/incr/patch-4.4.36-37.xz
+	source = https://www.kernel.org/pub/linux/kernel/v4.x/incr/patch-4.4.37-38.xz
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
 	sha256sums = 401d7c8fef594999a460d10c72c5a94e9c2e1022f16795ec51746b0d165418b2
@@ -29,11 +32,14 @@ pkgbase = linux-pf-lts
 	sha256sums = 15d9c10ede703dc06abd8ae9c68b4099637b32a27d2b2625eecd0ded317cec21
 	sha256sums = a5983205b7d13985566e96ab9fa7053b03c73769bbfa6ed67897131e9cc131c0
 	sha256sums = 1f036f7464da54ae510630f0edb69faa115287f86d9f17641197ffda8cfd49e0
+	sha256sums = 834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0
 	sha256sums = 5313df7cb5b4d005422bd4cd0dae956b2dadba8f3db904275aaf99ac53894375
 	sha256sums = 03ed4eb4a35d42ae6beaaa5e6fdbada4244ed6c343944bba6462defaa6fed0bf
 	sha256sums = 51ea665cfec42d9f9c7796af2b060b7edbdeb367e42811f8c02667ad729f6b19
 	sha256sums = 9e1e81d80afac6f316e53947e1b081017090081cd30e6c4c473420b77af4b52b
 	sha256sums = cb4d3fc91475d90179f88fe9994081b8fe37c2b6c2976778425d8e61a5a6541a
+	sha256sums = fd1481ed7d6a35a820bbb912d6899fbbc392b505fd1f6643c0060cd9c5f1494a
+	sha256sums = ee9869b1f354c3991f33e8bb7754b6b4143f4a44f5833da1fa0da2c1c8ac0f5c
 
 pkgname = linux-pf-lts
 	pkgdesc = Linux kernel and modules with the pf-kernel patchset [-ck patch (BFS included), TuxOnIce, BFQ, UKSM] and aufs3. Long-term support.
@@ -42,7 +48,7 @@ pkgname = linux-pf-lts
 	depends = linux-firmware
 	depends = kmod
 	depends = mkinitcpio>=0.7
-	optdepends = linux-docs: Kernel hackers manual - HTML documentation that comes with the Linux kernel.
+	optdepends = linux-lts-docs: Kernel hackers manual - HTML documentation that comes with the Linux kernel.
 	optdepends = crda: to set the correct wireless channels of your country
 	optdepends = pm-utils: utilities and scripts for suspend and hibernate power management
 	optdepends = tuxonice-userui: TuxOnIce userspace user interface
@@ -51,7 +57,7 @@ pkgname = linux-pf-lts
 	optdepends = nvidia-beta-all: NVIDIA drivers for all installed kernels
 	optdepends = modprobed_db: Keeps track of EVERY kernel module that has ever been probed. Useful for make localmodconfig.
 	provides = linux-pf-lts=4.4
-	provides = linux=4.4.36
+	provides = linux=4.4.38
 	provides = aufs3
 	conflicts = linux-pf-lts
 	replaces = aufs3
@@ -60,6 +66,6 @@ pkgname = linux-pf-lts
 pkgname = linux-pf-lts-headers
 	pkgdesc = Header files and scripts for building modules for linux-pf-lts kernel.
 	provides = linux-pf-lts-headers
-	provides = linux-headers=4.4.36
+	provides = linux-headers=4.4.38
 	conflicts = linux-pf-lts-headers
 
