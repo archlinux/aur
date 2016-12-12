@@ -16,4 +16,4 @@ depends=('device-mapper' 'gawk' 'gcc-libs' 'glibc' 'libutil-linux' 'lvm2'
          'psmisc' 'reiserfsprogs' 's-nail' 'sed' 'shadow' 'sysfsutils'
          'systemd-sysvcompat' 'tar' 'texinfo' 'usbutils' 'util-linux' 'vi'
          'which' 'xfsprogs')
-url=("https://www.archlinux.org/")
+url="https://www.archlinux.org/"
