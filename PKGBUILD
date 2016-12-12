@@ -2,7 +2,7 @@
 
 pkgname=php-msgpack
 _extname=msgpack
-pkgver=2.0.0
+pkgver=2.0.2
 pkgrel=1
 pkgdesc="PHP extension for interfacing with MessagePack"
 arch=("i686" "x86_64")
@@ -29,4 +29,4 @@ package() {
 	install -m0755 -D ".libs/$_extname.so" "$pkgdir$(php-config --extension-dir)/$_extname.so"
 }
 
-sha256sums=('974043dd47907a34f8820d1957db3a8e8a15a4c55b59eb265cb8a65d0b40f2a0')
+sha256sums=('b04980df250214419d9c3d9a5cb2761047ddf5effe5bc1481a19fee209041c01')
