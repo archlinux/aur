@@ -2,33 +2,37 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 # Contributor: Ganjolinux aka Basalari David <ganjolinux@gmail.com>
 # Contributor: speps <speps at aur dot archlinux dot org>
+# Contributor: B3l3tte <ouack23 at yahoo.fr>
 
 pkgname=darkice
-pkgver=1.2
+pkgver=1.3
 pkgrel=1
 pkgdesc="Live audio streamer. Reads from audio interface, encodes, sends to streaming server."
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
-url="http://code.google.com/p/darkice/"
+url="http://www.darkice.org/"
 license=('GPL')
-depends=('lame' 'libpulse' 'faac' 'jack' 'twolame' 'opus' 'libsamplerate')
-source=("http://darkice.googlecode.com/files/${pkgname}-${pkgver}.tar.gz"
-	'service')
-md5sums=('de541ea95a73a50f2f5e700434c22329'
-         '1c1cde0a5c03a2190a48275c03016eb8')
+depends=('lame' 'libpulse' 'faac' 'libaacplus' 'jack' 'twolame' 'opus' 'libsamplerate' 'fftw')
+source=('darkice::git+https://github.com/Ouack23/darkice.git#branch=master' 
+'https://aur.archlinux.org/cgit/aur.git/plain/service?h=darkice')
+md5sums=('SKIP' '1c1cde0a5c03a2190a48275c03016eb8')
 
 build() {
-  cd "$srcdir/$pkgname-$pkgver"
+  mv "service?h=darkice" service
+
+  cd "$srcdir/$pkgname/$pkgname/trunk"
+
+  ./autogen.sh
 
   ./configure --prefix=/usr \
               --sysconfdir=/etc \
               --with-aacplus \
-			  --with-opus \
-			  --with-samplerate
+	      --with-opus \
+	      --with-samplerate
   make
 }
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$srcdir/$pkgname/$pkgname/trunk"
 
   make DESTDIR="$pkgdir/" install
 
