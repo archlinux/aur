@@ -1,7 +1,7 @@
 # Maintainer: wagnerflo <florian@wagner-flo.net>
 _cranname=RColorBrewer
 _cranver=1.1-2
-pkgname=r-cran-rcpp
+pkgname=r-cran-rcolorbrewer
 pkgver=1.1.2
 pkgrel=1
 pkgdesc="ColorBrewer Palettes"

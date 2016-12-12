@@ -1,4 +1,4 @@
-pkgbase = r-cran-rcpp
+pkgbase = r-cran-rcolorbrewer
 	pkgdesc = ColorBrewer Palettes
 	pkgver = 1.1.2
 	pkgrel = 1
@@ -10,5 +10,5 @@ pkgbase = r-cran-rcpp
 	source = http://cran.r-project.org/src/contrib/RColorBrewer_1.1-2.tar.gz
 	md5sums = 66054d83eade4dff8a43ad4732691182
 
-pkgname = r-cran-rcpp
+pkgname = r-cran-rcolorbrewer
 
