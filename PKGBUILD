@@ -1,6 +1,6 @@
 # Maintainer: Jens John <jjohn@2ion.de>
 pkgname=gien
-pkgver=0.4.0
+pkgver=0.4.1
 pkgrel=1
 pkgdesc="Export Github issue tracker and wiki contents to local email storage"
 arch=('any')
@@ -15,8 +15,8 @@ depends=(\
   'python-requests')
 makedepends=('python-setuptools')
 options=(!emptydirs)
-source=("https://pypi.python.org/packages/8f/4d/8bbfd93ad6064d19d2fdcd13c876be57be9061e9684d802cadc80c17e740/gien-0.4.0.tar.gz")
-sha256sums=("8fb14835f206565ca5454f628904c944560a67fdc0c353a81d1e572cbcd6f29a")
+source=("https://pypi.python.org/packages/d2/7a/59ce610d3026da98ccb51967ae1e041b33e542053074f510b3daf1dc92c2/gien-0.4.1.tar.gz")
+sha256sums=("8986465917a7a275167b0f6cfe94951e3c8484a850ec29fdba521b25d2ff8fc5")
 
 build()
 {
