@@ -1,6 +1,6 @@
 # Maintainer: Kieran Colford <kieran@kcolford.com>
 pkgname=ddns-git
-pkgver=r36.b96486a
+pkgver=r39.72c5863
 pkgrel=1
 pkgdesc="Automatic provisioning of dynamic DNS"
 arch=('any')
@@ -9,16 +9,15 @@ license=('GPL')
 groups=()
 depends=('bash' 'bind-tools' 'coreutils' 'inetutils' 'sed' 'systemd')
 makedepends=('git')
-optdepends=('bind: for tsig-keygen'
-	    'curl: for looking up your ip address'
+optdepends=('curl: for looking up your ip address'
 	    'openssh: for updating SSHFP records')
-provides=('ddns')
-conflicts=('ddns')
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
 replaces=()
 backup=('etc/ddns.conf')
 options=()
 install=
-source=('ddns::git+https://github.com/kcolford/ddns')
+source=("git+$url")
 md5sums=('SKIP')
 noextract=()
 
