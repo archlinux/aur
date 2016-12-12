@@ -4,7 +4,7 @@
 # Apple website on how to import gpg key -> https://swift.org/download/#using-downloads
 #
 # Command to do it if you have wget installed. (Warning do not use sudo or root)
-# wget -q -O - https://swift.org/keys/release-key-swift-3.x.asc | \gpg --import -
+# wget -q -O - https://swift.org/keys/all-keys.asc | gpg --import -
 # or type command below if wget not installed.
 # gpg --keyserver hkp://pool.sks-keyservers.net \
 #      --recv-keys \
