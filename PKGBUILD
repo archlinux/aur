@@ -1,5 +1,5 @@
 pkgname=alacritty-git
-pkgver=0.1.0.180
+pkgver=0.1.0.222
 pkgrel=1
 pkgdesc="WORK IN PROGRESS - a terminal"
 arch=('x86_64' 'i686')
@@ -20,6 +20,7 @@ pkgver() {
 
 build() {
     cd $pkgname
+	cargo update
 	cargo build --release
 }
 
