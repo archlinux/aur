@@ -10,7 +10,7 @@ url="https://downloads.chef.io/chef-client/"
 license=('Apache')
 depends=()
 conflicts=( chef chef-solo )
-source=("https://packages.chef.io/stable/ubuntu/12.04/chef_${pkgver}-1_amd64.deb")
+source=("https://packages.chef.io/stable/ubuntu/16.04/chef_${pkgver}-1_amd64.deb")
 sha512sums=('c29122c7da1a7757daa3796e1ed5c481c99399d80ad396f43c9b68fb1051fd418e1fa24b8302c03e8acee061490bddc24e14280628c88cd221fc396150fdc6af')
 
 package() {
