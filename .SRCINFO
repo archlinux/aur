@@ -1,0 +1,20 @@
+pkgbase = python-records-git
+	pkgdesc = A library for making raw SQL queries to relational databases.
+	pkgver = 229.4038d9d
+	pkgrel = 1
+	url = https://github.com/kennethreitz/records
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python-distribute
+	depends = python
+	depends = python-requests
+	depends = python-tablib
+	depends = python-docopt
+	depends = python-sqlalchemy
+	provides = python-records
+	source = git+https://github.com/kennethreitz/records.git
+	sha512sums = SKIP
+
+pkgname = python-records-git
+
