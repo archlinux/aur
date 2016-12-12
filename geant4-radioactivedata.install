@@ -5,7 +5,6 @@ _packagename='geant4-radioactivedata'
 _dataversion=4.2
 _foldername="RadioactiveDecay${_dataversion}"
 
-
 _add() {
     echo "export ${_varname}=/usr/share/${_packagename}/${_foldername}" >> /etc/profile.d/geant4.sh
     echo "setenv ${_varname} /usr/share/${_packagename}/${_foldername}" >> /etc/profile.d/geant4.csh
