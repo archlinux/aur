@@ -1,4 +1,4 @@
-pkgbase = cinbie
+pkgbase = cin-bin
 	pkgdesc = Cinelerra (5.1) (20161130)
 	pkgver = 5.1
 	pkgrel = 20161130
@@ -35,5 +35,5 @@ pkgbase = cinbie
 	sha512sums = ae5ca9f1bde7d698294c0c9165c2343895fa83cbe742674d6a2145b6fb8a773dd11e646cc1956757a1444c04b68b87aa0341a41b8a516fcad924eb3052eeecb6
 	sha512sums = SKIP
 
-pkgname = cinbie
+pkgname = cin-bin
 

@@ -1,6 +1,6 @@
 # Maintainer: Michael Egger
 # gpg key avaible at gpg --keyserver pgp.mit.edu --recv-keys DB68D18158C19A535A538524507F8DFE0C99485B
-pkgname=cinbie
+pkgname=cin-bin
 pkgver=5.1
 pkgrel=20161130
 pkgdesc="Cinelerra ($pkgver) ($pkgrel)"
