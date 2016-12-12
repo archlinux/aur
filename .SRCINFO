@@ -1,6 +1,6 @@
 pkgbase = pluma-dev
 	pkgdesc = A powerful text editor for MATE (GTK3 version)
-	pkgver = 1.17.0
+	pkgver = 1.17.1
 	pkgrel = 1
 	url = http://mate-desktop.org
 	arch = i686
@@ -27,8 +27,8 @@ pkgbase = pluma-dev
 	provides = pluma-gtk3
 	conflicts = pluma
 	conflicts = pluma-gtk3
-	source = http://pub.mate-desktop.org/releases/1.17/pluma-1.17.0.tar.xz
-	sha1sums = a26fc1b6409abc25d4fefe05083fcb775cb68fac
+	source = http://pub.mate-desktop.org/releases/1.17/pluma-1.17.1.tar.xz
+	sha1sums = d66431a8685e9972a8a4a2b970938e5574d3029b
 
 pkgname = pluma-dev
 
