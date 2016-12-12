@@ -4,15 +4,15 @@
 
 pkgname=lirc-git
 _pkgname=lirc
-pkgver=r2985.c6d4949
+pkgver=r3024.8c87a28
 pkgrel=1
+
 pkgdesc="Linux Infrared Remote Control utils. Git version."
 arch=('i686' 'x86_64')
-license=('GPL')
 url="http://www.lirc.org/"
-depends=('alsa-lib' 'libx11' 'libftdi-compat' 'libirman')
-makedepends=('help2man' 'alsa-lib' 'libx11' 'libftdi-compat' 'libirman'
-'libxslt' 'python' 'git' 'python-yaml')
+license=('GPL')
+depends=('alsa-lib' 'libx11' 'libftdi' 'libusb-compat')
+makedepends=('help2man' 'alsa-lib' 'libx11' 'libxslt' 'python')
 optdepends=('python: for lirc-setup, irdb-get and pronto2lirc')
 provides=('lirc-utils')
 conflicts=('lirc-utils' 'lirc')
@@ -26,24 +26,27 @@ md5sums=('SKIP'
 'febf25c154a7d36f01159e84f26c2d9a')
 
 pkgver() {
-	cd "$srcdir/$_pkgname"
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  cd "$srcdir/$_pkgname"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-	cd "$srcdir/$_pkgname"
-	./autogen.sh
-	./configure --prefix=/usr --sbindir=/usr/bin --sysconfdir=/etc --localstatedir=/var
-	sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
-	make
+  cd "$srcdir/$_pkgname"
+  ./autogen.sh
+  ./configure --prefix=/usr --sbindir=/usr/bin --sysconfdir=/etc --localstatedir=/var
+  sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
+  make
 }
 
 package() {
-	cd "$srcdir/$_pkgname"
-	make DESTDIR="${pkgdir}" -j1 install
-  
-	install -Dm644 "${srcdir}"/lirc.tmpfiles "${pkgdir}"/usr/lib/tmpfiles.d/lirc.conf
+  cd "$srcdir/$_pkgname"
+
+  make DESTDIR="${pkgdir}" -j1 install
+
+  install -Dm644 "${srcdir}"/lirc.tmpfiles "${pkgdir}"/usr/lib/tmpfiles.d/lirc.conf
   install -Dm644 "${srcdir}"/lirc.logrotate "${pkgdir}"/etc/logrotate.d/lirc
 
   rmdir "${pkgdir}"/var/{run/lirc/,run/}
 }
+
+# vim:set ts=2 sw=2 et:
