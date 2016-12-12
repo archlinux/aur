@@ -5,8 +5,8 @@
 # Maintainer: Flow
 
 pkgname=rslsync
-pkgver=2.4.3
-pkgrel=2
+pkgver=2.4.4
+pkgrel=1
 pkgdesc="Resilio Sync (ex:BitTorrent Sync) - automatically sync files via secure, distributed technology"
 license=("custom:resilio")
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
