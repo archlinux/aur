@@ -6,8 +6,31 @@ pkgrel=1
 pkgdesc='Metapackage for all the base-devel group.'
 arch=('any')
 license=('none')
-depends=('autoconf' 'automake' 'binutils' 'bison' 'fakeroot' 'file' 'findutils'
-         'flex' 'gawk' 'gcc' 'gettext' 'grep' 'grep' 'groff' 'gzip' 'libtool'
-         'm4' 'make' 'pacman' 'patch' 'pkg-config' 'sed' 'sudo' 'texinfo'
-         'util-linux' 'which')
+depends=(
+  'autoconf'
+  'automake'
+  'binutils'
+  'bison'
+  'fakeroot'
+  'file'
+  'findutils'
+  'flex'
+  'gawk'
+  'gcc'
+  'gettext'
+  'grep'
+  'groff'
+  'gzip'
+  'libtool'
+  'm4'
+  'make'
+  'pacman'
+  'patch'
+  'pkg-config'
+  'sed'
+  'sudo'
+  'texinfo'
+  'util-linux'
+  'which'
+)
 url="https://www.archlinux.org/"
