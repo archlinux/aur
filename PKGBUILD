@@ -2,7 +2,7 @@
 # Contributor: Robin Choudhury <rchoudhu@calpoly.edu>>
 
 pkgname=rst2html5-git
-pkgver=0.2.6.r135.980c360
+pkgver=0.5.1.r177.7e315ab
 pkgrel=1
 pkgdesc='RestructuredText to HTML5 + bootstrap css'
 arch=('any')
@@ -23,6 +23,7 @@ pkgver () {
 package() {
   cd "${srcdir}/rst2html5"
   python2 setup.py install --root="${pkgdir}/" --optimize=1
+  mv "$pkgdir"/usr/bin/rst2html5{,-mg}
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
