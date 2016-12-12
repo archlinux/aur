@@ -1,7 +1,7 @@
 # Maintainer: Hugo Osvaldo Barrera <hugo@barrera.io>
 
 pkgname=meta-group-base
-pkgver=1.0.0
+pkgver=201612120042
 pkgrel=1
 pkgdesc='Metapackage for all the base group.'
 arch=('any')
