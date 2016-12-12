@@ -1,7 +1,7 @@
 pkgbase = catalyst-total-hd234k
 	pkgdesc = AMD/ATI legacy drivers. catalyst-dkms+ catalyst-utils + lib32-catalyst-utils
 	pkgver = 13.1
-	pkgrel = 38
+	pkgrel = 39
 	url = http://www.amd.com
 	install = catalyst-total-hd234k.install
 	arch = i686
@@ -29,6 +29,7 @@ pkgbase = catalyst-total-hd234k
 	optdepends = opencl-headers: headers necessary for OpenCL development
 	optdepends = acpid: acpi event support / atieventsd
 	optdepends = linux-lts-headers: to build the fglrx module for the linux-lts kernel
+	optdepends = opencl-icd-loader: OpenCL ICD Bindings
 	provides = libgl
 	provides = libatical=13.1
 	provides = catalyst=13.1
@@ -36,9 +37,9 @@ pkgbase = catalyst-total-hd234k
 	provides = catalyst-dkms=13.1
 	provides = catalyst-libgl=13.1
 	provides = opencl-catalyst=13.1
-	provides = libcl
 	provides = dri
 	provides = libtxc_dxtn
+	provides = opencl-driver
 	conflicts = libgl
 	conflicts = xf86-video-ati
 	conflicts = xf86-video-radeonhd
@@ -50,7 +51,6 @@ pkgbase = catalyst-total-hd234k
 	conflicts = catalyst-generator
 	conflicts = catalyst-dkms
 	conflicts = catalyst-utils
-	conflicts = libcl
 	options = staticlibs
 	options = libtool
 	options = !strip

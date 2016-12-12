@@ -21,13 +21,13 @@
 # Contributor: kolasa (parts of 4.2 and 4.3 kernel patches)
 # Contributor: gentoo (patch for 3.10 + part of 4.3 kernel patches)
 # Contributor: aslmaswd (acpi main script)
+# Contributor: npfeiler (libcl/opencl-icd-loader cleaning)
 
 
-# PKGEXT='.pkg.tar.gz' # imho time to pack this pkg into tar.xz is too long, unfortunatelly yaourt got problems when ext is different from .pkg.tar.xz - V
 
 pkgname=catalyst-total-hd234k
 pkgver=13.1
-pkgrel=38
+pkgrel=39
 pkgdesc="AMD/ATI legacy drivers. catalyst-dkms+ catalyst-utils + lib32-catalyst-utils"
 arch=('i686' 'x86_64')
 url="http://www.amd.com"
@@ -38,9 +38,10 @@ optdepends=('qt4: to run ATi Catalyst Control Center (amdcccle)'
 	    'libxxf86vm: to run ATi Catalyst Control Center (amdcccle)'
 	    'opencl-headers: headers necessary for OpenCL development'
 	    'acpid: acpi event support  / atieventsd'
-	    'linux-lts-headers: to build the fglrx module for the linux-lts kernel')
-conflicts=('libgl' 'xf86-video-ati' 'xf86-video-radeonhd' 'catalyst-test' 'nvidia-utils' 'nvidia' 'catalyst' 'catalyst-daemon' 'catalyst-generator' 'catalyst-dkms' 'catalyst-utils' 'libcl')
-provides=('libgl' "libatical=${pkgver}" "catalyst=${pkgver}" "catalyst-utils=${pkgver}" "catalyst-dkms=${pkgver}" "catalyst-libgl=${pkgver}" "opencl-catalyst=${pkgver}" 'libcl' 'dri' 'libtxc_dxtn')
+	    'linux-lts-headers: to build the fglrx module for the linux-lts kernel'
+	    'opencl-icd-loader: OpenCL ICD Bindings')
+conflicts=('libgl' 'xf86-video-ati' 'xf86-video-radeonhd' 'catalyst-test' 'nvidia-utils' 'nvidia' 'catalyst' 'catalyst-daemon' 'catalyst-generator' 'catalyst-dkms' 'catalyst-utils')
+provides=('libgl' "libatical=${pkgver}" "catalyst=${pkgver}" "catalyst-utils=${pkgver}" "catalyst-dkms=${pkgver}" "catalyst-libgl=${pkgver}" "opencl-catalyst=${pkgver}" 'dri' 'libtxc_dxtn' 'opencl-driver')
 
 if [ "${CARCH}" = "x86_64" ]; then
  warning "x86_64 system detected"
@@ -48,8 +49,9 @@ if [ "${CARCH}" = "x86_64" ]; then
   if [[ `cat /etc/pacman.conf | grep -c "#\[multilib]"` = 0 ]]; then
     warning "OK, lib32-catalyst-utils will be added to the package"
     depends+=('lib32-libxext' 'lib32-libdrm' 'lib32-libxinerama' 'lib32-mesa>=10.1.0-4')
-    conflicts+=('lib32-libgl' 'lib32-nvidia-utils' 'lib32-catalyst-utils' 'lib32-libcl')
-    provides+=('lib32-libgl' "lib32-catalyst-utils=${pkgver}" "lib32-catalyst-libgl=${pkgver}" "lib32-opencl-catalyst=${pkgver}" 'lib32-dri' 'lib32-libtxc_dxtn' 'lib32-libcl')
+    conflicts+=('lib32-libgl' 'lib32-nvidia-utils' 'lib32-catalyst-utils')
+    provides+=('lib32-libgl' "lib32-catalyst-utils=${pkgver}" "lib32-catalyst-libgl=${pkgver}" "lib32-opencl-catalyst=${pkgver}" 'lib32-dri' 'lib32-libtxc_dxtn' 'lib32-opencl-driver')
+    optdepends+=('lib32-opencl-icd-loader: OpenCL ICD Bindings (32-bit)')
       else
 	warning "lib32-catalyst-utils will NOT be added to the package"
   fi
@@ -219,6 +221,7 @@ package() {
       install -m644 X11R6/${_lib}/*.cap ${pkgdir}/usr/lib
       install -m755 X11R6/${_lib}/modules/dri/*.so ${pkgdir}/usr/lib/xorg/modules/dri
       install -m755 ${_lib}/*.so* ${pkgdir}/usr/lib
+      rm ${pkgdir}/usr/lib/libOpenCL.so.1       #opencl-icd-loader provides this
 
     ## QT libs (only 2 files) - un-comment 2 lines below if you don't want to install qt package
 #      install -m755 -d ${pkgdir}/usr/share/ati/${_lib}
@@ -229,7 +232,6 @@ package() {
       ln -snf libfglrx_dm.so.1.0 ${pkgdir}/usr/lib/libfglrx_dm.so
       ln -snf libatiuki.so.1.0 ${pkgdir}/usr/lib/libatiuki.so.1
       ln -snf libatiuki.so.1.0 ${pkgdir}/usr/lib/libatiuki.so
-      ln -snf libOpenCL.so.1 ${pkgdir}/usr/lib/libOpenCL.so
 
       # We have to provide symlinks to mesa, as catalyst doesn't ship them
       ln -s /usr/lib/mesa/libEGL.so.1.0.0 ${pkgdir}/usr/lib/libEGL.so.1.0.0
@@ -354,6 +356,7 @@ package() {
 	install -dm755 ${pkgdir}/usr/lib32/dri
 	install -dm755 ${pkgdir}/usr/lib32/xorg/modules/dri
 	install -m755 lib/*.so* ${pkgdir}/usr/lib32
+	rm ${pkgdir}/usr/lib32/libOpenCL.so.1      #lib32-opencl-icd-loader provides this
 	install -m755 X11R6/lib/fglrx/fglrx-libGL.so.1.2 ${pkgdir}/usr/lib32/fglrx
 	ln -sf /usr/lib32/fglrx/fglrx-libGL.so.1.2 ${pkgdir}/usr/lib32/fglrx/libGL.so.1.2
 	ln -sf /usr/lib32/fglrx/fglrx-libGL.so.1.2 ${pkgdir}/usr/lib32/fglrx-libGL.so.1.2
@@ -375,7 +378,6 @@ package() {
 	ln -sf libXvBAW.so.1.0 libXvBAW.so
 	ln -sf libatiuki.so.1.0 libatiuki.so.1
 	ln -sf libatiuki.so.1.0 libatiuki.so
-	ln -sf libOpenCL.so.1 libOpenCL.so
 
       # We have to provide symlinks to lib32-mesa, as catalyst doesn't ship them
 	ln -s /usr/lib32/mesa/libEGL.so.1.0.0 ${pkgdir}/usr/lib32/libEGL.so.1.0.0
