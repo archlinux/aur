@@ -1,0 +1,15 @@
+pkgbase = discord-cli-git
+	pkgdesc = Minimalistic Command-Line Interface for Discord
+	pkgver = r45.57f869f
+	pkgrel = 1
+	url = https://github.com/Rivalo/discord-cli
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = go
+	makedepends = git
+	source = discord-cli-git::git+https://github.com/Rivalo/discord-cli
+	md5sums = SKIP
+
+pkgname = discord-cli-git
+
