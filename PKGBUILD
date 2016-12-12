@@ -28,7 +28,7 @@ sha512sums=('8d1f4237411fecc7b0d934abfba11255cbe11f513f5586156a38e2290caabac9223
 validgpgkeys=('DB68D18158C19A535A538524507F8DFE0C99485B')
 
 package() {
-tar xJvf ${srcdir}/cin-${pkgver}-${pkgrel}-${arch}.pkg.tar.xz -C ${pkgdir}/
+tar xJvf ${srcdir}/cinbie-${pkgver}-${pkgrel}-${arch}.pkg.tar.xz -C ${pkgdir}/
 }
 
 # vim:set ts=2 sw=2 et:
