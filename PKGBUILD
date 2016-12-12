@@ -1,8 +1,8 @@
 # Maintainer: Tomislav Ivek <tomislav.ivek@gmail.com>
 
 pkgname=('conan')
-pkgver=0.16.1
-pkgrel=3
+pkgver=0.17.0
+pkgrel=1
 pkgdesc="A distributed, open source, C/C++ package manager."
 arch=('any')
 url="https://conan.io"
@@ -17,17 +17,8 @@ depends=('python-pyjwt>=1.4.0' 'python-pyjwt<1.5.0'
          'python-six>=1.10.0'
          'python-node-semver=0.1.1'
          'python-bottle>=0.12.8' 'python-bottle<0.13')
-source=("https://github.com/conan-io/conan/archive/${pkgver}.tar.gz" "drop-passlib.patch" "drop-boto.patch")
-sha512sums=('2d7b11712cd11c4cc4269cf001fcf4452bc7ba3bacabab223ce805cace9b2ec2ea82930b7ad7218fcb6ceda864955225c96381b582ff7de2e6b927f6c04b7c19'
-            '3b57353283dd280892e980b6c5bf5b74d0676c1cd42ac1a59a150634f69225086243ac6e2c23e07556b62a71ec36402e69534d4921189a7dfff546f190828fe0'
-            'db1387e8e6d55b90a1b45d43029564d40c851e39bd3d15e189ed2343e7cdca11705e4ce2baf34bdbb2c5c6fe899049ec198724150977f8656a3e49d2ae2402ae')
-
-prepare() {
-  cd $pkgname-$pkgver
-  patch -Np1 -i "${srcdir}/drop-passlib.patch"
-  patch -Np1 -F3 -i "${srcdir}/drop-boto.patch"
-}
-
+source=("https://github.com/conan-io/conan/archive/${pkgver}.tar.gz")
+sha512sums=('67a339a6fbaf2aac2dab792a768c79d5e0998e663126f812179f824bc0a1dca212fe8e6f0ecc5dfb88f655ff41fae7a951bc99e4aa505dd8f87053dd29f2f233')
 
 build() {
   cd "$srcdir/conan-$pkgver"
