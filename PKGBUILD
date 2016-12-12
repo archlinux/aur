@@ -1,7 +1,7 @@
 # Maintainer: Filipe Verri <filipeverri@gmail.com>
 
 pkgname=type_safe-git
-pkgver=r121.edb8dbf
+pkgver=r140.c0d741c
 pkgrel=1
 pkgdesc="Zero overhead utilities for preventing bugs at compile time"
 arch=('any')
