@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Name=pzl games Shikaku
+Comment=Shikaku (pzl games)
+Categories=Game;LogicGame
+Exec=python /usr/share/pzl_games/shikaku.pyw
+Terminal=false
+Icon=/usr/share/pixmaps/pzl_games/shikaku_icon.png
+Type=Application

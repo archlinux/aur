@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Name=pzl games Suguru
+Comment=Suguru (pzl games)
+Categories=Game;LogicGame
+Exec=python /usr/share/pzl_games/suguru.pyw
+Terminal=false
+Icon=/usr/share/pixmaps/pzl_games/suguru_icon.png
+Type=Application
