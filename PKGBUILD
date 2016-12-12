@@ -1,14 +1,18 @@
 # Maintainer: Ian D, Scott <ian@perebruin.com>
+# Contributor: Emmanuel Gil Peyrot <linkmauve@linkmauve.fr>
+
 pkgname=python-pympv-git
-pkgver=r83.95efe30
+pkgver=r107.2a5401b
 pkgrel=1
 pkgdesc="A python wrapper for libmpv."
 arch=('i686' 'x86_64')
-url="https://github.com/andre-d/pympv"
+url="https://github.com/marcan/pympv"
 license=('gpl')
 depends=('python')
 makedepends=('cython')
-source=('git://github.com/andre-d/pympv.git')
+provides=('python-pympv')
+conflicts=('python-pympv')
+source=('git://github.com/marcan/pympv.git')
 md5sums=('SKIP')
 _gitname="pympv"
 
