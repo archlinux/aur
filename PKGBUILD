@@ -9,8 +9,8 @@
 _pkgbase=mupdf
 pkgbase=${_pkgbase}-nojs
 pkgname=(libmupdf-nojs mupdf-nojs mupdf-gl-nojs mupdf-tools-nojs)
-pkgver=1.9_a
-pkgrel=2
+pkgver=1.10a
+pkgrel=1
 pkgdesc='Lightweight PDF and XPS viewer'
 arch=('i686' 'x86_64')
 url='http://mupdf.com'
@@ -22,14 +22,10 @@ makedepends=('curl' 'desktop-file-utils' 'freetype2' 'glfw' 'harfbuzz'
 options=('staticlibs')
 source=("http://mupdf.com/downloads/mupdf-${pkgver/_/}-source.tar.gz"
         '0001-mupdf-openjpeg.patch'
-        'mupdf-0001-bug-696941-fix-use-after-free.patch::http://git.ghostscript.com/?p=mupdf.git;a=patch;h=fa1936405b6a84e5c9bb440912c23d532772f958'
-        'mupdf-0002-make-sure-that-number-of-colors-in-mesh-params-is-valid.patch::http://git.ghostscript.com/?p=mupdf.git;a=patch;h=39b0f07dd960f34e7e6bf230ffc3d87c41ef0f2e'
         'mupdf.desktop'
         'mupdf.xpm')
-sha256sums=('8015c55f4e6dd892d3c50db4f395c1e46660a10b460e2ecd180a497f55bbc4cc'
-'3bad2ab6dfd11d7f715c9ea5618856ac386a0841d0ee14a33f0eec55b60bda67'
-'a8b72e0368f19349fe434d2fe7febc1e6623abf61d043dfa794a002aed8fef4c'
-'e0b53f0999a2c91f7906a9c6d61f7494716507e535e9f2c4dccc8ea490fb1402'
+sha256sums=('aacc1f36b9180f562022ef1ab3439b009369d944364f3cff8a2a898834e3a836'
+'e55c3b876149d46983b155b0a237fa7d8d47a49e4ecab848bfca3fd549c644c4'
 '70f632e22902ad4224b1d88696702b3ba4eb3c28eb7acf735f06d16e6884a078'
 'a435f44425f5432c074dee745d8fbaeb879038ec1f1ec64f037c74662f09aca8'
 )
@@ -40,16 +36,6 @@ prepare() {
   # remove bundled packages, we want our system libraries
   rm -rf thirdparty/{curl,freetype,glfw,harfbuzz,jbig2dec,jpeg,openjpeg,zlib}
 
-  # Bug 696941: Fix use after free.
-  # CVE-2016-6265
-  # https://security-tracker.debian.org/tracker/CVE-2016-6265
-  patch -Np1 < "${srcdir}/mupdf-0001-bug-696941-fix-use-after-free.patch"
-
-  # Make sure that number of colors in mesh params is valid.
-  # CVE-2016-6525
-  # https://security-tracker.debian.org/tracker/CVE-2016-6525
-  patch -Np1 < "${srcdir}/mupdf-0002-make-sure-that-number-of-colors-in-mesh-params-is-valid.patch"
-
   # fix function for openjpeg 2.1.x
   patch -Np1 < "${srcdir}/0001-mupdf-openjpeg.patch"
 
@@ -58,9 +44,9 @@ prepare() {
 }
 
 build() {
-  CFLAGS+=' -fPIC -fPIE -fstack-protector-all -D_FORTIFY_SOURCE=2'
-  CXXFLAGS+=' -fPIC -fPIE -fstack-protector-all -D_FORTIFY_SOURCE=2'
-  LDFLAGS+=' -pie'
+  CFLAGS+=' -fPIC -fPIE -fno-plt -fstack-check -fstack-protector-all -D_FORTIFY_SOURCE=2'
+  CXXFLAGS+=' -fPIC -fPIE -fno-plt -fstack-check -fstack-protector-all -D_FORTIFY_SOURCE=2'
+  LDFLAGS+=' -pie -z,now'
   export CFLAGS CXXFLAGS LDFLAGS
 
   HAVE_GLFW='yes'
