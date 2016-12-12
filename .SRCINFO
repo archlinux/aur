@@ -1,0 +1,17 @@
+pkgbase = pacman-cycles-git
+	pkgdesc = A script to print out installed packages that are part of a dependency cycle.
+	pkgver = r2.8ba480d
+	pkgrel = 1
+	url = https://github.com/kcolford/pacman-cycles
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = bash
+	depends = pacman
+	provides = pacman-cycles
+	conflicts = pacman-cycles
+	source = git+https://github.com/kcolford/pacman-cycles
+	md5sums = SKIP
+
+pkgname = pacman-cycles-git
+
