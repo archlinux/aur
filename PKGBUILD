@@ -5,10 +5,10 @@
 pkgbase=linux-lts-userns
 #pkgbase=linux-lts-userns-custom
 _srcname=linux-4.4
-pkgver=4.4.35
+pkgver=4.4.38
 pkgrel=1
 arch=('i686' 'x86_64')
-url="http://www.kernel.org/"
+url="https://www.kernel.org/"
 license=('GPL2')
 makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc')
 options=('!strip')
@@ -16,6 +16,8 @@ source=(https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.{xz,sign}
         https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.{xz,sign}
         # the main kernel config files
         'config' 'config.x86_64'
+        # pacman hook for initramfs regeneration
+        '99-linux.hook'
         # standard config files for mkinitcpio ramdisk
         linux-lts-userns.preset
         change-default-console-loglevel.patch
@@ -25,10 +27,11 @@ source=(https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.{xz,sign}
 # https://www.kernel.org/pub/linux/kernel/v4.x/sha256sums.asc
 sha256sums=('401d7c8fef594999a460d10c72c5a94e9c2e1022f16795ec51746b0d165418b2'
             'SKIP'
-            '5d0cc352645127191767e1c33f78c48dfdee7022fe425639a4c95a901d5e5c77'
+            '48ec169c7adda820973b3cb9c4c91c72bb69c86f530d149065491a20ef0c4057'
             'SKIP'
             'b11702727b1503e5a613946790978481d34d8ecc6870337fadd3ce1ef084a8e2'
             '68c7296ff2f5f55d69e83aa4d20f925df740b1eb1e6bdb0f13e8a170360ed09f'
+            '834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0'
             '9c75f46f3b52fdc5a5d4ababf18331e61201e1a8ef0d4a188289d6b15e6b138d'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
             '01a6d59a55df1040127ced0412f44313b65356e3c680980210593ee43f2495aa'
@@ -142,6 +145,10 @@ _package() {
     -e "s|default_image=.*|default_image=\"/boot/initramfs-${pkgbase}.img\"|" \
     -e "s|fallback_image=.*|fallback_image=\"/boot/initramfs-${pkgbase}-fallback.img\"|" \
     -i "${pkgdir}/etc/mkinitcpio.d/${pkgbase}.preset"
+
+  # install pacman hook for initramfs regeneration
+  sed "s|%PKGBASE%|${pkgbase}|g" "${srcdir}/99-linux.hook" |
+    install -D -m644 /dev/stdin "${pkgdir}/usr/share/libalpm/hooks/99-${pkgbase}.hook"
 
   # remove build and source links
   rm -f "${pkgdir}"/lib/modules/${_kernver}/{source,build}
