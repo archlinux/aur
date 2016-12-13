@@ -1,4 +1,4 @@
-# Maintainer: Ricardo Gonçalves <rgoncalves@hltsys.pt>
+# Maintainer: Ricardo Gonçalves <ricardompgoncalves@gmail.com>
 
 pkgname=hapi-testpanel
 pkgver=2.0
