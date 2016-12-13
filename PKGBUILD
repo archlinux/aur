@@ -2,7 +2,7 @@
 
 pkgname=syasokoban
 pkgver=2.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Still Yet Another Sokoban"
 arch=('i686' 'x86_64')
 license=('GPL')
@@ -13,10 +13,8 @@ source=(
    "$pkgname.patch"
 )
 
-md5sums=(
-    '3735ea7f164587165d4d03805a87b1a5'
-    'ae55b562a3b3b0a87bf139d58d1897ea'
-)
+md5sums=('c8f320e5c43c966eebe184977542e903'
+         'c9c45c06287c82097e94d26ec8b3f5e2')
 
 prepare() {
   cd "$srcdir/$pkgname-$pkgver"
