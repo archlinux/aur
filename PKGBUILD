@@ -40,6 +40,7 @@ build() {
   # generic options
   cmake_options+=" -DCMAKE_BUILD_TYPE=Release"
   cmake_options+=" -DCMAKE_INSTALL_PREFIX=${_installdir}"
+  #cmake_options+=" -DMEDCOUPLING_BUILD_DOC:BOOL=OFF"
 
   # debug options
   cmake_options+=" -DCMAKE_VERBOSE_MAKEFILE:BOOL=OFF"
@@ -48,7 +49,6 @@ build() {
   # mpi
   cmake_options+=" -DSALOME_USE_MPI:BOOL=ON"
   cmake_options+=" -DMEDCOUPLING_USE_MPI:BOOL=ON"
-  cmake_options+=" -DMEDCOUPLING_BUILD_DOC:BOOL=OFF"
 
   # python2
   cmake_options+=" -DPYTHON_EXECUTABLE:FILEPATH=/usr/bin/python2"
