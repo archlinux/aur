@@ -7,11 +7,11 @@ _bldtype=Release
 #_bldtype=Debug
 
 _uimmozcrev=321.3ea28b1
-_mozcrev=2315f957d1785130c2ed196e141a330b0857b065
+_mozcrev=280e38fe3d9db4df52f0713acf2ca65898cd697a
 
 pkgname=uim-mozc
 _pkgname=mozc
-pkgver=2.18.2612.102
+pkgver=2.20.2673.102
 pkgrel=1
 pkgdesc="uim plugin module for Mozc"
 arch=('i686' 'x86_64')
@@ -55,12 +55,6 @@ prepare() {
 
 
 build() {
-  # Use Qt4
-  _rcc_loc=`pkg-config QtCore --variable=rcc_location`
-  _qt4dir=${_rcc_loc%%/bin/rcc}
-  _qt4i=`pkg-config --cflags-only-I QtGui`
-  CFLAGS+=" $_qt4i"
-  CXXFLAGS+=" $_qt4i"
 
   cd "${srcdir}/${_pkgname}/src"
 
@@ -68,7 +62,7 @@ build() {
 
   unset CC CC_host CC_target CXX CXX_host CXX_target LINK AR AR_host AR_target \
         NM NM_host NM_target READELF READELF_host READELF_target
-  QTDIR=$_qt4dir python2 build_mozc.py gyp --target_platform=Linux
+  python2 build_mozc.py gyp --target_platform=Linux
   python2 build_mozc.py build -c $_bldtype unix/uim/uim.gyp:uim-mozc
 }
 
