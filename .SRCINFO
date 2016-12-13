@@ -1,14 +1,14 @@
 pkgbase = powernet-mib
 	pkgdesc = American Power Conversion PowerNet-MIB
-	pkgver = 4.19
-	pkgrel = 2
+	pkgver = 4.2.1
+	pkgrel = 1
 	url = http://www.apc.com/us/en/tools/download/index.cfm
 	arch = any
 	license = custom
 	depends = net-snmp
-	source = ftp://ftp.apc.com/apc/public/software/pnetmib/mib/419/powernet419.mib
+	source = ftp://ftp.apc.com/apc/public/software/pnetmib/mib/421/powernet421.mib
 	source = LICENSE
-	sha256sums = 08cc378b08719b3d32e4c46144a75fd056e6e2e0a566eee655bb38cd147cdb8e
+	sha256sums = ac83f555bf691a3d6925af9f77e5e721c9cd80ab1b1abd5f83a7260067da3e91
 	sha256sums = 6c8ff5c34d5380b489ae983e33cd7b08b62aadbd0cefeba2ffe18b0c7e1a096c
 
 pkgname = powernet-mib
