@@ -71,6 +71,7 @@ backup_command='rsync --recursive --delete --perms --executability --owner --gro
 # Folder to delete is the last command line argument.
 cleanup_command='rm --recursive --verbose'
 verbose=false
+monitoring_url=''
 name='NODE_NAME'
 # endregion
 # region load options if present
@@ -137,6 +138,11 @@ $(tree "$target_path")
 EOF
             done
         fi
+        if [[ "$monitoring_url" != '' ]]; then
+            curl --request PUT --header 'Content-Type: application/json' \
+                --data "{\"source\": \"$source_path\", \"target\": \"$target_path\", \"error\": false}" \
+                "$monitoring_url"
+        fi
     else
         message="Source files in \"$source_path\" from node \"$name\" should be backed up but aren't available."
         $verbose && echo "$message" &>/dev/stderr
@@ -156,6 +162,11 @@ $message
 
 EOF
             done
+            if [[ "$monitoring_url" != '' ]]; then
+                curl --request PUT --header 'Content-Type: application/json' \
+                    --data "{\"source\": \"$source_path\", \"target\": \"$target_path\", \"error\": true}" \
+                    "$monitoring_url"
+            fi
         fi
         exit 1
     fi
