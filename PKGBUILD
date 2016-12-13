@@ -1,6 +1,6 @@
 # Maintainer: dreieck
 
-# PKGBUILD last time manually edited: At least on 2016-12-11.
+# PKGBUILD last time manually edited: At least on 2016-12-13.
 
 _pkgname=idos-timetable-data-zsr-sk
 pkgname="${_pkgname}-latest"
@@ -48,20 +48,14 @@ conflicts=(
   "${_pkgname}"
 )
 
-_get_download_url_2016() {
-  wget -O- -nv "${url}" | grep -i 'vlak16sk.exe' | sed -n "s|^.*<a href=[\"']\([^\"']*\)[\"'].*$|\1|p"
-}
-
 _get_download_url_2017() {
   wget -O- -nv "${url}" | grep -i 'vlak17sk.exe' | sed -n "s|^.*<a href=[\"']\([^\"']*\)[\"'].*$|\1|p"
 }
 
 _source0="$(_get_download_url_2017)"
-_source1="$(_get_download_url_2016)"
 
 source=(
   "vlak17sk.exe::${_source0}"
-  "vlak16sk.exe::${_source1}"
   "license-dummy.txt"
 )
 
@@ -87,8 +81,7 @@ package() {
   install -d -m755 "${_instdir}"
 
   cd "${_instdir}" && {
-    7z x "${srcdir}/vlak16sk.exe"
-    7z x -y "${srcdir}/vlak17sk.exe"
+    7z x "${srcdir}/vlak17sk.exe"
     chmod 755 Data*
     chmod 644 Data*/*
   }

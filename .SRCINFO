@@ -18,8 +18,7 @@ pkgbase = idos-timetable-data-zsr-sk-latest
 	provides = idos-timetable-data-trains-sk=2016_12_06
 	conflicts = idos-timetable-data-zsr-sk
 	replaces = idos-timetable-data-zsr-sk<=2016_12_06
-	source = vlak17sk.exe::http://www.zsr.sk/buxus/docs//elis/subory/2016_12_06/vlak17sk_06_12_2016.exe
-	source = vlak16sk.exe::http://www.zsr.sk/buxus/docs//elis/subory/2016_12_06/vlak16sk_06_12_2016.exe
+	source = vlak17sk.exe::http://www.zsr.sk/buxus/docs//elis/subory/2016_12_09/vlak17sk_09_12_2016.exe
 	source = license-dummy.txt
 	sha256sums = SKIP
 	sha256sums = SKIP
