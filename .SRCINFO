@@ -1,10 +1,10 @@
 pkgbase = beignet
-	pkgdesc = A GPGPU System for Intel Ivybridge GPUs
+	pkgdesc = An open source OpenCL implementation for Intel IvyBridge+ iGPUs
 	pkgver = 1.2.1
 	pkgrel = 1
 	url = https://01.org/beignet
 	arch = x86_64
-	license = LGPL2.1
+	license = LGPL
 	makedepends = clang
 	makedepends = cmake
 	makedepends = python
