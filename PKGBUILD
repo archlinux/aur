@@ -1,6 +1,6 @@
 # Maintainer: dreieck
 
-# PKGBUILD last time manually edited: At least on 2016-12-11.
+# PKGBUILD last time manually edited: At least on 2016-12-13.
 
 _pkgname=idos-timetable-data-zsr-europe+sk
 pkgname="${_pkgname}-latest"
