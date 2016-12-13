@@ -13,12 +13,12 @@ sha1sums=('SKIP')
 
 build() {
 	cd "$srcdir/${_gemname}"
-	${_rubypath}/gem build chef_deliver.gemspec
+	${_rubypath}/gem build running_sushi.gemspec
 }
 
 package() {
 	cd "$srcdir/${_gemname}"
 
 	local _gemdir="$(${_rubypath}/ruby -e'puts Gem.default_dir')"
-	${_rubypath}/gem install --ignore-dependencies --no-user-install -i "$pkgdir/$_gemdir" chef_delivery-$pkgver.gem
+	${_rubypath}/gem install --ignore-dependencies --no-user-install -i "$pkgdir/$_gemdir" running_sushi-$pkgver.gem
 }
