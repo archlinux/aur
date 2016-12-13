@@ -1,13 +1,14 @@
 pkgbase = hitman
 	pkgdesc = Simple process killer
 	pkgver = 0.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/timlyo/Hitman
 	arch = i686
 	arch = x86_64
 	arch = armv7h
 	license = MIT
 	makedepends = git
+	makedepends = cargo
 	depends = rust
 	source = git+https://gitlab.com/timlyo/Hitman.git
 	md5sums = SKIP

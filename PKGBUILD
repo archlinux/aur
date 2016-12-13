@@ -1,10 +1,10 @@
 pkgname=hitman
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Simple process killer"
 url="https://gitlab.com/timlyo/Hitman"
 depends=("rust")
-makedepends=("git")
+makedepends=("git" "cargo")
 arch=("i686" "x86_64" "armv7h")
 license=("MIT")
 md5sums=("SKIP")
