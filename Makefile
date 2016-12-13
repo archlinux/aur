@@ -1,4 +1,4 @@
-PKGVER=0.0.4
+PKGVER=0.0.5
 REL=1
 VER="$(PKGVER)-$(REL)"
 # Be sure to update this in PKGBUILD
