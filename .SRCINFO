@@ -1,6 +1,6 @@
 pkgbase = pepper-flash
 	pkgdesc = Adobe's Pepper Flash plugin
-	pkgver = 23.0.0.207
+	pkgver = 24.0.0.186
 	pkgrel = 1
 	url = http://www.adobe.com/software/flash/about/
 	arch = i686
@@ -11,12 +11,10 @@ pkgbase = pepper-flash
 	optdepends = flashplugin: Settings utility
 	provides = chromium-pepper-flash
 	conflicts = chromium-pepper-flash
-	source = http://wwwimages.adobe.com/content/dam/acom/en/legal/licenses-terms/pdf/Flash_Player_23_0.pdf
-	sha256sums = 74d3a2dd91dbf31efd962f0cf83c09eed70fbf70726766f18089b2bf9c55e7bd
-	source_i686 = flash_player_ppapi_linux_23.0.0.207.i386.tar.gz::https://fpdownload.adobe.com/pub/flashplayer/pdc/23.0.0.207/flash_player_ppapi_linux.i386.tar.gz
-	sha256sums_i686 = 41a90f239154fe8f0ce9557964f30c9f9921e378e98ae6ec28f7a18d00871317
-	source_x86_64 = flash_player_ppapi_linux_23.0.0.207.x86_64.tar.gz::https://fpdownload.adobe.com/pub/flashplayer/pdc/23.0.0.207/flash_player_ppapi_linux.x86_64.tar.gz
-	sha256sums_x86_64 = 06a7535cd7fcfb5b60512bc38821124f1cb725825ad64578dced86395ff7f1cb
+	source_i686 = flash_player_ppapi_linux_24.0.0.186.i386.tar.gz::https://fpdownload.adobe.com/pub/flashplayer/pdc/24.0.0.186/flash_player_ppapi_linux.i386.tar.gz
+	sha256sums_i686 = 8fff4214db24a07f971455d9363fb210c838a7ca2d469cb5db2eed49d012b446
+	source_x86_64 = flash_player_ppapi_linux_24.0.0.186.x86_64.tar.gz::https://fpdownload.adobe.com/pub/flashplayer/pdc/24.0.0.186/flash_player_ppapi_linux.x86_64.tar.gz
+	sha256sums_x86_64 = 37ccc51fb61c3f039eca58a34e40f4872a68eea4fe56450c83aeccb0eb08b57d
 
 pkgname = pepper-flash
 
