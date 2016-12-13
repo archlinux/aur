@@ -7,8 +7,8 @@ _udev_ver=220
 
 pkgbase=eudev
 pkgname=( 'eudev' 'libeudev')
-pkgver=3.2
-pkgrel=2
+pkgver=3.2.1
+pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.gentoo.org/proj/en/eudev/"
 license=('GPL')

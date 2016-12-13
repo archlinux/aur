@@ -4,6 +4,7 @@ Operation = Install
 Operation = Upgrade
 Operation = Remove
 Target = usr/lib/udev/hwdb.d/*
+Target = etc/udev/hwdb.d/*
 
 [Action]
 Description = Updating udev Hardware Database...
