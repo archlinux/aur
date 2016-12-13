@@ -1,9 +1,9 @@
-# Maintainer: Leonidas Arvanitis <l.arvanitis@gmail.com>
+# Maintainer: Felix M. Cobos <felix.cobos@gmail.com>
 
 pkgname=intellij-jdk
 _major=8
 _minor=112
-_build=287.3
+_build=606
 pkgver=${_major}u${_minor}b${_build}
 pkgrel=1
 pkgdesc="OpenJDK Java 8 development kit with some fixes and enhancements by JetBrains"
@@ -15,11 +15,12 @@ provides=("java-runtime=$_major"         "java-runtime-headless=$_major"     "ja
           "java-runtime-openjdk=$_major" "java-runtime-headless-jre=$_major" "java-environment-openjdk=$_major")
 _zipname="jbsdk${pkgver}_linux_x64.tar.gz"
 source=("https://dl.bintray.com/jetbrains/intellij-jdk/${_zipname}")
-sha1sums=('2b3507ceb2d50c2c582f4557544473d0a2184454')
+sha256sums=('df71da027c49d447752c4eda5f7cc4e023874d7c28b95618496d7e18de6de70f')
 
 package() {
 	rm "$srcdir/$_zipname"
 	find "$srcdir" -exec chmod g+r,o+r {} +
-	mkdir -p "$pkgdir/opt"
-	cp -a "$srcdir" "$pkgdir/opt/$pkgname"
+	mkdir -p "$pkgdir/usr/lib/jvm"
+	cp -a "$srcdir" "$pkgdir/usr/lib/jvm/$pkgname"
 }
+
