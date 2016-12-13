@@ -2,7 +2,7 @@
 
 pkgname=nextcloud-daily
 pkgver=1
-pkgrel=2
+pkgrel=3
 pkgdesc="Daily build -- A safe home for all your data. Secure, under your control and developed in an open, transparent and trustworthy way"
 url="https://nextcloud.com"
 arch=('any')
@@ -37,7 +37,7 @@ options=(!strip emptydirs)
 
 package() {
   install -d "${pkgdir}/usr/share/licenses/${pkgname}"
-  cp "${srcdir}/nextcloud/COPYING-AGPL" "${pkgdir}/usr/share/licenses/${pkgname}"
+  #cp "${srcdir}/nextcloud/COPYING-AGPL" "${pkgdir}/usr/share/licenses/${pkgname}"
 
   mkdir -p "${pkgdir}/usr/share/webapps"
   cp -a nextcloud "${pkgdir}/usr/share/webapps/."
