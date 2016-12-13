@@ -19,7 +19,7 @@ makedepends=('perl>=5.8')
 provides=('rakudo-star' 'rakudo-moarvm')
 conflicts=('rakudo-star' 'rakudo-moarvm')
 source=(http://rakudo.org/downloads/star/$pkgname-$pkgver.tar.gz)
-sha512sums=('9746d379914bd79732566ea11f21d8ff7125036e3eac190cb0ab38f49adb70156760a411b230c684b4d27ffa0bfe7d4dd9288d7c8b9849f10ec6701231addc9f')
+sha512sums=('77803d3e5e81c89d7a9ebbd6405c4675e58560a8feff555b3dd8a142d4460ad0f18c005e385788344f75efe79be4368a75d81f6aa346bd53792513c7775c99bd')
 
 build() {
   cd "$pkgname-$pkgver"
