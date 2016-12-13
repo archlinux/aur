@@ -116,7 +116,7 @@ for source_path in "${!source_target_mappings[@]}"; do
         # Clean outdated monthly backups.
         find "${target_path}/${monthly_target_path}" -mtime \
             +"$number_of_monthly_retention_days" -exec $cleanup_command {} \;
-        message="Source files in \"$source_path\" from node \"$name\" successfully backed up to \"${target_file_path}${target_file_extension}\".\n\nCurrent Backup structure:\n\n"
+        message="Source files in \"$source_path\" from node \"$name\" successfully backed up to \"${target_file_path}${target_file_extension}\".\n\nCurrent Backup structure:\n"
         $verbose && echo -e "$message" && tree "$target_path"
         if hash msmtp && [[ "$sender_e_mail_address" != '' ]]; then
             for e_mail_address in \
