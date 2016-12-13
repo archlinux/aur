@@ -2,7 +2,7 @@
 # Contributor: JD Horelick <jdhore1@gmail.com>
 # Contributor: Alad Wenter <alad@linuxbbq.org>
 pkgname=cowdancer
-pkgver=0.81
+pkgver=0.82
 pkgrel=1
 pkgdesc="Copy-on-write wrapper for pbuilder"
 arch=('i686' 'x86_64')
@@ -15,21 +15,20 @@ optdepends=('qemu: if you want to use qemubuilder'
             'bash-completion: bash autocomplete support')
 
 source=(http://httpredir.debian.org/debian/pool/main/c/$pkgname/${pkgname}_${pkgver}.tar.xz)
-sha256sums=('0a9f344f4271a8e4eef7a087ac6a28a8741b9b78e73669626373b7b729776ad4')
+sha256sums=('79614c398007b2934217a9547902b01c35d89cbf2639a518b6587d36c8c41cd3')
 
 build() {
 	cd "$srcdir/$pkgname-$pkgver"
 	# cow-shell fails to compile if linker is called with '--as-needed'
 	# therefore we strip that flag from LDFLAGS from makepkg.conf
 	export LDFLAGS=$(echo $LDFLAGS | sed 's/,--as-needed//g')
+	autoreconf --install
+	./configure --prefix=/usr --sbindir=/usr/bin
 	make
 }
 
 package() {
 	cd "$srcdir/$pkgname-$pkgver"
-	mkdir -p "$pkgdir/usr/bin"
-	ln -sr $pkgdir/usr/bin $pkgdir/usr/sbin
 	make DESTDIR="$pkgdir" install
-	rm $pkgdir/usr/sbin
 	
 }
