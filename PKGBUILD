@@ -10,21 +10,18 @@
 
 pkgname=curl-http2
 _pkgname=curl
-pkgver=7.50.3
-pkgrel=1
+pkgver=7.51.0
+pkgrel=2
 pkgdesc="An URL retrieval utility and library. With http2 support."
 arch=('i686' 'x86_64')
-url="http://curl.haxx.se"
+url="https://curl.haxx.se"
 license=('MIT')
-depends=('ca-certificates' 'krb5' 'libidn' 'libssh2' 'openssl' 'zlib' 'nghttp2')
+depends=('ca-certificates' 'krb5' 'libssh2' 'openssl' 'zlib' 'libpsl' 'nghttp2')
 provides=("curl=$pkgver" 'libcurl.so')
 conflicts=('curl' 'curl-git' 'curl-http2-git')
 options=('strip')
-source=("http://curl.haxx.se/download/$_pkgname-$pkgver.tar.gz"{,.asc}
+source=("https://curl.haxx.se/download/$_pkgname-$pkgver.tar.gz"{,.asc}
         curlbuild.h)
-md5sums=('870e16fd88a88b52e26a4f04dfc161db'
-         'SKIP'
-         '751bd433ede935c8fae727377625a8ae')
 validpgpkeys=('27EDEAF22F3ABCEB50DB9A125CC908FDB71E12C2'   # Daniel Stenberg
               '914C533DF9B2ADA2204F586D78E11C6B279D5C91')  # Daniel Stenberg (old key)
 
@@ -41,7 +38,6 @@ build() {
       --enable-versioned-symbols \
       --enable-threaded-resolver \
       --with-gssapi \
-      --with-libidn \
       --with-random=/dev/urandom \
       --with-ca-bundle=/etc/ssl/certs/ca-certificates.crt \
       --with-nghttp2=/usr
@@ -64,3 +60,7 @@ package() {
   mv "$pkgdir/usr/include/curl/curlbuild.h" "$pkgdir/usr/include/curl/$_curlbuild"
   install -m644 "$srcdir/curlbuild.h" "$pkgdir/usr/include/curl/curlbuild.h"
 }
+
+sha512sums=('6bec021caa1befd16dd2a5221a22764b70c1bd5cf5d553eaa2cb980ef340129a0deb2f900dd9ef5c07f734f73abf0d6447eedb1f8803e16fe469d6271161fa67'
+            'SKIP'
+            '4e71366c3faaab76a6e438fcc484fb1ce16b2ae84eefa176879cf164e8fb0b04e4a355384e66a1137e9641e95041ee573553b43da98ec92820696d7256beb4f5')
