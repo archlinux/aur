@@ -15,7 +15,7 @@ provides=('0xdbe' '0xdbe-eap')
 conflicts=('0xdbe' '0xdbe-eap')
 source=(https://download.jetbrains.com/$pkgname/${pkgname}-${pkgver}.tar.gz
         jetbrains-datagrip.desktop)
-sha512sums=('ab85650ea64992a2c268263dbd803ecddc9ec64d53bd696b6442f1e91f6ff55494637af5922f16f013598466bc229be2601e808c0ed755c4974dae168b8f2581'
+sha512sums=('5e62fb3b1219cc898de91f325195f94464af50f5cd8919ff983ed2766238e82f7e350006739c848d4984443c38077c18a38d9f208ca901a1e2b4aaa55caeec63'
             '6fa0fb2eba7017f2818a5e9d8e44d43a050fdb5b13c7dd1650fae472191f892424f904009e2ba675d5f75200e7e2f42dad95741e94b16355a8ce9eb07bd8660b')
 
 package() {
