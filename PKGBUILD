@@ -32,6 +32,9 @@ pkgver=9.0.32150
 #pkgver=11.0.52520
 #pkgver=11.0.53191
 #pkgver=11.0.57095
+#pkgver=11.0.67687
+#pkgver=12.0.69753
+#pkgver=12.0.71510
 pkgrel=1
 _pkgver_major="${pkgver%%.*}"
 
@@ -94,7 +97,7 @@ license=('custom')
 depends=('bash')
 depends_i686=('alsa-lib' 'fontconfig' 'freetype2' 'gcc-libs' 'glib2' 'libice' 'libsm' 'libxdamage' 'libxrandr' 'libxtst' 'pcre' 'zlib' 'libxinerama' 'libpng12' 'qt4')
 # From Debian: 'libjpeg6-turbo' 'expat' 'libxau' 'libxdmcp' 'libxcb'      'libx11' 'libxfixes' 'libxext' 'libxrender' 'libxi' 'libxtst' 'util-linux'
-depends_i686+=('libjpeg6-turbo' 'expat' 'libxau' 'libxdmcp' 'libxcb<1.12' 'libx11' 'libxfixes' 'libxext' 'libxrender' 'libxi' 'libxtst')
+depends_i686+=('libjpeg6-turbo' 'expat' 'libxau' 'libxdmcp' 'libxcb' 'libx11' 'libxfixes' 'libxext' 'libxrender' 'libxi' 'libxtst')
 depends_x86_64=("${depends_i686[@]/#/lib32-}")
 provides=("teamviewer=${_pkgver_major}")
 conflicts=('teamviewer')
@@ -177,6 +180,9 @@ prepare() {
     mv "tv_bin/desktop/teamviewer-teamviewer${_pkgver_major}.desktop" "tv_bin/desktop/teamviewer-${_tvdir}.desktop"
   fi
 
+  if [ -s 'tv_bin/desktop/com.teamviewer.TeamViewer.desktop' ]; then
+    cp -p 'tv_bin/desktop/com.teamviewer.TeamViewer.desktop' "tv_bin/desktop/teamviewer-${_tvdir}.desktop"
+  fi
   sed -i -e '# set correct path in many files' \
          -e "s|/opt/teamviewer/|/opt/${_tvdir}/|g" \
     "tv_bin/desktop/teamviewer-${_tvdir}.desktop" $(grep -rlIF '/opt/teamviewer/' 'tv_bin/script/')
