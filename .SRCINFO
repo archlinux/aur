@@ -21,7 +21,6 @@ pkgbase = idos-timetable-data-zsr-sk-latest
 	source = vlak17sk.exe::http://www.zsr.sk/buxus/docs//elis/subory/2016_12_09/vlak17sk_09_12_2016.exe
 	source = license-dummy.txt
 	sha256sums = SKIP
-	sha256sums = SKIP
 	sha256sums = 14279a732be7d04304ff3860d54e0cf8c1a8ba0a46343eaf9b7ce3a105815946
 
 pkgname = idos-timetable-data-zsr-sk-latest
