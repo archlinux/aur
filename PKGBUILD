@@ -1,13 +1,13 @@
 _gemname=running_sushi
-_rubypath=/opt/chefdk/embedded/bin/
+_rubypath=/opt/chef/embedded/bin/
 pkgname=ruby-running-sushi
-pkgver=0.4.1
+pkgver=0.5.0
 pkgrel=1
 pkgdesc='Running Sushi, software to keep cookbooks, clients, databags, environments, nodes, roles and users in sync'
 arch=(i686 x86_64)
 url='https://github.com/One-com/running_sushi'
-depends=(chef-client chef-diff)
-makedepends=(chef-dk)
+depends=(chef-client ruby-chef-diff)
+makedepends=(chef-client)
 source=(git+https://github.com/One-com/running_sushi.git)
 sha1sums=('SKIP')
 
