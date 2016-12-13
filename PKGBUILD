@@ -1,6 +1,6 @@
 # Maintainer: Jonathan Liu <net147@gmail.com>
 pkgname=pg_activity
-pkgver=1.1.1
+pkgver=1.3.1
 pkgrel=1
 pkgdesc="Application similar to top for PostgreSQL server activity monitoring"
 arch=('any')
@@ -10,7 +10,7 @@ depends=('python2' 'python2-psutil' 'python2-psycopg2')
 makedepends=('python2-setuptools')
 options=(!emptydirs)
 source=("https://github.com/julmon/${pkgname}/archive/v${pkgver}.tar.gz")
-md5sums=('39ee16af2da17a3edb14bc4cf59f12c6')
+md5sums=('273eb398eee15a66ba532a576e9da7da')
 
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
