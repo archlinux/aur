@@ -10,8 +10,8 @@ pkgbase = audiothumbs-frameworks
 	makedepends = flac
 	depends = taglib
 	depends = kio
-	source = audiothumbs-frameworks-r5.d10c667.zip::https://github.com/eplightning/audiothumbs-frameworks/archive/master.zip
-	sha256sums = 56dce4bbef509db6e7b2a63d00dfa5115634529876d9418076d0b9c1a7afd57d
+	source = audiothumbs-frameworks-r5.d10c667.zip::https://github.com/eplightning/audiothumbs-frameworks/archive/d10c667a4a0c437c6115fe04ebe2692e2387676e.zip
+	sha256sums = a04c24fd63d54bf171c1961eaf1539e1a3eed511808f8ae3a7b4001c572d94e2
 
 pkgname = audiothumbs-frameworks
 
