@@ -2,8 +2,8 @@
 _gitbranch="develop"
 _gitname="Sming"
 pkgname=sming-git
-pkgver=r875.210e026
-pkgrel=2
+pkgver=r946.01aa073
+pkgrel=1
 pkgdesc="Open Source framework for high efficiency WiFi SoC ESP8266 native development with C++ language"
 arch=('i686' 'x86_64')
 url="https://github.com/SmingHub/Sming"
@@ -30,6 +30,9 @@ prepare()
   cd "$srcdir"
   # permanently set the paths for esp-open-sdk and sming
   patch -p1 -i "Makefile.patch"
+  # pull all Git submodules
+  cd "${pkgname%-git}/${_gitname}"
+  git submodule update --init --recursive
 }
 
 build() {

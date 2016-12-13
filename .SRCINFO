@@ -1,6 +1,6 @@
 pkgbase = sming-git
 	pkgdesc = Open Source framework for high efficiency WiFi SoC ESP8266 native development with C++ language
-	pkgver = r875.210e026
+	pkgver = r946.01aa073
 	pkgrel = 1
 	url = https://github.com/SmingHub/Sming
 	arch = i686
@@ -12,7 +12,6 @@ pkgbase = sming-git
 	depends = esp-open-sdk
 	depends = esptool
 	depends = esptool2-git
-	optdepends = spiffy-git: SPIFF file system access
 	provides = sming
 	conflicts = sming
 	replaces = sming
