@@ -3,15 +3,14 @@
 
 pkgname=arduino-builder
 pkgver=1.3.22
-pkgrel=1
+pkgrel=2
 pkgdesc="A command line tool for compiling Arduino sketches"
 arch=('i686' 'x86_64')
 url="https://github.com/arduino/arduino-builder"
 license=('GPL')
 makedepends=('go' 'git' 'unzip')
-optdepends=('ctags')
 options=(!strip)
-source=("https://github.com/arduino/arduino-builder/archive/${pkgver}.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/arduino/arduino-builder/archive/${pkgver}.tar.gz")
 sha512sums=('1e569825ea9ab4915ff676579480d8806e4a14ff1afd284fd3e839d11fda6c049ec0f0cbb832c8eb034364fac47ab7d94a01bd0b40f167526da968d13fddabf0')
 
 build() {
