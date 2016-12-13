@@ -2,7 +2,7 @@
 
 pkgname=pgmodeler
 pkgver=0.9.0_alpha
-pkgrel=1
+pkgrel=2
 epoch=2
 pkgdesc="PostgreSQL Database Modeler: an open source CASE tool for modeling PostgreSQL databases"
 
@@ -50,6 +50,9 @@ package() {
 	mkdir -p "$pkgdir"/{etc/$pkgname,usr/{bin,share/{applications,icons/hicolor/64x64/{apps,mimetypes},licenses/$pkgname,$pkgname}}}
 
 	msg2 "Moving stuff in place"
+	# To be removed after 0.9-beta
+	find $buildir -name connections.conf -exec sed -i 's/connect-timeout/connection-timeout/g' {} \;
+
 	cp -R "$buildir"/conf/*.conf "$pkgdir/etc/$pkgname/"
 	cp -R "$buildir"/conf/{schemas,defaults,dtd,example.dbm} "$pkgdir/usr/share/$pkgname/"
 #	cp -R "$buildir"/* "$pkgdir/opt/$pkgname/" # What was this for ? we copy everything ?
