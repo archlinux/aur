@@ -62,7 +62,6 @@ source=(
 
 sha256sums=(
   'SKIP'
-  'SKIP'
   "14279a732be7d04304ff3860d54e0cf8c1a8ba0a46343eaf9b7ce3a105815946"
 )
 
