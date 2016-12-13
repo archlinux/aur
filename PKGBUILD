@@ -2,14 +2,14 @@
 
 pkgname=beamerthemeprogressbar
 pkgver=0.42
-pkgrel=6
+pkgrel=7
 pkgdesc='an alternative theme for latex beamer'
 arch=('any')
 url='http://recherche.noiraudes.net/fr/LaTeX.php'
 license=('GPL2')
 depends=('texlive-latexextra' 'texlive-bibtexextra')
 install=${pkgname}.install
-source=(http://www.noiraudes.net/svn/progressbar/${pkgname}.tar.gz)
+source=(http://recherche.noiraudes.net/resources/LaTeX/svn/${pkgname}.tar.gz)
 md5sums=('a607323522b8ea8504f436c500130e2f')
 
 package() {
