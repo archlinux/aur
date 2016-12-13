@@ -1,0 +1,315 @@
+From 30f21dbfbd957d7b2b133504bd76b022179ae783 Mon Sep 17 00:00:00 2001
+From: Paul Gideon Dann <pdgiddie@gmail.com>
+Date: Tue, 9 Aug 2016 15:02:53 +0100
+Subject: [PATCH 3/4] Apply subpixel rendering in Cairo Backend
+
+Source:
+https://github.com/zhou13/poppler-subpixel/blob/master/poppler/poppler-subpixel.patch
+---
+ glib/demo/render.c         | 25 ++++++++++++++++++---
+ glib/poppler-page.cc       | 10 +++++++++
+ glib/poppler-page.h        |  1 +
+ poppler/CairoFontEngine.cc |  6 ++---
+ poppler/CairoOutputDev.cc  | 24 ++++++++++++++++++++
+ poppler/Gfx.cc             | 56 ++++++++++++++++++++++++++++++++++++++++++++++
+ poppler/Gfx.h              |  3 +++
+ poppler/Page.cc            | 14 ++++++++++++
+ poppler/Page.h             |  3 +++
+ 9 files changed, 136 insertions(+), 6 deletions(-)
+
+diff --git a/glib/demo/render.c b/glib/demo/render.c
+index 78d24bb..d482ceb 100644
+--- a/glib/demo/render.c
++++ b/glib/demo/render.c
+@@ -82,12 +82,14 @@ pgd_render_start (GtkButton     *button,
+ 		  PgdRenderDemo *demo)
+ {
+ 	PopplerPage *page;
++	gboolean     subpixel_rendering;
+ 	gdouble      page_width, page_height;
+ 	gdouble      width, height;
+ 	gint         x, y;
+ 	gchar       *str;
+ 	GTimer      *timer;
+         cairo_t     *cr;
++        cairo_font_options_t *fo;
+ 
+ 	page = poppler_document_get_page (demo->doc, demo->page);
+ 	if (!page)
+@@ -116,6 +118,21 @@ pgd_render_start (GtkButton     *button,
+                                                     width, height);
+         cr = cairo_create (demo->surface);
+ 
++        fo = cairo_font_options_create ();
++        cairo_get_font_options (cr, fo);
++
++        subpixel_rendering = poppler_page_support_subpixel_rendering (page);
++        printf("subpixel_rendering %d\n", subpixel_rendering);
++        if (subpixel_rendering) {
++                cairo_set_source_rgb (cr, 1., 1., 1.);
++                cairo_paint (cr);
++                cairo_font_options_set_antialias (fo, CAIRO_ANTIALIAS_SUBPIXEL);
++                cairo_font_options_set_subpixel_order (fo, CAIRO_SUBPIXEL_ORDER_RGB);
++        }
++
++        cairo_set_font_options (cr, fo);
++        cairo_font_options_destroy (fo);
++
+         cairo_save (cr);
+         switch (demo->rotate) {
+         case 90:
+@@ -143,9 +160,11 @@ pgd_render_start (GtkButton     *button,
+                 poppler_page_render (page, cr);
+         cairo_restore (cr);
+ 
+-        cairo_set_operator (cr, CAIRO_OPERATOR_DEST_OVER);
+-        cairo_set_source_rgb (cr, 1., 1., 1.);
+-        cairo_paint (cr);
++        if (!subpixel_rendering) {
++                cairo_set_operator (cr, CAIRO_OPERATOR_DEST_OVER);
++                cairo_set_source_rgb (cr, 1., 1., 1.);
++                cairo_paint (cr);
++        }
+ 
+         g_timer_stop (timer);
+ 
+diff --git a/glib/poppler-page.cc b/glib/poppler-page.cc
+index 3d63bfd..3dc5585 100644
+--- a/glib/poppler-page.cc
++++ b/glib/poppler-page.cc
+@@ -2424,3 +2424,13 @@ poppler_page_get_text_attributes_for_area (PopplerPage      *page,
+ 
+   return g_list_reverse(attributes);
+ }
++
++gboolean
++poppler_page_support_subpixel_rendering (PopplerPage        *page)
++{
++  CairoOutputDev *output_dev;
++  g_return_val_if_fail (POPPLER_IS_PAGE (page), FALSE);
++
++  output_dev = page->document->output_dev;
++  return page->page->supportSubpixelRendering(output_dev);
++}
+diff --git a/glib/poppler-page.h b/glib/poppler-page.h
+index fdbfd38..0f02a3a 100644
+--- a/glib/poppler-page.h
++++ b/glib/poppler-page.h
+@@ -109,6 +109,7 @@ GList                 *poppler_page_get_text_attributes  (PopplerPage        *pa
+ void                   poppler_page_free_text_attributes (GList              *list);
+ GList *        poppler_page_get_text_attributes_for_area (PopplerPage        *page,
+                                                           PopplerRectangle   *area);
++gboolean         poppler_page_support_subpixel_rendering (PopplerPage        *page);
+ 
+ /* A rectangle on a page, with coordinates in PDF points. */
+ #define POPPLER_TYPE_RECTANGLE             (poppler_rectangle_get_type ())
+diff --git a/poppler/CairoFontEngine.cc b/poppler/CairoFontEngine.cc
+index 6676f89..3c8fe81 100644
+--- a/poppler/CairoFontEngine.cc
++++ b/poppler/CairoFontEngine.cc
+@@ -132,7 +132,7 @@ CairoFont::getSubstitutionCorrection(GfxFont *gfxFont)
+ 	cairo_matrix_t m;
+ 	cairo_matrix_init_identity(&m);
+ 	cairo_font_options_t *options = cairo_font_options_create();
+-	cairo_font_options_set_hint_style(options, CAIRO_HINT_STYLE_NONE);
++	cairo_font_options_set_hint_style(options, CAIRO_HINT_STYLE_SLIGHT);
+ 	cairo_font_options_set_hint_metrics(options, CAIRO_HINT_METRICS_OFF);
+ 	cairo_scaled_font_t *scaled_font = cairo_scaled_font_create(cairo_font_face, &m, &m, options);
+ 
+@@ -190,7 +190,7 @@ _ft_new_face_uncached (FT_Library lib,
+   }
+ 
+   font_face = cairo_ft_font_face_create_for_ft_face (face,
+-							  FT_LOAD_NO_HINTING |
++							  FT_LOAD_TARGET_LIGHT |
+ 							  FT_LOAD_NO_BITMAP);
+   if (cairo_font_face_set_user_data (font_face,
+ 				     &_ft_cairo_key,
+@@ -359,7 +359,7 @@ _ft_new_face (FT_Library lib,
+   _ft_open_faces = l;
+ 
+   l->font_face = cairo_ft_font_face_create_for_ft_face (tmpl.face,
+-							  FT_LOAD_NO_HINTING |
++							  FT_LOAD_TARGET_LIGHT |
+ 							  FT_LOAD_NO_BITMAP);
+   if (cairo_font_face_set_user_data (l->font_face,
+ 				     &_ft_cairo_key,
+diff --git a/poppler/CairoOutputDev.cc b/poppler/CairoOutputDev.cc
+index bd18cde..a24ca38 100644
+--- a/poppler/CairoOutputDev.cc
++++ b/poppler/CairoOutputDev.cc
+@@ -203,6 +203,13 @@ void CairoOutputDev::setCairo(cairo_t *cairo)
+   }
+   if (cairo != NULL) {
+     this->cairo = cairo_reference (cairo);
++    {
++      cairo_font_options_t *options = cairo_font_options_create ();
++      cairo_get_font_options (cairo, options);
++      cairo_font_options_set_antialias (options, CAIRO_ANTIALIAS_SUBPIXEL);
++      cairo_set_font_options (cairo, options);
++      cairo_font_options_destroy (options);
++    }
+ 	/* save the initial matrix so that we can use it for type3 fonts. */
+ 	//XXX: is this sufficient? could we miss changes to the matrix somehow?
+ 	cairo_get_matrix(cairo, &orig_matrix);
+@@ -1430,6 +1437,7 @@ void CairoOutputDev::drawChar(GfxState *state, double x, double y,
+ void CairoOutputDev::endString(GfxState *state)
+ {
+   int render;
++  GfxFontType fontType;
+ 
+   if (!currentFont)
+     return;
+@@ -1447,6 +1455,18 @@ void CairoOutputDev::endString(GfxState *state)
+     goto finish;
+   }
+ 
++  fontType = state->getFont()->getType();
++  // Do not enable subpixel rendering for type3 font
++  // For some reason it does not work
++  if (fontType == fontType3) {
++      cairo_save(cairo);
++      cairo_font_options_t *fo;
++      fo = cairo_font_options_create ();
++      cairo_get_font_options (cairo, fo);
++      cairo_font_options_set_antialias (fo, CAIRO_ANTIALIAS_DEFAULT);
++      cairo_set_font_options (cairo, fo);
++  }
++
+   if (!(render & 1)) {
+     LOG (printf ("fill string\n"));
+     cairo_set_source (cairo, fill_pattern);
+@@ -1497,6 +1517,10 @@ void CairoOutputDev::endString(GfxState *state)
+   }
+ 
+ finish:
++  // pair with the previous cairo_save to disable subpixel rendering for type3 fonts
++  if (fontType == fontType3) {
++      cairo_restore(cairo);
++  }
+   gfree (glyphs);
+   glyphs = NULL;
+   if (use_show_text_glyphs) {
+diff --git a/poppler/Gfx.cc b/poppler/Gfx.cc
+index a8f5be9..0ca1940 100644
+--- a/poppler/Gfx.cc
++++ b/poppler/Gfx.cc
+@@ -4728,6 +4728,62 @@ void Gfx::doImage(Object *ref, Stream *str, GBool inlineImg) {
+   error(errSyntaxError, getPos(), "Bad image parameters");
+ }
+ 
++GBool Gfx::checkNormalBlendModeOnly(Object *str) {
++  printf("check blender mode start\n");
++  char *cmd;
++  Object obj;
++  Object args[maxArgs];
++  int numArgs, i;
++  GBool onlyNormalBlendMode;
++  Parser myParser(xref, new Lexer(xref, str), gFalse);
++
++  numArgs = 0;
++  onlyNormalBlendMode = gTrue;
++
++  myParser.getObj(&obj);
++  while (!obj.isEOF()) {
++    if (obj.isCmd()) {
++      cmd = obj.getCmd();
++
++      if (strcmp(cmd, "gs") == 0) {
++        Object obj1, obj2;
++        GfxBlendMode mode;
++        if (res->lookupGState(args[0].getName(), &obj1)) {
++          if (!obj1.dictLookup("BM", &obj2)->isNull()) {
++            if (state->parseBlendMode(&obj2, &mode)) {
++              printf("check blend mode: %d\n", mode);
++              onlyNormalBlendMode &= (mode == gfxBlendNormal);
++            }
++          }
++          obj2.free();
++        }
++        obj1.free();
++      }
++      obj.free();
++
++      for (i = 0; i < numArgs; ++i)
++	args[i].free();
++      numArgs = 0;
++
++    } else if (numArgs < maxArgs) {
++      args[numArgs++] = obj;
++    } else {
++      obj.free();
++    }
++
++    myParser.getObj(&obj);
++  }
++  obj.free();
++
++  if (numArgs > 0) {
++    for (i = 0; i < numArgs; ++i)
++      args[i].free();
++  }
++
++  return onlyNormalBlendMode;
++}
++
++
+ GBool Gfx::checkTransparencyGroup(Dict *resDict) {
+   // check the effect of compositing objects as a group:
+   // look for ExtGState entries with ca != 1 or CA != 1 or BM != normal
+diff --git a/poppler/Gfx.h b/poppler/Gfx.h
+index a82f9f4..6a7e2c7 100644
+--- a/poppler/Gfx.h
++++ b/poppler/Gfx.h
+@@ -186,6 +186,9 @@ public:
+   // Get the current graphics state object.
+   GfxState *getState() { return state; }
+ 
++  // Check whether a stream only contains normal blend mode (to enable subpixel rendering)
++  GBool checkNormalBlendModeOnly(Object *str);
++
+   GBool checkTransparencyGroup(Dict *resDict);
+ 
+   void drawForm(Object *str, Dict *resDict, double *matrix, double *bbox,
+diff --git a/poppler/Page.cc b/poppler/Page.cc
+index dca52e4..3f63342 100644
+--- a/poppler/Page.cc
++++ b/poppler/Page.cc
+@@ -372,6 +372,20 @@ Dict *Page::getResourceDictCopy(XRef *xrefA) {
+   return dict ? dict->copy(xrefA) : NULL;
+ }
+ 
++GBool Page::supportSubpixelRendering(OutputDev *out) {
++  GBool supported = gFalse;
++  Object obj;
++  PDFRectangle box;
++
++  contents.fetch(xref, &obj);
++  if (!obj.isNull()) {
++    Gfx gfx(doc, out, attrs->getResourceDict(), &box, NULL);
++    supported = gfx.checkNormalBlendModeOnly(&obj);
++  }
++  obj.free();
++  return supported;
++}
++
+ void Page::replaceXRef(XRef *xrefA) {
+   Object obj1;
+   Dict *pageDict = pageObj.getDict()->copy(xrefA);
+diff --git a/poppler/Page.h b/poppler/Page.h
+index 2aaabae..a49d34f 100644
+--- a/poppler/Page.h
++++ b/poppler/Page.h
+@@ -179,6 +179,9 @@ public:
+   Dict *getResourceDict();
+   Dict *getResourceDictCopy(XRef *xrefA);
+ 
++  // Whether the content in this page supports subpixel rendering (lcdfilter)
++  GBool supportSubpixelRendering(OutputDev *out);
++
+   // Get annotations array.
+   Object *getAnnots(Object *obj, XRef *xrefA = NULL) { return annotsObj.fetch((xrefA == NULL) ? xref : xrefA, obj); }
+   // Add a new annotation to the page
+-- 
+2.10.2
+

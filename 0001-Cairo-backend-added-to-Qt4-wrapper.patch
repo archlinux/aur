@@ -1,4 +1,4 @@
-From bb2a79e89f60366ae3830ed7e7c6bbfb567ec3db Mon Sep 17 00:00:00 2001
+From fa46f5de2770b40ee79bc4be95030a91657e0f60 Mon Sep 17 00:00:00 2001
 From: Paul Gideon Dann <pdgiddie@gmail.com>
 Date: Wed, 20 May 2009 11:42:28 +0100
 Subject: [PATCH 1/4] Cairo backend added to Qt4 wrapper
@@ -49,7 +49,7 @@ index 2b55e6b..8587f24 100644
  target_link_libraries(poppler-qt4 poppler ${poppler_LIBS})
  endif(MSVC)
 diff --git a/qt4/src/poppler-document.cc b/qt4/src/poppler-document.cc
-index 93f9a0a..260c7a0 100644
+index 7f8abfa..a6b4c8e 100644
 --- a/qt4/src/poppler-document.cc
 +++ b/qt4/src/poppler-document.cc
 @@ -698,6 +698,9 @@ namespace Poppler {
@@ -165,7 +165,7 @@ index 9e466da..650ad5f 100644
    return false;
  }
 diff --git a/qt4/src/poppler-qt4.h b/qt4/src/poppler-qt4.h
-index 2b518c1..2eaeafc 100644
+index 1b5afb2..8e3cb26 100644
 --- a/qt4/src/poppler-qt4.h
 +++ b/qt4/src/poppler-qt4.h
 @@ -887,7 +887,8 @@ delete it;
@@ -195,5 +195,5 @@ index bba868f..8c40471 100644
    string(REPLACE "-" "" test_name ${exe})
    set(${test_name}_SOURCES
 -- 
-2.9.2
+2.10.2
 
