@@ -9,7 +9,7 @@
 # Contributor: eworm
 
 pkgname=opera
-pkgver=41.0.2353.69
+pkgver=42.0.2393.85
 pkgrel=1
 pkgdesc="A fast and secure web browser"
 url="http://www.opera.com/"
@@ -21,6 +21,7 @@ depends=('gtk2' 'desktop-file-utils' 'shared-mime-info' 'libxtst' 'gconf' 'libxs
 optdepends=(
     'curl: opera crash reporter and autoupdate checker'
     'opera-ffmpeg-codecs: playback of proprietary video/audio'
+    'upower: opera battery save'
 )
 source=(
     "opera"
@@ -30,8 +31,8 @@ source_i686=("http://get.geo.opera.com/pub/${pkgname}/desktop/${pkgver}/linux/${
 source_x86_64=("http://get.geo.opera.com/pub/${pkgname}/desktop/${pkgver}/linux/${pkgname}-stable_${pkgver}_amd64.deb")
 sha256sums=('508512464e24126fddfb2c41a1e2e86624bdb0c0748084b6a922573b6cf6b9c5'
             '4913d97dec0ddc99d1e089b029b9123c2c86b7c88d631c4d1111b119b09da027')
-sha256sums_i686=('5e4503b3ce47c7753dc7c8abe1ff015352c817c0596d6c475261b49e7a77f653')
-sha256sums_x86_64=('a7369f341682447d23a0e5dd49ef2244c9773a561e0c3f00eede4e301ad0bc49')
+sha256sums_i686=('800e6b96f8ba2bd90220884126a12bd216d15d3e3e314ba33ec0fdc193de09e3')
+sha256sums_x86_64=('be204e6bc475962b2c20747c350660c66146e1a0ee98a584fcfb1215f92c360f')
 
 prepare() {
     sed -e "s/%pkgname%/$pkgname/g" -i "$srcdir/opera"
