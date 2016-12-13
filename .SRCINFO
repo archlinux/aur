@@ -1,0 +1,19 @@
+pkgbase = hapi-testpanel
+	pkgdesc = HL7 2.x parser with support for traditional (ER7) and XML encoding
+	pkgver = 2.0
+	pkgrel = 1
+	url = http://hl7api.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = MPL
+	license = GPL
+	makedepends = imagemagick
+	makedepends = unzip
+	depends = jre8-openjdk
+	source = https://freefr.dl.sourceforge.net/project/hl7api/hapi-testpanel/2.0.1/hapi-testpanel-2.0.1-linux.tar.bz2
+	source = hapi-testpanel.desktop
+	md5sums = 7d4d0f1a4b5502fdd030e14f9be5c1b1
+	md5sums = 8091c230d65ed7d9ae748ad4dfec2dec
+
+pkgname = hapi-testpanel
+

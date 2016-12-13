@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=HAPI TestPanel
+Comment=HL7 2.x parser with support for traditional (ER7) and XML encoding
+Exec=hapi-testpanel %U
+Icon=hapi-testpanel
+Terminal=false
+Type=Application
+Encoding=UTF-8
+Categories=Application;Development;
