@@ -24,7 +24,7 @@ package() {
   install -d -m 755 ${pkgdir}/usr/share/applications/
   install -d -m 755 ${pkgdir}/usr/share/pixmaps/
 
-  cp -a ${srcdir}/${_pkgname}-${pkgver:0:6} $pkgdir/opt/${pkgname}
+  cp -a ${srcdir}/${_pkgname}-${pkgver} $pkgdir/opt/${pkgname}
   # if using system java you may remove the bundled jre and save about 100M
   #rm -rf $pkgdir/opt/${pkgname}/jre
 
