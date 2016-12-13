@@ -1,5 +1,5 @@
 [Unit]
-Description=Crate.IO Database Server
+Description=CrateDB Server
 After=network.target
 
 [Service]

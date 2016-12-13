@@ -1,11 +1,11 @@
 pkgname=crate
-pkgver=0.57.5
+pkgver=0.57.6
 pkgrel=1
 pkgdesc="shared nothing, fully searchable, document oriented cluster datastore."
 arch=('any')
 url='http://crate.io'
 license=('custom:APACHE')
-depends=('java-runtime')
+depends=('java-runtime=8')
 install='crate.install'
 source=(https://cdn.crate.io/downloads/releases/$pkgname-$pkgver.tar.gz
         crate.service
@@ -47,6 +47,6 @@ package() {
         cp -r docs/ $pkgdir/usr/share/doc/$pkgname/
     fi
 }
-md5sums=('df6ee491582b5960260190c4c327608c'
-         '2085d9af9e9ef3e27e8067a793eb9e39'
+md5sums=('67339ce04557964c6c91b1c5dbeea173'
+         '4b56892c4ae0628d42ab1d0383374723'
          '763950135dadfc3f72d8c9abec71aa5a')
