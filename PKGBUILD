@@ -2,7 +2,7 @@
 _github_url=https://github.com/lopsided98/dnsupdate
 pkgname=dnsupdate
 pkgver=0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A modern and flexible dynamic DNS client"
 arch=('any')
 url="${_github_url}"
@@ -27,6 +27,8 @@ package() {
     cd "${srcdir}/${pkgname}"
 
     python setup.py install --skip-build --root="${pkgdir}" --optimize=1
+
+    install -Dm644 dnsupdate.service -t "${pkgdir}/usr/lib/systemd/system/"
 }
 
 # vim:set ts=4 sw=4 et:
