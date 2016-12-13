@@ -28,17 +28,17 @@ _bldtype=Release
 #*************************************************************
 
 _zipcoderel=201611
-_mozcrev=2315f957d1785130c2ed196e141a330b0857b065
+_mozcrev=280e38fe3d9db4df52f0713acf2ca65898cd697a
 
 pkgbase=mozc
 pkgname=mozc
 true && pkgname=('mozc')
-pkgver=2.18.2612.102
+pkgver=2.20.2673.102
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://code.google.com/p/mozc/"
 license=('BSD' 'custom')
-makedepends=('python2' 'git' 'ninja' 'clang' 'qt4')
+makedepends=('python2' 'git' 'ninja' 'clang' 'qt5-base')
 #source=("${_svndir}/${_svnmod}::svn+${_svntrunk}"
 source=(
   mozc::git+https://github.com/google/mozc.git#commit=${_mozcrev}
@@ -105,13 +105,6 @@ build() {
   done
   msg2 '====================================================='
 
-  # Use Qt4
-  _rcc_loc=`pkg-config QtCore --variable=rcc_location`
-  _qt4dir=${_rcc_loc%%/bin/rcc}
-  _qt4i=`pkg-config --cflags-only-I QtGui`
-  CFLAGS+=" $_qt4i"
-  CXXFLAGS+=" $_qt4i"
-
   cd "${srcdir}/${pkgbase}/src"
 
   msg "Starting make..."
@@ -122,7 +115,7 @@ build() {
 
   unset CC CC_host CC_target CXX CXX_host CXX_target LINK AR AR_host AR_target \
         NM NM_host NM_target READELF READELF_host READELF_target
-  QTDIR=$_qt4dir GYP_DEFINES="document_dir=/usr/share/licenses/${pkgbase}" \
+  GYP_DEFINES="document_dir=/usr/share/licenses/${pkgbase}" \
     python2 build_mozc.py gyp --target_platform=Linux
   python2 build_mozc.py build -c $_bldtype $_targets
 
@@ -137,7 +130,7 @@ package_mozc() {
   pkgdesc="A Japanese Input Method for Chromium OS, Windows, Mac and Linux (the Open Source Edition of Google Japanese Input)"
   arch=('i686' 'x86_64')
   groups=('mozc-im')
-  depends=('qt4' 'zinnia')
+  depends=('qt5-base' 'zinnia')
   replaces=('mozc-server' 'mozc-utils-gui')
   conflicts=('mozc-server' 'mozc-utils-gui')
   optdepends=('tegaki-models-zinnia-japanese: hand-writing recognition support')
@@ -190,4 +183,4 @@ package_emacs-mozc() {
 
 # Global pkgdesc and depends are here so that they will be picked up by AUR
 pkgdesc="A Japanese Input Method for Chromium OS, Windows, Mac and Linux (the Open Source Edition of Google Japanese Input)"
-depends=('qt4' 'ibus>=1.4.1' 'zinnia')
+depends=('qt5-base' 'ibus>=1.4.1' 'zinnia')
