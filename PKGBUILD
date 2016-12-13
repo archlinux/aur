@@ -20,7 +20,8 @@ sha256sums=('ec1a509d38f559b7718ef5196fdc6257280f02796c7f16555a0fe87235637c15'
             '3a1876b7f7f9b0297a633d7e6a480f92a2eeea46d8496a3546fcb1b0859be7aa'
             '2031e952d1d1d6cb4c2ff2b879421149f3f0780ca5d3ac03bc9c23fcbbd053d6'
             'cf54a01fdba4fe3de60514fe898680f24439eb43c4655d6892272c15e489eb2d')
-DLAGENTS=('https::/usr/bin/wget -nH --cut-dirs=3 -r -l 2 -A exe %u')
+DLAGENTS=('https::/usr/bin/wget -nH --cut-dirs=3 -r -l 2 -A exe -R '*beta*.exe' %u')
+# DLAGENTS=('https::/usr/bin/wget -nH --cut-dirs=3 -r -l 2 -A exe %u')
 
 package() {
   # unpack NSIS installer .exe into destination
