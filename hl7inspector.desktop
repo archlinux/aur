@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=HL7 Inspector
+Comment=hl7 tool for integration the HL7 in a health care environmental
+Exec=hl7inspector %U
+Icon=hl7inspector
+Terminal=false
+Type=Application
+Encoding=UTF-8
+Categories=Application;Development;

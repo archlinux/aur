@@ -1,0 +1,18 @@
+pkgbase = hl7inspector
+	pkgdesc = hl7 tool for integration the HL7 in a health care environmental
+	pkgver = 2.2.0.554
+	pkgrel = 1
+	url = https://sourceforge.net/projects/hl7inspector/
+	arch = i686
+	arch = x86_64
+	license = GPLv2
+	makedepends = imagemagick
+	makedepends = unzip
+	depends = jre8-openjdk
+	source = https://heanet.dl.sourceforge.net/project/hl7inspector/hl7inspector/2.2.0.554/hl7inspector-jar-with-dependencies.jar
+	source = hl7inspector.desktop
+	md5sums = f429fb715ec3f4573aa09067af8f6841
+	md5sums = f46523a0f05ac9ca6fb2a34962d28021
+
+pkgname = hl7inspector
+
