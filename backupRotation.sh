@@ -117,7 +117,7 @@ for source_path in "${!source_target_mappings[@]}"; do
         find "${target_path}/${monthly_target_path}" -mtime \
             +"$number_of_monthly_retention_days" -exec $cleanup_command {} \;
         message="Source files in \"$source_path\" from node \"$name\" successfully backed up to \"${target_file_path}${target_file_extension}\".\n\nCurrent Backup structure:\n\n$(tree "$target_path")"
-        $verbose && echo "$message" &>/dev/stderr
+        $verbose && echo -e "$message" &>/dev/stderr
         if hash msmtp && [[ "$sender_e_mail_address" != '' ]]; then
             for e_mail_address in \
                 $(echo "${source_target_mappings[$source_path]}" | \
@@ -130,7 +130,7 @@ Reply-To: $replier_e_mail_address
 Date: $(date)
 Subject: Source files doesn't exist.
 
-$message
+$(echo -e $message)
 
 EOF
             done
