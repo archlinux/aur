@@ -9,15 +9,16 @@ arch=('i686' 'x86_64')
 license=('GPL')
 depends=('desktop-file-utils' 'gconf' 'librsvg'
         'gst-plugins-base-libs' 'gsettings-desktop-schemas' 'libwebp' 'webkit2gtk')
-makedepends=('git' 'gnome-common' 'intltool' 'itstool' 'librsvg'
-        'liboauth')
+makedepends=('git' 'gnome-common' 'intltool' 'itstool'
+        'liboauth' 'libchamplain' 'libopenraw' 'exiv2' )
 optdepends=('gstreamer: Video support'
     'exiv2: Embedded metadata support'
     'libjpeg-turbo: Jpeg writing support'
     'libtiff: Tiff writing support'
     'libopenraw: Support for RAW photos'
     'brasero: Burn discs'
-    'liboauth: Web albums')
+    'liboauth: Web albums'
+    'libchamplain: Map Viewer')
 provides=($_pkgname)
 conflicts=(${_pkgbasename})
 url='https://github.com/linuxmint/pix'
