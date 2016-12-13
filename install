@@ -41,11 +41,10 @@ post_install() {
     echo
     echo "Please install Zarafa-Postfixadmin:"
     echo
-    echo "   $ /usr/share/doc/zarafa-postfixadmin/install.sh"
+    echo "   $ /usr/share/doc/zarafa-postfixadmin/pietma/install.sh"
     echo 
     echo "Read More"
     echo
-    echo "   https://wiki.archlinux.org/index.php/MySQL"
     echo "   https://pietma.com/install-run-and-access-zarafa-postfix-admin/"
     echo
 }
