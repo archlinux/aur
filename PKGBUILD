@@ -2,7 +2,7 @@
 
 pkgname=wego
 pkgver=2.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Weather app for the terminal'
 url=https://github.com/schachmat/wego
 arch=('any')
@@ -13,7 +13,7 @@ sha512sums=('92073393f420f72367955b08ef64a90eadc5a72f79f9c42ee1886918923e5953da1
 
 prepare() {
   mkdir -p src/github.com/schachmat
-  ln -snf wego-$pkgver src/${url#*//}
+  ln -rsnf wego-$pkgver src/${url#*//}
 }
 
 build() {
