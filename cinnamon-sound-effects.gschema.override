@@ -21,6 +21,8 @@ plug-enabled=true
 plug-file="/usr/share/mint-artwork-cinnamon/sounds/plug.oga"
 unplug-enabled=true
 unplug-file="/usr/share/mint-artwork-cinnamon/sounds/unplug.oga"
+notification-enabled=false
+notification-file="/usr/share/mint-artwork-cinnamon/sounds/notification.oga"
 
 [org.cinnamon.desktop.sound]
 volume-sound-enabled=true
