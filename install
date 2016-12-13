@@ -13,19 +13,65 @@ function installdir() {
     find $directory -type d -exec chmod "$moddir" {} \;
 }
 
-post_install() {
-    systemd-sysusers
-    systemd-tmpfiles --create
-    
+function installbasics() {
+    # var
     # template cache needs to be writeable
     installdir http:http 0700 0600 /var/lib/zarafa-postfixadmin
 
     # etc
     _etc=/etc/webapps/zarafa-postfixadmin
-    installdir http:http 0700 0600 ${_etc}
-    install --backup=simple --suffix .pacsave -o http -g http -m 0600  ${_etc}/config.local.php.example ${_etc}/config.local.php
+    cp -rn /usr/share/doc/zarafa-postfixadmin/example-config/* ${_etc}
 
-    # fetchmail
-    installdir fetchmail:fetchmail 0700 0600 /etc/mail/postfixadmin
-    install --backup=simple --suffix .pacsave -o fetchmail -g fetchmail -m 0600  /etc/mail/postfixadmin/fetchmail.conf.example /etc/mail/postfixadmin/fetchmail.conf
+    installdir root:root 0755 0655 ${_etc}
+    installdir postfix:postfix 0700 0600 ${_etc}/postfix
+
+    chown http:http ${_etc}/config.local.php
+    chmod 0600 ${_etc}/config.local.php
+
+    chown fetchmail:nobody ${_etc}/fetchmail.conf
+    chmod 0600 ${_etc}/fetchmail.conf
+}
+
+post_install() {
+    systemd-sysusers
+    systemd-tmpfiles --create
+    
+    installbasics
+
+    echo
+    echo "Please install Zarafa-Postfixadmin:"
+    echo
+    echo "   $ /usr/share/doc/zarafa-postfixadmin/install.sh"
+    echo 
+    echo "Read More"
+    echo
+    echo "   https://wiki.archlinux.org/index.php/MySQL"
+    echo "   https://pietma.com/install-run-and-access-zarafa-postfix-admin/"
+    echo
+}
+
+pre_upgrade() {
+    if [[ -e "/etc/mail/postfixadmin/fetchmail.conf" ]];
+    then
+	echo
+	echo "mv /etc/mail/postfixadmin/fetchmail.conf /etc/webapps/zarafa-postfixadmin/fetchmail.conf"
+	mv /etc/mail/postfixadmin/fetchmail.conf /etc/webapps/zarafa-postfixadmin/fetchmail.conf
+	
+	echo "chown fetchmail:nobody /etc/webapps/zarafa-postfixadmin/fetchmail.conf"
+	chown fetchmail:nobody /etc/webapps/zarafa-postfixadmin/fetchmail.conf
+	
+	echo "chmod 0600 /etc/webapps/zarafa-postfixadmin/fetchmail.conf"
+	chmod 0600 /etc/webapps/zarafa-postfixadmin/fetchmail.conf
+	echo
+    fi
+}
+
+post_upgrade() {
+    echo
+    echo "Please open the setup page. The database is updated during opening. No login needed!"
+    echo
+    echo "   https://YOUR_HOSTNAME/zarafa-postfixadmin/setup.php"
+    echo
+    
+    installbasics
 }
