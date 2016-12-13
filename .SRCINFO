@@ -1,0 +1,16 @@
+pkgbase = pince-git
+	pkgdesc = A Linux reverse engineering tool inspired by Cheat Engine.
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/korcankaraokcu/PINCE
+	arch = any
+	license = GPL3
+	depends = python
+	depends = python-pexpect
+	depends = python-psutil
+	depends = gdb
+	source = pince-git::git+https://github.com/korcankaraokcu/PINCE.git
+	md5sums = SKIP
+
+pkgname = pince-git
+
