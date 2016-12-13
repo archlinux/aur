@@ -1,5 +1,5 @@
 _gemname=chef_diff
-_rubypath=/opt/chefdk/embedded/bin/
+_rubypath=/opt/chef/embedded/bin/
 pkgname=ruby-chef-diff
 pkgver=0.3.0
 pkgrel=1
@@ -7,7 +7,7 @@ pkgdesc='Chef Diff is a library for calculating what Chef objects where modified
 arch=(i686 x86_64)
 url='https://github.com/One-com/chef_diff'
 depends=(chef-client)
-makedepends=(chef-dk)
+makedepends=(chef-client)
 source=(git+https://github.com/One-com/chef_diff.git)
 sha1sums=('SKIP')
 
