@@ -1,5 +1,5 @@
 # Maintainer: Kristian Gunstone <kristian.gunstone.butnotthispart@pean.northis.org>
-pkgname=netris
+pkgname=netris-git
 pkgver=0.52 # Is automatically updated by pkgver() below
 pkgrel=1
 pkgdesc="Mark H. Weaver's Netris -- A free networked version of T*tris. This is Nathan Aclander's github fork with several bugfixes and improvements"
@@ -9,10 +9,11 @@ license=('GPL2')
 depends=()
 makedepends=('git')
 provides=()
-conflicts=()
+conflicts=('netris') # Doesn't actually exist at the time of writing
+                     # (the original site - netris.org - is dead)
 sha1sums+=('SKIP')
 md5sums=('SKIP')
-source=("${pkgname}"::"git+https://github.com/naclander/netris.git")
+source=("netris::git+https://github.com/naclander/netris.git")
 
 pkgver() {
     head -n1 "$pkgname/VERSION"
