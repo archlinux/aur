@@ -19,7 +19,7 @@ groups=('zarafa'
 	'zarafa-webapp-plugins')
 pkgver=2.2.0.414
 _pkgrel=2.2.0
-pkgrel=95
+pkgrel=100
 pkgdesc='WebApp for Zarafa'
 arch=('any')
 url='http://www.zarafa.com/'
@@ -41,7 +41,7 @@ source=("webapp-${pkgver}.tar.gz::https://download.zarafa.com/community/final/We
 md5sums=('319d19773bb229dafb1353de660ab83b'
          'fa930c1df0c132dd9edbbe7004452851'
          '1bdab5b1e4473c1b0f6ce2e5c8f1da61'
-         '7adcf5e023718421a5e8e07e5e9a2480'
+         'cacf375cabab0eaf7792d2d3a1a6b11a'
          'cc8143c1fa12911a17578c1e775225fe'
          '776fbce91c4d617594720b1c169f76d7'
          'f87b25b1694511b68c63952d301362b7'
