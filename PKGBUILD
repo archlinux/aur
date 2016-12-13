@@ -44,7 +44,7 @@ options=(!strip emptydirs)
 
 package() {
   install -d "${pkgdir}/usr/share/licenses/${pkgname}"
-  cp "${srcdir}/nextcloud/COPYING-AGPL" "${pkgdir}/usr/share/licenses/${pkgname}"
+  #cp "${srcdir}/nextcloud/COPYING-AGPL" "${pkgdir}/usr/share/licenses/${pkgname}"
 
   mkdir -p "${pkgdir}/usr/share/webapps"
   cp -a nextcloud "${pkgdir}/usr/share/webapps/."
