@@ -1,20 +1,18 @@
 # Maintainer: Joseph Lansdowne <J49137@gmail.com>
 pkgname=flashplayer-standalone-debug
-pkgver=11.2.202.644
+pkgver=24.0.0.186
 pkgrel=1
 pkgdesc="Standalone, debug version of Adobe Flash Player"
 arch=(i686 x86_64)
-url="http://www.adobe.com/support/flashplayer/downloads.html"
+url="https://www.adobe.com/support/flashplayer/debug_downloads.html"
 license=(custom)
 depends=(gtk2 libxt nss curl)
 [ "$CARCH" = "x86_64" ] && depends=(lib32-gtk2 lib32-libxt lib32-nss lib32-curl)
-source=("http://fpdownload.macromedia.com/pub/flashplayer/updaters/11/flashplayer_11_sa_debug.i386.tar.gz"
-        "https://www.adobe.com/products/eulas/pdfs/PlatformClients_PC_WWEULA-MULTI-20110809_1357.pdf")
+source=("https://fpdownload.macromedia.com/pub/flashplayer/updaters/24/flash_player_sa_linux_debug.x86_64.tar.gz")
 options=(!strip)
-md5sums=('292051049efb6d0a85cd4526d3e2b918'
-         '620a140c7e85af655f39f1b583fbf932')
+md5sums=('2265c3d687a2b7b816c8b86fe488239a')
 
 package () {
     install -Dm755 flashplayerdebugger "$pkgdir/usr/bin/flashplayerdebugger"
-    install -Dm644 PlatformClients_PC_WWEULA-MULTI-20110809_1357.pdf "$pkgdir/usr/share/licenses/$pkgname/PlatformClients_PC_WWEULA-MULTI-20110809_1357.pdf"
+    install -Dm644 license.pdf "$pkgdir/usr/share/licenses/$pkgname/license.pdf"
 }

@@ -1,8 +1,8 @@
 pkgbase = flashplayer-standalone-debug
 	pkgdesc = Standalone, debug version of Adobe Flash Player
-	pkgver = 11.2.202.644
+	pkgver = 24.0.0.186
 	pkgrel = 1
-	url = http://www.adobe.com/support/flashplayer/downloads.html
+	url = https://www.adobe.com/support/flashplayer/debug_downloads.html
 	arch = i686
 	arch = x86_64
 	license = custom
@@ -11,10 +11,8 @@ pkgbase = flashplayer-standalone-debug
 	depends = nss
 	depends = curl
 	options = !strip
-	source = http://fpdownload.macromedia.com/pub/flashplayer/updaters/11/flashplayer_11_sa_debug.i386.tar.gz
-	source = https://www.adobe.com/products/eulas/pdfs/PlatformClients_PC_WWEULA-MULTI-20110809_1357.pdf
-	md5sums = 292051049efb6d0a85cd4526d3e2b918
-	md5sums = 620a140c7e85af655f39f1b583fbf932
+	source = https://fpdownload.macromedia.com/pub/flashplayer/updaters/24/flash_player_sa_linux_debug.x86_64.tar.gz
+	md5sums = 2265c3d687a2b7b816c8b86fe488239a
 
 pkgname = flashplayer-standalone-debug
 
