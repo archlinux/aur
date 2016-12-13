@@ -7,11 +7,11 @@
 #
 
 pkgname=platformio
-pkgver=3.1.0
+pkgver=3.2.1
 pkgrel=1
 pkgdesc="A cross-platform code builder and library manager"
 arch=('any')
-url="https://github.com/platformio/platformio/"
+url="https://github.com/platformio/platformio-core/"
 license=('Apache')
 depends=('python2'
          'python2-bottle'
@@ -23,10 +23,10 @@ depends=('python2'
          'python2-semantic-version'
          'python2-setuptools')
 conflicts=('platformio-git')
-source=("https://github.com/platformio/platformio/archive/v${pkgver}.tar.gz")
-sha256sums=('80b22f4322904648ea4b355935ea9315cfd765c3286022b54b75227e1be03d83')
+source=("https://github.com/platformio/platformio-core/archive/v${pkgver}.tar.gz")
+sha256sums=('5a85e60afc28b4ee04b43efd90c77f69b6c6ff96829e1b8750aa52143bca6eb2')
 
 package() {
-    cd "$srcdir/platformio-$pkgver"
+    cd "$srcdir/platformio-core-$pkgver"
     python2 setup.py install --root="$pkgdir/" --optimize=1
 }
