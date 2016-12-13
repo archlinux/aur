@@ -13,6 +13,8 @@ optdepends=(
      'python-beautifulsoup4: router address scraping'
      'python-netifaces: local interface address support'
 )
+conflicts=('dnsupdate-git')
+provides=('dnsupdate')
 source=(${pkgname}::git+${_github_url}.git#tag=$pkgver)
 sha256sums=('SKIP')
 
