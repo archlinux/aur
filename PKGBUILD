@@ -89,5 +89,5 @@ package() {
   install -Dm644 images/icons/qgis-mime-icon.png "$pkgdir/usr/share/icons/hicolor/128x128/mimetypes/qgis-mime.png"
 
   # compile python files, since the cmake option doesn't seem to account for DESTDIR
-  python2 -m compileall -q "$pkgdir"
+  python -m compileall -q "$pkgdir"
 }
