@@ -1,0 +1,3 @@
+post_remove() {
+    echo "Please remove files in /var/lib/guestwlan yourself."
+}
