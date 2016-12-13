@@ -1,0 +1,27 @@
+pkgbase = powerline-i3-git
+	pkgdesc = The ultimate statusline/prompt utility. A fork containing more features for the i3 window manager.
+	pkgver = 1.0.6
+	pkgrel = 1
+	url = https://github.com/ph111p/powerline
+	install = powerline-i3-git.install
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	depends = powerline-fonts-git
+	depends = lemonbar-xft-git
+	depends = ttf-font-awesome
+	optdepends = i3ipc-python-git: workspace segment
+	optdepends = wpa_actiond: wireless segment
+	optdepends = wireless_tools: wireless segment
+	optdepends = python-iwlib: wireless segment
+	optdepends = python-pyalsaaudio: volume segment
+	provides = powerline-i3
+	conflicts = powerline,
+	conflicts = python-powerline
+	source = git://github.com/ph111p/powerline.git
+	sha512sums = SKIP
+
+pkgname = powerline-i3-git
+

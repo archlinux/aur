@@ -1,0 +1,8 @@
+post_install() {
+  echo ">>> To use powerline instead of i3bar, replace"
+  echo ">>>   bar {"
+  echo ">>>      status_command i3status"
+  echo ">>>   }"
+  echo ">>> in your i3/config with this line:"
+  echo '>>> exec --no-startup-id powerline-lemonbar --i3 --height 16 -- -b -f "DejaVu Sans Mono for Powerline-10" -f "FontAwesome-10"'
+}
