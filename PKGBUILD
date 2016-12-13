@@ -16,7 +16,7 @@ _commit=68322a636fdcd8cbc6548d103a0cf82667b7c8b1
 source=("git+https://github.com/tensorflow/tensorflow#commit=$_commit"
         "${pkgname}.pc")
 md5sums=('SKIP'
-         '9a47475140d2f2e46454070ea9465792')
+         '4e41b457b563e4e585abadbcd3c72cf0')
 pkgver() {
   cd ${srcdir}/tensorflow
   git describe --tags | sed 's/-/./g;s/^v//'
