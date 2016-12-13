@@ -2,18 +2,17 @@
 _pkgbasename=gx-lv2
 pkgname=${_pkgbasename}-git
 pkgver=0.8
-pkgrel=1
+pkgrel=3
 pkgdesc="Additional Guitarix effects in LV2 format"
 arch=('i686' 'x86_64')
 url="https://github.com/brummer10?tab=repositories"
 license=('GPL3')
-depends=('gcc-libs' 'lv2' 'libxext' 'freetype2' 'alsa-lib')
-makedepends=('git')
+depends=('libsndfile' 'gtk2')
+makedepends=('git' 'lv2' 'libxext' 'freetype2')
 provides=("${_pkgbasename}")
 conflicts=("${_pkgbasename}")
 source=("git://github.com/brummer10/GxUVox720k.lv2.git"
 "git://github.com/brummer10/GxVmk2.lv2.git"
-"git://github.com/brummer10/GxOsMutantes.lv2.git"
 "git://github.com/brummer10/GxHyperion.lv2.git"
 "git://github.com/brummer10/GxSwitchlessWah.lv2.git"
 "git://github.com/brummer10/GxSuperFuzz.lv2.git"
@@ -22,18 +21,9 @@ source=("git://github.com/brummer10/GxUVox720k.lv2.git"
 "git://github.com/brummer10/GxVoodoFuzz.lv2.git"
 "git://github.com/brummer10/GxVintageFuzzMaster.lv2.git"
 "git://github.com/brummer10/GxGuvnor.lv2.git"
-"git://github.com/brummer10/GxVBassPreAmp.lv2.git"
-"git://github.com/brummer10/GxOverDriver.lv2.git"
-"git://github.com/brummer10/GxToneMender.lv2.git"
-"git://github.com/brummer10/GxPushPull.lv2.git"
 "git://github.com/brummer10/GxSuppaToneBender.lv2.git"
 "git://github.com/brummer10/screcord.lv2.git")
 sha256sums=('SKIP'
-			'SKIP'
-			'SKIP'
-			'SKIP'
-			'SKIP'
-			'SKIP'
 			'SKIP'
 			'SKIP'
 			'SKIP'
