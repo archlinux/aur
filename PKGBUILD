@@ -8,15 +8,15 @@ arch=('any')
 url="http://rioshome.org/"
 license=('GPLv3')
 depends=('python2' 'python2-numpy' 'gdal')
-source=("https://bitbucket.org/chchrsc/rios/downloads/rios-$pkgver.tar.gz")
-sha256sums=('2dfb4c4712e5182b49e92709d48a0ff79c89a8f1e2199aed9523de6c201600d8')
+source=("https://bitbucket.org/chchrsc/rios/get/rios-$pkgver.tar.bz2")
+sha256sums=('af0c424071ef7f8a6be6fee30479babe40dcbd3191632b2c718909f69619c5e6')
 
 build() {
-    cd rios-$pkgver/
+    cd chchrsc-rios*/rios/
     python2 setup.py build
 }
 
 package() {
-    cd rios-$pkgver/
+    cd chchrsc-rios*/rios/
     python2 setup.py install --root="$pkgdir"
 }
