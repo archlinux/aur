@@ -26,7 +26,7 @@ sha256sums=('SKIP'
             '8f84c2efd9963541a55e2caccbb2651a132430c49f9e66e8e299a9e34e1c74b8')
 
 prepare() {
-  cd python2.8
+  cd "$pkgname"
 
   # Temporary workaround for FS#22322
   # See http://bugs.python.org/issue10835 for upstream report
@@ -65,7 +65,7 @@ prepare() {
 }
 
 build() {
-  cd python2.8
+  cd "$pkgname"
 
   export OPT="$CFLAGS"
   ./configure --prefix=/usr \
@@ -86,13 +86,13 @@ check() {
 
   # $SHELL was set to avoid a test failure in test_gdb (it still fails due to other reasons, though)
 
-  cd python2.8
+  cd "$pkgname"
   SHELL=/bin/sh LD_LIBRARY_PATH="${srcdir}/Python-${pkgver}":${LD_LIBRARY_PATH} \
     "${srcdir}/Python-${pkgver}/python" -m test.regrtest -v -uall -x test_thread || warning "Tests failed"
 }
 
 package() {
-  cd python2.8
+  cd "$pkgname"
 
   make DESTDIR="$pkgdir" altinstall maninstall
 
