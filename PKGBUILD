@@ -7,7 +7,7 @@ _buildver=163.9735.2
 _pkgver=2016.3.1
 _eap="True"
 pkgver="${_pkgver}.${_buildver}"
-pkgrel=1
+pkgrel=2
 epoch=2
 pkgdesc="Powerful Python and Django IDE, Early Access Program (EAP) build. Professional edition."
 arch=('any')
@@ -44,7 +44,7 @@ package() {
 	#if [[ "True" = "${_eap}" ]]; then
 	#	cp -R --no-preserve=ownership "${srcdir}/pycharm-${_buildver}/"* "${pkgdir}/opt/${pkgname}"
 	#else
-		cp -R --no-preserve=ownership "${srcdir}/pycharm-${_pkgver}/"* "${pkgdir}/opt/${pkgname}"
+		cp -R --no-preserve=ownership "${srcdir}/pycharm-${_pkgver%.1}/"* "${pkgdir}/opt/${pkgname}"
 	#fi
 	
 	if [[ "i686" = "${CARCH}" ]]; then
