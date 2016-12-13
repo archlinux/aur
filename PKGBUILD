@@ -1,7 +1,7 @@
 # Maintainer: Adria Arrufat (archdria) <adria.arrufat+AUR@protonmail.ch>
 
 pkgname=tensorflow
-pkgver=0.12.0+rc0
+pkgver=0.12.0.rc1
 pkgrel=1
 pkgdesc="Library for computation using data flow graphs for scalable machine learning"
 url="https://tensorflow.org/"
@@ -12,14 +12,14 @@ conflicts=('tensorflow' 'libtensorflow')
 makedepends=('git' 'bazel' 'gcc5' 'python-numpy')
 optdepends=('cuda: GPU support'
             'cudnn: GPU support')
-_commit=48408fc0e26669998cdb7f28604d163b0feb8130
+_commit=68322a636fdcd8cbc6548d103a0cf82667b7c8b1
 source=("git+https://github.com/tensorflow/tensorflow#commit=$_commit"
         "${pkgname}.pc")
 md5sums=('SKIP'
-         '46d0ac65eb8e5c3960ea2a4752f98e29')
+         '9a47475140d2f2e46454070ea9465792')
 pkgver() {
   cd ${srcdir}/tensorflow
-  git describe --tags | sed 's/-/+/g;s/^v//'
+  git describe --tags | sed 's/-/./g;s/^v//'
 }
 
 prepare() {
