@@ -129,7 +129,7 @@ From: $sender_e_mail_address
 To: $e_mail_address
 Reply-To: $replier_e_mail_address
 Date: $(date)
-Subject: Source files doesn't exist.
+Subject: Backup was successfull
 
 $(echo -e $message)
 
@@ -144,7 +144,7 @@ EOF
                 "$monitoring_url"
         fi
     else
-        message="Source files in \"$source_path\" from node \"$name\" should be backed up but aren't available."
+        message="Source files in \"$source_path\" from node \"$name\" should be backed up but has failed."
         $verbose && echo "$message" &>/dev/stderr
         if hash msmtp && [[ "$sender_e_mail_address" != '' ]]; then
             for e_mail_address in \
@@ -156,7 +156,7 @@ From: $sender_e_mail_address
 To: $e_mail_address
 Reply-To: $replier_e_mail_address
 Date: $(date)
-Subject: Source files doesn't exist.
+Subject: Backup has failed
 
 $message
 
