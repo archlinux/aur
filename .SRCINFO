@@ -1,0 +1,17 @@
+pkgbase = vim-neocomplete-git
+	pkgdesc = Next generation completion framework after neocomplcache
+	pkgver = r885.14ae00a
+	pkgrel = 1
+	url = https://github.com/Shougo/neocomplete.vim
+	install = vimdoc.install
+	arch = any
+	groups = vim-plugins
+	license = MIT
+	makedepends = git
+	source = git://github.com/Shougo/neocomplete.vim.git
+	source = LICENSE
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = vim-neocomplete-git
+
