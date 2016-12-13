@@ -1,27 +1,23 @@
 # Maintainer: ant32 <antreimer@gmail.com>
 # Contributor: rubenvb vanboxem <dottie> ruben <attie> gmail <dottie> com
+# Contributor: rkitover <rkitover@gmail.com>
+
+_targets="i686-w64-mingw32 x86_64-w64-mingw32"
+
 pkgname='mingw-w64-headers-git'
-pkgdesc="MinGW-w64 headers for Windows"
-pkgver=4.0.rc1.r7.gc440466
+pkgver=5.0.rc2.r126.gb48e3ac
 pkgrel=1
+pkgdesc="MinGW-w64 headers for Windows"
 arch=('any')
 url="http://mingw-w64.sourceforge.net"
 license=('custom')
 groups=('mingw-w64-toolchain' 'mingw-w64')
-depends=()
 makedepends=('git')
-optdepends=()
-provides=('mingw-w64-headers' 'mingw-w64-headers-svn')
-conflicts=('mingw-w64-headers' 'mingw-w64-headers-svn')
-replaces=('mingw-w64-headers-svn')
-backup=()
+provides=('mingw-w64-headers')
+conflicts=('mingw-w64-headers')
 options=('!strip' '!libtool' '!emptydirs')
-source=(git://git.code.sf.net/p/mingw-w64/mingw-w64
-        'mingw-headers-no-widl.patch')
-md5sums=('SKIP'
-         'cd36bb22ac918fff8b9c6467dae3f8dd')
-
-_targets="i686-w64-mingw32 x86_64-w64-mingw32"
+source=(git://git.code.sf.net/p/mingw-w64/mingw-w64)
+md5sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/mingw-w64"
