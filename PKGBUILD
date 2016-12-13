@@ -2,7 +2,7 @@
 
 pkgname=boolector
 pkgver=2.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Boolector is an efficient SMT solver for the quantifier-free theory of bit-vectors in combination with the quantifier-free extensional theory of arrays."
 arch=('i686' 'x86_64')
 url="http://fmv.jku.at/boolector/"
@@ -27,14 +27,14 @@ package() {
   cd "$srcdir/boolector-2.2.0-with-lingeling-bal/lingeling"
   mkdir -p "$pkgdir/usr/include/lingeling"
   install -m644 *.h "$pkgdir/usr/include/lingeling/"
-  install -m644 *.a "$pkgdir/usr/lib/"
-  install -m644 lingeling "$pkgdir/usr/bin/"
+  install -m755 *.a "$pkgdir/usr/lib/"
+  install -m755 lingeling "$pkgdir/usr/bin/"
 
   cd "$srcdir/boolector-2.2.0-with-lingeling-bal/boolector"
   mkdir -p "$pkgdir/usr/include/boolector"
   install -m644 *.h "$pkgdir/usr/include/boolector/"
-  install -m644 *.a "$pkgdir/usr/lib/"
-  install -m644 boolector "$pkgdir/usr/bin/"
+  install -m755 *.a "$pkgdir/usr/lib/"
+  install -m755 boolector "$pkgdir/usr/bin/"
 
   mkdir -p "$pkgdir/usr/share/licenses/boolector"
   install -m644 \
