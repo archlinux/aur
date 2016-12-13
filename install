@@ -45,13 +45,11 @@ post_install() {
     echo
     echo "Please install Zarafa:"
     echo
-    echo "   $ /usr/share/doc/zarafa/install.sh"
+    echo "   $ /usr/share/doc/zarafa/pietma/install.sh"
     echo 
     echo "Read More"
     echo
-    echo "   https://wiki.archlinux.org/index.php/MySQL"
     echo "   https://pietma.com/run-and-access-zarafa/"
-    echo "   https://pietma.com/optimize-zarafa-and-mysql-mariadb/"
     echo
 
     return 0
