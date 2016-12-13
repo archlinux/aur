@@ -5,18 +5,15 @@
 pkgname=z-push
 groups=('zarafa'
 	'kopano')
-pkgver=2.3.0
+pkgver=2.3.3
 _pkgrel=2.3
-pkgrel=95
+pkgrel=1
 pkgdesc="open-source implementation of the ActiveSync protocol"
 arch=('any')
 url="http://z-push.sf.net/"
 license=('AGPL3')
 depends=('nginx'
 	 'php<7'
-	 'memcached'
-	 'libmemcached'
-	 'php-memcached'
 	 'zarafa-server' # php-mapi
 	 'php-fpm<7')
 optdepends=('apache'
@@ -36,14 +33,14 @@ source=("${pkgname}-${pkgver}.tar.gz::http://download.z-push.org/final/${_pkgrel
 	"php-fpm.example.conf"
 	"z-push-admin"
 	"z-push-top")
-md5sums=('5f8333a6bce182b801a37aed1fa6256a'
+md5sums=('64a23c8842ee94b07ba6622e649cb40f'
          '32a459bd61135b6c5e99e82e3a6b0007'
          '1091aa1ba272ef05bf628f73b05c527a'
-         'cfb472eac560284d935927720e6a2311'
+         'fee38ae6ba98ae7afcb49b1edbc31d8e'
          'b61c194ee4e3e3bf8bfa6a72e6f38019'
          '9637d4164f85cb3fb9a886654645a46c'
          '1bdab5b1e4473c1b0f6ce2e5c8f1da61'
-         '7adcf5e023718421a5e8e07e5e9a2480'
+         'cacf375cabab0eaf7792d2d3a1a6b11a'
          '626a81889bebd6184d8f90deb00f6119'
          'dfa0d3eceef2433ded6229b6611c5e02')
 
@@ -66,7 +63,6 @@ package() {
     cp ${srcdir}/nginx-location.conf ${pkgdir}/etc/webapps/z-push/
     cp ${srcdir}/${pkgname}-${pkgver}/config.php ${pkgdir}/etc/webapps/z-push/config.example.php
     sed -i -e "s|\('BACKEND_PROVIDER', \).*$|\1'BackendKopano'\);|" ${pkgdir}/etc/webapps/z-push/config.example.php
-    sed -i -e "s|\('IPC_PROVIDER', \).*$|\1'IpcMemcachedProvider'\);|" ${pkgdir}/etc/webapps/z-push/config.example.php
 
     ln -s /etc/webapps/z-push/config.php ${pkgdir}/usr/share/webapps/z-push/config.php
     
