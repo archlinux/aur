@@ -4,7 +4,7 @@
 pkgname=dict-wn
 pkgver=3.1
 _debver=3.0
-pkgrel=2
+pkgrel=3
 pkgdesc="WordNet for dictd et al."
 arch=('any')
 url="https://wordnet.princeton.edu/"
@@ -44,7 +44,9 @@ prepare()
 build() {
 	cd "WordNet-${_debver}"
 	./configure
-	make
+
+	# Builiding fails with -jN where N>1.
+	make -j1
 }
 
 package() {
