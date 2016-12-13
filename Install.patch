@@ -1,0 +1,18 @@
+--- Install	2016-12-13 14:48:26.230689954 +0500
++++ Install	2016-12-13 14:50:55.988152391 +0500
+@@ -1,15 +1,8 @@
+ #!/bin/bash
+   # Copying files
+ 
+-ROOT_UID=0
+-DEST_DIR=
+ 
+ # Destination directory
+-if [ "$UID" -eq "$ROOT_UID" ]; then
+-  DEST_DIR="/usr/share/themes"
+-else
+-  DEST_DIR="$HOME/.themes"
+-fi
+ 
+ repodir=$(cd $(dirname $0) && pwd)
+ srcdir=${repodir}/src

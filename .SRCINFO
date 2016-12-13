@@ -1,0 +1,17 @@
+pkgbase = vimix-gtk-themes-git
+	pkgver = 23.a424501
+	pkgrel = 1
+	url = https://github.com/vinceliuice/vimix-gtk-themes
+	arch = any
+	makedepends = git
+	makedepends = patch
+	depends = gtk3
+	depends = gtk-engine-murrine
+	depends = gtk-engines
+	source = Install.patch
+	source = git+https://github.com/vinceliuice/vimix-gtk-themes.git
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = vimix-gtk-themes-git
+
