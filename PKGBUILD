@@ -1,7 +1,7 @@
 # Maintainer: Marat Akhin <Marat.Akhin@gmail.com>
 
 pkgname=z3-stable-git
-pkgver=4.4.1.g0f93853
+pkgver=4.5.0.gc1480b4
 pkgrel=1
 pkgdesc="Z3 is a high-performance theorem prover being developed at Microsoft Research (built from Github)"
 arch=('i686' 'x86_64')
