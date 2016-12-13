@@ -5,7 +5,7 @@
 
 pkgname=apt
 pkgver=1.3.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Command-line package manager used on Debian-based systems"
 arch=('i686' 'x86_64')
 url="http://packages.debian.org"
@@ -15,8 +15,8 @@ makedepends=('cmake' 'dpkg' 'docbook-xsl' 'doxygen' 'po4a' 'gtest' 'w3m')
 checkdepends=()
 optdepends=()
 provides=('libapt-inst' 'libapt-pkg' 'libapt-pkg-dev' "apt-utils")
-conflicts=()
-replaces=()
+conflicts=(apt-git)
+replaces=(apt-git)
 backup=()
 options=()
 install=
