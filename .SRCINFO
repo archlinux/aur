@@ -1,0 +1,16 @@
+pkgbase = php-yar
+	pkgdesc = Light, concurrent RPC framework
+	pkgver = 2.0.1
+	pkgrel = 1
+	url = https://github.com/laruence/yar
+	arch = i686
+	arch = x86_64
+	license = PHP
+	depends = php
+	depends = libzookeeper
+	backup = etc/php/conf.d/yar.ini
+	source = http://pecl.php.net/get/yar-2.0.1.tgz
+	sha256sums = f3b5617087afa1deffba8f0cdcbbd587589ff6c58af8da1c98437837f01114a4
+
+pkgname = php-yar
+
