@@ -5,7 +5,7 @@
 
 _reponame=qtutilities
 pkgname=qtutilities
-pkgver=5.1.1
+pkgver=5.2.0
 pkgrel=1
 arch=('i686' 'x86_64')
 pkgdesc='Common Qt related C++ classes and routines used by my applications such as dialogs, widgets and models'
@@ -15,7 +15,7 @@ makedepends=('cmake')
 optdepends=("$pkgname-doc: API documentation")
 url="https://github.com/Martchus/${_reponame}"
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Martchus/${_reponame}/archive/v${pkgver}.tar.gz")
-sha256sums=('d3ba9ebbd9cf4277a29e34e13e3e558f074b058c4d713b19679d43b3ae16919e')
+sha256sums=('16a2cd4d161d4c71a5e60bd252874d6c3367c81ed15a40a295d6beda30f076de')
 
 build() {
   cd "$srcdir/${PROJECT_DIR_NAME:-$_reponame-$pkgver}"
