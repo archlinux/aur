@@ -2,7 +2,7 @@
 # Contributor: Mikkel Kroman <mk@maero.dk>
 
 pkgname=crystal-git
-pkgver=0.20.0.r17.gd13e650
+pkgver=0.20.1.r35.g278ffff
 _last_release="0.20.1-1"
 pkgrel=1
 pkgdesc="The Crystal Programming Language"
