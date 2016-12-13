@@ -13,10 +13,10 @@ conflicts=('netris') # Doesn't actually exist at the time of writing
                      # (the original site - netris.org - is dead)
 sha1sums+=('SKIP')
 md5sums=('SKIP')
-source=("netris::git+https://github.com/naclander/netris.git")
+source=("${pkgname}::git+https://github.com/naclander/netris.git")
 
 pkgver() {
-    head -n1 "$pkgname/VERSION"
+    head -n1 "${pkgname}/VERSION"
 }
 
 build() {
@@ -26,7 +26,7 @@ build() {
 }
 
 package() {
-    mkdir -p "$pkgdir/usr/bin/"
-    cp -v "$pkgname/netris" "$pkgdir/usr/bin/netris"
-    cp -v "$pkgname/sr"     "$pkgdir/usr/bin/netris-sr"
+    mkdir -p "${pkgdir}/usr/bin/"
+    cp -v "${pkgname}/netris" "${pkgdir}/usr/bin/netris"
+    cp -v "${pkgname}/sr"     "${pkgdir}/usr/bin/netris-sr"
 }

@@ -1,4 +1,4 @@
-pkgbase = netris
+pkgbase = netris-git
 	pkgdesc = Mark H. Weaver's Netris -- A free networked version of T*tris. This is Nathan Aclander's github fork with several bugfixes and improvements
 	pkgver = 0.52
 	pkgrel = 1
@@ -7,9 +7,10 @@ pkgbase = netris
 	arch = x86_64
 	license = GPL2
 	makedepends = git
-	source = netris::git+https://github.com/naclander/netris.git
+	conflicts = netris
+	source = netris-git::git+https://github.com/naclander/netris.git
 	md5sums = SKIP
 	sha1sums = SKIP
 
-pkgname = netris
+pkgname = netris-git
 
