@@ -2,7 +2,7 @@
 # Contributor: Jonas Heinrich <onny@project-insanity.org>
 
 pkgname=nextcloud-app-collabora-online
-pkgver=1.1.15
+pkgver=1.1.24
 pkgrel=1
 pkgdesc="Integrate Collabora Online into NextCloud"
 arch=('any')
@@ -11,17 +11,12 @@ license=('AGPL')
 depends=('nextcloud' 'docker')
 makedepends=()
 options=('!strip')
-source=("collaboraonline-${pkgver}.tar.gz::https://github.com/owncloud/richdocuments/archive/${pkgver}.tar.gz")
-sha512sums=("710b521e438fdc3779fbd507bbf0e9ff59c6a71998208dfc19e4442e30eca71482c44600fac2a35fb49e51382933f1bdbc60371a017f8031a5c1de63c1d23f63")
-
-build() {
-  cd "${srcdir}/richdocuments-${pkgver}"
-  make dist
-}
+source=("https://github.com/nextcloud/richdocuments/releases/download/${pkgver}/richdocuments.tar.gz")
+sha512sums=("450dc9d404f492d9704a8da7d761c5c4f32268eb904de01f0bea9a8f889a848bdf5d6d4e0319e910445fea005913c83250512d3741d9d8fb5848236e21c75062")
 
 package() {
-  install -d "${pkgdir}/usr/share/webapps/nextcloud/apps/richdocuments"
-  tar --strip-components=1 -xvf "${srcdir}/richdocuments-${pkgver}/owncloud-collabora-online-${pkgver}.tar.gz" -C "${pkgdir}/usr/share/webapps/nextcloud/apps/richdocuments"
+  install -d "${pkgdir}/usr/share/webapps/nextcloud/apps"
+  cp -a "${srcdir}/richdocuments" "${pkgdir}/usr/share/webapps/nextcloud/apps/richdocuments"
 }
 
 # Todo:
