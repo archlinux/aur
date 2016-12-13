@@ -1,16 +1,12 @@
 # Maintainer: Ben Wolsieffer <benwolsieffer@gmail.com>
-# A DRY template for creating a Python 3 only package that uses setuptools and
-# is available on GitHub.
-
 _github_url=https://github.com/lopsided98/dnsupdate
 pkgname=dnsupdate-git
 pkgver=0.1.r0.gde81e54
-pkgrel=1
-pkgdesc=""
+pkgrel=2
+pkgdesc="A modern and flexible dynamic DNS client"
 arch=('any')
 url="${_github_url}"
 license=('GPL3')
-groups=()
 depends=('python-requests' 'python-yaml')
 makedepends=('python-setuptools')
 optdepends=(
