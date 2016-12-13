@@ -12,7 +12,7 @@ license=('unknown')
 options=('!emptydirs')
 depends=('perl')
 source=("http://www.cpan.org/authors/id/${cpanauthor::1}/${cpanauthor::2}/${cpanauthor}/${cpaname}-${pkgver}.tar.gz")
-sha256sums=('8f673cacec2680520f94a95cd44639bc4587f260b07497772ffdaac83b945f6c')
+sha256sums=('df4a7eb1b8e45f68e94cb4fdde6710af07f2e3ae647793323ca933f1bddfc189')
 
 build() {
 	 cd "${srcdir}/${cpaname}-${pkgver}"
