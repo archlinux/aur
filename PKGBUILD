@@ -14,7 +14,7 @@
 ### the software) then please do email me or post an AUR comment.
 
 pkgname=zabbix-server
-pkgver=3.2.1
+pkgver=3.2.2
 pkgrel=1
 pkgdesc="Software designed for monitoring availability and performance of IT infrastructure components"
 arch=('i686' 'x86_64')
@@ -95,11 +95,11 @@ package() {
   install -D -m 0644 $srcdir/zabbix-server.tmpfiles $pkgdir/usr/lib/tmpfiles.d/zabbix-server.conf
 }
 
-md5sums=('4f363b923ef2b5eefddee8dfc5f51e2b'
+md5sums=('6f47f9d2bb14492c1e1ef08d32af441e'
          '1881e6a0a9683745f07ab86e14b3f37e'
          '7200c01662be3a1d364c280ff2a818ac'
          '9ce692356b4ac0a71595ce55fe3b44c1')
-sha1sums=('bb70b4bc66f97d90993a9bb7027bd94e9a4c1c02'
+sha1sums=('81a0437a735a3ad049a6b4ef432bc5c597275eb9'
           'fccab5531dd8aab043ad2c0906597a28d3cdc9a4'
           '7db689838d1f7985b75f91fb319227c3211bab7d'
           '8926befcb944732fd59a34c89b569d3fbef1ca9d')
