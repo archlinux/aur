@@ -3,8 +3,8 @@
 # Contributer: auk
 
 pkgname=hyper
-pkgver=0.8.3
-pkgrel=2
+pkgver=1.0.0
+pkgrel=1
 epoch=
 pkgdesc="A terminal built on web technologies"
 arch=('any')
@@ -27,23 +27,33 @@ source=(
     "https://github.com/zeit/$pkgname/archive/${pkgver}.tar.gz"
     "https://raw.githubusercontent.com/zeit/art/master/hyper/mark/Hyper-Mark-120%403x.png"
     "Hyper.desktop"
-    "babel-loader.patch"
 )
 noextract=()
-md5sums=('5f894b0af6cef3c91da19f425b9c6d32'
+md5sums=('9b6831e25f6e521dcf95edaeded9d9d8'
          'f3481e14cba331160339b3b5ab78872b'
-         '74cb7ba38e37332aa8300e4b6ba9c61c'
-         'aa0867111699f0e903779506ad03a373')
+         '74cb7ba38e37332aa8300e4b6ba9c61c')
 validpgpkeys=()
+
+## This function uses yarn if it installed, otherwise npm as the default.
+npm_or_yarn() {
+    if hash yarn 2>/dev/null; then
+        yarn "$@"
+    else
+        npm "$@"
+    fi
+}
 
 prepare() {
     cd "$pkgname-$pkgver"
-    patch -p2 < $srcdir/babel-loader.patch
-    npm install
+
+    # calls yarn if available, else npm
+    npm_or_yarn install
 }
 
 build() {
     cd "$pkgname-$pkgver"
+
+    # can't use npm_or_yarn b/c yarn rebuild doesn't work
     npm run pack
 }
 
