@@ -1,0 +1,29 @@
+pkgbase = apt-git
+	pkgdesc = Command-line package manager used on Debian-based systems (git-latest)
+	pkgver = 1.4_beta2.r2.gf47f4b1
+	pkgrel = 1
+	url = http://packages.debian.org
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = cmake
+	makedepends = dpkg
+	makedepends = docbook-xsl
+	makedepends = doxygen
+	makedepends = po4a
+	makedepends = gtest
+	makedepends = w3m
+	depends = gnupg
+	depends = curl
+	depends = xz
+	provides = libapt-inst
+	provides = libapt-pkg
+	provides = libapt-pkg-dev
+	provides = apt-utils
+	conflicts = apt
+	replaces = apt
+	source = apt-git::git+https://anonscm.debian.org/git/apt/apt.git
+	sha256sums = SKIP
+
+pkgname = apt-git
+
