@@ -2,7 +2,7 @@
 
 pkgname=ftequake-svn
 _svndir=trunk
-pkgver=r5029
+pkgver=r5032
 pkgrel=1
 pkgdesc="FTE QuakeWorld. Engine for Quake 1,2,3 and Hexen 2 (svn-latest)"
 arch=('i686' 'x86_64')
