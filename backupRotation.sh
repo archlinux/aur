@@ -129,7 +129,7 @@ From: $sender_e_mail_address
 To: $e_mail_address
 Reply-To: $replier_e_mail_address
 Date: $(date)
-Subject: Backup was successfull
+Subject: Backup was successful
 
 $(echo -e $message)
 
