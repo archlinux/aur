@@ -3,10 +3,11 @@
 # Contributor: Tobias Powalowski <tpowa@archlinux.org>
 
 pkgbase=linux-bld       # Build kernel with a different name
-_srcname=linux-4.7
 pkgname=(linux-bld linux-bld-headers)
 _kernelname=-bld
-pkgver=4.7.10
+pkgver=4.8.14
+_srcname=linux-4.8
+_pkgver2=${_srcname#*-}.0
 pkgrel=1
 arch=('i686' 'x86_64')
 url="https://github.com/rmullick/linux"
@@ -14,10 +15,10 @@ license=('GPL2')
 makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc' 'libelf')
 options=('!strip')
 _gcc_patch="enable_additional_cpu_optimizations_for_gcc_v4.9+_kernel_v3.15+.patch"
-_bfqversion=v8r3
+_bfqversion=v8r4
 _bfqversion_old=v7r11
-_bfqpath="http://algo.ing.unimo.it/people/paolo/disk_sched/patches/4.7.0-${_bfqversion}"
-_BLDpatch="BLD-4.7.patch"
+_bfqpath="http://algo.ing.unimo.it/people/paolo/disk_sched/patches/${_pkgver2}-${_bfqversion}"
+_BLDpatch="BLD-${_srcname#*-}.patch"
 source=("http://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
 	"https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.sign"
 	"http://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.xz"
@@ -25,30 +26,37 @@ source=("http://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         "http://repo-ck.com/source/gcc_patch/${_gcc_patch}.gz"
         # the main kernel config files
         'config' 'config.x86_64'
+        # pacman hook for initramfs regeneration
+        '99-linux.hook'
         # standard config files for mkinitcpio ramdisk
         'linux-bld.preset'
         'change-default-console-loglevel.patch'
-        "${_bfqpath}/0001-block-cgroups-kconfig-build-bits-for-BFQ-${_bfqversion_old}-4.7.0.patch"
-        "${_bfqpath}/0002-block-introduce-the-BFQ-${_bfqversion_old}-I-O-sched-for-4.7.0.patch"
-        "${_bfqpath}/0003-block-bfq-add-Early-Queue-Merge-EQM-to-BFQ-${_bfqversion_old}-for.patch"
-        "${_bfqpath}/0004-block-bfq-turn-BFQ-v7r11-for-4.7.0-into-BFQ-${_bfqversion}-for.patch"
+        'net_handle_no_dst_on_skb_in_icmp6_send.patch'
+        '0001-x86-fpu-Fix-invalid-FPU-ptrace-state-after-execve.patch'
+        "${_bfqpath}/0001-block-cgroups-kconfig-build-bits-for-BFQ-${_bfqversion_old}-${_pkgver2}.patch"
+        "${_bfqpath}/0002-block-introduce-the-BFQ-${_bfqversion_old}-I-O-sched-to-be-ported.patch"
+        "${_bfqpath}/0003-block-bfq-add-Early-Queue-Merge-EQM-to-BFQ-${_bfqversion_old}-to-.patch"
+        "${_bfqpath}/0004-Turn-BFQ-${_bfqversion_old}-into-BFQ-${_bfqversion}-for-${_pkgver2}.patch"
         "https://raw.githubusercontent.com/rmullick/bld-patches/master/${_BLDpatch}"
         )
 
-sha256sums=('5190c3d1209aeda04168145bf50569dc0984f80467159b1dc50ad731e3285f10'
+sha256sums=('3e9150065f193d3d94bcf46a1fe9f033c7ef7122ab71d75a7fb5a2f0c9a7e11a'
             'SKIP'
-            '0ccdd4ccb962d542108a23e83498f07ec981bb629c77e2355ca25297cea47b93'
+            'efa9b7d87a6ca67426e3d7f206ac987eb7cb31602ad2011e81060626de790fcb'
             'SKIP'
-            'cf0f984ebfbb8ca8ffee1a12fd791437064b9ebe0712d6f813fd5681d4840791'
-            '8ac2fb81f4c932c6b1877ca2bda9a98c3ffbb42359dce7dea588c97df4db8c8a'
-            '931724fe1a57134442fecc739ccb32984c1c6a0f0ae7e7311fd9536bb0e47ead'
-            '8da1d80c0bd568781568da4f669f39fed94523312b9d37477836bfa6faa9527f'
+            'e1b8c54c3b81dfd526e24287436b16ec523715e6b3b96156c3e57af035ade127'
+            '2ac8818414beb7dbacbd3ad450c516e6ada804827132a7132f63b8189e5f5151'
+            '41b9a64542befd2fea170776e8ec22a7d158dd3273633afc9b91662c448cd90a'
+            '834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0'
+            '5b51a1eacb3e00b304ca54d31f467ec1fb15fdfce93f1c62963d087bf753e812'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
-            'a6bd81bbb2f72cfd6ad992fdeff4bac1cb7c58a8edfc3fcd76c1d7275f73d284'
-            '144b54e95a1ffca88066e41f3c46c47df442d6497684e204e9f4312faab75572'
-            'db34093296bc02df769faa25dd609453321b05836d8265416e6975ebe9542821'
-            'db7872616d7ed3137d4b738e6e29fdaff58981a1d3912e3f1c33cd9fc61bca27'
-            'bc13eb1b36f6549d3340bbf3aab1e54b421adfd85afe9959a2e446e0b28da9b3')
+            'b595a1588bafb3d732841cd1b73633970706914f57f2d215c9f1494212d13989'
+            '3e955e0f1aae96bb6c1507236adc952640c9bd0a134b9995ab92106a33dc02d9'
+            '1dabd969b18b7e09e2ffeffe4c2430dbc26e5df9868563d54ca95f45c690262f'
+            'c8d17a7893d5780fd0c90311470160dcc842b81621b30671150e2e3224be86d2'
+            'e47ea5b1c2f20cfade4e6a85bff1320dac84ac638e48ef4eec7285fe9e1e1def'
+            'c3c96e304aef378f0cc6e1fb18eeabe176e6ba918d13060c105f3d8cabc85f59'
+            '16a5d04bbd76d2dc79473b83af434aa54a72f41f0677823c0381762f75ccb33c')
 
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
@@ -72,20 +80,12 @@ makenconfig=
 prepare() {
   cd "${srcdir}/${_srcname}"
 
-  if [ "$(echo $pkgver | cut -d'.' -f3)" != "" ]; then
+  if [ "${_srcname#*-}" != "$pkgver" ]; then
     msg2 "Appliyng upstream patch only if a sub-version is detected"
     patch -p1 -i "${srcdir}/patch-${pkgver}"
   else
     msg2 "Upstream patch not needed"
   fi
-
-  #msg2 "Applying latest fixes from stable queue, if needed"
-  # http://git.kernel.org/?p=linux/kernel/git/stable/stable-queue.git
-
-  msg2 "set DEFAULT_CONSOLE_LOGLEVEL to 4 (same value as the 'quiet' kernel param)"
-  # remove this when a Kconfig knob is made available by upstream
-  # (relevant patch sent upstream: https://lkml.org/lkml/2011/7/26/227)
-  patch -p1 -i "${srcdir}/change-default-console-loglevel.patch"
 
   msg2 "BLD patches"
   patch -Np1 -i "${srcdir}/${_BLDpatch}"
@@ -93,12 +93,27 @@ prepare() {
   msg2 "Patch source to enable more gcc CPU optimizatons via the make nconfig"
   patch -Np1 -i "${srcdir}/${_gcc_patch}"
 
-  msg "Patching source with BFQ patches"
-  for p in $(ls ${srcdir}/000{1,2,3,4}-block*BFQ*.patch); do
-      patch -Np1 -i "$p"
-  done
+#  msg "Patching source with BFQ patches"
+#  for p in $(ls ${srcdir}/000{1,2,3,4}-block*BFQ*.patch); do
+#      patch -Np1 -i "$p"
+#  done
 
-#  msg2 "Patches from Archlinux"
+  msg2 "Patches from Archlinux standard package"
+  # https://bugzilla.kernel.org/show_bug.cgi?id=189851
+  patch -p1 -i "${srcdir}/net_handle_no_dst_on_skb_in_icmp6_send.patch"
+
+  # Revert a commit that causes memory corruption in i686 chroots on our
+  # build server ("valgrind bash" immediately crashes)
+  # https://bugzilla.kernel.org/show_bug.cgi?id=190061
+  patch -Rp1 -i "${srcdir}/0001-x86-fpu-Fix-invalid-FPU-ptrace-state-after-execve.patch"
+
+  # add latest fixes from stable queue, if needed
+  # http://git.kernel.org/?p=linux/kernel/git/stable/stable-queue.git
+
+  # set DEFAULT_CONSOLE_LOGLEVEL to 4 (same value as the 'quiet' kernel param)
+  # remove this when a Kconfig knob is made available by upstream
+  # (relevant patch sent upstream: https://lkml.org/lkml/2011/7/26/227)
+  patch -p1 -i "${srcdir}/change-default-console-loglevel.patch"
 
   if [ "${CARCH}" = "x86_64" ]; then
     cat "${srcdir}/config.x86_64" > ./.config
@@ -181,9 +196,6 @@ package_linux-bld() {
   [ "${pkgbase}" = "linux" ] && groups=('base')
   depends=('coreutils' 'linux-firmware' 'kmod' 'mkinitcpio>=0.7')
   optdepends=('crda: to set the correct wireless channels of your country')
-  provides=("kernel26${_kernelname}=${pkgver}")
-  conflicts=("kernel26${_kernelname}")
-  replaces=("kernel26${_kernelname}")
   backup=("etc/mkinitcpio.d/${pkgbase}.preset")
   install=linux-bld.install
 
@@ -201,21 +213,17 @@ package_linux-bld() {
   cp arch/$KARCH/boot/bzImage "${pkgdir}/boot/vmlinuz-${pkgbase}"
 
   # set correct depmod command for install
-  cp -f "${startdir}/${install}" "${startdir}/${install}.pkg"
+  sed -e "s|%PKGBASE%|${pkgbase}|g;s|%KERNVER%|${_kernver}|g" \
+    "${startdir}/${install}" > "${startdir}/${install}.pkg"
   true && install=${install}.pkg
-  sed \
-    -e  "s/KERNEL_NAME=.*/KERNEL_NAME=${_kernelname}/" \
-    -e  "s/KERNEL_VERSION=.*/KERNEL_VERSION=${_kernver}/" \
-    -i "${startdir}/${install}"
 
   # install mkinitcpio preset file for kernel
-  install -D -m644 "${srcdir}/linux-bld.preset" "${pkgdir}/etc/mkinitcpio.d/${pkgbase}.preset"
-  sed \
-    -e "1s|'linux.*'|'${pkgbase}'|" \
-    -e "s|ALL_kver=.*|ALL_kver=\"/boot/vmlinuz-${pkgbase}\"|" \
-    -e "s|default_image=.*|default_image=\"/boot/initramfs-${pkgbase}.img\"|" \
-    -e "s|fallback_image=.*|fallback_image=\"/boot/initramfs-${pkgbase}-fallback.img\"|" \
-    -i "${pkgdir}/etc/mkinitcpio.d/${pkgbase}.preset"
+  sed "s|%PKGBASE%|${pkgbase}|g" "${srcdir}/linux-bld.preset" |
+    install -D -m644 /dev/stdin "${pkgdir}/etc/mkinitcpio.d/${pkgbase}.preset"
+
+  # install pacman hook for initramfs regeneration
+  sed "s|%PKGBASE%|${pkgbase}|g" "${srcdir}/99-linux.hook" |
+    install -D -m644 /dev/stdin "${pkgdir}/usr/share/libalpm/hooks/99-${pkgbase}.hook"
 
   # remove build and source links
   rm -f "${pkgdir}"/lib/modules/${_kernver}/{source,build}
@@ -235,14 +243,11 @@ package_linux-bld() {
   mv "${pkgdir}/lib" "${pkgdir}/usr/"
 
   # add vmlinux
-  install -D -m644 vmlinux "${pkgdir}/usr/lib/modules/${_kernver}/build/vmlinux" 
+  install -D -m644 vmlinux "${pkgdir}/usr/lib/modules/${_kernver}/build/vmlinux"
 }
 
 package_linux-bld-headers() {
   pkgdesc="Header files and scripts for building modules for ${pkgbase/linux/Linux} kernel"
-  provides=("kernel26${_kernelname}-headers=${pkgver}")
-  conflicts=("kernel26${_kernelname}-headers")
-  replaces=("kernel26${_kernelname}-headers")
 
   install -dm755 "${pkgdir}/usr/lib/modules/${_kernver}"
 
@@ -342,7 +347,7 @@ package_linux-bld-headers() {
   # add objtool for external module building and enabled VALIDATION_STACK option
   if [ -f tools/objtool/objtool ];  then
       mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build/tools/objtool"
-      cp -a tools/objtool/objtool ${pkgdir}/usr/lib/modules/${_kernver}/build/tools/objtool/ 
+      cp -a tools/objtool/objtool ${pkgdir}/usr/lib/modules/${_kernver}/build/tools/objtool/
   fi
 
   chown -R root.root "${pkgdir}/usr/lib/modules/${_kernver}/build"
@@ -362,31 +367,34 @@ package_linux-bld-headers() {
 
   # remove unneeded architectures
   rm -rf "${pkgdir}"/usr/lib/modules/${_kernver}/build/arch/{alpha,arc,arm,arm26,arm64,avr32,blackfin,c6x,cris,frv,h8300,hexagon,ia64,m32r,m68k,m68knommu,metag,mips,microblaze,mn10300,openrisc,parisc,powerpc,ppc,s390,score,sh,sh64,sparc,sparc64,tile,unicore32,um,v850,xtensa}
+
+  # remove a files already in linux-docs package
+  rm -f "${pkgdir}/usr/lib/modules/${_kernver}/build/Documentation/kbuild/Kconfig.recursion-issue-01"
+  rm -f "${pkgdir}/usr/lib/modules/${_kernver}/build/Documentation/kbuild/Kconfig.recursion-issue-02"
+  rm -f "${pkgdir}/usr/lib/modules/${_kernver}/build/Documentation/kbuild/Kconfig.select-break"
 }
 
-#_package-linux-bld-docs() {
+#_package_linux-bld-docs() {
 #  pkgdesc="Kernel hackers manual - HTML documentation that comes with the ${pkgbase/linux/Linux} kernel"
-#  provides=("kernel26${_kernelname}-docs=${pkgver}")
-#  conflicts=("kernel26${_kernelname}-docs")
-#  replaces=("kernel26${_kernelname}-docs")
 #
 #  cd "${srcdir}/${_srcname}"
 #
-#  mkdir -p "${pkgdir}/usr/src/linux-${_kernver}"
-#  cp -al Documentation "${pkgdir}/usr/src/linux-${_kernver}"
+#  mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build"
+#  cp -al Documentation "${pkgdir}/usr/lib/modules/${_kernver}/build"
 #  find "${pkgdir}" -type f -exec chmod 444 {} \;
 #  find "${pkgdir}" -type d -exec chmod 755 {} \;
 #
 #  # remove a file already in linux package
-#  rm -f "${pkgdir}/usr/src/linux-${_kernver}/Documentation/DocBook/Makefile"
+#  rm -f "${pkgdir}/usr/lib/modules/${_kernver}/build/Documentation/DocBook/Makefile"
 #}
-#
-##pkgname=("${pkgbase}" "${pkgbase}-headers" "${pkgbase}-docs")
-#pkgname=("${pkgbase}" "${pkgbase}-headers")
-#for _p in ${pkgname[@]}; do
-#  eval "package_${_p}() {
-#    _package${_p#${pkgbase}}
-#  }"
-#done
+
+#pkgname=("${pkgbase}" "${pkgbase}-headers" "${pkgbase}-docs")
+pkgname=("${pkgbase}" "${pkgbase}-headers")
+for _p in ${pkgname[@]}; do
+  eval "package_${pkgbase}-${_p}() {
+    $(declare -f "_package${_p#${pkgbase}}")
+    _package${_p#${pkgbase}}
+  }"
+done
 
 # vim:set ts=8 sts=2 sw=2 et:
