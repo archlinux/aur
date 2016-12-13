@@ -6,7 +6,7 @@
 
 pkgname=firefox-unbranded
 _pkgname=firefox
-pkgver=50.0.1
+pkgver=50.1.0
 pkgrel=1
 pkgdesc="Standalone web browser from mozilla.org - Unbranded version"
 arch=('i686' 'x86_64')
@@ -28,7 +28,7 @@ source=(https://ftp.mozilla.org/pub/mozilla.org/firefox/releases/$pkgver/source/
         firefox-install-dir.patch
         vendor.js
         no-libnotify.patch)
-sha256sums=('a15a6b9fdf58dd5f9095fd502777fcec5523805643b890013a71f698a6576fa6'
+sha256sums=('54bb9bccbf9eed0c7715ae7f45330bf41ce24b756f5fdecb380e06709a6ac5a4'
 	    '84efbf7d1495fd0c89f684d618abfe1eb190ee336c13aee51e9ab706c910127f'
             '9f39e9d891a48b49490df0823d67f01d8cf0b3e8c5910190739e94190f768e76'
             'd86e41d87363656ee62e12543e2f5181aadcff448e406ef3218e91865ae775cd'
