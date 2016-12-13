@@ -3,13 +3,14 @@
 
 pkgname=cnijfilter-mg2400series
 pkgver=4.00
-pkgrel=1
+pkgrel=2
+_pkgrel=1
 pkgdesc="Canon IJ Printer Driver For MG-2400"
 arch=('i686' 'x86_64')
 url="http://support-ph.canon-asia.com/contents/PH/EN/0100466201.html"
 license=('unknown')
 depends=('cups' 'popt' 'libxml2' 'gtk2' 'libtiff' 'libpng' 'cnijfilter-common-mg2400')
-source=("http://gdlp01.c-wss.com/gds/9/0100005499/01/cnijfilter-mg2400series-$pkgver-$pkgrel-rpm.tar.gz")
+source=("http://gdlp01.c-wss.com/gds/9/0100005499/01/cnijfilter-mg2400series-$pkgver-$_pkgrel-rpm.tar.gz")
 md5sums=('73b00b2ca8d327ce9b427b5438d34d1c')
 
 package() {
@@ -21,6 +22,4 @@ package() {
   cd $pkgdir
   bsdtar -xf $rpmfile
   mv $pkgdir/usr/lib64 $pkgdir/usr/lib
-  cp -r $pkgdir/usr/local/* $pkgdir/usr/
-  rm -r $pkgdir/usr/local
 }
