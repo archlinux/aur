@@ -7,8 +7,8 @@ else
 _arch="x86"
 fi
 
-_major="10.1.2"
-_minor=17449
+_major="10.1.3"
+_minor=17451
 
 pkgname="komodo-edit"
 _bigname="Komodo-Edit"
@@ -24,13 +24,14 @@ conflicts=('komodoedit')
 options=('!strip')
 
 source=('_install.py.patch' 'activestate.py.patch')
-source_i686=("http://downloads.activestate.com/Komodo/releases/${_major}/${_bigname}-${_major}-${_minor}-linux-x86.tar.gz")
-source_x86_64=("http://downloads.activestate.com/Komodo/releases/${_major}/${_bigname}-${_major}-${_minor}-linux-x86_64.tar.gz")
+_srcbase="http://downloads.activestate.com/Komodo/releases"
+source_i686=("${_srcbase}/${_major}/${_bigname}-${_major}-${_minor}-linux-x86.tar.gz")
+source_x86_64=("${_srcbase}/${_major}/${_bigname}-${_major}-${_minor}-linux-x86_64.tar.gz")
 
 sha256sums=('98177ee92e13036baa0a4f61ef398c0e23ab5d250cf7aa1b1c5a557efaaec3a8'
             'c68d7e94955e0f7b32cf3863136891d6441d9dd3a6346481b911d2c250cf32e9')
-sha256sums_i686=('e41908ce5db40860538e5eb2a8a705063f0de48f53bba09a3b0706417e1f5383')
-sha256sums_x86_64=('db3373965f63307af27f93e8a9ef22de27811efa9bbd3c22a44d62062409db03')
+sha256sums_i686=('f54fdba164da40f07e49e18aa956f1a11159aeb7c516dae8288ae461bd62b261')
+sha256sums_x86_64=('f89c84e08fd6c90801b881f19d307e11be5604f945afd48f6a1622d8623fc59f')
 
 prepare() {
   cd ${srcdir}/${_bigname}-${_major}-${_minor}-linux-${_arch}
