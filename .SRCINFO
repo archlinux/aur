@@ -1,0 +1,22 @@
+pkgbase = canon-pixma-mx470-complete
+	pkgdesc = Complete stand-alone driver set (printing and scanning) for Canon Pixma MX47X series
+	pkgver = 4.10
+	pkgrel = 1
+	url = https://www.canondrivers.co.uk/canon-pixma-mx475-driver-printer/
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = deb2targz
+	depends = lib32-libcups
+	depends = lib32-popt
+	depends = lib32-libpng12
+	depends = lib32-libusb-compat
+	depends = lib32-libtiff4
+	depends = lib32-gtk2
+	source = http://gdlp01.c-wss.com/gds/9/0100005869/01/cnijfilter-mx470series-4.10-1-deb.tar.gz
+	source = http://gdlp01.c-wss.com/gds/1/0100005871/01/scangearmp-mx470series-2.30-1-deb.tar.gz
+	md5sums = fb955b2f93b5c1c63f373c07f91af17c
+	md5sums = 7a04cd678e05812ee536d49ec1f32ac1
+
+pkgname = canon-pixma-mx470-complete
+
