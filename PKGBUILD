@@ -1,6 +1,6 @@
 # Maintainer: Justin Vreeland <vreeland.justin@gmail.com>
 pkgname=debmake
-pkgver=4.2.7
+pkgver=4.2.9
 pkgrel=1
 pkgdesc="Program to make the Debian source package"
 arch=('any')
