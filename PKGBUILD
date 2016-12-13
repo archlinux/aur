@@ -2,12 +2,12 @@
 # Maintainer: Sandro Vitenti <sandro@isoftware.com.br>
 
 pkgname=(python-healpy-git python2-healpy-git)
-pkgver=1.9.1.r999.g49c12f5
+pkgver=1.10.1.r1037.gc3c7e1c
 pkgrel=1
 arch=('i686' 'x86_64')
 license=('LGPL')
 pkgdesc="Python package to manipulate healpix maps"
-depends=('python2-numpy' 'python2-matplotlib' 'python2-pyfits' 'python2' 'cfitsio')
+depends=('python2-numpy' 'python2-matplotlib' 'python2-astropy' 'python2' 'cfitsio')
 makedepends=()
 url="http://healpy.readthedocs.org"
 md5sums=('SKIP')
@@ -26,7 +26,7 @@ pkgver() {
 }
 
 package_python-healpy-git() {
-  depends=('python-numpy' 'python-matplotlib' 'python-pyfits' 'python' 'cfitsio')
+  depends=('python-numpy' 'python-matplotlib' 'python-astropy' 'python' 'cfitsio')
   cd $_gitname
   git submodule init
   git submodule update
@@ -35,7 +35,7 @@ package_python-healpy-git() {
 
 
 package_python2-healpy-git() {
-  depends=('python2-numpy' 'python2-matplotlib' 'python2-pyfits' 'python2' 'cfitsio')
+  depends=('python2-numpy' 'python2-matplotlib' 'python2-astropy' 'python2' 'cfitsio')
   cd "${_gitname}-py2"
   git submodule init
   git submodule update
