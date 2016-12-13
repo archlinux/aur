@@ -1,6 +1,6 @@
 pkgbase = eudev
-	pkgver = 3.2
-	pkgrel = 2
+	pkgver = 3.2.1
+	pkgrel = 1
 	url = http://www.gentoo.org/proj/en/eudev/
 	arch = i686
 	arch = x86_64
@@ -14,14 +14,14 @@ pkgbase = eudev
 	makedepends = kmod
 	options = !libtool
 	options = !staticlibs
-	source = eudev-3.2.tar.gz::https://github.com/gentoo/eudev/archive/v3.2.tar.gz
+	source = eudev-3.2.1.tar.gz::https://github.com/gentoo/eudev/archive/v3.2.1.tar.gz
 	source = initcpio_hooks
 	source = initcpio_install
 	source = udev-hwdb.hook
-	sha256sums = 37829d37f4beb7e358ca33abc1ad0907d87f917ce157777aeaeebeacae24efdc
+	sha256sums = 88f530c1540750e6daa91b5eaeebf88e761e6f0c86515c1c28eedfd871f027c6
 	sha256sums = 892ce43218e0a458981bbce451252c8987dc398e60b8de288e7542b8f2409c13
 	sha256sums = 77dd1fd318b4456409aceb077f060b87944defb07cf39d29ad1968dc6f361875
-	sha256sums = 7432c12205ba58ecb94a417198012fc1739ae107ffd0bf5a6e22dd9bdbf69d76
+	sha256sums = 846e9ddbb95c8394ba7efe75107cc1308426921bc042f5d6b48fa4c2dcbac151
 
 pkgname = eudev
 	pkgdesc = The userspace dev tools (udev) forked by Gentoo
