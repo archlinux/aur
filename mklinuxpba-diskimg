@@ -40,6 +40,18 @@ then
     exit 1
 fi
 
+if [[ ! -e /usr/bin/gdisk ]]
+then
+    echo "gptfdisk is not installed: nothing to do."
+    exit 1
+fi
+
+if [[ ! -e /usr/bin/partprobe ]]
+then
+    echo "parted is not installed: nothing to do."
+    exit 1
+fi
+
 mklinuxpba-initramfs
 
 kernel_release="$(uname -r)"
