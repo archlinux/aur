@@ -71,7 +71,7 @@ _ibus_mozc="yes"
 _bldtype=Release
 #_bldtype=Debug
 
-_mozcrev=2315f957d1785130c2ed196e141a330b0857b065
+_mozcrev=280e38fe3d9db4df52f0713acf2ca65898cd697a
 _utdicver=20161121
 _zipcoderel=201611
 _uimmozcrev=321.3ea28b1
@@ -79,12 +79,12 @@ _uimmozcrev=321.3ea28b1
 pkgbase=mozc-ut2
 pkgname=mozc-ut2
 true && pkgname=('mozc-ut2')
-pkgver=2.18.2612.102.20161121
+pkgver=2.20.2673.102.20161121
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.geocities.jp/ep3797/mozc-ut2.html"
 license=('BSD' 'GPL' 'CC-BY-SA' 'custom')
-makedepends=('python2' 'ruby' 'git' 'ninja' 'clang' 'qt4')
+makedepends=('python2' 'ruby' 'git' 'ninja' 'clang' 'qt5-base')
 source=(
   mozc::git+https://github.com/google/mozc.git#commit=${_mozcrev}
   http://downloads.sourceforge.net/project/pnsft-aur/mozc/mozcdic-ut2-${_utdicver}.tar.bz2
@@ -175,13 +175,6 @@ build() {
   done
   msg2 '====================================================='
 
-  # Use Qt4
-  _rcc_loc=`pkg-config QtCore --variable=rcc_location`
-  _qt4dir=${_rcc_loc%%/bin/rcc}
-  _qt4i=`pkg-config --cflags-only-I QtGui`
-  CFLAGS+=" $_qt4i"
-  CXXFLAGS+=" $_qt4i"
-
   msg "Starting make..."
 
   cd "${srcdir}/${pkgbase}-${pkgver}/src"
@@ -193,7 +186,7 @@ build() {
 
   unset CC CC_host CC_target CXX CXX_host CXX_target LINK AR AR_host AR_target \
         NM NM_host NM_target READELF READELF_host READELF_target
-  QTDIR=$_qt4dir GYP_DEFINES="document_dir=/usr/share/licenses/${pkgbase}" \
+  GYP_DEFINES="document_dir=/usr/share/licenses/${pkgbase}" \
     python2 build_mozc.py gyp
   python2 build_mozc.py build -c $_bldtype $_targets
 
@@ -208,7 +201,7 @@ package_mozc-ut2() {
   pkgdesc="Mozc the Japanese Input Method with Mozc UT2 Dictionary"
   arch=('i686' 'x86_64')
   groups=('mozc-im')
-  depends=('qt4' 'zinnia')
+  depends=('qt5-base' 'zinnia')
   install=mozc-ut.install
   provides=("mozc=${_mozcver}")
   replaces=('mozc-server-ut' 'mozc-utils-gui-ut' 'mozc-ut')
@@ -298,4 +291,4 @@ package_uim-mozc-ut2() {
 
 # Global pkgdesc and depends are here so that they will be picked up by AUR
 pkgdesc="Mozc the Japanese Input Method with Mozc UT2 Dictionary (additional dictionary) and uim-mozc (optional)"
-depends=('qt4' 'zinnia')
+depends=('qt5-base' 'zinnia')
