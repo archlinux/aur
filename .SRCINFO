@@ -1,0 +1,15 @@
+pkgbase = vim-buftabline-git
+	pkgdesc = Forget Vim tabs – now you can have buffer tabs
+	pkgver = r52.228b1cb
+	pkgrel = 1
+	url = https://github.com/ap/vim-buftabline
+	install = vimdoc.install
+	arch = any
+	groups = vim-plugins
+	license = MIT
+	makedepends = git
+	source = git://github.com/ap/vim-buftabline.git
+	md5sums = SKIP
+
+pkgname = vim-buftabline-git
+
