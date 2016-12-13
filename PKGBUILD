@@ -1,4 +1,5 @@
-# Maintainer: Étienne André <eti.andre@gmail.com>
+# Maintainer: Dimitrios Vogiatzis <me@dimtree.net>
+# Contributor: Étienne André <eti.andre@gmail.com>
 pkgname='python-fusepy'
 pkgver=2.0.2
 pkgrel=2
