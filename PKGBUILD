@@ -3,7 +3,7 @@
 pkgname=('zarafa-service-overview')
 groups=('zarafa'
 	'kopano')
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 pkgdesc='Zarafa service overview'
 arch=('any')
@@ -15,12 +15,14 @@ source=('quicksand.ttf'
 	'index.php'
 	'zarafa-service-overview.conf'
 	'nginx-location.conf'
-	'nginx-ssl.example.conf')
+	'nginx-ssl.example.conf'
+	'mozilla-account-configuration.php')
 md5sums=('3c7073a635ae457478a9b3b2d50e49bc'
-         'ca01d86c31225de62994aa13466bde81'
+         '0f36005bfc9223a1d94b29d1c337b22d'
          'e839fb93c54759eb809a40957ae6b9c9'
-         '066aed78b8cba492321defca1df78b55'
-         '1bdab5b1e4473c1b0f6ce2e5c8f1da61')
+         '5ea956725a183251c630cd294b43beba'
+         '1bdab5b1e4473c1b0f6ce2e5c8f1da61'
+         '7df71826f100a44d72c8a68e1c8ea063')
 
 package() {
     cd ${srcdir}
@@ -35,5 +37,6 @@ package() {
     mkdir -p ${pkgdir}/usr/share/webapps/${pkgname}/
     cp quicksand.ttf ${pkgdir}/usr/share/webapps/${pkgname}/
     cp index.php ${pkgdir}/usr/share/webapps/${pkgname}/
+    cp mozilla-account-configuration.php ${pkgdir}/usr/share/webapps/${pkgname}/
 }
 

@@ -80,7 +80,6 @@
 	    <h2>Zarafa - Mail access</h2>
 	    <div>
 			WebApp : <a href="https://<?php echo($_SERVER['HTTP_HOST']); ?>/zarafa-webapp">https://<?php echo($_SERVER['HTTP_HOST']); ?>/zarafa-webapp</a><br>
-			WebAccess : <a href="https://<?php echo($_SERVER['HTTP_HOST']); ?>/zarafa-webaccess">https://<?php echo($_SERVER['HTTP_HOST']); ?>/zarafa-webaccess</a>
 		</div>
 	    <div>
 			ActiveSync : https://<?php echo($_SERVER['HTTP_HOST']); ?><br>
