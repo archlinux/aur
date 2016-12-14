@@ -7,7 +7,7 @@ pkgver=0.4.0
 pkgrel=1
 pkgdesc="Sendmail Milter that pipes incoming mail through SpamAssassin"
 arch=(i686 x86_64)
-url="http://savannah.nongnu.org/projects/spamass-milt/"
+url="https://savannah.nongnu.org/projects/spamass-milt/"
 license=('GPL')
 depends=(gcc-libs spamassassin)
 makedepends=(libmilter)
@@ -15,8 +15,8 @@ optdepends=("postfix")
 backup=(etc/spamass-milter etc/spamass-milter-postfix)
 install="spamass-milter.install"
 # validpgpkeys=('CC99713BDD298DAB')  # I can't find anywhere to download the public key
-source=("http://download.savannah.nongnu.org/releases/spamass-milt/$pkgname-$pkgver.tar.gz"
-        # "http://download.savannah.nongnu.org/releases/spamass-milt/$pkgname-$pkgver.tar.gz.sig"
+source=("https://download.savannah.nongnu.org/releases/spamass-milt/$pkgname-$pkgver.tar.gz"
+        # "https://download.savannah.nongnu.org/releases/spamass-milt/$pkgname-$pkgver.tar.gz.sig"
         spamass-milter.sysusers.conf
         spamass-milter.README.Postfix
         spamass-milter-0.4.0-rcvd.patch
@@ -32,22 +32,21 @@ source=("http://download.savannah.nongnu.org/releases/spamass-milt/$pkgname-$pkg
         spamass-milter-tmpfs.conf
         spamass-milter-postfix-tmpfs.conf
         )
-sha1sums=('2b4f7ab1b17ca881c68063a4814780b00bb736bc'
-          # 'SKIP'
-          'bec385a069473de1f6623f0332abc70d21a429aa'
-          'b0077cb63e53c206f9074acbca7a697e2b8e73d2'
-          '6fdcd4f43031f652e0d85a3fee9030b57f52af42'
-          '2ef2e6e6bf8756614340046eaa9413133759f0b5'
-          'b8d203774a1777edfd92099ed6ce1c752f8cab2c'
-          'cfa2d9f888f50a8294bfaf671d6238f640f9f568'
-          '25fd019956b0a1ea338c22217cdacb3285ac7663'
-          '5639f656922752e86440a70a78ca512aa0b0019f'
-          '9a2a15789011ef07c55c22811c44cc11f64db35a'
-          'd98f5447395e422dae06f44eb9b1f67829a84017'
-          '2109a3d6cbdef10e3e9cde61c0d4729d1240d049'
-          '5e4ef39c624e020269b329cf18fd4860a0513146'
-          'a0a26a8e9d89837e1ac43e3ad238cd47c3ea5605'
-          '9abb5088c177726b7a4a6b5540b3bea7cb5ee708')
+sha256sums=('782f1bb3b08a0447cd51ad4b64e7506926739fa9cce537f3cc62aa9b24d46b07'
+            '70ab3423187713c42dd75758bcd89f20456faf54eeeeed1336b0dde94a969b9e'
+            'fc173c860c2d1d21e13aad7691979c2451ed03e99309534119dac9c61dff000f'
+            'c2a4a7282dcc9d797f5de28eecadd7e20b052d8004c03ce7907621777238f6f4'
+            '4443eafcca5d9528f3eef213b26f2718d00151b92cad8561fb0ca1918f8425c1'
+            '99c31b2941466ad5054c3e3aa46443bcf770ee4096aea5d13a7f256ddd8bf456'
+            '585fac4f0be8cf7b409884763d16d192efb092bfc2a8169df3f6587014a8611c'
+            'fc020c5705cfd7679a728860037c4bbeeb8e91bfbcaeb0468ea2bce6dd7c74c5'
+            'e19e2699b36ecec163017f8122c57b0c33b689032fa376ccbd28b350743c3a38'
+            '999519d2196481edcf15027d71d74575ebf0e29b3b1ae83958ff1cdc7bff364b'
+            '43a9c6558ad3346d7f8cbfc69e17beed4fd6e91f509a8b0a350f56ef9093c6a6'
+            '2ff6d682d760b1806e879e44d4e9074c1a08997ccbb99e3f0ff8b14171ca4fbe'
+            'da8c9090ac393b3c50ec3545a888dc96ac4ef1252171236b0c7548f6099dbab8'
+            '933086b78b8ade41aefac5d9cb743f4253b5b6b17ec4b4c6da0e1f71b2968550'
+            'e80c0ba1f40514b77610f3e5b08839ffd57b7c82b1f5196a3bee919927e5f119')
 
 prepare() {
   cd "$srcdir/$pkgname-$pkgver"
