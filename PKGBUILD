@@ -5,7 +5,7 @@ _module="${_name%2}"
 
 pkgname=("python-${_name}" "python2-${_name}")
 pkgver="2.0.1"
-pkgrel="2"
+pkgrel="3"
 pkgdesc="a pure-Python git object database"
 arch=("any")
 url="https://github.com/gitpython-developers/${_module}"
@@ -31,12 +31,12 @@ package_python-smmap2() {
     depends=("python")
     cd "${srcdir}/${_name}-${pkgver}"
     python setup.py install --skip-build --root="${pkgdir}" --optimize=1
-    install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    install -Dm644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
 package_python2-smmap2() {
     depends=("python2")
     cd "${srcdir}/${_name}-${pkgver}-python2"
     python2 setup.py install --skip-build --root="${pkgdir}" --optimize=1
-    install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    install -Dm644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
