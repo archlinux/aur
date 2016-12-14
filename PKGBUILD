@@ -5,18 +5,16 @@ _altname=$(printf ${pkgname%%-git})
 _gitname=smi2021
 _gitbranch=master
 _gitauthor=Manouchehri
-pkgver=v0.0.1.r56.g5520828
+pkgver=v0.0.1.r58.g4040e4a
 pkgrel=1
 pkgdesc="EasyCap driver module"
 url="https://github.com/$_gitauthor/$_gitname"
 license=('GPL')
 source=("git://github.com/$_gitauthor/$_gitname.git#branch=$_gitbranch"
-        "https://github.com/stevelacy/EasyCap/raw/master/somagic_firmware.bin"
-        "4.8.patch")
+        "https://github.com/stevelacy/EasyCap/raw/master/somagic_firmware.bin")
 validpgpkeys=('F0FE029614EA35BC9E4F9768A6ECFD0C40839755') # David Manouchehri
 sha512sums=('SKIP'
-            '722128600bd982b1ff6af8e372e361d22ee872282aeab50b62d8769ad2ee08bb2c6612f59ba48736a26c2c47704a7e192af2746ac0746a074bc3aa242bffa712'
-            '99f0049238b735e56ad1ffbb62a88e04d71172eb581eb99de343919f04917ea9934239b29ba0b2432a097385ebe71bd45e1b58d1ea582ccf95a20cfc5d041f95')
+            '722128600bd982b1ff6af8e372e361d22ee872282aeab50b62d8769ad2ee08bb2c6612f59ba48736a26c2c47704a7e192af2746ac0746a074bc3aa242bffa712')
 arch=('i686' 'x86_64')
 depends=('')
 makedepends=('git' 'linux-headers')
@@ -31,11 +29,6 @@ pkgver() {
     git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
       printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
   )
-}
-
-prepare() {
-  cd "$srcdir/$_gitname"
-  patch -p1 -i "$srcdir/4.8.patch"
 }
 
 build() {
