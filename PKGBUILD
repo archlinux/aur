@@ -58,7 +58,7 @@ package() {
 #make sure you remove any old versions of ".desktop" file of mendeley in #~/.local/share/applications/,
 #because mendeley will automatically create one there.
 #__EOF__
-#    rm -rf "$pkgdir"/opt/"$pkgshortname"/lib/qt
+    rm -rf "$pkgdir"/opt/"$pkgshortname"/lib/qt
 
     #Remove unneeded lines if gconf is not installed.
     if ! which gconftool-2 &>/dev/null;then
@@ -67,7 +67,7 @@ package() {
     fi
     #force mendeley to use bundled qt because which under qt 4.8 crashes at start point
     #make sure you remove any old versions of ".desktop" file of mendeley in ~/.local/share/applications/
-#    sed -i 's/^Exec.*$/& --force-bundled-qt/' "$pkgdir"/opt/"$pkgshortname"/share/applications/mendeleydesktop.desktop
+    sed -i 's/^Exec.*$/& --force-bundled-qt/' "$pkgdir"/opt/"$pkgshortname"/share/applications/mendeleydesktop.desktop
     for size in 16 22 32 48 64 128;do
         install -dm755 "$pkgdir"/usr/share/icons/hicolor/${size}x${size}/apps
         ln -s /opt/"$pkgshortname"/share/icons/hicolor/${size}x${size}/apps/"${pkgshortname}".png \
