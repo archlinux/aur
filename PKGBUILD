@@ -2,23 +2,16 @@
 
 _name="gitdb"
 _module="${_name}"
-_check="disabled"
 
 pkgname=("python-${_module}" "python2-${_module}")
 pkgver="0.6.4"
-pkgrel="3"
+pkgrel="4"
 pkgdesc="a pure-Python git object database"
-arch=("i686" "x86_64")
+arch=("any")
 url="https://github.com/gitpython-developers/${_name}"
 license=("BSD")
 makedepends=("python-setuptools" "python2-setuptools")
-if [[ "${_check}" == "enabled" ]]; then
-    checkdepends=("python-nose"
-                  "python-smmap"
-                  "python2-nose"
-                  "python2-smmap")
-fi
-source=("https://pypi.python.org/packages/source/${_name:0:1}/${_name}/${_name}-${pkgver}.tar.gz")
+source=("https://files.pythonhosted.org/packages/source/${_name:0:1}/${_name}/${_name}-${pkgver}.tar.gz")
 sha256sums=('a3ebbc27be035a2e874ed904df516e35f4a29a778a764385de09de9e0f139658')
 
 prepare() {
@@ -30,17 +23,6 @@ build() {
     python setup.py build
     cd "${srcdir}/${_name}-${pkgver}-python2"
     python2 setup.py build
-}
-
-check() {
-    if [[ "${_check}" == "enabled" ]]; then
-        cd "${srcdir}/${_name}-${pkgver}"
-        nosetests
-        cd "${srcdir}/${_name}-${pkgver}-python2"
-        nosetests2
-    else
-        echo "_check is not set to \"enabled\", skipping check()"
-    fi
 }
 
 package_python-gitdb() {
