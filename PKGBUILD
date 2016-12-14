@@ -6,7 +6,7 @@ _pkgname=idos-timetable-lang-en
 pkgname="${_pkgname}"
 epoch=0
 pkgver=20160720
-pkgrel=1
+pkgrel=2
 pkgdesc="English language ressource file for railway/ public transport timetable search engines by CHAPS."
 arch=(any)
 license=('custom')
@@ -34,6 +34,7 @@ source=(
   "copying.info.txt"
   "license_cc-nc-1.0.html"
   "IDOS-Licence.pdf::http://chaps.cz/files/idos/IDOS-Licence.pdf"
+  "version"
 )
 
 sha256sums=(
@@ -42,10 +43,11 @@ sha256sums=(
   '857ca643a994be4dc06ddf5423d66600a2d2ad26f0771d30819f27e2dfa5c002'
   '36c0b0466672bc90d9aa2219768f1ea1a72389cc63d89c4bb80bb4999628d8aa'
   "e904d167ccdcfb2743f4cfd596aaa9dce8b751fb5c8315b972b42b7cbb3189e6"
+  'SKIP'
 )
 
 pkgver() {
-  ls -L -l --time-style=+%Y%m%d "${srcdir}/TTC-TTe.bdelta.xz" | awk '{print $6}'
+  cat "${srcdir}/version" | grep -E -v '^[[:space:]]*#' | head -n 1 | tr -d '\n'
 }
 
 build() {
