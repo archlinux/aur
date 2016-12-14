@@ -7,13 +7,13 @@ _fix_pkgver=2.0.12t
 pkgrel=1
 pkgdesc="Python implementation of the Sender Policy Framework (SPF) protocol"
 arch=('any')
-url="http://pypi.python.org/pypi/pyspf"
+url="https://pypi.python.org/pypi/pyspf"
 license=('PSF')
 depends=('python-pydns')
 makedepends=('python-setuptools')
 optdepends=('python-authres: Return RFC 5451 Authentication Results headers')
-source=(http://pypi.python.org/packages/source/p/pyspf/pyspf-$_fix_pkgver.tar.gz)
-md5sums=('c83143ad79074bf8c80235748a8a698f')
+source=("$pkgname-$pkgver.tar.gz::https://pypi.python.org/packages/source/p/pyspf/pyspf-$_fix_pkgver.tar.gz")
+sha256sums=('8aa21ba0e3aff8a4e8ad8f586c500a5d1f9c4c902c3f11bcc107465857cd41a2')
 
 build() {
   cd "$srcdir/pyspf-$pkgver"
