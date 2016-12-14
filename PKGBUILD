@@ -6,19 +6,21 @@
 _pkgbase=nginx-mainline
 pkgbase=${_pkgbase}-addons
 pkgname=("${pkgbase}" "${_pkgbase}-full")
-pkgver=1.11.5
+pkgver=1.11.7
 pkgrel=1
 pkgdesc='Lightweight HTTP server and IMAP/POP3 proxy server, mainline release'
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url='http://nginx.org'
 license=('custom')
-makedepends=('hardening-wrapper' 'geoip' 'leiningen' 'java-environment-openjdk>=8' 'luajit' 'libbrotli')
-source=($url/download/nginx-$pkgver.tar.gz
+makedepends=('hardening-wrapper' 'geoip' 'leiningen' 'java-environment-openjdk>=8' 'luajit') # 'libbrotli'
+source=($url/download/nginx-$pkgver.tar.gz{,.asc}
         service
         logrotate)
-md5sums=('db43f2b19746f6f47401c3afc3924dc6'
+validpgpkeys=('B0F4253373F8F6F510D42178520A9993A1C052F8') # Maxim Dounin <mdounin@mdounin.ru>
+md5sums=('2b4a4874b8fedbd5ba7829579d1f5973'
+         'SKIP'
          'ce9a06bcaf66ec4a3c4eb59b636e0dfd'
-         '3441ce77cdd1aab6f0ab7e212698a8a7')
+         'd6a6d4d819f03a675bacdfabd25aa37e')
 
 addons=(
   'builtin geoip - ngx_http_geoip_module.so geoip'
@@ -208,10 +210,10 @@ add_addon() {
 	for dep in ${dependencies[@]}; do
 	  depends+=(\$dep)
 	done
-	if [ ${type} == 'git' ] || [ ${type} == 'github' ]; then
-	  cd \${srcdir}/nginx-addon-${name}
-	  pkgver="${pkgver}.r\$(git rev-list --count HEAD).\$(git rev-parse --short HEAD)"
-	fi
+	#if [ ${type} == 'git' ] || [ ${type} == 'github' ]; then
+	#  cd \${srcdir}/nginx-addon-${name}
+	#  pkgver="${pkgver}.r\$(git rev-list --count HEAD).\$(git rev-parse --short HEAD)"
+	#fi
 	if [ \$(type -t post_package_${_pkgbase}-addon-${name})"" == 'function' ]; then
 	  post_package_${_pkgbase}-addon-${name} "$1"
 	fi
