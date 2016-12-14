@@ -5,7 +5,7 @@ _module="${_name#python-}"
 _cmd="${_module%client}"
 
 pkgname=("python-${_module}" "python2-${_module}")
-pkgver="3.0.0"
+pkgver="3.2.0"
 pkgrel="1"
 pkgdesc="OpenStack Object Storage API Client Library"
 arch=("any")
@@ -13,7 +13,7 @@ url="https://github.com/openstack/${_name}"
 license=("Apache")
 makedepends=("python-pbr" "python2-pbr")
 source=("https://tarballs.openstack.org/${_name}/${_name}-${pkgver}.tar.gz")
-sha256sums=('824b8f204c5a7764de51795256e4175fdcd655ae4df85b8ae6e6ea9ec0b41f68')
+sha256sums=('8761697584ab060520d6094e8394242ee3b94c643ed1f3fe1dbc67df585ab3fa')
 
 prepare() {
     cp -a "${srcdir}/${_name}-${pkgver}" "${srcdir}/${_name}-${pkgver}-python2"
@@ -39,7 +39,7 @@ package_python-swiftclient() {
 
 package_python2-swiftclient() {
     depends=(
-        "python2-futures>=2.1.3"
+        "python2-futures>=3.0"
         "python-requests>=1.1"
         "python-six>=1.5.2"
     )
