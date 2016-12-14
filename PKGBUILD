@@ -24,7 +24,7 @@ pkgname=('qt51-base'
          'qt51-x11extras'
          'qt51-xmlpatterns')
 pkgver=5.1.1
-pkgrel=5
+pkgrel=6
 arch=('i686' 'x86_64')
 url='http://qt-project.org/'
 license=('GPL3' 'LGPL' 'FDL' 'custom')
@@ -141,7 +141,7 @@ package_qt51-base() {
   pkgdesc='A cross-platform application and UI framework (5.1.x)'
   depends=('libjpeg-turbo' 'xcb-util-keysyms' 'libgl' 'dbus' 'fontconfig' 'systemd'
            'xcb-util-wm' 'libxrender' 'libxi' 'sqlite' 'libpng' 'xcb-util-image'
-           'icu' 'qtchooser' 'libxkbcommon')
+           'icu' 'qt5-base' 'libxkbcommon')
   optdepends=('postgresql-libs: PostgreSQL driver'
               'libmariadbclient: MariaDB driver'
               'unixodbc: ODBC driver'
