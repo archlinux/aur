@@ -11,7 +11,7 @@ depends=('python-h5py')
 makedepends=('python-setuptools')
 checkdepends=('python-netcdf4' 'python-pytest')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/shoyer/h5netcdf/archive/v${pkgver}.tar.gz")
-md5sums=('61cf88e0d4e9113c3f565f228739bc5c')
+sha256sums=('8fdc52d63ce1e6cc18c5badcd67804146fc23d3ff3f678590e8f6a1920a46754')
 
 build() {
     cd "$srcdir/h5netcdf-${pkgver}"
