@@ -1,6 +1,6 @@
 # Maintainer: dreieck
 
-# PKGBUILD last time manually edited: At least on 2016-12-11.
+# PKGBUILD last time manually edited: At least on 2016-12-14.
 
 _pkgname=idos-timetable-data-chaps-trains-cz
 pkgname="${_pkgname}-latest"
@@ -47,13 +47,11 @@ conflicts=(
 
 source=(
   "vlak17c.zip::http://ttakt.chaps.cz/TTAktual/Win/Zip/VLAK17C.ZIP"
-  "vlak16c.zip::http://ttakt.chaps.cz/TTAktual/Win/Zip/VLAK16C.ZIP"
   "IDOS-Licence.pdf::http://chaps.cz/files/idos/IDOS-Licence.pdf"
   "license-dummy.txt"
 )
 
 sha256sums=(
-  'SKIP'
   'SKIP'
   "e904d167ccdcfb2743f4cfd596aaa9dce8b751fb5c8315b972b42b7cbb3189e6"
   "c6bb216055d3670d3100b7a74e04ce0644030f365f4349a09e630ef60fbcb9a4"
