@@ -24,7 +24,7 @@ declare -rgA _system_libs=(
 )
 
 pkgname=inox
-pkgver=55.0.2883.75
+pkgver=55.0.2883.87
 pkgrel=1
 _launcher_ver=3
 pkgdesc="Chromium Spin-off to enhance privacy by disabling data transmission to Google"
@@ -70,7 +70,7 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/chrom
         https://raw.githubusercontent.com/gcarq/inox-patchset/$pkgver/fix-building-without-safebrowsing.patch
         https://raw.githubusercontent.com/gcarq/inox-patchset/$pkgver/product_logo_{16,22,24,32,48,64,128,256}.png)
 
-sha256sums=('5bcf7180935bebc7648f7e2577f612da681f7846127f79dac22630ded9984e55'
+sha256sums=('e81bd3140d9c84dfee04d9a94686dfe6a20ae79475d84f17154c5536dcb81a58'
             '8b01fb4efe58146279858a754d90b49e5a38c9a0b36a1f84cbb7d12f92b84c28'
             'ff3f939a8757f482c1c5ba35c2c0f01ee80e2a2273c16238370081564350b148'
             '3b3aa9e28f29e6f539ed1c7832e79463b13128863a02e9c6fecd16c30d61c227'
@@ -90,7 +90,7 @@ sha256sums=('5bcf7180935bebc7648f7e2577f612da681f7846127f79dac22630ded9984e55'
             'fe6eddac22aeb0cab1dfcf5932e6d996b7dc3f1a260f55f388a9c397f8cf3d00'
             '8412971b2814c1135375d5e5fc52f0f005ac15ed9e7625db59f7f5297f92727e'
             '55b75daf5aad2a8929c80837f986d4474993f781c0ffa4169e38483b0af6e385'
-            '0362593751abc09bbf2244109c93068fc9a40a51ba4dbd17bb2b107ff50d7dce'
+            '37f9ad0b8d572378ad2c1c6c47d2135f76d5c15a20170bb1712d7bd40caf247e'
             '9e1ce0c47dd51595f13a6f611de39573022c7ff59fc003ab775a5319ebfedad8'
             'bb28fcc1a2fd37ee972b2b02014bbb467cc1baef85c9e6c998b11e97d47c9ac9'
             '9e37751dca4a2b60681ba14119bc3839685ae420686664de7dfc4245f9eeff3c'
