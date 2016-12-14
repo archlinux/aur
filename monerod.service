@@ -1,5 +1,5 @@
 [Unit]
-Description=Monero cryptocurrency node
+Description=Monero Full Node
 After=network.target
 
 [Service]
