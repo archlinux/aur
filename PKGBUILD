@@ -2,15 +2,13 @@
 
 pkgname=opentracker
 pkgver=2016.10.02
-pkgrel=1
+pkgrel=2
 pkgdesc="A free and open torrent tracker"
-arch=('x86_64' 'i686' 'armv7h' 'armv7l' 'aarch64')
+arch=('x86_64' 'i686' 'armv7h' 'armv6h' 'aarch64')
 url="http://erdgeist.org/arts/software/opentracker/"
 license=('Beerware')
-depends=('git' 'cvs')
 makedepends=('git' 'cvs')
 source=('git://erdgeist.org/opentracker')
-provides=(opentracker)
 md5sums=('SKIP')
 
 pkgver() {
@@ -30,9 +28,9 @@ build() {
 
 package() {
 	install -dm755 $pkgdir/opt/$pkgname/
-	install -dm755 $pkgdir/usr/share/applications/
 	install -d $pkgdir/usr/bin/
 	install -m755 $srcdir/$pkgname/$pkgname $pkgdir/opt/$pkgname/$pkgname
+	install -m755 $srcdir/$pkgname/$pkgname.conf.sample $pkgdir/opt/$pkgname/$pkgname.conf.sample
 	ln -s "/opt/$pkgname/$pkgname" "$pkgdir/usr/bin/$pkgname"
 
 }
