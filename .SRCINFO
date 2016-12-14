@@ -1,0 +1,18 @@
+pkgbase = garmintools
+	pkgdesc = This software provides Linux users with the ability to communicate with the Garmin Forerunner 305 via the USB interface.
+	pkgver = 0.10
+	pkgrel = 5
+	url = http://code.google.com/p/garmintools/
+	install = garmintools.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = libusb-compat
+	options = !libtool
+	source = https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/garmintools/garmintools-0.10.tar.gz
+	source = array-size.patch
+	md5sums = 1a555a5174a82e92e0f5def1c4b01ae7
+	md5sums = 9d6e627ec37afacc0783b8574e84bbf3
+
+pkgname = garmintools
+
