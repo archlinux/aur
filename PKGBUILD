@@ -18,9 +18,11 @@ options=()
 install=
 source=(
 	'librevault::git+https://github.com/Librevault/librevault.git'
+	'CMakeLists.patch'
 )
 noextract=()
-md5sums=('SKIP')
+sha256sums=('SKIP'
+						'05dd0c70cb0204cdb617d88380f674b3aaa4fd972f71c68e9fe18bece6b66838')
 
 pkgver() {
 	cd "$srcdir/${_pkgname}"
@@ -31,6 +33,7 @@ prepare() {
 	mkdir -p build
 	cd "$srcdir/${_pkgname}"
 	git submodule update --init
+	patch CMakeLists.txt ../CMakeLists.patch
 }
 
 build() {
