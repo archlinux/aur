@@ -3,7 +3,7 @@
 pkgbase=sielo-navigateur
 pkgname=sielo-navigateur
 pkgver=0.3.0
-pkgrel=5
+pkgrel=1
 pkgdesc="A fast web browser made in C++14 with Qt5.7"
 arch=(x86_64)
 url="http://feldrise.com"
