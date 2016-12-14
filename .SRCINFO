@@ -1,0 +1,16 @@
+pkgbase = garminplugin
+	pkgdesc = Garmin Communicator Plugin for Linux
+	pkgver = 0.3.27
+	pkgrel = 1
+	url = http://www.andreas-diesner.de/garminplugin/doku.php
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = garmintools
+	depends = tinyxml
+	depends = libusb
+	source = https://github.com/adiesner/GarminPlugin/archive/V0.3.27.zip
+	sha256sums = 5487a1d3242f3d35bbf2830bae5fa5e84cec9245f0da87c90ca2d9a3ca225be0
+
+pkgname = garminplugin
+
