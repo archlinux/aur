@@ -1,6 +1,6 @@
 # Maintainer: Mike Swanson <mikeonthecomputer@gmail.com>
 pkgname=firestorm-bin
-pkgver=4.7.9.50527
+pkgver=5.0.1.52150
 pkgrel=1
 pkgdesc="Firestorm is a feature-packed third-party viewer for Second Life."
 url="http://www.firestormviewer.org/"
@@ -18,25 +18,16 @@ optdepends=(
   'nvidia-libgl: for NVIDIA support'
   'nvidia-utils: for NVIDIA support')
 install=firestorm.install
-if [ "$CARCH" = "i686" ]; then
-  source=("http://downloads.firestormviewer.org/linux/Phoenix_FirestormOS-Release_i686_$pkgver.tar.xz"
-          0001-firestorm-libgl-path.patch
-          firestorm.desktop
-          firestorm.launcher)
-  sha256sums=(db765f463d7f361996c40d61c7eed43423f60048fec9de4e97b4509e6ee8ff08
-              619153f3540ad48ec31c702086883a6adccacc70b384b300edaa6f7957f27232
-              6dffebc474fd98d23bf8d9f4a7592795642dbddf3a0b585f89d25ff11ae15cc1
-              b2ce32d268f76f4324807d50c4098a3480b489ec447133ce8d9b9c4a7bc05530)
-else
-  source=("http://downloads.firestormviewer.org/linux/Phoenix_FirestormOS-Releasex64_x86_64_$pkgver.tar.xz"
-          0001-firestorm-libgl-path.patch
-          firestorm.desktop
-          firestorm.launcher)
-  sha256sums=(dd4ff65f23c8fec0766045cf20b14795cd9e804be554cf45bf0f538802d86d15
-              619153f3540ad48ec31c702086883a6adccacc70b384b300edaa6f7957f27232
-              6dffebc474fd98d23bf8d9f4a7592795642dbddf3a0b585f89d25ff11ae15cc1
-              b2ce32d268f76f4324807d50c4098a3480b489ec447133ce8d9b9c4a7bc05530)
-fi
+source=(0001-firestorm-libgl-path.patch
+        firestorm.desktop
+        firestorm.launcher)
+source_i686=("http://downloads.firestormviewer.org/linux/Phoenix_FirestormOS-Release_i686_$pkgver.tar.xz")
+source_x86_64=("http://downloads.firestormviewer.org/linux/Phoenix_FirestormOS-Releasex64_x86_64_$pkgver.tar.xz")
+sha256sums=('619153f3540ad48ec31c702086883a6adccacc70b384b300edaa6f7957f27232'
+            '6dffebc474fd98d23bf8d9f4a7592795642dbddf3a0b585f89d25ff11ae15cc1'
+            'b2ce32d268f76f4324807d50c4098a3480b489ec447133ce8d9b9c4a7bc05530')
+sha256sums_i686=('e46a6db668afe8d22c42410a3a237dc23675d5a8da29e0b2636e3f75ee71bb6d')
+sha256sums_x86_64=('29af02ba017f99eb5a7eca51b580e21e692a9d5da5d22e554dac10141fb24797')
 
 prepare() {
   if [ "$CARCH" = "i686" ]; then
