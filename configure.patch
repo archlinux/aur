@@ -1,0 +1,11 @@
+--- configure.py	2016-10-31 13:15:28.000000000 -0700
++++ configure.py.new	2016-12-01 01:06:14.775820885 -0700
+@@ -10,6 +10,8 @@
+ import subprocess
+ import sys
+ 
++reload(sys)  
++sys.setdefaultencoding('utf8')
+ 
+ base_dir = os.path.abspath(os.path.dirname(__file__))
+ sys.path.insert(0, os.path.join(base_dir, 'python', 'mozbuild'))
