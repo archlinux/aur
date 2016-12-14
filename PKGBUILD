@@ -13,7 +13,7 @@ depends=('qt5-webkit qtkeychain')
 provides=('tecart-starter')
 options=(!strip)
 source=("https://update.tecart.info/tecart-starter_${pkgver}-${_debrel}_amd64.deb")
-md5sums=('00285b5cb75afdfe8af3dad3a38f31cd')
+md5sums=('a09d231b7108a29f2f89ee8fb36d7378')
 
 package() {
   # Create pkgdir folders
