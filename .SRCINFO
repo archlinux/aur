@@ -10,8 +10,8 @@ pkgbase = python2-cyordereddict
 	makedepends = python2-setuptools
 	makedepends = cython2
 	depends = python2
-	source = https://github.com/shoyer/cyordereddict/archive/v1.0.0.tar.gz
-	md5sums = 6d3144c6edc4703d7faa62512ccf9db8
+	source = python2-cyordereddict-1.0.0.tar.gz::https://github.com/shoyer/cyordereddict/archive/v1.0.0.tar.gz
+	sha256sums = d5942946a7c28a79991c895c6c4f8623e131884c92ad36200d5a3e58ba1aa504
 
 pkgname = python2-cyordereddict
 
