@@ -7,7 +7,7 @@ pkgbase = nodejs-generator-jhipster
 	license = APACHE
 	depends = nodejs-yeoman
 	depends = gulp
-	noextract = generator-jhipster-.tgz
+	noextract = generator-jhipster-3.12.1.tgz
 	source = http://registry.npmjs.org/generator-jhipster/-/generator-jhipster-3.12.1.tgz
 	sha256sums = 54a61d2d80d3f02310e876034ab453c99c8d79bf9af2f6bdbf96d946181d42e1
 

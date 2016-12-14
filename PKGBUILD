@@ -10,7 +10,7 @@ url="https://jhipster.github.io/"
 license=('APACHE')
 depends=('nodejs-yeoman' 'gulp')
 source=("http://registry.npmjs.org/$_npmname/-/$_npmname-$pkgver.tgz")
-noextract=($_npmname-$_pkgver.tgz)
+noextract=($_npmname-$pkgver.tgz)
 sha256sums=('54a61d2d80d3f02310e876034ab453c99c8d79bf9af2f6bdbf96d946181d42e1')
 
 package() {
