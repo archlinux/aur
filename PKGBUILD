@@ -5,7 +5,7 @@
 
 _realname=mutter
 pkgname=$_realname-catalyst
-pkgver=3.22.2+1+g5c46094
+pkgver=3.22.2+5+gd9fc81e
 pkgrel=1
 pkgdesc="A window manager for GNOME with patches for catalyst compatibility"
 url="https://git.gnome.org/browse/mutter"
@@ -30,12 +30,12 @@ makedepends=('intltool'
   'git'
   'gnome-common'
 )
-conflicts=('mutter' "gnome-shell>${pkgver}")
+conflicts=('mutter' "gnome-shell>${pkgver:0:6}+999")
 provides=("mutter=${pkgver}")
 groups=('gnome')
 options=('!emptydirs')
-_commit=5c46094d67f2e5cdafe6edcfd8c0d5894a2dafc6  # gnome-3-22
-source=("git://git.gnome.org/mutter#commit=$_commit"
+_commit=d9fc81e702a949980323b0f11b6764fcd1599872  # gnome-3-22
+source=("git+https://git.gnome.org/browse/mutter#commit=$_commit"
   "catalyst-workaround.patch"
   "catalyst mutter cogl.patch")
 sha256sums=('SKIP'
