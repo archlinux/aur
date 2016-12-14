@@ -3,14 +3,16 @@
 
 pkgname='nextcloud-client'
 pkgver='2.2.4'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='Nextcloud desktop client'
 arch=('i686' 'x86_64')
 url='https://nextcloud.com/'
 license=('GPL2')
-depends=('qtkeychain' 'qt5-webkit' 'hicolor-icon-theme' 'xdg-utils')
+depends=('qt5-webkit' 'hicolor-icon-theme' 'xdg-utils' 'qtkeychain')
 makedepends=('extra-cmake-modules' 'python-sphinx' 'qt5-tools' 'doxygen' 'kio' 'qtkeychain')
-optdepends=('python2-nautilus: integration with Nautilus' 'nemo-python: integration with Nemo')
+optdepends=('python2-nautilus: integration with Nautilus'
+	    'nemo-python: integration with Nemo'
+	    'libgnome-keyring: GNOME keyring client')
 conflicts=('owncloud-client')
 source=("${pkgname}::git+https://github.com/nextcloud/client_theming.git")
 sha256sums=('SKIP')
