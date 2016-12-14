@@ -1,14 +1,14 @@
 # Maintainer: Johannes Loher <johannes dot loher at fg4f dot de>
 
 pkgname=ttf-cormorant
-pkgver=2.1
+pkgver=3.2
 pkgrel=1
 pkgdesc="Cormorant fonts"
 arch=('any')
 depends=('fontconfig' 'xorg-fonts-encodings' 'xorg-font-utils')
 url='https://www.behance.net/gallery/28579883/Cormorant-an-open-source-display-font-family'
 source=("https://github.com/CatharsisFonts/Cormorant/releases/download/v${pkgver}/Cormorant_Install_v${pkgver}.zip")
-md5sums=('c02b278ae3cfad025a33031d90c9eb18')
+md5sums=('91e2e43795aed67aacb6c40f5a56a738')
 install=$pkgname.install
 license=('custom: OFL')
 
