@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=CCEmuX
 GenericName=ComputerCraft Emulator
-Exec=/usr/local/bin/ccemux
+Exec=/usr/bin/ccemux
 Icon=ccemux
 Type=Application
-Categories=Java;
+Categories=Java

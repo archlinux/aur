@@ -6,8 +6,8 @@ source=('git+https://github.com/Lignumm/CCEmuX.git#branch=rewrite'
         'ccemux'
         'icon.png')
 md5sums=('SKIP'
-         '6fdd1246516d89d1b469f90fbbd99b8a'
-         'a8ecb0af11a9ab8be89db83325d4e6d5'
+         '3f3b4e6c756b4161e7618eb0be7ce031'
+         '297fbda2e09c98bd37326a0ad59c612c'
          '15875de144d2375766e3cfb2c769c66e')
 pkgdesc="Graphical ComputerCraft emulator"
 arch=('any')

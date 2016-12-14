@@ -1,3 +1,3 @@
 #!/usr/bin/env bash
 
-exec java -jar /usr/local/share/ccemux.jar "$@"
+exec java -jar /usr/share/ccemux.jar "$@"
