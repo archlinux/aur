@@ -1,6 +1,6 @@
 # Maintainer: Dylan Baker <dylan@pnwbakers.com>
 pkgname=pybugz
-pkgver=0.12.1
+pkgver=0.13
 pkgrel=1
 pkgdesc="Bugzilla CLI interface"
 arch=('any')
@@ -10,7 +10,7 @@ depends=('python')
 makedepends=('python-setuptools')
 options=(!emptydirs)
 source=("https://github.com/williamh/${pkgname}/archive/${pkgver}.tar.gz")
-sha256sums=('aade267d2ee6b02d6872e019ef4ddf8f96e1d81668faa2506e96875fa2981bc7')
+sha256sums=('a99309d42b7ed2e52cc0f0f3adc72d1ddc9354e3d944af276f9a7da946665afb')
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
