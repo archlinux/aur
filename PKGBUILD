@@ -1,6 +1,6 @@
 # Maintainer: Kieran Colford <kieran@kcolford.com>
 pkgname=lenovo-thinkpad-yoga-11e-chromebook-git
-pkgver=r1.7c38a47
+pkgver=r2.be04776
 pkgrel=1
 pkgdesc="Fixes for the Lenove Yoga Thinkpad 11e Chromebook"
 arch=('any')
