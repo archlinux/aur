@@ -3,7 +3,7 @@
 
 pkgname=drush-git
 _pkgname=${pkgname%-git}
-pkgver=9.0.0.alpha1.r230.g4d0ca6c
+pkgver=8.1.8
 pkgrel=1
 pkgdesc='The Drupal command-line shell, git version.'
 arch=('any')
@@ -15,21 +15,21 @@ optdepends=('bash-completion')
 #~ checkdepends=('bzr' 'sqlite')
 provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
-options=(emptydirs)
+options=(docs emptydirs)
 install=$pkgname.install
-source=("$_pkgname"::"git+https://github.com/$_pkgname-ops/$_pkgname.git#branch=master"
+source=("$_pkgname"::"git+https://github.com/$_pkgname-ops/$_pkgname.git#tag=$pkgver"
         "php.ini")
 md5sums=('SKIP'
          '9627e7e568fa7933fe32b44ad21b219f')
 
-pkgver() {
-    cd "$_pkgname"
-    (
-        set -o pipefail
-        git describe --long --tag | sed -r 's/([^-]*-g)/r\1/;s/-/./g' ||
-        printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-    ) 2>/dev/null
-}
+#~ pkgver() {
+    #~ cd "$_pkgname"
+    #~ (
+        #~ set -o pipefail
+        #~ git describe --long --tag | sed -r 's/([^-]*-g)/r\1/;s/-/./g' ||
+        #~ printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    #~ ) 2>/dev/null
+#~ }
 
 prepare() {
   cd "$_pkgname"
@@ -74,6 +74,6 @@ package() {
   # Symlink upstream's hard-coded drush base path
   #~ ln -s "/usr/share/webapps/$_pkgname" "$pkgdir/usr/share/$_pkgname"
 
-  install -Dm644 "examples/example.aliases.${_pkgname}rc.php" "${pkgdir}/etc/$_pkgname/aliases.${_pkgname}rc.php"
-  install -Dm644 "examples/example.${_pkgname}rc.php" "${pkgdir}/etc/$_pkgname/${_pkgname}rc.php"
+  install -Dm644 -o http -g http "examples/example.aliases.${_pkgname}rc.php" "${pkgdir}/etc/$_pkgname/aliases.${_pkgname}rc.php"
+  install -Dm644 -o http -g http "examples/example.${_pkgname}rc.php" "${pkgdir}/etc/$_pkgname/${_pkgname}rc.php"
 }
