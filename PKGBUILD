@@ -1,8 +1,8 @@
 # Maintainer: Akira Wakana <jalen.cn@gmail.com>
 
 pkgname=file-roller-ja
-pkgver=3.20.3
-pkgrel=2
+pkgver=3.22.2
+pkgrel=3
 provides=('file-roller')
 conflicts=('file-roller')
 pkgdesc="the file-roller with an additional patch to use unzip-iconv for unzip archive file cp932 charset."
@@ -22,7 +22,7 @@ url="http://www.gnome.org"
 source=("http://ftp.gnome.org/pub/gnome/sources/$_pkgname/${pkgver:0:4}/$_pkgname-$pkgver.tar.xz"
         'fc-init.patch'
         'Z99-zip-cp932.sh')
-sha256sums=('6b5c2de4c6bd52318cacd2a398cdfa45a5f1df8a77c6652a38a6a1d3e53644e9'
+sha256sums=('27158cdcc366f82100312b1e0a02ad1f3aa7a6c32d4eba68fc5a2a8829685df9'
             '27df085f1d6c8fad4bceb503267e767e7c43ad920f3cf9e91ee03e7f751addaf'
             '47d0e369be6f8df7fbdc56b794eccccf877fe3d8a6dfcc4fccb00649f77b54bc')
 
