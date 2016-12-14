@@ -2,7 +2,7 @@
 Type=Application
 Name=PyQ9
 Terminal=false
-Exec=/opt/PyQ9/PyQ9
+Exec=/opt/PyQ9/pyq9
 Hidden=false
 Icon=/opt/PyQ9/icon.png
 

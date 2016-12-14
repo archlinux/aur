@@ -19,7 +19,7 @@ package() {
   install -Dm644 "icon.png" "${pkgdir}/opt/${_pkgname}/icon.png"
   install -Dm644 "pyq9.desktop" "${pkgdir}/usr/share/applications/pyq9.desktop"
   cd "${_pkgname}"
-  install -Dm755 "main.py" "${pkgdir}/opt/${_pkgname}/${_pkgname}"
+  install -Dm755 "main.py" "${pkgdir}/opt/${_pkgname}/pyq9"
   install -Dm644 "pyxhook.py" "${pkgdir}/opt/${_pkgname}/pyxhook.py"
   cp -r assets "${pkgdir}/opt/${_pkgname}"
 }
