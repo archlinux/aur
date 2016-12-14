@@ -1,6 +1,6 @@
 # Maintainer: bartus <aur@bartus.33mail.com>
 pkgname=meshlab-git
-pkgver=1.3.4_r8497062
+pkgver=1.3.4_r4915
 pkgrel=1
 pkgdesc="System for processing and editing of unstructured 3D models arising in 3D scanning (qt5 version)"
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ depends=('bzip2' 'muparser' 'levmar' 'lib3ds' 'desktop-file-utils' 'glu' 'mpir' 
 #also create openctm(aur) jhead-lib structuresynth-lib to handle last dep
 makedepends=('git' 'subversion')
 install="${pkgname}.install"
-source=("git+https://github.com/bartoszek/meshlab.git"
+source=("git+https://github.com/cnr-isti-vclab/meshlab.git"
         "git+https://github.com/cnr-isti-vclab/vcglib.git#branch=devel"
         "external.patch"
         "3ds.patch"
@@ -27,15 +27,15 @@ source=("git+https://github.com/bartoszek/meshlab.git"
         "meshlab.desktop")
 md5sums=('SKIP'
          'SKIP'
-         'e7c45c73829afe804e1c7f6cd19856c9'
+         '038494125d7bd422074fc5635c5579ca'
          'e51b027eb9d78b82de73c4724b3928cf'
-         'f1c1d99c92ff296edf9a8f346dd07b3a'
+         '1a53a92e12f74520b36e38d9a2311834'
          '64caafa96bef4208d641e889099eba26'
          '616b0dcf018f46a490867028d6ddc533'
          '5d87f00356539f84f37f873f304eb11e'
          'c1cfb910d20db49ec195d9918036e3c3'
          '5b59b23cf66e42f8b3d3eabe466b3eaa'
-         'bee3a1ea8bf98200314029330b537e58'
+         '5df295c21de5bac8d6073528823d975a'
          '2cc1246fc1b01029ae762c82a7dbf364'
          '18aed0a21276a22325bf8c32166fb110')
 

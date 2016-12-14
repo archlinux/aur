@@ -1,6 +1,8 @@
---- ../meshlab/src/external/external.pro	2016-10-30 23:59:56.109729632 +0100
-+++ meshlab/src/external/external.pro	2016-11-01 00:35:20.501863647 +0100
-@@ -2,11 +2,6 @@
+diff --git a/src/external/external.pro b/src/external/external.pro
+index 7bd97f6..93ed196 100644
+--- meshlab.orig/src/external/external.pro
++++ meshlab/src/external/external.pro
+@@ -2,11 +2,6 @@ config += debug_and_release
  
  TEMPLATE      = subdirs
  
@@ -8,9 +10,9 @@
 -			muparser_v225/src \
 -			levmar-2.3/levmar-2.3.pro \
 -			structuresynth-1.5/structuresynth.pro \
-+SUBDIRS	= 		structuresynth-1.5/structuresynth.pro \
++SUBDIRS	=	structuresynth-1.5/structuresynth.pro \
  			OpenCTM-1.0.3/openctm.pro \
--			jhead-2.95/jhead-2.95.pro
--			lib3ds-1.3.0/lib3ds
+-			jhead-2.95/jhead-2.95.pro \
+-			lib3ds-1.3.0/lib3ds/lib3ds.pro 
 -#			openkinect/openkinect.pro
-+			jhead-2.95/jhead-2.95.pro 
++			jhead-2.95/jhead-2.95.pro

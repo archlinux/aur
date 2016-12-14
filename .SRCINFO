@@ -1,7 +1,7 @@
 pkgbase = meshlab-git
 	pkgdesc = System for processing and editing of unstructured 3D models arising in 3D scanning (qt5 version)
 	pkgver = 1.3.4_r8497062
-	pkgrel = 1
+	pkgrel = 2
 	url = http://meshlab.sourceforge.net/
 	install = meshlab-git.install
 	arch = i686
@@ -22,7 +22,7 @@ pkgbase = meshlab-git
 	depends = qt5-script
 	provides = meshlab
 	conflicts = meshlab
-	source = git+https://github.com/bartoszek/meshlab.git
+	source = git+https://github.com/cnr-isti-vclab/meshlab.git
 	source = git+https://github.com/cnr-isti-vclab/vcglib.git#branch=devel
 	source = external.patch
 	source = 3ds.patch

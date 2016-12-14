@@ -37,32 +37,6 @@ diff -Naur -r ../meshlab/src/meshlabplugins/filter_mutualinfoxml/solver.h meshla
  
  #include <iostream>
  #include <fstream>
-diff -Naur -r ../meshlab/src/plugins_experimental/edit_mutualcorrs/edit_mutualcorrs.pro meshlab/src/plugins_experimental/edit_mutualcorrs/edit_mutualcorrs.pro
---- ../meshlab/src/plugins_experimental/edit_mutualcorrs/edit_mutualcorrs.pro	2016-10-31 00:00:08.816250885 +0100
-+++ meshlab/src/plugins_experimental/edit_mutualcorrs/edit_mutualcorrs.pro	2016-10-31 22:22:39.511691359 +0100
-@@ -1,7 +1,7 @@
- include (../../shared.pri)
- 
- 
--HEADERS       = += ./alignset.h \
-+HEADERS       += ./alignset.h \
-     ./levmarmethods.h \
-     ./mutual.h \
-     ./parameters.h \
-@@ -28,9 +28,9 @@
- 
- win32-msvc2013:  LIBS += ../../external/lib/win32-msvc2013/levmar.lib
- win32-msvc2015:  LIBS += ../../external/lib/win32-msvc2015/levmar.lib
--win32-g++:LIBS += -L../../external -llevmar
--linux-g++:LIBS += -L../../external -llevmar
--linux-g++-32:LIBS += -L../../external -llevmar
--linux-g++-64:LIBS += -L../../external -llevmar
-+win32-g++:LIBS += -L../../external/lib/win32-g++ -llevmar
-+linux-g++:LIBS += -llevmar
-+linux-g++-32:LIBS += -llevmar
-+linux-g++-64:LIBS += -llevmar
- macx:LIBS            += $$MACLIBDIR/liblevmar.a
- 
 diff -Naur -r ../meshlab/src/plugins_experimental/edit_mutualcorrs/levmarmethods.h meshlab/src/plugins_experimental/edit_mutualcorrs/levmarmethods.h
 --- ../meshlab/src/plugins_experimental/edit_mutualcorrs/levmarmethods.h	2016-10-31 00:00:08.816250885 +0100
 +++ meshlab/src/plugins_experimental/edit_mutualcorrs/levmarmethods.h	2016-10-31 22:23:35.671692575 +0100
@@ -111,3 +85,28 @@ diff -Naur -r ../meshlab/src/plugins_experimental/filter_mutualglobal/solver.h m
  
  #include <iostream>
  #include <fstream>
+diff --git a/src/plugins_experimental/edit_mutualcorrs/edit_mutualcorrs.pro b/src/plugins_experimental/edit_mutualcorrs/edit_mutualcorrs.pro
+index 049bec6..84f6ca9 100644
+--- a/src/plugins_experimental/edit_mutualcorrs/edit_mutualcorrs.pro
++++ meshlab/src/plugins_experimental/edit_mutualcorrs/edit_mutualcorrs.pro
+@@ -1,7 +1,7 @@
+ include (../../shared.pri)
+ 
+ 
+-HEADERS       = += ./alignset.h \
++HEADERS       += ./alignset.h \
+     ./levmarmethods.h \
+     ./mutual.h \
+     ./parameters.h \
+@@ -29,8 +29,8 @@ FORMS         = edit_mutualcorrsDialog.ui
+ win32-msvc2013:  LIBS += ../../external/lib/win32-msvc2013/levmar.lib
+ win32-msvc2015:  LIBS += ../../external/lib/win32-msvc2015/levmar.lib
+ win32-g++:LIBS += -L../../external -llevmar
+-linux-g++:LIBS += -L../../external/lib/linux-g++ -llevmar
+-linux-g++-32:LIBS += -L../../external/lib/linux-g++-32 -llevmar
+-linux-g++-64:LIBS += -L../../external/lib/linux-g++-64 -llevmar
++linux-g++:LIBS += -llevmar
++linux-g++-32:LIBS += -llevmar
++linux-g++-64:LIBS += -llevmar
+ macx:LIBS            += $$MACLIBDIR/liblevmar.a
+ 
