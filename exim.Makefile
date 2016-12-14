@@ -816,6 +816,32 @@ SUPPORT_PAM=yes
 
 
 #------------------------------------------------------------------------------
+# Proxying.
+#
+# If you may want to use outbound (client-side) proxying, using Socks5,
+# uncomment the line below.
+
+SUPPORT_SOCKS=yes
+
+# If you may want to use inbound (server-side) proxying, using Proxy Protocol,
+# uncomment the line below.
+
+SUPPORT_PROXY=yes
+
+
+#------------------------------------------------------------------------------
+# Internationalisation.
+#
+# Uncomment the following to include Internationalisation features.  This is the
+# SMTPUTF8 ESMTP extension, and associated facilities for handling UTF8 domain
+# and localparts, per RFCs 5890, 6530 and 6533.
+# You need to have the IDN library installed.
+
+SUPPORT_I18N=yes
+LDFLAGS += -lidn
+
+
+#------------------------------------------------------------------------------
 # Support for authentication via Radius is also available. The Exim support,
 # which is intended for use in conjunction with the SMTP AUTH facilities,
 # is included only when requested by setting the following parameter to the
