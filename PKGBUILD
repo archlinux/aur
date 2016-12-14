@@ -7,6 +7,7 @@ arch=("any")
 url="https://github.com/sindresorhus/emoj"
 license=('MIT')
 depends=('nodejs')
+makedepends=npm
 source=(https://github.com/sindresorhus/$pkgname/archive/v$pkgver.tar.gz)
 noextract=($pkgname-$pkgver.tgz)
 sha1sums=('52f2594b4fdf76a664205ac9bd526be95dccf680')
