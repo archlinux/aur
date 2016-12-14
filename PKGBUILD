@@ -73,8 +73,8 @@ build() {
     msg "PREFIX=$pkgdir/usr/local"
     msg "INSTALL-MOD-PATH=$pkgdir"
     ./configure --kernel-sources=$NESTEDDIR/src/linux-$KMAJVER --no-drivers=igb \
-                --driver-suffix="-netmap" \
-                --install-mod-path="$pkgdir" \
+                --driver-suffix="_netmap" \
+                --install-mod-path="$pkgdir/usr" \
                 --prefix="$pkgdir/usr/local"
     make || return 1
     msg "Build complete"
