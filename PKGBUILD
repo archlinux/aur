@@ -2,7 +2,7 @@
 
 _pkgname=epiphany
 pkgname=$_pkgname-git
-pkgver=3.23.3
+pkgver=3.23.3.1.g573bc6e
 pkgrel=1
 install=epiphany.install
 pkgdesc="A GNOME web browser based on the WebKit rendering engine."
@@ -18,13 +18,15 @@ url="http://www.gnome.org/projects/epiphany/"
 replaces=('epiphany')
 provides=("epiphany")
 conflicts=('epiphany')
-source=('git+https://git.gnome.org/browse/epiphany'
-	'git+https://git.gnome.org/browse/libgd'
-	'git+https://git.gnome.org/browse/gvdb'
+source=('git://git.gnome.org/epiphany'
+	'git://git.gnome.org/libgd'
+	'git://git.gnome.org/gvdb'
+	'pluginsdir.diff'
 )
 sha256sums=('SKIP'
             'SKIP'
-            'SKIP')
+            'SKIP'
+            '96973321fe715b82a69f95f77b150853b43909b05f8aaa0bec46c12aff305763')
 
 pkgver() {
   cd "$srcdir/$_pkgname"
@@ -34,17 +36,19 @@ pkgver() {
 prepare() {
   cd "$srcdir/$_pkgname"
   git submodule init
-  git config libgd.url "${srcdir}/libgd"
-  git config gvdb.url "${srcdir}/gvdb/gvdb"
+  git config --local libgd.url "${srcdir}/libgd"
+  git config --local gvdb.url "${srcdir}/gvdb/gvdb"
   git submodule update
+  patch -Np1 -i ../pluginsdir.diff
+  NOCONFIGURE=1 ./autogen.sh
 }
 
 build() {
   cd "$srcdir/$_pkgname"
-  ./autogen.sh --prefix=/usr --sysconfdir=/etc \
+  ./configure --prefix=/usr --sysconfdir=/etc \
       --localstatedir=/var --disable-maintainer-mode \
       --with-libhttpseverywhere --enable-firefox-sync \
-      --enable-debug --disable-Werror
+      --disable-Werror
   make
 }
 

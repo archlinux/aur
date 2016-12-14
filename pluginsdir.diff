@@ -1,0 +1,24 @@
+diff --git a/embed/Makefile.am b/embed/Makefile.am
+index b57c9d4..f917229 100644
+--- a/embed/Makefile.am
++++ b/embed/Makefile.am
+@@ -63,6 +63,7 @@ libephyembed_la_CPPFLAGS = \
+ 	-I$(top_srcdir)/lib/widgets		\
+ 	-I$(top_srcdir)/libgd			\
+ 	-DPKGDATADIR=\"$(pkgdatadir)\"		\
++	-DEPHY_PLUGINS_DIR=\""$(libdir)/epiphany/plugins"\" \
+ 	-DEPHY_WEB_EXTENSIONS_DIR=\"$(pkglibdir)/web-extensions\"	\
+ 	$(GDK_CFLAGS)				\
+ 	$(GIO_CFLAGS)				\
+diff --git a/embed/ephy-embed-shell.c b/embed/ephy-embed-shell.c
+index ba29ab0..e130540 100644
+--- a/embed/ephy-embed-shell.c
++++ b/embed/ephy-embed-shell.c
+@@ -1016,6 +1016,7 @@ ephy_embed_shell_create_web_context (EphyEmbedShell *shell)
+   g_free (cache_dir);
+ 
+   priv->web_context = webkit_web_context_new_with_website_data_manager (manager);
++  webkit_web_context_set_additional_plugins_directory (priv->web_context, EPHY_PLUGINS_DIR);
+   g_object_unref (manager);
+ }
+ 
