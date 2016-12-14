@@ -2,7 +2,7 @@
 # Contributor: Mohammad Alsaleh <msal@tormail.org>
 # Maintainer: Steven Allen <steven@stebalien.com>
 
-_date=2016-12-06
+_date=
 pkgname=rust-nightly-bin
 pkgver=1.15.0_2016.12.05
 pkgrel=1
