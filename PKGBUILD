@@ -1,13 +1,14 @@
 # Contributor: gamanakis
 
 pkgname=iproute2-cake
-pkgver=4.7.0
+pkgver=4.9.0
 pkgrel=1
 pkgdesc="IP Routing Utilities with tc-support for the CAKE scheduler"
 arch=('i686' 'x86_64')
 license=('GPL2')
 url="http://www.linuxfoundation.org/collaborate/workgroups/networking/iproute2"
 #950 patch: https://raw.githubusercontent.com/lede-project/source/master/package/network/utils/iproute2/patches/950-add-cake-to-tc.patch
+#tc-cake.8 man page: https://github.com/dtaht/tc-adv/blob/master/man/man8/tc-cake.8
 depends=('glibc' 'iptables' 'sch_cake')
 makedepends=('linux-atm')
 optdepends=('linux-atm: ATM support')
@@ -21,11 +22,8 @@ backup=('etc/iproute2/ematch_map' 'etc/iproute2/rt_dsfield' 'etc/iproute2/rt_pro
 validpgpkeys=('9F6FC345B05BE7E766B83C8F80A77F6095CDE47E') # Stephen Hemminger
 source=("http://www.kernel.org/pub/linux/utils/net/${pkgname/-cake}/${pkgname/-cake}-${pkgver}.tar."{xz,sign}
         '0001-make-iproute2-fhs-compliant.patch'
-	'950-add-cake-to-tc.patch')
-sha1sums=('eafdefb9ebe7c840fa4ea8ea111554e3650a3c5a'
-          'SKIP'
-          '1ed328854983b3f9df0a143aa7c77920916a13c1'
-	  '32e4bd9b7038348fbd613fff0ab83ace144f00ef')
+	'950-add-cake-to-tc.patch'
+	'tc-cake.8.gz')
 
 prepare() {
   cd "${srcdir}/${pkgname/-cake}-${pkgver}"
@@ -59,4 +57,13 @@ package() {
   cd "${pkgdir}"
   mv sbin usr/bin
 
+  cd "${srcdir}"
+  cp tc-cake.8.gz "${pkgdir}/usr/share/man/man8"
+
 }
+
+sha1sums=('fc28f956a7a9695473312d0ed35dc24a7ef9d7f6'
+          'SKIP'
+          '1ed328854983b3f9df0a143aa7c77920916a13c1'
+          '0949b72171ceb0058d58ff76e6fe6e911c12708e'
+          '6d3d22d0979a068d251022d0c7189720223ba1cb')
