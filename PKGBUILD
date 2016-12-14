@@ -1,13 +1,14 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
+epoch=1
 pkgname=pli-bin  
-pkgver=0.9.9
+pkgver=0.9.9a
 pkgrel=1
 pkgdesc="Iron Spring PL/I compiler - statically linked 386-binary"
 url="http://www.iron-spring.com/"
 arch=('i686' 'x86_64')
 license=('LGPL')
 source=(http://www.iron-spring.com/pli-$pkgver.tgz)
-md5sums=('997e0bcb6c112d381fb9fc0f9def7df6')
+md5sums=('eb87d7a1a7f3cd34df22ff358cab9f8e')
 options=(staticlibs)
 
 package() {
