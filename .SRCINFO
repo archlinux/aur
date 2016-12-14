@@ -1,6 +1,6 @@
 pkgbase = snapper-gui-git
 	pkgdesc = Gui for snapper, a tool of managing snapshots of Btrfs subvolumes and LVM volumes
-	pkgver = 0.1.r0.gc4c01ff
+	pkgver = 0.1.r2.gc1b454a
 	pkgrel = 1
 	url = https://github.com/ricardomv/snapper-gui
 	install = snapper-gui.install
@@ -19,10 +19,6 @@ pkgbase = snapper-gui-git
 	provides = snapper-gui
 	conflicts = snapper-gui
 	source = snapper-gui-git::git+https://github.com/ricardomv/snapper-gui.git
-	source = snapper-gui.svg
-	source = snapper-gui.desktop
-	sha256sums = SKIP
-	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = snapper-gui-git

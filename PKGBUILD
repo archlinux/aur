@@ -2,7 +2,7 @@
 # Contributor: Panagiotis Mavrogiorgos (pmav99) <> (gmail)
 
 pkgname=snapper-gui-git
-pkgver=0.1.r0.gc4c01ff
+pkgver=0.1.r2.gc1b454a
 pkgrel=1
 pkgdesc="Gui for snapper, a tool of managing snapshots of Btrfs subvolumes and LVM volumes"
 arch=(any)
@@ -15,8 +15,8 @@ makedepends=('git')
 provides=('snapper-gui')
 conflicts=('snapper-gui')
 install=snapper-gui.install
-source=("${pkgname}::git+https://github.com/ricardomv/snapper-gui.git" "snapper-gui.svg" "snapper-gui.desktop")
-sha256sums=('SKIP' 'SKIP' 'SKIP')
+source=("${pkgname}::git+https://github.com/ricardomv/snapper-gui.git")
+sha256sums=('SKIP')
 
 pkgver() {
   cd "$pkgname"
@@ -26,6 +26,4 @@ pkgver() {
 package() {
   cd "$pkgname"
   python setup.py install --root="${pkgdir}/" --optimize=1
-  install -Dm644 "${srcdir}/snapper-gui.svg" "${pkgdir}/usr/share/pixmaps/snapper-gui.svg"
-  install -Dm755 "${srcdir}/snapper-gui.desktop" "${pkgdir}/usr/share/applications/snapper-gui.desktop"
-} 
+}
