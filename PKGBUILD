@@ -1,7 +1,7 @@
 # Maintainer: Sergej Pupykin <pupykin.s+arch@gmail.com>
 
 pkgname=flyspray
-pkgver=1.0rc1
+pkgver=1.0rc4
 pkgrel=1
 pkgdesc="A PHP web-based bug tracker"
 arch=('any')
@@ -13,7 +13,7 @@ backup=('etc/webapps/flyspray/.htaccess')
 options=('!strip')
 noextract=(flyspray-$pkgver.zip)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Flyspray/flyspray/archive/v${pkgver/rc/-rc}.tar.gz")
-md5sums=('8edb8af9ce298440b21b165646130c61')
+sha256sums=('fc363a4bac73ae5177488a51d7f8c4b75cb2b184b95063265b5952245b28e5e1')
 
 package() {
   _instdir="$pkgdir"/usr/share/webapps/flyspray
