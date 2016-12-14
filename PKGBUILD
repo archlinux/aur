@@ -1,6 +1,6 @@
 # Maintainer: Tarn Burton <twburton at gmail dot com>
 pkgname='quex'
-pkgver=0.65.65.10
+pkgver=0.65.65.65.10
 pkgrel=1
 pkgdesc="Generator of lexical analyzers in C and C++. Unicode Supported."
 arch=('any')
