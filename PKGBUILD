@@ -1,7 +1,7 @@
 # Maintainer: gaelic <gaelic@cargal.org>
 pkgname=librevault-daemon-git
 _pkgname=librevault
-pkgver=0.1.19.r63.1211bbe
+pkgver=0.1.19.r65.ad169f5
 pkgrel=1
 pkgdesc="File synchronization designed with privacy in mind, daemon only"
 arch=(x86_64 i686)
@@ -18,11 +18,9 @@ options=()
 install=
 source=(
 	'librevault::git+https://github.com/Librevault/librevault.git'
-	'CMakeLists.patch'
 )
 noextract=()
-sha256sums=('SKIP'
-						'05dd0c70cb0204cdb617d88380f674b3aaa4fd972f71c68e9fe18bece6b66838')
+sha256sums=('SKIP')
 
 pkgver() {
 	cd "$srcdir/${_pkgname}"
@@ -33,7 +31,6 @@ prepare() {
 	mkdir -p build
 	cd "$srcdir/${_pkgname}"
 	git submodule update --init
-	patch CMakeLists.txt ../CMakeLists.patch
 }
 
 build() {
