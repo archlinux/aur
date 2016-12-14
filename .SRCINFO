@@ -1,0 +1,42 @@
+pkgbase = gnupg-clavator
+	pkgdesc = GNU Privacy Guard 2 - a PGP replacement tool. Development version. Do not use in production environments. Test new ECC algorithm by using --expert with --gen-key
+	pkgver = 2.1.16-clavator
+	pkgrel = 1
+	url = http://www.gnupg.org/
+	install = gnupg-clavator.install
+	arch = i686
+	arch = x86_64
+	arch = armv7h
+	arch = aarch64
+	license = GPL
+	makedepends = git
+	makedepends = ghostscript
+	makedepends = transfig
+	makedepends = automake
+	depends = libldap
+	depends = curl
+	depends = bzip2
+	depends = zlib
+	depends = libksba>=1.2
+	depends = libgpg-error>=1.1
+	depends = libgcrypt>=1.5
+	depends = pth
+	depends = libusb-compat
+	depends = libassuan
+	depends = npth
+	depends = texinfo
+	depends = readline
+	depends = pinentry
+	provides = gnupg=2.1.16-quick-keytocard
+	provides = dirmngr
+	conflicts = gnupg2
+	conflicts = gnupg
+	conflicts = dirmngr
+	replaces = gnupg2
+	replaces = gnupg
+	replaces = dirmngr
+	source = git://github.com/mabels/gnupg.git
+	sha1sums = SKIP
+
+pkgname = gnupg-clavator
+
