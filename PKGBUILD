@@ -26,7 +26,7 @@ sha256sums=('SKIP'
 
 pkgver() {
   cd "${srcdir}/amule-dlp"
-  printf "2.3.1.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  printf "2.3.2.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare(){
