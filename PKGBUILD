@@ -3,7 +3,7 @@ pkgname=('python-rebulk' 'python2-rebulk')
 pkgbase='python-rebulk'
 _guser='Toilal'
 _gproject="rebulk"
-pkgver=0.7.6
+pkgver=0.8.2
 pkgrel=1
 pkgdesc=" Define simple search patterns in bulk to perform advanced matching on any string. "
 arch=("any")
@@ -12,7 +12,7 @@ license=('MIT')
 makedepends=('python' 'python2' 'python-setuptools' 'python2-setuptools')
 options=(!emptydirs)
 source=("https://github.com/${_guser}/${_gproject}/archive/${pkgver}.tar.gz")
-md5sums=('50fae1bbee8afa3c67fe377a2eca6683')
+md5sums=('10c00f7ad785bfb577941876fea41d82')
 
 
 prepare() {
