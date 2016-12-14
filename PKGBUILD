@@ -6,8 +6,8 @@ _pkgname=idos-timetable-data-chaps-trains-odis
 pkgname="${_pkgname}-latest"
 epoch=0
 pkgver=2016_12_13
-pkgrel=1
-pkgdesc="Timetable data for the timetable search engines by CHAPS: Trains in Ostrava public transport reagion (ODIS)."
+pkgrel=2
+pkgdesc="Timetable data for the timetable search engines by CHAPS: Trains in Ostrava public transport reagion (ODIS). Note that this timetable needs the purchased version of IDOS to run."
 arch=(any)
 url="http://chaps.cz/eng/download/idos/zip#kotvatt"
 license=('custom')
@@ -28,6 +28,7 @@ optdepends=(
             "idos-timetable-tariff-mhd-odis: For showing prices."
             "idos-timetable-maps-mhd-odis: For displaying routes on maps."
             "idos-timetable-additionalinfo-mhd-odis: For additional information (changes, fare, sales points, etc.)."
+            "idos-timetable-browser-license: To use this timetable."
            )
 
 provides=(
