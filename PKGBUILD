@@ -2,7 +2,7 @@
 # Contributor: Steven Hiscocks <steven [at] hiscocks [dot] me [dot] uk>
 # Contributor: Andre Wayand <aur-sope@awayand.sleepmail.com>
 pkgname=sope
-pkgver=3.2.1
+pkgver=3.2.3
 pkgrel=1
 pkgdesc="application server used by SOGo"
 arch=('i686' 'x86_64')
@@ -42,6 +42,6 @@ package() {
   make install DESTDIR="${pkgdir}"
 }
 
-sha256sums=('ed2124b3c7219c9475fe918e8ab1564b8f71d68c3cd8599f6e61b5574ae10433'
+sha256sums=('c998cf563c1b7e0a89c003c882fe88cd285159ea59203f247d26cfa45797ddfd'
             '7ff3387daffd15b5f97146da1fd61aefc9591b7b6a41f1f0e60b572106fdbc9a')
 
