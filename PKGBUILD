@@ -3,7 +3,7 @@ pkgname=rtl8192eu
 pkgver=4.3.1.1
 pkgrel=1
 pkgdesc="Driver for the Realtek8192eu chipset."
-arch=("x86_64")
+arch=("x86_64" "armv6h")
 url="https://github.com/Mange/rtl8192eu-linux-driver"
 license=('GPL')
 depends=("dkms")
@@ -19,6 +19,9 @@ build() {
 prepare(){
 	cd "rtl8192eu-linux-driver" 
 	patch Makefile<../fix.patch
+	if grep -q 'model name.*ARM' /proc/cpuinfo; then 
+		sed -i -e 's/CONFIG_PLATFORM_I386_PC = y/CONFIG_PLATFORM_I386_PC = n/' -e 's/CONFIG_PLATFORM_ARM_RPI = n/CONFIG_PLATFORM_ARM_RPI = y/' Makefile
+	fi
 }
 package() {
 	mkdir -p $pkgdir/usr/lib/modules/`uname -r`/kernel/drivers/net/wireless

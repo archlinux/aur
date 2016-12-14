@@ -5,6 +5,7 @@ pkgbase = rtl8192eu
 	url = https://github.com/Mange/rtl8192eu-linux-driver
 	install = rtl8192eu.install
 	arch = x86_64
+	arch = armv6h
 	license = GPL
 	makedepends = linux-headers
 	makedepends = git
