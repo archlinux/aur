@@ -1,14 +1,18 @@
 # Maintainer: Ben Wolsieffer <benwolsieffer@gmail.com>
 _github_url=https://github.com/lopsided98/dnsupdate
 pkgname=dnsupdate-git
-pkgver=0.1.r0.gde81e54
-pkgrel=3
+pkgver=0.1.r2.gf32f165
+pkgrel=1
 pkgdesc="A modern and flexible dynamic DNS client"
 arch=('any')
 url="${_github_url}"
 license=('GPL3')
 depends=('python-requests' 'python-yaml')
-makedepends=('python-setuptools')
+makedepends=(
+    'python-setuptools'
+    'python-sphinx'
+    'python-sphinx-argparse'
+)
 optdepends=(
      'python-beautifulsoup4: router address scraping'
      'python-netifaces: local interface address support'
@@ -26,6 +30,9 @@ pkgver() {
 build() {
     cd "${srcdir}/${pkgname}"
     python setup.py build
+
+    # Build man pages
+    python setup.py build_docs -b man
 }
 
 package() {
@@ -34,6 +41,10 @@ package() {
     python setup.py install --skip-build --root="${pkgdir}" --optimize=1
 
     install -Dm644 dnsupdate.service -t "${pkgdir}/usr/lib/systemd/system/"
+
+    cd build/docs/man
+    install -Dm644 "dnsupdate.1" -t "${pkgdir}/usr/share/man/man1/"
+    install -Dm644 "dnsupdate.5" -t "${pkgdir}/usr/share/man/man5/"
 }
 
 # vim:set ts=4 sw=4 et:
