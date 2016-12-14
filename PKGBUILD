@@ -5,7 +5,7 @@
 _pkgname=idos-timetable-data-chaps-trains-idol
 pkgname="${_pkgname}-latest"
 epoch=0
-pkgver=2016_12_13
+pkgver=2016_12_9
 pkgrel=1
 pkgdesc="Timetable data for the timetable search engines by CHAPS: Trains in Liberec public transport reagion (IDOL)."
 arch=(any)
@@ -58,7 +58,7 @@ sha256sums=(
 )
 
 pkgver() {
-  wget -nv -O- "${url}" | tr -d '\a' | tr '\n' '\a' | sed  's|^.*File VLAK17C.ZIP\(.*\)Zip/VLAK17C.ZIP.*$|\1\n|g' | tr '\a' '\n' | grep 'Update date:' | cut -d, -f1 | sed -r 's|([0-9]+)\.([0-9]+)\.([0-9]+).|\n\3_\2_\1\n|g' | grep -E '^[0-9]+_[0-9]+_[0-9]+'
+  wget -nv -O- "${url}" | tr -d '\a' | tr '\n' '\a' | sed  's|^.*File VLAKIDOL17.ZIP\(.*\)Zip/VLAKIDOL17.ZIP.*$|\1\n|g' | tr '\a' '\n' | grep 'Update date:' | cut -d, -f1 | sed -r 's|([0-9]+)\.([0-9]+)\.([0-9]+).|\n\3_\2_\1\n|g' | grep -E '^[0-9]+_[0-9]+_[0-9]+'
 }
 
 
