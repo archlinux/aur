@@ -5,7 +5,7 @@
 _pkgname=idos-timetable-additionalinfo-chaps-trains
 pkgname="${_pkgname}-latest"
 epoch=0
-pkgver=2016_9_22
+pkgver=2016_12_13
 pkgrel=1
 pkgdesc="Links for additional information on Czech trains and railway stations, to be used with the timetable search engines by CHAPS."
 arch=('any')
