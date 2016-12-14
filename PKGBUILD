@@ -1,7 +1,7 @@
 pkgname='ccemux-git'
-pkgver=60df535077
+pkgver=c13fed3650
 pkgrel=1
-source=('git+https://github.com/Lignumm/CCEmuX.git#branch=rewrite'
+source=('git+https://github.com/Lignumm/CCEmuX.git#branch=master'
         'ccemux.desktop'
         'ccemux'
         'icon.png')
