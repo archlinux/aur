@@ -1,6 +1,6 @@
 pkgbase = exodus
 	pkgdesc = All-in-one app to secure, manage and exchange blockchain assets
-	pkgver = 1.12.1
+	pkgver = 1.13.0
 	pkgrel = 1
 	url = https://exodus.io
 	arch = x86_64
@@ -10,9 +10,9 @@ pkgbase = exodus
 	depends = gtk2
 	depends = nss
 	depends = libxss
-	source = https://exodusbin.azureedge.net/releases/exodus_linux_1.12.1.zip
+	source = https://exodusbin.azureedge.net/releases/exodus_linux_1.13.0.zip
 	source = exodus.desktop
-	sha256sums = 618670fd850d2cd260511841281704b9cd392ee5d614f52917439e7ddcb3a4d1
+	sha256sums = 4dee6c2cb229dc9fc152239fd99dd5b5f0eaa7b874acc46ed8958a6d4f5851c5
 	sha256sums = 04676d81272a35a91150a7eec4640e69ca50f2e479d29fad8be90160ee74122c
 
 pkgname = exodus
