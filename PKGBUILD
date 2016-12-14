@@ -6,7 +6,7 @@
 
 pkgname=devscripts
 pkgver=2.16.12
-pkgrel=1
+pkgrel=2
 pkgdesc="Scripts to make the life of a Debian Package maintainer easier"
 arch=('any')
 url="http://packages.qa.debian.org/d/devscripts.html"
@@ -17,7 +17,7 @@ makedepends=('git' 'po4a' 'perl-timedate' 'perl-libwww' 'docbook-xsl' 'perl-file
 options=('!makeflags')
 source=(
 	#http://ftp.debian.org/debian/pool/main/d/${pkgname}/${pkgname}_${pkgver}.tar.xz
-	${pkgname}-${pkgver}::git+https://anonscm.debian.org/git/collab-maint/devscripts.git
+	"${pkgname}-${pkgver}::git+https://anonscm.debian.org/git/collab-maint/devscripts.git#tag=v${pkgver}"
 	fixes.patch
 )
 install='devscripts.install'
