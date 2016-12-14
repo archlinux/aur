@@ -1,27 +1,30 @@
 # Maintainer: David Herrmann <dh.herrmann@gmail.com>
 
-pkgname=c-rbtree
-pkgver=1
-pkgrel=1
+_pkgorg=c-util
+_pkgname=c-rbtree
 pkgdesc='Red-Black Tree Implementation'
+pkgver=2
+pkgrel=1
+
+pkgname=$_pkgname
 arch=('i686' 'x86_64')
-url='https://github.com/c-util/c-rbtree'
-license=('LGPL2.1')
+url="https://github.com/$_pkgorg/$_pkgname"
+license=('Apache')
 depends=('glibc')
-source=(https://github.com/c-util/$pkgname/archive/v$pkgver.tar.gz)
-md5sums=('8d3b6313dea65e9b00c17d178662bd53')
+makedepends=('meson')
+source=("$pkgname.tar.gz::https://github.com/$_pkgorg/$_pkgname/archive/v$pkgver.tar.gz")
+md5sums=('e7b2a450073b7708c351318e6c096393')
 
 build() {
-  cd $pkgname-$pkgver
-  ./autogen.sh c
-  make
+  rm -Rf "build"
+  meson --prefix=/usr --buildtype=release "$pkgname-$pkgver" "build"
+  ninja -v -C "build"
 }
 
 check() {
-  make -C $pkgname-$pkgver check
+  ninja -v -C "build" test
 }
 
 package() {
-  cd $pkgname-$pkgver
-  make DESTDIR="$pkgdir" install
+  DESTDIR="$pkgdir" ninja -v -C "build" install
 }
