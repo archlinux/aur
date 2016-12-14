@@ -3,7 +3,7 @@
 # Upstream Contributor: Gilrain <pierre.buard+aur gmail com>
 
 pkgname=prismatik-psieg-git
-pkgver=5.11.2.10.r0.gd71995e
+pkgver=5.11.2.11.r2.gb30ce02
 pkgrel=1
 pkgdesc="A controller for usb driven LED backlights. An unofficial fork."
 arch=('i686' 'x86_64')
