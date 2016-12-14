@@ -1,16 +1,14 @@
 pkgbase = stirfs
 	pkgdesc = Secure, transparent and irresistible filesystem
-	pkgver = 1.5
+	pkgver = 1.6
 	pkgrel = 1
 	url = http://fenua.org/gaetan/src/
-	arch = i686
 	arch = x86_64
-	arch = armv7h
 	license = ISC
-	depends = fuse
+	depends = fuse3
 	depends = openssl
-	source = http://fenua.org/gaetan/src//stirfs-1.5.c
-	sha1sums = e832af2179f9224b5572c0b92767733d10f60a2b
+	source = http://fenua.org/gaetan/src//stirfs-1.6.c
+	sha1sums = 731f3569e81c8ff5a53bbd7ca803499e009ea212
 
 pkgname = stirfs
 

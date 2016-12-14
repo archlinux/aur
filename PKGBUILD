@@ -1,19 +1,20 @@
 # Maintainer: Gaetan Bisson <bisson@archlinux.org>
 
 pkgname=stirfs
-pkgver=1.5
+pkgver=1.6
 pkgrel=1
 pkgdesc='Secure, transparent and irresistible filesystem'
 url='http://fenua.org/gaetan/src/'
 license=('ISC')
-depends=('fuse' 'openssl')
-arch=('i686' 'x86_64' 'armv7h')
+depends=('fuse3' 'openssl')
+arch=('x86_64')
 source=("${url}/${pkgname}-${pkgver}.c")
-sha1sums=('e832af2179f9224b5572c0b92767733d10f60a2b')
+sha1sums=('731f3569e81c8ff5a53bbd7ca803499e009ea212')
 
 build() {
 	cd "${srcdir}"
-	cc -lfuse -lcrypto \
+	cc \
+		-I/usr/include/fuse3 -lfuse3 -lcrypto \
 		${CFLAGS} ${LDFLAGS} \
 		-o ${pkgname} ${pkgname}-${pkgver}.c
 }
