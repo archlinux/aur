@@ -6,7 +6,7 @@
 
 pkgname=wine-stable
 pkgver=1.8.5
-pkgrel=1
+pkgrel=2
 
 source=(https://dl.winehq.org/wine/source/1.8/wine-$pkgver.tar.bz2{,.sign}
         30-win32-aliases.conf)
@@ -22,77 +22,33 @@ arch=(i686 x86_64)
 options=(staticlibs)
 license=(LGPL)
 
-_depends=(
-  fontconfig      lib32-fontconfig
-  lcms2           lib32-lcms2
-  libxml2         lib32-libxml2
-  libxcursor      lib32-libxcursor
-  libxrandr       lib32-libxrandr
-  libxdamage      lib32-libxdamage
-  libxi           lib32-libxi
-  gettext         lib32-gettext
-  freetype2       lib32-freetype2
-  glu             lib32-glu
-  libsm           lib32-libsm
-  gcc-libs        lib32-gcc-libs
-  libpcap         lib32-libpcap
-  desktop-file-utils
-)
+depends=(desktop-file-utils fontconfig freetype2 gettext glu lcms2
+    libpcap libsm libxcursor libxdamage libxi libxml2 libxrandr)
 
-makedepends=(autoconf ncurses bison perl fontforge flex
-  'gcc>=4.5.0-2'  'gcc-multilib>=4.5.0-2'
-  giflib          lib32-giflib
-  libpng          lib32-libpng
-  gnutls          lib32-gnutls
-  libxinerama     lib32-libxinerama
-  libxcomposite   lib32-libxcomposite
-  libxmu          lib32-libxmu
-  libxxf86vm      lib32-libxxf86vm
-  libldap         lib32-libldap
-  mpg123          lib32-mpg123
-  openal          lib32-openal
-  v4l-utils       lib32-v4l-utils
-  libpulse        lib32-libpulse
-  alsa-lib        lib32-alsa-lib
-  libxcomposite   lib32-libxcomposite
-  mesa            lib32-mesa
-  libgl           lib32-libgl
-  libcl           lib32-libcl
-  libxslt         lib32-libxslt
-  samba
-  opencl-headers
-)
-  
-optdepends=(
-  giflib          lib32-giflib
-  libpng          lib32-libpng
-  libldap         lib32-libldap
-  gnutls          lib32-gnutls
-  mpg123          lib32-mpg123
-  openal          lib32-openal
-  v4l-utils       lib32-v4l-utils
-  libpulse        lib32-libpulse
-  alsa-plugins    lib32-alsa-plugins
-  alsa-lib        lib32-alsa-lib
-  libjpeg-turbo   lib32-libjpeg-turbo
-  libxcomposite   lib32-libxcomposite
-  libxinerama     lib32-libxinerama
-  ncurses         lib32-ncurses
-  libcl           lib32-libcl
-  libxslt         lib32-libxslt
-  cups
-  samba           dosbox
-)
+depends_x86_64=(lib32-fontconfig lib32-freetype2 lib32-gcc-libs
+  lib32-gettext lib32-glu lib32-lcms2 lib32-libpcap lib32-libsm
+  lib32-libxcursor lib32-libxdamage lib32-libxi lib32-libxml2
+  lib32-libxrandr)
 
-if [[ $CARCH == i686 ]]; then
-  # Strip lib32 etc. on i686
-  _depends=(${_depends[@]/*32-*/})
-  makedepends=(${makedepends[@]/*32-*/} ${_depends[@]})
-  makedepends=(${makedepends[@]/*-multilib*/})
-  optdepends=(${optdepends[@]/*32-*/})
-else
-  makedepends=(${makedepends[@]} ${_depends[@]})
-fi
+makedepends=(alsa-lib fontforge giflib gnutls libgl libldap libpng
+  libpulse libxcomposite libxinerama libxmu libxslt libxxf86vm mesa
+  mpg123 ncurses ocl-icd openal opencl-headers samba v4l-utils)
+
+makedepends_x86_64=(gcc-multilib lib32-alsa-lib lib32-giflib
+  lib32-gnutls lib32-libgl lib32-libldap lib32-libpng lib32-libpulse
+  lib32-libxcomposite lib32-libxinerama lib32-libxmu lib32-libxslt
+  lib32-libxxf86vm lib32-mesa lib32-mpg123 lib32-ocl-icd lib32-openal
+  lib32-v4l-utils)
+
+optdepends=(alsa-lib alsa-plugins cups dosbox giflib gnutls
+  libjpeg-turbo libldap libpng libpulse libxcomposite libxinerama
+  libxslt mpg123 ncurses ocl-icd openal samba v4l-utils)
+
+optdepends_x86_64=(lib32-alsa-lib lib32-alsa-plugins lib32-giflib
+  lib32-gnutls lib32-libjpeg-turbo lib32-libldap lib32-libpng
+  lib32-libpulse lib32-libxcomposite lib32-libxinerama lib32-libxslt
+  lib32-mpg123 lib32-ncurses lib32-ocl-icd lib32-openal
+  lib32-v4l-utils)
 
 provides=("wine=$pkgver")
 conflicts=("wine")
@@ -150,21 +106,19 @@ build() {
 }
 
 package() {
-  depends=(${_depends[@]})
-
   msg2 "Packaging Wine-32..."
   cd "$srcdir/wine-32-build"
 
   if [[ $CARCH == i686 ]]; then
-    make prefix="$pkgdir/usr" install
+    make STRIP=true prefix="$pkgdir/usr" install
   else
-    make prefix="$pkgdir/usr" \
+    make STRIP=true prefix="$pkgdir/usr" \
       libdir="$pkgdir/usr/lib32" \
       dlldir="$pkgdir/usr/lib32/wine" install
 
     msg2 "Packaging Wine-64..."
     cd "$srcdir/wine-64-build"
-    make prefix="$pkgdir/usr" \
+    make STRIP=true prefix="$pkgdir/usr" \
       libdir="$pkgdir/usr/lib" \
       dlldir="$pkgdir/usr/lib/wine" install
   fi
