@@ -2,7 +2,7 @@
 
 pkgname=far2l-git
 pkgver=r680.c87ad2f
-pkgrel=2
+pkgrel=3
 pkgdesc='Linux port of FAR v2'
 url='https://github.com/elfmz/far2l'
 arch=('i686' 'x86_64')
@@ -32,4 +32,7 @@ package() {
   cmake --build .
 
   make install
+
+  ln -sf ../../bin/far2l "$pkgdir"/usr/lib/far2l/far2l_askpass
+  ln -sf ../../bin/far2l "$pkgdir"/usr/lib/far2l/far2l_sudoapp
 }
