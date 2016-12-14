@@ -4,12 +4,12 @@
 pkgname='tecart-starter'
 pkgver='4.6.029'
 _debrel='6'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='Desktop app to enable easier use of the TecArt Business Software'
 arch=('x86_64')
 url='http://www.tecart.de/'
 license=('custom')
-depends=('qt5-webkit qtkeychain')
+depends=('qt5-webkit' 'qtkeychain')
 provides=('tecart-starter')
 options=(!strip)
 source=("https://update.tecart.info/tecart-starter_${pkgver}-${_debrel}_amd64.deb")
