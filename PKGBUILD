@@ -6,14 +6,14 @@
 _pkgname=testng
 pkgname=java-${_pkgname}
 pkgver=6.10
-pkgrel=1
+pkgrel=2
 pkgdesc='A testing framework inspired from JUnit and NUnit'
 arch=('any')
 url='http://testng.org/doc/index.html'
 license=('APACHE')
 depends=("java-runtime")
 source=("https://dl.bintray.com/cbeust/maven/org/${_pkgname}/${_pkgname}/${pkgver}/${_pkgname}-${pkgver}.jar")
-sha256sums=('ed9d050643333f16b4b03827c42608e4cb13392d3a2772c90b57f2bcbdefdb1b')
+sha256sums=('4fe4064025c1c038fd1c31947b6c6dfac8af364f41da66469daa1bba628581c1')
 
 package() {
   install -Dm644 "${srcdir}/${_pkgname}-${pkgver}.jar" \
