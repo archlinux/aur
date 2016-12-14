@@ -1,6 +1,7 @@
 # Maintainer: Joshua Schüler <joshua.schueler at gmail dotcom>
 # Contributor: Ray Rashif <schiv@archlinux.org>
 # Contributor: Tobias Powalowski <tpowa@archlinux.org>
+# Contributor: dracorp aka Piotr Rogoza <piotr.r.public at gmail.com>
 
 
 ############################################
@@ -36,12 +37,12 @@ _FORCE_AVX2=OFF
 
 ############################################
 
-
-_pkgbase=opencv
 pkgbase=opencv2-opt
 pkgname=('opencv2-opt' 'opencv2-opt-samples')
 pkgver=2.4.13
-pkgrel=1
+pkgrel=2
+_pkgbase=opencv2
+_pkgname=opencv
 pkgdesc="Open Source Computer Vision Library (Legacy Version & /opt directory version)"
 arch=('i686' 'x86_64')
 license=('BSD')
@@ -53,10 +54,10 @@ optdepends=('opencv2-opt-samples'
             'libcl: For coding with OpenCL'
             'python2-numpy: Python 2.x interface')
 
-source=("$_pkgbase-$pkgver.zip::https://github.com/Itseez/opencv/archive/$pkgver.zip"
+source=("$_pkgname-$pkgver.zip::https://github.com/Itseez/opencv/archive/$pkgver.zip"
         "opencv_a0fdc91a14f07de25d858037940fcd3ba859b4e2.patch")
-md5sums=('886b0c511209b2f3129649928135967c'
-         'aebe7878a572a2dc26a434bf08b8d851')
+sha512sums=('b5ccaa22deabfedd29b697296d265a32c7db959f2e94ca3643c1cde65fb84463809535f2e6bd49c4baa06958fa223a32bbfdd7234b8e160ec333fd9cd7800d3b'
+            '5f233ad26768253cbcda29cfd7a51709049790b1c909f0ee362e08811f7d9bd04bb47d1c280b561d18df163f4feb05e14fbf71773b5ffedf76bb9184359252f9')
 
 _cmakeopts=('-D WITH_CUDA=OFF' # Disable CUDA for now because GCC 6.1.1 and nvcc don't play along yet
             '-D WITH_OPENCL=ON'
@@ -90,13 +91,13 @@ _cmakeopts=('-D WITH_CUDA=OFF' # Disable CUDA for now because GCC 6.1.1 and nvcc
                "-D ENABLE_AVX2=$_FORCE_AVX2")
 
 prepare() {
-  cd $_pkgbase-$pkgver
+  cd $_pkgname-$pkgver
 # Patch for gcc 6
 # See https://github.com/Itseez/opencv/issues/6517
   patch -p1 -i ../opencv_a0fdc91a14f07de25d858037940fcd3ba859b4e2.patch
 }
 build() {
-  cd "$srcdir/$_pkgbase-$pkgver"
+  cd "$srcdir/$_pkgname-$pkgver"
   cmake ${_cmakeopts[@]} .
   make
 }
@@ -104,18 +105,18 @@ package_opencv2-opt() {
   options=('staticlibs')
   provides=(opencv2)
 
-  cd "$srcdir/$_pkgbase-$pkgver"
+  cd "$srcdir/$_pkgname-$pkgver"
 
   make DESTDIR="$pkgdir" install
-  install -Dm644 "$srcdir/$_pkgbase-$pkgver/LICENSE" \
+  install -Dm644 "$srcdir/$_pkgname-$pkgver/LICENSE" \
     "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
   install -dm755 $pkgdir/usr/lib/pkgconfig
   cd $pkgdir/usr/lib/pkgconfig
   ln -s /opt/$_pkgbase/lib/pkgconfig/opencv.pc opencv2.pc
   ln -s /opt/$_pkgbase/lib/pkgconfig/opencv.pc opencv2-opt.pc
-  cd "$pkgdir/usr/share"
 
+  cd "$pkgdir/opt/$_pkgbase/share"
   # separate samples package; also be -R friendly
   if [[ -d OpenCV/samples ]]; then
     mv OpenCV/samples "$srcdir/$_pkgbase-samples"
@@ -130,9 +131,9 @@ package_opencv2-opt-samples() {
   unset optdepends
   provides=(opencv2-samples)
 
-  cd "$srcdir/$_pkgbase-$pkgver"
-  install -dm755 "$pkgdir/opt/opencv2"
-  cp -r samples "$pkgdir/opt/opencv2"
+  cd "$srcdir/$_pkgname-$pkgver"
+  install -dm755 "$pkgdir/opt/$_pkgbase"
+  cp -r samples "$pkgdir/opt/$_pkgbase"
 
   # install license file
   install -Dm644 "LICENSE" \
