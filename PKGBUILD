@@ -2,7 +2,7 @@
 # shellcheck disable=SC2034,SC2148,SC2154
 # Maintainer: Zeke Sonxx <zeke@zekesonxx.com>
 pkgname=blt4l
-pkgver=1.2_r1
+pkgver=1.3
 pkgrel=1
 pkgdesc="Mod loader for Payday 2 (non-Steam runtime only)"
 arch=('i686' 'x86_64')
