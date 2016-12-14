@@ -1,7 +1,7 @@
 pkgbase = apt
 	pkgdesc = Command-line package manager used on Debian-based systems
 	pkgver = 1.3.2
-	pkgrel = 2
+	pkgrel = 3
 	url = http://packages.debian.org
 	arch = i686
 	arch = x86_64
