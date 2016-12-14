@@ -1,7 +1,8 @@
 # Maintainer: Ben Fox-Moore <ben.foxmoore@gmail.com>
+# Co-Maintainer: Sebastian Meyer <mail@bastimeyer.de>
 pkgname=streamlink-twitch-gui
-pkgver=1.0.0
-pkgrel=2
+pkgver=1.0.1
+pkgrel=1
 pkgdesc="A multi platform Twitch.tv browser for Streamlink"
 arch=("i686" "x86_64")
 url="https://github.com/streamlink/streamlink-twitch-gui"
@@ -25,8 +26,8 @@ source=("https://raw.githubusercontent.com/streamlink/streamlink-twitch-gui/mast
 source_i686=("https://github.com/streamlink/streamlink-twitch-gui/releases/download/v$pkgver/streamlink-twitch-gui-v$pkgver-linux32.tar.gz")
 source_x86_64=("https://github.com/streamlink/streamlink-twitch-gui/releases/download/v$pkgver/streamlink-twitch-gui-v$pkgver-linux64.tar.gz")
 md5sums=('0b62e5d2cf76f19fea17c82c1a56c583')
-md5sums_i686=('2ed3e4686af9de4c0b0ba85498595f34')
-md5sums_x86_64=('5c5a6c7ee710752e9b2938ed9b1f1c30')
+md5sums_i686=('1ff7d200df8c33666f260ead565c7d2d')
+md5sums_x86_64=('f2fa60b4ccfd5f4cf50573d7dd78d0c2')
 
 package() {
 	cd "$srcdir/$pkgname"
@@ -38,8 +39,6 @@ package() {
 	sed -i "s:CHECKNEWVERSIONS=true:CHECKNEWVERSIONS=false:g" start.sh
 
 	cp -R * "$pkgdir/opt/$pkgname"
-
-	chmod -R g+r,o+r "$pkgdir/opt/$pkgname"
 
 	ln -s "/opt/$pkgname/start.sh" "$pkgdir/usr/bin/$pkgname"
 	ln -s "/usr/lib/libudev.so" "$pkgdir/opt/$pkgname/libudev.so.0"
