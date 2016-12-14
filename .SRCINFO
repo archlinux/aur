@@ -1,0 +1,17 @@
+pkgbase = sman
+	pkgdesc = Utility for selecting manpage section to be opened
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/jtojnar/sman
+	arch = i686
+	arch = x86_64
+	arch = armv6h
+	arch = armv7h
+	license = MIT
+	makedepends = cargo
+	depends = ncurses
+	source = https://github.com/jtojnar/sman/archive/v0.1.0/sman-0.1.0.tar.gz
+	sha256sums = 2003ad848c1c783736332f6cf4930083ae920c988f9a041034bfe6522c058036
+
+pkgname = sman
+
