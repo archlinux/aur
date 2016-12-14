@@ -1,6 +1,6 @@
 # Maintainer: Kristian Gunstone <kristian.gunstone.butnotthispart@pean.northis.org>
 pkgname=netris-git
-pkgver=0.52 # Is automatically updated by pkgver() below
+pkgver=0.52_19 # Is automatically updated by pkgver() below
 pkgrel=1
 pkgdesc="Mark H. Weaver's Netris -- A free networked version of T*tris. This is my (the AUR package maintainer) fork, which itself is based on Nathan Aclander's fork."
 arch=('i686' 'x86_64')
@@ -16,7 +16,7 @@ md5sums=('SKIP')
 source=("${pkgname}::git+https://github.com/gammy/netris.git")
 
 pkgver() {
-    head -n1 "${pkgname}/VERSION"
+    head -n1 "${pkgname}/VERSION" | tr '-' '_'
 }
 
 build() {
