@@ -5,7 +5,7 @@
 
 pkgname=apt-git
 pkgver=1.4_beta2.r2.gf47f4b1
-pkgrel=1
+pkgrel=2
 pkgdesc="Command-line package manager used on Debian-based systems (git-latest)"
 arch=('i686' 'x86_64')
 url="http://packages.debian.org"
@@ -33,17 +33,16 @@ build() {
   cd "$srcdir/$pkgname"
 
   # docbook xsl is stored with the version on Arch
-  DOCBOOK_XSL_VER=$(pacman -Q docbook-xsl | sed 's/docbook-xsl //;s/\-.*//')
+  DOCBOOK_XSL_VER=`ls -d /usr/share/xml/docbook/xsl-stylesheets-* | xargs basename`
 
   cmake \
 	-DCMAKE_INSTALL_PREFIX="/usr" \
 	-DCMAKE_INSTALL_LIBDIR="lib" \
-	-DDOCBOOK_XSL="/usr/share/xml/docbook/xsl-stylesheets-${DOCBOOK_XSL_VER}" \
+	-DDOCBOOK_XSL="/usr/share/xml/docbook/${DOCBOOK_XSL_VER}" \
 	.
 
-  _stylesheet=`ls -d /usr/share/xml/docbook/xsl-stylesheets-* | xargs basename`
-  sed -i -e "s|stylesheet/docbook-xsl|$_stylesheet|" doc/*.xsl
-  sed -i -e "s|stylesheet/nwalsh|$_stylesheet|" doc/*.xsl
+  sed -i -e "s|stylesheet/docbook-xsl|$DOCBOOK_XSL_VER|" doc/*.xsl
+  sed -i -e "s|stylesheet/nwalsh|$DOCBOOK_XSL_VER|" doc/*.xsl
 
   make -j $(nproc) all
 }
