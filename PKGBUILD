@@ -2,7 +2,7 @@
 
 pkgname=far2l-git
 pkgver=r680.c87ad2f
-pkgrel=1
+pkgrel=2
 pkgdesc='Linux port of FAR v2'
 url='https://github.com/elfmz/far2l'
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ license=('GPL2')
 source=('git+https://github.com/elfmz/far2l'
         'far2l_install.patch')
 sha256sums=('SKIP'
-            '998bd4aaf0c316e1fd7da15c78ef8460b75a0122d33ae1a23e79da963c9ff854')
+            '22ed1b899a2855afd4adb8e1cb81703dd56ade20e6449f893181232999b4cab4')
 makedepends=('git' 'cmake')
 depends=('wxgtk')
 
