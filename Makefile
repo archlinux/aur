@@ -16,11 +16,6 @@ else
 endif
 
 
-test:
-	set -e ;\
-	MD5=`curl -s https://s3-eu-west-1.amazonaws.com/foodie-devops/ec2init.sh|md5sum`; \
-	echo $${MD5}; \
-
 prepare: check
 	@mkdir -p tmp
 	@curl -s ${BASEURL}/v${VERSION}/bin/linux/amd64/kubectl > tmp/kubectl_amd64
