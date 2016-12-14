@@ -2,14 +2,14 @@
 # Contributor: TecArt GmbH <support at tecart dot de>
 
 pkgname='tecart-starter'
-pkgver='4.5.026'
-_debrel='1'
+pkgver='4.6.029'
+_debrel='6'
 pkgrel='1'
-pkgdesc='Als kostenlose Desktop-App bietet Ihnen der TecArt-Starter viele Annehmlichkeiten gegenüber dem Aufruf im Browserfenster. Neben dem automatischen Login können Sie das TecArt-CRM auch als bevorzugten E-Mail-Client nutzen. Zudem garantiert die automatische Update-Funktion ein komfortableres Arbeiten.'
+pkgdesc='Desktop app to enable easier use of the TecArt Business Software'
 arch=('x86_64')
 url='http://www.tecart.de/'
 license=('custom')
-depends=('qt5-webkit')
+depends=('qt5-webkit qtkeychain')
 provides=('tecart-starter')
 options=(!strip)
 source=("https://update.tecart.info/tecart-starter_${pkgver}-${_debrel}_amd64.deb")
