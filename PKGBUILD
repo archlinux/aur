@@ -1,6 +1,6 @@
 # Maintainer: James W. Barnett <jbarnet4 at tulane dot edu>
 pkgname=libgmxfort
-pkgver=0.3
+pkgver=0.3.1
 pkgrel=1
 pkgdesc="A Fortran library for use in analyzing GROMACS simulation output files"
 arch=(any)
