@@ -1,0 +1,15 @@
+pkgbase = lenovo-thinkpad-yoga-11e-chromebook-git
+	pkgdesc = Fixes for the Lenove Yoga Thinkpad 11e Chromebook
+	pkgver = r1.7c38a47
+	pkgrel = 1
+	url = https://github.com/kcolford/lenovo-thinkpad-yoga-11e-chromebook
+	arch = any
+	license = GPL
+	makedepends = git
+	provides = lenovo-thinkpad-yoga-11e-chromebook
+	conflicts = lenovo-thinkpad-yoga-11e-chromebook
+	source = git+https://github.com/kcolford/lenovo-thinkpad-yoga-11e-chromebook
+	md5sums = SKIP
+
+pkgname = lenovo-thinkpad-yoga-11e-chromebook-git
+
