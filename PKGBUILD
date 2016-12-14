@@ -23,7 +23,7 @@ sha1sums=('SKIP')
 pkgver() {
   cd "$_gitname"
 
-  git describe --tags | sed 's/gnupg-//;s/-/+/g'
+  git rev-parse --verify --short HEAD
 }
 
 build() {
