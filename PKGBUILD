@@ -12,10 +12,10 @@ license=('LGPL')
 options=('!libtool')
 depends=('lib32-sdl' 'lib32-freetype2' $_pkgbasename)
 makedepends=('gcc-multilib')
-source=(http://www.libsdl.org/projects/SDL_ttf/release/SDL_ttf-$pkgver.tar.gz
+source=("https://www.libsdl.org/projects/SDL_ttf/release/SDL_ttf-$pkgver.tar.gz"
         bug1433.patch)
-md5sums=('61e29bd9da8d245bc2471d1b2ce591aa'
-         'f847697e18eec539aaf3ffb96996abbf')
+sha512sums=('64e04d1cd77e525e0f2413ad928841e5d3d09d551c030fc577b50777116580e430cb272b2aeb6191dfcc464669cf2f7a5a50d10e7c75637a3b1e8c8fca7fc78b'
+            'fb4a2e96156423ff31313d0775929e0cdcbc12c81e98f100964b94bc29fc654182c93a23b47a861a398e06b028d9591b93268910c7a013c6b07c33a0d56eb20c')
 
 prepare() {
   cd "${srcdir}"/SDL_ttf-${pkgver}
