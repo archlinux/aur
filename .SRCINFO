@@ -28,13 +28,6 @@ pkgbase = gnupg-clavator
 	depends = readline
 	depends = pinentry
 	provides = gnupg=2.1.16-quick-keytocard
-	provides = dirmngr
-	conflicts = gnupg2
-	conflicts = gnupg
-	conflicts = dirmngr
-	replaces = gnupg2
-	replaces = gnupg
-	replaces = dirmngr
 	source = git://github.com/mabels/gnupg.git
 	sha1sums = SKIP
 
