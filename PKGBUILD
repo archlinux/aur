@@ -2,7 +2,7 @@
 pkgname=netris-git
 pkgver=0.52 # Is automatically updated by pkgver() below
 pkgrel=1
-pkgdesc="Mark H. Weaver's Netris -- A free networked version of T*tris. This is Nathan Aclander's github fork with several bugfixes and improvements"
+pkgdesc="Mark H. Weaver's Netris -- A free networked version of T*tris. This is my (the AUR package maintainer) fork, which itself is based on Nathan Aclander's fork."
 arch=('i686' 'x86_64')
 url="https://github.com/naclander/netris.git"
 license=('GPL2')
@@ -13,7 +13,7 @@ conflicts=('netris') # Doesn't actually exist at the time of writing
                      # (the original site - netris.org - is dead)
 sha1sums+=('SKIP')
 md5sums=('SKIP')
-source=("${pkgname}::git+https://github.com/naclander/netris.git")
+source=("${pkgname}::git+https://github.com/gammy/netris.git")
 
 pkgver() {
     head -n1 "${pkgname}/VERSION"
