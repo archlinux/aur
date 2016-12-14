@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=PyQ9
+Terminal=false
+Exec=/opt/PyQ9/PyQ9
+Hidden=false
+Icon=/opt/PyQ9/icon.png
+

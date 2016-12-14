@@ -1,0 +1,20 @@
+pkgbase = pyq9-git
+	pkgdesc = Chinese IME in testing.
+	pkgver = r52.1ca7688
+	pkgrel = 1
+	url = https://gitlab.com/Saren/PyQ9
+	arch = i686
+	arch = x86_64
+	depends = xdotool
+	depends = python-pillow
+	depends = python-xlib
+	depends = tk
+	source = git+https://gitlab.com/Saren/PyQ9.git
+	source = icon.png
+	source = pyq9.desktop
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = pyq9-git
+
