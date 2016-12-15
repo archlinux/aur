@@ -1,4 +1,4 @@
-# Maintainer: Jaume Delclòs Coll <jaume@delclos.com>
+
 pkgname=weeb-git
 pkgver=r40.872c920
 pkgrel=1
@@ -19,6 +19,14 @@ pkgver() {
 }
 
 build() {
+	mkdir -p "$srcdir/prefix/lib/chicken/8/"
+	unset CHICKEN_REPOSITORY
+	chicken-install -init "$srcdir/prefix/lib/chicken/8"
+	export CHICKEN_REPOSITORY="$srcdir/prefix/lib/chicken/8"
+	# bind needs the -p or else it will try to install a
+	# binary in /usr/bin
+	chicken-install matchable record-variants make silex regex
+	chicken-install -p "$srcdir/prefix" bind http-client uri-common openssl medea
 	cd "$srcdir/${pkgname%-git}"
 	make deployable
 	# they hold references to $srcdir, and we don't need them
