@@ -1,7 +1,7 @@
 # Maintainer: Filipe Verri <filipeverri@gmail.com>
 
 pkgname=jules-git
-pkgver=0.1.rc.r0.g1a9a5a4
+pkgver=0.1.r0.g1dd185e
 pkgrel=1
 pkgdesc="Statistical computing library that aims to provide R-like experience in modern C++"
 arch=('any')
