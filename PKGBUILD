@@ -3,7 +3,7 @@
 
 pkgname=itch
 pkgver=22.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="The best way to play itch.io games."
 
 arch=('i686' 'x86_64')
