@@ -4,7 +4,7 @@
 
 pkgname=bluecurve-icon-theme
 pkgver=8.0.2
-pkgrel=15
+pkgrel=16
 _rhfedver=24
 _rhpkgrel=12
 _rhpkgver=23
@@ -28,11 +28,18 @@ build() {
   sed -i "s/^Context=FileSystems$/Context=Places/" BluecurveRH/index.theme
   sed -i "s|^\[\(.*\)/status\]$|[\1/status]\nContext=Status|" BluecurveRH/index.theme
 
+  find BluecurveRH -name '*.icon' -exec rm {} \;
+
   for size in 16x16 24x24 32x32 36x36 48x48; do
     cd $srcdir/usr/share/icons/BluecurveRH/$size/filesystems
     ln -s ../../$size/apps/desktop.png user-desktop.png
     ln -s ../../$size/apps/icon-network-systems.png network-server.png
     ln -s ../../$size/apps/icon-network-systems.png network-workgroup.png
+
+    ## Uncomment the following lines to use the Red Hat logo instead of
+    ## default gnome foot
+    # ln -s ../../$size/apps/redhat-icon-panel-menu.png start-here.png
+    # ln -s ../../$size/apps/redhat-icon-panel-menu.png distributor-logo.png
 
     [ ! -d ../status ] && mkdir ../status
     cd ../status
@@ -56,6 +63,14 @@ build() {
         ln -s ../../$size/stock/printer-broken.png battery-caution.png
     fi
 
+    [ ! -d ../actions ] && mkdir ../actions
+    cd ../actions
+    [ -f connect_no.png ] && ln -s ../../$size/actions/connect_no.png system-shutdown.png
+    [ -f ../status/gpm-hibernate.png ] && mv ../status/gpm-hibernate.png .
+    [ -f ../status/gpm-suspend.png ] && mv ../status/gpm-suspend.png .
+    ln -s ../../$size/apps/gnome-searchtool.png system-search.png
+    ln -s ../../$size/apps/gnome-run.png system-run.png
+
     cd ../apps
     [ -f ../status/gpm-ac-adapter ] && mv ../status/gpm-ac-adapter.png .
     [ -f ../status/gpm-brightness.png ] && mv ../status/gpm-brightness.png .
@@ -69,14 +84,17 @@ build() {
     ln -s ../../$size/apps/gnome-grecord.png multimedia-volume-control.png
     ln -s ../../$size/status/gpm-primary-100-charging.png mate-power-manager.png
     ln -s ../../$size/apps/gnome-ccwindowmanager.png preferences-system-windows.png
-    ln -s ../../$size/apps/icon-x-config.png mate-preferences-desktop-display.png
-    ln -s ../../$size/apps/icon-x-config.png preferences-desktop-display.png
+    ln -s ../../$size/apps/display-capplet.png mate-preferences-desktop-display.png
+    ln -s ../../$size/apps/display-capplet.png preferences-desktop-display.png
+    ln -s ../../$size/apps/display-capplet.png display.png
+    ln -s ../../$size/apps/gnome-run.png mate-run.png
     ln -s ../../$size/apps/gnome-ccperiph.png preferences-desktop-peripherals.png
     ln -s ../../$size/apps/gaim.png mate-notification-properties.png
     ln -s ../../$size/apps/gnome-settings-keybindings.png preferences-desktop-keyboard-shortcuts.png
     ln -s ../../$size/apps/500_setup.png preferences-desktop-default-applications.png
     ln -s ../../$size/apps/gnome-panel.png mozo.png
     ln -s ../../$size/apps/gnome-panel.png alacarte.png
+    ln -s ../../$size/apps/gnome-panel.png mate-panel.png
     ln -s ../../$size/apps/gnome-log.png mate-system-log.png
     ln -s ../../$size/apps/gnome-session.png mate-session-properties.png
     ln -s ../../$size/apps/icon-user-id.png user-info.png
@@ -85,7 +103,6 @@ build() {
     ln -s ../../$size/apps/accessories-text-editor.png emacs.png
     ln -s ../../$size/apps/email.png thunderbird.png
     ln -s ../../$size/apps/galeon.png firefox.png
-    ln -s ../../$size/apps/icon-audio.png spotify.png
     if [ "$size" != "36x36" ]; then
         cp openofficeorg-writer.png libreoffice-writer.png
         cp openofficeorg-calc.png libreoffice-calc.png
@@ -94,17 +111,25 @@ build() {
         cp openofficeorg-impress.png libreoffice-impress.png
         cp openofficeorg-draw.png libreoffice-draw.png
     fi
-    if [ -f ../stock/panel-launcher.png ]; then
+    ln -s ../../$size/apps/gpm-brightness.png mate-brightness-applet.png
+    ln -s ../../$size/apps/gnome-clock.png mate-panel-clock.png
+    ln -s ../../$size/apps/icon-launcher.png mate-panel-launcher.png
+    ln -s ../../$size/apps/icon-memory-profile.png mate-cpu-frequency-applet.png
+    ln -s ../../$size/apps/icon-traceroute.png mate-netspeed-applet.png
+    ln -s ../../$size/apps/gnome-ccwindowmanager.png mate-panel-window-menu.png
+    ln -s ../../$size/apps/gnome-ccwindowmanager.png mate-panel-window-list.png
+    ln -s ../../$size/apps/utilities-system-monitor.png mate-invest-applet.png
+    ln -s ../../$size/apps/display-capplet.png mate-panel-workspace-switcher.png
+    ln -s ../../$size/actions/gpm-suspend.png mate-inhibit-applet.png
+    if [ -d ../stock ]; then
         ln -s ../../$size/stock/panel-launcher.png applications-science.png
         ln -s ../../$size/stock/panel-launcher.png package_science.png
+        ln -s ../../$size/stock/panel-drawer.png mate-panel-drawer.png
+        ln -s ../../$size/stock/panel-amusements.png mate-eyes-applet.png
+        ln -s ../../$size/stock/panel-amusements.png mate-panel-fish.png
+        ln -s ../../$size/stock/dialog-information.png mate-panel-notification-area.png
+        ln -s ../../$size/stock/dialog-cancel.png mate-panel-force-quit.png
     fi
-
-    [ ! -d ../actions ] && mkdir ../actions
-    cd ../actions
-    [ -f connect_no.png ] && ln -s ../../$size/actions/connect_no.png system-shutdown.png
-    [ -f ../status/gpm-hibernate.png ] && mv ../status/gpm-hibernate.png .
-    [ -f ../status/gpm-suspend.png ] && mv ../status/gpm-suspend.png .
-    ln -s ../../$size/apps/gnome-searchtool.png system-search.png
 
     [ ! -d ../devices ] && mkdir ../devices
     cd ../devices
