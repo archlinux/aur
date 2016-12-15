@@ -3,7 +3,7 @@
 
 pkgname=ruby-ruby2ruby
 _pkgname="${pkgname#ruby-}"
-pkgver=2.3.1
+pkgver=2.3.2
 pkgrel=1
 pkgdesc='Easily generate pure ruby code from RubyParser compatible Sexps.'
 arch=(any)
@@ -14,7 +14,7 @@ makedepends=(rubygems)
 options=(!emptydirs)
 source=("https://rubygems.org/downloads/${_pkgname}-${pkgver}.gem")
 noextract=("${_pkgname}-${pkgver}.gem")
-sha256sums=('77c36c6ce3f26c1166782c75110d3c3f70b40c85707d9094ab0ff6ef1ca5e011')
+sha256sums=('17cefcd766567087b0f53f1a7c541f07dd3bd9b708dc9de67b7eaf91d2228a91')
 
 package() {
   # install gem
