@@ -3,7 +3,7 @@
 
 _pkgname=gnome-shell-theme-super-flat-remix
 pkgname="${_pkgname}-git"
-pkgver=r5.3c67ade
+pkgver=r29.4b6bb1f
 pkgrel=1
 pkgdesc="Super Flat remix GNOME theme is a pretty simple shell theme, derived from Paper theme. (Git version)"
 arch=('any')
@@ -22,6 +22,6 @@ pkgver() {
 package() {
     cd "${srcdir}/${_pkgname}/"
     install -dm755 "${pkgdir}/usr/share/themes"
-    cp -a "Super Flat Remix GNOME theme" "${pkgdir}/usr/share/themes/${_pkgname}"
+    cp -a "Flat Remix" "${pkgdir}/usr/share/themes/${_pkgname}"
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
 }
