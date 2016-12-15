@@ -13,7 +13,7 @@ pkgrel=1
 pkgdesc='A loudness scanner compliant with ITU-R BS.1770.'
 arch=('x86_64')
 url="http://${pkgname}.sourceforge.net"
-license=('GPL2')
+license=('GPL')
 depends=('ffmpeg' 'sox')
 source=("http://http.debian.net/debian/pool/main/b/${pkgname}/${pkgname}_${pkgver}.orig.tar.gz")
 # From the verified .dsc file, but apparently makepkg doesn’t support checking such files currently.
