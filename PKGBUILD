@@ -34,7 +34,6 @@ package_rust-nightly() {
 	optdepends=('rust-doc-git: language and API documentation')
 	provides=('rust')
 	conflicts=('rust')
-	options=('staticlibs')
 	cd rustc-nightly
 
 	make DESTDIR="$pkgdir" install
@@ -50,7 +49,6 @@ package_rust-nightly() {
 package_rust-nightly-doc() {
        pkgdesc="A safe, concurrent, practical language from Mozilla. (Language and API documentation)"
        arch=('any')
-       options+=('!strip' '!emptydirs')
        optdepends=('rust-nightly: to compile and run the programs you can write using this documentation')
        provides=('rust-doc')
        conflicts=('rust-doc')
