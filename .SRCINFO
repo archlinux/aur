@@ -1,17 +1,21 @@
 pkgbase = droidmote
-	pkgdesc = Server for DroidMote. Android, Windows and Linux from the comfort of your couch. Real Multi Touch without TouchScreen
+	pkgdesc = Server for DroidMote. Use your androd as remote mouse and keyboard.
 	pkgver = 3.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.videomap.it/
+	arch = i686
 	arch = x86_64
-	license = unknown
+	license = custom:unknown
+	depends = libx11
 	backup = etc/droidmote.conf
-	source = https://github.com/adrianlzt/droidmote-aur/releases/download/3.0.0/droidmote
 	source = droidmote.conf
 	source = service
-	md5sums = 7f96c828660a6e844d4e5b3757eee198
-	md5sums = 13c6e42310e9be9b464a3b99149e06b0
-	md5sums = 83d4fbce1dd8dc2c51c89e480329b879
+	sha256sums = b6386dec0977b27dff244e04f4fdbf5becc4c12731a261678524c21ffb3e53a4
+	sha256sums = 0e88c9e0b189e0d8890ddbee8f00da13485973e028811e4e70a8b1c2b7595bbe
+	source_i686 = droidmote-x32-3.0.0.tar::https://drive.google.com/uc?export=download&id=0B-EA_LjgyxcHRmFaZ0FKT3dpWFU
+	sha256sums_i686 = 9f92ca81b6e7cd2fb24588b1d1ecb68790c760ae5f576e91222aecf0e484d6df
+	source_x86_64 = droidmote-x64-3.0.0.tar::https://drive.google.com/uc?export=download&id=0B-EA_LjgyxcHOWhjejVfMzRsb0E
+	sha256sums_x86_64 = 57ec9ed9eebe1c60869194259fa98938c6a2efc2756776b7fa0461028627a734
 
 pkgname = droidmote
 
