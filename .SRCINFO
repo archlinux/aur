@@ -1,7 +1,7 @@
 pkgbase = brutal-doom
 	pkgdesc = Brutal Doom via the GzDoom engine.
 	pkgver = 20
-	pkgrel = 11
+	pkgrel = 12
 	url = http://www.moddb.com/mods/brutal-doom
 	install = brutal-doom.install
 	arch = any
@@ -19,6 +19,8 @@ pkgbase = brutal-doom
 	source = brutal-doom
 	source = brutal-doom.install
 	source = brutal20patch.pk3
+	source = brutal-doom.png
+	source = brutal-doom.desktop
 	sha512sums = bbfdf854e248fcb4b21b1efd86130a501511313a68b50c8a3b9d4d6260d30bb8d4f91e3156a165878cb03b0544b30a27ef548538ee39675327c1c7be20285179
 	sha512sums = 8919ee9f38836b0e4793bc1dc028e39b3de670fc4a1960e280bd92847a5b5da8149bcf391a593f6d50162316ada0ef6372d7bd1eb8776046d8d746fe46b293ab
 	sha512sums = 2c09c6ef772fa170a21ba60720e31c64fff08aef848945810b3d16363df4176a6736d97d9e2f07b7956d10321e235a0c74cd7cb71d633842bcc7d23a6e0de5c9
@@ -27,6 +29,8 @@ pkgbase = brutal-doom
 	sha512sums = 31a64315f2106654382f1a6b61ea05d455ed8911e4d053be0634316b6072e1cbd799294809303dba61347943a8252c3e52ff2803f5d36a82cdd922ad3fe1d3cc
 	sha512sums = 7391e1702b89dae02f4321da4652d91b54525316deb57d2b20edfe60b0036783f4d9dc29169a38895ae2cf5dc2e5a8dc1b009dbb21d02c2061ba418ae567142e
 	sha512sums = d1efdac858c4a1364c207cc15877f759dace198d6205b3a4288bf694481b0f67734f4942f2417b9a96355ce0fe22dc51f2b9185443b9b86b5128d3a050f433d0
+	sha512sums = ed5168bce8cf30b08327c2c388b7bbb5a5e73996c64e20aafdad3459f68cc6891690eadee4759d013066d8e8bfe1677e4460df051f6916861a898b9edca86313
+	sha512sums = 597e153ca0602b55bd650f5429c5151bc9fb9c3d01845284fe00c74d38421878ab646850467871a11a515a3039c03346de599a75ee75c00d4f3e25cc3c34794e
 
 pkgname = brutal-doom
 

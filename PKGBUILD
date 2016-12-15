@@ -2,7 +2,7 @@
 # Mod: http://www.moddb.com/mods/brutal-doom
 pkgname=brutal-doom
 pkgver=20
-pkgrel=11
+pkgrel=12
 pkgdesc="Brutal Doom via the GzDoom engine."
 arch=(any)
 url="http://www.moddb.com/mods/brutal-doom"
@@ -18,6 +18,8 @@ source=('http://www.libregeek.org/Linux/game-files/brutal-doom/brutalv20b.pk3'
 	'brutal-doom'
 	'brutal-doom.install'
 	'brutal20patch.pk3'
+	'brutal-doom.png'
+	'brutal-doom.desktop'
 )
 noextract=(
 	  'brutal20patch.pk3'
@@ -31,6 +33,8 @@ sha512sums=('bbfdf854e248fcb4b21b1efd86130a501511313a68b50c8a3b9d4d6260d30bb8d4f
 	    '31a64315f2106654382f1a6b61ea05d455ed8911e4d053be0634316b6072e1cbd799294809303dba61347943a8252c3e52ff2803f5d36a82cdd922ad3fe1d3cc'
 	    '7391e1702b89dae02f4321da4652d91b54525316deb57d2b20edfe60b0036783f4d9dc29169a38895ae2cf5dc2e5a8dc1b009dbb21d02c2061ba418ae567142e'
 	    'd1efdac858c4a1364c207cc15877f759dace198d6205b3a4288bf694481b0f67734f4942f2417b9a96355ce0fe22dc51f2b9185443b9b86b5128d3a050f433d0'
+	    'ed5168bce8cf30b08327c2c388b7bbb5a5e73996c64e20aafdad3459f68cc6891690eadee4759d013066d8e8bfe1677e4460df051f6916861a898b9edca86313'
+	    '597e153ca0602b55bd650f5429c5151bc9fb9c3d01845284fe00c74d38421878ab646850467871a11a515a3039c03346de599a75ee75c00d4f3e25cc3c34794e'
 	    )
 install=$pkgname.install
 
@@ -38,6 +42,8 @@ package() {
 
 	install -d "$pkgdir/usr/bin"
 	install -d "$pkgdir/usr/share/games/$pkgname"
+	install -d "$pkgdir/usr/share/pixmaps"
+	install -d "$pkgdir/usr/share/applications"
 
 	msg2 "Installing launcher"
 	install -m755 "brutal-doom" "$pkgdir/usr/bin/brutal-doom"
@@ -48,6 +54,8 @@ package() {
 	install -m644 "$srcdir/brutal20patch.pk3" "$pkgdir/usr/share/games/$pkgname/brutal20patch.pk3"
 	install -m644 "$srcdir/manual.rtf" "$pkgdir/usr/share/games/$pkgname/manual.rtf"
 	install -m644 "README.md" "$pkgdir/usr/share/games/$pkgname/README.md"
+	install -m644 "$srcdir/brutal-doom.png" "$pkgdir/usr/share/pixmaps/brutal-doom.png"
+	install -m644 "$srcdir/brutal-doom.desktop" "$pkgdir/usr/share/applications/brutal-doom.desktop"
 
 	msg2 "Installing configuration files..."
 	install -m777 "gzdoom.ini" "$pkgdir/usr/share/games/$pkgname/gzdoom.ini"

@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.0
+Name=Brutal Doom
+GenericName=Brutal Doom
+Type=Application
+Icon=/usr/share/pixmaps/brutal-doom.png
+Exec=brutal-doom
+Keywords=game;
+Terminal=false
+Categories=Game
+
