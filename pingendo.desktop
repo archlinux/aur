@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Pingendo
+Comment=An WYSIWYG HTML5 editor focused on Bootstrap UI
+Icon=/usr/share/icons/nuvola/128x128/places/folder-html.png
+Exec=/opt/pingendo-4-beta/Pingendo-4
+Terminal=false
+Type=Application
+Categories=Application;Development;
+StartupNotify=true

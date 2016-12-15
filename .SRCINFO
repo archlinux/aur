@@ -1,0 +1,29 @@
+pkgbase = pingendo-4-beta
+	pkgdesc = An WYSIWYG HTML5 editor focused on Bootstrap UI
+	pkgver = 0.33.1
+	pkgrel = 3
+	url = http://pingendo.com
+	arch = i686
+	arch = x86_64
+	license = custom:pingendo
+	makedepends = unzip
+	depends = nss
+	depends = libnotify
+	depends = libxtst
+	depends = gtk2
+	depends = gcc-libs-multilib
+	depends = systemd
+	depends = alsa-lib
+	depends = gconf
+	optdepends = libnotify: Adds desktop notifications
+	conflicts = pingendo
+	options = !strip
+	source = pingendo.desktop
+	md5sums = ab99d85ff46b876db76d0a13f5a59c6d
+	source_i686 = http://download.pingendo.com/beta/pingendo-4-beta-linux32.zip
+	md5sums_i686 = 2f1a1f54ecd7389da6107bab3c82b186
+	source_x86_64 = http://download.pingendo.com/beta/pingendo-4-beta-linux64.zip
+	md5sums_x86_64 = 4b847b4d905d381d6fbb3131c590d273
+
+pkgname = pingendo-4-beta
+
