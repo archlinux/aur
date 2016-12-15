@@ -1,4 +1,4 @@
-pkgbase = certbot-user
+pkgbase = certbot
 	pkgdesc = Let’s Encrypt certbot running as certbot user rather than root, with either standalone or webroot mode.
 	pkgver = 0.9.3
 	pkgrel = 1
@@ -38,5 +38,5 @@ pkgbase = certbot-user
 	sha256sums = ca72fe5f7e6ccbbe8afc084d9255f93e3b81ce2793a77103a9382fa9eaff6c97
 	sha256sums = 151621a821f56178408851e016c7fda67dc4c726f210ad3279b29fd1f43282fa
 
-pkgname = certbot-user
+pkgname = certbot-user-old
 

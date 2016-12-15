@@ -2,8 +2,9 @@
 # Contributor: Felix Yan <felixonmars@archlinux.org>
 # Contributor: Gordian Edenhofer <gordian.edenhofer[at]yahoo[dot]de>
 
+pkgbase=certbot
 _pkgname=certbot
-pkgname=${_pkgname}-user
+pkgname=${_pkgname}-user-old
 pkgver=0.9.3
 pkgrel=1
 pkgdesc="Let’s Encrypt certbot running as certbot user rather than root, with either standalone or webroot mode."
@@ -40,7 +41,7 @@ check() {
     python2 setup.py test
 }
 
-package_certbot-user() {
+package_certbot-user-old() {
     cd ${_pkgname}-${pkgver}
     python2 setup.py install --root="${pkgdir}"
 
