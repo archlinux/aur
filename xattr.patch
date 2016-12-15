@@ -1,0 +1,69 @@
+From: Anthony G. Basile <blueness@gentoo.org>
+
+This patch adds support for a restricted user-controlled namespace on
+tmpfs filesystem used to house PaX flags.  The namespace must be of the
+form user.pax.* and its value cannot exceed a size of 8 bytes.
+
+This is needed even on all Gentoo systems so that XATTR_PAX flags
+are preserved for users who might build packages using portage on
+a tmpfs system with a non-hardened kernel and then switch to a
+hardened kernel with XATTR_PAX enabled.
+
+The namespace is added to any user with Extended Attribute support
+enabled for tmpfs.  Users who do not enable xattrs will not have
+the XATTR_PAX flags preserved.
+
+diff --git a/include/uapi/linux/xattr.h b/include/uapi/linux/xattr.h
+index 1590c49..5eab462 100644
+--- a/include/uapi/linux/xattr.h
++++ b/include/uapi/linux/xattr.h
+@@ -73,5 +73,9 @@
+ #define XATTR_POSIX_ACL_DEFAULT  "posix_acl_default"
+ #define XATTR_NAME_POSIX_ACL_DEFAULT XATTR_SYSTEM_PREFIX XATTR_POSIX_ACL_DEFAULT
+ 
++/* User namespace */
++#define XATTR_PAX_PREFIX XATTR_USER_PREFIX "pax."
++#define XATTR_PAX_FLAGS_SUFFIX "flags"
++#define XATTR_NAME_PAX_FLAGS XATTR_PAX_PREFIX XATTR_PAX_FLAGS_SUFFIX
+ 
+ #endif /* _UAPI_LINUX_XATTR_H */
+diff --git a/mm/shmem.c b/mm/shmem.c
+index 440e2a7..c377172 100644
+--- a/mm/shmem.c
++++ b/mm/shmem.c
+@@ -2667,6 +2667,14 @@ static int shmem_xattr_handler_set(const struct xattr_handler *handler,
+ 	struct shmem_inode_info *info = SHMEM_I(d_inode(dentry));
+ 
+ 	name = xattr_full_name(handler, name);
++
++	if (!strncmp(name, XATTR_USER_PREFIX, XATTR_USER_PREFIX_LEN)) {
++		if (strcmp(name, XATTR_NAME_PAX_FLAGS))
++			return -EOPNOTSUPP;
++		if (size > 8)
++			return -EINVAL;
++	}
++
+ 	return simple_xattr_set(&info->xattrs, name, value, size, flags);
+ }
+ 
+@@ -2682,6 +2690,12 @@ static const struct xattr_handler shmem_trusted_xattr_handler = {
+ 	.set = shmem_xattr_handler_set,
+ };
+ 
++static const struct xattr_handler shmem_user_xattr_handler = {
++	.prefix = XATTR_USER_PREFIX,
++	.get = shmem_xattr_handler_get,
++	.set = shmem_xattr_handler_set,
++};
++
+ static const struct xattr_handler *shmem_xattr_handlers[] = {
+ #ifdef CONFIG_TMPFS_POSIX_ACL
+ 	&posix_acl_access_xattr_handler,
+@@ -2689,6 +2703,7 @@ static const struct xattr_handler *shmem_xattr_handlers[] = {
+ #endif
+ 	&shmem_security_xattr_handler,
+ 	&shmem_trusted_xattr_handler,
++	&shmem_user_xattr_handler,
+ 	NULL
+ };
+ 

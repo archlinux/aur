@@ -2,9 +2,10 @@
 # Contributor: Matthew Wardrop <mister.wardrop@gmail.com>
 
 pkgbase=linux-surfacepro3-rt
-_srcname=linux-4.8.11
-pkgver=4.8.11
-pkgrel=2.1
+_srcname=linux-4.8.14
+pkgver=${_srcname#linux-}
+_rtver=rt9
+pkgrel=2.2
 arch=('i686' 'x86_64')
 url="https://github.com/alyptik/linux-surfacepro3-rt"
 license=('GPL2')
@@ -12,33 +13,28 @@ makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc' 'elfutils')
 options=('!strip')
 source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         "https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.sign"
-        "https://www.kernel.org/pub/linux/kernel/projects/rt/${pkgver%.*}/older/patch-${pkgver}-rt7.patch.xz"
-        "https://www.kernel.org/pub/linux/kernel/projects/rt/${pkgver%.*}/older/patch-${pkgver}-rt7.patch.sign"
+        "https://www.kernel.org/pub/linux/kernel/projects/rt/${pkgver%.*}/older/patch-${pkgver}-${_rtver}.patch.xz"
+        "https://www.kernel.org/pub/linux/kernel/projects/rt/${pkgver%.*}/older/patch-${pkgver}-${_rtver}.patch.sign"
         # Brain Fuck Scheduler & other personal patches
         'https://raw.githubusercontent.com/alyptik/linux-surfacepro3-rt/github/bfq.patch'
         'https://raw.githubusercontent.com/alyptik/linux-surfacepro3-rt/github/bfs.patch'
         'https://raw.githubusercontent.com/alyptik/linux-surfacepro3-rt/github/bfs-fixes1.patch'
         'https://raw.githubusercontent.com/alyptik/linux-surfacepro3-rt/github/bfs-fixes2.patch'
         'https://raw.githubusercontent.com/alyptik/linux-surfacepro3-rt/github/bfs-fixes3.patch'
-        'https://raw.githubusercontent.com/alyptik/linux-surfacepro3-rt/github/block.patch'
-        'https://raw.githubusercontent.com/alyptik/linux-surfacepro3-rt/github/init.patch'
-        'https://raw.githubusercontent.com/alyptik/linux-surfacepro3-rt/github/kconfig.patch'
-        'https://raw.githubusercontent.com/alyptik/linux-surfacepro3-rt/github/xattr.patch'
-        'https://raw.githubusercontent.com/alyptik/linux-surfacepro3-rt/github/xfs.patch'
-        'multitouch.patch'
-	'touchscreen_multitouch_fixes1.patch'
-	'touchscreen_multitouch_fixes2.patch'
+        'block.patch' 'init.patch' 'kconfig.patch' 'xattr.patch' 'xfs.patch'
+	'touchscreen_multitouch_fixes1.patch' 'touchscreen_multitouch_fixes2.patch'
 	'wifi.patch'
+        'multitouch.patch'
+        'change-default-console-loglevel.patch'
         # the main kernel config files
         'config' 'config.x86_64' 'config.sp3'
         # standard config files for mkinitcpio ramdisk
         'linux.preset'
-        'change-default-console-loglevel.patch'
 )
 
-sha256sums=('cc0f42f408ba3e51f8b0e93e3d8050ff18569456d286cb2a1aca3327dd06890f'
+sha256sums=('81e344d7852128a80fe54f659b2c87bb1b1bde560cd80c52c79c99f568fd5acf'
             'SKIP'
-            'f258a256ebdb51ceabbe1e482706756437c7113c6d987025203468bfb8601f9a'
+            '157492d303dd0504181e55cdcfe65471c578a3a540527c1c11b0a39297b23de5'
             'SKIP'
             '242d32d0fe819852e74d93b8a044cf24a40a9474d6f00ca93a19aa98298dcefa'
             '51f91681b708149fe91e565f5c40811477428e2aa86f8726a20e0e7c55c5407c'
@@ -50,15 +46,15 @@ sha256sums=('cc0f42f408ba3e51f8b0e93e3d8050ff18569456d286cb2a1aca3327dd06890f'
             'f479a5ca6abe4d50ca4c09e6e83a027369fcd3efff8d5ce60f0699d8fa47beb8'
             '4633ae19b9a9871a3cfffba98ec7c3cd240f64bef8a0eebcf1212219c80972fd'
             '6618ef72495a6f7c7e50ecfba4a897f78668a3cbaabb93e97ad3d276e7abc52c'
-            '3a4722981f689225a0ad550e45d829fcc3ca29d4258df3c6c989a916199e1c08'
             'cc78e8844d9ec4bd29cce392a3e4683061646e1ad7c100c4958a5cadabb25b52'
             '34b4e00ffcf9efc43ab47444d14febb94432d340d0f1d5bcd56153879d1be113'
             '52e7c895aeb505bc8d3b5321a346fcdbb749f8035cacc97a237c24c1f527adbc'
+            '3a4722981f689225a0ad550e45d829fcc3ca29d4258df3c6c989a916199e1c08'
+            '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
             '0fcd0b22fe9ec58ba41b81b463f68d619b6898a5c405fb26c85237a183240371'
-            '577a3c4c211e6946fb8c1448d6a325861b41c8c8660203ae7d63a58f3af0d279'
-            '5c92eb5febe5bafcc76f19aa3d4aaf723cfbb465615cd68ecfaea54a2f773994'
-            'f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c'
-            '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99')
+            'ed9b9e6efaf4f23e7ae3406322b4d1d3080e8dbc7ab3f03bcbf728ca2010e21b'
+            'f0c70a988490189ac3869ef948db2ca28704f1d85a1519d5b5f99afa7b10f741'
+            'f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c')
 
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
@@ -67,11 +63,11 @@ validpgpkeys=(
               '8D633C480C2247466051B7ADE314F17E08EF006D' # Joey Pabalinas
              )
 multitouch='y'
-sp3config='y'
 bcache='n'
 bfs='n'
 bfq='n'
 personal='y'
+sp3config='n'
 
 _kernelname=${pkgbase#linux}
 
@@ -82,7 +78,8 @@ prepare() {
   if [ "$bfq" = 'y' ]; then patch -p1 -i "${srcdir}/bfq.patch"; fi
   if [ "$bfs" = 'y' ]; then for i in bfs bfs-fixes{1..3}; do patch -p1 -i "${srcdir}/${i}.patch"; done; fi
   if [ "$bcache" = 'y' ]; then
-    sed -i '\%^diff --git a/drivers/md/bcache/Kconfig b/drivers/md/bcache/Kconfig$%,+11 d' "${srcdir}/patch-${pkgver}-rt2.patch"
+    sed -i '\%^diff --git a/drivers/md/bcache/Kconfig b/drivers/md/bcache/Kconfig$%,+11 d' \
+      "${srcdir}/patch-${pkgver}-${_rtver}.patch"
     cp "${srcdir}/linux-${pkgver}/include/linux/rwsem.h" "${srcdir}/linux-${pkgver}/drivers/md/bcache/"
     sed -i '/#include "bcache.h"/i #include "rwsem.h"\n' "${srcdir}/linux-${pkgver}/drivers/md/bcache/request.c"
   fi
@@ -91,7 +88,7 @@ prepare() {
   if [ "$personal" = 'y' ]; then for i in block init kconfig xattr xfs; do patch -p1 -i "${srcdir}/${i}.patch"; done; fi
 
   # Add RT patches
-  patch -p1 -i ${srcdir}/patch-${pkgver}*.patch
+  patch -p1 -i ${srcdir}/patch-${pkgver}-${_rtver}.patch
 
   # set DEFAULT_CONSOLE_LOGLEVEL to 4 (same value as the 'quiet' kernel param)
   # remove this when a Kconfig knob is made available by upstream
@@ -113,7 +110,7 @@ prepare() {
   ## If sp3config='y' use personal config as a base
   if [ "$sp3config" = 'y' ]; then
     cat "${srcdir}/config.sp3" >./.config
-  elif [ "${CARCH}" = "x86_64" ]; then
+  elif [ "$CARCH" = "x86_64" ]; then
     cat "${srcdir}/config.x86_64" >./.config
   else
     cat "${srcdir}/config" > ./.config
