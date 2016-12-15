@@ -2,7 +2,7 @@
 
 pkgname=kreport
 pkgver=3.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A framework for creation and generation of reports in multiple formats"
 arch=(i686 x86_64)
 url="http://www.kexi-project.org/"
@@ -14,7 +14,6 @@ source=("http://download.kde.org/stable/$pkgname/src/$pkgname-$pkgver.tar.xz"{,.
 sha1sums=('7f76aa52952aff2b52d9d5f1e88686f5158a2fc3'
           'SKIP')
 validpgpkeys=(4866BAF713B465677A4059643C7C0E201B6524DB) # Jarosław Staniek <staniek@kde.org>
-
 
 prepare() {
   mkdir -p build
