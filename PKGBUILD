@@ -5,14 +5,14 @@
 # Contributor: Luke McCarthy <luke@iogopro.co.uk>
 
 pkgname=fasm
-pkgver=1.71.57
+pkgver=1.71.58
 pkgrel=1
 pkgdesc="Fast and efficient self-assembling x86 assembler for DOS, Windows and Linux operating systems"
 arch=('i686' 'x86_64')
 url="https://flatassembler.net/"
 license=('custom')
 source=("${pkgname}-${pkgver}.tgz::${url}${pkgname}-${pkgver}.tgz")
-sha256sums=('72c952aaae75b82ec08487e0c6d74048c63a74ce6cd939161ce7f4e5d0504181')
+sha256sums=('f6398f9163f0e97eacbde9fe74a802e06a925b71df7d3cadf30b0124f8dee350')
 makedepends=('gcc')
 
 if test "$CARCH" == x86_64; then

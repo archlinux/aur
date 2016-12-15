@@ -2,15 +2,15 @@
 # Sat Sep 24 10:04:37 UTC 2016
 pkgbase = fasm
 	pkgdesc = Fast and efficient self-assembling x86 assembler for DOS, Windows and Linux operating systems
-	pkgver = 1.71.57
+	pkgver = 1.71.58
 	pkgrel = 1
 	url = https://flatassembler.net/
 	arch = i686
 	arch = x86_64
 	license = custom
 	makedepends = gcc
-	source = fasm-1.71.57.tgz::https://flatassembler.net/fasm-1.71.57.tgz
-	sha256sums = 72c952aaae75b82ec08487e0c6d74048c63a74ce6cd939161ce7f4e5d0504181
+	source = fasm-1.71.58.tgz::https://flatassembler.net/fasm-1.71.58.tgz
+	sha256sums = f6398f9163f0e97eacbde9fe74a802e06a925b71df7d3cadf30b0124f8dee350
 
 pkgname = fasm
 
