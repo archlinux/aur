@@ -1,7 +1,7 @@
 # Maintainer: Michael DeGuzis <mdeguzis@gmail.com>
 
 pkgname=doctoc-git
-pkgver=r130.a376096
+pkgver=1.2.0.r0.ga376096
 pkgrel=1
 pkgdesc="Generates table of contents for markdown files inside local git repository., installed through npm"
 arch=('any')
@@ -16,7 +16,7 @@ sha256sums=('SKIP')
 pkgver() {
 
   cd "$srcdir/$pkgname"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/v//'
 
 }
 
