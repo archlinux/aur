@@ -9,3 +9,6 @@ Restart=always
 ExecStart=/usr/bin/devpi-server --start --serverdir /var/lib/devpi
 ExecStop=/usr/bin/devpi-server --stop
 User=devpi
+
+[Install]
+WantedBy=multi-user.service
