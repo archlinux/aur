@@ -6,8 +6,8 @@ _pyver="python"
 _pyverother='python python2 '
 _pyverother=(${_pyverother//${_pyver} /})
 pkgname="${_pyver}-${_pybase}"
-pkgver='2.05'
-pkgrel='2'
+pkgver='2.06'
+pkgrel='1'
 pkgdesc='convert CSV to formatted spreadsheets and documents'
 arch=('any')
 url="https://sourceforge.net/projects/${_pybase}"
@@ -17,7 +17,7 @@ makedepends=("${_pyver}" "${_pyver}-distribute") # same as python-setuptools
 _srcdir="${_pybase}-${pkgver}"
 _verwatch=("${url}/files/" "\s\+${_pybase}-\([0-9\.]\+\)</a></th>.*" 'f')
 source=("${url}/files/${_pybase}-${pkgver}/${_pybase}-${pkgver}.tar.gz")
-sha256sums=('a395b4db3d812bcabad4744539927ad795eea1467b9bf7ef1542b271fc39ec8f')
+sha256sums=('6a491c90f532183c0336d9bb26003f43e4950e41db5a1782e84d1100d66b20e0')
 
 package() {
   set -u
