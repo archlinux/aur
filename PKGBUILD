@@ -3,8 +3,8 @@
 # Contributor: genesis66
 
 pkgname=lib32-fltk
-pkgver=1.3.3
-pkgrel=6
+pkgver=1.3.4
+pkgrel=1
 pkgdesc="Graphical user interface toolkit for X (32-bit)"
 arch=('x86_64')
 url="http://www.fltk.org"
@@ -12,17 +12,15 @@ license=('LGPL')
 depends=("${pkgname#lib32-}" 'lib32-gcc-libs' 'lib32-glu' 'lib32-libjpeg-turbo' 'lib32-libpng' 'lib32-libxcursor' 'lib32-libxinerama' 'lib32-libxft')
 makedepends=('gcc-multilib')
 source=("http://fltk.org/pub/${pkgname#lib32-}/${pkgver}/${pkgname#lib32-}-${pkgver}-source.tar.gz"
-        "tigervnc.patch" "fltk-config-dynlibs.patch")
-sha512sums=('277ba27e35c20e2d4fc5296bf418c5ab78c821870476e21d49f723765b99b3a559eed4ecd5215ac26d53a1091ada003e17f1553194cebaa97dd854809dd2885d'
-            '30fd8ad3cbedc7e4cb0b3e08d21cc28aa9c8f20d4d1970646de931243c3752f55c4414d921aec29dbdf3b1e4eade0365d3c806fb5c9ecaa29ac3d7cf01f216be'
-            '33743f009c4486cc2199dc90b031cfe977c779f6bf6e958de29a2180578f3866004f20f6411a049aa1192ea4f8adad4636cd90cb4f0ff6ae05205bd2bc016fef')
+        "fltk-config-dynlibs.patch")
+sha512sums=('92c236e426ad9b2a2954a6fc401bc9bf4c4c46d47b08f8c9b879da6031ac158ef9b944f28a8bea64d18072d1af8ceaa09c00abebd745fb76dd628636424446c2'
+            'c2f15a5c134a258082454dacf8db14b4d276c8c9ed207b1d2275690a2829272cfee81186caf794031339f7ed619898485bd59c6d59d2e71cd98facfbb564c1f5')
 
 prepare() {
   cd "${pkgname#lib32-}-${pkgver}"
-  patch -Np1 -i ${srcdir}/tigervnc.patch
   patch -Np1 -i ${srcdir}/fltk-config-dynlibs.patch
   sed -i 's/class Fl_XFont_On_Demand/class FL_EXPORT Fl_XFont_On_Demand/' FL/x.H
-  sed -i -e 's/$(LINKFLTK)/$(LINKSHARED)/' -e 's/$(LINKFLTKIMG)/$(LINKSHARED)/' test/Makefile
+  sed -i 's/x-fluid.desktop/fluid.desktop/' -i fluid/Makefile
 }
 
 build() {
