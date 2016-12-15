@@ -1,48 +1,53 @@
-# Maintainer: Nikola Milinković <nikmil@gmail.com>
+# Maintainer: Dan McCurry <dan.mccurry at linux dot com>
+# Contributer: Nikola Milinković <nikmil@gmail.com>
 # Submitter: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=jabref-git
-pkgver=3.3.r6523.cfb984c
-_pkgver=3.3dev
-_gitname="jabref"
+_release=3.8
+pkgver=3.8.v_2.9.2.r5972.832417f
 pkgrel=1
 pkgdesc="GUI frontend for BibTeX, written in Java -- built from git"
 arch=('any')
-url="http://jabref.sourceforge.net/"
-license=('GPL')
-depends=('java-environment=8')
+url="https://www.jabref.org"
+license=('MIT')
+depends=('java-environment>=8')
 makedepends=('git' 'java-environment=8')
+optdepends=('gsettings-desktop-schemas: For web search support')
 provides=('jabref')
 conflicts=('jabref')
-source=('jabref::git+https://github.com/JabRef/jabref.git'
-	'jabref.desktop'
-	'jabref.sh')
+source=("${pkgname%-git}::git+https://github.com/JabRef/jabref.git"
+	"${pkgname%-git}.desktop"
+	"${pkgname%-git}.sh")
 md5sums=('SKIP'
          '5f76feb6b2f66a2ea8b52bca999a934f'
-         '6d4ef1d79495d2e09e4c616c9227b0cb')
-       #'crystal_16.tar.gz')
+         '97c6daba4b3fc1ff1bee0f5b3a4c627f')
 
 pkgver() {
-  cd $_gitname
-  printf "3.3.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  cd ${srcdir}/${pkgname%-git}
+  printf "%s" "${_release}.$(git describe --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
+#  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-  JAVA_HOME=/usr/lib/jvm/java-8-openjdk
+  cd "$srcdir/${pkgname%-git}"
   PATH=/usr/lib/jvm/java-8-openjdk/jre/bin/:$PATH
-  cd "$srcdir/$_gitname"
+  
   ./gradlew releaseJar
 }
 
 package() {
-  cd "$srcdir/$_gitname"
-  install -Dm644 build/releases/JabRef-$_pkgver.jar \
-    ${pkgdir}/usr/share/java/JabRef.jar 
+  cd "${srcdir}/${pkgname%-git}"
+
+  install -Dm644 build/releases/JabRef-${_release}-dev.jar \
+    ${pkgdir}/usr/share/java/jabref/JabRef.jar 
+
   install -Dm755 $srcdir/jabref.sh ${pkgdir}/usr/bin/jabref
+
   install -Dm644 $srcdir/jabref.desktop \
     ${pkgdir}/usr/share/applications/jabref.desktop
+
   install -Dm644 build/resources/main/images/icons/JabRef-icon-48.png \
     ${pkgdir}/usr/share/pixmaps/jabref.png
-  install -d ${pkgdir}/usr/share/doc/$pkgname
-  cp -r build/resources/main/help ${pkgdir}/usr/share/doc/$pkgname
+
+  install -Dm644 LICENSE.md ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
 }
