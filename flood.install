@@ -1,0 +1,15 @@
+post_install(){
+        groupadd --system -g 500 flood
+        useradd --system -u 500 -g flood -d /srv/flood -s /bin/false flood
+}
+post_upgrade(){
+        systemctl daemon-reload
+        if systemctl is-enabled flood &>/dev/null || \
+                systemctl is-active flood &>/dev/null ; then
+                systemctl restart flood
+        fi
+}
+post_remove(){
+        systemctl stop flood
+        systemctl daemon-reload
+}
