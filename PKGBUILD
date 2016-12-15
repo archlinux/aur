@@ -5,7 +5,7 @@ _gitname=e4rat-lite
 pkgdesc="An improved version of e4rat, a toolset to accelerate the boot process and application startups."
 url=https://github.com/ShyPixie/$_gitname
 pkgver=2.7.r87.0881c2e
-pkgrel=1
+pkgrel=2
 
 arch=(i686 x86_64)
 license=('GPL3')
@@ -17,10 +17,12 @@ optdepends=('bootchart2: A "startup" graphing tool')
 conflicts=('ureadahead' 'e4rat-preload-lite' 'e4rat-preload-lite-git' 'e4rat-lite')
 
 source=("git://github.com/ShyPixie/$_gitname.git"
-        "$pkgname.install")
+        "$pkgname.install"
+        "e4rat-lite-git-update.hook")
 
 md5sums=('SKIP'
-         'e0deb0fc92359da3a1970bbab467ffdf')
+         'e0deb0fc92359da3a1970bbab467ffdf'
+         'c10ad77cea70aa55432fbf22196268d2')
          
 install=$pkgname.install
 backup=('etc/e4rat-lite.conf')
@@ -32,7 +34,11 @@ pkgver() {
 
 prepare() {
 	cd "$srcdir"
-	
+
+	#Edit the cmd to automatically re-build the package
+	cmd="echo 'NOTICE: Boost has been updated. Please re-build $pkgname.'"
+	sed -i "/Exec=/ s/$/$cmd/" 'e4rat-lite-git-update.hook'
+
 	if [ -d "build" ]; then
 		rm -rf build/*
 	else
@@ -59,6 +65,7 @@ package() {
 	mkdir -p "$pkgdir/usr/share/doc/${pkgname}/"
 	mkdir -p "$pkgdir/usr/share/license/${pkgname}/"
 
-	install -m644 "$srcdir"/$_gitname/README* "$pkgdir"/usr/share/doc/${pkgname}/
-	install -m644 "$srcdir"/$_gitname/LICENSE* "$pkgdir"/usr/share/license/${pkgname}/
+	install -m644 "$srcdir"/$_gitname/README* 				"$pkgdir"/usr/share/doc/${pkgname}/
+	install -m644 "$srcdir"/$_gitname/LICENSE* 				"$pkgdir"/usr/share/license/${pkgname}/
+	install -vDm644 "$srcdir"/e4rat-lite-git-update.hook	"$pkgdir"/usr/share/libalpm/hooks/e4rat-lite-git-update.hook
 }

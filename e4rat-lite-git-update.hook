@@ -1,0 +1,9 @@
+[Trigger]
+Operation=Update
+Type=Package
+Target=boost
+
+[Action]
+When=PostTransaction
+Exec=
+Depends=e4rat-lite-git

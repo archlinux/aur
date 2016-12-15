@@ -1,7 +1,7 @@
 pkgbase = e4rat-lite-git
 	pkgdesc = An improved version of e4rat, a toolset to accelerate the boot process and application startups.
 	pkgver = 2.7.r87.0881c2e
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ShyPixie/e4rat-lite
 	install = e4rat-lite-git.install
 	arch = i686
@@ -24,8 +24,10 @@ pkgbase = e4rat-lite-git
 	backup = etc/e4rat-lite.conf
 	source = git://github.com/ShyPixie/e4rat-lite.git
 	source = e4rat-lite-git.install
+	source = e4rat-lite-git-update.hook
 	md5sums = SKIP
 	md5sums = e0deb0fc92359da3a1970bbab467ffdf
+	md5sums = c10ad77cea70aa55432fbf22196268d2
 
 pkgname = e4rat-lite-git
 
