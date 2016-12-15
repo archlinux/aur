@@ -390,7 +390,7 @@ package_lib32-opencl-nvidia-full-beta-all() {
 
 package_lib32-nvidia-libgl-full-beta-all() {
   pkgdesc="NVIDIA driver library symlinks for 'lib32-nvidia-utils-full-beta-all'"
-  depends=('lib32-nvidia-utils-full-beta-all' 'nvidia-libgl-full-betaf-all')
+  depends=('lib32-nvidia-utils-full-beta-all' 'nvidia-libgl-full-beta-all')
   provides=('lib32-libgl' 'lib32-libegl' 'lib32-libgles' 'lib32-nvidia-libgl')
   conflicts=('lib32-libgl' 'lib32-libegl' 'lib32-libgles' 'lib32-nvidia-libgl')
   cd $_pkg
