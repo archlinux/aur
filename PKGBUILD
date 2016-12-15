@@ -1,8 +1,8 @@
 # Maintainer: XavierCLL <xavier.corredor.llano (a) gmail.com>
 
 pkgname=pycharm-professional
-pkgver=2016.3.0
-_pkgver=2016.3
+pkgver=2016.3.1
+_pkgver=2016.3.1
 pkgrel=1
 pkgdesc="Powerful Python and Django IDE. Professional edition."
 arch=('any')
@@ -36,7 +36,7 @@ optdepends=('ipython2: For enhanced interactive Python shell v2 inside Pycharm'
             'python-pytest: For support testing inside Pycharm with Python 3'
             'python2-tox: Python environments for testing tool with Python 2'
             'python-tox: Python environments for testing tool with Python 3')
-sha256sums=('192df48cdb9e2eac383f39a4a9cafb667be9ef7e183b85dc276623993fcbf722'
+sha256sums=('ac5eeb0c101c182807dd0932aa2bd3b8a3462486c66e41d25abf22e33e11893d'
             '016db1860a8b36d408c827f90aeb04b9d55cf21ea36788a9d8510cc54fae1c49'
             'c1a74303d9e870918bd8068f761c8251b996694b1b96b3537fbca317679c4958'
             '43e79e5a786fc76385634dc0a9f1c3489b25031745b840b0822b059fc91d1060'
