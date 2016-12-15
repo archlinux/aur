@@ -8,9 +8,9 @@
 
 pkgname=visual-studio-code-oss
 pkgdesc='Visual Studio Code for Linux, Open Source version'
-pkgver=1.7.2
+pkgver=1.8.0
 pkgrel=1
-_commit=7ba55c5860b152d999dda59393ca3ebeb1b5c85f
+_commit=38746938a4ab94f2f57d9e1309c51fd6fb37553d
 arch=('i686' 'x86_64' 'armv7h')
 url='https://code.visualstudio.com/'
 license=('MIT')
@@ -21,12 +21,12 @@ provides=('vscode-oss')
 
 source=("${pkgver}-${pkgrel}.tar.gz::https://github.com/Microsoft/vscode/archive/${_commit}.tar.gz"
         "${pkgname}.desktop")
-sha1sums=('7be23cfef9dced748e0c3a105b69c7e5b9e48d29'
-          '3603936424a566452537d6931e9b3d56d04ad7ef')
+sha256sums=('37e1a928c1ce145e23636754d99a6935db7c7b13e9106feccda55f0600107ef4'
+            '2ce2c6033667092c5e854036b676533fd433e9daf9ac8ce0f00606193420e72d')
 
 if (( VSCODE_NONFREE )); then
     source+=('product_json.patch')
-    sha1sums+=('ba8febe936932080610d899fdb57294fc2f9f614')
+    sha256sums+=('e90f9d69bd42c0d9fc5f081d3bf7ca307df53e3553efadf00d62ced66b1bb070')
     install="${pkgname}.nonfree.install"
     license+=('proprietary')
 fi
