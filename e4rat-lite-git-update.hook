@@ -1,5 +1,5 @@
 [Trigger]
-Operation=Update
+Operation=Upgrade
 Type=Package
 Target=boost
 

@@ -5,7 +5,7 @@ _gitname=e4rat-lite
 pkgdesc="An improved version of e4rat, a toolset to accelerate the boot process and application startups."
 url=https://github.com/ShyPixie/$_gitname
 pkgver=2.7.r87.0881c2e
-pkgrel=2
+pkgrel=3
 
 arch=(i686 x86_64)
 license=('GPL3')
@@ -22,7 +22,7 @@ source=("git://github.com/ShyPixie/$_gitname.git"
 
 md5sums=('SKIP'
          'e0deb0fc92359da3a1970bbab467ffdf'
-         'c10ad77cea70aa55432fbf22196268d2')
+         'b889cd20982a0d95fb694719174f5a11')
          
 install=$pkgname.install
 backup=('etc/e4rat-lite.conf')
