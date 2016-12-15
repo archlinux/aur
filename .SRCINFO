@@ -1,0 +1,22 @@
+pkgbase = scenic
+	pkgdesc = wallpaper browser/cycler for fluxbox, etc, and batch image-processing frontend for CLI programs such as feh and imagemagick
+	pkgver = r19.7023277
+	pkgrel = 1
+	url = https://github.com/balinbob/scenic
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = python2
+	depends = gtk2
+	depends = pygtk
+	depends = python2-keybinder2
+	depends = python2-gobject
+	depends = python2-dbus
+	optdepends = feh
+	optdepends = imagemagick
+	options = !emptydirs
+	source = git+https://github.com/balinbob/scenic
+	md5sums = SKIP
+
+pkgname = scenic
+
