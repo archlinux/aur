@@ -3,7 +3,7 @@
 
 set -u
 pkgname='nopoll'
-pkgver='0.4.2.b297'
+pkgver='0.4.3.b311'
 pkgrel='1'
 pkgdesc='Websocket library written in C'
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ license=('LGPL')
 depends=('openssl')
 _verwatch=("${url}/downloads/" "nopoll-\(.*\)\.tar\.gz" 'l')
 source=("http://www.aspl.es/nopoll/downloads/nopoll-${pkgver}.tar.gz")
-sha256sums=('f5fbf8aaa16a77b0f265d8c847eb06cb3e68f2b1a50737466dae81181618654c')
+sha256sums=('0df255f9d99a4b1537b6081d02cbb6491f014e0e30976b352058308ccaa4fcc6')
 
 prepare() {
   set -u
@@ -24,7 +24,7 @@ prepare() {
 build() {
   set -u
   cd "${srcdir}/${pkgname}-${pkgver}"
-  make -s # -j "$(nproc)"
+  make -s -j1
   set +u
 }
 
