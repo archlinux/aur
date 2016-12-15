@@ -1,0 +1,18 @@
+pkgbase = weeb-git
+	pkgdesc = A library manager for anime and series
+	pkgver = r40.872c920
+	pkgrel = 1
+	url = https://github.com/cosarara97/fucking-weeb
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = chicken
+	depends = gtk3
+	provides = weeb
+	conflicts = weeb
+	source = weeb::git+https://github.com/cosarara97/fucking-weeb.git
+	md5sums = SKIP
+
+pkgname = weeb-git
+
