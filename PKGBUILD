@@ -2,8 +2,8 @@
 
 pkgname="qt5-python27-git"
 _qtver=5.7.0
-pkgver=3.1+96.gbe06218
-pkgrel=4
+pkgver=3.1+105.gfd8413c
+pkgrel=1
 arch=("x86_64")
 pkgdesc="PythonQt fork featuring Qt 5.x and Python 3.x support and improved CMake build system (Qt5 and Python2.7 version)"
 license=("LGPL")
@@ -19,10 +19,7 @@ depends=("python2"
   "qt5-multimedia"
   "qt5-svg"
 )
-provides=("qt5-python27"
-  "pythonqt"
-)
-conflicts=("pythonqt")
+provides=("qt5-python27")
 replaces=("qt5-python26") # conflicting older versions is the idea
 source=("git+https://github.com/knossos-project/PythonQt.git"
   "qmetaobjectbuilder_p.h::http://code.qt.io/cgit/qt/qtbase.git/plain/src/corelib/kernel/qmetaobjectbuilder_p.h?h=v$_qtver")
