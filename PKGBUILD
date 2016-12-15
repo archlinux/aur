@@ -3,12 +3,13 @@
 pkgname=gopreload-git
 _gitname=gopreload
 pkgver=r49.ebb83fe
-pkgrel=1
+pkgrel=2
 pkgdesc="Preloads files needed for given programs"
 arch=('any')
 url="http://forums.gentoo.org/viewtopic-t-622085-highlight-preload.html"
 license=('GPL')
 depends=('strace')
+optdepends=('wmctrl: needed by gopreload-batch-refresh.sh')
 makedepends=('git')
 provides=('gopreload')
 conflicts=('gopreload')
