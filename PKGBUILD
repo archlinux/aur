@@ -1,6 +1,6 @@
 
 pkgname=weeb-git
-pkgver=r40.872c920
+pkgver=r49.dffa390
 pkgrel=1
 pkgdesc="A library manager for anime and series"
 arch=("i686" "x86_64")
@@ -25,7 +25,6 @@ build() {
 	export CHICKEN_REPOSITORY="$srcdir/prefix/lib/chicken/8"
 	# bind needs the -p or else it will try to install a
 	# binary in /usr/bin
-	chicken-install matchable record-variants make silex regex
 	chicken-install -p "$srcdir/prefix" bind http-client uri-common openssl medea
 	cd "$srcdir/${pkgname%-git}"
 	make deployable
