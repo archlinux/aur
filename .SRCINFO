@@ -1,6 +1,6 @@
 pkgbase = linux-surfacepro3-rt
 	pkgver = 4.8.14
-	pkgrel = 2.21
+	pkgrel = 2.22
 	url = https://github.com/alyptik/linux-surfacepro3-rt
 	arch = i686
 	arch = x86_64
@@ -58,9 +58,9 @@ pkgbase = linux-surfacepro3-rt
 	sha256sums = 52e7c895aeb505bc8d3b5321a346fcdbb749f8035cacc97a237c24c1f527adbc
 	sha256sums = 3a4722981f689225a0ad550e45d829fcc3ca29d4258df3c6c989a916199e1c08
 	sha256sums = 1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99
-	sha256sums = 1cd39cdbb20bb58d81e1cd466d714ab45d7f67d97c231b7ef900868440168cca
+	sha256sums = 0fcd0b22fe9ec58ba41b81b463f68d619b6898a5c405fb26c85237a183240371
 	sha256sums = ed9b9e6efaf4f23e7ae3406322b4d1d3080e8dbc7ab3f03bcbf728ca2010e21b
-	sha256sums = 74ec46c9f22e7421ec2458a10e666012d7837671513839b466eeffa880708b0f
+	sha256sums = 09392d9bfec3f7878824670d173a260205319e663f96aad281bb0269da72ced8
 	sha256sums = f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c
 
 pkgname = linux-surfacepro3-rt
