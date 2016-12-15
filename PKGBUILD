@@ -5,7 +5,7 @@
 pkgname=jzip
 pkgver=2.1
 _dlpkgver=21-10oct2000
-pkgrel=8
+pkgrel=9
 pkgdesc="Jzip is an interpreter for games in the Infocom Zcode story file format"
 url="http://jzip.sourceforge.net/"
 depends=(ncurses)
@@ -20,7 +20,7 @@ build() {
   cp unixio.mak Makefile
 
   # apply patch to makefile
-  patch -Np0 < $startdir/src/makefile-patch.diff
+  patch -Np0 < $srcdir/makefile-patch.diff
 
   make || return 1
 }

@@ -1,7 +1,7 @@
 pkgbase = jzip
 	pkgdesc = Jzip is an interpreter for games in the Infocom Zcode story file format
 	pkgver = 2.1
-	pkgrel = 8
+	pkgrel = 9
 	url = http://jzip.sourceforge.net/
 	arch = i686
 	arch = x86_64
