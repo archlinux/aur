@@ -1,0 +1,17 @@
+pkgbase = droidmote
+	pkgdesc = Server for DroidMote. Android, Windows and Linux from the comfort of your couch. Real Multi Touch without TouchScreen
+	pkgver = 3.0.0
+	pkgrel = 1
+	url = http://www.videomap.it/
+	arch = x86_64
+	license = unknown
+	backup = etc/droidmote.conf
+	source = https://github.com/adrianlzt/droidmote-aur/releases/download/3.0.0/droidmote
+	source = droidmote.conf
+	source = service
+	md5sums = 7f96c828660a6e844d4e5b3757eee198
+	md5sums = 13c6e42310e9be9b464a3b99149e06b0
+	md5sums = 83d4fbce1dd8dc2c51c89e480329b879
+
+pkgname = droidmote
+

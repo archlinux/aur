@@ -1,0 +1,13 @@
+[Unit]
+Description=DroidMote
+After=network.target
+
+[Service]
+Type=simple
+EnvironmentFile=/etc/droidmote.conf
+ExecStart=/usr/bin/droidmote $PORT $PASSWORD
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
+
