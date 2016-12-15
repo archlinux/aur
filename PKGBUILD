@@ -28,7 +28,7 @@ build() {
 
 check() {
   cd streamlink
-  python -m pytest tests/
+  python setup.py test || warning "Tests failed"
 }
 
 package() {
