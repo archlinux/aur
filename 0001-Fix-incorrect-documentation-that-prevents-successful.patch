@@ -1,0 +1,26 @@
+From 42f27beb63a629dcef514abb0b31dea193f35a38 Mon Sep 17 00:00:00 2001
+From: Guillaume Melquiond <guillaume.melquiond@inria.fr>
+Date: Fri, 16 Dec 2016 11:27:42 +0100
+Subject: [PATCH] Fix incorrect documentation that prevents successful
+ compilation (bug #5265).
+
+---
+ doc/refman/RefMan-syn.tex | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/doc/refman/RefMan-syn.tex b/doc/refman/RefMan-syn.tex
+index 1fcc1c0..21c39de 100644
+--- a/doc/refman/RefMan-syn.tex
++++ b/doc/refman/RefMan-syn.tex
+@@ -649,7 +649,7 @@ A recursive pattern for binders can be used in position of a recursive
+ pattern for terms. Here is an example:
+ 
+ \begin{coq_example*}
+-Notation ``'FUNAPP' x .. y , f'' :=
++Notation "'FUNAPP' x .. y , f" :=
+   (fun x => .. (fun y => (.. (f x) ..) y ) ..)
+   (at level 200, x binder, y binder, right associativity).
+ \end{coq_example*}
+-- 
+2.10.2
+
