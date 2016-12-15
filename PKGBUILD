@@ -3,10 +3,10 @@
 pkgname=gogland-eap
 pkgver=1.812.15
 pkgrel=1
-pkgdesc="Lightweight and Smart PHP IDE"
+pkgdesc='Capable and Ergonomic Go IDE'
 arch=('x86_64' 'i686')
 options=('!strip')
-url="http://www.jetbrains.com/${pkgname}/"
+url='http://www.jetbrains.com/go/'
 license=('Commercial')
 optdepends=('java-environment>=8: use system java'
             'java-runtime-common: use system java')
