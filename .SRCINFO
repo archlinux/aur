@@ -1,0 +1,42 @@
+pkgbase = certbot-user
+	pkgdesc = Let’s Encrypt certbot running as certbot user rather than root, with either standalone or webroot mode.
+	pkgver = 0.9.3
+	pkgrel = 1
+	url = https://letsencrypt.org/
+	install = certbot.install
+	arch = any
+	license = Apache
+	checkdepends = python2-nose
+	depends = ca-certificates
+	depends = python2-acme=0.9.3
+	depends = python2-configargparse
+	depends = python2-configobj
+	depends = python2-cryptography
+	depends = python2-pyopenssl
+	depends = python2-mock
+	depends = python2-parsedatetime
+	depends = python2-psutil
+	depends = python2-pyrfc3339
+	depends = python2-pythondialog
+	depends = python2-pytz
+	depends = python2-requests
+	depends = python2-setuptools
+	depends = python2-six
+	depends = python2-zope-component
+	depends = python2-zope-interface
+	provides = certbot
+	conflicts = certbot
+	source = https://pypi.io/packages/source/c/certbot/certbot-0.9.3.tar.gz
+	source = https://pypi.io/packages/source/c/certbot/certbot-0.9.3.tar.gz.asc
+	source = certbot.tmpfiles
+	source = certbot.sysusers
+	validpgpkeys = 148C30F6F7E429337A72D992B00B9CC82D7ADF2C
+	validpgpkeys = 1B41B758F9A78C7F444C20FA3E5B4152E3ADB1FD
+	validpgpkeys = A2CFB51FA275A7286234E7B24D17C995CD9775F2
+	sha256sums = 68149cb8392b29f5d5246e7226d25f913f2b10482bf3bc7368e8c8821d25f3b0
+	sha256sums = SKIP
+	sha256sums = ca72fe5f7e6ccbbe8afc084d9255f93e3b81ce2793a77103a9382fa9eaff6c97
+	sha256sums = 151621a821f56178408851e016c7fda67dc4c726f210ad3279b29fd1f43282fa
+
+pkgname = certbot-user
+
