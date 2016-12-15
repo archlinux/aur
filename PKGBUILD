@@ -3,7 +3,7 @@
 pkgname=doctoc-git
 pkgver=1.2.0.r0.ga376096
 pkgrel=1
-pkgdesc="Generates table of contents for markdown files inside local git repository., installed through npm"
+pkgdesc="Generates table of contents for markdown files inside local git repository., installed through npm (git-latest)"
 arch=('any')
 url="www.imaginary.tech/teleprompter"
 license=('GPLv3')
