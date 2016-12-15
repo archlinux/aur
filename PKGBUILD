@@ -1,6 +1,6 @@
 # Maintainer: Alex Forencich <alex@alexforencich.com>
 pkgname=hdrmerge-git
-pkgver=0.5.0.r38.gd13b248
+pkgver=0.5.0.r40.g8e652a1
 pkgrel=1
 pkgdesc='HDRMerge fuses two or more raw images into a single raw with an extended dynamic range.'
 arch=('i686' 'x86_64')
@@ -24,10 +24,14 @@ pkgver() {
 
 build() {
   cd "$srcdir/$_gitname"
-	cmake CMakeLists.txt -DCMAKE_INSTALL_PREFIX=/usr
-	make
+  cmake CMakeLists.txt -DCMAKE_INSTALL_PREFIX=/usr
+  make
 }
 
 package() {
-	make DESTDIR="$pkgdir/" -C "$srcdir/$_gitname" install
+  cd "$srcdir/$_gitname"
+  make DESTDIR="$pkgdir/" XDG_UTILS_INSTALL_MODE=system install
+
+  install -m 0644 -D hdrmerge.desktop $pkgdir/usr/share/applications/hdrmerge.desktop
+  install -m 0644 -D images/icon.png $pkgdir/usr/share/icons/hicolor/128x128/apps/hdrmerge-icon.png
 }
