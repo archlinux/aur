@@ -16,20 +16,21 @@
 #                results warnings
 #   2015.07.07 - removed -Werror to ignore compile warnings (Hugo Ideler)
 #              - PKGBUILD fixes and updated git versioning
+#   2016.12.15 - updated URL and GIT repository links
 
 pkgname=ideviceinstaller-git
 _gitname=ideviceinstaller
-pkgver=1.1.0.r11.g9677564
+pkgver=1.1.0.r13.g442f670
 pkgrel=1
 pkgdesc="Manage Applications of an iPhone or iPod Touch"
 arch=('i686' 'x86_64')
-url="http://cgit.sukimashita.com/ideviceinstaller.git/"
+url="http://www.libimobiledevice.org/"
 license=('GPL')
 groups=('system')
 depends=('libimobiledevice' 'usbmuxd' 'libzip') 
 makedepends=('git' 'automake')
 provides=('ideviceinstaller')
-source=("git://git.sukimashita.com/${_gitname}.git")
+source=("git+https://github.com/libimobiledevice/${_gitname}.git")
 md5sums=('SKIP')
 
 pkgver() {
