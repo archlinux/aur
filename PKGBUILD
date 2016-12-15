@@ -4,8 +4,8 @@
 # Contributor: Malte Rabenseifner <malte@zearan.de> 
 
 pkgname=murmur-ice
-pkgver=1.2.17
-pkgrel=2
+pkgver=1.2.18
+pkgrel=1
 pkgdesc="The voice chat application server for Mumble"
 arch=('i686' 'x86_64')
 url="https://github.com/mumble-voip/mumble"
@@ -44,7 +44,6 @@ package() {
   install -Dm644 ${srcdir}/murmur.service ${pkgdir}/usr/lib/systemd/system/murmur.service
   install -Dm644 LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
 }
-md5sums=('98a28c10cb607bb51f13e568db2b9570'
+md5sums=('3c448632142e0f38e693250965e8b6b1'
          'eddea4cdbd0bde4b960a67e16b5d5478'
          'd27a9adcd7561859e7b033046729bc0e')
-# vim: sw=2:ts=2 et:
