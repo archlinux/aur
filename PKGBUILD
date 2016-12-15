@@ -1,7 +1,7 @@
 # Maintainer: Jacob Mischka <jacob@mischka.me>
 # Comaintainer: Pedro A. López-Valencia <https://aur.archlinux.org/user/vorbote>
 pkgname=brave
-pkgver=0.12.14
+pkgver=0.12.15
 pkgrel=1
 pkgdesc='Web browser that blocks ads and trackers by default.'
 arch=('x86_64')
@@ -12,7 +12,7 @@ makedepends=('npm' 'git')
 provides=('brave-browser')
 source=("https://github.com/brave/browser-laptop/archive/v"$pkgver"dev.tar.gz"
 	'brave.desktop')
-sha512sums=('abf629aa8d94653b5bbce2dcb57262c4675ac4c47ac9ceaad151410201b929761f0aa0231a51eee77698be43561b849652e493596ab75d64c2a458c48d5bf2ab'
+sha512sums=('9420bc5df00a39d2e2131fab260e0aec614deefc71046b075c96c69d0a6d326f64a3501d3f95bea9b573975a7078c2647201c1c16b8653f808dbbea0569da74d'
             '337de1b406c89418fb27a49b1a9fa4cfef94eefbf2901bc60f5ddac0b9094924e940fcbcb233cbbeff2742e6b3c26cc6dbdb75cd29798eff8c8be92fce0df2e7')
 
 build() {
