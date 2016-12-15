@@ -132,7 +132,7 @@ index 24ededb..cdb18f5 100644
          'gthread-2.0',
          'glib-2.0',
          'pthread',
-+        
++
 +        'Xi',
 +        'Xext',
 +        'Xfixes',
@@ -141,7 +141,7 @@ index 24ededb..cdb18f5 100644
 +        'fontconfig',
 +        'expat',
 +        'freetype',
-+        
++
 +        '<!(pkg-config 2> /dev/null --libs xkbcommon xkbcommon-x11)',
 +        '<!(pkg-config 2> /dev/null --libs harfbuzz)',
 +        '<!(pkg-config 2> /dev/null --libs libpcre16)',

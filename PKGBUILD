@@ -77,7 +77,7 @@ sha256sums=(
     'SKIP'
     '41c22fae6ae757936741e63aec3d0f17cafe86b2d6153cdd1d01a5581e871f17'
     'd4cdad0d091c7e47811d8a26d55bbee492e7845e968c522e86f120815477e9eb'
-    '0afc0013ff5f8aaec1edfa85d51be5d79e23d46cb63b28fcebf1656bb5eec1cf'
+    'fdccb2d98b7bde50322df6201ec9f9b49a08777181eaa855686301f6ca037c2e'
 )
 
 prepare() {
