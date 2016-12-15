@@ -1,7 +1,7 @@
 # Maintainer: Antoine Damhet <antoine.damhet@lse.epita.fr>
 pkgname=mkinitcpio-gpg-encrypt
 pkgdesc="mkinitcpio hook that adds GnuPG and smartcard support to FDE"
-pkgver=0.1
+pkgver=0.2
 pkgrel=1
 arch=(any)
 depends=(gnupg pcsclite libusb-compat)
@@ -24,4 +24,4 @@ package() {
 	install "gpg-encrypt-install" "${pkgdir}/usr/lib/initcpio/install/gpg-encrypt"
 }
 
-sha256sums=('a307a5f7c8d37ead81f0d788f66720b5187ef18c67a69c32d0ca98ef124e89ef')
+sha256sums=('21803cc72dbbcdddd83a2eeaa091e17947e2d928e5c4323c965a77feb1227ca2')
