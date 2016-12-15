@@ -1,7 +1,7 @@
 # Maintainer: mkzero <me [at] linux-web-development [dot] de>
 pkgname=yakyak-git
 pkgver=1
-pkgrel=4
+pkgrel=5
 pkgdesc="Desktop client for Google Hangouts"
 arch=('x86_64' 'i686')
 url="https://github.com/yakyak/yakyak"
@@ -11,7 +11,7 @@ depends=('libgcrypt15' 'libnotify' 'gconf' 'alsa-lib' 'nss' 'libxtst' 'gtk2' 'li
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 
-_electron_version=1.2.1
+_electron_version=1.4.10
 _platform=ia32
 [[ $CARCH == 'x86_64' ]] && _arch='x64' || _arch='ia32'
 
@@ -22,8 +22,8 @@ source_x86_64=("https://github.com/atom/electron/releases/download/v${_electron_
 
 sha256sums=('SKIP'
             'ba537052daca0bacd1f957792c24150eade47bba296423a7a7d48e92f3946587')
-sha256sums_x86_64=('954dd9054a9f8735b4c09755da910e98ec23cfdb9e2c5ff32dba04cb7a5e0151')
-sha256sums_i686=('cecdd036689eb5ea90ad0f35da38505a95ad7120dfb8653387e5abdd142a77cd')
+sha256sums_x86_64=('ce6bf2fa183a5f3bae6bac2bd3d48cbbfa289a2dad45282dedd1a27731f4b564')
+sha256sums_i686=('192c4602198eb94e8d0b2b8188af90222131d8d1f9d9155b341ae5722f9202a3')
 
 noextract=("electron-v${_electron_version}-linux-${_arch}.zip")
 
