@@ -2,6 +2,7 @@ pkgname=flood-git
 pkgver=r852.5e68d0a
 pkgrel=3
 pkgdesc='Flood: a modern web UI for rTorrent with a Node.js backend and React frontend.'
+url='https://github.com/jfurrow/flood'
 arch=(any)
 depends=(npm)
 makedepends=(git)
