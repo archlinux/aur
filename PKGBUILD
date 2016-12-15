@@ -6,7 +6,7 @@ pkgver=0.33.1
 pkgrel=3
 pkgdesc="An WYSIWYG HTML5 editor focused on Bootstrap UI"
 arch=('i686' 'x86_64')
-url="http://pingendo.com"
+url="http://pingendo.com/v4-beta/"
 license=('custom:pingendo')
 depends=('nss'
 	'libnotify'
