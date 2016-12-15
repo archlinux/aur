@@ -1,32 +1,36 @@
 # Maintainer: Felix Yan <felixonmars@archlinux.org>
+# Maintainer: Antonio Rojas <arojas@archlinux.org>
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=libkcompactdisc
-pkgver=16.08.3
+pkgver=16.12.0
 pkgrel=1
 pkgdesc="A library for interfacing with CDs"
 url='https://www.kde.org/applications/multimedia/'
-arch=('i686' 'x86_64')
-license=('GPL' 'LGPL' 'FDL')
-depends=('kdelibs')
-makedepends=('cmake' 'automoc4')
-replaces=('kdemultimedia-kioslave')
-conflicts=('kdemultimedia-kioslave')
-source=("http://download.kde.org/stable/applications/${pkgver}/src/${pkgname}-${pkgver}.tar.xz")
-sha1sums=('d0441f1cf2f74dad4d3aa80fd4d8171ec740713e')
+arch=(i686 x86_64)
+license=(GPL LGPL FDL)
+depends=(solid ki18n kcoreaddons phonon-qt5)
+makedepends=(extra-cmake-modules kdelibs4support kdesignerplugin kdoctools python)
+source=("http://download.kde.org/stable/applications/${pkgver}/src/${pkgname}-${pkgver}.tar.xz"{,.sig})
+sha1sums=('60135799d3170ed011262738c93f74b03322ad89'
+          'SKIP')
+validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7) # Albert Astals Cid <aacid@kde.org>
+
+prepare() {
+  mkdir -p build
+}
 
 build() {
-  cd "${srcdir}"
-  mkdir -p build
   cd build
-  cmake ../${pkgname}-${pkgver} \
+  cmake ../$pkgname-$pkgver \
     -DCMAKE_BUILD_TYPE=Release \
-    -DKDE4_BUILD_TESTS=OFF \
-    -DCMAKE_INSTALL_PREFIX=/usr
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DKDE_INSTALL_LIBDIR=lib \
+    -DBUILD_TESTING=OFF
   make
 }
 
 package() {
-  cd "${srcdir}"/build
-  make DESTDIR="${pkgdir}" install
+  cd build
+  make DESTDIR="$pkgdir" install
 }
