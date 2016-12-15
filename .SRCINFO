@@ -1,0 +1,16 @@
+pkgbase = doctoc-git
+	pkgdesc = Generates table of contents for markdown files inside local git repository., installed through npm
+	pkgver = r130.a376096
+	pkgrel = 1
+	url = www.imaginary.tech/teleprompter
+	arch = any
+	license = GPLv3
+	makedepends = npm
+	depends = git
+	depends = nodejs
+	options = !emptydirs
+	source = doctoc-git::git+https://github.com/thlorenz/doctoc
+	sha256sums = SKIP
+
+pkgname = doctoc-git
+
