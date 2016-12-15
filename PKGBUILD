@@ -6,7 +6,7 @@
 # http://code.qt.io/cgit/qt-labs/qbs.git/
 
 pkgname=qbs
-pkgver=1.6.1
+pkgver=1.7.0
 pkgrel=1
 pkgdesc='Qbs: Build tool that helps simplify the build process for developing projects across multiple platforms.'
 arch=('x86_64' 'i686')
@@ -16,7 +16,7 @@ conflicts=('qtcreator')
 depends=('qt5-base' 'qt5-script')
 makedepends=('gcc')
 source=("https://download.qt.io/official_releases/qbs/${pkgver}/qbs-src-${pkgver}.tar.gz")
-sha256sums=('72bbba4ac0ede177df52e44e79692752016ecd1c26b9ae86c76b0df1e18cbb10')
+sha256sums=('a7271e35f35c015f6deda3bf5b614031019018572cebb9904920f251b583c3ef')
 
 build() {
   cd "$srcdir/qbs-src-$pkgver"
