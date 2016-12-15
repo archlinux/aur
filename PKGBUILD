@@ -16,7 +16,7 @@ noextract=($_gemname-$pkgver.gem)
 depends=('ruby' 'ruby-bcrypt')
 makedepends=('rubygems')
 source=("https://rubygems.org/downloads/$_gemname-$pkgver.gem")
-sha256sums=('0036beb31497c84c581a79194e274383f6eb764b092ffd50135431db9821fd05')
+sha256sums=('12706615f32df94d7d6942a9338da02d7e7a9963fdc4ffa27233caf24cbc19c8')
 
 package() {
   cd "$srcdir"
