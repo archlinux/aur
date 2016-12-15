@@ -3,9 +3,9 @@
 # Contributor: Felix Yan <felixonmars@gmail.com>
  
 pkgname=nvidia-340xx-lqx
-pkgver=340.98
+pkgver=340.101
 _extramodules=extramodules-4.8-lqx
-pkgrel=2
+pkgrel=1
 _pkgdesc="NVIDIA 340xx drivers for linux-lqx."
 pkgdesc="$_pkgdesc"
 arch=('i686' 'x86_64')
@@ -18,8 +18,8 @@ install=nvidia-340xx-lqx.install
 options=(!strip)
 source_i686+=("http://us.download.nvidia.com/XFree86/Linux-x86/${pkgver}/NVIDIA-Linux-x86-${pkgver}.run")
 source_x86_64+=("http://us.download.nvidia.com/XFree86/Linux-x86_64/${pkgver}/NVIDIA-Linux-x86_64-${pkgver}-no-compat32.run")
-md5sums_i686=('3ccb023eec137cbee0d2035c288b6bbe')
-md5sums_x86_64=('e8d1292d8d002a15e10ea349151fa8f2')
+md5sums_i686=('b2b33b50cf375ccba7d3b959b9f509ec')
+md5sums_x86_64=('dd1a25ab34b7855d533474f3e8f3e868')
 
 
 [[ "$CARCH" = "i686" ]] && _pkg="NVIDIA-Linux-x86-${pkgver}"
