@@ -5,6 +5,9 @@
 _build_feedreader=true
 _build_voip=true
 
+# Set this to 'true' to enable auto login
+_autologin=
+
 # set this to 'true' to use clang for compiling (experimental)
 _clang=
 
@@ -12,13 +15,13 @@ _clang=
 
 _pkgname=retroshare
 pkgname=${_pkgname}-git
-pkgver=0.6.1.r162.g7cd31aa
+pkgver=0.6.1.r426.g31b1583
 pkgrel=1
 pkgdesc="Serverless encrypted instant messenger with filesharing, chatgroups, e-mail."
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url="http://retroshare.sourceforge.net/"
 license=('GPL' 'LGPL')
-depends=('qt5-multimedia' 'qt5-x11extras' 'libupnp' 'libgnome-keyring' 'libxss' 'libmicrohttpd' 'sqlcipher')
+depends=('qt5-multimedia' 'qt5-x11extras' 'libupnp' 'libxss' 'libmicrohttpd' 'sqlcipher')
 makedepends=('git' 'qt5-tools')
 optdepends=('tor: tor hidden node support'
             'i2p: i2p hidden node support')
@@ -32,10 +35,13 @@ sha256sums=('SKIP')
 [[ "$_build_voip" == 'true' ]] && depends=(${depends[@]} 'ffmpeg' 'opencv')
 [[ "$_build_feedreader" == 'true' ]] && depends=(${depends[@]} 'curl' 'libxslt')
 [[ "$_clang" == 'true' ]] && makedepends=(${makedepends[@]} 'clang')
+[[ "$_autologin" == 'true' ]] && depends=(${depends[@]} 'libgnome-keyring')
 
 # Set options for qmake
-_options=''
-[[ "$_clang" == 'true' ]] && _options='-spec linux-clang CONFIG+=c++11'
+_optClang=''
+_optAutol=''
+[[ "$_clang" == 'true' ]] && _optClang='-spec linux-clang CONFIG+=c++11'
+[[ "$_autologin" == 'true' ]] && _optAutol='CONFIG+=rs_autologin'
 
 pkgver() {
 	cd "${srcdir}/${_pkgname}"
@@ -59,7 +65,7 @@ build() {
 	cd ../..
 
 	qmake   CONFIG-=debug CONFIG+=release \
-		${_options} \
+		${_optAutol} ${_optClang} \
 		QMAKE_CFLAGS_RELEASE="${CFLAGS}"\
 		QMAKE_CXXFLAGS_RELEASE="${CXXFLAGS}"\
 		RetroShare.pro
