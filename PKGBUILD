@@ -2,8 +2,8 @@
 
 pkgbase=python-binary-memcached
 pkgname=('python-binary-memcached' 'python2-binary-memcached')
-pkgver=0.24.7
-_commit=4b08fd05dc56c388cb863cf6ad7864a19b2e9866
+pkgver=0.25.0
+_commit=4b51d7b2a4cb41c918fd2932f67d59fe9fea5ea5
 pkgrel=1
 arch=('any')
 pkgdesc='A pure python module to access memcached via its binary protocol with SASL auth support'
@@ -28,7 +28,7 @@ build() {
 
 check() {
   cd "$srcdir"/python-binary-memcached
-  python setup.py ptr || warning "Tests failed"
+  python setup.py ptr
 
   cd "$srcdir"/python-binary-memcached-py2
   python2 setup.py ptr
