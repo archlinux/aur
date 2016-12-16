@@ -24,10 +24,7 @@ prepare() {
 build() {
   cd speedtest-$_pkgver
   export GOPATH="$srcdir"
-  go get -u -v github.com/dchest/uniuri
-  go get -u -v github.com/google/go-github/github
-  go get -u -v github.com/spf13/viper
-  go get -u -v github.com/urfave/cli
+  go get -u -v github.com/{dchest/uniuri,google/go-github/github,spf13/viper,urfave/cli}
   make VERSION=$pkgver
 }
 
@@ -35,7 +32,7 @@ check() {
   cd speedtest-$_pkgver
   export GOPATH="$srcdir"
   go get -u -v github.com/stretchr/testify/assert
-  go test
+  go test ./...
 }
 
 package() {
