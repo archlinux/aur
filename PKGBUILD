@@ -3,11 +3,11 @@
 
 pkgname=libcd
 pkgver=5.11
-pkgrel=2
+pkgrel=3
 pkgdesc="Platform-independent graphics library"
 arch=('i686' 'x86_64')
 url="http://www.tecgraf.puc-rio.br/cd/"
-depends=('ftgl' 'gtk3' 'libxmu')
+depends=('ftgl' 'gtk3' 'libxmu' 'libim')
 makedepends=('lua')
 license=('custom')
 options=('staticlibs')

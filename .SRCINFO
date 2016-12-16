@@ -1,7 +1,7 @@
 pkgbase = libcd
 	pkgdesc = Platform-independent graphics library
 	pkgver = 5.11
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.tecgraf.puc-rio.br/cd/
 	arch = i686
 	arch = x86_64
@@ -10,6 +10,7 @@ pkgbase = libcd
 	depends = ftgl
 	depends = gtk3
 	depends = libxmu
+	depends = libim
 	options = staticlibs
 	source = http://downloads.sourceforge.net/project/canvasdraw/5.11/Docs%20and%20Sources/cd-5.11_Sources.tar.gz
 	source = http://downloads.sourceforge.net/project/canvasdraw/5.11/Docs%20and%20Sources/cd-5.11_Docs.pdf
