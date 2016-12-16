@@ -9,7 +9,7 @@ pkgver=6.30.223.271
 pkgrel=2
 
 pkgdesc='Broadcom 802.11abgn hybrid Linux networking device driver for LTS kernal'
-url='http://www.broadcom.com/support/802.11'
+url='https://www.broadcom.com/support/802.11'
 arch=('i686' 'x86_64')
 license=('custom')
 
@@ -20,8 +20,8 @@ source=('modprobe.d'
         'license.patch'
 	'wl_linux.c.patch'
 )
-source_i686=("http://www.broadcom.com/docs/linux_sta/hybrid-v35-nodebug-pcoem-${pkgver//./_}.tar.gz")
-source_x86_64=("http://www.broadcom.com/docs/linux_sta/hybrid-v35_64-nodebug-pcoem-${pkgver//./_}.tar.gz")
+source_i686=("https://docs.broadcom.com/docs-and-downloads/docs/linux_sta/hybrid-v35-nodebug-pcoem-6_30_223_271.tar.gz")
+source_x86_64=("https://docs.broadcom.com/docs-and-downloads/docs/linux_sta/hybrid-v35_64-nodebug-pcoem-6_30_223_271.tar.gz")
 sha256sums=('b4aca51ac5ed20cb79057437be7baf3650563b7a9d5efc515f0b9b34fbb9dc32'
             '2f70be509aac743bec2cc3a19377be311a60a1c0e4a70ddd63ea89fae5df08ac'
             '583335a6edb2ed1094977c401643d3e60471c6bc5c3ea81f45910a9cccb06032')
