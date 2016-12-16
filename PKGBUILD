@@ -1,8 +1,8 @@
 pkgname=pyf9-git
 _pkgname=PyF9
 pkgver=r6.d2556d5
-pkgrel=2
-pkgdesc="Chinese IME in testing."
+pkgrel=3
+pkgdesc="Chinese IME in testing. No copyright infringing materials included."
 arch=('i686' 'x86_64')
 url="https://github.com/Saren-Arterius/PyF9"
 depends=('xdotool' 'python-pillow' 'python-xlib' 'tk' 'xorg-xauth')
