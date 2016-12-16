@@ -3,18 +3,18 @@
 # AUR dependencies
 # ----------------
 # libilbc kvazaar chromaprint-fftw libbs2b openh264 shine vo-amrwbenc
-# nut-multimedia-git xavs flite-fpic libmfx-git libopenmpt-svn zimg-git
+# nut-multimedia-git xavs libmfx-git libopenmpt-svn zimg-git
 
 # AUR make dependencies
 # ---------------------
-# blackmagic-decklink-sdk
+# flite1 blackmagic-decklink-sdk
 
 # AUR optional dependency
 # -----------------------
 # intel-media-sdk (experimental Intel QSV support only for x86_64)
 
 pkgname=ffmpeg-full-git
-pkgver=N.82833.gedb4f5d
+pkgver=N.82871.ga5cf600ccb
 pkgrel=1
 pkgdesc="Record, convert and stream audio and video (Git version with all possible libs)"
 arch=('i686' 'x86_64')
@@ -23,8 +23,8 @@ license=('GPL3' 'custom:UNREDISTRIBUTABLE')
 depends=(
     'alsa-lib' 'zlib' 'bzip2' 'xz' 'libpng' 'chromaprint-fftw' 'fontconfig' 'frei0r-plugins'
     'libgcrypt' 'gmp' 'gnutls' 'glibc' 'ladspa' 'libass' 'libbluray' 'libbs2b' 'libcaca' 'celt'
-    'libcdio-paranoia' 'libdc1394' 'libfdk-aac' 'flite-fpic' 'freetype2' 'fribidi' 'libgme'
-    'gsm' 'libiec61883' 'libilbc' 'kvazaar' 'libmodplug' 'lame' 'netcdf' 'nut-multimedia-git'
+    'libcdio-paranoia' 'libdc1394' 'libfdk-aac' 'freetype2' 'fribidi' 'libgme' 'gsm'
+    'libiec61883' 'libilbc' 'kvazaar' 'libmodplug' 'lame' 'netcdf' 'nut-multimedia-git'
     'opencore-amr' 'opencv' 'openh264' 'openjpeg2' 'libopenmpt-svn' 'opus' 'pulseaudio'
     'rubberband' 'rtmpdump' 'schroedinger' 'shine' 'smbclient' 'libavc1394' 'snappy' 'libsoxr'
     'speex' 'libssh' 'tesseract' 'libtheora' 'twolame' 'v4l-utils' 'vid.stab' 'vo-amrwbenc'
@@ -35,7 +35,7 @@ depends=(
 )
 depends_x86_64=('cuda')
 optdepends_x86_64=('intel-media-sdk: for Intel QSV support (experimental)')
-makedepends=('git' 'yasm' 'opencl-headers' 'blackmagic-decklink-sdk')
+makedepends=('git' 'yasm' 'opencl-headers' 'flite1' 'blackmagic-decklink-sdk')
 provides=(
     'ffmpeg' 'qt-faststart' 'ffmpeg-git' 'ffmpeg-full' 'ffmpeg-full-extra' 'ffmpeg-full-nvenc'
     'ffmpeg-libfdk_aac' 'libavutil.so' 'libavcodec.so' 'libavformat.so' 'libavdevice.so'
@@ -56,13 +56,6 @@ pkgver() {
 	        
 	# Method showing version based on FFmpeg Git versioning system
 	printf "%s" "$(git describe --tags --match N | tr '-' '.')"
-}
-
-prepare() {
-	cd "${srcdir}/${pkgname}"
-	
-	# Add the ALSA library to the Flite LDFLAGS variable and enables the discovery of Flite
-	sed -i 's/-lflite"/-lflite -lasound"/' configure
 }
 
 build() {
