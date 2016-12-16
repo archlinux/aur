@@ -1,17 +1,14 @@
 [Unit]
 Description=A high performance web server and a reverse proxy server
-After=network.target
+After=syslog.target network.target
 
 [Service]
 Type=forking
 PIDFile=/run/nginx.pid
-PrivateDevices=yes
-SyslogLevel=err
-
-ExecStart=/usr/bin/nginx -g 'pid /run/nginx.pid; error_log stderr;'
-ExecReload=/usr/bin/kill -HUP $MAINPID
-KillSignal=SIGQUIT
-KillMode=mixed
+ExecStartPre=/usr/bin/nginx -t -q -g 'pid /run/nginx.pid; daemon on; master_process on;'
+ExecStart=/usr/bin/nginx -g 'pid /run/nginx.pid; daemon on; master_process on;'
+ExecReload=/usr/bin/nginx -g 'pid /run/nginx.pid; daemon on; master_process on;' -s reload
+ExecStop=/usr/bin/nginx -g 'pid /run/nginx.pid;' -s quit
 
 [Install]
 WantedBy=multi-user.target
