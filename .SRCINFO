@@ -1,0 +1,19 @@
+pkgbase = python-mtools
+	pkgdesc = A collection of scripts to set up MongoDB test environments and parse and visualize MongoDB log files
+	pkgver = 1.2.2
+	pkgrel = 1
+	url = https://github.com/rueckstiess/mtools
+	arch = i686
+	arch = x86_64
+	license = Apache License
+	makedepends = python
+	depends = python
+	optdepends = python-psutil
+	optdepends = python-pymongo
+	optdepends = python-matplotlib
+	optdepends = python-numpy
+	source = https://github.com/rueckstiess/mtools/archive/v1.2.2.tar.gz
+	md5sums = 238bb5da5da84c6c638963e6dae42eb2
+
+pkgname = python-mtools
+
