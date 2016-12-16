@@ -1,7 +1,7 @@
 # Maintainer: Ivan Shapovalov <intelfx@intelfx.name>
 
 pkgname=matrix-synapse
-_pkgver=0.18.4
+_pkgver=0.18.5
 pkgver="${_pkgver/-rc/rc}"; pkgver="${pkgver/-r/.}"
 pkgrel=1
 pkgdesc="Matrix reference homeserver"
@@ -22,7 +22,7 @@ optdepends=('python2-psycopg2: PostgreSQL support (instead of built-in SQLite)'
             'python2-netaddr: URL previewing'
             'python2-jinja: e-mail notifications'
             'python2-bleach: e-mail notifications'
-            'python2-ldap3: LDAP support'
+            'python2-matrix-synapse-ldap3: LDAP support'
             'python2-psutil: metrics')
 source=("git://github.com/matrix-org/synapse.git#tag=v$_pkgver"
         'sysusers-synapse.conf'
