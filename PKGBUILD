@@ -1,7 +1,7 @@
 # Maintainer: Konstantin Stepanov <me@kstep.me>
 pkgname=cargo-pkgbuild
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 makedepends=('rust' 'cargo')
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 pkgdesc="ArchLinux's PKGBULD generator from Cargo.toml manifest file"
@@ -13,5 +13,6 @@ build() {
 }
 
 package() {
-    cargo install --root="$pkgdir" cargo-pkgbuild
+    cargo install --root="$pkgdir/usr/" cargo-pkgbuild
+    rm -f "$pkgdir/usr/.crates.toml"
 }

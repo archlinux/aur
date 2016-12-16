@@ -3,7 +3,7 @@
 pkgbase = cargo-pkgbuild
 	pkgdesc = ArchLinux's PKGBULD generator from Cargo.toml manifest file
 	pkgver = 0.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/kstep/cargo-pkgbuild
 	arch = i686
 	arch = x86_64
