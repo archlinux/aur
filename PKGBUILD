@@ -3,12 +3,12 @@
 pkgname=(freedm freedoom1 freedoom2)
 pkgbase=freedoom
 pkgver=0.10.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Free game based on the Doom engine"
 arch=('any')
 url="https://freedoom.github.io/"
 license=('BSD')
-source=(https://dl.dropboxusercontent.com/u/13513277/freedoom/dist.tar.xz
+source=(https://chungy.keybase.pub/freedoom/dist.tar.xz
   https://github.com/freedoom/freedoom/releases/download/v$pkgver/freedm-$pkgver.zip
   https://github.com/freedoom/freedoom/releases/download/v$pkgver/freedoom-$pkgver.zip)
 sha256sums=('0dcc2f323d67c7e1f7fbd46191841ee4d97ade76f47889a0049e1bff35cf1e82'
