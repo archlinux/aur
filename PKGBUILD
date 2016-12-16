@@ -1,7 +1,7 @@
 # Maintainer: Christian Hesse <mail@eworm.de>
 
 pkgname=openvpn-git
-pkgver=2.4.rc1.r4.g212ef1a
+pkgver=2.4.rc2.r0.ga5ae0138
 pkgrel=1
 pkgdesc='An easy-to-use, robust and highly configurable VPN (Virtual Private Network) - git checkout'
 arch=(i686 x86_64)
@@ -38,14 +38,15 @@ prepare() {
 
 	# plugin path
 	patch -Np1 < "${srcdir}"/0001-plugin.patch
+
+	# regenerate configure script
+	autoreconf -vi
 }
 
 build() {
 	cd openvpn/
 
-	autoreconf -vi
-	CFLAGS="${CFLAGS} -DPLUGIN_LIBDIR=\\\"/usr/lib/openvpn/plugins\\\"" \
-		./configure \
+	./configure \
 		--prefix=/usr \
 		--sbindir=/usr/bin \
 		--enable-iproute2 \
@@ -80,8 +81,12 @@ package() {
 	ln -sf /usr/share/doc/"${pkgname}"/{COPYING,COPYRIGHT.GPL} "${pkgdir}"/usr/share/licenses/openvpn
 
 	# Install contrib
-	install -d -m0755 "${pkgdir}"/usr/share/openvpn/contrib
-	cp -r contrib "${pkgdir}"/usr/share/openvpn
+	for FILE in $(find contrib -type f); do
+		case "$(file --brief --mime-type "${FILE}")" in
+			"text/x-shellscript") install -D -m0755 "${FILE}" "${pkgdir}/usr/share/openvpn/${FILE}" ;;
+			*) install -D -m0644 "${FILE}" "${pkgdir}/usr/share/openvpn/${FILE}" ;;
+		esac
+	done
 
 	# Install systemd services
 	install -d -m0755 "${pkgdir}"/usr/lib/systemd/system/
