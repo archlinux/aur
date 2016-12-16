@@ -2,9 +2,9 @@
 
 pkgname=openvpn-git
 pkgver=2.4.rc2.r0.ga5ae0138
-pkgrel=1
+pkgrel=2
 pkgdesc='An easy-to-use, robust and highly configurable VPN (Virtual Private Network) - git checkout'
-arch=(i686 x86_64)
+arch=('i686' 'x86_64')
 url='http://openvpn.net/index.php/open-source.html'
 depends=('openssl' 'lzo' 'iproute2' 'libsystemd' 'pkcs11-helper')
 optdepends=('easy-rsa: easy CA and certificate handling')
@@ -12,11 +12,13 @@ makedepends=('git' 'systemd')
 conflicts=('openvpn' 'openvpn-dev')
 provides=('openvpn=2.4.0' 'openvpn-dev')
 license=('custom')
-# for 2.3.x release branch append: #branch=release/2.3
+# for 2.4.x release branch append: #branch=release/2.4
 source=('git://github.com/OpenVPN/openvpn.git'
-        '0001-plugin.patch')
+        '0001-plugin.patch'
+        '0002-do-not-race-on-RuntimeDirectory.patch')
 sha256sums=('SKIP'
-            'b8254067b4ef5d157d87267a76938d86f101972303c7ff20131cc9f28659a30c')
+            'b8254067b4ef5d157d87267a76938d86f101972303c7ff20131cc9f28659a30c'
+            '6cc4863a9e7d43f2ff79141dce53aa92fd5e9c395434b6838c81b57ea45d4fc4')
 
 pkgver() {
 	cd openvpn/
@@ -38,6 +40,9 @@ prepare() {
 
 	# plugin path
 	patch -Np1 < "${srcdir}"/0001-plugin.patch
+
+        # do not race on RuntimeDirectory
+        patch -Np1 < "${srcdir}"/0002-do-not-race-on-RuntimeDirectory.patch
 
 	# regenerate configure script
 	autoreconf -vi
