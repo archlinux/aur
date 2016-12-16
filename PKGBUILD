@@ -1,4 +1,5 @@
 # Maintainer: Filippo Veneri <filippo[dot]veneri[at]gmail[dot]com>
+# Contributor: Frederik “Freso” S. Olesen <freso.dk@gmail.com>
 
 _sha_=7c01b2f
 pkgname=acpilight
