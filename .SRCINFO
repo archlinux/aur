@@ -1,0 +1,17 @@
+pkgbase = qspeakers
+	pkgdesc = DIY speaker design software
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = http://brouits.free.fr/qspeakers/
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	depends = qwt-qt5
+	conflicts = qspeakers-svn
+	source = http://brouits.free.fr/qspeakers/qspeakers-1.0.1.tar.gz
+	source = qwt-qt5.patch
+	sha256sums = ab2f8fc98287f25c9be6dae914cd51fa387cd487c0f2c6dc03dc0c6db981263f
+	sha256sums = e46d4dccb277f1a6ff5b9996184321fff3094e3ba59991bc273e8b97129bd7ac
+
+pkgname = qspeakers
+

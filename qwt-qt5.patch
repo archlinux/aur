@@ -1,0 +1,12 @@
+diff -Nru qspeakers-1.0.1.orig/qspeakers.pro qspeakers-1.0.1/qspeakers.pro
+--- qspeakers-1.0.1.orig/qspeakers.pro	2016-10-30 18:37:59.000000000 +0100
++++ qspeakers-1.0.1/qspeakers.pro	2016-12-16 11:46:10.000526059 +0100
+@@ -15,7 +15,7 @@
+ unix {
+     INCLUDEPATH += /usr/include/qwt
+     equals(QT_MAJOR_VERSION, 4): LIBS = -L/usr/lib -lqwt
+-    equals(QT_MAJOR_VERSION, 5): LIBS = -L/usr/lib -lqwt-qt5
++    equals(QT_MAJOR_VERSION, 5): LIBS = -L/usr/lib -lqwt
+     isEmpty(PREFIX): PREFIX = /usr/local
+     isEmpty(BINDIR): BINDIR = $$PREFIX/bin
+     isEmpty(DATADIR): DATADIR = $$PREFIX/share
