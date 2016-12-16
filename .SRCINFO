@@ -1,0 +1,22 @@
+pkgbase = howl-git
+	pkgdesc = General purpose, light-weight customizable editor
+	pkgver = 0.3.r815.g1bf752f3
+	pkgrel = 1
+	url = http://howl.io/
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = wget
+	depends = gtk3
+	depends = desktop-file-utils
+	depends = coffee-script
+	depends = python2
+	optdepends = ruby: for running some scripts
+	provides = howl
+	conflicts = howl
+	source = git://github.com/howl-editor/howl.git
+	md5sums = SKIP
+
+pkgname = howl-git
+
