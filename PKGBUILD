@@ -2,7 +2,7 @@
 # Maintainer: Zack Baldwin <zack@zackb.com>
 
 pkgname=plexrequests.net
-pkgver=1.10.1086
+pkgver=1.10.0
 pkgrel=1
 pkgdesc="Simple automated way for users to request new content for Plex"
 arch=('any')
@@ -11,7 +11,7 @@ license=('GPL2')
 depends=('mono')
 optdepends=('couchpotato' 'sickrage' 'sonarr' 'plex-media-server' 'plex-media-server-plexpass' 'headphones')
 install='plexrequests.net.install'
-source=("https://github.com/tidusjar/PlexRequests.Net/releases/download/PlexRequests-v${pkgver}/PlexRequests.zip"
+source=("https://github.com/tidusjar/PlexRequests.Net/releases/download/v${pkgver}/PlexRequests.zip"
         "${pkgname}.service"
         "${pkgname}.sysusers")
 
