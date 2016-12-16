@@ -1,7 +1,7 @@
 pkgbase = mnemosyne
 	pkgdesc = A flash-card tool with a sophisticated card review algorithm
 	pkgver = 2.4
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.mnemosyne-proj.org
 	install = mnemosyne.install
 	arch = i686
@@ -12,6 +12,7 @@ pkgbase = mnemosyne
 	depends = python-matplotlib
 	depends = python-cherrypy
 	depends = python-webob
+	depends = qt5-webengine
 	optdepends = texlive-core: support for mathematical formulae in cards
 	optdepends = ttf-ms-fonts: support for non-latin labels on statistic plots
 	conflicts = mnemosyne-bzr
