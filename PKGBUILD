@@ -1,4 +1,4 @@
-#Maintainer: Plague-doctor <plague <at>> privacyrequired <<dot>> com >
+#Maintainer: Plague-doctor <plague at privacyrequired dot com >
 
 PN=Cyberfox
 pkgname=cyberfox
