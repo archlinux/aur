@@ -5,7 +5,10 @@
 
 pkgname=chmsee
 pkgver=2.0.2
-pkgrel=13
+pkgrel=14
+# Temporarily pin pkgrel used in git tag to 13. Next chmsee update
+# shall jump stright to 15. Yikes! This is asking for trouble :(
+_pkgrel=13
 arch=('i686' 'x86_64')
 pkgdesc="A chm (MS HTML help file format) viewer based on xulrunner."
 url="http://chmsee.googlecode.com/"
@@ -13,7 +16,7 @@ license=('GPL')
 depends=('xulrunner>21.0' 'xulrunner<42.0' 'chmlib' 'desktop-file-utils')
 makedepends=('python2')
 source=(
-	"chmsee-git::git+https://github.com/diegonc/chmsee.git#tag=pkg/v$pkgver-$pkgrel"
+	"chmsee-git::git+https://github.com/diegonc/chmsee.git#tag=pkg/v$pkgver-$_pkgrel"
         chmsee)
 install=chmsee.install
 md5sums=('SKIP'
