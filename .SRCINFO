@@ -1,0 +1,32 @@
+pkgbase = ttf-droid-emojiless
+	pkgdesc = Derivate of Droid Fonts without characters listed as emoji, in order not to override color fonts
+	pkgver = 20121017
+	pkgrel = 4
+	url = http://www.droidfonts.com/
+	install = ttf-droid-emojiless.install
+	arch = any
+	license = Apache
+	makedepends = fontforge
+	depends = fontconfig
+	depends = xorg-fonts-encodings
+	depends = xorg-font-utils
+	provides = ttf-font
+	provides = ttf-droid
+	conflicts = ttf-droid
+	source = https://sources.archlinux.org/other/community/ttf-droid/ttf-droid-20121017.tar.xz
+	source = serif-fontconfig.conf
+	source = sans-fontconfig.conf
+	source = sans-mono-fontconfig.conf
+	source = kufi-fontconfig.conf
+	source = https://github.com/iamcal/emoji-data/raw/master/emoji.json
+	source = cleaner.py
+	md5sums = 0fa20eb63d7d05b23be955777bb52a5d
+	md5sums = 7db18cf9df70ee41fbab444c80117ec6
+	md5sums = 61f59063f84bd1331a91e21ebf86d43d
+	md5sums = 7d7787d92e7b5089558a6d68c99813e3
+	md5sums = 954a340fc7cb2846826a97d2b752501d
+	md5sums = SKIP
+	md5sums = 024d60d8fc5a214d2ca606fb1d3df686
+
+pkgname = ttf-droid-emojiless
+
