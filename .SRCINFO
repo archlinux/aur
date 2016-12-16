@@ -17,6 +17,7 @@ pkgbase = volunode-git
 	makedepends = rsync
 	depends = glibmm
 	depends = curl
+	depends = boinc-app-api
 	options = !staticlibs
 	source = git+https://github.com/boinc-next/volunode
 	source = volunode.desktop
