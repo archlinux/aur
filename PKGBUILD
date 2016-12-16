@@ -4,17 +4,16 @@ pkgbase=rhythmcat
 pkgname=rhythmcat
 true && pkgname=(rhythmcat rhythmcat-plugins rhythmcat-plugins-extra)
 pkgver=1.0.1.1
-pkgrel=1
+pkgrel=2
 _pkgname=RhythmCat
 _pkgver=1.0.1-1
 pkgdesc="A Audio Player in GTK3 with plug-in support"
 arch=('i686' 'x86_64')
 url="https://code.google.com/p/rhythmcat/"
 license=('GPL')
-makedepends=('gtk-doc' 'gtksourceview3')
+makedepends=('gtk-doc' 'gtksourceview3' 'gendesk')
 depends=('gtk3' 'gstreamer0.10-base-plugins' 'gstreamer0.10-good-plugins' 'dbus-glib')
-source=(https://rhythmcat.googlecode.com/files/${_pkgname}-${_pkgver}_Source.tar.bz2
-)
+source=(https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/${pkgname}/${_pkgname}-${_pkgver}_Source.tar.bz2)
 sha256sums=('baac929234d328392ebe2761faea6e9c0efa6bb49c3b77e836771ebd81e515f9')
 
 _plugins_base=(desktop-lyric lyric-show music-locator notify)
