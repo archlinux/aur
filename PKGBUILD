@@ -1,9 +1,9 @@
-# Maintainer: Ivan Shapovalov <intelfx100@gmail.com>
+# Maintainer: Ivan Shapovalov <intelfx@intelfx.name>
 
 pkgbase=python-matrix-synapse-ldap3
 pkgname=(python2-matrix-synapse-ldap3)
 pkgver=0.1.0.r5.g564eb3f
-pkgrel=1
+pkgrel=2
 pkgdesc='An LDAP3 auth provider for Synapse'
 license=('Apache')
 arch=('any')
@@ -23,7 +23,7 @@ build() {
 }
 
 package_python2-matrix-synapse-ldap3() {
-	depends+=('python2' 'python2-twisted' 'python2-ldap')
+	depends+=('python2' 'python2-twisted' 'python2-ldap' 'python2-service-identity')
 
 	cd matrix-synapse-ldap3
 	python2 setup.py install --root="$pkgdir" --optimize=1 --skip-build
