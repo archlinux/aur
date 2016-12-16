@@ -5,7 +5,7 @@
 
 pkgname=abiword-svn
 pkgver=35395
-pkgrel=1
+pkgrel=2
 pkgdesc='Fully-featured word processor from subversion sources'
 arch=('i686' 'x86_64')
 license=('GPL')
@@ -41,13 +41,11 @@ prepare() {
   
   # Generate m4 file for configure
   find plugins -name plugin.m4 | xargs cat > plugin-list.m4
-
-  ./autogen.sh
 }
 
 build() {
   cd ${pkgname%-svn}
-
+  NOCONFIGURE=1 ./autogen.sh
   ./configure --prefix=/usr \
     --enable-shared \
     --disable-static \
