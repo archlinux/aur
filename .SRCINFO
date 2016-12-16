@@ -1,7 +1,7 @@
 pkgbase = newlisp-devel
 	pkgdesc = A LISP like, general purpose scripting language. Ongoing development version.
 	pkgver = 10.7.1
-	pkgrel = 27
+	pkgrel = 28
 	url = http://www.newlisp.org
 	arch = x86_64
 	arch = i686
@@ -14,7 +14,7 @@ pkgbase = newlisp-devel
 	options = docs
 	options = !makeflags
 	source = http://www.newlisp.org/downloads/development/inprogress/newlisp-10.7.1.tgz
-	md5sums = 8e156e6a84fca0ce398bc52b41fe655c
+	md5sums = b6820689e0c4d5d7a51d6d99409f98da
 
 pkgname = newlisp-devel
 
