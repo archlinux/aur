@@ -22,7 +22,9 @@ md5sums=('SKIP'
 build() {
   cd "$srcdir/$pkgname-git/src"
   cp Makefile.arch Makefile
-  make clean
+  # Clean target fails when files to be removed do not exist
+  # Unfortunately, this means we can't catch other errors reliably.
+  make clean || true
   make -j1
 }
 
