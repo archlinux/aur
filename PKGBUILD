@@ -11,7 +11,7 @@ ver_svrcore=4.0.3
 
 pkgname=mozldap
 pkgver=${ver_major}.${ver_minor}.${ver_subminor}
-pkgrel=1
+pkgrel=2
 pkgdesc="Mozilla LDAP C SDK"
 arch=(i686 x86_64)
 url="http://www.mozilla.org/directory/csdk.html"
