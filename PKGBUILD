@@ -3,7 +3,7 @@
 
 # Maintainer: Vincenzo Maffione <v.maffione@gmail.com>
 pkgname=netmap
-pkgver=r2182.0bda071
+pkgver=r2183.dee5e99
 pkgrel=1
 pkgdesc="Netmap is a framework for high speed network packet I/O."
 arch=('any')
@@ -72,7 +72,7 @@ build() {
     touch config.mak
     msg "PREFIX=$pkgdir/usr/local"
     msg "INSTALL-MOD-PATH=$pkgdir"
-    ./configure --kernel-sources=$NESTEDDIR/src/linux-$KMAJVER --no-drivers=igb \
+    ./configure --kernel-sources=$NESTEDDIR/src/linux-$KMAJVER \
                 --driver-suffix="_netmap" \
                 --install-mod-path="$pkgdir/usr" \
                 --prefix="$pkgdir/usr/local"
