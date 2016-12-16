@@ -1,14 +1,14 @@
 pkgbase = seznam-cz
 	pkgdesc = Seznam.cz browser
-	pkgver = alpha_nwjs0.14.7_3.6.0_56299_1612121544
-	pkgrel = 2
+	pkgver = dev_nwjs0.14.7_3.6.0_61968_1612161456
+	pkgrel = 1
 	url = http://www.seznam.cz/prohlizec
 	arch = x86_64
 	license = custom
 	options = !emptydirs
 	options = !strip
-	source = http://stardust.dev/debian/Seznam/all/Seznam.cz-alpha-nwjs0.14.7-3.6.0-56299-1612121544-amd64.deb
-	sha256sums = 6911e2daeac6fc5d1b02a673d04b897538102d17f36fdbfdb3d7636a3fdc035a
+	source = http://stardust.dev/debian/Seznam/all/Seznam.cz-dev-nwjs0.14.7-3.6.0-61968-1612161456-amd64.deb
+	sha256sums = 2f94fce1121029afa886065c39138b24581663077d38335a3a52f2f183aeed66
 
 pkgname = seznam-cz
 
