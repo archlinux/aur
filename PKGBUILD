@@ -1,7 +1,7 @@
 # Maintainer: Oswin Krause oswin.krause@di.ku.dk
 # Contributor:
 pkgname=shark-ml-git
-pkgver=r2995
+pkgver=r3411
 pkgrel=1
 provides=('shark-ml')
 conflicts=('shark-ml')
@@ -22,6 +22,7 @@ pkgver() {
 build() {
 	cd "$srcdir/Shark"
 	cmake "-DCMAKE_INSTALL_PREFIX=/usr/" \
+	"-DCMAKE_INSTALL_LIBDIR=/usr/lib/" \
 	"-DBUILD_EXAMPLES=OFF" "-DBUILD_TESTING=OFF" \
 	"-DBUILD_SHARED_LIBS=ON" \
 	"-DENABLE_ATLAS=OFF" .

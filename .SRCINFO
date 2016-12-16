@@ -1,6 +1,6 @@
 pkgbase = shark-ml-git
 	pkgdesc = Shark C++ machine learning library
-	pkgver = r2995
+	pkgver = r3411
 	pkgrel = 1
 	url = image.diku.dk/shark
 	arch = i686
