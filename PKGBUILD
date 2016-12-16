@@ -3,7 +3,7 @@
 
 pkgbase=python-kombu
 pkgname=('python-kombu' 'python2-kombu')
-pkgver=4.0.1
+pkgver=4.0.2
 pkgrel=1
 pkgdesc='A messaging library for Python'
 arch=('any')
