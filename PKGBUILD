@@ -1,6 +1,6 @@
 # Maintainer: Jason Papakostas <vithos@gmail.com>
 pkgname='vector-web'
-_upstream_version='0.9.1'
+_upstream_version='0.9.2'
 pkgver="${_upstream_version//-/_}" # sometimes upstream uses hyphens; we can't
 pkgrel=1
 pkgdesc='A glossy Matrix collaboration client for the web'
@@ -15,7 +15,7 @@ install="$pkgname.install"
 changelog="CHANGELOG.md"
 source=("riot-web-v$_upstream_version.tar.gz::https://github.com/vector-im/$pkgname/archive/v$_upstream_version.tar.gz"
         'Caddyfile.example')
-sha256sums=('0d6b36fb1d47d8029d5217647e2273d0fa627bd3bff12733d8074afd406e204b'
+sha256sums=('df52e2db795df24eb804cfcd513b8d241fa6afb449f93d299e342e8fd2db4469'
             '73b20f2c48eec6a800cce1364db80b4298f0df89df8faa339a1a76b6f1615add')
 _unpacked_dirname="riot-web-$_upstream_version"
 
@@ -36,9 +36,6 @@ build() {
 }
 
 check() {
-    msg2 "tests are currently broken, skipping" # https://github.com/vector-im/riot-web/issues/2733
-    return 0
-
     cd "$srcdir/$_unpacked_dirname"
 
     unset QT_QPA_PLATFORM # https://github.com/ariya/phantomjs/issues/14061
