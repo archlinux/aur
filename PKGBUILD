@@ -3,7 +3,7 @@
 
 _pkgname=clyrics
 pkgname=$_pkgname-git
-pkgver=0.05.r0.ge175f3f
+pkgver=0.06.r0.g3d09092
 pkgrel=1
 
 pkgdesc="An extensible lyrics fetcher, with daemon support for cmus and mocp."

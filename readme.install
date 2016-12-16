@@ -1,5 +1,5 @@
 post_install() {
-    echo -e "\n** Link or copy the plugin files in your: ~/.config/clyrics"
+    echo -e "\n** Link the plugins to your: ~/.config/clyrics"
     echo -e "** They can be found in: /usr/share/clyrics\n"
 }
 
