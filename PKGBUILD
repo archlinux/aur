@@ -2,7 +2,7 @@
 # Contributor: Dan Vratil <vratil@progdansoft.com>
 
 pkgname=k3b-git
-pkgver=2.10.0.r6044.abe673e
+pkgver=17.04.00.r6067.58070f10f
 pkgrel=1
 pkgdesc="Feature-rich and easy to handle CD burning application. (Git version)"
 arch=('i686' 'x86_64')
@@ -27,7 +27,7 @@ makedepends=('git'
              )
 optdepends=('cdrdao: for CD DAO mode burning support'
             'dvd+rw-tools: for CD, DVD & BluRay burning support'
-            'cdrtools: replace for use instead of cdrkit (unmaintained)'
+            'libburn: for CD, DVD & BluRay burning support'
             'normalize: for WAV normalization'
             'vcdimager: for VCD burning support'
             'transcode: for advanced MPEG conversion support'
@@ -41,7 +41,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd k3b
-  _ver="$(cat CMakeLists.txt | grep -m3 -e _VERSION_MAJOR -e _VERSION_MINOR -e _VERSION_RELEASE | sed 's|K3B|KEB|' | grep -o "[[:digit:]]*" | paste -sd'.')"
+  _ver="$(cat CMakeLists.txt | grep -m3 -e _VERSION_MAJOR -e _VERSION_MINOR -e _VERSION_MICRO | sed 's|K3B|KEB|' | grep -o "[[:digit:]]*" | paste -sd'.')"
   echo "${_ver}.r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
 }
 
