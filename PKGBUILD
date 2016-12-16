@@ -3,21 +3,25 @@
 
 pkgname=emacs-multiple-cursors
 _pkgname=multiple-cursors
-pkgver=1.3.0
-pkgrel=2
+pkgver=1.4.0
+pkgrel=1
 pkgdesc="Multiple cursors for Emacs"
-arch=('any')
+arch=("any")
 url="https://github.com/magnars/multiple-cursors.el"
-license=('GPL3')
+license=("GPL3")
 install=$pkgname.install
-depends=('emacs')
+depends=("emacs")
 source=("https://github.com/magnars/$_pkgname.el/archive/$pkgver.tar.gz")
-md5sums=('b60faec04a10f911289cf40828c4ac80')
+sha256sums=('33a1c193cf8bcb0c80f71a154cbbc1956ee80a79ec63ebcaf3ea6fb6298c3042')
 
 build() {
   cd $srcdir/$_pkgname.el-$pkgver/
-  emacs -batch -f batch-byte-compile *.el
+  for file in $(find . -maxdepth 1 -type f -name '*.el'); do
+    emacs -Q --batch --eval "(progn (load-file \"multiple-cursors-core.el\")(load-file \"mc-mark-more.el\")(byte-compile-file \"${file}\"))"
+  done
 }
+
+
 
 package() {
   cd $srcdir/$_pkgname.el-$pkgver/
