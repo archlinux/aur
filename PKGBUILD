@@ -8,7 +8,7 @@
 
 pkgname=dosemu-git
 pkgver=1.4.0.8.753.g18f6f5c
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="DOS emulator"
 arch=('i686' 'x86_64')
@@ -22,7 +22,7 @@ backup=('etc/dosemu/dosemu.conf'
         'etc/dosemu/dosemu.users'
         'etc/dosemu/global.conf')
 source=('dosemu::git://git.code.sf.net/p/dosemu/code#branch=devel'
-        https://dl.dropboxusercontent.com/u/13513277/dosemu/dosemu-freedos-1.1-bin.tgz
+        https://chungy.keybase.pub/dosemu/dosemu-freedos-1.1-bin.tgz
         debianize.patch
         xdosemu.desktop)
 sha256sums=('SKIP'
