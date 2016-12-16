@@ -26,7 +26,6 @@ makedepends=('git'
              'kdoctools'
              )
 optdepends=('cdrdao: for CD DAO mode burning support'
-            'dvd+rw-tools: for CD, DVD & BluRay burning support'
             'libburn: for CD, DVD & BluRay burning support'
             'normalize: for WAV normalization'
             'vcdimager: for VCD burning support'
