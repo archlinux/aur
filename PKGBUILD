@@ -10,9 +10,19 @@ source=("http://download.onlyoffice.com/install/desktop/editors/linux/onlyoffice
 sha256sums=('SKIP')
 
 package() {
-  cd "$srcdir"
+  cd "${srcdir}"
   ar xf "onlyoffice-desktopeditors_amd64.deb"
-  tar xf data.tar.xz -C "$pkgdir"
-  chmod 4755 "$pkgdir/opt/onlyoffice/desktopeditors/chrome-sandbox"
-  ln -s "/usr/lib/libcurl.so.3" "$pkgdir/opt/onlyoffice/desktopeditors/converter/libcurl.so.4"
+  tar xf data.tar.xz -C "${pkgdir}"
+  chmod 4755 "${pkgdir}/opt/onlyoffice/desktopeditors/chrome-sandbox"
+
+  #fix wrong depedency
+  ln -s "/usr/lib/libcurl.so.3" "${pkgdir}/opt/onlyoffice/desktopeditors/converter/libcurl.so.4"
+
+  for res in 16 24 32 48 64 128 256; do
+    install -Dm644 "${pkgdir}/opt/onlyoffice/desktopeditors/asc-de-${res}.png" "${pkgdir}/usr/share/icons/hicolor/${res}x${res}/apps/asc-de.png"
+  done
+
+  install -Dm644 "${pkgdir}/opt/onlyoffice/desktopeditors/LICENSE.htm"    "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm644 "${pkgdir}/opt/onlyoffice/desktopeditors/3DPARTYLICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/3DPARTYLICENSE"
+
 }
