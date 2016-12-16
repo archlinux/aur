@@ -1,7 +1,7 @@
 # Maintainer: twa022 <twa022 at gmail dot com>
 
 pkgname=folder-color-switcher
-pkgver=1.1.2
+pkgver=1.1.3
 pkgrel=1
 pkgdesc="Folder color switcher for Nemo and Caja"
 arch=('any')
@@ -14,7 +14,7 @@ optdepends=('nemo-python: Nemo extension'
 options=('!libtool' '!emptydirs')
 
 source=("${pkgname}-${pkgver}.tar.gz::http://packages.linuxmint.com/pool/main/${pkgname:0:1}/${pkgname}/${pkgname}_${pkgver}.tar.gz")
-sha256sums=('e2ede3a9cc3a6d9d5b083d0b2c95217e6616ad6b58bf9898bd4c6757da4ebfa9')
+sha256sums=('5282c0d3a02d95777a12f12a301f92a7c72dc284dcd2713ad8d36ba6755d387c')
 
 prepare() {
   cd ${srcdir}/${pkgname}
