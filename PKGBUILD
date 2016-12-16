@@ -1,6 +1,6 @@
 # Maintainer: Bob Allred  <balinbob@gmail.com>
 pkgname=scenic
-pkgver=r22.df08474
+pkgver=r23.599d0a6
 pkgrel=1
 pkgdesc="wallpaper browser/cycler for fluxbox, etc, and batch image-processing frontend for CLI programs such as feh and imagemagick"
 arch=('any')
