@@ -1,4 +1,4 @@
-From 7127627b0976b7f606da74dff8665418d6d9bb07 Mon Sep 17 00:00:00 2001
+From 533a0b92b457be8bb67dac4ff457353422d76c82 Mon Sep 17 00:00:00 2001
 From: Benjamin Kaduk <kaduk@mit.edu>
 Date: Mon, 7 Apr 2014 21:54:46 -0400
 Subject: [PATCH 3/3] Do not install kauth manpages when kauth is disabled
@@ -25,7 +25,7 @@ Reviewed-by: D Brashear <shadow@your-file-system.com>
  1 file changed, 39 insertions(+), 9 deletions(-)
 
 diff --git a/doc/man-pages/Makefile.in b/doc/man-pages/Makefile.in
-index 1eed6a1..ee6bb15 100644
+index 1eed6a1fa..ee6bb1551 100644
 --- a/doc/man-pages/Makefile.in
 +++ b/doc/man-pages/Makefile.in
 @@ -7,7 +7,7 @@ INSTALL_DATA = @INSTALL_DATA@
@@ -109,5 +109,5 @@ index 1eed6a1..ee6bb15 100644
  	test -h $(DESTDIR)/$(mandir)/man8/dafssync-debug.8 \
  	    || ln -s fssync-debug.8 $(DESTDIR)/$(mandir)/man8/dafssync-debug.8
 -- 
-2.9.0
+2.11.0
 
