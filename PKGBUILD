@@ -1,33 +1,31 @@
 # Maintainer: Salamandar <felix@piedallu.me>
-pkgname='vlsub-git'
-_gitname='vlsub'
-pkgver=0.9.13.r29.f33769f
+# Contributor: Bastien "neitsab" Traverse <firstname at lastname dot email>
+
+pkgname=vlsub-git
+pkgver=0.9.13.r33.geb81106
 pkgrel=1
 pkgdesc="VLC extension to download subtitles from opensubtitles.org"
 arch=('any')
-url="https://github.com/exebetche/$_gitname"
+url="https://github.com/exebetche/${pkgname%-git}"
 license=('GPL')
-groups=()
+depends=('vlc')
 makedepends=('git')
-depends=('bash' 'pkgbuild-introspection' 'pacman' 'namcap')
+provides=('vlsub')
+conflicts=('vlsub')
 source=("git+$url.git")
 sha256sums=('SKIP')
 
 pkgver() {
-    cd "$srcdir/$_gitname"
-    printf "%s.%s" "$( set -o pipefail
-        git describe --long --tags 2>/dev/null \
-            | sed 's/\([^-]*-g\)/r\1/;s/-/./g' \
-            | sed -r 's/.([0-9,a-g,A-G]{7}.*)//' ||
-        printf "r%s" "$(git rev-list --count HEAD)"
-    )" "$(git rev-parse --short HEAD)"
+    cd "$srcdir/${pkgname%-git}"
+    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
-
 
 package() {
-    cd "$srcdir/$_gitname"
-    install -Dm644 vlsub.lua ${pkgdir}/usr/lib/vlc/lua/extensions/vlsub/vlsub.lua
-    install -dm644           ${pkgdir}/usr/lib/vlc/lua/extensions/vlsub/locale
-    cp locale/*              ${pkgdir}/usr/lib/vlc/lua/extensions/vlsub/locale
-
+    cd "$srcdir/${pkgname%-git}"
+    install -Dm644 vlsub.lua ${pkgdir}/usr/lib/vlc/lua/extensions/vlsub.lua
+    for i in locale/*.xml; do
+        install -Dm644 "$i" "${pkgdir}/usr/lib/vlc/lua/extensions/vlsub/$i"
+    done
+    install -Dm644 README.md "${pkgdir}/usr/share/${pkgname%-git}/README"
 }
+
