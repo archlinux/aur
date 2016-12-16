@@ -1,7 +1,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 pkgname=guile-emacs-git
-pkgver=116892.41120e0
-pkgrel=5
+pkgver=116892.41120e0f59
+pkgrel=1
 pkgdesc="branch of GNU Emacs that replaces Emacs' own EmacsLisp engine with that of Guile."
 arch=('i686' 'x86_64')
 url="http://www.emacswiki.org/emacs/GuileEmacs"
