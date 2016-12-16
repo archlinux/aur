@@ -1,12 +1,12 @@
 # Maintainer: Oscar Morante <spacepluk@gmail.com>
 pkgname=substance-painter
 pkgver=2.4.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Substance Painter is a 3D painting software allowing you to texture, render and share your work."
 arch=('x86_64')
 url='https://www.allegorithmic.com/products/substance-painter'
 license=('custom')
-depends=('fontconfig' 'gcc-libs-multilib' 'glu' 'hicolor-icon-theme' 'libtiff3')
+depends=('fontconfig' 'gcc-libs-multilib' 'glu' 'hicolor-icon-theme' 'libtiff4')
 options=('!strip')
 source=('https://alg-releases.s3.amazonaws.com/public_releases/substance-painter/2.x/Substance_Painter_2-2.4.1-1.el6.standard.full.x86_64.rpm'
         'substance-painter-icon.png'
