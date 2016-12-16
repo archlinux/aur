@@ -2,7 +2,7 @@
 
 pkgname=ansible-lint
 pkgver=3.4.8
-pkgrel=1
+pkgrel=2
 pkgdesc="Checks playbooks for practices and behaviour that could potentially be improved."
 arch=('any')
 url="https://github.com/willthames/ansible-lint"
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('python2' 'ansible')
 makedepends=('python2-distribute')
 source=("https://github.com/willthames/ansible-lint/archive/v${pkgver}.tar.gz")
-sha256sums=('c8b79c005d6ef6425aea70ec02bc107d6b75a2f47d60365f5f5ed13864fd1705')
+sha256sums=('d6fb2cd6a3f5918e5bfc37de4d126ce76a6187a307c6f3528230bf69053e3c74')
 
 build() {
     cd $srcdir/ansible-lint-${pkgver}
