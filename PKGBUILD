@@ -28,9 +28,10 @@ pkgver () {
 }
 
 package() {
-     cd "$srcdir/$pkgname"
-     python2 setup.py install --root="$pkgdir/" --optimize=1
-     mv "$pkgdir/usr/scenic-folder.svg" "$pkgdir/usr/lib/python2.7/site-packages/resources/scenic-folder.svg"
+    cd "$srcdir/$pkgname"
+    python2 setup.py install --root="$pkgdir/" --optimize=1
+    install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    install -Dm644 "resources/scenic-folder.svg" "$pkgdir/usr/share/${pkgname}/scenic-folder.svg"
 }
 
 # vim:set ts=2 sw=2 et:
