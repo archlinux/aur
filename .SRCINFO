@@ -1,6 +1,6 @@
 pkgbase = python2-vcr
 	pkgdesc = Automatically mock your HTTP interactions to simplify and speed up testing
-	pkgver = 1.10.3
+	pkgver = 1.10.4
 	pkgrel = 1
 	url = http://pypi.python.org/pypi/vcrpy
 	arch = any
@@ -12,8 +12,8 @@ pkgbase = python2-vcr
 	depends = python2-six>=1.5
 	depends = python2-contextlib2
 	depends = python2-mock
-	source = https://pypi.io/packages/source/v/vcrpy/vcrpy-1.10.3.tar.gz
-	md5sums = 7e2152fea50dce1c99c7b9be236cc50a
+	source = https://pypi.io/packages/source/v/vcrpy/vcrpy-1.10.4.tar.gz
+	md5sums = fb820ddabee0491338431693ad0a1147
 
 pkgname = python2-vcr
 
