@@ -6,8 +6,8 @@
 # Contributor: Alexander De Sousa <archaur.xandy21@spamgourmet.com>
 
 pkgname=ttf-google-fonts-git
-pkgver=20151118
-pkgrel=2
+pkgver=20161214
+pkgrel=1
 pkgdesc="TrueType fonts from the Google Fonts project"
 arch=('any')
 url="https://github.com/google/fonts"
@@ -52,6 +52,7 @@ conflicts=('adobe-source-code-pro-fonts'
            'ttf-nova'
            'ttf-oldstandard'
            'ttf-opensans'
+           'ttf-overpass'
            'ttf-oxygen'
            'ttf-oxygen-git'
            'ttf-pt-mono'
@@ -66,7 +67,7 @@ conflicts=('adobe-source-code-pro-fonts'
            'ttf-ubuntu-font-family'
            'ttf-vollkorn')
 provides=("${conflicts[@]}" 'ttf-font')
-source=("git://github.com/google/fonts.git")
+source=("git+https://github.com/google/fonts.git")
 md5sums=('SKIP')
 install=font.install
 
