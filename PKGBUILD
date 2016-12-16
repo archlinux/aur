@@ -2,12 +2,12 @@
 
 pkgname=python2-bleach
 pkgver=1.5
-pkgrel=1
+pkgrel=2
 pkgdesc="An easy whitelist-based HTML-sanitizing tool"
 arch=('any')
 license=('Apache')
 url="http://pypi.python.org/pypi/bleach"
-depends=('python2-html5lib')
+depends=('python2-html5lib-git')
 makedepends=('python2-setuptools')
 source=("https://github.com/mozilla/bleach/archive/v${pkgver}.tar.gz")
 
