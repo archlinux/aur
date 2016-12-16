@@ -1,7 +1,7 @@
 pkgbase = qtcreator-cppcheck-plugin
 	pkgdesc = Qt Creator Cppcheck integration plugin
 	pkgver = 4.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://downloads.sourceforge.net/project/qtc-cppcheck/bin/4.2.0/
 	arch = x86_64
 	groups = qt
