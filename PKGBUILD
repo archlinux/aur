@@ -1,7 +1,7 @@
 #Maintainer: M0Rf30
 
 pkgname=openbazaard-standalone
-pkgver=0.2.3
+pkgver=0.2.4
 pkgrel=1
 pkgdesc="Server daemon for communication between client and OpenBazaar network"
 arch=(any)
@@ -17,8 +17,9 @@ source=("https://github.com/OpenBazaar/OpenBazaar-Server/archive/v$pkgver.tar.gz
 )
 install=${pkgname}.install
 options=('!strip')
+conflicts=('openbazaard')
 provides=('openbazaard')
-replaces=('openbazaard-git' 'openbazaard-standalone-git')
+replaces=('openbazaard' 'openbazaard-standalone-git')
 backup=("var/lib/${pkgname}/ob.cfg"
 	"etc/conf.d/${pkgname}.conf")
 
@@ -58,8 +59,7 @@ msg2 "Install ${_pkgname} scripts"
   install -Dm755 dist/${pkgname} $pkgdir/var/lib/openbazaard/openbazaard
   install -Dm755 ob.cfg $pkgdir/var/lib/openbazaard/ob.cfg
 }
-
-md5sums=('870886a237503c6fd08c48a9884fb67a'
+md5sums=('bb85cac3f74799dd543dae5094a22e49'
          '58f846fbc1742fea9d245b6f93f6db15'
          '7949d40abcd8bdaee27ff670d5b6c1c7'
          'e4d7b1c3fdceca262a517dd103f59260'
