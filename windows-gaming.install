@@ -1,0 +1,5 @@
+post_install() {
+  if ! getent group vfio >/dev/null; then
+    groupadd --system vfio
+  fi
+}

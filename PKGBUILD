@@ -8,7 +8,7 @@
 
 # Maintainer: Your Name <youremail@domain.com>
 pkgname=windows-gaming-git # '-bzr', '-git', '-hg' or '-svn'
-pkgver=r15.a129212
+pkgver=r16.1a66b97
 pkgrel=1
 pkgdesc="Windows gaming utils"
 arch=('x86_64')
@@ -23,7 +23,7 @@ conflicts=("${pkgname%-git}")
 replaces=()
 backup=()
 options=()
-install=
+install="windows-gaming.install"
 source=('git+https://github.com/main--/windows-gaming.git' 'https://fedorapeople.org/groups/virt/virtio-win/direct-downloads/archive-virtio/virtio-win-0.1.126-2/virtio-win_amd64.vfd')
 noextract=()
 md5sums=('SKIP' '954ca57735102d16e87a7c4caa979f67')
