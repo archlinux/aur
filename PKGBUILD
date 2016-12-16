@@ -48,8 +48,7 @@ _package() {
   KARCH=x86
 
   # get kernel version
-  #_kernver="$(make kernelrelease)"
-  _kernver="4.9.0-ph"
+  _kernver="$(make kernelrelease)"
   _basekernel=${_kernver%%-*}
   _basekernel=${_basekernel%.*}
 
