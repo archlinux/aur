@@ -1,3 +1,17 @@
+2016-12-16 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
+  * 2.1.7.6-1:
+    [!] Enhanced Statistics by new features. Please review changes to our privacy policy.
+    There is now public ASF-STM listing located here. You can read more about it in link above.
+    WCFHostname has been renamed to WCFHost. Please review Configuration as default value was also changed to "127.0.0.1".
+    ASF will now accept trade offers also from SteamOwnerID.
+    ASF will now reject group invites when IsBotAccount.
+    Added IsLimitedUser info to both !status and API.
+    Added Steam Winter Sale 2016 to global and local blacklist.
+    Fixed offline messages from family sharing users being ignored when in FarmOffline mode.
+    Fixed making it impossible for family sharing users to play when GamesPlayedWhileIdle is being used.
+    Fixed GamesPlayedWhileIdle with Paused CardsFarmer.
+    Fixed very rare issue of ASF not detecting some games available for farming due to Steam fuckup.
+    Major code improvements, optimizations and bugfixes.
 2016-11-18 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
   * 2.1.6.8-1:
     !addlicense can now also request free licenses from steam store (in addition to steam network).
