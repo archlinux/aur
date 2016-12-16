@@ -1,7 +1,7 @@
 # Maintainer: Ivan Shapovalov <intelfx100@gmail.com>
 
 pkgname=matrix-synapse-git
-pkgver=0.18.4.r8.gbaf9e74
+pkgver=0.18.5.r1.gb2f8642
 pkgrel=1
 pkgdesc="Matrix reference homeserver"
 license=('Apache')
@@ -21,7 +21,7 @@ optdepends=('python2-psycopg2: PostgreSQL support (instead of built-in SQLite)'
             'python2-netaddr: URL previewing'
             'python2-jinja: e-mail notifications'
             'python2-bleach: e-mail notifications'
-            'python2-ldap3: LDAP support'
+            'python2-matrix-synapse-ldap3: LDAP support'
             'python2-psutil: metrics')
 source=("git://github.com/matrix-org/synapse.git#branch=develop"
         'sysusers-synapse.conf'
