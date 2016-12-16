@@ -17,7 +17,7 @@ arch=(i686 x86_64)
 url="http://www.mozilla.org/directory/csdk.html"
 license=(MPL GPL LGPL)
 depends=(libsasl nspr nss svrcore)
-source=("ftp://ftp.mozilla.org/pub/mozilla.org/directory/c-sdk/releases/v${pkgver}/src/${pkgname}-${pkgver}.tar.gz")
+source=("http://ftp.mozilla.org/pub/mozilla.org/directory/c-sdk/releases/v6.0.7/src/mozldap-6.0.7.tar.gz")
 sha512sums=('bad8005941acaf98f53a60c6c8b697a680e8efe736817b063853ff1f07f052d3257ba7c28f502e37e0c2544fe00d24d31787ccbf892deb43c5481d49ed434b71')
 
 build() {
