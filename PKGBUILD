@@ -3,7 +3,7 @@
 
 pkgname=networkmanager-l2tp
 _pkgname=network-manager-l2tp
-pkgver=1.2.2
+pkgver=1.2.4
 pkgrel=1
 pkgdesc="L2TP support for NetworkManager"
 arch=('i686' 'x86_64')
@@ -16,7 +16,7 @@ options=()
 makedepends=()
 provides=('networkmanager-l2tp')
 source=(https://github.com/nm-l2tp/${_pkgname}/archive/${pkgver}.tar.gz)
-md5sums=('77a1f996678060ad33651754980163cd')
+md5sums=('7928aa33fde92b66559360d7ee52cb82')
 
 build() {
   cd "$srcdir/$_pkgname-$pkgver"
