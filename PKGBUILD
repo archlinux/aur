@@ -1,6 +1,6 @@
 # Maintainer: bartus <aur@bartus.33mail.com>
 pkgname=meshlab-git
-pkgver=1.3.4_r4915
+pkgver=1.3.4_r5055577
 pkgrel=1
 pkgdesc="System for processing and editing of unstructured 3D models arising in 3D scanning (qt5 version)"
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ provides=('meshlab')
 license=('GPL2')
 depends=('bzip2' 'muparser' 'levmar' 'lib3ds' 'desktop-file-utils' 'glu' 'mpir' 'openssl' 'qt5-base' 'qt5-declarative' 'qt5-script')
 #also create openctm(aur) jhead-lib structuresynth-lib to handle last dep
-makedepends=('git' 'subversion')
+makedepends=('git')
 install="${pkgname}.install"
 source=("git+https://github.com/cnr-isti-vclab/meshlab.git"
         "git+https://github.com/cnr-isti-vclab/vcglib.git#branch=devel"

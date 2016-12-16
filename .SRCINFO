@@ -1,6 +1,6 @@
 pkgbase = meshlab-git
 	pkgdesc = System for processing and editing of unstructured 3D models arising in 3D scanning (qt5 version)
-	pkgver = 1.3.4_r4915
+	pkgver = 1.3.4_r5055577
 	pkgrel = 1
 	url = http://meshlab.sourceforge.net/
 	install = meshlab-git.install
@@ -8,7 +8,6 @@ pkgbase = meshlab-git
 	arch = x86_64
 	license = GPL2
 	makedepends = git
-	makedepends = subversion
 	depends = bzip2
 	depends = muparser
 	depends = levmar
