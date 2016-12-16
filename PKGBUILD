@@ -8,8 +8,8 @@ _namegtk2='mint-themes'
 _namegtk3='mint-themes-gtk3'
 pkgver='1.8'
 _gtk3ver='3.18+8'
-_gtk2ver='1.4.7'
-pkgrel='1'
+_gtk2ver='1.4.8'
+pkgrel='2'
 pkgdesc='A Linux Mint theme.  Includes GTK2, GTK3, Metacity and Xfce components.'
 arch=('any')
 url='http://packages.linuxmint.com'
@@ -17,7 +17,7 @@ license=('GPL3')
 conflicts=('mint-themes')
 source=("${url}/pool/main/m/${_namegtk2}/${_namegtk2}_${_gtk2ver}.tar.xz"
         "${url}/pool/main/m/${_namegtk3}/${_namegtk3}_${_gtk3ver}.tar.xz")
-sha256sums=('924765b8fba708dbf053698002e65f6ea4c6b41880fa8bf423563b86f1400005'
+sha256sums=('55e338403dfba0cfd44ded2ffbece925f9c5e02cedafc697eb577f302612d212'
             '646cd198b45881f901aa0a8dca3835ce137e1e3348f553b13bbc5e3ce1a2dc2f')
 
 prepare() {
