@@ -1,4 +1,10 @@
 2016-12-16 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
+  * 2.1.7.8-1:
+    Fixed issue that could lead to increased network instability in very rare case
+  * 2.1.7.7:
+    Fixed cross-OS WCF incompatibility between Mono and Windows
+    Corrected WCFHost in ConfigGenerator
+2016-12-16 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
   * 2.1.7.6-1:
     [!] Enhanced Statistics by new features. Please review changes to our privacy policy.
     There is now public ASF-STM listing located here. You can read more about it in link above.
