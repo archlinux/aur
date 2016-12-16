@@ -1,0 +1,23 @@
+pkgbase = pyf9-git
+	pkgdesc = Chinese IME in testing.
+	pkgver = r6.d2556d5
+	pkgrel = 2
+	url = https://github.com/Saren-Arterius/PyF9
+	arch = i686
+	arch = x86_64
+	makedepends = firefox
+	makedepends = npm
+	makedepends = xorg-server-xvfb
+	makedepends = wget
+	depends = xdotool
+	depends = python-pillow
+	depends = python-xlib
+	depends = tk
+	depends = xorg-xauth
+	source = git+https://github.com/Saren-Arterius/PyF9.git
+	source = pyf9.desktop
+	sha256sums = SKIP
+	sha256sums = a65cbaf96d480b154d257eeead5c1941079b0e5c257ba22c6e35a93b5628207f
+
+pkgname = pyf9-git
+

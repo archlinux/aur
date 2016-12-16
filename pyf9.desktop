@@ -1,0 +1,6 @@
+[Desktop Entry]
+Type=Application
+Name=PyF9
+Terminal=false
+Exec=/bin/bash -c "xauth generate $DISPLAY . trusted && /opt/PyF9/pyf9"
+Hidden=false
