@@ -1,7 +1,7 @@
 # Maintainer: Kohei Suzuki <eagletmt@gmail.com>
 pkgname=mitamae
 pkgver=1.2.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Configuration management tool embedding mruby"
 arch=('i686' 'x86_64')
 url="https://github.com/k0kubun/mitamae"
@@ -40,4 +40,4 @@ package() {
 
 sha512sums=('ae6ea8c815bef27bece1a87c8fb017cd271065edc764879a0a6bdb75c5f75156eed8f0971ccac5ff0356ec973cfc09958fe260b756f21fb4b50ff939d5cce805'
             '978fb07ab503eaf70a49b23ed8ae8df4f84202a31be8492eb985032d894849479e40d88ba845956a3788327622355ef5e42976c3910ace7788c56bafc45f460c'
-            '2fa4af3e35b9ad2ba36f34ab6bbf1dbf86fdd72e08a1cf0fd3d9859e9a773cdac875eed19879a341a15ef57816db803644aa71528f75354fafc30398aa6924a1')
+            'd7f39b98df5a66dc77b9d4a8b979fda8c6291250454378c9ddfd519aff0994a5490f404756b13a603aa7d36c82219d670ed88334c57699daaff861d4c3fe677f')

@@ -2,7 +2,7 @@ MRuby::Build.new do |conf|
   toolchain :gcc
 
   conf.gem __dir__
-  conf.gem github: 'eagletmt/mitamae-pacman', checksum_hash: 'v0.1.0'
+  conf.gem github: 'eagletmt/mitamae-pacman', checksum_hash: 'v0.2.0'
   conf.gem github: 'eagletmt/mitamae-secrets', checksum_hash: 'v0.1.1'
   conf.gem github: 'IceDragon200/mruby-catch-throw', checksum_hash: 'v1.1.0'
   conf.gem github: 'iij/mruby-dir', checksum_hash: '0c3c538855dd15208d34fee96b13675e564bb4b6' # Latest
