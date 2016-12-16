@@ -2,7 +2,7 @@
 # Contributor: sirocco
 
 pkgname=italc
-pkgver=3.0.0
+pkgver=3.0.2
 pkgrel=1
 pkgdesc="Classroom management software which enables teachers to view and control computers"
 arch=('i686' 'x86_64')
@@ -34,6 +34,6 @@ package() {
   install -D ../italc.service $pkgdir/usr/lib/systemd/system/italc.service        
 }
 
-md5sums=('14b6441b4345c4e1a7b35122c8b1e12f'
+md5sums=('217baae910566d9d31946a714be58a3a'
          '4a00d5f3a8fe08ce614d75d5684a3b1e'
          'c01c880149184705c0a0118f97e7af5c')
