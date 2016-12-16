@@ -8,7 +8,7 @@
 
 # Maintainer: Your Name <youremail@domain.com>
 pkgname=windows-gaming-git # '-bzr', '-git', '-hg' or '-svn'
-pkgver=r14.f457273
+pkgver=r15.a129212
 pkgrel=1
 pkgdesc="Windows gaming utils"
 arch=('x86_64')
@@ -76,7 +76,7 @@ check() {
 package() {
 	cd "$srcdir/${pkgname%-git}"
 
-	install -D windows-gaming-driver/target/release/windows-gaming-driver $pkgdir/usr/sbin/windows-gaming-driver
+	install -D windows-gaming-driver/target/release/windows-gaming-driver $pkgdir/usr/bin/windows-gaming-driver
 	install -D -m644 ovmf-x64/OVMF_CODE-pure-efi.fd $pkgdir/usr/lib/windows-gaming/ovmf-code.fd
 	install -D -m644 ovmf-x64/OVMF_VARS-pure-efi.fd $pkgdir/usr/lib/windows-gaming/ovmf-vars.fd
 	install -D -m644 guest-agent/windows-gaming-ga.iso $pkgdir/usr/lib/windows-gaming/windows-gaming-ga.iso
