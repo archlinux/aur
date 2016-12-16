@@ -6,8 +6,8 @@
 pkgbase=deluge-split
 _pkgbase=deluge
 pkgname=("${_pkgbase}-common" "${_pkgbase}-daemon" "${_pkgbase}-gtk" "${_pkgbase}-web" "${_pkgbase}-console")
-pkgver=1.3.13+2+g6c73105
-pkgrel=9
+pkgver=1.3.13+2+g6c73105a7
+pkgrel=1
 arch=('any')
 url="http://deluge-torrent.org/"
 license=('GPL3')
