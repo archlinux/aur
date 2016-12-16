@@ -1,12 +1,12 @@
 # Maintainer: Oscar Morante <spacepluk@gmail.com>
 pkgname=substance-batchtools
 pkgver=5.5.2.176
-pkgrel=1
+pkgrel=2
 pkgdesc="Substance Batchtools is a set of command lines allowing you to script some of Substance Designer process."
 arch=('x86_64')
 url='https://support.allegorithmic.com/documentation/display/SB10/Substance+Batchtools+User%27s+Guide'
 license=('custom')
-depends=('fontconfig' 'gcc-libs-multilib' 'glu' 'hicolor-icon-theme' 'libtiff3')
+depends=('fontconfig' 'gcc-libs-multilib' 'glu' 'hicolor-icon-theme' 'libtiff4')
 options=('!strip')
 source=('https://s3.amazonaws.com/alg-releases/public_releases/batchtools/Substance_BatchTools-5.5.2.176-linux-x64-standard-full.tar.gz')
 noextract=()
