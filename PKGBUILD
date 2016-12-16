@@ -7,7 +7,7 @@
 
 pkgname=nitrogen-git
 _gitname=nitrogen
-pkgver=r260.34df913
+pkgver=r294.7747ef9
 pkgrel=1
 epoch=1
 pkgdesc="Background browser and setter for X windows - git version"
