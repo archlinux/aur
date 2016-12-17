@@ -2,8 +2,8 @@
 
 pkgname=guile4emacs-git
 _gitname="guile"
-pkgver=r17564.15ca784
-pkgrel=2
+pkgver=r17564.15ca78482
+pkgrel=1
 pkgdesc="patched version of guile for guile-emacs"
 arch=('i686' 'x86_64')
 url="http://www.emacswiki.org/emacs/GuileEmacs"
