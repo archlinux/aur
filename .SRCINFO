@@ -1,0 +1,18 @@
+pkgbase = windows10-downloader
+	pkgdesc = Windows 10 downloader
+	pkgver = 1.0
+	pkgrel = 1
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = python3
+	depends = python-yaml
+	depends = python-requests
+	depends = wget
+	source = windows10-get-download-link.py
+	source = windows10-download.sh
+	md5sums = 17301792daff69c353bd8d787d9602ee
+	md5sums = bb94ccaa16913605f40a1d877ee61d31
+
+pkgname = windows10-downloader
+
