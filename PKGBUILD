@@ -3,7 +3,7 @@
 
 pkgname=python-license
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A command line app that fetches opensource licenses.'
 arch=(any)
 url='https://github.com/codemonkey800/python-license'

@@ -1,7 +1,7 @@
 pkgbase = python-license
 	pkgdesc = A command line app that fetches opensource licenses.
 	pkgver = 0.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/codemonkey800/python-license
 	arch = any
 	license = MIT
@@ -10,6 +10,7 @@ pkgbase = python-license
 	depends = python-click
 	depends = python-click-completion
 	depends = python-click-didyoumean
+	depends = python-psutil
 	depends = python-requests
 	depends = python-requests-cache
 	source = https://github.com/codemonkey800/python-license/archive/0.1.0.tar.gz
