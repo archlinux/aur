@@ -1,0 +1,17 @@
+--- 141946-MediaInfoKDE.desktop.OK	2016-12-17 08:42:33.137761491 -0500
++++ 141946-MediaInfoKDE.desktop.OK	2016-08-19 06:21:23.669915720 -0400
+@@ -11,12 +11,12 @@
+ [Desktop Action getMediaInfoComplete]
+ Name=Get media info
+ Icon=dialog-information
+-Exec=kdialog -msgbox "$(mediainfo --Output=HTML %u)" -title "Info about `basename %u`"
++Exec=kdialog --msgbox "$(mediainfo --Output=HTML %u)" --title "Info about `basename %u`"
+ 
+ [Desktop Action getMediaInfoSimple]
+ Name=Get short media info
+ Icon=dialog-information
+-Exec=kdialog -msgbox "$(mediainfo %u|grep -E '(Format)|(Complete)|(Width)|(Height)|(Audio)|(Duration)|(Video)|(Writing)')" -title "Info about `basename %u`"
++Exec=kdialog --msgbox "$(mediainfo %u|grep -E '(Format)|(Complete)|(Width)|(Height)|(Audio)|(Duration)|(Video)|(Writing)')" --title "Info about `basename %u`"
+ 
+ [Desktop Action getTXT]
+ Name=Generate TXT
