@@ -1,0 +1,9 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=Pouetchess
+Comment=A free 3D chess game
+Exec=pouetchess
+Terminal=false
+Type=Application
+Categories=Application;Game;BoardGame
+Icon=/usr/share/pixmaps/pouetChess.png
