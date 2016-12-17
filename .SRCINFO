@@ -1,6 +1,6 @@
 pkgbase = windows-gaming-git
 	pkgdesc = Windows gaming utils
-	pkgver = r16.1a66b97
+	pkgver = r18.85b1ac4
 	pkgrel = 1
 	install = windows-gaming.install
 	arch = x86_64
