@@ -9,7 +9,7 @@ pkgbase=lightdm-ubuntu
 pkgname=(lightdm-ubuntu liblightdm-qt4-ubuntu liblightdm-qt5-ubuntu)
 _ubuntu_rel=0ubuntu1
 pkgver=1.21.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A lightweight display manager"
 arch=(i686 x86_64)
 url="https://launchpad.net/lightdm"
@@ -26,7 +26,8 @@ source=("https://launchpad.net/ubuntu/+archive/primary/+files/lightdm_${pkgver}-
         lightdm.rules
         lightdm-default-config.patch
         Xsession
-        0001-guest-account-Add-default-GSettings-support.patch)
+        0001-guest-account-Add-default-GSettings-support.patch
+	0002-Fix-separator-error.patch)
 sha512sums=('3d5317e8951443136731b86816b9c7dfde4c42223f5a60e6575c99aa95f6910c40cb3da18d95a9e157a0255b95c540be87ff2aec46d7c5eb8a5315af84885c3c'
             'd49344e79f6468ef06538068cbb12c37e313e02ade28984a75dad4d50e1e962372451908e9910ae60c74bd5230ae45e6a6346bb0f7c6af83c346a691f5714556'
             'c359dbea59d9a38faa244fc52fa7fbe2a099984bdaa015e38046abfef71ed4941230b86a238c1691f04bda6f7608f403e99b04018a7cd5b7217fa89fc703af9f'
@@ -35,12 +36,14 @@ sha512sums=('3d5317e8951443136731b86816b9c7dfde4c42223f5a60e6575c99aa95f6910c40c
             '8d6aa12c4d129c25e56ecf2904db4e294d46631d11bd8bec2f20a76c871ba758094abb24616d3d2038a684fbb736ee61d1f80697d525d62c4dc68113e101194f'
             '62ef6fd02664d539c6169000774978c9780156d1483fabf25474073c221dc2d943f21c81b5225030f9b375eab1a83ccdefaf289d4a40a71b1fe91397da7d1425'
             '5e0f47e6d338e35548235dcfdb8b22622b749ffd69d5d6a4463021f51df0c679d1d78e0be17bbc072239d9916a027669aac9c6456afabe0ca3fde881b611b576'
-            '393ede18563aab484aace26c6c470b07e16f79025fec5eec03e0f1072e39316bc73a73d45da843c6b76f356e8b069fda66fa3863f39d1106dbf1f3ff7e4175a6')
+            '393ede18563aab484aace26c6c470b07e16f79025fec5eec03e0f1072e39316bc73a73d45da843c6b76f356e8b069fda66fa3863f39d1106dbf1f3ff7e4175a6'
+            '48e28f6dd9f3d704a75441f81a629e3d8801d56dd659addb1705127212555c21dddfa21a6a2159c72c4535d01734b9624d23e98ea1c98c426b5265a92508d163')
 
 prepare() {
     cd "lightdm-${pkgver}"
 
     patch -p1 -i "${srcdir}"/lightdm-default-config.patch
+    patch -p1 -i "${srcdir}"/0002-Fix-separator-error.patch
 
     # Do not use Ubuntu's language-tools
     sed -i '/04_language_handling.patch/d' debian/patches/series
