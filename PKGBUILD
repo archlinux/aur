@@ -23,7 +23,7 @@ source=("http://ftp.gnome.org/pub/gnome/sources/$_pkgname/${pkgver:0:4}/$_pkgnam
         'fc-init.patch'
         'Z99-zip-cp932.sh')
 sha256sums=('27158cdcc366f82100312b1e0a02ad1f3aa7a6c32d4eba68fc5a2a8829685df9'
-            '27df085f1d6c8fad4bceb503267e767e7c43ad920f3cf9e91ee03e7f751addaf'
+            '8c027d4160b26a93f17ff4bf749d00c74812dd34bbe6f65cdd1815835a25d9e8'
             '47d0e369be6f8df7fbdc56b794eccccf877fe3d8a6dfcc4fccb00649f77b54bc')
 
 prepare() {

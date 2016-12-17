@@ -1,4 +1,4 @@
-353a354
+362a362
 > 	register_archive (FR_TYPE_COMMAND_ZIP);
-368d368
+376d376
 < 	register_archive (FR_TYPE_COMMAND_ZIP);
