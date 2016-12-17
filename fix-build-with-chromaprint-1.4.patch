@@ -1,0 +1,50 @@
+From 305e5536b889e6e1609b2a8e27f2a04d97f2a7ad Mon Sep 17 00:00:00 2001
+From: Urs Fleisch <ufleisch@users.sourceforge.net>
+Date: Fri, 9 Dec 2016 07:54:19 +0100
+Subject: Fix building with Chromaprint 1.4, [bugs:#146].
+
+
+diff --git a/src/plugins/acoustidimport/fingerprintcalculator.cpp b/src/plugins/acoustidimport/fingerprintcalculator.cpp
+index 840efae..00d12e0 100644
+--- a/src/plugins/acoustidimport/fingerprintcalculator.cpp
++++ b/src/plugins/acoustidimport/fingerprintcalculator.cpp
+@@ -26,7 +26,6 @@
+ 
+ #define __STDC_CONSTANT_MACROS
+ #include "fingerprintcalculator.h"
+-#include <chromaprint.h>
+ #include "config.h"
+ #include "abstractfingerprintdecoder.h"
+ 
+@@ -94,7 +93,9 @@ void FingerprintCalculator::startChromaprint(int sampleRate, int channelCount)
+  */
+ void FingerprintCalculator::feedChromaprint(QByteArray data)
+ {
+-  if (!::chromaprint_feed(m_chromaprintCtx, data.data(), data.size() / 2)) {
++  if (!::chromaprint_feed(m_chromaprintCtx,
++                          reinterpret_cast<int16_t*>(data.data()),
++                          data.size() / 2)) {
+     m_decoder->stop();
+     emit finished(QString(), 0, FingerprintCalculationFailed);
+   }
+diff --git a/src/plugins/acoustidimport/fingerprintcalculator.h b/src/plugins/acoustidimport/fingerprintcalculator.h
+index dea2f2f..596409b 100644
+--- a/src/plugins/acoustidimport/fingerprintcalculator.h
++++ b/src/plugins/acoustidimport/fingerprintcalculator.h
+@@ -29,6 +29,7 @@
+ 
+ #include <QObject>
+ #include <QString>
++#include <chromaprint.h>
+ 
+ class AbstractFingerprintDecoder;
+ 
+@@ -110,7 +111,7 @@ private slots:
+   void finishChromaprint(int duration);
+ 
+ private:
+-  void** m_chromaprintCtx;
++  ChromaprintContext* m_chromaprintCtx;
+   AbstractFingerprintDecoder* m_decoder;
+ };
+ 
