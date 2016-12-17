@@ -12,7 +12,7 @@ license=('GPL')
 # are installed, octave will be linked against them.
 depends=('fftw>=3.2.2' 'curl' 'fltk' 'hdf5' 'glpk' 'arpack' 'gl2ps' 
 	 'qt5-base' 'qhull' 'graphicsmagick' 'portaudio' 'mesa'
-	 'suitesparse' 'java-environment') 
+	 'suitesparse' 'java-environment')
 makedepends=('pcre' 'mercurial' 'gcc-fortran' 'gperf' 'rsync' 'gnuplot'
 	     'gettext' 'suitesparse' 'transfig' 'epstool' 'texlive-core'
 	     'icoutils')
