@@ -1,7 +1,7 @@
 pkgname=python-openmm
 _pkgname=openmm
 pkgver=7.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Python bindings for openmm"
 arch=('i686' 'x86_64')
 url="https://simtk.org/home/openmm"
@@ -10,7 +10,7 @@ depends=('fftw')
 makedepends=('cmake' 'swig')
 depends=('openmm')
 source=("https://github.com/pandegroup/openmm/archive/${pkgver}.tar.gz")
-md5sums=('f2ace25db6755eb91039149a1b8031b9')
+sha512sums=('3a07148f3d00121d3a6cbf94513804453a947fd7e826a2d7fdf011e1d1fb9406a26a42d5bae8f35728c9877e63deb3b564868e56cce58ef0ac28f53f950d2512')
 
 prepare() {
   mkdir -p build
