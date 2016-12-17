@@ -1,7 +1,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=tex2page-git
-pkgver=20161205
+pkgver=20161215
 pkgrel=1
 pkgdesc="Lisp program for making Web pages from TeX documents"
 arch=('any')
@@ -31,12 +31,12 @@ build() {
   xetex index
 }
 
-check() {
-  cd "$_gitname"
-  # run the generated program to build html-docs, also a good test
-  ./my-$_gitname index
-  ./my-$_gitname index
-}
+# check() {
+#   cd "$_gitname"
+#   # run the generated program to build html-docs, also a good test
+#   ./my-$_gitname index
+#   ./my-$_gitname index
+# }
 
 package() {
   cd "$_gitname"
