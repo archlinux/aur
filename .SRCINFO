@@ -1,0 +1,15 @@
+pkgbase = python-click-completion
+	pkgdesc = Enable git-like did-you-mean feature in Click.
+	pkgver = 0.0.3
+	pkgrel = 1
+	url = https://github.com/click-contrib/click-didyoumean
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	depends = python-click
+	source = https://github.com/click-contrib/click-didyoumean/archive/v0.0.3.tar.gz
+	md5sums = 8f7e39fe489aeb124263af4641b243f0
+
+pkgname = python-click-completion
+
