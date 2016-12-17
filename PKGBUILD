@@ -1,6 +1,6 @@
 # Maintainer: Jguer <joaogg3@gmail.com>
 pkgname=yay
-pkgver=1.80
+pkgver=1.88
 pkgrel=1
 pkgdesc="Yet another yogurt. Pacman wrapper with AUR support written in go."
 arch=('i686' 'x86_64' 'arm')
