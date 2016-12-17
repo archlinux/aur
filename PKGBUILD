@@ -45,7 +45,7 @@ _use_current=
 pkgbase=linux-ck
 _srcname=linux-4.8
 pkgver=4.8.15
-pkgrel=1
+pkgrel=2
 _ckpatchversion=8
 arch=('i686' 'x86_64')
 url="https://wiki.archlinux.org/index.php/Linux-ck"
@@ -75,9 +75,9 @@ sha256sums=('3e9150065f193d3d94bcf46a1fe9f033c7ef7122ab71d75a7fb5a2f0c9a7e11a'
             'cdeff3a6e0dc3d6189d1b1d4d6318f0942b9a28409491cf65592879e4c42b1f7'
             'SKIP'
             'cea596c606da2125946154a0121ea0516583f659ad823c93669ad5d25bbc3ef7'
-            'e1b8c54c3b81dfd526e24287436b16ec523715e6b3b96156c3e57af035ade127'
-            'c9a52842fe24e1e6c68e753ad8e5d142f9847c72a7bdc7aecef13c1d5f6580e6'
-            '9d96711c091686e3b9f477fa842f5c154038a7262384617f1ed871ef686aa958'
+            'f34bab0afd0435dc00ac52558369bf0649bc431aa6217bd192df9c96651ade5a'
+            '183efb4bcae3a15a12c3c02e0abe9062dae73817f1c3f4735a375f52e4ae25db'
+            '089aba112b62060791c7024ace27dbb46215001b1f8dc092a780382e6e543218'
             '834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
@@ -189,7 +189,9 @@ prepare() {
     if [ -n "$_localmodcfg" ]; then
     msg "If you have modprobed-db installed, running it in recall mode now"
     if [ -e /usr/bin/modprobed-db ]; then
-      [[ ! -x /usr/bin/sudo ]] && echo "Cannot call modprobe with sudo.  Install via pacman -S sudo and configure to work with this user." && exit 1
+      [[ -x /usr/bin/sudo ]] || {
+      echo "Cannot call modprobe with sudo. Install sudo and configure it to work with this user."
+      exit 1; }
       sudo /usr/bin/modprobed-db recall
     fi
     msg "Running Steven Rostedt's make localmodconfig now"
