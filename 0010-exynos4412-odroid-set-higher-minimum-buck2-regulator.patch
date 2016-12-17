@@ -1,4 +1,4 @@
-From cf306f4ec83a1f645d01e01d1d18c555e6b766e5 Mon Sep 17 00:00:00 2001
+From bbaf3b78f27ea3557ce35e4267398e215091b68a Mon Sep 17 00:00:00 2001
 From: Kevin Mihelich <kevin@archlinuxarm.org>
 Date: Thu, 11 Aug 2016 00:42:37 -0600
 Subject: [PATCH 10/13] exynos4412-odroid: set higher minimum buck2 regulator
