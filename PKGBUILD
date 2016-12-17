@@ -1,23 +1,29 @@
 # Maintainer: Josip Ponjavic <josipponjavic at gmail dot com>
 
 pkgname=streamlink
-pkgver=0.1.0
-pkgrel=3
+pkgver=0.2.0
+pkgrel=1
 pkgdesc='CLI program that launches streams from various streaming services in a custom video player (livestreamer fork)'
 arch=('any')
 url='https://streamlink.github.io/'
 license=('BSD')
-depends=('python-requests' 'python-setuptools' 'rtmpdump')
+depends=('python-pycryptodome' 'python-requests' 'python-setuptools' 'rtmpdump')
+checkdepends=('python-mock' 'python-pytest')
 makedepends=('python-sphinx')
 optdepends=('python-librtmp: Required by the ustreamtv plugin to be able to use non-mobile streams.')
 source=("https://github.com/${pkgname}/${pkgname}/releases/download/${pkgver}/${pkgname}-${pkgver}.tar.gz"{,.asc})
+# Charlie Drage <charlie@charliedrage.com>
 validpgpkeys=('1D2DA4B582D3E09EFA2C997CDA227403C037D617')
-sha256sums=('8284d16622e70e3b56e5f43695c418972c37d6073b21d51d79644405e55b1544' 'SKIP')
+sha256sums=('a7431590525b5fd1ec024e080f9cb8254b51be8993f0453548c4ff37926cac39' 'SKIP')
 
 build() {
   cd "${pkgname}-${pkgver}"
-  sed -i 's/requests>=1.0,<2.12.0/requests>=1.0,<3.0/' setup.py
   python setup.py build_sphinx -b man
+}
+
+check() {
+  cd "${pkgname}-${pkgver}"
+  python setup.py test || warning "Tests failed"
 }
 
 package() {
