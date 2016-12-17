@@ -1,18 +1,18 @@
 # Maintainer: wenLiangcan <boxeed at gmail dot com>
 
-pkgname=pcap-dnsproxy-git
 _pkgname=pcap-dnsproxy
-pkgver=0.4.6.0.9.gb981552
+pkgname="${_pkgname}-git"
+pkgver=0.4.8.2.0.g1c40e79
 pkgrel=1
 epoch=1
 pkgdesc="A local DNS server base on WinPcap and LibPcap."
-arch=("any")
+arch=('x86_64' 'i686')
 url="https://github.com/chengr28/Pcap_DNSProxy"
 license=('GPL2')
 depends=('libpcap' 'libsodium')
 makedepends=('git' 'cmake' 'sh' 'm4' 'bison' 'flex' 'gcc')
-provides=('pcap-dnsproxy')
-conflicts=('pcap-dnsproxy')
+provides=("${_pkgname}")
+conflicts=("${_pkgname}")
 source=("${pkgname}"::'git://github.com/chengr28/Pcap_DNSProxy.git'
         "${_pkgname}.service")
 install="${_pkgname}.install"
@@ -25,7 +25,7 @@ pkgver() {
 }
 
 build() {
-    cd "${srcdir}/${pkgname}/Source/Scripts"
+    cd "${srcdir}/${pkgname}/Source/Auxiliary/Scripts"
     sh ./CMake_Build.sh
 }
 
