@@ -1,4 +1,4 @@
-From 8289d8d3cdc80e9093d65d36b73eacfc75c67569 Mon Sep 17 00:00:00 2001
+From e603d79db1ce38be15a8b7d1514301a67d88f920 Mon Sep 17 00:00:00 2001
 From: Kevin Mihelich <kevin@archlinuxarm.org>
 Date: Sat, 7 Feb 2015 12:32:27 +0100
 Subject: [PATCH 08/13] USB armory support

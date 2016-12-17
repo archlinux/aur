@@ -1,4 +1,4 @@
-From 9332f8007064d41fe06611671ba7cecffe18cb0b Mon Sep 17 00:00:00 2001
+From 42885038fd78080edabbce377800994337fbc644 Mon Sep 17 00:00:00 2001
 From: Kevin Mihelich <kevin@archlinuxarm.org>
 Date: Sat, 14 Feb 2015 12:32:27 +0100
 Subject: [PATCH 07/13] set default cubietruck led triggers

@@ -1,4 +1,4 @@
-From 17998b802d18651bd4bfd6ee32e10c166f484e76 Mon Sep 17 00:00:00 2001
+From 7b64f74c06cacdba5eab9275f57df212540cad2e Mon Sep 17 00:00:00 2001
 From: Tony Lindgren <tony@atomide.com>
 Date: Fri, 30 Sep 2016 11:10:10 -0700
 Subject: [PATCH 11/13] usb: musb: Call pm_runtime from musb_gadget_queue
