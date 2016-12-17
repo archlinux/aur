@@ -10,7 +10,7 @@
 
 pkgbase=linux-libre-lts
 _pkgbasever=4.4-gnu
-_pkgver=4.4.36-gnu
+_pkgver=4.4.38-gnu
 
 _replacesarchkernel=('linux%') # '%' gets replaced with _kernelname
 _replacesoldkernels=() # '%' gets replaced with _kernelname
@@ -44,7 +44,6 @@ source=("https://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgbasever}/l
         # standard config files for mkinitcpio ramdisk
         'linux.preset'
         'change-default-console-loglevel.patch'
-        'fix_race_condition_in_packet_set_ring.diff'
         '0001-sdhci-revert.patch'
         '0001-drm-radeon-Make-the-driver-load-without-the-firmwares.patch'
         '0002-usb-serial-gadget-no-TTY-hangup-on-USB-disconnect-WI.patch'
@@ -63,7 +62,7 @@ source=("https://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgbasever}/l
         '0009-ARM-dts-dove-add-Dove-divider-clocks.patch')
 sha256sums=('f53e99866c751f21412737d1f06b0721e207f495c8c64f97dffb681795ee69a0'
             'SKIP'
-            '09f097bb6827140056d81eb3b46cedc35f0612f07df29a6dc9ec388b3cca83b6'
+            '2fa92c569da3ce1b5dc0c86ca4a45bed863ac8134b342afb7703f087c7f62be3'
             'SKIP'
             'bfd4a7f61febe63c880534dcb7c31c5b932dde6acf991810b41a939a93535494'
             'SKIP'
@@ -77,7 +76,6 @@ sha256sums=('f53e99866c751f21412737d1f06b0721e207f495c8c64f97dffb681795ee69a0'
             '834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
-            'ad1ee95f906f88d31fcdb9273cd08e02e8eda177449f0c98dc1bff8cbf1483c2'
             '5313df7cb5b4d005422bd4cd0dae956b2dadba8f3db904275aaf99ac53894375'
             'f0a10ea9a669e5200aa33656565c209718b24ff1add03ac5279c4a1f46ab8798'
             '96c6c7d4057b8d08238adae85d476c863c082770a182057163a45480511d35a8'
@@ -140,10 +138,6 @@ prepare() {
   # add freedo as boot logo
   install -m644 -t drivers/video/logo \
     "${srcdir}/logo_linux_"{clut224.ppm,vga16.ppm,mono.pbm}
-
-  # fix a race condition that allows to gain root
-  # https://marc.info/?l=linux-netdev&m=148054660230570&w=2
-  patch -p1 -i "${srcdir}/fix_race_condition_in_packet_set_ring.diff"
 
   # add latest fixes from stable queue, if needed
   # http://git.kernel.org/?p=linux/kernel/git/stable/stable-queue.git
