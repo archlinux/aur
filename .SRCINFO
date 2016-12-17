@@ -1,0 +1,14 @@
+pkgbase = pdfbox-legacy
+	pkgdesc = An open source Java tool for working with PDF documents. (pdfbox, fontbox, jempbox)
+	pkgver = 0.7.3
+	pkgrel = 1
+	url = https://pdfbox.apache.org
+	arch = any
+	license = Apache 2
+	depends = java-runtime
+	noextract = PDFBox-0.7.3.jar
+	source = https://sourceforge.net/projects/pdfbox/files/PDFBox/PDFBox-0.7.3/PDFBox-0.7.3.zip
+	sha1sums = 5e986e2e436cd3d06bc59abd1eb14f3ed7400120
+
+pkgname = pdfbox-legacy
+
