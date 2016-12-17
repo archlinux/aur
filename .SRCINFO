@@ -1,0 +1,18 @@
+pkgbase = ogdf
+	pkgdesc = Open Graph Drawing Framework : Self-contained C++ class library for the automatic layout of diagrams. Offers sophisticated algorithms and data structures to use within your own applications or scientific projects
+	pkgver = 2015.05
+	pkgrel = 1
+	url = http://www.ogdf.net/doku.php/start
+	arch = x86_64
+	arch = i686
+	license = GPL
+	makedepends = python2
+	makedepends = unzip
+	conflicts = OGDF
+	replaces = OGDF
+	noextract = ogdf.v2015.05.zip
+	source = ogdf.v2015.05.zip::http://www.ogdf.net/lib/exe/fetch.php/tech:ogdf.v2015.05.zip
+	md5sums = b652b1b137e63245db6e412196551bc6
+
+pkgname = ogdf
+
