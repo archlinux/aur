@@ -6,7 +6,7 @@ pkgname='zarafa-postfixadmin'
 replaces=('zarafa-postfixadmin-worker')
 groups=('zarafa'
 	'kopano')
-pkgver=0.41
+pkgver=0.42
 pkgrel=1
 pkgdesc="A web based interface used to manage mailboxes, virtual domains and aliases created for Zarafa-Server with DB-Plugin and Postfix"
 arch=('any')
