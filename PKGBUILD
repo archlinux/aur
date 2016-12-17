@@ -1,8 +1,8 @@
 #Maintainer James W. Barnett < jbarnet 4 at tulane dot edu >
 pkgname=gromacs-mpi
 _pkgname=gromacs
-pkgver=2016
-pkgrel=7
+pkgver=2016.1
+pkgrel=1
 pkgdesc='molecular dynamics simulation suite'
 url='http://www.gromacs.org/'
 license=("LGPL2")
@@ -24,7 +24,7 @@ optdepends=(
   'vmd: visualization'
 )
 source=(ftp://ftp.gromacs.org/pub/gromacs/gromacs-${pkgver}.tar.gz)
-md5sums=('302a87450cd8ba3eb2c2c29cd6232bf1')
+sha512sums=('d30a4ad5faa6e12c95b8e94acaabc387d9aab3780490f5442c48ccac2f86bef6dca60df5bb6097dbc68ab28e6f1a15e234e1244606afdf12a841b88ece65c97b')
 
 prepare() {
   mkdir -p build
