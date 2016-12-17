@@ -2,30 +2,21 @@
 # Maintainer: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=kjots
-pkgver=5.0.1
-pkgrel=3
+pkgver=5.0.2
+pkgrel=1
 pkgdesc="A note taking application for KDE"
 url="https://www.kde.org/applications/utilities/kjots/"
 arch=(i686 x86_64)
 license=(GPL)
 depends=(kcmutils kontactinterface akonadi akonadi-notes kpimtextedit hicolor-icon-theme)
 makedepends=(extra-cmake-modules kdoctools boost python kdelibs4support)
-source=("http://download.kde.org/stable/$pkgname/$pkgver/src/$pkgname-$pkgver.tar.xz"
-        kjots-fix-build.patch::"https://cgit.kde.org/kjots.git/patch/?id=bebc6809"
-        kjots-fix-build-2.patch::"https://cgit.kde.org/kjots.git/patch/?id=01fc847e")
+source=("http://download.kde.org/stable/$pkgname/$pkgver/$pkgname-$pkgver.tar.xz")
 conflicts=(kdepim-kjots)
 replaces=(kdepim-kjots)
-md5sums=('edb0a82781dbb75d1fe69f2eb6f7cf28'
-         '1671b9c7c4ebd4a53aa1217c4cd8223f'
-         '27db25ec966d0809fb4ecb4931fa4d7c')
+md5sums=('296136e9860142596235d6d3f2c523e8')
 
 prepare() {
   mkdir -p build
-
-# Fix build
-  cd $pkgname-$pkgver
-  patch -p1 -i ../kjots-fix-build.patch
-  patch -p1 -i ../kjots-fix-build-2.patch
 }
 
 build() {
@@ -33,7 +24,7 @@ build() {
   cmake ../$pkgname-$pkgver \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DLIB_INSTALL_DIR=lib \
+    -DKDE_INSTALL_LIBDIR=lib \
     -DBUILD_TESTING=OFF 
   make
 }
