@@ -5,8 +5,8 @@
 # Contributor: Martchus <martchus@gmx.net>
 
 pkgname=mingw-w64-dcadec
-pkgver=0.1.0
-pkgrel=4
+pkgver=0.2.0
+pkgrel=1
 pkgdesc='DTS Coherent Acoustics decoder with support for HD extensions (mingw-w64)'
 arch=('any')
 url='https://github.com/foo86/dcadec.git'
@@ -15,7 +15,7 @@ depends=('mingw-w64-crt')
 makedepends=('mingw-w64-gcc')
 options=(!strip !buildflags staticlibs)
 source=("dcadec-${pkgver}.tar.gz::https://github.com/foo86/dcadec/archive/v${pkgver}.tar.gz")
-sha256sums=('52a68a63f79ae50e5e5fd9c631a715e9feeed5d2b4a8442f0b9208692012a43f')
+sha256sums=('ed9d207fde3e8d576f3af8b0d1235b3371e315175757173689104efcaebf0d44')
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 build() {
