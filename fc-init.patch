@@ -1,4 +1,4 @@
-362a362
+361a361
 > 	register_archive (FR_TYPE_COMMAND_ZIP);
 376d376
 < 	register_archive (FR_TYPE_COMMAND_ZIP);
