@@ -36,7 +36,7 @@ depends=('gtk2' 'nss' 'alsa-lib' 'xdg-utils' 'libxss' 'libexif' 'libgcrypt'
          'pciutils' 'desktop-file-utils' 'hicolor-icon-theme')
 depends+=(${_system_libs[@]})
 makedepends=('python2' 'gperf' 'yasm' 'mesa' 'ninja' 'git')
-optdepends=('kdebase-kdialog: needed for file dialogs in KDE'
+optdepends=('kdialog: needed for file dialogs in KDE'
             'gnome-keyring: for storing passwords in GNOME keyring'
             'kwallet: for storing passwords in KWallet')
 install=chromium.install
