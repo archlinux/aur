@@ -2,7 +2,7 @@
 # Maintainer: Jeremy Asuncion <jeremyasuncion808@gmail.com>
 
 _name=click-didyoumean
-pkgname=python-click-completion
+pkgname=python-click-didyoumean
 pkgver=0.0.3
 pkgrel=1
 pkgdesc='Enable git-like did-you-mean feature in Click.'
