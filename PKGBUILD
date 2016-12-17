@@ -25,7 +25,7 @@ md5sums=('748bf430cd6430d1838973d163965ba9'
 
 build() {
   cd "${srcdir}/${pkgname}-oss-${pkgver}"
-  ./configure --prefix=/usr
+  CC=gcc CXX=g++ ./configure --prefix=/usr
   make
 }
 
