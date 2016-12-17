@@ -206,19 +206,9 @@ prepare() {
 		if [ -n "$_localmodcfg" ]; then
 		msg "If you have modprobe-db installed, running it in recall mode now"
 		if [ -e /usr/bin/modprobed-db ]; then
-			### Optionally load needed modules for the make localmodconfig
-	# See https://aur.archlinux.org/packages/modprobed-db
-		if [ -n "$_localmodcfg" ]; then
-		msg "If you have modprobe-db installed, running it in recall mode now"
-		if [ -e /usr/bin/modprobed-db ]; then
 			[[ -x /usr/bin/sudo ]] || {
                         echo "Cannot call modprobe with sudo. Install sudo and configure it to work with this user."
                         exit 1; }
-			sudo /usr/bin/modprobed-db recall
-		fi
-		msg "Running Steven Rostedt's make localmodconfig now"
-		make localmodconfig
-	fi
 			sudo /usr/bin/modprobed-db recall
 		fi
 		msg "Running Steven Rostedt's make localmodconfig now"
