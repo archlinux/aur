@@ -2,7 +2,7 @@
 #      Ralph Irving 2015-2016, ralph_irving@hotmail.com
 
 pkgname=squeezelite-git
-pkgver=v1.8.5_809.637e941
+pkgver=v1.8.6_825.1b96b62
 pkgrel=1
 pkgdesc='Lightweight headless squeezebox emulator'
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
