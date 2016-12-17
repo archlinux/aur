@@ -1,7 +1,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=tex2page-git
-pkgver=20161215
+pkgver=20161217
 pkgrel=1
 pkgdesc="Lisp program for making Web pages from TeX documents"
 arch=('any')
@@ -11,15 +11,19 @@ depends=('bash' 'guile')
 makedepends=('git' 'texlive-formatsextra' 'texlive-bibtexextra')
 source=("git+https://github.com/ds26gte/tex2page")
 md5sums=('SKIP')
-_gitname="tex2page"
 
 pkgver() {
-  cd "$_gitname"
+  cd "${pkgname%-git}"
   echo $(git log -1 --format="%cd" --date=short | sed 's|-||g')
 }
 
+#prepare() {
+#  cd "${pkgname%-git}"
+#  sed -i 's+scmxlate=+scmxlate=/usr/lib/scmxlate/scmxlate.scm+' configure
+#}
+
 build() {
-  cd "$_gitname"
+  cd "${pkgname%-git}"
   ./configure --dialect=guile --prefix=/usr
   # creating the documentation
   yes "s"|xetex index || true
@@ -31,25 +35,25 @@ build() {
   xetex index
 }
 
-# check() {
-#   cd "$_gitname"
-#   # run the generated program to build html-docs, also a good test
-#   ./my-$_gitname index
-#   ./my-$_gitname index
-# }
+check() {
+  cd "${pkgname%-git}"
+  # run the generated program to build html-docs, also a good test
+  ./my-${pkgname%-git} index
+  ./my-${pkgname%-git} index
+}
 
 package() {
-  cd "$_gitname"
-  install -Dm755 "my-${_gitname}" $pkgdir/usr/bin/"$_gitname"
-  install -Dm644 "$_gitname".sty $pkgdir/usr/share/texmf/tex/plain/"$_gitname".sty
-  install -Dm644 "$_gitname".tex $pkgdir/usr/share/texmf/tex/plain/"$_gitname".tex
+  cd "${pkgname%-git}"
+  install -Dm755 "my-${pkgname%-git}" $pkgdir/usr/bin/"${pkgname%-git}"
+  install -Dm644 "${pkgname%-git}".sty $pkgdir/usr/share/texmf/tex/plain/"${pkgname%-git}".sty
+  install -Dm644 "${pkgname%-git}".tex $pkgdir/usr/share/texmf/tex/plain/"${pkgname%-git}".tex
   # for texinfo sources
   install -Dm644 texi2p.tex $pkgdir/usr/share/texmf/tex/plain/texi2p.tex
   # manpage
-  install -Dm644 "man/man1/$_gitname".1 $pkgdir/usr/share/man/man1/"$_gitname".1
+  install -Dm644 "man/man1/${pkgname%-git}".1 $pkgdir/usr/share/man/man1/"${pkgname%-git}".1
   # bibtex file 
-  install -Dm644 "$_gitname".bib \
-	  $pkgdir/usr/share/texmf/bibtex/bib/"$_gitname"/"$_gitname".bib
+  install -Dm644 "${pkgname%-git}".bib \
+	  $pkgdir/usr/share/texmf/bibtex/bib/"${pkgname%-git}"/"${pkgname%-git}".bib
   install -Dm644 COPYING $pkgdir/usr/share/licenses/$pkgname/COPYING
   # installing documentation other than manpage 
   for _i in index* lambda* mpexample*
