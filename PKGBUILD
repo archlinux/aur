@@ -1,14 +1,14 @@
 # Maintainer: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
 
 pkgname=tidb-git
-pkgver=8920a55
+pkgver=beta4.269.g3c7ac58d
 pkgrel=1
 pkgdesc="Distributed SQL database inspired by the desing of Google F1"
 arch=('i686' 'x86_64')
 url="https://github.com/pingcap/tidb"
 license=('APACHE')
 depends=('glibc')
-makedepends=('go' 'godep')
+makedepends=('go' 'godep' 'git')
 source=(git+https://github.com/pingcap/tidb.git)
 sha256sums=('SKIP')
 
@@ -28,17 +28,13 @@ build() {
 	export GOPATH="$srcdir"
 	export PATH="$PATH:$GOPATH/bin"
 	cd src/github.com/pingcap/tidb
-
-	make parser
-	go get -v
-	make build
+	LDFLAGS= make
 }
 
 check() {
 	export GOPATH="$srcdir"
 	export PATH="$PATH:$GOPATH/bin"
 	cd src/github.com/pingcap/tidb
-
 	make test
 }
 
@@ -46,9 +42,5 @@ package() {
 	export GOPATH="$srcdir"
 	export PATH="$PATH:$GOPATH/bin"
 	cd src/github.com/pingcap/tidb
-
-	make install
-
-  cd "$GOPATH"/bin
-	install -Dm755 interpreter "$pkgdir"/usr/bin/tidb
+	install -Dm755 bin/tidb-server "$pkgdir"/usr/bin/tidb-server
 }
