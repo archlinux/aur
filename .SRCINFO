@@ -1,7 +1,7 @@
 pkgbase = synchronisation
 	pkgdesc = Folder synchronisation software
 	pkgver = 1.1.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://sourceforge.net/projects/synchronisation/
 	arch = any
 	license = GPL3
@@ -10,9 +10,7 @@ pkgbase = synchronisation
 	depends = gettext
 	depends = desktop-file-utils
 	source = Synchronisation-linux-1.1.1.tar.gz::https://sourceforge.net/projects/synchronisation/files/1.1.1/Synchronisation-linux-1.1.1.tar.gz/download
-	source = Synchronisation-linux-1.1.1.tar.gz.sig::https://sourceforge.net/projects/synchronisation/files/1.1.1/Synchronisation-linux-1.1.1.tar.gz.sig/download
 	sha512sums = 1928b87c452ff67f6380b42d84e91dda9384208d86efe6deb9e028dcf21c20a7926e9263bab4f21e29312896c329e917d50617fb36f4e2ebe8f955926aa161d0
-	sha512sums = 9066140372a83ba0d4ccf000fe7cdd7960505fcac6087fdbb16d39b50a40949b02c640f42bcb38d4af6dd0838dd284a41962868474b8a5bc1dede7077f6c60cb
 
 pkgname = synchronisation
 
