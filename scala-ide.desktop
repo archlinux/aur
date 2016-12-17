@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Scala-IDE
+GenericName=Scala IDE
+Icon=scala-ide.png
+Exec=/usr/bin/scala-ide
+Categories=Development
+
