@@ -3,7 +3,7 @@
 pkgname=mendeleydesktop-dev
 pkgshortname=mendeleydesktop
 pkgver=1.17.6 #_dev6
-pkgrel=1
+pkgrel=2
 pkgdesc="Academic software for managing and sharing research papers (desktop client)"
 url=https://www.mendeley.com/release-notes/development/
 arch=(i686 x86_64)
