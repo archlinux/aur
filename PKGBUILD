@@ -5,8 +5,8 @@
 # Contributor: Sebastian Voecking < voeck at web dot de >
 
 pkgname=root
-pkgver=6.08.00
-pkgrel=3
+pkgver=6.08.02
+pkgrel=1
 pkgdesc='C++ data analysis framework and interpreter from CERN.'
 arch=('i686' 'x86_64')
 url='http://root.cern.ch'
@@ -32,18 +32,24 @@ depends=('cfitsio'
 'unuran'
 'xmlrpc-c'
 )
-optdepends=('gcc-fortran: Enable the Fortran components of ROOT'
+optdepends=('blas: Optional extensions to TMVA'
+            'gcc-fortran: Enable the Fortran components of ROOT'
             'tcsh: Legacy CSH support'
 )
 options=('!emptydirs')
+install=root.install
 source=("https://root.cern.ch/download/root_v${pkgver}.source.tar.gz"
+'JupyROOT_encoding.patch'
 'JupyROOT_fix.patch'
+'root.install'
 'root.sh'
 'root.xml'
 'rootd'
 'settings.cmake')
-sha256sums=('388b4158c6e5706418031060c52c4e6b89cd8856ba06bf11c550eeb1759615d9'
+sha256sums=('131c50a81e72a1cd2b2825c66dbe3916c23b28006e84f5a028baed4c72d86014'
+            'dbf08ee3b506a2089f58d55ec9b1e6b77f337a6d2ebbb081e69cf729e531da3f'
             'a17309295f998ed826dcbf1b5d04de7ed44d64c35221806c75b775796578783d'
+            'f1796729b0403026382bca43329692f5356c8ec46fc2c09f799a8b3d12d49a6f'
             '9d1f8e7ad923cb5450386edbbce085d258653c0160419cdd6ff154542cc32bd7'
             'b103d46705883590d9e07aafb890ec1150f63dc2ca5f40d67e6ebef49a6d0a32'
             '3c45b03761d5254142710b7004af0077f18efece7c95511910140d0542c8de8a'
@@ -51,8 +57,9 @@ sha256sums=('388b4158c6e5706418031060c52c4e6b89cd8856ba06bf11c550eeb1759615d9'
 prepare(){
     cd ${pkgname}-${pkgver}
 
-    # Fix JupyROOT inheritance
-    patch -p1 -i ${srcdir}/JupyROOT_fix.patch
+    # Fix JupyROOT issues until upstream releases arrive
+    # patch -p1 -i ${srcdir}/JupyROOT_fix.patch
+    # patch -p1 -i ${srcdir}/JupyROOT_encoding.patch
 
     2to3 -w etc/dictpch/makepch.py 2>&1 > /dev/null
 }
