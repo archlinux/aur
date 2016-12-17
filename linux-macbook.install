@@ -1,9 +1,3 @@
-# arg 1:  the new package version
-# arg 2:  the old package version
-
-KERNEL_NAME=-macbook-pro
-KERNEL_VERSION=
-
 display_requirements () {
 cat <<-EOF
 
@@ -14,6 +8,9 @@ cat <<-EOF
 	in /etc/default/grub and then ran the following command as root:
 	grub-mkconfig -o /boot/grub/grub.cfg
 
+	Optionally, include the kernel boot option processor.ignore_ppc=1
+	to allow frequency changing on battery power.
+
 	Enable the macbook-wakeup service for suspend/resume on LID events:
 	systemctl enable --now macbook-wakeup.service
 
@@ -23,9 +20,7 @@ EOF
 post_install () {
   # updating module dependencies
   echo ">>> Updating module dependencies. Please wait ..."
-  depmod ${KERNEL_VERSION}
-  echo ">>> Generating initial ramdisk, using mkinitcpio. Please wait..."
-  mkinitcpio -p linux${KERNEL_NAME}
+  depmod %KERNVER%
 
   display_requirements
 }
@@ -37,9 +32,7 @@ post_upgrade() {
 
   # updating module dependencies
   echo ">>> Updating module dependencies. Please wait ..."
-  depmod ${KERNEL_VERSION}
-  echo ">>> Generating initial ramdisk, using mkinitcpio. Please wait..."
-  mkinitcpio -p linux${KERNEL_NAME}
+  depmod %KERNVER%
 
   if [ $(vercmp $2 3.13) -lt 0 ]; then
     echo ">>> WARNING: AT keyboard support is no longer built into the kernel."
@@ -52,6 +45,6 @@ post_upgrade() {
 
 post_remove() {
   # also remove the compat symlinks
-  rm -f boot/initramfs-linux${KERNEL_NAME}.img
-  rm -f boot/initramfs-linux${KERNEL_NAME}-fallback.img
+  rm -f boot/initramfs-%PKGBASE%.img
+  rm -f boot/initramfs-%PKGBASE%-fallback.img
 }

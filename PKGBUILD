@@ -1,15 +1,14 @@
-# $Id: PKGBUILD 267890 2016-05-12 16:05:36Z tpowa $
+# Id: PKGBUILD 277473 2016-09-30 19:28:40Z tpowa $
 # Maintainer: Tobias Powalowski <tpowa@archlinux.org>
 # Maintainer: Thomas Baechler <thomas@archlinux.org>
 # Maintainer: Tony Lambiris <tony@critialstack.com>
 
-pkgbase=linux-macbook       # Build kernel with a different name
-_kernelname=-macbook
+pkgbase=linux-macbook
 _srcname=linux-4.8
-pkgver=4.8.14
+pkgver=4.8.15
 pkgrel=1
 arch=('i686' 'x86_64')
-url="http://www.kernel.org/"
+url="https://www.kernel.org/"
 license=('GPL2')
 makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc' 'libelf')
 options=('!strip')
@@ -19,29 +18,37 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         "https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.sign"
         # the main kernel config files
         'config' 'config.x86_64'
-        # service file for suspend/resume events
-        'macbook-wakeup.service'
+        # pacman hook for initramfs regeneration
+        '99-linux-macbook.hook'
         # standard config files for mkinitcpio ramdisk
         'linux-macbook.preset'
+        # service file for suspend/resume events
+        'macbook-wakeup.service'
+        'change-default-console-loglevel.patch'
         'apple-gmux.patch'
         'macbook-suspend.patch'
         'poweroff-quirk-workaround.patch'
         'intel-pstate-backport.patch'
-        'change-default-console-loglevel.patch')
+        'change-default-console-loglevel.patch'
+        net_handle_no_dst_on_skb_in_icmp6_send.patch
+        )
 
 sha256sums=('3e9150065f193d3d94bcf46a1fe9f033c7ef7122ab71d75a7fb5a2f0c9a7e11a'
             'SKIP'
-            'efa9b7d87a6ca67426e3d7f206ac987eb7cb31602ad2011e81060626de790fcb'
+            'cdeff3a6e0dc3d6189d1b1d4d6318f0942b9a28409491cf65592879e4c42b1f7'
             'SKIP'
             '1e72cd2e9e1fa8bf1478f7a7d9b9719d1fd2d1754dbe915a6b6d7e0d0a92da0a'
             '8646ab1d39f1755de240a27dd1970be39b8b81b1f1caca0dd77c0a4b157292d9'
+            '834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0'
+            'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
             '72f0b3ce04f33dfae305297bd045fba8cb5e5c8594ffd7a68a4d8ed293b1b1b5'
-            'f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c'
+            '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
             'bb8af32880059e681396a250d8e78f600f248da8ad4f0e76d7923badb5ee8b42'
             '4d4a622733c2ba742256f369c32a1e98fc216966589f260c7457d299dbb55971'
             '09189eb269a9fd16898cf90a477df23306236fb897791e8d04e5a75d5007bbff'
             'c0a25b413bc542472868c63318213dfe788beeece750d15f7ff1568aca8968ec'
-            '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99')
+            '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
+            'b595a1588bafb3d732841cd1b73633970706914f57f2d215c9f1494212d13989')
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
               '647F28654894E3BD457199BE38DBBDC86092693E' # Greg Kroah-Hartman
@@ -54,6 +61,9 @@ prepare() {
 
   # add upstream patch
   patch -p1 -i "${srcdir}/patch-${pkgver}"
+
+  # https://bugzilla.kernel.org/show_bug.cgi?id=189851
+  patch --verbose -p1 -i "${srcdir}/net_handle_no_dst_on_skb_in_icmp6_send.patch"
 
   # add latest fixes from stable queue, if needed
   # http://git.kernel.org/?p=linux/kernel/git/stable/stable-queue.git
@@ -128,21 +138,17 @@ _package() {
   cp arch/$KARCH/boot/bzImage "${pkgdir}/boot/vmlinuz-${pkgbase}"
 
   # set correct depmod command for install
-  cp -f "${startdir}/${install}" "${startdir}/${install}.pkg"
+  sed -e "s|%PKGBASE%|${pkgbase}|g;s|%KERNVER%|${_kernver}|g" \
+    "${startdir}/${install}" > "${startdir}/${install}.pkg"
   true && install=${install}.pkg
-  sed \
-    -e  "s/KERNEL_NAME=.*/KERNEL_NAME=${_kernelname}/" \
-    -e  "s/KERNEL_VERSION=.*/KERNEL_VERSION=${_kernver}/" \
-    -i "${startdir}/${install}"
 
   # install mkinitcpio preset file for kernel
-  install -D -m644 "${srcdir}/linux-macbook.preset" "${pkgdir}/etc/mkinitcpio.d/${pkgbase}.preset"
-  sed \
-    -e "1s|'linux.*'|'${pkgbase}'|" \
-    -e "s|ALL_kver=.*|ALL_kver=\"/boot/vmlinuz-${pkgbase}\"|" \
-    -e "s|default_image=.*|default_image=\"/boot/initramfs-${pkgbase}.img\"|" \
-    -e "s|fallback_image=.*|fallback_image=\"/boot/initramfs-${pkgbase}-fallback.img\"|" \
-    -i "${pkgdir}/etc/mkinitcpio.d/${pkgbase}.preset"
+  sed "s|%PKGBASE%|${pkgbase}|g" "${srcdir}/linux-macbook.preset" |
+    install -D -m644 /dev/stdin "${pkgdir}/etc/mkinitcpio.d/${pkgbase}.preset"
+
+  # install pacman hook for initramfs regeneration
+  sed "s|%PKGBASE%|${pkgbase}|g" "${srcdir}/99-linux-macbook.hook" |
+    install -D -m644 /dev/stdin "${pkgdir}/usr/share/libalpm/hooks/99-${pkgbase}.hook"
 
   # remove build and source links
   rm -f "${pkgdir}"/lib/modules/${_kernver}/{source,build}
@@ -171,8 +177,7 @@ _package() {
 
 _package-headers() {
   pkgdesc="Header files and scripts for building modules for ${pkgbase/linux/Linux} kernel (with brightness key and suspend patches)"
-  depends=('linux-macbook') # added to keep kernel and headers packages matched
-  provides=("linux-macbook-headers=${pkgver}" "linux-headers=${pkgver}")
+
   install -dm755 "${pkgdir}/usr/lib/modules/${_kernver}"
 
   cd "${srcdir}/${_srcname}"
@@ -300,8 +305,6 @@ _package-headers() {
 
 _package-docs() {
   pkgdesc="Kernel hackers manual - HTML documentation that comes with the ${pkgbase/linux/Linux} kernel (with brightness key and suspend patches)"
-  depends=('linux-macbook') # added to keep kernel and headers packages matched
-  provides=("linux-macbook-docs=${pkgver}" "linux-docs=${pkgver}")
 
   cd "${srcdir}/${_srcname}"
 
@@ -321,3 +324,5 @@ for _p in ${pkgname[@]}; do
     _package${_p#${pkgbase}}
   }"
 done
+
+# vim:set ts=8 sts=2 sw=2 et:
