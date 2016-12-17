@@ -2,15 +2,18 @@
 
 pkgname=kydpdict
 pkgver=0.9.5
-pkgrel=4
+pkgrel=5
 pkgdesc="A front-end to YDP Collins Dictionary"
 arch=('i686' 'x86_64')
 url="http://fossies.org/linux/privat/old/kydpdict-0.9.5.tar.gz/kydpdict-0.9.5/contrib/kydpdict.pl.1"
 license=('GPL')
 depends=('qt3')
+makedepends=('gcc')
 install=kydpdict.install
-source=(http://fossies.org/linux/privat/old/$pkgname-$pkgver.tar.bz2 $pkgname.png $pkgname.desktop)
-md5sums=('4da97f41c63666f3d9e151a18c0ef65e'
+source=(http://fossies.org/linux/privat/old/$pkgname-$pkgver.tar.bz2
+        $pkgname.png
+        $pkgname.desktop)
+md5sums=('bf8aa06d4a3bbe401d7972e01c07609d'
          'dee4f28a7c681292226d06ab97b39e3e'
          'e42aed4dde1a7f203586220d04737237')
 
@@ -20,6 +23,8 @@ build() {
     tar zxf contrib/kydpdict-0.9.3-oxpwnsnd.tar.gz
     patch -Np1 -i kydpdict-0.9.3-oxpwnsnd/kydpdict-0.9.3-pwnoxsnd.patch
 
+    export LUPDATE=/usr/lib/qt3/bin/lupdate
+    export LRELEASE=/usr/lib/qt3/bin/lrelease
     ./configure --prefix=/usr --with-qt-dir=/usr/lib/qt3 --with-qt-includes=/usr/include/qt3
     sed 's/QT_LIB=-lqt-mt/QT_LIB=-lqt-mt -lz/' src/Makefile > Makefile_new
     mv Makefile_new src/Makefile
