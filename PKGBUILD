@@ -2,7 +2,7 @@
 _pkgbasename=gx-lv2
 pkgname=${_pkgbasename}-git
 pkgver=0.8
-pkgrel=3
+pkgrel=4
 pkgdesc="Additional Guitarix effects in LV2 format"
 arch=('i686' 'x86_64')
 url="https://github.com/brummer10?tab=repositories"
@@ -22,8 +22,10 @@ source=("git://github.com/brummer10/GxUVox720k.lv2.git"
 "git://github.com/brummer10/GxVintageFuzzMaster.lv2.git"
 "git://github.com/brummer10/GxGuvnor.lv2.git"
 "git://github.com/brummer10/GxSuppaToneBender.lv2.git"
-"git://github.com/brummer10/screcord.lv2.git")
+"git://github.com/brummer10/screcord.lv2.git"
+"git://github.com/brummer10/GxToneMachine.lv2")
 sha256sums=('SKIP'
+			'SKIP'
 			'SKIP'
 			'SKIP'
 			'SKIP'
@@ -47,7 +49,6 @@ build() {
 			echo building: $i
 			cd $i
 			make
-			make install
 			cd ..
 		done
 }
@@ -57,8 +58,9 @@ package() {
 		for i in $( ls ); do
 			echo installing: $i
 			cd $i
-			install -d "$pkgdir/usr/lib/lv2"
-			cp -R *.lv2 "$pkgdir/usr/lib/lv2"
+			make DESTDIR="${pkgdir}" install
+#			install -d "$pkgdir/usr/lib/lv2"
+#			cp -R *.lv2 "$pkgdir/usr/lib/lv2"
 			cd ..
 		done
 }
