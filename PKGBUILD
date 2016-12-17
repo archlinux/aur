@@ -4,11 +4,11 @@ pkgver=0.2.0_rc6
 pkgrel=1
 pkgdesc="Integrated Development Environment (IDE) for ESP8266 developers"
 arch=('any')
-url="http://esp8266.ru/${pkgname}"
+url="https://esp8266.ru/${pkgname}"
 license=('GPL2')
 depends=('bash' 'java-runtime')
 makedepends=('gendesk')
-source=("${pkgname}.zip::http://esp8266.ru/${pkgname}-latest/?f=ESPlorer.zip")
+source=("${pkgname}.zip::https://esp8266.ru/${pkgname}-latest/?f=ESPlorer.zip")
 sha256sums=('5b0b8d38f31f36776a3d2252130ae64971c06bce56590663ca398807ac719738')
 
 prepare() {
