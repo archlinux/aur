@@ -9,7 +9,7 @@ pkgdesc="An MP3, Ogg/Vorbis and FLAC tag editor, CLI version"
 arch=('i686' 'x86_64')
 url="http://kid3.sourceforge.net/"
 license=('GPL')
-depends=('chromaprint' 'id3lib' 'taglib' 'libmp4v2' 'qt5-multimedia')
+depends=('chromaprint' 'id3lib' 'taglib' 'libmp4v2' 'qt5-multimedia' 'qt5-tools')
 makedepends=('chromaprint' 'id3lib' 'taglib' 'libmp4v2'
              'hicolor-icon-theme' 'docbook-xsl' 'extra-cmake-modules' 'python')
 conflicts=('kid3-kde'' kid3-qt')
