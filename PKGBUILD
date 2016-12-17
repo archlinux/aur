@@ -3,7 +3,7 @@
 # Contributor: Paul Bienkowski <opatutlol@aol.com>
 # Contributor: Christoph Zeiler <archNOSPAM_at_moonblade.dot.org>
 pkgname=mingw-w64-bullet
-pkgver=2.83.7
+pkgver=2.85.1
 pkgrel=1
 pkgdesc="A 3D Collision Detection and Rigid Body Dynamics Library for games and animation (mingw-w64)"
 arch=('any')
@@ -13,7 +13,7 @@ depends=('mingw-w64-crt')
 options=('!strip' '!buildflags' 'staticlibs')
 makedepends=('mingw-w64-cmake')
 source=("https://github.com/bulletphysics/bullet3/archive/${pkgver}.tar.gz")
-md5sums=('39fd0138fcb59047c12861f3b65c063e')
+md5sums=('194cf1ef1eeb7fa9ac7dc580219d3c8b')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
