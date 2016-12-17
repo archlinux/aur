@@ -1,7 +1,7 @@
 # Contributor: Bug <bug2000@gmail.com>
 # Maintainer: Bug <bug2000@gmail.com>
 pkgname=xpra-winswitch-svn
-pkgver=14464
+pkgver=14561
 pkgrel=1
 pkgdesc="Modified version of xpra by Winswitch"
 arch=('i686' 'x86_64')
@@ -34,13 +34,14 @@ build() {
   #
   # BUILD HERE
   #
-  #python2 setup.py build || return 1  
-  CFLAGS="$CFLAGS -fno-strict-aliasing" python2 setup.py build || return 1
+  #python2 setup.py build
+  export pkgdir
+  CFLAGS="$CFLAGS -fno-strict-aliasing" python2 setup.py build
 }
 
 package() {
   cd "$srcdir/$_svnmod-build"
-  python2 setup.py install --root=${pkgdir} || return 1
+  python2 setup.py install --root=${pkgdir}
 }
 
 # vim:set ts=2 sw=2 et:
