@@ -6,8 +6,7 @@
 
 pkgbase=linux-mptcp
 _srcname=mptcp
-_mptcpv=0.91.2
-pkgver=0.91.2.r0.g8e6d10d
+pkgver=0.91.2.r3.g7dc057e
 pkgrel=1
 epoch=1
 arch=('i686' 'x86_64')
@@ -15,7 +14,7 @@ url="http://www.multipath-tcp.org/"
 license=('GPL2')
 makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc' 'git')
 options=('!strip')
-source=("git://github.com/multipath-tcp/mptcp#tag=v${_mptcpv}"
+source=("git+https://github.com/multipath-tcp/mptcp#commit=7dc057edb502ded02b91ae9a68f1114ddcf4c8ff"
         # the main kernel config files
         'config' 'config.x86_64'
         # standard config files for mkinitcpio ramdisk
@@ -268,6 +267,7 @@ _package-headers() {
 
 _package-docs() {
   pkgdesc="Kernel hackers manual - HTML documentation that comes with the ${pkgbase/linux/Linux} kernel"
+  arch=("any")
 
   cd "${srcdir}/${_srcname}"
 
