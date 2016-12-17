@@ -11,7 +11,7 @@ depends=('sdl' 'sdl_mixer' 'mesa' 'physfs')
 makedepends=('scons' 'unzip')
 conflicts=('d1x-rebirth' 'd2x-rebirth')
 replaces=('d1x-rebirth' 'd2x-rebirth')
-install=$pkgname.install
+install=${pkgname}.install
 source=("http://www.dxx-rebirth.com/download/dxx/${pkgname}_v${pkgver}-src.tar.gz"
         "http://www.dxx-rebirth.com/download/dxx/res/d2xr-sc55-music.dxa")
 noextract=("d2xr-sc55-music.dxa")
