@@ -1,0 +1,29 @@
+pkgbase = avogadro
+	pkgdesc = An advanced molecular editor based on Qt
+	pkgver = 1.2.0
+	pkgrel = 4
+	url = http://avogadro.openmolecules.net/wiki/Main_Page
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = cmake
+	makedepends = boost
+	makedepends = doxygen
+	makedepends = mesa-libgl
+	makedepends = eigen
+	depends = openbabel
+	depends = python2-pyqt4
+	depends = boost-libs
+	depends = glew
+	depends = python2-numpy
+	source = http://downloads.sourceforge.net/avogadro/avogadro-1.2.0.tar.gz
+	source = boost153.patch
+	source = avogadro-glibc2.23.patch
+	source = avogadro-fix-linking.patch
+	md5sums = 3206068fc27bd3b717c568ee72f1e5ec
+	md5sums = aa2573f78d5dbd85b3cb79e08acde8ab
+	md5sums = 83990ecbb4c076fddda3eaca2c2975ed
+	md5sums = e333f624d5649c6d3a7cfd14a778bc73
+
+pkgname = avogadro
+

@@ -1,0 +1,14 @@
+diff -up avogadro-1.1.1/libavogadro/src/python/CMakeLists.txt.openbabel avogadro-1.1.1/libavogadro/src/python/CMakeLists.txt
+--- avogadro-1.1.1/libavogadro/src/python/CMakeLists.txt.openbabel	2013-12-06 09:50:04.000000000 -0600
++++ avogadro-1.1.1/libavogadro/src/python/CMakeLists.txt	2016-01-25 13:50:10.469758655 -0600
+@@ -20,8 +20,8 @@ if (WIN32)
+   set_target_properties(python-module PROPERTIES SUFFIX ".pyd")
+   target_link_libraries(python-module avogadro ${PYTHON_LIBRARIES})
+ else()
+-  target_link_libraries(python-module stdc++ avogadro
+-    ${QT_LIBRARIES} ${PYTHON_LIBRARIES} ${Boost_LIBRARIES})
++  target_link_libraries(python-module stdc++ avogadro 
++    ${QT_LIBRARIES} ${PYTHON_LIBRARIES} ${OPENBABEL2_LIBRARIES} ${Boost_LIBRARIES})
+ endif()
+ 
+ # Let's try to use this instead:
