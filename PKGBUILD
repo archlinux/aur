@@ -6,7 +6,7 @@ pkgdesc="TLauncher is freeware launcher of Minecraft."
 url="https://tlauncher.org"
 arch=('x86_64' 'i686')
 license=('GPLv3')
-depends=("java-runtime=8")
+depends=("java-runtime")
 makedepends=()
 conflicts=()
 replaces=()
@@ -19,6 +19,7 @@ noextract=('TLauncher.jar')
 md5sums=('251721a60006e534eba3cf1cb65e1211'
 		'679caa7ce6fd3f3ba1f5e57d71de97e1'
 		'7ad17a837b4a3742a84a34ecd7160665')
+provides=("java-runtime=8")
 
 package() {
   mkdir -p $pkgdir/opt/TLauncher
