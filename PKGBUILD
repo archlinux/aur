@@ -3,7 +3,7 @@
 #Contributor: Andrea Cattaneo <andrea.cattaneo.dev@gmail.com>
 
 pkgname=genymotion
-pkgver=2.8.0
+pkgver=2.8.1
 pkgrel=3
 pkgdesc="Complete set of tools that provides a virtual environment for Android."
 arch=('x86_64')
@@ -14,16 +14,16 @@ license=('custom')
 _ARCH="x64"
 source=("genymotion.desktop"
         "genymotion-player.desktop"
-        "https://dl.genymotion.com/releases/genymotion-$pkgver/$pkgname-${pkgver}-linux_$_ARCH.bin")
+        "https://dl.genymotion.com/releases/genymotion-$pkgver/$pkgname-${pkgver}_$_ARCH.bin")
 sha512sums=('48e9bafe1d64b688c51eceb8d129f44d690060ff9a6d82eefcf3295f7834516ce62439faf4f4454287f594fc410aafbafd30a43537ea3d295c42bee8e4e03ac7'
-            '92286b54b4dfa68b4400ab4c72717c091fe6ea7e9142ef1cfebabe801e682f2a217a443c5990cf2b59f7fa5a4bc22484e8f11b0071766f689363d74d19cbe840'
-            '3e45ffe6904032128e0bc251ac1657b06874f686d4281fad8418f37216ebcb19298eb3456bb96025d081a8af3322731858c1595836a3e9a9531e394f719277f6')
+            '7c56190e4dafdfb9c1aa39b91ee58d933d999e0dd0a344335ac909eb9f5f22889ab596f1e3213d55756c003fbe0ec65a43a30f1b6ed819db2093b1a465998463'
+            '8ca4f46e983ffa2a19c21e961b6638af859f7635bd3a976c0b5709622a536569c81ccf3b08f52f0016e37990d83b1fd38cc86c9dbb5599e727fd48558567dfa7')
 
 package(){
   cd $srcdir
 
   install -d $pkgdir/opt
-  yes | bash ./$pkgname-${pkgver}-linux_$_ARCH.bin -d $pkgdir/opt
+  yes | bash ./$pkgname-${pkgver}_$_ARCH.bin -d $pkgdir/opt
 
   install -d $pkgdir/usr/bin
   ln -s /opt/genymotion/genymotion $pkgdir/usr/bin/genymotion
