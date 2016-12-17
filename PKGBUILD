@@ -1,7 +1,7 @@
 # Maintainer: Marcel O'Neil <marcel@marceloneil.com>
 
 pkgname=cockroachdb
-pkgver=20161208
+pkgver=20161215
 pkgrel=1
 pkgdesc="An open source, survivable, strongly consistent, scale-out SQL database"
 arch=('x86_64')
@@ -9,7 +9,7 @@ url="https://www.cockroachlabs.com/"
 license=('Apache')
 depends=('gcc-libs')
 source=("https://binaries.cockroachdb.com/cockroach-beta-${pkgver}.linux-amd64.tgz")
-sha256sums=('2b45fecc5dc9d639c4285609725adf1782c030c3466918f78d2a9538eed6ef08')
+sha256sums=('12c8f6b1519607d5b88b33a2da032964721bbfa599dabbd7cf8d7b2a4e45fe80')
 
 package() {
   cd $srcdir/cockroach-beta-${pkgver}.linux-amd64/
