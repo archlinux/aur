@@ -5,11 +5,10 @@
 # echo "$(git rev-parse --abbrev-ref HEAD).$(git log -n 1 --pretty=format:%h -- drivers/input/joystick/xpad.c)" | sed 's/-/./g'
 
 _xpadsteamoscommit='brewmaster-4.1'
-_xpadsteamossha512sum='fc8ad5dbc7789ee7ffb94fc132e92f0db9472bdea6de2844473d41e508ee1effbc77ea861ec6c03524f1a903443f24ddc45f57e84c0197e03f017e47050f67c5'
 
 _pkgbase='steamos-xpad'
 pkgname='steamos-xpad-dkms'
-pkgver='20160806'
+pkgver='20161217'
 pkgrel='1'
 pkgdesc="xpad kernel module included with Valve's SteamOS"
 arch=('any')
@@ -20,12 +19,12 @@ depends=('dkms')
 conflicts=("${_pkgbase}")
 optdepends=('linux-headers: Build the module against Arch kernel'
             'linux-lts-headers: Build the module against LTS Arch kernel')
-source=("https://raw.github.com/ValveSoftware/steamos_kernel/${_xpadsteamoscommit}/drivers/input/joystick/xpad.c"
+source=("https://raw.githubusercontent.com/ValveSoftware/steamos_kernel/$_xpadsteamoscommit/drivers/input/joystick/xpad.c"
         "Makefile"
         "change-name.patch"
         "steamos-xpad-dkms.dkms"
         "xpad.modprobe")
-sha512sums=("${_xpadsteamossha512sum}"
+sha512sums=("SKIP"
             '9ca3d1ada29c5bfe3ffd39f818e792be0c528191952660568f0ecae981b191a2cfbfd64a90f1158aa760e38fcd3c52d648cdf0f032fd649512933ca36bcd2149'
             'a0ab12a6768447b1798c6d82988fb81a212512dbef19a5e66a5b5c096cbe136671255ad4896226c595d95a97ce097efe6702a370c30cc32d3234750d6a0a5daf'
             '7901fb85689d8670f0d853f19e24b0c22e3913dd82cdb0a83d74f456e010b7dff67575c5be863b43c95f1149780faec5cab604a829cb3e400f1ec44173c35aac'
