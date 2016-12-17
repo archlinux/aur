@@ -10,7 +10,7 @@ url='https://github.com/gps1539/stock_quote'
 depends=('python' 'python-numpy' 'python-colorama')
 makedepends=()
 source=("https://raw.githubusercontent.com/gps1539/stock_quote/master/stock_quote.py")
-md5sums=('c773481d8a60dc65664e5ab2ae55f119')
+md5sums=('653aaeaa911178e4552998cf1148e739')
 
 package()
 {
