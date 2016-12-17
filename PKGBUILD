@@ -1,7 +1,7 @@
 # Maintainer: Graham Smith <gps1539 at gmail dot com>
 
 pkgname=stock_quote
-pkgver=0.7.1
+pkgver=0.7.2
 pkgrel=1
 pkgdesc="python script to get stock quotes and calculate gains and losses"
 arch=('any')
