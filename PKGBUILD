@@ -3,7 +3,7 @@
 
 _pkgname=Neobarok
 pkgname=${_pkgname,,}
-pkgver=1.0.1
+pkgver=1.0.4
 pkgrel=1
 pkgdesc="3D modeling software aimed at artists and users of all levels"
 arch=('x86_64')
@@ -13,7 +13,7 @@ depends=('qt5-base' 'sfml')
 source=("http://$pkgname.com/$_pkgname-$pkgver-linux.zip"
         "$pkgname.desktop"
         "$pkgname.svg")
-md5sums=('d9cadc75ea151be790bfa982c1735672'
+md5sums=('4396456c00d4c7a7c2b1a98651bb4f01'
          '9dd13b4f7ad294e6ae639369cea6a1bd'
          '9e447434129fae9d99eeada08ac7d1f3')
 
