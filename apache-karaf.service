@@ -1,0 +1,18 @@
+[Unit]
+Name=apache-karaf
+Description=Apache Karaf application container
+After=syslog.target network.target
+
+[Service]
+ExecStart=/usr/bin/karaf-server server
+ExecStop=/usr/bin/karaf-server stop
+
+SuccessExitStatus=0 143
+Restart=always
+
+LimitNOFILE=102642
+
+SyslogIdentifier=karaf
+
+[Install]
+WantedBy=multi-user.target
