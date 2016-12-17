@@ -8,8 +8,8 @@ arch=('i686' 'x86_64')
 url="http://pouetchess.sourceforge.net/"
 license=('GPL')
 
-depends_i686=('sdl' 'sdl_image')
-depends_x86_64=('lib32-sdl' 'lib32-sdl_image')
+depends_i686=('mesa' 'mesa-libgl' 'glu' 'sdl' 'sdl_image')
+depends_x86_64=('lib32-mesa' 'lib32-mesa-libgl' 'lib32-glu' 'lib32-sdl' 'lib32-sdl_image')
 
 source=("https://sourceforge.net/projects/pouetchess/files/pouetchess/0.2/pouetchess_bin_0.2.0.tar.gz"
         "pouetchess"
