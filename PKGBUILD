@@ -2,7 +2,7 @@
 _basename="SceneBuilder"
 pkgname="javafx-scenebuilder"
 _debpkg=scenebuilder
-pkgver="8.2.0"
+pkgver="8.3.0"
 pkgrel=1
 pkgdesc="Gluon Scene Builder based on debian package, this version is regognized by Netbeans."
 arch=('x86_64' 'i686')
@@ -13,11 +13,11 @@ makedepends=()
 optdepends=()
 install=
 if [ "$CARCH" = "x86_64" ]; then
-    source=(http://download.gluonhq.com/scenebuilder/8.2.0/install/linux/$_debpkg"-"$pkgver"_"x64_64.deb)
-    sha1sums=('b05d83cb64cffaa2ba07a4528f4b721752552182')
+    source=(http://download.gluonhq.com/scenebuilder/$pkgver/install/linux/$_debpkg"-"$pkgver".deb")
+    sha1sums=('14307d63725703a217ea81b91ee881bd9b04d612')
 else
-    source=(http://download.gluonhq.com/scenebuilder/8.2.0/install/linux/$_debpkg"-"$pkgver"."i386.deb)
-    sha1sums=('2c3a9f22e4c69ccb156a0e87d6262328b310f0fc')
+    source=(http://download.gluonhq.com/scenebuilder/$pkgver/install/linux-x86/$_debpkg"-"$pkgver".deb")
+    sha1sums=('8329fda391f38903fe5b4caa5cfc98c674a873bb')
 fi    
 
 
