@@ -2,7 +2,7 @@
 
 pkgname='warspear'
 pkgver=6.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Warspear Online is a cross-platform massively multiplayer online roleplaying game (MMORPG) for smart phones.'
 arch=('i686' 'x86_64')
 url='http://warspear-online.com/'
@@ -20,5 +20,5 @@ package() {
 	cd $srcdir
 
 	ar x *.deb
-	bsdtar xf data.tar.gz -C $pkgdir
+	bsdtar xf data.tar.xz -C $pkgdir
 }
