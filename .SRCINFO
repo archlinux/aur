@@ -1,7 +1,7 @@
 pkgbase = ums
 	pkgdesc = Universal Media Server: a DLNA-compliant UPnP Media Server. Build based on Java 8.
 	pkgver = 6.5.2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.universalmediaserver.com/
 	arch = i686
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = ums
 	depends = mencoder
 	depends = libmediainfo
 	depends = java-runtime=8
-	depends = tsmuxer-cli-ng
+	depends = tsmuxer-ng-cli-bin
 	optdepends = vlc: Internet video/audio support
 	optdepends = dcraw: thumbnails creation support
 	optdepends = lib32-gcc-libs: tsMuxeR support

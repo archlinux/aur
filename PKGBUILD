@@ -3,12 +3,12 @@
 
 pkgname=ums
 pkgver=6.5.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Universal Media Server: a DLNA-compliant UPnP Media Server. Build based on Java 8."
 arch=('i686' 'x86_64')
 url="http://www.universalmediaserver.com/"
 license=('GPL2')
-depends=('mplayer' 'ffmpeg' 'mencoder' 'libmediainfo' 'java-runtime=8' 'tsmuxer-cli-ng')
+depends=('mplayer' 'ffmpeg' 'mencoder' 'libmediainfo' 'java-runtime=8' 'tsmuxer-ng-cli-bin')
 makedepends=("unzip")
 [ "$CARCH" = "i686" ] && \
 optdepends=("vlc: For Internet video/audio")
