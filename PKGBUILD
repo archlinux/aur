@@ -13,6 +13,7 @@ depends=(
     python-click
     python-click-completion
     python-click-didyoumean
+    python-psutil
     python-requests
     python-requests-cache
 )
