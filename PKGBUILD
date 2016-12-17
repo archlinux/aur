@@ -4,7 +4,7 @@ pkgname=kippo-git
 pkgver=v0.9.285.0d03635
 provides=('kippo') 
 conflicts=('kippo')
-pkgrel=2
+pkgrel=3
 pkgdesc="A medium interaction SSH honeypot designed to log brute force attacks and, most importantly, the entire shell interaction performed by the attacker"
 arch=('any')
 url="https://github.com/desaster/kippo"
@@ -14,7 +14,7 @@ optdepends=(
             'python2-wokkel: XAMPP Support' 
             'python2-mysql-connector: MySQL Support for kippo')
 makedepends=('git')
-source=('git+http://github.com/desaster/kippo' 'kippo.service')
+source=('git+https://github.com/desaster/kippo' 'kippo.service')
 sha512sums=(
 'SKIP'
 '1ef2d5b1223567dbe37ea51ad668fc39d173e85b22cbbf13d85d781bfe0b52a994f9768ef4f2389f5970f8636be9ca3b30b6e8ae7b6b040bb6564c1387d16d42'
