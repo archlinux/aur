@@ -7,7 +7,7 @@
 
 pkgbase=handbrake-git
 pkgname=('handbrake-gtk-git' 'handbrake-cli-git')
-pkgver=r7648
+pkgver=r7649
 pkgrel=1
 pkgdesc="Multiplatform, multithreaded DVD to MPEG-4/H264/Theora converter"
 arch=('i686' 'x86_64')
