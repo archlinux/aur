@@ -1,14 +1,15 @@
 # Maintainer: Levente Polyak <anthraxx[at]archlinux[dot]org>
 
 pkgname=cowrie-git
-pkgver=1.1.0+1329+7c1bd80
+pkgver=1.1.0+1352+115ccd6
 pkgrel=1
 pkgdesc='Medium interaction SSH honeypot designed to log brute force attacks and entire shell interaction'
 url='https://github.com/micheloosterhof/cowrie'
 arch=('any')
 license=('BSD')
-depends=('twisted' 'python2-zope-interface' 'python2-crypto' 'python2-pyasn1' 'python2-cryptography'
-         'python2-gmpy2' 'python2-pyopenssl' 'mysql-python' 'python2-dateutil' 'python2-tftpy')
+depends=('python2-twisted' 'python2-zope-interface' 'python2-crypto' 'python2-pyasn1' 'python2-cryptography'
+         'python2-gmpy2' 'python2-pyopenssl' 'mysql-python' 'python2-dateutil' 'python2-tftpy'
+         'python2-configparser' 'python2-service-identity')
 makedepends=('git')
 backup=('etc/cowrie.cfg')
 provides=('cowrie')
