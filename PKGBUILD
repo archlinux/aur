@@ -54,7 +54,7 @@ _srcname=linux-4.8
 _pkgver=4.8.14
 _rtpatchver=rt9
 pkgver=${_pkgver}_${_rtpatchver}
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 url="http://algo.ing.unimo.it"
 license=('GPL2')
@@ -88,8 +88,7 @@ source=("http://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         'net_handle_no_dst_on_skb_in_icmp6_send.patch'
         '0001-x86-fpu-Fix-invalid-FPU-ptrace-state-after-execve.patch'
         # patches from https://github.com/linusw/linux-bfq/commits/bfq-v8
-        '0005-BFQ-Fix.patch'
-        '0006-BFQ-Fix.patch')
+        '0005-BFQ-update-to-v8r6.patch')
         
 _kernelname=${pkgbase#linux}
 
@@ -126,7 +125,7 @@ prepare() {
 
     ### Patch source with BFQ
         msg "Patching source with BFQ patches"
-        for p in "${srcdir}"/000{1,2,3,4,5,6}-*BFQ*.patch; do
+        for p in "${srcdir}"/000{1,2,3,4,5}-*BFQ*.patch; do
         msg " $p"
         patch -Np1 -i "$p"
         done
@@ -207,7 +206,19 @@ prepare() {
 		if [ -n "$_localmodcfg" ]; then
 		msg "If you have modprobe-db installed, running it in recall mode now"
 		if [ -e /usr/bin/modprobed-db ]; then
-			[[ ! -x /usr/bin/sudo ]] && echo "Cannot call modprobe with sudo.  Install via pacman -S sudo and configure to work with this user." && exit 1
+			### Optionally load needed modules for the make localmodconfig
+	# See https://aur.archlinux.org/packages/modprobed-db
+		if [ -n "$_localmodcfg" ]; then
+		msg "If you have modprobe-db installed, running it in recall mode now"
+		if [ -e /usr/bin/modprobed-db ]; then
+			[[ -x /usr/bin/sudo ]] || {
+                        echo "Cannot call modprobe with sudo. Install sudo and configure it to work with this user."
+                        exit 1; }
+			sudo /usr/bin/modprobed-db recall
+		fi
+		msg "Running Steven Rostedt's make localmodconfig now"
+		make localmodconfig
+	fi
 			sudo /usr/bin/modprobed-db recall
 		fi
 		msg "Running Steven Rostedt's make localmodconfig now"
@@ -476,17 +487,16 @@ sha512sums=('a48a065f21e1c7c4de4cf8ca47b8b8d9a70f86b64e7cfa6e01be490f78895745b9c
             'dc0649dfe2a5ce8e8879a62df29a4a1959eb1a84e5d896a9cb119d6a85a9bad1b17135371799e0be96532e17c66043d298e4a14b18fad3078a1f425108f888c9'
             '135afcffee2439e2260a71202658dce9ec5f555de3291b2d49a5cffdd953c6d7851b8a90e961576895555142a618e52220a7e4a46521ca4ba19d37df71887581'
             '87ae76889ab84ced46c237374c124786551982f8ff7325102af9153aed1ab7be72bec4db1f7516426c5ee34c5ce17221679eb2f129c5cbdeec05c0d3cb7f785d'
-            '8e8f407262f3f573654e7f0fceec6075fd2da0258a384206d28e5f59698168609e575f3d855adb8bb476b0684da409dab22f7ddc0f00e9c10c67debe4409c30b'
+            '6046432243b8f0497b43ea2c5fe3fde5135e058f2be25c02773ead93e2ab3b525b6f7c1c4898b9e67ac2bec0959b972829e997e79fabf6ac87e006700dfaf987'
             'd9d28e02e964704ea96645a5107f8b65cae5f4fb4f537e224e5e3d087fd296cb770c29ac76e0ce95d173bc420ea87fb8f187d616672a60a0cae618b0ef15b8c8'
             '86f717f596c613db3bc40624fd956ed379b8a2a20d1d99e076ae9061251fe9afba39cf536623eccd970258e124b8c2c05643e3d539f37bd910e02dc5dd498749'
-            '3fba4c1c172aa823c58901656fcbd30241f7e60486619d1095447e4c902b94e4a9f568d68a124001951cff6e873ce55f338975808b30e3ba2ee2380561660133'
-            'a6200ad0c8bc44b97233c0cbd4c419c37727f06e735f2c6b60a28e94bfdc6d31d7f26d24f9f898c62fceefe08dfd3bdbd5d71acf2b5fcedbda8ea3881d284daa'
+            '2624afd2662ceaae068a6921f99ab294e180d842305f49570cf01669b8b23e08c054b1a999d20666f97bc23a9636f214f726b2eb05d8f9241219cf0d97bcd682'
+            'accccfbc87c5615576186b915f3b62fe27ce3021e8b1ce33b7307678743ffe08e9d21d26f1afcaa3f49e7c764dd2b1a987b8abaac6f2ee5587180d97a2ae2aa2'
             'd6faa67f3ef40052152254ae43fee031365d0b1524aa0718b659eb75afc21a3f79ea8d62d66ea311a800109bed545bc8f79e8752319cd378eef2cbd3a09aba22'
             '2dc6b0ba8f7dbf19d2446c5c5f1823587de89f4e28e9595937dd51a87755099656f2acec50e3e2546ea633ad1bfd1c722e0c2b91eef1d609103d8abdc0a7cbaf'
             'c53bd47527adbd2599a583e05a7d24f930dc4e86b1de017486588205ad6f262a51a4551593bc7a1218c96541ea073ea03b770278d947b1cd0d2801311fcc80e5'
             '002d5e0ccfa5824c1750912a6400ff722672d6587b74ba66b1127cf1228048f604bba107617cf4f4477884039af4d4d196cf1b74cefe43b0bddc82270f11940d'
-            '3889679e288d51f6fecc7ed6581ccde34acbf1e4861f5c9ca237a1ad13158502757d3fc457d7b6caf1c8c99c9dba842265004154a71cffb8ec14e1030e49e312'
-            '3c3f3b6407d9a1a63cd91c2b5c35e6c932afa5bf33f1b2e8a530dbd9eacda8c8f956616c4cc9228657624da58e354ba5714252237d84ff3386fd65cf44f06ddc')
+            '98612f37013d1b41c76887bc5ed80f70753f6fc859748038dc83f3b53aa89464321951c6c21b364f56b2d4860e594c2091240c70ff70ce616d6b3fdadb817934')
             
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
