@@ -2,7 +2,7 @@
 # Contributor: Jonas Heinrich <onny@project-insanity.org>
 
 pkgname=nextcloud-app-keeweb
-pkgver=0.2.9
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="Open Keepass stores inside Nextcloud"
 arch=('any')
@@ -12,7 +12,7 @@ depends=('nextcloud')
 makedepends=()
 options=('!strip')
 source=("https://github.com/jhass/nextcloud-keeweb/releases/download/v${pkgver}/keeweb-${pkgver}.tar.gz")
-sha512sums=("5ddc583a8fba997c2e9d28dfa211ca4f56468e6d90c09146ab39ef404196876de0fb02f2d00bc408a352e46f61d4ce5795f00497f2e240a5b39887a8740ff744")
+sha512sums=("2ea0ecb450f50356770f5f5e3121f4a1fd5945d96706260c79ded5f961001fa5fa1b9bb0a823711866a5fd52f9fcc96b65958e9397f037bd1b41c871b7d6028b")
 
 package() {
   install -d "${pkgdir}/usr/share/webapps/nextcloud/apps"
