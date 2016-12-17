@@ -5,7 +5,7 @@
 # Maintainer: Erik Fleischer <erik [at] erlenweg [dot] de>
 
 pkgname=crossover
-pkgver=15.3.1
+pkgver=16.0.0
 pkgrel=1
 _pkgdebrel=1
 pkgdesc="Run Windows Programs on Linux"
@@ -17,7 +17,7 @@ install=${pkgname}.install
 replaces=('crossover-games' 'crossover-pro' 'crossover-standard')
 
 source=("http://media.codeweavers.com/pub/${pkgname}/cxlinux/demo/${pkgname}_${pkgver}-${_pkgdebrel}.deb")
-md5sums=('94100e189ff18713eff4443bf430a21a')
+md5sums=('c43b2772c04ad2a02d00686dd0fddda6')
 
 depends=( 
     'python2' 'desktop-file-utils' 'pygtk' 'python2-dbus'
@@ -80,7 +80,6 @@ optdepends_x86_64=(
     'lib32-gsm: (aur) Lets Windows applications use the GSM codec for audio compression and decompression.'
     'lib32-gstreamer0.10: (aur) This is needed by some games and multimedia applications.'
     'lib32-gstreamer0.10-base: (aur) This is needed by some games and multimedia applications.'
-    'lib32-libgphoto2: (aur) Lets Windows applications access digital cameras.'
     'lib32-libxcomposite: This is needed for most CAD-like applications and some games.'
     "lib32-libxinerama: This is needed if your display spans multiple screens. If your computer has a single screen then you don't need it."
     'lib32-libxml2: This library makes it possible for Windows applications read and write XML files.'
@@ -92,7 +91,6 @@ optdepends_x86_64=(
     'lib32-libcl: OpenCL bindings provided by nvidia'
     'lib32-openal: Provides audio support to Windows applications.' 
     'lib32-openssl: This library provides support for secure Internet communication.'
-    'lib32-sane: (aur) Lets Windows applications access scanners.'
     'lib32-v4l-utils: Lets Windows applications access video devices.' 
 )
 
