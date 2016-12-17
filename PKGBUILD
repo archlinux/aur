@@ -2,7 +2,7 @@
  
 _realname='gst-plugins-vr'
 pkgname="$_realname-git"
-pkgver=0.1.0.124.6107212
+pkgver=0.1.0.140.4477a0e
 pkgrel=1
 pkgdesc='Virtual Reality plugins for GStreamer '
 arch=('i686' 'x86_64')
@@ -10,9 +10,11 @@ url='https://github.com/lubosz/gst-plugins-vr'
 depends=('glib2' 'gst-plugins-bad')
 provides=("$_realname="$pkgver)
 conflicts=("$_realname")
+makedepend=('meson' 'git')
 license=('LGPLv2')
  
-source=('git+https://github.com/lubosz/gst-plugins-vr.git')
+# source=('git+https://github.com/lubosz/gst-plugins-vr.git')
+source=('git+file:///home/bmonkey/pitivi-git/gst-plugins-vr')
 md5sums=('SKIP')
 
 subver() {
@@ -36,5 +38,10 @@ build() {
 package() {
   cd $_realname
   make DESTDIR="$pkgdir" install
-  mv $pkgdir/usr/lib64 $pkgdir/usr/lib
+  
+  if [ -d ${pkgdir}/usr/lib64 ]; then
+    mv $pkgdir/usr/lib64/* $pkgdir/usr/lib
+    rm $pkgdir/usr/lib64 -R
+  fi
+
 }
