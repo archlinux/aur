@@ -1,0 +1,17 @@
+pkgbase = berachs-complete-pidgin-git
+	pkgdesc = Emote package for the Pidgin IM client
+	pkgver = r141.3c0df5c
+	pkgrel = 1
+	url = https://github.com/Berach/BERACHS_COMPLETE_PIDGIN
+	install = berachs-complete-pidgin-git.install
+	arch = any
+	license = unknown
+	makedepends = git
+	depends = pidgin>=2.0.0
+	provides = berachs-complete-pidgin-git
+	conflicts = berachs-complete-pidgin-git
+	source = git+https://github.com/Berach/BERACHS_COMPLETE_PIDGIN.git
+	md5sums = SKIP
+
+pkgname = berachs-complete-pidgin-git
+

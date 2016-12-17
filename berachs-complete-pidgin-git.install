@@ -1,0 +1,4 @@
+post_install() {
+    echo "Note, this package only installs Berach's emote pack for Pidgin, it does not enable it."
+    echo "In order to enable the theme, go to Tools > Preferences > Themes > Smiley Theme in Pidgin and select Berachs Emote Pack 1.8 (SA+REDDIT+OI+EVE)"
+}
