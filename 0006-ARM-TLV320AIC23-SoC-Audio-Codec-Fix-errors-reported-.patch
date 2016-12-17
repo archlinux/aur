@@ -1,4 +1,4 @@
-From e888e5f96c57ea0d8e75084d4bc9e7c6c8812786 Mon Sep 17 00:00:00 2001
+From 927b66f6154db0cf7eb5a6d016a1e53d742a8098 Mon Sep 17 00:00:00 2001
 From: dobatog <dobatog@gmail.com>
 Date: Thu, 26 Feb 2015 12:32:27 +0100
 Subject: [PATCH 06/13] ARM: TLV320AIC23 SoC Audio Codec: Fix errors reported

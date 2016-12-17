@@ -1,4 +1,4 @@
-From cff4d7ad9abccf3693bc4e7bf01009a5254e3175 Mon Sep 17 00:00:00 2001
+From edbf64b26ba15e05cd15ea75bca263a5e748049f Mon Sep 17 00:00:00 2001
 From: Kevin Mihelich <kevin@archlinuxarm.org>
 Date: Tue, 4 Oct 2016 22:15:41 -0600
 Subject: [PATCH 13/13] Revert "gpu: drm: omapdrm: dss-of: add missing
