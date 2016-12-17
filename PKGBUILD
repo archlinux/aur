@@ -15,7 +15,6 @@ _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 build() {
   cd "$srcdir/Box2D-$pkgver/Box2D"
-  unset LDFLAGS
   for _arch in ${_architectures}; do
     mkdir -p build-${_arch} && pushd build-${_arch}
     ${_arch}-cmake \
