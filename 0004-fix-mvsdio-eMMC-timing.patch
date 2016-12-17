@@ -1,4 +1,4 @@
-From d6bde52e9ae175a59da46054f13e392481b9ca20 Mon Sep 17 00:00:00 2001
+From edb8d8e73417db6941473734b9cfb673c7089f72 Mon Sep 17 00:00:00 2001
 From: Kevin Mihelich <kevin@archlinuxarm.org>
 Date: Fri, 5 Sep 2014 15:43:56 -0600
 Subject: [PATCH 04/13] fix mvsdio eMMC timing

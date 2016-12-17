@@ -10,7 +10,7 @@
 
 pkgbase=linux-libre-pck
 _pkgbasever=4.8-gnu
-_pkgver=4.8.12-gnu
+_pkgver=4.8.14-gnu
 _pckpatchver=pck1
 
 _replacesarchkernel=('linux-zen')
@@ -20,7 +20,7 @@ _replacesoldmodules=()
 _srcname=linux-${_pkgbasever%-*}
 _archpkgver=${_pkgver%-*}
 pkgver=${_pkgver//-/_}.${_pckpatchver}
-pkgrel=2
+pkgrel=1
 rcnrel=armv7-x4
 arch=('i686' 'x86_64' 'armv7h')
 url="https://wiki.parabola.nu/PCK"
@@ -65,9 +65,9 @@ source=("https://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgbasever}/l
         '0013-Revert-gpu-drm-omapdrm-dss-of-add-missing-of_node_pu.patch')
 sha256sums=('d54e0f8a27e24f3666c19b395c19dba194635db26929c89e78ffa4b2b0e8ca3a'
             'SKIP'
-            '2305f73842bf41755c082900694d2f756787a9d5f7c37fd6a8ec387405e944ae'
+            '8f0b878ba934bd11e2297653fe6b7a38058d6a8d5ae223713070744822851b0c'
             'SKIP'
-            'fcf8b6bbfb46be2d1c72db749394753746140d06236d1e1154a3092d67ea7b18'
+            '82c07314713b85f57d0b482c0beedb9569d775d693180ef7010456acbb2d5439'
             'SKIP'
             'bfd4a7f61febe63c880534dcb7c31c5b932dde6acf991810b41a939a93535494'
             'SKIP'
@@ -83,19 +83,19 @@ sha256sums=('d54e0f8a27e24f3666c19b395c19dba194635db26929c89e78ffa4b2b0e8ca3a'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
             'f1e9e280b9ed8c5e12c8a6fd6dcfd638137ef6555d0dd5e28dbd8ad93ff81fe0'
             'SKIP'
-            '858eac5f4aadb7a4157a36b31d101d75d841a9c58199e580201d8305356044e3'
-            'eee25f5fa6e6b0fb3d5ab913521af67adf788b8613cad1b6d38711261f70646f'
-            'ece5581c6b19073ccb191a6c49d50cd17ff61916ab53c7eb3039e5ecbcf2d0e3'
-            '0b7f588d1bccef7ac116f4d64e8877aefdf9099f16177a75ffc0c1bcd5d2fff9'
-            '9b504e544345119660fc50875decc1b9ee59ca9783bc5b466461410b307974f2'
-            '1b2eb7f52cf0f5481bdaca484cbd3175b2e472e63e46887cc0ed003e39e57ff3'
-            'c7bba5a22db69e50ea8c7c7abc6bb8d133a30b27b2e7d77fc1f7e435f328366a'
-            'f485923217433862978af1029d6d0573b39d6779796fb8f85ab4d588466ec0d2'
-            '5b21335a3a23345f8296e9258c20f7d70d9668a771019f4ea52eda3e916915b5'
-            '616970b049d597e994930d323c5a5efdd3e1344275c53792840a1898a52bb5dd'
-            '9b0afd186edf6dae0fe0c89ca1c83e5cfa207640859d5c560defead6897478b2'
-            'e565ff56ec6b4dcb43a45cb4d79060d5311e6363f6f0dcfe209cb0efb49df65c'
-            '10055949d09efc74b1586df4d74531910b551a8a8e047ab3800942881e97c974')
+            '7afa5fee84694004ef486f674142dc2e457241b28be6088e59458ad9d1f14d2d'
+            '0c87fd84f364b4cd597c5bd1154bac65fe4870ab9ef2a4044858a4fc78845026'
+            '61a95b91b8accbe8a2ad189cecf2ede0dd811e62d8d8fd24bbe17295f3c77895'
+            '6017d33afa7bd661f9d4af6f828c9c84b0be12a189df9b1d67ec1bb96d2e3230'
+            '08d93085f05bcc91a24492533f6fbc6b34f0574512d8e7751e41af99aa900a6a'
+            '2240cb4b63dd4432cc7bc21b1aad9d2ac4bde14763e8f1e06b139d61bfddeac8'
+            'c229fb5d02d3083e627576a46dfc67b29489d578df17e61552b4d428bec8f491'
+            '42c3506b13665da5c7e817fe3fd68659e96b2639edb665a6a8d753143f2297c2'
+            'd585e6173b6d9155ff1a7d5c9d34ffb5e3cf591efb50e0e7d525365eba7c4208'
+            'faf659377105cb80de9c8f7e3e60e354ab0aa934b8df36ca575fe42b5bea73a1'
+            '1d077e7c1512b2bde305c9fd9df1476f52e3528c7339b2b8e6481855f51c00f7'
+            '12c6f37b6d33153f8bf75600321aacc6a36f6121af7bf849add68613314980ec'
+            '85be324fcf08e627a0b9b86d1e3d91ab670b8b57342a3b34ad1c730ce4cddffd')
 validpgpkeys=(
               '474402C8C582DAFBE389C427BCB7CF877E7D47A7' # Alexandre Oliva
               'C92BAA713B8D53D3CAE63FC9E6974752F9704456' # André Silva
