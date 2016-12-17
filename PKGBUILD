@@ -2,12 +2,12 @@
 
 pkgbase=linux-ec2
 _srcname=linux-4.8
-pkgver=4.8.6
+pkgver=4.8.15
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://git.uplinklabs.net/snoonan/projects/archlinux/ec2/ec2-packages.git/tree/linux-ec2"
 license=('GPL2')
-makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc')
+makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc' 'libelf')
 options=('!strip')
 source=("http://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         "http://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.sign"
@@ -15,21 +15,23 @@ source=("http://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         "http://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.sign"
         # the main kernel config files
         'config.i686' 'config.x86_64'
+        # pacman hook for initramfs regeneration
+        '99-linux.hook'
         # standard config files for mkinitcpio ramdisk
         'linux.preset'
         '0001-xhci-demote-annoying-warning.patch'
         )
 sha256sums=('3e9150065f193d3d94bcf46a1fe9f033c7ef7122ab71d75a7fb5a2f0c9a7e11a'
             'SKIP'
-            '3ac0ea443ac8a7aa40f8d5ce8ec33b84abbad4dbfc567c7699df728c2c21df37'
+            'cdeff3a6e0dc3d6189d1b1d4d6318f0942b9a28409491cf65592879e4c42b1f7'
             'SKIP'
             'SKIP'
             'SKIP'
-            '7460d523b7c5af4d7dcd87236ec708c70511a62cd54c400dc8b770e8c79cbfcb'
+            '834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0'
+            'fc21139a4b77d2739f4aaa4e3d35229c395c311de89709904de15f653b8991fd'
             '4fc90b07eb212f00132cdde0a5318b1c89c51c97c0af3dcc32c494f4b06000f3')
-
 validpgpkeys=(
-              'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linux Torvalds
+              'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
               '647F28654894E3BD457199BE38DBBDC86092693E' # Greg Kroah-Hartman
              )
 
@@ -106,19 +108,17 @@ _package() {
   install -D -m644 "${srcdir}/linux.preset" "${pkgdir}/etc/mkinitcpio.d/${pkgbase}.preset"
 
   # set correct depmod command for install
-  cp -f "${startdir}/${install}" "${startdir}/${install}.pkg"
+  sed -e "s|%PKGBASE%|${pkgbase}|g;s|%KERNVER%|${_kernver}|g" \
+    "${startdir}/${install}" > "${startdir}/${install}.pkg"
   true && install=${install}.pkg
-  sed \
-    -e  "s/KERNEL_NAME=.*/KERNEL_NAME=${_kernelname}/" \
-    -e  "s/KERNEL_VERSION=.*/KERNEL_VERSION=${_kernver}/" \
-    -i "${startdir}/${install}"
 
-  sed \
-    -e "1s|'linux.*'|'${pkgbase}'|" \
-    -e "s|ALL_kver=.*|ALL_kver=\"/boot/vmlinuz-${pkgbase}\"|" \
-    -e "s|default_image=.*|default_image=\"/boot/initramfs-${pkgbase}.img\"|" \
-    -e "s|fallback_image=.*|fallback_image=\"/boot/initramfs-${pkgbase}-fallback.img\"|" \
-    -i "${pkgdir}/etc/mkinitcpio.d/${pkgbase}.preset"
+  # install mkinitcpio preset file for kernel
+  sed "s|%PKGBASE%|${pkgbase}|g" "${srcdir}/linux.preset" |
+    install -D -m644 /dev/stdin "${pkgdir}/etc/mkinitcpio.d/${pkgbase}.preset"
+
+  # install pacman hook for initramfs regeneration
+  sed "s|%PKGBASE%|${pkgbase}|g" "${srcdir}/99-linux.hook" |
+    install -D -m644 /dev/stdin "${pkgdir}/usr/share/libalpm/hooks/99-${pkgbase}.hook"
 
   # remove build and source links
   rm -f "${pkgdir}"/lib/modules/${_kernver}/{source,build}
@@ -285,6 +285,7 @@ pkgdesc="Linux kernel for Amazon EC2"
 true && pkgname=("${pkgbase}" "${pkgbase}-headers" "${pkgbase}-docs")
 for _p in ${pkgname[@]}; do
   eval "package_${_p}() {
+    $(declare -f "_package${_p#${pkgbase}}")
     _package${_p#${pkgbase}}
   }"
 done

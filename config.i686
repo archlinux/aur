@@ -1,6 +1,6 @@
 #
 # Automatically generated file; DO NOT EDIT.
-# Linux/x86 4.8.1-1 Kernel Configuration
+# Linux/x86 4.8.15-1 Kernel Configuration
 #
 # CONFIG_64BIT is not set
 CONFIG_X86_32=y
@@ -3601,7 +3601,7 @@ CONFIG_XEN_FBDEV_FRONTEND=m
 # CONFIG_FB_MB862XX is not set
 # CONFIG_FB_BROADSHEET is not set
 # CONFIG_FB_AUO_K190X is not set
-# CONFIG_FB_HYPERV is not set
+CONFIG_FB_HYPERV=m
 # CONFIG_FB_SIMPLE is not set
 # CONFIG_FB_SM712 is not set
 CONFIG_BACKLIGHT_LCD_SUPPORT=y
