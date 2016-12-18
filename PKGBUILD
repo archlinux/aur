@@ -6,7 +6,7 @@
 
 pkgbase=python-sphinx
 pkgname=('python-sphinx' 'python2-sphinx')
-pkgver=1.5
+pkgver=1.5.1
 pkgrel=1
 
 arch=('any')
@@ -29,18 +29,21 @@ makedepends=(
 )
 
 checkdepends=(
-  'python-nose' 'python2-nose'
   'texlive-latexextra'
+  'python-nose' 'python2-nose'
   'python-snowballstemmer' 'python2-snowballstemmer'
   'python-babel' 'python2-babel'
   'python-sphinx-alabaster-theme' 'python2-sphinx-alabaster-theme'
   'python-sphinx_rtd_theme' 'python2-sphinx_rtd_theme'
-  'python2-mock'
+  'python-mock' 'python2-mock'
+  'python-html5lib' 'python2-html5lib'
+  'python-requests' 'python2-requests'
+  'python2-enum34'
 )
 
 source=("https://files.pythonhosted.org/packages/source/S/Sphinx/Sphinx-$pkgver.tar.gz")
 
-md5sums=('366280d3b19fcf83f1c9e2fdfc9115b3')
+md5sums=('1abb725861037e13cbc49eb84cd8cef3')
 
 prepare() {
   # souce duplication is required because makefile modify source code
@@ -88,6 +91,7 @@ package_python-sphinx() {
     'python-snowballstemmer'
     'python-six'
     'python-imagesize'
+    'python-requests'
   )
   optdepends=('texlive-latexextra: for generation of PDF documentation')
 
@@ -109,6 +113,7 @@ package_python2-sphinx() {
     'python2-snowballstemmer'
     'python2-six'
     'python2-imagesize'
+    'python2-requests'
   )
   optdepends=('texlive-latexextra: for generation of PDF documentation')
 
