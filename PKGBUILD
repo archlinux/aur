@@ -1,7 +1,7 @@
 # Maintainer: kikadf <kikadf.01@gmail.com>
 
 pkgname=plasma5-applets-todolist
-pkgver=2
+pkgver=4
 pkgrel=1
 pkgdesc="Extension of the kdeplasma-applets notes widget, where it's organized as a list"
 url="https://github.com/Zren/plasma-applets/tree/master/todolist"
@@ -11,7 +11,7 @@ makedepends=('extra-cmake-modules')
 arch=('any')
 source=(https://github.com/Zren/plasma-applets/archive/todolist-$pkgver.tar.gz
 	https://raw.githubusercontent.com/kikadf/patches/master/plasma5-applets-todolist/Add_CMakeLists.patch)
-md5sums=('a5ef01b5272f26790f19ab20964cc685'
+md5sums=('29f9cd302f97fe2116b798cffb6fd333'
          '3881942579d0e79c4e1e78ae570cbcd9')
 
 prepare() {
