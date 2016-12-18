@@ -1,6 +1,6 @@
 pkgbase = system-tar-and-restore
 	pkgdesc = Backup and Restore your system using tar or Transfer it with rsync
-	pkgver = 5.2
+	pkgver = 6.0
 	pkgrel = 1
 	url = https://github.com/tritonas00/system-tar-and-restore
 	install = readme.install
@@ -8,7 +8,7 @@ pkgbase = system-tar-and-restore
 	license = GPL
 	depends = rsync
 	depends = wget
-	optdepends = dialog: Ncurses interface support
+	optdepends = gtkdialog: GUI wrapper
 	optdepends = grub: Grub support
 	optdepends = dosfstools: UEFI support
 	optdepends = efibootmgr: UEFI support
@@ -17,9 +17,8 @@ pkgbase = system-tar-and-restore
 	optdepends = pigz: multicore compression
 	optdepends = pbzip2: multicore compression
 	optdepends = pxz: multicore compression
-	optdepends = gtkdialog: GUI wrapper
-	source = https://github.com/tritonas00/system-tar-and-restore/archive/5.2.tar.gz
-	md5sums = 732c702a2e01128cc23aa1b514518e1e
+	source = https://github.com/tritonas00/system-tar-and-restore/archive/6.0.tar.gz
+	md5sums = e9075923feb7264cd7ca65be37769da2
 
 pkgname = system-tar-and-restore
 
