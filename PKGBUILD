@@ -7,8 +7,10 @@
 # Possible replacements are listed in build/linux/unbundle/replace_gn_files.py
 # Keys are the names in the above script; values are the dependencies in Arch
 declare -rgA _system_libs=(
+  [ffmpeg]=ffmpeg
   [flac]=flac
   [harfbuzz-ng]=harfbuzz-icu
+  [icu]=icu
   [libjpeg]=libjpeg
   [libpng]=libpng
   [libvpx]=libvpx
@@ -18,12 +20,12 @@ declare -rgA _system_libs=(
   [re2]=re2
   [snappy]=snappy
   [yasm]=
-  #[zlib]=zlib         # Error during build
+  [zlib]=minizip
 )
 
 pkgname=chromium-gtk3
 _pkgname=chromium
-pkgver=54.0.2840.90
+pkgver=55.0.2883.87
 pkgrel=1
 _launcher_ver=3
 pkgdesc="The open-source project behind Google Chrome, an attempt at creating a safer, faster, and more stable browser (GTK3 version)"
@@ -34,12 +36,12 @@ depends=('gtk3' 'nss' 'alsa-lib' 'xdg-utils' 'libxss' 'libexif' 'libgcrypt'
          'ttf-font' 'systemd' 'dbus' 'libpulse' 'perl' 'perl-file-basedir'
          'pciutils' 'desktop-file-utils' 'hicolor-icon-theme')
 depends+=(${_system_libs[@]})
-makedepends=('python2' 'gperf' 'yasm' 'mesa' 'ninja' 'gtk2')
+makedepends=('python2' 'gperf' 'yasm' 'mesa' 'ninja' 'git' 'gtk2')
 optdepends=('kdebase-kdialog: needed for file dialogs in KDE'
             'gnome-keyring: for storing passwords in GNOME keyring'
             'kwallet: for storing passwords in KWallet'
             'pepper-flash: for pepper-flash plugin'
-	    'gtk2: for pepper-flash plugin')
+            'gtk2: for pepper-flash plugin')
 conflicts=('chromium')
 replaces=('chromium')
 install=chromium.install
@@ -47,13 +49,15 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/$_pkg
         chromium-launcher-$_launcher_ver.tar.gz::https://github.com/foutrelis/chromium-launcher/archive/v$_launcher_ver.tar.gz
         chromium.desktop
         chromium-52.0.2743.116-unset-madv_free.patch
-        chromium-53.0.2785.92-last-commit-position.patch
+        chromium-system-ffmpeg-r4.patch
+        chromium-icu58.patch
         chromium-widevine.patch)
-sha256sums=('942b3aa498a5482b7a9b977f2a10902885a7e022ee2edf82f9fcb6c2dbc40106'
+sha256sums=('e81bd3140d9c84dfee04d9a94686dfe6a20ae79475d84f17154c5536dcb81a58'
             '8b01fb4efe58146279858a754d90b49e5a38c9a0b36a1f84cbb7d12f92b84c28'
             '028a748a5c275de9b8f776f97909f999a8583a4b77fd1cd600b4fc5c0c3e91e9'
             '3b3aa9e28f29e6f539ed1c7832e79463b13128863a02e9c6fecd16c30d61c227'
-            'd3dc397956a26ec045e76c25c57a1fac5fc0acff94306b2a670daee7ba15709e'
+            'e3c474dbf3822a0be50695683bd8a2c9dfc82d41c1524a20b4581883c0c88986'
+            'fad964da0295a6a7b4393778e717ebdfd37dec33fe78beb2c639abd3973deb7a'
             'd6fdcb922e5a7fbe15759d39ccc8ea4225821c44d98054ce0f23f9d1f00c9808')
 
 # Google API keys (see http://www.chromium.org/developers/how-tos/api-keys)
@@ -73,12 +77,13 @@ prepare() {
   sed "s/@WIDEVINE_VERSION@/Pinkie Pie/" ../chromium-widevine.patch |
     patch -Np1
 
+  # Build fixes from Gentoo
+  patch -Np1 -i ../chromium-system-ffmpeg-r4.patch
+  patch -Np1 -i ../chromium-icu58.patch
+
   # Disable MADV_FREE (if set by glibc)
   # https://bugzilla.redhat.com/show_bug.cgi?id=1361157
   patch -Np1 -i ../chromium-52.0.2743.116-unset-madv_free.patch
-
-  # Disable last_commit_position as we don't build from git repository
-  patch -Np1 -i ../chromium-53.0.2785.92-last-commit-position.patch
 
   # Work around bug in blink in which GCC 6 optimizes away null pointer checks
   # https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=833524
@@ -101,6 +106,7 @@ prepare() {
     find -type f -path "*third_party/$_lib/*" \
       \! -path "*third_party/$_lib/chromium/*" \
       \! -path "*third_party/$_lib/google/*" \
+      \! -path "*base/third_party/icu/*" \
       \! -regex '.*\.\(gn\|gni\|isolate\|py\)' \
       -delete
   done
@@ -133,7 +139,6 @@ build() {
     'proprietary_codecs=true'
     'link_pulseaudio=true'
     'linux_use_bundled_binutils=false'
-    'use_allocator="none"'
     'use_cups=true'
     'use_gconf=false'
     'use_gnome_keyring=false'
@@ -175,7 +180,7 @@ package() {
   install -Dm4755 out/Release/chrome_sandbox \
     "$pkgdir/usr/lib/chromium/chrome-sandbox"
 
-  cp -a out/Release/{*.pak,*.bin,chromedriver,libwidevinecdmadapter.so,icudtl.dat} \
+  cp -a out/Release/{*.pak,*.bin,chromedriver,libwidevinecdmadapter.so} \
     out/Release/locales \
     out/Release/gen/content/content_resources.pak \
     "$pkgdir/usr/lib/chromium/"
