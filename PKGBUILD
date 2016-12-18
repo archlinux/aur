@@ -1,8 +1,7 @@
 # Maintainer: surefire <surefire@cryptomile.net>
 
-_pkgname=ghetto-skype
 pkgname=ghetto-skype-git
-pkgver=1.4.1.r7.gdba086a
+pkgver=1.5.0.r1.g12e2014
 pkgrel=1
 pkgdesc="Are you tired of a buggy 32 bit official Skype client? Then Ghetto Skype is for you!"
 arch=("any")
@@ -28,28 +27,28 @@ pkgver() {
 prepare() {
 	cd "${pkgname}"
 
-	sed -i \
+	sed -i src/tray.js \
 		-e 's/skype24.png/skype.png/' \
 		-e 's/skype24-1.png/skype-1.png/' \
-	app/tray.js
+	;
 }
 
 build() {
-	cd "${pkgname}"
+	cd "${pkgname}/src"
 
 	npm install --production
 
-	asar p . ../ghetto-skype.asar
+	asar p . ../../ghetto-skype.asar
 }
 
 package() {
 
 	install -Dm0755 -t "${pkgdir}/usr/bin" ghetto-skype
 	install -Dm0644 -t "${pkgdir}/usr/share/applications" ghetto-skype.desktop
-	install -Dm0644 -t "${pkgdir}/usr/share/licenses/${_pkgname}" "${pkgname}/LICENSE"
+	install -Dm0644 -t "${pkgdir}/usr/share/licenses/ghetto-skype" "${pkgname}/LICENSE"
 
 	install -Dm0644 -t "${pkgdir}/usr/lib/ghetto-skype" ghetto-skype.asar
 
-	install -Dm0644 "${pkgname}/assets/tray/skype.png" "${pkgdir}/usr/share/pixmaps/ghetto-skype.png"
+	install -Dm0644 "${pkgname}/src/assets/tray/skype.png" "${pkgdir}/usr/share/pixmaps/ghetto-skype.png"
 
 }

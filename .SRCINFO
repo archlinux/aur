@@ -1,6 +1,6 @@
 pkgbase = ghetto-skype-git
 	pkgdesc = Are you tired of a buggy 32 bit official Skype client? Then Ghetto Skype is for you!
-	pkgver = 1.4.1.r7.gdba086a
+	pkgver = 1.5.0.r1.g12e2014
 	pkgrel = 1
 	url = https://github.com/stanfieldr/ghetto-skype
 	arch = any
@@ -15,7 +15,7 @@ pkgbase = ghetto-skype-git
 	source = ghetto-skype.desktop
 	source = ghetto-skype
 	md5sums = SKIP
-	md5sums = 76db516a8d7b95e6e12470ce3584850e
+	md5sums = 44aa5d2772bedba2598dbd46b0b0b4f4
 	md5sums = fd5e7e49294ee8dc3a171f882ce60a70
 
 pkgname = ghetto-skype-git

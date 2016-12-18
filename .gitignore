@@ -1,2 +1,4 @@
 ghetto-skype-git/
-*.pkg.tar.xz
+*.pkg.tar.*
+pkg/
+src/
