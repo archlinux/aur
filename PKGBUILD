@@ -30,9 +30,9 @@ prepare() {
     convert "ddnet-$pkgver/other/icons/DDNet-Server.ico" "$srcdir/${pkgname}_srv.png"
       # This desktop file, combined with 'teeworlds-ddnet-maps-git' pkg will
       # run DDNet Server with all votes, maps etc. -- no score/ranking, though
-    gendesk -f -n --pkgname "${pkgname}_srv" --pkgdesc "DDNet Server" --terminal=true \
-        --exec='sh -c "cd /usr/share/teeworlds/data && teeworlds-ddnet_srv"' \
-        --name 'DDNet Server' --categories 'Game;ArcadeGame'
+    gendesk -f -n --pkgname "${pkgname}_srv" --pkgdesc "DDNet Server"        \
+        --name 'DDNet Server' --categories 'Game;ArcadeGame' --terminal=true \
+        --exec='sh -c "cd /usr/share/teeworlds/data && teeworlds-ddnet_srv"'
 }
 
 build() {
@@ -44,27 +44,27 @@ package() {
   cd ddnet-$pkgver
   
     # Install DDNet client/server binaries
-  install -Dm755 DDNet "$pkgdir"/usr/bin/teeworlds-ddnet
-  install -Dm755 DDNet-Server "$pkgdir"/usr/bin/teeworlds-ddnet_srv
-  install -Dm755 config_store "$pkgdir"/usr/bin/ddnet-config_store
-  install -Dm755 config_retrieve "$pkgdir"/usr/bin/ddnet-config_retrieve
+  install -Dm755 DDNet           "$pkgdir/usr/bin/teeworlds-ddnet"
+  install -Dm755 DDNet-Server    "$pkgdir/usr/bin/teeworlds-ddnet_srv"
+  install -Dm755 config_store    "$pkgdir/usr/bin/ddnet-config_store"
+  install -Dm755 config_retrieve "$pkgdir/usr/bin/ddnet-config_retrieve"
     # Install Graphic Tools binaries
-  install -Dm755 ../dilate "$pkgdir"/usr/bin/dilate
-  install -Dm755 ../tileset_borderadd "$pkgdir"/usr/bin/tileset_borderadd
-  install -Dm755 ../tileset_borderfix "$pkgdir"/usr/bin/tileset_borderfix
-  install -Dm755 ../tileset_borderrem "$pkgdir"/usr/bin/tileset_borderrem
-  install -Dm755 ../tileset_borderset "$pkgdir"/usr/bin/tileset_borderset
+  install -Dm755 ../dilate            "$pkgdir/usr/bin/dilate"
+  install -Dm755 ../tileset_borderadd "$pkgdir/usr/bin/tileset_borderadd"
+  install -Dm755 ../tileset_borderfix "$pkgdir/usr/bin/tileset_borderfix"
+  install -Dm755 ../tileset_borderrem "$pkgdir/usr/bin/tileset_borderrem"
+  install -Dm755 ../tileset_borderset "$pkgdir/usr/bin/tileset_borderset"
   
     # Install data files
-  mkdir -p "$pkgdir"/usr/share/teeworlds/data
-  cp -r data/* "$pkgdir"/usr/share/teeworlds/data
+  mkdir -p "$pkgdir/usr/share/teeworlds/data"
+  cp -r data/* "$pkgdir/usr/share/teeworlds/data"
   
     # Install desktop and icon files
-  install -Dm644 ../teeworlds-ddnet.desktop "$pkgdir"/usr/share/applications/teeworlds-ddnet.desktop
-  install -Dm644 ../teeworlds-ddnet_srv.desktop "$pkgdir"/usr/share/applications/teeworlds-ddnet_srv.desktop
-  install -Dm644 ../teeworlds-ddnet-5.png   "$pkgdir"/usr/share/pixmaps/teeworlds-ddnet.png
-  install -Dm644 ../teeworlds-ddnet_srv-8.png   "$pkgdir"/usr/share/pixmaps/teeworlds-ddnet_srv.png
+  install -Dm644 ../teeworlds-ddnet.desktop     "$pkgdir/usr/share/applications/teeworlds-ddnet.desktop"
+  install -Dm644 ../teeworlds-ddnet_srv.desktop "$pkgdir/usr/share/applications/teeworlds-ddnet_srv.desktop"
+  install -Dm644 ../teeworlds-ddnet-5.png       "$pkgdir/usr/share/pixmaps/teeworlds-ddnet.png"
+  install -Dm644 ../teeworlds-ddnet_srv-8.png   "$pkgdir/usr/share/pixmaps/teeworlds-ddnet_srv.png"
   
     # Install license files
-  install -Dm644 license.txt "$pkgdir"/usr/share/licenses/$pkgname/license.txt
+  install -Dm644 license.txt "$pkgdir/usr/share/licenses/$pkgname/license.txt"
 }
