@@ -3,7 +3,7 @@
 # SELinux Maintainer: Nicolas Iooss (nicolas <dot> iooss <at> m4x <dot> org)
 
 pkgname=logrotate-selinux
-pkgver=3.10.0
+pkgver=3.11.0
 pkgrel=1
 pkgdesc="Rotates system logs automatically with SELinux support"
 arch=('i686' 'x86_64')
@@ -15,15 +15,17 @@ conflicts=("${pkgname/-selinux}" "selinux-${pkgname/-selinux}")
 provides=("${pkgname/-selinux}=${pkgver}-${pkgrel}"
           "selinux-${pkgname/-selinux}=${pkgver}-${pkgrel}")
 backup=('etc/logrotate.conf')
-source=("https://github.com/logrotate/logrotate/archive/${pkgver}.tar.gz"
+source=("https://github.com/logrotate/logrotate/releases/download/${pkgver}/${pkgname/-selinux}-${pkgver}.tar.xz"{,.asc}
         'paths.patch'
         'logrotate.conf'
         logrotate.{timer,service})
-md5sums=('3995acb2791a8dfd81b5ffc0046d0e71'
+md5sums=('3a9280e4caeb837427a2d54518fbcdac'
+         'SKIP'
          'e76526bcd6fc33c9d921e1cb1eff1ffb'
          '94dae4d3eded2fab9ae879533d3680db'
          '287c2ad9b074cb5478db7692f385827c'
          '85560be5272ed68a88bb77a0a2293369')
+validpgpkeys=('992A96E075056E79CD8214F9873DB37572A37B36')
 
 build() {
 	cd "$srcdir/${pkgname/-selinux}-${pkgver}"
