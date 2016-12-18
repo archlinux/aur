@@ -7,7 +7,7 @@ pkgdesc="DBus interface of libcppjieba && Chinese2Pinyin for KDE5"
 arch=('any')
 url="https://github.com/isoft-linux/kjieba"
 license=('GPL2')
-depends=('gcc' 'qt5-base')
+depends=('gcc' 'qt5-base' 'krunner')
 makedepends=('git' 'make' 'extra-cmake-modules')
 source=("$pkgname::git+https://github.com/isoft-linux/kjieba"
         "libcppjieba::git+https://github.com/yanyiwu/libcppjieba")
