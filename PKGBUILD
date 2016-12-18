@@ -24,14 +24,13 @@ pkgver() {
 build()
 {
 
-  cd $srcdir/$pkgname
 
   # fpcvalkyrie is harcoded from Makefile to look a level up
   # from doomrl/makeifle.lua ...
-  mkdir tmp
   cp -r $srcdir/fpcvalkyrie $pkgname
 
   cd $srcdir/$pkgname
+  rm -r tmp && mkdir tmp
   lua makefile.lua hq
 
 }
