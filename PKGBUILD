@@ -3,7 +3,7 @@
 pkgname=ghetto-skype-git
 pkgver=1.5.0.r1.g12e2014
 pkgrel=1
-pkgdesc="Ghetto Skype is an electron client that uses Web Skype to better integrate with desktop environments found on Linux."
+pkgdesc="This is an electron client that uses Web Skype to better integrate with desktop environments found on Linux."
 arch=("any")
 url="https://github.com/stanfieldr/ghetto-skype"
 license=("GPLv3")
