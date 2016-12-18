@@ -3,33 +3,41 @@
 # Contributor: Vitaliy Berdinskikh, aka UR6LAD <ur6lad@archlinux.org.ua>
 
 pkgname=owx
-pkgver=r17
+pkgver=r21
+#.266923b
 pkgrel=1
-pkgdesc="A CLI tool for programming KG669V (Wouxun) HTs."
+pkgdesc="A CLI tool for programming Wouxun (KG669V,UVD1-3,UV1A, et al) HTs."
 arch=('i686' 'x86_64')
 url="http://owx.chmurka.net"
 license=('Apache' 'custom:beerware')
 depends=('gcc-libs')
-makedepends=('subversion')
+makedepends=('git')
 replaces=('wouxun')
-source=("$pkgname-svn::svn+http://svn.chmurka.net/$pkgname/trunk"
+source=("$pkgname-git::git://git.chmurka.net/$pkgname"
 	LICENSE)
 md5sums=('SKIP'
-         '04c8deadd6984048760870d0fb397f25')
+         '02ecf727fd7a0948393044fc17fc6f11')
 
 pkgver() {
-	cd "$srcdir/$pkgname-svn/$pkgname"
-	printf "r%s" "$(svnversion | tr -d 'A-z')"
+	cd "$srcdir/$pkgname-git/"
+
+	( set -o pipefail
+	  git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+	  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	)
 }
 
 prepare() {
-	cd "$srcdir/$pkgname-svn/$pkgname"
+	cd "$srcdir/$pkgname-git/"
 	sed -i -e s:SVN:${pkgver}: src/version.h
 	sed -i -e s:' help':' README': src/cmds.cc
+
+	sed -i -e s:'local/':'': docs/README
+	sed -i -e s:'libexec':'lib/owx': docs/README
 }
 
 build() {
-	cd "$srcdir/$pkgname-svn/$pkgname"
+	cd "$srcdir/$pkgname-git/"
 	make
 }
 
@@ -40,7 +48,7 @@ package() {
 	cd $srcdir
 	install -m 644 LICENSE $pkgdir/usr/share/licenses/$pkgname
 
-	cd "$srcdir/$pkgname-svn/$pkgname/docs"
+	cd "$srcdir/$pkgname-git/docs"
 	install -m 644 * $pkgdir/usr/share/doc/$pkgname
 	rm  $pkgdir/usr/share/doc/$pkgname/LICENSE
 

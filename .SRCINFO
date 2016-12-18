@@ -1,19 +1,19 @@
 pkgbase = owx
-	pkgdesc = A CLI tool for programming KG669V (Wouxun) HTs.
-	pkgver = r17
+	pkgdesc = A CLI tool for programming Wouxun (KG669V,UVD1-3,UV1A, et al) HTs.
+	pkgver = r21
 	pkgrel = 1
 	url = http://owx.chmurka.net
 	arch = i686
 	arch = x86_64
 	license = Apache
 	license = custom:beerware
-	makedepends = subversion
+	makedepends = git
 	depends = gcc-libs
 	replaces = wouxun
-	source = owx-svn::svn+http://svn.chmurka.net/owx/trunk
+	source = owx-git::git://git.chmurka.net/owx
 	source = LICENSE
 	md5sums = SKIP
-	md5sums = 04c8deadd6984048760870d0fb397f25
+	md5sums = 02ecf727fd7a0948393044fc17fc6f11
 
 pkgname = owx
 
