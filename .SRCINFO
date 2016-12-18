@@ -1,0 +1,13 @@
+pkgbase = jid-bin
+	pkgdesc = Json incremental digger
+	pkgver = 0.6.2
+	pkgrel = 1
+	url = https://github.com/simeji/jid
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	source = https://github.com/simeji/jid/releases/download/0.6.2/jid_linux_amd64.zip
+	sha256sums = 17bf8657edd74e570286018d86a4a8835ced0e9ea1ea79b5284f9caa9355275f
+
+pkgname = jid-bin
+
