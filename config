@@ -1,6 +1,6 @@
 #
 # Automatically generated file; DO NOT EDIT.
-# Linux/x86 4.8.15-1 Kernel Configuration
+# Linux/x86 4.8.10-2 Kernel Configuration
 #
 # CONFIG_64BIT is not set
 CONFIG_X86_32=y
@@ -441,6 +441,7 @@ CONFIG_M686=y
 # CONFIG_MHASWELL is not set
 # CONFIG_MBROADWELL is not set
 # CONFIG_MSKYLAKE is not set
+# CONFIG_MNATIVE is not set
 CONFIG_X86_GENERIC=y
 CONFIG_X86_INTERNODE_CACHE_SHIFT=6
 CONFIG_X86_L1_CACHE_SHIFT=6
