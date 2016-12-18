@@ -2,14 +2,14 @@
 
 pkgname=cowrie
 pkgver=1.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Medium interaction SSH honeypot designed to log brute force attacks and entire shell interaction'
 url='https://github.com/micheloosterhof/cowrie'
 arch=('any')
 license=('BSD')
 depends=('python2-twisted' 'python2-zope-interface' 'python2-crypto' 'python2-pyasn1' 'python2-cryptography'
          'python2-gmpy2' 'python2-pyopenssl' 'mysql-python' 'python2-dateutil' 'python2-tftpy'
-         'python2-configparser' 'python2-service-identity')
+         'python2-configparser' 'python2-service-identity' 'python2-requests')
 backup=('etc/cowrie.cfg')
 install=cowrie.install
 source=(${pkgname}-${pkgver}.tar.gz::https://github.com/micheloosterhof/${pkgname}/archive/v${pkgver}.tar.gz)
