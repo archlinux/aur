@@ -3,9 +3,9 @@
 pkgname=terminix-git
 _pkgname=terminix
 pkgver=1.4.0.rc3.r0.5ec4074
-pkgrel=1
+pkgrel=2
 pkgdesc="A tiling terminal emulator based on GTK+ 3 (git master)"
-arch=('x86_64')
+arch=('x86_64' 'i686')
 url="http://github.com/gnunn1/terminix"
 license=('MPL')
 depends=('libx11' 'gtkd>=3.3.0' 'vte3' 'dconf' 'gsettings-desktop-schemas')
