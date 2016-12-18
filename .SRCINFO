@@ -1,0 +1,19 @@
+pkgbase = universal-ifr-extractor-linux-git
+	pkgdesc = Command-line EFI/UEFI module IFR extractor
+	pkgver = r42.f703249
+	pkgrel = 1
+	url = https://github.com/TGSoftware/Universal-IFR-Extractor-Linux
+	install = Universal-IFR-Extractor-Linux-git.install
+	changelog = README.md
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	depends = cmake
+	depends = clang
+	depends = pacman
+	provides = ifrextract
+	source = universal-ifr-extractor-linux-git::git+https://github.com/TGSoftware/Universal-IFR-Extractor-Linux
+	md5sums = SKIP
+
+pkgname = universal-ifr-extractor-linux-git
+

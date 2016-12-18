@@ -1,0 +1,37 @@
+# Maintainer: Tech Guy Software <techguy100official at gmail dot com>
+
+## arg 1:  the new package version
+#pre_install() {
+	# do something here
+#}
+
+## arg 1:  the new package version
+#post_install() {
+	# do something here
+#}
+
+## arg 1:  the new package version
+## arg 2:  the old package version
+#pre_upgrade() {
+	# do something here
+#}
+
+## arg 1:  the new package version
+## arg 2:  the old package version
+#post_upgrade() {
+	# do something here
+#}
+
+## arg 1:  the old package version
+pre_remove() {
+	echo "-> Removing existing installation from /usr/bin..."
+	# remove the Universal IFR Extractor directory from /usr/bin
+	sudo rm -f /usr/bin/ifrextract
+	echo "-> Success cleaning up existing install!"
+}
+
+## arg 1:  the old package version
+#post_remove() {
+	# do something here
+#}
+
