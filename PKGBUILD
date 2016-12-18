@@ -13,8 +13,7 @@ conflicts=("$_realname")
 makedepend=('meson' 'git')
 license=('LGPLv2')
  
-# source=('git+https://github.com/lubosz/gst-plugins-vr.git')
-source=('git+file:///home/bmonkey/pitivi-git/gst-plugins-vr')
+source=('git+https://github.com/lubosz/gst-plugins-vr.git')
 md5sums=('SKIP')
 
 subver() {
