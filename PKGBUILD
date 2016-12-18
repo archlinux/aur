@@ -70,12 +70,12 @@ build() {
 check() {
   msg2 'Python 3 version'
   cd "$srcdir"/Sphinx-$pkgver
-#  make PYTHON=python3 test
+  LC_ALL="en_US.UTF-8" make PYTHON=python3 test
   rm -r tests
 
   msg2 'Python 2 version'
   cd "$srcdir"/Sphinx-${pkgver}2
-#  make PYTHON=python2 test
+  LC_ALL="en_US.UTF-8" make PYTHON=python2 test
   rm -r tests
 }
 
