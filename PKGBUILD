@@ -4,12 +4,12 @@
 
 pkgname=dianara
 pkgver=1.3.6
-pkgrel=1
+pkgrel=2
 pkgdesc="A Qt pump.io client"
 arch=('i686' 'x86_64')
 url="http://dianara.nongnu.org/"
 license=('GPL')
-depends=('hicolor-icon-theme' 'file' 'qt5-base' 'qoauth-git')
+depends=('hicolor-icon-theme' 'file' 'qt5-base' 'qoauth')
 source=("http://download-mirror.savannah.gnu.org/releases/$pkgname/$pkgname-v$pkgver.tar.gz")
 sha256sums=('4a0d14676ea12a5a8bbe43777917150d9b1e742fcc402d3e9bfb7189b0a2c6d6')
 
