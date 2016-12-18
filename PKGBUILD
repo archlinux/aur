@@ -1,5 +1,5 @@
 pkgname=terminator-gtk3-bzr
-pkgver=r1637
+pkgver=r1687
 pkgrel=1
 pkgdesc='GTK3 porting branch for terminal emulator that supports tabs and grids GTK3'
 arch=('any')
@@ -19,12 +19,6 @@ pkgver() {
 
 build() {
     cd "${srcdir}/${pkgname}"
-
-    # python2 fix
-    for file in terminatorlib/{,plugins/}*.py; do
-        sed -i 's_#!/usr/bin/python_#!/usr/bin/python2_' ${file}
-        sed -i 's_#!/usr/bin/env python_#!/usr/bin/env python2_' ${file}
-    done
 
     python2 setup.py build
 }
