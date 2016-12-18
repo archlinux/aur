@@ -17,6 +17,6 @@ sha256sums=('17bf8657edd74e570286018d86a4a8835ced0e9ea1ea79b5284f9caa9355275f')
 package() {
   cd "${srcdir}"
 
-  install -Dm644 "${srcdir}/${_pkgname}_linux_amd64" "$pkgdir/usr/bin/${_pkgname}"
+  install -Dm755 "${srcdir}/${_pkgname}_linux_amd64" "$pkgdir/usr/bin/${_pkgname}"
 }
 
