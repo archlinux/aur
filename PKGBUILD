@@ -1,7 +1,7 @@
 _pkgname=manjaro-hello
 pkgname=${_pkgname}-git
 pkgver=r107.f526848
-pkgrel=1
+pkgrel=2
 pkgdesc="A tool that helps the new user of Manjaro in the discovery of the system."
 url="https://github.com/Huluti/${_pkgname}"
 arch=('any')
