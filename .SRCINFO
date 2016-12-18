@@ -1,0 +1,19 @@
+pkgbase = manjaro-hello-git
+	pkgdesc = A tool that helps the new user of Manjaro in the discovery of the system.
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/Huluti/manjaro-hello
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = gtk3
+	depends = python3
+	optdepends = calamares: universal installer framework
+	provides = manjaro-hello
+	conflicts = manjaro-hello
+	replaces = manjaro-hello
+	source = manjaro-hello::git+https://github.com/Huluti/manjaro-hello
+	md5sums = SKIP
+
+pkgname = manjaro-hello-git
+
