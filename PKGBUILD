@@ -1,9 +1,9 @@
 # Maintainer: Constantin Lorenz <Cons27773964@aol.com>
 
 pkgname=sandboxed-tor-browser # '-bzr', '-git', '-hg' or '-svn'
-pkgver=rsandboxed.tor.browser.0.0.2.r14.99496edr286.99496edr.r
+pkgver=0.0.2.r14.g99496ed
 pkgrel=1
-pkgdesc="A sandboxed version of the Tor Browser"
+pkgdesc="A sandboxed version of the Tor Browser, currently in alpha!"
 arch=('i686' 'x86_64')
 url="https://trac.torproject.org/projects/tor/wiki/doc/TorBrowser/Sandbox/Linux"
 license=('AGPL3')
@@ -37,19 +37,19 @@ pkgver() {
 # are not available, is recommended.
 
 # Bazaar
-	printf "r%s" "$(bzr revno)"
+#	printf "r%s" "$(bzr revno)"
 
 # Git, tags available
-	printf "%s" "$(git describe --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
+	printf "$(git describe --long | sed 's/^sandboxed-tor-browser-//;s/\([^-]*-g\)/r\1/;s/-/./g')"
 
 # Git, no tags available
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+#	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 
 # Mercurial
-	printf "r%s.%s" "$(hg identify -n)" "$(hg identify -i)"
+#	printf "r%s.%s" "$(hg identify -n)" "$(hg identify -i)"
 
 # Subversion
-	printf "r%s" "$(svnversion | tr -d 'A-z')"
+#	printf "r%s" "$(svnversion | tr -d 'A-z')"
 }
 
 prepare() {
