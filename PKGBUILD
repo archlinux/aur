@@ -2,14 +2,14 @@
 
 _pkgname=recipes
 pkgname=$_pkgname-git
-pkgver=0.2.0.14.gaee884d
+pkgver=0.3.0.18.g9cee47a
 pkgrel=1
 install=$_pkgname.install
 pkgdesc="A GNOME recipes cooking book"
 arch=('i686' 'x86_64')
 license=('GPL')
 depends=('glib2' 'gtk3' 'gnome-autoar')
-makedepends=('intltool' 'gnome-doc-utils' 'gnome-common' 'git')
+makedepends=('intltool' 'gnome-doc-utils' 'gnome-common' 'git' 'gobject-introspection')
 options=('!libtool' '!emptydirs')
 groups=('gnome')
 url="https://git.gnome.org/browse/recipes/"
@@ -35,11 +35,13 @@ prepare() {
   git config libgd.url "${srcdir}/libgd"
   git config libglnx.url "${srcdir}/lbglnx"
   git submodule update
+
+  NOCONFIGURE=1 ./autogen.sh
 }
 
 build() {
   cd "$srcdir/$_pkgname"
-  ./autogen.sh --prefix=/usr --sysconfdir=/etc \
+  ./configure --prefix=/usr --sysconfdir=/etc \
       --localstatedir=/var --disable-maintainer-mode \
       --enable-debug --disable-Werror
   make
