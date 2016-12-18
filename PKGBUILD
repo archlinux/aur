@@ -2,7 +2,7 @@
 
 pkgname=pouetchess_bin
 pkgver=0.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple but nice 3D chess game"
 arch=('i686' 'x86_64')
 url="http://pouetchess.sourceforge.net/"
