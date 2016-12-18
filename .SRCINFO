@@ -1,7 +1,7 @@
 pkgbase = python-chatterbot
 	pkgdesc = ChatterBot is a machine learning, conversational dialog engine.
 	pkgver = 0.5.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/gunthercox/ChatterBot
 	arch = any
 	license = BSD
@@ -25,7 +25,7 @@ pkgname = python-chatterbot
 
 pkgname = python2-chatterbot
 	depends = python2
-	depends = python-nltk
+	depends = python2-nltk
 	depends = python2-pymongo
 	depends = python2-twitter
 	depends = python2-numpy

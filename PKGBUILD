@@ -3,7 +3,7 @@
 
 pkgname=('python-chatterbot' 'python2-chatterbot')
 pkgver=0.5.3
-pkgrel=1
+pkgrel=2
 pkgdesc="ChatterBot is a machine learning, conversational dialog engine."
 arch=("any")
 url="https://github.com/gunthercox/ChatterBot"
@@ -35,7 +35,7 @@ package_python-chatterbot() {
 package_python2-chatterbot() {
 	makedepends=()
 	depends=("python2" 
-		 "python-nltk" 
+		 "python2-nltk" 
 		 "python2-pymongo" 
 		 "python2-twitter"
 		 "python2-numpy")
