@@ -1,7 +1,7 @@
 # Maintainer: Michael Gerhaeuser <michael dot gerhaeuser at gmail dot com>
 
 pkgname=libusbmuxd-git
-pkgver=1.0.10.r3.g4d365ee
+pkgver=1.0.10.r10.g8e6ce39
 pkgrel=1
 pkgdesc="The usbmuxd communication interface library"
 url="http://www.libimobiledevice.org/"
@@ -12,7 +12,7 @@ makedepends=('git')
 provides=('libusbmuxd')
 conflicts=('libusbmuxd')
 
-source=("git://git.sukimashita.com/libusbmuxd.git")
+source=("git+https://git.libimobiledevice.org/libusbmuxd.git")
 sha512sums=('SKIP')
 
 pkgver() {
