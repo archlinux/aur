@@ -1,7 +1,7 @@
 # Maintainer: Natalia Portillo <claunia@clania.com>
 pkgname=pcem
 pkgver=11
-pkgrel=1
+pkgrel=2
 pkgdesc="Emulator for various IBM PC computers and clones."
 url="http://pcem-emulator.co.uk/"
 arch=('x86_64' 'i686')
