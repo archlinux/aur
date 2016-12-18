@@ -1,7 +1,7 @@
 # Maintainer: Stefan Tatschner <stefan@sevenbyte.org>
 
 pkgname=gitflow-avh
-pkgver=1.10.1
+pkgver=1.10.2
 pkgrel=1
 pkgdesc="Extend git with Vincent Driessen's branching model. The AVH Edition adds more functionality."
 arch=('any')
@@ -11,7 +11,7 @@ depends=('git')
 provides=('gitflow')
 conflicts=('gitflow' 'gitflow-git')
 source=("https://github.com/petervanderdoes/gitflow/archive/${pkgver}.tar.gz")
-md5sums=('35effa3455ce815e14a2df4e5cea1f8d')
+md5sums=('cd950cfa0d0925f18bcb63d49ffdeadf')
 
 package(){
    cd "$srcdir/$pkgname-$pkgver"
