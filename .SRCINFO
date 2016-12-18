@@ -1,0 +1,25 @@
+pkgbase = evernus
+	pkgdesc = EVE Online next generation trade and market helper
+	pkgver = 1.46
+	pkgrel = 1
+	url = http://evernus.com
+	arch = any
+	license = GPL3
+	license = LGPL3
+	license = Boost
+	makedepends = cmake
+	makedepends = clang
+	depends = boost
+	depends = boost-libs
+	depends = qt5-base
+	depends = qt5-multimedia
+	depends = qt5-webengine
+	depends = qt5-xmlpatterns
+	provides = evernus
+	source = evernus-1.46.tar.bz2::https://bitbucket.org/krojew/evernus/get/1.46-release.tar.bz2
+	source = CMakeLists.patch
+	sha512sums = 4d1319cc250294da11650f10af3117168a342bb20891133168b70187da60ce75ff7f7d3687a1ee8930339d3fef2c28f74d6b7d31df53627c5594ff2e4346d147
+	sha512sums = 2ae432f394bf1bc95aee86929b91b7c08504d3f7e3e5c1a68b98fa78ae31aae0a1f2328465956ac059046d14fdf9e941c525af61c8c666a677f22f93946abb66
+
+pkgname = evernus
+

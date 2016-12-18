@@ -1,0 +1,32 @@
+--- CMakeLists.txt.old	2016-12-05 17:54:57.000000000 +0100
++++ CMakeLists.txt	2016-12-18 00:13:58.612159067 +0100
+@@ -72,7 +72,8 @@
+ set(CMAKE_CXX_STANDARD_REQUIRED ON)
+ 
+ set(TRANSLATIONS lang/lang_pl_PL.ts lang/lang_de_DE.ts)
+-set_source_files_properties(${TRANSLATIONS} PROPERTIES OUTPUT_LOCATION "${CMAKE_CURRENT_BINARY_DIR}/trans")
++file(COPY ${TRANSLATIONS} DESTINATION "${CMAKE_CURRENT_BINARY_DIR}/trans/")
++#set_source_files_properties(${TRANSLATIONS} PROPERTIES OUTPUT_LOCATION "${CMAKE_CURRENT_BINARY_DIR}/trans")
+ 
+ add_definitions(-DQXT_STATIC)
+ 
+@@ -849,7 +850,7 @@
+ 
+ set(RESOURCES
+     "res"
+-    "trans"
++    "${CMAKE_CURRENT_BINARY_DIR}/trans"
+ )
+ 
+ if(APPLE)
+@@ -877,8 +878,8 @@
+     )
+ elseif(UNIX)
+     foreach(RES ${RESOURCES})
+-        install(DIRECTORY ${RES} DESTINATION "/usr/share/Evernus")
++        install(DIRECTORY ${RES} DESTINATION "share/Evernus")
+     endforeach()
+ 
+-    install(TARGETS ${PROJECT_NAME} RUNTIME DESTINATION "/usr/bin")
++    install(TARGETS ${PROJECT_NAME} RUNTIME DESTINATION "bin")
+ endif()
