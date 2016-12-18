@@ -1,7 +1,7 @@
 # Contributor: Rod Kay   <charlie5 on #ada at freenode.net>
 
 pkgname=polyorb
-pkgver=2014
+pkgver=252702
 pkgrel=1
 pkgdesc="PolyOrb provides the Distributed Systems Annex (DSA) to build distributed applications with Ada."
 
@@ -9,28 +9,46 @@ arch=('i686' 'x86_64')
 url="http://libre.adacore.com/libre/tools/polyorb"
 license=('GPL')
 depends=("gcc-ada")
-makedepends=("nawk")
+makedepends=("nawk" "subversion")
 
-source=(http://downloads.dragonlace.net/src/$pkgname-gpl-$pkgver-src.tar.gz
+source=(svn+http://svn.eu.adacore.com/anonsvn/Dev/trunk/polyorb#revision=$pkgver
         patch-Makefile.in)
 
-md5sums=('39df6ccf2d0dd19b250ba662b0b1dc4d'
-         'c8142456832b10c7a06343e08ffde222')
+md5sums=('SKIP'
+         '40476ea50c9ac1c2473d9801e765be04')
 
+prepare()
+{
+  ## Force use of pyhon2
+  #
+  cd $srcdir
+  rm -fr temp_bin
+  mkdir  temp_bin
+  ln -s /usr/bin/python2        temp_bin/python
+  ln -s /usr/bin/python2-config temp_bin/python-config
 
-build() {
-	
-  cd $srcdir/$pkgname-$pkgver-src
-
+  cd $srcdir/$pkgname
   patch -p0 -i ../patch-Makefile.in
+}
 
+
+build() 
+{
+  cd $srcdir/$pkgname
+
+  PATH=$srcdir/temp_bin:$PATH
+
+  PYTHON=python2   support/reconfig
   PYTHON=python2   ./configure --prefix=/usr  --with-appli-perso="dsa"  --with-proto-perso="giop"
   make -j1
 }
 
 
-package() {
-  cd $srcdir/$pkgname-$pkgver-src
+package()
+{
+  cd $srcdir/$pkgname
 
-  DESTDIR=$pkgdir make install 
+  PATH=$srcdir/temp_bin:$PATH
+
+  PYTHON=python2 DESTDIR=$pkgdir make install 
 }
