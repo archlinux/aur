@@ -1,6 +1,7 @@
 # Maintainer: Nigel Michki <nigeil@yahoo.com>
+# Contributor: Serhii Balbieko <sergey@balbeko.com>
 pkgname=sonic-pi-git
-pkgver=v2.10.0.r740.g1f1f098
+pkgver=v2.11.1.r2.g5c7e054
 pkgrel=1
 pkgdesc="A music-centric programming environment, originally built for the raspberry pi."
 arch=('i686' 
@@ -16,11 +17,12 @@ depends=('sed'
 	 'qscintilla-qt5'
 	 'jack'
     'aubio'
-    'qwt-qt5')
+    'qwt-qt5-opengl')
 makedepends=('cmake'
 	     'git'
 	     'supercollider'
-        'qt5-tools')
+        'qt5-tools'
+        'boost')
 optdepends=('qjackctl: for graphical jackd spawning/configuration'
 	    'jack2: better jackd if you want to use without gui'
        'sc3-plugins-git: plugins for supercollider'
@@ -36,7 +38,7 @@ md5sums=('SKIP'
          '298e2729cda0c33c9cec7f7f721c1bbd'
          'ba86680be610cc3d6f12d4a89b0f434d'
          'fd330b2be9b52e9bee2fb9922141e2ca'
-         '91e90164ef041d12f1e7e9d4540e0a68'
+         '6ebb72a4e146c868a77c523050e85fb1'
          'c1c63041f01c9b1394c3a3273f5ff543')
 
 prepare() {
