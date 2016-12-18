@@ -1,7 +1,7 @@
 pkgbase = natron-plugins
 	pkgdesc = Extra OpenFX plugins for Natron
-	pkgver = 2.1.7
-	pkgrel = 2
+	pkgver = 234
+	pkgrel = 1
 	url = https://github.com/NatronVFX/natron-plugins
 	arch = i686
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = natron-plugins
 	depends = python
 	depends = python2
 	depends = ffmpeg
-	source = natron-plugins::git://github.com/NatronVFX/natron-plugins.git#tag=2.1.7
+	source = natron-plugins::git://github.com/NatronVFX/natron-plugins.git
 	md5sums = SKIP
 
 pkgname = natron-plugins

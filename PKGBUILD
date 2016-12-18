@@ -1,15 +1,21 @@
 # Maintainer: Hugo Courtial <hugo [at] courtial [not colon] me>
 pkgname=natron-plugins
-pkgver=2.1.7
-pkgrel=2
+pkgver=234 
+pkgrel=1
 arch=("i686" "x86_64")
 pkgdesc="Extra OpenFX plugins for Natron"
 url="https://github.com/NatronVFX/natron-plugins"
 license=("GPL2")
 makedepends=("git")
 depends=("natron" "python" "python2" "ffmpeg")
-source=("$pkgname::git://github.com/NatronVFX/natron-plugins.git#tag=$pkgver")
+source=("$pkgname::git://github.com/NatronVFX/natron-plugins.git")
 md5sums=("SKIP")
+
+
+pkgver() {
+  cd "$srcdir/$pkgname"
+  git rev-list --count HEAD
+}
 
 prepare() {
     cd "$srcdir/$pkgname"
