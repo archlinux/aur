@@ -4,14 +4,15 @@
 pkgname='liveroot'
 url='https://github.com/bluerider/liveroot.git'
 pkgdesc='Initcpio hooks for non persistent boot'
-pkgver=21
+pkgver=30
 pkgrel=1
+real_ver=1.0
 arch=('any')
 depends=('util-linux' 'rsync')
 makedepends=('git')
 license=('GPL3')
-source=("git+$url")
-sha256sums=('SKIP')
+source=("${url//.git/}/archive/${real_ver}.tar.gz")
+sha256sums=('652b01fdfa45a97f35a9ec52b11cb229efd7552ebee88a4c429edff33c4d501b')
 install="${pkgname}.install"
 
 prepare() {
@@ -44,11 +45,11 @@ prepare() {
 package() {
   install -m755 -d "${pkgdir}/usr/lib/initcpio/hooks"
   install -m755 -d "${pkgdir}/usr/lib/initcpio/install"
-  install -m644 "${srcdir}/${pkgname}/initcpio/hooks/oroot" "${pkgdir}/usr/lib/initcpio/hooks"
-  install -m644 "${srcdir}/${pkgname}/initcpio/install/oroot" "${pkgdir}/usr/lib/initcpio/install"
+  install -m644 "${srcdir}/${pkgname}-${real_ver}/initcpio/hooks/oroot" "${pkgdir}/usr/lib/initcpio/hooks"
+  install -m644 "${srcdir}/${pkgname}-${real_ver}/initcpio/install/oroot" "${pkgdir}/usr/lib/initcpio/install"
   install -m755 -d "${pkgdir}/etc/modprobe.d"
   echo "options zram num_devices=$[$(nproc)+2]" > "/${pkgdir}/etc/modprobe.d/zram.conf"
   install -m755 -d "${pkgdir}/usr/share/liveroot"
-  install -m644 "${srcdir}/${pkgname}/examples/mkinitcpio.conf.example" "${pkgdir}/usr/share/liveroot"
-  install -m644 "${srcdir}/${pkgname}/examples/syslinux.cfg.example" "${pkgdir}/usr/share/liveroot"
+  install -m644 "${srcdir}/${pkgname}-${real_ver}/examples/mkinitcpio.conf.example" "${pkgdir}/usr/share/liveroot"
+  install -m644 "${srcdir}/${pkgname}-${real_ver}/examples/syslinux.cfg.example" "${pkgdir}/usr/share/liveroot"
 }
