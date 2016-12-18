@@ -1,0 +1,24 @@
+pkgbase = beancount-fava-git
+	pkgver = r1162.d3e14ae
+	pkgrel = 1
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = nodejs
+	makedepends = npm
+	depends = beancount-hg
+	depends = python
+	depends = python-click
+	depends = python-markdown2
+	depends = python-flask-babel
+	depends = python-google-api-python-client
+	depends = python-beautifulsoup4
+	depends = python-magic-ahupp
+	provides = fava
+	conflicts = fava
+	source = fava::git://github.com/beancount/fava.git
+	md5sums = SKIP
+
+pkgname = beancount-fava-git
+
