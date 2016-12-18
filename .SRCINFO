@@ -1,7 +1,7 @@
 pkgbase = libqtshadowsocks
 	pkgdesc = A lightweight library for shadowsocks.
-	pkgver = 1.9.0
-	pkgrel = 3
+	pkgver = 1.10.0
+	pkgrel = 1
 	url = https://github.com/librehat/libQtShadowsocks
 	arch = i686
 	arch = x86_64
@@ -13,8 +13,8 @@ pkgbase = libqtshadowsocks
 	provides = libqtshadowsocks
 	conflicts = libqtshadowsocks
 	conflicts = libqtshadowsocks-git
-	source = https://github.com/librehat/libQtShadowsocks/archive/v1.9.0.tar.gz
-	sha256sums = 5e013730054543dab77b3b1d94bdf2bbde4a7de91a3e4f6baf09ad8f884c40ef
+	source = https://github.com/librehat/libQtShadowsocks/archive/v1.10.0.tar.gz
+	sha256sums = 67d2f9d3fa0e8e22e1d7fd1c850177a2d601f9c467fc024c0ba11eaedcef6279
 
 pkgname = libqtshadowsocks
 
