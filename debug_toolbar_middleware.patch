@@ -1,0 +1,10 @@
+--- netbox/netbox/settings.py.old
++++ netbox/netbox/settings.py
+@@ -127,6 +127,7 @@
+     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+     'django.middleware.security.SecurityMiddleware',
+     'utilities.middleware.LoginRequiredMiddleware',
++    'debug_toolbar.middleware.DebugToolbarMiddleware',
+ )
+
+ ROOT_URLCONF = 'netbox.urls'
