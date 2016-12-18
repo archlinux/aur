@@ -3,7 +3,7 @@
 
 pkgname=('python-chatterbot' 'python2-chatterbot')
 pkgver=0.5.3
-pkgrel=2
+pkgrel=3
 pkgdesc="ChatterBot is a machine learning, conversational dialog engine."
 arch=("any")
 url="https://github.com/gunthercox/ChatterBot"
@@ -27,7 +27,8 @@ package_python-chatterbot() {
 		 "python-nltk" 
 		 "python-pymongo" 
 		 "python-twitter"
-		 "python-numpy")
+		 "python-numpy"
+		 "python-jsondatabase")
 	cd "ChatterBot-$pkgver"
 	python setup.py install --root="$pkgdir" --optimize=1
 }
@@ -38,7 +39,8 @@ package_python2-chatterbot() {
 		 "python2-nltk" 
 		 "python2-pymongo" 
 		 "python2-twitter"
-		 "python2-numpy")
+		 "python2-numpy"
+		 "python2-jsondatabase")
 	cd "ChatterBot-$pkgver"
 	python2 setup.py install --root="$pkgdir" --optimize=1
 }
