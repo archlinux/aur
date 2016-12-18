@@ -75,9 +75,9 @@ sha256sums=('3e9150065f193d3d94bcf46a1fe9f033c7ef7122ab71d75a7fb5a2f0c9a7e11a'
             'cdeff3a6e0dc3d6189d1b1d4d6318f0942b9a28409491cf65592879e4c42b1f7'
             'SKIP'
             'cea596c606da2125946154a0121ea0516583f659ad823c93669ad5d25bbc3ef7'
-            '0f8630f1051efd5e823e6253f4261ebc536f67f45d9a6315816d66c4c6843a03'
-            'c9a52842fe24e1e6c68e753ad8e5d142f9847c72a7bdc7aecef13c1d5f6580e6'
-            '9d96711c091686e3b9f477fa842f5c154038a7262384617f1ed871ef686aa958'
+            'c37e4fa0486a53c3ece3e000dfe7cd3fed318d3bf9a941e826e3c6b2530d44fd'
+            '807b03333c8b0c30ace5026857ab1ca9f12457b5a599c34f4fd2e5163ffc72f8'
+            'e6fb480819d176fac7f1bf447c7c9e3217bcc64a345c6d3966f98d6e845f66d8'
             '834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
@@ -112,15 +112,14 @@ prepare() {
   # fix naming schema in EXTRAVERSION of ck patch set
   sed -i -re "s/^(.EXTRAVERSION).*$/\1 = /" "${srcdir}/${_ckpatchname}"
 
-  msg "Patching source with ck patchset including MuQSS"
+  # Patch source with ck patchset
   patch -Np1 -i "${srcdir}/${_ckpatchname}"
 
-  # Patch source to enable more gcc CPU optimizatons via the make nconfig
-  msg "Patching source with gcc patch to enable more cpus types"
+  # Patch source to unlock additional gcc CPU optimizatons
+  # https://github.com/graysky2/kernel_gcc_patch
   patch -Np1 -i "${srcdir}/${_gcc_patch}"
 
   # Clean tree and copy ARCH config over
-  msg "Running make mrproper to clean source tree"
   make mrproper
 
   if [ "${CARCH}" = "x86_64" ]; then
@@ -181,7 +180,6 @@ prepare() {
   sed -i '2iexit 0' scripts/depmod.sh
 
   # get kernel version
-  msg "Running make prepare for you to enable patched options of your choosing"
   make prepare
 
   ### Optionally load needed modules for the make localmodconfig
@@ -199,7 +197,6 @@ prepare() {
   fi
 
   if [ -n "$_makenconfig" ]; then
-    msg "Running make nconfig"
     make nconfig
   fi
 
