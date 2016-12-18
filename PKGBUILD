@@ -8,7 +8,7 @@ arch=(any)
 url="https://github.com/ChaosForge/doomrl"
 license=('GPL3')
 depends=('')
-makedepends=('git' 'fpc')
+makedepends=('git' 'fpc-svn')
 source=("$pkgname::git+https://github.com/ChaosForge/doomrl"
 	"fpcvalkyrie::git+https://github.com/ChaosForge/fpcvalkyrie"
 	)
