@@ -1,15 +1,17 @@
-# Maintainer: Andrejs Mivreņiks <gim at fastmail dot fm>
+# Maintainer: Ivan <kaptoxic at yahoo com>
+# Contributor: Andrejs Mivreņiks <gim at fastmail dot fm>
 # Contributor: Janne Haapsaari <haaja@iki.fi>
+
 pkgname=gnome-shell-pomodoro-git
-pkgver=r737.adfe069
+pkgver=r897.8e3e903
 pkgrel=1
 _gitbranch='master'
 pkgdesc='A time management utility for GNOME based on the pomodoro technique'
 arch=('i686' 'x86_64')
 url='https://github.com/codito/gnome-shell-pomodoro/'
 license=('GPL3')
-depends=('gnome-desktop' 'libcanberra' 'upower' 'gstreamer' 'gobject-introspection' 'perl-xml-sax-expat' 'telepathy-glib')
-makedepends=('intltool' 'vala' 'gnome-common' 'docbook2x')
+depends=('gnome-desktop' 'libcanberra' 'gstreamer' 'gobject-introspection')
+makedepends=('intltool' 'vala' 'gnome-common' 'docbook2x' 'perl-xml-sax-expat' 'appstream-glib')
 conflicts=('gnome-shell-pomodoro')
 provides=('gnome-shell-pomodoro')
 source=("$pkgname"::"git+https://github.com/codito/gnome-shell-pomodoro.git#branch=${_gitbranch}")
@@ -26,7 +28,7 @@ prepare() {
   cd "$srcdir/$pkgname"
   # Fixes some build issues when 'docbook2x' package is installed
   # Big thanks to user maus25 for the fix
-  sed -i "s/docbook2man \$?/docbook2man --sgml \$?/g" man/Makefile.am
+  #sed -i "s/docbook2man \$?/docbook2man --sgml \$?/g" man/Makefile.am
 
   ./autogen.sh --prefix=/usr --datadir=/usr/share
 }
