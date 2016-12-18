@@ -1,0 +1,15 @@
+pkgbase = perwindowlayoutd
+	pkgdesc = Keeps per window keyboard layout under X11
+	pkgver = 0.6
+	pkgrel = 1
+	url = https://sourceforge.net/projects/perwindowlayout
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = libx11
+	depends = gcc-libs
+	source = http://downloads.sourceforge.net/perwindowlayout/perwindowlayoutd-0.6.tar.gz
+	md5sums = 5a0172bf1351e1de2dc3c29363859550
+
+pkgname = perwindowlayoutd
+
