@@ -1,18 +1,18 @@
 # Maintainer: Adria Arrufat <adria.arrufat+AUR@protonmail.ch>
 # Contributor: Philipp Trommler <ph.trommler@gmail.com>
 pkgname=valum
-pkgver=0.3.0
+pkgver=0.3.3
 pkgrel=1
 pkgdesc="Web micro-framework written in Vala"
 arch=("i686" "x86_64")
 url="https://github.com/valum-framework/valum"
 license=("LGPL3")
-depends=(vala glib2 libsoup)
+depends=(glib2 libsoup vala)
 optdepends=("libmemcached: For memcached cache storage."
             "memcached: For memcached cache storage."
             "luajit: For an embedded Lua VM.")
-makedepends=(git vala meson)
-_commit=30c2b15f26cabbd62aa279deb88b652e43d05f0a
+makedepends=(git meson python-sphinx vala valadoc)
+_commit=35d1bcfe9bdc5307a1c263c5d9fa86dafef1b187
 source=("git://github.com/valum-framework/valum.git#commit=${_commit}")
 md5sums=("SKIP")
 
@@ -25,7 +25,7 @@ build() {
   cd ${pkgname}
   [ -d build ] && rm -rf build
   mkdir build && cd build
-  meson --prefix=${pkgdir}/usr ..
+  meson --prefix=/usr ..
   ninja
 }
 
@@ -36,9 +36,8 @@ check() {
 
 package() {
   cd ${pkgname}/build
-  ninja install
-  cd ${srcdir}/valum
-  install -Dm644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  DESTDIR=${pkgdir} ninja install
+  install -Dm644 ${srcdir}/valum/COPYING "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
 # vim:set ts=2 sw=2 et:
