@@ -3,7 +3,7 @@
 # Contributor: fxbru <frxbru[at]gmail>
 
 pkgname=sqlmap-git
-pkgver=1.0.5.7183.263730f
+pkgver=1.0.12.7616.bb6e8fd4
 pkgrel=1
 pkgdesc='Automatic SQL injection and database takeover tool'
 url='http://sqlmap.org'
@@ -40,7 +40,7 @@ package() {
   mv doc "${pkgdir}/usr/share/doc/${pkgname}"
   mv sqlmap.conf "${pkgdir}/etc/sqlmap.conf"
   ln -sf /etc/sqlmap.conf "${pkgdir}/opt/${pkgname}/sqlmap.conf"
-  cp -R --no-preserve=ownership * "${pkgdir}/opt/${pkgname}"
+  cp -a --no-preserve=ownership * "${pkgdir}/opt/${pkgname}"
 
   cat > "${pkgdir}/usr/bin/sqlmap" << EOF
 #!/bin/sh
