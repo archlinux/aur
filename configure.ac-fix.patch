@@ -1,0 +1,21 @@
+--- a/configure.ac	2016-12-18 12:58:53.918834198 +0100
++++ b/configure.ac	2016-12-18 12:59:01.748970282 +0100
+@@ -116,13 +116,17 @@
+         CSUNDRY_CFLAGS="-I${srcdir}/../c-sundry/src"
+         AC_SUBST(CSUNDRY_CFLAGS)
+ ], [
++        PKG_CHECK_MODULES(CRBTREE, [libcrbtree],
+-        PKG_CHECK_MODULES(CRBTREE, [c-rbtree],
+                 [AC_DEFINE(HAVE_CRBTREE, 1, [Define if c-rbtree library is available])],
+                 AC_MSG_ERROR([*** c-rbtree library not found]))
+ 
+         PKG_CHECK_MODULES(CSUNDRY, [c-sundry],
+                 [AC_DEFINE(HAVE_SUNDRY, 1, [Define if c-sundry library is available])],
+                 AC_MSG_ERROR([*** c-sundry library not found]))
++
++        PKG_CHECK_MODULES(CVARIANT, [c-variant],
++                [AC_DEFINE(HAVE_SUNDRY, 1, [Define if c-variant library is available])],
++                AC_MSG_ERROR([*** c-variant library not found]))
+ ])
+ 
+ # ------------------------------------------------------------------------------
