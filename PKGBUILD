@@ -1,7 +1,7 @@
 # Maintainer: Constantin Lorenz <Cons27773964@aol.com>
 
 pkgname=sandboxed-tor-browser # '-bzr', '-git', '-hg' or '-svn'
-pkgver=rsandboxed.tor.browser.0.0.2.r7.f2ae16ar279.f2ae16ar.r
+pkgver=rsandboxed.tor.browser.0.0.2.r14.99496edr286.99496edr.r
 pkgrel=1
 pkgdesc="A sandboxed version of the Tor Browser"
 arch=('i686' 'x86_64')
@@ -21,7 +21,7 @@ source+=("${pkgname}.desktop"
          "${pkgname}.png")
 noextract=()
 md5sums=('SKIP'
-         'cd73382f4094a1bca36ed0cae29673ee'
+         '49042133dbfad9f06df48c934dc123e6'
          '494afbfa60fb4ce21840244cc3f7208c')
 
 # Please refer to the 'USING VCS SOURCES' section of the PKGBUILD man page for
@@ -75,5 +75,5 @@ package() {
 	cd "$srcdir"
 	install -Dm 644 ${pkgname}.desktop      ${pkgdir}/usr/share/applications/${pkgname}.desktop
    	install -Dm 644 ${pkgname}.png          ${pkgdir}/usr/share/pixmaps/${pkgname}.png
-   	install -Dm 755 ${srcdir}/sandboxed-tor-browser/bin/sandboxed-tor-browser           ${pkgdir}/opt/sandboxed-tor-browser/${pkgname}
+   	install -Dm 755 ${srcdir}/sandboxed-tor-browser/bin/sandboxed-tor-browser           ${pkgdir}/usr/bin/${pkgname}
 }
