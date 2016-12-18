@@ -16,6 +16,7 @@ makedepends=(
   'openssl'
   'gcc'
   'git'
+  'libxml2'
 )
 conflicts=(
   'masterpassword-cli-git'
@@ -29,7 +30,7 @@ prepare() {
 }
 
 build() {
-	targets="mpw mpw-bench mpw-tests" ./build
+  targets="mpw mpw-bench mpw-tests" ./build
   ./mpw-bench
   ./mpw-tests
 }
