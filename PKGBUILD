@@ -2,30 +2,26 @@
 # Contributor: speps <speps at aur dot archlinux dot org>
 
 pkgname=friture
-pkgver=0.14
-pkgrel=3
+pkgver=0.22
+pkgrel=1
 pkgdesc="An application to visualize and analyze live audio data in real-time."
 arch=(i686 x86_64)
 url="http://tlecomte.github.com/friture/"
 license=('GPL3')
-depends=('pyqwt' 'python2-scipy' 'python2-psutil' 'python2-pyaudio' 'python2-opengl')
+depends=('pyqwt' 'python-scipy' 'python-psutil' 'python-pyaudio' 'python-opengl' 'python-pyqt4' 'python-sounddevice')
 optdepends=('jack: for JACK I/O support')
-makedepends=('cython2')
-source=("http://pypi.python.org/packages/source/f/$pkgname/$pkgname-$pkgver.tar.gz")
-md5sums=('866407aefd359ae16015f4ce6a2cd212')
+makedepends=('cython' 'dos2unix')
+source=("https://github.com/tlecomte/$pkgname/archive/v$pkgver.tar.gz")
+sha256sums=('4d7b415a254a352dc9144044347734cd6b194b7bad103428e3e6d4516a1d0c2f')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
-  python2 setup.py build
+  python setup.py build
 }
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
-  python2 setup.py install --root="$pkgdir/"
-
-  # python2, CRLF fix
-  sed -i 's/\r//;s/env python/&2/' `find "$pkgdir" -name "*.py"` \
-    "$pkgdir/usr/bin/$pkgname"
+  python setup.py install --root="$pkgdir/"
 }
 
 # vim:set ts=2 sw=2 et:
