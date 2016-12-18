@@ -2,10 +2,10 @@
 # Contributor: Allen Choong <allencch at hotmail dot com>
 
 pkgname=scanmem-git
-pkgver=0.15.7.786.1dd1f3d
+pkgver=0.16.892.5f14e5f
 pkgrel=1
-pkgdesc="Memory scanner designed to isolate the address of an arbitrary variable in an executing process"
-url="https://github.com/scanmem/scanmem"
+pkgdesc='Memory scanner designed to isolate the address of an arbitrary variable in an executing process'
+url='https://github.com/scanmem/scanmem'
 arch=('i686' 'x86_64')
 license=('GPL3')
 provides=('scanmem')
@@ -21,9 +21,13 @@ pkgver() {
     "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
-build() {
+prepare() {
   cd ${pkgname}
   ./autogen.sh
+}
+
+build() {
+  cd ${pkgname}
   ./configure --enable-gui --prefix=/usr
   make
 }
