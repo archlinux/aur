@@ -1,7 +1,7 @@
 # Contributor: Luca Cesari < luca AT cesari DOT me>
 _gemname=tmuxinator
 pkgname=tmuxinator
-pkgver=0.8.1
+pkgver=0.9.0
 pkgrel=1
 pkgdesc="Manage complex tmux sessions easily"
 arch=(any)
@@ -11,7 +11,7 @@ depends=(ruby ruby-erubis ruby-thor)
 makedepends=(rubygems)
 source=(http://rubygems.org/downloads/tmuxinator-$pkgver.gem)
 noextract=(tmuxinator-$pkgver.gem)
-md5sums=('6a3fec4dba57828d93f14a5915c32b6b')
+md5sums=('5bba59f60f93f571ec0de946e9cacd3d')
 
 package() {
     cd $srcdir
