@@ -2,7 +2,7 @@
 
 pkgname=nodejs-lts-boron-bin
 pkgver=6.9.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Evented I/O for V8 javascript'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url='http://nodejs.org/'
@@ -25,7 +25,7 @@ sha256sums_armv7h=("99a630fe3df76876f6e9a172f230a2013adfdb20e69754facd1fea8a364d
 sha256sums_aarch64=("40fe68bcd70263e0163d2668b0b8a27b28427ab608bd3666a771de8902dd0ce7")
 
 build() {
-    cd node-*
+    cd */.
 
     msg 'Fixing for python2 name'
     find lib/ include/ -type f -exec sed \
@@ -42,7 +42,7 @@ build() {
 }
 
 package() {
-    cd node-*
+    cd */.
     install -d $pkgdir/usr/share/licenses/nodejs-lts-boron-bin
     cp -R bin/ include/ lib/ share/ $pkgdir/usr/
     cp LICENSE $pkgdir/usr/share/licenses/nodejs-lts-boron-bin
