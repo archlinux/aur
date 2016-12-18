@@ -5,9 +5,9 @@ pkgver=r8.0cbac80
 pkgrel=2
 pkgdesc="Doom: The Rogue-like (git-latest) (WIP!)."
 arch=(any)
-url="https://github.com/ChaosForge/doomrl"
+url="http://drl.chaosforge.org/"
 license=('GPL3')
-depends=('')
+depends=('sdl_mixer' 'zlib' 'lua' 'timidity++' 'sdl_image')
 makedepends=('git' 'fpc-svn' 'lua')
 source=("$pkgname::git+https://github.com/ChaosForge/doomrl"
 	"fpcvalkyrie::git+https://github.com/ChaosForge/fpcvalkyrie"
