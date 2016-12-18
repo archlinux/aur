@@ -1,0 +1,18 @@
+pkgbase = python-jsondatabase
+	pkgdesc = A flat file database for json objects.
+	pkgver = 0.1.6
+	pkgrel = 1
+	url = https://github.com/gunthercox/jsondb
+	arch = any
+	license = BSD
+	makedepends = python-setuptools
+	makedepends = python2-setuptools
+	source = https://github.com/gunthercox/jsondb/archive/0.1.6.tar.gz
+	md5sums = 466106a62ab918209de1be3d9d951ce3
+
+pkgname = python-jsondatabase
+	depends = python
+
+pkgname = python2-jsondatabase
+	depends = python2
+
