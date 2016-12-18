@@ -1,6 +1,6 @@
 # Maintainer: THS <mail@thson.de>
 pkgname=aseba-git
-pkgver=1.5.3.r102.g8ccdc9d
+pkgver=1.5.3.r125.ga376fa6b
 pkgrel=1
 pkgdesc="A set of tools which allow beginners to program robots easily and efficiently."
 arch=('x86_64')
@@ -12,10 +12,9 @@ install="aseba-git.install"
 source=('dashel::git+https://github.com/aseba-community/dashel.git' 
 	'enki::git+https://github.com/enki-community/enki.git'
 	'aseba::git+https://github.com/aseba-community/aseba.git'
-	'catch::git+https://github.com/philsquared/Catch'
 	'blockly::git+https://github.com/aseba-community/blockly.git')
 
-sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
+sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP')
 
 pkgver() {
   cd "${srcdir}/aseba"
@@ -25,8 +24,8 @@ pkgver() {
 prepare() {
   msg2 "Adding submodules"
   cd $srcdir/aseba
+  git rm tests/externals/Catch/ #Fix to start init
   git submodule init
-  git config submodule.catch.url $srcdir/catch
   git config submodule.blockly.url $srcdir/blockly
   git submodule update
 }
@@ -39,6 +38,7 @@ cmake ../dashel -DCMAKE_BUILD_TYPE=RelWithDebInfo -DBUILD_SHARED_LIBS=OFF
 make
 cd ..
 cd build-enki
+export enki_DIR=${srcdir}/build-enki
 cmake ../enki -DPYTHON_EXECUTABLE:FILEPATH=/usr/bin/python2 #Only Python2 works
 make
 cd ..
