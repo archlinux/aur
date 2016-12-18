@@ -1,38 +1,34 @@
 # Maintainer: Ali Ukani <ali.ukani@gmail.com>
 pkgname=voltra
-pkgver=1.11.0_1
+pkgver=2.0.2
 pkgrel=1
 pkgdesc='Voltra music player'
 arch=('x86_64')
 url='https://voltra.co'
 license=('custom')
-depends=()
-makedepends=()
+depends=('desktop-file-utils')
 install=${pkgname}.install
-source=('https://s3.amazonaws.com/download.voltra.co/voltra.deb')
-md5sums=('52cbfe64f2799fe58a4094fb6881f74e')
+provides=('voltra')
+source=(
+  'https://s3.amazonaws.com/download.voltra.co/voltra64.tar.gz'
+  'voltra.desktop'
+)
+md5sums=('5ec489e08e730eabe004a34a89a35c90'
+         '6e717f224da771bea3670d2658843946')
+
 
 pkgver() {
-  bsdtar -xf "${srcdir}/control.tar.gz"
-  grep -i "version" "${srcdir}/control" | cut -d ':' -f 2 | sed -e "s/-/_/" -e "s/\s//g"
+  grep -i "version" resources/app/package.json | cut -d ':' -f 2 | sed -e 's/[^0-9\.]//g'
 }
 
 package() {
-  bsdtar -xf "${srcdir}/data.tar.xz" -C "${pkgdir}/"
+  cd "${srcdir}"
+  install -dm755 "${pkgdir}"/opt/voltra.co/voltra
+  cp -r . "${pkgdir}"/opt/voltra.co/voltra
+  install -dm755 "${pkgdir}"/usr/bin
+  ln -s /opt/voltra.co/voltra/voltra "${pkgdir}"/usr/bin/voltra
+  install -Dm644 "${srcdir}"/resources/app/static/icon.png "${pkgdir}"/usr/share/pixmaps/voltra.png
 
-  cd "${pkgdir}"
-  find -name '*.py' -exec sed -i 's|^#!/usr/bin/env python\s*$|#!/usr/bin/env python2|' {} \;
-  find -name '*.py' -exec sed -i 's|^#!/usr/bin/python\s*$|#!/usr/bin/python2|' {} \;
-
-  find "${pkgdir}"/usr -type f -exec chmod 644 {} \;
-  find "${pkgdir}"/usr/bin -type f -exec chmod 755 {} \;
-  find "${pkgdir}"/usr -type d -exec chmod 755 {} \;
-  chmod 755 "${pkgdir}"/usr/share/voltra/voltra
-  chmod 755 "${pkgdir}"/usr/share/voltra/resources/app/plugins
-
-  mkdir -p "${pkgdir}"/usr/share/licenses/voltra/
-
-  rm -rf "${pkgdir}/usr/bin/voltra"
-  ln -s /usr/share/voltra/voltra "${pkgdir}/usr/bin/voltra"
-  ln -s /usr/share/voltra/LICENSE "${pkgdir}/usr/share/licenses/voltra/LICENSE"
+  cd ..
+  install -Dm644 voltra.desktop "${pkgdir}"/usr/share/applications/voltra.desktop
 }
