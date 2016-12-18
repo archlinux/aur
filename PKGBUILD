@@ -16,7 +16,7 @@ source=("genymotion.desktop"
         "genymotion-player.desktop"
         "https://dl.genymotion.com/releases/genymotion-$pkgver/$pkgname-${pkgver}_$_ARCH.bin")
 sha512sums=('48e9bafe1d64b688c51eceb8d129f44d690060ff9a6d82eefcf3295f7834516ce62439faf4f4454287f594fc410aafbafd30a43537ea3d295c42bee8e4e03ac7'
-            '7c56190e4dafdfb9c1aa39b91ee58d933d999e0dd0a344335ac909eb9f5f22889ab596f1e3213d55756c003fbe0ec65a43a30f1b6ed819db2093b1a465998463'
+            'fabbccd65c22c2dc26b32a847c9fa81d4b7d3e2a13e976cd01c1517654e4bd7e4eac485152dbe8e97b1953ffda62f40e99223a76d24f0c8dfc6530fe3908b665'
             '8ca4f46e983ffa2a19c21e961b6638af859f7635bd3a976c0b5709622a536569c81ccf3b08f52f0016e37990d83b1fd38cc86c9dbb5599e727fd48558567dfa7')
 
 package(){
