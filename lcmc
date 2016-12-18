@@ -1,4 +1,5 @@
 #!/bin/sh
 
+export env _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=gasp'
 exec java -jar /usr/lib/lcmc/LCMC.jar
 
