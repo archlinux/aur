@@ -1,0 +1,15 @@
+pkgbase = 3mf2stl
+	pkgdesc = Convert 3mf files to stl
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/lemgandi/3mf2stl
+	arch = x86_64
+	license = GPL3
+	depends = gcc-libs
+	depends = libzip
+	provides = 3mf2stl
+	source = git+https://github.com/lemgandi/3mf2stl.git
+	md5sums = SKIP
+
+pkgname = 3mf2stl
+
