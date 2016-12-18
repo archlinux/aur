@@ -1,10 +1,9 @@
 pkgbase = windows10-downloader
 	pkgdesc = Windows 10 downloader
 	pkgver = 1.0
-	pkgrel = 1
+	pkgrel = 2
 	arch = any
 	license = GPL
-	makedepends = git
 	depends = python3
 	depends = python-yaml
 	depends = python-requests

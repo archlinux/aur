@@ -1,6 +1,6 @@
 pkgname=windows10-downloader
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Windows 10 downloader"
 arch=('any')
 url=""
@@ -8,7 +8,7 @@ license=('GPL')
 groups=()
 depends=('python3' 'python-yaml' 'python-requests' 'wget')
 optdepends=()
-makedepends=('git')
+makedepends=()
 provides=()
 conflicts=()
 replaces=()
