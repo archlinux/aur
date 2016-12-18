@@ -4,7 +4,7 @@
 pkgname=firefox-unbranded-bin
 _pkgname=firefox-unbranded
 _name=firefox
-pkgver=50.1.0.1479217872
+pkgver=50.1.1.1481646362
 pkgrel=1
 pkgdesc="Standalone web browser from mozilla.org - Unbranded version (binary)"
 arch=('x86_64')
@@ -22,7 +22,8 @@ conflicts=("firefox"
 install=$pkgname.install
 validpgpkeys=('14F26682D0916CDD81E37B6D61B7B526D98F0353')
 _rooturl="https://archive.mozilla.org/pub/firefox/tinderbox-builds/mozilla-release-linux64-add-on-devel"
-_lasttmstmp=$(curl -s "${_rooturl}/" | grep -Po '(?<=/)\d+(?=/")' | sort -n | tail -n1)
+_lasttmstmp=1481646362
+#_lasttmstmp=$(curl -s "${_rooturl}/" | grep -Po '(?<=/)\d+(?=/")' | sort -n | tail -n1)
 _srcurl="${_rooturl}/${_lasttmstmp}"
 _pkgver=$(curl -s "${_srcurl}/" | grep -Pom1 "(?<=/${_name}-)[\w.]+(?=\.en-US)")
 _file="${_name}-${_pkgver}.en-US.linux-x86_64-add-on-devel"
