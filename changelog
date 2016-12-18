@@ -1,3 +1,6 @@
+2016-12-18 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
+  * 2.1.7.9-1:
+    Switched Statistics STM listing to new protocol version (old one won't work anymore)
 2016-12-16 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
   * 2.1.7.8-1:
     Fixed issue that could lead to increased network instability in very rare case
