@@ -2,7 +2,7 @@
 
 pkgname=ddrescue-gui
 pkgver=1.6.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple GUI frontend to make ddrescue (a command-line data recovery tool) easier to use."
 arch=('any')
 url="https://launchpad.net/ddrescue-gui"
@@ -22,6 +22,7 @@ package() {
 	cp -r "${srcdir}/${pkgname}-${pkgver}/images" "${pkgdir}/usr/share/${pkgname}"
 	cp -r "${srcdir}/${pkgname}-${pkgver}/other" "${pkgdir}/usr/share/${pkgname}"
 	cp -r "${srcdir}/${pkgname}-${pkgver}/Tools" "${pkgdir}/usr/share/${pkgname}"
+	cp -r "${srcdir}/${pkgname}-${pkgver}/GetDevInfo" "${pkgdir}/usr/share/${pkgname}"
 	install -D -m755 ${srcdir}/${pkgname}-${pkgver}/*.py "${pkgdir}/usr/share/${pkgname}"
 	install -D -m644 "${srcdir}/${pkgname}-${pkgver}/ddrescue-gui.desktop" "${pkgdir}/usr/share/applications"
 	install -D -m644 "${srcdir}/${pkgname}-${pkgver}/ddrescue-gui.png" "${pkgdir}/usr/share/pixmaps"
