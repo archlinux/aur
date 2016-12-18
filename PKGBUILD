@@ -2,7 +2,7 @@
 
 pkgname=afl-utils-git
 _gitname=afl-utils
-pkgver=1.30a.191.dc4d6ac
+pkgver=1.32a.224.1a10e7b
 pkgrel=1
 pkgdesc="Utilities for automated crash sample processing/analysis, easy afl-fuzz job management and corpus optimization"
 url="https://github.com/rc0r/afl-utils"
@@ -29,6 +29,7 @@ pkgver() {
 package() {
   cd ${pkgname}
   python setup.py install -O1 --root="${pkgdir}"
+  rm -rf "${pkgdir}"/usr/lib/python*/site-packages/tests
   install -Dm 644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
   install -Dm 644 docs/CHANGELOG.md "${pkgdir}/usr/share/doc/${pkgname}/CHANGELOG.md"
   install -Dm 644 config/* -t "${pkgdir}/usr/share/doc/${pkgname}"
