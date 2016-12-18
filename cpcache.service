@@ -1,0 +1,12 @@
+[Unit]
+Description=central pacman cache
+After=network.target
+
+[Service]
+Type=simple
+User=cpcache
+Group=cpcache
+ExecStart=/usr/share/cpcache/bin/cpcache foreground
+
+[Install]
+WantedBy=multi-user.target

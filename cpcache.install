@@ -1,0 +1,10 @@
+post_install() {
+  systemd-sysusers cpcache.conf
+  chown cpcache:cpcache "/var/lib/cpcache"
+  mkdir -p /var/cache/cpcache/{x86,arm}/{core,extra,multilib,testing,community}/os/{i686,x86_64}/downloads
+  chown -R cpcache:cpcache "/var/cache/cpcache"
+}
+
+post_upgrade() {
+  systemd-sysusers cpcache.conf
+}

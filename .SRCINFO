@@ -1,0 +1,28 @@
+pkgbase = cpcache-git
+	pkgdesc = central pacman cache
+	pkgver = r61.4a3239c
+	pkgrel = 1
+	url = https://github.com/nroi/cpcache
+	install = cpcache.install
+	arch = i686
+	arch = x86_64
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
+	license = MIT
+	makedepends = erlang-nox
+	makedepends = elixir
+	depends = inotify-tools
+	backup = etc/cpcache.yaml
+	source = git+https://github.com/nroi/cpcache.git
+	source = sysuser.conf
+	source = cpcache.install
+	source = cpcache.service
+	sha256sums = SKIP
+	sha256sums = 0098e749b19617c0f7d619d47a3bc3015bab62e9ad0916087502daff672fb309
+	sha256sums = 159eb7ffd4fc7b44aa15c122aeddf8d433297352def6f0bbfc6a15df25fd8dcb
+	sha256sums = 4dbfd2b7934438fdde9b182b5e455f04176865063c8943be06bdfdf82ce38529
+
+pkgname = cpcache-git
+
