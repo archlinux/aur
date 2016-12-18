@@ -1,9 +1,10 @@
-# Maintainer: Shalygin Konstantin <k0ste@cn.ru>
+# Maintainer: Shalygin Konstantin <k0ste@k0ste.ru>
+# Contributor: Shalygin Konstantin <k0ste@k0ste.ru>
 
 pkgname='ivideon-server-headless'
 pkgver='3.5.7'
-pkgrel='1601'
-_rel='83ba74953293'
+pkgrel='1605'
+_rel='67842f9ea520'
 pkgdesc='Ivideon-server daemon'
 arch=('x86_64')
 url='https://ivideon.com'
@@ -12,11 +13,13 @@ depends=('portaudio' 'ffmpeg' 'gstreamer0.10' 'gstreamer0.10-base-plugins' 'gstr
 makedepends=('libarchive')
 conflicts=('ivideon-video-server-nogui')
 source=("https://packages.ivideon.com/ubuntu/pool/non-free/i/${pkgname}/${pkgname}_${pkgver}-${pkgrel}~${_rel}_amd64.deb"
+	"https://packages.ivideon.com/ubuntu/pool/non-free/libd/libdahuasdk/libdahuasdk_1.0.1_amd64.deb"
 	"videoserverd.service"
 	"videoserverd.conf"
 	"sysusers.conf"
 	"videoservertmp.conf")
-sha256sums=('7a745411c6be87e76ba594aada886b08c335baf327d76ad83f3ad7d9ea9f8f66'
+sha256sums=('d0f32efeef09a60cbb4094876092fd34d12486b8e7abc0734527a4457d7f99d5'
+            '95cec3d42b8c4386075d1a14184e5fab80ba75f87885d15f9f9245fac120a267'
             '48cd5beedc9992a26448ee06c44460c8e9f3014154adcad0eee39aa985851071'
             'f0010bc64cd7c1b5aefcc7241f0e0074528aec1a4b51dd08bd429e95acd26012'
             '91c4b133ad4d1fda72679ab393b647ac24a56e3c0d46cd2a908a47ed8524ec81'
@@ -27,6 +30,7 @@ backup=("etc/videoserverd.conf")
 build() {
   cd "${srcdir}"
   bsdtar xf "data.tar.gz"
+  bsdtar xf "data.tar.xz"
   rm "opt/ivideon/ivideon-server/install_services.sh"
   rm "opt/ivideon/ivideon-server/initd.sh"
   rm "opt/ivideon/ivideon-server/serverctl.sh"
