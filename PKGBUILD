@@ -2,7 +2,7 @@
 
 pkgname=masterpassword-cli
 pkgver=2.2
-pkgrel=4
+pkgrel=5
 pkgdesc="CLI version of Master Password."
 
 arch=('any')
@@ -29,7 +29,9 @@ prepare() {
 }
 
 build() {
-	targets="mpw" ./build
+	targets="mpw mpw-bench mpw-tests" ./build
+  ./mpw-bench
+  ./mpw-tests
 }
 
 package() {
