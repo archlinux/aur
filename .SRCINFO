@@ -1,0 +1,16 @@
+pkgbase = doomrl-git
+	pkgdesc = Doom: The Rogue-like (git-latest) (WIP!).
+	pkgver = r8.0cbac80
+	pkgrel = 1
+	url = https://github.com/ChaosForge/doomrl
+	arch = any
+	license = GPL3
+	makedepends = git
+	makedepends = fpc
+	source = doomrl-git::git+https://github.com/ChaosForge/doomrl
+	source = fpcvalkyrie::git+https://github.com/ChaosForge/fpcvalkyrie
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = doomrl-git
+
