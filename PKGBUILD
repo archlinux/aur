@@ -1,7 +1,7 @@
 # Maintainer: Hugo Courtial <hugo [at] courtial [not colon] me>
 pkgname=natron-plugins
 pkgver=234 
-pkgrel=1
+pkgrel=2
 arch=("i686" "x86_64")
 pkgdesc="Extra OpenFX plugins for Natron"
 url="https://github.com/NatronVFX/natron-plugins"
@@ -20,17 +20,23 @@ pkgver() {
 prepare() {
     cd "$srcdir/$pkgname"
     git submodule update -i --recursive
-    #cd "OpenFX"
-    #note : patch is only useful for 2.1.2 & lower. should be fixed in next release
-    #patch -uNp1 -i $srcdir/GCC6.patch
-   
+
+   mkdir "$srcdir/$pkgname/png"
+   mkdir "$srcdir/$pkgname/py"
+
+   find . -type f -name *.png -exec mv {} ./png \;
+   find . -type f -name *.py -exec mv {} ./py \;
 }
 
 
 
 package() {
-    cd $srcdir/$pkgname/
+    cd $srcdir/$pkgname/py
     mkdir -p "$pkgdir/usr/share/Natron/Plugins"
+
+    cp -r * $pkgdir/usr/share/Natron/Plugins/
+    cd $srcdir/$pkgname/png
+    
 
     cp -r * $pkgdir/usr/share/Natron/Plugins/
 }

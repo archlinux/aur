@@ -1,7 +1,7 @@
 pkgbase = natron-plugins
 	pkgdesc = Extra OpenFX plugins for Natron
 	pkgver = 234
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/NatronVFX/natron-plugins
 	arch = i686
 	arch = x86_64
