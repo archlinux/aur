@@ -1,6 +1,6 @@
 pkgname=performer-git
-pkgver=r24.bb992d5
-pkgrel=2
+pkgver=1.0
+pkgrel=1
 pkgdesc="Audio session manager for live music performances"
 arch=('i686' 'x86_64')
 url="https://github.com/progwolff/performer"
