@@ -1,12 +1,15 @@
 pkgbase = clevo-indicator-git
 	pkgdesc = Command-line fan control utility for Clevo laptops
 	pkgver = r17.fa0a7af
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/SkyLandTW/clevo-indicator
+	install = clevo-indicator-git.install
+	changelog = README.md
 	arch = x86_64
 	license = custom:Unlicense
 	makedepends = git
 	depends = libappindicator-gtk3
+	provides = clevo-indicator
 	source = clevo-indicator-git::git+https://github.com/SkyLandTW/clevo-indicator.git
 	md5sums = SKIP
 
