@@ -2,7 +2,7 @@
 
 pkgname=jadx-git
 _gitname=jadx
-pkgver=0.6.0.509.e4fef40
+pkgver=0.6.1.529.913a5b5
 pkgrel=1
 pkgdesc='Command line and GUI tools to produce Java source code from Android Dex and APK files'
 url='https://github.com/skylot/jadx'
