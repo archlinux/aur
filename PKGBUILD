@@ -1,7 +1,7 @@
 # Maintainer: Gordian Edenhofer <gordian.edenhofer@gmail.com>
 
 pkgname=zoom
-pkgver=2.0.70790.1031
+pkgver=2.0.75971.1216
 pkgrel=1
 pkgdesc="Video Conferencing and Web Conferencing Service"
 arch=('i686' 'x86_64')
@@ -12,8 +12,8 @@ depends=('glib2' 'gstreamer' 'libxcb' 'xcb-util-image' 'fontconfig' 'mesa' 'libx
 options=(!strip)
 source_i686=("${pkgname}-${pkgver}_i386.deb"::"https://zoom.us/client/${pkgver}/zoom_i386.deb")
 source_x86_64=("${pkgname}-${pkgver}_amd64.deb"::"https://zoom.us/client/${pkgver}/zoom_amd64.deb")
-md5sums_i686=('e2049b88e3efdc902170ae1759c38d4a')
-md5sums_x86_64=('bbe4ffc5e50d97848ea90fa4f625a5a5')
+sha256sums_i686=('1f42594d50609bb649cc3ec2ec1c26c6befbff488f50167caee8fe11a3c50be9')
+sha256sums_x86_64=('7c7dc850f2afac6f378ad135eb87376759d98b40c9cbee407e1083095f31f80f')
 
 package() {
 	bsdtar xf data.tar.xz
