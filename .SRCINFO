@@ -1,6 +1,6 @@
 pkgbase = darkstar-git
 	pkgdesc = Final Fantasy XI server emulator
-	pkgver = r11454.4bb58e1
+	pkgver = r11905.09ff235
 	pkgrel = 1
 	url = https://github.com/DarkstarProject/darkstar
 	install = darkstar.install

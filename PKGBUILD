@@ -3,7 +3,7 @@ pkgdesc='Final Fantasy XI server emulator'
 url='https://github.com/DarkstarProject/darkstar'
 license=('GPL3')
 arch=('i686' 'x86_64')
-pkgver=r11454.4bb58e1
+pkgver=r11905.09ff235
 pkgrel=1
 install=darkstar.install
 
@@ -37,6 +37,11 @@ pkgver() {
     printf 'r%s.%s' "$(git rev-list --count HEAD)" "$(git describe --always)"
 }
 
+prepare() {
+    cd darkstar
+    git submodule update --init
+}
+
 build() {
     cd darkstar
     sh autogen.sh
@@ -48,16 +53,18 @@ package() {
     cd darkstar
     make DESTDIR="$pkgdir" install
 
-    install -Dd "${pkgdir}"/usr/lib/systemd/system
-    install -m644 ../darkstar-{connect,game,search}.service "${pkgdir}"/usr/lib/systemd/system/
+    install -Dd "$pkgdir"/usr/lib/systemd/system
+    install -m644 ../darkstar-{connect,game,search}.service "$pkgdir"/usr/lib/systemd/system/
 
-    install -Dd "${pkgdir}"/var/lib/darkstar/{conf,sql,log}
-    install -m644 {compress,decompress}.dat "${pkgdir}"/var/lib/darkstar/
-    install -m644 conf/*.conf "${pkgdir}"/var/lib/darkstar/conf/
-    install -m644 sql/*.sql "${pkgdir}"/var/lib/darkstar/sql/
-    install -m644 version.info "${pkgdir}"/var/lib/darkstar/
+    install -Dd "$pkgdir"/var/lib/darkstar/{conf,sql,log,migrations,navmeshes}
+    install -m644 {compress,decompress}.dat "$pkgdir"/var/lib/darkstar/
+    install -m644 conf/*.conf "$pkgdir"/var/lib/darkstar/conf/
+    install -m644 sql/*.sql "$pkgdir"/var/lib/darkstar/sql/
+    install -m644 migrations/* "$pkgdir"/var/lib/darkstar/migrations/
+    install -m644 navmeshes/* "$pkgdir"/var/lib/darkstar/navmeshes/
+    install -m644 version.info "$pkgdir"/var/lib/darkstar/
 
-    cp -r scripts "${pkgdir}"/var/lib/darkstar/
+    cp -r scripts "$pkgdir"/var/lib/darkstar/
 }
 
 md5sums=('SKIP'
