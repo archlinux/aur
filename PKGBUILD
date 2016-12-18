@@ -3,7 +3,7 @@
 # Contributor: Max Roder <maxroder at web dot de>
 
 pkgname=tor-browser-bin
-pkgver=6.0.7
+pkgver=6.0.8
 _language='en-US'
 pkgrel=1
 pkgdesc="Tor Browser is +1 for privacy and -1 for mass surveillance"
@@ -14,7 +14,7 @@ depends=('gtk2' 'mozilla-common' 'libxt' 'startup-notification' 'mime-types'
          'dbus-glib' 'alsa-lib' 'desktop-file-utils' 'hicolor-icon-theme'
          'libvpx' 'icu' 'libevent' 'nss' 'hunspell' 'sqlite')
 optdepends=('zenity: simple dialog boxes'
-            'kdebase-kdialog: KDE dialog boxes'
+            'kdialog: KDE dialog boxes'
             'gst-plugins-good: h.264 video'
             'gst-libav: h.264 video'
             'libpulse: PulseAudio audio driver'
@@ -24,13 +24,13 @@ source_x86_64=("https://dist.torproject.org/torbrowser/${pkgver}/tor-browser-lin
 source+=(tor-browser.desktop
          tor-browser.png
          tor-browser.sh)
-sha256sums_i686=('c3bbcd5c13c58ba34d6b1cc24a8077a4fc4b097e61c70ccbae7bf5c7aac3e89b'
+sha512sums_i686=('8a406bc8e29bae7f5b7e88809fc69d2a193445da538604aa65421672dd001d349ef77e773da534121a31fdcd9591c12979c127acc4d812defcb9b2e41ac7b60e'
                  'SKIP')
-sha256sums_x86_64=('041e14a23173ebaa330ae954a8de8429366ae47030e433bbe7e2145bfbc68fd2'
+sha512sums_x86_64=('6b8fbff298522be610e7330899794242bf0d2b93bba865dfc58a7aeee23aee70c0167a3ec55b2312bec3c93fe2ad1f1770be8e4236d34a74de90a25a816f639e'
                    'SKIP')
-sha1sums+=('922f966fa16ba30a01b8e8d6f44ddb0b5468725d'
-           'aa3f84762b5f0b39aea5e03befdb03c4f53e8078'
-           'e55d123744b57e23a02319243d64c24911a38e29')
+sha512sums+=('3bb1b255b75178bf8b002e3e7da448c5b6427561fce6552f95ffdd00f75755a916a5f0057440917eece52f164d9ddf1cbb6ba91f2430553a73c94cf23d6a7618'
+           '236338469e13b4991c2abb94d4844d0149bb98094f1661b0a41256df0400cfe9904882117aae9edbea9261d99aea42745e03d745b523243d9a75fa5151062e18'
+           '54ba3df337f07b3072636bf42b255de26eddde773e82f7588c4ed9cf29c20ea5522c460855151036dad307dc023c76266e57f530352bb129b6afef95bf28c038')
 validpgpkeys=('8738A680B84B3031A630F2DB416F061063FEE659'
               'EF6E286DDA85EA2A4BA7DE684E2C6E8793298290')
 noextract_i686=("tor-browser-linux32-${pkgver}_${_language}.tar.xz")
