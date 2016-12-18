@@ -9,22 +9,21 @@ pkgdesc="A high quality, open-source video editing, animation, and playback libr
 arch=('i686' 'x86_64')
 url="http://openshot.org/"
 license=('LGPL3')
-depends=('imagemagick' 'ffmpeg' 'libx264' 'libopenshot-audio' 'python' 'qt5-base' 'qt5-multimedia' 'ruby' 'zeromq')
+depends=('imagemagick' 'ffmpeg' 'libx264' 'libopenshot-audio' 'python' 'jsoncpp' 'qt5-multimedia' 'zeromq')
 makedepends=('cmake' 'doxygen' 'swig' 'unittestpp')
 source=("https://launchpad.net/libopenshot/0.1/${pkgver}/+download/${pkgname}-${pkgver}.tar.gz")
 sha256sums=('b1fec6404ca703fdd137ed58f58b05ceecf68d9f93649b32bee7d85f868ef220')
 
 build() {
-#	cd ${pkgname}-${pkgver}
 	mkdir build
 	cd build
-	cmake -DCMAKE_INSTALL_PREFIX:PATH=/usr -DMAGICKCORE_HDRI_ENABLE=1 -DMAGICKCORE_QUANTUM_DEPTH=16 ../
+        export CXXFLAGS+=" -std=gnu++98"
+	cmake -DCMAKE_INSTALL_PREFIX:PATH=/usr -DMAGICKCORE_HDRI_ENABLE=1 -DMAGICKCORE_QUANTUM_DEPTH=16 \
+              -DUSE_SYSTEM_JSONCPP=ON -DENABLE_RUBY=OFF ../
 	make
 }
 
 package() {
-#	cd ${pkgname}-${pkgver}
         cd build
 	make DESTDIR="${pkgdir}" install
 }
-
