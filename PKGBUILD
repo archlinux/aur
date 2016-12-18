@@ -10,7 +10,7 @@ arch=('i686' 'x86_64')
 url="https://launchpad.net/cuneiform-linux"
 license=('BSD')
 depends=('imagemagick')
-makedepends=('cmake')
+makedepends=('cmake' 'gcc5')
 source=(https://launchpad.net/cuneiform-linux/${_dpkgver}/${_dpkgver}/+download/cuneiform-linux-${pkgver}.tar.bz2)
 sha256sums=('577e0d054de72086c33b4e8ae15033657776509b9a7af6eb272888eefcbdbbad')
 
@@ -25,6 +25,8 @@ build() {
   cmake \
 	-DCMAKE_BUILD_TYPE=release \
 	-DCMAKE_INSTALL_PREFIX=/usr \
+        -DCMAKE_CXX_COMPILER=g++-5 \
+        -DCMAKE_C_COMPILER=gcc-5 \
 	-DImageMagick_Magick++_LIBRARY=$LMAGICK \
 	-DImageMagick_Magick++_INCLUDE_DIR=/usr/include/ImageMagick-6 \
 	..
