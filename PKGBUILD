@@ -2,7 +2,7 @@
 # Maintainer: Tilman Vatteroth <tilman.vatteroth@udo.edu>
 
 pkgname=upmpdcli
-pkgver=1.2.9
+pkgver=1.2.10
 pkgrel=0
 pkgdesc="A UPnP Media Renderer front-end for the Music Player Daemon (MPD)"
 arch=('i686' 'x86_64' 'armv7h')
@@ -12,7 +12,7 @@ depends=('libmpdclient' 'libupnpp>=0.15.1' 'libmicrohttpd' 'jsoncpp' 'curl' 'exp
 optdepends=('python2: OpenHome Radio Service')
 install=upmpdcli.install
 source=(http://www.lesbonscomptes.com/upmpdcli/downloads/$pkgname-$pkgver.tar.gz)
-sha256sums=('c25f4795db18902c9cca4e82c320164dd0533f76e41be86e6924591a9a5279cb')
+sha256sums=('a925dac1721fe002c16ed3c9e2de0370c2fe6c1e6f4f97a7551f20c6226cc0e2')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
