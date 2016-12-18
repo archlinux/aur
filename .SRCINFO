@@ -1,6 +1,6 @@
 pkgbase = systemd-selinux
 	pkgver = 232
-	pkgrel = 4
+	pkgrel = 6
 	url = https://www.github.com/systemd/systemd
 	arch = i686
 	arch = x86_64
@@ -37,9 +37,11 @@ pkgbase = systemd-selinux
 	source = arch.conf
 	source = loader.conf
 	source = splash-arch.bmp::https://projects.archlinux.org/svntogit/packages.git/plain/trunk/splash-arch.bmp?h=packages/systemd&id=e43ddb71a5b1ab56e898347a63e54c5d5d07728a
+	source = systemd-user.pam
 	source = udev-hwdb.hook
 	source = 0001-disable-RestrictAddressFamilies-on-i686.patch
 	source = 0001-Revert-nspawn-try-to-bind-mount-resolved-s-resolv.co.patch
+	source = 0001-nspawn-don-t-hide-bind-tmp-mounts.patch
 	validpgpkeys = 63CDA1E5D3FC22B998D20DD6327F26951A015CC4
 	sha512sums = SKIP
 	sha512sums = f0d933e8c6064ed830dec54049b0a01e27be87203208f6ae982f10fb4eddc7258cb2919d594cbfb9a33e74c3510cfd682f3416ba8e804387ab87d1a217eb4b73
@@ -48,9 +50,11 @@ pkgbase = systemd-selinux
 	sha512sums = 61032d29241b74a0f28446f8cf1be0e8ec46d0847a61dadb2a4f096e8686d5f57fe5c72bcf386003f6520bc4b5856c32d63bf3efe7eb0bc0deefc9f68159e648
 	sha512sums = c416e2121df83067376bcaacb58c05b01990f4614ad9de657d74b6da3efa441af251d13bf21e3f0f71ddcb4c9ea658b81da3d915667dc5c309c87ec32a1cb5a5
 	sha512sums = 5a1d78b5170da5abe3d18fdf9f2c3a4d78f15ba7d1ee9ec2708c4c9c2e28973469bc19386f70b3cf32ffafbe4fcc4303e5ebbd6d5187a1df3314ae0965b25e75
+	sha512sums = b90c99d768dc2a4f020ba854edf45ccf1b86a09d2f66e475de21fe589ff7e32c33ef4aa0876d7f1864491488fd7edb2682fc0d68e83a6d4890a0778dc2d6fe19
 	sha512sums = 888ab01bc6e09beb08d7126472c34c9e1aa35ea34e62a09e900ae34c93b1de2fcc988586efd8d0dc962393974f45c77b206d59a86cf53e370f061bf9a1b1a862
 	sha512sums = 89f9b2d3918c679ce4f76c2b10dc7fcb7e04f1925a5f92542f06891de2a123a91df7eb67fd4ce71506a8132f5440b3560b7bb667e1c1813944b115c1dfe35e3f
 	sha512sums = b993a42c5534582631f7b379d54f6abc37e3aaa56ecf869a6d86ff14ae5a52628f4e447b6a30751bc1c14c30cec63a5c6d0aa268362d235ed477b639cac3a219
+	sha512sums = 68478403433aafc91a03fda5d83813d2ed1dfc6ab7416b2927a803314ecf826edcb6c659587e74df65de3ccb1edf958522f56ff9ac461a1f696b6dede1d4dd35
 
 pkgname = systemd-selinux
 	pkgdesc = system and service manager with SELinux support
@@ -84,7 +88,7 @@ pkgname = systemd-selinux
 	provides = nss-myhostname
 	provides = systemd-tools=232
 	provides = udev=232
-	provides = systemd=232-4
+	provides = systemd=232-6
 	conflicts = nss-myhostname
 	conflicts = systemd-tools
 	conflicts = udev
@@ -116,15 +120,15 @@ pkgname = libsystemd-selinux
 	depends = xz
 	provides = libsystemd.so
 	provides = libudev.so
-	provides = libsystemd=232-4
+	provides = libsystemd=232-6
 	conflicts = libsystemd
 
 pkgname = systemd-sysvcompat-selinux
 	pkgdesc = sysvinit compat for systemd with SELinux support
 	license = GPL2
 	depends = systemd-selinux
-	provides = systemd-sysvcompat=232-4
-	provides = selinux-systemd-sysvcompat=232-4
+	provides = systemd-sysvcompat=232-6
+	provides = selinux-systemd-sysvcompat=232-6
 	conflicts = sysvinit
 	conflicts = systemd-sysvcompat
 	conflicts = selinux-systemd-sysvcompat
