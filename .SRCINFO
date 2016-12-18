@@ -1,0 +1,29 @@
+pkgbase = brother-mfc-j880dw
+	pkgdesc = LPR and CUPS driver for the Brother MFC-J880DW printer
+	pkgver = 1.0.0
+	pkgrel = 0
+	url = http://solutions.brother.com/linux/en_us/
+	arch = i686
+	arch = x86_64
+	license = custom:Brother Industries
+	depends = cups
+	depends = ghostscript
+	depends = psutils
+	depends = a2ps
+	depends = sed
+	depends = grep
+	depends = lib32-glibc
+	optdepends = ttf-dejavu: printing text files from lpr
+	source = http://download.brother.com/welcome/dlf102036/mfcj880dwlpr-1.0.0-0.i386.rpm
+	source = http://download.brother.com/welcome/dlf102037/mfcj880dwcupswrapper-1.0.0-0.i386.rpm
+	source = http://download.brother.com/welcome/dlf102044/mfcj880dw_cupswrapper_GPL_source_1.0.0-0.tar.gz
+	source = cupswrapper-license.txt
+	source = lpr-license.txt
+	sha256sums = ca9f03fb45cb319bcbc22268edd6e898a0262c687a0ccffb60ccf7dd915f1d37
+	sha256sums = d452099d975f2356581dc637d54ae073afbffc92544de9bc647015115cefbc24
+	sha256sums = bf291fe31d64afeaefb5b0e606f4baf80c41d80009e34b32b77d56f759e9cf94
+	sha256sums = 2c6aa6a641332e5c87e971ac2a8beae13b059747bdba331bbd515914770d72d9
+	sha256sums = 9d85a8aafdaac8fac80e04234ad2acf5642bbf0b91ee582d2a89519a55f6dd67
+
+pkgname = brother-mfc-j880dw
+
