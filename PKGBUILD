@@ -3,7 +3,7 @@
 
 # Maintainer: Vincenzo Maffione <v.maffione@gmail.com>
 pkgname=netmap
-pkgver=r2183.dee5e99
+pkgver=r2217.9992ce06
 pkgrel=1
 pkgdesc="Netmap is a framework for high speed network packet I/O."
 arch=('any')
@@ -61,7 +61,7 @@ build() {
     # kernel sources downloaded in the previous steps to copy the NIC
     # drivers. Note however that the kernel modules are built against the
     # running kernel, and not against the downloaded sources.
-    # We need to create an empty config.mak to make sure netmap does not
+    # We need to use --no-ext-drivers to make sure netmap does not
     # download (Intel) drivers sources from the internet, we want to use the
     # drivers sources provided by the Arch linux package.
     # We also build and install the patched drivers with a "-netmap" suffix,
@@ -69,10 +69,10 @@ build() {
     # unpatched drivers
     msg "Starting to build netmap and netmap applications"
     cd "$srcdir/netmap"
-    touch config.mak
     msg "PREFIX=$pkgdir/usr/local"
     msg "INSTALL-MOD-PATH=$pkgdir"
     ./configure --kernel-sources=$NESTEDDIR/src/linux-$KMAJVER \
+                --no-ext-drivers \
                 --driver-suffix="_netmap" \
                 --install-mod-path="$pkgdir/usr" \
                 --prefix="$pkgdir/usr/local"
