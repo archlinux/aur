@@ -30,7 +30,7 @@
  
    gtk_tree_view_column_set_sort_column_id (priv->list_name_column, MODEL_COL_NAME);
    gtk_tree_view_column_set_sort_column_id (priv->list_time_column, MODEL_COL_TIME);
-@@ -4388,6 +4385,7 @@
+@@ -4390,6 +4387,7 @@
    gtk_tree_view_set_model (GTK_TREE_VIEW (priv->browse_files_tree_view),
                             GTK_TREE_MODEL (priv->browse_files_model));
    update_columns (impl, FALSE, _("Modified"));
@@ -38,7 +38,7 @@
    file_list_set_sort_column_ids (impl);
    set_sort_column (impl);
    profile_msg ("    gtk_tree_view_set_model end", NULL);
-@@ -7148,10 +7146,6 @@
+@@ -7150,10 +7148,6 @@
  {
    GList *l, *files, *files_with_info, *infos;
    GFile *file;
@@ -49,7 +49,7 @@
  
    files = NULL;
    files_with_info = NULL;
-@@ -7179,8 +7173,6 @@
+@@ -7181,8 +7175,6 @@
    g_list_free_full (infos, g_object_unref);
  
    gtk_stack_set_visible_child_name (GTK_STACK (impl->priv->browse_files_stack), "list");
@@ -58,7 +58,7 @@
  }
  
  /* Callback used from GtkSearchEngine when the query is done running */
-@@ -7498,6 +7490,7 @@
+@@ -7500,6 +7492,7 @@
    gtk_tree_sortable_set_sort_column_id (GTK_TREE_SORTABLE (priv->recent_model),
                                          GTK_TREE_SORTABLE_DEFAULT_SORT_COLUMN_ID,
                                          GTK_SORT_DESCENDING);
@@ -66,7 +66,7 @@
  }
  
  typedef struct
-@@ -7515,7 +7508,7 @@
+@@ -7517,7 +7510,7 @@
  
    gtk_tree_view_set_model (GTK_TREE_VIEW (priv->browse_files_tree_view),
                             GTK_TREE_MODEL (priv->recent_model));

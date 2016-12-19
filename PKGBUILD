@@ -1,7 +1,7 @@
 # Maintainer: twilinx <twilinx@mesecons.net>
 
 pkgname=gtk3-typeahead
-pkgver=3.22.3
+pkgver=3.22.5
 pkgrel=1
 conflicts=(gtk3)
 provides=("gtk3=$pkgver")
@@ -16,23 +16,18 @@ optdepends=('libcanberra: gtk3-widget-factory demo'
             'gtk3-print-backends: Printing')
 makedepends=(gobject-introspection libcanberra gtk-doc git colord rest libcups)
 license=(LGPL)
-_commit=99fed96b4470cf02f8fa522551d2a05e01a1bf8a  # tags/3.22.3^0
+_commit=a8991a6bea0023c6d5bec8b2ab704b7ae067d7a6  # tags/3.22.5^0
 source=("git://git.gnome.org/gtk+#commit=$_commit"
-        0001-gdkscreen-x11-Fix-screen-and-monitor-size-calculatio.patch
         settings.ini
         gtk-query-immodules-3.0.hook
         typeahead.patch)
 sha256sums=('SKIP'
-            'f722a70cb1affac8bd054a43b726f57aba21d664144fcaf6d58f18e5bef78189'
             '01fc1d81dc82c4a052ac6e25bf9a04e7647267cc3017bc91f9ce3e63e5eb9202'
             'de46e5514ff39a7a65e01e485e874775ab1c0ad20b8e94ada43f4a6af1370845'
-            'fc10c2ddef67e75cb83e64db1f6b9a8a127b3aaba931909a08f28b9d6ea415d0')
+            '0919abc9b6849cda2fa2941854193b5df0372c566d35ce90ced2cac7701c3167')
 
 prepare() {
     cd gtk+
-
-    # Other patches
-    patch -Np1 -i ../0001-gdkscreen-x11-Fix-screen-and-monitor-size-calculatio.patch
 
     # Typeahead-specific changes
     patch gtk/gtkfilechooserwidget.c -i $srcdir/typeahead.patch
