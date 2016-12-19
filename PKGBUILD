@@ -10,7 +10,7 @@
 _pack=divand
 pkgname=octave-$_pack
 pkgver=1.1.2
-pkgrel=2
+pkgrel=3
 pkgdesc="divand performs an n-dimensional variational analysis (interpolation) of arbitrarily located observations."
 arch=(any)
 url="http://octave.sourceforge.net/$_pack/"
