@@ -10,7 +10,7 @@
 _pack=econometrics
 pkgname=octave-$_pack
 pkgver=1.1.1
-pkgrel=3
+pkgrel=4
 pkgdesc="Econometrics functions including MLE and GMM based techniques."
 arch=(any)
 url="http://octave.sourceforge.net/$_pack/"
