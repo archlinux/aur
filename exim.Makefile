@@ -465,9 +465,9 @@ LDFLAGS += -lspf2
 # Depending on where it is installed you may have to edit the CFLAGS and
 # LDFLAGS lines.
 
-# EXPERIMENTAL_SRS=yes
+EXPERIMENTAL_SRS=yes
 # CFLAGS  += -I/usr/local/include
-# LDFLAGS += -lsrs_alt
+LDFLAGS += -lsrs_alt
 
 # Uncomment the following line to add DMARC checking capability, implemented
 # using libopendmarc libraries.  You must have SPF support enabled also.

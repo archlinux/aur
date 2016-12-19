@@ -9,14 +9,14 @@
 _pkgname=exim
 pkgname=${_pkgname}-pgsql
 pkgver=4.87
-pkgrel=4
+pkgrel=5
 pkgdesc='Message Transfer Agent'
 arch=('x86_64' 'i686')
 url='http://www.exim.org/'
 license=('GPL')
 backup=(etc/mail/aliases etc/mail/exim.conf etc/logrotate.d/exim)
 install=exim.install
-depends=('pcre' 'pam' 'openssl' 'libldap' 'libspf2' 'postgresql-libs' 'libidn' 'opendmarc')
+depends=('pcre' 'pam' 'openssl' 'libldap' 'libspf2' 'postgresql-libs' 'libidn' 'opendmarc' 'libsrs_alt')
 provides=('smtp-server' 'smtp-forwarder')
 conflicts=('smtp-server' 'smtp-forwarder')
 options=('!makeflags')
@@ -32,7 +32,7 @@ source=(ftp://ftp.exim.org/pub/exim/exim4/exim-$pkgver.tar.bz2
 md5sums=('2effc2bd47ad2dc010f655c11a1b1173'
          '4874006f0585253ddab027d441009757'
          'e18a535218718c5eb394ed5c9296fe06'
-         '3e98ebe9cc6c6fa04f6c7fd0d18c19ea'
+         '86772117ebb0c0a7580fb5aec96a0da6'
          '88cf76405367a6ed371d05db1d3c9565'
          'be8fdcf7b2d6b6368a21705e69743265'
          '6f5a5c2b0835b33f59d2513cce18c65b'
