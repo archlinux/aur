@@ -9,7 +9,7 @@
 _pack=bim
 pkgname=octave-$_pack
 pkgver=1.1.5
-pkgrel=3
+pkgrel=4
 pkgdesc="Package for solving Diffusion Advection Reaction (DAR) Partial Differential Equations "
 arch=(any)
 url="http://octave.sourceforge.net/$_pack/"
