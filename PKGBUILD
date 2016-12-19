@@ -3,7 +3,7 @@
 
 _retoken='.*hidden">(\w+)<.*'
 pkgname=nessus
-pkgver=6.9.1
+pkgver=6.9.2
 pkgrel=1
 _filename="${pkgname^}-${pkgver}-fc20.x86_64.rpm"
 pkgdesc="Vulnerability scanner"
@@ -33,7 +33,7 @@ source=("${_filename}::${_pkgurl}"
         nessus.sh
         LICENSE)
 
-md5sums=('8009fbafb31aa9710fd4113f1094a211'
+md5sums=('87a460e111a58a201db0988c6d7a2d54'
          '388578bf980efe6e6d3f33fcc289543a'
          '8c5772ac63f97d94475fe03e80d6ba5c'
          '1db6df5a39009ace46c7ee40141ece1b')
