@@ -1,8 +1,8 @@
 # Maintainer: Aleksey Kamenskikh <aleksey.kamenskikh@gmail.com>
 pkgname=mssql-server
-pkgver=14.0.1.246
-_prodver=${pkgver}-6
-pkgrel=2
+pkgver=14.0.100.187
+_prodver=${pkgver}-1
+pkgrel=1
 pkgdesc="Microsoft SQL Server for Linux"
 arch=('x86_64')
 url="https://www.microsoft.com/en-us/sql-server/sql-server-vnext-including-Linux"
@@ -10,7 +10,7 @@ license=('unknown')
 depends=('python2-configparser')
 makedepends=('rpmextract')
 source=("https://packages.microsoft.com/rhel/7/$pkgname/$pkgname-$_prodver.x86_64.rpm")
-md5sums=('5f803d1fbe7d004a6b158e9fb5b07ee6')
+md5sums=('3d653255dc7c9c1484cad87ab69d1836')
 noextract=("$pkgname-$_prodver.x86_64.rpm")
 install=$pkgname.install
 
