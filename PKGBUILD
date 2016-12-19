@@ -6,7 +6,7 @@
 
 pkgname=crossover
 pkgver=16.0.0
-pkgrel=1
+pkgrel=2
 _pkgdebrel=1
 pkgdesc="Run Windows Programs on Linux"
 arch=('i686' 'x86_64')
@@ -108,7 +108,6 @@ package() {
 
     mv ${pkgdir}/usr/share/doc/crossover/* ${pkgdir}/opt/cxoffice/doc
 
-    gzip -d "${pkgdir}/opt/cxoffice/doc/license.txt.gz"
     rm -r "${pkgdir}/usr"
     sed -e 's!;;"MenuRoot" = ""!"MenuRoot" = "Windows Games"!' \
         -e 's!;;"MenuStrip" = ""!"MenuStrip" = "1"!' \
@@ -132,5 +131,5 @@ package() {
         -i ${pkgdir}/opt/cxoffice/etc/cxoffice.conf
 
     # place license in correct directory
-    install -D -m644 ${pkgdir}/opt/cxoffice/doc/license.txt ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
+    install -D -m644 ${pkgdir}/opt/cxoffice/doc/license.txt.gz ${pkgdir}/usr/share/licenses/${pkgname}/license.txt.gz
 }
