@@ -2,7 +2,7 @@
 
 pkgname=doomrl-git
 pkgver=r8.0cbac80
-pkgrel=3
+pkgrel=4
 pkgdesc="Doom: The Rogue-like (git-latest) (WIP!)."
 arch=(any)
 url="http://drl.chaosforge.org/"
