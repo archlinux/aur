@@ -21,7 +21,7 @@ prepare()
 
   # fpcvalkyrie is harcoded from Makefile to look a level up
   # from doomrl/makeifle.lua ...
-  cp -r $srcdir/fpcvalkyrie $srcdir/$pkgname
+  cp -ru $srcdir/fpcvalkyrie $srcdir/$pkgname
 
 }
 
