@@ -9,7 +9,7 @@
 _pack=dataframe
 pkgname=octave-$_pack
 pkgver=1.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Data manipulation toolbox similar to R data.frame"
 arch=(any)
 url="http://octave.sourceforge.net/$_pack/"
