@@ -4,11 +4,13 @@ _digest="http://www.imagemagick.org/download/digest.rdf"
 _srcname="ImageMagick"
 _srcver="$(curl -s "$_digest" | grep -o "${_srcname}-7[0-9\.-]*\.tar\.xz" | \
                                 sed 's/[^0-9\.-]*//g'                     | \
-                                sed -r 's/.//;s/.{2}$//')"
+                                sed -r 's/.//;s/.{2}$//'                  | \
+                                sort -r                                   | \
+                                head -n1)"
 _srcverregex="$(echo "$_srcver" | sed 's/\./\\\./g')" # translate to a regular expression
 pkgname=imagemagick-full-doc
 pkgver="$(echo "$_srcver" | tr '-' '.')"
-pkgrel=2
+pkgrel=1
 pkgdesc="The ImageMagick documentation (utilities manuals and libraries API)"
 arch=('any')
 url="http://www.imagemagick.org/"
