@@ -10,7 +10,7 @@
 _pack=fits
 pkgname=octave-$_pack
 pkgver=1.0.7
-pkgrel=1
+pkgrel=2
 pkgdesc="The Octave-FITS package provides functions for reading, and writing FITS (Flexible Image Transport System) files.  This package uses the libcfitsio library."
 arch=(any)
 url="http://octave.sourceforge.net/$_pack/"
