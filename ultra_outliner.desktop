@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Name=Ultra Outliner
+Comment=Card-based outlining software
+Exec=ultra_outliner %f
+Icon=ultra_outliner
+Terminal=false
+Type=Application
+StartupNotify=true
+Categories=Office;
