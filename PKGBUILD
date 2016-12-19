@@ -4,13 +4,13 @@
 
 pkgname=openspades-git
 _pkgname=openspades
-pkgver=0.0.12.281.g2167e4f
+pkgver=0.0.12.305.g934d952
 pkgrel=1
 pkgdesc="A clone of Voxlap Ace of Spades 0.75 (git version)"
 arch=('i686' 'x86_64')
 url="https://github.com/yvt/openspades"
 license=('GPL3')
-depends=('curl' 'desktop-file-utils' 'glew' 'hicolor-icon-theme' 'mesa' 'openal' 'sdl2' 'sdl2_image' 'xdg-utils')
+depends=('curl' 'desktop-file-utils' 'glew' 'hicolor-icon-theme' 'mesa' 'openal' 'opusfile' 'sdl2' 'sdl2_image' 'xdg-utils')
 makedepends=('cmake' 'git' 'unzip' 'wget' 'zip' 'imagemagick')
 provides=('openspades')
 conflicts=('openspades')
