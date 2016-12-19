@@ -5,7 +5,7 @@
 pkgname=ungoogled-chromium
 pkgver=55.0.2883.95
 pkgrel=1
-pkgdesc="The open-source project behind Google Chrome (Latest Snapshot)"
+pkgdesc=" Modifications to Google Chromium for removing Google integration and enhancing privacy, control, and transparency"
 arch=('x86_64')
 url="https://github.com/Eloston/ungoogled-chromium"
 license=('BSD')
@@ -20,14 +20,14 @@ optdepends=('kdebase-kdialog: needed for file dialogs in KDE'
             'pepper-flash: for Pepper Flash plugin [AUR]')
 makedepends=('python3' 'python2' 'gperf' 'yasm' 'mesa' 'ninja' 'git')
 provides=('chromium')
-install=$pkgname.install
+install=${pkgname}.install
 source=("git://github.com/Eloston/ungoogled-chromium"
-        "$pkgname.sh"
-        "$pkgname.desktop"
-        "$pkgname"_{16,22,24,32,48,64,128,256}.png)
+        "${pkgname}.sh"
+        "${pkgname}.desktop"
+        "${pkgname}"_{16,22,24,32,48,64,128,256}.png)
 md5sums=('SKIP'
          '374877078f924e08afe93b30d0daea09'
-         '39910905d8966edff40ca6be7535fdce'
+         'ccd3505ed32877a6e7e54fbb4f5040c1'
          '6cd41f6e08eee03c6553603fb0b6ecd7'
          '227eac16d1e737bed42742840b950d41'
          '308eb2e0c509e12ecf33165ced9eef0d'
@@ -41,54 +41,58 @@ md5sums=('SKIP'
 PKGEXT='.pkg.tar'
 
 pkgver() {
-	cd "${srcdir}/${pkgname}"
+	cd "$srcdir/${pkgname}"
 	
 	echo $(grep -oPm1 '([0-9]+\.?)+' version.ini)
 	pkgrel=$(grep -oP '\=\ [0-9]$' version.ini|sed -e 's/\=\ //g')
 }
 
 build() {
-	cd "${srcdir}/${pkgname}"
+	cd "$srcdir/${pkgname}"
 	
 	msg "Building...this will take a while..."
 	/usr/bin/python build.py
-	
-	msg "Extracting built tarball to properly package..."
-	tar xvf "${srcdir}/${pkgname}/build/${pkgname}_${pkgver}-${pkgrel}_linux_defaultcpu.tar.xz -C ${srcdir}"
 }
 
 package() {
+	cd "$srcdir"
+	
+	rm -rf "${pkgname}_${pkgver}-${pkgrel}" &> /dev/null
+	
+	msg "Extracting built tarball to properly package..."
+	if [ -f "${pkgname}/build/${pkgname}_${pkgver}-${pkgrel}_linux_defaultcpu.tar.xz" ]; then
+		mv "${pkgname}/build/${pkgname}_${pkgver}-${pkgrel}_linux_defaultcpu.tar.xz" "$srcdir"
+	fi
+	
+	tar xf "${pkgname}_${pkgver}-${pkgrel}_linux_defaultcpu.tar.xz"
+	
 	msg2 "Creating directory structure..."
-	install -d "$pkgdir"/opt/
-	install -d "$pkgdir"/usr/bin/
-	install -d "$pkgdir"/usr/share/applications/
-	install -d "$pkgdir"/usr/share/licenses/${pkgname}/
+	install -d "$pkgdir/opt/"
+	install -d "$pkgdir/usr/bin/"
+	install -d "$pkgdir/usr/share/applications/"
+	install -d "$pkgdir/usr/share/man/"
+	install -d "$pkgdir/usr/share/man1/"
+	install -d "$pkgdir/usr/share/licenses/${pkgname}/"
+	install -d "$pkgdir/usr/share/licenses/${pkgname}/"
 
 	msg2 "Moving contents..."
 	# Main script
-	install -m755 "${srcdir}/$pkgname.sh" "${pkgdir}/usr/bin/$pkgname"
+	install -m755 "${pkgname}.sh" "$pkgdir/usr/bin/${pkgname}"
 
 	# Desktop
-	install -m644 "${srcdir}/$pkgname.desktop" "$pkgdir/usr/share/applications/"
+	install -m644 "${pkgname}.desktop" "$pkgdir/usr/share/applications/"
 
 	# Icons
 	for i in 16 22 24 32 48 64 128 256; do
-		install -Dm644 ${pkgname}_${i}.png "$pkgdir"/usr/share/icons/hicolor/${i}x${i}/apps/$pkgname.png
+		install -Dm644 "${pkgname}_${i}.png" "$pkgdir/usr/share/icons/hicolor/${i}x${i}/apps/${pkgname}.png"
 	done
 
-	cd "${pkgname}_${pkgver}-${pkgrel}"
-	rm *.png &> /dev/null
-
 	# Man page
-	gzip -9 chrome.1
-	install -m644 chrome.1.gz "$pkgdir"/usr/share/man/man1/$pkgname.1.gz
-	rm chrome.1 chrome.1.gz
-
-	cd "${srcdir}/${pkgname}"
-
+	install -Dm644 "${pkgname}_${pkgver}-${pkgrel}/chrome.1" "$pkgdir/usr/share/man/man1/${pkgname}.1"
+	
 	# License
-	install -m644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/"
+	install -m644 "${pkgname}/LICENSE" "$pkgdir/usr/share/licenses/${pkgname}/"
 
 	msg2 "Installing main directory..."
-	mv "${srcdir}/${pkgname}_${pkgver}-${pkgrel}" "$pkgdir/opt/${pkgname}"
+	mv "${pkgname}_${pkgver}-${pkgrel}" "$pkgdir/opt/${pkgname}"
 }
