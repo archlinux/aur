@@ -10,7 +10,7 @@
 _pack=ga
 pkgname=octave-$_pack
 pkgver=0.10.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Genetic optimization code"
 arch=(any)
 url="http://octave.sourceforge.net/$_pack/"
