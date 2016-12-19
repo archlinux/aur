@@ -5,7 +5,7 @@ CheckedFile="$1"
 MD5SUM=`md5sum "$CheckedFile" | awk '{ print $1;}'`
 SHA1SUM=`sha1sum "$CheckedFile" | awk '{ print $1;}'`
 
-      kdialog  --title "md5sum Calculator" --yesno "File : $CheckedFile \n md5sum : $MD5SUM\n sha1sum : $SHA1SUM\n\n  Save to file?"
+      kdialog --yesno "File : $CheckedFile \n md5sum : $MD5SUM\n sha1sum : $SHA1SUM\n\n  Save to file?"
 
         if [ $? == 0 ];then
 		Result=`kdialog --menu "select" md5 md5sum sha1 sha1sum`
