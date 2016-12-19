@@ -10,7 +10,7 @@
 _pack=cgi
 pkgname=octave-$_pack
 pkgver=0.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Common Gatway Interface for Octave"
 arch=(any)
 url="http://octave.sourceforge.net/$_pack/"
