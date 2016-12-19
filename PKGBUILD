@@ -9,7 +9,7 @@
 _pack=database
 pkgname=octave-$_pack
 pkgver=2.4.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Interface to SQL databases, currently only postgresql using libpq."
 arch=(any)
 url="http://octave.sourceforge.net/$_pack/"
