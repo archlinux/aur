@@ -1,0 +1,19 @@
+pkgbase = python-pytzdata
+	pkgdesc = Official timezone database for Python.
+	pkgver = 2016.10
+	pkgrel = 1
+	url = https://pypi.python.org/pypi/pytzdata
+	arch = any
+	license = MIT
+	makedepends = python
+	makedepends = python2
+	options = !emptydirs
+	source = git+https://github.com/sdispater/pytzdata#tag=2016.10
+	sha256sums = SKIP
+
+pkgname = python-pytzdata
+	depends = python
+
+pkgname = python2-pytzdata
+	depends = python2
+
