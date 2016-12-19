@@ -1,7 +1,7 @@
 pkgbase = thunar-extended
 	pkgdesc = Thunar with split view, cursor audio preview and extra options for trash, desktop files and user actions
 	pkgver = 1.6.10
-	pkgrel = 5
+	pkgrel = 6
 	url = http://thunar.xfce.org
 	arch = i686
 	arch = x86_64
@@ -35,12 +35,14 @@ pkgbase = thunar-extended
 	replaces = thunar
 	options = !libtool
 	source = http://archive.xfce.org/src/xfce/thunar/1.6/Thunar-1.6.10.tar.bz2
+	source = 0001-Deactivate-SEND_MOVED-code-paths.patch::http://bug-attachment.xfce.org/attachment.cgi?id=6530
 	source = notrash.patch
 	source = uca_num_files.patch
 	source = preview.patch
 	source = split_pane.patch
 	source = bug11983.patch
 	md5sums = 3089e1dca6e408641b07cd9c759dea5e
+	md5sums = 9f52b207f090b280ac25ceafe3032137
 	md5sums = d87f154a5fbd3709511ded0c9b9b0317
 	md5sums = 69aa416e8694b8b608f767769b6dcd98
 	md5sums = 60d3bb7fc185f5f881b5884bd7f28c87
