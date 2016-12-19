@@ -1,6 +1,6 @@
 pkgbase = linux-cik
 	pkgver = 4.9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.kernel.org/
 	arch = i686
 	arch = x86_64
@@ -28,13 +28,13 @@ pkgbase = linux-cik
 	sha256sums = efb18504cd318e573d0635ea18a49d63d317f1d01f05e5b48c99b003877b8906
 	sha256sums = SKIP
 	sha256sums = d30eae8ce9d0164ab8d3fcac047eff7f0874dce7e7a30b8a0193d16f029c9245
-	sha256sums = c149afccbb6222b60b76519fc60cecc3ed6331dfb9fa4f82b2db586c5b3034fd
+	sha256sums = 7be3b9ea39e7f3b875c272485c0ba0af314aa1ef249bab1452a1d8f0655597d0
 	sha256sums = 834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0
 	sha256sums = ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65
 	sha256sums = 1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99
 
 pkgname = linux-cik
-	pkgdesc = The Linux-cik kernel and modules for cik support in amdgpu
+	pkgdesc = The Linux-cik kernel and modules for si (southern islands) and cik (sea islands) support in amdgpu
 	install = linux.install
 	depends = coreutils
 	depends = linux-firmware

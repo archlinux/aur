@@ -6,7 +6,7 @@
 pkgbase=linux-cik
 _srcname=linux-4.9
 pkgver=4.9
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 url="https://www.kernel.org/"
 license=('GPL2')
@@ -34,7 +34,7 @@ sha256sums=(# kernel
             # config
             'd30eae8ce9d0164ab8d3fcac047eff7f0874dce7e7a30b8a0193d16f029c9245'
             # config.x86_64
-            'c149afccbb6222b60b76519fc60cecc3ed6331dfb9fa4f82b2db586c5b3034fd'
+            '7be3b9ea39e7f3b875c272485c0ba0af314aa1ef249bab1452a1d8f0655597d0'
             # 99-linux-cik.hook
             '834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0'
             # linux-cik.preset
@@ -107,7 +107,7 @@ build() {
 }
 
 _package() {
-  pkgdesc="The ${pkgbase/linux/Linux} kernel and modules for cik support in amdgpu"
+  pkgdesc="The ${pkgbase/linux/Linux} kernel and modules for si (southern islands) and cik (sea islands) support in amdgpu"
   [ "${pkgbase}" = "linux" ] && groups=('base')
   depends=('coreutils' 'linux-firmware' 'kmod' 'mkinitcpio>=0.7')
   optdepends=('crda: to set the correct wireless channels of your country')
