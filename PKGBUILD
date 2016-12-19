@@ -8,7 +8,7 @@ pkgdesc='Command line client for speedtest.net written in Go'
 url=https://github.com/zpeters/speedtest
 arch=('any')
 license=('GPL3')
-makedepends=('go')
+makedepends=('git' 'go')
 source=("$pkgname-${_pkgver//-}.tar.gz::$url/archive/v$_pkgver.tar.gz"
         "fix-typo-that-set-wrong-upload-speeds.patch::$url/commit/8748f9a95838fb31ba6fac973c47b7973c722cdd.patch")
 sha512sums=('9b5222e2b2287afd808d90306761021551a1aa073506efca7dd14e33433c098b32a3933328d293f0ead500fbe546f94ee2a18c1eef48a126373d49063af4c73d'
