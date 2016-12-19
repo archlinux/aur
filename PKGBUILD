@@ -1,7 +1,7 @@
 # Contributor: grimi <grimi at poczta dot fm>
 
 pkgname=mime-archpkg
-pkgver=0.3.6.0
+pkgver=0.3.6.1
 pkgrel=1
 pkgdesc="mime type for archlinux packages"
 arch=('any')
@@ -12,7 +12,7 @@ makedepends=('librsvg' 'imagemagick')
 install=${pkgname}.install
 source=(${pkgname}.{xml,sh} {hicolor,gnome,Tango,oxygen,nuoveXT2,Faenza,Faience,NITRUX,Numix,breeze,FaenzaFlattr2-Zephyr,elementary}.svgz)
 sha1sums=('93b739fec9667c80837d38ff67d4a69faf43e4e8'
-          '310165b21fb8d3a0b82e06fce5eedcb98f23f9e9'
+          '09973447b96ccb9e9a8a7a159384973371864802'
           'ef315dab623a0539dd1919bf983473150de1002c'
           'd645b34f08693c5e9814f0f023288b780dca7471'
           '59bf9af96487b4d90926acfd6df9242504465b58'

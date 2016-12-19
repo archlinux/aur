@@ -1,6 +1,6 @@
 pkgbase = mime-archpkg
 	pkgdesc = mime type for archlinux packages
-	pkgver = 0.3.6.0
+	pkgver = 0.3.6.1
 	pkgrel = 1
 	url = http://www.archlinux.org
 	install = mime-archpkg.install
@@ -25,7 +25,7 @@ pkgbase = mime-archpkg
 	source = FaenzaFlattr2-Zephyr.svgz
 	source = elementary.svgz
 	sha1sums = 93b739fec9667c80837d38ff67d4a69faf43e4e8
-	sha1sums = 310165b21fb8d3a0b82e06fce5eedcb98f23f9e9
+	sha1sums = 09973447b96ccb9e9a8a7a159384973371864802
 	sha1sums = ef315dab623a0539dd1919bf983473150de1002c
 	sha1sums = d645b34f08693c5e9814f0f023288b780dca7471
 	sha1sums = 59bf9af96487b4d90926acfd6df9242504465b58
