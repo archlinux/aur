@@ -8,7 +8,7 @@
 _pkgname=ffmpeg
 pkgname=ffmpeg-headless
 pkgver=3.2.2
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc='Complete solution to record, convert and stream audio and video; optimised for server (headless) systems'
 arch=('i686' 'x86_64' 'armv7h' 'armv6h')
@@ -16,19 +16,13 @@ url='http://ffmpeg.org/'
 license=('GPL3') #enabling libfdk_aac makes ffmpeg incompatible with the GPL!
 depends=('bzip2' 'fontconfig' 'fribidi' 'glibc' 'gmp' 'gnutls' 'gsm'
 		 'lame' 'libmodplug'
-		 'libtheora'
+		 'libtheora' 'libva-headless'
 		 'libwebp' 'opencore-amr' 'openjpeg2' 'opus'
 		 'schroedinger' 'speex' 'v4l-utils' 'xz' 'zlib'
 		 'libass.so' 'libbluray.so'
 		 'libvorbisenc.so' 'libvorbis.so' 'libvpx.so'
 		 'libx264.so' 'libx265.so' 'libxvidcore.so'
 		 'rtmpdump')
-optdepends=('vid.stab: Video stabilization library'
-            'libfdk-aac: AAC-HE support'
-            'libiec61883: FireWire DV/HDV support'
-            'libavc1394: FireWire DV/HDV support'
-            'netcdf: Binaural listening support'
-            'libsoxr: SoX resampler library')
 makedepends=('hardening-wrapper' 'yasm')
 provides=('libavcodec.so' 'libavdevice.so' 'libavfilter.so' 'libavformat.so'
           'libavresample.so' 'libavutil.so' 'libpostproc.so' 'libswresample.so'
@@ -73,6 +67,7 @@ build() {
 	--enable-libx265 \
 	--enable-libxvid \
 	--enable-shared \
+	--enable-vaapi \
 	--enable-version3 \
 	--enable-librtmp \
 	--enable-runtime-cpudetect \
@@ -81,7 +76,6 @@ build() {
 	--disable-fontconfig \
 	--disable-libfreetype \
 	--disable-vdpau \
-	--disable-vaapi \
 	--disable-htmlpages #\
     #--enable-libiec61883
     #--enable-libsoxr \
