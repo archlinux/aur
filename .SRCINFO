@@ -1,6 +1,6 @@
 pkgbase = vkplayer
 	pkgdesc = VK audio player built in Python & GTK3.
-	pkgver = 0.4
+	pkgver = 0.5
 	pkgrel = 1
 	url = http://github.com/and3rson/vkplayer
 	arch = any
@@ -12,6 +12,9 @@ pkgbase = vkplayer
 	depends = gobject-introspection-runtime
 	depends = python2-dbus
 	depends = python2-pyglet
+	depends = redis
+	depends = aur/avbin
+	optdepends = redis: to control player via redis pub/sub bus
 	options = !strip
 	source = git+https://github.com/and3rson/vkplayer.git
 	md5sums = SKIP

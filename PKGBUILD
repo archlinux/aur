@@ -1,11 +1,12 @@
 pkgname=vkplayer
-pkgver=0.4
+pkgver=0.5
 pkgrel=1
 pkgdesc="VK audio player built in Python & GTK3."
 arch=('any')
 url="http://github.com/and3rson/vkplayer"
 license=('GPL2')
-depends=('python2' 'gtk3' 'libkeybinder3' 'webkitgtk' 'gobject-introspection-runtime' 'python2-dbus' 'python2-pyglet' 'redis')
+depends=('python2' 'gtk3' 'libkeybinder3' 'webkitgtk' 'gobject-introspection-runtime' 'python2-dbus' 'python2-pyglet' 'redis' 'aur/avbin')
+optdepends=('redis: to control player via redis pub/sub bus')
 options=('!strip')
 source=('git+https://github.com/and3rson/vkplayer.git')
 
