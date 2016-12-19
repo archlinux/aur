@@ -1,0 +1,19 @@
+pkgbase = gluqlo-git
+	pkgdesc = Flip clock screensaver like Fliqlo
+	pkgver = r25.b36de79
+	pkgrel = 1
+	url = https://github.com/alexanderk23/gluqlo
+	arch = x86_64
+	license = custom:isc
+	makedepends = git
+	depends = sdl
+	depends = sdl_ttf
+	depends = sdl_gfx
+	optdepends = xscreensaver
+	provides = gluqlo
+	conflicts = gluqlo
+	source = gluqlo::git+https://github.com/alexanderk23/gluqlo.git
+	md5sums = SKIP
+
+pkgname = gluqlo-git
+
