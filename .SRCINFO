@@ -11,7 +11,7 @@ pkgbase = yay-bin
 	depends = sudo
 	provides = yay
 	conflicts = yay
-	source_x86_64 = https://github.com/Jguer/yay/releases/download/v1.76/yay_1.76_amd64.tar.gz
-	md5sums_x86_64 = 23abfa06ebc457cbed08019bddef4596
+	source_x86_64 = https://github.com/Jguer/yay/releases/download/v1.88/yay_1.88_amd64.tar.gz
+  md5sums_x86_64 = 785d27f15704e4a1c187820e879483c6
 
 pkgname = yay-bin
