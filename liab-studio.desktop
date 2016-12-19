@@ -1,0 +1,11 @@
+[Desktop Entry]
+Encoding=UTF-8
+Version=1.0
+Name=Liab Studio
+GenericName=Data logging studio
+Exec=liab-studio
+Terminal=false
+Icon=liab-studio
+Type=Application
+Categories=Application;Education;Electronics;Science;
+Comment=LiaB Studio is an Integerated Experimenting Enviroment (with data logging capabilities).
