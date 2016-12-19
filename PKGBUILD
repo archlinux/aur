@@ -3,7 +3,7 @@
 
 pkgname=('python-chatterbot' 'python2-chatterbot')
 pkgver=0.5.3
-pkgrel=3
+pkgrel=4
 pkgdesc="ChatterBot is a machine learning, conversational dialog engine."
 arch=("any")
 url="https://github.com/gunthercox/ChatterBot"
@@ -11,11 +11,9 @@ license=('BSD')
 source=("https://github.com/gunthercox/ChatterBot/archive/$pkgver.tar.gz")
 makedepends=("python-requests"
 	     "python-pymongo" 
-	     "python-textblob-git" 
 	     "python-requests" 
 	     "python2-setuptools" 
 	     "python2-pymongo" 
-	     "python2-textblob-git" 
 	     "python2-requests")
 build() {
 	cd "ChatterBot-$pkgver"
@@ -25,7 +23,6 @@ build() {
 package_python-chatterbot() {
 	depends=("python" 
 		 "python-nltk" 
-		 "python-pymongo" 
 		 "python-twitter"
 		 "python-numpy"
 		 "python-jsondatabase")
@@ -37,7 +34,6 @@ package_python2-chatterbot() {
 	makedepends=()
 	depends=("python2" 
 		 "python2-nltk" 
-		 "python2-pymongo" 
 		 "python2-twitter"
 		 "python2-numpy"
 		 "python2-jsondatabase")
