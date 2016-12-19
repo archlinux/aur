@@ -10,7 +10,7 @@
 _pack=fuzzy-logic-toolkit
 pkgname=octave-$_pack
 pkgver=0.4.5
-pkgrel=2
+pkgrel=3
 pkgdesc="A mostly MATLAB-compatible fuzzy logic toolkit for Octave."
 arch=(any)
 url="http://octave.sourceforge.net/$_pack/"
