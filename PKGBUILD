@@ -23,26 +23,32 @@ _1st_apple_font_dir="/usr/share/fonts/TTF"
 _2nd_apple_font_dir="/usr/share/fonts/Type1"
 _digest="http://www.imagemagick.org/download/digest.rdf"
 _srcname="ImageMagick"
-_srcver=$(curl -s "$_digest" | grep -o "${_srcname}-7[0-9\.-]*\.tar\.xz" | sed 's/[^0-9\.-]*//g' | sed -r 's/.//;s/.{2}$//')
-_srcverregex=$(echo "$_srcver" | sed 's/\./\\\./g') # translate source version to a regular expression
+_srcver="$(curl -s "$_digest" | grep -o "${_srcname}-7[0-9\.-]*\.tar\.xz" | \
+                                sed 's/[^0-9\.-]*//g'                     | \
+                                sed -r 's/.//;s/.{2}$//')"
+_srcverregex="$(echo "$_srcver" | sed 's/\./\\\./g')" # translate to a regular expression
 pkgname=imagemagick-full
-pkgver=$(echo "$_srcver" | tr '-' '.')
-pkgrel=1
+pkgver="$(echo "$_srcver"| tr '-' '.')"
+pkgrel=2
 pkgdesc="An image viewing/manipulation program (Q32 HDRI with all libs and features)"
 arch=('i686' 'x86_64')
 url="http://www.imagemagick.org/"
 license=('custom')
-depends=('jemalloc' 'bzip2' 'libx11' 'libxext' 'libxt' 'libsm' 'zlib' 'autotrace-nomagick' 'fftw' 'flif-git'
-         'libfpx' 'djvulibre' 'ttf-dejavu' 'fontconfig' 'freetype2' 'libraqm' 'ghostscript' 'gsfonts'
-         'graphviz' 'jbigkit' 'libjpeg-turbo' 'lcms' 'lcms2' 'openjpeg2' 'liblqr' 'xz' 'openexr' 'pango'
-         'libpng' 'librsvg' 'libtiff' 'libwebp' 'libwmf' 'libxml2' 'libmpeg2' 'opencl-icd-loader')
+depends=('jemalloc' 'bzip2' 'libx11' 'libxext' 'libxt' 'libsm' 'zlib'
+         'autotrace-nomagick' 'fftw' 'flif-git' 'libfpx' 'djvulibre'
+         'ttf-dejavu' 'fontconfig' 'freetype2' 'libraqm' 'ghostscript'
+         'gsfonts' 'graphviz' 'jbigkit' 'libjpeg-turbo' 'lcms' 'lcms2'
+         'openjpeg2' 'liblqr' 'xz' 'openexr' 'pango' 'libpng' 'librsvg'
+         'libtiff' 'libwebp' 'libwmf' 'libxml2' 'libmpeg2'
+         'opencl-icd-loader')
 optdepends=('ttf-mac-fonts: for Apple fonts support')
 makedepends=('opencl-headers')
 provides=("imagemagick"
           "libMagickCore-${pkgver%%.*}.Q32HDRI.so"
           "libMagickWand-${pkgver%%.*}.Q32HDRI.so"
             "libMagick++-${pkgver%%.*}.Q32HDRI.so")
-conflicts=('imagemagick' 'imagemagick-git' 'imagemagick-full-git' 'imagemagick-fftw' 'imagemagick-no-hdri')
+conflicts=('imagemagick' 'imagemagick-git' 'imagemagick-full-git'
+           'imagemagick-fftw' 'imagemagick-no-hdri')
 backup=("etc/ImageMagick-${pkgver%%.*}/coder.xml"
         "etc/ImageMagick-${pkgver%%.*}/colors.xml"
         "etc/ImageMagick-${pkgver%%.*}/delegates.xml"
@@ -58,7 +64,10 @@ backup=("etc/ImageMagick-${pkgver%%.*}/coder.xml"
         "etc/ImageMagick-${pkgver%%.*}/type-windows.xml")
 options=('!docs' 'libtool' '!emptydirs')
 source=("http://www.imagemagick.org/download/${_srcname}-${_srcver}.tar.xz")
-sha256sums=("$(curl -s ${_digest} | grep -A5 "${_srcname}-${_srcverregex}\.tar\.xz" | grep 'sha256' | grep -oE '>[[:alnum:]]*?<' | sed 's/[><]//g')")
+sha256sums=("$(curl -s ${_digest} | grep -A5 "${_srcname}-${_srcverregex}\.tar\.xz" | \
+                                    grep 'sha256'                                   | \
+                                    grep -oE '>[[:alnum:]]*?<'                      | \
+                                    sed 's/[><]//g')")
 
 build() {
 	cd "$_srcname"-"$_srcver"
