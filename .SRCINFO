@@ -1,0 +1,16 @@
+pkgbase = openconcerto-beta
+	pkgdesc = ERP ILM Openconcerto beta channel client multi and mono
+	pkgver = 1.5b1
+	pkgrel = 2
+	url = https://www.openconcerto.org/
+	arch = any
+	license = GPL3
+	depends = jre7-openjdk
+	depends = jre8-openjdk
+	depends = jre7-openjdk-headless
+	depends = jre8-openjdk-headless
+	source = http://www.openconcerto.org/fr/telechargement/betas/1.5b1/openconcerto-1.5b1.deb
+	sha256sums = fc1517fbf3678f1545e08d724fde9e8ecca37e7de72f0b853976c7d800acd086
+
+pkgname = openconcerto-beta
+
