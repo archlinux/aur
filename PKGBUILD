@@ -5,7 +5,7 @@
 pkgname=ungoogled-chromium
 pkgver=55.0.2883.95
 pkgrel=1
-pkgdesc=" Modifications to Google Chromium for removing Google integration and enhancing privacy, control, and transparency"
+pkgdesc="Modifications to Google Chromium for removing Google integration and enhancing privacy, control, and transparency"
 arch=('x86_64')
 url="https://github.com/Eloston/ungoogled-chromium"
 license=('BSD')
