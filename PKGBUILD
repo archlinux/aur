@@ -4,11 +4,12 @@
 pkgname=vivaldi-widevine
 pkgdesc='A browser plugin designed for the viewing of premium video content, standalone for vivaldi'
 pkgver=1.4.8.903
-pkgrel=1
+pkgrel=2
 epoch=1
 arch=('i686' 'x86_64')
 url='http://www.google.com/chrome'
 license=('custom:chrome')
+depends=('vivaldi-ffmpeg-codecs')
 options=('!strip')
 _chrome_ver=55.0.2883.87
 conflicts=("google-chrome")
