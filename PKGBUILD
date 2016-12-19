@@ -10,7 +10,7 @@
 _pack=fl-core
 pkgname=octave-$_pack
 pkgver=1.0.0
-pkgrel=3
+pkgrel=4
 pkgdesc="The package contains code for basic functions in Fuzzy Logic for Octave."
 arch=(any)
 url="http://octave.sourceforge.net/$_pack/"
