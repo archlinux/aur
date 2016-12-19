@@ -10,7 +10,7 @@ optdepends=(
     'arduino: for Arduino programming'
     'cura: for crafting gcode files from 3D models'
     'printrun: to drive the printer through USB with pronterface')
-source=('https://github.com/Lauszus/Sanguino/releases/download/1.0.0/Sanguino.zip'
+source=('https://github.com/Lauszus/Sanguino/releases/download/1.0.0/Sanguino-1.0.0.zip'
         'discovery_200.json')
 sha256sums=('1bfe7707894907a2792884fc726e1fe9251842fac75eaf5ef451bba0c18cbb4e'
             'af36f64f8ec3832cf996a315d16f3a3f0a269ee233a1a3e5c76ada03135aeace')
