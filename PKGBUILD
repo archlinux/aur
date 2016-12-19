@@ -8,7 +8,7 @@
 
 pkgbase=sagemath-git
 pkgname=(sagemath-git sagemath-jupyter-git)
-pkgver=7.5.beta6.r0.g608cfc2
+pkgver=7.5.rc0.r0.ga4df481584
 pkgrel=1
 pkgdesc="Open Source Mathematics Software, free alternative to Magma, Maple, Mathematica, and Matlab"
 arch=(i686 x86_64)
@@ -31,7 +31,7 @@ makedepends=(cython2 boost ratpoints symmetrica fflas-ffpack python2-jinja coin-
   mcqd coxeter3 cryptominisat2 modular_decomposition bliss-graphs tdlib python2-pkgconfig meataxe git) # libfes
 source=("git://git.sagemath.org/sage.git#branch=develop" 
         env.patch skip-check.patch cython-sys-path.patch is-package-installed.patch package.patch disable-fes.patch
-        jupyter-path.patch test-optional.patch python-2.7.11.patch ecm-7.patch increase-rtol.patch pynac-0.7.1.patch)
+        jupyter-path.patch test-optional.patch ecm-7.patch increase-rtol.patch)
 md5sums=('SKIP'
          '70b7c1c5da6400e1ae48cf1e5a2d2879'
          '17771a1e59e14535cc837a189d3cb8a7'
@@ -41,10 +41,8 @@ md5sums=('SKIP'
          'a40b32a7b5d83379745b538be85064c8'
          'e618d534f42428e298e12b1aa94c1a31'
          '921017fd2d9dadbb6b602ac0476bfd58'
-         'ef927896f2071b442b1d07d7e69f5f3a'
          'e4a91dcedbc5e617919e5a9bf1310f24'
-         '1db8db7bfed5f991d55ae11d810ff5cb'
-         '59b963e9c04cc733eaec1f427353fe28')
+         '1db8db7bfed5f991d55ae11d810ff5cb')
 
 pkgver() {
   cd sage
@@ -67,8 +65,6 @@ prepare(){
   patch -p0 -i ../test-optional.patch
 # set jupyter path
   patch -p0 -i ../jupyter-path.patch
-# fix timeit with Python 2.7.11
-  patch -p0 -i ../python-2.7.11.patch
 # search system paths for cython includes
   patch -p1 -i ../cython-sys-path.patch
 # fix regressions with ECM 7
@@ -83,8 +79,6 @@ prepare(){
   patch -p0 -i ../disable-fes.patch
 # replace is_package_installed usage http://trac.sagemath.org/ticket/20377
   patch -p1 -i ../is-package-installed.patch
-# port to pynac 0.7.1
-  patch -p1 -i ../pynac-0.7.1.patch
 
 # use python2
   sed -e 's|#!/usr/bin/env python|#!/usr/bin/env python2|' -e 's|exec python|exec python2|' -i src/bin/*
