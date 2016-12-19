@@ -5,7 +5,7 @@
 _pkgname="efibootmgr"
 pkgname="${_pkgname}-git"
 
-pkgver=0.12
+pkgver=14
 pkgrel=1
 pkgdesc="Tool to modify UEFI Firmware Boot Manager Variables - GIT master branch"
 arch=('x86_64' 'i686')
@@ -51,9 +51,9 @@ package() {
 	cd "${srcdir}/${_pkgname}_build/"
 	
 	install -d "${pkgdir}/usr/bin/"
-	install -D -m0755 "${srcdir}/${_pkgname}_build/src/efibootmgr/efibootmgr" "${pkgdir}/usr/bin/efibootmgr"
+	install -D -m0755 "${srcdir}/${_pkgname}_build/src/efibootmgr" "${pkgdir}/usr/bin/efibootmgr"
 	
 	install -d "${pkgdir}/usr/share/man/man8/"
-	install -D -m0644 "${srcdir}/${_pkgname}_build/src/man/man8/efibootmgr.8" "${pkgdir}/usr/share/man/man8/efibootmgr.8"
+	install -D -m0644 "${srcdir}/${_pkgname}_build/src/efibootmgr.8" "${pkgdir}/usr/share/man/man8/efibootmgr.8"
 	
 }
