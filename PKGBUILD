@@ -1,6 +1,6 @@
 pkgname=onlyoffice-bin
 pkgver=4.1.2
-pkgrel=33
+pkgrel=42
 pkgdesc='The most complete and feature-rich office and productivity suite'
 arch=('x86_64')
 url='http://www.onlyoffice.com/'
