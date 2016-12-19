@@ -1,34 +1,33 @@
 # Maintainer: Dustin Falgout <dustin@antergos.com>
 
 pkgname=lightdm-webkit2-greeter
-pkgver=2.1.6
+pkgver=2.2
 pkgrel=1
-pkgdesc="A webkit2 greeter for LightDM"
+pkgdesc='LightDM greeter that uses WebKit2 for theming via HTML/JavaScript.'
 arch=('i686' 'x86_64')
-url="https://github.com/antergos/lightdm-webkit2-greeter"
+url='https://github.com/antergos/lightdm-webkit2-greeter'
 license=('GPL3')
-source=("${pkgname}-${pkgver}.zip::https://github.com/antergos/${pkgname}/archive/${pkgver}.zip")
-makedepends=('gnome-doc-utils' 'gobject-introspection' 'intltool' 'gnome-common' 'exo' 'git')
-depends=('lightdm' 'webkit2gtk>=2.10.8' 'gtk3>=3.18')
-provides=('lightdm-webkit-greeter' 'lightdm-webkit-theme-antergos')
+groups=('system')
+makedepends=('gobject-introspection' 'meson' 'gettext')
+depends=('lightdm' 'webkit2gtk>=2.12' 'accountsservice')
+provides=('lightdm-webkit-greeter')
 conflicts=('lightdm-webkit-greeter' 'lightdm-webkit-theme-antergos')
 replaces=('lightdm-webkit-greeter' 'lightdm-webkit-theme-antergos')
 backup=("etc/lightdm/${pkgname}.conf")
-md5sums=('29f653377cb59475cd478b650ed24aef')
+source=("${pkgname}-${pkgver}.zip::https://github.com/Antergos/${pkgname}/archive/${pkgver}.zip")
+md5sums=('257a72ef0bac98ce892ef3ca0c2a4634')
+
 
 build() {
-	cd "${srcdir}/${pkgname}-${pkgver}"
+	cd "${srcdir}/${pkgname}-${pkgver}/build"
 
-	./autogen.sh \
-			--prefix=/usr \
-			--sysconfdir=/etc \
-			--libexecdir=/usr/lib/lightdm \
-			--bindir=/usr/bin \
-			--sbindir=/usr/bin
-	make
+	meson --prefix=/usr --libdir=lib ..
+	ninja
 }
 
 package() {
-	cd "${srcdir}/${pkgname}-${pkgver}"
-	make DESTDIR="${pkgdir}" install 
+	cd "${srcdir}/${pkgname}-${pkgver}/build"
+
+	DESTDIR=${pkgdir} ninja install
 }
+
