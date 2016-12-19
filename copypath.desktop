@@ -3,7 +3,7 @@ Type=Service
 Icon=edit-copy
 Actions=CopyPath
 X-KDE-Priority=TopLevel
-ServiceTypes=KonqPopupMenu/Plugin,application/octet-stream,inode/directory,inode/directory-locked,inode/directory-hidden
+ServiceTypes=KonqPopupMenu/Plugin,,all/allfiles,application/octet-stream,inode/directory,inode/directory-locked,inode/directory-hidden
 
 [Desktop Action CopyPath]
 Name=Copy Path
