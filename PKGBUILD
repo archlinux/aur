@@ -11,7 +11,7 @@ license=('MIT')
 depends=('go')
 optdepends=('perl-datetime' 'perl-json' 'perl-switch' 'gnuplot')
 makedepends=('git')
-source=("sloc::git+http://git.bytbox.net/sloc/#tag=v$pkgver")
+source=("sloc::git+$url/#tag=v$pkgver")
 sha512sums=('SKIP')
 
 build() {
@@ -27,7 +27,7 @@ package() {
   install -Dm755 sloc/sloc "$pkgdir"/usr/bin/sloc
   install -Dm755 reposloc "$pkgdir"/usr/bin/reposloc
   install -Dm644 reposloc.1 "$pkgdir"/usr/share/man/man1/reposloc.1
-  install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
+  install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/sloc/LICENSE
 }
 
 # vim:set ts=2 sw=2 et:
