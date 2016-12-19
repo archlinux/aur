@@ -25,11 +25,13 @@ _digest="http://www.imagemagick.org/download/digest.rdf"
 _srcname="ImageMagick"
 _srcver="$(curl -s "$_digest" | grep -o "${_srcname}-7[0-9\.-]*\.tar\.xz" | \
                                 sed 's/[^0-9\.-]*//g'                     | \
-                                sed -r 's/.//;s/.{2}$//')"
+                                sed -r 's/.//;s/.{2}$//'                  | \
+                                sort -r                                   | \
+                                head -n1)"
 _srcverregex="$(echo "$_srcver" | sed 's/\./\\\./g')" # translate to a regular expression
 pkgname=imagemagick-full
 pkgver="$(echo "$_srcver"| tr '-' '.')"
-pkgrel=3
+pkgrel=1
 pkgdesc="An image viewing/manipulation program (Q32 HDRI with all libs and features)"
 arch=('i686' 'x86_64')
 url="http://www.imagemagick.org/"
