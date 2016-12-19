@@ -25,4 +25,7 @@ package()
 {
   cd "$srcdir/kalliope-${pkgver}"
   python2 setup.py install --root=${pkgdir} --optimize=1
+
+  # hack: trigger/snowboy/x86_64/_snowboydetect.so is shipped linked against libcblas.so.3 not provided by cblas
+  ln -sf /usr/lib/libcblas.so ${pkgdir}/usr/lib/libcblas.so.3
 }
