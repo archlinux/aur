@@ -4,13 +4,13 @@
 # Contributor: judd <jvinet@zeroflux.org>
 
 pkgname=openssh-git
-pkgver=7.2.P1.r126.g6310ef2
+pkgver=7.4.P1.r0.g4a354fc2
 pkgrel=1
 pkgdesc='Free version of the SSH connectivity tools'
 url='http://www.openssh.org/portable.html'
 license=('custom:BSD')
 arch=('i686' 'x86_64')
-makedepends=('linux-headers')
+makedepends=('git' 'linux-headers')
 depends=('krb5' 'openssl' 'libedit' 'ldns')
 optdepends=('xorg-xauth: X11 forwarding'
             'x11-ssh-askpass: input passphrase in X')
