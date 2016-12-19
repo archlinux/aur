@@ -3,7 +3,7 @@
 
 pkgname=etherpad-lite
 pkgver=1.6.0
-pkgrel=1
+pkgrel=0
 epoch=1
 pkgdesc="Lightweight fork of etherpad based on javascript"
 arch=(any)
@@ -19,23 +19,22 @@ backup=('usr/share/webapps/etherpad-lite/settings.json'
         'etc/webapps/etherpad-lite/settings.json')
 install='etherpad-lite.install'
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ether/${pkgname}/archive/${pkgver}.tar.gz"
-        "etherpad-lite.service"
-	"update-packages.patch")
+        "etherpad-lite.service")
 sha512sums=('7f850d4a2a0d57ed7f60545779261bdd6be5e47c9a616edd61a99b5f15046d68710458a5eb1f76bb7e08e7a34b752bbcb6fb6e419924d971137805e78fdaf512'
-            '7b775171da97a3e7ad44a2b1b319970fd307a88e90a171c49bf70d2382767175e98bb21c7054e38ee6c066bd2dfadf94d28a9ff31d4f21145ec4441caa13c4d7'
-            '687c315ecbbd3a7b28061758d43010aa38c1b227b0d2296fc82144152e616259fcabf039c83b0ce2c0d5891127fd18454ec747860df42f144baec6bf6436f7e4')
+            '7b775171da97a3e7ad44a2b1b319970fd307a88e90a171c49bf70d2382767175e98bb21c7054e38ee6c066bd2dfadf94d28a9ff31d4f21145ec4441caa13c4d7')
 
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"
 
-  for s in "${source[@]}"; do
-    case "$s" in (*.patch)
-      s=`echo $s | awk '{split($0,a,":"); print a[1]}'`
-      cp "../${s}" .
-      patch --merge -l -p1 < "${s}"
-      rm -f "${s}"
-    esac
-  done
+#No patches included
+
+#  for s in "${source[@]}"; do
+#    case "$s" in (*.patch)
+#      cp "../${s}" .
+#      patch -p0 < "${s}"
+#      rm -f "${s}"
+#    esac
+#  done
 }
 
 build() {
