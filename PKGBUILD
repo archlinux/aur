@@ -1,11 +1,10 @@
-# vim:set ts=2 sw=2 et ft=sh tw=100: expandtab
-# Maintainer: Piotr Rogoża <rogoza dot piotr at gmail dot com>
+# Maintainer: Felip Manyer i Ballester <archlinux at res hyphen telae dot cat>
 # Contributor: Piotr Rogoża <rogoza dot piotr at gmail dot com>
 
 pkgname=vim-misc-xolox
-pkgver=1.17.4
-pkgrel=2
-_src_id=23119
+pkgver=1.17.6
+pkgrel=1
+_src_id=23300
 pkgdesc='Miscellaneous auto-load Vim scripts'
 arch=('any')
 url='http://peterodding.com/code/vim/misc'
@@ -13,8 +12,16 @@ url='http://peterodding.com/code/vim/misc'
 license=('MIT')
 conflicts=(vim-misc-xolox-git)
 source=("${pkgname}-${pkgver}.zip::http://www.vim.org/scripts/download_script.php?src_id=$_src_id")
-sha256sums=('ee1c5026afedf584db8bdd49e9020e9ab5cd3e2f05af34a75530b1737e6f1f88')
-package(){
+sha256sums=('139910538cb3377edc9d0f41dc800e66d83bbfce3bf6d704c556eccdbb0eae54')
+
+build() {
+  cd "$srcdir"
+  find . -type f -name "*.md" -exec rm -f {} \;
+  rm addon-info.json
+  rm .gitignore
+}
+
+package() {
   cd "$srcdir"
   _vim_dir='/usr/share/vim/vimfiles'
   install -dm755 "$pkgdir"/$_vim_dir
