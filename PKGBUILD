@@ -1,6 +1,6 @@
 # Maintainer: nroi <nroi@mailbox.org>
 pkgname=cpcache-git
-pkgver=r61.4a3239c
+pkgver=r66.80cd2f4
 pkgrel=1
 pkgdesc="central pacman cache"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
@@ -17,7 +17,7 @@ source=('git+https://github.com/nroi/cpcache.git'
 )
 sha256sums=('SKIP'
             '0098e749b19617c0f7d619d47a3bc3015bab62e9ad0916087502daff672fb309'
-            '159eb7ffd4fc7b44aa15c122aeddf8d433297352def6f0bbfc6a15df25fd8dcb'
+            'e326c1097269a47a35fe327d839a566d90888339f7cc00b2207e0accf441e6cd'
             '4dbfd2b7934438fdde9b182b5e455f04176865063c8943be06bdfdf82ce38529'
 )
 
@@ -30,7 +30,7 @@ package() {
   cd "${srcdir}/${pkgname%-git}"
   /usr/bin/mix deps.get
   /usr/bin/mix release.init
-  MIX_ENV=prod mix release --env=prod
+  MIX_ENV=prod /usr/bin/mix release --env=prod
   mkdir -p "${pkgdir}/usr/share/"
   mkdir -p "${pkgdir}/var/lib/${pkgname%-git}"
   ln -s "/var/lib/${pkgname%-git}" "${srcdir}/${pkgname%-git}/rel/${pkgname%-git}/var"
