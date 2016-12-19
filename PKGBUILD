@@ -1,7 +1,7 @@
 # Maintainer:  Johannes Schlatow <johannes.schlatow@googlemail.com>
 
 pkgname=taskopen
-pkgver=1.1.2
+pkgver=1.1.3
 pkgrel=1
 pkgdesc="Script for taking notes and open urls with taskwarrior"
 arch=('i686' 'x86_64')
