@@ -1,0 +1,14 @@
+pkgbase = docker2aci-bin
+	pkgdesc = CLI tool to convert Docker images to ACI.
+	pkgver = v0.14.0
+	pkgrel = 1
+	url = https://github.com/appc/docker2aci
+	arch = any
+	license = Apache2
+	source = https://github.com/appc/docker2aci/releases/download/v0.14.0/docker2aci-v0.14.0.tar.gz
+	source = https://raw.githubusercontent.com/appc/docker2aci/v0.14.0/LICENSE
+	sha1sums = 5d2f9f05a51cc18b4f555353b847e1c4370575b5
+	sha1sums = c700a8b9312d24bdc57570f7d6a131cf63d89016
+
+pkgname = docker2aci-bin
+
