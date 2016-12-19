@@ -4,14 +4,14 @@
 
 pkgname=aseprite
 pkgver=1.1.11
-pkgrel=1
+pkgrel=2
 pkgdesc='Create animated sprites and pixel art'
 arch=('x86_64' 'i686')
 url='http://www.aseprite.org/'
 license=('custom')
 depends=('pixman' 'curl' 'giflib' 'zlib' 'libpng' 'libjpeg-turbo' 'tinyxml' 'freetype2' 'libwebp')
 makedepends=('cmake')
-conflicts=('aseprite-git' 'aseprite-gpl' 'cmark' 'gtest')
+conflicts=('aseprite-git' 'aseprite-gpl')
 source=("git+https://github.com/aseprite/aseprite.git#tag=v${pkgver}"
         "aseprite.desktop")
 sha256sums=('SKIP'
@@ -55,6 +55,8 @@ package() {
   install -Dm644 "../data/icons/ase48.png" \
     "$pkgdir/usr/share/pixmaps/$pkgname.png"
   install -Dm644 "../EULA.txt" "$pkgdir/usr/share/licenses/$pkgname/EULA.txt"
+  # WARNING: fix for upstream including gtest and cmark in "make install"
+  rm -rf "$pkgdir/usr/include" "$pkgdir/usr/lib" "$pkgdir/usr/share/man" "$pkgdir/usr/bin/cmark"
 }
 
 # vim:set ts=2 sw=2 et:
