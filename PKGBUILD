@@ -3,7 +3,7 @@
 
 pkgname=droidcam
 pkgver=6.0
-pkgrel=9
+pkgrel=10
 pkgdesc='A tool for using your android device as a wireless/usb webcam'
 arch=('i686' 'x86_64')
 url="https://www.dev47apps.com/$pkgname/linuxx"
