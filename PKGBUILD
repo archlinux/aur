@@ -7,8 +7,8 @@
 # https://github.com/cacack/pkgbuilds/tree/master/ccextractor
 
 pkgname=ccextractor
-pkgver=0.82
-pkgrel=2
+pkgver=0.84
+pkgrel=1
 pkgdesc="A fast closed captions extractor for MPEG files."
 arch=('i686' 'x86_64')
 url="http://www.ccextractor.org"
@@ -17,15 +17,15 @@ depends=('gcc-libs' 'tesseract')
 source=(
    http://downloads.sourceforge.net/ccextractor/$pkgname.src.$pkgver.zip
 )
-sha512sums=('6869542d42058b46444e8091da59a5c1a76bca2e0bbfe4f55b5a860828020e11ae12681736a90145c8c75c6328871da4447ee9dca4010586aa116ed318767888')
+sha512sums=('1d6671c4d42915a61f3fd48ea693d4791048bc052a9859fbe4bdf32e551aa880517f0b6712e7c7588fe49127e491324c1eee9c1a17cb805879d6a03c775480cd')
 
 build() {
-  cd "$srcdir/$pkgname.$pkgver/linux"
+  cd "$srcdir/$pkgname/linux"
   ./build
 }
 
 package() {
-  cd "$srcdir/$pkgname.$pkgver/linux"
+  cd "$srcdir/$pkgname/linux"
   install -Dm755 "$pkgname" "$pkgdir/usr/bin/$pkgname"
 }
 
