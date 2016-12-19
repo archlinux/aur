@@ -1,0 +1,15 @@
+pkgbase = swc-hosts
+	pkgdesc = Safely parse /etc/hosts from Someone Who Cares.
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/clarcharr/swc-hosts
+	arch = i686
+	arch = x86_64
+	license = CC0
+	makedepends = rust
+	source = git+https://github.com/clarcharr/swc-hosts#
+	validpgpkeys = 4BDA23A98EE4E049CBC3BA6C69DA5B388573EE35
+	sha256sums = SKIP
+
+pkgname = swc-hosts
+
