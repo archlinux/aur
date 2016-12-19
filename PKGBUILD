@@ -3,8 +3,7 @@
 # Submitter: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=jabref-git
-_release=3.8
-pkgver=3.8.v_2.9.2.r5972.832417f
+pkgver=3.8.1_v_2.9.2.r6071.958c50f71
 pkgrel=1
 pkgdesc="GUI frontend for BibTeX, written in Java -- built from git"
 arch=('any')
@@ -24,8 +23,8 @@ md5sums=('SKIP'
 
 pkgver() {
   cd ${srcdir}/${pkgname%-git}
-  printf "%s" "${_release}.$(git describe --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
-#  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  _release=$(sed -n 's/.*version = \"\(.*\)-dev\"/\1/p' build.gradle)
+  printf "%s" "${_release}_$(git describe --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
 }
 
 build() {
@@ -38,8 +37,9 @@ build() {
 package() {
   cd "${srcdir}/${pkgname%-git}"
 
-  install -Dm644 build/releases/JabRef-${_release}-dev.jar \
-    ${pkgdir}/usr/share/java/jabref/JabRef.jar 
+  find "${srcdir}/${pkgname%-git}/build/releases" \
+	  -iname "JabRef-${pkgver%%_*}-dev.jar" \
+	  -exec install -Dm644 {} ${pkgdir}/usr/share/java/jabref/JabRef.jar \;
 
   install -Dm755 $srcdir/jabref.sh ${pkgdir}/usr/bin/jabref
 
