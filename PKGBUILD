@@ -3,11 +3,11 @@
 pkgname=kf5-servicemenus-md5sha1calc
 _srcname=md5sha1calc
 pkgver=0.1
-pkgrel=2
+pkgrel=3
 pkgdesc="A service menu in dolphin (right click) to compute md5sum and sha1sum of a file"
 arch=('i686' 'x86_64')
 license=('GPL')
-depends=('dolphin' 'kdebase-kdialog' 'bash')
+depends=('dolphin' 'kdialog' 'bash')
 install=${_srcname}.install
 source=(${_srcname}.sh ${_srcname}.desktop ${_srcname}.install ${_srcname}-48.png)
 sha1sums=('32fb6e4c0e8a912e52135fada5193e96934164c3'
