@@ -10,7 +10,7 @@ arch=(any)
 url="http://etherpad.org"
 _watch=('http://etherpad.org','Documentation <small>v([\d.]*)</small>')
 license=('GPL2')
-depends=('curl' 'python2' 'openssl' 'nodejs<7' 'npm<4' 'git' 'npm' 'icu<58')
+depends=('curl' 'python2' 'openssl' 'nodejs<7.0' 'npm<4.0.0' 'git' 'npm' 'icu<58.0')
 optdepends=('sqlite: to use sqlite as databse'
             'mariadb: to use mariadb as database'
             'postgresql: to use postgresql as database')
