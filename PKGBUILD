@@ -1,28 +1,29 @@
 # Maintainer: Pierre Carrier <pierre@gcarrier.fr>
 pkgname=sensible-utils
-pkgver=0.0.7
+pkgver=0.0.9
 pkgrel=1
 pkgdesc="Utilities for sensible alternative selection"
-arch=(any)
+arch=('any')
 url="http://packages.debian.org/source/sid/sensible-utils"
-license=('unknown')
-makedepends=(po4a)
+license=('GPL')
+depends=('bash')
+makedepends=('po4a')
 source=(http://ftp.de.debian.org/debian/pool/main/s/$pkgname/${pkgname}_$pkgver.tar.gz)
-md5sums=('9a208cceb0e9c5cc1d2aa4d53d7d2baa')
+md5sums=('559012932ffa95a7bbd8f8423869b652')
 
 build() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd $pkgname-$pkgver
   ./configure --prefix=/usr
   make
 }
 
 check() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd $pkgname-$pkgver
   make -k check
 }
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd $pkgname-$pkgver
   make DESTDIR="$pkgdir/" install
 }
 
