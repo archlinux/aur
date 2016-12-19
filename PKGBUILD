@@ -2,7 +2,7 @@
 
 _name=girl
 pkgname=$_name-git
-pkgver=9.6.0.r1.ge0d97aa
+pkgver=9.6.1.r1.ge8cdf70
 pkgrel=1
 pkgdesc="GNOME Internet Radio Locator"
 arch=(i686 x86_64)
