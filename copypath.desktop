@@ -3,11 +3,9 @@ Type=Service
 Icon=edit-copy
 Actions=CopyPath
 X-KDE-Priority=TopLevel
-ServiceTypes=KonqPopupMenu/Plugin,inode/directory,inode/directory-locked,inode/directory-hidden
-
+ServiceTypes=KonqPopupMenu/Plugin,application/octet-stream,inode/directory,inode/directory-locked,inode/directory-hidden
 
 [Desktop Action CopyPath]
 Name=Copy Path
 Icon=edit-copy
-Exec=copypath %U
- 
+Exec=echo "%F" | tr -d '\n' | xclip -selection clipboard
