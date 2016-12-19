@@ -7,7 +7,9 @@ pkgdesc="ERP ILM Openconcerto beta channel client multi and mono"
 arch=('any')
 license=('GPL3')
 url="https://www.openconcerto.org/"
+conflicts=('openconcerto')
 depends=('jre7-openjdk' 'jre8-openjdk' 'jre7-openjdk-headless' 'jre8-openjdk-headless')
+
 source=("http://www.openconcerto.org/fr/telechargement/betas/${pkgver}/openconcerto-${pkgver}.deb")
 sha256sums=('fc1517fbf3678f1545e08d724fde9e8ecca37e7de72f0b853976c7d800acd086')
 
