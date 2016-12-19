@@ -1,7 +1,7 @@
 
 pkgname=passenger-nginx-module
 pkgver=5.0.28
-pkgrel=1
+pkgrel=2
 pkgdesc="Phusion Passenger configured for use as a static nginx module."
 arch=('i686' 'x86_64')
 url="https://www.phusionpassenger.com/"
@@ -25,4 +25,8 @@ package() {
 
   mkdir -p $pkgdir/usr/lib/passenger/
   cp -R * $pkgdir/usr/lib/passenger/
+
+  mkdir -p $pkgdir/etc/profile.d/
+  echo '[ -d /usr/lib/passenger/bin ] && PATH=$PATH:/usr/lib/passenger/bin' > $pkgdir/etc/profile.d/passenger.sh
+  chmod +x $pkgdir/etc/profile.d/passenger.sh
 }

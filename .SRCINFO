@@ -1,7 +1,7 @@
 pkgbase = passenger-nginx-module
 	pkgdesc = Phusion Passenger configured for use as a static nginx module.
 	pkgver = 5.0.28
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.phusionpassenger.com/
 	arch = i686
 	arch = x86_64
