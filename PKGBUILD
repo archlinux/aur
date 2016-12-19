@@ -9,13 +9,13 @@
 _pack=communications
 pkgname=octave-$_pack
 pkgver=1.2.1
-pkgrel=1
+pkgrel=3
 pkgdesc="Digital Communications, Error Correcting Codes (Channel Code), Source Code functions, Modulation and Galois Fields"
 arch=(any)
 url="http://octave.sourceforge.net/$_pack/"
 license=('GPL3')
 groups=('octave-forge')
-depends=('octave>=3.4' 'octave-signal>=1.1.3')
+depends=('octave>=3.4.0' 'octave-signal>=1.1.3')
 makedepends=()
 optdepends=()
 backup=()
@@ -25,6 +25,10 @@ _archive=$_pack-$pkgver.tar.gz
 source=("http://downloads.sourceforge.net/octave/$_archive")
 noextract=("$_archive")
 md5sums=('cf5ad84af0c3221199b2e04109946562')
+
+_octave_run() {
+	octave --no-history --no-init-file --no-window-system -q -f --eval "$*"
+}
 
 _install_dir() {
 	src=$1
@@ -38,7 +42,7 @@ build() {
 	_archprefix="$srcdir"/install_archprefix
 	mkdir -p "$_prefix" "$_archprefix"
 	cd "$srcdir"
-	octave -q -f --eval "$(cat <<-EOF
+	_octave_run "$(cat <<-EOF
 		pkg local_list octave_packages;
 		pkg prefix $_prefix $_archprefix;
 		pkg install -verbose -nodeps $_archive;
