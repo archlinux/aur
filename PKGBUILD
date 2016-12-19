@@ -6,7 +6,7 @@
 pkgname=vim-session
 pkgver=2.13.1
 _gittag=9e9a608
-pkgrel=1
+pkgrel=2
 pkgdesc='Extended session management for Vim (:mksession on steroids)'
 provides=('vim-session')
 arch=('any')
@@ -21,6 +21,7 @@ build() {
   cd "$srcdir/xolox-$pkgname-$_gittag"
   find . -type f -name "*.md" -exec rm -f {} \;
   rm addon-info.json
+  rm .gitignore
 }
 
 package() {
