@@ -19,7 +19,6 @@ sha256sums_x86_64=('17bf8657edd74e570286018d86a4a8835ced0e9ea1ea79b5284f9caa9355
 package() {
   cd "${srcdir}"
 
-  install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   if [ "${CARCH}" = "x86_64" ]; then
       install -Dm755 "${srcdir}/${_pkgname}_linux_amd64" "$pkgdir/usr/bin/${_pkgname}"
   else
