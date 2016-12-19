@@ -9,7 +9,7 @@
 _pack=financial
 pkgname=octave-$_pack
 pkgver=0.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Financial manipulation, plotting functions and additional date manipulation tools."
 arch=(any)
 url="http://octave.sourceforge.net/$_pack/"
