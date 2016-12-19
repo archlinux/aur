@@ -3,9 +3,9 @@
 pkgname=libva-headless
 _pkgname=libva
 pkgver=1.7.3
-pkgrel=1
+pkgrel=2
 pkgdesc='Video Acceleration (VA) API for Linux for headless systems'
-arch=('i686' 'x86_64')
+arch=('i686' 'x86_64' 'armv7h')
 url='http://freedesktop.org/wiki/Software/vaapi'
 license=('MIT')
 conflicts=('libva')
