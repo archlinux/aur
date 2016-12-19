@@ -9,7 +9,7 @@
 _pack=audio
 pkgname=octave-$_pack
 pkgver=1.1.4
-pkgrel=6
+pkgrel=7
 pkgdesc="Audio recording, processing and playing tools."
 arch=(any)
 url="http://octave.sourceforge.net/$_pack/"
