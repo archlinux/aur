@@ -1,6 +1,6 @@
 # Maintainer: Martin Müllenhaupt <mm+aur.archlinux.org@netlair.de>
 pkgname=faf-ice-adapter
-pkgver=2.2.2
+pkgver=3.0.2
 pkgrel=1
 epoch=0
 pkgdesc="Forged Alliance Forever - ICE connectivity helper for the lobby client."
@@ -20,7 +20,7 @@ options=()
 install=
 changelog=
 source=("https://github.com/FAForever/ice-adapter/archive/v$pkgver.tar.gz")
-sha256sums=('35e641312b4b371a041de1a15bf29a0c38d470d7e0f6fb7bc4bec2796fc6a81b')
+sha256sums=('6e7f49ff4ea03d2c6fad32c62a971a94301f21471b29706d452e4a8813acc110')
 noextract=()
 validpgpkeys=()
 
