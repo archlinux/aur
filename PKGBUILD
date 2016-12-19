@@ -1,6 +1,6 @@
 # Original author: Nicholas Helke <nhelke@gmail.com>
 pkgname=openprinting-ppds-postscript-ricoh
-pkgver=20160606
+pkgver=20161206
 pkgrel=1
 pkgdesc="PPD files for Ricoh's PostScript printers, supplied by Ricoh"
 arch=('any')
@@ -16,4 +16,4 @@ package() {
   install $srcdir/opt/OpenPrinting-Ricoh/ppds/Ricoh/* $pkgdir/usr/share/cups/model/
   cp -r $srcdir/opt/OpenPrinting-Ricoh/doc $pkgdir/opt/OpenPrinting-Ricoh/doc
 }
-sha512sums=('b57b5803c3d71c12495c6bfac6d70ce24119255244b5cb27b230e25aedb746de6c0b08678b95a63b90c0dd5c1dd81a803b7b389a270ce3f1b07d505bee2bb047')
+sha512sums=('45bdb7329bcbb11c0b09f2a4c7bb9d0a844798cc432918bc304deb6ade9bb7c11bd001680ee09c6551ad740a603eb5ca178ce54d1fa43f0124b20b810f50e482')
