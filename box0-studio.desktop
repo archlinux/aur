@@ -1,0 +1,11 @@
+[Desktop Entry]
+Encoding=UTF-8
+Version=1.0
+Name=Box0 Studio
+GenericName=Box0 Common Instruments
+Exec=box0-studio
+Terminal=false
+Icon=box0-studio
+Type=Application
+Categories=Application;Education;Electronics;Science;
+Comment=Box0 Studio is the Common Instruments software for Box0
