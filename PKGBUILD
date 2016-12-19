@@ -1,6 +1,6 @@
 # Maintainer: Hexchain Tong <i@hexchain.org>
 pkgname=git-credential-gnome-keyring
-pkgver=2.10.2
+pkgver=2.11.0
 pkgrel=1
 pkgdesc="Git credential helper using GNOME Keyring"
 arch=(i686 x86_64)
@@ -21,5 +21,5 @@ package() {
     cd "$srcdir/git-$pkgver/contrib/credential/gnome-keyring"
     install -Dm755 git-credential-gnome-keyring -t "$pkgdir/usr/bin"
 }
-sha256sums=('94802903dd707d85ca3b9a2be35e936a54ce86375f52c6a789efe7ce7e238671'
+sha256sums=('7e7e8d69d494892373b87007674be5820a4bc1ef596a0117d03ea3169119fd0b'
             'SKIP')
