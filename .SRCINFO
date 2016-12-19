@@ -1,7 +1,7 @@
 pkgbase = doomrl-git
 	pkgdesc = Doom: The Rogue-like (git-latest) (WIP!).
 	pkgver = r8.0cbac80
-	pkgrel = 2
+	pkgrel = 3
 	url = http://drl.chaosforge.org/
 	arch = any
 	license = GPL3

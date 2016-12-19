@@ -2,7 +2,7 @@
 
 pkgname=doomrl-git
 pkgver=r8.0cbac80
-pkgrel=2
+pkgrel=3
 pkgdesc="Doom: The Rogue-like (git-latest) (WIP!)."
 arch=(any)
 url="http://drl.chaosforge.org/"
@@ -16,6 +16,15 @@ sha256sums=('SKIP'
 	    'SKIP'
 	    )
 
+prepare()
+{
+
+  # fpcvalkyrie is harcoded from Makefile to look a level up
+  # from doomrl/makeifle.lua ...
+  cp -r $srcdir/fpcvalkyrie $srcdir/$pkgname
+
+}
+
 pkgver() {
   cd "$pkgname"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
@@ -24,13 +33,8 @@ pkgver() {
 build()
 {
 
-
-  # fpcvalkyrie is harcoded from Makefile to look a level up
-  # from doomrl/makeifle.lua ...
-  cp -r $srcdir/fpcvalkyrie $pkgname
-
   cd $srcdir/$pkgname
-  rm -r tmp && mkdir tmp
+  rm -rf tmp && mkdir tmp
   lua makefile.lua hq
 
 }
@@ -38,5 +42,6 @@ build()
 package() {
 
 	msg2 "Installing configuration files..."
-	install -m777 "gzdoom.ini" "$pkgdir/usr/share/games/$pkgname/gzdoom.ini"
+	# TODO
+
 }
