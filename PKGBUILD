@@ -1,14 +1,15 @@
-# Contributor: Sebastian Wolf <swolf at melonkru dot de>
+# Contributor: Sebastian Wolf <fatmike303@gmail.com>
 pkgname=advancemame
-pkgver=1.4
+pkgver=3.0
 pkgrel=1
-pkgdesc="Unofficial MAME version with an advanced video support for helping the use with TVs, Arcade Monitors, Fixed Frequencies Monitors and also for PC Monitors"
-arch=('i686' 'x86_64')
+pkgdesc="AdvanceMAME allows you to play Arcade games with video hardware like TVs, Arcade monitors, PC monitors and LCD screens. Also includes AdvanceMENU frontend."
+arch=('i686' 'x86_64' 'armv7h')
 url="http://www.advancemame.it"
 depends=('sdl' 'alsa-lib' 'expat' 'freetype2' 'slang')
+conflicts=('advancemenu')
 license=('GPL')
-source=("https://github.com/amadvance/advancemame/releases/download/${pkgname}-${pkgver}/${pkgname}-${pkgver}.tar.gz")
-md5sums=('c11198e2e5eaa834a2bf00739e57b7fd')
+source=("https://github.com/amadvance/advancemame/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
+sha256sums=('19077f55ab636ac8e996d87775a1eb86c2ced381cbcd57c1e0c0bf410f4b4101')
 
 build() {
   cd $srcdir/$pkgname-$pkgver
