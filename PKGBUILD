@@ -10,9 +10,9 @@ url=http://git.bytbox.net/sloc/
 license=('MIT')
 depends=('go')
 optdepends=('perl-datetime' 'perl-json' 'perl-switch' 'gnuplot')
-makedepends=(git)
+makedepends=('git')
 source=("sloc::git+http://git.bytbox.net/sloc/#tag=v$pkgver")
-sha256sums=('SKIP')
+sha512sums=('SKIP')
 
 build() {
   cd sloc
