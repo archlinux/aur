@@ -1,8 +1,8 @@
 #pkgbase=linux               # Build stock -ARCH kernel
 pkgbase=linux-covolunablu-gaming       # Build kernel with a different name
 _srcname=linux-4.8
-pkgver=4.8.12
-pkgrel=2
+pkgver=4.8.14
+pkgrel=1
 arch=('i686' 'x86_64')
 url="https://www.kernel.org/"
 license=('GPL2')
@@ -26,7 +26,8 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         # standard config files for mkinitcpio ramdisk
         'linux.preset'
         'change-default-console-loglevel.patch'
-        'fix_race_condition_in_packet_set_ring.diff'
+        'net_handle_no_dst_on_skb_in_icmp6_send.patch'
+        '0001-x86-fpu-Fix-invalid-FPU-ptrace-state-after-execve.patch'
         'http://algo.ing.unimo.it/people/paolo/disk_sched/patches/4.8.0-v8r4/0001-block-cgroups-kconfig-build-bits-for-BFQ-v7r11-4.8.0.patch'
         'http://algo.ing.unimo.it/people/paolo/disk_sched/patches/4.8.0-v8r4/0002-block-introduce-the-BFQ-v7r11-I-O-sched-to-be-ported.patch'
         'http://algo.ing.unimo.it/people/paolo/disk_sched/patches/4.8.0-v8r4/0003-block-bfq-add-Early-Queue-Merge-EQM-to-BFQ-v7r11-to-.patch'
@@ -35,20 +36,20 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
 
 sha256sums=('3e9150065f193d3d94bcf46a1fe9f033c7ef7122ab71d75a7fb5a2f0c9a7e11a'
             'SKIP'
-            '9a498761be20c10db6b30fac095e0591173d4046c19585bcdd7a72ca8503eb87'
+            'efa9b7d87a6ca67426e3d7f206ac987eb7cb31602ad2011e81060626de790fcb'
             'SKIP'
             'f105551388ad00732eecbdb0037092597482970fe88af2634916ade8674410c7'
             'd85f8d4e7c7672ba9bb25bcb95e8442acd9b4d784161b292c27b9f5cee95bcd7'
             '834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
-            'ad1ee95f906f88d31fcdb9273cd08e02e8eda177449f0c98dc1bff8cbf1483c2'
+            'b595a1588bafb3d732841cd1b73633970706914f57f2d215c9f1494212d13989'
+            '3e955e0f1aae96bb6c1507236adc952640c9bd0a134b9995ab92106a33dc02d9'
             '1dabd969b18b7e09e2ffeffe4c2430dbc26e5df9868563d54ca95f45c690262f'
             'c8d17a7893d5780fd0c90311470160dcc842b81621b30671150e2e3224be86d2'
             'e47ea5b1c2f20cfade4e6a85bff1320dac84ac638e48ef4eec7285fe9e1e1def'
             'c3c96e304aef378f0cc6e1fb18eeabe176e6ba918d13060c105f3d8cabc85f59'
             'b40f90abeaec479cadf189fe185353cd70cde76349433ab618b9e776ab31133f')
-
 
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
@@ -63,9 +64,12 @@ prepare() {
   # add upstream patch
   patch -p1 -i "${srcdir}/patch-${pkgver}"
 
-  # fix a race condition that allows to gain root
-  # https://marc.info/?l=linux-netdev&m=148054660230570&w=2
-  patch -p1 -i "${srcdir}/fix_race_condition_in_packet_set_ring.diff"
+  # https://bugzilla.kernel.org/show_bug.cgi?id=189851
+  patch -p1 -i "${srcdir}/net_handle_no_dst_on_skb_in_icmp6_send.patch"
+
+  # Revert a commit that causes memory corruption in i686 chroots on our
+  # build server ("valgrind bash" immediately crashes)
+  patch -Rp1 -i "${srcdir}/0001-x86-fpu-Fix-invalid-FPU-ptrace-state-after-execve.patch"
 
   # add latest fixes from stable queue, if needed
   # http://git.kernel.org/?p=linux/kernel/git/stable/stable-queue.git
