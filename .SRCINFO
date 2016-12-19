@@ -1,0 +1,17 @@
+pkgbase = muscript-git
+	pkgdesc = The muscript music typesetting software and associated tools.
+	pkgver = r19.fc24049
+	pkgrel = 1
+	url = https://github.com/peterbillam/muscript
+	arch = any
+	license = unknown
+	makedepends = git
+	depends = perl
+	depends = perl-text-parsewords
+	provides = muscript
+	conflicts = muscript
+	source = git+https://github.com/peterbillam/muscript.git
+	md5sums = SKIP
+
+pkgname = muscript-git
+
