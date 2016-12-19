@@ -17,6 +17,7 @@ optdepends=(
   'wireless_tools: wireless segment'
   'python-iwlib: wireless segment'
   'python-pyalsaaudio: volume segment'
+  'python-psutil: cpu load segment'
 )
 makedepends=(
   'python-setuptools'

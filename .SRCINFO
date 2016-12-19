@@ -17,6 +17,7 @@ pkgbase = powerline-i3-git
 	optdepends = wireless_tools: wireless segment
 	optdepends = python-iwlib: wireless segment
 	optdepends = python-pyalsaaudio: volume segment
+	optdepends = python-psutil: cpu load segment
 	provides = powerline-i3
 	conflicts = powerline,
 	conflicts = python-powerline
