@@ -14,7 +14,7 @@ pkgbase=kodi-c2-x11
 pkgname=('kodi-c2-x11' 'kodi-c2-x11-eventclients')
 pkgver=16.1
 _codename=Jarvis
-pkgrel=4
+pkgrel=5
 arch=('i686' 'x86_64' 'aarch64')
 url="http://kodi.tv"
 license=('GPL2')
@@ -23,7 +23,7 @@ conflicts=('kodi' 'kodi-c2-fb')
 makedepends=(
   'afpfs-ng' 'bluez-libs' 'boost' 'cmake' 'curl' 'cwiid' 'doxygen' 'git' 'glew'
   'gperf' 'hicolor-icon-theme' 'jasper' 'java-runtime' 'libaacs' 'libass'
-  'libbluray' 'libcdio' 'libcec' 'odroid-c2-libgl-x11' 'aml-libs-c2'  'libmariadbclient' 'libmicrohttpd'
+  'libbluray' 'libcdio' 'libcec3' 'odroid-c2-libgl-x11' 'aml-libs-c2'  'libmariadbclient' 'libmicrohttpd'
   'libmodplug' 'libmpeg2' 'libnfs' 'libplist' 'libpulse' 'libssh' 'libva'
   'libvdpau' 'libxrandr' 'libxslt' 'lzo' 'mesa' 'nasm' 'nss-mdns'
   'python2-pillow' 'python2-pybluez' 'python2-simplejson' 'rtmpdump' 'sdl2'
@@ -111,7 +111,7 @@ package_kodi-c2-x11() {
     'bluez: Blutooth support'
     'libnfs: NFS shares support'
     'libplist: AirPlay support'
-    'libcec: Pulse-Eight USB-CEC adapter support'
+    'libcec3: Pulse-Eight USB-CEC adapter support'
     'lirc: Remote controller support'
     'pulseaudio: PulseAudio support'
     'shairplay: AirPlay support'
