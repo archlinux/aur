@@ -1,19 +1,19 @@
 # Maintainer: Oliver Rümpelein <arch@pheerai.de>
 pkgname=mergerfs
-pkgver=2.17.0
+pkgver=2.18.0
 pkgrel=1
 pkgdesc="Another FUSE union filesystem"
 arch=('i686' 'x86_64')
 url="https://github.com/trapexit/mergerfs"
-source=("https://github.com/trapexit/mergerfs/releases/download/2.17.0/mergerfs-2.17.0.tar.gz")
+source=("https://github.com/trapexit/mergerfs/releases/download/2.18.0/mergerfs-2.18.0.tar.gz")
 options=("!emptydirs")
 license=('MIT')
 depends=(fuse)
-sha512sums=('5530dc5c77a8a514b4f99c996cb11c17c9f0dfce8df542668c626918efad0a6b143daa614e3663fcaf969da34e7c1293d17b4f35f17ceb890e4d880b1d5e29b1')
+sha512sums=('da2492e9a00f990907355028d58eceeefe1260d4d42c3e0b32ba8dd3fd91c2a91189e042e0ec18f5530b9f838efa29f5189e38a3cf8e44cabd3490a982ee81f8')
 
 package()
 {
-    cd "${srcdir}/mergerfs-2.17.0" || exit
+    cd "${srcdir}/mergerfs-2.18.0" || exit
     mkdir -p "${pkgdir}"/usr/{share,bin}
     mkdir -p "${pkgdir}"/usr/share/licenses/mergerfs
     make DESTDIR=${pkgdir} PREFIX=/usr SBINDIR="/usr/bin" install
@@ -22,7 +22,7 @@ package()
 
 build()
 {
-    cd ./"mergerfs-2.17.0" || exit
+    cd ./"mergerfs-2.18.0" || exit
     make DESTDIR="${pkgdir}" PREFIX="/usr" SBINDIR="/usr/bin"
 }
 
