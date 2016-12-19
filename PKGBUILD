@@ -1,6 +1,6 @@
 pkgname=deepin-qt-dbus-factory
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Deepin framework DBus tools and file"
 makedepends=('gcc')
 arch=('x86_64' 'i686')
