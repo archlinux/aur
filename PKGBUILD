@@ -1,12 +1,12 @@
 # Maintainer: Bryn Edwards <bryn at openmailbox dot org>
 pkgname=zplug
-pkgver=2.3.3
+pkgver=2.3.4
 pkgrel=1
 pkgdesc="A next-generation plugin manager for zsh"
 arch=('any')
 url="http://zplug.sh"
 source=("https://github.com/$pkgname/$pkgname/archive/$pkgver.tar.gz")
-sha1sums=('79b81adc39fa6b9bee12c8cb6471a2217f65fa03')
+sha1sums=('1fd5314c7ff02854688c5767045b4bed2dcbe1b9')
 license=('MIT')
 depends=('git' 'zsh')
 install='zplug.install'
