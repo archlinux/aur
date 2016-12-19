@@ -3,14 +3,14 @@
 
 pkgname=etherpad-lite
 pkgver=1.6.0
-pkgrel=2
+pkgrel=3
 epoch=1
 pkgdesc="Lightweight fork of etherpad based on javascript"
 arch=(any)
 url="http://etherpad.org"
 _watch=('http://etherpad.org','Documentation <small>v([\d.]*)</small>')
 license=('GPL2')
-depends=('curl' 'python2' 'openssl' 'nodejs' 'git' 'npm')
+depends=('curl' 'python2' 'openssl' 'nodejs<7' 'npm<4' 'git' 'npm' 'icu<58')
 optdepends=('sqlite: to use sqlite as databse'
             'mariadb: to use mariadb as database'
             'postgresql: to use postgresql as database')
