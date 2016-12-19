@@ -1,6 +1,6 @@
 # Maintainer: Aaron Rogers <aaron.kyle.rogers at gmail dot com>
 pkgname="obd-auto-doctor"
-pkgver="3.1.2"
+pkgver="3.1.4"
 pkgrel="1"
 pkgdesc="obd scan and diagnostics"
 arch=('i686' 'x86_64')
@@ -30,3 +30,5 @@ package() {
 
 
 
+md5sums_i686=('bd3d190f77df7b10cc5c6737d66f97e2')
+md5sums_x86_64=('2d97624da1cd2d8f4c0e96693aac1171')
