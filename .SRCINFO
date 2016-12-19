@@ -1,6 +1,6 @@
 pkgbase = xplanetfx
 	pkgdesc = xplanet earth with realistic clouding and lightning effects as your wallpaper.
-	pkgver = 2.6.9
+	pkgver = 2.6.12
 	pkgrel = 1
 	url = http://mein-neues-blog.de/xplanetfx/
 	arch = any
@@ -13,8 +13,8 @@ pkgbase = xplanetfx
 	optdepends = perl-magick: cloud image verification
 	optdepends = libnotify: status messages
 	optdepends = acpi: check battery state before rendering
-	source = http://repository.mein-neues-blog.de:9000/archive/xplanetfx-2.6.9_all.tar.gz
-	md5sums = cb76d9dfe8e25f9a52418295aeb49024
+	source = http://repository.mein-neues-blog.de:9000/archive/xplanetfx-2.6.12_all.tar.gz
+	md5sums = d750de2ec4ce18b7da87547786731203
 
 pkgname = xplanetfx
 

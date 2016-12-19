@@ -2,7 +2,7 @@
 # Contributor: Steven Hiscocks <steven _at_ hiscocks _dot_ me _dot_ uk>
 
 pkgname=xplanetfx
-pkgver=2.6.9
+pkgver=2.6.12
 pkgrel=1
 pkgdesc="xplanet earth with realistic clouding and lightning effects as your wallpaper."
 arch=('any')
@@ -13,7 +13,7 @@ optdepends=('perl-magick: cloud image verification'
             'libnotify: status messages'
             'acpi: check battery state before rendering')
 source=(http://repository.mein-neues-blog.de:9000/archive/xplanetfx-${pkgver}_all.tar.gz)
-md5sums=('cb76d9dfe8e25f9a52418295aeb49024')
+md5sums=('d750de2ec4ce18b7da87547786731203')
 
 prepare() {
   cd "${srcdir}"
