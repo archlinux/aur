@@ -1,0 +1,36 @@
+; This file lies in ~/.local/share/cura/instance_profiles/Discovery+200.curaprofile
+[general]
+version = 1
+name = Current settings
+weight = 0
+type = machine_instance_profile
+
+[settings]
+support_roof_enable = True
+retraction_amount = 3.5
+support_type = everywhere
+support_enable = True
+adhesion_type = brim
+cool_min_layer_time = 3
+material_print_temperature = 200
+material_flow = 100
+layer_height = 0.2
+support_roof_density = 80
+retraction_speed = 50
+infill_sparse_density = 20
+wall_thickness = 1
+cool_fan_full_layer = 1
+
+[defaults]
+infill_sparse_density = 10
+speed_topbottom = 30
+layer_height = 0.15
+speed_wall_0 = 40
+wall_thickness = 1
+cool_min_layer_time = 3
+speed_wall_x = 80
+speed_infill = 100
+
+[disabled_defaults]
+values = speed_wall_0,speed_wall_x,speed_topbottom,speed_infill,
+
