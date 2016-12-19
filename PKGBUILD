@@ -8,7 +8,7 @@ pkgdesc='Share your terminal as a web application'
 url=https://github.com/yudai/gotty
 arch=('any')
 license=('MIT')
-makedepends=('go')
+makedepends=('git' 'go')
 
 build() {
   GOPATH="$srcdir" go get github.com/yudai/gotty
