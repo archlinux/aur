@@ -9,7 +9,7 @@
 _pack=geometry
 pkgname=octave-$_pack
 pkgver=2.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Library for geometric computing extending MatGeom functions. Useful to create, transform, manipulate and display geometric primitives."
 arch=(any)
 url="http://octave.sourceforge.net/$_pack/"
