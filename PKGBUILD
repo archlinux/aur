@@ -1,6 +1,6 @@
 # Maintainer: aggraef@gmail.com
 pkgname=inscore-git
-pkgver=3152.8884435
+pkgver=3881.3310472
 pkgrel=1
 pkgdesc="Grame's INScore: interactive augmented music scores (git version)"
 arch=('x86_64' 'i686')
