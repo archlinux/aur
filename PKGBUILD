@@ -1,7 +1,7 @@
 # Maintainer: Malte Rabenseifner <mail@malte-rabenseifner.de>
 
 pkgname=icingaweb2
-pkgver=2.3.4
+pkgver=2.4.0
 pkgrel=1
 pkgdesc="Icinga Web 2 Interface"
 license=('GPL')
@@ -13,7 +13,7 @@ optdepends=('php-gd: export data to PDF'
 url="http://www.icinga.org"
 source=("https://github.com/Icinga/${pkgname}/archive/v${pkgver}.tar.gz")
 install='icingaweb2.install'
-sha256sums=('057e9debfbd10df4278dfc675e507b11843478dd7f295c8554cdbc9317dfbd4e')
+sha256sums=('aa8c1b2a0e655aa646045cb39c9db054fcb59bd0cac6751934f5b246aa067696')
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
