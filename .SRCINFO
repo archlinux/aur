@@ -1,7 +1,7 @@
 pkgbase = caddy
 	pkgdesc = A configurable, general-purpose HTTP/2 web server for any platform
 	pkgver = 0.9.3
-	pkgrel = 6
+	pkgrel = 7
 	url = https://caddyserver.com
 	install = caddy.install
 	arch = i686
@@ -9,13 +9,15 @@ pkgbase = caddy
 	arch = armv7h
 	arch = aarch64
 	license = Apache
-	makedepends = go>=1.6
+	makedepends = go>=1.7
 	makedepends = git
 	conflicts = caddy-all-features
 	conflicts = caddy-git
 	conflicts = caddy-full-bin
 	source = git+https://github.com/mholt/caddy
+	source = systemd-unit-file.patch
 	md5sums = SKIP
+	md5sums = 07575b06cc76cf5e0287d6c28f05eb05
 
 pkgname = caddy
 
