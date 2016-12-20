@@ -6,7 +6,7 @@
 
 pkgname=slic3r-git
 pkgver=a
-pkgrel=15
+pkgrel=16
 pkgdesc="Slic3r is an STL-to-GCODE translator for RepRap 3D printers, aiming to be a modern and fast alternative to Skeinforge."
 arch=('i686' 'x86_64' 'armv6' 'armv6h' 'armv7h')
 url="http://slic3r.org/"
@@ -47,7 +47,24 @@ countdown() {
 
 pkgver() {
   export _src_dir="$srcdir/$_gitname"
-  # Disable detached head warning
+  cd "$_src_dir"
+  #
+  ### Now figure out PKGVER
+  #
+  if grep -sq '#define SLIC3R_VERSION' ./xs/src/libslic3r/libslic3r.h; then
+    # 6adc3477c9d08d2cfa0e6902b3d241a9193e50d4 intruduces libslic3r.h in that directory BUT
+    # 8b6a8e63079978646cd98a96d6ad178b28f3067c introduces version in that header
+    _pkgver="$(awk '/#define SLIC3R_VERSION/ {gsub(/"/, "", $3); print $3 }' ./xs/src/libslic3r/libslic3r.h).$(git rev-parse --short HEAD)"
+  else
+    _pkgver="$(awk 'BEGIN{FS="\""}/VERSION/{gsub(/-dev/,"",$2); print $2 }' ./lib/Slic3r.pm).$(git rev-parse --short HEAD)"
+  fi
+  _pkgver="${_pkgver//-/_}"
+  echo "${_pkgver}"
+}
+
+prepare() {
+  export _src_dir="$srcdir/$_gitname"
+# Disable detached head warning
   ( cd ${_src_dir} ; git config advice.detachedHead false )
 # TODO: After all done ramp up pkgver++
 # TODO: Remind user about stable branch and others
@@ -109,22 +126,8 @@ pkgver() {
       git checkout "${_gitfragment}" -f
     fi
   } 1>&2
-  #
-  ### Now figure out PKGVER
-  #
-  if grep -sq '#define SLIC3R_VERSION' ./xs/src/libslic3r/libslic3r.h; then
-    # 6adc3477c9d08d2cfa0e6902b3d241a9193e50d4 intruduces libslic3r.h in that directory BUT
-    # 8b6a8e63079978646cd98a96d6ad178b28f3067c introduces version in that header
-    _pkgver="$(awk '/#define SLIC3R_VERSION/ {gsub(/"/, "", $3); print $3 }' ./xs/src/libslic3r/libslic3r.h).$(git rev-parse --short HEAD)"
-  else
-    _pkgver="$(awk 'BEGIN{FS="\""}/VERSION/{gsub(/-dev/,"",$2); print $2 }' ./lib/Slic3r.pm).$(git rev-parse --short HEAD)"
-  fi
-  _pkgver="${_pkgver//-/_}"
-  echo "${_pkgver}"
-}
 
-prepare() {
-  export _src_dir="$srcdir/$_gitname"
+### OLD PREPARE
   # Setting these env variables overwrites any command-line-options we don't want...
   export PERL_MM_USE_DEFAULT=1 PERL_AUTOINSTALL=--skipdeps \
     PERL_MM_OPT="INSTALLDIRS=vendor DESTDIR='$pkgdir'" \
