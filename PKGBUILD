@@ -2,7 +2,7 @@
 
 pkgname='powershell-git'
 _pkgname='powershell'
-pkgver=6.0.0.alpha.13.8.gdcce8a2
+pkgver=6.0.0.alpha.14.7.g3938cdb
 pkgrel=1
 pkgdesc="A cross-platform automation and configuration tool/framework."
 arch=('x86_64')
@@ -26,12 +26,13 @@ sha256sums=('SKIP'
             '190dfc2b3b0bbc49db8411c3b934f460cf9d1399e30e93a5ff50e9b33613428b')
 
 pkgver() {
-  cd "${_pkgname}"
+  cd $_pkgname
+
   git describe --tags --long | sed 's/^v//;s/-/./;s/-/./g'
 }
 
 prepare() {
-  cd "${_pkgname}"
+  cd $_pkgname
   git submodule init
   git config submodule.src/Modules/Pester.url "${srcdir}/pester"
   git config submodule.src/libpsl-native/test/googletest.url "${srcdir}/googletest"
@@ -39,19 +40,10 @@ prepare() {
 
   # Starting off clean.
   git clean -dfx
-
-  # Workaround due to
-  # https://github.com/PowerShell/PowerShell/commit/c695d41c47c8baa48db1a590fe7378641a9e0ab9
-  net_version=$(dotnet --version)
-  net_build_number=${net_version##*-}
-  if [[ "${build_number}" -lt "3546" ]]; then
-    msg "Reverting powershell commit c695d41"
-    patch -p1 < ../revert-commit-c695d41.patch
-  fi
 }
 
 build() {
-  cd "${_pkgname}"
+  cd $_pkgname
 
   pushd src/libpsl-native
   cmake .
@@ -59,29 +51,27 @@ build() {
   popd
 
   PROOT_NO_SECCOMP=1 \
-  proot -b "${srcdir}/os-release":/etc/os-release "${srcdir}/build.sh"
+  proot -b "$srcdir"/os-release:/etc/os-release "$srcdir"/build.sh
 }
 
 check() {
-  cd "${_pkgname}"/src/libpsl-native
+  cd $_pkgname/src/libpsl-native
 
   PROOT_NO_SECCOMP=1 \
-  proot -b "${srcdir}/os-release":/etc/os-release \
+  proot -b "$srcdir"/os-release:/etc/os-release \
   make test
 }
 
 
 package() {
-  cd "${_pkgname}"/src/powershell-unix
+  cd $_pkgname/src/powershell-unix
 
-  mkdir -p "${pkgdir}/usr/lib/${pkgname}"
-  cp -a bin/Linux/netcoreapp1.0/ubuntu.16.04-x64 "${pkgdir}/usr/lib/${pkgname}"
+  mkdir -p "$pkgdir"/usr/lib/$_pkgname
+  cp -a bin/Linux/netcoreapp*/ubuntu.16.04-x64 "$pkgdir"/usr/lib/$_pkgname
 
-  mkdir -p "${pkgdir}/usr/share/licenses/${pkgname}"
-  cp ../../LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  mkdir -p "$pkgdir"/usr/share/licenses/$_pkgname
+  cp ../../LICENSE.txt "$pkgdir"/usr/share/licenses/$_pkgname/LICENSE
 
-  mkdir -p "${pkgdir}/usr/bin"
-  ln -s "/usr/lib/${pkgname}/ubuntu.16.04-x64/powershell" "${pkgdir}/usr/bin/powershell"
+  mkdir -p "$pkgdir"/usr/bin
+  ln -s /usr/lib/$_pkgname/ubuntu.16.04-x64/powershell "$pkgdir"/usr/bin/powershell
 }
-
-# vim:set ts=2 sw=2 et:
