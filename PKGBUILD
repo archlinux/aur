@@ -1,8 +1,7 @@
 # Maintainer: Michael Schubert <mschu.dev at gmail>
-
 pkgname=latex-pdfpages
 _pkgname=${pkgname#latex-}
-pkgver=0.4v
+pkgver=0.5g
 pkgrel=1
 pkgdesc="Inclusion of external multi-page PDF documents in LATEX documents"
 arch=('any')
@@ -12,7 +11,7 @@ depends=('texlive-core')
 noextract=("$_pkgname.zip")
 source=("http://mirror.ctan.org/macros/latex/contrib/$_pkgname.zip")
 install="$pkgname.install"
-md5sums=('546702540a13f7f85fefd7ec68332f89')
+md5sums=('1278e093b6c0c164732624927384ffed')
 
 package() {
   TEXMF="/usr/share/texmf"
@@ -20,4 +19,3 @@ package() {
   mkdir -p "$pkgdir/$TEXMF"
   unzip -d "$pkgdir/$TEXMF/tex" "$_pkgname.zip"
 }
-
