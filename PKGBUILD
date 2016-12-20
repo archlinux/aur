@@ -1,9 +1,7 @@
 # Maintainer: Michael Schubert <mschu.dev at gmail>
-
 pkgname=python2-pysces
-_pkgname=pysces
-pkgver=0.9.0
-_pkgver=0.9
+_pkgname=${pkgname#python2-}
+pkgver=0.9.3
 pkgrel=1
 pkgdesc="Python simulator for Cellular Systems"
 arch=('i686' 'x86_64')
@@ -17,9 +15,10 @@ makedepends=('gcc-fortran')
 url="http://pysces.sourceforge.net/"
 license=('BSD' 'GPL')
 replaces=('pysces')
-source=("http://sourceforge.net/projects/pysces/files/pysces/pysces-$_pkgver/pysces-$pkgver.tar.gz" "setup.py.patch")
-md5sums=('d325c6e35011f614d8be90b94f7f7110'
-         '0a85b753d42fc5ed037f96df8f199b76')
+source=("https://github.com/PySCeS/pysces/archive/$pkgver.tar.gz"
+        "setup.py.patch")
+md5sums=('02bbbf532a26111ac66f9fd7337abc12'
+         '0dfbc8b88ab976572771c02475022dfe')
 
 prepare() {
     cd "$srcdir/pysces-$pkgver"
@@ -35,4 +34,3 @@ package() {
     cd "$srcdir/pysces-$pkgver"
     python2 setup.py install --prefix=/usr --root="$pkgdir/" --skip-build --optimize=1
 }
-
