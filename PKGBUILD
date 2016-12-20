@@ -3,8 +3,9 @@
 _base=instant
 _fragment="#branch=master"
 pkgname=python-${_base}-git
+install=${pkgname}.install
 pkgdesc="A Python module allowing for instant inlining of C and C++ code in Python"
-pkgver=20161101
+pkgver=20161205
 pkgrel=1
 arch=('any')
 url="https://bitbucket.org/fenics-project/${_base}"
