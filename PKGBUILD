@@ -7,7 +7,7 @@ groups=('zarafa'
 replaces=('zarafa-server-arm')
 pkgver=7.2.4.29
 _pkgmajver=7.2
-pkgrel=112
+pkgrel=113
 pkgdesc="Open Source Groupware Solution"
 arch=('armv7h'
       'armv6h'
@@ -132,8 +132,16 @@ source=("https://download.zarafa.com/community/final/${_pkgmajver}/${pkgver}/zcp
 	'zarafa-tools::git+https://github.com/zarafagroupware/zarafa-tools.git'
 	'python-zarafa::git+https://github.com/zarafagroupware/python-zarafa.git'
 	'zarafa-inspector::git+https://github.com/zarafagroupware/zarafa-inspector.git'
-	'zarafa-pietma::git+https://git.pietma.com/pietma/com-pietma-zarafa.git#tag=v0.13')
+	'zarafa-pietma::git+https://git.pietma.com/pietma/com-pietma-zarafa.git#tag=v0.13'
+	'ECDBDef.h'
+	'ECDatabaseMySQL.cpp'
+	'ECDatabaseUpdate.h'
+	'ECDatabaseUpdate.cpp')
 md5sums=('0790d8314fa4aef9788e5020be832535'
+         'SKIP'
+         'SKIP'
+         'SKIP'
+         'SKIP'
          'SKIP'
          'SKIP'
          'SKIP'
@@ -141,6 +149,10 @@ md5sums=('0790d8314fa4aef9788e5020be832535'
 
 prepare() {
   cd ${srcdir}/zcp-${pkgver}
+  cp -f ${srcdir}/ECDBDef.h provider/libserver/
+  cp -f ${srcdir}/ECDatabaseMySQL.cpp provider/libserver/ 
+  cp -f ${srcdir}/ECDatabaseUpdate.h provider/libserver/ 
+  cp -f ${srcdir}/ECDatabaseUpdate.cpp provider/libserver/ 
   return 0
 }
 
