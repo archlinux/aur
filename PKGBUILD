@@ -11,20 +11,21 @@
 # Upstream: https://raw.githubusercontent.com/archlinuxarm/PKGBUILDs/master/extra/ffmpeg/PKGBUILD
 
 pkgname=ffmpeg-mmal
-pkgver=3.1.3
+pkgver=3.2.2
 pkgrel=1
 epoch=1
-pkgdesc='ffmpeg built with MMAL hardware acceleration support'
-arch=('i686' 'x86_64' 'armv7h')
+pkgdesc='ffmpeg built with MMAL hardware acceleration support for Raspberry Pi'
+arch=('armv7h')
 url='http://ffmpeg.org/'
 license=('GPL3')
-depends=('alsa-lib' 'bzip2' 'fontconfig' 'fribidi' 'gnutls' 'gsm' 'lame'
-         'libass' 'libavc1394' 'libbluray' 'libiec61883' 'libmodplug'
-         'libpulse' 'libsoxr' 'libssh' 'libtheora' 'libva' 'libvdpau' 'libwebp'
-         'netcdf' 'opencore-amr' 'openjpeg' 'opus' 'schroedinger' 'sdl' 'speex'
-         'v4l-utils' 'xvidcore' 'zlib'
-         'libvidstab.so' 'libvorbis.so' 'libvorbisenc.so' 'libvpx.so'
-         'libx264.so' 'libx265.so'
+depends=('alsa-lib' 'bzip2' 'fontconfig' 'fribidi' 'glibc' 'gmp' 'gnutls' 'gsm'
+         'jack' 'lame' 'libavc1394' 'libiec61883' 'libmodplug' 'libpulse'
+         'libraw1394' 'libsoxr' 'libssh' 'libtheora' 'libva' 'libvdpau'
+         'libwebp' 'libx11' 'libxcb' 'opencore-amr' 'openjpeg2' 'opus'
+         'schroedinger' 'sdl2' 'speex' 'v4l-utils' 'xz' 'zlib'
+         'libass.so' 'libbluray.so' 'libfreetype.so' 'libnetcdf.so'
+         'libvidstab.so' 'libvorbisenc.so' 'libvorbis.so' 'libvpx.so'
+         'libx264.so' 'libx265.so' 'libxvidcore.so'
          'raspberrypi-firmware-tools')
 makedepends=('hardening-wrapper' 'ladspa' 'libvdpau' 'yasm')
 optdepends=('ladspa: LADSPA filters')
@@ -32,9 +33,9 @@ provides=('libavcodec.so' 'libavdevice.so' 'libavfilter.so' 'libavformat.so'
           'libavresample.so' 'libavutil.so' 'libpostproc.so' 'libswresample.so'
           'libswscale.so' 'ffmpeg')
 conflicts=('ffmpeg')
-source=(http://ffmpeg.org/releases/ffmpeg-${pkgver}.tar.bz2{,.asc})
+source=("https://ffmpeg.org/releases/ffmpeg-${pkgver}.tar.xz"{,.asc})
 validpgpkeys=('FCF986EA15E6E293A5644F10B4322F04D67658D8')
-sha256sums=('58bc89c65dd114d874efbf76f76368d03b5e407f0a3f42d5b40801c280968a38'
+sha256sums=('3f01bd1fe1a17a277f8c84869e5d9192b4b978cb660872aa2b54c3cc8a2fedfc'
             'SKIP')
 
 build() {
