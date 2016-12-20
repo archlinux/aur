@@ -2,7 +2,7 @@
 # Contributor: [Vitaliy Berdinskikh](mailto:ur6lad@archlinux.org.ua) aka UR6LAD
 
 pkgname=cty
-pkgver=2415
+pkgver=2614
 pkgrel=1
 pkgdesc="The package represents databases of entities (countries), prefixes and callsigns
 	that are used by amateur radio logging software - CONTESTING VERSION."
@@ -11,7 +11,7 @@ provides=('cty')
 conflicts=('bigcty')
 url="http://www.country-files.com/cty"
 license=('GPL')
-source=(${url}/download/${pkgname}-$pkgver.zip)
+source=(${url}/download/$pkgver/${pkgname}-$pkgver.zip)
 
 package() {
 	mkdir -p  $pkgdir/usr/share/cty/old
@@ -21,5 +21,5 @@ package() {
 	cp -R *.{cty,dat} old $pkgdir/usr/share/cty
 }
 
-md5sums=('77becc0f912763384d35af9786bf184f')
-sha256sums=('1944268993ccdc143482f01987b3b1790749ccbdaa2c807961528ecbf9be4bb6')
+md5sums=('52ec1f5f02ea06f8f280c1f99ba66562')
+sha256sums=('54167802b3dfa0c39c2a7bceeaab4206359efa282c798d19f85947eb6838ca96')
