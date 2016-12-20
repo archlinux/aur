@@ -6,7 +6,7 @@ pkgname=networkmanager-noscan
 provides=('networkmanager')
 replaces=('networkmanager')
 conflicts=('networkmanager')
-pkgver=1.4.2
+pkgver=1.4.4
 pkgrel=1
 pkgdesc="Network Management daemon with Wi-Fi scanning disabled when already connected (improves reliability of the connection in several Wireless
 cards)"
@@ -19,8 +19,8 @@ makedepends=(intltool dhclient iptables gobject-introspection gtk-doc
              wpa_supplicant libsoup systemd libgudev libmm-glib rp-pppoe
              libnewt libndp libteam vala perl-yaml python-gobject git)
 checkdepends=(libx11 python-dbus)
-_commit=c2c006fca869fccf9ce8c2a63a738174269872e2  # tags/1.4.2^0
-source=("git://anongit.freedesktop.org/NetworkManager/NetworkManager#commit=$_commit"
+_commit=3c70a03cf5be420afaaf44f3a0bab5d00cc4e993  # tags/1.4.4^0
+source=("git+https://anongit.freedesktop.org/git/NetworkManager/NetworkManager#commit=$_commit"
         NetworkManager.conf
         disable_wifi_scan_when_connected.patch)
 sha256sums=('SKIP'
