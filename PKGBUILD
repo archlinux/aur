@@ -4,22 +4,17 @@
 
 pkgname=python2-icalendar
 _pkgname=icalendar
-pkgver=3.10
+pkgver=3.11.1
 pkgrel=1
 pkgdesc='A parser/generator of iCalendar files (RFC 2445)'
 arch=('any')
 url='http://pypi.python.org/pypi/icalendar/'
 license=('BSD')
 depends=('python2' 'python2-pytz' 'python2-dateutil')
-makedepends=('python2-distribute')
-source=(https://pypi.python.org/packages/3f/40/a479fd8d450e06ab0965227b3231ac3c4479dbaf424fdbdd1045809dc434/${_pkgname}-${pkgver}.tar.gz)
-md5sums=('81e869ea0b3293cc9e615a9d166ae1fd')
-sha256sums=('472f01da00e1e28eaf0cf03cc872c4cbce22dab50629ea9e72470761c6b45505')
-
-build() {
-  cd "$srcdir/${_pkgname}-$pkgver"
-  python2 setup.py build
-}
+makedepends=('python2-setuptools')
+source=(https://pypi.python.org/packages/1e/4a/72be37cd66974799a62c0422a8195f0789fdbdd80c993f607db1fcc8615f/${_pkgname}-${pkgver}.tar.gz)
+md5sums=('14c7b299f3a0a2aa944b31fefe95e233')
+sha256sums=('7e98dca0ad093bdb18141eb3127c12776c308f67c20af9aa2594e9037f3e71af')
 
 package() {
   cd "$srcdir/${_pkgname}-$pkgver"
