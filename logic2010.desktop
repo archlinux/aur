@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Logic 2010
+Comment=A free logic homework application and proof system
+Exec=logic2010
+Icon=logic2010
+Terminal=false
+Categories=Education;

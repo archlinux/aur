@@ -1,0 +1,24 @@
+pkgbase = logic2010
+	pkgdesc = Educational symbolic logic software provided for free by UCLA
+	pkgver = 20160506
+	pkgrel = 1
+	url = https://logiclx.humnet.ucla.edu
+	arch = any
+	license = custom
+	makedepends = unzip
+	depends = bash
+	depends = java-environment
+	noextract = Logic2010_mac_20160506.zip
+	source = https://logiclx.humnet.ucla.edu/remote/Logic2010_mac_20160506.zip
+	source = https://logiclx.humnet.ucla.edu/images/Logic2010_64.png
+	source = LICENSE
+	source = logic2010.sh
+	source = logic2010.desktop
+	sha256sums = 4f1271149abcd68e91d8499e570b32d1762cf9cb38b48af6f0d40792b2def069
+	sha256sums = cf207dd45240336b77ed92192658b0e66e8873ce5a2e43a4faab6664da4305fb
+	sha256sums = a8e232f0e92a6443765a1649a7e1400efc06f7d81fe1420a85ba781a97dbbdc7
+	sha256sums = f864fc089c23becdf0f1982f07d7f8644263cff9b7dd9b901c8501bca6e1a290
+	sha256sums = 622c3912d99b188843fdc6f303f8dd6a7475f7c7b291ae4ab6f26b4fd4a76993
+
+pkgname = logic2010
+
