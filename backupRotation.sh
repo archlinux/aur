@@ -179,7 +179,11 @@ Subject: Backup has failed
 </head>
 <body>
     <p>$(echo -e $message)</p>
-    <p><pre>$(df ./ --human-readable | grep "${target_daily_file_name}${target_file_extension}")</pre></p>
+    <p>
+        <pre>
+            $(df ./ --human-readable | grep "${target_daily_file_name}${target_file_extension}")
+        </pre>
+    </p>
 </body>
 </html>
 
