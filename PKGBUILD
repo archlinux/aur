@@ -2,7 +2,7 @@
 
 pkgname=xsysroot
 pkgver=1.913
-pkgrel=1
+pkgrel=2
 pkgdesc='Xsysroot is a tool that allows you to work with ARM images from your Intel computer.'
 arch=('i686' 'x86_64')
 url='https://github.com/skarbat/xsysroot'
