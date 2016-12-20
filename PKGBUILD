@@ -1,7 +1,7 @@
 # Maintainer: Graham Edgecombe <graham@grahamedgecombe.com>
 pkgname=openrct2-git
 pkgver=r10284.785a6ac85
-pkgrel=1
+pkgrel=2
 pkgdesc='Open source re-implementation of Roller Coaster Tycoon 2 (requires full
          copy of the game)'
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ depends=('hicolor-icon-theme' 'sdl2' 'sdl2_ttf' 'curl' 'jansson' 'speexdsp'
          'fontconfig' 'libpng' 'openssl' 'libzip')
 makedepends=('git' 'cmake')
 optdepends=('zenity: System dialog box support (GNOME/GTK)'
-            'kdebase-kdialog: System dialog box support (KDE)'
+            'kdialog: System dialog box support (KDE)'
             'alsa-lib: ALSA audio driver'
             'libpulse: PulseAudio audio driver')
 conflicts=('openrct2')
