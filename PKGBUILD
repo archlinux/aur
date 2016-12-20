@@ -5,8 +5,8 @@
 #TODO: integrate with makepkg.d/
 
 pkgname=slic3r-git
-pkgver=a
-pkgrel=16
+pkgver=1.3.0_dev.12165c72
+pkgrel=1
 pkgdesc="Slic3r is an STL-to-GCODE translator for RepRap 3D printers, aiming to be a modern and fast alternative to Skeinforge."
 arch=('i686' 'x86_64' 'armv6' 'armv6h' 'armv7h')
 url="http://slic3r.org/"
@@ -141,6 +141,9 @@ prepare() {
 
   # Nasty fix for useless warning
   sed -i '/^warn \"Running Slic3r under Perl/,+1 s/^/\#/' ./lib/Slic3r.pm
+
+  # Nasty fix for local::lib use
+  find . -iregex '.*\.\(pl\|pm\|t\)' -print0 |  xargs -0 -l sed -i -e '/use local::lib/d'
 
   # Dependency check - intended of package maintainer only, for now
   #TODO: make sure that this if actually works when !check inside makepkg.conf and check inside pkgbuild... find last check and check if it has ! in front?. Is check default?
