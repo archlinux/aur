@@ -5,3 +5,17 @@ post_install() {
   echo ' "ATV4" atv4 \n\'
   echo '------------------------------------------------------------------------------------'
 }
+
+post_upgrade() {
+  # version 1.05 introduces new videos
+  if [[ "$(vercmp $2 1.05)" -lt 0 ]]; then
+    echo '------------------------------------------------------------------------------------'
+    echo ' You must manually delete your day and night databases or wait for all videos to'
+    echo ' cycle for the rebuild. New videos will be unavailable until either of these happen.'
+    echo
+    echo ' Hint: the databases reside in $XDG_CONFIG_HOME/.atv4-{day,night}'
+    echo '------------------------------------------------------------------------------------'
+  fi
+}
+
+# vim:set ts=2 sw=2 et:

@@ -2,7 +2,7 @@
 
 pkgname='xscreensaver-aerial'
 pkgver=1.05
-pkgrel=1
+pkgrel=2
 arch=('any')
 url="https://github.com/graysky2/xscreensaver-aerial"
 license=('MIT')
