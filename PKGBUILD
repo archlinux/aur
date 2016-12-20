@@ -5,8 +5,8 @@ pkgver=7.8.0
 pkgrel=2
 pkgdesc="Generic platform for Pre and Post-Processing for numerical simulation - GUI Module"
 url="http://www.salome-platform.org"
-depends=("salome-kernel>=${pkgver}" 'salome-kernel<7.9.0' 'qt4' 'python2-pyqt4' 'opencascade>=6.9.0' 'qwt' 'paraview-salome=5.0.1p1' 'sip')
-makedepends=('doxygen' 'swig2' 'boost' 'optipng' 'python2-sphinx' 'git')
+depends=("salome-kernel>=${pkgver}" "salome-kernel<${pkgver:0:2}$((${pkgver:2:1}+1)).0" "qt4" "python2-pyqt4" "opencascade>=6.9.0" "qwt" "paraview-salome=5.0.1p1" "sip")
+makedepends=('doxygen' 'swig2' 'boost' 'optipng' 'python2-sphinx')
 arch=('i686' 'x86_64')
 conflicts=()
 provides=()
@@ -32,9 +32,6 @@ prepare(){
 #  msg "GIT checkout done or server timeout"
 
   cd "${srcdir}/${_source}"
-
-  # error "/usr/lib/libQtNetwork.so.4: error adding symbols: DSO missing from command line"
-  #sed -e "s|QtXml|QtXml QtNetwork|" -i CMakeLists.txt
 
   # error "sip: Q_PID is undefined"
   sed -e 's|from PyQt4 import pyqtconfig;|from PyQt4 import QtCore;|' \
