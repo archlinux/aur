@@ -1,6 +1,6 @@
 pkgbase = x2x-git
 	pkgdesc = Allows the keyboard, mouse on one X display to be used to control another X display.
-	pkgver = git
+	pkgver = r117.7d09ce2
 	pkgrel = 1
 	url = https://github.com/dottedmag/x2x
 	arch = i686
