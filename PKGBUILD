@@ -1,6 +1,6 @@
 # Maintainer: Justin Ethier <justin.ethier@gmail.com>
 pkgname=cyclone-scheme
-pkgver=0.3.2
+pkgver=0.3.3
 pkgrel=1
 pkgdesc="An R7RS Scheme-to-C compiler using Cheney on the M.T.A with native threads"
 arch=('i686' 'x86_64')
@@ -20,7 +20,7 @@ changelog=
 source=($url/archive/v$pkgver.tar.gz)
 noextract=()
 #autofill using updpkgsums
-md5sums=('06bca7309427d88aa412d67ae1ebf404')
+md5sums=('c3a05931f5646526df961ab6b4c23109')
 
 build() {
   cd "cyclone-bootstrap-$pkgver"
