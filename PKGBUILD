@@ -2,7 +2,7 @@
 pkgname=netris-git
 pkgver=0.52_19 # Is automatically updated by pkgver() below
 pkgrel=1
-pkgdesc="Mark H. Weaver's Netris -- A free networked version of T*tris. This is my (the AUR package maintainer) fork, which itself is based on Nathan Aclander's fork."
+pkgdesc="Mark H. Weaver's Netris -- A free networked version of Tetris. This is my (the AUR package maintainer) fork, which itself is based on Nathan Aclander's fork."
 arch=('i686' 'x86_64')
 url="https://github.com/naclander/netris.git"
 license=('GPL2')
