@@ -2,9 +2,9 @@
 
 pkgname=python-wpiformat-git
 _gitname=styleguide
-pkgver=2016.47
+pkgver=2016.50
 pkgrel=1
-pkgdesc="Linters and formatters for ensuring WPILib\'s source code conforms to its style guide"
+pkgdesc="Linters and formatters for ensuring WPILib's source code conforms to its style guide"
 arch=('i686' 'x86_64')
 url="http://github.com/wpilibsuite/styleguide"
 license=('custom=FRC-BSD')

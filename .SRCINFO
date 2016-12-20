@@ -1,6 +1,6 @@
 pkgbase = python-wpiformat-git
-	pkgdesc = Linters and formatters for ensuring WPILib\'s source code conforms to its style guide
-	pkgver = 2016.47
+	pkgdesc = Linters and formatters for ensuring WPILib's source code conforms to its style guide
+	pkgver = 2016.50
 	pkgrel = 1
 	url = http://github.com/wpilibsuite/styleguide
 	arch = i686
