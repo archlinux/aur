@@ -9,7 +9,7 @@ url='https://github.com/skarbat/xsysroot'
 license=('MIT')
 makedepends=('git')
 depends=('python2' 'qemu-user-static' 'binfmt-support')
-source=(git+ssh://github.com/skarbat/xsysroot)
+source=('git+ssh://github.com/skarbat/xsysroot')
 sha256sums=('SKIP')
 
 pkgver() {
