@@ -5,7 +5,7 @@
 #TODO: integrate with makepkg.d/
 
 pkgname=slic3r-git
-pkgver=1.3.0_dev.12165c72
+pkgver=1.2.10_dev.b7b2340a
 pkgrel=1
 pkgdesc="Slic3r is an STL-to-GCODE translator for RepRap 3D printers, aiming to be a modern and fast alternative to Skeinforge."
 arch=('i686' 'x86_64' 'armv6' 'armv6h' 'armv7h')
@@ -73,7 +73,7 @@ prepare() {
 # Welcome new interactive config overlord
   {
     #TODO: Display warning with current branch/commit, just before prompt to press key
-    if [[ "$(cat /proc/$$/cmdline)" != *noconfirm* ]] && tty -s ; then
+    if [[ "$(cat /proc/$$/cmdline | tr -d \\0)" != *noconfirm* ]] && tty -s ; then
       countdown 3 & countdown_pid=$!
       read -s -n 1 -t 3 ikey || true
       kill -s SIGHUP $countdown_pid > /dev/null || true # Any key below 1sec fix
