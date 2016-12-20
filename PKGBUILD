@@ -2,7 +2,7 @@
 # Maintainer: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
 
 pkgname=php-sqlsrv
-pkgver=4.0.7
+pkgver=4.0.8
 pkgrel=1
 pkgdesc="Microsoft Drivers for PHP for SQL Server PHP 7 Linux"
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ url="https://github.com/Microsoft/msphpsql/tree/PHP-7.0-Linux"
 license=('MIT')
 depends=('php' 'msodbcsql')
 source=("https://github.com/Microsoft/msphpsql/archive/$pkgver-Linux/$pkgname-$pkgver.tar.gz")
-sha256sums=('2feb763ee71642c49f3792e730928447b54c450999c522841f1c95cad46eb313')
+sha256sums=('09d6c0328111f47a85098441ae51a39409f2a7cf283e982eb0b73fe284a1e4d9')
 backup=('etc/php/conf.d/sqlsrv.ini')
 
 build() {
