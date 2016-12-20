@@ -101,11 +101,6 @@ package() {
     sed -i -e "s|${pkgdir}||" ${_FILE}
   done
   
-  # install profile
-  install -D -m755 "${srcdir}/${pkgname}.sh" \
-                   "${pkgdir}${_profiledir}/${pkgname}.sh"
-
-
   cd ${pkgdir}
 
   for _FILE in share/doc/salome/gui/GEOM/arcsn1.png share/doc/salome/gui/GEOM/arcsn2.png share/doc/salome/gui/GEOM/tree_view_fitarea.png share/doc/salome/gui/GEOM/tree_view_fitselect.png share/doc/salome/gui/GEOM/glue_faces3.png share/doc/salome/gui/GEOM/geomimport_reopen.png share/doc/salome/gui/GEOM/remove_extra_edges1.png share/doc/salome/gui/GEOM/remove_extra_edges2.png share/doc/salome/gui/GEOM/scale_transformsn3.png share/doc/salome/gui/GEOM/scale_transformsn4.png
@@ -113,6 +108,10 @@ package() {
     optipng -quiet -force -fix ${pkgdir}${_installdir}/${_FILE}
   done
   
+  # install profile
+  install -D -m755 "${srcdir}/${pkgname}.sh" \
+                   "${pkgdir}${_profiledir}/${pkgname}.sh"
+
   rm -f "${pkgdir}${_installdir}/bin/salome/VERSION"
   rm -f "${pkgdir}${_installdir}/bin/salome/test/CTestTestfile.cmake"
 }
