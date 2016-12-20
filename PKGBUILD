@@ -13,7 +13,7 @@
 _pppver=2.4.7
 
 pkgname=networkmanager-consolekit-noscan
-pkgver=1.4.2
+pkgver=1.4.4
 pkgrel=1
 pkgdesc="Network Management daemon with scan disabled after connection established"
 arch=('i686' 'x86_64')
@@ -44,7 +44,7 @@ source=("https://download.gnome.org/sources/NetworkManager/${pkgver:0:3}/Network
         'NetworkManager.conf'
         '01-org.freedesktop.NetworkManager.settings.modify.system.rules'
         '50-org.freedesktop.NetworkManager.rules')
-sha256sums=('a864e347ddf6da8dabd40e0185b8c10a655d4a94b45cbaa2b3bb4b5e8360d204'
+sha256sums=('829378f318cc008d138a23ca6a9191928ce75344e7e47a2f2c35f4ac82133309'
             '3dfabdccd97074c948c924ece87935576e64675bdfef478e800a6da882861c2d'
             '452e4f77c1de92b1e08f6f58674a6c52a2b2d65b7deb0ba436e9afa91ee15103'
             '4b815f43de58379e68653d890f529485aec4d2f83f11d050b08b31489d2267c2'
