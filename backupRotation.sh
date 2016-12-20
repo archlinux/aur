@@ -139,7 +139,7 @@ Subject: Backup was successful
 <head>
 </head>
 <body>
-    <p>$(echo -e $message | sed --regexp-extended 's:"([^"]+)":"<span style="font-weight:bold"">\1</span>":')</p>
+    <p>$(echo -e $message | sed --regexp-extended 's:"([^"]+)":"<span style="font-weight:bold">\1</span>":')</p>
     <p>
         <pre>
 $(tree "$target_path" | sed "s/${target_daily_file_name}${target_file_extension}/<span style="font-weight:bold">${target_daily_file_name}${target_file_extension}<\\/span>/")
@@ -180,7 +180,7 @@ Subject: Backup has failed
 <head>
 </head>
 <body>
-    <p>$(echo -e $message | sed --regexp-extended 's:"([^"]+)":"<span style="font-weight:bold"">\1</span>":')</p>
+    <p>$(echo -e $message | sed --regexp-extended 's:"([^"]+)":"<span style="font-weight:bold">\1</span>":')</p>
     <p>
         <pre>
 $(df ./ --human-readable | grep "${target_daily_file_name}${target_file_extension}")
