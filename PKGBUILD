@@ -2,7 +2,7 @@
 # Contributor: Thomas Conneely <tc116 at le dot ac dot uk>
 
 pkgname=python2-bitstring
-pkgver=3.1.4
+pkgver=3.1.5
 pkgrel=1
 pkgdesc='Python module designed to help make the creation, manipulation and analysis of binary data as simple and natural as possible'
 arch=('any')
@@ -10,8 +10,8 @@ url="https://scott-griffiths.github.io/bitstring/"
 license=('MIT')
 depends=('python2')
 options=(!emptydirs)
-source=(https://pypi.python.org/packages/source/b/bitstring/bitstring-$pkgver.tar.gz)
-md5sums=('4c317d8570a62aa0c94fd42a8234823d')
+source=(https://pypi.python.org/packages/f3/e5/dfe4c49c93d174a5fd807ed307d3a3f38c6b3e140972945f81a5f5578ca7/bitstring-$pkgver.zip)
+md5sums=('70689a282f66625d0c7c3579a13e66db')
 sha256sum=('1db5d54ee269f6b54d50c3eb257eea4b')
 
 build() {
