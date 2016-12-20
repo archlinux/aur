@@ -2,7 +2,7 @@
 # Contributor: megadriver <megadriver at gmx dot com>
 
 pkgname=ttf-unifont
-pkgver=9.0.04
+pkgver=9.0.05
 pkgrel=1
 pkgdesc="TrueType version of the GNU Unifont"
 url="http://unifoundry.com/unifont.html"
@@ -11,7 +11,7 @@ license=('GPL')
 depends=('fontconfig' 'xorg-fonts-encodings' 'xorg-font-utils')
 install=$pkgname.install
 source=("http://unifoundry.com/pub/unifont-$pkgver/unifont-$pkgver.tar.gz")
-md5sums=('a070dd0573111bec32873825292c8a2d')
+md5sums=('a55bb8150ec548bf8325647a6f0b8386')
 
 package() {
 	cd $srcdir
