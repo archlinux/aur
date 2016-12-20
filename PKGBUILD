@@ -14,13 +14,11 @@ source=($pkgname::git+https://github.com/PowerShell/PowerShell.git#tag=v$_pkgver
         pester::git+https://github.com/PowerShell/psl-pester.git#branch=develop
         googletest::git+https://github.com/google/googletest.git
         os-release
-        revert-commit-c695d41.patch
         build.sh)
 md5sums=('SKIP'
          'SKIP'
          'SKIP'
          'f5841baa62b1322c07f9394940cec818'
-         'b75d22e1c794dded7308f5bc70dea409'
          'd20378ea8504200919c65de6592f0b24')
 
 prepare() {
