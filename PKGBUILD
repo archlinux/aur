@@ -1,7 +1,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=tex2page-git
-pkgver=20161218
+pkgver=20161219
 pkgrel=1
 pkgdesc="Lisp program for making Web pages from TeX documents"
 arch=('any')
@@ -16,11 +16,6 @@ pkgver() {
   cd "${pkgname%-git}"
   echo $(git log -1 --format="%cd" --date=short | sed 's|-||g')
 }
-
-#prepare() {
-#  cd "${pkgname%-git}"
-#  sed -i 's+scmxlate=+scmxlate=/usr/lib/scmxlate/scmxlate.scm+' configure
-#}
 
 build() {
   cd "${pkgname%-git}"
@@ -38,13 +33,13 @@ build() {
 check() {
   cd "${pkgname%-git}"
   # run the generated program to build html-docs, also a good test
-  ./my-${pkgname%-git} index
-  ./my-${pkgname%-git} index
+  ./${pkgname%-git} index
+  ./${pkgname%-git} index
 }
 
 package() {
   cd "${pkgname%-git}"
-  install -Dm755 "my-${pkgname%-git}" $pkgdir/usr/bin/"${pkgname%-git}"
+  install -Dm755 "${pkgname%-git}" $pkgdir/usr/bin/"${pkgname%-git}"
   install -Dm644 "${pkgname%-git}".sty $pkgdir/usr/share/texmf/tex/plain/"${pkgname%-git}".sty
   install -Dm644 "${pkgname%-git}".tex $pkgdir/usr/share/texmf/tex/plain/"${pkgname%-git}".tex
   # for texinfo sources
