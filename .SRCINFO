@@ -1,6 +1,6 @@
 pkgbase = jules-git
 	pkgdesc = Statistical computing library that aims to provide R-like experience in modern C++
-	pkgver = 0.1.r0.g1dd185e
+	pkgver = 0.1.1.r0.gc0b9576
 	pkgrel = 1
 	url = https://verri.github.io/jules/
 	arch = any
@@ -8,6 +8,7 @@ pkgbase = jules-git
 	makedepends = git
 	depends = debug_assert-git
 	depends = range-v3-git
+	optdepends = cblas: BLAS optimized functions support
 	provides = jules
 	conflicts = jules
 	source = git+https://github.com/verri/jules.git

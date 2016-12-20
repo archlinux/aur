@@ -1,13 +1,14 @@
 # Maintainer: Filipe Verri <filipeverri@gmail.com>
 
 pkgname=jules-git
-pkgver=0.1.r0.g1dd185e
+pkgver=0.1.1.r0.gc0b9576
 pkgrel=1
 pkgdesc="Statistical computing library that aims to provide R-like experience in modern C++"
 arch=('any')
 url="https://verri.github.io/jules/"
 license=('ZLIB')
 depends=('debug_assert-git' 'range-v3-git')
+optdepends=('cblas: BLAS optimized functions support')
 makedepends=('git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
