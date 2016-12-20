@@ -1,9 +1,10 @@
 # Maintainer: Grey Christoforo <first name at last name dot net>
 pkgname=libarea-git
 pkgver=120.f1986ac
-pkgrel=3
+pkgrel=4
 pkgdesc="Library and python module for pocketing and profiling operations"
 arch=('x86_64')
+provides=('libarea')
 url="https://github.com/Heeks/libarea"
 license=('custom:BSD3')
 depends=('python' 'opencascade' 'boost')
