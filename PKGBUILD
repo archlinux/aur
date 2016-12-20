@@ -7,7 +7,7 @@
 
 pkgname=monodevelop-beta
 _pkgname=monodevelop
-pkgver=6.2.0.1515
+pkgver=6.2.0.1686
 pkgrel=1
 pkgdesc="An IDE primarily designed for C# and other .NET languages - Beta channel. WARNING: this package requires over 500 MB worth of data to be downloaded."
 arch=('any')
