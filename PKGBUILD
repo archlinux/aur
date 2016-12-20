@@ -1,7 +1,7 @@
 # Maintainer: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=switchboard-plug-desktop-bzr
-pkgver=r425
+pkgver=r529
 pkgrel=1
 pkgdesc='Desktop plug for Switchboard'
 arch=('i686' 'x86_64')
@@ -18,7 +18,7 @@ conflicts=('switchboard-plug-desktop' 'switchboard-plug-pantheon-shell')
 source=('switchboard-plug-desktop::bzr+lp:switchboard-plug-pantheon-shell'
         'switchboard-plug-desktop-paths.patch')
 sha256sums=('SKIP'
-            'b2219346a7f2c13b58b7a0c3046ad44fe649e10550e0b0ceae74903cb3eb7e2e')
+            '0c6df0421b9ce72f8c4b95f0102400c01125ab5d2515a580132104773b836331')
 
 pkgver() {
   cd switchboard-plug-desktop

@@ -1,12 +1,12 @@
 diff -rupN switchboard-plug-desktop.orig/src/Wallpaper.vala switchboard-plug-desktop/src/Wallpaper.vala
---- switchboard-plug-desktop.orig/src/Wallpaper.vala	2016-02-14 16:12:57.967894550 +0100
-+++ switchboard-plug-desktop/src/Wallpaper.vala	2016-02-14 16:13:31.317402603 +0100
-@@ -98,7 +98,7 @@ class Wallpaper : EventBox {
-     //(assumes that the defaultwallpaper is also in the system wallpaper directory)
-     static string default_link = "file://%s/elementaryos-default".printf (SYSTEM_BACKGROUNDS_PATH);
- 
+--- switchboard-plug-desktop.orig/src/Wallpaper.vala	2016-12-20 14:13:11.207917562 +0100
++++ switchboard-plug-desktop/src/Wallpaper.vala	2016-12-20 14:13:47.472669721 +0100
+@@ -81,7 +81,7 @@ public class Wallpaper : Gtk.EventBox {
+     // name of the default-wallpaper-link that we can prevent loading it again
+     // (assumes that the defaultwallpaper is also in the system wallpaper directory)
+     static string DEFAULT_LINK = "file://%s/elementaryos-default".printf (SYSTEM_BACKGROUNDS_PATH);
 -    const string SYSTEM_BACKGROUNDS_PATH = "/usr/share/backgrounds";
 +    const string SYSTEM_BACKGROUNDS_PATH = "/usr/share/backgrounds/pantheon";
  
-     public Wallpaper (Switchboard.Plug _plug) {
-         plug = _plug;
+     public Switchboard.Plug plug { get; construct set; }
+     private GLib.Settings settings;
