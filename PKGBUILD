@@ -5,18 +5,18 @@
 # Contributor: Alexander Rødseth <rodseth@gmail.com>
 
 pkgname=gkrellm
-pkgver=2.3.9
+pkgver=2.3.10
 pkgrel=1
 pkgdesc="System monitor package for GTK2"
 arch=('x86_64' 'i686')
-url="http://gkrellm.srcbox.net/"
+url="https://gkrellm.srcbox.net/"
 license=('GPL3')
 depends=('gtk2' 'libsm' 'lm_sensors')
 makedepends=('gettext')
 backup=('etc/gkrellmd.conf')
-source=("${url}/releases/$pkgname-$pkgver.tar.bz2"
+source=("${url}/releases/${pkgname}-${pkgver}.tar.bz2"
         "gkrellm.service")
-sha256sums=('0311450db242b05577b109659263cf94e34bac54f2fffb6c9ad83b98b2dfc41f'
+sha256sums=('8b9ec8baadcd5830c6aff04ba86dc9ed317a15c1c3787440bd1e680fb2fcd766'
             '2829931127632d0391f6749024809594b78c138fe4f03c98cd65fdbd47cea376')
 
 build() {
