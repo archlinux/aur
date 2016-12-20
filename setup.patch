@@ -1,12 +1,34 @@
---- setup.py	2013-05-22 20:35:40.600716564 +0100
-+++ setup.py.fixed	2013-05-22 20:36:01.894050859 +0100
-@@ -29,7 +29,8 @@
- #
- #
- ################################################################################
--from distutils.core import setup, Extension,DistutilsExecError
-+from distutils.core import setup, Extension
-+from distutils.errors import DistutilsExecError
- import os
- import sys
+--- setup.py.orig	2016-12-20 16:24:15.392280850 +0100
++++ setup.py	2016-12-20 16:24:29.442484448 +0100
+@@ -7,26 +7,18 @@ import numpy.distutils.misc_util
+ include_dirs = numpy.distutils.misc_util.get_numpy_include_dirs()
+ include_dirs.insert(0, distutils.sysconfig.get_python_inc())
  
+-# Get the text for the readme and license
+-with open('README.rst') as f:
+-    readme = f.read()
+-
+-with open('LICENSE') as f:
+-    license = f.read()
+-
+ setup(name='pymix',
+       version="0.8b",
+-      
++
+       description='PyMix -- Python mixture package',
+-      long_description=readme, 
+-      
++
+       author="Benjamin Georgi",
+       author_email="georgi@molgen.mpg.de",
+       url ="http://www.pymix.org",
+-      license=license,
+-      
++      license="GPLv2",
++
+       packages = ['pymix', 'pymix.examples', 'pymix.tests'],
+-      
++
+       ext_modules = [Extension('_C_mixextend',
+                                ['pymix/C_mixextend.c'],
+                                include_dirs = include_dirs,
