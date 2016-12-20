@@ -1,6 +1,6 @@
 # Maintainer: Morris Jobke <hey AT morrisjobke DOT de>
 pkgname=php-blackfire
-pkgver=1.13.0
+pkgver=1.14.1
 pkgrel=1
 pkgdesc='Blackfire Profiler - PHP extension'
 arch=('i686' 'x86_64')
@@ -14,8 +14,8 @@ source_i686=("blackfire.so-${pkgver}_70_i686::http://packages.blackfire.io/binar
 source_x86_64=("blackfire.so-${pkgver}_70_x86_64::http://packages.blackfire.io/binaries/blackfire-php/$pkgver/blackfire-php-linux_amd64-php-70.so")
 
 sha256sums=('43f82aea3877cc0133cf2278cb85d0c612cf1f6c869ad430cbaa2b2598f78f33')
-sha256sums_i686=('1c56127f6b119dbc83d894cfd7c0259bf79274e954f2c393a62e753ea4fbcc56')
-sha256sums_x86_64=('3a8fafb538d0ab00f6e9bc9983cd2bfac3725a19c20428febb9dde5e829e5e33')
+sha256sums_i686=('e3e46ab8e7ad13117689fa35226030aa090dbed6208a926ae77f0a0748ef82bf')
+sha256sums_x86_64=('b509297aae8eca03843273e64eefc2a6be95a5cad32a29cf41a9bde76fe6ac01')
 
 package(){
   install -Dm 644 blackfire.ini "$pkgdir"/etc/php/conf.d/blackfire.ini
