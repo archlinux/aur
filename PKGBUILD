@@ -10,7 +10,7 @@ license=('GPL')
 depends=('perl' 'perl-json' 'task>=2.4.0')
 makedepends=('git' 'make')
 source=("https://github.com/ValiValpas/taskopen/archive/v${pkgver}.tar.gz")
-sha256sums=("30a69aa4eb99b8672dc7cec7a3ee509d34799849a8a1697abf007a2b61903c66")
+sha256sums=("55a00a2b947f2415934f1b6bd98ca69e3f85cf07da3be4e3f6841198037b9caa")
 
 build() {
   cd "$srcdir/${pkgname}-${pkgver}"
