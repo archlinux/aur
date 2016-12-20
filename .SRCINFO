@@ -1,0 +1,22 @@
+pkgbase = qt5-enginio
+	pkgdesc = A Backend-as-a-Service solution to ease the backend development for connected and data-driven application
+	pkgver = 5.6.0
+	pkgrel = 2
+	url = http://qt-project.org/
+	arch = i686
+	arch = x86_64
+	groups = qt
+	groups = qt5
+	license = GPL3
+	license = LGPL
+	license = FDL
+	license = custom
+	makedepends = qt5-declarative
+	depends = qt5-base
+	optdepends = qt5-declarative: QML bindings
+	conflicts = qt
+	source = http://download.qt.io/official_releases/qt/5.6/5.6.0/submodules/qtenginio-opensource-src-1.6.0.tar.xz
+	md5sums = 67362f39eca4316905f86cbba653309b
+
+pkgname = qt5-enginio
+
