@@ -3,7 +3,7 @@
 
 _pkgname=godot
 pkgname=${_pkgname}-git
-pkgver=2.2.r5989.ab637bc
+pkgver=2.2.r6022.2c8a172
 pkgrel=1
 pkgdesc="Godot Game Engine: An advanced, feature packed, multi-platform 2D and 3D game engine."
 url="http://www.godotengine.org"
@@ -47,7 +47,7 @@ build() {
 
     sed -n '/\/* Copyright/,/IN THE SOFTWARE./p' main/main.cpp | sed 's/\/\*//' | sed 's/\*\///' > LICENSE
 
-    scons platform=x11 target=release_debug CXX=clang++
+    scons platform=x11 target=release_debug CXX=clang++ -j$(nproc) 
 }
 
 package() {
