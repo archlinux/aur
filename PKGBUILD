@@ -7,8 +7,8 @@ pkgname="${_pkgbase}-git"
 pkgver=20130204.r7.g258dbb1
 pkgrel=1
 pkgdesc='Scan for LLTD-enabled hosts on your network'
-url="https://github.com/zed-0xff/${_pkgbase}"
 arch=('i686' 'x86_64')
+url="https://github.com/zed-0xff/${_pkgbase}"
 license=('GPL')
 depends=('libpcap' 'libnet')
 makedepends=('git')
@@ -36,7 +36,7 @@ package() {
   set -u
   cd "${pkgname%-git}"
   install -Dpm755 'lltdscan' -t "${pkgdir}/usr/bin/"
-  install -Dpm644 'lltdscan.8' -t "${pkgdir}/usr/man/man8/"
+  install -Dpm644 'lltdscan.8' -t "${pkgdir}/usr/share/man/man8/"
   set +u
 }
 set +u
