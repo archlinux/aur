@@ -3,7 +3,7 @@
 pkgname=jid
 pkgver=0.6.2
 pkgrel=1
-pkgdesc='JSON incremental digger'
+pkgdesc='JSON incremental digger (Go installer)'
 url='https://github.com/simeji/jid'
 arch=('any')
 license=('MIT')
