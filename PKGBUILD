@@ -1,7 +1,6 @@
 # Maintainer: Michael Schubert <mschu.dev at gmail>
-
 pkgname=latex-mathabx
-_pkgname=mathabx
+_pkgname=${pkgname#latex-}
 pkgver=2005.05.18
 pkgrel=1
 pkgdesc="Mathematical symbols not included in the standard distribution"
