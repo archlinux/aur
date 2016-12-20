@@ -89,7 +89,7 @@ build() {
   ### OpenMP to speed computation of some filters
   # https://blog.kitware.com/simple-parallel-computing-with-vtksmptools-2/
   # https://blog.kitware.com/accelerated-filters-in-paraview-5/
-  cmake_options+=" -DVTK_SMP_IMPLEMENTATION_TYPE=OpenMP"
+  # cmake_options+=" -DVTK_SMP_IMPLEMENTATION_TYPE=OpenMP"
   
   # Qt settings
   cmake_options+=" -DPARAVIEW_BUILD_QT_GUI:BOOL=ON"
