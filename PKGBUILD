@@ -12,7 +12,7 @@ source=("http://bibiserv.techfak.uni-bielefeld.de/spool/download/bibiserv_142131
 md5sums=('8f86b93771914662e54483ea0f734111')
 
 build() {
-  cd "$srcdir/RNAshapes-$pkgver"
+  cd $srcdir/RNAshapes-$pkgver
 
   ./configure --prefix=/usr \
               --mandir=/usr/share/man
@@ -21,15 +21,15 @@ build() {
 }
 
 check() {
-   cd "$srcdir/RNAshapes-$pkgver"
+   cd $srcdir/RNAshapes-$pkgver
 
    make check
 }
 
 package() {
-  cd "$srcdir/RNAshapes-$pkgver"
+  cd $srcdir/RNAshapes-$pkgver
 
-  make DESTDIR="$pkgdir" install
+  make DESTDIR=$pkgdir install
 
-  install -Dm644 COPYING "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 COPYING $pkgdir/usr/share/licenses/$pkgname/LICENSE
 }
