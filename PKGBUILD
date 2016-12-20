@@ -16,9 +16,8 @@ md5sums=('SKIP')
 
 pkgver() {
  cd "$srcdir/$pkgname"
- git describe --long --tags --always | sed -r 's/([^-]*-g)/r\1/;s/-/./g'
+ printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
-
 
 build() {
  cd "$srcdir/$pkgname"
