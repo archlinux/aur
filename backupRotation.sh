@@ -119,7 +119,7 @@ for source_path in "${!source_target_mappings[@]}"; do
             +"$number_of_monthly_retention_days" -exec $cleanup_command {} \;
         message="Source files in \"$source_path\" from node \"$name\" successfully backed up to \"${target_file_path}${target_file_extension}\".\n\nCurrent Backup structure:\n"
         $verbose && echo -e "$message" && tree "$target_path" && \
-            echo -e "\n" && df ./ --human-readable
+            df ./ --human-readable
         if hash msmtp && [[ "$sender_e_mail_address" != '' ]]; then
             for e_mail_address in \
                 $(echo "${source_target_mappings[$source_path]}" | \
@@ -149,7 +149,7 @@ EOF
     else
         message="Source files in \"$source_path\" from node \"$name\" should be backed up but has failed.\n\nCurrent Backup structure:\n"
         $verbose && echo -e "$message" &>/dev/stderr && \
-            tree "$target_path" && echo -e "\n" && df ./ --human-readable
+            tree "$target_path" && df ./ --human-readable
         if hash msmtp && [[ "$sender_e_mail_address" != '' ]]; then
             for e_mail_address in \
                 $(echo "${source_target_mappings[$source_path]}" | \
