@@ -1,17 +1,19 @@
 # Maintainer: Michele Mocciola <mickele>
 
 pkgname=eficas
-pkgver=2015.2
-pkgrel=3
+pkgver=2016.0
+pkgrel=1
 pkgdesc="ASter Command FIle Editor. Editor of Code_Aster's command files."
 url="http://www.code-aster.org/"
 license=('GPL')
 depends=('python2' 'python2-pyqt' 'python2-numpy')
 makedepends=('desktop-file-utils' 'gcc-fortran')
 arch=('i686' 'x86_64')
-_asterver=12.5.0
-_astersubver=1
+_asterver=12.6.0
+_astersubver=4
 source=("http://www.code-aster.org/FICHIERS/aster-full-src-${_asterver}-${_astersubver}.noarch.tar.gz" "eficas.png" "eficas.desktop")
+
+_installdir=/opt/eficas
 
 build() {
     cd "${srcdir}/aster-full-src-${_asterver}"
@@ -21,8 +23,8 @@ build() {
 package() {
   cd "${srcdir}/aster-full-src-${_asterver}"
 
-  python2 setup.py install --prefix="${pkgdir}/opt/eficas" eficas
-  sed -e "s|python|python2|" -i "${pkgdir}/opt/eficas/public/${pkgname}-${pkgver}/eficasQt"
+  python2 setup.py install --prefix="${pkgdir}${_installdir}" eficas
+  sed -e "s|python|python2|" -i "${pkgdir}${_installdir}/public/eficas-${pkgver}/eficasQt"
 
   install -d -m 755 "${pkgdir}/usr/bin/"
   ln -s /opt/eficas/bin/eficas "${pkgdir}/usr/bin/"
@@ -38,9 +40,8 @@ package() {
     sed "s|${pkgdir}||" -i ${_FILE}
   done
 
-  sed -e "s|'/opt/eficas', '12.5', 'lib/aster/Cata/cata.py'|'/usr/lib/aster', '12.5', 'Cata/cata.py'|" -i opt/eficas/public/eficas-${pkgver}/Aster/prefs_ASTER.py
+  sed -e "s|'/opt/eficas', '12.6', 'lib/aster/Cata/cata.py'|'/usr/lib/aster', '12.6', 'Cata/cata.py'|" -i opt/eficas/public/eficas-${pkgver}/Aster/prefs_ASTER.py
 }
-
-md5sums=('58224ee70b508e2bf0a0e0f0fab6a57d'
+md5sums=('1603b6f94fdbdec2977b2e864b3b0f4a'
          '246438dfb94a62aff24fcd7b05f5a7d7'
          '0315674d3dd04af7f2125576d651a94b')
