@@ -134,12 +134,20 @@ Reply-To: $replier_e_mail_address
 Date: $(date)
 Subject: Backup was successful
 
-$(echo -e $message)
-
-<span style="font-weight:bold">TEST</span>
-$(tree "$target_path")
-
-$(df ./ --human-readable)
+<!doctype html>
+<html>
+<head>
+</head>
+<body>
+    <p>$(echo -e $message)</p>
+    <p>
+        <pre>
+            $(tree "$target_path" | sed "s/${target_daily_file_name}${target_file_extension}/<span style="font-weight:bold">${target_daily_file_name}${target_file_extension}<\\/span>/")
+        </pre>
+    </p>
+    <p><pre>$(df ./ --human-readable)</pre></p>
+</body>
+</html>
 
 EOF
             done
@@ -165,9 +173,15 @@ Reply-To: $replier_e_mail_address
 Date: $(date)
 Subject: Backup has failed
 
-$message
-
-$(df ./ --human-readable)
+<!doctype html>
+<html>
+<head>
+</head>
+<body>
+    <p>$(echo -e $message)</p>
+    <p><pre>$(df ./ --human-readable | grep "${target_daily_file_name}${target_file_extension}")</pre></p>
+</body>
+</html>
 
 EOF
             done
