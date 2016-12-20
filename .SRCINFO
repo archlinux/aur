@@ -1,6 +1,6 @@
 pkgbase = linux-bfq
 	pkgver = 4.8.15
-	pkgrel = 3
+	pkgrel = 4
 	url = http://algo.ing.unimo.it
 	arch = i686
 	arch = x86_64
@@ -25,7 +25,7 @@ pkgbase = linux-bfq
 	source = linux.preset
 	source = net_handle_no_dst_on_skb_in_icmp6_send.patch
 	source = 0001-x86-fpu-Fix-invalid-FPU-ptrace-state-after-execve.patch
-	source = 0005-BFQ-update-to-v8r6.patch
+	source = 0005-BFQ-update-to-v8r5.patch
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
 	sha512sums = a48a065f21e1c7c4de4cf8ca47b8b8d9a70f86b64e7cfa6e01be490f78895745b9c8790734b1d22182cf1f930fb87eaaa84e62ec8cc1f64ac4be9b949e7c0358
@@ -44,7 +44,7 @@ pkgbase = linux-bfq
 	sha512sums = 2dc6b0ba8f7dbf19d2446c5c5f1823587de89f4e28e9595937dd51a87755099656f2acec50e3e2546ea633ad1bfd1c722e0c2b91eef1d609103d8abdc0a7cbaf
 	sha512sums = c53bd47527adbd2599a583e05a7d24f930dc4e86b1de017486588205ad6f262a51a4551593bc7a1218c96541ea073ea03b770278d947b1cd0d2801311fcc80e5
 	sha512sums = 002d5e0ccfa5824c1750912a6400ff722672d6587b74ba66b1127cf1228048f604bba107617cf4f4477884039af4d4d196cf1b74cefe43b0bddc82270f11940d
-	sha512sums = 6c9992e1ae39e81577af9399d583c8c04c2d8ff205eb58ed082016e310ed2b2f040689ae8f2a36bf131d3c58d40eaf94ba2bd4b9fc0006eeedb9569f8c0deef5
+	sha512sums = 67d11b25179e2d46effa70a6a151626a0b6dff900d887497b173fe894b839104d370cfbabf531c3f3914a15c3ec3cac6297dbaa5f294e6fcb644e2b26d8579b7
 
 pkgname = linux-bfq
 	pkgdesc = Linux Kernel and modules with the BFQ scheduler.
