@@ -1,13 +1,12 @@
-# $Id$
-# Maintainer: Bastien Traverse <firstname at lastname dot email>
+# Maintainer: Bastien "neitsab" Traverse <firstname at lastname dot email>
 # Contributor: masterme120
 # Contributor: runical
 # Contributor: oozyslug <oozyslug at gmail dot com>
 # Submitter: Bastien Traverse <firstname at lastname dot email>
 
 pkgname=hugo-bin
-pkgver=0.17
-pkgrel=2
+pkgver=0.18
+pkgrel=1
 pkgdesc="A Fast and Flexible Static Site Generator built in Go - Precompiled binary from official repository"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
 url="https://gohugo.io/"
@@ -22,9 +21,9 @@ conflicts=('hugo')
 source_x86_64=("https://github.com/spf13/hugo/releases/download/v${pkgver}/${pkgname/-bin}_${pkgver}_Linux-64bit.tar.gz")
 source_i686=("https://github.com/spf13/hugo/releases/download/v${pkgver}/${pkgname/-bin}_${pkgver}_Linux-32bit.tar.gz")
 source_arm=("https://github.com/spf13/hugo/releases/download/v${pkgver}/${pkgname/-bin}_${pkgver}_linux_arm.tar.gz")
-md5sums_x86_64=('6a74626b64434a5ee9fc5ec4fbf22ce6')
-md5sums_i686=('7b2a37c458dd4af6eb1ed2672969a26b')
-md5sums_arm=('c34d30cc8302311c0c315a3dd2a0b319')
+md5sums_x86_64=('934c3ee6001b502497e1ee9f5055248d')
+md5sums_i686=('03e0be2a3d6e96896f298c44acee10ac')
+md5sums_arm=('0f980d66f7e1a64cb28234678ef845ae')
 
 case "$CARCH" in
   arm*) _pkgarch="arm"
