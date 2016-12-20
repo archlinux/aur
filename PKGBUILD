@@ -11,11 +11,11 @@
 pkgname=mpv-rpi
 _pkgname=mpv
 epoch=1
-pkgver=0.20.0
+pkgver=0.22.0
 pkgrel=1
 _waf_version=1.8.12
 pkgdesc='mpv with Raspberry Pi support'
-arch=('i686' 'x86_64' 'armv7h')
+arch=('armv7h')
 license=('GPL')
 url='http://mpv.io'
 depends=(
@@ -29,7 +29,7 @@ optdepends=('youtube-dl: for video-sharing websites playback')
 options=('!emptydirs' '!buildflags')
 source=("$_pkgname-$pkgver.tar.gz::https://github.com/mpv-player/$_pkgname/archive/v$pkgver.tar.gz"
   "http://www.freehackers.org/~tnagy/release/waf-${_waf_version}")
-sha256sums=('fe6ec9d2ded5ce84b963f54b812d579d04f944f4a737f3ae639c4d5d9e842b56'
+sha256sums=('c0f9ac8f0e37a391d19007b333ef8787c2f45d75a0d4401c0098cde52c5082f6'
   '01bf2beab2106d1558800c8709bc2c8e496d3da4a2ca343fe091f22fca60c98b')
 provides=('mpv')
 conflicts=('mpv')
