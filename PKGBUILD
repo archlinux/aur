@@ -1,6 +1,6 @@
 
 pkgname=mingw-w64-gsl
-pkgver=2.1
+pkgver=2.3
 pkgrel=1
 pkgdesc="The GNU Scientific Library (GSL) is a modern numerical library for C and C++ programmers (mingw-w64)"
 arch=(any)
@@ -10,7 +10,7 @@ makedepends=('mingw-w64-configure')
 depends=('mingw-w64-crt')
 options=('staticlibs' '!strip' '!buildflags')
 source=("http://ftp.gnu.org/gnu/gsl/gsl-$pkgver.tar.gz")
-sha1sums=('e20110bf060c4030b26c519a70c6c0e113abc9f7')
+sha1sums=('7aa27dd7e5d6e3d4e4dc8b2daec18a6e68615fb9')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
