@@ -7,12 +7,12 @@
 pkgname=med-salome
 _pkgname=med
 pkgver=3.2.0
-pkgrel=2
+pkgrel=3
 pkgdesc="MED stands for Modelisation et Echanges de Donnees, i.e. Data Modelization and Exchanges - This version is built to be linked against salome-med on x86_64"
 url="http://www.code-aster.org/outils/med/"
 license=('LGPL')
 depends=('hdf5-salome' 'python2')
-makedepends=('gcc-fortran' 'coreutils' 'swig')
+makedepends=('gcc-fortran' 'coreutils' 'swig2')
 optdepends=('tk')
 provides=("med={pkgver}")
 conflicts=("med_fichier" "med")
@@ -86,6 +86,9 @@ build() {
   cmake_options+=" -DHDF5_C_COMPILER_EXECUTABLE:FILEPATH=/usr/bin/h5cc_18"
   cmake_options+=" -DHDF5_C_LIBRARY_hdf5:FILEPATH=/usr/lib/hdf5_18/libhdf5.so"
   cmake_options+=" -DHDF5_DIFF_EXECUTABLE:FILEPATH=/usr/bin/h5diff_18"
+
+  # swig2
+  cmake_options+=" -DSWIG_EXECUTABLE=/usr/bin/swig-2"
 
   cmake ${cmake_options} \
   	../${_pkgname}-${pkgver}
