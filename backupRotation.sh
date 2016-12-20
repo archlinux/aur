@@ -167,6 +167,8 @@ EOF
                 grep ' .+$' --only-matching --extended-regexp)
             do
                 msmtp --read-recipients <<EOF
+MIME-Version: 1.0
+Content-Type: text/html
 From: $sender_e_mail_address
 To: $e_mail_address
 Reply-To: $replier_e_mail_address
