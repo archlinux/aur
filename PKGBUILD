@@ -3,7 +3,7 @@
 pkgbase=python-petname
 pkgname=('python-petname' 'python2-petname')
 pkgname=python-petname
-pkgver=1.12
+pkgver=2.0
 pkgrel=1
 epoch=1
 pkgdesc="Generate human-readable, random object names."
@@ -12,8 +12,8 @@ url="https://pypi.python.org/pypi/petname"
 license=('apache')
 makedepends=('python-setuptools' 'python2-setuptools')
 options=(!emptydirs)
-source=("https://pypi.python.org/packages/48/d7/a276a49c3527c1f4962869bb99f2b160003fccdd96a13fcb0e8c20d13356/petname-${pkgver}.tar.gz")
-sha256sums=('5555129677425950efccb297c4e1681e759ccd48621121f710aa12a18bf2732d')
+source=('https://pypi.python.org/packages/d9/a7/aab8825075230b706b58d59fa23171cfa066ca62507242ff91270bb33fca/petname-2.0.tar.gz#md5=411d5f8b92a25610bc56c32e74c4463a')
+sha256sums=('28a1af453ed004e1a17eea9cd97b9bdd1d9fead6e770a6b1f0bd46541042fed0')
 
 package_python2-petname() {
   depends=('python2')
@@ -21,6 +21,7 @@ package_python2-petname() {
   
   cd "${srcdir}/petname-${pkgver}"
   python2 setup.py install --root="${pkgdir}/" --optimize=1
+  mv "${pkgdir}/usr/bin/petname" "${pkgdir}/usr/bin/petname2"
 }
 
 package_python-petname() {
