@@ -3,13 +3,13 @@
 pkgname=mars-mips
 pkgver=4.5
 _ver=${pkgver%.*}_${pkgver#*.}
-pkgrel=2
+pkgrel=3
 pkgdesc="An IDE for programming in MIPS assembly language intended for educational-level use"
 arch=('any')
 url="http://courses.missouristate.edu/KenVollmar/MARS/index.htm"
 license=('MIT')
 depends=('java-runtime')
-noextract=('Mars${_ver}.jar')
+noextract=("Mars${_ver}.jar")
 install="${pkgname}.install"
 source=(http://courses.missouristate.edu/KenVollmar/MARS/MARS_${_ver}_Aug2014/Mars${_ver}.jar
 	mars-mips
