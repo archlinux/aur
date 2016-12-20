@@ -2,9 +2,9 @@
 # Contributor: almack
 
 pkgname=qt5-quick1
-pkgver=5.7.0
-_pkgver=5.7.0
-pkgrel=4
+pkgver=5.7.1
+_pkgver=5.7.1
+pkgrel=1
 arch=('i686' 'x86_64')
 url='http://qt-project.org/'
 pkgdesc='Qt Declarative is provided for Qt 4 compatibility'
@@ -25,7 +25,7 @@ prepare() {
   cd qtquick1
 
   if [ ! -d include ]; then
-    syncqt.pl-qt5 -version 5.7.0 sync.profile
+    syncqt.pl-qt5 -version 5.7.1 sync.profile
   fi
 }
 
