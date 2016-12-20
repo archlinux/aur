@@ -1,6 +1,6 @@
 pkgbase = intellij-jdk
 	pkgdesc = OpenJDK Java 8 development kit with some fixes and enhancements by JetBrains
-	pkgver = 8u112b620
+	pkgver = 8u112b621
 	pkgrel = 1
 	url = https://intellij-support.jetbrains.com/hc/en-us/articles/206544879-Selecting-the-JDK-version-the-IDE-will-run-under
 	arch = x86_64
@@ -14,8 +14,8 @@ pkgbase = intellij-jdk
 	provides = java-runtime-openjdk=8
 	provides = java-runtime-headless-jre=8
 	provides = java-environment-openjdk=8
-	source = https://dl.bintray.com/jetbrains/intellij-jdk/jbsdk8u112b620_linux_x64.tar.gz
-	sha256sums = 01c05f52d7f610223ce1dc0ccb45e1a145c4cef4cd90bf3de2c68e5a476ad995
+	source = https://dl.bintray.com/jetbrains/intellij-jdk/jbsdk8u112b621_linux_x64.tar.gz
+	sha256sums = b9fe6e9ca5e5a50312154874228ce62e27b44b9b3e8357bacff6eb595bd23ee8
 
 pkgname = intellij-jdk
 

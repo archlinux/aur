@@ -3,7 +3,7 @@
 pkgname=intellij-jdk
 _major=8
 _minor=112
-_build=620
+_build=621
 pkgver=${_major}u${_minor}b${_build}
 pkgrel=1
 pkgdesc="OpenJDK Java 8 development kit with some fixes and enhancements by JetBrains"
@@ -15,7 +15,7 @@ provides=("java-runtime=$_major"         "java-runtime-headless=$_major"     "ja
           "java-runtime-openjdk=$_major" "java-runtime-headless-jre=$_major" "java-environment-openjdk=$_major")
 _zipname="jbsdk${pkgver}_linux_x64.tar.gz"
 source=("https://dl.bintray.com/jetbrains/intellij-jdk/${_zipname}")
-sha256sums=('01c05f52d7f610223ce1dc0ccb45e1a145c4cef4cd90bf3de2c68e5a476ad995')
+sha256sums=('b9fe6e9ca5e5a50312154874228ce62e27b44b9b3e8357bacff6eb595bd23ee8')
 
 package() {
 	rm "$srcdir/$_zipname"
