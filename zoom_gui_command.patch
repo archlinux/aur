@@ -1,0 +1,13 @@
+--- src/gui_impl/commands/zoom_gui_command.h
++++ src/gui_impl/commands/zoom_gui_command.h
+@@ -57,8 +57,8 @@
+     //-------------------------------------------------------------------------
+     float32 minPixelPerSample ();
+
+-    static float const ZOOM_FACTOR_ = 2;
+-    static float const MAX_HORIZONTAL_ZOOM_IN_ = 32;
++    static int const ZOOM_FACTOR_ = 2;
++    static int const MAX_HORIZONTAL_ZOOM_IN_ = 32;
+
+     static QString const GOTO_;
+     static QString const ZOOM_IN_VERTICAL_;

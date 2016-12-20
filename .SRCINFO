@@ -1,0 +1,17 @@
+pkgbase = sigviewer
+	pkgdesc = A biosignal viewer
+	pkgver = 0.5.2
+	pkgrel = 1
+	url = https://github.com/cbrnr/sigviewer
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = qt4
+	depends = libbiosig
+	source = https://sourceforge.net/projects/sigviewer/files/0.5.2/sigviewer-0.5.2-src.tar.gz
+	source = zoom_gui_command.patch
+	sha1sums = bc4622c23d7fde98f24bd979b6c61e9f0a2d1627
+	sha1sums = cb023fde0a4e87be137fad514990c966681e63ea
+
+pkgname = sigviewer
+
