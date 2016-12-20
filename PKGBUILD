@@ -1,7 +1,6 @@
 # Maintainer: Michael Schubert <mschu.dev at gmail>
-
 pkgname=latex-enumitem
-_pkgname=enumitem
+_pkgname=${pkgname#latex-}
 pkgver=3.5.2
 pkgrel=1
 pkgdesc="Customize the three basic lists (enumerate, itemize and description)"
