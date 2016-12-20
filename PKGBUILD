@@ -20,27 +20,29 @@
 # Contributor: solar (authatieventsd' patch s/-1/255)
 # Contributor: kolasa (part of 4.3 kernel patches)
 # Contributor: gentoo (part of 4.3 kernel patches)
-# Contributor: 	Philip Muller @ Manjaro (4.4 kernel patch)
-# Contributor: 	aslmaswd (acpi main script)
+# Contributor: Philip Muller @ Manjaro (4.4 kernel patch)
+# Contributor: aslmaswd (acpi main script)
+# Contributor: npfeiler (libcl/opencl-icd-loader cleaning)
 
 # PKGEXT='.pkg.tar.gz' # imho time to pack this pkg into tar.xz is too long, unfortunatelly yaourt got problems when ext is different from .pkg.tar.xz - V
 
 pkgname=catalyst-firepro-compute
 pkgver=15.302.2301
-pkgrel=2
+pkgrel=3
 pkgdesc="A copy of catalyst-firepro with libgl support removed."
 arch=('i686' 'x86_64')
 url="http://www.amd.com"
 license=('custom')
 options=('staticlibs' 'libtool' '!strip' '!upx')
-depends=('dkms' 'linux>=3.0' 'linux<4.9' 'linux-headers' 'libxrandr' 'libsm' 'fontconfig' 'libxcursor' 'libxi' 'gcc-libs' 'gcc>4.0.0' 'make' 'patch' 'libxinerama' 'mesa>=10.1.0-4')
+depends=('dkms' 'linux>=3.0' 'linux<4.10' 'linux-headers' 'libxrandr' 'libsm' 'fontconfig' 'libxcursor' 'libxi' 'gcc-libs' 'gcc>4.0.0' 'make' 'patch' 'libxinerama' 'mesa>=10.1.0-4')
 optdepends=('qt4: to run ATi Catalyst Control Center (amdcccle)'
 	    'libxxf86vm: to run ATi Catalyst Control Center (amdcccle)'
 	    'opencl-headers: headers necessary for OpenCL development'
 	    'acpid: acpi event support  / atieventsd'
-	    'procps-ng: brings pgrep used in acpi event support')
-conflicts=('catalyst' 'catalyst-daemon' 'catalyst-generator' 'catalyst-hook' 'catalyst-utils' 'libcl' 'catalyst-dkms')
-provides=("libatical=${pkgver}" "catalyst=${pkgver}" "catalyst-utils=${pkgver}" "catalyst-hook=${pkgver}" 'libcl' 'dri' 'libtxc_dxtn')
+	    'procps-ng: brings pgrep used in acpi event support'
+	    'opencl-icd-loader: OpenCL ICD Bindings')
+conflicts=('catalyst' 'catalyst-daemon' 'catalyst-generator' 'catalyst-dkms' 'catalyst-utils' 'libcl', 'catalyst-dkms')
+provides=("libatical=${pkgver}" "catalyst=${pkgver}" "catalyst-utils=${pkgver}" "catalyst-dkms=${pkgver}" "opencl-catalyst=${pkgver}" 'dri' 'libtxc_dxtn' 'opencl-driver')
 
 if [ "${CARCH}" = "x86_64" ]; then
  warning "x86_64 system detected"
@@ -48,8 +50,9 @@ if [ "${CARCH}" = "x86_64" ]; then
   if [[ `cat /etc/pacman.conf | grep -c "#\[multilib]"` = 0 ]]; then
     warning "OK, lib32-catalyst-utils will be added to the package"
     depends+=('lib32-libxext' 'lib32-libdrm' 'lib32-libxinerama' 'lib32-mesa>=10.1.0-4')
-    conflicts+=('lib32-catalyst-utils' 'lib32-libcl')
-    provides+=("lib32-catalyst-utils=${pkgver}" 'lib32-dri' 'lib32-libtxc_dxtn' 'lib32-libcl')
+    conflicts+=('lib32-catalyst-utils')
+    provides+=("lib32-catalyst-utils=${pkgver}" "lib32-opencl-catalyst=${pkgver}" 'lib32-dri' 'lib32-libtxc_dxtn' 'lib32-opencl-driver')
+    optdepends+=('lib32-opencl-icd-loader: OpenCL ICD Bindings (32-bit)')
       else
 	warning "lib32-catalyst-utils will NOT be added to the package"
   fi
@@ -91,7 +94,8 @@ source=(
     4.6-arch-get_user_pages-page_cache_release.patch
     dkms.conf
     makesh-dont-check-gcc-version.patch
-    4.7-arch-cpu_has_pge-v2.patch)
+    4.7-arch-cpu_has_pge-v2.patch
+    4.9_over_4.6-arch-get_user_pages_remote.patch)
 
 md5sums=('211a7e52d032bc60806012a13407ba87'
 	 'af7fb8ee4fc96fd54c5b483e33dc71c4'
@@ -118,7 +122,8 @@ md5sums=('211a7e52d032bc60806012a13407ba87'
 	 '11b7c2e0dc4794801005d66b0e7608a3'
 	 '23d569abfdd7de433d76e003e4b3ccf9'
 	 '10829e3b992b3e80a6e78c8e27748703'
-	 '37eef5103a11d8136979463e7bc31091')
+	 '37eef5103a11d8136979463e7bc31091'
+	 '194cb44e9e2ab0e65b6267aca66d0400')
 
 
 build() {
@@ -197,6 +202,7 @@ package() {
       install -m644 X11R6/${_lib}/*.cap ${pkgdir}/usr/lib
       install -m755 X11R6/${_lib}/modules/dri/*.so ${pkgdir}/usr/lib/xorg/modules/dri
       install -m755 ${_lib}/*.so* ${pkgdir}/usr/lib
+      rm ${pkgdir}/usr/lib/libOpenCL.so.1       #opencl-icd-loader provides this
 #       install -m755 ${_lib}/hsa/* ${pkgdir}/usr/lib/hsa		#removed in 14.1
 
     ## QT libs (only 2 files) - un-comment 2 lines below if you don't want to install qt package
@@ -208,7 +214,6 @@ package() {
       ln -snf libfglrx_dm.so.1.0 ${pkgdir}/usr/lib/libfglrx_dm.so
       ln -snf libatiuki.so.1.0 ${pkgdir}/usr/lib/libatiuki.so.1
       ln -snf libatiuki.so.1.0 ${pkgdir}/usr/lib/libatiuki.so
-      ln -snf libOpenCL.so.1 ${pkgdir}/usr/lib/libOpenCL.so
 
       cd ${srcdir}/archive_files/common
       patch -Np2 -i ${srcdir}/arch-fglrx-authatieventsd_new.patch
@@ -284,6 +289,7 @@ package() {
       patch -Np1 -i ../4.6-arch-get_user_pages-page_cache_release.patch
       patch -Np1 -i ../makesh-dont-check-gcc-version.patch
       patch -Np1 -i ../4.7-arch-cpu_has_pge-v2.patch
+      patch -Np1 -i ../4.9_over_4.6-arch-get_user_pages_remote.patch
 
     # Prepare modules source files
       install -dm755 ${pkgdir}/usr/src/fglrx-${pkgver}/2.6.x
@@ -316,6 +322,7 @@ package() {
 	install -dm755 ${pkgdir}/usr/lib32/xorg/modules/dri
 #	install -dm755 ${pkgdir}/usr/lib32/hsa		#removed in 14.1
 	install -m755 lib/*.so* ${pkgdir}/usr/lib32
+	rm ${pkgdir}/usr/lib32/libOpenCL.so.1      #lib32-opencl-icd-loader provides this
 #	install -m755 lib/hsa/* ${pkgdir}/usr/lib32/hsa		#removed in 14.1
 	install -m755 X11R6/lib/fglrx/fglrx-libGL.so.1.2 ${pkgdir}/usr/lib32/fglrx
 	install -m755 X11R6/lib/libAMDXvBA.so.1.0 ${pkgdir}/usr/lib32
@@ -334,7 +341,6 @@ package() {
 	ln -sf /usr/lib32/libXvBAW.so.1.0	${pkgdir}/usr/lib32/libXvBAW.so
 	ln -sf /usr/lib32/libatiuki.so.1.0	${pkgdir}/usr/lib32/libatiuki.so.1
 	ln -sf /usr/lib32/libatiuki.so.1.0	${pkgdir}/usr/lib32/libatiuki.so
-	ln -sf /usr/lib32/libOpenCL.so.1	${pkgdir}/usr/lib32/libOpenCL.so
 
 	# OpenCL
 	install -m755 -d ${pkgdir}/etc/OpenCL/vendors
