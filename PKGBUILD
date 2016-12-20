@@ -3,13 +3,13 @@
 # Contributor: bjoern lindig (bjoern _dot_ lindig _at_ google.com)
 
 pkgname=faust-git
-pkgver=4207.5cef29c
+pkgver=4463.f8c5d2a
 pkgrel=1
 pkgdesc="A functional programming language for realtime audio signal processing."
 arch=('i686' 'x86_64')
 url="http://faust.grame.fr/"
 license=('GPL')
-depends=('ruby'
+depends=(
 # needed for sound2faust:
 	 'libsndfile'
 # needed for libHTTPDFaust:
@@ -17,12 +17,17 @@ depends=('ruby'
 # We need xxd at build time, which is provided by 'gvim', 'vim' and 'xxd'
 # (AUR).
 makedepends=('git' 'xxd')
+optdepends=('ruby: needed for faust2sc and scbuilder')
 provides=('faust')
 conflicts=('faust')
 # This keeps the static libraries. Remove the 'staticlibs' option if this
 # isn't wanted.
 options=('strip' 'staticlibs')
-source=("$pkgname::git+git://git.code.sf.net/p/faudiostream/code"
+# We're using the (default) master-dev branch of Faust here, which has all the
+# latest changes. End users might want to use the master branch instead, which
+# is recommended, since it's supposedly more stable and tested, but
+# nevertheless (mostly) up-to-date.
+source=("$pkgname::git+https://github.com/grame-cncm/faust.git#branch=master-dev"
 	"git+https://github.com/rukano/emacs-faust-mode.git")
 md5sums=('SKIP' 'SKIP')
 
@@ -48,7 +53,7 @@ package() {
 
   # docs
   install -d "$pkgdir/usr/share/doc/faust"
-  install -Dm644 documentation/*.{pdf,txt} "$pkgdir/usr/share/doc/faust"
+  install -Dm644 documentation/*.{pdf,html} "$pkgdir/usr/share/doc/faust"
 
   # examples
   install -d "$pkgdir/usr/share/faust/examples"
