@@ -3,7 +3,12 @@
 # run with the argument "runtime" to set the proper runtime permissions
 # run with the argument "upgrade" to set the proper upgrade permissions
 
-ncpath='/usr/share/webapps/nextcloud'
+if [ -d "$2/apps" ]; then
+  ncpath="$2"
+else
+  ncpath='/usr/share/webapps/nextcloud'
+fi
+
 htuser='http'
 htgroup='http'
 rootuser='root'

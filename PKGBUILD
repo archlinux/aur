@@ -2,7 +2,7 @@
 
 pkgname=nextcloud
 pkgver=11.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A safe home for all your data. Secure, under your control and developed in an open, transparent and trustworthy way"
 url="https://nextcloud.com"
 arch=('any')
@@ -21,7 +21,6 @@ optdepends=('php-apache: to use the Apache web server'
       'ffmpeg: file preview'
       'libreoffice: file preview')
 options=('!strip')
-install=${pkgname}.install
 validpgpkeys=('28806A878AE423A28372792ED75899B9A724937A')
 source=("https://download.nextcloud.com/server/releases/nextcloud-${pkgver}.tar.bz2"{,.asc}
   "apache.example.conf"
@@ -30,7 +29,7 @@ source=("https://download.nextcloud.com/server/releases/nextcloud-${pkgver}.tar.
 md5sums=('2c3e6655c6fc81b02b5ac824e5f6ad06'
          'SKIP'
          'bc2b02b0562b7a58e660e33acd4202bc'
-         '0c996a76cf39b2bccde8d74ac062895e')
+         '13780e7de28cd3a8796d3345a2bf8d42')
 _fetchedMD5=$(curl -sS https://download.nextcloud.com/server/releases/nextcloud-${pkgver}.tar.bz2.md5)
 IFS=' '; _arrFetchedMD5=($_fetchedMD5); unset IFS;
 _fetchedMD5=${_arrFetchedMD5[0]}
@@ -49,10 +48,8 @@ package() {
   mkdir -p "${pkgdir}/usr/share/webapps"
   cp -a nextcloud "${pkgdir}/usr/share/webapps/."
   
-  find "${pkgdir}/usr/share/webapps/nextcloud/" -type f -print0 | xargs -0 chmod 0640
-  find "${pkgdir}/usr/share/webapps/nextcloud/" -type d -print0 | xargs -0 chmod 0750
-  chmod 0664 "${pkgdir}/usr/share/webapps/nextcloud/.user.ini"
-  chmod 0664 "${pkgdir}/usr/share/webapps/nextcloud/.htaccess"
+  # set the proper permissions
+  "${srcdir}/set-nc-perms.sh" runtime "${pkgdir}/usr/share/webapps/nextcloud"
  
   install -D -m755 "${srcdir}/set-nc-perms.sh" "${pkgdir}/usr/bin/set-nc-perms"
   install -m644 -D "${srcdir}/apache.example.conf" -t "${pkgdir}/etc/webapps/nextcloud"
