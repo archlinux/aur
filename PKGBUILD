@@ -2,7 +2,7 @@
 # Contributor: bjoern lindig bjoern dot lindig at googlemail dot com
 
 pkgname=pd-faust
-pkgver=0.11
+pkgver=0.12
 pkgrel=1
 pkgdesc="Run Faust signal processors in Pd"
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ makedepends=('faust')
 license=('LGPL3')
 groups=(pure-complete pure-multimedia)
 source=(https://bitbucket.org/purelang/pure-lang/downloads/$pkgname-$pkgver.tar.gz)
-md5sums=('59f5369dd385c9837a8391df2e0f45e8')
+md5sums=('27ba144fd5311e312c571d3df7ac3759')
 
 build() {
   cd $srcdir/$pkgname-$pkgver
