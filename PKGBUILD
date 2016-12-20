@@ -24,4 +24,4 @@ package() {
 	install "gpg-encrypt-install" "${pkgdir}/usr/lib/initcpio/install/gpg-encrypt"
 }
 
-sha256sums=('21803cc72dbbcdddd83a2eeaa091e17947e2d928e5c4323c965a77feb1227ca2')
+sha256sums=('fac4925f4b501b64826cdcd63c912cb83a09d5d4d531090133e5c4f146a36bb3')
