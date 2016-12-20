@@ -1,0 +1,49 @@
+--- setup.py.orig	2016-12-20 17:34:58.140428476 +0100
++++ setup.py	2016-12-20 17:35:23.547463313 +0100
+@@ -1,8 +1,8 @@
+-# This gets f2py_signatures installed in the correct place. See 
++# This gets f2py_signatures installed in the correct place. See
+ # http://groups.google.com/group/comp.lang.python/browse_thread/thread/35ec7b2fed36eaec/2105ee4d9e8042cb
+ from distutils.command.install import INSTALL_SCHEMES
+ for scheme in INSTALL_SCHEMES.values():
+-    scheme['data'] = scheme['purelib'] 
++    scheme['data'] = scheme['purelib']
+ 
+ # Importing these adds a 'bdist_mpkg' option that allows building binary packages on OS X.
+ try:
+@@ -16,7 +16,7 @@ import scipy
+ if hasattr(scipy, 'Numeric'):
+     # Using old scipy
+     import scipy_distutils.core as core
+-    data_files = [('SloppyCell/ReactionNetworks', 
++    data_files = [('SloppyCell/ReactionNetworks',
+                    ['ReactionNetworks/f2py_signatures.pyf',
+                     'ReactionNetworks/f2py_signatures_no_derivs.pyf',
+                     'ReactionNetworks/mtrand.h',
+@@ -55,19 +55,21 @@ if hasattr(os, 'link'):
+ #  on CCMR, it seems (very slightly), faster to use the included ones rather
+ #  than linking against LAPACK.
+ daskr = core.Extension(name = 'SloppyCell._daskr',
+-                       sources = ['daskr.pyf', 'ddaskr/ddaskr.f', 
+-                                  'ddaskr/daux.f', 'ddaskr/dlinpk.f'])
++                       sources = ['daskr.pyf', 'ddaskr/ddaskr.f',
++                                  'ddaskr/daux.f', 'ddaskr/dlinpk.f'],
++                       extra_link_args = ['-shared'])
+ 
+ misc_c = core.Extension(name = 'SloppyCell.misc_c',
+-                        sources = ['misc_c.c', 'misc_c.pyf'])
++                        sources = ['misc_c.c', 'misc_c.pyf'],
++                        extra_link_args = ['-shared'])
+ 
+ core.setup(name='SloppyCell',
+            version='CVS',
+            author='Ryan Gutenkunst',
+            author_email='rng7@cornell.edu',
+            url='http://sloppycell.sourceforge.net',
+-           packages=['SloppyCell', 
+-                     'SloppyCell.ReactionNetworks', 
++           packages=['SloppyCell',
++                     'SloppyCell.ReactionNetworks',
+                      'SloppyCell.Testing',
+                      'SloppyCell.ExprManip',
+                      'SloppyCell.Vandermonde',
