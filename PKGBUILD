@@ -1,8 +1,8 @@
 # Maintainer: James An <james@jamesan.ca>
 
 pkgname=aegir
-pkgver=7.x_3.8
-pkgrel=2
+pkgver=7.x_3.9_beta1
+pkgrel=1
 pkgdesc="Configuration for a dedicated Aegir server to host Drupal sites."
 arch=('any')
 url='http://aegirproject.org'
