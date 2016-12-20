@@ -1,5 +1,4 @@
 # Maintainer: Michael Schubert <mschu.dev at gmail>
-
 pkgname=python2-la
 pkgver=0.6.0
 pkgrel=1
