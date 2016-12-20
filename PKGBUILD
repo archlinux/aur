@@ -10,8 +10,8 @@
 # 3.0 unported license. see http://creativecommons.org/licenses/by/3.0/deed.de
 # endregion
 pkgname=backup-rotation
-pkgver=1.0.44
-pkgrel=28
+pkgver=1.0.45
+pkgrel=29
 pkgdesc='This script allows you to create a local or remote backup rotation for your files.'
 arch=('any')
 url='http://torben.website/backupRotation'
@@ -20,7 +20,8 @@ depends=('bash' 'rsync' 'findutils')
 optdepends=(
     'curl: needed to send monitoring informations with advanced meta data.'
     'msmtp: for automatic email notifications on missing sources.'
-    'tree: for well formatted reportings about successful backup creations.')
+    'tree: for well formatted reportings about successful backup creations.'
+    'coreutils: for well formatted reportings about successful backup creations.')
 provides=(backup-rotation)
 source=('backupRotation.sh' 'backupRotation.timer' 'backupRotation.service')
 md5sums=('SKIP' 'SKIP' 'SKIP')

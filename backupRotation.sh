@@ -133,6 +133,7 @@ Subject: Backup was successful
 
 $(echo -e $message)
 
+$(df ./ --human-readable)
 $(tree "$target_path")
 
 EOF
@@ -159,6 +160,8 @@ Date: $(date)
 Subject: Backup has failed
 
 $message
+
+$(df ./ --human-readable)
 
 EOF
             done
