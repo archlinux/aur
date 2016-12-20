@@ -1,6 +1,6 @@
 pkgbase = phodav
 	pkgdesc = A WebDav server implementation using libsoup (RFC 4918)
-	pkgver = 2.0
+	pkgver = 2.1
 	pkgrel = 1
 	url = http://wiki.gnome.org/phodav
 	arch = i686
@@ -10,8 +10,8 @@ pkgbase = phodav
 	makedepends = intltool
 	makedepends = xmlto
 	depends = libsoup
-	source = http://download.gnome.org/sources/phodav/2.0/phodav-2.0.tar.xz
-	md5sums = f91d8db3d86fb9e74e03258781be4d2b
+	source = http://download.gnome.org/sources/phodav/2.1/phodav-2.1.tar.xz
+	md5sums = 762712ece4cf514e18bf1233be2071e7
 
 pkgname = phodav
 
