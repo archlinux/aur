@@ -16,7 +16,7 @@ source=("$pkgname::git+https://github.com/ChaosForge/doomrl"
 	)
 sha256sums=('SKIP'
 	    'SKIP'
-	    'SKIP'
+	    '590c28b4e7f655e23c01bca0b2f9ddf9b8dd024f3a8b7ac5ec65d79877a6450b'
 	    )
 
 prepare()

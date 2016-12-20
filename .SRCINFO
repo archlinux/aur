@@ -18,7 +18,7 @@ pkgbase = doomrl-git
 	source = http://www.libregeek.org/Linux/game-files/doomrl/doomrl-linux-assets-x64-0997.tar
 	sha256sums = SKIP
 	sha256sums = SKIP
-	sha256sums = SKIP
+	sha256sums = 590c28b4e7f655e23c01bca0b2f9ddf9b8dd024f3a8b7ac5ec65d79877a6450b
 
 pkgname = doomrl-git
 
