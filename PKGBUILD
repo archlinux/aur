@@ -1,7 +1,7 @@
 # Maintainer: Jashandeep Sohi <jashandeep.s.sohi@gmail.com>
 
 pkgname=x2x-git
-pkgver=git
+pkgver=r117.7d09ce2
 pkgrel=1
 pkgdesc='Allows the keyboard, mouse on one X display to be used to control another X display.'
 arch=('i686' 'x86_64')
