@@ -1,7 +1,7 @@
 pkgbase = gajim-plugin-omemo
 	pkgdesc = Gajim plugin for OMEMO Multi-End Message and Object Encryption.
 	pkgver = 1.0.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://dev.gajim.org/gajim/gajim-plugins/wikis/OmemoGajimPlugin
 	arch = any
 	license = GPL
@@ -14,7 +14,7 @@ pkgbase = gajim-plugin-omemo
 	provides = gajim-plugin-omemo
 	conflicts = gajim-plugin-omemo-git
 	source = https://ftp.gajim.org/plugins_0.16_zip/omemo.zip
-	sha512sums = b8d96c4617ff61ca2ad2f12f8274d625f75977a33dfb00d8b1be8c3c28ef17be726ea73126e85716af2d9089dcf413fa05328815ea0623c673d80807e4dbbf5b
+	sha512sums = SKIP
 
 pkgname = gajim-plugin-omemo
 
