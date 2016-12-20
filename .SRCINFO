@@ -1,7 +1,7 @@
 pkgbase = doomrl-git
 	pkgdesc = Doom: The Rogue-like (git-latest) (WIP!).
 	pkgver = r8.0cbac80
-	pkgrel = 4
+	pkgrel = 5
 	url = http://drl.chaosforge.org/
 	arch = any
 	license = GPL3
@@ -15,6 +15,8 @@ pkgbase = doomrl-git
 	depends = sdl_image
 	source = doomrl-git::git+https://github.com/ChaosForge/doomrl
 	source = fpcvalkyrie::git+https://github.com/ChaosForge/fpcvalkyrie
+	source = http://www.libregeek.org/Linux/game-files/doomrl/doomrl-linux-assets-x64-0997.tar
+	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 
