@@ -1,0 +1,13 @@
+pkgbase = jid
+	pkgdesc = JSON incremental digger
+	pkgver = 0.6.2
+	pkgrel = 1
+	url = https://github.com/simeji/jid
+	arch = any
+	license = MIT
+	depends = go
+	options = !strip
+	options = !emptydirs
+
+pkgname = jid
+
