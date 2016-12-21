@@ -14,7 +14,7 @@ provides=("${_pkgbase}" "${_pkgbase}-gtk3")
 conflicts=("${_pkgbase}" "${_pkgbase}-gtk3")
 license=('GPL')
 depends=('desktop-file-utils' 'enchant' 'glib2' 'gtk3' 'gtksourceview2' 'iso-codes'
-         'libsm' 'mate-desktop-dev' 'gtksourceview3' 'python2-gobject' 'zenity')
+         'libsm' 'mate-desktop-dev' 'gtksourceview3' 'python2-gobject' 'zenity' 'libpeas')
 makedepends=('mate-common-dev' 'yelp-tools' 'gtksourceview3' 'mate-desktop-dev')
 optdepends=('yelp: for reading MATE help documents')
 groups=('mate-extra')

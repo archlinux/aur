@@ -22,6 +22,7 @@ pkgbase = pluma-dev
 	depends = gtksourceview3
 	depends = python2-gobject
 	depends = zenity
+	depends = libpeas
 	optdepends = yelp: for reading MATE help documents
 	provides = pluma
 	provides = pluma-gtk3
