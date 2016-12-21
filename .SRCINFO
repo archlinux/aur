@@ -1,0 +1,16 @@
+pkgbase = vim-solarized8-git
+	pkgdesc = Optimized Solarized colorschemes. Best served with true-color terminals!
+	pkgver = 20161211
+	pkgrel = 1
+	url = http://ethanschoonover.com/solarized
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = vim
+	provides = vim-solarized8
+	conflicts = vim-solarized8
+	source = vim-solarized8-git::git://github.com/lifepillar/vim-solarized8.git
+	sha256sums = SKIP
+
+pkgname = vim-solarized8-git
+
