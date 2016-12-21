@@ -9,6 +9,7 @@ url="https://fonts.myoffice.ru"
 license=('custom: XO FONTS Open License')
 depends=('fontconfig' 'xorg-font-utils')
 makedepends=('dos2unix' 'glibc')
+groups=('ttf-xo-fonts')
 source=("XO_Thames-${pkgver}.zip::http://fonts.myoffice.ru/wp-content/themes/template/fonts_page/files/XO_Thames.zip")
 sha256sums=('8f9c493003c3183b03353b56baa828f90a9b883daed2ba1c64fc1e1e36b859ab')
 install=${pkgname}.install
