@@ -9,6 +9,7 @@ url="https://fonts.myoffice.ru"
 license=('custom: XO FONTS Open License')
 depends=('fontconfig' 'xorg-font-utils')
 makedepends=('dos2unix' 'glibc')
+groups=('ttf-xo-fonts')
 source=("XO_Courser-${pkgver}.zip::http://fonts.myoffice.ru/wp-content/themes/template/fonts_page/files/XO_Courser.zip")
 sha256sums=('e089d34cb498005a3499137a482ecc5f2dcac59f405c1d5145f6228306b0eb35')
 install=${pkgname}.install
