@@ -2,14 +2,15 @@
 
 pkgname=supercollider-git
 _name="supercollider"
-pkgver=3.7.1.r395.gf6060cb
+_pkgbranch="3.8"
+pkgver=3.8.0.r0.g0947edd
 pkgrel=1
 pkgdesc="An environment and programming language for real time audio synthesis and algorithmic composition."
-url="http://supercollider.github.io/"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+url="http://supercollider.github.io/"
 license=('GPL3')
-depends=('jack' 'fftw' 'cwiid' 'qtwebkit' 'libsndfile')
-makedepends=('cmake' 'libsndfile' 'ruby' 'vim' 'emacs' 'boost' 'avahi' 'qt5-base' 'qt5-tools' 'qt5-webkit' 'qt5-location' 'qt5-sensors')
+depends=('jack' 'fftw' 'cwiid' 'qt5-webkit')
+makedepends=('avahi' 'boost' 'cmake' 'emacs' 'libsndfile' 'qt5-tools' 'ruby' 'vim')
 optdepends=('emacs: emacs interface'
             'gedit: gedit interface'
             'vim: vim interface'
@@ -18,9 +19,18 @@ optdepends=('emacs: emacs interface'
             'screen: vim interface')
 conflicts=('supercollider')
 provides=('supercollider')
-source=("${_name}::git+https://github.com/supercollider/supercollider.git")
-md5sums=('SKIP')
-install="$_name.install"
+install="${_name}.install"
+source=("${_name}::git+https://github.com/supercollider/supercollider.git"
+        "${_name}-cxxflags.patch")
+md5sums=('SKIP'
+         '4f62489286fe8008d6013fc59047c20b')
+
+prepare() {
+  cd "$_name"
+  git checkout origin/${_pkgbranch}
+  # Fix CXXFLAGS
+  patch -p1 -i ../supercollider-cxxflags.patch
+}
 
 pkgver() {
   cd "$_name"
@@ -80,7 +90,6 @@ build() {
     ;;
     *)
     cmake .. -DCMAKE_INSTALL_PREFIX=/usr \
-      -DSUPERNOVA=1 \
       -DCMAKE_BUILD_TYPE=Release 2>&1 | tee cmake-output.txt
     make 2>&1 | tee make-output.txt
     ;;
