@@ -2,7 +2,7 @@
 # Contributor: Dave Reisner <dreisner@archlinux.org>
 
 pkgname=mkosi-git
-pkgver=r166.27992c6
+pkgver=r170.b1bde53
 pkgrel=1
 pkgdesc='Build Legacy-Free OS Images'
 arch=('any')
@@ -20,7 +20,8 @@ optdepends=('dnf: build Fedora images'
             'squashfs-tools: raw_squashfs output format'
             'tar: tar output format'
             'cryptsetup: add dm-verity partitions'
-            'edk2-ovmf: run bootable images in QEMU')
+            'edk2-ovmf: run bootable images in QEMU'
+            'sbsigntools: sign EFI binaries for UEFI SecureBoot')
 provides=('mkosi')
 conflicts=('mkosi')
 source=("git://github.com/systemd/mkosi.git")
