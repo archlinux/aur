@@ -1,6 +1,6 @@
 pkgbase = yusuke
 	pkgdesc = pacman update notifier
-	pkgver = 1.7.7
+	pkgver = 1.7.8
 	pkgrel = 1
 	url = https://github.com/graypawn/yusuke
 	arch = i686
@@ -11,7 +11,7 @@ pkgbase = yusuke
 	depends = libnotify
 	depends = python-gobject
 	conflicts = yusuke
-	source = https://github.com/graypawn/yusuke/archive/v1.7.7.zip
+	source = https://github.com/graypawn/yusuke/archive/v1.7.8.zip
 	md5sums = 38caecff3825c35962971aeae1335e6c
 
 pkgname = yusuke
