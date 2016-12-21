@@ -1,0 +1,38 @@
+diff --git a/Makefile b/Makefile
+index 0f87e02..a6da26b 100644
+--- a/Makefile
++++ b/Makefile
+@@ -1,12 +1,12 @@
+-PREFIX = /usr/local
++PREFIX = /usr
+ 
+-CC = g++
++CC = g++ -m32
+ 
+ # only use -ffast-math if you're feeling mighty adventurous.  (g++ issues)
+ OPTS = -O2 -funroll-loops -Wall -fPIC -DPIC
+ #OPTS = -g -DDEBUG 
+ 
+-_LDFLAGS = -nostartfiles -shared 
++_LDFLAGS = -nostartfiles -shared -L/usr/lib32
+ STRIP = strip
+ 
+ -include defines.make
+@@ -23,7 +23,7 @@ HEADERS = $(wildcard *.h) $(wildcard dsp/*.h) $(wildcard util/*.h) $(wildcard ds
+ 
+ PDF = releases/caps-$(VERSION).pdf
+ 
+-DEST = $(PREFIX)/lib/ladspa
++DEST = $(PREFIX)/lib32/ladspa
+ RDFDEST = $(PREFIX)/share/ladspa/rdf
+ 
+ # all systems go -------------------------------------------------------------
+@@ -66,8 +66,6 @@ install: all
+ 	@$(STRIP) $(PLUG).so > /dev/null
+ 	install -d $(DEST)
+ 	install -m 644 $(PLUG).so $(DEST)
+-	install -d $(RDFDEST)
+-	install -m 644 $(PLUG).rdf $(RDFDEST)
+ 
+ fake-install: all
+ 	-rm $(DEST)/$(PLUG).so

@@ -1,0 +1,20 @@
+pkgbase = lib32-caps
+	pkgdesc = The C* Audio Plugin Suite (32 bit)
+	pkgver = 0.9.24
+	pkgrel = 2
+	url = http://quitte.de/dsp/caps.html
+	arch = x86_64
+	groups = ladspa-plugins
+	license = GPL3
+	depends = lib32-gcc-libs
+	depends = lib32-ladspa
+	optdepends = python2: optional CFLAGS check
+	source = http://quitte.de/dsp/caps_0.9.24.tar.bz2
+	source = lib32_caps.patch
+	source = 0001-Avoid-ambiguity-in-div-invocation.patch
+	sha256sums = SKIP
+	sha256sums = 0c57f76795f9a69c042cf750c229fd1e2011c64b56416184949e422da9257037
+	sha256sums = 5e71875dd8976efede46a3e0aa08ccf14a25a838454e1ae2473c4eed7c5937ac
+
+pkgname = lib32-caps
+

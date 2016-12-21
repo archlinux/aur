@@ -1,0 +1,53 @@
+--- src/caps-0.9.24/Makefile	2016-04-22 22:02:52.547908324 +0300
++++ Makefile	2016-04-22 22:17:53.664602351 +0300
+@@ -1,14 +1,14 @@
+ VERSION = 0.9.24
+ 
+ PREFIX = /usr
+-DESTDIR = 
++DESTDIR =
+ 
+-CC = g++
++CC = g++ -m32
+ 
+-OPTS = -O3 -ffast-math -funroll-loops -Wall -fPIC -DPIC 
+-#OPTS = -g -DDEBUG 
++OPTS = -O2 -ffast-math -funroll-loops -Wall -fPIC -DPIC
++#OPTS = -g -DDEBUG
+ 
+-_LDFLAGS = -shared 
++_LDFLAGS = -nostartfiles -shared -L/usr/lib32
+ STRIP = strip
+ 
+ -include defines.make
+@@ -19,7 +19,7 @@
+ PLUG = caps
+ 
+ SOURCES = $(wildcard *.cc) $(wildcard dsp/*.cc)
+-OBJECTS	= $(SOURCES:.cc=.o) 
++OBJECTS	= $(SOURCES:.cc=.o)
+ HEADERS = $(wildcard *.h) $(wildcard dsp/*.h) $(wildcard util/*.h) $(wildcard dsp/tonestack/*.h)
+ 
+ DEST = $(PREFIX)/lib32/ladspa
+@@ -34,7 +34,7 @@
+ 	@#python -i bin/rack.py White AutoFilter cream.Audio.Meter Pan
+ 	@#python -i bin/rack.py White AutoFilter Pan
+ 	@#python -i bin/rack.py Click Plate
+-	@#python -i bin/rack.py PhaserII 
++	@#python -i bin/rack.py PhaserII
+ 	@#~/cream/gdb-python html/graph.py Eq4p,a.f=100,a.gain=30.png
+ 	@#~/cream/gdb-python bin/eqtest.py
+ 	@#~/cream/gdb-python bin/fractalstest.py
+@@ -52,10 +52,10 @@
+ $(PLUG).so: $(OBJECTS)
+ 	$(CC) $(ARCH) $(LDFLAGS) -o $@ $(OBJECTS)
+ 
+-.cc.s: 
++.cc.s:
+ 	$(CC) $(ARCH) $(CFLAGS) -S $<
+ 
+-.cc.o: depend 
++.cc.o: depend
+ 	$(CC) $(ARCH) $(CFLAGS) -o $@ -c $<
+ 
+ tags: $(SOURCES) $(HEADERS)
