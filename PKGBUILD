@@ -1,7 +1,7 @@
 # Maintainer: Maciej Balajewicz <mbalajew at illinois dot edu>
 
 pkgname=vim-solarized8-git
-pkgver=20161211
+pkgver=0.4
 pkgrel=1
 pkgdesc="Optimized Solarized colorschemes. Best served with true-color terminals!"
 arch=('any')
@@ -15,13 +15,13 @@ source=("$pkgname::git://github.com/lifepillar/vim-solarized8.git")
 sha256sums=('SKIP')
 
 pkgver() {
-    cd "$srcdir/$pkgname"
-    local _tmpver="$(git log -n 1 --format="%cd" --date=short)"
-    echo "${_tmpver//-/}"
+  cd "$srcdir/$pkgname"
+  local _tmpver="$(git log -n 1 --format="%cd" --date=short)"
+  echo "${_tmpver//-/}"
 }
 
 package() {
-    cd "$srcdir/$pkgname"
-    install -dm755 $pkgdir/usr/share/vim/vimfiles/colors
-    install -Dm644 colors/*             $pkgdir/usr/share/vim/vimfiles/colors/
+  cd "$pkgname"
+  install -dm755 "$pkgdir/usr/share/vim/vimfiles/colors"
+  install -Dm644 colors/* "$pkgdir/usr/share/vim/vimfiles/colors/"
 }
