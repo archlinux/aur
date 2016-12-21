@@ -1,4 +1,7 @@
 #!/bin/bash
 
+# Enter core directory
 cd /usr/share/games/doomrl
-./doomrl
+
+# Set path to system libs and launch
+LD_LIBRARY_PATH=$LD_LIBRARY_PATH:${PWD} ./doomrl
