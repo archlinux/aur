@@ -1,6 +1,6 @@
 pkgbase = sch_cake-lts
 	pkgdesc = The CAKE scheduler, bufferbloat.net
-	pkgver = 0.1
+	pkgver = r200.6484187
 	pkgrel = 1
 	url = bufferbloat.net
 	install = sch_cake.install
