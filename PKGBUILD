@@ -11,9 +11,8 @@ depends=('dockbarx')
 groups=('dockbarx-themes')
 source=('deep.tar.gz::https://dl.opendesktop.org/api/files/download/id/1465391033/135373-Deep.tar.gz')
 noextract=('deep.tar.gz')
+sha256sums=('721443c5531406965f477765e503704159bf7b8aff5876635d6cd3fc128251a3')
 
 package () {
   install -D -m644 ${srcdir}/deep.tar.gz ${pkgdir}/usr/share/dockbarx/themes/deep.tar.gz
 }
-
-md5sums=('874c194ad468c72c60a2e09ad6bcee83')
