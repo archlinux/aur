@@ -9,6 +9,7 @@ url="https://fonts.myoffice.ru"
 license=('custom: XO FONTS Open License')
 depends=('fontconfig' 'xorg-font-utils')
 makedepends=('dos2unix' 'glibc')
+groups=('ttf-xo-fonts')
 source=("XO_SymbolM-${pkgver}.zip::http://fonts.myoffice.ru/wp-content/themes/template/fonts_page/files/XO_SymbolM.zip")
 sha256sums=('df3a572c76ff2dae581aac35c1b17f8b30e631ac59927787f43c647cd23eace7')
 install=${pkgname}.install

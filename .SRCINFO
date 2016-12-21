@@ -5,6 +5,7 @@ pkgbase = ttf-xo-symbol-mac
 	url = https://fonts.myoffice.ru
 	install = ttf-xo-symbol-mac.install
 	arch = any
+	groups = ttf-xo-fonts
 	license = custom: XO FONTS Open License
 	makedepends = dos2unix
 	makedepends = glibc
