@@ -1,40 +1,60 @@
-Version 2.3.6 - 24 Aug 2016
-- Fix for change to AO3 author links.
-- Force overall cover for Anthologies if any sub-books have covers to avoid
-  Calibre Polish issues.
-- Fix ffnet category fall back.
-- Add extra decode code for calling get_urls_from_imap() from outside calibre.
-- Fail more gracefully when anthology cover doesn't exist. Polish can remove
-  them.
-- Adding logpage_at_end INI option.
-- Fix for Publisher and Language metadata for Anthologies.
-- Fix date parsing for masseffect2.in.  Thanks PlushBeaver!
-- Tweaks to adultfanfictionorg
-- Add options for controlling Anthology book comments on the Standard Columns
-  config tab. (plugin only)
-- Add always_reload_first_chapter setting for base_xenforoforum stories with
-  index chapter.
-- Progress Bar - add extra timer loop for Win10 display.
-- New site: adult-fanfiction.org - Thanks GComyn!
-- New site: www.deepinmysoul.net/fiction - Thanks GComyn!
-- New site: fanfiction.lucifael.com - Thanks GComyn!
-- New site: harem.lucifael.com - Thanks GComyn!
-- New site: mujaji.net/repository - Thanks GComyn!
-- Make base_efiction code accept https story urls.
-- Tweaks for tthfanfic.org, including a slow down.
-- For literotica.com, throw a StoryDoesNotExist exception for 'This submission
-  is awaiting moderator's approval'
-- Tweaks for quotev.com, including a slow down.
-- Update translations.
+Version 2.7.0 - 14 Dec 2016
+- New site: writing.whimsicalwanderings.net - Thanks GComyn!
+- New site: www.giantessworld.net - Thanks GComyn!
+- New site: www.looselugs.com - Thanks GComyn!
+- New site: www.tomparisdorm.com - Thanks GComyn!
+- New site: www.valentchamber.com - Thanks GComyn!
+- New site: www.gluttonyfiction.com - Thanks GComyn!
+- New site: www.lotrgfic.com - Thanks GComyn!
+- New site: www.sugarquill.net - Thanks GComyn!
+- New site: www.area52hkh.net - Thanks GComyn!
+- Change from GComyn for eFiction base story with internal <b> tags.
+- Additional URL normalization in base_xenforoforum_adapter.
+- Fixes for adapter_bdsmlibrarycom and adapter_sugarquillnet from GComyn.
+- Adding 'reader' mode for base_xenforoforum_adapter - only SV has it so far.
+- Fix for storiesonline.net site changes - Thanks, davidfor!
+- Comment out some debug output.
+- Replace post_process_apply_filename_safepattern with
+  post_process_safepattern so it can have its own pattern. (CLI only)
+- Remove adapter for fanfiction.csodaidok.hu. It's been broken for a while and
+  it's a difficult site in Hungarian language, which none of current devs can
+  read.
+- Add always_use_forumtags to valid options lists. (plugin ini editor only)
+- Comment out largish debug output in adapter_storiesonlinenet
+- Make QQ ask for user/pass if necessary instead of just fail.
+- Remove more script tags from squidge.org/peja metadata.
+- Update translations. (plugin only)
 
-Version 2.3.5 - 22 Jul 2016
-- Change ffnet metadata colletion to allow for chars with (' - ') in them.
-- Fix for SIYE when author puts story URL in bio.
-- Allow old goto/post chapter URLs in base_xenforoforum.
-- Remove Django from app.yaml--old version going away. (Webservice only)
-- Add n_anthaver and r_anthaver modes to custom_columns_settings for averaging
-  metadata for anthologies before setting in integer and float calibre custom
-  columns. (Plugin only)
-- Include 'prefix' tags in forumtags in base_xenforoforum.
-- Save addheaders when setting cookiejar.  For ffn referer.
-- Update translations. (Plugin only)
+Version 2.6.0 - 17 Nov 2016
+- Fix for wraithbait.com - no longer displays review counts, remove code that
+  collects them.
+- New site: royalroadl.com Thanks wassname!
+- Allow '_u#.xhtml' file names in updates. For Calibre Convert on Anthologies,
+  then manually split.
+- Add Last Checked Column feature
+- Fixes for adapter_adultfanfictionorg.py from GComyn.
+- New site: chosentwofanfic.com -- Thanks GComyn!
+- New site: www.asexstories.com -- Thanks GComyn!
+- New site: www.bdsmlibrary.com -- Thanks GComyn!
+- New site: www.ficsite.com -- Thanks GComyn!
+- Tweaks and fixes across several sites from GComyn.
+- Site lotrfanfiction.com changed date format.
+- Improve quotev.com not found reporting a little.
+- Fix for potterfics.com layout change.
+- Remove duplicate adapter for fanfiction.lucifael.com--still supported.
+- Update translations.
+- Fix to handle incorrect HTML better in Get URLs from Page.
+- Add strip_text_links INI param to allowed list for asexstories.com.
+- Change comments sanitization for calibre to be less draconic.
+- Fix author fetch for post URL base_xenforoforum.
+- Don't use 'uparrow' quote links as chapter links in base_xenforoforum.
+- Adding remove_spoilers and legend_spoilers features and css example for
+  spoilers for base_xenforoforum.
+- Remove noscript tags from base_xenforoforum content--otherwise double images
+  appear in Kindle and Nook.
+- Copy make_soup to epubutils.py for noscript handling, otherwise noscript
+  contents get & escaped.
+- Use DOTALL regular expression processing on replace_metadata and
+  in/exclude_metadata. Should only effect description where it will allow full
+  replacement.
+- Update translations.
