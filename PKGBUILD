@@ -5,7 +5,7 @@
 # All my PKGBUILDs are managed at https://github.com/eli-schwartz/pkgbuilds
 
 pkgname=qbittorrent-git
-pkgver=3.3.7.r739.gf7194ee
+pkgver=3.3.10.r773.g7adb1d7f8
 pkgrel=1
 pkgdesc="A bittorrent client powered by C++, Qt5 and the good libtorrent library (development version)"
 arch=('i686' 'x86_64')
@@ -22,7 +22,7 @@ md5sums=('SKIP')
 pkgver() {
   cd ${pkgname%-*}
 
-  _tag=$(git tag -l | sort -r | head -n1 | tr -cd 0-9.)
+  _tag=$(git tag -l | sort -rV | head -n1 | tr -cd 0-9.)
   _rev=$(git rev-list --count release-${_tag}..HEAD)
   _hash=$(git rev-parse --short HEAD)
   printf "%s.r%s.g%s" "$_tag" "$_rev" "$_hash"
