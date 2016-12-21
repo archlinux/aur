@@ -7,10 +7,10 @@
 # SELinux Contributor: Nicky726 <Nicky726@gmail.com>
 
 pkgname=openssh-selinux
-pkgver=7.3p1
-pkgrel=2
+pkgver=7.4p1
+pkgrel=1
 pkgdesc='Free version of the SSH connectivity tools with SELinux support'
-url='http://www.openssh.org/portable.html'
+url='https://www.openssh.org/portable.html'
 license=('custom:BSD')
 arch=('i686' 'x86_64')
 makedepends=('linux-headers')
@@ -22,14 +22,14 @@ provides=("${pkgname/-selinux}=${pkgver}-${pkgrel}"
           "selinux-${pkgname/-selinux}=${pkgver}-${pkgrel}")
 groups=('selinux')
 validpgpkeys=('59C2118ED206D927E667EBE3D3E5F56B6D920D30')
-source=("http://ftp.openbsd.org/pub/OpenBSD/OpenSSH/portable/${pkgname/-selinux}-${pkgver}.tar.gz"{,.asc}
+source=("https://ftp.openbsd.org/pub/OpenBSD/OpenSSH/portable/${pkgname/-selinux}-${pkgver}.tar.gz"{,.asc}
         'sshdgenkeys.service'
         'sshd@.service'
         'sshd.service'
         'sshd.socket'
         'sshd.conf'
         'sshd.pam')
-sha1sums=('bfade84283fcba885e2084343ab19a08c7d123a5' 'SKIP'
+sha1sums=('2330bbf82ed08cf3ac70e0acf00186ef3eeb97e0' 'SKIP'
           'caaa801da59a5d14c0c29c43e9de5fef281ea03e'
           '6a0ff3305692cf83aca96e10f3bb51e1c26fccda'
           'ec49c6beba923e201505f5669cea48cad29014db'
@@ -64,10 +64,10 @@ build() {
 check() {
 	cd "${srcdir}/${pkgname/-selinux}-${pkgver}"
 
-	make tests || true
-	# hard to suitably test connectivity:
-	# - fails with /bin/false as login shell
-	# - fails with firewall activated, etc.
+	make tests
+
+	# Connectivity tests will fail with makechrootpkg since
+	# it runs as nobody which has /bin/false as login shell.
 }
 
 package() {
