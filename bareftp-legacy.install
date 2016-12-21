@@ -1,0 +1,22 @@
+# Contributor: Christoph Zeiler <archNOSPAM_at_moonblade.dot.org>
+
+post_install() {
+
+  echo '###########################################################################
+IMPORTANT!
+
+This is the C#/Mono-based source for bareFTP.
+Active development has stopped on this source. Only critical bugs and 
+build issues will be fixed.
+
+Active development is happening on the new python based source living at
+http://github.com/chreide/bareftp. After a first release based on the new
+source (version 0.4), this source will be totally abandoned
+###########################################################################'
+
+}
+
+post_upgrade() {
+  post_install $1
+}
+
