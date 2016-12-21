@@ -5,9 +5,9 @@
 
 pkgname=caddy-full-bin
 _realname=caddy
-pkgver=0.9.3
-ghpkgrel='-3'
-pkgrel=12
+pkgver=0.9.4
+ghpkgrel=''
+pkgrel=1
 pkgdesc="A configurable, general-purpose HTTP/2 web server for any platform (All features enabled)"
 arch=('i686' 'x86_64' 'armv7h' 'aarch64' 'armv6h')
 url="https://caddyserver.com"
@@ -16,16 +16,16 @@ provides=('caddy')
 conflicts=('caddy' 'caddy-git' 'caddy-all-features')
 depends=('systemd>=229')
 makedepends=('patch')
-md5sums_i686=('c6ef8d07cbdd41317d54de02a8d9f7cd'
-              '77e89ee90f6b69730b11ca83c7fbf48b')
-md5sums_x86_64=('9d228423b0276824fba70650bce06a15'
-                '77e89ee90f6b69730b11ca83c7fbf48b')
-md5sums_armv7h=('8bdf9487023d656a49093fb1456b4ed7'
-                '77e89ee90f6b69730b11ca83c7fbf48b')
-md5sums_aarch64=('8bdf9487023d656a49093fb1456b4ed7'
-                 '77e89ee90f6b69730b11ca83c7fbf48b')
-md5sums_armv6h=('7e5eeaa4a9b10f0fc677669456c260c9'
-                '77e89ee90f6b69730b11ca83c7fbf48b')
+md5sums_i686=('be96e8b8ceddfee9b75e165326fca177'
+              '3cf142fa66d9ab34804e50331d49e554')
+md5sums_x86_64=('3fee8f6183e7853a23df024e2d73e640'
+                '3cf142fa66d9ab34804e50331d49e554')
+md5sums_armv7h=('ad5675e7ae93fba597d2cc85eec1550c'
+                '3cf142fa66d9ab34804e50331d49e554')
+md5sums_aarch64=('ad5675e7ae93fba597d2cc85eec1550c'
+                 '3cf142fa66d9ab34804e50331d49e554')
+md5sums_armv6h=('de9c236cef6c1447f9c60f60890723f2'
+                '3cf142fa66d9ab34804e50331d49e554')
 install='caddy-full-bin.install'
 
 source_i686=("https://github.com/klingtnet/caddy-release-downloader/releases/download/${pkgver}${ghpkgrel}/caddy-all-plugins-${pkgver}${ghpkgrel}-386.tar.gz" "caddy-systemd-service.patch")
