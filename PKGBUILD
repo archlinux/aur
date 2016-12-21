@@ -66,7 +66,14 @@ build()
   msg2 "Compiling doomrl"
   echo "OS=\"LINUX\"" > "$srcdir/$pkgname/config.lua"
   echo "VALKYRIE_ROOT=\"$srcdir/fpcvalkyrie/\"" >> "$srcdir/$pkgname/config.lua"
-  FPCOPT=''  lua makefile.lua hq
+  
+  # lua makefile can be called to do thr build 
+  # but it seems to niss building makewad
+  # use lazbuild instead
+  # lua makefile.lua hq
+
+  lazbuild "src/makewad.lpi"
+  lazbuild "src/doomrl.lpi"
 
   # Generate wad
   msg2 "Generating wad file(s)"
