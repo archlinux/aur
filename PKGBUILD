@@ -3,7 +3,7 @@
   
 pkgname=ubuntu-device-flash
 pkgver=0.34
-pkgrel=1
+pkgrel=2
 pkgdesc="Tools to work with Ubuntu Touch"
 url="https://launchpad.net/goget-ubuntu-touch"
 arch=('x86_64' 'i686')
@@ -25,9 +25,13 @@ build() {
   echo "go get: downloading dependencies..."
   go get -v -d
 
+  cd $GOPATH/src/github.com/jessevdk/go-flags
+  git checkout e790d18a5622970eed9448823164da625077784d
+
   echo "go build: building executable..."
   # Prepare executable
-  go build
+  cd $GOPATH/src/launchpad.net/goget-ubuntu-touch/ubuntu-device-flash
+  go install
 }
 
 package() {
@@ -37,7 +41,7 @@ package() {
         "$pkgdir/usr/share/licenses/$pkgname/COPYING"
 
   # Package executables
-  install -Dm755 "$SOURCE_PATH/${pkgname}/${pkgname}" \
+  install -Dm755 "$srcdir/build/bin/$pkgname" \
     "$pkgdir/usr/bin/$pkgname"
 }
 
