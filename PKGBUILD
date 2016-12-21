@@ -9,6 +9,7 @@ url="https://fonts.myoffice.ru"
 license=('custom: XO FONTS Open License')
 depends=('fontconfig' 'xorg-font-utils')
 makedepends=('dos2unix' 'glibc')
+groups=('ttf-xo-fonts')
 source=("XO_Oriel-${pkgver}.zip::http://fonts.myoffice.ru/wp-content/themes/template/fonts_page/files/XO_Oriel.zip")
 sha256sums=('c4353cff43714a02f03478037a348285b600c284e4573ff950411d9af381c534')
 install=${pkgname}.install

@@ -5,6 +5,7 @@ pkgbase = ttf-xo-oriel
 	url = https://fonts.myoffice.ru
 	install = ttf-xo-oriel.install
 	arch = any
+	groups = ttf-xo-fonts
 	license = custom: XO FONTS Open License
 	makedepends = dos2unix
 	makedepends = glibc
