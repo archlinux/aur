@@ -1,0 +1,16 @@
+pkgbase = m3d-print
+	pkgdesc = Print 3D objects on your M3D Micro
+	pkgver = 1.5.0.70
+	pkgrel = 1
+	url = http://www.printm3d.com/
+	arch = x86_64
+	license = custom
+	depends = mono
+	provides = m3d-print
+	source = https://printm3d.com/files/software/linux/M3D-Linux-1.5.0.70.tar.gz
+	source = https://printm3d.com/files/software/linux/README-1.5.0.70.pdf
+	md5sums = b0b9537726ed30b00e167a1350ba6566
+	md5sums = 9ae06dff9bb2865841f9d5cac39fddc2
+
+pkgname = m3d-print
+
