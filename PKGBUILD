@@ -13,7 +13,7 @@ md5sums=('SKIP')
 
 package() {
         cd $pkgname
-        install -Dm755 pkg-audit.py $pkgdir/usr/bin/pkg-audit
+        install -Dm755 pkg-audit.py "${pkgdir}"/usr/bin/pkg-audit
 
-        install -Dm644 man/pkg-audit.1 $pkgdir/usr/share/man/man1/pkg-audit.1
+        install -Dm644 man/pkg-audit.1 "${pkgdir}"/usr/share/man/man1/pkg-audit.1
 }
