@@ -9,10 +9,10 @@ url="http://gnome-look.org/content/show.php/DockbarX+MacOSX+X?content=119808"
 license=('GPL')
 depends=('dockbarx')
 groups=('dockbarx-themes')
-source=('https://dl.opendesktop.org/api/files/download/id/1465391020/119808-MacOSX.tar.gz')
+source=('MacOSX.tar.gz::https://dl.opendesktop.org/api/files/download/id/1465391020/119808-MacOSX.tar.gz')
+noextract=('MacOSX.tar.gz')
+sha256sums=('20cc604f8009e4225b663bbaaec0df5c9e37da04f93c253aa10e30d2ee28fda4')
 
 package () {
-  install -D -m644 ${srcdir}/119808-MacOSX.tar.gz ${pkgdir}/usr/share/dockbarx/themes/MacOSX.tar.gz
+  install -D -m644 ${srcdir}/MacOSX.tar.gz ${pkgdir}/usr/share/dockbarx/themes/MacOSX.tar.gz
 }
-
-md5sums=('a87f2d68a9dd071a2f4ab8addf48ea9b')
