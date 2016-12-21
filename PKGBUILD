@@ -5,7 +5,7 @@ set -u
 _pyver="python2"
 _pybase='s3transfer'
 pkgname="${_pyver}-${_pybase}"
-pkgver='0.1.9'
+pkgver='0.1.10'
 pkgrel='1'
 pkgdesc='Amazon S3 Transfer Manager for Python for aws'
 arch=('any')
@@ -19,7 +19,7 @@ makedepends=("${_pyver}" "${_pyver}-distribute") # same as python-setuptools
 _srcdir="${_pybase}-${pkgver}"
 #_verwatch=("${url}/releases.atom" '\s\+<title>\([^<]\+\)</title>.*' 'f') # RSS
 source=("${_pybase}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
-sha256sums=('153551511e6cb5233e286b1a0223fc07f2b67825449e88980f099a922a99a620')
+sha256sums=('9d5083fdefc22bd9a4e1c5bc84682f43db308403a034dbe8898850c030a428e8')
 
 build() {
   set -u
