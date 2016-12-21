@@ -1,7 +1,7 @@
 # Maintainer:  graypawn <choi.pawn @gmail.com>
 
 pkgname=yusuke
-pkgver=1.7.7
+pkgver=1.7.8
 pkgrel=1
 pkgdesc="pacman update notifier"
 
@@ -18,6 +18,12 @@ md5sums=('38caecff3825c35962971aeae1335e6c')
 package() {
   cd "$srcdir/$pkgname-$pkgver"
   python setup.py install --root="$pkgdir" --optimize=1
-  install -Dm644 yusuke@.service "$pkgdir/etc/systemd/system/yusuke@.service"
-  install -Dm644 yusuke@.timer "$pkgdir/etc/systemd/system/yusuke@.timer"
+  install -Dm644 yusuke-sync.service \
+          "$pkgdir/etc/systemd/system/yusuke-sync.service"
+  install -Dm644 yusuke-sync.timer \
+          "$pkgdir/etc/systemd/system/yusuke-sync.timer"
+  install -Dm644 yusuke-notify.service \
+          "$pkgdir/usr/share/yusuke/yusuke-notify.service"
+  install -Dm644 yusuke-notify.timer \
+          "$pkgdir/usr/share/yusuke/yusuke-notify.timer"
 }
