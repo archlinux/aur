@@ -4,14 +4,14 @@
 
 pkgname=trash-cli-git
 _pkgname=trash-cli
-pkgver=415.e888f86
+pkgver=457.468afec
 pkgrel=1
 pkgdesc='Command line trashcan (recycle bin) interface'
 arch=('any')
 url="http://github.com/andreafrancia/${_pkgname}"
 license=('GPL')
-depends=('python2' 'python2-distribute')
-makedepends=('git')
+depends=('python2')
+makedepends=('python2-setuptools')
 provides=('trash-cli')
 conflicts=('trash-cli')
 source=("git+http://github.com/andreafrancia/${_pkgname}.git"
