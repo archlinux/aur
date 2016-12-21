@@ -1,7 +1,7 @@
 # Maintainer: Michael Schubert <mschu.dev at gmail>
 pkgname=python2-socks
 _pkgname=PySocks
-pkgver=1.5.7
+pkgver=1.6.5
 pkgrel=1
 pkgdesc="SOCKS4, SOCKS5 or HTTP proxy (Anorov fork PySocks replaces socksipy)"
 arch=('any')
@@ -12,7 +12,7 @@ provides=('socksipy' 'python2-socksipy-branch')
 conflicts=('socksipy' 'python2-socksipy-branch')
 replaces=('python2-socksipy-branch')
 source=("https://github.com/Anorov/PySocks/archive/$pkgver.tar.gz")
-md5sums=('1d85fc1a5391711c04a16ff31fad1e8f')
+md5sums=('2012790b3793457a8c604fceb9842421')
 
 package() {
   cd "$srcdir/$_pkgname-$pkgver"
