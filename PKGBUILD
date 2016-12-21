@@ -1,6 +1,6 @@
 # Maintainer: Nils Amiet <amietn@foobar>
 pkgname=python-pyhocon
-pkgver=0.3.30
+pkgver=0.3.35
 pkgrel=1
 pkgdesc="HOCON parser for Python"
 arch=(any)
@@ -20,5 +20,5 @@ md5sums=('SKIP')
 
 package() {
   cd "${pkgname}"
-  python setup.py install --root="$pkgdir/" --optimize=1
+  python setup.py install --root="${pkgdir}/" --optimize=1
 }
