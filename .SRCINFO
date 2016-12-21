@@ -1,7 +1,7 @@
 pkgbase = manjaro-hello-git
-	pkgdesc = A tool that helps the new user of Manjaro in the discovery of the system.
+	pkgdesc = A tool providing access to documentation and support for new Manjaro users.
 	pkgver = 0.1.r1.gdced79c
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Huluti/manjaro-hello
 	arch = any
 	license = GPL
