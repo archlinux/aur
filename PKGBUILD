@@ -1,7 +1,11 @@
  # Contributor: gamanakis
 
 pkgname=sch_cake
-pkgver=0.1
+pkgver=r200.6484187
+pkgver() {
+	cd "sch_cake"
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
 pkgrel=1
 pkgdesc="The CAKE scheduler, bufferbloat.net"
 arch=('i686' 'x86_64')
