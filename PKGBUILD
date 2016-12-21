@@ -1,0 +1,71 @@
+# Script generated with import_catkin_packages.py
+# For more information: https://github.com/bchretien/arch-ros-stacks
+pkgdesc="ROS - ROS Package Tool."
+url='http://wiki.ros.org/rospack'
+
+pkgname='ros-kinetic-rospack'
+pkgver='2.3.1'
+_pkgver_patch=0
+arch=('any')
+pkgrel=1
+license=('BSD')
+
+ros_makedepends=(ros-kinetic-cmake-modules
+  ros-kinetic-catkin)
+makedepends=('cmake' 'ros-build-tools'
+  ${ros_makedepends[@]}
+  gtest
+  pkg-config
+  boost
+  tinyxml
+  python2)
+
+ros_depends=()
+depends=(${ros_depends[@]}
+  python2-catkin-pkg
+  python2-rosdep
+  tinyxml
+  python2
+  boost
+  pkg-config)
+
+# Git version (e.g. for debugging)
+# _tag=release/kinetic/rospack/${pkgver}-${_pkgver_patch}
+# _dir=${pkgname}
+# source=("${_dir}"::"git+https://github.com/ros-gbp/rospack-release.git"#tag=${_tag})
+# sha256sums=('SKIP')
+
+# Tarball version (faster download)
+_dir="rospack-release-release-kinetic-rospack-${pkgver}-${_pkgver_patch}"
+source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/rospack-release/archive/release/kinetic/rospack/${pkgver}-${_pkgver_patch}.tar.gz")
+sha256sums=('14cd920af7f82e56afc29a9a48878c959a6ad7e8f94f1b1681adba3d9ccafe82')
+
+build() {
+  # Use ROS environment variables
+  source /usr/share/ros-build-tools/clear-ros-env.sh
+  [ -f /opt/ros/kinetic/setup.bash ] && source /opt/ros/kinetic/setup.bash
+
+  # Create build directory
+  [ -d ${srcdir}/build ] || mkdir ${srcdir}/build
+  cd ${srcdir}/build
+
+  # Fix Python2/Python3 conflicts
+  /usr/share/ros-build-tools/fix-python-scripts.sh -v 2 ${srcdir}/${_dir}
+
+  # Build project
+  cmake ${srcdir}/${_dir} \
+        -DCMAKE_BUILD_TYPE=Release \
+        -DCATKIN_BUILD_BINARY_PACKAGE=ON \
+        -DCMAKE_INSTALL_PREFIX=/opt/ros/kinetic \
+        -DPYTHON_EXECUTABLE=/usr/bin/python2 \
+        -DPYTHON_INCLUDE_DIR=/usr/include/python2.7 \
+        -DPYTHON_LIBRARY=/usr/lib/libpython2.7.so \
+        -DPYTHON_BASENAME=-python2.7 \
+        -DSETUPTOOLS_DEB_LAYOUT=OFF
+  make
+}
+
+package() {
+  cd "${srcdir}/build"
+  make DESTDIR="${pkgdir}/" install
+}
