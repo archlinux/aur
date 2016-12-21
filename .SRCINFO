@@ -1,0 +1,21 @@
+pkgbase = mingw-w64-libconfig
+	pkgdesc = C/C++ Configuration File Library (mingw-w64)
+	pkgver = 1.5
+	pkgrel = 1
+	url = http://hyperrealm.com/libconfig/libconfig.html
+	arch = any
+	license = LGPL
+	makedepends = mingw-w64-configure
+	makedepends = mingw-w64-gcc
+	depends = automake-1.14
+	depends = mingw-w64-crt
+	depends = gcc-libs
+	depends = texinfo
+	options = staticlibs
+	options = !strip
+	options = !buildflags
+	source = http://pkgs.fedoraproject.org/repo/pkgs/libconfig/libconfig-1.5.tar.gz/a939c4990d74e6fc1ee62be05716f633/libconfig-1.5.tar.gz
+	md5sums = a939c4990d74e6fc1ee62be05716f633
+
+pkgname = mingw-w64-libconfig
+
