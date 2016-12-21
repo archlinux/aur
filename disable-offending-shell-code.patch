@@ -1,0 +1,12 @@
+diff -ruN src.orig/fpcvalkyrie/src/vtextio.pas src/fpcvalkyrie/src/vtextio.pas
+--- src.orig/fpcvalkyrie/src/vtextio.pas	2016-12-21 09:02:25.722725632 -0500
++++ src/fpcvalkyrie/src/vtextio.pas	2016-12-21 09:14:21.148142771 -0500
+@@ -284,7 +284,7 @@
+   try if FMouse then DoneMouse; except on Exception do end;
+   try DoneVideo except on Exception do end;
+   //Unknown to myself, I have no clue why I get an access violation here...
+-  {$IFDEF UNIX}Shell('reset');{$ENDIF}
++//  {$IFDEF UNIX}Shell('reset');{$ENDIF}
+   inherited Destroy;
+ end;
+ 

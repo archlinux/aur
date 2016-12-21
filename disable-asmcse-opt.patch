@@ -1,0 +1,35 @@
+diff -ruN src.orig/doomrl-git/src/doomrl.inc src/doomrl-git/src/doomrl.inc
+--- src.orig/doomrl-git/src/doomrl.inc	2016-12-21 09:10:24.713011262 -0500
++++ src/doomrl-git/src/doomrl.inc	2016-12-21 09:08:53.035649390 -0500
+@@ -2,13 +2,13 @@
+ {$INTERFACES CORBA}
+ {$COPERATORS ON}
+ {$INLINE ON}
++{ASMCSE OFF}
+ 
+ {$IFNDEF WINDOWS}
+   {$OPTIMIZATION OFF}
+   {.$OPTIMIZATION REGVAR}
+   {$OPTIMIZATION STACKFRAME}
+   {$OPTIMIZATION PEEPHOLE}
+-  {$OPTIMIZATION ASMCSE}
+   {$OPTIMIZATION LOOPUNROLL}
+   {$OPTIMIZATION CSE}
+   {.$OPTIMIZATION DFA}
+diff -ruN src.orig/fpcvalkyrie/src/valkyrie.inc src/fpcvalkyrie/src/valkyrie.inc
+--- src.orig/fpcvalkyrie/src/valkyrie.inc	2016-12-21 09:10:08.592888936 -0500
++++ src/fpcvalkyrie/src/valkyrie.inc	2016-12-21 09:08:53.038982749 -0500
+@@ -4,12 +4,12 @@
+ {$COPERATORS ON}
+ {$MACRO ON}
+ {$INLINE ON}
++{ASMCSE OFF}
+ 
+ {$IFNDEF WINDOWS}
+   {$OPTIMIZATION OFF}
+   {.$OPTIMIZATION REGVAR}
+   {$OPTIMIZATION PEEPHOLE}
+-  {$OPTIMIZATION ASMCSE}
+   {$OPTIMIZATION LOOPUNROLL}
+   {$OPTIMIZATION CSE}
+   {$OPTIMIZATION DFA}

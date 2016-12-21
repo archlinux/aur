@@ -1,0 +1,12 @@
+diff -ruN src.orig/fpcvalkyrie/scripts/lua_make.lua src/fpcvalkyrie/scripts/lua_make.lua
+--- src.orig/fpcvalkyrie/scripts/lua_make.lua	2016-12-21 09:02:25.719392273 -0500
++++ src/fpcvalkyrie/scripts/lua_make.lua	2016-12-21 09:13:00.747530463 -0500
+@@ -319,7 +319,7 @@
+ VERSION_STRING = '{!string}';
+ VERSION_ARRAY  : array[1..{!length}] of byte = ({!array});
+ VERSION_BETA   = {!beta};
+-VERSION_REV    = {!revision};	
++VERSION_REV    = 1;
+ ]]
+ 	make.write_file( target, text, subs )
+ end
