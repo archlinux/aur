@@ -1,0 +1,17 @@
+pkgbase = ttf-xo-oriel-condensed
+	pkgdesc = XO Oriel Condensed font created considering trends of modern typography from «Новые облачные технологии»
+	pkgver = 1.00
+	pkgrel = 1
+	url = https://fonts.myoffice.ru
+	install = ttf-xo-oriel-condensed.install
+	arch = any
+	license = custom: XO FONTS Open License
+	makedepends = dos2unix
+	makedepends = glibc
+	depends = fontconfig
+	depends = xorg-font-utils
+	source = XO_Oriel_Condensed-1.00.zip::http://fonts.myoffice.ru/wp-content/themes/template/fonts_page/files/XO_Oriel_Condensed.zip
+	sha256sums = 671c76493faad648e799b88686652d5f8adeec7c8fbe379dc4b49d8749c70243
+
+pkgname = ttf-xo-oriel-condensed
+
