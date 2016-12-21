@@ -25,6 +25,12 @@ build() {
   make
 }
 
+check() {
+  cd "$_pkgname-$pkgver"
+
+  make check
+}
+
 package() {
   cd "$_pkgname-$pkgver"
   make DESTDIR="$pkgdir" install
