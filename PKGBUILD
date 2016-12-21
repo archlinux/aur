@@ -4,7 +4,7 @@ pkgbase=python-gazelleapi
 _pkgbase="${pkgbase#python-}"
 pkgname=(python-gazelleapi python2-gazelleapi)
 pkgver=0.1.4
-pkgrel=2
+pkgrel=3
 pkgdesc='An API for interacting with Gazelle based sites'
 arch=(any)
 url='https://github.com/itismadness/gazelleapi'
@@ -32,7 +32,7 @@ package_python2-gazelleapi() {
   depends=('python2-future' 'python2-requests')
   cd "${srcdir}/${_pkgbase}-${pkgver}"
   python2 setup.py install --root="${pkgdir}/" --optimize=1
-  install -Dm 644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm 644 LICENSE.md "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
 # vim:set ts=2 sw=2 et:
