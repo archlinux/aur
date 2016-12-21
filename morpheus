@@ -1,2 +1,2 @@
 #!/usr/bin/sh
-mono '/opt/morpheus/Morpheus %28mzML Mono%29.exe' "$@"
+mono '/opt/morpheus/Morpheus (mzML Mono).exe' "$@"
