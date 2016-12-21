@@ -1,0 +1,17 @@
+pkgbase = ttf-xo-symbol-mac
+	pkgdesc = XO Symbol (macOS) font created considering trends of modern typography from «Новые облачные технологии»
+	pkgver = 1.00
+	pkgrel = 1
+	url = https://fonts.myoffice.ru
+	install = ttf-xo-symbol-mac.install
+	arch = any
+	license = custom: XO FONTS Open License
+	makedepends = dos2unix
+	makedepends = glibc
+	depends = fontconfig
+	depends = xorg-font-utils
+	source = XO_SymbolM-1.00.zip::http://fonts.myoffice.ru/wp-content/themes/template/fonts_page/files/XO_SymbolM.zip
+	sha256sums = df3a572c76ff2dae581aac35c1b17f8b30e631ac59927787f43c647cd23eace7
+
+pkgname = ttf-xo-symbol-mac
+
