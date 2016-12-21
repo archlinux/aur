@@ -1,6 +1,6 @@
 # Maintainer: David Runge <dave@sleepmap.de>
 pkgname=uenv-git
-pkgver=0.8.1.r0.gcc3410e
+pkgver=8.2.r0.g34d31c9
 _basename=uenv
 pkgrel=1
 pkgdesc="Useful scripts, systemd timer/service units and their configuration"
@@ -16,7 +16,6 @@ optdepends=(
   'conky: For conky user service'\
   'cpupower: For cpupower settings on linux-rt'\
   'glances: For monitoring user service (running in separate tmux environment)'\
-  'gnupg: For gpg-agent as systemd user service'\
   'htop: For monitoring user service (running in separate tmux environment)'\
   'irssi: For irssi in a separate tmux environment'\
   'jack2: For profile based JACK user service'\
