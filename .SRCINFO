@@ -28,6 +28,7 @@ pkgbase = eom-dev
 	depends = python2-gobject2
 	depends = startup-notification
 	depends = zlib
+	depends = libpeas
 	optdepends = yelp: for reading MATE help documents
 	provides = eom
 	provides = eom-gtk3
