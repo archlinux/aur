@@ -1,0 +1,14 @@
+diff -ruN src.orig/fpcvalkyrie/src/valkyrie.inc src/fpcvalkyrie/src/valkyrie.inc
+--- src.orig/fpcvalkyrie/src/valkyrie.inc	2016-12-21 09:10:08.592888936 -0500
++++ src/fpcvalkyrie/src/valkyrie.inc	2016-12-21 10:41:46.704057836 -0500
+@@ -17,6 +17,10 @@
+   {$OPTIMIZATION ON}
+ {$ENDIF}
+ 
++{$IFDEF LINUX}
++  {$DEFINE LUA_DYNAMIC}
++{$ENDIF}
++
+ {$DEFINE VINLINE}
+ {$IFDEF FREEBSD}
+   {$UNDEF VINLINE}
