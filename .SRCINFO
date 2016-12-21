@@ -1,0 +1,17 @@
+pkgbase = wjt
+	pkgdesc = wjt is a slider widget for X
+	pkgver = 0.2
+	pkgrel = 1
+	url = https://github.com/ianremmler/wjt
+	arch = i686
+	arch = x86_64
+	license = MIT
+	depends = libx11
+	depends = libxinerama
+	depends = libxft
+	depends = freetype2
+	source = https://github.com/ianremmler/wjt/archive/0.2.tar.gz
+	md5sums = 6724dd97274c12e93555a5821b49039d
+
+pkgname = wjt
+
