@@ -1,9 +1,9 @@
 # Maintainer: Lev Lybin <lev.lybin@gmail.com>
 
 pkgname=upwork
-pkgver=4.2.88.0
+pkgver=4.2.95.0.9
 _rawver=${pkgver//./_}
-_hashver="zjqu5h1eh5fvxz5t"
+_hashver="xgmle488qryoawe"
 pkgrel=1
 pkgdesc="Team App (ex. oDesk)"
 arch=('i686' 'x86_64')
@@ -13,13 +13,13 @@ conflicts=('upwork-beta' 'upwork-alpha')
 depends=('gtk2' 'nss' 'gconf' 'alsa-lib' 'glu' 'libxtst' 'gtkglext' 'libgcrypt15' 'libxss')
 install=upwork.install
 
-source=("https://dl.devtrue.net/archlinux/upwork/LICENSE")
+source=("httpmced	s://dl.devtrue.net/archlinux/upwork/LICENSE")
 md5sums=('56198f3b7f1d0371d89a044c3e110cdd')
-md5sums_i686=('fca4e5f1cc2c8608ec6a1e56d14bc3c5')
-md5sums_x86_64=('410571fbfe8f3b59550e857d908ffa5a')
-# how to get links Standart, Beta, Alpha: grep updates.getVersionToDownload ~/.Upwork/Upwork/Logs/* | tail -n 1 | grep -o 'http://[a-zA-Z/.0-9_]*.deb'
-source_x86_64=(upwork_amd64_${pkgver}.deb::http://updates.team.odesk.com/binaries/v${_rawver}_${_hashver}/upwork_amd64.deb)
-source_i686=(upwork_i386_${pkgver}.deb::http://updates.team.odesk.com/binaries/v${_rawver}_${_hashver}/upwork_i386.deb)
+md5sums_i686=('2d7abf0656f8c2687a6f159142f940b9')
+md5sums_x86_64=('997525729f7d52e7f7315bff896dbe01')
+# how to get links Standart, Beta, Alpha: grep "https://updates-desktopapp.upwork.com/binaries" ~/.Upwork/Upwork/Logs/* | tail -n 4
+source_x86_64=(upwork_amd64_${pkgver}.deb::https://updates-desktopapp.upwork.com/binaries/v${_rawver}${_hashver}/upwork_amd64.deb)
+source_i686=(upwork_i386_${pkgver}.deb::https://updates-desktopapp.upwork.com/binaries/v${_rawver}${_hashver}/upwork_i386.deb)
 
 prepare() {
     cd "${srcdir}"
