@@ -20,6 +20,7 @@ pkgbase = doomrl-git
 	source = disable-offending-shell-code.patch
 	source = hard-code-svn-revision.patch
 	source = fix-lua-dynamic-linking.patch
+	source = doomrl-launch
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = 590c28b4e7f655e23c01bca0b2f9ddf9b8dd024f3a8b7ac5ec65d79877a6450b
@@ -27,6 +28,7 @@ pkgbase = doomrl-git
 	sha256sums = 439de08ce548b0dc7ff6ba31ace7f375a1e6f0ebac32addf8a05d3d31283e192
 	sha256sums = e57148577e3152c99a61adb7ae841272491b7be62b168b8d62ee73b322b37418
 	sha256sums = 8b7be4a787422722da65b3c184178f221d5ec76e60f11fda371aa27c9808ea9d
+	sha256sums = SKIP
 
 pkgname = doomrl-git
 

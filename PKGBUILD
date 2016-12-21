@@ -17,6 +17,7 @@ source=("$pkgname::git+https://github.com/ChaosForge/doomrl"
 	'disable-offending-shell-code.patch'
 	'hard-code-svn-revision.patch'
 	'fix-lua-dynamic-linking.patch'
+	'doomrl-launch'
 	)
 sha256sums=('SKIP'
 	    'SKIP'
@@ -25,6 +26,7 @@ sha256sums=('SKIP'
 	    '439de08ce548b0dc7ff6ba31ace7f375a1e6f0ebac32addf8a05d3d31283e192'
 	    'e57148577e3152c99a61adb7ae841272491b7be62b168b8d62ee73b322b37418'
 	    '8b7be4a787422722da65b3c184178f221d5ec76e60f11fda371aa27c9808ea9d'
+	    'SKIP'
 	    )
 
 prepare()
@@ -39,6 +41,9 @@ prepare()
   # assets
   cp -ru "$srcdir/$doomrl_assets/mp3"/* "$srcdir/$pkgname/bin/mp3"
   cp -ru "$srcdir/$doomrl_assets/wavhq"/* "$srcdir/$pkgname/bin/wavhq" 
+
+  # symlinks
+  rm -f "$srcdir/$pkgname/bin/liblua5.1.so"
 
   msg2 "Patching"
 
@@ -68,7 +73,7 @@ build()
   echo "VALKYRIE_ROOT=\"$srcdir/fpcvalkyrie/\"" >> "$srcdir/$pkgname/config.lua"
   
   # lua makefile can be called to do thr build 
-  # but it seems to niss building makewad
+  # but it seems to miss building makewad
   # use lazbuild instead
   # lua makefile.lua hq
 
@@ -77,7 +82,9 @@ build()
 
   # Generate wad
   msg2 "Generating wad file(s)"
-  $srcdir/$pkgname/bin/makewad
+  cd "$srcdir/$pkgname/bin"
+  # makewad doesn't properly search for the lua lialb 
+  ln -s "/usr/lib/liblua5.1.so" "liblua5.1.so"
 
 }
 
@@ -93,7 +100,54 @@ package() {
 
   fi
 
-	msg2 "Installing configuration files..."
-	# TODO
+  cd "$srcdir/$pkgname"
+
+  #####################
+  # Directories
+  #####################
+
+  install -d "$pkgdir/usr/share/games/doomrl"
+  # Modules should not include original source content, just readme
+  install -d "$pkgdir/usr/share/games/doomrl/modules"
+
+  DIRS="mp3 wavhq screenshot backup mortem"
+
+  for dir in $DIRS;
+  do
+	cp -dr "bin/${dir}" "$pkgdir/usr/share/games/doomrl/${dir}"
+
+  done
+
+  #####################
+  # bin/share files
+  #####################
+
+  # Shouldn't need the extra scripts, but include them anyway
+
+  FILES="doomrl.wad 
+	 bin/doomrl 
+	 bin/manual.txt 
+	 bin/version.txt
+	 bin/unix_notes.txt
+	 bin/config.lua
+	 bin/colors.lua
+	 bin/keybindings.lua 
+	 bin/sound.lua
+	 bin/music.lua
+	 bin/musichq.lua
+	 bin/doomrl_gnome-terminal
+	 bin/doomrl_konsole
+	 bin/doomrl_xterm
+	 bin/modules/!readme.txt"
+
+  for file in $FILES;
+  do
+
+	install -m755 "${file}" "$pkgdir/usr/share/games/doomrl/$(basename ${file})"	
+
+  done
+
+  # launcher
+  install -Dm755 "$startdir/doomrl-launch" "$pkgdir/usr/bin/doomrl"
 
 }
