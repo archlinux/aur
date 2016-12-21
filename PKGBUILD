@@ -13,7 +13,7 @@ conflicts=('upwork-beta' 'upwork-alpha')
 depends=('gtk2' 'nss' 'gconf' 'alsa-lib' 'glu' 'libxtst' 'gtkglext' 'libgcrypt15' 'libxss')
 install=upwork.install
 
-source=("httpmced	s://dl.devtrue.net/archlinux/upwork/LICENSE")
+source=("https://dl.devtrue.net/archlinux/upwork/LICENSE")
 md5sums=('56198f3b7f1d0371d89a044c3e110cdd')
 md5sums_i686=('2d7abf0656f8c2687a6f159142f940b9')
 md5sums_x86_64=('997525729f7d52e7f7315bff896dbe01')
