@@ -4,13 +4,13 @@
 # Contributor: atommixz
 
 pkgname=i2pd
-pkgver=2.10.2
+pkgver=2.11.0
 pkgrel=1
 pkgdesc="Simplified C++ implementation of I2P client"
 arch=('i686' 'x86_64')
 url="https://github.com/PurpleI2P/i2pd"
 license=('BSD')
-depends=('boost-libs' 'miniupnpc' 'openssl' 'zlib')
+depends=('boost-libs' 'miniupnpc' 'openssl' 'zlib' 'websocketpp')
 makedepends=('boost')
 source=(https://github.com/PurpleI2P/${pkgname}/archive/${pkgver}.tar.gz
 	i2pd.service
@@ -22,17 +22,24 @@ conflicts=('i2pd-git')
 
 build() {
   cd $srcdir/$pkgname-$pkgver
-  USE_UPNP=1 make
+  cd build
+  cmake . -Wno-dev \
+	  -DCMAKE_INSTALL_PREFIX=/usr \
+	  -DWITH_UPNP=1 -DWITH_PCH=1 \
+	  -DWITH_WEBSOCKETS=1 \
+	  -DCMAKE_BUILD_TYPE=Release
+  make
 }
 
 package(){
-        _bin_dest=usr/bin
         _conf_dest=etc/${pkgname}
         _home_dest=var/lib/${pkgname}
         _share_dest=usr/share
 
-  install -Dm755 $srcdir/$pkgname-$pkgver/i2pd "$pkgdir/${_bin_dest}/i2pd"
+	cd $srcdir/$pkgname-$pkgver
 
+	cd build
+	make DESTDIR=$pkgdir install
   install -Dm0644 $srcdir/i2pd.service $pkgdir/usr/lib/systemd/system/i2pd.service
   install -Dm0644 $srcdir/i2pd.tmpfiles.conf $pkgdir/usr/lib/tmpfiles.d/i2pd.conf
 
@@ -61,12 +68,15 @@ package(){
   install -Dm644 $srcdir/$pkgname-$pkgver/docs/family.md "${_dest}/family.md"
   install -Dm644 $srcdir/$pkgname-$pkgver/docs/config_opts_after_2.3.0.md "${_dest}/config_opts_after_2.3.0.md"
 
+  # remove src folder
+	rm -r "$pkgdir/usr/src"
+	
   #man
   install -Dm644 $srcdir/$pkgname-$pkgver/debian/i2pd.1 "$pkgdir/${_share_dest}/man/man1/i2pd.1"
 
   chmod -R o= $pkgdir/${_home_dest}
 }
 
-md5sums=('d4e928e11e24d6dc8da6f197d83c617a'
+md5sums=('813b257119c2f856c515ba81858f42a0'
          '382cce43a405c67de55b71e9e2e3a0eb'
          '384658d2792ef6433d2de70ebc9d40d4')
