@@ -1,0 +1,17 @@
+pkgbase = ttf-xo-caliburn
+	pkgdesc = XO Caliburn font created considering trends of modern typography from «Новые облачные технологии»
+	pkgver = 1.00
+	pkgrel = 1
+	url = https://fonts.myoffice.ru
+	install = ttf-xo-caliburn.install
+	arch = any
+	license = custom: XO FONTS Open License
+	makedepends = dos2unix
+	makedepends = glibc
+	depends = fontconfig
+	depends = xorg-font-utils
+	source = XO_Caliburn-1.00.zip::http://fonts.myoffice.ru/wp-content/themes/template/fonts_page/files/XO_Caliburn.zip
+	sha256sums = 96d1210bca136f37d152cd7aeffc574a9aa73367aa24ce49d9e1cf3a86944d24
+
+pkgname = ttf-xo-caliburn
+
