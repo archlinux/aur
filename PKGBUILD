@@ -8,7 +8,7 @@ pkgdesc="Strongswan NetworkManager plugin"
 arch=('i686' 'x86_64')
 url="http://wiki.strongswan.org/projects/strongswan/wiki/NetworkManager"
 license=('GPL')
-depends=('networkmanager' 'strongswan>=5.5.1' 'libnm-gtk')
+depends=('networkmanager' 'strongswan>=5.5.1' 'libnm-gtk' 'libsecret')
 makedepends=('intltool')
 conflicts=('networkmanager-strongswan-passwordstore')
 source=("http://download.strongswan.org/NetworkManager/$_pkgname-$pkgver.tar.bz2"{,.sig})
