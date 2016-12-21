@@ -9,6 +9,7 @@ url="https://fonts.myoffice.ru"
 license=('custom: XO FONTS Open License')
 depends=('fontconfig' 'xorg-font-utils')
 makedepends=('dos2unix' 'glibc')
+groups=('ttf-xo-fonts')
 source=("XO_Tahion-${pkgver}.zip::http://fonts.myoffice.ru/wp-content/themes/template/fonts_page/files/XO_Tahion.zip")
 sha256sums=('70c10e31caeb5a2006527d8005f96ca38dd3ddabe30b7829dfed5a02c290b1c1')
 install=${pkgname}.install
