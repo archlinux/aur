@@ -7,9 +7,8 @@ pkgdesc="A real-time adjustable equalizer plugin for ALSA sound server."
 arch=('x86_64')
 url="http://www.thedigitalmachine.net/alsaequal.html"
 license=('GPL2')
-depends=('lib32-alsa-lib' 'lib32-ladspa')
-optdepends=('lib32-caps: to use the Eq CAPS equalizer (10-band)'
-            'lib32-swh-plugins: to use the mbeq equalizer (15-band)')
+depends=('lib32-alsa-lib' 'lib32-caps')
+optdepends=('lib32-swh-plugins: to use the mbeq equalizer (15-band)')
 install='alsaequal.install'
 
 source=("https://launchpad.net/ubuntu/+archive/primary/+files/alsaequal_${pkgver}.orig.tar.bz2"
