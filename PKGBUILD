@@ -2,7 +2,7 @@
 
 pkgname=libbox0-git
 _pkgname=libbox0
-pkgver=61.7555f0e
+pkgver=62.6355ffa
 pkgrel=1
 pkgdesc="C library for communicating with Box0 implementations"
 arch=('i686' 'x86_64')
@@ -11,10 +11,10 @@ license=('GPL')
 provides=(libbox0)
 conflicts=(libbox0)
 replaces=(libbox0)
-source=("git+https://gitlab.com/madresistor/$_pkgname.git" "27-box0-v5.rules")
+source=("git+https://gitlab.com/madresistor/$_pkgname.git")
 depends=('libusb')
 makedepends=('cmake' 'git')
-md5sums=('SKIP' '6eacc71be1f5f212d4976bab8ddd6a13')
+md5sums=('SKIP')
 
 
 pkgver() {
@@ -38,6 +38,7 @@ build() {
 }
 
 package() {
-  install -Dm644 "$srcdir/27-box0-v5.rules" "$pkgdir/usr/lib/udev/rules.d/27-box0-v5.rules"
-  make -C "$srcdir/$_pkgname/build" DESTDIR="${pkgdir}" install
+  cd "$srcdir/$_pkgname"
+  install -Dm644 "extra/udev/27-box0-v5.rules" "$pkgdir/usr/lib/udev/rules.d/27-box0-v5.rules"
+  make -C "build" DESTDIR="${pkgdir}" install
 }
