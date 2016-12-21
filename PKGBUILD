@@ -1,9 +1,10 @@
-# Maintainer: Diego Principe <cdprincipe@at@gmail@dot@com>
-# Maintainer: PAblo Lezaeta <prflr88@gmail.com>
+# Maintainer: twa022 <twa022 at gmail dot com>
+# Contributor: Diego Principe <cdprincipe@at@gmail@dot@com>
+# Contributor: PAblo Lezaeta <prflr88@gmail.com>
 
 _pkgname=xfce4-whiskermenu-plugin
 pkgname=xfce4-whiskermenu-plugin-git
-pkgver=2.0.0.6.g9613ee0
+pkgver=2.0.0.42.g8e015
 pkgrel=1
 pkgdesc="Alternate Xfce menu"
 arch=("i686" "x86_64")
@@ -14,7 +15,6 @@ makedepends=("cmake" "exo>=0.11" "" "git")
 groups=("xfce4-goodies" "xfce4-goodies-git")
 provides=("xfce4-whiskermenu-plugin")
 conflicts=("xfce4-whiskermenu-plugin")
-install=${pkgname}.install
 source=("$_pkgname::git+http://github.com/gottcode/xfce4-whiskermenu-plugin")
 md5sums=("SKIP")
 
