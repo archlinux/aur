@@ -6,7 +6,7 @@
 pkgbase=linux-pf-lts
 _major=4
 _minor=4
-_patchlevel=38
+_patchlevel=39
 _pfpatchlevel=36
 #_subversion=1
 _basekernel=${_major}.${_minor}
@@ -66,9 +66,10 @@ sha256sums=('401d7c8fef594999a460d10c72c5a94e9c2e1022f16795ec51746b0d165418b2'
             '03ed4eb4a35d42ae6beaaa5e6fdbada4244ed6c343944bba6462defaa6fed0bf'
             '51ea665cfec42d9f9c7796af2b060b7edbdeb367e42811f8c02667ad729f6b19'
             '9e1e81d80afac6f316e53947e1b081017090081cd30e6c4c473420b77af4b52b'
-            'cb4d3fc91475d90179f88fe9994081b8fe37c2b6c2976778425d8e61a5a6541a'
+            '7b6b1c448a95e0b60d2bff66de1003499f6023d6d4e5e98aee2e66fb483318de'
             'fd1481ed7d6a35a820bbb912d6899fbbc392b505fd1f6643c0060cd9c5f1494a'
-            'ee9869b1f354c3991f33e8bb7754b6b4143f4a44f5833da1fa0da2c1c8ac0f5c')
+            'ee9869b1f354c3991f33e8bb7754b6b4143f4a44f5833da1fa0da2c1c8ac0f5c'
+            '13bc4e0afbfab3092e8657a69bd1e8d2b955d919a38e3842d4a884d3108f4c96')
 validpgpkeys=('ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds <torvalds@linux-foundation.org>
               '647F28654894E3BD457199BE38DBBDC86092693E' # Greg Kroah-Hartman (Linux kernel stable release signing key) <greg@kroah.com>
              )
