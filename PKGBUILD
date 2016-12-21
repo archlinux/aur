@@ -11,7 +11,7 @@ pkgdesc="A high-level scripting language (32 bit)"
 arch=('x86_64')
 license=('PSF')
 url="http://www.python.org/"
-depends=(lib32-{bzip2,db,expat,gdbm,libffi,openssl,sqlite3,zlib} "${_pkgbasename}>=${pkgver}")
+depends=(lib32-{bzip2,db,expat,gdbm,libffi,openssl,sqlite,zlib} "${_pkgbasename}>=${pkgver}")
 makedepends=('lib32-tk' 'gcc-multilib')
 optdepends=('lib32-tk: for IDLE')
 conflicts=('lib32-python<3')
