@@ -4,11 +4,11 @@
 # Contributor: Andrey Vlasovskikh <andrey.vlasovskikh@gmail.com>
 
 pkgname=rider-eap
-_buildver=163.8671
+_buildver=163.10479
 _pkgver=1.0
 _eap="True"
 pkgver="${_pkgver}.${_buildver}"
-pkgrel=2
+pkgrel=1
 pkgdesc="A cross-platform C# IDE by JetBrains."
 arch=('any')
 options=('!strip')
@@ -24,7 +24,7 @@ _srcfile="riderRS-${_buildver}.tar.gz"
 source=("https://download.jetbrains.com/resharper/${_srcfile}"
         "${pkgname}.desktop")
 sha256sums=($(wget -q "${source}.sha256" && cat "${_srcfile}.sha256" | cut -f1 -d" ")
-            'c587386c310274e67aa1b0ae8e83dfd1c1987e2b911b389bb999ad06308a8a78')
+            'f9311f901c27f3dc17dc9e9ede3698ccfda8f9e07a9827d174655e90d352e734')
 
 package() {
     cd "${srcdir}"
@@ -34,7 +34,7 @@ package() {
         "${pkgdir}/usr/share/applications/"
 
     if [[ "True" = "${_eap}" ]]; then
-        cp -R --no-preserve=ownership "${srcdir}/riderRS-${_buildver}/"* "${pkgdir}/opt/${pkgname}"
+        cp -R --no-preserve=ownership "${srcdir}/Rider-${_buildver}/"* "${pkgdir}/opt/${pkgname}"
     # else
     fi
 
