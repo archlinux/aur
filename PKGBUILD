@@ -3,13 +3,13 @@
 
 pkgname=edb-debugger
 pkgver=0.9.21
-pkgrel=1
+pkgrel=2
 pkgdesc="EDB (Evan's Debugger) is a QT4 based binary mode debugger with the goal of having usability on par with OllyDbg."
 arch=('i686' 'x86_64')
 url='http://www.codef00.com/projects#debugger'
 license=('GPL2')
 depends=('qt5-xmlpatterns' 'capstone>=3.0')
-makedepends=('boost>=1.35.0')
+makedepends=('boost>=1.35.0' 'cmake')
 optdepends=('graphviz>=2.38.0')
 install=edb.install
 source=("https://github.com/eteran/edb-debugger/releases/download/$pkgver/edb-debugger-$pkgver.tgz"

@@ -1,13 +1,14 @@
 pkgbase = edb-debugger
 	pkgdesc = EDB (Evan's Debugger) is a QT4 based binary mode debugger with the goal of having usability on par with OllyDbg.
 	pkgver = 0.9.21
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.codef00.com/projects#debugger
 	install = edb.install
 	arch = i686
 	arch = x86_64
 	license = GPL2
 	makedepends = boost>=1.35.0
+	makedepends = cmake
 	depends = qt5-xmlpatterns
 	depends = capstone>=3.0
 	optdepends = graphviz>=2.38.0
