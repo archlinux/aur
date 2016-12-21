@@ -2,7 +2,7 @@
 pkgname=nagelfar
 _pkgver_main=1
 _pkgver_sub=2
-_pkgver_subsub=2
+_pkgver_subsub=4
 pkgver="${_pkgver_main}.${_pkgver_sub}.${_pkgver_subsub}"
 _pkgver="${_pkgver_main}${_pkgver_sub}${_pkgver_subsub}"
 pkgrel=1
@@ -23,78 +23,51 @@ backup=()
 options=()
 install=
 changelog=
-#source=("https://sourceforge.net/projects/nagelfar/files/Rel_${_pkgver}/${pkgname}${_pkgver}.tar.gz")
 source=("http://downloads.sourceforge.net/nagelfar/Rel_${_pkgver}/${pkgname}${_pkgver}.tar.gz")
 noextract=()
-md5sums=("6482ec3ea21a06ee207f950527ebcb92")
+md5sums=("bbc6e0ab459bdafcc322e3e956edadf4")
 validpgpkeys=()
 
 package() {
+    # lib
     lib_path="/usr/lib/${pkgname}"
     install -d -m755 "${pkgdir}/${lib_path}"
 
-    file_path="lib/textsearch/tcl/textsearch.tcl"
-    install -D -m644 "${srcdir}/${pkgname}${_pkgver}/${file_path}" "${pkgdir}${lib_path}/${file_path}"
+    # textsearch package
+    for file_path in "lib/textsearch/tcl/textsearch.tcl" "lib/textsearch/pkgIndex.tcl" ; do
+        install -D -m644 "${srcdir}/${pkgname}${_pkgver}/${file_path}" "${pkgdir}${lib_path}/${file_path}"
+    done
 
-    file_path="lib/textsearch/pkgIndex.tcl"
-    install -D -m644 "${srcdir}/${pkgname}${_pkgver}/${file_path}" "${pkgdir}${lib_path}/${file_path}"
+    # packagedb
+    for file in "${srcdir}/${pkgname}${_pkgver}/packagedb"/* ; do
+        install -D -t "${pkgdir}${lib_path}/packagedb" -m644 "${file}"
+    done
 
-    file_path="packagedb/inifiledb.tcl"
-    install -D -m644 "${srcdir}/${pkgname}${_pkgver}/${file_path}" "${pkgdir}${lib_path}/${file_path}"
-    file_path="packagedb/registrydb.tcl"
-    install -D -m644 "${srcdir}/${pkgname}${_pkgver}/${file_path}" "${pkgdir}${lib_path}/${file_path}"
-    file_path="packagedb/snitdb.tcl"
-    install -D -m644 "${srcdir}/${pkgname}${_pkgver}/${file_path}" "${pkgdir}${lib_path}/${file_path}"
-    file_path="packagedb/sqlite3db.tcl"
-    install -D -m644 "${srcdir}/${pkgname}${_pkgver}/${file_path}" "${pkgdir}${lib_path}/${file_path}"
-    file_path="packagedb/struct_listdb.tcl"
-    install -D -m644 "${srcdir}/${pkgname}${_pkgver}/${file_path}" "${pkgdir}${lib_path}/${file_path}"
-    file_path="packagedb/tkdnddb.tcl"
-    install -D -m644 "${srcdir}/${pkgname}${_pkgver}/${file_path}" "${pkgdir}${lib_path}/${file_path}"
-    file_path="packagedb/vfs_mk4db.tcl"
-    install -D -m644 "${srcdir}/${pkgname}${_pkgver}/${file_path}" "${pkgdir}${lib_path}/${file_path}"
+    # syntax stuff
+    for file in "${srcdir}/${pkgname}${_pkgver}"/{syntax*.tcl,*.syntax} ; do
+        install -D -t "${pkgdir}${lib_path}" -m644 "${file}"
+    done
 
-    file_path="syntaxbuild.tcl"
-    install -D -m644 "${srcdir}/${pkgname}${_pkgver}/${file_path}" "${pkgdir}${lib_path}/${file_path}"
-    file_path="syntaxdb84.tcl"
-    install -D -m644 "${srcdir}/${pkgname}${_pkgver}/${file_path}" "${pkgdir}${lib_path}/${file_path}"
-    file_path="syntaxdb86.tcl"
-    install -D -m644 "${srcdir}/${pkgname}${_pkgver}/${file_path}" "${pkgdir}${lib_path}/${file_path}"
-    file_path="syntaxdb.tcl"
-    install -D -m644 "${srcdir}/${pkgname}${_pkgver}/${file_path}" "${pkgdir}${lib_path}/${file_path}"
-    file_path="nagelfar.syntax"
-    install -D -m644 "${srcdir}/${pkgname}${_pkgver}/${file_path}" "${pkgdir}${lib_path}/${file_path}"
+    # main
+    file="nagelfar.tcl"
+    install -D -m755 "${srcdir}/${pkgname}${_pkgver}/${file}" "${pkgdir}${lib_path}/${file}"
 
-    file_path="nagelfar.tcl"
-    install -D -m755 "${srcdir}/${pkgname}${_pkgver}/${file_path}" "${pkgdir}${lib_path}/${file_path}"
-
-
+    # doc
     doc_path="/usr/share/doc/${pkgname}"
     install -d -m755 "${pkgdir}/${doc_path}"
 
-    file_path="messages.txt"
-    install -D -m644 "${srcdir}/${pkgname}${_pkgver}/doc/${file_path}" "${pkgdir}${doc_path}/${file_path}"
-    file_path="call-by-name.txt"
-    install -D -m644 "${srcdir}/${pkgname}${_pkgver}/doc/${file_path}" "${pkgdir}${doc_path}/${file_path}"
-    file_path="inlinecomments.txt"
-    install -D -m644 "${srcdir}/${pkgname}${_pkgver}/doc/${file_path}" "${pkgdir}${doc_path}/${file_path}"
-    file_path="plugins.txt"
-    install -D -m644 "${srcdir}/${pkgname}${_pkgver}/doc/${file_path}" "${pkgdir}${doc_path}/${file_path}"
-    file_path="syntaxdatabases.txt"
-    install -D -m644 "${srcdir}/${pkgname}${_pkgver}/doc/${file_path}" "${pkgdir}${doc_path}/${file_path}"
-    file_path="codecoverage.txt"
-    install -D -m644 "${srcdir}/${pkgname}${_pkgver}/doc/${file_path}" "${pkgdir}${doc_path}/${file_path}"
-    file_path="syntaxtokens.txt"
-    install -D -m644 "${srcdir}/${pkgname}${_pkgver}/doc/${file_path}" "${pkgdir}${doc_path}/${file_path}"
-    file_path="README.txt"
-    install -D -m644 "${srcdir}/${pkgname}${_pkgver}/doc/${file_path}" "${pkgdir}${doc_path}/${file_path}"
+    for file in "${srcdir}/${pkgname}${_pkgver}/doc"/* ; do
+        install -D -t "${pkgdir}${doc_path}/doc" -m644 "${file}"
+    done
 
+    # license
     lic_path="/usr/share/licenses/${pkgname}"
     install -d -m755 "${pkgdir}/${lic_path}"
 
     file_path="COPYING"
     install -D -m644 "${srcdir}/${pkgname}${_pkgver}/${file_path}" "${pkgdir}${lic_path}/${file_path}"
 
+    # binary
     install -d -m755 "${pkgdir}/usr/bin"
     cd "${pkgdir}/usr/bin"
     ln -s "../lib/${pkgname}/${pkgname}.tcl" "${pkgname}"
