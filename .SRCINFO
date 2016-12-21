@@ -1,0 +1,19 @@
+pkgbase = ravenfield
+	pkgdesc = A singleplayer battlefield style game.
+	pkgver = b5_1
+	pkgrel = 1
+	url = https://steelraven7.itch.io/ravenfield
+	arch = x86_64
+	arch = i686
+	license = unknown
+	makedepends = unzip
+	options = !emptydirs
+	source = ravenfield
+	source = ravenfield.desktop
+	source = ravenfield.png
+	md5sums = a4e5ad37d50a3f84c18cf913d36b7d50
+	md5sums = df8839c9cdfd9418e42abfd058a6e696
+	md5sums = f583c26c6415b4de1c3b94d289c37753
+
+pkgname = ravenfield
+

@@ -1,0 +1,8 @@
+[Desktop Entry]
+Categories=Game;
+Exec=/usr/bin/ravenfield
+Icon=ravenfield
+Terminal=false
+Type=Application
+Name=Ravenfield
+Comment=A singleplayer battlefield style game.
