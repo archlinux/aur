@@ -2,7 +2,7 @@
 
 pkgname=vim-solarized8-git
 pkgver=0.4
-pkgrel=1
+pkgrel=2  
 pkgdesc="Optimized Solarized colorschemes. Best served with true-color terminals!"
 arch=('any')
 url="http://ethanschoonover.com/solarized"
