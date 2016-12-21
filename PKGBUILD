@@ -9,6 +9,7 @@ url="https://fonts.myoffice.ru"
 license=('custom: XO FONTS Open License')
 depends=('fontconfig' 'xorg-font-utils')
 makedepends=('dos2unix' 'glibc')
+groups=('ttf-xo-fonts')
 source=("XO_Caliburn-${pkgver}.zip::http://fonts.myoffice.ru/wp-content/themes/template/fonts_page/files/XO_Caliburn.zip")
 sha256sums=('96d1210bca136f37d152cd7aeffc574a9aa73367aa24ce49d9e1cf3a86944d24')
 install=${pkgname}.install
