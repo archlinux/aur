@@ -1,7 +1,7 @@
 # Maintainer: Stunts <f.pinamartins@gmail.com>
 _pkgname=hangups
 pkgname=${_pkgname}-git
-pkgver=0.4.1.r0.g1ed433d
+pkgver=0.4.1.r22.g57a47d4
 pkgrel=1
 epoch=1
 
@@ -9,7 +9,7 @@ pkgdesc="The first third-party instant messaging client for Google Hangouts"
 arch=(any)
 url="http://github.com/tdryer/hangups"
 license=('MIT')
-depends=('python' 'python-purplex' 'python-requests' 'python-urwid' 'python-appdirs' 'python-aiohttp' 'python-robobrowser' 'python-configargparse' 'python-werkzeug' 'python-reparser' 'python-readlike' 'python-protobuf' 'python-mechanicalsoup')
+depends=('python' 'python-purplex' 'python-requests' 'python-urwid' 'python-appdirs' 'python-aiohttp' 'python-robobrowser' 'python-configargparse' 'python-werkzeug' 'python-reparser' 'python-readlike' 'python-protobuf' 'python-mechanicalsoup' 'python-multidict')
 source=('git+https://github.com/tdryer/hangups.git')
 md5sums=('SKIP')
 
