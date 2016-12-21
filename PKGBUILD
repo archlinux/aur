@@ -13,7 +13,7 @@ _language_patch2_url="${_fus_url}/language-patch2"
 _language_patch2_ver=1.0.0
 _language_unix_shell_ver=0.40.1
 _language_vala_modern_ver=0.3.2
-_terminal_fusion_ver=2.4.2
+_terminal_fusion_ver=2.4.3
 
 pkgname=${_pkgname}-editor-${_version}
 _pkgrel=8
