@@ -1,7 +1,7 @@
 # Maintainer: Andrej Marolt <andrej.marolt@gmail.com>
 pkgname=openshift-origin-git
 pkgver=1.0.0
-pkgrel=4
+pkgrel=5
 pkgdesc="OpenShift Origin is a platform for developing, building, and deploying containerized applications. See https://docs.openshift.org/latest for more on running OpenShift Origin."
 arch=(x86_64)
 url="https://github.com/openshift/origin"
