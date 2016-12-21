@@ -1,0 +1,25 @@
+pkgbase = lib32-alsaequal
+	pkgdesc = A real-time adjustable equalizer plugin for ALSA sound server.
+	pkgver = 0.6
+	pkgrel = 16
+	url = http://www.thedigitalmachine.net/alsaequal.html
+	install = alsaequal.install
+	arch = x86_64
+	license = GPL2
+	depends = lib32-alsa-lib
+	depends = lib32-ladspa
+	optdepends = lib32-caps: to use the Eq CAPS equalizer (10-band)
+	optdepends = lib32-swh-plugins: to use the mbeq equalizer (15-band)
+	source = https://launchpad.net/ubuntu/+archive/primary/+files/alsaequal_0.6.orig.tar.bz2
+	source = false_error.patch
+	source = alsaequal.patch
+	source = fix-lib32-makefile.patch
+	source = lib32-alsaequal_caps_9.x.patch
+	md5sums = d2edc7710c72cbf3ab297c414e35ebda
+	md5sums = 15bbaaa51bf3e01fdc1af1cd3b0b53e3
+	md5sums = 40911a2eedc8fdb85b68bb81ccea65eb
+	md5sums = 9b58c23a264e59b672eccbf3f8c0663b
+	md5sums = 212e7c8bf7cb2f83b476894dde58812b
+
+pkgname = lib32-alsaequal
+

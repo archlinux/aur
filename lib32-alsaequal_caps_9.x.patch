@@ -1,0 +1,22 @@
+--- ctl_equal.c	2014-02-19 09:36:18.225706000 +0700
++++ ctl_equal.c	2014-02-19 09:38:46.492376869 +0700
+@@ -167,7 +167,7 @@
+ 	snd_ctl_equal_t *equal;
+ 	const char *controls = ".alsaequal.bin32";
+ 	const char *library = "/usr/lib32/ladspa/caps.so";
+-	const char *module = "Eq";
++	const char *module = "Eq10";
+ 	long channels = 2;
+ 	const char *sufix = " Playback Volume";
+ 	int err, i, index;
+--- pcm_equal.c	2014-02-19 09:36:18.225706000 +0700
++++ pcm_equal.c	2014-02-19 09:39:05.092377281 +0700
+@@ -151,7 +151,7 @@
+ 	snd_config_t *sconf = NULL;
+ 	const char *controls = ".alsaequal.bin32";
+ 	const char *library = "/usr/lib32/ladspa/caps.so";
+-	const char *module = "Eq";
++	const char *module = "Eq10";
+ 	long channels = 2;
+ 	int err;
+ 	

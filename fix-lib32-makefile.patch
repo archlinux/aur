@@ -1,0 +1,59 @@
+diff --git a/Makefile b/Makefile
+index 57fe2fa..b6a0242 100644
+--- a/Makefile
++++ b/Makefile
+@@ -4,10 +4,10 @@ Q	?= @
+ #Q	?=
+ 
+ # Build Tools
+-CC 	:= gcc
++CC 	:= gcc -m32
+ CFLAGS := -I. -O2 -Wall -funroll-loops -ffast-math -fPIC -DPIC
+-LD := gcc
+-LDFLAGS := -O2 -Wall -shared -lasound
++LD := gcc -m32
++LDFLAGS := -O2 -Wall -shared -lasound -L/usr/lib32
+ 
+ SND_PCM_OBJECTS = pcm_equal.o ladspa_utils.o
+ SND_PCM_LIBS =
+@@ -45,8 +45,8 @@ clean:
+ 
+ install: all
+ 	@echo Installing...
+-	$(Q)install -m 755 $(SND_PCM_BIN) ${DESTDIR}/usr/lib/alsa-lib/
+-	$(Q)install -m 755 $(SND_CTL_BIN) ${DESTDIR}/usr/lib/alsa-lib/
++	$(Q)install -m 755 $(SND_PCM_BIN) ${DESTDIR}/usr/lib32/alsa-lib/
++	$(Q)install -m 755 $(SND_CTL_BIN) ${DESTDIR}/usr/lib32/alsa-lib/
+ 
+ uninstall:
+ 	@echo Un-installing...
+diff --git a/ctl_equal.c b/ctl_equal.c
+index 40747d4..e0f1e15 100644
+--- a/ctl_equal.c
++++ b/ctl_equal.c
+@@ -165,8 +165,8 @@ SND_CTL_PLUGIN_DEFINE_FUNC(equal)
+ 		failure */
+ 	snd_config_iterator_t it, next;
+ 	snd_ctl_equal_t *equal;
+-	const char *controls = ".alsaequal.bin";
+-	const char *library = "/usr/lib/ladspa/caps.so";
++	const char *controls = ".alsaequal.bin32";
++	const char *library = "/usr/lib32/ladspa/caps.so";
+ 	const char *module = "Eq";
+ 	long channels = 2;
+ 	const char *sufix = " Playback Volume";
+diff --git a/pcm_equal.c b/pcm_equal.c
+index 2bc87fb..e4ca02b 100644
+--- a/pcm_equal.c
++++ b/pcm_equal.c
+@@ -149,8 +149,8 @@ SND_PCM_PLUGIN_DEFINE_FUNC(equal)
+ 	snd_config_iterator_t i, next;
+ 	snd_pcm_equal_t *equal;
+ 	snd_config_t *sconf = NULL;
+-	const char *controls = ".alsaequal.bin";
+-	const char *library = "/usr/lib/ladspa/caps.so";
++	const char *controls = ".alsaequal.bin32";
++	const char *library = "/usr/lib32/ladspa/caps.so";
+ 	const char *module = "Eq";
+ 	long channels = 2;
+ 	int err;
