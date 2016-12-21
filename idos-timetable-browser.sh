@@ -36,7 +36,7 @@ fi
 debug() {
   case "${DEBUG}" in
     "1"|[yY][eE][sS]|[tT][rR][uU][eE])
-      echo "$@" > /dev/stderr
+      echo "DEBUG info: $@" > /dev/stderr
     ;;
   esac
 }
@@ -150,8 +150,8 @@ fi
 
 cd "${_installdir}"
 
-debug 'DEBUG: $LC_CTYPE is set to: '"'${LC_CTYPE}' (if it does not begin with 'cs_CZ', try to enable Czech locale on your system to display diacritical characters correctly)."
-debug "DEBUG: We are running from the directory: '$(pwd)'."
-debug "DEBUG: Executing the following command: 'wine ${_executable} ${argsnew[@]}'."
+debug '$LC_CTYPE is set to: '"'${LC_CTYPE}' (if it does not begin with 'cs_CZ', try to enable Czech locale on your system to display diacritical characters correctly)."
+debug "We are running from the directory: '$(pwd)'."
+debug "Executing the following command: 'wine ${_executable} ${argsnew[@]}'."
 
 wine "${_executable}" "${argsnew[@]}"

@@ -1,12 +1,16 @@
 post_install() {
   if locale -a | grep -Eq '^cs_CZ'; then
-    echo "====> A Czech locale (cs_CZ*) seems to be present. Fine. please keep it in order"
-    echo "<==== to keep diacritical characters displaying correctly."
+    echo "====>"
+    echo "  A Czech locale (cs_CZ*) seems to be present. Fine. please keep it in order"
+    echo "  to keep diacritical characters displaying correctly."
+    echo "<===="
   else
-    echo "====> It is recommended to generate the locale cs_CZ.ISO.UTF-8 or cs_CZ.ISO-8859-2"
-    echo "      in order to display diacritical characters correctly."
-    echo "      In order to do so, edit /etc/locale.gen, if present /etc/locale.nopurge, and"
-    echo "<==== then run locale-gen."
+    echo "====>"
+    echo "  It is recommended to generate the locale cs_CZ.ISO.UTF-8 or cs_CZ.ISO-8859-2"
+    echo "  in order to display diacritical characters correctly."
+    echo "  In order to do so, edit /etc/locale.gen, if present /etc/locale.nopurge, and"
+    echo "  then run locale-gen."
+    echo "<===="
   fi
 }
 

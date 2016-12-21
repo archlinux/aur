@@ -1,12 +1,12 @@
 # Maintainer: dreieck
 
-# PKGBUILD last time manually edited: At least on 2016-12-11.
+# PKGBUILD last time manually edited: At least on 2016-12-21.
 
 _pkgname=idos-timetable-browser
 pkgname="${_pkgname}-latest"
 epoch=0
 pkgver=1.27_lib2.8.0.1
-pkgrel=7
+pkgrel=8
 pkgdesc="Offline railway and other public transport timetable search engine by CHAPS. (Czech language by default.)"
 arch=('i686' 'x86_64')
 url="http://chaps.cz/eng/download/idos/zip#kotvaprg"
@@ -56,13 +56,13 @@ source=(
 
 sha256sums=(
   "SKIP"
-  "969d4418181c9fed180e240c4a73fbfa57e126f77c1c4c6e9217d515a1e6913f"
+  "013fa1d41b6c13fd079c16578390d5b75ad3f1228fd38a7ac17756bd74ace94e"
   "e904d167ccdcfb2743f4cfd596aaa9dce8b751fb5c8315b972b42b7cbb3189e6"
   "c6bb216055d3670d3100b7a74e04ce0644030f365f4349a09e630ef60fbcb9a4"
   "45bf7c462d7154360d0007a6d7c00c6aa6b49339b6f178cf24e5b1a40ca702d7"
   "0ea6e9a36d54a7b9de5b87e9182b40fad0a9f673ae2195c29f32bf4538fa2f76"
   "3a99d362a56fb52d5259549bf932df184e227fae79ed46be60f5b80e5d95c492"
-  "670e6a40bade4562fb93c7cb29191c1869c286acbb7f616c8b78f09842a82cbd"
+  "297e0326240e7d61b9c9f5a8f8313ce18fde2a14af9ad1f8c1ec03b67729ab57"
 )
 
 
