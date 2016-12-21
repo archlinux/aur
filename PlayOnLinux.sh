@@ -1,3 +1,5 @@
+#!/bin/bash
+
 POL_HOME=/opt/playonlinux5
 CLASSPATH=${CLASSPATH}:$POL_HOME/lib/*
 
@@ -8,4 +10,4 @@ export PATH=/usr/lib/jvm/java-8-openjdk/jre/bin/:$PATH
 
 java -classpath "$CLASSPATH" com.playonlinux.app.PlayOnLinuxApp "$@"
 
-# Unset 
+# Unset vars?
