@@ -8,7 +8,7 @@ pkgdesc="Barco ClickShare wireless presentation system software"
 arch=('x86_64')
 url="http://www.barco.com/en/mybarco/mysupport/productsupport/software/software-detail?nr=R33050056&rev=001007001079"
 license=('proprietary')
-depends=('ffmpeg-compat' 'libresample')
+depends=('ffmpeg-compat' 'libresample' 'qt4')
 makedepends=('pacman>=4.2.0')
 provides=("clickshare=$pkgver")
 source=("https://raw.githubusercontent.com/digi-merc/clickshare-arch/master/clickshare-linux.tar.gz")
