@@ -1,4 +1,4 @@
-# Maintainer: Florian Bruhin (The-Compiler) <archlinux.org@the-compiler.org>
+# Contributor: Florian Bruhin (The-Compiler) <archlinux.org@the-compiler.org>
 # Contributor: Daniel Micay <danielmicay@gmail.com>
 # Contributor: Sébastien Luttringer <seblu@aur.archlinux.org>
 # Contributor: Angel Velasquez <angvp@archlinux.org>
