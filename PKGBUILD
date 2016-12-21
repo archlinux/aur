@@ -2,16 +2,16 @@
 
 _pkgbasename=speex
 pkgname=lib32-$_pkgbasename
-pkgver=1.2rc2
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="A free codec for free speech (32-bit)"
 arch=(x86_64)
-url="http://www.speex.org/"
-license=('BSD')
-depends=('lib32-libogg' 'lib32-speexdsp' $_pkgbasename)
+url="https://speex.org/"
+license=(BSD)
+depends=(lib32-libogg lib32-speexdsp $_pkgbasename)
 makedepends=(gcc-multilib)
 source=(http://downloads.us.xiph.org/releases/$_pkgbasename/$_pkgbasename-$pkgver.tar.gz)
-md5sums=('6ae7db3bab01e1d4b86bacfa8ca33e81')
+sha256sums=('eaae8af0ac742dc7d542c9439ac72f1f385ce838392dc849cae4536af9210094')
 
 build() {
   cd $_pkgbasename-$pkgver
@@ -19,7 +19,7 @@ build() {
   export CC="gcc -m32"
   export PKG_CONFIG_PATH="/usr/lib32/pkgconfig"
 
-  ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var \
+  ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var --disable-static \
     --libdir=/usr/lib32 \
     --enable-binaries # Must be given or configure won't use pkg-config correctly
   make
