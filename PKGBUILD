@@ -18,7 +18,7 @@ optdepends=('kdebase-kdialog: needed for file dialogs in KDE'
             'gnome-keyring: for storing passwords in GNOME keyring'
             'kdeutils-kwalletmanager: for storing passwords in KWallet'
             'pepper-flash: for Pepper Flash plugin [AUR]')
-makedepends=('python3' 'python2' 'gperf' 'yasm' 'mesa' 'ninja' 'git')
+makedepends=('python3' 'python2' 'gperf' 'yasm' 'mesa' 'ninja' 'git' 'quilt' 'clang')
 provides=('chromium')
 install=${pkgname}.install
 source=("git://github.com/Eloston/ungoogled-chromium"
