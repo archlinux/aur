@@ -1,7 +1,7 @@
 pkgbase = iproute2-cake
 	pkgdesc = IP Routing Utilities with tc-support for the CAKE scheduler
 	pkgver = 4.9.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.linuxfoundation.org/collaborate/workgroups/networking/iproute2
 	arch = i686
 	arch = x86_64
@@ -34,8 +34,8 @@ pkgbase = iproute2-cake
 	sha1sums = fc28f956a7a9695473312d0ed35dc24a7ef9d7f6
 	sha1sums = SKIP
 	sha1sums = 1ed328854983b3f9df0a143aa7c77920916a13c1
-	sha1sums = 0949b72171ceb0058d58ff76e6fe6e911c12708e
-	sha1sums = 6d3d22d0979a068d251022d0c7189720223ba1cb
+	sha1sums = f0693506ece8bcaa5377adfe490c88e066436ff0
+	sha1sums = 809c815b4d86c68ed90f8d5c875a7a49618e3051
 
 pkgname = iproute2-cake
 

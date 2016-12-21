@@ -2,7 +2,7 @@
 
 pkgname=iproute2-cake
 pkgver=4.9.0
-pkgrel=1
+pkgrel=2
 pkgdesc="IP Routing Utilities with tc-support for the CAKE scheduler"
 arch=('i686' 'x86_64')
 license=('GPL2')
@@ -65,5 +65,5 @@ package() {
 sha1sums=('fc28f956a7a9695473312d0ed35dc24a7ef9d7f6'
           'SKIP'
           '1ed328854983b3f9df0a143aa7c77920916a13c1'
-          '0949b72171ceb0058d58ff76e6fe6e911c12708e'
-          '6d3d22d0979a068d251022d0c7189720223ba1cb')
+          'f0693506ece8bcaa5377adfe490c88e066436ff0'
+          '809c815b4d86c68ed90f8d5c875a7a49618e3051')
