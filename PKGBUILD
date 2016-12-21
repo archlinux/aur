@@ -9,7 +9,7 @@ pkgdesc="Python IMAP4rev1 mail protocol client class using threads for parallel 
 arch=('any')
 url="http://imaplib2.sourceforge.net/"
 license=('Python')
-depends=('python')
+depends=('python-setuptools')
 source=("https://github.com/bcoe/imaplib2/archive/$_pkgcommit.zip")
 md5sums=('5581ae977b3f7b424f03f43daf5c5019')
 
