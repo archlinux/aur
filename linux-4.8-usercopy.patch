@@ -1,0 +1,44 @@
+--- kernel/OS/Linux/os_linux.c	2015-01-28 08:07:23.000000000 +0000
++++ kernel/OS/Linux/os_linux.c	2016-12-21 22:38:46.369612126 +0000
+@@ -640,7 +640,8 @@
+   int dev = d;
+   oss_cdev_t *cdev;
+   int err;
+-  int localbuf[64];		/* 256 bytes is the largest frequently used ioctl size */
++  /* Remove localbuf (workaround for CONFIG_HARDENED_USERCOPY from kernel 4.8) */
++  /* int localbuf[64]; */		/* 256 bytes is the largest frequently used ioctl size */
+ 
+   int len = 0;
+   int alloced = 0;
+@@ -666,14 +667,18 @@
+ 	  return OSS_EFAULT;
+ 	}
+ 
++      /* Always use dynamic kernel memory allocation (instead of static localbuf)
++        (workaround for CONFIG_HARDENED_USERCOPY from kernel 4.8) */
++      ptr = KERNEL_MALLOC (len);
++      alloced = 1;
+       /* Use statically allocated buffer for short arguments */
+-      if (len > sizeof (localbuf))
++      /*if (len > sizeof (localbuf))
+ 	{
+ 	  ptr = KERNEL_MALLOC (len);
+ 	  alloced = 1;
+ 	}
+       else
+-	ptr = localbuf;
++	ptr = localbuf;*/
+ 
+       if (ptr == NULL || arg == 0)
+ 	{
+@@ -710,8 +715,8 @@
+ 
+   /* Free the local buffer unless it was statically allocated */
+   if (ptr != NULL && alloced)
+-    if (len > sizeof (localbuf))
+-      KERNEL_FREE (ptr);
++//    if (len > sizeof (localbuf))
++    KERNEL_FREE (ptr);
+ 
+   return ((err < 0) ? err : 0);
+ 
