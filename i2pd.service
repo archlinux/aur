@@ -1,24 +1,16 @@
 [Unit]
-Description=I2P Router in C++
+Description=C++ daemon for accessing the I2P network
 After=network.target
 
 [Service]
-User=i2p
-Group=i2p
 Type=forking
-ExecStart=/usr/bin/i2pd --conf=/var/lib/i2pd/i2pd.conf --pidfile=/run/i2pd/i2pd.pid --service --daemon
-ExecReload=/usr/bin/kill -HUP $MAINPID
+Restart=on-abnormal
 PIDFile=/run/i2pd/i2pd.pid
-### Uncomment, if auto restart needed
-#Restart=on-failure
-
-### Use SIGINT for gracefull stop daemon.
-# i2pd stops accepting new tunnels and waits ~10 min while old ones do not die.
-KillSignal=SIGINT
-TimeoutStopSec=10m
-
-LimitNOFILE=8192
-PrivateDevices=yes
+User=i2pd
+Group=i2pd
+LimitNOFILE=4096
+PermissionsStartOnly=yes
+ExecStart=/usr/bin/i2pd --daemon --service --pidfile=/run/i2pd/i2pd.pid --log=file --logfile=/var/log/i2pd/i2pd.log --conf=/etc/i2pd/i2pd.conf --tunconf=/etc/i2pd/tunnels.conf
 
 [Install]
 WantedBy=multi-user.target
