@@ -1,12 +1,16 @@
 pkgbase = python-gazelleapi
 	pkgdesc = An API for interacting with Gazelle based sites
 	pkgver = 0.1.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/itismadness/gazelleapi
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
+	makedepends = python-future
+	makedepends = python-requests
 	makedepends = python2-setuptools
+	makedepends = python2-future
+	makedepends = python2-requests
 	options = !emptydirs
 	source = https://github.com/itismadness/gazelleapi/archive/0.1.4.tar.gz
 	sha256sums = 29bb94b16dd1d8924c4650373243fac8612e3ea36eef0017b6bf838536cd5e95
