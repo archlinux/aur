@@ -13,7 +13,7 @@ conflicts=('yusuke')
 depends=('pacman' 'libnotify' 'python-gobject')
 makedepends=('python-setuptools')
 source=("https://github.com/graypawn/yusuke/archive/v$pkgver.zip")
-md5sums=('38caecff3825c35962971aeae1335e6c')
+md5sums=('7743ccb7378ea7e1eeac28ab86472485')
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
