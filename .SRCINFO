@@ -1,7 +1,7 @@
 pkgbase = python-gazelleapi
 	pkgdesc = An API for interacting with Gazelle based sites
 	pkgver = 0.1.4
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/itismadness/gazelleapi
 	arch = any
 	license = MIT
