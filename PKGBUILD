@@ -1,7 +1,7 @@
 # Maintainer: Adria Arrufat (archdria) <adria.arrufat+AUR@protonmail.ch>
 
 pkgname=tensorflow
-pkgver=0.12.0.rc1
+pkgver=0.12.0
 pkgrel=1
 pkgdesc="Library for computation using data flow graphs for scalable machine learning"
 url="https://tensorflow.org/"
@@ -9,14 +9,14 @@ license=('Apache2')
 arch=('i686' 'x86_64')
 provides=('tensorflow' 'libtensorflow')
 conflicts=('tensorflow' 'libtensorflow')
-makedepends=('git' 'bazel' 'gcc5' 'python-numpy')
+makedepends=('git' 'bazel' 'python-numpy')
 optdepends=('cuda: GPU support'
             'cudnn: GPU support')
-_commit=68322a636fdcd8cbc6548d103a0cf82667b7c8b1
+_commit=c62a66bcd4d6f009e0b416055e2ecb8ef50fd0aa
 source=("git+https://github.com/tensorflow/tensorflow#commit=$_commit"
         "${pkgname}.pc")
 md5sums=('SKIP'
-         '4e41b457b563e4e585abadbcd3c72cf0')
+         '9a47475140d2f2e46454070ea9465792')
 pkgver() {
   cd ${srcdir}/tensorflow
   git describe --tags | sed 's/-/./g;s/^v//'
@@ -25,13 +25,14 @@ pkgver() {
 prepare() {
   cd ${srcdir}/tensorflow
   # setup environment variables
-  export GCC_HOST_COMPILER_PATH=/usr/bin/gcc-5
   export PYTHON_BIN_PATH=/usr/bin/python
   export PYTHON_LIB_PATH=/usr/lib/python3.5/site-packages
   export TF_NEED_OPENCL=0
   if (pacman -Q cuda &>/dev/null && pacman -Q cudnn &>/dev/null); then
     msg2 "CUDA support enabled"
     _build_opts="--config=cuda"
+    makedepends+=gcc5
+    export GCC_HOST_COMPILER_PATH=/usr/bin/gcc-5
     export TF_NEED_CUDA=1
     export TF_UNOFFICIAL_SETTING=1
     export CUDA_TOOLKIT_PATH=/opt/cuda
