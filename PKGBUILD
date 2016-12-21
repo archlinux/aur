@@ -17,7 +17,7 @@ optdepends=('avant-window-navigator: AWN DockBarX Plugin'
             'compiz-fusion-plugins-main: opacify plugin'
             'dockmanager: dockmanager plugins'
             'cardapio-bzr: required to run menu applet for dockx (standalone dock)')
-makedepends=('bzr')
+makedepends=('git')
 conflicts=('dockbarx' 'dockbarx-awn-applet-bzr')
 replaces=('dockbarx-awn-applet-bzr' 'dockbarx-bzr')
 provides=('dockbarx=0.92')
