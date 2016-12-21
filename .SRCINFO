@@ -1,0 +1,17 @@
+pkgbase = ttf-xo-courser
+	pkgdesc = XO Courser font created considering trends of modern typography from «Новые облачные технологии»
+	pkgver = 1.00
+	pkgrel = 1
+	url = https://fonts.myoffice.ru
+	install = ttf-xo-courser.install
+	arch = any
+	license = custom: XO FONTS Open License
+	makedepends = dos2unix
+	makedepends = glibc
+	depends = fontconfig
+	depends = xorg-font-utils
+	source = XO_Courser-1.00.zip::http://fonts.myoffice.ru/wp-content/themes/template/fonts_page/files/XO_Courser.zip
+	sha256sums = e089d34cb498005a3499137a482ecc5f2dcac59f405c1d5145f6228306b0eb35
+
+pkgname = ttf-xo-courser
+
