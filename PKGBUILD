@@ -7,6 +7,7 @@ arch=('any')
 url="https://github.com/jelly/pkg-audit"
 license=('GPL')
 depends=('pyalpm' 'python-requests')
+makedepends=('git')
 source=("pkg-audit::git+https://github.com/jelly/pkg-audit.git#tag=$pkgver")
 optdepends=('sudo: for --sync')
 md5sums=('SKIP')
