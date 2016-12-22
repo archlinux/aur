@@ -1,7 +1,7 @@
 # Maintainer: František Fladung <ametisf@gmail.com>
 
 _target_arch=arm
-_target=${_target_arch}-android-gnueabihf
+_target=${_target_arch}-android-eabi
 pkgname=${_target}-linux-api-headers
 pkgver=3.10.104
 _basever=3.10

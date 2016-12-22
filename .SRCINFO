@@ -1,5 +1,5 @@
-pkgbase = arm-android-gnueabihf-linux-api-headers
-	pkgdesc = Kernel headers sanitized for use in userspace (arm-android-gnueabihf)
+pkgbase = arm-android-eabi-linux-api-headers
+	pkgdesc = Kernel headers sanitized for use in userspace (arm-android-eabi)
 	pkgver = 3.10.104
 	pkgrel = 1
 	url = http://www.gnu.org/software/libc
@@ -16,5 +16,5 @@ pkgbase = arm-android-gnueabihf-linux-api-headers
 	md5sums = aa652fb1c0da330e4e200877a9bc9d22
 	md5sums = SKIP
 
-pkgname = arm-android-gnueabihf-linux-api-headers
+pkgname = arm-android-eabi-linux-api-headers
 
