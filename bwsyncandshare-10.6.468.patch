@@ -1,6 +1,6 @@
 diff -aur bwSyncAndShare.pristine/bwSyncAndShare-Client.sh bwSyncAndShare/bwSyncAndShare-Client.sh
---- bwSyncAndShare.pristine/bwSyncAndShare-Client.sh	2016-08-19 13:34:09.000000000 +0200
-+++ bwSyncAndShare/bwSyncAndShare-Client.sh	2016-11-07 09:54:25.193392689 +0100
+--- bwSyncAndShare.pristine/bwSyncAndShare-Client.sh	2016-12-08 12:04:20.000000000 +0100
++++ bwSyncAndShare/bwSyncAndShare-Client.sh	2016-12-22 17:55:32.915480613 +0100
 @@ -8,7 +8,7 @@
  # CLIENT_INSTALL needs to point to the directory
  # where the .jar file is located.
