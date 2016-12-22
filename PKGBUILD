@@ -8,7 +8,10 @@ pkgdesc='Python-Tool to communicate with the AVM FritzBox. Uses the TR-064 proto
 license=('MIT')
 arch=('any')
 url='https://bitbucket.org/kbr/fritzconnection'
-depends=('python-lxml')
+depends=(
+  'python-lxml'
+  'python-requests'
+  )
 makedepends=('python-setuptools')
 source=("hg+https://bitbucket.org/kbr/fritzconnection")
 sha512sums=('SKIP')
