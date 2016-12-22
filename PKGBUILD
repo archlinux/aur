@@ -1,85 +1,84 @@
-# Maintainer: Uncle Hunto <unclehunto äτ ÝãΗ00 Ð0τ ÇÖΜ>
+# Maintainer: Tom Zander
 
 pkgname=bitcoin-classic
-pkgver=v1.1.0
-_ver=${pkgver#v}
-_gitver=${_ver%.*}
-pkgrel=1
-pkgdesc='Official Bitcoin Classic binaries: bitcoind, bitcoin-cli, bitcoin-tx, and bitcoin-qt'
+pkgver=1.1.1
+pkgrel=2
+pkgdesc='Bitcoin Classic with bitcoind, bitcoin-cli, bitcoin-tx, and bitcoin-qt'
 arch=('i686' 'x86_64')
 url="https://bitcoinclassic.com/"
 license=('MIT')
-depends=('boost-libs' 'openssl' 'miniupnpc' 'protobuf' 'qrencode' 'qt5-base')
+depends=('boost-libs' 'libevent' 'qt5-base' 'protobuf' 'openssl' 'miniupnpc' 'zeromq' 'qrencode')
+makedepends=('boost' 'qt5-tools')
 provides=('bitcoin-daemon' 'bitcoin-cli' 'bitcoin-qt' 'bitcoin-tx')
 conflicts=('bitcoin-daemon' 'bitcoin-cli' 'bitcoin-qt' 'bitcoin-tx')
-install=bitcoin-qt.install
-source_i686=("https://github.com/bitcoinclassic/bitcoinclassic/releases/download/$pkgver/bitcoin-$_ver-linux32.tar.gz"
-             "https://raw.githubusercontent.com/bitcoinclassic/bitcoinclassic/$_gitver/contrib/debian/bitcoin-qt.desktop"
-             "https://raw.githubusercontent.com/bitcoinclassic/bitcoinclassic/$_gitver/share/pixmaps/bitcoin128.png"
-             "https://raw.githubusercontent.com/bitcoinclassic/bitcoinclassic/$_gitver/contrib/debian/manpages/bitcoind.1"
-             "https://raw.githubusercontent.com/bitcoinclassic/bitcoinclassic/$_gitver/contrib/debian/manpages/bitcoin-cli.1"
-             "https://raw.githubusercontent.com/bitcoinclassic/bitcoinclassic/$_gitver/contrib/debian/manpages/bitcoin-qt.1"
-             "https://raw.githubusercontent.com/bitcoinclassic/bitcoinclassic/$_gitver/contrib/debian/manpages/bitcoin.conf.5"
-             "https://raw.githubusercontent.com/bitcoinclassic/bitcoinclassic/$_gitver/COPYING")
-source_x86_64=("https://github.com/bitcoinclassic/bitcoinclassic/releases/download/$pkgver/bitcoin-$_ver-linux64.tar.gz"
-               "https://raw.githubusercontent.com/bitcoinclassic/bitcoinclassic/$_gitver/contrib/debian/bitcoin-qt.desktop"
-             "https://raw.githubusercontent.com/bitcoinclassic/bitcoinclassic/$_gitver/share/pixmaps/bitcoin128.png"
-             "https://raw.githubusercontent.com/bitcoinclassic/bitcoinclassic/$_gitver/contrib/debian/manpages/bitcoind.1"
-               "https://raw.githubusercontent.com/bitcoinclassic/bitcoinclassic/$_gitver/contrib/debian/manpages/bitcoin-cli.1"
-               "https://raw.githubusercontent.com/bitcoinclassic/bitcoinclassic/$_gitver/contrib/debian/manpages/bitcoin-qt.1"
-             "https://raw.githubusercontent.com/bitcoinclassic/bitcoinclassic/$_gitver/contrib/debian/manpages/bitcoin.conf.5"
-             "https://raw.githubusercontent.com/bitcoinclassic/bitcoinclassic/$_gitver/COPYING")
-md5sums_i686=('b23fe9936df44bd3e976702cc6ecd4f3'
-              '8ecd32cd3a706560e59a062886935261'
-              '0aae5f0110179e8e1d588530bcce5d2a'
-              'a7f496d6996a60a20c2ef025da65773a'
-              '2bfcee41b958f1c4ff9968669236fe3a'
-              'ca3af56933093fd074423eea32c1d650'
-              '844dd4c73f9837a6d4fc7db44d67104e'
-              'b44a28f73a201403cabb5e0a49e6d1e6')
-md5sums_x86_64=('9a3b253cf5292ef50ff0b54d1daffa66'
-                '8ecd32cd3a706560e59a062886935261'
-                '0aae5f0110179e8e1d588530bcce5d2a'
-                'a7f496d6996a60a20c2ef025da65773a'
-                '2bfcee41b958f1c4ff9968669236fe3a'
-                'ca3af56933093fd074423eea32c1d650'
-                '844dd4c73f9837a6d4fc7db44d67104e'
-                'b44a28f73a201403cabb5e0a49e6d1e6')
-sha256sums_i686=('6648db9f7a2b851a7d2422cbfa5631c7ba23af7da825de00c9c78be370b50bf1'
-                 '4d0582d0b2476dc8152784a369b8d3a1004b8899c01f0ba12404cae92d67b109'
-                 'ad880c8459ecfdb96abe6a4689af06bdd27906e0edcd39d0915482f2da91e722'
-                 '7d090ddd485c36d4fae5e6627388c5550f824fd498d5fd958ec999857fff7b28'
-                 '52e104ba55d5f564c849a72c67b27c9ec3b1dea6e6dbf931f4ae30d182e9a135'
-                 '60a3396e98c24f0599c997edd2c34c414414fffbde84bbe0e4573435dc5bb417'
-                 '7f4021e34d52c321f679b548fcf6d55b4da30077b7aed392976f048ab88dcdd1'
-                 '44c9d9ad9237f8dafd4633a51535fa75c0b28690043f5279f4976504c917966d')
-sha256sums_x86_64=('67a7fba1beccc490be9d92913de632eed96259fba92b6a318321b0b2f247316b'
-                   '4d0582d0b2476dc8152784a369b8d3a1004b8899c01f0ba12404cae92d67b109'
-                   'ad880c8459ecfdb96abe6a4689af06bdd27906e0edcd39d0915482f2da91e722'
-                   '7d090ddd485c36d4fae5e6627388c5550f824fd498d5fd958ec999857fff7b28'
-                   '52e104ba55d5f564c849a72c67b27c9ec3b1dea6e6dbf931f4ae30d182e9a135'
-                   '60a3396e98c24f0599c997edd2c34c414414fffbde84bbe0e4573435dc5bb417'
-                   '7f4021e34d52c321f679b548fcf6d55b4da30077b7aed392976f048ab88dcdd1'
-                   '44c9d9ad9237f8dafd4633a51535fa75c0b28690043f5279f4976504c917966d')
+install=bitcoin.install
+source=("https://github.com/bitcoinclassic/bitcoinclassic/archive/v1.1.1.tar.gz"
+    "bitcoin.logrotate"
+    "bitcoin.conf")
+sha256sums=('a0b23e8359a737bfe77acec002187e527a955d68eaea6b965a39c7a93ce5d835'
+    "7bf4bdad419c1ee30b88c7e4190707c5ff250da8b23d68d5adf14043f8e2ac73"
+    "c8787560c6423605796c8d3e080cb522ed849cea12b5c23293c22e405a015a53")
+
+build() {
+  cd "$srcdir/bitcoinclassic-$pkgver"
+
+  msg2 'Building...'
+  ./autogen.sh
+  echo "#!/bin/sh" > share/genbuild.sh
+  chmod 700 share/genbuild.sh
+  echo "#define BUILD_SUFFIX $pkgrel" > src/obj/build.h
+  ./configure --prefix=/usr --with-incompatible-bdb --with-gui=qt5 --enable-hardening \
+        --enable-reduce-exports --disable-gui-tests --disable-maintainer-mode \
+        --sbindir=/usr/bin \
+        --libexecdir=/usr/lib/bitcoin \
+        --sysconfdir=/etc \
+        --sharedstatedir=/usr/share/bitcoin \
+        --localstatedir=/var/lib/bitcoin
+  make -j$(nproc)
+}
 
 package() {
-  msg2 "Installing binaries..."
-  for i in -cli d -qt -tx; do install -Dm 755 $srcdir/bitcoin-$_ver/bin/bitcoin$i \
-  $pkgdir/usr/bin/bitcoin$i; done
+  cd "$srcdir/bitcoinclassic-$pkgver"
 
-  msg2 'Installing license...'
-  install -Dm 644 "COPYING" "$pkgdir/usr/share/licenses/$pkgname/COPYING"
-
-  msg2 "Installing man pages..."
-  install -Dm 644 "$srcdir/bitcoind.1" -t "$pkgdir/usr/share/man/man1"
-  install -Dm 644 "$srcdir/bitcoin-cli.1" -t "$pkgdir/usr/share/man/man1"
-  install -Dm 644 "$srcdir/bitcoin-qt.1" -t "$pkgdir/usr/share/man/man1"
-  install -Dm 644 "$srcdir/bitcoin.conf.5" -t "$pkgdir/usr/share/man/man5"
-
-  msg2 'Installing icon...'
-  install -Dm 644 "$srcdir/bitcoin128.png" "$pkgdir/usr/share/pixmaps/bitcoin128.png"
-
-  msg2 'Installing desktop file...'
-  mv "$srcdir/bitcoin-qt.desktop" "$srcdir/bitcoin.desktop"
+  msg2 'Installing bitcoin-qt...'
+  install -Dm755 "$srcdir/bitcoinclassic-$pkgver/src/qt/bitcoin-qt" "$pkgdir/usr/bin/bitcoin-qt"
+  install -Dm644 "$srcdir/bitcoinclassic-$pkgver/share/pixmaps/bitcoin128.png"\
+        "$pkgdir/usr/share/pixmaps/bitcoin128.png"
+  install -Dm644 COPYING "$pkgdir/usr/share/licenses/$pkgname/COPYING"
+  cp "$srcdir/bitcoinclassic-$pkgver/contrib/debian/bitcoin-qt.desktop" "$srcdir/bitcoinclassic-$pkgver/bitcoin.desktop"
   desktop-file-install -m 644 --dir="$pkgdir/usr/share/applications/" "bitcoin.desktop"
+
+  msg2 'Installing bitcoin-daemon...'
+  install -Dm755 "$srcdir/bitcoinclassic-$pkgver/src/bitcoind" "$pkgdir/usr/bin/bitcoind"
+  install -Dm644 "$srcdir/bitcoinclassic-$pkgver/contrib/debian/examples/bitcoin.conf"\
+        "$pkgdir/usr/share/doc/bitcoin/examples/bitcoin.conf"
+  install -Dm644 "$srcdir/bitcoinclassic-$pkgver/contrib/debian/manpages/bitcoind.1"\
+        "$pkgdir/usr/share/man/man1/bitcoind.1"
+  install -Dm644 "$srcdir/bitcoinclassic-$pkgver/contrib/debian/manpages/bitcoin.conf.5"\
+        "$pkgdir/usr/share/man/man5/bitcoin.conf.5"
+
+  msg2 'Installing bitcoin.conf...'
+  install -Dm 644 "$srcdir/bitcoin.conf" "$pkgdir/etc/bitcoin/bitcoin.conf.dist"
+  install -Dm 644 "$srcdir/bitcoinclassic-$pkgver/share/rpcuser/rpcuser.py" "$pkgdir/etc/bitcoin/rpcuser.py"
+
+  msg2 'Installing bitcoin.service...'
+  install -Dm 644 "$srcdir/bitcoinclassic-$pkgver/contrib/init/bitcoind.service" \
+               -t "$pkgdir/usr/lib/systemd/system"
+
+  msg2 'Installing bitcoin.logrotate...'
+  install -Dm 644 "$srcdir/bitcoin.logrotate" "$pkgdir/etc/logrotate.d/bitcoin"
+
+  msg2 'Installing bash completion...'
+  install -Dm 644 contrib/bitcoind.bash-completion \
+    "$pkgdir/usr/share/bash-completion/completions/bitcoind"
+
+  msg2 'Installing bitcoin-cli...'
+  install -Dm755 "$srcdir/bitcoinclassic-$pkgver/src/bitcoin-cli" "$pkgdir/usr/bin/bitcoin-cli"
+
+  msg2 'Installing bitcoin-tx...'
+  install -Dm755 "$srcdir/bitcoinclassic-$pkgver/src/bitcoin-tx" "$pkgdir/usr/bin/bitcoin-tx"
+
+  msg2 'Cleaning up pkgdir...'
+  find "$pkgdir" -type d -name .git -exec rm -r '{}' +
+  find "$pkgdir" -type f -name .gitignore -exec rm -r '{}' +
 }

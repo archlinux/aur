@@ -1,0 +1,128 @@
+_bc_user=bitcoin
+_bc_group=bitcoin
+
+post_install() {
+  _mkuser
+  # disable Copy-On-Write (btrfs directories only)
+  _dir="/var/lib/bitcoind"
+  mkdir -p "$_dir"
+  _is_btrfs "$_dir" && _disable_cow "$_dir"
+  if test ! -f /etc/bitcoin/bitcoin.conf; then
+     cp /etc/bitcoin/bitcoin.conf.dist /etc/bitcoin/bitcoin.conf
+  fi
+  chown -R $_bc_user:$_bc_group /etc/bitcoin "$_dir"
+  printf "%b\n" "$bitcoin"
+}
+
+post_upgrade() {
+  _mkuser
+  chown -R $_bc_user:$_bc_group /etc/bitcoin "/var/lib/bitcoind"
+  printf "%b\n" "$bitcoin"
+}
+
+post_remove() {
+  _rmuser
+}
+
+
+# ------------------------------------------------------------------------------
+# helper functions for creating bitcoin user / group
+# ------------------------------------------------------------------------------
+
+_mkuser() {
+  getent passwd $_bc_user &>/dev/null || {
+    echo -n "Creating bitcoin user... "
+    grep -E "^$_bc_group:" /etc/group >/dev/null || groupadd $_bc_group
+    useradd -m -d /etc/bitcoin -g $_bc_group -s /usr/bin/nologin $_bc_user 2>/dev/null
+    echo "done"
+  }
+}
+
+_rmuser() {
+  echo -n "Removing bitcoin user... "
+  userdel $_bc_user 2>/dev/null
+  echo "done"
+}
+
+
+# ------------------------------------------------------------------------------
+# helper functions for disabling btrfs Copy-On-Write (CoW)
+# https://wiki.archlinux.org/index.php/Btrfs#Copy-On-Write_.28CoW.29
+# ------------------------------------------------------------------------------
+
+# check if dir is btrfs
+_is_btrfs() {
+  if [[ $(findmnt --target $1 --output FSTYPE --noheadings) == 'btrfs' ]]; then
+    return 0
+  else
+    return 1
+  fi
+}
+
+# disable btrfs CoW
+_chattrify() {
+  # original dir, with trailing slash stripped if it exists
+  _orig_dir=$( echo "$1" | sed 's@/$@@' )
+
+  # if original dir exists, back it up
+  [[ -d "$1" ]] && mv "$1" "${_orig_dir}"_old
+
+  # re-make original dir
+  mkdir -p "$1"
+
+  # set permissions on re-made dir
+  chmod "$2" "$1"
+
+  # disable btrfs CoW on re-made dir
+  chattr +C "$1"
+
+  # recursive copy to restore backed up dir while maintaining disabled CoW
+  [[ -d "${_orig_dir}"_old ]] \
+    && find "${_orig_dir}"_old -mindepth 1 -maxdepth 1 -exec cp -R '{}' "$1" \;
+
+  # set ownership on re-made dir
+  chown -R $3:$4 "$1"
+
+  # purge backed up dir
+  [[ -d "${_orig_dir}"_old ]] && rm -rf "${_orig_dir}"_old
+}
+
+_disable_cow() {
+  _chattrify "$1" "750" "$_bc_user" "$_bc_group"
+}
+
+
+read -d '' bitcoin <<'EOF'
+########################################################################
+########################################################################
+##                                                                    ##
+##  Bitcoin Classic                                                   ##
+##  ____________                                                      ##
+##                                                                    ##
+##  To start bitcoin-classic:                                         ##
+##                                                                    ##
+##      # systemctl start bitcoin                                     ##
+##                                                                    ##
+##  To communicate with bitcoin-classic as a normal user:             ##
+##                                                                    ##
+##      $ mkdir -p ~/.bitcoin                                         ##
+##      $ echo rpccookiefile=/etc/bitcoin/.cookie \\                   ##
+##            > ~/.bitcoin/bitcoin.conf <<'EOF'                       ##
+##                                                                    ##
+##      $ bitcoin-cli getmininginfo                                   ##
+##                                                                    ##
+##  Config:        /etc/bitcoin/bitcoin.conf                          ##
+##  Blockchain:    /var/lib/bitcoind                                  ##
+##                                                                    ##
+##  --rpccookiefile--                                                 ##
+##  The daemon uses a special 'cookie' file for authentication.       ##
+##  This file is generated with random content when the daemon        ##
+##  starts, and deleted when it exits. Its contents are used as       ##
+##  authentication token. Read access to this file controls who can   ##
+##  access through RPC.  Users pass --rpccookiefile to their calls    ##
+##  of bitcoin-cli                                                    ##
+##  You can find the cookie at /etc/bitcoin/.cookie                   ##
+##                                                                    ##
+########################################################################
+########################################################################
+EOF
