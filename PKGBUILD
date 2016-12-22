@@ -1,5 +1,5 @@
-# Maintainer: Erik Beran <eberan AT gmail DOT com>
 # Maintainer: Jan-Tarek Butt <tarek AT ring0 DOT de>
+# Contributor: Erik Beran <eberan AT gmail DOT com>
 # Contributor: Thor K. H. <thor at roht dot no>
 # Contributor: Babken Vardanyan <483ken 4tgma1l
 # Contributor: mikezackles
@@ -14,8 +14,23 @@
 # Contributor: archdria
 # Contributor: Andy Weidenbaum <archbaum@gmail.com>
 
+###########################################################################################################
+#                                          Build Options
+###########################################################################################################
+_omnisharp="y"
+
+_gocode="y"
+
+_rust="y"
+
+_tern="y"
+
+_completer="ON"
+
+###########################################################################################################
+
 pkgname=vim-youcompleteme-git
-pkgver=28.972eecb
+pkgver=1963.194ff334
 pkgver() {
   cd "YouCompleteMe" || exit
   echo "$(git rev-list --count master).$(git rev-parse --short master)"
@@ -49,7 +64,6 @@ source=('git+https://github.com/Valloric/YouCompleteMe.git' #ycm
         )
 sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP'
             'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
-_COMPLETER="USE_SYSTEM_LIBCLANG"
 install=install
 
 prepare() {
@@ -81,7 +95,7 @@ gitprepare() {
   cd "$srcdir/$CD_DIR" || exit
   git submodule init
   for GITSUBVAR in "${FEED[@]}" ; do
-    git config submodule.$GIT_PREFIX$GITSUBVAR.url "$srcdir/$GITSUBVAR"
+    git config submodule."$GIT_PREFIX$GITSUBVAR".url "$srcdir/$GITSUBVAR"
   done
   git submodule update
   unset -v FEED
@@ -91,59 +105,87 @@ build() {
   msg2 'Building ycmd...' # BuildYcmdLibs()
   mkdir -p "$srcdir/ycmd_build"
   cd "$srcdir/ycmd_build" || exit
-  cmake -G "Unix Makefiles" -D${_COMPLETER}=1 . "$srcdir/YouCompleteMe/third_party/ycmd/cpp"
+  cmake -G "Unix Makefiles" -DUSE_SYSTEM_LIBCLANG="$_completer" . "$srcdir/YouCompleteMe/third_party/ycmd/cpp"
   make ycm_core
 
-  msg2 'Building OmniSharp completer...' # BuildOmniSharp()
-  cd "$srcdir/YouCompleteMe/third_party/ycmd/third_party/OmniSharpServer" || exit
-  pwd
-  xbuild /property:Configuration=Release
+  if [ "$_omnisharp" = "y" ]; then
+    msg2 'Building OmniSharp completer...' # BuildOmniSharp()
+    cd "$srcdir/YouCompleteMe/third_party/ycmd/third_party/OmniSharpServer" || exit
+    pwd
+    xbuild /property:Configuration=Release
+  else
+    msg2 'Skipping OmniSharp completer...'
+  fi
 
-  msg2 'Building Gocode completer...' # BuildGoCode()
-  cd "$srcdir/YouCompleteMe/third_party/ycmd/third_party/gocode" || exit
-  pwd
-  go build
-  cd "$srcdir/YouCompleteMe/third_party/ycmd/third_party/godef" || exit
-  pwd
-  go build
+  if [ "$_gocode" = "y" ]; then
+    msg2 'Building Gocode completer...' # BuildGoCode()
+    cd "$srcdir/YouCompleteMe/third_party/ycmd/third_party/gocode" || exit
+    pwd
+    go build
+    cd "$srcdir/YouCompleteMe/third_party/ycmd/third_party/godef" || exit
+    pwd
+    go build
+  else
+    msg2 'Skipping Gocode completer...'
+  fi
 
-  msg2 'Building Rust completer...' # BuildRacerd()
-  cd "$srcdir/YouCompleteMe/third_party/ycmd/third_party/racerd" || exit
-  pwd
-  cargo build --release
+  if [ "$_rust" = "y" ]; then
+    msg2 'Building Rust completer...' # BuildRacerd()
+    cd "$srcdir/YouCompleteMe/third_party/ycmd/third_party/racerd" || exit
+    pwd
+    cargo build --release
+  else
+    msg2 'Skipping Rust completer...'
+  fi
 
-  msg2 'Building Tern completer...' # SetUpTern()
-  cd "$srcdir/YouCompleteMe/third_party/ycmd/third_party/tern_runtime" || exit
-  pwd
-  npm install --production --python=python2
+  if [ "$_tern" = "y" ]; then
+    msg2 'Building Tern completer...' # SetUpTern()
+    cd "$srcdir/YouCompleteMe/third_party/ycmd/third_party/tern_runtime" || exit
+    pwd
+    npm install --production --python=python2
+  else
+    msg2 'Skipping Tern completer...'
+  fi
 }
 
 package() {
-  mkdir -p "$pkgdir/usr/share/vim/vimfiles/third_party/ycmd/third_party/OmniSharpServer/OmniSharp/bin/Release"
-  mkdir -p "$pkgdir/usr/share/vim/vimfiles/third_party/ycmd/third_party/gocode"
-  mkdir -p "$pkgdir/usr/share/vim/vimfiles/third_party/ycmd/third_party/godef"
-  mkdir -p "$pkgdir/usr/share/vim/vimfiles/third_party/ycmd/third_party/racerd/target/release"
+  mkdir -p "$pkgdir/usr/share/vim/vimfiles/third_party/ycmd/third_party"
 
   cp -r "$srcdir/YouCompleteMe/"{autoload,doc,plugin,python} \
     "$pkgdir/usr/share/vim/vimfiles"
   cp -r "$srcdir/YouCompleteMe/third_party/"{pythonfutures,requests-futures,retries} \
     "$pkgdir/usr/share/vim/vimfiles/third_party"
-  cp -r "$srcdir/YouCompleteMe/third_party/ycmd/"{ycmd,ycm_core.so,CORE_VERSION} \
+  cp -r "$srcdir/YouCompleteMe/third_party/ycmd/"{ycmd,ycm_core.so,CORE_VERSION,cpp,clang_includes} \
     "$pkgdir/usr/share/vim/vimfiles/third_party/ycmd"
-
-  cp -r "$srcdir/YouCompleteMe/third_party/ycmd/third_party/"{argparse,bottle,frozendict,JediHTTP,python-future,requests,tern_runtime,waitress} \
+  cp -r "$srcdir/YouCompleteMe/third_party/ycmd/third_party/"{argparse,bottle,frozendict,JediHTTP,python-future,requests,waitress} \
     "$pkgdir/usr/share/vim/vimfiles/third_party/ycmd/third_party"
 
-  cp    "$srcdir/YouCompleteMe/third_party/ycmd/third_party/gocode/gocode" \
-    "$pkgdir/usr/share/vim/vimfiles/third_party/ycmd/third_party/gocode/gocode"
-  cp    "$srcdir/YouCompleteMe/third_party/ycmd/third_party/godef/godef" \
-    "$pkgdir/usr/share/vim/vimfiles/third_party/ycmd/third_party/godef/godef"
-  cp -r "$srcdir/YouCompleteMe/third_party/ycmd/third_party/OmniSharpServer/OmniSharp/bin/Release" \
-    "$pkgdir/usr/share/vim/vimfiles/third_party/ycmd/third_party/OmniSharpServer/OmniSharp/bin"
-  cp    "$srcdir/YouCompleteMe/third_party/ycmd/third_party/racerd/target/release/racerd" \
-    "$pkgdir/usr/share/vim/vimfiles/third_party/ycmd/third_party/racerd/target/release/racerd"
+  if [ "$_omnisharp" = "y" ]; then
+    mkdir -p "$pkgdir/usr/share/vim/vimfiles/third_party/ycmd/third_party/OmniSharpServer/OmniSharp/bin/Release"
+    cp -r "$srcdir/YouCompleteMe/third_party/ycmd/third_party/OmniSharpServer/OmniSharp/bin/Release" \
+      "$pkgdir/usr/share/vim/vimfiles/third_party/ycmd/third_party/OmniSharpServer/OmniSharp/bin"
+  fi
+
+  if [ "$_gocode" = "y" ]; then
+    mkdir -p "$pkgdir/usr/share/vim/vimfiles/third_party/ycmd/third_party/gocode"
+    mkdir -p "$pkgdir/usr/share/vim/vimfiles/third_party/ycmd/third_party/godef"
+    cp    "$srcdir/YouCompleteMe/third_party/ycmd/third_party/gocode/gocode" \
+      "$pkgdir/usr/share/vim/vimfiles/third_party/ycmd/third_party/gocode/gocode"
+    cp    "$srcdir/YouCompleteMe/third_party/ycmd/third_party/godef/godef" \
+      "$pkgdir/usr/share/vim/vimfiles/third_party/ycmd/third_party/godef/godef"
+  fi
+
+  if [ "$_rust" = "y" ]; then
+    mkdir -p "$pkgdir/usr/share/vim/vimfiles/third_party/ycmd/third_party/racerd/target/release"
+    cp    "$srcdir/YouCompleteMe/third_party/ycmd/third_party/racerd/target/release/racerd" \
+      "$pkgdir/usr/share/vim/vimfiles/third_party/ycmd/third_party/racerd/target/release/racerd"
+  fi
+
+  if [ "$_tern" = "y" ]; then
+    cp -r "$srcdir/YouCompleteMe/third_party/ycmd/third_party/tern_runtime" \
+      "$pkgdir/usr/share/vim/vimfiles/third_party/ycmd/third_party"
+  fi
 
   find "$pkgdir" -name .git -exec rm -fr {} +
+  rm -rf "$pkgdir/usr/share/vim/vimfiles/third_party/ycmd/ycmd/tests"
 }
-
-# vim:set ts=2 sw=2 et:
