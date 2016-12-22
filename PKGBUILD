@@ -2,7 +2,7 @@
 pkgname=eccodes
 pkgver=2.0.2
 _attnum=45757960
-pkgrel=2
+pkgrel=3
 pkgdesc="ECMWF decoding library for GRIB, BUFR and GTS"
 arch=('i686' 'x86_64')
 url="https://software.ecmwf.int/wiki/display/ECC/ecCodes+Home"
@@ -16,6 +16,7 @@ md5sums=('dec29b6850401d99b0e0344844b2bf4a')
 
 build() {
   cd "$srcdir"/${pkgname}-${pkgver}-Source
+  sed -i 's/image.inmem_.*=.*1;//' src/grib_jasper_encoding.c
   mkdir -p build
   cd build
   [ -x /usr/bin/aec ] && has_aec=1 || has_aec=0
