@@ -15,20 +15,20 @@ conflicts=('bitcoin-daemon' 'bitcoin-cli' 'bitcoin-qt' 'bitcoin-tx')
 install=bitcoin-qt.install
 source_i686=("https://github.com/bitcoinclassic/bitcoinclassic/releases/download/$pkgver/bitcoin-$_ver-linux32.tar.gz"
              "https://raw.githubusercontent.com/bitcoinclassic/bitcoinclassic/$_gitver/contrib/debian/bitcoin-qt.desktop"
-						 "https://raw.githubusercontent.com/bitcoinclassic/bitcoinclassic/$_gitver/share/pixmaps/bitcoin128.png"
-						 "https://raw.githubusercontent.com/bitcoinclassic/bitcoinclassic/$_gitver/contrib/debian/manpages/bitcoind.1"
+             "https://raw.githubusercontent.com/bitcoinclassic/bitcoinclassic/$_gitver/share/pixmaps/bitcoin128.png"
+             "https://raw.githubusercontent.com/bitcoinclassic/bitcoinclassic/$_gitver/contrib/debian/manpages/bitcoind.1"
              "https://raw.githubusercontent.com/bitcoinclassic/bitcoinclassic/$_gitver/contrib/debian/manpages/bitcoin-cli.1"
              "https://raw.githubusercontent.com/bitcoinclassic/bitcoinclassic/$_gitver/contrib/debian/manpages/bitcoin-qt.1"
              "https://raw.githubusercontent.com/bitcoinclassic/bitcoinclassic/$_gitver/contrib/debian/manpages/bitcoin.conf.5"
-						 "https://raw.githubusercontent.com/bitcoinclassic/bitcoinclassic/$_gitver/COPYING")
+             "https://raw.githubusercontent.com/bitcoinclassic/bitcoinclassic/$_gitver/COPYING")
 source_x86_64=("https://github.com/bitcoinclassic/bitcoinclassic/releases/download/$pkgver/bitcoin-$_ver-linux64.tar.gz"
                "https://raw.githubusercontent.com/bitcoinclassic/bitcoinclassic/$_gitver/contrib/debian/bitcoin-qt.desktop"
-							 "https://raw.githubusercontent.com/bitcoinclassic/bitcoinclassic/$_gitver/share/pixmaps/bitcoin128.png"
-							 "https://raw.githubusercontent.com/bitcoinclassic/bitcoinclassic/$_gitver/contrib/debian/manpages/bitcoind.1"
+             "https://raw.githubusercontent.com/bitcoinclassic/bitcoinclassic/$_gitver/share/pixmaps/bitcoin128.png"
+             "https://raw.githubusercontent.com/bitcoinclassic/bitcoinclassic/$_gitver/contrib/debian/manpages/bitcoind.1"
                "https://raw.githubusercontent.com/bitcoinclassic/bitcoinclassic/$_gitver/contrib/debian/manpages/bitcoin-cli.1"
                "https://raw.githubusercontent.com/bitcoinclassic/bitcoinclassic/$_gitver/contrib/debian/manpages/bitcoin-qt.1"
-							 "https://raw.githubusercontent.com/bitcoinclassic/bitcoinclassic/$_gitver/contrib/debian/manpages/bitcoin.conf.5"
-							 "https://raw.githubusercontent.com/bitcoinclassic/bitcoinclassic/$_gitver/COPYING")
+             "https://raw.githubusercontent.com/bitcoinclassic/bitcoinclassic/$_gitver/contrib/debian/manpages/bitcoin.conf.5"
+             "https://raw.githubusercontent.com/bitcoinclassic/bitcoinclassic/$_gitver/COPYING")
 md5sums_i686=('b23fe9936df44bd3e976702cc6ecd4f3'
               '0aa8db6ac0e58ccbe85d0fe4923fb39e'
               '0aae5f0110179e8e1d588530bcce5d2a'
@@ -76,10 +76,10 @@ package() {
   install -Dm 644 "$srcdir/bitcoin-qt.1" -t "$pkgdir/usr/share/man/man1"
   install -Dm 644 "$srcdir/bitcoin.conf.5" -t "$pkgdir/usr/share/man/man5"
 
-	msg2 'Installing icon...'
-	install -Dm 644 "$srcdir/bitcoin128.png" "$pkgdir/usr/share/pixmaps/bitcoin128.png"
+  msg2 'Installing icon...'
+  install -Dm 644 "$srcdir/bitcoin128.png" "$pkgdir/usr/share/pixmaps/bitcoin128.png"
 
-	msg2 'Installing desktop file...'
-	mv "$srcdir/bitcoin-qt.desktop" "$srcdir/bitcoin.desktop"
-	desktop-file-install -m 644 --dir="$pkgdir/usr/share/applications/" "bitcoin.desktop"
+  msg2 'Installing desktop file...'
+  mv "$srcdir/bitcoin-qt.desktop" "$srcdir/bitcoin.desktop"
+  desktop-file-install -m 644 --dir="$pkgdir/usr/share/applications/" "bitcoin.desktop"
 }
