@@ -1,5 +1,5 @@
-pkgbase = arm-android-gnueabihf-gcc-stage1
-	pkgdesc = The GNU Compiler Collection. Stage 1 for toolchain building (arm-android-gnueabihf)
+pkgbase = arm-android-eabi-gcc-stage1
+	pkgdesc = The GNU Compiler Collection. Stage 1 for toolchain building (arm-android-eabi)
 	pkgver = 6.1.1
 	pkgrel = 1
 	url = http://gcc.gnu.org
@@ -9,7 +9,7 @@ pkgbase = arm-android-gnueabihf-gcc-stage1
 	license = LGPL
 	license = FDL
 	license = custom
-	depends = arm-android-gnueabihf-binutils>=2.26.1-1
+	depends = arm-android-eabi-binutils>=2.26.1-1
 	depends = libmpc
 	depends = zlib
 	options = !emptydirs
@@ -20,5 +20,5 @@ pkgbase = arm-android-gnueabihf-gcc-stage1
 	md5sums = d4c4546f927b2984d66574b1b5cb817e
 	md5sums = ac1f25a0677912952718a51f5bc20f32
 
-pkgname = arm-android-gnueabihf-gcc-stage1
+pkgname = arm-android-eabi-gcc-stage1
 
