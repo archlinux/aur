@@ -1,8 +1,8 @@
 # Maintainer: Tom Zander
 
 pkgname=bitcoind-classic-git
-pkgver=v1.2.0.b1.r55.g95803467
-pkgrel=1
+pkgver=v1.2.0.b1.r56.gd5556713
+pkgrel=2
 pkgdesc="Bitcoin Classic versions of bitcoind, bitcoin-cli, and bitcoin-tx"
 arch=('i686' 'x86_64')
 url="https://bitcoinclassic.com/"
@@ -11,10 +11,13 @@ depends=('boost-libs' 'libevent' 'openssl' 'miniupnpc' 'zeromq')
 makedepends=('boost')
 provides=('bitcoin-daemon' 'bitcoin-cli' 'bitcoin-tx')
 conflicts=('bitcoin-daemon' 'bitcoin-cli' 'bitcoin-tx')
+install=bitcoin.install
 source=("git+https://github.com/bitcoinclassic/bitcoinclassic.git#branch=develop"
-    "bitcoin.logrotate")
+    "bitcoin.logrotate"
+    "bitcoin.conf")
 sha256sums=('SKIP'
-    "7bf4bdad419c1ee30b88c7e4190707c5ff250da8b23d68d5adf14043f8e2ac73")
+    "7bf4bdad419c1ee30b88c7e4190707c5ff250da8b23d68d5adf14043f8e2ac73"
+    "c8787560c6423605796c8d3e080cb522ed849cea12b5c23293c22e405a015a53")
 
 pkgver() {
   cd "$srcdir/bitcoinclassic"
@@ -47,16 +50,15 @@ package() {
   msg2 'Installing bitcoin-daemon...'
   install -Dm755 "$srcdir/bitcoinclassic/src/bitcoind" "$pkgdir/usr/bin/bitcoind"
   install -Dm644 "$srcdir/bitcoinclassic/contrib/debian/examples/bitcoin.conf"\
-        "$pkgdir/usr/share/doc/$pkgname/examples/bitcoin.conf"
+        "$pkgdir/usr/share/doc/bitcoin/examples/bitcoin.conf"
   install -Dm644 "$srcdir/bitcoinclassic/contrib/debian/manpages/bitcoind.1"\
         "$pkgdir/usr/share/man/man1/bitcoind.1"
   install -Dm644 "$srcdir/bitcoinclassic/contrib/debian/manpages/bitcoin.conf.5"\
         "$pkgdir/usr/share/man/man5/bitcoin.conf.5"
 
   msg2 'Installing bitcoin.conf...'
-  # Install bitcoin.conf is one does not already exist
-  [[ ! -e "/etc/bitcoin/bitcoin.conf" ]] && install -Dm 644 \
-  "$srcdir/bitcoinclassic/contrib/debian/examples/bitcoin.conf" -t "$pkgdir/etc/bitcoin"
+  install -Dm 644 "$srcdir/bitcoin.conf" "$pkgdir/etc/bitcoin/bitcoin.conf.dist"
+  install -Dm 644 "$srcdir/bitcoinclassic/share/rpcuser/rpcuser.py" "$pkgdir/etc/bitcoin/rpcuser.py"
 
   msg2 'Installing bitcoin.service...'
   install -Dm 644 "$srcdir/bitcoinclassic/contrib/init/bitcoind.service" \

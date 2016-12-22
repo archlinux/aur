@@ -4,27 +4,29 @@ _bc_group=bitcoin
 post_install() {
   _mkuser
   # disable Copy-On-Write (btrfs directories only)
-  for _dir in /srv/bitcoin; do
-    _is_btrfs "$_dir" && _disable_cow "$_dir"
-  done
-  chown -R $_bc_user:$_bc_group /etc/bitcoin /srv/bitcoin
+  _dir="/var/lib/bitcoind"
+  mkdir -p "$_dir"
+  _is_btrfs "$_dir" && _disable_cow "$_dir"
+  if test ! -f /etc/bitcoin/bitcoin.conf; then
+     cp /etc/bitcoin/bitcoin.conf.dist /etc/bitcoin/bitcoin.conf
+  fi
+  chown -R $_bc_user:$_bc_group /etc/bitcoin "$_dir"
   printf "%b\n" "$bitcoin"
 }
 
 post_upgrade() {
   _mkuser
-  chown -R $_bc_user:$_bc_group /etc/bitcoin /srv/bitcoin
+  chown -R $_bc_user:$_bc_group /etc/bitcoin "/var/lib/bitcoind"
   printf "%b\n" "$bitcoin"
 }
 
 post_remove() {
   _rmuser
-  rm -rf /srv/bitcoin
 }
 
 
 # ------------------------------------------------------------------------------
-# helper functions for creating bitcoin-core user / group
+# helper functions for creating bitcoin user / group
 # ------------------------------------------------------------------------------
 
 _mkuser() {
@@ -38,7 +40,7 @@ _mkuser() {
 
 _rmuser() {
   echo -n "Removing bitcoin user... "
-  userdel -rf $_bc_user 2>/dev/null
+  userdel -r $_bc_user 2>/dev/null
   echo "done"
 }
 
@@ -86,7 +88,7 @@ _chattrify() {
 }
 
 _disable_cow() {
-  _chattrify "$1" "700" "$_bc_user" "$_bc_group"
+  _chattrify "$1" "750" "$_bc_user" "$_bc_group"
 }
 
 
@@ -104,70 +106,22 @@ read -d '' bitcoin <<'EOF'
 ##  To communicate with bitcoin-classic as a normal user:             ##
 ##                                                                    ##
 ##      $ mkdir -p ~/.bitcoin                                         ##
-##      $ cat > ~/.bitcoin/bitcoin.conf <<'EOF'                       ##
-##      rpcconnect=127.0.0.1                                          ##
-##      rpcport=8332                                                  ##
-##      rpcuser=bitcoin                                               ##
-##      rpcpassword=Your_Secret_Password_Here                         ##
-##      EOF                                                           ##
+##      $ echo rpccookiefile=/etc/bitcoin/.cookie \\                   ##
+##            > ~/.bitcoin/bitcoin.conf <<'EOF'                       ##
 ##                                                                    ##
 ##      $ bitcoin-cli getmininginfo                                   ##
 ##                                                                    ##
 ##  Config:        /etc/bitcoin/bitcoin.conf                          ##
 ##  Blockchain:    /var/lib/bitcoind                                  ##
-##  Documentation: /usr/share/doc/bitcoin                             ##
-##                                                                    ##
-##  New RPC options                                                   ##
-##  ____________                                                      ##
-##                                                                    ##
-##  SSL support for RPC, previously enabled by the option rpcssl has  ##
-##  been dropped from both the client and the server. This was done   ##
-##  in preparation for removing the dependency on OpenSSL for the     ##
-##  daemon completely.                                                ##
 ##                                                                    ##
 ##  --rpccookiefile--                                                 ##
-##  New to 0.12, when no -rpcpassword is specified, the daemon now    ##
-##  uses a special 'cookie' file for authentication. This file is     ##
-##  generated with random content when the daemon starts, and deleted ##
-##  when it exits. Its contents are used as authentication token.     ##
-##  Read access to this file controls who can access through RPC. By  ##
-##  default it is stored in the data directory but its location can   ##
-##  be overridden with the option -rpccookiefile. This is similar to  ##
-##  Tor's CookieAuthentication.                                       ##
-##  see:  https://www.torproject.org/docs/tor-manual.html.en          ##
-##  This allows running bitcoind without having to do any manual      ##
-##  configuration.                                                    ##
-##                                                                    ##
-##  --rpcauth--                                                       ##
-##  0.12 adds an additional config option, "rpcauth" to allow         ##
-##  multiple different users to use different credentials for login.  ##
-##                                                                    ##
-##  Motivation:                                                       ##
-##  In business settings there are often multiple users accessing a   ##
-##  particular core instance, using wallet functionality. Instead of  ##
-##  all users sharing the same login name and password, it is desired ##
-##  to have each user generate their own secret password, and have a  ##
-##  hashed and salted version added to bitcoin.conf by the admin.     ##
-##  Currently there is only one name and password, and it is stored   ##
-##  in plaintext. This pull attempts to do just this and will be      ##
-##  followed by an additional audit logging pull to enable admins to  ##
-##  assign blame to spends and other irreversible actions.            ##
-##                                                                    ##
-##  The config option comes in the format:                            ##
-##  rpcauth=USERNAME:SALT$HASH                                        ##
-##                                                                    ##
-##  Where:                                                            ##
-##  1-USERNAME is desired username. Name doesn't have to be unique.   ##
-##  2-SALT is the salt for the HMAC_SHA256 function                   ##
-##  3-HASH is a hex string that is the result of the HMAC_SHA256      ##
-##  function on the user's secret password plus the SALT as the key.  ##
-##                                                                    ##
-##  A "canonical" password generating python script has been supplied ##
-##  at "/etc/bitcoin/rpcuser.py". From the client-side, one connects  ##
-##  using the standard -rpcuser/-rpcpassword options.                 ##
-##                                                                    ##
-##  How to create an RPC user login credential.                       ##
-##  $ python2 /etc/bitcoin/rpcuser.py <username>                      ##
+##  The daemon uses a special 'cookie' file for authentication.       ##
+##  This file is generated with random content when the daemon        ##
+##  starts, and deleted when it exits. Its contents are used as       ##
+##  authentication token. Read access to this file controls who can   ##
+##  access through RPC.  Users pass --rpccookiefile to their calls    ##
+##  of bitcoin-cli                                                    ##
+##  You can find the cookie at /etc/bitcoin/.cookie                   ##
 ##                                                                    ##
 ########################################################################
 ########################################################################
