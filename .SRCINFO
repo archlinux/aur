@@ -1,8 +1,8 @@
-pkgbase = icedove-bin
+pkgbase = iceape-bin
 	pkgdesc = A libre version of Debian Iceape, the internet suite based on SeaMonkey.
 	pkgver = 2.40
 	pkgrel = 1
-	url = https://wiki.parabola.nu/icedove-bin
+	url = https://wiki.parabola.nu/iceape-bin
 	arch = i686
 	arch = x86_64
 	license = BSD
@@ -35,5 +35,5 @@ pkgbase = icedove-bin
 	source_x86_64 = https://repomirror.parabola.nu/pool/parabola_gnu+linux/iceape-1:2.40-5-x86_64.pkg.tar.xz
 	sha256sums_x86_64 = 9b5c7aecb93b31ec37f1c30aaf90ff0291a983aa0cbb38f0f2255ccf02c2df81
 
-pkgname = icedove-bin
+pkgname = iceape-bin
 
