@@ -4,9 +4,9 @@ pkgname=dolphin-emu-faster-melee
 # shellcheck disable=SC2034
 pkgver=4.3
 # shellcheck disable=SC2034
-pkgrel=3
+pkgrel=4
 # shellcheck disable=SC2034
-pkgdesc='The FasterMelee build of the Dolphin Emulator'
+pkgdesc='The FasterMelee NetPlay build of the Dolphin Emulator'
 # shellcheck disable=SC2034
 arch=('x86_64')
 # shellcheck disable=SC2034
@@ -19,7 +19,7 @@ makedepends=('cmake')
 
 # shellcheck disable=SC2034
 depends=('bluez-libs' 'enet' 'ffmpeg' 'libao' 'libevdev' 'mbedtls' 'miniupnpc'
-         'openal' 'portaudio' 'soundtouch' 'xdg-utils' 'wxgtk' 'sfml')
+         'portaudio' 'sfml' 'soundtouch' 'xdg-utils' 'wxgtk')
 # shellcheck disable=SC2034
 optdepends=('pulseaudio: PulseAudio backend')
 
