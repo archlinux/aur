@@ -2,7 +2,7 @@
 # Thu Jun 23 10:10:29 UTC 2016
 pkgbase = bitcoin-classic-git
 	pkgdesc = Bitcoin Classic versions of Bitcoind, bitcoin-cli, bitcoin-tx, and bitcoin-qt, most recent stable branch, w/GUI and wallet
-	pkgver = v0.12.1cl1.r0.g049deb2
+	pkgver = v1.1.1
 	pkgrel = 2
 	url = https://bitcoinclassic.com/
 	install = bitcoin-qt.install
@@ -30,7 +30,7 @@ pkgbase = bitcoin-classic-git
 	conflicts = bitcoin-cli
 	conflicts = bitcoin-qt
 	conflicts = bitcoin-tx
-	source = git+https://github.com/bitcoinclassic/bitcoinclassic.git#branch=0.12
+	source = git+https://github.com/bitcoinclassic/bitcoinclassic.git#branch=1.1
 	sha256sums = SKIP
 
 pkgname = bitcoin-classic-git
