@@ -1,8 +1,8 @@
 # Maintainer: Tom Zander
 
 pkgname=bitcoind-classic-git
-pkgver=v1.2.0.b1.r56.gd5556713
-pkgrel=2
+pkgver=git
+pkgrel=1
 pkgdesc="Bitcoin Classic versions of bitcoind, bitcoin-cli, and bitcoin-tx"
 arch=('i686' 'x86_64')
 url="https://bitcoinclassic.com/"

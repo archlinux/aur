@@ -2,7 +2,7 @@
 # Thu Dec 22 21:00:44 UTC 2016
 pkgbase = bitcoind-classic-git
 	pkgdesc = Bitcoin Classic versions of bitcoind, bitcoin-cli, and bitcoin-tx
-	pkgver = v1.2.0.b1.r56.gd5556713
+	pkgver = v1.2.0.b1
 	pkgrel = 2
 	url = https://bitcoinclassic.com/
 	install = bitcoin.install
