@@ -7,11 +7,11 @@ pkgname='ros-kinetic-cv-bridge'
 pkgver='1.12.3'
 _pkgver_patch=0
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(ros-kinetic-catkin
-  ros-kinetic-opencv3
+  opencv
   ros-kinetic-rosconsole
   ros-kinetic-sensor-msgs)
 makedepends=('cmake' 'ros-build-tools'
@@ -19,7 +19,7 @@ makedepends=('cmake' 'ros-build-tools'
   boost
   python2)
 
-ros_depends=(ros-kinetic-opencv3
+ros_depends=(opencv
   ros-kinetic-rosconsole
   ros-kinetic-sensor-msgs)
 depends=(${ros_depends[@]}
