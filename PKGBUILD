@@ -1,6 +1,6 @@
 # Maintainer:  VirtualTam <virtualtam@flibidi.net>
 pkgname=machina-git
-pkgver=3e93218
+pkgver=a929010
 pkgrel=1
 pkgdesc=""
 arch=('x86' 'x86_64')
