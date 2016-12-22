@@ -1,6 +1,6 @@
 pkgbase = terraform-bin
 	pkgdesc = Tool for building, changing, and versioning infrastructure safely and efficiently
-	pkgver = 0.8.1
+	pkgver = 0.8.2
 	pkgrel = 1
 	url = http://www.terraform.io/
 	arch = i686
@@ -8,12 +8,12 @@ pkgbase = terraform-bin
 	license = MPL
 	conflicts = terraform
 	noextract = _terraform
-	source = https://raw.githubusercontent.com/hashicorp/terraform/v0.8.1/contrib/zsh-completion/_terraform
+	source = https://raw.githubusercontent.com/hashicorp/terraform/v0.8.2/contrib/zsh-completion/_terraform
 	sha256sums = 4efcb7d7a231ea5e1f9bc9c06c3abfb6825e907883f88a8790e590548353da93
-	source_i686 = https://releases.hashicorp.com/terraform/0.8.1/terraform_0.8.1_linux_386.zip
-	sha256sums_i686 = beafc708c1f2ec65447206e75abd0ef3367981d6293a6e412c0db41fab66303d
-	source_x86_64 = https://releases.hashicorp.com/terraform/0.8.1/terraform_0.8.1_linux_amd64.zip
-	sha256sums_x86_64 = da98894a79b7e97ddcb2a1fed7700d3f53c3660f294fb709e1d52c9baaee5c59
+	source_i686 = https://releases.hashicorp.com/terraform/0.8.2/terraform_0.8.2_linux_386.zip
+	sha256sums_i686 = ac64cc040139b912fd0271871d1bea068033f44ee67838751b7e31f96439a92f
+	source_x86_64 = https://releases.hashicorp.com/terraform/0.8.2/terraform_0.8.2_linux_amd64.zip
+	sha256sums_x86_64 = a366fd2d7d8908d23acc23ab151fc692615a147f8832971bb43e42995554c652
 
 pkgname = terraform-bin
 
