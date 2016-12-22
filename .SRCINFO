@@ -2,7 +2,7 @@
 # Tue May  3 12:13:38 UTC 2016
 pkgbase = knime-sdk
 	pkgdesc = Software Development Kit for Knime
-	pkgver = 3.3.0
+	pkgver = 3.3.1
 	pkgrel = 1
 	url = http://www.knime.org/
 	changelog = ChangeLog
@@ -15,11 +15,11 @@ pkgbase = knime-sdk
 	optdepends = bash: Required for bash-scriptable nodes
 	optdepends = r: Required for R-scriptable nodes
 	options = !emptydirs
-	source = https://download.knime.org/analytics-platform/linux/eclipse_knime_3.3.0.linux.gtk..tar.gz
+	source = https://download.knime.org/analytics-platform/linux/eclipse_knime_3.3.1.linux.gtk..tar.gz
 	source = knime.sh
 	source = knime-sdk.desktop
 	source = LICENSE
-	md5sums = 91ebd28ae77b2a597d4619e0306bf3e2
+	md5sums = 7daa330031f730f91ef5751109a12ac6
 	md5sums = 7240fa995f2be4df2bccc463f5875f49
 	md5sums = e51afecee76a22937b5d5500056eeabd
 	md5sums = 9e93e4def16f04f7808bddb48da3c009

@@ -3,7 +3,7 @@
 
 pkgname="knime-sdk"
 _upstream_name="eclipse_knime"
-pkgver="3.3.0"
+pkgver="3.3.1"
 pkgrel="1"
 pkgdesc="Software Development Kit for Knime"
 url="http://www.knime.org/"
@@ -21,11 +21,11 @@ source=("https://download.knime.org/analytics-platform/linux/${_upstream_name}_$
         'knime.sh'
         'knime-sdk.desktop'
         'LICENSE')
-md5sums=('91ebd28ae77b2a597d4619e0306bf3e2'
+md5sums=('09d3983ee2e039157beb0ed12717bf71'
          '7240fa995f2be4df2bccc463f5875f49'
          'e51afecee76a22937b5d5500056eeabd'
          '9e93e4def16f04f7808bddb48da3c009')
-[ "${CARCH}" = 'x86_64' ] && md5sums[0]='e0e190719f7da0a5d0003465b8e35004'
+[ "${CARCH}" = 'x86_64' ] && md5sums[0]='18c31821e78cfbcfeb333614a794730b'
 
 package() {
     installpath="/usr/share/java"
