@@ -6,7 +6,7 @@ _build_gnome_help="no" # yes|no
 
 pkgname=easytag-git
 _gitname=easytag
-pkgver=2.4.3.r3.g19480f2
+pkgver=2.4.3.r34.g23947a2
 pkgrel=1
 pkgdesc="Utility for viewing and editing tags for most audio formats - git version"
 arch=('i686' 'x86_64')
@@ -28,13 +28,11 @@ sha1sums=('SKIP')
 
 pkgver() {
   cd "$_gitname"
-  git describe --long | sed 's/^easytag-//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --tags | sed 's/^easytag-//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
   cd "$_gitname"
-  ## remove  'node/directory;' from MimeType
-  sed -i 's/inode\/directory;//' data/easytag.desktop.in
   ## disable-gnome-help-files
   if [ "$_build_gnome_help" != 'yes' ]; then
     echo -e "\n>>>\n>>> Build without GNOME help files\n>>>\n"
