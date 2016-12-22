@@ -1,0 +1,32 @@
+pkgbase = icedove-bin
+	pkgdesc = A libre version of Debian Icedove, the standalone mail and news reader based on Mozilla Thunderbird.
+	pkgver = 45.5.1
+	pkgrel = 1
+	url = https://wiki.parabola.nu/icedove-bin
+	arch = i686
+	arch = x86_64
+	license = BSD
+	depends = alsa-lib
+	depends = dbus-glib
+	depends = gtk2
+	depends = hunspell
+	depends = icu=58.2
+	depends = libevent
+	depends = libvpx=1.6.0
+	depends = libxt
+	depends = mime-types
+	depends = mozilla-common
+	depends = nss
+	depends = sqlite
+	depends = startup-notification
+	depends = ttf-font
+	optdepends = libcanberra: for sound support
+	provides = iceweasel
+	options = !strip
+	source_i686 = https://repomirror.parabola.nu/pool/parabola_gnu+linux/icedove-1:45.5.1.deb1-2-i686.pkg.tar.xz
+	sha256sums_i686 = e5f6c473a17e0ed2df8f4440c600beaf96646fa46e1dac58cf28e19a75a733b5
+	source_x86_64 = https://repomirror.parabola.nu/pool/parabola_gnu+linux/icedove-1:45.5.1.deb1-2-x86_64.pkg.tar.xz
+	sha256sums_x86_64 = 9b5c7aecb93b31ec37f1c30aaf90ff0291a983aa0cbb38f0f2255ccf02c2df81
+
+pkgname = icedove-bin
+
