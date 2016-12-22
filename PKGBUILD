@@ -2,7 +2,7 @@
 
 pkgname=youdao-dict
 pkgver=1.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='YouDao Dictionary'
 arch=('i686' 'x86_64')
 url='http://cidian.youdao.com/index-linux.html'
