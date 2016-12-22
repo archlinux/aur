@@ -36,6 +36,9 @@ build() {
         --sharedstatedir=/usr/share/bitcoin \
         --localstatedir=/var/lib/bitcoin
   make -j$(nproc)
+
+  msg2 'Running Check...'
+  "$srcdir/bitcoinclassic/src/test/test_bitcoin"
 }
 
 package() {
