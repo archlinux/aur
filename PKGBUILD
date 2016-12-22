@@ -1,7 +1,7 @@
 # Maintainer: Bruno Pagani (a.k.a. ArchangeGabriel) <bruno.n.pagani@gmail.com>
 
 pkgbase=evince
-pkgname=evince-light
+pkgname=evince-light-old
 pkgver=3.22.1
 pkgrel=1
 pkgdesc="GNOME document viewer, built with minimal dependencies"
@@ -66,7 +66,7 @@ build()
     make
 }
 
-package_evince-light()
+package_evince-light-old()
 {
     cd "${srcdir}/${pkgbase}-${pkgver}"
 
