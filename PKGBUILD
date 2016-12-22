@@ -1,8 +1,14 @@
+# Maintainer: Tom Moore <t.moore01@gmail.com>
 # Contributor: ReNoM <renom@list.ru>
+
+# If you need the bundle, google VMware-ClientIntegrationPlugin-6.0.0.x86_64.bundle
+#
+# PS - This is suck a hack
+
 pkgname=vmware-vsphere-web-client-plugin
-pkgver=5.5.0.1896274
-pkgrel=2
-pkgdesc="Firefox and Chromium plugin, to access virtual machines console from vSphere Web Client. For make package, place VMware-ClientIntegrationPlugin-5.5.0.{your_arch}.bundle to PKGBUILD directory."
+pkgver=6.0.0
+pkgrel=1
+pkgdesc="Firefox and Chromium plugin, to access virtual machines console from vSphere Web Client. For make package, place VMware-ClientIntegrationPlugin-6.0.0.{your_arch}.bundle to PKGBUILD directory."
 arch=('i686' 'x86_64')
 url="http://www.vmware.com/"
 license=('custom:vmware')
@@ -12,10 +18,14 @@ optdepends=(
 'chromium-pepper-flash: for Chromium PPAPI based Flash Player support'
 'pipelight: for Mozilla Firefox Wine based Flash Player support'
 'freshplayerplugin-git: for Mozilla Firefox PPAPI based Flash Player support'
+'flash'
 )
-majverf=5.5.0
-majver=5.5
-minver=1896274
+majverf=6.0.0
+majver=60
+majverdot=6.0
+minvmrcver=1886719
+vmrcver=5.5
+vmrcverdot=5.5.0
 
 [ "$CARCH" == "i686" ] && source=(VMware-ClientIntegrationPlugin-${majverf}.i386.bundle) && bundle_arch=i386 && larch=32
 [ "$CARCH" == "x86_64" ] && source=(VMware-ClientIntegrationPlugin-${majverf}.x86_64.bundle) && bundle_arch=x86_64 && larch=64
@@ -28,8 +38,9 @@ build() {
   sh ../VMware-ClientIntegrationPlugin-${majverf}.${bundle_arch}.bundle -x files
 
   ##### Ported from files/vmware-installer/.installer/2.1.0/vmware-installer.py around line 186
-  SRC="$srcdir/files/vmware-vmrc-$majver"
-  DEST="/usr/lib/vmware-vmrc/$majver"
+  ### Thanks vmware for not updating vmrc to 6.0
+  SRC="$srcdir/files/vmware-vmrc-${vmrcver}"
+  DEST="/usr/lib/vmware-vmrc/${vmrcver}"
   libconf=$DEST/'libconf'
   replace=('etc/pango/pangorc' 'etc/pango/pango.modules' 'etc/pango/pangox.aliases'
                  'etc/gtk-2.0/gdk-pixbuf.loaders' 'etc/gtk-2.0/gtk.immodules')
@@ -46,38 +57,39 @@ build() {
 package ()
 {
         cd "$pkgdir"
-        mkdir -p usr/lib/vmware-cip/${majver}/
-        mkdir -p usr/lib/vmware-vmrc/${majver}/
+        mkdir -p usr/lib/vmware-cip/${majverdot}/
+        mkdir -p usr/lib/vmware-vmrc/${vmrcver}/
         mkdir -p usr/lib/mozilla/plugins
-        mkdir -p etc/vmware-vmrc/${majver}
-        echo "libdir = \"/usr/lib/vmware-vmrc/$majver\"" > etc/vmware-vmrc/${majver}/config
+        mkdir -p etc/vmware-vmrc/${vmrcver}
+        echo "libdir = \"/usr/lib/vmware-vmrc/${vmrcver}\"" > etc/vmware-vmrc/${vmrcver}/config
         # install cip
-        install ${srcdir}/files/vmware-cip-55/npVMwareClientSupportPlugin-5-5-0.so "usr/lib/vmware-cip/$majver/"
-        mv "$srcdir/files/vmware-cip-55/artwork" "usr/lib/vmware-cip/$majver/"
-        mv "$srcdir/files/vmware-cip-55/filetransfer" "usr/lib/vmware-cip/$majver/"
-        chmod +x "usr/lib/vmware-cip/$majver/filetransfer/fileTransfer"
-        mv "$srcdir/files/vmware-cip-55/ovftool" "usr/lib/vmware-cip/$majver/"
-        chmod +x "usr/lib/vmware-cip/$majver/ovftool/ovftool"
-        chmod +x "usr/lib/vmware-cip/$majver/ovftool/ovftool.bin"
-        ln -s "/usr/lib/vmware-cip/$majver/npVMwareClientSupportPlugin-5-5-0.so" "usr/lib/mozilla/plugins/npVMwareClientSupportPlugin-5-5-0.so"
+        install ${srcdir}/files/vmware-cip-60/npVMwareClientSupportPlugin-6-0-0.so "usr/lib/vmware-cip/${majverdot}/"
+        mv "$srcdir/files/vmware-cip-${majver}/artwork" "usr/lib/vmware-cip/${majverdot}/"
+        mv "$srcdir/files/vmware-cip-${majver}/filetransfer" "usr/lib/vmware-cip/${majverdot}/"
+        chmod +x "usr/lib/vmware-cip/${majverdot}/filetransfer/fileTransfer"
+        mv "$srcdir/files/vmware-cip-${majver}/ovftool" "usr/lib/vmware-cip/${majverdot}/"
+        chmod +x "usr/lib/vmware-cip/${majverdot}/ovftool/ovftool"
+        chmod +x "usr/lib/vmware-cip/${majverdot}/ovftool/ovftool.bin"
+        ln -s "/usr/lib/vmware-cip/${majverdot}/npVMwareClientSupportPlugin-6-0-0.so" "usr/lib/mozilla/plugins/npVMwareClientSupportPlugin-6-0-0.so"
         # install vmrc
-        install "$srcdir/files/vmware-vmrc-$majver/np-vmware-vmrc-$majverf-$minver-32.so" "usr/lib/vmware-vmrc/$majver/"
-        install "$srcdir/files/vmware-vmrc-$majver/np-vmware-vmrc-$majverf-$minver-64.so" "usr/lib/vmware-vmrc/$majver/"
-        install "$srcdir/files/vmware-vmrc-$majver/np-vmware-vmrc.so" "usr/lib/vmware-vmrc/$majver/"
-        install "$srcdir/files/vmware-vmrc-$majver/open_source_licenses.txt" "usr/lib/vmware-vmrc/$majver/"
-        install "$srcdir/files/vmware-vmrc-$majver/version.txt" "usr/lib/vmware-vmrc/$majver/"
-        install "$srcdir/files/vmware-vmrc-$majver/vmware-desktop-entry-creator" "usr/lib/vmware-vmrc/$majver/"
-        mv "$srcdir/files/vmware-vmrc-$majver/bin" "usr/lib/vmware-vmrc/$majver/"
-        chmod -R +x "usr/lib/vmware-vmrc/$majver/bin/"
-        mv "$srcdir/files/vmware-vmrc-$majver/lib" "usr/lib/vmware-vmrc/$majver/"
-        mv "$srcdir/files/vmware-vmrc-$majver/libconf" "usr/lib/vmware-vmrc/$majver/"
-        mv "$srcdir/files/vmware-vmrc-$majver/share" "usr/lib/vmware-vmrc/$majver/"
-        mv "$srcdir/files/vmware-vmrc-$majver/xkeymap" "usr/lib/vmware-vmrc/$majver/"
-        ln -s /usr/lib/vmware-vmrc/${majver}/np-vmware-vmrc-${majverf}-$minver-${larch}.so usr/lib/mozilla/plugins/np-vmware-vmrc-${majverf}-1601065-${larch}.so
-        ln -s /usr/lib/vmware-vmrc/${majver}/bin/appLoader usr/lib/vmware-vmrc/${majver}/bin/vmware-deviceMgr
-        ln -s /usr/lib/vmware-vmrc/${majver}/bin/appLoader usr/lib/vmware-vmrc/${majver}/bin/vmware-vmrc
-        ln -s /usr/lib/vmware-vmrc/${majver}/bin/appLoader usr/lib/vmware-vmrc/${majver}/bin/vmware-vmrc-daemon
-        ln -s /usr/lib/vmware-vmrc/${majver}/bin/vmware-deviceMgr usr/lib/vmware-vmrc/${majver}/vmware-deviceMgr
-        ln -s /usr/lib/vmware-vmrc/${majver}/bin/vmware-vmrc usr/lib/vmware-vmrc/${majver}/vmware-vmrc
-        ln -s /usr/lib/vmware-vmrc/${majver}/bin/vmware-vmrc-daemon usr/lib/vmware-vmrc/${majver}/vmware-vmrc-daemon
+        install "$srcdir/files/vmware-vmrc-${vmrcver}/np-vmware-vmrc-${vmrcverdot}-${minvmrcver}-32.so" "usr/lib/vmware-vmrc/${vmrcver}/"
+        install "$srcdir/files/vmware-vmrc-${vmrcver}/np-vmware-vmrc-${vmrcverdot}-${minvmrcver}-64.so" "usr/lib/vmware-vmrc/${vmrcver}/"
+        install "$srcdir/files/vmware-vmrc-${vmrcver}/np-vmware-vmrc.so" "usr/lib/vmware-vmrc/${vmrcver}/"
+        install "$srcdir/files/vmware-vmrc-${vmrcver}/open_source_licenses.txt" "usr/lib/vmware-vmrc/${vmrcver}/"
+        install "$srcdir/files/vmware-vmrc-${vmrcver}/version.txt" "usr/lib/vmware-vmrc/${vmrcver}/"
+        install "$srcdir/files/vmware-vmrc-${vmrcver}/vmware-desktop-entry-creator" "usr/lib/vmware-vmrc/${vmrcver}/"
+        mv "$srcdir/files/vmware-vmrc-${vmrcver}/bin" "usr/lib/vmware-vmrc/${vmrcver}/"
+        chmod -R +x "usr/lib/vmware-vmrc/${vmrcver}/bin/"
+        mv "$srcdir/files/vmware-vmrc-${vmrcver}/lib" "usr/lib/vmware-vmrc/${vmrcver}/"
+        mv "$srcdir/files/vmware-vmrc-${vmrcver}/libconf" "usr/lib/vmware-vmrc/${vmrcver}/"
+        mv "$srcdir/files/vmware-vmrc-${vmrcver}/share" "usr/lib/vmware-vmrc/${vmrcver}/"
+        mv "$srcdir/files/vmware-vmrc-${vmrcver}/xkeymap" "usr/lib/vmware-vmrc/${vmrcver}/"
+        ln -s /usr/lib/vmware-vmrc/${vmrcver}/np-vmware-vmrc-${vmrcver}-${larch}.so usr/lib/mozilla/plugins/np-vmware-vmrc-${vmrcver}-${larch}.so
+        ln -s /usr/lib/vmware-vmrc/${vmrcver}/bin/appLoader usr/lib/vmware-vmrc/${vmrcver}/bin/vmware-deviceMgr
+        ln -s /usr/lib/vmware-vmrc//bin/appLoader usr/lib/vmware-vmrc/${vmrcver}/bin/vmware-vmrc
+        ln -s /usr/lib/vmware-vmrc/${vmrcver}/bin/appLoader usr/lib/vmware-vmrc/${vmrcver}/bin/vmware-vmrc-daemon
+        ln -s /usr/lib/vmware-vmrc/${vmrcver}/bin/vmware-deviceMgr usr/lib/vmware-vmrc/${vmrcver}/vmware-deviceMgr
+        ln -s /usr/lib/vmware-vmrc/${vmrcver}/bin/vmware-vmrc usr/lib/vmware-vmrc/${vmrcver}/vmware-vmrc
+        ln -s /usr/lib/vmware-vmrc/${vmrcver}/bin/vmware-vmrc-daemon usr/lib/vmware-vmrc/${vmrcver}/vmware-vmrc-daemon
 }
+sha256sums=('7ebec5d79aa9006c1aacf5413dce96ffb61154823b4700e132f044a80fc374c8')
