@@ -1,0 +1,14 @@
+diff -Naur lightum-git.orig/Makefile lightum-git/Makefile
+--- lightum-git.orig/Makefile	2016-12-20 20:20:00.987080212 +0100
++++ lightum-git/Makefile	2016-12-20 20:15:15.122803110 +0100
+@@ -2,8 +2,8 @@
+ SHELL = /bin/sh
+ CC?=gcc
+ CDEBUGFLAGS= -g -O2
+-CFLAGS = `pkg-config --cflags dbus-1 --cflags glib-2.0 --cflags gio-2.0 --cflags libsystemd-login` -Wall -Wextra -Wwrite-strings $(CDEBUGFLAGS)
+-LDFLAGS= `pkg-config --libs dbus-1 --libs glib-2.0 --libs gio-2.0 --libs libsystemd-login` $(CDEBUGFLAGS) -lX11 -lXext -lXss -lm
++CFLAGS = `pkg-config --cflags dbus-1 --cflags glib-2.0 --cflags gio-2.0 --cflags libsystemd` -Wall -Wextra -Wwrite-strings $(CDEBUGFLAGS)
++LDFLAGS= `pkg-config --libs dbus-1 --libs glib-2.0 --libs gio-2.0 --libs libsystemd` $(CDEBUGFLAGS) -lX11 -lXext -lXss -lm
+ INSTALL = /usr/bin/install -c
+ INSTALLDATA = /usr/bin/install -c -m 644
+ 

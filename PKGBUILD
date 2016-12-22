@@ -4,6 +4,7 @@ pkgver=2.3.1
 pkgrel=1
 pkgdesc="Lightum is a daemon to control the keyboard brightness and screen backlight on MacBook based laptops."
 arch=(i386 x86_64)
+depends=(dbus glib2 libsystemd libx11 libxext libxss glibc)
 url="https://github.com/poliva/lightum"
 license=('GPL2')
 md5sums=(SKIP)
@@ -16,6 +17,7 @@ pkgver() {
 
 prepare() {
 	cd "$pkgname"
+    patch -p1 -i ../../lightum-git.diff
 }
 
 build() {
