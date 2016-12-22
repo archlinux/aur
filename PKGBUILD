@@ -1,8 +1,8 @@
 # Maintainer: Maciej Balajewicz <mbalajew at illinois dot edu>
 
 pkgname=vim-solarized8-git
-pkgver=0.4
-pkgrel=3
+pkgver=0.4.r0.g769661a
+pkgrel=4
 pkgdesc="Optimized Solarized colorschemes. Best served with true-color terminals!"
 arch=('any')
 url="http://ethanschoonover.com/solarized"
@@ -16,8 +16,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "$pkgname"
-  local _tmpver="$(git log -n 1 --format="%cd" --date=short)"
-  echo "${_tmpver//-/}"
+  git describe --long --tags | sed -r 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
 }
 
 package() {
