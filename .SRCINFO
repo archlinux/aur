@@ -1,13 +1,13 @@
-pkgbase = arm-android-gnueabihf-glibc-headers
-	pkgdesc = GNU C Library headers (arm-android-gnueabihf)
+pkgbase = arm-android-eabi-glibc-headers
+	pkgdesc = GNU C Library headers (arm-android-eabi)
 	pkgver = 2.23
 	pkgrel = 1
 	url = http://www.gnu.org/software/libc/
 	arch = any
 	license = GPL
 	license = LGPL
-	makedepends = arm-android-gnueabihf-gcc-stage1>=5.3.0
-	depends = arm-android-gnueabihf-linux-api-headers>=3.10.0
+	makedepends = arm-android-eabi-gcc-stage1>=5.3.0
+	depends = arm-android-eabi-linux-api-headers>=3.10.0
 	options = !buildflags
 	options = !strip
 	options = staticlibs
@@ -19,5 +19,5 @@ pkgbase = arm-android-gnueabihf-glibc-headers
 	md5sums = SKIP
 	md5sums = 90fad90d55a4c70d91a79539ed3642e2
 
-pkgname = arm-android-gnueabihf-glibc-headers
+pkgname = arm-android-eabi-glibc-headers
 
