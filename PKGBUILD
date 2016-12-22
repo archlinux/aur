@@ -10,8 +10,8 @@ pkgname=${_full_name}-${_lang}
 pkgdesc="Standalone Web Browser from Mozilla — Nightly build (${_lang})"
 url="https://nightly.mozilla.org/"
 _version='53.0a1'
-pkgver=53.0a1.20161116
-pkgrel=3
+pkgver=53.0a1.20161222
+pkgrel=1
 arch=('i686' 'x86_64')
 license=('MPL' 'GPL' 'LGPL')
 depends=('dbus-glib' 'gtk2' 'gtk3' 'libxt' 'nss' 'mime-types')
@@ -24,39 +24,32 @@ _url_l10n="${_url}-l10n"
 _src="${_name}-${_version}.${_lang}.linux"
 _file_i686="${_src}-i686.tar.bz2"
 _file_x86_64="${_src}-x86_64.tar.bz2"
-_sums_i686="${_url_l10n}/${_src}-i686.checksums"
-_sums_x86_64="${_url_l10n}/${_src}-x86_64.checksums"
+_sums_i686="${_src}-i686.checksums"
+_sums_x86_64="${_src}-x86_64.checksums"
 source=(
     'firefox-nightly.desktop'
     'firefox-nightly-safe.desktop'
     'vendor.js'
 )
-source_i686=("${_url_l10n}/${_file_i686}" "${_sums_i686}"{,.asc})
-source_x86_64=("${_url_l10n}/${_file_x86_64}" "${_sums_x86_64}"{,.asc})
+source_i686=("${_url_l10n}"/{"${_file_i686}","${_sums_i686}"{,.asc}})
+source_x86_64=("${_url_l10n}"/{"${_file_x86_64}","${_sums_x86_64}"{,.asc}})
 sha512sums=(
     '725babc1365e02a30f50aafbc069b04a97cd247f76240b99b0a734dcce0e560f30cfd441efe9b0b9edcc48f327c8adad34e1ae45c2ba047205c84921d5e43e59'
     '2df6b84978ec459ffad3e0d285c816da07a890db30284d3b2bec250472c10e08003edf705278cb97e02a52fb5f1325d962c08d5fbcf98f484e982a97e381407b'
     'bae5a952d9b92e7a0ccc82f2caac3578e0368ea6676f0a4bc69d3ce276ef4f70802888f882dda53f9eb8e52911fb31e09ef497188bcd630762e1c0f5293cc010'
 )
-_srcsum_i686="$(curl -s "${_sums_i686}" | grep "${_file_i686}" | grep sha512 | cut -d " " -f1)"
-_srcsum_x86_64="$(curl -s "${_sums_x86_64}" | grep "${_file_x86_64}" | grep sha512 | cut -d " " -f1)"
-sha512sums_i686=("${_srcsum_i686}" 'SKIP' 'SKIP')
-sha512sums_x86_64=("${_srcsum_x86_64}" 'SKIP' 'SKIP')
+_getsum_i686="$(curl -O ${_url_l10n}/${_sums_i686})"
+_getsum_x86_64="$(curl -O ${_url_l10n}/${_sums_x86_64})"
+sha512sums_i686=("$(grep ${_file_i686} ${_sums_i686} | grep sha512 | cut -d " " -f1)" 'SKIP' 'SKIP')
+sha512sums_x86_64=("$(grep ${_file_x86_64} ${_sums_x86_64} | grep sha512 | cut -d " " -f1)" 'SKIP' 'SKIP')
 validpgpkeys=('14F26682D0916CDD81E37B6D61B7B526D98F0353') # Mozilla’s GnuPG release key
 
 pkgver() {
-  SRC_VER="${_name}-${_version}.en-US.linux-${CARCH}.txt"
-  curl -OR "${_url}/${SRC_VER}"
-  msg "${_version}.$(head -n1 ${SRC_VER} | cut -c -8)"
-  echo "${_version}.$(head -n1 ${SRC_VER} | cut -c -8)"
+  echo "${_version}.$(curl -s ${_url}/${_name}-${_version}.en-US.linux-${CARCH}.txt | head -n1 | cut -c -8)"
 }
 
 package() {
   OPT_PATH="/opt/${_full_name}"
-
-  # Loop (Firefox Hello) and GetPocket (Pocket proprietary service) extensions.
-  # Uncomment this line if you want to remove them, or use pacman NoExtract option.
-  #rm -rf ${_name}/browser/features/{loop@mozilla.org.xpi,firefox@getpocket.com.xpi}
 
   # Install the package files
   install -d "${pkgdir}"/{usr/{bin,share/applications},opt}
