@@ -8,7 +8,7 @@ pkgbase = arm-android-gnueabihf-glibc
 	license = LGPL
 	makedepends = arm-android-gnueabihf-gcc-stage2>=6.1.1
 	makedepends = gperf
-	depends = arm-android-gnueabihf-linux-api-headers>=4.5.5
+	depends = arm-android-gnueabihf-linux-api-headers>=3.10.0
 	provides = arm-android-gnueabihf-glibc-headers=2.23
 	provides = arm-android-gnueabihf-eglibc
 	conflicts = arm-android-gnueabihf-glibc-headers

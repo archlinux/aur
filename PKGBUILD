@@ -9,7 +9,7 @@ pkgdesc="GNU C Library (${_target})"
 arch=('any')
 url="http://www.gnu.org/software/libc/"
 license=('GPL' 'LGPL')
-depends=("${_target}-linux-api-headers>=4.5.5")
+depends=("${_target}-linux-api-headers>=3.10.0")
 makedepends=("${_target}-gcc-stage2>=6.1.1" 'gperf')
 provides=("${_target}-glibc-headers=${pkgver}" "${_target}-eglibc")
 conflicts=("${_target}-glibc-headers" "${_target}-eglibc")
