@@ -2,7 +2,7 @@
 # Contributor: Phillip Schichtel <phillip.public@schich.tel>
 
 pkgname=adapta-gtk-theme-git
-pkgver=3.89.1.113
+pkgver=3.89.2.1
 pkgrel=1
 pkgdesc='An adaptive Gtk+ theme based on Material Design Guidelines'
 arch=('any')
@@ -45,6 +45,9 @@ package() {
   cd adapta-gtk-theme
 
   make DESTDIR="${pkgdir}" install
+
+  install -dm 755 "${pkgdir}"/usr/share/plank/themes
+  ln -s /usr/share/themes/Adapta/plank "${pkgdir}"/usr/share/plank/themes/Adapta
 }
 
 # vim: ts=2 sw=2 et:
