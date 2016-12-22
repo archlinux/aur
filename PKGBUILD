@@ -1,6 +1,6 @@
 # Maintainer: Frantisek Fladung <ametisf@gmail.com>
 
-_target="arm-android-gnueabihf"
+_target="arm-android-eabi"
 pkgname="${_target}-gcc"
 pkgver=6.1.1
 _pkgver=6
