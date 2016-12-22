@@ -2,7 +2,7 @@
 # Tue May  3 10:39:22 UTC 2016
 pkgbase = knime-desktop
 	pkgdesc = A user-friendly graphical workbench for the entire data analysis process
-	pkgver = 3.3.0
+	pkgver = 3.3.1
 	pkgrel = 1
 	url = http://www.knime.org/
 	changelog = ChangeLog
@@ -15,11 +15,11 @@ pkgbase = knime-desktop
 	optdepends = bash: Required for bash-scriptable nodes
 	optdepends = r: Required for R-scriptable nodes
 	options = !emptydirs
-	source = https://download.knime.org/analytics-platform/linux/knime_3.3.0.linux.gtk..tar.gz
+	source = https://download.knime.org/analytics-platform/linux/knime_3.3.1.linux.gtk..tar.gz
 	source = knime.sh
 	source = knime-desktop.desktop
 	source = LICENSE
-	md5sums = 1430f01061f64ea895983092339a8ae1
+	md5sums = 7daa330031f730f91ef5751109a12ac6
 	md5sums = 597314dbe6d4aae1d8381388d83d4b81
 	md5sums = 4de9d5ea5f332ce712dc80b52f0e8501
 	md5sums = 9e93e4def16f04f7808bddb48da3c009
