@@ -23,8 +23,14 @@ source=("git://github.com/brummer10/GxUVox720k.lv2.git"
 "git://github.com/brummer10/GxGuvnor.lv2.git"
 "git://github.com/brummer10/GxSuppaToneBender.lv2.git"
 "git://github.com/brummer10/screcord.lv2.git"
-"git://github.com/brummer10/GxToneMachine.lv2")
+"git://github.com/brummer10/GxToneMachine.lv2"
+"git://github.com/brummer10/GxVBassPreAmp.lv2"
+"git://github.com/brummer10/GxBottleRocket.lv2"
+"git://github.com/brummer10/GxHotBox.lv2")
 sha256sums=('SKIP'
+			'SKIP'
+			'SKIP'
+			'SKIP'
 			'SKIP'
 			'SKIP'
 			'SKIP'
