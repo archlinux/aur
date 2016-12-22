@@ -3,13 +3,13 @@ pkgname=python2-bufr
 _py_pkgname=python-bufr # The pypi package name
 pkgver="0.2.5"
 _py_pkgver="0.2-5" # the official version has a hyphen
-pkgrel=2
+pkgrel=3
 pkgdesc="Generic Python BUFR file reader based on ECMWF BUFR library"
 arch=('i686' 'x86_64')
 url="https://github.com/pytroll/python-bufr"
 license=('GPL3')
 depends=('python2')
-makedepends=('python2-numpy' 'libbufr-ecmwf')
+makedepends=('python2-numpy' 'eccodes')
 options=(!emptydirs)
 source=(https://github.com/pytroll/python-bufr/archive/v0.2-5.tar.gz)
 md5sums=('78cb04b43e61d7c097a0b8f8c805ab3f')
@@ -22,6 +22,7 @@ build() {
          -e "s|^#![ ]*/usr/bin/env python$|#!/usr/bin/env python2|" \
          -e "s|^#![ ]*/bin/env python$|#!/usr/bin/env python2|" \
          $(find ${srcdir} -name '*.py')
+  sed -i setup.py -e 's/libraries = \[\x27bufr/libraries = \[\x27eccodes/'
   python2 setup.py build
 }
 
