@@ -4,7 +4,7 @@ pkgname=menutray
 pkgver=0.47
 pkgrel=1
 
-pkgdesc="A simple GTK+ application menu tray, written in Perl."
+pkgdesc="An application menu through a GTK+ tray status icon."
 url="https://github.com/trizen/$pkgname"
 
 arch=('any')
