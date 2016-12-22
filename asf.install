@@ -1,14 +1,5 @@
 post_install() {
-    if grep -q "^asf" /etc/group &> /dev/null ; then
-        groupmod -n asf asf &> /dev/null                                                 
-    else
-        groupadd -r asf &> /dev/null
-    fi
-    if grep -q "^asf:" /etc/passwd 2> /dev/null ; then
-        usermod -s /bin/false -c "ArchiSteamFarm daemon" -d /var/lib/asf -g asf asf &> /dev/null
-    else
-        useradd -s /bin/false -c "ArchiSteamFarm daemon user" -d /var/lib/asf -g asf -r asf &> /dev/null
-    fi
+    systemd-sysusers asf.conf
     chown -R asf: /var/lib/asf
 }
 
@@ -25,14 +16,5 @@ post_upgrade() {
 
       echo "# ASF config folder has been moved to /var/lib/asf"
       echo "# Consider this change when using /usr/bin/asf (e.g. 'asf --path=/var/lib/asf')"
-    fi
-}
-
-post_remove() {
-    if grep -q "^asf:" /etc/passwd 2> /dev/null ; then
-        userdel asf &> /dev/null
-    fi
-    if grep -q "^asf" /etc/group &> /dev/null ; then
-        groupdel asf &> /dev/null                                                 
     fi
 }

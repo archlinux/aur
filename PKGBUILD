@@ -2,7 +2,7 @@
 
 pkgname="asf"
 pkgver="2.1.7.9"
-pkgrel=1
+pkgrel=2
 pkgdesc="Steam cards farmer."
 arch=('any')
 url="https://github.com/JustArchi/ArchiSteamFarm"
@@ -15,12 +15,14 @@ source=("https://github.com/JustArchi/ArchiSteamFarm/releases/download/${pkgver}
         "${pkgname}.sh"
         "${pkgname}-config.sh"
         "${pkgname}.service"
-        "${pkgname}-user.service")
+        "${pkgname}-user.service"
+        "${pkgname}.sysusers")
 sha256sums=('17b4d38a7f35f801e0a35c365634e545640f7b1e72ace578bbdb96994ae87a8f'
             'a5d0324c029efb1f99264e787fea26ad53953b4df59bf642bca1ffabad4027f5'
             '63b8d4718e8cc61016ef415ff418e6180102b077315f5ce77bfcab9c03433565'
             '39166dc6947b81ba9a3f60cc1f117198050fb5e4a7fb16a199adb2a77af2b205'
-            '1948780515929c7fc8ffa6033bc79a55cbae375a1397326ef9dba0dfbe91cc56')
+            '1948780515929c7fc8ffa6033bc79a55cbae375a1397326ef9dba0dfbe91cc56'
+            'df5d5558e20a4164bc20f5b44e267baebb382c49d7289a2bbdd6c5544143182b')
 
 package() {
     install -d -m 755 "${pkgdir}/opt/${pkgname}"
@@ -32,6 +34,7 @@ package() {
     install -D -m755 "${srcdir}/${pkgname}-config.sh" "${pkgdir}/usr/bin/${pkgname}-config"
     install -D -m644 "${srcdir}/${pkgname}.service" "${pkgdir}/usr/lib/systemd/system/${pkgname}.service"
     install -D -m644 "${srcdir}/${pkgname}-user.service" "${pkgdir}/usr/lib/systemd/user/${pkgname}.service"
+    install -D -m644 "${srcdir}/${pkgname}.sysusers" "${pkgdir}/usr/lib/sysusers.d/${pkgname}.conf"
 
     # disable auto-updates and version checks
     sed -i 's/"AutoUpdates": true,/"AutoUpdates": false,/g' ${pkgdir}/var/lib/${pkgname}/config/ASF.json
