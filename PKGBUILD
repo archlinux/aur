@@ -70,8 +70,7 @@ build() {
     --enable-wtmp \
     --enable-xft \
     --enable-xim \
-    --enable-xterm-scroll \
-    --disable-frills
+    --enable-xterm-scroll
   make
 }
 
