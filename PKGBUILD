@@ -1,6 +1,6 @@
 # Maintainer: František Fladung <ametisf@gmail.com>
 
-_target="arm-android-gnueabihf"
+_target="arm-android-eabi"
 pkgname=${_target}-glibc
 pkgver=2.23
 pkgrel=1

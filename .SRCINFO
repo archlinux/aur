@@ -1,19 +1,19 @@
-pkgbase = arm-android-gnueabihf-glibc
-	pkgdesc = GNU C Library (arm-android-gnueabihf)
+pkgbase = arm-android-eabi-glibc
+	pkgdesc = GNU C Library (arm-android-eabi)
 	pkgver = 2.23
 	pkgrel = 1
 	url = http://www.gnu.org/software/libc/
 	arch = any
 	license = GPL
 	license = LGPL
-	makedepends = arm-android-gnueabihf-gcc-stage2>=6.1.1
+	makedepends = arm-android-eabi-gcc-stage2>=6.1.1
 	makedepends = gperf
-	depends = arm-android-gnueabihf-linux-api-headers>=3.10.0
-	provides = arm-android-gnueabihf-glibc-headers=2.23
-	provides = arm-android-gnueabihf-eglibc
-	conflicts = arm-android-gnueabihf-glibc-headers
-	conflicts = arm-android-gnueabihf-eglibc
-	replaces = arm-android-gnueabihf-glibc-headers
+	depends = arm-android-eabi-linux-api-headers>=3.10.0
+	provides = arm-android-eabi-glibc-headers=2.23
+	provides = arm-android-eabi-eglibc
+	conflicts = arm-android-eabi-glibc-headers
+	conflicts = arm-android-eabi-eglibc
+	replaces = arm-android-eabi-glibc-headers
 	options = !buildflags
 	options = !strip
 	options = staticlibs
@@ -25,5 +25,5 @@ pkgbase = arm-android-gnueabihf-glibc
 	md5sums = SKIP
 	md5sums = 90fad90d55a4c70d91a79539ed3642e2
 
-pkgname = arm-android-gnueabihf-glibc
+pkgname = arm-android-eabi-glibc
 
