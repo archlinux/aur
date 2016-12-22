@@ -1,5 +1,5 @@
 pkgname=gogs-git
-pkgver=0.9.105.1221.r1.79a2745b
+pkgver=0.9.107.1222.r5.89e93fe0
 pkgrel=1
 pkgdesc="Gogs(Go Git Service) is a Self Hosted Git Service in the Go Programming Language."
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
@@ -24,7 +24,7 @@ md5sums=('SKIP'
          'SKIP'
          '4ea1610580f7e7de4259025f8980942d'
          'e919a9b9cfee91e3ff146bc8841d4d28'
-         '06f9a972e6770e50056dc316d44583da')
+         '0cef7ff4495be24a34178a4f29e803b6')
 install=gogs.install
 _gogsdir="src/github.com/gogits/gogs"
 
@@ -40,9 +40,10 @@ prepare() {
 
 	glide install
 
-	sed -i conf/app.ini \
-	    -e '/^RUN_USER/         c \RUN_USER = gogs' \
-	    -e '/^STATIC_ROOT_PATH/ c \STATIC_ROOT_PATH = /usr/share/gogs' \
+	sed -r -i conf/app.ini \
+		-e '0,             /^\[/ s/^(RUN_USER)\W.*$/\1 = gogs/' \
+		-e '/^\[server\]/, /^\[/ s/^(STATIC_ROOT_PATH)\W.*$/\1 = \/usr\/share\/gogs/' \
+		-e '/^\[log\]/,    /^\[/ s/^(ROOT_PATH)\W.*$/\1 = \/var\/log\/gogs/' \
 	;
 }
 

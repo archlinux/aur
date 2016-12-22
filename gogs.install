@@ -1,12 +1,15 @@
+post_upgrade() {
+    if hash systemd-sysusers &> /dev/null; then
+        systemd-sysusers gogs.conf
+    fi
+
+    if hash systemd-tmpfiles &> /dev/null; then
+        systemd-tmpfiles --create gogs.conf
+    fi
+}
+
 post_install() {
-
-	if hash systemd-sysusers &> /dev/null; then
-		systemd-sysusers gogs.conf
-	fi
-
-	if hash systemd-tmpfiles &> /dev/null; then
-		systemd-tmpfiles --create gogs.conf
-	fi
+	post_upgrade
 
 cat <<EOF
 >>>
