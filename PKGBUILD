@@ -6,6 +6,8 @@ arch=('x86_64')
 url='http://www.onlyoffice.com/'
 depends=("alsa-lib" "nss" "libxtst" "qt5-x11extras" "qt5-svg" "gconf" "libx11" "libxss" "curl" "gtkglext" "cairo" "libstdc++5" "ttf-dejavu" "ttf-liberation" "libcurl-gnutls" "libcurl-compat")
 makedepends=('w3m')
+provides=('onlyoffice-desktopeditors')
+conflicts=('onlyoffice-desktopeditors-portable')
 license=('AGPL-3.0')
 source=("http://download.onlyoffice.com/install/desktop/editors/linux/onlyoffice-desktopeditors_amd64.deb")
 sha256sums=('SKIP')
@@ -13,6 +15,7 @@ sha256sums=('SKIP')
 package() {
   tar xf "${srcdir}/data.tar.xz" -C "${pkgdir}"
 
+  rm -rf "${pkgdir}/opt/onlyoffice/desktopeditors/dictionaries/.git"
   #suid sandbox
   chmod 4755 "${pkgdir}/opt/onlyoffice/desktopeditors/chrome-sandbox"
 
