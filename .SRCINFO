@@ -1,6 +1,6 @@
 pkgbase = abuild
 	pkgdesc = Script to build Alpine packages
-	pkgver = 2.27.0
+	pkgver = 2.29.0
 	pkgrel = 1
 	url = http://git.alpinelinux.org/cgit/abuild/
 	arch = i686
@@ -8,8 +8,8 @@ pkgbase = abuild
 	license = GPL2
 	depends = curl
 	depends = openssl
-	source = http://dev.alpinelinux.org/archive/abuild/abuild-2.27.0.tar.xz
-	md5sums = c67e4c971c54b4d550e16db3ba331f96
+	source = http://dev.alpinelinux.org/archive/abuild/abuild-2.29.0.tar.xz
+	md5sums = 1a51f8786331ddf79bf46357fe938f6a
 
 pkgname = abuild
 
