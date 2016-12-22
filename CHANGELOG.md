@@ -1,3 +1,19 @@
+Changes in [0.9.4](https://github.com/vector-im/riot-web/releases/tag/v0.9.4) (2016-12-22)
+==========================================================================================
+[Full Changelog](https://github.com/vector-im/riot-web/compare/v0.9.3...v0.9.4)
+
+ * Update to libolm 2.1.0. This should help resolve a problem with browser
+   sessions being logged out ([\#2726](https://github.com/vector-im/riot-web/issues/2726)).
+
+Changes in [0.9.3](https://github.com/vector-im/riot-web/releases/tag/v0.9.3) (2016-12-22)
+==========================================================================================
+[Full Changelog](https://github.com/vector-im/riot-web/compare/v0.9.2...v0.9.3)
+
+ * (from matrix-react-sdk) Fix regression where the date separator would be displayed
+   at the wrong time of day.
+ * README.md: fix GFMD for nativefier
+   [\#2755](https://github.com/vector-im/riot-web/pull/2755)
+
 Changes in [0.9.2](https://github.com/vector-im/riot-web/releases/tag/v0.9.2) (2016-12-16)
 ==========================================================================================
 [Full Changelog](https://github.com/vector-im/riot-web/compare/v0.9.1...v0.9.2)
@@ -109,7 +125,7 @@ Changes in [0.9.0](https://github.com/vector-im/vector-web/releases/tag/v0.9.0) 
  * Implement Platforms
    [\#2531](https://github.com/vector-im/vector-web/pull/2531)
 
-hanges in [0.8.4](https://github.com/vector-im/vector-web/releases/tag/v0.8.4) (2016-11-04)
+Changes in [0.8.4](https://github.com/vector-im/vector-web/releases/tag/v0.8.4) (2016-11-04)
 ============================================================================================
 [Full Changelog](https://github.com/vector-im/vector-web/compare/v0.8.4-rc.2...v0.8.4)
 
