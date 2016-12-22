@@ -1,7 +1,7 @@
 # Maintainer: Bruno Pagani (a.k.a. ArchangeGabriel) <bruno.n.pagani@gmail.com>
 
-pkgbase=evince
-pkgname=evince-light
+_pkgname=evince
+pkgname=${_pkgname}-light
 pkgver=3.22.1
 pkgrel=1
 pkgdesc="GNOME document viewer, built with minimal dependencies"
@@ -20,14 +20,13 @@ depends=('gnome-icon-theme'
 #        'libgxps' for XPS
 #        'gvfs' for bookmark and annotations
 makedepends=('itstool' 'intltool' 'python')
-provides=("${pkgbase}")
-conflicts=("${pkgbase}")
-source=("http://ftp.gnome.org/pub/GNOME/sources/${pkgbase}/${pkgver%.*}/${pkgbase}-${pkgver}.tar.xz")
+provides=("${_pkgname}")
+conflicts=("${_pkgname}")
+source=("https://ftp.gnome.org/pub/GNOME/sources/${_pkgname}/${pkgver%.*}/${_pkgname}-${pkgver}.tar.xz")
 sha256sums=('f3d439db3b5a5745d26175d615a71dffa1535235b1e3aa0b85d397ea33ab231c')
 
-build()
-{
-    cd ${srcdir}/${pkgbase}-${pkgver}
+build() {
+    cd ${_pkgname}-${pkgver}
 
 #        --enable-ps if building with libspectre
 #        --enable-djvu if building with djvulibre
@@ -38,7 +37,7 @@ build()
     ./configure \
         --sysconfdir=/etc \
         --prefix=/usr \
-        --libexecdir=/usr/lib/${pkgbase} \
+        --libexecdir=/usr/lib/${_pkgname} \
         --localstatedir=/var \
         --with-platform=gnome \
         --disable-debug \
@@ -66,9 +65,8 @@ build()
     make
 }
 
-package_evince-light()
-{
-    cd "${srcdir}/${pkgbase}-${pkgver}"
+package() {
+    cd ${_pkgname}-${pkgver}
 
     make DESTDIR="${pkgdir}" install
 }
