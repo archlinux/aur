@@ -1,6 +1,6 @@
 # Contributor: Graziano Giuliani <graziano.giuliani@gmail.com>
 pkgname=libaec
-pkgver=0.3.4
+pkgver=1.0.0
 pkgrel=1
 pkgdesc="Adaptive Entropy Coding library"
 arch=(i686 x86_64)
@@ -11,8 +11,8 @@ depends=()
 conflicts=(szip)
 provides=(szip)
 makedepends=(cmake)
-source=(https://gitlab.dkrz.de/k202009/libaec/uploads/e3a951204308ba1f623b529cf9e5f574/libaec-0.3.4.tar.gz)
-md5sums=('e0fe175c610152ec446b4e80b03cbce2')
+source=(https://gitlab.dkrz.de/k202009/libaec/uploads/631e85bcf877c2dcaca9b2e6d6526339/${pkgname}-${pkgver}.tar.gz)
+md5sums=('a848b4e397ed210313183a5e92592e42')
 
 build() {
   cd ${srcdir}/${pkgname}-${pkgver}
