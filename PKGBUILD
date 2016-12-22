@@ -11,7 +11,7 @@ pkgdesc="The GNU Compiler Collection. Stage 2 for toolchain building (${_target}
 arch=('i686' 'x86_64')
 license=('GPL' 'LGPL' 'FDL' 'custom')
 url="http://gcc.gnu.org"
-depends=("${_target}-binutils>=2.26.1-1" "${_target}-glibc-headers>=2.23-5" 'libmpc' 'zlib')
+depends=("${_target}-binutils>=2.26.1-1" "${_target}-glibc-headers>=2.23-1" 'libmpc' 'zlib')
 options=('!emptydirs' '!distcc' '!strip')
 conflicts=("${_target}-gcc-stage1")
 replaces=("${_target}-gcc-stage1")

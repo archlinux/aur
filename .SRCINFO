@@ -10,7 +10,7 @@ pkgbase = arm-android-gnueabihf-gcc-stage2
 	license = FDL
 	license = custom
 	depends = arm-android-gnueabihf-binutils>=2.26.1-1
-	depends = arm-android-gnueabihf-glibc-headers>=2.23-5
+	depends = arm-android-gnueabihf-glibc-headers>=2.23-1
 	depends = libmpc
 	depends = zlib
 	provides = arm-android-gnueabihf-gcc-stage1=6.1.1
