@@ -39,6 +39,6 @@ build() {
 
 package() {
   cd "$srcdir/$_pkgname"
-  install -Dm644 "extra/udev/27-box0-v5.rules" "$pkgdir/usr/lib/udev/rules.d/27-box0-v5.rules"
+  install -Dm644 "extra/udev/box0-v5.rules" "$pkgdir/usr/lib/udev/rules.d/27-box0-v5.rules"
   make -C "build" DESTDIR="${pkgdir}" install
 }
