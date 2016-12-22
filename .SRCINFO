@@ -1,6 +1,6 @@
 pkgbase = python2-boto3
 	pkgdesc = The AWS SDK for Python
-	pkgver = 1.4.2
+	pkgver = 1.4.3
 	pkgrel = 1
 	url = http://pypi.python.org/pypi/boto3
 	arch = any
@@ -9,11 +9,12 @@ pkgbase = python2-boto3
 	depends = python2
 	depends = python2-botocore>=1.4.1
 	depends = python2-botocore<1.5.0
+	depends = python2-jmespath>=0.7.1
 	depends = python2-jmespath<1.0.0
-	depends = python2-s3transfer>=0.1.0
+	depends = python2-s3transfer>=0.1.10
 	depends = python2-s3transfer<0.2.0
-	source = https://pypi.io/packages/source/b/boto3/boto3-1.4.2.tar.gz
-	md5sums = afed98def1ee5b98bc693913ac97438c
+	source = https://pypi.io/packages/source/b/boto3/boto3-1.4.3.tar.gz
+	md5sums = 563f41c287a7ec83409280dc11222ac0
 
 pkgname = python2-boto3
 
