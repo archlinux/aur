@@ -1,3 +1,4 @@
+# Maintainer: Daniel Hahler <archlinux+aur@thequod.de>
 # Contributor: Florian Bruhin (The-Compiler) <archlinux.org@the-compiler.org>
 # Contributor: Daniel Micay <danielmicay@gmail.com>
 # Contributor: Sébastien Luttringer <seblu@aur.archlinux.org>
@@ -24,7 +25,7 @@ source=(http://dist.schmorp.de/rxvt-unicode/$_pkgname-$pkgver.tar.bz2
         'font-width-fix.patch'
         'line-spacing-fix.patch'
         'https://gist.githubusercontent.com/alexoj/df5bae7a4825cb596581/raw/75a1e75c2ae1ec5c0db68a29f8a6821e9e3d87a5/sgr-mouse-mode.patch'
-        'enable-wide-glyphs.patch')
+        )
 sha1sums=('e575b869782fbfed955f84f48b204ec888d91ba1'
           'b5a4507f85ebb7bac589db2e07d9bc40106720d9'
           '62c4ffecfce6967def394dd4d418b68652372ea2'
@@ -40,7 +41,6 @@ prepare() {
   patch -p0 -i ../font-width-fix.patch
   patch -p0 -i ../line-spacing-fix.patch
   patch -p0 -i ../sgr-mouse-mode.patch
-  # patch -p1 -i ../enable-wide-glyphs.patch
 }
 
 build() {
@@ -69,7 +69,6 @@ build() {
     --enable-transparency \
     --enable-unicode3 \
     --enable-utmp \
-    --enable-wide-glyphs \
     --enable-wtmp \
     --enable-xft \
     --enable-xim \
