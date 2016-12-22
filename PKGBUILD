@@ -5,13 +5,13 @@
 
 pkgname=i2pd
 pkgver=2.11.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Simplified C++ implementation of I2P client"
 arch=('i686' 'x86_64')
 url="https://github.com/PurpleI2P/i2pd"
 license=('BSD')
 depends=('boost-libs' 'miniupnpc' 'openssl' 'zlib' 'websocketpp')
-makedepends=('boost')
+makedepends=('boost' 'cmake')
 source=(https://github.com/PurpleI2P/${pkgname}/archive/${pkgver}.tar.gz
 	i2pd.service
 	i2pd.tmpfiles.conf)
