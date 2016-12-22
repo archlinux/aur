@@ -1,6 +1,6 @@
 # Maintainer: fordprefect <fordprefect@dukun.de>
 pkgname=contao
-pkgver=4.3.0
+pkgver=4.3.1
 pkgrel=1
 pkgdesc="small yet powerful Content Management System (CMS) based on php"
 url="https://contao.org"
@@ -11,7 +11,7 @@ optdepends=('php-mcrypt: data encryption')
 install=${pkgname}.install
 source=("contao-${pkgver}.tar::https://download.contao.org/$pkgver/tar"
         "${pkgname}.install")
-md5sums=('0629befa48c7452e5e68234ecc7dab39'
+md5sums=('e63a9419fa1532138a3afdaf529703da'
          'a79edf316b0d4e0862afdbca7dbcf23e')
  
 package() {
