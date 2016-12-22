@@ -2,7 +2,7 @@
 
 _target=mips64-elf
 pkgname=${_target}-gcc
-pkgver=6.2.0
+pkgver=6.3.0
 pkgrel=1
 pkgdesc="The GNU Compiler Collection (${_target})"
 url='http://www.gnu.org/software/gcc/'
@@ -15,7 +15,7 @@ conflicts=("${_target}-gcc-stage1")
 provides=("${_target}-gcc-stage1")
 replaces=("${_target}-gcc-stage1")
 source=("ftp://ftp.gnu.org/gnu/gcc/gcc-${pkgver}/gcc-${pkgver}.tar.bz2")
-sha256sums=('9944589fc722d3e66308c0ce5257788ebd7872982a718aa2516123940671b7c5')
+sha256sums=('f06ae7f3f790fbf0f018f6d40e844451e6bc3b7bc96e128e63b09825c1f8b29f')
 
 prepare() {
   cd gcc-${pkgver}
