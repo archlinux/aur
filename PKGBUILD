@@ -3,7 +3,7 @@
 # Maintainer: Vadzim Dambrouski <pftbest gmail.com>
 pkgname=gcc-arm-none-eabi-bin
 pkgver=6_2016_q4_major
-pkgrel=1
+pkgrel=2
 pkgdesc="GNU Tools ARM Embedded Processors (binary distribution, includes newlib, does NOT include GDB)"
 arch=('i686' 'x86_64')
 if [ "${CARCH}" = "x86_64" ]; then
@@ -32,7 +32,7 @@ sha256sums=('2cb3515290ab31ec95e035bae6db37f64e422a61dd04ffaaf11c50e65b403353')
 
 package() {
   mkdir -p $pkgdir/usr
-  cd $srcdir/gcc-*
+  cd $srcdir/gcc-*/
   cp -a * $pkgdir/usr
   rm -f $pkgdir/usr/bin/arm-none-eabi-gdb*
   rm -f $pkgdir/usr/lib/libcc1.so*
