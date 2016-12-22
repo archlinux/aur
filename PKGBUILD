@@ -1,14 +1,14 @@
 # Maintainer: Tom Zander
 
 pkgname=bitcoin-classic-git
-pkgver=v1.2.0.b1.r55.g95803467
+pkgver=v1.2.0.b1
 pkgrel=1
 pkgdesc='Bitcoin Classic versions of Bitcoind, bitcoin-cli, bitcoin-tx, and bitcoin-qt, most recent stable branch, w/GUI and wallet'
-arch=('any')
+arch=('i686' 'x86_64')
 url="https://bitcoinclassic.com/"
 license=('MIT')
-depends=('boost-libs' 'miniupnpc' 'desktop-file-utils' 'libevent' 'qt5-base' 'protobuf' 'qrencode' 'openssl')
-makedepends=('boost' 'libevent' 'qt5-base' 'qt5-tools' 'qrencode' 'protobuf')
+depends=('boost-libs' 'desktop-file-utils' 'libevent' 'qt5-base' 'protobuf' 'openssl' 'miniupnpc' 'zeromq' 'qrencode')
+makedepends=('boost' 'qt5-tools')
 provides=('bitcoin-daemon' 'bitcoin-cli' 'bitcoin-qt' 'bitcoin-tx')
 conflicts=('bitcoin-daemon' 'bitcoin-cli' 'bitcoin-qt' 'bitcoin-tx')
 install=bitcoin-qt.install
@@ -26,7 +26,6 @@ build() {
   cd "$srcdir/bitcoinclassic"
 
   msg2 'Building...'
-  CXXFLAGS="$CXXFLAGS -DBOOST_VARIANT_USE_RELAXED_GET_BY_DEFAULT=1"
   ./autogen.sh
   ./configure --prefix=/usr --with-incompatible-bdb --with-gui=qt5 --enable-hardening \
         --enable-reduce-exports --disable-gui-tests --disable-maintainer-mode \
@@ -63,7 +62,7 @@ package() {
 
   msg2 'Installing bitcoin.conf...'
   # Install bitcoin.conf is one does not already exist
-  [[ ! -e "/etc/bitcoin/bitcoin.conf" ]] && install -Dm 600 \
+  [[ ! -e "/etc/bitcoin/bitcoin.conf" ]] && install -Dm 644 \
   "$srcdir/bitcoinclassic/contrib/debian/examples/bitcoin.conf" -t "$pkgdir/etc/bitcoin"
 
   msg2 'Installing bitcoin.service...'
