@@ -8,7 +8,7 @@
 
 # Maintainer: Ning Humbert <galaxy0419@gmail.com>
 pkgname=easydrcom-git # '-bzr', '-git', '-hg' or '-svn'
-pkgver=08f4404
+pkgver=6bff7f0
 pkgrel=1
 pkgdesc="3rd Party Dr.COM Client for HITwh"
 arch=('i686' 'x86_64')
@@ -22,8 +22,8 @@ source=('git+https://github.com/coverxit/EasyDrcom.git'
         'EasyDrcom.conf'
 	'patch.txt')
 md5sums=('SKIP'
-         'ed15888b134b18d885d81567542042a4'
-	 '1dba42fe14d02ec886d8023f835fe21e')
+         '55fe56035569fcd42ea9540da4b89b85'
+	     '59ad24fded5faad50f6c0d6205a73f2c')
 
 # Please refer to the 'USING VCS SOURCES' section of the PKGBUILD man page for
 # a description of each element in the source array.

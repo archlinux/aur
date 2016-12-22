@@ -1,6 +1,6 @@
 pkgbase = easydrcom-git
 	pkgdesc = 3rd Party Dr.COM Client for HITwh
-	pkgver = 08f4404
+	pkgver = 6bff7f0
 	pkgrel = 1
 	url = https://github.com/coverxit/EasyDrcom
 	arch = i686
@@ -15,8 +15,8 @@ pkgbase = easydrcom-git
 	source = EasyDrcom.conf
 	source = patch.txt
 	md5sums = SKIP
-	md5sums = ed15888b134b18d885d81567542042a4
-	md5sums = 1dba42fe14d02ec886d8023f835fe21e
+	md5sums = 55fe56035569fcd42ea9540da4b89b85
+	md5sums = 59ad24fded5faad50f6c0d6205a73f2c
 
 pkgname = easydrcom-git
 
