@@ -1,5 +1,5 @@
-pkgbase = arm-android-gnueabihf-binutils
-	pkgdesc = A set of programs to assemble and manipulate binary and object files (arm-android-gnueabihf)
+pkgbase = arm-android-eabi-binutils
+	pkgdesc = A set of programs to assemble and manipulate binary and object files (arm-android-eabi)
 	pkgver = 2.26.1
 	pkgrel = 1
 	url = http://www.gnu.org/software/binutils/
@@ -14,5 +14,5 @@ pkgbase = arm-android-gnueabihf-binutils
 	source = http://ftp.gnu.org/gnu/binutils/binutils-2.26.1.tar.bz2
 	md5sums = d2b24e5b5301b7ff0207414c34c3e0fb
 
-pkgname = arm-android-gnueabihf-binutils
+pkgname = arm-android-eabi-binutils
 

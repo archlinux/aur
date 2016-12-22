@@ -1,6 +1,6 @@
 # Maintainer: Frantisek Fladung <ametisf@gmail.com>
 
-_target="arm-android-gnueabihf"
+_target="arm-android-eabi"
 pkgname=${_target}-binutils
 pkgver=2.26.1
 pkgrel=1
