@@ -19,7 +19,7 @@ makedepends=('cmake')
 
 # shellcheck disable=SC2034
 depends=('bluez-libs' 'enet' 'ffmpeg' 'libao' 'libevdev' 'mbedtls' 'miniupnpc'
-         'openal' 'portaudio' 'soundtouch' 'xdg-utils' 'wxgtk')
+         'openal' 'portaudio' 'soundtouch' 'xdg-utils' 'wxgtk' 'sfml')
 # shellcheck disable=SC2034
 optdepends=('pulseaudio: PulseAudio backend')
 
