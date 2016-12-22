@@ -1,4 +1,4 @@
-# Maintainer: FadeMind <fademind@gmail.com>
+# Maintainer: Saeroshi	<saeroshi@serenix.xyz>
 # Contributor: Marcel Korpel <marcel[dot]korpel[at]gmail>
 
 pkgname=firefox-extension-keefox
