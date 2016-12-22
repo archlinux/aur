@@ -3,19 +3,18 @@
 # Contributor: Dany Martineau <dany.luc.martineau gmail.com>
 
 pkgname=kluppe
-pkgver=0.6.18
+pkgver=0.6.20
 pkgrel=1
 pkgdesc="A loop-player and recorder, designed for live use."
 arch=('i686' 'x86_64')
 url="http://kluppe.klingt.org/"
 license=('GPL')
-depends=('gtk2' 'jack' 'liblo' 'libusb-compat' 'libsndfile' 'libxml2')
+depends=('gtk2' 'jack' 'liblo' 'libusb-compat')
 provides=('kluppe')
-install="$pkgname.install"
 source=("http://kluppe.klingt.org/downloads/$pkgname-$pkgver.tar.gz"
         "kluppe-${pkgver}.patch"
         "kluppe.desktop")
-sha256sums=('f1de328ff69c94516339adf6e2e8d5966f5164b534eee489c1eb0b2125a177f9'
+sha256sums=('3cee2f97478d53548ff1c12c0f24e04dbff2658a5cc3c9c3eaf338c03076bc8d'
             '79d0de9ece722c6ffce501a6593bd7fca22b8a940dd3b2801b76a396e3b75b0e'
             'faf8d61fa6730d9946aa2f3dbab1c78e20681a951f9184ef9ad76f2086ca3d4c')
 
