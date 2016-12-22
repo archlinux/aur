@@ -2,16 +2,16 @@
 # vim: set ts=2 sw=2 et ft=sh:
 
 pkgname=qutebrowser-git
-pkgver=r10853.9f5f362
+pkgver=r10923.cd8d17981
 pkgrel=1
 pkgdesc="A keyboard-driven, vim-like browser based on PyQt5 and QtWebKit"
 arch=(any)
 url="http://www.qutebrowser.org/"
 license=('GPL')
 depends=('python>=3.4' 'python-setuptools' 'python-pyqt5>=5.2' 'qt5-base>=5.2'
-         'qt5-webkit>=5.2' 'libxkbcommon-x11' 'python-pypeg2' 'python-jinja'
-         'python-pygments' 'xdg-utils' 'desktop-file-utils' 'python-yaml'
-         'hicolor-icon-theme')
+         'qt5-webkit>=5.2' 'qt5-declarative' 'libxkbcommon-x11' 'python-pypeg2'
+         'python-jinja' 'python-pygments' 'xdg-utils' 'desktop-file-utils'
+         'python-yaml' 'hicolor-icon-theme')
 makedepends=('asciidoc' 'source-highlight' 'git')
 optdepends=(
   'gst-libav: media playback'
