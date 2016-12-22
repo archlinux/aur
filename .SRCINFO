@@ -1,0 +1,17 @@
+pkgbase = scangearmp2
+	pkgdesc = Canon ScanGear MP for Linux
+	pkgver = 3.20
+	pkgrel = 1
+	url = https://www.canon.com.au/home-printers
+	arch = i686
+	arch = x86_64
+	license = GPL
+	license = custom:canon
+	depends = gtk2
+	depends = libusb
+	provides = scangearmp2
+	source = http://gdlp01.c-wss.com/gds/3/0100006903/01/scangearmp2-source-3.20-1.tar.gz
+	md5sums = 8a7d6e60af22b749508419b0e79e8066
+
+pkgname = scangearmp2
+
