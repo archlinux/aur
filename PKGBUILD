@@ -1,7 +1,7 @@
 # Maintainer: xpt <user.xpt@gmail.com>
 pkgname=kodi-addon-quasar
-pkgver=0.9.36
-pkgrel=1
+pkgver=0.9.45
+pkgrel=2
 pkgdesc='Quasar is an torrent finding and streaming engine for Kodi (fork of Pulsar add-on)'
 classname=plugin.video.quasar
 arch=('any')
@@ -17,23 +17,23 @@ noextract=(${classname}-${pkgver}.zip)
 case "$CARCH" in 
   arm)
   _pkgarch="arm"
-  md5sums=('dd89cfc922742cf6ceabdfc02bcb9b53')
+  md5sums=('cb8a8155bc4cd96a82c6ee0556f41f11')
   ;;
   armv6h)
   _pkgarch="arm"
-  md5sums=('dd89cfc922742cf6ceabdfc02bcb9b53')
+  md5sums=('cb8a8155bc4cd96a82c6ee0556f41f11')
   ;;
   armv7h)
   _pkgarch="armv7"
-  md5sums=('c7586e86022aa2f99be5c4fbd2ac915f')
+  md5sums=('ae2b88939c243a7a93ee83622c174830')
   ;;
   i686)
   _pkgarch="x64"
-  md5sums=('464df65dc28d8eac718ac55b656520ad')
+  md5sums=('508e3743ba2f3f60139df62061220af8')
   ;;
   x86_64)
   _pkgarch="x86"
-  md5sums=('2c60eefc899c36ba18a0ad5da81816e8')
+  md5sums=('c4616e49cdfc1f816c2e959ba4d1090e')
   ;;
 esac
 
