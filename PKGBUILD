@@ -1,15 +1,16 @@
+# Maintainer: surefire@cryptomile.net
+
 pkgname=gogs-master-git
 pkgver=0.9.107.1222.r5.89e93fe0
-pkgrel=2
+pkgrel=3
 pkgdesc="Gogs(Go Git Service) is a Self Hosted Git Service in the Go Programming Language."
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url="http://gogs.io/"
 license=('MIT')
 provides=('gogs')
-depends=('git')
+depends=('git' 'sqlite')
 conflicts=('gogs' 'gogs-git' 'gogs-git-dev' 'gogs-openrc' 'gitea')
-optdepends=('sqlite: SQLite support'
-            'mariadb: MariaDB support'
+optdepends=('mariadb: MariaDB support'
             'postgresql: PostgreSQL support'
             'redis: Redis support'
             'memcached: MemCached support'
@@ -68,7 +69,7 @@ build() {
 	cd "$srcdir/$_gogsdir"
 
 	make PATH="$GOPATH/bin" bindata
-	go build -v -tags='sqlite pam cert'
+	go build -v -tags='libsqlite3 sqlite pam cert'
 }
 
 package() {
