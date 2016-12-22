@@ -7,7 +7,7 @@
 
 pkgname=monodevelop-stable
 _pkgname=monodevelop
-pkgver=6.1.2.44
+pkgver=6.1.3.19
 pkgrel=1
 pkgdesc="An IDE primarily designed for C# and other .NET languages. WARNING: this package requires over 500 MB worth of data to be downloaded."
 arch=('any')
