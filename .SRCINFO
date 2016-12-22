@@ -1,0 +1,34 @@
+pkgbase = arm-android-gnueabihf-gcc
+	pkgdesc = The GNU Compiler Collection (arm-android-gnueabihf)
+	pkgver = 6.1.1
+	pkgrel = 3
+	url = http://gcc.gnu.org
+	arch = i686
+	arch = x86_64
+	license = GPL
+	license = LGPL
+	license = FDL
+	license = custom
+	checkdepends = dejagnu
+	checkdepends = inetutils
+	depends = arm-android-gnueabihf-binutils>=2.26.1-1
+	depends = arm-android-gnueabihf-glibc>=2.23-5
+	depends = libmpc
+	depends = elfutils
+	depends = zlib
+	provides = arm-android-gnueabihf-gcc-stage1=6.1.1
+	provides = arm-android-gnueabihf-gcc-stage2=6.1.1
+	conflicts = arm-android-gnueabihf-gcc-stage1
+	conflicts = arm-android-gnueabihf-gcc-stage2
+	replaces = arm-android-gnueabihf-gcc-stage1
+	replaces = arm-android-gnueabihf-gcc-stage2
+	options = !emptydirs
+	options = !distcc
+	options = !strip
+	source = https://github.com/gcc-mirror/gcc/archive/1bbd3999.tar.gz
+	source = http://isl.gforge.inria.fr/isl-0.16.1.tar.bz2
+	md5sums = d4c4546f927b2984d66574b1b5cb817e
+	md5sums = ac1f25a0677912952718a51f5bc20f32
+
+pkgname = arm-android-gnueabihf-gcc
+
