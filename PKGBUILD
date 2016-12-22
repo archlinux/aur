@@ -2,7 +2,7 @@
 
 pkgname=vim-solarized8-git
 pkgver=0.4
-pkgrel=2  
+pkgrel=3
 pkgdesc="Optimized Solarized colorschemes. Best served with true-color terminals!"
 arch=('any')
 url="http://ethanschoonover.com/solarized"
@@ -15,7 +15,7 @@ source=("$pkgname::git://github.com/lifepillar/vim-solarized8.git")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/$pkgname"
+  cd "$pkgname"
   local _tmpver="$(git log -n 1 --format="%cd" --date=short)"
   echo "${_tmpver//-/}"
 }
