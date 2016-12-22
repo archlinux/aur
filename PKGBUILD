@@ -1,4 +1,4 @@
-pkgname=gogs-git
+pkgname=gogs-master-git
 pkgver=0.9.107.1222.r5.89e93fe0
 pkgrel=2
 pkgdesc="Gogs(Go Git Service) is a Self Hosted Git Service in the Go Programming Language."
@@ -7,7 +7,7 @@ url="http://gogs.io/"
 license=('MIT')
 provides=('gogs')
 depends=('git')
-conflicts=('gogs')
+conflicts=('gogs' 'gogs-git' 'gogs-git-dev' 'gogs-openrc' 'gitea')
 optdepends=('sqlite: SQLite support'
             'mariadb: MariaDB support'
             'postgresql: PostgreSQL support'
@@ -46,6 +46,7 @@ prepare() {
 		-e '/^\[log\]/,    /^\[/ s/^(ROOT_PATH)\W.*$/\1 = \/var\/log\/gogs/' \
 	;
 
+	# Dirty hack
 	sed -i vendor/github.com/go-xorm/xorm/logger.go \
 		-e '/DEFAULT_LOG_LEVEL/ s/core\.LOG_DEBUG/core.LOG_WARNING/' vendor/github.com/go-xorm/xorm/logger.go \
 	;

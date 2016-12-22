@@ -13,9 +13,11 @@ post_install() {
 
 cat <<EOF
 >>>
-	You need finish setup:
-	1) systemctl start gogs.service
-	2) Open http://localhost:3000
+	If you do not have a custom configuration files finish the setup:
+		1) systemctl start gogs.service
+		2) open the installation page http://localhost:3000
+	otherwise:
+		place your custom configuration files in /var/lib/gogs/custom
 >>>
 EOF
 	
