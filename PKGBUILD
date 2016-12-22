@@ -7,7 +7,7 @@
 _gitname=alot
 pkgname=alot-git
 pkgver=0.3.7
-pkgrel=1
+pkgrel=2
 pkgdesc="terminal-based MUA for the notmuch mail system"
 arch=(any)
 url="https://github.com/pazz/alot"
@@ -18,7 +18,8 @@ depends=(notmuch
          python2-configobj
          python2-urwid
          python2-urwidtrees
-         python2-twisted)
+         python2-twisted
+         python2-setuptools)
 makedepends=(python2-sphinx git)
 provides=(alot)
 conflicts=(alot)
@@ -33,7 +34,7 @@ build() {
     # "Magic-file-extensions", as opposed to the python-magic on pypi. The
     # result is that the alot executable can't find the module, so we patch
     # setup.py to fix the dependency:
-    sed -i -e 's/python-magic/Magic-file-extensions/' setup.py
+    sed -i -e 's/python-magic/file-magic/' setup.py
     python2 setup.py build
     make SPHINXBUILD=sphinx-build2 -C docs man html
 }
