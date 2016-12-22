@@ -1,0 +1,21 @@
+pkgbase = linux-libre-bin
+	pkgdesc = A libre version of Debian Icedove, the standalone mail and news reader based on Mozilla Thunderbird.
+	pkgver = 4.8.14
+	pkgrel = 1
+	url = https://wiki.parabola.nu/linux-libre-bin
+	arch = i686
+	arch = x86_64
+	license = BSD
+	depends = coreutils
+	depends = linux-libre-firmware
+	depends = kmod
+	depends = mkinitcpio
+	optdepends = crda: to set the correct wireless channels of your country
+	provides = linux-libre
+	source_i686 = https://repomirror.parabola.nu/pool/parabola_gnu+linux/linux-libre--1-i686.pkg.tar.xz
+	sha256sums_i686 = 0c90cea68b0d950da6759d29559152089372b4f06de939e890ad3c4db682d66a
+	source_x86_64 = https://repomirror.parabola.nu/pool/parabola_gnu+linux/linux-libre--1-x86_64.pkg.tar.xz
+	sha256sums_x86_64 = 29ef44e5153e7d611250aa2ce2fd37c81fcd07a45424b13de9f0a65f499e53a6
+
+pkgname = linux-libre-bin
+
