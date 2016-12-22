@@ -4,7 +4,7 @@
 pkgbase=artwork-maia
 pkgname=('artwork-maia' 'maia-icon-theme' 'plasma5-themes-maia' 'sddm-maia-theme' 'maia-wallpaper')
 pkgrel=1
-pkgver=r222
+pkgver=r223
 url='https://github.com/manjaro/artwork-maia'
 arch=('any')
 license=('GPL2')
