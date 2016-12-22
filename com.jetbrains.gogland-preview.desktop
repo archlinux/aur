@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Gogland Preview
+Icon=/opt/gogland-preview/bin/gogland.png
+Exec="/opt/gogland-preview/bin/gogland.sh" %f
+Comment=The Drive to Develop
+Categories=Development;IDE;
+Terminal=false
+StartupWMClass=jetbrains-gogland
