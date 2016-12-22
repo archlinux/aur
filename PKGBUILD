@@ -1,5 +1,5 @@
 pkgname=skypeforlinux
-pkgver=1.13.0.3
+pkgver=1.14.0.5
 pkgrel=1
 pkgdesc="Skype for Linux WebRTC Alpha"
 arch=(x86_64 i686)
@@ -9,7 +9,7 @@ depends=(electron libgnome-keyring)
 makedepends=(asar npm python2)
 source=(https://repo.skype.com/deb/pool/main/s/$pkgname/${pkgname}_${pkgver}_amd64.deb
         $pkgname.sh)
-sha256sums=('a495a55b28d2ae16c9adea86c606eca30d48df410e02be2d488cab776bb84dc1'
+sha256sums=('41086b7d2c82fe1a113152e765e12afa47b77e99823fa701d218fddfb6c38514'
             '0aca67c5c2cd1be1e7b7a2d2f126cdf0310f8a85985c1aba31540fcc2892eafa')
 
 prepare() {
@@ -17,7 +17,7 @@ prepare() {
   asar extract usr/share/skypeforlinux/resources/app.asar skypeforlinux
   mv skypeforlinux/node_modules/skype-electron-wrapper .
   rm -r skypeforlinux/node_modules/*
-  sed -i '13i\"dependencies": {"skype-electron-wrapper": "*"},' skypeforlinux/package.json
+  sed -i '13i\"dependencies": {"skype-electron-wrapper": "*", "debug": "2.4"},' skypeforlinux/package.json
 }
 
 build() {
