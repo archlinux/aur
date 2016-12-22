@@ -4,11 +4,11 @@ pkgname=bitcoind-classic-git
 pkgver=v1.2.0.b1.r55.g95803467
 pkgrel=1
 pkgdesc="Bitcoin Classic versions of bitcoind, bitcoin-cli, and bitcoin-tx"
-arch=('any')
+arch=('i686' 'x86_64')
 url="https://bitcoinclassic.com/"
 license=('MIT')
-depends=('boost-libs' 'miniupnpc' 'desktop-file-utils' 'libevent' 'protobuf' 'qrencode' 'openssl')
-makedepends=('boost' 'libevent' 'qrencode' 'protobuf' 'pkg-config')
+depends=('boost-libs' 'libevent' 'openssl' 'miniupnpc' 'zeromq')
+makedepends=('boost')
 provides=('bitcoin-daemon' 'bitcoin-cli' 'bitcoin-tx')
 conflicts=('bitcoin-daemon' 'bitcoin-cli' 'bitcoin-tx')
 source=("git+https://github.com/bitcoinclassic/bitcoinclassic.git#branch=develop"
@@ -25,7 +25,6 @@ build() {
   cd "$srcdir/bitcoinclassic"
 
   msg2 'Building...'
-  CXXFLAGS="$CXXFLAGS -DBOOST_VARIANT_USE_RELAXED_GET_BY_DEFAULT=1"
   ./autogen.sh
   ./configure --prefix=/usr --with-incompatible-bdb --with-gui=no --enable-hardening \
         --enable-reduce-exports --disable-gui-tests --disable-maintainer-mode \
@@ -56,7 +55,7 @@ package() {
 
   msg2 'Installing bitcoin.conf...'
   # Install bitcoin.conf is one does not already exist
-  [[ ! -e "/etc/bitcoin/bitcoin.conf" ]] && install -Dm 600 \
+  [[ ! -e "/etc/bitcoin/bitcoin.conf" ]] && install -Dm 644 \
   "$srcdir/bitcoinclassic/contrib/debian/examples/bitcoin.conf" -t "$pkgdir/etc/bitcoin"
 
   msg2 'Installing bitcoin.service...'
