@@ -13,7 +13,7 @@ source=("http://download.onlyoffice.com/install/desktop/editors/linux/onlyoffice
 sha256sums=('SKIP')
 
 package() {
-  tar xf "${srcdir}/data.tar.xz" -C "${pkgdir}"
+  bsdtar -xf "${srcdir}/data.tar.xz" -C "${pkgdir}"
 
   rm -rf "${pkgdir}/opt/onlyoffice/desktopeditors/dictionaries/.git"
   #suid sandbox
