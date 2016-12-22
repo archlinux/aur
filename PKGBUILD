@@ -4,12 +4,12 @@
 pkgname=artefetcher-qt5
 _pkgname=artefetcher
 pkgver=0.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A video grabber for Arte Catch UP TV - QT5 version"
 arch=('i686' 'x86_64')
 url="http://artefetcher.sourceforge.net/"
 license=('GPL')
-depends=('qt5-base' 'qt5-script' 'qt5-xmlpatterns' 'libxkbcommon-x11')
+depends=('qt5-script')
 makedepends=('qt5-script' 'qt5-webkit' 'qt5-tools')
 provides=()
 conflicts=(artefetcher-qt4)
