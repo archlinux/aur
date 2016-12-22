@@ -11,7 +11,7 @@
 
 pkgname='stanc'
 pkgdesc="A package for obtaining Bayesian inference using the No-U-Turn sampler, a variant of Hamiltonian Monte Carlo."
-pkgver=2.6.2
+pkgver=2.13.1
 pkgrel=1
 arch=('i686' 'x86_64')
 url='http://mc-stan.org/'
@@ -19,8 +19,8 @@ license=('BSD')
 depends=('gcc-libs')
 makedepends=('texlive-bin' 'texlive-core' 'doxygen')
 options=('!libtool' '!strip' '!makeflags')
-source=(https://github.com/stan-dev/cmdstan/releases/download/v2.6.2/cmdstan-$pkgver.tar.gz)
-sha512sums=('d5de808f8c274f67baf2c9e3e3672468264d17319562e0cac4910b0d6cfe06efc353077cfdc0fe2f899ee7831f20f8dff3a172c7634bfcdb8fdaa1407ccf3bb2')
+source=(https://github.com/stan-dev/cmdstan/releases/download/v$pkgver/cmdstan-$pkgver.tar.gz)
+sha512sums=('a2b0698a28e568366876d34a052b9edb58a69e2b8d8bed9d54dcfbf786bd0219b19ad57e66982e54bc7714494d9577cad4253f832e5e3aa05af6adfc62c2ef24')
 
 prepare() {
   cd "${srcdir}/cmdstan-${pkgver}"
@@ -56,17 +56,17 @@ package() {
   install -m644 bin/libstanc.a     "${pkgdir}/usr/lib"
 
   install -dm755                  "${pkgdir}/usr/include/stan"
-  cd stan/src
+  cd "stan_${pkgver}/src"
   find . -iregex './stan.*.hpp$' -type f -exec install -DTm644 "{}" "${pkgdir}/usr/include/{}" \;
   cd ../.. 
  
   # Install LICENSE file:
   install -dm755                  "${pkgdir}/usr/share/licenses/stan"
-  cp -r stan/licenses/.                "${pkgdir}/usr/share/licenses/stan/."
+  cp -r "stan_${pkgver}/licenses/." "${pkgdir}/usr/share/licenses/stan/."
 
   # Install documentation:
   install -dm755                  "${pkgdir}/usr/share/doc/stan/api"
   install -m644 doc/*.pdf \
                                   "${pkgdir}/usr/share/doc/stan"
-  cp -r stan/doc/api/.                 "${pkgdir}/usr/share/doc/stan/api/."
+  cp -r "stan_${pkgver}/doc/api/." "${pkgdir}/usr/share/doc/stan/api/."
 }
