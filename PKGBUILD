@@ -5,7 +5,7 @@ _gitname=mpop
 
 pkgname=python2-mpop
 pkgrel=1
-pkgver=v1.3.0
+pkgver=v1.3.0.1.ge71660a
 pkgdesc="Meteorological Post-Processing Package (MPoP)"
 arch=('any')
 url="https://mpop.readthedocs.org/"
