@@ -4,7 +4,7 @@
 
 
 pkgname=pianoteq-stage
-pkgver=5.8.0
+pkgver=5.8.1
 pkgrel=1
 pkgdesc="Virtual piano instrument using physical modelling synthesis. Both standalone and plugin versions."
 arch=('i686' 'x86_64')
@@ -21,23 +21,28 @@ sha256sums=('94ee64cf6688a49d74f0bf70d811e7466abac103feeab17496a89f828afcc6d3')
 # Define the target archive filename:
 _pianoteqfilename=pianoteq_stage_linux_v${pkgver//./}.7z
 # Define its checksum:
-_pianoteqsha256sum=8a916406458f191228264d0411f9048490926264a8c03238de3d36a0aa972756
+_pianoteqsha256sum=ed208715482af54c3e6e3b84313c9bdbe277fa57aca4383f25b261755e5049e7
 
 prepare(){
-        # the source package must be downloaded manually
-        # this can be done by going to the link here:
-        # https://www.pianoteq.com/download?file=pianoteq_stage_linux_v580.7z
-        # the checksum will still be validated
+    # the source package must be downloaded manually
+    # this can be done by going to the link here:
+    # https://www.pianoteq.com/download?file=pianoteq_stage_linux_v580.7z
+    # the checksum will still be validated
 	if [ ! -f "../$_pianoteqfilename" ]
 	then
             echo "File not found!"
-            echo -e "For this package a mannual download of the pianoteq binary is needed: 'https://www.pianoteq.com/download?file=pianoteq_stage_linux_v571.7z'\nThe archive should be in the same directory as the PKGBUILD!"
+	    echo "Pianoteq installation binary file is not found!"
+	    echo -e "For this package a manual download of the Pianoteq installation binary is needed."
+	    echo -e "Please go to 'https://www.pianoteq.com/download?file=${_pianoteqfilename}'"
+	    echo -e "and log in with your user account."
+            echo -e "The archive should be in the same directory as the PKGBUILD!"
+            exit;
             exit;
         fi
         # move the dependency to ./src/
         mv ../$_pianoteqfilename ./
 	# Check integrity:
-	echo $_pianoteqsha256sum $_pianoteqfilename |sha256sum -c || { echo 'Checksum failed!'; exit 1; }
+	echo "$_pianoteqsha256sum  $_pianoteqfilename" | sha256sum -c || { echo 'Checksum failed!'; exit 1; }
 	# Extract:
  	7z x $_pianoteqfilename
 	# Generate Desktop Entry:
