@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Kiki
+Comment=Regular expression testing
+Exec=kiki-re
+Icon=kiki
+Terminal=false
+Type=Application
+Categories=Development;

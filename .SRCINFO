@@ -1,0 +1,22 @@
+pkgbase = kiki-re
+	pkgdesc = Free environment for regular expression testing
+	pkgver = 0.5.6
+	pkgrel = 3
+	url = http://kiki-re.googlecode.com/
+	arch = any
+	license = GPL
+	depends = python2
+	depends = wxpython2.8
+	source = https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/kiki-re/kiki-0.5.6-standalone.zip
+	source = 01_path_changes.diff
+	source = 02_remove_wx.NotebookSizer.diff
+	source = kiki-re.desktop
+	source = kiki.xpm
+	md5sums = 59cb61d7983e729d1d1f9989e54ca968
+	md5sums = 5721ec7105c89a7e2396bdc8e1f8e437
+	md5sums = 15dafa53e96a1be6fb587139122f1287
+	md5sums = bfdcbbd6d0ee2f29d5760fa282b6e2c5
+	md5sums = 1752595f00143ede3c4c9667175d261d
+
+pkgname = kiki-re
+

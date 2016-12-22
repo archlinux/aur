@@ -1,0 +1,57 @@
+Description: Corrects path values.
+Author: Matthias Klose <doko@debian.org>
+--- a/kiki.py
++++ b/kiki.py
+@@ -22,6 +22,9 @@
+ icq: 84243714
+ """
+ 
++import wxversion
++wxversion.select('2.8')
++
+ import wx
+ import wx.html
+ 
+@@ -365,6 +368,7 @@
+         self.matches = [] # list of found matches
+             
+         self.path = os.path.split(sys.argv[0])[0] or os.getcwd() # remembers where Kiki is located
++	self.doc_path = "/usr/share/doc/kiki"
+         
+     def icon(self, path=None):
+         """Load and assign the icon
+@@ -379,14 +383,14 @@
+             self.path = os.path.split(sys.argv[0])[0] or os.getcwd() # *MUST* be the directory where everything, including About data and the likes are located
+         else:
+             self.path = path
+-        iconfile = os.path.join(self.path, "kiki.ico")
+-        theicon = wx.Icon(iconfile, wx.BITMAP_TYPE_ICO)
++        iconfile = "/usr/share/pixmaps/kiki.xpm"
++        theicon = wx.Icon(iconfile, wx.BITMAP_TYPE_XPM)
+         self.SetIcon(theicon)
+         
+     def changePage(self, event):
+         """Handles notebook page changes"""
+         if event.GetSelection()==2 and not self.HelpWindow.GetOpenedPageTitle().strip():
+-            self.HelpWindow.SetPage(file(os.path.join(self.path, "docs", "index.html"),"r").read())
++            self.HelpWindow.SetPage(file(os.path.join(self.doc_path, "index.html"),"r").read())
+         
+     def showhelp(self, event):
+         """Handles help combo box events"""
+@@ -409,14 +413,14 @@
+         else:
+             simpleload = False
+         if simpleload:
+-            filename = os.path.join(self.path, "docs", filename)
++            filename = os.path.join(self.doc_path, filename)
+             if anchor.strip():
+                 anchor = "#" + anchor
+             else:
+                 anchor = ""
+             self.HelpWindow.LoadPage(filename+anchor)
+         else: # build about-screen
+-            f = file(os.path.join(self.path, "docs", "about.html"), "r")
++            f = file(os.path.join(self.doc_path, "about.html"), "r")
+             about = f.read()
+             f.close()
+             # build the dictionary needed to format the string

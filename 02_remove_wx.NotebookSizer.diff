@@ -1,0 +1,27 @@
+Description: Eliminate use of deprecated wx.NotebookSizer
+ As of wx 2.6, wx.Notebook can just be placed directly in a normal sizer:
+ .
+ "wxNotebookSizer and wxBookCtrlSizer are now deprecated -- they are no longer
+ needed, you can treat wxNotebook as any other control and put it directly into
+ the sizer that was wxNotebookSizer's parent sizer in old code."
+ .
+ As of 2.7.1 wx.NotebookSizer has been removed.
+Author: Olly Betts <olly@survex.com>
+
+---
+
+Origin: vendor
+Bug-Debian: http://bugs.debian.org/645755
+Forwarded: no
+Last-Update: 2011-10-18
+--- a/kiki.py
++++ b/kiki.py
+@@ -317,7 +317,7 @@
+         self.Notebook.AddPage(self.MatchesPane, "Matches")
+         self.Notebook.AddPage(self.SampleTextPane, "Sample text")
+         self.Notebook.AddPage(self.HelpPane, "Help")
+-        TopPaneSizer.Add(wx.NotebookSizer(self.Notebook), 1, wx.EXPAND, 0)
++        TopPaneSizer.Add(self.Notebook, 1, wx.EXPAND, 0)
+         self.BottomPane.SetAutoLayout(1)
+         self.BottomPane.SetSizer(TopPaneSizer)
+         MainSizer.Add(self.SplitterWindow, 1, wx.EXPAND, 0)
