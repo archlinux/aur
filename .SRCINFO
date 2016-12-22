@@ -1,6 +1,6 @@
 pkgbase = droidquest
 	pkgdesc = A Java recreation of the classic game Robot Odyssey
-	pkgver = 2.7.master.0.ece5292
+	pkgver = 2.8.r44.3bf267f
 	pkgrel = 1
 	url = https://github.com/cromerc/DroidQuest
 	arch = any

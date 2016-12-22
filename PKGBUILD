@@ -2,7 +2,7 @@
 
 pkgbase=droidquest
 pkgname=('droidquest')
-pkgver=2.7.master.0.ece5292
+pkgver=2.8.r44.3bf267f
 pkgrel=1
 pkgdesc='A Java recreation of the classic game Robot Odyssey'
 arch=('any')
@@ -15,8 +15,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd droidquest
-
-  echo "2.7.master.$(git rev-list --count master..HEAD).$(git rev-parse --short HEAD)"
+  printf "2.8.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
@@ -31,7 +30,7 @@ package() {
   mkdir -p "$pkgdir/usr/share/applications"
   mkdir -p "$pkgdir/usr/share/DroidQuest/chips"
   cp -dR "src/main/resources/chips" "$pkgdir/usr/share/DroidQuest"
-  cp "target/dq-2.7.jar" "$pkgdir/usr/share/DroidQuest/dq-2.7.jar"
+  cp "target/dq-2.8.jar" "$pkgdir/usr/share/DroidQuest/dq-2.8.jar"
   cp "DroidQuest" "$pkgdir/usr/bin/DroidQuest"
   cp "DroidQuest.png" "$pkgdir/usr/share/pixmaps/DroidQuest.png"
   cp "DroidQuest.desktop" "$pkgdir/usr/share/applications/DroidQuest.desktop"
