@@ -2,7 +2,7 @@
 
 pkgname=g2clib
 pkgver=1.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc="GRIB2 encoder/decoder (C version)"
 url="http://www.nco.ncep.noaa.gov/pmb/codes/GRIB2"
 license=("custom:NWS")
@@ -20,6 +20,7 @@ build() {
   export CFLAGS="${CFLAGS} -fPIC"
   export CXXFLAGS="${CXXFLAGS} -fPIC"
   sed -i makefile -e 's/-X64//' -e '/CFLAGS=/d' -e '/CC=/d'
+  sed -i 's/image.inmem_.*=.*1;//' enc_jpeg2000.c
   CC=gcc CFLAGS="$CFLAGS -DUSE_JPEG2000 -DUSE_PNG" make
 }
 
