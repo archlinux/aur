@@ -2,8 +2,6 @@
 
 dirname="$(kdialog \
   --inputbox "Folder to be created" "New Folder" \
-  --title "Create New Folder with selection" \
-  --caption "Dolphin" --icon "dolphin" \
   )" &&
 
 mkdir -p -- "$dirname" &&

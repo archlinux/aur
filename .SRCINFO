@@ -1,6 +1,6 @@
 pkgbase = kde-servicemenus-newfolderwithselection
 	pkgdesc = A KDE service menu for creating a new folder with selection (in Dolphin)
-	pkgver = 1.0
+	pkgver = 1.1
 	pkgrel = 1
 	url = https://aur.archlinux.org/packages/kde-servicemenus-newfolderwithselection
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = kde-servicemenus-newfolderwithselection
 	source = new_folder_with_selection.desktop
 	source = new_folder_with_selection.sh
 	sha256sums = b5c13fd2a196e1b0976dc2485774fefb32f1e39b1b84dc72f7bd849649697eb1
-	sha256sums = 95979e46ddd2b144da223aae01427c952baf37ff58dbc7b149884e02a1d489cc
+	sha256sums = 5c630db6f42ede7550fc4da1d1852c54f2c8f197b69d26778947e0d2d3caeddf
 
 pkgname = kde-servicemenus-newfolderwithselection
 
