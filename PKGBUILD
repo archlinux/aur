@@ -23,7 +23,7 @@ install="$pkgname".install
 source=("git+https://github.com/chrys87/${_gitname}.git"
   'fenrir-git.install')
 md5sums=('SKIP'
-         '5d329d7299108dd84b92300e79673828')
+         '6e9e07056b744789e8d62fcf56b612ce')
 
 pkgver()
 {
