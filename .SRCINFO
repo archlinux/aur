@@ -1,0 +1,29 @@
+pkgbase = sfml-bugfix
+	pkgdesc = A simple, fast, cross-platform, and object-oriented multimedia API (bug fix package)
+	pkgver = 2.4.1
+	pkgrel = 1
+	url = http://www.sfml-dev.org/
+	install = sfml.install
+	arch = i686
+	arch = x86_64
+	license = zlib
+	makedepends = mesa
+	makedepends = cmake
+	makedepends = doxygen
+	makedepends = systemd
+	depends = libsndfile
+	depends = libxrandr
+	depends = libjpeg
+	depends = openal
+	depends = glew
+	depends = freetype2
+	depends = libx11
+	provides = sfml
+	conflicts = sfml
+	source = https://github.com/LaurentGomila/SFML/archive/2.4.1.tar.gz
+	source = fix-window-seticon.patch::https://github.com/LaurentGomila/SFML/commit/8c62390ca211e0dbc7b9233f41ba53952b80154c.patch
+	sha256sums = f9d1191b02e2df1cbe296601eee20bdf56d98fb69d49fde27c6ca789eb57398e
+	sha256sums = 807db64d88c6f740262ef6c03ee089f85174a7b529fb0061e8f45699810382fb
+
+pkgname = sfml-bugfix
+
