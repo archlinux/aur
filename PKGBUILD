@@ -18,7 +18,7 @@ ros_makedepends=(ros-kinetic-roscpp
 makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]}
   boost
-  yaml-cpp
+  'yaml-cpp>0.3'
   pkg-config)
 
 ros_depends=(ros-kinetic-roscpp
