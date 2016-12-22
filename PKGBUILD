@@ -5,7 +5,7 @@ _gitname=horcrux
 
 pkgname=horcrux
 pkgrel=1
-pkgver=437afe0
+pkgver=1993d95
 pkgdesc="Makes running duplicity for secure offsite backups easy"
 arch=('any')
 url="https://github.com/thirtythreeforty/horcrux"
