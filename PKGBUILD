@@ -1,5 +1,5 @@
 pkgname=performer-git
-pkgver=r158.1f48923
+pkgver=1.0.r158.1f48923
 pkgrel=1.0
 pkgdesc="Audio session manager for live music performances"
 arch=('i686' 'x86_64')
@@ -24,7 +24,7 @@ pkgver() {
   cd "$_gitname"
   ( set -o pipefail
     git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    printf "1.0.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
   )
 }
 
