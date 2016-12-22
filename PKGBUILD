@@ -1,13 +1,13 @@
 # Maintainer:  VirtualTam <virtualtam@flibidi.net>
 pkgname=raul-git
-pkgver=2901a1a
+pkgver=f8bf77d
 pkgrel=1
 pkgdesc="Realtime Audio Utility Library aimed at audio and musical applications"
 arch=(any)
 url="http://drobilla.net/software/raul/"
 license=('GPL3')
-depends=('glib2')
-makedepends=('boost' 'git' 'python')
+depends=()
+makedepends=('git' 'python')
 provides=('raul')
 conflicts=('raul')
 _gitname="raul"
