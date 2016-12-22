@@ -30,7 +30,7 @@ source_x86_64=("https://github.com/bitcoinclassic/bitcoinclassic/releases/downlo
              "https://raw.githubusercontent.com/bitcoinclassic/bitcoinclassic/$_gitver/contrib/debian/manpages/bitcoin.conf.5"
              "https://raw.githubusercontent.com/bitcoinclassic/bitcoinclassic/$_gitver/COPYING")
 md5sums_i686=('b23fe9936df44bd3e976702cc6ecd4f3'
-              '0aa8db6ac0e58ccbe85d0fe4923fb39e'
+              '8ecd32cd3a706560e59a062886935261'
               '0aae5f0110179e8e1d588530bcce5d2a'
               'a7f496d6996a60a20c2ef025da65773a'
               '2bfcee41b958f1c4ff9968669236fe3a'
@@ -38,7 +38,7 @@ md5sums_i686=('b23fe9936df44bd3e976702cc6ecd4f3'
               '844dd4c73f9837a6d4fc7db44d67104e'
               'b44a28f73a201403cabb5e0a49e6d1e6')
 md5sums_x86_64=('9a3b253cf5292ef50ff0b54d1daffa66'
-                '0aa8db6ac0e58ccbe85d0fe4923fb39e'
+                '8ecd32cd3a706560e59a062886935261'
                 '0aae5f0110179e8e1d588530bcce5d2a'
                 'a7f496d6996a60a20c2ef025da65773a'
                 '2bfcee41b958f1c4ff9968669236fe3a'
@@ -46,7 +46,7 @@ md5sums_x86_64=('9a3b253cf5292ef50ff0b54d1daffa66'
                 '844dd4c73f9837a6d4fc7db44d67104e'
                 'b44a28f73a201403cabb5e0a49e6d1e6')
 sha256sums_i686=('6648db9f7a2b851a7d2422cbfa5631c7ba23af7da825de00c9c78be370b50bf1'
-                 'b65b377c0d9ecae9eea722843bca0add6bdb7e50929a7e1f751b79b6621c6073'
+                 '4d0582d0b2476dc8152784a369b8d3a1004b8899c01f0ba12404cae92d67b109'
                  'ad880c8459ecfdb96abe6a4689af06bdd27906e0edcd39d0915482f2da91e722'
                  '7d090ddd485c36d4fae5e6627388c5550f824fd498d5fd958ec999857fff7b28'
                  '52e104ba55d5f564c849a72c67b27c9ec3b1dea6e6dbf931f4ae30d182e9a135'
@@ -54,7 +54,7 @@ sha256sums_i686=('6648db9f7a2b851a7d2422cbfa5631c7ba23af7da825de00c9c78be370b50b
                  '7f4021e34d52c321f679b548fcf6d55b4da30077b7aed392976f048ab88dcdd1'
                  '44c9d9ad9237f8dafd4633a51535fa75c0b28690043f5279f4976504c917966d')
 sha256sums_x86_64=('67a7fba1beccc490be9d92913de632eed96259fba92b6a318321b0b2f247316b'
-                   'b65b377c0d9ecae9eea722843bca0add6bdb7e50929a7e1f751b79b6621c6073'
+                   '4d0582d0b2476dc8152784a369b8d3a1004b8899c01f0ba12404cae92d67b109'
                    'ad880c8459ecfdb96abe6a4689af06bdd27906e0edcd39d0915482f2da91e722'
                    '7d090ddd485c36d4fae5e6627388c5550f824fd498d5fd958ec999857fff7b28'
                    '52e104ba55d5f564c849a72c67b27c9ec3b1dea6e6dbf931f4ae30d182e9a135'
