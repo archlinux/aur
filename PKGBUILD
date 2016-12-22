@@ -25,6 +25,7 @@ source=(http://dist.schmorp.de/rxvt-unicode/$_pkgname-$pkgver.tar.bz2
         'font-width-fix.patch'
         'line-spacing-fix.patch'
         'https://gist.githubusercontent.com/alexoj/df5bae7a4825cb596581/raw/75a1e75c2ae1ec5c0db68a29f8a6821e9e3d87a5/sgr-mouse-mode.patch'
+        'fix-smart-resize-with-x11-frame-borders.patch'  # will be in 9.22+
         )
 sha1sums=('e575b869782fbfed955f84f48b204ec888d91ba1'
           'b5a4507f85ebb7bac589db2e07d9bc40106720d9'
@@ -33,7 +34,7 @@ sha1sums=('e575b869782fbfed955f84f48b204ec888d91ba1'
           '01ee8f212add79a158dcd4ed78d0ea1324bdc59b'
           'b7fde1c46af45e831828738874f14b092b1e795f'
           'dfbc8729c545105eff21e20ef3a4a3841a68a192'
-          '59f5c5838c6f49521527146053eb439d96a25179')
+          '6dfa49a211c48193c8d87fb9993ed459b2b4387b')
 
 prepare() {
   cd $_pkgname-$pkgver
@@ -41,12 +42,12 @@ prepare() {
   patch -p0 -i ../font-width-fix.patch
   patch -p0 -i ../line-spacing-fix.patch
   patch -p0 -i ../sgr-mouse-mode.patch
+  patch -p1 -i ../fix-smart-resize-with-x11-frame-borders.patch
 }
 
 build() {
   cd $_pkgname-$pkgver
 
-  # we disable smart-resize (FS#34807)
   # do not specify --with-terminfo (FS#46424)
   ./configure \
     --prefix=/usr \
@@ -64,7 +65,7 @@ build() {
     --enable-rxvt-scroll \
     --enable-selectionscrolling \
     --enable-slipwheeling \
-    --disable-smart-resize \
+    --enable-smart-resize \
     --enable-startup-notification \
     --enable-transparency \
     --enable-unicode3 \
