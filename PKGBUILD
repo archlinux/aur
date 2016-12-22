@@ -2,7 +2,7 @@
 # Contributor: 3ED_0 <krzysztof1987 at gmail>
 
 pkgname=valentina-studio
-pkgver=6.6.5
+pkgver=6.6.8
 pkgrel=1
 pkgdesc="MySQL, MariaDB, PostgreSQL, MS SQL Server, Valentina DB and SQLite GUI Admin Tool"
 arch=('i686' 'x86_64')
@@ -12,8 +12,8 @@ makedepends=('rpmextract')
 source_i686=("${pkgname}-${pkgver}-${CARCH}.rpm::http://www.valentina-db.com/en/studio/download/current/vstudio_lin_32_rpm?format=raw")
 source_x86_64=("${pkgname}-${pkgver}-${CARCH}.rpm::http://www.valentina-db.com/en/studio/download/current/vstudio_x64_lin-rpm?format=raw")
 noextract=("${pkgname}-${pkgver}-${CARCH}.rpm")
-sha256sums_i686=('372ef7970dc7b6137c5102c1818ab1597e869ae2c408563179896d695c1c65e9')
-sha256sums_x86_64=('3e8a4ed763472b4d79459faf7c7a54013e25e2973e74a18f32a8f3f0fed42449')
+sha256sums_i686=('c31942f6936275251916ea62328d85072b3e9313c89ed361211a92b7245cdf94')
+sha256sums_x86_64=('d4f3f3eda4d0678585efd953c4a2e77b525af4fa54de55e44ddc5d984ba474b1')
 
 prepare() {
 	rpmextract.sh "${pkgname}-${pkgver}-${CARCH}.rpm"
