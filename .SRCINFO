@@ -1,10 +1,9 @@
 pkgbase = python-dlib
 	pkgdesc = Dlib is a general purpose cross-platform C++ library designed using contract programming and modern C++ techniques.
 	pkgver = 19.2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.dlib.net/
-	arch = i686
-	arch = x86_64
+	arch = any
 	license = Boost Software License
 	makedepends = cmake
 	makedepends = boost
@@ -17,4 +16,8 @@ pkgbase = python-dlib
 	md5sums = 12786b3765cc98193c404ccf3c88c900
 
 pkgname = python-dlib
+	depends = python
+
+pkgname = python2-dlib
+	depends = python2
 
