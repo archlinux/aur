@@ -1,16 +1,18 @@
 # Maintainer: Martin Minka <martin.minka@gmail.com>
 # Submitter: Oliver Kraitschy <okraits at arcor dot de>
+# Contributor: David Thurstenson <thurstylark@gmail.com>
 
 pkgname=j4-make-config-git
-pkgver=r53.21836d4
-pkgrel=1
+pkgver=r62.e3fc517
+pkgrel=2
 pkgdesc='Universal theme switcher and config generator for the i3 wm'
 arch=('any')
 url='https://github.com/okraits/j4-make-config'
 license=('GPL')
 depends=('python')
 makedepends=('git')
-optdepends=('xorg-xsetroot')
+optdepends=('rofi: interactive theme menu'
+            'xorg-xsetroot: set root window background')
 source=('git://github.com/okraits/j4-make-config.git')
 sha1sums=('SKIP')
 
