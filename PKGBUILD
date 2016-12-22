@@ -11,7 +11,7 @@ pkgdesc="The GNU Compiler Collection (${_target})"
 arch=('i686' 'x86_64')
 license=('GPL' 'LGPL' 'FDL' 'custom')
 url="http://gcc.gnu.org"
-depends=("${_target}-binutils>=2.26.1-1" "${_target}-glibc>=2.23-5" 'libmpc' 'elfutils' 'zlib')
+depends=("${_target}-binutils>=2.26.1-1" "${_target}-glibc>=2.23-1" 'libmpc' 'elfutils' 'zlib')
 checkdepends=('dejagnu' 'inetutils')
 options=('!emptydirs' '!distcc' '!strip')
 conflicts=("${_target}-gcc-stage1" "${_target}-gcc-stage2")

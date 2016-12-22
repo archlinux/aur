@@ -12,7 +12,7 @@ pkgbase = arm-android-gnueabihf-gcc
 	checkdepends = dejagnu
 	checkdepends = inetutils
 	depends = arm-android-gnueabihf-binutils>=2.26.1-1
-	depends = arm-android-gnueabihf-glibc>=2.23-5
+	depends = arm-android-gnueabihf-glibc>=2.23-1
 	depends = libmpc
 	depends = elfutils
 	depends = zlib
