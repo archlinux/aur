@@ -22,6 +22,8 @@ depends=(
 	'python-xdg'
 	'python-webob'
 	'qt5-webkit'
+	'qt5-graphicaleffects'
+	'qt5-quickcontrols'
 )
 install=youdao-dict.install
 source=('youdao-arch.patch')
