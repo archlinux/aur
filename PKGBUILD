@@ -7,7 +7,7 @@
 
 pkgbase=ppsspp-git
 pkgname=('ppsspp-git' 'ppsspp-qt-git')
-pkgver=1.3.r191.aa964ea
+pkgver=1.3.r229.47ee86ebc
 pkgrel=1
 pkgdesc='A PSP emulator written in C++'
 arch=('i686' 'x86_64')
@@ -19,10 +19,12 @@ depends=('gcc-libs' 'glew' 'glibc' 'libgl' 'libzip' 'sdl2' 'zlib'
 makedepends=('cmake' 'git' 'glu' 'qt5-multimedia' 'qt5-tools')
 source=('git+https://github.com/hrydgard/ppsspp.git'
         'git+https://github.com/hrydgard/ppsspp-lang.git'
-        'git+https://github.com/hrydgard/ppsspp-glslang.git'
+        'ppsspp-glslang::git+https://github.com/hrydgard/glslang.git'
         'ppsspp-armips::git+https://github.com/Kingcom/armips.git'
+        'armips-tinyformat::git+https://github.com/Kingcom/tinyformat.git'
         'ppsspp.desktop')
 sha256sums=('SKIP'
+            'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -42,6 +44,12 @@ prepare() {
     git config submodule.${submodule}.url ../ppsspp-${submodule#*/}
     git submodule update ${submodule}
   done
+
+  pushd ext/armips
+  git submodule init ext/tinyformat
+  git config submodule.ext/tinyformat.url ../../../armips-tinyformat
+  git submodule update ext/tinyformat
+  popd
 
   for ui in sdl qt; do
     if [[ -d build-$ui ]]; then
