@@ -1,0 +1,20 @@
+pkgbase = arm-android-gnueabihf-linux-api-headers
+	pkgdesc = Kernel headers sanitized for use in userspace (arm-android-gnueabihf)
+	pkgver = 3.10.104
+	pkgrel = 1
+	url = http://www.gnu.org/software/libc
+	arch = any
+	license = GPL2
+	source = http://www.kernel.org/pub/linux/kernel/v3.x/linux-3.10.tar.xz
+	source = http://www.kernel.org/pub/linux/kernel/v3.x/linux-3.10.tar.sign
+	source = http://www.kernel.org/pub/linux/kernel/v3.x/patch-3.10.104.xz
+	source = http://www.kernel.org/pub/linux/kernel/v3.x/patch-3.10.104.sign
+	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
+	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
+	md5sums = a60d48eee08ec0536d5efb17ca819aef
+	md5sums = SKIP
+	md5sums = fe89010925304f6f07713741f0c8e811
+	md5sums = SKIP
+
+pkgname = arm-android-gnueabihf-linux-api-headers
+
