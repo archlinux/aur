@@ -44,7 +44,7 @@ Exit status:
  0  if OK,
  1  some error occurred.
 
-Full documentation at: <https://https://github.com/SWI-Prolog/swish>
+Full documentation at: <https://github.com/SWI-Prolog/swish>
 EOF
 }
 
