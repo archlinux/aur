@@ -2,10 +2,10 @@
 _gemname=droxi
 pkgname=$_gemname
 pkgver=0.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc='An ftp-like command-line interface to Dropbox'
 arch=(any)
-url='http://jangler.info/code/droxi'
+url='https://github.com/jangler/droxi'
 license=(MIT)
 depends=(ruby-dropbox-sdk)
 options=(!emptydirs)
