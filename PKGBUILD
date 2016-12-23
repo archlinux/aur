@@ -2,7 +2,7 @@
 
 _npmname=generator-jhipster
 pkgname=nodejs-generator-jhipster
-pkgver=3.12.1
+pkgver=3.12.2
 pkgrel=1
 pkgdesc="JHipster is a fully Open Source, widely used application generator. Easily create high-quality Spring Boot + AngularJS projects!"
 arch=('any')
@@ -11,7 +11,7 @@ license=('APACHE')
 depends=('nodejs-yeoman' 'gulp')
 source=("http://registry.npmjs.org/$_npmname/-/$_npmname-$pkgver.tgz")
 noextract=($_npmname-$pkgver.tgz)
-sha256sums=('54a61d2d80d3f02310e876034ab453c99c8d79bf9af2f6bdbf96d946181d42e1')
+sha256sums=('f38c78dba5eeabdd40d8b85cf11f856be4a5dce0f54349295aee14db406c2931')
 
 package() {
   npm install -g --user root --prefix "$pkgdir"/usr "$srcdir"/$_npmname-$pkgver.tgz
@@ -21,4 +21,3 @@ package() {
   npm link yo
 }
 
-# vim:set ts=2 sw=2 et:
