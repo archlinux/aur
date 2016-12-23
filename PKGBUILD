@@ -5,7 +5,7 @@
 
 pkgname=i2pd
 pkgver=2.11.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Simplified C++ implementation of I2P client"
 arch=('i686' 'x86_64')
 url="https://github.com/PurpleI2P/i2pd"
@@ -26,7 +26,6 @@ build() {
   cmake . -Wno-dev \
 	  -DCMAKE_INSTALL_PREFIX=/usr \
 	  -DWITH_UPNP=1 -DWITH_PCH=1 \
-	  -DWITH_WEBSOCKETS=1 \
 	  -DCMAKE_BUILD_TYPE=Release
   make
 }
