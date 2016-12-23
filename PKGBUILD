@@ -19,7 +19,7 @@
 
 pkgname=trilinos-git
 _pkgname=Trilinos
-pkgver=r71448.a166864
+pkgver=r72712.5ed03bf9ef
 pkgrel=1
 pkgdesc="An effort to develop algorithms and enabling technologies within an object-oriented software framework for the solution of large-scale, complex multi-physics engineering and scientific problems."
 arch=('i686' 'x86_64')
