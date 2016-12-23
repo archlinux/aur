@@ -13,13 +13,13 @@
 
 pkgname=rstudio-desktop-bin
 pkgver=1.0.136
-pkgrel=1
+pkgrel=2
 pkgdesc="A new integrated development environment (IDE) for R (binary version from RStudio official website)"
 arch=('i686' 'x86_64')
 license=('GPL')
 url="http://www.rstudio.org/"
 depends=('r' 'gstreamer0.10-base' 'hicolor-icon-theme' 'libxcomposite' 'libxslt' 'shared-mime-info' 'libxrandr' 'pandoc' 'pandoc-citeproc')
-makedepends=('patchelf')
+#makedepends=('patchelf')
 conflicts=('rstudio-desktop' 'rstudio-desktop-git' 'rstudio-desktop-preview-bin')
 provides=("rstudio-desktop=${pkgver}")
 options=(!strip)
@@ -52,19 +52,19 @@ package() {
   tar zxpf data.tar.gz -C "$pkgdir"
   install -dm755 "$pkgdir/usr/bin"
 
-  cd "$pkgdir/usr/lib/rstudio/bin"
-  ln -sf /usr/lib/libncursesw.so.6 libtinfo.so.5
-  ln -sf /usr/lib/libedit.so.0  libedit.so.2
+  #cd "$pkgdir/usr/lib/rstudio/bin"
+  #ln -sf /usr/lib/libncursesw.so.6 libtinfo.so.5
+  #ln -sf /usr/lib/libedit.so.0  libedit.so.2
 
-  cd "$pkgdir/usr/lib/rstudio/bin/rsclang"
-  patchelf --set-rpath '$ORIGIN/..' libclang.so
+#  cd "$pkgdir/usr/lib/rstudio/bin/rsclang"
+#  patchelf --set-rpath '$ORIGIN/..' libclang.so
 
   cd "$pkgdir/usr/lib/rstudio/bin/pandoc"
   ln -sf /usr/bin/pandoc ./
   ln -sf /usr/bin/pandoc-citeproc ./
 
-  cd "$pkgdir/usr/lib/rstudio/bin/plugins"
-  ls */*.so | xargs -n1 patchelf --set-rpath '$ORIGIN/../..'
+#  cd "$pkgdir/usr/lib/rstudio/bin/plugins"
+#  ls */*.so | xargs -n1 patchelf --set-rpath '$ORIGIN/../..'
 
   find "$pkgdir/usr" -type d -print0 | xargs -0 chmod 755
   find "$pkgdir/usr" -type f -name '*.so.*' -print0 | xargs -0 chmod 644
@@ -72,11 +72,15 @@ package() {
   cd "$pkgdir/usr/lib/rstudio/bin"
   ls libQt*.so.*| grep '\.[0-9]\{1,\}\.[0-9]\{1,\}\.[0-9]\{1,\}$'|
   while read x;do
-    ln -sf "$x" "${x%.+([0-9]).+([0-9])}"
+    if [[ ! -e "${x%.+([0-9]).+([0-9])}" ]];then
+      ln -s "$x" "${x%.+([0-9]).+([0-9])}"
+    fi
   done
   ls lib*.so.* | grep '\.so\.[0-9]\{1,\}\.[0-9]\{1,\}$'|
   while read x;do
-    ln -sf "$x" "${x%.+([0-9])}"
+    if [[ ! -e "${x%.+([0-9])}" ]];then
+      ln -s "$x" "${x%.+([0-9])}"
+    fi
   done
 
   cd "$pkgdir/usr/bin"
