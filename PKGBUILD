@@ -2,24 +2,18 @@
 # Contributor: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=mist
-pkgver=0.8.7
-_strver=0-8-7
+pkgver=0.8.8
+_strver=0-8-8
 pkgrel=1
 pkgdesc="Mist dapp browser and Ethereum wallet."
 arch=('i686' 'x86_64')
 depends=(
   'gmp'
-  'leveldb'
-  'qt5-base'
-  'qt5-declarative'
-  'qt5-quickcontrols'
-  'qt5-webengine'
   'readline'
   'gconf'
   'libnotify'
 )
 provides=(
-  'geth'
   'mist'
   'libnode'
 )
@@ -46,14 +40,14 @@ source_i686=(
   "${pkgname}-${_strver}-32.deb::https://github.com/ethereum/${pkgname}/releases/download/v${pkgver}/Mist-linux32-${_strver}.deb"
 )
 sha256sums_i686=(
-  "f464b15ea1179efff96d81c568b5991cf09c6b846244933bf25886d95e9ce2d8"
+  "cb15122b02f243afd00abd0abd3dec77a6983870f095cb122cc6feb504f224da"
 )
 source_x86_64=(
   "${pkgname}-${_strver}-64.deb::https://github.com/ethereum/${pkgname}/releases/download/v${pkgver}/Mist-linux64-${_strver}.deb"
 
 )
 sha256sums_x86_64=(
-  "075dae83299157b309af208c1a233f851e8c633b798c29c5551dc26977d49304"
+  "bb1ab148db979e29e179bcbadf9cf626d128e7a140a15c403891ac626b5601a4"
 )
 
 prepare() {
@@ -70,13 +64,11 @@ package() {
   msg2 'Installing Mist...'
   install -d "${pkgdir}/usr/share/${pkgname}"
   cp -a "${srcdir}/opt/Mist/." "${pkgdir}/usr/share/${pkgname}"
-  install -Dm644 "${srcdir}/icon.png" "${pkgdir}/usr/share/${pkgname}"
-
   install -d "${pkgdir}/usr/share/applications"
-  install -Dm644 "${srcdir}/mist.desktop" "${pkgdir}/usr/share/applications"
+  cp -a "${srcdir}/usr/share/." "${pkgdir}/usr/share/"
 
   install -d "${pkgdir}/usr/bin"
-  ln -s "/usr/share/${pkgname}/Mist" "${pkgdir}/usr/bin/mist"
+  ln -s "/usr/share/${pkgname}/mist" "${pkgdir}/usr/bin/mist"
 
   install -Dm644 "${pkgdir}/usr/share/${pkgname}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   rm "${pkgdir}/usr/share/${pkgname}/LICENSE"
@@ -90,6 +82,6 @@ package() {
 
   find "${pkgdir}" -type d -exec chmod 755 {} +
   find "${pkgdir}" -type f -exec chmod 644 {} +
-  chmod 755 "${pkgdir}/usr/share/${pkgname}/Mist"
+  chmod 755 "${pkgdir}/usr/share/${pkgname}/mist"
   chmod 755 "${pkgdir}/usr/share/${pkgname}/libnode.so"
 }
