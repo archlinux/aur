@@ -2,7 +2,7 @@
 # Original PKGBUILD Contributor: Patrick Bartels <p4ddy.b@gmail.com>
 # Thanks to Bregol
 pkgname="linux-zen-git"
-pkgver=4.9.0+635574+g46451c63787b
+pkgver=4.9.0+635573+g4f4d49c2f303
 pkgdesc="Featureful kernel including various new features, code and optimizations to better suit desktops"
 url="https://github.com/damentz/zen-kernel"
 license=("GPL2")
@@ -39,17 +39,17 @@ prepare() {
 	
 	git reset --hard
 	
-	_BADLINE=$(sed '656!d' Makefile)
-	if [ "$_BADLINE" != "endif" ]; then
-		msg "Applying quick fix for missing endif"
-		sed -i '656iendif' Makefile # quick fix for missing endif in current 4.9 branch
-	fi
+#	_BADLINE=$(sed '656!d' Makefile)
+#	if [ "$_BADLINE" != "endif" ]; then
+#		msg "Applying quick fix for missing endif"
+#		sed -i '656iendif' Makefile # quick fix for missing endif in current 4.9 branch
+#	fi
 	
-	_MISSINGHEADERS=$(sed '20!d' block/bfq-cgroup.c)
-	if [ "$_MISSINGHEADERS" != "#include \"blk.h\"" ]; then
-		msg "Applying quick fix for a couple missing headers for BFQ"
-		sed -i "20i#include \"blk.h\"\n#include \"blk-wbt.h\"\n" block/bfq-cgroup.c
-	fi
+#	_MISSINGHEADERS=$(sed '20!d' block/bfq-cgroup.c)
+#	if [ "$_MISSINGHEADERS" != "#include \"blk.h\"" ]; then
+#		msg "Applying quick fix for a couple missing headers for BFQ"
+#		sed -i "20i#include \"blk.h\"\n#include \"blk-wbt.h\"\n" block/bfq-cgroup.c
+#	fi
 }
 
 pkgver() {
