@@ -1,9 +1,10 @@
 [Unit]
 Description=Correctly set GPIO pins for 51nb X62 sound card
 After=multi-user.target
+After=suspend.target
 
 [Install]
-WantedBy=multi-user.target
+WantedBy=multi-user.target sleep.target
 
 [Service]
 Type=oneshot
