@@ -3,11 +3,11 @@
 # Contributor: TingPing <tingping@tingping.se>
 
 pkgname=plex-media-player
-pkgver=1.2.0
-_gitrev=481
-_gitver=b45bbf24
+pkgver=1.2.2
+_gitrev=555
+_gitver=d1355001
 _fullname="$pkgname-$pkgver.$_gitrev-$_gitver"
-pkgrel=3
+pkgrel=1
 pkgdesc='Next generation Plex Desktop Client'
 arch=('i686' 'x86_64')
 license=('GPL')
@@ -17,8 +17,8 @@ makedepends=('cmake' 'conan')
 source=("$_fullname.tar.gz::https://github.com/plexinc/plex-media-player/archive/v${pkgver}.${_gitrev}-${_gitver}.tar.gz"
         'plex-media-player.desktop')
 noextract=("plex-web-client-konvergo-$_webclientver.cpp.tbz2")
-sha256sums=('c609dbea02f46531e85b75bd94d46c782ddcbd7fc6dddaf6c979393b579be135'
-            'b03845b761cc18a88252b72d0c83e439006224660444d9174f53cc577f9498b6')
+sha512sums=('6b3cd614a68c7e81dbc7fcefdb2aeb65e578e968d87f1fc3ca8c567b7c14751173439d0a711fa24e52819dbe068bfd1bc6fa1d6423a8b86b1f54dadfb83cc80f'
+            'f24d70646babc2d248d6159442e3b9d5518276e7d8e33004f13d260953ebcd741067c507a47de25c24842e4391f4c403cdb46dc989b52fa1dde38a7312382db1')
 
 prepare() {
 	cd "$_fullname"
@@ -30,9 +30,6 @@ prepare() {
 
     sed -i 's|#include <libcec/|#include <libcec3/|' \
            src/input/InputCEC.h
-
-    sed -i 's|plex/stable|plex/public|' \
-           conanfile.py
 
     conan_remote="https://conan.plex.tv"
     msg2 "Checking for plex conan remote"
