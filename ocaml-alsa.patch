@@ -1,0 +1,11 @@
+--- a/ocaml-alsa-0.2.2/src/alsa_stubs.c 2015-07-29 23:28:18.000000000 +0200
++++ b/ocaml-alsa-0.2.2/src/alsa_stubs.c 2016-11-17 20:12:42.925962121 +0100
+@@ -228,7 +228,7 @@
+
+ static value create_hw_params()
+ {
+-  CAMLlocal1(ans);
++  value ans;
+   snd_pcm_hw_params_t *params;
+
+   check_for_err(snd_pcm_hw_params_malloc(&params));
