@@ -1,6 +1,6 @@
 _name='zsh-notify'
 pkgname="${_name}-git"
-pkgver=29.cf8c1b9
+pkgver=r46.1b0ba73
 pkgrel=1
 pkgdesc="Desktop notifications for long-running commands in zsh."
 url="https://github.com/marzocchi/zsh-notify"
@@ -13,8 +13,8 @@ source=("${_name}::${url//https/git}")
 sha256sums=('SKIP')
 
 pkgver() {
-   cd "${srcdir}/${_name}"
-   echo "$(git rev-list --count HEAD).$(git describe --always )"
+    cd "${srcdir}/${_name}"
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
