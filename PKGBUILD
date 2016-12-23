@@ -7,8 +7,8 @@ PKGEXT='.pkg.tar'
 
 pkgname=unity-editor-bin
 _version=5.5.0
-_build=f3
-_buildtag=20161125
+_build=p1
+_buildtag=20161220
 pkgver="${_version}${_build}+${_buildtag}"
 pkgrel=1
 pkgdesc="The world's most popular development platform for creating 2D and 3D multiplatform games and interactive experiences."
@@ -26,8 +26,8 @@ optdepends=('ffmpeg: for WebGL exporting'
 provides=("unity-editor=${pkgver}")
 conflicts=('unity-editor')
 options=(!strip)
-source=("http://download.unity3d.com/download_unity/linux/unity-editor-${pkgver}_amd64.deb")
-md5sums=('b525e2862b5eba77ad252f3e243c31f0')
+source=("http://beta.unity3d.com/download/59c25c92588f/unity-editor_amd64-5.5.0xp1Linux.deb")
+sha512sums=('e6b71956390586596addfd29dc0b1f682f821a0419fd0a5b0049c9a59add014a2087a7ce1491e6c92398360e71028fb0e0daad0fb6c3996a71dcf046e8f11b4d')
 
 prepare() {
 	if [[ "$(df . -BG --output=avail | awk -F'[^0-9]*' 'FNR==2 {print $2;}')" -le "10" ]]; then
