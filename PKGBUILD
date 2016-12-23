@@ -8,20 +8,22 @@
 # See http://bbs.archlinux.org/viewtopic.php?t=9318&highlight=fpc
 
 # Build docs
-_docs=1
+_build_docs=true
 
 pkgbase=fpc-svn
 pkgname=(fpc-svn fpc-src-svn)
-[[ $_docs = 1 ]] && pkgname+=(fpc-docs-svn)
-pkgver=3.1.1.r32385
+[[ $_build_docs ]] && pkgname+=(fpc-docs-svn)
+pkgver=3.1.1.r35178
 _pkgver=${pkgver/${pkgver:5}}
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.freepascal.org/"
 license=('GPL' 'LGPL' 'custom')
-depends=(ncurses zlib expat)
-makedepends=(fpc rsync)
-[[ $_docs = 1 ]] && makedepends+=(texlive-core texlive-htmlxml texlive-latexextra)
+depends=('ncurses' 'zlib' 'expat')
+# Trunk can only be built with stable version of FPC
+makedepends=('fpc<9999' 'svn')
+[[ $_build_docs ]] && makedepends+=('texlive-core' 'texlive-htmlxml'
+                                    'texlive-latexextra' 'ghostscript')
 source=(fpcbuild::svn+http://svn.freepascal.org/svn/fpcbuild/trunk)
 sha1sums=('SKIP')
 
@@ -34,11 +36,11 @@ pkgver() {
 
 prepare() {
   cd "${srcdir}/fpcbuild"
-  rsync -aq --exclude='*/.svn*' fpcsrc ../fpcsrc
+  svn export fpcsrc ../fpcsrc
 
-  # For documentation building
-  ln -s fpcsrc/rtl
-  ln -s fpcsrc/packages
+  # Needed to fix documentation building on my machine
+  # FIXME: check if it's required to build docs
+  ln -sf /usr/share/texmf-dist/tex/latex/mdwtools/syntax.sty fpcdocs/syntax.sty
 }
 
 build() {
@@ -46,18 +48,19 @@ build() {
   pushd fpcsrc/compiler
   fpcmake -Tall
   popd
-  make ${MAKEFLAGS} build NOGDB=1 OPT=" -CX -Xs -XX -dRelease"
+  make ${MAKEFLAGS} NOGDB=1 OPT=" -dRelease" build
 
   cd fpcdocs
-  [[ $_docs=1 ]] && make ${MAKEFLAGS} html
+  [[ $_build_docs ]] && make ${MAKEFLAGS} FPCSRCDIR="${srcdir}/fpcbuild/fpcsrc" html
 }
 
 package_fpc-svn() {
-  pkgdesc="The Free Pascal Compiler is a Turbo Pascal 7.0 and Delphi compatible 32bit Pascal Compiler. It comes with fully TP 7.0 compatible run-time library."
+  pkgdesc="The Free Pascal Compiler is a Turbo Pascal 7.0 and Delphi compatible \
+    Pascal Compiler. It comes with fully TP 7.0 compatible run-time library."
   backup=("etc/fpc.cfg")
-  options=(zipman staticlibs)
-  conflicts=(fpc)
-  provides=(fpc)
+  options=('zipman' 'staticlibs')
+  conflicts=('fpc')
+  provides=('fpc=9999')
 
   cd "${srcdir}/fpcbuild"
 
