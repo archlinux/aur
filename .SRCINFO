@@ -7,7 +7,7 @@ pkgbase = python2-rosinstall-generator
 	license = BSD
 	makedepends = python2
 	depends = python2
-	source = https://pypi.python.org/packages/source/r/rosinstall_generator/rosinstall_generator-0.1.13.tar.gz
+	source = https://github.com/ros-infrastructure/rosinstall_generator/archive/0.1.13.tar.gz
 	md5sums = 605826dbfea6a0e802d3b96d6f848548
 
 pkgname = python2-rosinstall-generator

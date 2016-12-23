@@ -9,7 +9,7 @@ depends=('python2')
 makedepends=('python2')
 license=('BSD')
 arch=('any')
-source=("https://pypi.python.org/packages/source/r/rosinstall_generator/rosinstall_generator-$pkgver.tar.gz")
+source=("https://github.com/ros-infrastructure/rosinstall_generator/archive/$pkgver.tar.gz")
 md5sums=('605826dbfea6a0e802d3b96d6f848548')
 
 build() {
