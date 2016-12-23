@@ -1,6 +1,8 @@
 # Maintainer: Luca Weiss <luca (at) z3ntu (dot) xyz>
 
 ######
+# NOTE TO THE NOTE: I have found out why the build failed and will update the package in the near future. Until then this package should work.
+######
 # NOTE: This should eventually be replaced by the official Riot Desktop Client (/Electron wrapper), but there are major problems building it so this is a replacement until the "official one" gets working. See https://riot.im/desktop.html and https://github.com/vector-im/riot-web#running-as-a-desktop-app for more details.
 # The current solution uses nativefier which is also mentioned as "possible" on the GitHub repo linked above.
 ######
@@ -26,10 +28,11 @@ build() {
 }
 
 package() {
+  _bits=ia32 ; [ "$CARCH" == "x86_64" ] && _bits=x64 # Thanks limabean
   mkdir -p $pkgdir/usr/lib/
   mkdir -p $pkgdir/usr/bin/
 
-  cp -R $srcdir/riot-linux-x64/ $pkgdir/usr/lib/riot-web
+  cp -R $srcdir/riot-linux-$_bits/ $pkgdir/usr/lib/riot-web
   ln -s /usr/lib/riot-web/riot $pkgdir/usr/bin/riot
   
   chmod -R 644 $pkgdir/usr/lib/riot-web/resources/app
