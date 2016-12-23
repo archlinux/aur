@@ -1,0 +1,19 @@
+pkgbase = melis-wallet-bin
+	pkgdesc = The most advanced bitcoin wallet.
+	pkgver = 0.14.2
+	pkgrel = 1
+	url = https://www.melis.io/
+	arch = x86_64
+	license = custom
+	depends = alsa-lib
+	depends = libxss
+	depends = libxtst
+	depends = gconf
+	depends = gtk2
+	depends = nss
+	options = !strip
+	source = https://www.melis.io/packages/production/linux/melis-wallet-linux-x64-0.14.2.tar.gz
+	md5sums = 7c6897917341f26cd68df1c9dbfabcf3
+
+pkgname = melis-wallet-bin
+
