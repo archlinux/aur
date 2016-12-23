@@ -10,14 +10,14 @@
 
 pkgname=icecream
 pkgver=1.1rc2
-pkgrel=1
+pkgrel=2
 pkgdesc="takes compile jobs from your build and distributes it to remote machines allowing a parallel build on several machines."
 url="http://en.opensuse.org/Icecream"
 license=('GPL2')
 makedepends=('')
 depends=('bash' 'libcap-ng' 'lzo')
 provides=('icecream')
-optdepends=('iceberg-git: A QT based monitor for icecream nodes'
+optdepends=('iceberg-git: A Qt based monitor for icecream nodes'
             'ccache: ccache enabled remote builds.')
 conflicts=('icecream-git')
 backup=('etc/icecream.conf')
