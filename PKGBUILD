@@ -2,9 +2,9 @@
 
 pkgname=elvish-git
 _pkgname=elvish
-pkgver=r2046.df1d282
+pkgver=r2052.a25710a
 pkgrel=1
-pkgdesc="A novel Unix shell."
+pkgdesc="A friendly and expressive Unix shell."
 arch=('i686' 'x86_64')
 url="https://github.com/elves/elvish"
 license=('custom:2-clause BSD')
