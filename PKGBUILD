@@ -1,7 +1,7 @@
 # Maintainer: Levente Polyak <anthraxx[at]archlinux[dot]org>
 
 pkgname=diffoscope-git
-pkgver=62+2+ge4731a6
+pkgver=65+1+g5366ec6
 pkgrel=1
 pkgdesc='Tool for in-depth comparison of files, archives, and directories'
 url='https://diffoscope.org/'
@@ -28,6 +28,7 @@ optdepends=(
   'gnupg: GNU privacy guard support'
   'mono: mono support'
   'mono-tools: mono utilities support'
+  'openssh: OpenSSH key comparing support'
   'poppler: PDF utilities support'
   'sqlite: SQLite support'
   'squashfs-tools: squashfs filesystem support'
@@ -42,7 +43,7 @@ optdepends=(
 makedepends=('git')
 checkdepends=(
   'python-pytest' 'acl' 'binutils' 'bzip2' 'cdrkit' 'cpio' 'diffutils' 'e2fsprogs' 'enjarify' 'java-environment>=8' 'fontforge' 'gettext' 'ghc' 'gnupg'
-  'mono' 'mono-tools' 'poppler' 'sqlite' 'squashfs-tools' 'tlsh' 'unzip' 'gzip' 'tar' 'vim' 'xz' 'llvm' 'colord' 'fpc')
+  'mono' 'mono-tools' 'poppler' 'sqlite' 'squashfs-tools' 'tlsh' 'unzip' 'gzip' 'tar' 'vim' 'xz' 'llvm' 'colord' 'fpc' 'openssh')
 provides=('diffoscope')
 conflicts=('diffoscope')
 source=(${pkgname}::git+https://anonscm.debian.org/git/reproducible/diffoscope.git)
@@ -65,9 +66,9 @@ build() {
 
 check() {
   cd ${pkgname}
-  # TODO: readd fpc
+  # TODO: readd fpc and dex
   # TODO: colord test fails with lcms2 >= 2.8
-  PYTHONPATH=".:${PYTHONPATH}" py.test -k 'not test_icc and not test_ppu'
+  PYTHONPATH=".:${PYTHONPATH}" py.test -k 'not test_icc and not test_ppu and not test_dex'
 }
 
 package() {
