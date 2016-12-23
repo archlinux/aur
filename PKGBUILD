@@ -1,6 +1,6 @@
 # Maintainer: Kohei Suzuki <eagletmt@gmail.com>
 pkgname=ghq
-pkgver=0.7.1
+pkgver=0.7.4
 pkgrel=1
 pkgdesc="Manage remote repository clones"
 arch=('i686' 'x86_64')
@@ -31,4 +31,4 @@ package() {
 
 # vim: set et sw=2 sts=2:
 
-sha1sums=('424af3889e4781423d35d3bea1ec9812067808f7')
+sha512sums=('1c8e9b433061940133805b0cdd7db26f3a1be801cb196acdca6d56a1dac0a2b412296cbc69d6e2fc0b784d6951d906b3da5dc7f11a02bd22d3d15c2e7fc87227')
