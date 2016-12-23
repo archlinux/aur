@@ -1,0 +1,11 @@
+--- gcc/doc/gcc.texi	2015-06-23 09:35:08.000000000 +0200
++++ gcc/doc/gcc.texi	2016-12-22 14:17:41.313844060 +0100
+@@ -205,4 +205,8 @@ form; it may sometimes be useful to look
+ @c Epilogue
+ @c ---------------------------------------------------------------------
+ 
++@end tex
++@end multitable
++@end titlepage
++
+ @bye

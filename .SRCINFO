@@ -1,0 +1,49 @@
+pkgbase = gcc48-alternative
+	pkgdesc = The GNU Compiler Collection 4.8 for multilib
+	pkgver = 4.8.5
+	pkgrel = 2
+	url = http://gcc.gnu.org
+	arch = x86_64
+	license = GPL
+	license = LGPL
+	license = FDL
+	license = custom
+	checkdepends = dejagnu
+	checkdepends = inetutils
+	makedepends = binutils>=2.25
+	makedepends = libmpc
+	makedepends = doxygen
+	makedepends = lib32-glibc>=2.20
+	options = !emptydirs
+	source = ftp://gcc.gnu.org/pub/gcc/releases/gcc-4.8.5/gcc-4.8.5.tar.bz2
+	source = http://isl.gforge.inria.fr/isl-0.12.2.tar.bz2
+	source = http://www.bastoul.net/cloog/pages/download/cloog-0.18.1.tar.gz
+	md5sums = 80d2c2982a3392bb0b89673ff136e223
+	md5sums = e039bfcfb6c2ab039b8ee69bf883e824
+	md5sums = e34fca0540d840e5d0f6427e98c92252
+
+pkgname = gcc48-alternative-multilib
+	pkgdesc = The GNU Compiler Collection 4.8 - C and C++ frontends for multilib
+	install = gcc48-alternative.install
+	groups = multilib-devel
+	depends = gcc48-alternative-libs-multilib=4.8.5-2
+	depends = binutils>=2.25
+	depends = libmpc
+	provides = gcc48=4.8.5-2
+	options = staticlibs
+
+pkgname = gcc48-alternative-libs-multilib
+	pkgdesc = Runtime GCC 4.8 libraries for multilib
+	install = gcc48-alternative-libs.install
+	depends = glibc>=2.20
+	depends = lib32-gcc48-alternative-libs=4.8.5-2
+	provides = gcc48-alternative-libs=4.8.5-2
+	options = !emptydirs
+	options = !strip
+
+pkgname = lib32-gcc48-alternative-libs
+	pkgdesc = Runtime GCC 4.8 libraries (32-bit)
+	depends = lib32-glibc>=2.20
+	options = !emptydirs
+	options = !strip
+
