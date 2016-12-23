@@ -1,4 +1,4 @@
-# Maintainer: Patrick Griffis <tingpign@tingpng.se
+# Maintainer: Patrick Griffis <tingpign@tingpng.se>
 
 _modname='gbulb'
 pkgname='python-gbulb'
@@ -18,7 +18,7 @@ sha256sums=('91b60a05da3197e537525224f88ba23d951b9175a6a33d6d4565e492ab591c35')
 check() {
     cd "$_modname-$pkgver"
 
-    pytest
+    python -m pytest ./tests
 }
 
 package() {
