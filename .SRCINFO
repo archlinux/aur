@@ -1,0 +1,18 @@
+pkgbase = bluemindo
+	pkgdesc = Ergonomic and modern music player designed for audiophiles
+	pkgver = 1.0rc1
+	pkgrel = 1
+	url = http://bluemindo.codingteam.net
+	arch = any
+	license = GPL3
+	depends = gst-python
+	depends = python-dbus
+	depends = python-beautifulsoup4
+	depends = python-pytaglib
+	source = https://codingteam.net/project/bluemindo/download/file/bluemindo-1.0rc1.tar.gz
+	source = makefile.patch
+	sha256sums = e405c881feeb43f8126988403e1c1008ee5341c8faae90d5e671d9075c89fe5c
+	sha256sums = 3f8758bd2255966af796937902e1ff5064df3f34283172eaee8b28d855fb0747
+
+pkgname = bluemindo
+
