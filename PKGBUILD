@@ -1,4 +1,5 @@
 # Maintainer: Samuel Vincent Creshal <samuel@creshal.de>
+# Original fix by Quintus, http://thinkpads.com/forum/viewtopic.php?p=791840#p791840
 
 pkgname=x62-alsa-hacks
 pkgver=0.0.2
