@@ -9,12 +9,12 @@ pkgrel=1
 pkgdesc="Simple Let's Encrypt client."
 arch=('any')
 license=('GPL')
-url="https://github.com/kuba/simp_le"
+url="https://github.com/zenhack/simp_le"
 depends=('git' 'ca-certificates' 'python-setuptools' 'python-pip' 'python-wheel' 'python-cryptography' 'python-mock'
          'python-pyopenssl' 'python-acme')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
-source=("${_pkgname}"::"git+https://github.com/kuba/simp_le.git")
+source=("${_pkgname}"::"git+https://github.com/zenhack/simp_le.git")
 md5sums=('SKIP')
 
 pkgver() {
