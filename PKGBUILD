@@ -2,7 +2,7 @@
 
 pkgname=ldoc-git
 _pkgname=ldoc
-pkgver=1.4.6
+pkgver=1.4.6.3.gf91c318
 pkgrel=1
 pkgdesc='LuaDoc-compatible documentation generation system'
 url='https://github.com/stevedonovan/ldoc'
