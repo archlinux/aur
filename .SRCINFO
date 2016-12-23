@@ -5,6 +5,7 @@ pkgbase = python-gbulb
 	url = https://github.com/nathan-hoad/gbulb
 	arch = any
 	license = Apache
+	checkdepends = python-pytest
 	makedepends = python-setuptools
 	depends = python-gobject
 	optdepends = gtk3: Gtk application integration
