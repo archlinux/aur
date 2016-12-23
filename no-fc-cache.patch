@@ -1,0 +1,17 @@
+--- configure.ac	2016-12-15 04:44:32.000000000 +0100
++++ configure.ac1	2016-12-23 18:47:56.561929262 +0100
+@@ -2998,12 +2998,8 @@
+ 
+ fi
+ 
+-AC_PATH_PROGS(FCCACHE, fc-cache, false)
+-if test x"$FCCACHE" = "xfalse"; then
+-  AM_CONDITIONAL(HAVE_FC_CACHE, false)
+-else
+-  AM_CONDITIONAL(HAVE_FC_CACHE, true)
+-fi
++
++AM_CONDITIONAL(HAVE_FC_CACHE, false)
+ 
+ if test x"$is_amigaos4" = "xyes"; then
+   if test x"$enable_sdlui" != "xyes" -a x"$enable_sdlui2" != "xyes"; then
