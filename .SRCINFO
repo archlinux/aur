@@ -1,7 +1,7 @@
 pkgbase = tecart-starter
 	pkgdesc = Desktop app to enable easier use of the TecArt Business Software
 	pkgver = 4.6.029
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.tecart.de/
 	arch = x86_64
 	license = custom
@@ -9,8 +9,8 @@ pkgbase = tecart-starter
 	depends = qtkeychain
 	provides = tecart-starter
 	options = !strip
-	source = https://update.tecart.info/tecart-starter_4.6.029-6_amd64.deb
-	md5sums = a09d231b7108a29f2f89ee8fb36d7378
+	source = https://repo.tecart.de/apt/ubuntu/pool/main/t/tecart-starter/tecart-starter_4.6.029-12_amd64.deb
+	md5sums = b674568af141e98f91d6cf441c7f889b
 
 pkgname = tecart-starter
 
