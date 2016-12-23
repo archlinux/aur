@@ -1,15 +1,15 @@
 # Maintainer: Daniel Lima <danielm@tinyhub.tk>
 
 pkgname=xsysroot
-pkgver=1.913
-pkgrel=2
+pkgver=1.914
+pkgrel=1
 pkgdesc='Xsysroot is a tool that allows you to work with ARM images from your Intel computer.'
 arch=('i686' 'x86_64')
 url='https://github.com/skarbat/xsysroot'
 license=('MIT')
 makedepends=('git')
 depends=('python2' 'qemu-user-static' 'binfmt-support')
-source=('git+ssh://github.com/skarbat/xsysroot')
+source=('git://github.com/skarbat/xsysroot')
 sha256sums=('SKIP')
 
 pkgver() {
