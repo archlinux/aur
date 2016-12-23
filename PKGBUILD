@@ -3,8 +3,8 @@ _basename=siunitx
 pkgname=texlive-"$_basename"
 # Use "grep ProvidesExplPackage -r src/" to find the version.
 pkgver=2.6q
-pkgrel=1
-pkgdesc="Typeset chemical formulae/equations and Risk and Safety phrases in LaTeX."
+pkgrel=2
+pkgdesc="Typeset physical quantities in LaTeX."
 arch=('any')
 depends=('texlive-bin')
 conflicts=('texlive-science')
