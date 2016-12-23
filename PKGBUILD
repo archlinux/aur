@@ -32,7 +32,7 @@ prepare() {
 
 build() {
   cd "$srcdir"
-  convert "$_pkgname/src/res/app_icon/app_icon.svg" -alpha on app_icon.png
+  convert -background none "$_pkgname/src/res/app_icon/app_icon.svg" app_icon.png
 
   cd "$_pkgname/build"
   cmake -DCMAKE_INSTALL_PREFIX='/usr' -DUSE_MULTI_PROC='TRUE' ..
