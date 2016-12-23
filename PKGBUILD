@@ -1,42 +1,40 @@
 # Maintainer: Luca Weiss <luca (at) z3ntu (dot) xyz>
 
-######
-# NOTE TO THE NOTE: I have found out why the build failed and will update the package in the near future. Until then this package should work.
-######
-# NOTE: This should eventually be replaced by the official Riot Desktop Client (/Electron wrapper), but there are major problems building it so this is a replacement until the "official one" gets working. See https://riot.im/desktop.html and https://github.com/vector-im/riot-web#running-as-a-desktop-app for more details.
-# The current solution uses nativefier which is also mentioned as "possible" on the GitHub repo linked above.
-######
-
-# TODO: Add .desktop file
+# TODO: Add icon(s)
 
 pkgname=riot-web
-#pkgver=0.9.2 # Current official version is 0.9.2 so the current pkgver should be kept under that.
-pkgver=0.1
+pkgver=0.9.4
 pkgrel=1
-pkgdesc="A simple and elegant collaboration environment that gathers all of your different conversations and app integrations into one single app."
-arch=("x86_64" "i686")
-license=("Apache2")
-#source=("git+https://github.com/vector-im/riot-web.git#tag=v$pkgver")
-url="https://riot.im"
-makedepends=("npm")
-#sha512sums=("SKIP")
+pkgdesc="A glossy Matrix collaboration client for the desktop."
+arch=("any")
+license=("Apache")
+source=("git+https://github.com/vector-im/riot-web.git#tag=v$pkgver"
+        "Riot.desktop"
+        "riot-web.sh")
+url="https://riot.im/"
+makedepends=("git")
+depends=("electron")
+sha512sums=('SKIP'
+            'd76be71d1ee0673916bfb563b1701ce42221ebd0fb520b5171d453027391b583eaebba4baee707eecd5583b461bc1317a67e4dd57fd350e134b1afd4fc5d4ed5'
+            '48ec620b07fc57de790abdb1f01048825fa7864d22d3f3494055b3919538868ac9c48048d94ad1655f93da595cc1a06a625170aa070979f98a9d39b5ded34cae')
 
 build() {
-  cd $srcdir
-  npm install nativefier
-  node_modules/.bin/nativefier https://riot.im/app/
+  cd $srcdir/riot-web
+  npm install
+  npm run build
 }
 
 package() {
-  _bits=ia32 ; [ "$CARCH" == "x86_64" ] && _bits=x64 # Thanks limabean
-  mkdir -p $pkgdir/usr/lib/
-  mkdir -p $pkgdir/usr/bin/
+  cd $srcdir/riot-web
+  mkdir -p $pkgdir/usr/lib/$pkgname/{webapp,electron}
 
-  cp -R $srcdir/riot-linux-$_bits/ $pkgdir/usr/lib/riot-web
-  ln -s /usr/lib/riot-web/riot $pkgdir/usr/bin/riot
-  
-  chmod -R 644 $pkgdir/usr/lib/riot-web/resources/app
-  chmod -R a+rX $pkgdir/usr/lib/riot-web/resources/app # Fix directory permissions
+  #cp -r $srcdir/riot-web/* $pkgdir/usr/lib/$pkgname/
+  cp $srcdir/riot-web/package.json $pkgdir/usr/lib/$pkgname/
+  cp -r $srcdir/riot-web/webapp/* $pkgdir/usr/lib/$pkgname/webapp/
+  cp -r $srcdir/riot-web/electron/* $pkgdir/usr/lib/$pkgname/electron/
+
+  install -Dm644 $srcdir/Riot.desktop $pkgdir/usr/share/applications/Riot.desktop
+  install -Dm755 $srcdir/riot-web.sh $pkgdir/usr/bin/riot-web
 }
 
 # vim:set ts=2 sw=2 et:
