@@ -36,7 +36,6 @@ pkgver() {
 
 prepare() {
   cd "${srcdir}/fpcbuild"
-  svn export fpcsrc ../fpcsrc
 
   # Needed to fix documentation building on my machine
   # FIXME: check if it's required to build docs
@@ -66,7 +65,7 @@ package_fpc-svn() {
 
   export HOME="$srcdir"
 
-  make -j1 PREFIX=${pkgdir}/usr install NOGDB=1 OPT=" -Xs -XX -CX -dRelease"
+  make -j1 PREFIX="${pkgdir}"/usr install NOGDB=1 OPT=" -dRelease"
 
   export PATH="$pkgdir/usr/bin:$PATH"
 
@@ -88,16 +87,18 @@ package_fpc-svn() {
 
 package_fpc-src-svn() {
   pkgdesc="Sources for the FreePascal compiler (required by the Lazarus IDE)"
-  options=(!strip)
-  conflicts=(fpc-src)
-  provides=(fpc-src)
+  options=("!strip")
+  conflicts=("fpc-src")
+  provides=("fpc-src")
 
-  mkdir -p $pkgdir/usr/lib/fpc
-  cp -r $srcdir/fpcsrc $pkgdir/usr/lib/fpc/src
+  install -dm755 "$pkgdir"/usr/lib/fpc
+
+  svn export -r HEAD "$srcdir"/fpcbuild/fpcsrc "$pkgdir/usr/lib/fpc/src"
 }
 
 package_fpc-docs-svn() {
   pkgdesc="Documentation for the Free Pascal compiler"
+  options=("!strip")
 
   cd "$srcdir/fpcbuild/fpcdocs"
   make PREFIX="$pkgdir/usr" htmlinstall
