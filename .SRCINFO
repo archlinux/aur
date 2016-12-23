@@ -1,6 +1,6 @@
 pkgbase = gogland-preview
 	pkgdesc = Capable and Ergonomic Go IDE
-	pkgver = 163.10154.18
+	pkgver = 163.10615.6
 	pkgrel = 1
 	url = http://www.jetbrains.com/go/
 	arch = x86_64
@@ -9,9 +9,9 @@ pkgbase = gogland-preview
 	optdepends = java-environment>=8: use system java
 	optdepends = java-runtime-common: use system java
 	options = !strip
-	source = https://download.jetbrains.com/go/gogland-163.10154.18.tar.gz
+	source = https://download.jetbrains.com/go/gogland-163.10615.6.tar.gz
 	source = com.jetbrains.gogland-preview.desktop
-	sha512sums = 1a091755f2edd8543f8a39df9b8ba0d7944b886c96c41ce9f01ef4100ac92abfaccecdb8ce5ff8ec663fa57e3a2c4f5cb8e2f3c062d8952d7f0e3dacad30f473
+	sha512sums = 1cbd081d4079428f6eb13ca9db27524afb09a5b3f772b7cf54c2aa0fe33d569fddae3035bda659094648d81904cc68fe4d60167e27c51b2376a243f7990bdfbe
 	sha512sums = 7434fdfc6a957c7b6cd195cfd5f88864f6c6e0d4ed0eae801df08ec13cca9237e8728cc4ccd5c06d9966838dedcc97c584b65e6fd7836c6bc4c93402bd008c6c
 
 pkgname = gogland-preview
