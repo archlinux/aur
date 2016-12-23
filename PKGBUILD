@@ -1,7 +1,7 @@
 # Maintainer: Brandon Mulcahy <brandon@jangler.info>
 _gemname=droxi
 pkgname=$_gemname
-pkgver=0.4.1
+pkgver=0.5.0
 pkgrel=1
 pkgdesc='An ftp-like command-line interface to Dropbox'
 arch=(any)
@@ -11,7 +11,7 @@ depends=(ruby-dropbox-sdk)
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-sha256sums=('16df8c5db927651106b4df202d37dcaa7a6d61a055067e174b2fa9c13e7937b8')
+sha256sums=('3a8a1d7003cba3666663875eb560b4e954c40fc8ff5989c70fc2d9deed618c36')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
