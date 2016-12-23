@@ -1,0 +1,8 @@
+# After modifying, run ./mkscr
+
+setenv mmcargs "setenv bootargs console=ttymxc0,${baudrate} root=${mmcroot} video=mxcdi1fb:RGB24,VGA-SXGA vga di1_primary"
+
+if run loadimage; then
+  run mmcboot;
+else run netboot;
+fi

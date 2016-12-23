@@ -1,0 +1,23 @@
+pkgbase = uboot-imx53qsb
+	pkgdesc = U-Boot for i.MX53 Quick Start Board
+	pkgver = 2016.11
+	pkgrel = 1
+	url = http://git.denx.de/u-boot.git/
+	install = uboot-imx53qsb.install
+	arch = armv7h
+	license = GPL
+	makedepends = git
+	makedepends = bc
+	backup = boot/boot.txt
+	backup = boot/boot.scr
+	source = ftp://ftp.denx.de/pub/u-boot/u-boot-2016.11.tar.bz2
+	source = 0001-arch-linux-arm-modifications.patch
+	source = boot.txt
+	source = mkscr
+	md5sums = ca1f6e019d08aff8d0ca1beb2e66737d
+	md5sums = 2ffa41640a6d26136e8aed88fa4fe832
+	md5sums = 23a08cb6a356d5dc7ddaf124ebb5a5d7
+	md5sums = 021623a04afd29ac3f368977140cfbfd
+
+pkgname = uboot-imx53qsb
+

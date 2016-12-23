@@ -1,0 +1,61 @@
+diff --git a/include/configs/mx53loco.h b/include/configs/mx53loco.h
+index 6cc5d9c..9d8b60a 100644
+--- a/include/configs/mx53loco.h
++++ b/include/configs/mx53loco.h
+@@ -16,6 +16,8 @@
+ 
+ #include <asm/arch/imx-regs.h>
+ 
++#include <config_distro_defaults.h>
++
+ #define CONFIG_CMDLINE_TAG
+ #define CONFIG_SETUP_MEMORY_TAGS
+ #define CONFIG_INITRD_TAG
+@@ -98,14 +100,15 @@
+ 	"ip_dyn=yes\0" \
+ 	"mmcdev=0\0" \
+ 	"mmcpart=1\0" \
+-	"mmcroot=/dev/mmcblk0p2 rw rootwait\0" \
++	"bootdir=\0" \
++	"mmcroot=/dev/mmcblk0p1 rw rootwait\0" \
+ 	"mmcargs=setenv bootargs console=ttymxc0,${baudrate} root=${mmcroot}\0" \
+ 	"loadbootscript=" \
+-		"load mmc ${mmcdev}:${mmcpart} ${loadaddr} ${script};\0" \
++		"load mmc ${mmcdev}:${mmcpart} ${loadaddr} ${bootdir}${script};\0" \
+ 	"bootscript=echo Running bootscript from mmc ...; " \
+ 		"source\0" \
+-	"loadimage=load mmc ${mmcdev}:${mmcpart} ${loadaddr} ${image}\0" \
+-	"loadfdt=load mmc ${mmcdev}:${mmcpart} ${fdt_addr} ${fdt_file}\0" \
++	"loadimage=load mmc ${mmcdev}:${mmcpart} ${loadaddr} ${bootdir}${image}\0" \
++	"loadfdt=load mmc ${mmcdev}:${mmcpart} ${fdt_addr} ${bootdir}dtbs/${fdt_file}\0" \
+ 	"mmcboot=echo Booting from mmc ...; " \
+ 		"run mmcargs; " \
+ 		"if test ${boot_fdt} = yes || test ${boot_fdt} = try; then " \
+@@ -154,7 +157,16 @@
+ 		"else " \
+ 			"if run loadimage; then " \
+ 				"run mmcboot; " \
+-			"else run netboot; " \
++			"else " \
++				"setenv bootdir /boot/; " \
++				"if run loadbootscript; then " \
++					"run bootscript; " \
++				"else " \
++					"if run loadimage; then " \
++						"run mmcboot; " \
++					"else run netboot; " \
++					"fi; " \
++				"fi; " \
+ 			"fi; " \
+ 		"fi; " \
+ 	"else run netboot; fi"
+@@ -201,6 +213,9 @@
+ #define CONFIG_ENV_IS_IN_MMC
+ #define CONFIG_SYS_MMC_ENV_DEV 0
+ 
++#define CONFIG_CMD_PART
++#define CONFIG_PARTITION_UUIDS
++
+ #define CONFIG_CMD_SATA
+ #ifdef CONFIG_CMD_SATA
+ 	#define CONFIG_DWC_AHSATA
