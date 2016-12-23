@@ -2,7 +2,7 @@
 # Based on UMS PKGBUILD
 
 pkgname=umsjava7
-pkgver=6.5.0
+pkgver=6.5.2
 pkgrel=1
 pkgdesc="Universal Media Server: a DLNA-compliant UPnP Media Server. Build based on Java 7."
 arch=('any')
@@ -10,7 +10,7 @@ url="http://www.universalmediaserver.com/"
 license=('GPL2')
 provides=('ums: Universal Media Server')
 conflicts=('ums')
-depends=('mplayer' 'ffmpeg' 'mencoder' 'tsmuxer-cli-ng' 'libmediainfo' 'java-runtime=7' 'desktop-file-utils')
+depends=('mplayer' 'ffmpeg' 'mencoder' 'tsmuxer-ng-cli-bin' 'libmediainfo' 'java-runtime=7' 'desktop-file-utils')
 makedepends=("unzip")
 optdepends=('vlc: Internet video/audio support'
             'dcraw: thumbnails creation support')
@@ -23,7 +23,7 @@ source=("https://downloads.sourceforge.net/project/unimediaserver/Official%20Rel
         "$pkgname.service"
         "$pkgname.install"
         'ums')
-sha512sums=('da3088627369948aecb34d7294e12dc7ec9bdeed58f34ea356cdbe989c556c293246654712658063076bb899fdccdd105f60b3d29b9a918589ba0270fccc8bac'
+sha512sums=('122e773293fbd8096de1a4cdf2ecb9ca93793d352a91287ee4b30932f43f642a33260535676441f364c8688a038e71989284b5d913f4746b37e51e88ec171fdf'
             '580080b4d8b831803f2c2dfe46bb69996374fb3659b0cd495563ac09b5fdd09634cf20767fe0caa08d5dfbb70767683e00222a2a829b558cc17ea806c8ef6090'
             '00e57bd860b34068f76a8deb10676e58e935f325b136c89979e108f60f0ed0f1cea0c04925bb57af47db7a5bbc69b13c9568c62b0add99ffbb1654e93aa48233'
             'f995d6fbebf08e88bf2e1675c626e7be88c27f615891f0b4108375b2c8a57881c238b7109f2c0d48ec22105670f33c408ce48ecb9a17cc8db326ffd1a3419803'
