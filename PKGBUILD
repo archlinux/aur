@@ -6,8 +6,8 @@
 
 pkgname=unity-editor
 _version=5.5.0
-_build=f3
-_buildtag=20161125
+_build=p1
+_buildtag=20161220
 pkgver=${_version}${_build}+${_buildtag}
 pkgrel=1
 epoch=1
@@ -35,19 +35,19 @@ optdepends=('ffmpeg: for WebGL exporting'
             'android-udev: for Android Remote')
 conflicts=('unity3d')
 replaces=('unity3d')
-source=("http://download.unity3d.com/download_unity/linux/unity-editor-installer-${pkgver}.sh"
+source=("http://beta.unity3d.com/download/59c25c92588f/unity-editor-installer-5.5.0xp1Linux.sh"
         'EULA'
         'unity-editor'
         'monodevelop-unity'
         'unity-monodevelop.png')
-noextract=("unity-editor-installer-${pkgver}.sh")
-sha1sums=('c283c3ce99f84465a5b5b69297c5ef87f8da2cc4'
-          '263b78ee586a632b9905f84661b96e9c6339f553'
+noextract=("unity-editor-installer-${_version}x${_build}Linux.sh")
+sha1sums=('b17124b8cdc7a88e968043d999ac3342cbbbca76'
+          'fddbbfbfa3fcabc753b19941e5fb5dff41851ba6'
           'c3727d6851a3ffd0aef9b380e2485eed9f02ef6b'
           '8ffbfd8f4577b146d25217720ac6689c5d929e84'
           'd1ecf758c9816f964febf601d065b0354940d866')
-sha512sums=('90800187934c05ad55137f8a4d70fd6f442d6cf8370e998026159b5024b4a3b61b27f2e27759328e250740764aef00610dcd0a40bd96b1e383fa7353a6f2712b'
-            '65d7d28d7ea821badd12c21da578b682908bc021d912be2c82ee14e8814ebc836016ff1794a2f5b4a92886b6642c457a90784e4595c92c118054f3f12c89dee2'
+sha512sums=('64e9a38122d28cd0669f80e96d43fd74038a30b8e804927fcd3937c3c020605aa087fe37eee26015dd337eab3ab35c84569a4cf9ee0c0dfb46e910c3151d2241'
+            'a73524a6d43545cb961c42b4f3df5bcdb59d9bcaf07976b07c2e30c97f2ee1591af574a450ac44d68a8330098a349be3c071e1074045d595f85a3cf2aff40005'
             'ef907b215996354dd4f76cae79687952e11937510823ec836bc984180803b5deb3fd5a055092e258ca3a2293b90ce0da7f0c8cdb7862d546d843e092b3dbc3a0'
             '26946ad2c759699763c1284a1f30380072da2911659992fa2471b436df1f0535b6eef61007f11c2e010e4a002663324e42ef5ae1417aa45e0ec99f4e3f0aafb7'
             '44676f54d83357721bee844d1e0e997e584b2148c871dbf24385976dda840f37e4cf4a1796fa17dec90fac539bac58e0e47fa0af0abc98e4cf795f735b23c1b0')
@@ -64,8 +64,8 @@ prepare() {
 
 build() {
   msg2 "Extracting archive ..."
-  yes | fakeroot sh "unity-editor-installer-${pkgver}.sh" > /dev/null
-  rm "unity-editor-installer-${pkgver}.sh"
+  yes | fakeroot sh $noextract > /dev/null
+  rm $noextract
 }
 
 package() {
