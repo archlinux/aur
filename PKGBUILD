@@ -1,32 +1,38 @@
-# Author : ilnanny
-# Maintainer: Your Name <youremail@domain.com>
+# Maintainer: Valerio Pizzi (pival81) <pival81@yahoo.com>
+# Comaintainer: Cristian Pozzessere (ilnanny) <ilnannyhack@gmail.com>
 
 pkgname=lila-hd
-pkgver=1
+_gitname=Lila-HD-icon-theme
+pkgver=r37.e1c57e0
 pkgrel=1
-epoch=
-pkgdesc="Lila icon theme for Gnu-Linux and Unix-like O.S"
+pkgdesc="Lila HD icon theme for Gnu-Linux and Unix-like O.S"
 arch=(any)
-url="http://gnome-look.org/content/show.php/Lila+HD?content=175412"
-license=('CC BY-NC-ND 4.0')
-groups=()
-depends=()
-makedepends=()
-checkdepends=()
-optdepends=()
-provides=()
-conflicts=()
-replaces=()
-backup=()
-options=()
-install=
-changelog=
-source=("http://esclapion.free.fr/AUR/$pkgname-$pkgver.$pkgrel.tar.gz")
-noextract=()
-md5sums=('837130cd56d7b9cb70bf027829df06e1')
-validpgpkeys=()
+url="https://github.com/ilnanny/Lila-HD-icon-theme"
+options=(!strip)
+license=('CC BY-SA 4.0')
+depends=('gtk-update-icon-cache')
+makedepends=('git')
+source=("git://github.com/ilnanny/${_gitname}.git")
+md5sums=('SKIP')
+
+pkgver() {
+	cd "${_gitname}"
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
 
 package() {
-        mkdir -p $pkgdir/usr/share/icons/
-        cp -r "$srcdir/Lila_HD" $pkgdir/usr/share/icons/
+	mkdir -p "${pkgdir}/usr/share/icons/"
+	cd "${srcdir}/${_gitname}"
+	cp -r Lila_HD  "${pkgdir}/usr/share/icons/"
+	echo "Copied 'Lila_HD', 20%"
+	cp -r Lila_HD_Blue "${pkgdir}/usr/share/icons/"
+	echo "Copied 'Lila_HD_Blue', 40%"
+	cp -r Lila_HD_Dark "${pkgdir}/usr/share/icons/"
+	echo "Copied 'Lila_HD_Dark', 60%"
+	cp -r Lila_HD_Green "${pkgdir}/usr/share/icons/"
+	echo "Copied 'Lila_HD_Dark', 80%"
+	cp -r Lila_HD_Kaki "${pkgdir}/usr/share/icons/"
+	echo "Copied 'Lila_HD_Kaki', 100%"
 }
+
+
