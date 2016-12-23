@@ -2,13 +2,13 @@
 
 pkgname=morgenlichtctl
 pkgver=0.6.1
-pkgrel=1
+pkgrel=2
 pkgdesc='A simple client for morgenlichtd, written in C.'
 arch=('x86_64' 'x86' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url='http://bennett.piater.name/morgenlichtctl'
 license=('GPL3')
 
-depends=('argtable')
+depends=('argtable' 'pandoc')
 group=('morgenlicht')
 
 #changelog="CHANGELOG"
