@@ -26,7 +26,6 @@ build() {
   cmake . -Wno-dev \
 	  -DCMAKE_INSTALL_PREFIX=/usr \
 	  -DWITH_UPNP=1 -DWITH_PCH=1 \
-	  -DWITH_WEBSOCKETS=1 \
 	  -DCMAKE_BUILD_TYPE=Release
   make
 }
