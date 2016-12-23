@@ -10,7 +10,7 @@ makedepends=('python2')
 license=('BSD')
 arch=('any')
 source=("https://github.com/ros-infrastructure/rosinstall_generator/archive/$pkgver.tar.gz")
-md5sums=('605826dbfea6a0e802d3b96d6f848548')
+md5sums=('7e0e3800e739b92e8280b26b4c3f6af6')
 
 build() {
   cd $srcdir/rosinstall_generator-$pkgver
