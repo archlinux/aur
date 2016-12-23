@@ -1,8 +1,8 @@
 # Maintainer: gavin lyons <glyons66@hotmail.com>
 # https://github.com/gavinlyonsrepo/cylon
 pkgname=cylon
-pkgver=3.0
-pkgrel=1
+pkgver=3.1
+pkgrel=2
 pkgdesc="Updates, Maintenance, backup and system checks in a menu driven Bash script"
 arch=('any')
 url="https://github.com/gavinlyonsrepo/cylon"
@@ -12,6 +12,7 @@ optdepends=(
   'gdrive: AUR package for google drive backup'
   'lostfiles: AUR package for finding lost files'
   'pacaur: AUR helper'
+  'arch-audit: AUR package collect CVE data'
   'rmlint: Finds lint and other unwanted'
   'rkhunter: finds root kits malware'
   'clamav: used for finding malware'
@@ -24,10 +25,10 @@ optdepends=(
   'wavemon: wireless network monitor'
   'speedtest-cli: internet bandwidth'
   'lynis: system audit tool'
-  
+  'openbsd-netcat: used for checking network'
 )
 source=("https://github.com/gavinlyonsrepo/cylon/archive/$pkgver.tar.gz")
-md5sums=('53233eeb97e9982176e4269ad3a1df2f')
+md5sums=('c41fb7841fa5c03601f2aa7b8a551d5f')
 
 package() {
     cd "$srcdir/${pkgname}-${pkgver}"

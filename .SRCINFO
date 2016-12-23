@@ -1,7 +1,7 @@
 pkgbase = cylon
 	pkgdesc = Updates, Maintenance, backup and system checks in a menu driven Bash script
-	pkgver = 3.0
-	pkgrel = 1
+	pkgver = 3.1
+	pkgrel = 2
 	url = https://github.com/gavinlyonsrepo/cylon
 	arch = any
 	license = GPL
@@ -9,6 +9,7 @@ pkgbase = cylon
 	optdepends = gdrive: AUR package for google drive backup
 	optdepends = lostfiles: AUR package for finding lost files
 	optdepends = pacaur: AUR helper
+	optdepends = arch-audit: AUR package collect CVE data
 	optdepends = rmlint: Finds lint and other unwanted
 	optdepends = rkhunter: finds root kits malware
 	optdepends = clamav: used for finding malware
@@ -21,8 +22,9 @@ pkgbase = cylon
 	optdepends = wavemon: wireless network monitor
 	optdepends = speedtest-cli: internet bandwidth
 	optdepends = lynis: system audit tool
-	source = https://github.com/gavinlyonsrepo/cylon/archive/3.0.tar.gz
-	md5sums = 53233eeb97e9982176e4269ad3a1df2f
+	optdepends = openbsd-netcat: used for checking network
+	source = https://github.com/gavinlyonsrepo/cylon/archive/3.1.tar.gz
+	md5sums = c41fb7841fa5c03601f2aa7b8a551d5f
 
 pkgname = cylon
 
