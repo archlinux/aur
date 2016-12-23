@@ -1,7 +1,7 @@
 # Maintainer: Crotok <crotok [at] mailbox [dot] org>
 
 pkgname=streamstudio-bin
-pkgver=3.3.2
+pkgver=3.7
 pkgrel=1
 pkgdesc="Provide a popcorntime clone for streaming movies directly from T411, Cpasbien, Songza, Twitch, Piratebay, Youtube and Dailymotion"
 arch=('x86_64' 'i686')
@@ -13,7 +13,7 @@ provides=('streamstudio')
 conflicts=('streamstudio')
 options=('!strip')
 install="streamstudio.install"
-sha256sums=('0156c8731edd0c3e43b81eaf52aad40132ed5b6dbb1784e37f65e1dd2dc71377'
+sha256sums=('317b6253f80a8843976047d719b6c34becf1a50914d93519823fa249332436e3'
             'b082d39935fd289695ad9a10c9adc3cbe9963555cd410d1d83ceb9055463275b'
             '4dc8715a81bfd1297f99b3e5f41f9f50936bbf7779b9bc4ef9231261053b76ea')
 
@@ -21,7 +21,7 @@ _platform='64'
 
 if [ "$CARCH" = 'i686' ]; then
   _platform='32'
-  sha256sums[0]='31fe9cd355834df81d6b1ba53396a4509f47fbc28ffdc7e9e8882dc4044ab739'
+  sha256sums[0]='bdab75ee0a0337849a47938e1cf9a7c060da8eab5c650b6b548e2b88e17f0521'
 fi
 
 source=("https://download.streamstudio.cc/streamstudio-${_platform}.zip"
@@ -42,10 +42,14 @@ package() {
   # Program
   echo "${pkgdir}/opt/${pkgname}/"
   install -Dm755 "${srcdir}/streamstudio" "${pkgdir}/opt/${pkgname}/"
-  install -Dm644 "${srcdir}/nw.pak" "${pkgdir}/opt/${pkgname}/"
-  install -Dm644 "${srcdir}/libffmpegsumo.so" "${pkgdir}/opt/${pkgname}/"
+  install -Dm644 "${srcdir}/nw_100_percent.pak" "${pkgdir}/opt/${pkgname}/"
+  install -Dm644 "${srcdir}/nw_200_percent.pak" "${pkgdir}/opt/${pkgname}/"
+  install -Dm644 "${srcdir}/resources.pak" "${pkgdir}/opt/${pkgname}/"
   install -Dm644 "${srcdir}/ffmpeg" "${pkgdir}/opt/${pkgname}/"
+  install -Dm644 "${srcdir}/org.freedesktop.streamstudio.policy" "${pkgdir}/opt/${pkgname}/"
   install -Dm644 "${srcdir}/icudtl.dat" "${pkgdir}/opt/${pkgname}/"
+  install -Dm644 "${srcdir}/natives_blob.bin" "${pkgdir}/opt/${pkgname}/"
+  install -Dm644 "${srcdir}/snapshot_blob.bin" "${pkgdir}/opt/${pkgname}/"
   install -Dm644 "${srcdir}/package.json" "${pkgdir}/opt/${pkgname}/"
   install -Dm644 "${srcdir}/config.html" "${pkgdir}/opt/${pkgname}/"
   install -Dm644 "${srcdir}/index.html" "${pkgdir}/opt/${pkgname}/"
@@ -63,6 +67,7 @@ package() {
   cp -a "${srcdir}/fonts" "${pkgdir}/opt/${pkgname}/"
   cp -a "${srcdir}/images" "${pkgdir}/opt/${pkgname}/"
   cp -a "${srcdir}/js" "${pkgdir}/opt/${pkgname}/"
+  cp -a "${srcdir}/lib" "${pkgdir}/opt/${pkgname}/"
   cp -a "${srcdir}/locales" "${pkgdir}/opt/${pkgname}/"
   cp -a "${srcdir}/node_modules" "${pkgdir}/opt/${pkgname}/"
   cp -a "${srcdir}/setup-images" "${pkgdir}/opt/${pkgname}/"
