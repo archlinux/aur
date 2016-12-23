@@ -20,12 +20,12 @@ package() {
 	mkdir -p $pkgdir/usr/bin/
 	mkdir -p $pkgdir/usr/share/applications/
 	mkdir -p $pkgdir/usr/share/pixmaps/
-	cp build/release/SieloCompressManager/SieloCompressManager $pkgdir/usr/bin/
+	cp build/release/SieloDataSoftware/SieloDataSoftware $pkgdir/usr/bin/
 	cp build/release/SNThemeEditor/SNThemeEditor $pkgdir/usr/bin/
 	cp build/release/SieloNavigateur/SieloNavigateur $pkgdir/usr/bin/
 	cp share/applications/Sielo.desktop $pkgdir/usr/share/applications/
 	cp share/pixmaps/SNIcon.png $pkgdir/usr/share/pixmaps
-	chmod +x $pkgdir/usr/bin/SieloCompressManager
+	chmod +x $pkgdir/usr/bin/SieloDataSoftware
 	chmod +x $pkgdir/usr/bin/SNThemeEditor
 	chmod +x $pkgdir/usr/bin/SieloNavigateur
 }
