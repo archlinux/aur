@@ -5,12 +5,17 @@
 # Contributor: Andre Miranda <andreldm1989 AT gmail DOT com>
 # Contributor: Tom Bu <tom.bu AT members.fsf.org>
 # Contributor: John Reese <john@noswap.com>
+# Contributor: Samantha McVey <samantham@posteo.net>
 # Upstream URL: https://github.com/atom/atom
 
 pkgname=atom-editor-beta-bin
-_ver=1.12.0
-_beta=beta3
-pkgver="${_ver}.${_beta}"
+pkgver=1.13.0.beta8
+pkgver() {
+  curl -sS https://github.com/atom/atom/releases.atom | grep -Eo 'v.*?beta([0-9]+)' | head -n 1 | sed -e 's/-/./' -e 's/v//'
+}
+get_version() {
+   printf "%s" $(pkgver) | sed -e 's/\(.*\)\.beta/v\1-beta/'
+}
 pkgrel=1
 pkgdesc="Chrome-based text editor from Github - Beta Channel - Precompiled binary from official repository"
 arch=('x86_64')
@@ -25,7 +30,7 @@ install=$pkgname.install
 md5sums=('SKIP'
          '501719c940fcd9c3d82fb8edebdaae09'
          'b05aef80afa76162ff9a1992cef3f0f9')
-source=("atom-amd64-v${_ver}-${_beta}.deb::https://atom-installer.github.com/v${_ver}-${_beta}/atom-amd64.deb"
+source=("atom-amd64-$(get_version).deb::https://atom-installer.github.com/$(get_version)/atom-amd64.deb"
          atom-python.patch
          startupwmclass.patch)
 
