@@ -3,7 +3,7 @@
 pkgbase = sielo-navigateur
 	pkgdesc = A fast web browser made in C++14 with Qt5.7
 	pkgver = 0.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://feldrise.com
 	arch = x86_64
 	license = custom:MIT
@@ -13,7 +13,7 @@ pkgbase = sielo-navigateur
 	depends = qt5-webchannel
 	depends = qt5-location
 	source = http://feldrise.com/Sielo/Linux/sielo-navigateur-v0.4.0.tar.gz
-	md5sums = 6f48a0df7352991a146b3a9dcc2740a1
+	md5sums = 627633d99b76e3023b6fad6d0656d7b8
 
 pkgname = sielo-navigateur
 
