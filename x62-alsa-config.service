@@ -1,0 +1,13 @@
+[Unit]
+Description=Correctly set GPIO pins for 51nb X62 sound card
+After=multi-user.target
+
+[Install]
+WantedBy=multi-user.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/hda-verb /dev/snd/hwC0D0 0x01 SET_GPIO_MASK 0x01
+ExecStart=/usr/bin/hda-verb /dev/snd/hwC0D0 0x01 SET_GPIO_DIRECTION 0x01
+ExecStart=/usr/bin/hda-verb /dev/snd/hwC0D0 0x01 SET_GPIO_DATA 0x00
+
