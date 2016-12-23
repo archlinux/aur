@@ -1,6 +1,6 @@
 pkgbase = manjaro-hello-git
 	pkgdesc = A tool providing access to documentation and support for new Manjaro users.
-	pkgver = 0.2.r0.gfaf50ea
+	pkgver = 0.3.r1.g4d34afa
 	pkgrel = 1
 	url = https://github.com/Huluti/manjaro-hello
 	arch = any
@@ -8,7 +8,8 @@ pkgbase = manjaro-hello-git
 	makedepends = git
 	depends = gtk3
 	depends = python3
-	optdepends = calamares: universal installer framework
+	optdepends = calamares: Distribution-independent installer framework,
+	optdepends = manjaro-icons: Official Manjaro icons
 	provides = manjaro-hello
 	conflicts = manjaro-hello
 	replaces = manjaro-hello

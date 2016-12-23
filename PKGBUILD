@@ -1,13 +1,13 @@
 _pkgname=manjaro-hello
 pkgname=${_pkgname}-git
-pkgver=0.2.r0.gfaf50ea
+pkgver=0.3.r1.g4d34afa
 pkgrel=1
 pkgdesc="A tool providing access to documentation and support for new Manjaro users."
 url="https://github.com/Huluti/${_pkgname}"
 arch=('any')
 license=('GPL')
 depends=('gtk3' 'python3')
-optdepends=('calamares: universal installer framework')
+optdepends=('calamares: Distribution-independent installer framework', 'manjaro-icons: Official Manjaro icons')
 makedepends=('git')
 replaces=('manjaro-hello')
 provides=('manjaro-hello')
