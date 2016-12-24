@@ -4,7 +4,7 @@
 # Contributor: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
 
 pkgname=gegl-git
-pkgver=0.3.8.20.gf361098
+pkgver=0.3.10.69
 pkgrel=1
 pkgdesc="Graph based image processing framework"
 arch=('i686' 'x86_64')
@@ -48,5 +48,5 @@ package() {
 
 pkgver() {
   cd $_gitname
-  git describe --always | sed -e 's/GEGL_//g' -e 's/[_-]/./g'
+  git describe --always | sed -e 's/GEGL_//' -e 's/-g.*$//' -e 's/[_-]/./g'
 }
