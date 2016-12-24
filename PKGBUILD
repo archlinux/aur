@@ -15,13 +15,8 @@ _builddir="$pkgname-$pkgver"
 
 build() {
     cd "$_builddir"
-
+    
     go build || return 1
-
-    if [ $GOPATH_exist == 0 ]; then
-        rm -rf ~/.gopath
-        export GOPATH=
-    fi
 }
 
 package() {
