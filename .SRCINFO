@@ -1,6 +1,6 @@
 pkgbase = akonadi-ews-git
 	pkgdesc = Resource agent for Microsoft Exchange using Exchange Web Services (EWS) protocol
-	pkgver = r297.ca1cc7d
+	pkgver = r302.f533473
 	pkgrel = 1
 	url = https://github.com/KrissN/akonadi-ews/
 	arch = i686
