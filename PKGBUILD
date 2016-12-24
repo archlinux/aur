@@ -1,7 +1,7 @@
 # Maintainer: Tom <reztho@archlinux.org>
 # Based on a contribution of: bitwave
 pkgname=textadept
-pkgver=9.0
+pkgver=9.2
 pkgrel=1
 pkgdesc="A fast, minimalist, and remarkably extensible cross-platform text editor"
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ makedepends=('mercurial' 'wget' 'unzip')
 provides=("$pkgname")
 conflicts=('textadept-bin')
 replaces=('textadept-bin')
-source=("hg+http://foicica.com/hg/textadept#revision=bdd7e352df48"
+source=("hg+http://foicica.com/hg/textadept#revision=3101763365cf"
         "http://foicica.com/textadept/download/textadept_${pkgver}.modules.zip")
 
 build() {
@@ -65,4 +65,4 @@ package() {
 }
 
 md5sums=('SKIP'
-         '2e3cc33d2630ad64675b5ce73b49276a')
+         '6b27c92e9c3671a194c08cac007c9a98')
