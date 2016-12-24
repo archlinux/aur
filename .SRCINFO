@@ -1,7 +1,7 @@
 pkgbase = pogo
 	pkgdesc = Plays your music. Nothing else.
 	pkgver = 0.8.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jendrikseipp/pogo
 	arch = any
 	license = GPL
@@ -13,7 +13,10 @@ pkgbase = pogo
 	depends = python2-pillow
 	optdepends = python2-notify: desktop notifications
 	optdepends = gnome-settings-daemon: GNOME media keys
-	optdepends = gstreamer0.10-plugins: additional codecs
+	optdepends = gstreamer0.10-good-plugins: additional codecs
+	optdepends = gstreamer0.10-bad-plugins: additional codecs
+	optdepends = gstreamer0.10-ugly-plugins: additional codecs
+	optdepends = gstreamer0.10-ffmpeg: ffmpeg codec
 	source = https://github.com/jendrikseipp/pogo/archive/v0.8.7.tar.gz
 	sha256sums = 144beebc043a834f17580ead90d30b64274d75dda524974d40754ee8344fc6f9
 
