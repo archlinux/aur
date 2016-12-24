@@ -1,0 +1,11 @@
+--- a/create.go	2015-11-12 19:39:40.000000000 +0100
++++ b/create.go	2016-12-24 13:39:47.215091420 +0100
+@@ -367,7 +367,7 @@
+ 
+ 	// Run something that would look like this
+ 	// PATH=$path chroot "$SYSTEM_MOUNTPOINT" /bin/sh -c "echo -n "$user:$password" | chpasswd"
+-	chrootCmd := fmt.Sprintf("echo -n '%s:%s' | chpasswd", "phablet", createCmd.Password)
++	chrootCmd := fmt.Sprintf("echo -n '%s:%s' | /usr/sbin/chpasswd", "phablet", createCmd.Password)
+ 	if out, err := exec.Command("chroot", chroot, "/bin/sh", "-c", chrootCmd).CombinedOutput(); err != nil {
+ 		return errors.New(string(out))
+ 	}
