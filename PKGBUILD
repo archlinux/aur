@@ -77,8 +77,8 @@ isNoOpenGL() {
 }
 
 pkgname=mingw-w64-qt5-base-static
-pkgver=5.7.0
-pkgrel=10
+pkgver=5.7.1
+pkgrel=1
 pkgdesc='A cross-platform application and UI framework (mingw-w64)'
 # The static variant doesn't contain any executables which need to be executed on the build machine
 isStatic && arch=('any') || arch=('i686' 'x86_64')
@@ -144,58 +144,58 @@ source=("https://download.qt.io/official_releases/qt/${pkgver:0:3}/${pkgver}/sub
         '0024-Use-shared-static-version-of-MariaDB.patch'
         '0025-Use-shared-static-version-of-PostgreSQL.patch'
         '0026-Fix-qt5_wrap_ui-macro.patch')
-md5sums=('184f9460b40752d71b15b827260580c2'
-         '79a566c874a2b15acdd5ada456ff7781'
-         '16d668d460645879f403f9f1b9cf5539'
-         '72dd9f8e572c43e4f490b9a16a799d0f'
-         '582aa4fabd82de714445f1f419c9143a'
-         'a676f9447cdba7f16feead657c0f3720'
-         '5b06de1d87761baaf8cddc3263702b83'
-         'eeb4ee5384c54f4c7802506b9d23523c'
-         'b0629fce5041c51c7244aa0e18630e4e'
-         '62573876286a3f1cac8c83c605a055ec'
-         '201a0dde87d2946bff414e04110a02bb'
-         '08be6b0dfd0149d78124711eeb369a46'
-         'a762027682537f1e5d263f93a5e18c12'
-         '352fb81ecc6bf30bbeee2891a34647ba'
-         '0aec926df4eb78325a014660b834818e'
-         '19a16543aceb3a621093c00305403bbd'
-         'ec16616371b3a323f8eabdf3605ac9ef'
-         '48196a5b3a0a713877e28df51e9f2465'
-         'd9a63b6f703778e51fd373732b5af31f'
-         '5a6513ca11c2e386f34d2f133bb2256a'
-         '990f642145f2b6a64ba3fc41c84f0e57'
-         'fa8709ba448f1537542b263bdd94ddbc'
-         'e0ebb9a1cdf23a0ee392491db42ddd75'
-         '0ad6e88622026d6252bedde357900452'
-         'f2948d806f16fbf263d733e8824cf4b8'
-         '02fc0f80007bba9137854439eb3d7513'
-         '79a566c874a2b15acdd5ada456ff7781'
-         '16d668d460645879f403f9f1b9cf5539'
-         '72dd9f8e572c43e4f490b9a16a799d0f'
-         '582aa4fabd82de714445f1f419c9143a'
-         'a676f9447cdba7f16feead657c0f3720'
-         '5b06de1d87761baaf8cddc3263702b83'
-         'eeb4ee5384c54f4c7802506b9d23523c'
-         'b0629fce5041c51c7244aa0e18630e4e'
-         '62573876286a3f1cac8c83c605a055ec'
-         '201a0dde87d2946bff414e04110a02bb'
-         '08be6b0dfd0149d78124711eeb369a46'
-         'a762027682537f1e5d263f93a5e18c12'
-         '352fb81ecc6bf30bbeee2891a34647ba'
-         '0aec926df4eb78325a014660b834818e'
-         '19a16543aceb3a621093c00305403bbd'
-         'ec16616371b3a323f8eabdf3605ac9ef'
-         '48196a5b3a0a713877e28df51e9f2465'
-         'd9a63b6f703778e51fd373732b5af31f'
-         '5a6513ca11c2e386f34d2f133bb2256a'
-         '990f642145f2b6a64ba3fc41c84f0e57'
-         'fa8709ba448f1537542b263bdd94ddbc'
-         'e0ebb9a1cdf23a0ee392491db42ddd75'
-         '0ad6e88622026d6252bedde357900452'
-         'f2948d806f16fbf263d733e8824cf4b8'
-         '02fc0f80007bba9137854439eb3d7513'
-         '645037becd8fdd266ac8e7cacdde85ab')
+md5sums=('f0809befe04160fbb73bbf38a06a2073'
+         '14ea9353fcc9234a9c7cb98ef14050a3'
+         '34c9df86a43132f58b18bd3061305b36'
+         '94f3ec6cdb456cc9b0535bd549cf2859'
+         'eb118e7a01ff8e39f608e715758ac3dd'
+         'c5184ae70974aaeaf5e1996dc7af6ec0'
+         '917a3439afa97afab1b0b722082d640b'
+         'bea9eb1a5be8e5e1ee2592007b112fe5'
+         '281a81a7c32cc2f4bfeb83f5bea29d59'
+         'ec262ef6bcf2f12832f83aad30d2f728'
+         '10c24aec6ca3743d01ca7e0f2704b024'
+         'bfa3574a0d44f831e412befba235b2ca'
+         '366b8209ba35b00e2fe4ddcf448ed015'
+         '0c17f618cbee73a49d7829da7c816cd7'
+         '11f26a2237acd5e78d5a3db4de2d6d90'
+         '632765f81a4b72b540376255a10b4c2e'
+         '1f57d40dc492822f2e931bdd3a0b7435'
+         '758afe3653d7ce126ebae03e6a8f222f'
+         'd616bd0fd1ac1ae0d749f93fcba0aeb1'
+         '6847671b013c249aaa2dd7d7e646e4e6'
+         '9e3c6cee969a55b15558f6a46f7aad20'
+         '7bf4cf112551bea4c4d3dd91ed7e1461'
+         '97ece0bb54a249aa0a1fc662eedc93de'
+         '4bdbf113772fdfe4cc6da53c866216b2'
+         '399555789f729477d65861179efaf9e3'
+         '295d83b50278474289727dc49a688e95'
+         '14ea9353fcc9234a9c7cb98ef14050a3'
+         '34c9df86a43132f58b18bd3061305b36'
+         '94f3ec6cdb456cc9b0535bd549cf2859'
+         'eb118e7a01ff8e39f608e715758ac3dd'
+         'c5184ae70974aaeaf5e1996dc7af6ec0'
+         '917a3439afa97afab1b0b722082d640b'
+         'bea9eb1a5be8e5e1ee2592007b112fe5'
+         '281a81a7c32cc2f4bfeb83f5bea29d59'
+         'ec262ef6bcf2f12832f83aad30d2f728'
+         '10c24aec6ca3743d01ca7e0f2704b024'
+         'bfa3574a0d44f831e412befba235b2ca'
+         '366b8209ba35b00e2fe4ddcf448ed015'
+         '0c17f618cbee73a49d7829da7c816cd7'
+         '11f26a2237acd5e78d5a3db4de2d6d90'
+         '632765f81a4b72b540376255a10b4c2e'
+         '1f57d40dc492822f2e931bdd3a0b7435'
+         '758afe3653d7ce126ebae03e6a8f222f'
+         'd616bd0fd1ac1ae0d749f93fcba0aeb1'
+         '6847671b013c249aaa2dd7d7e646e4e6'
+         '9e3c6cee969a55b15558f6a46f7aad20'
+         '7bf4cf112551bea4c4d3dd91ed7e1461'
+         '97ece0bb54a249aa0a1fc662eedc93de'
+         '4bdbf113772fdfe4cc6da53c866216b2'
+         '399555789f729477d65861179efaf9e3'
+         '295d83b50278474289727dc49a688e95'
+         '541413adc439b0650ad236f13c47e28e')
 
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
 #_architectures='x86_64-w64-mingw32 i686-w64-mingw32'
@@ -380,7 +380,9 @@ package() {
       rm -f "${pkgdir}/usr/${_arch}/lib/"{lib,}qt5main* \
         "${pkgdir}/usr/${_arch}/lib/"{lib,}Qt5OpenGLExtensions* \
         "${pkgdir}/usr/${_arch}/lib/"{lib,}Qt5PlatformSupport* \
-        "${pkgdir}/usr/${_arch}/lib/"libQt5Bootstrap*
+        "${pkgdir}/usr/${_arch}/lib/"libQt5Bootstrap* \
+        "${pkgdir}/usr/${_arch}/lib/"libqtpng.a \
+        "${pkgdir}/usr/${_arch}/lib/"qtpng.static.prl
 
       # Also ensure config files don't conflict with shared version
       pushd "${pkgdir}/usr/${_arch}/lib/cmake"
