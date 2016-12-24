@@ -1,4 +1,4 @@
-From baadc36def778c99b33f68d2c840c176bb873d66 Mon Sep 17 00:00:00 2001
+From 5e519508a93e9b6229f2f7f8052f2c1abf8f7ef1 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sun, 18 Sep 2016 18:32:00 +0200
 Subject: [PATCH 22/26] Allow usage of static version with CMake
@@ -18,7 +18,7 @@ Subject: [PATCH 22/26] Allow usage of static version with CMake
  6 files changed, 358 insertions(+), 151 deletions(-)
 
 diff --git a/mkspecs/features/create_cmake.prf b/mkspecs/features/create_cmake.prf
-index 0ff1c6d..d0d4a7f 100644
+index 0ff1c6d142..d0d4a7fc1a 100644
 --- a/mkspecs/features/create_cmake.prf
 +++ b/mkspecs/features/create_cmake.prf
 @@ -38,7 +38,8 @@ split_incpath {
@@ -221,7 +221,7 @@ index 0ff1c6d..d0d4a7f 100644
  # We are generating cmake files. Most developers of Qt are not aware of cmake,
  # so we require automatic tests to be available. The only module which should
 diff --git a/mkspecs/features/data/cmake/Qt5BasicConfig.cmake.in b/mkspecs/features/data/cmake/Qt5BasicConfig.cmake.in
-index d2358ca..89575ef 100644
+index d2358cae4b..89575efd6f 100644
 --- a/mkspecs/features/data/cmake/Qt5BasicConfig.cmake.in
 +++ b/mkspecs/features/data/cmake/Qt5BasicConfig.cmake.in
 @@ -35,15 +35,18 @@ set(_qt5$${CMAKE_MODULE_NAME}_install_prefix \"$$[QT_INSTALL_PREFIX]\")
@@ -774,7 +774,7 @@ index d2358ca..89575ef 100644
  
  endif()
 diff --git a/mkspecs/features/data/cmake/Qt5PluginTarget.cmake.in b/mkspecs/features/data/cmake/Qt5PluginTarget.cmake.in
-index 5baf0fd..54345e4 100644
+index 5baf0fdb10..54345e4117 100644
 --- a/mkspecs/features/data/cmake/Qt5PluginTarget.cmake.in
 +++ b/mkspecs/features/data/cmake/Qt5PluginTarget.cmake.in
 @@ -1,11 +1,31 @@
@@ -815,7 +815,7 @@ index 5baf0fd..54345e4 100644
 -list(APPEND Qt5$${CMAKE_MODULE_NAME}_PLUGINS Qt5::$$CMAKE_PLUGIN_NAME)
 +endif()
 diff --git a/qmake/generators/makefile.cpp b/qmake/generators/makefile.cpp
-index edd7918..9f860da 100644
+index f05a039d2f..831d7c74c0 100644
 --- a/qmake/generators/makefile.cpp
 +++ b/qmake/generators/makefile.cpp
 @@ -997,6 +997,13 @@ MakefileGenerator::writePrlFile(QTextStream &t)
@@ -833,7 +833,7 @@ index edd7918..9f860da 100644
  }
  
 diff --git a/src/corelib/Qt5CoreConfigExtras.cmake.in b/src/corelib/Qt5CoreConfigExtras.cmake.in
-index a5ed8b2..3375e1e 100644
+index a5ed8b2ea3..3375e1eeea 100644
 --- a/src/corelib/Qt5CoreConfigExtras.cmake.in
 +++ b/src/corelib/Qt5CoreConfigExtras.cmake.in
 @@ -1,4 +1,10 @@
@@ -932,7 +932,7 @@ index a5ed8b2..3375e1e 100644
 +unset(_isExe)
 +!!ENDIF
 diff --git a/src/gui/Qt5GuiConfigExtras.cmake.in b/src/gui/Qt5GuiConfigExtras.cmake.in
-index 2e32911..31567d7 100644
+index 2e32911a64..31567d7da2 100644
 --- a/src/gui/Qt5GuiConfigExtras.cmake.in
 +++ b/src/gui/Qt5GuiConfigExtras.cmake.in
 @@ -1,4 +1,10 @@
@@ -968,5 +968,5 @@ index 2e32911..31567d7 100644
          ${Qt5Gui_EGL_LIBRARIES} ${Qt5Gui_OPENGL_LIBRARIES}
      )
 -- 
-2.10.2
+2.11.0
 

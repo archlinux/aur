@@ -1,4 +1,4 @@
-From aeec21b7d2c0185499531c55282d8738c19770f2 Mon Sep 17 00:00:00 2001
+From 737579eb780ab8a22e075d8032a5ce983d397064 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sun, 18 Sep 2016 18:50:21 +0200
 Subject: [PATCH 23/26] Use correct pkg-config --static flag
@@ -8,10 +8,10 @@ Subject: [PATCH 23/26] Use correct pkg-config --static flag
  1 file changed, 5 insertions(+)
 
 diff --git a/configure b/configure
-index b4c75c6..eea15f0 100755
+index 9ecc7f9ada..40db8b196a 100755
 --- a/configure
 +++ b/configure
-@@ -4153,6 +4153,11 @@ if [ -z "$PKG_CONFIG" ]; then
+@@ -4166,6 +4166,11 @@ if [ -z "$PKG_CONFIG" ]; then
      # See if PKG_CONFIG is set in the mkspec:
      PKG_CONFIG="`"$CFG_QMAKE_PATH" -qtconf "$QTCONFFILE" -E -nocache -spec "$XQMAKESPEC" "CONFIG=" $DEV_NULL 2>&1 | sed -n -e 's,^PKG_CONFIG = \(.*\),\1,p'`"
      [ -n "$PKG_CONFIG" ] && [ "$OPT_VERBOSE" = "yes" ] && echo "Found pkg-config from mkspec: $PKG_CONFIG"
@@ -24,5 +24,5 @@ index b4c75c6..eea15f0 100755
  if [ -z "$PKG_CONFIG" ]; then
      PKG_CONFIG=`"$WHICH" pkg-config 2>/dev/null`
 -- 
-2.10.2
+2.11.0
 

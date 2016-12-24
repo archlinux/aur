@@ -1,4 +1,4 @@
-From c92196a9e56f233e4db9256496361a98764d6bcf Mon Sep 17 00:00:00 2001
+From 5c8fa53c4690db11914df6470853958a09e6f0e2 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sun, 18 Sep 2016 14:15:08 +0200
 Subject: [PATCH 12/26] Adjust win32-g++ mkspecs profile
@@ -11,7 +11,7 @@ Subject: [PATCH 12/26] Adjust win32-g++ mkspecs profile
  1 file changed, 15 insertions(+), 10 deletions(-)
 
 diff --git a/mkspecs/win32-g++/qmake.conf b/mkspecs/win32-g++/qmake.conf
-index c5f6353..db92487 100644
+index 6ed39745ae..3ee820e54b 100644
 --- a/mkspecs/win32-g++/qmake.conf
 +++ b/mkspecs/win32-g++/qmake.conf
 @@ -26,7 +26,7 @@ QMAKE_LEX               = flex
@@ -23,7 +23,7 @@ index c5f6353..db92487 100644
  QMAKE_CFLAGS_DEPS       = -M
  QMAKE_CFLAGS_WARN_ON    = -Wall -Wextra
  QMAKE_CFLAGS_WARN_OFF   = -w
-@@ -74,10 +74,10 @@ QMAKE_RUN_CXX_IMP       = $(CXX) -c $(CXXFLAGS) $(INCPATH) -o $@ $<
+@@ -75,10 +75,10 @@ QMAKE_RUN_CXX_IMP       = $(CXX) -c $(CXXFLAGS) $(INCPATH) -o $@ $<
  
  QMAKE_LINK              = $${CROSS_COMPILE}g++
  QMAKE_LINK_C            = $${CROSS_COMPILE}gcc
@@ -36,7 +36,7 @@ index c5f6353..db92487 100644
  QMAKE_LFLAGS_DEBUG      =
  QMAKE_LFLAGS_CONSOLE    = -Wl,-subsystem,console
  QMAKE_LFLAGS_WINDOWS    = -Wl,-subsystem,windows
-@@ -95,21 +95,26 @@ QMAKE_EXTENSION_STATICLIB = a
+@@ -96,21 +96,26 @@ QMAKE_EXTENSION_STATICLIB = a
  QMAKE_LIB_EXTENSIONS    = a dll.a
  
  QMAKE_LIBS              =
@@ -71,5 +71,5 @@ index c5f6353..db92487 100644
 +
  load(qt_config)
 -- 
-2.10.2
+2.11.0
 

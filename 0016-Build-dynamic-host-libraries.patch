@@ -1,4 +1,4 @@
-From 61bdeeb1fd3b4eabc204fd65dd9049ddaeb5583f Mon Sep 17 00:00:00 2001
+From 5b1b584626a4b89500bd8925dee62a61f869f179 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sun, 18 Sep 2016 14:27:28 +0200
 Subject: [PATCH 16/26] Build dynamic host libraries
@@ -11,7 +11,7 @@ standards
  2 files changed, 2 insertions(+), 2 deletions(-)
 
 diff --git a/mkspecs/features/qt_module.prf b/mkspecs/features/qt_module.prf
-index 5bd5101..30a325b 100644
+index d9011f5482..cb29009970 100644
 --- a/mkspecs/features/qt_module.prf
 +++ b/mkspecs/features/qt_module.prf
 @@ -25,7 +25,7 @@ isEmpty(VERSION): error("Module does not define version.")
@@ -24,7 +24,7 @@ index 5bd5101..30a325b 100644
  host_build {
      QT -= gui   # no host module will ever use gui
 diff --git a/src/tools/bootstrap-dbus/bootstrap-dbus.pro b/src/tools/bootstrap-dbus/bootstrap-dbus.pro
-index c3ed27d..30d2114 100644
+index c3ed27d979..30d2114aa1 100644
 --- a/src/tools/bootstrap-dbus/bootstrap-dbus.pro
 +++ b/src/tools/bootstrap-dbus/bootstrap-dbus.pro
 @@ -27,4 +27,4 @@ SOURCES = \
@@ -34,5 +34,5 @@ index c3ed27d..30d2114 100644
 -INSTALLS = lib
 +INSTALLS += lib
 -- 
-2.10.2
+2.11.0
 

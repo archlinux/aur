@@ -1,26 +1,26 @@
-From 63595b743f993ab734821f7f415cc63bf1dba9ca Mon Sep 17 00:00:00 2001
+From 6b99dac278b4c41000fd6f92c8d400a82cbe484a Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sun, 18 Sep 2016 18:20:25 +0200
 Subject: [PATCH 19/26] Disable determing default include and lib dirs at qmake
  time when building with mingw-w64
 
 ---
- mkspecs/features/default_pre.prf | 2 +-
+ mkspecs/features/toolchain.prf | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/mkspecs/features/default_pre.prf b/mkspecs/features/default_pre.prf
-index cffffdc..6445481 100644
---- a/mkspecs/features/default_pre.prf
-+++ b/mkspecs/features/default_pre.prf
-@@ -29,7 +29,7 @@ isEmpty(QMAKE_DEFAULT_INCDIRS):!host_build {
+diff --git a/mkspecs/features/toolchain.prf b/mkspecs/features/toolchain.prf
+index 7691b7db34..d262097f09 100644
+--- a/mkspecs/features/toolchain.prf
++++ b/mkspecs/features/toolchain.prf
+@@ -3,7 +3,7 @@ isEmpty(QMAKE_DEFAULT_INCDIRS):!host_build {
      #
      # Get default include and library paths from compiler
      #
 -    gcc {
 +    !win32:gcc {
-         equals(QMAKE_DIR_SEP, /) {
+         !equals(QMAKE_HOST.os, Windows) {
              cmd_prefix = "LC_ALL=C"
              cmd_suffix = "</dev/null >/dev/null"
 -- 
-2.10.2
+2.11.0
 
