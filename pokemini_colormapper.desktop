@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=PokeMini Color Mapper
+Comment=Colorize your Pokémon-Mini ROMs
+Exec=pokemini_colormapper %f
+Categories=Game;
+Icon=pokemini_colormapper
+MimeType=application/x-pokemon-mini-color;

@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=PokeMini Debugger
+Comment=Pokémon-Mini emulator with debugging capabilities
+Exec=PokeMiniD %f
+Categories=Game;
+Icon=pokemini_debugger
+MimeType=application/x-pokemon-mini;application/x-pokemon-mini-color;

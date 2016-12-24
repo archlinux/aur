@@ -1,0 +1,44 @@
+pkgbase = pokemini
+	pkgdesc = Portable emulator and tools for Pokémon-Mini
+	pkgver = 0.60
+	pkgrel = 1
+	url = https://sourceforge.net/projects/pokemini/
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = gtk2
+	makedepends = sdl
+	makedepends = sdl2
+	makedepends = openal
+	makedepends = freeimage
+	makedepends = zlib
+	source = pokemini::git+http://git.code.sf.net/p/pokemini/code#commit=7ac1d267b209
+	source = pokemini_colormapper.desktop
+	source = pokemini_debugger.desktop
+	source = x-pokemon-mini.xml
+	source = x-pokemon-mini-color.xml
+	sha256sums = SKIP
+	sha256sums = cdd14a6525bc37473d51c9e03765599d7d80f4b7e1d251bc93063891a97c021e
+	sha256sums = d30110117f349c8242323a228168232f4e58e22d0c072d05480c530d04dc84d7
+	sha256sums = 0ad8eb2c4c2907422c6c1fde9298c3d0b44baf47dead52b2d1b9238976685acb
+	sha256sums = 33e49ce6ba8851c1dd2abdcff19e531b0667877b20cf7b151fd2e87fce7c3a9f
+
+pkgname = pokemini-common
+	pkgdesc = Portable emulator and tools for Pokémon-Mini - common files and tools
+	depends = openal
+	depends = freeimage
+	depends = zlib
+	depends = hicolor-icon-theme
+
+pkgname = pokemini-sdl2
+	pkgdesc = Portable emulator and tools for Pokémon-Mini - command line emulator
+	depends = sdl2
+	depends = pokemini-common
+
+pkgname = pokemini-gtk
+	pkgdesc = Portable emulator and tools for Pokémon-Mini - GTK+ Debugger
+	depends = gtk2
+	depends = sdl
+	depends = pokemini-common
+
