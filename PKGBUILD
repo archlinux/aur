@@ -2,7 +2,7 @@
 # Contributor: Mattia Basaglia <mattia.basaglia@gmail.com>
 
 pkgname=qt4-color-widgets
-pkgver=0.r192.81d3028
+pkgver=0.r194.5b24c61
 pkgrel=1
 pkgdesc='A user-friendly color dialog and several color-related widgets for Qt'
 arch=('i686' 'x86_64')
