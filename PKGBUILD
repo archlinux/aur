@@ -23,7 +23,7 @@ provides=('arm-none-eabi-gcc')
 conflicts=('arm-none-eabi-gcc' 'cross-arm-none-eabi-gcc')
 options=(staticlibs !libtool !emptydirs !strip zipman docs)
 source=(http://releases.linaro.org/components/toolchain/gcc-linaro/${_relverdate}/gcc-linaro-${_relverdate}.tar.xz
-        http://releases.linaro.org/${_newlibvershort}/components/toolchain/newlib-linaro/newlib-${_newlibver}.tar.xz
+        http://releases.linaro.org/archive/${_newlibvershort}/components/toolchain/newlib-linaro/newlib-${_newlibver}.tar.xz
         gcc-4.9-fix-build-with-gcc-6.patch
         gcc-${_relver}-multilib2.patch
         gcc-${_relver}-no-exceptions.patch)
