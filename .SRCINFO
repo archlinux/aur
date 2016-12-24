@@ -3,6 +3,7 @@ pkgbase = ros-kinetic-python2-fix
 	pkgver = 0.1.0
 	pkgrel = 2
 	url = http://wiki.ros.org/kinetic/Installation/Arch
+	install = ros-kinetic-python2-fix.install
 	arch = any
 	license = BSD
 	depends = python2
