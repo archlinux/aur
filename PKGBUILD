@@ -23,13 +23,13 @@
 pkgname=ffmpeg-full-nvenc
 _pkgbasename=ffmpeg
 pkgver=3.2.2
-pkgrel=5
+pkgrel=6
 epoch=1
 pkgdesc="Record, convert, and stream audio and video (all codecs including Nvidia NVENC)"
 arch=('i686' 'x86_64')
 url="http://ffmpeg.org/"
 license=('GPL' 'custom:UNREDISTRIBUTABLE')
-depends=('alsa-lib' 'bzip2' 'celt' 'chromaprint-fftw' 'flite' 'fontconfig' 'frei0r-plugins'
+depends=('alsa-lib' 'bzip2' 'celt' 'chromaprint-fftw' 'fontconfig' 'frei0r-plugins'
          'fribidi' 'glibc' 'gnutls' 'gsm' 'jack' 'kvazaar' 'ladspa' 'lame' 'libass' 
          'libavc1394' 'libbluray' 'libbs2b' 'libcaca' 'libcdio-paranoia' 'libdc1394'
          'libebur128' 'libfdk-aac' 'libgme' 'libiec61883' 'libilbc' 'libmfx-git' 
@@ -42,7 +42,7 @@ depends=('alsa-lib' 'bzip2' 'celt' 'chromaprint-fftw' 'flite' 'fontconfig' 'frei
          'zlib' 'zvbi' 'libvorbisenc.so' 'libvorbis.so' 'libvpx.so' 'libx264.so'
          'x265' 'snappy' 'xavs' 'java-environment')
 depends_x86_64=('cuda')
-makedepends=('hardening-wrapper' 'libvdpau' 'yasm' 'opencl-headers')
+makedepends=('flite1' 'hardening-wrapper' 'libvdpau' 'yasm' 'opencl-headers')
 optdepends=('avxsynth-git: for Avisynth support'
             'blackmagic-decklink-sdk: for Blackmagic DeckLink support; need to add --enable-decklink option in this PKGBUILD')
 optdepends_x86_64=('intel-media-sdk: for Intel QSV support (Experimental! See PKGBUILD of that package for additional info)')
