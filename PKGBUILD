@@ -3,7 +3,7 @@
 pkgname=dg
 pkgver=1.1.0.20160303
 _commit=6f97648e74fb0e952107bf7aa9f30d0276b2bd47
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple language that compiles to CPython bytecode"
 arch=('any')
 url="https://pyos.github.io/dg"
