@@ -13,5 +13,3 @@ post_upgrade() {
 post_remove() {
   post_install
 }
-
-# vim: ts=2 sw=2 et:
