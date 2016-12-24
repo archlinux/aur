@@ -1,4 +1,4 @@
-From 7e20d462a43054bc5ff6776454277344436df710 Mon Sep 17 00:00:00 2001
+From 681c27e949a6c2469c4bbd3ea403432b2b6a301d Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sun, 4 Dec 2016 20:35:47 +0100
 Subject: [PATCH 26/26] Fix qt5_wrap_ui() macro
@@ -9,7 +9,7 @@ See https://github.com/Martchus/PKGBUILDs/issues/11
  1 file changed, 2 insertions(+), 1 deletion(-)
 
 diff --git a/src/widgets/Qt5WidgetsMacros.cmake b/src/widgets/Qt5WidgetsMacros.cmake
-index f5e7b7f..18d120f 100644
+index f5e7b7f050..18d120f0c7 100644
 --- a/src/widgets/Qt5WidgetsMacros.cmake
 +++ b/src/widgets/Qt5WidgetsMacros.cmake
 @@ -55,8 +55,9 @@ function(QT5_WRAP_UI outfiles )
@@ -24,5 +24,5 @@ index f5e7b7f..18d120f 100644
            MAIN_DEPENDENCY ${infile} VERBATIM)
          list(APPEND ${outfiles} ${outfile})
 -- 
-2.10.2
+2.11.0
 

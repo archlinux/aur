@@ -1,4 +1,4 @@
-From f30b82c0605e3a2c1dfe8f0ac7da11182ebcd19f Mon Sep 17 00:00:00 2001
+From 1188f25bbc6ccd2fce5b080b98862aeb8420fc94 Mon Sep 17 00:00:00 2001
 From: Mark Brand <mabrand@mabrand.nl>
 Date: Tue, 6 Oct 2015 09:53:20 +0200
 Subject: [PATCH 04/26] Fix building mysql driver under mingw
@@ -8,7 +8,7 @@ Subject: [PATCH 04/26] Fix building mysql driver under mingw
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/src/sql/drivers/mysql/qsql_mysql.pri b/src/sql/drivers/mysql/qsql_mysql.pri
-index 3cfb614..8b7063f 100644
+index 3cfb6144a1..8b7063f1e4 100644
 --- a/src/sql/drivers/mysql/qsql_mysql.pri
 +++ b/src/sql/drivers/mysql/qsql_mysql.pri
 @@ -4,7 +4,7 @@ SOURCES += $$PWD/qsql_mysql.cpp
@@ -21,5 +21,5 @@ index 3cfb614..8b7063f 100644
          !contains(LIBS, .*mysqlclient.*):!contains(LIBS, .*mysqld.*) {
              use_libmysqlclient_r:LIBS += -lmysqlclient_r
 -- 
-2.10.2
+2.11.0
 

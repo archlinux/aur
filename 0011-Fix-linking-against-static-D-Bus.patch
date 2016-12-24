@@ -1,4 +1,4 @@
-From f46f51482f05364b021d24352f7618f26d2d3794 Mon Sep 17 00:00:00 2001
+From c9836f2d0b0d86b47ff5607d581d133f9e3f06c6 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sun, 18 Sep 2016 14:07:02 +0200
 Subject: [PATCH 11/26] Fix linking against static D-Bus
@@ -9,7 +9,7 @@ Subject: [PATCH 11/26] Fix linking against static D-Bus
  2 files changed, 8 insertions(+)
 
 diff --git a/config.tests/unix/dbus/dbus.cpp b/config.tests/unix/dbus/dbus.cpp
-index 295c904..80d3e9c 100644
+index 295c904400..80d3e9c044 100644
 --- a/config.tests/unix/dbus/dbus.cpp
 +++ b/config.tests/unix/dbus/dbus.cpp
 @@ -37,6 +37,10 @@
@@ -24,7 +24,7 @@ index 295c904..80d3e9c 100644
  #include <dbus/dbus.h>
  
 diff --git a/src/dbus/qdbus_symbols_p.h b/src/dbus/qdbus_symbols_p.h
-index fbeea61..8e73e9e 100644
+index fbeea61c95..8e73e9eec8 100644
 --- a/src/dbus/qdbus_symbols_p.h
 +++ b/src/dbus/qdbus_symbols_p.h
 @@ -57,6 +57,10 @@
@@ -39,5 +39,5 @@ index fbeea61..8e73e9e 100644
  #  include <dbus/dbus.h>
  #else
 -- 
-2.10.2
+2.11.0
 

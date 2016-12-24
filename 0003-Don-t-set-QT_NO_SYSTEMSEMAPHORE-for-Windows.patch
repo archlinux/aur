@@ -1,4 +1,4 @@
-From 93f3b6c5d93a539bcebd3087b6209a9dd81104fd Mon Sep 17 00:00:00 2001
+From 7f9c28d0bd3a4b89ea5ecb44e38c4b0aabcc0026 Mon Sep 17 00:00:00 2001
 From: Mark Brand <mabrand@mabrand.nl>
 Date: Thu, 6 Aug 2015 13:24:56 +0200
 Subject: [PATCH 03/26] Don't set QT_NO_SYSTEMSEMAPHORE for Windows
@@ -8,11 +8,11 @@ Subject: [PATCH 03/26] Don't set QT_NO_SYSTEMSEMAPHORE for Windows
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/configure b/configure
-index 43b55f0..de2c3ec 100755
+index ba94d08714..50e6dfbce6 100755
 --- a/configure
 +++ b/configure
-@@ -4656,7 +4656,7 @@ fi
- [ "$XPLATFORM_ANDROID" = "yes" ] && QMakeVar add styles "android"
+@@ -4677,7 +4677,7 @@ fi
+ [ "$XPLATFORM_ANDROID" != "no" ] && QMakeVar add styles "android"
  
  # check IPC support
 -if ! compileTest unix/ipc_sysv "ipc_sysv" ; then
@@ -21,5 +21,5 @@ index 43b55f0..de2c3ec 100755
      if compileTest unix/ipc_posix "ipc_posix" ; then
          QCONFIG_FLAGS="$QCONFIG_FLAGS QT_POSIX_IPC"
 -- 
-2.10.2
+2.11.0
 
