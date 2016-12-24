@@ -1,15 +1,14 @@
 pkgbase = vmtouch
 	pkgdesc = Portable file system cache diagnostics and control
-	pkgver = 1.0.1
-	pkgrel = 2
+	pkgver = 1.2.0
+	pkgrel = 1
 	url = https://github.com/hoytech/vmtouch
-	arch = i686
-	arch = x86_64
+	arch = any
 	license = BSD
 	makedepends = perl
 	depends = glibc
-	source = https://github.com/hoytech/vmtouch/tarball/vmtouch-1.0.1
-	md5sums = ee7abf6103882d349281f5e166d11f77
+	source = https://github.com/hoytech/vmtouch/archive/v1.2.0.tar.gz
+	md5sums = 09dad8440bad936e8b8accedd7a6b317
 
 pkgname = vmtouch
 
