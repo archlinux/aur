@@ -2,7 +2,7 @@
 
 pkgname=libreplot-git
 _pkgname=libreplot
-pkgver=33.2563af7
+pkgver=41.70139ea
 pkgrel=1
 pkgdesc="Data Visualizing using GPU via OpenGL3+ (or GLES2+), written in C"
 arch=('i686' 'x86_64')
@@ -36,7 +36,11 @@ prepare() {
 build() {
   cd "$srcdir/$_pkgname/build"
   # We are not building demo examples as they will not be installed
-  cmake -DCMAKE_INSTALL_PREFIX='/usr' -DBUILD_DEMO=NO -DBUILD_SHARED_LIBS='TRUE' ..
+  cmake \
+    -DCMAKE_INSTALL_PREFIX='/usr' \
+    -DCMAKE_INSTALL_LIBDIR='lib' \
+    -DBUILD_DEMO=NO \
+    -DBUILD_SHARED_LIBS='TRUE' ..
   make
 }
 
