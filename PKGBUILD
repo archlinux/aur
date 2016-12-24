@@ -3,7 +3,7 @@
 
 pkgname=python-cookiecutter
 _pkgname=cookiecutter
-pkgver=1.4.0
+pkgver=1.5.0
 pkgrel=1
 pkgdesc="A command-line utility that creates projects from project templates"
 arch=('any')
@@ -16,7 +16,7 @@ depends=('python-jinja>=2.7'
          'python-binaryornot>=0.2.0'
          'python-click>=5.0'
          'python-future>=0.15.2'
-         'python-whichcraft>=0.1.1')
+         'python-whichcraft>=0.4.0')
 makedepends=()
 provides=()
 conflicts=()
@@ -24,7 +24,7 @@ replaces=()
 backup=()
 options=(!emptydirs)
 source=("https://github.com/audreyr/${_pkgname}/archive/${pkgver}.tar.gz")
-md5sums=('def59c6bac5b663259b7054e1f71fbfe')
+md5sums=('48bf21b7e6d70bc81de6cb4a314dd26f')
 
 package() {
   cd "$srcdir/${_pkgname}-${pkgver}"
