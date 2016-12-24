@@ -5,6 +5,7 @@ pkgdesc="Collection of Python libraries for simulating the irradiation of any po
 arch=('x86_64')
 depends=('python2'
 		 'python2-numpy'
+         'python2-setuptools'
 		 'python2-pytz'
 		)
 url='http://pysolar.org/'
