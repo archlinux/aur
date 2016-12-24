@@ -1,0 +1,14 @@
+pkgbase = ruby-pg-query
+	pkgdesc = Parses SQL queries using a copy of the PostgreSQL server query parser
+	pkgver = 0.11.3
+	pkgrel = 1
+	url = https://github.com/lfittl/pg_query
+	arch = any
+	license = BSD-3-CLAUSE
+	makedepends = rubygems
+	noextract = pg_query-0.11.3.gem
+	source = http://gems.rubyforge.org/gems/pg_query-0.11.3.gem
+	sha256sums = ce27b75d638197071f35755a5de47897d9c8b3d075484805a526149c9e35e32f
+
+pkgname = ruby-pg-query
+
