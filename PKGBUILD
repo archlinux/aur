@@ -2,12 +2,17 @@
 
 pkgname=bluemindo
 pkgver=1.0rc1
-pkgrel=1
+pkgrel=2
 pkgdesc='Ergonomic and modern music player designed for audiophiles'
 arch=('any')
 url='http://bluemindo.codingteam.net'
 license=('GPL3')
 depends=('gst-python' 'python-dbus' 'python-beautifulsoup4' 'python-pytaglib')
+optdepends=('pulseaudio: PulseAudio support'
+            'gst-plugins-good: PulseAudio support and good codecs'
+            'gst-plugins-bad: additional codecs'
+            'gst-plugins-ugly: additional codecs'
+            'gst-libav: libav codec')
 source=("https://codingteam.net/project/bluemindo/download/file/bluemindo-$pkgver.tar.gz"
         "makefile.patch")
 sha256sums=('e405c881feeb43f8126988403e1c1008ee5341c8faae90d5e671d9075c89fe5c'
