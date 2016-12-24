@@ -1,7 +1,7 @@
 # Maintainer: Daniel Hillenbrand <codeworkx@bbqlinux.org>
 pkgname=openhab-beta
-_pkgver=2.0.0
-pkgver=2.0.0_20161001
+_pkgver=2.0.0.b5
+pkgver=2.0.0.b5
 pkgrel=1
 pkgdesc="openHAB2 open source home automation software"
 arch=('any')
@@ -15,40 +15,36 @@ conflicts=('openhab-runtime' 'openhab-addons')
 backup=('etc/openhab/conf/services/addons.cfg'
 		'etc/openhab/conf/services/runtime.cfg')
 
-source=("https://openhab.ci.cloudbees.com/job/openHAB-Distribution/lastSuccessfulBuild/artifact/distributions/openhab-online/target/openhab-online-${_pkgver}-SNAPSHOT.zip"
+source=("https://bintray.com/openhab/mvn/download_file?file_path=org%2Fopenhab%2Fdistro%2Fopenhab-online%2F${_pkgver}%2Fopenhab-online-${_pkgver}.tar.gz"
         "openhab.service")
 
-noextract=("openhab-online-${_pkgver}-SNAPSHOT.zip")
-
-sha1sums=('SKIP'
-          '3494cf262f5b87dcff75044c8c2eee670a6f715c')
-
-pkgver() {
-    printf "${_pkgver}_%s" "$(date +%Y%m%d)"
-}
-
-prepare() {
-	mkdir -p "$srcdir/openhab"
-	cd "$srcdir/openhab"
-
-	unzip "$srcdir/openhab-online-${_pkgver}-SNAPSHOT.zip"
-
-}
+sha256sums=('4b38c5b5e8ccf351f646203b4380d549cf922e1fc7921a1d3d506910151db2cb'
+            '92be5e206c878bb1a1b476f62b815f24dca198e8e0055095f797d264d8521bfe')
 
 package() {
 	cd $pkgdir
 
     mkdir -p etc/openhab
-	mkdir -p opt
+	mkdir -p opt/openhab
 	mkdir -p usr/lib/systemd/system
 
+    # copy system service file
 	cp $srcdir/openhab.service usr/lib/systemd/system
-
-	cp -r $srcdir/openhab opt/
-
-	mv opt/openhab/conf etc/openhab/conf
-	ln -s /etc/openhab/conf opt/openhab/conf
     
-    mv opt/openhab/addons etc/openhab/addons
+    # copy main openhab files
+	cp -r $srcdir/runtime opt/openhab/
+	cp -r $srcdir/userdata opt/openhab/
+	cp -r $srcdir/LICENSE.TXT opt/openhab/
+	cp -r $srcdir/start.bat opt/openhab/
+	cp -r $srcdir/start.sh opt/openhab/
+	cp -r $srcdir/start_debug.bat opt/openhab/
+	cp -r $srcdir/start_debug.sh opt/openhab/
+
+    # copy addons and conf
+    cp -r $srcdir/addons etc/openhab/addons
+	cp -r $srcdir/conf etc/openhab/conf
+
+    # create symlinks
+	ln -s /etc/openhab/conf opt/openhab/conf
 	ln -s /etc/openhab/addons opt/openhab/addons
 }

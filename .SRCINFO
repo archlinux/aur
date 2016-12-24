@@ -1,6 +1,6 @@
 pkgbase = openhab-beta
 	pkgdesc = openHAB2 open source home automation software
-	pkgver = 2.0.0_20160326
+	pkgver = 2.0.0.b5
 	pkgrel = 1
 	url = http://www.openhab.org/
 	arch = any
@@ -9,13 +9,12 @@ pkgbase = openhab-beta
 	depends = java-runtime-headless>=8
 	conflicts = openhab-runtime
 	conflicts = openhab-addons
-	noextract = openhab-online-2.0.0-SNAPSHOT.zip
 	backup = etc/openhab/conf/services/addons.cfg
 	backup = etc/openhab/conf/services/runtime.cfg
-	source = https://openhab.ci.cloudbees.com/job/openHAB-Distribution/lastSuccessfulBuild/artifact/distributions/openhab-online/target/openhab-online-2.0.0-SNAPSHOT.zip
+	source = https://bintray.com/openhab/mvn/download_file?file_path=org%2Fopenhab%2Fdistro%2Fopenhab-online%2F2.0.0.b5%2Fopenhab-online-2.0.0.b5.tar.gz
 	source = openhab.service
-	sha1sums = SKIP
-	sha1sums = 3494cf262f5b87dcff75044c8c2eee670a6f715c
+	sha256sums = 4b38c5b5e8ccf351f646203b4380d549cf922e1fc7921a1d3d506910151db2cb
+	sha256sums = 92be5e206c878bb1a1b476f62b815f24dca198e8e0055095f797d264d8521bfe
 
 pkgname = openhab-beta
 

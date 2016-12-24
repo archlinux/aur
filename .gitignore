@@ -1,4 +1,6 @@
 *.[oa]
 *.zip
+*.gz
 *.pkg.*
 pkg/
+src/
