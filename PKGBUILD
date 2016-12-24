@@ -2,7 +2,7 @@
 pkgname="ibus-libthai"
 pkgver="0.1.3"
 _pkgver="0_1_3"
-pkgrel=1
+pkgrel=2
 pkgdesc="IBus engine module for LibThai"
 url="https://github.com/tlwg/ibus-libthai"
 arch=('x86_64' 'i686')
@@ -10,8 +10,9 @@ license=('GPL2')
 depends=('ibus' 'libthai')
 optdepends=()
 makedepends=()
-conflicts=()
+conflicts=('ibus-libthai-svn')
 replaces=('ibus-libthai-svn')
+provides=("${pkgname}=${pkgver}")
 backup=()
 install=
 source=("https://github.com/tlwg/ibus-libthai/archive/r_${_pkgver}.tar.gz")
