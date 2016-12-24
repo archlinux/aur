@@ -4,7 +4,7 @@ pkgname=visit-bin
 _pkgname=visit
 pkgver=2.12.0
 _pkgver=${pkgver//./_}
-pkgrel=1
+pkgrel=2
 pkgdesc="Interactive parallel visualization and graphical analysis tool"
 url="https://wci.llnl.gov/simulation/computer-codes/visit"
 arch=('x86_64')
@@ -13,14 +13,14 @@ provides=('visit')
 conflicts=('visit' 'visit-build')
 depends=('libpng15' 'glu')
 makedepends=('bash' 'cpio')
-_ver=rhel7-wmesa
+_ver=rhel7
 _url="http://visit.ilight.com/svn/${_pkgname}/trunk/releases/${pkgver}"
 source=("${_url}/${_pkgname}${_pkgver}.linux-x86_64-${_ver}.tar.gz"
         "${_url}/${_pkgname}-install${_pkgver}"
         'visit.sh'
         'visit-libs.patch')
 noextract=("${_pkgname}${_pkgver}.linux-x86_64-${_ver}.tar.gz")
-sha256sums=('fb525e44a6eac8ad3d96742144a4df98e0a52fe1d7481a823c56b70e8a35607f'
+sha256sums=('cda8e0ab93c8716ded6c6371c867130e82d5383be783f77b7a99a5dfbd020d7f'
             'c0c9a321a43df15fb7c09d942b3ca3dbc00d8f3b7153432138a8e51fa1b42d7d'
             'd07a11e67ad646579fbc341f30e1eb63ebd38a5fbdd4f3ea36e8f460419028da'
             'abc1c05f6567281cb8654dfbe3d0ef87ec3537e8e60191ba0625d4f99feb27c7')
