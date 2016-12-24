@@ -24,19 +24,19 @@ prepare() {
 }
 
 build () {
-    cd "$srcdir/build"
+  cd "$srcdir/build"
 
-    cmake \
-      -DBUILD_SHIBBOLETH_SUPPORT=ON \
-      -DCMAKE_BUILD_TYPE=Release \
-      -DCMAKE_INSTALL_PREFIX=/usr \
-      "${srcdir}/${pkgname}-${pkgver}"
+  cmake \
+    -DBUILD_SHIBBOLETH_SUPPORT=ON \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    "${srcdir}/${pkgname}-${pkgver}"
 
-    make
+  make
 }
 
 package () {
-    cd "${srcdir}/build"
+  cd "${srcdir}/build"
 
-    make DESTDIR="${pkgdir}" install
+  make DESTDIR="${pkgdir}" install
 }
