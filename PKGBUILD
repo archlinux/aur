@@ -2,17 +2,17 @@
 
 _pkgname=sqlint
 pkgname=sqlint
-pkgver=0.1.3
+pkgver=0.1.4
 pkgrel=1
 pkgdesc="SQLint is a simple command-line linter which reads your SQL files and reports any syntax errors or warnings it finds."
 arch=("any")
 url="https://github.com/purcell/sqlint"
 license=("MIT")
-depends=()
+depends=("ruby-pg-query")
 makedepends=("rubygems")
 source=("http://gems.rubyforge.org/gems/$_pkgname-$pkgver.gem")
 noextract=("$_pkgname-$pkgver.gem")
-sha256sums=("5572df1670e27ece87ee6397f790997b7ac142eeed7a31e18d2c4e05e2cb48e7")
+sha256sums=("f573f6f6f25c3438c14e89d25848207d917dbb7d9d33f51842f33189b2a83a5d")
 
 
 package() {
