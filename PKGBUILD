@@ -66,9 +66,9 @@ build() {
 
 check() {
   cd ${pkgname}
-  # TODO: readd fpc and dex
+  # TODO: readd fpc
   # TODO: colord test fails with lcms2 >= 2.8
-  PYTHONPATH=".:${PYTHONPATH}" py.test -k 'not test_icc and not test_ppu and not test_dex'
+  PYTHONPATH=".:${PYTHONPATH}" py.test -k 'not test_icc and not test_ppu'
 }
 
 package() {
