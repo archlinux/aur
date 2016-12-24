@@ -9,8 +9,8 @@
 
 _qt_module=qtxmlpatterns
 pkgname="mingw-w64-qt5-xmlpatterns"
-pkgver=5.7.0
-pkgrel=2
+pkgver=5.7.1
+pkgrel=1
 arch=('any')
 pkgdesc="Support for XPath, XQuery, XSLT and XML schema validation (mingw-w64)"
 depends=('mingw-w64-qt5-base')
@@ -20,7 +20,7 @@ license=('GPL3' 'LGPL3' 'FDL' 'custom')
 url="https://www.qt.io/"
 _pkgfqn="${_qt_module}-opensource-src-${pkgver}"
 source=("https://download.qt.io/official_releases/qt/${pkgver:0:3}/${pkgver}/submodules/${_pkgfqn}.tar.xz")
-md5sums=('97e447995e9741325ca8da6cff8f882a')
+md5sums=('92c8212457fae1e2004cebc993a280ea')
 
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
 [[ $NO_STATIC_LIBS ]] || \
