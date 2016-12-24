@@ -2,7 +2,7 @@
 
 pkgname=pogo
 pkgver=0.8.7
-pkgrel=2
+pkgrel=3
 pkgdesc='Plays your music. Nothing else.'
 arch=('any')
 url='https://github.com/jendrikseipp/pogo'
@@ -11,7 +11,8 @@ depends=('pygtk' 'gstreamer0.10-python' 'gstreamer0.10-base-plugins' 'mutagen'
          'python2-dbus' 'python2-pillow')
 optdepends=('python2-notify: desktop notifications'
             'gnome-settings-daemon: GNOME media keys'
-            'gstreamer0.10-good-plugins: additional codecs'
+            'pulseaudio: PulseAudio support'
+            'gstreamer0.10-good-plugins: PulseAudio support and good codecs'
             'gstreamer0.10-bad-plugins: additional codecs'
             'gstreamer0.10-ugly-plugins: additional codecs'
             'gstreamer0.10-ffmpeg: ffmpeg codec')
