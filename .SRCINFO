@@ -1,0 +1,24 @@
+pkgbase = kdemultimedia-audiocd-kio
+	pkgdesc = Kioslave for accessing audio CDs
+	pkgver = 16.08.3
+	pkgrel = 1
+	url = https://www.kde.org/applications/multimedia/
+	arch = i686
+	arch = x86_64
+	groups = kde-applications
+	groups = kdemultimedia
+	license = GPL
+	license = LGPL
+	license = FDL
+	makedepends = cmake
+	makedepends = automoc4
+	depends = libkcddb
+	depends = libkcompactdisc
+	depends = lame
+	conflicts = kdemultimedia-kioslave
+	replaces = kdemultimedia-kioslave
+	source = http://download.kde.org/stable/applications/16.08.3/src/audiocd-kio-16.08.3.tar.xz
+	sha1sums = f707954fe5cea016aa6ac43c3ff5aedf72c29529
+
+pkgname = kdemultimedia-audiocd-kio
+
