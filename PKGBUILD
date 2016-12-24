@@ -59,4 +59,3 @@ package() {
   rm -r "$pkgdir"/etc/cron.daily/ "$pkgdir"/opt/google/chrome/cron/
   rm "$pkgdir"/opt/google/chrome/product_logo_*.png
 }
- 
