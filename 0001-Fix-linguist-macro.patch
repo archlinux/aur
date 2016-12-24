@@ -1,4 +1,4 @@
-From 1f1a8e6109b99b797efe52e91c47c1c04c629b83 Mon Sep 17 00:00:00 2001
+From 77e3129a33d3297bddc514edb773bf30133fa838 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sun, 25 Sep 2016 21:44:42 +0200
 Subject: [PATCH] Fix linguist macro
@@ -11,7 +11,7 @@ Subject: [PATCH] Fix linguist macro
  1 file changed, 5 insertions(+), 2 deletions(-)
 
 diff --git a/src/linguist/Qt5LinguistToolsMacros.cmake b/src/linguist/Qt5LinguistToolsMacros.cmake
-index 6013cc6..2e79732 100644
+index 6013cc6e..2e797326 100644
 --- a/src/linguist/Qt5LinguistToolsMacros.cmake
 +++ b/src/linguist/Qt5LinguistToolsMacros.cmake
 @@ -71,8 +71,10 @@ function(QT5_CREATE_TRANSLATION _qm_files)
@@ -38,5 +38,5 @@ index 6013cc6..2e79732 100644
              DEPENDS ${_abs_FILE} VERBATIM
          )
 -- 
-2.10.0
+2.11.0
 
