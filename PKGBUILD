@@ -4,12 +4,12 @@
 
 pkgname=kdemultimedia-audiocd-kio
 pkgver=16.08.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Kioslave for accessing audio CDs"
 url='https://www.kde.org/applications/multimedia/'
 arch=('i686' 'x86_64')
 license=('GPL' 'LGPL' 'FDL')
-depends=('libkcddb' 'libkcompactdisc' 'lame')
+depends=('libkcddb4' 'libkcompactdisc4' 'lame')
 makedepends=('cmake' 'automoc4')
 groups=('kde-applications' 'kdemultimedia')
 replaces=('kdemultimedia-kioslave')
