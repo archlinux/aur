@@ -1,4 +1,4 @@
-From 443ebf3f1644a5111fae06cfa248c641d96e1ffb Mon Sep 17 00:00:00 2001
+From a40c4d89a09af39c8a9b6e07f99aab277139da28 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sun, 18 Sep 2016 13:36:53 +0200
 Subject: [PATCH 05/26] Support ANGLE switches via configure shell script
@@ -11,7 +11,7 @@ this case executing configure.bat is not appropriate
  2 files changed, 24 insertions(+), 4 deletions(-)
 
 diff --git a/configure b/configure
-index de2c3ec..cf879ff 100755
+index 50e6dfbce6..af275de52c 100755
 --- a/configure
 +++ b/configure
 @@ -1287,6 +1287,7 @@ while [ "$#" -gt 0 ]; do
@@ -22,7 +22,7 @@ index de2c3ec..cf879ff 100755
              [ "$VAL" = "yes" ] || [ "$VAL" = "no" ] ||
              [ "$VAL" = "es2" ]; then
              CFG_OPENGL="$VAL"
-@@ -5312,7 +5313,7 @@ if [ "$XPLATFORM_MINGW" = "yes" ]; then
+@@ -5320,7 +5321,7 @@ if [ "$XPLATFORM_MINGW" = "yes" ]; then
      fi
      if [ "$CFG_OPENGL" = "auto" ] || [ "$CFG_OPENGL" = "yes" ]; then
          if compileTest x11/opengl "OpenGL"; then
@@ -31,7 +31,7 @@ index de2c3ec..cf879ff 100755
          elif compileTest unix/opengles2 "OpenGL ES 2.0"; then
              CFG_OPENGL=es2
          else
-@@ -5348,6 +5349,17 @@ if [ "$XPLATFORM_MINGW" = "yes" ]; then
+@@ -5356,6 +5357,17 @@ if [ "$XPLATFORM_MINGW" = "yes" ]; then
              echo " ${XQMAKESPEC}."
              exit 1
          fi
@@ -49,7 +49,7 @@ index de2c3ec..cf879ff 100755
      elif [ "$CFG_OPENGL" = "desktop" ]; then
          # Desktop OpenGL support
          compileTest x11/opengl "OpenGL"
-@@ -6423,6 +6435,16 @@ if [ "$CFG_OPENGL" = "es2" ]; then
+@@ -6431,6 +6443,16 @@ if [ "$CFG_OPENGL" = "es2" ]; then
      QT_CONFIG="$QT_CONFIG opengles2"
  fi
  
@@ -66,8 +66,8 @@ index de2c3ec..cf879ff 100755
  if [ "$CFG_SHARED" = "yes" ]; then
      QT_CONFIG="$QT_CONFIG shared"
      QTCONFIG_CONFIG="$QTCONFIG_CONFIG shared"
-@@ -7474,7 +7496,7 @@ report_support "    OpenSSL .............." "$CFG_OPENSSL" yes "loading librarie
- report_support "  NIS ...................." "$CFG_NIS"
+@@ -7479,7 +7501,7 @@ report_support "    OpenSSL .............." "$CFG_OPENSSL" yes "loading librarie
+     report_support "    SecureTransport ......" "$CFG_SECURETRANSPORT"
  report_support "  OpenGL / OpenVG:"
  report_support "    EGL .................." "$CFG_EGL"
 -report_support "    OpenGL ..............." "$CFG_OPENGL" yes "Desktop OpenGL" es2 "OpenGL ES 2.0+"
@@ -76,7 +76,7 @@ index de2c3ec..cf879ff 100755
  report_support "  PCRE ..................." "$CFG_PCRE" yes "system library" qt "bundled copy"
  if [ -n "$PKG_CONFIG" ]; then
 diff --git a/src/gui/opengl/qopenglfunctions.h b/src/gui/opengl/qopenglfunctions.h
-index f6cd0e5..17214a0 100644
+index f6cd0e553e..17214a0545 100644
 --- a/src/gui/opengl/qopenglfunctions.h
 +++ b/src/gui/opengl/qopenglfunctions.h
 @@ -56,9 +56,7 @@
@@ -90,5 +90,5 @@ index f6cd0e5..17214a0 100644
  #ifdef Q_ENABLE_OPENGL_FUNCTIONS_DEBUG
  #include <stdio.h>
 -- 
-2.10.2
+2.11.0
 

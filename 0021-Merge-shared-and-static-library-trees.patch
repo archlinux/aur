@@ -1,4 +1,4 @@
-From 9aec74947e4726660486236f083ca485f05625c7 Mon Sep 17 00:00:00 2001
+From 4a2456d3e7372aaacf0aa25a116f85aebf21ef5b Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sun, 18 Sep 2016 18:45:08 +0200
 Subject: [PATCH 21/26] Merge shared and static library trees
@@ -13,10 +13,10 @@ Allow installation of shared and static build in the same prefix
  5 files changed, 40 insertions(+), 6 deletions(-)
 
 diff --git a/configure b/configure
-index cf879ff..b4c75c6 100755
+index af275de52c..9ecc7f9ada 100755
 --- a/configure
 +++ b/configure
-@@ -7181,6 +7181,12 @@ host_build {
+@@ -7187,6 +7187,12 @@ host_build {
  }
  QT_CONFIG += $QT_CONFIG
  
@@ -30,7 +30,7 @@ index cf879ff..b4c75c6 100755
  QT_VERSION = $QT_VERSION
  QT_MAJOR_VERSION = $QT_MAJOR_VERSION
 diff --git a/mkspecs/features/default_post.prf b/mkspecs/features/default_post.prf
-index e7e9a5b..799278d 100644
+index e7e9a5bd87..799278d445 100644
 --- a/mkspecs/features/default_post.prf
 +++ b/mkspecs/features/default_post.prf
 @@ -120,3 +120,11 @@ c++11|c++14|c++1z {
@@ -46,7 +46,7 @@ index e7e9a5b..799278d 100644
 +    QMAKE_EXT_PRL=.static.prl # prevents qmake from finding the prl file for shared libs
 +}
 diff --git a/mkspecs/features/qt.prf b/mkspecs/features/qt.prf
-index 03ec36a..c4d7beb 100644
+index bb52f23378..1815ba3241 100644
 --- a/mkspecs/features/qt.prf
 +++ b/mkspecs/features/qt.prf
 @@ -150,6 +150,18 @@ for(ever) {
@@ -69,7 +69,7 @@ index 03ec36a..c4d7beb 100644
      !isEmpty(BAD_QT):error("Unknown module(s) in QT$$var_sfx: $$replace(BAD_QT, _private$, -private)")
  
 diff --git a/mkspecs/features/spec_pre.prf b/mkspecs/features/spec_pre.prf
-index 090f348..05d2863 100644
+index 090f348ebf..05d28636b9 100644
 --- a/mkspecs/features/spec_pre.prf
 +++ b/mkspecs/features/spec_pre.prf
 @@ -14,9 +14,14 @@ QMAKE_EXT_H             = .h .hpp .hh .hxx
@@ -91,7 +91,7 @@ index 090f348..05d2863 100644
  QMAKE_EXT_YACC          = .y
  
 diff --git a/qmake/generators/makefile.cpp b/qmake/generators/makefile.cpp
-index b4792fe..edd7918 100644
+index 04c0210eb9..f05a039d2f 100644
 --- a/qmake/generators/makefile.cpp
 +++ b/qmake/generators/makefile.cpp
 @@ -3166,6 +3166,9 @@ MakefileGenerator::pkgConfigFileName(bool fixify, bool onlyPrependDestdir)
@@ -118,5 +118,5 @@ index b4792fe..edd7918 100644
  
      t << endl;
 -- 
-2.10.2
+2.11.0
 

@@ -1,4 +1,4 @@
-From e0f3940f8a6df9e347a29d37671fa1bae7d84735 Mon Sep 17 00:00:00 2001
+From dd6f19fca955ac5918c3b0dca245f9eec9f0755e Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sun, 18 Sep 2016 18:26:18 +0200
 Subject: [PATCH 20/26] Use *.dll.a as import lib extension
@@ -10,7 +10,7 @@ Subject: [PATCH 20/26] Use *.dll.a as import lib extension
  3 files changed, 16 insertions(+), 8 deletions(-)
 
 diff --git a/mkspecs/features/create_cmake.prf b/mkspecs/features/create_cmake.prf
-index 4adacf6..0ff1c6d 100644
+index 4adacf6762..0ff1c6d142 100644
 --- a/mkspecs/features/create_cmake.prf
 +++ b/mkspecs/features/create_cmake.prf
 @@ -236,8 +236,9 @@ mac {
@@ -26,10 +26,10 @@ index 4adacf6..0ff1c6d 100644
      } else {
          CMAKE_WINMAIN_FILE_LOCATION_DEBUG = qtmain$${QT_LIBINFIX}d.lib
 diff --git a/mkspecs/win32-g++/qmake.conf b/mkspecs/win32-g++/qmake.conf
-index db92487..607bd3e 100644
+index 3ee820e54b..44253a2a37 100644
 --- a/mkspecs/win32-g++/qmake.conf
 +++ b/mkspecs/win32-g++/qmake.conf
-@@ -92,7 +92,7 @@ QMAKE_PREFIX_SHLIB      =
+@@ -93,7 +93,7 @@ QMAKE_PREFIX_SHLIB      =
  QMAKE_EXTENSION_SHLIB   = dll
  QMAKE_PREFIX_STATICLIB  = lib
  QMAKE_EXTENSION_STATICLIB = a
@@ -39,7 +39,7 @@ index db92487..607bd3e 100644
  QMAKE_LIBS              =
  QMAKE_LIBS_CORE         = -lole32 -luuid -lws2_32 -ladvapi32 -lshell32 -luser32 -lkernel32 -lz -lpcre16
 diff --git a/qmake/generators/win32/winmakefile.cpp b/qmake/generators/win32/winmakefile.cpp
-index 543e905..456f21c 100644
+index 543e905051..456f21cedb 100644
 --- a/qmake/generators/win32/winmakefile.cpp
 +++ b/qmake/generators/win32/winmakefile.cpp
 @@ -80,10 +80,14 @@ Win32MakefileGenerator::parseLibFlag(const ProString &flag, ProString *arg)
@@ -76,5 +76,5 @@ index 543e905..456f21c 100644
                  + project->first("QMAKE_EXTENSION_SHLIB"));
          project->values("TARGET").first() = project->first("QMAKE_PREFIX_SHLIB") + project->first("TARGET");
 -- 
-2.10.2
+2.11.0
 

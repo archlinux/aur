@@ -1,4 +1,4 @@
-From 6d05281c9dbdcbc60ecbcf596db1c06a86f4d19d Mon Sep 17 00:00:00 2001
+From 22922f121b3dc7865b7d0c553ed033dca700cc74 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sun, 18 Sep 2016 13:41:38 +0200
 Subject: [PATCH 06/26] Use external ANGLE library
@@ -12,7 +12,7 @@ Subject: [PATCH 06/26] Use external ANGLE library
  5 files changed, 8 insertions(+), 11 deletions(-)
 
 diff --git a/src/gui/Qt5GuiConfigExtras.cmake.in b/src/gui/Qt5GuiConfigExtras.cmake.in
-index 07869ef..2e32911 100644
+index 07869efd7d..2e32911a64 100644
 --- a/src/gui/Qt5GuiConfigExtras.cmake.in
 +++ b/src/gui/Qt5GuiConfigExtras.cmake.in
 @@ -2,9 +2,9 @@
@@ -28,7 +28,7 @@ index 07869ef..2e32911 100644
  
  _qt5_Gui_check_file_exists(${Qt5Gui_EGL_INCLUDE_DIRS})
 diff --git a/src/gui/gui.pro b/src/gui/gui.pro
-index 462f133..db30dd3 100644
+index 462f133ff8..db30dd3440 100644
 --- a/src/gui/gui.pro
 +++ b/src/gui/gui.pro
 @@ -17,11 +17,6 @@ MODULE_PLUGIN_TYPES = \
@@ -55,7 +55,7 @@ index 462f133..db30dd3 100644
  
  include(accessible/accessible.pri)
 diff --git a/src/opengl/opengl.pro b/src/opengl/opengl.pro
-index 2386ef5..fe3b327 100644
+index 2386ef5d19..fe3b327f13 100644
 --- a/src/opengl/opengl.pro
 +++ b/src/opengl/opengl.pro
 @@ -11,6 +11,7 @@ QMAKE_DOCS = $$PWD/doc/qtopengl.qdocconf
@@ -67,7 +67,7 @@ index 2386ef5..fe3b327 100644
  HEADERS += qgl.h \
             qgl_p.h \
 diff --git a/src/plugins/platforms/windows/windows.pri b/src/plugins/platforms/windows/windows.pri
-index 48c5359..3498dbe 100644
+index 48c53592d6..3498dbeaa8 100644
 --- a/src/plugins/platforms/windows/windows.pri
 +++ b/src/plugins/platforms/windows/windows.pri
 @@ -3,6 +3,7 @@ LIBS *= -lole32
@@ -79,10 +79,10 @@ index 48c5359..3498dbe 100644
  mingw: LIBS *= -luuid
  # For the dialog helpers:
 diff --git a/src/src.pro b/src/src.pro
-index 71347dc..921c4d8 100644
+index 3d185408f8..1e4f93d17d 100644
 --- a/src/src.pro
 +++ b/src/src.pro
-@@ -159,10 +159,6 @@ contains(QT_CONFIG, concurrent):SUBDIRS += src_concurrent
+@@ -163,10 +163,6 @@ contains(QT_CONFIG, concurrent):SUBDIRS += src_concurrent
          SUBDIRS += src_3rdparty_harfbuzzng
          src_gui.depends += src_3rdparty_harfbuzzng
      }
@@ -90,9 +90,9 @@ index 71347dc..921c4d8 100644
 -        SUBDIRS += src_angle
 -        src_gui.depends += src_angle
 -    }
-     contains(QT_CONFIG, freetype) {
-         SUBDIRS += src_3rdparty_freetype
-         src_platformsupport.depends += src_3rdparty_freetype
+     contains(QT_CONFIG, png) {
+         SUBDIRS += src_3rdparty_libpng
+         src_3rdparty_freetype.depends += src_3rdparty_libpng
 -- 
-2.10.2
+2.11.0
 
