@@ -4,7 +4,7 @@ pkgname=mattermost-desktop
 pkgdesc="Mattermost chat desktop client for Linux"
 _pkgname=desktop
 pkgver=3.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Mattermost Desktop (Beta) for Linux"
 arch=('i686' 'x86_64')
 url="https://github.com/mattermost/desktop"
@@ -25,7 +25,7 @@ build() {
 
 prepare() {
     gendesk --pkgname "$pkgname" --pkgdesc "$pkgdesc" \
-        --exec "/usr/lib/mattermost/Mattermost" \
+        --exec "/usr/lib/mattermost/mattermost-desktop" \
         --categories "GNOME;GTK;Network;InstantMessaging;"
 }
 
