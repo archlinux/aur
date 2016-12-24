@@ -58,7 +58,7 @@ _local_qt5_repo="/opt/dev/src/qtproject/qt5"
 _pkgvermajmin="5.8"
 _pkgverpatch=".0"
 # -{alpha/beta/rc}
-_dev_suffix="-beta"
+_dev_suffix="-rc"
 pkgver="${_pkgvermajmin}${_pkgverpatch}"
 $_build_from_head && pkgver=6.6.6
 _pkgver=${pkgver}${_dev_suffix}
@@ -109,7 +109,7 @@ $_float && _additional_configure_flags="$_additional_configure_flags -qreal floa
 
 # PKGBUILD vars
 
-pkgrel=5
+pkgrel=6
 pkgname="qt-sdk"
 
 if [[ -n ${_piver} ]]; then
@@ -166,7 +166,7 @@ _core_configure_options="\
 
 if ! $_build_from_head; then
   source=("git://github.com/sirspudd/mkspecs.git" "${_provider}/${_release_type}/qt/${_pkgvermajmin}/${_pkgver}/single/${_source_package_name}.7z")
-  sha256sums=("SKIP" "8a8b57ee26e076316208bcb371cbecbfebdb0d59c1f4949e8f84bc848987b55b")
+  sha256sums=("SKIP" "cf698bb8fda691afa18dc3bf709bf7782ec1c9e41ee2a1cfacab516b78c36ea9")
 fi
 
 options=('!strip')
@@ -238,11 +238,6 @@ if $_patching; then
 
   cd ${_basedir}
   patch -p1 < ${startdir}/0001-Check-lib64-as-well-as-lib.patch
-
-  cd ${_waylanddir}
-  patch -p1 < ${startdir}/0001-Fix-build-of-brcm-egl-client.patch
-  patch -p1 < ${startdir}/5.8.0-beta1-5b807802866c8df00cb3340d4f9bcc343be5973a.patch
-  patch -p1 < ${startdir}/0001-Fix-brcm-egl-build-by-correcting-commit-usage.patch
 
   # Work around our embarresing propensity to stomp on your own tailored build configuration
   sed -i "s/O[23]/Os/"  ${_basedir}/mkspecs/common/gcc-base.conf || exit 1
