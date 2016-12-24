@@ -1,11 +1,26 @@
 [Desktop Entry]
-Type=Application
+Version=1.0
 Name=Firefox Nightly
 GenericName=Web Browser
 GenericName[fr]=Navigateur web
-Icon=firefox-nightly
+Comment=Browse the Web
+Comment[fr]=Naviguer sur le Web
 Exec=firefox-nightly %u
+Icon=firefox-nightly
 Terminal=false
+Type=Application
 MimeType=text/html;text/xml;application/xhtml+xml;application/vnd.mozilla.xul+xml;text/mml;x-scheme-handler/http;x-scheme-handler/https;
-Categories=Network;X-WebBroswer;
 StartupNotify=false
+Categories=Network;WebBroswer;
+Keywords=web;browser;internet;
+Actions=new-window;new-private-window;
+
+[Desktop Action new-window]
+Name=New Window
+Name[fr]=Nouvelle fenêtre
+Exec=firefox-nightly --new-window %u
+
+[Desktop Action new-private-window]
+Name=New Private Window
+Name[fr]=Nouvelle fenêtre de navigation privée
+Exec=firefox-nightly --private-window %u
