@@ -2,7 +2,7 @@
 
 pkgname=genhupo
 pkgver=0.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Create ramdom file with lipsum for hugo"
 arch=('any')
 url="https://github.com/Chipsterjulien/genhupo"
@@ -27,4 +27,4 @@ package() {
         "$pkgdir"/usr/bin/$pkgname || return 1
 }
 
-sha512sums=('568988cf0717b1e435452785f53c9ba2880d34055eba7be91b4767d5acd91d2b94dfa8fceacf3d228f6dc58fe96fd6eca1da120fa301734c4d54eef343254282')
+sha512sums=('6bf9b18f5db479a95bd10cd9f4aedf153d29250842aa81fcb1008ca0f658369a57c8dc6743d813911e2513c59af2fc780c38f383272634db7fb48d68f387eb07')
