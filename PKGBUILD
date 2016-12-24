@@ -2,13 +2,13 @@
 
 pkgname='openastro'
 pkgver='1.1.48'
-pkgrel='5'
+pkgrel=6
 pkgdesc='Open source fully-featured astrology software'
 arch=('i686' 'x86_64')
 license=('GPL')
 url='http://www.openastro.org/'
 depends=('imagemagick' 'python2-dateutil' 'python2-rsvg' 'python2-pytz' 'pyswisseph')
-makedepends=('setuptools')
+makedepends=('python2-setuptools')
 optdepends=()
 conflicts=('openastro-dev' 'swisseph_12' 'swisseph_18' 'swisseph-fixstars')
 source=(
