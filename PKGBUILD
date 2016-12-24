@@ -3,7 +3,7 @@
 
 pkgname=munt
 pkgdesc='Software synthesizer emulating pre-GM MIDI devices such as the Roland MT-32, CM-32L, CM-64 and LAPC-I'
-pkgver=1.5.0
+pkgver=2.0.1
 pkgrel=1
 arch=('i686' 'x86_64')
 url='http://munt.sourceforge.net'
@@ -11,7 +11,8 @@ license=('GPL2')
 depends=('qt4' 'portaudio' 'libpulse' 'alsa-lib')
 makedepends=('cmake' 'imagemagick' 'gendesk')
 options=('staticlibs')
-source=("https://github.com/${pkgname}/${pkgname}/archive/${pkgname}_${pkgver//./_}.zip")
+__mt32suffix=libmt32emu
+source=("https://github.com/${pkgname}/${pkgname}/archive/${__mt32suffix}_${pkgver//./_}.zip")
 install=${pkgname}.install
 
 build() {
@@ -24,19 +25,19 @@ build() {
           --exec="/usr/bin/mt32emu-qt" \
           --startupnotify=true
   
-  convert "${srcdir}/${pkgname}-${pkgname}_${pkgver//./_}/mt32emu_qt/src/images/note.gif" "${srcdir}/munt.png"
+  convert "${srcdir}/${pkgname}-${__mt32suffix}_${pkgver//./_}/mt32emu_qt/src/images/note.gif" "${srcdir}/munt.png"
 
-  cd "${srcdir}/${pkgname}-${pkgname}_${pkgver//./_}"
-  cmake -DWITH_INTERNAL_PORTAUDIO='FALSE' -DCMAKE_INSTALL_PREFIX='/usr'
+  cd "${srcdir}/${pkgname}-${__mt32suffix}_${pkgver//./_}"
+  cmake -DCMAKE_INSTALL_PREFIX='/usr'
   make
 }
 
 package() {
-  cd "${srcdir}/${pkgname}-${pkgname}_${pkgver//./_}"
+  cd "${srcdir}/${pkgname}-${__mt32suffix}_${pkgver//./_}"
   make DESTDIR="${pkgdir}" install
   
   install -Dm644 "${srcdir}/munt.png" "${pkgdir}/usr/share/icons/hicolor/32x32/apps/munt.png"
   install -Dm644 "${srcdir}/munt.desktop" "${pkgdir}/usr/share/applications/munt.desktop"
 }
 
-md5sums=('fffcb47284ca102ab4f8c6517d0ac615')
+md5sums=('c0ea9aa208967f7c8695015f7772ab0c')
