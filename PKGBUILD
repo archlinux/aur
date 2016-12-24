@@ -9,8 +9,8 @@
 
 _qt_module=qtlocation
 pkgname=mingw-w64-qt5-location
-pkgver=5.7.0
-pkgrel=3
+pkgver=5.7.1
+pkgrel=1
 arch=('any')
 pkgdesc='Provides access to position, satellite and area monitoring classes (mingw-w64)'
 depends=('mingw-w64-qt5-base' 'mingw-w64-qt5-declarative')
@@ -20,8 +20,10 @@ groups=(mingw-w64-qt mingw-w64-qt5)
 license=('GPL3' 'LGPL' 'FDL' 'custom')
 url='https://www.qt.io/'
 _pkgfqn="${_qt_module}-opensource-src-${pkgver}"
-source=("https://download.qt.io/official_releases/qt/${pkgver:0:3}/${pkgver}/submodules/${_pkgfqn}.tar.xz")
-md5sums=('645477ff5426f5213f3581625ea53aaa')
+source=("https://download.qt.io/official_releases/qt/${pkgver:0:3}/${pkgver}/submodules/${_pkgfqn}.tar.xz"
+        '0001-Ensure-static-3rdparty-libs-are-linked-correctly.patch')
+md5sums=('e08b12addd6b9d995fdf059c5c9e04b3'
+         '97be1c13fddd5b68d1d3e532771b667e')
 
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
 [[ $NO_STATIC_LIBS ]] || \
@@ -30,6 +32,15 @@ _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
   _configurations+=('CONFIG+=static')
 [[ $NO_SHARED_LIBS ]] || \
   _configurations+=('CONFIG+=shared')
+
+prepare() {
+  cd "${srcdir}/${_pkgfqn}"
+
+  # Apply patches; further descriptions can be found in patch files itself
+  for patch in "$srcdir/"*.patch; do
+    patch -p1 -i "$patch"
+  done
+}
 
 build() {
   cd "${srcdir}/${_pkgfqn}"

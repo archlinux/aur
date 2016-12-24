@@ -1,0 +1,26 @@
+From b06f0c0bd0f125a9abf6f85d585445de0bdb396e Mon Sep 17 00:00:00 2001
+From: Martchus <martchus@gmx.net>
+Date: Thu, 22 Dec 2016 22:30:59 +0100
+Subject: [PATCH] Ensure static 3rdparty libs are linked correctly
+
+---
+ src/imports/location/location.pro | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/src/imports/location/location.pro b/src/imports/location/location.pro
+index 57172ad8..ddea8b23 100644
+--- a/src/imports/location/location.pro
++++ b/src/imports/location/location.pro
+@@ -62,7 +62,8 @@ include(declarativeplaces/declarativeplaces.pri)
+ 
+ load(qml_plugin)
+ 
+-LIBS_PRIVATE += -L$$MODULE_BASE_OUTDIR/lib -lpoly2tri$$qtPlatformTargetSuffix() -lclip2tri$$qtPlatformTargetSuffix()
++LIBS_PRIVATE += -L$$MODULE_BASE_OUTDIR/lib -lclip2tri$$qtPlatformTargetSuffix() -lclipper$$qtPlatformTargetSuffix() -lpoly2tri$$qtPlatformTargetSuffix()
++QMAKE_LIBS_PRIVATE += -lclip2tri$$qtPlatformTargetSuffix() -lclipper$$qtPlatformTargetSuffix() -lpoly2tri$$qtPlatformTargetSuffix()
+ 
+ OTHER_FILES += \
+     plugin.json \
+-- 
+2.11.0
+
