@@ -1,7 +1,7 @@
 # Maintainer: substanceof <vk-cli.dev[at]ya[dot]ru>
 pkgname=vk-cli-git
 pkgver=r999.a8a1322
-pkgrel=1
+pkgrel=2
 pkgdesc="A console (ncurses) client for vk.com written in D (git upstream)"
 arch=('x86_64' 'i686')
 url="https://github.com/HaCk3Dq/vk"
@@ -29,9 +29,6 @@ build() {
 
 package() {
   cd "$srcdir/$_gitname"
-  _installdir="${pkgdir}/usr/bin"
-
-  mkdir -p "${_installdir}"
-  cp vk "${_installdir}/vk"
+  install -Dm755 -t "$pkgdir/usr/bin" 'vk'
 }
 
