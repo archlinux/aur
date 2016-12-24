@@ -67,8 +67,8 @@ package_python-numpy() {
   replaces=('python3-numpy')
   conflicts=('python3-numpy')
 
-  _pyver=3.5
-  _pyinc=3.5m
+  _pyver=3.6
+  _pyinc=3.6m
 
   export ATLAS=None
   export LDFLAGS="$LDFLAGS -shared"
