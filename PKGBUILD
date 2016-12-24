@@ -12,8 +12,8 @@
 
 _qt_module=qtdeclarative
 pkgname=mingw-w64-qt5-declarative
-pkgver=5.7.0
-pkgrel=6
+pkgver=5.7.1
+pkgrel=0
 arch=('i686' 'x86_64')
 pkgdesc='Classes for QML and JavaScript languages (mingw-w64)'
 depends=('mingw-w64-qt5-base')
@@ -25,12 +25,10 @@ url="https://www.qt.io/"
 _pkgfqn="${_qt_module}-opensource-src-${pkgver}"
 source=("https://download.qt.io/official_releases/qt/${pkgver:0:3}/${pkgver}/submodules/${_pkgfqn}.tar.xz"
         '0001-Build-QML-dev-tools-as-shared-library.patch'
-        '0002-Fix-i686-segfaults-with-GCC-6.patch'
-        '0003-Ensure-static-plugins-are-exported.patch')
-md5sums=('0d9e461aa54dba4793253fa2eb501f9b'
-         '1d70fdbe290a1c0d2562cd975224c219'
-         'a11b3a584566e144a821c66f8ec53e26'
-         '8d6740a6fad763f2c42c9c56022f8567')
+        '0002-Ensure-static-plugins-are-exported.patch')
+md5sums=('e8940f4237bcedc67c8e9e753beb10d2'
+         '3fae1f1d463a55606be17d89a2ae7cc9'
+         'a5f0f56fd42bb72f38aac6909c860d6d')
 
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
 [[ $NO_STATIC_LIBS ]] || \
