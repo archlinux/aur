@@ -14,7 +14,7 @@ optdepends=(
   'wget: fetches new mirrorlist - curl alternate requires one or the other'
 )
 source=('https://raw.githubusercontent.com/deadhead420/fetchmirrors/master/fetchmirrors.sh')
-md5sums=('b96f8d14f0f841e969236c89c4c6e0fa')
+md5sums=('c0f8c486330fe3607c17d1279ca203a1')
 
 package() {
   cd "${srcdir}"
