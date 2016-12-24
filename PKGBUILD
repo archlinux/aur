@@ -4,10 +4,10 @@
 
 _appname_=vlc
 pkgname=${_appname_}-nightly
-pkgver=3.0.0v20161209
+pkgver=3.0.0v20161224
 _pkgver=3.0.0
-_snapshot_=20161209
-_snapver_=0236
+_snapshot_=20161224
+_snapver_=0237
 _nightly_=${_snapshot_}-${_snapver_}
 pkgrel=1
 pkgdesc="A multi-platform MPEG, VCD/DVD, and DivX player - nightly snapshot"
@@ -18,7 +18,7 @@ depends=("a52dec" "libdvbpsi" "libxpm" "libdca" "qt5-base" "libproxy"
          "sdl_image" "libdvdnav" "libtiger" "lua" "libmatroska"
          "zvbi" "taglib" "libmpcdec" "ffmpeg" "faad2" "libupnp"
          "libshout" "libmad" "directfb" "libmpeg2" "libmodplug" "libass"
-         "xcb-util-keysyms")
+         "xcb-util-keysyms" "libpthread-stubs")
 makedepends=("live-media" "libnotify" "libbluray" "flac" "kdelibs4support"
              "fluidsynth" "libdc1394" "libavc1394" "lirc-utils"
              "libcaca" "librsvg" "portaudio" "libgme" "xosd"
@@ -112,6 +112,6 @@ package() {
   install -Dm644 "$srcdir"/update-vlc-plugin-cache.hook "$pkgdir"/usr/share/libalpm/hooks/update-vlc-plugin-cache.hook
 }
 
-sha1sums=('766c892a151191ec7599794d63b2f1bc3b36760a'
+sha1sums=('b06432fee063cf6a71fde574dc26d2718cab55bc'
           'c3a35ba4dbd6c8e4e5b032664f50b9f0dcf579ee'
           '5d7dba23756ff577a90b8631b187fbeac1f94e17')
