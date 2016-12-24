@@ -10,8 +10,8 @@
 
 _qt_module=qtmultimedia
 pkgname=mingw-w64-qt5-multimedia
-pkgver=5.7.0
-pkgrel=4
+pkgver=5.7.1
+pkgrel=1
 arch=('any')
 pkgdesc='Classes for audio, video, radio and camera functionality (mingw-w64)'
 depends=('mingw-w64-qt5-base' 'mingw-w64-qt5-declarative')
@@ -24,9 +24,9 @@ _pkgfqn="${_qt_module}-opensource-src-${pkgver}"
 source=("https://download.qt.io/official_releases/qt/${pkgver:0:3}/${pkgver}/submodules/${_pkgfqn}.tar.xz"
         '0001-Recorder-includes-to-prevent-conflict-with-vsnprintf.patch'
         '0002-Fix-build-with-ANGLE.patch')
-md5sums=('44c1b9a1dfb0e8b13f2d9571829500ee'
-         '7fcbd5f8d487921448290fe2c20f5c64'
-         'a4fc0aecda3de244960fa41675cdda0d')
+md5sums=('2b384ea22ae1dd7cec9ee40501ab2b45'
+         'd6b316ff6e782fe21d4b8ecf32e4d9ac'
+         'eac5d4f48704c07a906ae8e129659820')
 
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
 [[ $NO_STATIC_LIBS ]] || \

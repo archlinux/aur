@@ -1,4 +1,4 @@
-From db2f1776934938b3547551e8fb28844fc91fcab9 Mon Sep 17 00:00:00 2001
+From 3482b1b61375265b7c3fa065bdc0da1fe5d76a0e Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sun, 25 Sep 2016 21:36:56 +0200
 Subject: [PATCH 1/2] Recorder includes to prevent conflict with vsnprintf
@@ -14,7 +14,7 @@ a bit to prevent this situation
  3 files changed, 3 insertions(+)
 
 diff --git a/src/multimedia/video/qvideosurfaceformat.h b/src/multimedia/video/qvideosurfaceformat.h
-index 83785ac..25607d0 100644
+index 83785ac0..25607d08 100644
 --- a/src/multimedia/video/qvideosurfaceformat.h
 +++ b/src/multimedia/video/qvideosurfaceformat.h
 @@ -44,6 +44,7 @@
@@ -26,7 +26,7 @@ index 83785ac..25607d0 100644
  #include <QtMultimedia/qvideoframe.h>
  
 diff --git a/src/plugins/directshow/player/directshowglobal.h b/src/plugins/directshow/player/directshowglobal.h
-index f7890c5..4f7c821 100644
+index f7890c52..4f7c8213 100644
 --- a/src/plugins/directshow/player/directshowglobal.h
 +++ b/src/plugins/directshow/player/directshowglobal.h
 @@ -43,6 +43,7 @@
@@ -38,7 +38,7 @@ index f7890c5..4f7c821 100644
  template <typename T> T *com_cast(IUnknown *unknown, const IID &iid)
  {
 diff --git a/src/plugins/directshow/player/directshowmediatypelist.h b/src/plugins/directshow/player/directshowmediatypelist.h
-index c6dac0e..ad81b3d 100644
+index 2bd8dca5..7b8e572c 100644
 --- a/src/plugins/directshow/player/directshowmediatypelist.h
 +++ b/src/plugins/directshow/player/directshowmediatypelist.h
 @@ -43,6 +43,7 @@
@@ -50,5 +50,5 @@ index c6dac0e..ad81b3d 100644
  class DirectShowMediaTypeList : public IUnknown
  {
 -- 
-2.10.2
+2.11.0
 
