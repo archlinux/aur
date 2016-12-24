@@ -3,7 +3,7 @@
 pkgbase=python-clint
 pkgname=(python-clint python2-clint)
 pkgver=0.5.1
-pkgrel=3
+pkgrel=4
 pkgdesc='Module for developing commandline applications'
 arch=('any')
 url='http://pypi.python.org/pypi/clint/'
