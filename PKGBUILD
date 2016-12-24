@@ -7,7 +7,7 @@ url="https://projects.coin-or.org/Ipopt"
 license=('EPL')
 groups=('coin-or')
 depends=('lapack')
-makedepends=('gcc-fortran')
+makedepends=('gcc-fortran' 'wget')
 source=("http://www.coin-or.org/download/source/Ipopt/Ipopt-$pkgver.tgz")
 sha1sums=('ed4072427fab786fcf6082fe7e6f6c2ed9b5e6f8')
 
