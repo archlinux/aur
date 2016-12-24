@@ -8,5 +8,5 @@ license=('BSD')
 arch=('any')
 
 package() {
-	ls -s /usr/bin/python2 /opt/ros/kinetic/bin/python
+	ls -s /opt/ros/kinetic/bin/python /usr/bin/python2
 }
