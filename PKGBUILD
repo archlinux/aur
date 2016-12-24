@@ -1,0 +1,1 @@
+/usr/share/lightdm-webkit/themes/material-git/PKGBUILD
