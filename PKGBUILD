@@ -56,7 +56,7 @@ _local_qt5_repo="/opt/dev/src/qtproject/qt5"
 _pkgvermajmin="5.8"
 _pkgverpatch=".0"
 # -{alpha/beta/rc}
-_dev_suffix="-alpha"
+_dev_suffix="-rc"
 pkgver="${_pkgvermajmin}${_pkgverpatch}"
 $_build_from_head && pkgver=6.6.6
 _pkgver=${pkgver}${_dev_suffix}
@@ -93,7 +93,7 @@ $_float && _device_configure_flags="$_device_configure_flags -qreal float"
 
 # PKGBUILD vars
 
-pkgrel=1
+pkgrel=5
 pkgname="qt-sdk-raspberry-pi${_piver}"
 
 $_static_build && pkgname="${pkgname}-static"
@@ -124,7 +124,7 @@ _provider=http://qt.mirror.constant.com/
 
 if ! $_build_from_head; then
   source=("git://github.com/sirspudd/mkspecs.git" "${_provider}/${_release_type}/qt/${_pkgvermajmin}/${_pkgver}/single/${_source_package_name}.7z")
-  sha256sums=("SKIP" "de1f03829fc37d31491de3891f56a138d5456b3e223ca9db11abe8598720a5d0")
+  sha256sums=("SKIP" "cf698bb8fda691afa18dc3bf709bf7782ec1c9e41ee2a1cfacab516b78c36ea9")
 fi
 
 options=('!strip')
@@ -193,9 +193,6 @@ if $_patching; then
 
   cd ${_basedir}
   patch -p1 < ${startdir}/0001-Check-lib64-as-well-as-lib.patch
-
-  cd ${_declarativedir}
-  patch -p1 < ${startdir}/0001-V4-Free-up-2-address-bits-in-64bit-mode.patch
 
   # Work around our embarresing propensity to stomp on your own tailored build configuration
   sed -i "s/O[23]/Os/"  ${_basedir}/mkspecs/common/gcc-base.conf || exit 1
