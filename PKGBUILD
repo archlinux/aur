@@ -3,7 +3,7 @@
 pkgbase=python-split
 pkgname=("python-split" "python2-split")
 pkgver=0.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Functions to split or partition sequences"
 arch=('any')
 url="https://bitbucket.org/astanin/python-split"
