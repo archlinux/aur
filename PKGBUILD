@@ -3,7 +3,7 @@
 pkgbase=python-pytest-flake8
 pkgname=('python-pytest-flake8' 'python2-pytest-flake8')
 pkgver=0.8.1
-pkgrel=1
+pkgrel=2
 pkgdesc='pytest plugin to check FLAKE8 requirements'
 arch=('any')
 license=('MIT')
@@ -32,7 +32,7 @@ check() {
 
   cd "$srcdir"/pytest-flake8
   python setup.py install --root="$PWD/tmp_install" --optimize=1
-  PYTHONPATH="$PWD/tmp_install/usr/lib/python3.5/site-packages:$PYTHONPATH" py.test
+  PYTHONPATH="$PWD/tmp_install/usr/lib/python3.6/site-packages:$PYTHONPATH" py.test
 
   cd "$srcdir"/pytest-flake8-py2
   python2 setup.py install --root="$PWD/tmp_install" --optimize=1
