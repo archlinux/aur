@@ -1,0 +1,6 @@
+[Desktop Entry]
+Name=GroupMe
+Exec=/opt/groupme/GroupMe
+Terminal=false
+Type=Application
+Icon=/opt/groupme/GroupMe/resources/app/assets/Icon.png

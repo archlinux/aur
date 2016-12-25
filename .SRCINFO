@@ -1,0 +1,17 @@
+pkgbase = groupme
+	pkgdesc = Unofficial GroupMe App
+	pkgver = 1.1.1
+	pkgrel = 1
+	url = https://github.com/dcrousso/GroupMe
+	arch = x86_64
+	license = MIT
+	depends = electron
+	options = !docs
+	options = !emptydirs
+	source = https://github.com/dcrousso/GroupMe/releases/download/v1.1.1/GroupMe-linux-1.1.1.zip
+	source = groupme.desktop
+	md5sums = f9c72829456c3f56341a029488a0c17f
+	md5sums = 82e829e0ad8ed756453569edc6cddeb9
+
+pkgname = groupme
+
