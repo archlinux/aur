@@ -1,12 +1,12 @@
 post_install() {
-	systemd-sysusers centrifugo.conf
+  systemd-sysusers centrifugo.conf
 
-	if [ ! -d /var/lib/centrifugo ]; then
-		mkdir -p /var/lib/centrifugo
-		chown -R -L centrifugo:centrifugo /var/lib/centrifugo
-	fi
+  if [ ! -d /var/lib/centrifugo ]; then
+    mkdir -p /var/lib/centrifugo
+    chown -R -L centrifugo:centrifugo /var/lib/centrifugo
+  fi
 }
 
 post_remove() {
-	userdel centrifugo
+  userdel centrifugo
 }
