@@ -1,0 +1,13 @@
+pkgbase = descartes
+	pkgdesc = Use Shapely or GeoJSON-like geometric objects as matplotlib paths and patches.
+	pkgver = 1.6
+	pkgrel = 1
+	url = https://github.com/Toblerity/Shapely
+	arch = x86_64
+	groups = descartes
+	depends = python2-shapely
+	source = hg+https://bitbucket.org/sgillies/descartes
+	md5sums = SKIP
+
+pkgname = descartes
+
