@@ -8,9 +8,9 @@ url="https://github.com/duffydack/dotfiles/blob/master/ttf-archlinux-unicode.png
 arch=('any')
 license=('custom')
 depends=('fontconfig' 'xorg-font-utils')
-source=("https://github.com/duffydack/dotfiles/blob/master/Archlinux-unicode.ttf")
+source=("https://github.com/duffydack/dotfiles/blob/master/archlinux.ttf")
 md5sums=('SKIP')
 package() {
 install -d "$pkgdir"/usr/share/fonts/TTF
-install -Dm644 "$srcdir/Archlinux-unicode.ttf" "$pkgdir/usr/share/fonts/TTF"
+install -Dm644 "$srcdir/archlinux.ttf" "$pkgdir/usr/share/fonts/TTF"
 }
