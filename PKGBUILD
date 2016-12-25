@@ -3,7 +3,7 @@
 # Contributor: Alois Nespor <alois.nespor@gmail.com>
 
 pkgname=kid3-cli
-pkgver=3.4.3
+pkgver=3.4.4
 pkgrel=1
 pkgdesc="An MP3, Ogg/Vorbis and FLAC tag editor, CLI version"
 arch=('i686' 'x86_64')
@@ -15,19 +15,11 @@ makedepends=('chromaprint' 'id3lib' 'taglib' 'libmp4v2' 'qt5-tools'
 conflicts=('kid3-kde'' kid3-qt')
 provides=('kid3')
 changelog=${pkgname/-cli/}.changelog
-source=(http://downloads.sourceforge.net/${pkgname/-cli/}/${pkgname/-cli/}-$pkgver.tar.gz
-       fix-build-with-chromaprint-1.4.patch
-)
-sha256sums=('e8b03bb784fd4ef944ac4f31c770434719747c7750dee62f51efdfd61f4e3b2a'
-            'b5f23564234c57576bfd20d229f8c988f9050cc77a0c76735135a73b8e96ebc2')
+source=(http://downloads.sourceforge.net/${pkgname/-cli/}/${pkgname/-cli/}-$pkgver.tar.gz)
+sha256sums=('ab1f622e26e5d672eb078f93abdb51f1a2667a748be8a211fcd91d18e0db4de0')
 
 prepare() {
-	cd ${srcdir}/kid3-${pkgver}
-	patch -Np1 -i ../fix-build-with-chromaprint-1.4.patch
-}
-
-build() {
-  mkdir -p ${srcdir}/build
+  [ -d ${srcdir}/build ] mkdir -p ${srcdir}/build
   cd "${srcdir}"/build
   cmake \
     ../${pkgname/-cli/}-${pkgver} \
@@ -39,8 +31,12 @@ build() {
     -DWITH_FFMPEG=ON \
     -DWITH_GSTREAMER=OFF \
     -DWITH_QT4=OFF \
-    -DWITH_PHONON=OFF \
+    -DWITH_PHONON=OFF
+}
 
+build() {
+  cd "${srcdir}"/build
+  make
 }
 
 package() {
