@@ -1,5 +1,5 @@
 pkgname=osvr-rendermanager-git
-pkgver=v00_06_52.r50.gfd38a16
+pkgver=v00_06_52.r83.g83872f2
 pkgrel=1
 pkgdesc="TW, ATW and high performance rendering with OpenGL and GLES"
 arch=(i686 x86_64)
@@ -7,7 +7,7 @@ url="https://github.com/sensics/OSVR-RenderManager"
 #license=('GPL')
 #install=osvr-rendermanager.install
 makedepends=('git' 'cmake')
-depends=('osvr-core-git') #TODO: add more deps
+depends=('osvr-core-git' 'eigen') #TODO: add more deps
 source=("osvr-rendermanager::git+https://github.com/sensics/OSVR-RenderManager.git"
   "vendor-vrpn::git+https://github.com/vrpn/vrpn.git")
 md5sums=('SKIP'
