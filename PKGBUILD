@@ -2,32 +2,34 @@
 # Contributor: Andrew DeMaria <lostonamountain@gmail.com>
 
 set -u
+_pkgname='foolsm'
 pkgname='lsm'
-pkgver='1.0.6'
+pkgver='1.0.9'
 pkgrel='1'
-pkgdesc='a Link Status Monitor which can be used to monitor for example a Linux router/firewall connectivity'
+pkgdesc="a Link Status Monitor which can be used to monitor for example a Linux router/firewall connectivity ${_pkgname}"
 arch=('i686' 'x86_64')
 url='http://lsm.foobar.fi/'
 license=('GPL2')
-_verwatch=("${url}/download/" "${pkgname}-\([0-9\.]\+\)\.tar\.gz" 'l')
-source=("${url}/download/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('73eced3150aa64fe3cb5a5d8e4a52181b30c1d6f4103f61ecdd58e742f42ecad')
+_verwatch=("${url}/download/" "${_pkgname}-\([0-9\.]\+\)\.tar\.gz" 'l')
+source=("${url}/download/${_pkgname}-${pkgver}.tar.gz")
+sha256sums=('c5c97b9c1c0b51f6d8ce1f134c2429233187c25ed36fdc1923a4c07f46f45f05')
 
 build() {
   set -u
-  cd "${srcdir}/${pkgname}-${pkgver}"
-  make -s -j "$(nproc)"
+  cd "${srcdir}/${_pkgname}-${pkgver}"
+  local _nproc="$(nproc)"; _nproc=$((_nproc>8?8:_nproc))
+  make -s -j "${_nproc}"
   set +u
 }
 
 package() {
   set -u
-  cd "${srcdir}/${pkgname}-${pkgver}"
-  install -Dpm0644 'lsm.conf' -t "${pkgdir}/etc/lsm"
-  install -Dpm0755 'lsm' -t "${pkgdir}/usr/bin"
-  install -Dpm0644 'README' 'lsm.conf.sample' 'default_script.sample' 'rsyslog-lsm.conf.sample' -t "${pkgdir}/usr/share/lsm"
-  install -Dpm0755 'default_script' 'shorewall_script' -t "${pkgdir}/usr/share/lsm"
-  install -d "${pkgdir}/var/lib/lsm"
+  cd "${srcdir}/${_pkgname}-${pkgver}"
+  install -Dpm0644 "${_pkgname}.conf" -t "${pkgdir}/etc/${_pkgname}"
+  install -Dpm0755 "${_pkgname}" -t "${pkgdir}/usr/bin"
+  install -Dpm0644 'README' "${_pkgname}.conf.sample" 'default_script.sample' "rsyslog-${_pkgname}.conf.sample" -t "${pkgdir}/usr/share/${_pkgname}"
+  install -Dpm0755 'default_script' 'shorewall_script' -t "${pkgdir}/usr/share/${_pkgname}"
+  install -d "${pkgdir}/var/lib/${_pkgname}"
   set +u
 }
 set +u
