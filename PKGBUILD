@@ -1,6 +1,6 @@
 # Maintainer: X-san <deastman94@gmail.com>
-pkgname=""
-pkgver="3.2.0"
+pkgname="brother-mfc-1910w"
+pkgver="3.0.1"
 pkgrel=1
 pkgdesc="LPR and CUPS driver for the Brother MFC-L2680W"
 arch=('i686' 'x86_64')
@@ -10,13 +10,13 @@ depends=('cups')
 depends_x86_64=('lib32-glibc')
 install="$pkgname.install"
 source=(
-	"http://download.brother.com/welcome/dlf102079/mfcl2680wlpr-$pkgver-$pkgrel.i386.rpm"
-	"http://download.brother.com/welcome/dlf102080/mfcl2680wcupswrapper-$pkgver-$pkgrel.i386.rpm"
+	"http://download.brother.com/welcome/dlf101545/mfc1910wlpr-${pkgver}-${pkgrel}.i386.rpm"
+	"http://download.brother.com/welcome/dlf101544/mfc1910wcupswrapper-${pkgver}-${pkgrel}.i386.rpm"
 	'cupswrapper-license.txt'
 	'lpr-license.txt'
 )
-md5sums=('8ff2a4000d440e6228c2520a1b524edd'
-         'e6dcdf57a6ac471017acacf7d73255ff'
+md5sums=('6cce6f358540208eebeba7fe7379bd88'
+         'fd5fa58ee602e4b8a28a92e91c39b50b'
          '97ad0cffd216059e9d1d3121899d8646'
          '5e87a3dc0f3e3438c088eda0f3565f0d'
 )
