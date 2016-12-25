@@ -1,7 +1,7 @@
 # Maintainer: Bruno Pagani <bruno.n.pagani@gmail.com>
 
-pkgbase=mpv
-pkgname=${pkgbase}-light
+_pkgname=mpv
+pkgname=${_pkgname}-light
 pkgver=0.22.0
 pkgrel=1
 pkgdesc="Video player based on MPlayer/mplayer2, with selection of features."
@@ -12,19 +12,19 @@ depends=('ffmpeg' 'libxkbcommon' 'libxrandr' 'libxss' 'lua52' 'uchardet' 'hicolo
 makedepends=('mesa' 'python-docutils')
 optdepends=('youtube-dl: for video-sharing websites playback')
 options=('!emptydirs' '!buildflags')
-provides=("${pkgbase}")
-conflicts=("${pkgbase}")
-source=("${pkgbase}-${pkgver}.tar.gz::https://github.com/mpv-player/${pkgbase}/archive/v${pkgver}.tar.gz")
+provides=("${_pkgname}")
+conflicts=("${_pkgname}")
+source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/mpv-player/${_pkgname}/archive/v${pkgver}.tar.gz")
 sha256sums=('c0f9ac8f0e37a391d19007b333ef8787c2f45d75a0d4401c0098cde52c5082f6')
 
 prepare() {
-  cd ${pkgbase}-${pkgver}
+  cd ${_pkgname}-${pkgver}
 
   ./bootstrap.py
 }
 
 build() {
-  cd ${pkgbase}-${pkgver}
+  cd ${_pkgname}-${pkgver}
 
   ./waf configure --prefix=/usr \
     --confdir=/etc/mpv \
@@ -66,8 +66,8 @@ build() {
   ./waf build
 }
 
-package_mpv-light() {
-  cd ${pkgbase}-${pkgver}
+package() {
+  cd ${_pkgname}-${pkgver}
 
   ./waf install --destdir="${pkgdir}"
 

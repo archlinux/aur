@@ -1,4 +1,4 @@
-pkgbase = mpv
+pkgbase = mpv-light
 	pkgdesc = Video player based on MPlayer/mplayer2, with selection of features.
 	pkgver = 0.22.0
 	pkgrel = 1
