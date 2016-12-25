@@ -1,22 +1,20 @@
 # Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
-pkgname=jxrlib-git
+pkgbase=jxrlib-git
+pkgname=('jxrlib-git' 'java-jxrlib-git')
 pkgver=1.1.r309.98e615d
 pkgrel=1
 pkgdesc='Open source implementation of jpegxr (Git version)'
 arch=('i686' 'x86_64')
 license=('GPL')
 url='https://jxrlib.codeplex.com/'
-depends=('glibc'
-         'gcc-libs'
-         'java-environment'
-         )
 makedepends=('git'
              'swig'
              'maven'
+             'glibc'
+             'gcc-libs'
+             'java-environment'
              )
-provides=('jxrlib')
-conflicts=('jxrlib')
 source=('git+https://github.com/glencoesoftware/jxrlib.git')
 sha256sums=('SKIP')
 
@@ -37,9 +35,24 @@ build() {
   LD_LIBRARY_PATH="${srcdir}/jxrlib/build" mvn -f java package
 }
 
-package() {
+package_jxrlib-git() {
+  depends=('glibc')
+  provides=('jxrlib')
+  conflicts=('jxrlib')
+
   cd jxrlib
   make SHARED=1 PREFIX=/usr DIR_INSTALL="${pkgdir}/usr" install
+}
+
+package_java-jxrlib-git() {
+  pkgdesc='Java bindings for Open source implementation of jpegxr (Git version)'
+  depends=('gcc-libs'
+           'java-environment'
+           )
+  provides=('java-jxrlib')
+  conflicts=('java-jxrlib')
+
+  cd jxrlib
   install -Dm744 build/libjxrjava.so "${pkgdir}/usr/lib/libjxrjava.so"
   install -Dm644 java/target/jxrlib-0.3.0-SNAPSHOT.jar "${pkgdir}/usr/share/java/jxrlib-0.3.0-SNAPSHOT.jar"
 }
