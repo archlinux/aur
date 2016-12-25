@@ -13,7 +13,7 @@ pkgname=('zabbix3-server'
          'zabbix3-java-gateway'
          'zabbix3-proxy'
          'zabbix3-common')
-pkgver=3.2.1
+pkgver=3.2.3
 pkgrel=1
 pkgdesc="Zabbix is an enterprise-class open source distributed monitoring solution."
 arch=('i686' 'x86_64')
@@ -169,11 +169,11 @@ package_zabbix3-common() {
 }
 
 
-md5sums=('4f363b923ef2b5eefddee8dfc5f51e2b'
+md5sums=('b058115f9218b085310cd07bbbeb9cd0'
          '2550b61809e65b3506954605edc07066'
          '564022867b5bdfa3a98a4ed46ac97f47'
          'cfb62758de880609adb67d0c09d662c5'
-         '7530bb7aa3c7d65ead750b26363bc180'
-         '1835e5757963907559b07017de319d54'
-         'fcb894dd463b71c4ac84717ca670d457'
+         'e1e99acfcf909b85537a152500984913'
+         'f41f74947c89c74b18fdd2e734ab0401'
+         '85847fcc0e502d4a807d923aecbfcee1'
          '5588ec58fa98bed19a1333cdffd352c6')

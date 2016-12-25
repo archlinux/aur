@@ -5,8 +5,8 @@ After=network.target mysqld.service postgresql.service
 
 [Service]
 Type=forking
-ExecStart=/usr/sbin/zabbix_proxy
-ExecReload=/usr/sbin/zabbix_proxy -R config_cache_reload
+ExecStart=/usr/bin/zabbix_proxy
+ExecReload=/usr/bin/zabbix_proxy -R config_cache_reload
 PIDFile=/run/zabbix/zabbix_proxy.pid
 Restart=on-abnormal
 PrivateDevices=yes
