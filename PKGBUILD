@@ -3,7 +3,7 @@
 pkgbase=python-http-parser
 pkgname=('python-http-parser' 'python2-http-parser')
 pkgver=0.8.3
-pkgrel=1
+pkgrel=2
 pkgdesc="HTTP request/response parser for Python"
 arch=('i686' 'x86_64')
 license=('MIT')
@@ -27,7 +27,7 @@ build() {
 
 check() {
   cd "$srcdir/http-parser"
-  PYTHONPATH="$PWD/build/lib.linux-$CARCH-3.5:$PYTHONPATH" \
+  PYTHONPATH="$PWD/build/lib.linux-$CARCH-3.6:$PYTHONPATH" \
   py.test testing/
 
   cd "$srcdir/http-parser-py2"
