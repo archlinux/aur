@@ -4,7 +4,7 @@
 
 pkgname=archey3
 pkgver=0.5
-pkgrel=6
+pkgrel=7
 pkgdesc='Output a logo and various system information'
 arch=('any')
 url='https://lclarkmichalek.github.io/archey3/'
