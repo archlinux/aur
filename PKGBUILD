@@ -4,12 +4,12 @@
 
 pkgname=godot-pulse
 pkgver=2.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="An advanced, feature packed, multi-platform 2D and 3D game engine, with pulseaudio"
 url="http://www.godotengine.org"
 license=('MIT')
 arch=('i686' 'x86_64')
-makedepends=('scons' 'clang' 'bc')
+makedepends=('scons' 'clang')
 depends=('libxcursor' 'glu' 'libxinerama' 'freetype2' 'pulseaudio')
 conflicts=("godot-git" "godot")
 _arch=''
@@ -40,7 +40,7 @@ build() {
         builtin_zlib=yes \
         openssl=yes \
         colored=yes \
-        pulseaudio=yes bits=${_arch} -j {echo `nproc`+1|bc --}
+        pulseaudio=yes bits=${_arch} -j $((`nproc`+1))
 }
 
 package() {
