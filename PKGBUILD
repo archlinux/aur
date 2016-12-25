@@ -5,7 +5,7 @@
 pkgbase=python-gnuplot
 pkgname=('python2-gnuplot' 'python-gnuplot')
 pkgver=1.8
-pkgrel=5
+pkgrel=6
 pkgdesc='Plot graphs with Gnuplot'
 arch=('any')
 license=('LGPL')
