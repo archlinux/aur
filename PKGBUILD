@@ -1,7 +1,6 @@
 # Maintainer: Jean-Luc Tambasco <an.obscurity@gmail.com>
 
 pkgname=descartes
-pkgver=1.6
 pkgrel=1
 pkgdesc="Use Shapely or GeoJSON-like geometric objects as matplotlib paths and patches."
 arch=('x86_64')
