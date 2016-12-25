@@ -4,22 +4,24 @@
 # Contributor: Nathan Owe <ndowens.aur at gmail dot com>
 # Contributor: George Giorgidze <giorgidze@gmail.com>
 # Contributor: Massimiliano Brocchini <brocchini@netseven.it>
+# Contributor: Tej Chajed <tchajed at mit dot edu>
 
 pkgname=camlp5
-pkgver=6.14
+pkgver=6.17
+_relname=rel617
 pkgrel=1
 arch=('i686' 'x86_64')
 pkgdesc='A preprocessor-pretty-printer of OCaml.'
 conflicts=('camlp5-transitional')
-url='http://camlp5.gforge.inria.fr/'
+url='https://camlp5.github.io/'
 license=('BSD')
 depends=('ocaml')
-sha1sums=('2cde94fc53195f9acb39592a9a74d4f36114df38')
-source=("http://camlp5.gforge.inria.fr/distrib/src/camlp5-$pkgver.tgz")
+source=("https://github.com/camlp5/camlp5/archive/$_relname.tar.gz")
 options=('staticlibs')
+sha1sums=('cfe65be4bb6334ffad742a3060a6fee7bb0b5bf3')
 
 build() {
-  cd ${srcdir}/camlp5-$pkgver
+  cd ${srcdir}/camlp5-$_relname
 
   ./configure \
     -prefix '/usr' \
@@ -30,7 +32,7 @@ build() {
 }
 
 package() {
-  cd camlp5-$pkgver
+  cd camlp5-$_relname
 
   make DESTDIR=${pkgdir} install
 
