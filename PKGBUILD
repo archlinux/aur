@@ -28,8 +28,8 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
 
 sha256sums=('029098dcffab74875e086ae970e3828456838da6e0ba22ce3f64ef764f3d7f1a'
             'SKIP'
-            'd98953d273736f34331a3ff7db26931c84211b3e8340ea9965aa7bf24432f494'
-            '307471ba6e9f192da3b26c2c0578b4ec28c1b7aaa9f8bfdf80cc7195fe8e75ef'
+            '8138c58b2eb9caa1a6de7d4a9b3d802c2672fa142e20ccadcd73cdc17d1fb166'
+            '67ff8012ba5d66c8c946ca45ad43e3c5afd062f1cd58c90bc6d3b4e372846483'
             '834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
