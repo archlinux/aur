@@ -1,6 +1,6 @@
 pkgbase = php-phalcon
 	pkgdesc = Web framework delivered as a C-extension for PHP
-	pkgver = 3.0.2
+	pkgver = 3.0.3
 	pkgrel = 1
 	url = http://phalconphp.com
 	arch = x86_64
@@ -9,8 +9,8 @@ pkgbase = php-phalcon
 	makedepends = gcc
 	depends = php>=5.5
 	backup = etc/php/conf.d/phalcon.ini
-	source = https://github.com/phalcon/cphalcon/archive/v3.0.2.zip
-	sha256sums = 269c885961c5b24cb89b79d73cc31007bd79d6e2233c93aeb43a56fc588f4a45
+	source = https://github.com/phalcon/cphalcon/archive/v3.0.3.zip
+	sha256sums = aee7b8e44faa2b13747577c4d46d13ca66b2b8554995bdaf5c175eae87297721
 
 pkgname = php-phalcon
 
