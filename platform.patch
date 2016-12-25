@@ -7,7 +7,7 @@ diff -aur avr/platform.txt avr.new/platform.txt
 
 -name=Arduino AVR Boards
 +name=Arch Linux Arduino AVR Boards
- version=1.6.14
+ version=1.6.16
 
  # AVR compile variables
 @@ -18,14 +18,14 @@
@@ -18,9 +18,9 @@ diff -aur avr/platform.txt avr.new/platform.txt
 +compiler.path=/usr/bin/
  compiler.c.cmd=avr-gcc
  compiler.c.flags=-c -g -Os {compiler.warning_flags} -std=gnu11 -ffunction-sections -fdata-sections -MMD -flto -fno-fat-lto-objects
- compiler.c.elf.flags={compiler.warning_flags} -Os -flto -fuse-linker-plugin -Wl,--gc-sections
+ compiler.c.elf.flags={compiler.warning_flags} -Os -g -flto -fuse-linker-plugin -Wl,--gc-sections
  compiler.c.elf.cmd=avr-gcc
- compiler.S.flags=-c -g -x assembler-with-cpp -flto
+ compiler.S.flags=-c -g -x assembler-with-cpp -flto -MMD
  compiler.cpp.cmd=avr-g++
 -compiler.cpp.flags=-c -g -Os {compiler.warning_flags} -std=gnu++11 -fpermissive -fno-exceptions -ffunction-sections -fdata-sections -fno-threadsafe-statics -MMD -flto
 +compiler.cpp.flags=-c -g -Os {compiler.warning_flags} -std=gnu++11 -fpermissive -fno-exceptions -ffunction-sections -fdata-sections -fno-threadsafe-statics -MMD -flto -fno-devirtualize -fno-use-cxa-atexit
