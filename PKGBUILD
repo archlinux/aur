@@ -1,9 +1,9 @@
-# Maintainer: Jack L. Frost <fbt@fleshless.org>
+# Maintainer: Zoltán Nyikos <nyikoszoltan0@gmail.com>
 # vim: ft=sh
 
 pkgdesc="Standalone systemd libs (for eudev)"
 pkgname='libsystemd-eudev-standalone'
-pkgver=231
+pkgver=232
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.freedesktop.org/wiki/Software/systemd"
@@ -15,7 +15,7 @@ makedepends=('acl' 'cryptsetup' 'docbook-xsl' 'gobject-introspection' 'gperf'
              'linux-api-headers' 'pam' 'python' 'python-lxml' 'quota-tools' 'xz')
 options=('strip')
 source=( "https://github.com/systemd/systemd/archive/v${pkgver}.tar.gz" )
-sha1sums=('47768103290d2023c3452bc36bc77f7b1fd798ea')
+sha256sums=('1172c7c7d5d72fbded53186e7599d5272231f04cc8b72f9a0fb2c5c20dfc4880')
 
 build() {
   cd "systemd-$pkgver"
@@ -45,9 +45,4 @@ package() {
 
 	# pkg-config
 	install -Dm644 src/libsystemd/libsystemd.pc "${pkgdir}/usr/lib/pkgconfig/libsystemd.pc"
-
-	# remove libudev stuff
-	cd "$pkgdir/usr/lib"
-	rm libudev.so* libudev.la
 }
-
