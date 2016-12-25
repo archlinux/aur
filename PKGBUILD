@@ -1,7 +1,6 @@
 # Maintainer: Bruno Pagani (a.k.a. ArchangeGabriel) <bruno.n.pagani@gmail.com>
 
 _pkgname=mpd
-pkgbase=${_pkgname}-server
 pkgname=${_pkgname}-server-minimal
 pkgver=0.19.21
 pkgrel=1
@@ -105,7 +104,7 @@ build() {
     make
 }
 
-package_mpd-server-minimal() {
+package() {
     cd ${_pkgname}-${pkgver}
 
     make DESTDIR="${pkgdir}" install
