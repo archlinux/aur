@@ -2,7 +2,7 @@
 #			Jake <ja.ke@posteo.de>
 
 pkgname=next
-pkgver=1.462
+pkgver=1.463
 pkgrel=1
 pkgdesc="CGM rc Heli Flight Simulator"
 arch=('i686' 'x86_64')
@@ -10,15 +10,14 @@ url="http://www.rc-aerobatics.eu/index_e.html"
 license=('custom')
 optdepends=(	'joyutils: jscal, jstest, and jsattach utilities for the Linux joystick driver')
 
-source=(	'http://www.cgm-online.com/secure_rc-heli-simulator/cgm-rc-heli-simulator-linux-x86-64bit.zip'
-		'next.desktop'
-		'next.sh'
-		'next.LICENSE')
+source=('http://www.cgm-online.com/secure_rc-heli-simulator/cgm-rc-heli-simulator-linux-x86-64bit.zip'
+        'next.desktop'
+        'next.sh')
 
-sha256sums=(	'd891e4c011718a8ee29397780dc7da3905d5b153f131758654936c61a76c9939'
-		'31972ec9835d29109e490a54b49865dd69084c5552344cfe2fec9b534a5fa8a2'
-		'167bf2f656980495a5de69cc6fb0eb1063ddf065d021525cb73cf4e10425c2d8'
-		'1c180e06f0c2cd380c10581b5c760c2e6fc94bd0d97790e16b85e8135d6f071c')
+sha256sums=('d558071bbafd192fa89ed681115df338d5fa7cee5e1f1ee4f7a77e6e5f72fa60'
+            '31972ec9835d29109e490a54b49865dd69084c5552344cfe2fec9b534a5fa8a2'
+            '167bf2f656980495a5de69cc6fb0eb1063ddf065d021525cb73cf4e10425c2d8')
+
 
 prepare() {
   # rename the original directory to something sane and remove an OSX directory
@@ -60,5 +59,5 @@ package() {
   install -Dm775 "${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
 
   msg2 "Installing LICENSE file..."
-  install -Dm644 ${pkgname}.LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm644 ${srcdir}/${pkgname}/ReadMe.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
