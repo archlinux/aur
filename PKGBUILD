@@ -1,7 +1,9 @@
 # Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgbase=jxrlib-git
-pkgname=('jxrlib-git' 'java-jxrlib-git')
+pkgname=('jxrlib-git'
+         'java-jxrlib-git'
+         )
 pkgver=1.1.r309.98e615d
 pkgrel=1
 pkgdesc='Open source implementation of jpegxr (Git version)'
@@ -25,13 +27,19 @@ pkgver() {
 }
 
 prepare() {
+  # Fix the prefix in libjxr.pc
   sed 's|"DIR_INSTALL": "$(DIR_INSTALL)"|"PREFIX": "$(PREFIX)"|g' -i jxrlib/Makefile
   sed 's|DIR_INSTALL|PREFIX|g' -i jxrlib/libjxr.pc.in
 }
 
 build() {
   cd jxrlib
-  make SHARED=1 PREFIX=/usr swig all
+  make \
+    SHARED=1 \
+    PREFIX=/usr \
+    swig all
+
+  # Build the java binding
   LD_LIBRARY_PATH="${srcdir}/jxrlib/build" mvn -f java package
 }
 
@@ -40,8 +48,7 @@ package_jxrlib-git() {
   provides=('jxrlib')
   conflicts=('jxrlib')
 
-  cd jxrlib
-  make SHARED=1 PREFIX=/usr DIR_INSTALL="${pkgdir}/usr" install
+  make -C jxrlib SHARED=1 PREFIX=/usr DIR_INSTALL="${pkgdir}/usr" install
 }
 
 package_java-jxrlib-git() {
@@ -52,7 +59,6 @@ package_java-jxrlib-git() {
   provides=('java-jxrlib')
   conflicts=('java-jxrlib')
 
-  cd jxrlib
-  install -Dm744 build/libjxrjava.so "${pkgdir}/usr/lib/libjxrjava.so"
-  install -Dm644 java/target/jxrlib-0.3.0-SNAPSHOT.jar "${pkgdir}/usr/share/java/jxrlib-0.3.0-SNAPSHOT.jar"
+  install -Dm744 jxrlib/build/libjxrjava.so "${pkgdir}/usr/lib/libjxrjava.so"
+  install -Dm644 jxrlib/java/target/jxrlib-0.3.0-SNAPSHOT.jar "${pkgdir}/usr/share/java/jxrlib-0.3.0-SNAPSHOT.jar"
 }
