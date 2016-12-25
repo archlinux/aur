@@ -19,7 +19,7 @@ source=(http://downloads.sourceforge.net/${pkgname/-cli/}/${pkgname/-cli/}-$pkgv
 sha256sums=('ab1f622e26e5d672eb078f93abdb51f1a2667a748be8a211fcd91d18e0db4de0')
 
 prepare() {
-  [ -d ${srcdir}/build ] mkdir -p ${srcdir}/build
+  mkdir -p ${srcdir}/build
   cd "${srcdir}"/build
   cmake \
     ../${pkgname/-cli/}-${pkgver} \
