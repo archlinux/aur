@@ -1,6 +1,6 @@
 # Maintainer: Joermungand <joermungand at gmail dot com>
 pkgname=lsp-plugins-jack-bin
-pkgver=1.0.16
+pkgver=1.0.18
 pkgrel=1
 pkgdesc="Linux Studio Plugins: standalone Jack version"
 arch=('i686' 'x86_64')
@@ -12,8 +12,8 @@ provides=("${pkgname%-*}")
 conflicts=("${pkgname%-*}")
 source_i686=("http://downloads.sourceforge.net/project/lsp-plugins/v${pkgver}/${pkgname%-*}-$pkgver-i586.tar.gz")
 source_x86_64=("http://downloads.sourceforge.net/project/lsp-plugins/v${pkgver}/${pkgname%-*}-$pkgver-x86_64.tar.gz")
-sha1sums_i686=('252deb58b8c7f09670fcf1431373c0ad5328863c')
-sha1sums_x86_64=('e2d72c355468d4d2384adf269b16ef885e4b9988')
+sha1sums_i686=('2f845bc5445d21a41cc6ac3f4f1197b074c0d0f8')
+sha1sums_x86_64=('3d8a038e7443904f13e6747087962151c24c018b')
 
 package() {
 	cd $srcdir
