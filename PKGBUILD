@@ -3,7 +3,7 @@
 pkgbase=python-setuptools-markdown
 pkgname=(python-setuptools-markdown python2-setuptools-markdown)
 pkgver=0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Use Markdown for your project description"
 arch=('any')
 url="https://github.com/msabramo/setuptools-markdown"
