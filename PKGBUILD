@@ -11,7 +11,7 @@ url='http://guayadeque.org/'
 license=('GPL3')
 provides=(${pkgname%-*})
 conflicts=(${pkgname%-*})
-depends=('curl' 'desktop-file-utils' 'libgpod' 'taglib' 'wxgtk' 'gdk-pixbuf2' 'wxsqlite3')
+depends=('curl' 'desktop-file-utils' 'libgpod' 'taglib' 'wxgtk' 'gdk-pixbuf2' 'wxsqlite3', 'git', 'gst-plugins-base-libs')
 makedepends=('cmake')
 optdepends=('gstreamer0.10-good-plugins: Support for additional file formats'
 			'gstreamer0.10-bad-plugins: Support for additional file formats'
