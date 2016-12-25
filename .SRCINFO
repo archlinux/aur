@@ -1,0 +1,20 @@
+pkgbase = camfr
+	pkgdesc = CAMFR (CAvity Modelling FRamework) is a fast, flexible, friendly full-vectorial Maxwell solver.
+	pkgver = 20070717
+	pkgrel = 1
+	url = http://camfr.sourceforge.net/
+	arch = x86_64
+	license = GPL
+	makedepends = scons
+	makedepends = gcc-fortran
+	makedepends = lapack
+	makedepends = blitz
+	depends = python2-scipy
+	depends = python2-imaging
+	source = http://downloads.sourceforge.net/project/camfr/camfr/camfr-20070717/camfr-20070717.tgz
+	source = machine_cfg.py
+	md5sums = 3858d6b9e3be29aa3981c2b4fe595fe2
+	md5sums = db07413af39b15ff25d35b8dd89f2452
+
+pkgname = camfr
+
