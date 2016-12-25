@@ -1,7 +1,7 @@
 # Maintainer: Bruno Pagani (a.k.a. ArchangeGabriel) <bruno.n.pagani@gmail.com>
 
 pkgbase=mpd
-pkgname=${pkgbase}-minimal
+pkgname=${pkgbase}-minimal-old
 pkgver=0.19.21
 pkgrel=1
 pkgdesc="Flexible, powerful, server-side application for playing music. Minimal version with only flac playback through socket connection as user."
@@ -97,7 +97,7 @@ build() {
     make
 }
 
-package_mpd-minimal() {
+package_mpd-minimal-old() {
     cd ${pkgbase}-${pkgver}
 
     make DESTDIR="${pkgdir}" install

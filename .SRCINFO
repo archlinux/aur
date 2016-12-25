@@ -22,5 +22,5 @@ pkgbase = mpd
 	sha1sums = 27dd903f4f7c0f5ffeb85e6820c02d2b82485572
 	sha1sums = SKIP
 
-pkgname = mpd-minimal
+pkgname = mpd-minimal-old
 
