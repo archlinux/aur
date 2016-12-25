@@ -10,7 +10,7 @@ depends=('python2' 'uget')
 makedepends=()
 source=("https://raw.githubusercontent.com/slgobinath/uget-chrome-wrapper/master/uget-chrome-wrapper/bin/uget-chrome-wrapper"
         "https://raw.githubusercontent.com/slgobinath/uget-chrome-wrapper/master/uget-chrome-wrapper/conf/com.javahelps.ugetchromewrapper.json")
-md5sums=('SKIP'
+md5sums=('e0c99259481bf73d7858f550de774f5f'
          '6fef0c020c6aa8570862bd48546844d8')
 install=uget-chrome-wrapper.install
 build() {
