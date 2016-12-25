@@ -2,6 +2,7 @@ pkgbase = waitforfile
 	pkgdesc = Wait until the given file exists
 	pkgver = 0.0.1
 	pkgrel = 1
+	url = https://gist.github.com/nroi/fd0ef1dc267e4bb03de9800fc52e2497
 	arch = any
 	license = MIT
 	depends = python
