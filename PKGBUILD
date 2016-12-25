@@ -3,8 +3,8 @@
 # Contributor: Matthew Bentley <matthew@mtbentley.us>
 
 pkgname=godot
-pkgver=2.1
-pkgrel=3
+pkgver=2.1.1
+pkgrel=2
 pkgdesc="An advanced, feature packed, multi-platform 2D and 3D game engine"
 url="http://www.godotengine.org"
 license=('MIT')
@@ -24,7 +24,7 @@ source=(
   godot.desktop
   icon.png
 )
-sha256sums=('0d2a6f5a3689a818cb4859e7655e64a4d603940fae1bdf16a18b980c22b0b6fe'
+sha256sums=('5b8f80d5228be50bdd73356537856c17460817d8132edd5a6dca05594129d264'
             'd2f5ae30b8c0c3fd8a20a451d34e9e9d0ba1b60a39b1f68484a9a74227c83822'
             'b6bb8e42625414303cf7608f08fe63bd3267486bf7a96586ebab05ade5189785')
 
@@ -40,7 +40,7 @@ build() {
         builtin_zlib=yes \
         openssl=yes \
         colored=yes \
-        pulseaudio=no bits=${_arch}
+        pulseaudio=no bits=${_arch} -j $((`nproc`+1))
 }
 
 package() {
@@ -49,7 +49,7 @@ package() {
 
   install -Dm644 godot.desktop "${pkgdir}"/usr/share/applications/godot.desktop
   install -Dm644 icon.png "${pkgdir}"/usr/share/pixmaps/godot.png
-    
+  
   cd "${srcdir}"/${pkgname}-${pkgver}-stable
 
   install -D -m755 bin/godot.x11.opt.tools.${_arch}.llvm "${pkgdir}"/usr/bin/godot
