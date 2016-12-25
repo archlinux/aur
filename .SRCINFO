@@ -1,0 +1,15 @@
+pkgbase = python-gnuplotpy
+	pkgdesc = Basic Python interface to Gnuplot.
+	pkgver = 1
+	pkgrel = 1
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	depends = gnuplot
+	options = !emptydirs
+	source = git+https://github.com/jtambasco/gnuplotpy.git
+	md5sums = SKIP
+
+pkgname = python-gnuplotpy
+
