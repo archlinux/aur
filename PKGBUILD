@@ -7,7 +7,7 @@ license=('MIT')
 depends=('bash')
 source=("https://jhoughton.me/larryshell/${pkgver}-${pkgrel}.tar.gz")
 url='https://github.com/Devon-Austin-Wood-Thomas/larryshell'
-md5sums=('465520ced1180ec7dc27dc3bcab64dc1')
+md5sums=('a16db8147c58ce68cd6c915438cea1dd')
 
 package() {
     cd $srcdir/larryshell
