@@ -8,7 +8,7 @@ pkgname=('elektra-git'
          'java-elektra-git'
          'ruby-elektra-git'
          )
-pkgver=0.8.19.323.g198bb88
+pkgver=0.8.19.r8798.b08f238ce
 pkgrel=1
 pkgdesc="A universal hierarchical configuration store. (GIT version)"
 arch=('i686' 'x86_64')
@@ -44,7 +44,8 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd elektra
-  echo "$(git describe --long --tags | tr - .)"
+  _ver="$(cat CMakeLists.txt | grep -m3 -e _VERSION_MAJOR -e _VERSION_MINOR -e _VERSION_MICRO | grep -o "[[:digit:]]*" | paste -sd'.')"
+  echo "${_ver}.r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
 }
 
 prepare(){
@@ -76,7 +77,9 @@ build() {
     -DTARGET_LUA_CMOD_FOLDER=lib/lua/5.3 \
     -DTARGET_LUA_LMOD_FOLDER=share/lua/5.3 \
     -DJAVA_INCLUDE_PATH="${JAVA_HOME}/include" \
-    -DCMAKE_SKIP_INSTALL_RPATH=ON
+    -DCMAKE_SKIP_RPATH=ON \
+    -DCMAKE_SKIP_INSTALL_RPATH=ON \
+    -DTARGET_PLUGIN_FOLDER=''
 
   LC_ALL=C make
 }
@@ -178,7 +181,7 @@ package_lua-elektra-git() {
   make -C build/src/bindings/swig/lua DESTDIR="${pkgdir}" install
   make -C build/src/plugins/lua DESTDIR="${pkgdir}" install
 
-  install -Dm644 elektra/doc/LICENSE.md "${pkgdir}/usr/share/licenses/lua52-elektra-git/LICENSE.md"
+  install -Dm644 elektra/doc/LICENSE.md "${pkgdir}/usr/share/licenses/lua-elektra-git/LICENSE.md"
 }
 
 package_java-elektra-git() {
