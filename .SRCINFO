@@ -1,7 +1,7 @@
 pkgbase = libsystemd-eudev-standalone
 	pkgdesc = Standalone systemd libs (for eudev)
 	pkgver = 232
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.freedesktop.org/wiki/Software/systemd
 	install = libsystemd.install
 	arch = i686
@@ -31,7 +31,7 @@ pkgbase = libsystemd-eudev-standalone
 	provides = libsystemd
 	options = strip
 	source = https://github.com/systemd/systemd/archive/v232.tar.gz
-	sha1sums = 47768103290d2023c3452bc36bc77f7b1fd798ea
+	sha256sums = 1172c7c7d5d72fbded53186e7599d5272231f04cc8b72f9a0fb2c5c20dfc4880
 
 pkgname = libsystemd-eudev-standalone
 
