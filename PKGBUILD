@@ -1,7 +1,7 @@
 # Maintainer: Bruno Pagani (a.k.a. ArchangeGabriel) <bruno.n.pagani@gmail.com>
 
-pkgbase=mpd
-pkgname=${pkgbase}-minimal
+_pkgname=mpd
+pkgname=${_pkgname}-minimal
 pkgver=0.19.21
 pkgrel=1
 pkgdesc="Flexible, powerful, server-side application for playing music. Minimal version with only flac playback through socket connection as user."
@@ -10,14 +10,14 @@ license=('GPL')
 arch=('i686' 'x86_64' 'armv7h')
 depends=('alsa-lib' 'flac' 'glib2' 'icu' 'libmpdclient' 'sqlite')
 makedepends=('boost')
-provides=("${pkgbase}=$pkgver")
-conflicts=("${pkgbase}")
-source=("${url}/download/${pkgbase}/${pkgver%.*}/${pkgbase}-${pkgver}.tar.xz"{,.sig})
+provides=("${_pkgname}=$pkgver")
+conflicts=("${_pkgname}")
+source=("${url}/download/${_pkgname}/${pkgver%.*}/${_pkgname}-${pkgver}.tar.xz"{,.sig})
 sha1sums=('27dd903f4f7c0f5ffeb85e6820c02d2b82485572' 'SKIP')
 validpgpkeys=('0392335A78083894A4301C43236E8A58C6DB4512') # Max Kellermann
 
 build() {
-    cd ${pkgbase}-${pkgver}
+    cd ${_pkgname}-${pkgver}
 
     ./configure \
         --prefix=/usr \
@@ -97,8 +97,8 @@ build() {
     make
 }
 
-package_mpd-minimal() {
-    cd ${pkgbase}-${pkgver}
+package() {
+    cd ${_pkgname}-${pkgver}
 
     make DESTDIR="${pkgdir}" install
 }

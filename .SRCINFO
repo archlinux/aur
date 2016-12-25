@@ -1,4 +1,4 @@
-pkgbase = mpd
+pkgbase = mpd-minimal
 	pkgdesc = Flexible, powerful, server-side application for playing music. Minimal version with only flac playback through socket connection as user.
 	pkgver = 0.19.21
 	pkgrel = 1
