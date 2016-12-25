@@ -1,7 +1,7 @@
 #Maintainer : Sasasu <lizhaolong0123@gmail.com>
 pkgname=uget-chrome-wrapper
-pkgver=1.3.3
-pkgrel=2
+pkgver=1.3.4
+pkgrel=1
 pkgdesc="Integrate uGet Download Manager with Google Chrome"
 arch=('any')
 url="https://github.com/slgobinath/uget-chrome-wrapper"
