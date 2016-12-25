@@ -25,5 +25,5 @@ build() {
 
 package() {
   cd "${pkgname}_${pkgver}"
-  python2 setup.py install --user
+  python2 setup.py install --root
 }
