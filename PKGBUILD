@@ -21,8 +21,17 @@ package() {
     cd "$srcdir/${pkgname}/"
     python setup.py install --root="$pkgdir/" --prefix=/usr --optimize=1
     install -Dm644 ./udev/99-nuvoton-hid.rules "$pkgdir/usr/lib/udev/rules.d/99-nuvoton-hid.rules"
+    mkdir -p "$pkgdir/usr/lib/systemd/system/"
+    {
+        echo '[Unit]'
+        echo 'Description=Evic RTC sync'
+        echo '[Service]'
+        echo 'ExecStart=/usr/bin/evic-usb time'
+        echo 'RemainAfterExit=yes'
+    } > "$pkgdir/usr/lib/systemd/system/evic-usb-rtc-sync.service"
+
     {
         echo "# HIDAPI/libusb RTC Sync"
-        echo 'SUBSYSTEM=="usb", ATTRS{idVendor}=="0416", ATTRS{idProduct}=="5020", RUN+="/usr/bin/evic-usb time"'
+        echo 'SUBSYSTEM=="usb", ATTRS{idVendor}=="0416", ATTRS{idProduct}=="5020", RUN+="/usr/bin/systemctl restart evic-usb-rtc-sync"'
     } > "$pkgdir/usr/lib/udev/rules.d/99-nuvoton-hid-rtc-sync.rules"
 }
