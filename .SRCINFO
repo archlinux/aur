@@ -1,0 +1,14 @@
+pkgbase = shapely
+	pkgdesc = Shapely is a BSD-licensed Python package for manipulation and analysis of planar geometric objects.
+	pkgver = 1.6
+	pkgrel = 1
+	url = https://github.com/Toblerity/Shapely
+	arch = x86_64
+	groups = ipkiss
+	license = BSD
+	depends = geos
+	source = git+https://github.com/Toblerity/Shapely.git
+	md5sums = SKIP
+
+pkgname = shapely
+
