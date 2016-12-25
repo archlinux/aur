@@ -32,6 +32,6 @@ package() {
 
     {
         echo "# HIDAPI/libusb RTC Sync"
-        echo 'SUBSYSTEM=="usb", ATTRS{idVendor}=="0416", ATTRS{idProduct}=="5020", RUN+="/usr/bin/systemctl restart evic-usb-rtc-sync"'
+        echo 'ACTION=="add", SUBSYSTEM=="usb", ATTRS{idVendor}=="0416", ATTRS{idProduct}=="5020", RUN+="/usr/bin/systemctl restart evic-usb-rtc-sync"'
     } > "$pkgdir/usr/lib/udev/rules.d/99-nuvoton-hid-rtc-sync.rules"
 }
