@@ -28,5 +28,5 @@ pkgbase = mpd-server
 	sha1sums = f4d5922abb69abb739542d8e93f4dfd748acdad7
 	sha1sums = 291fd5cda9f0845834a553017327c4586bd853f6
 
-pkgname = mpd-server-minimal
+pkgname = mpd-server-minimal-old
 

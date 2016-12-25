@@ -2,7 +2,7 @@
 
 _pkgname=mpd
 pkgbase=${_pkgname}-server
-pkgname=${_pkgname}-server-minimal
+pkgname=${_pkgname}-server-minimal-old
 pkgver=0.19.21
 pkgrel=1
 pkgdesc="Flexible, powerful, server-side application for playing music. Minimal version with only flac playback as server running under mpd user."
@@ -105,7 +105,7 @@ build() {
     make
 }
 
-package_mpd-server-minimal() {
+package_mpd-server-minimal-old() {
     cd ${_pkgname}-${pkgver}
 
     make DESTDIR="${pkgdir}" install
