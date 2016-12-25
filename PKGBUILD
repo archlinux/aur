@@ -7,7 +7,7 @@ pkgdesc="Python Evic for E-Cigs"
 arch=('any')
 url="https://github.com/ClockSelect/python-evic"
 license=('GPL3')
-depends=('python-pillow' 'python-click' 'python-bitarray' 'python-binstruct')
+depends=('python-pillow' 'python-click' 'python-bitarray' 'python-binstruct' 'python-cython-hidapi-git')
 source=("$pkgname"::'git://github.com/ClockSelect/python-evic.git#branch=master')
 md5sums=('SKIP')
 #install=.install
@@ -20,4 +20,5 @@ pkgver() {
 package() {
     cd "$srcdir/${pkgname}/"
     python setup.py install --root="$pkgdir/" --prefix=/usr --optimize=1
+    mv ./udev/99-nuvoton-hid.rules /usr/lib/udev/rules.d/99-nuvoton-hid.rules
 }
