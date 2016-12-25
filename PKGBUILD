@@ -5,7 +5,7 @@
 pkgbase=python-tinycss
 pkgname=(python-tinycss python2-tinycss)
 pkgver=0.4
-pkgrel=1
+pkgrel=2
 pkgdesc="A complete yet simple CSS parser for Python"
 url="https://pypi.python.org/pypi/tinycss"
 license=('BSD')
