@@ -87,7 +87,7 @@ remove() {
 }
 
 usage() {
-   echo "USAGE: [-u] [-r] [theme]"
+   echo "USAGE: [-u|-r] [theme]"
    echo "     -u: update archpkg mime icons"
    echo "     -r: remove archpkg mime icons"
    echo "  theme: action only for entered theme"
