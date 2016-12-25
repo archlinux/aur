@@ -4,7 +4,7 @@
 pkgdesc="Standalone systemd libs (for eudev)"
 pkgname='libsystemd-eudev-standalone'
 pkgver=232
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 url="http://www.freedesktop.org/wiki/Software/systemd"
 license=('GPL2' 'LGPL2.1' 'MIT')
@@ -28,7 +28,7 @@ build() {
 
 package() {
 
-	make -C "systemd-$pkgver" DESTDIR="$pkgdir" install-libLTLIBRARIES
+	make -C "systemd-$pkgver" DESTDIR="$pkgdir" install-rootlibLTLIBRARIES
 
 	# Headers
 	cd "systemd-$pkgver"
@@ -45,4 +45,7 @@ package() {
 
 	# pkg-config
 	install -Dm644 src/libsystemd/libsystemd.pc "${pkgdir}/usr/lib/pkgconfig/libsystemd.pc"
+
+	cd "$pkgdir/usr/lib"
+	rm libudev.so* libudev.la
 }
