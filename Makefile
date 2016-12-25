@@ -1,7 +1,6 @@
 PKGVER=1.2
 REL=1
 VER="$(PKGVER)-$(REL)"
-# Be sure to update this in PKGBUILD
 
 EOL=$
 
