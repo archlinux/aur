@@ -11,9 +11,12 @@ pkgdesc="A high-level scripting language (32 bit)"
 arch=('x86_64')
 license=('PSF')
 url="http://www.python.org/"
-depends=(lib32-{bzip2,db,expat,gdbm,libffi,openssl,sqlite,zlib} "${_pkgbasename}>=${pkgver}")
+depends=(lib32-{bzip2,db,expat,gdbm,libffi,openssl,sqlite,zlib})
 makedepends=('lib32-tk' 'gcc-multilib')
-optdepends=('lib32-tk: for IDLE')
+optdepends=(
+  'lib32-tk: for IDLE'
+  "python2>=${pkgver}: building packages which require python sources"
+)
 conflicts=('lib32-python<3')
 options=('!makeflags')
 source=("Python-${pkgver}.tar.xz::http://www.python.org/ftp/python/${pkgver%rc?}/Python-${pkgver}.tar.xz"
