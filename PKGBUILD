@@ -20,5 +20,5 @@ pkgver() {
 package() {
     cd "$srcdir/${pkgname}/"
     python setup.py install --root="$pkgdir/" --prefix=/usr --optimize=1
-    mv ./udev/99-nuvoton-hid.rules /usr/lib/udev/rules.d/99-nuvoton-hid.rules
+    mv ./udev/99-nuvoton-hid.rules "$pkgdir/usr/lib/udev/rules.d/99-nuvoton-hid.rules"
 }
