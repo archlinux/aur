@@ -5,7 +5,7 @@
 
 _gemname=sprockets
 pkgname=ruby-$_gemname
-pkgver=3.7.0
+pkgver=3.7.1
 pkgrel=1
 pkgdesc='Rack-based asset packaging system'
 arch=(any)
@@ -15,11 +15,13 @@ depends=(ruby ruby-concurrent-ruby ruby-rack)
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-sha1sums=('259e995d1b3507430d7bbdec10270923e56a1962')
+sha1sums=('a77e6717f9534c72207fa7de0a14eed95f01a0d0')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
-  gem install --ignore-dependencies --no-user-install -i "$pkgdir/$_gemdir" -n "$pkgdir/usr/bin" $_gemname-$pkgver.gem
-  rm "$pkgdir/$_gemdir/cache/$_gemname-$pkgver.gem"
-  install -D -m644 "$pkgdir/$_gemdir/gems/$_gemname-$pkgver/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  gem install --ignore-dependencies --no-user-install -i "$pkgdir$_gemdir" $_gemname-$pkgver.gem
+  rm "$pkgdir$_gemdir/cache/$_gemname-$pkgver.gem"
+  install -D -m644 "$pkgdir$_gemdir/gems/$_gemname-$pkgver/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
+
+# fixed by Aurochse for rvm use ruby-2.3.1
