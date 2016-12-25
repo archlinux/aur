@@ -10,7 +10,7 @@ depends=('python2-scipy'
          'python2-imaging')
 makedepends=('scons'
              'gcc-fortran'
-             'lapack'
+             'openblas-lapack'
              'blitz')
 source=('http://downloads.sourceforge.net/project/camfr/camfr/camfr-20070717/camfr-20070717.tgz'
         'machine_cfg.py')
