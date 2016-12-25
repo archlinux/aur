@@ -1,21 +1,17 @@
-diff --git a/cmake/admFFmpegBuild.cmake b/cmake/admFFmpegBuild.cmake
-index 317c7dc..32cf4b8 100644
---- a/cmake/admFFmpegBuild.cmake
-+++ b/cmake/admFFmpegBuild.cmake
-@@ -305,9 +305,15 @@ convertPathToUnix(ffmpeg_gnumake_executable ${BASH_EXECUTABLE})
- configure_file("${AVIDEMUX_TOP_SOURCE_DIR}/cmake/ffmpeg_make.sh.cmake" "${FFMPEG_BINARY_DIR}/ffmpeg_make.sh")
- registerFFmpeg("${FFMPEG_SOURCE_DIR}" "${FFMPEG_BINARY_DIR}" 0)
- 
-+include(ProcessorCount)
-+ProcessorCount(N)
-+if(NOT N EQUAL 0)
-+  set(JOBS_IN_PARALLEL -j${N})
-+endif(NOT N EQUAL 0)
-+
- if(CMAKE_HOST_UNIX)
-         add_custom_target(         libavutil_dummy
--                                   COMMAND ${CMAKE_BUILD_TOOL}  -j 4 # We assume make or gnumake when host is unix
-+                                   COMMAND ${CMAKE_MAKE_PROGRAM} ${JOBS_IN_PARALLEL} # We assume make or gnumake when host is unix
-                                    WORKING_DIRECTORY "${FFMPEG_BINARY_DIR}")
- else(CMAKE_HOST_UNIX)
-         add_custom_target(         libavutil_dummy
+diff --git a/cmake/admFFmpegBuild_helpers.cmake b/cmake/admFFmpegBuild_helpers.cmake
+index 0d8cd846..131b278b 100644
+--- a/cmake/admFFmpegBuild_helpers.cmake
++++ b/cmake/admFFmpegBuild_helpers.cmake
+@@ -297,7 +297,11 @@ MACRO(ADM_FF_BUILD_UNIX_STYLE)
+ #
+ MACRO(ADM_FF_ADD_DUMMY_TARGET)
+     if(NOT MSVC)
+-       SET(PARRALLEL "-j4") 
++        include(ProcessorCount)^M
++        ProcessorCount(N)^M
++        if(NOT N EQUAL 0)^M
++           SET(PARRALLEL -j${N})^M
++        endif(NOT N EQUAL 0)^M
+     endif(NOT MSVC)
+     add_custom_target(         libavutil_dummy ALL
+                                        COMMAND ${CMAKE_BUILD_TOOL}  ${PARRALLEL} # We assume make or gnumake when host is unix

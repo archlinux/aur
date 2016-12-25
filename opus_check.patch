@@ -1,5 +1,5 @@
 diff --git a/cmake/admCheckOpus.cmake b/cmake/admCheckOpus.cmake
-index 8fd8051..a425072 100644
+index 8fd8051b..a425072c 100644
 --- a/cmake/admCheckOpus.cmake
 +++ b/cmake/admCheckOpus.cmake
 @@ -18,6 +18,12 @@ MACRO(checkOpusDec)

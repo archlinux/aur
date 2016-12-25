@@ -5,7 +5,7 @@ pkgname=('avidemux-core-git'
          'avidemux-qt-git'
          'avidemux-cli-git'
          )
-pkgver=2.6.13.160901.811311c
+pkgver=2.6.15.161225.5c8664c5
 pkgrel=1
 pkgdesc="A graphical/cli tool to edit video (filter/re-encode/split). (GIT version)"
 arch=('i686' 'x86_64')
@@ -40,21 +40,18 @@ makedepends=('git'
              )
 source=('avidemux::git+https://github.com/mean00/avidemux2.git'
         'fix_verbose.patch'
-        'fix_nvenc_check.patch'
         'add_settings_pluginui_message_error.patch'
         'ffmpeg-parallel-build-use-processorcount.patch'
         'opus_check.patch'
         'build-x264-x265-status-message-add-empty-lines.patch'
         )
-sha1sums=('SKIP'
-          '4b61f11627278578a180d4bdc3b6100544107f32'
-          '19bcbe1c3aa6df8fdee2d10ecb9626b46de00175'
-          '7f249fef96f44c235c62b7d5d86a6421d87251a1'
-          '66da0d2f30e03c5b06df694a96fe82c0b47d1871'
-          '3ed60a05b2900c90dfa4f8e4d230aedfec4e2d02'
-          '15c343c81139ab84354effd60bda534082a8855b'
-          )
-
+sha256sums=('SKIP'
+            '4f751cbb3a65f904f7c0ad68473880e2a9edcda332a293e20ad238280ec52884'
+            'c5b5d3d7bcdf4c588a780c12fdac7791ddb0527db438c85b4c1c078507da2f0b'
+            'c400cb7980dc469abc8f09b33196ef3e0968e31826d7feb3ba3e0bc75f83be13'
+            'ae6d2c93163b7b760591688c7811dfdd4a952ed9074d8cbdf4953b701f0fa7db'
+            'a6541c04d693b8a42c4b8c6371eebb79cf2ba36a37d6558b80f5e27d2c1d93fc'
+            )
 
 pkgver() {
   cd avidemux
@@ -73,14 +70,11 @@ prepare() {
   # http://avidemux.org/smif/index.php/topic,16301.0.html
   patch -p1 -i "${srcdir}/fix_verbose.patch"
 
-  # http://avidemux.org/smif/index.php/topic,16451.0.html
-  #patch --binary -p1 -i "${srcdir}/fix_nvenc_check.patch"
-
   # add SETTINGS to MESSAGE(FATAL_ERROR in avidemux_plugins/CMakeLists.txt
   patch -p1 -i "${srcdir}/add_settings_pluginui_message_error.patch"
 
   # http://avidemux.org/smif/index.php/topic,16351.0.html
-  patch -p1 -i "${srcdir}/ffmpeg-parallel-build-use-processorcount.patch"
+  patch --binary -p1 -i "${srcdir}/ffmpeg-parallel-build-use-processorcount.patch"
 
   patch --binary -p1 -i "${srcdir}/opus_check.patch"
 
