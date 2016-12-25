@@ -5,7 +5,7 @@ pkgver=0.1.13
 pkgrel=2
 pkgdesc="A tool to generator rosinstall files"
 url="http://wiki.ros.org/rosinstall_generator"
-depends=('python2', 'python2-rosdistro>=0.5.0')
+depends=('python2' 'python2-rosdistro>=0.5.0')
 makedepends=('python2')
 license=('BSD')
 arch=('any')
