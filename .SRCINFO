@@ -1,0 +1,37 @@
+pkgbase = libsystemd-eudev-standalone
+	pkgdesc = Standalone systemd libs (for eudev)
+	pkgver = 231
+	pkgrel = 1
+	url = http://www.freedesktop.org/wiki/Software/systemd
+	install = libsystemd.install
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	license = LGPL2.1
+	license = MIT
+	makedepends = acl
+	makedepends = cryptsetup
+	makedepends = docbook-xsl
+	makedepends = gobject-introspection
+	makedepends = gperf
+	makedepends = gtk-doc
+	makedepends = intltool
+	makedepends = kmod
+	makedepends = libcap
+	makedepends = libgcrypt
+	makedepends = libmicrohttpd
+	makedepends = libxslt
+	makedepends = linux-api-headers
+	makedepends = pam
+	makedepends = python
+	makedepends = python-lxml
+	makedepends = quota-tools
+	makedepends = xz
+	provides = libsystemd.so
+	provides = libsystemd
+	options = strip
+	source = https://github.com/systemd/systemd/archive/v231.tar.gz
+	sha1sums = 47768103290d2023c3452bc36bc77f7b1fd798ea
+
+pkgname = libsystemd-eudev-standalone
+
