@@ -23,5 +23,5 @@ pkgbase = mpv
 	source = mpv-0.22.0.tar.gz::https://github.com/mpv-player/mpv/archive/v0.22.0.tar.gz
 	sha256sums = c0f9ac8f0e37a391d19007b333ef8787c2f45d75a0d4401c0098cde52c5082f6
 
-pkgname = mpv-light
+pkgname = mpv-light-old
 

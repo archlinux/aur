@@ -1,7 +1,7 @@
 # Maintainer: Bruno Pagani <bruno.n.pagani@gmail.com>
 
 pkgbase=mpv
-pkgname=${pkgbase}-light
+pkgname=${pkgbase}-light-old
 pkgver=0.22.0
 pkgrel=1
 pkgdesc="Video player based on MPlayer/mplayer2, with selection of features."
@@ -66,7 +66,7 @@ build() {
   ./waf build
 }
 
-package_mpv-light() {
+package_mpv-light-old() {
   cd ${pkgbase}-${pkgver}
 
   ./waf install --destdir="${pkgdir}"
