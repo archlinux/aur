@@ -1,7 +1,7 @@
 # Maintainer: Bruno Pagani <bruno.n.pagani@gmail.com>
 
 pkgbase=mpv
-pkgname=mpv-light
+pkgname=${pkgbase}-light
 pkgver=0.22.0
 pkgrel=1
 pkgdesc='Video player based on MPlayer/mplayer2, with selection of features.'
@@ -68,8 +68,8 @@ build() {
 
 package_mpv-light() {
   cd ${pkgbase}-${pkgver}
+
   ./waf install --destdir="${pkgdir}"
 
-  install -m644 DOCS/{encoding.rst,tech-overview.txt} \
-    "${pkgdir}"/usr/share/doc/mpv
+  install -m644 DOCS/{encoding.rst,tech-overview.txt} "${pkgdir}"/usr/share/doc/mpv
 }
