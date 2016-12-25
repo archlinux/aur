@@ -25,5 +25,5 @@ build() {
 
 package() {
   cd "${pkgname}_${pkgver}"
-  python2 setup.py install --root
+  python2 setup.py install --root="$pkgdir" --optimize=1
 }
