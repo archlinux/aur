@@ -11,6 +11,7 @@ license=('MIT')
 if [ $(uname -m) == "x86_64" ]; then
 	depends=('lib32-sdl2' 'lib32-libgl')
 	makedepends=('gcc-multilib' 'yasm')
+	optdepends=('lib32-libpulse: Required for PulseAudio')
 else
 	depends=('sdl2' 'libgl')
 	makedepends=('gcc' 'yasm')
