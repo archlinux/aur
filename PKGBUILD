@@ -5,9 +5,9 @@
 
 _pkgname=https-everywhere
 pkgname=firefox-extension-${_pkgname}
-pkgver=5.2.8
+pkgver=5.2.9
 pkgrel=1
-_file=546556
+_file=557482
 pkgdesc="Plugin for firefox which ensures you are using https whenever it's possible."
 license=('GPL2')
 arch=('any')
@@ -17,7 +17,7 @@ makedepends=("unzip")
 # Apparently, API endpoints are all the rage -- so this isn't actually a file...
 source=("${_pkgname}-${pkgver}.xpi::https://addons.mozilla.org/firefox/downloads/file/${_file}/")
 noextract=("${_pkgname}-${pkgver}.xpi")
-sha256sums=('6f8e2a3e7a16b6429b5cd297c0a166d7887cbeecdba64ffa56c94ae0cac1ad96')
+sha256sums=('770668c7f296d6c0bde3320354854781fc5e871feda345d2b22005ee33eacdaf')
 
 prepare() {
   cd "$srcdir"
