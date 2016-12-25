@@ -6,7 +6,7 @@
 
 pkgname=firehol-git
 _gitname=firehol
-pkgver=v3.0.1.r8.g6c426bd
+pkgver=v3.1.0.r1.g1834342
 pkgrel=2
 epoch=1
 pkgdesc="The iptables stateful packet filtering firewall builder."
@@ -31,7 +31,12 @@ build() {
 	cd "$_gitname"
 
 	./autogen.sh
-	./configure --enable-maintainer-mode --prefix="/usr" --sysconfdir="/etc" --sbindir="/usr/bin"
+	./configure \
+		--enable-maintainer-mode \
+		--prefix="/usr" \
+		--sysconfdir="/etc" \
+		--sbindir="/usr/bin" \
+		--libexecdir="/usr/lib"
 
 	# Documents are created in certain order
 	# thus parallel processing must be disabled:
@@ -41,7 +46,7 @@ build() {
 package() {
 	cd "$_gitname"
 
-	make prefix="$pkgdir/usr" sysconfdir="$pkgdir/etc" sbindir="$pkgdir/usr/bin" install
+	make install DESTDIR="$pkgdir"
 
 	install -D -m644 $srcdir/firehol.service "$pkgdir/usr/lib/systemd/system/firehol.service"
 	install -D -m644 $srcdir/fireqos.service "$pkgdir/usr/lib/systemd/system/fireqos.service"
@@ -52,6 +57,15 @@ package() {
 	chmod 600 "$pkgdir/etc/firehol/firehol.conf"
 	touch "$pkgdir/etc/firehol/fireqos.conf"
 	chmod 600 "$pkgdir/etc/firehol/fireqos.conf"
+
+	# https://github.com/firehol/firehol/issues/178
+	rm "$pkgdir/usr/bin/"{vnetbuild,update-ipsets,fireqos,link-balancer,firehol}
+	ln -s "/usr/lib/firehol/3.1.0/vnetbuild" "$pkgdir/usr/bin/vnetbuild"
+	ln -s "/usr/lib/firehol/3.1.0/update-ipsets" "$pkgdir/usr/bin/update-ipsets"
+	ln -s "/usr/lib/firehol/3.1.0/fireqos" "$pkgdir/usr/bin/fireqos"
+	ln -s "/usr/lib/firehol/3.1.0/link-balancer" "$pkgdir/usr/bin/link-balancer"
+	ln -s "/usr/lib/firehol/3.1.0/firehol" "$pkgdir/usr/bin/firehol"
+
 }
 
 md5sums=('SKIP'
