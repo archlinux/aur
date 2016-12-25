@@ -4,12 +4,13 @@ pkgname=qlcplus-qt5
 _pkgname=qlcplus
 pkgver=4.10.5a
 _pkgver=4.10.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Q Light Controller Plus - The open DMX lighting desk software for controlling professional lighting fixtures."
 arch=('i686' 'x86_64')
 url="http://qlcplus.org/"
 license=('APACHE')
 depends=('qt5-script' 'qt5-multimedia' 'libftdi-compat' 'libsndfile' 'libmad' 'shared-mime-info' 'fftw')
+makedepends=('qt5-tools')
 # ola need to be installed at build time for the plugin to be compiled
 optdepends=('ola: Open Lighting Architecture plugin')
 provides=("$_pkgname=$pkgver")
