@@ -1,7 +1,7 @@
 pkgbase = gogs-master-git
 	pkgdesc = Gogs(Go Git Service) is a Self Hosted Git Service in the Go Programming Language.
 	pkgver = 0.9.113.1223.r3.114c179e5
-	pkgrel = 1
+	pkgrel = 2
 	url = http://gogs.io/
 	install = gogs.install
 	arch = i686
@@ -12,6 +12,7 @@ pkgbase = gogs-master-git
 	makedepends = go
 	makedepends = git
 	makedepends = glide
+	makedepends = nodejs-less
 	depends = git
 	depends = sqlite
 	optdepends = mariadb: MariaDB support
@@ -25,6 +26,7 @@ pkgbase = gogs-master-git
 	conflicts = gogs-git-dev
 	conflicts = gogs-openrc
 	conflicts = gitea
+	options = !buildflags
 	source = git+https://github.com/gogits/gogs.git#branch=master
 	source = git+https://github.com/jteeuwen/go-bindata.git
 	source = gogs.service

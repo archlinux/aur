@@ -2,7 +2,7 @@
 
 pkgname=gogs-master-git
 pkgver=0.9.113.1223.r3.114c179e5
-pkgrel=1
+pkgrel=2
 pkgdesc="Gogs(Go Git Service) is a Self Hosted Git Service in the Go Programming Language."
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url="http://gogs.io/"
@@ -10,12 +10,13 @@ license=('MIT')
 provides=('gogs')
 depends=('git' 'sqlite')
 conflicts=('gogs' 'gogs-git' 'gogs-git-dev' 'gogs-openrc' 'gitea')
+options=('!buildflags')
 optdepends=('mariadb: MariaDB support'
             'postgresql: PostgreSQL support'
             'redis: Redis support'
             'memcached: MemCached support'
             'openssh: GIT over SSH support')
-makedepends=('go' 'git' 'glide')
+makedepends=('go' 'git' 'glide' 'nodejs-less')
 source=('git+https://github.com/gogits/gogs.git#branch=master'
         'git+https://github.com/jteeuwen/go-bindata.git' #Because сommunity package is very outdated
         'gogs.service'
@@ -68,12 +69,13 @@ build() {
 
 	cd "$srcdir/$_gogsdir"
 
-	make PATH="$GOPATH/bin" bindata
-	go build -v -tags='libsqlite3 sqlite pam cert'
+	make PATH="$GOPATH/bin:$PATH" TAGS='libsqlite3 sqlite pam cert' build
 }
 
 package() {
 	cd "$_gogsdir"
+
+	rm -rf ./public/{less,config.codekit}
 
 	install -d "$pkgdir/usr/share/gogs"
 	cp     -rt "$pkgdir/usr/share/gogs" ./{templates,public}
