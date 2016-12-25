@@ -1,27 +1,23 @@
-# Maintainer: Michael Corrigan <ghost.vonage AT gmail DOT com>
-# Upstream URL: https://duck.sh/
+# Maintainer: Matthew Gamble <git@matthewgamble.net>
 
 pkgname=duck
-pkgver=4.8.18546
-pkgrel=2
+pkgver=5.2.2.21483
+pkgrel=1
 pkgdesc="Cyberduck CLI"
-PKGEXT='.pkg.tar'
 arch=('x86_64' 'i686')
 license=('GPL')
 options=(!strip)
 url="https://duck.sh/"
-install=$pkgname.install
-makedepends=('rpmextract')
 depends=('java-runtime')
-md5sums_x86_64=('83f3bcf56d259020ae70590343f4a031')
-md5sums_i686=('20d63d3cc803d5b3aa38463daed1873e')
-source_x86_64=("https://dist.duck.sh/duck-${pkgver}.x86_64.rpm")
-source_i686=("https://dist.duck.sh/duck-${pkgver}.i686.rpm")
+sha512sums_x86_64=('888e29739bf573d219b4b5ac1428c7ea32d4c943607a6dfee152b47263df444218a51c98d14919dcabf700478185a5411179ef3df710ca5ffc12c40bd3ebcccc')
+sha512sums_i686=('9558bccb0b45dd55b7e0b129692b691bf9f1de023e034f1e692bbcefba8081fc5f56b13c4a2ecb306fe23bcb693afb6cd52d0fc5ecee32fc7055bced994a9bb9')
+source_x86_64=("https://repo.cyberduck.io/stable/x86_64/duck-${pkgver}.x86_64.rpm")
+source_i686=("https://repo.cyberduck.io/stable/i386/duck-${pkgver}.i686.rpm")
 
 package() {
-  rpmextract.sh *
-  chmod -R g-w opt
-  mv opt "${pkgdir}"
-  mkdir -p "${pkgdir}/usr/bin"
-  ln -s /opt/duck/duck "${pkgdir}/usr/bin/duck"
+    cp -R opt "${pkgdir}/opt"
+    chmod -R go-w "${pkgdir}/opt"
+    mkdir -p "${pkgdir}/usr/bin"
+    ln -s /opt/duck/duck "${pkgdir}/usr/bin/duck"
+    install -Dm644 "${pkgdir}/opt/duck/duck.desktop" "${pkgdir}/usr/share/applications/duck.desktop"
 }
