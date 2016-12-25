@@ -21,4 +21,8 @@ package() {
     cd "$srcdir/${pkgname}/"
     python setup.py install --root="$pkgdir/" --prefix=/usr --optimize=1
     install -Dm644 ./udev/99-nuvoton-hid.rules "$pkgdir/usr/lib/udev/rules.d/99-nuvoton-hid.rules"
+    {
+        echo "# HIDAPI/libusb RTC Sync"
+        echo 'SUBSYSTEM=="usb", ATTRS{idVendor}=="0416", ATTRS{idProduct}=="5020", RUN+="/usr/bin/evic-usb time"'
+    } > "$pkgdir/usr/lib/udev/rules.d/99-nuvoton-hid-rtc-sync.rules"
 }
