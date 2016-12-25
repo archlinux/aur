@@ -6,7 +6,7 @@
 # Contributor: judd <jvinet@zeroflux.org>
 
 pkgname=exim-mysql
-pkgver=4.87
+pkgver=4.88
 pkgrel=1
 pkgdesc='Message Transfer Agent'
 arch=('x86_64' 'i686')
@@ -18,7 +18,7 @@ depends=('gdbm' 'pcre' 'pam' 'openssl' 'libldap' 'libmysqlclient')
 provides=('smtp-server' 'smtp-forwarder')
 conflicts=('exim' 'smtp-server' 'smtp-forwarder')
 options=('!makeflags')
-source=(http://mirror.switch.ch/ftp/mirror/exim/exim/exim4/exim-$pkgver.tar.bz2
+source=(ftp://ftp.exim.org/pub/exim/exim4/exim-$pkgver.tar.bz2
         aliases
         exim.logrotate
         exim.Makefile
@@ -82,7 +82,7 @@ package() {
     "$pkgdir"/usr/lib/systemd/system/exim-submission.socket
 }
 
-sha512sums=('2b0d5c82133315c444e29abd182e0866482c904db1abe5ffe9a3008c2174f52eca850a433c069b4102874dc32bbe4af112beac94ffa154f1c06615c24deb47a4'
+sha512sums=('ea094bf703628c201de119fc5f09539475e52158e935f8f2a9e4138c4a1bfe885017145c3cc5e22aa9087b195091955c69385ebf1ea0baec64ed5c1b8e3b1caf'
             '9cc0fe81b2110aecdd3d494650d051f773c2c83611692c4e5d365b89dcddd08b16af5b8f5f4ac3e3f553c36198846a05793d8fd01113f62d2ab761f555409201'
             'd8e3b466e0bba8175cfe762058dec49018495a260aa5efd139f4ef435284c305958cbd7fc514e81042146368b749ae38f0bf276fc0b4b91918ef33126900aa81'
             '72f15f2f59382be82b4e361dd780a39d8f263822d424c4ea252fa2568a090b44ae15263cc53b0df9369061f62738824d026646185c6f63ad09759e388b078c57'
