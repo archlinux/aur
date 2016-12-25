@@ -3,7 +3,7 @@
 
 pkgname=youtube-dl
 pkgver=2016.12.20
-pkgrel=1
+pkgrel=2
 pkgdesc="A small command-line program to download videos from YouTube.com and a few more sites"
 arch=('any')
 url="http://rg3.github.io/youtube-dl/"
