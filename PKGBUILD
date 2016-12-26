@@ -7,7 +7,7 @@ arch=('any')
 url="https://bitbucket.org/prologin/${_gitname}"
 license=('GPL')
 conflits=('camisole')
-depends=('python' 'python-aiohttp')
+depends=('python' 'python-aiohttp' 'isolate-git')
 makedepends=('git' 'python-setuptools')
 optdepends=('esotope-bfc-git: compile Brainfuck sources'
             'fpc: compile Pascal sources'
