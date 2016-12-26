@@ -6,13 +6,12 @@ pkgbase=transmission
 pkgname=transmission-cli-nodaemon
 pkgver=2.92
 pkgrel=1
-pkgdesc='Fast, easy, and free BitTorrent client (CLI tools and web client). This version does not include the daemon and thus does not use the transmission user.'
+pkgdesc="Fast, easy, and free BitTorrent client (CLI tools and web client). This version does not include the daemon and thus does not use the transmission user."
 arch=('i686' 'x86_64')
-url="http://www.transmissionbt.com/"
+url="https://www.transmissionbt.com/"
 license=('MIT')
 depends=('curl' 'libevent')
 makedepends=('intltool')
-#makedepends=('gtk3' 'systemd')
 conflicts=('transmission-cli')
 provides=('transmission-cli')
 source=("https://github.com/${pkgbase}/${pkgbase}-releases/raw/master/${pkgbase}-${pkgver}.tar.xz")
@@ -33,9 +32,9 @@ build() {
 package_transmission-cli-nodaemon() {
     cd ${pkgbase}-${pkgver}
 
-    for dir in cli web utils; do
-        make -C "$dir" DESTDIR="${pkgdir}" install
+    for dir in cli utils; do
+        make -C ${dir} DESTDIR="${pkgdir}" install
     done
 
-    install -Dm644 COPYING "${pkgdir}/usr/share/licenses/transmission-cli/COPYING"
+    install -Dm644 COPYING "${pkgdir}"/usr/share/licenses/${pkgname}/COPYING
 }

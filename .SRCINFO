@@ -1,8 +1,8 @@
 pkgbase = transmission
 	pkgdesc = Fast, easy, and free BitTorrent client (CLI tools and web client). This version does not include the daemon and thus does not use the transmission user.
 	pkgver = 2.92
-	pkgrel = 1
-	url = http://www.transmissionbt.com/
+	pkgrel = 2
+	url = https://www.transmissionbt.com/
 	arch = i686
 	arch = x86_64
 	license = MIT
