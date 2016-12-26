@@ -1,7 +1,7 @@
 pkgbase = jid-bin
 	pkgdesc = Json incremental digger
-	pkgver = 0.6.2
-	pkgrel = 2
+	pkgver = 0.6.3
+	pkgrel = 1
 	url = https://github.com/simeji/jid
 	arch = i686
 	arch = x86_64
@@ -10,9 +10,10 @@ pkgbase = jid-bin
 	provides = jid
 	conflicts = jid
 	conflicts = jid-git
-	source_i686 = https://github.com/simeji/jid/releases/download/0.6.2/jid_linux_386.zip
-	source_x86_64 = https://github.com/simeji/jid/releases/download/0.6.2/jid_linux_amd64.zip
-	sha256sums_x86_64 = 17bf8657edd74e570286018d86a4a8835ced0e9ea1ea79b5284f9caa9355275f
+	source_i686 = https://github.com/simeji/jid/releases/download/0.6.3/jid_linux_386.zip
+	sha256sums_i686 = 9770ac445b64170dbb5dc23b739cb458043257efd56dde36b95671a72a56a863
+	source_x86_64 = https://github.com/simeji/jid/releases/download/0.6.3/jid_linux_amd64.zip
+	sha256sums_x86_64 = 3519711e65c896edfdfbb65a0117af4badc24cb7d02a2584d9d1470e81ab4136
 
 pkgname = jid-bin
 
