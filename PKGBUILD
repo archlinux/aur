@@ -9,7 +9,7 @@ arch=('x86_64')
 url="http://wpan.cakelab.org/"
 license=('ISC')
 depends=('libnl')
-provides=('iwpan', 'wpan-ping')
+provides=('iwpan' 'wpan-ping')
 source=("https://github.com/linux-wpan/wpan-tools/releases/download/${pkgname}-${pkgver}/${pkgname}-${pkgver}.tar.gz")
 
 sha1sums=('be322fae8412afaaad8c4d98524882b66544bdb3')
