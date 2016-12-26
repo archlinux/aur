@@ -1,0 +1,19 @@
+pkgbase = perl-git-wrapper
+	pkgdesc = Wrap git(7) command-line interface
+	pkgver = 0.047
+	pkgrel = 1
+	url = https://metacpan.org/release/Git-Wrapper
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	checkdepends = perl-test-deep>=0
+	checkdepends = perl-test-exception>=0
+	depends = perl-file-chdir>=0
+	depends = perl-sort-versions>=0
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/G/GE/GENEHACK/Git-Wrapper-0.047.tar.gz
+	md5sums = 58ab70ecfd306a0fd678d405b15715e9
+	sha512sums = 9a2c9bf30a9b803170adfeae9bbe41e1b0fc9e67fe477d4fdf1d20a57917c69c1c6be2a90fbc382f85cf83a209b39a9a3431276b33a6e7655b8cd240d1a68e78
+
+pkgname = perl-git-wrapper
+
