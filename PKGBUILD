@@ -1,6 +1,6 @@
 pkgname=douane-daemon-git
 pkgver=1
-pkgrel=2
+pkgrel=3
 pkgdesc="Douane Firewall Kernel Daemon"
 arch=('i686' 'x86_64')
 url="http://douaneapp.com/"
@@ -28,8 +28,6 @@ prepare() {
 
 pkgver() {
   cd "$srcdir/douane-daemon"
-  # Tag
-  git tag -a $(head VERSION) -m ""
   # Use the tag of the last commit
   git describe --long | sed -E 's/([^-]*-g)/r\1/;s/-/./g'
 }
