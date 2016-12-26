@@ -491,6 +491,16 @@ EXPERIMENTAL_DANE=yes
 # Uncomment the following to include extra information in fail DSN message (bounces)
 # EXPERIMENTAL_DSN_INFO=yes
 
+# Uncomment the following to add LMDB lookup support
+# You need to have LMDB installed on your system (https://github.com/LMDB/lmdb)
+# Depending on where it is installed you may have to edit the CFLAGS and LDFLAGS lines.
+# EXPERIMENTAL_LMDB=yes
+# CFLAGS += -I/usr/local/include
+# LDFLAGS += -llmdb
+
+# Uncomment the following line to add queuefile transport support
+# EXPERIMENTAL_QUEUEFILE=yes
+
 ###############################################################################
 #                 THESE ARE THINGS YOU MIGHT WANT TO SPECIFY                  #
 ###############################################################################
@@ -738,6 +748,10 @@ TLS_LIBS=-lssl -lcrypto
 # USE_GNUTLS=yes
 # USE_GNUTLS_PC=gnutls
 # TLS_LIBS=-lgnutls -ltasn1 -lgcrypt
+
+# If using GnuTLS older than 2.10 and using pkg-config then note that Exim's
+# build process will require libgcrypt-config to exist in your $PATH.  A
+# version that old is likely to become unsupported by Exim in 2017.
 
 # The security fix we provide with the gnutls_allow_auto_pkcs11 option
 # (4.82 PP/09) introduces a compatibility regression.  The symbol is

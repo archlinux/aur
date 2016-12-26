@@ -8,8 +8,8 @@
 
 _pkgname=exim
 pkgname=${_pkgname}-pgsql
-pkgver=4.87
-pkgrel=5
+pkgver=4.88
+pkgrel=1
 pkgdesc='Message Transfer Agent'
 arch=('x86_64' 'i686')
 url='http://www.exim.org/'
@@ -29,10 +29,10 @@ source=(ftp://ftp.exim.org/pub/exim/exim4/exim-$pkgver.tar.bz2
         exim@.service
         exim.socket
         exim-submission.socket)
-md5sums=('2effc2bd47ad2dc010f655c11a1b1173'
+md5sums=('4cc10c910fd18bb9e299e98bc0a32ed2'
          '4874006f0585253ddab027d441009757'
          'e18a535218718c5eb394ed5c9296fe06'
-         '86772117ebb0c0a7580fb5aec96a0da6'
+         'db7e0e61611c45ec8bcc04f0fb58af1a'
          '88cf76405367a6ed371d05db1d3c9565'
          'be8fdcf7b2d6b6368a21705e69743265'
          '6f5a5c2b0835b33f59d2513cce18c65b'
