@@ -2,7 +2,7 @@
 
 pkgname=lib32-libusb0
 pkgver=0.1.12
-pkgrel=8
+pkgrel=9
 pkgdesc="Library to enable user space application programs to communicate with USB devices. 0.x branch. Debian's binary."
 arch=('x86_64')
 url="http://libusb.sourceforge.net/"
@@ -13,10 +13,10 @@ provides=('lib32-libusb-compat')
 conflicts=('lib32-libusb-compat')
 _debianver_="0.1.12-25"
 _debianver="0.1-4_$_debianver_"
-source_x86_64=("http://ftp.debian.org/debian/pool/main/libu/libusb/libusb-${_debianver}_amd64.deb"
-              "http://ftp.debian.org/debian/pool/main/libu/libusb/libusb-dev_${_debianver_}_amd64.deb")
-md5sums_x86_64=('582aee4738aecee1ad2d4c725510b419'
-                'a1f65ae086a6085ff4f99e26195ce102')
+source_x86_64=("http://ftp.debian.org/debian/pool/main/libu/libusb/libusb-${_debianver}_i386.deb"
+              "http://ftp.debian.org/debian/pool/main/libu/libusb/libusb-dev_${_debianver_}_i386.deb")
+md5sums_x86_64=('316254e4ae2ff97f520948ffbb4af1ad'
+                '9f3e584547a8643a3efd6d3901f846cb')
 
 noextract=("${source[@]%%::*}")
 
