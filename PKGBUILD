@@ -19,11 +19,12 @@
 #
 # Add "--enable-decklink \" to configure flags
 # if you have decklink-sdk installed
+#
 
 pkgname=ffmpeg-full-nvenc
 _pkgbasename=ffmpeg
 pkgver=3.2.2
-pkgrel=6
+pkgrel=7
 epoch=1
 pkgdesc="Record, convert, and stream audio and video (all codecs including Nvidia NVENC)"
 arch=('i686' 'x86_64')
@@ -42,7 +43,7 @@ depends=('alsa-lib' 'bzip2' 'celt' 'chromaprint-fftw' 'fontconfig' 'frei0r-plugi
          'zlib' 'zvbi' 'libvorbisenc.so' 'libvorbis.so' 'libvpx.so' 'libx264.so'
          'x265' 'snappy' 'xavs' 'java-environment')
 depends_x86_64=('cuda')
-makedepends=('flite1' 'hardening-wrapper' 'libvdpau' 'yasm' 'opencl-headers')
+makedepends=('flite' 'hardening-wrapper' 'libvdpau' 'yasm' 'opencl-headers')
 optdepends=('avxsynth-git: for Avisynth support'
             'blackmagic-decklink-sdk: for Blackmagic DeckLink support; need to add --enable-decklink option in this PKGBUILD')
 optdepends_x86_64=('intel-media-sdk: for Intel QSV support (Experimental! See PKGBUILD of that package for additional info)')
