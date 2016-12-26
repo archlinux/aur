@@ -2,7 +2,7 @@
 
 pkgbase=decred-git
 pkgname=('dcrd-git' 'dcrticketbuyer-git' 'dcrwallet-git')
-pkgver=20161126
+pkgver=20161226
 pkgrel=1
 arch=('i686' 'x86_64')
 makedepends=('git' 'glide' 'go')
@@ -121,8 +121,7 @@ package_dcrwallet-git() {
     "$pkgdir/usr/share/doc/dcrwallet"
 
   msg2 'Installing dcrwallet...'
-  for _bin in dcrdropwtxmgr \
-              dcrmovefunds \
+  for _bin in dcrmovefunds \
               dcrsweepaccount \
               dcrwallet; do
     install -Dm 755 "$srcdir/bin/$_bin" -t "$pkgdir/usr/bin"
