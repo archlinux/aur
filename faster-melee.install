@@ -1,8 +1,13 @@
 post_install() {
   printf -- "%s\n" "$(cat << EOF
 
-  Make sure you install the GALE01.ini config file into:
-  ${HOME}/.local/share/dolphin-emu/GameSettings/GALE01.ini
+  Make sure you install the following config files into
+  '${HOME}/.local/share/dolphin-emu/GameSettings'
+
+  GALE01.ini
+  MNCE02.ini
+  NMNB01.ini
+  PALE02.ini
 
   See https://fastermelee.net for more information on the
   Faster Melee build of the Dolphin Emulator.
