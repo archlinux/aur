@@ -1,7 +1,7 @@
 pkgbase = wpan-tools
 	pkgdesc = Userspace tools for Linux IEEE 802.15.4 stack.
 	pkgver = 0.7
-	pkgrel = 1
+	pkgrel = 0
 	url = http://wpan.cakelab.org/
 	arch = x86_64
 	license = ISC
