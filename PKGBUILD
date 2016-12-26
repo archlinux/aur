@@ -1,13 +1,13 @@
 # Maintainer: dreieck
 
-# PKGBUILD last time manually edited: At least on 2016-12-11.
+# PKGBUILD last time manually edited: At least on 2016-12-16.
 
 _pkgname=idos-timetable-data-inprop-mhd-sk-all
 pkgname="${_pkgname}-latest"
 epoch=0
 pkgver=2016_12_14
-pkgrel=1
-pkgdesc="Public transport data of many Slovak cities for the IDOS timetable browser, data provided by INPROP. Note that some of them need the purchased version of IDOS to run."
+pkgrel=2
+pkgdesc="Public transport data of many Slovak cities for the IDOS timetable browser, data provided by INPROP."
 arch=(any)
 url="http://www.inprop.sk/download.aspx"
 license=('custom')
@@ -28,7 +28,6 @@ makedepends=(
 optdepends=(
             "idos-timetable-tariff-mhd: For showing prices."
             "idos-timetable-maps-mhd: For displaying routes."
-            "idos-timetable-browser-license: To use some timetables."
            )
 
 provides=(
