@@ -2,7 +2,7 @@ post_install() {
   printf -- "%s\n" "$(cat << EOF
 
   Make sure you install the following config files into
-  '${HOME}/.local/share/dolphin-emu/GameSettings'
+  '~/.local/share/dolphin-emu/GameSettings'
 
   GALE01.ini
   MNCE02.ini
