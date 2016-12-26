@@ -14,7 +14,7 @@ conflicts=('tahoe-lafs-i2p')
 BUILDENV+=(!check)
 
 depends=('openssl>=1.0.2'
-         'python2-twisted>=15.1.0'
+         'python2-twisted>=16.1.0'
          'python2-pyopenssl>=0.14'
          'python2-pyasn1>=0.1.8'
          'python2-pyasn1-modules>=0.0.5'
@@ -24,7 +24,7 @@ depends=('openssl>=1.0.2'
          'python2-cryptography'
          'pyutil>=1.9.4'
          'python2-simplejson>=3.1.3'
-         'nevow>=0.11.1'
+         'nevow>=0.12.0'
          'zbase32>=1.1.5'
          'zfec>=1.4.24'
          'pycryptopp>=0.6.0'
@@ -33,12 +33,12 @@ depends=('openssl>=1.0.2'
          'python2-pycparser'
          'python2-six'
          'libffi'
-         'python2-foolscap>=0.10.1'
+         'python2-foolscap>=0.12.5'
          'net-tools' # provides /sbin/ifconfig
          'python2-setuptools'
          'python2-shutilwhich>=1.1.0'
          'python2-yaml'
-         'python2-crypto')
+         'python2-crypto>=2.6')
 
 optdepends=('python2-numpy: reliability test')
 
