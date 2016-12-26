@@ -10,14 +10,14 @@
 
 _pkgname=playonlinux5
 pkgname=$_pkgname-git
-pkgver=r1264.02324529
-pkgrel=9
+pkgver=r1317.9d399ad3
+pkgrel=1
 epoch=2
 pkgdesc="GUI for managing Windows programs under linux (development version based on Java)"
 arch=('any')
 url="http://www.playonlinux.com/"
 license=('GPL')
-makedepends=('gradle' 'maven' 'java-openjfx' 'jdk8-openjdk')
+makedepends=('git' 'gradle' 'maven' 'java-openjfx' 'jdk8-openjdk')
 depends=('wine')
 options=(!strip)
 source=(
@@ -63,7 +63,7 @@ package() {
   install -Dm755 "PlayOnLinux.sh"  "$pkgdir/usr/bin/$_pkgname"
 
   # Icon + Desktop
-  install -Dm644 "$srcdir/$_pkgname/phoenicis-javafx/target/classes/com/playonlinux/javafx/common/playonlinux.png" \
+  install -Dm644 "$srcdir/$_pkgname/phoenicis-javafx/target/classes/com/playonlinux/javafx/views/common/playonlinux.png" \
                  "$pkgdir/usr/share/pixmaps/$_pkgname.png"
   install -Dm644 PlayOnLinux5.desktop "$pkgdir/usr/share/applications/$_pkgname.desktop"
 }
