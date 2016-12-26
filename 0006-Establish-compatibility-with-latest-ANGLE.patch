@@ -1,4 +1,4 @@
-From 967f96d827bc9af129fd1431b97de0dc9a076bef Mon Sep 17 00:00:00 2001
+From a565915a6e70d1b6e3790a04a036fbce25c58b77 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sun, 25 Sep 2016 22:19:57 +0200
 Subject: [PATCH 6/9] Establish compatibility with latest ANGLE
@@ -13,7 +13,7 @@ Subject: [PATCH 6/9] Establish compatibility with latest ANGLE
  6 files changed, 33 insertions(+), 120 deletions(-)
 
 diff --git a/Source/WebCore/platform/graphics/ANGLEWebKitBridge.cpp b/Source/WebCore/platform/graphics/ANGLEWebKitBridge.cpp
-index 9876c9f..84d3a2f 100644
+index 9876c9f04..84d3a2f34 100644
 --- a/Source/WebCore/platform/graphics/ANGLEWebKitBridge.cpp
 +++ b/Source/WebCore/platform/graphics/ANGLEWebKitBridge.cpp
 @@ -32,98 +32,25 @@
@@ -183,7 +183,7 @@ index 9876c9f..84d3a2f 100644
  
      return true;
 diff --git a/Source/WebCore/platform/graphics/ANGLEWebKitBridge.h b/Source/WebCore/platform/graphics/ANGLEWebKitBridge.h
-index 83c2e00..825c2d0 100644
+index 83c2e004c..825c2d0bc 100644
 --- a/Source/WebCore/platform/graphics/ANGLEWebKitBridge.h
 +++ b/Source/WebCore/platform/graphics/ANGLEWebKitBridge.h
 @@ -35,13 +35,14 @@
@@ -235,7 +235,7 @@ index 83c2e00..825c2d0 100644
      
      ShBuiltInResources getResources() { return m_resources; }
 diff --git a/Source/WebCore/platform/graphics/cairo/GraphicsContext3DCairo.cpp b/Source/WebCore/platform/graphics/cairo/GraphicsContext3DCairo.cpp
-index d31adf3..3b99ad9 100644
+index d31adf326..3b99ad9d9 100644
 --- a/Source/WebCore/platform/graphics/cairo/GraphicsContext3DCairo.cpp
 +++ b/Source/WebCore/platform/graphics/cairo/GraphicsContext3DCairo.cpp
 @@ -80,7 +80,7 @@ PassRefPtr<GraphicsContext3D> GraphicsContext3D::create(GraphicsContext3D::Attri
@@ -248,7 +248,7 @@ index d31adf3..3b99ad9 100644
      , m_texture(0)
      , m_fbo(0)
 diff --git a/Source/WebCore/platform/graphics/efl/GraphicsContext3DEfl.cpp b/Source/WebCore/platform/graphics/efl/GraphicsContext3DEfl.cpp
-index ea25e43..a28c55f 100644
+index ea25e4355..a28c55ff4 100644
 --- a/Source/WebCore/platform/graphics/efl/GraphicsContext3DEfl.cpp
 +++ b/Source/WebCore/platform/graphics/efl/GraphicsContext3DEfl.cpp
 @@ -41,7 +41,7 @@ PassRefPtr<GraphicsContext3D> GraphicsContext3D::create(GraphicsContext3D::Attri
@@ -261,7 +261,7 @@ index ea25e43..a28c55f 100644
      , m_renderStyle(renderStyle)
      , m_texture(0)
 diff --git a/Source/WebCore/platform/graphics/opengl/Extensions3DOpenGLCommon.cpp b/Source/WebCore/platform/graphics/opengl/Extensions3DOpenGLCommon.cpp
-index 29a13c8..11f88f1 100644
+index 29a13c842..11f88f183 100644
 --- a/Source/WebCore/platform/graphics/opengl/Extensions3DOpenGLCommon.cpp
 +++ b/Source/WebCore/platform/graphics/opengl/Extensions3DOpenGLCommon.cpp
 @@ -172,10 +172,10 @@ String Extensions3DOpenGLCommon::getTranslatedShaderSourceANGLE(Platform3DObject
@@ -278,7 +278,7 @@ index 29a13c8..11f88f1 100644
      Vector<ANGLEShaderSymbol> symbols;
      bool isValid = compiler.compileShaderSource(entry.source.utf8().data(), shaderType, translatedShaderSource, shaderInfoLog, symbols, extraCompileOptions);
 diff --git a/Source/WebCore/platform/graphics/qt/GraphicsContext3DQt.cpp b/Source/WebCore/platform/graphics/qt/GraphicsContext3DQt.cpp
-index 43b546d..73b61e2 100644
+index 43b546d18..73b61e2cd 100644
 --- a/Source/WebCore/platform/graphics/qt/GraphicsContext3DQt.cpp
 +++ b/Source/WebCore/platform/graphics/qt/GraphicsContext3DQt.cpp
 @@ -428,7 +428,7 @@ GraphicsContext3D::GraphicsContext3D(GraphicsContext3D::Attributes attrs, HostWi
@@ -291,5 +291,5 @@ index 43b546d..73b61e2 100644
      if (!m_private->m_surface || !m_private->m_platformContext) {
          LOG_ERROR("GraphicsContext3D: GL context creation failed.");
 -- 
-2.10.2
+2.11.0
 

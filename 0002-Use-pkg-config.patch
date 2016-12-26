@@ -1,4 +1,4 @@
-From f879e4f9efd0cca7acd1f09953bc645107a42d21 Mon Sep 17 00:00:00 2001
+From 963e661fc032d90f4eb4dc9820ad278e7d929414 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sun, 25 Sep 2016 21:56:42 +0200
 Subject: [PATCH 2/9] Use pkg-config
@@ -8,7 +8,7 @@ Subject: [PATCH 2/9] Use pkg-config
  1 file changed, 2 insertions(+)
 
 diff --git a/Tools/qmake/mkspecs/features/win32/default_pre.prf b/Tools/qmake/mkspecs/features/win32/default_pre.prf
-index b306c3b..95592c2 100644
+index b306c3b82..95592c25d 100644
 --- a/Tools/qmake/mkspecs/features/win32/default_pre.prf
 +++ b/Tools/qmake/mkspecs/features/win32/default_pre.prf
 @@ -4,6 +4,8 @@
@@ -21,5 +21,5 @@ index b306c3b..95592c2 100644
  
  debug: CONFIG += use_all_in_one_files
 -- 
-2.10.2
+2.11.0
 

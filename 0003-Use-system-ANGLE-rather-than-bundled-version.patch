@@ -1,4 +1,4 @@
-From b22f0368b4d4d167fcc342bffb602c9c41578233 Mon Sep 17 00:00:00 2001
+From 10236100311a81cc32f0c660e034fb167c730521 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sat, 5 Nov 2016 12:14:01 +0100
 Subject: [PATCH 3/9] Use system ANGLE rather than bundled version
@@ -11,7 +11,7 @@ Subject: [PATCH 3/9] Use system ANGLE rather than bundled version
  4 files changed, 1 insertion(+), 11 deletions(-)
 
 diff --git a/Source/api.pri b/Source/api.pri
-index de04652..f972f67 100644
+index de04652ca..f972f672f 100644
 --- a/Source/api.pri
 +++ b/Source/api.pri
 @@ -24,7 +24,6 @@ build?(webkit1): {
@@ -23,7 +23,7 @@ index de04652..f972f67 100644
  
  MODULE = webkit
 diff --git a/Tools/qmake/mkspecs/features/webkit_modules.prf b/Tools/qmake/mkspecs/features/webkit_modules.prf
-index 7040cbb..8c13175 100644
+index 7040cbbc3..8c131754d 100644
 --- a/Tools/qmake/mkspecs/features/webkit_modules.prf
 +++ b/Tools/qmake/mkspecs/features/webkit_modules.prf
 @@ -7,7 +7,7 @@
@@ -36,7 +36,7 @@ index 7040cbb..8c13175 100644
      contains(WEBKIT, $$lower($$library)) {
          WEBKIT -= $$lower($$library)
 diff --git a/Tools/qmake/mkspecs/modules/angle.prf b/Tools/qmake/mkspecs/modules/angle.prf
-index 18631a7..3b04dea 100644
+index 18631a76a..3b04dea53 100644
 --- a/Tools/qmake/mkspecs/modules/angle.prf
 +++ b/Tools/qmake/mkspecs/modules/angle.prf
 @@ -4,6 +4,3 @@
@@ -47,7 +47,7 @@ index 18631a7..3b04dea 100644
 -
 -include($${WEBKIT.angle.root_source_dir}/ANGLE.pri)
 diff --git a/WebKit.pro b/WebKit.pro
-index 11b59e5..e9709a2 100644
+index 11b59e58b..e9709a238 100644
 --- a/WebKit.pro
 +++ b/WebKit.pro
 @@ -18,12 +18,6 @@ JavaScriptCore.file = Source/JavaScriptCore/JavaScriptCore.pro
@@ -64,5 +64,5 @@ index 11b59e5..e9709a2 100644
      leveldb.file = Source/ThirdParty/leveldb/leveldb.pro
      leveldb.makefile = Makefile.leveldb
 -- 
-2.10.2
+2.11.0
 

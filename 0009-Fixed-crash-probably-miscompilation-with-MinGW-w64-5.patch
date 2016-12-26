@@ -1,4 +1,4 @@
-From e60cb272ada8e08297c85e22039d6b9a4c9d575c Mon Sep 17 00:00:00 2001
+From 72acfdf5a9af50e3e2b8ba16fca16fb4408906f6 Mon Sep 17 00:00:00 2001
 From: Konstantin Tokarev <annulen@yandex.ru>
 Date: Fri, 4 Nov 2016 00:44:49 +0300
 Subject: [PATCH 9/9] Fixed crash (probably miscompilation) with MinGW-w64
@@ -11,7 +11,7 @@ Change-Id: Iac1c5fe1879abfaa299ec909e5928912c2354126
  2 files changed, 2 insertions(+), 12 deletions(-)
 
 diff --git a/Source/WebKit/qt/WidgetApi/qwebframe.cpp b/Source/WebKit/qt/WidgetApi/qwebframe.cpp
-index dd08725..1cec124 100644
+index dd08725eb..1cec124ee 100644
 --- a/Source/WebKit/qt/WidgetApi/qwebframe.cpp
 +++ b/Source/WebKit/qt/WidgetApi/qwebframe.cpp
 @@ -119,16 +119,6 @@ QWebFrameAdapter* QWebFramePrivate::createChildFrame(QWebFrameData* frameData)
@@ -32,7 +32,7 @@ index dd08725..1cec124 100644
  {
      emit q->contentsSizeChanged(size);
 diff --git a/Source/WebKit/qt/WidgetApi/qwebframe_p.h b/Source/WebKit/qt/WidgetApi/qwebframe_p.h
-index 2a1c202..25fbdc3 100644
+index 2a1c20278..25fbdc319 100644
 --- a/Source/WebKit/qt/WidgetApi/qwebframe_p.h
 +++ b/Source/WebKit/qt/WidgetApi/qwebframe_p.h
 @@ -49,8 +49,8 @@ public:
@@ -47,5 +47,5 @@ index 2a1c202..25fbdc3 100644
      virtual int scrollBarPolicy(Qt::Orientation) const OVERRIDE;
      virtual void emitUrlChanged() OVERRIDE;
 -- 
-2.10.2
+2.11.0
 

@@ -15,8 +15,8 @@
 
 _qt_module=qtwebkit
 pkgname=mingw-w64-qt5-webkit
-pkgver=5.7.0
-pkgrel=3
+pkgver=5.7.1
+pkgrel=1
 arch=('any')
 pkgdesc="Classes for a WebKit2 based implementation and a new QML API (mingw-w64)"
 depends=('mingw-w64-qt5-declarative'
@@ -52,16 +52,16 @@ source=("https://download.qt.io/community_releases/${pkgver:0:3}/${pkgver}/${_pk
          '0007-Include-intrin.h-for-declaration-of-_mm_mfence.patch'
          '0008-Link-against-ANGLE-even-if-Qt-is-configured-not-to.patch'
          '0009-Fixed-crash-probably-miscompilation-with-MinGW-w64-5.patch')
-sha256sums=('c7a3253cbf8e6035c54c3b08d8a9457bd82efbce71d4b363c8f753fd07bd34df'
-            '922c12e3726cfcecd99d773a3135ea05a36bd325c24cf07463d21f8778d5c5a0'
-            '2f7887173f777c6fb5ff49a37e1015b8e1d8f22f692917b0b0a24e22ad3022c5'
-            '8c0dc51d02814577c4ac557493a2b7d7b74311649bf3c91072e798fd7b2d7a98'
-            '3e9893be250bcadf2a3437f2fd1cc0d454211e315071939d9ebf27f00d600253'
-            'cc0c239676f747b9c30fe1b774a5208fde5650f02f8388379d164d9ccaccab17'
-            'b87eaa3c18764347f04a8d5fcae322052a194508ea0ba6eb2cd69db6385633c1'
-            '4da5c29a054a8a087b95f4a7788aee83a1a4388efa948150f8cf4e233ec426bc'
-            '79587af527bbb80d7954de6fb23c279493166e88c0f44e3aaa956964b04fbd3e'
-            '8302e606050da917b01fa3af8388c0d7ae6ff999129b8eb2ed27bcf5d4d37dd9')
+md5sums=('4fa8f47383ce36d59dcc36d701ce93cd'
+         '723721e8a6e849d7504d81e2f842d563'
+         '18cdfcc4d7287a4ffd0a83c720c92140'
+         'c69032c133d7f49a6eef699ad9104ae2'
+         '0a3af101516cbdb229fbbbb79eb4fc1a'
+         'd66ccc9e2407cc454dfb9207ba1a006f'
+         '7cc0eb1eb242f048dd200d76dc528dec'
+         'bf52db2fb9589b12f98e2e90ca635677'
+         'f60cbd16a5e43a0cf2cc3bb1d00a3a08'
+         '40e45a139a7bd98c79e73af654351810')
 
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
 

@@ -1,4 +1,4 @@
-From 24d4206f6cd79ae3f6ed70897fbf327aed0730bb Mon Sep 17 00:00:00 2001
+From b76e20abff2c6412daaf257b762be00fd628c77a Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sun, 25 Sep 2016 22:13:44 +0200
 Subject: [PATCH 5/9] Build with smaller debug info
@@ -13,7 +13,7 @@ Avoid exceeding 4 GB size limit
  5 files changed, 31 insertions(+)
 
 diff --git a/Source/JavaScriptCore/JavaScriptCore.pri b/Source/JavaScriptCore/JavaScriptCore.pri
-index dec9d42..910fc4e 100644
+index dec9d42a9..910fc4eda 100644
 --- a/Source/JavaScriptCore/JavaScriptCore.pri
 +++ b/Source/JavaScriptCore/JavaScriptCore.pri
 @@ -7,6 +7,12 @@
@@ -30,7 +30,7 @@ index dec9d42..910fc4e 100644
  
  INCLUDEPATH += \
 diff --git a/Source/WTF/WTF.pri b/Source/WTF/WTF.pri
-index e762387..86900ce 100644
+index 5d8933ae1..2ef42ca3e 100644
 --- a/Source/WTF/WTF.pri
 +++ b/Source/WTF/WTF.pri
 @@ -8,6 +8,12 @@
@@ -47,7 +47,7 @@ index e762387..86900ce 100644
      # Mac OS does ship libicu but not the associated header files.
      # Therefore WebKit provides adequate header files.
 diff --git a/Source/WebCore/WebCore.pri b/Source/WebCore/WebCore.pri
-index 37cde57..ddad897 100644
+index 37cde573a..ddad897be 100644
 --- a/Source/WebCore/WebCore.pri
 +++ b/Source/WebCore/WebCore.pri
 @@ -7,6 +7,12 @@
@@ -72,7 +72,7 @@ index 37cde57..ddad897 100644
  enable_fast_mobile_scrolling: DEFINES += ENABLE_FAST_MOBILE_SCROLLING=1
  
 diff --git a/Source/WebKit/WebKit1.pri b/Source/WebKit/WebKit1.pri
-index 6fc1829..d86b846 100644
+index 6fc182941..d86b8469c 100644
 --- a/Source/WebKit/WebKit1.pri
 +++ b/Source/WebKit/WebKit1.pri
 @@ -7,6 +7,12 @@
@@ -89,7 +89,7 @@ index 6fc1829..d86b846 100644
      $$SOURCE_DIR/qt/Api \
      $$SOURCE_DIR/qt/WebCoreSupport \
 diff --git a/Source/WebKit2/WebKit2.pri b/Source/WebKit2/WebKit2.pri
-index 3611524..f54b9ca 100644
+index 3611524e6..f54b9cabf 100644
 --- a/Source/WebKit2/WebKit2.pri
 +++ b/Source/WebKit2/WebKit2.pri
 @@ -9,6 +9,12 @@ SOURCE_DIR = $${ROOT_WEBKIT_DIR}/Source/WebKit2
@@ -106,5 +106,5 @@ index 3611524..f54b9ca 100644
      $$SOURCE_DIR \
      $$SOURCE_DIR/Platform \
 -- 
-2.10.2
+2.11.0
 

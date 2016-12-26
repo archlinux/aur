@@ -1,4 +1,4 @@
-From 4ab08227b87a186d18f9e1806a2405099ac109ed Mon Sep 17 00:00:00 2001
+From c139872c275f2bb62558b113048f0f3e54997d94 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sat, 5 Nov 2016 12:46:27 +0100
 Subject: [PATCH 8/9] Link against ANGLE even if Qt is configured not to
@@ -8,7 +8,7 @@ Subject: [PATCH 8/9] Link against ANGLE even if Qt is configured not to
  1 file changed, 4 insertions(+), 8 deletions(-)
 
 diff --git a/Source/WebCore/WebCore.pri b/Source/WebCore/WebCore.pri
-index ddad897..f69e224 100644
+index ddad897be..f69e22492 100644
 --- a/Source/WebCore/WebCore.pri
 +++ b/Source/WebCore/WebCore.pri
 @@ -215,15 +215,11 @@ enable?(WEB_AUDIO) {
@@ -32,5 +32,5 @@ index ddad897..f69e224 100644
          }
      } else {
 -- 
-2.10.2
+2.11.0
 
