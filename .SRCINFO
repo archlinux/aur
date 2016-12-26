@@ -3,7 +3,7 @@
 pkgbase = douane-configurator-git
 	pkgdesc = Douane Firewall Kernel GTK GUI
 	pkgver = 1
-	pkgrel = 2
+	pkgrel = 3
 	url = http://douaneapp.com/
 	arch = i686
 	arch = x86_64

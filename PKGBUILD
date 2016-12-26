@@ -1,6 +1,6 @@
 pkgname=douane-configurator-git
-pkgver=0.2.0.r0.g97994aa
-pkgrel=1
+pkgver=1
+pkgrel=3
 pkgdesc="Douane Firewall Kernel GTK GUI"
 arch=('i686' 'x86_64')
 url="http://douaneapp.com/"
@@ -24,8 +24,6 @@ prepare() {
 
 pkgver() {
   cd "$srcdir/douane-configurator"
-  # Tag
-  git tag -a $(head VERSION) -m ""
   # Use the tag of the last commit
   git describe --long | sed -E 's/([^-]*-g)/r\1/;s/-/./g'
 }
