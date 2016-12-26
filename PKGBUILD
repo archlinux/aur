@@ -15,7 +15,7 @@ url="https://github.com/Tytan/AutoPanorama"
 license=('GPL')
 groups=()
 depends=('qt5-base' 'jasper' 'libwebp')
-makedepends=('qt5-base' 'cmake' 'icoutils')
+makedepends=('qt5-base' 'cmake' 'gendesk')
 checkdepends=()
 optdepends=()
 provides=("$pkgname")
@@ -31,7 +31,8 @@ md5sums=('SKIP')
 validpgpkeys=()
 
 prepare() {
-	cd "$pkgname-$pkgver"
+    cd "$pkgname-$pkgver"
+    gendesk -f -n --pkgname "$pkgname" --pkgdesc "$pkgdesc" --categories "Graphics"
     git submodule init
     git submodule update --depth=1
     ./scripts/compile_opencv.sh
@@ -39,19 +40,16 @@ prepare() {
 
 build() {
     CORES=`nproc --all`
-	cd "$pkgname-$pkgver"
+    cd "$pkgname-$pkgver"
     mkdir -p build/$pkgname
     cd build/$pkgname
     qmake ../../AutoPanorama.pro
-	make -j$CORES
+    make -j$CORES
 }
 
 package() {
-	cd "$pkgname-$pkgver/build/$pkgname"
+    cd "$pkgname-$pkgver/build/$pkgname"
     make INSTALL_ROOT=$pkgdir install
     cd "$srcdir/$pkgname-$pkgver"
-    mkdir -p $pkgdir/usr/share/$pkgname/
-    mkdir -p $pkgdir/usr/share/applications/
-    icotool -x res/autopanorama.ico -o $pkgdir/usr/share/$pkgname/autopanorama.png
-    cp linux/autopanorama.desktop $pkgdir/usr/share/applications/
+    install -Dm644 "$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
 }
