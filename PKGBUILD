@@ -1,6 +1,6 @@
 # Maintainer: meepzh <meep.aur@meepzh.com>
 pkgname=seexpr-git
-pkgver=3.0.beta.2.r2.g743f732
+pkgver=3.0.beta.2.r37.g176c8eb
 pkgrel=1
 pkgdesc="An embeddable expression evaluation engine (git version)"
 arch=(i686 x86_64)
@@ -14,7 +14,7 @@ conflicts=("${pkgname%-git}")
 source=('git+https://github.com/wdas/SeExpr.git'
         'build.patch')
 md5sums=('SKIP'
-         '156977932afc69ff24f85be68a7357b6')
+         'd83afd628601603e8120ac7613526634')
 
 pkgver() {
   cd "$srcdir/SeExpr"
@@ -25,16 +25,16 @@ pkgver() {
 prepare() {
   cd "$srcdir/SeExpr"
   patch -p0 -i "../build.patch"
-  mkdir "$srcdir/SeExpr/src/SeExpr/generated"
+  mkdir -p "$srcdir/SeExpr/src/SeExpr/generated"
   touch "$srcdir/SeExpr/src/SeExpr/generated/ExprParser.tab.h"
   touch "$srcdir/SeExpr/src/SeExpr/generated/ExprParser.cpp"
 }
 
 build() {
   cd "$srcdir/SeExpr"
-  mkdir build
+  mkdir -p build
   cd build
-  cmake -DCMAKE_INSTALL_PREFIX=/usr ..
+  cmake -DCMAKE_INSTALL_PREFIX='/usr' -DCMAKE_INSTALL_LIBDIR='/usr/lib' ..
   make
 }
 
@@ -42,5 +42,5 @@ package() {
   cd "$srcdir/SeExpr/build"
   make DESTDIR="$pkgdir/" install
   # Copy custom Apache license
-  install -D -m644 "../LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  sudo install -D -m644 "../LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }

@@ -1,87 +1,103 @@
 diff --git CMakeLists.txt CMakeLists.txt
-index 8dd3d24..a896aaf 100644
+index 0e054ca..fe2b3f6 100644
 --- CMakeLists.txt
 +++ CMakeLists.txt
-@@ -93,7 +93,7 @@ ELSE(WIN32)
+@@ -144,7 +144,7 @@ else()
  
-   SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fPIC -g -std=c++11 -msse4.1")
-   if(NOT APPLE)
--    SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -rdynamic")
-+    SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -rdynamic -Wno-date-time")
-   else()
-     SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wno-date-time")
-   endif()
-@@ -185,10 +185,7 @@ ENDIF(ENABLE_LLVM_BACKEND AND LLVM_FOUND)
- 
- ## Traverse subdirectories
- ADD_SUBDIRECTORY (src/SeExpr)
--ADD_SUBDIRECTORY (src/ui)
--ADD_SUBDIRECTORY (src/tests)
-+#ADD_SUBDIRECTORY (src/ui)
- #TODO: put this back
--ADD_SUBDIRECTORY (src/py)
--ADD_SUBDIRECTORY (src/utils)
--ADD_SUBDIRECTORY (src/demos)
--ADD_SUBDIRECTORY (src/doc)
-+#ADD_SUBDIRECTORY (src/py)
-+#ADD_SUBDIRECTORY (src/utils)
+     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fPIC -g -std=c++11 -msse4.1")
+     if (NOT APPLE)
+-        set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -rdynamic")
++        set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -rdynamic -Wno-date-time")
+     else()
+         set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wno-date-time")
+     endif()
 diff --git src/build/build-info src/build/build-info
-index de58622..6f53cf2 100755
+index de58622..1016417 100755
 --- src/build/build-info
 +++ src/build/build-info
-@@ -11,7 +11,6 @@ if 'MACOSX_DEPLOYMENT_TARGET' in os.environ:
+@@ -11,7 +11,7 @@ if 'MACOSX_DEPLOYMENT_TARGET' in os.environ:
  from distutils import sysconfig as sc
  
  import sipconfig
 -from PyQt4 import pyqtconfig
++#from PyQt4 import pyqtconfig
  
  def main():
      parser = argparse.ArgumentParser()
-@@ -56,8 +55,7 @@ def python_site(args):
+@@ -56,8 +56,9 @@ def python_site(args):
  
  
  def pyqt4_sip(args):
 -    pkg_cfg = pyqtconfig._pkg_config
 -    return pkg_cfg['pyqt_sip_dir']
++    #pkg_cfg = pyqtconfig._pkg_config
++    #return pkg_cfg['pyqt_sip_dir']
 +    return os.path.join(sipconfig.Configuration().default_sip_dir, 'PyQt4')
  
  
  def sip_inc(args):
 diff --git src/py/CMakeLists.txt src/py/CMakeLists.txt
-index 1cc5cac..eade98e 100644
+index a3552f9..c4beb8c 100644
 --- src/py/CMakeLists.txt
 +++ src/py/CMakeLists.txt
-@@ -23,10 +23,10 @@ IF(APPLE)
- #    endif()
- 
- ELSE()
--EXECUTE_PROCESS( COMMAND python -c "import sys;print\"%s.%s\"%sys.version_info[0:2]" OUTPUT_VARIABLE PYTHON_VERSION OUTPUT_STRIP_TRAILING_WHITESPACE)
--EXECUTE_PROCESS( COMMAND  which python OUTPUT_VARIABLE PYTHON_EXECUTABLE OUTPUT_STRIP_TRAILING_WHITESPACE)
-+EXECUTE_PROCESS( COMMAND python2 -c "import sys;print\"%s.%s\"%sys.version_info[0:2]" OUTPUT_VARIABLE PYTHON_VERSION OUTPUT_STRIP_TRAILING_WHITESPACE)
-+EXECUTE_PROCESS( COMMAND  which python2 OUTPUT_VARIABLE PYTHON_EXECUTABLE OUTPUT_STRIP_TRAILING_WHITESPACE)
- EXECUTE_PROCESS( COMMAND  bash -c "ldd `which python` | grep libpyth | awk '{print $3}'" OUTPUT_VARIABLE PYTHON_LIBRARY OUTPUT_STRIP_TRAILING_WHITESPACE)
--EXECUTE_PROCESS( COMMAND python-config --includes OUTPUT_VARIABLE PYTHON_INCLUDE_DIR OUTPUT_STRIP_TRAILING_WHITESPACE)
-+EXECUTE_PROCESS( COMMAND python2-config --includes OUTPUT_VARIABLE PYTHON_INCLUDE_DIR OUTPUT_STRIP_TRAILING_WHITESPACE)
- #FIND_PACKAGE(PythonLibs)
- string(REGEX REPLACE "^[-I]" "" PYTHON_INCLUDE_DIR "${PYTHON_INCLUDE_DIR}")
- string(REGEX REPLACE "[ ]-I" " " PYTHON_INCLUDE_DIR "${PYTHON_INCLUDE_DIR}")
+@@ -25,7 +25,7 @@ if (USE_PYTHON)
+         IF (NOT DEFINED PYTHON_VERSION)
+             execute_process(
+                 COMMAND
+-                python -c "import sys; print('%s.%s' % sys.version_info[:2])"
++                python2 -c "import sys; print('%s.%s' % sys.version_info[:2])"
+                 OUTPUT_VARIABLE PYTHON_VERSION
+                 OUTPUT_STRIP_TRAILING_WHITESPACE)
+         endif()
+@@ -34,7 +34,7 @@ if (USE_PYTHON)
+         if (NOT DEFINED PYTHON_INCLUDE_DIR)
+             execute_process(
+                 COMMAND
+-                sh -c "python-config --includes | sed -e s,-I,,g"
++                sh -c "python2-config --includes | sed -e s,-I,,g"
+                 OUTPUT_VARIABLE PYTHON_INCLUDE_DIR
+                 OUTPUT_STRIP_TRAILING_WHITESPACE)
+             separate_arguments(PYTHON_INCLUDE_DIR)
+@@ -45,7 +45,7 @@ if (USE_PYTHON)
+         if (NOT DEFINED PYTHON_LIB_DIRS)
+             execute_process(
+                 COMMAND
+-                sh -c "python-config --ldflags | tr ' ' '\\n' | grep ^-L | sed -e s,-L,, | tr '\\n' ' '"
++                sh -c "python2-config --ldflags | tr ' ' '\\n' | grep ^-L | sed -e s,-L,, | tr '\\n' ' '"
+                 OUTPUT_VARIABLE PYTHON_LIB_DIRS
+                 OUTPUT_STRIP_TRAILING_WHITESPACE)
+             if (NOT ${PYTHON_LIB_DIRS} STREQUAL "")
+@@ -61,7 +61,7 @@ if (USE_PYTHON)
+         if (NOT DEFINED PYTHON_LIBRARIES)
+             execute_process(
+                 COMMAND
+-                sh -c "python-config --ldflags | tr ' ' '\\n' | grep ^-l | sed -e s,-l,, | tr '\\n' ' '"
++                sh -c "python2-config --ldflags | tr ' ' '\\n' | grep ^-l | sed -e s,-l,, | tr '\\n' ' '"
+                 OUTPUT_VARIABLE PYTHON_LIBRARIES OUTPUT_STRIP_TRAILING_WHITESPACE)
+             separate_arguments(PYTHON_LIBRARIES)
+         endif()
+
 diff --git src/ui/CMakeLists.txt src/ui/CMakeLists.txt
-index 67b1bc8..ea6a78f 100644
+index d40c02e..b3a541e 100644
 --- src/ui/CMakeLists.txt
 +++ src/ui/CMakeLists.txt
-@@ -15,8 +15,10 @@
+@@ -15,9 +15,11 @@
  
  # Find python includes and libs. cmake doesn't seem to handle automatically
  
 +set(Python_ADDITIONAL_VERSIONS 2.7 2.6 2.5 2.4)
  find_package(PythonInterp)
  find_package(PythonLibs)
-+if(PYTHONLIBS_FOUND)
  
++if(PYTHONLIBS_FOUND)
  macro(get_build_info NAME STORAGE)
      execute_process(
-@@ -121,3 +123,4 @@ ENDIF(WIN32)
+         COMMAND ${PYTHON_EXECUTABLE} ${PROJECT_SOURCE_DIR}/src/build/build-info ${NAME}
+@@ -148,4 +150,5 @@ if(QT4_FOUND)
+     install(TARGETS expreditor2 DESTINATION ${CMAKE_INSTALL_PYTHON})
+     install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/__init__.py
              DESTINATION ${CMAKE_INSTALL_PYTHON})
- 
- endif(QT4_FOUND)
+-endif()
++endif(QT4_FOUND)
 +endif(PYTHONLIBS_FOUND)
+\ No newline at end of file
