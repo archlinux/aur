@@ -5,9 +5,9 @@ After=network.target
 
 [Service]
 Type=forking
-ExecStart=/usr/bin/zabbix_agentd -f
+ExecStart=/usr/bin/zabbix_agentd
 #GuessMainPID=no
-#PIDFile=/run/zabbix/zabbix_agentd.pid
+PIDFile=/run/zabbix/zabbix_agentd.pid
 Restart=on-abnormal
 PrivateTmp=yes
 ProtectSystem=full
