@@ -1,6 +1,6 @@
 pkgname=caddy
-pkgver=0.9.3
-pkgrel=7
+pkgver=0.9.4
+pkgrel=1
 pkgdesc='A configurable, general-purpose HTTP/2 web server for any platform'
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 url='https://caddyserver.com'
@@ -10,7 +10,7 @@ makedepends=('go>=1.7' 'git')
 conflicts=('caddy-all-features' 'caddy-git' 'caddy-full-bin')
 
 gopkgname='github.com/mholt/caddy'
-source=("git+https://github.com/mholt/caddy"
+source=("git+https://github.com/mholt/caddy#tag=v$pkgver"
         "systemd-unit-file.patch")
 md5sums=('SKIP'
          '07575b06cc76cf5e0287d6c28f05eb05')
