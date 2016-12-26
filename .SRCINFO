@@ -11,5 +11,5 @@ pkgbase = tidb-bin-nightly
 	sha256sums = SKIP
 	sha256sums = SKIP
 
-pkgname = tidb-bin
+pkgname = tidb-bin-nightly
 
