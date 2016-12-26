@@ -2,9 +2,9 @@
 
 pkgname=gradio
 _gitname=gradio
-pkgver=5.0.0.beta2
-_pkgver=5.0.0-beta2
-pkgrel=2
+pkgver=5.0
+_pkgver=5.0
+pkgrel=1
 pkgdesc='A GTK3 app for finding and listening to internet radio stations'
 arch=('i686' 'x86_64')
 license=('GPL3')
@@ -16,7 +16,7 @@ makedepends=('unzip' 'gnome-common' 'intltool' 'itstool' 'vala' 'yelp-tools' 'cm
 options=('!emptydirs')
 install=gradio.install
 source=("https://github.com/haecker-felix/${_gitname}/archive/v${_pkgver}.zip")
-md5sums=('b3da8e5c5abdcb44cfefd505757a30fe')
+md5sums=('4c61f411f9e90e5e202aabcabe71e1f7')
 conflicts=('gradio-git' 'gradio-bin')
 provides=("gradio=$_pkgver")
 
