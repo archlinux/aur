@@ -49,4 +49,8 @@ sha512sums=(SKIP) # Git already ensures data consistency
 package() {
   mkdir -p ${pkgdir}/usr/share/
   cp -R mycroft-core ${pkgdir}/usr/share/
+
+  # Place a link to mimic where mycroft is expecting it
+  mkdir -p ${pkgdir}/usr/share/mycroft-core/mimic/bin
+  ln -s /usr/bin/mimic ${pkgdir}/usr/share/mycroft-core/mimic/bin/mimic
 }
