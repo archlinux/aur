@@ -1,14 +1,14 @@
 # AUR files for larryshell
 
-This should be run the server that hosts the files required by `PKGBUILD` (currently `jhoughton.me`).
+This should be run the server that hosts the files required by `PKGBUILD` (currently [jhoughton.me](https://jhoughton.me/larryshell)).
 
-Simply running `make` or `make build` will build and update package sources for the specific version in `PKGBUILD` and `Makefile`.  
+Simply running `make` then `make build` will build and update package sources. The version number is the SHA hash of the latest [larryshell](https://github.com/Devon-Austin-Wood-Thomas/larryshell) commit. 
 To install the package without pushing to AUR or just to test to see if the build worked you can run
 ```shell
 pkgbuild
 pacman --noconfirm -U larryshell*.tar.gz
 ```
-To push to the AUR (with its one SSH key), first fetch the repository
+To push to the AUR (with its own SSH key), first fetch the repository
 ```shell
 git init
 git remote add aur ssh://aur@aur.archlinux.org/larryshell.git
