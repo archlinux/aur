@@ -2,8 +2,8 @@
 
 _pkgname=meld
 pkgname=$_pkgname-dev
-pkgver=3.16.0
-pkgrel=2
+pkgver=3.17.0
+pkgrel=1
 pkgdesc='Visual diff and merge tool'
 url='http://meldmerge.org/'
 license=(GPL)
@@ -11,16 +11,18 @@ arch=(any)
 conflicts=('meld','meld-git')
 replaces=('meld','meld-git')
 provides=('meld')
-makedepends=(intltool itstool)
+makedepends=('intltool' 'gnome-doc-utils' 'itstool')
 install=meld.install
-depends=(python2-gobject python2-cairo gtksourceview3 hicolor-icon-theme desktop-file-utils
-         gsettings-desktop-schemas)
+depends=('python>=3.3'
+        'gtk3>=3.6'
+	'glib2>=2.36'
+	'python-gobject>=3.14'
+	'pygobject-devel>=3.14'
+	'gtksourceview3>=3.14'
+        'python-cairo>=1.10.0-6')
 optdepends=('python2-dbus: open a new tab in an already running instance')
 source=("https://download.gnome.org/sources/$_pkgname/${pkgver%.*}/meld-${pkgver}.tar.xz")
-sha1sums=('12cd5074ad23650776334cf3d1f2d803d5f2db97')
-
-# Meld does not support Python 3. The build succeeds, but
-# the main executable checks the version and errors out.
+sha1sums=('8370038f6884a864e7fb8f4bfd2a9bf0fde60a81')
 
 prepare() {
   cd $_pkgname-$pkgver
@@ -28,12 +30,12 @@ prepare() {
 
 build() {
   cd $_pkgname-$pkgver
-  python2 setup.py build
+  python3 setup.py build
 }
 
 package() {
   cd $_pkgname-$pkgver
   # using --skip-build breaks install
-  python2 setup.py --no-update-icon-cache --no-compile-schemas \
+  python3 setup.py --no-update-icon-cache --no-compile-schemas \
     install --prefix=/usr --root="$pkgdir" --optimize=1
 }
