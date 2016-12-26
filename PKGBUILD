@@ -1,8 +1,8 @@
 # Maintainer: Christian Hesse <mail@eworm.de>
 
 pkgname=openvpn-git
-pkgver=2.4.rc2.r0.ga5ae0138
-pkgrel=2
+pkgver=2.4.rc2.r8.g4ba943b0
+pkgrel=1
 pkgdesc='An easy-to-use, robust and highly configurable VPN (Virtual Private Network) - git checkout'
 arch=('i686' 'x86_64')
 url='http://openvpn.net/index.php/open-source.html'
@@ -18,7 +18,7 @@ source=('git://github.com/OpenVPN/openvpn.git'
         '0002-do-not-race-on-RuntimeDirectory.patch')
 sha256sums=('SKIP'
             'b8254067b4ef5d157d87267a76938d86f101972303c7ff20131cc9f28659a30c'
-            '6cc4863a9e7d43f2ff79141dce53aa92fd5e9c395434b6838c81b57ea45d4fc4')
+            'a87b081f998db99190e8b9e185cd7aade5bd6dfb5c03777c82b75d28cd3b375c')
 
 pkgver() {
 	cd openvpn/
@@ -82,8 +82,8 @@ package() {
 	cp -r sample/sample-config-files "${pkgdir}"/usr/share/openvpn/examples
 
 	# Install license
-	install -d -m0755 "${pkgdir}"/usr/share/licenses/openvpn
-	ln -sf /usr/share/doc/"${pkgname}"/{COPYING,COPYRIGHT.GPL} "${pkgdir}"/usr/share/licenses/openvpn
+	install -d -m0755 "${pkgdir}"/usr/share/licenses/openvpn/
+	ln -sf /usr/share/doc/openvpn/{COPYING,COPYRIGHT.GPL} "${pkgdir}"/usr/share/licenses/openvpn/
 
 	# Install contrib
 	for FILE in $(find contrib -type f); do
@@ -93,8 +93,10 @@ package() {
 		esac
 	done
 
-	# Install systemd services
+	# Install systemd files
 	install -d -m0755 "${pkgdir}"/usr/lib/systemd/system/
 	install -m0644 distro/systemd/openvpn-{client,server}@.service "${pkgdir}"/usr/lib/systemd/system/
+	install -d -m0755 "${pkgdir}"/usr/lib/tmpfiles.d/ "${pkgdir}"/run/openvpn-{client,server}
+	install -m0644 distro/systemd/openvpn.conf "${pkgdir}"/usr/lib/tmpfiles.d/openvpn.conf
 }
 
