@@ -22,8 +22,8 @@ check(1 - $ret, 'No changes');
 exec("git -C $AUR_BUILD_DIR add .");
 $sha = shell_exec("git -C $AUR_BUILD_DIR/larryshell rev-parse --short HEAD");
 exec("git -C $AUR_BUILD_DIR commit -m 'Automatic version bump -- $sha'", $arr, $ret);
-check($ret, 'Failed to commit');
 
+check($ret, 'Failed to commit');
 // DAWT
 exec("git -C $AUR_BUILD_DIR push dawt master", $arr, $ret);
 check($ret, 'Failed to push to GitHub');
