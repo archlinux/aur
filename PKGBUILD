@@ -1,8 +1,8 @@
 # Maintainer: Michael Gerhaeuser <michael.gerhaeuser@gmail.com>
 # Contributor: Harley Laue <losinggeneration@gmail.com>
 pkgname=zerobrane-studio
-pkgver=1.40
-pkgrel=2
+pkgver=1.50
+pkgrel=1
 pkgdesc="A lightweight Lua-based IDE for Lua"
 arch=(any)
 url="http://studio.zerobrane.com/"
@@ -14,13 +14,13 @@ conflicts=('zerobrane-studio-git')
 optdepends=('love: to debug love programs')
 _github_user="pkulchenko"
 _github_project="ZeroBraneStudio"
-_github_rev="5a2af99"
-source=("https://github.com/$_github_user/$_github_project/tarball/${pkgver}"
+_github_rev="53fc3f0"
+source=("https://github.com/$_github_user/$_github_project/tarball/${_github_rev}"
         "zbstudio.patch"
         "user.lua")
-md5sums=('e0137f3b2c96ef6e9832beb3142fc73e'
-         '3bb356b8549b60352e8ab36b9a6d9a92'
-         '73636b0c87d0412e316e7ad58151e70d')
+sha512sums=('d7720c4ef014da2bb661f109014fc4200a3d8cf94db10f03a563b3bcfcf01264dabbf7f6a0c2120a4dd86256e95f72673c0f86812f9feeb14d74f5e3403b3b01'
+            'c36898ce75db091ed1c9f63d18c6604faf9cc1c33eee5ea6d2c4c6d313d1c429c1ef21e3d6e85671353354e5329559e5da5cd6b53c71350bca4d30a42f1233ad'
+            '2edc1ba142cc13e49a6b429e4b240eab2bfc252b55c90b95d288d72a1175c99e4aef5dffd1be867ff2b6ed73ca6ec0de41440e5fc31f88059cc59a16aa1e7955')
 
 prepare() {
   cd "$srcdir/$_github_user-$_github_project-$_github_rev"
