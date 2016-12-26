@@ -1,6 +1,6 @@
 pkgbase = devscripts-git
 	pkgdesc = Scripts to make the life of a Debian Package maintainer easier (git-latest)
-	pkgver = 2.16.12.r0.g2343096
+	pkgver = 2.16.13.r2.gbce34b8d
 	pkgrel = 1
 	url = https://anonscm.debian.org/git/collab-maint/devscripts.git
 	install = devscripts-git.install
@@ -13,6 +13,8 @@ pkgbase = devscripts-git
 	makedepends = docbook-xsl
 	makedepends = perl-file-desktopentry
 	makedepends = perl-file-basedir
+	makedepends = perl-git-wrapper
+	makedepends = perl-list-compare
 	makedepends = perl-parse-debcontrol
 	makedepends = python-setuptools
 	depends = dpkg

@@ -7,7 +7,7 @@
 
 pkgname=devscripts-git 
 _gitname=devscripts 
-pkgver=2.16.12.r0.g2343096 
+pkgver=2.16.13.r2.gbce34b8d 
 pkgrel=1 pkgdesc="Scripts to make the life of a Debian Package maintainer easier (git-latest)" 
 arch=('any') 
 url="https://anonscm.debian.org/git/collab-maint/devscripts.git" 
@@ -16,8 +16,8 @@ depends=('dpkg' 'wget' 'sed' 'perl' 'debianutils'
 	 'debhelper' 'perl-timedate') 
 optdepends=('sensible-utils: for sensible alternative selection') 
 makedepends=('git' 'po4a' 'perl-timedate' 'perl-libwww' 'docbook-xsl' 
-	     'perl-file-desktopentry' 'perl-file-basedir' 
-	     'perl-parse-debcontrol' 'python-setuptools') 
+	     'perl-file-desktopentry' 'perl-file-basedir' 'perl-git-wrapper' 
+	     'perl-list-compare' 'perl-parse-debcontrol' 'python-setuptools') 
 conflicts=('devscripts') 
 provides=('devscripts') 
 options=('!makeflags') 
