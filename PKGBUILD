@@ -2,9 +2,9 @@
 # Contributor: Peter Simons <simons@cryp.to>
 
 pkgname=pycryptopp
-pkgver=0.6.0
-_pkgtag=1206569328141510525648634803928199668821045408958
-pkgrel=2
+pkgver=0.7.1
+_pkgtag=869544967005693312591928092448767568728501330214
+pkgrel=1
 
 pkgdesc="Python wrappers for the Crypto++ library"
 arch=('i686' 'x86_64')
@@ -13,13 +13,11 @@ license=('GPL')
 makedepends=('python2-setuptools')
 depends=('python2' 'crypto++')
 
-source=("https://pypi.python.org/packages/source/p/$pkgname/$pkgname-$pkgver.$_pkgtag.tar.gz"
-        "https://pypi.python.org/packages/source/p/$pkgname/$pkgname-$pkgver.$_pkgtag.tar.gz.asc")
+source=("https://pypi.python.org/packages/7c/e2/7e035d306c7516c471802d7cd7b6c1e403e582489bc5c14706854a187a24/$pkgname-$pkgver.$_pkgtag.tar.gz")
 
 #key 242BE85F: public key "Zooko Wilcox-O'Hearn (Hacker) <zooko@zooko.com>"
 validpgpkeys=('A60B7EE17164D0C5F13738685F22F428242BE85F')
-sha256sums=('116158917bd243da2701cfeba9a6374854bc9a599d1466e1a2dbadf37c802059'
-            'SKIP')
+sha256sums=('08ad57a1a39b7ed23c173692281da0b8d49d98ad3dcc09f8cca6d901e142699f')
 
 build() {
     cd "$srcdir/$pkgname-$pkgver.$_pkgtag"
