@@ -2,9 +2,9 @@
 
 pkgname=dolphin-emu-faster-melee
 # shellcheck disable=SC2034
-pkgver=4.3
+pkgver=4.4
 # shellcheck disable=SC2034
-pkgrel=5
+pkgrel=1
 # shellcheck disable=SC2034
 pkgdesc='The FasterMelee NetPlay build of the Dolphin Emulator'
 # shellcheck disable=SC2034
