@@ -1,7 +1,7 @@
 pkgbase = playonlinux5-git
 	pkgdesc = GUI for managing Windows programs under linux (development version based on Java)
-	pkgver = r1319.66f20455
-	pkgrel = 1
+	pkgver = r1328.6376ad23
+	pkgrel = 3
 	epoch = 2
 	url = http://www.playonlinux.com/
 	arch = any
@@ -18,7 +18,7 @@ pkgbase = playonlinux5-git
 	source = PlayOnLinux.sh
 	sha256sums = SKIP
 	sha256sums = 4703fc813fb18d3e414cc1483f03cb3c0c306e5725b7681b3dbc43fb7f6630de
-	sha256sums = 7558a8d24f344228ec55fc9fd156dfe75d7625378c6230fa2a625fa8fe17ee12
+	sha256sums = 9deabf8918a55e5726d9708e074a3420701f89f57748779f78a8ee681fbe97e4
 
 pkgname = playonlinux5-git
 

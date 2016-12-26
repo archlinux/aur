@@ -10,8 +10,8 @@
 
 _pkgname=playonlinux5
 pkgname=$_pkgname-git
-pkgver=r1319.66f20455
-pkgrel=1
+pkgver=r1328.6376ad23
+pkgrel=3
 epoch=2
 pkgdesc="GUI for managing Windows programs under linux (development version based on Java)"
 arch=('any')
@@ -28,7 +28,7 @@ source=(
 sha256sums=(
 	'SKIP'
 	'4703fc813fb18d3e414cc1483f03cb3c0c306e5725b7681b3dbc43fb7f6630de'
-	'7558a8d24f344228ec55fc9fd156dfe75d7625378c6230fa2a625fa8fe17ee12'
+	'9deabf8918a55e5726d9708e074a3420701f89f57748779f78a8ee681fbe97e4'
 	)
 
 pkgver() {
@@ -45,9 +45,6 @@ build() {
   # Set environment
   # Use path to Java 8 for users nkt defaulted to Java 8 yet
   export JAVA_HOME="/usr/lib/jvm/java-8-openjdk"
-
-  # Clean up
-  mvn clean
 
   # Build
   mvn package
