@@ -1,0 +1,10 @@
+[Unit]
+Description=asyncio-based source compiler and test runner
+After=network.target
+
+[Service]
+User=camisole
+ExecStart=/usr/bin/python -m camisole --logging=info
+
+[Install]
+WantedBy=multi-user.target

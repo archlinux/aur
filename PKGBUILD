@@ -1,11 +1,12 @@
 _gitname="camisole"
 pkgname=camisole-git
-pkgver=0.1.r0.g6bc31a4
+pkgver=0.1.r5.gea9e996
 pkgrel=1
 pkgdesc="An asyncio-based source compiler and test runner."
 arch=('any')
 url="https://bitbucket.org/prologin/${_gitname}"
 license=('GPL')
+conflits=('camisole')
 depends=('python' 'python-aiohttp')
 makedepends=('git' 'python-setuptools')
 optdepends=('esotope-bfc-git: compile Brainfuck sources'
@@ -24,8 +25,13 @@ optdepends=('esotope-bfc-git: compile Brainfuck sources'
             'ocaml: compile OCaml sources'
             'perl: compile Perl sources'
             'php: compile PHP sources')
-source=("${_gitname}::git+${url}.git")
-sha1sums=('SKIP')
+source=("git+${url}.git"
+        'camisole.service'
+        'sysusers.conf')
+sha1sums=('SKIP'
+          '29fc46a441a1c75cc635ed209bde983d2a61d696'
+          'bcc8b1654e0d21064cae4a3cb7952b7a602c5c36')
+install=${pkgname}.install
 
 pkgver() {
     cd "${srcdir}/${_gitname}"
@@ -35,4 +41,6 @@ pkgver() {
 package() {
     cd "${srcdir}/${_gitname}"
     python setup.py install --root="${pkgdir}" || return 1
+    install -Dm644 "${srcdir}/sysusers.conf" "${pkgdir}/usr/lib/sysusers.d/${_gitname}.conf"
+    install -Dm644 "${srcdir}/camisole.service" "${pkgdir}/usr/lib/systemd/system/${_gitname}.service"
 }
