@@ -1,8 +1,9 @@
 pkgbase = dolphin-emu-faster-melee
 	pkgdesc = The FasterMelee NetPlay build of the Dolphin Emulator
-	pkgver = 4.3
-	pkgrel = 4
+	pkgver = 4.4
+	pkgrel = 1
 	url = http://fastermelee.net
+	install = faster-melee.install
 	arch = x86_64
 	license = GPL
 	makedepends = cmake
@@ -24,11 +25,17 @@ pkgbase = dolphin-emu-faster-melee
 	conflicts = dolphin-emu-git
 	options = !emptydirs
 	source = dolphin-emu-faster-melee::git+https://github.com/Tinob/Ishiiruka.git#commit=0b00f1f6267190a8bf9a3584497a35d8762eb0a9
-	source = GALE01.ini
 	source = GALE01r2.ini
+	source = GALE01.ini
+	source = MNCE02.ini
+	source = NMNB01.ini
+	source = PALE02.ini
 	sha256sums = SKIP
-	sha256sums = 62abf45f5064fac79aeead6340120be5beb8ad7a64f25fd85c07b45e3756df3f
-	sha256sums = a2ab0e1b737ff8af5a0ccacc40147d331ba0abe5e19aac019add68e732289605
+	sha256sums = eae12be9d008453d09bf1379315a2299eca9c76cc093727f8f41926193981c50
+	sha256sums = a930e0490bfa95f66f96919d320e04f99d6988587209700a536bf7549d53466a
+	sha256sums = 4dd62a40be7a41c92079c9ee23f5fd458c85f275431881c707450f634fdcf24c
+	sha256sums = 4dd62a40be7a41c92079c9ee23f5fd458c85f275431881c707450f634fdcf24c
+	sha256sums = 4dd62a40be7a41c92079c9ee23f5fd458c85f275431881c707450f634fdcf24c
 
 pkgname = dolphin-emu-faster-melee
 
