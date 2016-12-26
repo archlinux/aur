@@ -6,7 +6,7 @@ pkgdesc="Premium Markdown Editor http://caret.io"
 arch=('x86_64')
 url="https://github.com/careteditor/caret"
 license=('unknown')
-depends=('gconf')
+depends=('gconf' 'nss' 'libxss' 'alsa-lib' 'libxtst' 'gtk2')
 source=("https://github.com/careteditor/caret/releases/download/$pkgver/Caret.deb")
 
 prepare() {
