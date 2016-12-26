@@ -8,8 +8,8 @@ pkgdesc="IIO accelerometer sensor to input device proxy"
 arch=('i686' 'x86_64')
 url="https://github.com/hadess/iio-sensor-proxy"
 license=('GPLv2+')
-depends=('systemd' 'libgudev')
-makedepends=('git' 'gtk-doc')
+depends=('systemd' 'libgudev' 'gtk3' 'systemd')
+makedepends=('git' 'gnome-common' 'gtk-doc')
 source=("git+https://github.com/hadess/iio-sensor-proxy.git")
 md5sums=('SKIP')
 
