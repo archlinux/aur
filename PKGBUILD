@@ -10,7 +10,7 @@ license=('GPL')
 depends=('qt5-base' 'libpwquality' 'hicolor-icon-theme')
 makedepends=('cmake' 'libgcrypt' 'gcc-libs')
 optdepends=('libsecret: support for Gnome libsecret password storage'
-            'kdeutils: support for KDE wallet storage'
+            'kwallet: support for KDE wallet storage'
             'cryfs: for CryFS support'
             'gocryptfs: for gocryptfs support'
             'securefs: for securefs support'
@@ -24,7 +24,7 @@ prepare() {
   cd "$srcdir/${_name}-${pkgver}"
   mkdir -p build
 
-  if pacman -Qs "kdeutils" > /dev/null ; then
+  if pacman -Qs "kwallet" > /dev/null ; then
     kdeopt="false"
   else
     kdeopt="true"
