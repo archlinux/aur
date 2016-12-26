@@ -15,6 +15,7 @@ pkgbase = scribus-devel
 	depends = libcups
 	depends = libmspub
 	depends = libpagemaker
+	depends = graphicsmagick
 	depends = libvisio
 	depends = podofo
 	depends = poppler

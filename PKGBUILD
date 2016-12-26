@@ -13,7 +13,7 @@ pkgdesc="Desktop publishing software"
 arch=('i686' 'x86_64')
 url="https://www.scribus.net/"
 license=('GPL')
-depends=('hunspell' 'libcdr' 'libcups' 'libmspub' 'libpagemaker'
+depends=('hunspell' 'libcdr' 'libcups' 'libmspub' 'libpagemaker' 'graphicsmagick'
          'libvisio' 'podofo' 'poppler' 'python2' 'qt5-declarative'
          'desktop-file-utils' 'hicolor-icon-theme' 'shared-mime-info')
 makedepends=('cmake' 'boost' 'mesa' 'qt5-tools')
@@ -41,7 +41,7 @@ build() {
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DCMAKE_BUILD_TYPE=Release \
         -DCMAKE_SKIP_RPATH=ON \
-        -DLIB_SUFFIX=""
+        -DWANT_GRAPHICSMAGICK=1
     make
 }
 
