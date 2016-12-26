@@ -1,4 +1,4 @@
-pkgname=mono
+pkgname=mono-alpha
 _pkgname=mono
 pkgver=4.8.0
 pkgrel=2

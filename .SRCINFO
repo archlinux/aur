@@ -1,4 +1,4 @@
-pkgbase = mono
+pkgbase = mono-alpha
 	pkgdesc = Free implementation of the .NET platform including runtime and compiler. Alpha version.
 	pkgver = 4.8.0
 	pkgrel = 2
@@ -28,5 +28,5 @@ pkgbase = mono
 	md5sums = SKIP
 	md5sums = b9ef8a65fea497acf176cca16c1e2402
 
-pkgname = mono
+pkgname = mono-alpha
 
