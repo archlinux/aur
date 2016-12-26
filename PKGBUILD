@@ -30,8 +30,8 @@ package() {
     mkdir -p ${pkgdir}/usr/share
     cp -ra usr/share/* ${pkgdir}/usr/share
     
-    mkdir -p ${pkgdir}/usr/local/bin
-    cp Caret ${pkgdir}/usr/local/bin/Caret
+    mkdir -p ${pkgdir}/usr/bin
+    cp Caret ${pkgdir}/usr/bin/Caret
     
     rm ${pkgdir}/opt/caret/after-install.tpl
     rm ${pkgdir}/opt/caret/after-remove.tpl 
