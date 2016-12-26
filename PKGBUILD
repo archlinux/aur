@@ -9,7 +9,7 @@ _commit=HEAD
 _branch=feature-bind
 
 pkgname=libtorrent-pyro-git
-pkgver=20161207
+pkgver=20161225
 pkgrel=1
 pkgdesc='BitTorrent library written in C++ (git version)'
 url='https://rakshasa.github.io/rtorrent'
@@ -22,7 +22,8 @@ provides=('libtorrent')
 install=libtorrent-pyro.install
 
 [[ $_debug = 'n' ]] &&
-    _debug='--disable-debug' ||
+    _debug='--disable-debug'
+    BUILDENV+=(!check) ||
 {
     _debug='--enable-extra-debug'
     depends+=('cppunit')
@@ -57,10 +58,8 @@ build() {
 }
 
 check() {
-    [[ ! $_debug = 'n' ]] && {
-        cd "$srcdir/libtorrent"
-        make check
-    }
+    cd "$srcdir/libtorrent"
+    make check
 }
 
 
