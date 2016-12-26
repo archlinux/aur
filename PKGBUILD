@@ -2,7 +2,7 @@
 pkgname=wire-desktop
 _pkgname=wire
 pkgver=2.11.2686
-pkgrel=1
+pkgrel=2
 pkgdesc='Modern, private messenger. Based on Electron.'
 arch=('x86_64' 'i686')
 url='https://wire.com/'
@@ -13,7 +13,6 @@ makedepends=('gendesk' 'grunt-cli' 'npm' 'python2' 'yarn')
 provides=('wire-desktop')
 source=("${pkgver}.tar.gz::https://github.com/wireapp/wire-desktop/archive/release/"$pkgver".tar.gz")        
 sha256sums=('4776b902c3845b20c9cc19be450aa302f8c503f65a7aa30c92d56ee59edacd8c')
-install="${pkgname}".install
 
 prepare() {
   gendesk -f -n --name=Wire --pkgname="${_pkgname}" --pkgdesc="${pkgdesc}" --exec="${_pkgname}" --categories="Network"
@@ -48,12 +47,16 @@ package() {
   ln -s "/usr/lib/${_pkgname}/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
   
   # Place desktop entry and icon
-  install -Dm644 "${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
-  install -Dm644 "${srcdir}/${pkgname}-release-${pkgver}/electron/img/wire.png" "${pkgdir}/usr/share/pixmaps/${_pkgname}.png"
+  desktop-file-install -m 644 --dir "${pkgdir}/usr/share/applications/" "${srcdir}/${_pkgname}.desktop"
+  for res in 32x32 256x256; do
+    install -dm755 "${pkgdir}/usr/share/icons/hicolor/${res}/apps"
+    install -Dm755 "${srcdir}/${pkgname}-release-${pkgver}/resources/icons/${res}.png" \
+      "${pkgdir}/usr/share/icons/hicolor/${res}/apps/${_pkgname}.png"
+  done
 
   # Place license files
-  install -Dm644 "${pkgdir}/usr/lib/${_pkgname}/LICENSE.electron.txt" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE.electron.txt"
-  install -Dm644 "${pkgdir}/usr/lib/${_pkgname}/LICENSES.chromium.html" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSES.chromium.html"
-  rm "${pkgdir}/usr/lib/${_pkgname}/LICENSE.electron.txt"
-  rm "${pkgdir}/usr/lib/${_pkgname}/LICENSES.chromium.html"
+  for license in "LICENSE.electron.txt" "LICENSES.chromium.html"; do
+    install -Dm644 "${pkgdir}/usr/lib/${_pkgname}/${license}" "${pkgdir}/usr/share/licenses/${_pkgname}/${license}"
+    rm "${pkgdir}/usr/lib/${_pkgname}/${license}"
+  done
 }
