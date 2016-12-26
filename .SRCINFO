@@ -32,5 +32,5 @@ pkgbase = scribus
 	sha256sums = ec5eec23aeda655d3a761cffb85853dcd2ede3973b9e62a1b3c28bd1093c74f5
 	sha256sums = SKIP
 
-pkgname = scribus-devel
+pkgname = scribus-devel-old
 

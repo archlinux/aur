@@ -6,7 +6,7 @@
 # Contributor: Ben <ben@benmazer.net>
 
 pkgbase=scribus
-pkgname=scribus-devel
+pkgname=scribus-devel-old
 pkgver=1.5.2
 pkgrel=1
 pkgdesc="Desktop publishing software"
@@ -45,7 +45,7 @@ build() {
     make
 }
 
-package_scribus-devel() {
+package_scribus-devel-old() {
     cd build
 
     make DESTDIR="${pkgdir}" install
@@ -56,4 +56,3 @@ package_scribus-devel() {
         install -Dm644 ../${pkgbase}-${pkgver}/resources/iconsets/artwork/icon_${i}.png "${pkgdir}"/usr/share/icons/hicolor/${i}/apps/scribus.png
     done
 }
-
