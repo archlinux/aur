@@ -22,5 +22,5 @@ pkgbase = powerdevil
 	sha256sums = 9e55f6405da947f7a8dd97b41acd2eafbb5d77fd1943d024e28935f951f22cac
 	sha256sums = SKIP
 
-pkgname = powerdevil-light
+pkgname = powerdevil-light-old
 

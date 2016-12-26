@@ -4,7 +4,7 @@
 # Contributor: Antonio Rojas
 
 pkgbase=powerdevil
-pkgname=powerdevil-light
+pkgname=powerdevil-light-old
 pkgver=5.8.4
 pkgrel=1
 pkgdesc='Manages the power consumption settings of a Plasma Shell. Light version without NetworkManager and Bluez support/dependencies.'
@@ -38,7 +38,7 @@ build() {
     make
 }
 
-package_powerdevil-light() {
+package_powerdevil-light-old() {
     cd build
     make DESTDIR="${pkgdir}" install
 }
