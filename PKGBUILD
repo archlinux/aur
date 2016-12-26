@@ -1,4 +1,4 @@
-# Maintainer: meepzh <meep.aur@meepzh.com>
+# Maintainer: Alex Dahl <adahl1@umbc.edu>
 pkgname=seexpr-git
 pkgver=3.0.beta.2.r37.g176c8eb
 pkgrel=1
