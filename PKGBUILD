@@ -38,18 +38,6 @@ prepare() {
 	fi
 	
 	git reset --hard
-	
-#	_BADLINE=$(sed '656!d' Makefile)
-#	if [ "$_BADLINE" != "endif" ]; then
-#		msg "Applying quick fix for missing endif"
-#		sed -i '656iendif' Makefile # quick fix for missing endif in current 4.9 branch
-#	fi
-	
-#	_MISSINGHEADERS=$(sed '20!d' block/bfq-cgroup.c)
-#	if [ "$_MISSINGHEADERS" != "#include \"blk.h\"" ]; then
-#		msg "Applying quick fix for a couple missing headers for BFQ"
-#		sed -i "20i#include \"blk.h\"\n#include \"blk-wbt.h\"\n" block/bfq-cgroup.c
-#	fi
 }
 
 pkgver() {
@@ -70,22 +58,29 @@ build() {
 		if [ ! -d "${srcdir}/build" ]; then
 			msg2 "Creating build directory..."
 			mkdir -p "${srcdir}/build"
+		else
+			rm -rf "${srcdir}/build";
 		fi
 
-		msg2 "Creating default config..." # also initializes the output directory
-		make -C "${srcdir}/zen-kernel/" O="${srcdir}/build" defconfig > /dev/null
+		if [ ! -f "${srcdir}/../zen-config" ]; then
+			msg2 "Creating default config..." # also initializes the output directory
+			make -C "${srcdir}/zen-kernel/" O="${srcdir}/build" defconfig > /dev/null
 
-		warning "This package does not ship a kernel config."
+			warning "This package does not ship a kernel config."
 
-		plain   ""
-		warning "Thus it is up to you to create a one that fits your needs."
-		warning "Navigate to '${srcdir}/build'"
-		warning "and either run 'make menuconfig' or if you want to use an existing config,"
-		warning "save it as '.config' and run 'make oldconfig' in order to update it."
-		warning "Having done that you can run 'makepkg' again."
-		plain   ""
+			plain   ""
+			warning "Thus it is up to you to create a one that fits your needs."
+			warning "Navigate to '${srcdir}/build'"
+			warning "and either run 'make menuconfig' or if you want to use an existing config,"
+			warning "save it as '.config' and run 'make oldconfig' in order to update it."
+			warning "Having done that you can run 'makepkg' again."
+			plain   ""
 
-		return 1
+			return 1
+		else
+			msg "Using saved zen-config file in build root."
+			cp "${srcdir}/../zen-config" "${srcdir}/build/.config"
+		fi
 	fi
 
 	msg2 "Updating output directory Makefile..."
