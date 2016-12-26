@@ -1,7 +1,7 @@
-pkgname=mono
+pkgname=mono-alpha
 _pkgname=mono
 pkgver=4.8.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Free implementation of the .NET platform including runtime and compiler. Alpha version."
 arch=('i686' 'x86_64')
 license=('GPL' 'LGPL2.1' 'MPL' 'BSD' 'custom=MITX11' 'custom=MSPL')
