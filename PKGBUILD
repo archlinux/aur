@@ -4,9 +4,9 @@
 pkgname=idjc-x-git
 pkgver=935.280ab4e
 pkgrel=1
-pkgdesc="Powerful client for individuals interested in streaming live radio shows"
+pkgdesc="Powerful client for individuals interested in streaming live radio shows (Port to py3/gtk3, plus	some other stuff)"
 arch=(i686 x86_64)
-url="http://idjc.sourceforge.net/"
+url="https://github.com/radiocicletta/idjc-x"
 depends=('python-dbus'
 	 'desktop-file-utils'
 	 'ffmpeg'
@@ -44,7 +44,7 @@ build()
 }
 
 package()
-{               
+{
   cd idjc-x
   make DESTDIR=$pkgdir install
 }
@@ -55,4 +55,3 @@ pkgver() {
 }
 
 md5sums=('SKIP')
-
