@@ -23,7 +23,6 @@ exec("git -C $AUR_BUILD_DIR add .");
 $sha = shell_exec("git -C $AUR_BUILD_DIR/larryshell rev-parse --short HEAD");
 exec("git -C $AUR_BUILD_DIR commit -m 'Automatic version bump -- $sha'", $arr, $ret);
 
-var_dump($arr);
 check($ret, 'Failed to commit');
 // DAWT
 exec("git -C $AUR_BUILD_DIR push origin master", $arr, $ret);
