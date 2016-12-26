@@ -1,0 +1,12 @@
+pkgbase = bcunit-cunit-compat
+	pkgdesc = Headers and libraries which allow building with BCUnit Cunit-based projects
+	pkgver = 3.0
+	pkgrel = 1
+	url = https://github.com/BelledonneCommunications/bcunit
+	arch = any
+	license = LGPL2
+	depends = bcunit
+	provides = cunit=3.0-1
+
+pkgname = bcunit-cunit-compat
+
