@@ -1,5 +1,5 @@
-pkgbase = transmission
-	pkgdesc = Fast, easy, and free BitTorrent client (CLI tools and web client). This version does not include the daemon and thus does not use the transmission user.
+pkgbase = transmission-cli-nodaemon
+	pkgdesc = Fast, easy, and free BitTorrent client (CLI tools and web client). This version does not include the daemon and is for remote connection only (through cli or GUI).
 	pkgver = 2.92
 	pkgrel = 2
 	url = https://www.transmissionbt.com/
