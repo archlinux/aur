@@ -61,11 +61,14 @@ build() {
 			
 			cp "${srcdir}/build/.config" "${srcdir}/zen-config-bak"
 			
-			cd "${srcdir}/build"
+			rm -rf "${srcdir}/build"
+						
+			cd "${srcdir}/zen-kernel"
+			make clean &> /dev/null
+			make mrproper &> /dev/null
 			
-			make clean
-			make mrproper
-			
+			make -C "${srcdir}/zen-kernel/" O="${srcdir}/build" defconfig > /dev/null
+						
 			msg "Using backed up config from previous build directory."
 			cp "${srcdir}/zen-config-bak" "${srcdir}/build/.config"
 		fi
