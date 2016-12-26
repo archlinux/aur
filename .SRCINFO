@@ -1,0 +1,13 @@
+pkgbase = caret-bin
+	pkgdesc = Premium Markdown Editor http://caret.io
+	pkgver = 1.12.0
+	pkgrel = 1
+	url = https://github.com/careteditor/caret
+	arch = x86_64
+	license = unknown
+	depends = gconf
+	source = https://github.com/careteditor/caret/releases/download/1.12.0/Caret.deb
+	md5sums = dcb565f80cc73049e827171a012c95b5
+
+pkgname = caret-bin
+
