@@ -30,7 +30,7 @@ exec("git -C $AUR_BUILD_DIR push origin master", $arr, $ret);
 check($ret, 'Failed to push to GitHub');
 
 // AUR
-exec("git -C $AUR_BUILD_DIR push aur master", $arr, $ret);
+exec("git -C $AUR_BUILD_DIR push dawt master", $arr, $ret);
 check($ret, 'Failed to push to AUR');
 
 echo "{success:true}";
