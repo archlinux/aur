@@ -13,7 +13,7 @@ makedepends=('git' 'imake')
 provides=('xsnow')
 conflicts=('xsnow')
 options=()
-source=("git://github.com/protractorninja/$_pkgname.git" "http://dropmix.xs4all.nl/rick/Xsnow/xsnow-$_xsnowver.tar.gz")
+source=("git://github.com/protractorninja/$_pkgname.git" "http://janswaal.home.xs4all.nl/Xsnow/xsnow-$_xsnowver.tar.gz")
 md5sums=('SKIP'
          '451d8fc0a2b5393b428faa496a556036')
 
