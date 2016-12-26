@@ -1,0 +1,15 @@
+pkgbase = wpan-tools
+	pkgdesc = Userspace tools for Linux IEEE 802.15.4 stack.
+	pkgver = 0.7
+	pkgrel = 1
+	url = http://wpan.cakelab.org/
+	arch = x86_64
+	license = ISC
+	depends = libnl
+	provides = iwpan,
+	provides = wpan-ping
+	source = https://github.com/linux-wpan/wpan-tools/releases/download/wpan-tools-0.7/wpan-tools-0.7.tar.gz
+	sha1sums = be322fae8412afaaad8c4d98524882b66544bdb3
+
+pkgname = wpan-tools
+
