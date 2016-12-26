@@ -13,34 +13,29 @@ arch=('x86_64')
 url='http://fastermelee.net'
 # shellcheck disable=SC2034
 license=('GPL')
-
+# shellcheck disable=SC2034
+install="faster-melee.net"
 # shellcheck disable=SC2034
 makedepends=('cmake')
-
 # shellcheck disable=SC2034
 depends=('bluez-libs' 'enet' 'ffmpeg' 'libao' 'libevdev' 'mbedtls' 'miniupnpc'
          'portaudio' 'sfml' 'soundtouch' 'xdg-utils' 'wxgtk')
 # shellcheck disable=SC2034
 optdepends=('pulseaudio: PulseAudio backend')
-
 # shellcheck disable=SC2034
 options=('!emptydirs')
-
-# The commit for FasterMelee 4.3
+# The commit for FasterMelee 4.3 (unchanged for FasterMelee 4.4)
 # shellcheck disable=SC2034
 source=("${pkgname}::git+https://github.com/Tinob/Ishiiruka.git#commit=0b00f1f6267190a8bf9a3584497a35d8762eb0a9"
         "GALE01.ini"
         "GALE01r2.ini"
        )
-
 # shellcheck disable=SC2034
 sha256sums=('SKIP'
             '62abf45f5064fac79aeead6340120be5beb8ad7a64f25fd85c07b45e3756df3f'
             'a2ab0e1b737ff8af5a0ccacc40147d331ba0abe5e19aac019add68e732289605')
-
 # shellcheck disable=SC2034
 provides=('dolphin-emu')
-
 # shellcheck disable=SC2034
 conflicts=('dolphin-emu' 'dolphin-emu-git')
 
@@ -84,9 +79,6 @@ package() {
 
   # Patch Gecko Codes
   cp -f "${srcdir}/GALE01r2.ini" "${pkgdir}"/usr/share/dolphin-emu/sys/GameSettings/GALE01r2.ini
-
-  msg "Make sure you install the GALE01.ini config file into:"
-  msg "${HOME}/.local/share/dolphin-emu/GameSettings/GALE01.ini"
 }
 
 # vim: ts=2 sw=2 et:
