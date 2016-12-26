@@ -3,8 +3,8 @@
 # Contributor: Jakub Schmidtke <sjakub-at-gmail-dot-com>
 
 _rev=r01
-_sdkver=7.0
-_sdkint=24
+_sdkver=7.1
+_sdkint=25
 pkgname=android-sources-${_sdkint}
 pkgver=${_sdkver}_${_rev}
 pkgrel=1
@@ -15,7 +15,7 @@ license=('custom')
 options=('!strip')
 conflicts=("android-sources==${_sdkint,,}")
 source=("http://dl.google.com/android/repository/sources-${_sdkint}_${_rev}.zip")
-sha1sums=('6b96115830a83d654479f32ce4b724ca9011148b')
+sha1sums=('bbc72efd1a9bad87cc507e308f0d29aad438c52c')
 
 package() {
 	  mkdir -p "${pkgdir}/opt/android-sdk/sources/"
