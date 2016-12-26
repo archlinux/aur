@@ -14,8 +14,8 @@ arch=('any')
 url="https://github.com/Tytan/AutoPanorama"
 license=('GPL')
 groups=()
-depends=('qt5-base jasper libwebp')
-makedepends=('qt5-base cmake')
+depends=('qt5-base' 'jasper' 'libwebp')
+makedepends=('qt5-base' 'cmake')
 checkdepends=()
 optdepends=()
 provides=("$pkgname")
@@ -38,11 +38,12 @@ prepare() {
 }
 
 build() {
+    CORES=`nproc --all`
 	cd "$pkgname-$pkgver"
     mkdir -p build/$pkgname
     cd build/$pkgname
     qmake ../../AutoPanorama.pro
-	make
+	make -j$CORES
 }
 
 package() {
@@ -52,6 +53,5 @@ package() {
     mkdir -p $pkgdir/usr/share/$pkgname/
     mkdir -p $pkgdir/usr/share/applications/
     cp res/autopanorama.ico $pkgdir/usr/share/$pkgname/
-    ls -l linux
     cp linux/autopanorama.desktop $pkgdir/usr/share/applications/
 }
