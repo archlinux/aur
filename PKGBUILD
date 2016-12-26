@@ -2,7 +2,7 @@
 
 pkgname=iio-sensor-proxy-git
 _pkgname="iio-sensor-proxy"
-pkgver=r131.92ccf34
+pkgver=r237.e803bb4
 pkgrel=1
 pkgdesc="IIO accelerometer sensor to input device proxy"
 arch=('i686' 'x86_64')
