@@ -15,11 +15,11 @@ prepare() {
 /opt/caret/Caret
 EOF
 
-chmod +x Caret
+    chmod +x Caret
 }
 
 build() {
-	cd "$srcdir"
+    cd "$srcdir"
     tar -xf data.tar.xz
 }
 package() {
