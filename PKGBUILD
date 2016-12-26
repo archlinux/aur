@@ -9,7 +9,7 @@ arch=('x86_64')
 url="http://${pkgname}.sourceforge.net"
 license=('GPL')
 depends=('ffmpeg' 'sox')
-source=("https://downloads.sourceforge.net/project/${pkgname}/${pkgname}/${pkgver}/${pkgname}-${pkgver}.tar.gz")
+source=("https://downloads.sourceforge.net/${pkgname}/${pkgname}-${pkgver}.tar.gz")
 sha256sums=('cafc5440cf4940939c675e98c8dbeb839f4965d60f74270a37d4ee70559b3a59')
 
 build() {
