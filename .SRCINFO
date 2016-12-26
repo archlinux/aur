@@ -1,4 +1,4 @@
-pkgbase = scribus
+pkgbase = scribus-devel
 	pkgdesc = Desktop publishing software
 	pkgver = 1.5.2
 	pkgrel = 1
