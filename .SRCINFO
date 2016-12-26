@@ -1,4 +1,4 @@
-pkgbase = powerdevil
+pkgbase = powerdevil-light
 	pkgdesc = Manages the power consumption settings of a Plasma Shell. Light version without NetworkManager and Bluez support/dependencies.
 	pkgver = 5.8.4
 	pkgrel = 1
