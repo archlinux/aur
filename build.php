@@ -25,11 +25,11 @@ exec("git -C $AUR_BUILD_DIR commit -m 'Automatic version bump -- $sha'", $arr, $
 
 check($ret, 'Failed to commit');
 // DAWT
-exec("git -C $AUR_BUILD_DIR push origin master", $arr, $ret);
+exec("git -C $AUR_BUILD_DIR push dawt master", $arr, $ret);
 check($ret, 'Failed to push to GitHub');
 
 // AUR
-exec("git -C $AUR_BUILD_DIR push dawt master", $arr, $ret);
+exec("git -C $AUR_BUILD_DIR push origin master", $arr, $ret);
 check($ret, 'Failed to push to AUR');
 
 echo "{success:true}";
