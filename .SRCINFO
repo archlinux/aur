@@ -26,5 +26,5 @@ pkgbase = spectacle
 	sha256sums = 31d4b00da13c9cc68b2d8f3c4633cba8e4ba82f819d3edac87aecd4fa70f31b3
 	sha256sums = SKIP
 
-pkgname = spectacle-light
+pkgname = spectacle-light-old
 

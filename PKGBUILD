@@ -2,7 +2,7 @@
 # Contributor: Antonio Rojas <arojas@archlinux.org>
 
 pkgbase=spectacle
-pkgname=spectacle-light
+pkgname=spectacle-light-old
 pkgver=16.12.0
 pkgrel=1
 pkgdesc="KDE screenshot capture utility, without purpose"
@@ -34,7 +34,7 @@ build() {
     make
 }
 
-package_spectacle-light() {
+package_spectacle-light-old() {
     cd build
     make DESTDIR="${pkgdir}" install
 }
