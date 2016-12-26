@@ -4,7 +4,7 @@
 # Contributor (Arch): Nicolas Pouillard <nicolas.pouillard@gmail.com>
 
 pkgname=tahoe-lafs
-pkgver=1.11.0
+pkgver=1.12.0
 pkgrel=1
 pkgdesc="Secure, decentralized, and fault-tolerant filesystem."
 url='https://tahoe-lafs.org/trac/tahoe-lafs'
@@ -35,14 +35,18 @@ depends=('openssl>=1.0.2'
          'libffi'
          'python2-foolscap>=0.10.1'
          'net-tools' # provides /sbin/ifconfig
-         'python2-setuptools')
+         'python2-setuptools'
+         'python2-shutilwhich>=1.1.0'
+         'python2-yaml'
+         'python2-crypto')
 
 optdepends=('python2-numpy: reliability test')
 
 source=("https://tahoe-lafs.org/downloads/tahoe-lafs-$pkgver.tar.bz2"
         "https://tahoe-lafs.org/downloads/tahoe-lafs-$pkgver.tar.bz2.asc")
 
-sha256sums=('b1611b0b6dab35f6541b46d03b749b7ee668e0403aa4d9b3bdb5aeacf2413743'
+# https://tahoe-lafs.org/downloads/tahoe-release-signing-gpg-key.asc
+sha256sums=('e4a97c12cde3148d3921b8dfca3bfc73eede0b466f082afa817a8f438de72477'
             'SKIP')
 
 validpgpkeys=('E34E62D06D0E69CFCA4179FFBDE0D31D68666A7A')
