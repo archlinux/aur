@@ -1,0 +1,18 @@
+pkgbase = firebird-nspire-git
+	pkgdesc = Community emulator of TI-Nspire calculators.
+	pkgver = r708.c771637
+	pkgrel = 1
+	url = https://github.com/nspire-emus/firebird
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = qt5-declarative
+	makedepends = git
+	provides = firebird-nspire
+	conflicts = nspire_emu
+	conflicts = firebird-nspire
+	source = firebird-nspire::git+https://github.com/nspire-emus/firebird
+	md5sums = SKIP
+
+pkgname = firebird-nspire-git
+
