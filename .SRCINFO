@@ -1,7 +1,7 @@
 pkgbase = transmission
 	pkgdesc = Fast, easy, and free BitTorrent client (CLI tools and web client). This version does not include the daemon and thus does not use the transmission user.
 	pkgver = 2.92
-	pkgrel = 2
+	pkgrel = 1
 	url = https://www.transmissionbt.com/
 	arch = i686
 	arch = x86_64
@@ -14,5 +14,5 @@ pkgbase = transmission
 	source = https://github.com/transmission/transmission-releases/raw/master/transmission-2.92.tar.xz
 	sha256sums = 3a8d045c306ad9acb7bf81126939b9594553a388482efa0ec1bfb67b22acd35f
 
-pkgname = transmission-cli-nodaemon
+pkgname = transmission-cli-nodaemon-old
 

@@ -3,7 +3,7 @@
 # Contributor: Ionut Biru <ibiru@archlinux.org>
 
 pkgbase=transmission
-pkgname=transmission-cli-nodaemon
+pkgname=transmission-cli-nodaemon-old
 pkgver=2.92
 pkgrel=1
 pkgdesc="Fast, easy, and free BitTorrent client (CLI tools and web client). This version does not include the daemon and thus does not use the transmission user."
@@ -29,7 +29,7 @@ build() {
     make
 }
 
-package_transmission-cli-nodaemon() {
+package_transmission-cli-nodaemon-old() {
     cd ${pkgbase}-${pkgver}
 
     for dir in cli utils; do
