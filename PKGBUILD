@@ -9,8 +9,8 @@
 
 _qt_module=qtactiveqt
 pkgname=mingw-w64-qt5-activeqt
-pkgver=5.7.0
-pkgrel=2
+pkgver=5.7.1
+pkgrel=1
 arch=('any')
 pkgdesc="ActiveX integration framework (mingw-w64)"
 depends=(mingw-w64-qt5-base)
@@ -23,7 +23,7 @@ _pkgfqn="${_qt_module}-opensource-src-${pkgver}"
 source=("https://download.qt.io/official_releases/qt/${pkgver:0:3}/${pkgver}/submodules/${_pkgfqn}.tar.xz"
         "qtactiveqt-fix-build.patch"
         "qtactiveqt-win64.patch")
-md5sums=('e48d79becdad54a2ac67c36d98654f5b'
+md5sums=('ac35c25e2581faffa92504bf8abe837e'
          '7a7ba436452aa56613b3fbb15684e094'
          '1264d0274586aec14f96a978b416b048')
 
