@@ -1,15 +1,15 @@
 # Maintainer: Dave Simons <pkgs@simonsd.org> 
 
 pkgname=mutt-ics
-pkgver='0.7'
+pkgver='0.8'
 pkgrel=1
 pkgdesc="Show calendar event details in mutt"
 arch=('i686' 'x86_64')
 url="https://github.com/dmedvinsky/mutt-ics"
 depends=('python' 'python-icalendar')
 provides=('mutt-ics')
-source=('https://pypi.python.org/packages/1c/89/b2fc49069348fa862f2e3f9d7e8cb4e393506434895fd964915311239767/mutt_ics-0.7.tar.gz#md5=fd46afd391f2e53437f91971ebc64d3a')
-md5sums=('fd46afd391f2e53437f91971ebc64d3a')
+source=('https://pypi.python.org/packages/32/fe/b385ac8b55e8e2de11cd73cd14cd1697a228d707f5fae0b3fbcabd2f68d2/mutt_ics-0.8.tar.gz')
+md5sums=('f9c1570b8e6cc493e828f0db786f9ef3')
 
 package() {
   cd "$srcdir/mutt_ics-$pkgver"
