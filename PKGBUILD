@@ -1,11 +1,11 @@
 # Contributor: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=flacon-git
-pkgver=v1.2.0.36.g09d0af4
+pkgver=v2.1.0.3.gb93b656
 pkgrel=1
 pkgdesc="Extracts individual tracks from one big audio file containing the entire album of music and saves them as separate audio files. (Git Version)"
 arch=('x86_64' 'i686')
-url="http://flacon.github.io/"
+url='http://flacon.github.io'
 license=('LGPL2.1')
 depends=('qt5-base'
          'uchardet'
@@ -30,8 +30,7 @@ optdepends=('faac: For AAC support'
 conflicts=('flacon')
 provides=('flacon')
 source=('git+https://github.com/flacon/flacon.git')
-sha1sums=('SKIP')
-install=flacon-git.install
+sha256sums=('SKIP')
 
 pkgver() {
   cd flacon
