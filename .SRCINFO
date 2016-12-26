@@ -1,0 +1,25 @@
+pkgbase = pi-top-control-git
+	pkgdesc = Python script that provides control of Pi-Top hub hardware
+	pkgver = r16.1995671
+	pkgrel = 1
+	url = https://github.com/jaylittle/pi-top-control
+	install = pi-top-control.install
+	arch = i686
+	arch = x86_64
+	arch = armv6h
+	arch = armv7h
+	license = GPL
+	makedepends = python
+	makedepends = git
+	depends = python
+	depends = i2c-tools-git
+	depends = python-smbus
+	depends = python-spidev
+	provides = pi-top-control
+	conflicts = pi-top-control
+	options = !strip
+	source = pi-top-control::git+https://github.com/jaylittle/pi-top-control.git
+	md5sums = SKIP
+
+pkgname = pi-top-control-git
+
