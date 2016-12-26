@@ -6,7 +6,7 @@
 pkgbase=python-tempita
 pkgname=('python-tempita' 'python2-tempita')
 pkgver=0.5.2
-pkgrel=3
+pkgrel=4
 pkgdesc="A lightweight unicode templating language"
 arch=('any')
 url="http://pythonpaste.org/tempita/"
@@ -20,7 +20,6 @@ package_python-tempita() {
 
   cd "$srcdir"/Tempita-${pkgver}
   python setup.py install --root="$pkgdir" --optimize=1
-  install -Dm644 "$srcdir"/$pkgbase-license.txt "$pkgdir"/usr/share/licenses/$pkgname/license.txt
 }
 
 package_python2-tempita() {
