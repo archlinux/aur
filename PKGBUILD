@@ -2,7 +2,7 @@
 _xsnowver=1.42
 _pkgname=xsnow-comp-patch
 pkgname=$_pkgname-git
-pkgver=12
+pkgver=16
 pkgrel=1
 pkgdesc="Compositor-friendly patch for Xsnow"
 arch=('i686' 'x86_64')
