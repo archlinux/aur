@@ -8,8 +8,8 @@
 
 _qt_module=qtdatavis3d
 pkgname="mingw-w64-qt5-datavis3d"
-pkgver=5.7.0
-pkgrel=3
+pkgver=5.7.1
+pkgrel=1
 arch=('any')
 pkgdesc="Qt Data Visualization module (mingw-w64)"
 depends=('mingw-w64-qt5-base')
@@ -19,7 +19,7 @@ license=('GPL3' 'LGPL' 'FDL' 'custom')
 url="https://www.qt.io/"
 _pkgfqn="${_qt_module}-opensource-src-${pkgver}"
 source=("https://download.qt.io/official_releases/qt/${pkgver:0:3}/${pkgver}/submodules/${_pkgfqn}.tar.xz")
-md5sums=('8e0ef21bd26e8466737559d89706f1ae')
+md5sums=('c3431b6f1e65139d7a96cf6d147f1f2c')
 
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
 [[ $NO_STATIC_LIBS ]] || \
