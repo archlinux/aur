@@ -4,7 +4,7 @@
 pkgbase=python-acme
 pkgname=('python-acme' 'python2-acme')
 pkgver=0.9.3
-pkgrel=1
+pkgrel=2
 pkgdesc="ACME protocol implementation in Python"
 arch=('any')
 license=('Apache')
