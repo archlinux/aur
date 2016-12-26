@@ -14,7 +14,7 @@ pkgdesc='Complete solution to record, convert and stream audio and video; optimi
 arch=('i686' 'x86_64' 'armv7h' 'armv6h')
 url='http://ffmpeg.org/'
 license=('GPL3') #enabling libfdk_aac makes ffmpeg incompatible with the GPL!
-depends=('bzip2' 'fontconfig' 'fribidi' 'glibc' 'gmp' 'gnutls' 'gsm'
+depends=('bzip2' 'fribidi' 'glibc' 'gmp' 'gnutls' 'gsm'
 		 'lame' 'libmodplug'
 		 'libtheora' 'libva-headless'
 		 'libwebp' 'opencore-amr' 'openjpeg2' 'opus'
@@ -42,12 +42,10 @@ build() {
 	--disable-stripping \
 	--enable-avisynth \
 	--enable-avresample \
-	--enable-fontconfig \
 	--enable-gnutls \
 	--enable-gpl \
 	--enable-libass \
 	--enable-libbluray \
-	--enable-libfreetype \
 	--enable-libfribidi \
 	--enable-libgsm \
 	--enable-libmodplug \
@@ -76,7 +74,9 @@ build() {
 	--disable-fontconfig \
 	--disable-libfreetype \
 	--disable-vdpau \
-	--disable-htmlpages #\
+	--disable-htmlpages \
+	--disable-libxcb \
+	--disable-xlib  #\
     #--enable-libiec61883
     #--enable-libsoxr \
     #--enable-libvidstab \
