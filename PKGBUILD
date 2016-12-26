@@ -1,7 +1,7 @@
-pkgname=mono-alpha
+pkgname=mono
 _pkgname=mono
 pkgver=4.8.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Free implementation of the .NET platform including runtime and compiler. Alpha version."
 arch=('i686' 'x86_64')
 license=('GPL' 'LGPL2.1' 'MPL' 'BSD' 'custom=MITX11' 'custom=MSPL')
@@ -11,7 +11,7 @@ makedepends=('git')
 options=('!makeflags')
 provides=('monodoc' 'mono')
 conflicts=('monodoc' 'mono')
-source=('git://github.com/mono/mono.git' 'mono.binfmt.d')
+source=('git://github.com/mono/mono.git#branch=mono-$pkgver-branch' 'mono.binfmt.d')
 md5sums=('SKIP' 'b9ef8a65fea497acf176cca16c1e2402')
 
 build() {
