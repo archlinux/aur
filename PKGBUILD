@@ -1,8 +1,8 @@
 # Maintainer: gavin lyons <glyons66@hotmail.com>
 # https://github.com/gavinlyonsrepo/cylon
 pkgname=cylon
-pkgver=3.1
-pkgrel=2
+pkgver=3.2
+pkgrel=3
 pkgdesc="Updates, Maintenance, backup and system checks in a menu driven Bash script"
 arch=('any')
 url="https://github.com/gavinlyonsrepo/cylon"
@@ -28,12 +28,17 @@ optdepends=(
   'openbsd-netcat: used for checking network'
 )
 source=("https://github.com/gavinlyonsrepo/cylon/archive/$pkgver.tar.gz")
-md5sums=('c41fb7841fa5c03601f2aa7b8a551d5f')
 
+md5sums=('76d4a28cda5d27256d1a7a6a00cb3e2c')
 package() {
     cd "$srcdir/${pkgname}-${pkgver}"
     install -D -m755 Cylon.sh "$pkgdir"/usr/bin/"${pkgname}" 
     install -D -m644 Readme.md "$pkgdir/usr/share/doc/${pkgname}/Readme.md"
+    install -D -m644 cylon.7   "$pkgdir/usr/share/man/man7/cylon.7"
     install -D -m644 changelog.md "$pkgdir/usr/share/doc/${pkgname}/changelog.md"
     install -D -m644 License.md "$pkgdir/usr/share/licenses/${pkgname}/License.md"
+    install -D  -m644 cylon.desktop "$pkgdir/usr/share/applications/cylon.desktop"
+    install -D  -m644 cylonicon.png "$pkgdir/usr/share/pixmaps/cylonicon.png"
+    install -d  "$pkgdir"/usr/lib/cylon/modules
+    install -D -m644  modules/*_module "$pkgdir"/usr/lib/cylon/modules
 }
