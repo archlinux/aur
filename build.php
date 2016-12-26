@@ -16,8 +16,8 @@ check($ret, 'Build failed');
 // --exit-code:
 //  0 if no changes
 //  1 if changes
-exec("git -C $AUR_BUILD_DIR diff --exit-code HEAD", $arr, $ret);
-check(1 - $ret, 'No changes');
+exec("git -C $AUR_BUILD_DIR/larryshell diff --exit-code HEAD", $arr, $ret);
+#check(1 - $ret, 'No changes');
 
 exec("git -C $AUR_BUILD_DIR add .");
 $sha = shell_exec("git -C $AUR_BUILD_DIR/larryshell rev-parse --short HEAD");
