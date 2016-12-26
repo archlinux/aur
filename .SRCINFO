@@ -1,0 +1,21 @@
+pkgbase = wpantund-git
+	pkgdesc = Userspace WPAN Network Daemon
+	pkgver = 0.07.00.r222.g811cef1
+	pkgrel = 1
+	url = https://github.com/openthread/wpantund
+	arch = i686
+	arch = x86_64
+	license = Apache
+	makedepends = git
+	makedepends = gcc
+	makedepends = boost-libs
+	makedepends = readline
+	depends = dbus
+	depends = readline
+	provides = wpantund
+	provides = wpanctl
+	source = wpantund-git::git+https://github.com/openthread/wpantund.git
+	sha512sums = SKIP
+
+pkgname = wpantund-git
+
