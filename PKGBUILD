@@ -1,4 +1,4 @@
-_rev=r02
+_rev=r03
 _sdkver=7.1.1
 _sdkint=25
 pkgname=android-platform-${_sdkint,,}
@@ -12,7 +12,7 @@ depends=('android-sdk' 'android-sdk-platform-tools')
 conflicts=("android-platform==${_sdkint,,}")
 options=('!strip')
 source=("http://dl.google.com/android/repository/platform-${_sdkint}_${_rev}.zip")
-sha1sums=('6057e54a04f1d141f36a2c8d20f2962b41a3183f')
+sha1sums=('00c2c5765e8988504be10a1eb66ed71fcdbd7fe8')
 
 package() {
       mkdir -p "${pkgdir}/opt/android-sdk/platforms/"
