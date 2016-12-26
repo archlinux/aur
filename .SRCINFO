@@ -3,7 +3,7 @@
 pkgbase = douane-daemon-git
 	pkgdesc = Douane Firewall Kernel Daemon
 	pkgver = 1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://douaneapp.com/
 	arch = i686
 	arch = x86_64
@@ -19,7 +19,6 @@ pkgbase = douane-daemon-git
 	source = douane-daemon.service
 	md5sums = SKIP
 	md5sums = SKIP
-	md5sums = 6ac26b739a71fcbae69972d599befbba
+	md5sums = 6AC26B739A71FCBAE69972D599BEFBBA
 
 pkgname = douane-daemon-git
-

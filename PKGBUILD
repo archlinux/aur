@@ -1,6 +1,6 @@
 pkgname=douane-daemon-git
 pkgver=1
-pkgrel=1
+pkgrel=2
 pkgdesc="Douane Firewall Kernel Daemon"
 arch=('i686' 'x86_64')
 url="http://douaneapp.com/"
@@ -17,23 +17,25 @@ source=('git+https://github.com/Douane/douane-daemon.git'
         'douane-daemon.service')
 md5sums=('SKIP'
          'SKIP'
-         '6ac26b739a71fcbae69972d599befbba')
+         '6AC26B739A71FCBAE69972D599BEFBBA')
 
 prepare() {
-  cd "$srcdir/$pkgname"
+  cd "$srcdir/douane-daemon"
   git submodule init
   git config submodule.douane-dbus.url $srcdir/douane-dbus
   git submodule update
 }
 
 pkgver() {
-  cd "$srcdir/$pkgname"
+  cd "$srcdir/douane-daemon"
+  # Tag
+  git tag -a $(head VERSION) -m ""
   # Use the tag of the last commit
   git describe --long | sed -E 's/([^-]*-g)/r\1/;s/-/./g'
 }
 
 build() {
-  cd "$srcdir/$pkgname"
+  cd "$srcdir/douane-daemon"
 
   msg2 "Starting make..."
   make
@@ -41,16 +43,16 @@ build() {
 
 package() {
 
-   # Main service (in case it doesn't exist or owned by us)
-    if [[ ! -f /usr/lib/systemd/system/douane-daemon.service || $(pacman -Qo /usr/lib/systemd/system/douane-daemon.service 2>&-) ]]; then
-	install -d "${pkgdir}"/usr/lib/systemd/system/
-        install -m644 douane-daemon.service "${pkgdir}"/usr/lib/systemd/system/
-    else
-        warning "Not overwriting /usr/lib/systemd/system/douane-daemon.service"
-    fi
+  # Main service (in case it doesn't exist or owned by us)
+  if [[ ! -f /usr/lib/systemd/system/douane-daemon.service || $(pacman -Qo /usr/lib/systemd/system/douane-daemon.service 2>&-) ]]; then
+    install -d "${pkgdir}"/usr/lib/systemd/system/
+    install -m644 douane-daemon.service "${pkgdir}"/usr/lib/systemd/system/
+  else
+    warning "Not overwriting /usr/lib/systemd/system/douane-daemon.service"
+  fi
 
   # Install
-  cd "$srcdir/$pkgname"
+  cd "$srcdir/douane-daemon"
   msg2 "Starting make install..."
   make DESTDIR="${pkgdir}" install
 
