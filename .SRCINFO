@@ -6,6 +6,7 @@ pkgbase = arm-linux-gnueabihf-android-linux-api-headers
 	arch = any
 	license = GPL2
 	provides = arm-linux-gnueabihf-linux-api-headers=4.5.5
+	conflicts = arm-linux-gnueabihf-linux-api-headers
 	source = http://www.kernel.org/pub/linux/kernel/v3.x/linux-3.10.tar.xz
 	source = http://www.kernel.org/pub/linux/kernel/v3.x/linux-3.10.tar.sign
 	source = http://www.kernel.org/pub/linux/kernel/v3.x/patch-3.10.104.xz

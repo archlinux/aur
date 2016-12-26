@@ -8,6 +8,7 @@ _basever=3.10
 pkgrel=1
 pkgdesc="Legacy 3.10 kernel headers for android building sanitized for use in userspace (${_target})"
 provides=("${_target}-linux-api-headers=4.5.5")
+conflicts=("${_target}-linux-api-headers")
 arch=('any')
 url="http://www.gnu.org/software/libc"
 license=('GPL2')
