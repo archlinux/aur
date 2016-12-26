@@ -30,7 +30,7 @@ source=("git+${url}.git"
         'sysusers.conf')
 sha1sums=('SKIP'
           '29fc46a441a1c75cc635ed209bde983d2a61d696'
-          'bcc8b1654e0d21064cae4a3cb7952b7a602c5c36')
+          '52da2781a8d90d00d2d78b02f6e593340191de84')
 install=${pkgname}.install
 
 pkgver() {
