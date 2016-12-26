@@ -11,3 +11,5 @@ export PATH=/usr/lib/jvm/java-8-openjdk/jre/bin/:$PATH
 java -classpath "$CLASSPATH" com.playonlinux.app.PlayOnLinuxApp "$@"
 
 # Unset vars?
+# Note: Java version can be sourced with this one liner:
+# IFS=\" read -r _ version _ < <(java -version 2>&1); printf %s\\n "$version

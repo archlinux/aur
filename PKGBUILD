@@ -10,14 +10,14 @@
 
 _pkgname=playonlinux5
 pkgname=$_pkgname-git
-pkgver=r1317.9d399ad3
+pkgver=r1319.66f20455
 pkgrel=1
 epoch=2
 pkgdesc="GUI for managing Windows programs under linux (development version based on Java)"
 arch=('any')
 url="http://www.playonlinux.com/"
 license=('GPL')
-makedepends=('git' 'gradle' 'maven' 'java-openjfx' 'jdk8-openjdk')
+makedepends=('git' 'gradle' 'maven' 'java-openjfx' 'java-environment>=8')
 depends=('wine')
 options=(!strip)
 source=(
@@ -25,10 +25,10 @@ source=(
         'PlayOnLinux5.desktop'
 	'PlayOnLinux.sh'
 	)
-md5sums=(
+sha256sums=(
 	'SKIP'
-	'7fe925810fc7ec6d8745817b1c541e7b'
-	'12e1e2682bdfef291db457961b5844d5'
+	'4703fc813fb18d3e414cc1483f03cb3c0c306e5725b7681b3dbc43fb7f6630de'
+	'7558a8d24f344228ec55fc9fd156dfe75d7625378c6230fa2a625fa8fe17ee12'
 	)
 
 pkgver() {
@@ -51,9 +51,11 @@ build() {
 
   # Build
   mvn package
+
 }
 
 package() {
+
   # Extract
   install -d "$pkgdir/opt/"
   bsdtar -xf "$_pkgname/phoenicis-dist/target/phoenicis-dist.zip"
@@ -66,4 +68,5 @@ package() {
   install -Dm644 "$srcdir/$_pkgname/phoenicis-javafx/target/classes/com/playonlinux/javafx/views/common/playonlinux.png" \
                  "$pkgdir/usr/share/pixmaps/$_pkgname.png"
   install -Dm644 PlayOnLinux5.desktop "$pkgdir/usr/share/applications/$_pkgname.desktop"
+
 }
