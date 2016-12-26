@@ -2,19 +2,19 @@
 
 _plug=mvtools_sf
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=r5.0.ge549759
+pkgver=r7.0.g1ed1c2a
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('i686' 'x86_64')
 url='http://forum.doom9.org/showthread.php?t=172525'
-license=('GPLv2')
+license=('GPL2')
 depends=('vapoursynth'
          'fftw'
          )
 makedepends=('git')
 provides=("vapoursynth-plugin-${_plug}")
 conflicts=("vapoursynth-plugin-${_plug}")
-source=("${_plug}::git+https://github.com/IFeelBloated/vapoursynth-mvtools-sf")
+source=("${_plug}::git+https://github.com/IFeelBloated/vapoursynth-mvtools-sf.git")
 sha256sums=('SKIP')
 
 _site_packages="$(python -c "from distutils.sysconfig import get_python_lib; print(get_python_lib())")"
@@ -29,7 +29,7 @@ prepare() {
 
   rm -fr src/VapourSynth.h src/VSHelper.h
 
-  ./autogen.sh
+  sh autogen.sh
 }
 
 build() {
@@ -38,6 +38,7 @@ build() {
   ./configure \
     --prefix=/usr \
     --libdir=/usr/lib/vapoursynth
+
   make
 }
 
