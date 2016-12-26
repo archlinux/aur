@@ -19,7 +19,7 @@ depends=('bzip2' 'fribidi' 'glibc' 'gmp' 'gnutls' 'gsm'
 		 'libtheora' 'libva-headless'
 		 'libwebp' 'opencore-amr' 'openjpeg2' 'opus'
 		 'schroedinger' 'speex' 'v4l-utils' 'xz' 'zlib'
-		 'libass.so' 'libbluray.so'
+		 'libbluray.so'
 		 'libvorbisenc.so' 'libvorbis.so' 'libvpx.so'
 		 'libx264.so' 'libx265.so' 'libxvidcore.so'
 		 'rtmpdump')
@@ -44,7 +44,6 @@ build() {
 	--enable-avresample \
 	--enable-gnutls \
 	--enable-gpl \
-	--enable-libass \
 	--enable-libbluray \
 	--enable-libfribidi \
 	--enable-libgsm \
@@ -76,7 +75,8 @@ build() {
 	--disable-vdpau \
 	--disable-htmlpages \
 	--disable-libxcb \
-	--disable-xlib  #\
+	--disable-xlib  \
+	--disable-libass #\
     #--enable-libiec61883
     #--enable-libsoxr \
     #--enable-libvidstab \
