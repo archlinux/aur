@@ -14,7 +14,6 @@ makedepends=('gendesk' 'grunt-cli' 'npm' 'python2' 'yarn')
 provides=('wire-desktop')
 source=("git://github.com/wireapp/wire-desktop.git")
 sha256sums=('SKIP')
-install="${pkgname}".install
 
 pkgver() {
   cd "${srcdir}/${_pkgname}"
@@ -54,12 +53,16 @@ package() {
   ln -s "/usr/lib/${_name}/${_name}" "${pkgdir}/usr/bin/${_name}"
   
   # Place desktop entry and icon
-  install -Dm644 "${_name}.desktop" "${pkgdir}/usr/share/applications/${_name}.desktop"
-  install -Dm644 "${srcdir}/${_pkgname}/electron/img/wire.png" "${pkgdir}/usr/share/pixmaps/${_name}.png"
+  desktop-file-install -m 644 --dir "${pkgdir}/usr/share/applications/" "${srcdir}/${_name}.desktop"
+  for res in 32x32 256x256; do
+    install -dm755 "${pkgdir}/usr/share/icons/hicolor/${res}/apps"
+    install -Dm755 "${srcdir}/${_pkgname}/resources/icons/${res}.png" \
+      "${pkgdir}/usr/share/icons/hicolor/${res}/apps/${_name}.png"
+  done
 
   # Place license files
-  install -Dm644 "${pkgdir}/usr/lib/${_name}/LICENSE.electron.txt" "${pkgdir}/usr/share/licenses/${_name}/LICENSE.electron.txt"
-  install -Dm644 "${pkgdir}/usr/lib/${_name}/LICENSES.chromium.html" "${pkgdir}/usr/share/licenses/${_name}/LICENSES.chromium.html"
-  rm "${pkgdir}/usr/lib/${_name}/LICENSE.electron.txt"
-  rm "${pkgdir}/usr/lib/${_name}/LICENSES.chromium.html"
+  for license in "LICENSE.electron.txt" "LICENSES.chromium.html"; do
+    install -Dm644 "${pkgdir}/usr/lib/${_name}/${license}" "${pkgdir}/usr/share/licenses/${_name}/${license}"
+    rm "${pkgdir}/usr/lib/${_name}/${license}"
+  done
 }

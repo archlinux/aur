@@ -3,7 +3,6 @@ pkgbase = wire-desktop-git
 	pkgver = 2.11.2686.r0.gaa8e070
 	pkgrel = 1
 	url = https://wire.com/
-	install = wire-desktop-git.install
 	arch = x86_64
 	arch = i686
 	license = GPL3
