@@ -3,7 +3,7 @@
 pkgbase = douane-dkms-git
 	pkgdesc = Douane Firewall Kernel Module (DKMS)
 	pkgver = 1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://douaneapp.com/
 	install = douane-dkms-git.install
 	arch = i686
@@ -14,7 +14,6 @@ pkgbase = douane-dkms-git
 	source = git+https://github.com/Douane/douane-dkms.git
 	source = douane-dkms-git.install
 	md5sums = SKIP
-	md5sums = ab6d49e4449e5647ca5c58021674ae82
+	md5sums = 3754DB1C07F0F21AB3A3A167138DD791
 
 pkgname = douane-dkms-git
-
