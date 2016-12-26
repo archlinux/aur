@@ -1,0 +1,17 @@
+post_install() {
+	systemctl enable adb-starter.service
+	systemctl start adb-starter.service
+}
+
+pre_upgrade() {
+	systemctl stop adb-starter.service
+}
+
+post_upgrade() {
+	systemctl start adb-starter.service
+}
+
+pre_remove() {
+	systemctl stop adb-starter.service
+	systemctl disable adb-starter.service
+}

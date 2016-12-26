@@ -1,0 +1,14 @@
+pkgbase = adb-starter
+	pkgdesc = Starts ADB daemon as root to avoid permissions errors
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/tweakdeveloper/adb-starter
+	install = adb-starter.install
+	arch = any
+	license = MIT
+	depends = android-tools
+	source = https://github.com/tweakdeveloper/adb-starter/archive/v0.0.1.tar.gz
+	md5sums = fbd521e372ae02b9e4c91e75cbbd13c2
+
+pkgname = adb-starter
+
