@@ -3,7 +3,7 @@
 
 pkgname=('python-raet' 'python2-raet')
 pkgver=0.6.5
-pkgrel=1
+pkgrel=2
 pkgdesc='Asynchronous encrypted transaction based protocol using Ioflo'
 arch=('any')
 url='http://raet.docs.saltstack.com/'
