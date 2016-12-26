@@ -1,0 +1,28 @@
+pre_install() {
+  useradd -r mycroft-core -b /usr/share
+}
+
+post_install() {
+  chown -R mycroft-core:mycroft-core /usr/share/mycroft-core
+
+  # install packages
+  touch /usr/share/mycroft-core/.bashrc
+  echo "# Virtualenv initialization" >> /usr/share/mycroft-core/.bashrc
+  echo "export WORKON_HOME=\$HOME/.virtualenvs" >> /usr/share/mycroft-core/.bashrc
+  echo "export PROJECT_HOME=\$HOME/Devel" >> /usr/share/mycroft-core/.bashrc
+  echo "source /usr/bin/virtualenvwrapper.sh" >> /usr/share/mycroft-core/.bashrc
+
+  sudo -u mycroft-core bash -c 'source ~/.bashrc' &> /dev/null # Initialize virtualenv
+
+  sudo -u mycroft-core bash -c 'source ~/.bashrc && mkvirtualenv mycroft --system-site-packages -p $(which python2)'
+  sudo -u mycroft-core bash -c 'source ~/.bashrc && workon mycroft && pip install -r /usr/share/mycroft-core/requirements.txt'
+}
+
+post_upgrade() {
+  sudo -u mycroft-core bash -c "source ~/.bashrc && workon mycroft && pip install -r /usr/share/mycroft-core/requirements.txt"
+}
+
+post_remove() {
+  userdel mycroft-core
+  rm -rf /usr/share/mycroft-core
+}
