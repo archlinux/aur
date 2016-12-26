@@ -52,6 +52,6 @@ package() {
     cd "$srcdir/$pkgname-$pkgver"
     mkdir -p $pkgdir/usr/share/$pkgname/
     mkdir -p $pkgdir/usr/share/applications/
-    icotool -x res/autopanorama.ico -o $pkgdir/usr/share/$pkgname/
+    icotool -x res/autopanorama.ico -o $pkgdir/usr/share/$pkgname/autopanorama.png
     cp linux/autopanorama.desktop $pkgdir/usr/share/applications/
 }
