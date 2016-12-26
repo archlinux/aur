@@ -4,7 +4,7 @@
 
 pkgname=dataplot
 pkgver=2016_12_09
-pkgrel=1
+pkgrel=2
 pkgdesc="Software for scientific visualization, statistical analysis, and non-linear modeling."
 arch=('i686' 'x86_64')
 url="http://www.itl.nist.gov/div898/software/dataplot.html/"
@@ -21,7 +21,7 @@ noextract=("dpsrc_${pkgver}.tar.gz"
 build() {
   cd ${srcdir}
   gendesk -n -f \
-          --pkgname="${pkgname}" \
+          --pkgname="x${pkgname}" \
           --pkgdesc="${pkgdesc}" \
           --name="xdataplot" \
           --categories="Education;Science;Math;" \
@@ -57,11 +57,11 @@ package() {
   cd ${srcdir}/dpsrc
   
   # Moving the dataplot binary to ${pkgdir}
-  mkdir -p ${pkgdir}/usr/bin/
-  mv ${srcdir}/dpsrc/dataplot ${pkgdir}/usr/bin/
+  install -dm755 ${pkgdir}/usr/bin/
+  install -m755 ${srcdir}/dpsrc/dataplot ${pkgdir}/usr/bin/dataplot
 
   # Preparing the dataplot auxiliary files
-  mkdir -p ${pkgdir}/usr/share/dataplot/
+  install -dm755 ${pkgdir}/usr/share/dataplot/
   cd ${pkgdir}/usr/share/dataplot/
   bsdtar -xf ${srcdir}/dplib.tar.gz
 
@@ -84,19 +84,19 @@ package() {
   ln -s /usr/share/dataplot/frscript/xdataplot ${pkgdir}/usr/bin/xdataplot
 
   # Icon and .desktop files
-  mkdir -p ${pkgdir}/usr/share/pixmaps
+  install -dm755 ${pkgdir}/usr/share/pixmaps
   /usr/bin/convert ${pkgdir}/usr/share/dataplot/frscript/xdpIcon.xbm \
   ${pkgdir}/usr/share/pixmaps/xdataplot.png
-  mkdir -p ${pkgdir}/usr/share/applications
-  install -m 644 ${srcdir}/xdataplot.desktop ${pkgdir}/usr/share/applications/
+  install -dm755 ${pkgdir}/usr/share/applications
+  install -m644 ${srcdir}/xdataplot.desktop ${pkgdir}/usr/share/applications/
 
   # Copying dataplot.sh to ${pkgdir}/etc/profile.d so dataplot will know
   # where its files are
-  mkdir -p ${pkgdir}/etc/profile.d/
+  install -dm755 ${pkgdir}/etc/profile.d/
   cp ${srcdir}/dataplot.sh ${pkgdir}/etc/profile.d/
   
   # License/Disclaimer
-  mkdir -p ${pkgdir}/usr/share/licenses/${pkgname}
+  install -dm755 ${pkgdir}/usr/share/licenses/${pkgname}
   cat > ${pkgdir}/usr/share/licenses/${pkgname}/${pkgname}.txt << EOF
 http://www.itl.nist.gov/div898/software/dataplot/disclaim.htm
 
