@@ -1,0 +1,15 @@
+pkgbase = archlogo-glyph
+	pkgdesc = Arch Linux glyph (unicode e900). See url below showing it.
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://raw.githubusercontent.com/duffydack/dotfiles/master/arch-glyph.png
+	install = archlogo-glyph.install
+	arch = any
+	license = custom
+	depends = fontconfig
+	depends = xorg-font-utils
+	source = archlinux.ttf
+	md5sums = SKIP
+
+pkgname = archlogo-glyph
+
