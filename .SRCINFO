@@ -1,7 +1,7 @@
 pkgbase = wpantund-git
 	pkgdesc = Userspace WPAN Network Daemon
 	pkgver = 0.07.00.r222.g811cef1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/openthread/wpantund
 	arch = i686
 	arch = x86_64
