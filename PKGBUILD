@@ -3,7 +3,7 @@
 
 pkgname=ttf-unifont
 pkgver=9.0.06
-pkgrel=1
+pkgrel=2
 pkgdesc="TrueType version of the GNU Unifont"
 url="http://unifoundry.com/unifont.html"
 arch=('any')
@@ -18,5 +18,6 @@ package() {
 	install -d $pkgdir/usr/share/fonts/TTF/
 	install -m644 unifont-$pkgver/font/precompiled/unifont-$pkgver.ttf $pkgdir/usr/share/fonts/TTF/Unifont.ttf
 	install -m644 unifont-$pkgver/font/precompiled/unifont_upper-$pkgver.ttf $pkgdir/usr/share/fonts/TTF/Unifont_Upper.ttf
+	install -m644 unifont-$pkgver/font/precompiled/unifont_csur-$pkgver.ttf $pkgdir/usr/share/fonts/TTF/Unifont_CSUR.ttf
 }
 
