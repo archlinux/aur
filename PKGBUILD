@@ -52,18 +52,28 @@ build() {
 	# don't run depmod on 'make install'. We'll do this ourselves in packaging
 	sed -i '2iexit 0' scripts/depmod.sh
 
-	if [ -e "${srcdir}/build/.config" ]; then
-		msg2 "Using existing config found in build environment..."
+	if [ ! -d "${srcdir}/build" ]; then
+		msg2 "Creating build directory..."
+		mkdir -p "${srcdir}/build"
 	else
-		if [ ! -d "${srcdir}/build" ]; then
-			msg2 "Creating build directory..."
-			mkdir -p "${srcdir}/build"
-		else
-			rm -rf "${srcdir}/build";
+		if [ -f "${srcdir}/build/.config" ]; then
+			msg "Cleaning build directory, and backing up kernel config to srcdir/zen-config-bak..."
+			
+			cp "${srcdir}/build/.config" "${srcdir}/zen-config-bak"
+			
+			cd "${srcdir}/build"
+			
+			make clean
+			make mrproper
+			
+			msg "Using backed up config from previous build directory."
+			cp "${srcdir}/zen-config-bak" "${srcdir}/build/.config"
 		fi
+	fi
 
+	if [ ! -f "${srcdir}/build/.config" ]; then
 		if [ ! -f "${srcdir}/../zen-config" ]; then
-			msg2 "Creating default config..." # also initializes the output directory
+			msg2 "Creating default config..."
 			make -C "${srcdir}/zen-kernel/" O="${srcdir}/build" defconfig > /dev/null
 
 			warning "This package does not ship a kernel config."
