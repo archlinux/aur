@@ -13,8 +13,7 @@ md5sums=('fbd521e372ae02b9e4c91e75cbbd13c2')
 
 package() {
 	cd "${srcdir}/${pkgname}-${pkgver}/"
-	mkdir -p "${pkgdir}/usr/lib/systemd/system"
-	install -D -m644 adb-starter.service "${pkgdir}/usr/lib/systemd/system/"
-	mkdir -p "${pkgdir}/usr/share/licenses/${pkgname}"
-	install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}"
+	install -d "${pkgdir}/usr/lib/systemd/system"
+	install -t "${pkgdir}/usr/lib/systemd/system" -m644 adb-starter.service
+	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
