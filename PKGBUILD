@@ -15,7 +15,7 @@ url="https://github.com/Tytan/AutoPanorama"
 license=('GPL')
 groups=()
 depends=('qt5-base' 'jasper' 'libwebp')
-makedepends=('qt5-base' 'cmake')
+makedepends=('qt5-base' 'cmake' 'icoutils')
 checkdepends=()
 optdepends=()
 provides=("$pkgname")
@@ -52,6 +52,6 @@ package() {
     cd "$srcdir/$pkgname-$pkgver"
     mkdir -p $pkgdir/usr/share/$pkgname/
     mkdir -p $pkgdir/usr/share/applications/
-    cp res/autopanorama.ico $pkgdir/usr/share/$pkgname/
+    icotool -x res/autopanorama.ico -o $pkgdir/usr/share/$pkgname/
     cp linux/autopanorama.desktop $pkgdir/usr/share/applications/
 }
