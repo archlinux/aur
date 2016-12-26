@@ -22,7 +22,7 @@ build() {
 }
 
 package() {
-    install -Dm755 $srcdir/binaryen.sh $pkgdir/etc/profile.d/binaryen.sh
+    install -Dm755 binaryen.sh $pkgdir/etc/profile.d/binaryen.sh
     cd binaryen-version_${pkgver}/build
     make DESTDIR=${pkgdir} install
     install -Dm644 ../LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
