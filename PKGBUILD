@@ -1,4 +1,4 @@
-pkgname=mono-alpha
+pkgname=mono
 _pkgname=mono
 pkgver=4.8.0
 pkgrel=2
@@ -11,7 +11,7 @@ makedepends=('git')
 options=('!makeflags')
 provides=('monodoc' 'mono')
 conflicts=('monodoc' 'mono')
-source=('git://github.com/mono/mono.git#branch=mono-$pkgver-branch' 'mono.binfmt.d')
+source=('git://github.com/mono/mono.git#branch=mono-4.8.0-branch' 'mono.binfmt.d')
 md5sums=('SKIP' 'b9ef8a65fea497acf176cca16c1e2402')
 
 build() {
