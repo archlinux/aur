@@ -1,0 +1,16 @@
+pkgbase = lightdm-webkit2-theme-material2-git
+	pkgdesc = A material design LightDM theme for lightdm-webkit2-greeter from the latest git
+	pkgver = r15.2e21881
+	pkgrel = 1
+	url = https://github.com/FallingSnow/lightdm-webkit2-material2
+	arch = any
+	license = WTFPL
+	makedepends = npm
+	makedepends = nodejs
+	depends = lightdm-webkit2-greeter
+	conflicts = lightdm-webkit2-theme-material2
+	source = git+https://github.com/FallingSnow/lightdm-webkit2-material2.git
+	sha512sums = SKIP
+
+pkgname = lightdm-webkit2-theme-material2-git
+
