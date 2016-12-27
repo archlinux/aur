@@ -19,9 +19,11 @@ pkgbase = partio-git
 	source = git+https://github.com/wdas/partio.git
 	source = CMakeLists.txt.patch
 	source = py_CMakeLists.txt.patch
+	source = SeExprv3.patch
 	md5sums = SKIP
-	md5sums = 795fd5b88af781f3d94d51bea44518f3
+	md5sums = 2f7a6ddc41a5b7d9134820f877b0d2b3
 	md5sums = 306cacec7af0af3adb7876c288881062
+	md5sums = 92029f98bc024ed5034a299590906f1d
 
 pkgname = partio-git
 
