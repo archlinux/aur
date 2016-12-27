@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Encoding=UTF-8
+Name=VUE
+Comment=Visual Understanding Environment
+Exec=vue
+Icon=/opt/vue/vue.png
+Terminal=false
