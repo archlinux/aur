@@ -1,8 +1,8 @@
-# Maintainer: Romain Porte <microjoe@mailoo.org>
+# Maintainer: Romain Porte <microjoe@microjoe.org>
 
 pkgname=vue
 pkgver=3.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Visual Understanding Environment"
 arch=('any')
 url="https://github.com/VUE/VUE"
