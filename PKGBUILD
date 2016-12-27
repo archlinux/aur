@@ -2,7 +2,7 @@
 
 pkgname=standardese-git
 pkgver=0.3.1.r2.g0fe0e66
-pkgrel=3
+pkgrel=4
 pkgdesc="A (work-in-progress) nextgen Doxygen for C++"
 arch=('i686' 'x86_64')
 url="https://github.com/foonathan/standardese"
@@ -24,7 +24,13 @@ build() {
   rm -rf build
   mkdir build
   cd build
-  cmake -DSTANDARDESE_BUILD_TEST=OFF -DCMAKE_INSTALL_PREFIX="$pkgdir/usr" -DLIBCLANG_SYSTEM_INCLUDE_DIR="/usr/include/" ..
+
+  cmake \
+    -DSTANDARDESE_BUILD_TEST=OFF \
+    -DCMAKE_INSTALL_PREFIX="$pkgdir/usr" \
+    -DLIBCLANG_INCLUDE_DIR="/usr/include/" \
+    -DLIBCLANG_SYSTEM_INCLUDE_DIR="$(find /usr/lib/clang/ -type d -name include)" \
+    ..
   make
 }
 

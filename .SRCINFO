@@ -1,7 +1,7 @@
 pkgbase = standardese-git
 	pkgdesc = A (work-in-progress) nextgen Doxygen for C++
 	pkgver = 0.3.1.r2.g0fe0e66
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/foonathan/standardese
 	arch = i686
 	arch = x86_64
