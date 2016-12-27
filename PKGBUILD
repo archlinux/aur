@@ -8,7 +8,7 @@ arch=('any')
 license=('MIT')
 depends=('android-tools')
 install=adb-starter.install
-source=("https://github.com/tweakdeveloper/$pkgname/archive/v$pkgver.tar.gz")
+source=("https://github.com/tweakdeveloper/${pkgname}/archive/v${pkgver}.tar.gz")
 md5sums=('fbd521e372ae02b9e4c91e75cbbd13c2')
 
 package() {
