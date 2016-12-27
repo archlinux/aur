@@ -1,0 +1,4 @@
+linux-files.zip
+pkg/
+*.pkg.tar.xz
+src/

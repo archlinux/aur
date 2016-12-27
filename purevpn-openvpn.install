@@ -1,0 +1,8 @@
+post_install() {
+  echo "Please run \"purevpn -u <username> -p <password>\" as root to update the VPN config files."
+}
+
+post_upgrade() {
+  post_install
+}
+

@@ -1,0 +1,19 @@
+pkgbase = purevpn-openvpn
+	pkgdesc = OpenVPN hackery to add PureVPN to NetworkManager
+	pkgver = 2016.12.27
+	pkgrel = 1
+	url = https://www.purevpn.com/
+	install = purevpn-openvpn.install
+	arch = any
+	license = GPL
+	depends = networkmanager-openvpn
+	noextract = linux-files.zip
+	source = linux-files.zip::https://s3-us-west-1.amazonaws.com/heartbleed/linux/linux-files.zip
+	source = template
+	source = purevpn
+	sha256sums = 32ee473d414691438618d68740c7060ad1218719e13b41561b18c3d0a659ae01
+	sha256sums = 7d89dab51332eb5fb3cc31524d4979582610f2d4ea4a4cc30b16255c5ff318c6
+	sha256sums = ce18724ea37de4b94e429283a611d850f4c8890732e7beb94ae76e7ac1bb86f5
+
+pkgname = purevpn-openvpn
+
