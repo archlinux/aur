@@ -2,13 +2,13 @@
 
 _pkgname='fatrat'
 pkgname="$_pkgname-git"
-pkgver=1.2.0_beta2.42.g3f34e47
+pkgver=1.2.0_beta2.45.g14a1a14
 pkgrel=1
 pkgdesc='Qt Download/Upload Manager'
 arch=('i686' 'x86_64')
 url='http://fatrat.dolezel.info'
 license=('custom: GPL2 + complement')
-depends=('curl' 'libtorrent-rasterbar' "qt5-"{tools,svg,webengine})
+depends=('curl' 'libtorrent-rasterbar' 'pion-git' "qt5-"{tools,svg,webengine})
 optdepends=('desktop-file-utils: add application to MIME database')
 makedepends=('git' 'cmake' 'boost')
 provides=("$_pkgname")
@@ -32,7 +32,8 @@ build() {
         -DWITH_DOCUMENTATION=ON \
         -DWITH_NLS=ON \
         -DWITH_CURL=ON \
-        -DWITH_BITTORRENT=ON
+        -DWITH_BITTORRENT=ON \
+        -DWITH_WEBINTERFACE=ON
   make
 
 }
