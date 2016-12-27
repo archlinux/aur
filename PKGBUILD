@@ -9,8 +9,8 @@ license=('GPL')
 depends=('glibc')
 makedepends=('yasm' 'git' 'ffmpeg-compat-54')
 provides=('libx264.so.142')
-source=(git://git.videolan.org/x264.git#commit=021c0dc6c95c x264.diff config.diff)
-md5sums=('SKIP' ef101f648e40ef4b945c28a0630cf5f2 49f92d3237f84b97ed404239cd79c1d8)
+source=(git://git.videolan.org/x264.git#commit=021c0dc6c95c x264.diff configure.diff)
+md5sums=('SKIP' d1eb9bb90d4b89aab82d5e1c70161bbd 2039c9c910d4a667cb881e15aebb739f)
 
 pkgver() {
   cd x264
@@ -22,10 +22,10 @@ pkgver() {
 
 build() {
   patch -p1 < ../x264.diff
+  patch -p1 < ../configure.diff
   cd x264
   ./configure --prefix=/usr \
     --enable-shared --enable-pic
-    patch -p3 < ../config.diff
   make
 }
 

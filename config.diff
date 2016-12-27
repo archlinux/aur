@@ -1,9 +1,0 @@
---- /src/x264/config.mak	2016-12-02 10:04:24.780948091 +0300
-+++ /src/x264/config.mak	2016-12-02 09:58:11.000000000 +0300
-@@ -38,5 +38,5 @@
- SOFLAGS=-shared -Wl,-soname,$(SONAME)  -Wl,-Bsymbolic
- default: lib-shared
- install: install-lib-shared
--LDFLAGSCLI = -ldl  -llsmash -lm -L.  -lavformat -lavcodec -lavutil -lswscale  -lswscale -lavutil 
-+LDFLAGSCLI = -ldl  -llsmash -lm -L.  -l:libavformat.so.54 -l:libavcodec.so.54 -lavutil -lswscale  -lswscale -lavutil 
- CLI_LIBX264 = $(LIBX264)

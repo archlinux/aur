@@ -1,0 +1,11 @@
+--- /x264/configure
++++ /x264/configure
+@@ -871,7 +871,7 @@
+ if [ "$lavf" = "auto" ] ; then
+     lavf="no"
+     if ${cross_prefix}pkg-config --exists libavformat libavcodec libswscale 2>/dev/null; then
+-        LAVF_LIBS="$LAVF_LIBS $(${cross_prefix}pkg-config --libs libavformat libavcodec libavutil libswscale)"
++	LAVF_LIBS="$LAVF_LIBS -l:libavformat.so.54 -l:libavcodec.so.54 $(${cross_prefix}pkg-config --libs libavutil libswscale)"
+         LAVF_CFLAGS="$LAVF_CFLAGS $(${cross_prefix}pkg-config --cflags libavformat libavcodec libavutil libswscale)"
+     fi
+     if [ -z "$LAVF_LIBS" -a -z "$LAVF_CFLAGS" ]; then
