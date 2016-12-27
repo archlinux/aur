@@ -1,10 +1,8 @@
-# Maintainer: grimsock <lord.grimsock at gmail dot com>
-# Contributor: James An <james@jamesan.ca>
-# Contributor: lybin
+# Maintainer: beatgammit <t.jameson.little at gmail dot com>
  
 pkgname=geckodriver-bin
 pkgver=0.11.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Proxy for using W3C WebDriver-compatible clients to interact with Gecko-based browsers."
 arch=('i686' 'x86_64')
 url="https://github.com/mozilla/geckodriver"
