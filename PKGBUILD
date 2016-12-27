@@ -13,9 +13,9 @@ depends=('gtksourceview2' 'libgnomecanvas' 'zarith')
 makedepends=('lablgtk2' 'coq' 'graphviz' 'ltl2ba' 'ocaml')
 optdepends=('lablgtk2' 'coq' 'graphviz' 'ltl2ba')
 source=("http://frama-c.com/download/${pkgname}-${_codename}-${pkgver}.tar.gz")
-md5sums=('e52271640aebcccab894ae038c9579aa')
-sha1sums=('9120171dc34683ed78f1f79f5de1ac97544702e1')
-sha256sums=('20ddc3112b1d0e0c36dcb4e0dca06f69eca5b2cb8c9c2ed7834433f16868e40b')
+md5sums=('454cce7dd6c4d2ce80db2395b90f912e')
+sha1sums=('7e16289d30f3db8f147bbf2725a330ad8d6be2f7')
+sha256sums=('b03918572f9a4dbf28b6234c8ece14cbe3a7587ef17add5225bd865f7d2100e3')
 
 build() {
   cd "$srcdir/$pkgname-$_codename-$pkgver"
