@@ -1,7 +1,7 @@
 # Maintainer: goll <adrian.goll+aur[at]gmail>
 
 pkgname=nocache-git
-pkgver=100.a56cbb4
+pkgver=109.86a9005
 pkgrel=1
 pkgdesc="minimize caching effects"
 arch=('i686' 'x86_64')
