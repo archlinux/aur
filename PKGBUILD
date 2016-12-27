@@ -1,7 +1,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 pkgname=emacs-chess-git  
 pkgver=834.4b7f4e5
-pkgrel=1
+pkgrel=2
 pkgdesc="Chess client written entirely in Emacs Lisp"
 arch=('any')
 url="http://www.newartisans.com/2008/05/emacs-chess-now-hosted-at-github.html"
@@ -11,6 +11,7 @@ makedepends=('git')
 optdepends=('crafty: as chess engine' 'gnuchess: as chess engine')
 md5sums=('SKIP')
 source=('git://github.com/jwiegley/emacs-chess.git')
+install=advice.install
 _gitname="emacs-chess"
 
 pkgver() {
