@@ -8,12 +8,12 @@ pkgname=('xorg-server-nosystemd' 'xorg-server-xephyr-nosystemd' 'xorg-server-xdm
 		 'xorg-server-xnest-nosystemd' 'xorg-server-xwayland-nosystemd' 'xorg-server-common-nosystemd' 'xorg-server-devel-nosystemd')
 _pkgbase=xorg-server
 pkgver=1.18.4
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 license=('custom')
 groups=('xorg')
 url="http://xorg.freedesktop.org"
-makedepends=('pixman' 'libx11' 'mesa-nosystemd' 'mesa-libgl-nosystemd' 'xf86driproto' 'xcmiscproto' 'xtrans' 'bigreqsproto' 'randrproto' 
+makedepends=('pixman' 'libx11' 'mesa' 'mesa-libgl' 'xf86driproto' 'xcmiscproto' 'xtrans' 'bigreqsproto' 'randrproto' 
              'inputproto' 'fontsproto' 'videoproto' 'presentproto' 'compositeproto' 'recordproto' 'scrnsaverproto'
              'resourceproto' 'xineramaproto' 'libxkbfile' 'libxfont' 'renderproto' 'libpciaccess' 'libxv'
              'xf86dgaproto' 'libxmu' 'libxrender' 'libxi' 'dmxproto' 'libxaw' 'libdmx' 'libxtst' 'libxres'
