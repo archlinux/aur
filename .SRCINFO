@@ -1,0 +1,18 @@
+pkgbase = leocad-git
+	pkgdesc = A CAD program for creating virtual LEGO models.
+	pkgver = v0.83.2.r11.77efda90
+	pkgrel = 1
+	url = http://www.leocad.org/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	depends = qt4
+	optdepends = ldraw-parts-library
+	provides = leocad
+	conflicts = leocad
+	source = leocad-git::git+https://github.com/leozide/leocad.git
+	md5sums = SKIP
+
+pkgname = leocad-git
+
