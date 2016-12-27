@@ -10,8 +10,9 @@
 # Contributor: hugelgupf <ckoch (at) cs.nmt.edu>
 
 pkgname=dpkg
-pkgver=1.18.10
-pkgrel=3
+pkgver=1.18.18
+_commit=24e2c6ec842dceb1dc25875e5a30143d325edc52 # 1.18.18
+pkgrel=1
 pkgdesc="The Debian Package Manager.  Don't use it instead of Arch's 'pacman'."
 arch=('i686' 'x86_64')
 url="https://tracker.debian.org/pkg/dpkg"
@@ -19,7 +20,7 @@ license=('GPL')
 depends=('xz' 'zlib' 'bzip2' 'perl')
 makedepends=('perl-io-string' 'perl-timedate' 'git')
 checkdepends=('perl-io-string' 'perl-test-pod')
-source=("$pkgname-$pkgver::git+https://anonscm.debian.org/git/dpkg/dpkg.git#tag=$pkgver")
+source=("$pkgname-$pkgver::git+https://anonscm.debian.org/git/dpkg/dpkg.git#commit=$_commit")
 sha256sums=('SKIP')
 
 check() {
