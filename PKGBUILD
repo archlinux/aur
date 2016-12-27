@@ -1,13 +1,15 @@
-# Maintainer: beatgammit <t.jameson.little at gmail dot com>
+# Maintainer: T. Jameson Little <t.jameson.little@gmail.com>
  
 pkgname=geckodriver-bin
 pkgver=0.11.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Proxy for using W3C WebDriver-compatible clients to interact with Gecko-based browsers."
 arch=('i686' 'x86_64')
 url="https://github.com/mozilla/geckodriver"
 license=('MPL')
 optdepends=('firefox')
+provides=('geckodriver')
+conflicts=('geckodriver')
  
 if [ "$CARCH" = "i686" ]; then
     _arch='linux32'
