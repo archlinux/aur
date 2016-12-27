@@ -18,15 +18,16 @@ sha256sums=("SKIP")
 
 pkgver() {
 
-  cd "$_pkgname"
+  cd $_pkgname
   git describe --always | sed 's/-/./g'
 
 }
 
 build() {
 
-  cd "$_pkgname"
-  cmake . \
+  rm -Rf build && mkdir build
+  cd build
+  cmake $srcdir/$_pkgname/ \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DWITH_DOCUMENTATION=ON \
         -DWITH_NLS=ON \
@@ -39,8 +40,8 @@ build() {
 package() {
 
   # actual installation
-  cd "$_pkgname"
-  make DESTDIR="$pkgdir" install
+  cd build
+  make DESTDIR=$pkgdir install
 
   # license
   install -D -m644 $srcdir/$_pkgname/LICENSE \
