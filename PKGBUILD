@@ -1,4 +1,5 @@
 # Maintainer: Christian Hesse <mail@eworm.de>
+# Contributor: Jason A. Donenfeld <Jason@zx2c4.com>
 
 pkgbase=wireguard
 pkgname=(wireguard-dkms wireguard-tools)
