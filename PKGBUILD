@@ -5,8 +5,8 @@
 
 pkgname=r-mkl
 pkgver=3.3.2
-pkgrel=5
-pkgdesc="Language and environment for statistical computing and graphics, linked with Intel's MKL."
+pkgrel=6
+pkgdesc="Language and environment for statistical computing and graphics, linked to the Intel(R) MKL."
 arch=('x86_64')
 license=('GPL')
 url='http://www.r-project.org/'
@@ -59,8 +59,8 @@ sha512sums=('06a98687c0b180cb0bfd57440ea26088212d9f48948d503136475bf54b42d72cfec
             '1491b01d3d14b86d26c383e00e2305858a52ddd498158c9f7f6b33026ee01f246408b1676cffea73f7783c8c4cf546285705c43c0286adbd75ad77706918b5fe'
             'aae388c5b6c02d9fb857914032b0cd7d68a9f21e30c39ba11f5a29aaf1d742545482054b57ce18872eabb6605bbb359b2fc1e9be5ce6881443fdbdf6b67fab3b')
 
-# Build with GCC/GFortran or the Intel Compiler Suite
-_CC="icc" # comment to build with GCC
+# Build with the Intel Compiler Suite or GCC/GFortran
+_CC="icc" # comment this line to build the package with GCC
 
 prepare() {
   cd R-${pkgver}
@@ -87,25 +87,16 @@ build() {
 
   if [ $_CC = "icc" ]; then
     source ${MKLROOT}/../bin/compilervars.sh ${_intel_arch}
-    _intel_cc_opt=" -O3 -qno-opt-matmul -xHost -m64 -qopenmp -ipo -fp-model precise -fp-model source -qopt-mem-layout-trans=2 -diag-disable=188,308"
+    _intel_cc_opt=" -O3 -xHost -m64 -qopenmp -ipo -diag-disable=188,308"
     export MAIN_LDFLAGS=" -qopenmp"
     export FLIBS=" -lgfortran -lifcore -lifport"
 
+    # Single Dynamic Library (SDL)
     _mkllibs=" -L${MKLROOT}/lib/${_intel_arch} \
-      -l${_intel_lib} \
-      -lmkl_intel_thread \
-      -lmkl_core \
-      -liomp5 \
+      -lmkl_rt \
       -lpthread \
       -lm \
-      -ldl \
-      -lsvml \
-      -lirc \
-      -lunwind \
-      -lifcore \
-      -lifport"
-    # Including -lifcore and -lifport twice fixes
-    # compilation of some R packages (e.g. quantreg, igraph)
+      -ldl"
 
     export CC="icc"
     export CXX="icpc"
@@ -121,6 +112,8 @@ build() {
     _gcc_opt=" -O3 -fopenmp -m64"
     export MAIN_LDFLAGS=" -fopenmp"
 
+    # Single Dynamic Library does not work for GCC
+    # Using Dynamic Linking
     _mkllibs=" -L${MKLROOT}/lib/${_intel_arch} \
       -Wl,--no-as-needed \
       -l${_gfortran_lib} \
