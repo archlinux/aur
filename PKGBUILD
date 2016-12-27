@@ -2,8 +2,8 @@
 # Contributor: Bartłomiej Piotrowski <nospam@bpiotrowski.pl>
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=frama-c
-_codename=Aluminium
-pkgver=20160501
+_codename=Silicon
+pkgver=20161101
 pkgrel=1
 pkgdesc='Extensible platform dedicated to source-code analysis of C software.'
 arch=('i686' 'x86_64')
