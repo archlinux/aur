@@ -3,7 +3,7 @@
 pkgbase=python-traitsui
 pkgname=('python2-traitsui' 'python-traitsui')
 pkgver=5.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Traits-capable user interfaces"
 arch=('any')
 url="https://github.com/enthought/traitsui"
