@@ -1,1 +1,25 @@
-This is a hotfix release to conform to the new Bloodcat API.
+This release contains a large number of new features, UI updates, and stability improvements from the past year.
+Features:
+
+    Smoother, more efficient slider rendering. (#205, #216)
+    Slider behavior now more closely resembles osu!. (#210, #211)
+    Beatmap groups (favorites, last played), and more sorting options (date added, most played). (ed06a8b)
+    Local beatmap offsets (press +/- when playing a map). (e023780)
+    In-game scoreboard (press TAB to hide). (#155)
+    New options menu overlay. (6373b36)
+    Pulsing logos. (#214)
+    Falling game objects and pitch drop when failing a map. (#148, #150)
+    Reverse arrows drawn in black on lightly-colored sliders. (#152)
+    New theme song and main menu background. (1436f23, b5b954f)
+    Star fountains in the main menu. (5704b8a, 9f2aa7c)
+    Enabled fullscreen mode (in "Display" options). (a733462)
+
+Other changes:
+
+    Various bug fixes and better overall error handling.
+    Detect osu! installation location using registry keys. (06c423a)
+    Root directory is always the same directory as the JAR, regardless of where it's launched. (81c8a61)
+    Beatmap parser optimizations. (69a7c7b)
+    Self-updating beatmap cache database. (ed06a8b)
+
+Thanks to @mad-s and @yugecin for their major contributions to this release.
