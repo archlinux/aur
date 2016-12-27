@@ -1,6 +1,6 @@
 pkgbase = ubuntu-themes
 	pkgdesc = Ubuntu monochrome icon theme, Ambiance and Radiance themes, and Ubuntu artwork
-	pkgver = 16.10.16.10.20161024
+	pkgver = 16.10.17.04.20161205
 	pkgrel = 1
 	url = https://launchpad.net/ubuntu-themes
 	arch = any
@@ -17,8 +17,8 @@ pkgbase = ubuntu-themes
 	provides = ubuntu-mono
 	conflicts = light-themes
 	conflicts = ubuntu-mono
-	source = https://launchpad.net/ubuntu/+archive/primary/+files/ubuntu-themes_16.10+16.10.20161024.orig.tar.gz
-	sha512sums = 3cafb43220885257673f0a629b122511fef2954e45ab7426a2425a543f7602ab85f74509cf1fdf2c586ce968bc73669e46dfdf91bad09fe0dff1c2dad4a58f27
+	source = https://launchpad.net/ubuntu/+archive/primary/+files/ubuntu-themes_16.10+17.04.20161205.orig.tar.gz
+	sha512sums = 42bb622ad6818f7bf2e9f163f4a9a342fd7d8bad5e8a50db2d439857d053b0827543b7e8f626588316670fd6c63d050ecc522aef52e49c5c336ac08f6f303238
 
 pkgname = ubuntu-themes
 
