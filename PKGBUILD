@@ -2,7 +2,7 @@
 
 pkgname=bootableusb
 pkgver=0.4
-pkgrel=2
+pkgrel=3
 pkgdesc="Create bootable usb drives"
 arch=('i686' 'x86_64')
 url="https://github.com/bugra9/BootableUSB"
