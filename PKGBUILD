@@ -7,7 +7,7 @@
 # https://github.com/michaellass/AUR
 
 pkgname=jabref
-pkgver=3.8
+pkgver=3.8.1
 pkgrel=1
 pkgdesc="GUI frontend for BibTeX, written in Java"
 arch=('any')
@@ -22,7 +22,7 @@ source=(https://github.com/JabRef/jabref/releases/download/v${pkgver}/JabRef-${p
         jabref.sh
         jabref.desktop)
 noextract=(JabRef-${pkgver}.jar)
-sha256sums=('13bcfd10ab3d2dbe21dfad06ecf4dbf1cd08e4e1fe6a6a93293d844b4c5c3a98'
+sha256sums=('8fa5f317a8be62c714dff6d88e3aa3fea5c3b6b1e59f20a221b87d72aa775a85'
             '19f74c294c572a431e0fadc00671aa5ca77149f8d0572fc01d5944eba06b0c6c'
             '0355f5135a6d855416160d4ff1cf8fe5e55921088b83491647b6a714dae87dda'
             'f958793f6e408bab7db84973169b30ed61077112d3f552dbcc9f068847317602')
