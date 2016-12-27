@@ -1,0 +1,11 @@
+pkgbase = c_g1awrapper-git
+	pkgdesc = A wrapper for g1a files
+	pkgver = 1.0
+	pkgrel = 1
+	arch = i686
+	arch = x86_64
+	source = git+https://github.com/Kristaba/C-G1A-Wrapper
+	md5sums = SKIP
+
+pkgname = c_g1awrapper-git
+
