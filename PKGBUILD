@@ -13,7 +13,7 @@ noextract=('VUE.jar')
 md5sums=('4ac36729f42d000ac163add1b6c7a351'
 	'af196991a58733c5c0742aace0439639'
 	'9369da34c69baefc77a7baeaceb4e476'
-	'3900bc2cfca99500f4dc38cda75ebd06')
+	'5c9a02147f1acea93492dbdf7a6d2656')
 
 
 package() {

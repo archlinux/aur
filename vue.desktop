@@ -5,4 +5,5 @@ Name=VUE
 Comment=Visual Understanding Environment
 Exec=vue
 Icon=/opt/vue/vue.png
+Categories=Office;
 Terminal=false
