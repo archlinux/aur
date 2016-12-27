@@ -5,7 +5,7 @@ pkgver=7.2.0
 _pkgmajver=7.2
 _pkgrev=${pkgver}-48204
 _libicalver=0.44
-pkgrel=200
+pkgrel=201
 pkgdesc="An open source reference implementation of the icalendar data type and serialization format"
 arch=('armv7h'
       'armv6h'
