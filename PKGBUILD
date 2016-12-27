@@ -36,4 +36,11 @@ package() {
   make DESTDIR="$pkgdir/" install
   cp -r {pieces,sounds} $pkgdir/usr/share/emacs/site-lisp/
   find $pkgdir -type d -name .git -exec rm -fr {} \;
+  cd $pkgdir/usr/share/emacs/site-lisp/pieces
+  for _i in  *.tar.xz
+  do bsdtar xf $_i
+     rm $_i
+  done
+  find . -type f -exec chmod 644 {} \;
+  find . -type f -exec chown root:games {} \;
 } 
