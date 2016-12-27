@@ -1,23 +1,24 @@
 # Contributor: Andrew Querol <andrew@querol.me>
 # Maintainer: Rafael Fontenelle <rafaelff@gnome.org>
 
-pkgname=chrome-gnome-shell-git
-pkgver=7.2.r12.gfa44ccd
+_name=chrome-gnome-shell
+pkgname=$_name-git
+pkgver=7.2.r56.gaa9d96b
 pkgrel=1
-pkgdesc="Native connector for extensions.gnome.org"
+pkgdesc="Native connector for integration with extensions.gnome.org"
 arch=('any')
 url="https://wiki.gnome.org/Projects/GnomeShellIntegrationForChrome"
 license=('GPL')
 depends=('gnome-shell' 'python-requests')
-makedepends=('git' 'cmake')
-provides=("${pkgname%-git}")
-replaces=('gs-chrome-connector') # Old name, renamed at request of the maintainer
-conflicts=($replaces)
+makedepends=('git' 'cmake' 'jq')
+provides=("$_name")
+replaces=('gs-chrome-connector') # Old name
+conflicts=('gs-chrome-connector' "$_name")
 source=("git+https://git.gnome.org/browse/chrome-gnome-shell")
 md5sums=('SKIP')
 
 pkgver() {
-    cd "$srcdir/${pkgname%-git}"
+    cd "$srcdir/$_name"
     
     # git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
     _tag=$(git describe --abbrev=0)
@@ -28,16 +29,19 @@ pkgver() {
 }
 
 prepare() {
-    cd "$srcdir/${pkgname%-git}"
+    cd "$srcdir/$_name"
     mkdir -p 'build'
 }
 
 build() {
-    cd "$srcdir/${pkgname%-git}/build"
-    cmake -DCMAKE_INSTALL_PREFIX=/usr -DBUILD_EXTENSION=OFF ../
+    cd "$srcdir/$_name/build"
+    cmake                                \
+        -DCMAKE_INSTALL_PREFIX=/usr      \
+        -DCMAKE_INSTALL_LIBDIR=lib       \
+        -DBUILD_EXTENSION=OFF ../
 }
 
 package() {
-    cd "$srcdir/${pkgname%-git}/build"
-    make DESTDIR="$pkgdir/" install
+    cd "$srcdir/$_name/build"
+    make DESTDIR="$pkgdir" install
 }
