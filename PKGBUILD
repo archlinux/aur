@@ -1,4 +1,4 @@
-# Maintainer: meepzh <meep.aur@meepzh.com>
+# Maintainer: Alex Dahl <adahl1@umbc.edu>
 pkgname=partio-git
 pkgver=1.1.0.r73.g7f3e0d1
 pkgrel=4
@@ -13,8 +13,8 @@ optdepends=('python2: Python interface support'
 makedepends=('cmake>=2.4.6' 'git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-source=('git+https://github.com/wdas/partio.git' 'CMakeLists.txt.patch' 'py_CMakeLists.txt.patch')
-md5sums=('SKIP' '795fd5b88af781f3d94d51bea44518f3' '306cacec7af0af3adb7876c288881062')
+source=('git+https://github.com/wdas/partio.git' 'CMakeLists.txt.patch' 'py_CMakeLists.txt.patch' 'SeExprv3.patch')
+md5sums=('SKIP' '2f7a6ddc41a5b7d9134820f877b0d2b3' '306cacec7af0af3adb7876c288881062' '92029f98bc024ed5034a299590906f1d')
 
 pkgver() {
   cd "$srcdir/${pkgname%-git}"
@@ -24,6 +24,8 @@ pkgver() {
 
 prepare() {
   cd "$srcdir"
+  # Path PartioSe for SeExpr v3 until source fixed
+  patch -p1 -i "$srcdir/SeExprv3.patch"
   # Fix SeExpr dependency and remove tests
   patch -p1 -i "$srcdir/CMakeLists.txt.patch"
   # Change Python version to 2 to work with SeExpr
@@ -32,7 +34,7 @@ prepare() {
 
 build() {
   cd "$srcdir/${pkgname%-git}"
-  mkdir build
+  mkdir -p build
   cd ./build
   cmake -DCMAKE_INSTALL_PREFIX=/usr -Wno-dev ..
   make

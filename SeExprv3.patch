@@ -1,0 +1,243 @@
+diff --git /partio/src/lib/PartioSe.h /partio/src/lib/PartioSe.h
+index 44a434d..02e92ac 100644
+--- /partio/src/lib/PartioSe.h
++++ /partio/src/lib/PartioSe.h
+@@ -33,13 +33,17 @@ THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.
+ */
+ #include <Partio.h>
+-#include <SeExpression.h>
++#include <SeExpr2/Expression.h>
+ #include <map>
+ 
+ namespace Partio{
+ 
++using Vec3d = SeExpr2::Vec<double,3>;
++
++using Vec3dRef= SeExpr2::Vec<double,3,true>;
++
+ template<class T>
+-class AttribVar:public SeExprVarRef
++class AttribVar:public SeExpr2::ExprVarRef
+ {
+     Partio::ParticlesDataMutable* parts;
+     Partio::ParticleAttribute attr;
+@@ -48,11 +52,11 @@ class AttribVar:public SeExprVarRef
+ public:
+     AttribVar(Partio::ParticlesDataMutable* parts,
+         Partio::ParticleAttribute attr,int& currentIndex)
+-        :parts(parts),attr(attr),currentIndex(currentIndex),clampedCount(std::min(attr.count,3))
++        :SeExpr2::ExprVarRef(SeExpr2::TypeVec(1).Varying()),parts(parts),attr(attr),currentIndex(currentIndex),clampedCount(std::min(attr.count,3))
+     {}
+ 
+     bool isVec(){return attr.count!=1;}
+-    void eval(const SeExprVarNode* node,SeVec3d& result){
++    void eval(double* result) {
+         const T* ptr=parts->data<T>(attr,currentIndex);
+         //std::cerr<<"in eval for "<<attr.name<<" count is "<<clampedCount<<" cur "<<currentIndex<<std::endl;
+         for(int k=0;k<clampedCount;k++){
+@@ -63,22 +67,36 @@ public:
+             result[k]=0;
+         }
+     }
++    void eval(const char** resultStr) {}
++    /// void eval(const SeExpr2::ExprVarNode* node,Vec3d& result){
++        /// const T* ptr=parts->data<T>(attr,currentIndex);
++        /// //std::cerr<<"in eval for "<<attr.name<<" count is "<<clampedCount<<" cur "<<currentIndex<<std::endl;
++        /// for(int k=0;k<clampedCount;k++){
++            /// result[k]=ptr[k];
++        /// }
++        /// // set any remaining fields (i.e. if clampedCount is 2)
++        /// for(int k=clampedCount;k<3;k++){
++            /// result[k]=0;
++        /// }
++    /// }
+ };
+ 
+-struct SimpleVar:public SeExprVarRef{
++struct SimpleVar:public SeExpr2::ExprVarRef{
+     double val;
+-    SimpleVar():val(0){}
++    SimpleVar():SeExpr2::ExprVarRef(SeExpr2::TypeVec(1).Varying()), val(0){}
+     bool isVec(){return false;}
+-    void eval(const SeExprVarNode* node,SeVec3d& result){
+-        result[0]=result[1]=result[2]=val;
+-    }
++    void eval(double* result) {result[0] = val;}
++    void eval(const char** resultStr) {}
++    /// void eval(const SeExprVarNode* node,Vec3d& result){
++        /// result[0]=result[1]=result[2]=val;
++    /// }
+ };
+ 
+ /// Class that maps back to the partio data
+ template<class T> class VarToPartio;
+ 
+ /// NOTE: This class is experimental and may be deleted/modified in future versions
+-class PartioSe:public SeExpression{
++class PartioSe:public SeExpr2::Expression{
+     bool isPaired;
+     int currentIndex;
+     Partio::ParticleAttribute pairH1,pairH2;
+@@ -98,7 +116,8 @@ class PartioSe:public SeExpression{
+     mutable SimpleVar indexVar,countVar,timeVar;
+ 
+ public:
+-    typedef  SeExpression::LocalVarTable::const_iterator LocalVarTableIterator;
++    typedef std::map<std::string, SeExpr2::ExprVarRef*> LocalVarTable;
++    typedef LocalVarTable::const_iterator LocalVarTableIterator;
+     
+     PartioSe(Partio::ParticlesDataMutable* parts,const char* expr);
+     PartioSe(Partio::ParticlesDataMutable* partsPairing,Partio::ParticlesDataMutable* parts,const char* expr);
+@@ -110,7 +129,7 @@ public:
+     void run(int i);
+     bool runRange(int istart,int iend);
+     void setTime(float val);
+-    SeExprVarRef*  resolveVar(const std::string& s) const;
++    SeExpr2::ExprVarRef*  resolveVar(const std::string& s) const;
+ private:
+     PartioSe(const PartioSe&);
+     PartioSe& operator=(const PartioSe&);
+diff --git /partio/src/lib/PartioSe.cpp /partio/src/lib/PartioSe.cpp
+index cd99686..ebefb43 100644
+--- /partio/src/lib/PartioSe.cpp
++++ /partio/src/lib/PartioSe.cpp
+@@ -40,13 +40,13 @@ namespace Partio{
+ template<class T> class VarToPartio
+ {
+     Partio::ParticlesDataMutable* parts;
+-    const SeExprLocalVarRef* local;
++    SeExpr2::ExprVarRef* local;
+     Partio::ParticleAttribute attr;
+     int& currentIndex;
+     int clampedCount;
+ 
+ public:
+-    VarToPartio(Partio::ParticlesDataMutable* parts,const SeExprLocalVarRef* local,
++    VarToPartio(Partio::ParticlesDataMutable* parts, SeExpr2::ExprVarRef* local,
+         Partio::ParticleAttribute attr,int& currentIndex)
+         :parts(parts),local(local),attr(attr),currentIndex(currentIndex),
+         clampedCount(std::min(3,attr.count))
+@@ -55,8 +55,11 @@ public:
+ 
+     void mapBack(){
+         T* ptr=parts->dataWrite<T>(attr,currentIndex);
++        double* tmp=new double[clampedCount];
++        local->eval(tmp);
+         for(int k=0;k<clampedCount;k++){
+-            ptr[k]=local->val[k];
++            /// ptr[k]=local->val[k];
++            ptr[k]=tmp[k];
+         }
+         if(clampedCount == 1) for(int k=clampedCount;k<attr.count;k++)
+             ptr[k]=ptr[clampedCount-1];
+@@ -84,7 +87,7 @@ void PartioSe::addSet(const char* suffix,Partio::ParticlesDataMutable* parts,int
+ }
+ 
+ PartioSe::PartioSe(Partio::ParticlesDataMutable* parts,Partio::ParticlesDataMutable* partsPairing,const char* expression)
+-:SeExpression(expression),parts(parts),partsPairing(partsPairing),isPaired(true)
++:SeExpr2::Expression(expression),parts(parts),partsPairing(partsPairing),isPaired(true)
+ {
+     parts->attributeInfo("p1",pairH1);
+     parts->attributeInfo("p2",pairH2);
+@@ -95,41 +98,41 @@ PartioSe::PartioSe(Partio::ParticlesDataMutable* parts,Partio::ParticlesDataMuta
+     // checkout what we build
+     isValid();
+     // go through local variables and look for exports
+-    const SeExpression::LocalVarTable& vars=getLocalVars();
+-    typedef  SeExpression::LocalVarTable::const_iterator LocalVarTableIterator;
+-    for(LocalVarTableIterator it=vars.begin(),itend=vars.end();it != itend;++it){
+-        //std::cerr<<"assignment of "<<it->first<<std::endl;
+-        size_t idx=it->first.rfind("_");
+-        std::string realName=it->first;
+-        int whichNum;
+-        if(idx != std::string::npos){
+-            realName=it->first.substr(0,idx);
+-            whichNum=atoi(it->first.substr(idx+1).c_str());
+-            //std::cerr<<"adding as stripped pairing "<<realName<<" which "<<whichNum<<std::endl;
+-            if(whichNum != 1 && whichNum != 2){
+-                std::cerr<<"Expect _1 and _2 on the end of particle variables got "<<whichNum<<std::endl;;
+-            }else{
+-                int *idxPtr=whichNum == 1 ? &pairIndex1 : &pairIndex2;
+-                addExport(realName,it,partsPairing,*idxPtr);
+-            }
+-        }else{
+-            //std::cerr<<"adding as normal pairing "<<realName<<std::endl;
+-            addExport(realName,it,parts,currentIndex);
+-        }
+-    }
++    /// const LocalVarTable& vars=getLocalVars();
++    /// typedef LocalVarTable::const_iterator LocalVarTableIterator;
++    /// for(LocalVarTableIterator it=vars.begin(),itend=vars.end();it != itend;++it){
++        /// //std::cerr<<"assignment of "<<it->first<<std::endl;
++        /// size_t idx=it->first.rfind("_");
++        /// std::string realName=it->first;
++        /// int whichNum;
++        /// if(idx != std::string::npos){
++            /// realName=it->first.substr(0,idx);
++            /// whichNum=atoi(it->first.substr(idx+1).c_str());
++            /// //std::cerr<<"adding as stripped pairing "<<realName<<" which "<<whichNum<<std::endl;
++            /// if(whichNum != 1 && whichNum != 2){
++                /// std::cerr<<"Expect _1 and _2 on the end of particle variables got "<<whichNum<<std::endl;;
++            /// }else{
++                /// int *idxPtr=whichNum == 1 ? &pairIndex1 : &pairIndex2;
++                /// addExport(realName,it,partsPairing,*idxPtr);
++            /// }
++        /// }else{
++            /// //std::cerr<<"adding as normal pairing "<<realName<<std::endl;
++            /// addExport(realName,it,parts,currentIndex);
++        /// }
++    /// }
+ }
+ 
+ PartioSe::PartioSe(Partio::ParticlesDataMutable* parts,const char* expression)
+-:SeExpression(expression),parts(parts),partsPairing(0),isPaired(false)
++:SeExpr2::Expression(expression),parts(parts),partsPairing(0),isPaired(false)
+ {
+     addSet("",parts,currentIndex);
+     isValid();
+-    const SeExpression::LocalVarTable& vars=getLocalVars();
+-    typedef  SeExpression::LocalVarTable::const_iterator LocalVarTableIterator;
+-    for(LocalVarTableIterator it=vars.begin(),itend=vars.end();it != itend;++it){
+-        //std::cerr<<"assignment of "<<it->first<<std::endl;
+-        addExport(it->first,it,parts,currentIndex);
+-    }
++    /// const SeExpression::LocalVarTable& vars=getLocalVars();
++    /// typedef  SeExpression::LocalVarTable::const_iterator LocalVarTableIterator;
++    /// for(LocalVarTableIterator it=vars.begin(),itend=vars.end();it != itend;++it){
++        /// //std::cerr<<"assignment of "<<it->first<<std::endl;
++        /// addExport(it->first,it,parts,currentIndex);
++    /// }
+         
+ }
+ 
+@@ -138,9 +141,9 @@ void PartioSe::addExport(const std::string& name,LocalVarTableIterator it,Partio
+         bool isParticleAttr=parts->attributeInfo(name.c_str(),attr);
+         if(isParticleAttr){
+             if(attr.type==Partio::FLOAT || attr.type==Partio::VECTOR){
+-                floatVarToPartio.push_back(new VarToPartio<float>(parts,&it->second,attr,setIndex));
++                floatVarToPartio.push_back(new VarToPartio<float>(parts,it->second,attr,setIndex));
+             }else if(attr.type==Partio::INT || attr.type==Partio::INDEXEDSTR){
+-                intVarToPartio.push_back(new VarToPartio<int>(parts,&it->second,attr,setIndex));
++                intVarToPartio.push_back(new VarToPartio<int>(parts,it->second,attr,setIndex));
+             }else{
+                 std::cerr<<"unknown particle attribute type "<<attr.name<<std::endl;
+             }
+@@ -175,7 +178,7 @@ void PartioSe::run(int i){
+                 std::cerr<<"Index "<<currentIndex<<" Referenced particle index "<<pairIndex1<<" is out of bounds"<<std::endl;
+             }
+         }
+-        SeVec3d value=evaluate();
++        /// SeExpr2::Vec3d value=evaluate();
+         // map data into the particles again
+         for(IntVarToPartio::iterator it=intVarToPartio.begin(),itend=intVarToPartio.end();
+             it!=itend;++it)
+@@ -223,7 +226,7 @@ bool PartioSe::runRandom(){
+     return true;
+ }
+ 
+-SeExprVarRef*  PartioSe::resolveVar(const std::string& s) const{
++SeExpr2::ExprVarRef*  PartioSe::resolveVar(const std::string& s) const{
+     {
+         IntVarMap::iterator it=intVars.find(s);
+         if(it != intVars.end()) return it->second;
