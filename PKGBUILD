@@ -1,7 +1,7 @@
 # Maintainer: Christian Hesse <mail@eworm.de>
 
 pkgname=openvpn-git
-pkgver=2.4.rc2.r8.g4ba943b0
+pkgver=2.4.rc2.r9.gf38942d1
 pkgrel=1
 pkgdesc='An easy-to-use, robust and highly configurable VPN (Virtual Private Network) - git checkout'
 arch=('i686' 'x86_64')
@@ -96,7 +96,7 @@ package() {
 	# Install systemd files
 	install -d -m0755 "${pkgdir}"/usr/lib/systemd/system/
 	install -m0644 distro/systemd/openvpn-{client,server}@.service "${pkgdir}"/usr/lib/systemd/system/
-	install -d -m0755 "${pkgdir}"/usr/lib/tmpfiles.d/ "${pkgdir}"/run/openvpn-{client,server}
-	install -m0644 distro/systemd/openvpn.conf "${pkgdir}"/usr/lib/tmpfiles.d/openvpn.conf
+	install -D -m0644 distro/systemd/openvpn.conf "${pkgdir}"/usr/lib/tmpfiles.d/openvpn.conf
+	install -d -m0710 "${pkgdir}"/run/openvpn-{client,server}
 }
 
