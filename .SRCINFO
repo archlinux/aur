@@ -1,0 +1,18 @@
+pkgbase = python-omemo-git
+	pkgdesc = Python OMEMO Library
+	pkgver = r141.158b0a2
+	pkgrel = 1
+	url = https://github.com/omemo/python-omemo
+	arch = any
+	license = GPLv3
+	makedepends = python-setuptools
+	depends = python-axolotl-git
+	depends = python-crypto
+	depends = protobuf
+	provides = python-omemo
+	conflicts = python-omemo
+	source = python-omemo::git+https://github.com/omemo/python-omemo.git
+	sha256sums = SKIP
+
+pkgname = python-omemo-git
+
