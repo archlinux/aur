@@ -6,7 +6,7 @@
 pkgname='python-axolotl-git'
 _pkgname='python-axolotl'
 pkgver=r70.72f7c44
-pkgrel=1
+pkgrel=2
 pkgdesc="The python-axolotl package, needed for Whatsapp Moxie support"
 url="https://github.com/tgalal/python-axolotl"
 arch=('any')
