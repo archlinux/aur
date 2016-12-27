@@ -13,7 +13,7 @@ source=("http://download.jalbum.net/download/$pkgver/${pkgname/a/A}.zip"
 "$pkgname.desktop"
 "$pkgname.sh")
 
-sha256sums=('8af7548207e69dafab3b1f38d0e1279c583430edc0b5ab248c41ad36cc14bc2c'
+sha256sums=('5bec1fb59ad24afa0372130e4d812f549f6df52f18bfc6137fa684c39c462fbc'
             '9679ab294b5c5e0ad343b8a12026073fd2f622320d636cc05facaa2ff5b15825'
             'f4aec4248de127251fc32571732e91fd860f1954c650650a965bf77759cd85fc')
 
