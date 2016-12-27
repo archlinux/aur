@@ -1,0 +1,16 @@
+pkgbase = geckodriver-git
+	pkgdesc = Proxy for using W3C WebDriver-compatible clients to interact with Gecko-based browsers
+	pkgver = v0.11.1.r29.2658357
+	pkgrel = 1
+	arch = any
+	license = MPL
+	makedepends = git
+	makedepends = cargo
+	provides = geckodriver
+	conflicts = geckodriver
+	conflicts = geckodriver-bin
+	source = git+https://github.com/mozilla/geckodriver.git
+	md5sums = SKIP
+
+pkgname = geckodriver-git
+

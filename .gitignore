@@ -1,0 +1,4 @@
+pkg/
+src/
+geckodriver/
+*.tar.xz
