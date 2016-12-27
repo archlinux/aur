@@ -13,6 +13,8 @@ arch=('any')
 license=('GPL')
 depends=('python' 'python-axolotl-curve25519-git' 'python-dateutil')
 makedepends=('python-setuptools')
+provides=('python-axolotl')
+conflicts=('python-axolotl')
 source=('git://github.com/tgalal/python-axolotl')
 sha512sums=('SKIP')
 
