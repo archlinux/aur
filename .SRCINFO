@@ -1,7 +1,7 @@
 pkgbase = python-chainmap
 	pkgdesc = Backport/clone of ChainMap for py26, py32, and pypy3
 	pkgver = 1.0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://bitbucket.org/jeunice/chainmap
 	arch = any
 	license = PSF
