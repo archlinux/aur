@@ -1,8 +1,8 @@
 # Maintainer: Matthias Reitinger <reima at edenprime dot de>
 
 pkgname=leocad-git
-pkgver=v0.83.2.r11.77efda90
-pkgrel=1
+pkgver=0.83.2.r11.77efda90
+pkgrel=2
 pkgdesc="A CAD program for creating virtual LEGO models."
 arch=('i686' 'x86_64')
 url="http://www.leocad.org/"
@@ -17,7 +17,7 @@ md5sums=('SKIP')
 
 pkgver() {
 	cd "$pkgname"
-	git describe --long --tags | sed 's/\([^-]*-\)g/r\1/;s/-/./g'
+	git describe --long --tags | sed 's/^v//;s/\([^-]*-\)g/r\1/;s/-/./g'
 }
 
 build() {
