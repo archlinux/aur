@@ -1,13 +1,13 @@
 # Maintainer: nroi <nroi@mailbox.org>
 pkgname=cpcache-git
-pkgver=r66.80cd2f4
+pkgver=r87.874cf45
 pkgrel=1
 pkgdesc="central pacman cache"
-arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
+arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 url='https://github.com/nroi/cpcache'
 license=('MIT')
 makedepends=('erlang-nox' 'elixir')
-depends=('inotify-tools')
+depends=('waitforfile')
 install="${pkgname%-git}.install"
 backup=('etc/cpcache.yaml')
 source=('git+https://github.com/nroi/cpcache.git'
@@ -31,10 +31,11 @@ package() {
   /usr/bin/mix deps.get
   /usr/bin/mix release.init
   MIX_ENV=prod /usr/bin/mix release --env=prod
-  mkdir -p "${pkgdir}/usr/share/"
+  mkdir -p "${pkgdir}/usr/share/${pkgname%-git}"
   mkdir -p "${pkgdir}/var/lib/${pkgname%-git}"
-  ln -s "/var/lib/${pkgname%-git}" "${srcdir}/${pkgname%-git}/rel/${pkgname%-git}/var"
-  cp -r rel/cpcache "${pkgdir}/usr/share/"
+  cd "${pkgdir}/usr/share/${pkgname%-git}"
+  tar xf "${srcdir}/${pkgname%-git}/rel/${pkgname%-git}/releases/0.1.0/${pkgname%-git}.tar.gz"
+  ln -s "/var/lib/${pkgname%-git}" var
   install -Dm644 "${srcdir}/cpcache.service" "${pkgdir}/usr/lib/systemd/system/cpcache.service"
   install -Dm644 "${srcdir}/sysuser.conf" "${pkgdir}/usr/lib/sysusers.d/cpcache.conf"
   install -Dm644 "${srcdir}/cpcache/conf/cpcache.yaml" "${pkgdir}/etc/cpcache.yaml"
