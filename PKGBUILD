@@ -11,7 +11,7 @@ pkgdesc='a text based filemanager'
 arch=('i686' 'x86_64')
 url='http://www.midnight-commander.org/'
 license=('GPL')
-depends=('e2fsprogs' 'glib2' 'gpm' 'libssh2' 'slang' 'pcre' 'perl' 'aspell')
+depends=('e2fsprogs' 'glib2' 'gpm' 'libssh2' 'slang' 'perl' 'aspell')
 optdepends=(
     'cabextract: ucab extfs'
     'cdparanoia: audio extfs'
