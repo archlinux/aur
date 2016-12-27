@@ -19,7 +19,7 @@ prepare() {
 
 package_python-chainmap() {
 	cd "${srcdir}/${_realname}-${pkgver}"
-	python2 setup.py install --root="${pkgdir}" --optimize=1
+	python setup.py install --root="${pkgdir}" --optimize=1
 }
 
 package_python2-chainmap() {
