@@ -12,10 +12,13 @@
 #      '1BE1 E29A 084C B305 F397  D62A 9F59 7F4D 21A5 6D5F' \
 #      'A3BA FD35 56A5 9079 C068  94BD 63BC 1CFE 91D3 06C6'
 
-# ncurses-compat-libs
+# ncurses5-compat-libs
 # import gpg key with command below. (Warning do not use sudo or root)
 # gpg --keyserver pgp.mit.edu --recv-keys C52048C0C0748FEE227D47A2702353E0F7E48EDB
 #
+# If you do not want pgp key to be checked and have yaourt installed
+# yaourt --m-arg "--skippgpcheck" -Sb ncurses5-compat-libs 
+ 
 # Variables
 _snapshot=DEVELOPMENT-SNAPSHOT
 _version=2016-12-01-a
@@ -37,15 +40,15 @@ depends=(
   'python2'
   'libutil-linux'
   'libedit'
-  'icu'
-  'libbsd'
-  'ncurses5-compat-libs' # AUR
+  'libbsd'  
   'git'
   'curl'
   'openssl'
   'sqlite'
   'swig'
   'libtool'
+  'icu57'  #AUR
+  'ncurses5-compat-libs' # AUR
 #  'libkqueue' # AUR might be needed
 #  'uuid'  # Aur
 )
@@ -101,10 +104,11 @@ package() {
 #    ln -s /usr/lib/libformw.so.6.0 "$pkgdir/usr/lib/libform.so.5"
 #    ln -s /usr/lib/libpanelw.so.6.0 "$pkgdir/usr/lib/libpanel.so.5"
     # symlink newer libraries of icu
-    ln -s /usr/lib/libicuuc.so.58.1 "$pkgdir/usr/lib/libicuuc.so.57"
-    ln -s /usr/lib/libicui18n.so.58.1 "$pkgdir/usr/lib/libicui18n.so.57"
-    ln -s /usr/lib/libicudata.so.58.1 "$pkgdir/usr/lib/libicudata.so.57"
-    ln -s /usr/lib/libicuio.so.58.1 "$pkgdir/usr/lib/libicuio.so.57"
+    # not needed now icu57 is installed
+#    ln -s /usr/lib/libicuuc.so.58.1 "$pkgdir/usr/lib/libicuuc.so.57"
+#    ln -s /usr/lib/libicui18n.so.58.1 "$pkgdir/usr/lib/libicui18n.so.57"
+#    ln -s /usr/lib/libicudata.so.58.1 "$pkgdir/usr/lib/libicudata.so.57"
+#    ln -s /usr/lib/libicuio.so.58.1 "$pkgdir/usr/lib/libicuio.so.57"
 
 
     # remove the six.py dumped in python's site packages
