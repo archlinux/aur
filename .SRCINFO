@@ -1,6 +1,6 @@
 pkgbase = zdoom-git
 	pkgdesc = Advanced Doom source port (git version)
-	pkgver = 2.9pre.982.g34c67b9
+	pkgver = 2.9pre.2174.g625e97dfd
 	pkgrel = 1
 	url = http://www.zdoom.org/
 	arch = i686
@@ -16,7 +16,7 @@ pkgbase = zdoom-git
 	makedepends = imagemagick
 	makedepends = xdg-utils
 	depends = fluidsynth
-	depends = fmodex4.26.36
+	depends = fmodex=4.44.62
 	depends = gtk2
 	depends = libgme
 	depends = libsndfile
@@ -43,7 +43,6 @@ pkgbase = zdoom-git
 	source = launcher.desktop
 	sha256sums = SKIP
 	sha256sums = e8932a559baf30ecbfc062546ca014c6dfb70f76d1570549654209d39157e350
-	makedepends_i686 = nasm
 
 pkgname = zdoom-git
 

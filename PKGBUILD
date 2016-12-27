@@ -1,9 +1,7 @@
 # Maintainer: Jan Cholasta <grubber at grubber cz>
 
-# Build with the recommended fmodex version:
-_fmodex=fmodex4.26.36
-# Build with the currently installed fmodex version:
-#_fmodex=$(LC_ALL=C pacman -Q fmodex | sed -r 's/ /=/;s/-.*$//')
+# Build with fmodex:
+_fmodex=fmodex
 # Build without fmodex:
 #_fmodex=
 
@@ -14,16 +12,14 @@ _openal=openal
 
 _name=zdoom
 pkgname=${_name}-git
-pkgver=2.9pre.982.g34c67b9
+pkgver=2.9pre.2174.g625e97dfd
 pkgrel=1
-_label='ZDoom'
-_desc='Advanced Doom source port'
-pkgdesc="${_desc} (git version)"
+pkgdesc='Advanced Doom source port (git version)'
 arch=('i686' 'x86_64')
 url='http://www.zdoom.org/'
 license=('BSD' 'custom:BUILD' 'custom:doom' 'custom:dumb' 'LGPL')
 depends=('fluidsynth'
-         ${_fmodex}
+         ${_fmodex:+$(LC_ALL=C pacman -Q $_fmodex | sed -r 's/ /=/;s/-.*$//')}
          'gtk2'
          'libgme'
          ${_openal:+'libsndfile'}
@@ -35,7 +31,6 @@ makedepends=('cmake'
              'git'
              'imagemagick'
              'xdg-utils')
-makedepends_i686=('nasm')
 optdepends=('blasphemer-wad: Blasphemer (free Heretic) game data'
             'chexquest3-wad: Chex Quest 3 game data'
             'doom1-wad: Doom shareware game data'
@@ -64,15 +59,15 @@ pkgver() {
     git describe --long --tags | sed -r 's/([^-]*-g)/\1/;s/-/./g'
 }
 
-prepare() {
+build() {
     cd "${_srcsubdir}"
 
     local _nofmod _noopenal _fmodincdir _fmodlib
 
     if [[ -n "${_fmodex}" ]]; then
         _nofmod=OFF
-        _fmodincdir=$(LC_ALL=C pacman -Ql ${_fmodex%=*} | grep -Eo '/usr/include/fmodex[^/]*/$')
-        _fmodlib=$(LC_ALL=C pacman -Ql ${_fmodex%=*} | grep -Eo '/usr/lib/libfmodex-[^/]*\.so$')
+        _fmodincdir=$(LC_ALL=C pacman -Ql $_fmodex | grep -Eo '/usr/include/fmodex[^/]*/$')
+        _fmodlib=$(LC_ALL=C pacman -Ql $_fmodex | grep -Eo '/usr/lib/libfmodex-[^/]*\.so$')
     else
         _nofmod=ON
     fi
@@ -93,17 +88,12 @@ prepare() {
           -DCMAKE_CXX_FLAGS="$CXXFLAGS -DSHARE_DIR=\\\"/usr/share/${_name}\\\"" \
           -DCMAKE_EXE_LINKER_FLAGS="$LDFLAGS -Wl,-z,noexecstack" \
           .
-}
-
-build() {
-    cd "${_srcsubdir}"
+    make
 
     cat >"${_name}.sh" <<EOF
 #!/bin/sh
 exec /usr/lib/${_name}/${_name} "\$@"
 EOF
-
-    make
 
     sed -n '/\*\*-/,/\*\*-/p' 'src/version.h' >'bsd.txt'
 
