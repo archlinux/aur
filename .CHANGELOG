@@ -1,80 +1,79 @@
-* commit 724567331e7ebbc447084fe896567fa9a93feada
+* commit ab5d50a02aaec5618be81e34051fb3f6b71cb789
 | Author: Jeffrey Han <itdelatrisu@gmail.com>
-| Date:   Thu Oct 1 23:06:32 2015 -0400
+| Date:   Tue Dec 27 00:02:27 2016 -0500
 | 
-|     Updating to 0.12.1.
+|     Updating to 0.13.0.
 |     
 |     Signed-off-by: Jeffrey Han <itdelatrisu@gmail.com>
-|  
-* commit 9c7dbce6fd14170f4bd155908792884188ab6110
-| Author: Jeffrey Han <itdelatrisu@gmail.com>
-| Date:   Wed Sep 30 00:28:21 2015 -0400
 | 
-|     Updated BloodcatServer to use the new API. (fixes #139, 140)
+* commit f0c4cd3795983b57a4a1fb382e6c0d6adcca66c8
+| Author: Jeffrey Han <itdelatrisu@gmail.com>
+| Date:   Tue Dec 27 00:02:03 2016 -0500
+| 
+|     Minor dropdown menu rendering fixes in the song menu.
 |     
 |     Signed-off-by: Jeffrey Han <itdelatrisu@gmail.com>
-|  
-* commit ab817172e40e7c69155f43e9194ea27823cb7613
-| Author: Jeffrey Han <itdelatrisu@gmail.com>
-| Date:   Tue Sep 22 02:38:18 2015 -0400
 | 
-|     Updating to 0.12.0.
+* commit 3bc8319ba6c9741151922b7ae3a051faeb310d4e
+| Author: Jeffrey Han <itdelatrisu@gmail.com>
+| Date:   Mon Dec 26 23:14:08 2016 -0500
+| 
+|     Catch all beatmap parsing exceptions. (yugecin/opsu-dance/@d9669dd)
+| 
+* commit 69a7c7bdd5e8a4038df9487638d5b1ff00f2a9f8
+| Author: Jeffrey Han <itdelatrisu@gmail.com>
+| Date:   Mon Dec 26 20:25:32 2016 -0500
+| 
+|     Beatmap parser optimization: cache non-standard maps and skip them.
+|     Previously, non-standard (Taiko/CTB/Mania) beatmaps would always get parsed, then discarded after parsing the mode. With this change, all beatmaps get parsed once and cached, then skipped without parsing.
+|     
+|     With ~1000 standard maps and ~100 non-standard maps, this cuts my total loading time by ~25%.
 |     
 |     Signed-off-by: Jeffrey Han <itdelatrisu@gmail.com>
-|  
-* commit 4acd3cda02f1ed8b62acebcf1912bec9cf5c092b
-| Author: Jeffrey Han <itdelatrisu@gmail.com>
-| Date:   Sun Sep 20 11:38:46 2015 -0400
 | 
-|     Check mouse button before firing events for kinetic scrolling.
+* commit 4970f561b4a9c109340c1b1a3f8a61560ccf486a
+| Author: Jeffrey Han <itdelatrisu@gmail.com>
+| Date:   Mon Dec 26 19:14:52 2016 -0500
+| 
+|     Exclude jnlp from slick2d dependencies.
+|     JNLP doesn't ship with openjdk, and we don't use it anyway.
 |     
 |     Signed-off-by: Jeffrey Han <itdelatrisu@gmail.com>
-|  
-* commit c69f34adc3f5a44239abea7b82de5d27ccc78a15
-| Author: Jeffrey Han <itdelatrisu@gmail.com>
-| Date:   Sat Sep 19 15:30:41 2015 -0400
 | 
-|     Don't show decimal points for CS/HP/AR/OD values unless needed.
+* commit cab2183a6e38948beae872c5f8f8b7c3b157dadf
+| Author: Jeffrey Han <itdelatrisu@gmail.com>
+| Date:   Mon Dec 26 18:24:19 2016 -0500
+| 
+|     Handle JSON exceptions in DownloadServer implementations.
 |     
 |     Signed-off-by: Jeffrey Han <itdelatrisu@gmail.com>
-|  
-* commit 5634a673bbef2846f0e94a8a1b76df9d7a5f39fa
-| Author: Jeffrey Han <itdelatrisu@gmail.com>
-| Date:   Sat Sep 19 13:04:53 2015 -0400
 | 
-|     Fix hovering bug with < max nodes in kinetic scrolling.
+* commit fc7aa9aaa8bb0cf7574b55022ba25cdccdc2f3b2
+| Author: Jeffrey Han <itdelatrisu@gmail.com>
+| Date:   Mon Dec 26 15:58:30 2016 -0500
+| 
+|     Follow-up to 6373b36: missed a case.
 |     
 |     Signed-off-by: Jeffrey Han <itdelatrisu@gmail.com>
-|    
-*   commit 84ce2d153161f85158d91b1d4f5f9ecb49f51a8f
-|\  Merge: c58c128 b843beb
-| | Author: Jeffrey Han <itdelatrisu@users.noreply.github.com>
-| | Date:   Sat Sep 19 12:32:44 2015 -0400
-| | 
-| |     Merge pull request #136 from fluddokt/KinecticScrolling
-| |     
-| |     KineticScrolling Minor fixes
-| |   
-| * commit b843beb3c0d14542db892c32e19401076dee07c9
-|/  Author: fd <fd@b>
-|   Date:   Sat Sep 19 12:11:07 2015 -0400
-|   
-|       KineticScrolling Minor fixes
-|       for selection in large BeatmapSets
-|  
-* commit c58c128ec8521f36d2417dc7ab2d6440551c56cc
-| Author: Jeffrey Han <itdelatrisu@gmail.com>
-| Date:   Fri Sep 18 19:20:18 2015 -0400
 | 
-|     Minor Javadoc additions/edits.
+* commit a7334626420ad566dae1c3e02199dd1ad8376f33
+| Author: Jeffrey Han <itdelatrisu@gmail.com>
+| Date:   Mon Dec 26 15:53:10 2016 -0500
+| 
+|     Enable fullscreen mode.
 |     
 |     Signed-off-by: Jeffrey Han <itdelatrisu@gmail.com>
-|  
-* commit eb331360b9ceda0d76f36d8b25b0ed9a067178f5
-| Author: Jeffrey Han <itdelatrisu@gmail.com>
-| Date:   Fri Sep 18 18:49:01 2015 -0400
 | 
-|     Added scrolling animation to "random" song selection.
-|     Involves temporarily changing the kinetic scrolling speed, so it's a little messy...
+* commit 97425aef198e60ff318c1cee42cf95b9b0a310b4
+| Author: Jeffrey Han <itdelatrisu@gmail.com>
+| Date:   Mon Dec 26 14:37:32 2016 -0500
+| 
+|     Updated license headers and added missing ones.
+| 
+* commit 52afe938cef4f2ce54a92864a23643b388d0ffc9
+| Author: Jeffrey Han <itdelatrisu@gmail.com>
+| Date:   Mon Dec 26 03:23:22 2016 -0500
+| 
+|     Use kinetic scrolling in the new options menu.
 |     
 |     Signed-off-by: Jeffrey Han <itdelatrisu@gmail.com>

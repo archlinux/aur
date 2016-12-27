@@ -4,8 +4,8 @@
 
 pkgname=opsu-git
 _pkgname=opsu
-pkgver=0.12.1.r0.g7245673
-pkgrel=4
+pkgver=0.13.0.r0.gab5d50a
+pkgrel=1
 pkgdesc="An open source osu!-client written in Java."
 arch=('any')
 url="https://itdelatrisu.github.io/opsu/"
