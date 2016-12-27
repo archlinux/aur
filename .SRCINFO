@@ -1,0 +1,26 @@
+pkgbase = lighttable-git
+	pkgdesc = Next generation code editor and IDE with instant feedback.
+	pkgver = 0.8.1.r38.g868d6e1
+	pkgrel = 1
+	url = http://lighttable.com/
+	arch = x86_64
+	arch = i686
+	license = MIT
+	makedepends = gendesk
+	makedepends = npm
+	makedepends = leiningen
+	depends = alsa-lib
+	depends = gconf
+	depends = gtk2
+	depends = java-environment
+	depends = libnotify
+	depends = nodejs
+	depends = nss
+	depends = libxtst
+	provides = lighttable
+	conflicts = lighttable
+	source = git://github.com/LightTable/LightTable.git
+	sha256sums = SKIP
+
+pkgname = lighttable-git
+
