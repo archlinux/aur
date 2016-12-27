@@ -31,14 +31,15 @@ docker_image_name="rserve"
 help()
 {
     cat<<-EOF
-rsd [OPTION]
+rserve-sandbox-docker [OPTION]
 Docker spec for running Rserve in a sandbox
 
 Only a single option is permitted.
     -h      print this help
-    -i      install dependencies
-    -k      kill rserve-sandbox-docker
-    -s      start rserve-sandbox-docker
+    -i      install image and dependencies
+    -k      kill the container
+    -r      remove the docker image
+    -s      start the container
 
 Exit status:
  0  if OK,
@@ -83,6 +84,13 @@ killd()
     fi
 }
 
+# Remove the docker image.
+remove()
+{
+    installed \
+&& killd \
+&& make -C "$pkg_dir" remove
+}
 
 startd()
 {
@@ -151,11 +159,12 @@ write_pid_file()
 
 option_parser()
 {
-    getopts ":hiks" opt "$@"
+    getopts ":hikrs" opt "$@"
     case "$opt" in
         h ) help            ;;
         i ) init            ;;
         k ) killd           ;;
+        r ) remove          ;;
         s ) startd          ;;
         ? ) help; return 1  ;;
     esac
