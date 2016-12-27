@@ -2,9 +2,8 @@
 # Contributor: Vladislav Odobesku <positivcheg94@gmail.com>
 
 pkgname=python-tensorflow
-pkgver=0.12.0rc0
-_pkgver=0.12.0-rc0
-pkgrel=2
+pkgver=0.12.0
+pkgrel=1
 
 pkgdesc="Computation using data flow graphs for scalable machine learning."
 url="https://tensorflow.org/"
@@ -18,13 +17,13 @@ depends=('python-numpy' 'python-protobuf')
 makedepends=('python-wheel' 'python-pip' 'bazel' 'cuda' 'cudnn' 'gcc5')
 optdepends=('cuda: GPU support' 'cudnn: GPU support')
 
-source=("https://github.com/tensorflow/tensorflow/archive/${_pkgver}.zip"
+source=("https://github.com/tensorflow/tensorflow/archive/v${pkgver}.zip"
         'python-tensorflow.sh')
-md5sums=('c6ad0aed7ec21a264487c1e5a21054a8'
+md5sums=('c9a6e263ffbfc6dcb83dccc7cbac3d88'
          '0c9dae7ad2ef6ea234b6aa178a688d7b')
 
 build() {
-  cd "$srcdir/tensorflow-${_pkgver}"
+  cd "$srcdir/tensorflow-${pkgver}"
 
   # Some of this are set to the default value just to avoid an interactive prompt while building.
   export PYTHON_BIN_PATH=/usr/bin/python
@@ -48,7 +47,7 @@ build() {
 }
 
 package() {
-  cd "$srcdir/tensorflow-${_pkgver}"
+  cd "$srcdir/tensorflow-${pkgver}"
 
   WHEEL_PACKAGE=`find $srcdir/tmp -name "tensor*.whl"`
 
