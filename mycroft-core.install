@@ -1,5 +1,5 @@
 pre_install() {
-  useradd -r mycroft-core -b /usr/share
+  useradd -r mycroft-core -b /usr/share -G audio
 }
 
 post_install() {
@@ -25,4 +25,8 @@ post_upgrade() {
 post_remove() {
   userdel mycroft-core
   rm -rf /usr/share/mycroft-core
+
+  echo "ATTENTION:"
+  echo "If you are using PulseAudio, please be sure to be running it on system mode"
+  echo "You should configure it at /etc/pulse/daemon.conf"
 }
