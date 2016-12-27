@@ -1,10 +1,10 @@
 # Maintainer: zoe <chp321@gmail.com>
 pkgname=kxstitch
 pkgver=2.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="The program that lets you create cross stitch patterns and charts."
 arch=('i686' 'x86_64')
-depends=('plasma-framework' 'imagemagick')
+depends=('plasma-workspace' 'imagemagick')
 makedepends=('cmake' 'automoc4' 'doxygen' 'patch' 'extra-cmake-modules' 'kdoctools')
 url="https://userbase.kde.org/KXStitch"
 license=('GPL')
@@ -23,7 +23,7 @@ build() {
     rm -rf build
     mkdir build
     cd build
-    cmake -DCMAKE_INSTALL_PREFIX=`kf5-config --prefix` .. \
+    cmake -DCMAKE_INSTALL_PREFIX=`qtpaths --install-prefix` .. \
           -DCMAKE_BUILD_TYPE="Release"
     make
 }
