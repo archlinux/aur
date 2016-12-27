@@ -3,11 +3,11 @@
 pkgname=kf5-servicemenus-md5sha1calc
 _srcname=md5sha1calc
 pkgver=0.1
-pkgrel=6
+pkgrel=7
 pkgdesc="A service menu in dolphin (right click) to compute md5sum and sha1sum of a file"
 arch=('i686' 'x86_64')
 license=('GPL')
-depends=('dolphin' 'kdialog' 'bash')
+depends=('plasma-workspace' 'dolphin' 'kdialog' 'bash')
 install=${_srcname}.install
 source=(${_srcname}.sh ${_srcname}.desktop ${_srcname}.install ${_srcname}-48.png)
 sha1sums=('c4e93592c578bca7497defc7ab8df4dce35d0b8e'
@@ -17,6 +17,6 @@ sha1sums=('c4e93592c578bca7497defc7ab8df4dce35d0b8e'
 
 package() {
 	install -D -m755 ${_srcname}.sh ${pkgdir}/usr/bin/${_srcname}
-	install -D -m644 ${_srcname}.desktop "${pkgdir}/$(kf5-config --prefix)/share/kservices5/ServiceMenus/${_srcname}.desktop"
+	install -D -m644 ${_srcname}.desktop "${pkgdir}/$(qtpaths --install-prefix)/share/kservices5/ServiceMenus/${_srcname}.desktop"
         install -D -m644 ${_srcname}-48.png ${pkgdir}/usr/share/icons/hicolor/48x48/apps/${_srcname}.png
 }
