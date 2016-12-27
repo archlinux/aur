@@ -1,0 +1,24 @@
+#!/bin/sh
+
+post_upgrade() {
+  # return if old package version greater 2.4...
+  (( $(vercmp $2 '2.4') > 0 )) && return
+
+  # upgrade from pre-2.4 version...
+  echo "This upgrade from openvpn $2 to openvpn $1 made changes that require"
+  echo "administrative interaction:"
+  echo " -> Configuration is expected in sub directories now. Move your files"
+  echo "    from /etc/openvpn/ to /etc/openvpn/server/ or /etc/openvpn/client/."
+  echo " -> The plugin lookup path changed, remove extra 'plugins/' from relative paths."
+  echo " -> The systemd unit openvpn@.service was replaced with openvpn-client@.service"
+  echo "    and openvpn-server@.service. Restart and reenable accordingly."
+
+  local UNITS="$(systemctl list-units --quiet --no-pager --no-legend --plain | grep '^openvpn@' | cut -d' ' -f1)"
+  if (( ${#UNITS} )); then
+    echo "This is a (possibly incomplete) list of units that need to be acted on:"
+    for UNIT in ${UNITS}; do
+      echo " -> ${UNIT}"
+    done
+  fi
+}
+
