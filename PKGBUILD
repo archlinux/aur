@@ -3,7 +3,7 @@
 
 pkgname=emscripten-git
 pkgver=1.37.1
-pkgrel=1
+pkgrel=2
 pkgdesc="LLVM-to-JavaScript compiler"
 arch=('i686' 'x86_64')
 url="http://emscripten.org"
@@ -23,7 +23,7 @@ source=('git://github.com/kripken/emscripten.git#branch=incoming'
 md5sums=('SKIP'
          'SKIP'
          'SKIP'
-         '543c109cf8753f5d834d1b206312f049'
+         '99ad755a0e9ccf5620e05e1293cdbffa'
          'c8b7db20a44edb41c8675812e17b5c42')
 
 pkgver() {
