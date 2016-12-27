@@ -1,7 +1,7 @@
 pkgbase = zdoom
 	pkgdesc = Advanced Doom source port
 	pkgver = 2.8.1
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.zdoom.org/
 	arch = i686
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = zdoom
 	makedepends = p7zip
 	makedepends = xdg-utils
 	depends = fluidsynth
-	depends = fmodex4.26.36
+	depends = fmodex=4.44.62
 	depends = gtk2
 	depends = libgme
 	depends = libsndfile
@@ -40,8 +40,10 @@ pkgbase = zdoom
 	noextract = zdoom-2.8.1-src.7z
 	source = http://zdoom.org/files/zdoom/2.8/zdoom-2.8.1-src.7z
 	source = launcher.desktop
+	source = 0001-Improve-Mac-GCC-errors-fix-to-work-only-for-GCC.patch
 	sha256sums = 782179d4667d2e56e26e21d7a0872523f8e4262ed176072fef00d0043376a310
 	sha256sums = e8932a559baf30ecbfc062546ca014c6dfb70f76d1570549654209d39157e350
+	sha256sums = 3de616393fa2eea8540c59c983a4394b29a0a0220095297a3f47e4f721b8d9fb
 	makedepends_i686 = nasm
 
 pkgname = zdoom

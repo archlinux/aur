@@ -1,10 +1,8 @@
 # Maintainer: Jan Cholasta <grubber at grubber cz>
 # Contributor: Andrew Rabert <arabert@nullsum.net>
 
-# Build with the recommended fmodex version:
-_fmodex=fmodex4.26.36
-# Build with the currently installed fmodex version:
-#_fmodex=$(LC_ALL=C pacman -Q fmodex | sed -r 's/ /=/;s/-.*$//')
+# Build with fmodex:
+_fmodex=fmodex
 # Build without fmodex:
 #_fmodex=
 
@@ -16,15 +14,13 @@ _openal=openal
 _name=zdoom
 pkgname=${_name}
 pkgver=2.8.1
-pkgrel=2
-_label='ZDoom'
-_desc='Advanced Doom source port'
-pkgdesc="${_desc}"
+pkgrel=3
+pkgdesc='Advanced Doom source port'
 arch=('i686' 'x86_64')
 url='http://www.zdoom.org/'
 license=('BSD' 'custom:BUILD' 'custom:doom' 'custom:dumb' 'LGPL')
 depends=('fluidsynth'
-         ${_fmodex}
+         ${_fmodex:+$(LC_ALL=C pacman -Q $_fmodex | sed -r 's/ /=/;s/-.*$//')}
          'gtk2'
          'libgme'
          ${_openal:+'libsndfile'}
@@ -52,23 +48,31 @@ optdepends=('blasphemer-wad: Blasphemer (free Heretic) game data'
             'urbanbrawl-wad: Urban Brawl: Action Doom 2 game data'
             'xorg-xmessage: crash dialog (other)')
 source=("http://zdoom.org/files/${_name}/${pkgver%.${pkgver#*.*.}}/${_name}-${pkgver}-src.7z"
-        'launcher.desktop')
+        'launcher.desktop'
+        '0001-Improve-Mac-GCC-errors-fix-to-work-only-for-GCC.patch')
 noextract=("${source[0]##*/}")
 _srcsubdir='.'
 sha256sums=('782179d4667d2e56e26e21d7a0872523f8e4262ed176072fef00d0043376a310'
-            'e8932a559baf30ecbfc062546ca014c6dfb70f76d1570549654209d39157e350')
+            'e8932a559baf30ecbfc062546ca014c6dfb70f76d1570549654209d39157e350'
+            '3de616393fa2eea8540c59c983a4394b29a0a0220095297a3f47e4f721b8d9fb')
 
 prepare() {
     7z x -y "${source[0]##*/}" >/dev/null
 
     cd "${_srcsubdir}"
 
+    patch -p 1 -i 0001-Improve-Mac-GCC-errors-fix-to-work-only-for-GCC.patch
+}
+
+build() {
+    cd "${_srcsubdir}"
+
     local _nofmod _noopenal _fmodincdir _fmodlib
 
     if [[ -n "${_fmodex}" ]]; then
         _nofmod=OFF
-        _fmodincdir=$(LC_ALL=C pacman -Ql ${_fmodex%=*} | grep -Eo '/usr/include/fmodex[^/]*/$')
-        _fmodlib=$(LC_ALL=C pacman -Ql ${_fmodex%=*} | grep -Eo '/usr/lib/libfmodex-[^/]*\.so$')
+        _fmodincdir=$(LC_ALL=C pacman -Ql $_fmodex | grep -Eo '/usr/include/fmodex[^/]*/$')
+        _fmodlib=$(LC_ALL=C pacman -Ql $_fmodex | grep -Eo '/usr/lib/libfmodex-[^/]*\.so$')
     else
         _nofmod=ON
     fi
@@ -89,17 +93,12 @@ prepare() {
           -DCMAKE_CXX_FLAGS="$CXXFLAGS -DSHARE_DIR=\\\"/usr/share/${_name}\\\"" \
           -DCMAKE_EXE_LINKER_FLAGS="$LDFLAGS -Wl,-z,noexecstack" \
           .
-}
-
-build() {
-    cd "${_srcsubdir}"
+    make
 
     cat >"${_name}.sh" <<EOF
 #!/bin/sh
 exec /usr/lib/${_name}/${_name} "\$@"
 EOF
-
-    make
 
     sed -n '/\*\*-/,/\*\*-/p' 'src/version.h' >'bsd.txt'
 

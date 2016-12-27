@@ -1,0 +1,41 @@
+From 30714fdaeabd9369ff0d4b4290dd2a99c7c5ecd9 Mon Sep 17 00:00:00 2001
+From: Edoardo Prezioso <edo88@email.it>
+Date: Sat, 27 Feb 2016 22:15:29 +0100
+Subject: [PATCH] - Improve Mac GCC errors fix to work only for GCC.
+
+This fixes Clang complaining about unknown command option '-Wno-unused-but-set-variable' when compiling dumb.
+Also I got no new warnings on Clang by excluding '-Wno-unused-result'.
+---
+ dumb/CMakeLists.txt | 2 +-
+ src/CMakeLists.txt  | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/dumb/CMakeLists.txt b/dumb/CMakeLists.txt
+index 7b303297c..dd1fd5e58 100644
+--- a/dumb/CMakeLists.txt
++++ b/dumb/CMakeLists.txt
+@@ -9,7 +9,7 @@ set( CMAKE_C_FLAGS_DEBUG "${CMAKE_C_FLAGS_DEBUG} -D_DEBUG -DDEBUGMODE=1" )
+ 
+ if( ZD_CMAKE_COMPILER_IS_GNUC_COMPATIBLE )
+ 	set( CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wall -Wno-pointer-sign -Wno-uninitialized" )
+-	if(NOT CMAKE_CXX_COMPILER_ID STREQUAL "GNU" OR CMAKE_CXX_COMPILER_VERSION VERSION_GREATER "4.5")
++	if( CMAKE_C_COMPILER_ID STREQUAL "GNU" AND CMAKE_C_COMPILER_VERSION VERSION_GREATER "4.5" )
+ 		set( CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wno-unused-but-set-variable" )
+ 	endif(NOT CMAKE_CXX_COMPILER_ID STREQUAL "GNU" OR CMAKE_CXX_COMPILER_VERSION VERSION_GREATER "4.5")
+ endif( ZD_CMAKE_COMPILER_IS_GNUC_COMPATIBLE )
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index 74b83e5fc..b2402b96b 100644
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -458,7 +458,7 @@ if( ZD_CMAKE_COMPILER_IS_GNUCXX_COMPATIBLE )
+ 	set( CMAKE_CXX_FLAGS_MINSIZEREL "${REL_CXX_FLAGS} ${CMAKE_CXX_FLAGS_MINSIZEREL}" )
+ 	set( CMAKE_CXX_FLAGS_RELWITHDEBINFO "${REL_CXX_FLAGS} ${CMAKE_CXX_FLAGS_RELWITHDEBINFO}" )
+ 
+-	if(NOT CMAKE_CXX_COMPILER_ID STREQUAL "GNU" OR CMAKE_CXX_COMPILER_VERSION VERSION_GREATER "4.5")
++	if(CMAKE_CXX_COMPILER_ID STREQUAL "GNU" AND CMAKE_CXX_COMPILER_VERSION VERSION_GREATER "4.5")
+                 set( CMAKE_C_FLAGS "-Wno-unused-result ${CMAKE_C_FLAGS}" )
+ 		set( CMAKE_CXX_FLAGS "-Wno-unused-result ${CMAKE_CXX_FLAGS}" )
+         endif(NOT CMAKE_CXX_COMPILER_ID STREQUAL "GNU" OR CMAKE_CXX_COMPILER_VERSION VERSION_GREATER "4.5")
+-- 
+2.11.0
+
