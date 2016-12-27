@@ -3,13 +3,13 @@
 pkgname='fava'
 _pkgname='beancount-fava'
 pkgdesc='Web interface for beancount'
-pkgver=1.1
+pkgver=1.2
 pkgrel=1
 arch=('any')
 url='https://github.com/beancount/fava'
 license=('GPL')
 source=("https://github.com/beancount/fava/releases/download/v${pkgver}/${_pkgname}-${pkgver}.tar.gz")
-sha256sums=('d25197cf5c9aa634ad8940825f3b4d041812aebab95dba09849d306ee420c65f')
+sha256sums=('777cd74a0c432d067f77e18728d6c9d33ab18903da4aaaa6c2ec697d5633273c')
 depends=('beancount' 'python-click' 'python-markdown2' 'python-flask' 'python-flask-babel')
 
 package () {
