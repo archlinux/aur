@@ -4,7 +4,7 @@
 pkgbase=python-kombu
 pkgname=('python-kombu' 'python2-kombu')
 pkgver=4.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc='A messaging library for Python'
 arch=('any')
 url="http://kombu.readthedocs.org/"
@@ -25,6 +25,7 @@ source=("git+https://github.com/celery/kombu.git#tag=v$pkgver")
 sha256sums=('SKIP')
 
 prepare() {
+  sed -i 's/for qname, queue in items(self._queues):/for qname, queue in list(items(self._queues)):/' kombu/kombu/messaging.py
   cp -a kombu{,-py2}
 }
 
