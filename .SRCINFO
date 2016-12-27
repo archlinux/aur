@@ -1,7 +1,7 @@
 pkgbase = python-tensorflow
 	pkgdesc = Computation using data flow graphs for scalable machine learning.
 	pkgver = 0.12.0
-	pkgrel = 2
+	pkgrel = 1
 	url = https://tensorflow.org/
 	arch = i686
 	arch = x86_64
