@@ -5,8 +5,13 @@ pkgbase = autopanorama
 	url = https://github.com/Tytan/AutoPanorama
 	arch = any
 	license = GPL
-	makedepends = qt5-base cmake
-	depends = qt5-base jasper libwebp
+	makedepends = qt5-base
+	makedepends = cmake
+	makedepends = gendesk
+	makedepends = eigen
+	depends = qt5-base
+	depends = jasper
+	depends = libwebp
 	provides = autopanorama
 	source = autopanorama-1.0.2::git+https://github.com/Tytan/AutoPanorama.git#tag=1.0.2.1
 	md5sums = SKIP
