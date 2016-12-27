@@ -1,15 +1,15 @@
 # Maintainer: Joe Davison <joe@warhaggis.com>
 
 pkgname=lgogdownloader-git
-pkgver=2.28.r5.g730c1ff
-pkgrel=3
+pkgver=3.0.r7.ge045612
+pkgrel=1
 pkgdesc="An open source downloader for GOG.com games, uses the GOG.com API (git version)"
 url="http://www.gog.com/en/forum/general/lgogdownloader_gogdownloader_for_linux"
 arch=(i686 x86_64)
 license=(WTFPL)
 depends=('boost' 'boost-libs' 'jsoncpp' 'liboauth' 'rhash' 'htmlcxx' 'tinyxml2') 
 makedepends=('help2man' 'cmake' 'git')  
-provides=('lgogdownloader')
+provides=('lgogdownloader=3.0')
 conflicts=('lgogdownloader')
 _gitname="lgogdownloader"
 source=('git://github.com/Sude-/lgogdownloader.git')
