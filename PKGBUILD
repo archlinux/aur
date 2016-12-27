@@ -8,7 +8,7 @@ pkgname=('elektra-git'
          'java-elektra-git'
          'ruby-elektra-git'
          )
-pkgver=0.8.19.r8798.b08f238ce
+pkgver=0.8.19.r8846.83e0ea113
 pkgrel=1
 pkgdesc="A universal hierarchical configuration store. (GIT version)"
 arch=('i686' 'x86_64')
@@ -49,12 +49,7 @@ pkgver() {
 }
 
 prepare(){
-  if [[ -d /usr/lib/jvm/java-8-openjdk ]]; then
-    export JAVA_HOME="/usr/lib/jvm/java-8-openjdk"
-  fi
-  if [[ -d /usr/lib/jvm/java-8-jdk ]]; then
-    export JAVA_HOME="/usr/lib/jvm/java-8-jdk"
-  fi
+  export JAVA_HOME="/usr/lib/jvm/default"
 
   mkdir -p build
 
@@ -66,22 +61,20 @@ build() {
   cmake ../elektra \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DENABLE_TESTING=ON \
+    -DENABLE_TESTING=OFF \
+    -DBUILD_TESTING=OFF \
     -DBUILD_STATIC=OFF \
     -DTOOLS=ALL \
-    -DPLUGINS='ALL;-experimental' \
+    -DPLUGINS=ALL \
     -DBINDINGS=ALL \
     -DLUA_EXECUTABLE=/usr/bin/lua \
     -DLUA_LIBRARY=/usr/lib/liblua.so \
     -DLUA_INCLUDE_DIR=/usr/include \
     -DTARGET_LUA_CMOD_FOLDER=lib/lua/5.3 \
     -DTARGET_LUA_LMOD_FOLDER=share/lua/5.3 \
-    -DJAVA_INCLUDE_PATH="${JAVA_HOME}/include" \
-    -DCMAKE_SKIP_RPATH=ON \
-    -DCMAKE_SKIP_INSTALL_RPATH=ON \
-    -DTARGET_PLUGIN_FOLDER=''
+    -DJAVA_INCLUDE_PATH="${JAVA_HOME}/include"
 
-  LC_ALL=C make
+  make
 }
 
 package_elektra-git() {
@@ -120,12 +113,15 @@ package_elektra-git() {
   rm -fr "${pkgdir}/usr/lib/elektra/tool_exec/gen"
   rm -fr "${pkgdir}/usr/lib/elektra/tool_exec/find-tools"
 
-  rm -fr "${pkgdir}/usr/lib/elektra/"libelektra-{python,python2,lua,jni}.so
+  _del=('libelektra-python.so'
+        'libelektra-python2.so'
+        'libelektra-lua.so'
+        'libelektra-jni.so'
+        )
+  for i in ${_del[@]}; do find "${pkgdir}/usr/lib" -name "${i}" -type f -delete; done
 
   rm -fr "${pkgdir}/usr/share/lua"
   rm -fr "${pkgdir}/usr/share/java"
-
-  rm -fr "${pkgdir}/usr/share/elektra/test_data"/{lua,python,python2}
 }
 
 package_python-elektra-git() {
@@ -138,7 +134,7 @@ package_python-elektra-git() {
 
   make -C build/src/bindings/swig/python DESTDIR="${pkgdir}" install
   make -C build/src/plugins/python DESTDIR="${pkgdir}" install
-  install -Dm755 ${srcdir}/elektra/scripts/find-tools "${pkgdir}/usr/lib/tools_exec/find-tools"
+  install -Dm755 "${srcdir}/elektra/scripts/find-tools" "${pkgdir}/usr/lib/tools_exec/find-tools"
 
   install -Dm644 elektra/doc/LICENSE.md "${pkgdir}/usr/share/licenses/python-elektra-git/LICENSE.md"
 }
