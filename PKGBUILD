@@ -1,10 +1,8 @@
 # Maintainer: Jan Cholasta <grubber at grubber cz>
 # Contributor: Christoph Zeiler <rabyte*gmail>
 
-# Build with the recommended fmodex version:
-_fmodex=fmodex4.26.36
-# Build with the currently installed fmodex version:
-#_fmodex=$(LC_ALL=C pacman -Q fmodex | sed -r 's/ /=/;s/-.*$//')
+# Build with fmodex:
+_fmodex=fmodex
 # Build without fmodex:
 #_fmodex=
 
@@ -16,15 +14,13 @@ _openal=openal
 _name=gzdoom
 pkgname=${_name}
 pkgver=2.2.0
-pkgrel=1
-_label='GZDoom'
-_desc='Advanced Doom source port with OpenGL support'
-pkgdesc="${_desc}"
+pkgrel=2
+pkgdesc='Advanced Doom source port with OpenGL support'
 arch=('i686' 'x86_64')
 url='http://www.zdoom.org/'
 license=('BSD' 'custom:BUILD' 'custom:doom' 'custom:dumb' 'LGPL')
 depends=('fluidsynth'
-         ${_fmodex}
+         ${_fmodex:+$(LC_ALL=C pacman -Q $_fmodex | sed -r 's/ /=/;s/-.*$//')}
          'gtk2'
          'libgl'
          'libgme'
@@ -58,15 +54,15 @@ _srcsubdir="${_name}"
 sha256sums=('SKIP'
             '59122e670f72aa2531aff370e7aaab2d886a7642e79e91f27a533d3b4cad4f6d')
 
-prepare() {
+build() {
     cd "${_srcsubdir}"
 
     local _nofmod _noopenal _fmodincdir _fmodlib
 
     if [[ -n "${_fmodex}" ]]; then
         _nofmod=OFF
-        _fmodincdir=$(LC_ALL=C pacman -Ql ${_fmodex%=*} | grep -Eo '/usr/include/fmodex[^/]*/$')
-        _fmodlib=$(LC_ALL=C pacman -Ql ${_fmodex%=*} | grep -Eo '/usr/lib/libfmodex-[^/]*\.so$')
+        _fmodincdir=$(LC_ALL=C pacman -Ql $_fmodex | grep -Eo '/usr/include/fmodex[^/]*/$')
+        _fmodlib=$(LC_ALL=C pacman -Ql $_fmodex | grep -Eo '/usr/lib/libfmodex-[^/]*\.so$')
     else
         _nofmod=ON
     fi
@@ -87,17 +83,12 @@ prepare() {
           -DCMAKE_CXX_FLAGS="$CXXFLAGS -DSHARE_DIR=\\\"/usr/share/${_name}\\\"" \
           -DCMAKE_EXE_LINKER_FLAGS="$LDFLAGS -Wl,-z,noexecstack" \
           .
-}
-
-build() {
-    cd "${_srcsubdir}"
+    make
 
     cat >"${_name}.sh" <<EOF
 #!/bin/sh
 exec /usr/lib/${_name}/${_name} "\$@"
 EOF
-
-    make
 
     sed -n '/\*\*-/,/\*\*-/p' 'src/version.h' >'bsd.txt'
 
