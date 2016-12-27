@@ -2,7 +2,7 @@
 # Contributor: Franco Masotti <franco dot masotti at student dot unife dot it>
 pkgname=swish
 pkgver=r1150.55fec5a
-pkgrel=1
+pkgrel=2
 pkgdesc="SWI-Prolog for SHaring: a SWI-Prolog web IDE"
 arch=('x86_64')
 url="https://github.com/SWI-Prolog/swish"
