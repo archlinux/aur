@@ -3,18 +3,18 @@
 # Contributor: kuri <sysegv@gmail.com>
 
 pkgname=cjson-git
-pkgver=r12.72beac9
-pkgrel=1
-pkgdesc="Dave Gamble's cJSON library. Easily handle JSON data in C."
+pkgver=v1.1.0.r4.gfcc89c4
+pkgrel=2
+pkgdesc="Dave Gamble's cJSON library. Easily handle JSON data in C (git version)."
 arch=('i686' 'x86_64')
 url="http://sourceforge.net/projects/cjson/"
 license=('LGPL2')
 depends=()
-makedepends=('git')
+makedepends=('git cmake')
 conflits=()
 provides=('cjson')
 options=('!libtool')
-source=('git://github.com/pohuguet/cJSON.git')
+source=('git://github.com/DaveGamble/cJSON.git')
 md5sums=(SKIP)
 
 _gitname="cJSON"
@@ -30,16 +30,19 @@ pkgver() {
 build() {
 	cd $_gitname
 
-	./autogen.sh --prefix=/usr
+	rm -rf build
+	mkdir build
+	cd build
+	cmake .. -DENABLE_CJSON_UTILS=On -DENABLE_CJSON_TEST=Off -DCMAKE_INSTALL_PREFIX=/usr
 	make || return 1
 }
 
 package() {
-	cd $_gitname
+	cd $_gitname/build
 
 	make DESTDIR=$pkgdir install || return 1
 
 	# install license files
-	install -Dm644 $srcdir/$_gitname/COPYING \
-		$pkgdir/usr/share/licenses/$pkgname/COPYING
+	install -Dm644 $srcdir/$_gitname/LICENSE \
+		$pkgdir/usr/share/licenses/$pkgname/LICENSE
 }
