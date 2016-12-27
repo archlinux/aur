@@ -1,8 +1,8 @@
 # Maintainer: JC FRANCOIS <jc.francois@gmail.com>
 
 pkgname=craftbukkit-spigot
-pkgver=1.10.2
-pkgbuild=52
+pkgver=1.11.2
+pkgbuild=55
 pkgrel=1
 pkgdesc="CraftBukkit & Spigot Minecraft servers"
 arch=(any)
@@ -12,6 +12,7 @@ depends=(java-runtime-headless fontconfig git mcrcon)
 conflicts=(bukkit craftbukkit craftbukkit-stable)
 provides=(craftbukkit=1.10)
 install=craftbukkit-spigot.install
+noextract=('BuildTools.jar')
 source=("https://hub.spigotmc.org/jenkins/job/BuildTools/${pkgbuild}/artifact/target/BuildTools.jar"
         "minecraft.service"
         "craftbukkit.service"
@@ -21,7 +22,7 @@ source=("https://hub.spigotmc.org/jenkins/job/BuildTools/${pkgbuild}/artifact/ta
         "stop_server.sh"
         "backup.sh"
         "readme.md")
-md5sums=('98ba43d2f5eafb0d883c0dafc00e19e8'
+md5sums=('fc7376ac47ccd57dbd17e141e71389b6'
          '8ac1ef7ff8be744fa0312ebb608fda42'
          '5bddd0dff4f3d25fd86c240f81078174'
          '32c6641316b0adc7e1f63e3cc8033700'
@@ -63,7 +64,7 @@ package() {
   install -Dm774 "$srcdir/backup.sh" "$pkgdir/srv/craftbukkit/backup.sh"
   install -Dm664 "$srcdir/eula.txt" "$pkgdir/srv/craftbukkit/eula.txt"
   install -Dm644 "$srcdir/readme.md" "$pkgdir/srv/craftbukkit/readme.md"
-  install -Dm644 "$srcdir/LICENSE.txt" "$pkgdir/usr/share/licenses/craftbukkit+spigot/LICENSE"
+  install -Dm644 "$srcdir/Bukkit/LICENCE.txt" "$pkgdir/usr/share/licenses/craftbukkit+spigot/LICENSE"
   mkdir $pkgdir/srv/craftbukkit/backup
   chmod 770 $pkgdir/srv/craftbukkit/backup
 }
