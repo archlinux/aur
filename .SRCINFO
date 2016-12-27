@@ -1,0 +1,13 @@
+pkgbase = openspades-notofonts
+	pkgdesc = Google Noto Fonts for OpenSpades.
+	pkgver = unknown
+	pkgrel = 1
+	url = http://openspades.yvt.jp
+	arch = any
+	license = OFL
+	depends = openspades
+	source = https://github.com/yvt/openspades/releases/download/v0.1.0/NotoFonts.pak
+	md5sums = 0070aec391df4ed1cb3170a1df90f071
+
+pkgname = openspades-notofonts
+
