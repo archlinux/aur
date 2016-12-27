@@ -1,5 +1,11 @@
 # Maintainer: pyamsoft <pyam(dot)soft(at)gmail(dot)com>
 
+# Please read the comments in the PKGBUILD if you wish to attempt to use
+# multiple versions of the dolphin emulator.
+#
+# Installing multiple versions alongside each other is not tested too often,
+# use at own risk. Please report build issues.
+
 pkgname=dolphin-emu-faster-melee
 # shellcheck disable=SC2034
 pkgver=4.4
@@ -42,8 +48,6 @@ sha256sums=('SKIP'
             '4dd62a40be7a41c92079c9ee23f5fd458c85f275431881c707450f634fdcf24c')
 # shellcheck disable=SC2034
 provides=('dolphin-emu')
-# shellcheck disable=SC2034
-conflicts=('dolphin-emu' 'dolphin-emu-git')
 
 build() {
   # shellcheck disable=SC2154
@@ -58,6 +62,13 @@ build() {
         return 1
   }
 
+  # To install multiple versions of the Dolphin emulator, use
+  #
+  #  -DCMAKE_INSTALL_PREFIX='/opt/dolphin-emu-faster-melee'
+  #
+  # instead of
+  #
+  #  -DCMAKE_INSTALL_PREFIX='/usr'
   cmake .. \
     -DCMAKE_INSTALL_PREFIX='/usr' \
     -DCMAKE_CXX_FLAGS='-fno-pie' \
@@ -81,9 +92,18 @@ package() {
   # shellcheck disable=SC2154
   make DESTDIR="${pkgdir}" install
 
+  # To install multiple versions of the Dolphin emulator,
+  # install the repository dolphin-emu first as it includes this file.
+  # Then comment out this line.
   install -Dm 644 ../Data/51-usb-device.rules -t "${pkgdir}"/usr/lib/udev/rules.d/
 
   # Patch Gecko Codes
+  #
+  # To install multiple versions of the Dolphin emulator, use
+  #
+  # cp -f "${srcdir}/GALE01r2.ini" "${pkgdir}"/opt/dolphin-emu-faster-melee/dolphin-emu/sys/GameSettings/GALE01r2.ini
+  #
+  # Instead of the line below
   cp -f "${srcdir}/GALE01r2.ini" "${pkgdir}"/usr/share/dolphin-emu/sys/GameSettings/GALE01r2.ini
 }
 
