@@ -1,7 +1,7 @@
 # Maintainer: wookietreiber <kizkizzbangbang@googlemail.com>
 
 pkgname=scalafmt
-pkgver=0.5.0
+pkgver=0.5.1
 pkgrel=1
 pkgdesc="code formatter for the Scala programming language"
 arch=(any)
@@ -12,7 +12,7 @@ depends=('java-environment' 'bash')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/olafurpg/scalafmt/releases/download/v$pkgver/scalafmt.tar.gz"
         scalafmt.sh)
 
-md5sums=('7d734dab22dad759798bea3b6fa8a4b5'
+md5sums=('1a6eac92920fcdc906418f65bb66ed2e'
          '85c5625e53067977576925c9dfc0c553')
 
 package() {
