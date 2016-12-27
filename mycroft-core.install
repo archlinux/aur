@@ -1,11 +1,11 @@
 pre_install() {
-  useradd -r mycroft-core -b /usr/share -G audio
+  useradd -r mycroft-core -b /usr/share
 }
 
 post_install() {
   chown -R mycroft-core:mycroft-core /usr/share/mycroft-core
+  chmod g+w /usr/share/mycroft-core
 
-  # install packages
   touch /usr/share/mycroft-core/.bashrc
   echo "# Virtualenv initialization" >> /usr/share/mycroft-core/.bashrc
   echo "export WORKON_HOME=\$HOME/.virtualenvs" >> /usr/share/mycroft-core/.bashrc
@@ -16,6 +16,24 @@ post_install() {
 
   sudo -u mycroft-core bash -c 'source ~/.bashrc && mkvirtualenv mycroft --system-site-packages -p $(which python2)'
   sudo -u mycroft-core bash -c 'source ~/.bashrc && workon mycroft && pip install -r /usr/share/mycroft-core/requirements.txt'
+
+  echo "*** ATTENTION ***"
+  echo ""
+  echo "* The users who will use Mycroft need to be part of the mycroft-core group"
+  echo ""
+  echo "* You can configure your Mycroft instance preferences systemwide at:"
+  echo "    /usr/share/mycroft-core/mycroft/configuration/mycroft.conf"
+  echo ""
+  echo "* The systemd units are"
+  echo "    - mycroft.target"
+  echo "    - mycroft-service.service"
+  echo "    - mycroft-skills.service"
+  echo "    - mycroft-voice.service"
+  echo ""
+  echo "* Those are USER units which you can start issuing:"
+  echo "    systemctl --user start mycroft.target"
+  echo "    More information at: https://wiki.archlinux.org/index.php/Systemd/User"
+
 }
 
 post_upgrade() {
@@ -25,8 +43,4 @@ post_upgrade() {
 post_remove() {
   userdel mycroft-core
   rm -rf /usr/share/mycroft-core
-
-  echo "ATTENTION:"
-  echo "If you are using PulseAudio, please be sure to be running it on system mode"
-  echo "You should configure it at /etc/pulse/daemon.conf"
 }
