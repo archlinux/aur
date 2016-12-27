@@ -1,0 +1,35 @@
+diff --git a/clang-plugin/gir-attributes.cpp b/clang-plugin/gir-attributes.cpp
+index eca02ba..8309eca 100644
+--- a/clang-plugin/gir-attributes.cpp
++++ b/clang-plugin/gir-attributes.cpp
+@@ -338,7 +338,13 @@ GirAttributesConsumer::_handle_function_decl (FunctionDecl& func)
+ 		 * or replacement function so we can’t make use of them. */
+ 		if (g_base_info_is_deprecated (info) &&
+ 		    !func.hasAttr<DeprecatedAttr> ()) {
+-#ifdef HAVE_LLVM_3_5
++#ifdef HAVE_LLVM_3_8
++			DeprecatedAttr* deprecated_attr =
++				::new (func.getASTContext ())
++				DeprecatedAttr (func.getSourceRange (),
++				                func.getASTContext (),
++				                0);
++#elif HAVE_LLVM_3_5
+ 			DeprecatedAttr* deprecated_attr =
+ 				::new (func.getASTContext ())
+ 				DeprecatedAttr (func.getSourceRange (),
+diff --git a/clang-plugin/gsignal-checker.cpp b/clang-plugin/gsignal-checker.cpp
+index 44ce813..57537e8 100644
+--- a/clang-plugin/gsignal-checker.cpp
++++ b/clang-plugin/gsignal-checker.cpp
+@@ -624,7 +624,10 @@ calling_convention_is_safe (CallingConv conv)
+ 	case CC_IntelOclBicc:
+ 		/* Intel OpenCL Built-Ins. I can’t find any documentation about
+ 		 * this, so let’s consider it unsafe. */
+-#ifdef HAVE_LLVM_3_7
++#ifdef HAVE_LLVM_3_8
++	case CC_SpirFunction:
++	case CC_OpenCLKernel:
++#elif HAVE_LLVM_3_7
+ 	case CC_SpirFunction:
+ 	case CC_SpirKernel:
+ 		/* OpenCL SPIR calling conventions. These are ‘defined’ in §3.7
