@@ -7,6 +7,5 @@ post_install() {
 }
 
 pre_remove() {
-  test `grep "i2c:" /etc/group | wc -l` -gt 0 && groupdel i2c
   systemctl disable ptctl-poweroff.service
 }
