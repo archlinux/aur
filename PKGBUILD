@@ -1,7 +1,7 @@
 # Maintainer: Cosku Bas <cosku.bas@gmail.com>
 
 pkgname=trenchbroom-git
-pkgver=r4721.c12320d
+pkgver=r4813.55047553b
 pkgrel=1
 pkgdesc="TrenchBroom is a modern cross-platform level editor for Quake-engine based games."
 arch=('i686' 'x86_64')
@@ -11,16 +11,14 @@ license=('GPLv3')
 makedepends=('git' 'clang' 'pandoc')
 depends=('freeimage' 'freetype2' 'wxgtk-trenchbroom' 'mesa' 'libgl' 'freeglut' 'libxxf86vm' 'glew' 'glm')
 
-source=(git://github.com/kduske/TrenchBroom.git#branch=release/v2.0.0
-		trenchbroom.desktop)
-sha1sums=('SKIP'
-		'0ccd7b40ca49b6c81a7ed39e32510c32571b9b1b')
+source=(git://github.com/kduske/TrenchBroom.git#branch=release/v2.0.0)
+sha1sums=('SKIP')
 
 build() {
 	mkdir TrenchBroom/build
 	cd TrenchBroom/build
-	cmake -DCMAKE_INSTALL_PREFIX:PATH=/opt -DCMAKE_BUILD_TYPE=Release ..
-	make
+	cmake -DCMAKE_INSTALL_PREFIX:PATH=/usr -DCMAKE_BUILD_TYPE=Release ..
+	make -j8
 }
 
 pkgver() {
@@ -30,7 +28,7 @@ pkgver() {
 
 package() {
 	cd TrenchBroom/build
-	make DESTDIR="${pkgdir}" install
-	install -Dm644 "$srcdir/trenchbroom.desktop" "$pkgdir/usr/share/applications/trenchbroom.desktop"
-	install -Dm644 "./Resources/images/AppIcon.png" "$pkgdir/usr/share/pixmaps/trenchbroom.png"
+	make DESTDIR=${pkgdir} install
+	install -Dm644 "$srcdir/TrenchBroom/app/resources/linux/trenchbroom.desktop" "$pkgdir/usr/share/applications/trenchbroom.desktop"
+	install -Dm644 "$srcdir/TrenchBroom/app/resources/linux/icons/icon_256.png" "$pkgdir/usr/share/pixmaps/trenchbroom.png"
 }
