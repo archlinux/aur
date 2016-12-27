@@ -3,12 +3,12 @@
 pkgname=kfoldersync
 _pkgname=KFolderSync
 pkgver=3.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Folder synchronization and backup tool for KDE"
 arch=('i686' 'x86_64')
 url="https://www.linux-apps.com/content/show.php/${_pkgname}?content=164092"
 license=('GPLv2')
-depends=('hicolor-icon-theme' 'kconfigwidgets' 'kcoreaddons' 'kdbusaddons' 'ki18n' 'kitemviews' 'kio' 'kwindowsystem' 'kxmlgui')
+depends=('plasma-workspace' 'hicolor-icon-theme' 'kconfigwidgets' 'kdbusaddons' 'kitemviews' 'kwindowsystem' 'kxmlgui')
 makedepends=('coreutils' 'extra-cmake-modules' 'gettext' 'phonon-qt5-gstreamer')
 source=("https://dl.opendesktop.org/api/files/download/id/1472295821/${pkgname}-${pkgver}.tar.xz" "${pkgname}.install")
 install=${pkgname}.install
@@ -19,7 +19,7 @@ build()
 cd ${srcdir}/${pkgname}-${pkgver}
 mkdir build
 cd build
-cmake -DCMAKE_INSTALL_PREFIX=`kf5-config --prefix` -DCMAKE_BUILD_TYPE=Release ..
+cmake -DCMAKE_INSTALL_PREFIX=`qtpaths --install-prefix` -DCMAKE_BUILD_TYPE=Release ..
 make -j`nproc`
 }
 
