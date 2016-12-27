@@ -1,12 +1,12 @@
 pkgname=python-potr-git
 _pkgname=pure-python-otr
 pkgrel=1
-pkgver=20150128.8ba4981
+pkgver=20160416.2587395
 pkgdesc="A pure python implementation of the OTR encryption protocol. GIT version."
 arch=(any)
 url="http://github.com/python-otr/pure-python-otr"
 license=('LGPL')
-depends=('python2' 'python2-crypto')
+depends=('python' 'python-cryptography')
 makedepends=('git')
 provides=('python-potr')
 conflicts=('python-potr')
