@@ -1,8 +1,8 @@
 # Maintainer: Filipe Verri <filipeverri@gmail.com>
 
 pkgname=debug_assert-git
-pkgver=r6.eb0b01e
-pkgrel=2
+pkgver=1.0.r1.g91dbbf8
+pkgrel=1
 pkgdesc="Simple, flexible and modular assertion macro"
 arch=('any')
 url="https://github.com/foonathan/debug_assert"
