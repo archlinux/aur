@@ -1,14 +1,11 @@
 pkgbase = yakyak
 	pkgdesc = Desktop client for Google Hangouts
-	pkgver = 1.3.2
-	pkgrel = 1
+	pkgver = 1.4.0
+	pkgrel = 0
 	url = https://github.com/yakyak/yakyak
 	arch = x86_64
 	arch = i686
 	license = MIT
-	makedepends = unzip
-	makedepends = nodejs
-	makedepends = npm
 	depends = libgcrypt15
 	depends = libnotify
 	depends = gconf
@@ -18,15 +15,11 @@ pkgbase = yakyak
 	depends = gtk2
 	depends = libgnome-keyring
 	depends = icu
-	noextract = electron-v1.2.1-linux-x64.zip
-	source = https://github.com/yakyak/yakyak/archive/v1.3.2.tar.gz
+	optdepends = emojione-color-font: Emoji support
+	source = yakyak.tar.gz::https://github.com/yakyak/yakyak/releases/download/v1.4.0/yakyak-1.4.0-linux-x64.tar.gz
 	source = yakyak.desktop
-	sha256sums = 8200f4aed962f087041225fdf85d78844e038ea1911282ccb6009f91cdfc651a
+	sha256sums = b7d741099d289c592725acf884330719e9a1fbc7ca7d19024868324f2997f688
 	sha256sums = 12baee4e3e926b765ebe21493adb7aa416165c7191f583694670b08d9b9c5360
-	source_x86_64 = https://github.com/electron/electron/releases/download/v1.2.1/electron-v1.2.1-linux-x64.zip
-	sha256sums_x86_64 = 954dd9054a9f8735b4c09755da910e98ec23cfdb9e2c5ff32dba04cb7a5e0151
-	source_i686 = https://github.com/electron/electron/releases/download/v1.2.1/electron-v1.2.1-linux-ia32.zip
-	sha256sums_i686 = cecdd036689eb5ea90ad0f35da38505a95ad7120dfb8653387e5abdd142a77cd
 
 pkgname = yakyak
 

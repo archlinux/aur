@@ -1,50 +1,41 @@
 # Maintainer: Max Kueng <me [at] maxkueng [dot] com>
 pkgname=yakyak
-pkgver=1.3.2
-pkgrel=1
+pkgver=1.4.0
+pkgrel=0
 pkgdesc="Desktop client for Google Hangouts"
 arch=('x86_64' 'i686')
 url="https://github.com/yakyak/yakyak"
 license=('MIT')
-makedepends=('unzip' 'nodejs' 'npm')
 depends=('libgcrypt15' 'libnotify' 'gconf' 'alsa-lib' 'nss' 'libxtst' 'gtk2' 'libgnome-keyring' 'icu')
+optdepends=('emojione-color-font: Emoji support')
 
-_electron_version=1.2.1
-_platform=ia32
-[[ $CARCH == 'x86_64' ]] && _arch='x64' || _arch='ia32'
+case $CARCH in
+  'x86_64')
+    _arch='x64'
+    sha256sums=('b7d741099d289c592725acf884330719e9a1fbc7ca7d19024868324f2997f688'
+                '12baee4e3e926b765ebe21493adb7aa416165c7191f583694670b08d9b9c5360')
+    ;;
+  'i686')
+    _arch='ia32'
+    sha256sums=('e3c09c55f8746cd8ce95baa0d2993d574ac8eb80a96a48e1030c40665762f01d'
+                '12baee4e3e926b765ebe21493adb7aa416165c7191f583694670b08d9b9c5360')
+    ;;
+esac
 
-source=("https://github.com/yakyak/yakyak/archive/v${pkgver}.tar.gz"
+source=("yakyak.tar.gz::https://github.com/yakyak/yakyak/releases/download/v${pkgver}/yakyak-1.4.0-linux-${_arch}.tar.gz"
         "yakyak.desktop")
-source_i686=("https://github.com/electron/electron/releases/download/v${_electron_version}/electron-v${_electron_version}-linux-ia32.zip")
-source_x86_64=("https://github.com/electron/electron/releases/download/v${_electron_version}/electron-v${_electron_version}-linux-x64.zip")
-
-sha256sums=('8200f4aed962f087041225fdf85d78844e038ea1911282ccb6009f91cdfc651a'
-            '12baee4e3e926b765ebe21493adb7aa416165c7191f583694670b08d9b9c5360')
-sha256sums_i686=('cecdd036689eb5ea90ad0f35da38505a95ad7120dfb8653387e5abdd142a77cd')
-sha256sums_x86_64=('954dd9054a9f8735b4c09755da910e98ec23cfdb9e2c5ff32dba04cb7a5e0151')
-
-noextract=("electron-v${_electron_version}-linux-${_arch}.zip")
-
-build() {
-  unzip "electron-v${_electron_version}-linux-${_arch}.zip" -d "${srcdir}/electron-${_electron_version}"
-  mv "${srcdir}/electron-${_electron_version}/electron" "${srcdir}/electron-${_electron_version}/yakyak"
-
-  cd "${srcdir}/yakyak-${pkgver}"
-  npm install
-  ./node_modules/gulp/bin/gulp.js
-
-  cp -a "${srcdir}/yakyak-${pkgver}/app" "${srcdir}/electron-${_electron_version}/resources/"
-}
 
 package() {
-  install -dm755 "${pkgdir}/usr/share/"
-  cp -R "${srcdir}/electron-${_electron_version}" "${pkgdir}/tmp"
-  mv "${pkgdir}/tmp" "${pkgdir}/usr/share/${pkgname}"
-
+  install -dm755 "${pkgdir}/usr/share"
   install -dm755 "${pkgdir}/usr/bin"
-  ln -s "/usr/share/${pkgname}/yakyak" "${pkgdir}/usr/bin/${pkgname}"
+  install -dm755 "${pkgdir}/usr/share/pixmaps"
+  install -dm755 "${pkgdir}/usr/share/applications"
 
+  install -Dm644 "${srcdir}/yakyak-linux-${_arch}/resources/app/icons/icon@32.png" "${pkgdir}/usr/share/pixmaps/yakyak.png"
   install -Dm644 "${srcdir}/yakyak.desktop" "${pkgdir}/usr/share/applications/yakyak.desktop"
 
-  install -Dm644 "${srcdir}/yakyak-${pkgver}/src/icons/icon_256.png" "${pkgdir}/usr/share/pixmaps/yakyak.png"
+  mv "${srcdir}/yakyak-linux-${_arch}" "${pkgdir}/usr/share/${pkgname}"
+  ln -s "/usr/share/${pkgname}/yakyak" "${pkgdir}/usr/bin/${pkgname}"
 }
+
+# vim:set ts=2 sw=2 et:
