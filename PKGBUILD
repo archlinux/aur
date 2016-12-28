@@ -14,7 +14,6 @@ optdepends=('zenity: System dialog box support (GNOME/GTK)'
             'kdialog: System dialog box support (KDE)'
             'alsa-lib: ALSA audio driver'
             'libpulse: PulseAudio audio driver')
-options=('!buildflags')
 install=openrct2.install
 source=('https://github.com/OpenRCT2/OpenRCT2/archive/v0.0.5.tar.gz')
 sha256sums=('68a88f9fd6e818c69d8e30cbfb30f2e900b22bcda3b912f0f0907e95102999df')
