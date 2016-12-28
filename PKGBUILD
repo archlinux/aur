@@ -5,18 +5,16 @@
 # Contributor: Eric Bélanger <eric@archlinux.org>
 pkgname=darkaudacity-git
 _gitname=audacity
-pkgver=2.1.3x.r126.gf9b56fb
+pkgver=2.1.3x.r221.g17aa9a93
 pkgrel=1
 pkgdesc="A program that lets you manipulate digital audio waveforms"
 arch=('i686' 'x86_64')
 url="http://www.darkaudacity.com/"
 license=('GPL')
-depends=('ffmpeg' 'desktop-file-utils' 'lame' 'libmad' 'libid3tag' 'lilv'
-	  'portsmf' 'soundtouch' 'sbsms' 'vamp-plugin-sdk'
-	  'webkitgtk2' 'wxgtk')
-makedepends=('cmake' 'git' 'python2' 'twolame')
+depends=('libmad' 'libid3tag' 'libsoxr' 'lilv' 'portsmf' 'soundtouch'
+         'suil' 'twolame' 'vamp-plugin-sdk' 'wxgtk')
+makedepends=('cmake' 'git' 'python2')
 options=('!makeflags')
-install=darkaudacity.install
 provides=('audacity')
 conflicts=('audacity')
 source=(git://github.com/JamesCrook/${_gitname}.git#branch=darkaudacity
