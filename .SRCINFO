@@ -1,7 +1,7 @@
 pkgbase = arrayfire-git
 	pkgdesc = High performance software library for parallel computing with an easy-to-use API
 	pkgver = 3.4.2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://arrayfire.com
 	arch = i686
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = arrayfire-git
 	optdepends = cuda: Required for using CUDA backend
 	optdepends = nvidia-utils: Required for using CUDA backend
 	optdepends = libclc: Required for using OpenCL backend
-	provides = arrayfire=${pkgver}
+	provides = arrayfire
 	provides = forge
 	conflicts = arrayfire
 	conflicts = forge

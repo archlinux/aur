@@ -4,7 +4,7 @@ pkgdesc="High performance software library for parallel computing with an easy-t
 url='http://arrayfire.com'
 pkgver=3.4.2
 arch=('i686' 'x86_64')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 makedepends=('cmake' 'doxygen' 'git')
 depends=('cblas' 'fftw' 'lapack' 'freeimage' 'gcc5')
@@ -13,7 +13,7 @@ optdepends=('cuda: Required for using CUDA backend'
             'libclc: Required for using OpenCL backend')
 source=(git+https://github.com/arrayfire/arrayfire)
 md5sums=('SKIP')
-provides=('arrayfire=${pkgver}' 'forge')
+provides=('arrayfire' 'forge')
 conflicts=('arrayfire' 'forge')
 
 check() {
