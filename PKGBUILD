@@ -1,6 +1,6 @@
 # Maintainer: VirtualTam <virtualtam@flibidi.net>
 pkgname=xtrkcad
-pkgver=4.2.3
+pkgver=4.2.4
 _tarver=${pkgver}a
 _srcname="${pkgname}-source-${_tarver}"
 pkgrel=1
@@ -8,13 +8,12 @@ pkgdesc="CAD program for designing model railroad layouts."
 url="http://www.xtrkcad.org/"
 arch=('x86_64' 'i686')
 license=('GPL2')
-depends=('gtk2' 'webkitgtk2')
-optdepends=()
+depends=('webkitgtk2')
 makedepends=('cmake' 'gettext')
 conflicts=('xtrkcad')
 provides=('xtrkcad')
 source=("http://sourceforge.net/projects/xtrkcad-fork/files/XTrackCad/Version%20${pkgver}/${_srcname}.tar.gz")
-sha256sums=('85d7654ab4247cbb336e5552ce5992cb077178b0b97656db4308e881192780bf')
+sha256sums=('2e337905b0d5c0a35ce132b0c9df2c5f3f8304a38d4c4e2ef34661b46e1f1c5e')
  
 build() {
   cd "${_srcname}"
