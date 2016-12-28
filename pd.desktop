@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Terminal=false
+Exec=pd
+Name=pd
+Icon=pd
+Categories=Audio;AudioVideo;Midi;X-Alsa;X-Jack;GTK;
