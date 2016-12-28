@@ -1,7 +1,7 @@
 # Maintainer: PyroDevil <p dot devil at gmail dot com>
 pkgname=systemrescuecd
 pkgver=4.9.0
-pkgrel=2
+pkgrel=1
 epoch=
 pkgdesc="Installs a rescue system into the boot partition to allow grub to boot it."
 arch=('i686' 'x86_64')
