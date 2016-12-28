@@ -2,8 +2,8 @@
 Name=pqR
 GenericName=environment for statistical computing
 Comment=a pretty quick version of R
-Exec=/opt/pqr/bin/R
-Icon=/opt/pqr/pqr.png
+Exec=pqR
+Icon=pqr
 StartupNotify=true
 Terminal=true
 Type=Application
