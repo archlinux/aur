@@ -3,14 +3,14 @@
 # Maintainer: Angel_Caido <geussepe at gmail dot com>>
 
 pkgname=multibootusb
-pkgver=8.3.0
-pkgrel=2
+pkgver=8.4.0
+pkgrel=1
 pkgdesc="Boot multiple live Linux distros from a usb flash drive."
 arch=("any")
 url="http://multibootusb.org"
 license=("GPL")
-depends=("python-pyqt5" "pyqt5-common" "python-dbus" "mtools" "util-linux" "parted" "p7zip")
-sha512sums=("97daf88f09bcf13fea0a19df66830bfa8c8d73cfd30043a5ead6d57b1142075be169e5570c024613fb2d3c94215e8c42cca256bf472a8e2f2f28e12345c81526")
+depends=("python-pyqt5" "pyqt5-common" "python-dbus" "mtools" "util-linux" "parted" "p7zip" "python-six")
+sha512sums=("83c44610849ed24439a944438bd6ceaf67aefc1648db3becc9a853eacd55651ecac64e8f94ca067803e689fe3071a72af782c346cc53810841f4d98bd493a498")
 #source=("http://downloads.sourceforge.net/project/$pkgname/${pkgver}/Source/$pkgname-${pkgver}.tar.gz")
 source=("https://github.com/mbusb/$pkgname/archive/v${pkgver}.tar.gz")
 
