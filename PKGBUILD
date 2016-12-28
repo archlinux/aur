@@ -1,7 +1,7 @@
 # Maintainer: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
 
 pkgname=tidb-git
-pkgver=beta4.269.g3c7ac58d
+pkgver=rc1.23.g5a309947
 pkgrel=1
 pkgdesc="Distributed SQL database inspired by the desing of Google F1"
 arch=('i686' 'x86_64')
