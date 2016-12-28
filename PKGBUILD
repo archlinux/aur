@@ -7,7 +7,7 @@ pkgname=(
 	psf-unifont
 	unifont-utils
 )
-pkgver=9.0.04
+pkgver=9.0.06
 pkgrel=1
 pkgdesc="A free bitmap font with wide Unicode support (split package with accompanying utilities, TrueType, PCF and BDF versions)"
 arch=(i686 x86_64)
@@ -24,7 +24,7 @@ source=(
 )
 noextract=()
 sha512sums=(
-	'1ddf232572e7e53838fbd9c9e28ef6573e29641ea47372ee7b0057d2df3c9d0eaf3c57478f5a8972ea439f7ce423e767208764676bbf34f7b026e60809b73fd4'
+	'767dc107d9a33008116b6939facbf31db6c7942acad257ad52a1a249f04b6215b41da928ef00e8308c2cc19924257cb0219d4eddd2b99502621ebd82e8673988'
 	'SKIP'
 	'cb3e2dd2a7811b5b45bc6c01248688325279ac098da3d4064fbcbf88b60008beaf0c8500a8629b1a71692c2da0bfedba943b59695b57a293537e66ca3deca424'
 	'4eb2703bea9af264a8beac2f7605666f7a96a7a36a06dcd4357ad77c99378d99a266aeb54b79bd14a7718a3ceddd8a44b2d4d44e442c02ff4e6cb6f4035cd6a8'
