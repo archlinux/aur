@@ -9,6 +9,7 @@ pkgbase = st-neonwave-git
 	makedepends = ncurses
 	depends = libxft
 	depends = libxext
+	depends = otf-cp-mono
 	provides = st-neonwave-git
 	conflicts = st
 	conflicts = st-xresources-git
