@@ -1,5 +1,5 @@
 # Maintainer: VerruckteFuchs <derverrucktefuchs@gmail.com>
-pkgname=st-zenburn-git
+pkgname=st-zenburn-26px-git
 pkgver=r18.ca2114b
 pkgrel=1
 pkgdesc="Simple terminal with Xresources, scrollback, alpha support, Office Code Pro font, and zenburn colorscheme"
@@ -8,8 +8,8 @@ url="https://github.com/DerVerruckteFuchs/st-zenburn"
 license=('MIT')
 depends=('libxft' 'libxext')
 makedepends=('ncurses')
-provides=('st-zenburn-git')
-conflicts=('st' 'st-xresources-git' 'st-bloated-git' 'st-neonwave-git')
+provides=('st-zenburn-26px-git')
+conflicts=('st' 'st-xresources-git' 'st-bloated-git' 'st-neonwave-git' 'st-zenburn-git')
 source=('git://github.com/DerVerruckteFuchs/st-zenburn')
 md5sums=('SKIP')
 

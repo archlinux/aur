@@ -1,4 +1,4 @@
-pkgbase = st-zenburn-git
+pkgbase = st-zenburn-26px-git
 	pkgdesc = Simple terminal with Xresources, scrollback, alpha support, Office Code Pro font, and zenburn colorscheme
 	pkgver = r18.ca2114b
 	pkgrel = 1
@@ -9,13 +9,14 @@ pkgbase = st-zenburn-git
 	makedepends = ncurses
 	depends = libxft
 	depends = libxext
-	provides = st-zenburn-git
+	provides = st-zenburn-26px-git
 	conflicts = st
 	conflicts = st-xresources-git
 	conflicts = st-bloated-git
 	conflicts = st-neonwave-git
+	conflicts = st-zenburn-git
 	source = git://github.com/DerVerruckteFuchs/st-zenburn
 	md5sums = SKIP
 
-pkgname = st-zenburn-git
+pkgname = st-zenburn-26px-git
 
