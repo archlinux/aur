@@ -1,7 +1,7 @@
 pkgbase = mate-power-manager-dev
 	pkgdesc = Power management tool for the MATE desktop
 	pkgver = 1.17.0
-	pkgrel = 1
+	pkgrel = 5
 	url = http://mate-desktop.org
 	arch = i686
 	arch = x86_64
