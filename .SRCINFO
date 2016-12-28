@@ -1,7 +1,7 @@
 pkgbase = mate-utils-dev
 	pkgdesc = Common MATE utilities for viewing disk usage, logs and fonts, taking screenshots, managing dictionaries and searching files
 	pkgver = 1.17.0
-	pkgrel = 1
+	pkgrel = 5
 	url = http://mate-desktop.org
 	arch = i686
 	arch = x86_64
