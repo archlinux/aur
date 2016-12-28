@@ -26,11 +26,11 @@ build() {
 }
 
 package() {
-  cd TopIcons
-  uuid=$(grep -Po '(?<="uuid": ")[^"]*' _build/metadata.json)
-  destdir="$pkgdir/usr/share/gnome-shell/extensions/$uuid"
+	cd TopIcons
+	local uuid=$(grep -Po '(?<="uuid": ")[^"]*' _build/metadata.json)
+	local destdir="$pkgdir/usr/share/gnome-shell/extensions/$uuid"
 
-  install -dm755 $destdir
+	install -dm755 "$destdir"
 
-  cp -r _build/* $destdir
+	cp -r _build/* "$destdir"
 }
