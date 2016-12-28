@@ -16,7 +16,13 @@ source=("git+https://github.com/owntracks/recorder")
 _gitname=('recorder')
 md5sums=('SKIP')
 
-backup=(etc/defaults/ot-recorder)
+backup=(etc/default/ot-recorder)
+
+pkgver() {
+	cd "$srcdir"/${_gitname}
+	echo "0.6.$(git rev-list --count HEAD).$(git describe --always)"
+}
+
 
 prepare() {
 	cd "${srcdir}/${_gitname}"
@@ -32,7 +38,7 @@ build() {
 }
 
 package() {
-	install -D -m644 "${srcdir}/${_gitname}/etc/ot-recorder.default" "${pkgdir}/etc/defaults/ot-recorder"
+	install -D -m644 "${srcdir}/${_gitname}/etc/ot-recorder.default" "${pkgdir}/etc/default/ot-recorder"
         install -D -m644 "${srcdir}/${_gitname}/etc/ot-recorder.service" "${pkgdir}/usr/lib/systemd/system/ot-recorder.service"
 
 	mkdir -p "${pkgdir}/var/spool/owntracks/recorder/store"
