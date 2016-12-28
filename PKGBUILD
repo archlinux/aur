@@ -13,6 +13,8 @@ depends=('python2-requests'
          'python2-dateutil'
          'python2-humanize'
          'python2-six'
+         'python2-lxml'
+         'python2-xattr'
          'python2-chardet')
 source=("$pkgname.tar.gz::https://github.com/havardgulldahl/jottalib/archive/v0.5.1.tar.gz")
 sha256sums=('607e5270c15e593e0df494493d371d996053d45cfc2fe44a09020719fe5feaa3')
