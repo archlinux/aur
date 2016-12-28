@@ -1,0 +1,16 @@
+pkgbase = mkinitcpio-rbd
+	pkgdesc = mkinitcpio hook to boot from Ceph Block Device
+	pkgver = 1.0
+	pkgrel = 1
+	url = http://www.archlinux.org/
+	arch = i686
+	arch = x86_64
+	license = BSD
+	depends = mkinitcpio-nfs-utils
+	source = mkinitcpio-rbd-install
+	source = mkinitcpio-rbd-hook
+	sha256sums = 4fd594e2a9aeacd84f592cfe81202529a3da973caaa018bb05a188ea1a187d57
+	sha256sums = 9857159b7a5ca450369eda18fbbf20950f0e991df71bc69f99a83fea8bcb04e8
+
+pkgname = mkinitcpio-rbd
+

@@ -1,0 +1,24 @@
+#!/usr/bin/bash
+
+build() {
+    add_module rbd
+    add_module cbc
+
+    add_runscript
+}
+
+help() {
+    cat <<HELPEOF
+This hook allows map rbd, and use it for root device.
+It requires the 'ip' kernel argument of the net hook for ip settings.
+And it uses an extra 'rbd' kernel argument for ceph settings.
+Don't forget using the net hook before the rbd hook.
+Arguments:
+    ip: examples at https://wiki.archlinux.org/index.php/Mkinitcpio#Using_net
+    rbd: rbd=<monitor address>:<credential>:<pool name>:<disk name>
+         <credential>::=name=<username>,secret=<secret key>
+HELPEOF
+}
+
+
+# vim: set ft=sh ts=4 sw=4 et:

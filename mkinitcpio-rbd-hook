@@ -1,0 +1,14 @@
+#!/usr/bin/ash
+
+run_hook() {
+    msg -n ":: Map RBD device..."
+    if [ -n "${ip}" -a -n "${rbd}" ]; then
+        modprobe rbd
+        echo ${rbd//:/ } > /sys/bus/rbd/add
+        msg "done."
+    else
+        msg "failed."
+    fi
+}
+
+# vim: set ft=sh ts=4 sw=4 et:
