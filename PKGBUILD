@@ -19,7 +19,7 @@ prepare() {
   GOPATH="$srcdir" go get -v -d
 
   # setup local gopath
-  ln -s "$srcdir"/$pkgname-$pkgver/tools/longpathos \
+  ln -sf "$srcdir"/$pkgname-$pkgver/tools/longpathos \
     "$srcdir"/src/github.com/git-lfs/git-lfs/tools/longpathos 
 }
 
