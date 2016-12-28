@@ -1,10 +1,11 @@
 # Maintainer: twa022 <twa022 at gmail dot com>
 
-_pkgnamefmt=LibreOfficeDev
+_pkgnamefmt=LibreOffice
 _pkgname=libreoffice
 pkgname=${_pkgname}-dev-bin
-_LOver=5.3.0.0.beta2
-pkgver=5.3.0.beta2
+_LOver=5.3.0.1
+pkgver=5.3.0.1
+_basever=5.3
 pkgrel=1
 arch=('i686' 'x86_64')
 license=('LGPL3')
@@ -35,15 +36,15 @@ optdepends=('java-runtime:          adds java support'
             'kdelibs:               for KDE desktop integration')
 provides=('libreoffice' 'libreoffice-en-US')
 
-#source_x86=("http://dev-builds.libreoffice.org/pre-releases/deb/x86/${_pkgnamefmt}_${_LOver}_Linux_x86_deb.tar.gz")
-source_x86_64=("http://dev-builds.libreoffice.org/pre-releases/deb/x86_64/${_pkgnamefmt}_${_LOver}_Linux_x86-64_deb.tar.gz")
-sha256sums_x86_64=('2b7308d4cf19c305008ef297d98932402d4f8f96458ffae88623ec854631693e')
+source_i686=("http://dev-builds.libreoffice.org/pre-releases/rpm/x86/${_pkgnamefmt}_${_LOver}_Linux_x86_rpm.tar.gz")
+source_x86_64=("http://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/${_pkgnamefmt}_${_LOver}_Linux_x86-64_rpm.tar.gz")
+sha256sums_i686=('74b697d07e084bea82c0436d590b9abd1784d27810d13e5f049ac93442d60164')
+sha256sums_x86_64=('0e37e1ac084a66105bbe3939848d2d6bef6382f0a173893a3604e2c9c07b5e7e')
 
 package() {
-	cd ${_pkgnamefmt}_${_LOver}*/DEBS
+	cd ${_pkgnamefmt}_${_LOver}*/RPMS
 
-	for deb in *deb ; do
-		bsdtar -x -f ${deb}
-		tar -zxf data.tar.gz -C ${pkgdir}
+	for rpm in *rpm ; do
+		bsdtar -x -f ${rpm} -C ${pkgdir}
 	done
 }
