@@ -2,8 +2,8 @@
 
 pkgname=numix-icon-theme-pack
 pkgver=20161222
-pkgrel=2
-pkgdesc='Numix project Icon Themes'
+pkgrel=3
+pkgdesc='Numix project Icon Themes - Updated with Numix Core'
 arch=('any')
 url='http://numixproject.org/'
 license=('GPL3')
