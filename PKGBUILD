@@ -2,7 +2,7 @@
 pkgname=st-zenburn-26px-git
 pkgver=r18.ca2114b
 pkgrel=1
-pkgdesc="Simple terminal with Xresources, scrollback, alpha support, Office Code Pro font, and zenburn colorscheme"
+pkgdesc="Simple terminal with Xresources, scrollback, alpha support, 26px Office Code Pro font, and zenburn colorscheme"
 arch=('i686' 'x86_64')
 url="https://github.com/DerVerruckteFuchs/st-zenburn"
 license=('MIT')
