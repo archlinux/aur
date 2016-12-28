@@ -1,6 +1,6 @@
 pkgname=lua-lsqlite3
-pkgver=0.9.3
-pkgrel=0
+pkgver=0.9.4
+pkgrel=2
 pkgdesc="A binding for Lua to the SQLite3 database library"
 arch=('i686' 'x86_64')
 url="http://lua.sqlite.org/"
@@ -9,7 +9,7 @@ depends=('lua' 'sqlite')
 makedepends=('luarocks')
 conflicts=()
 source=("https://luarocks.org/${pkgname#lua-}-$pkgver-$pkgrel.src.rock")
-sha512sums=('33c844f4c9bf60a4d6755071555cbb5af72e1c9e4fc0bd0bafa8b0e08f03d1cca8289c7afaf927d464ab84446355c23ab0f83ae60e577566506233b67dd50b43')
+sha512sums=('c1310688fc7c9618cddbbd5cc6181197229dfa891c77461f59916de49a0acd1833b936776efd742ab1c983abf9609a66dc1e8773e9422d06f18cc8eed2a4a217')
 
 package() {
   luarocks --tree="$pkgdir/usr" install "${pkgname#lua-}-$pkgver-$pkgrel.src.rock"
