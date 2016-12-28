@@ -7,7 +7,7 @@ pkgbase = larryshell
 	license = MIT
 	depends = bash
 	source = https://jhoughton.me/larryshell/eb28698-1.tar.gz
-	md5sums = da10df5b9dfeb97b158bff219c9bcef9
+	md5sums = b90774f727aaecdeae180aafc78a8c05
 
 pkgname = larryshell
 
