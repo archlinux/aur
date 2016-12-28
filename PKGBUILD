@@ -5,12 +5,12 @@
 
 pkgname=i2pd
 pkgver=2.11.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Simplified C++ implementation of I2P client"
 arch=('i686' 'x86_64')
 url="https://github.com/PurpleI2P/i2pd"
 license=('BSD')
-depends=('boost-libs' 'miniupnpc' 'openssl' 'zlib' 'websocketpp')
+depends=('boost-libs' 'miniupnpc' 'openssl' 'zlib')
 makedepends=('boost' 'cmake')
 source=(https://github.com/PurpleI2P/${pkgname}/archive/${pkgver}.tar.gz
 	i2pd.service
@@ -23,7 +23,7 @@ conflicts=('i2pd-git')
 build() {
   cd $srcdir/$pkgname-$pkgver
   cd build
-  cmake . -Wno-dev \
+  cmake . -DCMAKE_CXX_FLAGS="-w" \
 	  -DCMAKE_INSTALL_PREFIX=/usr \
 	  -DWITH_UPNP=1 -DWITH_PCH=1 \
 	  -DCMAKE_BUILD_TYPE=Release
@@ -52,24 +52,24 @@ package(){
   ln -s /${_conf_dest}/subscriptions.txt $pkgdir/${_home_dest}/subscriptions.txt
 
   cd $srcdir/$pkgname-$pkgver/contrib
-  _dest="$pkgdir/${_share_dest}/${_pkgname}"
+  _dest="$pkgdir/${_share_dest}/${pkgname}"
   find ./certificates -type d -exec install -d {} ${_dest}/{} \;
   find ./certificates -type f -exec install -Dm644 {} ${_dest}/{} \;
-  ln -s /${_share_dest}/${_pkgname}/certificates $pkgdir/${_home_dest}/certificates
+  ln -s /${_share_dest}/${pkgname}/certificates $pkgdir/${_home_dest}/certificates
 
   # license
-  install -Dm644 $srcdir/$pkgname-$pkgver/LICENSE "$pkgdir/${_share_dest}/licenses/${_pkgname}/LICENSE"
+  install -Dm644 $srcdir/$pkgname-$pkgver/LICENSE "$pkgdir/${_share_dest}/licenses/${pkgname}/LICENSE"
 
   # docs
-  _dest="$pkgdir/${_share_dest}/doc/${_pkgname}"
+  _dest="$pkgdir/${_share_dest}/doc/${pkgname}"
   install -Dm644 $srcdir/$pkgname-$pkgver/README.md "${_dest}/README.md"
   install -Dm644 $srcdir/$pkgname-$pkgver/docs/configuration.md "${_dest}/configuration.md"
   install -Dm644 $srcdir/$pkgname-$pkgver/docs/family.md "${_dest}/family.md"
   install -Dm644 $srcdir/$pkgname-$pkgver/docs/config_opts_after_2.3.0.md "${_dest}/config_opts_after_2.3.0.md"
 
-  # remove src folder
-	rm -r "$pkgdir/usr/src"
-	
+  # remove src folder and LICENSE
+  rm -r $pkgdir/usr/{src,LICENSE}
+
   #man
   install -Dm644 $srcdir/$pkgname-$pkgver/debian/i2pd.1 "$pkgdir/${_share_dest}/man/man1/i2pd.1"
 
