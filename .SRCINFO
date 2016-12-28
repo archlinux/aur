@@ -1,5 +1,5 @@
 pkgbase = seagate-leds-git
-	pkgver = r8.313166b
+	pkgver = r10.e153ac7
 	pkgrel = 1
 	arch = i686
 	arch = x86_64

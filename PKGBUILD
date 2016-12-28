@@ -1,6 +1,6 @@
 # Maintainer: Daniel Wyatt <Daniel.Wyatt@gmail.com>
 pkgname=seagate-leds-git
-pkgver=r8.313166b
+pkgver=r10.e153ac7
 pkgrel=1
 pkgdesc=""
 arch=('i686' 'x86_64')
