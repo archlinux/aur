@@ -1,7 +1,7 @@
 pkgbase=python-dominate
 pkgname=('python2-dominate' 'python-dominate')
 pkgver=2.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Python library for creating and manipulating HTML documents"
 arch=('any')
 url="https://github.com/Knio/dominate"
