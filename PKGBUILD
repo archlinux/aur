@@ -1,11 +1,11 @@
-# Maintainer: Madara <majetree@yandex.ru>
+# Maintainer: zargbell <zargbell@yandex.ru>
 
 pkgname=pixiecore
-pkgver=16.10.01.1420
+pkgver=16.12.24.1326
 pkgrel=1
 epoch=
 pkgdesc="An all-in-one tool for easy netbooting"
-arch=('i686' 'x86_64')
+arch=('i686' 'x86_64' 'armv7h')
 url="https://github.com/google/netboot/tree/master/pixiecore"
 license=('GPL2')
 groups=()
