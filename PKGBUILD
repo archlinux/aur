@@ -2,7 +2,7 @@
 pkgname=seagate-leds-git
 pkgver=r10.e153ac7
 pkgrel=1
-pkgdesc=""
+pkgdesc="Utility to control activity and capacity LEDs on some external Seagate and Maxtor hard disk drives."
 arch=('i686' 'x86_64')
 url=""
 license=('MIT')
