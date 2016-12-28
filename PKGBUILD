@@ -1,8 +1,8 @@
 # Maintainer: Freddie Chopin <freddie_chopin at op dot pl>
 
 pkgname=mingw-w64-libftdi
-pkgver=1.2
-pkgrel=2
+pkgver=1.3
+pkgrel=1
 license=('GPL2' 'LGPL2.1')
 arch=('any')
 pkgdesc='Library to talk to FTDI chips (mingw-w64)'
@@ -12,7 +12,7 @@ optdepends=('mingw-w64-boost: C++ variant of libftdi (libftdipp) and unit tests'
 makedepends=('mingw-w64-cmake')
 options=('!strip' '!buildflags' 'staticlibs')
 source=("http://www.intra2net.com/en/developer/libftdi/download/libftdi1-$pkgver.tar.bz2")
-sha256sums=('a6ea795c829219015eb372b03008351cee3fb39f684bff3bf8a4620b558488d6')
+sha256sums=('9a8c95c94bfbcf36584a0a58a6e2003d9b133213d9202b76aec76302ffaa81f4')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
