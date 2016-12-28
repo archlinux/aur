@@ -56,7 +56,7 @@ package() {
   desktop-file-install -m 644 --dir "${pkgdir}/usr/share/applications/" "${srcdir}/${_name}.desktop"
   for res in 32x32 256x256; do
     install -dm755 "${pkgdir}/usr/share/icons/hicolor/${res}/apps"
-    install -Dm755 "${srcdir}/${_pkgname}/resources/icons/${res}.png" \
+    install -Dm644 "${srcdir}/${_pkgname}/resources/icons/${res}.png" \
       "${pkgdir}/usr/share/icons/hicolor/${res}/apps/${_name}.png"
   done
 
