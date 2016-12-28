@@ -3,7 +3,7 @@
 # Contributor: Yen Chi Hsuan <yan12125 at gmail.com>
 
 _pkgname=nwjs
-pkgname=$_pkgname-bin
+pkgname=$_pkgname-bin-0.17.3
 pkgver=0.17.3
 pkgrel=1
 pkgdesc="node-webkit is an app runtime based on Chromium and node.js."
