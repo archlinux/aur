@@ -4,7 +4,7 @@ pkgdesc="High performance software library for parallel computing with an easy-t
 url='http://arrayfire.com'
 pkgver=3.4.2
 arch=('i686' 'x86_64')
-pkgrel=2
+pkgrel=3
 license=('BSD')
 makedepends=('cmake' 'doxygen' 'git')
 depends=('cblas' 'fftw' 'lapack' 'freeimage' 'gcc5')
@@ -40,8 +40,7 @@ build() {
       -DBUILD_TEST=OFF\
       -DCMAKE_BUILD_TYPE=Release \
       -DBUILD_EXAMPLES=OFF \
-      -DBUILD_DOCS=ON      \
-      -DBUILD_GRAPHICS=OFF
+      -DBUILD_DOCS=ON
 
   make
 }
