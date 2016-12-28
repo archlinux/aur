@@ -23,7 +23,7 @@ build() {
     cabal --require-sandbox update
     cabal --require-sandbox install alex -j
     cabal --require-sandbox install happy -j
-    cabal --require-sandbox install gtk2hs-buildtools -j
+    cabal --require-sandbox install gtk2hs-buildtools==0.13.2.1 -j
     cabal --require-sandbox install -j --force-reinstalls --reinstall --only-dependencies
     cabal --require-sandbox configure --prefix=/usr
     cabal --require-sandbox build -j
