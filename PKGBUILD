@@ -1,7 +1,7 @@
 # Maintainer: Conor Anderson <conor@conr.ca>
 pkgname=purevpn-openvpn
 pkgver=2016.12.27
-pkgrel=2
+pkgrel=3
 pkgdesc='OpenVPN hackery to add PureVPN to NetworkManager'
 arch=('any')
 url='https://www.purevpn.com/'
@@ -45,9 +45,8 @@ prepare() {
         port=80
         sed -i '/port=/a \proto-tcp=yes' "system-connections/${filename}-PUREVPN"
       fi
-      uuid=$(cat /dev/urandom | tr -dc 'a-f0-9' | fold -w 8 | head -n 1)-$(cat /dev/urandom | tr -dc 'a-f0-9' | fold -w 4 | head -n 1)-$(cat /dev/urandom | tr -dc 'a-f0-9' | fold -w 4 | head -n 1)-$(cat /dev/urandom | tr -dc 'a-f0-9' | fold -w 4 | head -n 1)-$(cat /dev/urandom | tr -dc 'a-f0-9' | fold -w 12 | head -n 1)
       sed -i "s/\bid=/&${filename}/" "system-connections/${filename}-PUREVPN" #id
-      sed -i "s/\buuid=/&${uuid}/" "system-connections/${filename}-PUREVPN" #uuid
+      sed -i "s/\buuid=/&$(uuidgen)/" "system-connections/${filename}-PUREVPN" #uuid
       sed -i "s/\bport=/&${port}/" "system-connections/${filename}-PUREVPN" #port
       sed -i "s/\bremote=/&$host:${port}/" "system-connections/${filename}-PUREVPN" #host
     done
