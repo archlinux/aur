@@ -1,7 +1,7 @@
 pkgname=mono-alpha
 _pkgname=mono
 pkgver=4.8.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Free implementation of the .NET platform including runtime and compiler. Alpha version."
 arch=('i686' 'x86_64')
 license=('GPL' 'LGPL2.1' 'MPL' 'BSD' 'custom=MITX11' 'custom=MSPL')
@@ -13,6 +13,7 @@ provides=('monodoc' 'mono')
 conflicts=('monodoc' 'mono')
 source=('git://github.com/mono/mono.git#branch=mono-4.8.0-branch' 'mono.binfmt.d')
 md5sums=('SKIP' 'b9ef8a65fea497acf176cca16c1e2402')
+install="mono.install"
 
 build() {
   cd "${srcdir}"/"${_pkgname}"
@@ -23,7 +24,7 @@ build() {
     --bindir=/usr/bin   \
     --sbindir=/usr/bin    \
     --disable-quiet-build \
-    --with-mcs-docs=yes
+    --with-mcs-docs=no
   make
 
   # Build jay

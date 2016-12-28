@@ -1,8 +1,9 @@
 pkgbase = mono-alpha
 	pkgdesc = Free implementation of the .NET platform including runtime and compiler. Alpha version.
 	pkgver = 4.8.0
-	pkgrel = 3
+	pkgrel = 4
 	url = http://www.mono-project.com/
+	install = mono.install
 	arch = i686
 	arch = x86_64
 	license = GPL
