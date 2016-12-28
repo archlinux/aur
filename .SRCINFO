@@ -1,7 +1,7 @@
 pkgbase = mate-common-dev
 	pkgdesc = Common development macros for MATE (GTK3 version)
 	pkgver = 1.17.0
-	pkgrel = 1
+	pkgrel = 5
 	url = http://mate-desktop.org
 	arch = any
 	groups = mate
