@@ -1,25 +1,22 @@
-# Contributor: <darehanl@gmail.com>
+# Maintainer: <darehanl@150mail.com>
 # Contributor: atie H. <atie.at.matrix@gmail.com>
 
 pkgname=ttf-nanumgothic_coding
-pkgver=2.0.1
+pkgver=2.5
 pkgrel=1
 pkgdesc="Nanum series fixed width TrueType fonts"
 arch=('any')
-url="http://dev.naver.com/projects/nanumfont"
+url="https://github.com/naver/nanumfont"
 license=('OFL')
 depends=('fontconfig' 'xorg-font-utils')
 provides=('ttf-font')
 install=ttf.install
-source=('http://dev.naver.com/frs/download.php/441/NanumGothicCoding-2.0.zip')
-md5sums=('6214a5844454c96faeac9a60539c7daf')
+source=("https://github.com/naver/nanumfont/releases/download/VER2.5/NanumGothicCoding-${pkgver}.zip")
+md5sums=('e9083cd0788b3c9598e690e2715f0406')
 
 package() {
     install -dm 755 ${pkgdir}/usr/share/fonts/TTF
 
-    # Use hack to rename non-utf8 filenames to english
-    install -m 644 -T ${srcdir}/*Bold.ttf ${pkgdir}/usr/share/fonts/TTF/NanumGothicCoding-Bold.ttf
-    rm ${srcdir}/*Bold.ttf
-    install -m 644 -T ${srcdir}/*.ttf ${pkgdir}/usr/share/fonts/TTF/NanumGothicCoding.ttf
+    install -m 644 ${srcdir}/*.ttf ${pkgdir}/usr/share/fonts/TTF/
 }
 
