@@ -5,7 +5,7 @@ pkgsquare=numix-icon-theme-square
 pkgcircle=numix-icon-theme-circle
 pkgdefault=numix-icon-theme
 pkgcore=numix-core
-pkgver=00000000
+pkgver=20161222
 pkgrel=1
 pkgdesc='Numix project Icon Themes - Updated with Numix Core'
 arch=('any')
@@ -16,10 +16,10 @@ provides=('numix-square-icon-theme' 'numix-square-light-icon-theme' 'numix-circl
 conflicts=('numix-square-icon-theme' 'numix-square-light-icon-theme' 'numix-circle-icon-theme' 'numix-circle-light-icon-theme' 'numix-icon-theme')
 options=('!strip')
 source=(
-'git+https://github.com/numixproject/$pkgsquare.git'
-'git+https://github.com/numixproject/$pkgcircle.git'
-'git+https://github.com/numixproject/$pkgdefault.git'
-'git+https://github.com/numixproject/$pkgcore.git'
+'git+https://github.com/numixproject/numix-icon-theme-square.git'
+'git+https://github.com/numixproject/numix-icon-theme-circle.git'
+'git+https://github.com/numixproject/numix-icon-theme.git'
+'git+https://github.com/numixproject/numix-core.git'
 )
 md5sums=('SKIP' 'SKIP' 'SKIP' 'SKIP')
 
