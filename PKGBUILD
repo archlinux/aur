@@ -16,7 +16,7 @@ package_python2-dominate() {
 	depends=('python2')
 
 	cd "$srcdir/dominate-${pkgver}"
-	python setup.py install --root="$pkgdir/" --optimize=1
+	python2 setup.py install --root="$pkgdir/" --optimize=1
 }
 
 package_python-dominate() {
