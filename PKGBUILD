@@ -6,7 +6,7 @@
 pkgbase=python-ncclient
 _pkgbase="${pkgbase#python-}"
 pkgname=(python-ncclient python2-ncclient)
-pkgver=0.5.2
+pkgver=0.5.3
 pkgrel=1
 pkgdesc='Python library for NETCONF clients.'
 arch=(any)
@@ -16,12 +16,13 @@ makedepends=(
   'python-paramiko'
   'python-lxml'
   python-setuptools
+  'python2-paramiko'
   'python2-lxml'
   python2-setuptools
 )
 options=(!emptydirs)
 source=("https://github.com/ncclient/${_pkgbase}/archive/v${pkgver}.tar.gz")
-sha256sums=('477c15d8cf51efaffefd8cf6e1369c3f3af4ef884ecce79b49e4be782b4775ad')
+sha256sums=('d74a8e15a0cfb58eadd5cf75330bba81fb7bd030613f853ce5dbfd6134c9c74a')
 
 package_python-ncclient() {
   depends=('python-paramiko'
@@ -32,7 +33,7 @@ package_python-ncclient() {
 }
 
 package_python2-ncclient() {
-  depends=('python-paramiko'
+  depends=('python2-paramiko'
            'python2-lxml')
   cd "${srcdir}/${_pkgbase}-${pkgver}"
   python2 setup.py install --root="${pkgdir}/" --optimize=1
