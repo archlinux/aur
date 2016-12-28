@@ -1,12 +1,13 @@
 pkgbase = numix-icon-theme-pack
-	pkgdesc = Numix project Icon Themes - Updated with Numix Core
+	pkgdesc = Numix project Icon Themes
 	pkgver = 20161222
-	pkgrel = 1
+	pkgrel = 2
 	url = http://numixproject.org/
 	arch = any
 	license = GPL3
 	makedepends = git
-	makedepends = python-cairo
+	makedepends = python-gobject
+	makedepends = inkscape
 	provides = numix-square-icon-theme
 	provides = numix-square-light-icon-theme
 	provides = numix-circle-icon-theme
