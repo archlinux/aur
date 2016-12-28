@@ -1,7 +1,7 @@
 pkgbase = mate-desktop-dev
 	pkgdesc = Library with common API for various MATE modules
 	pkgver = 1.17.0
-	pkgrel = 1
+	pkgrel = 5
 	url = http://mate-desktop.org
 	arch = i686
 	arch = x86_64
