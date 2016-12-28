@@ -1,6 +1,6 @@
 pkgname=openvpn-update-systemd-resolved
 pkgver=1.2.3
-pkgrel=1
+pkgrel=2
 pkgdesc="OpenVPN systemd-resolved Updater"
 arch=("any")
 url="https://github.com/jonathanio/update-systemd-resolved"
