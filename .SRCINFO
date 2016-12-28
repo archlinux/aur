@@ -1,0 +1,20 @@
+pkgbase = tolua++_5.3
+	pkgdesc = Provides tolua++ for 5.3 - This tool integrates C/C++ code with Lua 5.3 !! - See this PKGBUILD source - Just change one variable to build the git version - defaults to release version.
+	pkgver = 1.0.93
+	pkgrel = 1
+	url = https://github.com/LuaDist/toluapp
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	depends = lua
+	provides = tolua++
+	conflicts = tolua++
+	options = staticlibs
+	source = https://github.com/LuaDist/toluapp/archive/1.0.93.tar.gz
+	source = tolua53.patch
+	md5sums = 689d952034e55d4333fa240f7516e68a
+	md5sums = 863770a6c505f2a76068d54f7aac1cd8
+
+pkgname = tolua++_5.3
+
