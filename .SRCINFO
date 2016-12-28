@@ -1,7 +1,7 @@
 pkgbase = pluma-dev
 	pkgdesc = A powerful text editor for MATE (GTK3 version)
 	pkgver = 1.17.2
-	pkgrel = 1
+	pkgrel = 5
 	url = http://mate-desktop.org
 	arch = i686
 	arch = x86_64
