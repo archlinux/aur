@@ -1,7 +1,7 @@
 pkgbase = mate-settings-daemon-dev
 	pkgdesc = The MATE Settings daemon
 	pkgver = 1.17.0
-	pkgrel = 1
+	pkgrel = 5
 	url = http://mate-desktop.org
 	arch = i686
 	arch = x86_64
