@@ -1,0 +1,13 @@
+pkgbase = xlslib
+	pkgdesc = A C/C++ multi-platform library for dynamically generating Excel(TM) files
+	pkgver = 2.5.0
+	pkgrel = 1
+	url = http://xlslib.sourceforge.net
+	arch = i686
+	arch = x86_64
+	license = GPL
+	source = xlslib-package-2.5.0.zip::http://sourceforge.net/projects/xlslib/files/xlslib-package-2.5.0.zip/download
+	md5sums = 567336ebee41552195c4035c87b9361b
+
+pkgname = xlslib
+
