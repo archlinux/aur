@@ -6,6 +6,7 @@ pkgdesc="Human friendly input/output in Python"
 url="https://github.com/xolox/python-humanfriendly"
 license=('MIT')
 depends=('python')
+makedepends=('python-setuptools')
 source=("https://github.com/xolox/${pkgname}/archive/${pkgver}.tar.gz")
 md5sums=('4ce06879cd8fba39980ca20d6e6256cb')
 arch=('any')
