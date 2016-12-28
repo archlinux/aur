@@ -1,8 +1,8 @@
 # Maintainer: Oliver Jaksch <arch-aur@com-in.de>
 
 pkgname=libretro-pcem-git
-pkgver=149.e0e0458
-pkgrel=2
+pkgver=152.89b3516
+pkgrel=1
 pkgdesc="Libretro port of PCem, based on mooch's personal fork of PCem, based on OBattler's experimental branch"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
 url="https://github.com/libretro/libretro-pcem"
@@ -30,5 +30,5 @@ build() {
 
 package() {
   install -Dm644 "${_gitname}/src/${_libname}.so" "${pkgdir}/usr/lib/libretro/${_libname}.so"
-  install -Dm644 "${_libname}.info" "${pkgdir}/usr/lib/libretro/${_libname}.info"
+  install -Dm644 "${_libname}.info" "${pkgdir}/usr/share/libretro/info/${_libname}.info"
 }
