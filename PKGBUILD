@@ -1,10 +1,9 @@
-
 # Maintainer: M0Rf30
 
 pkgname=idjc-x-git
-pkgver=935.280ab4e
+pkgver=941.1a88bc8
 pkgrel=1
-pkgdesc="Powerful client for individuals interested in streaming live radio shows (Port to py3/gtk3, plus	some other stuff)"
+pkgdesc="Powerful client for individuals interested in streaming live radio shows (Port to py3/gtk3, plus some other stuff)"
 arch=(i686 x86_64)
 url="https://github.com/radiocicletta/idjc-x"
 depends=('python-dbus'
@@ -30,7 +29,6 @@ replaces=('idjc' 'idjc-git')
 conflicts=('idjc' 'idjc-git')
 license=('GPL3')
 source=('idjc-x::git+https://github.com/radiocicletta/idjc-x.git')
-
 
 build()
 {
