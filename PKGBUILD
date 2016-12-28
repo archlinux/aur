@@ -1,13 +1,13 @@
 # Maintainer: Maikel Wever <maikelwever@gmail.com>
 pkgname=python-executor
-pkgver=14.0
+pkgver=15.0
 pkgrel=1
 pkgdesc="Programmer friendly subprocess wrapper"
 url="https://github.com/xolox/python-executor"
 license=('MIT')
 depends=('python' 'python-coloredlogs' 'python-fasteners' 'python-humanfriendly' 'python-property-manager' 'python-six')
 source=("https://github.com/xolox/${pkgname}/archive/${pkgver}.tar.gz")
-md5sums=('3aa7545e3b5ce07cd2ddad3d44f9ae31')
+md5sums=('d9562185402ba32935fc60199f86f9f4')
 arch=('any')
 
 package() {
