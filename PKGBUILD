@@ -25,4 +25,3 @@ package_python-dominate() {
 	cd "$srcdir/dominate-${pkgver}"
 	python setup.py install --root="$pkgdir/" --optimize=1
 }
-
