@@ -1,12 +1,12 @@
 # Maintainer: Jonian Guveli <https://github.com/jonian/>
 pkgname=devdocs-desktop
 pkgver=0.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="DevDocs desktop application in GTK3. Multiple API documentations in a fast, organized, and searchable interface."
 arch=("any")
 url="https://github.com/hardpixel/devdocs-desktop"
 license=("GPL")
-depends=("python" "gtk3" "webkitgtk" "libsoup")
+depends=("python" "webkitgtk")
 provides=("devdocs-desktop")
 source=("https://github.com/hardpixel/devdocs-desktop/archive/v"$pkgver".tar.gz")
 md5sums=("b156a7bc4a75e6a4c5cad34179c67ff2")
