@@ -1,0 +1,30 @@
+pkgbase = hackhands-bin
+	pkgdesc = An easy and convenient way to get notified and connect to requests on hackhands.com
+	pkgver = 1.4.11
+	pkgrel = 1
+	url = https://hackhands.com
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = bash-completion
+	depends = desktop-file-utils
+	depends = gconf
+	depends = gtk2
+	depends = gvfs
+	depends = hicolor-icon-theme
+	depends = libappindicator-gtk2
+	depends = libnotify
+	depends = libsystemd
+	depends = libxtst
+	depends = nss
+	depends = xdg-utils
+	optdepends = gnome-keyring
+	optdepends = libgnome-keyring
+	options = !strip
+	source_i686 = https://packagecloud.io/hackhands/desktop/packages/ubuntu/xenial/hackhands_1.4.11_i386.deb/download
+	md5sums_i686 = 3c67431b590758ff184c09191a4b6eb8
+	source_x86_64 = https://packagecloud.io/hackhands/desktop/packages/ubuntu/xenial/hackhands_1.4.11_amd64.deb/download
+	md5sums_x86_64 = 03ba9ab908eec8eac9d58886cfb6d2f1
+
+pkgname = hackhands-bin
+
