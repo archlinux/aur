@@ -4,8 +4,8 @@
 # Contributor: orbisvicis <gmail.com>
 
 pkgname=xmonad-contrib-git
-pkgver=v0.11.r150.g32f3fbd
-pkgrel=2
+pkgver=v0.12.r195.g8956684
+pkgrel=1
 pkgdesc="Add-ons for xmonad"
 arch=('i686' 'x86_64')
 url="http://xmonad.org/"
@@ -13,7 +13,7 @@ license=('BSD')
 depends=('ghc'
          'xmonad-git'
          'sh'
-         'haskell-x11>=1.6.1' 'haskell-x11<1.7'
+         'haskell-x11>=1.6.1' 'haskell-x11<1.8'
          'haskell-x11-xft>=0.2'
          'haskell-utf8-string'
          'haskell-random'
