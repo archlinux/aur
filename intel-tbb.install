@@ -3,7 +3,7 @@ post_install() {
 
   echo "-----------------------------------------------------------------------------------"
   echo "The dynamic links to the irml libs istalled with openmp are replaced with the" ;
-  echo " links to the irml libs contained in the package: intell-tbb" ;
+  echo " links to the irml libs contained in the package: intel-tbb" ;
   echo " If you want to use the openmp libs edit by hand the files:" ;
   echo " /etc/ld.so.conf.d/intel-openmp.conf"
   echo " /etc/ld.so.conf.d/intel-tbb.conf"
