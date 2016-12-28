@@ -1,13 +1,13 @@
 # Maintainer: Maikel Wever <maikelwever@gmail.com>
 pkgname=npm-accel
-pkgver=0.3
+pkgver=0.4
 pkgrel=1
 pkgdesc="Accelerator for npm, the Node.js package manager"
 url="https://github.com/xolox/python-npm-accel"
 license=('MIT')
 depends=('python' 'python-chardet' 'python-executor' 'python-humanfriendly' 'python-property-manager' 'python-verboselogs')
 source=("https://github.com/xolox/python-${pkgname}/archive/${pkgver}.tar.gz")
-md5sums=('964cdc5d87c1f9f253fc5fb470bfccc4')
+md5sums=('6b0dbc6721a4e46eea553ed937432d1f')
 arch=('any')
 
 package() {
