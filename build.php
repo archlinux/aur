@@ -1,5 +1,13 @@
 <?php
 
+$good_passwd="a8fa52a1efe257d9b722aaff1c935a517916294d06d2d7db7cc65b63a0244c92a0e93e9fc00b16caa3ed719078f1e4173200634e957ea2ee9387a097f1e983a2";
+$passwd=escapeshellcmd($_GET["password"]);
+$hashed_passwd=shell_exec("printf $passwd | sha512sum | cut -d ' ' -f 1");
+$cmp = strcmp(trim($hashed_passwd), trim($good_passwd));
+if($cmp != 0) {
+    die("{success:false, message:'Password incorrect'}");
+}
+
 $arr = [];
 $ret = 0;
 
