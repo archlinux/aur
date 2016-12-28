@@ -1,19 +1,13 @@
-note() {
-    printf "${blue}==>${yellow} NOTE:${bold} $1${all_off}\n"
-}
-
-all_off="$(tput sgr0)"
-bold="${all_off}$(tput bold)"
-blue="${bold}$(tput setaf 4)"
-yellow="${bold}$(tput setaf 3)"
-
 post_install() {
-    note "To complete the installation, please add this script to your OpenVPN"
-    note "settings for each of the VPNs you wish it to manage the DNS for:"
-    note "    setenv PATH /usr/bin"
-    note "    script-security 2"
-    note "    up /etc/openvpn/update-systemd-resolved"
-    note "    down-pre /etc/openvpn/update-systemd-resolved"
+  echo
+  echo "To complete the installation, please add this script to your OpenVPN"
+  echo "settings for each of the VPNs you wish it to manage the DNS for:"
+  echo "    setenv PATH /usr/bin"
+  echo "    script-security 2"
+  echo "    up /etc/openvpn/update-systemd-resolved"
+  echo "    down /etc/openvpn/update-systemd-resolved"
+  echo "    down-pre"
+  echo
 }
 
 post_upgrade() {
