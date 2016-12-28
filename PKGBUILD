@@ -13,7 +13,7 @@ depends=('libconfig' 'mosquitto' 'curl')
 source=("https://github.com/owntracks/recorder/archive/${pkgver}.tar.gz")
 md5sums=('1125aba5c62fa6e7358c20c5ac0d51ae')
 
-backup=(etc/defaults/ot-recorder)
+backup=(etc/default/ot-recorder)
 
 prepare() {
 	cd "${srcdir}/${_gitname}"
@@ -29,7 +29,7 @@ build() {
 }
 
 package() {
-	install -D -m644 "${srcdir}/recorder-${pkgver}/etc/ot-recorder.default" "${pkgdir}/etc/defaults/ot-recorder"
+	install -D -m644 "${srcdir}/recorder-${pkgver}/etc/ot-recorder.default" "${pkgdir}/etc/default/ot-recorder"
         install -D -m644 "${srcdir}/recorder-${pkgver}/etc/ot-recorder.service" "${pkgdir}/usr/lib/systemd/system/ot-recorder.service"
 
 	mkdir -p "${pkgdir}/var/spool/owntracks/recorder/store"
