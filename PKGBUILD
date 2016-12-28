@@ -1,7 +1,7 @@
 # Maintainer: David Runge <dave@sleepmap.de>
 pkgname=ssr
 pkgver=0.4.2
-pkgrel=2
+pkgrel=3
 pkgdesc="The SoundScape Renderer (SSR) is a tool for real-time spatial audio reproduction providing a variety of rendering algorithms, e.g. Wave Field Synthesis, Higher-Order Ambisonics and binaural techniques."
 arch=('i686' 'x86_64')
 url="http://spatialaudio.net/ssr/"
@@ -11,9 +11,15 @@ provides=('ssr')
 license=('GPL3')
 depends=('jack' 'libsndfile' 'fftw' 'libxml2' 'ecasound' 'qt4>=4.2.2')
 makedepends=('git' 'boost-libs>=1.35' 'help2man')
-source=("https://github.com/SoundScapeRenderer/${pkgname}/releases/download/${pkgver}/${pkgname}-${pkgver}.tar.gz")
-md5sums=('d49b746a6959a0d3771fde4de686a044')
+source=("https://github.com/SoundScapeRenderer/${pkgname}/releases/download/${pkgver}/${pkgname}-${pkgver}.tar.gz"
+        "ssr-qt4.patch")
+md5sums=('d49b746a6959a0d3771fde4de686a044'
+         '57f9c5f6432683ad8d231f56223a58ca')
 
+prepare() {
+  cd "$srcdir/${pkgname}-${pkgver}/"
+  patch -i "$srcdir/${pkgname}-qt4.patch"
+}
 
 build() {
   cd "$srcdir/${pkgname}-${pkgver}/"
