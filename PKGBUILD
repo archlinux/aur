@@ -4,13 +4,13 @@
 
 pkgname=godot
 pkgver=2.1.1
-pkgrel=2
+pkgrel=3
 pkgdesc="An advanced, feature packed, multi-platform 2D and 3D game engine"
 url="http://www.godotengine.org"
 license=('MIT')
 arch=('i686' 'x86_64')
 makedepends=('scons' 'clang')
-depends=('libxcursor' 'glu' 'libxinerama' 'freetype2' 'alsa-lib')
+depends=('libxcursor' 'glu' 'libxinerama' 'freetype2' 'alsa-lib' 'zlib')
 conflicts=("godot-git" "godot-pulse")
 _arch=''
 if test "$CARCH" == x86_64; then
@@ -37,7 +37,6 @@ build() {
         tools=yes \
         target=release_debug \
         use_llvm=yes \
-        builtin_zlib=yes \
         openssl=yes \
         colored=yes \
         pulseaudio=no bits=${_arch} -j $((`nproc`+1))
