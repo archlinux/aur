@@ -1,6 +1,6 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 pkgname=fzy-git
-pkgver=r251.d88d197
+pkgver=r259.db40206
 pkgrel=1
 pkgdesc="A fuzzy text selector menu for the terminal"
 arch=('i686' 'x86_64')
