@@ -1,16 +1,17 @@
 # Maintainer: Justin Dray <justin@dray.be>
+# Contributor: surefire@cryptomile.net
 
 pkgname=gnome-shell-extension-topicons-plus-git
 pkgver=18.r0.g05dd314
-pkgrel=1
+pkgrel=2
 pkgdesc="Shows legacy tray icons on top."
 arch=('any')
 url="https://extensions.gnome.org/extension/1031/topicons/"
 license=('GPL')
 depends=('gnome-shell')
 makedepends=('git')
-conflicts=('gnome-shell-extension-topicons')
-provides=('gnome-shell-extension-topicons')
+conflicts=('gnome-shell-extension-topicons-plus')
+provides=('gnome-shell-extension-topicons-plus')
 groups=('gnome-shell-extensions')
 source=("git+https://github.com/phocean/TopIcons.git")
 sha256sums=('SKIP')
