@@ -1,7 +1,8 @@
-# Maintainer: Andy Weidenbaum <archbaum@gmail.com>
+# Maintainer: Alexandre Jesus <adbjesus@gmail.com>
+# Contributor: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=luigi
-pkgver=2.2.0
+pkgver=2.4.0
 pkgrel=1
 pkgdesc="Workflow mgmgt + task scheduling + dependency resolution"
 arch=('any')
@@ -10,14 +11,16 @@ makedepends=('python-setuptools')
 optdepends=('python-mechanize: for debugging Hadoop jobs more easily')
 url="https://github.com/spotify/luigi"
 license=('Apache')
-options=(!emptydirs)
-source=(https://pypi.python.org/packages/ab/f2/487cc0a14227f92d18291ea85bed2acbe09e23b717f42626af13f8a91fbe/luigi-2.2.0.tar.gz)
-md5sums=('9e304df7d11dc54b5cc702ccd59f0012')
-sha256sums=('18cc4f424b4379158ccb765282aaa0e31b7bf46d0db855ede22c227cc315336c')
+source=(https://pypi.python.org/packages/6a/84/42bea7839bc6eee8c219775f6afe3e296a554985a0aa216fb6090478a3e5/luigi-2.4.0.tar.gz)
+md5sums=('76303fa7281ac0c6a95aa9ada13acc3e')
+sha256sums=('5c63d960c5219346acf29b925f5de7585427555a863b5f9e27fa19611f2d8382')
+
+build() {
+  cd "$srcdir/$pkgname-$pkgver"
+  python setup.py build
+}
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
-
-  msg2 'Installing...'
   python setup.py install --root="$pkgdir" --optimize=1
 }
