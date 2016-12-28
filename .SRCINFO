@@ -1,0 +1,20 @@
+pkgbase = st-neonwave-git
+	pkgdesc = Simple terminal with Xresources, scrollback, alpha support, CPMono font, and neonwave colorscheme
+	pkgver = r18.ca2114b
+	pkgrel = 1
+	url = https://github.com/DerVerruckteFuchs/st-bloated
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = ncurses
+	depends = libxft
+	depends = libxext
+	provides = st-neonwave-git
+	conflicts = st
+	conflicts = st-xresources-git
+	conflicts = st-bloated-git
+	source = git://github.com/DerVerruckteFuchs/st-bloated
+	md5sums = SKIP
+
+pkgname = st-neonwave-git
+
