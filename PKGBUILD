@@ -13,15 +13,11 @@ sha1sums=('6a17c98ec678c29ab4ec01824fb930849670b5d7')
 sha256sums=('a87f37018b6a2389c7fe3d25d65164b6b55a481fe2c9bd21b0711b7a34729cb4')
 
 package_python2-dominate() {
-	depends=('python2')
-
 	cd "$srcdir/dominate-${pkgver}"
 	python2 setup.py install --root="$pkgdir/" --optimize=1
 }
 
 package_python-dominate() {
-	depends=('python')
-
 	cd "$srcdir/dominate-${pkgver}"
 	python setup.py install --root="$pkgdir/" --optimize=1
 }

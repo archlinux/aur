@@ -13,8 +13,6 @@ pkgbase = python-dominate
 	sha256sums = a87f37018b6a2389c7fe3d25d65164b6b55a481fe2c9bd21b0711b7a34729cb4
 
 pkgname = python2-dominate
-	depends = python2
 
 pkgname = python-dominate
-	depends = python
 
