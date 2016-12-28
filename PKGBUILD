@@ -2,7 +2,7 @@
 pkgname=arrayfire-git
 pkgdesc="High performance software library for parallel computing with an easy-to-use API"
 url='http://arrayfire.com'
-pkgver=3.4.1
+pkgver=3.4.2
 arch=('i686' 'x86_64')
 pkgrel=1
 license=('BSD')
@@ -25,12 +25,14 @@ build() {
   git checkout v${pkgver}
   git submodule init
   git submodule update
+  git cherry-pick 13c484e10537b52bcd012e6850520659769cece6
 
   rm -rf build
   mkdir build && cd build
 
   #Autodetects available backends
   CC=/usr/bin/gcc-5\
+  CXX=/usr/bin/g++-5\
   CFLAGS="-D__STRICT_ANSI__"\
   CXXFLAGS="-D__STRICT_ANSI__"\
   cmake .. \
