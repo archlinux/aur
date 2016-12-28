@@ -1,7 +1,6 @@
 # Maintainer: Michael Schubert <mschu.dev@gmail>
-
 pkgname=scikits-bootstrap-git
-pkgver=r34.1d785c7
+pkgver=r38.71f83a2
 pkgrel=1
 pkgdesc="Bootstrap confidence interval estimation"
 arch=('any')
@@ -21,8 +20,7 @@ pkgver() {
   )
 }
 
-build()
-{
+build() {
   cd "$srcdir/$pkgname"
   python2 setup.py build
 }
