@@ -1,4 +1,4 @@
-PKGVER=$(shell git -C larryshell rev-parse --short HEAD)
+PKGVER="$(shell git -C larryshell rev-parse --short HEAD)$(shell git rev-parse --short HEAD)"
 REL=1
 VER="$(PKGVER)-$(REL)"
 
