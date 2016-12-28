@@ -1,7 +1,7 @@
 pkgbase = libmateweather-dev
 	pkgdesc = Provides access to weather information from the Internet (GTK3 version)
 	pkgver = 1.17.0
-	pkgrel = 1
+	pkgrel = 5
 	url = http://mate-desktop.org
 	arch = i686
 	arch = x86_64
