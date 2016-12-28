@@ -1,7 +1,6 @@
 #!/bin/bash
 unset WINEPREFIX
-export WINEPREFIX="$HOME"/.gog-heroes-of-might-and-magic-3-complete-edition 
-export WINEDEBUG=-all
+export WINEPREFIX="$HOME"/.local/share/gog-heroes-of-might-and-magic-3-complete-edition 
 if [ ! -d "$WINEPREFIX" ]
 then
   mkdir -p "$WINEPREFIX"

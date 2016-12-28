@@ -1,8 +1,8 @@
 pkgname=gog-heroes-of-might-and-magic-3-complete-edition
 pkgver=2.0.1.17
-pkgrel=5
+pkgrel=6
 _gamename=${pkgname#gog-}
-_gamename_=${_gamename//-/_}
+_gamename=${_gamename//-/_}
 _unpatchedver=2.0.0.16
 _gamehdpatchname="HoMM3%20HD%20Latest.exe"
 
@@ -12,19 +12,19 @@ url="https://www.gog.com/game/heroes_of_might_and_magic_3_complete_edition"
 license=("custom")
 groups=("games")
 
-source=("setup_homm3_complete_${_unpatchedver}.exe::gogdownloader://${_gamename_}/en1installer1"
-        "patch_${_gamename_%_edition}_${pkgver}.exe::gogdownloader://${_gamename_}/en1patch1"
+source=("setup_homm3_complete_${_unpatchedver}.exe::gogdownloader://${_gamename}/en1installer1"
+        "patch_${_gamename%_edition}_${pkgver}.exe::gogdownloader://${_gamename}/en1patch1"
 #        "http://h3hota.com/HD/HoMM3%20HD%20Latest.exe"
-        "${_gamename}"
-        "${_gamename}-map-editor"
-        "${_gamename}-campaign-editor"
+        "${pkgname}"
+        "${pkgname}-campaign-editor"
+        "${pkgname}-map-editor"
         "${pkgname}.install")
 sha256sums=('d90bed0fd7e5338045f5f9983fdc7390297025ac1accdbc2f9bbec217a066468'
             '9c6ca90dacc621f0bb333a3f5fb6df8b06af2afee571beea14782c989177ff5a'
 #            'SKIP'
-            '23dae6e2e75384498e67f8b0c681b5a10f28f950053582815e27ac25684a6d68'
-            'bc5f57dd8fe1c4cb9bc4f144eea686a61ccc19e5020e446796f8f4c79014c8be'
-            'f7b58168872ce04bfad2ef151632762d29735f3e165bc5c4cf887df68de62ed2'
+            'bb1cec5ef9de917ae69bb04d661d843986b038a277871557387cd66c7292604d'
+            '2165809683969955bca129f1960efa5111aaa703ac891df29b809f4ce5b30eaa'
+            '5265ae79418a0c376d2f98cc52c5fc2ed34af802080e00c229754efe9f8e91d6'
             '6c6d7f19bcca181ee5c1c51c9f15e8d12d95e1feabcd676d1a41fc377f050d37')
 depends=(wine)
 
@@ -44,7 +44,7 @@ build() {
   # Unfortunately, /verysilent doesn't prevent the installation is successful
   # messagebox from showing up and blocking. Manual intervention is required
   msg "Installing patches (don't launch game yet)"
-  wine "${srcdir}"/patch_${_gamename_%_edition}_${pkgver}.exe /verysilent
+  wine "${srcdir}"/patch_${_gamename%_edition}_${pkgver}.exe /verysilent
 #  msg "Installing HD patch"
 #  wine "${srcdir}/${_gamehdpatchname}" /verysilent
   msg "Extracting HKEY_LOCAL_MACHINE registry"
@@ -67,31 +67,31 @@ package() {
   rm -rf ${pkgdir}/opt/gog/${pkgname#gog-}/unins*
   rm -rf ${pkgdir}/opt/gog/${pkgname#gog-}/*.lnk
   # Give group write access to Data (to enable h3mmaped.exe)
-  chown :games ${pkgdir}/opt/gog/${_gamename#gog-}/Data/*
-  chmod g+w ${pkgdir}/opt/gog/${_gamename#gog-}/Data/*
+  chown :games ${pkgdir}/opt/gog/${pkgname#gog-}/Data/*
+  chmod g+w ${pkgdir}/opt/gog/${pkgname#gog-}/Data/*
   # Give group write access to HD3 launcher config
   #for conf in _HD3_Data/HD3_Launcher.ini _HD3_Data/Settings/sod.ini
   #do
-  #  touch ${pkgdir}/opt/gog/${_gamename#gog-}/${conf}
-  #  chown :games ${pkgdir}/opt/gog/${_gamename#gog-}/${conf}
-  #  chmod g+w ${pkgdir}/opt/gog/${_gamename#gog-}/${conf}
+  #  touch ${pkgdir}/opt/gog/${_pkgname#gog-}/${conf}
+  #  chown :games ${pkgdir}/opt/gog/${_pkgname#gog-}/${conf}
+  #  chmod g+w ${pkgdir}/opt/gog/${_pkgname#gog-}/${conf}
   #done
   
   # Install .desktop file and icons
-  install -Dm644 "${srcdir}/tmp/local/applications/wine/Programs/GOG.com/Heroes of Might and Magic 3 Complete/Heroes of Might and Magic 3 Complete.desktop" ${pkgdir}/usr/share/applications/${_gamename}.desktop
-  install -Dm644 "${srcdir}/tmp/local/applications/wine/Programs/GOG.com/Heroes of Might and Magic 3 Complete/Heroes 3 Map Editor.desktop"                  ${pkgdir}/usr/share/applications/${_gamename}-map-editor.desktop
-  install -Dm644 "${srcdir}/tmp/local/applications/wine/Programs/GOG.com/Heroes of Might and Magic 3 Complete/Heroes 3 Campaign Editor.desktop"             ${pkgdir}/usr/share/applications/${_gamename}-campaign-editor.desktop
+  install -Dm644 "${srcdir}/tmp/local/applications/wine/Programs/GOG.com/Heroes of Might and Magic 3 Complete/Heroes of Might and Magic 3 Complete.desktop" ${pkgdir}/usr/share/applications/${pkgname}.desktop
+  install -Dm644 "${srcdir}/tmp/local/applications/wine/Programs/GOG.com/Heroes of Might and Magic 3 Complete/Heroes 3 Map Editor.desktop"                  ${pkgdir}/usr/share/applications/${pkgname}-map-editor.desktop
+  install -Dm644 "${srcdir}/tmp/local/applications/wine/Programs/GOG.com/Heroes of Might and Magic 3 Complete/Heroes 3 Campaign Editor.desktop"             ${pkgdir}/usr/share/applications/${pkgname}-campaign-editor.desktop
   for res in 16 32 48 256
   do
-    install -Dm644 ${srcdir}/tmp/local/icons/hicolor/${res}x${res}/apps/3679_gfw_high.0.png ${pkgdir}/usr/share/icons/hicolor/${res}x${res}/apps/${_gamename}.png
+    install -Dm644 ${srcdir}/tmp/local/icons/hicolor/${res}x${res}/apps/3679_gfw_high.0.png ${pkgdir}/usr/share/icons/hicolor/${res}x${res}/apps/${pkgname}.png
   done
   for res in 16 32 48 64
   do
-    install -Dm644 ${srcdir}/tmp/local/icons/hicolor/${res}x${res}/apps/0500_h3maped.0.png ${pkgdir}/usr/share/icons/hicolor/${res}x${res}/apps/${_gamename}-map-editor.png
-    install -Dm644 ${srcdir}/tmp/local/icons/hicolor/${res}x${res}/apps/472F_h3ccmped.0.png ${pkgdir}/usr/share/icons/hicolor/${res}x${res}/apps/${_gamename}-campaign-editor.png
+    install -Dm644 ${srcdir}/tmp/local/icons/hicolor/${res}x${res}/apps/0500_h3maped.0.png ${pkgdir}/usr/share/icons/hicolor/${res}x${res}/apps/${pkgname}-map-editor.png
+    install -Dm644 ${srcdir}/tmp/local/icons/hicolor/${res}x${res}/apps/472F_h3ccmped.0.png ${pkgdir}/usr/share/icons/hicolor/${res}x${res}/apps/${pkgname}-campaign-editor.png
   done
   # Edit out wine jumbled entries from .desktop file
-  for file in ${_gamename} ${_gamename}-map-editor ${_gamename}-campaign-editor
+  for file in ${pkgname} ${pkgname}-map-editor ${pkgname}-campaign-editor
   do
     sed -i "/^Path=\|^Version=\|^Terminal=\|^Categories/d" ${pkgdir}/usr/share/applications/${file}.desktop
     sed -i "s,^\(Exec=\|Icon=\).*,\1${file}," ${pkgdir}/usr/share/applications/${file}.desktop
@@ -100,7 +100,7 @@ package() {
   
   # Install startup scripts
   install -m755 -d ${pkgdir}/usr/bin
-  for file in ${_gamename} ${_gamename}-map-editor ${_gamename}-campaign-editor
+  for file in ${pkgname} ${pkgname}-map-editor ${pkgname}-campaign-editor
   do
     install -m755 ${srcdir}/${file} ${pkgdir}/usr/bin
   done
