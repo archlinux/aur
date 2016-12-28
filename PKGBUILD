@@ -2,7 +2,7 @@
 
 pkgname=vrep
 pkgver=3_3_2
-pkgrel=0.1
+pkgrel=3
 epoch=1
 pkgdesc="V-REP is the Swiss army knife among robot simulators.
 

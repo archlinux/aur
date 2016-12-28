@@ -1,7 +1,7 @@
 pkgbase = vrep
 	pkgdesc = V-REP is the Swiss army knife among robot simulators. V-REP is used for fast algorithm development, factory automation simulations, fast prototyping and verification, robotics related education, remote monitoring, safety double-checking, etc.
 	pkgver = 3_3_2
-	pkgrel = 0.1
+	pkgrel = 3
 	epoch = 1
 	url = http://www.coppeliarobotics.com/index.html
 	arch = i686
