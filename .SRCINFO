@@ -1,0 +1,27 @@
+pkgbase = veles-bin
+	pkgdesc = Open source tool for binary data analysis
+	pkgver = 2016.12.0
+	pkgrel = 1
+	url = https://codisec.com/veles
+	arch = x86_64
+	license = APLv2
+	makedepends = unzip
+	depends = qt5-base
+	depends = libpng
+	depends = icu
+	depends = pcre
+	provides = veles
+	conflicts = veles
+	conflicts = veles-git
+	options = strip
+	source = veles.zip::https://git.theaifam5.eu/TheAifam5/Veles/builds/artifacts/master/download?job=build
+	source = https://git.theaifam5.eu/TheAifam5/Veles/blob/master/LICENSE
+	source = Veles.desktop
+	source = veles.png
+	md5sums = SKIP
+	md5sums = 3b83ef96387f14655fc854ddc3c6bd57
+	md5sums = 4cdd0e07ec8d038ae249632e8bcab25b
+	md5sums = 22678e3f27959aff238b19b31f1e0898
+
+pkgname = veles-bin
+
