@@ -1,14 +1,14 @@
 pkgbase=python-restructuredtext_lint
 pkgname=(python-restructuredtext_lint python2-restructuredtext_lint)
-_pyname=restructuredtext_lint
-pkgver=0.14.2
+_pyname=restructuredtext-lint
+pkgver=0.17.2
 pkgrel=1
 arch=(any)
 pkgdesc="reStructuredText linter"
 url='https://pypi.python.org/pypi/restructuredtext_lint'
 license=('Public Domain')
 makedepends=(python-setuptools python2-setuptools)
-source=("https://pypi.python.org/packages/source/r/${_pyname}/${_pyname}-${pkgver}.tar.gz")
+source=("https://github.com/twolfson/restructuredtext-lint/archive/${pkgver}.tar.gz")
 
 build() {
   cp -r $_pyname-$pkgver $_pyname-$pkgver-py2
@@ -34,4 +34,4 @@ package_python2-restructuredtext_lint() {
   install -Dm644 UNLICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
 
-sha256sums=('486d08db7c5a58ad76df2919eba5c0c0f603ec4adfc906ef9b1b7b733a4f117f')
+sha256sums=('69e88030881ded8d9e74040cd2906c48f1c6e38c19846a4bb6074d4aab1f982f')
