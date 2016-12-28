@@ -2,8 +2,8 @@
 # adopted from https://github.com/KaOSx/apps/tree/master/gcompris
 
 pkgname=gcompris-qt
-pkgver=0.61
-pkgrel=2
+pkgver=0.70
+pkgrel=1
 pkgdesc="High quality educational software suite comprising of numerous activities for children aged 2 to 10. (Qt version)"
 arch=('x86_64' 'i686')
 url="http://gcompris.net/"
@@ -15,7 +15,7 @@ source=("http://gcompris.net/download/qt/src/gcompris-qt-${pkgver}.tar.xz"
         'gcompris-qt.desktop'
         'gcompris-qt.png'
         'https://github.com/KDE/gcompris/commit/134db8042f25b0446523653d9a8829916eda3006.diff')
-md5sums=('b0590750d47540f73551c56d7c66c8f4'
+md5sums=('7ff70da4546f2db54bdc02cd76e4e4a1'
          '4c64dcff4d8d4374aff551dd3f0e3441'
          '7c7cee3479f1a47376db800b2bc37017'
          '6afef263379444064f2638fe20780098')
