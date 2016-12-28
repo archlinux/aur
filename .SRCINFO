@@ -1,6 +1,6 @@
 pkgbase = luvi-bin
 	pkgdesc = A project in-between luv and luvit
-	pkgver = 2.7.5
+	pkgver = 2.7.6
 	pkgrel = 1
 	url = https://github.com/luvit/luvi
 	arch = i686
@@ -9,8 +9,10 @@ pkgbase = luvi-bin
 	depends = gcc-libs
 	provides = luvi
 	conflicts = luvi
-	source = https://github.com/luvit/luvi/releases/download/v2.7.5/luvi-regular-Linux_x86_64
-	sha256sums = SKIP
+	source_i686 = luvi-regular-2.7.6-i686::https://github.com/luvit/luvi/releases/download/v2.7.6/luvi-regular-Linux_i686
+	md5sums_i686 = 916a676dff1235976b1d0cd0aa33d497
+	source_x86_64 = luvi-regular-2.7.6-x86_64::https://github.com/luvit/luvi/releases/download/v2.7.6/luvi-regular-Linux_x86_64
+	md5sums_x86_64 = 009d71ec899312f719ac63f2a27b4ffd
 
 pkgname = luvi-bin
 
