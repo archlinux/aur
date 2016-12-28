@@ -2,6 +2,7 @@
 # Contributor: kurych
 # Contributor: redfish
 # Contributor: atommixz
+# Contributor: denn
 
 pkgname=i2pd
 pkgver=2.11.0
