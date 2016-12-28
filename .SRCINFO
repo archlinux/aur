@@ -1,0 +1,18 @@
+pkgbase = waf-gnome-shell-extension-git
+	pkgdesc = A waf tool to install gnome-shell extensions
+	pkgver = r0
+	pkgrel = 1
+	url = https://github.com/dffischer/waf-gnome-shell-extension
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = waf
+	depends = gnome-shell
+	provides = waf-gnome-shell-extension=r42.0066a24
+	conflicts = waf-gnome-shell-extension
+	source = waf-gnome-shell-extension::git+file:///tmp/waf-gnome-shell-extension
+	md5sums = SKIP
+	sha256sums = SKIP
+
+pkgname = waf-gnome-shell-extension-git
+
