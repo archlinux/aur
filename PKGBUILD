@@ -1,13 +1,13 @@
 pkgname=kalliope
-pkgver=0.3.0
+pkgver=0.4.0
 pkgrel=1
 arch=('i686' 'x86_64')
 pkgdesc="Modular always-on voice controlled personal assistant designed for home automation"
-depends=(portaudio python2-speechrecognition python2-markupsafe python2-pyaudio python2-pythondialog python2-jinja  python2-cffi python2-flask-restful python2-wikipedia python2-pygmail python2-twitter python2-ipaddress python2-wakeonlan python2-apscheduler python2-flask-testing python2-httpretty python2-requests svox-pico-bin mplayer python2-feedparser python2-mock)
+depends=(portaudio python2-speechrecognition python2-markupsafe python2-pyaudio python2-pythondialog python2-jinja  python2-cffi python2-flask-restful python2-ipaddress python2-apscheduler python2-flask-testing python2-httpretty python2-requests svox-pico-bin mplayer python2-feedparser python2-mock)
 license=('MIT')
 url="https://github.com/kalliope-project/kalliope"
 source=("https://github.com/kalliope-project/kalliope/archive/v${pkgver}.tar.gz")
-sha256sums=('7ddea6e381917f4f8c9a9984d393c997dbc8345dd58a377f63337cb0739416dc')
+sha256sums=('84bbe6ac62a0f9cd057d531ac076061d34727bda23b267a961aa1404c2675b52')
 
 prepare() {
   cd "$srcdir/kalliope-${pkgver}"
