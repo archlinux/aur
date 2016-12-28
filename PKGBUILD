@@ -19,11 +19,11 @@ pkgver() {
 
 package() {
   cd "ccsh"
-  
-  cmake . -DWITH_LIB=OFF -DWITH_TEST=OFF -DWITH_CLING=ON 
+
+  cmake . -DWITH_LIB=OFF -DWITH_TEST=OFF -DWITH_CLING=ON
   make
-  
+
   install -Dm755 "$srcdir/ccsh/ccsh" "$pkgdir/usr/bin/ccsh"
-  install -Dm644 "$srcdir/ccsh/ui/clingrc.hpp" "$pkgdir/etc/ccsh/clingrc.hpp"
+  install -Dm644 "$srcdir/ccsh/ui/ccshrc.hpp" "$pkgdir/etc/ccsh/ccshrc.hpp"
 }
 
