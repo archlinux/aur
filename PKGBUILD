@@ -1,6 +1,6 @@
 # Maintainer: Marcel Schneider <marcel@coopmasters.de>
 pkgname=csv2xls
-pkgver=0.3.4
+pkgver=0.3.5
 pkgrel=1
 pkgdesc="a command line utility which converts csv files into one (or more if splitted) Excel(TM) files."
 arch=('i686' 'x86_64')
@@ -19,7 +19,7 @@ install=
 changelog=
 source=(https://github.com/ferkulat/$pkgname/releases/download/$pkgver/$pkgname-$pkgver.tar.bz2)
 noextract=()
-md5sums=('608dbb4b9214507afc39159ec6b0901d')
+md5sums=('d116f4a9755f48bce46673cc5ff0bc78')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
@@ -34,3 +34,4 @@ package() {
 
   make DESTDIR="$pkgdir/" install
 }
+
