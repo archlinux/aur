@@ -1,6 +1,6 @@
 # Maintainer: Brad Kennedy <bk@co60.ca>
 pkgname=bunnysay-git 
-pkgver=v1.0.r1.3c98d2b
+pkgver=v1.0.r6.a8fce4b
 pkgrel=1
 pkgdesc='Fullwidth bunny signs for terminal and Twitter/webforms'
 arch=('i686' 'x86_64')
@@ -8,7 +8,7 @@ url='https://github.com/co60ca/stella'
 license=('GPL3')
 groups=()
 depends=()
-makedepends=('cmake' 'git') 
+makedepends=('git') 
 provides=()
 conflicts=()
 replaces=()
@@ -31,6 +31,7 @@ build() {
 
 package() {
 	cd "bunnysay"
-	make DESTDIR="${pkgdir}" install
+	mkdir -p "$pkgdir/usr/bin"
+	make prefix="$pkgdir/usr" install
 	install -Dm644 LICENSE "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
 }
