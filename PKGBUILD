@@ -2,7 +2,7 @@
 # Maintainer: Zack Baldwin <zack@zackb.com>
 
 pkgname=plexrequests.net
-pkgver=1.10.0
+pkgver=1.10.1
 pkgrel=1
 pkgdesc="Simple automated way for users to request new content for Plex"
 arch=('any')
@@ -15,7 +15,7 @@ source=("https://github.com/tidusjar/PlexRequests.Net/releases/download/v${pkgve
         "${pkgname}.service"
         "${pkgname}.sysusers")
 
-sha256sums=('d1c0e7c06c39f73d42fb71b2acbef52afc0720a82cdef8080eb051191f7da692'
+sha256sums=('b4d71811df8ae1feab8c68e56d70bbdf7decba4a2ae5ce799df59c4946167d37'
             'aca0066e5a42270bab07bb0fb1fce305aedc9681c3c1d2ecdec21db067966ac9'
             '5b999550de2a86a6033f12a9455d164957fd83a6013e0d88f61f98dbe3a88763')
 
