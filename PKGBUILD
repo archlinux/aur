@@ -33,7 +33,7 @@ package() {
 
   make DESTDIR="${pkgdir}" install
 
-  install -Dm644 modules-load-thermald.conf "${pkgdir}"/usr/lib/modules-load.d/thermald.conf
+  install -Dm644 "${srcdir}"/modules-load-thermald.conf "${pkgdir}"/usr/lib/modules-load.d/thermald.conf
 
   # Remove Upstart related files
   rm -r "${pkgdir}/etc/init"
