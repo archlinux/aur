@@ -6,13 +6,14 @@
 pkgname=pd-git
 _name=pd
 pkgver=0.47.1.r6.gbd939d1
-pkgrel=1
+pkgrel=2
 pkgdesc="The Pure Data real-time music and multimedia environment"
 arch=('i686' 'x86_64')
 url="http://msp.ucsd.edu/software.html"
 license=('custom:BSD')
 depends=('jack' 'tk' 'fftw')
-provides=('puredata')
+provides=('pd')
+conflicts=('pd')
 options=('!strip' '!buildflags')
 source=("${_name}::git://git.code.sf.net/p/pure-data/pure-data"
         "${_name}.desktop")
