@@ -17,13 +17,13 @@ makedepends=('')
 #optdepends=('')
 options=(!strip)
 install=""
-source=("http://coppeliarobotics.com/V-REP_PRO_EDU_V${pkgver}_64_Linux.tar.gz"
+source=("http://coppeliarobotics.com/files/V-REP_PRO_EDU_V${pkgver}_64_Linux.tar.gz"
         "vrep.sh")
-source_i686=("http://coppeliarobotics.com/V-REP_PRO_EDU_V${pkgver}_Linux.tar.gz"
+source_i686=("http://coppeliarobotics.com/files/V-REP_PRO_EDU_V${pkgver}_Linux.tar.gz"
         "vrep.sh")
-md5sums=('48a3688f940e25f542fed01525023fb1'
+md5sums=('49952386d7e67a9c83b5aaf63f4de597'
          'a5f75fcd3c08b1a8c93f74997006e5d5')
-md5sums_i686=('aadd01183e4f5ac819aacd996d5e5d8d'
+md5sums_i686=('af3ca287b8ec4ad935fd16e725d414d9'
               'a5f75fcd3c08b1a8c93f74997006e5d5')
 prepare()
 {
