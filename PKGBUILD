@@ -1,0 +1,30 @@
+# Maintainer: Patrick josé Pereira  <gmail.com@patrickelectric>
+pkgname=gcode3d-git
+confilicts=('gcode3d')
+pkgver=afc5014
+pkgrel=1
+pkgdesc="GCode Visualizer"
+arch=('i686' 'x86_64')
+url="https://github.com/patrickelectric/Gcode3D"
+license=('GPL2')
+buildDepends=('git' 'cmake' 'extra-cmake-modules')
+depends=('qt5-base' 'qt5-declarative')
+source=('git://github.com/patrickelectric/Gcode3D.git')
+md5sums=(SKIP)
+
+pkgver() {
+  cd "Gcode3D"
+  git log --pretty=format:'%h' -n 1
+}
+
+build() {
+  cd "Gcode3D"
+  cmake -DCMAKE_INSTALL_PREFIX=$(qtpaths --install-prefix) -DCMAKE_BUILD_TYPE=Release CMakeLists.txt
+  make
+  make install
+}
+
+package(){
+  cd "GCode3D"
+  make install
+}
