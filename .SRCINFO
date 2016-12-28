@@ -1,5 +1,5 @@
 pkgbase = javafx-devel-samples
-	pkgdesc = Demos and samples for Oracle JavaFX 9
+	pkgdesc = Demos and samples for Oracle JavaFX 9 Development Kit Snapshot
 	pkgver = 9b149
 	pkgrel = 1
 	url = https://jdk9.java.net/
