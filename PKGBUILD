@@ -1,12 +1,12 @@
 # Maintainer: VirtualTam <virtualtam@flibidi.net>
 pkgname=xtrkcad-hg
-pkgver=r752.841ee07a146c
+pkgver=r810.0455902c169f
 pkgrel=1
 pkgdesc="CAD program for designing model railroad layouts."
 url="http://www.xtrkcad.org/"
 arch=('x86_64' 'i686')
 license=('GPL2')
-depends=('gtk2' 'webkitgtk2')
+depends=('webkitgtk2')
 makedepends=('cmake' 'mercurial' 'gettext')
 conflicts=('xtrkcad')
 provides=('xtrkcad')
