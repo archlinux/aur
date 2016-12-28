@@ -1,5 +1,4 @@
 # Maintainer: Michael Schubert <mschu.dev at gmail>
-
 pkgname=autodock-vina
 pkgver=1.1.2
 _pkgver=${pkgver//./_}
@@ -30,4 +29,3 @@ package() {
   install -Dm755 vina "$pkgdir/usr/bin/vina"
   install -Dm755 vina_split "$pkgdir/usr/bin/vina_split"
 }
-
