@@ -1,0 +1,31 @@
+pkgbase = numix-icon-theme-pack
+	pkgdesc = Numix project Icon Themes - Updated with Numix Core
+	pkgver = 00000000
+	pkgrel = 1
+	url = http://numixproject.org/
+	arch = any
+	license = GPL3
+	makedepends = git
+	makedepends = python-cairo
+	provides = numix-square-icon-theme
+	provides = numix-square-light-icon-theme
+	provides = numix-circle-icon-theme
+	provides = numix-circle-light-icon-theme
+	provides = numix-icon-theme
+	conflicts = numix-square-icon-theme
+	conflicts = numix-square-light-icon-theme
+	conflicts = numix-circle-icon-theme
+	conflicts = numix-circle-light-icon-theme
+	conflicts = numix-icon-theme
+	options = !strip
+	source = git+https://github.com/numixproject/$pkgsquare.git
+	source = git+https://github.com/numixproject/$pkgcircle.git
+	source = git+https://github.com/numixproject/$pkgdefault.git
+	source = git+https://github.com/numixproject/$pkgcore.git
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = numix-icon-theme-pack
+
