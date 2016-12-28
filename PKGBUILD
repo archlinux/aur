@@ -14,7 +14,7 @@ source=('git://github.com/DerVerruckteFuchs/st-zenburn')
 md5sums=('SKIP')
 
 pkgver() {
-  cd st-bloated
+  cd st-zenburn
   printf 'r%s.%s' "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
