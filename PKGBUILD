@@ -4,7 +4,7 @@
 # Contributor: Olivier Biesmans <olivier at biesmans dot fr>
 
 pkgname=mitmproxy
-pkgver=1.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="SSL-capable man-in-the-middle HTTP proxy"
 arch=('any')
@@ -22,15 +22,11 @@ checkdepends=('python-beautifulsoup4' 'python-mock' 'python-pytest-runner' 'pyth
 provides=('pathod')
 conflicts=('pathod')
 replaces=('pathod')
-source=("git+https://github.com/mitmproxy/mitmproxy.git#tag=v$pkgver"
-        python3.6.patch)
-sha256sums=('SKIP'
-            'b34a7554198a53a0313c645aae0204e894a50ff0491a67d1f59c86443738b5a2')
+source=("git+https://github.com/mitmproxy/mitmproxy.git#tag=v$pkgver")
+sha256sums=('SKIP')
 
 prepare() {
   cd mitmproxy
-
-  patch -p1 -i ../python3.6.patch
 
   # Let's remove all the upper bounds, use system certificate store and ssl.match_hostname
   sed -e '/certifi/d' \
