@@ -3,7 +3,7 @@
 # Contributor: Ionut Biru <ibiru@archlinux.org>
 
 pkgname=virtualbox-headless
-pkgver=5.1.10
+pkgver=5.1.12
 pkgrel=1
 pkgdesc='Powerful x86 virtualization for enterprise as well as home use. Headless build (no GUI, no Java).'
 arch=('i686' 'x86_64')
@@ -37,7 +37,7 @@ source=("http://download.virtualbox.org/virtualbox/$pkgver/VirtualBox-$pkgver.ta
         '007-python2-path.patch'
         '008-no-vboxvideo.patch'
         )
-md5sums=('889d90a7d8119a6bcc699be258ca4a96'
+md5sums=('58fd51b90358ac42811e044988d53438'
          '984412a63aa9c07ddc3cfd970381d5df'
          '6e2722bfd7013c1b0174382626ac1b8d'
          'ed1341881437455d9735875ddf455fbe'
