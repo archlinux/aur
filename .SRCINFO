@@ -14,7 +14,7 @@ pkgbase = st-neonwave-git
 	conflicts = st-xresources-git
 	conflicts = st-bloated-git
 	conflicts = st-zenburn-git
-	source = git://github.com/DerVerruckteFuchs/st-bloated
+	source = git://github.com/DerVerruckteFuchs/st-neonwave
 	md5sums = SKIP
 
 pkgname = st-neonwave-git

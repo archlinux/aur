@@ -10,7 +10,7 @@ depends=('libxft' 'libxext')
 makedepends=('ncurses')
 provides=('st-neonwave-git')
 conflicts=('st' 'st-xresources-git' 'st-bloated-git' 'st-zenburn-git')
-source=('git://github.com/DerVerruckteFuchs/st-bloated')
+source=('git://github.com/DerVerruckteFuchs/st-neonwave')
 md5sums=('SKIP')
 
 pkgver() {
