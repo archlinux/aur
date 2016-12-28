@@ -2,7 +2,7 @@
 # Maintainer: Paul Gideon Dann <pdgiddie_at_gmail.com>
 
 pkgname=poppler-qt-lcd
-pkgver=0.49.0
+pkgver=0.50.0
 pkgrel=1
 pkgdesc="Poppler Qt bindings, with patches to allow subpixel rendering via Cairo"
 license=('GPL')
@@ -17,11 +17,11 @@ source=(http://poppler.freedesktop.org/poppler-${pkgver}.tar.xz
         0002-Setting-default-Qt4-backend-to-Cairo.patch
         0003-Apply-subpixel-rendering-in-Cairo-Backend.patch
         0004-Don-t-build-the-main-poppler-library.patch)
-md5sums=('9e057ed8eee1f9979fa75d8f044783b8'
-         '2dced22cd5ca3b0432aeb643a20c5d98'
-         'c89bbfba7d89b88c3120ff9f6b089ea9'
-         '86be3ae0b8073ad315ccb5f65cb5d519'
-         '3a767dda20553fad7fec9d3b907784aa')
+md5sums=('1a4c0cd873bddd8f266b85ab8d799962'
+         '2d6a6ab3aa838ecb0f8a3816468908b6'
+         '981845704a7e12e5fecdb532db9cdf60'
+         '9f04452d2c6cb204965234794f8355b0'
+         'b451021512ee08f8defa973ee59498f0')
 
 build() {
   cd "${srcdir}/poppler-${pkgver}"
