@@ -3,8 +3,8 @@
 # Contributor: Jesus Jerez <jhuss@archlinux.org.ve>
 
 pkgname=eclipse-platform
-pkgver=4.6.1
-_pkgbuild=201609071200
+pkgver=4.6.2
+_pkgbuild=201611241400
 pkgrel=1
 pkgdesc="A minimal installation suitable for complete per-user customization with the built-in Eclipse package manager"
 url="http://www.eclipse.org"
@@ -23,13 +23,13 @@ source=(
 	"eclipse.desktop"
 )
 
-md5sums=('f7d61d17a9d96939a7795edac868d801'
+md5sums=('0ad1c0185450e1f719a5a2802bf40703'
          '66757230837fdebabb8ce91eb4fccc80'
          '6978e306347d49393e7ac833ba47c4ac')
 
 if [ "$CARCH" = "x86_64" ]; then
 	source[0]=${source/linux-gtk/linux-gtk-x86_64}
-	md5sums[0]='85af8ea1a2157b98bf4f4642e0b2e131'
+	md5sums[0]='d919f449465a80e2ee0eb93539270604'
 fi
 
 package() {
