@@ -21,7 +21,7 @@ pkgver() {
 prepare() {
   cd st-zenburn
   sed -i '/\@tic /d' Makefile
-  patch -p1 < ./26px-font.patch
+  patch -p0 < ./26px-font.patch
 }
 
 build() {
