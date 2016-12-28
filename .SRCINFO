@@ -1,0 +1,32 @@
+pkgbase = conky-cairo
+	pkgdesc = conky - built for nvidia n (tolua++_5.3 in AUR) - See this PKGBUILD source - Just change one variable to build the git version - defaults to release version.
+	pkgver = 1.10.6
+	pkgrel = 1
+	url = https://github.com/brndnmtthws/conky
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	license = BSD
+	makedepends = tolua++_5.3
+	makedepends = cmake
+	depends = alsa-lib
+	depends = libxml2
+	depends = curl
+	depends = cairo
+	depends = wireless_tools
+	depends = libxft
+	depends = librsvg
+	depends = glib2
+	depends = libxdamage
+	depends = imlib2
+	depends = lua
+	depends = libxnvctrl
+	provides = conky
+	conflicts = conky
+	replaces = torsmo
+	replaces = conky
+	source = https://github.com/brndnmtthws/conky/archive/v1.10.6.tar.gz
+	md5sums = bcd9e0ff7304e14f07aea53efa73998f
+
+pkgname = conky-cairo
+
