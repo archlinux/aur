@@ -1,4 +1,5 @@
 pkgbase = seagate-leds-git
+	pkgdesc = Utility to control activity and capacity LEDs on some external Seagate and Maxtor hard disk drives.
 	pkgver = r10.e153ac7
 	pkgrel = 1
 	arch = i686
