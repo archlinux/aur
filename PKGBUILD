@@ -9,7 +9,6 @@ pkgdesc="Workflow mgmgt + task scheduling + dependency resolution"
 arch=('any')
 depends=('python' 'python-daemon' 'python-tornado')
 makedepends=('python-setuptools')
-optdepends=('python-mechanize: for debugging Hadoop jobs more easily')
 conflicts=('luigi')
 url="https://github.com/spotify/luigi"
 license=('Apache')

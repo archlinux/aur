@@ -9,7 +9,6 @@ pkgbase = python-luigi
 	depends = python
 	depends = python-daemon
 	depends = python-tornado
-	optdepends = python-mechanize: for debugging Hadoop jobs more easily
 	conflicts = luigi
 	source = https://pypi.python.org/packages/6a/84/42bea7839bc6eee8c219775f6afe3e296a554985a0aa216fb6090478a3e5/luigi-2.4.0.tar.gz
 	md5sums = 76303fa7281ac0c6a95aa9ada13acc3e
