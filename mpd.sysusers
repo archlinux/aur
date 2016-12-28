@@ -1,0 +1,3 @@
+u mpd 45 "Music Player Daemon" /var/lib/mpd
+m mpd mpd
+m mpd audio

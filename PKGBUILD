@@ -8,18 +8,20 @@ pkgdesc="Flexible, powerful, server-side application for playing music. Minimal 
 url="https://www.musicpd.org/"
 license=('GPL')
 arch=('i686' 'x86_64' 'armv7h')
-depends=('alsa-lib' 'flac' 'glib2' 'icu' 'libmpdclient' 'sqlite')
+depends=('alsa-lib' 'flac' 'glib2' 'icu' 'libmpdclient' 'sqlite' 'systemd')
 makedepends=('boost')
 provides=("${_pkgname}=$pkgver")
 conflicts=("${_pkgname}")
 backup=("etc/${_pkgname}.conf")
 install=mpd.install
 source=("${url}/download/${_pkgname}/${pkgver%.*}/${_pkgname}-${pkgver}.tar.xz"{,.sig}
-        "${_pkgname}.tmpfile"
+        "${_pkgname}.tmpfiles"
+        "${_pkgname}.sysusers"
         "${_pkgname}.conf")
 sha1sums=('27dd903f4f7c0f5ffeb85e6820c02d2b82485572'
           'SKIP'
-          'f4d5922abb69abb739542d8e93f4dfd748acdad7'
+          'ba916e79db509a888ade94740249d35456ca1912'
+          'aa58b35ad28de86fdc9ee850e3989f1a105f6a80'
           '291fd5cda9f0845834a553017327c4586bd853f6')
 validpgpkeys=('0392335A78083894A4301C43236E8A58C6DB4512') # Max Kellermann
 
@@ -109,10 +111,10 @@ package() {
 
     make DESTDIR="${pkgdir}" install
 
-    install -Dm644 ../"${_pkgname}".conf "${pkgdir}"/etc/"${_pkgname}".conf
-    install -Dm644 ../"${_pkgname}".tmpfile "${pkgdir}"/usr/lib/tmpfiles.d/"${_pkgname}".conf
-    install -d -g 45 -o 45 "${pkgdir}"/var/lib/mpd/{,playlists}
+    install -Dm644 "${srcdir}"/${_pkgname}.conf "${pkgdir}"/etc/${_pkgname}.conf
+    install -Dm644 "${srcdir}"/${_pkgname}.tmpfiles "${pkgdir}"/usr/lib/tmpfiles.d/${_pkgname}.conf
+    install -Dm644 "${srcdir}"/${_pkgname}.sysusers "${pkgdir}"/usr/lib/sysusers.d/${_pkgname}.conf
 
-    sed '/\[Service\]/a User=mpd' -i "${pkgdir}"/usr/lib/systemd/system/"${_pkgname}".service
-    sed '/WantedBy=/c WantedBy=default.target' -i "${pkgdir}"/usr/lib/systemd/system/"${_pkgname}".service
+    sed '/\[Service\]/a User=mpd' -i "${pkgdir}"/usr/lib/systemd/system/${_pkgname}.service
+    sed '/WantedBy=/c WantedBy=default.target' -i "${pkgdir}"/usr/lib/systemd/system/${_pkgname}.service
 }
