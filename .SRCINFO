@@ -1,0 +1,19 @@
+pkgbase = python-luigi
+	pkgdesc = Workflow mgmgt + task scheduling + dependency resolution
+	pkgver = 2.4.0
+	pkgrel = 1
+	url = https://github.com/spotify/luigi
+	arch = any
+	license = Apache
+	makedepends = python-setuptools
+	depends = python
+	depends = python-daemon
+	depends = python-tornado
+	optdepends = python-mechanize: for debugging Hadoop jobs more easily
+	conflicts = luigi
+	source = https://pypi.python.org/packages/6a/84/42bea7839bc6eee8c219775f6afe3e296a554985a0aa216fb6090478a3e5/luigi-2.4.0.tar.gz
+	md5sums = 76303fa7281ac0c6a95aa9ada13acc3e
+	sha256sums = 5c63d960c5219346acf29b925f5de7585427555a863b5f9e27fa19611f2d8382
+
+pkgname = python-luigi
+
