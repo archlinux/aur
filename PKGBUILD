@@ -4,7 +4,7 @@
 # Contributor: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=flow
-pkgver=0.36.0
+pkgver=0.37.4
 pkgrel=1
 pkgdesc="A static typechecker for JavaScript"
 arch=('i686' 'x86_64')
@@ -13,59 +13,58 @@ makedepends=('ocamlbuild')
 url="http://flowtype.org"
 license=('BSD')
 source=(
-    "https://github.com/facebook/${pkgname}/archive/v${pkgver}.tar.gz"
-    'Makefile-fPIC.patch'
-    'remove-unused-module.patch'
-    'Makefile-no-flow-check.patch'
+		"https://github.com/facebook/${pkgname}/archive/v${pkgver}.tar.gz"
+		'Makefile-fPIC.patch'
+		'Makefile-no-flow-check.patch'
 )
 sha256sums=(
-    '064792468e9b811fbc8d030de18b5b296b6214b2429e6c40876a64262e65fb16'
-    '4df293e75de2461e0d741a1a6c4448494f4b2cd9bcc0ea3eb2dd41d64b49e730'
-    '341f98ac49d68f292d25e026f66e65936c2d95350052910d20ea73fa6e710c33'
-    'bc27443a2b5437bd24c37247fc9bb2ab1a062afcea43a03be673dd23fa45bcba'
+		'f78bd6a37a242159ca5344069ae97b1843add40a43dc5680e463ca137a2b211c'
+		'4df293e75de2461e0d741a1a6c4448494f4b2cd9bcc0ea3eb2dd41d64b49e730'
+		'5a8490c237a498d1523a1686800d9cd8bde2159f10c5efc12097ded91393e9cf'
 )
 
 prepare() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
-  patch -p0 <"${srcdir}/../Makefile-fPIC.patch"
-  patch -p1 <"${srcdir}/../remove-unused-module.patch"
-  patch -p1 <"${srcdir}/../Makefile-no-flow-check.patch"
+	cd "${srcdir}/${pkgname}-${pkgver}"
+	for f in Makefile-fPIC.patch Makefile-no-flow-check.patch; do
+		msg "Applying patch ${f}"
+		patch -p0 <"${srcdir}/../${f}"
+	done
 }
 
 build() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+	cd "${srcdir}/${pkgname}-${pkgver}"
 
-  msg 'Building...'
-  make
+	msg 'Building...'
+	make
 }
 
 check() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+	cd "${srcdir}/${pkgname}-${pkgver}"
 
-  # This ugly hack comes after conversations on #flowtype suggest that the 
-  # incremental tests are not necessarily reliable - they fail when they
-  # shouldn't, and not reliably, and with different frequencies on different
-  # platforms. So let's be done with them for now...
-  rm -r tests/incremental*
+	# This ugly hack comes after conversations on #flowtype suggest that the 
+	# incremental tests are not necessarily reliable - they fail when they
+	# shouldn't, and not reliably, and with different frequencies on different
+	# platforms. So let's be done with them for now...
+	rm -r tests/incremental*
 
-  msg 'Checking...'
-  if test -z "${FLOW_RUNTESTS_PARALLELISM}" ; then
-    /usr/bin/env FLOW_RUNTESTS_PARALLELISM=2 make test
-  else
-    make test
-  fi
+	msg 'Checking...'
+	if test -z "${FLOW_RUNTESTS_PARALLELISM}" ; then
+		/usr/bin/env FLOW_RUNTESTS_PARALLELISM=2 make test
+	else
+		make test
+	fi
 }
 
 package() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+	cd "${srcdir}/${pkgname}-${pkgver}"
 
-  msg 'Installing license...'
-  install -Dm 644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+	msg 'Installing license...'
+	install -Dm 644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
-  msg 'Installing documentation...'
-  install -dm 755 "${pkgdir}/usr/share/doc/${pkgname}"
-  cp -dpr --no-preserve=ownership examples "${pkgdir}/usr/share/doc/${pkgname}"
+	msg 'Installing documentation...'
+	install -dm 755 "${pkgdir}/usr/share/doc/${pkgname}"
+	cp -dpr --no-preserve=ownership examples "${pkgdir}/usr/share/doc/${pkgname}"
 
-  msg 'Installing...'
-  install -Dm 755 bin/flow "${pkgdir}/usr/bin/flow"
+	msg 'Installing...'
+	install -Dm 755 bin/flow "${pkgdir}/usr/bin/flow"
 }
