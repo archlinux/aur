@@ -4,7 +4,7 @@
 
 _pkgorigname=kwin
 pkgname=kwin-presentwindows-close
-pkgver=5.8.4
+pkgver=5.8.5
 pkgrel=1
 pkgdesc='KDE Window manager, reverting the removal of the close action in present windows'
 arch=('i686' 'x86_64')
@@ -19,7 +19,7 @@ conflicts=('kdebase-workspace' 'kwin')
 provides=('kwin')
 source=("http://download.kde.org/stable/plasma/${pkgver}/${_pkgorigname}-${pkgver}.tar.xz"{,.sig}
         "presentwindows-close.patch")
-sha256sums=('d60d7ffece656fb693da54369034bca14b6c3f2c750454b7213c2ac1c4aff4fd'
+sha256sums=('a703a0d1628e36d3a92dfe3e0a8df7ec733ec2f7a93f854b90a9294dda095fa0'
             'SKIP'
             'a42e050f873632240595026b0f0f98ce4e109dd36a7768ba6b361d1b4854aefb')
 validpgpkeys=('2D1D5B0588357787DE9EE225EC94D18F7F05997E'  # Jonathan Riddell
