@@ -7,23 +7,95 @@ if [ -r /etc/default/systemrescuecd ] ; then
 fi
 
 cat << EOF
-menuentry "System Rescue (x86_64)"{
+submenu "System Rescue" {
+
+menuentry "System Rescue (x86_64)" {
   linux ${BASE_DIR}/sysrescue/rescue64 subdir=${BASE_DIR}/sysrescue ${CUSTOM_BOOTOPTIONS}
   initrd ${BASE_DIR}/sysrescue/initram.igz
 }
 
-menuentry "System Rescue (i586)"{
-	linux ${BASE_DIR}/sysrescue/rescue32 subdir=${BASE_DIR}/sysrescue ${CUSTOM_BOOTOPTIONS}
-	initrd ${BASE_DIR}/sysrescue/initram.igz
+menuentry "System Rescue (x86_64) in Memory" {
+  linux ${BASE_DIR}/sysrescue/rescue64 subdir=${BASE_DIR}/sysrescue docache ${CUSTOM_BOOTOPTIONS}
+  initrd ${BASE_DIR}/sysrescue/initram.igz
 }
 
-menuentry "System Rescue (alternative x86_64)"{
+menuentry "System Rescue (i586)" {
+  linux ${BASE_DIR}/sysrescue/rescue32 subdir=${BASE_DIR}/sysrescue ${CUSTOM_BOOTOPTIONS}
+  initrd ${BASE_DIR}/sysrescue/initram.igz
+}
+
+menuentry "System Rescue (i586) in Memory" {
+  linux ${BASE_DIR}/sysrescue/rescue32 subdir=${BASE_DIR}/sysrescue docache ${CUSTOM_BOOTOPTIONS}
+  initrd ${BASE_DIR}/sysrescue/initram.igz
+}
+
+menuentry "System Rescue (alternative x86_64)" {
   linux ${BASE_DIR}/sysrescue/altker64 subdir=${BASE_DIR}/sysrescue ${CUSTOM_BOOTOPTIONS}
   initrd ${BASE_DIR}/sysrescue/initram.igz
 }
 
-menuentry "System Rescue (alternative i586)"{
+menuentry "System Rescue (alternative x86_64) in Memory" {
+  linux ${BASE_DIR}/sysrescue/altker64 subdir=${BASE_DIR}/sysrescue docache ${CUSTOM_BOOTOPTIONS}
+  initrd ${BASE_DIR}/sysrescue/initram.igz
+}
+
+menuentry "System Rescue (alternative i586)" {
   linux ${BASE_DIR}/sysrescue/altker32 subdir=${BASE_DIR}/sysrescue ${CUSTOM_BOOTOPTIONS}
   initrd ${BASE_DIR}/sysrescue/initram.igz
+}
+
+menuentry "System Rescue (alternative i586) in Memory" {
+  linux ${BASE_DIR}/sysrescue/altker32 subdir=${BASE_DIR}/sysrescue docache ${CUSTOM_BOOTOPTIONS}
+  initrd ${BASE_DIR}/sysrescue/initram.igz
+}
+
+menuentry "MemTest+" {
+  linux16 ${BASE_DIR}/sysrescue/bootdisk/memtestp
+}
+
+menuentry "NT Password Editor" {
+  linux ${BASE_DIR}/sysrescue/ntpasswd/vmlinuz
+  initrd ${BASE_DIR}/sysrescue/ntpasswd/initrd.cgz
+# initrd ${BASE_DIR}/sysrescue/ntpasswd/scsi.cgz
+}
+
+menuentry "Super Grub2 Disk" {
+  linux16 ${BASE_DIR}/sysrescue/memdisk raw floppy
+  initrd16 ${BASE_DIR}/sysrescue/bootdisk/grubdisk.img
+}
+
+menuentry "FreeDOS" {
+  linux16 ${BASE_DIR}/sysrescue/memdisk floppy
+  initrd16 ${BASE_DIR}/sysrescue/bootdisk/freedos.img
+}
+
+menuentry "Netboot - Boot from Network" {
+  linux16 ${BASE_DIR}/sysrescue/netboot
+}
+
+menuentry "HDT - Hardware Diagnostic Tool (recent)" {
+  linux16 ${BASE_DIR}/sysrescue/memdisk floppy
+  initrd16 ${BASE_DIR}/sysrescue/bootdisk/hdt.img
+}
+
+menuentry "Aida - Hardware Diagnostic Tool (old)" {
+  linux16 ${BASE_DIR}/sysrescue/memdisk floppy
+  initrd16 ${BASE_DIR}/sysrescue/bootdisk/aida.img
+}
+
+menuentry "GAG - Graphical Boot Manager" {
+  linux16 ${BASE_DIR}/sysrescue/memdisk floppy
+  initrd16 ${BASE_DIR}/sysrescue/bootdisk/gag.img
+}
+
+menuentry "DBAN - Erase all data" {
+  linux ${BASE_DIR}/sysrescue/bootdisk/dban.bzi nuke="dwipe" silent
+}
+
+menuentry "MHDD - Low-level Hard Drive diagnostic tool" {
+  linux16 ${BASE_DIR}/sysrescue/memdisk floppy
+  initrd16 ${BASE_DIR}/sysrescue/bootdisk/mhdd.img
+}
+
 }
 EOF

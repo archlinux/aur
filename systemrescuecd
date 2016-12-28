@@ -6,9 +6,9 @@
 # For example add "setkmap=de" for german keymap on default
 CUSTOM_BOOTOPTIONS=""
 
-# Here you can specify the base dir of the boot partition.
-# If you have you boot directory on a own partition:
+# Here you can specify the base dir of the boot directory.
+# If you have your boot directory on a seperate partition:
 # BASE_DIR=""
-# If your boot partition on the same partition as your root directory:
+# If your boot directory on the same partition as your root directory:
 # BASE_DIR="/boot"
 BASE_DIR=""

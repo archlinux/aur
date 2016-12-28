@@ -1,7 +1,7 @@
 # Maintainer: PyroDevil <p dot devil at gmail dot com>
 pkgname=systemrescuecd
-pkgver=4.8.1
-pkgrel=1
+pkgver=4.9.0
+pkgrel=2
 epoch=
 pkgdesc="Installs a rescue system into the boot partition to allow grub to boot it."
 arch=('i686' 'x86_64')
@@ -22,9 +22,9 @@ changelog=
 source=("http://downloads.sourceforge.net/project/systemrescuecd/sysresccd-x86/$pkgver/$pkgname-x86-$pkgver.iso"
         "25_systemrescuecd"
         "systemrescuecd")
-md5sums=('5f79957c793459a699d1076b9f47f9af'
-         '5a34f3346f2706032fd6bae7aea3f4d7'
-         'df5f42b184ffb2c6cab79fd3889b8cd0')
+md5sums=('8d6bcc8b3937accfb0b77b9006230475'
+         'e8a3f16ee5208a0be0742d9995295187'
+         '9cef18f521312ca5c5d505f6619bd183')
 noextract=("$pkgname-x86-$pkgver.iso")
 backup=("etc/default/systemrescuecd")
 
@@ -35,16 +35,31 @@ build() {
 
 package() {
   mkdir -p "$pkgdir/boot/sysrescue"
+  mkdir -p "$pkgdir/boot/sysrescue/bootdisk"
+  mkdir -p "$pkgdir/boot/sysrescue/ntpasswd"
   mkdir -p "$pkgdir/etc/grub.d"
   mkdir -p "$pkgdir/etc/default/"
-  install -m 755 "$srcdir/25_systemrescuecd"                     "$pkgdir/etc/grub.d/"
-  install -m 644 "$srcdir/systemrescuecd"                        "$pkgdir/etc/default/"
-  install -m 644 "$srcdir/$pkgname-$pkgver/isolinux/rescue32"    "$pkgdir/boot/sysrescue/"
-  install -m 644 "$srcdir/$pkgname-$pkgver/isolinux/rescue64"    "$pkgdir/boot/sysrescue/"
-  install -m 644 "$srcdir/$pkgname-$pkgver/isolinux/altker32"    "$pkgdir/boot/sysrescue/"
-  install -m 644 "$srcdir/$pkgname-$pkgver/isolinux/altker64"    "$pkgdir/boot/sysrescue/"
-  install -m 644 "$srcdir/$pkgname-$pkgver/isolinux/initram.igz" "$pkgdir/boot/sysrescue/"
-  install -m 644 "$srcdir/$pkgname-$pkgver/sysrcd.dat"           "$pkgdir/boot/sysrescue/"
+  install -m 755 "$srcdir/25_systemrescuecd"                      "$pkgdir/etc/grub.d/"
+  install -m 644 "$srcdir/systemrescuecd"                         "$pkgdir/etc/default/"
+  install -m 644 "$srcdir/$pkgname-$pkgver/isolinux/rescue32"     "$pkgdir/boot/sysrescue/"
+  install -m 644 "$srcdir/$pkgname-$pkgver/isolinux/rescue64"     "$pkgdir/boot/sysrescue/"
+  install -m 644 "$srcdir/$pkgname-$pkgver/isolinux/altker32"     "$pkgdir/boot/sysrescue/"
+  install -m 644 "$srcdir/$pkgname-$pkgver/isolinux/altker64"     "$pkgdir/boot/sysrescue/"
+  install -m 644 "$srcdir/$pkgname-$pkgver/isolinux/initram.igz"  "$pkgdir/boot/sysrescue/"
+  install -m 644 "$srcdir/$pkgname-$pkgver/sysrcd.dat"            "$pkgdir/boot/sysrescue/"
+  install -m 644 "$srcdir/$pkgname-$pkgver/isolinux/memdisk"      "$pkgdir/boot/sysrescue/"
+  install -m 644 "$srcdir/$pkgname-$pkgver/isolinux/netboot"      "$pkgdir/boot/sysrescue/"
+  install -m 644 "$srcdir/$pkgname-$pkgver/bootdisk/aida.img"     "$pkgdir/boot/sysrescue/bootdisk"
+  install -m 644 "$srcdir/$pkgname-$pkgver/bootdisk/dban.bzi"     "$pkgdir/boot/sysrescue/bootdisk"
+  install -m 644 "$srcdir/$pkgname-$pkgver/bootdisk/freedos.img"  "$pkgdir/boot/sysrescue/bootdisk"
+  install -m 644 "$srcdir/$pkgname-$pkgver/bootdisk/gag.img"      "$pkgdir/boot/sysrescue/bootdisk"
+  install -m 644 "$srcdir/$pkgname-$pkgver/bootdisk/grubdisk.img" "$pkgdir/boot/sysrescue/bootdisk"
+  install -m 644 "$srcdir/$pkgname-$pkgver/bootdisk/hdt.img"      "$pkgdir/boot/sysrescue/bootdisk"
+  install -m 644 "$srcdir/$pkgname-$pkgver/bootdisk/memtestp"     "$pkgdir/boot/sysrescue/bootdisk"
+  install -m 644 "$srcdir/$pkgname-$pkgver/bootdisk/mhdd.img"     "$pkgdir/boot/sysrescue/bootdisk"
+  install -m 644 "$srcdir/$pkgname-$pkgver/ntpasswd/initrd.cgz"   "$pkgdir/boot/sysrescue/ntpasswd"
+  install -m 644 "$srcdir/$pkgname-$pkgver/ntpasswd/scsi.cgz"     "$pkgdir/boot/sysrescue/ntpasswd"
+  install -m 644 "$srcdir/$pkgname-$pkgver/ntpasswd/vmlinuz"      "$pkgdir/boot/sysrescue/ntpasswd"
 }
 
 # vim:set ts=2 sw=2 et:
