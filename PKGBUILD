@@ -3,8 +3,8 @@
 
 pkgname=gogs
 _pkgname=${pkgname}
-pkgver=0.9.97
-pkgrel=3
+pkgver=0.9.113
+pkgrel=1
 epoch=1
 pkgdesc="Gogs(Go Git Service) is a Self Hosted Git Service in the Go Programming Language."
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
@@ -31,8 +31,8 @@ source=('gogs.service.patch'
         "$_pkgname-$pkgver::https://${_gourl}/archive/v${pkgver}.tar.gz")
 
 sha512sums=(834e95fe9bcfa291a573ad1fa43f41bbed844658a918ff4fcf53ab8a44a296206ee4003eab1d9a2785c9126be077022f4907846d2eb6c5d64050b5e81ce47f44
-            800bba8c0d01bacb43846572f5ade2d1a04b0093f70c991b3cc80bd39b14eb02bb3534890666ff1bbbd9a23e97453f2f136648f7f23d5f829239ab7b4258f6ca
-            4ea51d7dc3f70a352765c9e736ebbf290b652253309f44ab08c6c95a96b033356db954d0da22cea754c346537af2c24f3239fcbb7c1babf9161f710d75b4e9e5)
+            dd88280d0ae028085d5834e7579477257331287f6892ec9489a6ba07f1c1f9f993a2b23513ea128ddf523b69ead2be9c309833ad22901a6a6ec6180720ee81bd
+            45527934b2a7b12730cbcbe4f6c92e49d3a59369cb6380ead25809340d02ac9f38f4370c0a9d1e3a84dd59dc0ab77c6b6e2c2217d95ffcb69f9a035ccf042549)
 
 _goroot="/usr/lib/go"
 
@@ -66,6 +66,7 @@ prepare() {
   # Glide
   msg2 "Download dependencies via Glide"
   cd $GOPATH/src/${_gourl}
+  glide cc
   glide update
   glide install
 
