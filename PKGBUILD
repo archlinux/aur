@@ -1,13 +1,13 @@
 # Maintainer:  VirtualTam <virtualtam@flibidi.net>
 pkgname=openav-luppp-git
-pkgver=1.0.1.r8.g43aecd2
-pkgrel=5
+pkgver=1.1.r1.g01f71ec
+pkgrel=1
 pkgdesc="Luppp is a live performance tool, created by OpenAV productions"
 arch=('i686' 'x86_64')
 url="http://openavproductions.com/luppp/"
 license=('GPL3')
 groups=('openav')
-depends=('cairo' 'jack2' 'liblo' 'libsamplerate' 'libsndfile' 'ntk-git')
+depends=('jack2' 'liblo' 'ntk-git')
 makedepends=('cmake' 'git')
 provides=('openav-luppp')
 _gitname="openAV-Luppp"
