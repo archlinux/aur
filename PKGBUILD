@@ -3,13 +3,14 @@
 pkgname=intellij-idea-ue-bundled-jre
 pkgver=2016.3.1
 _buildver=163.9166.29
-pkgrel=1
-pkgdesc="An intelligent IDE for Java, Groovy and other programming languages with advanced refactoring features intensely focused on developer productivity."
+pkgrel=2
+pkgdesc="Jetbrains IDE for Java and other programming languages. This packages contains a bundled JRE."
 arch=('any')
 url="https://www.jetbrains.com/idea/"
 backup=("usr/share/${pkgname}/bin/idea.vmoptions" "usr/share/${pkgname}/bin/idea64.vmoptions" "usr/share/${pkgname}/bin/idea.properties")
 license=('Commercial')
 depends=('giflib' 'libxtst')
+conflicts=('intellij-idea-ultimate-edition')
 options=(!strip)
 source=("https://download.jetbrains.com/idea/ideaIU-$pkgver.tar.gz"
         'jetbrains-idea.desktop'
