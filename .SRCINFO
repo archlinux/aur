@@ -1,7 +1,7 @@
 pkgbase = eom-dev
 	pkgdesc = An image viewing and cataloging program for MATE
 	pkgver = 1.17.1
-	pkgrel = 1
+	pkgrel = 5
 	url = http://mate-desktop.org
 	arch = i686
 	arch = x86_64
