@@ -1,66 +1,37 @@
 # Maintainer: Frederik Schwan <frederik dot schwan at linux dot com>
-# Contributor: Thomas Laroche <tho.laroche@gmail.com>
-# Contributor: Kristian Klausen <klausenbusk@hotmail.com>
-# Contributor: Thomas Fanninger <thomas@fanninger.at>
 
 pkgname=gitea
-_gourl=github.com/go-gitea
-pkgver=0.9.97
+pkgver=1.0.0
 pkgrel=1
-pkgdesc="Git with a cup of tea, forked from Gogs. Is a Self Hosted Git Service in the Go Programming Language."
-arch=('i686' 'x86_64' 'armv6h' 'armv7h')
-changelog=$pkgname.changelog
+pkgdesc='Git with a cup of tea, forked from Gogs. Is a Self Hosted Git Service in the Go Programming Language.'
+arch=('x86_64' 'i686')
 url='http://gitea.io'
 license=('MIT')
 depends=('git')
 optdepends=('sqlite: SQLite support'
             'mariadb: MariaDB support'
             'postgresql: PostgreSQL support'
+            'pam: Authentication via PAM support'
             'redis: Redis support'
             'memcached: MemCached support'
             'openssh: GIT over SSH support')
-makedepends=('go>=1.2' 'git' 'patch')
-conflicts=('gogs-bin' 'gogs-git' 'gogs-git-dev' 'gitea-git' 'gitea-git-dev')
-options=('!strip' '!emptydirs')
-backup=('srv/gitea/conf/app.ini')
-
-install=gitea.install
-
-source=('gitea.service'
-        'app.ini.patch'
-        "https://github.com/go-gitea/${pkgname}/releases/tag/v${pkgver}")
-sha512sums=('2b4303f850e3b13b2fc3c9f0bc5820dae431d228002b35f01be0d4bfbcf05de8dcec2a559a85e318b609e4a4d492d44306eadf5f6508fd72333b198661bb0bb7'
-            '809c7668a508e792a32eed7242d9bd1093137668aef7baada0bf7064a1fbb1610468dbf632c9548e268f92b97a61ee0b947a95560b15f88a22588da2d50801c2'
-            'f64a8b2d3d2cf7a11b4188320c38fe1ebdf6c5d4a0d31af8181c8a05a48d0f829e6cc93f0a57f56a5d253081ae738b5e05ff1c4c5507406726269f0879bc8050')
-
-
-prepare() {
-  mkdir -p "${srcdir}/src/${_gourl}"
-  mv "${pkgname}" "${srcdir}/src/${_gourl}/${pkgname}"
-  msg2 "go get"
-  GOPATH="${srcdir}" go get -tags "sqlite redis memcache" "${_gourl}/${pkgname}"
-  
-  msg2 "Patch: GITEA app.ini"
-  patch -Np1 -i "${srcdir}/app.ini.patch" "${srcdir}/src/${_gourl}/${pkgname}/conf/app.ini"
-}
-
-build() {
-  msg2 "Build program"
-  cd ${srcdir}/src/${_gourl}/${pkgname}
-  GOPATH="${srcdir}" go fix
-  GOPATH="${srcdir}" go build -tags "sqlite redis memcache cert"
-}
+makedepends=('go>=1.6' 'git')
+conflicts=('gitea-git' 'gitea-git-dev')
+options=('emptydirs')
+backup=('etc/gitea/app.ini')
+source=(https://github.com/go-gitea/gitea/releases/download/v${pkgver}/${pkgname}-${pkgver}-linux-amd64
+        gitea.service
+        app.ini)
+sha512sums=('b1b415b6f513290e46ac6515bdfefa199fdc6485b0c1b8174955b656e95612bd37d9d1c005e1e6451561a3ffdb419c8807062fbedc6a6806e3bab8bc4c69eceb'
+            '692ea79b3195f3222f69b485f8a7905223fa457dc5cb2b480edbac6f480ac4f74075accb04ae0c17b90e98e41f53224e661a85762310d7263921e763cb3fc257'
+            '4652e99597b8f3bb4ab8f9ec4e6e32ff8b5f6a3a365f6b0a0af57c19f18b29b6eb1985bc99dd72b7ded2ca12eb5cd24d56daca4956bddd5ab808cb57c0bb52fe')
 
 package() {
-  install -D -m 0755 "${srcdir}/src/${_gourl}/${pkgname}/${pkgname}" "${pkgdir}/usr/share/${pkgname}/${pkgname}"
+  install -o git -g git -d -m 750 ${pkgdir}/var/lib/gitea/
+  install -o git -g git -d -m 750 ${pkgdir}/var/lib/gitea/{repos,tmp,sessions,attachments,public,data}
+  install -o git -g git -d -m 750 ${pkgdir}/var/log/gitea/
 
-  cp -r "${srcdir}/src/${_gourl}/${pkgname}/conf" "${pkgdir}/usr/share/${pkgname}"
-  install -d "${pkgdir}/usr/share/themes/${pkgname}/default/"
-  cp -r "${srcdir}/src/${_gourl}/${pkgname}/public" "${pkgdir}/usr/share/themes/${pkgname}/default"
-  cp -r "${srcdir}/src/${_gourl}/${pkgname}/templates" "${pkgdir}/usr/share/themes/${pkgname}/default"
-
-  install -D -m 0600 "${pkgdir}/usr/share/${pkgname}/conf/app.ini" "$pkgdir/srv/${pkgname}/conf/app.ini"
-  install -D -m 0644 "${srcdir}/${pkgname}.service" "$pkgdir/usr/lib/systemd/system/${pkgname}.service"
-  install -d "${pkgdir}/var/log/${pkgname}"
-  install -D -m 0644 "${srcdir}/src/${_gourl}/${pkgname}/LICENSE" "${pkgdir}/usr/share/licenses/$pkgname"
+  install -Dm755 ${srcdir}/${pkgname}-${pkgver}-linux-amd64 ${pkgdir}/usr/bin/${pkgname}
+  install -Dm644 ${srcdir}/gitea.service ${pkgdir}/usr/lib/systemd/system/${pkgname}.service
+  install -Dm644 ${srcdir}/app.ini ${pkgdir}/etc/gitea/app.ini
 }
