@@ -1,6 +1,6 @@
 # Maintainer: Simon Dreher <code[at]simon-dreher[dot]de>
-pkgname=alacarte-maps
-pkgver=0.4.0
+pkgname=alacarte-maps-git
+pkgver=0.3.0.r120.gdafa288
 pkgrel=1
 pkgdesc="An easy to use, fast and flexible tile renderer and server for OSM data."
 url="https://alacarte-maps.github.io"
@@ -9,11 +9,11 @@ license=('AGPL3')
 depends=('cairo>=1.12.0' 'boost>=1.55' 'libpng')
 makedepends=('cmake' 'asciidoc')
 
-source=("https://github.com/alacarte-maps/alacarte/archive/v${pkgver}.tar.gz")
-sha256sums=('1df0c919ba9b01688feffe304f022045c28a42c702f505f4196a11f156facd7a')
+source=("git+https://github.com/alacarte-maps/alacarte")
+sha256sums=('SKIP')
 
 build() {
-  cd "${srcdir}/alacarte-${pkgver}"
+  cd "${srcdir}/alacarte"
   [[ -d build ]] && rm -r build
   mkdir build
   cd build
@@ -23,10 +23,15 @@ build() {
 }
 
 package() {
-  cd "${srcdir}/alacarte-${pkgver}/build"
+  cd "${srcdir}/alacarte/build"
   make DESTDIR=${pkgdir} install
-  install -D -m644 "${srcdir}/alacarte-${pkgver}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-  install -D -m644 "${srcdir}/alacarte-${pkgver}/data/alacarte-maps.service" "${pkgdir}/usr/lib/systemd/system/alacarte-maps.service"
+  install -D -m644 "${srcdir}/alacarte/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -D -m644 "${srcdir}/alacarte/data/alacarte-maps.service" "${pkgdir}/usr/lib/systemd/system/alacarte-maps.service"
+}
+
+pkgver() {
+  cd "alacarte"
+  git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 # vim:set ts=2 sw=2 et:
