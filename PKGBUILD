@@ -11,7 +11,7 @@ pkgrel=1
 pkgdesc='A 3D game engine by Epic Games which can be used non-commercially for free.'
 arch=('x86_64')
 url='https://www.unrealengine.com/'
-makedepends=('clang' 'mono' 'dos2unix' 'cmake')
+makedepends=('clang' 'mono' 'dos2unix' 'cmake' 'git')
 depends=('icu' 'xdg-user-dirs' 'sdl2' 'qt4' 'python')
 license=('custom:UnrealEngine')
 
