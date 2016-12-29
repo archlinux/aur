@@ -1,7 +1,7 @@
 pkgbase = sagittarius
 	pkgdesc = R6RS/R7RS Scheme system.
 	pkgver = 0.7.11
-	pkgrel = 1
+	pkgrel = 2
 	url = https://bitbucket.org/ktakashi/sagittarius-scheme/wiki/Home
 	arch = i686
 	arch = x86_64
