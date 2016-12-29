@@ -9,7 +9,7 @@
 _pack=zeromq
 pkgname=octave-$_pack
 pkgver=1.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="ZeroMQ bindings for GNU Octave"
 arch=(any)
 url="http://octave.sourceforge.net/$_pack/"
