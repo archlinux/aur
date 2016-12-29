@@ -7,7 +7,7 @@
 
 pkgname=conky-lua-nv
 _pkgname=conky
-pkgver=1.10.5
+pkgver=1.10.6
 pkgrel=1
 pkgdesc="An advanced system monitor for X based on torsmo with lua and nvidia enabled"
 arch=('i686' 'x86_64')
@@ -27,7 +27,7 @@ optdepends=('nvidia: for GT4xx and newer GPUs',
 source=(https://github.com/brndnmtthws/${_pkgname}/archive/v${pkgver}.tar.gz
         ascii.patch
         fix_build.patch)
-sha1sums=('a560c356ce4c3e2918601743b57d19a18fe01a72'
+sha1sums=('54cb3322dc3a969f1fda03383012c61d57261345'
           '96cdbc38e8706c8a3120601983df5c7265716128'
           '6e53bb6e94b80b19f64451e34606c5d5e9c7a666')
 options=('!strip' 'debug')
