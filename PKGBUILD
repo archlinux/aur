@@ -9,7 +9,7 @@
 _pack=strings
 pkgname=octave-$_pack
 pkgver=1.2.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Additional functions for manipulation and analysis of strings."
 arch=(any)
 url="http://octave.sourceforge.net/$_pack/"
