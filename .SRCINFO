@@ -1,0 +1,18 @@
+pkgbase = gladrags-git
+	pkgdesc = An applet to smarten up MATE panels
+	pkgver = 0.22.r0.gc44c89f
+	pkgrel = 1
+	url = https://github.com/robint99/gladrags
+	install = gladrags.install
+	arch = any
+	license = GPLv3
+	makedepends = git
+	depends = mate-panel
+	depends = python
+	depends = python-gobject
+	depends = imagemagick
+	source = git+http://github.com/robint99/gladrags
+	md5sums = SKIP
+
+pkgname = gladrags-git
+
