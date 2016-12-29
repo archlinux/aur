@@ -9,7 +9,7 @@
 _pack=quaternion
 pkgname=octave-$_pack
 pkgver=2.4.0
-pkgrel=4
+pkgrel=5
 pkgdesc="Quaternion package for GNU Octave, includes a quaternion class with overloaded operators"
 arch=(any)
 url="http://octave.sourceforge.net/$_pack/"
