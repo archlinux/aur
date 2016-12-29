@@ -1,0 +1,25 @@
+--- CutyCapt.cpp	2014-11-12 16:41:30.354714781 +0100
++++ CutyCapt.cpp	2014-11-12 16:41:30.354714781 +0100
+@@ -27,11 +27,7 @@
+ #include <QtWebKit>
+ #include <QtGui>
+ #include <QSvgGenerator>
+-
+-#if QT_VERSION < 0x050000
+ #include <QPrinter>
+-#endif
+-
+ #include <QTimer>
+ #include <QByteArray>
+ #include <QNetworkRequest>
+--- CutyCapt.pro	2014-11-12 16:31:34.476193204 +0100
++++ CutyCapt.pro	2014-11-12 16:41:30.354714781 +0100
+@@ -4,7 +4,7 @@
+ CONFIG   +=  qt console
+ 
+ greaterThan(QT_MAJOR_VERSION, 4): {
+-  QT       +=  webkitwidgets
++  QT       +=  webkitwidgets printsupport
+ }
+ 
+ contains(CONFIG, static): {
