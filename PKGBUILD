@@ -9,7 +9,7 @@
 _pack=vibes
 pkgname=octave-$_pack
 pkgver=0.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="The VIBes API allows one to easily display results (boxes, pavings) from interval methods.  VIBes consists in two parts: (1) the VIBes application that features viewing, annotating and exporting figures, and (2) the VIBes API that enables your progr [...]"
 arch=(any)
 url="http://octave.sourceforge.net/$_pack/"
