@@ -9,7 +9,7 @@
 _pack=parallel
 pkgname=octave-$_pack
 pkgver=3.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Parallel execution package. See also package mpi, maintained by Carlo de Falco. "
 arch=(any)
 url="http://octave.sourceforge.net/$_pack/"
