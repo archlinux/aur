@@ -40,7 +40,7 @@ _mkuser() {
 
 _rmuser() {
   echo -n "Removing bitcoin user... "
-  userdel $_bc_user 2>/dev/null
+  userdel -r $_bc_user 2>/dev/null
   echo "done"
 }
 
