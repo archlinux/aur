@@ -9,7 +9,7 @@
 _pack=nurbs
 pkgname=octave-$_pack
 pkgver=1.3.10
-pkgrel=3
+pkgrel=4
 pkgdesc="Collection of routines for the creation, and manipulation of Non-Uniform Rational B-Splines (NURBS), based on the NURBS toolbox by Mark Spink."
 arch=(any)
 url="http://octave.sourceforge.net/$_pack/"
