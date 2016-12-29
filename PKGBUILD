@@ -1,20 +1,50 @@
-# Maintainer: Trizen <echo dHJpemVueEBnbWFpbC5jb20K | base64 -d>
-# Contributor: Dimitrije Radojevic <templaryum@gmail.com>
+# Contributor: Trizen <echo dHJpemVueEBnbWFpbC5jb20K | base64 -d>
+# Generator  : CPANPLUS::Dist::Arch 1.32
 
-pkgname=perl-text-asciitable
-pkgver=0.20
-pkgrel=1
-_distname="Text-ASCIITable-${pkgver}"
-pkgdesc="Perl/CPAN Module Text::ASCIITable"
-arch=("i686" "x86_64")
-url="https://metacpan.org/pod/Text::ASCIITable"
-license=("GPL" "Artistic")
-source=("https://cpan.metacpan.org/authors/id/L/LU/LUNATIC/${_distname}.tar.gz")
-sha256sums=('866a1c7dd0150be75e1a4be275858dfc048a165f378ef3845a844526f019a69c')
+pkgname='perl-text-asciitable'
+pkgver='0.22'
+pkgrel='1'
+pkgdesc="Create a nice formatted table using ASCII characters."
+arch=('any')
+license=('PerlArtistic' 'GPL')
+options=('!emptydirs')
+depends=('perl>=5.6.0')
+makedepends=()
+url='https://metacpan.org/release/Text-ASCIITable'
+source=('http://search.cpan.org/CPAN/authors/id/L/LU/LUNATIC/Text-ASCIITable-0.22.tar.gz')
+md5sums=('6c34e6ed4575d59e8a51cbd4341e85f2')
+sha512sums=('cdf550b84c1dbe2b39aa59945a53964237444e55ad64af26d736c4a3525bb037dbf4fb38f380cd9d6477cb8f98017a1e57668ca63139137d58d0ed45287e4bf9')
+_distdir="Text-ASCIITable-0.22"
+
+build() {
+  ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
+      PERL_AUTOINSTALL=--skipdeps                            \
+      PERL_MM_OPT="INSTALLDIRS=vendor DESTDIR='$pkgdir'"     \
+      PERL_MB_OPT="--installdirs vendor --destdir '$pkgdir'" \
+      MODULEBUILDRC=/dev/null
+
+    cd "$srcdir/$_distdir"
+    /usr/bin/perl Makefile.PL
+    make
+  )
+}
+
+check() {
+  cd "$srcdir/$_distdir"
+  ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""
+    make test
+  )
+}
 
 package() {
-  cd $_distname
-  PERL_MM_USE_DEFAULT=1 perl Makefile.PL INSTALLDIRS=vendor || return 1
-  make || return 1
-  make install DESTDIR="$pkgdir" || return 1
+  cd "$srcdir/$_distdir"
+  make install
+
+  find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
 }
+
+# Local Variables:
+# mode: shell-script
+# sh-basic-offset: 2
+# End:
+# vim:set ts=2 sw=2 et:
