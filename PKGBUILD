@@ -9,7 +9,7 @@
 _pack=mechanics
 pkgname=octave-$_pack
 pkgver=1.3.1
-pkgrel=4
+pkgrel=5
 pkgdesc="Library with functions useful for numerical computation in classical mechanics and structural analysis."
 arch=(any)
 url="http://octave.sourceforge.net/$_pack/"
