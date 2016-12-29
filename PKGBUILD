@@ -10,7 +10,7 @@ depends=('cairo>=1.12.0' 'boost>=1.55' 'libpng')
 makedepends=('cmake' 'asciidoc')
 
 source=("https://github.com/alacarte-maps/alacarte/archive/v${pkgver}.tar.gz")
-sha256sums=('SKIP')
+sha256sums=('1df0c919ba9b01688feffe304f022045c28a42c702f505f4196a11f156facd7a')
 
 build() {
   cd "${srcdir}/alacarte-${pkgver}"

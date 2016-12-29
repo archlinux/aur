@@ -14,7 +14,7 @@ pkgbase = alacarte-maps
 	depends = boost>=1.55
 	depends = libpng
 	source = https://github.com/alacarte-maps/alacarte/archive/v0.4.0.tar.gz
-	sha256sums = SKIP
+	sha256sums = 1df0c919ba9b01688feffe304f022045c28a42c702f505f4196a11f156facd7a
 
 pkgname = alacarte-maps
 
