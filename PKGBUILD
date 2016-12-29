@@ -10,7 +10,7 @@
 _pack=sparsersb
 pkgname=octave-$_pack
 pkgver=1.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Interface to the librsb package implementing the RSB sparse matrix format."
 arch=(any)
 url="http://octave.sourceforge.net/$_pack/"
