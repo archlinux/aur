@@ -10,7 +10,7 @@
 _pack=image-acquisition
 pkgname=octave-$_pack
 pkgver=0.2.2
-pkgrel=3
+pkgrel=4
 pkgdesc="The Octave-forge Image Aquisition package provides functions to capture images from connected devices. Currently only v4l2 is supported."
 arch=(any)
 url="http://octave.sourceforge.net/$_pack/"
