@@ -10,7 +10,7 @@
 _pack=stk
 pkgname=octave-$_pack
 pkgver=2.3.4
-pkgrel=1
+pkgrel=2
 pkgdesc=" The STK is a (not so) Small Toolbox for Kriging. Its primary focus is on the interpolation/regression technique known as kriging, which is very closely related to Splines and Radial Basis Functions, and can be interpreted as a non-parametric Bayesi [...]"
 arch=(any)
 url="http://octave.sourceforge.net/$_pack/"
