@@ -30,3 +30,19 @@ pkgbase = ttf-dseg
 
 pkgname = ttf-dseg
 
+pkgbase = ttf-dseg
+	pkgdesc = Font family that imitates seven and fourteen segment displays
+	pkgver = 030
+	pkgrel = 2
+	url = http://www.keshikan.net/fonts-e.html
+	arch = any
+	license = custom
+	depends = fontconfig
+	depends = xorg-fonts-encodings
+	depends = xorg-mkfontscale
+	depends = xorg-mkfontdir
+	source = http://www.keshikan.net/archive/DSEG_v030.zip
+	sha256sums = 893478aa877e894c79b79dfbbc363be131d1d5060d1f79abe6c135cf57e8166b
+
+pkgname = ttf-dseg
+
