@@ -10,7 +10,7 @@
 _pack=optics
 pkgname=octave-$_pack
 pkgver=0.1.3
-pkgrel=2
+pkgrel=3
 pkgdesc="Functions covering various aspects of optics"
 arch=(any)
 url="http://octave.sourceforge.net/$_pack/"
