@@ -4,13 +4,13 @@
 # Some lines from  kernel26-bfs and kernel26-ck
 # Credits to respective maintainers
 _major=4
-_minor=8
+_minor=9
 #_patchlevel=0
 #_subversion=1
 _basekernel=${_major}.${_minor}
 _srcname=linux-${_major}.${_minor}
 pkgbase=linux-pf
-_pfrel=9
+_pfrel=2
 _kernelname=-pf
 _pfpatchhome="http://pf.natalenko.name/sources/${_basekernel}/"
 _pfpatchname="patch-${_basekernel}${_kernelname}${_pfrel}"
@@ -86,7 +86,6 @@ source=("ftp://www.kernel.org/pub/linux/kernel/v${_major}.x/linux-${_basekernel}
         "git+$_aufs3#branch=aufs$_major.$_minor"
         "uksm-$_major.$_minor.patch"::"http://kerneldedup.org/download/uksm/0.1.2.5/uksm-0.1.2.5-for-v$_major.$_minor.patch"
         "99-linux-pf.hook"
-        'net_handle_no_dst_on_skb_in_icmp6_send.patch'
         '0001-x86-fpu-Fix-invalid-FPU-ptrace-state-after-execve.patch'
        )
 # 	'cx23885_move_CI_AC_registration_to_a_separate_function.patch'     
@@ -133,11 +132,6 @@ prepare() {
   # remove this when a Kconfig knob is made available by upstream
   # (relevant patch sent upstream: https://lkml.org/lkml/2011/7/26/227)
   patch -Np1 -i "${srcdir}/change-default-console-loglevel.patch"
-
-
-  
-  # https://bugzilla.kernel.org/show_bug.cgi?id=189851
-  patch -p1 -i "${srcdir}/net_handle_no_dst_on_skb_in_icmp6_send.patch"
   
   # Revert a commit that causes memory corruption in i686 chroots on our
   # build server ("valgrind bash" immediately crashes)
@@ -720,14 +714,13 @@ package_linux-pf-preset-default()
 pkgdesc="Linux kernel and modules with the pf-kernel patch [-ck patchset (BFS included), TuxOnIce, BFQ], uksm and aufs3"
 
 # makepkg -g >>PKGBUILD
-sha256sums=('3e9150065f193d3d94bcf46a1fe9f033c7ef7122ab71d75a7fb5a2f0c9a7e11a'
-            'f691af1934d1febbc05c84961f078c0c2ff99ae6f69905155c76d6cfd2417665'
-            '207b3db4f0572a77a46c5420f70ea6b75637e0b51bf1624c1bd465c4363db3b9'
+sha256sums=('029098dcffab74875e086ae970e3828456838da6e0ba22ce3f64ef764f3d7f1a'
+            '61bb7eaf001893a01185570d157aa4e1b01adc10fcbb7edcad548b0fc3a80a07'
+            '79012bea34656c9130f58d163f23cedd1cf981689e2e1532bab7c6caf734c882'
             '82d660caa11db0cd34fd550a049d7296b4a9dcd28f2a50c81418066d6e598864'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
-            '72e1b8c84c6c4268af1a036d3609460af17b9b67974bba4ac289fa38ec5c1b7c'
+            '970006c03f917f8494dbad78de5866adf5651ad27ef27eea56738eef5ae2898d'
             'SKIP'
-            '4473dbed2a84f4e81cc1e11ae5f8f72d076fa210d45e956d1967f96b6aa87a6d'
+            '7bf7954c425dc5a1d73f9c634d95d19e800da465d0015a5b592deb77803b3cc1'
             'df07e00e8581fe282a5b92be9ee9bb37910eae3d2cc43eeb41df736b9f531f02'
-            'b595a1588bafb3d732841cd1b73633970706914f57f2d215c9f1494212d13989'
             '3e955e0f1aae96bb6c1507236adc952640c9bd0a134b9995ab92106a33dc02d9')
