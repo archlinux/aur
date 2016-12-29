@@ -1,12 +1,12 @@
 # Maintainer: Jan Wozniak <wozniak.jan@gmail.com>
 
 pkgname=riakts
-pkgver=1.4.0
-pkgrel=2
+pkgver=1.5.0
+pkgrel=1
 pkgdesc='Distributed NoSQL key/value store optimized for time series data'
 arch=('i686' 'x86_64')
 license=('APACHE')
-url=http://docs.basho.com/riak/ts/1.4.0/downloads/
+url=http://docs.basho.com/riak/ts/1.5.0/downloads/
 conflicts=('tsung', 'riak')
 makedepends=('erlang-basho' 'java-environment')
 optdepends=('jdk7-openjdk')
@@ -14,10 +14,10 @@ options=('!makeflags')
 backup=('opt/riakts/etc/riak.conf')
 install='riakts.install'
 source=(
-    "http://s3.amazonaws.com/downloads.basho.com/riak_ts/1.4/${pkgver}/riak_ts-${pkgver}.tar.gz"
+    "http://s3.amazonaws.com/downloads.basho.com/riak_ts/1.5/${pkgver}/riak_ts-${pkgver}.tar.gz"
     'riakts.service'
 )
-md5sums=('d8ae0af59c8aa05d50babcf8d3089d70'
+md5sums=('4babc13259a75c9b31f267bcc79b4dec'
          '370ce648bfed4ac00db20178f7a6735b')
 
 build() {
