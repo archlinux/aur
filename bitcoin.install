@@ -101,7 +101,7 @@ read -d '' bitcoin <<'EOF'
 ##                                                                    ##
 ##  To start bitcoin-classic:                                         ##
 ##                                                                    ##
-##      # systemctl start bitcoin                                     ##
+##      # systemctl start bitcoind                                    ##
 ##                                                                    ##
 ##  To communicate with bitcoin-classic as a normal user:             ##
 ##                                                                    ##
