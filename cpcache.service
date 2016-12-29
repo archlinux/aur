@@ -4,6 +4,8 @@ After=network.target
 
 [Service]
 Type=simple
+KillMode=process
+TimeoutSec=10
 User=cpcache
 Group=cpcache
 ExecStart=/usr/share/cpcache/bin/cpcache foreground
