@@ -2,12 +2,12 @@
 
 pkgname=gitea
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Git with a cup of tea, forked from Gogs. Is a Self Hosted Git Service in the Go Programming Language.'
 arch=('x86_64' 'i686')
 url='http://gitea.io'
 license=('MIT')
-depends=('git')
+depends=('git' 'go>=1.6')
 optdepends=('sqlite: SQLite support'
             'mariadb: MariaDB support'
             'postgresql: PostgreSQL support'
