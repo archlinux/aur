@@ -13,6 +13,7 @@ pkgbase = bitcoin-classic
 	makedepends = qt5-tools
 	depends = boost-libs
 	depends = libevent
+	depends = desktop-file-utils
 	depends = qt5-base
 	depends = protobuf
 	depends = openssl
