@@ -1,0 +1,15 @@
+pkgbase = libwsclient-git
+	pkgdesc = WebSocket client library for C.
+	pkgver = 28.d416fcb
+	pkgrel = 1
+	url = https://github.com/payden/libwsclient
+	arch = any
+	license = GPL-3.0
+	makedepends = make
+	makedepends = gcc
+	makedepends = libtool
+	source = git+https://github.com/payden/libwsclient.git
+	sha256sums = SKIP
+
+pkgname = libwsclient-git
+
