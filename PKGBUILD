@@ -10,7 +10,7 @@
 _pack=ocs
 pkgname=octave-$_pack
 pkgver=0.1.5
-pkgrel=3
+pkgrel=4
 pkgdesc="Package for solving DC and transient electrical circuit equations "
 arch=(any)
 url="http://octave.sourceforge.net/$_pack/"
