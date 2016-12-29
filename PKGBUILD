@@ -9,7 +9,7 @@
 _pack=nan
 pkgname=octave-$_pack
 pkgver=3.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A statistics and machine learning toolbox for data with and w/o missing values"
 arch=(any)
 url="http://octave.sourceforge.net/$_pack/"
