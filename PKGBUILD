@@ -5,7 +5,7 @@
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=heirloom-sh-cvs
 pkgver=2011.06.22
-pkgrel=2
+pkgrel=3
 pkgdesc="A portable variant of the traditional Unix shell, implements the SVR4/SVID3 level of the shell."
 arch=('i686' 'x86_64')
 url="http://heirloom.sourceforge.net/sh.html"
@@ -13,7 +13,7 @@ license=('custom:"caldera"' 'custom:"opensolaris"')
 provides=('sh' 'heirloom-sh')
 replaces=('heirloom-sh')
 makedepends=('cvs')
-conflicts=()
+conflicts=('heirloom-sh')
 source=('000-config.diff')
 md5sums=('991b32bee780ce48685dfd4d39d41443')
 sha1sums=('0119962358fce0b5ba88eab750d1ef2d91402428')
