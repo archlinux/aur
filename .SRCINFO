@@ -1,0 +1,15 @@
+pkgbase = vtk5
+	pkgdesc = Visualization Toolkit (VTK)
+	pkgver = 5.8
+	pkgrel = 1
+	url = http://www.vtk.org
+	arch = i686
+	arch = x86_64
+	depends = cmake
+	depends = qt4
+	depends = python2
+	source = http://www.vtk.org/files/release/5.8/vtk-5.8.0.tar.gz
+	md5sums = 37b7297d02d647cc6ca95b38174cb41f
+
+pkgname = vtk5
+
