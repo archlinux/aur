@@ -5,7 +5,7 @@
 
 pkgname=r-mkl
 pkgver=3.3.2
-pkgrel=6
+pkgrel=7
 pkgdesc="Language and environment for statistical computing and graphics, linked to the Intel(R) MKL."
 arch=('x86_64')
 license=('GPL')
@@ -87,8 +87,10 @@ build() {
 
   if [ $_CC = "icc" ]; then
     source ${MKLROOT}/../bin/compilervars.sh ${_intel_arch}
-    _intel_cc_opt=" -O3 -xHost -m64 -qopenmp -ipo -diag-disable=188,308"
-    export MAIN_LDFLAGS=" -qopenmp"
+    _intel_cc_opt=" -O3 -xHost -m64 -qopenmp -ipo -fp-model strict -fp-model source -diag-disable=188,308"
+    # If `-ipo` is used, LDFLAGS need to match CFLAGS
+    # because IPO is done at link time
+    export MAIN_LDFLAGS=${_intel_cc_opt}
     export FLIBS=" -lgfortran -lifcore -lifport"
 
     # Single Dynamic Library (SDL)
@@ -109,7 +111,7 @@ build() {
     export FFLAGS="${_intel_cc_opt} -I${MKLROOT}/include"
     export FCFLAGS="${_intel_cc_opt} -I${MKLROOT}/include"
   else
-    _gcc_opt=" -O3 -fopenmp -m64"
+    _gcc_opt=" -O3 -m64 -fopenmp"
     export MAIN_LDFLAGS=" -fopenmp"
 
     # Single Dynamic Library does not work for GCC
