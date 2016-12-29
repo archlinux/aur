@@ -8,13 +8,14 @@ pkgdesc="fast and general engine for large-scale data processing"
 arch=('any')
 url="http://spark.apache.org"
 license=('APACHE')
-depends=('java-environment>=6' 'hadoop')
+depends=('java-environment>=6')
 optdepends=('python2: python2 support for pyspark'
             'ipython2: ipython2 support for pyspark'
             'python: python3 support for pyspark'
             'ipython: ipython3 support for pyspark'
             'r: support for sparkR'
-            'rsync: support rsync hadoop binaries from master')
+            'rsync: support rsync hadoop binaries from master'
+            'hadoop: support for running on YARN')
 install=apache-spark.install
 source=("http://d3kbcqa49mib13.cloudfront.net/spark-${pkgver}-bin-without-hadoop.tgz"
         'apache-spark-master.service'
