@@ -21,13 +21,13 @@ backup=()
 options=()
 install=
 changelog=
-source=("https://sourceforge.net/projects/guitarix/files/specmatch/python-$pkgname-$pkgver.tar.gz")
+source=("https://sourceforge.net/projects/guitarix/files/specmatch/python-$pkgname-$pkgver.tar.gz/download")
 noextract=()
 md5sums=('032ac92fd766a4f5707075a935c35d5d')
 validpgpkeys=()
 
 prepare() {
-    pip install --install-option="--prefix=$pkgdir" scikits.audiolab 
+    pip2 install --install-option="--prefix=$pkgdir" scikits.audiolab 
 }
 
 package () {
