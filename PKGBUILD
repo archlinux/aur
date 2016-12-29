@@ -1,5 +1,5 @@
 pkgname=mingw-w64-opencv
-pkgver=3.1.0
+pkgver=3.2.0
 pkgrel=1
 pkgdesc="Open Source Computer Vision Library (mingw-w64)"
 arch=('any')
@@ -9,7 +9,7 @@ options=('!buildflags' 'staticlibs' '!strip')
 depends=('mingw-w64-crt' 'mingw-w64-jasper' 'mingw-w64-libpng' 'mingw-w64-libjpeg-turbo' 'mingw-w64-libtiff' 'mingw-w64-zlib' 'mingw-w64-openexr' 'mingw-w64-libwebp')
 makedepends=('mingw-w64-cmake')
 source=("https://github.com/Itseez/opencv/archive/${pkgver}.tar.gz")
-md5sums=('70e1dd07f0aa06606f1bc0e3fa15abd3')
+md5sums=('a43b65488124ba33dde195fea9041b70')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
