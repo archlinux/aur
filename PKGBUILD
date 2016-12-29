@@ -10,7 +10,7 @@
 _pack=windows
 pkgname=octave-$_pack
 pkgver=1.2.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Provides COM interface and additional functionality on Windows"
 arch=(any)
 url="http://octave.sourceforge.net/$_pack/"
