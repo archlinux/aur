@@ -5,7 +5,7 @@
 
 pkgname=r-mkl
 pkgver=3.3.2
-pkgrel=7
+pkgrel=8
 pkgdesc="Language and environment for statistical computing and graphics, linked to the Intel(R) MKL."
 arch=('x86_64')
 license=('GPL')
@@ -93,9 +93,12 @@ build() {
     export MAIN_LDFLAGS=${_intel_cc_opt}
     export FLIBS=" -lgfortran -lifcore -lifport"
 
-    # Single Dynamic Library (SDL)
+    # Dynamic Linking
     _mkllibs=" -L${MKLROOT}/lib/${_intel_arch} \
-      -lmkl_rt \
+      -l${_intel_lib} \
+      -lmkl_intel_thread \
+      -lmkl_core \
+      -liomp5 \
       -lpthread \
       -lm \
       -ldl"
@@ -114,8 +117,7 @@ build() {
     _gcc_opt=" -O3 -m64 -fopenmp"
     export MAIN_LDFLAGS=" -fopenmp"
 
-    # Single Dynamic Library does not work for GCC
-    # Using Dynamic Linking
+    # Dynamic Linking
     _mkllibs=" -L${MKLROOT}/lib/${_intel_arch} \
       -Wl,--no-as-needed \
       -l${_gfortran_lib} \
