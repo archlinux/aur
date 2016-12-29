@@ -12,7 +12,6 @@ pkgbase = bitcoin-classic-git
 	makedepends = boost
 	makedepends = qt5-tools
 	depends = boost-libs
-	depends = desktop-file-utils
 	depends = libevent
 	depends = qt5-base
 	depends = protobuf
