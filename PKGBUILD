@@ -9,7 +9,7 @@
 _pack=optim
 pkgname=octave-$_pack
 pkgver=1.5.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Non-linear optimization toolkit."
 arch=(any)
 url="http://octave.sourceforge.net/$_pack/"
