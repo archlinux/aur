@@ -1,0 +1,13 @@
+[Unit]
+Description=Radarr Service
+After=network.target
+
+[Service]
+User=radarr
+Group=radarr
+ExecStart=/usr/bin/radarr -nobrowser -data=/var/lib/radarr
+Type=simple
+TimeoutStopSec=20
+
+[Install]
+WantedBy=multi-user.target
