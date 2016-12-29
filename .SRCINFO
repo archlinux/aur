@@ -1,6 +1,6 @@
 pkgbase = gcode3d-git
 	pkgdesc = GCode Visualizer
-	pkgver = afc5014
+	pkgver = df9c77d
 	pkgrel = 1
 	url = https://github.com/patrickelectric/Gcode3D
 	arch = i686

@@ -1,7 +1,7 @@
 # Maintainer: Patrick josé Pereira  <gmail.com@patrickelectric>
 pkgname=gcode3d-git
 confilicts=('gcode3d')
-pkgver=afc5014
+pkgver=df9c77d
 pkgrel=1
 pkgdesc="GCode Visualizer"
 arch=('i686' 'x86_64')
@@ -19,7 +19,9 @@ pkgver() {
 
 build() {
   cd "Gcode3D"
-  cmake -DCMAKE_INSTALL_PREFIX=$(qtpaths --install-prefix) -DCMAKE_BUILD_TYPE=Release CMakeLists.txt
+  mkdir "build" || true
+  cd "build"
+  cmake ..
   make
   make install
 }
