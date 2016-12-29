@@ -1,0 +1,31 @@
+From d64dba737d0136b58545be33c50db093df1880c1 Mon Sep 17 00:00:00 2001
+From: John Stebbins <jstebbins.hb@gmail.com>
+Date: Tue, 27 Dec 2016 08:57:06 -0800
+Subject: [PATCH] encavcodec: fix 2 pass vp8 and vp9 encoding
+
+libvpx only supplies the stats upon the final flush of the encoder.  So
+we must also write stats after final flush.
+---
+ libhb/encavcodec.c | 9 +++++++++
+ 1 file changed, 9 insertions(+)
+
+diff --git a/libhb/encavcodec.c b/libhb/encavcodec.c
+index 0543fe4..591aa4f 100644
+--- a/libhb/encavcodec.c
++++ b/libhb/encavcodec.c
+@@ -610,6 +610,15 @@ static void Flush( hb_work_object_t * w, hb_buffer_list_t * list )
+     hb_work_private_t * pv = w->private_data;
+ 
+     avcodec_send_frame(pv->context, NULL);
++
++    // Write stats
++    // vpx only writes stats at final flush
++    if (pv->job->pass_id == HB_PASS_ENCODE_1ST &&
++        pv->context->stats_out != NULL)
++    {
++        fprintf( pv->file, "%s", pv->context->stats_out );
++    }
++
+     get_packets(w, list);
+ }
+ 
