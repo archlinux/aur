@@ -10,7 +10,7 @@
 _pack=mvn
 pkgname=octave-$_pack
 pkgver=1.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Multivariate normal distribution clustering and utility functions."
 arch=(any)
 url="http://octave.sourceforge.net/$_pack/"
