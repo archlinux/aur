@@ -10,7 +10,7 @@
 _pack=video
 pkgname=octave-$_pack
 pkgver=1.2.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A wrapper for ffmpeg's libavformat and libavcodec, implementing addframe, avifile, aviinfo and aviread."
 arch=(any)
 url="http://octave.sourceforge.net/$_pack/"
