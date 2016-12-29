@@ -7,7 +7,7 @@ groups=('zarafa'
 replaces=('zarafa-server-arm')
 pkgver=7.2.4.29
 _pkgmajver=7.2
-pkgrel=128
+pkgrel=129
 pkgdesc="Open Source Groupware Solution"
 arch=('armv7h'
       'armv6h'
@@ -132,7 +132,7 @@ source=("https://download.zarafa.com/community/final/${_pkgmajver}/${pkgver}/zcp
 	'zarafa-tools::git+https://github.com/zarafagroupware/zarafa-tools.git'
 	'python-zarafa::git+https://github.com/zarafagroupware/python-zarafa.git'
 	'zarafa-inspector::git+https://github.com/zarafagroupware/zarafa-inspector.git'
-	'zarafa-pietma::git+https://git.pietma.com/pietma/com-pietma-zarafa.git#tag=v0.15'
+	'zarafa-pietma::git+https://git.pietma.com/pietma/com-pietma-zarafa.git#tag=v0.16'
 	'ECDBDef.h'
 	'ECDatabaseMySQL.cpp'
 	'ECDatabaseUpdate.h'
