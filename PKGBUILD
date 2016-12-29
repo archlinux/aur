@@ -8,7 +8,7 @@
 
 _pkgname=gitlab
 pkgname=gitlab-ee
-pkgver=8.15.1
+pkgver=8.15.2
 pkgrel=1
 pkgdesc="Project management and code hosting application"
 arch=('i686' 'x86_64')
@@ -27,7 +27,7 @@ backup=("etc/webapps/${_pkgname}/application.rb"
         "etc/webapps/${_pkgname}/resque.yml"
         "etc/webapps/${_pkgname}/unicorn.rb"
         "etc/logrotate.d/${_pkgname}")
-source=("${pkgname}-${pkgver}.tar.gz::https://gitlab.com/gitlab-org/gitlab-ee/repository/archive.tar.gz?ref=v${pkgver}-ee"
+source=("${pkgname}-${pkgver}.tar.bz2::https://gitlab.com/gitlab-org/gitlab-ee/repository/archive.tar.bz2?ref=v${pkgver}-ee"
         gitlab-unicorn.service
         gitlab-sidekiq.service
         gitlab-backup.service
@@ -44,7 +44,7 @@ source=("${pkgname}-${pkgver}.tar.gz::https://gitlab.com/gitlab-org/gitlab-ee/re
         nginx-ssl.conf.example
         lighttpd.conf.example)
 install='gitlab.install'
-sha512sums=('c7795fab969ebc865f15a5fe44b7054468a56703d37f4811ce0c5cd7caf1b3b7f2f3c22e8cc025b8843be7d1a9290d428f45564b0db640b96f2e4bda66924ce9'
+sha512sums=('a46367a2a96a28344da824afe3f3a89a2a3f6b5f6582a1f6a51e122655a585820abbf1fceb19a59a4497788d92896bfeab6705c6e88df2ffdf45e2c63fb4cfcb'
             '1464ca9399b627bb8bd286608b4ad93feca6bc54c7e63c98180744e710295508a89a1a34c412b82e3eaad9308a82b2ea2483ae0f0b1e1149c24b17ab0d126f69'
             '9844b8e42e8d50e6eac54711fb8c9745d506560676e0b8d5f1c42fb5177b9b4bac5c0d3c6a673d9e54f4b5e21056627db1d434c5c76d4f3ede8cc15a109f3cb6'
             'e74f54224e7fd5f24c3459f34649ce5fddc70886faf7eb8520513d8715b3c17452aab62676b779c136ba576193a09ae3a5471abe51013d7ecd8b37d6e0acd393'
@@ -65,7 +65,7 @@ _datadir="/usr/share/webapps/${_pkgname}"
 _etcdir="/etc/webapps/${_pkgname}"
 _homedir="/var/lib/${_pkgname}"
 _logdir="/var/log/${_pkgname}"
-_srcdir="${pkgname}-v${pkgver/_/-}-ee-"
+_srcdir="${_pkgname}-ee-v${pkgver/_/-}-ee-"
 
 prepare() {
   cd "${srcdir}/${_srcdir}"*
