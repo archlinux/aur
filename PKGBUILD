@@ -10,7 +10,7 @@
 _pack=mapping
 pkgname=octave-$_pack
 pkgver=1.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Simple Mapping and GIS .shp file functions."
 arch=(any)
 url="http://octave.sourceforge.net/$_pack/"
