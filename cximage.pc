@@ -7,7 +7,7 @@ includedir=${prefix}/include
 
 Name: CxImage
 Description: CxImage Image Manipulation Library
-Version: 6.0.0
+Version: 7.0.0
 Libs: -L${libdir} -lcximage
 Cflags: -I${includedir}/CxImage
 Requires.private: libpng16 zlib
