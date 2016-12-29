@@ -1,7 +1,7 @@
 # Maintainer: kusakata <shohei atmark kusakata period com>
 
 pkgname=ngraph-gtk
-pkgver=6.07.01
+pkgver=6.07.02
 pkgrel=1
 pkgdesc="A tool for creating scientific 2-dimensional graphs"
 url="https://github.com/htrb/ngraph-gtk"
@@ -30,4 +30,4 @@ package() {
   install -Dm644 ngp2.1 "${pkgdir}/usr/share/man/man1/ngp2.1"
 }
 
-md5sums=('e647fed409d95e454ba844b1b4aee97d')
+md5sums=('7ceb85af852fd875c57c62a5918565ed')
