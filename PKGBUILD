@@ -1,7 +1,7 @@
 # Maintainer: Claudio d'Angelis <claudiodangelis at gmail dot com>
 pkgname=postman-bin
 pkgver=4.9.3
-pkgrel=2
+pkgrel=3
 pkgdesc="Build, test, and document your APIs faster"
 arch=('x86_64')
 url="https://www.getpostman.com"
@@ -14,7 +14,7 @@ md5sums=(
 	"130c1267e63291ee39207655d08b7117"
     "ebf1903fa3299a8cf3eb578674ee090f"
 )
-
+depends=('gconf')
 package() {
 	install -dm755 "${pkgdir}/opt/"
 	chmod -R 755 "Postman"
