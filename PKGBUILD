@@ -3,9 +3,9 @@
 pkgname=intellij-idea-ue-bundled-jre
 pkgver=2016.3.1
 _buildver=163.9166.29
-pkgrel=2
+pkgrel=3
 pkgdesc="Jetbrains IDE for Java and other programming languages. This packages contains a bundled JRE."
-arch=('any')
+arch=('i686' 'x86_64')
 url="https://www.jetbrains.com/idea/"
 backup=("usr/share/${pkgname}/bin/idea.vmoptions" "usr/share/${pkgname}/bin/idea64.vmoptions" "usr/share/${pkgname}/bin/idea.properties")
 license=('Commercial')
