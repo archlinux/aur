@@ -2,7 +2,7 @@
 
 _pkgname=pwsafe
 pkgname=passwordsafe
-_pkgver=1.00
+_pkgver=1.01
 pkgver="$_pkgver"BETA
 pkgrel=1
 pkgdesc="Simple & Secure Password Management"
@@ -17,7 +17,7 @@ conflicts=('passwordsafe-debian' 'passwordsafe-git' 'pwsafe' 'pwsafe-gui')
 source=(https://github.com/pwsafe/pwsafe/archive/$pkgver.tar.gz
 	https://github.com/pwsafe/pwsafe/releases/download/$pkgver/$pkgver.tar.gz.sig)
 validpgpkeys=('A703C1328EABC7B201753BA3919464515CCF8BB3')  #Rony Shapiro
-sha1sums=('44693a6442afb71bf5f3a6eb228205eef507e282'
+sha1sums=('46e8c172de272f733c4703adf7bc04ad1a7943f4'
           'SKIP')
 
 prepare() {
