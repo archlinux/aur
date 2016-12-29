@@ -1,6 +1,6 @@
 # Maintainer: Dominik Schreiber <dev@dominikschreiber.de>
 pkgname=plasma5-runners-symbols
-pkgver=1.0.2
+pkgver=1.0.3
 pkgrel=1
 pkgdesc="A little krunner plugin (Plasma 5) to retrieve unicode symbols, or any other string, based on a corresponding keyword"
 arch=('any')
@@ -35,4 +35,4 @@ package() {
   make install DESTDIR="${pkgdir}"
 }
 
-md5sums=('a79dcbc6b6a638f57fab529cf1f030a4')
+md5sums=('250f55e4c06cef59f5c94293b2659d49')
