@@ -1,11 +1,10 @@
 pkgname=jackett-public
 pkgver=0.6.45.3
-pkgrel=3
+pkgrel=4
 pkgdesc='Use any tracker with Sonarr (Public Tracker Version)'
 arch=('any')
 license=('GPL')
 url='https://github.com/Jackett/Jackett'
-conflicts=('jackett')
 depends=('mono' 'curl')
 source=("https://github.com/dreamcat4/Jackett-public/releases/download/v${pkgver}/Jackett-public.Binaries.Mono.tar.gz"
         "jackett-public.service")

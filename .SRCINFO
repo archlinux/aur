@@ -8,7 +8,6 @@ pkgbase = jackett-public
 	license = GPL
 	depends = mono
 	depends = curl
-	conflicts = jackett
 	source = https://github.com/dreamcat4/Jackett-public/releases/download/v0.6.45.3/Jackett-public.Binaries.Mono.tar.gz
 	source = jackett-public.service
 	md5sums = 7ed61a1574a82b86ded63350dc4d5ba2
