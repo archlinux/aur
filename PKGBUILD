@@ -9,7 +9,7 @@
 _pack=linear-algebra
 pkgname=octave-$_pack
 pkgver=2.2.2
-pkgrel=3
+pkgrel=4
 pkgdesc="Additional linear algebra code, including general SVD and matrix functions."
 arch=(any)
 url="http://octave.sourceforge.net/$_pack/"
