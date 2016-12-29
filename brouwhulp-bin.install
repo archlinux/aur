@@ -1,0 +1,16 @@
+post_install() {
+cat << EOF
+
+######################################################################
+	Please keep in mind the following: 
+	Additional MANDATORY AUR dependencies
+
+		(32bit only) lib32-qt4pas
+######################################################################
+
+EOF
+}
+
+post_upgrade() {
+    post_install
+}
