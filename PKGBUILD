@@ -9,7 +9,7 @@
 _pack=struct
 pkgname=octave-$_pack
 pkgver=1.0.14
-pkgrel=1
+pkgrel=2
 pkgdesc="Additional Structure manipulations functions."
 arch=(any)
 url="http://octave.sourceforge.net/$_pack/"
