@@ -10,7 +10,7 @@
 _pack=secs2d
 pkgname=octave-$_pack
 pkgver=0.0.8
-pkgrel=3
+pkgrel=4
 pkgdesc="A Drift-Diffusion simulator for 2d semiconductor devices"
 arch=(any)
 url="http://octave.sourceforge.net/$_pack/"
