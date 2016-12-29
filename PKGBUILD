@@ -11,9 +11,9 @@ license=('WTFPL')
 depends=('bash' 'torsocks' 'tor' 'gnupg')
 makedepends=('git')
 source=('git://perot.me/parcimonie.sh'
-		'pgp-key::https://perot.me/pgp-minimal.asc')
+        'pgp-key::https://perot.me/pgp-minimal.asc')
 sha512sums=('SKIP'
-			'0f473fb9b853803570c8213eecbdf43f672cc55c6f39c59c9801b70bbdf33cddb7aedf44c0fc0fef632460c6325157dbf31d1043891ff186d2d064703f0fe97e')
+            'c5aaa5de31174ee0d1d8937aa5ec17fab3784688f65d7046210b37f9c3a55eee97c1c5dc7ee43c34f961fb043e59cdfd1788ea7dbca1a0e94b3fa996952bc286')
 
 pkgver() {
 	cd "$startdir/parcimonie.sh"
