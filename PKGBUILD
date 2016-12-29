@@ -10,7 +10,7 @@
 _pack=level-set
 pkgname=octave-$_pack
 pkgver=0.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Routines for calculating the time-evolution of the level-set equation and extracting geometric information from the level-set function."
 arch=(any)
 url="http://octave.sourceforge.net/$_pack/"
