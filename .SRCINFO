@@ -1,0 +1,12 @@
+pkgbase = pick-colour-picker
+	pkgdesc = Pick. A colour picker that remembers where you picked colours from
+	pkgver = 1.5.0
+	pkgrel = 1
+	url = http://kryogenix.org/code/pick/
+	arch = any
+	license = custom
+	source = pick-colour-picker_-1.5.0201606011144-ubuntu16.10.1_all.deb::http://kryogenix.org/code/pick/ppadl.php?ppa=pick&owner=sil&pkg=pick-colour-picker
+	md5sums = 2ab08872bc92586298dfd08141057bc8
+
+pkgname = pick-colour-picker
+
