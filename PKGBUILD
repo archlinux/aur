@@ -4,12 +4,12 @@
 
 pkgname=tango-icon-theme
 pkgver=0.8.90
-pkgrel=10
+pkgrel=11
 pkgdesc="Icon theme that follows the Tango visual guidelines"
 arch=('any')
 url="http://tango.freedesktop.org"
 license=('custom:public domain' 'custom:TRADEMARKS')
-makedepends=('imagemagick' 'icon-naming-utils' 'intltool')
+makedepends=('imagemagick' 'icon-naming-utils' 'intltool' 'librsvg')
 options=(!strip !zipman)
 source=(${url}/releases/${pkgname}-${pkgver}.tar.bz2
         http://cinderwick.ca/files/archlinux/artwork-official/symbol.svg
