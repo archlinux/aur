@@ -1,14 +1,14 @@
 # Maintainer: Munzir Taha <munzirtaha at gmail dot com>
 pkgname=hunspell-ar
-pkgver=3.2
-pkgrel=3
+pkgver=3.5
+pkgrel=1
 pkgdesc="Arabic dictionary for hunspell"
 arch=(any)
 url="http://ayaspell.sourceforge.net"
 license=('GPL' 'LGPL' 'MPL')
 optdepends=('hunspell: the spell checking libraries and apps')
-source=(http://downloads.sourceforge.net/project/ayaspell/${pkgname}_${pkgver}.zip)
-sha256sums=('cd4d48f13d5b68dc6e94e215d99cb214777eb20459f4be9f0caa3e40340736f5')
+source=(http://downloads.sourceforge.net/project/ayaspell/${pkgname}_${pkgver}.2014-11-08.zip)
+sha256sums=('966faf94e7d05d52e9afdd20b266e28932edf5b32fe26aa83d554d6a2c6021ea')
 
 build() {
  /bin/true
