@@ -1,7 +1,7 @@
 pkgbase = systemd-git
 	pkgdesc = systemd from git
-	pkgver = 230.r197.g7f40134
-	pkgrel = 2
+	pkgver = 232.r485.g4b2419165
+	pkgrel = 1
 	url = http://www.freedesktop.org/wiki/Software/systemd
 	arch = i686
 	arch = x86_64
@@ -29,21 +29,22 @@ pkgbase = systemd-git
 	makedepends = gnu-efi-libs
 	makedepends = git
 	options = strip
-	options = debug
-	source = git://github.com/systemd/systemd.git#branch=master
+	source = systemd-git::git://github.com/systemd/systemd.git#branch=master
 	source = initcpio-hook-udev
 	source = initcpio-install-systemd
 	source = initcpio-install-udev
 	source = arch.conf
 	source = loader.conf
 	source = udev-hwdb.hook
-	md5sums = SKIP
-	md5sums = 90ea67a7bb237502094914622a39e281
-	md5sums = cfb3f8ea657ab24535cc061bb38ec4c1
-	md5sums = 1b3aa3a0551b08af9305d33f85b5c2fc
-	md5sums = 20ead378f5d6df4b2a3e670301510a7d
-	md5sums = ddaef54f68f6c86c6c07835fc668f62a
-	md5sums = a475a5ed8f03fb0f6b58b4684998d05c
+	source = systemd-user.pam
+	sha512sums = SKIP
+	sha512sums = f0d933e8c6064ed830dec54049b0a01e27be87203208f6ae982f10fb4eddc7258cb2919d594cbfb9a33e74c3510cfd682f3416ba8e804387ab87d1a217eb4b73
+	sha512sums = 52af734947a768758d5eb3f18e31a1cfec6699eca6fa10e40b90c7f11991509186c0a696e3490af3eaba80064ea4cb93e041579abf05addf072d294300aa4b28
+	sha512sums = fec639de0d99967ed3e67289eff5ff78fff0c5829d350e73bed536a8391f1daa1d118d72dbdc1f480ffd33fc22b72f4817d0973bd09ec7f182fd26ad87b24355
+	sha512sums = 61032d29241b74a0f28446f8cf1be0e8ec46d0847a61dadb2a4f096e8686d5f57fe5c72bcf386003f6520bc4b5856c32d63bf3efe7eb0bc0deefc9f68159e648
+	sha512sums = c416e2121df83067376bcaacb58c05b01990f4614ad9de657d74b6da3efa441af251d13bf21e3f0f71ddcb4c9ea658b81da3d915667dc5c309c87ec32a1cb5a5
+	sha512sums = 888ab01bc6e09beb08d7126472c34c9e1aa35ea34e62a09e900ae34c93b1de2fcc988586efd8d0dc962393974f45c77b206d59a86cf53e370f061bf9a1b1a862
+	sha512sums = b90c99d768dc2a4f020ba854edf45ccf1b86a09d2f66e475de21fe589ff7e32c33ef4aa0876d7f1864491488fd7edb2682fc0d68e83a6d4890a0778dc2d6fe19
 
 pkgname = systemd-git
 	pkgdesc = system and service manager
@@ -73,23 +74,15 @@ pkgname = systemd-git
 	optdepends = systemd-sysvcompat-git: symlink package to provide sysvinit binaries
 	optdepends = polkit: allow administration as unprivileged user
 	provides = nss-myhostname
-	provides = systemd-tools=230.r197.g7f40134
-	provides = udev=230.r197.g7f40134
-	provides = systemd=230.r197.g7f40134
+	provides = systemd-tools=232.r485.g4b2419165
+	provides = udev=232.r485.g4b2419165
+	provides = systemd=232.r485.g4b2419165
 	conflicts = nss-myhostname
 	conflicts = systemd-tools
 	conflicts = udev
 	replaces = nss-myhostname
 	replaces = systemd-tools
 	replaces = udev
-	backup = etc/dbus-1/system.d/org.freedesktop.systemd1.conf
-	backup = etc/dbus-1/system.d/org.freedesktop.hostname1.conf
-	backup = etc/dbus-1/system.d/org.freedesktop.login1.conf
-	backup = etc/dbus-1/system.d/org.freedesktop.locale1.conf
-	backup = etc/dbus-1/system.d/org.freedesktop.machine1.conf
-	backup = etc/dbus-1/system.d/org.freedesktop.timedate1.conf
-	backup = etc/dbus-1/system.d/org.freedesktop.import1.conf
-	backup = etc/dbus-1/system.d/org.freedesktop.network1.conf
 	backup = etc/pam.d/systemd-user
 	backup = etc/systemd/coredump.conf
 	backup = etc/systemd/journald.conf
