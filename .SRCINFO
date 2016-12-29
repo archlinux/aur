@@ -1,0 +1,21 @@
+pkgbase = st-git-tic
+	pkgdesc = Simple terminal emulator for X with terminfo
+	pkgver = 0.7.17.gc63a87c
+	pkgrel = 1
+	epoch = 1
+	url = http://st.suckless.org/
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = ncurses
+	makedepends = libxext
+	makedepends = git
+	depends = libxft
+	provides = st
+	conflicts = st
+	options = zipman
+	source = git://git.suckless.org/st
+	sha256sums = SKIP
+
+pkgname = st-git-tic
+
