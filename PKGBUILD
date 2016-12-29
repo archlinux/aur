@@ -1,8 +1,8 @@
 # Maintainer: gavin lyons <glyons66@hotmail.com>
 # https://github.com/gavinlyonsrepo/cylon
 pkgname=cylon
-pkgver=3.2
-pkgrel=3
+pkgver=3.3
+pkgrel=4
 pkgdesc="Updates, Maintenance, backup and system checks in a menu driven Bash script"
 arch=('any')
 url="https://github.com/gavinlyonsrepo/cylon"
@@ -29,7 +29,7 @@ optdepends=(
 )
 source=("https://github.com/gavinlyonsrepo/cylon/archive/$pkgver.tar.gz")
 
-md5sums=('76d4a28cda5d27256d1a7a6a00cb3e2c')
+md5sums=('f05da78597244fbe232cb8579addba8c')
 package() {
     cd "$srcdir/${pkgname}-${pkgver}"
     install -D -m755 Cylon.sh "$pkgdir"/usr/bin/"${pkgname}" 
