@@ -4,7 +4,7 @@
 
 pkgname=shuriken
 pkgver=0.5.1
-pkgrel=3
+pkgrel=4
 pkgdesc="An open source beat slicer"
 url="https://rock-hopper.github.io/shuriken"
 arch=('x86_64' 'i686')
@@ -17,10 +17,17 @@ conflicts=("${pkgname}")
 install="$pkgname.install"
 source=("https://github.com/rock-hopper/$pkgname/archive/v$pkgver.tar.gz"
         "$pkgname.desktop"
-        "$pkgname.png")
+        "$pkgname.png"
+		"$pkgname.patch")
 sha256sums=('93175d0e992afebd05b476a78a6809894376a3e8ba4ea95ee3f5d9a67947db7d'
             'f2144b34c35ecb855009a5d888d13bac2cf5b379274d7b60e4d9181d742fda99'
-            'b637b82c35bb4f27eebe779c7790a85758e1b9c64fff8553ede207dda0d9cb37')
+            'b637b82c35bb4f27eebe779c7790a85758e1b9c64fff8553ede207dda0d9cb37'
+            '0c2a3a64465deb3f49bb4aa8fc4f0d210d2fcaa11e439c0893151e9ee727b6dc')
+
+prepare() {
+  cd "$pkgname-$pkgver"
+  patch -p1 -i "$srcdir/$pkgname.patch"
+}
 
 build() {
   cd "$pkgname-$pkgver"
@@ -43,7 +50,7 @@ build() {
   fi
 
   qmake-qt4 PREFIX=/usr ./Shuriken.pro -r -spec linux-g++$_arch
-  make
+  make CXXFLAGS=-fpermissive
 }
 
 package() {

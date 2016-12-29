@@ -1,0 +1,26 @@
+diff -Naur shuriken-0.5.1a/src/audioanalyser.h shuriken-0.5.1b/src/audioanalyser.h
+--- shuriken-0.5.1a/src/audioanalyser.h  2015-09-27 15:58:36.000000000 +0100
++++ shuriken-0.5.1b/src/audioanalyser.h  2016-12-08 00:23:53.977421455 +0000
+@@ -30,7 +30,7 @@
+ class AudioAnalyser
+ {
+ public:
+-    static const qreal MIN_INTER_ONSET_SECS = 0.05;
++    static constexpr qreal MIN_INTER_ONSET_SECS = 0.05;
+
+     struct DetectionSettings
+     {
+diff -Naur shuriken-0.5.1a/src/waveformitem.h shuriken-0.5.1b/src/waveformitem.h
+--- shuriken-0.5.1a/src/waveformitem.h   2015-09-27 15:58:36.000000000 +0100
++++ shuriken-0.5.1b/src/waveformitem.h   2016-12-08 00:22:52.538422424 +0000
+@@ -109,9 +109,9 @@
+
+ private:
+     static const int NOT_SET = -1;
+-    static const qreal DETAIL_LEVEL_MAX_CUTOFF = 0.05;
+-    static const qreal DETAIL_LEVEL_VERY_HIGH_CUTOFF = 1.0;
+-    static const qreal DETAIL_LEVEL_HIGH_CUTOFF = 10.0;
++    static constexpr qreal DETAIL_LEVEL_MAX_CUTOFF = 0.05;
++    static constexpr qreal DETAIL_LEVEL_VERY_HIGH_CUTOFF = 1.0;
++    static constexpr qreal DETAIL_LEVEL_HIGH_CUTOFF = 10.0;
+
