@@ -3,9 +3,9 @@
 pkgname=("nabi-git")
 _gitname="nabi"
 pkgver=20140519.786.f3276ce
-pkgrel=2
+pkgrel=3
 pkgdesc="Nabi - The Easy Hangul XIM"
-arch=("i686" "x86_64" "arm" "armv6h" "armv7h")
+arch=("x86_64" "i686" "arm" "armv6h" "armv7h" "aarch64")
 url="http://code.google.com/p/nabi/"
 license=("GNU GPL v2")
 depends=("gtk2" "libhangul>=0.1.0")

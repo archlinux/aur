@@ -1,13 +1,14 @@
 pkgbase = nabi-git
 	pkgdesc = Nabi - The Easy Hangul XIM
 	pkgver = 20140519.786.f3276ce
-	pkgrel = 2
+	pkgrel = 3
 	url = http://code.google.com/p/nabi/
-	arch = i686
 	arch = x86_64
+	arch = i686
 	arch = arm
 	arch = armv6h
 	arch = armv7h
+	arch = aarch64
 	license = GNU GPL v2
 	depends = gtk2
 	depends = libhangul>=0.1.0
