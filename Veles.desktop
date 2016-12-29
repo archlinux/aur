@@ -7,4 +7,4 @@ Icon=veles
 Type=Application
 StartupNotify=true
 Terminal=false
-Categories=Development;
+Categories=Utility;

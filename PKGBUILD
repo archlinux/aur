@@ -4,7 +4,7 @@ _pkgname=veles
 _dlurl='https://git.theaifam5.eu/TheAifam5/Veles'
 pkgname=veles-bin
 pkgver=2016.12.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Open source tool for binary data analysis"
 url="https://codisec.com/veles"
 license=('APLv2')
@@ -20,7 +20,7 @@ source=("veles.zip::${_dlurl}/builds/artifacts/master/download?job=build"
         'veles.png')
 md5sums=('SKIP'
          '3b83ef96387f14655fc854ddc3c6bd57'
-         '4cdd0e07ec8d038ae249632e8bcab25b'
+         '5de59335f6a5e148618fe5570a29bc9e'
          '22678e3f27959aff238b19b31f1e0898')
 
 package() {

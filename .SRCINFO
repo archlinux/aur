@@ -1,7 +1,7 @@
 pkgbase = veles-bin
 	pkgdesc = Open source tool for binary data analysis
 	pkgver = 2016.12.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://codisec.com/veles
 	arch = x86_64
 	license = APLv2
@@ -22,7 +22,7 @@ pkgbase = veles-bin
 	source = veles.png
 	md5sums = SKIP
 	md5sums = 3b83ef96387f14655fc854ddc3c6bd57
-	md5sums = 4cdd0e07ec8d038ae249632e8bcab25b
+	md5sums = 5de59335f6a5e148618fe5570a29bc9e
 	md5sums = 22678e3f27959aff238b19b31f1e0898
 
 pkgname = veles-bin
