@@ -11,7 +11,7 @@
 _pack=miscellaneous
 pkgname=octave-$_pack
 pkgver=1.2.1
-pkgrel=4
+pkgrel=5
 pkgdesc="Miscellaneous tools that don't fit somewhere else."
 arch=(any)
 url="http://octave.sourceforge.net/$_pack/"
