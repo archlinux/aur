@@ -9,8 +9,12 @@ license=('BSD')
 depends=('mingw-w64-crt' 'mingw-w64-zlib' 'mingw-w64-ilmbase')
 makedepends=('mingw-w64-cmake' 'wine')
 options=('staticlibs' '!buildflags' '!strip')
-source=("http://download.savannah.nongnu.org/releases/openexr/openexr-${pkgver}.tar.gz" openexr-2.1.0_aligned-malloc.patch openexr-2.1.0_cast.patch)
-md5sums=('b64e931c82aa3790329c21418373db4e' SKIP SKIP)
+source=("http://download.savannah.gnu.org/releases/openexr/openexr-${pkgver}.tar.gz"
+        openexr-2.1.0_aligned-malloc.patch
+        openexr-2.1.0_cast.patch)
+md5sums=('b64e931c82aa3790329c21418373db4e'
+        SKIP
+        SKIP)
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
@@ -28,6 +32,7 @@ prepare() {
   sed -i "/ADD_SUBDIRECTORY ( IlmImfTest )/d" CMakeLists.txt
   sed -i "/ADD_SUBDIRECTORY ( IlmImfUtilTest )/d" CMakeLists.txt
   sed -i "/ADD_SUBDIRECTORY ( IlmImfFuzzTest )/d" CMakeLists.txt
+  sed -i "/ADD_SUBDIRECTORY ( exr/d" CMakeLists.txt # binaries/utilities
 }
 
 build() {
@@ -36,7 +41,7 @@ build() {
     mkdir -p build-${_arch} && pushd build-${_arch}
     ${_arch}-cmake -DNAMESPACE_VERSIONING=OFF -DILMBASE_PACKAGE_PREFIX=/usr/${_arch} ..
     cp /usr/${_arch}/bin/*.dll IlmImf
-    make VERBOSE=1
+    make
     popd
   done
 }
@@ -48,7 +53,6 @@ package() {
     install -d "$pkgdir"/usr/${_arch}/bin
     mv "$pkgdir"/usr/${_arch}/lib/*.dll "$pkgdir"/usr/${_arch}/bin
     rm -r "$pkgdir"/usr/${_arch}/share
-    rm "$pkgdir"/usr/${_arch}/bin/*.exe
     ${_arch}-strip --strip-unneeded "$pkgdir"/usr/${_arch}/bin/*.dll
     ${_arch}-strip -g "$pkgdir"/usr/${_arch}/lib/*.a
   done
