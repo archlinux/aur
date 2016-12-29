@@ -1,7 +1,7 @@
 # Maintainer: Andrea Girotto echo "naqern.tvebggb@tznvy.pbz" | tr '[a-z]' '[n-za-m]'
 pkgname=sagittarius
 pkgver=0.7.11
-pkgrel=2
+pkgrel=3
 pkgdesc='R6RS/R7RS Scheme system.'
 arch=('i686' 'x86_64')
 url=https://bitbucket.org/ktakashi/sagittarius-scheme/wiki/Home
@@ -32,9 +32,9 @@ package() {
   install -Dm644 COPYING "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
-check() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
-  make test
-  # make test-ext
-}
+#check() {
+#  cd "${srcdir}/${pkgname}-${pkgver}"
+#  make test
+#  make test-ext
+#}
 
