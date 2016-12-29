@@ -1,7 +1,7 @@
 # Contributor: K0n24d
 pkgname=mingw-w64-cximage
 major=7
-minor=00
+minor=01
 pkgver=${major}.${minor}
 pkgrel=1
 pkgdesc='Another free C++ image processing and conversion library'
@@ -16,10 +16,10 @@ source=("http://sourceforge.net/projects/cximage/files/${major}.${minor}/cximage
 	'cximage-7.0.0-disable-some-formats.patch'
 	'cximage.pc')
 
-sha1sums=('9b3ae3fec4db63a3e1108f137bde854d7b7be7c0'
+sha1sums=('6138e4babe86b84015df32bf4df814815ffbfecf'
           '39911dc9e8aee7cf473061971445eb246084fc10'
           '72eec651bf1e3d4a7cc0b9ab5a4950cf6d846b43'
-          '435d63f8b53279cd976fe3e8e80af65344908fa5')
+          'e505934712252ea05a730c30062ed6017948a25d')
 
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
 
