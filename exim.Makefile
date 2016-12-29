@@ -260,12 +260,12 @@ SUPPORT_MAILDIR=yes
 # and we suggest that such packagings' integrity checks should be paranoid
 # about the permissions of the directory and the files within.
 
-# LOOKUP_MODULE_DIR=/usr/lib/exim/lookups/
+LOOKUP_MODULE_DIR=/usr/lib/exim/lookups/
 
 # To build a module dynamically, you'll need to define CFLAGS_DYNAMIC for
 # your platform.  Eg:
 # CFLAGS_DYNAMIC=-shared -rdynamic
-# CFLAGS_DYNAMIC=-shared -rdynamic -fPIC
+CFLAGS_DYNAMIC=-shared -rdynamic -fPIC
 
 #------------------------------------------------------------------------------
 # These settings determine which file and database lookup methods are included
@@ -297,23 +297,26 @@ SUPPORT_MAILDIR=yes
 # handled for you automatically by also defining the _PC variable to reference
 # the name of the pkg-config package, if such is available.
 
-LOOKUP_DBM=yes
-LOOKUP_LSEARCH=yes
-LOOKUP_DNSDB=yes
+LOOKUP_DBM=2
+LOOKUP_LSEARCH=2
+LOOKUP_DNSDB=2
 
 # LOOKUP_CDB=yes
-LOOKUP_DSEARCH=yes
+LOOKUP_DSEARCH=2
 # LOOKUP_IBASE=yes
 LOOKUP_LDAP=yes
-# LOOKUP_MYSQL=yes
+LOOKUP_MYSQL=2
+LOOKUP_MYSQL_INCLUDE=-I/usr/include/mysql
+LOOKUP_MYSQL_LIBS=-lmysqlclient
 # LOOKUP_NIS=yes
 # LOOKUP_NISPLUS=yes
 # LOOKUP_ORACLE=yes
-# LOOKUP_PASSWD=yes
-LOOKUP_PGSQL=yes
+LOOKUP_PASSWD=2
+LOOKUP_PGSQL=2
+LOOKUP_PGSQL_PC=libpq
 # LOOKUP_REDIS=yes
-# LOOKUP_SQLITE=yes
-# LOOKUP_SQLITE_PC=sqlite3
+LOOKUP_SQLITE=2
+LOOKUP_SQLITE_PC=sqlite3
 # LOOKUP_WHOSON=yes
 
 # These two settings are obsolete; all three lookups are compiled when
@@ -365,8 +368,8 @@ PCRE_CONFIG=yes
 # specified in INCLUDE. The settings below are just examples; -lpq is for
 # PostgreSQL, -lgds is for Interbase, -lsqlite3 is for SQLite.
 
-# LOOKUP_INCLUDE=-I /usr/local/ldap/include -I /usr/local/mysql/include -I /usr/local/pgsql/include
-# LOOKUP_LIBS=-L/usr/local/lib -lldap -llber -lmysqlclient -lpq -lgds -lsqlite3
+# LOOKUP_INCLUDE=-I/usr/include/mysql
+# LOOKUP_LIBS=-lldap -llber -lmysqlclient -lpq -lgds -lsqlite3
 
 
 #------------------------------------------------------------------------------
@@ -1386,6 +1389,6 @@ PID_FILE_PATH=/var/run/exim.pid
 
 # ENABLE_DISABLE_FSYNC=yes
 
-LDFLAGS += -lpam -lpcre -lldap -llber -lpq
+LDFLAGS += -ldl -lpam -lldap -llber -export-dynamic -rdynamic
 
 # End of EDITME for Exim 4.

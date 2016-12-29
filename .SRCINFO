@@ -1,29 +1,27 @@
-pkgbase = exim-pgsql
-	pkgdesc = Message Transfer Agent
+pkgbase = exim-heavy
+	pkgdesc = Message Transfer Agent with maximal-enabled features
 	pkgver = 4.88
 	pkgrel = 1
 	url = http://www.exim.org/
-	install = exim.install
 	arch = x86_64
 	arch = i686
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
 	license = GPL
-	depends = pcre
-	depends = pam
-	depends = openssl
-	depends = libldap
-	depends = libspf2
-	depends = postgresql-libs
-	depends = libidn
-	depends = opendmarc
-	depends = libsrs_alt
-	provides = smtp-server
-	provides = smtp-forwarder
-	conflicts = smtp-server
-	conflicts = smtp-forwarder
+	makedepends = pcre
+	makedepends = pam
+	makedepends = openssl
+	makedepends = libldap
+	makedepends = libspf2
+	makedepends = libidn
+	makedepends = opendmarc
+	makedepends = libsrs_alt
+	makedepends = postgresql-libs
+	makedepends = libmariadbclient
+	makedepends = sqlite
 	options = !makeflags
-	backup = etc/mail/aliases
-	backup = etc/mail/exim.conf
-	backup = etc/logrotate.d/exim
 	source = ftp://ftp.exim.org/pub/exim/exim4/exim-4.88.tar.bz2
 	source = aliases
 	source = exim.logrotate
@@ -36,12 +34,64 @@ pkgbase = exim-pgsql
 	md5sums = 4cc10c910fd18bb9e299e98bc0a32ed2
 	md5sums = 4874006f0585253ddab027d441009757
 	md5sums = e18a535218718c5eb394ed5c9296fe06
-	md5sums = db7e0e61611c45ec8bcc04f0fb58af1a
+	md5sums = d9c6c3b4c68313d5cdec7d63670f3e21
 	md5sums = 88cf76405367a6ed371d05db1d3c9565
 	md5sums = be8fdcf7b2d6b6368a21705e69743265
 	md5sums = 6f5a5c2b0835b33f59d2513cce18c65b
 	md5sums = 101a726e4d3f4d0074710273f9808022
 	md5sums = 11b319ba0bd84911fa70e9bef2190715
 
-pkgname = exim-pgsql
+pkgname = exim-heavy
+	install = exim.install
+	depends = pcre
+	depends = pam
+	depends = openssl
+	depends = libldap
+	depends = libspf2
+	depends = libidn
+	depends = opendmarc
+	depends = libsrs_alt
+	optdepends = exim-lookup-dbmdb: for dbmdb lookup support
+	optdepends = exim-lookup-dnsdb: for dnsdb lookup support
+	optdepends = exim-lookup-dsearch: for dsearch lookup support
+	optdepends = exim-lookup-lsearch: for lsearch lookup support
+	optdepends = exim-lookup-mysql: for MariaDB/MySQL lookup support
+	optdepends = exim-lookup-passwd: for passwd lookup support
+	optdepends = exim-lookup-pgsql: for PostgreSQL lookup support
+	optdepends = exim-lookup-sqlite: for SQLite lookup support
+	provides = smtp-server
+	provides = smtp-forwarder
+	conflicts = smtp-server
+	conflicts = smtp-forwarder
+	replaces = exim-pgsql
+	backup = etc/mail/aliases
+	backup = etc/mail/exim.conf
+	backup = etc/logrotate.d/exim
+
+pkgname = exim-lookup-dbmdb
+	depends = exim-heavy
+
+pkgname = exim-lookup-dnsdb
+	depends = exim-heavy
+
+pkgname = exim-lookup-dsearch
+	depends = exim-heavy
+
+pkgname = exim-lookup-lsearch
+	depends = exim-heavy
+
+pkgname = exim-lookup-mysql
+	depends = exim-heavy
+	depends = libmysqlclient
+
+pkgname = exim-lookup-passwd
+	depends = exim-heavy
+
+pkgname = exim-lookup-pgsql
+	depends = exim-heavy
+	depends = postgresql-libs
+
+pkgname = exim-lookup-sqlite
+	depends = exim-heavy
+	depends = sqlite
 
