@@ -2,7 +2,7 @@
 
 pkgname=ttf-dseg
 pkgver=030
-pkgrel=1
+pkgrel=2
 pkgdesc="Font family that imitates seven and fourteen segment displays"
 arch=('any')
 url="http://www.keshikan.net/fonts-e.html"
@@ -14,10 +14,7 @@ sha256sums=('893478aa877e894c79b79dfbbc363be131d1d5060d1f79abe6c135cf57e8166b')
 package() {
 
   cd "${srcdir}"
-  mkdir -p "${pkgdir}"/usr/share/fonts/TTF/
-  for i in $(find "${srcdir}"/ -name *.ttf); do
-	  install -Dm644 $i "${pkgdir}"/usr/share/fonts/TTF/
-  done
+  find "${srcdir}"/ -name '*.ttf' -execdir install -Dm644 {} -t "${pkgdir}"/usr/share/fonts/TTF \;
 
   install -Dm644 readme-en.txt "${pkgdir}"/usr/share/licenses/${pkgname}/README
 }
