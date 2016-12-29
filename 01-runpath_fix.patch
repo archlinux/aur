@@ -1,12 +1,12 @@
-diff -aur burp-1.4.40-pristine/Makefile.in burp-1.4.40-new/Makefile.in
---- burp-1.4.40-pristine/Makefile.in	2015-07-01 06:45:08.000000000 -0500
-+++ burp-1.4.40-new/Makefile.in	2015-10-06 20:04:31.835433112 -0500
-@@ -90,7 +90,7 @@
- 	$(MKDIR) $(DESTDIR)$(sbindir)
- 	$(MKDIR) $(DESTDIR)$(sysconfdir)
- 	$(MKDIR) $(DESTDIR)$(sysconfdir)/CA-client
--	$(MKDIR) $(DESTDIR)/var/run
-+	$(MKDIR) $(DESTDIR)/run
- 	$(MKDIR) $(DESTDIR)/var/spool/burp
- 	@if [ ! -d $(DESTDIR)$(sysconfdir)/clientconfdir ] ; then $(MKDIR) $(DESTDIR)$(sysconfdir)/clientconfdir ; cp configs/server/clientconfdir/testclient $(DESTDIR)$(sysconfdir)/clientconfdir/testclient ; fi
- 	@if [ ! -d $(DESTDIR)$(sysconfdir)/clientconfdir/incexc ] ; then $(MKDIR) $(DESTDIR)$(sysconfdir)/clientconfdir/incexc ; cp configs/server/clientconfdir/incexc $(DESTDIR)$(sysconfdir)/clientconfdir/incexc/example ; fi
+diff -aur burp-2.0.32-pristine/Makefile.am burp-2.0.32-new/Makefile.am
+--- burp-2.0.32-pristine/Makefile.am	2016-01-30 23:48:49.000000000 -0600
++++ burp-2.0.32-new/Makefile.am	2016-02-04 21:25:41.568400983 -0600
+@@ -380,7 +380,7 @@
+ 
+ install-data-local:
+ 	$(AM_V_at)$(MKDIR_P) $(DESTDIR)$(localstatedir)/spool/burp
+-	$(AM_V_at)$(MKDIR_P) $(DESTDIR)$(runstatedir)
++	$(AM_V_at)$(MKDIR_P) $(DESTDIR)/run
+ 
+ clean-local: clean-local-check
+ 
