@@ -3,17 +3,17 @@
 pkgname=(chocolate-{doom,heretic,hexen,strife,common})
 pkgbase=${pkgname[0]}
 pkgdesc="Historically-accurate Doom, Heretic, Hexen, and Strife ports."
-pkgver=2.2.1
-pkgrel=2
+pkgver=2.3.0
+pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.chocolate-doom.org/"
 license=('GPL2')
-depends=('libsamplerate' 'sdl_mixer' 'sdl_net')
+depends=('libpng' 'libsamplerate' 'sdl_mixer')
 makedepends=('python')
-source=(http://chocolate-doom.org/downloads/${pkgver}/${pkgbase}-${pkgver}.tar.gz
-        0001-i_sdlsound.c-fix-compilation-with-libsamplerate-0.1..patch)
-sha256sums=('ad11e2871667c6fa0658abf2dcba0cd9b26fbd651ee8df55adfdc18ad8fd674a'
-            '2f54bccecbecfc57be96d75cdc73ca98c58107b6e583b00a1907dd8805f82158')
+source=(http://chocolate-doom.org/downloads/${pkgver}/${pkgbase}-${pkgver}.tar.gz{,.asc})
+sha256sums=('3e6d1a82ac5c8b025a9695ce1e47d0dc6ed142ebb1129b1e4a70e2740f79150c'
+            'SKIP')
+validpgpkeys=('6D2C117E0310664497AA9546F6C2EE9C23354344')
 
 prepare() {
   cd "${pkgbase}-${pkgver}"
@@ -55,6 +55,7 @@ package_chocolate-common() {
   rm -rf applications/chocolate-{doom,heretic,hexen,strife}.desktop \
      applications/screensavers
   rm -rf appdata
+  rm -rf bash-completion
   cd man/man6
   rm -f chocolate-{doom,heretic,hexen,strife}{,-setup}.6
 }
@@ -77,6 +78,7 @@ package_chocolate-doom() {
   rm -rf doc/chocolate-{heretic,hexen,strife}
   rm -rf applications/chocolate-{setup,heretic,hexen,strife}.desktop icons
   rm -f appdata/chocolate-{heretic,hexen,strife}.appdata.xml
+  rm -f bash-completion/completions/chocolate-{heretic,hexen,strife}
   rm -f man/man?/chocolate-{heretic,hexen,strife,setup,server}* \
      man/man5/{heretic,hexen,strife}.cfg*
 }
@@ -98,6 +100,7 @@ package_chocolate-heretic() {
   rm -rf applications/chocolate-{setup,doom,hexen,strife}.desktop \
      applications/screensavers icons
   rm -f appdata/chocolate-{doom,hexen,strife}.appdata.xml
+  rm -f bash-completion/completions/chocolate-{doom,hexen,strife}
   rm -f man/man?/chocolate-{doom,hexen,strife,setup,server}* \
      man/man5/{default,hexen,strife}.cfg*
 }
@@ -118,6 +121,7 @@ package_chocolate-hexen() {
   rm -rf applications/chocolate-{setup,doom,heretic,strife}.desktop \
      applications/screensavers icons
   rm -f appdata/chocolate-{doom,heretic,strife}.appdata.xml
+  rm -f bash-completion/completions/chocolate-{doom,heretic,strife}
   rm -f man/man?/chocolate-{doom,heretic,strife,setup,server}* \
      man/man5/{default,heretic,strife}.cfg*
 }
@@ -138,6 +142,7 @@ package_chocolate-strife() {
   rm -rf applications/chocolate-{setup,doom,heretic,hexen}.desktop \
      applications/screensavers icons
   rm -f appdata/chocolate-{doom,heretic,hexen}.appdata.xml
+  rm -f bash-completion/completions/chocolate-{doom,heretic,hexen}
   rm -f man/man?/chocolate-{doom,heretic,hexen,setup,server}* \
      man/man5/{default,heretic,hexen}.cfg*
 }
