@@ -10,7 +10,7 @@
 _pack=vrml
 pkgname=octave-$_pack
 pkgver=1.0.13
-pkgrel=2
+pkgrel=3
 pkgdesc="3D graphics using VRML"
 arch=(any)
 url="http://octave.sourceforge.net/$_pack/"
