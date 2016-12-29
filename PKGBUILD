@@ -4,7 +4,7 @@
 
 pkgname=sume-git
 _pkgbasename=sume
-pkgver=0.1.0.r1.g9cc4352
+pkgver=0.1.0.r15.g3b1e6a8
 pkgrel=1
 pkgdesc="Surface metrology command line tool and library."
 arch=('i686' 'x86_64')
@@ -32,5 +32,6 @@ build() {
 
 package() {
 	cd ${srcdir}/${pkgname}
-	make DESTDIR="$pkgdir/" install
+	sed -i "s@=/usr@=$pkgdir/usr@" build/make_cfg
+	make install
 }
