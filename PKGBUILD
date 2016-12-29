@@ -2,14 +2,14 @@
 
 pkgbase=python-braintree
 pkgname=(python-braintree python2-braintree)
-pkgver=3.32.0
-pkgrel=2
+pkgver=3.33.0
+pkgrel=1
 pkgdesc="Braintree Python Library"
 arch=('any')
 url="https://www.braintreepayments.com/docs/python"
 license=('MIT')
 makedepends=('python-setuptools' 'python2-setuptools' 'python-requests' 'python2-requests' 'git')
-checkdepends=('python-nose' 'python2-nose')
+checkdepends=('python-nose' 'python2-nose' 'python2-mock')
 source=("git+https://github.com/braintree/braintree_python.git#tag=$pkgver")
 sha512sums=('SKIP')
 
