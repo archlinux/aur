@@ -1,0 +1,60 @@
+diff -ur hqp-1.9.8.orig/omu/Omu.h hqp-1.9.8/omu/Omu.h
+--- hqp-1.9.8.orig/omu/Omu.h	2016-12-29 13:19:08.977071743 +0100
++++ hqp-1.9.8/omu/Omu.h	2016-12-29 13:21:10.797077859 +0100
+@@ -35,7 +35,11 @@
+ /* include underlying HQP */
+ #include <Hqp.h>
+ 
++static Tcl_Interp *Omu_Interp__;
++
+ /** initialize Tcl module Omuses */
+ extern "C" OMU_API int Omu_Init(Tcl_Interp *interp);
+ 
++extern "C" Tcl_Interp *Omu_GetInterp();
++
+ #endif
+diff -ur hqp-1.9.8.orig/omu/Omu_Init.C hqp-1.9.8/omu/Omu_Init.C
+--- hqp-1.9.8.orig/omu/Omu_Init.C	2016-12-29 13:19:08.977071743 +0100
++++ hqp-1.9.8/omu/Omu_Init.C	2016-12-29 13:28:12.097099013 +0100
+@@ -78,10 +78,19 @@
+ //--------------------------------------------------------------------------
+ const char *Omu_Version = VERSION;
+ 
++// Omu_Interp__ = 0;
++
++extern "C" Tcl_Interp *Omu_GetInterp()
++{
++  return Omu_Interp__;
++}
++
+ //--------------------------------------------------------------------------
+ extern "C" int Hqp_Init(Tcl_Interp *interp);
+ extern "C" int OMU_API Omu_Init(Tcl_Interp *interp)
+ {
++  Omu_Interp__ = interp;
++
+   // initialize stubs
+   if (Tcl_InitStubs(interp, "8.1", 0) == NULL) {
+     return TCL_ERROR;
+diff -ur hqp-1.9.8.orig/omu/Omu_Model.C hqp-1.9.8/omu/Omu_Model.C
+--- hqp-1.9.8.orig/omu/Omu_Model.C	2016-12-29 13:19:08.980405076 +0100
++++ hqp-1.9.8/omu/Omu_Model.C	2016-12-29 13:24:28.240421106 +0100
+@@ -225,6 +225,7 @@
+ void Omu_Model::setup_model(double t0)
+ {
+   int i;
++  Tcl_Interp *theInterp = Omu_GetInterp();
+ 
+   // setup S-function
+   if (_SS) {
+diff -ur hqp-1.9.8.orig/omu/Prg_DynamicEst.C hqp-1.9.8/omu/Prg_DynamicEst.C
+--- hqp-1.9.8.orig/omu/Prg_DynamicEst.C	2016-12-29 13:19:08.980405076 +0100
++++ hqp-1.9.8/omu/Prg_DynamicEst.C	2016-12-29 13:30:40.780439812 +0100
+@@ -227,6 +227,7 @@
+   iv_set(_mdl_u_order, 1);
+   iv_zero(_mdl_y_active);
+   if (_mdl_is_fmu) {
++    Tcl_Interp *theInterp = Omu_GetInterp();
+     // take over default values from model description
+     if(Tcl_VarEval(theInterp, "mdl_p_nominal ${::fmu::", _mdl_name,
+                    "::parameterNominalValues}", NULL) != TCL_OK)
