@@ -1,14 +1,6 @@
-*.tar
-*.tar.*
-*.jar
-*.exe
-*.msi
-*.zip
-*.tgz
-*.tbz
-*.log
-*.log.*
-*.sig
+!.gitignore
 
-pkg/
-src/
+/src
+/pkg
+*.pkg*
+*.tar.xz
