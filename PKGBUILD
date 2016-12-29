@@ -11,7 +11,7 @@ options=('!emptydirs')
 depends=('perl>=5.6.0')
 makedepends=()
 url='https://metacpan.org/release/Text-ASCIITable'
-source=('http://search.cpan.org/CPAN/authors/id/L/LU/LUNATIC/Text-ASCIITable-0.22.tar.gz')
+source=("https://cpan.metacpan.org/authors/id/L/LU/LUNATIC/Text-ASCIITable-$pkgver.tar.gz")
 md5sums=('6c34e6ed4575d59e8a51cbd4341e85f2')
 sha512sums=('cdf550b84c1dbe2b39aa59945a53964237444e55ad64af26d736c4a3525bb037dbf4fb38f380cd9d6477cb8f98017a1e57668ca63139137d58d0ed45287e4bf9')
 _distdir="Text-ASCIITable-0.22"
