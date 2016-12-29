@@ -9,7 +9,7 @@
 _pack=netcdf
 pkgname=octave-$_pack
 pkgver=1.0.11
-pkgrel=1
+pkgrel=2
 pkgdesc="A MATLAB compatible NetCDF interface for Octave"
 arch=(any)
 url="http://octave.sourceforge.net/$_pack/"
