@@ -9,7 +9,7 @@
 _pack=octcdf
 pkgname=octave-$_pack
 pkgver=1.1.10
-pkgrel=1
+pkgrel=2
 pkgdesc="A NetCDF interface for octave. This interface is depreciated. Please use the netcdf package instead (possibly in combination with ncarray)."
 arch=(any)
 url="http://octave.sourceforge.net/$_pack/"
