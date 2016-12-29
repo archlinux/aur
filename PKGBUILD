@@ -10,7 +10,7 @@
 _pack=ncarray
 pkgname=octave-$_pack
 pkgver=1.0.3
-pkgrel=2
+pkgrel=3
 pkgdesc="Access a single or a collection of NetCDF files as a multi-dimensional array"
 arch=(any)
 url="http://octave.sourceforge.net/$_pack/"
