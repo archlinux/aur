@@ -1,0 +1,14 @@
+pkgbase = rconc
+	pkgdesc = Simple cross-platform RCON client written in rust
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/klemens/rconc
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = cargo
+	source = rconc-0.1.0.tar.gz::https://github.com/klemens/rconc/archive/v0.1.0.tar.gz
+	sha256sums = bc2c7fa92f9fe107e0745e3a758665d6b67e05f04b3d4ed2158cfa5c279fbfd8
+
+pkgname = rconc
+
