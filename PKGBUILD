@@ -10,7 +10,7 @@
 _pack=tsa
 pkgname=octave-$_pack
 pkgver=4.3.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Stochastic concepts and maximum entropy methods for time series analysis"
 arch=(any)
 url="http://octave.sourceforge.net/$_pack/"
