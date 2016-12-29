@@ -2,7 +2,7 @@
 
 pkgname=openbazaard-standalone
 pkgver=0.2.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Server daemon for communication between client and OpenBazaar network"
 arch=(any)
 url="http://openbazaar.org"
@@ -59,8 +59,9 @@ msg2 "Install ${_pkgname} scripts"
   install -Dm755 dist/${pkgname} $pkgdir/var/lib/openbazaard/openbazaard
   install -Dm755 ob.cfg $pkgdir/var/lib/openbazaard/ob.cfg
 }
+
 md5sums=('bb85cac3f74799dd543dae5094a22e49'
          '58f846fbc1742fea9d245b6f93f6db15'
          '7949d40abcd8bdaee27ff670d5b6c1c7'
          'e4d7b1c3fdceca262a517dd103f59260'
-         '6e5acb7867aee15e2b949a554836c2c9')
+         '7514454b8aaa3d286ff020d78babd96f')
