@@ -3,7 +3,7 @@
 pkgname=gogland-eap
 _pkgname=gogland
 pkgver=163.10615.6
-pkgrel=1
+pkgrel=2
 pkgdesc='Capable and Ergonomic Go IDE - EAP'
 arch=('x86_64' 'i686')
 options=('!strip')
@@ -29,4 +29,6 @@ package() {
   ln -s /opt/${pkgname}/bin/${pkgname}.sh ${pkgdir}/usr/bin/${pkgname}
   install -D -m 644 ${srcdir}/jetbrains-${pkgname}.desktop ${pkgdir}/usr/share/applications/
   install -D -m 644 ${pkgdir}/opt/${pkgname}/bin/${_pkgname}.png ${pkgdir}/usr/share/pixmaps/${pkgname}.png
+
+  chmod +x ${pkgdir}/opt/${pkgname}/bin/dlv
 }
