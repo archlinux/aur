@@ -9,7 +9,7 @@
 _pack=queueing
 pkgname=octave-$_pack
 pkgver=1.2.5
-pkgrel=1
+pkgrel=2
 pkgdesc="The queueing package provides functions for queueing networks and Markov chains analysis. This package can be used to compute steady-state performance measures for open, closed and mixed networks with single or multiple job classes. Mean Value Analy [...]"
 arch=(any)
 url="http://octave.sourceforge.net/$_pack/"
