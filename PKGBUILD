@@ -1,9 +1,10 @@
-# Maintainer: Håvard Pettersson <mail@haavard.me>
+# Maintainer: Jiachen Yang <farseerfc@gmail.com>
+# Contributor: Håvard Pettersson <mail@haavard.me>
 # Contributor: Kevin MacMartin <prurigro at gmail dot com>
 
 _pkgname=qtox
 pkgname=qtox-git
-pkgver=1.5.1.r13.ge4398c7
+pkgver=1.7.0.r20.gd4ac13db
 pkgrel=1
 pkgdesc='Powerful Tox client written in C++/Qt that follows the Tox design guidelines.'
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
@@ -17,7 +18,7 @@ depends=('desktop-file-utils'
          'ffmpeg'
          'qt5-svg'
          'sqlcipher'
-         'toxcore')
+         'toxcore>=1:0.1.0')
 makedepends=('git' 'qt5-tools')
 provides=("$_pkgname")
 conflicts=("$_pkgname")

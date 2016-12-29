@@ -1,6 +1,6 @@
 pkgbase = qtox-git
 	pkgdesc = Powerful Tox client written in C++/Qt that follows the Tox design guidelines.
-	pkgver = 1.5.1.r13.ge4398c7
+	pkgver = 1.7.0.r20.gd4ac13db
 	pkgrel = 1
 	url = https://github.com/tux3/qTox
 	arch = i686
@@ -19,7 +19,7 @@ pkgbase = qtox-git
 	depends = ffmpeg
 	depends = qt5-svg
 	depends = sqlcipher
-	depends = toxcore
+	depends = toxcore>=1:0.1.0
 	provides = qtox
 	conflicts = qtox
 	source = qtox::git+https://github.com/tux3/qTox.git
