@@ -1,6 +1,6 @@
 pkgname=mingw-w64-extra-cmake-modules
 pkgver=5.29.0
-pkgrel=1
+pkgrel=2
 arch=(any)
 pkgdesc="Extra modules and scripts for CMake (mingw-w64)"
 groups=(mingw-w64-kf5)
@@ -9,15 +9,18 @@ depends=(mingw-w64-cmake)
 options=(staticlibs !strip !buildflags)
 url="https://projects.kde.org/projects/kdesupport/extra-cmake-modules"
 source=("http://download.kde.org/stable/frameworks/${pkgver%.*}/extra-cmake-modules-${pkgver}.tar.xz"
-"set-AUTOSTATICPLUGINS.patch")
+"set-AUTOSTATICPLUGINS.patch"
+"e4c8c735d59f813acc69194030401f67883fb427.patch")
 md5sums=('dd3e13ee27fb421a9d215fc708ae02b3'
-         '0d249754247382f3b8dda80d6833aac4')
+         '0d249754247382f3b8dda80d6833aac4'
+         'e977bbee6a68a1e27c7f9a766fc0a6ca')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 prepare() {
 	cd extra-cmake-modules-$pkgver
 	patch -p1 -i "${srcdir}"/set-AUTOSTATICPLUGINS.patch
+	patch -p1 -i "$srcdir"/e4c8c735d59f813acc69194030401f67883fb427.patch
 }
 
 build() {

@@ -1,0 +1,25 @@
+From e4c8c735d59f813acc69194030401f67883fb427 Mon Sep 17 00:00:00 2001
+From: Martchus <martchus@gmx.net>
+Date: Thu, 29 Dec 2016 13:31:31 +0100
+Subject: [PATCH] Fix use of Qt::lconvert
+
+This workaround seems to be required
+for mingw-w64 packages, not sure what's
+the actual problem, though
+---
+ modules/ECMPoQmTools.cmake | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/modules/ECMPoQmTools.cmake b/modules/ECMPoQmTools.cmake
+index 5bc3b07..f9cc63f 100644
+--- a/modules/ECMPoQmTools.cmake
++++ b/modules/ECMPoQmTools.cmake
+@@ -144,7 +144,7 @@ function(ecm_process_po_files_as_qm lang)
+     find_package(Qt5LinguistTools CONFIG REQUIRED)
+ 
+     if(TARGET Qt5::lconvert)
+-        set(lconvert_executable Qt5::lconvert)
++        get_target_property(lconvert_executable Qt5::lconvert IMPORTED_LOCATION)
+     else()
+         # Qt < 5.3.1 does not define Qt5::lconvert
+         get_target_property(lrelease_location Qt5::lrelease LOCATION)
