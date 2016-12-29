@@ -6,7 +6,7 @@
 
 pkgname=scribus1.5
 pkgver=21022
-pkgrel=3
+pkgrel=4
 pkgdesc="A desktop publishing program - Version 1.5 svn"
 arch=('i686' 'x86_64')
 license=('custom:(L)GPL')
@@ -39,7 +39,7 @@ build() {
     -DCMAKE_SKIP_RPATH:BOOL=YES -DWANT_GRAPHICSMAGICK=1 \
     -DCMAKE_INCLUDE_PATH=/usr/include/python2.7 \
     -DCMAKE_EXE_LINKER_FLAGS="-lQt5Quick -lQt5PrintSupport" \
-    -DQT_PREFIX="/usr" -DWANT_CPP11=1
+    -DQT_PREFIX="/usr"
   make
 }
 
