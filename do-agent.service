@@ -1,0 +1,12 @@
+[Unit]
+Description=DigitalOcean agent
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+User=nobody
+Group=nobody
+ExecStart=/opt/digitalocean/bin/do-agent
+
+[Install]
+WantedBy=multi-user.target
