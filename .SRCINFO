@@ -1,6 +1,6 @@
 pkgbase = brouwhulp-bin
 	pkgdesc = Dutch beer-brewing tool with recipes
-	pkgver = 5
+	pkgver = 5.3.4.3
 	pkgrel = 1
 	url = https://www.twortwat.nl/brouwhulp
 	arch = x86_64
