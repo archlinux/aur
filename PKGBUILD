@@ -1,7 +1,7 @@
 # Maintainer: Donald Webster <fryfrog@gmail.com>
 pkgname="radarr"
 pkgver=0.05
-pkgrel=1
+pkgrel=2
 pkgdesc="Movie downloader for usenet and torrents."
 arch=(any)
 url="https://github.com/galli-leo/Radarr"
