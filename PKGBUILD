@@ -2,7 +2,7 @@
 
 _pkgname=openbazaard-standalone
 pkgname=${_pkgname}-git
-pkgver=1143.72445ef
+pkgver=v0.2.4.r0.g4ff0391
 pkgrel=1
 pkgdesc="Server daemon for communication between client and OpenBazaar network (Latest git for 1.x standalone)"
 arch=(any)
@@ -56,11 +56,11 @@ msg2 "Install ${_pkgname} scripts"
 
 pkgver() {
   cd ${_pkgname}
-  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 md5sums=('SKIP'
          '7949d40abcd8bdaee27ff670d5b6c1c7'
          '58f846fbc1742fea9d245b6f93f6db15'
          'e4d7b1c3fdceca262a517dd103f59260'
-         '6e5acb7867aee15e2b949a554836c2c9')
+         '7514454b8aaa3d286ff020d78babd96f')
