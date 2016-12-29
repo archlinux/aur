@@ -9,7 +9,7 @@
 _pack=specfun
 pkgname=octave-$_pack
 pkgver=1.1.0
-pkgrel=5
+pkgrel=6
 pkgdesc="Special functions including ellipitic functions, etc"
 arch=(any)
 url="http://octave.sourceforge.net/$_pack/"
