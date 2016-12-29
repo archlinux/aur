@@ -1,7 +1,7 @@
 pkgbase = jackett-public
 	pkgdesc = Use any tracker with Sonarr (Public Tracker Version)
 	pkgver = 0.6.45.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/Jackett/Jackett
 	install = jackett-public.install
 	arch = any
@@ -10,9 +10,9 @@ pkgbase = jackett-public
 	depends = curl
 	conflicts = jackett
 	source = https://github.com/dreamcat4/Jackett-public/releases/download/v0.6.45.3/Jackett-public.Binaries.Mono.tar.gz
-	source = jackett.service
+	source = jackett-public.service
 	md5sums = 7ed61a1574a82b86ded63350dc4d5ba2
-	md5sums = 66e0875379faf004ccea4b44286fa69b
+	md5sums = 8134aaa1cd553641345b9fce7990e529
 
 pkgname = jackett-public
 

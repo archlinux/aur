@@ -1,5 +1,5 @@
 [Unit]
-Description=Jackett Service
+Description=Jackett Public Service
 After=network.target
 
 [Service]
