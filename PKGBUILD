@@ -14,7 +14,6 @@ depends=(
 makedepends=(
     'cargo'
     'git>=1'
-    'python-pytoml'
     'cmake>=2.8.9')
 provides=('panopticon')
 conflicts=('panopticon')
@@ -23,7 +22,7 @@ md5sums=('SKIP')
 
 pkgver() {
     cd $pkgname
-    echo "$(python -c "print(__import__('pytoml').loads(open('Cargo.toml').read())['package']['version'])").$(git rev-list --count HEAD)"
+	echo $(grep '^version =' Cargo.toml|head -n1|cut -d\" -f2).$(git rev-list --count HEAD)
 }
 
 build() {
