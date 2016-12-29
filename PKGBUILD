@@ -1,19 +1,33 @@
 # Maintainer: Zanny <lordzanny@gmail.com>
 # First Linux Arch packager: Serge Victor <arch@random.re>
 
-pkgname=('python-flask-bootstrap')
+_name='flask-bootstrap'
+pkgname=("python-$_name" "python2-$_name")
 pkgver=3.3.7.0
 pkgrel=1
 pkgdesc="Ready-to-use Twitter-bootstrap for use in Flask."
 arch=('any')
-url="https://github.com/mbr/flask-bootstrap"
+url="https://github.com/mbr/$_name"
 license=('Apache')
-depends=('python-flask' 'python-visitor' 'python-dominate')
 makedepends=('python-setuptools')
-source=("https://github.com/mbr/flask-bootstrap/archive/$pkgver.tar.gz")
+source=("$url/archive/$pkgver.tar.gz")
 md5sums=('e2e3d5962e6a45dd724917b52560dae8')
+_vername="$_name-$pkgver"
 
-package() {
-    cd "flask-bootstrap-$pkgver"
-    python setup.py install --root="$pkgdir"
+prepare() {
+    cp -a "$srcdir/$_vername"{,-python2}
+}
+
+package_python-flask-bootstrap() {
+    depends=('python-flask' 'python-visitor' 'python-dominate')
+
+    cd "$srcdir/$_vername"
+    python3 setup.py install --root="$pkgdir" --optimize=1
+}
+
+package_python2-flask-bootstrap() {
+    depends=('python2-flask' 'python2-visitor' 'python2-dominate')
+
+    cd "$srcdir/$_vername-python2"
+    python2 setup.py install --root="$pkgdir" --optimize=1
 }
