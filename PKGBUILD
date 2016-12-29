@@ -9,7 +9,7 @@
 _pack=symbolic
 pkgname=octave-$_pack
 pkgver=2.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Adds symbolic calculation features to GNU Octave. These include common Computer Algebra System tools such as algebraic operations, calculus, equation solving, Fourier and Laplace transforms, variable precision arithmetic and other features.  Interna [...]"
 arch=(any)
 url="http://octave.sourceforge.net/$_pack/"
