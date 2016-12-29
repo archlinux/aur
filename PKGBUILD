@@ -1,8 +1,8 @@
-# Maintainer: Yosef Or Boczko <yoseforb@gnome.org>
+# Maintainer: Adria Arrufat <adria.arrufat+AUR@protonmail.ch>
 
 _pkgname=recipes
 pkgname=$_pkgname-git
-pkgver=0.3.0.18.g9cee47a
+pkgver=0.4.2.4.g02dc495
 pkgrel=1
 install=$_pkgname.install
 pkgdesc="A GNOME recipes cooking book"
