@@ -9,7 +9,7 @@
 _pack=sockets
 pkgname=octave-$_pack
 pkgver=1.2.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Socket functions for networking from within octave."
 arch=(any)
 url="http://octave.sourceforge.net/$_pack/"
