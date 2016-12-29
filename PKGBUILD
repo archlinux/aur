@@ -1,7 +1,9 @@
 # Maintainer: cth451 <cth451@gmail.com>
 pkgname=flatplat-theme
 epoch=1
-pkgver=3.22.20161109
+_date=20161227
+_gnomever=3.22
+pkgver=${_gnomever}.${_date}
 pkgrel=3
 pkgdesc="A Material Design-like flat theme for GTK3, GTK2, Metacity, and GNOME-Shell. This package does not contain chrome skin extension."
 arch=('any')
@@ -9,15 +11,13 @@ url="https://github.com/nana-4/Flat-Plat"
 license=('GPL')
 depends=('gtk3>=3.22' 'gtk-engine-murrine' 'gnome-themes-standard')
 optdepends=()
-provides=('flatplat-theme')
-conflicts=('flatplat-theme-git')
+provides=('flatplat-theme' 'flatplat-theme-laptop')
+conflicts=('flatplat-theme-git' 'flatplat-theme-laptop')
 replaces=()
-source=("https://github.com/nana-4/Flat-Plat/releases/download/v${pkgver}/Flat-Plat-${pkgver}.tar.gz")
-sha256sums=('77d335d1a946999389e0ffe3418be41df24615b402aaedc1c04fb8ab44468636')
+source=("https://github.com/nana-4/Flat-Plat/archive/v${_date}.zip")
+sha256sums=('c057beedbedd48698a36bf884c0ab1253a17c91f359b8e3546d6999b7fd8041e')
 
 package() {
-  cd "Flat-Plat"
-  install -dm 755 "${pkgdir}"/usr/share/themes/Flat-Plat
-  rm -rf chrome img
-  cp -dr --no-preserve='ownership,mode' * "${pkgdir}"/usr/share/themes/Flat-Plat
+  cd "${srcdir}/Flat-Plat-${_date}"
+  destdir="${pkgdir}" ./install.sh
 }
