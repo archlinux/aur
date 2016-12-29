@@ -4,7 +4,7 @@ pkgver=1
 pkgrel=1
 pkgdesc="Photonic mode solver with a simple interface."
 arch=('any')
-url="https://github.com/jtambasco/opticalmaterialspy"
+url="https://github.com/jtambasco/modesolverpy"
 license=('MIT')
 depends=('python'
          'python-numpy'
