@@ -23,10 +23,9 @@ build() {
   cd "build"
   cmake ..
   make
-  make install
 }
 
 package(){
-  cd "GCode3D"
-  make install
+  cd "Gcode3D/build"
+  make DESTDIR="$pkgdir" install
 }
