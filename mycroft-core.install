@@ -11,10 +11,10 @@ post_install() {
   echo "export PROJECT_HOME=\$HOME/Devel" >> /usr/share/mycroft-core/.bashrc
   echo "source /usr/bin/virtualenvwrapper.sh" >> /usr/share/mycroft-core/.bashrc
 
-  sudo -u mycroft-core bash -c 'source ~/.bashrc' &> /dev/null # Initialize virtualenv
+  sudo -Hu mycroft-core bash -c 'source ~/.bashrc' &> /dev/null # Initialize virtualenv
 
-  sudo -u mycroft-core bash -c 'source ~/.bashrc && mkvirtualenv mycroft --system-site-packages -p $(which python2)'
-  sudo -u mycroft-core bash -c 'source ~/.bashrc && workon mycroft && pip install -r /usr/share/mycroft-core/requirements.txt'
+  sudo -Hu mycroft-core bash -c 'source ~/.bashrc && mkvirtualenv mycroft --system-site-packages -p $(which python2)'
+  sudo -Hu mycroft-core bash -c 'source ~/.bashrc && workon mycroft && pip install -r /usr/share/mycroft-core/requirements.txt'
 
   echo "*** ATTENTION ***"
   echo ""
@@ -37,7 +37,7 @@ post_install() {
 
 post_upgrade() {
   chown -R mycroft-core:mycroft-core /usr/share/mycroft-core
-  sudo -u mycroft-core bash -c "source ~/.bashrc && workon mycroft && pip install -r /usr/share/mycroft-core/requirements.txt"
+  sudo -Hu mycroft-core bash -c "source ~/.bashrc && workon mycroft && pip install -r /usr/share/mycroft-core/requirements.txt"
 
   echo "*** ATTENTION ***"
   echo ""
