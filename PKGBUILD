@@ -2,7 +2,7 @@
 
 pkgname=dasm
 pkgver=2.20.11
-pkgrel=1
+pkgrel=2
 _relyear=2014
 _relmonth=03
 _relday=04
