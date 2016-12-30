@@ -1,7 +1,7 @@
 # Maintainer: Wei-Ning Huang <aitjcize@gmail.com>
 pkgname=python-pytox-git
 _pkgname=PyTox
-pkgver=20160204
+pkgver=20161230
 pkgrel=1
 pkgdesc="Python binding for Project-Tox the skype replacement"
 arch=('i686' 'x86_64')
@@ -19,6 +19,15 @@ pkgver() {
 
 build() {
   cd $_pkgname
+
+  sed -i -e "/toxcrypto/d" setup.py
+  sed -i -e "/toxdht/d" setup.py
+  sed -i -e "/toxfriends/d" setup.py
+  sed -i -e "/toxgroup/d" setup.py
+  sed -i -e "/toxmessenger/d" setup.py
+  sed -i -e "/toxnetcrypto/d" setup.py
+  sed -i -e "/toxnetwork/d" setup.py
+
   python setup.py build
 }
 
