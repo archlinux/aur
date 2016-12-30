@@ -2,7 +2,7 @@
 
 pkgname=syncplay-git
 pkgver=v1.4.0.RC4.r17.gddae114
-pkgrel=1
+pkgrel=2
 pkgdesc="synchronize watching movies on mplayer2, vlc, mpv, and mpc-hc on many computers"
 arch=('any')
 url="http://syncplay.pl/"
@@ -12,9 +12,9 @@ makedepends=('git')
 provides=('syncplay')
 conflicts=('syncplay')
 source=("$pkgname"::'git://github.com/Syncplay/syncplay.git'
-        syncplay.service)
+        syncplay@.service)
 sha256sums=('SKIP'
-            '7b0db4ec2731288084d788fc26e11b14166b6886f406b26e9e1c4e67ed9feb0f')
+            '2033d40daad02f06eede073d0cee39fba8c70289dd71e8444d429b810438ec3a')
 
 pkgver() {
   cd "$srcdir/$pkgname"
@@ -25,7 +25,7 @@ package() {
   cd $srcdir
 
   # systemd
-  install -Dm644 syncplay.service ${pkgdir}/usr/lib/systemd/system/syncplay.service
+  install -Dm644 syncplay@.service ${pkgdir}/usr/lib/systemd/system/syncplay@.service
 
   cd $pkgname
 
