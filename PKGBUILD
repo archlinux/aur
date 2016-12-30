@@ -1,12 +1,12 @@
 # Maintainer: Kitsu mail@kitsu.me
 pkgname=movian-git
 pkgver=5.0.r454.g552ad613b
-pkgrel=1
+pkgrel=2
 pkgdesc="Media center (Git version)"
 arch=('i686' 'x86_64')
 url="https://movian.tv/"
 license=('GPL')
-depends=('libxext' 'sqlite' 'freetype2' 'webkitgtk' 'openssl')
+depends=('libxext' 'sqlite' 'freetype2' 'webkitgtk' 'openssl' 'libgl' 'libgl')
 makedepends=('git')
 provides=('movian')
 conflicts=('movian')
@@ -20,7 +20,7 @@ pkgver() {
 
 build() {
     cd "$srcdir/${pkgname%-git}"
-    ./configure --prefix=/usr
+    ./configure --prefix="$pkgdir/usr" --release
     make
 }
 
