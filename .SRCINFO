@@ -1,0 +1,20 @@
+pkgbase = brother-mfc-9010cn
+	pkgdesc = LPR and CUPS driver for the Brother MFC-9010CN
+	pkgver = 1.1.2
+	pkgrel = 1
+	url = http://welcome.solutions.brother.com/bsc/public_s/id/linux/en/index.html
+	install = brother-mfc-9010cn.install
+	arch = i686
+	arch = x86_64
+	license = unknown
+	depends = deb2targz
+	depends = perl
+	depends = a2ps
+	depends = lib32-glibc
+	source = http://download.brother.com/welcome/dlf006431/mfc9010cnlpr-1.1.2-1.i386.deb
+	source = http://download.brother.com/welcome/dlf006433/mfc9010cncupswrapper-1.1.2-2.i386.deb
+	sha256sums = b197cb67228b5f664465a1d7805d795f9cfd1502a88716864466469dec5fa722
+	sha256sums = 47c17b7b0168e9e3abff4e9d5d513100ada85b49e8aa4b53b02d59b8124dc34e
+
+pkgname = brother-mfc-9010cn
+
