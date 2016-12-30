@@ -1,7 +1,7 @@
 # Maintainer: Chris Kitching <chriskitching@linux.com>
 # Contributor: Xiao-Long Chen <chenxiaolong@cxl.epac.to>
 pkgname=mingw-w64-cairo-bootstrap
-pkgver=1.14.6
+pkgver=1.14.8
 pkgrel=1
 pkgdesc="Cairo vector graphics library (mingw-w64 bootstrap)"
 arch=(any)
@@ -16,7 +16,7 @@ source=("http://cairographics.org/releases/cairo-${pkgver}.tar.xz"
 "0009-standalone-headers.mingw.patch"
 "0026-create-argb-fonts.all.patch"
 "0030-add-cairo-API-to-setup-Win32-surface-for-HDC.patch")
-sha1sums=('0a59324e6cbe031b5b898ff8b9e2ffceb9d114f5'
+sha1sums=('c6f7b99986f93c9df78653c3e6a3b5043f65145e'
           '58c548d2791ba20dd7f6e328ff596f746df3aa10'
           '9c0e533614782a41af2c3806a43ab7fe9d6a5431'
           'c0c9546f120133b8e5b116650ba233a15a1e20c4')
