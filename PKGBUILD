@@ -9,7 +9,7 @@ _relday=04
 pkgdesc="A versatile macro assembler with support for several 8-bit microprocessors including 6502, 6507, 6803, HD6303, 68HC11, 68705, and F8"
 arch=('x86_64')
 url="http://dasm-dillon.sourceforge.net/"
-source=(https://downloads.sourceforge.net/project/dasm-dillon/dasm-dillon/${pkgver}/${pkgname}-${pkgver}-${_relyear}.${_relmonth}.${_relday}-source.tar.gz?use_mirror=autoselect)
+source=(https://downloads.sourceforge.net/project/dasm-dillon/dasm-dillon/${pkgver}/${pkgname}-${pkgver}-${_relyear}.${_relmonth}.${_relday}-source.tar.gz)
 md5sums=('b160db6d60371bca7ebdad0a374c0c75')
 license=('GPL2')
 provides=('dasm' 'ftohex')
