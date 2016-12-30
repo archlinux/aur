@@ -4,7 +4,6 @@ pre_install() {
 
 post_install() {
   chown -R mycroft-core:mycroft-core /usr/share/mycroft-core
-  chmod g+w /usr/share/mycroft-core
 
   touch /usr/share/mycroft-core/.bashrc
   echo "# Virtualenv initialization" >> /usr/share/mycroft-core/.bashrc
@@ -37,7 +36,13 @@ post_install() {
 }
 
 post_upgrade() {
+  chown -R mycroft-core:mycroft-core /usr/share/mycroft-core
   sudo -u mycroft-core bash -c "source ~/.bashrc && workon mycroft && pip install -r /usr/share/mycroft-core/requirements.txt"
+
+  echo "*** ATTENTION ***"
+  echo ""
+  echo "* Upgrading to version v0.8.0 without repairing requires to each of Mycroft's user to run:"
+  echo "    cp ~/.mycroft/identity/identity.json ~/.mycroft/identity/identity2.json"
 }
 
 post_remove() {
