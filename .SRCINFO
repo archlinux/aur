@@ -1,0 +1,13 @@
+pkgbase = skiller-ctl
+	pkgdesc = control some of the additional features of Sharkoon skiller keyboards
+	pkgver = 0.2
+	pkgrel = 1
+	url = https://github.com/anyc/skiller-ctl
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	source = https://github.com/anyc/skiller-ctl/archive/v0.2.tar.gz
+	sha256sums = eccb19b9cbb5ab11f38b1c70cb50ebd6009927fe0ca06601aa3ec5a4eb5a8c5b
+
+pkgname = skiller-ctl
+
