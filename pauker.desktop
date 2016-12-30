@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Pauker
+Comment=Flash card based learning tool
+Exec=pauker
+Icon=pauker
+Terminal=false
+Type=Application
+Categories=Java;Education;Languages;
+StartupNotify=true

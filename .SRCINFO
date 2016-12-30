@@ -1,0 +1,20 @@
+pkgbase = pauker
+	pkgdesc = A flash card based learning tool using shortterm and longterm memory training (no active development)
+	pkgver = 1.9b3
+	pkgrel = 1
+	url = http://pauker.sourceforge.net/
+	arch = any
+	license = GPL
+	depends = java-runtime
+	noextract = pauker-1.9b3.jar
+	source = http://downloads.sourceforge.net/pauker/pauker-1.9Beta3.jar
+	source = https://pauker.svn.sourceforge.net/svnroot/pauker/trunk/icon.svg
+	source = pauker.desktop
+	source = pauker.sh
+	sha512sums = 28a34d089af958de9189a0e4ac43d12a2b2188f5e24623dbc02ea7a6897e7a1abfabb18d28cc0a5fd872e518015a460c4e75299a0bc5d91f476f5ad967f634f4
+	sha512sums = 94a95e28931d3e2d33ad942103f5bbd1571a31fd84dfa98f641a842447e733d692c4e108650ed631b63d6589214ecf9418768a7abe0ddbe9f981515fb16bcb8f
+	sha512sums = SKIP
+	sha512sums = SKIP
+
+pkgname = pauker
+
