@@ -1,7 +1,7 @@
 # Maintainer: Tom Zander
 
 pkgname=bitcoin-classic-git
-pkgver=v1.2.0.b1.r56.gd5556713
+pkgver=v1.2.0.b1.r57.g2e2dbcb9
 pkgrel=1
 pkgdesc='Bitcoin Classic versions of Bitcoind, bitcoin-cli, bitcoin-tx, and bitcoin-qt, most recent stable branch, w/GUI and wallet'
 arch=('i686' 'x86_64')
@@ -38,8 +38,9 @@ build() {
         --sharedstatedir=/usr/share/bitcoin \
         --localstatedir=/var/lib/bitcoin
   make -j$(nproc)
+}
 
-  msg2 'Running Check...'
+check() {
   "$srcdir/bitcoinclassic/src/test/test_bitcoin"
 }
 
