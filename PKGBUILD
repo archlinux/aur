@@ -1,6 +1,6 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 pkgname=texinfo-svn
-pkgver=7584
+pkgver=7586
 pkgrel=1
 pkgdesc="GNU documentation system for on-line information and printed output"
 arch=('i686' 'x86_64')
@@ -29,15 +29,13 @@ pkgver() {
 build() {
   cd "$srcdir"/"${_svnmod}"
   ./autogen.sh 
-  ./configure --prefix=/usr --libexecdir=/usr/lib
+  ./configure --prefix=/usr --libexecdir=/usr/lib --disable-perl-xs
   make
 }
 
 package() {
   cd "$srcdir"/"${_svnmod}"
   make DESTDIR="$pkgdir/" install
-  install -dm755 "$pkgdir"/usr/share/texinfo/Texinfo
-  cp -r tp/Texinfo/*.pm "$pkgdir"/usr/share/texinfo/Texinfo
   install -dm755 "$pkgdir"/usr/share/libalpm/hooks/
   cd "$srcdir"
   install -m644 texinfo-{install,remove}.hook \
