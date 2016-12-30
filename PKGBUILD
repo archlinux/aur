@@ -1,27 +1,31 @@
 # Maintainer: Jameson Pugh <imntreal@gmail.com>
 
-pkgname=python-pushover
-pkgver=0.2
+pkgbase=python-pushover
+pkgname=('python-pushover' 'python2-pushover')
+pkgver=0.3
 pkgrel=1
 pkgdesc="Python library for Pushover notification service."
 arch=('any')
 url='http://pythonhosted.org/python-pushover/'
 license=('GPL')
-depends=('python-requests')
-makedepends=('python-distribute')
-source=("https://pypi.python.org/packages/source/p/python-pushover/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('39eefdcfa2335a4ad98bd321a25b56936abed4ea5922ba3fc372d091273e0775')
+makedepends=('python-distribute' 'python2-distribute')
+source=("https://github.com/Thibauth/python-pushover/archive/v${pkgver}.tar.gz")
+sha256sums=('cdfaec28c5cf7816697e4fbe5da4e4b6550d2e9520e6651cf36b32acab3440bf')
 
-build() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+package_python-pushover() {
+  depends=('python-requests')
+  pkgdesc="Python library for Pushover notification service. (python3 version)"
 
-  python setup.py build
+  cd "${srcdir}/${pkgbase}-${pkgver}"
+  python setup.py install --root=${pkgdir} 
 }
 
-package() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+package_python2-pushover() {
+  depends=('python2-requests')
+  pkgdesc="Python library for Pushover notification service. (python2 version)"
 
-  python setup.py install --root=${pkgdir} 
+  cd "${srcdir}/${pkgbase}-${pkgver}"
+  python2 setup.py install --root=${pkgdir} 
 }
 
 # vim:set ts=2 sw=2 et:
