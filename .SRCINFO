@@ -1,0 +1,28 @@
+pkgbase = kgraphviewer-frameworks-git
+	pkgdesc = A Graphviz dot graph file viewer for KDE
+	pkgver = 2.20.f1c3420
+	pkgrel = 1
+	url = http://www.kde.org/applications/graphics/kgraphviewer/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	license = FDL
+	makedepends = cmake
+	makedepends = boost
+	makedepends = docbook-xsl
+	depends = qt5-base
+	depends = qt5-svg
+	depends = kcoreaddons
+	depends = kdoctools
+	depends = kparts
+	depends = kio
+	depends = kwidgetsaddons
+	depends = kiconthemes
+	depends = graphviz
+	provides = kgraphviewer
+	conflicts = kgraphviewer
+	source = git://anongit.kde.org/kgraphviewer#branch=frameworks
+	md5sums = SKIP
+
+pkgname = kgraphviewer-frameworks-git
+
