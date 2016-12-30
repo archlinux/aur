@@ -2,8 +2,8 @@
 
 pkgname=dfhack
 pkgver=0.43.05
-_pkgver=$pkgver-alpha1
-pkgrel=1
+_pkgver=$pkgver-alpha4
+pkgrel=2
 pkgdesc="memory hacking library for Dwarf Fortress and a set of tools that use it"
 arch=('x86_64' 'i686')
 url="http://dfhack.readthedocs.io/en/v$pkgver/"
@@ -13,9 +13,11 @@ depends_x86_64=('lib32-glu' 'lib32-gtk2' 'lib32-libjpeg6-turbo' 'lib32-libpng12'
 makedepends=('cmake' 'git' 'python-sphinx')
 makedepends_x86_64=('gcc-multilib')
 conflicts=('dfhack-bin' 'dfhack-git')
+
 source=($pkgname::git+https://github.com/DFHack/dfhack#tag=$_pkgver
         dfhack.sh
         dfhack-run.sh)
+
 md5sums=('SKIP'
          '81f5909c1a32391679f968e40f24d5ca'
          '3853c6f890d3541f710f2c4833a9e696')
