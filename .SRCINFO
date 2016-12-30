@@ -1,0 +1,18 @@
+pkgbase = bzr-bzr
+	pkgdesc = A decentralized revision control system (bazaar) from launchpad
+	pkgver = 1
+	pkgrel = 1
+	url = https://bazaar.canonical.com/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = bzr
+	depends = python2
+	optdepends = python2-paramiko: SFTP support
+	provides = bzr
+	conflicts = bzr
+	source = bazaar::bzr+https+urllib://code.launchpad.net/~bzr-pqm/bzr/bzr.dev/
+	md5sums = SKIP
+
+pkgname = bzr-bzr
+
