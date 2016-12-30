@@ -1,0 +1,21 @@
+pkgbase = rippled
+	pkgdesc = Ripple peer-to-peer network daemon
+	pkgver = 0.33.0.hf1.r149.g8425e4558
+	pkgrel = 1
+	url = https://github.com/ripple/rippled
+	arch = i686
+	arch = x86_64
+	license = custom:ISC
+	makedepends = git
+	makedepends = scons
+	makedepends = boost
+	depends = protobuf
+	depends = openssl
+	depends = boost-libs
+	backup = etc/rippled/rippled.cfg
+	backup = etc/rippled/validators.txt
+	source = git://github.com/ripple/rippled.git
+	sha512sums = SKIP
+
+pkgname = rippled
+
