@@ -3,7 +3,7 @@
 pkgname=(freedm freedoom1 freedoom2)
 pkgbase=freedoom
 pkgver=0.10.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Free game based on the Doom engine"
 arch=('any')
 url="https://freedoom.github.io/"
@@ -35,8 +35,8 @@ install_pkg_files() {
 }
 
 prepare() {
-  ln -s "$srcdir"/freedoom-"$pkgver" "$srcdir"/freedoom1-"$pkgver"
-  ln -s "$srcdir"/freedoom-"$pkgver" "$srcdir"/freedoom2-"$pkgver"
+  ln -Tsf "$srcdir"/freedoom-"$pkgver" "$srcdir"/freedoom1-"$pkgver"
+  ln -Tsf "$srcdir"/freedoom-"$pkgver" "$srcdir"/freedoom2-"$pkgver"
 }
 
 package_freedm() {
