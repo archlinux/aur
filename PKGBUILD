@@ -2,12 +2,12 @@
 
 pkgname=mamepgui-svn
 pkgver=5175
-pkgrel=1
+pkgrel=2
 pkgdesc="Frontend for SDLMAME/SDLMESS based on MAME Plus!"
 arch=('i686' 'x86_64')
 url="http://sourceforge.net/projects/mameplus"
 license=('custom:WTFPL')
-depends=('qt4' 'quazip')
+depends=('qt4' 'quazip-qt4')
 makedepends=('subversion')
 conflicts=('mamepgui')
 provides=('mamepgui=1.6.0')
