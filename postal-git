@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+resource_path=/usr/share/postal-git
+
+# change to same dir as ini
+cd $resource_path
+./postal1-bin

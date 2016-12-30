@@ -1,0 +1,31 @@
+From 67b7a73aaaee98da73a5fb46835caeb9cf96c6be Mon Sep 17 00:00:00 2001
+From: Donald Carr <sirspudd@gmail.com>
+Date: Fri, 30 Dec 2016 22:01:12 +0200
+Subject: [PATCH] Use the system SDL2
+
+Change-Id: I48e4c48a19a8fb49878a1b448ff46b2d8c1545bc
+---
+ makefile | 6 ------
+ 1 file changed, 6 deletions(-)
+
+diff --git a/makefile b/makefile
+index 0f36e07..6586aaa 100644
+--- a/makefile
++++ b/makefile
+@@ -277,13 +277,7 @@ ifeq ($(strip $(macosx)),true)
+   LIBS += SDL2/libs/macosx/libSDL2-2.0.0.dylib
+   STEAMLDFLAGS += steamworks/sdk/redistributable_bin/osx32/libsteam_api.dylib
+ else
+-  ifeq ($(CPUARCH),arm)
+     LIBS += -lSDL2
+-  else
+-    LIBS += SDL2/libs/linux-x86/libSDL2-2.0.so.0
+-    LDFLAGS += -Wl,-rpath,\$$ORIGIN
+-    STEAMLDFLAGS += steamworks/sdk/redistributable_bin/linux32/libsteam_api.so
+- endif
+ endif
+ 
+ ifeq ($(strip $(steamworks)),true)
+-- 
+2.11.0
+
