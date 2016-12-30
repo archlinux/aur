@@ -1,0 +1,15 @@
+pkgbase = cysboard-git
+	pkgdesc = A lightweight system monitor with html and css for themes. Latest commit from the master branch on Github.
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/mike168m/Cysboard
+	arch = any
+	license = GPL3
+	makedepends = git
+	makedepends = automake
+	depends = when-changed-git
+	source = git://github.com/mike168m/Cysboard.git
+	md5sums = SKIP
+
+pkgname = cysboard-git
+
