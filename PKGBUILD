@@ -7,7 +7,7 @@
 _pkgname=gitea
 _gourl="code.gitea.io"
 pkgname=gitea-git
-pkgver=4607.cbcb436
+pkgver=4698.d0490c18
 pkgrel=1
 pkgdesc='A painless self-hosted Git service.'
 url='https://gitea.io/'
@@ -71,4 +71,5 @@ package() {
   install -Dm644 "${srcdir}/${_pkgname}.tmpfiles" "${pkgdir}/usr/lib/tmpfiles.d/gitea.conf"
   install -Dm644 "${srcdir}/app.ini" "${pkgdir}/var/lib/${_pkgname}/custom/conf/app.ini"
   cp -r ${srcdir}/src/${_gourl}/${_pkgname}/{conf,templates,public} ${pkgdir}/var/lib/${_pkgname}
+  cp -r ${srcdir}/src/${_gourl}/${_pkgname}/options/* ${pkgdir}/var/lib/${_pkgname}/conf
 }
