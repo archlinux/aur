@@ -19,7 +19,7 @@ build() {
       MODULEBUILDRC=/dev/null
 
     cd "$srcdir/Sub-Quote-$pkgver"
-    /usr/bin/perl Makefile.PL
+    perl Makefile.PL
     make
   )
 }
