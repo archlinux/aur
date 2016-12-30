@@ -2,33 +2,37 @@
 
 pkgname=dfhack-bin
 _pkgname=dfhack
-pkgver=0.43.03
-_pkgver=$pkgver-alpha1
-pkgrel=1
+pkgver=0.43.05
+_pkgver=$pkgver-alpha4
+pkgrel=2
 pkgdesc="memory hacking library for Dwarf Fortress and a set of tools that use it"
 arch=('x86_64' 'i686')
 url="http://dfhack.readthedocs.io/en/v$pkgver/"
 license=('custom')
-depends=(dwarffortress=$pkgver)
-
-if test "$CARCH" == "x86_64" ; then
-  depends+=(lib32-libpng12 lib32-libjpeg6-turbo)
-fi
+depends=(bash
+         dwarffortress=$pkgver
+         lua
+         protobuf)
 
 conflicts=(dfhack dfhack-git)
 
-source=("$_pkgname-$_pkgver.tar.bz2::https://github.com/DFHack/dfhack/releases/download/$_pkgver/$_pkgname-$_pkgver-Linux-gcc-4.8.1.tar.bz2"
-        dfhack.sh
+source_i686=(https://github.com/DFHack/dfhack/releases/download/$_pkgver/dfhack-$_pkgver-Linux-32-gcc-4.8.1.tar.bz2)
+source_x86_64=(https://github.com/DFHack/dfhack/releases/download/$_pkgver/dfhack-$_pkgver-Linux-64-gcc-4.8.1.tar.bz2)
+
+md5sums_i686=('d909d24f1a258e6750405863076eb3c1')
+md5sums_x86_64=('1666bcafa4b0afdfd45f9149227cfcf3')
+
+source=(dfhack.sh
         dfhack-run.sh)
 
-md5sums=('031825dcd6d5026ca3db23350c025d0d'
-         '81f5909c1a32391679f968e40f24d5ca'
+md5sums=('81f5909c1a32391679f968e40f24d5ca'
          '3853c6f890d3541f710f2c4833a9e696')
 
 package() {
   install -d $pkgdir/opt/dwarffortress
 
-  cp -r $srcdir/{hack,stonesense,dfhack,dfhack-run,dfhack-config,dfhack.init-example} $pkgdir/opt/dwarffortress
+  # TODO add stonesense, once it is included again
+  cp -r $srcdir/{hack,dfhack,dfhack-run,dfhack-config,dfhack.init-example} $pkgdir/opt/dwarffortress
 
   install -Dm755 $srcdir/dfhack.sh     $pkgdir/usr/bin/dfhack
   install -Dm755 $srcdir/dfhack-run.sh $pkgdir/usr/bin/dfhack-run
