@@ -1,5 +1,5 @@
 pkgname=mingw-w64-kconfig
-pkgver=5.23.0
+pkgver=5.29.0
 pkgrel=1
 arch=(any)
 pkgdesc="Configuration system (mingw-w64)"
@@ -11,7 +11,7 @@ options=(staticlibs !strip !buildflags)
 optdepends=(wine "kconfig: needed for EXE workaround symlink")
 url="https://projects.kde.org/projects/frameworks/kconfig"
 source=("http://download.kde.org/stable/frameworks/${pkgver%.*}/kconfig-${pkgver}.tar.xz")
-md5sums=('2b822e9e4549fd2deffc23468af461e1')
+md5sums=('d9686ba5a3b1732236a3dcf3b7d1b4a4')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
@@ -40,6 +40,5 @@ package() {
     ln -s "/usr/bin/kconfig_compiler" "$pkgdir/usr/${_arch}/bin/kconfig_compiler_kf5.exe"
     find "$pkgdir/usr/${_arch}" -name '*.dll' -exec ${_arch}-strip --strip-unneeded {} \;
     find "$pkgdir/usr/${_arch}" -name '*.a' -o -name '*.dll' | xargs ${_arch}-strip -g
-    rm -rf "$pkgdir/usr/${_arch}/share"
   done
 }
