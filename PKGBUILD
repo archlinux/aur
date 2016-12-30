@@ -1,7 +1,7 @@
 pkgname=perl-sub-quote
 pkgver=2.003001
 pkgrel=1
-pkgdesc="Perl extension for easily overriding subroutines"
+pkgdesc="efficient generation of subroutines via string eval"
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
