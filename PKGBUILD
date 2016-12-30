@@ -2,7 +2,8 @@
 # Maintainer: Marton Suranyi <marton.suranyi@gmail.com>
 
 pkgname=syslog-ng-latest
-pkgver=3.8.1
+shortname=syslog-ng
+pkgver=3.9.1
 pkgrel=1
 pkgdesc="Next-generation syslogd with advanced networking and filtering capabilities"
 arch=('i686' 'x86_64' 'arm')
@@ -17,19 +18,19 @@ backup=('etc/syslog-ng/scl.conf'
         'etc/syslog-ng/syslog-ng.conf'
         'etc/logrotate.d/syslog-ng')
 
-source=(https://github.com/balabit/syslog-ng/releases/download/${pkgname}-${pkgver}/${pkgname}-${pkgver}.tar.gz
+source=(https://github.com/balabit/syslog-ng/releases/download/${shortname}-${pkgver}/${shortname}-${pkgver}.tar.gz
         syslog-ng.conf syslog-ng.logrotate)
-sha1sums=('e66cc7538eec245b80dda4624671a61932c856c3'
-          '621e885bf5f460c190665fad62e47d7edb69a0c8'
+sha1sums=('1ca437393d8895654452bef8ac0b996fe73284f8'
+          '273990d01e1f044dc090bba8098161dc12dd24ea'
           '949128fe3d7f77a7aab99048061f885bc758000c')
 
 prepare() {
-  cd $pkgname-$pkgver
+  cd $shortname-$pkgver
   sed -i -e 's,/bin/,/usr/bin/,' -e 's,/sbin/,/bin/,' contrib/systemd/syslog-ng.service
 }
 
 build() {
-  cd $pkgname-$pkgver
+  cd $shortname-$pkgver
   ./configure --prefix=/usr --sysconfdir=/etc/syslog-ng --libexecdir=/usr/lib \
     --sbindir=/usr/bin --localstatedir=/var/lib/syslog-ng --datadir=/usr/share/syslog-ng \
     --with-pidfile-dir=/run --disable-spoof-source --enable-ipv6 --enable-sql \
@@ -39,12 +40,12 @@ build() {
 }
 
 check() {
-  cd $pkgname-$pkgver
+  cd $shortname-$pkgver
   make check
 }
 
 package() {
-  make -C $pkgname-$pkgver DESTDIR="$pkgdir" install
+  make -C $shortname-$pkgver DESTDIR="$pkgdir" install
   install -dm755 "$pkgdir/var/lib/syslog-ng" "$pkgdir/etc/syslog-ng/patterndb.d"
   install -Dm644 "$srcdir/syslog-ng.conf" "$pkgdir/etc/syslog-ng/syslog-ng.conf"
   install -Dm644 "$srcdir/syslog-ng.logrotate" "$pkgdir/etc/logrotate.d/syslog-ng"

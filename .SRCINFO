@@ -1,6 +1,6 @@
 pkgbase = syslog-ng-latest
 	pkgdesc = Next-generation syslogd with advanced networking and filtering capabilities
-	pkgver = 3.8.1
+	pkgver = 3.9.1
 	pkgrel = 1
 	url = http://www.balabit.com/network-security/syslog-ng/
 	arch = i686
@@ -22,11 +22,11 @@ pkgbase = syslog-ng-latest
 	backup = etc/syslog-ng/scl.conf
 	backup = etc/syslog-ng/syslog-ng.conf
 	backup = etc/logrotate.d/syslog-ng
-	source = https://github.com/balabit/syslog-ng/releases/download/syslog-ng-latest-3.8.1/syslog-ng-latest-3.8.1.tar.gz
+	source = https://github.com/balabit/syslog-ng/releases/download/syslog-ng-3.9.1/syslog-ng-3.9.1.tar.gz
 	source = syslog-ng.conf
 	source = syslog-ng.logrotate
-	sha1sums = e66cc7538eec245b80dda4624671a61932c856c3
-	sha1sums = 621e885bf5f460c190665fad62e47d7edb69a0c8
+        sha1sums = 1ca437393d8895654452bef8ac0b996fe73284f8
+	sha1sums = 273990d01e1f044dc090bba8098161dc12dd24ea
 	sha1sums = 949128fe3d7f77a7aab99048061f885bc758000c
 
 pkgname = syslog-ng-latest
