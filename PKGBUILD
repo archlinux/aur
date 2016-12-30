@@ -2,7 +2,7 @@
 
 _pkgname=fs-uae-arcade
 pkgname=fs-uae-arcade-devel
-pkgver=2.9.0dev
+pkgver=2.9.1dev
 pkgrel=1
 pkgdesc="Full-screen game browser for FS-UAE (development version)."
 arch=("any")
@@ -15,14 +15,14 @@ source=("http://fs-uae.net/devel/${pkgver}/${_pkgname}-${pkgver}.tar.gz")
 provides=("fs-uae-game-center")
 conflicts=("fs-uae-game-center" "fs-uae-game-center-devel")
 replaces=("fs-uae-game-center-devel")
-sha1sums=('c8811b017cda2a50a35791afcf99e755a02e45bc')
+sha1sums=('ca0a3913d34afc30198feb875980c32ffda81219')
 
 
 
 prepare() {
    cd ${_pkgname}-${pkgver}
-   # disable included six, OpenGL
-   sed '/OpenGL/d; /six/d' -i setup.py
+   # disable included OpenGL
+   sed '/OpenGL/d' -i setup.py
 }
 
 build() {
