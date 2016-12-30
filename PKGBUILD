@@ -1,6 +1,6 @@
 # Maintainer: Flat <Flat@imo.uto.moe>
 pkgname=parallel-rust
-pkgver=0.7.0
+pkgver=0.8.0
 pkgrel=1
 pkgdesc="Inspired by GNU Parallel, a command-line CPU load balancer written in Rust."
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ optdepends=('dash: increased performance over sh')
 provides=('parallel')
 conflicts=('parallel')
 source=("https://github.com/mmstick/parallel/archive/$pkgver.tar.gz")
-md5sums=('f4ba609e871ead210fcee524a110d9fb')
+md5sums=('ef2f9190e28a1d3531a9459f19893361')
 
 build() {
 	cd "parallel-$pkgver"
