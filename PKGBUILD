@@ -6,7 +6,7 @@ pkgdesc="Media center (Git version)"
 arch=('i686' 'x86_64')
 url="https://movian.tv/"
 license=('GPL')
-depends=('libxext' 'sqlite' 'freetype2' 'webkitgtk' 'openssl' 'libpulse' 'libgl')
+depends=('webkitgtk2' 'libpulse' 'libvdpau' 'libxss')
 makedepends=('git')
 provides=('movian')
 conflicts=('movian')
@@ -20,7 +20,7 @@ pkgver() {
 
 build() {
     cd "$srcdir/${pkgname%-git}"
-    ./configure --prefix="$pkgdir/usr" --release
+    ./configure --prefix="/usr" --release
     make
 }
 
