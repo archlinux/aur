@@ -14,6 +14,7 @@ pkgbase = volunode-git
 	makedepends = git
 	makedepends = curl
 	makedepends = inetutils
+	makedepends = pstreams
 	makedepends = rsync
 	depends = glibmm
 	depends = curl
