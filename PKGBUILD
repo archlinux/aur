@@ -1,4 +1,4 @@
-# $Id: PKGBUILD 282440 2016-12-01 10:01:48Z foutrelis $
+# $Id: PKGBUILD 283129 2016-12-13 22:01:01Z heftig $
 # Maintainer: Brian Bidulock <bidulock@openss7.org>
 # Contributor: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 # Contributor: Ionut Biru <ibiru@archlinux.org>
@@ -6,21 +6,20 @@
 
 pkgname=firefox-gtk2
 _pkgname=firefox
-pkgver=50.0.2
+pkgver=50.1.0
 pkgrel=1
 pkgdesc="Standalone web browser from mozilla.org"
-arch=('i686' 'x86_64')
-license=('MPL' 'GPL' 'LGPL')
+arch=(i686 x86_64)
+license=(MPL GPL LGPL)
 url="https://www.mozilla.org/firefox/"
-depends=('gtk2' 'mozilla-common' 'libxt' 'startup-notification' 'mime-types'
-         'dbus-glib' 'alsa-lib' 'ffmpeg' 'libvpx' 'libevent' 'nss' 'hunspell'
-         'sqlite' 'ttf-font' 'icu')
-makedepends=('unzip' 'zip' 'diffutils' 'python2' 'yasm' 'mesa' 'imake' 'gconf'
-             'libpulse' 'inetutils' 'xorg-server-xvfb' 'autoconf2.13' 'cargo')
+depends=(gtk2 mozilla-common libxt startup-notification mime-types dbus-glib alsa-lib ffmpeg
+	 libvpx libevent nss hunspell sqlite ttf-font icu)
+makedepends=(unzip zip diffutils python2 yasm mesa imake gconf libpulse inetutils xorg-server-xvfb
+	     autoconf2.13 cargo jack)
 optdepends=('networkmanager: Location detection via available WiFi networks'
             'libnotify: Notification integration'
             'upower: Battery API')
-options=('!emptydirs' '!makeflags')
+options=(!emptydirs !makeflags)
 provides=("firefox=${pkgver}-${pkgrel}")
 conflicts=("firefox")
 source=(https://ftp.mozilla.org/pub/mozilla.org/firefox/releases/$pkgver/source/firefox-$pkgver.source.tar.xz
@@ -31,8 +30,8 @@ source=(https://ftp.mozilla.org/pub/mozilla.org/firefox/releases/$pkgver/source/
         vendor.js
         firefox-symbolic.svg
         fix-wifi-scanner.diff)
-sha256sums=('aa770cb8552bdcf4a7e8bb0ecde27d41ee5b2a972335c6b24dd3afb4d911dfe3'
-            '5488e59d08787927337b343c74a999e62e36ba1a0715f3ecb1c314e2ff8f1961'
+sha256sums=('54bb9bccbf9eed0c7715ae7f45330bf41ce24b756f5fdecb380e06709a6ac5a4'
+            '61370fb085e16df21a8f653cc862f62bc046c3536945575e803f0fb6d5479ada'
             '75c526e9669b91b4fe5dcea650a1e8419220abb2e9564184f0d984c71eae82e8'
             'd86e41d87363656ee62e12543e2f5181aadcff448e406ef3218e91865ae775cd'
             'f61ea706ce6905f568b9bdafd1b044b58f20737426f0aa5019ddb9b64031a269'
