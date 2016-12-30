@@ -1,0 +1,31 @@
+pkgbase = relay-git
+	pkgdesc = An IRC client built for elementary OS
+	pkgver = r242.6e23ee4
+	pkgrel = 1
+	url = https://github.com/agronick/Relay
+	install = relay-git.install
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = libgee
+	makedepends = glib2
+	makedepends = gtk3
+	makedepends = granite
+	makedepends = libunity
+	makedepends = vala
+	makedepends = automake
+	makedepends = libtool
+	makedepends = libx11
+	makedepends = patch
+	depends = sqlite
+	provides = relay
+	conflicts = relay
+	source = relay-git::git+https://github.com/agronick/Relay.git
+	source = relay-git.install
+	source = dont-post-install.patch
+	sha256sums = SKIP
+	sha256sums = 85906d05b381bdaf1254dac7b4d43ae473af5e53bc447bddb2c4a9eb6c9cab1a
+	sha256sums = 1791eb4d2a529e7a872de6dda45210d7a0a4de5fc851d49fd43cd3d4cf883fe6
+
+pkgname = relay-git
+

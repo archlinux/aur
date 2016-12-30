@@ -1,0 +1,11 @@
+post_install() {
+  echo "Be sure to run"
+  echo ""
+  echo "    \"update-desktop-database /usr/share/applications\""
+  echo ""
+  echo "and"
+  echo ""
+  echo "    \"gtk-update-icon-cache -f -t /usr/share/icons/hicolor\""
+  echo ""
+  echo "after the install completes"
+}

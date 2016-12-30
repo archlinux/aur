@@ -1,0 +1,31 @@
+From e7f6b1b11ed3a3e11aaccefe136c6794ce92fc7f Mon Sep 17 00:00:00 2001
+From: Riley Trautman <asonix.dev@gmail.com>
+Date: Mon, 10 Oct 2016 01:00:48 -0500
+Subject: [PATCH] Remove post-install
+
+---
+ src/Makefile.am | 8 --------
+ 1 file changed, 8 deletions(-)
+
+diff --git a/src/Makefile.am b/src/Makefile.am
+index 8ef3fef..0aeb11e 100755
+--- a/src/Makefile.am
++++ b/src/Makefile.am
+@@ -70,14 +70,6 @@ relay_LDADD = $(RELAY_LIBS)
+ 
+ EXTRA_DIST = $(ui_DATA) $(assets_DATA)
+ 
+-UPDATE_DESKTOP = sudo update-desktop-database $(desktopdir) || :
+-
+-install-data-hook: 
+-	$(UPDATE_DESKTOP) || :; \
+-    sudo rm $(datadir)/icons/hicolor/scalable/apps/relay.png || :; \
+-    sudo rm $(pkgdatadir)/ui/relay.png || :; \
+-    sudo gtk-update-icon-cache -f -t $(datadir)/icons/hicolor || :
+-
+ uninstall-local:
+ 	-rm -r $(uidir)
+ 	-rm -r $(imagedir)
+-- 
+2.10.0
+
