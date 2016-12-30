@@ -1,4 +1,0 @@
-pre_remove() {
-  _pythondir=$(python3 -c 'import sys; print(sys.path[-1])')
-  find $_pythondir/razer/ -name '__pycache__' | xargs rm -rf
-}
