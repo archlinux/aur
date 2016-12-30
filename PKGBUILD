@@ -1,5 +1,5 @@
 pkgname=cms-germany-git
-pkgver=r3295.5a2826e4
+pkgver=r3301.262f34c1
 pkgrel=1
 pkgdesc="CMS, or Contest Management System, is a distributed system for running and (to some extent) organizing a programming contest. This is a fork used for the German IOI team selection process."
 arch=('i686' 'x86_64')
