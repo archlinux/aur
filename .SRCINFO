@@ -1,7 +1,7 @@
 pkgbase = w3watch-links
 	pkgdesc = Watch the web and get notified on updates with a patch to use links instead of lynx
 	pkgver = 1.0.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://git.archlinux.de/w3watch.git/
 	arch = any
 	license = GPL
@@ -13,11 +13,9 @@ pkgbase = w3watch-links
 	depends = grep
 	provides = w3watch
 	conflicts = w3watch
-	source = https://users.archlinux.de/~pierre/src/w3watch/w3watch-1.0.3.tar.gz
-	source = https://users.archlinux.de/~pierre/src/w3watch/w3watch-1.0.3.tar.gz.sig
+	source = w3watch-1.0.3.tar.gz::https://github.com/pierres/w3watch/archive/1.0.3.tar.gz
 	source = links.diff
-	md5sums = cb539783d39f0bf50aa67494e7845291
-	md5sums = SKIP
+	md5sums = cd20b1402f25e0eec3a8e096b906cfb5
 	md5sums = 85c0ff5477592450f954a0c8ec7a5bd0
 
 pkgname = w3watch-links
