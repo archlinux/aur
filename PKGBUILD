@@ -2,8 +2,8 @@
 
 pkgname=mattercontrol
 _pkgname=MatterControl
-pkgver=1.6.0
-pkgrel=3
+pkgver=1.6.2
+pkgrel=1
 pkgdesc="Software solution for 3D printers"
 arch=("i386" "x86_64")
 license=('custom')
@@ -13,7 +13,7 @@ optdepends=('mattercontrol-plugins: Closed source plugins for cloud functionalit
 makedepends=('git' 'nuget')
 provides=('mattercontrol')
 install="mattercontrol.install"
-commit=356157d1548216e80b2aa36f19914d96f523d587
+_projecttoken=ag9zfm1hdHRlcmNvbnRyb2xyFAsSB1Byb2plY3QYgICAiOCSzAsM
 source=(git://github.com/MatterHackers/MatterControl.git
 	'mattercontrol'
 	'mattercontrol.desktop'
@@ -28,8 +28,7 @@ sha256sums=('SKIP'
 build() {
 	cd "${srcdir}"/${_pkgname}
 
-	#git checkout ${pkgver}
-	git checkout ${commit}
+	git checkout tags/Releases/${pkgver}
 	git submodule update --init --recursive
 	mozroots --import --sync
 	nuget restore MatterControl.sln
@@ -45,6 +44,11 @@ build() {
 	# Serial Helper
 	cd Submodules/agg-sharp/SerialPortCommunication/SerialHelper
 	./build.sh
+	cd "${srcdir}"/${_pkgname}
+
+	# Build Info
+	cd StaticData
+	echo "{\"BuildVersion\": \"${pkgver}\", \"ProjectToken\": \"${projecttoken}\", \"ReleaseVersion\": \"${pkgver}\", \"BuildToken\": \"no-key\"}" > BuildInfo.txt
 }
 
 package() {
