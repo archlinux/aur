@@ -6,8 +6,8 @@
 #
 
 pkgname=cerbero-profiler
-pkgver=2.6.2
-pkgrel=3
+pkgver=2.6.3
+pkgrel=1
 pkgdesc="Cerbero Profiler is a tool designed primarily for malware and forensic analysis. It supports a huge number of file formats on which it performs analysis and lets the user inspect their internal layout."
 arch=('x86_64')
 url="http://cerbero.io/profiler"
@@ -17,27 +17,29 @@ provides=('cerbero-profiler')
 
 #
 # release tarball and external dependencies
-# this is where the sha1 hashes were obtained:
 #
 # 1. http://packages.ubuntu.com/uk/trusty-updates/amd64/libpng12-0/download
 # 2. http://packages.ubuntu.com/trusty/amd64/libpython3.4/download
 # 3. https://store.cerbero.io/profiler/download
 #
 
-source=("https://store.cerbero.io/static/downloads/profiler/profiler_${pkgver}.tar.gz" 'http://security.ubuntu.com/ubuntu/pool/main/p/python3.4/libpython3.4_3.4.0-2ubuntu1.1_amd64.deb' 'http://mirrors.kernel.org/ubuntu/pool/main/libp/libpng/libpng12-0_1.2.50-1ubuntu2.14.04.2_amd64.deb')
-noextract=('libpython3.4_3.4.3-1ubuntu1~14.04.3_amd64.deb' 'libpng12-0_1.2.50-1ubuntu2.14.04.2_amd64.deb')
-sha1sums=('c4517aac16d56aeca6a64e9bff06bf5496875ef3' 'f3feb9e69cc02a0f4c7502e45db0f1f9c4e7c863' '0fd57a753a5e46659492187f804d6981158d8a00')
+python_package_name='libpython3.4_3.4.3-1ubuntu1~14.04.5_amd64.deb'
+libpng_package_name='libpng12-0_1.2.50-1ubuntu2.14.04.2_amd64.deb'
+
+source=("https://store.cerbero.io/static/downloads/profiler/profiler_${pkgver}.tar.gz" "http://security.ubuntu.com/ubuntu/pool/main/p/python3.4/${python_package_name}" "http://mirrors.kernel.org/ubuntu/pool/main/libp/libpng/${libpng_package_name}")
+noextract=("$python_package_name" "$libpng_package_name")
+sha1sums=('37582657d452763a6b358f61f069268e8eabe844' 'a03f1df9695cb9c454f34301b5fd08dd20a5ba21' '0fd57a753a5e46659492187f804d6981158d8a00')
 
 prepare() {
 	# we have to manually extract our two external dependencies since
 	# they both contain files with the same names
 
-	echo "Extracting: libpython3.4_3.4.0-2ubuntu1.1_amd64.deb"
-	ar vx libpython3.4_3.4.0-2ubuntu1.1_amd64.deb >> /dev/null 2>&1
+	echo "Extracting: $python_package_name"
+	ar vx "$python_package_name" >> /dev/null 2>&1
 	tar xf data.tar.xz >> /dev/null 2>&1
 
-	echo "Extracting: libpng12-0_1.2.50-1ubuntu2.14.04.2_amd64.deb"
-	ar vx libpng12-0_1.2.50-1ubuntu2.14.04.2_amd64.deb >> /dev/null 2>&1
+	echo "Extracting: $libpng_package_name"
+	ar vx "$libpng_package_name" >> /dev/null 2>&1
 	tar xf data.tar.xz >> /dev/null 2>&1
 }
 
