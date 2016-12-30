@@ -2,7 +2,7 @@
 
 pkgname=brave-git
 _pkgname=browser-laptop
-pkgver=0.12.8.4052
+pkgver=0.13.0.4879
 pkgrel=1
 pkgdesc="A web browser that stops ads and trackers by default. Master branch."
 arch=('x86_64') # Upstream supports x86_64 only
@@ -11,7 +11,8 @@ license=('custom:MPL2' 'BSD' 'Apache' 'custom:others')
 groups=('networking')
 depends=('gtk2' 'nss' 'alsa-lib' 'gconf' 'libxtst' 'libgnome-keyring' 'libxss' 'ttf-font')
 makedepends=('git' 'npm')
-optdepends=('cups: To print stuff')
+optdepends=('cups: To print stuff'
+            'pepper-flash: Adobe Flash support')
 provides=('brave' 'brave-browser')
 conflicts=('brave')
 source=("git://github.com/brave/browser-laptop.git" 
@@ -69,6 +70,8 @@ package() {
   cp --reflink=auto LICENSE.txt "$pkgdir"/usr/share/licenses/brave-git/MPL2
 
   mv "$pkgdir"/usr/lib/brave/{LICENSE,LICENSES.chromium.html} "$pkgdir"/usr/share/licenses/brave-git/
+
+  ln -s /usr/lib/PepperFlash "$pkgdir"/usr/lib/pepperflashplugin-nonfree 
 }
 
 # vim:set ts=2 sw=2 et:

@@ -1,6 +1,6 @@
 pkgbase = brave-git
 	pkgdesc = A web browser that stops ads and trackers by default. Master branch.
-	pkgver = 0.12.8.4052
+	pkgver = 0.13.0.4879
 	pkgrel = 1
 	url = https://www.brave.com/
 	arch = x86_64
@@ -20,6 +20,7 @@ pkgbase = brave-git
 	depends = libxss
 	depends = ttf-font
 	optdepends = cups: To print stuff
+	optdepends = pepper-flash: Adobe Flash support
 	provides = brave
 	provides = brave-browser
 	conflicts = brave
