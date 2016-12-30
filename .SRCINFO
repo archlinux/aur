@@ -10,6 +10,7 @@ pkgbase = brother-mfc-9010cn
 	depends = deb2targz
 	depends = perl
 	depends = a2ps
+	depends = cups
 	depends = lib32-glibc
 	source = http://download.brother.com/welcome/dlf006431/mfc9010cnlpr-1.1.2-1.i386.deb
 	source = http://download.brother.com/welcome/dlf006433/mfc9010cncupswrapper-1.1.2-2.i386.deb

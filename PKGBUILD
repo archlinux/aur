@@ -9,7 +9,7 @@ url="http://welcome.solutions.brother.com/bsc/public_s/id/linux/en/index.html"
 arch=('i686' 'x86_64')
 license=('unknown')
 install="brother-mfc-${model}.install"
-depends=('deb2targz' 'perl' 'a2ps')
+depends=('deb2targz' 'perl' 'a2ps' 'cups')
 depends_x86_64=('lib32-glibc')
 source=("http://download.brother.com/welcome/dlf006431/mfc${model}lpr-${pkgver}-${_revision}.i386.deb"
         "http://download.brother.com/welcome/dlf006433/mfc${model}cupswrapper-${pkgver}-${_revision_cups}.i386.deb")
