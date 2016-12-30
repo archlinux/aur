@@ -11,8 +11,7 @@ depends=('qt4' 'quazip-qt4')
 makedepends=('subversion')
 conflicts=('mamepgui')
 provides=('mamepgui=1.6.0')
-optdepends=('sdlmame: port of MAME using SDL'
-            'sdlmess: port of MESS using SDL')
+optdepends=('sdlmame: port of MAME/MESS using SDL')
 source=('COPYING')
 md5sums=('389a9e29629d1f05e115f8f05c283df5')
 
