@@ -1,7 +1,7 @@
 pkgbase = cerbero-profiler
 	pkgdesc = Cerbero Profiler is a tool designed primarily for malware and forensic analysis. It supports a huge number of file formats on which it performs analysis and lets the user inspect their internal layout.
-	pkgver = 2.6.2
-	pkgrel = 3
+	pkgver = 2.6.3
+	pkgrel = 1
 	url = http://cerbero.io/profiler
 	arch = x86_64
 	license = custom
