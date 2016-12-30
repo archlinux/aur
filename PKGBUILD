@@ -1,6 +1,6 @@
 # Maintainer: emersion <contact@emersion.fr>
 pkgname=browserpass
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 pkgdesc="Chrome & Firefox browser extension for pass, a UNIX password manager"
 arch=('x86_64')
