@@ -1,6 +1,6 @@
 pkgbase = xfce4-terminal-git
 	pkgdesc = A modern terminal emulator primarily for the Xfce desktop environment - git checkout
-	pkgver = 0.8.0.r14.g0983901
+	pkgver = 0.8.2.r1.g8cb51b0
 	pkgrel = 1
 	url = http://docs.xfce.org/apps/terminal/start
 	arch = i686
