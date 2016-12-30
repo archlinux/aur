@@ -2,13 +2,15 @@
 # Comaintainer: Pedro A. López-Valencia <https://aur.archlinux.org/user/vorbote>
 pkgname=brave
 pkgver=0.12.15
-pkgrel=2
+pkgrel=3
 pkgdesc='Web browser that blocks ads and trackers by default.'
 arch=('x86_64')
 url='https://www.brave.com/'
 license=('custom')
 depends=('gtk2' 'nss' 'alsa-lib' 'gconf' 'libgnome-keyring' 'libxtst' 'libxss' 'ttf-font')
 makedepends=('npm' 'git')
+optdepends=('cups: Printer support'
+            'pepper-flash: Adobe Flash support')
 provides=('brave-browser')
 source=("https://github.com/brave/browser-laptop/archive/v"$pkgver"dev.tar.gz"
 	'brave.desktop')
@@ -42,4 +44,6 @@ package() {
 	install -Dm0644 LICENSE.txt "$pkgdir"/usr/share/licenses/brave/MPL2
 
 	mv "$pkgdir"/usr/lib/brave/{LICENSE,LICENSES.chromium.html} "$pkgdir"/usr/share/licenses/brave/
+
+	ln -s /usr/lib/PepperFlash "$pkgdir"/usr/lib/pepperflashplugin-nonfree
 }
