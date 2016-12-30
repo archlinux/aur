@@ -1,0 +1,17 @@
+pkgbase = snapcraft-gui
+	pkgdesc = Graphical user interface to create snaps using Snapcraft as the backend
+	pkgver = 3.0
+	pkgrel = 1
+	url = http://snapcraft.io/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = qt5-base
+	depends = snapcraft
+	depends = tree
+	optdepends = pastebinit: pastebin.com integration
+	source = https://github.com/snapcraft-gui/snapcraft-gui/releases/download/3.0/snapcraft-gui_3.0.tar.xz
+	md5sums = 98da2545d1b01c6f74fb463cb2e1b89e
+
+pkgname = snapcraft-gui
+
