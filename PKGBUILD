@@ -4,7 +4,7 @@ pkgname=(chocolate-{doom,heretic,hexen,strife,common})
 pkgbase=${pkgname[0]}
 pkgdesc="Historically-accurate Doom, Heretic, Hexen, and Strife ports."
 pkgver=2.3.0
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 url="http://www.chocolate-doom.org/"
 license=('GPL2')
@@ -25,9 +25,6 @@ prepare() {
       patch -p1 -i "$patch"
     fi
   done
-
-  # Change binary dir from /usr/games to /usr/bin
-  sed 's|/games|/bin|g' -i src{,/setup}/Makefile.in
 }
 
 build() {
