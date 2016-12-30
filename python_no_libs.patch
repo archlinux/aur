@@ -1,5 +1,5 @@
 diff --git a/python-package/setup.py b/python-package/setup.py
-index 5b66a09..b643550 100644
+index 27fc212..5a2b415 100644
 --- a/python-package/setup.py
 +++ b/python-package/setup.py
 @@ -5,19 +5,9 @@ import sys
@@ -22,17 +22,19 @@ index 5b66a09..b643550 100644
  # Please use setup_pip.py for generating and deploying pip installation
  # detailed instruction in setup_pip.py
  setup(name='xgboost',
-@@ -36,5 +26,4 @@ setup(name='xgboost',
+@@ -36,7 +26,6 @@ setup(name='xgboost',
        # this will use MANIFEST.in during install where we specify additional files,
        # this is the golden line
        include_package_data=True,
 -      data_files=[('xgboost', LIB_PATH)],
+       license='Apache-2.0',
+       classifiers=['License :: OSI Approved :: Apache Software License'],
        url='https://github.com/dmlc/xgboost')
 diff --git a/python-package/xgboost/libpath.py b/python-package/xgboost/libpath.py
-index 2d69bda..d3ee109 100644
+index 46d2004..423b39b 100644
 --- a/python-package/xgboost/libpath.py
 +++ b/python-package/xgboost/libpath.py
-@@ -21,7 +21,8 @@
+@@ -21,7 +21,8 @@ def find_lib_path():
      """
      curr_path = os.path.dirname(os.path.abspath(os.path.expanduser(__file__)))
      # make pythonpack hack: copy this directory one level upper for setup.py
