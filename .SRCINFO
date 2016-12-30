@@ -1,12 +1,13 @@
 pkgbase = bzr-bzr
 	pkgdesc = A decentralized revision control system (bazaar) from launchpad
-	pkgver = 1
+	pkgver = 6619
 	pkgrel = 1
 	url = https://bazaar.canonical.com/
 	arch = i686
 	arch = x86_64
 	license = GPL
 	makedepends = bzr
+	makedepends = pyrex
 	depends = python2
 	optdepends = python2-paramiko: SFTP support
 	provides = bzr
