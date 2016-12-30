@@ -1,24 +1,28 @@
-# Maintainer: Aoibhinn di Tori <email@aoibh.in>
+# Maintainer: Javier Tiá <javier dot tia at gmail dot com>
 
-pkgname="yank"
-pkgver=0.6.4
+pkgname=yank
+pkgver=0.7.1
 pkgrel=1
-pkgdesc="Copy terminal output to clipboard"
+pkgdesc='Copy terminal output to clipboard'
 arch=('i686' 'x86_64')
 url="https://github.com/mptre/yank"
 license=("MIT")
 depends=("xsel")
-provides=("$pkgname")
-conflicts=("$pkgname")
-source=("https://github.com/mptre/yank/archive/v$pkgver.tar.gz")
-md5sums=('32beb356047e3f7022fd829d0e310c13')
+provides=("${pkgname}-git")
+conflicts=("${pkgname}-git")
+source=("${url}/archive/v$pkgver.tar.gz")
+sha1sums=('d7039a234cf35e656df132fbb4040ef13a5f01ed')
 
 build() {
-  cd  "$pkgname-$pkgver"
+  cd "${pkgname}-${pkgver}"
   make
 }
 
 package() {
-  cd  "$pkgname-$pkgver"
-  PREFIX="$pkgdir"/usr make install
+  cd "${pkgname}-${pkgver}"
+  install -Dm0755 yank "${pkgdir}"/usr/bin/yank
+  install -Dm0644 README.md "${pkgdir}"/usr/share/doc/${pkgname%-*}/README.md
+  install -Dm0644 LICENSE "${pkgdir}"/usr/share/licenses/${pkgname%-*}/LICENSE
 }
+
+# vim:set ts=2 sw=2 et:
