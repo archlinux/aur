@@ -35,7 +35,6 @@ package() {
 
 	# Libraries
 	cp EngineIoClientDotNet.dll* "$pkgdir/usr/lib/mattercontrol/"
-	cp Net3dBool.dll* "$pkgdir/usr/lib/mattercontrol/"
 	cp SocketIoClientDotNet.dll* "$pkgdir/usr/lib/mattercontrol/"
 	cp WebSocket4Net.dll* "$pkgdir/usr/lib/mattercontrol/"
 
