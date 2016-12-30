@@ -1,6 +1,6 @@
-pkgbase = ncdc
+pkgbase = ncdc-git
 	pkgdesc = Modern and lightweight direct connect client with a friendly ncurses interface
-	pkgver = 1.19.1
+	pkgver = 1.19.1+22+ge3c5ff3
 	pkgrel = 1
 	url = http://dev.yorhel.nl/ncdc
 	arch = i686
@@ -13,8 +13,10 @@ pkgbase = ncdc
 	depends = sqlite
 	depends = glib2
 	depends = geoip
-	source = http://dev.yorhel.nl/download/ncdc-1.19.1.tar.gz
-	md5sums = a7d23df7d0e291d1e3c8fb2a9a69f7a9
+	provides = ncdc
+	conflicts = ncdc
+	source = git://g.blicky.net/ncdc.git
+	md5sums = SKIP
 
-pkgname = ncdc
+pkgname = ncdc-git
 

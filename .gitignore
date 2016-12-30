@@ -1,0 +1,4 @@
+ncdc/
+pkg/
+src/
+*.pkg.tar.*
