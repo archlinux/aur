@@ -3,8 +3,8 @@
 # Contributor: Andrey Vlasovskikh <andrey.vlasovskikh@gmail.com>
 
 pkgname=pycharm-eap
-_buildver=163.10154.45
-_pkgver=2016.3.2
+_buildver=171.2014.23
+_pkgver=2017.1.0
 _eap="True"
 pkgver="${_pkgver}.${_buildver}"
 pkgrel=1
@@ -41,11 +41,11 @@ package() {
 		"${pkgdir}/usr/share/licenses/${pkgname}/" \
 		"${pkgdir}/usr/share/applications/"
 
-	#if [[ "True" = "${_eap}" ]]; then
-	#	cp -R --no-preserve=ownership "${srcdir}/pycharm-${_buildver}/"* "${pkgdir}/opt/${pkgname}"
-	#else
+	if [[ "True" = "${_eap}" ]]; then
+		cp -R --no-preserve=ownership "${srcdir}/pycharm-${_buildver}/"* "${pkgdir}/opt/${pkgname}"
+	else
 		cp -R --no-preserve=ownership "${srcdir}/pycharm-${_pkgver%.1}/"* "${pkgdir}/opt/${pkgname}"
-	#fi
+	fi
 	
 	if [[ "i686" = "${CARCH}" ]]; then
 		rm -f "${pkgdir}/opt/${pkgname}/bin/libyjpagent-linux64.so"
