@@ -8,8 +8,7 @@ arch=('i686' 'x86_64')
 url="http://sourceforge.net/projects/mameplus"
 license=('custom:WTFPL')
 depends=('qt4' 'quazip-qt4')
-optdepends=('sdlmame: port of MAME using SDL'
-            'sdlmess: port of MESS using SDL')
+optdepends=('sdlmame: port of MAME/MESS using SDL')
 source=("http://et6.free.fr/temp/mamepgui-1.6.0.tar.gz"
         'COPYING')
 md5sums=('df681ca55de544a726ea3019e069ed98'
