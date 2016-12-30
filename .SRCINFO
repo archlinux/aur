@@ -1,6 +1,6 @@
 pkgbase = osx-el-capitan-theme-git
 	pkgdesc = Theme mimics OS X 10.11 El Capitan for GTK3 and some DEs (GNOME Shell, Xfce, Cinnamon)
-	pkgver = v1.2
+	pkgver = v2.0
 	pkgrel = 0
 	url = https://github.com/Elbullazul/OS-X-El-Capitan
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = osx-el-capitan-theme-git
 	optdepends = gnome-themes-standard: Required for the GTK3 theme
 	conflicts = gnome-shell-theme-osx-el-capitan
 	source = https://github.com/B00merang-Project/macOS-Sierra/archive/master.zip
-	sha256sums = e3c8aca3b518855b0f9034bcbf91a0fef0ef785ebf34fa79553b375dc93cc277
+	sha256sums = f1f673a515442a114236479fb6463859c1b6b4e8dc8da6e4cfbd91453bd57443
 
 pkgname = osx-el-capitan-theme-git
 

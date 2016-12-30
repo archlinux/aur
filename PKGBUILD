@@ -4,7 +4,7 @@
 _gitname=OS-X-El-Capitan
 pkgname=osx-el-capitan-theme-git
 pkgdesc="Theme mimics OS X 10.11 El Capitan for GTK3 and some DEs (GNOME Shell, Xfce, Cinnamon)"
-pkgver=v1.2
+pkgver=v2.0
 pkgrel=0
 arch=('any')
 url="https://github.com/Elbullazul/${_gitname}"
@@ -13,7 +13,7 @@ depends=('gtk3>=3.18' 'gtk-engine-murrine' 'gtk-engines')
 optdepends=('gnome-themes-standard: Required for the GTK3 theme')
 license=('GPL3')
 conflicts=('gnome-shell-theme-osx-el-capitan')
-sha256sums=('e3c8aca3b518855b0f9034bcbf91a0fef0ef785ebf34fa79553b375dc93cc277')
+sha256sums=('f1f673a515442a114236479fb6463859c1b6b4e8dc8da6e4cfbd91453bd57443')
 
 package() {
 	mkdir -p "$pkgdir/usr/share/backgrounds"
