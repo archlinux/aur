@@ -3,12 +3,12 @@
 pkgname=(chocolate-{doom,heretic,hexen,strife,common}-git)
 _pkgname=${pkgname[0]/-git/}
 pkgdesc="Historically-accurate Doom, Heretic, Hexen, and Strife ports."
-pkgver=2.2.0.r114.ea37ca0
+pkgver=2.3.0.r0.939cbfeb
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.chocolate-doom.org/"
 license=('GPL2')
-depends=('libsamplerate' 'sdl_mixer' 'sdl_net')
+depends=('libpng' 'libsamplerate' 'sdl_mixer')
 makedepends=('git' 'python')
 source=(git+https://github.com/chocolate-doom/chocolate-doom.git)
 sha256sums=('SKIP')
@@ -17,13 +17,6 @@ pkgver() {
   cd "${_pkgname}"
   local version="$(git describe --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
   printf %s "${version##chocolate.doom.}"
-}
-
-prepare() {
-  cd "${_pkgname}"
-
-  # Change binary dir from /usr/games to /usr/bin
-  sed 's|/games|/bin|g' -i src{,/setup}/Makefile.am
 }
 
 build() {
