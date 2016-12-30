@@ -2,7 +2,7 @@
 
 _pkgname=fs-uae-launcher
 pkgname=fs-uae-launcher-devel
-pkgver=2.9.0dev
+pkgver=2.9.1dev
 pkgrel=1
 pkgdesc="Launcher and configuration program for FS-UAE (development version)."
 arch=("any")
@@ -15,14 +15,14 @@ source=("http://fs-uae.net/devel/${pkgver}/${_pkgname}-${pkgver}.tar.gz")
 #source=("http://ppa.launchpad.net/fengestad/devel/ubuntu/pool/main/f/${_pkgname}/${_pkgname}_${pkgver}.orig.tar.gz")
 provides=("fs-uae-launcher")
 conflicts=("fs-uae-launcher")
-sha1sums=('88aa7f060382268f77faa2d56d2ab37474032613')
+sha1sums=('a9e753e4917ca9b214f69032bececc528f370188')
 
 
 
 prepare() {
    cd ${_pkgname}-${pkgver}
-   # disable included six, OpenGL
-   sed '/OpenGL/d; /six/d' -i setup.py
+   # disable included, OpenGL
+   sed '/OpenGL/d' -i setup.py
 }
 
 build() {
