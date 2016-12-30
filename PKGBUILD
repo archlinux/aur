@@ -6,7 +6,7 @@
 
 _pkgname=qt5-base
 pkgname=$_pkgname-git
-pkgver=5.8.0.alpha1.r482.g9944a12
+pkgver=5.8.0.rc1.r1200.g6090c86bd6
 pkgrel=1
 arch=("i686" "x86_64")
 url='https://qt-project.org/'
@@ -27,11 +27,9 @@ optdepends=('qt5-svg: to use SVG icon themes'
             'gtk3: GTK platform plugin')
 provides=("$_pkgname")
 conflicts=("$_pkgname" "qtchooser")
-source=("$_pkgname::git://code.qt.io/qt/qtbase.git#branch=dev"
-        qtbug-55530.patch::'https://github.com/qt/qtbase/commit/f71aa4813.patch')
+source=("$_pkgname::git://code.qt.io/qt/qtbase.git#branch=dev")
 
-sha256sums=('SKIP'
-            'ea4758d296fc6af957f86858601b56829c2a04cf9adc5c4119810d341b865212')
+sha256sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/$_pkgname"
@@ -53,9 +51,6 @@ prepare() {
   # Use python2 for Python 2.x
   find . -name '*.py' -exec sed -i \
     's|#![ ]*/usr/bin/python$|&2|;s|#![ ]*/usr/bin/env python$|&2|' {} +
-
-  # Fix resolution of OPENSSL_LIBS
-  patch -p1 -i ../qtbug-55530.patch
 }
 
 build() {
