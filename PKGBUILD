@@ -1,12 +1,12 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 pkgname=scribus-indigo-git
-pkgver=r87.a878962
+pkgver=r92.507a064
 pkgrel=1
 pkgdesc="A desktop publishing program - indigo fork"
 arch=('i686' 'x86_64')
 depends=('hunspell' 'podofo' 'python2' 'libcups' 'graphicsmagick'
 	 'poppler' 'libcdr' 'libvisio' 'libpagemaker' 'harfbuzz-icu'
-	 'qt5-declarative' 'libmspub' 'openscenegraph')
+	 'qt5-declarative' 'libmspub' 'openscenegraph' 'qt5-svg')
 url="https://github.com/nitramr/scribus-indigo/wiki"
 license=('GPL' 'LGPL')
 makedepends=('git' 'cmake' 'qt5-tools' 'dos2unix')
