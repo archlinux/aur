@@ -1,7 +1,7 @@
 # Maintainer: Jorge Israel Peña <jorge.israel.p@gmail.com>
 
 pkgname=syncplay-git
-pkgver=1.3.3.r4.g7bc9159
+pkgver=v1.4.0.RC4.r17.gddae114
 pkgrel=1
 pkgdesc="synchronize watching movies on mplayer2, vlc, mpv, and mpc-hc on many computers"
 arch=('any')
@@ -30,6 +30,5 @@ package() {
   cd $pkgname
 
   # actual program
-  make PREFIX="$pkgdir" install
-
+  make DESTDIR="$pkgdir" install
 }

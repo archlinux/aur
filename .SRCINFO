@@ -1,6 +1,6 @@
 pkgbase = syncplay-git
 	pkgdesc = synchronize watching movies on mplayer2, vlc, mpv, and mpc-hc on many computers
-	pkgver = 1.3.3.r4.g7bc9159
+	pkgver = v1.4.0.RC4.r17.gddae114
 	pkgrel = 1
 	url = http://syncplay.pl/
 	arch = any
