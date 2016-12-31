@@ -17,6 +17,7 @@ pkgbase = relay-git
 	makedepends = libtool
 	makedepends = libx11
 	makedepends = patch
+	makedepends = dee
 	depends = sqlite
 	provides = relay
 	conflicts = relay
