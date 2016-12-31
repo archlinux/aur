@@ -46,7 +46,7 @@ noextract=('lzma465.tar.bz2'
            'mantissa-7.2-src.zip'
            'db4o-7.4-java.zip'
            'commons-compress.jar'
-           'bcprov-jdk15on-154.jar')
+           'bcprov-jdk15on-156.jar')
 
 # here we have only java-commons-compress coming prebuilt by
 # the freenetproject, the rest we build ourselves
@@ -58,7 +58,7 @@ source=("git+https://github.com/freenet/fred.git${_fred}"
         "https://downloads.freenetproject.org/alpha/opennet/seednodes.fref"
         "IpToCountry.dat::http://software77.net/geo-ip/?DL=4"
         "https://downloads.freenetproject.org/contrib/jar/latest/commons-compress.jar"
-        "https://www.bouncycastle.org/download/bcprov-jdk15on-154.jar"
+        "https://www.bouncycastle.org/download/bcprov-jdk15on-156.jar"
         "http://downloads.sourceforge.net/project/ant-contrib/ant-contrib/1.0b3/ant-contrib-1.0b3-bin.tar.bz2"
         "https://raw.githubusercontent.com/i2p/i2p.i2p/master/core/c/jcpuid/src/jcpuid.c"
         "https://raw.githubusercontent.com/i2p/i2p.i2p/master/core/c/jcpuid/include/jcpuid.h"
@@ -74,7 +74,7 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             '16924be3c8f1322b659f3ff08060a43f45f2e8de6f95af28d86fe9876e79008d'
-            'd0ae14598f9c528d2ab7bb8ed00e785a5440f692712cd362d69328aba25efb57'
+            '963e1ee14f808ffb99897d848ddcdb28fa91ddda867eb18d303e82728f878349'
             '96effcca2581c1ab42a4828c770b48d54852edf9e71cefc9ed2ffd6590571ad1'
             '1966a96a0733cb19b8172f03b3582141fea8f82abcc4b79800ba0a92a5c1122d'
             '9ec758801a9864ae10caf851ee60ed22c3ef44428e77689c203d9b890921a6d2'
@@ -89,6 +89,7 @@ sha256sums=('SKIP'
             'b36482ee9e919c669bb1797ff7e50f57edf505af67664e280fe1dff361861044'
             'e438135d69139ed4fa44400f416ea73935d16afe50dfe490b7bba0602ee89476'
             '73f307a8cbd114fdc0af8daa067994a2cdc364c4053e6734d16b8dd1d5a0469f')
+
 
 if [[ "$CARCH" = 'i686' ]]; then
      _arch=x86
@@ -122,7 +123,7 @@ prepare() {
     ln -sf /usr/share/java/wrapper.jar contrib/freenet-ext/dist/
     ln -sf /usr/share/java/{hamcrest-core,junit}.jar lib/
     ln -sf "$srcdir"/ant-contrib/{ant-contrib-1.0b3,ant-contrib}.jar
-    cp "$srcdir"/bcprov-jdk15on-154.jar lib/bcprov.jar
+    cp "$srcdir"/bcprov-jdk15on-156.jar lib/bcprov.jar
     cp "$srcdir"/{lzma465.tar.bz2,league-lzmajio-0.95-0-gd38bf5c.tar.gz,jBitcollider-0.8.zip,mantissa-7.2-src.zip,db4o-7.4-java.zip} contrib/freenet-ext/lib
 
     # we're going to compile our own C libraries
