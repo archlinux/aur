@@ -13,7 +13,7 @@ sha512sums=('SKIP')
 
 pkgver() {
     cd "$srcdir/pymbar"
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    git describe --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
