@@ -8,7 +8,7 @@
 
 pkgname=ffmpeg-nvenc
 pkgver=3.2.2
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc='Complete solution to record, convert and stream audio and video with Nvidia CUDA Hardware Acceleration'
 arch=('x86_64')
