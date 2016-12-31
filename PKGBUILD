@@ -1,7 +1,7 @@
 # Maintainer: Roman Vasilev <2rvasilev@live.ru>
 pkgname=yajhfc
 pkgver=0.6.1_1
-pkgrel=1
+pkgrel=2
 pkgdesc="(Yet another Java HylaFAX client) is a client for the HylaFAX fax server written completely in Java."
 arch=(any)
 url="http://www.yajhfc.de/"
