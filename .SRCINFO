@@ -1,8 +1,7 @@
 pkgbase = linux-surftab-wintron-7
-	pkgver = 4.9
+	pkgver = 4.9.r32.ga867cef9b167
 	pkgrel = 1
 	url = https://www.kernel.org/
-	arch = i686
 	arch = x86_64
 	license = GPL2
 	makedepends = xmlto
@@ -13,24 +12,16 @@ pkgbase = linux-surftab-wintron-7
 	makedepends = git
 	makedepends = libelf
 	options = !strip
-	source = git+https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git#v4.9
-	source = config
+	source = git+https://github.com/c-mauderer/linux#branch=v4.9_trekstore_surftab_wintron_7
 	source = config.x86_64
 	source = 99-linux.hook
 	source = linux.preset
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
-	sha256sums = 3e9150065f193d3d94bcf46a1fe9f033c7ef7122ab71d75a7fb5a2f0c9a7e11a
 	sha256sums = SKIP
-	sha256sums = f0e2f7f738e1a639956e01ba7ef8d3df40ecb5c7586eb366bcd4af70049a7a3c
-	sha256sums = SKIP
-	sha256sums = 2ac8818414beb7dbacbd3ad450c516e6ada804827132a7132f63b8189e5f5151
-	sha256sums = 41b9a64542befd2fea170776e8ec22a7d158dd3273633afc9b91662c448cd90a
+	sha256sums = a012c57811c117bd92ae36d2782b998daea1d9f016dd4849420f6d094274ca65
 	sha256sums = 834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0
 	sha256sums = ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65
-	sha256sums = 1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99
-	sha256sums = ad1ee95f906f88d31fcdb9273cd08e02e8eda177449f0c98dc1bff8cbf1483c2
-	sha256sums = b595a1588bafb3d732841cd1b73633970706914f57f2d215c9f1494212d13989
 
 pkgname = linux-surftab-wintron-7
 	pkgdesc = The Linux-surftab-wintron-7 kernel and modules
