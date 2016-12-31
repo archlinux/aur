@@ -1,11 +1,11 @@
 pkgbase = ty-git
 	pkgdesc = GUI and command-line tools to manage Teensy devices
-	pkgver = 0.7.5.r58.gf6d89e8
+	pkgver = 0.8.0.r19.g056db1a
 	pkgrel = 1
 	url = http://github.com/Koromix/ty
 	arch = x86_64
 	arch = i686
-	license = custom:MPL2
+	license = MIT
 	makedepends = git
 	makedepends = imagemagick
 	depends = teensyduino
