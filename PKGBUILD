@@ -66,7 +66,7 @@ package_fpc-svn() {
   [ "$CARCH" = 'i686' ] && ln -s /usr/lib/fpc/${_pkgver}/ppc386 "${pkgdir}"/usr/bin/
   [ "$CARCH" = 'x86_64' ] && ln -s /usr/lib/fpc/${_pkgver}/ppcx64 "${pkgdir}"/usr/bin/
 
-  mkdir -p "${pkgdir}"/etc
+  install -dm755 "${pkgdir}"/etc
   "${pkgdir}"/usr/lib/fpc/${_pkgver}/samplecfg "${pkgdir}"/usr/lib/fpc/${_pkgver} "${pkgdir}"/etc
 
   # use -fPIC by default
