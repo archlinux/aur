@@ -1,15 +1,15 @@
 # Maintainer: Tommaso Sardelli <lacapannadelloziotom [at] gmail [dot] com>
 # Contributor: Pat Brisbin <pbrisbin@gmail.com>
 pkgname='gitsh'
-pkgver=0.10
+pkgver=0.11.1
 pkgrel=1
 pkgdesc='An interactive shell for git'
-arch=('any')
+arch=('i686' 'x86_64')
 url="https://github.com/thoughtbot/gitsh"
 license=('custom')
-depends=('ruby')
+depends=('ruby' 'readline')
 source=("https://github.com/thoughtbot/gitsh/releases/download/v$pkgver/gitsh-$pkgver.tar.gz")
-sha512sums=('caed217675151406c7084b927b9f45a509b8d6095824707a3f27d7252b7b07c3f4483d6fe481adc64988dd5ad2328ccea374b8e40dad42e4e8fa57cd212e7804')
+sha512sums=('7df750d12e5e1ed27678eed00f1b7576ca6a035f390d83ececd87f148625ec0dca338ffabacac9fe1c616c58f077041738bb8a8f33844c8312d9f7da0db4cf7a')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
