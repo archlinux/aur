@@ -6,7 +6,7 @@ groups=('zarafa'
 	'kopano'
 	'zarafa-webapp-plugins')
 pkgver=1.1.0.49
-pkgrel=96
+pkgrel=97
 pkgdesc='Mdm plugin for Zarafa Webapp'
 arch=('any')
 source=("https://download.zarafa.com/community/beta/WebApp/plugins/MDM/1.1/beta1/fedora-22/zarafa-webapp-plugins-mdm-1.1.0-49.1.noarch.rpm"
@@ -42,7 +42,7 @@ package() {
     # convert windows line break to unix: http://stackoverflow.com/questions/11680815/removing-windows-newlines-on-linux-sed-vs-awk
     sed -i -e $'s/\r//' ${pkgdir}/etc/webapps/zarafa-webapp/plugins/${_pkgname}/config.php
     sed -i -e "s/\(PLUGIN_MDM_USER_DEFAULT_ENABLE_MDM', \)\(.*\)\();$\)/\1true\3/" ${pkgdir}/etc/webapps/zarafa-webapp/plugins/${_pkgname}/config.php
-    sed -i -e "s/\(PLUGIN_MDM_SERVER', \)\(.*\)\();$\)/\1127.0.0.1:81\3/" ${pkgdir}/etc/webapps/zarafa-webapp/plugins/${_pkgname}/config.php
+    sed -i -e "s/\(PLUGIN_MDM_SERVER', \)\(.*\)\();$\)/\1'127.0.0.1:81'\3/" ${pkgdir}/etc/webapps/zarafa-webapp/plugins/${_pkgname}/config.php
     sed -i -e "s/\(PLUGIN_MDM_SERVER_SSL', \)\(.*\)\();$\)/\1false\3/" ${pkgdir}/etc/webapps/zarafa-webapp/plugins/${_pkgname}/config.php
 
     ## config examples      
