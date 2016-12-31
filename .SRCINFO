@@ -1,0 +1,15 @@
+pkgbase = ruby-image_size
+	pkgdesc = measure image size using pure Ruby.
+	pkgver = 1.5.0
+	pkgrel = 1
+	url = https://github.com/toy/image_size
+	arch = any
+	license = RUBY
+	depends = ruby
+	noextract = image_size-1.5.0.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/image_size-1.5.0.gem
+	sha512sums = a26c3eb5f77b2adf8aee1e9402cbd9dcb052d36fea344f884415d2ed9e76f481d7fb946d16a426c524d1b5c961537e29138d3ea355d66ff1ab4d4dbefc8aafea
+
+pkgname = ruby-image_size
+
