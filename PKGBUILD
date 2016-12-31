@@ -2,7 +2,7 @@
 
 pkgname=liquidsky
 pkgver=1
-pkgrel=4
+pkgrel=5
 pkgdesc="LiquidSky lets you instantly own and stream a powerful gaming computer to any device!"
 arch=('x86_64' 'i686')
 url='https://liquidsky.tv/'
@@ -21,16 +21,16 @@ sha256sums=(
 )
 
 package() {
-    mkdir -p "$pkgdir"/opt/liquidsky
-    mkdir -p "$pkgdir"/usr/bin
-    mkdir -p "$pkgdir"/usr/share/applications
-    cp "$srcdir/liquidsky.exe" "$pkgdir/opt/liquidsky/"
-    install -m755 liquidsky.sh "$pkgdir"/usr/bin/liquidsky
-    install -m 644 "$srcdir/liquidsky.desktop" "$pkgdir/usr/share/applications/"
+    mkdir -p "${pkgdir}/opt/liquidsky"
+    mkdir -p "${pkgdir}/usr/bin"
+    mkdir -p "${pkgdir}/usr/share/applications"
+    cp "${srcdir}/liquidsky.exe" "${pkgdir}/opt/liquidsky/"
+    install -m755 liquidsky.sh "${pkgdir}/usr/bin/liquidsky"
+    install -m 644 "${srcdir}/liquidsky.desktop" "${pkgdir}/usr/share/applications/"
 
     for i in 16 22 24 32 48 64 128 256; do
-        wget -O /tmp/liquidsky.png https://lh3.googleusercontent.com/eEoZ7SkX46H5bdMOqqTIxMVRWQwLB42733hh8vtt0r1Q1AR4MfpUzekIvd3ZMoiFu9s1=w"$i"
-        install -Dm644 /tmp/liquidsky.png "$pkgdir"/usr/share/icons/hicolor/"$i"x"$i"/apps/liquidsky.png
+        wget -O /tmp/liquidsky.png "https://lh3.googleusercontent.com/eEoZ7SkX46H5bdMOqqTIxMVRWQwLB42733hh8vtt0r1Q1AR4MfpUzekIvd3ZMoiFu9s1=w${i}"
+        install -Dm644 /tmp/liquidsky.png "${pkgdir}/usr/share/icons/hicolor/${i}x${i}/apps/liquidsky.png"
         rm /tmp/liquidsky.png
     done
 }
