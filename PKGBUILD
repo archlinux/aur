@@ -30,9 +30,7 @@ package() {
 
     for i in 16 22 24 32 48 64 128 256; do
         wget -O /tmp/liquidsky.png "https://lh3.googleusercontent.com/eEoZ7SkX46H5bdMOqqTIxMVRWQwLB42733hh8vtt0r1Q1AR4MfpUzekIvd3ZMoiFu9s1=w${i}"
-        dir="${i}x${i}"
-        msg2 "Icon directory: ${dir}"
-        install -Dm644 /tmp/liquidsky.png "${pkgdir}/usr/share/icons/hicolor/${dir}/apps/liquidsky.png"
+        install -Dm644 /tmp/liquidsky.png "${pkgdir}/usr/share/icons/hicolor/${i}x${i}/apps/liquidsky.png"
         rm /tmp/liquidsky.png
     done
 }
