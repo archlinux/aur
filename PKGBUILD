@@ -21,7 +21,7 @@ url='http://www.freepascal.org/'
 license=('GPL' 'LGPL' 'custom')
 depends=('ncurses' 'zlib' 'expat')
 # Trunk can only be built with stable version of FPC
-makedepends=('fpc<9999' 'svn')
+makedepends=('fpc<9999' 'subversion')
 [[ $_build_docs ]] && makedepends+=('texlive-core' 'texlive-htmlxml'
                                     'texlive-latexextra' 'ghostscript')
 source=(fpcbuild::svn+http://svn.freepascal.org/svn/fpcbuild/trunk)
