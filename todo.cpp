@@ -78,6 +78,8 @@ int main(int argc, char *argv[]) {
             action = 2;
         }else if ( !strcmp( argv[1], "check") ) {
             action = 3;
+        }else if ( !strcmp( argv[1], "uncheck") ) {
+            action = 9;
         }else if ( !strcmp( argv[1], "set") ) {
             if( argc > 2 && argv[2][0] >= '0' && argv[2][0] <= '9' )
                 action = 4;
@@ -98,7 +100,7 @@ int main(int argc, char *argv[]) {
         else
             action = 0;
     if( action == -1 ) {
-        cout << "Usage : todo [show,add,remove,check,set,clean/clear,checked,unchecked/todo]" << endl;
+        cout << "Usage : todo [show,add,remove,check/uncheck,set,clean/clear,checked,unchecked/todo]" << endl;
     } else {
         ifstream file(".todo.txt", ios::in);
 
@@ -191,6 +193,16 @@ int main(int argc, char *argv[]) {
                     if( !it->etat )
                         cout << *it;
                 return 0;
+            case 9:  // uncheck
+                for (auto it = begin(listTodo); it != end(listTodo); ++it) {
+                    bool active = true;
+                    for( int i = 2 ; i < argc && active ; i++ )
+                        if( it->str.find(argv[i]) == string::npos)
+                            active = false;
+                    if( active )
+                        it->etat = 0;
+                }
+                break;
             default:
                 cout << "Erreur : Action incomprise" << endl;
         }
