@@ -57,8 +57,7 @@ package_fpc-svn() {
 
   export HOME="${srcdir}"
 
-  make -j1 PREFIX="${pkgdir}"/usr install NOGDB=1 OPT=" -dRelease"
-
+  make -j1 PREFIX="${pkgdir}"/usr NOGDB=1 OPT=" -dRelease" install
   export PATH="${pkgdir}/usr/bin:${PATH}"
 
   install -Dm0644 fpcsrc/rtl/COPYING.FPC "${pkgdir}"/usr/share/licenses/${pkgname}/COPYING.FPC
