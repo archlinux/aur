@@ -3,8 +3,8 @@
 # Contributor: Arto Puranen <purcher@gmail.com>
 
 pkgname=code-browser
-pkgver=4.9
-pkgrel=2
+pkgver=6.2
+pkgrel=1
 pkgdesc="folding text editor, designed to hierarchically structure any kind of text file and especially source code"
 arch=(i686 x86_64)
 url="http://code-browser.sourceforge.net/index.html"
@@ -15,7 +15,7 @@ options=(!makeflags)
 source=(http://tibleiz.net/download/code-browser-${pkgver}-src.tar.gz
         code-browser.desktop
         cb.png)
-md5sums=('db60b59a6eaf94af24c832371cb03bc5'
+md5sums=('610e793a9f0af23e37ab12abb95838e0'
          '05b38d1b5cd303042aaaf50714655d83'
          '153dab5bcff69701d74ee911d80d6f83')
 
