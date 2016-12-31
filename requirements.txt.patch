@@ -1,0 +1,16 @@
+--- ./requirements.txt	2016-12-31 08:51:58.490847575 -0800
++++ ./requirements.txt	2016-12-31 08:52:10.431399210 -0800
+@@ -1,7 +1,6 @@
+ setuptools
+-wheel==0.24.0
+-Click==6.6
+-sh==1.11
+-arrow==0.10.0
+-ordereddict==1.1
+-importlib==1.0.3; python_version < '2.7'
+\ No newline at end of file
++wheel
++Click
++sh
++arrow
++ordereddict
