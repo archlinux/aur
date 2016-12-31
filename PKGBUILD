@@ -2,7 +2,7 @@
 
 _plug=fixtelecinedfades
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=r2.0.g2022095
+pkgver=r2.2.gd43ff7c
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('i686' 'x86_64')
@@ -24,8 +24,6 @@ prepare() {
   cd "${_plug}"
 
   rm -fr src/VapourSynth.h src/VSHelper.h
-
-  sed '1i#include <cstring>' -i Source.cpp
 
   echo "all:
 	  g++ -c -std=c++14 -fPIC ${CXXFLAGS} ${CPPFLAGS} -I. $(pkg-config --cflags vapoursynth) -o ${_plug}.o Source.cpp
