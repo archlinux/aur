@@ -1,5 +1,5 @@
 pkgname=mingw-w64-kwindowsystem
-pkgver=5.23.0
+pkgver=5.29.0
 pkgrel=1
 arch=(any)
 pkgdesc="Access to the windowing system (mingw-w64)"
@@ -10,7 +10,7 @@ makedepends=(mingw-w64-cmake mingw-w64-extra-cmake-modules mingw-w64-qt5-tools)
 options=(staticlibs !strip !buildflags)
 url="https://projects.kde.org/projects/frameworks/kwindowsystem"
 source=("http://download.kde.org/stable/frameworks/${pkgver%.*}/kwindowsystem-${pkgver}.tar.xz")
-md5sums=('a94136e4f5af55dab34929fc5521d115')
+md5sums=('e2e4416e793f72cfada80d85dd4e84dc')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
@@ -35,6 +35,5 @@ package() {
     make DESTDIR="$pkgdir" install
     find "$pkgdir/usr/${_arch}" -name '*.dll' -exec ${_arch}-strip --strip-unneeded {} \;
     find "$pkgdir/usr/${_arch}" -name '*.a' -o -name '*.dll' | xargs ${_arch}-strip -g
-    rm -rf "$pkgdir/usr/${_arch}/share"
   done
 }
