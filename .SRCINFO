@@ -10,6 +10,7 @@ pkgbase = nixnote_beta
 	depends = opencv
 	depends = poppler-qt5
 	depends = qt5-base
+	depends = qt5-webkit
 	depends = sqlite
 	depends = tidyhtml
 	depends = qtwebkit

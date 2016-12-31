@@ -12,7 +12,7 @@ arch=('x86_64' 'i686')
 license=('GPL2')
 # for QT4 deps, uncomment this line and comment out next line. then run make the package
 #depends=('mimetex' 'opencv' 'poppler-qt4' 'qt4' 'sqlite' 'tidyhtml' 'qtwebkit' 'libcurl-compat')
-depends=('mimetex' 'opencv' 'poppler-qt5' 'qt5-base' 'sqlite' 'tidyhtml' 'qtwebkit' 'libcurl-compat')
+depends=('mimetex' 'opencv' 'poppler-qt5' 'qt5-base' 'qt5-webkit' 'sqlite' 'tidyhtml' 'qtwebkit' 'libcurl-compat')
 provides=('nixnote2')
 conflicts=('nixnote' 'nixnote2-git' 'nixnote-beta')
 replaces=('nixnote')
