@@ -2,7 +2,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 pkgname=emacs-dvc-bzr
 pkgver=595
-pkgrel=2
+pkgrel=3
 pkgdesc="Common Emacs front-end for a number of distributed version control systems (currently arch, bazaar, git, mercurial, monotone)"
 arch=('any')
 url="http://download.gna.org/dvc/"
@@ -20,19 +20,18 @@ pkgver() {
   bzr revno
 }
 prepare() {
-  cd "$srcdir"/dvc
+  cd "$srcdir"/dvc/lisp
   # hack for not byte-compiling dvc-bookmarks.el
-  mv lisp/dvc-bookmarks.el lisp/dvc-bookmarks.el1
+  mv dvc-bookmarks.el dvc-bookmarks.el1
 }
 
 build() {
-  cd $srcdir/dvc
+  cd "$srcdir"/dvc
   autoconf
   ./configure --prefix="$pkgdir"/usr 
   find . -type d -exec sed -i 's+@MKDIR_P@+install+g' {}/Makefile \;
   make
-  # hack for not byte-compiling dvc-bookmarks.el
-  mv lisp/dvc-bookmarks.el1 lisp/dvc-bookmarks.el
+  cd lisp
 }
 
 package() {
@@ -40,6 +39,8 @@ package() {
   install -Dm644 texinfo/dvc.info $pkgdir/usr/share/info/dvc.info
   install -Dm644 texinfo/dvc-intro.info $pkgdir/usr/share/info/dvc-intro.info
   install -d $pkgdir/usr/share/emacs/site-lisp/dvc
+  # hack for not byte-compiling dvc-bookmarks.el
+  mv lisp/dvc-bookmarks.el1 lisp/dvc-bookmarks.el
   cp lisp/*.{el,elc} $pkgdir/usr/share/emacs/site-lisp/dvc
   install -d $pkgdir/usr/share/doc/emacs-dvc
   cp -r docs/* $pkgdir/usr/share/doc/emacs-dvc
