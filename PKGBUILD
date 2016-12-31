@@ -2,11 +2,11 @@
 
 pkgname=mingw-w64-adwaita-icon-theme
 pkgver=3.22.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Adwaita icon theme (mingw-w64)"
 arch=(any)
 url="http://www.gnome.org"
-license=('GPL')
+license=('LGPL3')
 makedepends=(
   'mingw-w64-configure'
   'gtk3'
