@@ -1,0 +1,36 @@
+pkgbase = ntopng-git
+	pkgdesc = The next generation version of the original ntop, a network traffic probe that shows the network usage
+	pkgver = 20161230.8b5205e
+	pkgrel = 1
+	url = http://www.ntop.org/
+	arch = x86_64
+	arch = i686
+	arch = armv7h
+	license = GPL3
+	makedepends = git
+	makedepends = glib2
+	makedepends = automake
+	makedepends = libtool
+	makedepends = geoip
+	makedepends = libpcap
+	makedepends = wget
+	makedepends = libxml2
+	makedepends = sqlite
+	makedepends = curl
+	makedepends = libmariadbclient
+	depends = redis
+	depends = geoip
+	depends = libmariadbclient
+	provides = ntopng
+	conflicts = ntopng
+	source = git+https://github.com/ntop/nDPI
+	source = git+https://github.com/ntop/ntopng
+	source = ntopng.service
+	source = ntopng.conf
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = f2269843460307ef58037fa1a194c26650ced0f1d194fb9af6817917b109fe8c
+	sha256sums = 8ec08499b1783c3e933429a3a9a4d0d32fb903bbd0b7c3fef82f0233748e3737
+
+pkgname = ntopng-git
+

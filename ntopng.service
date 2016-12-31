@@ -1,0 +1,8 @@
+[Unit]
+Description=ntopng network traffic monitor
+
+[Service]
+ExecStart=/usr/bin/ntopng /etc/ntopng.conf
+
+[Install]
+WantedBy=multi-user.target
