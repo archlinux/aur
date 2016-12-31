@@ -5,7 +5,7 @@
 # Submitter: Bastien Traverse <firstname at lastname dot email>
 
 pkgname=hugo-bin
-pkgver=0.18
+pkgver=0.18.1
 pkgrel=1
 pkgdesc="A Fast and Flexible Static Site Generator built in Go - Precompiled binary from official repository"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
@@ -21,9 +21,9 @@ conflicts=('hugo')
 source_x86_64=("https://github.com/spf13/hugo/releases/download/v${pkgver}/${pkgname/-bin}_${pkgver}_Linux-64bit.tar.gz")
 source_i686=("https://github.com/spf13/hugo/releases/download/v${pkgver}/${pkgname/-bin}_${pkgver}_Linux-32bit.tar.gz")
 source_arm=("https://github.com/spf13/hugo/releases/download/v${pkgver}/${pkgname/-bin}_${pkgver}_linux_arm.tar.gz")
-md5sums_x86_64=('934c3ee6001b502497e1ee9f5055248d')
-md5sums_i686=('03e0be2a3d6e96896f298c44acee10ac')
-md5sums_arm=('0f980d66f7e1a64cb28234678ef845ae')
+md5sums_x86_64=('e8ba723c508e87912970f132534c64dc')
+md5sums_i686=('ff909403ca29c664dcaf61cd24e86fb8')
+md5sums_arm=('cfd1526eb872177c13454fc65069550d')
 
 case "$CARCH" in
   arm*) _pkgarch="arm"
