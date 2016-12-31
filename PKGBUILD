@@ -1,28 +1,25 @@
-# Maintainer: Michael Straube <michael_straube web de>
+# Maintainer: Michael Straube <straubem@gmx.de>
 # Contributor: Robert Knauer <robert@privatdemail.net>
 
 pkgname=freedoko
-pkgver=0.7.14
-pkgrel=5
+pkgver=0.7.15
+pkgrel=1
 pkgdesc="Free version of the german card game Doppelkopf"
 arch=('i686' 'x86_64')
 url="http://free-doko.sourceforge.net/en/FreeDoko.html"
 license=('GPL')
-depends=('gtkmm' 'gnet' 'freealut')
-makedepends=('asciidoc' 'texlive-latexextra')
-source=("http://downloads.sourceforge.net/free-doko/FreeDoko_$pkgver.src.zip"
+depends=('gtkmm3' 'gnet' 'freealut')
+makedepends=('asciidoc' 'texlive-latexextra' 'w3m' 'dos2unix')
+source=("https://downloads.sourceforge.net/free-doko/FreeDoko_$pkgver.src.zip"
         "freedoko-$pkgver-archlinux.patch")
-sha1sums=('178d351adf7cf70f5c5fa132a2b468645dac670d'
-          '8b80914baaacc4b3034c7953cb98f893475d448c')
+sha256sums=('73a61078fa114faae0b764e4c7e81a6c8b6e8201ee17a79fdcdf03424f74f723'
+            'a18a6378aa69f77eabdaf5af658a99cd3f120ac4049ca429a578401c2c6d541c')
 
 prepare() {
   cd FreeDoko_$pkgver
 
-  # convert line endings from DOS to Unix
-  sed -i 's/\r$//' src/Makefile.local.template
-
-  # patch Makefiles for building an Arch package
-  patch -p0 < "$srcdir"/freedoko-$pkgver-archlinux.patch
+  # patch Makefiles
+  patch -p1 -i ../freedoko-$pkgver-archlinux.patch
 }
 
 build() {
@@ -40,6 +37,9 @@ package() {
   install -Dm644 bin/FreeDoko.desktop \
     "$pkgdir"/usr/share/applications/freedoko.desktop
 
-  rm "$pkgdir"/usr/share/doc/freedoko/de/{Windows,SuSE,Windows.kompilieren}
-  rm "$pkgdir"/usr/share/doc/freedoko/{en/Windows,hpux.required_libs-ia64.txt}
+  cp -r manual "$pkgdir"/usr/share/doc/freedoko/
+  find "$pkgdir"/usr/share/doc -type f -exec chmod 644 {} \;
+
+  find "$pkgdir"/usr/share/doc -type f \( -name Makefile -o -name *.sh \
+    -o -name Windows -o -name SuSE -o -name hpux* \) -delete
 }
