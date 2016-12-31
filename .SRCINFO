@@ -1,7 +1,7 @@
 pkgbase = liquidsky
 	pkgdesc = LiquidSky lets you instantly own and stream a powerful gaming computer to any device!
 	pkgver = 1
-	pkgrel = 7
+	pkgrel = 8
 	url = https://liquidsky.tv/
 	install = liquidsky.install
 	arch = x86_64
