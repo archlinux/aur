@@ -7,11 +7,11 @@
 
 pkgname=guix
 pkgver=0.12.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A purely functional package manager for the GNU system"
 arch=('x86_64' 'i686')
 url="https://www.gnu.org/software/guix/"
-license=('GPL')
+license=('GPL3')
 options=('!strip')
 makedepends=(
   'bash-completion'
