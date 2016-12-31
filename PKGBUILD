@@ -49,7 +49,7 @@ package_fpc-svn() {
   pkgdesc="The Free Pascal Compiler is a Turbo Pascal 7.0 and Delphi compatible \
     Pascal Compiler. It comes with fully TP 7.0 compatible run-time library."
   backup=('etc/fpc.cfg')
-  options=('zipman' 'staticlibs')
+  options=('staticlibs')
   conflicts=('fpc')
   provides=('fpc=9999')
 
