@@ -2,7 +2,7 @@
 
 _gemname=nio4r
 pkgname=ruby-${_gemname}
-pkgver=1.2.1
+pkgver=2.0.0
 pkgrel=1
 pkgdesc='Abstract, cross-platform stateful I/O selector API for Ruby'
 url='https://github.com/celluloid/nio4r'
@@ -11,7 +11,7 @@ license=('MIT')
 depends=('ruby')
 options=('!emptydirs')
 source=(${pkgname}-${pkgver}.tar.gz::https://github.com/celluloid/nio4r/archive/v${pkgver}.tar.gz)
-sha512sums=('1dca85db518891594e7ba4428492f78f643881b6196b31a7a1de7cb0e1b5f4871d33e7731124a2dbc6c43a825ffed4f65ef1e3cb32fbeb68b721b4cf27488b6d')
+sha512sums=('433a98971a735abf0ee3f5473a6acb824ea3322b7418147aacc578260bcc9b989e491d4331c61b94935d048bad655c1c4f552adf58c5da3ec36a589eafa961ca')
 
 prepare() {
   cd ${_gemname}-${pkgver}
