@@ -1,4 +1,6 @@
 #!/bin/bash
 
-exec wine /opt/liquidsky/liquidsky.exe
+mkdir -p ~/.config/liquidsky
+cd ~/.config/liquidsky
+wine /opt/liquidsky/liquidsky.exe
 
