@@ -2,7 +2,7 @@
 _pkgname=lightdm-webkit2-material2
 pkgname=lightdm-webkit2-theme-material2
 pkgver=0.0.1
-pkgrel=2
+pkgrel=3
 pkgdesc="A material design LightDM theme for lightdm-webkit2-greeter"
 arch=('any')
 url="https://github.com/FallingSnow/${_pkgname}"

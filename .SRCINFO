@@ -1,12 +1,12 @@
 pkgbase = lightdm-webkit2-theme-material2
 	pkgdesc = A material design LightDM theme for lightdm-webkit2-greeter
 	pkgver = 0.0.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/FallingSnow/lightdm-webkit2-material2
 	arch = any
 	license = WTFPL
 	depends = lightdm-webkit2-greeter
-	source = https://github.com/FallingSnow/lightdm-webkit2-material2/releases/download/v0.0.1-2/lightdm-webkit2-material2-0.0.1-2.tar.gz
+	source = https://github.com/FallingSnow/lightdm-webkit2-material2/releases/download/v0.0.1-3/lightdm-webkit2-material2-0.0.1-3.tar.gz
 	sha512sums = 1e8b286e81162298e27ef00e4b1f28cb30112162aec3080f2c15ff036e251dcd2bf281d07bbb63d4c9cab62f50735c0fcb983b84228d0e523d325317a16e9d74
 
 pkgname = lightdm-webkit2-theme-material2
