@@ -57,19 +57,35 @@ package_fpc-svn() {
 
   export HOME="${srcdir}"
 
-  make -j1 PREFIX="${pkgdir}"/usr NOGDB=1 OPT=" -dRelease" install
+  make -j1 PREFIX="${pkgdir}"/usr NOGDB=1 OPT=' -dRelease' install
   export PATH="${pkgdir}/usr/bin:${PATH}"
 
-  install -Dm0644 fpcsrc/rtl/COPYING.FPC "${pkgdir}"/usr/share/licenses/${pkgname}/COPYING.FPC
+  install -Dm644 fpcsrc/rtl/COPYING.FPC \
+    "${pkgdir}"/usr/share/licenses/${pkgname}/COPYING.FPC
 
-  [ "$CARCH" = 'i686' ] && ln -s /usr/lib/fpc/${_pkgver}/ppc386 "${pkgdir}"/usr/bin/
-  [ "$CARCH" = 'x86_64' ] && ln -s /usr/lib/fpc/${_pkgver}/ppcx64 "${pkgdir}"/usr/bin/
+  local _fpcarch=''
+  case "$CARCH" in
+    'i686')
+      _fpcarch='386'
+      ;;
+    'x86_64')
+      _fpcarch='x64'
+      ;;
+    *)
+      error 'Unsupported $CARCH'
+      return 1
+      ;;
+  esac
+  ln -s /usr/lib/fpc/${_pkgver}/ppc${_fpcarch} "${pkgdir}"/usr/bin/
+  unset _fpcarch
 
   install -dm755 "${pkgdir}"/etc
-  "${pkgdir}"/usr/lib/fpc/${_pkgver}/samplecfg "${pkgdir}"/usr/lib/fpc/${_pkgver} "${pkgdir}"/etc
+  "${pkgdir}"/usr/lib/fpc/${_pkgver}/samplecfg \
+    "${pkgdir}"/usr/lib/fpc/${_pkgver} "${pkgdir}"/etc
 
   # use -fPIC by default
-  echo -e '#ifdef cpux86_64\n# for x86_64 use -fPIC by default\n-Cg\n#endif' >> "${pkgdir}"/etc/fpc.cfg
+  echo -e '#ifdef cpux86_64\n# for x86_64 use -fPIC by default\n-Cg\n#endif' \
+    >> "${pkgdir}"/etc/fpc.cfg
 
   mv "${pkgdir}"/usr/man "${pkgdir}"/usr/share/
 
