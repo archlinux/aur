@@ -1,7 +1,7 @@
 # Maintainer: lestb <tkhdlstfl dot l plus aur at gmail dot com>
 # Package Repository: https://github.com/mij-aur-packages/android-google-apis-armv7a-eabi
 
-_rev=r07
+_rev=r10
 _apilevel=23
 pkgname=android-google-apis-armv7a-eabi
 pkgver=${_apilevel}_${_rev}
@@ -15,10 +15,10 @@ optdepends=('qemu' 'libvirt')
 provides=("${pkgname}-${_apilevel}" "${pkgname/armv7a/armv7}-${_apilevel}")
 conflicts=("${pkgname}-${_apilevel}" "${pkgname/armv7a/armv7}-${_apilevel}")
 options=('!strip')
-source=("http://dl-ssl.google.com/android/repository/sys-img/google_apis/sysimg_arm-23_r07.zip"
+source=("http://dl-ssl.google.com/android/repository/sys-img/google_apis/armeabi-v7a-24_r10.zip"
         "source.properties")
-sha1sums=('8fdeb07bcdaff4211b7fd979135541b06b2adaaf'
-          'ef33fbc1804a9844fc45960d78ab48c664aee75a')
+sha1sums=('3c904ab27e02f17e60997208617b7c11de5b8a8c'
+          '878ad90552c1e1f47ed0148cfcec0296c248cfc7')
 
 package() {
   _destdir="${pkgdir}/opt/android-sdk/system-images/android-${_apilevel}/google_apis/"
