@@ -13,7 +13,7 @@ pkgbase = vidcutter
 	depends = python-qtawesome-git
 	conflicts = vidcutter-git
 	source = https://github.com/ozmartian/vidcutter/archive/2.0.0.tar.gz
-	md5sums = SKIP
+	md5sums = 2c5a24e12ee185da3ca8d466273e420b
 
 pkgname = vidcutter
 

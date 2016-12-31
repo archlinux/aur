@@ -11,7 +11,7 @@ depends=('python-pyqt5' 'qt5-multimedia' 'ffmpeg' 'python-qtawesome-git')
 makedepends=('git' 'python-setuptools')
 provides=()
 conflicts=('vidcutter-git')
-md5sums=('SKIP')
+md5sums=('2c5a24e12ee185da3ca8d466273e420b')
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
@@ -21,6 +21,6 @@ build() {
 package() {
     cd "${srcdir}/${pkgname}-${pkgver}"
     python3 setup.py install --root="${pkgdir}" --optimize=1 --skip-build
-    install -Dm644 "_build/${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
+    install -Dm644 "_build/${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"ZZZ
     install -Dm644 "images/${pkgname}.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
 }
