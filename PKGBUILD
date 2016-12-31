@@ -2,7 +2,7 @@
 
 pkgname=mailcap-fix
 _pkgname=mailcap_fix
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=0
 pkgdesc="A patched mailcap module that conforms to RFC 1524"
 arch=('any')
@@ -12,7 +12,7 @@ conflicts=('mailcap-fix-git')
 makedepends=('git' 'python-setuptools')
 depends=('python')
 source=(https://github.com/michael-lazar/mailcap_fix/archive/v$pkgver.tar.gz)
-md5sums=('dce4cf3e97ed1b3e54f460538e56ac23')
+md5sums=('09f438a8e8f8f414ef72077dc8364021')
 
 
 package() {
