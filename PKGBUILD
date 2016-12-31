@@ -3,15 +3,15 @@
 
 pkgname=crates
 pkgver=0.7.1
-pkgrel=5
+pkgrel=6
 pkgdesc="Challenging and fun three dimensional puzzle game."
 url="http://www.octaspire.com/crates/"
 license=('GPL')
 arch=('i686' 'x86_64')
 depends=('lua51' 'mesa' 'libgl' 'sdl_mixer')
 makedepends=('cmake')
-backup=(usr/share/crates/resources/config.lua)
-source=(http://www.octaspire.com/$pkgname/$pkgname-$pkgver.tar.gz crates.desktop)
+backup=("usr/share/crates/resources/config.lua")
+source=("http://www.octaspire.com/$pkgname/$pkgname-$pkgver.tar.gz" "crates.desktop")
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
@@ -37,4 +37,4 @@ package() {
 }
 
 md5sums=('93b59c6134a4343d43f93aa211c3c485'
-         '99cf4cb8b8b1c2fc285e0b6bbf957a35')
+         '22b3dc83195f5d05d175e6298123d496')
