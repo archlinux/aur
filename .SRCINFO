@@ -1,0 +1,15 @@
+pkgbase = ruby-progress
+	pkgdesc = Show progress of long running tasks.
+	pkgver = 3.2.2
+	pkgrel = 1
+	url = https://github.com/toy/progress
+	arch = any
+	license = MIT
+	depends = ruby
+	noextract = progress-3.2.2.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/progress-3.2.2.gem
+	sha512sums = 37e221cb69ce454764b0dffde98567e700703ee894ca0ed2e3b216353fcbff07b73e817a50ae1c23661dfacdd7414d5313ac04492eff32b206e4e25a72c6ad55
+
+pkgname = ruby-progress
+
