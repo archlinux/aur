@@ -1,15 +1,13 @@
 pkgbase = darkcold-xfce-theme
-	pkgdesc = A simple and clean dark theme for Xfce
-	pkgver = 4.9
-	pkgrel = 1
-	url = http://gnome-look.org/content/show.php/DarkCold?content=143165
+	pkgdesc = A simple and clean dark theme for Xfce/xfwm4
+	pkgver = 20160416
+	pkgrel = 0
+	url = https://www.xfce-look.org/content/show.php/DarkCold?content=148515
 	arch = any
 	license = GPL
-	depends = gtk-xfce-engine
-	source = http://xfce-look.org/CONTENT/content-files/148515-DarkCold-OriginalSeed-xfwm.tar.gz
-	source = https://github.com/originalseed/darkcold/archive/master.zip
+	depends = xfwm4
+	source = theme.tar.gz::https://dl.opendesktop.org/api/files/download/id/1460767044/148515-DarkCold-OriginalSeed-xfwm.tar.gz
 	sha256sums = 996a9c823521101f47f84ea3cb48870c8baa0f0a1d63e20a237febb95604c42e
-	sha256sums = 9973f2d8a9260691d456932b66f6738868386ef665dc3f0ed04c8a125b13ef22
 
 pkgname = darkcold-xfce-theme
 
