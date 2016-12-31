@@ -7,7 +7,7 @@
 
 pkgname=cerbero-profiler
 pkgver=2.6.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Cerbero Profiler is a tool designed primarily for malware and forensic analysis. It supports a huge number of file formats on which it performs analysis and lets the user inspect their internal layout."
 arch=('x86_64')
 url="http://cerbero.io/profiler"
@@ -52,7 +52,7 @@ build() {
 	sed -i 's+dirname=`dirname $0`+dirname=/opt/Cerbero/Profiler+g' "profiler_${pkgver}/cerpro.sh"
 
 	# generate a .desktop file for the menu
-	printf '[Desktop Entry]\nComment=Malware and forensic analysis tool.\nExec=/opt/Cerbero/Profiler/cerpro.sh %%U\nIcon=/opt/Cerbero/Profiler/icons/app_256x256.png\nName=Cerbero Profiler\nTerminal=false\nType=Application\nCategories=Development;\n' > "${srcdir}/Cerbero Profiler.desktop"
+	printf '[Desktop Entry]\nComment=Malware and forensic analysis tool.\nExec=/opt/Cerbero/Profiler/cerpro.sh -s %%U\nIcon=/opt/Cerbero/Profiler/icons/app_256x256.png\nName=Cerbero Profiler\nTerminal=false\nType=Application\nCategories=Development;\n' > "${srcdir}/Cerbero Profiler.desktop"
 }
 
 package() {
