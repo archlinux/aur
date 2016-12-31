@@ -1,4 +1,5 @@
-# Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
+# Maintainer: Ethan Kiang <chocopuff298@gmail.com>
+# Contributor: Stefan Husmann <stefan-husmann@t-online.de>
 pkgname=autolatex  
 pkgver=39.1
 pkgrel=3
@@ -8,7 +9,7 @@ arch=('any')
 license=('GPL')
 depends=('glib-perl' 'gtk2-perl' 'python' 'dconf' 'perl-archive-zip' 'perl-locale-gettext' 'perl-config-simple')
 backup=("etc/$pkgname/config" )
-source=("https://codeload.github.com/gallandarakhneorg/autolatex/zip/autolatex-39.1")
+source=("https://codeload.github.com/gallandarakhneorg/autolatex/zip/autolatiex-$pkgver")
 md5sums=('bee0b119abaadf9342604b4d9b137305')
 options=('!emptydirs')
 

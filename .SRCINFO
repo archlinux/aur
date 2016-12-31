@@ -14,7 +14,7 @@ pkgbase = autolatex
 	depends = perl-config-simple
 	options = !emptydirs
 	backup = etc/autolatex/config
-	source = https://codeload.github.com/gallandarakhneorg/autolatex/zip/autolatex-39.1
+	source = https://codeload.github.com/gallandarakhneorg/autolatex/zip/autolatiex-39.1
 	md5sums = bee0b119abaadf9342604b4d9b137305
 
 pkgname = autolatex
