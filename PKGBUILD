@@ -34,14 +34,6 @@ pkgver() {
     $(svnversion | tr -d [A-z])
 }
 
-prepare() {
-  cd "${srcdir}/fpcbuild"
-
-  # Needed to fix documentation building on my machine
-  # FIXME: check if it's required to build docs
-  ln -sf /usr/share/texmf-dist/tex/latex/mdwtools/syntax.sty fpcdocs/syntax.sty
-}
-
 build() {
   cd "${srcdir}/fpcbuild"
   pushd fpcsrc/compiler
