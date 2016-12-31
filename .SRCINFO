@@ -1,0 +1,15 @@
+pkgbase = ruby-fspath
+	pkgdesc = Better than Pathname.
+	pkgver = 3.0.1
+	pkgrel = 1
+	url = https://github.com/toy/fspath
+	arch = any
+	license = MIT
+	depends = ruby
+	noextract = fspath-3.0.1.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/fspath-3.0.1.gem
+	sha512sums = 9e8d9ca5f704f9b057bb772084188eb453a7b11c1843423c36dedf305808a0cd77fa763b7fac37f68e6d2bb27b28034af00ea2a295089aa3ef483e8b7e0b939b
+
+pkgname = ruby-fspath
+
