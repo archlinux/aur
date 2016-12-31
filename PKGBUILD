@@ -3,11 +3,11 @@
 
 # In order to verify the PGP signature of the source archive, you may need to
 # use this command to download the needed public key:
-#   gpg --recv-keys 3CE464558A84FDC69DB40CFB090B11993D9AEBB5
+#   gpg --recv-keys BCA689B636553801C3C62150197A5888235FACAC
 
 pkgname=guix
-pkgver=0.11.0
-pkgrel=3
+pkgver=0.12.0
+pkgrel=1
 pkgdesc="A purely functional package manager for the GNU system"
 arch=('x86_64' 'i686')
 url="https://www.gnu.org/software/guix/"
@@ -18,6 +18,7 @@ makedepends=(
   'emacs'    # Please remove this if you are not going to use guix in emacs
   'graphviz' # Please remove this if you are not going to use guix in emacs
   'guile-json'
+  'guile-ssh>=0.10.2'
   'help2man')
 depends=(
   'guile>=2.0.7'
@@ -30,25 +31,14 @@ optdepends=(
   'bash-completion: to enable bash programmable completion'
   'emacs: to enable Emacs Interface'
   'graphviz: to enable Emacs Interface'
-  'guile-json: to import packages from cpan, gem, pypi')
+  'guile-json: to import packages from cpan, gem, pypi'
+  'guile-ssh: to offload builds to other machines')
 source=(
-  "ftp://alpha.gnu.org/gnu/${pkgname}/${pkgname}-${pkgver}.tar.gz"{,.sig}
-  "guix-guile-2.2-compat.patch"
-  "guix-delete-go-files-SIGINT.patch")
+  "ftp://alpha.gnu.org/gnu/${pkgname}/${pkgname}-${pkgver}.tar.gz"{,.sig})
 install="${pkgname}.install"
-sha1sums=('bd12d65a46c8eef3b490efea6ac953b995d524eb'
-          'a9080412df96832d22e57a1bcc76e3016f93f0b0'
-          '0b976fe5862798b34fdb90d9f9f405b39ccedb1b'
-          '3506f8bb7cf35776739a6cc1afceff31555cebc0')
-validpgpkeys=('3CE464558A84FDC69DB40CFB090B11993D9AEBB5')
-
-prepare() {
-	cd ${srcdir}/${pkgname}-${pkgver}
-	# http://git.savannah.gnu.org/cgit/guix.git/commit/?id=5a88b2d
-	patch -Np1 < "${srcdir}/${source[2]}"
-	# http://git.savannah.gnu.org/cgit/guix.git/commit/?id=402bb3b
-	patch -Np1 < "${srcdir}/${source[3]}"
-}
+sha1sums=('2189ab3a658040e51b036b1bca11594c3d6e4966'
+          '3300991092ba2eea2b2113456cd0409d11b00ca6')
+validpgpkeys=('BCA689B636553801C3C62150197A5888235FACAC')
 
 build() {
 	bash_completion_dir="`pkg-config --variable=completionsdir bash-completion`"
@@ -62,11 +52,13 @@ build() {
 
 check() {
 	cd ${srcdir}/${pkgname}-${pkgver}
-	# Don't run tests requiring user namespace
-	if unshare -Ur true; then :; else
-		sed -i 's|tests/syscalls.scm||' Makefile
-		sed -i 's|tests/containers.scm||' Makefile
-		sed -i 's|tests/guix-environment-container.sh||' Makefile
+	# Check whether the current working directory is too long
+	cwd_str="$(pwd)"
+	cwd_len="${#cwd_str}"
+	if [ "${cwd_len}" -gt 46 ]; then
+		error "${cwd_str} is too long."
+		error "The working directory cannot be longer than 46 bytes."
+		false
 	fi
 	# Make sure we have a valid shell accepting -c option
 	SHELL=/bin/sh make check
