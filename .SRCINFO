@@ -1,0 +1,19 @@
+pkgbase = py-parrot-zik-git
+	pkgdesc = PyParrotZik is a simple applet indicator for Parrot Zik headset.
+	pkgver = r170.584ee9d
+	pkgrel = 1
+	url = https://github.com/m0sia/pyParrotZik
+	arch = any
+	license = GPLv2+
+	makedepends = git
+	makedepends = python2-setuptools
+	depends = python2-pybluez
+	depends = python2-beautifulsoup4
+	depends = python2-dbus
+	depends = python2-libappindicator
+	depends = pygtk
+	source = pyParrotZik::git+https://github.com/m0sia/pyParrotZik
+	md5sums = SKIP
+
+pkgname = py-parrot-zik-git
+
