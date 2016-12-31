@@ -3,7 +3,7 @@ validpgpkeys=('748231EBCBD808A14F5E85D28C004C2F93481F6B')
 # Bug reports can be filed at https://bugs.square-r00t.net/index.php?project=3
 # News updates for packages can be followed at https://devblog.square-r00t.net
 pkgname=bdisk-git
-pkgver=v3.00.BETA
+pkgver=3.00
 pkgrel=1
 #_pkgver=${pkgver}
 pkgdesc="An easy liveCD creator built in python. Supports hybrid ISOs/USB, iPXE, and UEFI"
@@ -47,7 +47,7 @@ pkgver() {
   ## most recent un-annotated tag e.g. 0.71.r115.gd95ee07
   #git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
   ## or:
-  git describe --tags | sed 's/^foo-//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --tags | sed 's/^v//;s/-/./g ; s/[\.-]beta.*$//gI'
   ## project uses tags with prefix. e.g. v...
   #git describe --long | sed 's/^foo-//;s/\([^-]*-g\)/r\1/;s/-/./g'
   ## both with fallback, e.g. 0.9.9.r27.g2b039da with tags, else r1581.2b039da
