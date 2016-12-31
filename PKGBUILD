@@ -1,5 +1,5 @@
 pkgname=mingw-w64-sonnet
-pkgver=5.23.0
+pkgver=5.29.0
 pkgrel=1
 arch=(any)
 pkgdesc="Spelling framework for Qt5 (mingw-w64)"
@@ -12,7 +12,7 @@ optdepends=("mingw-w64-aspell: spell checking via aspell"
 options=(staticlibs !strip !buildflags)
 url="https://community.kde.org/Frameworks"
 source=("http://download.kde.org/stable/frameworks/${pkgver%.*}/sonnet-${pkgver}.tar.xz")
-md5sums=('a557695b926c0857a4aba81c43879242')
+md5sums=('be646b39a16a2b848540715f6407f377')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
@@ -40,9 +40,8 @@ package() {
 	for _arch in ${_architectures}; do
     cd "${srcdir}/${pkgname#mingw-w64-}-$pkgver/build-${_arch}"
     make DESTDIR="$pkgdir" install
-    find "$pkgdir/usr/${_arch}" -name '*.exe' -exec rm {} \;
+    find "$pkgdir/usr/${_arch}" -name '*.exe' -exec ${_arch}-strip {} \;
     find "$pkgdir/usr/${_arch}" -name '*.dll' -exec ${_arch}-strip --strip-unneeded {} \;
     find "$pkgdir/usr/${_arch}" -name '*.a' -o -name '*.dll' | xargs ${_arch}-strip -g
-    rm -rf "$pkgdir/usr/${_arch}/share"
   done
 }
