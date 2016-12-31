@@ -3,7 +3,7 @@
 # Package Repository: https://github.com/mij-aur-packages/xapian-omega
 
 pkgname=xapian-omega
-pkgver=1.2.24
+pkgver=1.4.2
 pkgrel=1
 pkgdesc="Indexers and CGI search frontend for Xapian"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
@@ -11,7 +11,7 @@ url="http://www.xapian.org/"
 license=('GPL')
 depends=('xapian-core' 'perl' 'pcre')
 source=(http://oligarchy.co.uk/xapian/${pkgver}/${pkgname}-${pkgver}.tar.xz)
-sha256sums=('45fca431b812ddacbd592b522389474317af386b3ab554908edd36fc5918da53')
+sha256sums=('f00bf334ff643bd7cd4bfad8af9a696b0849496c714fdb6a0750720792670c6a')
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
