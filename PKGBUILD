@@ -2,7 +2,7 @@
 
 _pkgname=audacious
 pkgname=${_pkgname}-qt5
-pkgver=3.8
+pkgver=3.8.1
 pkgrel=1
 pkgdesc="Lightweight, advanced audio player (with qt5 interface)"
 arch=('i686' 'x86_64')
@@ -14,10 +14,10 @@ makedepends=('python2') # for gdbus-codegen
 optdepends=('unzip: zipped skins support'
             'audacious-plugins-qt5: many helpful plugins')
 provides=("${_pkgname}=${pkgver}")
-conflicts=('audacious')
+conflicts=("${_pkgname}")
 replaces=('audacious-player')
 source=(http://distfiles.audacious-media-player.org/$_pkgname-$pkgver.tar.bz2)
-sha256sums=('ffe8c0661dcb999598887e8ee05cd24faa7939086f5a8183fdba6210a95c4a71')
+sha256sums=('ac61a23194f5ffd4d83648b465a6ea4e56ced6126da54151700da8885fa52bcd')
 
 build() {
   cd "$srcdir/$_pkgname-$pkgver"
