@@ -1,0 +1,15 @@
+pkgbase = properties-cpp-bzr
+	pkgdesc = A very simple convenience library for handling properties and signals in C++11
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://launchpad.net/properties-cpp
+	arch = i686
+	arch = x86_64
+	license = LGPL3
+	makedepends = bzr
+	provides = properties-cpp
+	source = properties-cpp-bzr::bzr+https://code.launchpad.net/~phablet-team/properties-cpp/trunk
+	md5sums = SKIP
+
+pkgname = properties-cpp-bzr
+
