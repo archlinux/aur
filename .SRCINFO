@@ -1,6 +1,6 @@
 pkgbase = properties-cpp-bzr
 	pkgdesc = A very simple convenience library for handling properties and signals in C++11
-	pkgver = 0.1
+	pkgver = r17
 	pkgrel = 1
 	url = https://launchpad.net/properties-cpp
 	arch = i686
