@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=git-it
+Comment=Electron app to learn the git command line
+Exec="git-it"
+Icon=git-it
+Terminal=false
+Type=Application
+StartupNotify=true
+Categories=GNOME;GTK;Development;Documentation;
+MimeType=text/plain;
