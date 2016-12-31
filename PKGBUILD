@@ -1,7 +1,7 @@
 # Maintainer: Jesse Spangenberger <azulephoenix@gmail.com>
 pkgname=private-internet-access-vpn-dev
 pkgver=3.2.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Installs VPN profiles for Private Internet Access Service"
 arch=('any')
 url="https://www.privateinternetaccess.com/"
@@ -62,15 +62,15 @@ prepare() {
 package() {
   cd "${srcdir}"
 
-  install -D -m 644 restart.conf "${pkgdir}/usr/lib/system/openvpn@.service.d/restart.conf"
+  install -D -m 644 restart.conf "${pkgdir}/usr/lib/system/openvpn-client@.service.d/restart.conf"
   install -D -m 755 vpn.sh "${pkgdir}/usr/lib/system/systemd/system-sleep/vpn.sh"
   install -D -m 644 pia.8.gz "${pkgdir}/usr/share/man/man8/pia.8.gz"
 
   
   install -dm755 "${pkgdir}"/etc/{openvpn,private-internet-access}
   install -D -m 644 vpn-hosts.txt "${pkgdir}/etc/private-internet-access"
-  install -D -m 644 *.crt "${pkgdir}/etc/openvpn/client"
-  install -D -m 644 *.pem "${pkgdir}/etc/openvpn/client"
+  install -D -g network -m 640 *.crt "${pkgdir}/etc/openvpn/client"
+  install -D -g network -m 640 *.pem "${pkgdir}/etc/openvpn/client"
   install -D -m 644 {pia-example.conf,login-example.conf} "${pkgdir}/etc/private-internet-access/"
 
   install -D -m 755 openvpn-update-resolv-conf/update-resolv-conf.sh "${pkgdir}/etc/openvpn/update-resolv-conf.sh"
