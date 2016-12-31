@@ -3,11 +3,11 @@
 pkgname=qelly
 _pkgname=Qelly
 pkgver=1.0b
-pkgrel=1
+pkgrel=2
 pkgdesc="Beautiful cross-platform BBS client"
 arch=('x86_64' 'i686')
 url="https://github.com/uranusjr/Qelly"
-license=('GPL')
+license=('GPL3')
 depends=('qt4' 'libqxt')
 makedepends=()
 conflicts=('qelly')
