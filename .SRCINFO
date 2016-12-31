@@ -1,5 +1,5 @@
 pkgbase = fpc-svn
-	pkgver = 3.1.1.r35178
+	pkgver = 3.1.1.r35219
 	pkgrel = 1
 	url = http://www.freepascal.org/
 	arch = i686
@@ -35,4 +35,5 @@ pkgname = fpc-src-svn
 
 pkgname = fpc-docs-svn
 	pkgdesc = Documentation for the Free Pascal compiler
+	options = !strip
 

@@ -13,8 +13,8 @@ _build_docs=true
 pkgbase=fpc-svn
 pkgname=(fpc-svn fpc-src-svn)
 [[ $_build_docs ]] && pkgname+=(fpc-docs-svn)
-pkgver=3.1.1.r35178
-_pkgver=${pkgver/${pkgver:5}}
+pkgver=3.1.1.r35219
+_pkgver=${pkgver%.r*}
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.freepascal.org/"
@@ -28,9 +28,9 @@ source=(fpcbuild::svn+http://svn.freepascal.org/svn/fpcbuild/trunk)
 sha1sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/fpcbuild/fpcsrc"
+  cd "${srcdir}"/fpcbuild/fpcsrc
   printf "%s.r%s" \
-    $(grep -m1 version Makefile.fpc |sed 's/version=//') \
+    $(grep -m 1 'version' 'Makefile.fpc' | cut -d '=' -f 2) \
     $(svnversion | tr -d [A-z])
 }
 
