@@ -2,12 +2,12 @@
 
 pkgname=qelly-git
 _pkgname=Qelly
-pkgver=1.0b.18.g1dbb09b
-pkgrel=1
+pkgver=1.0b.20.g354e0b7
+pkgrel=2
 pkgdesc="Beautiful cross-platform BBS client"
 arch=('x86_64' 'i686')
 url="https://github.com/uranusjr/Qelly"
-license=('GPL')
+license=('GPL3')
 depends=('qt4' 'libqxt')
 makedepends=()
 conflicts=('qelly')
