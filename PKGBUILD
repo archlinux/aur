@@ -42,7 +42,7 @@ build() {
   make ${MAKEFLAGS} NOGDB=1 OPT=" -dRelease" build
 
   cd fpcdocs
-  [[ $_build_docs ]] && make ${MAKEFLAGS} FPCSRCDIR="${srcdir}/fpcbuild/fpcsrc" html
+  [[ $_build_docs ]] && make -j1 FPCSRCDIR="${srcdir}/fpcbuild/fpcsrc" html
 }
 
 package_fpc-svn() {
