@@ -17,7 +17,7 @@ md5sums=('07aadc36a9b0f18cca20ba9b46a3d577')
 build() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
 
-	./autogen.sh \
+	./configure \
 		--prefix=/usr \
 		--bindir=/usr/bin \
 		--sbindir=/usr/bin \
