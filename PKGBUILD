@@ -2,7 +2,7 @@
 # Contributor: alejandrogomez <alejandroogomez@gmail.com>
 
 pkgname=cdiff
-pkgver=0.9.8
+pkgver=1.0
 pkgrel=1
 pkgdesc="Colored, incremental, side-by-side diff viewer"
 arch=('any')
@@ -10,8 +10,8 @@ url="http://pypi.python.org/pypi/cdiff/"
 license=('BSD')
 depends=('python')
 conflicts=('colordiff')
-source=(http://pypi.python.org/packages/source/c/$pkgname/$pkgname-$pkgver.tar.gz)
-md5sums=('7489095f06daea06a91c22e7afa9f60b')
+source=(https://pypi.io/packages/source/c/$pkgname/$pkgname-$pkgver.tar.gz)
+md5sums=('c70ed1abbd9d999bfe4fd83e05ed4092')
 
 
 package() {
