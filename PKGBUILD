@@ -1,8 +1,9 @@
-# Maintainer: megadriver <megadriver at gmx dot com>
+# Maintainer: Joan Figueras <ffigue at gmail dot com>
+# Contributor: megadriver <megadriver at gmx dot com>
 # Based on hplip from [extra]
 
 pkgname=hplip-minimal
-pkgver=3.15.4
+pkgver=3.16.11
 pkgrel=1
 pkgdesc="The HP printer drivers, and not much else"
 arch=('i686' 'x86_64' 'armv6h')
@@ -14,7 +15,7 @@ optdepends=('cups: for printing support' 'libusb: for advanced usb support')
 conflicts=('hplip')
 options=('!docs')
 source=("http://downloads.sourceforge.net/hplip/hplip-$pkgver.tar.gz")
-md5sums=('2cc12f3c8c2cf023891980c8a6b3fa5d')
+md5sums=('7d187c3142ba323a3021767d333ad9f4')
 
 prepare() {
   cd "$srcdir/hplip-$pkgver"
