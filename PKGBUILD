@@ -2,18 +2,20 @@
 
 pkgname=registrator
 pkgver=1.0
-pkgrel=4
+pkgrel=5
 pkgdesc="a tool for noise reduction or resolution quadrupling by adding more photos together"
 url="http://ronja.twibright.com/registrator.php"
-arch=('i686')
+arch=('i686' 'x86_64')
 license=('GPL-2')
 makedepends=('libjpeg' 'libpng')
 depends=('libpng')
-source=("http://ronja.twibright.com/utils/${pkgname}.tgz")
-md5sums=('d192412cbde2c59953a785259667cd3b')
+source=("http://ronja.twibright.com/utils/${pkgname}.tgz" "zlib_include.patch")
+md5sums=('36ea4eb3b69ccc6c18cbb758da95f4f2'
+         '86295e23f9a1c361d5a8c77beecce36c')
 
 build() {
 cd $srcdir/${pkgname}
+patch -p0 <$srcdir/zlib_include.patch
 make
 }
 
