@@ -2,11 +2,11 @@
 
 pkgname=guile-ssh
 pkgver=0.10.2
-pkgrel=1
+pkgrel=2
 pkgdesc='SSH module for Guile based on libssh'
 arch=('x86_64' 'i686')
 url="https://github.com/artyom-poptsov/guile-ssh"
-license=('GPL')
+license=('GPL3')
 depends=(
   'guile>=2.0.9'
   'libssh>=0.7.3')
