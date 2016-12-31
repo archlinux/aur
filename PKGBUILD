@@ -15,7 +15,7 @@ _install_name='openoffice4'
 _install_path=${_install_prefix}/${_install_name}
 
 pkgname=openoffice-${_lang}-bin
-pkgver=4.1.2
+pkgver=4.1.3
 pkgrel=1
 pkgdesc="German language pack for OpenOffice.org - Repackaged from upstream"
 arch=('i686' 'x86_64')
@@ -36,12 +36,12 @@ sha256sums=('SKIP')
 case "$CARCH"
 in i686 )
 	source=(http://apache.org/dist/openoffice/${pkgver}/binaries/${_lang}/Apache_OpenOffice_${pkgver}_Linux_x86_langpack-rpm_${_lang}.tar.gz)
-	md5sums[0]='4ba1905b9db456e8dddb020612da3c31'
-	sha256sums[0]='c2409e194bed5732bf2340bfdddd1601e514c258134b060ab17d4794d64066dc'
+	md5sums[0]='f3435fc71c12c017f7b8031cdc2b199d'
+	sha256sums[0]='2e3c2de327cad2ee31cde314383f89bc9e21070778c3307adc7f339596e35de9'
 ;; x86_64 )
 	source=(http://apache.org/dist/openoffice/${pkgver}/binaries/${_lang}/Apache_OpenOffice_${pkgver}_Linux_x86-64_langpack-rpm_${_lang}.tar.gz)
-	md5sums[0]='afe79b7dded6bacc08a5586c36eaf47b'
-	sha256sums[0]='788783949a8f2e8b78d9eea07335ebf980e4e440f2b2e1af7eee6fc388e45018'
+	md5sums[0]='2a9d763a12ea449cba61eba97f126473'
+	sha256sums[0]='5a7b29cdb426b557629cdc979db4ab70551ce1366509f15b8b3d8c5b7ab5499c'
 esac
 
 _find_rpms() {
