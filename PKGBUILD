@@ -1,18 +1,18 @@
 # Maintainer: Mario Ray Mahardhika <leledumbo_cool@yahoo.co.id>
 pkgname=staruml
-pkgver=2.7.0
+pkgver=2.8.0
 pkgrel=1
 pkgdesc="A sophisticated software modeler"
 arch=('i686' 'x86_64')
 url="http://staruml.io/"
 license=('custom:staruml')
-depends=('nodejs' 'gnuplot' 'libgcrypt15' 'nss' 'gconf' 'libudev.so.0')
+depends=('nodejs' 'gnuplot' 'libgcrypt15' 'nss' 'gconf' 'libudev0-shim')
 source=('staruml.sh')
 source_i686=("http://staruml.io/download/release/v$pkgver/StarUML-v$pkgver-32-bit.deb")
 source_x86_64=("http://staruml.io/download/release/v$pkgver/StarUML-v$pkgver-64-bit.deb")
 md5sums=('9e14e38e0b2054353eab13e9f028bd74')
-md5sums_i686=('2f72713e8ea8081552715590f7ebef24')
-md5sums_x86_64=('5c738e1bc9dcf09e2c6d0cf44035784a')
+md5sums_i686=('a07dddbd9afb9a68461aef587c2ad928')
+md5sums_x86_64=('8a541f9194ade2b3e5a619a0330675e4')
 install=${pkgname}.install
 
 prepare() {
@@ -45,3 +45,4 @@ package() {
   # finally, the directories
   cp -Rfp $srcdir/opt $srcdir/usr $pkgdir/
 }
+
