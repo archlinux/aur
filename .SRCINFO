@@ -1,0 +1,30 @@
+pkgbase = image_optim
+	pkgdesc = Optimize (lossless compress, optionally lossy) images (jpeg, png, gif, svg) using external utilities.
+	pkgver = 0.24.1
+	pkgrel = 0
+	url = https://github.com/toy/image_optim
+	arch = any
+	license = MIT
+	depends = advancecomp
+	depends = gifsicle
+	depends = jhead
+	depends = jpeg-archive
+	depends = jpegoptim
+	depends = libjpeg-turbo
+	depends = nodejs-svgo
+	depends = optipng
+	depends = pngcrush
+	depends = pngout
+	depends = pngquant
+	depends = ruby-exifr
+	depends = ruby-fspath
+	depends = ruby-image_size
+	depends = ruby-in_threads
+	depends = ruby-progress
+	noextract = image_optim-0.24.1.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/image_optim-0.24.1.gem
+	sha512sums = 7b811e1c5b05a98b530e170d5c3e6416f9cd04bd7b650bb19159ceeb371b2edecf65ccfd4aba1e3fddf633a3d783193bdd533a9de4628e90c0bc582c69e19683
+
+pkgname = image_optim
+
