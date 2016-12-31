@@ -1,6 +1,6 @@
 # Maintainer: Kasper Laudrup <laudrup@stacktrace.dk>
 pkgname=properties-cpp-bzr
-pkgver=0.1
+pkgver=r17
 pkgrel=1
 pkgdesc="A very simple convenience library for handling properties and signals in C++11"
 arch=('i686' 'x86_64')
