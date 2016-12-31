@@ -15,7 +15,7 @@ arch=('i686' 'x86_64')
 install=doom3.install
 source=('doom3.launcher' 'doom3-dedicated.launcher' 'doom3.desktop' \
 'doom3.launcher64' 'doom3-dedicated.launcher64' 'doom3.png' \
-"http://www.1337-server.net/doom3/doom3-linux-$pkgver.x86.run")
+"ftp://ftp.idsoftware.com/idstuff/doom3/linux/doom3-linux-$pkgver.x86.run")
 provides=('doom3')
 conflicts=('doom3')
 md5sums=('da5f33feaa929c2c588a5a773c777e0f'
