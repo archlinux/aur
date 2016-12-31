@@ -28,12 +28,12 @@ pkgname = fpc-svn
 	backup = etc/fpc.cfg
 
 pkgname = fpc-src-svn
-	pkgdesc = Sources for the FreePascal compiler (required by the Lazarus IDE)
+	pkgdesc = Sources for the Free Pascal Compiler (required by the Lazarus IDE)
 	provides = fpc-src
 	conflicts = fpc-src
 	options = !strip
 
 pkgname = fpc-docs-svn
-	pkgdesc = Documentation for the Free Pascal compiler
+	pkgdesc = Documentation for the Free Pascal Compiler
 	options = !strip
 
