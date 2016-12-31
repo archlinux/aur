@@ -2,7 +2,7 @@
 
 pkgrealname=webcamoid
 pkgname=webcamoid-git
-pkgver=7.2.1.r81.g5d28278
+pkgver=7.2.1.r125.g89a8c239
 pkgrel=1
 pkgdesc="Webcamoid is a full featured webcam capture application."
 url='https://webcamoid.github.io/'
@@ -10,18 +10,27 @@ license=('GPL')
 arch=('i686' 'x86_64' 'armv6h')
 depends=('qt5-quickcontrols'
          'qt5-svg'
-         'libpulse'
          'v4l-utils')
 optdepends=('v4l2loopback-dkms: Virtual camera support'
             'ffmpeg: Video playing/recording/conversion (Recommended)'
             'gst-plugins-base: Video playing/recording/conversion'
             'gst-plugins-good: Video playing/recording/conversion'
             'gst-plugins-bad: Video playing/recording/conversion'
-            'gst-plugins-ugly: Video playing/recording/conversion')
+            'gst-plugins-ugly: Video playing/recording/conversion'
+            'libpulse: Audio playback (Recommended)'
+            'alsa-lib: Audio playback'
+            'openal: Audio playback'
+            'jack: Audio playback'
+            'libuvc-git: Camera capture')
 makedepends=('git'
              'qt5-tools'
              'ffmpeg'
-             'gst-plugins-base-libs')
+             'gst-plugins-base-libs'
+             'libpulse'
+             'alsa-lib'
+             'openal'
+             'jack'
+             'libuvc-git')
 provides=('webcamoid')
 install="${pkgrealname}.install"
 source=("git://github.com/${pkgrealname}/${pkgrealname}.git")
