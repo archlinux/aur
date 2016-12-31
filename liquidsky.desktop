@@ -1,0 +1,10 @@
+[Desktop Entry]
+Exec=/usr/bin/liquidsky
+Type=Application
+Terminal=false
+Icon=liquidsky
+Categories=Games
+
+Name=LiquidSky
+GenericName=LiquidSky lets you instantly own and stream a powerful gaming computer to any device!
+
