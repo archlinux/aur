@@ -2,5 +2,6 @@
 
 mkdir -p ~/.config/liquidsky
 cd ~/.config/liquidsky
-wine /opt/liquidsky/liquidsky.exe
+cp /opt/liquidsky/liquidsky.exe ~/.config/liquidsky/
+wine ~/.config/liquidsky/liquidsky.exe
 
