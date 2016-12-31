@@ -9,7 +9,7 @@ url="https://github.com/FallingSnow/${_pkgname}"
 license=('WTFPL')
 depends=('lightdm-webkit2-greeter')
 source=("https://github.com/FallingSnow/${_pkgname}/releases/download/v${pkgver}-${pkgrel}/${_pkgname}-${pkgver}-${pkgrel}.tar.gz")
-sha512sums=('1e8b286e81162298e27ef00e4b1f28cb30112162aec3080f2c15ff036e251dcd2bf281d07bbb63d4c9cab62f50735c0fcb983b84228d0e523d325317a16e9d74')
+sha512sums=('836d1f81af0929e03dd6e9f6b5e282de8b1edbdc71e526c7609258f012d08804d770653e4bfa0ff8d71236beeb5617f9abca53c12b21aaf02a864720d850caf7')
 
 package() {
     rm "$srcdir/lightdm-webkit2-material2-${pkgver}-${pkgrel}.tar.gz"
