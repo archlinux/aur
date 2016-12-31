@@ -1,7 +1,10 @@
 post_install() {
-	echo "Change your Android Studio Android SDK directory to \$HOME/.AndroidStudio2.1/sdk" >&2
+	echo "Change your Android Studio Android SDK directory to \$HOME/.AndroidStudio_sdk" >&2
 }
 
 post_upgrade() {
-	post_install
+	msg "Paths have changed. Move your local copy from"
+	msg2 "\$HOME/.AndroidStudio2.*/sdk_local to \$HOME/.AndroidStudio_sdk_local"
+	msg2 "and change your Android Studio Android SDK directory from"
+	msg2 "\$HOME/.AndroidStudio2.*/sdk to \$HOME/.AndroidStudio_sdk"
 }
