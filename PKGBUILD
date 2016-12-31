@@ -1,6 +1,6 @@
 # Maintainer: Roman Vasilev <2rvasilev@live.ru>
 pkgname=yajhfc-pdf-plugin
-pkgver=0.6.0
+pkgver=0.6.1
 pkgrel=1
 pkgdesc="PDF Plugin for (Yet another Java HylaFAX client)."
 _div="-"
@@ -18,7 +18,7 @@ options=()
 # install=${pkgname}.install
 changelog=
 source=("http://download.yajhfc.de/releases/$pkgname$_div${pkgver//./_}.zip")
-md5sums=('c14f53f3c1d52483297210730d21fe60')
+md5sums=('3f0dcb76ffd7f39316564dc151a2dfa9')
 
 build() {
   bsdtar -xf $pkgname$_div${pkgver//./_}.zip
