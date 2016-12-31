@@ -2,11 +2,9 @@
 # Contributor: Nazarov Pavel <genocid@rambler.ru>
 # Contributor: Pablo Lezaeta <prflr88 (arro'a) gmail puntocom>
 
-_rhlink=http://archives.fedoraproject.org/pub/archive/fedora/linux/releases/$pkgver/Everything/source/SRPMS/
-
 pkgname=redhat-artwork
 pkgver=22
-pkgrel=0
+pkgrel=1
 pkgdesc="Artwork for Red Hat default look-and-feel (themes, icons) from Fedora"
 arch=('i686' 'x86_64')
 url="http://www.redhat.com"
@@ -14,6 +12,8 @@ license=("GPL")
 depends=('gtk2')
 conflicts=('xcursor-bluecurve' 'gtk-bluecurve-engine' 'bluecurve-metacity-theme' 'bluecurve-icon-theme' 'bluecurve-classic-metacity-theme')
 provides=('xcursor-bluecurve' 'gtk-bluecurve-engine' 'bluecurve-metacity-theme' 'bluecurve-icon-theme' 'bluecurve-classic-metacity-theme')
+
+_rhlink=http://archives.fedoraproject.org/pub/archive/fedora/linux/releases/$pkgver/Everything/source/SRPMS
 
 source=(
 	${_rhlink}/b/bluecurve-classic-metacity-theme-1.0.0-9.fc21.src.rpm
