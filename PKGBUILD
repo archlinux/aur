@@ -1,6 +1,6 @@
 pkgname=mingw-w64-kcoreaddons
-pkgver=5.21.0
-pkgrel=2
+pkgver=5.29.0
+pkgrel=1
 arch=(any)
 pkgdesc="Addons to QtCore (mingw-w64)"
 license=("LGPL")
@@ -11,7 +11,7 @@ options=(staticlibs !strip !buildflags)
 optdepends=("kcoreaddons: needed for desktopjson.exe workaround symlink")
 url="https://projects.kde.org/projects/frameworks/kcoreaddons"
 source=("http://download.kde.org/stable/frameworks/${pkgver%.*}/kcoreaddons-${pkgver}.tar.xz")
-md5sums=('f3823cbe368197f64ec692e3e6688865')
+md5sums=('f0a3330cd34e3269cd65b65bb465b02c')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
@@ -41,10 +41,10 @@ package() {
 	for _arch in ${_architectures}; do
     cd "${srcdir}/${pkgname#mingw-w64-}-$pkgver/build-${_arch}"
     make DESTDIR="$pkgdir" install
-    find "$pkgdir/usr/${_arch}" -name '*.exe' -exec rm {} \;
+    rm "$pkgdir/usr/${_arch}/bin/desktoptojson.exe"
+    find "$pkgdir/usr/${_arch}" -name '*.exe' -exec ${_arch}-strip {} \;
     ln -s "/usr/bin/desktoptojson" "$pkgdir/usr/${_arch}/bin/desktoptojson.exe"
     find "$pkgdir/usr/${_arch}" -name '*.dll' -exec ${_arch}-strip --strip-unneeded {} \;
     find "$pkgdir/usr/${_arch}" -name '*.a' -o -name '*.dll' | xargs ${_arch}-strip -g
-    rm -rf "$pkgdir/usr/${_arch}/share"
   done
 }
