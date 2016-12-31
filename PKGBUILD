@@ -10,9 +10,9 @@
 # Build docs
 _build_docs=true
 
-pkgbase=fpc-svn
-pkgname=(fpc-svn fpc-src-svn)
-[[ $_build_docs ]] && pkgname+=(fpc-docs-svn)
+pkgbase='fpc-svn'
+pkgname=('fpc-svn' 'fpc-src-svn')
+[[ $_build_docs ]] && pkgname+=('fpc-docs-svn')
 pkgver=3.1.1.r35219
 _pkgver=${pkgver%.r*}
 pkgrel=1
