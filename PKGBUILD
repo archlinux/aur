@@ -15,6 +15,7 @@ depends=('perl' 'perl-moo'
 				 'perl-math-convexhull-monotonechain' 'perl-io-stringy'
 				 'perl-encode-locale' 'perl-extutils-makemaker-aur>=6.82'
 				 'perl-extutils-parsexs-aur' 'perl-extutils-typemap'
+         'perl-sub-quote'
 				 'perl-threads-aur>=1.96')
 makedepends=('git' 'perl-module-build-withxspp')
 optdepends=('perl-wx: GUI support'
