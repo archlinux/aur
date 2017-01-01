@@ -21,9 +21,9 @@ makedepends=('git')
 conflicts=('multipath-tools-git')
 install=multipath-tools.install
 source=("multipath-tools::git+http://git.opensvc.com/multipath-tools/.git#tag=${pkgver}"
-        http://http.debian.net/debian/pool/main/m/multipath-tools/multipath-tools_0.6.3-2.debian.tar.xz)
+        http://http.debian.net/debian/pool/main/m/multipath-tools/multipath-tools_0.6.4-1.debian.tar.xz)
 sha256sums=('SKIP'
-            '44e3d298d31c61da1d3f04c65878169ae8b54adfda0e900fcffec679cb2ff9c6')
+            'e966a60dcb397e830c7d64bcf4a00186bc2a60e85326b8162950d925c84dd6dd')
 
 # The rbd checker requires librados. On Arch this would require ceph to be
 # installed, requiring a lot of space, not needed by most people.
