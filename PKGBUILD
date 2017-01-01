@@ -2,7 +2,7 @@
 # Forked from palemoon PKGBUILD by WorMzy Tykashi <wormzy.tykashi@gmail.com>
 # Contributor: artiom <a.mv at gmx dot fr>
 pkgname=palemoon-git
-pkgver=27.1.0b1+83926b7a2
+pkgver=27.1.0b1+c2e68c5c2
 pkgrel=1
 pkgdesc="Open source web browser based on Firefox focusing on efficiency (git version)"
 arch=('i686' 'x86_64')
