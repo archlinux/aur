@@ -5,7 +5,7 @@
 # Contributor: Alexander Suhoverhov <cy at ngs dot ru>
 
 pkgname=xonotic-git
-pkgver=20160202.r1648.d4d74c9
+pkgver=20170101.r1675.4d0c2bf
 pkgrel=1
 pkgdesc="A free, fast-paced crossplatform first-person shooter. GIT version. PLEASE SEE AUR COMMENTS."
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'armv8h')
