@@ -1,5 +1,5 @@
 pkgname=powerline-i3-git
-pkgver=1.1.9
+pkgver=1.2
 pkgrel=1
 pkgdesc="The ultimate statusline/prompt utility. A fork containing more features for the i3 window manager."
 arch=('i686' 'x86_64')
@@ -18,6 +18,7 @@ optdepends=(
   'python-iwlib: wireless segment'
   'python-pyalsaaudio: volume segment'
   'python-psutil: cpu load segment'
+  'python-pygit2: better git performance of the vcs segment'
 )
 makedepends=(
   'python-setuptools'
