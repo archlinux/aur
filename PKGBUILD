@@ -5,61 +5,48 @@
 
 pkgname=emacs-pretest
 _pkgname=emacs
-pkgver=25.1.90
+pkgver=25.1.91
 pkgrel=1
 pkgdesc="The extensible, customizable, self-documenting real-time display editor -- pretest version"
 arch=('i686' 'x86_64')
 url="http://www.gnu.org/software/emacs/emacs.html"
 license=('GPL3')
-depends=('gtk3' 'gpm' 'giflib' 'm17n-lib' 'desktop-file-utils' 'alsa-lib' 'imagemagick' 'zlib')
-install=$pkgname.install
+depends=('librsvg' 'gpm' 'giflib' 'libxpm' 'libotf' 'm17n-lib' 'gtk3' 'hicolor-icon-theme' 'gconf' 'desktop-file-utils' 'alsa-lib' 'imagemagick' 'gnutls')
 provides=('emacs')
 conflicts=('emacs')
 source=(ftp://alpha.gnu.org/gnu/emacs/pretest/$_pkgname-$pkgver.tar.xz{,.sig})
-sha512sums=('9d20f83d62598b74466e2b12bd09388b27099708aba831806dc5c0710071499b1796b3e986e0fa35384873d0f5faa5dec2866dce297a7cc7136a77a2bb1e0bcd'
+sha512sums=('09ecd852e6bf523c8ae7835b496fbd53c0dafeccaa5c3319e9a7f664be0816fdd5acbe9c5267f2dab2912aff9656448ac53f6b22329aea15d3e3af41c04806ff'
             'SKIP')
-validpgkkeys=('28D3BED851FDF3AB57FEF93C233587A47C207910')
+validpgpkeys=('B29426DEFB07724C3C35E5D36592E9A3A0B0F199' '28D3BED851FDF3AB57FEF93C233587A47C207910')
 
 build() {
   cd "$srcdir"/$_pkgname-$pkgver
-
-  # Avoid hardening-wrapper
   export PATH=$(echo "$PATH" | sed 's!/usr/lib/hardening-wrapper/bin!!g')
-
+  export REL_ALLOC=no
   local confopts=(--prefix=/usr
                   --sysconfdir=/etc
                   --libexecdir=/usr/lib
                   --localstatedir=/var
-                  --without-gconf
-                  --with-sound=alsa
                   --with-x-toolkit=gtk3
-                  --with-game-user=:games
-                  --with-modules)
-  ./configure "${confopts[@]}"
+                  --with-xft)
+  ac_cv_lib_gif_EGifPutExtensionLast=yes ./configure "${confopts[@]}"
   make
 }
 
 package() {
-  cd "$srcdir"/$_pkgname-$pkgver
-
-  # Avoid hardening-wrapper
-  export PATH=$(echo "$PATH" | sed 's!/usr/lib/hardening-wrapper/bin!!g')
-
+  cd "$srcdir"/$pkgname-$pkgver
   make DESTDIR="$pkgdir" install
 
   # remove conflict with ctags package
   mv "$pkgdir"/usr/bin/{ctags,ctags.emacs}
-  mv "$pkgdir"/usr/share/man/man1/{ctags.1.gz,ctags.emacs.1.gz}
+  mv "$pkgdir"/usr/share/man/man1/{ctags.1.gz,ctags.emacs.1}
 
-  # remove conflict with texinfo
-  rm "$pkgdir"/usr/share/info/info.info.gz
-
-  # fix ownership on usr/share files
+  # fix user/root permissions on usr/share files
   find "$pkgdir"/usr/share/emacs/$pkgver -exec chown root:root {} \;
-
-  # fix access permissions on /var/games
+  # fix perms on /var/games
   chmod 775 "$pkgdir"/var/games
   chmod 775 "$pkgdir"/var/games/emacs
   chmod 664 "$pkgdir"/var/games/emacs/*
   chown -R root:games "$pkgdir"/var/games
 }
+
