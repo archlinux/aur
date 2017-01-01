@@ -7,8 +7,8 @@ pkgdesc="Compiler infrastructure and toolchain library for WebAssembly, in C++"
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 url="https://github.com/WebAssembly/binaryen"
 license=('MIT')
-depends=()
-makedepends=('emscripten' 'cmake')
+depends=('libc++')
+makedepends=('emscripten' 'cmake' 'clang')
 source=("https://github.com/WebAssembly/binaryen/archive/version_${pkgver}.tar.gz"
         "binaryen.sh")
 sha256sums=('17981aa2e07a6dbecf27b430898d89ab1edfa46bcd22b9cf5a55426bc44b7bde'
@@ -19,6 +19,9 @@ build() {
     rm -rf build
     mkdir build
     cd build
+    export CC=clang
+    export CXX='clang -stdlib=libc++'
+    export LDFLAGS='-stdlib=libc++ -lc++abi'
     cmake -DCMAKE_INSTALL_PREFIX=/usr ..
     make
 }
