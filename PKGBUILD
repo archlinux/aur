@@ -3,7 +3,7 @@
 # Contributor: Sven-Hendrik Haase <sh@lutzhaase.com>
 # Contributor: Matthew Bowra-Dean <matthew@ijw.co.nz>
 pkgname=openra-git
-pkgver=BLEED.b49f143
+pkgver=BLEED.285e9a803
 pkgrel=1
 pkgdesc="An open-source implementation of the Red Alert engine using .NET/Mono and OpenGL"
 arch=('any')
