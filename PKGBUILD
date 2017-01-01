@@ -17,7 +17,7 @@ groups=('liri-git')
 install=$pkgname.install
 
 _gitroot="git://github.com/lirios/workspace.git"
-_gitbranch=develop
+_gitbranch=release/0.9.0
 _gitname=workspace
 source=(${_gitname}::${_gitroot}#branch=${_gitbranch})
 md5sums=('SKIP')
