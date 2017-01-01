@@ -4,7 +4,7 @@ pkgrel=1
 pkgdesc="Visualization Toolkit (VTK)"
 arch=('i686' 'x86_64')
 url='http://www.vtk.org'
-depends=('cmake' 'qt4' 'python2')
+depends=('cmake' 'qt4' 'python2' 'tcl' 'tk')
 source=(http://www.vtk.org/files/release/$pkgver/vtk-$pkgver.0.tar.gz)
 md5sums=('37b7297d02d647cc6ca95b38174cb41f')
 
