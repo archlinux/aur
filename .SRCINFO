@@ -1,6 +1,6 @@
 pkgbase = cpcache-git
 	pkgdesc = central pacman cache
-	pkgver = r88.6e0a8cc
+	pkgver = r95.974c568
 	pkgrel = 1
 	url = https://github.com/nroi/cpcache
 	install = cpcache.install
@@ -17,10 +17,12 @@ pkgbase = cpcache-git
 	source = sysuser.conf
 	source = cpcache.install
 	source = cpcache.service
+	source = create_db.sh
 	sha256sums = SKIP
 	sha256sums = 0098e749b19617c0f7d619d47a3bc3015bab62e9ad0916087502daff672fb309
-	sha256sums = e326c1097269a47a35fe327d839a566d90888339f7cc00b2207e0accf441e6cd
+	sha256sums = effdcc6de465d342f4aba039c853d48e501cf0e55ed4f896cf638ba3499584f6
 	sha256sums = 0523a85ce955f9a221340a2bcd8b3f2543dc817469e36623db06630bea925918
+	sha256sums = 42c01be8766d2b48f142a7b848d5708035b80143af8f0bb02e69a3bc7fff3825
 
 pkgname = cpcache-git
 
