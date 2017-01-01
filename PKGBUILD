@@ -1,5 +1,5 @@
 pkgname=rubycreator
-pkgver=4.0.0
+pkgver=4.1.0
 pkgrel=1
 pkgdesc="Plugin to add Ruby language support to QtCreator IDE."
 arch=("x86_32" "x86_64")
@@ -14,7 +14,7 @@ replaces=()
 backup=()
 options=()
 install=
-source=('https://github.com/hugopl/RubyCreator/archive/v4.0.0.tar.gz')
+source=('https://github.com/hugopl/RubyCreator/archive/v4.1.0.tar.gz')
 noextract=()
 md5sums=('SKIP')
 
