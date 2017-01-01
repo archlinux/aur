@@ -3,7 +3,7 @@
 _plug=scenechange
 pkgname=vapoursynth-plugin-${_plug}
 pkgver=0.2.0_2
-pkgrel=5
+pkgrel=6
 pkgdesc="Plugin for Vapoursynth: ${_plug} (Include temporalsoften2 script)"
 arch=('i686' 'x86_64')
 url='http://forum.doom9.org/showthread.php?t=166769'
