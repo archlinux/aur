@@ -8,7 +8,6 @@ arch=('i686' 'x86_64')
 url="https://github.com/phatina/simple-mtpfs/"
 license=('GPL2')
 depends=('libmtp' 'fuse' 'gcc-libs')
-options=(strip)
 source=(https://github.com/phatina/simple-mtpfs/archive/$pkgname-$pkgver.tar.gz)
 sha1sums=('9bbb315a4cc1020cdffbfea969dbd3c7a364c42d')
 
