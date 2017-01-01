@@ -3,7 +3,7 @@
 _plug=averagehist
 pkgname=vapoursynth-plugin-${_plug}
 pkgver=r0
-pkgrel=3
+pkgrel=4
 pkgdesc="Plugin for Vapoursynth: ${_plug}"
 arch=('any')
 url='http://forum.doom9.org/showthread.php?t=168521'
