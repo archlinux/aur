@@ -6,7 +6,6 @@ pkgdesc="Inspired by GNU Parallel, a command-line CPU load balancer written in R
 arch=('i686' 'x86_64')
 url="https://github.com/mmstick/parallel"
 license=('MIT')
-depends=('gcc-libs-multilib')
 optdepends=('dash: increased performance over sh')
 provides=('parallel')
 conflicts=('parallel')
