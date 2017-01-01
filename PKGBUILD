@@ -13,7 +13,7 @@ depends=('sdl>=1.2.5' 'portaudio' 'libjpeg' 'cgal')
 makedepends=('gawk' 'plib>=1.8.4' 'gcc5')
 source=("${pkgname}.desktop"
         "${pkgname}.png"
-        "http://sourceforge.net/projects/crrcsim/files/latest/download/${pkgname}-${pkgver}.tar.gz")
+        "http://sourceforge.net/projects/crrcsim/files/crrcsim/crrcsim-${pkgver}/crrcsim-${pkgver}.tar.gz")
 md5sums=('130b2a0661e96dce8b27dc3531c87474'
          '1cba5f3c8d3439e56866880429694a5c'
          'fbb66c148389e998afe149a34a88abeb')
