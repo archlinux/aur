@@ -1,6 +1,8 @@
 # Maintainer: Pier Luigi Fiorini <pierluigi.fiorini@gmail.com>
 
-pkgname=liri-themes
+_modulename=themes
+
+pkgname=liri-${_modulename}
 pkgver=0.9.0
 pkgrel=1
 pkgdesc="Themes for uniform look and feel throughout Liri OS"
@@ -10,7 +12,7 @@ license=('GPL3')
 makedepends=('extra-cmake-modules')
 conflicts=('liri-themes-git')
 groups=('liri')
-source=("https://github.com/lirios/${pkgname}/releases/download/v${pkgver}/${pkgname}os-${pkgver}.tar.xz")
+source=("https://github.com/lirios/${_modulename}/releases/download/v${pkgver}/lirios-themes-${pkgver}.tar.xz")
 sha256sums=('59ebc01231ebf955fd847db925fca1c557273da126087af2dfe09013321a54b5')
 
 prepare() {
@@ -19,7 +21,7 @@ prepare() {
 
 build() {
 	cd build
-	cmake ../${pkgname}-${pkgver} \
+	cmake ../lirios-themes-${pkgver} \
 		-DCMAKE_INSTALL_PREFIX=/usr \
 		-DCMAKE_BUILD_TYPE=Release \
 		-DKDE_INSTALL_LIBDIR=lib \
