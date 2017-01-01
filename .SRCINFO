@@ -1,0 +1,16 @@
+pkgbase = libkibi
+	pkgdesc = Configurable library for formatting sizes for display
+	pkgver = 0.1.1
+	pkgrel = 1
+	arch = i686
+	arch = x86_64
+	license = custom:ISC
+	depends = glibc
+	source = https://launchpad.net/libkibi/trunk/0.1.1/+download/libkibi-0.1.1.tar.xz
+	source = https://launchpad.net/libkibi/trunk/0.1.1/+download/libkibi-0.1.1.tar.xz.asc
+	validpgpkeys = A62D2CFBD50B9B5BF360D54B159EB5C4EFC8774C
+	sha512sums = 06fb2e9cc90c769e9e091a747e22cf9285b16658b03e36f03531305da7bfdcd699e50323048a2cda62d9846d22e502d9de6c8f0e0d9209d9423c6269fda47217
+	sha512sums = SKIP
+
+pkgname = libkibi
+
