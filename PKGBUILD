@@ -3,6 +3,7 @@ pkgname=libkibi
 pkgver=0.1.1
 pkgrel=1
 pkgdesc='Configurable library for formatting sizes for display'
+url='https://launchpad.net/libkibi'
 arch=(i686 x86_64)
 license=('custom:ISC')
 depends=(glibc)
