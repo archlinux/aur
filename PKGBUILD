@@ -3,24 +3,24 @@
 
 pkgname=goomwwm
 pkgver=1.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Get out of my way, Window Manager!"
 arch=('i686' 'x86_64')
-url="http://aerosuidae.net/goomwwm"
+url="https://github.com/seanpringle/goomwwm"
 license=('MIT')
 depends=('libxft' 'libxinerama')
 optdepends=('dmenu')
 makedepends=()
-source=("http://aerosuidae.net/goomwwm/$pkgname-$pkgver.tar.gz")
-md5sums=('cf735179b7db6829e40795e1f2aa9f20')
+source=("https://github.com/seanpringle/goomwwm/archive/$pkgver.tar.gz")
+md5sums=('6b83b6db787966ea43fccea4687f8c68')
 
 build() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd $pkgname-$pkgver
   make
 }
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd $pkgname-$pkgver
   install -Dm 755 $pkgname "$pkgdir/usr/bin/$pkgname"
   install -Dm 644 "$pkgname.desktop" "$pkgdir/usr/share/xsessions/$pkgname.desktop"
   gzip -c "$pkgname.1" > "$pkgname.1.gz"
