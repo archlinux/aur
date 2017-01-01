@@ -20,7 +20,7 @@ build() {
     mkdir build
     cd build
     export CC=clang
-    export CXX='clang -stdlib=libc++'
+    export CXX='clang++ -stdlib=libc++'
     export LDFLAGS='-stdlib=libc++ -lc++abi'
     cmake -DCMAKE_INSTALL_PREFIX=/usr ..
     make
