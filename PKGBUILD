@@ -1,11 +1,11 @@
-# Maintainer: Chad Harp <chad.harp@mac.com>
-# Contributor: FadeMind <fademind@gmail.com>
-# Contributor: TDY <tdy@archlinux.info>
-# Contributor: Sven Salzwedel <sven_salzwedel@web.de>
-# Contributor: Olaf Leidinger <leidola@newcon.de>
+# Maintainer: Chad Harp <chad dot harp at mac dot com>
+# Contributor: FadeMind <fademind at gmail dot com>
+# Contributor: TDY <tdy at archlinux dot info>
+# Contributor: Sven Salzwedel <sven_salzwedel at web dot de>
+# Contributor: Olaf Leidinger <leidola at newcon dot de>
 
 pkgname=perl-pdf-api2
-pkgver=2.027
+pkgver=2.030
 pkgrel=1
 pkgdesc="A module chain to faciliate the creation and modification of high-quality PDF files"
 _dist=PDF-API2
@@ -15,7 +15,7 @@ license=('LGPL')
 depends=('perl>=5.8.5' 'perl-font-ttf')
 options=('!emptydirs' 'purge')
 source=("$_dist-$pkgver.tar.gz::http://cpan.metacpan.org/authors/id/S/SS/SSIMMS/$_dist-$pkgver.tar.gz")
-sha256sums=('d24db02d902198406270551857830633b289ad39f5a9ba5431246f8cd60e7599')
+sha256sums=('a802c25c1f00b093778223fc7aea94ebd87a9abdb915151746b8ee5d4a358769')
 
 build() {
   cd "$srcdir/$_dist-$pkgver"
