@@ -2,12 +2,11 @@
 
 _name="falcon"
 _module="${_name}"
-_cmd="falcon-bench"
 _check="disabled"
 
 pkgname=("python-${_module}" "python2-${_module}")
 pkgver="1.1.0"
-pkgrel="1"
+pkgrel="2"
 pkgdesc="An unladen web framework for building APIs and app backends."
 arch=("i686" "x86_64")
 url="https://github.com/falconry/${_name}"
@@ -65,5 +64,6 @@ package_python2-falcon() {
              "python2-mimeparse>=1.5.2")
     cd "${srcdir}/${_name}-${pkgver}-python2"
     python2 setup.py install --skip-build --root="${pkgdir}" --optimize=1
-    mv "${pkgdir}/usr/bin/${_cmd}" "${pkgdir}/usr/bin/${_cmd}-python2"
+    mv "${pkgdir}/usr/bin/falcon-bench" "${pkgdir}/usr/bin/falcon-bench-python2"
+    mv "${pkgdir}/usr/bin/falcon-print-routes" "${pkgdir}/usr/bin/falcon-print-routes-python2"
 }
