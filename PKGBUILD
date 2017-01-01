@@ -2,9 +2,9 @@
 # Maintainer: Pablo Lezaeta <prflr88@gmail.com>
 
 pkgname=xubuntu-artwork
-pkgver=16.04.2
-pkgrel=3
-_uver=wily
+pkgver=16.10.1
+pkgrel=1
+_uver=yakkety
 pkgdesc="Xubuntu themes and artwork"
 arch=("any")
 url="https://launchpad.net/xubuntu-artwork"
@@ -21,7 +21,8 @@ optdepends=("plymouth: For the plymouth theme to work"
 source=("https://launchpad.net/ubuntu/+archive/primary/+files/${pkgname}_${pkgver}.tar.xz")
 
 package() {
-  cd "${srcdir}/trunk"
+  #cd "${srcdir}/trunk"
+  cd "${srcdir}/${_uver}"
 
   install -dm755 "${pkgdir}/usr/"
 
@@ -39,4 +40,5 @@ package() {
   rm -frv "${pkgdir}"/usr/share/xfce4/backdrops
 }
 # I use MD5 because is what "makepkg -g" give by default, blame Allan
-md5sums=('165d4c5cc1d23c1490243b4f85230db6')
+
+md5sums=('bdfebe604126126a6222b5b25f45bd3c')
