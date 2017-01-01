@@ -1,8 +1,8 @@
-# Maintainer: Daniel Kirchner <daniel AT ekpyron DOT org>
+# Contributor: Daniel Kirchner <daniel AT ekpyron DOT org>
 
 pkgname=mingw-w64-zlib
-pkgver=1.2.8
-pkgrel=5
+pkgver=1.2.9
+pkgrel=1
 pkgdesc="A compression/decompression Library (mingw-w64)"
 arch=('any')
 license=('custom:zlib')
@@ -10,16 +10,12 @@ depends=(mingw-w64-crt)
 makedepends=(mingw-w64-gcc)
 url="http://www.zlib.net/"
 source=("http://zlib.net/zlib-${pkgver}.tar.gz")
-provides=('mingw-w64-zlib-static')
-conflicts=('mingw-w64-zlib-static')
 options=(!strip !buildflags staticlibs)
-md5sums=('44d667c142d7cda120332623eab69f40')
+md5sums=('e453644539a07783aa525e834491134e')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 build() {
-  unset LDFLAGS
-  
   for _arch in ${_architectures}; do
     rm -rf "${srcdir}/build-${_arch}"
   	cp -r "${srcdir}/zlib-${pkgver}" "${srcdir}/build-${_arch}"
