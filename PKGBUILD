@@ -1,19 +1,17 @@
-# Maintainer: Remi Gacogne <rgacogne-arch at coredump dot fr>
+# Maintainer: Remi Gacogne <rgacogne at archlinux dot org>
 pkgname=dnsdist
-pkgver=1.0.0
-pkgrel=2
+pkgver=1.1.0
+pkgrel=1
 pkgdesc='Highly DNS-, DoS- and abuse-aware loadbalancer'
 arch=('i686' 'x86_64')
 url='http://dnsdist.org/'
 license=('GPL2')
 source=(https://downloads.powerdns.com/releases/${pkgname}-${pkgver}.tar.bz2{,.asc})
-md5sums=('b3bd87d28965eced28feac651b174935'
-         'SKIP')
-sha512sums=('89a926900c0fb16ed64dce1bc5a075899633ede7e4539bc17b388d4535aa751f2649bc66c77cff15bf964371ee44b7fbfa55c08eec625d72eb0eeab590e2cc14'
+sha512sums=('91da716997c2440e153944f510a39dd86c9cf8ba8093a7f51a9a5d58ab0a1c230bd99ec57fe8ff0721279c8c4429ad576fe797c1fbe4cde2b9fb8f0405025320'
             'SKIP')
-validpgpkeys=('B76CD4671C0968BAA87DE61C5E50715BF2FFE1A7') # Pieter Lexis <pieter.lexis@powerdns.com>
-makedepends=('boost' 'git' 'pandoc' 'ragel')
-depends=('libedit' 'libsodium' 'libsystemd' 'lua' 'protobuf')
+validpgpkeys=('D6300CABCBF469BBE392E503A208ED4F8AF58446') # Remi Gacogne <remi.gacogne@powerdns.com>
+makedepends=('boost' 'pandoc' 'ragel' 'systemd')
+depends=('libedit' 'libsodium' 'libsystemd' 'lua' 'protobuf' 're2')
 provides=('dnsdist')
 conflicts=('dnsdist')
 
@@ -24,7 +22,8 @@ build() {
     --sysconfdir=/etc \
     --localstatedir=/var \
     --enable-libsodium \
-    --enable-dnscrypt
+    --enable-dnscrypt \
+    --enable-re2
   make
 }
 
