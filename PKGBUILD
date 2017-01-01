@@ -14,7 +14,7 @@ source=("${pkgname}-${pkgver}.tar.gz"::https://github.com/GoogleCloudPlatform/fl
 md5sums=('d141d90c95ad34234578eeb8a012825f')
 
 package_python-flask-talisman() {
-  depends=('python-flask')
+  depends=('python-flask' 'python-six')
   cd ${_pyname}-${pkgver}
 
   python setup.py install --root="${pkgdir}" -O1
@@ -22,7 +22,7 @@ package_python-flask-talisman() {
 }
 
 package_python2-flask-talisman() {
-  depends=('python2-flask')
+  depends=('python2-flask' 'python2-six')
   cd ${_pyname}-${pkgver}
 
   python2 setup.py install --root="${pkgdir}" -O1
