@@ -1,73 +1,72 @@
 # Maintainer: Jan Cholasta <grubber at grubber cz>
 # Contributor: Andrew Rabert <arabert@nullsum.net>
 
-# Build with fmodex:
-_fmodex=fmodex
 # Build without fmodex:
-#_fmodex=
-
-# Build with OpenAL:
-_openal=openal
-# Build without OpenAL:
-#_openal=
+_fmodex=
+# Build with fmodex:
+#_fmodex=fmodex
 
 _name=zdoom
 pkgname=${_name}
 pkgver=2.8.1
-pkgrel=3
+pkgrel=4
 pkgdesc='Advanced Doom source port'
 arch=('i686' 'x86_64')
 url='http://www.zdoom.org/'
 license=('BSD' 'custom:BUILD' 'custom:doom' 'custom:dumb' 'LGPL')
-depends=('fluidsynth'
-         ${_fmodex:+$(LC_ALL=C pacman -Q $_fmodex | sed -r 's/ /=/;s/-.*$//')}
+depends=(${_fmodex:+$(LC_ALL=C pacman -Q $_fmodex | sed -r 's/ /=/;s/-.*$//')}
          'gtk2'
          'libgme'
-         ${_openal:+'libsndfile'}
-         ${_openal:+'mpg123'}
-         ${_openal}
+         'libsndfile'
+         'mpg123'
          'sdl2')
 makedepends=('cmake'
              'desktop-file-utils'
+             'fluidsynth'
              'imagemagick'
+             'openal'
              'p7zip'
              'xdg-utils')
 makedepends_i686=('nasm')
 optdepends=('blasphemer-wad: Blasphemer (free Heretic) game data'
             'chexquest3-wad: Chex Quest 3 game data'
             'doom1-wad: Doom shareware game data'
-            'freedoom: FreeDoom game data'
+            'fluidsynth: FluidSynth MIDI device'
+            'freedm: FreeDM game data'
+            'freedoom1: Freedoom: Phase 1 game data'
+            'freedoom2: Freedoom: Phase 2 game data'
             'gxmessage: crash dialog (GNOME)'
             'hacx-wad: HacX game data'
             'harmony-wad: Harmony game data'
             'heretic1-wad: Heretic shareware game data'
             'hexen1-wad: Hexen demo game data'
-            'kdebase-kdialog: crash dialog (KDE)'
+            'kdialog: crash dialog (KDE)'
+            'openal: OpenAL sound backend'
             'strife0-wad: Strife shareware game data'
             'square1-wad: The Adventures of Square, Episode 1 game data'
+            'timidity++: Timidity MIDI device'
             'urbanbrawl-wad: Urban Brawl: Action Doom 2 game data'
             'xorg-xmessage: crash dialog (other)')
 source=("http://zdoom.org/files/${_name}/${pkgver%.${pkgver#*.*.}}/${_name}-${pkgver}-src.7z"
         'launcher.desktop'
         '0001-Improve-Mac-GCC-errors-fix-to-work-only-for-GCC.patch')
 noextract=("${source[0]##*/}")
-_srcsubdir='.'
 sha256sums=('782179d4667d2e56e26e21d7a0872523f8e4262ed176072fef00d0043376a310'
             'e8932a559baf30ecbfc062546ca014c6dfb70f76d1570549654209d39157e350'
             '3de616393fa2eea8540c59c983a4394b29a0a0220095297a3f47e4f721b8d9fb')
 
 prepare() {
-    7z x -y "${source[0]##*/}" >/dev/null
+    7z x -o${_name} -y "${source[0]##*/}" >/dev/null
 
-    cd "${_srcsubdir}"
+    cd $_name
 
-    patch -p 1 -i 0001-Improve-Mac-GCC-errors-fix-to-work-only-for-GCC.patch
+    patch -p 1 -i "$srcdir"/0001-Improve-Mac-GCC-errors-fix-to-work-only-for-GCC.patch
 }
 
 build() {
-    cd "${_srcsubdir}"
+    cd $_name
 
-    local _nofmod _noopenal _fmodincdir _fmodlib
+    local _nofmod _fmodincdir _fmodlib
 
     if [[ -n "${_fmodex}" ]]; then
         _nofmod=OFF
@@ -77,14 +76,7 @@ build() {
         _nofmod=ON
     fi
 
-    if [[ -n "${_openal}" ]]; then
-        _noopenal=OFF
-    else
-        _noopenal=ON
-    fi
-
     cmake -DNO_FMOD=${_nofmod} \
-          -DNO_OPENAL=${_noopenal} \
           -DGME_INCLUDE_DIR='/usr/include/gme' \
           -DFMOD_INCLUDE_DIR="${_fmodincdir}" \
           -DFMOD_LIBRARY="${_fmodlib}" \
@@ -111,7 +103,7 @@ EOF
 }
 
 package() {
-    cd "${_srcsubdir}"
+    cd $_name
 
     install -D "${_name}.sh" "${pkgdir}/usr/bin/${_name}"
 
@@ -121,10 +113,6 @@ package() {
     if [[ -n "${_fmodex}" ]]; then
         install 'liboutput_sdl.so' "${pkgdir}/usr/lib/${_name}/"
     fi
-    ln -s '/usr/share/doom/doom.wad' "${pkgdir}/usr/lib/${_name}/freedoomu.wad"
-    ln -s '/usr/share/doom/doom2.wad' "${pkgdir}/usr/lib/${_name}/freedoom.wad"
-    ln -s '/usr/share/doom/heretic.wad' "${pkgdir}/usr/lib/${_name}/blasphemer.wad"
-    ln -s '/usr/share/doom/hexen.wad' "${pkgdir}/usr/lib/${_name}/hexendemo.wad"
 
     mkdir -p "${pkgdir}/usr/share/${_name}"
 
