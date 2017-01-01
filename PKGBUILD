@@ -2,7 +2,7 @@
 # Contributor: Hugo Osvaldo Barrera <hugo at osvaldobarrera dot com dot ar>
 
 pkgname=hybrid-encoder
-pkgver=160827
+pkgver=170101
 pkgrel=1
 pkgdesc="A very complete gui for video encoding"
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ depends=('framecounter' 'freetype2' 'glib2' 'openssl' 'qt5-multimedia')
 optdepends=('aften: support for AC-3 audio encoding'
 'bdsup2subpp-git: support for subtitle converison for image based stream formats'
 'dcaenc: support for DTS audio encoding'
-'delaycut-git: AC-3, DTS, MPA and WAV audio delay and cutting support' 
+'delaycut: AC-3, DTS, MPA and WAV audio delay and cutting support' 
 'divx265: support for H.265 video encoding'  
 'fdkaac: support for AAC audio encoding'
 'flac: support for lossless FLAC audio encoding'
@@ -37,7 +37,7 @@ if test "$CARCH" == x86_64; then
   source=(http://www.selur.de/sites/default/files/hybrid_downloads/Hybrid_${pkgver}_64bit_binary_qt521.zip
           hybrid.desktop
           Hybrid.png)
-  md5sums=('a7ed8435abcffeb790923f48c9b95f57'
+  md5sums=('7ba93fb7487b7e316faa66be5683d38d'
            'dd87c6eb6df85049de38c61dfe400347'
            '798dd936a3bc9bcd3b131d5dd6db96e6')
 fi
@@ -46,7 +46,7 @@ if test "$CARCH" == i686; then
   source=(http://www.selur.de/sites/default/files/hybrid_downloads/Hybrid_${pkgver}_32bit_binary_qt521.zip
           hybrid.desktop
           Hybrid.png)
-  md5sums=('570674e45d762ec1eddad0eafb75e312'
+  md5sums=('08bf829b555e0327c635b01e4034ee7c'
            'dd87c6eb6df85049de38c61dfe400347'
            '4e6fd38ed527ae69653081ed94ba099b')
 fi
