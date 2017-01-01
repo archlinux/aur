@@ -10,7 +10,7 @@ license=('GPL3')
 makedepends=('extra-cmake-modules')
 conflicts=('liri-themes-git')
 groups=('liri')
-source=("https://github.com/lirios/${pkgname}/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.xz")
+source=("https://github.com/lirios/${pkgname}/releases/download/v${pkgver}/${pkgname}os-${pkgver}.tar.xz")
 sha256sums=('59ebc01231ebf955fd847db925fca1c557273da126087af2dfe09013321a54b5')
 
 prepare() {
