@@ -20,7 +20,7 @@ depends=('desktop-file-utils'
          'xdg-utils')
 optdepends=('hunspell: spell check' )
 options=('!docs' '!emptydirs')
-source=("https://dl.bintray.com/aluxian/aur/dist/$pkgname-$pkgver-linux-amd64.deb")
+source=("$url/releases/download/v$pkgver/$pkgname-$pkgver-linux-amd64.deb")
 md5sums=('d2e5cb515503cb9e4ae2f574992772c0')
 package() {
   msg2 "Extracting the data.tar.gz..."
