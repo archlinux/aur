@@ -18,7 +18,6 @@ package_python-flask-talisman() {
   cd ${_pyname}-${pkgver}
 
   python setup.py install --root="${pkgdir}" -O1
-  install -Dm 644 LICENSE -t "${pkgdir}/usr/share/license/${pkgname}"
   install -Dm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
 
@@ -27,7 +26,6 @@ package_python2-flask-talisman() {
   cd ${_pyname}-${pkgver}
 
   python2 setup.py install --root="${pkgdir}" -O1
-  install -Dm 644 LICENSE -t "${pkgdir}/usr/share/license/${pkgname}"
   install -Dm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
 
