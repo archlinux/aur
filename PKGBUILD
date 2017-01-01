@@ -1,7 +1,7 @@
 # Maintainer: SanskritFritz (gmail)
 
 pkgname=dupfiles
-pkgver=5.8
+pkgver=5.9
 pkgrel=1
 pkgdesc="Find and hardlink duplicate files."
 arch=('any')
@@ -22,4 +22,4 @@ package() {
 	python2 setup.py install --root="$pkgdir" --optimize=1 --skip-build
 }
 
-md5sums=('63156d0aa8720b7368b7dacee9319ee5')
+md5sums=('cd6b058475a60b14bc1ab5da0766b1f7')
