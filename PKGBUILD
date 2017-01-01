@@ -8,15 +8,16 @@ _fmodex=
 
 _name=gzdoom
 pkgname=${_name}
-pkgver=2.2.0
-pkgrel=2
+pkgver=2.3.0
+pkgrel=1
 pkgdesc='Advanced Doom source port with OpenGL support'
 arch=('i686' 'x86_64')
 url='http://www.zdoom.org/'
 license=('BSD' 'custom:BUILD' 'custom:doom' 'custom:dumb' 'LGPL')
 depends=(${_fmodex:+$(LC_ALL=C pacman -Q $_fmodex | sed -r 's/ /=/;s/-.*$//')}
-         'gtk2'
+         'hicolor-icon-theme'
          'libgl'
+         'libjpeg'
          'libgme'
          'libsndfile'
          'mpg123'
@@ -25,6 +26,7 @@ makedepends=('cmake'
              'desktop-file-utils'
              'fluidsynth'
              'git'
+             'gtk3'
              'imagemagick'
              'openal'
              'xdg-utils')
@@ -35,6 +37,7 @@ optdepends=('blasphemer-wad: Blasphemer (free Heretic) game data'
             'freedm: FreeDM game data'
             'freedoom1: Freedoom: Phase 1 game data'
             'freedoom2: Freedoom: Phase 2 game data'
+            'gtk3: IWAD selection dialog'
             'gxmessage: crash dialog (GNOME)'
             'hacx-wad: HacX game data'
             'harmony-wad: Harmony game data'
@@ -73,6 +76,9 @@ build() {
           -DCMAKE_C_FLAGS="$CFLAGS -DSHARE_DIR=\\\"/usr/share/${_name}\\\"" \
           -DCMAKE_CXX_FLAGS="$CXXFLAGS -DSHARE_DIR=\\\"/usr/share/${_name}\\\"" \
           -DCMAKE_EXE_LINKER_FLAGS="$LDFLAGS -Wl,-z,noexecstack" \
+          -DCMAKE_INSTALL_PREFIX=/usr \
+          -DINSTALL_PATH=lib/$_name \
+          -DINSTALL_PK3_PATH=share/$_name \
           .
     make
 
@@ -80,8 +86,6 @@ build() {
 #!/bin/sh
 exec /usr/lib/${_name}/${_name} "\$@"
 EOF
-
-    sed -n '/\*\*-/,/\*\*-/p' 'src/version.h' >'bsd.txt'
 
     cp "${srcdir}/launcher.desktop" "${_name}.desktop"
 
@@ -96,22 +100,15 @@ package() {
 
     install -D "${_name}.sh" "${pkgdir}/usr/bin/${_name}"
 
-    mkdir -p "${pkgdir}/usr/lib/${_name}"
-    install "${_name}" "${pkgdir}/usr/lib/${_name}/"
-    install -m644 "${_name}.pk3" "${pkgdir}/usr/lib/${_name}/"
+    make install DESTDIR="$pkgdir"
+
+    ln -s /usr/share/$_name/${_name}.pk3 "$pkgdir"/usr/lib/$_name/${_name}.pk3
     if [[ -n "${_fmodex}" ]]; then
         install 'liboutput_sdl.so' "${pkgdir}/usr/lib/${_name}/"
     fi
 
-    mkdir -p "${pkgdir}/usr/share/${_name}"
-    install -m644 'brightmaps.pk3' "${pkgdir}/usr/share/${_name}/"
-    install -m644 'lights.pk3' "${pkgdir}/usr/share/${_name}/"
-
-    mkdir -p "${pkgdir}/usr/share/licenses/${pkgname}"
-    install -m644 'bsd.txt' "${pkgdir}/usr/share/licenses/${pkgname}/bsd.txt"
-    install -m644 'docs/BUILDLIC.TXT' "${pkgdir}/usr/share/licenses/${pkgname}/buildlic.txt"
-    install -m644 'docs/doomlic.txt' "${pkgdir}/usr/share/licenses/${pkgname}/doomlic.txt"
-    install -m644 'dumb/licence.txt' "${pkgdir}/usr/share/licenses/${pkgname}/dumb.txt"
+    mkdir -p "$pkgdir"/usr/share/licenses
+    ln -s /usr/share/doc/$_name/licenses "$pkgdir"/usr/share/licenses/$pkgname
 
     desktop-file-install --dir="${pkgdir}/usr/share/applications" "${_name}.desktop"
 
