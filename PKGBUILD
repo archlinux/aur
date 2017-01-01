@@ -34,7 +34,7 @@ build() {
 }
 
 package() {
-  cd "$srcdir"/$pkgname-$pkgver
+  cd "$srcdir"/$_pkgname-$pkgver
   make DESTDIR="$pkgdir" install
 
   # remove conflict with ctags package
