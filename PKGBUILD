@@ -18,7 +18,6 @@ sha256sums=('8ce633278c438c9228c9201c8e2522cd32cc92a6f868a8b8e580e917c5fb2144'
 
 build() {
   cd "${pkgname}-${pkgver}"
-  #patch -Np1 -i "${srcdir}/type_cast_fix.patch"
   ./configure --prefix=/usr --enable-shared
   make
 }
