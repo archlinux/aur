@@ -1,0 +1,9 @@
+post_install() {
+	echo "Before using autoenv, you need to add it to your ~/.config/fish/config.fish"
+	echo
+	echo "echo 'source /usr/share/fish-autoenv/activate.fish' >> ~/.config/fish/config.fish"
+	echo
+	echo "You need to restart your shell afterwards."
+	echo
+	echo "Note: autoenv overrides cd. If you already do this, invoke autoenv_init in your custom cd after sourcing activate.fish."
+}
