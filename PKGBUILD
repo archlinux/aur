@@ -24,6 +24,7 @@ sha512sums=(17678c208d419fda214bfa584a8dd4ab30724b6b3b80f545818de85da432b14431e1
 
 build() {
   cd "$pkgname"
+  sudo npm install electron-packager -g
   ./build.sh
 }
 
