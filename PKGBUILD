@@ -17,7 +17,7 @@ provides=('liri-shell')
 groups=('liri-git')
 
 _gitroot="git://github.com/lirios/shell.git"
-_gitbranch=develop
+_gitbranch=release/0.9.0
 _gitname=shell
 source=(${_gitname}::${_gitroot}#branch=${_gitbranch})
 md5sums=('SKIP')
