@@ -5,20 +5,20 @@
 _pkgname=utox
 _branch=develop
 pkgname=$_pkgname-git
-pkgver=0.11.0.r0.gf3dcef6
+pkgver=0.11.1.r31.gac138294
 pkgrel=1
 pkgdesc='Lightweight Tox client'
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
 url='https://github.com/uTox/uTox'
 license=('GPL3')
-depends=('c-toxcore'
-         'fontconfig'
+depends=('fontconfig'
          'libfilteraudio-git'
          'hicolor-icon-theme'
          'libdbus'
          'libxext'
          'libxrender'
          'openal'
+         'toxcore'
          'v4l-utils')
 makedepends=('git')
 optdepends=('gtk3: GTK file picker')
