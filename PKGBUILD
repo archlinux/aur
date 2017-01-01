@@ -3,7 +3,7 @@
 
 pkgname=ghostwriter
 pkgver=1.4.2
-pkgrel=2
+pkgrel=3
 pkgdesc="A cross-platform, aesthetic, distraction-free Markdown editor"
 arch=('i686' 'x86_64')
 url="https://github.com/wereturtle/ghostwriter"
