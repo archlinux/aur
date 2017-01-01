@@ -10,7 +10,7 @@
 
 pkgbase=kodi-pre-release
 pkgname=('kodi-pre-release' 'kodi-eventclients-pre-release')
-pkgver=17.0rc1
+pkgver=17.0rc2
 _codename=Krypton
 pkgrel=1
 arch=('i686' 'x86_64')
@@ -29,7 +29,7 @@ makedepends=(
 source=(
   "kodi-$pkgver-$_codename.tar.gz::https://github.com/xbmc/xbmc/archive/$pkgver-$_codename.tar.gz"
 )
-sha256sums=('3426b4a1f84a69508b4ad6763c3427837e8a52b6f771322138cf1758e5d0c4a6')
+sha256sums=('6bd03e0e26251972c2237d5ca25ab3c292f9a88e4ee02b798d9f89360e8ac522')
 
 prepare() {
   cd "$srcdir/xbmc-$pkgver-$_codename"
