@@ -4,6 +4,8 @@ post_install() {
   mkdir -p /var/cache/cpcache/mnesia
   mkdir -p /var/cache/cpcache/x86/{core,extra,multilib,testing,community}/os/{i686,x86_64}
   mkdir -p /var/cache/cpcache/arm/{aarch64,arm,armv6h,armv7h}/{alarm,aur,community,extra,core}
+  mkdir -p /var/cache/cpcache/mnesia
+  su -s /bin/bash cpcache -c /usr/share/cpcache/create_db.sh
   chown -R cpcache:cpcache "/var/cache/cpcache"
 }
 

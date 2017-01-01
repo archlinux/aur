@@ -1,6 +1,6 @@
 # Maintainer: nroi <nroi@mailbox.org>
 pkgname=cpcache-git
-pkgver=r95.974c568
+pkgver=r96.770827f
 pkgrel=1
 pkgdesc="central pacman cache"
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
@@ -18,9 +18,9 @@ source=('git+https://github.com/nroi/cpcache.git'
 )
 sha256sums=('SKIP'
             '0098e749b19617c0f7d619d47a3bc3015bab62e9ad0916087502daff672fb309'
-            'effdcc6de465d342f4aba039c853d48e501cf0e55ed4f896cf638ba3499584f6'
+            '5091070b67c4ebd784d5bca25e6b16340d3265324012ddbf7f367502b0307ac3'
             '0523a85ce955f9a221340a2bcd8b3f2543dc817469e36623db06630bea925918'
-            '42c01be8766d2b48f142a7b848d5708035b80143af8f0bb02e69a3bc7fff3825'
+            '3bbb19f2f0702cc90c4eaa9cf351656fc74969f955a6f31d574495aa0d8b310e'
 )
 
 pkgver() {
@@ -29,8 +29,6 @@ pkgver() {
 }
 
 package() {
-  mkdir -p "${pkgdir}/var/cache/cpcache/mnesia"
-  ./create_db.sh "${pkgdir}"
   cd "${srcdir}/${pkgname%-git}"
   /usr/bin/mix local.hex --force
   /usr/bin/mix local.rebar --force
@@ -44,4 +42,5 @@ package() {
   install -Dm644 "${srcdir}/cpcache.service" "${pkgdir}/usr/lib/systemd/system/cpcache.service"
   install -Dm644 "${srcdir}/sysuser.conf" "${pkgdir}/usr/lib/sysusers.d/cpcache.conf"
   install -Dm644 "${srcdir}/cpcache/conf/cpcache.yaml" "${pkgdir}/etc/cpcache.yaml"
+  install -Dm755 "${srcdir}/create_db.sh" "${pkgdir}/usr/share/${pkgname%-git}/create_db.sh"
 }
