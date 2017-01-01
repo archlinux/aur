@@ -18,7 +18,7 @@ source=('git+https://github.com/nroi/cpcache.git'
 )
 sha256sums=('SKIP'
             '0098e749b19617c0f7d619d47a3bc3015bab62e9ad0916087502daff672fb309'
-            '5091070b67c4ebd784d5bca25e6b16340d3265324012ddbf7f367502b0307ac3'
+            'a6ce949fba102e2f0904622d1f0417be15eee01e76516f80af1aa36a6c8ea312'
             '0523a85ce955f9a221340a2bcd8b3f2543dc817469e36623db06630bea925918'
             '3bbb19f2f0702cc90c4eaa9cf351656fc74969f955a6f31d574495aa0d8b310e'
 )
