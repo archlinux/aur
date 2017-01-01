@@ -2,7 +2,7 @@
 
 pkgname=ntpsec
 pkgver=0.9.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Security-hardened Network Time Protocol implementation"
 arch=('i686' 'x86_64')
 url="https://www.ntpsec.org/"
@@ -15,8 +15,10 @@ optdepends=('gnuplot: for ntpviz'
             'ttf-liberation: Improves font quality in ntpviz renderings')
 provides=('ntp')
 conflicts=('ntp')
-source=("ftp://ftp.ntpsec.org/pub/releases/$pkgname-$pkgver.tar.gz")
-sha256sums=('9d15ac59b67911eb1b42fe5916e8d00ded8b71ba34f1ab4fc0f251fc0d90d5e5')
+source=("ftp://ftp.ntpsec.org/pub/releases/$pkgname-$pkgver.tar.gz"
+        "ftp://ftp.ntpsec.org/pub/releases/$pkgname-$pkgver.tar.gz.asc")
+sha256sums=('9d15ac59b67911eb1b42fe5916e8d00ded8b71ba34f1ab4fc0f251fc0d90d5e5'
+            'SKIP')
 validpgpkeys=('DA3FDF774CC70FA64729EC4505D9B371477C7528')
 
 prepare() {
