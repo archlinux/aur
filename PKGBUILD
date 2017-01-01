@@ -1,11 +1,11 @@
 # Maintainer: Pier Luigi Fiorini <pierluigi.fiorini@gmail.com>
 
 pkgname=liri-browser-git
-pkgver=20161012.664b549
+pkgver=20161207.1af8536
 pkgrel=1
 pkgdesc="Liri Browser"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
-url='https://liri.io'
+url='http://liri.io'
 license=('GPL3')
 depends=('fluid-git' 'slime-engine-git')
 makedepends=('git')
@@ -15,7 +15,7 @@ provides=('liri-browser')
 groups=('liri-git')
 
 _gitroot="git://github.com/lirios/browser.git"
-_gitbranch=master
+_gitbranch=develop
 _gitname=browser
 source=(${_gitname}::${_gitroot}#branch=${_gitbranch})
 md5sums=('SKIP')
