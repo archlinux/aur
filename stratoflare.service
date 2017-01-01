@@ -1,0 +1,12 @@
+[Unit]
+Description=Stratosflare Cloudflare API proxy
+After=network.target
+
+[Service]
+User=stratoflare
+WorkingDirectory=/etc
+ExecStart=/usr/bin/stratoflare
+
+[Install]
+WantedBy=multi-user.target
+

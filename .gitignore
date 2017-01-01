@@ -1,0 +1,6 @@
+# ignore build files                                                                                                                                                                                                                                                                                                                                                                           
+stratoflare.tar.gz
+*.pkg.tar.xz
+*.sig
+src/
+pkg/

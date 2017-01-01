@@ -1,0 +1,8 @@
+post_install() {
+	systemd-sysusers
+	chown stratoflare:stratoflare /etc/stratoflare.cfg.example
+}
+
+post_remove() {
+	getent passwd stratoflare >/dev/null && userdel stratoflare
+}
