@@ -1,7 +1,7 @@
 diff -urN a/include/freetype/freetype.h b/include/freetype/freetype.h
---- a/include/freetype/freetype.h	2013-06-19 00:21:31.000000000 -0500
-+++ b/include/freetype/freetype.h	2013-08-25 16:23:40.602691844 -0500
-@@ -2568,7 +2568,7 @@
+--- a/include/freetype/freetype.h	2016-12-30 15:06:06.000000000 -0500
++++ b/include/freetype/freetype.h	2017-01-01 14:50:15.522774054 -0500
+@@ -2854,7 +2854,7 @@
  #define FT_LOAD_RENDER                       ( 1L << 2 )
  #define FT_LOAD_NO_BITMAP                    ( 1L << 3 )
  #define FT_LOAD_VERTICAL_LAYOUT              ( 1L << 4 )
@@ -10,7 +10,7 @@ diff -urN a/include/freetype/freetype.h b/include/freetype/freetype.h
  #define FT_LOAD_CROP_BITMAP                  ( 1L << 6 )
  #define FT_LOAD_PEDANTIC                     ( 1L << 7 )
  #define FT_LOAD_IGNORE_GLOBAL_ADVANCE_WIDTH  ( 1L << 9 )
-@@ -2576,7 +2576,7 @@
+@@ -2862,7 +2862,7 @@
  #define FT_LOAD_IGNORE_TRANSFORM             ( 1L << 11 )
  #define FT_LOAD_MONOCHROME                   ( 1L << 12 )
  #define FT_LOAD_LINEAR_DESIGN                ( 1L << 13 )
@@ -18,4 +18,4 @@ diff -urN a/include/freetype/freetype.h b/include/freetype/freetype.h
 +#define FT_LOAD_FORCE_AUTOHINT                  ( 1L << 15 )
    /* Bits 16..19 are used by `FT_LOAD_TARGET_' */
  #define FT_LOAD_COLOR                        ( 1L << 20 )
- 
+ #define FT_LOAD_COMPUTE_METRICS              ( 1L << 21 )
