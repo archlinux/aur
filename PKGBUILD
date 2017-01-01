@@ -4,7 +4,7 @@
 
 pkgname=slic3r
 pkgver=1.2.9
-pkgrel=7
+pkgrel=8
 pkgdesc="Slic3r is an STL-to-GCODE translator for RepRap 3D printers, aiming to be a modern and fast alternative to Skeinforge."
 arch=('i686' 'x86_64') 
 url="http://slic3r.org/"
