@@ -2,7 +2,7 @@
 
 pkgname=streamlink-twitch-gui-git
 _pkgname=streamlink-twitch-gui
-pkgver=1422.ebacba2
+pkgver=1466.94cf58a
 pkgrel=1
 pkgdesc="A multi platform Twitch.tv browser for Streamlink"
 arch=("i686" "x86_64")
@@ -17,8 +17,11 @@ depends=(
 	"gtk2"
 	"libxtst"
 	"nss"
-	"streamlink"
 	"xdg-utils"
+)
+optdepends=(
+	"streamlink: streaming provider"
+	"livestreamer: streaming provider (deprecated)"
 )
 makedepends=(
 	"git"
