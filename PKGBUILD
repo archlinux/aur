@@ -1,14 +1,9 @@
 # Maintainer: Jan Cholasta <grubber at grubber cz>
 
-# Build with fmodex:
-_fmodex=fmodex
 # Build without fmodex:
-#_fmodex=
-
-# Build with OpenAL:
-_openal=openal
-# Build without OpenAL:
-#_openal=
+_fmodex=
+# Build with fmodex:
+#_fmodex=fmodex
 
 _name=zdoom
 pkgname=${_name}-git
@@ -18,51 +13,55 @@ pkgdesc='Advanced Doom source port (git version)'
 arch=('i686' 'x86_64')
 url='http://www.zdoom.org/'
 license=('BSD' 'custom:BUILD' 'custom:doom' 'custom:dumb' 'LGPL')
-depends=('fluidsynth'
-         ${_fmodex:+$(LC_ALL=C pacman -Q $_fmodex | sed -r 's/ /=/;s/-.*$//')}
+depends=(${_fmodex:+$(LC_ALL=C pacman -Q $_fmodex | sed -r 's/ /=/;s/-.*$//')}
          'gtk2'
          'libgme'
-         ${_openal:+'libsndfile'}
-         ${_openal:+'mpg123'}
-         ${_openal}
+         'libsndfile'
+         'mpg123'
          'sdl2')
 makedepends=('cmake'
              'desktop-file-utils'
+             'fluidsynth'
              'git'
              'imagemagick'
+             'openal'
              'xdg-utils')
 optdepends=('blasphemer-wad: Blasphemer (free Heretic) game data'
             'chexquest3-wad: Chex Quest 3 game data'
             'doom1-wad: Doom shareware game data'
-            'freedoom: FreeDoom game data'
+            'fluidsynth: FluidSynth MIDI device'
+            'freedm: FreeDM game data'
+            'freedoom1: Freedoom: Phase 1 game data'
+            'freedoom2: Freedoom: Phase 2 game data'
             'gxmessage: crash dialog (GNOME)'
             'hacx-wad: HacX game data'
             'harmony-wad: Harmony game data'
             'heretic1-wad: Heretic shareware game data'
             'hexen1-wad: Hexen demo game data'
-            'kdebase-kdialog: crash dialog (KDE)'
+            'kdialog: crash dialog (KDE)'
+            'openal: OpenAL sound backend'
             'strife0-wad: Strife shareware game data'
             'square1-wad: The Adventures of Square, Episode 1 game data'
+            'timidity++: Timidity MIDI device'
             'urbanbrawl-wad: Urban Brawl: Action Doom 2 game data'
             'xorg-xmessage: crash dialog (other)')
 provides=("${_name}")
 conflicts=("${_name}")
 source=("${_name}::git://github.com/rheit/${_name}.git"
         'launcher.desktop')
-_srcsubdir="${_name}"
 sha256sums=('SKIP'
             'e8932a559baf30ecbfc062546ca014c6dfb70f76d1570549654209d39157e350')
 
 pkgver() {
-    cd "${_srcsubdir}"
+    cd $_name
 
     git describe --long --tags | sed -r 's/([^-]*-g)/\1/;s/-/./g'
 }
 
 build() {
-    cd "${_srcsubdir}"
+    cd $_name
 
-    local _nofmod _noopenal _fmodincdir _fmodlib
+    local _nofmod _fmodincdir _fmodlib
 
     if [[ -n "${_fmodex}" ]]; then
         _nofmod=OFF
@@ -72,14 +71,7 @@ build() {
         _nofmod=ON
     fi
 
-    if [[ -n "${_openal}" ]]; then
-        _noopenal=OFF
-    else
-        _noopenal=ON
-    fi
-
     cmake -DNO_FMOD=${_nofmod} \
-          -DNO_OPENAL=${_noopenal} \
           -DGME_INCLUDE_DIR='/usr/include/gme' \
           -DFMOD_INCLUDE_DIR="${_fmodincdir}" \
           -DFMOD_LIBRARY="${_fmodlib}" \
@@ -106,7 +98,7 @@ EOF
 }
 
 package() {
-    cd "${_srcsubdir}"
+    cd $_name
 
     install -D "${_name}.sh" "${pkgdir}/usr/bin/${_name}"
 
@@ -116,10 +108,6 @@ package() {
     if [[ -n "${_fmodex}" ]]; then
         install 'liboutput_sdl.so' "${pkgdir}/usr/lib/${_name}/"
     fi
-    ln -s '/usr/share/doom/doom.wad' "${pkgdir}/usr/lib/${_name}/freedoomu.wad"
-    ln -s '/usr/share/doom/doom2.wad' "${pkgdir}/usr/lib/${_name}/freedoom.wad"
-    ln -s '/usr/share/doom/heretic.wad' "${pkgdir}/usr/lib/${_name}/blasphemer.wad"
-    ln -s '/usr/share/doom/hexen.wad' "${pkgdir}/usr/lib/${_name}/hexendemo.wad"
 
     mkdir -p "${pkgdir}/usr/share/${_name}"
 
