@@ -15,7 +15,7 @@ source=('git+https://github.com/vheon/JediHTTP'
         'allow-missing-vendor.patch')
 sha256sums=('SKIP'
             '6454c24288fad1a79ed0b3c7fa70902b87084384037ce5edab5be4eb4e4138d1'
-            '865e91d405de332c128c53d901702fd621000868f78482602874d254abb755a3')
+            '8702390e2643fe7e64d0b4c9477ffec1d83d1865bd21ab4b61f9ed8aa130c013')
 conflicts=('python-jedihttp-git')
 
 pkgver() {
