@@ -1,0 +1,17 @@
+pkgbase = libkibi-bzr
+	pkgdesc = Configurable library for formatting sizes for display (development branch)
+	pkgver = 0.1.1+r42
+	pkgrel = 1
+	url = https://launchpad.net/libkibi
+	arch = i686
+	arch = x86_64
+	license = custom:ISC
+	makedepends = bzr
+	depends = glibc
+	provides = libkibi
+	conflicts = libkibi
+	source = bzr+lp:libkibi
+	sha512sums = SKIP
+
+pkgname = libkibi-bzr
+
