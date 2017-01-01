@@ -1,6 +1,6 @@
 pkgbase = calibre-git
 	pkgdesc = Ebook management application, from git
-	pkgver = 2.73.0.r34.gcc0d25c
+	pkgver = 2.76.0.r8.g9d37292fe5
 	pkgrel = 1
 	url = https://calibre-ebook.com/
 	arch = i686
@@ -39,8 +39,12 @@ pkgbase = calibre-git
 	conflicts = calibre
 	source = git://github.com/kovidgoyal/calibre.git
 	source = git://github.com/kovidgoyal/calibre-translations.git
-	md5sums = SKIP
-	md5sums = SKIP
+	source = MathJax-c493143c02f5809b1112af6c5a2c8eab31050118.tar.gz::https://github.com/kovidgoyal/MathJax/archive/c493143c02f5809b1112af6c5a2c8eab31050118.tar.gz
+	source = common-user-agents.txt
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = 27c66730302a589063faa0b47d55e97011d858c12428bdf9e308948be87f29c6
+	sha256sums = 1ecd7d651229b93077fa10832ae2a081f2310b20bf28087894b26144c957e96a
 
 pkgname = calibre-git
 

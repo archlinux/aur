@@ -9,8 +9,9 @@
 # All my PKGBUILDs are managed at https://github.com/eli-schwartz/pkgbuilds
 
 pkgname=calibre-git
-pkgver=2.73.0.r34.gcc0d25c
+pkgver=2.76.0.r8.g9d37292fe5
 pkgrel=1
+_mathjax_commit=c493143c02f5809b1112af6c5a2c8eab31050118
 pkgdesc="Ebook management application, from git"
 arch=('i686' 'x86_64')
 url="https://calibre-ebook.com/"
@@ -27,9 +28,13 @@ optdepends=('ipython2: to use calibre-debug'
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=("git://github.com/kovidgoyal/${pkgname%-git}.git"
-        "git://github.com/kovidgoyal/${pkgname%-git}-translations.git")
-md5sums=('SKIP'
-         'SKIP')
+        "git://github.com/kovidgoyal/${pkgname%-git}-translations.git"
+        "MathJax-${_mathjax_commit}.tar.gz::https://github.com/kovidgoyal/MathJax/archive/${_mathjax_commit}.tar.gz"
+        "common-user-agents.txt")
+sha256sums=('SKIP'
+            'SKIP'
+            '27c66730302a589063faa0b47d55e97011d858c12428bdf9e308948be87f29c6'
+            '1ecd7d651229b93077fa10832ae2a081f2310b20bf28087894b26144c957e96a')
 
 pkgver() {
   cd "${srcdir}/${pkgname%-git}"
@@ -55,8 +60,9 @@ prepare(){
 build() {
   cd "${srcdir}/${pkgname%-git}"
 
-  # Don't use the bootstrapper, since it tries to checkout/pull
-  # the translations repo. Instead call each subcommand.
+  # Don't use the bootstrapper, since it tries to checkout/pull the
+  # translations repo and generally touch the internet. Instead call each
+  # *needed* subcommmand.
   # LANG='en_US.UTF-8' python2 setup.py bootstrap
 
   LANG='en_US.UTF-8' python2 setup.py build
@@ -65,6 +71,11 @@ build() {
   LANG='en_US.UTF-8' python2 setup.py translations
   LANG='en_US.UTF-8' python2 setup.py gui
   LANG='en_US.UTF-8' python2 setup.py resources
+  # This tries to download a new copy, so instead provide a recently-generated
+  # one to allow offline builds.
+  # LANG='en_US.UTF-8' python2 setup.py recent_uas
+  cp ../common-user-agents.txt resources/
+  LANG='en_US.UTF-8' python2 setup.py mathjax --path-to-mathjax="${srcdir}/MathJax-${_mathjax_commit}"
 }
 
 package() {
