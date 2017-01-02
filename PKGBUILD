@@ -4,7 +4,7 @@ _gtk3_min='3.18'
 _gtk3_max='4.0'
 _theme_name=Adapta
 _gtk2_min='2.24.30'
-pkgver="3.89.2.34"
+pkgver="3.89.2.47"
 pkgrel=1
 pkgdesc="An adaptive Gtk+ theme based on Material Design Guidelines."
 arch=(any)
@@ -20,7 +20,7 @@ optdepends=('ttf-roboto: The recommended font'
             'noto-fonts: The recommended font for improved language support'
             "gnome-shell>=${_gtk3_min}.3: The GNOME Shell"
             "gnome-flashback>=${_gtk3_min}.2: The GNOME flashback shell"
-            'budgie-desktop>=10.2.5: The Budgie desktop'
+            'budgie-desktop>=10.2.7: The Budgie desktop'
             'cinnamon>=2.8.6: The Cinnamon desktop'
             'xfdesktop>=4.12.2: The Xfce desktop'
             'marco-gtk3>=1.14.0: The mate desktop in its GTK3 version'
@@ -37,7 +37,7 @@ makedepends=('glib2>=2.48.0'
              'parallel')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
 #        "${pkgname}-${pkgver}.tar.gz.asc::${url}/releases/download/${pkgver}/${pkgname}-${pkgver}.tar.gz.asc")
-sha256sums=('1875553db33c36ba9b88d2646683827975351c0259d6e319a85585b38d11237e')
+sha256sums=('5e468ba04fa31fac24ced66df377fabbd8acfb3fc88aa905c52410db65e87f6e')
 
 build() {
     cd "${pkgname}-${pkgver}"
