@@ -1,9 +1,9 @@
 [Desktop Entry]
-Name=Black Screen
-Comment=A terminal emulator for the 21st century
-GenericName=Terminal
-Exec=electron --app=/usr/lib/black-screen
-Icon=/usr/lib/black-screen/build/icon.png
 Type=Application
+Name=Black Screen
+GenericName=Terminal
+Comment=A terminal emulator for the 21st century
+Icon=black-screen
+Exec=black-screen
+Categories=GTK;System;TerminalEmulator;
 StartupNotify=true
-Categories=GNOME;GTK;Utility;System;TerminalEmulator;
