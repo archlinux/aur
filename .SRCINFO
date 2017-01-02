@@ -1,13 +1,12 @@
 pkgbase = pasystray-gtk2-standalone
 	pkgdesc = PulseAudio system tray (a replacement for padevchooser gtk2 standalone version)
-	pkgver = 0.6.0
-	pkgrel = 1
+	pkgver = 0.6.0.r13.gccb5b6e
+	pkgrel = 0
 	url = https://github.com/christophgysin/pasystray
 	arch = i686
 	arch = x86_64
 	groups = multimedia
 	license = LGPL
-	makedepends = git
 	depends = gtk2
 	depends = libpulse
 	depends = libnotify
@@ -22,8 +21,8 @@ pkgbase = pasystray-gtk2-standalone
 	optdepends = paprefs: Launch PulseAudio preferences from tray icon
 	provides = pasystray
 	conflicts = pasystray
-	source = pasystray-0.6.0.tar.gz::https://github.com/christophgysin/pasystray/archive/0.6.0.tar.gz
-	md5sums = c7467ac2b75290bd086fc60f8243ad77
+	source = git+https://github.com/christophgysin/pasystray.git
+	sha256sums = SKIP
 
 pkgname = pasystray-gtk2-standalone
 
