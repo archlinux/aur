@@ -7,7 +7,7 @@
 
 _pkgname=vice
 pkgname=$_pkgname-gnomeui-devel
-pkgver=2.4.33
+pkgver=3.0
 pkgrel=1
 pkgdesc='Versatile Commodore Emulator (development release with the Gnome UI)'
 arch=('i686' 'x86_64')
@@ -20,8 +20,12 @@ install=$pkgname.install
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 
+# Release type (toggle to development-release again once they move ahead of the release)
+_release='releases'
+# _release='development-releases'
+
 source=(
-  "http://downloads.sourceforge.net/project/vice-emu/development-releases/$_pkgname-$pkgver.tar.gz"
+  "http://downloads.sourceforge.net/project/vice-emu/$_release/$_pkgname-$pkgver.tar.gz"
   "$_pkgname.png"
   "$_pkgname.desktop"
   'x11video.patch'
@@ -31,7 +35,7 @@ source=(
 )
 
 sha512sums=(
-  '6c8ef1e68b2de995df06a478e752d3b89ecafec84d128e523c9b995961527b58f6a9943d663d04a13ccd1b51eacd480867775f7f3928c3c1e3b92e603c721008'
+  '60d33e644d9977df81ffbdceff8c4feec750de9597cfa9f37c4aa236eabbf507373e6f936e2cc3b06f3e7298e0390d1e098242bfacd6435e628a13991a6a452b'
   '1433ed9e88f5eab34e53f89201df62c0c3a6aa4b61e6855823bb1ff833886a3058bdfeb9ea79c0f8658c2ec744314638524db6e0194783b4bf04d86824f19cdf'
   'dc96b8658fac1a6f605b8f0052c11a5abb653da4b9deb3401d8b8177b14a664c0b3a5ed9e7c5c3013b0bc18b831045244f2f9187de9ff8b25b90f0b1cfa0cd8a'
   '076e684ecac402ccb014faebe5eaab5bb46e9e9caca9ba23374ddf94a1c83172b0874343e449c91186763114d0f388dac0060afd831bdc9eceffc6cf3529c58d'
