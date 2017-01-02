@@ -1,7 +1,7 @@
 # Maintainer: Patrik Plihal <patrik.plihal at gmail dot com>
 
 pkgname=ckan
-pkgver=1.22.0
+pkgver=1.22.1
 pkgrel=1
 pkgdesc='All you need to find, install, and manage mods for Kerbal Space Program (ksp)'
 arch=('any')
@@ -11,7 +11,7 @@ depends=('curl' 'mono')
 conflicts=('ckan-git')
 
 source=("${pkgname}-v${pkgver}.exe::https://github.com/KSP-CKAN/CKAN/releases/download/v${pkgver}/ckan.exe")
-sha256sums=('d3c8d981c8f6389eaf546ecac7429b89c5f68cebe9f5d377cc0828ce8b43de2f')
+sha256sums=('171eda7109902aaca387fac09b5d2815bd3e23ed76cc30223c6ec7095a600228')
 
 package() {
   mkdir -p "$pkgdir/usr/bin/"
