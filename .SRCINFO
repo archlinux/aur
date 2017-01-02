@@ -1,0 +1,21 @@
+pkgbase = antennavis
+	pkgdesc = Antenna radiation pattern visualization software
+	pkgver = 0.3.1_3
+	pkgrel = 1
+	url = http://www.include.gr/antennavis.html
+	arch = i686
+	arch = x86_64
+	groups = hamradio
+	license = GPL2
+	depends = tk
+	depends = glu
+	depends = libxmu
+	provides = antennavis
+	conflicts = antennavis
+	source = http://www.include.gr/antennavis-0.3.1-3.tar.gz
+	source = local://antennavis.patch
+	md5sums = 5cb077611eacc8a751330f3d46807870
+	md5sums = 853face326efe5696f19268aaa19f8c8
+
+pkgname = antennavis
+
