@@ -6,7 +6,7 @@
 _pkgname="solunar"
 pkgname=solunar-git
 _pkgver="latest"
-pkgver=0.1.3a
+pkgver=0.1.3a.d20160121.r1c6bd44
 pkgrel=1
 pkgdesc="A simple command-line utility for calculating Sun and Moon rise and set, and related times."
 arch=('i686' 'x86_64')
@@ -23,8 +23,31 @@ sha256sums=('SKIP')
 
 pkgver() {
   _extractdir="${srcdir}/solunar"
+  cd "${_extractdir}"
   
-  sed -n -r 's|^[[:space:]]*VERSION[[:space:]]*=[[:space:]]*([^[[:space:]]*)[[:space:]]*|\1|p' "${_extractdir}/Makefile" | head -n1
+  _ver="$(sed -n -r 's|^[[:space:]]*VERSION[[:space:]]*=[[:space:]]*([^[[:space:]]*)[[:space:]]*|\1|p' Makefile | head -n1)"
+  _rev="$(git log -n 1 --format=tformat:%h)"
+  _date="$(git log -n 1 --format=tformat:%ci | awk '{print $1}' | tr -d '-')"
+    
+  if [ -z "${_ver}" ]; then
+    echo "$0: Error: Could not determine version." > /dev/stderr
+    false
+    return 1
+  fi
+  
+  if [ -z "${_rev}" ]; then
+    echo "$0: Error: Could not determine revision." > /dev/stderr
+    false
+    return 1
+  fi
+  
+  if [ -z "${_date}" ]; then
+    echo "$0: Error: Could not determine date of last commit." > /dev/stderr
+    false
+    return 1
+  fi
+  
+  echo "${_ver}.d${_date}.r${_rev}"
 }
 
 build() {
