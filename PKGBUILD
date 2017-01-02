@@ -1,18 +1,18 @@
 # Maintainer: Bruno Pagani (a.k.a. ArchangeGabriel) <bruno.n.pagani@gmail.com>
 
 pkgname=ring-kde
-_commit=78418e81677b783b1f292b7b8bee1b33a0bf0253
-pkgver=2.3.0.r277.g${_commit:0:7}
+_commit=a18fdff652cd8e94ef026c06e5f7f606ab47dbc3
+pkgver=2.3.0.r287.g${_commit:0:7}
 pkgrel=1
 pkgdesc="KDE client for Ring (ring.cx)"
 arch=('i686' 'x86_64')
-url="https://github.com/KDE/ring-kde"
+url="https://commits.kde.org/${pkgname}"
 license=('GPL3')
 groups=('ring')
 depends=('libringclient' 'knotifyconfig' 'hicolor-icon-theme')
 makedepends=('extra-cmake-modules' 'python' 'glu' 'kinit')
-source=(${pkgname}-${pkgver}.zip::"${url}/archive/${_commit}.zip")
-sha256sums=('56098eef6ecd329c915463899e51e637d98425ef0d6e5b08ea09f4fd0ee1ccce')
+source=(${pkgname}-${pkgver}.zip::"https://github.com/KDE/${pkgname}/archive/${_commit}.zip")
+sha256sums=('ce0e07c8f9840a9b38343fcd93b0ddfd1ea1322b10ebf7c31866d140aa1bab06')
 
 prepare() {
     mkdir -p build

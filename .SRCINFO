@@ -1,8 +1,8 @@
 pkgbase = ring-kde
 	pkgdesc = KDE client for Ring (ring.cx)
-	pkgver = 2.3.0.r277.g78418e8
+	pkgver = 2.3.0.r287.ga18fdff
 	pkgrel = 1
-	url = https://github.com/KDE/ring-kde
+	url = https://commits.kde.org/ring-kde
 	arch = i686
 	arch = x86_64
 	groups = ring
@@ -14,8 +14,8 @@ pkgbase = ring-kde
 	depends = libringclient
 	depends = knotifyconfig
 	depends = hicolor-icon-theme
-	source = ring-kde-2.3.0.r277.g78418e8.zip::https://github.com/KDE/ring-kde/archive/78418e81677b783b1f292b7b8bee1b33a0bf0253.zip
-	sha256sums = 56098eef6ecd329c915463899e51e637d98425ef0d6e5b08ea09f4fd0ee1ccce
+	source = ring-kde-2.3.0.r287.ga18fdff.zip::https://github.com/KDE/ring-kde/archive/a18fdff652cd8e94ef026c06e5f7f606ab47dbc3.zip
+	sha256sums = ce0e07c8f9840a9b38343fcd93b0ddfd1ea1322b10ebf7c31866d140aa1bab06
 
 pkgname = ring-kde
 
