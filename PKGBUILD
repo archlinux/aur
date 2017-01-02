@@ -4,7 +4,7 @@ _binname=stdiscosrv
 _pkgname=syncthing
 pkgname=$_pkgname-discosrv
 epoch=1
-pkgver=0.14.13
+pkgver=0.14.18
 pkgrel=1
 pkgdesc='Discover server for the syncthing P2P synchronization utility'
 url='http://syncthing.net'
@@ -20,11 +20,9 @@ source=(
   "$pkgname.tmpfiles.conf"
 )
 
-sha512sums=(
-  '24f7f46e965df962a3759b1fdad15bded4b2b3c81a9a266798570b9686c3aad40a7ba99507ad5955ee2a5f1ed5224a8ba89b20459c65ca5f5338f2958d42fcf8'
-  'b2a8daa48be57ad47542569473128c8590d4bbe124de0912ce5b3de7deb1b54dd0d3ed66e925fc11addded075d24d6a1fe822d71338d128b7ca03fd43c082d8c'
-  '28b0bb6a6f2fa536ec8cb887cfebf4706be25af5e29da39e2e3776daeeeb48f75fb5be255472920355948d8905830342866e89299facd626ddf8a658d84faf27'
-)
+sha512sums=('107c7712c8d377ceb042280ae23b55af57dff4a357abad6310705c0689bae06cf2ec01cb2984bd92303938abef4f3c9767e555f4c93531f08e8020d0e60aa455'
+            'b2a8daa48be57ad47542569473128c8590d4bbe124de0912ce5b3de7deb1b54dd0d3ed66e925fc11addded075d24d6a1fe822d71338d128b7ca03fd43c082d8c'
+            '28b0bb6a6f2fa536ec8cb887cfebf4706be25af5e29da39e2e3776daeeeb48f75fb5be255472920355948d8905830342866e89299facd626ddf8a658d84faf27')
 
 build() {
   cd $_pkgname-$pkgver/cmd/$_binname
