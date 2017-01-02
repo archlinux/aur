@@ -1,0 +1,21 @@
+pkgbase = freeter
+	pkgdesc = The smartest way to work on your projects
+	pkgver = 0.12.0
+	pkgrel = 1
+	url = https://freeter.io
+	arch = x86_64
+	arch = i686
+	license = custom
+	provides = freeter
+	conflicts = freeter
+	noextract = Freeter.AppImage
+	options = !strip
+	source = https://freeter.io/download/Freeter.AppImage
+	source = freeter.desktop
+	source = freeter.png
+	md5sums = d8da7249c0fec0712b34b244a1bb4bb8
+	md5sums = b8a555c2931314169e189e6638f74c2d
+	md5sums = 6694f890382a9f25297f9a9a8dfb9a04
+
+pkgname = freeter
+
