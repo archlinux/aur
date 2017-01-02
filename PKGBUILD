@@ -16,9 +16,9 @@ sha256sums=('SKIP')
 
 
 pkgver() {
-    cd "libtorrent"
+  cd "libtorrent"
 
-    git describe --long --tags | sed 's/^[A-Za-z]*-//;s/\([^-]*-g\)/r\1/;s/[_-]/./g'
+  git describe --long --tags | sed 's/^[A-Za-z]*-//;s/\([^-]*-g\)/r\1/;s/[_-]/./g'
 }
 
 prepare() {
