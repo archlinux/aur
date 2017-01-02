@@ -7,9 +7,7 @@ _gtk2_min='2.24.30'
 _github="adapta-project/${pkgname}"
 
 pkgver() {
-
     wget -O- -q "https://api.github.com/repos/${_github}/releases/latest" | grep tag_name | grep -oP --color=never '\d+[^"]+'
-
 }
 
 pkgver="$(pkgver)"
@@ -43,7 +41,8 @@ makedepends=('glib2>=2.48.0'
              'librsvg'
              'sassc>=3.3.2'
              'inkscape'
-             'parallel')
+             'parallel'
+             'wget')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
 #        "${pkgname}-${pkgver}.tar.gz.asc::${url}/releases/download/${pkgver}/${pkgname}-${pkgver}.tar.gz.asc")
 sha256sums=('5e468ba04fa31fac24ced66df377fabbd8acfb3fc88aa905c52410db65e87f6e')
