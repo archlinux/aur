@@ -6,6 +6,7 @@ pkgbase = libtorrent-rasterbar-1_0-git
 	arch = i686
 	arch = x86_64
 	license = BSD
+	makedepends = git
 	makedepends = boost
 	makedepends = python2
 	makedepends = python

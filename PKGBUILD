@@ -8,7 +8,7 @@ url='http://www.libtorrent.org/'
 arch=('i686' 'x86_64')
 license=('BSD')
 depends=('boost-libs')
-makedepends=('boost' 'python2' 'python')
+makedepends=('git' 'boost' 'python2' 'python')
 provides=('libtorrent-rasterbar')
 conflicts=('libtorrent-rasterbar')
 source=('git+https://github.com/arvidn/libtorrent.git#branch=RC_1_0')
