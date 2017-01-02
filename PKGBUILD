@@ -3,7 +3,7 @@
 _pkgname=polybar
 pkgname="${_pkgname}-git"
 pkgver=2.4.6
-pkgrel=1
+pkgrel=2
 pkgdesc="A fast and easy-to-use status bar"
 arch=("i686" "x86_64")
 url="https://github.com/jaagr/polybar"
@@ -20,6 +20,7 @@ optdepends=("alsa-lib: volume module support"
 makedepends=("cmake" "python" "python2" "pkg-config")
 provides=("polybar")
 conflicts=("polybar" "lemonbuddy-git" "lemonbuddy")
+install="${_pkgname}.install"
 source=("${_pkgname}::git+${url}.git")
 md5sums=("SKIP")
 
