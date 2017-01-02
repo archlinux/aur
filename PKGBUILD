@@ -3,15 +3,13 @@
 
 pkgbase=razer-drivers-git
 pkgname=('python-razer-git' 'razer-daemon-git' 'razer-driver-dkms-git')
-pkgver=1.1.3.r45.gcdd5fe4
+pkgver=1.1.3.r53.g8ffb587
 pkgrel=1
 pkgdesc="An entirely open source driver and user-space daemon that allows you to manage your Razer peripherals on GNU/Linux."
 arch=('any')
 url="https://github.com/terrycain/razer_drivers"
 license=('GPL2')
 makedepends=('git' 'make' 'python' 'python-setuptools')
-optdepends=('polychromatic: gtk frontend'
-            'razercommander-git: gtk frontend')
 source=("$pkgbase::git+https://github.com/terrycain/razer_drivers.git")
 sha512sums=('SKIP')
 
@@ -25,7 +23,8 @@ package_python-razer-git() {
   depends=('razer-daemon' 'python' 'python-dbus' 'python-numpy')
   provides=('python-razer')
   conflicts=('python-razer')
-
+  optdepends=('polychromatic: gtk frontend'
+              'razercommander-git: gtk frontend')
   cd $srcdir/$pkgbase
   make DESTDIR=$pkgdir python_library_install
 }
