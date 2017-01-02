@@ -2,7 +2,7 @@
 # Contributor: John K. Luebs <jkl@johnluebs.com>
 
 pkgname=gapi-ocaml-git
-pkgver=r633.65846991
+pkgver=0.3.1.r63365846991
 pkgrel=1
 pkgdesc="A simple OCaml client for Google Services."
 arch=("x86_64" "i686")

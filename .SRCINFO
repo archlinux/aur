@@ -1,6 +1,6 @@
 pkgbase = gapi-ocaml-git
 	pkgdesc = A simple OCaml client for Google Services.
-	pkgver = r633.65846991
+	pkgver = 0.3.1.r63365846991
 	pkgrel = 1
 	url = http://forge.ocamlcore.org/projects/gapi-ocaml/
 	arch = x86_64
