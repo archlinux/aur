@@ -52,7 +52,7 @@ pkgbase=linux-bfq
 # pkgname=('linux-bfq' 'linux-bfq-headers' 'linux-bfq-docs')
 _srcname=linux-4.8
 pkgver=4.8.15
-pkgrel=4
+pkgrel=5
 arch=('i686' 'x86_64')
 url="http://algo.ing.unimo.it"
 license=('GPL2')
@@ -83,7 +83,7 @@ source=("http://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         'net_handle_no_dst_on_skb_in_icmp6_send.patch'
         '0001-x86-fpu-Fix-invalid-FPU-ptrace-state-after-execve.patch'
         # patches from https://github.com/linusw/linux-bfq/commits/bfq-v8
-        '0005-BFQ-update-to-v8r5.patch')
+        '0005-BFQ-update-to-v8r7.patch')
 
 _kernelname=${pkgbase#linux} 
 
@@ -470,7 +470,7 @@ sha512sums=('a48a065f21e1c7c4de4cf8ca47b8b8d9a70f86b64e7cfa6e01be490f78895745b9c
             '2dc6b0ba8f7dbf19d2446c5c5f1823587de89f4e28e9595937dd51a87755099656f2acec50e3e2546ea633ad1bfd1c722e0c2b91eef1d609103d8abdc0a7cbaf'
             'c53bd47527adbd2599a583e05a7d24f930dc4e86b1de017486588205ad6f262a51a4551593bc7a1218c96541ea073ea03b770278d947b1cd0d2801311fcc80e5'
             '002d5e0ccfa5824c1750912a6400ff722672d6587b74ba66b1127cf1228048f604bba107617cf4f4477884039af4d4d196cf1b74cefe43b0bddc82270f11940d'
-            '67d11b25179e2d46effa70a6a151626a0b6dff900d887497b173fe894b839104d370cfbabf531c3f3914a15c3ec3cac6297dbaa5f294e6fcb644e2b26d8579b7')
+            'da8d68ebdc95382e286e660765d861cee75fb3796bd08a034ad5add4bb01bf5a1d4ebb7e4ca537661568341698c9e3068a11951952d9ef7d03ecdb8273f90df6')
             
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
