@@ -1,7 +1,7 @@
 # Contributor: Angelo Theodorou <encelo@users.sourceforge.net>
 pkgname=lives
-pkgver=2.8.1
-pkgrel=2
+pkgver=2.8.3
+pkgrel=1
 pkgdesc="A Video Editing System"
 arch=('i686' 'x86_64')
 url="http://lives-video.com"
@@ -12,7 +12,7 @@ makedepends=('automake')
 options=(!emptydirs)
 changelog=lives.changelog
 source=(http://lives-video.com/releases/LiVES-$pkgver.tar.bz2 disable-toonz.patch)
-md5sums=('5ead5834902b3b6962a72627e584ae87' 'dffab836d4dc5a277c67450e2b1b810b')
+md5sums=('77c63dab400491cfcd762823c34d1c61' 'dffab836d4dc5a277c67450e2b1b810b')
 
 prepare() {
   cd ${pkgname}-${pkgver}
