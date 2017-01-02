@@ -4,7 +4,7 @@
 
 pkgname=cclive
 pkgver=0.9.3
-pkgrel=12
+pkgrel=13
 pkgdesc='Commandline downloader for popular video websites.'
 arch=('i686' 'x86_64')
 url='http://cclive.sourceforge.net/'
