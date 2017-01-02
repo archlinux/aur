@@ -1,5 +1,5 @@
 pkgname=performer-git
-pkgver=1.0.r191.8073e53-1
+pkgver=1.0.r191.8073e53
 pkgrel=1.0
 pkgdesc="Audio session manager for live music performances"
 arch=('i686' 'x86_64')
