@@ -1,0 +1,25 @@
+diff -ruN 1/src/gopenvpn.c 2/src/gopenvpn.c
+--- 1/src/gopenvpn.c	2017-01-02 10:59:59.000000000 +0100
++++ 2/src/gopenvpn.c	2017-01-02 11:13:23.000000000 +0100
+@@ -1350,8 +1350,8 @@
+ 	glob_t gl;
+ 	int i;
+ 	
+-	glob("/etc/openvpn/*.conf", 0, NULL, &gl);
+-	glob("/etc/openvpn/*.ovpn", GLOB_APPEND, NULL, &gl);	
++	glob("/etc/openvpn/client/*.conf", 0, NULL, &gl);
++	glob("/etc/openvpn/client/*.ovpn", GLOB_APPEND, NULL, &gl);
+ 
+ 	applet->configs_count = gl.gl_pathc;
+ 	
+diff -ruN 1/src/gopenvpn.h 2/src/gopenvpn.h
+--- 1/src/gopenvpn.h	2017-01-02 10:59:59.000000000 +0100
++++ 2/src/gopenvpn.h	2017-01-02 11:12:45.000000000 +0100
+@@ -27,6 +27,6 @@
+ 
+ #define GLADE_FILE         "gopenvpn.glade"
+ 
+-#define CONFIG_PATH        "/etc/openvpn"
++#define CONFIG_PATH        "/etc/openvpn/client"
+ 
+ #define MAX_RETRY          10
