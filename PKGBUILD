@@ -1,5 +1,5 @@
 pkgname=performer-git
-pkgver=1.0.r158.1f48923
+pkgver=1.0.r191.8073e53-1
 pkgrel=1.0
 pkgdesc="Audio session manager for live music performances"
 arch=('i686' 'x86_64')
@@ -41,5 +41,9 @@ build() {
 package() {
   cd ${srcdir}/build
   make DESTDIR="${pkgdir}" install
+
+  cd "${srcdir}/${_gitname}"
+  install -D "./src/backend/performer-carla" "${pkgdir}/usr/bin/performer-carla"
+  install -D "./src/backend/performer-carla.py" "${pkgdir}/usr/share/carla/performer-carla"
 }
 
