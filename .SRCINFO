@@ -1,6 +1,6 @@
 pkgbase = python2-spotipy
 	pkgdesc = Simple client for the Spotify Web API
-	pkgver = 2.3.8
+	pkgver = 2.4.1
 	pkgrel = 1
 	url = https://github.com/plamere/spotipy
 	arch = any
@@ -9,8 +9,8 @@ pkgbase = python2-spotipy
 	makedepends = python2-setuptools
 	depends = python2
 	depends = python2-requests>=1.0
-	source = https://pypi.org/packages/source/s/spotipy/spotipy-2.3.8.tar.gz
-	md5sums = 0248576e241f74f08297dd7c76b0cc67
+	source = https://pypi.org/packages/source/s/spotipy/spotipy-2.4.1.tar.gz
+	md5sums = e1f1ad7060a6d7576d141eba7aae0f39
 
 pkgname = python2-spotipy
 
