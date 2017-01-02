@@ -7,11 +7,11 @@ pkgbase = rainbow-icons-git
 	license = Attribution-NonCommercial-ShareAlike 4.0 International Public License
 	makedepends = git
 	provides = surfn-icons-git
-	conflicts = menda-circle-icon-theme-git
 	conflicts = surfn-icons-git
+	conflicts = menda-circle-icon-theme-git
 	options = !strip
 	options = !emptydirs
-	source = Surfn::git+https://github.com/0devnull0/Surfn.git
+	source = git+https://github.com/0devnull0/Surfn.git
 	sha256sums = SKIP
 
 pkgname = rainbow-icons-git
