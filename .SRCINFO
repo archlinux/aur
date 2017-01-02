@@ -1,0 +1,18 @@
+pkgbase = plasma-pk-updates-git
+	pkgdesc = Plasma5 applet for software updates using PackageKit
+	pkgver = r102.16371ba
+	pkgrel = 1
+	url = https://quickgit.kde.org/?p=plasma-pk-updates.git
+	arch = any
+	license = GPL
+	makedepends = git
+	makedepends = extra-cmake-modules
+	depends = packagekit
+	depends = plasma-workspace
+	depends = kdoctools
+	depends = kdesignerplugin
+	source = git://anongit.kde.org/plasma-pk-updates.git
+	md5sums = SKIP
+
+pkgname = plasma-pk-updates-git
+
