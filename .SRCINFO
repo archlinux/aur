@@ -1,0 +1,16 @@
+pkgbase = qvkbd-git
+	pkgdesc = Qt Virtual Keyboard
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/KivApple/qvkbd
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	depends = qt5-x11extras
+	depends = qt5-declarative
+	source = qvkbd-git::git+https://github.com/KivApple/qvkbd
+	md5sums = SKIP
+
+pkgname = qvkbd-git
+
