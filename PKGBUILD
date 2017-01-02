@@ -1,6 +1,6 @@
 # Maintainer: Gaute Hope <eg@gaute.vetsj.com>
 pkgname=astroid
-pkgver=v0.6.r3.ga38bb91
+pkgver=0.7
 pkgrel=1
 epoch=
 pkgdesc="a graphical threads-with-tags style, lightweight and fast, email client for notmuch, inspired by sup and others"
@@ -20,27 +20,22 @@ backup=()
 options=()
 install=
 changelog=
-source=(astroid::git+https://github.com/astroidmail/astroid.git)
+source=(https://github.com/astroidmail/astroid/archive/v${pkgver}.tar.gz)
 noextract=()
-md5sums=('SKIP')
+sha256sums=('0463995109aa1cec3da43fc1f20d9b0c2a9afd13580b3cc12081762b0374b19c')
 
 build() {
-  cd "$srcdir/$pkgname"
+  cd "$srcdir/$pkgname-$pkgver"
   scons --release="$pkgver" --prefix=/usr build
 }
 
 check() {
-  cd "$srcdir/$pkgname"
+  cd "$srcdir/$pkgname-$pkgver"
   scons --release="$pkgver" --prefix=/usr test
 }
 
 package() {
-  cd "$srcdir/$pkgname"
+  cd "$srcdir/$pkgname-$pkgver"
   scons --release="$pkgver" --install-sandbox="$pkgdir/" --prefix=/usr install
-}
-
-pkgver() {
-  cd "$pkgname"
-  git describe --long --tags --always | sed -r 's/([^-]*-g)/r\1/;s/-/./g'
 }
 
