@@ -3,10 +3,10 @@
 # Contributor: Eothred <yngve.levinsen@gmail.com> (for original spotify PKGBUILD)
 
 pkgname=spotio
-_pkgver=1.0.42.151
-_another_pkgver=g19de0aa6
-_yetanotherpkgrel64=74
-_yetanotherpkgrel32=27
+_pkgver=1.0.45.186
+_another_pkgver=g3b5036d6
+_yetanotherpkgrel64=95
+_yetanotherpkgrel32=28
 pkgver=1.0.2_${_pkgver}.${_another_pkgver}.${_yetanotherpkgrel}
 pkgrel=1
 pkgdesc="A proof-of-concept Rdio-inspired skin for Spotify."
@@ -24,13 +24,14 @@ source=('spotify'
 'spotio-icons.zip'
 'spotio.desktop'
 'spotio.zip::https://github.com/devinhalladay/spotio/archive/master.zip')
-md5sums=('cfef2f72647980c639201c6ab39e8534'
-         'ef25ddc5b6bf8fe1a0d64cbd79e1f7b4'
-         'afbd86ae37f8752fc439edf4e81b7d8e'
-         '8bb5b67c4483819e1c3e92f2c9350651'
-         'SKIP')
-md5sums_x86_64=('dcce36b6956fd12baff87427357558d2')
-md5sums_i686=('c2840db7c82747591f8ab480da1dcca0')
+
+sha256sums=('989920e9360cadc1a8103b8c04acf0c87cb7911eb9a09dddb0cf4708d6249d34'
+	   'af54f3b90cac46fa100b3f919a9225d10d847617d24aa9af3d832e7689f482c3'
+	   '3fdc1ebd9e64bae98cfd2bc9fc3199427bd7ec680254cd6361d9b0f4bb121134'
+	   '29935af570b45698b819bce8632cb286b043861db9ffec56228db78b2672bd52'
+	   'SKIP')
+sha256sums_x86_64=('e19a5277ea7dee8796edcc49de07036b32cac0ce553ef2aed7416dff6bf8fb3a')
+sha256sums_i686=('8cf17f8938173bd3f5c3092345c8421c5d391aaa46839502ec547e5a57fcedf9')
 
 source_x86_64=("http://repository.spotify.com/pool/non-free/s/spotify-client/spotify-client_${_pkgver}.${_another_pkgver}-${_yetanotherpkgrel64}_amd64.deb")
 
