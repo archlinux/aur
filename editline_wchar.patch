@@ -1,0 +1,49 @@
+diff -ur old/eltclsh-1.15/src/el.c new/eltclsh-1.15/src/el.c
+--- old/eltclsh-1.15/src/el.c	2012-12-06 17:27:21.000000000 +0100
++++ new/eltclsh-1.15/src/el.c	2017-01-02 18:54:01.368436684 +0100
+@@ -251,7 +251,7 @@
+  */
+ 
+ int
+-elTclEventLoop(EditLine *el, char *c)
++elTclEventLoop(EditLine *el, wchar_t *c)
+ {
+    ElTclInterpInfo *iinfo;
+    el_get(el, EL_CLIENTDATA, &iinfo);
+@@ -262,13 +262,20 @@
+ 
+    if (iinfo->preReadSz == 0 && feof(stdin)) {
+       /* eof and no pending character: leave */
+-      c[0] = '0';
++      c[0] = L'\0';
+       return -1;
+    }
+ 
+-   c[0] = iinfo->preRead[0];
+-   if (iinfo->preReadSz-- > 0)
+-      memmove(iinfo->preRead, iinfo->preRead+1, iinfo->preReadSz);
++   int mbSz = mblen (iinfo->preRead, iinfo->preReadSz);
++   if (mbSz > 0) {
++      mbtowc (c, iinfo->preRead, mbSz);
++   }
++   if (iinfo->preReadSz - mbSz >= 0) {
++      iinfo->preReadSz -= mbSz;
++      memmove(iinfo->preRead, iinfo->preRead+mbSz, iinfo->preReadSz);
++   } else {
++      iinfo->preReadSz = 0;
++   }
+ 
+    return 1;
+ }
+diff -ur old/eltclsh-1.15/src/eltclsh.h new/eltclsh-1.15/src/eltclsh.h
+--- old/eltclsh-1.15/src/eltclsh.h	2011-11-02 11:02:07.000000000 +0100
++++ new/eltclsh-1.15/src/eltclsh.h	2017-01-02 18:41:57.834330526 +0100
+@@ -112,7 +112,7 @@
+ 			Tcl_Obj *const objv[]);
+ int		elTclHistory(ClientData data, Tcl_Interp *interp,
+ 			int objc, Tcl_Obj *const objv[]);
+-int		elTclEventLoop(EditLine *el, char *c);
++int		elTclEventLoop(EditLine *el, wchar_t *c);
+ void		elTclRead(ClientData data, int mask);
+ int		elTclGetWindowSize(int fd, int *lins, int *cols);
+ 
