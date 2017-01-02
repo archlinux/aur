@@ -4,11 +4,20 @@ _gtk3_min='3.18'
 _gtk3_max='4.0'
 _theme_name=Adapta
 _gtk2_min='2.24.30'
-pkgver="3.89.2.47"
+_github="adapta-project/${pkgname}"
+
+pkgver() {
+
+    wget -O- -q "https://api.github.com/repos/${_github}/releases/latest" | grep tag_name | grep -oP --color=never '\d+[^"]+'
+
+}
+
+pkgver="$(pkgver)"
+
 pkgrel=1
 pkgdesc="An adaptive Gtk+ theme based on Material Design Guidelines."
 arch=(any)
-url="https://github.com/adapta-project/${pkgname}"
+url="https://github.com/${_github}"
 license=('GPL2' 'CCPL')
 depends=("gtk2>=${_gtk2_min}"
          "gtk3>=${_gtk3_min}.9"
@@ -50,6 +59,6 @@ build() {
 
 package() {
     cd "${pkgname}-${pkgver}"
-    make DESTDIR="$pkgdir" install -j 8
+    make DESTDIR="$pkgdir" install
 }
 
