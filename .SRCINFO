@@ -1,7 +1,7 @@
 pkgbase = unifont
 	pkgdesc = A free bitmap font with wide Unicode support (split package with accompanying utilities, TrueType, PCF and BDF versions)
 	pkgver = 9.0.06
-	pkgrel = 1
+	pkgrel = 2
 	url = http://unifoundry.com/
 	arch = i686
 	arch = x86_64

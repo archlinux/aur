@@ -8,7 +8,7 @@ pkgname=(
 	unifont-utils
 )
 pkgver=9.0.06
-pkgrel=1
+pkgrel=2
 pkgdesc="A free bitmap font with wide Unicode support (split package with accompanying utilities, TrueType, PCF and BDF versions)"
 arch=(i686 x86_64)
 url="http://unifoundry.com/"
