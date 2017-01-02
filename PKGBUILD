@@ -1,17 +1,16 @@
 # Contributor: Angelo Theodorou <encelo@users.sourceforge.net>
 
 pkgname=dunelegacy
-pkgver=0.96.3
-pkgrel=2
+pkgver=0.96.4
+pkgrel=1
 pkgdesc="Updated clone of Westood Studios' Dune2"
 arch=('i686' 'x86_64')
 url="http://dunelegacy.sourceforge.net"
 license=('GPL')
-depends=('sdl_mixer' 'desktop-file-utils')
+depends=('sdl2_mixer' 'xdg-utils')
 changelog=dunelegacy.changelog
-install=dunelegacy.install
 source=(http://downloads.sourceforge.net/sourceforge/dunelegacy/$pkgname-$pkgver-src.tar.bz2)
-md5sums=('1ca64c06646aeb537d47f601a49463e9')
+md5sums=('de1d0a529cc32ba5d909bf1570272434')
 
 build() {
   cd $srcdir/$pkgname-$pkgver
