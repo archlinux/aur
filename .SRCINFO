@@ -1,0 +1,16 @@
+pkgbase = ptypes
+	pkgdesc = A simple alternative to the C++ STL that includes multithreading and networking
+	pkgver = 2.1.1
+	pkgrel = 1
+	url = http://tehsausage.com/ptypes/
+	arch = i686
+	arch = x86_64
+	license = ZLIB
+	depends = gcc-libs-multilib
+	source = http://tehsausage.com/ptypes/ptypes-2.1.1.tar.gz
+	source = ptypes-2.1.1.patch
+	md5sums = f7ed34b09d5b764294e93382f18a0ed3
+	md5sums = 3de81702880781bfe6dd6ce7656cae16
+
+pkgname = ptypes
+

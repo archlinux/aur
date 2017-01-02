@@ -1,0 +1,40 @@
+diff -aur ptypes-2.1.1.pristine/Makefile ptypes-2.1.1.new/Makefile
+--- ptypes-2.1.1.pristine/Makefile	2007-06-27 09:05:52.000000000 -0400
++++ ptypes-2.1.1.new/Makefile	2017-01-01 20:57:46.503831897 -0500
+@@ -20,6 +20,9 @@
+ 	cd src ; make -f $(UMAKEFILE) all
+ 	cd wshare ; make -f $(UMAKEFILE) all
+ 
++test:
++	cd src ; make -f $(UMAKEFILE) test
++
+ clean:
+ 	cd src ; make -f $(UMAKEFILE) clean
+ 	cd wshare ; make -f $(UMAKEFILE) clean
+Only in ptypes-2.1.1.new/src: .Makefile.common.swp
+diff -aur ptypes-2.1.1.pristine/src/Makefile.common ptypes-2.1.1.new/src/Makefile.common
+--- ptypes-2.1.1.pristine/src/Makefile.common	2007-06-27 09:05:49.000000000 -0400
++++ ptypes-2.1.1.new/src/Makefile.common	2017-01-01 21:13:15.341667754 -0500
+@@ -70,7 +70,9 @@
+ HALL		= $(HLEVEL4)
+ 
+ 
+-all: mtlib shlib stlib ptypes_test ptypesn_test
++all: mtlib shlib stlib
++
++test: ptypes_test ptypesn_test
+ 
+ mtlib: mt $(LIBNAME)
+ 
+@@ -453,8 +455,10 @@
+ 	install -m 444 $(SODEST)/$(SOREALNAME) ${PREFIX}/lib
+ 	cd ${PREFIX}/lib ; rm -f ${SONAME} ; ln -s ${SOREALNAME} ${SONAME}
+ 	@echo ; echo "#####  Installing documentation in ${PREFIX}/share/doc/ptypes/doc"
++	mkdir -p ${PREFIX}/share/licenses/ptypes
++	cd .. ; install -m 444 LICENSE ${PREFIX}/share/licenses/ptypes
+ 	mkdir -p ${PREFIX}/share/doc/ptypes/doc
+-	cd .. ; install -m 444 LICENSE index.html ${PREFIX}/share/doc/ptypes
++	cd .. ; install -m 444 index.html ${PREFIX}/share/doc/ptypes
+ 	cd ../doc ; tar cf - * | tar xf - -C ${PREFIX}/share/doc/ptypes/doc
+ 
+ uninstall:
