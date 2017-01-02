@@ -58,7 +58,7 @@ _v_b='132'
 
 _update='1'
 
-pkgrel=2
+pkgrel=3
 #http://registrationcenter-download.intel.com/akdlm/irc_nas/9651/parallel_studio_xe_2017_update1.tgz
 
 _sp=''
@@ -93,7 +93,7 @@ options=(strip libtool staticlibs)
 url="http://software.intel.com/en-us/articles/non-commercial-software-download/"
 arch=('x86_64')
 license=('custom')
-makedepends=('libarchive' 'sed' 'gzip')
+makedepends=('libarchive' 'sed' 'gzip' 'lzop')
 
 _parallel_studio_xe_dir="parallel_studio_xe${_year:+_${_year}}${_sp:+_${_sp}}${_update:+_update${_update}}"
 
