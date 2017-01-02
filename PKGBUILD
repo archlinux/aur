@@ -3,12 +3,12 @@
 
 pkgname=jenkins-lts
 pkgver=2.32.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Extendable continuous integration server (lts)'
 arch=('any')
 url='https://jenkins.io'
 license=('MIT')
-depends=('java-runtime-headless' 'ttf-dejavu' 'libcups')
+depends=('java-runtime-headless>=7' 'ttf-dejavu' 'libcups')
 provides=('jenkins-ci')
 conflicts=('jenkins-ci')
 replaces=('jenkins-ci')

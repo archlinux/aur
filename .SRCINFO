@@ -1,12 +1,12 @@
 pkgbase = jenkins-lts
 	pkgdesc = Extendable continuous integration server (lts)
 	pkgver = 2.32.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://jenkins.io
 	install = jenkins.install
 	arch = any
 	license = MIT
-	depends = java-runtime-headless
+	depends = java-runtime-headless>=7
 	depends = ttf-dejavu
 	depends = libcups
 	provides = jenkins-ci
