@@ -1,6 +1,6 @@
 # Maintainer: Laurentiu Nicola <lnicola@dend.ro>
 pkgname=certbot-systemd-nginx
-pkgver=1.2
+pkgver=1.3
 pkgrel=1
 pkgdesc="Systemd service for Certbot certificate renewal with nginx servers"
 arch=('any')
