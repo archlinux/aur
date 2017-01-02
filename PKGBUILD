@@ -2,8 +2,8 @@
 
 pkgname=xfce-theme-cobibird
 pkgver=2.1
-pkgrel=1
-pkgdesc="A GTK theme based on Greybird, with dark menus (unofficial GTK 3.20 port)"
+pkgrel=2
+pkgdesc="A GTK theme based on Greybird, with dark menus"
 arch=(any)
 url=http://gnome-look.org/content/show.php/CobiBird?content=157985
 license=('GPL' 'CCPL:cc-by-sa')
