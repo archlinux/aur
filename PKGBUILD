@@ -10,7 +10,7 @@ makedepends=('git')
 provides=(surfn-icons-git)
 conflicts=(menda-circle-icon-theme-git surfn-icons-git)
 options=(!strip !emptydirs)
-source=('Surfn::git+https://github.com/0devnull0/Surfn.git')
+source=('git+https://github.com/0devnull0/Surfn.git')
 sha256sums=('SKIP')
 
 pkgver() {
@@ -30,17 +30,18 @@ package() {
   cp -dr --no-preserve='ownership' 'Surfn Arch Blue' "${pkgdir}"/usr/share/icons/
   cp -dr --no-preserve='ownership' 'Menda Circle' "${pkgdir}"/usr/share/icons/
   if test -d /usr/share/icons/breeze-dark/;then
-     msg "The breeze icons seems to be already installed on your System."
+     msg "'Breeze-dark theme' is installed on your System. KDE users should have it (pre)installed."
+     msg "This theme is a bit 'fine tuned'. Both are co-installable and won't overwrite each other."
      while true; do 
-     msg "Include it anyway? (y/N):"
+     echo -n "Include it anyway? (Y/n): "
      read choice
      case "$choice" in
-         y|Y|yes) msg "OK, it will be included!"
+         y|Y|yes|"") msg "OK, including it!"
          cp -dr --no-preserve='ownership' 'Surfn Breeze Dark' "${pkgdir}"/usr/share/icons/
          break;;
-         n|N|no|"") msg "OK, SKIPPED!"
+         n|N|no|NO) msg "OK, SKIPPED!"
          break;;
-         *) msg "Nope '(°_°)'";;
+         *) msg "Nope (°_°)";;
      esac
      done 
 
