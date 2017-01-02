@@ -2,7 +2,7 @@
 
 pkgname=freeter
 pkgver=0.12.0
-pkgrel=1
+pkgrel=2
 pkgdesc="The smartest way to work on your projects"
 arch=('x86_64' 'i686')
 url="https://freeter.io"
@@ -18,7 +18,7 @@ source=("https://freeter.io/download/Freeter.AppImage"
     "${pkgname}.png")
 
 md5sums=('d8da7249c0fec0712b34b244a1bb4bb8'
-	 'b8a555c2931314169e189e6638f74c2d'
+	 '9f7f7a59909105e47b735063b48b7e1c'
 	 '6694f890382a9f25297f9a9a8dfb9a04')
 
 noextract=("Freeter.AppImage")
