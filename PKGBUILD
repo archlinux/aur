@@ -2,7 +2,7 @@
 # Contributor: Michael Carlberg <c@rlberg.se>
 pkgname=polybar
 pkgver=2.4.6
-pkgrel=1
+pkgrel=2
 pkgdesc="A fast and easy-to-use status bar"
 arch=("i686" "x86_64")
 url="https://github.com/jaagr/polybar"
@@ -18,6 +18,7 @@ optdepends=("alsa-lib: volume module support"
             "curl: github module support")
 makedepends=("cmake" "python" "python2" "pkg-config")
 conflicts=("polybar-git" "lemonbuddy-git" "lemonbuddy")
+install="${pkgname}.install"
 source=("${pkgname}::git+${url}.git#tag=${pkgver}")
 md5sums=("SKIP")
 
