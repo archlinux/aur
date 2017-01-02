@@ -1,9 +1,9 @@
-# Maintainer: Glen Dsouza <gdsouza@linuxmail.org>
+# Maintainer: Glen D'souza <gdsouza@linuxmail.org>
 # Contributor: jmf <jmf at mesecons dot net>
 # Contributor: Pascal Groschwitz <p.groschwitz@googlemail.com>
 
 pkgname=flightgear-git
-pkgver=20161209
+pkgver=20170102
 pkgrel=1
 _gitname=flightgear
 pkgdesc="An open-source, multi-platform flight simulator"
@@ -15,7 +15,6 @@ optdepends=('qt5-base: fgfs --launcher')
 makedepends=('boost' 'cmake' 'mesa' 'sharutils' 'simgear-git' 'qt5-base')
 provides=('flightgear-git' 'flightgear')
 conflicts=('flightgear')
-options=('!makeflags')
 source=(git://git.code.sf.net/p/flightgear/flightgear)
 md5sums=('SKIP')
 
@@ -34,7 +33,6 @@ build() {
     -DFG_DATA_DIR:STRING="/usr/share/flightgear" \
     -DCMAKE_INSTALL_LIBDIR=/usr/lib \
     -DCMAKE_BUILD_TYPE=Release \
-    -DSIMGEAR_SHARED:BOOL="ON" \
     ../${_gitname}
 
   uudecode -o ../${_gitname}/package/flightgear.png ../${_gitname}/package/flightgear.png.uue
