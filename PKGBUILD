@@ -27,7 +27,7 @@ sha512sums=(
 	'767dc107d9a33008116b6939facbf31db6c7942acad257ad52a1a249f04b6215b41da928ef00e8308c2cc19924257cb0219d4eddd2b99502621ebd82e8673988'
 	'SKIP'
 	'cb3e2dd2a7811b5b45bc6c01248688325279ac098da3d4064fbcbf88b60008beaf0c8500a8629b1a71692c2da0bfedba943b59695b57a293537e66ca3deca424'
-	'4eb2703bea9af264a8beac2f7605666f7a96a7a36a06dcd4357ad77c99378d99a266aeb54b79bd14a7718a3ceddd8a44b2d4d44e442c02ff4e6cb6f4035cd6a8'
+	'dfbbcc9b81591471562431f6f6742dea2b98ea3095010ed821f05f900616ea6ceab3715da569a1c894715568387b7d35125e7a796ac6d859a0ba63f1ea24a65c'
 	'408162c01ed2a0591ab81e1810db0c258a3b5db072ce7ea40924491797ddd0f15162b3ec01cfaa9e7adb901226610090cd5927738a1360ddadd572f7e732c0eb'
 )
 validpgpkeys=('95D2E9AB8740D8046387FD151A09227B1F435A33') # Paul Hardy <com dot unifoundry at unifoundry>
@@ -102,8 +102,6 @@ package_ttf-unifont() {
 		"${pkgdir}${_ttfdir}/unifont_sample.ttf"
 	install -D -m0644 "unifont_upper-${pkgver}.ttf" \
 		"${pkgdir}${_ttfdir}/unifont_upper.ttf"
-#	install -D -m0644 "unifont_upper_csur-${pkgver}.ttf" \
-#		"${pkgdir}${_ttfdir}/unifont_upper_csur.ttf"
 
 	cd "$srcdir"
 	install -D -m0644 fontconfig-noaa.conf \
