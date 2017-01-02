@@ -1,0 +1,17 @@
+pkgbase = odroid-auto-bridge
+	pkgdesc = A method to create a network bridge for ODROID hardware
+	pkgver = 0.7
+	pkgrel = 1
+	url = https://github.com/graysky2/odroid-c2-bridge
+	arch = any
+	license = MIT
+	depends = bridge-utils
+	depends = iproute2
+	depends = systemd
+	conflicts = odroid-c2-bridge
+	replaces = odroid-c2-bridge
+	source = https://github.com/graysky2/odroid-auto-bridge/archive/v0.7.tar.gz
+	sha256sums = bf30841227e46b6dd906ebc675c0e4009298f097caac06586a0848ac9e0ec55f
+
+pkgname = odroid-auto-bridge
+
