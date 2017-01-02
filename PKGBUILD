@@ -33,7 +33,6 @@ makedepends=('cmake'
              'git'
              'imagemagick'
              'xdg-utils')
-makedepends_i686=('nasm')
 optdepends=('blasphemer-wad: Blasphemer (free Heretic) game data'
             'chexquest3-wad: Chex Quest 3 game data'
             'doom1-wad: Doom shareware game data'
