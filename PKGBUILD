@@ -3,9 +3,9 @@
 # Contributor: Daniel Wallace <daniel.wallace@gatech.edu>
 
 pkgname=openpht
-pkgver=1.6.2.123
-_pkghash=e23a7eef
-pkgrel=4
+pkgver=1.7.1.137
+_pkghash=b604995c
+pkgrel=1
 pkgdesc='OpenPHT is a community driven fork of Plex Home Theater '
 arch=('i686' 'x86_64')
 url='https://github.com/RasPlex/OpenPHT/'
