@@ -5,7 +5,7 @@
 
 pkgname=freefem++
 pkgver=3.50
-pkgrel=1
+pkgrel=2
 pkgdesc="A PDE oriented language using the finite element method"
 arch=('i686' 'x86_64')
 url="http://www.freefem.org/ff++/index.htm"
@@ -25,7 +25,7 @@ prepare() {
   patch -p1 < ../disable-doc.patch
 
   ## fix mumps Makefile includes
-  ed -v download/mumps/Makefile-mumps-5.0.1.inc <<< $',s/^INCS = /& -I. -I\\/usr\\/include /g\nw'
+  ed -v download/mumps/Makefile-mumps-5.0.2.inc <<< $',s/^INCS = /& -I. -I\\/usr\\/include /g\nw'
 
   ## include downloaded headers in ff-c++ jobs
   # ed -v examples++-load/Makefile.in <<< $',s/^	 .\\/ff-c++/& -I..\\/download\\/include /g\nw'
