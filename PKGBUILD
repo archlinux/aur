@@ -13,7 +13,7 @@ _clang=
 
 _pkgname=retroshare
 pkgname=${_pkgname}-git-no-sqlcipher
-pkgver=0.6.1.r444.g8de9ee8b8
+pkgver=0.6.1.r495.ga962330f2
 pkgrel=1
 pkgdesc="Serverless encrypted instant messenger with filesharing, chatgroups, e-mail."
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
