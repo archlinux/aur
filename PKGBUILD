@@ -1,7 +1,7 @@
 # Maintainer: Jesse Spangenberger <azulephoenix@gmail.com>
 
 pkgname=private-internet-access-vpn
-pkgver=3.2.2
+pkgver=3.3
 pkgrel=1
 pkgdesc="Installs VPN profiles for Private Internet Access Service"
 arch=('any')
@@ -12,7 +12,8 @@ makedepends=('git')
 optdepends=('networkmanager: Enables PIA for Network Manager'
             'connman: Enables PIA for Connman'
             'openvpn: Allows running configurations from command-line')
-sha256sums=('1f57eb735141b767f19d653ffa434ffa2d1108c2a5b74fe61c72542056360c77'
+sha256sums=('c7c21e690a836fb42adae0addce45ea97a25d12ffd03d9fde04392933c33f36d'
+            '1f57eb735141b767f19d653ffa434ffa2d1108c2a5b74fe61c72542056360c77'
             '9d28e1883d5f2e1b017789c051c6377b1e97ed86f72f84f3ca33b15a909947c7'
             '4322a2a4bc3e206c6ab7e1df87a8805032b76c177c1ed9dd3501260ed32ccb30'
             '797dbdb6e3aadc86f97262e26d61cf4847caf85dda4b7a97cac59088cb912b27'
@@ -22,19 +23,21 @@ sha256sums=('1f57eb735141b767f19d653ffa434ffa2d1108c2a5b74fe61c72542056360c77'
             'SKIP'
             'SKIP')
 
-source=("https://www.privateinternetaccess.com/openvpn/openvpn.zip"
-	          "https://www.privateinternetaccess.com/openvpn/openvpn-strong.zip"
-			  "login-example.conf"
-			  "pia-example.conf"
-			  "restart.conf"
-			  "vpn.sh"
-			  "pia.8.gz"
-			  "git+https://github.com/flamusdiu/python-pia.git#tag=v${pkgver}"
-			  "git+https://github.com/masterkorp/openvpn-update-resolv-conf.git")
+source=("https://www.privateinternetaccess.com/openvpn/openvpn-ip-lport.zip"
+        "https://www.privateinternetaccess.com/openvpn/openvpn.zip"
+	"https://www.privateinternetaccess.com/openvpn/openvpn-strong.zip"
+	"login-example.conf"
+	"pia-example.conf"
+	"restart.conf"
+	"vpn.sh"
+	"pia.8.gz"
+	"git+https://github.com/flamusdiu/python-pia.git#tag=v${pkgver}"
+	"git+https://github.com/masterkorp/openvpn-update-resolv-conf.git")
 		
-noextract=("openvpn.zip"
-                  "openvpn-strong.zip"
-                  "pia.8.gz")
+noextract=("openvpn-ip-lport.zip"
+           "openvpn.zip"
+           "openvpn-strong.zip"
+           "pia.8.gz")
 
 prepare() {
   cd "${srcdir}"
@@ -42,6 +45,7 @@ prepare() {
   msg2 "Extracting Certifications..."
   bsdtar -xf openvpn.zip "*.pem" "*.crt"
   bsdtar -xf openvpn-strong.zip "*.pem" "*.crt"
+  bsdtar -xf openvpn-ip-lport.zip "*.pem" "*.crt"
   
   msg2 "Extracting OpenVPN Configurations..."
   mkdir "vpn-configs"
