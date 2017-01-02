@@ -2,17 +2,18 @@
 
 _pkgname=encryptpad
 pkgname=${_pkgname}-git
-pkgver=v0.3.2.2.r20.g7d94c7e
+pkgver=v0.3.2.3.r54.g37062a3
 pkgrel=1
 pkgdesc="Minimalist secure text editor and binary encryptor that implements RFC 4880 Open PGP format"
 arch=(i686 x86_64)
 url="https://github.com/evpo/${_pkgname}"
 license=('GPL2')
 depends=('qt5-base' 'hicolor-icon-theme')
+conflicts=('encryptpad')
 makedepends=('git' 'python')
-options=('!makeflags')
 source=("${_pkgname}::git+git://github.com/evpo/EncryptPad.git"
-  "encryptpad.patch")
+  'encryptpad.patch')
+options=('!makeflags')
 sha1sums=('SKIP'
   'fc181153279e6c1167b506a50b4c685475f08bc3')
 
@@ -34,7 +35,7 @@ build() {
 package() {
   cd "$srcdir/${_pkgname}"
   mkdir -p ${pkgdir}/usr/bin
-  install -Dm755 bin/release/encryptcli bin/release/EncryptPad ${pkgdir}/usr/bin/
+  install -Dm755 bin/release/encryptcli bin/release/encryptpad ${pkgdir}/usr/bin/
   install -Dm644 ${_pkgname}.desktop ${pkgdir}/usr/share/applications/${_pkgname}.desktop
   install -Dm644 ${_pkgname}.xml ${pkgdir}/usr/share/mime/application/${_pkgname}.xml
   install -Dm644 images/icns.iconset/icon_16x16.png $pkgdir/usr/share/icons/hicolor/16x16/apps/${_pkgname}.png
