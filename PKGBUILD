@@ -47,7 +47,7 @@ optdepends=('alsa-lib: Advanced Linux Sound Arch. output'
 provides=("${_pkgname}=${pkgver}")
 conflicts=("${_pkgname}")
 source=(http://distfiles.audacious-media-player.org/$_pkgname-$pkgver.tar.bz2)
-sha256sums=('8179b80fffc893d4a2533fc7b7c4800981bc9ab3c6d1742a4c832fd6176ca24a')
+sha256sums=('109c0559c072703dd8d9fc0bb1c5121126bd1e0edcc2804e1ea85974d98e2638')
 
 build() {
   cd "$srcdir/$_pkgname-$pkgver"
