@@ -1,12 +1,14 @@
 # Maintainer: Max Kueng <me [at] maxkueng [dot] com>
 pkgname=yakyak
 pkgver=1.4.0
-pkgrel=0
+pkgrel=1
 pkgdesc="Desktop client for Google Hangouts"
 arch=('x86_64' 'i686')
 url="https://github.com/yakyak/yakyak"
 license=('MIT')
-depends=('libgcrypt15' 'libnotify' 'gconf' 'alsa-lib' 'nss' 'libxtst' 'gtk2' 'libgnome-keyring' 'icu')
+depends=('c-ares' 'ffmpeg' 'gtk3' 'http-parser' 'libevent' 'libvpx' 'libxslt'
+         'libxss' 'minizip' 'nss' 're2' 'snappy' 'gconf' 'alsa-lib' 'libnotify'
+         'libgnome-keyring')
 optdepends=('emojione-color-font: Emoji support')
 
 case $CARCH in
