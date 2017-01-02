@@ -3,7 +3,7 @@
 # Contributor: Pascal Groschwitz <p.groschwitz@googlemail.com>
 
 pkgname=fgdata-git
-pkgver=20161201
+pkgver=20170102
 pkgrel=1
 _gitname="fgdata"
 pkgdesc="Base data for the flightgear flight simulator."
