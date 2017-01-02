@@ -5,7 +5,7 @@
 # Contributor: surefire@cryptomile.net
 
 pkgname=ncdc-git
-pkgver=1.19.1+22+ge3c5ff3
+pkgver=1.20+0+g51f4763
 pkgrel=1
 pkgdesc="Modern and lightweight direct connect client with a friendly ncurses interface"
 arch=('i686' 'x86_64' 'arm')

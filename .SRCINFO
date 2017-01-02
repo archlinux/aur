@@ -1,6 +1,6 @@
 pkgbase = ncdc-git
 	pkgdesc = Modern and lightweight direct connect client with a friendly ncurses interface
-	pkgver = 1.19.1+22+ge3c5ff3
+	pkgver = 1.20+0+g51f4763
 	pkgrel = 1
 	url = http://dev.yorhel.nl/ncdc
 	arch = i686
