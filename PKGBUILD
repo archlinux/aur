@@ -1,7 +1,7 @@
 # Maintainer: Javier Tiá <javier dot tia at gmail dot com>
 
 pkgname=libdill
-_ver=1.0
+_ver=1.1
 _pkgver=${_ver}
 pkgver=${_ver}
 pkgrel=1
@@ -13,7 +13,7 @@ options=('!buildflags')
 makedepends=('gcc')
 license=('MIT')
 source=("https://github.com/sustrik/${pkgname}/archive/${_pkgver}.tar.gz")
-sha256sums=('c7deceebab19a799636d1e92170ee3bd36e0505f79f70f02a81416be03079b57')
+sha256sums=('f1e933ca4d05840dae3f854bc514b2b4ea6756d2d3bbcca681081e98aed6d01a')
 
 prepare() {
   cd "${srcdir}/${pkgname}-${_pkgver}"
