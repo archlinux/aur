@@ -3,7 +3,7 @@
 
 pkgname=caja-dropbox-gtk3
 _pkgname=caja-dropbox
-pkgver=1.14.0
+pkgver=1.17.0
 pkgrel=1
 pkgdesc="Dropbox for Linux - Caja (GTK3 version) extension"
 url="https://github.com/mate-desktop/caja-dropbox"
@@ -21,7 +21,7 @@ optdepends=('dropbox: Dropbox support')
 conflicts=('caja-dropbox')
 options=('!emptydirs')
 source=("https://github.com/mate-desktop/$_pkgname/archive/v$pkgver/$pkgname-$pkgver.tar.gz")
-sha1sums=('1bb337e8b7a7c1f3af06a96ecca0842b74cb15c0')
+sha1sums=('56a0de3ff5b5c090606242bcdc66d2e8e7af63ff')
 
 prepare() {
   cd "${_pkgname}-${pkgver}"
