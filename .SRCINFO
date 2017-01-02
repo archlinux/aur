@@ -1,14 +1,13 @@
 pkgbase = jupyter-octave_kernel
 	pkgdesc = A Jupyter kernel for Octave
 	pkgver = 0.19.9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Calysto/octave_kernel
 	arch = any
 	license = BSD
 	makedepends = python-pip
 	depends = jupyter-notebook
 	depends = octave
-	depends = python-oct2py
 	depends = jupyter-metakernel
 	optdepends = gnuplot: for making plots
 	source = https://pypi.python.org/packages/be/54/3a3c1428923a01b7b12425db808ffc0b40d707f2bd5a67f530f383f71195/octave_kernel-0.19.9-py2.py3-none-any.whl

@@ -2,7 +2,7 @@
 _name=octave_kernel
 pkgname=jupyter-${_name}
 pkgver=0.19.9
-pkgrel=1
+pkgrel=2
 pkgdesc="A Jupyter kernel for Octave"
 arch=('any')
 url="https://github.com/Calysto/octave_kernel"
@@ -10,7 +10,6 @@ license=('BSD')
 depends=(
   'jupyter-notebook'
   'octave'
-  'python-oct2py'
   'jupyter-metakernel'
 )
 makedepends=('python-pip')
