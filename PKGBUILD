@@ -6,7 +6,7 @@ pkgdesc="Execute a command when a file is changed."
 arch=('any')
 url="https://github.com/joh/when-changed"
 license=('BSD')
-depends=('python2' 'watchdog')
+depends=('python' 'watchdog')
 makedepends=('git')
 provides=(when-changed)
 conflicts=(when-changed)
@@ -20,5 +20,5 @@ pkgver() {
 
 package() {
   cd when-changed
-  python2 setup.py install --root="$pkgdir" --optimize=1
+  python setup.py install --root="$pkgdir" --optimize=1
 }
