@@ -1,0 +1,12 @@
+pkgbase = ttf-free3of9
+	pkgdesc = Font for 3 of 9 barcodes (sometimes called code 39)
+	pkgver = 1
+	pkgrel = 1
+	url = http://www.squaregear.net/fonts/
+	arch = any
+	license = custom:Expat
+	source = http://www.squaregear.net/fonts/free3of9.zip
+	md5sums = 1de33e88ea27445e32921bfbaae8919b
+
+pkgname = ttf-free3of9
+
