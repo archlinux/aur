@@ -1,0 +1,9 @@
+post_install() {
+  systemd-sysusers jenkins.conf
+  [[ -d var/lib/jenkins ]] || install -dm 750 -o jenkins -g jenkins var/lib/jenkins
+  systemd-tmpfiles --create jenkins.conf
+}
+
+post_upgrade() {
+  (( $(vercmp $2 '1.633-1') < 0 )) && systemd-sysusers jenkins.conf || true
+}
