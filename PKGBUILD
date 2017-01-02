@@ -17,9 +17,9 @@ sha256sums=('SKIP'
 
 
 pkgver() {
-    cd "miniupnp"
+  cd "miniupnp"
 
-    git describe --long --tags | sed 's/[^-]*-\(.*\)/r\1/;s/-/./g'
+  git describe --long --tags | sed 's/[^-]*-\(.*\)/r\1/;s/-/./g'
 }
 
 build() {
