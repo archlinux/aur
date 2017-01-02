@@ -1,7 +1,7 @@
 # Maintainer: Vinícius dos Santos Oliveira <vini.ipsmaker@gmail.com>
 pkgname=way-cooler-git
-pkgver=v0.3.1.r0.g9b57e9e
-pkgrel=4
+pkgver=v0.4.1.r3.gb08b575
+pkgrel=1
 epoch=1
 pkgdesc="Customizeable Wayland compositor written in Rust"
 arch=('i686' 'x86_64')
@@ -10,20 +10,17 @@ license=('MIT')
 depends=('wlc')
 makedepends=('cargo' 'rust' 'git')
 optdepends=('weston: default terminal emulator'
-            'dmenu: default launcher')
+            'dmenu: default launcher'
+            'way-cooler-bg: draws a background for Way Cooler')
 provides=('way-cooler')
 conflicts=('way-cooler')
+backup=('etc/way-cooler/init.lua')
 source=("${pkgname}::git+https://github.com/Immington-Industries/way-cooler.git")
 md5sums=('SKIP')
 
 pkgver() {
   cd "$pkgname"
   git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
-}
-
-prepare() {
-  cd "$srcdir/$pkgname"
-  rm Cargo.lock
 }
 
 build() {
