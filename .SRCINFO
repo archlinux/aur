@@ -1,13 +1,14 @@
 pkgbase = mingw-w64-cximage
 	pkgdesc = Another free C++ image processing and conversion library
 	pkgver = 7.01
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.xdp.it/cximage/
 	arch = any
 	license = ZLIB
 	makedepends = mingw-w64-configure
 	makedepends = mingw-w64-gcc
 	makedepends = mingw-w64-pkg-config
+	makedepends = dos2unix
 	depends = mingw-w64-jasper
 	depends = mingw-w64-libjpeg-turbo
 	depends = mingw-w64-libpng
@@ -22,7 +23,7 @@ pkgbase = mingw-w64-cximage
 	source = cximage.pc
 	sha1sums = 6138e4babe86b84015df32bf4df814815ffbfecf
 	sha1sums = 39911dc9e8aee7cf473061971445eb246084fc10
-	sha1sums = 72eec651bf1e3d4a7cc0b9ab5a4950cf6d846b43
+	sha1sums = 52a747bcc1736e3ffa7f193e1c12c113267146af
 	sha1sums = e505934712252ea05a730c30062ed6017948a25d
 
 pkgname = mingw-w64-cximage

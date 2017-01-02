@@ -3,12 +3,12 @@ pkgname=mingw-w64-cximage
 major=7
 minor=01
 pkgver=${major}.${minor}
-pkgrel=1
+pkgrel=2
 pkgdesc='Another free C++ image processing and conversion library'
 arch=(any)
 url='http://www.xdp.it/cximage/'
 license=('ZLIB')
-makedepends=(mingw-w64-configure mingw-w64-gcc mingw-w64-pkg-config)
+makedepends=(mingw-w64-configure mingw-w64-gcc mingw-w64-pkg-config dos2unix)
 depends=(mingw-w64-jasper mingw-w64-libjpeg-turbo mingw-w64-libpng mingw-w64-libtiff mingw-w64-zlib)
 options=(!strip !buildflags staticlibs)
 source=("http://sourceforge.net/projects/cximage/files/${major}.${minor}/cximage${major}${minor}_full.7z"
@@ -18,14 +18,16 @@ source=("http://sourceforge.net/projects/cximage/files/${major}.${minor}/cximage
 
 sha1sums=('6138e4babe86b84015df32bf4df814815ffbfecf'
           '39911dc9e8aee7cf473061971445eb246084fc10'
-          '72eec651bf1e3d4a7cc0b9ab5a4950cf6d846b43'
+          '52a747bcc1736e3ffa7f193e1c12c113267146af'
           'e505934712252ea05a730c30062ed6017948a25d')
 
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
 
 prepare() {
-  patch -p1 < cximage-7.0.0-disable-some-formats.patch
-  patch -p1 < cximage-6.0.0-fix-include-name.patch
+  unix2dos -n cximage-7.0.0-disable-some-formats.patch cximage-7.0.0-disable-some-formats_dos.patch
+  patch --binary -p1 < cximage-7.0.0-disable-some-formats_dos.patch
+  unix2dos -n cximage-6.0.0-fix-include-name.patch cximage-6.0.0-fix-include-name_dos.patch
+  patch --binary -p1 < cximage-6.0.0-fix-include-name_dos.patch 
   $(which rm) -f CxImage/stdint.h
 }
 
