@@ -7,8 +7,8 @@ arch=('any')
 url="https://github.com/0devnull0/Surfn"
 license=('Attribution-NonCommercial-ShareAlike 4.0 International Public License')
 makedepends=('git')
+conflicts=(surfn-icons-git menda-circle-icon-theme-git)
 provides=(surfn-icons-git)
-conflicts=(menda-circle-icon-theme-git surfn-icons-git)
 options=(!strip !emptydirs)
 source=('git+https://github.com/0devnull0/Surfn.git')
 sha256sums=('SKIP')
@@ -30,8 +30,9 @@ package() {
   cp -dr --no-preserve='ownership' 'Surfn Arch Blue' "${pkgdir}"/usr/share/icons/
   cp -dr --no-preserve='ownership' 'Menda Circle' "${pkgdir}"/usr/share/icons/
   if test -d /usr/share/icons/breeze-dark/;then
-     msg "'Breeze-dark theme' is installed on your System. KDE users should have it (pre)installed."
-     msg "This theme is a bit 'fine tuned'. Both are co-installable and won't overwrite each other."
+     msg "'Breeze-dark theme' is installed on your System. KDE users should have it installed."
+     msg "The one included in this theme is a bit 'fine tuned'."
+     msg "Both are co-installable and won't overwrite each other."
      while true; do 
      echo -n "Include it anyway? (Y/n): "
      read choice
@@ -44,7 +45,6 @@ package() {
          *) msg "Nope (°_°)";;
      esac
      done 
-
   fi   
 }
 # vim:set ft=sh ts=2 sw=2 et:
