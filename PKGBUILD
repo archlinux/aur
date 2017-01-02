@@ -7,12 +7,12 @@
 _pkgname=gitea
 _gourl="code.gitea.io"
 pkgname=gitea-git
-pkgver=4706.6e5fffbd
+pkgver=r4718.727675dd
 pkgrel=1
 pkgdesc='A painless self-hosted Git service.'
 url='https://gitea.io/'
 license=('MIT')
-source=('git://github.com/go-gitea/gitea.git#branch=master'
+source=('git://github.com/go-gitea/gitea.git'
         'gitea.service.patch'
         'app.ini'
         'gitea.sysusers'
@@ -38,13 +38,13 @@ options=('!strip' 'emptydirs')
 provides=('gitea')
 
 pkgver() {
-  cd "${srcdir}/src/${_gourl}/${_pkgname}"
-  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+  cd "${srcdir}/${_pkgname}"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
   mkdir -p "${srcdir}/src/${_gourl}/${_pkgname}"
-  mv "${srcdir}/gitea" "${srcdir}/src/${_gourl}"
+  cp -r "${srcdir}/gitea" "${srcdir}/src/${_gourl}"
 
   # patch
   msg2 "Patch gitea.service"
