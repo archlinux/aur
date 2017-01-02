@@ -1,0 +1,18 @@
+pkgbase = ardour-demosong
+	pkgdesc = Demo song for Ardour
+	pkgver = 1
+	pkgrel = 1
+	url = https://www.youtube.com/watch?v=iLvjaMH7AlE
+	arch = any
+	license = custom
+	depends = ardour
+	depends = calf
+	depends = eq10q
+	optdepends = jack2: for better sound quality
+	source = https://www.dropbox.com/s/20zecpayz0u43ih/BBMM_Ard.tar.gz
+	source = https://ptpb.pw/51pv
+	md5sums = ee15e95fe7fc1dc0c6d20407518405d7
+	md5sums = 5f3362ed12391bb16c7dad08533cc85f
+
+pkgname = ardour-demosong
+
