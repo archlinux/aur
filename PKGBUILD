@@ -5,7 +5,7 @@ pkgver=20161207.1af8536
 pkgrel=1
 pkgdesc="Liri Browser"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
-url='http://liri.io'
+url='https://liri.io'
 license=('GPL3')
 depends=('fluid-git' 'slime-engine-git')
 makedepends=('git')
@@ -31,7 +31,7 @@ prepare() {
 
 build() {
 	cd build
-	qmake CONFIG+=QTWEBENGINE_ENABLED ../${_gitname}
+	PREFIX=/usr qmake CONFIG+=QTWEBENGINE_ENABLED ../${_gitname}
 	make
 }
 
