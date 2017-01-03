@@ -11,7 +11,7 @@
 _pkgname=playonlinux5
 pkgname=$_pkgname-git
 pkgver=r1409.8cb20ab7
-pkgrel=1
+pkgrel=2
 epoch=2
 pkgdesc="GUI for managing Windows programs under linux (development version based on Java)"
 arch=('any')
@@ -22,7 +22,7 @@ depends=('wine')
 options=(!strip)
 source=(
 		"$_pkgname::git://github.com/PlayOnLinux/POL-POM-5.git"
-        'PlayOnLinux5.desktop'
+		'PlayOnLinux5.desktop'
 		'PlayOnLinux.sh'
 		)
 sha256sums=(

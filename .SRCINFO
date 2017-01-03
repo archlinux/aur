@@ -1,7 +1,7 @@
 pkgbase = playonlinux5-git
 	pkgdesc = GUI for managing Windows programs under linux (development version based on Java)
 	pkgver = r1409.8cb20ab7
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 2
 	url = http://www.playonlinux.com/
 	arch = any
