@@ -1,7 +1,7 @@
 # Maintainer: Kristian Gunstone <kristian.gunstone.butnotthispart@pean.northis.org>
 pkgname=netris-git
-pkgver=0.55g # Is automatically updated by pkgver() below
-pkgrel=2
+pkgver=0.55g_10 # Is automatically updated by pkgver() below
+pkgrel=1
 pkgdesc="Mark H. Weaver's Netris - A networked terminal version of Tetris. This is my fork, which itself is based on Nathan Aclander's fork."
 arch=('i686' 'x86_64')
 url="https://github.com/gammy/netris.git"
@@ -30,7 +30,13 @@ build() {
 }
 
 package() {
-    mkdir -p "${pkgdir}/usr/bin/"
-    cp -v "${pkgname}/netris" "${pkgdir}/usr/bin/netris"
-    cp -v "${pkgname}/sr"     "${pkgdir}/usr/bin/netris-sr"
+    local binpath="/usr/bin"
+    local manpath="/usr/share/man/man6"
+
+    mkdir -p "${pkgdir}/${binpath}" "${pkgdir}/${manpath}"
+
+    cp -v "${pkgname}/netris" "${pkgdir}/${binpath}/netris"
+    cp -v "${pkgname}/sr"     "${pkgdir}/${binpath}/netris-sr"
+
+    gzip -c "${pkgname}/netris.6.man" > "${pkgdir}/${manpath}/netris.6.gz"
 }
