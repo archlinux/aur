@@ -1,0 +1,14 @@
+pkgbase = hifive1-sdk-git
+	pkgdesc = The Official SDK of the RISC-V-based HiFive Board
+	pkgver = v0.0.5.r785.g6df383c
+	pkgrel = 1
+	url = https://www.sifive.com/
+	arch = x86_64
+	license = APACHE
+	makedepends = git
+	makedepends = base-devel
+	source = git+https://github.com/sifive/freedom-e-sdk.git
+	sha256sums = SKIP
+
+pkgname = hifive1-sdk-git
+
