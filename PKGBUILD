@@ -1,13 +1,13 @@
 pkgname=alacritty-git
-pkgver=0.1.0.222
+pkgver=0.1.0.266
 pkgrel=1
-pkgdesc="WORK IN PROGRESS - a terminal"
+pkgdesc="A cross-platform, GPU enhanced terminal emulator"
 arch=('x86_64' 'i686')
 url="https://github.com/jwilm/alacritty"
 license=('Apache-2.0')
 depends=()
 makedepends=('cargo')
-optdepends=()
+optdepends=("xclip: X clipboard support")
 provides=('alacritty')
 conflicts=('alacritty')
 source=($pkgname::git+https://github.com/jwilm/alacritty.git)
