@@ -1,0 +1,20 @@
+pkgbase = bleachbit-git
+	pkgdesc = Deletes unneeded files to free disk space and maintain privacy.
+	pkgver = r3751.87065211
+	pkgrel = 1
+	url = https://www.bleachbit.org/
+	arch = any
+	license = GPL3
+	depends = python2
+	depends = gtk2
+	depends = pygtk
+	depends = desktop-file-utils
+	depends = gtk-update-icon-cache
+	depends = hicolor-icon-theme
+	provides = bleachbit
+	conflicts = bleachbit
+	source = git://github.com/bleachbit/bleachbit.git
+	sha256sums = SKIP
+
+pkgname = bleachbit-git
+
