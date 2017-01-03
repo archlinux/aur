@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=Qsoas
+Comment=Open-source software developed to analyze electrochemical data and other one-dimensional signals.
+Exec=qsoas
+Icon=qsoas
+Terminal=false
+StartupNotify=false
+Categories=Application;Education;
