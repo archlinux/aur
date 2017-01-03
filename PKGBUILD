@@ -1,4 +1,4 @@
-# Contributor: Dirk Langer <dirk.langer@vvovgonik.de>
+# Contributor: Ordoban <dirk.langer@vvovgonik.de>
 
 pkgname='perl-moosex-methodattributes'
 pkgver='0.31'
