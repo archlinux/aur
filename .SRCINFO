@@ -1,0 +1,17 @@
+pkgbase = pendulumdata
+	pkgdesc = Digital Pendulum Data & Analysis
+	pkgver = 1.1
+	pkgrel = 2
+	url = https://github.com/bradklee/DataAnalysis/tree/master/PlanePendulum
+	arch = any
+	license = GPL
+	depends = python
+	depends = gnuplot
+	source = local://PendulumDataV1.1.tar.gz
+	source = local://PendulumDataV1.1.tar.gz.sig
+	validpgpkeys = EF6F2A81897A87838FDF67BB6B5766ADDC064400
+	md5sums = 4683d728f9b4d3d40e6a1380bdbe385c
+	md5sums = SKIP
+
+pkgname = pendulumdata
+
