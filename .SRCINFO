@@ -1,0 +1,16 @@
+pkgbase = python2-affine
+	pkgdesc = Matrices describing affine transformation of the plane (Python 2.7)
+	pkgver = 2.0.0.post1
+	pkgrel = 1
+	url = https://github.com/sgillies/affine
+	arch = any
+	license = BSD
+	makedepends = python2-setuptools
+	options = !emptydirs
+	source = https://pypi.python.org/packages/b0/3c/e1a37f1e92f27f5e32371b572201819c59d5e917d600d46df80f780cab43/affine-2.0.0.post1.tar.gz#md5=b7f4e2c86adc6575a7563c401d07f992
+	source = https://raw.githubusercontent.com/sgillies/affine/2.0.0.post1/LICENSE.txt
+	md5sums = b7f4e2c86adc6575a7563c401d07f992
+	md5sums = 75dd4e368ae6aeef7f6ab3f8e8e796a8
+
+pkgname = python2-affine
+
