@@ -3,7 +3,7 @@
 # Contributor: Rafał Michalski <plum.michalski at gmail dot com>
 pkgname="burp-backup"
 _pkgname="burp"
-pkgver=2.0.52
+pkgver=2.0.54
 pkgrel=1
 pkgdesc="A backup and restore program that uses librsync to reduce backup size."
 arch=('i686' 'x86_64')
@@ -25,7 +25,7 @@ source=(
 )
 
 sha256sums=(
-  6426858b5f481da6800798d84cb56fe6bf5aaad295ab9ace3d8606b4e960669e # burp-2.0.52.tar.bz2
+  ae10470586f1fee4556eaae5b3c52b78cfc0eac4109f4b8253c549e7ff000d86 # burp-2.0.54.tar.bz2
   813b5c349f9d0ea1db2fb166531472b098a773aa3d2766d151f175ad17c40351 # burp.install
   94e1b5f8cf61c44f84675f685279e0d3376abd61ac1e6e4f5da0dd6b922c481f # burp-server.service
   7908970e23cfb08554cbf53da1f8f3193a6b6ee076584f797644efab8431bfe3 # burp-client.service
