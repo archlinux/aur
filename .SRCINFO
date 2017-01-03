@@ -1,0 +1,16 @@
+pkgbase = eliot
+	pkgdesc = An open source Scrabble game
+	pkgver = 2.1
+	pkgrel = 1
+	url = http://www.nongnu.org/eliot/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = arabica
+	depends = libconfig
+	depends = qt4
+	source = http://dl.sv.nongnu.org/releases-noredirect/eliot/releases/2.1/eliot-2.1.tar.gz
+	md5sums = b00827bfcd64a6cc075357f3b3c34df9
+
+pkgname = eliot
+
