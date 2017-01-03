@@ -1,7 +1,7 @@
 #Maintainer: M0Rf30
 
 pkgname=peerflix-server
-pkgver=0.0.30
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="Streaming torrent client for node.js with web ui"
 arch=('i686' 'x86_64')
@@ -31,6 +31,6 @@ package(){
   install -Dm775 "${srcdir}/peerflix-server.sh" "${pkgdir}/usr/bin/peerflix-server"
 } 
 
-md5sums=('7ef5c09d342e0222bd3e487a808b7fca'
+md5sums=('42940f3fbaea5ea88d9781f193455d60'
          'ee5ad551f86380d0a353b5220ab58159'
          'f22faa77f2d6049eee5d1a91140a25cc')
