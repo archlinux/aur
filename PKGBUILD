@@ -1,7 +1,7 @@
 # Contributor: Daniel Kirchner <daniel AT ekpyron DOT org>
 
 pkgname=mingw-w64-zlib
-pkgver=1.2.9
+pkgver=1.2.10
 pkgrel=1
 pkgdesc="A compression/decompression Library (mingw-w64)"
 arch=('any')
@@ -11,7 +11,7 @@ makedepends=(mingw-w64-gcc)
 url="http://www.zlib.net/"
 source=("http://zlib.net/zlib-${pkgver}.tar.gz")
 options=(!strip !buildflags staticlibs)
-md5sums=('e453644539a07783aa525e834491134e')
+md5sums=('d9794246f853d15ce0fcbf79b9a3cf13')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
