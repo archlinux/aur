@@ -1,7 +1,7 @@
 # Maintainer: Tatsunori Aoki <ginjiro.135 at gmail dot com>
 # Contributor: eagletmt <eagletmt@gmail.com>
 pkgname=ttf-ricty
-pkgver=4.0.2b
+pkgver=4.1.0
 pkgrel=1
 pkgdesc='Japanese TrueType font for developers by mixing Inconsolata and Migu 1M.'
 arch=('any')
@@ -10,15 +10,13 @@ license=('custom')
 depends=('fontconfig' 'xorg-font-utils')
 makedepends=('fontforge' 'ttf-inconsolata>=20090215-4' 'ttf-migu')
 install=ttf.install
-source=('http://www.rs.tus.ac.jp/yyusa/ricty/ricty_generator.sh'
-        'http://www.rs.tus.ac.jp/yyusa/ricty/ricty_discord_converter.pe')
-sha1sums=('1390b38d700ccf7db93c613d3c682dde410795e4'
-          'f531f013b3b20efa761a334a6602b8fdd4eb9b15')
+source=('http://www.rs.tus.ac.jp/yyusa/ricty/ricty_generator.sh')
+sha1sums=('c38475f680d1c0d648949a1e70722b5c31895690')
 
 build() {
   cd "$srcdir"
   chmod +x ./ricty_generator.sh
-  ./ricty_generator.sh /usr/share/fonts/TTF/{Inconsolata-Regular.ttf,Inconsolata-Bold.ttf,migu-1m-regular.ttf,migu-1m-bold.ttf}
+  ./ricty_generator.sh -dr0 /usr/share/fonts/TTF/{Inconsolata-Regular.ttf,Inconsolata-Bold.ttf,migu-1m-regular.ttf,migu-1m-bold.ttf}
 }
 
 package() {
