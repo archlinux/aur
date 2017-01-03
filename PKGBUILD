@@ -11,10 +11,10 @@ source=('git+https://github.com/hermzz/fortunes-oblique-strategies.git')
 md5sums=(SKIP)
 
 package() {
-	cd "${srcdir}/${_pkgname}"
+    cd "${srcdir}/${_pkgname}"
 
     mkdir -p ${pkgdir}/usr/share/fortune
 
-    cp oblique-ed4 ${pkgdir}/usr/share/fortune
-    cp oblique-ed4.dat ${pkgdir}/usr/share/fortune
+    install -D -m644 oblique-ed4 ${pkgdir}/usr/share/fortune/oblique-strategies
+    install -D -m644 oblique-ed4.dat ${pkgdir}/usr/share/fortune/oblique-strategies.dat
 }
