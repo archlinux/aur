@@ -1,6 +1,6 @@
 # Maintainer: Takashi Kokubun <takashikkbn@domain.com>
 pkgname=xkremap
-pkgver=0.0.1
+pkgver=0.0.3
 pkgrel=1
 pkgdesc="Dynamic key remapper for X Window System"
 arch=('i686' 'x86_64')
