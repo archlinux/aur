@@ -3,7 +3,7 @@
 # Contributor: Kyle Keen <keenerd@gmail.com>
 
 pkgname=lib32-zeromq
-pkgver=4.1.5
+pkgver=4.2.0
 pkgrel=1
 pkgdesc='Distributed messaging'
 arch=('x86_64')
@@ -12,8 +12,8 @@ license=('LGPL')
 depends=('lib32-gcc-libs' 'lib32-glibc' 'lib32-libpgm' 'lib32-libsodium'
          'zeromq')
 makedepends=('asciidoc' 'gcc-multilib' 'xmlto')
-source=("https://github.com/zeromq/zeromq4-1/releases/download/v${pkgver}/zeromq-${pkgver}.tar.gz")
-sha256sums=('04aac57f081ffa3a2ee5ed04887be9e205df3a7ddade0027460b8042432bdbcf')
+source=("https://github.com/zeromq/libzmq/releases/download/v${pkgver}/zeromq-${pkgver}.tar.gz")
+sha256sums=('53b83bf0ee978931f76fa9cb46ad4affea65787264a5f3d140bc743412d0c117')
 
 prepare() {
   cd zeromq-${pkgver}
