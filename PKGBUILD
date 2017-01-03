@@ -2,7 +2,7 @@
 
 pkgname=cnijfilter-ip4500
 pkgver=2.80
-pkgrel=3
+pkgrel=4
 pkgdesc="Canon IJ Printer Driver for Pixma IP4700 series Inkjet Printers"
 arch=('x86_64')
 url="http://software.canon-europe.com/software/0028476.asp"
@@ -13,7 +13,7 @@ license=('custom')
 
 depends=('lib32-libpng12' 'cups' 'lib32-e2fsprogs' 'lib32-glibc' 'lib32-gnutls'
          'lib32-libcups' 'lib32-libgcrypt' 'lib32-libgpg-error'
-         'lib32-libtasn1' 'lib32-openssl' 'lib32-popt' 'lib32-sqlite3' 'lib32-zlib'
+         'lib32-libtasn1' 'lib32-openssl' 'lib32-popt' 'lib32-sqlite' 'lib32-zlib'
          'lib32-libtiff3')
 makedepends=('rpmextract')
 source=('http://files.canon-europe.com/files/soft28476/software/28476.tgz'
@@ -36,6 +36,8 @@ build() {
   mv usr/lib32/bjlib usr/lib
 
   patch usr/share/cups/model/canonip4500.ppd ${startdir}/canonip4500.ppd.patch || return 1
+}
 
-  mv usr ${pkgdir}
+package() {
+  mv ${srcdir}/usr ${pkgdir}
 }
