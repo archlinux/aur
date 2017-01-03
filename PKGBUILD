@@ -6,7 +6,7 @@
 
 pkgname=mplayer2
 pkgver=20131009
-pkgrel=11
+pkgrel=12
 pkgdesc='Advanced general-purpose media player. A fork of the original MPlayer project'
 arch=('i686' 'x86_64')
 license=('GPL')
@@ -24,7 +24,7 @@ provides=('mplayer')
 conflicts=('mplayer')
 options=(!emptydirs)
 source=(https://github.com/nezumisama/mplayer2/archive/stable.tar.gz)
-sha256sums=('2f812f946a03acf8d3984ef84b3782476d2a07cf34ca95e5c8d12f7efbcb654b')
+sha256sums=('4ed56a90eabdddbe6b16f4bebb03aff4ac06ee74a6ac02bbca380f321aab79de')
 
 build() {
   cd "$pkgname-stable"
