@@ -4,16 +4,22 @@ _pkgname=an2linuxserver
 pkgname=an2linuxserver-git
 pkgver=r2.32c9bb8
 pkgrel=1
-pkgdesc='Make Persian EPUBs compatible to E-Readers such as Kindle'
+pkgdesc='Sync android notifications encrypted to a linux desktop with tcp or bluetooth'
 url='https://github.com/rootkiwi/an2linuxserver/'
 license=('GPL3')
-source=('git+https://github.com/rootkiwi/an2linuxserver.git')
-sha256sums=('SKIP')
+source=('git+https://github.com/rootkiwi/an2linuxserver.git'
+        'an2linuxserver.service')
+sha256sums=('SKIP'
+            'bbde8724bd49be3f5f7ae38f283aec409ab81347c486f1b484a1e2c0c8026b09')
 arch=('any')
-depends=('python' 'libnotify' 'python-gobject' 'openssl')
+depends=('python'
+         'libnotify'
+         'python-gobject'
+         'openssl')
 makedepends=('git')
 conflicts=('an2linuxserver')
 provides=('an2linuxserver')
+install=$pkgname.install
 
 pkgver() {
   cd "${srcdir}/${_pkgname}"
@@ -25,4 +31,5 @@ pkgver() {
 
 package() {
   install -Dm755 "${srcdir}/${_pkgname}/an2linuxserver.py" "${pkgdir}/usr/bin/an2linuxserver.py"
+  install -Dm644 an2linuxserver.service ${pkgdir}/usr/lib/systemd/user/an2linuxserver.service
 }

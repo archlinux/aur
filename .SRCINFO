@@ -1,17 +1,22 @@
 pkgbase = an2linuxserver-git
-	pkgdesc = Make Persian EPUBs compatible to E-Readers such as Kindle
-	pkgver = 1.5.1b.r17.g2b5d5d4
+	pkgdesc = Sync android notifications encrypted to a linux desktop with tcp or bluetooth
+	pkgver = r2.32c9bb8
 	pkgrel = 1
 	url = https://github.com/rootkiwi/an2linuxserver/
+	install = an2linuxserver-git.install
 	arch = any
 	license = GPL3
 	makedepends = git
-	depends = python libnotify python-gobject openssl
+	depends = python
+	depends = libnotify
+	depends = python-gobject
+	depends = openssl
 	provides = an2linuxserver
 	conflicts = an2linuxserver
-	source = git+https://github.com/rootkiwi/a2linuxserver.git
+	source = git+https://github.com/rootkiwi/an2linuxserver.git
+	source = an2linuxserver.service
 	sha256sums = SKIP
-	sha256sums = 15190d1c90ea9bc363104e62a321b6c01e46b1a6df22a59bdd8436b4dd2e05e4
+	sha256sums = bbde8724bd49be3f5f7ae38f283aec409ab81347c486f1b484a1e2c0c8026b09
 
 pkgname = an2linuxserver-git
 

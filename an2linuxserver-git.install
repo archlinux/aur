@@ -1,0 +1,14 @@
+post_install() {
+    printf "\n"
+    printf "==> NOTE: First execute by running an2linuxserver.py"
+    printf "\n"
+    printf "==>       Ater making sure it works, enable user service by"
+    printf "\n"
+    printf "==>       systemctl --user enable an2linuxserver.service"
+    printf "\n"
+    printf "==>       systemctl --user start an2linuxserver.service"
+}
+
+post_upgrade() {
+    post_install
+}
