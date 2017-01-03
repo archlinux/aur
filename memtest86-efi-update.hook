@@ -1,0 +1,10 @@
+[Trigger]
+Operation = Upgrade
+Type = File
+Target = /usr/share/$pkgname/bootia32.efi
+Target = /usr/share/$pkgname/bootx64.efi
+
+[Action]
+Description = Updating MemTest86 EFI into ESP
+When = PostTransaction
+Exec = /usr/bin/memtest86-efi --update

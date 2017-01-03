@@ -7,3 +7,5 @@
 !memtest86-efi.install
 !grub.conf
 !systemd-boot.conf
+!memtest86-efi-update.hook
+!memtest86-efi-remove.hook

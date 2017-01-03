@@ -1,0 +1,10 @@
+[Trigger]
+Operation = Remove
+Type = File
+Target = /usr/share/$pkgname/bootia32.efi
+Target = /usr/share/$pkgname/bootx64.efi
+
+[Action]
+Description = Removing MemTest86 EFI from ESP
+When = PostTransaction
+Exec = /usr/bin/memtest86-efi --remove
