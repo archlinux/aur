@@ -1,7 +1,7 @@
 # Maintainer: Alexander F Rødseth <xyproto@archlinux.org>
 
 pkgname=algernon
-pkgver=1.3.1
+pkgver=1.3.2
 pkgrel=1
 pkgdesc='Web/application server with built-in support for Lua and Markdown'
 arch=('x86_64' 'i686')
