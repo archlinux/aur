@@ -9,10 +9,12 @@ makedepends=(djgpp-gcc gcc nasm bash)
 source=(
 	"http://www.watt-32.net/watt32s-${pkgver//.dev.rel./-dev.}.zip"
 	mkmake.bash
+	watt32.pc
 )
 sha512sums=(
 	'63e57e6da2a238d5970b0cac149940126cc85c919eb33ddb0b8bae0dfafadbf70e3a93b9462d34a62c49aa77000f6cfe7a170eecb22d706b0ad40e5c6f9a0f5b'
 	'3ea25f72bf6db9233da82a2939fd4dd0ff2c2706ce168733c216af61c6f49e5ec32d15ad1ca7576865a7c0711c1e2d2c0dc22d078b3fb0df663ad1cb9d8d74af'
+	'0e8212676b974da25eac0afb42d044ef677ce7593c615e0a0a1875fdfdfe9a813961a6a502402eefe93e43930fbf7474525c1657e637f0ac449626606642c86c'
 )
 options=(!buildflags !strip)
 
@@ -100,4 +102,6 @@ package() {
 
 	cd "$srcdir/lib"
 	install -Dm0644 libwatt.a "$pkgdir/usr/i686-pc-msdosdjgpp/lib/libwatt.a"
+
+	install -Dm0644 watt32.pc "$pkgdir/usr/i686-pc-msdosdjgpp/lib/pkgconfig/watt32.pc"
 }

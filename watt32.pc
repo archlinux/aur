@@ -1,0 +1,4 @@
+Name: Watt-32
+Version: 2.2-dev.10
+Cflags: -I/usr/i686-pc-msdosdjgpp/include/watt32
+Libs: -lwatt -lz
