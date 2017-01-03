@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=TreeNote
+Icon=treenote
+Type=Application
+Categories=Office;
+Exec=treenote
+Terminal=false
+StartupNotify=false
+Keywords=Outliner
+MimeType=application/x-treenote-treenote;

@@ -1,0 +1,17 @@
+pkgbase = treenote-git
+	pkgdesc = An intuitive outliner for personal knowledge and task management.
+	pkgver = 20170103
+	pkgrel = 1
+	url = http://treenote.org
+	install = treenote-git.install
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = python-pyqt5
+	depends = shared-mime-info
+	depends = desktop-file-utils
+	source = git+https://github.com/TreeNote/TreeNote
+	md5sums = SKIP
+
+pkgname = treenote-git
+
