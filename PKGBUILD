@@ -2,7 +2,7 @@
 
 pkgname=intelpwm-udev
 pkgver=20170301
-pkgrel=1
+pkgrel=2
 pkgdesc="UDEV rules for setting backlight PWM frequency on Intel HD Graphics"
 arch=('i686' 'x86_64')
 depends=(intel-gpu-tools)
@@ -13,8 +13,8 @@ install='intelpwm-udev.install'
 source=(99-intelpwm.rules intelpwm intelpwm.conf)
 
 md5sums=('cc557bd9a9d45f7524713aa4cc0dcaf0'
-         '8307210b9aba977e7345b0f8710b049e'
-         'a76d4da1e2071169dafd0b66e47424d6')
+         '6b35538e0d78a32a1c0e20a187716351'
+         '940ab594183c24faef6f26e850c12f9c')
 
 build() {
 	  true
