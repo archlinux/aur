@@ -1,4 +1,5 @@
-# Maintainer: Daniel Bermond < yahoo-com: danielbermond >
+# Maintainer: Caleb Maclennan <caleb@alerque.com>
+# Contributor: Daniel Bermond < yahoo-com: danielbermond >
 
 # ImageMagick compiled with all features and delegate libraries.
 # Using quantum depth 32 (Q32) and HDRI.
@@ -29,10 +30,10 @@ _srcver="$(curl -s "$_digest" | grep -o "${_srcname}-7[0-9\.-]*\.tar\.xz" | \
                                 sort -r                                   | \
                                 head -n1)"
 _srcverregex="$(echo "$_srcver" | sed 's/\./\\\./g')" # translate to a regular expression
-pkgname=imagemagick-full
+pkgname=imagemagick7
 pkgver="$(echo "$_srcver"| tr '-' '.')"
 pkgrel=1
-pkgdesc="An image viewing/manipulation program (Q32 HDRI with all libs and features)"
+pkgdesc="An image viewing/manipulation program (_just_ the new magick binary from IM7, all others IM6)"
 arch=('i686' 'x86_64')
 url="http://www.imagemagick.org/"
 license=('custom')
@@ -42,15 +43,14 @@ depends=('jemalloc' 'bzip2' 'libx11' 'libxext' 'libxt' 'libsm' 'zlib'
          'gsfonts' 'graphviz' 'jbigkit' 'libjpeg-turbo' 'lcms' 'lcms2'
          'openjpeg2' 'liblqr' 'xz' 'openexr' 'pango' 'libpng' 'librsvg'
          'libtiff' 'libwebp' 'libwmf' 'libxml2' 'libmpeg2'
-         'opencl-icd-loader')
+         'opencl-icd-loader' 'imagemagick')
 optdepends=('ttf-mac-fonts: for Apple fonts support')
 makedepends=('opencl-headers')
 provides=("imagemagick"
           "libMagickCore-${pkgver%%.*}.Q32HDRI.so"
           "libMagickWand-${pkgver%%.*}.Q32HDRI.so"
             "libMagick++-${pkgver%%.*}.Q32HDRI.so")
-conflicts=('imagemagick' 'imagemagick-git' 'imagemagick-full-git'
-           'imagemagick-fftw' 'imagemagick-no-hdri')
+conflicts=('imagemagick-full' 'imagemagick-full-git' 'imagemagick-full-doc-git' 'imagemagick-full-doc')
 backup=("etc/ImageMagick-${pkgver%%.*}/coder.xml"
         "etc/ImageMagick-${pkgver%%.*}/colors.xml"
         "etc/ImageMagick-${pkgver%%.*}/delegates.xml"
@@ -84,7 +84,7 @@ build() {
 	        --enable-static=no \
 	        --enable-shared=yes \
 	        --enable-fast-install=yes \
-	        --disable-delegate-build \
+	        --disnable-delegate-build \
 	        --enable-cipher \
 	        --enable-hdri \
 	        --enable-hugepages \
@@ -141,6 +141,14 @@ package() {
 	
 	install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 	install -D -m644 NOTICE  "${pkgdir}/usr/share/licenses/${pkgname}/NOTICE"
+
+    # strip everything except the magick command, well let IM6 handle these
+    for im6cmd in animate compare composite conjure convert display identify import mogrify montage stream Magick++-config MagickCore-config MagickWand-config; do
+        find ${pkgdir} -name ${im6cmd} -delete
+        find ${pkgdir} -name ${im6cmd}.1.gz -delete
+    done
+    find ${pkgdir} -type f -name Magick.pm -delete
+    find ${pkgdir} -type f -name Image::Magick.3pm.gz -delete
 	
 	# Security fix
 	# https://www.imagemagick.org/discourse-server/viewtopic.php?f=4&t=29588
