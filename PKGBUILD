@@ -1,11 +1,11 @@
-# Maintainer: Sergey Marochkin <me@ziggi.org>
+# Maintainer: Sergei Marochkin <me@ziggi.org>
 # Maintainer: Andreas Radke <andyrtr@archlinux.org>
 # Maintainer: Jan de Groot <jgc@archlinux.org>
 
 pkgname=xdg-utils-patched
 _origpkgname=xdg-utils
 pkgver=1.1.1
-pkgrel=2
+pkgrel=1
 pkgdesc="Patched xdg-utils with xdg-open magnet fix"
 arch=('any')
 url="http://www.freedesktop.org/wiki/Software/xdg-utils/"
@@ -14,24 +14,25 @@ conflicts=('xdg-utils')
 provides=('xdg-utils')
 depends=('sh' 'xorg-xset') # xset needed inside xdg-screensaver
 makedepends=('docbook-xsl' 'lynx' 'xmlto' 'git')
-optdepends=('kdebase-runtime: for KDE4 support in xdg-open'
-            'kde-cli-tools: for KDE Plasma5 support in xdg-open'
+optdepends=('kde-cli-tools: for KDE Plasma5 support in xdg-open'
             'libgnome: for GNOME support in xdg-open'
             'exo: for Xfce support in xdg-open'
             'xorg-xprop: for Xfce support in xdg-open'
             'pcmanfm: for LXDE support in xdg-open'
-            'perl-file-mimeinfo: for generic support in xdg-open')
-source=("http://portland.freedesktop.org/download/$_origpkgname-$pkgver.tar.gz"
-        "generic_x_scheme.patch"
-        "support_for_KDE_Frameworks_5.6.diff")
+            'perl-file-mimeinfo: for generic support in xdg-open'
+            'perl-net-dbus: Perl extension to dbus used in xdg-screensaver'
+            'perl-x11-protocol: Perl X11 protocol used in xdg-screensaver')
+source=(http://portland.freedesktop.org/download/$_origpkgname-$pkgver.tar.gz{,.asc}
+        "git+https://github.com/ziggi/xdg-utils-patched.git")
 sha512sums=('6641b17daea7eecfee0d395e621dc42481582e505bff90a6df5eb0299ed2dca7a76520f000d9545a8424f06d41590382156a2e50f3d68d5c1ab825c268e90edb'
-            '5ceda4071973d30c5bfdab4e5682b2e0584c8399ed50a877aa7f9e64606115a890b8d8ff6215ebe4d8f9d554a20515a929ecda897595265c1cd88350fa929bf7'
-            '6f5a501b3abb5b71d773f46620a94ea908ceb452f5189f66dd24d14aaa675b2db7c3287bac02d87077db8180489409bb9e63f5ae700a96725e9a23fe8416458a')
+            'SKIP'
+            'SKIP')
+validpgpkeys=('8B75CA7811367175D05F3B03C43570F80CC295E6') # "Per Olofsson <pelle@pqz.se>"
 
 prepare() {
 	cd $_origpkgname-$pkgver
-	patch -Np1 -i ../generic_x_scheme.patch
-	patch -Np1 -i ../support_for_KDE_Frameworks_5.6.diff
+	patch -Np1 -i ../xdg-utils-patched/*.patch
+	patch -Np1 -i ../xdg-utils-patched/*.diff
 }
 
 build() {
