@@ -1,7 +1,7 @@
 # Maintainer: Josh VanderLinden <arch@cloudlery.com>
 _gitname=vnstat-ui
 pkgname=vnstatui
-pkgver=0.8.1
+pkgver=0.8.2
 pkgrel=1
 pkgdesc="Basic web UI that displays traffic graphs from vnstat"
 arch=('any')
