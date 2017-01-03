@@ -4,7 +4,7 @@ _basename=renderdoc
 pkgname=$_basename-bin
 pkgver=0.32
 _tarname=$_basename\_$pkgver
-pkgrel=1
+pkgrel=2
 pkgdesc="OpenGL and Vulkan debugging tool - binary version"
 arch=(x86_64)
 url="https://github.com/baldurk/renderdoc"
@@ -28,6 +28,6 @@ package() {
 
     cd $pkgdir/usr
     install -Dm644 $srcdir/LICENSE.md share/licenses/renderdoc-bin
-    find lib/ share/  -type f -exec chmod 644 {} \;
-    find bin/ -type f -exec chmod 755 {} \;
+    find share/ -type f -exec chmod 644 {} \;
+    find lib/ bin/ -type f -exec chmod 755 {} \;
 }
