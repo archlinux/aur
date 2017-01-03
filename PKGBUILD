@@ -2,7 +2,7 @@
 
 pkgname=fortune-mod-git
 pkgver=r81.082e4c0
-pkgrel=1
+pkgrel=2
 pkgdesc='Maintenance version of fortune-mod from redellipse.net'
 arch=('i686' 'x86_64')
 url='https://github.com/shlomif/fortune-mod'
@@ -35,8 +35,10 @@ package() {
   cd "${srcdir}/${_gitname}/${_gitname}/cmake"
 
   make install DESTDIR="${pkgdir}"
+	mv "${pkgdir}/usr/games/fortune" "${pkgdir}/usr/bin/"
 	mv "${pkgdir}/usr/sbin/strfile" "${pkgdir}/usr/bin/"
 	mv "${pkgdir}/usr/sbin/unstr" "${pkgdir}/usr/bin/"
+	rmdir "${pkgdir}/usr/games"
 	rmdir "${pkgdir}/usr/sbin"
 }
 
