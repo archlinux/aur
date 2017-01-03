@@ -4,6 +4,7 @@
 # Contributor: Stefan Achatz <erazor_de@users.soruceforge.net>
 # Contributor: Zachary Lund <admin@computerquip.com>
 # Contributor: Jesus Gonzalez <jesusmgh@gmail.com>
+# Contributor: Francisco Pina-Martins <f.pinamartins@gmail.com>
 
 pkgname=('roccat-tools-common'
          'roccat-tools-arvo'
@@ -31,7 +32,7 @@ pkgname=('roccat-tools-common'
          'roccat-tools-nyth')
 pkgbase=roccat-tools
 pkgver=5.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Userland applications to configure and make extended use of ROCCAT devices'
 arch=('i686' 'x86_64')
 url='http://roccat.sourceforge.net'
@@ -39,8 +40,12 @@ license=('GPL2')
 depends=('libgaminggear>=0.15.0' 'libcanberra' 'gtk2' 'libnotify>=0.7.0' 'dbus-glib' 'udev' 'hicolor-icon-theme' 'libgudev' 'lua>=5.3')
 makedepends=('cmake')
 optdepends=('kmod-roccat: Adds support for the old kone device.')
-source=("http://downloads.sourceforge.net/project/roccat/roccat-tools/roccat-tools-$pkgver.tar.bz2")
-md5sums=('1cd328de42261c736ee275b33c8ecbb8')
+source=("http://downloads.sourceforge.net/project/roccat/roccat-tools/roccat-tools-$pkgver.tar.bz2"
+        '90-uinput.rules'
+        'uhid.conf')
+md5sums=('1cd328de42261c736ee275b33c8ecbb8'
+         'd9e6955139aac24c35ef7951a44d919a'
+         '342d4f032d4d4d64e8a2136fd742c1c9')
 
 build() {
   cd "$srcdir/$pkgbase-$pkgver"
@@ -62,6 +67,10 @@ package_roccat-tools-common() {
     cd $srcdir/$pkgbase-$pkgver/$i
     make DESTDIR="$pkgdir/" install
   done
+
+  cd $srcdir
+  install -Dm644 uhid.conf $pkgdir/etc/modules-load.d/uhid.conf
+  install -Dm644 90-uinput.rules $pkgdir/usr/lib/udev/rules.d/90-uinput.rules
 }
 
 package_roccat-tools-arvo() {
