@@ -2,7 +2,7 @@
 
 pkgname=fortune-mod-git
 pkgver=r81.082e4c0
-pkgrel=2
+pkgrel=3
 pkgdesc='Maintenance version of fortune-mod from redellipse.net'
 arch=('i686' 'x86_64')
 url='https://github.com/shlomif/fortune-mod'
@@ -27,7 +27,7 @@ prepare() {
 build() {
   cd "${srcdir}/${_gitname}/${_gitname}/cmake"
 
-  cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_MODULE_PATH=/usr/share/cmake/Modules ..
+  cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_MODULE_PATH=/usr/share/cmake/Modules -DCOOKIEDIR=/usr/share/fortune -DOCOOKIEDIR=/usr/share/fortune/off ..
   make
 }
 
@@ -38,8 +38,10 @@ package() {
 	mv "${pkgdir}/usr/games/fortune" "${pkgdir}/usr/bin/"
 	mv "${pkgdir}/usr/sbin/strfile" "${pkgdir}/usr/bin/"
 	mv "${pkgdir}/usr/sbin/unstr" "${pkgdir}/usr/bin/"
+	mv "${pkgdir}/usr/share/games/fortunes" "${pkgdir}/usr/share/fortune"
 	rmdir "${pkgdir}/usr/games"
 	rmdir "${pkgdir}/usr/sbin"
+	rmdir "${pkgdir}/usr/share/games"
 }
 
 # vim: set ts=2 sw=2 ft=sh noet:
