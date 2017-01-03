@@ -12,12 +12,7 @@ A) First install steps
 
   *** if you already use dnsmasq and it's functional
 
-    1) copy pi-hole include config lines in right place
-
-    # mkdir /etc/dnsmasq.d
-    # cp /etc/pihole/configs/dnsmasq.include /etc/dnsmasq.d/01-pihole.conf
-
-    2) edit your /etc/dnsmasq.conf to uncomment last line (including new pi-hole config lines)
+    1) edit your /etc/dnsmasq.conf to uncomment last line (including new pi-hole config lines)
 
     # sed -i 's|#conf-dir=/etc/dnsmasq.d/,\*.conf|conf-dir=/etc/dnsmasq.d/,\*.conf|' /etc/dnsmasq.conf
 
@@ -25,31 +20,29 @@ A) First install steps
 
   *** if you installed dnsmasq with this package for the first time
 
-    3) backup original dnsmasq config file and copy pi-hole main and include files
+    2) backup original dnsmasq config file and copy pi-hole main and include files
 
     # cp /etc/dnsmasq.conf /etc/dnsmasq.orig
     # cp /etc/pihole/configs/dnsmasq.main /etc/dnsmasq.conf
-    # mkdir /etc/dnsmasq.d
-    # cp /etc/pihole/configs/dnsmasq.include /etc/dnsmasq.d/01-pihole.conf
 
   *** end if
 
-  4) lighttpd need port 80 to be free. backup original config file and copy pi-hole one
+  3) lighttpd need port 80 to be free. backup original config file and copy pi-hole one
 
   # cp /etc/lighttpd/lighttpd.conf /etc/lighttpd/lighttpd.orig
   # cp /etc/pihole/configs/lighttpd.conf /etc/lighttpd/lighttpd.conf
 
-  5) enable and start dnsmasq service
+  4) enable and start dnsmasq service
 
   # systemctl reenable dnsmasq.service
   # systemctl restart dnsmasq.service
 
-  6) enable and start lighttpd service
+  5) enable and start lighttpd service
 
   # systemctl reenable lighttpd.service
   # systemctl restart lighttpd.service
 
-  7) FUNDAMENTAL: point dns resolution of your lan clients to this machine
+  6) FUNDAMENTAL: point dns resolution of your lan clients to this machine
 
 
 B) Upgrade steps
@@ -58,7 +51,6 @@ B) Upgrade steps
 
     1) update dnsmasq conf file
 
-    # [ -f /etc/dnsmasq.d/pihole.conf ] && cp /etc/pihole/configs/dnsmasq.include /etc/dnsmasq.d/pihole.conf
     # [ -f /etc/dnsmasq.orig ] && cp /etc/pihole/configs/dnsmasq.complete /etc/dnsmasq.conf
 
     2) update lighttpd conf file
@@ -81,7 +73,6 @@ C) Uninstall steps
   # systemctl disable dnsmasq.service
   # systemctl stop lighttpd.service
   # systemctl disable lighttpd.service
-  # [ -f /etc/dnsmasq.d/pihole.conf ] && rm /etc/dnsmasq.d/pihole.conf
   # [ -f /etc/dnsmasq.orig ] && cp /etc/dnsmasq.orig /etc/dnsmasq.conf
   # [ -f /etc/lighttpd/lighttpd.orig ] && cp /etc/lighttpd/lighttpd.orig /etc/lighttpd/lighttpd.conf
 

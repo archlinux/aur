@@ -2,15 +2,15 @@
 
 pkgname=pi-hole-server
 _pkgname=pi-hole
-pkgver=2.9.5
-pkgrel=5
+pkgver=2.11
+pkgrel=1
 _wwwpkgname=AdminLTE
-_wwwpkgver=1.4.4.2
+_wwwpkgver=2.3
 pkgdesc='The Pi-hole is an advertising-aware DNS/Web server. Arch adaptation for lan wide DNS server.'
 arch=('any')
 license=('GPL2')
 url="https://github.com/pi-hole/pi-hole"
-depends=('dnsmasq' 'lighttpd' 'php-cgi' 'libmariadbclient' 'bc' 'perl')
+depends=('dnsmasq' 'lighttpd' 'php-cgi' 'bc' 'perl')
 conflicts=('pi-hole-standalone')
 install=$pkgname.install
 backup=('etc/pihole/whitelist.txt' 'etc/pihole/blacklist.txt')
@@ -18,8 +18,9 @@ backup=('etc/pihole/whitelist.txt' 'etc/pihole/blacklist.txt')
 source=(https://github.com/$_pkgname/$_pkgname/archive/v$pkgver.tar.gz
 	https://github.com/$_pkgname/$_wwwpkgname/archive/v$_wwwpkgver.tar.gz
 	configuration
-	dnsmasq.include
 	dnsmasq.main
+	dnsmasq.include
+	dnsmasq.local
 	lighttpd.conf
 	$_pkgname.tmpfile
 	$_pkgname-gravity.service
@@ -30,12 +31,13 @@ source=(https://github.com/$_pkgname/$_pkgname/archive/v$pkgver.tar.gz
 	blacklist.txt
 	mimic_setupVars.conf.sh)
 
-md5sums=('b383a2741e556a3680b3ae312a18cfba'
-         'fe8c5814aa6570085825bc055f8e85b9'
-         '6e6ab264586c16350ad2a5a800ab03e7'
-         '8b2d15c5e7d152e9207bd82db3ca144d'
-         'dc1f4fc9d475f08d2b3ccaaed47a52c2'
-         '82ce6717056c7a680fd2dd09bf6f6ff4'
+md5sums=('212239c4425dc55941fdca24409d6b18'
+         '7c14f32fc84787daa6107d84cadda39e'
+         'ec7c89571c280c48b47bd7d6a9548989'
+         '3f1aeea43af0b192edb36b9e5484ff87'
+         'f39fa3e607ff7346e93febfa2d0e565e'
+         '2d10140f19f54015e6ab2807267e8aaf'
+         'd67496cb0b6447d98a3e1309df319b3a'
          '990b8abd0bfbba23a7ce82c59f2e3d64'
          '047f13d4ac97877f724f87b002aaee63'
          'd42a864f88299998f8233c0bc0dd093d'
@@ -43,18 +45,10 @@ md5sums=('b383a2741e556a3680b3ae312a18cfba'
          '291d3c95e445fe65caf40c3605efd186'
          'd41d8cd98f00b204e9800998ecf8427e'
          'd41d8cd98f00b204e9800998ecf8427e'
-         'd6af5c9b54af57b395e53c27aa2d750e')
+         '302102fdaf6f59d232c552ee10c4a229')
 
 prepare() {
   _ssc="/tmp/sedcontrol"
-
-  # sudoers setup
-  sed -i "s/www-data/http/w $_ssc" "$srcdir"/$_pkgname-$pkgver/advanced/pihole.sudo
-  if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: sudoers setup 1" && return 1 ; fi
-  sed -i "s|/usr/local/bin|/usr/bin|w $_ssc" "$srcdir"/$_pkgname-$pkgver/advanced/pihole.sudo
-  if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: sudoers setup 2" && return 1 ; fi
-
-# -----------------
 
   # setting up and securing pihole wrapper script
   sed -n "/debugFunc() {/w $_ssc" "$srcdir"/$_pkgname-$pkgver/pihole
@@ -91,16 +85,16 @@ prepare() {
 
 # -----------------
 
-  # adlists.default is already there
-  sed -i "s/cp \/etc\/.pihole\/adlists.default \/etc\/pihole\/adlists.default//w $_ssc" "$srcdir"/$_pkgname-$pkgver/gravity.sh
-  if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: adlists.default is already there" && return 1 ; fi
-
-# -----------------
-
   # arch useless
   sed -n "/#ensure \/etc\/dnsmasq\.d\//w $_ssc" "$srcdir"/$_pkgname-$pkgver/gravity.sh
   if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: arch useless 1" && return 1 ; fi
   sed -i '/#ensure \/etc\/dnsmasq\.d\//,+5d' "$srcdir"/$_pkgname-$pkgver/gravity.sh
+
+# -----------------
+
+  # change log location to pihole script
+  sed -i "s|/var/log/pihole.log|/run/log/pihole/pihole.log|w $_ssc" "$srcdir"/$_pkgname-$pkgver/pihole
+  if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: change log location to pihole script" && return 1 ; fi
 
 # -----------------
 
@@ -116,37 +110,73 @@ prepare() {
 
 # -----------------
 
-  # little arch changes to chronometer.sh
-  sed -i "s|.*ifconfig eth0.*|NICDEV=\$\(ip route get 8.8.8.8 \| awk '{for\(i=1;i<=NF;i++\)if\(\$\i~/dev/\)print $\(i+1\)}'\)\n&|w $_ssc" "$srcdir"/$_pkgname-$pkgver/advanced/Scripts/chronometer.sh
-  if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: little arch changes to chronometer.sh 1" && return 1 ; fi
-  sed -i "s|\$(ifconfig eth0 \||\$(ifconfig \$NICDEV \||w $_ssc" "$srcdir"/$_pkgname-$pkgver/advanced/Scripts/chronometer.sh
-  if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: little arch changes to chronometer.sh 2" && return 1 ; fi
-  sed -i "s|/inet addr/|/inet /|w $_ssc" "$srcdir"/$_pkgname-$pkgver/advanced/Scripts/chronometer.sh
-  if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: little arch changes to chronometer.sh 3" && return 1 ; fi
-
-# -----------------
-
   # change log location in admin php interface
-  sed -i "s|/var/log/pihole.log|/run/log/pihole/pihole.log|w $_ssc" "$srcdir"/$_wwwpkgname-$_wwwpkgver/data.php
-  if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: change log location in admin php interface" && return 1 ; fi
+  sed -i "s|/var/log/pihole.log|/run/log/pihole/pihole.log|w $_ssc" "$srcdir"/$_wwwpkgname-$_wwwpkgver/scripts/pi-hole/php/data.php
+  if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: change log location in admin php interface 1" && return 1 ; fi
+  sed -i "s|/var/log/pihole.log|/run/log/pihole/pihole.log|w $_ssc" "$srcdir"/$_wwwpkgname-$_wwwpkgver/settings.php
+  if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: change log location in admin php interface 2" && return 1 ; fi
 
 # -----------------
 
   # since we don't directly install from git...
-  sed -n "/\$piholeVersion =.*$/w $_ssc" "$srcdir"/$_wwwpkgname-$_wwwpkgver/footer.php
+  sed -n "/\$piholeVersion =.*$/w $_ssc" "$srcdir"/$_wwwpkgname-$_wwwpkgver/scripts/pi-hole/php/footer.php
   if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: since we don't directly install from git... 1" && return 1 ; fi
-  sed -i 's/\$piholeVersion =.*$/\$piholeVersion = "'"$pkgver"'";/' "$srcdir"/$_wwwpkgname-$_wwwpkgver/footer.php
-  sed -n "/\$webVersion =.*$/w $_ssc" "$srcdir"/$_wwwpkgname-$_wwwpkgver/footer.php
+  sed -i 's/\$piholeVersion =.*$/\$piholeVersion = "'"$pkgver"'";/' "$srcdir"/$_wwwpkgname-$_wwwpkgver/scripts/pi-hole/php/footer.php
+  sed -n "/\$webVersion =.*$/w $_ssc" "$srcdir"/$_wwwpkgname-$_wwwpkgver/scripts/pi-hole/php/footer.php
   if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: since we don't directly install from git... 2" && return 1 ; fi
-  sed -i 's/\$webVersion =.*$/\$webVersion = "'"$_wwwpkgver"'";/' "$srcdir"/$_wwwpkgname-$_wwwpkgver/footer.php
+  sed -i 's/\$webVersion =.*$/\$webVersion = "'"$_wwwpkgver"'";/' "$srcdir"/$_wwwpkgname-$_wwwpkgver/scripts/pi-hole/php/footer.php
+
+  sed -n "/\$piholeBranch =.*$/w $_ssc" "$srcdir"/$_wwwpkgname-$_wwwpkgver/scripts/pi-hole/php/footer.php
+  if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: since we don't directly install from git... 3" && return 1 ; fi
+  sed -i 's/\$piholeBranch =.*$/\$piholeBranch = "master";/' "$srcdir"/$_wwwpkgname-$_wwwpkgver/scripts/pi-hole/php/footer.php
+  sed -n "/\$webBranch =.*$/w $_ssc" "$srcdir"/$_wwwpkgname-$_wwwpkgver/scripts/pi-hole/php/footer.php
+  if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: since we don't directly install from git... 4" && return 1 ; fi
+  sed -i 's/\$webBranch =.*$/\$webBranch = "master";/' "$srcdir"/$_wwwpkgname-$_wwwpkgver/scripts/pi-hole/php/footer.php
+
+  sed -n "/\$piholeCommit =.*$/w $_ssc" "$srcdir"/$_wwwpkgname-$_wwwpkgver/scripts/pi-hole/php/footer.php
+  if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: since we don't directly install from git... 3" && return 1 ; fi
+  sed -i 's/\$piholeCommit =.*$/\$piholeCommit = NULL;/' "$srcdir"/$_wwwpkgname-$_wwwpkgver/scripts/pi-hole/php/footer.php
+  sed -n "/\$webCommit =.*$/w $_ssc" "$srcdir"/$_wwwpkgname-$_wwwpkgver/scripts/pi-hole/php/footer.php
+  if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: since we don't directly install from git... 4" && return 1 ; fi
+  sed -i 's/\$webCommit =.*$/\$webCommit = NULL;/' "$srcdir"/$_wwwpkgname-$_wwwpkgver/scripts/pi-hole/php/footer.php
 
   sed -n "/piholeVersion=.*$/w $_ssc" "$srcdir"/$_pkgname-$pkgver/advanced/Scripts/version.sh
-  if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: since we don't directly install from git... 3" && return 1 ; fi
+  if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: since we don't directly install from git... 5" && return 1 ; fi
   sed -i 's/piholeVersion=.*$/piholeVersion="'"$pkgver"'";/' "$srcdir"/$_pkgname-$pkgver/advanced/Scripts/version.sh
   sed -n "/webVersion=.*$/w $_ssc" "$srcdir"/$_pkgname-$pkgver/advanced/Scripts/version.sh
-  if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: since we don't directly install from git... 4" && return 1 ; fi
+  if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: since we don't directly install from git... 6" && return 1 ; fi
   sed -i 's/webVersion=.*$/webVersion="'"$_wwwpkgver"'";/' "$srcdir"/$_pkgname-$pkgver/advanced/Scripts/version.sh
 
+# -----------------
+
+  # sudo pihole full path (php-fpm compatibility)
+  sed -i "s|sudo pihole|sudo /usr/bin/pihole|w $_ssc" "$srcdir"/$_wwwpkgname-$_wwwpkgver/api.php
+  if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: sudo pihole full path (php-fpm compatibility) 1" && return 1 ; fi
+  sed -i "s|sudo pihole|sudo /usr/bin/pihole|w $_ssc" "$srcdir"/$_wwwpkgname-$_wwwpkgver/scripts/pi-hole/php/header.php
+  if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: sudo pihole full path (php-fpm compatibility) 2" && return 1 ; fi
+  sed -i "s|sudo pihole|sudo /usr/bin/pihole|w $_ssc" "$srcdir"/$_wwwpkgname-$_wwwpkgver/scripts/pi-hole/php/queryads.php
+  if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: sudo pihole full path (php-fpm compatibility) 3" && return 1 ; fi
+  sed -i "s|sudo pihole|sudo /usr/bin/pihole|w $_ssc" "$srcdir"/$_wwwpkgname-$_wwwpkgver/scripts/pi-hole/php/savesettings.php
+  if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: sudo pihole full path (php-fpm compatibility) 4" && return 1 ; fi
+  sed -i "s|sudo pihole|sudo /usr/bin/pihole|w $_ssc" "$srcdir"/$_wwwpkgname-$_wwwpkgver/scripts/pi-hole/php/sub.php
+  if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: sudo pihole full path (php-fpm compatibility) 5" && return 1 ; fi
+  sed -i "s|sudo pihole|sudo /usr/bin/pihole|w $_ssc" "$srcdir"/$_wwwpkgname-$_wwwpkgver/scripts/pi-hole/php/add.php
+  if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: sudo pihole full path (php-fpm compatibility) 6" && return 1 ; fi
+  sed -i "s|sudo pihole|sudo /usr/bin/pihole|w $_ssc" "$srcdir"/$_wwwpkgname-$_wwwpkgver/scripts/pi-hole/php/gravity.sh.php
+  if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: sudo pihole full path (php-fpm compatibility) 7" && return 1 ; fi
+  sed -i "s|sudo pihole|sudo /usr/bin/pihole|w $_ssc" "$srcdir"/$_wwwpkgname-$_wwwpkgver/scripts/pi-hole/php/loginpage.php
+  if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: sudo pihole full path (php-fpm compatibility) 8" && return 1 ; fi
+
+# -----------------
+
+  # webpage.sh: line 139: ProcessDnsmasqSettings: command not found
+  sed -i "s|ProcessDnsmasqSettings|ProcessDHCPSettings|w $_ssc" "$srcdir"/$_pkgname-$pkgver/advanced/Scripts/webpage.sh
+  if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: webpage.sh: line 139: ProcessDnsmasqSettings: command not found" && return 1 ; fi
+
+# -----------------
+
+  # pi-hole sudoers file is now populated by install script
+  echo "http ALL=NOPASSWD: /usr/bin/pihole" >> ./$_pkgname-$pkgver/advanced/pihole.sudo
 }
 
 package() {
@@ -159,11 +189,12 @@ package() {
   install -Dm755 ./$_pkgname-$pkgver/advanced/Scripts/piholeLogFlush.sh "$pkgdir"/opt/pihole/piholeLogFlush.sh || return 1
   install -Dm755 ./$_pkgname-$pkgver/advanced/Scripts/chronometer.sh "$pkgdir"/opt/pihole/chronometer.sh || return 1
   install -Dm755 ./$_pkgname-$pkgver/advanced/Scripts/list.sh "$pkgdir"/opt/pihole/list.sh || return 1
+  install -Dm755 ./$_pkgname-$pkgver/advanced/Scripts/webpage.sh "$pkgdir"/opt/pihole/webpage.sh || return 1
 
   install -Dm755 mimic_setupVars.conf.sh "$pkgdir"/opt/pihole/mimic_setupVars.conf.sh || return 1
 
   install -dm750 "$pkgdir"/etc/sudoers.d
-  install -Dm644 ./$_pkgname-$pkgver/advanced/pihole.sudo "$pkgdir"/etc/sudoers.d/pihole || return 1
+  install -Dm440 ./$_pkgname-$pkgver/advanced/pihole.sudo "$pkgdir"/etc/sudoers.d/pihole || return 1
 
   install -Dm644 pi-hole.tmpfile "$pkgdir"/etc/tmpfiles.d/pi-hole.conf || return 1
 
@@ -180,14 +211,18 @@ package() {
   install -Dm644 ./$_pkgname-$pkgver/adlists.default "$pkgdir"/etc/pihole/adlists.default || return 1
   install -Dm644 whitelist.txt "$pkgdir"/etc/pihole/whitelist.txt || return 1
   install -Dm644 blacklist.txt "$pkgdir"/etc/pihole/blacklist.txt || return 1
-  install -Dm644 dnsmasq.main "$pkgdir"/etc/pihole/configs/dnsmasq.main || return 1
-  install -Dm644 dnsmasq.include "$pkgdir"/etc/pihole/configs/dnsmasq.include || return 1
-  install -Dm644 lighttpd.conf "$pkgdir"/etc/pihole/configs/lighttpd.conf || return 1
+
   install -Dm644 configuration "$pkgdir"/usr/share/doc/pihole/configuration || return 1
 
+  install -Dm644 dnsmasq.main "$pkgdir"/etc/pihole/configs/dnsmasq.main || return 1
+  install -Dm644 dnsmasq.include "$pkgdir"/etc/dnsmasq.d/01-pihole.conf || return 1
+  install -Dm644 dnsmasq.local "$pkgdir"/etc/dnsmasq.d/02-pihole.conf || return 1
+  install -Dm644 lighttpd.conf "$pkgdir"/etc/pihole/configs/lighttpd.conf || return 1
+
   install -dm755 "$pkgdir"/srv/http/pihole/admin || return 1
-  install -Dm644 ./$_pkgname-$pkgver/advanced/index.html "$pkgdir"/srv/http/pihole/index.html || return 1
-  install -Dm644 ./$_pkgname-$pkgver/advanced/index.js "$pkgdir"/srv/http/pihole/index.js || return 1
+  install -Dm644 ./$_pkgname-$pkgver/advanced/index.php "$pkgdir"/srv/http/pihole/pihole/index.php || return 1
+  install -Dm644 ./$_pkgname-$pkgver/advanced/index.js "$pkgdir"/srv/http/pihole/pihole/index.js || return 1
+  install -Dm644 ./$_pkgname-$pkgver/advanced/blockingpage.css "$pkgdir"/srv/http/pihole/pihole/blockingpage.css || return 1
   cp -dpr --no-preserve=ownership $_wwwpkgname-$_wwwpkgver/* "$pkgdir"/srv/http/pihole/admin/
 }
 
