@@ -1,4 +1,4 @@
-# Contributor: xRemaLx <anton.komolov@gmail.com>
+# Contributor: Ordoban <dirk.langer@vvovgonik.de>
 
 pkgname='perl-catalyst-view-tt'
 _pkgname='Catalyst-View-TT'
