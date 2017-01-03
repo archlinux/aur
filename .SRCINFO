@@ -1,0 +1,19 @@
+pkgbase = python-fabio
+	pkgdesc = I/O library for images produced by 2D X-ray detectors.
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = http://www.silx.org
+	arch = any
+	license = MIT
+	license = LGPL
+	license = Apache
+	makedepends = git
+	depends = python-numpy
+	depends = python-pillow
+	depends = python-lxml
+	optdepends = python-pyqt4: for the fabio_viewer program
+	source = https://github.com/silx-kit/fabio/archive/v0.4.0.tar.gz
+	sha1sums = c0ca0a6935e9213b567fdcfa77da05900a1abbc3
+
+pkgname = python-fabio
+
