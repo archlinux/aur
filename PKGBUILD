@@ -1,8 +1,7 @@
-# Contributor: Justin Davis <jrcd83@gmail.com>
-# Generator  : CPANPLUS::Dist::Arch 1.19
+# Contributor: Dirk Langer <dirk.langer@vvovgonik.de>
 
 pkgname='perl-moosex-methodattributes'
-pkgver='0.29'
+pkgver='0.31'
 pkgrel='1'
 pkgdesc="code attribute introspection"
 arch=('any')
@@ -12,7 +11,7 @@ depends=('perl-moose>=0.98' 'perl-moosex-types' 'perl-namespace-clean>=0.10')
 makedepends=('perl-namespace-autoclean' 'perl-test-exception' 'perl-test-checkdeps')
 url='http://search.cpan.org/dist/MooseX-MethodAttributes'
 source=("http://search.cpan.org/CPAN/authors/id/E/ET/ETHER/MooseX-MethodAttributes-$pkgver.tar.gz")
-md5sums=('c28066933bb5a0e97a5e2dbb0d2e0edf')
+md5sums=('fa9202b179c438844c3bea2ca7ecfe9d')
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
