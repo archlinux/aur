@@ -1,6 +1,6 @@
 pkgbase = perl-catalyst-plugin-session
 	pkgdesc = Generic Session plugin - ties together server side storage and client side state required to maintain session data.
-	pkgver = 0.39
+	pkgver = 0.40
 	pkgrel = 1
 	url = http://search.cpan.org/dist/Catalyst-Plugin-Session
 	arch = any
@@ -15,8 +15,8 @@ pkgbase = perl-catalyst-plugin-session
 	depends = perl-object-signature
 	depends = perl-namespace-clean
 	options = !emptydirs
-	source = http://search.cpan.org/CPAN/authors/id/J/JJ/JJNAPIORK/Catalyst-Plugin-Session-0.39.tar.gz
-	sha512sums = 8899f1136ce4c2d27f6659a0112804860357933af61280496b4b8876df7f99e841571d8ef5ba1f2ce522a3b653a961bf354f2a0f6f61a361985196a66c9bdc2b
+	source = http://search.cpan.org/CPAN/authors/id/J/JJ/JJNAPIORK/Catalyst-Plugin-Session-0.40.tar.gz
+	md5sums = 720a7f2d82c94721d34079890a4f09cd
 
 pkgname = perl-catalyst-plugin-session
 
