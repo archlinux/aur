@@ -3,7 +3,7 @@
 pkgname=php-propro
 pkgver=2.0.1
 pkgrel=1
-pkgdesc="Property proxy"
+pkgdesc="A reusable split-off of pecl_http's property proxy API"
 arch=('i686' 'x86_64')
 license=('BSD')
 url="https://mdref.m6w6.name/propro"
