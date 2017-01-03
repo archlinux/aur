@@ -1,0 +1,15 @@
+pkgbase = cleanerml-git
+	pkgdesc = System cleaners written in CleanerML used by BleachBit.
+	pkgver = r483.c1ba548
+	pkgrel = 1
+	url = https://github.com/az0/cleanerml
+	arch = any
+	license = GPL3
+	depends = bleachbit
+	provides = cleanerml
+	conflicts = cleanerml
+	source = git://github.com/az0/cleanerml.git
+	sha256sums = SKIP
+
+pkgname = cleanerml-git
+
