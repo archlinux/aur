@@ -1,7 +1,7 @@
 # Maintainer: Masami Ichikawae <masami256@gmail.com>
 # vim:set ts=2 sw=2 et filetype=sh:
 pkgname=xfstests-git
-pkgver=v1.1.0.r1378.ge604301
+pkgver=v1.1.0.r1439.g06557299
 pkgrel=1
 pkgdesc="File system QA suite"
 arch=('i686' 'x86_64')
