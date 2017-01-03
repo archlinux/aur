@@ -3,7 +3,7 @@
 pkgname=php-swoole
 _extname=swoole
 pkgver=2.0.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Event-driven asynchronous and concurrent networking engine with high performance for PHP."
 arch=("i686" "x86_64")
 url="https://github.com/swoole/swoole-src"
@@ -16,7 +16,7 @@ packager="吕海涛 <aur@lvht.net>"
 build() {
 	cd "$srcdir/$_extname-$pkgver"
 	phpize
-	./configure --enable-http2 --enable-openssl
+	./configure --enable-http2 --enable-openssl --enable-coroutine
 	make
 }
 
