@@ -1,0 +1,18 @@
+pkgbase = vnstatui
+	pkgdesc = Basic web UI that displays traffic graphs from vnstat
+	pkgver = 0.8.1
+	pkgrel = 1
+	url = http://bitbucket.org/instarch/vnstat-ui
+	arch = any
+	license = BSD
+	makedepends = go
+	makedepends = glide
+	makedepends = make
+	makedepends = python-docutils
+	depends = vnstat
+	backup = etc/default/vnstatui
+	source = vnstat-ui::git+http://bitbucket.org/instarch/vnstat-ui
+	md5sums = SKIP
+
+pkgname = vnstatui
+
