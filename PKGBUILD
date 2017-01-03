@@ -1,6 +1,6 @@
 # Maintainer: aggraef@gmail.com
 pkgname=guidoar-git
-pkgver=353.9d4997e
+pkgver=366.caa3535
 pkgrel=1
 pkgdesc="a library to browse, transform and manipulate Guido scores (git version)"
 arch=('x86_64' 'i686')
