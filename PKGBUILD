@@ -1,6 +1,7 @@
 # Maintainer: Pulshen Sudokamikaze <pulshencode@outlook.com>
 
 pkgname=lib32-alsaequal
+_srcname=alsaequal
 pkgver=0.6
 pkgrel=16
 pkgdesc="A real-time adjustable equalizer plugin for ALSA sound server."
@@ -24,26 +25,21 @@ md5sums=('d2edc7710c72cbf3ab297c414e35ebda'
          '212e7c8bf7cb2f83b476894dde58812b')
 
 prepare() {
-	cd "$srcdir/${pkgname##*-}"
-
+	cd "$srcdir/${_srcname}"
 	patch -Np0 -i ../false_error.patch
 	patch -Np0 -i ../alsaequal.patch
 	patch -Np1 -i ../fix-lib32-makefile.patch
 	patch -Np0 -i ../lib32-alsaequal_caps_9.x.patch
-
 	make clean
 }
 
 build() {
-	cd "${srcdir}/${pkgname##*-}"
-
+	cd "${srcdir}/${_srcname}"
 	make
 }
 
 package() {
-	cd "${srcdir}/${pkgname##*-}"
-
-	mkdir -p "$pkgdir"/usr/lib32/alsa-lib/
-
-	make DESTDIR="$pkgdir" install
+  cd "${srcdir}/${_srcname}"
+  install -dm755 "$pkgdir"/usr/lib32/alsa-lib
+  make DESTDIR="$pkgdir" install
 }
