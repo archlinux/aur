@@ -1,10 +1,11 @@
-# Maintainer: Daniel Nagy <danielnagy at gmx de>
+# Maintainer: Ethan Kiang <chocopuff298+arch@gmail.com>
+# Contributor: Daniel Nagy <danielnagy at gmx de>
 # Contributor: Arch Haskell Team <arch-haskell@haskell.org>
 
 _hkgname=GLFW
 pkgname=haskell-glfw
-pkgver=0.5.2.2
-pkgrel=1
+pkgver=0.5.2.5
+pkgrel=2
 pkgdesc="A Haskell binding for GLFW"
 url="http://hackage.haskell.org/package/${_hkgname}"
 license=('custom:BSD3')
@@ -34,4 +35,4 @@ package() {
     install -D -m644 LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
     rm -f ${pkgdir}/usr/share/doc/${pkgname}/LICENSE
 }
-md5sums=('7c099890d70318dba41e08fb9c2e68f6')
+md5sums=('3bb8a0b53e7a4fe760f21b6e0df2fa51')

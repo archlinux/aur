@@ -1,7 +1,7 @@
 pkgbase = haskell-glfw
 	pkgdesc = A Haskell binding for GLFW
-	pkgver = 0.5.2.2
-	pkgrel = 1
+	pkgver = 0.5.2.5
+	pkgrel = 2
 	url = http://hackage.haskell.org/package/GLFW
 	install = haskell-glfw.install
 	arch = i686
@@ -13,8 +13,8 @@ pkgbase = haskell-glfw
 	depends = libx11
 	options = strip
 	options = staticlibs
-	source = http://hackage.haskell.org/packages/archive/GLFW/0.5.2.2/GLFW-0.5.2.2.tar.gz
-	md5sums = 7c099890d70318dba41e08fb9c2e68f6
+	source = http://hackage.haskell.org/packages/archive/GLFW/0.5.2.5/GLFW-0.5.2.5.tar.gz
+	md5sums = 3bb8a0b53e7a4fe760f21b6e0df2fa51
 
 pkgname = haskell-glfw
 
