@@ -1,0 +1,17 @@
+pkgbase = an2linuxserver-git
+	pkgdesc = Make Persian EPUBs compatible to E-Readers such as Kindle
+	pkgver = 1.5.1b.r17.g2b5d5d4
+	pkgrel = 1
+	url = https://github.com/rootkiwi/an2linuxserver/
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = python libnotify python-gobject openssl
+	provides = an2linuxserver
+	conflicts = an2linuxserver
+	source = git+https://github.com/rootkiwi/a2linuxserver.git
+	sha256sums = SKIP
+	sha256sums = 15190d1c90ea9bc363104e62a321b6c01e46b1a6df22a59bdd8436b4dd2e05e4
+
+pkgname = an2linuxserver-git
+
