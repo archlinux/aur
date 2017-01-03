@@ -1,24 +1,24 @@
 # Maintainer: spider-mario <spidermario@free.fr>
 # Contributor: Andrzej Giniewicz <gginiu@gmail.com>
-pkgname=rubber-bzr
-pkgver=731
+pkgname=rubber-git
+pkgver=r776.675bfe3
 pkgrel=1
-pkgdesc="A wrapper for LaTeX and friends, latest bzr version."
+pkgdesc="A wrapper for LaTeX and friends, latest git version."
 arch=('any')
 url="https://launchpad.net/rubber"
 license=('GPL')
 depends=('python2' 'texlive-core')
 install=rubber.install
-makedepends=('bzr' 'texinfo' 'texlive-plainextra')
+makedepends=('git' 'texinfo' 'texlive-plainextra')
 provides=('rubber')
 conflicts=('rubber')
-replaces=('rubber-darcs')
-source=('rubber::bzr+http://bazaar.launchpad.net/~rubber-devs/rubber/main/')
+replaces=('rubber-darcs' 'rubber-bzr')
+source=('rubber::git+https://git.launchpad.net/rubber')
 sha512sums=('SKIP')
 
 pkgver() {
   cd rubber
-  bzr revno
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
