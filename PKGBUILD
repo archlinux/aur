@@ -5,8 +5,8 @@
 
 pkgbase=tomb
 pkgname=(tomb tomb-kdf)
-pkgver=2.2
-pkgrel=3
+pkgver=2.3
+pkgrel=1
 pkgdesc="Crypto Undertaker, a simple tool to manage encrypted storage"
 arch=('i686' 'x86_64')
 url="https://www.dyne.org/software/tomb/"
@@ -14,14 +14,14 @@ license=('GPL3')
 install=${pkgname}.install
 
 source=(
-        https://files.dyne.org/${pkgname}/${pkgname}-${pkgver}.tar.gz
-        https://files.dyne.org/${pkgname}/${pkgname}-${pkgver}.tar.gz.sha
-        https://files.dyne.org/${pkgname}/${pkgname}-${pkgver}.tar.gz.asc
+        https://files.dyne.org/${pkgname}/Tomb-${pkgver}.tar.gz
+        https://files.dyne.org/${pkgname}/Tomb-${pkgver}.tar.gz.sha
+        https://files.dyne.org/${pkgname}/Tomb-${pkgver}.tar.gz.asc
         )
 
 # The first hash comes from the .sha file
-sha256sums=('c0172ef8273c4be9322a52b6e503c8bf442ce74028605e198ed5d7e6d090ba86'
-            '9ccf20b02f273ba2780ce5f322295d56ddf672b405520024c7c6d6e7720b86f6'
+sha256sums=('7e55ed51b6f5781a7ec40f4e8ec17a24999f1dd18c707f4c00c131d2d15220c9'
+            '00d9b43f2ee480c8a7890ef33d8aee497d52926bbe821552b85094da341662f6'
             'SKIP')
 
 # The public key is found at http://jaromil.dyne.org/contact
@@ -29,7 +29,7 @@ sha256sums=('c0172ef8273c4be9322a52b6e503c8bf442ce74028605e198ed5d7e6d090ba86'
 validpgpkeys=('6113D89CA825C5CEDD02C87273B35DA54ACB7D10')
 
 build() {
-  cd ${srcdir}/${pkgbase}-${pkgver}/extras/kdf-keys
+  cd ${srcdir}/Tomb-${pkgver}/extras/kdf-keys
   make
 }
 
@@ -50,7 +50,7 @@ package_tomb() {
   )
   arch=('any')
 
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${srcdir}/Tomb-${pkgver}"
   make DESTDIR="${pkgdir}" PREFIX=/usr install
 }
 
@@ -58,6 +58,6 @@ package_tomb-kdf() {
   pkgdesc="Crypto Undertaker extensions to improve password security"
   depends=('libgcrypt')
 
-  cd "${srcdir}/tomb-${pkgver}/extras/kdf-keys"
+  cd "${srcdir}/Tomb-${pkgver}/extras/kdf-keys"
   make DESTDIR="${pkgdir}" PREFIX=/usr install
 }
