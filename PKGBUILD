@@ -1,7 +1,7 @@
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=bitcoin-core
-pkgver=0.13.1
+pkgver=0.13.2
 pkgrel=1
 pkgdesc="Bitcoin Core headless P2P node"
 arch=('i686' 'x86_64')
@@ -23,7 +23,7 @@ source=(https://bitcoin.org/bin/bitcoin-core-$pkgver/bitcoin-$pkgver.tar.gz
         bitcoin.logrotate
         bitcoin.service
         bitcoin-reindex.service)
-sha256sums=('d8edbd797ff1c8266113e54d851a85def46ab82389abe7d7bd0d2827e74cecd7'
+sha256sums=('621201189c0409cb17a5073278872dcdcfff1ea147ead6958b55e94416b896d7'
             'f581e8b24cb2b5d848b6a5e14b3f00f7b9efb5df66aaea8df05bbfb21665959a'
             '8f05207b586916d489b7d25a68eaacf6e678d7cbb5bfbac551903506b32f904f'
             '5e45f2ceaeb7bfa60aeb66ca4167068191eb4358af03f95ac70fd96d9b006349'
