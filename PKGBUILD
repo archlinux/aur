@@ -1,15 +1,16 @@
 # Maintainer: Quey-Liang Kao<s101062801@m101.nthu.edu.tw>
 
 pkgname=hifive1-sdk-git
-pkgver=v0.0.5.r785.g6df383c
+pkgver=r50.61ac13f
 pkgrel=1
 pkgdesc="The Official SDK of the RISC-V-based HiFive Board"
-depends=('libunistring')
+depends=('libunistring>=0.9.7')
 makedepends=('git')
 arch=('x86_64')
 source=("git+https://github.com/sifive/freedom-e-sdk.git")
 url="https://www.sifive.com/"
 license=("APACHE")
+options=('!strip')
 sha256sums=('SKIP')
 install=hifive1-sdk.install
 
@@ -35,7 +36,7 @@ package() {
 }
 
 pkgver() {
-    cd $srcdir/$pkgname
+    cd $srcdir/freedom-e-sdk
     ( set -o pipefail
         git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
         printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"

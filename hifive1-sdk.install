@@ -5,4 +5,7 @@ post_install () {
     echo ">>>       The recommanded way to use this toolchain is to copy the"
     echo ">>>       directory, and follow the Official Getting Start Guide. "
     echo ">>>       Basically, make software PROGRAM=... "
+    echo ">>>       "
+    echo ">>>       There are still some linking issue, but demo_gpio is"
+    echo ">>>       buildable."
 }
