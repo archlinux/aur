@@ -1,6 +1,6 @@
 pkgbase = gtk4-git
 	pkgdesc = GObject-based multi-platform GUI toolkit (GIT Version)
-	pkgver = 3.89.1.r180.g5c3192c75a
+	pkgver = 3.89.2.r105.g901106fd95
 	pkgrel = 1
 	url = http://www.gtk.org/
 	arch = i686
