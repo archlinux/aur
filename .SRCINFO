@@ -1,0 +1,19 @@
+pkgbase = python2-snuggs
+	pkgdesc = Provide s-expressions for Numpy, for Python 2.7
+	pkgver = 1.4.1
+	pkgrel = 1
+	url = https://github.com/mapbox/snuggs
+	arch = any
+	license = MIT
+	makedepends = python2-setuptools
+	depends = python2-click
+	depends = python2-numpy
+	depends = python2-pyparsing
+	options = !emptydirs
+	source = https://pypi.python.org/packages/5d/a7/2628b376d794628655d13004091801f7f867366f0b08a52a741fc5bcb5fc/snuggs-1.4.1.tar.gz#md5=e05db13b4c45cb4fac8595adc0c99f15
+	source = https://raw.githubusercontent.com/mapbox/snuggs/1.4.1/LICENSE
+	md5sums = e05db13b4c45cb4fac8595adc0c99f15
+	md5sums = 3cfb9a21d4ee8a39856d4773a933c177
+
+pkgname = python2-snuggs
+
