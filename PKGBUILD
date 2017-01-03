@@ -3,7 +3,7 @@
 pkgname=pi-hole-server
 _pkgname=pi-hole
 pkgver=2.11
-pkgrel=1
+pkgrel=2
 _wwwpkgname=AdminLTE
 _wwwpkgver=2.3
 pkgdesc='The Pi-hole is an advertising-aware DNS/Web server. Arch adaptation for lan wide DNS server.'
@@ -170,7 +170,7 @@ prepare() {
 # -----------------
 
   # webpage.sh: line 139: ProcessDnsmasqSettings: command not found
-  sed -i "s|ProcessDnsmasqSettings|ProcessDHCPSettings|w $_ssc" "$srcdir"/$_pkgname-$pkgver/advanced/Scripts/webpage.sh
+  sed -i "s|ProcessDnsmasqSettings|ProcessDNSSettings|w $_ssc" "$srcdir"/$_pkgname-$pkgver/advanced/Scripts/webpage.sh
   if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: webpage.sh: line 139: ProcessDnsmasqSettings: command not found" && return 1 ; fi
 
 # -----------------
