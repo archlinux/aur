@@ -2,6 +2,7 @@ pkgname=djgpp-watt32
 pkgver=2.2.dev.rel.10
 pkgrel=1
 pkgdesc='A TCP/IP stack for DJGPP programs, based on the Waterloo TCP library (WATTCP)'
+url='http://www.watt-32.net/'
 license=(custom:freeware)
 arch=(i686 x86_64)
 depends=(djgpp-zlib)

@@ -2,6 +2,7 @@ pkgbase = djgpp-watt32
 	pkgdesc = A TCP/IP stack for DJGPP programs, based on the Waterloo TCP library (WATTCP)
 	pkgver = 2.2.dev.rel.10
 	pkgrel = 1
+	url = http://www.watt-32.net/
 	arch = i686
 	arch = x86_64
 	license = custom:freeware
