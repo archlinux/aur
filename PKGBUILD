@@ -2,7 +2,7 @@
 # Contributor: Vladislav Odobesku <positivcheg94@gmail.com>
 
 pkgname=python-tensorflow
-pkgver=0.12.0
+pkgver=0.12.1
 pkgrel=1
 
 pkgdesc="Computation using data flow graphs for scalable machine learning."
@@ -17,9 +17,9 @@ depends=('python-numpy' 'python-protobuf')
 makedepends=('python-wheel' 'python-pip' 'bazel' 'cuda' 'cudnn' 'gcc5')
 optdepends=('cuda: GPU support' 'cudnn: GPU support')
 
-source=("https://github.com/tensorflow/tensorflow/archive/v${pkgver}.zip"
+source=("https://github.com/tensorflow/tensorflow/archive/${pkgver}.zip"
         'python-tensorflow.sh')
-md5sums=('c9a6e263ffbfc6dcb83dccc7cbac3d88'
+md5sums=('5cbd72426e1f16d103eb8f780488bf82'
          '0c9dae7ad2ef6ea234b6aa178a688d7b')
 
 build() {
@@ -38,6 +38,9 @@ build() {
   export TF_CUDA_VERSION=$($CUDA_TOOLKIT_PATH/bin/nvcc --version | sed -n 's/^.*release \(.*\),.*/\1/p')
   export TF_CUDNN_VERSION=$(sed -n 's/^#define CUDNN_MAJOR\s*\(.*\).*/\1/p' $CUDNN_INSTALL_PATH/include/cudnn.h)
   export GCC_HOST_COMPILER_PATH=/usr/bin/gcc-5
+
+  # fix for issue 6594
+  sed -i 's/zlib.net/zlib.net\/fossils/' "$srcdir/tensorflow-${pkgver}/tensorflow/workspace.bzl"
 
   ./configure
   bazel build -c opt --config=cuda //tensorflow/tools/pip_package:build_pip_package
