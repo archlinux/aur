@@ -4,7 +4,7 @@
 _pkgbase=hardcode-tray
 _gitname=Hardcode-Tray
 pkgname=$_pkgbase
-pkgver=3.6.2
+pkgver=3.6.3
 pkgrel=1
 pkgdesc="Fixes Hardcoded Tray Icons"
 arch=('i686' 'x86_64')
@@ -16,7 +16,7 @@ depends=('python' 'python-gobject' 'python-cairosvg' 'librsvg' 'gtk3')
 optdepends=('sni-qt-eplus-bzr: patched qt4 sni plugin to enable icon modification' 'inkscape: to convert svg to png with inkscape')
 optdepends_x86_64=('lib32-sni-qt-eplus-bzr: 32-bit patched qt4 sni plugin to enable icon modification')
 source=("https://github.com/bil-elmoussaoui/${_gitname}/archive/v${pkgver}.tar.gz")
-sha256sums=('fce3eae77df711b43484d1ee62cf90db4232be33248db39e00c9db3e24197b42')
+sha256sums=('abab7b830a88a84c3b457ef8ca24b2f366cf7ba5ea98b80b8e73fbc4d0cdc67a')
 
 package() {
   install -Dm755 "$srcdir/$_gitname-$pkgver/script.py" "$pkgdir/opt/$_gitname/script.py"
