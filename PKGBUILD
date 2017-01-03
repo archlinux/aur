@@ -6,7 +6,7 @@
 _name=tagparser
 _reponame=tagparser
 pkgname=$_name-doc
-pkgver=6.1.0
+pkgver=6.1.1
 pkgrel=1
 arch=('any')
 pkgdesc='C++ library for reading and writing MP4/M4A/AAC (iTunes), ID3, Vorbis, Opus, FLAC and Matroska tags (API documentation)'
@@ -14,7 +14,7 @@ license=('GPL')
 makedepends=('cmake' 'doxygen' 'dia' 'graphviz' 'c++utilities')
 url="https://github.com/Martchus/${_reponame}"
 source=("${_name}-${pkgver}.tar.gz::https://github.com/Martchus/${_reponame}/archive/v${pkgver}.tar.gz")
-sha256sums=('da10bfca307e1bb473c106fb4914c6ee9d3290780f9393428af939161921b9f2')
+sha256sums=('850424a2d2845235c1b88a3e3534a6d5254e0f35c522e57e16a54713bd9f3e57')
 
 build() {
   cd "$srcdir/${PROJECT_DIR_NAME:-$_reponame-$pkgver}"
