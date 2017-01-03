@@ -1,7 +1,7 @@
 # Maintainer: RushAur <nojunkmails at t-online dot de>
 pkgname=rainbow-icons-git
 pkgver=r226.97ed002b
-pkgrel=2
+pkgrel=3
 pkgdesc="A multicolour icon theme based on Surfn-icons-git."
 arch=('any')
 url="https://github.com/0devnull0/Surfn"
@@ -44,7 +44,10 @@ package() {
          break;;
          *) msg "Nope (°_°)";;
      esac
-     done 
+     done
+     else 
+         cp -dr --no-preserve='ownership' 'Surfn Breeze Dark' "${pkgdir}"/usr/share/icons/
+     
   fi   
 }
 # vim:set ft=sh ts=2 sw=2 et:
