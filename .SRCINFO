@@ -1,0 +1,23 @@
+pkgbase = python-silx
+	pkgdesc = A collection of Python packages for data analysis at synchrotron radiation facilities.
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = http://www.silx.org
+	arch = any
+	license = MIT
+	license = LGPL
+	makedepends = git
+	makedepends = cython
+	depends = python-numpy
+	depends = python-pyqt5
+	depends = python-matplotlib
+	optdepends = python-h5py: for HDF5 input/output
+	optdepends = ipython: for interactive console
+	optdepends = python-qtconsole: for GUI console
+	optdepends = python-pyopencl: for sift - OpenCL implementation
+	optdepends = opencl-driver: for sift - OpenCL implementation
+	source = https://github.com/silx-kit/silx/archive/v0.3.0.tar.gz
+	sha1sums = 448d3953e4b35b713570e15c2d785fd8011b0ed1
+
+pkgname = python-silx
+
