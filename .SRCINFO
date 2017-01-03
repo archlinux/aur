@@ -1,8 +1,8 @@
 pkgbase = sleepyhead-git
 	pkgdesc = Open-source, cross platform, sleep tracking software with a focus on monitoring CPAP treatment.
-	pkgver = 0.9.8.1.ga7a9c4f
-	pkgrel = 2
-	url = http://sourceforge.net/projects/sleepyhead
+	pkgver = 1.0.0.2.g0e04bd99
+	pkgrel = 1
+	url = http://sleepyhead.jedimark.net
 	arch = i686
 	arch = x86_64
 	license = GPL
@@ -12,8 +12,10 @@ pkgbase = sleepyhead-git
 	depends = qt5-webkit
 	depends = glu
 	conflicts = sleepyhead
-	source = git://git.code.sf.net/p/sleepyhead/code
+	source = git+https://gitlab.com/sleepyhead/sleepyhead-code.git
+	source = moduleupdates.patch
 	sha256sums = SKIP
+	sha256sums = af1390195fc4a5f2aa0cced24b1ce1a629dbd608a40d10dc319cfcbd959bec02
 
 pkgname = sleepyhead-git
 
