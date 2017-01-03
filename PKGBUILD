@@ -1,7 +1,7 @@
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=bitcoin-core-addrindex
-pkgver=0.12.1
+pkgver=0.13.2
 pkgrel=1
 pkgdesc="Bitcoin Core headless P2P node with addrindex"
 arch=('i686' 'x86_64')
@@ -18,12 +18,12 @@ makedepends=('autoconf'
              'pkg-config')
 optdepends=('miniupnpc: build with support for UPnP')
 license=('MIT')
-source=($pkgname-$pkgver.tar.gz::https://codeload.github.com/btcdrak/${pkgname%%-*}/tar.gz/v$pkgver-addrindex
+source=($pkgname-$pkgver.tar.gz::https://github.com/btcdrak/bitcoin/releases/download/v0.13.2-addrindex/bitcoin-$pkgver-addrindex.tar.gz
         bitcoin.conf
         bitcoin.logrotate
         bitcoin.service
         bitcoin-reindex.service)
-sha256sums=('454d8780089428cb28e18ad0fde9235557d125a2c3469f1b054a674314ef5b89'
+sha256sums=('a580510f8e2d020a751f0a16223f21b1e149768c28e73ee5b4692df46710c923'
             '6321809cfc8b5d30b368d495c38450c40f0ab419f0640c111d6c68141569142e'
             '8f05207b586916d489b7d25a68eaacf6e678d7cbb5bfbac551903506b32f904f'
             '5e45f2ceaeb7bfa60aeb66ca4167068191eb4358af03f95ac70fd96d9b006349'
@@ -35,7 +35,7 @@ conflicts=('bitcoin-cli' 'bitcoin-daemon' 'bitcoin-qt' 'bitcoin-tx')
 install=bitcoin.install
 
 build() {
-  cd "$srcdir/${pkgname%%-*}-$pkgver-addrindex"
+  cd "$srcdir/${pkgname%%-*}-$pkgver"
 
   msg2 'Building...'
   ./autogen.sh
@@ -54,16 +54,10 @@ build() {
 }
 
 package() {
-  cd "$srcdir/${pkgname%%-*}-$pkgver-addrindex"
+  cd "$srcdir/${pkgname%%-*}-$pkgver"
 
   msg2 'Installing license...'
   install -Dm 644 COPYING -t "$pkgdir/usr/share/licenses/${pkgname%%-*}"
-
-  msg2 'Installing man pages...'
-  install -Dm 644 contrib/debian/manpages/bitcoind.1 \
-    -t "$pkgdir/usr/share/man/man1"
-  install -Dm 644 contrib/debian/manpages/bitcoin.conf.5 \
-    -t "$pkgdir/usr/share/man/man5"
 
   msg2 'Installing documentation...'
   install -dm 755 "$pkgdir/usr/share/doc/bitcoin"
@@ -87,8 +81,4 @@ package() {
 
   msg2 'Installing bitcoin.logrotate...'
   install -Dm 644 "$srcdir/bitcoin.logrotate" "$pkgdir/etc/logrotate.d/bitcoin"
-
-  msg2 'Installing bash completion...'
-  install -Dm 644 contrib/bitcoind.bash-completion \
-    "$pkgdir/usr/share/bash-completion/completions/bitcoind"
 }
