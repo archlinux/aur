@@ -1,10 +1,10 @@
 pkgname=performer-git
-pkgver=1.0.r191.8073e53
+pkgver=1.0.r200.37029ba
 pkgrel=1.1
 pkgdesc="Audio session manager for live music performances"
 arch=('i686' 'x86_64')
 url="https://github.com/progwolff/performer"
-provides=('performer-git')
+provides=('performer-git' 'performer') 
 license=("GPL")
 depends=('carla' 'qt5-base' 'qt5-declarative') 
 makedepends=('git' 'cmake' 'qt5-tools' 'python')
