@@ -4,25 +4,34 @@ pkgname=hifive1-sdk-git
 pkgver=v0.0.5.r785.g6df383c
 pkgrel=1
 pkgdesc="The Official SDK of the RISC-V-based HiFive Board"
-depends=('')
-makedepends=('git' 'base-devel')
+depends=('libunistring')
+makedepends=('git')
 arch=('x86_64')
 source=("git+https://github.com/sifive/freedom-e-sdk.git")
 url="https://www.sifive.com/"
 license=("APACHE")
 sha256sums=('SKIP')
+install=hifive1-sdk.install
 
 prepare() {
-    cd $srcdir/$pkgname
+    cd $srcdir/freedom-e-sdk
+    git submodule update --init --recursive
 }
 
 build() {
-    cd $srcdir/$pkgname
+    cd $srcdir/freedom-e-sdk
+    unset CPPFLAGS
     make tools
 }
 
 package() {
-    cd $srcdir/$pkgname
+    cd $srcdir/freedom-e-sdk
+    
+    mkdir -p $pkgdir/opt/hifive1-sdk
+    cp -r toolchain $pkgdir/opt/hifive1-sdk/
+    cp -r bsp $pkgdir/opt/hifive1-sdk/
+    cp -r software $pkgdir/opt/hifive1-sdk/
+    cp Makefile $pkgdir/opt/hifive1-sdk/
 }
 
 pkgver() {

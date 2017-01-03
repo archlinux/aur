@@ -3,10 +3,11 @@ pkgbase = hifive1-sdk-git
 	pkgver = v0.0.5.r785.g6df383c
 	pkgrel = 1
 	url = https://www.sifive.com/
+	install = hifive1-sdk.install
 	arch = x86_64
 	license = APACHE
 	makedepends = git
-	makedepends = base-devel
+	depends = libunistring
 	source = git+https://github.com/sifive/freedom-e-sdk.git
 	sha256sums = SKIP
 

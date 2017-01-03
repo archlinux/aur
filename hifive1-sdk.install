@@ -1,0 +1,8 @@
+post_install () {
+    echo ">>> NOTE: Currently, the whole stuff are put in /opt/hifive-sdk."
+    echo ">>>       According to the guideline, this will be fixed soon."
+    echo ">>>       "
+    echo ">>>       The recommanded way to use this toolchain is to copy the"
+    echo ">>>       directory, and follow the Official Getting Start Guide. "
+    echo ">>>       Basically, make software PROGRAM=... "
+}
