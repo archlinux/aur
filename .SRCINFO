@@ -1,6 +1,6 @@
 pkgbase = perl-starman
 	pkgdesc = Starman launcher
-	pkgver = 0.4011
+	pkgver = 0.4014
 	pkgrel = 1
 	url = http://search.cpan.org/dist/Starman
 	arch = any
@@ -18,8 +18,8 @@ pkgbase = perl-starman
 	depends = perl-net-server>=2.007
 	depends = perl-plack>=0.9971
 	options = !emptydirs
-	source = http://search.cpan.org/CPAN/authors/id/M/MI/MIYAGAWA/Starman-0.4011.tar.gz
-	sha512sums = 2221921694f9869eef081f4de523c424ec11cf3fb7d76666e7dc825d677e5e1eed670398e8c9dfdb9a5ec29edaf04e948d0ff9f878e22bd7b7b5c7902723e946
+	source = http://search.cpan.org/CPAN/authors/id/M/MI/MIYAGAWA/Starman-0.4014.tar.gz
+	sha512sums = 27e5735a1bd2c29944c469f19a6e05cae038da0f678ca6a12bdae87dd075e4e433e3f4126507f90284a71aa5baf1b8babd120603d265d8b1f3b7b1a6528e0c9f
 
 pkgname = perl-starman
 
