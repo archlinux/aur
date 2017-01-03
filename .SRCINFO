@@ -1,0 +1,13 @@
+pkgbase = fortune-mod-oblique-strategies
+	pkgdesc = Collection of fortune files for Brian Eno's 'Oblique Strategies'
+	pkgver = 201610103
+	pkgrel = 1
+	url = https://github.com/hermzz/fortunes-oblique-strategies
+	arch = any
+	license = unknown
+	depends = fortune-mod
+	source = git+https://github.com/hermzz/fortunes-oblique-strategies.git
+	md5sums = SKIP
+
+pkgname = fortune-mod-oblique-strategies
+
