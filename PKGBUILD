@@ -6,7 +6,7 @@
 _reponame=qtutilities
 pkgname=mingw-w64-qtutilities
 _name=${pkgname#mingw-w64-}
-pkgver=5.2.0
+pkgver=5.3.0
 pkgrel=1
 arch=('any')
 pkgdesc='Common Qt related C++ classes and routines used by my applications such as dialogs, widgets and models (mingw-w64)'
@@ -16,7 +16,7 @@ makedepends=('mingw-w64-gcc' 'mingw-w64-cmake')
 optdepends=("$pkgname-doc: API documentation")
 url="https://github.com/Martchus/${_reponame}"
 source=("${_name}-${pkgver}.tar.gz::https://github.com/Martchus/${_reponame}/archive/v${pkgver}.tar.gz")
-sha256sums=('16a2cd4d161d4c71a5e60bd252874d6c3367c81ed15a40a295d6beda30f076de')
+sha256sums=('1c771873d3b7e8b2eb3cf727b2026bd41cdd5ed8747efaf1abdce421e458df06')
 options=(!buildflags staticlibs !strip !emptydirs)
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
 [[ $NO_STATIC_LIBS ]] ||
