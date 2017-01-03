@@ -2,13 +2,14 @@
 
 pkgname=php-propro
 pkgver=2.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A reusable split-off of pecl_http's property proxy API"
 arch=('i686' 'x86_64')
 license=('BSD')
 url="https://mdref.m6w6.name/propro"
 depends=('php')
-source=("https://pecl.php.net/get/propro-2.0.1.tgz")
+backup=('etc/php/conf.d/propro.ini')
+source=("https://pecl.php.net/get/propro-${pkgver}.tgz")
 md5sums=('19f9517210a87e18cc09faed262e1522')
 
 build() {
@@ -24,4 +25,6 @@ package() {
 
   make install INSTALL_ROOT="${pkgdir}"
   install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  echo "extension=propro.so" > propro.ini
+  install -Dm644 "propro.ini" "${pkgdir}/etc/php/conf.d/propro.ini"
 }
