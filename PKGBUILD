@@ -1,7 +1,7 @@
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=bitcoin-core-addrindex-git
-pkgver=20160414
+pkgver=20170103
 pkgrel=1
 pkgdesc="Bitcoin Core headless P2P node with addrindex"
 arch=('i686' 'x86_64')
@@ -19,7 +19,7 @@ makedepends=('autoconf'
              'pkg-config')
 optdepends=('miniupnpc: build with support for UPnP')
 license=('MIT')
-source=(git+https://github.com/btcdrak/bitcoin#branch=addrindex-0.12
+source=(git+https://github.com/btcdrak/bitcoin#branch=addrindex-0.13
         bitcoin.conf
         bitcoin.logrotate
         bitcoin.service
