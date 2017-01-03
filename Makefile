@@ -3,7 +3,7 @@
 	mksrcinfo
 
 package: PKGBUILD .SRCINFO
-	updpkgsums
+#	updpkgsums
 	makepkg --syncdeps --rmdeps --force --clean --noconfirm
 
 all: package
