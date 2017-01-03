@@ -4,3 +4,25 @@ post_install() {
 	echo "Edit /etc/intelpwm.conf to suit your needs"
 	echo "Visit http://devbraindom.blogspot.com/2013/03/eliminate-led-screen-flicker-with-intel.html for more details"
 }
+
+post_upgrade() {
+    echo "Migrating /etc/intelpwm.conf to new format..."
+    CONFIG=/etc/intelpwm.conf
+
+    if [ ! -f $CONFIG ]
+        then
+            echo "$CONFIG not found"
+            return
+    fi
+
+    source $CONFIG
+    if [[ $PERIOD =~ ^0x[0-9a-fA-F]{8}$ ]]
+        then
+            NEW_PERIOD=${PERIOD:2:4}
+            sed -i.backup "s/^\(PERIOD=\).*/\1$NEW_PERIOD/" $CONFIG
+            echo "$CONFIG backup is saved as $CONFIG.backup"
+        else
+            echo "Expected PERIOD to be in format 0x01234567. No changes were made"
+    fi
+}
+

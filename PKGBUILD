@@ -1,7 +1,7 @@
 #Maintainer: <edio@archlinux.us>
 
 pkgname=intelpwm-udev
-pkgver=20170101
+pkgver=20170301
 pkgrel=1
 pkgdesc="UDEV rules for setting backlight PWM frequency on Intel HD Graphics"
 arch=('i686' 'x86_64')

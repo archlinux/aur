@@ -1,4 +1,8 @@
 #!/usr/bin/env sh
 source /etc/intelpwm.conf
-intel_reg write $REGISTER $PERIOD
+
+RAW_DATA="$(intel_reg read ${REGISTER})"
+CYCLE="${RAW_DATA:56:4}"
+
+intel_reg write "${REGISTER}" "0x${PERIOD}${CYCLE}"
 
