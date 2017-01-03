@@ -18,6 +18,7 @@ source=('git://github.com/bleachbit/bleachbit.git')
 sha256sums=('SKIP')
 arch=('any')
 depends=('python2' 'gtk2' 'pygtk' 'desktop-file-utils' 'gtk-update-icon-cache' 'hicolor-icon-theme')
+optdepends=('cleanerml-git: Bonus pack')
 conflicts=('bleachbit')
 provides=('bleachbit')
 

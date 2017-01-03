@@ -11,6 +11,7 @@ pkgbase = bleachbit-git
 	depends = desktop-file-utils
 	depends = gtk-update-icon-cache
 	depends = hicolor-icon-theme
+	optdepends = cleanerml-git: Bonus pack
 	provides = bleachbit
 	conflicts = bleachbit
 	source = git://github.com/bleachbit/bleachbit.git
