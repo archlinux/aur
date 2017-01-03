@@ -2,7 +2,7 @@
 pkgname=oh-brother-git
 pkgver=r22.6c73096
 pkgrel=1
-pkgdesc="A simple cross-platform utility writeen in Python which can update Brother printer firmwares."
+pkgdesc="A simple cross-platform utility written in Python which can update Brother printer firmwares."
 arch=('any')
 url="https://github.com/CauldronDevelopmentLLC/oh-brother"
 license=('GPL2')
