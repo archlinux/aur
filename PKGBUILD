@@ -8,7 +8,7 @@ arch=('any')
 url="https://github.com/bradklee/DataAnalysis/tree/master/PlanePendulum"
 license=('GPL')
 depends=('python' 'gnuplot')
-source=("local://PendulumDataV1.1.tar.gz"{,.sig})
+source=("https://github.com/bradklee/ArchBuilds/raw/master/PlanePendulum/PendulumDataV1.1.tar.gz"{,.sig})
 md5sums=('4683d728f9b4d3d40e6a1380bdbe385c'
          'SKIP')
 validpgpkeys=('EF6F2A81897A87838FDF67BB6B5766ADDC064400')
