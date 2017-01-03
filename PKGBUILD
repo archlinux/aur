@@ -2,7 +2,7 @@
 pkgname=input-wacom-dkms
 _pkgname=input-wacom
 pkgver=0.33.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Latest Kernel modules form Wacom tablets (DKMS). Useful if your wacom tablet is not supported upstream yet."
 arch=('i686' 'x86_64')
 url="http://linuxwacom.sourceforge.net/wiki/index.php/Input-wacom"
@@ -14,8 +14,8 @@ source=("http://downloads.sourceforge.net/project/linuxwacom/xf86-input-wacom/in
 	"dkms.conf"
 	"blacklist-input-wacom-dkms.conf")
 noextract=()
-md5sums=('41f3d925c397920e57f4b1c8eaf217a5'
-         '00aebe1d5a4350d26b59d9aa766d2c55'
+md5sums=('a21ee9b048569ad78c41c1480097da10'
+         '3c32d0b9919c3bc42fb321adda2a6003'
          'da99119208e69b9a611b1809e1f241f8')
 package() {      
  
