@@ -1,7 +1,6 @@
 # Maintainer: Kridsada Thanabulpong <sirn@ogsite.net>
 pkgname="ibus-libthai"
-pkgver="0.1.3"
-_pkgver="0_1_3"
+pkgver="0.1.4"
 pkgrel=2
 pkgdesc="IBus engine module for LibThai"
 url="https://github.com/tlwg/ibus-libthai"
@@ -15,17 +14,17 @@ replaces=('ibus-libthai-svn')
 provides=("${pkgname}=${pkgver}")
 backup=()
 install=
-source=("https://github.com/tlwg/ibus-libthai/archive/r_${_pkgver}.tar.gz")
-sha256sums=('801454d5cda132d16cc93bb7c1af59c6427252d11f0b5a0ed3c5ff674664236f')
+source=("https://github.com/tlwg/ibus-libthai/archive/v${pkgver}.tar.gz")
+sha256sums=('b5debc5cd9da3e32b3262d2da9aab296bf8ef27f85f44ef4c2200b0b883845e0')
 
 build() {
-  cd "${srcdir}/${pkgname}-r_${_pkgver}"
+  cd "${srcdir}/${pkgname}-${pkgver}"
   ./autogen.sh
   ./configure --prefix=/usr
   make
 }
 
 package() {
-  cd "${srcdir}/${pkgname}-r_${_pkgver}"
+  cd "${srcdir}/${pkgname}-${pkgver}"
   make DESTDIR="$pkgdir/" install
 }
