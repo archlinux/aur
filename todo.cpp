@@ -9,10 +9,17 @@
 
 using namespace std;
 
+
+#define    TODO_STATE 0
+#define    DONE_STATE 1
+#define    STANDBY_STATE 2
+#define    MISSED_STATE 3
+
+
 struct todo {
     int priorite;
     string str;
-    bool etat;
+    int etat;
 };
 
 bool color;
@@ -32,6 +39,7 @@ todo todoFromCmd(string line) {
         getline(streamLine, tmp.str);
     return tmp;
 }
+
 todo todoFromLine(string line) {
     todo tmp;
     istringstream streamLine(line);
@@ -43,7 +51,20 @@ todo todoFromLine(string line) {
 }
 ostream& operator<<( ostream& os, const todo& todoTask)
 {
-    os << "[" << (todoTask.etat ? (color ? "\e[32m✓\e[0m" : "x") : " ") << "] ";
+    switch(todoTask.etat ) {
+        case DONE_STATE:
+            os << "[" << (color ? "\e[32m✓\e[0m" : "x") << "] ";
+        break;
+        case TODO_STATE:
+            os << "[" <<  " " << "] ";
+        break;
+        case STANDBY_STATE:
+            os << "[" << (todoTask.etat ? (color ? "\e[33m~\e[0m" : "~") : " ") << "] ";
+        break;
+        case MISSED_STATE:
+            os << "[" << (todoTask.etat ? (color ? "\e[34m#\e[0m" : "#") : " ") << "] ";
+        break;
+    }
     if( todoTask.priorite == 1  && color)
         os << "\e[31m";
     else if( todoTask.priorite == 2 && color)
@@ -80,6 +101,10 @@ int main(int argc, char *argv[]) {
             action = 3;
         }else if ( !strcmp( argv[1], "uncheck") ) {
             action = 9;
+        }else if ( !strcmp( argv[1], "standby") ) {
+            action = 10;
+        }else if ( !strcmp( argv[1], "miss") ) {
+            action = 11;
         }else if ( !strcmp( argv[1], "set") ) {
             if( argc > 2 && argv[2][0] >= '0' && argv[2][0] <= '9' )
                 action = 4;
@@ -155,7 +180,7 @@ int main(int argc, char *argv[]) {
                         if( it->str.find(argv[i]) == string::npos)
                             active = false;
                     if( active )
-                        it->etat = 1;
+                        it->etat = DONE_STATE;
                 }
 
                 break;
@@ -200,7 +225,27 @@ int main(int argc, char *argv[]) {
                         if( it->str.find(argv[i]) == string::npos)
                             active = false;
                     if( active )
-                        it->etat = 0;
+                        it->etat = TODO_STATE;
+                }
+                break;
+            case 10:  // standby
+                for (auto it = begin(listTodo); it != end(listTodo); ++it) {
+                    bool active = true;
+                    for( int i = 2 ; i < argc && active ; i++ )
+                        if( it->str.find(argv[i]) == string::npos)
+                            active = false;
+                    if( active )
+                        it->etat = STANDBY_STATE;
+                }
+                break;
+            case 11:  // miss
+                for (auto it = begin(listTodo); it != end(listTodo); ++it) {
+                    bool active = true;
+                    for( int i = 2 ; i < argc && active ; i++ )
+                        if( it->str.find(argv[i]) == string::npos)
+                            active = false;
+                    if( active )
+                        it->etat = MISSED_STATE;
                 }
                 break;
             default:
