@@ -2,7 +2,7 @@
 # vim:set ts=2 sw=2 et filetype=sh:
 pkgname=python2-locust-git
 _pkgname=locust
-pkgver=v0.7.5.r11.g623d890
+pkgver=v0.8a1.r8.g3cddb18
 pkgrel=1
 pkgdesc="An easy-to-use, distributed, user load testing tool."
 arch=('any')
