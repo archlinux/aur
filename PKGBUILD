@@ -2,8 +2,8 @@
 
 pkgname=shlomif-cmake-modules-hg
 pkgver=r10.2ef56bcbda95
-pkgrel=1
-pkgdesc='Maintenance version of fortune-mod from redellipse.net'
+pkgrel=2
+pkgdesc='cmake modules required to build projects from Shlomi Fish'
 arch=('any')
 url='https://bitbucket.org/shlomif/shlomif-cmake-modules/'
 license=('MIT')
