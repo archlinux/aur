@@ -1,7 +1,7 @@
 # Maintainer: spider-mario <spidermario@free.fr>
 pkgname=moarvm
 _pkgname=MoarVM
-pkgver=2016.11
+pkgver=2016.12
 pkgrel=1
 pkgdesc="Runtime built for the 6model object system."
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ depends=('glibc')
 makedepends=('perl>=5.8')
 options=('!makeflags')
 source=("http://moarvm.com/releases/$_pkgname-$pkgver.tar.gz")
-sha512sums=('b049f0031a57c468189dcd4f6fd1a5e37e2572b026a769d564cb48e9b4e3e72c28049396481adae03b4e52d1112a24f65871316c67029293f3b024ad65eb2c00')
+sha512sums=('af1db57818fbe3f11a0b8fbe329cb81d953da42bb1e4e6284a79620bdd4fb3fdadf44274420f9e2be254e2642adc7a773e7c9e2d0638242077743a35c46a146e')
 
 build() {
 	cd $_pkgname-$pkgver
