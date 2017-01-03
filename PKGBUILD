@@ -21,10 +21,10 @@ makedepends=('git' 'gradle' 'maven' 'java-openjfx' 'java-environment>=8')
 depends=('wine')
 options=(!strip)
 source=(
-		"$_pkgname::git://github.com/PlayOnLinux/POL-POM-5.git"
-		'PlayOnLinux5.desktop'
-		'PlayOnLinux.sh'
-		)
+	"$_pkgname::git://github.com/PlayOnLinux/POL-POM-5.git"
+	'PlayOnLinux5.desktop'
+	'PlayOnLinux.sh'
+	)
 sha256sums=(
 	'SKIP'
 	'4703fc813fb18d3e414cc1483f03cb3c0c306e5725b7681b3dbc43fb7f6630de'
