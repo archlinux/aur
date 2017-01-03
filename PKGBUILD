@@ -2,7 +2,7 @@
 
 pkgbase=python-pycryptodomex
 pkgname=($pkgbase python2-pycryptodomex)
-pkgver=3.4.2
+pkgver=3.4.3
 pkgrel=1
 pkgdesc='Cryptographic library for Python / a self-contained Python package of low-level cryptographic primitives'
 license=('BSD')
@@ -10,8 +10,8 @@ arch=('i686' 'x86_64')
 url='https://pypi.python.org/pypi/pycryptodomex'
 makedepends=('python-setuptools'
              'python2-setuptools')
-source=("https://pypi.python.org/packages/source/p/pycryptodomex/pycryptodomex-${pkgver}.tar.gz")
-md5sums=('5f58848b35a8362d9ebc0f94bd8cc5e7')
+source=("https://pypi.python.org/packages/bf/73/7c7e75e640acce1428d1cd7ce596fb855bd9ab8df9d1be587a9b4172046a/pycryptodomex-${pkgver}.tar.gz")
+md5sums=('5493d3b327504ee4967c756cff3744a8')
 
 prepare() {
 	cp -a "pycryptodomex-$pkgver"{,-python2}
