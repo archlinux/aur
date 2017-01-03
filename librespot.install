@@ -1,0 +1,12 @@
+post_install() {
+  systemd-sysusers librespot.conf
+  systemd-tmpfiles --create librespot.conf
+  chown -R librespot:root /var/cache/librespot
+  systemctl daemon-reload
+  echo ":: Configure Librespot in /etc/librespot.conf"
+}
+
+post_upgrade(){
+  post_install $1
+  echo ":: Consider restarting librespot.service"
+}

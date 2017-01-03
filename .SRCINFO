@@ -1,0 +1,32 @@
+pkgbase = librespot-alsa-git
+	pkgdesc = An open source client library for Spotify (ALSA Backend).
+	pkgver = r241.baf2b65
+	pkgrel = 1
+	url = https://github.com/plietar/librespot.git
+	install = librespot.install
+	arch = x86_64
+	arch = i686
+	license = MIT
+	makedepends = git
+	makedepends = portaudio
+	makedepends = rust
+	makedepends = protobuf
+	makedepends = cargo
+	depends = alsa-lib
+	provides = librespot
+	conflicts = librespot
+	conflicts = librespot-git
+	backup = etc/librespot.conf
+	source = git://github.com/plietar/librespot.git
+	source = librespot.service
+	source = librespot.conf
+	source = librespot.sysusers
+	source = librespot.tmpfiles
+	sha256sums = SKIP
+	sha256sums = 3a54158edc94b35934dc3a9421041fd1a5e8be634610ddcef7e8cb04b0c15624
+	sha256sums = 40967abb5fc74d47fb2e564f95d8847aa899bf4e12d8c073f217cc63d137f375
+	sha256sums = cd05d40dcc1572aba86aed732b5e0e47ff644d6c40380cc2d2b4d80acc2c2b1f
+	sha256sums = 61b68cf5776374218caf525d707a52bf14d349e4f1a7c8ef76b8ed5789f19114
+
+pkgname = librespot-alsa-git
+
