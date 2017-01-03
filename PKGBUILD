@@ -4,8 +4,8 @@
 # Contributor: Andrei "Garoth" Thorp <garoth "at the nice" gmail "dot" com>
 
 pkgname=debhelper
-pkgver=10.2.2
-pkgrel=2
+pkgver=10.2.3
+pkgrel=1
 pkgdesc="A collection of programs that can be used in a debian/rules file to automate common tasks"
 arch=('any')
 url="http://anonscm.debian.org/cgit/debhelper/debhelper.git/"
