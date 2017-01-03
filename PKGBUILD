@@ -3,7 +3,7 @@
 pkgname=mendeleydesktop-dev
 pkgshortname=mendeleydesktop
 pkgver=1.17.6 #_dev6
-pkgrel=2
+pkgrel=3
 pkgdesc="Academic software for managing and sharing research papers (desktop client)"
 url=https://www.mendeley.com/release-notes/development/
 arch=(i686 x86_64)
@@ -58,7 +58,7 @@ package() {
 #make sure you remove any old versions of ".desktop" file of mendeley in #~/.local/share/applications/,
 #because mendeley will automatically create one there.
 #__EOF__
-    rm -rf "$pkgdir"/opt/"$pkgshortname"/lib/qt
+    #rm -rf "$pkgdir"/opt/"$pkgshortname"/lib/qt
 
     #Remove unneeded lines if gconf is not installed.
     if ! which gconftool-2 &>/dev/null;then
