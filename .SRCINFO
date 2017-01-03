@@ -1,0 +1,21 @@
+pkgbase = djgpp-watt32
+	pkgdesc = A TCP/IP stack for DJGPP programs, based on the Waterloo TCP library (WATTCP)
+	pkgver = 2.2.dev.rel.10
+	pkgrel = 1
+	arch = i686
+	arch = x86_64
+	license = custom:freeware
+	makedepends = djgpp-gcc
+	makedepends = gcc
+	makedepends = nasm
+	makedepends = bash
+	depends = djgpp-zlib
+	options = !buildflags
+	options = !strip
+	source = http://www.watt-32.net/watt32s-2.2-dev.10.zip
+	source = mkmake.bash
+	sha512sums = 63e57e6da2a238d5970b0cac149940126cc85c919eb33ddb0b8bae0dfafadbf70e3a93b9462d34a62c49aa77000f6cfe7a170eecb22d706b0ad40e5c6f9a0f5b
+	sha512sums = 3ea25f72bf6db9233da82a2939fd4dd0ff2c2706ce168733c216af61c6f49e5ec32d15ad1ca7576865a7c0711c1e2d2c0dc22d078b3fb0df663ad1cb9d8d74af
+
+pkgname = djgpp-watt32
+
