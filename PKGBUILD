@@ -8,7 +8,7 @@
 
 pkgname=openssh-selinux
 pkgver=7.4p1
-pkgrel=1
+pkgrel=2
 pkgdesc='Free version of the SSH connectivity tools with SELinux support'
 url='https://www.openssh.org/portable.html'
 license=('custom:BSD')
