@@ -3,7 +3,7 @@
 _pkgbasename=memtest86
 pkgname=$_pkgbasename-efi
 pkgver=7.2
-pkgrel=2
+pkgrel=3
 pkgdesc="A free, thorough, stand alone memory test as an EFI application"
 arch=('i686' 'x86_64')
 url="http://www.memtest86.com"
@@ -25,8 +25,8 @@ md5sums=('5ac971dbe3af784c1847a693f587a667'
          '6c096df3f55baf3e27c3bd605a418aa2'
          '8b4aa0e2f5d769d902459c8f8d514336'
          '496120c33c2af986933bf33456fa6cf3'
-         'a7dc15b3dea142e73d24338d9c6c51a5'
-         '86ab2980113da2d1ec72b0feeedaa600')
+         'f73ea56bd54ad1b51337046d4ef61a94'
+         '6027c3cc551663a604520a82cdc78b08')
 
 prepare() {
 	msg2 "Extract ISO..."
