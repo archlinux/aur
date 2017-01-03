@@ -3,7 +3,7 @@
 # Contributor: Jon Yamokoski <code@jonyamo.us>
 
 pkgname=pass-git
-pkgver=20160207.413
+pkgver=20170101.421
 pkgrel=1
 pkgdesc='Stores, retrieves, generates, and synchronizes passwords securely'
 url='http://www.passwordstore.org/'
@@ -15,6 +15,11 @@ provides=('pass' 'passmenu')
 conflicts=('pass' 'passmenu')
 source=("$pkgname::git://git.zx2c4.com/password-store")
 sha256sums=('SKIP')
+
+prepare() {
+    cd "$pkgname"
+    sed -i 's|$(DESTDIR)\($(PREFIX)\)|\1|' Makefile
+}
 
 pkgver() {
     cd "$pkgname"
