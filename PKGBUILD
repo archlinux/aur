@@ -1,5 +1,5 @@
 # CPAN Name  : HTML::Lint
-# Contributor: Dirk Langer <dirk.langer /at/ vvovgonik.de>
+# Contributor: Ordoban <dirk.langer@vvovgonik.de>
 
 pkgname=perl-html-lint
 _pkgname='HTML-Lint'
