@@ -1,8 +1,8 @@
 pkgbase = rainbow-icons-git
-	pkgdesc = A multicolour icon theme based on Surfn-icons-git.
-	pkgver = r226.97ed002b
-	pkgrel = 3
-	url = https://github.com/0devnull0/Surfn
+	pkgdesc = A multi-colour icon theme.
+	pkgver = r229.b8077462
+	pkgrel = 1
+	url = https://github.com/0devnull0/rainbow-icons
 	arch = any
 	license = Attribution-NonCommercial-ShareAlike 4.0 International Public License
 	makedepends = git
@@ -11,7 +11,7 @@ pkgbase = rainbow-icons-git
 	conflicts = menda-circle-icon-theme-git
 	options = !strip
 	options = !emptydirs
-	source = git+https://github.com/0devnull0/Surfn.git
+	source = git+https://github.com/0devnull0/rainbow-icons.git
 	sha256sums = SKIP
 
 pkgname = rainbow-icons-git
