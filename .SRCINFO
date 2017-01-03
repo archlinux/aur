@@ -1,5 +1,5 @@
 pkgbase = oh-brother-git
-	pkgdesc = A simple cross-platform utility writeen in Python which can update Brother printer firmwares.
+	pkgdesc = A simple cross-platform utility written in Python which can update Brother printer firmwares.
 	pkgver = r22.6c73096
 	pkgrel = 1
 	url = https://github.com/CauldronDevelopmentLLC/oh-brother
