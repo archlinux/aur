@@ -16,12 +16,7 @@ A) First install steps
 
   *** if you already use dnsmasq and it's functional
 
-    2) copy pi-hole include config lines in right place
-
-    # mkdir /etc/dnsmasq.d
-    # cp /etc/pihole/configs/dnsmasq.include /etc/dnsmasq.d/01-pihole.conf
-
-    3) edit your /etc/dnsmasq.conf to uncomment last line (including new pi-hole config lines)
+    2) edit your /etc/dnsmasq.conf to uncomment last line (including new pi-hole config lines)
 
     # sed -i 's|#conf-dir=/etc/dnsmasq.d/,\*.conf|conf-dir=/etc/dnsmasq.d/,\*.conf|' /etc/dnsmasq.conf
 
@@ -29,17 +24,15 @@ A) First install steps
 
   *** if you installed dnsmasq with this package for the first time
 
-    4) backup original dnsmasq config file and copy pi-hole one
+    3) backup original dnsmasq config file and copy pi-hole one
 
     # cp /etc/dnsmasq.conf /etc/dnsmasq.orig
     # cp /etc/pihole/configs/dnsmasq.main /etc/dnsmasq.conf
-    # mkdir /etc/dnsmasq.d
-    # cp /etc/pihole/configs/dnsmasq.include /etc/dnsmasq.d/01-pihole.conf
 
   *** end if
 
 
-  5) enable and start dnsmasq service
+  4) enable and start dnsmasq service
 
   # systemctl reenable dnsmasq.service
   # systemctl restart dnsmasq.service
@@ -51,7 +44,6 @@ B) Upgrade steps
   
     1) update dnsmasq conf file
 
-    # [ -f /etc/dnsmasq.d/pihole.conf ] && cp /etc/pihole/configs/dnsmasq.include /etc/dnsmasq.d/pihole.conf
     # [ -f /etc/dnsmasq.orig ] && cp /etc/pihole/configs/dnsmasq.complete /etc/dnsmasq.conf
 
     2) manage and restart dnsmasq service
@@ -68,6 +60,5 @@ C) Uninstall steps
   # systemctl disable dnsmasq.service
   # sed -i 's|name_servers=127.0.0.1|#name_servers=127.0.0.1|' /etc/resolvconf.conf
   # resolvconf -u
-  # [ -f /etc/dnsmasq.d/pihole.conf ] && rm /etc/dnsmasq.d/pihole.conf
   # [ -f /etc/dnsmasq.orig ] && cp /etc/dnsmasq.orig /etc/dnsmasq.conf
 

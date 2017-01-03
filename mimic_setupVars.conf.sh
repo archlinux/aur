@@ -2,13 +2,6 @@
 
 setupVars=/etc/pihole/setupVars.conf
 
-getDNSs()
-{
-	dnsmasqdns=(`grep server= /etc/pihole/configs/dnsmasq.main | awk -F "=" '{print $2}'`)
-	piholeDNS1=${dnsmasqdns[0]}
-	piholeDNS2=${dnsmasqdns[1]}
-}
-
 # official pihole basic-install.sh code here
 getIPv4stuff()
 {
@@ -33,15 +26,12 @@ finalExports() {
         rm ${setupVars}
     fi
     {
-    echo "piholeInterface=${IPv4dev}"
-    echo "IPv4_address=${IPv4_address}"
-    echo "IPv6_address=${IPv6_address}"
-    echo "piholeDNS1=${piholeDNS1}"
-    echo "piholeDNS2=${piholeDNS2}"
+    echo "PIHOLE_INTERFACE=${IPv4dev}"
+    echo "IPV4_ADDRESS=${IPv4_address}"
+    echo "IPV6_ADDRESS=${IPv6_address}"
     }>> "${setupVars}"
 }
 
-getDNSs
 getIPv4stuff
 getIPv6stuff
 finalExports

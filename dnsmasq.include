@@ -1,3 +1,29 @@
+# Pi-hole: A black hole for Internet advertisements
+# (c) 2015, 2016 by Jacob Salmela
+# Network-wide ad blocking via your Raspberry Pi
+# http://pi-hole.net
+# dnsmasq config for Pi-hole
+#
+# Pi-hole is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 2 of the License, or
+# (at your option) any later version.
+
+###############################################################################
+#      FILE AUTOMATICALLY POPULATED BY PI-HOLE INSTALL/UPDATE PROCEDURE.      #
+# ANY CHANGES MADE TO THIS FILE AFTER INSTALL WILL BE LOST ON THE NEXT UPDATE #
+#                                                                             #
+#        IF YOU WISH TO CHANGE THE UPSTREAM SERVERS, CHANGE THEM IN:          #
+#                      /etc/pihole/setupVars.conf                             #
+#                                                                             #
+#        ANY OTHER CHANGES SHOULD BE MADE IN A SEPERATE CONFIG FILE           #
+#                        OR IN /etc/dnsmasq.conf                              #
+###############################################################################
+
 addn-hosts=/etc/pihole/gravity.list
+addn-hosts=/etc/pihole/local.list
+domain-needed
+bogus-priv
+no-resolv
 cache-size=10000
 
