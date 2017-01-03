@@ -1,0 +1,26 @@
+pkgbase = gradle14
+	pkgdesc = Powerful build system for the JVM
+	pkgver = 1.4
+	pkgrel = 1
+	url = https://gradle.org/
+	arch = any
+	license = Apache
+	depends = java-environment
+	depends = bash
+	source = https://services.gradle.org/distributions/gradle-1.4-all.zip
+	source = gradle14.sh
+	sha512sums = 29f4c0cd0645dc67a2864c172e8e278b402f5d342ae2c34d5bd9d0fab87b1ed60725d77ef02530186e58d5ad82518724f19a688ac30ce27fedb7097aae4b3c28
+	sha512sums = 03b0b5a687db924d8b059dee2ca4d6af22a6168782476c0a435b366c593eb727364040b67aaf4218f7dfb147e8022364fd2d90b86a9a7907aa99699202b2eb93
+
+pkgname = gradle14
+
+pkgname = gradle14-doc
+	pkgdesc = Powerful build system for the JVM (documentation and samples)
+	optdepends = gradle14
+	options = !strip
+
+pkgname = gradle14-src
+	pkgdesc = Powerful build system for the JVM (sources)
+	optdepends = gradle14
+	options = !strip
+
