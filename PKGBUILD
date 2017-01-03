@@ -3,14 +3,15 @@
 
 pkgname=gpmdp
 pkgver=4.0.5
-pkgrel=1
+pkgrel=2
 pkgdesc="A beautiful cross platform Desktop Player for Google Play Music. Stable release."
 arch=('i686' 'x86_64')
 url="http://www.googleplaymusicdesktopplayer.com"
 depends=('libnotify' 'alsa-lib' 'gconf' 'gtk2' 'nss')
-optdepends=('gnome-keyring' 'lsb-release' 'libxtst' 'avahi')
+optdepends=('gnome-keyring' 'lsb-release' 'libxtst' 'avahi' 'nss-mdns')
 provides=('gpmdp')
 conflicts=('google-play-music-desktop-player-git' 'gpmdp-git')
+install=${pkgname}.install
 license=('MIT')
 
 case $CARCH in
@@ -22,12 +23,12 @@ case $CARCH in
     'i686')
         _arch='i386'
         md5sums=('1cff10540c07f43cb5a057a99ef59a41'
-                 '66bc0423e793af7b8ca75b9b175a42c8')
+	         '66bc0423e793af7b8ca75b9b175a42c8')
 	;;
 esac
 
 source=("https://github.com/MarshallOfSound/Google-Play-Music-Desktop-Player-UNOFFICIAL-/releases/download/v${pkgver}/google-play-music-desktop-player_${pkgver}_${_arch}.deb"
-        "gpmdp.desktop")
+	"gpmdp.desktop")
 
 package() {
     # Extract
