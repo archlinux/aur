@@ -5,10 +5,8 @@ CLASSPATH=${CLASSPATH}:$POL_HOME/lib/*
 
 # Allow either openjdk java or Oracle java to be used
 
-if [[ $(archlinux-java get | cut -d "-" -f2) -ge 8 ]]; then
-	export JAVA_HOME=$(archlinux-java get)
-else
-	export JAVA_HOME=$(ls /usr/lib/jvm/java-{8,9}-*/bin/javac 2>/dev/null | cut -d "/" -f-5 | head -1)
+if (( $(archlinux-java get | cut -d "-" -f2) < 7 )); then
+  export PATH=$(ls -d /usr/lib/jvm/java-{8,9}-* 2>/dev/null | head -1):$PATH
 fi
 
 # Start PlayOnLinux

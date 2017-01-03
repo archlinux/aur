@@ -10,8 +10,8 @@
 
 _pkgname=playonlinux5
 pkgname=$_pkgname-git
-pkgver=r1328.6376ad23
-pkgrel=4
+pkgver=r1409.8cb20ab7
+pkgrel=1
 epoch=2
 pkgdesc="GUI for managing Windows programs under linux (development version based on Java)"
 arch=('any')
@@ -21,14 +21,14 @@ makedepends=('git' 'gradle' 'maven' 'java-openjfx' 'java-environment>=8')
 depends=('wine')
 options=(!strip)
 source=(
-	"$_pkgname::git://github.com/PlayOnLinux/POL-POM-5.git"
+		"$_pkgname::git://github.com/PlayOnLinux/POL-POM-5.git"
         'PlayOnLinux5.desktop'
-	'PlayOnLinux.sh'
-	)
+		'PlayOnLinux.sh'
+		)
 sha256sums=(
 	'SKIP'
 	'4703fc813fb18d3e414cc1483f03cb3c0c306e5725b7681b3dbc43fb7f6630de'
-	'44478a1cc7421a71253b1d7e79096153f052088c5d167686d69ca955fe432de4'
+	'4fc408312c26aee5ea0c2aba922025b4fba0503b274df2912a7b3934ec1df125'
 	)
 
 pkgver() {
@@ -43,8 +43,13 @@ build() {
   cd "$_pkgname"
 
   # Set environment
-  # Use path to Java 8 for users nkt defaulted to Java 8 yet
-  export JAVA_HOME="/usr/lib/jvm/java-8-openjdk"
+  # Use path to Java 8 for users not defaulted to Java 8 yet
+  if (( $(archlinux-java get | cut -d "-" -f2) >= 8 )); then
+	JAVA_VER=$(archlinux-java get)
+	export JAVA_HOME="/usr/lib/jvm/${JAVA_VER}"
+  else
+	export JAVA_HOME=$(ls /usr/lib/jvm/java-{8,9}-*/bin/javac 2>/dev/null | cut -d "/" -f-5 | head -1)
+  fi
 
   # Build
   mvn package
