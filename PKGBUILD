@@ -1,8 +1,8 @@
 # Contributor: Zeph <zeph33@gmail.com>
 # Maintainer: Zeph <zeph33@gmail.com>
 pkgname=codelite-bin
-pkgver=9.2.2
-pkgrel=2
+pkgver=10.0.0
+pkgrel=1
 _pkgname=codelite
 _pkgrel=1
 pkgdesc="A cross platform C/C++/PHP and Node.js IDE written in C++"
@@ -40,5 +40,5 @@ package() {
 	find "${srcdir}/usr" -type d -exec chmod 755 '{}' \;
   cp -r "${srcdir}/usr" "${pkgdir}"
 	mkdir -p "${pkgdir}/usr/lib"
-	ln -s /usr/lib/libclang.so "${pkgdir}/usr/lib/libclang.so.3.8"
+#	ln -s /usr/lib/libclang.so "${pkgdir}/usr/lib/libclang.so.3.8"
 }
