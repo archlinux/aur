@@ -1,4 +1,4 @@
-# Maintainer: Kuldeep Singh Dhaka <kuldeepdhaka9@gmail.com>
+# Maintainer: Kuldeep Singh Dhaka <kuldeep@madresistor.com>
 
 pkgname=lmfit-git
 _pkgname=lmfit
