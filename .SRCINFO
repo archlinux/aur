@@ -12,10 +12,10 @@ pkgbase = crashplan-pro
 	makedepends = gzip
 	depends = java-runtime
 	optdepends = swt: needed by some to open the GUI
-	source = http://download1.us.code42.com/installs/linux/install/CrashPlanPRO/CrashPlanPRO_4.7.0_Linux.tgz
+	source = http://download1.us.code42.com/installs/linux/install/CrashPlanPRO/CrashPlanPRO_4.8.0_Linux.tgz
 	source = crashplan-pro
 	source = crashplan-pro.service
-	sha256sums = b50b190f6ce853c4d6d12bde95de7a21b3a456f065fbe9bd7fd349414c7b647d
+	sha256sums = 2411e68cae7c453d6fc6fbd09576f52ea4a02b25417944b30b3f192546e6970a
 	sha256sums = b306d7da0dd41341512ce80ddcfb21bff8a9bb73ab5018696e69d08b89f7f1b6
 	sha256sums = c631a971f300bfbfe52e3ec8faa4d7b735eaa069d73e11d6021567e29d053dc3
 

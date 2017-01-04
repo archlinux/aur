@@ -2,7 +2,7 @@
 # Contributer: Griffin Smith <wildgriffin [at] gmail [dot] com>
 # Contributor: Bill Durr <billyburly [at] gmail [dot] com>
 pkgname=crashplan-pro
-pkgver=4.7.0
+pkgver=4.8.0
 pkgrel=1
 pkgdesc="An business online/offsite backup solution"
 url="http://www.crashplan.com/business"
@@ -16,7 +16,7 @@ install=crashplan-pro.install
 source=(http://download1.us.code42.com/installs/linux/install/CrashPlanPRO/CrashPlanPRO_${pkgver}_Linux.tgz
         crashplan-pro
         crashplan-pro.service)
-sha256sums=('b50b190f6ce853c4d6d12bde95de7a21b3a456f065fbe9bd7fd349414c7b647d'
+sha256sums=('2411e68cae7c453d6fc6fbd09576f52ea4a02b25417944b30b3f192546e6970a'
             'b306d7da0dd41341512ce80ddcfb21bff8a9bb73ab5018696e69d08b89f7f1b6'
             'c631a971f300bfbfe52e3ec8faa4d7b735eaa069d73e11d6021567e29d053dc3')
 
@@ -70,8 +70,9 @@ package() {
   echo "export LC_ALL=$LANG" >> $srcdir/crashplan-install/scripts/run.conf
 
   install -D -m 644 $srcdir/crashplan-install/install.vars $pkgdir/opt/$pkgname/install.vars
-  install -D -m 644 $srcdir/crashplan-install/EULA.txt $pkgdir/opt/$pkgname/EULA.txt
-  install -D -m 644 $srcdir/crashplan-install/EULA.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+#Removed as of Version 4.8.0 as the EULA is no longer included in the source
+  #install -D -m 644 $srcdir/crashplan-install/EULA.txt $pkgdir/opt/$pkgname/EULA.txt
+  #install -D -m 644 $srcdir/crashplan-install/EULA.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   install -D -m 755 $srcdir/crashplan-install/scripts/CrashPlanDesktop $pkgdir/opt/$pkgname/bin/CrashPlanDesktop
   install -D -m 644 $srcdir/crashplan-install/scripts/run.conf $pkgdir/opt/$pkgname/bin/run.conf
   install -D -m 755 $srcdir/crashplan-install/scripts/CrashPlanEngine $pkgdir/opt/$pkgname/bin/CrashPlanEngine
