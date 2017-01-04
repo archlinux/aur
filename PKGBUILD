@@ -3,7 +3,7 @@
 pkgname=hledger
 pkgver=1.1
 pkgrel=1
-pkgdesc="The hledger command-line and web-based accounting tool"
+pkgdesc="Command-line and web-based accounting tool"
 arch=('i686' 'x86_64')
 depends=('ncurses')
 makedepends=('haskell-stack')

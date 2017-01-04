@@ -1,5 +1,5 @@
 pkgbase = hledger
-	pkgdesc = The hledger command-line and web-based accounting tool
+	pkgdesc = Command-line and web-based accounting tool
 	pkgver = 1.1
 	pkgrel = 1
 	url = http://hledger.org
