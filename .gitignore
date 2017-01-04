@@ -1,3 +1,6 @@
-Anaconda*.sh
+Anaconda2*.sh
 pkg/
 src/
+*.log
+*.pkg*
+*.sw*
