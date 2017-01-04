@@ -1,5 +1,5 @@
 pkgname=gnome-shell-extension-zorin-menu
-pkgver=1.0.10
+pkgver=1.1
 pkgrel=1
 pkgdesc="The official applications menu for Zorin OS."
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ depends=('gnome-shell')
 options=('!emptydirs' '!strip')
 install=${pkgname}.install
 source=("http://ppa.launchpad.net/zorinos/stable/ubuntu/pool/main/g/gnome-shell-extension-zorin-menu/gnome-shell-extension-zorin-menu_${pkgver}_all.deb")
-md5sums=('bf5f8ae1e26ef497c8ef1113af71462d')
+md5sums=('50139041ee552de677c81613164dcbfa')
 
 package() {
   msg2 "Extracting the data.tar.xz..."
