@@ -3,9 +3,9 @@
 # Contributor: Thomas Baechler <thomas@archlinux.org>
 
 pkgbase=linux-rc
-_srcname=linux-4.8
-_stable=4.8.14
-_patchver=4.8.15
+_srcname=linux-4.9
+_stable=4.9
+_patchver=4.9.1
 pkgver=${_patchver}rc1
 _rcpatch=patch-${_patchver}-rc1
 pkgrel=1
@@ -27,22 +27,20 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         # standard config files for mkinitcpio ramdisk
         'linux.preset'
         'change-default-console-loglevel.patch'
-        'net_handle_no_dst_on_skb_in_icmp6_send.patch'
         '0001-x86-fpu-Fix-invalid-FPU-ptrace-state-after-execve.patch'
         )
 
-sha256sums=('3e9150065f193d3d94bcf46a1fe9f033c7ef7122ab71d75a7fb5a2f0c9a7e11a'
+sha256sums=('029098dcffab74875e086ae970e3828456838da6e0ba22ce3f64ef764f3d7f1a'
             'SKIP'
-            'efa9b7d87a6ca67426e3d7f206ac987eb7cb31602ad2011e81060626de790fcb'
+            'efb18504cd318e573d0635ea18a49d63d317f1d01f05e5b48c99b003877b8906'
             'SKIP'
-            'b0b2d378d883c1ae552a6c6d016e2727a6a270068ee740e5f8b32534dcefb437'
+            '5d997eccc78e8025743afe05f77ec507eb164b50bc5e939ca4605e8850942d08'
             'SKIP'
-            '2ac8818414beb7dbacbd3ad450c516e6ada804827132a7132f63b8189e5f5151'
-            '41b9a64542befd2fea170776e8ec22a7d158dd3273633afc9b91662c448cd90a'
+            'b6aa460ed9e8461c8b431b9765f80dde978ae7f2ad3ef12c14f02d782db56a28'
+            '087f6223290b5935c27ad736dd4958873942d6ad2f695486be1b5d9fd11db0c1'
             '834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
-            'b595a1588bafb3d732841cd1b73633970706914f57f2d215c9f1494212d13989'
             '3e955e0f1aae96bb6c1507236adc952640c9bd0a134b9995ab92106a33dc02d9')
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
@@ -56,13 +54,10 @@ prepare() {
 
   # add upstream patch
   # comment out for initial rc (ie 4.8 --> 4.8.1rc1
-  patch -p1 -i "${srcdir}/patch-${_stable}"
+  # patch -p1 -i "${srcdir}/patch-${_stable}"
 
   # add rc patch
   patch -p1 -i "${srcdir}/$_rcpatch"
-
-  # https://bugzilla.kernel.org/show_bug.cgi?id=189851
-  patch -p1 -i "${srcdir}/net_handle_no_dst_on_skb_in_icmp6_send.patch"
 
   # Revert a commit that causes memory corruption in i686 chroots on our
   # build server ("valgrind bash" immediately crashes)
