@@ -1,0 +1,37 @@
+--- /opt/cocos2d-x/cocos/renderer/ccShader_Label_outline.frag	2016-12-29 13:42:38.000000000 -0400
++++ /tmp/ccShader_Label_outline.frag	2017-01-04 15:03:04.226665269 -0400
+@@ -1,10 +1,10 @@
+ /*
+  * LICENSE ???
+  */
+-const char* ccLabelOutline_frag = R"(
+-#ifdef GL_ES
++const char* ccLabelOutline_frag = STRINGIFY(
++\n#ifdef GL_ES\n
+ precision lowp float;
+-#endif
++\n#endif\n
+ 
+ varying vec4 v_fragmentColor;
+ varying vec2 v_texCoord;
+@@ -12,11 +12,11 @@
+ uniform vec4 u_effectColor;
+ uniform vec4 u_textColor;
+ 
+-#ifdef GL_ES
++\n#ifdef GL_ES\n
+ uniform lowp int u_effectType; // 0: None (Draw text), 1: Outline, 2: Shadow
+-#else
++\n#else\n
+ uniform int u_effectType;
+-#endif
++\n#endif\n
+ 
+ void main()
+ {
+@@ -45,4 +45,4 @@
+         gl_FragColor = v_fragmentColor * vec4(u_effectColor.rgb, u_effectColor.a * outlineAlpha);
+     }
+ }
+-)";
++);

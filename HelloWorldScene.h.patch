@@ -1,0 +1,11 @@
+--- HelloWorldScene.h	2016-12-21 13:43:14.000000000 -0400
++++ /opt/cocos2d-x-git/templates/cpp-template-default/Classes/HelloWorldScene.h	2017-01-04 12:22:47.004282988 -0400
+@@ -3,7 +3,7 @@
+ 
+ #include "cocos2d.h"
+ 
+-class HelloWorld : public cocos2d::Layer
++class HelloWorld : public cocos2d::Scene
+ {
+ public:
+     static cocos2d::Scene* createScene();

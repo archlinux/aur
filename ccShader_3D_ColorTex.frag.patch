@@ -1,0 +1,23 @@
+--- /opt/cocos2d-x/cocos/renderer/ccShader_3D_ColorTex.frag	2016-12-29 13:42:38.000000000 -0400
++++ /tmp/ccShader_3D_ColorTex.frag	2017-01-04 15:03:03.303438172 -0400
+@@ -1,15 +1,15 @@
+ 
+-const char* cc3D_ColorTex_frag = R"(
++const char* cc3D_ColorTex_frag = STRINGIFY(
+ 
+-#ifdef GL_ES
++\n#ifdef GL_ES\n
+ varying mediump vec2 TextureCoordOut;
+-#else
++\n#else\n
+ varying vec2 TextureCoordOut;
+-#endif
++\n#endif\n
+ uniform vec4 u_color;
+ 
+ void main(void)
+ {
+     gl_FragColor = texture2D(CC_Texture0, TextureCoordOut) * u_color;
+ }
+-)";
++);

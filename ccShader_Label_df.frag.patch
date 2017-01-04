@@ -1,0 +1,20 @@
+--- /opt/cocos2d-x/cocos/renderer/ccShader_Label_df.frag	2016-12-29 13:42:38.000000000 -0400
++++ /tmp/ccShader_Label_df.frag	2017-01-04 15:03:04.066683647 -0400
+@@ -1,8 +1,8 @@
+-const char* ccLabelDistanceFieldNormal_frag = R"(
++const char* ccLabelDistanceFieldNormal_frag = STRINGIFY(
+ 
+-#ifdef GL_ES
++\n#ifdef GL_ES\n
+ precision lowp float;
+-#endif
++\n#endif\n
+ 
+ varying vec4 v_fragmentColor;
+ varying vec2 v_texCoord;
+@@ -23,4 +23,4 @@
+     float alpha = smoothstep(0.5-width, 0.5+width, dist) * u_textColor.a;
+     gl_FragColor = v_fragmentColor * vec4(u_textColor.rgb,alpha);
+ }
+-)";
++);

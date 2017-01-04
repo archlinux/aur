@@ -1,0 +1,23 @@
+--- /opt/cocos2d-x/cocos/renderer/ccShader_PositionTexture_uColor.frag	2016-12-29 13:42:38.000000000 -0400
++++ /tmp/ccShader_PositionTexture_uColor.frag	2017-01-04 15:03:05.026573382 -0400
+@@ -23,11 +23,11 @@
+  * THE SOFTWARE.
+  */
+ 
+-const char* ccPositionTexture_uColor_frag = R"(
++const char* ccPositionTexture_uColor_frag = STRINGIFY(
+ 
+-#ifdef GL_ES
++\n#ifdef GL_ES\n
+ precision lowp float;
+-#endif
++\n#endif\n
+ 
+ uniform vec4 u_color;
+ 
+@@ -37,4 +37,4 @@
+ {
+     gl_FragColor =  texture2D(CC_Texture0, v_texCoord) * u_color;
+ }
+-)";
++);

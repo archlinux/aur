@@ -1,0 +1,30 @@
+--- /opt/cocos2d-x/cocos/renderer/ccShader_PositionColorLengthTexture.frag	2016-12-29 13:42:38.000000000 -0400
++++ /tmp/ccShader_PositionColorLengthTexture.frag	2017-01-04 15:03:04.383313940 -0400
+@@ -19,17 +19,17 @@
+  * SOFTWARE.
+  */
+ 
+-const char* ccPositionColorLengthTexture_frag = R"(
++const char* ccPositionColorLengthTexture_frag = STRINGIFY(
+ 
+-#ifdef GL_ES
++\n#ifdef GL_ES\n
+ // #extension GL_OES_standard_derivatives : enable
+ 
+ varying mediump vec4 v_color;
+ varying mediump vec2 v_texcoord;
+-#else
++\n#else\n
+ varying vec4 v_color;
+ varying vec2 v_texcoord;
+-#endif
++\n#endif\n
+ 
+ void main()
+ {
+@@ -39,4 +39,4 @@
+     gl_FragColor = v_color*step(0.0, 1.0 - length(v_texcoord));
+ // #endif
+ }
+-)";
++);

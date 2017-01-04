@@ -1,0 +1,16 @@
+--- /opt/cocos2d-x/cocos/renderer/ccShader_3D_Skybox.vert	2016-12-29 13:42:38.000000000 -0400
++++ /tmp/ccShader_3D_Skybox.vert	2017-01-04 15:03:03.633400183 -0400
+@@ -1,4 +1,4 @@
+-const char* cc3D_Skybox_vert = R"(
++const char* cc3D_Skybox_vert = STRINGIFY(
+ 
+ uniform mat4  u_cameraRot;
+ attribute vec3 a_position;
+@@ -10,4 +10,4 @@
+     v_reflect = reflect.xyz;
+     gl_Position = vec4(a_position.xy, 1.0 , 1.0);
+ }
+-)";
+\ No newline at end of file
++);
+\ No newline at end of file

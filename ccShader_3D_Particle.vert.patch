@@ -1,0 +1,17 @@
+--- /opt/cocos2d-x/cocos/renderer/ccShader_3D_Particle.vert	2016-12-29 13:42:38.000000000 -0400
++++ /tmp/ccShader_3D_Particle.vert	2017-01-04 15:03:03.413425508 -0400
+@@ -1,5 +1,5 @@
+ 
+-const char* cc3D_Particle_vert = R"(
++const char* cc3D_Particle_vert = STRINGIFY(
+                                               
+ attribute vec4 a_position;
+ attribute vec4 a_color;
+@@ -15,4 +15,4 @@
+     gl_Position = CC_PMatrix * a_position;
+ }
+ 
+-)";
+\ No newline at end of file
++);
+\ No newline at end of file

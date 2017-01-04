@@ -1,0 +1,38 @@
+--- /opt/cocos2d-x/cocos/renderer/ccShader_PositionColorLengthTexture.vert	2016-12-29 13:42:38.000000000 -0400
++++ /tmp/ccShader_PositionColorLengthTexture.vert	2017-01-04 15:03:04.443307047 -0400
+@@ -19,9 +19,9 @@
+  * SOFTWARE.
+  */
+ 
+-const char* ccPositionColorLengthTexture_vert = R"(
++const char* ccPositionColorLengthTexture_vert = STRINGIFY(
+ 
+-#ifdef GL_ES
++\n#ifdef GL_ES\n
+ attribute mediump vec4 a_position;
+ attribute mediump vec2 a_texcoord;
+ attribute mediump vec4 a_color;
+@@ -29,7 +29,7 @@
+ varying mediump vec4 v_color;
+ varying mediump vec2 v_texcoord;
+ 
+-#else
++\n#else\n
+ 
+ attribute vec4 a_position;
+ attribute vec2 a_texcoord;
+@@ -38,7 +38,7 @@
+ varying vec4 v_color;
+ varying vec2 v_texcoord;
+ 
+-#endif
++\n#endif\n
+ 
+ void main()
+ {
+@@ -47,4 +47,4 @@
+ 
+     gl_Position = CC_MVPMatrix * a_position;
+ }
+-)";
++);

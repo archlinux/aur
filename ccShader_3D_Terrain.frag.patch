@@ -1,0 +1,33 @@
+--- /opt/cocos2d-x/cocos/renderer/ccShader_3D_Terrain.frag	2016-12-29 13:42:38.000000000 -0400
++++ /tmp/ccShader_3D_Terrain.frag	2017-01-04 15:03:03.693393276 -0400
+@@ -1,18 +1,18 @@
+ 
+-const char* cc3D_Terrain_frag = R"(
+-#ifdef GL_ES
++const char* cc3D_Terrain_frag = STRINGIFY(
++\n#ifdef GL_ES\n
+ precision mediump float;
+-#endif
++\n#endif\n
+ uniform vec3 u_color;
+ varying vec2 v_texCoord;
+ varying vec3 v_normal;
+-#ifdef GL_ES
++\n#ifdef GL_ES\n
+ uniform lowp int u_has_alpha;
+ uniform lowp int u_has_light_map;
+-#else
++\n#else\n
+ uniform int u_has_alpha;
+ uniform int u_has_light_map;
+-#endif
++\n#endif\n
+ uniform sampler2D u_alphaMap;
+ uniform sampler2D u_texture0;
+ uniform sampler2D u_texture1;
+@@ -45,4 +45,4 @@
+     gl_FragColor = vec4(color.rgb*lightColor.rgb*lightFactor, 1.0);
+ }
+ }
+-)";
++);

@@ -1,0 +1,18 @@
+--- /opt/cocos2d-x/cocos/renderer/ccShader_3D_PositionTex.vert	2016-12-29 13:42:38.000000000 -0400
++++ /tmp/ccShader_3D_PositionTex.vert	2017-01-04 15:03:03.530078745 -0400
+@@ -1,5 +1,5 @@
+ 
+-const char* cc3D_PositionTex_vert = R"(
++const char* cc3D_PositionTex_vert = STRINGIFY(
+ 
+ attribute vec4 a_position;
+ attribute vec2 a_texCoord;
+@@ -12,7 +12,7 @@
+     TextureCoordOut = a_texCoord;
+     TextureCoordOut.y = 1.0 - TextureCoordOut.y;
+ }
+-)";
++);
+ 
+ const char* cc3D_SkinPositionTex_vert = R"(
+ attribute vec3 a_position;
