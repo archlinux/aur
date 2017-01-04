@@ -1,11 +1,16 @@
---- pyglossary-3.0.4/pyglossary/core.py.orig	2017-01-04 20:18:04.886243568 +0300
-+++ pyglossary-3.0.4/pyglossary/core.py	2017-01-04 20:20:13.636239176 +0300
-@@ -52,7 +52,7 @@
+--- pyglossary-3.0.4/pyglossary/core.py.orig	2017-01-04 20:45:07.786188210 +0300
++++ pyglossary-3.0.4/pyglossary/core.py	2017-01-04 20:38:33.000000000 +0300
+@@ -50,11 +50,10 @@
+ 
+ if hasattr(sys, 'frozen'):
     rootDir = dirname(sys.executable)
-    uiDir = join(rootDir, 'ui')
+-   uiDir = join(rootDir, 'ui')
  else:
 -   uiDir = dirname(realpath(__file__))
-+   uiDir = dirname(realpath(sys.argv[0]))
-    rootDir = dirname(uiDir)
+-   rootDir = dirname(uiDir)
++   rootDir = dirname(realpath(sys.argv[0]))
  
++uiDir = join(rootDir, 'ui')
  resDir = join(rootDir, 'res')
+ 
+ if os.sep=='/': ## Operating system is Unix-Like
