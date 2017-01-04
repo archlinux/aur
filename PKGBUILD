@@ -2,16 +2,16 @@
 
 _extname=wddx
 pkgname=("php-${_extname}")
-pkgver=7.0.1
+pkgver=7.0.14
 pkgrel=1
 pkgdesc="PHP extension for wddx"
 arch=('i686' 'x86_64')
-url='http://www.php.net/wddx'
+url='https://secure.php.net/wddx'
 license=('PHP')
 depends=('php')
 backup=("etc/php/conf.d/${_extname}.ini")
 install="php-${_extname}.install"
-source=("http://www.php.net/distributions/php-${pkgver}.tar.gz")
+source=("https://secure.php.net/distributions/php-${pkgver}.tar.gz")
 md5sums=('2da2981724d5c99ab7dc6e2164c8e756')
 
 build() {
