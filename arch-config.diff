@@ -63,31 +63,3 @@ diff -up src/xrdp-git/sesman/startwm.sh.orig src/xrdp-git/sesman/startwm.sh
    # debian
    if [ -r /etc/X11/Xsession ]; then
      . /etc/X11/Xsession
-diff -up src/xrdp-git/xrdp/xrdp.ini.orig src/xrdp-git/xrdp/xrdp.ini
---- src/xrdp-git/xrdp/xrdp.ini.orig	2015-12-04 06:23:11.000000000 -0700
-+++ src/xrdp-git/xrdp/xrdp.ini	2015-12-04 06:23:12.000000000 -0700
-@@ -51,7 +51,7 @@ grey=dedede
- # require_credentials=yes
- 
- # set a default entry for autorun if the client send login and pass directly
--autorun=xrdp1
-+autorun=xrdp2
- 
- bulk_compression=yes
- 
-@@ -139,6 +139,15 @@ tcutils=true
- # for debugging xrdp, add following line to section xrdp1
- # chansrvport=/tmp/.xrdp/xrdp_chansrv_socket_7210
- 
-+[xrdp0]
-+name=sesman-Xvnc-delay
-+lib=libvnc.so
-+username=ask
-+password=ask
-+ip=127.0.0.1
-+port=-1
-+delay_ms=2000
-+
- [xrdp1]
- name=sesman-X11rdp
- lib=libxup.so
