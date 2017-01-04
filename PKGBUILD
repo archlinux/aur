@@ -21,7 +21,8 @@ md5sums=('38ab182083e8e5ae6d5a51295305ae8b'
 
 
 pkgver() {
-    curl -Is https://github.com/Piwigo/Piwigo/releases/latest | awk -F'/' '/^Location/ {print $NF}' |  sed 's/[^[:print:]]//'
+#    curl -Is https://github.com/Piwigo/Piwigo/releases/latest | awk -F'/' '/^Location/ {print $NF}' |  sed 's/[^[:print:]]//'
+      curl -s  http://piwigo.org/download/all_versions.php | head -1
 }
 
 
