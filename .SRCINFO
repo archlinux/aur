@@ -1,0 +1,16 @@
+pkgbase = gconf-cleaner
+	pkgdesc = A Cleaning tool for GConf
+	pkgver = 0.0.3
+	pkgrel = 2
+	url = http://code.google.com/p/gconf-cleaner
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = intltool
+	depends = gconf
+	depends = gtk2
+	source = https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/gconf-cleaner/gconf-cleaner-0.0.3.tar.gz
+	md5sums = 94d28d18c84ba8e9a166937a1e41fb53
+
+pkgname = gconf-cleaner
+
