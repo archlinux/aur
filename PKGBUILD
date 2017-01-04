@@ -9,7 +9,7 @@ url="https://github.com/yakyak/yakyak"
 license=('MIT')
 depends=('electron>=1.4.0')
 optdepends=('emojione-color-font: Emoji support')
-makedepends=('unzip' 'nodejs' 'npm')
+makedepends=('nodejs' 'npm')
 
 sha256sums=('59cd67a18260baee59ee971f29389ef9fac2747573c294807fc1f797f53cc6b5'
             '12baee4e3e926b765ebe21493adb7aa416165c7191f583694670b08d9b9c5360'
