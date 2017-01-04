@@ -1,0 +1,22 @@
+pkgbase = opengm-git
+	pkgdesc = A C++ Library for Discrete Graphical Models
+	pkgver = r2125.31e01c6
+	pkgrel = 1
+	url = https://github.com/opengm/opengm
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = cmake
+	makedepends = boost
+	makedepends = python-numpy
+	depends = boost-libs
+	optdepends = python-numpy: Python support
+	optdepends = python-h5py: Python support
+	provides = opengm
+	conflicts = opengm
+	source = git+https://github.com/bluescarni/opengm.git#branch=python3
+	md5sums = SKIP
+
+pkgname = opengm-git
+
