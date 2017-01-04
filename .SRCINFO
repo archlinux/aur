@@ -10,9 +10,9 @@ pkgbase = opengm-git
 	makedepends = cmake
 	makedepends = boost
 	makedepends = python-numpy
-	depends = boost-libs
 	optdepends = python-numpy: Python support
 	optdepends = python-h5py: Python support
+	optdepends = boost-libs: Python support
 	provides = opengm
 	conflicts = opengm
 	source = git+https://github.com/bluescarni/opengm.git#branch=python3
