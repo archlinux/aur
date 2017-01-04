@@ -18,7 +18,8 @@ source=("https://launchpad.net/ubuntu/+archive/primary/+files/alsaequal_${pkgver
         '0001-fix-lib32-makefile.patch'
         '0002-fix-lib32-makefile.patch'
 	    	'lib32-alsaequal_caps_9.x.patch'
-        'alsaequal-asneeded.patch')
+        'alsaequal-asneeded.patch'
+        'ladspa_multilib.patch')
 
 sha256sums=('916e7d152added24617efc350142438a46099efe062bd8781d36dbf10b4e6ff0'
             'c1a02bfed6be6385e8ab4ebe7c9c3844e9c0937fbafe0f8d948842c2b7c9f7f0'
@@ -26,7 +27,8 @@ sha256sums=('916e7d152added24617efc350142438a46099efe062bd8781d36dbf10b4e6ff0'
             'd8b2f37f39a29de73feed8aedfb917fb621338dfeb8096ed0f01faf5e873c0b4'
             '53a067babe50333138c39549db937aa0746aad39f849f70a5196fa05d2d18867'
             'd8d12c72176e1f7aba9443007f72a7ab7bb8f8d677757db24630dc593eaf978c'
-            '24718bedfa184b9a59127020f09105cc831b5f188be4b05f21b530bf13155a52')
+            '24718bedfa184b9a59127020f09105cc831b5f188be4b05f21b530bf13155a52'
+            '3c420dabd2aac2e80c04de10686c4bd50c2ffdd46f7b81c030f27ca9be53ada0')
 
 
 prepare() {
@@ -37,6 +39,7 @@ prepare() {
   patch -Np1 -i ../0002-fix-lib32-makefile.patch
 	patch -Np0 -i ../lib32-alsaequal_caps_9.x.patch
   patch -Np0 -i ../alsaequal-asneeded.patch
+  patch -Np1 -i ../ladspa_multilib.patch
 	make clean
 }
 

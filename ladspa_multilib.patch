@@ -1,0 +1,28 @@
+From 27c6023601508e51e1382e4ff3fec7577a73c506 Mon Sep 17 00:00:00 2001
+From: Tai Chi Minh Ralph Eastwood <tcmreastwood@gmail.com>
+Date: Mon, 31 Aug 2015 14:39:31 +0100
+Subject: [PATCH] make .alsaequal.bin compatible in multilib install
+
+---
+ ladspa_utils.h | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/ladspa_utils.h b/ladspa_utils.h
+index 70ca2cc..40d7a48 100644
+--- a/ladspa_utils.h
++++ b/ladspa_utils.h
+@@ -46,10 +46,10 @@ typedef struct LADSPA_Control_Data_ {
+ 	int type;
+ } LADSPA_Control_Data;
+ typedef struct LADSPA_Control_ {
+-	unsigned long length;
+-	unsigned long id;
+-	unsigned long channels;
+-	unsigned long num_controls;
++	unsigned long long length;
++	unsigned long long id;
++	unsigned long long channels;
++	unsigned long long num_controls;
+ 	int input_index;
+ 	int output_index;
+ 	LADSPA_Control_Data control[];
