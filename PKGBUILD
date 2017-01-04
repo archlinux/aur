@@ -2,7 +2,7 @@
 
 pkgbase=wireguard-git
 pkgname=(wireguard-dkms-git wireguard-tools-git)
-pkgver=0.0.20161230.r6.g4c78977
+pkgver=0.0.20161230.r6.g7adc1f5
 pkgrel=1
 pkgdesc='next generation secure network tunnel - git checkout'
 arch=('x86_64' 'i686')
@@ -46,7 +46,10 @@ package_wireguard-dkms-git() {
 
 	cd WireGuard/
 
-	make -C src/ DESTDIR="${pkgdir}/" DKMSDIR="/usr/src/wireguard-${pkgver}/" dkms-install
+	make -C src/ \
+		DESTDIR="${pkgdir}/" \
+		DKMSDIR="/usr/src/wireguard-${pkgver}/" \
+		dkms-install
 }
 
 package_wireguard-tools-git() {
@@ -56,7 +59,11 @@ package_wireguard-tools-git() {
 
 	cd WireGuard/
 
-	make -C src/tools/ DESTDIR="${pkgdir}/" install
+	make -C src/tools/ DESTDIR="${pkgdir}/" \
+		WITH_BASHCOMPLETION=yes \
+		WITH_WGQUICK=yes \
+		WITH_SYSTEMDUNITS=yes \
+		install
 
 	install -d -m0755 "${pkgdir}"/usr/share/${pkgbase}/
 	cp -r contrib/examples/ "${pkgdir}"/usr/share/${pkgbase}/
