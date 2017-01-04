@@ -11,7 +11,7 @@ license=('custom')
 depends=('java-environment' 'java-openjfx')
 makedepends=()
 source=(
-  "http://www.screamingfrog.co.uk/products/seo-spider/screamingfrogseospider_${pkgver}_all.deb"
+  "https://www.screamingfrog.co.uk/products/seo-spider/screamingfrogseospider_${pkgver}_all.deb"
   "LICENSE"
 )
 sha256sums=('eb489a5c2b72e3122d9f82a192886538a0711664646f400c8f39ba39af813cd1'
