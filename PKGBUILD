@@ -1,16 +1,16 @@
 # Maintainer: Philipp Claßen <philipp.classen@posteo.de>
 pkgname=cppqc-git
-pkgver=r59.d20b952
+pkgver=r94.01555b4
 pkgrel=1
 pkgdesc="QuickCheck-like property based automated testing tool for C++"
 arch=('i686' 'x86_64')
-url="https://github.com/grogers0/CppQuickCheck"
+url="https://github.com/philipp-classen/CppQuickCheck"
 
 license=('BSD')
 
 depends=(boost)
 makedepends=('gcc' 'cmake')
-source=('git://github.com/grogers0/CppQuickCheck.git')
+source=('git://github.com/philipp-classen/CppQuickCheck.git')
 md5sums=('SKIP')
 
 pkgver() {
