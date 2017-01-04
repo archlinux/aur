@@ -1,0 +1,11 @@
+--- pyglossary-3.0.4/pyglossary/core.py.orig	2017-01-04 20:18:04.886243568 +0300
++++ pyglossary-3.0.4/pyglossary/core.py	2017-01-04 20:20:13.636239176 +0300
+@@ -52,7 +52,7 @@
+    rootDir = dirname(sys.executable)
+    uiDir = join(rootDir, 'ui')
+ else:
+-   uiDir = dirname(realpath(__file__))
++   uiDir = dirname(realpath(sys.argv[0]))
+    rootDir = dirname(uiDir)
+ 
+ resDir = join(rootDir, 'res')

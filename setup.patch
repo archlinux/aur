@@ -1,11 +1,15 @@
---- setup.py.orig	2017-01-04 19:11:40.069712824 +0300
-+++ setup.py	2017-01-04 19:11:47.889712556 +0300
-@@ -34,7 +34,7 @@
-                         "installation path already exists but is not a directory: %s" %
-                         self.install_scripts)
-             open(binPath, 'w').write(
--                join(self.install_data, relRootDir, 'pyglossary.pyw') +
-+                join(self.prefix, relRootDir, 'pyglossary.pyw') +
-                 ' "$@"')  # pass options from command line
-             os.chmod(binPath, 0o755)
- 
+--- pyglossary-3.0.4/setup.py.orig	2017-01-04 20:23:24.602899329 +0300
++++ pyglossary-3.0.4/setup.py	2017-01-04 20:23:36.212898932 +0300
+@@ -112,9 +112,9 @@
+ setup(
+     name = 'pyglossary',
+     version = VERSION,
+-    cmdclass = {
+-        'install': my_install,
+-    },
++    #cmdclass = {
++    #    'install': my_install,
++    #},
+     description = 'A tool for workig with dictionary databases',
+     author = 'Saeed Rasooli',
+     author_email = 'saeed.gnu@gmail.com',
