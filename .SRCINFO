@@ -1,6 +1,6 @@
 pkgbase = crashplan-pro
 	pkgdesc = An business online/offsite backup solution
-	pkgver = 4.7.0
+	pkgver = 4.8.0
 	pkgrel = 1
 	url = http://www.crashplan.com/business
 	install = crashplan-pro.install
