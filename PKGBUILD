@@ -1,6 +1,7 @@
 # Maintainer: Jeremy Johnathan Rodent <narf@x201t>
 pkgname='yafaray-experimental-blender-exporter'
-pkgver='2.1.1'
+_pkgver='3.1.1-beta'
+pkgver='3.1.1'
 pkgrel='1'
 pkgdesc="Yafaray exporter plugin for blender"
 arch=('any')
@@ -10,11 +11,11 @@ depends=('blender')
 optdepends=('yafaray-experimental: for the actual rendering part.')
 provides=('yafaray-blender-exporter')
 conflicts=('yafaray-blender-exporter' 'yafaray-blender-exporter-git')
-source=('https://github.com/DavidBluecame/Blender-Exporter/archive/v2.1.1.tar.gz')
-md5sums=('021cb80c9f49194b5ed65310c9094e40')
+source=("https://github.com/DavidBluecame/Blender-Exporter/archive/v$_pkgver.tar.gz")
+md5sums=('fc8e1ff2bb408867465f74bfc2344357')
 
-_srcdir="Blender-Exporter-$pkgver"
-_blender_ver="2.77"
+_srcdir="Blender-Exporter-$_pkgver"
+_blender_ver="2.78"
 
 prepare() {
   cd "$_srcdir"
