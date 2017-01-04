@@ -7,9 +7,10 @@ pkgdesc="A C++ Library for Discrete Graphical Models"
 arch=('i686' 'x86_64')
 url="https://github.com/opengm/opengm"
 license=('MIT')
-depends=('boost-libs')
+depends=()
 makedepends=('git' 'cmake' 'boost' 'python-numpy')
-optdepends=('python-numpy: Python support' 'python-h5py: Python support')
+optdepends=('python-numpy: Python support' 'python-h5py: Python support'
+            'boost-libs: Python support')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=('git+https://github.com/bluescarni/opengm.git#branch=python3')
