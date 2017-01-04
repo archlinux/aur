@@ -25,8 +25,8 @@ php-gnupg-aur is licensed under the MIT license.  See [LICENSE] for the full
 license text.
 
 [AUR]: https://aur.archlinux.org/
-[gnupg]: http://pecl.php.net/package/gnupg
+[gnupg]: https://pecl.php.net/package/gnupg
 [makepkg]: https://wiki.archlinux.org/index.php/Makepkg
 [Docker]: https://www.docker.com/
-[Docker Compose]: http://docs.docker.com/compose/
+[Docker Compose]: https://docs.docker.com/compose/
 [LICENSE]: https://github.com/nubs/php-gnupg-aur/blob/master/LICENSE
