@@ -52,7 +52,8 @@ build() {
   # this should work instead of "git clean", but something leftover causes crashes
   #make ARGS=-clean
 
-  make
+  # first build fails with more than one process
+  make -j1
 
   # delete windows-only files
   #find \( -iname "Win64" -o -iname "vs2013" -o -iname "vs2015" \) -type d -prune -exec rm -r "{}" \;
