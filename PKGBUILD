@@ -1,12 +1,12 @@
-# Maintainer: Kuldeep Singh Dhaka <kuldeepdhaka9@gmail.com>
+# Maintainer: Kuldeep Singh Dhaka <kuldeep@madresistor.com>
 
 pkgname=libbox0-git
 _pkgname=libbox0
-pkgver=69.aa871fc
+pkgver=72.8a47c6f
 pkgrel=1
 pkgdesc="C library for communicating with Box0 implementations"
 arch=('i686' 'x86_64')
-url="https://www.madresistor.org/box0"
+url="https://www.madresistor.com/box0"
 license=('GPL')
 provides=(libbox0)
 conflicts=(libbox0)
