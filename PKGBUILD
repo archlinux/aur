@@ -3,7 +3,7 @@
 # Contributor: bjoern lindig (bjoern _dot_ lindig _at_ google.com)
 
 pkgname=faust-git
-pkgver=4463.f8c5d2a
+pkgver=4472.554685f1b
 pkgrel=1
 pkgdesc="A functional programming language for realtime audio signal processing."
 arch=('i686' 'x86_64')
@@ -17,7 +17,8 @@ depends=(
 # We need xxd at build time, which is provided by 'gvim', 'vim' and 'xxd'
 # (AUR).
 makedepends=('git' 'xxd')
-optdepends=('ruby: needed for faust2sc and scbuilder')
+optdepends=('python2: needed for faust2md'
+	    'ruby: needed for faust2sc and scbuilder')
 provides=('faust')
 conflicts=('faust')
 # This keeps the static libraries. Remove the 'staticlibs' option if this
@@ -28,12 +29,20 @@ options=('strip' 'staticlibs')
 # is recommended, since it's supposedly more stable and tested, but
 # nevertheless (mostly) up-to-date.
 source=("$pkgname::git+https://github.com/grame-cncm/faust.git#branch=master-dev"
-	"git+https://github.com/rukano/emacs-faust-mode.git")
-md5sums=('SKIP' 'SKIP')
+	"git+https://github.com/rukano/emacs-faust-mode.git"
+	"python2-fix.patch")
+md5sums=('SKIP' 'SKIP'
+         '6f0a99a68e1b774200a53c7140364f37')
 
 pkgver() {
   cd $srcdir/$pkgname
   echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+}
+
+prepare() {
+  cd $srcdir/$pkgname
+  # fix up scripts like faust2md which need python2 to run
+  patch -Np1 < $srcdir/python2-fix.patch
 }
 
 # NOTE: libHTTPDFaust requires 'liblo', 'libmicrohttpd' and 'openssl'.
