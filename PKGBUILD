@@ -2,7 +2,7 @@
 # Contributor: bjoern lindig (bjoern _dot_ lindig _at_ google.com)
 
 pkgname=faust2-git
-pkgver=8146.1b8df79
+pkgver=8170.644fcba90
 pkgrel=1
 pkgdesc="The latest development version of Faust featuring additional backends for LLVM, C, Java, JavaScript etc."
 arch=('i686' 'x86_64')
@@ -19,6 +19,7 @@ depends=('llvm-libs'
 # (AUR).
 makedepends=('llvm' 'clang' 'git' 'xxd')
 optdepends=('clang: needed for sound2reader'
+	    'python2: needed for faust2md'
 	    'ruby: needed for faust2sc and scbuilder')
 provides=('faust')
 conflicts=('faust')
@@ -26,12 +27,20 @@ conflicts=('faust')
 # isn't wanted.
 options=('strip' 'staticlibs')
 source=("$pkgname::git+https://github.com/grame-cncm/faust.git#branch=faust2"
-	"git+https://github.com/rukano/emacs-faust-mode.git")
-md5sums=('SKIP' 'SKIP')
+	"git+https://github.com/rukano/emacs-faust-mode.git"
+	"python2-fix.patch")
+md5sums=('SKIP' 'SKIP'
+         '6f0a99a68e1b774200a53c7140364f37')
 
 pkgver() {
   cd $srcdir/$pkgname
   echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+}
+
+prepare() {
+  cd $srcdir/$pkgname
+  # fix up scripts like faust2md which need python2 to run
+  patch -Np1 < $srcdir/python2-fix.patch
 }
 
 # NOTE: libHTTPDFaust requires 'liblo', 'libmicrohttpd' and 'openssl'.
