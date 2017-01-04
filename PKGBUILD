@@ -1,7 +1,7 @@
 # Maintainer: David Vilar <davvil@gmail.com>
 pkgname=vassal
-pkgver=3.2.16
-pkgrel=3
+pkgver=3.2.17
+pkgrel=1
 pkgdesc="Game engine for building and playing online adaptations of board games and card games."
 arch=('i686' 'x86_64')
 url="http://www.vassalengine.org/"
@@ -20,7 +20,7 @@ changelog=
 source=(http://sourceforge.net/projects/vassalengine/files/VASSAL-current/VASSAL-${pkgver}/VASSAL-${pkgver}-linux.tar.bz2
         VASSAL-256x256.png)
 noextract=()
-md5sums=('8e80b0096778c485d264b7c29f08fd63'
+md5sums=('dc43c18cafcf36cfbc1a0d9eb733d8d1'
          '4a4ec11bdbd7dbbf56e6f1d533f69a7e')
 build() {
   true
