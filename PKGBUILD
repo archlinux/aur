@@ -1,7 +1,7 @@
 # Maintainer: Karol Babioch <karol@babioch.de
 
 pkgname=getssl
-pkgver=1.92
+pkgver=2.00
 pkgrel=1
 pkgdesc='Obtain SSL certificates from the letsencrypt.org ACME server. Suitable for automating the process on remote servers.'
 arch=('any')
