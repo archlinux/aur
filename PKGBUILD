@@ -1,16 +1,16 @@
 # Maintainer: Florian Reinhard <f.reinhard42@gmail.com>
 # Updater: Michael Gisbers <michael@gisbers.de>
 pkgname=flashprint
-pkgver=3.13.2
-pkgrel=4
+pkgver=3.14.0
+pkgrel=1
 pkgdesc="Slicer for the FlashForge 3D printers."
 arch=('x86_64')
 url="http://www.ff3dp.com/"
 license=()
 groups=()
 depends=('qt5-base')
-source=("http://www.sz3dp.com/upfile/2016/11/18/20161118151949_653.deb")
-md5sums=('ad56a54c313ed04e3e986a5fbf77fc87')
+source=("http://www.sz3dp.com/upfile/2017/01/03/20170103151442_199.deb")
+md5sums=('8ec17f5d22f2296ebc2cb7fd30d77332')
 
 package() {
     cd ${pkgdir}
