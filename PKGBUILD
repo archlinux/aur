@@ -1,7 +1,8 @@
-# Maintainer: Arthur Zamarin <arthurzam@gmail.com>
+# Maintainer Dan T. <dnt@tuta.io>
+# Credit to 6.0.5 maintainer: Arthur Zamarin <arthurzam@gmail.com>
 
 pkgname=grfcodec
-pkgver=6.0.5
+pkgver=6.0.6
 pkgrel=1
 pkgdesc="A tool to convert a GRF file into graphics files and meta data, and vice versa"
 arch=('i686' 'x86_64')
@@ -12,7 +13,7 @@ provides=("nforenum")
 conflicts=('nforenum')
 replaces=('nforenum')
 source=("http://binaries.openttd.org/extra/${pkgname}/${pkgver}/${pkgname}-${pkgver}-source.tar.gz")
-sha256sums=('cbaaac92b0aece463de8a4b0a43bdf01c7dd1081cb48fbda6dad1c8e27ad17a6')
+sha256sums=('38c2a1c9a0a5910d901a6114479211a90c4aaeb34078a5d80afe21d62e6e4e15')
 
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"
