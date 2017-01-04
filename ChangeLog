@@ -1,3 +1,14 @@
+2016-01-04	Ordoban <dirk.langer@vvovgonik.de>
+
+	* 2.017-1 :
+	New upstream release
+
+	* perldl.conf :
+	Remove WITH_PLPLOT => 1
+
+	* Makefile.patch :
+	remove doc_install from install
+
 2014-01-02	Anton Leontiev	<bunder /at/ t-25.ru>
 
 	* 2.007-1 :

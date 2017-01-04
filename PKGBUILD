@@ -1,13 +1,13 @@
 # CPAN Name  : PDL
+# Maintainer : Ordoban <dirk.langer@vvovgonik.de>
 # Contributor: Anton Leontiev <bunder /at/ t-25.ru>
-# Generator  : CPANPLUS::Dist::Arch 1.28
-
 # Contributor: Thomas Dziedzic < gostrc at gmail >
 # Contributor: carltonf <xiong[c05]@gmail.com>
 # Contributor: Colin Pitrat <colin.pitrat@gmail.com>
 
 pkgname=perl-pdl
-pkgver=2.007
+_pkgname=PDL
+pkgver=2.017
 pkgrel=1
 pkgdesc='The Perl Data Language, a perl extension designed for scientific and bulk numeric data processing and display'
 arch=('i686' 'x86_64')
@@ -41,24 +41,28 @@ optdepends=(
 	'proj: for PDL::GIS::Proj and PDL::Transform::Proj4 support'
 )
 
-source=(http://search.cpan.org/CPAN/authors/id/C/CH/CHM/PDL-2.007.tar.gz perldl.conf)
+source=(https://cpan.metacpan.org/authors/id/C/CH/CHM/${_pkgname}-${pkgver}.tar.gz perldl.conf Makefile.patch)
 changelog='ChangeLog'
 options=(!emptydirs)
-md5sums=('ea343d3569ce02dbeadf1f58d700656f' '8e1f6285ce4ee9439dc1088709cfec18')
+md5sums=('9966447f0afd61625e3ea871f731adf1'
+         'ac56f2a88b89d359a0dc80063d31cf59'
+         'e2b2dff48643a5051a8f7d1ee9dc4ea9')
 
 build() {
-	cd PDL-2.007
-	F77LIBS='-lgfortran -lm' PERL_MM_USE_DEFAULT=1 perl Makefile.PL INSTALLDIRS=vendor PDLCONF=$srcdir/perldl.conf
-	make
+	cd "${_pkgname}-${pkgver}"
+	F77LIBS='-lgfortran -lm' PERL_MM_USE_DEFAULT=1 perl Makefile.PL INSTALLDIRS=vendor PDLCONF=${srcdir}/perldl.conf
+  patch < "${srcdir}/Makefile.patch"
+  make
 }
 
 check() {
-	cd PDL-2.007
+	cd "${_pkgname}-${pkgver}"
 	make test
 }
 
 package() {
-	cd PDL-2.007
-	make install DESTDIR="$pkgdir"
-	find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
+	cd "${_pkgname}-${pkgver}"
+	make install DESTDIR="${pkgdir}"
+  make doc_install DESTDIR="${pkgdir}"
+	find "${pkgdir}" -name .packlist -o -name perllocal.pod -delete
 }

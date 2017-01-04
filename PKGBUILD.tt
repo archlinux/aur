@@ -1,12 +1,12 @@
 # CPAN Name  : PDL
-# Contributor: [% packager %]
-# Generator  : CPANPLUS::Dist::Arch [% version %]
-
+# Maintainer : Ordoban <dirk.langer@vvovgonik.de>
+# Contributor: Anton Leontiev <bunder /at/ t-25.ru>
 # Contributor: Thomas Dziedzic < gostrc at gmail >
 # Contributor: carltonf <xiong[c05]@gmail.com>
 # Contributor: Colin Pitrat <colin.pitrat@gmail.com>
 
 pkgname=[% pkgname %]
+_pkgname=PDL
 pkgver=[% pkgver %]
 pkgrel=[% pkgrel %]
 pkgdesc='The Perl Data Language, a perl extension designed for scientific and bulk numeric data processing and display'
@@ -41,14 +41,18 @@ optdepends=(
 	'proj: for PDL::GIS::Proj and PDL::Transform::Proj4 support'
 )
 
-source=([% source %] perldl.conf)
+source=([% source %] perldl.conf Makefile.patch)
 changelog='ChangeLog'
 options=(!emptydirs)
-md5sums=('[% md5sums %]' '8e1f6285ce4ee9439dc1088709cfec18')
+md5sums=('[% md5sums %]'
+         'ac56f2a88b89d359a0dc80063d31cf59'
+         'e2b2dff48643a5051a8f7d1ee9dc4ea9')
+
 
 build() {
 	cd [% distdir %]
-	F77LIBS='-lgfortran -lm' PERL_MM_USE_DEFAULT=1 perl Makefile.PL INSTALLDIRS=vendor PDLCONF=$srcdir/perldl.conf
+	F77LIBS='-lgfortran -lm' PERL_MM_USE_DEFAULT=1 perl Makefile.PL INSTALLDIRS=vendor PDLCONF=${srcdir}/perldl.conf
+  patch < "${srcdir}/Makefile.patch"
 	make
 }
 
@@ -59,6 +63,7 @@ check() {
 
 package() {
 	cd [% distdir %]
-	make install DESTDIR="$pkgdir"
-	find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
+	make install DESTDIR="${pkgdir}"
+  make doc_install DESTDIR="${pkgdir}"
+	find "${pkgdir}" -name .packlist -o -name perllocal.pod -delete
 }
