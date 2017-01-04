@@ -11,14 +11,14 @@
 _pkgname=playonlinux5
 pkgname=$_pkgname-git
 pkgver=r1409.8cb20ab7
-pkgrel=2
+pkgrel=3
 epoch=2
 pkgdesc="GUI for managing Windows programs under linux (development version based on Java)"
 arch=('any')
 url="http://www.playonlinux.com/"
 license=('GPL')
 makedepends=('git' 'gradle' 'maven' 'java-openjfx' 'java-environment>=8')
-depends=('wine')
+depends=('wine' 'java-runtime>=8')
 options=(!strip)
 source=(
 	"$_pkgname::git://github.com/PlayOnLinux/POL-POM-5.git"
@@ -42,7 +42,7 @@ pkgver() {
 build() {
   cd "$_pkgname"
 
-  # Set environment
+  # Set environment (required for build)
   # Use path to Java 8 for users not defaulted to Java 8 yet
   if (( $(archlinux-java get | cut -d "-" -f2) >= 8 )); then
 	JAVA_VER=$(archlinux-java get)

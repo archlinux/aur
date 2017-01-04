@@ -1,7 +1,7 @@
 pkgbase = playonlinux5-git
 	pkgdesc = GUI for managing Windows programs under linux (development version based on Java)
 	pkgver = r1409.8cb20ab7
-	pkgrel = 2
+	pkgrel = 3
 	epoch = 2
 	url = http://www.playonlinux.com/
 	arch = any
@@ -12,6 +12,7 @@ pkgbase = playonlinux5-git
 	makedepends = java-openjfx
 	makedepends = java-environment>=8
 	depends = wine
+	depends = java-runtime>=8
 	options = !strip
 	source = playonlinux5::git://github.com/PlayOnLinux/POL-POM-5.git
 	source = PlayOnLinux5.desktop
