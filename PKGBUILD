@@ -6,7 +6,6 @@ pkgdesc='Monospaced font with programming ligatures based on DejaVu Sans Mono'
 arch=('any')
 url='https://github.com/SSNikolaevich/DejaVuSansCode'
 license=('custom')
-groups=()
 depends=('fontconfig' 'xorg-font-utils')
 makedepends=('git' 'fontforge' 'perl-font-ttf')
 provides=("${pkgname%-git}")
