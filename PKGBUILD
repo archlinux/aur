@@ -18,7 +18,7 @@
 
 pkgbase=kodi-devel
 pkgname=('kodi-devel' 'kodi-devel-eventclients')
-pkgver=17.0b7
+pkgver=17.0rc2
 pkgdesc="Kodi Media Center monthly development releases"
 _codename=Krypton
 pkgrel=1
@@ -38,7 +38,7 @@ makedepends=(
 )
 
 source=("https://github.com/xbmc/xbmc/archive/${pkgver}-${_codename}.tar.gz")
-sha256sums=('1a96d8226cc4fd91cee997a55fc50bfafad46b40faa5ee1918dd174e05891606')
+sha256sums=('6bd03e0e26251972c2237d5ca25ab3c292f9a88e4ee02b798d9f89360e8ac522')
 
 _prefix='/usr'
 
