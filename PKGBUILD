@@ -2,7 +2,7 @@
 
 pkgname=bitcoin-qt-addrindex-git
 pkgver=20170103
-pkgrel=1
+pkgrel=2
 pkgdesc="Bitcoin Core GUI P2P wallet with addrindex"
 arch=('i686' 'x86_64')
 url="https://github.com/btcdrak/bitcoin"
@@ -60,19 +60,15 @@ package() {
   install -Dm 644 COPYING -t "$pkgdir/usr/share/licenses/${pkgname%%-*}"
 
   msg2 'Installing man pages...'
-  install -Dm 644 contrib/debian/manpages/bitcoind.1 \
-    -t "$pkgdir/usr/share/man/man1"
-  install -Dm 644 contrib/debian/manpages/bitcoin-qt.1 \
-    -t "$pkgdir/usr/share/man/man1"
-  install -Dm 644 contrib/debian/manpages/bitcoin.conf.5 \
-    -t "$pkgdir/usr/share/man/man5"
+  install -Dm 644 contrib/debian/manpages/*.1 -t "$pkgdir/usr/share/man/man1"
+  install -Dm 644 contrib/debian/manpages/*.5 -t "$pkgdir/usr/share/man/man5"
 
   msg2 'Installing documentation...'
   install -dm 755 "$pkgdir/usr/share/doc/bitcoin"
   for _doc in \
     $(find doc -maxdepth 1 -type f -name "*.md" -printf '%f\n') \
     release-notes; do
-      cp -dpr --no-preserve=ownership doc/$_doc \
+      cp -dpr --no-preserve=ownership "doc/$_doc" \
         "$pkgdir/usr/share/doc/bitcoin/$_doc"
   done
 
@@ -96,8 +92,10 @@ package() {
   done
 
   msg2 'Installing bash completion...'
-  install -Dm 644 contrib/bitcoind.bash-completion \
-    "$pkgdir/usr/share/bash-completion/completions/bitcoind"
+  for _compl in bitcoin-cli bitcoin-tx bitcoind; do
+    install -Dm 644 "contrib/${_compl}.bash-completion" \
+      "$pkgdir/usr/share/bash-completion/completions/$_compl"
+  done
 
   msg2 'Cleaning up pkgdir...'
   find "$pkgdir" -type f -name .gitignore -exec rm -r '{}' +
