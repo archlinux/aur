@@ -1,12 +1,11 @@
 pkgbase = yakyak
 	pkgdesc = Desktop client for Google Hangouts
 	pkgver = 1.4.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/yakyak/yakyak
 	arch = x86_64
 	arch = i686
 	license = MIT
-	makedepends = unzip
 	makedepends = nodejs
 	makedepends = npm
 	depends = electron>=1.4.0

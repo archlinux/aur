@@ -2,7 +2,7 @@
 pkgname=yakyak
 pkgver=1.4.0
 _pkgid="${pkgname}-${pkgver}"
-pkgrel=2
+pkgrel=3
 pkgdesc="Desktop client for Google Hangouts"
 arch=('x86_64' 'i686')
 url="https://github.com/yakyak/yakyak"
