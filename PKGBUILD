@@ -6,7 +6,7 @@
 
 pkgname=abraca-git
 pkgver=0.8.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A GTK3 client for the XMMS2 music player, with a focus on collections. Written in Vala"
 url="http://abraca.xmms.se"
 _giturl="git+https://github.com/Abraca/Abraca"
@@ -15,12 +15,16 @@ arch=('i686' 'x86_64')
 depends=('gtk3' 'libgee' 'xmms2')
 makedepends=('vala>=0.24' 'waf')
 install=abraca.install
-source=('https://github.com/Abraca/Abraca/pull/31.patch')
-md5sums=('c5457f441eb6cbf91ce8ea424bc46e38')
+source=('https://github.com/Abraca/Abraca/pull/33.patch')
+md5sums=('e2884a1a4dca92da76617334ede7e6b0')
 
 makedepends+=('git')
 source+=("${_gitname:=${pkgname%-git}}::${_giturl:-git+$url}")
-md5sums+=('SKIP')
+for integ in $(get_integlist)
+do
+  typeset -n array="${integ}sums"
+  array+=('SKIP')
+done
 provides+=("$_gitname=$pkgver")
 conflicts+=("$_gitname")
 pkgver() {
@@ -37,7 +41,7 @@ prepare() {
   git submodule update --init --recursive
 
   # Patch to restore compilation.
-  patch -p1 < ../31.patch
+  patch -p1 < ../33.patch
 
   # Use dynamic icon.
   sed -i 's/\(Icon=abraca\)-.*/\1/' data/*.desktop
