@@ -6,13 +6,13 @@
 pkgname=cairo-infinality
 _name=cairo
 _commit=36b60ecefe1fd0e042cad51105b0ffb29315e577
-pkgver=1.14.6
+pkgver=1.14.8
 pkgrel=1
 pkgdesc="Cairo vector graphics library"
 arch=('armv7h' 'i686' 'x86_64')
 license=('LGPL' 'MPL')
 changelog=CHANGELOG
-url="http://cairographics.org/"
+url="https://cairographics.org/"
 depends=('libpng' 'libxrender' 'libxext' 'fontconfig' 'pixman>=0.28.0'
          'glib2' 'mesa' 'libgl' 'lzo')
 makedepends=('mesa-libgl' 'librsvg' 'gtk2' 'poppler-glib' 'libspectre'
@@ -25,12 +25,12 @@ provides=("cairo=${pkgver}" 'cairo-ubuntu' 'cairo-xcb')
 replaces=('cairo-xcb')
 conflicts=('cairo' 'cairo-cleartype' 'cairo-git' 'cairo-gl-git' 'cairo-glitz'
            'cairo-ocaml-git' 'cairo-small' 'cairo-ubuntu')
-source=("http://cairographics.org/releases/cairo-${pkgver}.tar.xz"
+source=("https://cairographics.org/releases/cairo-${pkgver}.tar.xz"
         "https://raw.githubusercontent.com/bohoomil/fontconfig-ultimate/${_commit}/cairo/cairo-make-lcdfilter-default.patch"
         "https://raw.githubusercontent.com/bohoomil/fontconfig-ultimate/${_commit}/cairo/cairo-respect-fontconfig_pb.patch"
         "https://raw.githubusercontent.com/bohoomil/fontconfig-ultimate/${_commit}/cairo/cairo-server-side-gradients.patch"
         "https://raw.githubusercontent.com/bohoomil/fontconfig-ultimate/${_commit}/cairo/cairo-webkit-html5-fix.patch")
-sha1sums=('0a59324e6cbe031b5b898ff8b9e2ffceb9d114f5'
+sha1sums=('c6f7b99986f93c9df78653c3e6a3b5043f65145e'
           'b0cc2466cc5479f055ca2148cfa37fe13a1e78a6'
           'd8ffcb4c4745f7e61671109362a80a872ac989d3'
           '72ecf2dda8462e1588512de257ccbe18642d507f'
