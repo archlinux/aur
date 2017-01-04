@@ -24,8 +24,8 @@ build() {
 
 package() {
   cd "$srcdir/ec"
-  sudo cp $srcdir/ec/build/samus/util/ectool /usr/bin/ectool
+  install -Dm644 $srcdir/ec/build/samus/util/ectool /usr/bin/ectool
   
 # install license
-  install -D -m644 "LICENSE" "$pkgdir/usr/share/licenses/$_gitname/LICENSE"
+  install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$_gitname/LICENSE"
 }
