@@ -2,7 +2,7 @@
 
 _gitname=conda
 pkgname=python-${_gitname}-git
-pkgver=4.2.12.r562.g08d71a7
+pkgver=4.3.1.r66.g1eb24a57
 pkgrel=1
 pkgdesc="OS-agnostic, system-level binary package manager and ecosystem"
 arch=('any')
@@ -26,6 +26,7 @@ pkgver() {
 
 package() {
   cd "$srcdir/${_gitname}"
+  echo $pkgver > conda/.version
   python setup.py install --root="$pkgdir/" --optimize=1
   install -Dm 644 shell/conda.fish $pkgdir/usr/share/fish/functions/conda.fish
   install -Dm 644 LICENSE.txt $pkgdir/usr/share/licenses/${pkgname}/LICENSE.txt
