@@ -1,7 +1,7 @@
 #Maintainer: VerruckteFuchs <derverrucktefuchs@gmail.com>
 pkgname=ectool-samus-git
 _gitname=ectool
-pkgver=1.1.0.5674.gb3a9852
+pkgver=1.1.0.5819.g4234992812
 pkgrel=1
 pkgdesc="ectool for Chromebook Pixel 2015 for controlling lightbar and fans."
 arch=(i686 x86_64)
@@ -24,8 +24,8 @@ build() {
 
 package() {
   cd "$srcdir/ec"
-  #install -Dm644 $srcdir/ec/build/samus/util/ectool /usr/bin/ectool
-  install -Dm755 $pkgname "$pkgdir/usr/bin/$pkgname"
+  install -Dm755 "$srcdir/ec/build/samus/util/ectool" "$pkgdir/usr/bin/ectool"
+  
 # install license
   install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$_gitname/LICENSE"
 }

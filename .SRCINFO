@@ -1,6 +1,6 @@
 pkgbase = ectool-samus-git
 	pkgdesc = ectool for Chromebook Pixel 2015 for controlling lightbar and fans.
-	pkgver = 1.1.0.5674.gb3a9852
+	pkgver = 1.1.0.5819.g4234992812
 	pkgrel = 1
 	url = https://www.chromium.org/chromium-os/ec-development
 	arch = i686
