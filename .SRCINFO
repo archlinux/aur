@@ -1,6 +1,6 @@
 pkgbase = bioperl-run-git
 	pkgdesc = Wrapper modules around many common bioinformatics applications and tools.
-	pkgver = 20100604
+	pkgver = 20161220
 	pkgrel = 1
 	url = http://www.bioperl.org/wiki/Run_package
 	arch = any

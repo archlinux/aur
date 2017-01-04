@@ -1,7 +1,8 @@
-# Maintainer: Thomas Dziedzic < gostrc at gmail >
+# Maintainer: Ordoban <dirk.langer@vvovgonik.de>
 
 pkgname=bioperl-run-git
-pkgver=20100604
+_pkgname=bioperl-run
+pkgver=20161220
 pkgrel=1
 pkgdesc='Wrapper modules around many common bioinformatics applications and tools.'
 arch=('any')
@@ -30,6 +31,10 @@ build() {
   perl Build.PL < /dev/null
 
   ./Build
+}
+
+package() {
+  cd "$srcdir/${_pkgname}"
 
   ./Build install                                   \
     --install_base /usr                             \
