@@ -6,7 +6,7 @@ pkgbase=python-flickrapi
 pkgname=(python-flickrapi python2-flickrapi)
 _pkgname=flickrapi
 pkgver=2.1.2
-pkgrel=2
+pkgrel=3
 pkgdesc="The official Python interface to the Flickr API"
 arch=('any')
 url="http://stuvel.eu/flickrapi"
@@ -50,6 +50,8 @@ package_python-flickrapi() {
 
   python setup.py install --root=$pkgdir/ --optimize=1
   install -Dm644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE.txt"
+
+  rm "$pkgdir"/usr/lib/python3.6/site-packages/{README,LICENSE,UPGRADING}.txt
 }
 
 package_python2-flickrapi() {
@@ -59,4 +61,6 @@ package_python2-flickrapi() {
 
   python2 setup.py install --root=$pkgdir/ --optimize=1
   install -Dm644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE.txt"
+
+  rm "$pkgdir"/usr/lib/python2.7/site-packages/{README,LICENSE,UPGRADING}.txt
 }
