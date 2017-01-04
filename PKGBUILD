@@ -1,6 +1,6 @@
 pkgname=performer-git
 pkgver=1.0.r213.4905818
-pkgrel=1.0
+pkgrel=1.1
 pkgdesc="Audio session manager for live music performances"
 arch=('i686' 'x86_64')
 url="https://github.com/progwolff/performer"
@@ -35,7 +35,7 @@ build() {
   mkdir -p build
   cd build
 
-  cmake ../${_gitname} -DCMAKE_INSTALL_PREFIX="/usr" -DCMAKE_BUILD_TYPE=Release
+  cmake ../${_gitname} -DWITH_TESTS=0 -DCMAKE_INSTALL_PREFIX="/usr" -DCMAKE_BUILD_TYPE=Release
   make
 }
 
