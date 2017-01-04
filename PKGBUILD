@@ -3,43 +3,18 @@
 # Contributor: Dale Blount <dale@archlinux.org>
 
 pkgname=nrpe
-pkgver=2.15
-pkgrel=5
+pkgver=3.0.1
+pkgrel=1
 pkgdesc="Nagios Remote Plugin Executor"
 arch=('i686' 'x86_64')
 license=('GPL')
 depends=('openssl')
 optdepends=("monitoring-plugins: common tools for monitoring using $pkgname")
-replaces=('nagios-nrpe')
 install=$pkgname.install
 backup=('etc/nrpe/nrpe.cfg' 'etc/xinetd.d/nrpe')
-url="http://exchange.nagios.org/directory/Addons/Monitoring-Agents/NRPE--2D-Nagios-Remote-Plugin-Executor/details"
-source=(http://downloads.sourceforge.net/nagios/$pkgname-$pkgver.tar.gz
-        $pkgname.service $pkgname.socket $pkgname@.service $pkgname.tmpfiles
-        syslog.patch)
-md5sums=('3921ddc598312983f604541784b35a50'
-         '265512fbfc65f89eab1ca23d11ec749d'
-         'f239bb4e7b885449d1f4067b209d89fd'
-         '143278e9495821bd887cf84ce0f97af6'
-         'd4b89b7ff8ffb187d44fedf294e7f5de'
-         'e68e6460f5a2999635254dac64056679')
-
-prepare() {
-  cd $pkgname-$pkgver
-
-  # fix directory permissions
-  sed -i 's/775/755/' Makefile.in src/Makefile.in
-
-  # fix run directory
-  sed -i 's/nrpe.pid/nrpe\/nrpe.pid/' sample-config/nrpe.cfg.in
-
-  # set the nrpe user and group
-  sed -i 's/@nrpe_user@/31/' sample-config/nrpe.cfg.in
-  sed -i 's/@nrpe_group@/31/' sample-config/nrpe.cfg.in
-
-  # fix logging binary data to journal/syslog when ipv4 disconnects with debug=1
-  patch -Np1 -i "$srcdir"/syslog.patch
-}
+url="https://github.com/NagiosEnterprises/nrpe"
+source=(https://github.com/NagiosEnterprises/nrpe/releases/download/$pkgver/$pkgname-$pkgver.tar.gz)
+md5sums=('8c81f251d9ee0903e5ff0191e99f7981')
 
 build() {
   cd $pkgname-$pkgver
@@ -49,31 +24,32 @@ build() {
     --sysconfdir=/etc/nrpe \
     --libexecdir=/usr/lib/monitoring-plugins \
     --enable-command-args \
-    --with-nrpe-user=0 --with-nrpe-group=0 \
-    --with-nagios-user=0 --with-nagios-group=0
+    --with-nrpe-user=31 --with-nrpe-group=31 \
+    --with-nagios-user=31 --with-nagios-group=31 \
+    --with-piddir=/run/nrpe
   
-  make
+  make all
 }
 
 package() {
   cd $pkgname-$pkgver
 
   make DESTDIR="$pkgdir" install
-  make DESTDIR="$pkgdir"/ install-daemon-config
 
-  install -Dm644 sample-config/nrpe.xinetd "$pkgdir"/etc/xinetd.d/nrpe
+  install -Dm644 sample-config/nrpe.cfg "$pkgdir"/etc/nrpe/nrpe.cfg
+  install -Dm644 startup/default-service "$pkgdir"/usr/lib/systemd/system/nrpe.service
+  install -Dm644 startup/default-socket "$pkgdir"/usr/lib/systemd/system/nrpe.socket
+  install -Dm644 startup/default-xinetd "$pkgdir"/etc/xinetd.d/nrpe
+  install -Dm644 startup/tmpfile.conf "$pkgdir"/usr/lib/tmpfiles.d/nrpe.conf
 
-  install -D -m644 "$srcdir"/nrpe.service \
-    "$pkgdir"/usr/lib/systemd/system/nrpe.service
-  install -D -m644 "$srcdir"/nrpe.socket \
-    "$pkgdir"/usr/lib/systemd/system/nrpe.socket
-  install -D -m644 "$srcdir"/nrpe@.service \
-    "$pkgdir"/usr/lib/systemd/system/nrpe@.service
-  install -D -m644 "$srcdir"/nrpe.tmpfiles \
-    "$pkgdir"/usr/lib/tmpfiles.d/nrpe.conf
-
-  install -Dm644 README "$pkgdir"/usr/share/doc/$pkgname/README
-  install -Dm644 README.SSL "$pkgdir"/usr/share/doc/$pkgname/README.SSL
-  install -Dm644 SECURITY "$pkgdir"/usr/share/doc/$pkgname/SECURITY
+  install -Dm644 README.md "$pkgdir"/usr/share/doc/$pkgname/README.md
+  install -Dm644 README.SSL.md "$pkgdir"/usr/share/doc/$pkgname/README.SSL.md
+  install -Dm644 SECURITY.md "$pkgdir"/usr/share/doc/$pkgname/SECURITY.md
   install -Dm644 LEGAL "$pkgdir"/usr/share/licenses/$pkgname/LEGAL
+
+  # Tidy up
+  chmod 755 "$pkgdir"/usr/lib/monitoring-plugins
+  chown -R root:root "$pkgdir"/usr/lib/monitoring-plugins
+  rm -f "$pkgdir"/usr/bin/nrpe-uninstall
+  rm -rf "$pkgdir"/run
 }
