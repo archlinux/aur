@@ -3,15 +3,18 @@
 
 pkgname=bypy-git
 _pkgname=bypy
-pkgver=1.3.0.r0.g35b730a
+pkgver=1.3.2.r9.g2af2ea7
 epoch=1
-pkgrel=2
+pkgrel=1
 pkgdesc="Python client for Baidu Yun (Personal Cloud Storage) 百度云/百度网盘 Python 客户端"
 arch=("any")
 url="https://github.com/houtianze/bypy"
 license=('GPL')
 makedepends=('git' 'python-setuptools')
-depends=('python-requests' 'tk')
+depends=('python-requests')
+optdepends=(
+    'tk: for bypygui'
+)
 provides=('bypy')
 source=("git+https://github.com/houtianze/bypy")
 md5sums=('SKIP')
