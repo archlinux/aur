@@ -1,7 +1,7 @@
 pkgbase = vault-pki-client
 	pkgdesc = Tool to manage a keypair provided by HashiCorp Vault
 	pkgver = 1.0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/issacg/vault-pki-client#readme
 	arch = any
 	license = Apache
