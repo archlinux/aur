@@ -5,7 +5,7 @@
 _pkgbase=etlegacy
 pkgbase=etlegacy32
 pkgname=('etlegacy32' 'etlegacy32-mod')
-pkgver=2.74
+pkgver=2.75
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.etlegacy.com/"
@@ -14,10 +14,9 @@ makedepends=('cmake' 'zip')
 makedepends_i686=('alsa-lib' 'curl' 'freetype2' 'gcc-libs' 'glew' 'libjpeg-turbo' 'libvorbis' 'sdl2')
 makedepends_x86_64=('lib32-alsa-lib' 'lib32-curl' 'lib32-freetype2' 'lib32-gcc-libs' 'lib32-glew' 'lib32-libjpeg-turbo' 'lib32-libvorbis' 'lib32-sdl2')
 source=("https://github.com/etlegacy/etlegacy/archive/v$pkgver.tar.gz"
-        "http://www.etlegacy.com/download/file/72") # only for pre-built libraries
-#noextract=("etl_bin_v$pkgver.pk3" "pak3_v$pkgver.pk3")
-sha512sums=('eafeb40fed714db76635ee2656b66ff738435385314e4a3d45d48643c0147365d643f3b024ea87c3fd984a08f48a963342226decbc2f878dcd6d863edd570c0f'
-            'c229efb237f5267887d7e8f6cc451ad5e045cd27b056338ba8059fe095d9d6367c439c259355211a6d268f3b0cd366dd6976310f391aecf36fcae3c89428b9ae')
+        "https://www.etlegacy.com/download/file/85")
+sha512sums=('c1c5c5a3b06dadb0353d28e2b39d0151655f3ccc5e246759ffa2ca2cbe1ff35ebd1733df4708249e1229144253ff57c07edc825199faeba10db9231edc052587'
+            'aecfe31a6bf00980887dc7e9e834cf2635d844ff76212e9c9c756b8df780aff08611d69d3e21ebff225533eb6638b454d0461504efd131c2bf9aec68dacd39b7')
 
 build() {
     cd "$_pkgbase-$pkgver"
@@ -45,6 +44,7 @@ build() {
         -DBUILD_MOD=0 \
         -DBUILD_MOD_PK3=0 \
         -DBUILD_PAK3_PK3=0 \
+        -DBUNDLED_LIBS=0 \
         -DFEATURE_AUTOUPDATE=0 \
         -DINSTALL_OMNIBOT=0
 
