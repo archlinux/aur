@@ -1,12 +1,12 @@
-# Maintainer: Kuldeep Singh Dhaka <kuldeepdhaka9@gmail.com>
+# Maintainer: Kuldeep Singh Dhaka <kuldeep@madresistor.com>
 
 pkgname=box0-studio-qt-git
 _pkgname=box0-studio-qt
-pkgver=145.661f50f
+pkgver=153.9768dc6
 pkgrel=1
 pkgdesc="Box0 Studio is the Common Instruments software for Box0"
 arch=('i686' 'x86_64')
-url="https://www.madresistor.org/box0"
+url="https://www.madresistor.com/box0"
 license=('GPL')
 provides=(box0-studio-qt)
 conflicts=(box0-studio-qt)
