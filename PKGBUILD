@@ -20,7 +20,6 @@ build() {
 }
 
 package() {
-    install -Dm644 ../LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
     cd "${srcdir}/${_name}-${pkgver}"
     python setup.py install -O1 --skip-build --prefix=/usr --root="${pkgdir}"
 }
