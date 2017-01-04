@@ -1,3 +1,15 @@
+2017-01-04 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
+  * 2.2.0.5-1:
+    [!] Removed ForwardKeysToOtherBots and DistributeKeys - it's unified under new RedeemingPreferences bot config property.
+    [!] Added new LootableTypes bot config property.
+    [!] IsBotAccount no longer controls looting foil cards, the responsibility now lies in newly introduced LootableTypes.
+    Added rough approximation of expected farming time, to !status and alike (also API).
+    Fixed statistics reporting not working on older versions of Mono.
+    Fixed rare issue that could lead to ASF not connecting to Steam Network.
+    Fixed ASF not parsing command-line arguments when running as a service.
+    Removed ForceHttp global config property. For reasoning, see commit.
+    Usual code improvements, optimizations and bugfixes.
+    package: systemd-sysusers handles the user & group creation
 2016-12-18 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
   * 2.1.7.9-1:
     Switched Statistics STM listing to new protocol version (old one won't work anymore)
