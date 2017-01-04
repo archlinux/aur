@@ -13,8 +13,7 @@ md5sums=('SKIP')
 
 package() {
     cd "$srcdir/$pkgname"
-    sed "s/\.\/gdb_pince\/gdb-7\.11\.1\/bin\/gdb/\/usr\/bin\/gdb/g" libPINCE/type_defs.py > libPINCE/type_defs.py.new
-    mv libPINCE/type_defs.py.new libPINCE/type_defs.py
+    sed -i "s/\.\/gdb_pince\/gdb-7\.11\.1\/bin\/gdb/\/usr\/bin\/gdb/g" libPINCE/type_defs.py
     install -d "$pkgdir/usr/bin"
     install -d "$pkgdir/usr/share/PINCE"
     install PINCE.py "$pkgdir/usr/share/PINCE"
