@@ -1,7 +1,7 @@
 # Maintainer: Israel Herraiz <isra@herraiz.org>
 
 pkgname=suitesparse-mkl
-pkgver=4.5.3
+pkgver=4.5.4
 pkgrel=1
 pkgdesc="A collection of sparse matrix libraries (compiled with the Intel MKL lib)"
 url="http://faculty.cse.tamu.edu/davis/suitesparse.html"
@@ -14,7 +14,7 @@ makedepends=('intel-compiler-base' 'intel-fortran-compiler' 'cmake' 'chrpath')
 license=('GPL')
 options=('staticlibs')
 source=("http://faculty.cse.tamu.edu/davis/SuiteSparse/SuiteSparse-$pkgver.tar.gz" suitesparse-link-tbb.patch)
-sha1sums=('2403007be38266e3607edfbf3833bee7f6bcb0f1'
+sha1sums=('33fb47e3140f1dd8cae10847a9344439d4aa66b2'
           '4f0b3836e8c3c1ec5be01f988f136cee4a2cb936')
 
 prepare() {
