@@ -10,7 +10,7 @@
 
 _pkgname=awesome
 pkgname=${_pkgname}-git
-pkgver=3.5.2.2174.g588cbc1
+pkgver=4.0.57.g5e1b88cb
 pkgrel=1
 pkgdesc='Highly configurable framework window manager'
 arch=('i686' 'x86_64')
