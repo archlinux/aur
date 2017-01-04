@@ -1,10 +1,10 @@
 pkgbase = rainbow-icons-git
-	pkgdesc = A multi-colour icon theme.
-	pkgver = r229.b8077462
+	pkgdesc = A customized multi-colour icon theme.
+	pkgver = r230.ad3e79cf
 	pkgrel = 1
 	url = https://github.com/0devnull0/rainbow-icons
 	arch = any
-	license = Attribution-NonCommercial-ShareAlike 4.0 International Public License
+	license = CC BY-NC-SA 4.0
 	makedepends = git
 	provides = surfn-icons-git
 	conflicts = surfn-icons-git
