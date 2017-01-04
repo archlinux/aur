@@ -1,8 +1,8 @@
 #Maintainer: <edio@archlinux.us>
 
 pkgname=intelpwm-udev
-pkgver=20170301
-pkgrel=2
+pkgver=20170105
+pkgrel=1
 pkgdesc="UDEV rules for setting backlight PWM frequency on Intel HD Graphics"
 arch=('i686' 'x86_64')
 depends=(intel-gpu-tools)
@@ -10,14 +10,15 @@ url="http://devbraindom.blogspot.com/2013/03/eliminate-led-screen-flicker-with-i
 license=('GPL')
 conflicts=()
 install='intelpwm-udev.install'
+backup=('etc/intelpwm.conf')
 source=(99-intelpwm.rules intelpwm intelpwm.conf)
 
 md5sums=('cc557bd9a9d45f7524713aa4cc0dcaf0'
-         '6b35538e0d78a32a1c0e20a187716351'
+         '694d07bec6269d269353d0eb0f3b2bda'
          '940ab594183c24faef6f26e850c12f9c')
 
 build() {
-	  true
+	true
 }
 
 package() {
