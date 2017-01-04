@@ -5,15 +5,15 @@ pkgver=r184.b3a810b
 pkgrel=1
 pkgdesc='Cinnamon applet. Custom Menu for Linux Cinnamon based off of physics Windows 7 Menu.'
 arch=('any')
-url='https://github.com/NikoKrause/CinnXPStarkMenu'
+url='https://github.com/NikoKrause/CinnVIIStarkMenu'
 license=('GPL')
 depends=('cinnamon')
 makedepends=('git')
 provides=('cinnamon-applet-starkmenu-git')
 conflicts=('cinnamon-applet-starkmenu-git')
-source=("${pkgname}::git+https://github.com/NikoKrause/CinnXPStarkMenu.git")
+source=("${pkgname}::git+https://github.com/NikoKrause/CinnVIIStarkMenu.git")
 md5sums=(SKIP)
-_appletname='CinnXPStarkMenu@NikoKrause'
+_appletname='CinnVIIStarkMenu@NikoKrause'
 _appletdir="usr/share/cinnamon/applets/${_appletname}"
 
 pkgver() {
