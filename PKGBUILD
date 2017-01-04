@@ -1,12 +1,12 @@
-# Maintainer: Kuldeep Singh Dhaka <kuldeepdhaka9@gmail.com>
+# Maintainer: Kuldeep Singh Dhaka <kuldeep@madresistor.com>
 
 pkgname=libreplot-git
 _pkgname=libreplot
-pkgver=41.70139ea
+pkgver=44.6c872be
 pkgrel=1
 pkgdesc="Data Visualizing using GPU via OpenGL3+ (or GLES2+), written in C"
 arch=('i686' 'x86_64')
-url="https://www.madresistor.org/box0"
+url="https://www.madresistor.com/box0"
 license=('GPL')
 provides=(libreplot)
 conflicts=(libreplot)
