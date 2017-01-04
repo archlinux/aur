@@ -7,7 +7,7 @@
 
 pkgname=phpstorm-eap
 pkgver=171.2152.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Lightning-smart PHP IDE. Early Access Program."
 arch=('i686' 'x86_64')
 options=(!strip)
@@ -25,7 +25,6 @@ package() {
   install -d -m 755 ${pkgdir}/usr/bin/
   install -d -m 755 ${pkgdir}/usr/share/applications/
   install -d -m 755 ${pkgdir}/usr/share/pixmaps/
-  install -d -m 755 ${pkgdir}/etc/profile.d/
   
   cp -R ${srcdir}/PhpStorm-${pkgver} ${pkgdir}/opt/${pkgname}
   
