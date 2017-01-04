@@ -1,0 +1,11 @@
+--- setup.py.orig	2017-01-04 19:11:40.069712824 +0300
++++ setup.py	2017-01-04 19:11:47.889712556 +0300
+@@ -34,7 +34,7 @@
+                         "installation path already exists but is not a directory: %s" %
+                         self.install_scripts)
+             open(binPath, 'w').write(
+-                join(self.install_data, relRootDir, 'pyglossary.pyw') +
++                join(self.prefix, relRootDir, 'pyglossary.pyw') +
+                 ' "$@"')  # pass options from command line
+             os.chmod(binPath, 0o755)
+ 
