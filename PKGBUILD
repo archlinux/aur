@@ -1,7 +1,7 @@
 # Maintainer: Georg Pichler <georg.pichler@gmail.com>
 
 pkgname=pystatsd-git
-pkgver=v3.2.1.r8.g7edbd99
+pkgver=v3.2.1.r14.gcbb4b23
 pkgrel=1
 pkgdesc="A Python client for statsd"
 arch=('any')

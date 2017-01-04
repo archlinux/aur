@@ -1,6 +1,6 @@
 pkgbase = pystatsd-git
 	pkgdesc = A Python client for statsd
-	pkgver = v3.2.1.r8.g7edbd99
+	pkgver = v3.2.1.r14.gcbb4b23
 	pkgrel = 1
 	url = https://pypi.python.org/pypi/statsd
 	arch = any
