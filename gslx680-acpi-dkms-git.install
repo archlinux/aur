@@ -1,0 +1,23 @@
+# old version (without -$pkgrel): ${1%%-*}
+# new version (without -$pkgrel): ${2%%-*}
+
+post_install() {
+    dkms install gslx680-acpi/${1%%-*}
+
+    echo "******************************************************"
+    echo "You have to install the firmware for your touchscreen."
+    echo "See https://github.com/onitake/gsl-firmware."
+    echo "******************************************************"
+}
+
+pre_upgrade() {
+    pre_remove ${2%%-*}
+}
+
+post_upgrade() {
+    post_install ${1%%-*}
+}
+
+pre_remove() {
+    dkms remove gslx680-acpi/${1%%-*} --all
+}
