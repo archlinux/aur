@@ -2,7 +2,7 @@
 
 
 pkgname=winregfs-git
-pkgver=0.6.1
+pkgver=0.6.2
 pkgrel=3
 pkgdesc="Windows Registry FUSE filesystem "
 arch=('i686' 'x86_64')
