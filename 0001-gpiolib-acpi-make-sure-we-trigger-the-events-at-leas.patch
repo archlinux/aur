@@ -1,0 +1,91 @@
+From 5144a26d49d40c1847e0af496d78c54eb29f570f Mon Sep 17 00:00:00 2001
+From: Benjamin Tissoires <benjamin.tissoires@redhat.com>
+Date: Thu, 26 May 2016 15:29:10 +0200
+Subject: [PATCH] gpiolib-acpi: make sure we trigger the events at least once
+ on boot
+
+The Surface 3 has its _LID state controlled by an ACPI operation region
+triggered by a GPIO event:
+
+ OperationRegion (GPOR, GeneralPurposeIo, Zero, One)
+ Field (GPOR, ByteAcc, NoLock, Preserve)
+ {
+     Connection (
+         GpioIo (Shared, PullNone, 0x0000, 0x0000, IoRestrictionNone,
+             "\\_SB.GPO0", 0x00, ResourceConsumer, ,
+             )
+             {   // Pin list
+                 0x004C
+             }
+     ),
+     HELD,   1
+ }
+
+ Method (_E4C, 0, Serialized)  // _Exx: Edge-Triggered GPE
+ {
+     If ((HELD == One))
+     {
+         ^^LID.LIDB = One
+     }
+     Else
+     {
+         ^^LID.LIDB = Zero
+         Notify (LID, 0x80) // Status Change
+     }
+
+     Notify (^^PCI0.SPI1.NTRG, One) // Device Check
+ }
+
+Currently, the state of LIDB is wrong until the user actually closes or
+open the cover. We need to trigger the GPIO event once to update the
+internal ACPI state.
+
+Coincidentally, this also enables the integrated HID sensor hub which also
+requires an ACPI gpio operation region to start initialization.
+
+Signed-off-by: Benjamin Tissoires <benjamin.tissoires@redhat.com>
+---
+ drivers/gpio/gpiolib-acpi.c | 13 ++++++++++++-
+ 1 file changed, 12 insertions(+), 1 deletion(-)
+
+diff --git a/drivers/gpio/gpiolib-acpi.c b/drivers/gpio/gpiolib-acpi.c
+index 2dc5258..71775a0 100644
+--- a/drivers/gpio/gpiolib-acpi.c
++++ b/drivers/gpio/gpiolib-acpi.c
+@@ -175,7 +175,7 @@ static acpi_status acpi_gpiochip_request_interrupt(struct acpi_resource *ares,
+ 	irq_handler_t handler = NULL;
+ 	struct gpio_desc *desc;
+ 	unsigned long irqflags;
+-	int ret, pin, irq;
++	int ret, pin, irq, value;
+ 
+ 	if (ares->type != ACPI_RESOURCE_TYPE_GPIO)
+ 		return AE_OK;
+@@ -214,6 +214,8 @@ static acpi_status acpi_gpiochip_request_interrupt(struct acpi_resource *ares,
+ 
+ 	gpiod_direction_input(desc);
+ 
++	value = gpiod_get_value(desc);
++
+ 	ret = gpiochip_lock_as_irq(chip, pin);
+ 	if (ret) {
+ 		dev_err(chip->parent, "Failed to lock GPIO as interrupt\n");
+@@ -266,6 +268,15 @@ static acpi_status acpi_gpiochip_request_interrupt(struct acpi_resource *ares,
+ 	}
+ 
+ 	list_add_tail(&event->node, &acpi_gpio->events);
++
++	/*
++	 * Make sure we trigger the initial state of the IRQ when
++	 * using RISING or FALLING.
++	 */
++	if (((irqflags & IRQF_TRIGGER_RISING) && value == 1) ||
++	    ((irqflags & IRQF_TRIGGER_FALLING) && value == 0))
++		handler(-1, event);
++
+ 	return AE_OK;
+ 
+ fail_free_event:
+-- 
+2.7.4
+
