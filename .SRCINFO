@@ -1,0 +1,16 @@
+pkgbase = x-on-resize
+	pkgdesc = A simple display configuration daemon
+	pkgver = 0.2
+	pkgrel = 1
+	url = https://keithp.com/blogs/x-on-resize/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	makedepends = xorg-util-macros
+	depends = xorg-xrandr
+	source = x-on-resize::git+git://people.freedesktop.org/~keithp/x-on-resize
+	md5sums = SKIP
+
+pkgname = x-on-resize
+
