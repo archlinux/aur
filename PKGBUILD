@@ -2,17 +2,17 @@
 # * No namcap warnings or errors
 
 pkgname=perftest
-pkgver=3.0
-_pkgver_subver=3.1
-_pkgver_commit=gb36a595
-pkgrel=7
+pkgver=3.4
+_pkgver_subver=0.6
+_pkgver_commit=gc3435c2
+pkgrel=1
 pkgdesc='OpenFabrics Alliance Infiniband verbs performance testing and benchmarking tools'
 arch=('x86_64' 'i686')
 url='https://www.openfabrics.org/index.php/overview.html'
 license=('GPL2' 'custom:"Open Fabrics Alliance BSD"')
 depends=('librdmacm' 'libibumad' 'bash')
 source=("https://www.openfabrics.org/downloads/${pkgname}/${pkgname}-${pkgver}-${_pkgver_subver}.${_pkgver_commit}.tar.gz")
-md5sums=('0034c13bdeffccef0d1aa9d1dd8187d3')
+md5sums=('6c5a94674c9ae7cc6b2a09f72cda9fc3')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
