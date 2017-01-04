@@ -1,8 +1,8 @@
-# Maintainer: xRemaLx <anton.komolov@gmail.com>
+# Maintainer: Ordoban <dirk.langer@vvovgonik.de>
 
 pkgname='perl-catalyst-plugin-static-simple'
 _pkgname='Catalyst-Plugin-Static-Simple'
-pkgver='0.32'
+pkgver='0.33'
 pkgrel='1'
 pkgdesc="Catalyst::Plugin::Static::Simple   Make serving static pages painless."
 arch=('any')
@@ -11,8 +11,8 @@ options=('!emptydirs')
 depends=('perl' 'perl-catalyst-runtime>=5.80008' 'perl-mime-types>=2.03' 'perl-moose' 'perl-moosex-types' 'perl-namespace-autoclean')
 makedepends=('perl-extutils-makemaker>=6.36')
 url='http://search.cpan.org/dist/Catalyst-Plugin-Static-Simple'
-source=("http://search.cpan.org/CPAN/authors/id/J/JJ/JJNAPIORK/${_pkgname}-${pkgver}.tar.gz")
-sha512sums=('c2a2d3efd0ce9ff75f5c8633896350243893be3821c5ad35d8b72adb7ce49a084a02f7d20a82a27ce1cf9e3202f2bec2c02cc14e3f2284593aecb76b6df5b0d3')
+source=("https://cpan.metacpan.org/authors/id/J/JJ/JJNAPIORK/${_pkgname}-${pkgver}.tar.gz")
+sha512sums=('8ca7782c6fbd9ba29de8005a6c35d6bcf1f3cbaf72bd3b9caf76200e54d1c200bd41d074ce6717ae663629d6305d7e9d10c3e117b86f7656786bc771977610de')
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
