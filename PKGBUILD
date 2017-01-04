@@ -1,5 +1,5 @@
-# Submitter: 	Bradley Klee <bradklee@gmail.com>
-# Maintainer: 	Bradley Klee <bradklee@gmail.com>
+# Submitter:	Bradley Klee <bradklee@gmail.com>
+# Maintainer:	Bradley Klee <bradklee@gmail.com>
 pkgname=pendulumdata
 pkgver=1.1
 pkgrel=2
@@ -20,8 +20,8 @@ build() {
 	./config "/opt/PendulumData" "/tmp/Data/Pendulum"
 	# note: can alternatively use OUTBASE="/home/$USER/Data/Pendulum"
 	# fix install file
-	sed -i 's~PROGRAMBASE="~PROGRAMBASE="'${pkgdir}'~g' ./inst
-	sed -i 's~OUTBASE="~OUTBASE="'${pkgdir}'~g' ./inst	
+	sed -i 's~PROGRAMBASE="~PROGRAMBASE="'"${pkgdir}"'~g' ./inst
+	sed -i 's~OUTBASE="~OUTBASE="'"${pkgdir}"'~g' ./inst	
 }
 
 package() {
@@ -30,8 +30,8 @@ package() {
 	./inst
 	
 	# link to executable
-	mkdir -p ${pkgdir}/usr/bin
-	cd ${pkgdir}/usr/bin
+	mkdir -p "${pkgdir}/usr/bin"
+	cd "${pkgdir}/usr/bin"
 	ln -s /opt/PendulumData/PendulumData 
 }
 
