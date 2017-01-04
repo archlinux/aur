@@ -6,11 +6,11 @@ pkgver=3.5.1
 pkgrel=1
 pkgdesc="Ukrainian spelling dictionary"
 arch=('any')
-url="http://extensions.libreoffice.org/extension-center/ukrainian-spelling-dictionary-and-thesaurus"
+url='https://extensions.libreoffice.org/extensions/ukrainian-spelling-dictionary-and-thesaurus'
 license=('LGPL' 'GPL' 'MPL')
 groups=('dict-uk')
 optdepends=('hunspell: the spell checking libraries and apps')
-source=("http://extensions.libreoffice.org/extension-center/ukrainian-spelling-dictionary-and-thesaurus/releases/${pkgver}/dict-uk_ua-${pkgver//./-}.oxt")
+source=("https://extensions.libreoffice.org/extensions/ukrainian-spelling-dictionary-and-thesaurus/$pkgver/@@download/file/dict-uk_ua-${pkgver//./-}.oxt")
 sha256sums=('6c91a4779850425f413588550282739488bad3299d1d087031f9c723c6ed8e99')
 
 package() {
