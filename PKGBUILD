@@ -11,9 +11,8 @@ options=('!emptydirs')
 depends=('perl>=5.8.1' 'perl-catalyst-runtime>=5.7' 'perl-class-accessor' 'perl-mro-compat' 'perl-path-class' 'perl-template-toolkit' 'perl-template-timer')
 makedepends=('perl-extutils-makemaker>=6.59')
 url="http://search.cpan.org/dist/${_pkgname}"
-source=("http://search.cpan.org/CPAN/authors/id/J/JJ/JJNAPIORK/${_pkgname}-${pkgver}.tar.gz")
+source=("https://cpan.metacpan.org/authors/id/E/ET/ETHER/${_pkgname}-${pkgver}.tar.gz")
 md5sums=('0f6b73ea9885ff2839cabf9dbcb91559')
-sha512sums=('b3bd246b8286562c453d8b62d0d7c93220652309519fb3522cc08db067fe782627a1c4a8d2dd28fa2d993a75c80d14fccfcdd842336e12d3ed5a4c48756a22')
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \

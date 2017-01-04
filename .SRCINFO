@@ -16,9 +16,8 @@ pkgbase = perl-catalyst-view-tt
 	depends = perl-template-toolkit
 	depends = perl-template-timer
 	options = !emptydirs
-	source = http://search.cpan.org/CPAN/authors/id/J/JJ/JJNAPIORK/Catalyst-View-TT-0.44.tar.gz
+	source = https://cpan.metacpan.org/authors/id/E/ET/ETHER/Catalyst-View-TT-0.44.tar.gz
   md5sums = 0f6b73ea9885ff2839cabf9dbcb91559
-  sha512sums = b3bd246b8286562c453d8b62d0d7c93220652309519fb3522cc08db067fe782627a1c4a8d2dd28fa2d993a75c80d14fccfcdd842336e12d3ed5a4c48756a22
 
 pkgname = perl-catalyst-view-tt
 
