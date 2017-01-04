@@ -2,10 +2,11 @@
 pkgname=('shotcut')
 _srcname='shotcut'
 pkgdesc='Video editor'
-pkgver='16.12'
+pkgver='17.01'
+_commit='44f877d976002f5c329681552acca6cadd494e11'
 pkgrel='1'
 arch=('i686' 'x86_64')
-url='https://github.com/mltframework/shotcut'
+url='https://www.shotcut.org/'
 license=('GPL3')
 
 depends=(
@@ -30,7 +31,7 @@ provides=("${pkgname[0]%-git}")
 conflicts=("${pkgname[0]%-git}")
 
 source=(
-    "${_srcname}::git+${url}.git#tag=v${pkgver}"
+    "${_srcname}::git+https://github.com/mltframework/shotcut.git#commit=${_commit}"
     'shotcut.desktop'
     'melt.patch'
 )
