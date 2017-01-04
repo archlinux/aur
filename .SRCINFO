@@ -28,8 +28,10 @@ pkgbase = perl-pdl
 	options = !emptydirs
 	source = https://cpan.metacpan.org/authors/id/C/CH/CHM/PDL-2.017.tar.gz
 	source = perldl.conf
-	md5sums = 9966447f0a61625e3ea871f731adf1
-	md5sums = 8e1f6285ce4ee9439dc1088709cfec18
+  source = Makefile.patch
+  md5sums = 9966447f0afd61625e3ea871f731adf1
+	md5sums = ac56f2a88b89d359a0dc80063d31cf59
+  md5sums = e2b2dff48643a5051a8f7d1ee9dc4ea9
 
 pkgname = perl-pdl
 
