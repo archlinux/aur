@@ -19,7 +19,7 @@ package() {
   local _npmdir="$pkgdir/usr/lib/node_modules/"
   mkdir -p $_npmdir
   cd $_npmdir
-  npm install -g --prefix "$pkgdir/usr" $_npmname@$_npmver
+  npm install -g --user root --prefix "$pkgdir/usr" $_npmname@$_npmver
   install -D --mode=644 ${startdir}/config ${pkgdir}/etc/vault-pki-client/config
   install -D --mode=644 ${startdir}/vault-pki-client.service ${pkgdir}/usr/lib/systemd/system/vault-pki-client.service
 }
