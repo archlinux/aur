@@ -1,12 +1,12 @@
-# Maintainer: Kuldeep Singh Dhaka <kuldeepdhaka9@gmail.com>
+# Maintainer: Kuldeep Singh Dhaka <kuldeep@madresistor.com>
 
 pkgname=liab-studio-qt-git
 _pkgname=liab-studio-qt
-pkgver=97.cf0e600
+pkgver=103.e4e5243
 pkgrel=1
 pkgdesc="LiaB Studio is an Integerated Experimenting Enviroment (with data logging capabilities)."
 arch=('i686' 'x86_64')
-url="https://www.madresistor.org/box0"
+url="https://www.madresistor.com/box0"
 license=('GPL')
 provides=(liab-studio-qt)
 conflicts=(liab-studio-qt)
