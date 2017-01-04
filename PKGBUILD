@@ -1,12 +1,12 @@
-# Maintainer: Kuldeep Singh Dhaka <kuldeepdhaka9@gmail.com>
+# Maintainer: Kuldeep Singh Dhaka <kuldeep@madresistor.com>
 
 pkgname=box0-utils-git
 _pkgname=box0-utils
-pkgver=9.221c11c
+pkgver=13.dcf52ee
 pkgrel=1
 pkgdesc="Box0 Shell utilities"
 arch=('i686' 'x86_64')
-url="https://www.madresistor.org/box0"
+url="https://www.madresistor.com/box0"
 license=('GPL')
 provides=(box0-utils)
 conflicts=(box0-utils)
