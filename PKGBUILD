@@ -1,43 +1,44 @@
 # Maintainer: Max Kueng <me [at] maxkueng [dot] com>
 pkgname=yakyak
 pkgver=1.4.0
-pkgrel=1
+_pkgid="${pkgname}-${pkgver}"
+pkgrel=2
 pkgdesc="Desktop client for Google Hangouts"
 arch=('x86_64' 'i686')
 url="https://github.com/yakyak/yakyak"
 license=('MIT')
-depends=('c-ares' 'ffmpeg' 'gtk3' 'http-parser' 'libevent' 'libvpx' 'libxslt'
-         'libxss' 'minizip' 'nss' 're2' 'snappy' 'gconf' 'alsa-lib' 'libnotify'
-         'libgnome-keyring')
+depends=('electron>=1.4.0')
 optdepends=('emojione-color-font: Emoji support')
+makedepends=('unzip' 'nodejs' 'npm')
 
-case $CARCH in
-  'x86_64')
-    _arch='x64'
-    sha256sums=('b7d741099d289c592725acf884330719e9a1fbc7ca7d19024868324f2997f688'
-                '12baee4e3e926b765ebe21493adb7aa416165c7191f583694670b08d9b9c5360')
-    ;;
-  'i686')
-    _arch='ia32'
-    sha256sums=('e3c09c55f8746cd8ce95baa0d2993d574ac8eb80a96a48e1030c40665762f01d'
-                '12baee4e3e926b765ebe21493adb7aa416165c7191f583694670b08d9b9c5360')
-    ;;
-esac
+sha256sums=('59cd67a18260baee59ee971f29389ef9fac2747573c294807fc1f797f53cc6b5'
+            '12baee4e3e926b765ebe21493adb7aa416165c7191f583694670b08d9b9c5360'
+            '0a02abfbceb1029301308239f8d0a1e8e5a5565d66c561223836ecaaf7cb5046')
 
-source=("yakyak.tar.gz::https://github.com/yakyak/yakyak/releases/download/v${pkgver}/yakyak-1.4.0-linux-${_arch}.tar.gz"
-        "yakyak.desktop")
+source=("${_pkgid}.tar.gz::https://github.com/yakyak/yakyak/archive/v${pkgver}.tar.gz"
+        "yakyak.desktop"
+        "yakyak.sh")
+
+build() {
+  cd "${srcdir}/${_pkgid}"
+  npm install --production=false
+  npm run gulp
+}
 
 package() {
   install -dm755 "${pkgdir}/usr/share"
-  install -dm755 "${pkgdir}/usr/bin"
+  install -dm755 "${pkgdir}/usr/share/${pkgname}"
   install -dm755 "${pkgdir}/usr/share/pixmaps"
+  install -dm755 "${pkgdir}/usr/share/licenses"
   install -dm755 "${pkgdir}/usr/share/applications"
+  install -dm755 "${pkgdir}/usr/bin"
 
-  install -Dm644 "${srcdir}/yakyak-linux-${_arch}/resources/app/icons/icon@32.png" "${pkgdir}/usr/share/pixmaps/yakyak.png"
-  install -Dm644 "${srcdir}/yakyak.desktop" "${pkgdir}/usr/share/applications/yakyak.desktop"
+  install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}" "${srcdir}/${_pkgid}/LICENSE"
+  install -Dm644 "${srcdir}/${_pkgid}/app/icons/icon@32.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
+  install -Dm644 "${srcdir}/yakyak.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
+  install -Dm755 "${srcdir}/yakyak.sh" "${pkgdir}/usr/bin/${pkgname}"
 
-  mv "${srcdir}/yakyak-linux-${_arch}" "${pkgdir}/usr/share/${pkgname}"
-  ln -s "/usr/share/${pkgname}/yakyak" "${pkgdir}/usr/bin/${pkgname}"
+  mv "${srcdir}/${_pkgid}/app" "${pkgdir}/usr/share/${pkgname}/"
 }
 
 # vim:set ts=2 sw=2 et:
