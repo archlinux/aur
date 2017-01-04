@@ -21,7 +21,7 @@
 
 pkgname=matlab-support
 pkgver=9.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Provides dependencies and common fixes for MATLAB.'
 arch=('x86_64')
 url='http://www.mathworks.com'
@@ -65,4 +65,8 @@ package() {
 
     msg2 'Installing command line executable'
     install -D -m755 'matlab-cli' "${pkgdir}/usr/bin/matlab-cli"
+
+    msg2 'Installing profile.d files'
+    install -D -m644 'matlab.sh' "${pkgdir}/etc/profile.d/matlab.sh"
+    install -D -m644 'matlab.csh' "${pkgdir}/etc/profile.d/matlab.csh"
 }
