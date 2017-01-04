@@ -1,7 +1,6 @@
 pkgbase=python-pythran-git
-# pkgname=('python-pythran-git' 'python2-pythran-git')
-pkgname=('python-pythran-git')
-pkgver=r1886.09e36dbb
+pkgname=('python-pythran-git' 'python2-pythran-git')
+pkgver=r1888.2d5a87b9
 pkgrel=1
 pkgdesc="A claimless python to c++ converter"
 arch=('i686' 'x86_64')
@@ -32,14 +31,16 @@ package_python-pythran-git() {
   conflicts=('python-pythran')
 
   cd "$srcdir"/pythran
-  python setup.py install --root=$pkgdir --optimize=1
+  python setup.py install --root="$pkgdir" --optimize=1
 }
 
-# package_python2-pythran-git() {
-#   depends=('python2-networkx' 'python2-ply' 'python2-colorlog' 'python2-numpy' 'python2-gast' 'python2-six' 'gperftools' 'gmp' 'boost')
-#   provides=('python2-pythran')
-#   conflicts=('python2-pythran')
-# 
-#   cd "$srcdir"/pythran-py2
-#   python2 setup.py install --root=$pkgdir --optimize=1
-# }
+package_python2-pythran-git() {
+  depends=('python2-networkx' 'python2-ply' 'python2-colorlog' 'python2-numpy' 'python2-gast' 'python2-six' 'gperftools' 'gmp' 'boost')
+  provides=('python2-pythran')
+  conflicts=('python2-pythran')
+
+  cd "$srcdir"/pythran-py2
+  python2 setup.py install --root="$pkgdir" --optimize=1
+  mv "$pkgdir"/usr/bin/pythran "$pkgdir"/usr/bin/pythran2
+  mv "$pkgdir"/usr/bin/pythran-config "$pkgdir"/usr/bin/pythran2-config
+}
