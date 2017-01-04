@@ -2,16 +2,16 @@
 # Contributor: Anonymo <meowdib at gmail dot com>
 
 pkgname=clarity-icon-theme
-pkgver=0.4.2
+pkgver=0.4.6
 pkgrel=1
-pkgdesc="Vector icons in 8 colourthemes for GTK"
+pkgdesc="Vector icons in 9 colourthemes for GTK"
 arch=('any')
 makedepends=('imagemagick' 'librsvg')
-url="http://gnome-look.org/content/show.php/Clarity?content=135654"
+url="https://www.gnome-look.org/p/1012535"
 license=('GPL3')
 options=(!strip !zipman)
-source=(http://load.boenki.org/${pkgname}_${pkgver}.tar.gz)
-md5sums=('94c4207731668bc1dc7c51e9dc1a5229')
+source=(https://dl.opendesktop.org/api/files/download/id/1482860647/${pkgname}_${pkgver}.tar.gz)
+md5sums=('47543c02627673cf16657edbaa8a70f0')
 
 ##############################################################
 #Put the themes you want to build in _buildtheme array below.#
@@ -19,16 +19,17 @@ md5sums=('94c4207731668bc1dc7c51e9dc1a5229')
 #                                                            #
 #Available themes:                                           #
 # violaceus      - violet/pink gradient                      #
-# lux_violaceus  - glossy variant                            #
+# lux_violaceus   -  glossy variant                          #
 # canus          - grey gradient                             #
 # dark_canus     - dark grey gradient                        #
 # caeruleus      - blue gradient                             #
-# lux_caeruleus  - glossy variant                            #
+# lux_caeruleus   -  glossy variant                          #
 # viridis        - green gradient                            #
 # luteus         - orange gradient                           #
+# albus          - white solid                               #
 ##############################################################
 
-_buildtheme=(violaceus lux_violaceus canus dark_canus caeruleus lux_caeruleus viridis luteus)
+_buildtheme=(violaceus lux_violaceus canus dark_canus caeruleus lux_caeruleus viridis luteus albus)
 
 build() {
  for _theme in ${_buildtheme[*]}; do
