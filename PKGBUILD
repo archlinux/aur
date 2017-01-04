@@ -1,5 +1,5 @@
 pkgname=agrum
-pkgver=0.10.1
+pkgver=0.10.3
 pkgrel=1
 pkgdesc="C++ Bayesian networks library"
 license=('GPL')
