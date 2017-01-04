@@ -1,0 +1,20 @@
+pkgbase = ttf-dejavu-sans-code-git
+	pkgdesc = Monospaced font with programming ligatures based on DejaVu Sans Mono
+	pkgver = 1.2.r0.b244a9c
+	pkgrel = 1
+	url = https://github.com/SSNikolaevich/DejaVuSansCode
+	install = fonts.install
+	arch = any
+	license = custom
+	makedepends = git
+	makedepends = fontforge
+	makedepends = perl-font-ttf
+	depends = fontconfig
+	depends = xorg-font-utils
+	provides = ttf-dejavu-sans-code
+	conflicts = ttf-dejavu-sans-code
+	source = git+https://github.com/SSNikolaevich/DejaVuSansCode.git
+	md5sums = SKIP
+
+pkgname = ttf-dejavu-sans-code-git
+
