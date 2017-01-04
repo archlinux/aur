@@ -1,7 +1,7 @@
 # Maintainer: Kieran Colford <kieran@kcolford.com>
 pkgname=ddns-git
-pkgver=r39.72c5863
-pkgrel=2
+pkgver=r40.3647ce3
+pkgrel=1
 pkgdesc="Automatic provisioning of dynamic DNS"
 arch=('any')
 url="https://github.com/kcolford/ddns"
