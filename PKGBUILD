@@ -5,7 +5,7 @@ _pkgrev=1
 pkgname=cctools
 pkgdesc="Apple cctools port for Linux"
 pkgver=${_cctools_ver}
-pkgrel=1
+pkgrel=2
 arch=(i686 x86_64)
 url="https://github.com/tpoechtrager/cctools-port"
 license=("APSL")
@@ -22,7 +22,8 @@ build() {
 	./configure \
 		--prefix=/usr \
 		--target=x86_64-apple-darwin \
-		--with-llvm-config=/usr/bin/llvm-config
+		--with-llvm-config=/usr/bin/llvm-config \
+		--libexecdir=/usr/lib
 	make
 }
 
