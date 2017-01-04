@@ -21,6 +21,8 @@ source=("${_pkgid}.tar.gz::https://github.com/yakyak/yakyak/archive/v${pkgver}.t
 
 build() {
   cd "${srcdir}/${_pkgid}"
+
+  sed -i.bak '/"electron-prebuilt"/d' ./package.json
   npm install --production=false
   npm run gulp
 }
