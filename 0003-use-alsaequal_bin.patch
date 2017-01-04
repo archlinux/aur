@@ -1,0 +1,22 @@
+--- src/alsaequal/ctl_equal.c	2017-01-04 06:39:11.226886825 +0200
++++ src/ctl_equal.c	2017-01-04 06:39:36.926887606 +0200
+@@ -165,7 +165,7 @@
+ 		failure */
+ 	snd_config_iterator_t it, next;
+ 	snd_ctl_equal_t *equal;
+-	const char *controls = ".alsaequal.bin32";
++	const char *controls = ".alsaequal.bin";
+ 	const char *library = "/usr/lib32/ladspa/caps.so";
+ 	const char *module = "Eq10";
+ 	long channels = 2;
+--- src/alsaequal/pcm_equal.c	2017-01-04 06:18:47.750183011 +0200
++++ src/pcm_equal.c	2017-01-04 06:20:45.003519904 +0200
+@@ -149,7 +149,7 @@
+ 	snd_config_iterator_t i, next;
+ 	snd_pcm_equal_t *equal;
+ 	snd_config_t *sconf = NULL;
+-	const char *controls = ".alsaequal.bin32";
++	const char *controls = ".alsaequal.bin";
+ 	const char *library = "/usr/lib32/ladspa/caps.so";
+ 	const char *module = "Eq10";
+ 	long channels = 2;
