@@ -1,7 +1,7 @@
 # Maintainer: Albert Graef <aggraef at gmail dot com>
 
 pkgname=faust-vst-git
-pkgver=77.cd06479
+pkgver=90.7bec1e8
 pkgrel=1
 pkgdesc="Faust VST plugin examples"
 arch=("i686" "x86_64")
