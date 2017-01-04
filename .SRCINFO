@@ -1,6 +1,6 @@
 pkgbase = bioperl-live-git
 	pkgdesc = Perl modules for bioinformatics applications.
-	pkgver = 20100604
+	pkgver = 20161203
 	pkgrel = 1
 	url = http://www.bioperl.org
 	arch = any

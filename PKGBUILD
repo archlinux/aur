@@ -1,9 +1,10 @@
-# Maintainer: Thomas Dziedzic < gostrc at gmail >
+# Maintainer: Ordoban <dirk.langer@vvovgonik.de>
 # Contributor: Abhishek Dasgupta <abhidg@gmail.com>
 # Contributor: damir <damir@archlinux.org>
 
 pkgname=bioperl-live-git
-pkgver=20100604
+_pkgname=bioperl-live
+pkgver=20161203
 pkgrel=1
 pkgdesc='Perl modules for bioinformatics applications.'
 arch=('any')
@@ -32,6 +33,10 @@ build() {
   perl Build.PL < /dev/null
 
   ./Build
+}
+
+package() {
+  cd "$srcdir/${_pkgname}"
 
   ./Build install                                   \
     --install_base /usr                             \
@@ -44,7 +49,9 @@ build() {
   cd "$pkgdir/usr/bin"
   for b in *; do
     mv $b $(basename $b .pl)
-    mv "$pkgdir/usr/share/man/man1/$b.1p" "$pkgdir/usr/share/man/man1/$(basename $b .pl).1p"
+    if [ -e "$pkgdir/usr/share/man/man1/$b.1p" ]; then
+      mv "$pkgdir/usr/share/man/man1/$b.1p" "$pkgdir/usr/share/man/man1/$(basename $b .pl).1p"
+    fi
   done
 
   # remove perllocal.pod and .packlist
