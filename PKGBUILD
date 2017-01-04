@@ -2,7 +2,7 @@
 
 pkgname=bitcoin-core-git
 pkgver=20170103
-pkgrel=1
+pkgrel=2
 pkgdesc="Bitcoin Core headless P2P node"
 arch=('i686' 'x86_64')
 url="https://github.com/bitcoin/bitcoin"
@@ -66,15 +66,14 @@ package() {
   install -Dm 644 COPYING -t "$pkgdir/usr/share/licenses/${pkgname%%-*}"
 
   msg2 'Installing man pages...'
-  find doc/man -type f -name "*.1" -exec \
-    install -Dm 644 -t "$pkgdir/usr/share/man/man1" '{}' +
+  install -Dm 644 doc/man/*.1 -t "$pkgdir/usr/share/man/man1"
 
   msg2 'Installing documentation...'
   install -dm 755 "$pkgdir/usr/share/doc/bitcoin"
   for _doc in \
     $(find doc -maxdepth 1 -type f -name "*.md" -printf '%f\n') \
     release-notes; do
-      cp -dpr --no-preserve=ownership doc/$_doc \
+      cp -dpr --no-preserve=ownership "doc/$_doc" \
         "$pkgdir/usr/share/doc/bitcoin/$_doc"
   done
 
@@ -93,6 +92,8 @@ package() {
   install -Dm 644 "$srcdir/bitcoin.logrotate" "$pkgdir/etc/logrotate.d/bitcoin"
 
   msg2 'Installing bash completion...'
-  install -Dm 644 contrib/bitcoind.bash-completion \
-    "$pkgdir/usr/share/bash-completion/completions/bitcoind"
+  for _compl in bitcoin-cli bitcoin-tx bitcoind; do
+    install -Dm 644 "contrib/${_compl}.bash-completion" \
+      "$pkgdir/usr/share/bash-completion/completions/$_compl"
+  done
 }
