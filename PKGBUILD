@@ -1,7 +1,7 @@
 # Maintainer: Albert Graef <aggraef at gmail dot com>
 
 pkgname=faust-lv2-git
-pkgver=160.9ba86fd
+pkgver=174.bed4350
 pkgrel=1
 pkgdesc="Faust LV2 plugin examples"
 arch=("i686" "x86_64")
