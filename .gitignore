@@ -1,0 +1,7 @@
+*.swp
+node_modules
+npm-debug.log
+src
+pkg
+*.tar.xz
+*.tgz

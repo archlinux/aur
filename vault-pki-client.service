@@ -1,0 +1,9 @@
+[Unit]
+Description=Tool to manage a keypair provided by HashiCorp Vault
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/vault-pki-client
+
+[Install]
+WantedBy=multi-user.target

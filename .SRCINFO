@@ -1,0 +1,15 @@
+pkgbase = vault-pki-client
+	pkgdesc = Tool to manage a keypair provided by HashiCorp Vault
+	pkgver = 1.0.2
+	pkgrel = 1
+	url = https://github.com/issacg/vault-pki-client#readme
+	arch = any
+	license = Apache
+	depends = nodejs
+	depends = npm
+	noextract = vault-pki-client-1.0.2.tgz
+	source = http://registry.npmjs.org/vault-pki-client/-/vault-pki-client-1.0.2.tgz
+	sha1sums = 84e411e7b1fbcd2bd320b6a2b8d8d4b39394251b
+
+pkgname = vault-pki-client
+

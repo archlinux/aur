@@ -1,0 +1,27 @@
+{
+  "vault": {
+    "server": {
+      "address": "http://127.0.0.1:8200",
+      "ca-cert": null,
+      "ca-path": null,
+      "tls-skip-verify": false,
+      "api-version": "v1"
+    },
+    "pki": {
+      "path": "pki",
+      "role": null
+    },
+    "token": null,
+    "token-renewable": false
+  },
+  "certCN": "localhost",
+  "certAltNames": [],
+  "certIPs": [],
+  "certTTL": null,
+  "certFile": "client.pem",
+  "keyFile": "client.key",
+  "caFile": null,
+  "onUpdate": null,
+  "renewalCoefficient": 0.9,
+  "once": false
+}
