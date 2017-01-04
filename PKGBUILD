@@ -6,7 +6,7 @@ pkgname=(
   "${pkgbase}4"
   "${pkgbase}-common"
 )
-pkgver=0.5
+pkgver=0.97
 pkgrel=1
 pkgdesc='A style to bend Qt applications to look like they belong into GNOME Shell.'
 arch=('any' 'i686' 'x86_64')
@@ -15,7 +15,7 @@ license=('GPL' 'LGPL')
 groups=('adwaita-qt')
 makedepends=('cmake' 'qt4' 'qt5-base')
 source=("https://github.com/MartinBriza/$pkgbase/archive/$pkgver.tar.gz")
-sha512sums=('3339688755b99d78dfbc9c0918f74a94c98320ec887452a474bd85e253c2927318763a1b3afa9f7d61ff2ddf1929635e84bf09b0246df29c3c3f96692467bcbf')
+sha512sums=('8e15e9535dbcc1edba5941cbcc2c2e765298824a24ecbedaeb5d461420b713da74a26bd1f8184f0bfa9139022997798a0759d85a2a5269633ed97a7e34e2f77f')
 
 prepare() {
   mkdir -p $pkgbase-$pkgver/build{-qt5,-qt4,-common}
@@ -64,9 +64,11 @@ package_adwaita-qt4() {
   pkgdesc="${pkgdesc::-1} (Qt4)."
   arch=('i686' 'x86_64')
   depends=('adwaita-qt-common' 'qt4')
+  optdepends=('adwaita-qt5: Qt5 version'
+              'qgnomeplatform: apply GNOME settings to Qt apps')
 
   cd $pkgbase-$pkgver
-  make install/fast DESTDIR=$pkgdir -C build-qt4
+  make install/fast DESTDIR="$pkgdir" -C build-qt4
   install -Dm644 -t "${pkgdir}/usr/share/doc/${pkgname}" README.md
 }
 
@@ -74,10 +76,11 @@ package_adwaita-qt5() {
   pkgdesc="${pkgdesc::-1} (Qt5)."
   arch=('i686' 'x86_64')
   depends=('adwaita-qt-common' 'qt5-base')
-  optdepends=('adwaita-qt4: Qt4 version')
+  optdepends=('adwaita-qt4: Qt4 version'
+              'qgnomeplatform: apply GNOME settings to Qt apps')
 
   cd $pkgbase-$pkgver
-  make install/fast DESTDIR=$pkgdir -C build-qt5
+  make install/fast DESTDIR="$pkgdir" -C build-qt5
   install -Dm644 -t "${pkgdir}/usr/share/doc/${pkgname}" README.md
 }
 
@@ -86,5 +89,5 @@ package_adwaita-qt-common() {
   arch=('any')
   license=('GPL')
 
-  make install/fast DESTDIR=$pkgdir -C $pkgbase-$pkgver/build-common
+  make install/fast DESTDIR="$pkgdir" -C $pkgbase-$pkgver/build-common
 }
