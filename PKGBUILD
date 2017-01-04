@@ -26,13 +26,14 @@ pkgname=('roccat-tools-common'
          'roccat-tools-ryosmkfx'
          'roccat-tools-ryostkl'
          'roccat-tools-savu'
+         'roccat-tools-skeltr'
          'roccat-tools-sova'
          'roccat-tools-suora'
          'roccat-tools-tyon'
          'roccat-tools-nyth')
 pkgbase=roccat-tools
-pkgver=5.5.0
-pkgrel=2
+pkgver=5.6.0
+pkgrel=1
 pkgdesc='Userland applications to configure and make extended use of ROCCAT devices'
 arch=('i686' 'x86_64')
 url='http://roccat.sourceforge.net'
@@ -43,7 +44,7 @@ optdepends=('kmod-roccat: Adds support for the old kone device.')
 source=("http://downloads.sourceforge.net/project/roccat/roccat-tools/roccat-tools-$pkgver.tar.bz2"
         '90-uinput.rules'
         'uhid.conf')
-md5sums=('1cd328de42261c736ee275b33c8ecbb8'
+md5sums=('deec40e21fadd76abe5693b29fc30d97'
          'd9e6955139aac24c35ef7951a44d919a'
          '342d4f032d4d4d64e8a2136fd742c1c9')
 
@@ -281,6 +282,16 @@ package_roccat-tools-suora() {
   make DESTDIR="$pkgdir/" install
   cd "$srcdir/$pkgbase-$pkgver"
   install -Dm644 udev/90-roccat-suora.rules $pkgdir/usr/lib/udev/rules.d/90-roccat-suora.rules
+}
+
+package_roccat-tools-skeltr() {
+  pkgdesc='Userland applications to configure and make extended use of ROCCAT Skeltr devices'
+  depends=('roccat-tools-common')
+
+  cd "$srcdir/$pkgbase-$pkgver/skeltr"
+  make DESTDIR="$pkgdir/" install
+  cd "$srcdir/$pkgbase-$pkgver"
+  install -Dm644 udev/90-roccat-skeltr.rules $pkgdir/usr/lib/udev/rules.d/90-roccat-skeltr.rules
 }
 
 package_roccat-tools-sova() {
