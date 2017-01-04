@@ -2,7 +2,7 @@
 
 pkgname=bitcoin-core
 pkgver=0.13.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Bitcoin Core headless P2P node"
 arch=('i686' 'x86_64')
 url="https://bitcoin.org"
@@ -59,12 +59,17 @@ package() {
   msg2 'Installing license...'
   install -Dm 644 COPYING -t "$pkgdir/usr/share/licenses/${pkgname%-core}"
 
+  # code commented out is missing from 0.13.2 release
+
+  # msg2 'Installing man pages...'
+  # install -Dm 644 doc/man/*.1 -t "$pkgdir/usr/share/man/man1"
+
   msg2 'Installing documentation...'
   install -dm 755 "$pkgdir/usr/share/doc/bitcoin"
   for _doc in \
     $(find doc -maxdepth 1 -type f -name "*.md" -printf '%f\n') \
     release-notes; do
-      cp -dpr --no-preserve=ownership doc/$_doc \
+      cp -dpr --no-preserve=ownership "doc/$_doc" \
         "$pkgdir/usr/share/doc/bitcoin/$_doc"
   done
 
@@ -81,4 +86,10 @@ package() {
 
   msg2 'Installing bitcoin.logrotate...'
   install -Dm 644 "$srcdir/bitcoin.logrotate" "$pkgdir/etc/logrotate.d/bitcoin"
+
+  # msg2 'Installing bash completion...'
+  # for _compl in bitcoin-cli bitcoin-tx bitcoind; do
+  #   install -Dm 644 "contrib/${_compl}.bash-completion" \
+  #     "$pkgdir/usr/share/bash-completion/completions/$_compl"
+  # done
 }
