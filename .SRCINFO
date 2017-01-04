@@ -1,0 +1,21 @@
+pkgbase = matlab-support
+	pkgdesc = Provides dependencies and common fixes for MATLAB.
+	pkgver = 9.1.0
+	pkgrel = 1
+	url = http://www.mathworks.com
+	install = matlab-support.install
+	arch = x86_64
+	license = custom
+	makedepends = gendesk
+	depends = libx11
+	depends = libxext
+	depends = libxt
+	depends = jre7-openjdk
+	optdepends = gcc47: For MEX support
+	provides = matlab
+	conflicts = matlab
+	source = https://upload.wikimedia.org/wikipedia/commons/2/21/Matlab_Logo.png
+	sha512sums = ba72458379c89b22a27d1d7e357cefae4437fa28caac47b26ccd4f5b01b8cbc2c000baf38b5a52565f29b14e6da922bc3dc14bc5d47fa682fb6871422a59c397
+
+pkgname = matlab-support
+
