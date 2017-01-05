@@ -6,7 +6,7 @@
 
 pkgname=cin-bin
 pkgver=5.1
-pkgrel=20161130
+pkgrel=20170101
 pkgdesc="Cinelerra ($pkgver) ($pkgrel)"
 arch=('x86_64')
 url="http://www.cinelerra-cv.org/five"
