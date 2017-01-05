@@ -1,0 +1,15 @@
+post_install() {
+ln -s /opt/fenrir/fenrir-daemon /usr/bin/fenrir-daemon
+_alert
+}
+
+_alert() {
+cat << EOF
+To have fenrir start at boot:
+sudo systemctl enable fenrir
+Pulseaudio users may want to run
+/usr/share/fenrir/tools/configure-pulseaudio
+once as their user account and once as root.
+EOF
+}
+
