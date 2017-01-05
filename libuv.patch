@@ -1,0 +1,22 @@
+--- a/configure.ac
++++ b/configure.ac
+@@ -900,6 +900,9 @@ if test "x$WIN32" = "xno" ; then
+         LIBS=$SAVE_LIBS
+       ]
+     )
++
++    # libuv
++    AC_DEFINE(HAVE_LIBUV, [1], [Define to use libuv])
+ fi
+
+ # define on all platforms
+--- a/src/include.am
++++ b/src/include.am
+@@ -110,3 +110,7 @@ endif
+ if ANDROID
+ src_libmega_la_SOURCES += src/mega_glob.c
+ endif
++
++#libuv
++src_libmega_la_LIBADD += -luv
++src_libmega_la_SOURCES += src/mega_http_parser.cpp

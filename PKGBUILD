@@ -2,21 +2,30 @@
 
 pkgname=mega-sdk
 pkgver=2.8.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Official mega.nz SDK"
 arch=('i686' 'x86_64')
 url="https://github.com/meganz/sdk"
 license=('BSD-2-Clause')
-depends=('curl'
-         'c-ares'
-         'openssl'
+depends=('c-ares'
          'crypto++'
-         'zlib'
-         'sqlite'
+         'curl'
          'freeimage'
-         'libsodium')
-source=("https://github.com/meganz/sdk/archive/v$pkgver.tar.gz")
-md5sums=('b1a59b30fc7d6d99bde439a7d12a07e6')
+         'fuse'
+         'libsodium'
+         'libuv'
+         'openssl'
+         'sqlite'
+         'zlib')
+source=("https://github.com/meganz/sdk/archive/v$pkgver.tar.gz"
+        'libuv.patch')
+md5sums=('b1a59b30fc7d6d99bde439a7d12a07e6'
+         '421fde0148c1a0b3d20ffc17227ab6c6')
+
+prepare() {
+  cd "sdk-$pkgver"
+  patch -p1 -i ../libuv.patch
+}
 
 build() {
   cd "sdk-$pkgver"
