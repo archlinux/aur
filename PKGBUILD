@@ -15,7 +15,7 @@ conflicts=("$pkgname")
 install="$pkgname.install"
 md5sums=('109b93bd034fecd5389b68d9bc177547'
          '4df8c8964b8ba2f00f6c97aece344e94'
-         '0d47d8bdcb9f2da1e5b709a63311b776')
+         'c1946315bc225ef7d90fa6110e3ef948')
 
 package()
  {
