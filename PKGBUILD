@@ -1,8 +1,8 @@
 # Maintainer: Tom Zander
 
 pkgname=bitcoin-classic
-pkgver=1.1.1
-pkgrel=2
+pkgver=1.2.0
+pkgrel=1
 pkgdesc='Bitcoin Classic with bitcoind, bitcoin-cli, bitcoin-tx, and bitcoin-qt'
 arch=('i686' 'x86_64')
 url="https://bitcoinclassic.com/"
@@ -12,10 +12,10 @@ makedepends=('boost' 'qt5-tools')
 provides=('bitcoin-daemon' 'bitcoin-cli' 'bitcoin-qt' 'bitcoin-tx')
 conflicts=('bitcoin-daemon' 'bitcoin-cli' 'bitcoin-qt' 'bitcoin-tx')
 install=bitcoin.install
-source=("https://github.com/bitcoinclassic/bitcoinclassic/archive/v1.1.1.tar.gz"
+source=("https://github.com/bitcoinclassic/bitcoinclassic/archive/v1.2.0.tar.gz"
     "bitcoin.logrotate"
     "bitcoin.conf")
-sha256sums=('a0b23e8359a737bfe77acec002187e527a955d68eaea6b965a39c7a93ce5d835'
+sha256sums=('7f16cd27f711d7dfbdc103e79d04800a27e63ed432e3076dd34552c37710a5ac'
     "7bf4bdad419c1ee30b88c7e4190707c5ff250da8b23d68d5adf14043f8e2ac73"
     "c8787560c6423605796c8d3e080cb522ed849cea12b5c23293c22e405a015a53")
 
@@ -24,17 +24,13 @@ build() {
 
   msg2 'Building...'
   ./autogen.sh
-  echo "#!/bin/sh" > share/genbuild.sh
-  chmod 700 share/genbuild.sh
-  echo "#define BUILD_SUFFIX $pkgrel" > src/obj/build.h
   ./configure --prefix=/usr --with-incompatible-bdb --with-gui=qt5 --enable-hardening \
-        --enable-reduce-exports --disable-gui-tests --disable-maintainer-mode \
-        --sbindir=/usr/bin \
-        --libexecdir=/usr/lib/bitcoin \
-        --sysconfdir=/etc \
-        --sharedstatedir=/usr/share/bitcoin \
-        --localstatedir=/var/lib/bitcoin
+        --enable-reduce-exports --disable-gui-tests --disable-maintainer-mode
   make -j$(nproc)
+}
+
+check() {
+  "$srcdir/bitcoinclassic-$pkgver/src/test/test_bitcoin"
 }
 
 package() {
@@ -77,8 +73,4 @@ package() {
 
   msg2 'Installing bitcoin-tx...'
   install -Dm755 "$srcdir/bitcoinclassic-$pkgver/src/bitcoin-tx" "$pkgdir/usr/bin/bitcoin-tx"
-
-  msg2 'Cleaning up pkgdir...'
-  find "$pkgdir" -type d -name .git -exec rm -r '{}' +
-  find "$pkgdir" -type f -name .gitignore -exec rm -r '{}' +
 }
