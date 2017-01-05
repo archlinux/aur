@@ -19,11 +19,11 @@ conflicts=('cinelerra-cv' 'cinelerra-heroine' 'cin')
 source=(https://bitbucket.org/juanperez89/cinelerra5/downloads/cinbie-$pkgver-$pkgrel-x86_64.pkg.tar.xz
 cinbie-$pkgver-$pkgrel-x86_64.pkg.tar.xz.sig
 )
-sha256sums=('4368e68aee24c657a4183c1b4d77b8352deb899b8b9db2bbe8509b144f261798'
+sha256sums=('c660f51cba956b19be47509534ee927aeaeaaea7da41565a4fc0b6844e1ab615'
             'SKIP')
-sha384sums=('ee1c4ce631fe1d040896d2a9e34ceb3d9d44e34575b8811ea5f6fe071186f67651a2edb4f0c71c75aaa8734f04dbd3b9'
+sha384sums=('cb5bf24edd847408e6477a9e6d9cbb7ae2b7292d5c6bfd00a973d6b37dd687fa314eb1c49f74f1760aeb15b6ca65c05e'
             'SKIP')
-sha512sums=('8d1f4237411fecc7b0d934abfba11255cbe11f513f5586156a38e2290caabac922386af040f709b172c1197655e45263381b57526d052ed0be897011d12db481'
+sha512sums=('7a936c6eaa9169a2a7fbb309573a17b383e64ff25e8ab0db3a35661409ec214ace0bec9b2d2d0f20ca0dda16a33cfea59bba916414bb1ba80aacfacca33fcba5'
             'SKIP')
 validgpgkeys=('DB68D18158C19A535A538524507F8DFE0C99485B')
 
