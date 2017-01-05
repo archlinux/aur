@@ -1,0 +1,19 @@
+pkgbase = tvlinker
+	pkgdesc = TV show link scraper + downloader for tv-release.net with a modern PyQt5 GUI
+	pkgver = 3.0.5
+	pkgrel = 1
+	url = http://vidcutter.ozmartians.com
+	arch = any
+	license = GPL3
+	makedepends = git
+	makedepends = sed
+	makedepends = python-setuptools
+	depends = python-pyqt5
+	depends = python-qtawesome-git
+	depends = python-beautifulsoup4
+	depends = python-lxml
+	source = https://github.com/ozmartian/tvlinker/archive/3.0.5.tar.gz
+	md5sums = SKIP
+
+pkgname = tvlinker
+
