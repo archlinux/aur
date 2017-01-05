@@ -12,20 +12,20 @@ provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 install=fonts.install
 source=('git+https://github.com/SSNikolaevich/DejaVuSansCode.git')
-md5sums=('SKIP')
+sha256sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/DejaVuSansCode"
+  cd "${srcdir}/DejaVuSansCode"
   git describe --long --tags | sed 's/^v//;s/\([^-]*-\)g/r\1/;s/-/./g'
 }
 
 build() {
-  cd "$srcdir/DejaVuSansCode"
+  cd "${srcdir}/DejaVuSansCode"
   make full-ttf
 }
 
 package() {
-  cd "$srcdir/DejaVuSansCode"
+  cd "${srcdir}/DejaVuSansCode"
   install -d ${pkgdir}/usr/share/fonts/TTF/
   install -m644 build/*.ttf ${pkgdir}/usr/share/fonts/TTF/
   install -D -m644 LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
