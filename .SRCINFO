@@ -1,0 +1,23 @@
+pkgbase = python-ufolib
+	pkgdesc = A low-level UFO reader and writer.
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://github.com/unified-font-object/ufoLib
+	arch = any
+	license = BSD
+	makedepends = python-pip
+	makedepends = python2-pip
+	options = !emptydirs
+	source = https://files.pythonhosted.org/packages/py2.py3/u/ufoLib/ufoLib-2.0.0-py2.py3-none-any.whl
+	sha256sums = 0c2bff943ea66bd0c1789cbe0b1c01fc3f966c899212b8a9d3f1d456a459d60a
+
+pkgname = python-ufolib
+	depends = python
+	depends = python-fonttools
+	provides = python-ufolib
+
+pkgname = python2-ufolib
+	depends = python2
+	depends = python2-fonttools
+	provides = python2-ufolib
+
