@@ -1,6 +1,6 @@
 # Maintainer: fordprefect <fordprefect@dukun.de>
 pkgname=letsencrypt-cli
-pkgver=0.4.1
+pkgver=0.5.0
 pkgrel=1
 pkgdesc="Yet another Letsencrypt (ACME) client using Ruby."
 url="https://github.com/zealot128/ruby-letsencrypt-cli"
@@ -8,7 +8,7 @@ arch=('any')
 license=('MIT')
 depends=("ruby-colorize" "ruby-acme-client" "ruby-thor")
 source=("https://github.com/zealot128/ruby-letsencrypt-cli/archive/v${pkgver}.tar.gz")
-md5sums=('3d83b01e48669a03d792844e3c3846e3')
+md5sums=('c1b7966e134cd5d7286a7fe713d8636d')
  
 package() {
     cd "${srcdir}/ruby-$pkgname-$pkgver/"
