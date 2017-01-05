@@ -1,20 +1,20 @@
-# Contributor: Francois Boulogne <fboulogne at april dot org>
 # Maintainer: Francois Boulogne <fboulogne at april dot org>
+# Contributor: Emmanuel Gil Peyrot <linkmauve@linkmauve.fr>
 
+_realname=funcsigs
 pkgname=python-funcsigs
-pkgver=0.4
+pkgver=1.0.2
 pkgrel=1
 pkgdesc="Python function signatures from PEP362"
 arch=('any')
 url="https://pypi.python.org/pypi/funcsigs/"
 license=('Apache')
 depends=('python')
-source=(https://pypi.python.org/packages/source/f/funcsigs/funcsigs-${pkgver}.tar.gz)
-sha256sums=('d83ce6df0b0ea6618700fe1db353526391a8a3ada1b7aba52fed7a61da772033')
-
+source=("https://pypi.python.org/packages/94/4a/db842e7a0545de1cdb0439bb80e6e42dfe82aaeaadd4072f2263a4fbed23/$_realname-$pkgver.tar.gz")
+md5sums=('7e583285b1fb8a76305d6d68f4ccc14e')
 
 package() {
-  cd "$srcdir/funcsigs-$pkgver"
+  cd "$srcdir/$_realname-$pkgver"
   python setup.py install --root="${pkgdir}"  --optimize=1
 }
 
