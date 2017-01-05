@@ -1,0 +1,4 @@
+src/
+pkg/
+vim-airline-gruvbox-git/
+*.xz
