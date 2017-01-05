@@ -1,0 +1,23 @@
+pkgbase = vim-ensime-git
+	pkgdesc = Ensime for vim.
+	pkgver = 0.2.r531.a566428
+	pkgrel = 1
+	url = http://ensime.org/editors/vim/
+	arch = any
+	groups = vim-plugins
+	license = MIT
+	makedepends = git
+	depends = vim-runtime
+	depends = vim-scala-git
+	depends = python2
+	depends = python2-websocket-client
+	depends = python2-sexpdata
+	depends = java-environment
+	optdepends = sbt: old sbt-ensime plugin (<1.12.0) support
+	provides = vim-ensime
+	conflicts = vim-ensime
+	source = git+https://github.com/ensime/ensime-vim.git
+	sha256sums = SKIP
+
+pkgname = vim-ensime-git
+
