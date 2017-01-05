@@ -1,7 +1,7 @@
 pkgbase = vim-gruvbox-git
 	pkgdesc = gruvbox color scheme for vim
 	pkgver = latest
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/morhetz/gruvbox
 	arch = i686
 	arch = x86_64
