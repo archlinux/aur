@@ -9,12 +9,12 @@ pkgname=("${pkgbase}-git"
          "${pkgbase}-core-git"
         )
 
-pkgver=0.12.0.150.ge24224c
+pkgver=0.12.0.314.g97a9b164
 pkgrel=1
 url='http://quassel-irc.org'
 license=('GPL')
 arch=('i686' 'x86_64' 'arm')
-makedepends=('git' 'cmake' 'automoc4')
+makedepends=('git' 'cmake' 'automoc4' 'extra-cmake-modules' 'qt5-tools' 'knotifyconfig')
 source=(
   'git+https://github.com/quassel/quassel.git'
  #'git://git.quassel-irc.org/quassel.git'
