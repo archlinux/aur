@@ -1,8 +1,8 @@
 # Author: Boteium <echo Ym90ZWl1bUBnbWFpbC5jb20=|base64 -d>
 
 pkgname=bashbullet
-pkgver=20151118
-pkgrel=2
+pkgver=20170105
+pkgrel=1
 pkgdesc="A pushbullet systray notification daemon for linux. also a simple client to receive, mirror, and send pushes."
 arch=('any')
 url="https://github.com/Boteium/bashbullet"
