@@ -1,5 +1,5 @@
 pkgbase = dyplompwr
-	pkgdesc = Latex package with thesis template for students of Wrocław University of Technology
+	pkgdesc = Latex package with unofficial thesis template for students of Wrocław University of Technology
 	pkgver = 1
 	pkgrel = 1.0
 	url = https://github.com/rkubosz/dyplompwr
