@@ -5,14 +5,14 @@
 #TODO: integrate with makepkg.d/
 
 pkgname=slic3r-git
-pkgver=1.2.10_dev.b7b2340a
-pkgrel=1
+pkgver=a
+pkgrel=16
 pkgdesc="Slic3r is an STL-to-GCODE translator for RepRap 3D printers, aiming to be a modern and fast alternative to Skeinforge."
 arch=('i686' 'x86_64' 'armv6' 'armv6h' 'armv7h')
 url="http://slic3r.org/"
 license=('GPL')
 depends=('perl'
-         'perl-moo' 'perl-math-clipper' 'perl-math-convexhull' 'perl-math-geometry-voronoi' 'perl-math-planepath' 'perl-math-convexhull-monotonechain' 'perl-io-stringy' 'perl-encode-locale' 'perl-extutils-makemaker-aur>=6.82' 'perl-threads-aur>=1.96' 'perl-extutils-parsexs>=3.22' 'boost')
+         'perl-moo' 'perl-sub-quote' 'perl-math-clipper' 'perl-math-convexhull' 'perl-math-geometry-voronoi' 'perl-math-planepath' 'perl-math-convexhull-monotonechain' 'perl-io-stringy' 'perl-encode-locale' 'perl-extutils-makemaker-aur>=6.82' 'perl-threads-aur>=1.96' 'perl-extutils-parsexs>=3.22' 'boost')
 makedepends=('git' 'perl-module-build-withxspp' 'perl-module-build' 'perl-devel-checklib')
 optdepends=('perl-wx: GUI support'
             'perl-net-dbus: notifications support via any dbus-based notifier'
