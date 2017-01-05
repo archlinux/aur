@@ -10,7 +10,7 @@ _pkgver=$_major
 pkgver=${_major}b${_build}
 #_pkgver=${_major}u${_minor}
 #pkgver=${_major}u${_minor}.b${_build}
-pkgrel=1
+pkgrel=2
 pkgdesc="Oracle Java $_major Runtime Environment Snapshot"
 arch=('i686' 'x86_64')
 url=https://jdk$_major.java.net/
@@ -124,7 +124,7 @@ package() {
     ln -sf /etc/ssl/certs/java/cacerts lib/security/cacerts
 
     # Move/link licenses
-    mv COPYRIGHT README THIRDPARTYLICENSEREADME.txt "$pkgdir"/usr/share/licenses/java$_major-$_pkgname/
+    mv legal/ "$pkgdir"/usr/share/licenses/java$_major-$_pkgname/
     install -m644 "$srcdir"/OTN-Early-Adopter-License-Terms.txt "$pkgdir"/usr/share/licenses/java$_major-$_pkgname/
     ln -sf /usr/share/licenses/java$_major-$_pkgname/ "$pkgdir"/usr/share/licenses/$pkgname
 
