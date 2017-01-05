@@ -2,12 +2,12 @@
 pkgname=python2-robofab
 _pkgname=robofab
 pkgver=1.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Tools to manipulate font sources.'
 arch=('any')
 url='http://robofab.com/'
 license=('BSD')
-depends=('python2' 'python2-numpy' 'python2-fonttools')
+depends=('python2' 'python2-fonttools')
 makedepends=('python2-setuptools')
 options=(!emptydirs)
 source=("https://files.pythonhosted.org/packages/source/${_pkgname:0:1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
