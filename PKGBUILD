@@ -11,9 +11,9 @@
 #
 
 pkgname=codelite
-pkgver=9.2
+pkgver=10.0
 pkgrel=1
-pkgdesc="Open-source, cross platform IDE for the C/C++ programming languages"
+pkgdesc="Cross platform C/C++/PHP and Node.js IDE written in C++"
 arch=('i686' 'x86_64')
 url="http://www.codelite.org/"
 license=('GPL')
@@ -36,7 +36,7 @@ optdepends=('graphviz: callgraph visualization'
 source=(https://github.com/eranif/${pkgname}/archive/${pkgver//_/-}.tar.gz
 	http://repos.codelite.org/wxCrafterLibs/wxgui.zip)
 
-md5sums=('77f24e8c39160222ec23f7794a1fc64b'
+md5sums=('aa00490c9e9eb8b756c9597355a5019e'
          '093485fcae62073ca8d0ba6ff3a5cb69')
 
 #if [[ "$CARCH" == 'i686' ]]; then
@@ -75,3 +75,7 @@ package() {
     install -m 644 -D "${srcdir}/wxgui.zip" "${pkgdir}/usr/share/codelite/wxgui.zip"
     install -m 644 -D "${srcdir}/${pkg_name_ver}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
+
+#
+# EOF
+#
