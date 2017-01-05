@@ -12,7 +12,6 @@ depends=('fcitx-qt4' 'fcitx-rime')
 makedepends=('cmake' 'git')
 provides=($_pkgname)
 conflicts=($_pkgname)
-replaces=($_pkgname)
 source=("git+https://github.com/xuzhao9/${_pkgname}.git")
 sha512sums=('SKIP')
 

@@ -12,7 +12,6 @@ pkgbase = fcitx-rime-config-git
 	depends = fcitx-rime
 	provides = fcitx-rime-config
 	conflicts = fcitx-rime-config
-	replaces = fcitx-rime-config
 	source = git+https://github.com/xuzhao9/fcitx-rime-config.git
 	sha512sums = SKIP
 
