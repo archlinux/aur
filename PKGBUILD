@@ -4,11 +4,11 @@
 _gitname='fenrir'
 pkgname="${_gitname}-git"
 pkgver=v0.2.5.g33af5b6
-pkgrel=5
+pkgrel=6
 pkgdesc='A user space console screen reader written in python3'
 arch=('any')
 url='https://github.com/chrys87/${_pkgname}'
-license=('MIT')
+license=('LGPL')
 depends=('python' 'python-daemonize' 'python-evdev')
 optdepends=('brltty: For Braille support'
 'gstreamer: for soundicons via gstreamer'
