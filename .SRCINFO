@@ -3,7 +3,7 @@
 pkgbase = openmedialibrary
 	pkgdesc = manage and sync your digital media collections
 	pkgver = 0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://openmedialibrary.com
 	arch = any
 	license = GPL3
