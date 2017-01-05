@@ -14,7 +14,7 @@ pkgbase = ttf-dejavu-sans-code-git
 	provides = ttf-dejavu-sans-code
 	conflicts = ttf-dejavu-sans-code
 	source = git+https://github.com/SSNikolaevich/DejaVuSansCode.git
-	md5sums = SKIP
+	sha256sums = SKIP
 
 pkgname = ttf-dejavu-sans-code-git
 
