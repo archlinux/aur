@@ -1,6 +1,6 @@
 pkgbase = siji-git
 	pkgdesc = Iconic bitmap font based on stlarch with additional glyphs
-	pkgver = r18.ea240bd
+	pkgver = r21.95369af
 	pkgrel = 1
 	url = https://github.com/stark/siji
 	install = siji-git.install

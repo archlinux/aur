@@ -1,7 +1,7 @@
 # Maintainer: Brandon Clifford <brandon099 at gmail dot com>
 _pkgname=siji
 pkgname=${_pkgname}-git
-pkgver=r18.ea240bd
+pkgver=r21.95369af
 pkgrel=1
 pkgdesc='Iconic bitmap font based on stlarch with additional glyphs'
 arch=('any')
