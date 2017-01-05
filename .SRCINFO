@@ -1,0 +1,18 @@
+pkgbase = vim-wakatime-git
+	pkgdesc = Vim plugin for automatic time tracking and metrics generated from your programming activity.
+	pkgver = 4.0.12.r301.5fb3410
+	pkgrel = 1
+	url = https://github.com/wakatime/vim-wakatime
+	arch = any
+	groups = vim-plugins
+	license = BSD
+	makedepends = git
+	depends = vim
+	depends = python
+	provides = vim-wakatime
+	conflicts = vim-wakatime
+	source = git+https://github.com/wakatime/vim-wakatime.git
+	sha256sums = SKIP
+
+pkgname = vim-wakatime-git
+
