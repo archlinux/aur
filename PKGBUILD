@@ -6,7 +6,8 @@
 # Contributor: Ben <ben@benmazer.net>
 
 pkgname=mpd-light
-pkgver=0.19.21
+pkgver=0.20
+_majorver=0.20
 pkgrel=1
 pkgdesc='Flexible, powerful, server-side application for playing music. Light version without ao, ffmpeg, jack, modplug, pulse, shout, sidplay, soundcloud, wavpack, avahi, smbclient support.'
 url='https://www.musicpd.org/'
@@ -18,25 +19,18 @@ makedepends=('doxygen' 'boost')
 provides=("mpd=$pkgver")
 conflicts=('mpd')
 replaces=('mpd')
-source=("https://www.musicpd.org/download/mpd/${pkgver%.*}/mpd-${pkgver}.tar.xz"
+source=("https://www.musicpd.org/download/mpd/${_majorver}/mpd-${pkgver}.tar.xz"
         'mpd.tmpfile'
         'mpd.conf')
-sha1sums=('27dd903f4f7c0f5ffeb85e6820c02d2b82485572'
+sha1sums=('e63fd1cb005d589e324820cf5799eea6568aa461'
           'f4d5922abb69abb739542d8e93f4dfd748acdad7'
           'fd581b976f4931abf9b849224dcb38a73af14af0')
 backup=('etc/mpd.conf')
 install=mpd.install
 
-prepare() {
-	# Temporary; see FS#48372
-	install -d "${srcdir}"/pkg-config
-	ln -s /usr/lib/pkgconfig/libsystemd.pc "${srcdir}"/pkg-config/libsystemd-daemon.pc
-}
-
 build() {
 	cd "${srcdir}/mpd-${pkgver}"
 
-	export PKG_CONFIG_PATH="${srcdir}"/pkg-config
 	./configure \
 		--prefix=/usr \
 		--sysconfdir=/etc \
