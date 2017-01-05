@@ -1,7 +1,7 @@
 # Maintainer: Milian Reichardt <mreichardt95@gmail.com>
 
 pkgname=check_mk-agent
-pkgver=1.2.8p13
+pkgver=1.2.8p15
 pkgrel=1
 pkgdesc="Agent to send information to a Check_MK server"
 arch=(any)
