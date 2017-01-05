@@ -14,7 +14,7 @@ depends=('python2'
 	 'python2-mutatormath'
 	 'python2-robofab'
 	 'python2-ufonormalizer')
-source=("http://download.macromedia.com/pub/developer/opentype/FDK.${pkgver}/FDK-25-LINUX.${pkgver##*.}.zip"
+source=("http://download.macromedia.com/pub/developer/opentype/FDK.${pkgver/b/}/FDK-25-LINUX.${pkgver##*.}.zip"
         'use-system-python.patch'
 	'profile.sh'
 	'profile.csh'
