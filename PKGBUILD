@@ -1,13 +1,13 @@
 # Maintainer: William Turner <willtur.will@gmail.com>
 pkgname=vim-wakatime-git
 pkgver=4.0.12.r301.5fb3410
-pkgrel=1
+pkgrel=2
 pkgdesc='Vim plugin for automatic time tracking and metrics generated from your programming activity.'
 arch=('any')
 url='https://github.com/wakatime/vim-wakatime'
 license=('BSD')
 groups=('vim-plugins')
-depends=('vim' 'python')
+depends=('vim-runtime' 'python')
 makedepends=('git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
