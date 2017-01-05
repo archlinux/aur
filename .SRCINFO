@@ -1,7 +1,7 @@
 pkgbase = python-booleanoperations
 	pkgdesc = Boolean operations on paths based on a super fast polygon clipper library by Angus Johnson.
 	pkgver = 0.6.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/typemytype/booleanOperations
 	arch = any
 	license = MIT
@@ -13,9 +13,15 @@ pkgbase = python-booleanoperations
 
 pkgname = python-booleanoperations
 	depends = python
+	depends = python-pyclipper
+	depends = python-fonttools
+	depends = python-ufolib
 	provides = python-booleanoperations
 
 pkgname = python2-booleanoperations
 	depends = python2
+	depends = python2-pyclipper
+	depends = python2-fonttools
+	depends = python2-ufolib
 	provides = python2-booleanoperations
 
