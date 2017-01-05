@@ -30,12 +30,7 @@ build() {
   msg2 'Building...'
   ./autogen.sh
   ./configure --prefix=/usr --with-incompatible-bdb --with-gui=no --enable-hardening \
-        --enable-reduce-exports --disable-gui-tests --disable-maintainer-mode \
-        --sbindir=/usr/bin \
-        --libexecdir=/usr/lib/bitcoin \
-        --sysconfdir=/etc \
-        --sharedstatedir=/usr/share/bitcoin \
-        --localstatedir=/var/lib/bitcoin
+        --enable-reduce-exports --disable-gui-tests --disable-maintainer-mode
   make -j$(nproc)
 }
 
@@ -77,8 +72,4 @@ package() {
 
   msg2 'Installing bitcoin-tx...'
   install -Dm755 "$srcdir/bitcoinclassic/src/bitcoin-tx" "$pkgdir/usr/bin/bitcoin-tx"
-
-  msg2 'Cleaning up pkgdir...'
-  find "$pkgdir" -type d -name .git -exec rm -r '{}' +
-  find "$pkgdir" -type f -name .gitignore -exec rm -r '{}' +
 }
