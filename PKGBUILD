@@ -3,13 +3,13 @@
 
 _name=chrome-gnome-shell
 pkgname=$_name-git
-pkgver=7.2.r56.gaa9d96b
+pkgver=8.r0.gdd8f3d4
 pkgrel=1
 pkgdesc="Native connector for integration with extensions.gnome.org"
 arch=('any')
 url="https://wiki.gnome.org/Projects/GnomeShellIntegrationForChrome"
 license=('GPL')
-depends=('gnome-shell' 'python-requests')
+depends=('gnome-shell' 'python-requests' 'python-gobject')
 makedepends=('git' 'cmake' 'jq')
 provides=("$_name")
 replaces=('gs-chrome-connector') # Old name
@@ -19,13 +19,7 @@ md5sums=('SKIP')
 
 pkgver() {
     cd "$srcdir/$_name"
-    
-    # git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
-    _tag=$(git describe --abbrev=0)
-    v=$(grep 'set(PROJECT_VERSION' CMakeLists.txt | cut -d'"' -f2)
-    r="$(git rev-list --count $_tag..HEAD)"
-    h="$(git rev-parse --short HEAD)"
-    printf $v.r$r.g$h
+    git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
 }
 
 prepare() {
