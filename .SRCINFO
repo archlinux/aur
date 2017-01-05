@@ -1,0 +1,20 @@
+pkgbase = fcitx-rime-config-git
+	pkgdesc = GUI config tool for fcitx-rime
+	pkgver = 0.0.0.r24.165646d
+	pkgrel = 1
+	url = https://github.com/xuzhao9/fcitx-rime-config
+	arch = x86_64
+	arch = i686
+	license = GPL
+	makedepends = cmake
+	makedepends = git
+	depends = fcitx-qt4
+	depends = fcitx-rime
+	provides = fcitx-rime-config
+	conflicts = fcitx-rime-config
+	replaces = fcitx-rime-config
+	source = git+https://github.com/xuzhao9/fcitx-rime-config.git
+	sha512sums = SKIP
+
+pkgname = fcitx-rime-config-git
+
