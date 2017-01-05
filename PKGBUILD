@@ -2,7 +2,7 @@
 
 pkgname=private-internet-access-vpn
 pkgver=3.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Installs VPN profiles for Private Internet Access Service"
 arch=('any')
 url="https://www.privateinternetaccess.com/"
@@ -12,6 +12,7 @@ makedepends=('git')
 optdepends=('networkmanager: Enables PIA for Network Manager'
             'connman: Enables PIA for Connman'
             'openvpn: Allows running configurations from command-line')
+			
 sha256sums=('c7c21e690a836fb42adae0addce45ea97a25d12ffd03d9fde04392933c33f36d'
             '1f57eb735141b767f19d653ffa434ffa2d1108c2a5b74fe61c72542056360c77'
             '9d28e1883d5f2e1b017789c051c6377b1e97ed86f72f84f3ca33b15a909947c7'
@@ -23,10 +24,10 @@ sha256sums=('c7c21e690a836fb42adae0addce45ea97a25d12ffd03d9fde04392933c33f36d'
             'SKIP'
             'SKIP')
 
-source=("https://www.privateinternetaccess.com/openvpn/openvpn-ip-lport.zip"
-        "https://www.privateinternetaccess.com/openvpn/openvpn.zip"
-	"https://www.privateinternetaccess.com/openvpn/openvpn-strong.zip"
-	"login-example.conf"
+source=("http://www.privateinternetaccess.com/openvpn/openvpn-ip-lport.zip"
+        "http://www.privateinternetaccess.com/openvpn/openvpn.zip"
+	"http://www.privateinternetaccess.com/openvpn/openvpn-strong.zip"
+        "login-example.conf"
 	"pia-example.conf"
 	"restart.conf"
 	"vpn.sh"
@@ -43,9 +44,9 @@ prepare() {
   cd "${srcdir}"
   
   msg2 "Extracting Certifications..."
+  bsdtar -xf openvpn-ip-lport.zip "*.pem" "*.crt"
   bsdtar -xf openvpn.zip "*.pem" "*.crt"
   bsdtar -xf openvpn-strong.zip "*.pem" "*.crt"
-  bsdtar -xf openvpn-ip-lport.zip "*.pem" "*.crt"
   
   msg2 "Extracting OpenVPN Configurations..."
   mkdir "vpn-configs"
@@ -62,21 +63,22 @@ prepare() {
   done
   
   msg2 "Done."
-
 }
 
 package() {
   cd "${srcdir}"
 
-  install -D -m 644 restart.conf "${pkgdir}/usr/lib/system/openvpn@.service.d/restart.conf"
+  install -D -m 644 restart.conf "${pkgdir}/usr/lib/system/openvpn-client@.service.d/restart.conf"
   install -D -m 755 vpn.sh "${pkgdir}/usr/lib/system/systemd/system-sleep/vpn.sh"
   install -D -m 644 pia.8.gz "${pkgdir}/usr/share/man/man8/pia.8.gz"
 
   
   install -dm755 "${pkgdir}"/etc/{openvpn,private-internet-access}
+  install -g network -dm750 "${pkgdir}"/etc/openvpn/client
+
   install -D -m 644 vpn-hosts.txt "${pkgdir}/etc/private-internet-access"
-  install -D -m 644 *.crt "${pkgdir}/etc/openvpn"
-  install -D -m 644 *.pem "${pkgdir}/etc/openvpn"
+  install -D -g network -m 640 *.crt "${pkgdir}/etc/openvpn/client"
+  install -D -g network -m 640 *.pem "${pkgdir}/etc/openvpn/client"
   install -D -m 644 {pia-example.conf,login-example.conf} "${pkgdir}/etc/private-internet-access/"
 
   install -D -m 755 openvpn-update-resolv-conf/update-resolv-conf.sh "${pkgdir}/etc/openvpn/update-resolv-conf.sh"
