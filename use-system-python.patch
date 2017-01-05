@@ -1,0 +1,16 @@
+diff -Nur A/Tools/linux/setFDKPaths B/Tools/linux/setFDKPaths
+--- A/Tools/linux/setFDKPaths	2015-11-17 16:32:39.000000000 -0500
++++ B/Tools/linux/setFDKPaths	2017-01-04 17:58:32.434288006 -0500
+@@ -1,11 +1,7 @@
+ 
+ AFDKO_EXE_PATH="${cmdDirPath}"
+ 
+-# point to the self-compiled python
+-AFDKO_Python="${cmdDirPath}"/Python/Current/bin/python2.7
+-
+-# uncomment this to point to the system python
+-# AFDKO_Python="/usr/bin/env python"
++AFDKO_Python="/usr/bin/env python2"
+ 
+ AFDKO_Scripts="${AFDKO_EXE_PATH}"/../SharedData/FDKScripts
+ 

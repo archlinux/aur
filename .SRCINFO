@@ -1,0 +1,31 @@
+pkgbase = afdko
+	pkgdesc = Tools used by Adobe font developers for wrapping up PostScript fonts as OpenType/CFF font files
+	pkgver = 2.5.b65322
+	pkgrel = 1
+	url = http://www.adobe.com/devnet/opentype/afdko.html
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = python2
+	depends = python2-booleanoperations
+	depends = python2-brotlipy
+	depends = python2-defcon
+	depends = python2-fontmath
+	depends = python2-fonttools
+	depends = python2-mutatormath
+	depends = python2-robofab
+	depends = python2-ufolib
+	depends = python2-ufonormalizer
+	source = http://download.macromedia.com/pub/developer/opentype/FDK.2.5.65322/FDK-25-LINUX.b65322.zip
+	source = use-system-python.patch
+	source = profile.sh
+	source = profile.csh
+	source = EULA
+	sha256sums = 37ca9490b2c273f621a14d76c3af12826a3d734d06cc75c18e8922ebf6104e8d
+	sha256sums = 37551bc17966f7e9a5d4f75eaa9d791343fc896e5fbdb0f22a98e92d762d00be
+	sha256sums = af0a77eefbf707879d92fb3dfa1579d3e7002b80936633325b97b60d3833e4c2
+	sha256sums = fdc7e7945896963c10d6439828a47ddc1896a8b2cd7eb98dffa409c1a630b200
+	sha256sums = 050181b88f4e1d455091762371d8a988982806be75b8954f55af6094d60905f4
+
+pkgname = afdko
+
