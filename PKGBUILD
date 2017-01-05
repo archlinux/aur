@@ -25,13 +25,12 @@ build() {
 package() {
 	cd "${srcdir}/${_pkgname}/"
 	_kver=$(uname -r)
-	mkdir -p "${pkgdir}/lib/modules/${_kver}/kernel/drivers/net/wireless/r8723bs/"
-	mkdir -p "${pkgdir}/lib/firmware/rtlwifi/" 
-	install -p -m 644 r8723bs.ko "${pkgdir}/lib/modules/${_kver}/kernel/drivers/net/wireless/r8723bs/"
-	install -p -m 644 rtl8723bs_nic.bin "${pkgdir}/lib/firmware/rtlwifi/" 
-        install -p -m 644 rtl8723bs_wowlan.bin "${pkgdir}/lib/firmware/rtlwifi/"
-	install -p -m 644 rtl8723bs_ap_wowlan.bin "${pkgdir}/lib/firmware/rtlwifi/" 
-	install -p -m 644 rtl8723bs_bt.bin "${pkgdir}/lib/firmware/rtlwifi/"
-
+	mkdir -p "${pkgdir}/usr/lib/modules/${_kver}/kernel/drivers/net/wireless/r8723bs/"
+	mkdir -p "${pkgdir}/usr/lib/firmware/rtlwifi/"
+	install -p -m 644 r8723bs.ko "${pkgdir}/usr/lib/modules/${_kver}/kernel/drivers/net/wireless/r8723bs/"
+	install -p -m 644 rtl8723bs_nic.bin "${pkgdir}/usr/lib/firmware/rtlwifi/"
+        install -p -m 644 rtl8723bs_wowlan.bin "${pkgdir}/usr/lib/firmware/rtlwifi/"
+	install -p -m 644 rtl8723bs_ap_wowlan.bin "${pkgdir}/usr/lib/firmware/rtlwifi/"
+	install -p -m 644 rtl8723bs_bt.bin "${pkgdir}/usr/lib/firmware/rtlwifi/"
 }
 
