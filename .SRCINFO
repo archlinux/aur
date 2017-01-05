@@ -2,14 +2,15 @@ pkgbase = perl-mousex-getopt
 	pkgdesc = Organize your Mouse types in libraries
 	pkgver = 0.37
 	pkgrel = 1
-	url = http://search.cpan.org/~GFUJI/MouseX-Getopt-0.34/
+	url = http://search.cpan.org/~GFUJI/MouseX-Getopt-0.37/
 	arch = any
 	license = GPL
 	license = PerlArtistic
 	depends = perl>=5.10.0
+	depends = perl-module-build-tiny
 	options = !emptydirs
-	source = http://cpan.metacpan.org/authors/id/G/GF/GFUJI/MouseX-Getopt-0.37.tar.gz
-  md5sums = 080b1895635b525f2b9792a672b2569e
+	source = https://cpan.metacpan.org/authors/id/G/GF/GFUJI/MouseX-Getopt-0.37.tar.gz
+	md5sums = 080b1895635b525f2b9792a672b2569e
 
 pkgname = perl-mousex-getopt
 

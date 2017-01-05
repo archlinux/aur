@@ -8,7 +8,7 @@ pkgdesc="Organize your Mouse types in libraries"
 arch=('any')
 url="http://search.cpan.org/~$_author/$_perlmod-$pkgver/"
 license=('GPL' 'PerlArtistic')
-depends=('perl>=5.10.0')
+depends=('perl>=5.10.0' 'perl-module-build-tiny')
 options=(!emptydirs)
 source=(https://cpan.metacpan.org/authors/id/G/GF/${_author}/${_perlmod}-${pkgver}.tar.gz)
 md5sums=('080b1895635b525f2b9792a672b2569e')
