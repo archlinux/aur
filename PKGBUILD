@@ -1,6 +1,6 @@
 # Maintainer: gileri <twiked at gmail d(0)t com>
 pkgname=libosmium-git
-pkgver=v2.6.0.r3.ge723fc4
+pkgver=2.10.3.r21.g006aa4ce
 pkgrel=1
 pkgdesc="Fast and flexible C++ library for working with OpenStreetMap data."
 url="http://osmcode.org/libosmium/"
@@ -19,7 +19,7 @@ md5sums=('SKIP')
 
 pkgver() {
   cd libosmium
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --tags --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
