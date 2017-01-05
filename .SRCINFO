@@ -1,6 +1,6 @@
 pkgbase = an2linuxserver-git
 	pkgdesc = Sync android notifications encrypted to a linux desktop with tcp or bluetooth
-	pkgver = r2.32c9bb8
+	pkgver = r6.4c03e19
 	pkgrel = 1
 	url = https://github.com/rootkiwi/an2linuxserver/
 	install = an2linuxserver-git.install
@@ -11,6 +11,7 @@ pkgbase = an2linuxserver-git
 	depends = libnotify
 	depends = python-gobject
 	depends = openssl
+	optdepends = python-pybluez: bluetooth support
 	provides = an2linuxserver
 	conflicts = an2linuxserver
 	source = git+https://github.com/rootkiwi/an2linuxserver.git
