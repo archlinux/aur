@@ -1,0 +1,30 @@
+pkgbase = atom-editor-beta
+	pkgdesc = Hackable text editor for the 21st Century, built using web technologies on the Electron framework - Beta channel.
+	pkgver = 1.13.0.beta10.m0.92.2
+	pkgrel = 1
+	url = https://npm.taobao.org/mirrors/atom
+	install = atom.install
+	arch = x86_64
+	arch = i686
+	license = MIT
+	makedepends = git
+	makedepends = npm
+	depends = alsa-lib
+	depends = gconf
+	depends = gtk2
+	depends = libgnome-keyring
+	depends = libnotify
+	depends = libxtst
+	depends = nodejs-lts-boron
+	depends = nss
+	depends = python2
+	optdepends = gvfs: file deletion support
+	conflicts = atom-editor-beta-bin
+	conflicts = atom-editor-beta-arch
+	source = atom-1.13.0-beta10.tar.gz::https://npm.taobao.org/mirrors/atom/1.13.0-beta10/v1.13.0-beta10.tar.gz
+	source = atom-beta.desktop
+	sha256sums = 9659a82d10ec43d96999c717f8ae503f8257a82821209cc8295c8f4b409bef45
+	sha256sums = c62faaf2f50cddb1a834ccb33c95724076d2859c88baac7d9d676bc9c3afc8c6
+
+pkgname = atom-editor-beta
+

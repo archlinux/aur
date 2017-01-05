@@ -1,0 +1,6 @@
+*.log*
+*.xz
+*.gz
+pkg
+src
+*.png
