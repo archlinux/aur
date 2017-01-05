@@ -1,6 +1,6 @@
 pkgbase = rainbow-icons-git
 	pkgdesc = A customized multi-colour icon theme.
-	pkgver = r230.ad3e79cf
+	pkgver = r231.7962fb4c
 	pkgrel = 1
 	url = https://github.com/0devnull0/rainbow-icons
 	arch = any
