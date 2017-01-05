@@ -2,40 +2,35 @@
 # Contributor: falkTX <falktx at gmail dot com>
 
 pkgname=carla
-pkgver=1.2.4
-pkgrel=4
+pkgver=1.9.7
+pkgrel=1
 pkgdesc="Audio Plugin Host"
 arch=('i686' 'x86_64')
 url="http://kxstudio.sf.net/carla"
 license=('GPL2')
-depends=('fftw' 'fluidsynth' 'liblo' 'libsmf' 'linuxsampler' 'mxml' 'ntk-git' 'python' 'qt4' 'zlib')
-makedepends=('gtk2' 'gtk3' 'pygtk' 'python-pyliblo' 'python-pyqt4' 'python-rdflib' 'qt5-base' 'zynaddsubfx')
+depends=('file' 'fftw' 'fluidsynth' 'glu' 'liblo' 'linuxsampler-svn' 'mxml' 'ntk-git' 'projectm' 'python' 'zlib')
+makedepends=('gtk2' 'gtk3'  'pygtk' 'python-pyliblo' 'python-pyqt4' 'python-pyqt5' 'python-rdflib' 'qt4' 'qt5-base' 'zynaddsubfx')
 optdepends=(
   'gtk2: LV2 GTK2 UI support'
   'gtk3: LV2 GTK3 UI support'
   'pygtk: NekoFilter UI'
-  'python-pyliblo: Carla-Control'
+  'python-pyliblo: OSC support'
   'python-rdflib: LADSPA-RDF support'
-  'qt5-base: LV2 UI support'
+  'qt4: LV2 QT4 UI support'
+  'qt5-base: LV2 QT5 UI support'
   'zynaddsubfx: ZynAddSubFX banks'
 )
-source=("https://downloads.sourceforge.net/project/kxstudio/Releases/${pkgname}/Carla-${pkgver}-src.tar.bz2"
-        "gcc6.patch")
-sha512sums=('bc0fd43cc2237abafc5676d1e0a002d0d85ccdf588d681f6f9e63fd4af99125de2dd31c442ae55b17d2ebfc732dfbeaf238f4cab018e100c2e76df719298fe51'
-            '8d76bc717f10f8bca22391a31d76ab97f46cf6bf586154d472c532863a562c71f79811ff6432e8923e30807b263f2135531216da04e53ae45b355dc339b03c21')
-
-prepare() {
-  cp gcc6.patch Carla-${pkgver}
-  cd "Carla-${pkgver}"
-  patch -Np1 -i ${srcdir}/gcc6.patch
-}
+provides=("${pkgname}")
+conflicts=("${pkgname}-git")
+source=("https://github.com/falkTX/Carla/archive/${pkgver}.tar.gz")
+sha512sums=('f8b7247eace54a49398800a377efa9fb88267d52ccd0297a6fb4b64c04da24ac10260bdfe8ee8f7d15e13928dcc15c3e84a66f7c97c6a11c2bbe0e74b1d60587')
 
 build() {
-  cd "Carla-${pkgver}"
+  cd "${srcdir}/Carla-${pkgver}"
   make
 }
 
 package() {
-  cd "Carla-${pkgver}"
+  cd "${srcdir}/Carla-${pkgver}"
   make DESTDIR="${pkgdir}/" PREFIX=/usr install
 }
