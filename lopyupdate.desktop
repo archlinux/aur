@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Exec=/usr/bin/lopyupdate.sh
+Terminal=false
+Name=PyCom Firmware Update tool
+Comment=Firmware update tool for LoPy and WiPy boards
+GenericName=Firmware updater by PyCom
+Categories=Development;
+StartupNotify=true
