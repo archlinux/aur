@@ -4,7 +4,7 @@
 # Contributor: archtux <antonio.arias99999@gmail.com>
 
 pkgname=ncdc
-pkgver=1.19.1
+pkgver=1.20
 pkgrel=1
 pkgdesc="Modern and lightweight direct connect client with a friendly ncurses interface"
 arch=('i686' 'x86_64' 'arm')
@@ -12,7 +12,7 @@ url="http://dev.yorhel.nl/ncdc"
 license=('MIT')
 depends=('bzip2' 'gnutls' 'ncurses' 'sqlite' 'glib2' 'geoip')
 source=("http://dev.yorhel.nl/download/$pkgname-$pkgver.tar.gz")
-md5sums=('a7d23df7d0e291d1e3c8fb2a9a69f7a9')
+md5sums=('662fbddf17392cdb963d480af1812ae7')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
