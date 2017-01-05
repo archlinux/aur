@@ -5,8 +5,8 @@
 # Maintainer: rubenvb vanboxem <dottie> ruben <attie> gmail <dottie> com
 
 pkgname=djgpp-binutils
-pkgver=2.26
-pkgrel=2
+pkgver=2.27
+pkgrel=1
 pkgdesc="Cross binutils for the djgpp cross-compiler"
 arch=('i686' 'x86_64')
 url="http://www.gnu.org/software/binutils"
@@ -18,14 +18,12 @@ source=(
 	"http://ftp.gnu.org/gnu/binutils/binutils-${pkgver}.tar.bz2"
 	"http://ftp.gnu.org/gnu/binutils/binutils-${pkgver}.tar.bz2.sig"
 	xtors.patch
-	lto.patch
 	lto-discard.patch
 )
 sha512sums=(
-	'e77e1b8dbbcbaf9ac2fae95c4403615808af3be03b2e1d32448cd3a7d32c43273f8bcace3f2de84ec120a982879295673029da306e2885dbf5f990584932cfc7'
+	'cf276f84935312361a2ca077e04d0b469d23a3aed979d8ba5d92ea590904ffb2c2e7ed12cc842822bfc402836be86f479660cef3791aa62f3753d8a1a6f564cb'
 	'SKIP'
 	'd1d1052167e84720a771cd526166997c8a2b14135bb7c1f956d7940cfc2336191825118426cfe4c5fdfd1c8718088c1ba327d90874658baf2738c8d5a7ed0bec'
-	'548b25b48348eafa8087b6c7f592adb90c47622c88d1e2ed56435f6c8265d5a4937e61e0803fb74f509eb90fe847bed1d3e78b3d094e1085f026de2658012434'
 	'85c58eed0fa01fe2295a0c402cb0e2252c00ed38529f679cd9cdd0e1336a192152665b856971114a9a3d1175b72ea71f0e278cf33fd806491c8d184bbd01d2a9'
 )
 validpgpkeys=('EAF1C276A747E9ED86210CBAC3126D3B4AE55E93') # Tristan Gingold <adacore dot com, gingold>
@@ -43,8 +41,6 @@ prepare() {
 
 	# put .ctors and .dtors where they belong
 	patch -Np1 < ../xtors.patch
-	# enable LTO in configure (probably does nothing, but still)
-	patch -Np1 < ../lto.patch
 	# discard LTO sections in coff-go32-exe files
 	patch -Np1 < ../lto-discard.patch
 }
