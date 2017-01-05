@@ -6,13 +6,13 @@ _pkgbase=etlegacy
 pkgbase=etlegacy32
 pkgname=('etlegacy32' 'etlegacy32-mod')
 pkgver=2.75
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 url="http://www.etlegacy.com/"
 license=('GPL3' 'custom')
 makedepends=('cmake' 'zip')
-makedepends_i686=('alsa-lib' 'curl' 'freetype2' 'gcc-libs' 'glew' 'libjpeg-turbo' 'libvorbis' 'sdl2')
-makedepends_x86_64=('lib32-alsa-lib' 'lib32-curl' 'lib32-freetype2' 'lib32-gcc-libs' 'lib32-glew' 'lib32-libjpeg-turbo' 'lib32-libvorbis' 'lib32-sdl2')
+makedepends_i686=('alsa-lib' 'curl' 'freetype2' 'gcc-libs' 'glew' 'libjpeg-turbo' 'libvorbis' 'sdl2' 'minizip' 'openal' 'libtheora')
+makedepends_x86_64=('lib32-alsa-lib' 'lib32-curl' 'lib32-freetype2' 'lib32-gcc-libs' 'lib32-glew' 'lib32-libjpeg-turbo' 'lib32-libvorbis' 'lib32-sdl2' 'lib32-minizip' 'lib32-openal' 'lib32-libtheora')
 source=("https://github.com/etlegacy/etlegacy/archive/v$pkgver.tar.gz"
         "https://www.etlegacy.com/download/file/85")
 sha512sums=('c1c5c5a3b06dadb0353d28e2b39d0151655f3ccc5e246759ffa2ca2cbe1ff35ebd1733df4708249e1229144253ff57c07edc825199faeba10db9231edc052587'
@@ -54,8 +54,8 @@ build() {
 package_etlegacy32() {
     pkgdesc="Wolfenstein: Enemy Territory 2.60b compatible client/server (etlegacy engine, 32 bit)"
     depends=('etlegacy32-mod')
-    depends_i686=('alsa-lib' 'curl' 'freetype2' 'gcc-libs' 'glew' 'libjpeg-turbo' 'libvorbis' 'lua' 'sdl2')
-    depends_x86_64=('lib32-alsa-lib' 'lib32-curl' 'lib32-freetype2' 'lib32-gcc-libs' 'lib32-glew' 'lib32-libjpeg-turbo' 'lib32-libvorbis' 'lib32-lua' 'lib32-sdl2')
+    depends_i686=('alsa-lib' 'curl' 'freetype2' 'gcc-libs' 'glew' 'libjpeg-turbo' 'libvorbis' 'lua' 'sdl2' 'minizip' 'openal' 'libtheora')
+    depends_x86_64=('lib32-alsa-lib' 'lib32-curl' 'lib32-freetype2' 'lib32-gcc-libs' 'lib32-glew' 'lib32-libjpeg-turbo' 'lib32-libvorbis' 'lib32-lua' 'lib32-sdl2' 'lib32-minizip' 'lib32-openal' 'lib32-libtheora')
     provides=('etlegacy')
     conflicts=('etlegacy')
     backup=('etc/xdg/etlegacy/etmain/etl_server.cfg'
