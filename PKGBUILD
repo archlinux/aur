@@ -1,22 +1,20 @@
 # Maintainer: William Turner <willtur.will@gmail.com> 
 pkgname=afdko
 pkgver=2.5.b65322
-pkgrel=1
+pkgrel=2
 pkgdesc='Tools used by Adobe font developers for wrapping up PostScript fonts as OpenType/CFF font files'
 arch=('i686' 'x86_64')
 url='http://www.adobe.com/devnet/opentype/afdko.html'
 license=('custom')
 depends=('python2'
-         'python2-booleanoperations'
-	 'python2-brotlipy'
+	 'python2-fonttools'
+	 'python2-booleanoperations'
 	 'python2-defcon'
 	 'python2-fontmath'
-	 'python2-fonttools'
 	 'python2-mutatormath'
 	 'python2-robofab'
-	 'python2-ufolib'
 	 'python2-ufonormalizer')
-source=("http://download.macromedia.com/pub/developer/opentype/FDK.2.5.${pkgver##*.b}/FDK-25-LINUX.${pkgver##*.}.zip"
+source=("http://download.macromedia.com/pub/developer/opentype/FDK.${pkgver}/FDK-25-LINUX.${pkgver##*.}.zip"
         'use-system-python.patch'
 	'profile.sh'
 	'profile.csh'
