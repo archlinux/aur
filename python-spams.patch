@@ -19,8 +19,8 @@ diff -Naur trunka/swig/python/mkpy trunk/swig/python/mkpy
  
 -INC="-I. -Ispams/linalg -Ispams/prox -Ispams/decomp -Ispams/dictLearn -I/usr/include/python2.7/"
 -INC_PYTHON=-I/usr/include/python2.6
-+INC="-I. -Ispams/linalg -Ispams/prox -Ispams/decomp -Ispams/dictLearn -I/usr/include/python3.5m/"
-+INC_PYTHON=-I/usr/include/python3.5m
++INC_PYTHON=$(python -c "from distutils.sysconfig import get_python_inc; print('-I'+get_python_inc())")
++INC="-I. -Ispams/linalg -Ispams/prox -Ispams/decomp -Ispams/dictLearn ${INC_PYTHON}"
  XCCFLAGS=""
  XLINKFLAGS=""
  # on MacOS, use following definition instead.
@@ -90,12 +90,19 @@ diff -Naur trunka/swig/python/py_typemaps.i trunk/swig/python/py_typemaps.i
 diff -Naur trunka/swig/python/setup.py.in trunk/swig/python/setup.py.in
 --- trunka/swig/python/setup.py.in	2016-04-24 08:33:27.342411134 -0500
 +++ trunk/swig/python/setup.py.in	2016-04-24 08:34:03.125869367 -0500
-@@ -7,7 +7,7 @@
+@@ -1,13 +1,14 @@
+ import os
+ #os.environ['DISTUTILS_DEBUG'] = "1"
+ from distutils.core import setup, Extension
++from distutils.sysconfig import get_python_inc
+ import distutils.util
+ import numpy
+
  # includes numpy : package numpy.distutils , numpy.get_include()
  # python setup.py build --inplace
  # python setup.py install --prefix=dist, 
 -incs = ['.'] + map(lambda x: os.path.join('spams',x),[ 'linalg', 'prox', 'decomp', 'dictLearn']) + [numpy.get_include()] + ['/usr/include/python2.7/']
-+incs = ['.'] + [os.path.join('spams',x) for x in [ 'linalg', 'prox', 'decomp', 'dictLearn']] + [numpy.get_include()] + ['/usr/include/python3.5m/']
++incs = ['.'] + [os.path.join('spams',x) for x in [ 'linalg', 'prox', 'decomp', 'dictLearn']] + [numpy.get_include()] + [get_python_inc()]
  
  osname = distutils.util.get_platform()
  cc_flags = ['-fPIC', '-fopenmp']
