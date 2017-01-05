@@ -1,0 +1,75 @@
+--- k9copy/CMakeLists.txt.orig	2014-10-16 12:58:20.000000000 +0100
++++ k9copy/CMakeLists.txt	2015-05-28 19:42:03.942426473 +0100
+@@ -58,11 +58,11 @@ INCLUDE(CMakeDetermineSystem)
+ INCLUDE(CheckIncludeFiles)
+ INCLUDE(FindLibMpeg2)
+ INCLUDE(FindXine)
+-#INCLUDE(FindAvcodec)
++INCLUDE(FindAvcodec)
+ INCLUDE(FindAvformat)
+ #INCLUDE(FindAvutil)
+ INCLUDE(FindFFmpegScale)
+-#INCLUDE(FindLibDvdread)
++INCLUDE(FindLibDvdread)
+ 
+ # usage: CHECK_INCLUDE_FILES (<header> <RESULT_VARIABLE> )
+ CHECK_INCLUDE_FILES(inttypes.h      HAVE_INTTYPES_H)                    # inttypes.h
+@@ -102,17 +102,17 @@ ELSE (LIBDL_LIBRARY)
+   FIND_LIBRARY(LIBDL_LIBRARY NAMES "c" PATHS )
+   MESSAGE(STATUS "Found library libc: ${LIBDL_LIBRARY}")
+ ENDIF (LIBDL_LIBRARY)
+-#FINDLIBDVDREAD("dvdread/ifo_types.h" "dvdread")
++FINDLIBDVDREAD("dvdread/ifo_types.h" "dvdread")
+ 
+ 
+-#FINDAVFORMAT("avformat")
+-#FINDAVCODEC("avcodec")
++FINDAVFORMAT("avformat")
++FINDAVCODEC("avcodec")
+ #FINDAVUTIL("avutil")
+ 
+ add_definitions( -D__STDC_LIMIT_MACROS -D__STDC_CONSTANT_MACROS)
+-add_subdirectory( src/libdvdnav-NOW) #from dvdnav
+-add_subdirectory( src/libdvdnav-NOW/dvdnav)
+-add_subdirectory( src/libdvdnav-NOW/vm)
++#add_subdirectory( src/libdvdnav-NOW) #from dvdnav
++#add_subdirectory( src/libdvdnav-NOW/dvdnav)
++#add_subdirectory( src/libdvdnav-NOW/vm)
+ add_subdirectory( src/core )
+ add_subdirectory( src/mpeg2)
+ add_subdirectory(src/vamps)
+@@ -127,7 +127,7 @@ add_subdirectory(po)
+ add_subdirectory(doc)
+ 
+ include_directories(
+- ${CMAKE_CURRENT_SOURCE_DIR}/src/libdvdnav-NOW #from dvdnav
++ #${CMAKE_CURRENT_SOURCE_DIR}/src/libdvdnav-NOW #from dvdnav
+  ${CMAKE_CURRENT_SOURCE_DIR}/src/devices
+  ${CMAKE_CURRENT_SOURCE_DIR}/src/core
+  ${CMAKE_CURRENT_SOURCE_DIR}/src/vamps
+@@ -139,10 +139,10 @@ include_directories(
+  ${CMAKE_CURRENT_SOURCE_DIR}/src/import
+  ${CMAKE_CURRENT_SOURCE_DIR}/src/player
+  ${CMAKE_CURRENT_SOURCE_DIR}/src/subtitles
+- ${CMAKE_CURRENT_SOURCE_DIR}/src/libdvdread-NOW #from dvdread
++# ${CMAKE_CURRENT_SOURCE_DIR}/src/libdvdread-NOW #from dvdread
+  ${CMAKE_CURRENT_SOURCE_DIR}/src/batch
+ ${KDE4_INCLUDES} ${QT_INCLUDES}
+-#${LIBDVDREAD_INCLUDE_DIR}/dvdread
++${LIBDVDREAD_INCLUDE_DIR}/dvdread
+  ${AVCODEC_INCLUDE_DIR}
+  ${AVFORMAT_INCLUDE_DIR}
+  ${AVUTIL_INCLUDE_DIR}
+@@ -490,9 +490,9 @@ set (k9xineplayer_SRCS
+ )
+ 
+ 
+-add_library(dvdread STATIC ${dvdread_SRCS})
+-add_library(dvdnav STATIC ${libdvdnav_SRCS})
+-target_link_libraries(dvdnav dvdread) 
++#add_library(dvdread STATIC ${dvdread_SRCS})
++#add_library(dvdnav STATIC ${libdvdnav_SRCS})
++#target_link_libraries(dvdnav dvdread) 
+ set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -std=gnu99")
+ if(QT5_BUILD)
+ message("Qt5 Version")

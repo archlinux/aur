@@ -1,0 +1,23 @@
+--- k9copy.orig/k9copy_assistant.desktop	2014-09-29 16:00:12.000000000 +0100
++++ k9copy/k9copy_assistant.desktop	2015-05-28 20:08:49.318602109 +0100
+@@ -14,9 +14,8 @@ GenericName[fr]=Backup de DVD Video
+ GenericName[tr]=DVD Vidyo Yedekleme Aracı
+ GenericName[ru]=Копирование с видео-DVD
+ GenericName[uk]=Копіювання відео-DVD
+-MimeTypes=
+ Terminal=false
+ Icon=k9copy
+ X-DocPath=k9copy/index.html
+ Categories=Qt;KDE;AudioVideo;DiscBurning;
+-X-KDE-StartupNotify=true
+\ No newline at end of file
++X-KDE-StartupNotify=true
+--- k9copy.orig/k9copy_assistant_open.desktop	2014-09-29 16:00:12.000000000 +0100
++++ k9copy/k9copy_assistant_open.desktop	2015-05-28 20:06:11.140619453 +0100
+@@ -11,4 +11,4 @@ NAme[uk]=Копіювати за доп�
+ [Desktop Entry]
+ X-KDE-Solid-Predicate=[[ StorageVolume.ignored == false AND OpticalDisc.availableContent == 'Data|VideoDvd' ] OR [ StorageVolume.ignored == false AND OpticalDisc.availableContent == 'Data|VideoDvd' ]]
+ Type=Service
+-Actions=open;
+\ No newline at end of file
++Actions=open;

@@ -1,0 +1,14 @@
+--- ./CMakeLists.txt.orig	2016-02-05 15:50:14.211451406 +0000
++++ ./CMakeLists.txt	2016-02-05 15:57:27.209837865 +0000
+@@ -1,9 +1,10 @@
++cmake_minimum_required(VERSION 3.1)
+ project(k9copy)
+ set (VERSION 3.0.3)
+ 
+ # where to look first for cmake modules, before ${CMAKE_ROOT}/Modules/ is checked
+ 
+-option(QT5_BUILD "Build with Qt5/KF5" OFF) 
++option(QT5_BUILD "Build with Qt5/KF5" ON) 
+ #Options ON or OFF OFF=QT4
+ 
+ if(QT5_BUILD)			#With above Setting this corresponds to my check of:     #if QT_VERSION >= 0x050000 

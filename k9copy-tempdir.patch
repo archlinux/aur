@@ -1,0 +1,63 @@
+--- src/core/k9tools.cpp.org	2014-09-29 17:00:12.000000000 +0200
++++ src/core/k9tools.cpp	2015-12-19 19:18:40.474442195 +0100
+@@ -48,7 +48,7 @@
+ const QString  k9Tools::getTempPath() {
+ QString sPath;
+ 
+-sPath=QString("%1/%2/").arg(QDir::tempPath() + '/' + "k9copy/");
++sPath=QString("%1/%2/").arg(QDir::tempPath(),"k9copy/");
+ 
+ return sPath;
+ }
+--- src/vamps/k9fifo.cpp.org	2014-09-29 17:00:12.000000000 +0200
++++ src/vamps/k9fifo.cpp	2015-12-19 19:04:18.616261661 +0100
+@@ -11,6 +11,8 @@
+ //
+ #include "k9fifo.h"
+ #include <QDir>
++#include <errno.h>
++#include <KDebug>
+ 
+ uint64_t k9MemoryFifo::count() {
+ 	return m_count;
+@@ -134,12 +136,19 @@
+      m_wait.wait(&m_mutex);
+    }
+    m_wfile->seek(m_fstart);
+-   m_wfile->write((const char*)_buffer,_size);
++   int rc=m_wfile->write((const char*)_buffer,_size) ;
++   if (rc != (int) _size) {
++	kFatal() << QString("error writing to tempfile (%1)").arg(strerror (errno));
++	abort();
++   }
+    m_fstart=m_wfile->pos();
+    if (m_fstart > MAX_FILE_SIZE) {
+         m_wfile=new QTemporaryFile(QDir::cleanPath(m_output +"/k9b"));
+         m_wfile->setAutoRemove(true);
+-	m_wfile->open();
++	if(m_wfile->open() == false) {
++		kFatal() << QString("error creating tempfile in %1 (%1)").arg(QDir::cleanPath(m_output +"/k9b"), strerror (errno));
++		abort();
++	}
+ 	m_queue.enqueue(m_wfile);
+   	m_fstart=0;
+    }
+@@ -190,12 +199,17 @@
+ 	if (m_rfile) {
+           m_rfile->close();
+           delete m_rfile;
++	  m_rfile=NULL;
+         }
+ 	qDeleteAll(m_queue);
+ 
++
+ 	m_fstart=m_fend=0;
+         m_rfile=new QTemporaryFile(QDir::cleanPath(m_output +"/k9b"));
+         m_rfile->setAutoRemove(true);
+-	m_rfile->open();
++	if(m_rfile->open() == false) {
++		kFatal() << QString("error creating tempfile in %1 (%1)").arg(QDir::cleanPath(m_output +"/k9b"), strerror (errno));
++		abort();
++	}
+ 	m_start=m_end=0;
+ }

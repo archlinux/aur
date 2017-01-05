@@ -1,0 +1,74 @@
+--- k9copy/src/core/k9tools.cpp.orig	2016-07-04 03:37:07.537698816 +0100
++++ k9copy/src/core/k9tools.cpp	2016-07-04 03:37:15.044797764 +0100
+@@ -88,7 +88,7 @@ bool k9Tools::checkProgram(QString _prog
+     #if QT_VERSION >= 0x050000
+     bool res=QStandardPaths::findExecutable( _progName) !=NULL ;
+     #else // Qt4 Code
+-    bool res= KStandardDirs::findExe( _progName,NULL,false) !=NULL ;
++    bool res= KStandardDirs::findExe( _progName,NULL,0) !=NULL ;
+     #endif
+     if (_msg && !res)
+         k9Dialogs::error(i18n("Error starting program %1").arg(_progName),i18n("Running program"));
+--- k9copy/src/backup/k9dvdbackup.cpp.orig	2016-07-04 03:45:28.518294176 +0100
++++ k9copy/src/backup/k9dvdbackup.cpp	2016-07-04 03:48:20.856559514 +0100
+@@ -33,6 +33,7 @@
+ #include <stdarg.h>
+ #include <errno.h>
+ #include <string.h>
++#include <math.h>
+ #include <qdir.h>
+ 
+ #include <kmessagebox.h>
+@@ -907,7 +908,8 @@ k9Vobu * k9DVDBackup::remapOffset(uint32
+ 
+ 
+         if ((vobu1 !=NULL) && (vobu2!=NULL)) {
+-            *_offset = abs(vobu1->newSector - vobu2->newSector)  | maskOffset1 ;
++            *_offset = fabs(vobu1->newSector - vobu2->newSector);
++            *_offset |= maskOffset1;
+             *_offset |= maskOffset2;
+             return vobu2;
+         }
+--- k9copy/src/import/k9avidecode.cpp.orig	2016-07-04 03:53:55.963959712 +0100
++++ k9copy/src/import/k9avidecode.cpp	2016-07-04 04:09:58.766458043 +0100
+@@ -26,7 +26,6 @@ static int sws_flags = SWS_BICUBIC;
+ void av_free_packet_internal(AVPacket *pkt)
+ {
+     if (pkt) {
+-        if (pkt->destruct) pkt->destruct(pkt);
+         pkt->data = NULL; pkt->size = 0;
+     }
+ }
+@@ -238,14 +237,14 @@ bool k9AviDecode::open(const QString & _
+ 
+     int numBytes;
+ // Determine required buffer size and allocate buffer
+-    numBytes=avpicture_get_size(PIX_FMT_RGB24, m_CodecCtx->width,
++    numBytes=avpicture_get_size(AV_PIX_FMT_RGB24, m_CodecCtx->width,
+                                 m_CodecCtx->height);
+     m_buffer=(uint8_t *)av_malloc(numBytes*sizeof(uint8_t));
+ 
+ // Assign appropriate parts of buffer to image planes in pFrameRGB
+ // Note that pFrameRGB is an AVFrame, but AVFrame is a superset
+ // of AVPicture
+-    avpicture_fill((AVPicture *)m_FrameRGB, m_buffer, PIX_FMT_RGB24,
++    avpicture_fill((AVPicture *)m_FrameRGB, m_buffer, AV_PIX_FMT_RGB24,
+                    m_CodecCtx->width, m_CodecCtx->height);
+ 
+  
+@@ -317,13 +316,13 @@ void k9AviDecode::readFrame(double _seco
+                     bFound=true;
+ #ifndef HAVE_SWSCALE
+                   // Convert the image from its native format to RGB
+-                    img_convert((AVPicture *)m_FrameRGB, PIX_FMT_RGB24,
++                    img_convert((AVPicture *)m_FrameRGB, AV_PIX_FMT_RGB24,
+                                 (AVPicture*)m_Frame, m_CodecCtx->pix_fmt,
+                                 m_CodecCtx->width, m_CodecCtx->height);
+                     SaveFrame(m_FrameRGB, m_CodecCtx->width,
+                               m_CodecCtx->height);
+ #else
+-		    toRGB_convert_ctx=sws_getContext(m_CodecCtx->width, m_CodecCtx->height, m_CodecCtx->pix_fmt, m_CodecCtx->width, m_CodecCtx->height, PIX_FMT_RGB24, sws_flags,NULL,NULL,NULL);
++		    toRGB_convert_ctx=sws_getContext(m_CodecCtx->width, m_CodecCtx->height, m_CodecCtx->pix_fmt, m_CodecCtx->width, m_CodecCtx->height, AV_PIX_FMT_RGB24, sws_flags,NULL,NULL,NULL);
+         		   sws_scale(toRGB_convert_ctx, m_Frame->data, m_Frame->linesize, 0, m_CodecCtx->height, m_FrameRGB->data,m_FrameRGB->linesize);
+                     // convert frame to QImage
+                     SaveFrame(m_FrameRGB, m_CodecCtx->width,
