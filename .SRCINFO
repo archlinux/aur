@@ -1,4 +1,4 @@
-pkgbase = atom-editor-beta
+pkgbase = atom-editor-beta-mirror
 	pkgdesc = Hackable text editor for the 21st Century, built using web technologies on the Electron framework - Beta channel.
 	pkgver = 1.13.0.beta10.m0.92.2
 	pkgrel = 1
@@ -26,5 +26,5 @@ pkgbase = atom-editor-beta
 	sha256sums = 9659a82d10ec43d96999c717f8ae503f8257a82821209cc8295c8f4b409bef45
 	sha256sums = c62faaf2f50cddb1a834ccb33c95724076d2859c88baac7d9d676bc9c3afc8c6
 
-pkgname = atom-editor-beta
+pkgname = atom-editor-beta-mirror
 

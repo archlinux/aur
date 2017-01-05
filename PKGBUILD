@@ -1,8 +1,6 @@
-# Maintainer: Brenton Horne <brentonhorne77 at gmail dot com>
-# Contributor: Matheus de Alcantara <matheus.de.alcantara@gmail.com>
-
 _pkgname=atom
 _version=beta
+_mirror=mirror
 
 # Versions
 _fus_url="https://github.com/fusion809"
@@ -15,7 +13,7 @@ _language_unix_shell_ver=0.40.1
 _language_vala_modern_ver=0.3.2
 _terminal_fusion_ver=2.4.3
 
-pkgname=${_pkgname}-editor-${_version}
+pkgname=${_pkgname}-editor-${_version}-${_mirror}
 _pkgrel=10
 _pkgver=1.13.0
 pkgver="${_pkgver}.beta${_pkgrel}.m${_language_gfm2_ver}"
