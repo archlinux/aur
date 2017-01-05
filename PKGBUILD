@@ -3,12 +3,17 @@
 pkgname=xfce4-indicator-plugin
 _maj=2.3
 pkgver=$_maj.3
-pkgrel=2
+pkgrel=3
 pkgdesc="Plugin to display information from applications in the Xfce4 panel"
 arch=('i686' 'x86_64')
 url="http://goodies.xfce.org/projects/panel-plugins/$pkgname"
 license=('GPL')
-depends=('xfce4-panel' 'libindicator-gtk2' 'libindicator-gtk3' 'hicolor-icon-theme' 'xdg-utils')
+depends=('hicolor-icon-theme'
+         'ido'
+         'libindicator-gtk2'
+         'libindicator-gtk3'
+         'xfce4-panel'
+         'xdg-utils')
 makedepends=('intltool' 'xfce4-dev-tools')
 optdepends=('indicator-application-gtk2: take menus from applications and place them in the panel'
             'indicator-sound: unified sound menu')
