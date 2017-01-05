@@ -2,8 +2,7 @@
 pkgname=r8723bs-git
 _pkgname=r8723bs
 pkgver=b3def82d8cbd0e7011bfaa6b70cd74725863e833
-pkgrel=1
-pkgdesc="Realtek R8723BS WIFI driver for RTL8723BS working on baytrail tablets - alternate to 8723bs"
+pkgrel=2
 url="http://www.realtek.com.tw/"
 provides=('r8723bs')
 arch=('any')
