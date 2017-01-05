@@ -1,0 +1,21 @@
+pkgbase = mega-sdk
+	pkgdesc = Official mega.nz SDK
+	pkgver = 2.8.0
+	pkgrel = 1
+	url = https://github.com/meganz/sdk
+	arch = i686
+	arch = x86_64
+	license = BSD-2-Clause
+	depends = curl
+	depends = c-ares
+	depends = openssl
+	depends = crypto++
+	depends = zlib
+	depends = sqlite
+	depends = freeimage
+	depends = libsodium
+	source = https://github.com/meganz/sdk/archive/v2.8.0.tar.gz
+	md5sums = b1a59b30fc7d6d99bde439a7d12a07e6
+
+pkgname = mega-sdk
+
