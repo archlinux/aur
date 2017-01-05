@@ -1,6 +1,6 @@
 pkgbase = btrfs-progs-git
 	pkgdesc = Btrfs filesystem utilities
-	pkgver = 4.0.1_r70_g6044757
+	pkgver = 4.9_r6_gb74d9a3c
 	pkgrel = 1
 	url = http://btrfs.wiki.kernel.org/index.php/Main_Page
 	arch = i686
