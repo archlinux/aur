@@ -4,17 +4,17 @@
 
 _name=twmn
 pkgname="${_name}-git"
-pkgver=171.6660f7e
-pkgrel=2
+pkgver=179.5d1d555
+pkgrel=1
 pkgdesc="A notification system for tiling window managers"
 arch=('any')
-url="https://github.com/cyrozap/twmn"
+url="https://github.com/sboli/twmn"
 license=('LGPL3')
 provides=('notification-daemon')
 depends=('qt5-base' 'qt5-x11extras' 'boost-libs>=1.46' 'libxext' 'libxkbcommon-x11')
 makedepends=('git' 'pkg-config' 'boost>=1.46')
 conflicts=('twmn')
-source=("${_name}::git+https://github.com/cyrozap/${_name}.git")
+source=("${_name}::git+https://github.com/sboli/${_name}.git")
 sha256sums=('SKIP')
 
 pkgver() {
