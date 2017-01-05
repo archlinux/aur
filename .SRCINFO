@@ -1,5 +1,5 @@
 pkgbase = atom-editor-beta-mirror
-	pkgdesc = Hackable text editor for the 21st Century, built using web technologies on the Electron framework - Beta channel.
+	pkgdesc = Hackable text editor atom-editor-beta use source mirror in China.
 	pkgver = 1.13.0.beta10.m0.92.2
 	pkgrel = 1
 	url = https://npm.taobao.org/mirrors/atom
