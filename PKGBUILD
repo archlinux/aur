@@ -3,7 +3,7 @@
 pkgname=bitcoin-classic-daemon
 pkgver=1.2.0
 pkgrel=1
-pkgdesc='Bitcoin Classic with bitcoind, bitcoin-cli, bitcoin-tx, and bitcoin-qt'
+pkgdesc='Bitcoin Classic with bitcoind, bitcoin-tx, and bitcoin-cli'
 arch=('i686' 'x86_64')
 url="https://bitcoinclassic.com/"
 license=('MIT')
