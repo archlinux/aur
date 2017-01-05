@@ -1,7 +1,7 @@
 # Maintainer:  <gucong43216@gmail.com>
 
 pkgname=ospray
-pkgver=1.1.1
+pkgver=1.1.2
 pkgrel=4
 pkgdesc="A Ray Tracing Based Rendering Engine for High-Fidelity Visualization"
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ license=('Apache')
 depends=('qt4>=4.6' 'ispc' 'intel-tbb' 'embree-isa' 'freeglut' 'glu' 'imagemagick')
 makedepends=('cmake')
 source=("https://github.com/ospray/OSPRay/archive/v$pkgver.tar.gz")
-md5sums=('9185e6de4cf12faa971e2cc1f5757b81')
+md5sums=('9cd174cac9c0b8509b44bf4d465f87ad')
 
 
 prepare() {
