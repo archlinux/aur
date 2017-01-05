@@ -1,0 +1,17 @@
+pkgbase = python2-robofab
+	pkgdesc = Tools to manipulate font sources.
+	pkgver = 1.2.1
+	pkgrel = 1
+	url = http://robofab.com/
+	arch = any
+	license = BSD
+	makedepends = python2-setuptools
+	depends = python2
+	depends = python2-numpy
+	depends = python2-fonttools
+	options = !emptydirs
+	source = https://files.pythonhosted.org/packages/source/r/robofab/robofab-1.2.1.tar.gz
+	sha256sums = ab4e4d734eba0cfa758011a5d9b050db56898fc16804d99bf5c3e487c4a36e09
+
+pkgname = python2-robofab
+
