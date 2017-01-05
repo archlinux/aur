@@ -35,5 +35,5 @@ build () {
 
 package () {
     cd pbpst
-    make DESTDIR="${pkgdir}" PREFIX='/usr' install
+    make DESTDIR="${pkgdir}" install
 }
