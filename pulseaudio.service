@@ -1,0 +1,7 @@
+[Service]
+User=pulse
+Type=notify
+ExecStart=/usr/bin/pulseaudio --daemonize=no
+Restart=on-failure
+[Install]
+WantedBy=multi-user.target
