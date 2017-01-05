@@ -1,0 +1,23 @@
+pkgbase = perl-json-rpc-common
+	pkgdesc = Perl module provide transport agnostic JSON RPC helper objects
+	pkgver = 0.11
+	pkgrel = 1
+	url = https://metacpan.org/pod/JSON::RPC::Common
+	arch = any
+	license = PerlArtistic
+	depends = perl>=5.6.2
+	depends = perl-class-load
+	depends = perl-http-message
+	depends = perl-json
+	depends = perl-moose
+	depends = perl-moosex-types
+	depends = perl-mro-compat
+	depends = perl-namespace-clean
+	depends = perl-try-tiny
+	depends = perl-uri
+	options = !emptydirs
+	source = https://cpan.metacpan.org/authors/id/D/DM/DMCBRIDE/JSON-RPC-Common-0.11.tar.gz
+	md5sums = ebb140b4b0b1936e76da04f3d8be998e
+
+pkgname = perl-json-rpc-common
+
