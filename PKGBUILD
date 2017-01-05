@@ -3,11 +3,11 @@
 # Submitter: Fredrik Tegenfeldt <fredrik.tegenfeldt@unige.ch>
 
 pkgname=slurm-llnl-git
-pkgver=17.02.0.0pre2.r538.g8e7b7db
+pkgver=17.02.0.0pre2.r683.g4589be047d
 pkgrel=1
 pkgdesc="Simple Linux Utility for Resource Management (development version)"
 arch=('i686' 'x86_64')
-url="http://www.schedmd.com"
+url="https://www.schedmd.com"
 license=('GPL')
 depends=('munge')
 optdepends=("hwloc: enables the task/cgroup plugin"
@@ -59,7 +59,7 @@ build() {
 	# Optional Slurm plugins will be built automatically when the configure script
 	# detects that the required build requirements are present.
 	#
-	# Read http://slurm.schedmd.com/quickstart_admin.html for more information
+	# Read https://slurm.schedmd.com/quickstart_admin.html for more information
 
 	./autogen.sh
 	./configure \
