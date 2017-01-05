@@ -15,7 +15,7 @@ source=("${pkgname%-*}-${pkgver}-x64.tar.gz::http://download.onlyoffice.com/inst
         "${pkgname%-*}.desktop")
 noextract=("${pkgname%-*}-${pkgver}-x64.tar.gz")
 sha256sums=('1f0bfbe706da15795c23255da4e1c8fcba555ffa207ad5d30d0a4e47158a90dd'
-            'f9b7774180324c475d6044a7f75315bac8d85069858430d9374307b3177dea4c')
+            '4d26e775fba828e7c39fcd088c76bc03dfbf82e53b122863b122905ab027fa66')
 
 #PKGEXT=".pkg.tar"
 
