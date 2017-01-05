@@ -1,6 +1,6 @@
 Pi-hole Archlinux configuration instructions
 Server version
-rev. 0.5
+rev. 0.6
 
 Pi-Hole Web server admin page: http://<server-ip>/admin
 It is possible to add custom ad-list server in /etc/pihole/adlists.list
@@ -51,11 +51,11 @@ B) Upgrade steps
 
     1) update dnsmasq conf file
 
-    # [ -f /etc/dnsmasq.orig ] && cp /etc/pihole/configs/dnsmasq.complete /etc/dnsmasq.conf
+    # [ -f /etc/dnsmasq.orig ] && cp /etc/pihole/configs/dnsmasq.main /etc/dnsmasq.conf
 
     2) update lighttpd conf file
 
-    # [ -f /etc/lighttpd/lighttpd.conf ] && cp /etc/pihole/configs/lighttpd.conf /etc/lighttpd/lighttpd.conf
+    # [ -f /etc/lighttpd/lighttpd.orig ] && cp /etc/pihole/configs/lighttpd.conf /etc/lighttpd/lighttpd.conf
 
     3) manage and restart dnsmasq and lighttpd service
 
