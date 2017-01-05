@@ -1,9 +1,10 @@
 # Maintainer: M0Rf30
 # Contributor: Mikael Eriksson <mikael_eriksson@miffe.org>
 # Original PKGBUILD by Sean Streeter <anubis2591 at gmail dot com>
+
 pkgname=skulltag
 pkgver=098d
-pkgrel=4
+pkgrel=5
 pkgdesc="Closed source OpenGL ZDoom port with Client/Server multiplayer."
 arch=('i686' 'x86_64')
 url="http://skulltag.net/"
@@ -12,26 +13,11 @@ depends=('sdl' 'gtk2' 'libjpeg6')
 optdepends=('timidity++: midi support'
             'freedoom: free IWAD')
 install=skulltag.install
-
-case "$CARCH" in
-  i686)
-    source=("http://skulltag.com/download/files/release/st-v${pkgver}_linux-base.tar.bz2"
-            "http://skulltag.com/download/files/release/st-v${pkgver}_linux-x86.tar.bz2"
-            "http://www.fmod.org/download/fmodex/api/Linux/fmodapi42416linux.tar.gz")
-    md5sums=('afe482e04ce3f51c94915e07c3aff3b0'
-             'faa005fc5b44da424d87d6a17eaafccb'
-             '00b157e8d09d539b0a7023c48b71422a')
-    ;;
-  x86_64)
-    source=("http://skulltag.com/download/files/release/st-v${pkgver}_linux-base.tar.bz2"
-           "http://skulltag.com/download/files/release/st-v${pkgver}_linux-x86_64.tar.bz2"
-           "http://www.fmod.org/download/fmodex/api/Linux/fmodapi42416linux64.tar.gz")
-    depends=(${depends[@]} libpng12)
-    md5sums=('afe482e04ce3f51c94915e07c3aff3b0'
-             '46e677cc851698ac101d42b6140b6047'
-             '70b2a6a2618ee9823ab564b4e945c885')
-    ;;
-esac
+source=("http://skulltag.com/download/files/release/st-v${pkgver}_linux-base.tar.bz2")
+source_i686=("http://skulltag.com/download/files/release/st-v${pkgver}_linux-x86.tar.bz2"
+            "http://zandronum.com/essentials/fmod/fmodapi42416linux.tar.gz")
+source_x86_64=("http://skulltag.com/download/files/release/st-v${pkgver}_linux-x86_64.tar.bz2"
+            "http://zandronum.com/essentials/fmod/fmodapi42416linux64.tar.gz")
 
 package() {
   cd $srcdir
@@ -72,4 +58,8 @@ EOF
   esac
 }
 
-# vim:set ts=2 sw=2 et:
+md5sums=('afe482e04ce3f51c94915e07c3aff3b0')
+md5sums_i686=('faa005fc5b44da424d87d6a17eaafccb'
+              '00b157e8d09d539b0a7023c48b71422a')
+md5sums_x86_64=('46e677cc851698ac101d42b6140b6047'
+                '70b2a6a2618ee9823ab564b4e945c885')
