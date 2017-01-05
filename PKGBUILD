@@ -3,13 +3,13 @@
 # Contributor: Marq Schneider <queueRAM@gmail.com>
 
 pkgname=kicad-git
-pkgver=r7336.86dcfeb
+pkgver=r7432.50cdd5cdf
 pkgrel=1
 pkgdesc="Electronic schematic and printed circuit board (PCB) design tools"
 arch=('i686' 'x86_64')
 url="http://kicad-pcb.org/"
 license=('GPL')
-depends=('glew' 'wxgtk' 'desktop-file-utils' 'boost-libs' 'python' 'glm' 'curl')
+depends=('glew' 'wxgtk' 'desktop-file-utils' 'boost-libs' 'python' 'glm' 'curl' 'swig' 'wxpython')
 makedepends=('cmake' 'git' 'zlib' 'mesa' 'boost')
 optdepends=('kicad-library: for footprints')
 conflicts=('kicad' 'kicad-bzr')
@@ -27,11 +27,12 @@ build() {
   cd "${srcdir}/${pkgname}"
   mkdir -p build/Release
   cd build/Release
-  # -DKICAD_SCRIPTING=ON -DKICAD_SCRIPTING_MODULES=ON ?
-  # -DKICAD_SCRIPTING_WXPYTHON=ON ?
   cmake ../.. -DCMAKE_BUILD_TYPE=Release \
               -DCMAKE_INSTALL_PREFIX=/usr \
-              -DBUILD_GITHUB_PLUGIN=ON
+              -DBUILD_GITHUB_PLUGIN=ON \
+              -DKICAD_SCRIPTING=ON \
+              -DKICAD_SCRIPTING_MODULES=ON \
+              -DKICAD_SCRIPTING_WXPYTHON=ON
   make #-j1
 }
 
