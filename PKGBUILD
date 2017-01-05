@@ -32,7 +32,9 @@ build() {
               -DBUILD_GITHUB_PLUGIN=ON \
               -DKICAD_SCRIPTING=ON \
               -DKICAD_SCRIPTING_MODULES=ON \
-              -DKICAD_SCRIPTING_WXPYTHON=ON
+              -DKICAD_SCRIPTING_WXPYTHON=ON \
+              -DCMAKE_SKIP_RPATH=TRUE \
+              -DCMAKE_SKIP_INSTALL_RPATH=TRUE
   make #-j1
 }
 
