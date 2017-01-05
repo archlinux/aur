@@ -3,7 +3,7 @@ pkgbase=python-ufonormalizer-git
 pkgname=(python-ufonormalizer-git python2-ufonormalizer-git)
 _pkgname=ufoNormalizer
 pkgver=0.1.r178.1ed0111
-pkgrel=2
+pkgrel=3
 pkgdesc='A tool that will normalize the XML and other data inside of a UFO.'
 arch=('any')
 url='https://github.com/unified-font-object/ufoNormalizer'
@@ -25,7 +25,7 @@ pkgver() {
 
 package_python-ufonormalizer-git() {
   depends=('python')
-  provides=('python-ufonormalizer-git')
+  provides=('python-ufonormalizer')
   conflicts=('python-ufonormalizer')
 
   cd "${srcdir}/${_pkgname}"
@@ -39,7 +39,7 @@ package_python-ufonormalizer-git() {
 
 package_python2-ufonormalizer-git() {
   depends=('python2')
-  provides=('python2-ufonormalizer-git')
+  provides=('python2-ufonormalizer')
   conflicts=('python2-ufonormalizer')
 
   cd "${srcdir}/${_pkgname}"

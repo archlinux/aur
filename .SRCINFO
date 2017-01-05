@@ -1,7 +1,7 @@
 pkgbase = python-ufonormalizer-git
 	pkgdesc = A tool that will normalize the XML and other data inside of a UFO.
 	pkgver = 0.1.r178.1ed0111
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/unified-font-object/ufoNormalizer
 	arch = any
 	license = unknown
@@ -14,11 +14,11 @@ pkgbase = python-ufonormalizer-git
 
 pkgname = python-ufonormalizer-git
 	depends = python
-	provides = python-ufonormalizer-git
+	provides = python-ufonormalizer
 	conflicts = python-ufonormalizer
 
 pkgname = python2-ufonormalizer-git
 	depends = python2
-	provides = python2-ufonormalizer-git
+	provides = python2-ufonormalizer
 	conflicts = python2-ufonormalizer
 
