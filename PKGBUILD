@@ -2,7 +2,7 @@
 # Maintainer: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=mustache-d
-pkgver=0.1.2
+pkgver=0.1.3
 pkgrel=1
 pkgdesc="Moustache template engine for D"
 arch=(any)
@@ -11,7 +11,7 @@ license=(custom:boost)
 depends=()
 makedepends=()
 source=($pkgname-$pkgver::"https://github.com/repeatedly/mustache-d/archive/v$pkgver.tar.gz" "http://www.boost.org/LICENSE_1_0.txt")
-sha256sums=('39f1eda9453837dc3ca3ee8cded19fa569d0b5f4a43d775a8a258bce53523164'
+sha256sums=('b8cf5fe193b11dece663ad2d7f8acbcc02ef48334f0fdc922a2dde3f8ac64b57'
             'c9bff75738922193e67fa726fa225535870d2aa1059f91452c411736284ad566')
 
 package() {
