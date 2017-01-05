@@ -33,7 +33,7 @@ pkgname=('roccat-tools-common'
          'roccat-tools-nyth')
 pkgbase=roccat-tools
 pkgver=5.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Userland applications to configure and make extended use of ROCCAT devices'
 arch=('i686' 'x86_64')
 url='http://roccat.sourceforge.net'
@@ -45,7 +45,7 @@ source=("http://downloads.sourceforge.net/project/roccat/roccat-tools/roccat-too
         '90-uinput.rules'
         'uhid.conf')
 md5sums=('deec40e21fadd76abe5693b29fc30d97'
-         'd9e6955139aac24c35ef7951a44d919a'
+         '19753dd0871d7fe0385f887d99766801'
          '342d4f032d4d4d64e8a2136fd742c1c9')
 
 build() {
