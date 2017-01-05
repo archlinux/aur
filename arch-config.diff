@@ -1,6 +1,6 @@
-diff -up src/xrdp-git/instfiles/xrdp.service.orig src/xrdp-git/instfiles/xrdp.service
---- src/xrdp-git/instfiles/xrdp.service.orig	2015-12-04 06:23:12.000000000 -0700
-+++ src/xrdp-git/instfiles/xrdp.service	2015-12-04 06:28:25.000000000 -0700
+diff -up src/xrdp-devel-git/instfiles/xrdp.service.orig src/xrdp-devel-git/instfiles/xrdp.service
+--- src/xrdp-devel-git/instfiles/xrdp.service.orig	2017-01-04 17:08:45.000000000 -0700
++++ src/xrdp-devel-git/instfiles/xrdp.service	2017-01-04 17:08:48.000000000 -0700
 @@ -6,10 +6,8 @@ After=syslog.target network.target xrdp-
  [Service]
  Type=forking
@@ -14,9 +14,9 @@ diff -up src/xrdp-git/instfiles/xrdp.service.orig src/xrdp-git/instfiles/xrdp.se
  
  [Install]
  WantedBy=multi-user.target
-diff -up src/xrdp-git/instfiles/xrdp-sesman.service.orig src/xrdp-git/instfiles/xrdp-sesman.service
---- src/xrdp-git/instfiles/xrdp-sesman.service.orig	2015-12-04 06:23:12.000000000 -0700
-+++ src/xrdp-git/instfiles/xrdp-sesman.service	2015-12-04 06:28:19.000000000 -0700
+diff -up src/xrdp-devel-git/instfiles/xrdp-sesman.service.orig src/xrdp-devel-git/instfiles/xrdp-sesman.service
+--- src/xrdp-devel-git/instfiles/xrdp-sesman.service.orig	2017-01-04 17:08:45.000000000 -0700
++++ src/xrdp-devel-git/instfiles/xrdp-sesman.service	2017-01-04 17:08:48.000000000 -0700
 @@ -7,10 +7,8 @@ BindTo=xrdp.service
  [Service]
  Type=forking
@@ -30,9 +30,9 @@ diff -up src/xrdp-git/instfiles/xrdp-sesman.service.orig src/xrdp-git/instfiles/
  
  [Install]
  WantedBy=multi-user.target
-diff -up src/xrdp-git/instfiles/xrdp.sh.orig src/xrdp-git/instfiles/xrdp.sh
---- src/xrdp-git/instfiles/xrdp.sh.orig	2015-12-04 06:23:08.000000000 -0700
-+++ src/xrdp-git/instfiles/xrdp.sh	2015-12-04 06:23:12.000000000 -0700
+diff -up src/xrdp-devel-git/instfiles/xrdp.sh.orig src/xrdp-devel-git/instfiles/xrdp.sh
+--- src/xrdp-devel-git/instfiles/xrdp.sh.orig	2017-01-04 17:08:45.000000000 -0700
++++ src/xrdp-devel-git/instfiles/xrdp.sh	2017-01-04 17:10:02.000000000 -0700
 @@ -17,7 +17,7 @@
  # Description: starts xrdp
  ### END INIT INFO
@@ -42,9 +42,9 @@ diff -up src/xrdp-git/instfiles/xrdp.sh.orig src/xrdp-git/instfiles/xrdp.sh
  LOG=/dev/null
  CFGDIR=/etc/xrdp
  
-diff -up src/xrdp-git/sesman/startwm.sh.orig src/xrdp-git/sesman/startwm.sh
---- src/xrdp-git/sesman/startwm.sh.orig	2015-12-04 06:23:09.000000000 -0700
-+++ src/xrdp-git/sesman/startwm.sh	2015-12-04 06:23:12.000000000 -0700
+diff -up src/xrdp-devel-git/sesman/startwm.sh.orig src/xrdp-devel-git/sesman/startwm.sh
+--- src/xrdp-devel-git/sesman/startwm.sh.orig	2017-01-04 17:08:46.000000000 -0700
++++ src/xrdp-devel-git/sesman/startwm.sh	2017-01-04 17:08:48.000000000 -0700
 @@ -8,6 +8,17 @@ wm_start()
      export LANG LANGUAGE
    fi
