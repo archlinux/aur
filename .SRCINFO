@@ -1,0 +1,25 @@
+pkgbase = otf-hasklig-git
+	pkgdesc = A code font with monospaced ligatures
+	pkgver = 1.0.beta.r13.a2367c1
+	pkgrel = 1
+	url = https://github.com/i-tu/Hasklig
+	install = fonts.install
+	arch = any
+	license = custom:SIL Open Font License
+	makedepends = git
+	makedepends = afdko
+	makedepends = python2
+	makedepends = python2-fonttools
+	depends = fontconfig
+	depends = xorg-font-utils
+	provides = otf-hasklig
+	conflicts = otf-hasklig
+	source = git+https://github.com/i-tu/Hasklig.git
+	source = https://raw.githubusercontent.com/adobe-fonts/source-code-pro/master/LICENSE.txt
+	source = use-python2.patch
+	sha256sums = SKIP
+	sha256sums = cb30d3086a8b3ce0b9e3690bf48d6620402b61160bc658076f95180ccd9e9dae
+	sha256sums = 948abd484e9d0c404c62af183a521003cde172ed34f5d96b8025e4f075c01f3f
+
+pkgname = otf-hasklig-git
+

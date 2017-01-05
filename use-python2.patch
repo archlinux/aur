@@ -1,0 +1,9 @@
+diff -Nur A/addSVGtable.py B/addSVGtable.py
+--- A/addSVGtable.py	2017-01-04 16:58:35.176381805 -0500
++++ B/addSVGtable.py	2017-01-04 22:05:15.567590234 -0500
+@@ -1,4 +1,4 @@
+-#! /usr/bin/env python
++#! /usr/bin/env python2
+ 
+ """
+ Adds an SVG table to a TTF or OTF font.
