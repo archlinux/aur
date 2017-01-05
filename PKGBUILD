@@ -1,6 +1,6 @@
 # Maintainer: Ingo Bürk <ingo.buerk@airblader.de>
 pkgname=colors-git
-pkgver=0.3.r4.g7a2870c
+pkgver=0.3.r6.g2b6913e
 pkgrel=1
 pkgdesc='Extract colors from an image.'
 arch=('i686' 'x86_64')
