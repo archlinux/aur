@@ -2,7 +2,7 @@
 # This PKGBUILD is inspired from the package sdcc in Archlinux repos.
 
 pkgname=sdcc-svn
-pkgver=3.4.1.svn9120
+pkgver=3.6.5.svn9828M
 pkgrel=1
 pkgdesc="Small Device C Compiler suite"
 url="http://sdcc.sourceforge.net/"
@@ -48,14 +48,15 @@ build() {
 }
 
 package() {
-  cd "$srcdir/sdcc/sdcc"
+	cd "$srcdir/sdcc/sdcc"
 
-  make DESTDIR="$pkgdir" install
+	make DESTDIR="$pkgdir" install
 
-  if [ -d "$pkgdir"/usr/lib/lib ]; then
-    mv "$pkgdir"/usr/lib/lib/* "$pkgdir"/usr/lib/sdcc/
-    rm -rf "$pkgdir"/usr/lib/lib
-  fi
+	if [ -d "$pkgdir"/usr/lib/lib ]; then
+		mv "$pkgdir"/usr/lib/lib/* "$pkgdir"/usr/lib/sdcc/
+		rm -rf "$pkgdir"/usr/lib/lib
+	fi
 
-  sed -i 's|#!/usr/bin/env python|#!/usr/bin/env python3|' "$pkgdir"/usr/bin/as2gbmap
+	sed -i 's|#!/usr/bin/env python|#!/usr/bin/env python3|' "$pkgdir"/usr/bin/as2gbmap
+	rm -rf "$pkgdir"/usr/share/info
 }

@@ -1,0 +1,6 @@
+sdcc
+src
+pkg
+
+*.tar
+*.xz
