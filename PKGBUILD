@@ -7,7 +7,7 @@ pkgname=waifu2x-converter-cpp-cuda-git
 pkgver=r427.f89dd61
 pkgrel=1
 pkgdesc="Image Super-Resolution for Anime-Style-Art. (re-implementation in C++ using OpenCV). with CUDA support (GIT Version)"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url='https://github.com/tanakamura/waifu2x-converter-cpp'
 license=('MIT')
 depends=('opencv'
@@ -42,14 +42,15 @@ build() {
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_SKIP_RPATH=ON \
-    -DCUDA_SDK_ROOT_DIR=/opt/cuda \
+    -DCUDA_CUDA_LIBRARY=/opt/cuda/lib64/stub/libcuda.so \
     -DCUDA_NVCC_FLAGS='-std=c++11' \
     -DINSTALL_MODELS=ON
+
   make
 }
 
 package() {
   make -C build DESTDIR=${pkgdir} install
 
-  install -Dm644 waifu2x-converter-cpp/LICENSE "${pkgdir}/usr/share/licenses/waifu2x-converter-cpp-cuda-git/LICENSE"
+  install -Dm644 waifu2x-converter-cpp/LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
