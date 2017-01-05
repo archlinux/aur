@@ -3,26 +3,30 @@
 # Contributor: Dany Martineau <dany.luc.martineau@gmail.com>
 
 pkgname=zint
-pkgver=2.4.3
+pkgver=2.5
 pkgrel=1
 pkgdesc="A barcode encoding library supporting over 50 symbologies."
 url="http://sourceforge.net/projects/zint/"
 license=('GPLv3')
 arch=('i686' 'x86_64')
-depends=('qt4' 'openssl' 'libxext' 'libxrender' 'zlib')
+depends=('qt4' 'zlib')
 makedepends=('cmake')
-source=(http://sourceforge.net/projects/$pkgname/files/$pkgname/$pkgver/$pkgname-$pkgver.tar.gz)
-sha256sums=('de2f4fd0d008530511f5dea2cff7f96f45df4c029b57431b2411b7e1f3a523e8')
+source=("http://sourceforge.net/projects/${pkgname}/files/${pkgname}/${pkgver}/${pkgname}-${pkgver}.src.tar.gz")
+sha256sums=('42d227275adb1a7253935e551b69b0a26734207b11c4d8f0b079d408235ea0ee')
+
+prepare() {
+  mkdir -p "${srcdir}/build"
+}
 
 build() {
-  cd $srcdir/$pkgname-$pkgver
+  cd "${srcdir}/build"
 
-  cmake -DCMAKE_INSTALL_PREFIX=/usr
+  cmake -DCMAKE_INSTALL_PREFIX=/usr "../${pkgname}-${pkgver}"
   make
 }
 
 package() {
-  cd $srcdir/$pkgname-$pkgver
+  cd "${srcdir}/build"
 
-  make DESTDIR=$pkgdir install
+  make DESTDIR="${pkgdir}" install
 }
