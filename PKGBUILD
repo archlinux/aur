@@ -8,7 +8,6 @@ pkgdesc='A library for the calculation of piecewise linear interpolations in n-d
 arch=('any')
 url='https://github.com/LettError/MutatorMath'
 license=('BSD')
-depends=('')
 makedepends=('python-pip' 'python2-pip')
 options=(!emptydirs)
 source=("https://files.pythonhosted.org/packages/py2.py3/${_pkgname:0:1}/${_pkgname}/${_pkgname}-${pkgver}-py2.py3-none-any.whl")
