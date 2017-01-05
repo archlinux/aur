@@ -50,5 +50,6 @@ build() {
 package() {
   cd $pkgname
   make DESTDIR="$pkgdir" install
+  rm -f "$pkgdir"/etc/xrdp/rsakeys.ini
   install -Dm644 COPYING "$pkgdir"/usr/share/licenses/$pkgname/COPYING
 }
