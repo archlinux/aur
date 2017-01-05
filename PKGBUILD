@@ -2,7 +2,7 @@
 pkgname=ttf-dejavu-sans-code-git
 _pkgname=DejaVuSansCode
 pkgver=1.2.r0.b244a9c
-pkgrel=1
+pkgrel=2
 pkgdesc='Monospaced font with programming ligatures based on DejaVu Sans Mono'
 arch=('any')
 url='https://github.com/SSNikolaevich/DejaVuSansCode'
@@ -26,7 +26,7 @@ build() {
 }
 
 package() {
-  cd "${srcdir}/{$_pkgname}"
+  cd "${srcdir}/${_pkgname}"
   install -d ${pkgdir}/usr/share/fonts/TTF/
   install -m644 build/*.ttf ${pkgdir}/usr/share/fonts/TTF/
   install -D -m644 LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
