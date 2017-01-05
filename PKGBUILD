@@ -8,6 +8,8 @@ pkgdesc='A low-level UFO reader and writer.'
 arch=('any')
 url='https://github.com/unified-font-object/ufoLib'
 license=('BSD')
+depends=('python' 'python-fonttools'
+         'python2' 'python2-fonttools')
 makedepends=('python-pip' 'python2-pip')
 options=(!emptydirs)
 source=("https://files.pythonhosted.org/packages/py2.py3/${_pkgname:0:1}/${_pkgname}/${_pkgname}-${pkgver}-py2.py3-none-any.whl")
