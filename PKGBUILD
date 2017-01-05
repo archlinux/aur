@@ -1,14 +1,14 @@
 # Maintainer: phiresky <phireskyde+git@gmail.com> 
 pkgname=svp
 pkgver=4.1.0.100
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="SmoothVideo Project 4 (SVP4)"
 arch=('x86_64')
 url="https://www.svp-team.com/wiki/SVP:Linux"
 license=('custom')
 groups=()
-depends=(libmediainfo qt5-svg qt5-script vapoursynth libusb xdg-utils)
+depends=(libmediainfo qt5-svg qt5-script vapoursynth libusb xdg-utils lsof)
 makedepends=(p7zip qt-installer-framework libxml2)
 checkdepends=()
 optdepends=(
