@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Temps
+Comment=Simple menubar application based on Electron with actual weather information and forecast
+Exec=temps
+Icon=Temps
+Terminal=false
+Type=Application
+StartupNotify=true
+Categories=Utility;Core;
+Name[fr_BE]=Temps.desktop
