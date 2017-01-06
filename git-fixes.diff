@@ -513,4 +513,102 @@ index 17c2abf..d6a3614 100644
 -- 
 cgit v0.10.2
 
+From 1b42f9505ff3a39b441464f553442079b750fe88 Mon Sep 17 00:00:00 2001
+From: Peter Hutterer <peter.hutterer@who-t.net>
+Date: Thu, 8 Dec 2016 14:32:06 +1000
+Subject: os: return 0 from check_timers if we touched any of them
+
+Fixes a regression introduced in 0b2f30834b1a9f. If a driver posts input
+events during a timer function (wacom and synaptics do this during tap
+timeouts), ProcessInputEvents() is not called for these events. There are no
+new events on any fds, so the events just sit in the queue waiting for
+something else to happen.
+
+Fix this by simply returning 0 from check_timers if we ran at least one of
+them or reset them all. This way the callers ospoll_wait will exit and
+continue with normal processing.
+
+Signed-off-by: Peter Hutterer <peter.hutterer@who-t.net>
+Reviewed-by: Keith Packard <keithp@keithp.com>
+
+diff --git a/os/WaitFor.c b/os/WaitFor.c
+index ff1c85e..613608f 100644
+--- a/os/WaitFor.c
++++ b/os/WaitFor.c
+@@ -143,7 +143,7 @@ check_timers(void)
+ {
+     OsTimerPtr timer;
+ 
+-    while ((timer = first_timer()) != NULL) {
++    if ((timer = first_timer()) != NULL) {
+         CARD32 now = GetTimeInMillis();
+         int timeout = timer->expires - now;
+ 
+@@ -157,6 +157,8 @@ check_timers(void)
+             /* time has rewound.  reset the timers. */
+             CheckAllTimers();
+         }
++
++        return 0;
+     }
+     return -1;
+ }
+-- 
+cgit v0.10.2
+
+From 05e19644250698aa126a60bc671e85425df784d1 Mon Sep 17 00:00:00 2001
+From: Hans De Goede <hdegoede@redhat.com>
+Date: Tue, 20 Dec 2016 13:00:43 +0100
+Subject: glamor: Trust eglGetPlatformDisplayEXT if it exists
+
+If the libEGL we are using has eglGetPlatformDisplayEXT, yet it still
+returns NULL, then this very likely means that it does not support the
+type (e.g. EGL_PLATFORM_GBM_MESA) passed in, and then returning NULL is
+the right thing to do.
+
+This avoids falling back to an eglGetDisplay() implementation which does
+not understands the passed in gbm handle, treats it as a pointer to
+something else completely, followed by a crash sooner or later.
+
+Specifically this fixes using the nvidia binary driver, with nvidia's
+libEGL + the modesetting driver on a secondary GPU crashing inside
+glamor_egl_init() sometimes.
+
+Cc: Eric Anholt <eric@anholt.net>
+Reviewed-by: Adam Jackson <ajax@redhat.com>
+Signed-off-by: Hans de Goede <hdegoede@redhat.com>
+
+diff --git a/glamor/glamor_egl.c b/glamor/glamor_egl.c
+index 9cc0f8d..4bde637 100644
+--- a/glamor/glamor_egl.c
++++ b/glamor/glamor_egl.c
+@@ -769,6 +769,10 @@ glamor_egl_init(ScrnInfoPtr scrn, int fd)
+ 
+     glamor_egl->display = glamor_egl_get_display(EGL_PLATFORM_GBM_MESA,
+                                                  glamor_egl->gbm);
++    if (!glamor_egl->display) {
++        xf86DrvMsg(scrn->scrnIndex, X_ERROR, "eglGetDisplay() failed\n");
++        goto error;
++    }
+ #else
+     glamor_egl->display = eglGetDisplay((EGLNativeDisplayType) (intptr_t) fd);
+ #endif
+diff --git a/glamor/glamor_egl.h b/glamor/glamor_egl.h
+index 6b05f57..2c6d307 100644
+--- a/glamor/glamor_egl.h
++++ b/glamor/glamor_egl.h
+@@ -67,9 +67,7 @@ glamor_egl_get_display(EGLint type, void *native)
+         PFNEGLGETPLATFORMDISPLAYEXTPROC getPlatformDisplayEXT =
+             (void *) eglGetProcAddress("eglGetPlatformDisplayEXT");
+         if (getPlatformDisplayEXT)
+-            dpy = getPlatformDisplayEXT(type, native, NULL);
+-        if (dpy)
+-            return dpy;
++            return getPlatformDisplayEXT(type, native, NULL);
+     }
+ 
+     /* Welp, everything is awful. */
+-- 
+cgit v0.10.2
+
 
