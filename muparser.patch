@@ -1,0 +1,14 @@
+diff -Naur ../meshlab/src/meshlabplugins/filter_func/filter_func.pro meshlab/src/meshlabplugins/filter_func/filter_func.pro
+--- ../meshlab/src/meshlabplugins/filter_func/filter_func.pro	2016-10-31 00:00:30.459336619 +0100
++++ meshlab/src/meshlabplugins/filter_func/filter_func.pro	2016-10-31 21:42:47.134972919 +0100
+@@ -19,7 +19,7 @@
+ win32-msvc2015:LIBS += ../../external/lib/win32-msvc2015/muparser.lib
+ 
+ macx:LIBS            += $$MACLIBDIR/libmuparser.a
+-linux-g++:LIBS       += ../../external/lib/linux-g++/libmuparser.a
+-linux-g++-32:LIBS       += ../../external/lib/linux-g++-32/libmuparser.a
+-linux-g++-64:LIBS       += ../../external/lib/linux-g++-64/libmuparser.a
++linux-g++:LIBS       += -lmuparser
++linux-g++-32:LIBS       += -lmuparser
++linux-g++-64:LIBS       += -lmuparser
+ win32-g++:LIBS		 += ../../external/lib/win32-gcc/libmuparser.a

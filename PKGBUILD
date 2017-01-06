@@ -1,74 +1,83 @@
-# Maintainer: Jonathan Liu <net147@gmail.com>
+# Maintainer: bartus <aur@bartus.33mail.com>
 pkgname=meshlab
-pkgver=1.3.3
-pkgrel=6
-pkgdesc="System for processing and editing triangular meshes"
+pkgver=2016.12
+pkgrel=1
+pkgdesc="System for processing and editing of unstructured 3D models arising in 3D scanning (qt5 version)"
 arch=('i686' 'x86_64')
-url="http://meshlab.sourceforge.net/"
+url="http://www.meshlab.net"
+provides=('meshlab')
 license=('GPL2')
-depends=('bzip2' 'desktop-file-utils' 'glu' 'lapack' 'mpir' 'openssl' 'qt4')
+depends=('bzip2' 'muparser' 'levmar' 'lib3ds' 'desktop-file-utils' 'glu' 'mpir' 'openssl' 'qt5-base' 'qt5-declarative' 'qt5-script')
+#also create openctm(aur) jhead-lib structuresynth-lib to handle last dep
 install="${pkgname}.install"
-source=("http://downloads.sourceforge.net/project/meshlab/meshlab/MeshLab%20v${pkgver//[a-z]/}/MeshLabSrc_AllInc_v${pkgver//./}.tgz"
-        "fix_local_stl_import.patch"
-        "gcc-4.7.patch"
-        "lapack.patch"
+source=("git+https://github.com/cnr-isti-vclab/meshlab.git#tag=v2016.12"
+        "git+https://github.com/cnr-isti-vclab/vcglib.git#tag=v1.0.1"
+        "external.patch"
+        "3ds.patch"
+        "levmar.patch"
+        "muparser.patch"
+        "bzip2.patch"
+        "meshlabserver_GLU.patch"
+        "cpp11_abs.patch"
+        "fix_locale.patch"
         "mpir.patch"
-        "nullptr.patch"
         "rpath.patch"
-        "qt-4.8.patch"
-        "meshlab.1"
-        "meshlabserver.1"
         "meshlab.desktop")
-noextract=("MeshLabSrc_AllInc_v${pkgver//./}.tgz")
-md5sums=('cbdd83d4f3ed69e7a9837c34ebae307a'
-         '5582b6a1bcd7fd46b4854e1f4a8aea7f'
-         '65d7ff92ad2d6e74119af9c0e377bb37'
-         '4139d3217f1540c67306545213126391'
-         '308f1b90f7de56f9df1485808713ed53'
-         'c8689554179380947a118a493a564715'
+md5sums=('SKIP'
+         'SKIP'
+         '038494125d7bd422074fc5635c5579ca'
+         'e51b027eb9d78b82de73c4724b3928cf'
+         '1a53a92e12f74520b36e38d9a2311834'
+         '64caafa96bef4208d641e889099eba26'
+         '616b0dcf018f46a490867028d6ddc533'
+         '5d87f00356539f84f37f873f304eb11e'
+         'c1cfb910d20db49ec195d9918036e3c3'
+         '5b59b23cf66e42f8b3d3eabe466b3eaa'
+         '5df295c21de5bac8d6073528823d975a'
          '2cc1246fc1b01029ae762c82a7dbf364'
-         '1df4ee299f4ad996a05e80d9cf5e5389'
-         '32a52b0a8dab1b4816b028b463e7fd9c'
-         '0af205a93961dbfcb6b003765f79c4cf'
          '18aed0a21276a22325bf8c32166fb110')
 
 prepare() {
   cd "${srcdir}"
 
-  tar -zxf "MeshLabSrc_AllInc_v${pkgver//./}.tgz"
-
   # remove bundled headers and libraries
   rm -fr meshlab/src/external/{inc,lib}
 
-  # fix text import breaking for different locales
-  patch -Np0 -i "${srcdir}/fix_local_stl_import.patch"
-  # fix compile errors with GCC 4.7
-  patch -Np0 -i "${srcdir}/qt-4.8.patch"
-  # fix Qt 4.8 compatibility
-  patch -Np1 -i "${srcdir}/gcc-4.7.patch"
-
-  cd "${srcdir}/meshlab/src"
-  # build levmar with lapack
-  patch -Np2 -i "${srcdir}/lapack.patch"
-  # use system mpir
-  patch -Np2 -i "${srcdir}/mpir.patch"
-  # fix use of bool to return null pointer
-  patch -Np2 -i "${srcdir}/nullptr.patch"
-  # fix rpath
-  patch -Np2 -i "${srcdir}/rpath.patch"
+  msg "truncate external lib"
+  patch -Np0 -i external.patch
+  msg "fix rpath"
+  patch -Np0 -i rpath.patch
+  msg "fix meshlab/src/plugins_experimental/io_TXT/ case sensitive path"
+  mv meshlab/src/plugins_experimental/io_TXT/io_txt.pro meshlab/src/plugins_experimental/io_TXT/io_TXT.pro
+  msg "fix meshalbserver missing -lGLU"
+  patch -Np0 -i meshlabserver_GLU.patch
+  msg "fix cpp11 abs()"
+  patch -Np0 -i cpp11_abs.patch
+  msg "fix decimal separator problem"
+  patch -Np0 -i fix_locale.patch
+  msg "using system mpir lib"
+  patch -Np0 -i mpir.patch
+  msg "using system bzip2 lib"
+  patch -Np0 -i bzip2.patch
+  msg "using system muparser lib"
+  patch -Np0 -i muparser.patch
+  msg "using system levmar lib"
+  patch -Np0 -i levmar.patch
+  msg "using system 3ds lib"
+  patch -Np0 -i 3ds.patch
 }
 
 build() {
   cd "${srcdir}/meshlab/src"
 
-  # build external libraries
+  msg "build external libraries"
   cd external
-  qmake-qt4 -recursive external.pro
+  qmake external.pro -r 
   make
 
-  # build meshlab
+  msg "build meshlab"
   cd ..
-  qmake-qt4 -recursive meshlab_full.pro
+  qmake meshlab_full.pro -r 
   make
 }
 
@@ -86,8 +95,8 @@ package() {
 
   # install man pages
   install -d -m755 "${pkgdir}/usr/share/man/man1"
-  install -m644 "${srcdir}/meshlab.1" "${pkgdir}"/usr/share/man/man1
-  install -m644 "${srcdir}/meshlabserver.1" "${pkgdir}"/usr/share/man/man1
+  install -m644 "${srcdir}/meshlab/docs/meshlab.1" "${pkgdir}"/usr/share/man/man1
+  install -m644 "${srcdir}/meshlab/docs/meshlabserver.1" "${pkgdir}"/usr/share/man/man1
 
   # install icons
   install -d -m755 "${pkgdir}/usr/share/pixmaps"
