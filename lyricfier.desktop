@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Lyricfier
+Comment=a Spotify Lyrics alternative app
+Exec=lyricfier
+Icon=lyricfier
+Terminal=false
+Type=Application
+StartupNotify=true
+Categories=Player;Audio;
