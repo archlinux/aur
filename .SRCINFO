@@ -1,0 +1,16 @@
+pkgbase = frc-2017
+	pkgdesc = Metapackage for installing all of the FIRST Robotics Competition C/C++ build system components
+	pkgver = 20170106
+	pkgrel = 1
+	url = https://github.com/wpilibsuite/
+	arch = any
+	groups = frc-2017
+	license = GPL
+	depends = arm-frc-linux-gnueabi-gcc
+	depends = arm-frc-linux-gnueabi-frcmake-hg
+	depends = arm-frc-linux-gnueabi-gdb
+	optdepends = arm-frc-linux-gnueabi-wpilib: for building robot code without Eclipse plugins
+	conflicts = frc-2016
+
+pkgname = frc-2017
+
