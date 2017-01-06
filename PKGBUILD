@@ -14,7 +14,7 @@ depends=('lua' 'wxgtk' 'xylib>=1.4')
 makedepends=('boost' 'python2-sphinx' 'swig')
 options=(!libtool)
 install=fityk.install
-source="https://github.com/wojdyr/$pkgname/releases/download/v$pkgver/$pkgname-$pkgver.tar.bz2"
+source=("https://github.com/wojdyr/$pkgname/releases/download/v$pkgver/$pkgname-$pkgver.tar.bz2")
 md5sums=('d533e0ae646d9066c46b6d90885dc4b5')
 
 build() {
