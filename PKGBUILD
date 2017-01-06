@@ -2,7 +2,7 @@
 
 pkgname=livedumper-git
 pkgver=v0.3.0.r5.gf644128
-pkgrel=1
+pkgrel=2
 pkgdesc="Livestreamer stream dumper"
 arch=('any')
 url="https://github.com/m45t3r/livedumper"
