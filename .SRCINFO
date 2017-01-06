@@ -1,0 +1,21 @@
+pkgbase = archsecure-git
+	pkgdesc = Check you machine for issues posted on https://security.archlinux.org
+	pkgver = r11.3e2872c
+	pkgrel = 1
+	url = https://github.com/metalmatze/archsecure
+	arch = x86_64
+	arch = i686
+	arch = armv6h
+	arch = armv7h
+	license = GPLv3
+	makedepends = go>=1.6
+	makedepends = git
+	depends = git
+	depends = go>=1.6
+	depends = pacman
+	provides = archsecure
+	source = git://github.com/metalmatze/archsecure.git
+	sha256sums = SKIP
+
+pkgname = archsecure-git
+
