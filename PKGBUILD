@@ -1,3 +1,5 @@
+# Maintainer: twa022 <twa022 at gmail dot com>
+
 _basename=xfce4-weather-mono-icons
 pkgname=${_basename}-git
 pkgver=0.r8.558c0a8
