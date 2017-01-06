@@ -3,7 +3,7 @@
 
 pkgname=mugshot
 pkgver=0.3.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Program to update personal user details"
 arch=('any')
 url="https://launchpad.net/mugshot"
