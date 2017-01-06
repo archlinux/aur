@@ -1,7 +1,7 @@
 pkgbase = xrdp-git
 	pkgdesc = An open source remote desktop protocol (RDP) server - GIT version
 	pkgver = 0.9.1.r0.g93c55e58
-	pkgrel = 2
+	pkgrel = 3
 	epoch = 1
 	url = https://github.com/neutrinolabs/xrdp
 	install = xrdp-git.install
@@ -10,6 +10,7 @@ pkgbase = xrdp-git
 	arch = armv6h
 	license = Apache
 	makedepends = git
+	makedepends = nasm
 	depends = tigervnc
 	depends = libxrandr
 	depends = lame
