@@ -1,7 +1,7 @@
 # Maintainer: Alexander Jesner <alexander at jesner dot eu>
 
 pkgname=nuget3
-pkgver=3.4.4
+pkgver=3.5.0
 pkgrel=1
 pkgdesc="Package manager for .NET."
 arch=('any')
