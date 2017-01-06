@@ -1,7 +1,7 @@
 # Contributor: masutu < masutu dot arch dot googlemail dot com >
 # Maintainer: masutu < masutu dot arch dot googlemail dot com >
 pkgname=qloud
-pkgver=1.0
+pkgver=1.2
 pkgrel=1
 pkgdesc="A tool to measure a loudspeaker frequency response and distortions."
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ url="http://gaydenko.com/qloud"
 license=('GPL')
 depends=('fftw' 'jack' 'qwt')
 source=($url/download/$pkgname-$pkgver.tar.bz2)
-md5sums=('64db0c91fa6fc7f9a9f1fb2187fa61ab')
+md5sums=('6b41200bafa492eb32654cd82f4a9629')
 
 
 build() {
