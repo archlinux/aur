@@ -2,8 +2,8 @@
 # Contributor:
 
 pkgname=progit2-git
-pkgver=2.0.0.r611.g024a3a0
-pkgrel=3
+pkgver=2.0.0.r689.g5026c45
+pkgrel=1
 pkgdesc="A package to build the latest version of the progit2 book and read it when offline"
 arch=('any')
 
@@ -47,7 +47,8 @@ prepare() {
     # Gem dependencies can also be installed in the directory we specify, but
     # the latter will be removed after we have build the book. The PKGBUILD
     # will have to redownload again all these deps if the user wants to update
-    # hos book.
+    # his book. Even if this is quite heavy, this is the cleaner approach we
+    # have.
     bundle install --path .bundle
 
     # Override the directory 
@@ -65,9 +66,11 @@ package() {
 
     # Install to /usr/share/doc/progit2
     install -dm755 "$pkgdir/usr/share/doc/${pkgname%-git}/"
-	cp "$srcdir/${pkgname%-git}/progit.epub" "$pkgdir/usr/share/doc/${pkgname%-git}/"
-	cp "$srcdir/${pkgname%-git}/progit-kf8.epub" "$pkgdir/usr/share/doc/${pkgname%-git}/"
-	cp "$srcdir/${pkgname%-git}/progit.mobi" "$pkgdir/usr/share/doc/${pkgname%-git}/"
-	cp "$srcdir/${pkgname%-git}/progit.pdf" "$pkgdir/usr/share/doc/${pkgname%-git}/"
-	cp "$srcdir/${pkgname%-git}/progit.pdfmarks" "$pkgdir/usr/share/doc/${pkgname%-git}/"
+    cp "$srcdir/${pkgname%-git}/progit.epub" "$pkgdir/usr/share/doc/${pkgname%-git}/"
+    cp "$srcdir/${pkgname%-git}/progit-kf8.epub" "$pkgdir/usr/share/doc/${pkgname%-git}/"
+    cp "$srcdir/${pkgname%-git}/progit.mobi" "$pkgdir/usr/share/doc/${pkgname%-git}/"
+    cp "$srcdir/${pkgname%-git}/progit.pdf" "$pkgdir/usr/share/doc/${pkgname%-git}/"
+    cp "$srcdir/${pkgname%-git}/progit.pdfmarks" "$pkgdir/usr/share/doc/${pkgname%-git}/"
+    cp "$srcdir/${pkgname%-git}/progit.html" "$pkgdir/usr/share/doc/${pkgname%-git}/"
+    cp -a "$srcdir/${pkgname%-git}/images" "$pkgdir/usr/share/doc/${pkgname%-git}/"
 }
