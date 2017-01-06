@@ -1,4 +1,13 @@
-diff -Nur A/Tools/linux/setFDKPaths B/Tools/linux/setFDKPaths
+diff -Naur A/Tools/FontLabMacros/installFontLabMacros.py B/Tools/FontLabMacros/installFontLabMacros.py
+--- A/Tools/FontLabMacros/installFontLabMacros.py	2016-05-04 20:13:36.000000000 -0400
++++ B/Tools/FontLabMacros/installFontLabMacros.py	2017-01-06 11:53:25.964285408 -0500
+@@ -1,4 +1,4 @@
+-#!/bin/env python
++#! /usr/bin/env python2
+ 
+ __copyright__ =  """
+ Copyright 2015-2016 Adobe Systems Incorporated (http://www.adobe.com/). All Rights Reserved.
+diff -Naur A/Tools/linux/setFDKPaths B/Tools/linux/setFDKPaths
 --- A/Tools/linux/setFDKPaths	2015-11-17 16:32:39.000000000 -0500
 +++ B/Tools/linux/setFDKPaths	2017-01-04 17:58:32.434288006 -0500
 @@ -1,11 +1,7 @@
@@ -14,3 +23,120 @@ diff -Nur A/Tools/linux/setFDKPaths B/Tools/linux/setFDKPaths
  
  AFDKO_Scripts="${AFDKO_EXE_PATH}"/../SharedData/FDKScripts
  
+diff -Naur A/Tools/SharedData/FDKScripts/autohint.py B/Tools/SharedData/FDKScripts/autohint.py
+--- A/Tools/SharedData/FDKScripts/autohint.py	2016-04-27 16:57:19.000000000 -0400
++++ B/Tools/SharedData/FDKScripts/autohint.py	2017-01-06 11:53:25.954290407 -0500
+@@ -1,4 +1,4 @@
+-#!/bin/env python
++#! /usr/bin/env python2
+ __copyright__ = """Copyright 2016 Adobe Systems Incorporated (http://www.adobe.com/). All Rights Reserved.
+ """
+ 
+diff -Naur A/Tools/SharedData/FDKScripts/bezLab.py B/Tools/SharedData/FDKScripts/bezLab.py
+--- A/Tools/SharedData/FDKScripts/bezLab.py	2014-05-14 13:45:26.000000000 -0400
++++ B/Tools/SharedData/FDKScripts/bezLab.py	2017-01-06 11:53:25.960953741 -0500
+@@ -1,4 +1,4 @@
+-#!/bin/env python
++#! /usr/bin/env python2
+ __copyright__ = """Copyright 2014 Adobe Systems Incorporated (http://www.adobe.com/). All Rights Reserved.
+ """
+ 
+diff -Naur A/Tools/SharedData/FDKScripts/BuildMMFont.py B/Tools/SharedData/FDKScripts/BuildMMFont.py
+--- A/Tools/SharedData/FDKScripts/BuildMMFont.py	2015-07-15 13:44:46.000000000 -0400
++++ B/Tools/SharedData/FDKScripts/BuildMMFont.py	2017-01-06 11:57:46.883760488 -0500
+@@ -1,4 +1,4 @@
+-#!/public/bin/python
++#! /usr/bin/env python2
+ 
+ __copyright__ = """Copyright 2014 Adobe Systems Incorporated (http://www.adobe.com/). All Rights Reserved.
+ """
+diff -Naur A/Tools/SharedData/FDKScripts/CompareFamily.py B/Tools/SharedData/FDKScripts/CompareFamily.py
+--- A/Tools/SharedData/FDKScripts/CompareFamily.py	2016-05-19 18:37:41.000000000 -0400
++++ B/Tools/SharedData/FDKScripts/CompareFamily.py	2017-01-06 11:57:46.890423821 -0500
+@@ -1,4 +1,4 @@
+-#!/public/bin/python
++#! /usr/bin/env python2
+ #	CompareFamily.py
+ #	This is not code to copy . The original developer did not know Python well,
+ #	and had odd ideas about design. However, it works.
+diff -Naur A/Tools/SharedData/FDKScripts/ConvertFontToCID.py B/Tools/SharedData/FDKScripts/ConvertFontToCID.py
+--- A/Tools/SharedData/FDKScripts/ConvertFontToCID.py	2016-04-18 21:08:35.000000000 -0400
++++ B/Tools/SharedData/FDKScripts/ConvertFontToCID.py	2017-01-06 11:53:25.954290407 -0500
+@@ -1,4 +1,4 @@
+-#!/bin/env python
++#! /usr/bin/env python2
+ 
+ __doc__ = """
+ ConvertFontToCID.py. v 1.9 April 16 2016
+diff -Naur A/Tools/SharedData/FDKScripts/ConvertUnscaledBez.py B/Tools/SharedData/FDKScripts/ConvertUnscaledBez.py
+--- A/Tools/SharedData/FDKScripts/ConvertUnscaledBez.py	2015-03-06 19:47:33.000000000 -0500
++++ B/Tools/SharedData/FDKScripts/ConvertUnscaledBez.py	2017-01-06 11:57:46.887092154 -0500
+@@ -1,4 +1,4 @@
+-#!/public/bin/python
++#! /usr/bin/env python2
+ 
+ __copyright__ = """Copyright 2014 Adobe Systems Incorporated (http://www.adobe.com/). All Rights Reserved.
+ """
+diff -Naur A/Tools/SharedData/FDKScripts/kernCheck.py B/Tools/SharedData/FDKScripts/kernCheck.py
+--- A/Tools/SharedData/FDKScripts/kernCheck.py	2014-10-22 17:16:15.000000000 -0400
++++ B/Tools/SharedData/FDKScripts/kernCheck.py	2017-01-06 11:53:25.960953741 -0500
+@@ -1,4 +1,4 @@
+-#!/bin/env python
++#! /usr/bin/env python2
+ 
+ __copyright__ = """Copyright 2014 Adobe Systems Incorporated (http://www.adobe.com/). All Rights Reserved.
+ """
+diff -Naur A/Tools/SharedData/FDKScripts/makeInstances.py B/Tools/SharedData/FDKScripts/makeInstances.py
+--- A/Tools/SharedData/FDKScripts/makeInstances.py	2016-04-12 13:34:22.000000000 -0400
++++ B/Tools/SharedData/FDKScripts/makeInstances.py	2017-01-06 11:53:25.954290407 -0500
+@@ -1,4 +1,4 @@
+-#!/bin/env python
++#! /usr/bin/env python2
+ 
+ __copyright__ = """Copyright 2016 Adobe Systems Incorporated (http://www.adobe.com/). All Rights Reserved.
+ """
+diff -Naur A/Tools/SharedData/FDKScripts/makeInstancesUFO.py B/Tools/SharedData/FDKScripts/makeInstancesUFO.py
+--- A/Tools/SharedData/FDKScripts/makeInstancesUFO.py	2016-03-25 16:40:38.000000000 -0400
++++ B/Tools/SharedData/FDKScripts/makeInstancesUFO.py	2017-01-06 11:53:25.960953741 -0500
+@@ -1,4 +1,4 @@
+-#!/bin/env python
++#! /usr/bin/env python2
+ 
+ __copyright__ = """Copyright 2015 Adobe Systems Incorporated (http://www.adobe.com/). All Rights Reserved.
+ """
+diff -Naur A/Tools/SharedData/FDKScripts/ProofPDF.py B/Tools/SharedData/FDKScripts/ProofPDF.py
+--- A/Tools/SharedData/FDKScripts/ProofPDF.py	2016-05-09 23:48:07.000000000 -0400
++++ B/Tools/SharedData/FDKScripts/ProofPDF.py	2017-01-06 11:53:25.947627073 -0500
+@@ -1,4 +1,4 @@
+-#!/bin/env python
++#! /usr/bin/env python2
+ """
+ ProofPDF.py. A wrapper for the fontPDF.py module. This script verifies
+ the existence of the specified font files, creates a font class object
+diff -Naur A/Tools/SharedData/FDKScripts/StemHist.py B/Tools/SharedData/FDKScripts/StemHist.py
+--- A/Tools/SharedData/FDKScripts/StemHist.py	2016-04-27 13:31:58.000000000 -0400
++++ B/Tools/SharedData/FDKScripts/StemHist.py	2017-01-06 11:53:25.957622074 -0500
+@@ -1,4 +1,4 @@
+-#!/bin/env python
++#! /usr/bin/env python2
+ __copyright__ = """Copyright 2014 Adobe Systems Incorporated (http://www.adobe.com/). All Rights Reserved.
+ """
+ 
+diff -Naur A/Tools/SharedData/FDKScripts/ttxn.py B/Tools/SharedData/FDKScripts/ttxn.py
+--- A/Tools/SharedData/FDKScripts/ttxn.py	2016-04-25 21:56:23.000000000 -0400
++++ B/Tools/SharedData/FDKScripts/ttxn.py	2017-01-06 11:52:31.718085729 -0500
+@@ -1,4 +1,4 @@
+-#! /usr/bin/env python
++#! /usr/bin/env python2
+ 
+ 
+ """
+diff -Naur A/Tools/SharedData/FDKScripts/ttx.py B/Tools/SharedData/FDKScripts/ttx.py
+--- A/Tools/SharedData/FDKScripts/ttx.py	2015-07-06 16:18:59.000000000 -0400
++++ B/Tools/SharedData/FDKScripts/ttx.py	2017-01-06 11:53:25.950958740 -0500
+@@ -1,4 +1,4 @@
+-#!/usr/bin/python
++#! /usr/bin/env python2
+ 
+ __copyright__ = """Copyright 2015 Adobe Systems Incorporated (http://www.adobe.com/). All Rights Reserved.
+ """
