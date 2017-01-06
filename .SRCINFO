@@ -1,0 +1,14 @@
+pkgbase = go-lint
+	pkgdesc = golang lint
+	pkgver = 20161114.136_206c0f0
+	pkgrel = 1
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = go
+	makedepends = git
+	source = git://github.com/golang/lint.git
+	md5sums = SKIP
+
+pkgname = go-lint
+
