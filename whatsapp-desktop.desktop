@@ -2,7 +2,8 @@
 Type=Application
 Name=WhatsApp Desktop
 Icon=whatsapp-desktop
-Exec=WhatsApp %U
+Exec=Whatsapp
 Comment=WhatsApp for Desktop
 Categories=Network;Chat;
 Terminal=false
+StartupNotify=true

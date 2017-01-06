@@ -11,7 +11,7 @@ pkgbase = whatsapp-desktop
 	source = whatsapp-desktop.desktop
 	source = whatsapp-desktop.png
 	sha256sums = 980e6a5033373741a257d3e4f2b715dbf71b0a63e4ced12bcb0587f8d97bb438
-	sha256sums = 052e0225a9bb5945a52bfe7d01de401d9cfbb2478a20ddeab52060e00947e564
+	sha256sums = 8153a94ecaff2f7466f1621571505a1f55135299cdcf4604fdfd2e7805cb94dc
 	sha256sums = c128bdf1366f26b203c2a97b1284d66bd28d63c45812a7456385e1bf4afa27e4
 
 pkgname = whatsapp-desktop
