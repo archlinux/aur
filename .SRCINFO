@@ -1,7 +1,7 @@
 pkgbase = progit2-git
 	pkgdesc = A package to build the latest version of the progit2 book and read it when offline
-	pkgver = 2.0.0.r611.g024a3a0
-	pkgrel = 3
+	pkgver = 2.0.0.r689.g5026c45
+	pkgrel = 1
 	url = https://github.com/progit/progit2
 	install = progit2-git.install
 	arch = any
