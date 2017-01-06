@@ -1,13 +1,27 @@
-post_install() {
-    printf "NOTE: You need manually enable the systemd services after install via commands:\n"
-    printf "sudo systemctl enable asus-nb-wmi-reload\n"
+asus-nb-wmi-reload_enabled() {
+    systemctl is-enabled asus-nb-wmi-reload.service &> /dev/null
+    if [ $? -eq 0 ]; then
+        echo 'Service asus-nb-wmi-reload is enabled already'
+    else
+        echo 'Enabling asus-nb-wmi-reload service...'
+        systemctl enable asus-nb-wmi-reload.service &> /dev/null
+    fi
 }
 
 post_upgrade() {
-    post_install %1
+    asus-nb-wmi-reload_enabled
+    systemctl daemon-reload
 }
 
-post_remove() {
-    printf "NOTE: You need manually disable the systemd services after remove via commands:\n"
-    printf "sudo systemctl disable asus-nb-wmi-reload\n"
+post_install() {
+    post_upgrade
+}
+
+pre_remove() {
+    echo 'Disabling asus-nb-wmi-reload service...'
+    systemctl is-enabled asus-nb-wmi-reload.service &> /dev/null
+    if [ $? -eq 0 ]; then
+        systemctl disable asus-nb-wmi-reload.service &> /dev/null
+    fi
+    systemctl daemon-reload
 }
