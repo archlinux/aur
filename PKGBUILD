@@ -2,8 +2,8 @@
 
 _pkgname=click-threading
 pkgname=("python-${_pkgname}" "python2-${_pkgname}")
-pkgver=0.4.0
-pkgrel=2
+pkgver=0.4.2
+pkgrel=1
 pkgdesc="Multithreaded Click apps made easy"
 arch=("any")
 url="https://pypi.python.org/pypi/${_pkgname}"
@@ -14,7 +14,7 @@ checkdepends=("python-pytest" "python-click"
               "python2-pytest" "python2-click" 'python2-futures')
 source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/click-contrib/${_pkgname}/archive/${pkgver}.tar.gz")
 #source=("https://pypi.python.org/packages/source/${_pkgname:0:1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
-sha256sums=('072d227cf3128ddbf07bd2a738cc137fcf8e1a6d2eb80f8d1cb24c1d0c8dba76')
+sha256sums=('f74b744ae118a40ff1e1f37167e9134789459df2a5e3e994d339a20b3c847945')
 
 prepare() {
   rm -rf -- "${srcdir}/${_pkgname}-${pkgver}-py2"
