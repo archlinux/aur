@@ -34,7 +34,12 @@ build() {
 package() {
   cd "$srcdir/OSVR-Display-build"
   make DESTDIR="$pkgdir/" install
+  rm -rf "$pkgdir"/usr/lib/libdocopt* "$pkgdir"/usr/lib/cmake/docopt/ "$pkgdir"/usr/include/docopt/
   mv "$pkgdir/usr/lib64" "$pkgdir/usr/lib" || true
+
+  install -d "$pkgdir/usr/include"
+  cp -ra "$srcdir/OSVR-Display/osvr" "$pkgdir"/usr/include
+  ln -s Display "$pkgdir"/usr/include/osvr/display
 }
 
 # vim:set ts=2 sw=2 et:
