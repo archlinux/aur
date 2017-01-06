@@ -1,0 +1,27 @@
+pkgbase = ungoogled-chromium-bundle
+	pkgdesc = Modifications to Google Chromium for removing Google integration and enhancing privacy, control, and transparency
+	pkgver = 55.0.2883.75
+	pkgrel = 3
+	url = https://github.com/Eloston/ungoogled-chromium
+	arch = x86_64
+	license = BSD
+	depends = p7zip
+	depends = bash
+	depends = firejail
+	optdepends = ffmpeg: H264/AAC/MP3 decoding
+	provides = ungoogled-chromium
+	source = https://github.com/Eloston/ungoogled-chromium/releases/download/55.0.2883.75-1/ungoogled-chromium_55.0.2883-75-1_linux_x64_9Morello.tar.xz
+	source = ungoogled.desktop
+	source = uchrome.sh
+	sha256sums = 93448949d64b7c08ee4fa2026ca82e68ab47a32d1f2442bb116e53427859ebe2
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha384sums = 098608fa011e29d658748d5bb3e4c630493847181d753bb7ce9ea3bdc2a80df1044e3698ef6da6d8f6325a885dd310c2
+	sha384sums = SKIP
+	sha384sums = SKIP
+	sha512sums = 941dcc92665352ac9694a9658e308b8637f7f551093b13e79a272ba1ab2a7e821f7be8e87d36abcbd873f3dcf2d647383303b3b88d7ccc4020612854181b4f98
+	sha512sums = SKIP
+	sha512sums = SKIP
+
+pkgname = ungoogled-chromium-bundle
+
