@@ -3,7 +3,7 @@
 
 pkgname=ungoogled-chromium-bundle
 pkgver=55.0.2883.75
-pkgrel=4
+pkgrel=5
 pkgdesc="Modifications to Google Chromium for removing Google integration and enhancing privacy, control, and transparency"
 arch=('x86_64')
 url="https://github.com/Eloston/ungoogled-chromium"
@@ -37,7 +37,8 @@ package() {
   cp -r ungoogled-chromium_$pkgver-1/ "$pkgdir"/opt/$pkgname
 
   # /usr/bin symlinks
-  cp -r "$srcdir"/ungoogled.desktop "$pkgdir"/usr/share/applications
+  ln -s /opt/ungoogled-chromium/chrome "$pkgdir"/usr/bin/uchromium
+    cp -r "$srcdir"/ungoogled.desktop "$pkgdir"/usr/share/applications
     chmod +x "$srcdir"/uchrome.sh    
     cp "$srcdir"/uchrome.sh "$pkgdir"/usr/bin/uchrome
 }
