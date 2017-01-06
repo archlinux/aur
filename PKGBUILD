@@ -1,7 +1,7 @@
 # Maintainer: Tyler Veness <calcmogul at gmail dot com>
 
 pkgname=arm-frc-linux-gnueabi-wpilib-git
-pkgver=1533.40365fa
+pkgver=1713.bc7ab176
 pkgrel=1
 pkgdesc="The WPI FIRST Robotics Competition C/C++ library for the arm-frc-linux-gnueabi toolchain"
 arch=(i686 x86_64)
@@ -9,7 +9,6 @@ conflicts=('arm-frc-linux-gnueabi-wpilib')
 provides=('arm-frc-linux-gnueabi-wpilib')
 url="https://usfirst.collab.net/sf/projects/wpilib/"
 license=('custom=FRC-BSD')
-groups=('frc-2016')
 depends=('arm-frc-linux-gnueabi-gcc' 'gazebo')
 makedepends=('git' 'java-environment=8' 'doxygen' 'unzip')
 options=('!strip' 'libtool' 'staticlibs' '!emptydirs')
