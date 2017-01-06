@@ -3,13 +3,13 @@
 _target="arm-frc-linux-gnueabi"
 pkgname=${_target}-binutils
 pkgver=2.27
-pkgrel=1
+pkgrel=2
 pkgdesc="A set of programs to assemble and manipulate binary and object files (${_target})"
 arch=(i686 x86_64)
 license=(GPL)
 options=(!libtool !buildflags !emptydirs)
 url="http://sources.redhat.com/binutils"
-groups=('frc-2016')
+groups=('frc-2017')
 depends=('glibc')
 source=(ftp://ftp.gnu.org/gnu/binutils/binutils-${pkgver}.tar.bz2)
 md5sums=('2869c9bf3e60ee97c74ac2a6bf4e9d68')
