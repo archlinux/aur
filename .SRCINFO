@@ -1,7 +1,7 @@
 pkgbase = fityk
 	pkgdesc = A program for nonlinear fitting of analytical functions to data.
 	pkgver = 1.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://fityk.nieto.pl/
 	install = fityk.install
 	arch = i686
