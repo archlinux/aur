@@ -2,7 +2,7 @@
 
 pkgname=nuget3
 pkgver=3.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Package manager for .NET."
 arch=('any')
 url="http://www.nuget.org"
