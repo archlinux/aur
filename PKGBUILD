@@ -7,7 +7,7 @@ arch=('i686' 'x86_64')
 url="https://p7.touhey.fr/"
 license=('GPL2')
 groups=()
-depends=('libusb>=1.0')
+depends=('libusb>=1.0' 'libp7>=2.0')
 makedepends=('make>=4.0' 'gcc>=4.9' 'asciidoc>=8.6.9' 'gzip>=1.6' 'binutils>=2.25' 'libp7>=2.0')
 optdepends=()
 provides=()

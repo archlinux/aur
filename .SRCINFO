@@ -13,6 +13,7 @@ pkgbase = p7
 	makedepends = binutils>=2.25
 	makedepends = libp7>=2.0
 	depends = libusb>=1.0
+	depends = libp7>=2.0
 	source = https://p7.touhey.fr/pub/p7utils-2.0.tar.gz
 	md5sums = 66d2407ee3c7f9b79bc11e7b6cd2a726
 
