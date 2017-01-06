@@ -4,3 +4,4 @@
 *.xz
 *.gz
 /carla-git/
+*.tar
