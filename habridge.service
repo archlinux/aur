@@ -1,0 +1,11 @@
+[Unit]
+Description=HA Bridge
+Wants=network.target
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/java -jar -Dconfig.file=/usr/share/habridge/data/habridge.config /usr/share/habridge/ha-bridge-3.5.1.jar
+
+[Install]
+WantedBy=multi-user.target

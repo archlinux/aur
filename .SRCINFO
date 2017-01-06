@@ -1,0 +1,16 @@
+pkgbase = ha-bridge
+	pkgdesc = Home automation bridge that emulates a Philips Hue light system and can control other systems such as a Vera, Harmony Hub, Nest, MiLight bulbs or any other system that has an http/https/tcp/udp interface.
+	pkgver = 3.5.1
+	pkgrel = 1
+	url = https://github.com/bwssytems/ha-bridge
+	arch = any
+	license = GPL
+	depends = java-runtime
+	noextract = ha-bridge-3.5.1.jar
+	source = https://github.com/bwssytems/ha-bridge/releases/download/v3.5.1/ha-bridge-3.5.1.jar
+	source = habridge.service
+	md5sums = 8688150b6cb9fd394eb5db87301dcf14
+	md5sums = 13647918b868d4d34f83caf5560de5d4
+
+pkgname = ha-bridge
+
