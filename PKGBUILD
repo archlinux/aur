@@ -4,8 +4,8 @@
 # you also find the URL of a binary repository.
 
 pkgname=mingw-w64-freetype2-bootstrap
-pkgver=2.6.5
-pkgrel=2
+pkgver=2.7.1
+pkgrel=1
 pkgdesc="TrueType font rendering library (mingw-w64)"
 arch=('any')
 url="http://www.freetype.org/"
@@ -21,7 +21,7 @@ source=(http://download.savannah.gnu.org/releases/freetype/freetype-${pkgver}.ta
         0003-Make-subpixel-hinting-mode-configurable.patch
         0004-Keep-default-interpreter-version-as-35.patch)
 options=(!strip !buildflags !libtool staticlibs)
-sha1sums=('5db38ae2308c5a2c519c8e071e98b70d61585201'
+sha1sums=('4d08a9a6567c6332d58e9a5f9a7e9e3fbce66789'
           'SKIP'
           'e1fde7854d2a64868a5eef07415ad23c339fc630'
           '7da3af8e1e002e39a247c37a05a10beb576007d6'
@@ -29,7 +29,7 @@ sha1sums=('5db38ae2308c5a2c519c8e071e98b70d61585201'
           '1f30feeba9c51c9ec745bd29ef07beccf9544338')
 validpgpkeys=('58E0C111E39F5408C5D3EC76C1A60EACE707FDA5')
 
-if [[ $pkgname = "mingw-w64-freetype2-bootstrap" ]]; then
+if [[ $pkgname = 'mingw-w64-freetype2-bootstrap' ]]; then
   _provides=${pkgname%-bootstrap}
 else
   _provides=${pkgname}-bootstrap
@@ -41,7 +41,7 @@ fi
 provides+=(${_provides})
 conflicts+=(${_provides})
 
-_architectures="i686-w64-mingw32 x86_64-w64-mingw32"
+_architectures='i686-w64-mingw32 x86_64-w64-mingw32'
 
 prepare() {
   cd "${srcdir}/freetype-${pkgver}"
