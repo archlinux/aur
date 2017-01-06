@@ -3,7 +3,7 @@
 pkgname=zygrib
 _upname=zyGrib # upstream, case-sensitive project name
 pkgver=8.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Weather data visualization, GRIB file viewer"
 arch=('i686' 'x86_64')
 url="http://www.zygrib.org/"
@@ -15,6 +15,11 @@ source=($_upname-$pkgver.tgz::http://www.zygrib.org/getfile.php?file=$_upname-$p
 	zygrib.desktop
         zygrib.png) # creative commons licence
 DLAGENTS=('http::/usr/bin/curl -fLC - --cookie nada -o /dev/null %u --next --cookie nada  --retry-delay 3 -o %o %u')
+
+prepare() {
+	cd "$srcdir/$_upname-$pkgver"
+	sed 's/\(^.*image.inmem_=1.*$\)/\/\/\1/' src/g2clib/enc_jpeg2000.c > src/g2clib/enc_jpeg2000.c.tmp; mv src/g2clib/enc_jpeg2000.c.tmp src/g2clib/enc_jpeg2000.c
+}
 
 build() {
   cd "$srcdir/$_upname-$pkgver"
