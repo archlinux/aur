@@ -16,10 +16,10 @@ pkgbase = radarr
 	optdepends = transmission-qt: a torrent downloader (Qt version)
 	optdepends = deluge: a torrent downloader
 	provides = radarr
-	source = https://github.com/galli-leo/Radarr/releases/download/v0.1-e/Radarr_Mono_v0.1-e.zip
+	source = https://github.com/galli-leo/Radarr/releases/download/v0.1-f/Radarr_Mono_v0.1-f.zip
 	source = radarr.sh
 	source = radarr.service
-	sha512sums = 5DA915C8E651DFAEF5ED02ED7109A0E4F9C28D554A566EA12D3C0A1F424B0091D6224ADF0B9B6EA604778A5D31D7F0166BD791B77CDCB93381D83A7080DA60C7
+	sha512sums = 19DF729F021D486F3A878A7BAE2AAE968E18B9CEA47097AEFB645236520DA51980502B7ABA03C2BEB5AC8F2E3E7AB248CA0732B1ED930B861E392A7E502A7DCF
 	sha512sums = 9edd2fea914ea744c87d72a1e0dcb903e9e2d335cb51f5a29ad157f5ba27ed78638787f99b8ec42b2bac96d042f1a48858fc78c6c134e26d63da553e83001f6a
 	sha512sums = 237a74e8ae8c968da33c44241f0b47fb3209b15ecc1962f45286adab466701d0c7be91cffc7e856951d14f1b72e565ad6fd97115bc1feb1c3bfd4f8c07f453fd
 
