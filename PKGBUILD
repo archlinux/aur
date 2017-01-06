@@ -28,7 +28,6 @@ md5sums=('SKIP'
 
 pkgver() {
   cd "${srcdir}/tensorflow"
-  # git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
   git describe --tags | sed 's/-/+/g'
 }
 
