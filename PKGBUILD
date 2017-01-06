@@ -3,7 +3,7 @@
 
 pkgname=nextcloud-app-radio-git
 pkgver=0.1.3.r71.gc00c1a0
-pkgrel=2
+pkgrel=3
 pkgdesc="Listening to your favorite radio stations in Nextcloud"
 arch=('any')
 url="https://git.project-insanity.org/onny/nextcloud-app-radio"
@@ -28,7 +28,7 @@ sha512sums=("SKIP")
 
 package() {
   install -d "${pkgdir}/usr/share/webapps/nextcloud/apps/radio"
-  cp -r "${srcdir}/radio/*" "${pkgdir}/usr/share/webapps/nextcloud/apps/radio/"
+  cp -r ${srcdir}/radio/* "${pkgdir}/usr/share/webapps/nextcloud/apps/radio/"
   #tar -xvf "${srcdir}/mail/build/artifacts/tasks.tar.gz" -C "${pkgdir}/usr/share/webapps/nextcloud/apps/"
   #install -D "${pkgdir}/usr/share/webapps/nextcloud/apps/tasks/COPYING" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
