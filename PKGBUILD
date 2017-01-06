@@ -27,8 +27,8 @@ sha512sums=("SKIP")
 #}
 
 package() {
-  install -d "${pkgdir}/usr/share/webapps/nextcloud/apps"
-  cp -r "${srcdir}/radio" "${pkgdir}/usr/share/webapps/nextcloud/apps/radio"
+  install -d "${pkgdir}/usr/share/webapps/nextcloud/apps/radio"
+  cp -r "${srcdir}/radio/*" "${pkgdir}/usr/share/webapps/nextcloud/apps/radio/"
   #tar -xvf "${srcdir}/mail/build/artifacts/tasks.tar.gz" -C "${pkgdir}/usr/share/webapps/nextcloud/apps/"
   #install -D "${pkgdir}/usr/share/webapps/nextcloud/apps/tasks/COPYING" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
