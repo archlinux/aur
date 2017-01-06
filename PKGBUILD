@@ -2,7 +2,7 @@
 
 pkgname=kodi-addon-superrepo-all
 pkgver=0.7.04
-pkgrel=2
+pkgrel=3
 pkgdesc='The world largest XBMC addon repository containing more than 1.300 addons'
 _codename=jarvis
 _classname=superrepo.kodi.${_codename}.all
@@ -10,7 +10,7 @@ arch=('any')
 url='http://superrepo.org/'
 license=('GPL3')
 depends=('kodi')
-source=("http://srp.nu/$codename/all/${_classname}-$pkgver.zip")
+source=("http://srp.nu/$_codename/all/${_classname}-$pkgver.zip")
 noextract=("${source[@]##*/}")
 optdepends=('kodi-addon-superrepo-adult: enable adult addons for XBMC')
 makedepends=('unzip')
