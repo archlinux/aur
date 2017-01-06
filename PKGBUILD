@@ -6,7 +6,7 @@ pkgdesc="Cython wrapper for the C++ translation of the Angus Johnson's Clipper l
 url="https://github.com/greginvm/pyclipper"
 arch=(any)
 license=('MIT')
-makedepends=('python-setuptools' 'python2-setuptools' 'python-cython' 'python2-cython')
+makedepends=('python-setuptools' 'python2-setuptools' 'cython' 'cython2')
 source=("https://github.com/greginvm/pyclipper/archive/${pkgver}.tar.gz")
 sha256sums=('6b76702875cfcbdb4a4e500a1c23c1c93f39bad1c75a828f4151927000783d34')
 
