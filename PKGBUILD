@@ -4,7 +4,7 @@
 _pkgname=musl
 _target=arm-linux-gnueabihf
 pkgname=$_target-$_pkgname
-pkgver=1.1.15
+pkgver=1.1.16
 pkgrel=1
 pkgdesc='Lightweight implementation of C standard library'
 arch=('i686' 'x86_64')
@@ -14,8 +14,8 @@ options=('staticlibs' '!buildflags' '!strip')
 makedepends=('arm-linux-gnueabihf-binutils' 'arm-linux-gnueabihf-gcc')
 validpgpkeys=('836489290BB6B70F99FFDA0556BCDB593020450F')
 source=(https://www.musl-libc.org/releases/musl-$pkgver.tar.gz{,.asc})
-md5sums=('9590a9d47ee64f220b3c12f7afb864ca'
-         'SKIP')
+sha256sums=('937185a5e5d721050306cf106507a006c3f1f86d86cd550024ea7be909071011'
+            'SKIP')
 _sysroot=/usr/lib/$_target
 
 build() {
