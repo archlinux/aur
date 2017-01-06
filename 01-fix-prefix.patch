@@ -5,7 +5,7 @@ index b2817bc..961e1b0 100644
 @@ -1,7 +1,7 @@
  CC=gcc
  CFLAGS=-rdynamic -fPIC -D_GNU_SOURCE -shared -Wall -std=c99
- LDFLAGS=-Wl,-z,relro,-z,now
+ LDFLAGS=-Wl,-z,relro,-z,now -ldl
 -prefix=/usr/local
 +prefix=/usr
  bindir=$(prefix)/bin

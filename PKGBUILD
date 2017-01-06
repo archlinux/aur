@@ -6,7 +6,7 @@ pkgname=libstrangle-git
 # shellcheck disable=SC2034
 pkgdesc="Simple FPS Limiter"
 # shellcheck disable=SC2034
-pkgver=r43.5f0f377
+pkgver=r60.c834bec
 # shellcheck disable=SC2034
 pkgrel=1
 # shellcheck disable=SC2034
@@ -32,14 +32,12 @@ source=("${_gitname}::git+${url}"
         'libstrangle.install'
         '00-defer-ldconfig.patch'
         '01-fix-prefix.patch'
-        '02-link-libdl.patch'
         )
 # shellcheck disable=SC2034
 sha256sums=('SKIP'
             'db3268bccb1444d87a5216ecbf1ead656289923e599b0a883817fe52bfd0f1e7'
             '40ca981cebef416abaa80247bc0a11b9bbf9e71e14172b178596c540aad9394b'
-            'e42f778b669531493d5528df1848e3fc25510c472bcf56214336232d3e22507d'
-            '97843d9d4af7ab2f81c02f9e9e3f74d253d044ccd57917f5cd28e92b21426a10')
+            '318401eaeeba7f87a304fda8b680ff45c9bcb266df1b5ea16477730b08ea106b')
 
 pkgver() {
   # shellcheck disable=SC2154
@@ -66,9 +64,6 @@ prepare() {
 
   # Fix the prefix from /usr/local to /usr
   patch -p1 -i "${srcdir}/01-fix-prefix.patch"
-
-  # Link against the libdl
-  patch -p1 -i "${srcdir}/02-link-libdl.patch"
 }
 
 package() {
