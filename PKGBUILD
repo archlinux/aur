@@ -1,14 +1,14 @@
 # Maintainer : Breizh <breizh.craft.98@openmailbox.org>
 pkgname=libp7
-pkgver=1.5
+pkgver=2.0
 pkgrel=1
 pkgdesc="Casio Communication Protocol 7.00 implementation"
 arch=('i686' 'x86_64')
-url="https://p7.touhey.fr"
+url="https://p7.touhey.fr/"
 license=('GPL2')
 groups=()
-depends=('libusb')
-makedepends=('make' 'gcc' 'asciidoc' 'gzip' 'binutils')
+depends=('libusb>=1.0')
+makedepends=('make>=4.0' 'gcc>=4.9' 'asciidoc>=8.6.9' 'gzip>=1.6' 'binutils>=2.25')
 optdepends=()
 provides=()
 conflicts=()
@@ -17,19 +17,16 @@ backup=()
 options=()
 install=
 changelog=
-source=(https://forge.touhey.fr/lib/$pkgname/snapshot/$pkgname-$pkgver.tar.gz)
+source=(https://p7.touhey.fr/pub/${pkgname}-${pkgver}.tar.gz)
 noextract=()
-md5sums=('bb71c2fa64298db8e203d668d9512fc0')
+md5sums=('e17e017f4728ec09efce0f67d08537c4')
 
 build() {
   cd "$pkgname-$pkgver"
-
-  ./configure --root=$pkgdir
-  make
+  ./configure && make
 }
 
 package() {
   cd "$pkgname-$pkgver"
-
-  make install
+  make install DESTDIR="$pkgdir"
 }
