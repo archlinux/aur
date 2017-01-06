@@ -1,0 +1,15 @@
+post_install() {
+	kana-p-poison -i > /dev/null 2> /dev/null
+}
+
+pre_upgrade() {
+	kana-p-poison -u > /dev/null 2> /dev/null
+}
+
+post_upgrade() {
+	kana-p-poison -i > /dev/null 2> /dev/null
+}
+
+pre_remove() {
+	kana-p-poison -u > /dev/null 2> /dev/null
+}
