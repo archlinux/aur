@@ -2,8 +2,8 @@
 
 pkgbase=razer-drivers-git
 pkgname=('python-razer-git' 'razer-daemon-git' 'razer-driver-dkms-git' 'razer-driver-arch-git')
-pkgver=1.1.3.r55.gbd65d8b
-pkgrel=1
+pkgver=1.1.5.r10.g8ae9799
+pkgrel=2
 pkgdesc="An entirely open source driver and user-space daemon that allows you to manage your Razer peripherals on GNU/Linux."
 arch=('any')
 url="https://github.com/terrycain/razer-drivers"
@@ -32,7 +32,8 @@ package_python-razer-git() {
 
 package_razer-daemon-git() {
   pkgdesc="A daemon for controlling razer-driver"
-  depends=('RAZER-DRIVERS-MODULES' 'python-dbus' 'python-gobject' 'python-setproctitle' 'xautomation' 'xdotool' 'libdbus' 'python-notify2' 'python-pyudev')
+  depends=('RAZER-DRIVERS-MODULES' 'python-dbus' 'python-gobject' 'python-setproctitle' 'xautomation' 'xdotool' 'libdbus' 'python-notify2' 'python-pyudev' 'gtk3')
+  # gtk3 for "gi.require_version('Gdk', '3.0')"
   provides=('razer-daemon')
   conflicts=('razer-daemon')
 
