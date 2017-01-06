@@ -8,7 +8,7 @@ pkgdesc="Cross-platform network packet/traffic generator and analyzer"
 source=("http://dl.bintray.com/pstavirs/ostinato/ostinato-src-$pkgver.tar.gz")
 arch=('i686' 'x86_64')
 depends=('protobuf' 'qt4' 'libpcap')
-optdepends=('wireshark' 'tshark' 'gzip' 'diff' 'awk')
+optdepends=('wireshark-cli' 'gzip' 'diffutils' 'awk')
 license=(GPL)
 
 build(){
