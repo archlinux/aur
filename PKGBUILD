@@ -2,7 +2,7 @@
 pkgname="radarr"
 pkgver=0.1
 pkgsub=f
-pkgrel=2
+pkgrel=3
 pkgdesc="Movie downloader for usenet and torrents."
 arch=(any)
 url="https://github.com/galli-leo/Radarr"

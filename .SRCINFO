@@ -1,7 +1,7 @@
 pkgbase = radarr
 	pkgdesc = Movie downloader for usenet and torrents.
 	pkgver = 0.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/galli-leo/Radarr
 	install = radarr.install
 	arch = any
