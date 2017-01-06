@@ -3,7 +3,7 @@
 pkgname=bashimget
 pkgver=1.1
 pkgrel=1
-pkgdesc="A simple reader bash.im written in Java"
+pkgdesc="A simple bash.im reader written in Java"
 arch=('i686' 'x86_64')
 url="https://bitbucket.org/kalterfive/bashimget"
 depends=('java-runtime')
