@@ -3,7 +3,7 @@
 pkgname=pi-hole-standalone
 _pkgname=pi-hole
 pkgver=2.11.1
-pkgrel=1
+pkgrel=2
 pkgdesc='The Pi-hole is an advertising-aware DNS/Web server. Arch alteration for standalone PC.'
 arch=('any')
 license=('GPL2')
@@ -102,7 +102,7 @@ prepare() {
 
   sed -n "/EnableDHCP(){/w $_ssc" "$srcdir"/$_pkgname-$pkgver/advanced/Scripts/webpage.sh
   if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: setting up and securing webpage.sh script 5" && return 1 ; fi
-  sed -i '/EnableDHCP(){/,+16d' "$srcdir"/$_pkgname-$pkgver/advanced/Scripts/webpage.sh
+  sed -i '/EnableDHCP(){/,+17d' "$srcdir"/$_pkgname-$pkgver/advanced/Scripts/webpage.sh
 
   sed -n "/SetWebUILayout(){/w $_ssc" "$srcdir"/$_pkgname-$pkgver/advanced/Scripts/webpage.sh
   if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: setting up and securing webpage.sh script 6" && return 1 ; fi
