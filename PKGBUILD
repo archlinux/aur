@@ -12,7 +12,7 @@ conflicts=('nuget')
 source=(https://dist.nuget.org/win-x86-commandline/v${pkgver}/NuGet.exe
 				'nuget')
 install="${pkgname}.install"
-md5sums=('d2b71f5cfae2d0e1b4a8d993c1ef43b8'
+md5sums=('406324e1744923a530a3f45b8e4fe1eb'
          'd78ac3ef24bebbf942d63ad3b1e205fe')
 
 package() {
