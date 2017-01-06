@@ -2,27 +2,27 @@
 
 _target="arm-frc-linux-gnueabi"
 pkgname=${_target}-eglibc
-pkgver=2.20
-_basever=2.20-r0.56
+pkgver=2.21
+_basever=2.21-r0.83
 pkgrel=1
 pkgdesc="Embedded GNU C Library (${_target})"
 arch=(any)
 url="http://www.eglibc.org"
 curl="http://www.eglibc.org"
 license=('GPL')
-groups=('frc-2016')
+groups=('frc-2017')
 depends=("${_target}-linux-api-headers")
-options=(!strip 'staticlibs' '!emptydirs')
-source=("http://download.ni.com/ni-linux-rt/feeds/2015/arm/ipk/cortexa9-vfpv3/libc6_${_basever}_cortexa9-vfpv3.ipk"
-        "http://download.ni.com/ni-linux-rt/feeds/2015/arm/ipk/cortexa9-vfpv3/libc6-dev_${_basever}_cortexa9-vfpv3.ipk"
-        "http://download.ni.com/ni-linux-rt/feeds/2015/arm/ipk/cortexa9-vfpv3/libcidn1_${_basever}_cortexa9-vfpv3.ipk"
-        "http://download.ni.com/ni-linux-rt/feeds/2015/arm/ipk/cortexa9-vfpv3/libc6-thread-db_${_basever}_cortexa9-vfpv3.ipk"
-        "http://download.ni.com/ni-linux-rt/feeds/2015/arm/ipk/cortexa9-vfpv3/libc6-extra-nss_${_basever}_cortexa9-vfpv3.ipk")
-md5sums=('31f62c897cc648578ba1f09f974610d7'
-         'd801797dbf2f80e4fc3c60dcc18898e4'
-         '07bfe266a001c3b4487865310487d470'
-         '9025cc8694f526989d9031e26094fa85'
-         '42d9a0a5d8d519aab51bbb956199548d')
+options=('!strip' 'staticlibs' '!emptydirs')
+source=("http://download.ni.com/ni-linux-rt/feeds/2016/arm/ipk/cortexa9-vfpv3/libc6_${_basever}_cortexa9-vfpv3.ipk"
+        "http://download.ni.com/ni-linux-rt/feeds/2016/arm/ipk/cortexa9-vfpv3/libc6-dev_${_basever}_cortexa9-vfpv3.ipk"
+        "http://download.ni.com/ni-linux-rt/feeds/2016/arm/ipk/cortexa9-vfpv3/libcidn1_${_basever}_cortexa9-vfpv3.ipk"
+        "http://download.ni.com/ni-linux-rt/feeds/2016/arm/ipk/cortexa9-vfpv3/libc6-thread-db_${_basever}_cortexa9-vfpv3.ipk"
+        "http://download.ni.com/ni-linux-rt/feeds/2016/arm/ipk/cortexa9-vfpv3/libc6-extra-nss_${_basever}_cortexa9-vfpv3.ipk")
+md5sums=('b0ebbf81bf8967e3c4cb4015e377c96c'
+         '1f69e9ef7f61edad53bf325e2a83f6b2'
+         '9e1a5b62312d0dba50a07b79c237e4ac'
+         '49e2138e2d36ba014a891a5a41d628b9'
+         '2fea5da4b5dbfc52dfc387d64935b9e1')
 
 package() {
   cd "${srcdir}"
