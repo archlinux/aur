@@ -2,7 +2,7 @@
 # Contributor: Nathan Owe. <ndowens04 at gmail>
 
 pkgname=newsfeed
-pkgver=3.7
+pkgver=3.8
 pkgrel=1
 pkgdesc="An RSS/RDF/Atom reader and aggregator"
 arch=('any')
@@ -15,7 +15,7 @@ optdepends=('python-pillow: for displaying images in feeds'
 source=("http://mdoege.github.io/3NewsFeed/NewsFeed-$pkgver.tar.gz"
         "newsfeed.desktop"
         "newsfeed.png")
-md5sums=('4a562089e0318270cb60e7c6d388a1b8'
+md5sums=('6b687458237f96e995cfd6d9eaa44adf'
          'bf9de50dadb523f9dd4599eb1d852bf5'
          '934bc285373e953a21cbf1a4b17888ca')
 
