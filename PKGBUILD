@@ -3,7 +3,7 @@
 pkgbase='python-colorlog'
 pkgname=('python-colorlog' 'python2-colorlog')
 pkgver='2.10.0'
-pkgrel=1
+pkgrel=2
 pkgdesc="Log formatting with colors"
 arch=('any')
 url='https://github.com/borntyping/python-colorlog'
