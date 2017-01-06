@@ -1,15 +1,17 @@
 # Maintainer: Eli Schwartz <eschwartz93@gmail.com>
 
+# All my PKGBUILDs are managed at https://github.com/eli-schwartz/pkgbuilds
+
 _pkgname=KindleUnpack
 pkgname=kindleunpack
 pkgver=0.80
-pkgrel=3
+pkgrel=4
 pkgdesc="Extract text, images and metadata from Kindle/Mobi files"
 arch=('any')
 url="http://www.mobileread.com/forums/showthread.php?t=61986"
 license=('GPLv3')
 depends=('python' 'tk')
-source=("https://github.com/kevinhendricks/${_pkgname}/archive/v${pkgver}.tar.gz"
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/kevinhendricks/${_pkgname}/archive/v${pkgver}.tar.gz"
         "Installing-with-setuptools.diff")
 sha256sums=('567d22d7f48c050a896e64c3ac1a77c83ad0beda8767bae9e2f9f10607839b51'
             '30dc56333aefa24bd2f9ffaa22113021669bd4d235564db56dfe6a09ea3f5b68')
