@@ -1,14 +1,14 @@
 # Maintainer : Breizh <breizh.craft.98@openmailbox.org>
 pkgname=p7screen
-pkgver=1.0
-pkgrel=2
-pkgdesc="Display screen streaming ot of your CASIO fx calculator"
+pkgver=2.0
+pkgrel=1
+pkgdesc="Casio Communication Protocol 7.00 implementation"
 arch=('i686' 'x86_64')
 url="https://p7.touhey.fr/"
 license=('GPL2')
 groups=()
-depends=('libp7>=1.5-1' 'sdl>=1.2')
-makedepends=('make' 'asciidoc' 'gzip')
+depends=('libusb>=1.0')
+makedepends=('make>=4.0' 'gcc>=4.9' 'asciidoc>=8.6.9' 'gzip>=1.6' 'binutils>=2.25' 'libp7>=2.0')
 optdepends=()
 provides=()
 conflicts=()
@@ -17,19 +17,16 @@ backup=()
 options=()
 install=
 changelog=
-source=(https://forge.touhey.fr/casio/software/$pkgname/snapshot/$pkgname-$pkgver.tar.gz)
+source=(https://p7.touhey.fr/pub/p7utils-${pkgver}.tar.gz)
 noextract=()
-md5sums=('ffba290006e0d6277ddd0b74130fe0ce')
+md5sums=('66d2407ee3c7f9b79bc11e7b6cd2a726')
 
 build() {
-  cd "$pkgname-$pkgver"
-
-  ./configure --root=$pkgdir
-  make
+  cd "p7utils-$pkgver"
+  ./configure && make all-p7screen
 }
 
 package() {
-  cd "$pkgname-$pkgver"
-
-  make install
+  cd "p7utils-$pkgver"
+  make install-p7screen DESTDIR="$pkgdir"
 }
