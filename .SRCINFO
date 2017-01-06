@@ -1,7 +1,7 @@
 pkgbase = p7
 	pkgdesc = Casio Communication Protocol 7.00 implementation
 	pkgver = 2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://p7.touhey.fr/
 	arch = i686
 	arch = x86_64
@@ -11,7 +11,6 @@ pkgbase = p7
 	makedepends = asciidoc>=8.6.9
 	makedepends = gzip>=1.6
 	makedepends = binutils>=2.25
-	makedepends = libp7>=2.0
 	depends = libusb>=1.0
 	depends = libp7>=2.0
 	source = https://p7.touhey.fr/pub/p7utils-2.0.tar.gz
