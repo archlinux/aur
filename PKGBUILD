@@ -1,7 +1,7 @@
 # Maintainer : Breizh <breizh.craft.98@openmailbox.org>
 pkgname=libp7
 pkgver=2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Casio Communication Protocol 7.00 implementation"
 arch=('i686' 'x86_64')
 url="https://p7.touhey.fr/"
@@ -29,4 +29,6 @@ build() {
 package() {
   cd "$pkgname-$pkgver"
   make install DESTDIR="$pkgdir"
+  mkdir -p $pkgdir/etc/rules.d/
+  echo 'ACTION=="add", ATTR{idVendor}=="07cf", ATTR{idProduct}=="6101", MODE="0666"' > $pkgdir/etc/rules.d/60-casio-calculators-usb.rules
 }
