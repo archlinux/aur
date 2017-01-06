@@ -1,6 +1,6 @@
 pkgbase = sigil-git
 	pkgdesc = A WYSIWYG ebook editor
-	pkgver = 0.9.7.r15.g1205652
+	pkgver = 0.9.7.r28.g4ea65077
 	pkgrel = 2
 	url = https://github.com/Sigil-Ebook/Sigil
 	arch = i686
