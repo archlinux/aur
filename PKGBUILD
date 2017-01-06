@@ -1,7 +1,7 @@
 # Maintainer: Simon Bachmann <simonbachmann@bluewin.ch>
 pkgname=imgtools
 pkgver=0.2
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="A Tk extension to scale and rotate photo images"
 arch=('x86_64')
@@ -21,7 +21,7 @@ install=
 changelog=
 source=("https://sourceforge.net/projects/tkimgtools/files/$pkgver/$pkgname-$pkgver.tar.gz/download")
 noextract=()
-md5sums=('6a8f919a65407a1057783394c8cbc22b')
+md5sums=('ea0639257c9a142afc96d6ba39bb5ed4')
 validpgpkeys=()
 
 prepare() {
