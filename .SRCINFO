@@ -1,7 +1,7 @@
 pkgbase = zygrib
 	pkgdesc = Weather data visualization, GRIB file viewer
 	pkgver = 8.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.zygrib.org/
 	arch = i686
 	arch = x86_64
