@@ -3,7 +3,7 @@
 # Contributor: Julien Deswaef (juego) <juego@requiem4tv.com>
 
 pkgname=python-tensorflow-git
-pkgver=0.12.0.rc1.r1267.gc2c4c2086
+pkgver=0.12.1+1600+ge4dde23d5
 pkgrel=1
 
 pkgdesc="Open source software library for numerical computation using data flow graphs."
@@ -18,12 +18,18 @@ depends=('python-numpy' 'swig' 'python-wheel' 'python-protobuf')
 makedepends=('git' 'python-pip' 'bazel' 'rsync')
 optdepends=('cuda: GPU support'
             'cudnn: GPU support')
-source=("git+https://github.com/tensorflow/tensorflow")
-md5sums=('SKIP')
+source=("git+https://github.com/tensorflow/tensorflow"
+        "march_native.diff"
+        "https://bitbucket.org/eigen/eigen/raw/9ba936354ee8b73fb1966dcb2d3506387bb357f1/unsupported/Eigen/CXX11/src/Tensor/TensorContractionThreadPool.h")
+
+md5sums=('SKIP'
+         '696beeb14be1d669066ce51819eb6044'
+         '1bf688d25c599906f0ffddde97aca1ed')
 
 pkgver() {
   cd "${srcdir}/tensorflow"
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
+  # git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
+  git describe --tags | sed 's/-/+/g'
 }
 
 prepare() {
@@ -38,7 +44,7 @@ prepare() {
 
   # setup environment variables
   export PYTHON_BIN_PATH=/usr/bin/python
-  export PYTHON_LIB_PATH=/usr/lib/python3.5/site-packages
+  export USE_DEFAULT_PYTHON_LIB_PATH=1
   if (pacman -Q cuda &>/dev/null && pacman -Q cudnn &>/dev/null); then
     msg2 "CUDA support enabled"
     _build_opts="--config=cuda"
@@ -49,9 +55,9 @@ prepare() {
     export CUDA_TOOLKIT_PATH=/opt/cuda
     export CUDNN_INSTALL_PATH=/opt/cuda
     # adapt to your needs
-    # export TF_CUDA_VERSION=7.5
-    # export TF_CUDNN_VERSION=5
-    # export TF_CUDA_COMPUTE_CAPABILITIES=3.5,5.2
+    export TF_CUDA_VERSION=8.0
+    export TF_CUDNN_VERSION=5
+    export TF_CUDA_COMPUTE_CAPABILITIES=3.5,5.2
   else
     msg2 "CUDA support disabled"
     export TF_NEED_CUDA=0
@@ -61,10 +67,17 @@ prepare() {
   export TF_NEED_GCP=0
   # disable Hadoop File System support
   export TF_NEED_HDFS=0
+  # disable OpenCL support
+  export TF_NEED_OPENCL=0
 
   # make sure the proxy variables are in all caps, otherwise bazel ignores them
   export HTTP_PROXY=`echo $http_proxy | sed -e 's/\/$//'`
   export HTTPS_PROXY=`echo $https_proxy | sed -e 's/\/$//'`
+
+  # hack to enable build with -march=native from: https://github.com/tensorflow/tensorflow/issues/6558
+  mkdir -p third_party/eigen3/unsupported/Eigen/CXX11/src/Tensor
+  cp ../TensorContractionThreadPool.h third_party/eigen3/unsupported/Eigen/CXX11/src/Tensor/TensorContractionThreadPool.h
+  patch -Np1 -i ../march_native.diff
 }
 
 build() {
@@ -73,7 +86,7 @@ build() {
   cd "${srcdir}/tensorflow"
 
   ./configure
-  bazel build -c opt ${_build_opts} //tensorflow/tools/pip_package:build_pip_package
+  bazel build -c opt ${_build_opts} --copt=-march=native //tensorflow/tools/pip_package:build_pip_package
 
   msg2 "Building pip package..."
   bazel-bin/tensorflow/tools/pip_package/build_pip_package ${srcdir}/tmp
