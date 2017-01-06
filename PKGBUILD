@@ -7,18 +7,18 @@ arch=('i686' 'x86_64')
 url='http://www.adobe.com/devnet/opentype/afdko.html'
 license=('custom')
 depends=('python2'
-	 'python2-fonttools'
-	 'python2-booleanoperations'
-	 'python2-defcon'
-	 'python2-fontmath'
-	 'python2-mutatormath'
-	 'python2-robofab'
-	 'python2-ufonormalizer')
+         'python2-fonttools'
+         'python2-booleanoperations'
+         'python2-defcon'
+         'python2-fontmath'
+         'python2-mutatormath'
+         'python2-robofab'
+         'python2-ufonormalizer')
 depends_x86_64=('lib32-glibc')
 source=("http://download.macromedia.com/pub/developer/opentype/FDK.${pkgver/b/}/FDK-25-LINUX.${pkgver##*.}.zip"
         'use-system-python.patch'
-	'profile.sh'
-	'profile.csh'
+        'profile.sh'
+        'profile.csh'
         'EULA')
 sha256sums=('37ca9490b2c273f621a14d76c3af12826a3d734d06cc75c18e8922ebf6104e8d'
             '77dd9bb0a5d323db3f2cbd3052b6d3bac275bac507dee7b196b647fe6b302169'
