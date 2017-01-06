@@ -2,12 +2,11 @@
 
 pkgname=gitea
 pkgver=1.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Git with a cup of tea, forked from Gogs. Is a Self Hosted Git Service in the Go Programming Language.'
 arch=('x86_64' 'i686')
 url='http://gitea.io'
 license=('MIT')
-depends=('git' 'go>=1.6')
 optdepends=('sqlite: SQLite support'
             'mariadb: MariaDB support'
             'postgresql: PostgreSQL support'
@@ -15,9 +14,7 @@ optdepends=('sqlite: SQLite support'
             'redis: Redis support'
             'memcached: MemCached support'
             'openssh: GIT over SSH support')
-makedepends=('go>=1.6' 'git')
 conflicts=('gitea-git' 'gitea-git-dev')
-options=('emptydirs')
 backup=('etc/gitea/app.ini')
 source=(https://github.com/go-gitea/gitea/releases/download/v${pkgver}/${pkgname}-${pkgver}-linux-amd64
         gitea.service
@@ -30,8 +27,9 @@ package() {
   install -o git -g git -d -m 750 ${pkgdir}/var/lib/gitea/
   install -o git -g git -d -m 750 ${pkgdir}/var/lib/gitea/{repos,tmp,sessions,attachments,public,data}
   install -o git -g git -d -m 750 ${pkgdir}/var/log/gitea/
+  install -o root -g git -d -m 770 ${pkgdir}/etc/gitea/
 
   install -Dm755 ${srcdir}/${pkgname}-${pkgver}-linux-amd64 ${pkgdir}/usr/bin/${pkgname}
   install -Dm644 ${srcdir}/gitea.service ${pkgdir}/usr/lib/systemd/system/${pkgname}.service
-  install -Dm644 ${srcdir}/app.ini ${pkgdir}/etc/gitea/app.ini
+  install -o root -g git -Dm664 ${srcdir}/app.ini ${pkgdir}/etc/gitea/app.ini
 }
