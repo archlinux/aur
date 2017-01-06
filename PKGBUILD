@@ -2,14 +2,14 @@
 
 pkgname=arm-frc-linux-gnueabi-frcmake-hg
 pkgver=r97.5de14e5bbf2c
-pkgrel=1
+pkgrel=2
 pkgdesc="Wrapper scripts for using CMake with the FRC toolchain"
 arch=('any')
 url="https://bitbucket.org/byteit101/toolchain-builder/"
 license=('GPL')
 makedepends=('mercurial')
 provides=('arm-frc-linux-gnueabi-frcmake')
-groups=('frc-2016')
+groups=('frc-2017')
 depends=('cmake')
 _hgrepo='toolchain-builder'
 source=(hg+https://bitbucket.org/byteit101/"$_hgrepo")
