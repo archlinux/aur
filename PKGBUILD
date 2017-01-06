@@ -2,8 +2,8 @@
 # Contributor (backup): Thomas Fanninger <thomas at fanninger dot at>
 
 pkgname=linx-server
-pkgver=1.2.4
-pkgrel=3
+pkgver=1.2.6
+pkgrel=1
 pkgdesc='Self-hosted file/code/media sharing website '
 arch=('i686' 'x86_64' 'arm')
 url='https://github.com/andreimarcu/linx-server'
@@ -17,13 +17,13 @@ source=('linx-server.service' 'config.ini')
 md5sums=('ff2e46fa6491fb58f24294e037092799' '8c2fe5caef5e0477d0da15cc0d947337')
 
 source_i686=("linx-server::https://github.com/andreimarcu/linx-server/releases/download/v$pkgver/linx-server-v${pkgver}_linux-386")
-md5sums_i686=('80dcec06b9522640b7d6925f72612677')
+md5sums_i686=('ec82a98b9de72f726ee4c427515c107c')
 
 source_x86_64=("linx-server::https://github.com/andreimarcu/linx-server/releases/download/v$pkgver/linx-server-v${pkgver}_linux-amd64")
-md5sums_x86_64=('a9257c11692bfafd544562590149a5e1')
+md5sums_x86_64=('6d8f5ec2074af2c19f49035dc7030dc9')
 
 source_arm=("linx-server::https://github.com/andreimarcu/linx-server/releases/download/v$pkgver/linx-server-v${pkgver}_linux-arm")
-md5sums_arm=('65e5b70bac88a950444fade2854da424')
+md5sums_arm=('82d085dcdb6230f6d6d242cc155bc8bc')
 
 
 package() {
