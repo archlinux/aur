@@ -21,24 +21,35 @@
 set -u
 _pkgname='cpdf'
 pkgname="${_pkgname}"
-pkgver=2.1.1
-pkgrel=1
+pkgver=2.1.1; _pkghash='17372d86935f7541ae0bc7ff0b9eebb721af0cb0'
+pkgrel=2
 pkgdesc='Coherent PDF and smpdf to manipulate PDF files including merge, encrypt, decrypt, scale, crop, rotate, bookmarks, stamp, logos, page numbers'
 arch=('x86_64' 'i686')
+url='http://community.coherentpdf.com'
 license=('custom')
-url="http://community.coherentpdf.com"
-depends=('camlpdf')
-makedepends=('coreutils' 'binutils') # install, strip
-makedepends+=('ocaml' 'ocaml-findlib')
-options=('!makeflags' 'staticlibs')
+depends=('camlpdf>=2.2a')
+makedepends=('ocaml' 'ocaml-findlib')
 conflicts=('cpdf-bin') # temporary
-_srcdir="${_pkgname}-source-${pkgver}"
-_srcdirmast="${_pkgname}-binaries-master"
-_verwatch=("${url}/releases" "${url#*github.com}/archive/v\(.*\)\.tar\.gz" 'l')
-source=("${_pkgname}-source-v${pkgver}.tar.gz::https://github.com/johnwhitington/${_pkgname}-source/archive/v${pkgver}.tar.gz"
-        "${_srcdirmast}.zip::https://github.com/coherentgraphics/cpdf-binaries/archive/master.zip")
-sha256sums=('00a3c8b6f1ff60feff7d0b72c095befb576c08edc35ffee28a4d3a24ad599956'
-            'd76999dc379f5bc74c20f3938d0a6bb41c4e4c6ca8042c29ac8bb3c1df9a0e2b')
+options=('!makeflags' 'staticlibs')
+
+#_srcdirmast="${_pkgname}-binaries-master"; _srcmastname="${_srcdirmast}"
+_srcdirmast="${_pkgname}-binaries-${_pkghash}"; _srcmastname="${_pkgname}-binaries-${pkgver}.tar.gz"
+unset _pkghash
+
+#_srcfile="v${pkgver}"
+#_srcfile='master'
+_srcfile='8d1ee91bd2390a6eacbc087983d8afec263182db'
+_srcdir="${_pkgname}-source-${_srcfile#v}"; _srcdirname="${_srcdir}"
+
+_giturl="https://github.com/johnwhitington/${_pkgname}-source"
+_verwatch=("${_giturl}/releases" "${_giturl#*github.com}/archive/v\(.*\)\.tar\.gz" 'l')
+source=(
+  "${_srcmastname}.tar.gz::https://github.com/coherentgraphics/cpdf-binaries/archive/${_srcdirmast##*-}.tar.gz"
+  "${_srcdirname}.tar.gz::${_giturl}/archive/${_srcfile}.tar.gz"
+)
+unset _srcfile _srcmastname _srcdirname
+sha256sums=('55a0de2b225413d7cda3784e6336f40f707a31b8f018c1cd24a8396df9dda65f'
+            '01c9c2534726331c93bc74cf1c5e59d9eb69105c21ad3a6a7d2fcddd28a58de0')
 
 _pkgver_disabled() {
   set -u
