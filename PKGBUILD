@@ -9,6 +9,7 @@ license=("GPL2")
 conflicts=("carla")
 provides=("carla")
 depends=("python-pyqt5"
+         "qt5-svg"
          "fluidsynth"
          "gtk2"
          "gtk3"
