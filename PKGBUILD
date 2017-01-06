@@ -2,7 +2,7 @@
 
 pkgname=gitea
 pkgver=1.0.1
-pkgrel=2
+pkgrel=3
 pkgdesc='Git with a cup of tea, forked from Gogs. Is a Self Hosted Git Service in the Go Programming Language.'
 arch=('x86_64' 'i686')
 url='http://gitea.io'
@@ -27,7 +27,7 @@ package() {
   install -o git -g git -d -m 750 ${pkgdir}/var/lib/gitea/
   install -o git -g git -d -m 750 ${pkgdir}/var/lib/gitea/{repos,tmp,sessions,attachments,public,data}
   install -o git -g git -d -m 750 ${pkgdir}/var/log/gitea/
-  install -o root -g git -d -m 770 ${pkgdir}/etc/gitea/
+  install -o root -g git -d -m 775 ${pkgdir}/etc/gitea/
 
   install -Dm755 ${srcdir}/${pkgname}-${pkgver}-linux-amd64 ${pkgdir}/usr/bin/${pkgname}
   install -Dm644 ${srcdir}/gitea.service ${pkgdir}/usr/lib/systemd/system/${pkgname}.service
