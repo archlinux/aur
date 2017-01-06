@@ -4,7 +4,7 @@
 # you also find the URL of a binary repository.
 
 pkgname=mingw-w64-freetype2
-pkgver=2.7
+pkgver=2.7.1
 pkgrel=1
 pkgdesc="TrueType font rendering library (mingw-w64)"
 arch=('any')
@@ -20,14 +20,14 @@ source=(http://download.savannah.gnu.org/releases/freetype/freetype-${pkgver}.ta
         0002-Enable-subpixel-rendering.patch
         0003-Enable-infinality-subpixel-hinting.patch)
 options=(!strip !buildflags !libtool staticlibs)
-sha1sums=('f251029d5ab542a96dd4531605fe577185077560'
+sha1sums=('4d08a9a6567c6332d58e9a5f9a7e9e3fbce66789'
           'SKIP'
           'b31882ef5e8447e761acee1c4a44c0630cd4d465'
           'b1494810ed3aca25cdd8e8cedf634e5adfe6c09e'
           '41d27140fd590945e22e012c9dce62de3d6f11e6')
 validpgpkeys=('58E0C111E39F5408C5D3EC76C1A60EACE707FDA5')
 
-if [[ $pkgname = "mingw-w64-freetype2-bootstrap" ]]; then
+if [[ $pkgname = 'mingw-w64-freetype2-bootstrap' ]]; then
   _provides=${pkgname%-bootstrap}
 else
   _provides=${pkgname}-bootstrap
@@ -39,7 +39,7 @@ fi
 provides+=(${_provides})
 conflicts+=(${_provides})
 
-_architectures="i686-w64-mingw32 x86_64-w64-mingw32"
+_architectures='i686-w64-mingw32 x86_64-w64-mingw32'
 
 prepare() {
   cd "${srcdir}/freetype-${pkgver}"
