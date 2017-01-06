@@ -3,7 +3,7 @@
 
 pkgname=nextcloud-app-radio-git
 pkgver=0.1.3.r71.gc00c1a0
-pkgrel=1
+pkgrel=2
 pkgdesc="Listening to your favorite radio stations in Nextcloud"
 arch=('any')
 url="https://git.project-insanity.org/onny/nextcloud-app-radio"
