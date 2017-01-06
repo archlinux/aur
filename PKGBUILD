@@ -8,7 +8,7 @@
 # Based on community/morituri and aur/morituri-git PKGBUILDs
 
 pkgname=whipper-git
-pkgver=0.4.0.r16.gd1ed80d
+pkgver=0.4.0.r22.ga1eb337
 pkgrel=1
 pkgdesc="A Unix CD ripper aiming for accuracy over speed -- forked from morituri"
 arch=('any')
@@ -34,7 +34,7 @@ makedepends=(
     'python2-gobject2'
     )
 provides=("${pkgname%-git}")
-conflicts=("${pkgname%-git}")
+conflicts=("${pkgname%-git}" 'morituri')
 source=("git+${url}.git")
 md5sums=('SKIP')
 
