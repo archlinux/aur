@@ -1,7 +1,7 @@
 # Maintainer: Adria Arrufat (archdria) <adria.arrufat+AUR@protonmail.ch>
 
 pkgname=tensorflow
-pkgver=0.12.1
+pkgver=0.12.1+1600+ge4dde23d5
 pkgrel=1
 pkgdesc="Library for computation using data flow graphs for scalable machine learning"
 url="https://www.tensorflow.org/"
@@ -12,22 +12,27 @@ conflicts=('tensorflow' 'libtensorflow')
 makedepends=('git' 'bazel' 'python-numpy')
 optdepends=('cuda: GPU support'
             'cudnn: GPU support')
-_commit=4d924e796368163eff11a8151e8505715345f58d
+_commit=e4dde23d58a10c9d0c14005d20d1ecdd599539ac
 source=("git+https://github.com/tensorflow/tensorflow#commit=$_commit"
-        "${pkgname}.pc")
+        "${pkgname}.pc"
+        "march_native.diff"
+        "https://bitbucket.org/eigen/eigen/raw/9ba936354ee8b73fb1966dcb2d3506387bb357f1/unsupported/Eigen/CXX11/src/Tensor/TensorContractionThreadPool.h")
+
 md5sums=('SKIP'
-         '9e6bb015d4c03bcd900e88c9c2185959')
+         '9e6bb015d4c03bcd900e88c9c2185959'
+         '696beeb14be1d669066ce51819eb6044'
+         '1bf688d25c599906f0ffddde97aca1ed')
+
 pkgver() {
-  cd ${srcdir}/tensorflow
-  git describe --tags | sed 's/-/./g;s/^v//'
+  cd "${srcdir}/tensorflow"
+  git describe --tags | sed 's/-/+/g'
 }
 
 prepare() {
   cd ${srcdir}/tensorflow
   # setup environment variables
   export PYTHON_BIN_PATH=/usr/bin/python
-  export PYTHON_LIB_PATH=/usr/lib/python3.5/site-packages
-  export TF_NEED_OPENCL=0
+  export USE_DEFAULT_PYTHON_LIB_PATH=1
   if (pacman -Q cuda &>/dev/null && pacman -Q cudnn &>/dev/null); then
     msg2 "CUDA support enabled"
     _build_opts="--config=cuda"
@@ -45,19 +50,28 @@ prepare() {
     msg2 "CUDA support disabled"
     export TF_NEED_CUDA=0
   fi
+
   # disable Google Cloud Platform support
   export TF_NEED_GCP=0
   # disable Hadoop File System support
   export TF_NEED_HDFS=0
+  # disable OpenCL support
+  export TF_NEED_OPENCL=0
+
   # make sure the proxy variables are in all caps, otherwise bazel ignores them
   export HTTP_PROXY=`echo $http_proxy | sed -e 's/\/$//'`
   export HTTPS_PROXY=`echo $https_proxy | sed -e 's/\/$//'`
+
+  # hack to enable build with -march=native from: https://github.com/tensorflow/tensorflow/issues/6558
+  mkdir -p third_party/eigen3/unsupported/Eigen/CXX11/src/Tensor
+  cp ../TensorContractionThreadPool.h third_party/eigen3/unsupported/Eigen/CXX11/src/Tensor/TensorContractionThreadPool.h
+  patch -Np1 -i ../march_native.diff
 }
 
 build() {
   cd ${srcdir}/tensorflow
   ./configure
-  bazel build -c opt ${_build_opts} tensorflow:libtensorflow_c.so
+  bazel build -c opt ${_build_opts} --copt=-march=native tensorflow:libtensorflow_c.so
   # copy the built library out of the bazel directory
   cp -f bazel-bin/tensorflow/libtensorflow_c.so .
 }
