@@ -44,8 +44,8 @@ _use_current=
 
 pkgbase=linux-ck
 _srcname=linux-4.8
-pkgver=4.8.15
-pkgrel=2
+pkgver=4.8.16
+pkgrel=1
 _ckpatchversion=8
 arch=('i686' 'x86_64')
 url="https://wiki.archlinux.org/index.php/Linux-ck"
@@ -72,10 +72,10 @@ source=("http://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         )
 sha256sums=('3e9150065f193d3d94bcf46a1fe9f033c7ef7122ab71d75a7fb5a2f0c9a7e11a'
             'SKIP'
-            'cdeff3a6e0dc3d6189d1b1d4d6318f0942b9a28409491cf65592879e4c42b1f7'
+            'e9f2af4023ddf126045599805053efa804b35e6b3e86f05b6301a01bf8735bb8'
             'SKIP'
             'cea596c606da2125946154a0121ea0516583f659ad823c93669ad5d25bbc3ef7'
-            '0f8630f1051efd5e823e6253f4261ebc536f67f45d9a6315816d66c4c6843a03'
+            '9bb21ccbc4f883cb5e63edf3693625311d89737b06536cf783f3a962ec28e0ec'
             '807b03333c8b0c30ace5026857ab1ca9f12457b5a599c34f4fd2e5163ffc72f8'
             'e6fb480819d176fac7f1bf447c7c9e3217bcc64a345c6d3966f98d6e845f66d8'
             '834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0'
