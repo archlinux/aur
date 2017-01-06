@@ -1,11 +1,10 @@
-# Maintainer: Bastien Traverse <firstname at lastname dot email>
+# Maintainer: Frederik "Freso" S. Olesen <archlinux@freso.dk>
+# Contributor: Bastien Traverse <firstname at lastname dot email>
 # Contributor: Samantha Baldwin <fuhsaz+git@cryptic.li>
-# Contributor: Frederik "Freso" S. Olesen <archlinux@freso.dk>
 # Contributor: Caleb Reach <jtxx000@gmail.com>
 # Contributor: Felix Yan <felixonmars@gmail.com>
 # Contributor: Karol "Kenji Takahashi" Woźniak <kenji.sx>
 # Contributor: Mantas Mikulėnas <grawity@gmail.com>
-# Based on community/morituri and aur/morituri-git PKGBUILDs
 
 pkgname=whipper-git
 pkgver=0.4.0.r22.ga1eb337
