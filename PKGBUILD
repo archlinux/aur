@@ -2,13 +2,13 @@
 pkgname=python-pilkit
 _pkgname=pilkit
 pkgver=1.1.13
-pkgrel=1
+pkgrel=2
 pkgdesc="A collection of utilities and processors for the Python Imaging Libary"
 arch=('any')
 url="https://github.com/matthewwithanm/pilkit/"
 license=('BSD')
 depends=('python' 'python-pillow')
-source=("http://pypi.python.org/packages/source/p/$_pkgname/$_pkgname-$pkgver.tar.gz")
+source=("https://files.pythonhosted.org/packages/source/p/$_pkgname/$_pkgname-$pkgver.tar.gz")
 md5sums=('dc586362902dcc1110d487d7c8ffd5e4')
 
 package() {
