@@ -5,12 +5,12 @@ _pkgname=jre
 pkgname=jre-devel
 _major=9
 #_minor=1
-_build=150
+_build=151
 _pkgver=$_major
 pkgver=${_major}b${_build}
 #_pkgver=${_major}u${_minor}
 #pkgver=${_major}u${_minor}.b${_build}
-pkgrel=2
+pkgrel=1
 pkgdesc="Oracle Java $_major Runtime Environment Snapshot"
 arch=('i686' 'x86_64')
 url=https://jdk$_major.java.net/
@@ -48,8 +48,8 @@ source_i686=("http://www.java.net/download/java/jdk${_major}/archive/${_build}/b
 source_x86_64=("http://www.java.net/download/java/jdk${_major}/archive/${_build}/binaries/${_pkgname}-${_pkgver}-ea+${_build}_linux-x64_bin.tar.gz")
 md5sums=('855a74ddead31f8b30943ac1a7d3a7a6'
          'f09947a67691a2d78d20a3885889981c')
-md5sums_i686=('4a78b80b7b55928103304d2fc401a455')
-md5sums_x86_64=('2b32a4219a63e50ba4e3d0b8924f9ed9')
+md5sums_i686=('1e8e4b4ebde5b7f02dbd4baea523e3e0')
+md5sums_x86_64=('06edbe0e854ea5ff74cf4275c48a68d5')
 
 package() {
     cd ${_pkgname}-${_major}

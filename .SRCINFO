@@ -1,7 +1,7 @@
 pkgbase = jre-devel
 	pkgdesc = Oracle Java 9 Runtime Environment Snapshot
-	pkgver = 9b150
-	pkgrel = 2
+	pkgver = 9b151
+	pkgrel = 1
 	url = https://jdk9.java.net/
 	install = jre-devel.install
 	arch = i686
@@ -41,10 +41,10 @@ pkgbase = jre-devel
 	source = OTN-Early-Adopter-License-Terms.txt
 	md5sums = 855a74ddead31f8b30943ac1a7d3a7a6
 	md5sums = f09947a67691a2d78d20a3885889981c
-	source_i686 = http://www.java.net/download/java/jdk9/archive/150/binaries/jre-9-ea+150_linux-x86_bin.tar.gz
-	md5sums_i686 = 4a78b80b7b55928103304d2fc401a455
-	source_x86_64 = http://www.java.net/download/java/jdk9/archive/150/binaries/jre-9-ea+150_linux-x64_bin.tar.gz
-	md5sums_x86_64 = 2b32a4219a63e50ba4e3d0b8924f9ed9
+	source_i686 = http://www.java.net/download/java/jdk9/archive/151/binaries/jre-9-ea+151_linux-x86_bin.tar.gz
+	md5sums_i686 = 1e8e4b4ebde5b7f02dbd4baea523e3e0
+	source_x86_64 = http://www.java.net/download/java/jdk9/archive/151/binaries/jre-9-ea+151_linux-x64_bin.tar.gz
+	md5sums_x86_64 = 06edbe0e854ea5ff74cf4275c48a68d5
 
 pkgname = jre-devel
 
