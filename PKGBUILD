@@ -10,7 +10,7 @@ depends=('java-environment-common')
 install=visual-paradigm-community.install
 _baseurl="http://www.visual-paradigm.com/downloads/vpce"
 license=('custom')
-source=("$pkgname-$pkgver.tar.gz::http://www.visual-paradigm.com/downloads/vpce/Visual_Paradigm_CE_Linux64_InstallFree.tar.gz"
+source=("http://www.visual-paradigm.com/downloads/vpce/Visual_Paradigm_CE_Linux64_InstallFree.tar.gz"
 	'visual-paradigm-community.install'
 	'visual-paradigm.desktop'
 	'Visual_Paradigm_Fixed'
