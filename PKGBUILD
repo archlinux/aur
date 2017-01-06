@@ -1,6 +1,6 @@
 # Maintainer: Natalia Portillo <claunia@clania.com>
 pkgname=rpcemu
-pkgver=0.8.14
+pkgver=0.8.15
 pkgrel=1
 pkgdesc="Emulator of the Acorn Archimedes and RiscPC computers."
 url="http://www.marutan.net/rpcemu/"
@@ -8,7 +8,7 @@ arch=('x86_64' 'i686')
 license=('GPL2')
 depends=('allegro4')
 source=("http://www.marutan.net/rpcemu/cgi/download.php?sFName=${pkgver}/rpcemu-${pkgver}.tar.gz")
-md5sums=('08ab6e08fdd9160a51af8d0ec46f9857')
+md5sums=('bffb5bbb81391c14f210facccd0f40b6')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}/src"
