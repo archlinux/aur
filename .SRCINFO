@@ -1,7 +1,7 @@
 pkgbase = ungoogled-chromium-bundle
 	pkgdesc = Modifications to Google Chromium for removing Google integration and enhancing privacy, control, and transparency
 	pkgver = 55.0.2883.75
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/Eloston/ungoogled-chromium
 	arch = x86_64
 	license = BSD

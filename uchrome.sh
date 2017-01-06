@@ -1,2 +1,2 @@
 #!/bin/bash
-./home/hue/pecagebuild/ungoogled/ungoogled-chromium-bin/pkg/ungoogled-chromium-bin/opt/ungoogled-chromium-bin/chrome
+'/opt/ungoogled-chromium-bundle/chrome' --no-sandbox
