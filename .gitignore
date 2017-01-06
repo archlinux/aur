@@ -1,0 +1,7 @@
+# Packages
+*.xz
+
+# Package source
+pkg/
+src/
+mono/

@@ -3,7 +3,7 @@
 
 pkgname=mono-git
 _pkgname=mono
-pkgver=r108112.c37bbef
+pkgver=r109943.129f185e583
 pkgrel=1
 pkgdesc="Free implementation of the .NET platform including runtime and compiler"
 arch=('i686' 'x86_64')
@@ -19,7 +19,7 @@ md5sums=('SKIP' 'b9ef8a65fea497acf176cca16c1e2402')
 
 pkgver() {
 	cd "${srcdir}/${_pkgname}" || exit 1
-	printf "r%s.%s"				\
+	printf "r%s.%s"                     \
 		"$(git rev-list --count HEAD)"	\
 		"$(git rev-parse --short HEAD)"
 }
@@ -27,13 +27,18 @@ pkgver() {
 build() {
 	cd "${srcdir}/${_pkgname}" || exit 1
 
-	# Build mono
+	# Configure mono
 	./autogen.sh --prefix=/usr	\
-		--sysconfdir=/etc	\
-		--bindir=/usr/bin	\
-		--sbindir=/usr/bin	\
+		--sysconfdir=/etc       \
+		--bindir=/usr/bin       \
+		--sbindir=/usr/bin      \
 		--disable-quiet-build	\
 		--with-mcs-docs=no
+
+    # If mono is unable to bootstrap itself, make sure monolite is available
+    make get-monolite-latest
+
+	# Build mono
 	make
 
 	# Build jay
@@ -42,23 +47,23 @@ build() {
 }
 
 package() {
-	cd "${srcdir}/${_pkgname}"
+	cd "${srcdir}/${_pkgname}" || exit 1
 	make DESTDIR="${pkgdir}" install
 
 	# Install jay
-	cd "${srcdir}"/"${_pkgname}"/mcs/jay || exit 1
-	make					\
-		DESTDIR="${pkgdir}"		\
-		prefix=/usr			\
-		INSTALL=../../install-sh	\
+	cd "${srcdir}/${_pkgname}/mcs/jay" || exit 1
+	make					        \
+		DESTDIR="${pkgdir}"		    \
+		prefix="/usr"			    \
+		INSTALL="../../install-sh"	\
 		install
 
-	# Install binfmt conf file and pathes
+	# Install binfmt conf file
 	install	 -m644 -D "${srcdir}/mono.binfmt.d" "${pkgdir}/usr/lib/binfmt.d/mono.conf"
 
 	# Install license
 	mkdir -p "${pkgdir}/usr/share/licenses/${_pkgname}"
-	install	-m644 -D "LICENSE" "${pkgdir}"/usr/share/licenses/"${_pkgname}"/
+	install	-m644 -D "${srcdir}/${_pkgname}/LICENSE" "${pkgdir}/usr/share/licenses/${_pkgname}/"
 
 	# Fix .pc file to be able to request mono on what it depends,
 	# fixes #go-oo build
