@@ -3,7 +3,7 @@
 _srcname=soledad
 pkgbase=python2-leap_$_srcname
 pkgname=("python2-leap_${_srcname}_common" "python2-leap_${_srcname}_client")
-pkgver=0.8.1
+pkgver=0.9.2
 pkgrel=1
 pkgdesc='Synchronization Of Locally Encrypted Data Among Devices.'
 arch=('any')
@@ -17,7 +17,7 @@ depends=(
 #)
 source=("https://github.com/leapcode/$_srcname/archive/$pkgver.tar.gz")
 validpgpkeys=('BE23FB4A0E9DB36ECB9AB8BE23638BF72C593BC1')
-sha512sums=('480f332c4152dfeb83e1eb4633d598c605f503391f2c6f160f51b45f8445e2ee8231101794ce5c3f1165a44b247d64e0323dd5ea4a6d3c658d0482470255db5c')
+sha512sums=('9148523716bf1eb9b35fa15e37e0c04ec9a4688ca3845e2d49d13041ede755804530ea442173f0e46cae0ab43e4a493958e2049586a19ca9ca331510e03d1ae8')
 
 build() {
   # Common
@@ -38,7 +38,7 @@ build() {
 package_python2-leap_soledad_common() {
   depends+=(
     # This should not be needed anymore but for
-    # some reason bitmask failes if it's not there
+    # some reason bitmask fails if it's not there
     'python2-u1db'
 
     'python2-paste'
@@ -56,6 +56,7 @@ package_python2-leap_soledad_client() {
     'python2-zope-proxy'
     'python2-twisted'
     'python2-leap_soledad_common'
+    'python2-cryptography'
   )
 
   cd "$srcdir/$_srcname-$pkgver/client"
