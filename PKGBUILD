@@ -2,7 +2,7 @@
 pkgname=lighttable-git
 _pkgname="${pkgname%-git}"
 _name=LightTable
-pkgver=0.8.1.r38.g868d6e1
+pkgver=0.8.1.r39.g183b485
 _pkgver=${pkgver/%.r*/}
 pkgrel=1
 pkgdesc='Next generation code editor and IDE with instant feedback.'

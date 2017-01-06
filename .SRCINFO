@@ -1,6 +1,6 @@
 pkgbase = lighttable-git
 	pkgdesc = Next generation code editor and IDE with instant feedback.
-	pkgver = 0.8.1.r38.g868d6e1
+	pkgver = 0.8.1.r39.g183b485
 	pkgrel = 1
 	url = http://lighttable.com/
 	arch = x86_64
