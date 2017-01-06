@@ -7,7 +7,7 @@ url="http://www.nicemice.net/par/"
 depends=('glibc')
 arch=(i686 x86_64)
 license=('custom')
-source=(http://www.nicemice.net/par/Par152.tar.gz)
+source=(http://www.sourcefiles.org/Utilities/Text_Utilities/Par152.tar.gz)
 md5sums=('4ccacd824171ba2c2f14fb8aba78b9bf')
 _dirname="Par152"
 
