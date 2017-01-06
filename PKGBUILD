@@ -6,8 +6,8 @@
 # Contributor: Karol "Kenji Takahashi" Woźniak <kenji.sx>
 # Contributor: Mantas Mikulėnas <grawity@gmail.com>
 
-pkgname=whipper-git
-pkgver=0.4.0.r22.ga1eb337
+pkgname=whipper
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="A Unix CD ripper aiming for accuracy over speed -- forked from morituri"
 arch=('any')
@@ -29,21 +29,13 @@ depends=(
     'sox'                           # for track peak detection'
     )
 makedepends=(
-    'git'
     'python2-gobject2'
     )
-provides=("${pkgname%-git}")
-conflicts=("${pkgname%-git}" 'morituri')
-source=("git+${url}.git")
-md5sums=('SKIP')
-
-pkgver() {
-    cd "$srcdir/${pkgname%-git}"
-    # Cutting off "v" prefix present in the git tag
-    git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
-}
+conflicts=('morituri')
+source=("${pkgname}-v${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
+sha512sums=('fd0757b2894ecd6c457b9bbd9e26791e3a875f89cfb6a3e9f5faf631563da5fa4df3105435117268edcd35034d658f33bd78a3d0bb34a4cd0a069133c69ef2e1')
 
 package() {
-    cd "$srcdir/${pkgname%-git}"
+    cd "$srcdir/${pkgname}-${pkgver}"
     python2 setup.py install --root="${pkgdir}"/ --optimize=1
 }

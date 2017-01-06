@@ -1,11 +1,10 @@
-pkgbase = whipper-git
+pkgbase = whipper
 	pkgdesc = A Unix CD ripper aiming for accuracy over speed -- forked from morituri
-	pkgver = 0.4.0.r22.ga1eb337
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://github.com/JoeLametta/whipper
 	arch = any
 	license = GPL3
-	makedepends = git
 	makedepends = python2-gobject2
 	depends = accuraterip-checksum
 	depends = cddb-py
@@ -20,11 +19,9 @@ pkgbase = whipper-git
 	depends = python2-pycdio
 	depends = python2-setuptools
 	depends = sox
-	provides = whipper
-	conflicts = whipper
 	conflicts = morituri
-	source = git+https://github.com/JoeLametta/whipper.git
-	md5sums = SKIP
+	source = whipper-v0.4.0.tar.gz::https://github.com/JoeLametta/whipper/archive/v0.4.0.tar.gz
+	sha512sums = fd0757b2894ecd6c457b9bbd9e26791e3a875f89cfb6a3e9f5faf631563da5fa4df3105435117268edcd35034d658f33bd78a3d0bb34a4cd0a069133c69ef2e1
 
-pkgname = whipper-git
+pkgname = whipper
 
