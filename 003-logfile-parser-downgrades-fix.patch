@@ -1,0 +1,42 @@
+diff '--color=auto' -aur a/pkgbrowser/conf.py b/pkgbrowser/conf.py
+--- a/pkgbrowser/conf.py	2015-03-29 10:41:40.000000000 -0700
++++ b/pkgbrowser/conf.py	2017-01-06 15:03:28.080141854 -0700
+@@ -1,4 +1,4 @@
+-# Copyright (C) 2010-2015, kachelaqa <kachelaqa@gmail.com>
++# Copyright (C) 2010-2017, kachelaqa <kachelaqa@gmail.com>
+ 
+ import os, re, glob, time, signal
+ import urllib.request, tempfile, shutil
+@@ -19,6 +19,11 @@
+ PM_LOG_FILE = '/var/log/pacman.log'
+ PM_CACHE_DIRS = ('/var/cache/pacman/pkg',)
+ 
++match_pkgfile = re.compile(r"""
++    ^(.+)-([^-\s]+-[^-\s]+)-(i686|x86_64|any)
++    \.pkg\.tar(?:\.(?:gz|bz2|xz|Z))?$
++    """, re.X).match
++
+ 
+ def read_config(path=PM_CONF_FILE, section=None, config=None):
+     if config is None:
+@@ -84,7 +89,7 @@
+     log = defaultdict(list)
+     pattern = re.compile(r"""
+         ^(\[[^]]+\])\ +(?:\[[^]]+\]\ +)?
+-        (installed|upgraded|removed)\ +(\S+)\ +(\(.+)
++        (installed|upgraded|downgraded|removed)\ +(\S+)\ +(\(.+)
+         """, re.X | re.S)
+     with open(path, 'r') as stream:
+         for line in stream:
+@@ -97,11 +102,6 @@
+             zip.writestr(name, ''.join(lines).encode('utf-8'))
+     return ZipFile(temp)
+ 
+-match_pkgfile = re.compile(r"""
+-    ^(.+)-([^-\s]+-[^-\s]+)-(i686|x86_64|any)
+-    \.pkg\.tar(?:\.(?:gz|bz2|xz|Z))?$
+-    """, re.X).match
+-
+ def load_pkgcache(caches=PM_CACHE_DIRS):
+     packages = defaultdict(list)
+     for cache in sorted(caches):
