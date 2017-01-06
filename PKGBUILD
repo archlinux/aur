@@ -2,7 +2,7 @@
 pkgname='beancount-hg'
 pkgdesc='Double-Entry Accounting from Text Input'
 pkgver=r4148.397e821a48c5
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 url="http://furius.ca/beancount/"
 license=('GPL')
@@ -10,7 +10,7 @@ source=("${pkgname}::hg+https://bitbucket.org/blais/beancount/")
 sha1sums=('SKIP')
 depends=('python>=3.5' 'mpdecimal' 'python-ply' 'python-dateutil'
 		 'python-magic-ahupp' 'python-beautifulsoup4' 'python-chardet'
-		 'python-bottle' 'python-lxml' 'python-google-python-api-client')
+		 'python-bottle' 'python-lxml' 'python-google-api-python-client')
 makedepends=('mercurial' 'python-nose' 'make')
 
 pkgver () {
