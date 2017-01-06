@@ -1,9 +1,9 @@
 # Maintainer: Christian Hesse <mail@eworm.de>
 
 pkgname=vis-standalone-git
-pkgver=0.2.r622.gaff8ffe
+pkgver=0.2.r632.g604c866
 pkgrel=1
-_pkgver_libmusl=1.1.15
+_pkgver_libmusl=1.1.16
 _pkgver_ncurses=6.0
 _pkgver_libtermkey=0.19
 _pkgver_lua=5.3.3
@@ -24,7 +24,7 @@ source=('git://github.com/martanne/vis.git'
 	"http://www.lua.org/ftp/lua-${_pkgver_lua}.tar.gz"
 	"http://www.inf.puc-rio.br/~roberto/lpeg/lpeg-${_pkgver_lpeg}.tar.gz")
 sha256sums=('SKIP'
-            '97e447c7ee2a7f613186ec54a93054fe15469fe34d7d323080f7ef38f5ecb0fa'
+            '937185a5e5d721050306cf106507a006c3f1f86d86cd550024ea7be909071011'
             'SKIP'
             'f551c24b30ce8bfb6e96d9f59b42fbea30fa3a6123384172f9e7284bcf647260'
             'SKIP'
