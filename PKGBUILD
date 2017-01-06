@@ -2,12 +2,12 @@
 
 pkgname=xtitle
 pkgver=0.3
-pkgrel=1
+pkgrel=2
 pkgdesc='Outputs X window titles'
 arch=('i686' 'x86_64')
 url="https://github.com/baskerville/${pkgname}"
 license=('custom:Unlicense')
-depends=('libxcb' 'xcb-util-wm')
+depends=('libxcb' 'xcb-util-wm' 'xcb-util')
 makedepends=('xcb-util-wm')
 provides=("${pkgname}")
 conflicts=("${pkgname}" "${pkgname}-git")

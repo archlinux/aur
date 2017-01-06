@@ -1,7 +1,7 @@
 pkgbase = xtitle
 	pkgdesc = Outputs X window titles
 	pkgver = 0.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/baskerville/xtitle
 	arch = i686
 	arch = x86_64
@@ -9,6 +9,7 @@ pkgbase = xtitle
 	makedepends = xcb-util-wm
 	depends = libxcb
 	depends = xcb-util-wm
+	depends = xcb-util
 	provides = xtitle
 	conflicts = xtitle
 	conflicts = xtitle-git
