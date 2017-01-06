@@ -1,5 +1,5 @@
 pkgname=osvr-steamvr-git
-pkgver=v0.1.r264.g16d5017
+pkgver=v0.1.r296.g7011d81
 pkgrel=1
 pkgdesc="Driver for allowing applications written against SteamVR to work with hardware and software running with the OSVR software framework."
 arch=(i686 x86_64)
@@ -7,8 +7,8 @@ url="https://github.com/OSVR/SteamVR-OSVR"
 #license=('GPL')
 install=osvr-steamvr.install
 makedepends=('git' 'cmake')
-depends=('osvr-core-git' 'openvr-git') #TODO: add more deps
-source=("osvr-steamvr::git+https://github.com/OSVR/SteamVR-OSVR.git#branch=update-v1.0.3" #TODO: remove when it is merged
+depends=('osvr-core-git' 'openvr-git' 'osvr-display-git') #TODO: add more deps
+source=("osvr-steamvr::git+https://github.com/OSVR/SteamVR-OSVR.git" #TODO: remove when it is merged
     "Findjsoncpp.cmake")
 
 pkgver() {
@@ -29,7 +29,7 @@ prepare() {
 
 build() {
   cd osvr-steamvr-build
-  cmake -DCMAKE_INSTALL_PREFIX=/usr/ -DCMAKE_BUILD_TYPE=Release -DBUILD_TESTS=ON -DCMAKE_INSTALL_LIBDIR=lib ../osvr-steamvr
+  cmake -DCMAKE_INSTALL_PREFIX=/usr/ -DCMAKE_BUILD_TYPE=Release -DBUILD_TESTS=OFF -DCMAKE_INSTALL_LIBDIR=lib ../osvr-steamvr
   make
 }
 
