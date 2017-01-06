@@ -4,7 +4,7 @@ validpgpkeys=('748231EBCBD808A14F5E85D28C004C2F93481F6B')
 # News updates for packages can be followed at https://devblog.square-r00t.net
 pkgname=bdisk
 pkgver=3.00
-pkgrel=3
+pkgrel=4
 #_pkgver=${pkgver}
 _pkgver=${pkgver}-BETA
 pkgdesc="An easy liveCD creator built in python. Supports hybrid ISOs/USB, iPXE, and UEFI."
@@ -32,7 +32,7 @@ changelog=
 noextract=()
 optdepends=('rsync: for rsync syncing'
 	'syslinux: for ipxe support'
-	'python-gitpython: for ipxe and git sync support'
+	'python-git: for ipxe and git sync support'
 	'python-pygpgme: for GPG support'
 	'python-patch: for ipxe support'
 	'python-pyopenssl: for iPXE support')
