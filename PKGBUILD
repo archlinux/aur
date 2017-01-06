@@ -1,7 +1,7 @@
 # Maintainer: M0Rf30
 pkgname=xplico
-pkgver=v1.1.2
-pkgrel=3
+pkgver=v1.1.2.r122.gcea1ce4
+pkgrel=1
 arch=(i686 x86_64)
 pkgdesc="Internet Traffic Decoder. Network Forensic Analysis Tool (NFAT)"
 url="http://www.xplico.org/"
@@ -17,10 +17,10 @@ depends=(
 	net-tools
 	perl
 	perl
-	php56
-	php56-apache
-	php56-pear
-	php56-sqlite
+	php
+	php-apache
+	php-pear
+	php-sqlite
 	python-httplib2
 	python-psycopg2
 	recode
@@ -46,7 +46,7 @@ package() {
 
 pkgver() {
   cd xplico
-  echo $(git tag)
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 md5sums=('SKIP')
