@@ -4,26 +4,26 @@
 
 _pkgname=testng
 pkgname=java-${_pkgname}-doc
-pkgver=6.9.12
+pkgver=6.10
 pkgrel=1
-pkgdesc='Documentation for TestNG'
+pkgdesc='Documentation for TestNG, including JavaDocs'
 arch=('any')
 url='http://testng.org/doc/index.html'
 license=('APACHE')
-makedepends=("maven" "java-environment")
-source=("https://github.com/cbeust/testng/archive/${pkgver}.zip")
-sha1sums=('e8d6efff6e536d972da79ebba5d2bd4a4cf073c7')
+optdepends=('java-testng')
+source=("https://github.com/cbeust/testng/archive/${pkgver}.zip"
+        "https://dl.bintray.com/cbeust/maven/org/${_pkgname}/${_pkgname}/${pkgver}/${_pkgname}-${pkgver}-javadoc.jar")
+sha1sums=('08d37655902c91c0978c8d366a7787017dbff9b4'
+          '588006162d6ca512869533e1d6cf20d60ed7f30c')
+noextract=("${source[@]##*/}")
 
-build() {
-  cd "${srcdir}/${_pkgname}-${pkgver}"
-  mvn javadoc:javadoc
-  rm target/site/apidocs/javadoc.sh
-  rm target/site/apidocs/options
+prepare() {
+  unzip "${srcdir}/${pkgver}.zip" "${_pkgname}-${pkgver}/docs/*" -d "${srcdir}"
 }
 
 package() {
-  cd "${srcdir}/${_pkgname}-${pkgver}"
   install -dm755 ${pkgdir}/usr/share/doc/${_pkgname}
-  cp -r doc "${pkgdir}/usr/share/doc/${_pkgname}"
-  cp -r target/site/apidocs "${pkgdir}/usr/share/doc/${_pkgname}/javadocs"
+  cp -r "${srcdir}/${_pkgname}-${pkgver}/docs" "${pkgdir}/usr/share/doc/${_pkgname}"
+  cp "${srcdir}/${_pkgname}-${pkgver}-javadoc.jar" "${pkgdir}/usr/share/doc/${_pkgname}/${_pkgname}-javadoc.jar"
 }
+
