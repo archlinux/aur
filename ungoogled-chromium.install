@@ -13,7 +13,7 @@ blue="${bold}$(tput setaf 4)"
 yellow="${bold}$(tput setaf 3)"
 
 post_install() {
-    note "Pepper Flash is now auto-detected from: /usr/lib/PepperFlash/ (pepper-flash [AUR])
+    note "Pepper Flash is now auto-detected from: /usr/lib/PepperFlash/ (pepper-flash [AUR])"
     echo
 
     note "Custom flags should be put directly in: ~/.config/chromium-flags.conf
