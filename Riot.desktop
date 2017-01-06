@@ -4,5 +4,5 @@ Comment=A feature-rich client for Matrix.org
 Exec="/usr/bin/riot-web"
 Terminal=false
 Type=Application
-Icon=riot-web
+Icon=riot
 StartupWMClass="Riot"
