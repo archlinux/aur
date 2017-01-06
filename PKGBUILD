@@ -2,7 +2,7 @@
 # Contributor : All of you ;)
 
 pkgname=cronograph-conky
-pkgver=6.9.161121
+pkgver=7.0.170106
 pkgrel=1
 pkgdesc="A free, conky clock widget for X which displays date, time and weather information"
 arch=('any')
@@ -13,7 +13,7 @@ depends=('conky-lua-archers-git' 'curl' 'lm_sensors')
 makedepends=('git' 'fontconfig')
 optdepends=('hddtemp: https://wiki.archlinux.org/index.php/Hddtemp')
 source=("https://github.com/drxspace/cronoconky/releases/download/${pkgver}/v${pkgver}.tar.gz")
-sha1sums=('bae54c251b2678f8ff7eb7e05e2936c08e133a75')
+sha1sums=('5a3cd0a75961d64411c236d0c0efda65c2d9c1a8')
 install='cronograph-conky.install'
 options=(!strip !docs !emptydirs !optipng !debug)
 
@@ -32,10 +32,9 @@ package() {
 	ln -fs /opt/cronograph_blk/restart_crono.sh "${pkgdir}"/usr/local/bin/restart_crono
 	ln -fs /opt/cronograph_blk/stop_crono.sh "${pkgdir}"/usr/local/bin/stop_crono
 
-	cd "${srcdir}"
 
-	install -D -m755 cronograph_conky.desktop "$pkgdir/usr/share/applications/cronograph_conky.desktop"
-	install -D -m755 cronograph_conky.desktop "$pkgdir/etc/xdg/autostart/cronograph_conky.desktop"
+	RPM_BUILD_ROOT="${pkgdir}" desktop-file-install "${srcdir}/cronograph_conky.desktop"
+	install -D -m755 "${srcdir}/cronograph_conky.desktop" "$pkgdir/etc/xdg/autostart/cronograph_conky.desktop"
 
 	install -D -m644 LICENSE.GPL ${pkgdir}/usr/share/licenses/LICENSE.GPL
 }
