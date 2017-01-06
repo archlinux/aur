@@ -1,0 +1,14 @@
+pkgbase = osvr-display-git
+	pkgdesc = Cross-platform detection and configuration of displays
+	pkgver = r51.36d8aca
+	pkgrel = 1
+	url = https://github.com/OSVR/OSVR-Display
+	arch = i686
+	arch = x86_64
+	makedepends = git
+	makedepends = cmake
+	source = git+https://github.com/OSVR/OSVR-Display.git
+	md5sums = SKIP
+
+pkgname = osvr-display-git
+
