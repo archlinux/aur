@@ -1,2 +1,2 @@
 #!/bin/sh
-exec mono /usr/lib/radarr/NzbDrone.exe "$@"
+exec mono /usr/lib/radarr/Radarr.exe "$@"
