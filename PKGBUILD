@@ -1,9 +1,9 @@
 #Contributor: Anselmo L. S. Melo <anselmolsm @ gmail.com>
 
 pkgname=iceberg-git
-pkgver=r91.b30bf8c
+pkgver=r93.1574dbc
 pkgrel=1
-pkgdesc=""
+pkgdesc="Iceberg is an icecream GUI monitor"
 url="https://github.com/hugopl/Iceberg"
 license=('GPL')
 depends=('qt5-base' 'icecream')
@@ -21,7 +21,7 @@ pkgver() {
 
 prepare() {
 	cd "$srcdir/${pkgname%-git}"
-	mkdir build
+	mkdir -p build
 }
 
 build() {
