@@ -2,7 +2,7 @@
 
 pkgname=phive
 pkgver=0.6.2
-pkgrel=1
+pkgrel=2
 pkgdesc="The Phar Installation and Verification Environment (PHIVE)"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url="http://www.jetbrains.com/phpstorm/"
