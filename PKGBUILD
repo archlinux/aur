@@ -1,7 +1,7 @@
 # Maintainer: renek <aur@spaceshore.net>
 _pkgname=multidict
 pkgname=python-${_pkgname}
-pkgver=2.1.2
+pkgver=2.1.4
 pkgrel=1
 pkgdesc="An asyncio-based multidict implementation for Python"
 arch=('any')
@@ -10,7 +10,7 @@ license=('APACHE')
 depends=('python')
 makedepends=('cython' 'python-setuptools')
 source=("https://github.com/aio-libs/multidict/archive/v${pkgver}.tar.gz")
-sha512sums=('7debfe3c0abb3323a5ee82b7522ab86162b3d44333ea7dcb26c7c87d24fb4c4c062095db9603ac4a757d507971fff6252f4b3dd9d2183ea167caa5ae80ae3b33')
+sha512sums=('1806f21a528f907ba16cada2eda05c7387d63bec45b7906a5a37eba834a87553c402766f4e50425a41414e93e2fc202d18ad9e6aaf02742fe06899e6a18109c8')
 
 build() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
