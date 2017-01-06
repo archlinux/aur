@@ -3,6 +3,7 @@ pkgbase = synergy-stable
 	pkgver = 1.8.6
 	pkgrel = 1
 	url = http://synergy-foss.org
+	install = synergy-stable.install
 	arch = i686
 	arch = x86_64
 	license = GPL2

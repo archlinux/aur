@@ -20,6 +20,7 @@ source=(
   "${_pkgname}s_at.service"
   'SerialKey.patch'
 )
+install=$pkgname.install
 md5sums=('81cd9396a7dd9afb46d124527bd87bcc'
          '46dcd5d0b5751fae904ef4fd447f9959'
          'ac296db26fb856cba5c161d0f010cbf9'
