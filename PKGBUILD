@@ -16,12 +16,12 @@ optdepends=('sabnzbd: an NZB downloader'
             'deluge: a torrent downloader')
 install='radarr.install'
 provides=('radarr')
-source=("https://github.com/galli-leo/Radarr/releases/download/v${pkgver}-${pkgsub}/Radarr_Mono_v${pkgver}-${pkgsub}-fixed.zip"
+source=("https://github.com/galli-leo/Radarr/releases/download/v${pkgver}-${pkgsub}/Radarr_Mono_v${pkgver}-${pkgsub}.zip"
         "radarr.sh"
         "radarr.service")
 noextract=()
 
-sha512sums=('5403ED6D374F16012869A1E4E13BF8966F6AC1E38978740DC70FF46CCBAC6764A77FE26E0142E1CB2203F189ABC28C2222723319F106845CAB231CC4CAFF33EA'
+sha512sums=('5DA915C8E651DFAEF5ED02ED7109A0E4F9C28D554A566EA12D3C0A1F424B0091D6224ADF0B9B6EA604778A5D31D7F0166BD791B77CDCB93381D83A7080DA60C7'
             '9edd2fea914ea744c87d72a1e0dcb903e9e2d335cb51f5a29ad157f5ba27ed78638787f99b8ec42b2bac96d042f1a48858fc78c6c134e26d63da553e83001f6a'
             '237a74e8ae8c968da33c44241f0b47fb3209b15ecc1962f45286adab466701d0c7be91cffc7e856951d14f1b72e565ad6fd97115bc1feb1c3bfd4f8c07f453fd')
 
