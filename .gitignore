@@ -1,0 +1,4 @@
+gnome-shell-extension-appindicator-git/
+pkg/
+src/
+*.pkg.tar.*

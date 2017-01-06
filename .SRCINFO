@@ -1,16 +1,15 @@
 pkgbase = gnome-shell-extension-appindicator-git
 	pkgdesc = Integrates AppIndicators into GNOME Shell.
-	pkgver = 16.r0.g86cd3a2
+	pkgver = 17.r4.g6a1a114
 	pkgrel = 1
 	url = https://github.com/rgcjonas/gnome-shell-extension-appindicator
-	install = gschemas.install
 	arch = any
 	license = GPL
 	makedepends = git
 	depends = gnome-shell
-	depends = libappindicator
-	depends = python2
-	options = !emptydirs
+	optdepends = libappindicator-gtk2: support GTK+2 applications
+	optdepends = libappindicator-gtk3: support GTK+3 applications
+	optdepends = libappindicator-sharp: support .net applications
 	source = gnome-shell-extension-appindicator-git::git+https://github.com/rgcjonas/gnome-shell-extension-appindicator.git
 	sha512sums = SKIP
 
