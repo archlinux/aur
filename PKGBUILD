@@ -2,7 +2,7 @@
 
 pkgname=python-pkgbuild-git
 pkgver=r7.7afcd99
-pkgrel=1
+pkgrel=2
 pkgdesc="Python library to parse pacman's .SRCINFO file"
 arch=('any')
 url="https://github.com/z3ntu/python-pkgbuild"
