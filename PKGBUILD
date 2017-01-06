@@ -3,7 +3,7 @@
 _pkgname=click-log
 pkgname=("python-${_pkgname}" "python2-${_pkgname}")
 pkgver="0.1.8"
-pkgrel="1"
+pkgrel="2"
 pkgdesc="Logging integration for Click"
 arch=("any")
 url="https://pypi.python.org/pypi/click-log"
