@@ -1,0 +1,11 @@
+KERNEL_VERSION=4.10.0-rc2-mainline-usermode
+
+post_install() {
+  echo ">>> Updating module dependencies. Please wait ..."
+  depmod ${KERNEL_VERSION}
+}
+
+post_upgrade() {
+  echo ">>> Updating module dependencies. Please wait ..."
+  depmod ${KERNEL_VERSION}
+}
