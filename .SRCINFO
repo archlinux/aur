@@ -1,15 +1,13 @@
 pkgbase = ttf2eot
 	pkgdesc = Utility to convert TTF files to EOT
-	pkgver = 0.0.2
-	pkgrel = 2
-	url = http://code.google.com/p/ttf2eot/
+	pkgver = 0.0.3
+	pkgrel = 1
+	url = https://github.com/wget/ttf2eot
 	arch = i686
 	arch = x86_64
 	license = GPL
-	source = http://ttf2eot.googlecode.com/files/ttf2eot-0.0.2-2.tar.gz
-	source = cstddef.patch
-	md5sums = 97c9ceb0ded362bf2e6dd3a3a9360f8d
-	md5sums = 2f4d5c3e2ff22f52da21546819211d3a
+	source = https://github.com/wget/ttf2eot/archive/v0.0.3.tar.gz
+	sha512sums = d926d856bd3bf363919c0b0bf382527fc58d4cd7291d27b4ed44e1feabcc2353c4aa0ffb4376f0c6890a8d9c35d3c4db4357ce94af6dcf64223168731c9fc263
 
 pkgname = ttf2eot
 

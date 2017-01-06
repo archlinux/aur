@@ -1,27 +1,28 @@
-# Original submitter: wooptoo
-# Maintainer: rws <elisp dot vim at google mail> (@xd1le on twitter)
+# Maintainer: William Gathoye <william at gathoye dot be>
 
 pkgname=ttf2eot
-pkgver=0.0.2
-pkgrel=2
+pkgver=0.0.3
+pkgrel=1
 arch=('i686' 'x86_64')
 pkgdesc="Utility to convert TTF files to EOT"
-url="http://code.google.com/p/ttf2eot/"
+url="https://github.com/wget/ttf2eot"
 license=('GPL')
 depends=()
 makedepends=()
-source=(http://$pkgname.googlecode.com/files/$pkgname-$pkgver-$pkgrel.tar.gz
-	cstddef.patch)
-md5sums=(97c9ceb0ded362bf2e6dd3a3a9360f8d
-	2f4d5c3e2ff22f52da21546819211d3a)
+source=(
+    https://github.com/wget/$pkgname/archive/v$pkgver.tar.gz
+)
+sha512sums=(
+    d926d856bd3bf363919c0b0bf382527fc58d4cd7291d27b4ed44e1feabcc2353c4aa0ffb4376f0c6890a8d9c35d3c4db4357ce94af6dcf64223168731c9fc263
+)
 
 build() {
-	patch -Np0 -i $srcdir/cstddef.patch || return 1
-	cd $srcdir/$pkgname-$pkgver-$pkgrel
-	make || return 1
+    cd "$srcdir/$pkgname-$pkgver"
+	make
 }
 
 package() {
-	mkdir -p $pkgdir/usr/bin
-	cp $srcdir/$pkgname-$pkgver-$pkgrel/$pkgname $pkgdir/usr/bin
+    cd "$srcdir/$pkgname-$pkgver"
+    install -dm755 "$pkgdir/usr/bin/"
+    cp ttf2eot "$pkgdir/usr/bin/"
 }
