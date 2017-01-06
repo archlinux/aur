@@ -1,3 +1,5 @@
 post_install() {
-    echo ":: Make sure you \"Activate\" this!"
+    echo "----------------------------------------------------------------"
+    echo "Make sure you \"Activate\" this!"
+    echo "----------------------------------------------------------------"
 }
