@@ -1,6 +1,5 @@
 #
 # Maintainer: Paul Dunn <pwjdunn AT gmail DOT com>
-
 #
 # Based on the linux package by:
 # Maintainer: Tobias Powalowski <tpowa@archlinux.org>
@@ -23,7 +22,7 @@ _localmodcfg=
 pkgbase=linux-nvme               # Build stock -ARCH kernel
 #pkgbase=linux-custom       # Build kernel with a different name
 _srcname=linux-4.9
-pkgver=4.9
+pkgver=4.9.1
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
@@ -31,9 +30,9 @@ license=('GPL2')
 makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc' 'libelf')
 options=('!strip')
 source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
-        #"https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.sign"
-        #"https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.xz"
-        #"https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.sign"
+        "https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.sign"
+        "https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.xz"
+        "https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.sign"
         # the main kernel config files
         'config' 'config.x86_64'
         # pacman hook for initramfs regeneration
@@ -48,6 +47,9 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         'nvme.patch'
 )
 sha256sums=('029098dcffab74875e086ae970e3828456838da6e0ba22ce3f64ef764f3d7f1a'
+            '8e49bebf2cff105987c06303f0608a49af2e8204088f0f9b29e58a2bf5f56e00'
+	    'db6dfd7c38a9b6a62052d7a60c6fc5818e07fb2d8fc758ba576e87a8b150e305'
+	    '23f4be97ddcae633faa1c911ff57ed209d86f853c960853c33e42c574ac5968c'
 	    '2ac8818414beb7dbacbd3ad450c516e6ada804827132a7132f63b8189e5f5151'
             '41b9a64542befd2fea170776e8ec22a7d158dd3273633afc9b91662c448cd90a'
             '834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0'
@@ -71,10 +73,10 @@ prepare() {
 
   # mainline: not needed
   # add upstream patch
-  # patch -p1 -i "${srcdir}/patch-${pkgver}"
+   patch -p1 -i "${srcdir}/patch-${pkgver}"
 
   # mainline: add patch
-  #patch -p1 -i "${srcdir}/${_patchname}" || true
+  # patch -p1 -i "${srcdir}/${_patchname}" || true
 
   # add latest fixes from stable queue, if needed
   # http://git.kernel.org/?p=linux/kernel/git/stable/stable-queue.git
