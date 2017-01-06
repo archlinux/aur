@@ -3,7 +3,7 @@
 
 pkgname=lollypop-git
 _gitname=lollypop
-pkgver=0.9.223.r91.gc27116ab
+pkgver=0.9.223.r127.ga52df7a2
 pkgrel=1
 pkgdesc='Music player for GNOME'
 arch=('i686' 'x86_64')
