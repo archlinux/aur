@@ -1,27 +1,25 @@
 # Maintainer: Gaetan Bisson <bisson@archlinux.org>
 
 pkgname=msieve
-pkgver=1.52
+pkgver=1.53
 pkgrel=1
 pkgdesc='Library for factoring large integers'
 url='http://sourceforge.net/projects/msieve/'
 license=('custom')
 arch=('x86_64')
 depends=('zlib' 'gmp-ecm')
-source=("http://downloads.sourceforge.net/project/msieve/msieve/Msieve%20v${pkgver}/msieve${pkgver/./}.tar.gz")
-sha1sums=('88a1ce2354b57835231bcaca0ecb0477b975b5cd')
+source=("http://downloads.sourceforge.net/project/msieve/msieve/Msieve%20v${pkgver}/msieve${pkgver/./}_src.tar.gz")
+sha1sums=('6ecd72c5f86288edbad111415dbcc03b6c35b524')
 
 prepare() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
 	sed \
-		-e 's/^CFLAGS = /CFLAGS += /' \
-		-e 's/-march=core2//g' \
+		-e 's/^CFLAGS =/CFLAGS +=/' \
 		-i Makefile
 }
 
 build() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
-	[[ $CARCH = i686 ]] && CFLAGS+=' -msse'
 	CFLAGS+=' -fopenmp'
 	make all ECM=1
 }
