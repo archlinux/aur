@@ -2,7 +2,7 @@
 # Tue Apr 26 08:25:54 UTC 2016
 pkgbase = emacs-with-editor-git
 	pkgdesc = Use the Emacsclient as the of child processes
-	pkgver = 2.5.1
+	pkgver = 2.5.9
 	pkgrel = 1
 	url = http://github.com/magit/with-editor
 	install = emacs-with-editor-git.install
