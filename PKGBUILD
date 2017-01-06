@@ -3,7 +3,7 @@
 pkgname='perl-data-rmap'
 _module='Data-Rmap'
 _author='B/BO/BOWMANBS'
-pkgver='0.64'
+pkgver='0.65'
 pkgrel='1'
 pkgdesc='Recursive map, apply a block to a data structure.'
 arch=('any')
@@ -13,7 +13,7 @@ options=('!emptydirs')
 depends=('perl')
 checkdepends=('perl-test-exception')
 source=("http://search.cpan.org/CPAN/authors/id/$_author/$_module-$pkgver.tar.gz")
-md5sums=('112c9e8b813259a4700815ca66342a78')
+md5sums=('8be88e43eb0de36a91b3f0cd200241bb')
 
 build() {
    (
