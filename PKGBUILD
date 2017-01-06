@@ -5,9 +5,9 @@
 # Contributor: Geoffroy Carrier <geoffroy at archlinux dot org>
 
 pkgbase=lib32-bluez
-pkgname=(${pkgbase}{,-libs,-cups,-plugins})
+pkgname=(${pkgbase}{-libs,-plugins})
 pkgver=5.43
-pkgrel=1
+pkgrel=2
 url="http://www.bluez.org/"
 arch=('x86_64')
 license=('GPL2')
@@ -46,24 +46,6 @@ check() {
   make check
 }
 
-package_lib32-bluez() {
-  pkgdesc="Daemons for the bluetooth protocol stack (32-bit)"
-  depends=(lib32-{libical,dbus,glib2})
-
-  cd "${pkgbase#lib32-}-${pkgver}"
-  make DESTDIR=${pkgdir} \
-    install-libexecPROGRAMS \
-    install-dbussessionbusDATA \
-    install-systemdsystemunitDATA \
-    install-systemduserunitDATA \
-    install-dbussystembusDATA \
-    install-dbusDATA \
-    install-man8
-
-  # Remove conflicting files.
-  rm -rf "${pkgdir}"/{etc,usr/{share,lib,include,bin}}
-}
-
 package_lib32-bluez-libs() {
   pkgdesc="Deprecated libraries for the bluetooth protocol stack (32-bit)"
   depends=('bluez-libs' 'lib32-glibc')
@@ -77,14 +59,6 @@ package_lib32-bluez-libs() {
 
   # Remove conflicting files.
   rm -rf "${pkgdir}/usr/include"
-}
-
-package_lib32-bluez-cups() {
-  pkgdesc="CUPS printer backend for Bluetooth printers (32-bit)"
-  depends=('lib32-dbus' 'lib32-glib2' 'cups')
-
-  cd ${pkgbase#lib32-}-${pkgver}
-  make DESTDIR=${pkgdir} install-cupsPROGRAMS
 }
 
 package_lib32-bluez-plugins() {
