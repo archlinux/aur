@@ -1,7 +1,7 @@
 # Maintainer: Frederic Bezies <fredbezies at gmail dot com>
 # Contributor: Boris Timofeev <mashin87@gmail.com>
 pkgname=xroar
-pkgver=0.34.6
+pkgver=0.34.7
 pkgrel=1
 pkgdesc="A Dragon and Tandy CoCo emulator."
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ install=xroar.install
 source=(http://www.6809.org.uk/xroar/dl/$pkgname-$pkgver.tar.gz
         xroar.desktop
         xroar.png)
-sha1sums=('3240ad357efdf59b3276f8d6a18a628dbeff9895'
+sha1sums=('3222b5bf5950970605e773e7c0160ce703cf8d07'
           'dd02919bbe5c1fd4f6291fc734de15900c33ec7d'
           '39af4e1493f50cea1937da7a77cfed3751a00308')
 
@@ -32,3 +32,4 @@ package() {
   gzip ./doc/xroar.info
   install -D -m 644 ./doc/xroar.info.gz $pkgdir/usr/share/info/xroar.info.gz
 }
+
