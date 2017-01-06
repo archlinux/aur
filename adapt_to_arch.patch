@@ -1,0 +1,26 @@
+diff --git a/boards.txt b/boards.txt
+index 1a49c81..8b78040 100644
+--- a/boards.txt
++++ b/boards.txt
+@@ -32,7 +32,7 @@ model01.build.pid=0x2301
+ model01.build.usb_product="Model 01"
+ model01.build.usb_manufacturer="Keyboardio"
+ model01.build.board=AVR_MODEL01
+-model01.build.core=arduino:arduino
++model01.build.core=archlinux-arduino:arduino
+ model01.build.variant=model01
+ model01.build.extra_flags={build.usb_flags}
+ 
+diff --git a/platform.txt b/platform.txt
+index 91f16f8..d02c738 100644
+--- a/platform.txt
++++ b/platform.txt
+@@ -18,7 +18,7 @@ compiler.warning_flags.more=-Wall
+ compiler.warning_flags.all=-Wall -Wextra
+ 
+ # Default "compiler.path" is correct, change only if you want to override the initial value
+-compiler.path={runtime.tools.avr-gcc.path}/bin/
++#compiler.path={runtime.tools.avr-gcc.path}/bin/
+ compiler.c.cmd=avr-gcc
+ compiler.c.flags=-c -g -Os {compiler.warning_flags} -std=gnu11 -ffunction-sections -fdata-sections -MMD
+ compiler.c.elf.flags={compiler.warning_flags} -Os -Wl,--gc-sections
