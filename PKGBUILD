@@ -6,7 +6,7 @@
 
 pkgname=doomrl
 pkgver=0.9.9.7
-pkgrel=8
+pkgrel=9
 pkgdesc="A roguelike game based on the FPS Doom."
 arch=('i686' 'x86_64')
 url="http://drl.chaosforge.org/"
