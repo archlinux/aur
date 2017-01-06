@@ -3,9 +3,9 @@
 # Contributor: Stephen D. Cofer <stephen.d.cofer@outlook.com>
 
 pkgname=enyo-doom
-pkgver=1.03
+pkgver=1.04
 pkgrel=1
-_commit=ac7be6532b97b2b9a6da60032064b5fddf51ca48
+_commit=c0f5b0fa22c2b80b1dc7a404494287cf69a32649
 pkgdesc="A frontend for Doom engines"
 arch=('i686' 'x86_64')
 url="https://gitlab.com/sdcofer70/enyo-doom"
@@ -14,15 +14,14 @@ depends=('qt5-base')
 makedepends=('cmake')
 optdepends=('chocolate-doom' 'prboom' 'zdoom' 'prboom-plus')
 source=("$pkgname-$pkgver.tar.gz::https://gitlab.com/sdcofer70/enyo-doom/repository/archive.tar.gz?ref=$pkgver")
-sha256sums=('14f2125b677d7e2b160546ef49602ce690ef8a09512040deca723e55add4639f')
+sha256sums=('7dfe9eb50cc043c40af95cfe67121458998f3e762d5876711cf6b341b3bd5d02')
 
 build() {
   cd $pkgname-$pkgver-$_commit
 
   cmake . \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DCMAKE_BUILD_TYPE=Release \
-    -DQT_QMAKE_EXECUTABLE=qmake-qt5
+    -DCMAKE_BUILD_TYPE=Release
   make
 }
 
