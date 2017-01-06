@@ -1,6 +1,6 @@
 # Maintainer: bartus <aur@bartus.33mail.com>
 pkgname=meshlab-git
-pkgver=1.3.4_r5055577
+pkgver=2016.12.r6.gf29d0ba1
 pkgrel=1
 pkgdesc="System for processing and editing of unstructured 3D models arising in 3D scanning (qt5 version)"
 arch=('i686' 'x86_64')
@@ -29,7 +29,7 @@ md5sums=('SKIP'
          'SKIP'
          '038494125d7bd422074fc5635c5579ca'
          'e51b027eb9d78b82de73c4724b3928cf'
-         '1a53a92e12f74520b36e38d9a2311834'
+         '9eb027efe2d8584c693a4314db9e5bb5'
          '64caafa96bef4208d641e889099eba26'
          '616b0dcf018f46a490867028d6ddc533'
          '5d87f00356539f84f37f873f304eb11e'
@@ -40,9 +40,8 @@ md5sums=('SKIP'
          '18aed0a21276a22325bf8c32166fb110')
 
 pkgver() {
-  cd meshlab
-  local ver="$(git describe --always)"
-  printf "1.3.4_r%s" "${ver//[[:alpha:]]}"
+  cd ${pkgname%-git}
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
@@ -55,8 +54,6 @@ prepare() {
   patch -Np0 -i external.patch
   msg "fix rpath"
   patch -Np0 -i rpath.patch
-  msg "fix meshlab/src/plugins_experimental/io_TXT/ case sensitive path"
-  mv meshlab/src/plugins_experimental/io_TXT/io_txt.pro meshlab/src/plugins_experimental/io_TXT/io_TXT.pro
   msg "fix meshalbserver missing -lGLU"
   patch -Np0 -i meshlabserver_GLU.patch
   msg "fix cpp11 abs()"

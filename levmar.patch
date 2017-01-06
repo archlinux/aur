@@ -38,8 +38,8 @@ diff -Naur -r ../meshlab/src/meshlabplugins/filter_mutualinfoxml/solver.h meshla
  #include <iostream>
  #include <fstream>
 diff -Naur -r ../meshlab/src/plugins_experimental/edit_mutualcorrs/levmarmethods.h meshlab/src/plugins_experimental/edit_mutualcorrs/levmarmethods.h
---- ../meshlab/src/plugins_experimental/edit_mutualcorrs/levmarmethods.h	2016-10-31 00:00:08.816250885 +0100
-+++ meshlab/src/plugins_experimental/edit_mutualcorrs/levmarmethods.h	2016-10-31 22:23:35.671692575 +0100
+--- ../meshlab/src/meshlabplugins/edit_mutualcorrs/levmarmethods.h	2016-10-31 00:00:08.816250885 +0100
++++ meshlab/src/meshlabplugins/edit_mutualcorrs/levmarmethods.h	2016-10-31 22:23:35.671692575 +0100
 @@ -12,7 +12,7 @@
  
  #include <list>
@@ -50,8 +50,8 @@ diff -Naur -r ../meshlab/src/plugins_experimental/edit_mutualcorrs/levmarmethods
  
  struct LevmarCorrelation {
 diff -Naur -r ../meshlab/src/plugins_experimental/edit_mutualcorrs/solver.h meshlab/src/plugins_experimental/edit_mutualcorrs/solver.h
---- ../meshlab/src/plugins_experimental/edit_mutualcorrs/solver.h	2016-10-31 00:00:08.816250885 +0100
-+++ meshlab/src/plugins_experimental/edit_mutualcorrs/solver.h	2016-10-31 22:24:05.935026562 +0100
+--- ../meshlab/src/meshlabplugins/edit_mutualcorrs/solver.h	2016-10-31 00:00:08.816250885 +0100
++++ meshlab/src/meshlabplugins/edit_mutualcorrs/solver.h	2016-10-31 22:24:05.935026562 +0100
 @@ -5,7 +5,7 @@
  #include "alignset.h"
  
@@ -62,8 +62,8 @@ diff -Naur -r ../meshlab/src/plugins_experimental/edit_mutualcorrs/solver.h mesh
  #include <iostream>
  #include <fstream>
 diff -Naur -r ../meshlab/src/plugins_experimental/filter_mutualglobal/levmarmethods.h meshlab/src/plugins_experimental/filter_mutualglobal/levmarmethods.h
---- ../meshlab/src/plugins_experimental/filter_mutualglobal/levmarmethods.h	2016-10-31 00:00:09.476243333 +0100
-+++ meshlab/src/plugins_experimental/filter_mutualglobal/levmarmethods.h	2016-10-31 22:30:06.391701030 +0100
+--- ../meshlab/src/meshlabplugins/filter_mutualglobal/levmarmethods.h	2016-10-31 00:00:09.476243333 +0100
++++ meshlab/src/meshlabplugins/filter_mutualglobal/levmarmethods.h	2016-10-31 22:30:06.391701030 +0100
 @@ -12,7 +12,7 @@
  
  #include <list>
@@ -74,8 +74,8 @@ diff -Naur -r ../meshlab/src/plugins_experimental/filter_mutualglobal/levmarmeth
  
  struct LevmarCorrelation {
 diff -Naur -r ../meshlab/src/plugins_experimental/filter_mutualglobal/solver.h meshlab/src/plugins_experimental/filter_mutualglobal/solver.h
---- ../meshlab/src/plugins_experimental/filter_mutualglobal/solver.h	2016-10-31 00:00:09.476243333 +0100
-+++ meshlab/src/plugins_experimental/filter_mutualglobal/solver.h	2016-10-31 22:29:02.815032988 +0100
+--- ../meshlab/src/meshlabplugins/filter_mutualglobal/solver.h	2016-10-31 00:00:09.476243333 +0100
++++ meshlab/src/meshlabplugins/filter_mutualglobal/solver.h	2016-10-31 22:29:02.815032988 +0100
 @@ -5,7 +5,7 @@
  #include "alignset.h"
  
@@ -87,17 +87,8 @@ diff -Naur -r ../meshlab/src/plugins_experimental/filter_mutualglobal/solver.h m
  #include <fstream>
 diff --git a/src/plugins_experimental/edit_mutualcorrs/edit_mutualcorrs.pro b/src/plugins_experimental/edit_mutualcorrs/edit_mutualcorrs.pro
 index 049bec6..84f6ca9 100644
---- a/src/plugins_experimental/edit_mutualcorrs/edit_mutualcorrs.pro
-+++ meshlab/src/plugins_experimental/edit_mutualcorrs/edit_mutualcorrs.pro
-@@ -1,7 +1,7 @@
- include (../../shared.pri)
- 
- 
--HEADERS       = += ./alignset.h \
-+HEADERS       += ./alignset.h \
-     ./levmarmethods.h \
-     ./mutual.h \
-     ./parameters.h \
+--- a/src/meshlabplugins/edit_mutualcorrs/edit_mutualcorrs.pro
++++ meshlab/src/meshlabplugins/edit_mutualcorrs/edit_mutualcorrs.pro
 @@ -29,8 +29,8 @@ FORMS         = edit_mutualcorrsDialog.ui
  win32-msvc2013:  LIBS += ../../external/lib/win32-msvc2013/levmar.lib
  win32-msvc2015:  LIBS += ../../external/lib/win32-msvc2015/levmar.lib
