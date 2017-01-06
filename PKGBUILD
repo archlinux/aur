@@ -6,10 +6,10 @@
 
 pkgname=yabasic
 pkgver=2.77.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Yet Another Basic"
 arch=('i686' 'x86_64')
-license=('GPL2' 'MIT')
+license=('MIT')
 url="http://www.yabasic.de/"
 depends=('libx11' 'libsm' 'ncurses')
 makedepends=('libxt')
