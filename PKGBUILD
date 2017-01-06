@@ -1,62 +1,37 @@
- # Maintainer: saxonbeta <saxonbeta at gmail dot com>
+# Maintainer: Bilal ELmoussaoui <bil.elmoussaoui@gmail.com>
+
 pkgname=whatsapp-desktop
-_pkgname=WhatsApp-Desktop
-pkgver=1.1.0
-pkgrel=6
-pkgdesc="Simple & beautiful (Unofficial) desktop client for WhatsApp"
-arch=('i686' 'x86_64')
-url="http://whatsapp-desktop.com/"
+_pkgbase=Whatsapp-Desktop
+pkgrel=1
+pkgver=0.3.2
+_pkgver="v$pkgver"
+pkgdesc="Unofficial whatsapp web desktop client. Build with Electron."
+url="https://github.com/bcalik/Whatsapp-Desktop"
+provides=('whatsapp-desktop')
+arch=('x86_64')
 license=('MIT')
-depends=('libxtst' 'gtk2' 'libnotify' 'alsa-lib' 'gconf' 'nss')
-makedepends=('npm')
-conflicts=('whatsapp-desktop-git' 'whatsapp-desktop-bin')
-optdepends=()
-options=('!strip')
-[ "$CARCH" = "i686" ]   && _platform=linux32
-[ "$CARCH" = "x86_64" ] && _platform=linux64
+makedepends=('unzip')
+backup=()
+install=''
+source=(
+    "${url}/releases/download/${_pkgver}/Whatsapp-linux-x64.zip"
+    "whatsapp-desktop.desktop"
+    "whatsapp-desktop.png"
+)
 
-source=("https://github.com/Aluxian/WhatsApp-Desktop/archive/v1.1.0.tar.gz"
-	'whatsapp-desktop.desktop')
-sha256sums=('d74035490b04f3cd898362d555c4ac547fc2697b1c34b73e827faf1b54ca5ea8'
-            'f62f69eb7276a4f3c5632e9100192d0a4311064406be18dafb445ecf8a669eb1')
-
-	    
-prepare() {
-cd "${srcdir}/${_pkgname}-${pkgver}"
-npm install gulp
-npm install
-
-}
-
-build() {
-  cd "${srcdir}/${_pkgname}-${pkgver}"
-  node_modules/.bin/gulp build:$_platform
-}
+sha256sums=(
+        '980e6a5033373741a257d3e4f2b715dbf71b0a63e4ced12bcb0587f8d97bb438'
+        '052e0225a9bb5945a52bfe7d01de401d9cfbb2478a20ddeab52060e00947e564'
+        'c128bdf1366f26b203c2a97b1284d66bd28d63c45812a7456385e1bf4afa27e4'
+        )
 
 package() {
-  cd "${srcdir}/${_pkgname}-${pkgver}"
-  _bpath="${srcdir}/${_pkgname}-${pkgver}/build/WhatsApp/${_platform}"
-  
-  #License
-  install -d "${pkgdir}/usr/share/licenses/${pkgname}"
-  install -Dm644 "${srcdir}/${_pkgname}-${pkgver}/LICENSE" \
-		"${pkgdir}/usr/share/licenses/${pkgname}/"
+    install -d "$pkgdir"/opt
+    cp -R "$srcdir"/WhatsApp-linux-x64 "$pkgdir"/opt/Whatsapp
 
-  #Program
-  install -d "${pkgdir}/usr/lib/${pkgname}"
-  install -Dm755 "${_bpath}/nw.pak" "${pkgdir}/usr/lib/${pkgname}"
-  install -Dm755 "${_bpath}/libffmpegsumo.so" "${pkgdir}/usr/lib/${pkgname}"
-  install -Dm755 "${_bpath}/WhatsApp" "${pkgdir}/usr/lib/${pkgname}"
-  install -Dm755 "${_bpath}/icudtl.dat" "${pkgdir}/usr/lib/${pkgname}"
-  install -d $pkgdir/usr/bin
-  ln -s "/usr/lib/${pkgname}/WhatsApp" "${pkgdir}/usr/bin/WhatsApp"
-  
-  #Desktop file
-  install -Dm644 "${srcdir}/${pkgname}.desktop" \
-		"${pkgdir}/usr/share/applications/${pkgname}.desktop"
+    install -d "$pkgdir"/usr/bin
+    ln -sf ../../opt/Whatsapp/WhatsApp "$pkgdir"/usr/bin/Whatsapp
 
-  #Icon
-  install -Dm644 "${srcdir}/${_pkgname}-${pkgver}/assets-linux/icons/256/whatsappfordesktop.png" \
-		"${pkgdir}/usr/share/pixmaps/${pkgname}.png"
-  
+    install -D -m644 "./whatsapp-desktop.desktop" "${pkgdir}/usr/share/applications/whatsapp-desktop.desktop"
+    install -D -m644 "./whatsapp-desktop.png" "${pkgdir}/usr/share/pixmaps/whatsapp-desktop.png"
 }

@@ -1,9 +1,8 @@
 [Desktop Entry]
 Type=Application
-Name=WhatsApp
+Name=WhatsApp Desktop
 Icon=whatsapp-desktop
 Exec=WhatsApp %U
 Comment=WhatsApp for Desktop
 Categories=Network;Chat;
 Terminal=false
-Name[es_MX.utf8]=whatsapp-desktop
