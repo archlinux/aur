@@ -1,0 +1,2 @@
+#!/bin/bash
+firejail --profile=/etc/firejail/chromium.profile '/opt/ungoogled-chromium-bundle/chrome' --no-sandbox --proxy-server="http://127.0.0.1:4444" --host-resolver-rules="MAP * 0.0.0.0, EXCLUDE localhost, EXCLUDE *.local"
