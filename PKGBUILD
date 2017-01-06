@@ -4,7 +4,7 @@
 
 pkgname=khal
 pkgver=0.8.4
-pkgrel=1
+pkgrel=2
 pkgdesc='CLI calendar application build around CalDAV'
 arch=('any')
 url='http://lostpackets.de/khal/'
