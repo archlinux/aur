@@ -3,7 +3,7 @@
 pkgname=pi-hole-server
 _pkgname=pi-hole
 pkgver=2.11.1
-pkgrel=2
+pkgrel=3
 _wwwpkgname=AdminLTE
 _wwwpkgver=2.3.1
 pkgdesc='The Pi-hole is an advertising-aware DNS/Web server. Arch adaptation for lan wide DNS server.'
@@ -149,7 +149,7 @@ prepare() {
 
   sed -n "/\$piHoleVersion =.*$/w $_ssc" "$srcdir"/$_pkgname-$pkgver/advanced/index.php
   if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: since we don't directly install from git... 7" && return 1 ; fi
-  sed -i 's/\$piHoleVersion =.*$/\$piholeVersion = "'"$pkgver"'";/' "$srcdir"/$_pkgname-$pkgver/advanced/index.php
+  sed -i 's/\$piHoleVersion =.*$/\$piHoleVersion = "'"$pkgver"'";/' "$srcdir"/$_pkgname-$pkgver/advanced/index.php
 
 # -----------------
 
