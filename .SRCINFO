@@ -1,7 +1,7 @@
 pkgbase = python-aplpy
 	pkgdesc = An astronomical plotting library in python
 	pkgver = 1.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://aplpy.sourceforge.net/
 	arch = any
 	license = MIT
