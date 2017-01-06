@@ -5,7 +5,7 @@ pkgbase = temps
 	url = https://github.com/jackd248/temps
 	arch = i686
 	arch = x86_64
-	arch = arm7l
+	arch = armv7l
 	license = MIT
 	makedepends = unzip
 	provides = temps
@@ -17,6 +17,7 @@ pkgbase = temps
 	sha256sums_i686 = 5f67ba08d713499aec4025ac9f00fd434e53cbe7d1f8b315487b181de269d92e
 	source_x86_64 = https://github.com/jackd248/temps/releases/download/v0.7.0/Temps-linux-x64.zip
 	sha256sums_x86_64 = 6252c1d76336e752882e29e85cf2fd51cf06148de3e479f8102a261e1eedd182
+	sha256sums_armv7l = d318fddcf78d91121baedbdd9f98b9f2cc9e02f799f4fa07050b85fd97a8041a
 
 pkgname = temps
 
