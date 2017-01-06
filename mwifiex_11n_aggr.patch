@@ -1,0 +1,10 @@
+--- a/drivers/net/wireless/marvell/mwifiex/11n_aggr.c
++++ b/drivers/net/wireless/marvell/mwifiex/11n_aggr.c
+@@ -190,7 +190,6 @@
+				       ra_list_flags);
+		return -1;
+	}
+-	skb_reserve(skb_aggr, MWIFIEX_MIN_DATA_HEADER_LEN);
+	tx_info_aggr =  MWIFIEX_SKB_TXCB(skb_aggr);
+
+	memset(tx_info_aggr, 0, sizeof(*tx_info_aggr));

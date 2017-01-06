@@ -10,8 +10,8 @@
 
 pkgbase=linux-surface3-git
 _srcname=linux
-pkgver=4.10rc2.r43.g62f8c40
-pkgrel=2
+pkgver=4.10rc2.r207.g88ba6ca
+pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
 license=('GPL2')
@@ -27,16 +27,17 @@ source=(
         "0001-power-MSHW0011-rev-eng-implementation.patch"
         "0002-power-surface3_power-Improve-battery-capacity-report.patch"
         "0001-gpiolib-acpi-make-sure-we-trigger-the-events-at-leas.patch"
+        # From https://bugzilla.kernel.org/show_bug.cgi?id=188351
+        "mwifiex_11n_aggr.patch"
         )
-sha256sums=(
-            'SKIP'
+sha256sums=('SKIP'
             'becc0c98cff692dee9500f19d38882636caf4c58d5086c7725690a245532f5dc'
             '2bf64f96aa977a996d2aaeeb249a266a7c6f83483d49a31a23e595cd895f0846'
             '95fcfdfcb9d540d1a1428ce61e493ddf2c2a8ec96c8573deeadbb4ee407508c7'
             '8fb00d96cb11ef3d9c250d6a5389c7eaf9f71d1259fb0a2cd210bf707adb8a71'
             '62eeb51c1ee81c2545fa0c1ac5a2b8f4a112ede4113095ce2ea4a66d07059734'
             'abae4abc0495026b35b982b426207e7cbad4bf5314a1e706fa295c7f91886307'
-            )
+            '4620e60b50e1c478b571f3a634e3bb5b839ff4bfdfeb358300d19d598dbf51cd')
 
 _kernelname=${pkgbase#linux}
 
@@ -67,6 +68,7 @@ prepare() {
   patch -p1 < ${srcdir}/0001-power-MSHW0011-rev-eng-implementation.patch
   patch -p1 < ${srcdir}/0002-power-surface3_power-Improve-battery-capacity-report.patch
   patch -p1 < ${srcdir}/0001-gpiolib-acpi-make-sure-we-trigger-the-events-at-leas.patch
+  patch -p1 < ${srcdir}/mwifiex_11n_aggr.patch
 
   # load configuration
   # Configure the kernel. Replace the line below with one of your choice.
