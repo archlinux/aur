@@ -3,7 +3,7 @@
 pkgbase=python-pycryptodome
 pkgname=('python-pycryptodome' 'python2-pycryptodome')
 pkgver=3.4.3
-pkgrel=1
+pkgrel=2
 license=('BSD')
 arch=('i686' 'x86_64')
 url='http://www.pycryptodome.org/'

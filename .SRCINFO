@@ -1,6 +1,6 @@
 pkgbase = python-pycryptodome
 	pkgver = 3.4.3
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.pycryptodome.org/
 	arch = i686
 	arch = x86_64
