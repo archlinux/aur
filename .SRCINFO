@@ -1,0 +1,15 @@
+pkgbase = apigen
+	pkgdesc = Smart and Readable Documentation for your PHP project
+	pkgver = 4.1.2
+	pkgrel = 1
+	url = http://www.apigen.org/
+	arch = any
+	license = MIT
+	depends = php>=5.5
+	source = https://github.com/ApiGen/ApiGen/releases/download/v4.1.2/apigen.phar
+	source = LICENSE
+	sha256sums = 9563d5e1692bacb3974e2a8d287b8b89f8ca43cd7cd4ed89aefe30c6cdae7910
+	sha256sums = 2e5a9e806bc0b705f11f500ea57568ab1f4a3d5e63aa4b5bd3ecac3cf03e8fef
+
+pkgname = apigen
+
