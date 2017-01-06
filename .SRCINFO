@@ -1,7 +1,7 @@
 pkgbase = ttysterm
 	pkgdesc = Simple serial terminal
 	pkgver = 20160921
-	pkgrel = 1
+	pkgrel = 2
 	url = https://rtime.felk.cvut.cz/gitweb/sojka/sterm.git
 	arch = i686
 	arch = x86_64
@@ -10,10 +10,8 @@ pkgbase = ttysterm
 	depends = lockdev
 	source = ttysterm::git://rtime.felk.cvut.cz/sojka/sterm.git
 	source = Fix-install-strip.patch
-	source = known-lockdev-bug.patch
 	md5sums = SKIP
 	md5sums = e37c9b06de817993830efe9e277e740c
-	md5sums = 5df1b7923840120638c8a5ee39ed9118
 
 pkgname = ttysterm
 
