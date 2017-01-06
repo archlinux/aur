@@ -7,10 +7,10 @@
 #pkgbase=linux               # Build stock -ARCH kernel
 pkgbase=linux-rt-lts         # Build kernel with a different name
 _srcname=linux-4.4
-_pkgver=4.4.32
-_rtpatchver=rt43
+_pkgver=4.4.39
+_rtpatchver=rt50
 pkgver=${_pkgver}_${_rtpatchver}
-pkgrel=2
+pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
 license=('GPL2')
@@ -26,20 +26,18 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         'config' 'config.x86_64'
         # standard config files for mkinitcpio ramdisk
         "${pkgbase}.preset"
-        'fix_race_condition_in_packet_set_ring.diff'
         'change-default-console-loglevel.patch'
         'fix-race-in-PRT-wait-for-completion-simple-wait-code_Nvidia-RT-160319.patch')
 
 sha256sums=('401d7c8fef594999a460d10c72c5a94e9c2e1022f16795ec51746b0d165418b2'
             'SKIP'
-            '329b6b24e9e02b2e01ab13a9f62f853b37272c4f1c210cdcdda93937e0d0cb18'
+            'fc2b60d221aeaf3eafec4f36f299e4002be81da85117c3f59963fdcb6facb929'
             'SKIP'
-            'd496b0432886a754d081a342e275f048e9567c9827972696ee9ab29cdccb9fb6'
+            '58ea58fc0807d4665909b66e6223eb3e94fe2aea8df4b7ff5956673198a6d0cc'
             'SKIP'
             '1f609d41a9d5cd0eb88060bd0ad6726f76e9dbf0deee44d6fe3dc57f0fbb3191'
             'b28728fa4816c4f32b4b390b22c8b9d4ea52a35b150ed7041d325ab72cd8c6a3'
             'a8886f2c9896f81f59cf0413b3e380cda2fbdc667eb9ce8dfcb0fceb6d92279f'
-            'ad1ee95f906f88d31fcdb9273cd08e02e8eda177449f0c98dc1bff8cbf1483c2'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
             '85f7612edfa129210343d6a4fe4ba2a4ac3542d98b7e28c8896738e7e6541c06')
 
@@ -64,9 +62,6 @@ prepare() {
 
   # add latest fixes from stable queue, if needed
   # http://git.kernel.org/?p=linux/kernel/git/stable/stable-queue.git
-
-  msg "fix_race_condition_in_packet_set_ring.diff"
-  patch -p1 -i "${srcdir}/fix_race_condition_in_packet_set_ring.diff"
 
   # set DEFAULT_CONSOLE_LOGLEVEL to 4 (same value as the 'quiet' kernel param)
   # remove this when a Kconfig knob is made available by upstream
