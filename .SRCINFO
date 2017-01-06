@@ -1,13 +1,14 @@
 pkgbase = intel-parallel-studio-xe
 	pkgdesc = Intel C++ C and FORTRAN compiler - Intel Parallel Studio XE - Cluster Edition - icc icpc ifort ipp mkl
 	pkgver = 2017.17.0.1.1.132
-	pkgrel = 2
+	pkgrel = 4
 	url = http://software.intel.com/en-us/articles/non-commercial-software-download/
 	arch = x86_64
 	license = custom
 	makedepends = libarchive
 	makedepends = sed
 	makedepends = gzip
+	makedepends = lzop
 	depends = bash
 	depends = gcc
 	options = strip

@@ -58,7 +58,7 @@ _v_b='132'
 
 _update='1'
 
-pkgrel=3
+pkgrel=4
 #http://registrationcenter-download.intel.com/akdlm/irc_nas/9651/parallel_studio_xe_2017_update1.tgz
 
 _sp=''
