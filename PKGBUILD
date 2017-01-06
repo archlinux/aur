@@ -2,7 +2,7 @@
 
 pkgname=streamlink
 pkgver=0.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc='CLI program that launches streams from various streaming services in a custom video player (livestreamer fork)'
 arch=('any')
 url='https://streamlink.github.io/'
