@@ -2,7 +2,7 @@
 
 pkgname=python-pyprind
 pkgver=2.9.8
-pkgrel=1
+pkgrel=2
 pkgdesc='Python Progress Bar and Percent Indicator Utility'
 arch=('any')
 url='https://github.com/rasbt/pyprind'

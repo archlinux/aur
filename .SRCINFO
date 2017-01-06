@@ -1,7 +1,7 @@
 pkgbase = python-pyprind
 	pkgdesc = Python Progress Bar and Percent Indicator Utility
 	pkgver = 2.9.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/rasbt/pyprind
 	arch = any
 	license = BSD
