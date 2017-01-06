@@ -1,0 +1,35 @@
+pkgbase = synergy-stable
+	pkgdesc = Share a single mouse and keyboard between multiple computers
+	pkgver = 1.8.6
+	pkgrel = 1
+	url = http://synergy-foss.org
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = cmake
+	makedepends = git
+	makedepends = libxt
+	makedepends = qt5-base
+	makedepends = unzip
+	depends = avahi
+	depends = curl
+	depends = libxinerama
+	depends = libxrandr
+	depends = libxtst
+	depends = qt5-base
+	optdepends = openssl: encryption support
+	provides = synergy
+	conflicts = synergy
+	source = https://github.com/symless/synergy/archive/v1.8.6-stable.tar.gz
+	source = synergy.png
+	source = synergys_at.socket
+	source = synergys_at.service
+	source = SerialKey.patch
+	md5sums = 81cd9396a7dd9afb46d124527bd87bcc
+	md5sums = 46dcd5d0b5751fae904ef4fd447f9959
+	md5sums = ac296db26fb856cba5c161d0f010cbf9
+	md5sums = d9c40f541e0c89e8d1fbffad0ab2e3a6
+	md5sums = d5fb43d055c6338220825d4047ed020f
+
+pkgname = synergy-stable
+
