@@ -1,28 +1,29 @@
 # Maintainer: Adrian Perez <aperez@igalia.com>
 pkgname='beancount-hg'
 pkgdesc='Double-Entry Accounting from Text Input'
-pkgver=r2826.59cf47a2800a
+pkgver=r4148.397e821a48c5
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://furius.ca/beancount/"
 license=('GPL')
 source=("${pkgname}::hg+https://bitbucket.org/blais/beancount/")
 sha1sums=('SKIP')
-depends=('python-dateutil' 'python>=3.3' 'python-ply' 'python-dateutil')
-makedepends=('mercurial')
-optdepends=('python-bottle: For the "beancount web" web-based interface')
+depends=('python>=3.5' 'mpdecimal' 'python-ply' 'python-dateutil'
+		 'python-magic-ahupp' 'python-beautifulsoup4' 'python-chardet'
+		 'python-bottle' 'python-lxml' 'python-google-python-api-client')
+makedepends=('mercurial' 'python-nose' 'make')
 
 pkgver () {
 	cd "${pkgname}"
 	printf "r%s.%s" "$(hg identify -n)" "$(hg identify -i)"
 }
 
-build () {
-	cd "${pkgname}"
-	export CFLAGS='-std=gnu99'
-	python3 setup.py build_ext -i
-	python3 setup.py build
-}
+# TODO: Tests are failing at the moment, needs investigating.
+# check () {
+# 	cd "${pkgname}"
+# 	export CFLAGS='-std=gnu99'
+# 	make tests
+# }
 
 package () {
 	cd "${pkgname}"

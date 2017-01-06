@@ -1,17 +1,24 @@
 pkgbase = beancount-hg
 	pkgdesc = Double-Entry Accounting from Text Input
-	pkgver = r2826.59cf47a2800a
+	pkgver = r4148.397e821a48c5
 	pkgrel = 1
 	url = http://furius.ca/beancount/
 	arch = i686
 	arch = x86_64
 	license = GPL
 	makedepends = mercurial
-	depends = python-dateutil
-	depends = python>=3.3
+	makedepends = python-nose
+	makedepends = make
+	depends = python>=3.5
+	depends = mpdecimal
 	depends = python-ply
 	depends = python-dateutil
-	optdepends = python-bottle: For the "beancount web" web-based interface
+	depends = python-magic-ahupp
+	depends = python-beautifulsoup4
+	depends = python-chardet
+	depends = python-bottle
+	depends = python-lxml
+	depends = python-google-python-api-client
 	source = beancount-hg::hg+https://bitbucket.org/blais/beancount/
 	sha1sums = SKIP
 
