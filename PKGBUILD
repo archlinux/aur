@@ -101,8 +101,8 @@ sha256sums=( #"$(curl -sL https://gsdview.appspot.com/chromium-browser-official/
             'e3c474dbf3822a0be50695683bd8a2c9dfc82d41c1524a20b4581883c0c88986'
             'a9cb08fbac8ffcf6371edd7ab67833efd42c5b92938f1e2e7922d1d22d226db8'
             # Misc Patches
-            'a2d5fc1a5ef77b2f810508a928c30db7efa1a7798818c05211d41f65c525cef2'
-            '025042ac038ea5fdaabc91e67b13a410d2cacd9afc2d74f89b36fdf2388d4afc'
+            'c958fa44a24f5a5f6ab126a2497da324a9a3e21365a872051e9e141c39d09598'
+            '4c08d787b069585db652a5920432eb9aab7572422fe4f49f49a60157060ee205'
             '89178b6549f09737d7455fe8923c93ead3556c59914ba4375db49789b73b45f3'
             '95ba939b9372e533ecbcc9ca034f3e9fc6621d3bddabb57c4d092ea69fa6c840'
             # Patch from crbug (chromium bugtracker)
