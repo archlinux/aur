@@ -5,12 +5,12 @@ _pkgname=jdk
 pkgname=jdk-devel
 _major=9
 #_minor=1
-_build=150
+_build=151
 _pkgver=$_major
 pkgver=${_major}b${_build}
 #_pkgver=${_major}u${_minor}
 #pkgver=${_major}u${_minor}.b${_build}
-pkgrel=2
+pkgrel=1
 pkgdesc="Oracle Java $_major Development Kit Snapshot"
 arch=('i686' 'x86_64')
 url=https://jdk$_major.java.net/
@@ -56,8 +56,8 @@ md5sums=('ffc22a6191545b1a37d68987581f2ca7'
          '003bb22b96f9b29f61de47190f843791'
          '419f27776d367e0c06c76dac6f6c3485'
          'f09947a67691a2d78d20a3885889981c')
-md5sums_i686=('bacaf2d345084f26d54f6ac7c7a3cdf8')
-md5sums_x86_64=('e189b0246a6162019163d1158174fb7b')
+md5sums_i686=('5e0173a33f48584dfe7ff5afe2413eb9')
+md5sums_x86_64=('a3765b9f0fb9db81850235371326cac5')
 
 package() {
     cd ${_pkgname}-${_major}
