@@ -1,5 +1,5 @@
 post_install() {
-	getent group ffsync &>/dev/null || groupadd ffsync >/dev/null
+	getent group ffsync &>/dev/null || groupadd -r ffsync >/dev/null
 	getent passwd ffsync &>/dev/null || useradd -r -s /usr/bin/false \
 		-g ffsync -G ffsync,http -d /var/lib/ffsync ffsync >/dev/null
 
