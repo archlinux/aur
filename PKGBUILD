@@ -12,19 +12,27 @@
 # alternative, there's also the purr-data-git package which builds straight
 # from the latest upstream source, also available from the AUR.
 
-# NOTE: This is experimental ALPHA software which is still heavily under
-# development, so expect some bugs. If you want a version of Pd-L2Ork ready
-# for production use, use the pd-l2ork or pd-l2ork-git package instead.
+# NOTE: This is BETA software which is still under development, so expect some
+# bugs and ongoing changes in some parts of the program and its library. If
+# you want a stable version of Pd-L2Ork ready for production use, you may want
+# to use the pd-l2ork or pd-l2ork-git package instead. That said, purr-data
+# has been coming along nicely and should be ready for daily use already. If
+# necessary, you can also install both purr-data and pd-l2ork on the same
+# system.
 
-# This package can be installed as a drop-in replacement for pd-l2ork, but
-# currently the two cannot be installed together. Like the pd-l2ork package,
-# this package *can* be installed along with pd or pd-extended, however. To
-# avoid conflicts with these, cyclist, pdsend and pdreceive can be found under
-# /usr/lib/pd-l2ork/bin instead. Likewise, the Gem include files get installed
-# under /usr/include/pd-l2ork.
+# This package can be installed alongside pd-l2ork, as well as vanilla pd or
+# pd-extended. To avoid conflicts with any of these, the main contents of the
+# package can be found under /opt/purr-data by default (you can change this
+# with the prefix variable below). Thus cyclist, pdsend, pdreceive and
+# purr-data's main pd-l2ork binary itself can be found under
+# /opt/purr-data/bin. The include and library files are under the same
+# prefix. Also, a symbolic link purr-data is created under /usr/bin so that
+# the program can be invoked easily from the command line. Likewise, links to
+# the include and lib directories are created under /usr/include/purr-data and
+# /usr/lib/purr-data, so that 3rd party externals know where to find these.
 
 pkgname=purr-data
-pkgver=20170105.r3223.28cde3ac
+pkgver=20170106.r3227.7ad55854
 pkgrel=1
 pkgdesc="Jonathan Wilkes' nw.js variant of Pd-L2Ork (git version)"
 url="https://git.purrdata.net/jwilkes/purr-data"
@@ -39,14 +47,15 @@ depends=('bluez-libs' 'desktop-file-utils' 'dssi' 'fftw'
   'smpeg' 'speex' 'stk' 'tk' 'tkpng' 'vlc' 'xapian-tcl-bindings' 'zlib'
   'alsa-lib' 'gconf' 'gtk2' 'nss' 'libxtst' 'libxss' 'ttf-dejavu')
 makedepends=('autoconf' 'automake' 'libtool' 'git' 'rsync')
-provides=('pd-l2ork')
-conflicts=('pd-l2ork' 'pd-l2ork-git')
+conflicts=('purr-data')
 install=purr-data.install
 options=('!makeflags' '!strip')
-source=("$pkgname::git+https://git.purrdata.net/jwilkes/purr-data.git#commit=28cde3ac10fd71185b9c4b741ed59cf7e173ad93"
-	"RTcmix-pd-LCPLAY-stabilize.patch")
+source=("$pkgname::git+https://git.purrdata.net/jwilkes/purr-data.git#commit=7ad55854899e790f1c29677f1f111cb75d1620f0"
+	"RTcmix-pd-LCPLAY-stabilize.patch"
+	"userconfig.patch")
 md5sums=('SKIP'
-         '39c53063dc18681f29b12c08d9c453aa')
+         '39c53063dc18681f29b12c08d9c453aa'
+         '0707c240816e87b0f605058c2ab8e153')
 # nw.js sdk binaries
 nwjsname=nwjs-sdk
 nwjsver=0.18.5
@@ -61,6 +70,13 @@ if [ "$CARCH" = "i686" ]; then
 elif [ "$CARCH" = "x86_64" ]; then
   _arch="x64"
 fi
+
+# Installation prefix. This must be something other than /usr if you want to
+# install Purr Data alongside Pd-L2Ork. Note that some items such as desktop
+# files and icons will still be installed under /usr so that the system finds
+# them, but they will be renamed to prevent name clashes with files from the
+# pd-l2ork package.
+prefix=${prefix:-/opt/purr-data}
 
 # Run 'makepkg buildopt=-b' for an incremental build (this skips recompiling
 # Gem which takes a *long* time to build). Note that this will only produce a
@@ -85,6 +101,8 @@ prepare() {
   cp -a $srcdir/$nwjsname-v$nwjsver-linux-$_arch pd/nw/nw
   # make the sources compile with gcc 6.1+
   cd $srcdir/$pkgname/externals/rtcmix-in-pd && patch -Np1 < $srcdir/RTcmix-pd-LCPLAY-stabilize.patch
+  # patch the user config dir name so that purr-data can coexist with pd-l2ork
+  cd $srcdir/$pkgname && patch -Np1 < $srcdir/userconfig.patch
 }
 
 build() {
@@ -93,38 +111,53 @@ build() {
   unset INCLUDES
 
   cd $srcdir/$pkgname/l2ork_addons
-  ./tar_em_up.sh $buildopt -n
+  inst_dir=$prefix ./tar_em_up.sh $buildopt -n
 }
 
 package() {
   cd "$srcdir/$pkgname/packages/linux_make/build"
   cp -a * "$pkgdir"
-  # Remove init.d-related stuff.
-  cd "$pkgdir/etc"
-  rm -rf default init.d
-  # Remove extra K12 icons. K12 mode is not supported by purr-data yet.
+  # Create a link to the executable.
+  mkdir -p "$pkgdir/usr/bin"
+  ln -sf $prefix/bin/pd-l2ork "$pkgdir/usr/bin/purr-data"
+  # Create links to the include and lib directories.
+  mkdir -p "$pkgdir/usr/include"
+  ln -sf $prefix/include/pd-l2ork "$pkgdir/usr/include/purr-data"
+  mkdir -p "$pkgdir/usr/lib"
+  ln -sf $prefix/lib/pd-l2ork "$pkgdir/usr/lib/purr-data"
+  # Just remove all the /etc stuff and the Emacs mode for now, we don't really
+  # need these.
+  rm -rf "$pkgdir/etc" "$pkgdir/usr/share/emacs"
+  # Edit the library paths in the default user.settings file so that it
+  # matches our install prefix.
+  cd "$pkgdir$prefix/lib/pd-l2ork"
+  sed -e "s!/usr/lib/pd-l2ork!$prefix/lib/pd-l2ork!g" -i default.settings
+  # Replace the pd-l2ork desktop/mime files and icons with purr-data ones, so
+  # that pd-l2ork can be installed alongside purr-data. We also remove the K12
+  # desktop files which aren't needed since K12 mode is not supported by
+  # purr-data (yet).
   cd "$pkgdir/usr/share/applications"
-  rm -f pd-l2ork-k12*.desktop
-  # Move pdsend and pdreceive to avoid conflicts with other Pd versions.
-  cd "$pkgdir/usr"
-  mv bin/cyclist bin/pdreceive bin/pdsend lib/pd-l2ork/bin
-  # Get rid of the corresponding manpages
-  rm -f share/man/man1/pdreceive.* share/man/man1/pdsend.*
-  # Move the Gem include files into the pd-l2ork include directory to prevent
-  # conflicts with other packages providing these files.
-  mv include/Gem include/pd-l2ork
-  # Edit the Gem pkgconfig file accordingly and rename it.
-  sed -e 's?/include?/include/pd-l2ork?g' -e 's?/lib/pd/extra?/lib/pd-l2ork/extra?g' < lib/pkgconfig/Gem.pc > lib/pkgconfig/pd-l2ork-Gem.pc && rm -f lib/pkgconfig/Gem.pc
-  # The Japanese filename causes woes with pacman, remove it.
-  #rm -f lib/pd-l2ork/doc/manuals/StartHere/+ここからスタート.pd
+  sed -e 's/pd-l2ork/purr-data/g' -e 's/Pd-L2Ork/Purr-Data/g' < pd-l2ork.desktop > purr-data.desktop
+  sed -e 's/pd-l2ork/purr-data/g' -e 's/Pd-L2Ork/Purr-Data/g' < pd-l2ork-debug.desktop > purr-data-debug.desktop
+  rm -f pd-l2ork*.desktop
+  cd "$pkgdir/usr/share/mime/packages"
+  sed -e 's/pd-l2ork/purr-data/g' < pd-l2ork.xml > purr-data.xml
+  rm -f pd-l2ork.xml
+  cd "$pkgdir/usr/share/icons/hicolor/128x128/apps/"
+  rm -f pd-l2ork-k12*.png
+  mv pd-l2ork.png purr-data.png
+  mv pd-l2ork-red.png purr-data-red.png
+  cd "$pkgdir/usr/share/icons/hicolor/128x128/mimetypes/"
+  mv text-x-pd-l2ork.png text-x-purr-data.png
   # Remove libtool archives and extra object files.
+  cd "$pkgdir$prefix"
   rm -f lib/pd-l2ork/extra/*/*.la lib/pd-l2ork/extra/*/*.pd_linux_o
   # Sanitize permissions.
   cd "$pkgdir"
   chmod -R go-w *
   chmod -R a+r *
-  chmod a-x usr/lib/pd-l2ork/default.settings
-  find usr/lib/pd-l2ork/bin/nw -executable -not -type d -exec chmod a+x {} +
+  chmod a-x opt/purr-data/lib/pd-l2ork/default.settings
+  find opt/purr-data/lib/pd-l2ork/bin/nw -executable -not -type d -exec chmod a+x {} +
   #find . -executable -name '*.pd_linux' -exec chmod a-x {} +
   find . -executable -name '*.pd' -exec chmod a-x {} +
   find . -executable -name '*.txt' -exec chmod a-x {} +
