@@ -2,7 +2,7 @@
 
 pkgname=('python-fasteners')
 pkgver=0.14.1
-pkgrel=3
+pkgrel=4
 pkgdesc="A python package that provides useful locks."
 arch=('any')
 url="https://github.com/harlowja/fasteners"
