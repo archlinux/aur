@@ -1,7 +1,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=emacs-lucid-git
-pkgver=26.0.50.r128047
+pkgver=26.0.50.r128049
 pkgrel=1
 pkgdesc="GNU Emacs. Official git master."
 arch=('i686' 'x86_64')
@@ -57,4 +57,10 @@ package() {
   # Delete compressed .el.gz files. Comment out if needed.
   # find "$pkgdir"/usr/share/emacs/ -name "*.el.gz" -exec rm {} \;
   chmod g+w "$pkgdir"/var/games
+    # The logic used to install systemd's user service is partially broken
+  # under Arch Linux model, because it adds $DESTDIR as prefix to the 
+  # final Exec targets. The fix is to hack it with an axe.
+  install -Dm644 etc/emacs.service "$pkgdir"/usr/lib/systemd/user/emacs.service
+  sed -i -e 's#\(ExecStart\=\)#\1\/usr\/bin\/#' -e 's#\(ExecStop\=\)#\1\/usr\/bin\/#' \
+    "$pkgdir"/usr/lib/systemd/user/emacs.service
 }
