@@ -1,0 +1,21 @@
+pkgbase = zazu-bin
+	pkgdesc = A fully extensible and open source launcher for hackers, creators and dabblers.
+	pkgver = 0.2.3
+	pkgrel = 1
+	url = http://zazuapp.org/
+	arch = x86_64
+	license = MIT
+	makedepends = gendesk
+	makedepends = npm
+	depends = alsa-lib
+	depends = gconf
+	depends = gtk2
+	depends = libxss
+	depends = libxtst
+	depends = nss
+	provides = zazu
+	source = https://github.com/tinytacoteam/zazu/releases/download/v0.2.3/zazu-v0.2.3-linux-x64.deb
+	sha256sums = f64951746db0165b559bb0aecc06d563ef1301e70dc7b1ab5f0ab2a89163e3e7
+
+pkgname = zazu-bin
+
