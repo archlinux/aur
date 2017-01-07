@@ -1,27 +1,15 @@
 _installdir=/opt/ankama/wakfu
 
-pre_install() {
-  /bin/true
-}
-
 post_install() {
   echo " ==> Setting permissions to allow auto-update"
-  chgrp -R users "$_installdir"
+  chgrp -R games "$_installdir"
   chmod -R g+w "$_installdir"
   echo " ==> Note: The first auto-update will download all game"
   echo " ==>       content and may take a long time (~470MB)."
 }
 
-pre_upgrade() {
-  /bin/true
-}
-
 post_upgrade() {
-  /bin/true
-}
-
-pre_remove() {
-  /bin/true
+  post_install
 }
 
 post_remove() {
