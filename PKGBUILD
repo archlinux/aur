@@ -1,6 +1,6 @@
 pkgname=whatsie
 pkgver=2.1.0
-pkgrel=3
+pkgrel=4
 pkgdesc="A simple & beautiful desktop client for WhatsApp Web."
 arch=('x86_64')
 url="https://github.com/gsantner/$pkgname"
@@ -30,4 +30,10 @@ package() {
   msg2 "Creating symlink..."
   mkdir -p "$pkgdir/usr/bin/"
   ln -s /opt/$pkgname/$pkgname "$pkgdir/usr/bin/$pkgname"
+  
+  # Archify folder permissions
+  cd $pkgdir
+  for d in $(find . -type d); do
+    chmod 755 $d
+  done
 }
