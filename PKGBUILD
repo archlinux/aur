@@ -3,7 +3,7 @@
 
 pkgname=razer-daemon
 pkgver=1.1.5
-pkgrel=1
+pkgrel=2
 pkgdesc="A daemon for controlling razer-driver"
 arch=('any')
 url="https://github.com/terrycain/razer_drivers"
@@ -20,11 +20,11 @@ package() {
   mkdir -p $pkgdir/usr/share/razer-service
   mkdir -p $pkgdir/usr/share/man/man5
   mkdir -p $pkgdir/usr/share/man/man8
-  mkdir -p $pkgdir/usr/lib/python3.5/site-packages
+  mkdir -p $pkgdir/usr/lib/python3.6/site-packages
   mkdir -p $pkgdir/usr/bin
   mkdir -p $pkgdir/etc/xdg/autostart
 
-  cp -r $srcdir/$pkgname/daemon/razer_daemon $pkgdir/usr/lib/python3.5/site-packages/
+  cp -r $srcdir/$pkgname/daemon/razer_daemon $pkgdir/usr/lib/python3.6/site-packages/
   cp $srcdir/$pkgname/daemon/run_razer_daemon.py $pkgdir/usr/bin/razer-service
   cp $srcdir/$pkgname/daemon/resources/razer.conf $pkgdir/usr/share/razer-service/razer.conf.example
 
