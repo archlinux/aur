@@ -1,8 +1,9 @@
-# Maintainer: Javier Tia <javier dot tia at gmail dot com>
+# Maintainer: Javier Tiá <javier dot tia at gmail dot com>
+
 _name=humanize
 pkgname="python-${_name}"
 pkgver=0.5.1
-pkgrel=2
+pkgrel=3
 pkgdesc='Humanize is a modest package contains various common humanization utilities'
 url='https://github.com/jmoiron/humanize'
 arch=('any')
