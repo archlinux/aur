@@ -3,7 +3,7 @@
 
 pkgname=torrents_dispatcher
 pkgver=0.0.6
-pkgrel=2
+pkgrel=3
 pkgdesc='Dispatch your torrents between multiple torrent clients'
 arch=('any')
 url='https://github.com/Anthony25/torrents_dispatcher'

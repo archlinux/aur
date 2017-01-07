@@ -1,7 +1,7 @@
 pkgbase = torrents_dispatcher
 	pkgdesc = Dispatch your torrents between multiple torrent clients
 	pkgver = 0.0.6
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/Anthony25/torrents_dispatcher
 	arch = any
 	license = BSD
