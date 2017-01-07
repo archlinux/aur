@@ -1,13 +1,13 @@
 
 # Maintainer: Victor Tran <vicr12345 at gmail dot com>
 pkgname=contemporary-widgets
-pkgver=1.0
+pkgver=1.1
 pkgrel=0
 pkgdesc="Contemporary Widget Theme"
 arch=("x86_64")
 url="https://github.com/vicr123/contemporary-theme"
 license=('GPL3')
-depends=('qt5-base')
+depends=('qt5-base' 'the-libs')
 makedepends=('git')
 source=("$pkgname-$pkgver"::'git+https://github.com/vicr123/contemporary-theme#branch=master')
 md5sums=('SKIP')
