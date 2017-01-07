@@ -17,7 +17,7 @@ backup=("etc/$pkgname/$pkgname.conf"
         "etc/$pkgname/${pkgname}_client.conf"
         "etc/$pkgname/ssleay.cnf"
         "etc/pam.d/$pkgname")
-source=("$pkgname-$pkgver.tar.gz::https://github.com/Openwsman/$pkgname/archive/v$pkgver.tar.gz")
+source=("https://github.com/Openwsman/$pkgname/archive/v$pkgver/$pkgname-$pkgver.tar.gz")
 md5sums=('a14cec2a892a30e055edac36071d8972')
 
 prepare() {

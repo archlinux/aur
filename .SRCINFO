@@ -21,7 +21,7 @@ pkgbase = openwsman
 	backup = etc/openwsman/openwsman_client.conf
 	backup = etc/openwsman/ssleay.cnf
 	backup = etc/pam.d/openwsman
-	source = openwsman-2.6.3.tar.gz::https://github.com/Openwsman/openwsman/archive/v2.6.3.tar.gz
+	source = https://github.com/Openwsman/openwsman/archive/v2.6.3/openwsman-2.6.3.tar.gz
 	md5sums = a14cec2a892a30e055edac36071d8972
 
 pkgname = openwsman
