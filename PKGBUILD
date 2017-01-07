@@ -4,11 +4,11 @@
 
 pkgname='python-pacparser'
 pkgver=1.3.7
-pkgrel=1
+pkgrel=2
 arch=(i686 x86_64)
 url="https://github.com/pacparser/pacparser"
 license=('LGPL')
-depends=('python')
+depends=('python>=3.6')
 options=('!makeflags')
 pkgdesc="Python 3.x pacparser module"
 source=("https://github.com/pacparser/pacparser/archive/${pkgver}.tar.gz")
