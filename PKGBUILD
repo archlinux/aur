@@ -3,7 +3,7 @@
 pkgbase=pyspider
 pkgname=(python-${pkgbase} python2-${pkgbase})
 pkgver=0.3.8
-pkgrel=1
+pkgrel=2
 pkgdesc="A Powerful Spider System in Python"
 arch=('any')
 url="https://github.com/binux/pyspider"
