@@ -17,7 +17,7 @@ makedepends=('git' 'certbot-git' 'python2-acme-git' 'python2-pyopenssl'
 provides=("")
 conflicts=("")
 source=("${_reponame}"::"git+https://github.com/certbot/${_reponame}")
-md5sums=('SKIP')
+sha512sums=('SKIP')
 
 pkgver() {
 	cd "${srcdir}/${_reponame}"
