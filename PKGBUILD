@@ -2,7 +2,7 @@
 
 pkgname=gnome-shell-extension-drop-down-terminal
 pkgver=20
-pkgrel=1
+pkgrel=2
 pkgdesc="Drop Down Terminal extension for the Gnome Shell"
 arch=('any')
 url="https://github.com/zzrough/gs-extensions-drop-down-terminal"
@@ -11,6 +11,16 @@ depends=('gnome-shell')
 install=${pkgname}.install
 source=("https://github.com/zzrough/gs-extensions-drop-down-terminal/archive/v${pkgver}.tar.gz")
 sha256sums=('17192234cd792109cdbf6003df08b8cc8b0ed63bb81fe1cbe27154efb874a210')
+
+prepare() {
+  cd "${srcdir}/gs-extensions-drop-down-terminal-${pkgver}/drop-down-terminal@gs-extensions.zzrough.org"
+
+  # Fixes for 3.22
+  sed -i '32s/:.*/-family: "Cantarell";\n    font-size: 11px;/' gtk.css
+  sed -i '2i window,' gtk.css
+  sed -i '7i window *,' gtk.css
+  sed -i 's/]/, "3.22"]/g' metadata.json
+}
 
 package() {
   _uuid='drop-down-terminal@gs-extensions.zzrough.org'
