@@ -5,9 +5,9 @@
 # Contributor: Geoffroy Carrier <geoffroy at archlinux dot org>
 
 pkgbase=lib32-bluez
-pkgname=(${pkgbase}{-libs,-plugins})
+pkgname=(${pkgbase}-libs)
 pkgver=5.43
-pkgrel=2
+pkgrel=3
 url="http://www.bluez.org/"
 arch=('x86_64')
 license=('GPL2')
@@ -59,13 +59,4 @@ package_lib32-bluez-libs() {
 
   # Remove conflicting files.
   rm -rf "${pkgdir}/usr/include"
-}
-
-package_lib32-bluez-plugins() {
-  pkgdesc="bluez plugins (PS3 Sixaxis controller) (32-bit)"
-  depends=('lib32-systemd')
-
-  cd ${pkgbase#lib32-}-${pkgver}
-  make DESTDIR=${pkgdir} \
-    install-pluginLTLIBRARIES
 }
