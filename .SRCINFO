@@ -1,7 +1,7 @@
 pkgbase = python-django-filter
 	pkgdesc = Django-filter is a reusable Django application for allowing users to filter querysets dynamically.
 	pkgver = 0.15.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/carltongibson/django-filter
 	arch = any
 	license = BSD
