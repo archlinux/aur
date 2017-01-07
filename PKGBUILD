@@ -6,7 +6,7 @@ arch=('i686' 'x86_64')
 url="https://github.com/Openwsman/$pkgname"
 license=('BSD')
 depends=('openwsman>=2.5')
-source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
+source=("$url/archive/v$pkgver/$pkgname-$pkgver.tar.gz")
 md5sums=('df418d6d78160fd4f88f890a8953907a')
 
 build() {
