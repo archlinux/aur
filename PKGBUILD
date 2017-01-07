@@ -2,11 +2,11 @@
 # Contributor:  eadrom <eadrom@archlinux.info>
 # Contributor:  Martin Wimpress <code@flexion.org>
 
-_ver=1.15
+_ver=1.17
 _pkgbase=mate-session-manager
 pkgname="${_pkgbase}-dev"
 pkgver=${_ver}.0
-pkgrel=1
+pkgrel=5
 pkgdesc="The MATE Session Handler (GTK3 version)"
 url="http://mate-desktop.org"
 arch=('i686' 'x86_64')
@@ -23,7 +23,7 @@ optdepends=('lightdm-gtk-greeter: A lightweight display manager'
             'xdg-user-dirs-gtk: Add autostart that prompts to rename user directories when switching locales')
 groups=('mate')
 source=("http://pub.mate-desktop.org/releases/${_ver}/${_pkgbase}-${pkgver}.tar.xz")
-sha1sums=('f8e7383072511117a7f1fe4ca56afe7a5c3c9e35')
+sha1sums=('b2f97c06a41fe7ff4d1e19663a28c40113ef7631')
 
 prepare() {
     cd "${srcdir}"
