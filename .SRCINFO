@@ -1,0 +1,14 @@
+pkgbase = go-outline-git
+	pkgdesc = Utility to extract JSON representation of declarations from a Go source file
+	pkgver = 20161011.9_e785568
+	pkgrel = 1
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = go
+	makedepends = git
+	source = git://github.com/lukehoban/go-outline.git
+	md5sums = SKIP
+
+pkgname = go-outline-git
+
