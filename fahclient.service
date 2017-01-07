@@ -1,0 +1,10 @@
+[Unit]
+Description="A command line client for Folding@Home"
+
+[Service]
+User=fahclient
+WorkingDirectory=/var/lib/fahclient
+ExecStart=/usr/bin/FAHClient /etc/fahclient.cfg
+
+[Install]
+WantedBy=multiuser.target

@@ -1,0 +1,11 @@
+<config>
+  <!-- Slot Control -->
+  <power v='FULL'/>
+
+  <!-- User Information -->
+  <team v='2164'/>
+  <user v='yurikoles'/>
+
+  <!-- Folding Slots -->
+  <slot id='0' type='CPU'/>
+</config>
