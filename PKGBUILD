@@ -5,7 +5,7 @@
 # Contributor: Geoffroy Carrier <geoffroy at archlinux dot org>
 
 pkgbase=lib32-bluez
-pkgname=(${pkgbase}-libs)
+pkgname=${pkgbase}
 pkgver=5.43
 pkgrel=3
 url="http://www.bluez.org/"
@@ -46,17 +46,20 @@ check() {
   make check
 }
 
-package_lib32-bluez-libs() {
-  pkgdesc="Deprecated libraries for the bluetooth protocol stack (32-bit)"
-  depends=('bluez-libs' 'lib32-glibc')
-  license=('LGPL2.1')
+package_lib32-bluez() {
+  pkgdesc="Daemons for the bluetooth protocol stack (32-bit)"
+  depends=(lib32-{libical,dbus,glib2})
 
-  cd ${pkgbase#lib32-}-${pkgver}
+  cd "${pkgbase#lib32-}-${pkgver}"
   make DESTDIR=${pkgdir} \
-    install-includeHEADERS \
-    install-libLTLIBRARIES \
-    install-pkgconfigDATA
+    install-libexecPROGRAMS \
+    install-dbussessionbusDATA \
+    install-systemdsystemunitDATA \
+    install-systemduserunitDATA \
+    install-dbussystembusDATA \
+    install-dbusDATA \
+    install-man8
 
   # Remove conflicting files.
-  rm -rf "${pkgdir}/usr/include"
+  rm -rf "${pkgdir}"/{etc,usr/{share,lib,include,bin}}
 }
