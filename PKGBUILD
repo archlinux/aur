@@ -6,7 +6,7 @@ _cmd="${_module%client}"
 
 pkgname=("python-${_module}" "python2-${_module}")
 pkgver="6.0.0"
-pkgrel="1"
+pkgrel="2"
 pkgdesc="CLI and Client Library for OpenStack Networking"
 arch=("any")
 url="https://github.com/openstack/${_name}"
