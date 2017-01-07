@@ -1,5 +1,5 @@
 pkgbase = linux-mainline-usermode
-	pkgdesc = User mode Linux kernel and modules
+	pkgdesc = User mode Linux-mainline kernel and modules
 	pkgver = 4.10rc2
 	pkgrel = 1
 	url = http://user-mode-linux.sourceforge.net/
