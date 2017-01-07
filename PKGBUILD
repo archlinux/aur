@@ -1,10 +1,11 @@
 # Maintainer: Maikel Wever <maikelwever@gmail.com>
 pkgname=python-verboselogs
 pkgver=1.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Verbose logging level for Python's logging module"
 url="https://github.com/xolox/python-verboselogs"
 license=('MIT')
+makedepends=('python-setuptools')
 depends=('python')
 source=("https://github.com/xolox/${pkgname}/archive/${pkgver}.tar.gz")
 md5sums=('b7a440812f40aa87b9e0789fdfe18988')
