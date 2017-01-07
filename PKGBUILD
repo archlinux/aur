@@ -1,6 +1,6 @@
 pkgname=pidgin-indicator
-pkgver=0.9
-pkgrel=3
+pkgver=1.0
+pkgrel=1
 pkgdesc="Pidgin plugin that adds tray icon using libappindicator"
 arch=('i686' 'x86_64')
 url="https://github.com/philipl/pidgin-indicator"
@@ -9,7 +9,7 @@ depends=('pidgin' 'libappindicator-gtk2')
 makedepends=('intltool')
 install=pidgin-indicator.install
 source=(https://github.com/philipl/${pkgname}/releases/download/${pkgver}/${pkgname}-${pkgver}.tar.bz2 )
-sha256sums=('a604f7a5bc96306df2bc1977ee5a49e648a364294ffc7c44f64c00cf4ccee8c3')
+sha256sums=('009a01f571855f82f16f0753b104d6afa694452b3c2b176f57553e16155d25b7')
 
 build() {
     cd "$srcdir/${pkgname}-${pkgver}"
