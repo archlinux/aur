@@ -22,7 +22,7 @@ provides=("certbot=${pkgver}" "letsencrypt=${pkgver}")
 conflicts=("certbot" "letsencrypt")
 replaces=("letsencrypt-git")
 source=("${_reponame}"::"git+https://github.com/certbot/${_reponame}")
-md5sums=('SKIP')
+sha512sums=('SKIP')
 
 pkgver() {
 	cd "${srcdir}/${_reponame}"

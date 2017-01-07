@@ -32,6 +32,6 @@ pkgbase = certbot-git
 	conflicts = letsencrypt
 	replaces = letsencrypt-git
 	source = certbot::git+https://github.com/certbot/certbot
-	md5sums = SKIP
+	sha512sums = SKIP
 
 pkgname = certbot-git
