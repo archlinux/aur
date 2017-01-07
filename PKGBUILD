@@ -16,8 +16,8 @@ conflicts=("mt7610u_sta" "mt7610u_wifi_sta")
 install="${_pkgbase}.install"
 source=("${_pkgbase}"::"git+https://github.com/xSmallDeadGuyx/mt7610u_wifi_sta_v3002_dpo_20130916.git"
 	"dkms.conf")
-md5sums=('SKIP'
-         '189127dcff1db3d42bc6f4d1cea17974')
+sha512sums=('SKIP'
+            '9662793c051f1147e3be440374877b01df58880c0c0815d8ca39ed23f1cb1cfa6b17b55730b827d27bd3123d69d65d4f8f266bcf382d4e32e8cd03e3d8442981')
 
 pkgver() {
 	cd "${srcdir}/${_pkgbase}"
