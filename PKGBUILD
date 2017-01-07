@@ -2,7 +2,7 @@
 pkgbase=python-rawpy
 pkgname=('python-rawpy' 'python2-rawpy')
 pkgver=0.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Python wrapper for the LibRaw library"
 arch=(any)
 license=('MIT License')
