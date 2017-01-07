@@ -3,7 +3,7 @@
 
 _pkgname=qutepart
 pkgname=qutepart-git
-pkgver=2.2.3.r18.gd938532
+pkgver=3.0.1.r13.gbff28f8
 pkgrel=1
 pkgdesc="Code editor component for PyQt and Pyside"
 arch=('any')
