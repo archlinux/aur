@@ -1,4 +1,4 @@
-# Maintainer: Matthew Gamble
+# Maintainer: Matthew Gamble <git@matthewgamble.net>
 
 pkgname=python-simplediff
 pkgver=1.0
