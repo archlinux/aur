@@ -13,7 +13,7 @@ optdepends=("zlib: zlib compression support"
 	"bzip2: bzip2 compression support")
 install="${pkgname}.install"
 source=("https://github.com/dun/munge/archive/${pkgname}-${pkgver}.tar.gz")
-md5sums=('3e10b37d509025b49dda4f49c4c81c76')
+sha512sums=('551b3da8de11a50e2cfbdb19de5c2e64dae9d8082bc55219d4f532a48ba01e802e33bac920568cd8b36220d7bd892a6a6e2a963b63199224343eedf204657ce5')
 
 build() {
 	cd "${srcdir}/${pkgname}-${pkgname}-${pkgver}"
