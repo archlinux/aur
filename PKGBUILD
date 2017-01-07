@@ -3,7 +3,7 @@
 
 pkgname=bypy-git
 _pkgname=bypy
-pkgver=1.3.2.r9.g2af2ea7
+pkgver=1.3.3.r2.g3acc4e8
 epoch=1
 pkgrel=1
 pkgdesc="Python client for Baidu Yun (Personal Cloud Storage) 百度云/百度网盘 Python 客户端"
