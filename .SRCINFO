@@ -1,14 +1,14 @@
 pkgbase = luv-icon-theme-git
 	pkgdesc = The spiritual successor to Flattr, a flat but complex icon theme for freedesktop environments.
-	pkgver = 0.4.r82.g961ba1f
+	pkgver = 0.4.r84.gc3e5d83
 	pkgrel = 1
 	url = https://github.com/NitruxSA/luv-icon-theme
 	arch = any
 	license = custom:CC BY-SA 4.0
 	makedepends = git
 	depends = librsvg
-	provides = flattr-icon-theme=0.4.r82.g961ba1f
-	provides = luv-icon-theme=0.4.r82.g961ba1f
+	provides = flattr-icon-theme=0.4.r84.gc3e5d83
+	provides = luv-icon-theme=0.4.r84.gc3e5d83
 	conflicts = flattr-icon-theme
 	conflicts = luv-icon-theme
 	source = luv-icon-theme-git::git+https://github.com/NitruxSA/luv-icon-theme.git
