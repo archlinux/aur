@@ -2,7 +2,7 @@
 # Contributor: speps <speps at aur dot archlinux dot org>
 
 pkgname=friture
-pkgver=0.22
+pkgver=0.24
 pkgrel=1
 pkgdesc="An application to visualize and analyze live audio data in real-time."
 arch=(i686 x86_64)
@@ -12,7 +12,7 @@ depends=('pyqwt' 'python-scipy' 'python-psutil' 'python-pyaudio' 'python-opengl'
 optdepends=('jack: for JACK I/O support')
 makedepends=('cython' 'dos2unix')
 source=("https://github.com/tlecomte/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('4d7b415a254a352dc9144044347734cd6b194b7bad103428e3e6d4516a1d0c2f')
+sha256sums=('2fe8a9d31774bb451bbfc37818b127ef3e97772e19e70960d8693a6439ffac56')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
