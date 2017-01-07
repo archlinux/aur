@@ -7,7 +7,7 @@ _cmd="${_name}"
 
 pkgname=("python-${_module}" "python2-${_module}")
 pkgver=2.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="An awesome tool for web developers."
 arch=("any")
 url="https://github.com/lepture/python-livereload"
