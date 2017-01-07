@@ -1,7 +1,7 @@
 # Maintainer: Joel Teichroeb <joel@teichroeb.net>
 
 pkgname=libinput-git
-pkgver=1.5.2.r66.g91467f7
+pkgver=1.5.2.r71.g738a39f
 pkgrel=1
 pkgdesc='A library to handle input devices in Wayland compositors'
 arch=(i686 x86_64)
@@ -33,5 +33,4 @@ package() {
 	install -Dm644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}/COPYING"
 	# install doc - no Makefile target
 	install -v -dm755 ${pkgdir}/usr/share/doc/libinput
-	cp -rv doc/html/* ${pkgdir}/usr/share/doc/libinput
 }
