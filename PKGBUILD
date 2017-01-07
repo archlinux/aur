@@ -1,10 +1,11 @@
-# Maintaincer: Horo <horo@yoitsu.moe>
+# Maintainer: Dennis <dennis@stengele.me>
+# Contributor: Horo <horo@yoitsu.moe>
 # Contributor: Pedro Gabriel <pedrogabriel@dcc.ufmg.br>
 # Colaborator: Chun Yang <x@cyang.info>
 # Colaborator: Jonhoo
 
 pkgname=ghost
-pkgver=0.11.0
+pkgver=0.11.3
 pkgrel=1
 pkgdesc="Free, open, simple blogging platform"
 arch=('any')
@@ -12,49 +13,40 @@ url="http://ghost.org"
 license=('MIT')
 makedepends=('unzip')
 depends=('nodejs>=0.12' 'npm' 'python')
-backup=('srv/ghost/config.js')
+backup=('etc/webapps/ghost/config.js')
 install=ghost.install
-source=(https://ghost.org/zip/$pkgname-$pkgver.zip
+source=(https://github.com/TryGhost/Ghost/releases/download/$pkgver/Ghost-$pkgver.zip
         ghost.service
         ghost.install
+        ghost.config.js
        )
-noextract=($pkgname-$pkgver.zip)
-sha512sums=('686e069d23d70f0d3a432bae83bfc9f50ad7fef6398760b13a88cd21d60ec34793caf4357b552b555d28e00f781f0a36d3b95ccebca7aaa833d4c1bf778ab194'
-            '9028de4621c38bf83a22c1cbfa0529d6538516838d641730226fcc24487d654a7d8dcb0b45e455a0a697bd0a9dd80dfdbce6ca8ec1d2e895683ab35846dac10c'
-            'c4cbd918bf050dbf4b77d5ff016836947351fb1f575359b19e0d6c0343275a253f0922e3be952a9e672c3d2659e67327f92c19573ff5e5fde7f68826afec6d8f'
-            )
-# Note: You may need to log into ghost.org and download the zip file manually
-# and place it inside the same directory as the PKGBUILD
+noextract=('Ghost-$pkgver.zip')
+sha512sums=('380effec7433c92bc1b3c73ab321d33c4a1e7053f663c1ba7f58d5f340ba182339812969df6a81c90a53238d323265e00e398fd0acf457d69784500784e68d4b'
+            '6d3b6a3dad615cca370666cd2b78971889d83c6a0789c061d06194d103ce17c7ec314862344250e1d8dbe8d6a41f14aad35a74c519fbcb25b024a8dce48049fe'
+            'b5682cd45996d0b62700e8e789ec977ae50657f87a6d7390cd1669f75fd0fbd31ef3cdda370ee2f0bbafc7a0e394edf15f95c363d6ede869c7bcdf7783ada2bf'
+            '8776a445733d71402311016cb3822a6535e88ff7c9c9c520caa9a26b0ac32ad124cbc56948420942660343ffd60e5ff53ca553c17a640ce2cb41c9fff4156173')
 
 package() {
-    install -dm755 "$pkgdir/srv/ghost"
-    cd "$pkgdir/srv/ghost"
-    unzip "$srcdir/$pkgname-$pkgver.zip"
+    # Prepare directories
+    install -dm755 "$pkgdir/usr/share/webapps/ghost"
+    install -dm755 "$pkgdir/var/lib/ghost"
+
+    cd "$pkgdir/usr/share/webapps/ghost"
+    unzip "$srcdir/Ghost-$pkgver.zip"
     echo "Ingoring Ghost's Nodejs version check ......"
     export GHOST_NODE_VERSION_CHECK=false
-    cp config.example.js config.js
     npm install --production
-    install -Dm644 "$srcdir/ghost.service" "${pkgdir}/usr/lib/systemd/system/ghost.service"
+    install -Dm644 "$srcdir/ghost.service" "$pkgdir/usr/lib/systemd/system/ghost.service"
     install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/ghost/LICENSE"
     rm LICENSE
 
-    chmod -R g=u "$pkgdir/srv/ghost"
-    find "$pkgdir/srv/ghost" -type d -exec chmod g+s {} \;
+    # Set Config File
+    mkdir -p "$pkgdir/etc/webapps/ghost"
+    install -Dm644 "$srcdir/ghost.config.js" "$pkgdir/etc/webapps/ghost/config.js"
+    ln -s "/etc/webapps/ghost/config.js" "$pkgdir/usr/share/webapps/ghost/config.js"
 
-    cat <<-EOF
+    # Install content Directory
+    mv "$pkgdir/usr/share/webapps/ghost/content" "$pkgdir/var/lib/ghost/"
 
-	Upgrading Ghost involves replacing old files with the new files, and
-	restarting the server. However, as the database, image uploads and
-	custom themes are stored alongside Ghost in the content directory,
-	care should be taken to only replace the necessary files as explained at
-	http://support.ghost.org/how-to-upgrade/ .
-
-	It is highly recommended that you make a backup of your data before
-	upgrading. To backup all the data from your database, log into your
-	Ghost install and go to /ghost/debug/. Press the export button to
-	download a JSON file containing all of your data.
-
-	EOF
-
-    chown -R 738:738 "$pkgdir/srv/ghost"
+    chown -R 738:738 "$pkgdir/var/lib/ghost"
 }

@@ -3,9 +3,9 @@ Description=Ghost Blogging Platform
 After=network.target
 
 [Service]
-WorkingDirectory=/srv/ghost
+WorkingDirectory=/var/lib/ghost
 Environment=GHOST_NODE_VERSION_CHECK=false
-ExecStart=/usr/bin/npm start --production /srv/ghost
+ExecStart=/usr/bin/npm start --production /usr/share/webapps/ghost
 User=ghost
 
 [Install]

@@ -2,19 +2,19 @@ post_install() {
     getent group ghost &>/dev/null || \
         groupadd --system --gid 738 ghost &>/dev/null
     getent passwd ghost &>/dev/null || \
-        useradd --system --gid ghost --uid 738 -d /srv/ghost -s /usr/bin/nologin ghost &>/dev/null
-    chown -R ghost:ghost srv/ghost &>/dev/null
+        useradd --system --gid ghost --uid 738 -d /var/lib/ghost -s /usr/bin/nologin ghost &>/dev/null
+    chown -R ghost:ghost var/lib/ghost &>/dev/null
 
     systemctl daemon-reload
 
     cat <<-EOF
-	To use ghost with systemd, run
-		systemctl enable ghost.service
-    You may want to modify some settings via edit
-        /srv/ghost/config.js
-	By default, Ghost can be accessed at http://localhost:2368/
-	after it is started.
-	EOF
+    You can now run Ghost as a Systemd Service
+        systemctl enable --now ghost.service
+    This also ensures that Ghost is started at boot.
+
+    By default, Ghost can be accessed at http://localhost:2368/
+    after it is started.
+    EOF
 }
 
 post_upgrade() {
@@ -29,8 +29,21 @@ post_upgrade() {
 
         echo "The UID/GID of the ghost user/group has changed"
         echo "as of ghost-0.5.8. Please update the ownership of"
-        echo "the /srv/ghost directory by running (as root)"
-        echo "    chown -R ghost:ghost /srv/ghost"
+        echo "the /var/lib/ghost directory by running (as root)"
+        echo "    chown -R ghost:ghost /var/lib/ghost"
+    fi
+    # Check if old version < 0.11.3
+    _cmp_ver=0.11.3
+    if [ "$2" = "$(echo -e "$2\n$_cmp_ver" | sort -V | head -n1)" ] \
+            && [ "$2" != "$_cmp_ver" ]; then
+        # In 0.11.3 the directory organization of this package has changed
+
+        echo "The directory structure of the ghost package has changed"
+        echo "as of ghost-0.11.3. Please copy the content directory manually"
+        echo "to /var/lib/ghost/content and move your configuration file"
+        echo "to /etc/webapps/ghost/config.js"
+        echo "You will also need to make sure that the paths in your config"
+        echo "point to the new directories."
     fi
 
     post_install
