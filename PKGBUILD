@@ -1,4 +1,4 @@
-pkgname=go-returns-git
+pkgname=go-pkgs-git
 pkgver=20160408.11_01f4431
 pkgrel=1
 pkgdesc="Command gopkgs list your installed Go packages for import"

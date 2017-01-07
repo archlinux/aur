@@ -1,4 +1,4 @@
-pkgbase = go-returns-git
+pkgbase = go-pkgs-git
 	pkgdesc = Command gopkgs list your installed Go packages for import
 	pkgver = 20160408.11_01f4431
 	pkgrel = 1
@@ -10,5 +10,5 @@ pkgbase = go-returns-git
 	source = git://github.com/tpng/gopkgs.git
 	md5sums = SKIP
 
-pkgname = go-returns-git
+pkgname = go-pkgs-git
 
