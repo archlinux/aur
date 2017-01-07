@@ -1,0 +1,14 @@
+pkgbase = go-returns-git
+	pkgdesc = go-returns
+	pkgver = 20161114.29_d537704
+	pkgrel = 1
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = go
+	makedepends = git
+	source = git://github.com/sqs/goreturns.git
+	md5sums = SKIP
+
+pkgname = go-returns-git
+
