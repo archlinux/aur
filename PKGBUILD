@@ -3,7 +3,7 @@
 # Contributor: Lucas Saliés Brum <lucas@archlinux.com.br>
  
 pkgname=audio-recorder
-pkgver=1.8.0
+pkgver=1.9.3
 pkgrel=1
 pkgdesc="Free audio-recorder for Linux"
 arch=('i686' 'x86_64')
@@ -15,16 +15,16 @@ optdepends=('pulseaudio: for extended recording capabilities'
             'gst-plugins-good: for WAV and Flac encoding'
             'gst-plugins-bad: for AAC encoding'
             'gst-plugins-ugly: for MP3 encoding')
-source=("https://launchpad.net/~${pkgname}/+archive/ubuntu/ppa/+files/${pkgname}_1.8-0~yakkety.tar.gz")
-md5sums=('ff45cfffd893150434ab47dea65d7bbc')
+source=("https://launchpad.net/~${pkgname}/+archive/ubuntu/ppa/+files/${pkgname}_${pkgver}.tar.gz")
+md5sums=('d7d9e06748ebf9855827cdcbae45f79c')
  
 build() {
-  cd "$srcdir/trunk"
+  cd "${srcdir}/${pkgname}"
   ./configure --prefix=/usr
   make
 }
  
 package() {
-  cd "$srcdir/trunk"
-  make DESTDIR="$pkgdir/" install
+  cd "${srcdir}/${pkgname}"
+  make DESTDIR="${pkgdir}/" install
 }
