@@ -1,15 +1,17 @@
 pkgbase = epubcheck
 	pkgdesc = A tool to validate epub files.
-	pkgver = 4.0.1
-	pkgrel = 7
+	pkgver = 4.0.2
+	pkgrel = 1
 	url = https://github.com/IDPF/epubcheck
 	arch = any
 	license = BSD
+	makedepends = unzip
 	depends = java-environment
+	noextract = epubcheck-4.0.2.zip
 	source = epubcheck.1
-	source = https://github.com/IDPF/epubcheck/releases/download/v4.0.1/epubcheck-4.0.1.zip
-	md5sums = 28b6a51045dab25a156ffc2fc8a4f20d
-	md5sums = e5834be417b8e9ddcdb1498929ecd41e
+	source = https://github.com/IDPF/epubcheck/releases/download/v4.0.2/epubcheck-4.0.2.zip
+	sha512sums = f15527b6283053d3ae8e03679ed011b75b52e1d14b765a49565d17bb7d2aad785d57db477a692a3df89bfcacf80b03c7c98d652946d03ceb343edc48f40a635d
+	sha512sums = c6d87b6bf721120de439a4984282a9900bfc446d9471eb6eb1abba2ce5ff7d270fe2baac8022701e877ac339948f5f06c9a56cf87f881f3fa309e072a3536a2f
 
 pkgname = epubcheck
 
