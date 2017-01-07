@@ -1,7 +1,7 @@
 #Maintainer: Xyne <ac xunilhcra enyx, backwards>
 pkgname=pbget
 pkgver=2016.4.4.1
-pkgrel=1
+pkgrel=3
 pkgdesc='Retrieve PKGBUILDs and local source files from Git, ABS and the AUR for makepkg.'
 arch=(any)
 license=(GPL)
@@ -27,6 +27,5 @@ package ()
   python3 setup.py install --prefix=/usr --root="$pkgdir" --optimize=1
   install -Dm755 "$pkgname" "$pkgdir/usr/bin/$pkgname"
 }
-
 
 # vim: set ts=2 sw=2 et:
