@@ -2,7 +2,7 @@
 
 pkgname=pdl2ork-faust
 _pkgname=pd-faust
-pkgver=0.13
+pkgver=0.14
 pkgrel=1
 pkgdesc="Run Faust signal processors in Pd, Pd-L2Ork version"
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ depends=('pd-l2ork' 'pure'  'pdl2ork-pure' 'pure-faust' 'pure-audio' 'pure-midi'
 makedepends=('faust')
 license=('LGPL3')
 source=(https://bitbucket.org/purelang/pure-lang/downloads/$_pkgname-$pkgver.tar.gz)
-md5sums=('a311a8d83f00f6751a7cc87d292c62b7')
+md5sums=('182b058e4c5c9ebad80916a99ee4c88e')
 
 build() {
   cd $srcdir/$_pkgname-$pkgver
