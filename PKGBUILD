@@ -1,6 +1,6 @@
 # Maintainer: M0Rf30
 pkgname=xplico
-pkgver=v1.1.2.r130.g2234006
+pkgver=v1.1.2.r133.gfb70f26
 pkgrel=1
 arch=(i686 x86_64)
 pkgdesc="Internet Traffic Decoder. Network Forensic Analysis Tool (NFAT)"
@@ -28,7 +28,7 @@ depends=(
 	sqlite3
 	tcpdump
 ) 
-optdepends=('geoip-citydata: City database for geoip IP location lookups'
+optdepends=('geoip-database-extra: City database for geoip IP location lookups'
 	    'ghostpdl: reconstruct document printed with network printer'
 	    'videosnarf: decode VoIP based on RTP')
 source=('xplico::git+https://github.com/xplico/xplico.git')
@@ -42,6 +42,7 @@ build() {
 package() {
   cd xplico
   make DESTDIR=$pkgdir install    
+  ln -sr /usr/share/GeoIP/GeoIPCity.dat $pkgdir/opt/xplico/GeoLiteCity.dat
 }
 
 pkgver() {
