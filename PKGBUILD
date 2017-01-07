@@ -5,7 +5,7 @@
 pkgname=z-push
 groups=('zarafa'
 	'kopano')
-pkgver=2.3.3
+pkgver=2.3.4
 _pkgrel=2.3
 pkgrel=1
 pkgdesc="open-source implementation of the ActiveSync protocol"
@@ -13,9 +13,9 @@ arch=('any')
 url="http://z-push.sf.net/"
 license=('AGPL3')
 depends=('nginx'
-	 'php<7'
+	 'php'
 	 'zarafa-server' # php-mapi
-	 'php-fpm<7')
+	 'php-fpm')
 optdepends=('apache'
 	    'zarafa-server')
 install='install'
@@ -33,7 +33,7 @@ source=("${pkgname}-${pkgver}.tar.gz::http://download.z-push.org/final/${_pkgrel
 	"php-fpm.example.conf"
 	"z-push-admin"
 	"z-push-top")
-md5sums=('64a23c8842ee94b07ba6622e649cb40f'
+md5sums=('35416c418c6e029b98eea7581e297648'
          '32a459bd61135b6c5e99e82e3a6b0007'
          '1091aa1ba272ef05bf628f73b05c527a'
          'fee38ae6ba98ae7afcb49b1edbc31d8e'
