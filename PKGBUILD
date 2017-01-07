@@ -3,7 +3,7 @@
 pkgname=puma
 pkgver=0.5
 pkgrel=1
-pkgdesc='Verify AUR package sources against hashes stored in a blockchain.'
+pkgdesc='Simple password manager'
 arch=('any')
 url="https://github.com/clawoflight/$pkgname"
 license=('GPL3')
