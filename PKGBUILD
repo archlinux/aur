@@ -4,7 +4,7 @@ set -u
 _pyver="python2"
 _pybase='cement'
 pkgname="${_pyver}-${_pybase}"
-pkgver='2.8.2'
+pkgver='2.10.2'
 pkgrel='1'
 pkgdesc='CLI Application Framework for Python'
 arch=('any')
@@ -14,8 +14,8 @@ license=('Apache2') #custom: ISC
 makedepends=("${_pyver}" "${_pyver}-distribute") # same as python-setuptools
 _srcdir="${_pybase}-${pkgver}"
 #_verwatch=("https://pypi.python.org/simple/${_pybase}/" "${_pybase}-\([0-9\.]\+\)\.tar\.gz" 't')
-source=("https://pypi.python.org/packages/source/${_pybase: 0:1}/${_pybase}/${_pybase}-${pkgver}.tar.gz")
-sha256sums=('8765ed052c061d74e4d0189addc33d268de544ca219b259d797741f725e422d2')
+source=("https://pypi.io/packages/source/${_pybase: 0:1}/${_pybase}/${_pybase}-${pkgver}.tar.gz")
+sha256sums=('d50c5980bf3e2456e515178ba097d16e36be0fbcab7811a60589d22f45b64f55')
 
 build() {
   set -u
