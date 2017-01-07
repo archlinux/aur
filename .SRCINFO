@@ -1,7 +1,7 @@
 pkgbase = xrdp
 	pkgdesc = An open source remote desktop protocol (RDP) server
 	pkgver = 0.9.1
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/neutrinolabs/xrdp
 	install = xrdp.install
 	arch = i686
@@ -19,7 +19,7 @@ pkgbase = xrdp
 	source = https://github.com/neutrinolabs/xrdp/releases/download/v0.9.1/xrdp-0.9.1.tar.gz
 	source = arch-config.diff
 	md5sums = 111a3a3b7ea01eb62b08c698ab8f8bff
-	md5sums = cca1a944ca04e33987b60eb7278d4d8f
+	md5sums = b41c3d596a582d00e83cd55c756e9ee4
 
 pkgname = xrdp
 
