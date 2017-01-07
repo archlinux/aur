@@ -1,7 +1,7 @@
 pkgbase = python-django-rest-swagger
 	pkgdesc = Swagger/OpenAPI Documentation Generator for Django REST Framework.
 	pkgver = 2.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/marcgibbons/django-rest-swagger
 	arch = any
 	license = BSD
