@@ -3,7 +3,7 @@
 _pkgname=pyvmomi
 pkgname=(python-pyvmomi python2-pyvmomi)
 pkgver=6.5.0
-pkgrel=2
+pkgrel=3
 pkgdesc="VMware vSphere API Python Bindings"
 url="https://pypi.python.org/pypi/pyvmomi/"
 license=('Apache')
