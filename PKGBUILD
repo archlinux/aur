@@ -5,7 +5,7 @@
 
 pkgname=sepolgen
 pkgver=2.6
-pkgrel=1
+pkgrel=2
 pkgdesc="SELinux policy generator"
 groups=('selinux')
 arch=('any')

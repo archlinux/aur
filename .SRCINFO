@@ -1,7 +1,7 @@
 pkgbase = sepolgen
 	pkgdesc = SELinux policy generator
 	pkgver = 2.6
-	pkgrel = 1
+	pkgrel = 2
 	url = http://userspace.selinuxproject.org
 	arch = any
 	groups = selinux
@@ -10,7 +10,7 @@ pkgbase = sepolgen
 	depends = python
 	depends = libselinux
 	optdepends = python2: python2 bindings
-	provides = selinux-usr-sepolgen=2.6-1
+	provides = selinux-usr-sepolgen=2.6-2
 	conflicts = selinux-usr-sepolgen
 	source = https://raw.githubusercontent.com/wiki/SELinuxProject/selinux/files/releases/20161014/sepolgen-2.6.tar.gz
 	sha256sums = 6a327b1576d914e57ad796a541a7a9bcceefb14c445355559993de0fdb8e7a60
