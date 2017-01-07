@@ -11,8 +11,8 @@ license=('CC0')
 source=("$url/archive/$_pkgtag.tar.gz")
 md5sums=('c53e81445266b6112b25c8dc8ce23cb0')
 
-# Set to 1 to include GPG keys used by Copr projects
-_with_copr=0
+# Uncomment to include GPG keys used by Copr projects
+#_with_copr=1
 
 prepare() {
 	mv "$pkgname-$_pkgtag" "$pkgname-$pkgver"
