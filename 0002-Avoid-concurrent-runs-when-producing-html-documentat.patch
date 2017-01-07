@@ -1,0 +1,46 @@
+From c793d102df3e007d824e79f499e71823207c301a Mon Sep 17 00:00:00 2001
+From: Guillaume Melquiond <guillaume.melquiond@inria.fr>
+Date: Mon, 19 Dec 2016 11:58:39 +0100
+Subject: [PATCH 1/4] Avoid concurrent runs when producing html documentation
+ (bug #5269).
+
+Make does not allow for rules that produce multiple outputs (unless they
+are pattern rules). As a consequence, the hacha rule could be run several
+times concurrently, thus causing doc/refman/html to be deleted under the
+feet of some runs.
+
+This commit fixes the issue by turning the rule into a single-output rule
+and adding a dummy rule to handle all the other indexes. Note that this is
+not a perfect solution since, if the user were to manually delete one of
+the auxiliary index, it would not be rebuilt until the main index is.
+---
+ Makefile.doc | 6 ++++--
+ 1 file changed, 4 insertions(+), 2 deletions(-)
+
+diff --git a/Makefile.doc b/Makefile.doc
+index cdd9852e8..9ae20ba76 100644
+--- a/Makefile.doc
++++ b/Makefile.doc
+@@ -201,15 +201,17 @@ doc/refman/styles.hva: doc/common/styles/html/$(HTMLSTYLE)/styles.hva
+ 	$(INSTALLLIB) $< doc/refman
+ 
+ INDEXES:= doc/refman/html/command-index.html doc/refman/html/tactic-index.html
+-ALLINDEXES:= doc/refman/html/index.html $(INDEXES)
+ 
+-refman-html-dir $(ALLINDEXES): doc/refman/Reference-Manual.html $(REFMANPNGFILES) \
++refman-html-dir $(INDEXES): doc/refman/html/index.html ;
++
++doc/refman/html/index.html: doc/refman/Reference-Manual.html $(REFMANPNGFILES) \
+ 	       doc/refman/cover.html doc/refman/styles.hva doc/refman/index.html
+ 	- rm -rf doc/refman/html
+ 	$(MKDIR) doc/refman/html
+ 	$(INSTALLLIB) $(REFMANPNGFILES) doc/refman/html
+ 	(cd doc/refman/html; $(HACHA) -nolinks -tocbis -o toc.html ../styles.hva ../Reference-Manual.html)
+ 	$(INSTALLLIB) doc/refman/cover.html doc/refman/html/index.html
++	@touch $(INDEXES)
+ 	-$(INSTALLLIB) doc/common/styles/html/$(HTMLSTYLE)/*.css doc/refman/html
+ 
+ refman-quick:
+-- 
+2.11.0
+

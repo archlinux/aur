@@ -20,9 +20,11 @@ makedepends=('ocaml-findlib'
              'texlive-fontsextra' 'texlive-science'
              'fig2dev' 'imagemagick' 'hevea' 'ghostscript') # coq-doc
 source=("https://coq.inria.fr/distrib/V$pkgver/files/coq-$pkgver.tar.gz"
-        "0001-Fix-incorrect-documentation-that-prevents-successful.patch")
+        "0001-Fix-incorrect-documentation-that-prevents-successful.patch"
+        "0002-Avoid-concurrent-runs-when-producing-html-documentat.patch")
 sha1sums=('617a6f86d09dde0e409f3fa22268daf7be3f5bba'
-          'ec5e9af33f37d2eb154f8de13815cb7f1f2fba6e')
+          'ec5e9af33f37d2eb154f8de13815cb7f1f2fba6e'
+          '201f1db7fd3e7e072ff7c94cfcdabdcc5910ccdd')
 
 prepare() {
   gendesk -f -n --pkgname "coqide" \
@@ -32,6 +34,7 @@ prepare() {
 
   cd "$srcdir/coq-$pkgver"
   patch -p1 < ../0001-Fix-incorrect-documentation-that-prevents-successful.patch
+  patch -p1 < ../0002-Avoid-concurrent-runs-when-producing-html-documentat.patch
 }
 
 build() {
