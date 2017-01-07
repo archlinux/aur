@@ -12,8 +12,8 @@ depends=('glib2' 'gstreamer' 'libxcb' 'xcb-util-image' 'fontconfig' 'mesa' 'libx
 options=(!strip)
 source_i686=("${pkgname}-${pkgver}_i386.deb"::"https://zoom.us/client/${pkgver}/zoom_i386.deb")
 source_x86_64=("${pkgname}-${pkgver}_amd64.deb"::"https://zoom.us/client/${pkgver}/zoom_amd64.deb")
-sha256sums_i686=('1f42594d50609bb649cc3ec2ec1c26c6befbff488f50167caee8fe11a3c50be9')
-sha256sums_x86_64=('7c7dc850f2afac6f378ad135eb87376759d98b40c9cbee407e1083095f31f80f')
+sha512sums_i686=('dbbaa1f4d7299a29b1cf96d2304fa39f12a6754b9199d63de913f8bb636786ea9caac0cabdcc2ccc26532bc9bb76fe1962db0a79a22f88aa8e37cfdfe7476ca8')
+sha512sums_x86_64=('fc9bc6f9e95a559045c2c5f3f5bb6e78f65243368e9438d391405de1e03cbcc89faa1033a7a4a9bb221113141d997743e2788af194f0e79c6cdbfe4d8d7cbd61')
 
 package() {
 	bsdtar xf data.tar.xz
