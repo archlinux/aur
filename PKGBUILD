@@ -6,7 +6,7 @@
 
 _pkgname=libmatio
 pkgname=libmatio-git
-pkgver=1.5.9.16.gdec7a79
+pkgver=1.5.9.20.gbb1a1eb
 pkgrel=1
 pkgdesc='C library with a fortran 90/95 module interface for reading/writing MATLAB MAT-files'
 arch=('x86_64' 'i686')
