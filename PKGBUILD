@@ -1,7 +1,7 @@
 # Maintainer: Alvie Zhang <alvie.zhang {AT} gmail {DOT} com>
 pkgname=meow-proxy
 pkgver=1.5
-pkgrel=0
+pkgrel=1
 pkgdesc="MEOW is a fork of MEOW that uses whitelist mode"
 arch=('i686' 'x86_64')
 url="https://github.com/renzhn/MEOW"

@@ -1,7 +1,7 @@
 pkgbase = meow-proxy
 	pkgdesc = MEOW is a fork of MEOW that uses whitelist mode
 	pkgver = 1.5
-	pkgrel = 0
+	pkgrel = 1
 	url = https://github.com/renzhn/MEOW
 	install = meow-proxy.install
 	arch = i686
