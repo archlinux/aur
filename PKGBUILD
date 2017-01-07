@@ -5,7 +5,7 @@
 
 pkgname=avahi-nosystemd
 pkgver=0.6.32
-pkgrel=1
+pkgrel=2
 _commit=4f334990f692ce08ab4ea2eece695f1592f535b2
 pkgdesc='Service Discovery for Linux using mDNS/DNS-SD -- compatible with Bonjour'
 url='https://github.com/lathiat/avahi'
@@ -21,9 +21,9 @@ optdepends=('gtk3: avahi-discover-standalone, bshell, bssh, bvnc'
             'mono: mono bindings'
             'python2-dbus: avahi-discover'
             'nss-mdns: NSS support for mDNS')
-provides=("avahi=${pkgver}" 'howl' 'mdnsresponder')
-replaces=('avahi' 'howl' 'mdnsresponder')
-conflicts=('avahi' 'howl' 'mdnsresponder')
+provides=("avahi=${pkgver}")
+replaces=('avahi')
+conflicts=('avahi')
 makedepends=('qt4' 'pygtk' 'mono' 'intltool' 'python2-dbus'
              'gtk-sharp-2' 'gobject-introspection' 'gtk3' 'xmltoman' 'git')
 backup=('etc/avahi/hosts'
@@ -32,7 +32,7 @@ backup=('etc/avahi/hosts'
         'etc/avahi/services/sftp-ssh.service'
         'usr/lib/avahi/service-types.db'
         'usr/share/avahi/service-types')
-source=("git+https://github.com/lathiat/avahi#tag=$_commit"
+source=("git+https://github.com/lathiat/avahi#commit=$_commit"
         avahi-daemon.rc
         avahi-dnsconfd.rc)
 sha1sums=('SKIP'
@@ -61,7 +61,6 @@ build() {
 		--disable-monodoc \
 		--disable-qt3 \
 		--enable-compat-libdns_sd \
-		--enable-compat-howl \
 		--with-distro=archlinux \
 		--with-avahi-priv-access-group=network \
 		--with-autoipd-user=avahi \
@@ -78,11 +77,7 @@ package() {
 
 	make DESTDIR="${pkgdir}" install
 	make DESTDIR="$pkgdir" -C avahi-python/avahi3 install \
-		PYTHON=/usr/bin/python3 pythondir=/usr/lib/python3.5/site-packages
-
-	# howl and mdnsresponder compatability
-	ln -s avahi-compat-howl "$pkgdir/usr/include/howl"
-	ln -s avahi-compat-howl.pc "$pkgdir/usr/lib/pkgconfig/howl.pc"
+		PYTHON=/usr/bin/python3 pythondir=/usr/lib/python3.6/site-packages
 
 	# install rc scripts
 	install -Dm755 "$srcdir"/avahi-daemon.rc "$pkgdir"/etc/rc.d/avahi-daemon
