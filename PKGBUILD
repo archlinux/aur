@@ -1,7 +1,7 @@
 # Maintainer: Nikolay Korotkiy <sikmir@gmail.com>
 pkgname=pyglossary
 pkgver=3.0.4
-pkgrel=5
+pkgrel=6
 pkgdesc="A tool for converting dictionary files aka glossaries with various formats for different dictionary applications"
 arch=(any)
 url="https://github.com/ilius/pyglossary"
@@ -14,7 +14,7 @@ source=("https://github.com/ilius/${pkgname}/archive/${pkgver}.tar.gz"
         "setup.patch")
 sha256sums=('be0c88987ca4791a858271a7c9acdbd6a680e4fdc61ddc6ad2d06b090a1bdc6e'
             'fdbced72734b48587ed606acf9b8fe425783cd9a81d798f58920921be16616e0'
-            '2a0c432d132e31e890305ffbc7c071e25a57c96a968f31db0cf1357262a99b7b')
+            '4097299e3059e1ea2213d2e177b3f6e0db4f4f5958f8b9274a85b594c0a2f9c4')
 
 prepare() {
   cd "$srcdir/$pkgname-$pkgver"
