@@ -2,7 +2,7 @@
 
 pkgname="mkdocs-bootswatch"
 pkgver="0.4.0"
-pkgrel="1"
+pkgrel="2"
 pkgdesc="Bootswatch themes for MkDocs"
 arch=("any")
 url="http://www.mkdocs.org"
