@@ -1,6 +1,7 @@
 pkgname=hawkey
 _pkgver=0.6.3
 _rpmrel=2
+_pkgtag=$pkgname-$_pkgver-$_rpmrel
 pkgver=$_pkgver.$_rpmrel
 pkgrel=1
 pkgdesc="High-level API for the libsolv library"
@@ -11,11 +12,11 @@ depends=('libsolv' 'zlib')
 makedepends=('cmake' 'python' 'python-sphinx' 'rpm-org')
 checkdepends=('check' 'python-nose')
 optdepends=('python: for python bindings')
-source=("$url/archive/$pkgname-$_pkgver-$_rpmrel.tar.gz")
+source=("$url/archive/$_pkgtag.tar.gz")
 md5sums=('bf0ef0658110acee30e85d047dac70c3')
 
 prepare() {
-	mv  "$pkgname-$pkgname-$_pkgver-$_rpmrel" "$pkgname-$pkgver"
+	mv "$pkgname-$_pkgtag" "$pkgname-$pkgver"
 
 	cd "$pkgname-$pkgver"
 	rm -rf build
