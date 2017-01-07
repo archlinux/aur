@@ -3,21 +3,20 @@
 
 pkgname=carla
 pkgver=1.9.7
-pkgrel=1
+pkgrel=2
 pkgdesc="Audio Plugin Host"
 arch=('i686' 'x86_64')
 url="http://kxstudio.sf.net/carla"
 license=('GPL2')
 depends=('file' 'fftw' 'fluidsynth' 'glu' 'liblo' 'linuxsampler' 'mxml' 'ntk-git' 'projectm' 'python' 'zlib')
-makedepends=('gtk2' 'gtk3'  'pygtk' 'python-pyliblo' 'python-pyqt4' 'python-pyqt5' 'python-rdflib' 'qt4' 'qt5-base' 'zynaddsubfx')
+makedepends=('gtk2' 'gtk3' 'python-pyliblo' 'python-pyqt4' 'python-pyqt5' 'python-rdflib' 'qt4' 'qt5-svg' 'zynaddsubfx')
 optdepends=(
   'gtk2: LV2 GTK2 UI support'
   'gtk3: LV2 GTK3 UI support'
-  'pygtk: NekoFilter UI'
   'python-pyliblo: OSC support'
   'python-rdflib: LADSPA-RDF support'
   'qt4: LV2 QT4 UI support'
-  'qt5-base: LV2 QT5 UI support'
+  'qt5-svg: LV2 QT5 UI support'
   'zynaddsubfx: ZynAddSubFX banks'
 )
 provides=("${pkgname}")
