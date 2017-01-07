@@ -1,7 +1,7 @@
 # Maintainer: Tomislav Ivek <tomislav.ivek@gmail.com>
 
 pkgname=conan-git
-pkgver=0.16.1.r25.gb4e444e
+pkgver=0.18.0.r4.g3c4e464
 pkgrel=1
 pkgdesc="A distributed, open source, C/C++ package manager."
 arch=('any')
