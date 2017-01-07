@@ -8,6 +8,7 @@
 pkgname=mock
 _pkgver=1.3.2
 _rpmrel=1
+_pkgtag=$pkgname-$_pkgver-$_rpmrel
 pkgver=$_pkgver.$_rpmrel
 pkgrel=1
 pkgdesc="A simple chroot build environment manager for building RPMs"
@@ -24,7 +25,7 @@ optdepends=('createrepo_c: for mockchain command'
             'yum-utils: to create RPMs for Fedora <= 23 (including EL5, EL6 and EL7)')
 install="$pkgname.install"
 backup=("etc/$pkgname/site-defaults.cfg")
-source=("$url/archive/$pkgname-$_pkgver-$_rpmrel.tar.gz"
+source=("$url/archive/$_pkgtag.tar.gz"
         "$pkgname.sysusers"
         "$pkgname.tmpfiles")
 md5sums=('8aa53410d4857278d46f4574a00a5e95'
@@ -38,7 +39,7 @@ _mandir=$_datadir/man
 _sysconfdir=/etc
 
 prepare() {
-	mv "$pkgname-$pkgname-$_pkgver-$_rpmrel" "$pkgname-$pkgver"
+	mv "$pkgname-$_pkgtag" "$pkgname-$pkgver"
 }
 
 build() {
