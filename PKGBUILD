@@ -3,7 +3,7 @@
 
 pkgname=python-razer
 pkgver=1.1.5
-pkgrel=1
+pkgrel=2
 pkgdesc="A python library for controlling razer-daemon"
 arch=('any')
 url="https://github.com/terrycain/razer_drivers"
@@ -16,7 +16,7 @@ source=("${pkgname}::git+git://github.com/terrycain/razer_drivers.git#tag=v${pkg
 md5sums=('SKIP')
 
 package() {
-  mkdir -p $pkgdir/usr/lib/python3.5/site-packages
+  mkdir -p $pkgdir/usr/lib/python3.6/site-packages
 
-  cp -r $srcdir/$pkgname/pylib/razer $pkgdir/usr/lib/python3.5/site-packages/
+  cp -r $srcdir/$pkgname/pylib/razer $pkgdir/usr/lib/python3.6/site-packages/
 }
