@@ -1,7 +1,7 @@
 pkgbase = gitlab-ee
 	pkgdesc = Project management and code hosting application
 	pkgver = 8.15.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/gitlab-org/gitlab-ce/tree/master#README
 	install = gitlab.install
 	arch = i686

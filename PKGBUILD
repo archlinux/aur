@@ -9,7 +9,7 @@
 _pkgname=gitlab
 pkgname=gitlab-ee
 pkgver=8.15.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Project management and code hosting application"
 arch=('i686' 'x86_64')
 url="https://gitlab.com/gitlab-org/gitlab-ce/tree/master#README"
@@ -118,7 +118,7 @@ build() {
   # Gems will be installed into vendor/bundle
 
   bundle config build.nokogiri --use-system-libraries
-  bundle install -j$(nproc) --no-cache --deployment --without development test aws kerberos
+  bundle install -j$(nproc) --no-cache --deployment --without development test aws
 
   # We'll temporarily stick this in here so we can build the assets
   cp config/database.yml.postgresql.orig config/database.yml
