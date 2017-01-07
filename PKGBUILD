@@ -1,20 +1,20 @@
 # Maintainer: William J. Bowman <aur@williamjbowman.com>
 
 pkgname=mathcomp
-pkgver=1.5
-pkgrel=2
-pkgdesc="A mathematical components library for Coq."
-url="http://ssr.msr-inria.inria.fr/"
+pkgver=1.6.1
+pkgrel=1
+pkgdesc="The entire mathematical components library for Coq."
+url="https://math-comp.github.io/math-comp/"
 arch=('i686' 'x86_64')
 license=('GPL')
-depends=('coq<8.5' 'ssreflect=1.5') # 'coq>=8.4'
+depends=('coq>=8.5') # Works with 8.4pl6, 8.5pl3, and 8.6.0 but don't quite know how to say that
 makedepends=('camlp5-transitional>=6.12')
-source=(http://ssr.msr-inria.inria.fr/FTP/mathcomp-1.5.tar.gz)
-sha256sums=('55ad520996541dd2d76c2ed24d7b74b64091158d586fd43ccd74a110f9d62789')
-sha512sums=('2cd6b6e21a8edf1e6d15edff718bf1c1848e4f97c1b2c8eea075c9c1658d98732d18fc2dc04ba5ff40a5c21dc1a618d2d6d62fd10f29ffb94776641e3e98c089')
+source=(mathcomp-$pkgver.tar.gz::https://github.com/math-comp/math-comp/tarball/mathcomp-$pkgver)
+sha256sums=('b36883f87bcfdf6e9bfd4ded69c4a1215ff93b0421fabae8c852ccba15043801')
+sha512sums=('bdafa1445483e5028796e9e9a0c63ecd248f3ac385e3003403f5749fb6454bed2084e75f1982a474f17d7f45ca4a4894ee9f7a4cd708d1fa980639f2e4c1e548')
 
 build() {
-  cd $srcdir/$pkgname-$pkgver
+  cd $srcdir/math-comp-math-comp-*/$pkgname
 
   # mathcomp requires *a lot* of memory to build. It can be a good
   # idea add -j1 to the following command to force a sequential build.
@@ -22,7 +22,7 @@ build() {
 }
 
 package(){
-  cd $srcdir/$pkgname-$pkgver
-  make DESTDIR=$pkgdir 'COQLIB:=$(DESTDIR)/$(shell coqtop -where)/' install
+  cd $srcdir/math-comp-math-comp-*/$pkgname
+  make DSTROOT="${pkgdir}" 'COQLIB:=$(DSTROOT)/$(shell coqtop -where)/' install
 }
 
