@@ -1,6 +1,6 @@
 pkgbase = letshelp-certbot-git
 	pkgdesc = Let's help Certbot client
-	pkgver = 0.8.1.r25.gaa4a263
+	pkgver = 0.9.2.r190.gf9b8933f
 	pkgrel = 1
 	url = https://github.com/certbot/certbot
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = letshelp-certbot-git
 	makedepends = git
 	depends = python2-setuptools
 	depends = python2-mock
-	provides = letshelp-certbot=0.8.1.r25.gaa4a263
-	provides = letshelp-letsencrypt=0.8.1.r25.gaa4a263
+	provides = letshelp-certbot=0.9.2.r190.gf9b8933f
+	provides = letshelp-letsencrypt=0.9.2.r190.gf9b8933f
 	conflicts = letshelp-certbot
 	conflicts = letshelp-letsencrypt
 	source = certbot::git+https://github.com/certbot/certbot
