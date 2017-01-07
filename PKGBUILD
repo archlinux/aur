@@ -1,9 +1,9 @@
 # Maintainer: Kevin Houdebert <kevin@qwazerty.eu>
 
 _name=slumber
-pkgname=("python-$_name" "python2-$_name")
+pkgname=("python-slumber" "python2-slumber")
 pkgver=0.7.1
-pkgrel=2
+pkgrel=3
 pkgdesc='A library that makes consuming a REST API easier and more convenient'
 url='https://pypi.python.org/pypi/slumber/'
 license=('BSD')
