@@ -2,12 +2,12 @@
 
 pkgname=nuget3
 pkgver=3.5.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Package manager for .NET."
 arch=('any')
 url="http://www.nuget.org"
 license=('APACHE')
-depends=('mono' 'sh')
+depends=('mono>=4.0.0' 'sh')
 conflicts=('nuget')
 source=(https://dist.nuget.org/win-x86-commandline/v${pkgver}/NuGet.exe
 				'nuget')
