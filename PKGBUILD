@@ -7,7 +7,7 @@
 set -u
 _pkgname='relax-and-recover'
 pkgname="${_pkgname}-git"
-pkgver=1.19.r2.g28199db
+pkgver=2.00.r2367.g82325fbe
 pkgrel=1
 pkgdesc='bootable Linux disaster recovery, formerly rear'
 arch=('any')
@@ -24,7 +24,7 @@ replaces=('rear')
 backup=('etc/rear/local.conf')
 _srcdir="${_pkgname^^}"
 _giturl="https://github.com/rear/rear"
-_verwatch=("${_giturl}/releases" "${_giturl#*github.com}/archive/rear-\(.*\)\.tar\.gz" 'l')
+_verwatch=("${_giturl}/releases.atom" "\s\+<title>rear-\([^>]\+\)</title>.*" 'f') # RSS
 source=("${_srcdir}::${_giturl//https:/git:}.git")
 sha256sums=('SKIP')
 
@@ -42,12 +42,12 @@ prepare() {
   set -u
   cd "${_srcdir}"
   #cp -pn 'Makefile' 'Makefile.Arch' # debugging
-  sed -i -e 's:/bin/bash:/usr/bin/bash:g' \
-         -e '# Fixing this path enables validate which crashes the make' \
-         -e '#s:^rearbin = usr/sbin/rear$:rearbin = usr/bin/rear:g' \
-         -e '# Fixing this here allows make pacman to work properly' \
-         -e 's:^sbindir = $(prefix)/sbin$:sbindir = $(prefix)/bin:g' \
-    'Makefile'
+  sed -e 's:/bin/bash:/usr/bin/bash:g' \
+      -e '# Fixing this path enables validate which crashes the make' \
+      -e '#s:^rearbin = usr/sbin/rear$:rearbin = usr/bin/rear:g' \
+      -e '# Fixing this here allows make pacman to work properly' \
+      -e 's:^sbindir = $(prefix)/sbin$:sbindir = $(prefix)/bin:g' \
+    -i 'Makefile'
   set +u
   ! test -f 'Makefile.Arch'
 }
@@ -55,9 +55,9 @@ prepare() {
 package() {
   set -u
   cd "${_srcdir}"
-  #make DESTDIR="${pkgdir}" sbindir="/usr/bin" rearbin='usr/bin/rear' install
+  #make DESTDIR="${pkgdir}" sbindir='/usr/bin' rearbin='usr/bin/rear' install
   make DESTDIR="${pkgdir}" install
-  sed -i -e 's:^ISO_ISOLINUX_BIN=.*$:ISO_ISOLINUX_BIN="/usr/lib/syslinux/bios/isolinux.bin":g' "${pkgdir}/usr/share/rear/conf/default.conf"
+  sed -e 's:^ISO_ISOLINUX_BIN=.*$:ISO_ISOLINUX_BIN="/usr/lib/syslinux/bios/isolinux.bin":g' -i "${pkgdir}/usr/share/rear/conf/default.conf"
   set +u
 }
 set +u
