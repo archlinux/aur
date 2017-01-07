@@ -11,8 +11,8 @@ url="https://packages.debian.org/sid/electric-fence"
 depends=('glibc' 'bash')
 source+=("http://archive.ubuntu.com/ubuntu/pool/universe/e/electric-fence/electric-fence_${pkgver}.tar.gz"
 	"ef.sh")
-md5sums=('78197d625452a9bc2d171e47bce0ddff'
-         '215c183e71fa6f8d40cbd2fe65c860c9')
+sha512sums=('02abb353b99b3dd20de062f40c095a60ddfd7895c8998772936ffaf48a9ce899ee41c36f1983aa500b018028694cd35d0927a00d2fe345dc9d6d48b481c9e985'
+            '8f9c9ac510636d380c5e388c8039435dc66cd488082ef074c6fe2f512ac2a8d286b023184443b0717ef7b7abfa34061474ad59ffade0a9cd510819be5ff6d406')
 
 build() {
 	make -C "${srcdir}/electric-fence-2.2.3"
