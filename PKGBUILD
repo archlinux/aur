@@ -8,8 +8,8 @@
 
 pkgname=ssreflect
 pkgver=1.6.1
-pkgrel=1
-pkgdesc="A set of extensions to the scripting language of Coq."
+pkgrel=2
+pkgdesc="The ssreflect unit of the mathematical components library for Coq."
 url="https://math-comp.github.io/math-comp/"
 arch=('i686' 'x86_64')
 license=('GPL')
