@@ -6,7 +6,7 @@ _check="enabled"
 
 pkgname=("python-${_module}" "python2-${_module}")
 pkgver="1.0.3"
-pkgrel="1"
+pkgrel="2"
 pkgdesc="An extension module for click to enable registering CLI commands via setuptools entry-points."
 arch=("any")
 url="https://github.com/click-contrib/click-plugins"
