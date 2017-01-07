@@ -12,7 +12,6 @@ url="https://github.com/haiwen/${pkgname}"
 license=('GPL2')
 depends=('ccnet-server')
 makedepends=('vala' 'libmariadbclient' )
-options=('!makeflags')
 source=("${pkgname}-v${pkgver}-server.tar.gz::${url}/archive/v${pkgver}.tar.gz"
         "libccnet.pc.patch")
 sha256sums=('c78e4bc7b42fbaa8afae4edc5d474da72ae2d4c06745e3452e4926316d832862'
