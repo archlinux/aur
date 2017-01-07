@@ -3,8 +3,8 @@
 
 pkgname=i3lock-coc03-git
 pkgver=22bfcb
-pkgrel=1
-pkgdesc="An improved screenlocker based upon XCB and PAM (cac03 fork) with clock, layout indicator, CAPS indicator"
+pkgrel=2
+pkgdesc="TO DELETE (wrong pkg name, use i3lock-cac03-git):An improved screenlocker based upon XCB and PAM (cac03 fork) with clock, layout indicator, CAPS indicator"
 arch=('i686' 'x86_64')
 url="https://github.com/cac03/i3lock"
 license=('MIT')
