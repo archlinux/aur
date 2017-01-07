@@ -21,7 +21,7 @@ build() {
 }
 
 #check() {
-#    cd "${srcdir}/surt-${pkgver}"
+#    cd "surt-${pkgver}"
 #    python setup.py test
 #}
 
