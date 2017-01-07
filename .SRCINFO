@@ -1,0 +1,13 @@
+pkgbase = pvim
+	pkgdesc = a script to help you quickly upload the code to cfp-vim
+	pkgver = v0.2
+	pkgrel = 1
+	url = https://github.com/Sherlock-Holo/pvim
+	arch = any
+	license = MPL
+	depends = xclip
+	source = git+https://github.com/Sherlock-Holo/pvim.git
+	md5sums = SKIP
+
+pkgname = pvim
+
