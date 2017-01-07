@@ -3,7 +3,7 @@
 pkgbase=reposurgeon
 pkgname=({cy,}reposurgeon)
 pkgver=3.40
-pkgrel=4
+pkgrel=5
 pkgdesc="Performs surgery on version control repositories."
 arch=('any')
 url="http://www.catb.org/esr/$pkgbase/"
@@ -44,7 +44,7 @@ build() {
 
 build_cyreposurgeon() {
   cd "$srcdir/$pkgbase-$pkgver"
-  make PYVERSION=3.5 cyreposurgeon
+  make PYVERSION=3.6 cyreposurgeon
 }
 
 package_reposurgeon() {
