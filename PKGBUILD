@@ -2,12 +2,12 @@
 pkgname=pkgbuilder
 _pyname=pkgbuilder
 pkgver=4.2.9
-pkgrel=1
+pkgrel=2
 pkgdesc='A Python AUR helper/library.'
 arch=('any')
 url='https://github.com/Kwpolska/pkgbuilder'
 license=('BSD')
-depends=('python' 'python-setuptools' 'pyalpm>=0.5.1-1' 'python-requests' 'python-srcinfo' 'rsync' 'git')
+depends=('python>=3.6.0' 'python-setuptools' 'pyalpm>=0.5.1-1' 'python-requests' 'python-srcinfo' 'rsync' 'git')
 options=(!emptydirs)
 source=("https://pypi.io/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
 md5sums=('6815f9470628e1a8a70a118312c2561e')
