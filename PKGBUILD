@@ -4,7 +4,7 @@ _name="hiredis"
 
 pkgname=("python-${_name}" "python2-${_name}")
 pkgver="0.2.0"
-pkgrel="1"
+pkgrel="2"
 pkgdesc="Python wrapper for hiredis"
 arch=("i686" "x86_64")
 url="https://github.com/redis/hiredis-py"
