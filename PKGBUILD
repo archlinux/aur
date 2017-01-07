@@ -13,6 +13,12 @@ makedpends=('git')
 source=("git://github.com/Sherlock-Holo/$pkgname.git")
 md5sums=('SKIP')
 
+pkgver(){
+        cd "${_pkgname}"
+        # Use un-annotated tags to derive a version number
+        git describe --always --tags | sed -r 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
+}
+
 package(){
         cd "${pkgname}"
 
