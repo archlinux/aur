@@ -2,7 +2,7 @@
 
 pkgname="mkdocs-bootstrap"
 pkgver="0.1.1"
-pkgrel="1"
+pkgrel="2"
 pkgdesc="Bootstrap theme for MkDocs"
 arch=("any")
 url="http://www.mkdocs.org"
