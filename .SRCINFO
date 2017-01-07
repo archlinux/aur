@@ -29,7 +29,7 @@ pkgbase = python-acme-git
 	makedepends = python-mock
 	makedepends = python2-mock
 	source = certbot::git+https://github.com/certbot/certbot
-	md5sums = SKIP
+	sha512sums = SKIP
 
 pkgname = python-acme-git
 	depends = python-setuptools

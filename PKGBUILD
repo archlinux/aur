@@ -19,7 +19,7 @@ makedepends=('git' 'python-setuptools' 'python2-setuptools' 'python-pyasn1' 'pyt
 provides=("")
 conflicts=("")
 source=("${_reponame}"::"git+https://github.com/certbot/${_reponame}")
-md5sums=('SKIP')
+sha512sums=('SKIP')
 
 pkgver() {
 	cd "${srcdir}/${_reponame}"
