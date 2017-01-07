@@ -1,0 +1,7 @@
+post_install() {
+    echo "To activate the different themes have a look at the FAQ: https://github.com/sixsixfive/Hedera"
+}
+
+post_upgrade() {
+    echo "To activate the different themes have a look at the FAQ: https://github.com/sixsixfive/Hedera"
+}
