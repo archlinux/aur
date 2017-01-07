@@ -3,14 +3,14 @@
 
 pkgbase=python-defusedxml-git
 pkgname=("python-defusedxml-git" "python2-defusedxml-git")
-pkgver=0.4.1
-pkgrel=3
+pkgver=v0.4.1.r5.g39d2ad3
+pkgrel=1
 pkgdesc="XML bomb protection for Python stdlib modules"
 arch=('any')
 url='https://github.com/AdamWill/defusedxml'
 license=('Python')
 makedepends=('python' 'python2')
-source=('defusedxml::git+https://github.com/AdamWill/defusedxml')
+source=('defusedxml::git+https://github.com/AdamWill/defusedxml#branch=py36-iterparse')
 md5sums=('SKIP')
 
 pkgver() {
