@@ -3,7 +3,7 @@
 pkgbase=reposurgeon
 pkgname=({cy,}reposurgeon)
 pkgver=3.40
-pkgrel=3
+pkgrel=4
 pkgdesc="Performs surgery on version control repositories."
 arch=('any')
 url="http://www.catb.org/esr/$pkgbase/"
