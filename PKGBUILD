@@ -1,7 +1,7 @@
 # Maintainer: mutantmonkey <aur@mutantmonkey.in>
 pkgname=python-twilio
 pkgver=5.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A module for using the Twilio REST API and generating valid TwiML."
 arch=('any')
 url="https://github.com/twilio/twilio-python"
