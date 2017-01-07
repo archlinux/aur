@@ -13,7 +13,7 @@ makedepends=('git')
 provides=("flattr-icon-theme=${pkgver}" "luv-icon-theme=${pkgver}")
 conflicts=('flattr-icon-theme' 'luv-icon-theme')
 source=("${pkgname}"::'git+https://github.com/NitruxSA/luv-icon-theme.git')
-md5sums=('SKIP')
+sha512sums=('SKIP')
 
 pkgver() {
 	cd "${srcdir}/${pkgname}"

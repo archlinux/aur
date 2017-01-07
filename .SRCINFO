@@ -12,6 +12,6 @@ pkgbase = luv-icon-theme-git
 	conflicts = flattr-icon-theme
 	conflicts = luv-icon-theme
 	source = luv-icon-theme-git::git+https://github.com/NitruxSA/luv-icon-theme.git
-	md5sums = SKIP
+	sha512sums = SKIP
 
 pkgname = luv-icon-theme-git
