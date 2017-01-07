@@ -1,28 +1,19 @@
-From: Matthew Gamble <git@matthewgamble.net>
-Date: Sat, 16 Apr 2016 12:15:45 +1000
-Subject: [PATCH] Remove hard dependency on pip
-
----
-There's some magic in this package that attempts to automatically install
-packages from PyPI if they're not already installed. This doesn't work
-unless you're running your code with root privileges, so there's no point
-in having it here. These packages should instead be installed using
-your system's package manager.
-
-Also, we make the assumption that importlib will always exist because
-this package is targeting python3 on Arch Linux.
-
-diff -u -r luckydonald-utils-0.43/luckydonaldUtils/dependencies/install.py luckydonald-utils-0.43_mod/luckydonaldUtils/dependencies/install.py
---- luckydonald-utils-0.43/luckydonaldUtils/dependencies/install.py	2016-04-02 16:06:40.000000000 +1100
-+++ luckydonald-utils-0.43_mod/luckydonaldUtils/dependencies/install.py	2016-04-16 12:10:45.479951244 +1000
-@@ -1,18 +1,11 @@
+diff -r -u -N luckydonald-utils-0.52/luckydonaldUtils/dependencies/install.py luckydonald-utils-0.52-mod/luckydonaldUtils/dependencies/install.py
+--- luckydonald-utils-0.52/luckydonaldUtils/dependencies/install.py	2016-07-23 13:51:21.000000000 +1000
++++ luckydonald-utils-0.52-mod/luckydonaldUtils/dependencies/install.py	2017-01-07 21:04:43.537892820 +1100
+@@ -1,23 +1,9 @@
  # -*- coding: utf-8 -*-
--from .pip_interface import pip_install
  from luckydonaldUtils.logger import logging
- from setuptools import find_packages
  
- __author__ = 'luckydonald'
- logger = logging.getLogger(__name__)
+-try:
+-    from .pip_interface import pip_install
+-except ImportError as e:
+-    logger = logging.getLogger(__name__)
+-    logger.warn("Could not apply logger workaround. Falling back to using pip directly.")
+-    from .pip_interface_fallback import pip_install
+-# end try
+-
+ from setuptools import find_packages
  
 -try:
 -    import importlib
@@ -33,16 +24,16 @@ diff -u -r luckydonald-utils-0.43/luckydonaldUtils/dependencies/install.py lucky
 -# end try
 +import importlib
  
+ __author__ = 'luckydonald'
  logger = logging.getLogger(__name__)
- 
-diff -u -r luckydonald-utils-0.43/setup.py luckydonald-utils-0.43_mod/setup.py
---- luckydonald-utils-0.43/setup.py	2016-04-02 16:06:40.000000000 +1100
-+++ luckydonald-utils-0.43_mod/setup.py	2016-04-16 12:12:42.922743383 +1000
+diff -r -u -N luckydonald-utils-0.52/setup.py luckydonald-utils-0.52-mod/setup.py
+--- luckydonald-utils-0.52/setup.py	2016-08-15 04:19:47.000000000 +1000
++++ luckydonald-utils-0.52-mod/setup.py	2017-01-07 21:12:08.581241594 +1100
 @@ -12,12 +12,6 @@
  
  main_package = 'luckydonaldUtils'
  
--install_requires = ["pip", "setuptools"]  # both should be installed by default.
+-install_requires = ["pip", "setuptools", "DictObject"]  # both should be installed by default.
 -try:
 -    import importlib
 -except ImportError:
@@ -51,9 +42,9 @@ diff -u -r luckydonald-utils-0.43/setup.py luckydonald-utils-0.43_mod/setup.py
  setup(
      name="luckydonald-utils",
      packages=find_submodules(main_package),
-@@ -28,7 +22,6 @@
-     license="GPLv2+",
-     keywords="luckydonald utils utilities utility python dependencies dependency download progress bar encoding files interactions json update store text xml time network logger color images webserver django CSRF headers eastereggs",
+@@ -30,7 +24,6 @@
+              "interactions json update store text xml time network logger color images webserver django CSRF headers "
+              "eastereggs decorator holder assert raise is None",
      url="https://github.com/luckydonald/luckydonald-utils",
 -    install_requires=install_requires,
      long_description=long_description,

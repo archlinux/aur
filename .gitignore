@@ -1,6 +1,6 @@
+*.tar.gz
+*.pkg.tar.xz
+/pkg/
+/src/
 # Avoid accidentally committing LICENSE file
 /LICENSE
-
-# Don't commit makepkg logs
-/*-package.log
-/*-prepare.log
