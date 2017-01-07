@@ -8,7 +8,6 @@ arch=('any')
 url="https://launchpad.net/rubber"
 license=('GPL')
 depends=('python2' 'texlive-core')
-install=rubber.install
 makedepends=('git' 'texinfo' 'texlive-plainextra')
 provides=('rubber')
 conflicts=('rubber')
