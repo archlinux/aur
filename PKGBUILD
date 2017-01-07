@@ -4,7 +4,7 @@
 pkgname=(python2-pywinrm python-pywinrm)
 _realname=pywinrm
 pkgver=0.2.2
-pkgrel=3
+pkgrel=4
 pkgdesc="Python library for Windows Remote Management"
 arch=(any)
 url="https://pypi.python.org/pypi/${_realname}"
