@@ -1,7 +1,7 @@
 #Maintainer: Xyne <ac xunilhcra enyx, backwards>
 pkgname=bauerbill
 pkgver=2016.11
-pkgrel=1
+pkgrel=3
 pkgdesc='Extension of Powerpill with AUR and ABS support.'
 arch=(any)
 license=(GPL)
