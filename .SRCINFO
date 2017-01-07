@@ -1,0 +1,29 @@
+pkgbase = libdnf
+	pkgdesc = Library providing simplified C and Python API to libsolv
+	pkgver = 0.7.0
+	pkgrel = 1
+	url = https://github.com/rpm-software-management/libdnf
+	arch = i686
+	arch = x86_64
+	license = LGPL2.1
+	checkdepends = check
+	checkdepends = python-nose
+	makedepends = cmake
+	makedepends = gobject-introspection
+	makedepends = gtk-doc
+	makedepends = python
+	makedepends = python-sphinx
+	makedepends = rpm-org
+	depends = glib2
+	depends = librepo
+	depends = libsolv
+	depends = zlib
+	optdepends = python: for python bindings
+	provides = hawkey
+	conflicts = hawkey
+	replaces = hawkey
+	source = https://github.com/rpm-software-management/libdnf/archive/0.7.0/libdnf-0.7.0.tar.gz
+	md5sums = f5aa48a8793c5d24a3d89081f49eb81d
+
+pkgname = libdnf
+
