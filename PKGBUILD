@@ -8,8 +8,8 @@
 
 pkgbase=util-linux-selinux
 pkgname=(util-linux-selinux libutil-linux-selinux)
-_pkgmajor=2.28
-pkgver=${_pkgmajor}.2
+_pkgmajor=2.29
+pkgver=${_pkgmajor}
 pkgrel=2
 pkgdesc="SELinux aware miscellaneous system utilities for Linux"
 url="https://www.kernel.org/pub/linux/utils/util-linux/"
@@ -24,13 +24,33 @@ makedepends=('systemd' 'python' 'libselinux')
 license=('GPL2')
 options=('strip' 'debug')
 validpgpkeys=('B0C64D14301CC6EFAEDF60E4E4B71D5EEC39C284')  # Karel Zak
-source=("https://www.kernel.org/pub/linux/utils/util-linux/v$_pkgmajor/${pkgname/-selinux}-$pkgver.tar."{xz,sign}
-        pam-{login,common,su})
-md5sums=('46a232a37bce45371a86d19300edc47a'
+source=("https://www.kernel.org/pub/linux/utils/util-linux/v$_pkgmajor/${pkgbase/-selinux}-$pkgver.tar."{xz,sign}
+        pam-{login,common,su}
+        '0001-sfdisk-don-t-be-silent-when-list-non-existing-device.patch'
+        '0001-sfdisk-cleanup-dump-error-messages.patch'
+        '0001-sfdisk-support-empty-label-use-case.patch'
+        '0001-chrt-default-to-SCHED_RR-policy.patch'
+        '0001-lsns-Fix-parser-for-proc-pid-stat-which-is-including.patch')
+md5sums=('07b6845f48a421ad5844aa9d58edb837'
          'SKIP'
          '4368b3f98abd8a32662e094c54e7f9b1'
          'a31374fef2cba0ca34dfc7078e2969e4'
-         'fa85e5cce5d723275b14365ba71a8aad')
+         'fa85e5cce5d723275b14365ba71a8aad'
+         '3fce7192ce1b3d97fdffd0226ed63a90'
+         '2f3c061865360170cacda948035fd02d'
+         '6d2e3915124938577f0ff18ef701c87f'
+         '168c1cb2cfe7d4eddfc6e3f3b19d3ced'
+         '68c2076a9a09564ba0c9776540a175fa')
+
+prepare() {
+  cd "${pkgbase/-selinux}-$pkgver"
+
+  patch -Np1 <../0001-sfdisk-don-t-be-silent-when-list-non-existing-device.patch
+  patch -Np1 <../0001-sfdisk-cleanup-dump-error-messages.patch
+  patch -Np1 <../0001-sfdisk-support-empty-label-use-case.patch
+  patch -Np1 <../0001-chrt-default-to-SCHED_RR-policy.patch
+  patch -Np1 <../0001-lsns-Fix-parser-for-proc-pid-stat-which-is-including.patch
+}
 
 build() {
   cd "${pkgbase/-selinux}-$pkgver"
@@ -46,7 +66,7 @@ build() {
               --enable-chfn-chsh \
               --enable-write \
               --enable-mesg \
-              --enable-libmount-force-mountinfo \
+              --disable-tailf \
               --with-selinux \
               --with-python=3
 
@@ -93,6 +113,12 @@ package_util-linux-selinux() {
 
   ### runtime libs are shipped as part of libutil-linux
   rm "$pkgdir"/usr/lib/lib*.{a,so}*
+
+  ### tailf has been deprecated for a while. let's not include it anymore.
+  rm \
+    "$pkgdir"/usr/bin/tailf \
+    "$pkgdir"/usr/share/bash-completion/completions/tailf \
+    "$pkgdir"/usr/share/man/man1/tailf.1
 }
 
 package_libutil-linux-selinux() {

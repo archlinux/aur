@@ -1,0 +1,44 @@
+From c49b765a6e9031642e2bb846e93dddc6827e4b28 Mon Sep 17 00:00:00 2001
+From: Karel Zak <kzak@redhat.com>
+Date: Wed, 30 Nov 2016 10:53:56 +0100
+Subject: [PATCH] sfdisk: cleanup --dump error messages
+
+old:
+  # truncate -s 1G empty && ./sfdisk --dump empty
+  sfdisk: failed to dump partition table: Success
+
+new:
+  # truncate -s 1G empty && ./sfdisk --dump empty
+  sfdisk: empty: does not contain a recognized partition table.
+
+Addresses: https://github.com/karelzak/util-linux/issues/375
+Signed-off-by: Karel Zak <kzak@redhat.com>
+---
+ disk-utils/sfdisk.c | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
+
+diff --git a/disk-utils/sfdisk.c b/disk-utils/sfdisk.c
+index 0f69d65..10307ad 100644
+--- a/disk-utils/sfdisk.c
++++ b/disk-utils/sfdisk.c
+@@ -950,13 +950,16 @@ static int command_dump(struct sfdisk *sf, int argc, char **argv)
+ 	if (rc)
+ 		err(EXIT_FAILURE, _("cannot open %s"), devname);
+ 
++	if (!fdisk_has_label(sf->cxt))
++		errx(EXIT_FAILURE, _("%s: does not contain a recognized partition table"), devname);
++
+ 	dp = fdisk_new_script(sf->cxt);
+ 	if (!dp)
+ 		err(EXIT_FAILURE, _("failed to allocate dump struct"));
+ 
+ 	rc = fdisk_script_read_context(dp, NULL);
+ 	if (rc)
+-		err(EXIT_FAILURE, _("failed to dump partition table"));
++		errx(EXIT_FAILURE, _("%s: failed to dump partition table"), devname);
+ 
+ 	if (sf->json)
+ 		fdisk_script_enable_json(dp, 1);
+-- 
+2.10.2
+
