@@ -8,7 +8,7 @@ arch=('i686' 'x86_64')
 url="https://github.com/keleshev/schema"
 license=('MIT')
 depends=('python')
-makedepends=('git')
+makedepends=('git' 'python-setuptools')
 provides=('python-schema=0.4.1')
 conflicts=('python-schema')
 options=(!emptydirs)
