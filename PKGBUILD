@@ -3,7 +3,7 @@
 
 _pkgname=pyradio
 pkgname=$_pkgname-git
-pkgver=0.4.r50.g069a4b5
+pkgver=0.4.r63.g871aa78
 pkgrel=1
 pkgdesc="Command line internet radio player"
 arch=('any')
