@@ -4,7 +4,7 @@
 
 _pkgname=enki-editor
 pkgname=$_pkgname-git
-pkgver=15.11.0.r58.gd4894dd
+pkgver=16.04.1.r3.g5b3994b6
 pkgrel=1
 pkgdesc="Text editor for programmers. Live preview in Markdown, reStructuredText and HTML"
 arch=('any')
