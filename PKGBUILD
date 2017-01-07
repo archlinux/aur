@@ -28,6 +28,11 @@ build() {
 
 package() {
   cd rubber
-  python2 setup.py install --prefix=/usr --mandir=share/man --infodir=share/info --root="$pkgdir" --optimize=1
+  python2 setup.py install \
+    --prefix=/usr \
+    --root="$pkgdir" \
+    --optimize=1 \
+    --mandir=share/man \
+    --infodir=share/info
 }
 
