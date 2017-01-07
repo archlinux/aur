@@ -1,6 +1,6 @@
 #Maintainer: Xyne <ac xunilhcra enyx, backwards>
 pkgname=python3-aria2jsonrpc
-pkgver=2014
+pkgver=2016
 pkgrel=2
 pkgdesc='A wrapper class around Aria2'"'"'s JSON RPC interface.'
 arch=(any)
@@ -8,16 +8,16 @@ license=(GPL)
 url="http://xyne.archlinux.ca/projects/python3-aria2jsonrpc"
 depends=(python3)
 source=(
-  http://xyne.archlinux.ca/projects/python3-aria2jsonrpc/src/python3-aria2jsonrpc-2014.tar.xz
-  http://xyne.archlinux.ca/projects/python3-aria2jsonrpc/src/python3-aria2jsonrpc-2014.tar.xz.sig
+  http://xyne.archlinux.ca/projects/python3-aria2jsonrpc/src/python3-aria2jsonrpc-2016.tar.xz
+  http://xyne.archlinux.ca/projects/python3-aria2jsonrpc/src/python3-aria2jsonrpc-2016.tar.xz.sig
 )
 sha512sums=(
-  0a9eedf1d3311ff3ade4730fe8b330c9d983c453801215f28f7ad6ef3ad818ae10faf137cece49cef22ec84b67ceb99b3b06796404f3e73666fbe57a5e2de406
-  2dfbe594e39b6c4a99ab0c9d7718baf2f86f9d6765cb9fc9cd23df18d3150e3331ff83952eb98ef6efa26bca602a55c5b720b5cfede4fd8257fadeee5c6aba54
+  70e81743d0e937f755f61eb5c7b0d04c436aa283be2f7a35ff1cc8af8eacf7053745e433945318683e053cee4b53c82485e30c0e09b109e9db0c392ffab255a6
+  1d57739b196078823f7b88c2453e00a8fe4ae1a79e523cc05630604a3bd5ceb21daa20a3924b4ae27d39ef254a195d3e15dd9273b2d4d49299e6b1ef871cea20
 )
 md5sums=(
-  a155fef1b7713086e29bea8e9c05b946
-  c581db85003c1e43d35e7c57c03fe92e
+  c3137077ee1f3ee41150e9b1b657cc15
+  254fda60024665473d35ceeddf17d56b
 )
 validpgpkeys=('EC3CBE7F607D11E663149E811D1F0DC78F173680')
 
