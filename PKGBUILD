@@ -1,6 +1,6 @@
 # Maintainer: Gordian Edenhofer <gordian.edenhofer@gmail.com>
 
-# Watch new releases at http://forum.unity3d.com/threads/unity-on-linux-release-notes-and-known-issues.350256/
+# Watch new releases at https://forum.unity3d.com/threads/unity-on-linux-release-notes-and-known-issues.350256/
 
 # Prevent compression of the final package since it would take too long (sereausly!)
 PKGEXT='.pkg.tar'
