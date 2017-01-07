@@ -5,7 +5,7 @@ post_install() {
     echo " >>> This package does not currently ship with a default config file."
     echo " >>> The default service unit expects to find configuration at /etc/pushjournal.yml"
     echo " >>> You should create this file before starting the pushjournal service."
-    echo " >>> You can find an example here: https://github.com/r-darwish/pushjournal/blob/develop/examples/pushjournal.yml"
+    echo " >>> You can find an example at /usr/share/doc/pushjournal/examples/pushjournal.yml"
 }
 
 post_remove() {

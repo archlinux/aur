@@ -1,8 +1,8 @@
-# Maintainer: Matthew Gamble
+# Maintainer: Matthew Gamble <git@matthewgamble.net>
 
 pkgname=pushjournal
 pkgver=0.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Push notifications for systemd's journal."
 arch=("any")
 license=("BSD")
@@ -11,11 +11,12 @@ install="pushjournal.install"
 depends=("systemd" "python" "python-systemd" "python-click" "python-logbook" "python-netifaces" "python-requests" "python-yaml")
 makedepends=("python-setuptools")
 source=("https://github.com/r-darwish/pushjournal/archive/${pkgver}.tar.gz")
-sha256sums=('97e72798327995d47eebd58de362f137e5ff9329ea754fc453d85fdaebae758d')
+sha256sums=("97e72798327995d47eebd58de362f137e5ff9329ea754fc453d85fdaebae758d")
 
 package() {
     cd "pushjournal-${pkgver}"
-    python setup.py install --prefix=/usr --root="${pkgdir}"
+    python setup.py install --root="${pkgdir}" --optimize=1
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/pushjournal/LICENSE"
     install -Dm644 examples/pushjournal.service "${pkgdir}/usr/lib/systemd/system/pushjournal.service"
+    install -Dm644 examples/pushjournal.yml "${pkgdir}/usr/share/doc/pushjournal/examples/pushjournal.yml"
 }
