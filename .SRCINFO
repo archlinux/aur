@@ -1,0 +1,17 @@
+pkgbase = autolight
+	pkgdesc = A daemon for controlling display backlight using an ambient light sensor
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/craftyguy/autolight
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	depends = python
+	depends = light
+	provides = autolight
+	conflicts = autolight
+	source = https://github.com/craftyguy/autolight/archive/1.0.tar.gz
+	md5sums = 02ceae3913a3be3f2a612dc129f66c7f
+
+pkgname = autolight
+
