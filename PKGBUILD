@@ -5,12 +5,12 @@
 
 pkgname=pithos
 pkgver=1.2.1
-pkgrel=2
+pkgrel=3
 pkgdesc='Native Pandora Radio client'
 arch=('any')
 url="https://pithos.github.io/"
 license=('GPL3')
-depends=('gtk3' 'python-gobject' 'libsecret' 'python-cairo'
+depends=('gtk3' 'python-gobject' 'libsecret' 'python-cairo' 'python>=3.6'
          'gst-plugins-good' 'gst-libav' 'gst-plugins-base')
 optdepends=('libkeybinder3: for media keys plugin'
             'libappindicator-gtk3: Unity indicator applet support'
