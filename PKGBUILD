@@ -1,7 +1,7 @@
 # Maintainer: M0Rf30
 
 pkgname=friture-git
-pkgver=1334.bad14c2
+pkgver=v0.24.r0.g75e8cd8
 pkgrel=1
 pkgdesc="An application to visualize and analyze live audio data in real-time."
 arch=(i686 x86_64)
@@ -15,7 +15,7 @@ md5sums=('866407aefd359ae16015f4ce6a2cd212')
 
 build() {
   cd friture
-  python2 setup.py build
+  python setup.py build
 }
 
 package() {
@@ -25,7 +25,7 @@ package() {
 
 pkgver() {
   cd friture
-  echo $(git rev-list --count master).$(git rev-parse --short master)
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 md5sums=('SKIP')
