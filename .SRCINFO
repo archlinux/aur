@@ -6,7 +6,7 @@ pkgbase = pvim
 	arch = any
 	license = MPL
 	depends = xclip
-	source = git+https://github.com/Sherlock-Holo/pvim.git
+	source = git://github.com/Sherlock-Holo/pvim.git
 	md5sums = SKIP
 
 pkgname = pvim

@@ -10,7 +10,7 @@ arch=('any')
 license=('MPL')
 depends=('xclip')
 makedpends=('git')
-source=("git+https://github.com/Sherlock-Holo/$pkgname.git")
+source=("git://github.com/Sherlock-Holo/$pkgname.git")
 md5sums=('SKIP')
 
 package(){
