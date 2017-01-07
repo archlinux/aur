@@ -15,7 +15,7 @@ provides=('munge')
 conflicts=('munge')
 install="${pkgname}.install"
 source=("${pkgname}"::"git+https://github.com/dun/munge.git")
-md5sums=('SKIP')
+sha512sums=('SKIP')
 
 pkgver() {
 	cd "${srcdir}/${pkgname}"

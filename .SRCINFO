@@ -15,6 +15,6 @@ pkgbase = munge-git
 	provides = munge
 	conflicts = munge
 	source = munge-git::git+https://github.com/dun/munge.git
-	md5sums = SKIP
+	sha512sums = SKIP
 
 pkgname = munge-git
