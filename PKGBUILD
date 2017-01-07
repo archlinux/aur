@@ -31,7 +31,7 @@ package() {
 
     msg2 "Install Radarr in /usr/lib"
     install -d -m 755 "${pkgdir}/usr/lib/radarr"
-    cp -dpr --no-preserve=ownership "${srcdir}/Radarr_Mono_v${pkgver}/"* "${pkgdir}/usr/lib/radarr"
+    cp -dpr --no-preserve=ownership "${srcdir}/"* "${pkgdir}/usr/lib/radarr"
 
     msg2 "Install executable into /usr/bin"
     install -D -m755 "${srcdir}/radarr.sh" "${pkgdir}/usr/bin/radarr"
