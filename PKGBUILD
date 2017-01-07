@@ -1,9 +1,9 @@
 pkgname=beautifuldnsd
-pkgver=0.4
+pkgver=0.5
 pkgrel=1
 pkgdesc="Quick and clean DNS proxy, especially useful for users with poor ISPs"
 arch=('any')
-url=https://github.com/programmervy/beautifuldnsd
+url="https://github.com/programmervy/beautifuldnsd"
 license=("public domain")
 depends=('python>=3.4' 'python-dnslib' 'python-yaml')
 optdepends=(
@@ -14,7 +14,7 @@ optdepends=(
 backup=("etc/${pkgname}.yaml")
 install=beautifuldnsd.install
 source=(${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
-md5sums=('f750c7df394256816c22636d836fbbd7')
+sha512sums=('1bbb68b3ff02160acc5cde7330e4c6e2dd7e96cc1cef3b5f3bff0df5f04b2157f0c08541b59332db5f27176fed42f10bf31e92b3924f097fb9246c616b27d2f9')
 
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
