@@ -5,7 +5,7 @@ _module="${_name%2}"
 
 pkgname=("python-${_name}" "python2-${_name}")
 pkgver="2.0.1"
-pkgrel="4"
+pkgrel="5"
 pkgdesc="a pure-Python git object database"
 arch=("any")
 url="https://github.com/gitpython-developers/${_module}"
