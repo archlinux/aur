@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=One Must Fall 2097
+Comment=Fighting game.
+Exec=/usr/bin/omf2097-bin.sh
+Icon=/opt/omf2097-bin/omf2097-bin.png
+Terminal=false
+Categories=Game;
