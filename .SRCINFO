@@ -1,4 +1,4 @@
-pkgbase = go-lint
+pkgbase = go-lint-git
 	pkgdesc = golang lint
 	pkgver = 20161114.136_206c0f0
 	pkgrel = 1
@@ -10,5 +10,5 @@ pkgbase = go-lint
 	source = git://github.com/golang/lint.git
 	md5sums = SKIP
 
-pkgname = go-lint
+pkgname = go-lint-git
 
