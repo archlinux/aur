@@ -1,0 +1,18 @@
+pkgbase = gpgit
+	pkgdesc = A shell script that automates the process of signing git sources via gpg
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/NicoHood/gpgit
+	arch = any
+	license = MIT
+	depends = gnupg
+	depends = git
+	depends = bash
+	source = gpgit-1.0.0.tar.xz::https://github.com/NicoHood/gpgit/releases/download/1.0.0/gpgit-1.0.0.tar.xz
+	source = gpgit-1.0.0.tar.xz.sig::https://github.com/NicoHood/gpgit/releases/download/1.0.0/gpgit-1.0.0.tar.xz.sig
+	validpgpkeys = 97312D5EB9D7AE7D0BD4307351DAE9B7C1AE9161
+	sha512sums = 9b695e61e007a52e889e21f3145ab4aaca324615fe6eb2448d8bffbf09fa0b71ea2e3dbb8c0ff64f8f0a6531294d0ed65393412622b6330214636bacdb884fd6
+	sha512sums = SKIP
+
+pkgname = gpgit
+
