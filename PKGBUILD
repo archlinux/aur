@@ -10,7 +10,7 @@ makedepends=('cmake' 'perl' 'python' 'rpm-org' 'ruby' 'swig')
 optdepends=('perl: for perl bindings'
             'python: for python bindings'
             'ruby: for ruby bindings')
-source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
+source=("$url/archive/$pkgver/$pkgname-$pkgver.tar.gz")
 md5sums=('a424fe8f273ed0cce9fe82885512465e')
 
 prepare() {

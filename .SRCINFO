@@ -18,7 +18,7 @@ pkgbase = libsolv
 	optdepends = perl: for perl bindings
 	optdepends = python: for python bindings
 	optdepends = ruby: for ruby bindings
-	source = libsolv-0.6.24.tar.gz::https://github.com/openSUSE/libsolv/archive/0.6.24.tar.gz
+	source = https://github.com/openSUSE/libsolv/archive/0.6.24/libsolv-0.6.24.tar.gz
 	md5sums = a424fe8f273ed0cce9fe82885512465e
 
 pkgname = libsolv
