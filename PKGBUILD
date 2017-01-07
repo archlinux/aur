@@ -5,7 +5,7 @@
 _ver=1.17
 _pkgbase=eom
 pkgname="${_pkgbase}-dev"
-pkgver=${_ver}.1
+pkgver=${_ver}.2
 pkgrel=5
 pkgdesc="An image viewing and cataloging program for MATE"
 url="http://mate-desktop.org"
@@ -21,7 +21,7 @@ makedepends=('gobject-introspection' 'mate-common-dev' 'yelp-tools' 'gtk3' 'mate
 optdepends=('yelp: for reading MATE help documents')
 groups=('mate-extra')
 source=("http://pub.mate-desktop.org/releases/${_ver}/${_pkgbase}-${pkgver}.tar.xz")
-sha1sums=('9e90cc9a1ad416f2d7cb9972f32527c5990e7392')
+sha1sums=('0ade89543565e052163dfd7203e2a1e0e13a3555')
 
 prepare() {
     cd "${srcdir}"
