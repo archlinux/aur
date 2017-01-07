@@ -12,7 +12,7 @@ depends=('rpm-org' 'zlib')
 makedepends=('python2' 'python')
 optdepends=('python2: for python2 module'
             'python:  for python3 module')
-source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
+source=("$url/archive/$pkgver/$pkgname-$pkgver.tar.gz")
 md5sums=('c48086229bdfcf5af890f104231180c6')
 
 build() {
