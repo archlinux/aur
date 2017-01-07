@@ -3,7 +3,7 @@
 
 pkgname=guayadeque-git
 _pkgname=guayadeque
-pkgver=0.4.1.r1978.6028e45
+pkgver=0.4.5.r2048.400f5383
 pkgrel=1
 pkgdesc='Lightweight music player'
 arch=('i686' 'x86_64')
@@ -17,15 +17,8 @@ optdepends=('gstreamer0.10-good-plugins: Support for additional file formats'
 			'gstreamer0.10-bad-plugins: Support for additional file formats'
 			'gstreamer0.10-ugly-plugins: Support for additional file formats'
 			'gvfs: Support for external devices')
-source=('git+https://github.com/anonbeat/guayadeque.git'
-        '0001-use-cmake-lib-search-procedure-for-wxsqlite3-from-mu.patch')
-sha512sums=('SKIP'
-'1985aad8d5121f65cdc3b79a20abfe345475898a06f39a459812fa2257e3f11affaf12d2983d7227298a7f03f9b6b396a03f1fc21806c6fed3648ee44764b096')
-
-prepare() {
-  cd "${srcdir}/${_pkgname}"
-  patch -Np1 -i ../0001-use-cmake-lib-search-procedure-for-wxsqlite3-from-mu.patch
-}
+source=('git+https://github.com/anonbeat/guayadeque.git')
+sha512sums=('SKIP')
 
 pkgver() {
   cd "${srcdir}/${_pkgname}"
