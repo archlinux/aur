@@ -1,6 +1,6 @@
 pkgbase = gmtrn-cli
 	pkgdesc = Simple CLI client for http://multitran.ru
-	pkgver = r14.d058bb6
+	pkgver = 0.1
 	pkgrel = 1
 	url = https://github.com/vladimir-g/gmtrn
 	arch = x86_64
@@ -10,8 +10,8 @@ pkgbase = gmtrn-cli
 	makedepends = git
 	options = !strip
 	options = !emptydirs
-	source = gmtrn-cli::git+https://github.com/vladimir-g/gmtrn.git
-	md5sums = SKIP
+	source = https://github.com/vladimir-g/gmtrn/archive/v0.1.tar.gz
+	sha256sums = a3caab19db19f771ea91b99a5138df61a3991fe2bfea2f521a7a91d06f29c030
 
 pkgname = gmtrn-cli
 
