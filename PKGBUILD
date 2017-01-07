@@ -15,7 +15,7 @@ conflicts=("${_pkgname}")
 backup=("etc/conf.d/${_pkgname}.conf")
 install="${pkgname}.install"
 source=("${_pkgname}"::"git+https://github.com/bulletmark/${_pkgname}")
-md5sums=('SKIP')
+sha512sums=('SKIP')
 
 pkgver() {
 	cd "${srcdir}/${_pkgname}"

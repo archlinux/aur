@@ -14,6 +14,6 @@ pkgbase = libinput-gestures-git
 	conflicts = libinput-gestures
 	backup = etc/conf.d/libinput-gestures.conf
 	source = libinput-gestures::git+https://github.com/bulletmark/libinput-gestures
-	md5sums = SKIP
+	sha512sums = SKIP
 
 pkgname = libinput-gestures-git
