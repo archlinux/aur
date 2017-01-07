@@ -4,7 +4,7 @@ _name="supernova"
 
 pkgname="${_name}"
 pkgver="2.2.0"
-pkgrel="1"
+pkgrel="2"
 pkgdesc="Use novaclient with multiple OpenStack nova environments the easy way"
 arch=("any")
 url="https://github.com/major/${_name}"
