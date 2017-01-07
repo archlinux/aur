@@ -1,7 +1,7 @@
 # Maintainer: Maikel Wever <maikelwever@gmail.com>
 pkgname=python-executor
 pkgver=15.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Programmer friendly subprocess wrapper"
 url="https://github.com/xolox/python-executor"
 license=('MIT')
