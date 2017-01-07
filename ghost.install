@@ -14,7 +14,7 @@ post_install() {
 
     By default, Ghost can be accessed at http://localhost:2368/
     after it is started.
-    EOF
+EOF
 }
 
 post_upgrade() {
