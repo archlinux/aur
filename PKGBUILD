@@ -8,7 +8,7 @@ pkgver=105.aca7c34
 pkgrel=1
 pkgdesc="A flat theme that uses varying shades and tones to create distinction and a modern experience."
 arch=('any')
-url="http://thevirtualdragon.deviantart.com/art/Iris-Light-Beta-428948909"
+url="https://thevirtualdragon.deviantart.com/art/Iris-Light-Gtk-Theme-v1-7-5-428948909"
 license=('GPL3')
 optdepends=("gtk-engine-murrine: gtk2 bindings"
 	"gtk3: gtk3 bindings")
@@ -17,7 +17,7 @@ provides=("gtk-theme-iris-light=${pkgver}")
 conflicts=('gtk-theme-iris-light')
 changelog="CHANGELOG"
 source=(${_pkgname}::'git+https://github.com/xyl0n/iris-light.git')
-sha256sums=('SKIP')
+sha512sums=('SKIP')
 
 pkgver() {
 	cd "${srcdir}/${_pkgname}"
