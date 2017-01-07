@@ -31,19 +31,21 @@ build() {
 	      -DENABLE_BZIP2_COMPRESSION=ON  \
 	      -DENABLE_COMPLEX_DEPS=1        \
 	      -DENABLE_COMPS=ON              \
-	      -DENABLE_CUDFREPO=OFF          \
+	      -DENABLE_CUDFREPO=ON           \
 	      -DENABLE_DEBIAN=ON             \
 	      -DENABLE_HAIKU=OFF             \
 	      -DENABLE_HELIXREPO=ON          \
 	      -DENABLE_LZMA_COMPRESSION=ON   \
 	      -DENABLE_MDKREPO=ON            \
 	      -DENABLE_PERL=ON               \
-	      -DENABLE_PUBKEY=OFF            \
+	      -DENABLE_PUBKEY=ON             \
 	      -DENABLE_PYTHON=ON             \
 	      -DENABLE_RPMDB=ON              \
 	      -DENABLE_RPMDB_BYRPMHEADER=ON  \
 	      -DENABLE_RPMMD=ON              \
+	      -DENABLE_RPMPKG=ON             \
 	      -DENABLE_RUBY=ON               \
+	      -DENABLE_TCL=OFF               \
 	      -DENABLE_SUSEREPO=ON           \
 	      -DMULTI_SEMANTICS=ON           \
 	      ..
