@@ -6,7 +6,7 @@ _check="disabled"
 
 pkgname=("python-${_module}" "python2-${_module}")
 pkgver="1.1.0"
-pkgrel="2"
+pkgrel="3"
 pkgdesc="An unladen web framework for building APIs and app backends."
 arch=("i686" "x86_64")
 url="https://github.com/falconry/${_name}"
