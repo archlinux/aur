@@ -3,7 +3,7 @@ Description=Ghost Blogging Platform
 After=network.target
 
 [Service]
-WorkingDirectory=/var/lib/ghost
+WorkingDirectory=/usr/share/webapps/ghost
 Environment=GHOST_NODE_VERSION_CHECK=false
 ExecStart=/usr/bin/npm start --production /usr/share/webapps/ghost
 User=ghost
