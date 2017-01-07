@@ -1,6 +1,3 @@
-# Contributor: nemesys <nemstar AT zoho DOT com>
-# Contributor: graysky <graysky AT archlinux DOT us>
-# Contributor: Tobias Powalowski <tpowa@archlinux.org>
 # Contributor: Thomas Baechler <thomas@archlinux.org>
 
 ### BUILD OPTIONS
@@ -50,7 +47,7 @@ _use_current=
 
 pkgbase=linux-ck-fbcondecor
 _srcname=linux-4.8
-pkgver=4.8.11
+pkgver=4.8.16
 pkgrel=1
 _ckpatchversion=8
 arch=('i686' 'x86_64')
@@ -73,18 +70,22 @@ source=("http://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         # standard config files for mkinitcpio ramdisk
         'linux.preset'
         'change-default-console-loglevel.patch'
+        'net_handle_no_dst_on_skb_in_icmp6_send.patch'
+        '0001-x86-fpu-Fix-invalid-FPU-ptrace-state-after-execve.patch'
 	'fbcondecor-4.8.patch')
 sha256sums=('3e9150065f193d3d94bcf46a1fe9f033c7ef7122ab71d75a7fb5a2f0c9a7e11a'
             'SKIP'
-            '53d84946cbe641a2a74ed6cbdd35840bb4947cefd34a764c31b7dac5cde5c696'
+            'e9f2af4023ddf126045599805053efa804b35e6b3e86f05b6301a01bf8735bb8'
             'SKIP'
             'cea596c606da2125946154a0121ea0516583f659ad823c93669ad5d25bbc3ef7'
-            'e1b8c54c3b81dfd526e24287436b16ec523715e6b3b96156c3e57af035ade127'
-            'f37beb00695fb80b73ea2c8a94ce94af64830497a1f55af5ebcbbbdd2464ee43'
-            '89849e7fdcea24da144f3a0d6eb36975eb70a83f877aef4a46d7357f3511e894'
+            '161819332ceff392151c3a25d7fdf93c103e649cbf7003fbc9a97e0c536bab0d'
+            '23a944ba94ab6a04f4611f698f170246ad39bdaadd6a12349a38db5c9a946542'
+            'bd47c99d2dcbb2a35fb9997f891935d29749d6ee4b458e9ffb68f45e17052b30'
             '834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
+            'b595a1588bafb3d732841cd1b73633970706914f57f2d215c9f1494212d13989'
+            '3e955e0f1aae96bb6c1507236adc952640c9bd0a134b9995ab92106a33dc02d9'
             '0671b52ba9498ba2027fa643ba0e3b524696b358fe983fbad1c586f9446a17a6')
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
@@ -98,6 +99,14 @@ prepare() {
   # add upstream patch
   patch -p1 -i "${srcdir}/patch-${pkgver}"
 
+  # https://bugzilla.kernel.org/show_bug.cgi?id=189851
+  patch -p1 -i "${srcdir}/net_handle_no_dst_on_skb_in_icmp6_send.patch"
+
+  # Revert a commit that causes memory corruption in i686 chroots on our
+  # build server ("valgrind bash" immediately crashes)
+  # https://bugzilla.kernel.org/show_bug.cgi?id=190061
+  patch -Rp1 -i "${srcdir}/0001-x86-fpu-Fix-invalid-FPU-ptrace-state-after-execve.patch"
+
   # set DEFAULT_CONSOLE_LOGLEVEL to 4 (same value as the 'quiet' kernel param)
   # remove this when a Kconfig knob is made available by upstream
   # (relevant patch sent upstream: https://lkml.org/lkml/2011/7/26/227)
@@ -106,11 +115,11 @@ prepare() {
   # fix naming schema in EXTRAVERSION of ck patch set
   sed -i -re "s/^(.EXTRAVERSION).*$/\1 = /" "${srcdir}/${_ckpatchname}"
 
-  msg "Patching source with ck patchset including MuQSS"
+  # Patch source with ck patchset
   patch -Np1 -i "${srcdir}/${_ckpatchname}"
 
-  # Patch source to enable more gcc CPU optimizatons via the make nconfig
-  msg "Patching source with gcc patch to enable more cpus types"
+  # Patch source to unlock additional gcc CPU optimizatons
+  # https://github.com/graysky2/kernel_gcc_patch
   patch -Np1 -i "${srcdir}/${_gcc_patch}"
 
   # Patch source to enable frame buffer decorations.
@@ -118,7 +127,6 @@ prepare() {
   patch -Np1 -i "${srcdir}/fbcondecor-4.8.patch"
 
   # Clean tree and copy ARCH config over
-  msg "Running make mrproper to clean source tree"
   make mrproper
 
   if [ "${CARCH}" = "x86_64" ]; then
@@ -179,7 +187,6 @@ prepare() {
   sed -i '2iexit 0' scripts/depmod.sh
 
   # get kernel version
-  msg "Running make prepare for you to enable patched options of your choosing"
   make prepare
 
   ### Optionally load needed modules for the make localmodconfig
@@ -187,7 +194,9 @@ prepare() {
     if [ -n "$_localmodcfg" ]; then
     msg "If you have modprobed-db installed, running it in recall mode now"
     if [ -e /usr/bin/modprobed-db ]; then
-      [[ ! -x /usr/bin/sudo ]] && echo "Cannot call modprobe with sudo.  Install via pacman -S sudo and configure to work with this user." && exit 1
+      [[ -x /usr/bin/sudo ]] || {
+      echo "Cannot call modprobe with sudo. Install sudo and configure it to work with this user."
+      exit 1; }
       sudo /usr/bin/modprobed-db recall
     fi
     msg "Running Steven Rostedt's make localmodconfig now"
