@@ -1,6 +1,6 @@
 # Maintainer: Justin R. St-Amant <jstamant24 at gmail dot  com>
 pkgname=camotics-git
-pkgver=1.0.6.r15.ga799aa8
+pkgver=1.0.6.r127.g776b29b
 pkgrel=1
 pkgdesc="3-axis NC machining simulation software"
 arch=('i686' 'x86_64')
@@ -15,16 +15,17 @@ depends=('boost-libs'
          'libgl'
          'libmariadbclient'
          'openssl'
-         'qt5-base'
+         'qt4'
          'sqlite'
-         'v8-3.14'
+         'v8'
          'zlib')
 makedepends=('boost' 'scons')
 provides=('camotics')
 replaces=('openscam')
 source=("$pkgname::git+https://github.com/CauldronDevelopmentLLC/CAMotics.git"
-        "git+https://github.com/CauldronDevelopmentLLC/cbang.git")
-md5sums=('SKIP' 'SKIP')
+        "git+https://github.com/CauldronDevelopmentLLC/cbang.git"
+        "camotics.desktop")
+md5sums=('SKIP' 'SKIP' 'bca9df64570c6c6e6773e8428e27cfb8')
 
 pkgver() {
   cd "$srcdir/$pkgname"
@@ -41,6 +42,10 @@ build() {
 }
 
 package() {
+  cd "$srcdir"
+  install -Dm644 "camotics.desktop" \
+          "$pkgdir/usr/share/applications/camotics.desktop"
   cd "$srcdir/$pkgname"
+  install -Dm644 "images/camotics.png" "$pkgdir/usr/share/pixmaps/camotics.png"
   scons install compiler=gnu install_prefix="$pkgdir/usr"
 }

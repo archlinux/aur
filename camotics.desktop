@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=CAMotics
+Comment=3-axis NC machining simulation software
+Exec=camotics
+Icon=camotics
+Terminal=false
+StartupNotify=false
+Categories=Application;Education;Engineering;
