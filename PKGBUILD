@@ -7,7 +7,7 @@
 # Contributor: Mantas Mikulėnas <grawity@gmail.com>
 
 pkgname=whipper
-pkgver=0.4.0
+pkgver=0.4.1
 pkgrel=1
 pkgdesc="A Unix CD ripper aiming for accuracy over speed -- forked from morituri"
 arch=('any')
@@ -33,7 +33,7 @@ makedepends=(
     )
 conflicts=('morituri')
 source=("${pkgname}-v${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha512sums=('fd0757b2894ecd6c457b9bbd9e26791e3a875f89cfb6a3e9f5faf631563da5fa4df3105435117268edcd35034d658f33bd78a3d0bb34a4cd0a069133c69ef2e1')
+sha512sums=('dfd9d3c9fedc2ba861f378cfb751756cdd2ef7372b8783ca29795ed9e83005cfec9693d974c3fd2b21c6d1a0519974c025efe4eb9900e3dc50c42602792b14a5')
 
 package() {
     cd "$srcdir/${pkgname}-${pkgver}"
