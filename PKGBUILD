@@ -19,7 +19,7 @@ makedepends=('cmake' 'git' 'boost')
 provides=("grive=${pkgver}")
 conflicts=('grive')
 source=("${pkgname}"::"git+https://github.com/vitalif/grive2")
-sha256sums=('SKIP')
+sha512sums=('SKIP')
 
 pkgver() {
 	cd "${srcdir}/${pkgname}"

@@ -21,6 +21,6 @@ pkgbase = grive-git
 	provides = grive=434.7bbb01c
 	conflicts = grive
 	source = grive-git::git+https://github.com/vitalif/grive2
-	sha256sums = SKIP
+	sha512sums = SKIP
 
 pkgname = grive-git
