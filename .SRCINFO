@@ -1,8 +1,9 @@
 pkgbase = seismic-unix
 	pkgdesc = A seismic processing and research environment developed at the Center for Wave Phenomena, Colorado School of Mines
 	pkgver = 44R1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.cwp.mines.edu/cwpcodes/
+	install = seismic-unix.install
 	arch = i686
 	arch = x86_64
 	license = custom

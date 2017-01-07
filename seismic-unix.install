@@ -1,0 +1,4 @@
+post_install() {
+    echo "Seismic Unix has been installed under /opt/seismic-unix"
+    echo "Please re-login to update environment variables"
+}

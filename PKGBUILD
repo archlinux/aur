@@ -2,7 +2,7 @@
 
 pkgname=seismic-unix
 pkgver=44R1
-pkgrel=1
+pkgrel=2
 pkgdesc="A seismic processing and research environment developed at the Center for Wave Phenomena, Colorado School of Mines"
 arch=('i686' 'x86_64')
 license=('custom')
@@ -14,8 +14,7 @@ optdepends=(
 makedepends=('gcc-fortran')
 source=("ftp://ftp.cwp.mines.edu/pub/cwpcodes/cwp_su_all_$pkgver.tgz")
 sha1sums=('af86de42d9686ea8c7606ddc86e6211cce8f480d')
-
-export CWPROOT="$srcdir/build"
+install=seismic-unix.install
 
 prepare() {
     cd ${srcdir}/src
@@ -25,6 +24,8 @@ prepare() {
 }
 
 build() {
+    export CWPROOT="$srcdir/build"
+
     mkdir -p "$CWPROOT"
     cd "$CWPROOT"
     ln -sf "$srcdir/src" src
@@ -39,6 +40,7 @@ build() {
 }
 
 package() {
+    local CWPROOT="$srcdir/build"
     cd "$CWPROOT"
 
     install -dm755 "$pkgdir/opt/$pkgname"
