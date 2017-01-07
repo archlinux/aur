@@ -6,7 +6,7 @@
 
 pkgname=ghost
 pkgver=0.11.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Free, open, simple blogging platform"
 arch=('any')
 url="http://ghost.org"
@@ -23,7 +23,7 @@ source=(https://github.com/TryGhost/Ghost/releases/download/$pkgver/Ghost-$pkgve
 noextract=('Ghost-$pkgver.zip')
 sha512sums=('380effec7433c92bc1b3c73ab321d33c4a1e7053f663c1ba7f58d5f340ba182339812969df6a81c90a53238d323265e00e398fd0acf457d69784500784e68d4b'
             '6d3b6a3dad615cca370666cd2b78971889d83c6a0789c061d06194d103ce17c7ec314862344250e1d8dbe8d6a41f14aad35a74c519fbcb25b024a8dce48049fe'
-            'b5682cd45996d0b62700e8e789ec977ae50657f87a6d7390cd1669f75fd0fbd31ef3cdda370ee2f0bbafc7a0e394edf15f95c363d6ede869c7bcdf7783ada2bf'
+            '749bf64dcea81e2586daa865e4684f681d5eb5689636b08d6a694dc1be55cd134dd963b5922ef6e84c992ab7d83f730b2a9a97b624b3a68ecd8cfe69a2b380c4'
             '8776a445733d71402311016cb3822a6535e88ff7c9c9c520caa9a26b0ac32ad124cbc56948420942660343ffd60e5ff53ca553c17a640ce2cb41c9fff4156173')
 
 package() {
