@@ -1,7 +1,7 @@
 # Maintainer: spider-mario <spidermario@free.fr>
 # Contributor: Andrzej Giniewicz <gginiu@gmail.com>
 pkgname=rubber-git
-pkgver=r776.675bfe3
+pkgver=1.4.13.g675bfe3
 pkgrel=1
 pkgdesc="A wrapper for LaTeX and friends, latest git version."
 arch=('any')
@@ -18,7 +18,8 @@ sha512sums=('SKIP')
 
 pkgver() {
   cd rubber
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  git tag -f 1.4 2f47fb0fda47ee12a17a172c3d6fdebae9f53a5d
+  git describe --tags | tr - .
 }
 
 build() {
