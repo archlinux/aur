@@ -1,6 +1,6 @@
 # Maintainer: Mathias Bragagia <mathias.bragagia@gmail.com>
 pkgname=kana-p-git
-pkgver=r113.3db4618
+pkgver=r121.a41ac8c
 pkgrel=1
 pkgdesc="Lite Archlinux complete desktop"
 arch=('any')
@@ -96,6 +96,7 @@ depends=(
 	'alsa-plugins'
 	'pulseaudio'
 	'pulseaudio-alsa'
+	'pulseaudio-bluetooth'
 	'bluez'
 	'bluez-utils'
 	'udevil'
