@@ -5,7 +5,7 @@ _utils=("rethinkdb-import" "rethinkdb-dump" "rethinkdb-export" "rethinkdb-restor
 
 pkgname=("python-${_name}" "python2-${_name}" "rethinkdb-utils")
 pkgver="2.3.0.post5"
-pkgrel="1"
+pkgrel="2"
 pkgdesc="Python driver library for the RethinkDB database server."
 arch=("any")
 url="https://rethinkdb.com"
