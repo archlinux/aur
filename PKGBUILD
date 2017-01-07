@@ -5,7 +5,7 @@ _module="git"
 
 pkgname=("python-${_module}" "python2-${_module}")
 pkgver="2.1.1"
-pkgrel="1"
+pkgrel="2"
 pkgdesc="Python Git Library"
 arch=("any")
 url="https://github.com/gitpython-developers/${_name}"
