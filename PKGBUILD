@@ -12,7 +12,6 @@ url="https://github.com/haiwen/${pkgname}"
 license=('GPL2')
 depends=('libevent' 'libzdb' 'libsearpc' 'libldap' 'python2')
 makedepends=('vala' 'libmariadbclient')
-options=('!makeflags')
 source=("${pkgname}-v${pkgver}-server.tar.gz::${url}/archive/v${pkgver}-server.tar.gz"
         "libccnet.pc.patch")
 sha256sums=('8e8fc38f8f8b3fc7aac7133c835b80df11fb219cf9b60b830cef9025a5daad64'
