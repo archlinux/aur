@@ -3,7 +3,7 @@
 _pkgname=lice
 pkgname=python-lice-git
 pkgver=0.4.52.gb99300b
-pkgrel=1
+pkgrel=2
 pkgdesc="Generate license files for your projects"
 arch=(any)
 url="https://github.com/licenses/lice"
