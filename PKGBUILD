@@ -5,7 +5,7 @@
 pkgbase=linux-bld       # Build kernel with a different name
 pkgname=(linux-bld linux-bld-headers)
 _kernelname=-bld
-pkgver=4.8.15
+pkgver=4.8.16
 _srcname=linux-4.8
 _pkgver2=${_srcname#*-}.0
 pkgrel=1
@@ -45,9 +45,9 @@ source=("http://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
 
 sha256sums=('3e9150065f193d3d94bcf46a1fe9f033c7ef7122ab71d75a7fb5a2f0c9a7e11a'
             'SKIP'
-            'cdeff3a6e0dc3d6189d1b1d4d6318f0942b9a28409491cf65592879e4c42b1f7'
+            'e9f2af4023ddf126045599805053efa804b35e6b3e86f05b6301a01bf8735bb8'
             'SKIP'
-            'e1b8c54c3b81dfd526e24287436b16ec523715e6b3b96156c3e57af035ade127'
+            '161819332ceff392151c3a25d7fdf93c103e649cbf7003fbc9a97e0c536bab0d'
             '2ac8818414beb7dbacbd3ad450c516e6ada804827132a7132f63b8189e5f5151'
             '41b9a64542befd2fea170776e8ec22a7d158dd3273633afc9b91662c448cd90a'
             '834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0'
