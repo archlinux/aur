@@ -2,10 +2,10 @@
 # Contributor: Matthew Wardrop <mister.wardrop@gmail.com>
 
 pkgbase=linux-surfacepro3-rt
-_srcname=linux-4.8.14
+_srcname=linux-4.9
 pkgver=${_srcname#linux-}
-_rtver=rt9
-pkgrel=2.22
+_rtver=rt1
+pkgrel=2.23
 arch=('i686' 'x86_64')
 url="https://github.com/alyptik/linux-surfacepro3-rt"
 license=('GPL2')
@@ -13,18 +13,17 @@ makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc' 'elfutils')
 options=('!strip')
 source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         "https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.sign"
-        "https://www.kernel.org/pub/linux/kernel/projects/rt/${pkgver%.*}/older/patch-${pkgver}-${_rtver}.patch.xz"
-        "https://www.kernel.org/pub/linux/kernel/projects/rt/${pkgver%.*}/older/patch-${pkgver}-${_rtver}.patch.sign"
+        "https://www.kernel.org/pub/linux/kernel/projects/rt/${pkgver}/older/patch-${pkgver}-${_rtver}.patch.xz"
+        "https://www.kernel.org/pub/linux/kernel/projects/rt/${pkgver}/older/patch-${pkgver}-${_rtver}.patch.sign"
         # Brain Fuck Scheduler & other personal patches
         'https://raw.githubusercontent.com/alyptik/linux-surfacepro3-rt/github/bfq.patch'
         'https://raw.githubusercontent.com/alyptik/linux-surfacepro3-rt/github/bfs.patch'
         'https://raw.githubusercontent.com/alyptik/linux-surfacepro3-rt/github/bfs-fixes1.patch'
         'https://raw.githubusercontent.com/alyptik/linux-surfacepro3-rt/github/bfs-fixes2.patch'
         'https://raw.githubusercontent.com/alyptik/linux-surfacepro3-rt/github/bfs-fixes3.patch'
-        'block.patch' 'init.patch' 'kconfig.patch' 'xattr.patch' 'xfs.patch'
+        'init.patch' 'kconfig.patch' 'xattr.patch'
 	'touchscreen_multitouch_fixes1.patch' 'touchscreen_multitouch_fixes2.patch'
 	'wifi.patch'
-        'multitouch.patch'
         'change-default-console-loglevel.patch'
         # the main kernel config files
         'config' 'config.x86_64' 'config.sp3'
@@ -32,24 +31,21 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         'linux.preset'
 )
 
-sha256sums=('81e344d7852128a80fe54f659b2c87bb1b1bde560cd80c52c79c99f568fd5acf'
+sha256sums=('029098dcffab74875e086ae970e3828456838da6e0ba22ce3f64ef764f3d7f1a'
             'SKIP'
-            '157492d303dd0504181e55cdcfe65471c578a3a540527c1c11b0a39297b23de5'
+            'c777fec0c28c1ab27fb798990e0572af8413c7993a4f6017faca8908c1d90579'
             'SKIP'
             '242d32d0fe819852e74d93b8a044cf24a40a9474d6f00ca93a19aa98298dcefa'
             '51f91681b708149fe91e565f5c40811477428e2aa86f8726a20e0e7c55c5407c'
             'cec65d71766429be99bdc9da7897584fdc4bf4df3a4b26d228ff55a76ea3d8ea'
             '48d0d2e549ceddc18a59cc5f0d9325db5727ac82a9a4829c99a781ce979e1a6d'
             '1a178463958f6b7f05a32c437f2674ecb25f2b1a0bf0cb2880d504efd8ba59c6'
-            'ba5c7ee929108ac05800d7c8a7a28c28b2e04679ad33089ea53af15a955d5c5e'
             'ec655100ebc32d6699a258d7682953f928d1eb1042b895b04283d85ae57b80c1'
             'f479a5ca6abe4d50ca4c09e6e83a027369fcd3efff8d5ce60f0699d8fa47beb8'
             '4633ae19b9a9871a3cfffba98ec7c3cd240f64bef8a0eebcf1212219c80972fd'
-            '6618ef72495a6f7c7e50ecfba4a897f78668a3cbaabb93e97ad3d276e7abc52c'
             'cc78e8844d9ec4bd29cce392a3e4683061646e1ad7c100c4958a5cadabb25b52'
             '34b4e00ffcf9efc43ab47444d14febb94432d340d0f1d5bcd56153879d1be113'
             '52e7c895aeb505bc8d3b5321a346fcdbb749f8035cacc97a237c24c1f527adbc'
-            '3a4722981f689225a0ad550e45d829fcc3ca29d4258df3c6c989a916199e1c08'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
             '0fcd0b22fe9ec58ba41b81b463f68d619b6898a5c405fb26c85237a183240371'
             'ed9b9e6efaf4f23e7ae3406322b4d1d3080e8dbc7ab3f03bcbf728ca2010e21b'
@@ -60,9 +56,9 @@ validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
               '647F28654894E3BD457199BE38DBBDC86092693E' # Greg Kroah-Hartman
               '64254695FFF0AA4466CC19E67B96E8162A8CF5D1' # Sebastian Andrzej Siewior
-              '8D633C480C2247466051B7ADE314F17E08EF006D' # Joey Pabalinas
+              'A2F5DE1C32B6B93E3E4884BF2E02D725AF202DC1' # Joey Pabalinas
              )
-multitouch='y'
+
 bcache='n'
 bfs='n'
 bfq='n'
@@ -85,7 +81,7 @@ prepare() {
   fi
 
   ## Add personal patches
-  if [ "$personal" = 'y' ]; then for i in block init kconfig xattr xfs; do patch -p1 -i "${srcdir}/${i}.patch"; done; fi
+  if [ "$personal" = 'y' ]; then for i in init kconfig xattr; do patch -p1 -i "${srcdir}/${i}.patch"; done; fi
 
   # Add RT patches
   patch -p1 -i ${srcdir}/patch-${pkgver}-${_rtver}.patch
@@ -97,10 +93,6 @@ prepare() {
 
   # This patch disables some wireless optimisations which cause trouble on Surface devices.
   patch -p1 -i "${srcdir}/wifi.patch"
-
-  # This patch adds multitouch support for the surface pro 3
-  # keyboard cover.
-  if [ "$multitouch" = 'y' ]; then patch -p1 -i "${srcdir}/multitouch.patch"; fi
 
   # These patches work around buggy hardware implementations
   # in the surface pro 3 touchscreen module.
@@ -135,18 +127,18 @@ prepare() {
   #make olddefconfia # Use current kernel configuration
   # ... or manually edit .config
 
-  printf '\n \033[32m %s \033[0m ' "[Run make ([n]config|[o]lddefconfig) or [s]kip? (n/o/S)]"; read -r; echo
-  case $REPLY in
-          [Nn]*) make nconfig ;; # new CLI menu for configuration
-          [Oo]*) make olddefconfig ;;
-          *) printf ' \033[32m %s \n\033[0m ' "Continuing..."; ;;
-  esac
-
   printf '\n \033[32m %s \033[0m ' "[Run local([m]odconfig|[y]esconfig) or [s]kip? (m/y/S)]"; read -r; echo
   case $REPLY in
           [Mm]*) make localmodconfig ;;
           [Yy]*) make localyesconfig ;;
           *) printf ' \033[32m %s \n\033[0m ' "Continuing..." ;;
+  esac
+
+  printf '\n \033[32m %s \033[0m ' "[Run make ([n]config|[o]lddefconfig) or [s]kip? (n/o/S)]"; read -r; echo
+  case $REPLY in
+          [Nn]*) make nconfig ;; # new CLI menu for configuration
+          [Oo]*) make olddefconfig ;;
+          *) printf ' \033[32m %s \n\033[0m ' "Continuing..."; ;;
   esac
 
   # get kernel version
