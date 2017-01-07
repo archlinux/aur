@@ -14,6 +14,6 @@ pkgbase = routersploit-git
 	provides = routersploit=2.2.1.r0.gf5b7619
 	conflicts = routersploit
 	source = routersploit::git+https://github.com/reverse-shell/routersploit
-	md5sums = SKIP
+	sha512sums = SKIP
 
 pkgname = routersploit-git

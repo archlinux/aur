@@ -13,7 +13,7 @@ makedepends=('git')
 provides=("${_pkgname}=${pkgver}")
 conflicts=("${_pkgname}")
 source=("${_pkgname}"::"git+https://github.com/reverse-shell/routersploit")
-md5sums=('SKIP')
+sha512sums=('SKIP')
 
 pkgver() {
 	cd "${srcdir}/${_pkgname}"
