@@ -2,7 +2,7 @@
 
 pkgname=ntpsec
 pkgver=0.9.6
-pkgrel=2
+pkgrel=3
 pkgdesc="Security-hardened Network Time Protocol implementation"
 arch=('i686' 'x86_64')
 url="https://www.ntpsec.org/"
