@@ -6,14 +6,14 @@ pkgver=15.73fa7ca
 pkgrel=1
 pkgdesc="A theme for the GNOME Shell which provides a slightly more pleasant visual impression."
 arch=('any')
-url="http://gnome-look.org/content/show.php/Copernico+Theme?content=167439"
+url="https://gnome-look.org/content/show.php/Copernico+Theme?content=167439"
 license=('GPL3')
 depends=('gnome-shell')
 makedepends=('git')
 provides=('gnome-shell-theme-copernico')
 conflicts=('gnome-shell-theme-copernico')
 source=(${_pkgname}::'git+https://github.com/mgyugcha/copernico-theme.git')
-sha256sums=('SKIP')
+sha512sums=('SKIP')
 
 pkgver() {
 	cd "${srcdir}/${_pkgname}"
