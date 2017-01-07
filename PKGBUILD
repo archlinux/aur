@@ -1,6 +1,6 @@
 # Maintainer: Tristelune  <tristelune at archlinux dot info>
 pkgname=upplay
-pkgver=1.2.7
+pkgver=1.2.8
 pkgrel=1
 pkgdesc="A Qt-based UPnP audio Control point"
 url="http://www.lesbonscomptes.com/upplay/"
@@ -10,7 +10,7 @@ depends=('libupnpp>=0.15.0' 'qtwebkit')
 #makedepends=('qtchooser')
 makedepends=( )
 source=("http://www.lesbonscomptes.com/upplay/downloads/${pkgname}-${pkgver}.tar.gz")
-md5sums=('ada6d02bcb776c1fe572f91af38525c7')
+md5sums=('dc6150d9e17178d10a33d01761d432b9')
          
 
 build(){
