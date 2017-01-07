@@ -47,5 +47,6 @@ package() {
   cp -a game "$pkgdir/$_installdir"
   install -m644 transition.conf "$pkgdir/$_installdir"
   ln -s /opt/ankama/transition "$pkgdir/$_installdir"
+  chmod -R g+w "$pkgdir/$_installdir"
 }
 # vim:set ts=2 sw=2 et:
