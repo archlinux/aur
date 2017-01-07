@@ -13,7 +13,7 @@ makedepends=('git')
 provides=("letshelp-certbot=${pkgver}" "letshelp-letsencrypt=${pkgver}")
 conflicts=("letshelp-certbot" "letshelp-letsencrypt")
 source=("${_reponame}"::"git+https://github.com/certbot/${_reponame}")
-md5sums=('SKIP')
+sha512sums=('SKIP')
 
 pkgver() {
 	cd "${srcdir}/${_reponame}"
