@@ -13,6 +13,6 @@ pkgbase = gnome-shell-theme-elegance-colors-git
 	provides = gnome-shell-themes-elegance-colors
 	conflicts = gnome-shell-themes-elegance-colors
 	source = elegance-colors::git+https://github.com/satya164/elegance-colors.git
-	sha256sums = SKIP
+	sha512sums = SKIP
 
 pkgname = gnome-shell-theme-elegance-colors-git

@@ -15,7 +15,7 @@ provides=('gnome-shell-themes-elegance-colors')
 conflicts=('gnome-shell-themes-elegance-colors')
 install="${_pkgname}.install"
 source=(${_pkgname}::'git+https://github.com/satya164/elegance-colors.git')
-sha256sums=('SKIP')
+sha512sums=('SKIP')
 
 pkgver() {
 	cd "${srcdir}/${_pkgname}"
