@@ -8,7 +8,7 @@ pkgname="python-numpy-mkl"
 true && pkgname=('python-numpy-mkl' 'python2-numpy-mkl')
 #pkgname=('python-numpy')
 pkgver=1.11.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Scientific tools for Python compiled with intel mkl"
 arch=('i686' 'x86_64')
 license=('custom')
@@ -104,5 +104,5 @@ package_python-numpy-mkl() {
   install -m755 -d "${pkgdir}/usr/share/licenses/python3-numpy"
   install -m644 LICENSE.txt "${pkgdir}/usr/share/licenses/python3-numpy/"
 
-  patch ${pkgdir}/usr/lib/python3.5/site-packages/numpy/distutils/fcompiler/__init__.py ${srcdir}/__init__3.py.patch
+  patch ${pkgdir}/usr/lib/python3.6/site-packages/numpy/distutils/fcompiler/__init__.py ${srcdir}/__init__3.py.patch
 }
