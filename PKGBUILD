@@ -2,7 +2,7 @@
 
 pkgname="mkdocs"
 pkgver="0.16.1"
-pkgrel="1"
+pkgrel="2"
 pkgdesc="Project documentation with Markdown."
 arch=("any")
 url="http://www.mkdocs.org"
