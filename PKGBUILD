@@ -1,7 +1,7 @@
 # Maintainer: mutantmonkey <aur@mutantmonkey.in>
 pkgname=python-schema-git
 _gitname=schema
-pkgver=206.960d6cf
+pkgver=271.bca292f
 pkgrel=1
 pkgdesc="Python module to validate and convert data structures (git version)"
 arch=('i686' 'x86_64')
