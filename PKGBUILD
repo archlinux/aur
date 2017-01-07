@@ -1,6 +1,6 @@
 # Maintainer: Ng Oon-Ee <ngoonee.talk@gmail.com>
 pkgname=beancount-fava-git
-pkgver=r1162.d3e14ae
+pkgver=r1182.0d0a4aa
 pkgrel=1
 pkgdesc=""
 arch=('i686' 'x86_64')

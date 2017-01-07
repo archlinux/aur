@@ -1,5 +1,5 @@
 pkgbase = beancount-fava-git
-	pkgver = r1162.d3e14ae
+	pkgver = r1182.0d0a4aa
 	pkgrel = 1
 	arch = i686
 	arch = x86_64
@@ -15,9 +15,9 @@ pkgbase = beancount-fava-git
 	depends = python-google-api-python-client
 	depends = python-beautifulsoup4
 	depends = python-magic-ahupp
-	provides = fava
-	conflicts = fava
-	source = fava::git://github.com/beancount/fava.git
+	provides = beancount-fava
+	conflicts = beancount-fava
+	source = beancount-fava::git://github.com/beancount/fava.git
 	md5sums = SKIP
 
 pkgname = beancount-fava-git
