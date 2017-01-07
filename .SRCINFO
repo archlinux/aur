@@ -1,7 +1,7 @@
 pkgbase = pentmenu
 	pkgdesc = A bash script inspired by pentbox.
 	pkgver = 1.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/GinjaChris/pentmenu
 	arch = any
 	groups = archstrike
@@ -9,7 +9,7 @@ pkgbase = pentmenu
 	license = GPL3
 	depends = bash
 	depends = hping
-	depends = gnu-netcat
+	depends = openbsd-netcat
 	depends = openssl
 	depends = stunnel
 	depends = nmap
