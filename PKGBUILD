@@ -6,7 +6,7 @@
 
 pkgname=policycoreutils
 pkgver=2.6
-pkgrel=1
+pkgrel=2
 pkgdesc="SELinux policy core utilities"
 arch=('i686' 'x86_64')
 url='http://userspace.selinuxproject.org'

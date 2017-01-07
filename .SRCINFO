@@ -1,7 +1,7 @@
 pkgbase = policycoreutils
 	pkgdesc = SELinux policy core utilities
 	pkgver = 2.6
-	pkgrel = 1
+	pkgrel = 2
 	url = http://userspace.selinuxproject.org
 	arch = i686
 	arch = x86_64
@@ -18,7 +18,7 @@ pkgbase = policycoreutils
 	optdepends = hicolor-icon-theme: needed for graphical tools
 	optdepends = pygtk: for system-config-selinux
 	optdepends = gnome-python: for system-config-selinux
-	provides = selinux-usr-policycoreutils=2.6-1
+	provides = selinux-usr-policycoreutils=2.6-2
 	conflicts = selinux-usr-policycoreutils
 	options = !emptydirs
 	source = https://raw.githubusercontent.com/wiki/SELinuxProject/selinux/files/releases/20161014/policycoreutils-2.6.tar.gz
