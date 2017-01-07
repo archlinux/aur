@@ -3,7 +3,7 @@
 _pkgname=podfox
 pkgname=$_pkgname-git
 pkgver=r71.cdcf304
-pkgrel=2
+pkgrel=3
 pkgdesc="Catch and manage podcasts from the terminal"
 arch=('any')
 url="https://github.com/brtmr/podfox"

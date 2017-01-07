@@ -1,7 +1,7 @@
 pkgbase = podfox-git
 	pkgdesc = Catch and manage podcasts from the terminal
 	pkgver = r71.cdcf304
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/brtmr/podfox
 	arch = any
 	license = GPL3
