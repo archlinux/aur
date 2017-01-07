@@ -2,7 +2,7 @@ pkgbase = gtk-theme-iris-dark-git
 	pkgdesc = A flat theme that uses varying shades and tones to create distinction and a modern experience.
 	pkgver = 107.3468e91
 	pkgrel = 1
-	url = http://thevirtualdragon.deviantart.com/art/Iris-Dark-Gtk-Theme-v1-9-429628194
+	url = https://thevirtualdragon.deviantart.com/art/Iris-Dark-Gtk-Theme-v1-10-429628194
 	changelog = CHANGELOG
 	arch = any
 	license = GPL3
@@ -12,6 +12,6 @@ pkgbase = gtk-theme-iris-dark-git
 	provides = gtk-theme-iris-dark=107.3468e91
 	conflicts = gtk-theme-iris-dark
 	source = iris-dark::git+https://github.com/xyl0n/iris.git
-	sha256sums = SKIP
+	sha512sums = SKIP
 
 pkgname = gtk-theme-iris-dark-git
