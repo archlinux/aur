@@ -1,20 +1,21 @@
 pkgname=distribution-gpg-keys
 _pkgver=1.9
 _rpmrel=1
+_pkgtag=$pkgname-$_pkgver-$_rpmrel
 pkgver=$_pkgver.$_rpmrel
 pkgrel=1
 pkgdesc="GPG keys used by various Linux distributions to sign packages"
 arch=('any')
 url="https://github.com/xsuchy/$pkgname"
 license=('CC0')
-source=("$url/archive/$pkgname-$_pkgver-$_rpmrel.tar.gz")
+source=("$url/archive/$_pkgtag.tar.gz")
 md5sums=('c53e81445266b6112b25c8dc8ce23cb0')
 
 # Set to 1 to include GPG keys used by Copr projects
 _with_copr=0
 
 prepare() {
-	mv "$pkgname-$pkgname-$_pkgver-$_rpmrel" "$pkgname-$pkgver"
+	mv "$pkgname-$_pkgtag" "$pkgname-$pkgver"
 }
 
 package() {
