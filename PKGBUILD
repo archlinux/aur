@@ -4,16 +4,17 @@
 
 pkgname=seafile-client
 pkgver=6.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="GUI client for synchronizing your local files with seafile server"
 arch=('i686' 'x86_64')
-url="https://github.com/haiwen/seafile-client/"
+url="https://github.com/haiwen/${pkgname}"
 license=('Apache')
-depends=("seafile-shared" "qt5-webkit" "qt5-base" "gtk-update-icon-cache" "qt5-webengine")
-makedepends=("cmake" "qt5-tools" "seafile-shared")
+depends=("seafile" "qt5-tools" "qt5-webkit" "qt5-base"
+         "gtk-update-icon-cache" "qt5-webengine")
+makedepends=("cmake")
 conflicts=('seafile-client-qt5')
 provides=('seafile-client-qt5')
-source=("${pkgname}-v${pkgver}.tar.gz::https://github.com/haiwen/${pkgname}/archive/v${pkgver}.tar.gz")
+source=("${pkgname}-v${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
 sha256sums=('0660243b7cd5e95b20457722b69896009b20d474d182c5bf2848293c345e01c9')
 
 prepare() {
