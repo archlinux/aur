@@ -59,7 +59,7 @@ build() {
 	# when parsing the output of gcc -v. Let us set LC_ALL as well.
 	export LANG=C LC_ALL=C
 
-	./configure --prefix=/usr --disable-rpath
+	./configure --prefix=/usr --disable-rpath --disable-rustbuild
 	make all
 }
 
