@@ -4,7 +4,7 @@
 # Contributor: raingloom <raingloom42@gmail.com>
 pkgname=wakfu-transition
 pkgver=1.38
-pkgrel=4
+pkgrel=5
 pkgdesc="A turn-based tactical Massively Multiplayer Online Role-playing Game (MMORPG) written in Java/OpenGL."
 arch=('i686' 'x86_64')
 url="http://www.wakfu.com/"
@@ -44,10 +44,8 @@ package() {
   msg2 'Installing main application'
   _installdir="opt/ankama/wakfu"
   install -d "$pkgdir/$_installdir"
-  cp -ar game "$pkgdir/$_installdir"
+  cp -a game "$pkgdir/$_installdir"
   install -m644 transition.conf "$pkgdir/$_installdir"
   ln -s /opt/ankama/transition "$pkgdir/$_installdir"
-  chgrp -R games "$pkgdir/$_installdir"
-  chmod -R g+w "$pkgdir/$_installdir"
 }
 # vim:set ts=2 sw=2 et:
