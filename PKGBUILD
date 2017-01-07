@@ -14,8 +14,8 @@ depends=('yajl' 'curl' 'libgcrypt' 'boost-libs' 'gcc-libs' 'json-c' 'expat')
 optdepends=("cppunit: unit tests"
 	"binutils: backtrace and libiberty")
 makedepends=('cmake' 'boost')
-source=("https://github.com/vitalif/grive2/archive/v${pkgver}.tar.gz")
-md5sums=('f291ffaef831abf3605417995082bcc3')
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/vitalif/grive2/archive/v${pkgver}.tar.gz")
+sha512sums=('d564d674c4318e156677e919509a8e0f8d92f78ec4a5b250083eb99db572aeacab98def2e0ef65f59d8e1bff268256996e74800ce4ddd036d72fed4af1163085')
 
 build() {
 	cd "${srcdir}/${pkgname}2-${pkgver}"
