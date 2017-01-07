@@ -1,6 +1,6 @@
 # Maintainer: Clayton Craft <clayton@craftyguy.net>
 pkgname=autolight
-pkgver=1.0
+pkgver=1.1
 pkgrel=1
 pkgdesc="A daemon for controlling display backlight using an ambient light sensor"
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ depends=('python' 'light')
 provides=("${pkgname}")
 conflicts=("${pkgname}")
 source=("https://github.com/craftyguy/autolight/archive/${pkgver}.tar.gz")
-md5sums=('02ceae3913a3be3f2a612dc129f66c7f')
+md5sums=('fb0a1c132fd3191d750177f6b6ea1f1f')
 prepare() {
         cd "$pkgname-$pkgver"
 }
