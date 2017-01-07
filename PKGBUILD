@@ -2,8 +2,8 @@
 # Contributor: Sven-Hendrik Haase <sh@lutzhaase.com>
 
 pkgname=pgcli
-pkgver=1.1.0
-pkgrel=2
+pkgver=1.3.1
+pkgrel=1
 pkgdesc="a command line interface for Postgres with auto-completion and syntax highlighting"
 url="http://pgcli.com/"
 arch=(any)
@@ -20,4 +20,4 @@ package() {
     echo "#!/usr/bin/bash" > $pkgdir/usr/bin/pgcli
     echo "python -c 'import pgcli.main; pgcli.main.cli()' \"\$@\"" >> $pkgdir/usr/bin/pgcli
 }
-md5sums=('966633ae2488271e245ae0dd5f0a1730')
+md5sums=('7a7458fceefbe950829cdf49bb409416')
