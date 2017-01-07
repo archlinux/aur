@@ -10,7 +10,7 @@ url='https://github.com/gps1539/trespass'
 depends=('python' 'python-numpy' 'gnupg')
 makedepends=()
 source=("https://raw.githubusercontent.com/gps1539/trespass/master/trespass.py")
-md5sums=('4ee384218bbc873e6770dd315c7984e8')
+md5sums=('2c00a39a6e7fd50221023e2c3ab1a07b')
 
 package()
 {
