@@ -1,7 +1,7 @@
-# Maintainer: jernick
+# Maintainer: nic96
 pkgname=kiwix-bin
 pkgver=0.9
-pkgrel=1
+pkgrel=2
 pkgdesc="Offline reader for Web content. It's especially intended to make Wikipedia available offline."
 arch=('i686' 'x86_64')
 url="http://www.kiwix.org"
@@ -20,10 +20,10 @@ package() {
 	mkdir -p ${pkgdir}/usr/lib
 	mkdir -p ${pkgdir}/usr/bin
 	cp -R -d ${srcdir}/kiwix ${pkgdir}/usr/lib/
-	find ${pkgdir}/usr/lib/kiwix -perm -u=w -exec chmod a+w {} \;	#Set permisions
 	find ${pkgdir}/usr/lib/kiwix -perm -u=r -exec chmod a+r {} \;
 	find ${pkgdir}/usr/lib/kiwix -perm -u=x -exec chmod a+x {} \;
 	ln -f -s /usr/lib/kiwix/kiwix ${pkgdir}/usr/bin/kiwix
+	ln -f -s /usr/lib/kiwix/bin/kiwix-serve ${pkgdir}/usr/bin/kiwix-serve
 	install -D -m644 ${srcdir}/kiwix.desktop ${pkgdir}/usr/share/applications/kiwix.desktop
 	install -D -m644 ${srcdir}/kiwix/chrome/icons/default/main.png ${pkgdir}/usr/share/icons/hicolor/64x64/apps/kiwix.png
 }
