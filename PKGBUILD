@@ -1,7 +1,7 @@
 # Maintainer: Maikel Wever <maikelwever@gmail.com>
 pkgname=npm-accel
 pkgver=0.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Accelerator for npm, the Node.js package manager"
 url="https://github.com/xolox/python-npm-accel"
 license=('MIT')
