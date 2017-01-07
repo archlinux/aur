@@ -5,7 +5,7 @@ _module="${_name}"
 
 pkgname=("python-${_module}" "python2-${_module}")
 pkgver="0.7.2"
-pkgrel="1"
+pkgrel="2"
 pkgdesc="A Python library for OAuth 1.0/a, 2.0, and Ofly"
 arch=("any")
 url="https://rauth.readthedocs.org"
