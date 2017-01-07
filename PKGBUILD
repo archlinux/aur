@@ -1,7 +1,7 @@
 # Maintainer: mutantmonkey <aur@mutantmonkey.in>
 pkgname=python-img2pdf
 pkgver=0.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Losslessly convert raster images to PDF"
 url="https://gitlab.mister-muffin.de/josch/img2pdf"
 arch=('any')
