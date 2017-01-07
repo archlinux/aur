@@ -1,0 +1,23 @@
+pkgbase = kindle2anki-git
+	pkgdesc = Add words from Kindle to Anki
+	pkgver = r9.181d533
+	pkgrel = 1
+	url = https://github.com/psamim/kindle2anki
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = python
+	depends = python-colorama
+	depends = python-pyaudio
+	depends = python-retrying
+	provides = kindle2anki
+	conflicts = kindle2anki
+	source = git+https://github.com/psamim/kindle2anki.git
+	source = git+https://github.com/dae/anki.git
+	source = kindle2anki.sh
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = 4fd11d9c95ff8f8c044a98248bc114cdcb7ee65ba10d2881a036fc419a677d68
+
+pkgname = kindle2anki-git
+
