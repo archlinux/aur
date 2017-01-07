@@ -91,6 +91,7 @@ source=( #"https://gsdview.appspot.com/chromium-browser-official/chromium-${pkgv
         'minizip.patch'
         # Patch from crbug (chromium bugtracker)
         'chromium-widevine-r1.patch'
+        'https://codereview.chromium.org/download/issue2574633002_1.diff'
         )
 sha256sums=( #"$(curl -sL https://gsdview.appspot.com/chromium-browser-official/chromium-55.0.2873.0.tar.xz.hashes | grep sha256 | cut -d ' ' -f3)"
             "$(curl -sL https://commondatastorage.googleapis.com/chromium-browser-official/chromium-${pkgver}.tar.xz.hashes | grep sha256 | cut -d ' ' -f3)"
@@ -107,6 +108,7 @@ sha256sums=( #"$(curl -sL https://gsdview.appspot.com/chromium-browser-official/
             '95ba939b9372e533ecbcc9ca034f3e9fc6621d3bddabb57c4d092ea69fa6c840'
             # Patch from crbug (chromium bugtracker)
             '0d537830944814fe0854f834b5dc41dc5fc2428f77b2ad61d4a5e76b0fe99880'
+            '9e6e09ccbb44345bd13e1acd4429fa5a7837fef4d8c27a2ed7e67e21bb1df207'
             )
 options=('!strip')
 install=chromium-dev.install
@@ -415,6 +417,9 @@ prepare() {
   # https://crbug.com/473866
   patch -p0 -i "${srcdir}/chromium-widevine-r1.patch"
   sed 's|@WIDEVINE_VERSION@|The Cake Is a Lie|g' -i "third_party/widevine/cdm/stub/widevine_cdm_version.h"
+  
+  # https://crbug.com/668446
+  patch -p1 -i "${srcdir}/issue2574633002_1.diff"
 
   ##
   # Fix libpng errors.
