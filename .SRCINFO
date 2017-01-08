@@ -1,6 +1,6 @@
 pkgbase = python-pyql-git
 	pkgdesc = QuantLib Cython Wrappers
-	pkgver = 20160412
+	pkgver = 20161215
 	pkgrel = 1
 	url = https://github.com/enthought/pyql
 	arch = i686

@@ -1,7 +1,7 @@
 # Maintainer: Hao Zhang <theivorytower [at] gmail [dot] com>
 
 pkgname=python-pyql-git
-pkgver=20160412
+pkgver=20161215
 pkgrel=1
 pkgdesc="QuantLib Cython Wrappers"
 arch=("i686" "x86_64")
