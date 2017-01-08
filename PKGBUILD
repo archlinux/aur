@@ -4,8 +4,8 @@ pkgbase=python-nikola
 _pyname=Nikola
 _pynamel=nikola
 pkgname=('python-nikola' 'python-nikola-doc')
-pkgver=7.8.1
-pkgrel=2
+pkgver=7.8.2
+pkgrel=1
 pkgdesc='A modular, fast, simple, static website generator.'
 arch=('any')
 url='https://getnikola.com/'
@@ -17,7 +17,7 @@ makedepends=('python' 'python-doit' 'python-pygments' 'python-pillow'
              'python-blinker' 'python-natsort' 'python-setuptools'
              'python-requests' 'python-husl' 'python-piexif')
 source=("https://pypi.io/packages/source/N/Nikola/${_pyname}-${pkgver}.tar.gz")
-md5sums=('0fa90c14d2fa8a839b59e3248e1cc92c')
+md5sums=('41a6d2ab8000c09e3529e26ce034fc3d')
 
 build() {
   cd "${srcdir}/${_pyname}-${pkgver}"
