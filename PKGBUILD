@@ -2,7 +2,7 @@
 
 pkgname=canto-curses
 pkgver=0.9.7
-pkgrel=2
+pkgrel=3
 pkgdesc="ncurses user interface for canto-daemon"
 url="http://codezen.org/canto-ng/"
 license=("GPL")
