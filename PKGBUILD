@@ -2,28 +2,28 @@
 
 _pkgname=mpd
 pkgname=${_pkgname}-server-minimal
-pkgver=0.19.21
+pkgver=0.20
 pkgrel=1
 pkgdesc="Flexible, powerful, server-side application for playing music. Minimal version with only flac playback as server running under mpd user."
 url="https://www.musicpd.org/"
 license=('GPL')
 arch=('i686' 'x86_64' 'armv7h')
-depends=('alsa-lib' 'flac' 'glib2' 'icu' 'libmpdclient' 'sqlite' 'systemd')
+depends=('alsa-lib' 'flac' 'icu' 'libmpdclient' 'sqlite' 'systemd')
 makedepends=('boost')
 provides=("${_pkgname}=$pkgver")
 conflicts=("${_pkgname}")
 backup=("etc/${_pkgname}.conf")
 install=mpd.install
-source=("${url}/download/${_pkgname}/${pkgver%.*}/${_pkgname}-${pkgver}.tar.xz"{,.sig}
+source=("${url}/download/${_pkgname}/${pkgver:0:4}/${_pkgname}-${pkgver}.tar.xz"{,.sig}
         "${_pkgname}.tmpfiles"
         "${_pkgname}.sysusers"
         "${_pkgname}.conf")
-sha1sums=('27dd903f4f7c0f5ffeb85e6820c02d2b82485572'
-          'SKIP'
-          'ba916e79db509a888ade94740249d35456ca1912'
-          'aa58b35ad28de86fdc9ee850e3989f1a105f6a80'
-          '291fd5cda9f0845834a553017327c4586bd853f6')
-validpgpkeys=('0392335A78083894A4301C43236E8A58C6DB4512') # Max Kellermann
+sha256sums=('48e9dde0f5c22dc26ff36e8d13e3dc575a1ee7558b5537a064f78a3b9dee1619'
+            'SKIP'
+            '93d5cd794c3b2709d24dd77900574683b04fa382c7eb0a2d26ddb51cbcf7adbf'
+            '72adab7c736cbb5604a324af4df18e27963f6367033c70704f5ce1fc078e5219'
+            'f40f68205834ca53cea3372e930bfe6c2f9ecc9df3b1605df2fec63a658b2e03')
+validpgpkeys=('0392335A78083894A4301C43236E8A58C6DB4512') # Max Kellermann <max@musicpd.org>
 
 build() {
     cd ${_pkgname}-${pkgver}
@@ -98,8 +98,7 @@ build() {
         --enable-database \
         --enable-sqlite \
         --enable-icu \
-        --enable-glib \
-        --disable-systemd-daemon \
+        --enable-systemd-daemon \
         --without-systemduserunitdir \
         --with-systemdsystemunitdir=/usr/lib/systemd/system \
         --with-zeroconf=no
