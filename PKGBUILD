@@ -2,7 +2,7 @@
  
 _pkgname=ofxparse
 pkgname=$_pkgname-git
-pkgver=1
+pkgver=0
 pkgrel=1
 pkgdesc="Ofxparse is a parser for Open Financial Exchange (.ofx) format files."
 arch=('i686' 'x86_64')
