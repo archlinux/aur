@@ -17,7 +17,7 @@ depends=('python-appdirs' 'python-requests>=2.1.0'
 'python-requests-toolbelt' 'python-fusepy' 'python-setuptools' 
 'python-colorama')
 makedepends=('python')
-optdepends=('fuse: Filesystem mount support' 'fuse3: Filesystem mount 
+optdepends=('fuse2: Filesystem mount support' 'fuse3: Filesystem mount 
 support')
 provides=('acd_cli')
 conflicts=('acd_cli')
