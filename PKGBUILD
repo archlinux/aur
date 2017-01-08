@@ -1,8 +1,8 @@
 # Maintainer: Donald Webster <fryfrog@gmail.com>
 # Maintainer: Devin Buhl <devin.kray@gmail.com>
 pkgname="radarr"
-pkgver="0.1.0.34353"
-pkgrel=2
+pkgver="0.2.0.2"
+pkgrel=1
 pkgdesc="Movie downloader for usenet and torrents."
 arch=(any)
 url="https://github.com/galli-leo/Radarr"
@@ -21,7 +21,7 @@ source=("https://github.com/galli-leo/Radarr/archive/v${pkgver}.tar.gz"
         "radarr.service")
 noextract=()
 
-sha512sums=('4321916b73c0b8f7ef63863c7271055b24410546fc52ff6b952e50063e0ee4043e53cb0caa36cdffbf5286aa3185b1b2a077d0884b4c0e1042c2a2fac71e49b0'
+sha512sums=('6e51ec98144205be4a85b093a27ade64c3ef632b2886381d7c05e9f988b999a76524159d06bdc673694962f8fa88a5c2885f8174869d432e4c4f81961705d14d'
             '17c0a54de94ab6e4523ab5f3f65bd40b592cc6723acaf123db8bbf0d2c6200e4b5877878c542fe849c09b9748ab8c8887cbd94365ba431cf71fc1256f24b43ec'
             '237a74e8ae8c968da33c44241f0b47fb3209b15ecc1962f45286adab466701d0c7be91cffc7e856951d14f1b72e565ad6fd97115bc1feb1c3bfd4f8c07f453fd')
 
