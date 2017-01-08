@@ -1,7 +1,7 @@
 pkgbase = python-cursed
 	pkgdesc = Simplified curses interface with concurrency, for quick and sane curses apps
 	pkgver = 0.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/johannestaas/cursed
 	arch = any
 	license = GPL

@@ -1,7 +1,7 @@
 # Maintainer: Shane "SajeOne" Brown <contact@shane-brown.ca>
 pkgname=python-cursed
 pkgver=0.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Simplified curses interface with concurrency, for quick and sane curses apps"
 arch=('any')
 url="https://github.com/johannestaas/cursed"
