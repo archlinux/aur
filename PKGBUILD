@@ -2,7 +2,7 @@
 
 pkgname=liquidsky
 pkgver=1
-pkgrel=8
+pkgrel=9
 pkgdesc="LiquidSky lets you instantly own and stream a powerful gaming computer to any device!"
 arch=('x86_64' 'i686')
 url='https://liquidsky.tv/'
