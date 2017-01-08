@@ -6,7 +6,7 @@ pkgrel=1
 pkgdesc="Native Gtk+ Twitter Client"
 arch=('i686' 'x86_64')
 license=('GPL')
-url="https://github.com/baedert/corebird"
+url="https://corebird.baedert.org/"
 depends=('gtk3>=3.18'
      'glib2>=2.40'
      'rest>=0.7'
