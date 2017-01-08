@@ -1,6 +1,4 @@
 This Agreement provides terms and conditions for license grant from Brother Industries, Ltd ("Broher"). Brother, who owns all copyrights to the software that is distributed with this Agreement ("Software") to recipients thereof ("User"), for use of the Software. User shall have the right to use the Software only in accordance with the terms and conditions of this Agreement. Any use by User of the Software shall be deemed as its agreement hereto.
-Note:
-Please click on "I Accept" while holding down "Shift" or right click on "I Accept" and select "Save Target As,,," from the menu.
 
 Brother retains any and all copyrights to the Software. In no case this Agreement shall be construed to assign or otherwise transfer from Brother to User any copyrights or other intellectual property rights to whole or any part of the Software.
 

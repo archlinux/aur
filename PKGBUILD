@@ -25,6 +25,12 @@ md5sums=(
 if test "$CARCH" == x86_64; then
   depends+=('lib32-glibc')
 fi
+
+optdepends=(
+	'brscan3: scanning support'
+	'brscan-skey: scankey support'
+)	
+
 prepare() {
 #  do not install in '/usr/local'
 	if [ -d $srcdir/usr/local/Brother ]; then
@@ -62,3 +68,4 @@ package() {
 	install -m 644 -D cupswrapper-license.txt $pkgdir/usr/share/licenses/${pkgname}/cupswrapper-licence.txt
 	install -m 644 -D lpr-license.txt $pkgdir/usr/share/licenses/${pkgname}/lpr-licence.txt
 }
+
