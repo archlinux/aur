@@ -1,6 +1,6 @@
 pkgbase = skf-framework
 	pkgdesc = Plugin-based static website generator inspired by Suckless Web Framework
-	pkgver = 89.43094a3
+	pkgver = 99.886346e
 	pkgrel = 1
 	url = http://skf.jeannedhack.org/
 	arch = any

@@ -1,7 +1,7 @@
 # Maintainer: moebiuseye <möëbïüs döt ëÿë ät gmäïl döt cöm>
 
 pkgname="skf-framework"
-pkgver=89.43094a3
+pkgver=99.886346e
 pkgrel=1
 arch=(any)
 pkgdesc="Plugin-based static website generator inspired by Suckless Web Framework"
