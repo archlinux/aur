@@ -2,7 +2,7 @@
 # Contributor: Lukasz Kszonowski <archlinux at kszonek dot pl>
 
 pkgname=e-deklaracje
-pkgrel=1
+pkgrel=2
 pkgver=9.0.0
 pkgdesc="Application for submitting tax return in Poland"
 arch=('any')
