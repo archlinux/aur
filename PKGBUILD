@@ -1,7 +1,7 @@
 pkgname=tensorflow-vala
 pkgver=0.12.1+5+g43ab3ab
 pkgrel=1
-pkgdesc="TensorFlow bindings for Vala"
+pkgdesc="Vala bindings for TensorFlow"
 url="https://github.com/arrufat/tensroflow-vala"
 license=('Apache2')
 arch=('any')
