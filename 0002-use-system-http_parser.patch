@@ -1,0 +1,42 @@
+From 5cfb2edc6541bb1bc74cd5973a2a3323b1e085e2 Mon Sep 17 00:00:00 2001
+From: Igor Gnatenko <i.gnatenko.brain@gmail.com>
+Date: Sun, 1 Jan 2017 14:37:03 +0100
+Subject: [PATCH 2/2] use system http_parser
+
+Signed-off-by: Igor Gnatenko <i.gnatenko.brain@gmail.com>
+---
+ httptools/parser/cparser.pxd | 2 +-
+ setup.py                     | 4 +++-
+ 2 files changed, 4 insertions(+), 2 deletions(-)
+
+diff --git a/httptools/parser/cparser.pxd b/httptools/parser/cparser.pxd
+index bad2060..7644a1c 100644
+--- a/httptools/parser/cparser.pxd
++++ b/httptools/parser/cparser.pxd
+@@ -1,7 +1,7 @@
+ from libc.stdint cimport uint16_t, uint32_t, uint64_t
+ 
+ 
+-cdef extern from "../../vendor/http-parser/http_parser.h":
++cdef extern from "http_parser.h":
+     ctypedef int (*http_data_cb) (http_parser*,
+                                   const char *at,
+                                   size_t length) except -1
+diff --git a/setup.py b/setup.py
+index 943acf8..dfe7268 100644
+--- a/setup.py
++++ b/setup.py
+@@ -20,7 +20,9 @@ setup(
+     license='MIT',
+     packages=['httptools', 'httptools.parser'],
+     ext_modules=cythonize([
+-        Extension("httptools.parser.parser", ["httptools/parser/parser.pyx"])
++        Extension("httptools.parser.parser",
++                  ["httptools/parser/parser.pyx"],
++                  libraries=['http_parser'])
+     ]),
+     setup_requires=["Cython"],
+     provides=['httptools'],
+-- 
+2.11.0
+
