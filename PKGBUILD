@@ -9,7 +9,7 @@ pkgrel=1
 pkgdesc="Let’s Encrypt certbot running as certbot user rather than root, with either standalone or webroot mode."
 arch=('any')
 license=('Apache')
-url="https://letsencrypt.org/"
+url="https://${_pkgname}.eff.org"
 depends=('ca-certificates' "python2-acme=${pkgver}" 'python2-configargparse' 'python2-configobj'
          'python2-cryptography' 'python2-pyopenssl' 'python2-mock' 'python2-parsedatetime'
          'python2-psutil' 'python2-pyrfc3339' 'python2-pythondialog' 'python2-pytz'
@@ -22,9 +22,8 @@ install="${_pkgname}.install"
 source=("https://pypi.io/packages/source/c/${_pkgname}/${_pkgname}-${pkgver}.tar.gz"{,.asc}
         "${_pkgname}.tmpfiles"
         "${_pkgname}.sysusers")
-validpgpkeys=('148C30F6F7E429337A72D992B00B9CC82D7ADF2C'
-              '1B41B758F9A78C7F444C20FA3E5B4152E3ADB1FD'
-              'A2CFB51FA275A7286234E7B24D17C995CD9775F2')
+validpgpkeys=('A2CFB51FA275A7286234E7B24D17C995CD9775F2') # Let's Encrypt Client Team <letsencrypt-client@eff.org>
+md5sums=('df58b67f37d3c4ef5126de4ed45c1cea' 'SKIP' '3d2a709a3ef1a2183d3b1fb159631eec' 'bcdf4204508da91cde42ae6f5550f0e5')
 sha256sums=('68149cb8392b29f5d5246e7226d25f913f2b10482bf3bc7368e8c8821d25f3b0'
             'SKIP'
             'ca72fe5f7e6ccbbe8afc084d9255f93e3b81ce2793a77103a9382fa9eaff6c97'
