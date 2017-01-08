@@ -1,14 +1,14 @@
 pkgbase = pwauth
 	pkgdesc = An authenticator designed to be used for web authentication
 	pkgver = 2.3.11
-	pkgrel = 5
-	url = http://code.google.com/p/pwauth/
+	pkgrel = 6
+	url = https://github.com/phokz/pwauth/tree/master/pwauth
 	install = pwauth.install
 	arch = x86_64
 	arch = i686
 	license = BSD
 	depends = pam
-	source = http://pwauth.googlecode.com/files/pwauth-2.3.11.tar.gz
+	source = https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/pwauth/pwauth-2.3.11.tar.gz
 	source = pwauth.install
 	source = http_uid.patch
 	source = makefile.patch

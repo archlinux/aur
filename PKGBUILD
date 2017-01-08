@@ -1,13 +1,14 @@
 pkgname=pwauth
 pkgver=2.3.11
-pkgrel=5
+pkgrel=6
 pkgdesc="An authenticator designed to be used for web authentication"
-url="http://code.google.com/p/pwauth/"
+url="https://github.com/phokz/pwauth/tree/master/pwauth"
 arch=('x86_64' 'i686')
 depends=('pam')
 license=('BSD')
 install='pwauth.install'
-source=("http://pwauth.googlecode.com/files/$pkgname-$pkgver.tar.gz"
+
+source=("https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/$pkgname/$pkgname-$pkgver.tar.gz"
         "pwauth.install"
         "http_uid.patch"
         "makefile.patch"
