@@ -12,7 +12,7 @@ depends=(python-numpy spglib)
 makedepends=()
 checkdepends=()
 optdepends=()
-source=(https://github.com/atztogo/$pkgname/archive/v$pkgver.tar.gz)
+source=(https://github.com/atztogo/$_pkgname/archive/v$pkgver.tar.gz)
 md5sums=('6bbf2cb37a2294f26f2324e1142ab7d8')
 
 build() {
