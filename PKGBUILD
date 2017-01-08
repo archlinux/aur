@@ -1,7 +1,7 @@
 # Maintainer: lothar_m <lothar_m at riseup dot net>
 _pkgname=ofxclient
 pkgname=$_pkgname-git
-pkgver=0
+pkgver=1
 pkgrel=1
 pkgdesc="Simple ofxclient command line utility and OFX client libraries for development."
 arch=('x86_64' 'i686')
@@ -21,21 +21,21 @@ source=('ofxclient::git+https://github.com/captin411/ofxclient.git#branch=master
 md5sums=('SKIP')
 
 pkgver() {
-	cd "$srcdir$pkgname"
+	cd "$srcdir/$_pkgname"
     ( set -o pipefail
-	git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+	git describe --long --tags 2>/dev/null | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g' || 
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 	)
 }
 
 build() {
-	cd "$srcdir/ofxclient"
+	cd "$srcdir/$_pkgname"
 	python2 setup.py build
 }
 
 package() {
 	# install package
-	cd "$srcdir/ofxclient"
+	cd "$srcdir/$_pkgname"
 	python2 setup.py install --root="$pkgdir/"
 }
 
