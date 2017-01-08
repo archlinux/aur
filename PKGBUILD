@@ -2,7 +2,7 @@
  
 _pkgname=ofxparse
 pkgname=$_pkgname-git
-pkgver=0
+pkgver=1
 pkgrel=1
 pkgdesc="Ofxparse is a parser for Open Financial Exchange (.ofx) format files."
 arch=('i686' 'x86_64')
@@ -23,20 +23,20 @@ md5sums=('SKIP')
 pkgver() {
 	cd "$srcdir/$_pkgname"
     ( set -o pipefail
-	git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+	git describe --long --tags 2>/dev/null | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g' || 
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 	)
 }
 
  
 build() {
-  cd $_pkgname
-  python2 setup.py build
+	cd "$srcdir/$_pkgname"
+	python2 setup.py build
 }
  
 package() {
-  cd $_pkgname
-  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
-  python2 setup.py install --root="$pkgdir" --optimize=1
+	cd "$srcdir/$_pkgname"
+	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
+	python2 setup.py install --root="$pkgdir" --optimize=1
 }
 
