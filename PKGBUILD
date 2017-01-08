@@ -8,7 +8,7 @@ _kernelname=-bld
 pkgver=4.8.16
 _srcname=linux-4.8
 _pkgver2=${_srcname#*-}.0
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 url="https://github.com/rmullick/linux"
 license=('GPL2')
@@ -38,8 +38,8 @@ source=("http://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         "${_bfqpath}/0003-block-bfq-add-Early-Queue-Merge-EQM-to-BFQ-${_bfqversion_old}-to-.patch"
         "${_bfqpath}/0004-Turn-BFQ-${_bfqversion_old}-into-BFQ-${_bfqversion}-for-${_pkgver2}.patch"
         # patches from https://github.com/linusw/linux-bfq/commits/bfq-v8
-        '0005-BFQ-Fix.patch'
-        '0006-BFQ-Fix.patch'
+        "https://raw.githubusercontent.com/sirlucjan/aur/master/linux-bfq/0005-BFQ-update-to-v8r7.patch"
+        # main BLD patch
         "https://raw.githubusercontent.com/rmullick/bld-patches/master/${_BLDpatch}"
         )
 
@@ -59,8 +59,7 @@ sha256sums=('3e9150065f193d3d94bcf46a1fe9f033c7ef7122ab71d75a7fb5a2f0c9a7e11a'
             'c8d17a7893d5780fd0c90311470160dcc842b81621b30671150e2e3224be86d2'
             'e47ea5b1c2f20cfade4e6a85bff1320dac84ac638e48ef4eec7285fe9e1e1def'
             'c3c96e304aef378f0cc6e1fb18eeabe176e6ba918d13060c105f3d8cabc85f59'
-            'bc3177e6026a7363d6190e8b7446005aec38801292602344131ad4e3e67813cb'
-            'e2eae358c5417b3ab33abdaf965fb997c615cdbd2cbe7a750526c040374da006'
+            'cf440c1156a6d4ff8060dd4393297c8ffc5417f1f7cd21007370b8e94a4790c0'
             '16a5d04bbd76d2dc79473b83af434aa54a72f41f0677823c0381762f75ccb33c')
 
 validpgpkeys=(
