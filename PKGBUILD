@@ -14,22 +14,22 @@ url="http://www.egregorion.net/"
 license=('GPL3')
 depends=('plasma-framework' 'dolphin' 'kdialog' 'encfs')
 conflicts=('kde-servicemenus-encfs')
-source=("${pkgname}.tar.gz")
-md5sums=('9e738c198b81df4ac8a7e4e6cb3514dd')
+source=("${pkgname}-${pkgver}.tar.gz")
+md5sums=('64a7c438b08e0622e271c54cfde733d4')
 
-build() {
-  cd ${srcdir}/kf5-servicemenus-encfs
-}
+#build() {
+ # cd ${srcdir}/${pkgname}-${pkgver}
+#}
 
 package() {
   prefix=$(qtpaths --install-prefix)
 
   mkdir -p ${pkgdir}/usr/bin/
-  install -D -m755 ${srcdir}/kf5-servicemenus-encfs/bin/encfs_kmenu.sh ${pkgdir}/usr/bin/
+  install -D -m755 ${srcdir}/${pkgname}-${pkgver}/bin/encfs_kmenu.sh ${pkgdir}/usr/bin/
 
   mkdir -p ${pkgdir}/${prefix}/share/kservices5/ServiceMenus/
-  install -D -m644 ${srcdir}/kf5-servicemenus-encfs/desktop/encfs.desktop ${pkgdir}/${prefix}/share/kservices5/ServiceMenus/
+  install -D -m644 ${srcdir}/${pkgname}-${pkgver}/desktop/encfs.desktop ${pkgdir}/${prefix}/share/kservices5/ServiceMenus/
 
   mkdir -p ${pkgdir}/${prefix}/share/doc/${pkgname}
-  install -D -m644 ${srcdir}/kf5-servicemenus-encfs/doc/* ${pkgdir}/${prefix}/share/doc/${pkgname}
+  install -D -m644 ${srcdir}/${pkgname}-${pkgver}/doc/* ${pkgdir}/${prefix}/share/doc/${pkgname}
 }
