@@ -5,7 +5,7 @@
 
 pkgname=pythonqt
 pkgver=3.1
-pkgrel=1
+pkgrel=2
 pkgdesc='A dynamic Python binding for Qt applications'
 arch=('i686' 'x86_64')
 url='http://pythonqt.sourceforge.net/'

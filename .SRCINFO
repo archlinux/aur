@@ -1,7 +1,7 @@
 pkgbase = pythonqt
 	pkgdesc = A dynamic Python binding for Qt applications
 	pkgver = 3.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://pythonqt.sourceforge.net/
 	arch = i686
 	arch = x86_64
