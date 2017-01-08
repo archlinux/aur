@@ -1,5 +1,5 @@
 pkgname=osvr-core-git
-pkgver=0.2.r2243.g9456a41
+pkgver=0.2.r2262.g5796a78a
 pkgrel=1
 pkgdesc="The core libraries, applications, and plugins of the OSVR software platform."
 arch=(i686 x86_64)
@@ -13,6 +13,7 @@ source=("osvr-core::git+https://github.com/OSVR/OSVR-Core.git"
 	"vendor-jenkins-ctest-plugin::git+https://github.com/rpavlik/jenkins-ctest-plugin.git"
 	"vendor-vrpn::git+https://github.com/vrpn/vrpn.git"
 	"FindJsonCpp.cmake"
+	"remove-boost-check.patch"
 ) #TODO: add more recursive submodules
 
 
@@ -37,6 +38,7 @@ prepare() {
 #temporary fix for boost incompatibility
 #sed -i "s/105900/106200/g" src/osvr/Common/IPCRingBuffer.cpp #doesn't work with 1.62
 #sed -i "s/105900/106200/g" cmake-local/BoostTargets.cmake
+git apply -vvv "$srcdir"/remove-boost-check.patch
 
 #https://github.com/OSVR/OSVR-Core/pull/468
 cd vendor/vrpn
@@ -78,4 +80,5 @@ md5sums=('SKIP'
          'SKIP'
          'SKIP'
          'SKIP'
-         '2dd82e55b6291d32c611dd899d8a8164')
+         '2dd82e55b6291d32c611dd899d8a8164'
+         '37067d69b1085079d96b09a0549648ab')
