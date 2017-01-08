@@ -2,9 +2,9 @@
 
 _target="msp430-elf"
 pkgname=${_target}-gcc
-pkgver=6.2.0
-_islver=0.17
-pkgrel=2
+pkgver=6.3.0
+_islver=0.18
+pkgrel=1
 pkgdesc="The GNU Compiler Collection for the ${_target} target."
 arch=(i686 x86_64)
 license=('GPL' 'LGPL')
@@ -17,8 +17,8 @@ provides=("${_target}-gcc-stage1")
 source=(ftp://gcc.gnu.org/pub/gcc/releases/gcc-${pkgver}/gcc-${pkgver}.tar.bz2
         http://isl.gforge.inria.fr/isl-${_islver}.tar.bz2
         fix-insn-delay_cycles_32x.patch)
-sha256sums=('9944589fc722d3e66308c0ce5257788ebd7872982a718aa2516123940671b7c5'
-            '439b322f313aef562302ac162caccb0b90daedf88d49d62e00a5db6b9d83d6bb'
+sha256sums=('f06ae7f3f790fbf0f018f6d40e844451e6bc3b7bc96e128e63b09825c1f8b29f'
+            '6b8b0fd7f81d0a957beb3679c81bbb34ccc7568d5682844d8924424a0dadcb1b'
             '0cd87771d1fd8ec5d0c413ae8c18b9b2599f2c66a0fa8b5fd4aa2f01ac1b5f86')
 
 prepare() {
@@ -26,8 +26,7 @@ prepare() {
   [[ -L isl ]] && rm -f isl
   ln -s ../isl-${_islver} isl
 
-  # fix for:
-  # https://gcc.gnu.org/bugzilla/show_bug.cgi?id=77570
+  # this did not make it into 6.3.0
   patch -p1 < ../fix-insn-delay_cycles_32x.patch
 
   [[ -d gcc-build ]] && rm -rf gcc-build
