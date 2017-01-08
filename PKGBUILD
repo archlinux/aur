@@ -7,19 +7,15 @@
 
 pkgname=kf5-servicemenus-encfs
 pkgver=0.5.2
-pkgrel=2
+pkgrel=3
 pkgdesc="One KDE servicemenu for encfs encrypted directories ; kf5 version"
 arch=('i686' 'x86_64')
 url="http://www.egregorion.net/"
 license=('GPL3')
-depends=('plasma-framework' 'dolphin' 'kdialog' 'encfs')
+depends=('plasma-workspace' 'dolphin' 'kdialog' 'encfs')
 conflicts=('kde-servicemenus-encfs')
 source=("${pkgname}-${pkgver}.tar.gz")
 md5sums=('64a7c438b08e0622e271c54cfde733d4')
-
-#build() {
- # cd ${srcdir}/${pkgname}-${pkgver}
-#}
 
 package() {
   prefix=$(qtpaths --install-prefix)
