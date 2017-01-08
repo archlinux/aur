@@ -5,7 +5,7 @@ pkgbase=linux-surfacepro3-rt
 _srcname=linux-4.9
 pkgver=${_srcname#linux-}
 _rtver=rt1
-pkgrel=2.23
+pkgrel=2.24
 arch=('i686' 'x86_64')
 url="https://github.com/alyptik/linux-surfacepro3-rt"
 license=('GPL2')
@@ -24,6 +24,7 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         'init.patch' 'kconfig.patch' 'xattr.patch'
 	'touchscreen_multitouch_fixes1.patch' 'touchscreen_multitouch_fixes2.patch'
 	'wifi.patch'
+        'multitouch.patch'
         'change-default-console-loglevel.patch'
         # the main kernel config files
         'config' 'config.x86_64' 'config.sp3'
@@ -46,10 +47,11 @@ sha256sums=('029098dcffab74875e086ae970e3828456838da6e0ba22ce3f64ef764f3d7f1a'
             'cc78e8844d9ec4bd29cce392a3e4683061646e1ad7c100c4958a5cadabb25b52'
             '34b4e00ffcf9efc43ab47444d14febb94432d340d0f1d5bcd56153879d1be113'
             '52e7c895aeb505bc8d3b5321a346fcdbb749f8035cacc97a237c24c1f527adbc'
+            '87bde6cc0f45629aa8406b364dfbbe2c59bce2621b451b6e504160f96cf9475f'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
             '0fcd0b22fe9ec58ba41b81b463f68d619b6898a5c405fb26c85237a183240371'
             'ed9b9e6efaf4f23e7ae3406322b4d1d3080e8dbc7ab3f03bcbf728ca2010e21b'
-            '09392d9bfec3f7878824670d173a260205319e663f96aad281bb0269da72ced8'
+            '86eaa80941ba3f013c9ff581f4262ca5a5346870a394db6a3a11dcdf5a840681'
             'f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c')
 
 validpgpkeys=(
@@ -59,11 +61,12 @@ validpgpkeys=(
               'A2F5DE1C32B6B93E3E4884BF2E02D725AF202DC1' # Joey Pabalinas
              )
 
+multitouch='y'
 bcache='n'
 bfs='n'
 bfq='n'
 personal='y'
-sp3config='n'
+sp3config='y'
 
 _kernelname=${pkgbase#linux}
 
@@ -82,6 +85,7 @@ prepare() {
 
   ## Add personal patches
   if [ "$personal" = 'y' ]; then for i in init kconfig xattr; do patch -p1 -i "${srcdir}/${i}.patch"; done; fi
+  if [ "$multitouch" = 'y' ]; then patch -p1 -i "${srcdir}/multitouch.patch"; fi
 
   # Add RT patches
   patch -p1 -i ${srcdir}/patch-${pkgver}-${_rtver}.patch
