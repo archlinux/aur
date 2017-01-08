@@ -2,7 +2,7 @@
 
 pkgname=yah3c
 pkgver=0.6.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A program for h3c authentication in SYSU east campus."
 arch=('any')
 url="https://github.com/zlsun/yah3c"
