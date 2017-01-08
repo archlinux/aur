@@ -3,12 +3,12 @@
 
 pkgname=progit2-git
 pkgver=2.0.0.r689.g5026c45
-pkgrel=1
-pkgdesc="A package to build the latest version of the progit2 book and read it when offline"
+pkgrel=2
+pkgdesc="The offline version of the entire Pro Git book, written by Scott Chacon and Ben Straub"
 arch=('any')
 
 url="https://github.com/progit/progit2"
-license=('CCPL')
+license=('CCPL:by-nc-sa')
 
 makedepends=(
   'git'
@@ -16,6 +16,8 @@ makedepends=(
   'ruby'
   'python2'
 )
+provides=('progit2')
+conflicts=('progit2')
 
 install=${pkgname}.install
 
@@ -29,7 +31,7 @@ pkgver() {
 }
 
 prepare() {
-    cd "$srcdir/${pkgname%-git}"
+    cd "${pkgname%-git}"
 
     # Gem dependencies can be installed per user and not systemwide in
     # /home/<your username>/.gem/ruby/<ruby version>/, but we won't be able to
@@ -57,12 +59,18 @@ prepare() {
     bundle install
 }
 
+build() {
+    # When entering here, we are in the src directory, go in the cloned progit2
+    # directory.
+    cd "${pkgname%-git}"
+
+    bundle exec rake book:build
+}
+
 package() {
     # When entering here, we are in the src directory, go in the cloned progit2
     # directory.
-    cd "$srcdir/${pkgname%-git}"
-
-    bundle exec rake book:build
+    cd "${pkgname%-git}"
 
     # Install to /usr/share/doc/progit2
     install -dm755 "$pkgdir/usr/share/doc/${pkgname%-git}/"
