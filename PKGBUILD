@@ -2,7 +2,7 @@
 
 pkgname='epanet2-git'
 _gitname='epanet2'
-pkgver=2.00.12
+pkgver=0
 pkgrel=2
 arch=('i686' 'x86_64')
 url="http://www.epa.gov/"
