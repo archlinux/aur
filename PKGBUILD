@@ -11,7 +11,7 @@ arch=('i686' 'x86_64')
 depends=('sdl2' 'glu' 'libjpeg-turbo' 'libpng' 'openal' 'libvorbis' 'zlib')
 makedepends=('cmake')
 options=('!optipng')
-conflicts=('lugaru-hg' 'lugaruhd-hg')
+conflicts=('lugaru-hg' 'lugaruhd-hg' 'lugaru')
 source=("git+https://gitlab.com/osslugaru/lugaru.git"
         "${_pkgname}.desktop")
 sha256sums=('SKIP'
