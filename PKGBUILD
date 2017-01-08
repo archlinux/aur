@@ -1,5 +1,3 @@
-# Maintainer: Jingbei Li <i@jingbei.li>
-
 pkgname=libwsclient-git
 _gitname=libwsclient
 pkgver=28.d416fcb
