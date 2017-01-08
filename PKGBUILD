@@ -3,7 +3,7 @@
 
 pkgname=guayadeque-git
 _pkgname=guayadeque
-pkgver=0.4.5.r2048.400f5383
+pkgver=0.4.5.r2049.3c94f185
 pkgrel=1
 pkgdesc='Lightweight music player'
 arch=('i686' 'x86_64')
@@ -11,12 +11,13 @@ url='http://guayadeque.org/'
 license=('GPL3')
 provides=(${pkgname%-*})
 conflicts=(${pkgname%-*})
-depends=('curl' 'desktop-file-utils' 'libgpod' 'taglib' 'wxgtk' 'gdk-pixbuf2' 'wxsqlite3' 'git' 'gst-plugins-base-libs')
-makedepends=('cmake')
-optdepends=('gstreamer0.10-good-plugins: Support for additional file formats'
-			'gstreamer0.10-bad-plugins: Support for additional file formats'
-			'gstreamer0.10-ugly-plugins: Support for additional file formats'
-			'gvfs: Support for external devices')
+depends=('curl' 'libgpod' 'taglib' 'wxsqlite3' 'gst-plugins-base')
+makedepends=('cmake' 'git')
+optdepends=('gst-plugins-good: Support for PulseAudio and additional file formats'
+            'gst-plugins-bad: Support for additional file formats'
+            'gst-plugins-ugly: Support for additional file formats'
+            'gst-libav: Support for additional file formats'
+            'gvfs: Support for external devices')
 source=('git+https://github.com/anonbeat/guayadeque.git')
 sha512sums=('SKIP')
 
@@ -32,10 +33,7 @@ build() {
   cmake . \
     -DCMAKE_CXX_STANDARD='11' \
     -DCMAKE_BUILD_TYPE='Release' \
-    -DCMAKE_INSTALL_PREFIX=${pkgdir} \
-    -DwxWidgets_wxrc_EXECUTABLE='/usr/bin/wxrc' \
-    -DwxWidgets_CONFIG_EXECUTABLE='/usr/bin/wx-config' \
-    -DwxWidgets_INCLUDE_DIRS='/usr/include/wx/'
+    -DCMAKE_INSTALL_PREFIX='/usr'
   make
 }
 
