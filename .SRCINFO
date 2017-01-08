@@ -8,6 +8,9 @@ pkgbase = chipsec-git
 	makedepends = git
 	depends = python
 	depends = python2
+	depends = chipsec-dkms-git
+	depends = python2-setuptools
+	depends = make
 	source = chipsec-git::git+https://github.com/chipsec/chipsec
 	md5sums = SKIP
 
