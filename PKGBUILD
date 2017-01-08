@@ -1,4 +1,5 @@
 # Maintainer: Donald Webster <fryfrog@gmail.com>
+# Maintainer: Devin Buhl <devin.kray@gmail.com>
 pkgname="radarr"
 pkgver="0.1.0.34353"
 pkgrel=1
