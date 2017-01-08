@@ -1,0 +1,21 @@
+pkgbase = progit2
+	pkgdesc = The offline version of the entire Pro Git book, written by Scott Chacon and Ben Straub
+	pkgver = 2.0.0.1084
+	pkgrel = 1
+	url = https://git-scm.com/book/en/v2
+	install = progit2.install
+	arch = any
+	license = CCPL:by-nc-sa
+	makedepends = unzip
+	noextract = progit-en.1084.zip
+	source = https://progit2.s3.amazonaws.com/en/2016-03-22-f3531/progit-en.1084.epub
+	source = https://progit2.s3.amazonaws.com/en/2016-03-22-f3531/progit-en.1084.mobi
+	source = https://progit2.s3.amazonaws.com/en/2016-03-22-f3531/progit-en.1084.pdf
+	source = https://progit2.s3.amazonaws.com/en/2016-03-22-f3531/progit-en.1084.zip
+	sha512sums = 8d5a0edd69949850643036d92e1e86d4745ea537b314242cbab805fd2f7501c65d280d3c65eb2241124d93c280643b46eacd97f28cc67f2958fb106e15070cfd
+	sha512sums = 48c1a0884806f401c49ea007684af2ddecab2a8353216f05659b0c4dee360a4474b67f9d2eeec62f42ba40bfa7a1fe2a5494ba98e8611f9e7b74e8611057509c
+	sha512sums = 9285c44b518fe0551a6442f02c72e43ab6a2ce427f87e9f3fa0d5666c458a686857f031de60d79c627eabffe529c4212d81683ec6ac120781d071f7f2276d82e
+	sha512sums = 93ebb908f8ad074c56a4c5276bea6da77a6bfac7ba00662bf93c43e504198436257c6cd22b58705cb64ebe228100dfd692be5b0c1d2df334d442af7cc514b452
+
+pkgname = progit2
+

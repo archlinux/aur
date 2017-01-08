@@ -1,0 +1,17 @@
+# arg 1:  the new package version
+post_install() {
+    echo "==> The progit2 book has been installed to /usr/share/doc/progit2/"
+}
+
+# arg 1:  the new package version
+# arg 2:  the old package version
+post_upgrade() {
+    echo "==> The progit2 book has been updated and is located in /usr/share/doc/progit2/"
+}
+
+# arg 1:  the old package version
+post_remove() {
+    if [ -d "/usr/share/doc/progit2" ]; then
+        echo "==> The directory "/usr/share/doc/progit2" has not been removed because it wasn't (maybe) empty. Check that out."
+    fi
+}
