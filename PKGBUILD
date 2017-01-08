@@ -14,7 +14,6 @@ optdepends=('cuda: GPU support'
             'cudnn: GPU support')
 _commit=e4dde23d58a10c9d0c14005d20d1ecdd599539ac
 source=("git+https://github.com/tensorflow/tensorflow#commit=$_commit"
-        "${pkgname}.pc"
         "march_native.diff"
         "https://bitbucket.org/eigen/eigen/raw/9ba936354ee8b73fb1966dcb2d3506387bb357f1/unsupported/Eigen/CXX11/src/Tensor/TensorContractionThreadPool.h")
 
@@ -80,7 +79,6 @@ package() {
   cd ${srcdir}/tensorflow
   install -Dm644 libtensorflow_c.so ${pkgdir}/usr/lib/lib${pkgname}.so
   install -Dm644 tensorflow/c/c_api.h ${pkgdir}/usr/include/${pkgname}/c_api.h
-  install -Dm644 ../${pkgname}.pc ${pkgdir}/usr/lib/pkgconfig/${pkgname}.pc
   install -Dm644 LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
 }
 
