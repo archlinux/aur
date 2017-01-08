@@ -3,12 +3,12 @@
 
 pkgname=librsvg-git
 pkgver=2.41.0.r3.gec3353e
-pkgrel=1
+pkgrel=2
 pkgdesc="A SVG viewing library"
 arch=(i686 x86_64)
 license=('LGPL')
 depends=('gdk-pixbuf2' 'pango' 'libcroco')
-makedepends=('intltool' 'gobject-introspection' 'vala' 'python2' 'git' 'cargo')
+makedepends=('intltool' 'gobject-introspection' 'vala' 'python2' 'git' 'cargo' 'gtk-doc')
 optdepends=('gtk3: to run rsvg-view-3 viewer')
 options=('!emptydirs')
 url="https://live.gnome.org/LibRsvg"
