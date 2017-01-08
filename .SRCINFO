@@ -8,7 +8,7 @@ pkgbase = python-spglib
 	license = custom
 	depends = python-numpy
 	depends = spglib
-	source = https://github.com/atztogo/python-spglib/archive/v1.9.9.tar.gz
+	source = https://github.com/atztogo/spglib/archive/v1.9.9.tar.gz
 	md5sums = 6bbf2cb37a2294f26f2324e1142ab7d8
 
 pkgname = python-spglib
