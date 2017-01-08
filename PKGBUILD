@@ -19,6 +19,7 @@ prepare() {
     cd "${srcdir}/httptools-${pkgver}"
     patch -p1 -i "${srcdir}/0001-setup.py-Use-Cython-directly.patch"
     patch -p1 -i "${srcdir}/0002-use-system-http_parser.patch"
+    sed -e "/include_package_data=True/d" -i setup.py
 }
 
 package_python-httptools() {
