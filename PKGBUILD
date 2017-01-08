@@ -25,4 +25,5 @@ package_python-httptools() {
     depends=('python' 'http-parser')
     cd "${srcdir}/httptools-${pkgver}"
     python setup.py install --root="${pkgdir}" --optimize=1
+    install -Dm0644 'LICENSE' "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
