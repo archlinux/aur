@@ -6,7 +6,7 @@ following groups to be installed for fully functioning.
 
 Capture backend:
 
-    - v4l-utils (RECOMMENDED)
+    - v4l-utils
     - libuvc-git
 
 Codec frameworks:
