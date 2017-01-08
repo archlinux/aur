@@ -15,5 +15,8 @@ depends=(
   'noto-fonts'
   'ttf-symbola'
 )
+optdepends=(
+  'ttf-heuristica-ib'
+)
 provides=('ibfonts-meta-base')
 conflicts=('ibfonts-meta-base')
