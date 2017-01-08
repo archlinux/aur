@@ -2,7 +2,7 @@
 # Contributor: Sam Stuewe <halosghost at archlinux dot info>
 
 pkgname=hashcat-git
-pkgver=3.20.2954.fa598a4
+pkgver=3.30.3042.bb5663e4
 pkgrel=1
 pkgdesc='Multithreaded advanced password recovery utility'
 url='https://hashcat.net/hashcat'
@@ -22,6 +22,11 @@ pkgver() {
     "$(git describe --tags --abbrev=0|sed -r 's|v?(.+)|\1|'|tr '-' '.')" \
     "$(git rev-list --count HEAD)" \
     "$(git rev-parse --short HEAD)"
+}
+
+prepare() {
+  cd ${pkgname}
+  sed 's|-Wl,-rpath .||g' -i src/Makefile
 }
 
 build() {
