@@ -22,7 +22,7 @@ conflicts=("${_pkgname}")
 provides=("${_pkgname}")
 source=("https://downloads.sourceforge.net/${_pkgname}/${_pkgname}-${pkgver}.tar.xz"{,.asc})
 sha256sums=('ec5eec23aeda655d3a761cffb85853dcd2ede3973b9e62a1b3c28bd1093c74f5' 'SKIP')
-validpgpkeys=('5086B8D68E70FDDF4C40045AEF7B95E7F60166DA')
+validpgpkeys=('5086B8D68E70FDDF4C40045AEF7B95E7F60166DA') # Peter Linnell <plinnell@scribus.net>
 
 prepare() {
     mkdir -p build
