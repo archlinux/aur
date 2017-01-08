@@ -2,7 +2,7 @@
 # Maintainer: Bug <bug2000@gmail.com>
 pkgname=xpra-winswitch
 pkgver=1.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Modified version of xpra by Winswitch"
 arch=('i686' 'x86_64')
 url='http://xpra.org/'
@@ -46,7 +46,7 @@ build() {
   cd ${srcdir}/xpra-$pkgver
   export pkgdir
   #python2 setup.py build || return 1
-  CFLAGS="$CFLAGS -fno-strict-aliasing" python2 setup.py build
+  CFLAGS="$CFLAGS -fno-strict-aliasing" python2 setup.py build --without-enc_x265
 }
 
 package() {
