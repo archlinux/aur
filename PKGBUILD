@@ -19,7 +19,7 @@ build() {
   cd ${srcdir}/tensorflow-vala
   [[ -d build ]] && rm -rf build
   mkdir build && cd build
-  meson --prefix /usr
+  PKG_CONFIG_PATH=`pwd`/../pkgconfig meson --prefix /usr
   ninja
   ninja docs/devhelp
 }
