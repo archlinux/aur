@@ -4,7 +4,7 @@
 
 pkgname=seafile
 pkgver=6.0.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Seafile is an online file storage and collaboration tool"
 arch=('i686' 'x86_64' 'armv7h' 'armv6h')
 url="https://github.com/haiwen/${pkgname}"
@@ -15,6 +15,7 @@ source=("seafile-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz"
         "libseafile.in.patch")
 sha256sums=('0d0276a67eb705535f91f9c3f59d43f55877112361e4817a144e81e0e14c1360'
             'a2d7f7cf0c59aba97650af62b3cefd0ceb71a1007c34d9369a88e5769c7f6076')
+provides=('seafile-client-cli')
 
 prepare () {
   cd "${srcdir}/seafile-${pkgver}"
