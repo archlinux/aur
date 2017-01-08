@@ -1,0 +1,253 @@
+From a87843cca026e82fe2779d7176c6be3a6e4c9478 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?=C5=81ukasz=20Jancewicz?= <lj@rdprojekt.pl>
+Date: Thu, 24 Jul 2014 16:11:10 +0200
+Subject: [PATCH 1/2] Fixed remote frame context handling.
+
+Added unit-tests to cover this scenario.
+---
+ lib/pyld/jsonld.py  |   9 ++-
+ tests/unit-tests.py | 202 ++++++++++++++++++++++++++++++++++++++++++++++++++++
+ 2 files changed, 206 insertions(+), 5 deletions(-)
+ create mode 100644 tests/unit-tests.py
+
+diff --git a/lib/pyld/jsonld.py b/lib/pyld/jsonld.py
+index b9eecaa..0aa8ef1 100644
+--- a/lib/pyld/jsonld.py
++++ b/lib/pyld/jsonld.py
+@@ -832,11 +832,11 @@ class JsonLdProcessor:
+         if frame is not None:
+             ctx = frame.get('@context', {})
+             if remote_frame['contextUrl'] is not None:
+-                if ctx is not None:
+-                    ctx = remote_frame['contextUrl']
+-                else:
++                if ctx:
+                     ctx = JsonLdProcessor.arrayify(ctx)
+                     ctx.append(remote_frame['contextUrl'])
++                else:
++                    ctx = remote_frame['contextUrl']
+                 frame['@context'] = ctx
+ 
+         try:
+@@ -1036,8 +1036,7 @@ class JsonLdProcessor:
+ 
+         # retrieve URLs in local_ctx
+         local_ctx = copy.deepcopy(local_ctx)
+-        if (_is_string(local_ctx) or (
+-                _is_object(local_ctx) and '@context' not in local_ctx)):
++        if not (_is_object(local_ctx) and '@context' in local_ctx):
+             local_ctx = {'@context': local_ctx}
+         try:
+             self._retrieve_context_urls(
+diff --git a/tests/unit-tests.py b/tests/unit-tests.py
+new file mode 100644
+index 0000000..3248b20
+--- /dev/null
++++ b/tests/unit-tests.py
+@@ -0,0 +1,202 @@
++import json
++import unittest
++
++from pyld import jsonld
++
++# Inputs and outputs used here are essentially modified documents
++# of JSON-LD frame-0001 test.
++
++FRAME_0001_IN = '''{
++  "@context": {
++    "dc": "http://purl.org/dc/elements/1.1/",
++    "ex": "http://example.org/vocab#",
++    "ex:contains": {"@type": "@id"}
++  },
++  "@graph": [
++    {
++      "@id": "http://example.org/test/#library",
++      "@type": "ex:Library",
++      "ex:contains": "http://example.org/test#book"
++    },
++    {
++      "@id": "http://example.org/test#book",
++      "@type": "ex:Book",
++      "dc:contributor": "Writer",
++      "dc:title": "My Book",
++      "ex:contains": "http://example.org/test#chapter"
++    },
++    {
++      "@id": "http://example.org/test#chapter",
++      "@type": "ex:Chapter",
++      "dc:description": "Fun",
++      "dc:title": "Chapter One"
++    }
++  ]
++}'''
++
++
++FRAME_0001_FRAME = '''{
++  "@context": {
++    "dc": "http://purl.org/dc/elements/1.1/",
++    "ex": "http://example.org/vocab#"
++  },
++  "@type": "ex:Library",
++  "ex:contains": {
++    "@type": "ex:Book",
++    "ex:contains": {
++      "@type": "ex:Chapter"
++    }
++  }
++}'''
++
++FRAME_0001_FRAME_WITHOUT_CONTEXT = '''{
++  "@type": "ex:Library",
++  "ex:contains": {
++    "@type": "ex:Book",
++    "ex:contains": {
++      "@type": "ex:Chapter"
++    }
++  }
++}'''
++
++FRAME_0001_FRAME_WITH_PARTIAL_CONTEXT = '''{
++  "@context": {
++    "dc": "http://purl.org/dc/elements/1.1/"
++  },
++  "@type": "ex:Library",
++  "ex:contains": {
++    "@type": "ex:Book",
++    "ex:contains": {
++      "@type": "ex:Chapter"
++    }
++  }
++}'''
++
++FRAME_0001_FRAME_CONTEXT = '''{
++  "@context": {
++    "dc": "http://purl.org/dc/elements/1.1/",
++    "ex": "http://example.org/vocab#"
++  }
++}'''
++
++FRAME_0001_FRAME_PARTIAL_CONTEXT = '''{
++  "@context": {
++    "ex": "http://example.org/vocab#"
++  }
++}'''
++
++FRAME_0001_OUT_WITH_REMOTE_CONTEXT = '''{
++  "@context": "http://example.com/frame-context.json",
++  "@graph": [{
++    "@id": "http://example.org/test/#library",
++    "@type": "ex:Library",
++    "ex:contains": {
++      "@id": "http://example.org/test#book",
++      "@type": "ex:Book",
++      "dc:contributor": "Writer",
++      "dc:title": "My Book",
++      "ex:contains": {
++        "@id": "http://example.org/test#chapter",
++        "@type": "ex:Chapter",
++        "dc:description": "Fun",
++        "dc:title": "Chapter One"
++      }
++    }
++  }]
++}'''
++
++FRAME_0001_OUT_WITH_LOCAL_AND_REMOTE_CONTEXT = '''{
++  "@context": [{
++    "dc": "http://purl.org/dc/elements/1.1/",
++    "ex": "http://example.org/vocab#"
++  }, "http://example.com/frame-context.json"],
++  "@graph": [{
++    "@id": "http://example.org/test/#library",
++    "@type": "ex:Library",
++    "ex:contains": {
++      "@id": "http://example.org/test#book",
++      "@type": "ex:Book",
++      "dc:contributor": "Writer",
++      "dc:title": "My Book",
++      "ex:contains": {
++        "@id": "http://example.org/test#chapter",
++        "@type": "ex:Chapter",
++        "dc:description": "Fun",
++        "dc:title": "Chapter One"
++      }
++    }
++  }]
++}'''
++
++FRAME_0001_OUT_WITH_HALF_LOCAL_AND_HALF_REMOTE_CONTEXT = '''{
++  "@context": [{
++    "dc": "http://purl.org/dc/elements/1.1/"
++  }, "http://example.com/frame-context.json"],
++  "@graph": [{
++    "@id": "http://example.org/test/#library",
++    "@type": "ex:Library",
++    "ex:contains": {
++      "@id": "http://example.org/test#book",
++      "@type": "ex:Book",
++      "dc:contributor": "Writer",
++      "dc:title": "My Book",
++      "ex:contains": {
++        "@id": "http://example.org/test#chapter",
++        "@type": "ex:Chapter",
++        "dc:description": "Fun",
++        "dc:title": "Chapter One"
++      }
++    }
++  }]
++}'''
++
++
++class TestCaseForFrame(unittest.TestCase):
++
++    def _test_remote_context_with(
++            self, frame_doc, frame_context_doc, out_doc):
++        input_ = json.loads(FRAME_0001_IN)
++
++        def fake_loader(url):
++            if url == 'http://example.com/frame.json':
++                return {
++                    'contextUrl': 'http://example.com/frame-context.json',
++                    'document': frame_doc,
++                    'documentUrl': url
++                }
++            elif url == 'http://example.com/frame-context.json':
++                return {
++                    'contextUrl': None,
++                    'document': frame_context_doc,
++                    'documentUrl': url
++                }
++            else:
++                raise Exception("Unknown URL: {}".format(url))
++
++        options = {
++            'documentLoader': fake_loader
++        }
++        framed = jsonld.frame(
++            input_, 'http://example.com/frame.json', options=options)
++
++        self.assertEqual(framed, json.loads(out_doc))
++
++    def test_remote_context_local_and_remote_context_equal(self):
++        self._test_remote_context_with(
++            FRAME_0001_FRAME, FRAME_0001_FRAME_CONTEXT,
++            FRAME_0001_OUT_WITH_LOCAL_AND_REMOTE_CONTEXT)
++
++    def test_remote_context_remote_context_only(self):
++        self._test_remote_context_with(
++            FRAME_0001_FRAME_WITHOUT_CONTEXT, FRAME_0001_FRAME_CONTEXT,
++            FRAME_0001_OUT_WITH_REMOTE_CONTEXT)
++
++    def test_remote_context_half_context_local_and_half_remote(self):
++        self._test_remote_context_with(
++            FRAME_0001_FRAME_WITH_PARTIAL_CONTEXT,
++            FRAME_0001_FRAME_PARTIAL_CONTEXT,
++            FRAME_0001_OUT_WITH_HALF_LOCAL_AND_HALF_REMOTE_CONTEXT)
++
++
++if __name__ == '__main__':
++    unittest.main()
+\ No newline at end of file
+-- 
+2.11.0
+
