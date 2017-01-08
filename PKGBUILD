@@ -2,7 +2,7 @@
 
 pkgname=libcmaes
 pkgver=0.9.5
-pkgrel=3
+pkgrel=4
 pkgdesc="libcmaes is a multithreaded C++11 library with Python bindings for high performance blackbox stochastic optimization using the CMA-ES algorithm for Covariance Matrix Adaptation Evolution Strategy."
 url="https://github.com/beniz/libcmaes"
 arch=('x86_64' 'i686')
@@ -31,7 +31,7 @@ build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
 
   ./autogen.sh
-  ./configure \
+  GXX=g++ ./configure \
     --prefix=/usr \
     --with-prefix=/usr \
     --enable-python \

@@ -1,7 +1,7 @@
 pkgbase = libcmaes
 	pkgdesc = libcmaes is a multithreaded C++11 library with Python bindings for high performance blackbox stochastic optimization using the CMA-ES algorithm for Covariance Matrix Adaptation Evolution Strategy.
 	pkgver = 0.9.5
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/beniz/libcmaes
 	arch = x86_64
 	arch = i686
