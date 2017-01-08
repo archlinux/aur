@@ -18,7 +18,6 @@ source=("git+https://github.com/tensorflow/tensorflow#commit=$_commit"
         "https://bitbucket.org/eigen/eigen/raw/9ba936354ee8b73fb1966dcb2d3506387bb357f1/unsupported/Eigen/CXX11/src/Tensor/TensorContractionThreadPool.h")
 
 md5sums=('SKIP'
-         '9e6bb015d4c03bcd900e88c9c2185959'
          '696beeb14be1d669066ce51819eb6044'
          '1bf688d25c599906f0ffddde97aca1ed')
 
