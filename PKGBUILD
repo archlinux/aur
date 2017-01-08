@@ -13,7 +13,7 @@ license=('MIT')
 depends=('python')
 makedepends=('python-setuptools' 'cython')
 source=("https://github.com/MagicStack/httptools/archive/v${pkgver}.tar.gz")
-md5sums=('7f5c62a9d7fed2cb31887d6068006d83')
+sha256sums=('ce82e03f2d705b1efc03bed5773436f2466de755d2faaf08e902a0f025700053')
 
 package_python-httptools() {
     cd "${srcdir}/httptools-${pkgver}"
