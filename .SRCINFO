@@ -10,7 +10,7 @@ pkgbase = fontconfig-ubuntu
 	makedepends = python2
 	makedepends = docbook2x
 	depends = expat
-	depends = freetype2-ubuntu
+	depends = freetype2
 	provides = fontconfig=2.11.94
 	conflicts = fontconfig
 	options = !libtool

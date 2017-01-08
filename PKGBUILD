@@ -10,7 +10,7 @@ pkgdesc="Library for configuring and customizing font access - with Ubuntu's pat
 arch=('i686' 'x86_64')
 url="https://launchpad.net/ubuntu/+source/fontconfig"
 license=('custom')
-depends=('expat' 'freetype2-ubuntu')
+depends=('expat' 'freetype2')
 makedepends=('python2' 'docbook2x')
 conflicts=('fontconfig')
 provides=("fontconfig=$pkgver")
