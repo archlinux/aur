@@ -3,7 +3,7 @@
 pkgname=python-quantlib
 _pkgname=QuantLib-SWIG
 pkgver=1.8
-pkgrel=2
+pkgrel=3
 pkgdesc="A Python binding for QuantLib."
 arch=("i686" "x86_64")
 url="http://quantlib.org"
