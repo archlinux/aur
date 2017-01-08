@@ -2,7 +2,7 @@
 
 pkgname=('python-httptools')
 pkgver='0.0.9'
-pkgrel=2
+pkgrel=3
 pkgdesc='Fast HTTP parser'
 arch=('i686' 'x86_64')
 url='https://github.com/MagicStack/httptools'
