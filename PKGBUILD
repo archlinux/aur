@@ -1,7 +1,7 @@
 # Maintainer: Ivan Shapovalov <intelfx100@gmail.com>
 
 pkgname=matrix-synapse-git
-pkgver=0.18.6.r28.g06c00bd1
+pkgver=0.18.7rc2.r33.g2f4b2f47
 pkgrel=1
 pkgdesc="Matrix reference homeserver"
 license=('Apache')
@@ -36,7 +36,7 @@ conflicts=('matrix-synapse')
 
 pkgver() {
 	cd synapse
-	git describe --long | sed 's/^v//;s/-rc/rc/;s/-r/./;s/\([^-]*-g\)/r\1/;s/-/./g'
+	git describe --long --tags | sed 's/^v//;s/-rc/rc/;s/-r/./;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
