@@ -12,7 +12,7 @@ conflicts=()
 replaces=()
 backup=()
 install='tlauncher.install'
-source=("TLauncher.jar::https://drive.google.com/uc?export=download&id=0B6QTbAP2Vem-ZnpVRHV4SGQtZXc"
+source=("TLauncher.jar::https://drive.google.com/uc?export=download&id=0BwXQWEVmNM9db19mYWxURjBXQXc"
         "tlauncher.desktop::https://drive.google.com/uc?export=download&id=0BwXQWEVmNM9ddTlVM1Q0TGJmT0k"
 		"mncrft.png::https://drive.google.com/uc?export=download&id=0BwXQWEVmNM9dWm1sbGtoQ29CVTA")
 noextract=('TLauncher.jar')
