@@ -10,8 +10,8 @@ url="https://github.com/eplightning/audiothumbs-frameworks"
 license=('LGPL')
 depends=('taglib' 'kio')
 makedepends=('extra-cmake-modules' 'flac')
-source=(${pkgname}-${pkgver}.zip::"${url}/archive/${_commit}.zip")
-sha256sums=('a04c24fd63d54bf171c1961eaf1539e1a3eed511808f8ae3a7b4001c572d94e2')
+source=(${pkgname}-${pkgver}.tar.gz::"${url}/archive/${_commit}.tar.gz")
+sha256sums=('2287599023e04f37b8aecdc07796162a10e9ae8ecbd28e6b6efa371ec0e96b0a')
 
 prepare() {
     mkdir -p build
