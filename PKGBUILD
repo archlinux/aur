@@ -3,7 +3,7 @@ pkgname=tlauncher
 pkgver=1.79.14
 pkgrel=1
 pkgdesc="TLauncher is freeware launcher of Minecraft."
-url="https://tlauncher.org"
+url="https://tlaun.ch"
 arch=('x86_64' 'i686')
 license=('GPLv3')
 depends=("java-runtime=8")
@@ -12,7 +12,7 @@ conflicts=()
 replaces=()
 backup=()
 install='tlauncher.install'
-source=("TLauncher.jar::https://tlaun.ch/jar"
+source=("TLauncher.jar::https://drive.google.com/uc?export=download&id=0B6QTbAP2Vem-ZnpVRHV4SGQtZXc"
         "tlauncher.desktop::https://drive.google.com/uc?export=download&id=0BwXQWEVmNM9ddTlVM1Q0TGJmT0k"
 		"mncrft.png::https://drive.google.com/uc?export=download&id=0BwXQWEVmNM9dWm1sbGtoQ29CVTA")
 noextract=('TLauncher.jar')
