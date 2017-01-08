@@ -1,7 +1,7 @@
 pkgbase = python-notify2
 	pkgdesc = Python interface to DBus notifications
 	pkgver = 0.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pypi.python.org/pypi/notify2/
 	arch = any
 	license = BSD
