@@ -11,8 +11,8 @@ license=('GPL3')
 groups=('ring')
 depends=('libringclient' 'knotifyconfig' 'hicolor-icon-theme')
 makedepends=('extra-cmake-modules' 'python' 'glu' 'kinit')
-source=(${pkgname}-${pkgver}.zip::"https://github.com/KDE/${pkgname}/archive/${_commit}.zip")
-sha256sums=('ce0e07c8f9840a9b38343fcd93b0ddfd1ea1322b10ebf7c31866d140aa1bab06')
+source=(${pkgname}-${pkgver}.tar.gz::"https://github.com/KDE/${pkgname}/archive/${_commit}.tar.gz")
+sha256sums=('b3de2841b373d8c38478f6f63df975c52ee1b75a3edf75cc26e8fbcc09681ded')
 
 prepare() {
     mkdir -p build

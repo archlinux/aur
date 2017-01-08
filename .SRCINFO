@@ -14,8 +14,8 @@ pkgbase = ring-kde
 	depends = libringclient
 	depends = knotifyconfig
 	depends = hicolor-icon-theme
-	source = ring-kde-2.3.0.r287.ga18fdff.zip::https://github.com/KDE/ring-kde/archive/a18fdff652cd8e94ef026c06e5f7f606ab47dbc3.zip
-	sha256sums = ce0e07c8f9840a9b38343fcd93b0ddfd1ea1322b10ebf7c31866d140aa1bab06
+	source = ring-kde-2.3.0.r287.ga18fdff.tar.gz::https://github.com/KDE/ring-kde/archive/a18fdff652cd8e94ef026c06e5f7f606ab47dbc3.tar.gz
+	sha256sums = b3de2841b373d8c38478f6f63df975c52ee1b75a3edf75cc26e8fbcc09681ded
 
 pkgname = ring-kde
 
