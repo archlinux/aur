@@ -2,7 +2,7 @@
 # Maintainer of acd_cli project: yadayada <https://github.com/yadayada>
 _pkgname=acd_cli
 pkgname="$_pkgname"-git
-pkgver=0.3.2.r0.gaf92960
+pkgver=0.3.2.r21.g525c36c
 pkgrel=1
 pkgdesc="acd_cli provides a command line interface to 
 Amazon Cloud Drive and allows mounting your cloud drive 
@@ -17,7 +17,8 @@ depends=('python-appdirs' 'python-requests>=2.1.0'
 'python-requests-toolbelt' 'python-fusepy' 'python-setuptools' 
 'python-colorama')
 makedepends=('python')
-optdepends=('fuse: Filesystem mount support')
+optdepends=('fuse: Filesystem mount support' 'fuse3: Filesystem mount 
+support')
 provides=('acd_cli')
 conflicts=('acd_cli')
 source=(git+https://github.com/yadayada/acd_cli.git)
