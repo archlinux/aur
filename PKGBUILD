@@ -30,7 +30,6 @@ prepare() {
 	git submodule update --init --recursive
 
 	msg2 "Forbid libexec use..."
-	sed -i 's|${DARLING_PREFIX}/libexec/darling|${DARLING_PREFIX}/share/darling/prefix|g' src/dyld/darling
 	sed -i 's|${CMAKE_INSTALL_PREFIX}/libexec/darling|${CMAKE_INSTALL_PREFIX}/share/darling/prefix|g' src/darling-config.h.in
 	find . -name CMakeLists.txt -exec sed -i 's|libexec/darling|${CMAKE_INSTALL_PREFIX}/share/darling/prefix|g' {} \;
 
@@ -65,4 +64,8 @@ package() {
 	cd "$srcdir/$_gitname/build/x86-64"
 	msg2 "Install 64-bit build..."
 	make DESTDIR="$pkgdir" install
+
+	# Hotfixes
+	rm -rf "$pkgdir/bin"
+	chmod 4755 "$pkgdir/usr/bin/darling"
 }
