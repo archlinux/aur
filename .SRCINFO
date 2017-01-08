@@ -1,0 +1,14 @@
+pkgbase = blender-plugin-hdri-lighting-shortcut
+	pkgdesc = This is BLAM, a camera calibration toolkit for Blender in the form of an add-on, written in python, that facilitates modeling based on photographs.
+	pkgver = 1
+	pkgrel = 1
+	url = http://stuffmatic.github.io/
+	arch = any
+	license = GPL
+	makedepends = coreutils
+	depends = blender
+	source = https://github.com/Nikos-Prinios/HDRI-lighting-Shortcut/archive/ccef70cb7822e1a4826019ce798d2848e3a79b72.zip
+	md5sums = d8f5cece542b510e77be7a7ad3ae0d9c
+
+pkgname = blender-plugin-hdri-lighting-shortcut
+
