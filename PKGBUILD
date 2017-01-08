@@ -3,7 +3,7 @@
 
 pkgname=minecraft-technic-launcher
 pkgver=4.347
-pkgrel=3
+pkgrel=4
 pkgdesc='Choose from thousands of community-made Minecraft modpacks available on the Technic Platform.'
 arch=('any')
 license=('custom')
@@ -32,7 +32,11 @@ package(){
             "${pkgdir}/usr/share/icons/hicolor/${size}x${size}/apps/technic-launcher.png"
     done
 
-    bsdtar xf TechnicLauncher.jar licenses
-    mkdir -p "$pkgdir/usr/share/licenses/$pkgname/"
-    install -Dm644 licenses/* "$pkgdir/usr/share/licenses/$pkgname/"
+    # Currently there is an issue with libarchive that prohibits extraction.
+    # See https://github.com/libarchive/libarchive/issues/822. Once a new
+    # release is issued, this can be uncommented again.
+
+    #bsdtar xf TechnicLauncher.jar licenses
+    #mkdir -p "$pkgdir/usr/share/licenses/$pkgname/"
+    #install -Dm644 licenses/* "$pkgdir/usr/share/licenses/$pkgname/"
 }
