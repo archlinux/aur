@@ -1,0 +1,45 @@
+		-= Ninja Boot and Nuke =-
+
+Ninja Boot and Nuke is and "End of Life" solution that is built around Arch
+native tools. The end result is to wipe all data from all attached storage
+media by zerofilling them. If SATA secure erase is available, then that is used
+instead. This will secure data off machines which are no longer in use, but
+have sensative data, for allow for their disposal.
+
+The core NBAN image is an initcpio profile, that loads storage drivers, and then
+uses dd in parallel to overwrite all drives with zeros and then reboots.
+
+There are several ways this can be utilized.
+
+1. Compile nban directly with mkinitcpio
+
+# mkinitcpio -p nban
+
+You can then set nban.img as initrd= at boot time via bootloader config.
+
+2. "Shuriken"
+
+The Ninja "Shuriken" is nban.img plus a base extlinux bootloader on a flash
+drive. to make a shuriken, you can use the shuriken_forge script. Where sdX is
+a blank flash drive. you can use this to wipe any computer that boots off a
+flash drive, that is also capable of running arch linux.
+
+$ shuriken_forge </dev/sdX>
+
+Please note, that shurikens are not intellegent and will overwrite themselves.
+
+3. reboot_nuke.sh
+
+If you are using syslinux as your boot loader, you can use reboot_nuke.sh to
+overwrite your bootloader and reboot into boot and nuke. reboot_nuke_press.sh
+is designed to be tied to a button that will nuke after a certain about of
+repeated button presses. This is for tying to keyboard shortcuts. You can use
+these to santize your Arch workstation quickly in case of an event requiring
+immediate santiation of data
+
+The default is 3 button presses in 0.8 seconds. these scripts are found in:
+
+/usr/share/ninjaos/reboot_nuke.sh
+/usr/share/ninjaos/reboot_nuke_press.sh
+
+
