@@ -27,6 +27,15 @@ depends=(
 # 'ttf-signika-family-ib'
   'ttf-ubuntu-font-family'
 )
+optdepends=(
+  'otf-oswald-ib'
+  'otf-quintessential-ib'
+  't1-cursor-ib'
+  'ttf-gelasio-ib'
+  'ttf-merriweather-ib'
+  'ttf-merriweather-sans-ib'
+  'ttf-signika-family-ib'
+)
 provides=('ibfonts-meta-extended-lt' 'xorg-fonts-type1')
 conflicts=('ibfonts-meta-extended-lt' 'xorg-fonts-type1')
 replaces=('xorg-fonts-type1') 
