@@ -1,6 +1,6 @@
 # Maintainer: SaMaLerO <smlr[at]ukr[dot]net>
 pkgname=tlauncher
-pkgver=2.1
+pkgver=1.79.14
 pkgrel=1
 pkgdesc="TLauncher is freeware launcher of Minecraft."
 url="https://tlauncher.org"
@@ -12,11 +12,11 @@ conflicts=()
 replaces=()
 backup=()
 install='tlauncher.install'
-source=("TLauncher.jar::https://tlauncher.org/download/925"
+source=("TLauncher.jar::https://tlaun.ch/jar"
         "tlauncher.desktop::https://drive.google.com/uc?export=download&id=0BwXQWEVmNM9ddTlVM1Q0TGJmT0k"
 		"mncrft.png::https://drive.google.com/uc?export=download&id=0BwXQWEVmNM9dWm1sbGtoQ29CVTA")
 noextract=('TLauncher.jar')
-md5sums=('251721a60006e534eba3cf1cb65e1211'
+md5sums=('e61de021d546cdc3a0fda13b040bfb8f'
 		'679caa7ce6fd3f3ba1f5e57d71de97e1'
 		'7ad17a837b4a3742a84a34ecd7160665')
 
