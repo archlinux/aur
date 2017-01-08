@@ -6,8 +6,11 @@ pkgdesc="CAMFR (CAvity Modelling FRamework) is a fast, flexible, friendly full-v
 arch=('x86_64')
 url="http://camfr.sourceforge.net/"
 license=('GPL')
-depends=('python2-scipy'
-         'python2-imaging')
+depends=('python2-numpy'
+         'python2-scipy'
+         'python2-matplotlib'
+         'python2-imaging'
+         'tk')
 makedepends=('scons'
              'gcc-fortran'
              'openblas-lapack'
