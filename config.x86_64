@@ -1,6 +1,6 @@
 #
 # Automatically generated file; DO NOT EDIT.
-# Linux/x86 4.8.15-2 Kernel Configuration
+# Linux/x86 4.8.16-1 Kernel Configuration
 #
 CONFIG_64BIT=y
 CONFIG_X86_64=y
@@ -428,6 +428,8 @@ CONFIG_NO_BOOTMEM=y
 # CONFIG_MPILEDRIVER is not set
 # CONFIG_MSTEAMROLLER is not set
 # CONFIG_MJAGUAR is not set
+# CONFIG_MEXCAVATOR is not set
+# CONFIG_MZEN is not set
 # CONFIG_MPSC is not set
 # CONFIG_MATOM is not set
 # CONFIG_MCORE2 is not set
