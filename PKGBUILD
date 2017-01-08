@@ -3,7 +3,7 @@
 
 pkgname=guayadeque-git
 _pkgname=guayadeque
-pkgver=0.4.5.r2049.3c94f185
+pkgver=0.4.5.r2050.9fec4f7b
 pkgrel=1
 pkgdesc='Lightweight music player'
 arch=('i686' 'x86_64')
