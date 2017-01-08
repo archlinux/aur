@@ -1,0 +1,15 @@
+pkgbase = chipsec-git
+	pkgdesc = Platform Security Assessment Framework
+	pkgver = v1.2.5.r20.gc377a72
+	pkgrel = 1
+	url = https://github.com/chipsec/chipsec
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	depends = python
+	depends = python2
+	source = chipsec-git::git+https://github.com/chipsec/chipsec
+	md5sums = SKIP
+
+pkgname = chipsec-git
+
