@@ -1,18 +1,17 @@
 # Maintainer: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 
 pkgname=opentyrian-hg
-pkgver=1091
+pkgver=1101
 pkgrel=1
 pkgdesc="Port of the classic DOS game Tyrian"
 url="https://bitbucket.org/opentyrian/opentyrian/wiki/Home"
 arch=(i686 x86_64)
 license=(GPL3 GPL2)
-depends=(sdl sdl_net gtk-update-icon-cache)
+depends=(sdl sdl_net)
 makedepends=(mercurial)
-provides=(tyrian opentyrian)
+provides=(opentyrian)
 conflicts=(opentyrian)
 replaces=(opentyrian-svn)
-install=opentyrian.install
 source=("opentyrian::hg+https://bitbucket.org/opentyrian/opentyrian#branch=default"
         http://www.camanis.net/opentyrian/tyrian21.zip)
 md5sums=('SKIP'
