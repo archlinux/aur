@@ -3,7 +3,7 @@
 # Maintainer of acd_cli project: yadayada <https://github.com/yadayada>
 pkgname=acd_cli
 pkgver=0.3.2
-pkgrel=3
+pkgrel=2
 pkgdesc="acd_cli provides a command line interface to 
 Amazon Cloud Drive and allows mounting your cloud drive 
 using FUSE for read access."
