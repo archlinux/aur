@@ -3,7 +3,7 @@
 # Contributor: Jimmy Tang <jtang@tchpc.tcd.ie>
 
 pkgname=pristine-tar
-pkgver=1.33
+pkgver=1.37
 pkgrel=1
 pkgdesc="Tool to regenerate a pristine upstream tarball using only a small binary delta file and a copy of the source which can be a revision control checkout."
 arch=('i686' 'x86_64')
@@ -11,11 +11,11 @@ url="https://packages.debian.org/sid/pristine-tar"
 license=('GPL')
 depends=('perl' 'xdelta')
 conflicts=('pristine-tar-git')
-source=(http://ftp.debian.org/debian/pool/main/p/${pkgname}/${pkgname}_${pkgver}.tar.gz
+source=(http://ftp.debian.org/debian/pool/main/p/${pkgname}/${pkgname}_${pkgver}.tar.xz
         0002-Use-posix-tar-format-by-default.patch
         0003-Mangle-PAX-headers-when-using-posix-tar-format.patch
         0004-HACK-workaround-for-some-broken-pristine-tar-branche.patch)
-sha256sums=('7d87cfe6b957e100e5cd87dca0835af299b4e03f8cb24990f01bbf0f065197b4'
+sha256sums=('8f417b9d8ea9c204d87e9d07ee9f2eaa9cbaca1de92696842df159c9ee2c4253'
             '09b7e2fba6f53ad1ac85d6000393835aedb8785ddcfd176f043f6301e267c614'
             'd470d888fba8c32c20602a2e90219893d15074cf447c5920b37fa57fe5d38692'
             '0d2cbbeeb8c5fbba193b4ac39a33de800515811f6858e26a8874ed3bce6f394c')
