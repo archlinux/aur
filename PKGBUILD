@@ -1,7 +1,7 @@
 # Maintainer: ninov <dev@ninov.de>
 pkgname="brother-mfc-5895cw"
-pkgver="1.1.3"
-pkgrel=6
+pkgver="1.1.4"
+pkgrel=1
 pkgrellpr=4
 pkgrelcw=6
 pkgdesc="LPR and CUPS driver for the Brother MFC-5895CW, aur package based on the brother-mfc-5890cn package by Morn"
