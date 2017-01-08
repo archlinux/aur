@@ -1,7 +1,7 @@
 # Contributor: Daniel Kirchner <daniel AT ekpyron DOT org>
 
 pkgname=mingw-w64-libpng
-pkgver=1.6.27
+pkgver=1.6.28
 _apngver=$pkgver
 pkgrel=1
 arch=('any')
@@ -13,8 +13,9 @@ url="http://www.libpng.org/pub/png/libpng.html"
 options=('!strip' '!buildflags' 'staticlibs')
 source=("http://downloads.sourceforge.net/sourceforge/libpng/libpng-$pkgver.tar.xz"
         "http://downloads.sourceforge.net/project/apng/libpng/libpng16/libpng-$_apngver-apng.patch.gz")
-md5sums=('90099cb7dfb36bf223f4791429d45c6a'
-         'c8c894fb92dd1e99ba0c653bb0b8d98b')
+md5sums=('425354f86c392318d31aedca71019372'
+         '7c8a3ce7df953d13c316502a539b5070')
+
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 prepare() {
