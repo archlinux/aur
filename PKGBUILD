@@ -9,7 +9,7 @@
 
 pkgname="griffith"
 pkgver=0.13
-pkgrel=11
+pkgrel=12
 pkgdesc="Movie collection manager application"
 arch=('any')
 url="http://www.griffith.cc/"
@@ -64,6 +64,6 @@ package() {
 
     # The program creates a wrong symlink so make a new one
 	rm ${pkgdir}/usr/bin/griffith
-	ln -s ${pkgdir}/usr/share/griffith/lib/griffith ${pkgdir}/usr/bin/griffith 
+	ln -s /usr/share/griffith/lib/griffith ${pkgdir}/usr/bin/griffith 
 }
 # vim:set ts=4 sw=2 ft=sh et:

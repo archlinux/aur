@@ -1,7 +1,7 @@
 pkgbase = griffith
 	pkgdesc = Movie collection manager application
 	pkgver = 0.13
-	pkgrel = 11
+	pkgrel = 12
 	url = http://www.griffith.cc/
 	arch = any
 	license = GPL2
