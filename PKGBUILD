@@ -2,7 +2,7 @@ _pkgname=lugaru
 _gitname=lugaru
 
 pkgname=$_pkgname-git
-pkgver=3327059
+pkgver=1a6ef83
 pkgrel=1
 pkgdesc="A third-person action game featuring a unique close-range combat system"
 url="https://osslugaru.gitlab.io"
@@ -10,7 +10,8 @@ license=('GPL')
 arch=('i686' 'x86_64')
 depends=('sdl2' 'glu' 'libjpeg-turbo' 'libpng' 'openal' 'libvorbis' 'zlib')
 makedepends=('cmake')
-conflicts=('lugaru-hg')
+options=('!optipng')
+conflicts=('lugaru-hg' 'lugaruhd-hg')
 source=("git+https://gitlab.com/osslugaru/lugaru.git"
         "${_pkgname}.desktop")
 sha256sums=('SKIP'
@@ -23,12 +24,13 @@ pkgver() {
             
 build() {
     cd $srcdir/${_pkgname}/
-    mkdir build
+    mkdir build || true
     cd build
     cmake -DSYSTEM_INSTALL=ON \
-        -DCMAKE_INSTALL_BINDIR=games \
-        -DCMAKE_INSTALL_DATADIR=share/games \
-        -DCMAKE_INSTALL_MANDIR=../man \
+        -DCMAKE_INSTALL_PREFIX=/usr \
+        -DCMAKE_INSTALL_BINDIR=bin \
+        -DCMAKE_INSTALL_DATADIR=share \
+        -DCMAKE_INSTALL_MANDIR=share/man \
         ..
     make
 }
