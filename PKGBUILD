@@ -4,12 +4,12 @@
 _pkgname="Snap4Arduino_desktop-gnu"
 pkgname="snap4arduino"
 pkgver="1.2.1"
-pkgrel="1"
+pkgrel="2"
 pkgdesc="A modification of the Snap! visual programming language that lets you seamlessly interact with almost all versions of the Arduino board."
 arch=('i686' 'x86_64')
 url="http://snap4arduino.org/"
 license=('GPL3')
-depends=('nss' 'libxtst' 'alsa-lib' 'libxss' 'gtk2' 'gconf' 'freetype2-ubuntu')
+depends=('nss' 'libxtst' 'alsa-lib' 'libxss' 'gtk2' 'gconf' 'freetype2')
 provides=("${pkgname}")
 
 source_i686=("http://${pkgname}.org/downloads/${pkgver}/Snap4Arduino_desktop-gnu-32_${pkgver}.tar.gz")
