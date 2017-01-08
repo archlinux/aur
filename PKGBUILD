@@ -1,4 +1,4 @@
-# $Id: PKGBUILD 276171 2016-09-11 08:06:09Z heftig $
+# $Id: PKGBUILD 284474 2016-12-22 23:27:55Z anatolik $
 # Maintainer: Tobias Powalowski <tpowa@archlinux.org>
 # Contributor: Sébastien "Seblu" Luttringer <seblu@seblu.net>
 
@@ -8,8 +8,8 @@
 pkgname='qemu-minimal'
 #pkgdesc="A generic and open source machine emulator and virtualizer"
 pkgdesc="A generic and open source machine emulator and virtualizer. This is a stripped-down version of the official package and requires only the bare essentials for running on a headless server."
-pkgver=2.7.0
-pkgrel=2
+pkgver=2.8.0
+pkgrel=1
 arch=(i686 x86_64)
 license=(GPL2 LGPL2.1)
 url="http://wiki.qemu.org/"
@@ -19,17 +19,19 @@ _minimaldeps=(seabios libaio jemalloc
               lzo snappy curl libcap-ng)
 #depends=(virglrenderer sdl2 vte3 brltty "${_headlessdeps[@]}")
 #makedepends=(spice-protocol python2 ceph libiscsi glusterfs)
-depends=("${_minimaldeps[@]}")
+depends=(pixman libjpeg "${_minimaldeps[@]}")
 makedepends=(python2)
 conflicts=('qemu' 'qemu-headless')
-source=("$url/download/${pkgname:0:-8}-${pkgver}.tar.bz2"
+source=("$url/download/${pkgname:0:-8}-${pkgver}.tar.bz2"{,.sig}
         qemu.sysusers
         qemu-ga.service
         65-kvm.rules)
-sha256sums=('326e739506ba690daf69fc17bd3913a6c313d9928d743bd8eddb82f403f81e53'
+sha256sums=('dafd5d7f649907b6b617b822692f4c82e60cf29bc0fc58bc2036219b591e5e62'
+            'SKIP'
             'dd43e2ef062b071a0b9d0d5ea54737f41600ca8a84a8aefbebb1ff09f978acfb'
             '0b4f3283973bb3bc876735f051d8eaab68f0065502a3a5012141fad193538ea1'
             '60dcde5002c7c0b983952746e6fb2cf06d6c5b425d64f340f819356e561e7fc7')
+validpgpkeys=('CEACC9E15534EBABB82D3FA03353C9CEF108B584')
 
 case $CARCH in
   i?86) _corearch=i386 ;;
@@ -119,7 +121,6 @@ package() {
 
 _package() {
 #  optdepends+=('samba: SMB/CIFS server support'
-#               'qemu-arch-extra: extra architectures support'
 #               'qemu-block-iscsi: iSCSI block support'
 #               'qemu-block-rbd: RBD block support'
 #               'qemu-block-gluster: glusterfs block support')
@@ -182,10 +183,10 @@ _package() {
       efi-*|pxe-*) continue ;;
 
       # core blobs
-      kvmvapic.bin|linuxboot.bin|multiboot.bin|sgabios.bin|vgabios*) continue ;;
+      kvmvapic.bin|linuxboot*|multiboot.bin|sgabios.bin|vgabios*) continue ;;
 
       # Trace events definitions
-      trace-events) continue ;;
+      trace-events*) continue ;;
 
       # Logos
       *.bmp|*.svg) continue ;;
