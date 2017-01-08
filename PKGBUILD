@@ -9,24 +9,28 @@
 
 pkgname="griffith"
 pkgver=0.13
-pkgrel=10
+pkgrel=11
 pkgdesc="Movie collection manager application"
 arch=('any')
 url="http://www.griffith.cc/"
 license=('GPL2')
-depends=('pygtk>=2.14.1' 'sqlite' 'python2-pysqlite' \
-         'python2-reportlab>=2.3' 'python2-pillow' 'python2-sqlalchemy')
+depends=('pygtk' 'sqlite' 'python2-pysqlite' \
+         'python2-reportlab' 'python2-pillow' 'python2-sqlalchemy'
+)
 optdepends=('python2-psycopg2: postgreSQL support'
             'mysql-python: MySQL support'
             'python2-chardet: encoding detection of imported CSV files'
             'python2-gtkspell: spell checking support'
-            'griffith-extra-artwork: additional icons')
+            'griffith-extra-artwork: additional icons'
+)
 source=("http://launchpad.net/${pkgname}/trunk/0.13/+download/${pkgname}-${pkgver}.tar.gz"
-        "https://raw.githubusercontent.com/ValHue/AUR-PKGBUILDs/master/griffith/validators.py"
-		"http://www.strits.dk/files/PluginMovieIMDB.py")
+		"https://raw.githubusercontent.com/ValHue/AUR-PKGBUILDs/master/griffith/validators.py"
+		"http://www.strits.dk/files/PluginMovieIMDB.py"
+)
 sha256sums=('60576d33aa855ab45d654288d7bf2ead8accecb72fd2acbc373656294ab8f242'
             'f5e0b43c6ee56148b55cc650599c96b7774491867d38b47278bc121bf33fb9af'
-            'c1f1c5dbe0b975f15a6d0265e53b993390eb33aca2011f2e0d390b326a017a21')
+            'c1f1c5dbe0b975f15a6d0265e53b993390eb33aca2011f2e0d390b326a017a21'
+)
 
 build() {
     cd "${pkgname}-${pkgver}"
@@ -45,6 +49,12 @@ build() {
 	# Update PluginMovieIMDB.py to version 1.15. Thanks to Strit
 	# http://www.strits.dk/files/PluginMovieIMDB.py
 	cp -f ../PluginMovieIMDB.py ./lib/plugins/movie/PluginMovieIMDB.py
+
+	# Fix dependencies version
+	sed -i '65,83d' griffith
+
+	# Fix to AttributeError: 'module' object has no attribute 'glade'
+	sed -i "35i\import gtk.glade" ./lib/initialize.py
 }
 
 package() {
@@ -53,7 +63,7 @@ package() {
     make DESTDIR=${pkgdir} install
 
     # The program creates a wrong symlink so make a new one
-    rm ${pkgdir}/usr/bin/griffith
-    ln -s /usr/share/griffith/lib/griffith ${pkgdir}/usr/bin/griffith 
+	rm ${pkgdir}/usr/bin/griffith
+	ln -s ${pkgdir}/usr/share/griffith/lib/griffith ${pkgdir}/usr/bin/griffith 
 }
 # vim:set ts=4 sw=2 ft=sh et:

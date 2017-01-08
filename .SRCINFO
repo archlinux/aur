@@ -1,14 +1,14 @@
 pkgbase = griffith
 	pkgdesc = Movie collection manager application
 	pkgver = 0.13
-	pkgrel = 10
+	pkgrel = 11
 	url = http://www.griffith.cc/
 	arch = any
 	license = GPL2
-	depends = pygtk>=2.14.1
+	depends = pygtk
 	depends = sqlite
 	depends = python2-pysqlite
-	depends = python2-reportlab>=2.3
+	depends = python2-reportlab
 	depends = python2-pillow
 	depends = python2-sqlalchemy
 	optdepends = python2-psycopg2: postgreSQL support
