@@ -46,7 +46,7 @@ build() {
   cd ${srcdir}/xpra-$pkgver
   export pkgdir
   #python2 setup.py build || return 1
-  CFLAGS="$CFLAGS -fno-strict-aliasing" python2 setup.py build --without-enc_x265
+  CFLAGS="$CFLAGS -fno-strict-aliasing" python2 setup.py build
 }
 
 package() {
