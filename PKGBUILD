@@ -1,6 +1,6 @@
 pkgname=spectrumyzer
-pkgver=1.1
-pkgrel=2
+pkgver=1.1.1
+pkgrel=1
 pkgdesc="Spectrum analyzer rendered on a desktop"
 arch=('x86_64' 'i686')
 url="https://github.com/HaCk3Dq/spectrumyzer"
