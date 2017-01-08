@@ -4,7 +4,7 @@
 
 pkgname=seafile-server
 pkgver=6.0.7
-pkgrel=1
+pkgrel=2
 pkgdesc="Seafile is an online file storage and collaboration tool"
 arch=('i686' 'x86_64' 'armv7h' 'armv6h')
 url="https://github.com/haiwen/${pkgname}"
@@ -65,7 +65,7 @@ package() {
   make DESTDIR="${pkgdir}" install
 
   # Remove files already installed by seafile
-  rm -rf "${pkgdir}/usr/lib/lib*"
+  rm -rf "${pkgdir}/usr/lib/libseafile."*
   rm -rf "${pkgdir}/usr/lib/pkgconfig"
   rm -rf "${pkgdir}/usr/lib/python2.7/site-packages/seafile"
   rm -rf "${pkgdir}/usr/include"
