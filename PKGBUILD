@@ -2,7 +2,7 @@
 # Maintainer: Devin Buhl <devin.kray@gmail.com>
 pkgname="radarr"
 pkgver="0.2.0.2"
-pkgrel=3
+pkgrel=4
 pkgdesc="Movie downloader for usenet and torrents."
 arch=(any)
 url="https://github.com/galli-leo/Radarr"
@@ -33,6 +33,9 @@ package() {
     msg2 "Install Radarr in /usr/lib"
     install -d -m 755 "${pkgdir}/usr/lib/radarr"
     cp -dpr --no-preserve=ownership "${srcdir}/Radarr/"* "${pkgdir}/usr/lib/radarr"
+
+    msg2 "Fixing permissions in /usr/lib/radarr/"
+    find "${pkgdir}/usr/lib/radarr" -type f -exec chmod 644 '{}' ';'
 
     msg2 "Install executable into /usr/bin"
     install -D -m755 "${srcdir}/radarr.sh" "${pkgdir}/usr/bin/radarr"
