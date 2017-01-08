@@ -1,11 +1,11 @@
 pkgname=tensorflow-vala
-pkgver=0.12.1+5+g43ab3ab
+pkgver=0.12.1+10+g46252ca
 pkgrel=1
 pkgdesc="Vala bindings for TensorFlow"
 url="https://github.com/arrufat/tensorflow-vala"
 license=('Apache2')
 arch=('any')
-depends=('tensorflow')
+depends=('tensorflow' 'vala')
 makedepends=('meson')
 source=(git+https://github.com/arrufat/tensorflow-vala.git)
 md5sums=('SKIP')
