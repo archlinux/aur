@@ -2,7 +2,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=textext-hg
-pkgver=r221.c9143bdbbd38
+pkgver=r249.d23f6cb223ce
 pkgrel=1
 pkgdesc="An inkscape extension which lets you add LaTeX equations to your drawings"
 arch=('any')
@@ -16,9 +16,8 @@ source=("textext::hg+https://bitbucket.org/pitgarbe/textext")
 md5sums=('SKIP')
 
 prepare() {
-  cd  textext/textext-0.5-linux/extension
-  sed -i '1s|python\>|python2|' typesetter.py
-  sed -i '1s|python\>|python2|' textext.py
+  cd  textext/
+  sed -i '1s|python\>|python2|' *.py
 }
 
 pkgver() {
@@ -27,11 +26,13 @@ pkgver() {
 }
 
 package() {
-  cd textext/textext-0.5-linux/extension
+  cd textext/
   install -d "$pkgdir"/usr/share/inkscape/extensions
-  cp -r * "$pkgdir"/usr/share/inkscape/extensions
+  for _i in asktext.py default_packages.tex latexlogparser.py textext.{inx,py} typesetter.py
+  do install ${_i} "$pkgdir"/usr/share/inkscape/extensions/$_i
+  done
   install -d "$pkgdir"/usr/share/licenses/$pkgname
-  install ../../LICENSE.txt "$pkgdir"/usr/share/licenses/$pkgname/LICENSE.txt
+  install LICENSE.txt "$pkgdir"/usr/share/licenses/$pkgname/LICENSE.txt
 }
 
 
