@@ -5,7 +5,7 @@
 _name=SuperCollider
 pkgname=supercollider-with-plugins
 pkgver=3.8.0
-pkgrel=1
+pkgrel=2
 pkgdesc="An environment and programming language for real time audio synthesis and algorithmic composition. Current version including sc3-plugins."
 arch=('i686' 'x86_64')
 conflicts=('supercollider' 'sc3-plugins-git')
@@ -37,7 +37,7 @@ build() {
   [ -d b ] || mkdir b && cd b
   cmake .. -DCMAKE_INSTALL_PREFIX=/usr \
            -DCMAKE_BUILD_TYPE=Release \
-           -DLIBSCSYNTH=ON -DCMAKE_CXX_FLAGS_RELEASE="-O3 -DNDEBUG -fext-numeric-literals"
+           -DLIBSCSYNTH=ON -DCMAKE_CXX_FLAGS_RELEASE="-O3 -DNDEBUG"
   make
 
   cd "$srcdir/sc3-plugins-Version-$pkgver"
