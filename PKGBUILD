@@ -12,7 +12,7 @@ _pkgver="2.02"
 _GRUB_GIT_TAG="grub-2.02-beta3"
 _GRUB_EXTRAS_COMMIT="f2a079441939eee7251bf141986cdd78946e1d20"
 
-_UNIFONT_VER="6.3.20131217"
+_UNIFONT_VER="9.0.06"
 
 [[ "${CARCH}" == "x86_64" ]] && _EFI_ARCH="x86_64"
 [[ "${CARCH}" == "i686" ]] && _EFI_ARCH="i386"
@@ -23,7 +23,7 @@ _UNIFONT_VER="6.3.20131217"
 pkgname="grub"
 pkgdesc="GNU GRand Unified Bootloader (2)"
 pkgver=2.02.beta3
-pkgrel=5
+pkgrel=6
 epoch=1
 url="https://www.gnu.org/software/grub/"
 arch=('x86_64' 'i686')
@@ -70,7 +70,7 @@ source=("grub-${_pkgver}::git+git://git.sv.gnu.org/grub.git#tag=${_GRUB_GIT_TAG}
 
 sha256sums=('SKIP'
             'SKIP'
-            '6dc2596a0cec08f36de7fb066f12015b572456c90d4e06ddc7b399a3e50b5f89'
+            '4246c4773ed70f78a7e27ff1118fd257a280d1102200265ad5d58bb2011195ef'
             'SKIP'
             '6a85a2a93a27f64bac68bef513e3239a898a0502221978b3cb99e41994021b05'
             '37adb95049f6cdcbdbf60ed6b6440c5be99a4cd307a0f96c3c3837b6c2e07f3c'

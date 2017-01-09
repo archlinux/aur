@@ -1,7 +1,7 @@
 pkgbase = grub
 	pkgdesc = GNU GRand Unified Bootloader (2)
 	pkgver = 2.02.beta3
-	pkgrel = 5
+	pkgrel = 6
 	epoch = 1
 	url = https://www.gnu.org/software/grub/
 	install = grub.install
@@ -50,8 +50,8 @@ pkgbase = grub
 	backup = etc/grub.d/40_custom
 	source = grub-2.02::git+git://git.sv.gnu.org/grub.git#tag=grub-2.02-beta3
 	source = grub-extras::git+git://git.sv.gnu.org/grub-extras.git#commit=f2a079441939eee7251bf141986cdd78946e1d20
-	source = https://ftp.gnu.org/gnu/unifont/unifont-6.3.20131217/unifont-6.3.20131217.bdf.gz
-	source = https://ftp.gnu.org/gnu/unifont/unifont-6.3.20131217/unifont-6.3.20131217.bdf.gz.sig
+	source = https://ftp.gnu.org/gnu/unifont/unifont-9.0.06/unifont-9.0.06.bdf.gz
+	source = https://ftp.gnu.org/gnu/unifont/unifont-9.0.06/unifont-9.0.06.bdf.gz.sig
 	source = 0001-Fix-security-issue-when-reading-username-and-passwor.patch
 	source = 0002-intel-ucode.patch
 	source = 0003-10_linux-detect-archlinux-initramfs.patch
@@ -63,7 +63,7 @@ pkgbase = grub
 	validpgpkeys = 95D2E9AB8740D8046387FD151A09227B1F435A33
 	sha256sums = SKIP
 	sha256sums = SKIP
-	sha256sums = 6dc2596a0cec08f36de7fb066f12015b572456c90d4e06ddc7b399a3e50b5f89
+	sha256sums = 4246c4773ed70f78a7e27ff1118fd257a280d1102200265ad5d58bb2011195ef
 	sha256sums = SKIP
 	sha256sums = 6a85a2a93a27f64bac68bef513e3239a898a0502221978b3cb99e41994021b05
 	sha256sums = 37adb95049f6cdcbdbf60ed6b6440c5be99a4cd307a0f96c3c3837b6c2e07f3c
