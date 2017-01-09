@@ -8,7 +8,7 @@
 pkgname=kf5-servicemenus-encfs
 _pkgname=kde-service-menu-encfs
 pkgver=0.5.2
-pkgrel=4
+pkgrel=5
 pkgdesc="One KDE servicemenu for encfs encrypted directories ; kf5 version"
 arch=('i686' 'x86_64')
 url="http://www.egregorion.net/"
@@ -31,6 +31,8 @@ package() {
 
   mkdir -p ${pkgdir}/${prefix}/share/kservices5/ServiceMenus/
   install -D -m644 ${srcdir}/${_pkgname}_${pkgver}/desktop/encfs.desktop ${pkgdir}/${prefix}/share/kservices5/ServiceMenus/
+  # put right pkgname in encfs.desktop :
+  sed -i "s/${_pkgname}.sh/encfs_kmenu.sh/g" ${pkgdir}/${prefix}/share/kservices5/ServiceMenus/encfs.desktop
 
   mkdir -p ${pkgdir}/${prefix}/share/doc/${pkgname}
   install -D -m644 ${srcdir}/${_pkgname}_${pkgver}/doc/* ${pkgdir}/${prefix}/share/doc/${pkgname}
