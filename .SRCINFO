@@ -1,6 +1,6 @@
 pkgbase = yape
 	pkgdesc = A decent multiplatform Commodore plus/4 and 64 emulator written in C++ using the SDL 2.0 media API
-	pkgver = 0.58.2
+	pkgver = 0.70.2
 	pkgrel = 1
 	url = http://yapesdl.codeplex.com
 	arch = i686
