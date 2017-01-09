@@ -3,7 +3,7 @@
 pkgname=batify
 pkgver=0.9
 pkgrel=1
-pkgdesc='Simple plug and battery level warnings using udev and libnotify (multi-users).'
+pkgdesc='Bash script to trigger plug and battery level notifications using udev and libnotify (multi-xusers).'
 arch=('any')
 url="https://github.com/Ventto/${pkgname}.git"
 license=('MIT')

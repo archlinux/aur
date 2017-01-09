@@ -1,5 +1,5 @@
 pkgbase = batify
-	pkgdesc = Simple plug and battery level warnings using udev and libnotify (multi-users).
+	pkgdesc = Bash script to trigger plug and battery level notifications using udev and libnotify (multi-xusers).
 	pkgver = 0.9
 	pkgrel = 1
 	url = https://github.com/Ventto/batify.git
