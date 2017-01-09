@@ -1,0 +1,42 @@
+diff -aur memlockd-1.2.pristine/memlockd.cfg memlockd-1.2.new/memlockd.cfg
+--- memlockd-1.2.pristine/memlockd.cfg	2017-01-09 12:03:21.390602797 -0200
++++ memlockd-1.2.new/memlockd.cfg	2017-01-09 13:02:44.924073831 -0200
+@@ -1,28 +1,22 @@
+ +/bin/bash
+-+/usr/sbin/sshd
+-+/bin/busybox
+-+/sbin/getty
+-+/bin/login
+++/usr/bin/sshd
+++/usr/bin/agetty
+++/usr/bin/login
+ /etc/passwd
+ /etc/shadow
+ /etc/group
+ /etc/nsswitch.conf
+ /etc/resolv.conf
+-/etc/locale.alias
++/etc/locale.conf
+ /usr/lib/locale/locale-archive
+ /etc/localtime
+-?+/lib/i386-linux-gnu/i686/nosegneg/libnss_files.so.2
+-?+/lib/$ARCH-linux-gnu/libnss_files.so.2
++?+/usr/lib32/libnss_files.so.2
++?+/usr/lib64/libnss_files.so.2
+ /etc/ld.so.cache
+-+/bin/ls
+-+/bin/ps
+++/usr/bin/ls
+++/usr/bin/ps
+ +/usr/bin/killall
+ # even though I don't use NIS this is loaded
+-?+/lib/i386-linux-gnu/i686/nosegneg/libnss_nis.so.2
+-?+/lib/$ARCH-linux-gnu/libnss_nis.so.2
+-/lib/$ARCH-linux-gnu/libnss_nis-2.24.so
+-/lib/$ARCH-linux-gnu/libnss_files-2.24.so
+-/lib/$ARCH-linux-gnu/libnss_compat-2.24.so
+-/lib/$ARCH-linux-gnu/ld-2.24.so
+-/usr/lib/$ARCH-linux-gnu/gconv/gconv-modules.cache
++?+/usr/lib32/libnss_nis.so.2
++?+/usr/lib64/libnss_nis.so.2
+ %/etc/memlockd.d
