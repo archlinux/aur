@@ -3,7 +3,7 @@
 _pkgname=canto-next
 pkgname=canto-daemon
 pkgver=0.9.6
-pkgrel=1
+pkgrel=2
 pkgdesc="News aggregator for Atom/RSS/RDF"
 url="http://codezen.org/canto-ng/"
 license=('GPL')
