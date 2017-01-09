@@ -2,7 +2,7 @@
 
 pkgname=python-powerlaw
 _pkgname=powerlaw
-pkgrel=1
+pkgrel=2
 pkgver=1.4.1
 pkgdesc='A Python Package for Analysis of Heavy-Tailed Distributions'
 arch=('any')
