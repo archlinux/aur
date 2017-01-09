@@ -2,7 +2,7 @@
 # Contributor: jackoneill <cantabile dot desu at gmail dot com>
 
 pkgname=vapoursynth-git
-pkgver=r33.1.64.g23f28ec
+pkgver=r35.21.gc97e4b0
 pkgrel=1
 pkgdesc="A video processing framework with simplicity in mind. (GIT version)"
 arch=('i686' 'x86_64')
@@ -50,6 +50,7 @@ build() {
   ./configure \
     --prefix=/usr \
     --enable-imwri
+
   make
   make -C doc html man
 }
