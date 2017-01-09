@@ -6,7 +6,7 @@ diff -Naur meshlab.orig/src/meshlabplugins/edit_quality/eqhandle.cpp meshlab/src
  #include "eqhandle.h"
  #include <QMouseEvent>
  #include <QGraphicsSceneMouseEvent>
-+#include <cmath.h>
++#include <cmath>
  
  EqHandle::EqHandle(CHART_INFO *environment_info, QColor color, QPointF position, 
  				   EQUALIZER_HANDLE_TYPE type, EqHandle** handles, qreal* midHandlePercentilePosition, QDoubleSpinBox* spinbox,
