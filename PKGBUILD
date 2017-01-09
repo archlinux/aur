@@ -1,6 +1,6 @@
 # Maintainer: Pablo Moyano (p4block)
 pkgname=gtksourceview3-highlight-smali
-pkgver=.
+pkgver=LATEST
 pkgrel=1
 pkgdesc="Smali (Dalvik bytecode) syntax highlighter for GTK apps like Gedit"
 arch=('any')
