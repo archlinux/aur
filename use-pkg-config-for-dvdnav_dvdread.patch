@@ -1,0 +1,74 @@
+diff --git a/configure b/configure
+index 95a5ae8f7..7e982a436 100755
+--- a/configure
++++ b/configure
+@@ -459,8 +459,6 @@ Use these options if autodetection fails:
+   --extra-libs-mplayer=FLAGS  extra linker flags for MPlayer
+ 
+   --with-sdl-config=PATH      path to sdl*-config
+-  --with-dvdnav-config=PATH   path to dvdnav-config
+-  --with-dvdread-config=PATH  path to dvdread-config
+ 
+ This configure script is NOT autoconf-based, even though its output is similar.
+ It will try to autodetect all configuration options. If you --enable an option
+@@ -544,8 +542,6 @@ _xmms=no
+ _vcd=auto
+ _bluray=auto
+ _dvdnav=auto
+-_dvdnavconfig=dvdnav-config
+-_dvdreadconfig=dvdread-config
+ _dvdread=auto
+ _dvdread_internal=auto
+ _libdvdcss_internal=auto
+@@ -656,12 +652,6 @@ for ac_option do
+   --with-sdl-config=*)
+     _sdlconfig=$(echo $ac_option | cut -d '=' -f 2)
+     ;;
+-  --with-dvdnav-config=*)
+-    _dvdnavconfig=$(echo $ac_option | cut -d '=' -f 2)
+-    ;;
+-  --with-dvdread-config=*)
+-    _dvdreadconfig=$(echo $ac_option | cut -d '=' -f 2)
+-    ;;
+ 
+   --extra-cflags=*)
+     extra_cflags="$extra_cflags $(echo $ac_option | cut -d '=' -f 2-)"
+@@ -4263,8 +4254,8 @@ if test "$_dvdread_internal" = auto ; then
+ elif test "$_dvdread" = auto ; then
+   _dvdread=no
+   if test "$_dl" = yes; then
+-    _dvdreadcflags=$($_dvdreadconfig --cflags 2> /dev/null)
+-    _dvdreadlibs=$($_dvdreadconfig --libs 2> /dev/null)
++    _dvdreadcflags=$(pkg-config dvdread --cflags 2> /dev/null)
++    _dvdreadlibs=$(pkg-config dvdread --libs 2> /dev/null)
+     if header_check dvdread/dvd_reader.h $_dvdreadcflags $_dvdreadlibs $_ld_dl ; then
+       _dvdread=yes
+       extra_cflags="$extra_cflags $_dvdreadcflags"
+@@ -5208,13 +5199,13 @@ if test "$_dvdnav" = auto ; then
+     dvdnav_internal=yes
+     res_comment="internal"
+   else
+-    $_dvdnavconfig --version --minilibs >> $TMPLOG 2>&1 || _dvdnav=no
++    pkg-config dvdnav --libs >> $TMPLOG 2>&1 || _dvdnav=no
+   fi
+ fi
+ if test "$_dvdnav" = auto ; then
+   _dvdnav=no
+-  _dvdnavdir=$($_dvdnavconfig --cflags)
+-  _dvdnavlibs=$($_dvdnavconfig --libs)
++  _dvdnavdir=$(pkg-config dvdnav --cflags)
++  _dvdnavlibs=$(pkg-config dvdnav --libs)
+   statement_check_broken stdint.h dvdnav/dvdnav.h 'dvdnav_t *dvd = 0' $_dvdnavdir $_dvdnavlibs $_ld_dl $_ld_pthread && _dvdnav=yes
+ fi
+ if test "$_dvdnav" = yes ; then
+@@ -5223,8 +5214,8 @@ if test "$_dvdnav" = yes ; then
+     cflags_libdvdnav="-Ilibdvdnav"
+     inputmodules="dvdnav(internal) $inputmodules"
+   else
+-    extra_cflags="$extra_cflags $($_dvdnavconfig --cflags)"
+-    extra_ldflags="$extra_ldflags $($_dvdnavconfig --minilibs)"
++    extra_cflags="$extra_cflags $(pkg-config dvdnav --cflags)"
++    extra_ldflags="$extra_ldflags $(pkg-config dvdnav --libs)"
+     inputmodules="dvdnav $inputmodules"
+   fi
+ else

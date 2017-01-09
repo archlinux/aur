@@ -1,6 +1,8 @@
---- a/stream/stream_dvdnav.c	2014-06-16 22:09:17.518315836 +0200
-+++ b/stream/stream_dvdnav.c	2014-06-16 22:10:26.558605286 +0200
-@@ -715,13 +715,13 @@
+diff --git a/stream/stream_dvdnav.c b/stream/stream_dvdnav.c
+index 6bdc59d8a..d7237e11c 100644
+--- a/stream/stream_dvdnav.c
++++ b/stream/stream_dvdnav.c
+@@ -715,13 +715,13 @@ static int mp_dvdnav_get_aid_from_format (stream_t *stream, int index, uint8_t l
  
    format = dvdnav_audio_stream_format(priv->dvdnav, lg);
    switch(format) {

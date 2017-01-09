@@ -1,7 +1,8 @@
-diff -rupN a/configure b/configure
---- a/configure	2014-02-24 19:37:11.154636312 +0100
-+++ b/configure	2014-02-24 19:39:33.979771836 +0100
-@@ -3187,7 +3187,7 @@
+diff --git a/configure b/configure
+index 95a5ae8f7..192576867 100755
+--- a/configure
++++ b/configure
+@@ -3187,7 +3177,7 @@ echores "$_smb"
  echocheck "libquvi support"
  if test "$_libquvi" = auto ; then
      _libquvi=no
@@ -10,9 +11,10 @@ diff -rupN a/configure b/configure
          _libquvi=yes
      fi
  fi
-diff -rupN a/stream/quvi.c b/stream/quvi.c
---- a/stream/quvi.c	2014-02-24 19:37:08.347929591 +0100
-+++ b/stream/quvi.c	2014-02-24 19:40:08.693559705 +0100
+diff --git a/stream/quvi.c b/stream/quvi.c
+index 1dde19258..760980cb3 100644
+--- a/stream/quvi.c
++++ b/stream/quvi.c
 @@ -15,7 +15,7 @@
   * with mplayer2.  If not, see <http://www.gnu.org/licenses/>.
   */
@@ -41,13 +43,13 @@ diff -rupN a/stream/quvi.c b/stream/quvi.c
      // The documentation says this will fail on "shortened" URLs.
 -    if (quvi_supported(q, (char *)url) != QUVI_OK) {
 -        quvi_close(&q);
-+    if (quvi_supports(q, (char *) url, QUVI_SUPPORTS_MODE_OFFLINE, 
++    if (quvi_supports(q, (char *) url, QUVI_SUPPORTS_MODE_OFFLINE,
 +                                       QUVI_SUPPORTS_TYPE_ANY) == QUVI_FALSE) {
 +        quvi_free(q);
          return NULL;
      }
  
-@@ -48,13 +46,16 @@
+@@ -48,13 +46,16 @@ struct mp_resolve_result *mp_resolve_quvi(const char *url, struct MPOpts *opts)
      // That call requires an extra net access. quvi_next_media_url() doesn't
      // seem to do anything useful. So we can't really do anything useful
      // except pass through the user's format setting.
@@ -71,13 +73,11 @@ diff -rupN a/stream/quvi.c b/stream/quvi.c
          return NULL;
      }
  
-@@ -62,15 +63,17 @@
-         talloc_zero(NULL, struct mp_resolve_result);
+@@ -63,14 +64,16 @@ struct mp_resolve_result *mp_resolve_quvi(const char *url, struct MPOpts *opts)
  
      char *val;
--
+ 
 -    if (quvi_getprop(m, QUVIPROP_MEDIAURL, &val) == QUVI_OK)
-+    
 +    quvi_media_get(m, QUVI_MEDIA_STREAM_PROPERTY_URL, &val);
 +    if (quvi_ok(q) == QUVI_TRUE)
          result->url = talloc_strdup(result, val);
@@ -94,4 +94,3 @@ diff -rupN a/stream/quvi.c b/stream/quvi.c
  
      if (!result->url) {
          talloc_free(result);
-

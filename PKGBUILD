@@ -1,16 +1,57 @@
 # Maintainer: Gustavo Alvarez <s1lpkn07@gmail.com>
 
 pkgname=mplayer2-build-git
-pkgver=2.0.728.g2c378c7
-pkgrel=7
+pkgver=2.0.728.g2c378c71a
+pkgrel=1
 pkgdesc="A movie player for linux (uses statically linked libav). (GIT version)"
 arch=('i686' 'x86_64')
-depends=('a52dec' 'desktop-file-utils' 'directfb' 'enca' 'faad2' 'fribidi' 'jack' 'lcms2' 'libbluray' 'libbs2b' 'libcaca' 'libcdio-paranoia' 'libdca' 'libgl' 'libmng'
-         'libdv' 'libdvdnav' 'libdvdcss' 'libmad' 'libpulse' 'libquvi' 'libtheora' 'libvdpau' 'libxv' 'libxinerama' 'libxss' 'libxxf86vm' 'lirc-utils' 'mpg123'
-         'nut-multimedia-git' 'portaudio' 'rsound' 'smbclient' 'speex' 'ttf-font' 'xvidcore')
+depends=('a52dec'
+         'desktop-file-utils'
+         'directfb'
+         'enca'
+         'faad2'
+         'fribidi'
+         'jack'
+         'lcms2'
+         'libbluray'
+         'libbs2b'
+         'libcaca'
+         'libcdio-paranoia'
+         'libdca'
+         'libgl'
+         'libmng'
+         'libdv'
+         'libdvdnav'
+         'libdvdcss'
+         'libmad'
+         'libpulse'
+         'libquvi'
+         'libtheora'
+         'libvdpau'
+         'libxv'
+         'libxinerama'
+         'libxss'
+         'libxxf86vm'
+         'lirc-utils'
+         'mpg123'
+         'nut-multimedia-git'
+         'portaudio'
+         'rsound'
+         'smbclient'
+         'speex'
+         'ttf-font'
+         'xvidcore'
+         )
 license=('GPL')
 url="http://www.mplayer2.org/"
-makedepends=('git' 'live-media' 'mesa' 'python' 'python-docutils' 'vstream-client' 'yasm')
+makedepends=('git'
+             'live-media'
+             'mesa'
+             'python'
+             'python-docutils'
+             'vstream-client'
+             'yasm'
+             )
 backup=('etc/mplayer/codecs.conf'
         'etc/mplayer/input.conf')
 provides=('mplayer' 'mplayer2')
@@ -22,34 +63,33 @@ source=('https://dl.dropboxusercontent.com/u/6596386/mplayer2/mplayer2-2.0.tar.x
         'git+http://repo.or.cz/mplayer2.git'
         'libav::git://repo.or.cz/FFMpeg-mirror/mplayer-patches.git'
         'git+https://github.com/libass/libass.git'
-        '0004-use-pkg-config-for-dvdnav.patch'
-        '0005-switch_title-switch-to-next-title-if-no-parameter-pa.patch'
+        'use-pkg-config-for-dvdnav_dvdread.patch'
+        'switch_title-switch-to-next-title-if-no-parameter-passed.patch'
         'stream_dvdnav.diff'
-        'giflib-5.0.patch'
-        'giflib-5.1.patch'
         'libquvi-0.9.patch'
-        'include-samba-4.0.patch'
+        'samba-4.0.patch'
         'vo_gl_locale_fix.patch'
         'patch-libmpcodecs-vd_theora.patch::https://svnweb.freebsd.org/ports/head/multimedia/mplayer2/files/patch-libmpcodecs-vd_theora.c?view=co'
         'patch-libmpdemux-demux_ogg.patch::https://svnweb.freebsd.org/ports/head/multimedia/mplayer2/files/patch-libmpdemux-demux_ogg.c?view=co'
+        'patch-libvo_vo_giflib.patch::https://svnweb.freebsd.org/ports/head/multimedia/mplayer2/files/patch-libvo_vo_gif89a.c?view=co'
+        'patch-libmpdemux-demux_gif.patch::https://svnweb.freebsd.org/ports/head/multimedia/mplayer2/files/patch-libmpdemux-demux_gif.c?view=co'
         )
-sha1sums=('0df8d4e5484128b7b28029273b7704ab5d5419bc'
-          'SKIP'
-          'SKIP'
-          'SKIP'
-          'SKIP'
-          'a073d296dbebfd9caead117eb0edefe317a97fd8'
-          '901d3a80e6c69f1f804c102d1c5b7b294e8d30c9'
-          '0d06ab2bdde0fdabe750ae528b0351149e9640e5'
-          'f8b33a47c4aae10fdd6de246667dd0f7900a3142'
-          '85d54b02f6f59fa9bd785d403c852031dcb517af'
-          '06919a6dc0ae8db9e8ab50b55bb83a26445de51d'
-          '8c2fc1526a413cd821b46fd48ea08364abbf5c4c'
-          '703825cd187fe90c449a299ced54710ced494ed7'
-          'f2b68b21f4cc02546048e2179df88742bd6501d4'
-          '8153505fb503d90f96501577923068af48306f50'
-          )
-install=mplayer2-build-git.install
+sha256sums=('f1d17397bbdfcff2220d8b4bc17e7de5b78488736e21dca2df0d8a3216c85910'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'c26893e024d8146be5a94704e0d461547e6e0dff8a28ca53403e3d094e53a222'
+            '3a3831b0fe08e43263a685e342b53dc1c644ce24efc61765226f217f1ada7490'
+            '239dc3a71091bd6bbcad66fbcddc2d53a41477e6b989acd202f9ed6af7fd0fd6'
+            'b20562a1d485a61dbb6411305841ac113311a7021a70f8e13ad118af0cfe4193'
+            'a420455ed4a791ef8514cc88b7f67130a279580447c9178b3066c0826ddc1519'
+            '8cf89faaa442dafa3430a604050e29b20435c7402a29a13d0a385c38f1556c7e'
+            '4117a80e11039d63c93a537901feaa952c275b85a5f5fc84ac56f38d820a25e1'
+            '74894f00d3f9ff20d0721b4a1d04dd9313167c884a983d19dba9c2aa1c237254'
+            '070b10bad1aa84ed78e15f7500788a7ab536c955c60cbbd330ec19dd86743439'
+            '9f98ba01f9450c68c2638f2597158b5eda579d90d6673914c741f1e7dcf52260'
+            )
 noextract=('mplayer2-2.0.tar.xz')
 
 pkgver() {
@@ -59,7 +99,6 @@ pkgver() {
 
 prepare() {
   cd mplayer2-build
-  git submodule init
   git config submodule.mplayer.url "${srcdir}/mplayer2"
   git config submodule.libass.url "${srcdir}/libass"
   git config submodule.libav.url "${srcdir}/libav"
@@ -75,38 +114,45 @@ prepare() {
   cd mplayer
 
   # Patch to use pkg-config method to get libdvdread/libdvdnav libs/headers info instead dvdnav-config/dvdread-config
-  patch -p1 -i "${srcdir}/0004-use-pkg-config-for-dvdnav.patch"
-  patch -p1 -i "${srcdir}/0005-switch_title-switch-to-next-title-if-no-parameter-pa.patch"
+  patch -p1 -i "${srcdir}/use-pkg-config-for-dvdnav_dvdread.patch"
+  patch -p1 -i "${srcdir}/switch_title-switch-to-next-title-if-no-parameter-passed.patch"
 
   # Fix build with libdvdnav-git
   patch -p1 -i "${srcdir}/stream_dvdnav.diff"
 
   # Fix build with giflib 5.1.x
-  patch -p1 -i "${srcdir}/giflib-5.0.patch"
-  patch -p1 -i "${srcdir}/giflib-5.1.patch"
+  patch -p0 -i "${srcdir}/patch-libvo_vo_giflib.patch"
+  patch -p0 -i "${srcdir}/patch-libmpdemux-demux_gif.patch"
 
-  # use libquvi 0.9x series
+  # Use libquvi 0.9x series
   patch -p1 -i "${srcdir}/libquvi-0.9.patch"
 
   # Fix samba includes
-  patch -p1 -i "${srcdir}/include-samba-4.0.patch"
+  patch -p1 -i "${srcdir}/samba-4.0.patch"
 
   # Fix brawbraw (?)
-  patch -p1 -i "${srcdir}/vo_gl_locale_fix.patch"
+  patch -p0 -i "${srcdir}/vo_gl_locale_fix.patch"
 
   # Fix vd_theora
   patch -p0 -i "${srcdir}/patch-libmpcodecs-vd_theora.patch"
   patch -p0 -i "${srcdir}/patch-libmpdemux-demux_ogg.patch"
 
   # Make Mplayer2 build flags
-  echo "--confdir=/etc/mplayer
---enable-translation
---language=all
---prefix=/usr
---enable-joystick
---enable-gif" > ../mplayer_options
-  echo "--disable-demuxer=hls
---disable-protocol=concat,hls"  > ../libav_options
+  _mplayer_flags=(
+    '--confdir=/etc/mplayer'
+    '--enable-translation'
+    '--language=all'
+    '--prefix=/usr'
+    '--enable-joystick'
+    '--enable-gif'
+    )
+  _libav_flags=(
+    '--disable-demuxer=hls'
+    '--disable-protocol=concat,hls'
+    )
+
+  for i in ${_mplayer_flags[@]}; do echo "${i}" >> ../mplayer_options; done
+  for i in ${_libav_flags[@]}; do echo "${i}" >> ../libav_options; done
 
 }
 

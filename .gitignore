@@ -2,12 +2,9 @@
 !.gitignore
 !.SRCINFO
 !PKGBUILD
-!mplayer2-build-git.install
-!0004-use-pkg-config-for-dvdnav.patch
-!0005-switch_title-switch-to-next-title-if-no-parameter-pa.patch
-!giflib-5.0.patch
-!giflib-5.1.patch
-!include-samba-4.0.patch
+!switch_title-switch-to-next-title-if-no-parameter-passed.patch
+!samba-4.0.patch
 !libquvi-0.9.patch
 !stream_dvdnav.diff
 !vo_gl_locale_fix.patch
+!use-pkg-config-for-dvdnav_dvdread.patch

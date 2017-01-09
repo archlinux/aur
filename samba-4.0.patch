@@ -1,0 +1,26 @@
+diff --git a/configure b/configure
+index 95a5ae8f7..68219e2c4 100755
+--- a/configure
++++ b/configure
+@@ -3170,7 +3160,7 @@ fi
+ if test "$_smb" = auto; then
+   _smb=no
+   for _ld_tmp in "-lsmbclient" "-lsmbclient $_ld_dl" "-lsmbclient $_ld_dl -lnsl" "-lsmbclient $_ld_dl -lssl -lnsl" ; do
+-    statement_check libsmbclient.h 'smbc_opendir("smb://")' $_ld_tmp &&
++    statement_check samba-4.0/libsmbclient.h 'smbc_opendir("smb://")' $_ld_tmp &&
+       extra_ldflags="$extra_ldflags $_ld_tmp" && _smb=yes && break
+   done
+ fi
+diff --git a/stream/stream_smb.c b/stream/stream_smb.c
+index f176bc751..27f3b00d9 100644
+--- a/stream/stream_smb.c
++++ b/stream/stream_smb.c
+@@ -18,7 +18,7 @@
+ 
+ #include "config.h"
+ 
+-#include <libsmbclient.h>
++#include <samba-4.0/libsmbclient.h>
+ #include <unistd.h>
+ 
+ #include "mp_msg.h"
