@@ -1,7 +1,7 @@
 # Maintainer: Daniel Egeberg <daniel.egeberg@gmail.com>
 
 pkgname=plex-trakt-scrobbler
-pkgver=1.3.0
+pkgver=1.3.1
 pkgrel=1
 pkgdesc="Add what you are watching on Plex to trakt.tv"
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ url="https://github.com/trakt/Plex-Trakt-Scrobbler"
 license=('Unknown')
 depends=('plex-media-server')
 source=("https://github.com/trakt/Plex-Trakt-Scrobbler/archive/v${pkgver}.tar.gz")
-sha512sums=('5b745f7bc471b2cd1c69c10c370b85e7a3c5147c0b89794b872bee261d6b52d50d6831b437d4f8bf896cd1a652e4f835dc0d1706a3554011f19dd4b2ca33dfc2')
+sha512sums=('382e358607f3890ae4db0998c58a6ee7b9db2736ea1eaf406fc8b7cdd2a868113ea47c36f3d7ca6345472d2c60386ab2d9c42580163fd71146e1348517b2f19b')
 
 package() {
     cd "Plex-Trakt-Scrobbler-${pkgver}"
