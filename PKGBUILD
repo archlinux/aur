@@ -6,7 +6,7 @@
 
 pkgname=gtkd-git
 pkgver=3.5.0.r2.7ccbaab4
-pkgrel=1
+pkgrel=2
 pkgdesc='D bindings for GTK+ and related libraries.'
 url='http://gtkd.org/'
 license=('LGPL')
