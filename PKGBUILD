@@ -9,7 +9,7 @@ conflicts=('meshlab')
 provides=('meshlab')
 license=('GPL2') depends=('bzip2' 'muparser' 'levmar' 'lib3ds' 'desktop-file-utils' 'glu' 'mpir' 'openssl' 'qt5-base' 'qt5-declarative' 'qt5-script')
 #also create openctm(aur) jhead-lib structuresynth-lib to handle last dep
-makedepends=('git' 'chrpath')
+makedepends=('git')
 install="${pkgname}.install"
 source=("git+https://github.com/cnr-isti-vclab/meshlab.git"
         "git+https://github.com/cnr-isti-vclab/vcglib.git#branch=devel"
@@ -87,13 +87,6 @@ build() {
   cd ..
   qmake meshlab_full.pro -r 
   make
-# The QMAKE_RPATHDIR stuff puts in the path to the compile-time location
-# of libcommon, which won't work at runtime, so we change the rpath here.
-# Ideally upstream would rename the library to libmeshlab, libmeshlabcommon,
-# or the like, so that we could put it in the system library directory
-# and avoid rpath entirely. 
-## <from fedora build script>
-  chrpath -r /usr/lib/meshlab distrib/{meshlab,meshlabserver}
 }
 
 package() {

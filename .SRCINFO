@@ -8,7 +8,6 @@ pkgbase = meshlab-git
 	arch = x86_64
 	license = GPL2
 	makedepends = git
-	makedepends = chrpath
 	depends = bzip2
 	depends = muparser
 	depends = levmar
