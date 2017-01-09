@@ -1,4 +1,5 @@
 pkgbase = mycroft
+	pkgdesc = File format reverse engineering and rapid prototyping tool.
 	pkgver = 0.1
 	pkgrel = 1
 	url = github.com/nyxxxie/mycroft
