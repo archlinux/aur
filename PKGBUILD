@@ -2,8 +2,8 @@
 
 pkgname=dwm-cdown-git
 _gitname=dwm
-pkgver=0.r1747.7fb62b4
-pkgrel=2
+pkgver=0.r1680.5881d23
+pkgrel=1
 pkgdesc="dwm with cdown's personalisations"
 license=('MIT')
 url='https://github.com/cdown/dwm'
