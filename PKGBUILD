@@ -23,7 +23,7 @@ _UNIFONT_VER="6.3.20131217"
 pkgname="grub"
 pkgdesc="GNU GRand Unified Bootloader (2)"
 pkgver=2.02.beta3
-pkgrel=4
+pkgrel=5
 epoch=1
 url="https://www.gnu.org/software/grub/"
 arch=('x86_64' 'i686')
@@ -64,6 +64,7 @@ source=("grub-${_pkgver}::git+git://git.sv.gnu.org/grub.git#tag=${_GRUB_GIT_TAG}
         '0003-10_linux-detect-archlinux-initramfs.patch'
         '0004-add-GRUB_COLOR_variables.patch'
         '0005-10_linux-fix-grouping-of-tests.patch'
+        '0006-efi-properly-terminate-filepath-with-NULL-in-chainloader.patch'
         'grub.default'
         'grub.cfg')
 
@@ -76,6 +77,7 @@ sha256sums=('SKIP'
             'b41e4438319136b5e74e0abdfcb64ae115393e4e15207490272c425f54026dd3'
             'a5198267ceb04dceb6d2ea7800281a42b3f91fd02da55d2cc9ea20d47273ca29'
             'bf712de689a944ac23a0303bbcc223eedf8d4fcb5c94bdc071c71c2444158a7f'
+            'd99f47642d325398873346e25ecb646c387e358e25b05128fa333cc7721a7388'
             'df764fbd876947dea973017f95371e53833bf878458140b09f0b70d900235676'
             'c5e4f3836130c6885e9273c21f057263eba53f4b7c0e2f111f6e5f2e487a47ad')
 
@@ -107,6 +109,10 @@ prepare() {
 
 	msg "Patch to fix grouping of tests for GRUB_DEVICE"
 	patch -Np1 -i "${srcdir}/0005-10_linux-fix-grouping-of-tests.patch"
+	echo
+
+	msg "Patch to properly terminate filepath with NULL in chainloader"
+	patch -Np1 -i "${srcdir}/0006-efi-properly-terminate-filepath-with-NULL-in-chainloader.patch"
 	echo
 
 	msg "Fix DejaVuSans.ttf location so that grub-mkfont can create *.pf2 files for starfield theme"
