@@ -12,7 +12,7 @@ depends=(
   'fonts-meta-base'
   'cantarell-fonts'
 # 'otf-oswald-ib'
-# 'otf-quintessential-ib'
+  'ttf-quintessential'
   'tex-gyre-fonts'
 # 't1-cursor-ib'
   'gsfonts'
@@ -29,7 +29,6 @@ depends=(
 )
 optdepends=(
   'otf-oswald-ib'
-  'otf-quintessential-ib'
   't1-cursor-ib'
   'ttf-gelasio-ib'
   'ttf-merriweather-ib'
