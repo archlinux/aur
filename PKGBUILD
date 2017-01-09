@@ -1,9 +1,14 @@
 # Maintainer: ninov <dev@ninov.de>
 pkgname="brother-mfc-5895cw"
-pkgver="1.1.4"
+pkgver="1.0.0"
 pkgrel=1
+epoch=1
+
+pkgverlpr=1.1.3
 pkgrellpr=4
+pkgvercw=1.1.3
 pkgrelcw=6
+
 pkgdesc="LPR and CUPS driver for the Brother MFC-5895CW, aur package based on the brother-mfc-5890cn package by Morn"
 arch=("i686" "x86_64")
 url="http://solutions.brother.com/linux/en_us/"
@@ -11,8 +16,8 @@ license=('custom:brother commercial license')
 depends=("cups")
 install="$pkgname.install"
 source=(
-	"http://www.brother.com/pub/bsc/linux/dlf/mfc5895cwlpr-$pkgver-$pkgrellpr.i386.rpm"
-	"http://www.brother.com/pub/bsc/linux/dlf/mfc5895cwcupswrapper-$pkgver-$pkgrelcw.i386.rpm"
+	"http://www.brother.com/pub/bsc/linux/dlf/mfc5895cwlpr-$pkgverlpr-$pkgrellpr.i386.rpm"
+	"http://www.brother.com/pub/bsc/linux/dlf/mfc5895cwcupswrapper-$pkgvercw-$pkgrelcw.i386.rpm"
 	'cupswrapper-license.txt'
 	'lpr-license.txt'
 )
@@ -20,7 +25,7 @@ md5sums=(
 	'b31842e87b36fa70842cb55920dce0e0'
 	'723b0b266fa920830dcaf50e4da0e2c8'
 	'97ad0cffd216059e9d1d3121899d8646'
-	'5e87a3dc0f3e3438c088eda0f3565f0d'
+	'aa36745fb35ddff6343bed3ae8dae5eb'
 )
 if test "$CARCH" == x86_64; then
   depends+=('lib32-glibc')
