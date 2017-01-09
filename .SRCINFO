@@ -1,0 +1,14 @@
+pkgbase = latvijas-radio
+	pkgdesc = A very simple interface for to listening to Latvian radio.
+	pkgver = 20170109
+	pkgrel = 1
+	url = http://www.latvijasradio.lsm.lv/lv/lr/
+	arch = any
+	license = MIT
+	depends = ruby
+	depends = mpv
+	source = latvijas-radio
+	sha256sums = e549c2b427aa8846163d174407c1db987fb4e464cefea956b3e091bbdd1e00ca
+
+pkgname = latvijas-radio
+

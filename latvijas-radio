@@ -1,0 +1,19 @@
+#!/usr/bin/env ruby
+
+key = ARGV[0]
+
+stations = \
+    { "1" => "http://lr1mp1.latvijasradio.lv:8012/listen.pls" \
+    , "2" => "http://lr1mp1.latvijasradio.lv:8002/listen.pls" \
+    , "3" => "http://lr1mp1.latvijasradio.lv:8004/listen.pls" \
+    , "4" => "http://lr1mp1.latvijasradio.lv:8020/listen.pls" \
+    , "5" => "http://live.pieci.lv/live19-hq.mp3"
+    }
+
+unless (link = stations[key])
+    puts "usage: #{ $0 } <station>"
+    puts stations.to_a.map(&:inspect)
+    exit
+end
+
+exec 'mpv', link
