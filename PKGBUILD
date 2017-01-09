@@ -15,15 +15,15 @@ optdepends=('python-h5py: for HDF5 input/output'
             'opencl-driver: for sift - OpenCL implementation')
 makedepends=('git' 'cython')
 source=("https://github.com/silx-kit/${pkgname#*-}/archive/v${pkgver}.tar.gz")
-sha1sums=('448d3953e4b35b713570e15c2d785fd8011b0ed1')
+sha256sums=('39c4c7c8facfae0e5a44bff9ff8beed2d5843b5c2abe0fcfed047355383874bf')
 
 build() {
-    cd "${srcdir}/${pkgname#*-}-${pkgver}"
+    cd "${pkgname#*-}-${pkgver}"
     python setup.py build
 }
 
 package() {
-    cd "${srcdir}/${pkgname#*-}-${pkgver}"
+    cd "${pkgname#*-}-${pkgver}"
     python setup.py install --root="${pkgdir}/" --optimize=1
     install -D copyright "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }

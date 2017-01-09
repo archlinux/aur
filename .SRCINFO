@@ -17,7 +17,7 @@ pkgbase = python-silx
 	optdepends = python-pyopencl: for sift - OpenCL implementation
 	optdepends = opencl-driver: for sift - OpenCL implementation
 	source = https://github.com/silx-kit/silx/archive/v0.3.0.tar.gz
-	sha1sums = 448d3953e4b35b713570e15c2d785fd8011b0ed1
+	sha256sums = 39c4c7c8facfae0e5a44bff9ff8beed2d5843b5c2abe0fcfed047355383874bf
 
 pkgname = python-silx
 
