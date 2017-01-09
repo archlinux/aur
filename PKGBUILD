@@ -5,7 +5,7 @@ pkgname=('avidemux-core-git'
          'avidemux-qt-git'
          'avidemux-cli-git'
          )
-pkgver=2.6.15.161225.5c8664c5
+pkgver=2.6.18.170109.036d6686
 pkgrel=1
 pkgdesc="A graphical/cli tool to edit video (filter/re-encode/split). (GIT version)"
 arch=('i686' 'x86_64')
@@ -15,6 +15,7 @@ makedepends=('git'
              'cmake'
              'subversion'
              'yasm'
+             'a52dec'
              'aften'
              'dcaenc'
              'faac'
@@ -22,6 +23,9 @@ makedepends=('git'
              'fribidi'
              'jack2'
              'lame'
+             'libass'
+             'libfdk-aac'
+             'libmad'
              'libdca'
              'libpulse'
              'libva'
@@ -48,7 +52,7 @@ source=('avidemux::git+https://github.com/mean00/avidemux2.git'
 sha256sums=('SKIP'
             '4f751cbb3a65f904f7c0ad68473880e2a9edcda332a293e20ad238280ec52884'
             'c5b5d3d7bcdf4c588a780c12fdac7791ddb0527db438c85b4c1c078507da2f0b'
-            'c400cb7980dc469abc8f09b33196ef3e0968e31826d7feb3ba3e0bc75f83be13'
+            '0b66d6813c0ae190239d62eb2440bf479e0603c4c0f36433dafe6e7e9a325de8'
             'ae6d2c93163b7b760591688c7811dfdd4a952ed9074d8cbdf4953b701f0fa7db'
             'a6541c04d693b8a42c4b8c6371eebb79cf2ba36a37d6558b80f5e27d2c1d93fc'
             )
@@ -89,6 +93,7 @@ build() {
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DFAKEROOT="${srcdir}/fakeroot" \
     -DAVIDEMUX_SOURCE_DIR="${srcdir}/avidemux"
+
   make
   make DESTDIR="${srcdir}/fakeroot" install
 
@@ -98,7 +103,12 @@ build() {
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DPLUGIN_UI=COMMON \
+    -DUSE_EXTERNAL_LIBA52=ON \
+    -DUSE_EXTERNAL_LIBASS=ON \
+    -DUSE_EXTERNAL_LIBMAD=ON \
+    -DUSE_EXTERNAL_MP4V2=ON \
     -DFAKEROOT="${srcdir}/fakeroot"
+
   make
   make DESTDIR="${srcdir}/fakeroot" install
 
@@ -109,6 +119,7 @@ build() {
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DENABLE_QT5=ON \
     -DFAKEROOT="${srcdir}/fakeroot"
+
   make
   make DESTDIR="${srcdir}/fakeroot" install
 
@@ -119,7 +130,12 @@ build() {
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DENABLE_QT5=ON \
     -DPLUGIN_UI=QT4 \
+    -DUSE_EXTERNAL_LIBA52=ON \
+    -DUSE_EXTERNAL_LIBASS=ON \
+    -DUSE_EXTERNAL_LIBMAD=ON \
+    -DUSE_EXTERNAL_MP4V2=ON \
     -DFAKEROOT="${srcdir}/fakeroot"
+
   make
   make DESTDIR="${srcdir}/fakeroot" install
 
@@ -129,6 +145,7 @@ build() {
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DFAKEROOT="${srcdir}/fakeroot"
+
   make
   make DESTDIR="${srcdir}/fakeroot" install
 
@@ -138,7 +155,12 @@ build() {
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DPLUGIN_UI=CLI \
+    -DUSE_EXTERNAL_LIBA52=ON \
+    -DUSE_EXTERNAL_LIBASS=ON \
+    -DUSE_EXTERNAL_LIBMAD=ON \
+    -DUSE_EXTERNAL_MP4V2=ON \
     -DFAKEROOT="${srcdir}/fakeroot"
+
   make
   make DESTDIR="${srcdir}/fakeroot" install
 
@@ -149,19 +171,24 @@ build() {
     -DCMAKE_INSTALL_PREFIX=/usr  \
     -DPLUGIN_UI=SETTINGS \
     -DFAKEROOT="${srcdir}/fakeroot"
+
   make
   make DESTDIR="${srcdir}/fakeroot" install
 }
 
 package_avidemux-core-git() {
   pkgdesc="Core libs for Avidemux. (GIT version)"
-  depends=('aften'
+  depends=('a52dec'
+           'aften'
            'dcaenc'
            'faac'
            'faad2'
            'fribidi'
            'jack2'
            'lame'
+           'libass'
+           'libfdk-aac'
+           'libmad'
            'libdca'
            'libpulse'
            'libva'

@@ -7,11 +7,11 @@ index 0d8cd846..131b278b 100644
  MACRO(ADM_FF_ADD_DUMMY_TARGET)
      if(NOT MSVC)
 -       SET(PARRALLEL "-j4") 
-+        include(ProcessorCount)^M
-+        ProcessorCount(N)^M
-+        if(NOT N EQUAL 0)^M
-+           SET(PARRALLEL -j${N})^M
-+        endif(NOT N EQUAL 0)^M
++        include(ProcessorCount)
++        ProcessorCount(N)
++        if(NOT N EQUAL 0)
++           SET(PARRALLEL -j${N})
++        endif(NOT N EQUAL 0)
      endif(NOT MSVC)
      add_custom_target(         libavutil_dummy ALL
                                         COMMAND ${CMAKE_BUILD_TOOL}  ${PARRALLEL} # We assume make or gnumake when host is unix
