@@ -16,9 +16,8 @@
 API=16
 
 pkgname=kodi-addon-pvr-vdr-vnsi-git
-pkgver=r381.7e11b85
+pkgver=r385.5d54ac0
 pkgrel=1
-_branch=Isengard
 pkgdesc='VDR VNSI PVR client addon for Kodi'
 arch=('armv7h' 'i686' 'x86_64')
 url="https://github.com/kodi-pvr/pvr.vdr.vnsi"
@@ -33,6 +32,7 @@ md5sums=('SKIP')
 case "$API" in
   15)  source[0]="${pkgname}::git+https://github.com/kodi-pvr/pvr.vdr.vnsi.git#branch=Isengard" ;;
   16)  source[0]="${pkgname}::git+https://github.com/kodi-pvr/pvr.vdr.vnsi.git#branch=Jarvis" ;;
+  17)  source[0]="${pkgname}::git+https://github.com/kodi-pvr/pvr.vdr.vnsi.git#branch=Krypton" ;;
   99)  ;;
   *)   error "Unknown API version. Follow instructions in PKGBUILD." && false
 esac
