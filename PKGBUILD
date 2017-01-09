@@ -1,6 +1,6 @@
 # Maintainer: Mathias Bragagia <mathias.bragagia@gmail.com>
 pkgname=kana-p-git
-pkgver=r135.541af6a
+pkgver=r137.3928611
 pkgrel=1
 pkgdesc="Lite Archlinux complete desktop"
 arch=('any')
