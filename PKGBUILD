@@ -2,7 +2,7 @@
 pkgname=mycroft
 pkgver=0.1
 pkgrel=1
-pkgdesc=""
+pkgdesc="File format reverse engineering and rapid prototyping tool."
 url="github.com/nyxxxie/mycroft"
 arch=('i686' 'x86_64')
 license=('GPL')
