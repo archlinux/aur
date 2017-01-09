@@ -6,8 +6,8 @@
 # Maintainer: Tech Guy Software <techguy100official at gmail dot com>
 # macOS port by metacollins, original project by donovan6000, licensed under GPLv3
 pkgname=universal-ifr-extractor-linux-git
-pkgver=r42.f703249
-pkgrel=1
+pkgver=r44.5946b8c
+pkgrel=2
 #epoch=
 pkgdesc="Command-line EFI/UEFI module IFR extractor"
 arch=('x86_64')
@@ -74,7 +74,7 @@ package() {
 	# cleanup existing install to /usr/bin
 	echo "--> Moving ifrextract binary to /usr/bin..."
 	sudo rm -f /usr/bin/ifrextract
-        sudo cp ifrextract /usr/bin/
+    sudo cp ifrextract /usr/bin/
 	
 	# post-install instructions
 	echo "--> Success! Run Universal IFR Extractor in the command line by using the command \"ifrextract\" as the root user."

@@ -14,7 +14,7 @@ Ported to Linux by TGSoftware from metacollins' port, 2016
 
 Initial release (11/27/2016)
 
-## AUR (Arch User Repository) Package 
+## AUR (Arch User Repository) Package
 Run `pacman -S universal-ifr-extractor-linux-git` as the root user.
 
 Link: https://aur.archlinux.org/packages/universal-ifr-extractor-linux-git/
