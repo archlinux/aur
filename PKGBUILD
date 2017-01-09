@@ -1,50 +1,49 @@
-# Maintainer: Po-An,Yang(Antonio) <yanganto@gmail.com>
-pkgname=networkminer
-pkgver=2.0
-pkgrel=2
-epoch=
-pkgdesc="A packet analyzer"
+# Maintainer:  Chris Severance aur.severach aATt spamgourmet dott com
+# Contributor: Po-An,Yang(Antonio) <yanganto gmail.com>
+
+# Todo: If there'a any files left in they cache they should probably be deleted on uninstall
+
+set -u
+pkgname='networkminer'
+pkgver='2.0'
+pkgrel='3'
+pkgdesc='A packet analyzer'
 arch=('any')
-url="http://www.netresec.com/"
+url='http://www.netresec.com/'
 license=('GPL2')
-groups=()
 depends=('mono')
-makedepends=('unzip')
-checkdepends=()
-optdepends=()
-provides=()
-conflicts=()
-replaces=()
-backup=()
-options=()
-install=
-changelog=
-source=("https://www.netresec.com/?download=NetworkMiner")
-noextract=("NetworkMiner_2-0.zip")
-md5sums=("d094ec9b3fb673ca9c24705be9da1ac9")
-validpgpkeys=()
+_srcname="NetworkMiner_${pkgver//\./-}"
+source=("${_srcname}.zip::https://www.netresec.com/?download=NetworkMiner")
+sha256sums=('36251ea16966954412b804a0d7b51bcd077fff8f138cfb1fd06d3589fb5cd0a5')
 
-prepare() {
-	mv \?download=NetworkMiner NetworkMiner_2-0.zip
-	unzip -o NetworkMiner_2-0.zip 
-}
-
-build() {
-	echo No build needed
-}
-check(){
-	echo No check needed
-}
 package() {
-	mkdir -p $pkgdir/opt/NetworkMiner
-	cp -R $srcdir/NetworkMiner_2-0 $pkgdir/opt/NetworkMiner/
-	chmod +x $pkgdir/opt/NetworkMiner/NetworkMiner_2-0/NetworkMiner.exe
-	chmod -R go+w $pkgdir/opt/NetworkMiner/NetworkMiner_2-0/AssembledFiles/
-	chmod -R go+w $pkgdir/opt/NetworkMiner/NetworkMiner_2-0/Captures/
-	echo 'mono /opt/NetworkMiner/NetworkMiner_2-0/NetworkMiner.exe' > $pkgdir/opt/NetworkMiner/Networkminer.sh
-	chmod +x $pkgdir/opt/NetworkMiner/Networkminer.sh
+  set -u
+  install -d "${pkgdir}/opt/"
+  mv "${srcdir}/${_srcname}" "${pkgdir}/opt/NetworkMiner"
+  #chmod +x "${pkgdir}/opt/NetworkMiner/NetworkMiner.exe"
+  chmod -R go+w "${pkgdir}/opt/NetworkMiner/AssembledFiles/" "${pkgdir}/opt/NetworkMiner/Captures/"
 
-	mkdir -p $pkgdir/usr/bin
-	ln -s /opt/NetworkMiner/Networkminer.sh $pkgdir/usr/bin/networkminer
+  # Launcher
+  install -Dm755 <(cat << EOF
+#!/bin/sh
+mono /opt/NetworkMiner/NetworkMiner.exe
+EOF
+  ) "${pkgdir}/usr/bin/Networkminer.sh"
+
+  # Desktop file for config tool
+  install -Dm644 <(cat << EOF
+[Desktop Entry]
+Name=Network Miner
+GenericName=Packet analyser
+Comment=NetworkMiner packet analyser
+Exec=Networkminer.sh
+Terminal=false
+Type=Application
+#Icon=
+Categories=Application;Utilities;
+MimeType=application/x-executable
+EOF
+  ) "${pkgdir}/usr/share/applications/NetworkMiner.desktop"
+  set +u
 }
-
+set +u
