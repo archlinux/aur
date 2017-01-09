@@ -1,7 +1,7 @@
 # Maintainer: Conor Anderson <conor@conr.ca>
 pkgname=zazu-bin
 _pkgname=${pkgname%-bin}
-pkgver=0.2.3
+pkgver=0.3.0
 pkgrel=1
 pkgdesc='A fully extensible and open source launcher for hackers, creators and dabblers.'
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=('alsa-lib' 'gconf' 'gtk2' 'libxss' 'libxtst' 'nss')
 makedepends=('gendesk' 'npm')
 provides=('zazu')
 source=("https://github.com/tinytacoteam/${_pkgname}/releases/download/v${pkgver}/${_pkgname}-v${pkgver}-linux-x64.deb")
-sha256sums=('f64951746db0165b559bb0aecc06d563ef1301e70dc7b1ab5f0ab2a89163e3e7')
+sha256sums=('19b6f2b462a7c87a4e91925977330a8bb8c9313b483028215b845f69bc336f86')
 
 prepare() {
   gendesk -f -n --name=Zazu --pkgname="${_pkgname}" --pkgdesc="${pkgdesc}" --exec="${_pkgname}" --categories="Utility"
