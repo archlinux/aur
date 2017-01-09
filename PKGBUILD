@@ -2,7 +2,7 @@
 
 _pkgname=epiphany
 pkgname=$_pkgname-git
-pkgver=3.23.3.1.g573bc6e
+pkgver=3.23.3+36+g9525654e9
 pkgrel=1
 install=epiphany.install
 pkgdesc="A GNOME web browser based on the WebKit rendering engine."
@@ -30,7 +30,7 @@ sha256sums=('SKIP'
 
 pkgver() {
   cd "$srcdir/$_pkgname"
-  git describe --always | sed 's|-|.|g'
+  git describe --always | sed 's|-|+|g'
 }
 
 prepare() {
@@ -47,7 +47,6 @@ build() {
   cd "$srcdir/$_pkgname"
   ./configure --prefix=/usr --sysconfdir=/etc \
       --localstatedir=/var --disable-maintainer-mode \
-      --with-libhttpseverywhere --enable-firefox-sync \
       --disable-Werror
   make
 }
