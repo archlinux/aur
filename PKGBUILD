@@ -1,7 +1,7 @@
 # Maintainer: TGS <techguy100official at gmail dot com>
 pkgname=spotify-web-player-for-linux
 pkgver=1.0.0
-pkgrel=2
+pkgrel=3
 epoch=
 pkgdesc="A Spotify Web Player wrapper in Electron (64-bit only)"
 arch=('x86_64')
