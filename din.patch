@@ -1,0 +1,22 @@
+diff -u trunk/src/Makefile.am patched-trunk/src/Makefile.am
+--- trunk/src/Makefile.am	2017-01-09 12:15:26.299591047 +0800
++++ patched-trunk/src/Makefile.am	2017-01-09 12:40:56.929641301 +0800
+@@ -1,5 +1,5 @@
+ AM_CXXFLAGS = -I ../include -I /usr/include/tcl -I /usr/include/tcl8.5 -Wall -D_GNU_SOURCE=1 -D_THREAD_SAFE -DHAVE_OPENGL -D__UNIX_JACK__ -D__LICENSED__ -fpermissive
+-LIBS +=  -ltcl8.5 -lSDL -lGL -lpthread -ljack
++LIBS +=  -ltcl8.6 -lSDL -lGL -lpthread -ljack
+ 
+ bin_PROGRAMS = din
+ din_SOURCES = arrow_button.cc audio.cc authors_note.cc basic_editor.cc beat2value.cc bit_display.cc button.cc checkbutton.cc chrono.cc circler.cc command.cc compressor.cc console.cc console_iterator.cc countries.cc cross_button.cc curve.cc curve_display.cc curve_editor.cc curve_library.cc curve_mixer.cc curve_picker.cc custom_periodic.cc delay.cc din.cc drone.cc fader.cc fft.cc field.cc filled_button.cc font.cc font_editor.cc fractaliser.cc globals.cc glyph.cc gravity.cc help.cc item_list.cc keyboard_keyboard.cc label.cc levels.cc line.cc lissajous.cc listeners.cc main.cc menu.cc mesh.cc midi_in.cc minus_button.cc mocap.cc mondrian.cc morpher.cc morse_code.cc multi_curve.cc note.cc number.cc oscilloscope.cc phrasor.cc play.cc plugin.cc plugin_browser.cc plus_button.cc range.cc recorder.cc rose_milker.cc scale_info.cc scale_notes.cc scalelist.cc separator.cc settings.cc sine_mixer.cc solver.cc sounder.cc sounding_board.cc spiraler.cc starrer.cc superformula.cc tap_bpm.cc tcl_interp.cc textboard.cc tokenizer.cc trail.cc triggered_note.cc ui.cc ui_sin_cos_radius.cc viewwin.cc warper.cc widget.cc kiss_fft.c RtAudio.cpp RtMidi.cpp
+diff -u trunk/src/Makefile.in patched-trunk/src/Makefile.in
+--- trunk/src/Makefile.in	2017-01-09 12:15:26.302924380 +0800
++++ patched-trunk/src/Makefile.in	2017-01-09 12:40:42.306307494 +0800
+@@ -124,7 +124,7 @@
+ INSTALL_STRIP_PROGRAM = @INSTALL_STRIP_PROGRAM@
+ LDFLAGS = @LDFLAGS@
+ LIBOBJS = @LIBOBJS@
+-LIBS = @LIBS@ -ltcl8.5 -lSDL -lGL -lpthread -ljack
++LIBS = @LIBS@ -ltcl8.6 -lSDL -lGL -lpthread -ljack
+ LTLIBOBJS = @LTLIBOBJS@
+ MAKEINFO = @MAKEINFO@
+ MKDIR_P = @MKDIR_P@

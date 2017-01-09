@@ -1,0 +1,10 @@
+post_install() {
+    echo
+	echo "  If you are upgrading, please remove your HOME/.config/din folder manually so that it can be updated"
+    echo
+}
+post_upgrade() {
+    echo
+	echo "  If you are upgrading, please remove your HOME/.config/din folder manually so that it can be updated"
+    echo
+}

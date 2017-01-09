@@ -1,31 +1,35 @@
 # Maintainer: muzhed <chustokes@126.com>
 
 pkgname=din
-pkgver=25
+pkgver=26
 pkgrel=1
 pkgdesc="A sound synthesizer and musical instrument."
 arch=("i686" "x86_64")
 url="http://dinisnoise.org/"
 license=('GPL2')
-depends=('jack-audio-connection-kit' 'libgl' 'sdl' 'tcl')
+depends=('jack' 'libgl' 'sdl' 'tcl')
 makedepends=('boost' 'subversion')
-source=('svn+svn://jagernot.xyz/home/svn/din25'
+install=$pkgname.install
+source=('svn+svn://jagernot.xyz/home/svn/din/trunk'
+        din.patch
         din.png
         din.desktop)
 md5sums=('SKIP'
+         '1135196ec010ddcb26b4539d19ae26e8'
          '50ca4dc107eaa0d5b6a1efe21c469bd7'
          'e38840354b0f197079e6bbeda03c8613')
 
 
 build() {
-  cd "$srcdir"/din25/trunk
+  cd "$srcdir"/trunk
 
+  patch -p1 < ../din.patch
   ./configure CXXFLAGS=-O3 CFLAGS=-O3
   make
 }
 
 package() {
-  cd "$srcdir"/din25/trunk
+  cd "$srcdir"/trunk
   install -Dm755 src/din "$pkgdir/usr/lib/din/din"
   cp -r "src/factory" "$pkgdir/usr/lib/din"
   ln -s "/usr/lib/din/factory" "$pkgdir/usr/lib/din/user"
