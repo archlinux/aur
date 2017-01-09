@@ -132,7 +132,7 @@ source=("https://download.zarafa.com/community/final/${_pkgmajver}/${pkgver}/zcp
 	'zarafa-tools::git+https://github.com/zarafagroupware/zarafa-tools.git'
 	'python-zarafa::git+https://github.com/zarafagroupware/python-zarafa.git'
 	'zarafa-inspector::git+https://github.com/zarafagroupware/zarafa-inspector.git'
-	'zarafa-pietma::git+https://git.pietma.com/pietma/com-pietma-zarafa.git#tag=${_pietmaver}'
+	"zarafa-pietma::git+https://git.pietma.com/pietma/com-pietma-zarafa.git#tag=${_pietmaver}"
 	'ECDBDef.h'
 	'ECDatabaseMySQL.cpp'
 	'ECDatabaseUpdate.h'
