@@ -8,7 +8,8 @@ arch=('i686' 'x86_64')
 url="http://code.google.com/p/vadorz"
 license=('BSD')
 depends=('ncurses')
-source=(http://vadorz.googlecode.com/files/vadorz$pkgver.tar.gz)
+#source=(http://vadorz.googlecode.com/files/vadorz$pkgver.tar.gz)
+source=("http://kmkeen.com/tmp/vadorz$pkgver.tar.gz")
 md5sums=('fb96fe182c95c97888db45d99d920cd6')
 
 build() {
