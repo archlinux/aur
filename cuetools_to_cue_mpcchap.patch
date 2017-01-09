@@ -1,0 +1,30 @@
+diff --git a/mpcchap.c.orig b/mpcchap.c
+index 7791f65..d4ed7a2 100644
+--- a/mpcchap.c.orig
++++ b/mpcchap.c
+@@ -25,7 +25,7 @@
+ #include <inttypes.h>
+ #include <sys/stat.h>
+ 
+-#include <cuetools/cuefile.h>
++#include <libcue/libcue.h>
+ 
+ // tags.c
+ void    Init_Tags        ( void );
+@@ -161,14 +161,14 @@
+ mpc_status add_chaps_cue(char * mpc_file, char * chap_file, mpc_demux * demux, mpc_streaminfo * si)
+ {
+ 	Cd *cd = 0;
+-	int nchap, format = UNKNOWN;
++	int nchap;
+ 	struct stat stbuf;
+ 	FILE * in_file;
+ 	int chap_pos, end_pos, chap_size, i;
+ 	char * tmp_buff;
+     mpc_status ret = MPC_STATUS_OK;
+ 
+-	if (0 == (cd = cf_parse(chap_file, &format))) {
++	if (0 == (cd = cue_parse_file(chap_file))) {
+ 		fprintf(stderr, "%s: input file error\n", chap_file);
+ 		return !MPC_STATUS_OK;
+ 	}

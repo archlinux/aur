@@ -1,12 +1,11 @@
 # Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgbase=musepack-tools-svn
-pkgname=('libcuefile-svn'
-         'libreplaygain-svn'
+pkgname=('libreplaygain-svn'
          'libmpcdec-svn'
          'musepack-tools-svn'
          )
-pkgver=481
+pkgver=495
 pkgrel=1
 pkgdesc="Musepack sv8 decoder/encoder tools and libs (SVN Version)"
 arch=('i686' 'x86_64')
@@ -15,49 +14,45 @@ license=('LGPL')
 makedepends=('subversion'
              'cmake'
              'glibc'
+             'libcue'
              )
-source=('libcuefile::svn+http://svn.musepack.net/libcuefile/trunk'
-        'libreplaygain::svn+http://svn.musepack.net/libreplaygain'
+source=('libreplaygain::svn+http://svn.musepack.net/libreplaygain'
         'libmpc::svn+http://svn.musepack.net/libmpc/trunk'
+        'cuetools_to_cue_mpcchap.patch'
         )
-sha1sums=('SKIP'
-          'SKIP'
-          'SKIP')
+sha256sums=('SKIP'
+            'SKIP'
+            'SKIP'
+            )
+
+pkgver() {
+  cd libmpc
+  echo "$(svnversion)"
+}
 
 prepare() {
-  mkdir -p build-{libcuefile,libreplaygain,libmpc}
+  mkdir -p build-{libreplaygain,libmpc}
 }
 
 build() {
-  cd "${srcdir}/build-libcuefile"
-  cmake ../libcuefile \
-    -DCMAKE_BUILD_TYPE=Release \
-    -DCMAKE_INSTALL_PREFIX=/usr
-  make
-
   cd "${srcdir}/build-libreplaygain"
   cmake  ../libreplaygain \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr
   make
 
+  cd "${srcdir}/libmpc/mpcchap"
+  patch -p1 -i "${srcdir}/cuetools_to_cue_mpcchap.patch"
+
   cd "${srcdir}/build-libmpc"
   cmake  ../libmpc \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DREPLAY_GAIN_LIBRARY:FILEPATH="${srcdir}"/build-libreplaygain/src/libreplaygain.so \
-    -DCUEFILE_LIBRARY:FILEPATH="${srcdir}"/build-libcuefile/src/libcuefile.so
+    -DREPLAY_GAIN_LIBRARY:FILEPATH="${srcdir}/build-libreplaygain/src/libreplaygain.so" \
+    -DCUEFILE_LIBRARY:FILEPATH=/usr/lib/libcue.so \
+    -DCUEFILE_INCLUDE_DIR:FILEPATH=/usr/include/libcue
+
   make
-}
-
-package_libcuefile-svn() {
-  pkgdesc="A library to work with CUE files. (SVN Version)"
-  depends=('glibc')
-  provides=('libcuefile' 'libcuefile.so')
-  conflicts=('libcuefile')
-
-  make -C build-libcuefile DESTDIR="${pkgdir}" install
-  (cd libcuefile/include/cuetools; for i in $(find . -type f); do install -Dm644 "${i}" "${pkgdir}/usr/include/cuetools/${i}"; done)
 }
 
 package_libreplaygain-svn() {
@@ -75,7 +70,7 @@ package_libmpcdec-svn(){
   provides=('libmpcdec' 'libmpcdec.so')
   conflicts=('libmpcdec')
   depends=('glibc')
-  optdepends=('libcuefile-svn: for Musepack (MPC) sv8 chapter editor'
+  optdepends=('libcue: for Musepack (MPC) sv8 chapter editor'
               'libreplaygain-svn: for Musepack (MPC) ReplayGain calculator')
 
   make -C build-libmpc DESTDIR="${pkgdir}" install
@@ -89,7 +84,7 @@ package_musepack-tools-svn() {
   depends=('glibc'
            'libmpcdec-svn'
            )
-  optdepends=('libcuefile-svn: for Musepack (MPC) sv8 chapter editor'
+  optdepends=('libcue: for Musepack (MPC) sv8 chapter editor'
               'libreplaygain-svn: for Musepack (MPC) ReplayGain calculator')
 
   make -C build-libmpc DESTDIR="${pkgdir}" install
