@@ -1,0 +1,13 @@
+post_install() {
+  if ! getent group minio >/dev/null; then
+    groupadd --system minio 
+  fi
+  if ! getent passwd minio >/dev/null; then
+    useradd --system -c 'minio daemon user' -g minio -d / -s /bin/bash minio 
+  fi
+  chown minio:minio /srv/minio
+}
+
+post_upgrade() {
+  post_install $1
+}

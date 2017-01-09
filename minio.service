@@ -1,0 +1,27 @@
+[Unit]
+Description=Minio
+Documentation=https://docs.minio.io
+Wants=network-online.target
+After=network-online.target
+AssertFileIsExecutable=/usr/bin/minio
+
+[Service]
+# Specifies the maximum file descriptor number that can be opened by this process
+LimitNOFILE=65536
+
+Type=simple
+User=minio
+Group=minio
+WorkingDirectory=/srv/minio
+
+EnvironmentFile=-/etc/minio/minio.conf
+ExecStartPre=/bin/bash -c "[ -n \"${MINIO_VOLUMES}\" ] || echo \"Variable MINIO_VOLUMES not set in /etc/defaults/minio\""
+ExecStart=/usr/bin/minio server $MINIO_OPTS $MINIO_VOLUMES
+
+# SIGTERM signal is used to stop Minio
+KillSignal=SIGTERM
+SendSIGKILL=no
+SuccessExitStatus=0
+
+[Install]
+WantedBy=multi-user.target
