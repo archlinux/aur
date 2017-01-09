@@ -10,13 +10,12 @@ pkgrel=1
 pkgdesc='D bindings for GTK+ and related libraries.'
 url='http://gtkd.org/'
 license=('LGPL')
-options=('staticlibs')
 arch=('x86_64' 'i686')
 provides=('gtkd')
 conflicts=('gtkd')
 depends=('liblphobos' 'gtk3')
 makedepends=('ldc') # LDC is currently required to build shared libs.
-optdepends=('pango' 'atk' 'gdk-pixbuf2' 'gtksourceview3' 'gstreamer' 'vte3')
+optdepends=('pango' 'atk' 'gdk-pixbuf2' 'gtksourceview3' 'gstreamer' 'vte3' 'peas')
 source=('git://github.com/gtkd-developers/GtkD.git')
 md5sums=('SKIP')
 
@@ -29,14 +28,15 @@ pkgver() {
 build() {
   cd 'GtkD'
 
-  LDFLAGS='' DC='ldc' make all
+  LDFLAGS='' DC='ldc' make shared-libs shared-gstreamer shared-vte shared-peas
 }
 
 package() {
   cd 'GtkD'
 
-  make prefix='/usr' DESTDIR="${pkgdir}/" install install-gstreamer \
-    install-vte install-shared install-shared-gstreamer install-shared-vte
+  make prefix='/usr' DESTDIR="${pkgdir}/" \
+    install-shared install-shared-gstreamer install-shared-vte install-shared-peas \
+    install-headers install-headers-gstreamer install-headers-vte install-headers-peas
 }
 
 # vim:set ts=2 sw=2 et:
