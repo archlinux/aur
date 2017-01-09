@@ -2,7 +2,7 @@
 
 pkgname=concierge
 pkgver=0.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Think SASS for SSH config files'
 license=('MIT')
 url='https://github.com/9seconds/concierge'
