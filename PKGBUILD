@@ -17,7 +17,7 @@ makedepends=('scons'
              'blitz')
 source=('git+https://github.com/jtambasco/camfr.git'
         'machine_cfg.py')
-md5sums=(3858d6b9e3be29aa3981c2b4fe595fe2
+md5sums=('SKIP'
          db07413af39b15ff25d35b8dd89f2452)
 
 build() {
