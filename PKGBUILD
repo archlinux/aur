@@ -4,22 +4,27 @@
 
 pkgbase=digikam
 pkgname=('digikam' 'kipi-plugins')
-_pkgver=5.3.0
+_pkgver=5.4.0
 pkgver=${_pkgver//-/_} # for beta versions
-pkgrel=6
+pkgrel=1
 pkgdesc="Digital photo management application for KDE"
 arch=('i686' 'x86_64')
 license=('GPL')
 url="http://www.digikam.org/"
 makedepends=('extra-cmake-modules' 'libkipi' 'libksane' 'liblqr' 'opencv' 'boost'
              'doxygen' 'lensfun' 'eigen' 'kdoctools' 'marble' 'kdesignerplugin'
-             'kfilemetadata' 'akonadi-contacts' 'qt5-multimedia' 'threadweaver' 'kcalcore'
+             'kfilemetadata' 'akonadi-contacts' 'qtav' 'threadweaver' 'kcalcore'
              'knotifyconfig' 'libmediawiki' 'libkvkontakte')
-source=("http://download.kde.org/stable/${pkgname}/${pkgname}-${_pkgver}.tar.xz")
-sha1sums=('3a62f6efdfafc37341626cbf0225cd7adc9d0633')
+source=("http://download.kde.org/stable/${pkgname}/${pkgname}-${_pkgver}.tar.xz" digikam-find-qtav.patch)
+sha1sums=('6c58ee30cd84b40acf4427f1bb9dbb8b891eb894'
+          'b170e5eab5a8c40d1c8c8f2d2cfe5e911ad66939')
 
 prepare() {
   mkdir -p build
+
+# Fix QtAV location
+  cd $pkgname-$pkgver
+  patch -p1 -i ../digikam-find-qtav.patch
 }
 
 build() {
@@ -42,7 +47,7 @@ build() {
 package_digikam() {
   pkgdesc="Digital photo management application for KDE"
   depends=('liblqr' 'libkipi' 'lensfun' 'opencv' 'akonadi-contacts'
-	'knotifyconfig' 'libksane' 'kfilemetadata' 'qt5-multimedia' 'marble' 'threadweaver' 'kcalcore')
+	'knotifyconfig' 'libksane' 'kfilemetadata' 'qtav' 'marble' 'threadweaver' 'kcalcore')
   optdepends=('kipi-plugins: export to various online services'
               'hugin: panorama tool' 'qt5-imageformats: support for additional image formats (WEBP, TIFF)')
 
