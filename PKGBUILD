@@ -2,7 +2,7 @@
 
 pkgname=kde-servicemenus-pdf
 pkgver=0.6
-pkgrel=6
+pkgrel=7
 pkgdesc="A KDE service menus for PDF documents from dolphin"
 arch=('any')
 url="http://www.egregorion.net"
@@ -18,7 +18,7 @@ package() {
   install -m 755 ${srcdir}/kde-service-menu-pdf_${pkgver}archlinux/bin/* ${pkgdir}/usr/bin/
   sed -i 's_#!/usr/bin/python_#!/usr/bin/python2_' ${pkgdir}/usr/bin/pydftk
   
-  # fix '--caption'
-  sed -i 's|--caption||g' ${pkgdir}/usr/bin/*.sh
+  # fix '--caption' and message
+  sed -i -r 's|(--caption[^}]*}")||g' ${pkgdir}/usr/bin/*.sh
 }
 
