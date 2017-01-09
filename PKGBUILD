@@ -5,8 +5,8 @@ true && pkgname=(linux-mainline-usermode linux-mainline-usermode-modules)
 pkgbase=linux-mainline-usermode
 _kernelname=${pkgbase#linux}
 _srcname=linux-4.9
-_patchname=patch-4.10-rc2
-pkgver=4.10rc2
+_patchname=patch-4.10-rc3
+pkgver=4.10rc3
 pkgrel=1
 pkgdesc="User mode Linux-mainline kernel and modules"
 arch=('i686' 'x86_64')
@@ -22,7 +22,7 @@ source=(
 	"config-i686" "config-x86_64"
     )
 sha256sums=('029098dcffab74875e086ae970e3828456838da6e0ba22ce3f64ef764f3d7f1a'
-         '358f373a71caabb9597bfe1b3f3fb9a8e71d303d5eca2a6d6534167141290a99'
+            'cc5f910e05edbc4b4cd16beca39274d49c96954d09447101bd477725158b49eb'
          'f001a5860c927c14e12eb6c4c09ad22e57834a0f44d71c9516bc2c2f6f1a290f'
          '2a786756a47a52b77ae4bffb31eadd60a7a717c2e3544a315f1cfe9ba9091f30')
 validpgpkeys=(
