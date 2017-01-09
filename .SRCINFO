@@ -1,0 +1,23 @@
+pkgbase = mycroft
+	pkgver = 0.1
+	pkgrel = 1
+	url = github.com/nyxxxie/mycroft
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = make
+	makedepends = cmake
+	depends = sqlite
+	depends = capstone
+	depends = python
+	depends = openssl
+	depends = gtest
+	depends = qt5-base
+	optdepends = graphviz: doxygen graph support
+	provides = qmycroft
+	provides = libmycroft_core
+	source = git+https://github.com/nyxxxie/mycroft.git
+	sha256sums = SKIP
+
+pkgname = mycroft
+
