@@ -1,6 +1,6 @@
 pkgname=performer-git
 pkgver=1.0.r213.4905818
-pkgrel=1.1
+pkgrel=1.2
 pkgdesc="Audio session manager for live music performances"
 arch=('i686' 'x86_64')
 url="https://github.com/progwolff/performer"
@@ -12,7 +12,7 @@ optdepends=(
     'kdebase-runtime: KDE integration'
     'extra-cmake-modules: KDE integration'
     'kparts: display notes or chords with okular'
-    'okular-git: display notes or chords'
+    'okular: display notes or chords'
     'qt5-webengine: display notes or chords'
     'jackman: automatically restart unresponsive jack server')
 source=('performer::git+https://github.com/progwolff/performer.git')
