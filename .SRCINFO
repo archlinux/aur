@@ -1,6 +1,6 @@
 pkgbase = python-aiohttp
 	pkgdesc = http client/server for asyncio
-	pkgver = 1.1.6
+	pkgver = 1.2.0
 	pkgrel = 2
 	url = http://pypi.python.org/pypi/aiohttp
 	arch = i686
@@ -11,21 +11,21 @@ pkgbase = python-aiohttp
 	arch = aarch64
 	license = Apache
 	makedepends = python-pip
-	depends = python>=3.5
+	depends = python>=3.4.2
 	depends = python-chardet
 	depends = python-multidict
 	depends = python-async-timeout
 	depends = python-yarl
-	source = https://files.pythonhosted.org/packages/source/a/aiohttp/aiohttp-1.1.6.tar.gz
-	md5sums = dc080616b14155a202288bb3dbf07f8b
-	source_arm = https://files.pythonhosted.org/packages/source/a/aiohttp/aiohttp-1.1.6.tar.gz
-	md5sums_arm = dc080616b14155a202288bb3dbf07f8b
-	source_armv6h = https://files.pythonhosted.org/packages/source/a/aiohttp/aiohttp-1.1.6.tar.gz
-	md5sums_armv6h = dc080616b14155a202288bb3dbf07f8b
-	source_armv7h = https://files.pythonhosted.org/packages/source/a/aiohttp/aiohttp-1.1.6.tar.gz
-	md5sums_armv7h = dc080616b14155a202288bb3dbf07f8b
-	source_aarch64 = https://files.pythonhosted.org/packages/source/a/aiohttp/aiohttp-1.1.6.tar.gz
-	md5sums_aarch64 = dc080616b14155a202288bb3dbf07f8b
+	source = https://files.pythonhosted.org/packages/source/a/aiohttp/aiohttp-1.2.0.tar.gz
+	md5sums = a7b25d51bf887ec4f9b87463a6bff6d4
+	source_arm = https://files.pythonhosted.org/packages/source/a/aiohttp/aiohttp-1.2.0.tar.gz
+	md5sums_arm = a7b25d51bf887ec4f9b87463a6bff6d4
+	source_armv6h = https://files.pythonhosted.org/packages/source/a/aiohttp/aiohttp-1.2.0.tar.gz
+	md5sums_armv6h = a7b25d51bf887ec4f9b87463a6bff6d4
+	source_armv7h = https://files.pythonhosted.org/packages/source/a/aiohttp/aiohttp-1.2.0.tar.gz
+	md5sums_armv7h = a7b25d51bf887ec4f9b87463a6bff6d4
+	source_aarch64 = https://files.pythonhosted.org/packages/source/a/aiohttp/aiohttp-1.2.0.tar.gz
+	md5sums_aarch64 = a7b25d51bf887ec4f9b87463a6bff6d4
 
 pkgname = python-aiohttp
 

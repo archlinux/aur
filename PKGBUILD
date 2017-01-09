@@ -1,13 +1,13 @@
 # Maintainer: Philipp A. <flying-sheep@web.de>
 _name=aiohttp
 pkgname=python-aiohttp
-pkgver=1.1.6
+pkgver=1.2.0
 pkgrel=2
 pkgdesc='http client/server for asyncio'
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="http://pypi.python.org/pypi/$_name"
 license=('Apache')
-depends=('python>=3.5' 'python-chardet' 'python-multidict' 'python-async-timeout' 'python-yarl')
+depends=('python>=3.4.2' 'python-chardet' 'python-multidict' 'python-async-timeout' 'python-yarl')
 makedepends=('python-pip')
 
 # binary packages
@@ -25,7 +25,7 @@ source_arm=("$_s")
 source_armv6h=("$_s")
 source_armv7h=("$_s")
 source_aarch64=("$_s")
-_m=('dc080616b14155a202288bb3dbf07f8b')
+_m=('a7b25d51bf887ec4f9b87463a6bff6d4')
 md5sums=("$_m")
 md5sums_arm=("$_m")
 md5sums_armv6h=("$_m")
