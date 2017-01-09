@@ -1,7 +1,7 @@
 # Maintainer: Tyler Swagar <buttpickle69@shaw.ca>
 
 pkgname=ttf-quintessential
-pkgver=1
+pkgver=1.001
 pkgrel=1
 pkgdesc='Calligraphic typeface from Google by Brian J. Bonislawsky'
 arch=('any')
