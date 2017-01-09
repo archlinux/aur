@@ -15,7 +15,7 @@ provides=('gtkd')
 conflicts=('gtkd')
 depends=('liblphobos' 'gtk3')
 makedepends=('git' 'ldc') # LDC is currently required to build shared libs.
-optdepends=('pango' 'atk' 'gdk-pixbuf2' 'gtksourceview3' 'gstreamer' 'vte3' 'peas')
+optdepends=('pango' 'atk' 'gdk-pixbuf2' 'gtksourceview3' 'gstreamer' 'vte3' 'libpeas')
 source=('git://github.com/gtkd-developers/GtkD.git')
 md5sums=('SKIP')
 
