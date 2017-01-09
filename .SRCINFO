@@ -1,7 +1,7 @@
 pkgbase = opengm-git
 	pkgdesc = A C++ Library for Discrete Graphical Models
 	pkgver = r2125.31e01c6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/opengm/opengm
 	arch = i686
 	arch = x86_64

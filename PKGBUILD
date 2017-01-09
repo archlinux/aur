@@ -2,7 +2,7 @@
 
 pkgname='opengm-git'
 pkgver=r2125.31e01c6
-pkgrel=1
+pkgrel=2
 pkgdesc="A C++ Library for Discrete Graphical Models"
 arch=('i686' 'x86_64')
 url="https://github.com/opengm/opengm"
