@@ -21,12 +21,12 @@ md5sums=('SKIP'
          db07413af39b15ff25d35b8dd89f2452)
 
 build() {
-  cd "${pkgname}_${pkgver}"
+  cd "${pkgname}"
   mv ../machine_cfg.py .
   python2 setup.py build
 }
 
 package() {
-  cd "${pkgname}_${pkgver}"
+  cd "${pkgname}"
   python2 setup.py install --root="$pkgdir" --optimize=1
 }
