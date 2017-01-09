@@ -1,6 +1,6 @@
 pkgbase = debug_assert-git
 	pkgdesc = Simple, flexible and modular assertion macro
-	pkgver = 1.0.r1.g91dbbf8
+	pkgver = 1.0.r2.g6086f3c
 	pkgrel = 1
 	url = https://github.com/foonathan/debug_assert
 	arch = any
