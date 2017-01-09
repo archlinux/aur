@@ -11,7 +11,7 @@
 # Maintainer: Tech Guy Software <techguy100official at gmail dot com>
 pkgname=clevo-indicator-git
 pkgver=r17.fa0a7af
-pkgrel=2
+pkgrel=3
 #epoch=
 pkgdesc="Command-line fan control utility for Clevo laptops"
 arch=('x86_64')
@@ -47,29 +47,26 @@ prepare() {
 build() {
 	cd "$pkgname"
 	#./configure --prefix=/usr
-	make install
 }
 
 package() {
+    # make from source and install to /usr/bin
 	cd "$pkgname"
-	#make DESTDIR="$pkgdir/" install
+	make DESTDIR="$pkgdir/" install
 
 	# move clevo-indicator binary to /usr/bin for execution 
 	# in command line
 
-	echo "--> Removing existing binaries..."
-	sudo rm -f "/usr/bin/clevo-indicator"
-
-	echo "--> Moving files to /usr/bin..."
-
-	sudo mv "/usr/local/bin/clevo-indicator" "/usr/bin/"
-	echo "--> Success! Run the fan control utility using the command \"clevo-indicator\" as the root user."
+	#echo "--> Removing existing binaries..."
+	#sudo rm -f "/usr/bin/clevo-indicator"
+	
+	echo "--> Installation successful! Run the fan control utility using the command \"clevo-indicator\" as the root user."
 }
 
-makepkgclean() {
-	echo "--> Cleaning up files created by makepkg..."
-	makepkg -code
-	echo "--> Removing command-line script/binary from /usr/local/bin directory..."
-	cd "/usr/local/bin"
-	sudo rm -rf "$pkgname"
-}
+# makepkgclean() {
+#	echo "--> Cleaning up files created by makepkg..."
+#	makepkg -Code
+#	echo "--> Removing command-line script/binary from /usr/local/bin directory..."
+#	cd "/usr/local/bin"
+#	sudo rm -rf "$pkgname"
+#}
