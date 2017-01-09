@@ -16,7 +16,7 @@ WorkingDirectory=/srv/minio
 
 EnvironmentFile=-/etc/minio/minio.conf
 ExecStartPre=/bin/bash -c "[ -n \"${MINIO_VOLUMES}\" ] || echo \"Variable MINIO_VOLUMES not set in /etc/defaults/minio\""
-ExecStart=/usr/bin/minio server $MINIO_OPTS $MINIO_VOLUMES
+ExecStart=/usr/bin/minio server $MINIO_OPTS $MINIO_VOLUMES -C /srv/minio/conf/
 
 # SIGTERM signal is used to stop Minio
 KillSignal=SIGTERM

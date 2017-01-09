@@ -3,7 +3,7 @@ post_install() {
     groupadd --system minio 
   fi
   if ! getent passwd minio >/dev/null; then
-    useradd --system -c 'minio daemon user' -g minio -d / -s /bin/bash minio 
+    useradd --system -c 'minio daemon user' -g minio -d / -s /bin/false minio 
   fi
   chown minio:minio /srv/minio
 }
