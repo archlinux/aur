@@ -5,7 +5,7 @@
 _pkgbase=gensim
 pkgbase=python-gensim
 pkgname=('python-gensim' 'python2-gensim')
-pkgver=0.12.1
+pkgver=0.13.4.1
 pkgrel=1
 pkgdesc="Python framework for fast Vector Space Modelling"
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ url="http://nlp.fi.muni.cz/projekty/gensim/"
 license=('LGPL')
 makedepends=('python-setuptools' 'python2-setuptools' 'python-scipy' 'python2-scipy' 'cython' 'cython2' 'python-six' 'python2-six')
 source=("http://pypi.python.org/packages/source/g/$_pkgbase/$_pkgbase-${pkgver//_/-}.tar.gz")
-md5sums=('66c279a2b00de4b3da9e64d4d2e846a7')
+md5sums=('baa36f0b845162abeadd1bb66511a53c')
 
 
 prepare() {
