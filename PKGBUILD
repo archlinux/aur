@@ -1,22 +1,21 @@
 # vim: set filetype=sh:
 # Maintainer: Yen Chi Hsuan <yan12125@gmail.com>
 
-pkgname=python-jedihttp-git
-pkgver=r147.d6fcdc2
+pkgbase=python-jedihttp-git
+pkgname=(python-jedihttp-git python2-jedihttp-git)
+pkgver=r150.c376aad
 pkgrel=1
 pkgdesc="Simple http wrapper around jedi (with yan12125's packaging patch)"
 license=('Apache')
 arch=('any')
 url='https://github.com/vheon/JediHTTP'
-depends=('python-bottle' 'python-jedi' 'python-waitress')
-makedepends=('python-setuptools' 'git')
+makedepends=('python-setuptools' 'python2-setuptools' 'git')
 source=('git+https://github.com/vheon/JediHTTP'
         'setup.py'
         'allow-missing-vendor.patch')
 sha256sums=('SKIP'
             '6454c24288fad1a79ed0b3c7fa70902b87084384037ce5edab5be4eb4e4138d1'
             '8702390e2643fe7e64d0b4c9477ffec1d83d1865bd21ab4b61f9ed8aa130c013')
-conflicts=('python2-jedihttp-git')
 
 pkgver() {
   cd "$srcdir/JediHTTP"
@@ -33,7 +32,18 @@ prepare() {
     mv jedihttp{,-main}.py
 }
 
-package() {
+package_python-jedihttp-git() {
+    depends=('python-bottle' 'python-jedi' 'python-waitress')
+    conflicts=('python2-jedihttp-git')
+
     cd "${srcdir}/JediHTTP"
     python setup.py install --root="${pkgdir}" --optimize=1
+}
+
+package_python2-jedihttp-git() {
+    depends=('python2-bottle' 'python2-jedi' 'python2-waitress')
+    conflicts=('python-jedihttp-git')
+
+    cd "${srcdir}/JediHTTP"
+    python2 setup.py install --root="${pkgdir}" --optimize=1
 }
