@@ -1,7 +1,7 @@
 pkgbase = rtlwifi_new-dkms
 	pkgdesc = Newest Realtek rtlwifi codes
-	pkgver = r111.3498e57
-	pkgrel = 1
+	pkgver = r221.01cbe67
+	pkgrel = 2
 	url = https://github.com/lwfinger/rtlwifi_new
 	install = rtlwifi_new-dkms.install
 	arch = i686

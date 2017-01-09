@@ -2,8 +2,8 @@
 
 pkgname=rtlwifi_new-dkms
 _pkgname=rtlwifi_new
-pkgver=r111.3498e57
-pkgrel=1
+pkgver=r221.01cbe67
+pkgrel=2
 pkgdesc='Newest Realtek rtlwifi codes'
 arch=('i686' 'x86_64')
 url='https://github.com/lwfinger/rtlwifi_new'
@@ -31,4 +31,9 @@ package() {
 	# Set name and version
 	sed -e "s/@PKGVER@/${pkgver}/" \
 		-i "${pkgdir}"/usr/src/${_pkgname}-${pkgver}/dkms.conf
+
+	# Install RTL8812AE firmwares
+	install -dm755 "${pkgdir}/usr/lib/firmware/rtlwifi"
+	install -m644 "${_pkgname}/firmware/rtlwifi/rtl8812aefw.bin" "${pkgdir}/usr/lib/firmware/rtlwifi"
+	install -m644 "${_pkgname}/firmware/rtlwifi/rtl8812aefw_wowlan.bin" "${pkgdir}/usr/lib/firmware/rtlwifi"
 }
