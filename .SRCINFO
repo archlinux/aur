@@ -8,6 +8,7 @@ pkgbase = mpc-qt-git
 	license = GPL2
 	makedepends = git
 	makedepends = imagemagick
+	makedepends = librsvg
 	depends = mpv
 	depends = qt5-x11extras
 	provides = mpc-qt
