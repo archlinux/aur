@@ -11,7 +11,7 @@
 # Maintainer: Tech Guy Software <techguy100official at gmail dot com>
 pkgname=clevo-indicator-git
 pkgver=r17.fa0a7af
-pkgrel=3
+pkgrel=4
 #epoch=
 pkgdesc="Command-line fan control utility for Clevo laptops"
 arch=('x86_64')
@@ -50,15 +50,21 @@ build() {
 }
 
 package() {
-    # make from source and install to /usr/bin
+    # make from source and install to /usr/local/bin
 	cd "$pkgname"
-	make DESTDIR="$pkgdir/" install
-
+	make install
+    
+    # the package's makefile installs to /usr/local/bin, we don't want that, there is no option other than to move it or create a separate fork of the project
+    # https://bbs.archlinux.org/viewtopic.php?id=158031
+    # per the AUR package etiquette, /usr/bin is preferred
+	
 	# move clevo-indicator binary to /usr/bin for execution 
 	# in command line
-
-	#echo "--> Removing existing binaries..."
-	#sudo rm -f "/usr/bin/clevo-indicator"
+	echo "--> Removing existing binaries..."
+	sudo rm -f "/usr/bin/clevo-indicator"
+	
+	echo "--> Moving built binary to /usr/bin..."
+	sudo mv /usr/local/bin/clevo-indicator /usr/bin/
 	
 	echo "--> Installation successful! Run the fan control utility using the command \"clevo-indicator\" as the root user."
 }
