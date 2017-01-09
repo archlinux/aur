@@ -78,7 +78,7 @@ package_libmpcdec-svn(){
 }
 
 package_musepack-tools-svn() {
-  pkgdesc="Musepack decoder/encoder tools and libs. (SVN Version)"
+  pkgdesc="Musepack decoder/encoder tools. (SVN Version)"
   provides=('musepack-tools')
   conflicts=('musepack-tools')
   depends=('glibc'
