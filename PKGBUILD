@@ -3,7 +3,7 @@
 _pkgname=beautysh
 pkgname=(python-beautysh python2-beautysh)
 pkgver=3.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A Bash beautifier for the masses"
 arch=('any')
 url='https://github.com/bemeurer/beautysh'
@@ -21,5 +21,5 @@ package_python-beautysh() {
 package_python2-beautysh() {
     depends=('python2')
     cd "${_pkgname}-$pkgver"
-    python setup.py install --root="$pkgdir" --optimize=1
+    python2 setup.py install --root="$pkgdir" --optimize=1
 }
