@@ -28,7 +28,6 @@ pkgbase = icecat
 	depends = dbus-glib
 	depends = alsa-lib
 	depends = ffmpeg
-	depends = desktop-file-utils
 	depends = libvpx
 	depends = icu
 	depends = libevent
