@@ -6,7 +6,7 @@
 _pkgname=terminus-font
 pkgname=${_pkgname}-ll2-td1-ttf
 pkgver=4.40
-pkgrel=1
+pkgrel=2
 pkgdesc="A superb, monospace bitmap font (for X11 and console) with ll2 patch (pass the il1I test) and td1 patch (centered ascii tilde) (TTF version)"
 arch=("any")
 url="http://files.ax86.net/terminus-ttf"
@@ -36,7 +36,9 @@ build() {
   make
 
   cd "${srcdir}/mkttf"
-  ./mkttf.sh "${srcdir}/${_pkgname}-${pkgver}" "${pkgver}"
+  # MALLOC_CHECK_ is a temporary workaround to avoid crashing in fontforge code
+  # It will print errors but they are harmless
+  MALLOC_CHECK_=1 ./mkttf.sh "${srcdir}/${_pkgname}-${pkgver}" "${pkgver}" "TerminusTTF" "Terminus (TTF)"
 }
 
 package() {
