@@ -1,7 +1,7 @@
 # Maintainer: John Jenkins twodopeshaggy@gmail.com
 _npmname=speed-test
 pkgname=speed-test
-pkgver=1.7.0
+pkgver=1.7.1
 pkgrel=0
 pkgdesc="Test your internet connection speed and ping using speedtest.net from the CLI"
 arch=(any)
