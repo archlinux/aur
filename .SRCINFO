@@ -1,7 +1,7 @@
 pkgbase = python-breathe
 	pkgdesc = An extension to reStructuredText and Sphinx to be able to read and render Doxygen xml output.
-	pkgver = 4.2.0
-	pkgrel = 3
+	pkgver = 4.4.0
+	pkgrel = 1
 	url = https://breathe.readthedocs.org/en/latest/
 	arch = any
 	license = BSD
@@ -9,8 +9,8 @@ pkgbase = python-breathe
 	makedepends = python-setuptools
 	makedepends = python2
 	makedepends = python2-setuptools
-	source = https://pypi.python.org/packages/source/b/breathe/breathe-4.2.0.tar.gz
-	md5sums = e35f6ce54485663857129370047f6057
+	source = https://github.com/michaeljones/breathe/archive/v4.4.0.tar.gz
+	sha256sums = 348eb5f895f7369a703b67b48ff88e7a47182ca0fb2cd3eb3ce07e209159b3ca
 
 pkgname = python-breathe
 	depends = python
