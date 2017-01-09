@@ -5,7 +5,7 @@
 
 pkgname='gtkd'
 pkgver='3.5.0'
-pkgrel=1
+pkgrel=2
 pkgdesc='D bindings for GTK+ and related libraries.'
 arch=('x86_64' 'i686')
 url='http://gtkd.org/'
@@ -27,7 +27,8 @@ package() {
   cd ${srcdir}/GtkD-${pkgver}
 
   make prefix='/usr' DESTDIR="${pkgdir}/" install install-gstreamer \
-    install-vte install-shared install-shared-gstreamer install-shared-vte
+    install-vte install-peas install-shared install-shared-gstreamer \
+    install-shared-vte install-shared-peas
 }
 
 # vim:set ts=2 sw=2 et:
