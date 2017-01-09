@@ -1,0 +1,5 @@
+binutils-*.bz2
+binutils-*.bz2.sig
+*.pkg.tar.xz
+src/
+pkg/
