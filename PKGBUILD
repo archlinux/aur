@@ -15,7 +15,7 @@ makedepends=('scons'
              'gcc-fortran'
              'openblas-lapack'
              'blitz')
-source=('git+https://github.com/jtambasco/CAMFR-1.git')
+source=('git+https://github.com/jtambasco/camfr.git')
 md5sums=('SKIP')
 
 build() {
