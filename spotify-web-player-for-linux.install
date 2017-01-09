@@ -1,0 +1,50 @@
+# Maintainer: Tech Guy Software <techguy100official at gmail dot com> 
+# echo command/ANSI escape code reference: https://stackoverflow.com/questions/5947742/how-to-change-the-output-color-of-echo-in-linux
+
+## arg 1:  the new package version
+pre_install() {
+    pkgver_new=$1 # argument - new pkg version
+    # Instructions from https://github.com/Quacky2200/Spotify-Web-Player-for-Linux#manual-install
+    # Create application icon
+    echo "--> Creating application icon..."
+    cp /usr/bin/spotifywebplayer/icons/spotify.png /usr/share/pixmaps/ && printf "[Desktop Entry]\nVersion=$(pkgver_new)\nName=Spotify Web Player\nComment=Music for every moment. Spotify is a digital music service that gives you access to millions of songs.\nExec=bash /usr/bin/spotifywebplayer/spotifywebplayer\nPath=/usr/bin/spotifywebplayer\nIcon=spotify\nCategories=GNOME;GTK;AudioVideo;Audio;Player;\nActions=PlayPause;Next;Previous;\nType=Application\nTerminal=false\n[Desktop Action PlayPause]\nName=Play/Pause\nExec=dbus-send --print-reply --reply-timeout=2500 --session --dest=org.mpris.MediaPlayer2.spotifywebplayer /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause\n[Desktop Action Next]\nName=Next\nExec=dbus-send --print-reply --session --dest=org.mpris.MediaPlayer2.spotifywebplayer /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next\n[Desktop Action Previous]\nName=Previous\nExec=dbus-send --print-reply --session --dest=org.mpris.MediaPlayer2.spotifywebplayer /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Previous" > /usr/share/applications/spotifywebplayer.desktop
+    # Make the application's run script executable
+    echo "--> Making application's run script executable..."
+    chmod +x /usr/share/applications/spotifywebplayer.desktop && chmod +x /usr/bin/spotifywebplayer/spotifywebplayer
+    # ANSI escape code reference: https://stackoverflow.com/questions/5947742/how-to-change-the-output-color-of-echo-in-linux
+    echo -e "\033[0;31m--> [!!] Preferences are stored in /usr/bin/spotifywebplayer/preferences.json should you choose to back them up. They are kept across newer versions of this package.\033[0m"
+}
+
+## arg 1:  the new package version
+## arg 2:  the old package version
+pre_upgrade() {
+    pkgver_new=$1 # argument - new pkg version
+    pkgver_old=$2 # argument - old pkg version
+    echo -e "\033[0;31m--> [!!] Upgrading version from $pkgver_old to $pkgver_new\033[0m"
+	# 1. Copy the app settings from the old version (https://github.com/Quacky2200/Spotify-Web-Player-for-Linux/blob/master/app.js)
+	echo "--> Creating /tmp/spotifywebplayer directory, copying preferences..."
+	mkdir /tmp/spotifywebplayer # temporary directory
+	cp /usr/bin/spotifywebplayer/preferences.json /tmp/spotifywebplayer # copy preferences.json to /tmp/spotifywebplayer directory
+	rm -f /usr/bin/spotifywebplayer/preferences.json # remove old preferences file
+    # 3. Create application icon
+    echo "--> Creating application icon..."
+    cp /usr/bin/spotifywebplayer/icons/spotify.png /usr/share/pixmaps/ && printf "[Desktop Entry]\nVersion=$pkgver_new\nName=Spotify Web Player\nComment=Music for every moment. Spotify is a digital music service that gives you access to millions of songs.\nExec=bash /usr/bin/spotifywebplayer/spotifywebplayer\nPath=/usr/bin/spotifywebplayer\nIcon=spotify\nCategories=GNOME;GTK;AudioVideo;Audio;Player;\nActions=PlayPause;Next;Previous;\nType=Application\nTerminal=false\n[Desktop Action PlayPause]\nName=Play/Pause\nExec=dbus-send --print-reply --reply-timeout=2500 --session --dest=org.mpris.MediaPlayer2.spotifywebplayer /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause\n[Desktop Action Next]\nName=Next\nExec=dbus-send --print-reply --session --dest=org.mpris.MediaPlayer2.spotifywebplayer /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next\n[Desktop Action Previous]\nName=Previous\nExec=dbus-send --print-reply --session --dest=org.mpris.MediaPlayer2.spotifywebplayer /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Previous" > /usr/share/applications/spotifywebplayer.desktop
+    # Make the application's run script executable
+    echo "--> Making application's run script executable..."
+    chmod +x /usr/share/applications/spotifywebplayer.desktop && chmod +x /usr/bin/spotifywebplayer/spotifywebplayer
+    echo "--> Restoring preferences, removing /tmp/spotifywebplayer directory..."
+    cp /tmp/spotifywebplayer/preferences.json /usr/bin/spotifywebplayer/ # copy preferences.json back to /usr/bin/spotifywebplayer directory
+    rm -rf /tmp/spotifywebplayer # remove temporary preferences directory
+    echo -e "\033[0;31m--> [!!] Preferences are stored in /usr/bin/spotifywebplayer/preferences.json should you choose to back them up. They are kept across newer versions of this package.\033[0m"
+}
+
+## arg 1:  the old package version
+pre_remove() {
+    pkgver_old=$1 # argument - old pkg version
+	# 1. Remove the old version's files
+	echo -e "\033[0;31m--> [!!] Uninstalling package version $pkgver_old...\033[0m"
+	echo "--> Removing old files..."
+	rm -rf /usr/bin/spotifywebplayer # remove the old version directory 
+	rm -rf /usr/share/pixmaps/spotify.png # remove the old version's spotify icon
+	rm -rf /usr/share/applications/spotifywebplayer.desktop # remove the old version's .desktop shortcut
+}
