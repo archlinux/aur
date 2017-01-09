@@ -1,8 +1,8 @@
 # Maintainer: Asyrique Thevendran <asyrique@gmail.com>
 
 pkgname=nodejs-lts-boron-bin
-pkgver=6.9.2
-pkgrel=2
+pkgver=6.9.4
+pkgrel=1
 pkgdesc='Evented I/O for V8 javascript'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url='http://nodejs.org/'
@@ -18,11 +18,11 @@ source_armv6h=("https://nodejs.org/dist/v$pkgver/node-v$pkgver-linux-armv6l.tar.
 source_armv7h=("https://nodejs.org/dist/v$pkgver/node-v$pkgver-linux-armv7l.tar.xz")
 source_aarch64=("https://nodejs.org/dist/v$pkgver/node-v$pkgver-linux-arm64.tar.xz")
 
-sha256sums_i686=("9dae6ddbafcefd271c3df6e01633422dc7495479269fb1358e4c540929ef8835")
-sha256sums_x86_64=("da766edda11cc38eefb1ce29683f248f40c997c0ee2e06903b01429b4c94b71a")
-sha256sums_armv6h=("d6ea6851c7ca80ecd2619eb7100040f114d16461d705cc0a5f1367d4c1428126")
-sha256sums_armv7h=("99a630fe3df76876f6e9a172f230a2013adfdb20e69754facd1fea8a364d5062")
-sha256sums_aarch64=("40fe68bcd70263e0163d2668b0b8a27b28427ab608bd3666a771de8902dd0ce7")
+sha256sums_i686=("4a9d2c4472015926a06402cec8089aae33e57fd7f649fa0e1a74160757d771f9")
+sha256sums_x86_64=("d28c331e1af88468e8220477e9b4d48d4ce041855b9c939ea2320de2929e7ce1")
+sha256sums_armv6h=("c230178d372d75c655c91454a63b725fb3c471b616617f4e13dcf6a5fc958f6a")
+sha256sums_armv7h=("71cf9b7d906fe659fdb7e13f8f5e7604b1c21e23ac17d7f1debe6c05384c6e9e")
+sha256sums_aarch64=("0845e6941b2114da16608cfddde67c81cb7dcd8ebe10fd46d556b9c0b5bd9d89")
 
 build() {
     cd */.
