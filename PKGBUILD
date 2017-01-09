@@ -1,7 +1,7 @@
 # Maintainer: Julian Wolff <wolff at julianwolff dot de>
 pkgname=jackman-git
 pkgver=r61.44efc9d
-pkgrel=2
+pkgrel=3
 pkgdesc='Collection of scripts that help managing multiple audio interfaces with Jack'
 arch=('any')
 url=''
@@ -11,7 +11,7 @@ provides=(jackman)
 depends=('jackdbus' 'alsa-utils' 'python2-dbus' 'systemd' 'coreutils')
 makedepends=('git')
 optdepends=('zenity: system notifications'
-	   'kdebase-kdialog: system notifications')
+	   'kdialog: system notifications')
 source=('jackman::git+https://github.com/progwolff/jackman.git')
 md5sums=('SKIP')
 
