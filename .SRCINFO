@@ -1,0 +1,13 @@
+pkgbase = gtksourceview3-highlight-smali
+	pkgdesc = Smali (Dalvik bytecode) syntax highlighter for GTK apps like Gedit
+	pkgver = .
+	pkgrel = 1
+	url = https://github.com/CriticalBlue/smali-syntax-highlighter
+	arch = any
+	license = GPL2
+	makedepends = git
+	source = git+https://github.com/CriticalBlue/smali-syntax-highlighter.git
+	md5sums = SKIP
+
+pkgname = gtksourceview3-highlight-smali
+
