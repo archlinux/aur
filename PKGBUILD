@@ -1,7 +1,7 @@
 # Maintainer: Oliver Jaksch <arch-aur@com-in.de>
 
 pkgname=libretro-o2em-git
-pkgver=62.0d54d35
+pkgver=66.0c3b091
 pkgrel=1
 pkgdesc="libretro port of O2EM, an Odyssey 2 / VideoPac emulator"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
@@ -30,5 +30,5 @@ build() {
 
 package() {
   install -Dm644 "${_gitname}/${_libname}.so" "${pkgdir}/usr/lib/libretro/${_libname}.so"
-  install -Dm644 "${_libname}.info" "${pkgdir}/usr/lib/libretro/${_libname}.info"
+  install -Dm644 "${_libname}.info" "${pkgdir}/usr/share/libretro/info/${_libname}.info"
 }
