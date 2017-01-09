@@ -1,12 +1,13 @@
 pkgbase = plataro-icons
-	pkgdesc = Plataro svg icon set for Lxde/qt
-	pkgver = 1.1
-	pkgrel = 0
-	url = http://kde-look.org/content/show.php/Plataro?content=171350
+	pkgdesc = An icon theme with emphasis on clarity, colorfulness and flatness
+	pkgver = 20161031
+	pkgrel = 1
+	url = https://store.kde.org/content/show.php?content=171350
 	arch = any
-	license = cc-by-nc-nd-4.0
-	source = http://esclapion.free.fr/AUR/plataro-icons-1.1.tar.gz
-	md5sums = f946f3a478d330e9f131ad8f2807256c
+	license = CCPL:cc-by-nc-sa-4.0
+	provides = plataro-icons
+	source = https://dl.opendesktop.org/api/files/download/id/1477932347/Plataro-20161031.tar.xz
+	sha512sums = 40d5f15571b440bb829063bbe893d42cd2810c1ac8123338afcb7e860c3b882291731794496da5e8107be840210220e77812c1dcb22432615fdffbe8b9916211
 
 pkgname = plataro-icons
 
