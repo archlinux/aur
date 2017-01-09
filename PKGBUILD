@@ -1,14 +1,12 @@
 # Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=mpv-build-git
-pkgver=20160626.c509420
+pkgver=20170108.c4ad2732f9
 pkgrel=1
 pkgdesc="Video player based on MPlayer/mplayer2 (uses statically linked ffmpeg). (GIT version)"
 arch=('i686' 'x86_64' )
 depends=('desktop-file-utils'
          'smbclient'
-         'libguess'
-         'enca'
          'libxv'
          'libcdio-paranoia'
          'openal'
@@ -28,7 +26,6 @@ depends=('desktop-file-utils'
          'libxrandr'
          'libxkbcommon'
          'hicolor-icon-theme'
-         'sdl'
          'sdl2'
          'lcms2'
          'libva'
@@ -38,7 +35,10 @@ depends=('desktop-file-utils'
          'libsoxr'
          'v4l-utils'
          'libvdpau'
-         # 'vapoursynth'
+         'fribidi'
+         'netcdf'
+#          'vapoursynth'
+#          'nvidia-utils'
          )
 license=('GPL2' 'GPL3')
 url='http://mpv.io'
@@ -48,6 +48,7 @@ makedepends=('git'
              'ladspa'
              'fontconfig'
              'fribidi'
+#             'cuda'
              )
 optdepends=('youtube-dl: Another way to view youtuve videos with mpv'
             'zsh-completions: Additional completion definitions for Zsh users'
@@ -60,13 +61,11 @@ source=('git+https://github.com/mpv-player/mpv-build.git'
         'git+https://github.com/mpv-player/mpv.git'
         'ffmpeg::git+https://github.com/FFmpeg/FFmpeg.git'
         'git+https://github.com/libass/libass.git'
-        #'git+http://anongit.freedesktop.org/git/fribidi/fribidi.git'
         )
-sha1sums=('SKIP'
-          'SKIP'
-          'SKIP'
-          'SKIP'
-          #'SKIP'
+sha256sums=('SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
           )
 
 pkgver() {
@@ -79,28 +78,41 @@ prepare() {
   ln -s ../mpv
   ln -s ../ffmpeg
   ln -s ../libass
-  #ln -s ../fribidi
 
-  # Set ffmpeg/libass/fribidi/mpv flags
-  echo "--disable-programs \
-        --enable-libssh \
-        --enable-nonfree \
-        --enable-ladspa \
-        --enable-libbs2b \
-        --enable-libgme \
-        --enable-libsoxr" > ffmpeg_options
-  echo "--prefix=/usr \
-        --confdir=/etc/mpv \
-        --disable-test \
-        --disable-build-date
-        --enable-libmpv-shared \
-        --enable-openal \
-        --enable-sdl2 \
-        --enable-zsh-comp \
-        --enable-libarchive \
-        --lua=luajit \
-        --enable-libavdevice \
-        --disable-vapoursynth-lazy" > mpv_options
+  # Set ffmpeg/libass/mpv flags
+  _ffmpeg_options=(
+    '--disable-programs'
+    '--enable-nonfree'
+    '--enable-libssh'
+    '--enable-ladspa'
+    '--enable-libbs2b'
+    '--enable-libgme'
+    '--enable-netcdf'
+    '--enable-libsoxr'
+#     '--enable-cuda'
+#     '--enable-cuvid'
+#     '--extra-cflags="-I/opt/cuda/include"'
+    )
+  _mpv_options=(
+    '--prefix=/usr'
+    '--confdir=/etc/mpv'
+    '--htmldir=/usr/share/doc/mpv/html'
+    '--disable-test'
+    '--disable-build-date'
+    '--enable-libmpv-shared'
+    '--enable-openal'
+    '--enable-sdl2'
+    '--enable-zsh-comp'
+    '--enable-libarchive'
+    '--lua=luajit'
+    '--enable-libavdevice'
+    '--disable-vapoursynth-lazy'
+    '--enable-html-build'
+#     '--enable-cuda-hwaccel'
+    )
+
+  echo ${_ffmpeg_options[@]} > ffmpeg_options
+  echo ${_mpv_options[@]} > mpv_options
 
   cd mpv
   ./bootstrap.py
@@ -116,6 +128,7 @@ package() {
   DESTDIR="${pkgdir}" ./install
 
   install -Dm755 mpv/TOOLS/mpv_identify.sh "${pkgdir}/usr/bin/mpv-identify"
+  install -Dm755 mpv/TOOLS/idet.sh "${pkgdir}/usr/bin/mpv-idet"
   install -Dm755 mpv/TOOLS/umpv "${pkgdir}/usr/bin/umpv"
 
   install -Dm644 mpv/DOCS/encoding.rst "${pkgdir}/usr/share/doc/mpv/encoding.rst"
