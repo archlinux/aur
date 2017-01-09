@@ -1,79 +1,81 @@
-* commit ab5d50a02aaec5618be81e34051fb3f6b71cb789
+* commit 801488c0a445c36b63575552a1d26f3284839f19
 | Author: Jeffrey Han <itdelatrisu@gmail.com>
-| Date:   Tue Dec 27 00:02:27 2016 -0500
+| Date:   Mon Jan 9 02:37:31 2017 -0500
 | 
-|     Updating to 0.13.0.
+|     Updating to 0.14.0.
 |     
 |     Signed-off-by: Jeffrey Han <itdelatrisu@gmail.com>
 | 
-* commit f0c4cd3795983b57a4a1fb382e6c0d6adcca66c8
+* commit c1313a701c0b37e832377c3f8ec2eaf8fbbdcd42
 | Author: Jeffrey Han <itdelatrisu@gmail.com>
-| Date:   Tue Dec 27 00:02:03 2016 -0500
+| Date:   Mon Jan 9 02:37:01 2017 -0500
 | 
-|     Minor dropdown menu rendering fixes in the song menu.
+|     Fix an issue with right-click in the song menu.
 |     
 |     Signed-off-by: Jeffrey Han <itdelatrisu@gmail.com>
 | 
-* commit 3bc8319ba6c9741151922b7ae3a051faeb310d4e
+* commit 04962a06d4692de0f6602466c68e1daa284fdf28
 | Author: Jeffrey Han <itdelatrisu@gmail.com>
-| Date:   Mon Dec 26 23:14:08 2016 -0500
+| Date:   Mon Jan 9 01:11:20 2017 -0500
 | 
-|     Catch all beatmap parsing exceptions. (yugecin/opsu-dance/@d9669dd)
-| 
-* commit 69a7c7bdd5e8a4038df9487638d5b1ff00f2a9f8
-| Author: Jeffrey Han <itdelatrisu@gmail.com>
-| Date:   Mon Dec 26 20:25:32 2016 -0500
-| 
-|     Beatmap parser optimization: cache non-standard maps and skip them.
-|     Previously, non-standard (Taiko/CTB/Mania) beatmaps would always get parsed, then discarded after parsing the mode. With this change, all beatmaps get parsed once and cached, then skipped without parsing.
-|     
-|     With ~1000 standard maps and ~100 non-standard maps, this cuts my total loading time by ~25%.
+|     Updated copyright notices.
 |     
 |     Signed-off-by: Jeffrey Han <itdelatrisu@gmail.com>
 | 
-* commit 4970f561b4a9c109340c1b1a3f8a61560ccf486a
+* commit f8d3c388099d300cdd502bfac841bc1ea42628bc
 | Author: Jeffrey Han <itdelatrisu@gmail.com>
-| Date:   Mon Dec 26 19:14:52 2016 -0500
+| Date:   Mon Jan 9 00:48:55 2017 -0500
 | 
-|     Exclude jnlp from slick2d dependencies.
-|     JNLP doesn't ship with openjdk, and we don't use it anyway.
+|     Show a message if beatmap importing failed.
+|     This happens when the beatmap set contains no Standard mode beatmaps.
 |     
 |     Signed-off-by: Jeffrey Han <itdelatrisu@gmail.com>
 | 
-* commit cab2183a6e38948beae872c5f8f8b7c3b157dadf
+* commit 73711c145e73783f39439e934a4b699e3695a8c9
 | Author: Jeffrey Han <itdelatrisu@gmail.com>
-| Date:   Mon Dec 26 18:24:19 2016 -0500
+| Date:   Mon Jan 9 00:40:03 2017 -0500
 | 
-|     Handle JSON exceptions in DownloadServer implementations.
+|     Added various bubble notifications.
 |     
 |     Signed-off-by: Jeffrey Han <itdelatrisu@gmail.com>
 | 
-* commit fc7aa9aaa8bb0cf7574b55022ba25cdccdc2f3b2
+* commit 8f0df87b91f5d287df38cce4d7b046f97a59fa66
 | Author: Jeffrey Han <itdelatrisu@gmail.com>
-| Date:   Mon Dec 26 15:58:30 2016 -0500
+| Date:   Mon Jan 9 00:16:17 2017 -0500
 | 
-|     Follow-up to 6373b36: missed a case.
+|     Minor fixes to bubble notifications.
 |     
 |     Signed-off-by: Jeffrey Han <itdelatrisu@gmail.com>
 | 
-* commit a7334626420ad566dae1c3e02199dd1ad8376f33
+* commit 21aa72b566ce3f1d8b2d99d08c0447a19248fe3f
 | Author: Jeffrey Han <itdelatrisu@gmail.com>
-| Date:   Mon Dec 26 15:53:10 2016 -0500
+| Date:   Sun Jan 8 23:33:58 2017 -0500
 | 
-|     Enable fullscreen mode.
+|     Added bubble notifications.
 |     
 |     Signed-off-by: Jeffrey Han <itdelatrisu@gmail.com>
 | 
-* commit 97425aef198e60ff318c1cee42cf95b9b0a310b4
+* commit 4a8198adf8a1fbdbc1d29cdcfd5f18302b795557
 | Author: Jeffrey Han <itdelatrisu@gmail.com>
-| Date:   Mon Dec 26 14:37:32 2016 -0500
+| Date:   Sun Jan 8 20:59:27 2017 -0500
 | 
-|     Updated license headers and added missing ones.
+|     Refactored bar notifications into a NotificationManager class.
+|     
+|     Signed-off-by: Jeffrey Han <itdelatrisu@gmail.com>
 | 
-* commit 52afe938cef4f2ce54a92864a23643b388d0ffc9
+* commit aca94324ccedbda2fe5b6b613a68d95ec31eca1d
 | Author: Jeffrey Han <itdelatrisu@gmail.com>
-| Date:   Mon Dec 26 03:23:22 2016 -0500
+| Date:   Sun Jan 8 18:14:34 2017 -0500
 | 
-|     Use kinetic scrolling in the new options menu.
+|     Always set User-Agent header (fixes Bloodcat 403 errors).
+|     
+|     Signed-off-by: Jeffrey Han <itdelatrisu@gmail.com>
+| 
+* commit a0fcae837d7346b788cb225ad318e82145b59033
+| Author: Jeffrey Han <itdelatrisu@gmail.com>
+| Date:   Sun Jan 8 17:44:33 2017 -0500
+| 
+|     Support Unicode input in TextFields.
+|     Only tested in Windows for Microsoft Chinese/Japanese keyboards.
 |     
 |     Signed-off-by: Jeffrey Han <itdelatrisu@gmail.com>
