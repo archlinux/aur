@@ -1,25 +1,28 @@
-This release contains a large number of new features, UI updates, and stability improvements from the past year.
 Features:
 
-    Smoother, more efficient slider rendering. (#205, #216)
-    Slider behavior now more closely resembles osu!. (#210, #211)
-    Beatmap groups (favorites, last played), and more sorting options (date added, most played). (ed06a8b)
-    Local beatmap offsets (press +/- when playing a map). (e023780)
-    In-game scoreboard (press TAB to hide). (#155)
-    New options menu overlay. (6373b36)
-    Pulsing logos. (#214)
-    Falling game objects and pitch drop when failing a map. (#148, #150)
-    Reverse arrows drawn in black on lightly-colored sliders. (#152)
-    New theme song and main menu background. (1436f23, b5b954f)
-    Star fountains in the main menu. (5704b8a, 9f2aa7c)
-    Enabled fullscreen mode (in "Display" options). (a733462)
+    osu! HP algorithm. (e62822a)
+    Skin unpacker. (e9889b7)
+    Game ranking screen overhaul (positioning, animations, images). (64504f2, e49ca3c)
+    Slider follow circle animations. (99c698b)
+    Main menu UI tweaks (music info bar, moved things around). (d250d26)
+    New "About" menu when clicking on the GitHub logo in the main menu. (1d0f0b8)
+    Additional skin.ini options supported: SliderBallFlip, CursorCentre, AnimationFramerate, AllowSliderBallTint. (0f40ff4, f111730)
+    Skin v1 changes: slider tick results, "spinner-osu" result, white warning arrows. (7a1f527, 3d01e43)
+    Added bubble notifications. (21aa72b)
+    Added parallax effect. (b61eaf1)
 
 Other changes:
 
-    Various bug fixes and better overall error handling.
-    Detect osu! installation location using registry keys. (06c423a)
-    Root directory is always the same directory as the JAR, regardless of where it's launched. (81c8a61)
-    Beatmap parser optimizations. (69a7c7b)
-    Self-updating beatmap cache database. (ed06a8b)
+    Reduce FPS when window loses focus. (a7e0c8d)
+    Support Unicode input in text fields. (a0fcae8)
+    Right-click/drag in the song menu now scrolls to the mouse position. (41a27fe)
+    Removed old cursor style option. (0f40ff4)
+    Removed "playfield" image; use "menu-background" instead. (c250fce)
 
-Thanks to @mad-s and @yugecin for their major contributions to this release.
+Bug fixes:
+
+    Fixed issues with slider ticks and repeats being over- or under-counted. (ceb4e5d)
+    Fixed an issue where multi-image default images were being loaded with higher priority than single-image skin images. (cf53c3d)
+    Fixed a hardcoded approach time in the stacking algorithm. (9b5f26d)
+    Fixed "Ignore All Beatmap Skins" option not ignoring combo colors. (9b627e0)
+
