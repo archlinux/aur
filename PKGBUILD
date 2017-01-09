@@ -3,8 +3,8 @@
 
 pkgname=libplist-git
 epoch=1
-pkgver=1.12.r22.g9ca25d2
-pkgrel=2
+pkgver=1.12.r83.g5b0184a
+pkgrel=1
 pkgdesc="A library to handle Apple Property List format whereas it's binary or XML"
 url="http://www.libimobiledevice.org/"
 arch=('i686' 'x86_64')
@@ -13,8 +13,7 @@ depends=('glib2' 'libxml2' 'python2')
 makedepends=('gcc' 'git' 'make' 'cmake' 'swig')
 provides=('libplist')
 conflicts=('libplist')
-
-source=("git://git.sukimashita.com/libplist.git")
+source=("git+https://git.libimobiledevice.org/libplist.git")
 md5sums=('SKIP')
 
 pkgver() {
@@ -27,11 +26,11 @@ build() {
 	cd libplist
 
 	PYTHON=/usr/bin/python2 ./autogen.sh --prefix=/usr
-	make || make -j1 # it could break/choke on building the final library... HACK
+	make
 }
 
 package() {
 	cd libplist
 
-	make DESTDIR="${pkgdir}" install
+	make DESTDIR="$pkgdir" install
 }
