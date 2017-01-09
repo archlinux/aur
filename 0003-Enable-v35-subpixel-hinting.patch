@@ -1,12 +1,3 @@
-From 220e96a9a8d7aff6ad0f0f1aa12c79cdb563331c Mon Sep 17 00:00:00 2001
-From: "Jan Alexander Steffens (heftig)" <jan.steffens@gmail.com>
-Date: Mon, 29 Aug 2016 08:43:10 +0200
-Subject: [PATCH 3/3] Enable infinality subpixel hinting
-
----
- include/freetype/config/ftoption.h | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
-
 diff --git a/include/freetype/config/ftoption.h b/include/freetype/config/ftoption.h
 index 67a361dd41e0b026..c4812862518b66a6 100644
 --- a/include/freetype/config/ftoption.h
@@ -21,6 +12,3 @@ index 67a361dd41e0b026..c4812862518b66a6 100644
  
  
    /*************************************************************************/
--- 
-2.9.3
-
