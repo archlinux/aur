@@ -1,0 +1,7 @@
+*.pkg.*
+src/
+pkg/
+binutils-*.tar.bz2
+*.sig
+*.sign
+*.part
