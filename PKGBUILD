@@ -2,7 +2,7 @@
 
 pkgname=galileo
 pkgver=0.5.1
-pkgrel=2
+pkgrel=3
 _bitbucket_folder=benallard-galileo-f0ebc19c748d
 pkgdesc='Utility to securely synchronize a Fitbit tracker with the Fitbit server'
 license=('LGPL3')
