@@ -2,17 +2,17 @@
 
 pkgname=python-quantlib
 _pkgname=QuantLib-SWIG
-pkgver=1.8
-pkgrel=3
+pkgver=1.9
+pkgrel=1
 pkgdesc="A Python binding for QuantLib."
 arch=("i686" "x86_64")
 url="http://quantlib.org"
 license=("BSD")
 options=(!libtool)
-depends=("quantlib>=1.8" "python")
+depends=("quantlib>=1.9" "python")
 makedepends=("make"  "gcc")
 source=(http://downloads.sourceforge.net/project/quantlib/QuantLib/$pkgver/other%20languages/$_pkgname-$pkgver.tar.gz)
-md5sums=("32a0cfb3ec049a6af86fc864e4616c1f")
+md5sums=("d8feed10571335b72982e6efcbfb9fae")
 
 build() {
   cd "$srcdir"/"$_pkgname-$pkgver"/
