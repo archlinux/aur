@@ -2,7 +2,7 @@
 
 pkgname=concierge-mako
 pkgver=0.2
-pkgrel=2
+pkgrel=3
 pkgdesc='Mako support for your concierge template files.'
 license=('MIT')
 url='https://github.com/9seconds/concierge-mako'
