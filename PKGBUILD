@@ -2,7 +2,7 @@
 
 _gemname=fit-commit
 pkgname="ruby-${_gemname}"
-pkgver=3.6.1
+pkgver=3.7.0
 pkgrel=1
 pkgdesc='A Git hook to validate your commit messages'
 arch=('any')
@@ -14,7 +14,7 @@ source=("https://rubygems.org/downloads/${_gemname}-${pkgver}.gem")
 noextract=("${_gemname}-${pkgver}.gem")
 provides=("${_gemname}=${pkgver}")
 install="${pkgname}.install"
-sha256sums=('94c10cf969743e81460f99cde1d4031aff1d684c65726b97cc8f4b2f46b0e975')
+sha256sums=('c37c3bc2359e7424976056c79062b22d7769ddca0c8893e3b959e4dd5a423034')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
