@@ -2,13 +2,13 @@
 
 pkgname=gnucash-xbt
 _pkgname=gnucash
-pkgver=2.6.13
+pkgver=2.6.15
 pkgrel=1
 pkgdesc="A personal and small-business financial-accounting application with Bitcoin support"
 arch=('i686' 'x86_64')
 url="http://www.gnucash.org"
 license=("GPL")
-depends=('guile' 'slib' 'goffice0.8' 'libdbi-drivers' 'libmariadbclient' 'postgresql-libs' 'aqbanking' 'desktop-file-utils' 'webkitgtk2' 'libgnome-keyring' 'libgnomecanvas')
+depends=('guile' 'slib' 'goffice0.8' 'libdbi-drivers' 'libmariadbclient' 'postgresql-libs' 'aqbanking' 'desktop-file-utils' 'webkitgtk2' 'libgnome-keyring' 'libgnomecanvas' 'dconf')
 makedepends=('intltool' 'gcc' 'pkgconfig')
 optdepends=('evince: for print preview'
 			'yelp: help browser'
@@ -19,7 +19,7 @@ conflicts=('gnucash' 'gnucash-devel')
 provides=('gnucash')
 source=("http://downloads.sourceforge.net/sourceforge/${_pkgname}/${_pkgname}-${pkgver}.tar.bz2"
 		"xbt.patch")
-sha1sums=('6ae9476141d98d9c986018d5ee593bbb80c0942d'
+sha1sums=('2d977a73b163b30c5e3b27d234d1d8521a035d26'
 		  '7244b9cc71d0d03c43055c062f3eeba5e3544630')
 
 prepare() {
