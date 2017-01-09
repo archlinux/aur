@@ -2,7 +2,7 @@
 # Contributor: Gabriel Peixoto <gabrielrcp@gmail.com>
 
 pkgname=lastpass-cli
-pkgver=1.0.0
+pkgver=1.1.1
 pkgrel=1
 pkgdesc="LastPass command line interface tool"
 arch=('i686' 'x86_64')
@@ -13,17 +13,16 @@ makedepends=('asciidoc')
 optdepends=('xclip: clipboard support'
 	   'pinentry: securely read passwords')
 source=("https://github.com/lastpass/lastpass-cli/archive/v${pkgver}.tar.gz")
-md5sums=('19d5bd8959f5e6a133907ca2758b72d1')
+md5sums=('3757bd5822ecfba5e4ebdf90b5325657')
 
 build() {
   cd $pkgname-$pkgver
-  make all doc
+  cmake . && make
 }
 
 package() {
   cd $pkgname-$pkgver
-
-  make DESTDIR="$pkgdir/" install install-doc
+  make DESTDIR=${pkgdir} install install-doc
 }
 
 # vim:set ts=2 sw=2 et:
