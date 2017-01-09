@@ -10,7 +10,7 @@ arch=('any')
 url='https://store.kde.org/content/show.php?content=171350'
 license=('CCPL:cc-by-nc-sa-4.0')
 
-provides=("${pkgname=${pkgver}}")
+provides=("${pkgname}=${pkgver}")
 
 source=(
 	"https://dl.opendesktop.org/api/files/download/id/1477932347/${_iconset}-${pkgver}.tar.xz"
