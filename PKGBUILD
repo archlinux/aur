@@ -11,15 +11,15 @@ depends=('python-numpy' 'python-pillow' 'python-lxml')
 optdepends=('python-pyqt4: for the fabio_viewer program')
 makedepends=('git')
 source=("https://github.com/silx-kit/${pkgname#*-}/archive/v${pkgver}.tar.gz")
-sha1sums=('c0ca0a6935e9213b567fdcfa77da05900a1abbc3')
+sha256sums=('ae1f2f979f801524558cac81ec8988d1eadce65b540cdeb46166162ae4788956')
 
 build() {
-    cd "${srcdir}/${pkgname#*-}-${pkgver}"
+    cd "${pkgname#*-}-${pkgver}"
     python setup.py build
 }
 
 package() {
-    cd "${srcdir}/${pkgname#*-}-${pkgver}"
+    cd "${pkgname#*-}-${pkgver}"
     python setup.py install --root="${pkgdir}/" --optimize=1
     install -D copyright "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
