@@ -3,8 +3,8 @@
 
 pkgname=libimobiledevice-git
 epoch=1
-pkgver=1.2.0.r13.gdf1f5c4
-pkgrel=2
+pkgver=1.2.0.r51.gb78a42e
+pkgrel=1
 pkgdesc="libimobiledevice is a software library that talks the protocols to support iPhone and iPod Touch devices on Linux"
 url="http://www.libimobiledevice.org/"
 arch=('i686' 'x86_64')
@@ -14,7 +14,7 @@ makedepends=('git')
 provides=('libiphone-git' 'libiphone' 'libimobiledevice')
 conflicts=('libiphone-git' 'libiphone' 'libimobiledevice')
 
-source=("git://git.sukimashita.com/libimobiledevice.git")
+source=("git+https://git.libimobiledevice.org/libimobiledevice.git")
 sha512sums=('SKIP')
 
 pkgver() {
@@ -26,7 +26,7 @@ pkgver() {
 prepare() {
 	cd libimobiledevice
 
-	find . -type f -exec sed -re 's|SSLv3_method\(|SSLv23_method\(|g' -i {} \;
+#	find . -type f -exec sed -re 's|SSLv3_method\(|SSLv23_method\(|g' -i {} \;
 }
 
 build() {
