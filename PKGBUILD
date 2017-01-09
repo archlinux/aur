@@ -2,7 +2,7 @@
 
 pkgname=python-wpiformat-git
 _gitname=styleguide
-pkgver=2016.50
+pkgver=2017.53
 pkgrel=1
 pkgdesc="Linters and formatters for ensuring WPILib's source code conforms to its style guide"
 arch=('i686' 'x86_64')
@@ -19,7 +19,7 @@ md5sums=('SKIP')
 pkgver() {
   cd "$srcdir/$_gitname"
   year=$(date +%Y)
-  echo $year.$(git rev-list --count --after="master@{$year-01-01}" master)
+  echo $year.$(git rev-list --count --after="master@{$(($year - 1))-01-01}" master)
 }
 
 build() {
