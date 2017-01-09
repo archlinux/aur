@@ -1,15 +1,16 @@
 # Maintainer: Constantin Lorenz <Cons27773964@aol.com>
 
 pkgname=sandboxed-tor-browser # '-bzr', '-git', '-hg' or '-svn'
-pkgver=0.0.2.r34.ga249097
+pkgver=0.0.2.r36.gd13b8e2
 pkgrel=1
 pkgdesc="A sandboxed version of the Tor Browser, currently in alpha!"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="https://trac.torproject.org/projects/tor/wiki/doc/TorBrowser/Sandbox/Linux"
 license=('AGPL3')
 groups=()
 depends=(bubblewrap-git gtk3 gnome-themes-standard)
-makedepends=(make git gcc gb go libseccomp) # 'bzr', 'git', 'mercurial' or 'subversion'
+optdepends=(libnotify)
+makedepends=(make git gcc gb go libnotify) # 'bzr', 'git', 'mercurial' or 'subversion'
 provides=("${pkgname%-VCS}")
 conflicts=("${pkgname%-VCS}")
 replaces=()
@@ -77,3 +78,4 @@ package() {
    	install -Dm 644 ${pkgname}.png          ${pkgdir}/usr/share/pixmaps/${pkgname}.png
    	install -Dm 755 ${srcdir}/sandboxed-tor-browser/bin/sandboxed-tor-browser           ${pkgdir}/usr/bin/${pkgname}
 }
+
