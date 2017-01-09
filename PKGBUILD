@@ -2,7 +2,7 @@
 
 pkgname=fonts-meta-extended-lt
 pkgver=1
-pkgrel=1
+pkgrel=2
 pkgdesc='Extended font collection meta package, ported from Infinality (lite version).'
 arch=('any')
 url='http://bohoomil.com/doc/05-fonts/'
