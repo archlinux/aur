@@ -11,15 +11,15 @@ depends=('python-numpy' 'python-scipy' 'python-matplotlib' 'python-fabio'
          'python-h5py' 'python-pyopencl' 'python-pyqt5' 'fftw' 'opencl-driver')
 makedepends=('git' 'cython')
 source=("https://github.com/silx-kit/pyFAI/archive/v${pkgver}.tar.gz")
-sha1sums=('221f18a4048b5a6725f577ecde99656057e3f310')
+sha256sums=('b5137238c75cc7aa3bd7d9d7ebcdd2200ae8a74cad89ca903bf7f449bd0c2d3c')
 
 build() {
-    cd "${srcdir}/pyFAI-${pkgver}"
+    cd "pyFAI-${pkgver}"
     python setup.py build
 }
 
 package() {
-    cd "${srcdir}/pyFAI-${pkgver}"
+    cd "pyFAI-${pkgver}"
     python setup.py install --root="${pkgdir}/" --optimize=1
     install -D LICENSES.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
     install -D copyright "${pkgdir}/usr/share/licenses/${pkgname}/COPYRIGHT"
