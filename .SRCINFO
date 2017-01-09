@@ -1,0 +1,18 @@
+pkgbase = hdf5-lz4-filter-git
+	pkgdesc = LZ4 filter for the HDF5 data format
+	pkgver = r106.g863db28
+	pkgrel = 1
+	url = https://github.com/nexusformat/HDF5-External-Filter-Plugins/tree/master/LZ4
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = git
+	depends = hdf5
+	depends = lz4
+	source = hdf5-lz4-filter::git+https://github.com/nexusformat/HDF5-External-Filter-Plugins.git
+	source = hdf5_env.sh
+	sha256sums = SKIP
+	sha256sums = 643d90a15a5105d891adea12806d468aef134f902a38761e864a1085370fb4f9
+
+pkgname = hdf5-lz4-filter-git
+
