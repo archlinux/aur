@@ -132,7 +132,7 @@ source=("https://download.zarafa.com/community/final/${_pkgmajver}/${pkgver}/zcp
 	'zarafa-tools::git+https://github.com/zarafagroupware/zarafa-tools.git'
 	'python-zarafa::git+https://github.com/zarafagroupware/python-zarafa.git'
 	'zarafa-inspector::git+https://github.com/zarafagroupware/zarafa-inspector.git'
-	'zarafa-pietma::git+https://git.pietma.com/pietma/com-pietma-zarafa.git#tag=v0.17'
+	'zarafa-pietma::git+https://git.pietma.com/pietma/com-pietma-zarafa.git#tag=${_pietmaver}'
 	'ECDBDef.h'
 	'ECDatabaseMySQL.cpp'
 	'ECDatabaseUpdate.h'
@@ -233,6 +233,7 @@ package() {
    setconf "server_socket" "file:///var/run/zarafad/server.sock" ${cfg}
   done
  
+ 
   # server.cfg
   cfg="${pkgdir}/usr/share/doc/zarafa/example-config/server.cfg"
   setconf "mysql_socket" "/run/mysqld/mysqld.sock" ${cfg}
@@ -265,7 +266,13 @@ package() {
   cfg="${pkgdir}/usr/share/doc/zarafa/example-config/gateway.cfg"
   setconf "imap_generate_utf8" "no" "${cfg}"  
   setconf "imap_public_folders" "yes" "${cfg}"  
-  
+  setconf "run_as_user" "nobody" "${cfg}"
+  setconf "run_as_group" "nobody" "${cfg}"
+
+  # ical.cfg
+  cfg="${pkgdir}/usr/share/doc/zarafa/example-config/ical.cfg"
+  setconf "run_as_user" "nobody" "${cfg}"
+  setconf "run_as_group" "nobody" "${cfg}"
   
   # PIETMA
   ###

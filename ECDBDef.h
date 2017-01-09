@@ -1,5 +1,5 @@
 /*
- * Copyright 2005 - 2016 Zarafa and its licensors
+ * Copyright 2005 - 2015  Zarafa B.V. and its licensors
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Affero General Public License, version 3,
@@ -19,16 +19,16 @@
 #define ECDBDEF_H
 
 /**
- * @page kopano_db Database
+ * @page zarafa_db Database
  *
- * @section kopano_db_layout Database layout
+ * @section zarafa_db_layout Database layout
  *
- * Server tables:
+ * Zarafa server tables:
  * @code
  * abchanges         | All addressbook changes
  * acl               | User permission objects
  * changes           | Object changes
- * clientupdatestatus| Update status of the kopano client, only used with auto updater
+ * clientupdatestatus| Update status of the zarafa client, only used with auto updater
  * hierarchy         | The hiearchy between the mapi objects
  * indexedproperties | Mapi object entryid and sourcekey
  * lob               | Attachment data. Only when the setting attachment in database is enabled
@@ -43,7 +43,7 @@
  * stores            | A list with data stores related to one user and includes the deleted stores.
  * syncedmessages    | Messages which are synced with a specific restriction
  * syncs             | Sync state of a folder
- * users             | User relation between the userplugin and kopano
+ * users             | User relation between the userplugin and zarafa
  * versions          | Database update information
  * @endcode
  *
@@ -55,9 +55,9 @@
  * objectrelation    | User, group, company and sendas relations
  * @endcode
  *
- * @todo Add an image of the database layout
+ * @todo Add an image of the Zarafa database layout
  *
- * @section kopano_db_update Database update system
+ * @section zarafa_db_update Database update system
  *
  * @todo describe the update system
  *
@@ -334,8 +334,8 @@
 
 #define Z_TABLEDATA_STORES			"INSERT INTO `stores` VALUES (1, 1, 2, 0, 'SYSTEM', 0, 0x8962ffeffb7b4d639bc5967c4bb58234);"
 
-//1=KOPANO_UID_EVERYONE, 0x30002=DISTLIST_SECURITY
-//2=KOPANO_UID_SYSTEM, 0x10001=ACTIVE_USER
+//1=ZARAFA_UID_EVERYONE, 0x30002=DISTLIST_SECURITY
+//2=ZARAFA_UID_SYSTEM, 0x10001=ACTIVE_USER
 #define Z_TABLEDATA_USERS			"INSERT INTO `users` (`id`, `externid`, `objectclass`, `signature`, `company`) VALUES \
 										(1, NULL, 0x30002, '', 0), \
 										(2, NULL, 0x10001, '', 0);"

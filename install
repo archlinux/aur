@@ -1,5 +1,10 @@
 #!/bin/bash
 
+function setconf() {
+    # 1: field / 2: value / 3: file
+    sed -i "s|^#*\s*\($1\).*|\1 = $2|" $3
+}
+
 # care about existing files
 function installdir() {
     local owner="$1"
@@ -65,7 +70,7 @@ post_upgrade() {
 
             # CONFIG
 	    # => defaults
-    	    for cfg in /usr/share/doc/zarafa/example-config/*.cfg; do
+	    for cfg in /usr/share/doc/zarafa/example-config/*.cfg; do
 		install --backup=simple -o zarafa -g zarafa -m 0600 ${cfg} /etc/zarafa
 	    done
 
@@ -74,6 +79,19 @@ post_upgrade() {
 	*)
 	    ;;	
     esac
+
+    # don't run gateway and ical as zarafa user - zarafa would grand access to all stores
+    for cfg in /etc/zarafa/{gateway,ical}.cfg; do
+	setconf "run_as_user" "nobody" "${cfg}"
+	setconf "run_as_group" "nobody" "${cfg}"
+    done
+    
+    echo 
+    echo "Please restart zarafa gateway and ical services"
+    echo
+    echo "   $ systemctl restart zarafa-gateway"
+    echo "   $ systemctl restart zarafa-ical"
+    echo 
     
     return 0
 }
