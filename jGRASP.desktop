@@ -1,0 +1,11 @@
+[Desktop Entry]
+Encoding=UTF-8
+Version=1.0
+Name=jGRASP
+GenericName=IDE
+Exec=/usr/bin/jgrasp
+Terminal=false
+Icon=/usr/share/jgrasp/data/gric48.png
+Type=Application
+Categories=Application;Development;IDE;
+Comment=jGRASP IDE

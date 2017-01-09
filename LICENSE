@@ -1,0 +1,57 @@
+Software License for jGRASP Version 2.0.2 Beta 6
+
+Copyright 1999-2016 Auburn University
+
+Section 1. License Grant.
+
+Auburn University grants to you a non-exclusive and non-transferable license to use jGRASP and the associated documentation provided in jgrasp/help, collectively "jGRASP". jGRASP may be installed for use on one or more computers 
+or on a local area network. The "wedge" source code provided in the jgrasp/src directory is free of license restrictions. It may be used or modified for any purpose. The plugin source code provided in the jgrasp/extensions 
+directory, with the exception of the Web-CAT tool plugin sources, may be used or modified for any purpose, but when linked with the jGRASP jar file, the results may only be used as jGRASP plugins. See the Web-CAT source files for 
+license information specific to that plugin. Source code for our slightly modified version of the Eclipse Web-CAT submission plugin is available upon request. jGRASP is a Trademark of Auburn University.
+
+Section 2. Restrictions
+
+Distribution of jGRASP is not permitted without written permission (see Supplements), except that it may be distributed internally within a single organization. Distribution of components of jGRASP separately from the whole is not 
+permitted, except that the complete associated documentation provided in jgrasp/help may be distributed separately. Reverse engineering of jGRASP is not permitted. Any use of image files, icons, or executable components of jGRASP 
+separately from the whole is prohibited.
+
+Section 3. Disclaimer of Warranty
+jGRASP is licensed "as is". There are no express or implied warranties, including, but not limited to, the implied warranties of merchantability and fitness for a particular purpose. Auburn University makes no warranty with 
+respect to the accuracy or completeness of information obtained through the use of this program. Auburn University does not warrant that jGRASP will meet all of your requirements or that its operation will be uninterrupted or 
+error free or that any defect within jGRASP will be corrected. No oral or written information, representation, or advice given by Auburn University or an authorized representative of Auburn University shall create a warranty. 
+Auburn University and its agents shall in no event be held liable to the user for any damages, including direct, indirect, incidental, or consequential damages, lost profits, lost savings, or other such damages arising out of the 
+installation, use, improper use, or inability to use jGRASP, even if Auburn University has been advised of the possibility of such damages, or any claim by any other person or entity related thereto.
+
+Section 4. Third Party Software
+File putbi8a.pfb, Utopia Font (used under the TeX Users Group sublicense):
+Copyright 1989, 1991 Adobe Systems Incorporated. All rights reserved.
+
+Utopia(R)
+
+Utopia is either a registered trademark or trademark of Adobe Systems Incorporated in the United States and/or other countries. Used under license.
+
+ADOBE MAKES NO REPRESENTATIONS ABOUT THE SUITABILITY OF THE SOFTWARE FOR ANY PURPOSE. IT IS PROVIDED "AS-IS" WITHOUT EXPRESS OR IMPLIED WARRANTY. ADOBE DISCLAIMS ALL WARRANTIES WITH REGARD TO THE SOFTWARE, INCLUDING ALL IMPLIED 
+WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, AND NON-INFRINGEMENT OF THIRD PARTY RIGHTS. IN NO EVENT SHALL ADOBE BE LIABLE TO YOU OR ANY OTHER PARTY FOR ANY SPECIAL, INDIRECT OR CONSEQUENTIAL DAMAGES OR ANY 
+DAMAGES WHATSOEVER WHETHER IN AN ACTION OF CONTRACT NEGLIGENCE, STRICT LIABILITY OR ANY OTHER ACTION ARISING OUT OF OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE. ADOBE WILL NOT PROVIDE ANY TRAINING OR OTHER 
+SUPPORT FOR THE SOFTWARE.
+
+See file "utopia_license.txt" in the "data" directory for the full license.
+
+File OpenSans-Semibold.ttf, Open Sans Font:
+Digitized data copyright © 2010-2011, Google Corporation.
+
+Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License.
+
+You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the 
+specific language governing permissions and limitations under the License.
+
+Supplements
+
+Distribution for Educational Purposes - Publishers may distribute the jGRASP software and the jGRASP Handbook (Tutorials and Reference) on CDs that accompany their textbooks provided that (1) the title "jGRASP(TM) 2.0.2 Beta 6 
+copyright 1999-2016 Auburn University" is included on each CD label, (2) descriptions of the CD indicate that jGRASP is included on the CD, and (3) a list of the textbooks that include jGRASP is provided to Auburn University 
+(crossATengDOTauburnDOTedu). Permission to distribute jGRASP for educational purposes covers all CDs created prior to January 31, 2017 for inclusion in textbooks. While it is anticipated that distribution of jGRASP for educational 
+purposes will remain royalty free, this supplement of the jGRASP license will be re-evaluated on an annual basis.
+
+For additional information, contact James H. Cross II, Computer Science and Software Engineering, 3101 Shelby Center, Auburn University, AL 36849-5347 (334-844-6315, crossATengDOTauburnDOTedu).
