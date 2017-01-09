@@ -1,7 +1,7 @@
 # Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=libbluray-git
-pkgver=0.9.2.154.g82c69be
+pkgver=0.9.3.84.g05c9fdec
 pkgrel=1
 pkgdesc="Library to access Blu-Ray disks for video playback. (GIT version)"
 arch=('i686' 'x86_64')
@@ -21,9 +21,9 @@ conflicts=('libbluray')
 source=('git+https://git.videolan.org/git/libbluray.git'
         'git+https://git.videolan.org/git/libudfread.git'
         )
-sha1sums=('SKIP'
-          'SKIP'
-          )
+sha256sums=('SKIP'
+            'SKIP'
+           )
 
 pkgver() {
   cd libbluray
@@ -34,9 +34,8 @@ prepare() {
   export JDK_HOME="/usr/lib/jvm/default"
 
   cd libbluray
-  git submodule init
-  git config submodule.contrib/libudfread.url "file://${srcdir}/libudfread"
-  git submodule update
+  git config submodule.contrib/libudfread.url "${srcdir}/libudfread"
+  git submodule update --init
   ./bootstrap
 }
 
@@ -46,6 +45,7 @@ build() {
     --prefix=/usr \
     --disable-static \
     --enable-udf
+
   make
 }
 
