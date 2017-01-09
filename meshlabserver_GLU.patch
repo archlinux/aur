@@ -6,12 +6,12 @@
  win32-g++:  LIBS += -L../distrib -lcommon      
 -linux-g++:  LIBS += -L../distrib -lcommon
 +linux-g++:  LIBS += -L../distrib -lcommon -lGLU
- linux-g++:QMAKE_LFLAGS += -Wl,-rpath,\''$'$ORIGIN\'
+ linux-g++:QMAKE_LFLAGS += -Wl,-rpath,/usr/lib/meshlab
 -linux-g++-32:  LIBS += -L../distrib -lcommon
 +linux-g++-32:  LIBS += -L../distrib -lcommon -lGLU
- linux-g++-32:QMAKE_LFLAGS += -Wl,-rpath,\''$'$ORIGIN\'
+ linux-g++-32:QMAKE_LFLAGS += -Wl,-rpath,/usr/lib/meshlab
 -linux-g++-64:  LIBS += -L../distrib -lcommon
 +linux-g++-64:  LIBS += -L../distrib -lcommon -lGLU
- linux-g++-64:QMAKE_LFLAGS += -Wl,-rpath,\''$'$ORIGIN\'
+ linux-g++-64:QMAKE_LFLAGS += -Wl,-rpath,/usr/lib/meshlab
  #CONFIG (release,debug | release) {
  #	win32-msvc2005:release:  LIBS += -L../common/release -lcommon

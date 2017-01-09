@@ -6,13 +6,13 @@ diff -Nur meshlab.orig/src/meshlab/meshlab.pro meshlab/src/meshlab/meshlab.pro
  
  linux-g++:LIBS += -L../external/lib/linux-g++ -ljhead -L../distrib -lcommon -lGLU
 -linux-g++:QMAKE_RPATHDIR += ../distrib
-+linux-g++:QMAKE_LFLAGS += -Wl,-rpath,\''$'$ORIGIN\'
++linux-g++:QMAKE_LFLAGS += -Wl,-rpath,/usr/lib/meshlab
  linux-g++-32:LIBS += -L../external/lib/linux-g++-32 -ljhead -L../distrib -lcommon -lGLU
 -linux-g++-32:QMAKE_RPATHDIR += ../distrib
-+linux-g++-32:QMAKE_LFLAGS += -Wl,-rpath,\''$'$ORIGIN\'
++linux-g++-32:QMAKE_LFLAGS += -Wl,-rpath,/usr/lib/meshlab
  linux-g++-64:LIBS += -L../external/lib/linux-g++-64 -ljhead -L../distrib -lcommon -lGLU
 -linux-g++-64:QMAKE_RPATHDIR += ../distrib
-+linux-g++-64:QMAKE_LFLAGS += -Wl,-rpath,\''$'$ORIGIN\'
++linux-g++-64:QMAKE_LFLAGS += -Wl,-rpath,/usr/lib/meshlab
  
  # uncomment in your local copy only in emergency cases.
  # We should never be too permissive
@@ -24,13 +24,13 @@ diff -Nur meshlab.orig/src/meshlabserver/meshlabserver.pro meshlab/src/meshlabse
  win32-g++:  LIBS += -L../distrib -lcommon
  linux-g++:  LIBS += -L../distrib -lcommon
 -linux-g++:QMAKE_RPATHDIR += ../distrib
-+linux-g++:QMAKE_LFLAGS += -Wl,-rpath,\''$'$ORIGIN\'
++linux-g++:QMAKE_LFLAGS += -Wl,-rpath,/usr/lib/meshlab
  linux-g++-32:  LIBS += -L../distrib -lcommon
 -linux-g++-32:QMAKE_RPATHDIR += ../distrib
-+linux-g++-32:QMAKE_LFLAGS += -Wl,-rpath,\''$'$ORIGIN\'
++linux-g++-32:QMAKE_LFLAGS += -Wl,-rpath,/usr/lib/meshlab
  linux-g++-64:  LIBS += -L../distrib -lcommon
 -linux-g++-64:QMAKE_RPATHDIR += ../distrib
-+linux-g++-64:QMAKE_LFLAGS += -Wl,-rpath,\''$'$ORIGIN\'
++linux-g++-64:QMAKE_LFLAGS += -Wl,-rpath,/usr/lib/meshlab
  #CONFIG (release,debug | release) {
  #	win32-msvc2005:release:  LIBS += -L../common/release -lcommon
  #	win32-msvc2008:release:  LIBS += -L../common/release -lcommon
