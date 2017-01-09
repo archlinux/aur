@@ -2,7 +2,7 @@
 
 pkgname=python-inotify-simple
 pkgver=1.0.4
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple wrapper around inotify."
 license=("BSD")
 url="https://pypi.python.org/pypi/inotify_simple"
@@ -17,4 +17,3 @@ package() {
 
   python setup.py install --root=$pkgdir
 }
-
