@@ -37,6 +37,8 @@ build() {
 }
 
 package() {
+	depends+=('usbmuxd-git')
+
 	cd libimobiledevice
 
 	make DESTDIR="$pkgdir" install
