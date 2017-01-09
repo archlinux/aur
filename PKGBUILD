@@ -2,7 +2,7 @@
 # Contributor: ianux <ianux@free.fr>
 
 pkgname=weboob-git
-pkgver=1.1_1419_gec6516cf3
+pkgver=1.2_4_g4533794a9
 pkgrel=1
 pkgdesc="Weboob (Web Out Of Browsers) provides several applications to interact with a lot of websites."
 url="http://weboob.org"
@@ -28,7 +28,7 @@ depends=(
     python2-yaml
     which
 )
-makedepends=(git python2-distribute setuptools make)
+makedepends=(git python2-distribute python2-setuptools make)
 optdepends=('gnupg: check for repository authenticity'
             'python2-routes: contrib backends'
             'python2-webob: contrib backends'
@@ -51,5 +51,6 @@ pkgver() {
 package() {
    cd ${srcdir}/${pkgname}
    python2 setup.py install --qt --xdg --prefix=/usr --root="$pkgdir"
+   install -Dm 644 tools/weboob_bash_completion "$pkgdir/etc/bash_completion.d/weboob"
 }
 
