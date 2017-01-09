@@ -2,14 +2,14 @@
 # Contributor:
 
 pkgname=mpc-qt-git
-pkgver=r764.5d410a5
+pkgver=r798.69b1468
 pkgrel=1
 pkgdesc='A clone of Media Player Classic reimplimented in Qt.'
 url='https://github.com/cmdrkotori/mpc-qt'
 arch=('i686' 'x86_64')
 license=('GPL2')
-depends=('desktop-file-utils' 'mpv' 'qt5-x11extras')
-makedepends=('git')
+depends=('mpv' 'qt5-x11extras')
+makedepends=('git' 'imagemagick')
 provides=('mpc-qt')
 conflicts=('mpc-qt')
 source=("git+${url}.git"
@@ -24,7 +24,7 @@ pkgver() {
 
 build() {
   cd mpc-qt
-  qmake-qt5 mpc-qt.pro
+  qmake-qt5 CONFIG+=debug mpc-qt.pro
   make
 }
 
@@ -33,4 +33,10 @@ package() {
   install -Dm755 mpc-qt "$pkgdir/usr/bin/mpc-qt"
   install -Dm644 ../mpc-qt.desktop "$pkgdir/usr/share/applications/mpc-qt.desktop"
   install -Dm644 images/bitmaps/icon.png "$pkgdir/usr/share/pixmaps/mpc-qt.png"
+  install -Dm644 image-sources/logo.svg "$pkgdir/usr/share/icons/hicolor/scalable/apps/mpc-qt.png"
+  for size in 256 192 128 64 48 32 24 22 16; do
+    install -d "${pkgdir}"/usr/share/icons/hicolor/${size}x${size}/apps
+    convert image-sources/logo.svg -resize ${size} \
+    	"${pkgdir}"/usr/share/icons/hicolor/${size}x${size}/apps/mpc-qt.png
+  done
 }
