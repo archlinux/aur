@@ -49,8 +49,6 @@ cp -rn "\${DIN_INSTALL_DIR}/factory" "\${DIN_HOME_DIR}"
 cp -rn "\${DIN_INSTALL_DIR}/din" "\${DIN_HOME_DIR}"
 
 cd "\${DIN_HOME_DIR}"
-echo "make sure JACK server is running or"
-echo "you will get a segmentation fault when you run DIN."
 exec ./din "\$@"
 EOF
   chmod +x "$pkgdir/usr/bin/din"
