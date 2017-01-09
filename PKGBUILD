@@ -15,7 +15,7 @@ makedepends=('scons'
              'gcc-fortran'
              'openblas-lapack'
              'blitz')
-source=('http://downloads.sourceforge.net/project/camfr/camfr/camfr-20070717/camfr-20070717.tgz'
+source=('git+https://github.com/jtambasco/camfr.git'
         'machine_cfg.py')
 md5sums=(3858d6b9e3be29aa3981c2b4fe595fe2
          db07413af39b15ff25d35b8dd89f2452)
