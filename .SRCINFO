@@ -1,7 +1,7 @@
 pkgbase = lib32-spotify-web-player-for-linux
 	pkgdesc = A Spotify Web Player wrapper in Electron (32-bit only)
 	pkgver = 1.0.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/Quacky2200/Spotify-Web-Player-for-Linux
 	install = lib32-spotify-web-player-for-linux.install
 	changelog = README.md

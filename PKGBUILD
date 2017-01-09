@@ -1,7 +1,7 @@
 # Maintainer: TGS <techguy100official at gmail dot com>
 pkgname=lib32-spotify-web-player-for-linux
 pkgver=1.0.0
-pkgrel=3
+pkgrel=4
 epoch=
 pkgdesc="A Spotify Web Player wrapper in Electron (32-bit only)"
 arch=('x86_64' 'i686' 'i386')
@@ -32,7 +32,7 @@ package() {
     echo "PKGBUILD Repository: https://notabug.org/TGS/Spotify-Web-Player-for-Linux-PKGBUILD"
     # 1. Organize and cd to source files
     mv "$pkgver.tar.gz" "$pkgver-$pkgrel.tar.gz"
-	cd "Spotify-Web-Player-For-Linux-$pkgver"
+	cd "Spotify-Web-Player-for-Linux-$pkgver"
     # 2. Remove old files
     echo "--> Removing old files..."
 	sudo rm -rf /usr/bin/spotifywebplayer # remove the old version directory 
