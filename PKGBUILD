@@ -7,12 +7,12 @@ pkgdesc="A minimalistic dynamic tiling window manager that tries to stay out of 
 arch=('i686' 'x86_64')
 url="http://www.spectrwm.org"
 license=('custom:ISC')
-depends=('dmenu' 'xcb-util' 'xcb-util-wm' 'xcb-util-keysyms' 'libxft' 'terminus-font')
+depends=('dmenu' 'xcb-util' 'xcb-util-wm' 'xcb-util-keysyms' 'libxrandr' 'libxft' 'libxcursor' 'terminus-font')
 backup=(etc/spectrwm.conf)
 replaces=('scrotwm')
 conflicts=('scrotwm' 'spectrwm')
 provides=('scrotwm' 'spectrwm')
-makedepends=('git')
+makedepends=('git' 'libxt')
 optdepends=('scrot: screenshots'
             'xlockmore: screenlocking')
 source=('git+https://github.com/conformal/spectrwm'
