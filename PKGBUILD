@@ -1,6 +1,6 @@
 # Maintainer: bartus <aur@bartus.33mail.com>
 pkgname=meshlab-git
-pkgver=2016.12.r6.gf29d0ba1
+pkgver=2016.12.r10.g781a39a5
 pkgrel=1
 pkgdesc="System for processing and editing of unstructured 3D models arising in 3D scanning (qt5 version)"
 arch=('i686' 'x86_64')
@@ -21,7 +21,6 @@ source=("git+https://github.com/cnr-isti-vclab/meshlab.git"
         "bzip2.patch"
         "meshlabserver_GLU.patch"
         "cpp11_abs.patch"
-        "fix_locale.patch"
         "mpir.patch"
         "rpath.patch"
         "meshlab.desktop")
@@ -33,8 +32,7 @@ md5sums=('SKIP'
          '64caafa96bef4208d641e889099eba26'
          '616b0dcf018f46a490867028d6ddc533'
          '5d87f00356539f84f37f873f304eb11e'
-         'c1cfb910d20db49ec195d9918036e3c3'
-         '5b59b23cf66e42f8b3d3eabe466b3eaa'
+         '3f49b66001a0e4d31f43c1429d73d7b6'
          '5df295c21de5bac8d6073528823d975a'
          '2cc1246fc1b01029ae762c82a7dbf364'
          '18aed0a21276a22325bf8c32166fb110')
@@ -58,8 +56,6 @@ prepare() {
   patch -Np0 -i meshlabserver_GLU.patch
   msg "fix cpp11 abs()"
   patch -Np0 -i cpp11_abs.patch
-  msg "fix decimal separator problem"
-  patch -Np0 -i fix_locale.patch
   msg "using system mpir lib"
   patch -Np0 -i mpir.patch
   msg "using system bzip2 lib"
