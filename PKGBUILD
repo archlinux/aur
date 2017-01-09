@@ -15,14 +15,11 @@ makedepends=('scons'
              'gcc-fortran'
              'openblas-lapack'
              'blitz')
-source=('git+https://github.com/jtambasco/camfr.git'
-        'machine_cfg.py')
-md5sums=('SKIP'
-         db07413af39b15ff25d35b8dd89f2452)
+source=('git+https://github.com/jtambasco/camfr.git')
+md5sums=('SKIP')
 
 build() {
   cd "${pkgname}"
-  mv ../machine_cfg.py .
   python2 setup.py build
 }
 

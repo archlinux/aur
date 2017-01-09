@@ -15,9 +15,7 @@ pkgbase = camfr
 	depends = python2-imaging
 	depends = tk
 	source = git+https://github.com/jtambasco/camfr.git
-	source = machine_cfg.py
 	md5sums = SKIP
-	md5sums = db07413af39b15ff25d35b8dd89f2452
 
 pkgname = camfr
 
