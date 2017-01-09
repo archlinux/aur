@@ -3,7 +3,7 @@
 _plug=havsfunc
 pkgname=vapoursynth-plugin-${_plug}-git
 pkgver=r24.1.gedb855b
-pkgrel=1
+pkgrel=2
 pkgdesc="Plugin for Vapoursynth: ${_plug}. (GIT Version)"
 arch=('any')
 url='http://forum.doom9.org/showthread.php?t=166582'
@@ -25,7 +25,6 @@ depends=('vapoursynth'
          'vapoursynth-plugin-genericfilters-git'
          'vapoursynth-plugin-knlmeanscl'
          'vapoursynth-plugin-mvtools'
-         'vapoursynth-plugin-miscfilters'
          'vapoursynth-plugin-nnedi3_resample-git'
          'vapoursynth-plugin-nnedi3-git'
          'vapoursynth-plugin-sangnom-hg'
