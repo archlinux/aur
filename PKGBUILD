@@ -3,7 +3,7 @@
 _plug=miscfilters
 pkgname=vapoursynth-plugin-${_plug}
 pkgver=4
-pkgrel=1
+pkgrel=2
 pkgdesc="Plugin for Vapoursynth: ${_plug}"
 arch=('i686' 'x86_64')
 url='http://forum.doom9.org/showthread.php?t=173871'
@@ -26,7 +26,7 @@ prepare() {
 
   echo "all:
 	  g++ -c -std=c++11 -fPIC ${CXXFLAGS} ${CPPFLAGS} -I. $(pkg-config --cflags vapoursynth) -o miscfilters.o miscfilters.cpp
-	  g++ -shared  -fPIC ${LDFLAGS} -o libvs${_plug}.so miscfilters.o"> Makefile
+	  g++ -shared  -fPIC ${LDFLAGS} -o lib${_plug}.so miscfilters.o"> Makefile
 }
 
 build() {
@@ -36,6 +36,6 @@ build() {
 
 package(){
   cd "vapoursynth-miscfilters-${pkgver}"
-  install -Dm755 "libvs${_plug}.so" "${pkgdir}/usr/lib/vapoursynth/libvs${_plug}.so"
+  install -Dm755 "lib${_plug}.so" "${pkgdir}/usr/lib/vapoursynth/lib${_plug}.so"
   install -Dm644 "${srcdir}/COPYING.LGPLv2.1" "${pkgdir}/usr/share/licenses/${pkgname}/COPYING.LGPLv2.1"
 }
