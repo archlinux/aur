@@ -183,6 +183,7 @@ package() {
 	# Necessary libfmod symbolic link
 	mkdir -p "$pkgdir/usr/lib"
 	if [[ $CARCH == "x86_64" ]]; then
+		mkdir -p "$pkgdir/usr/lib32"
 		ln -sf /opt/cocos2d-x/external/linux-specific/fmod/prebuilt/64-bit/libfmod.so "$pkgdir/usr/lib/libfmod.so.6"
 		ln -sf /opt/cocos2d-x/external/linux-specific/fmod/prebuilt/64-bit/libfmodL.so "$pkgdir/usr/lib/libfmodL.so.6"
 		ln -sf /opt/cocos2d-x/external/linux-specific/fmod/prebuilt/32-bit/libfmod.so "$pkgdir/usr/lib32/libfmod.so.6"
