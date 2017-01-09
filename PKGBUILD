@@ -23,7 +23,9 @@ makedepends=('git'
              'python-sphinx'
              )
 provides=('vapoursynth')
-conflicts=('vapoursynth')
+conflicts=('vapoursynth'
+           'vapoursynth-plugin-miscfilters'
+           )
 source=('git+http://github.com/vapoursynth/vapoursynth.git'
         'vapoursynth.xml'
         'wtfpl.txt::http://www.wtfpl.net/txt/COPYING'
