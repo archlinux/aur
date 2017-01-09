@@ -2,7 +2,7 @@
 _pkgname=virtualfish
 pkgname=python-$_pkgname
 pkgver=1.0.5
-pkgrel=2
+pkgrel=3
 pkgdesc="A virtualenv wrapper for the Fish shell"
 arch=(any)
 url="https://github.com/adambrenecki/virtualfish"
