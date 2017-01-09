@@ -1,0 +1,22 @@
+pkgbase = lib32-spotify-web-player-for-linux
+	pkgdesc = A Spotify Web Player wrapper in Electron (32-bit only)
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/Quacky2200/Spotify-Web-Player-for-Linux
+	install = lib32-spotify-web-player-for-linux.install
+	changelog = README.md
+	arch = x86_64
+	arch = i686
+	arch = i386
+	license = MIT
+	depends = libappindicator-gtk3
+	depends = libnotify
+	depends = unzip
+	optdepends = dbus: Notification and MPRIS controller support
+	source = https://github.com/Quacky2200/Spotify-Web-Player-for-Linux/archive/1.0.0.tar.gz
+	source = https://github.com/Quacky2200/Spotify-Web-Player-for-Linux/releases/download/1.0.0/node_modules_x86.zip
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = lib32-spotify-web-player-for-linux
+
