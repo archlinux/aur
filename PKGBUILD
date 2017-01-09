@@ -12,7 +12,7 @@ arch=('i686' 'x86_64')
 url="http://nlp.fi.muni.cz/projekty/gensim/"
 license=('LGPL')
 makedepends=('python-setuptools' 'python2-setuptools' 'python-scipy' 'python2-scipy' 'cython' 'cython2' 'python-six' 'python2-six')
-source=("http://pypi.python.org/packages/source/g/$_pkgbase/$_pkgbase-${pkgver//_/-}.tar.gz")
+source=("https://files.pythonhosted.org/packages/source/${pkgname:0:1}/${pkgname}/${pkgname}-${pkgver}.tar.gz")
 md5sums=('baa36f0b845162abeadd1bb66511a53c')
 
 
