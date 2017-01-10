@@ -1,0 +1,44 @@
+pkgbase = parallels-tools
+	pkgdesc = Parallels virtualization integration services & drivers
+	pkgver = 11.2.2.32651
+	pkgrel = 1
+	url = https://parallels.com
+	arch = x86_64
+	license = custom: commercial
+	makedepends = dir-dlagent
+	makedepends = dkms
+	depends = bash
+	depends = sh
+	conflicts = xorg-server<1.16
+	conflicts = X-ABI-VIDEODRV_VERSION<20
+	conflicts = X-ABI-VIDEODRV_VERSION>=21
+	source = dir://parallels-tools/tools/prltools.x64.tar.gz
+	source = dir://parallels-tools/kmods/prl_mod.tar.gz
+	source = dir://parallels-tools/tools/prlmouse.conf
+	source = dir://parallels-tools/tools/xorg-prlmouse.rules
+	source = dir://parallels-tools/tools/99prltoolsd-hibernate
+	source = dir://parallels-tools/tools/mount.prl_fs.8
+	source = dir://parallels-tools/installer/blacklist-parallels.conf
+	source = dir://parallels-tools/installer/prltoolsd.sh
+	source = dir://parallels-tools/installer/prltoolsd.service
+	source = dir://parallels-tools/installer/prl-x11.sh
+	source = dir://parallels-tools/installer/prl-x11.service
+	source = dir://parallels-tools/installer/prlfsmountd.sh
+	sha1sums = af32269e60b11704be9fca73ea9586da01b37ae2
+	sha1sums = 604bcee0d5c9ac6a347c6ce40792ddc7598f99dd
+	sha1sums = 8d7b264653f8167904d0328e1fc540fc0b7bc7eb
+	sha1sums = a20911495461ed1950bee069d128fe6c7103c97d
+	sha1sums = da5fcbc6a93f1d3939752838e53d1daea13307cb
+	sha1sums = 9af7dba4990c69493e6d60bd60bb684f36aee13f
+	sha1sums = a5f638186352484b9153191ace3fb8a4ce826b1f
+	sha1sums = c8042c5ada41dd17f2b67347871dff41c4bce9c9
+	sha1sums = c50bf939719eba4ebb34e4bd8a0921e1cbe4d901
+	sha1sums = 82ab36a2876a1d30fad92ebf06d87b0d8d7210a8
+	sha1sums = bd681d740b4a1a68adfd4f94afec5934c2ea69ac
+	sha1sums = 56d3fc7c9abb7c63b9c6356422261f0a87cf3b22
+
+pkgname = parallels-tools
+
+pkgname = parallels-tools-dkms
+	depends = dkms
+
