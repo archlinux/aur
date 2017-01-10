@@ -2,12 +2,12 @@
 
 pkgname='persepolis'
 pkgver=2.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A graphical front-end for aria2 download manager with lots of features."
 arch=('any')
 url="https://persepolisdm.github.io/"
 license=('GPL3')
-depends=('aria2' 'vorbis-tools' 'libnotify' 'python' 'python-pyqt5' 'qt5-svg')
+depends=('aria2' 'vorbis-tools' 'libnotify' 'python' 'python-pyqt5' 'python-requests' 'qt5-svg')
 optdepends=('firefox-flashgot: for integrating with firefox.')
 provides=("${pkgname}" "persepolis")
 conflicts=("${pkgname}" "persepolis")
