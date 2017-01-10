@@ -4,11 +4,12 @@
 _gemname=uber
 pkgname=ruby-$_gemname-0.0
 pkgver=0.0.15
-pkgrel=1
+pkgrel=2
 pkgdesc='Gem-authoring tools like class method inheritance in modules, dynamic options and more.'
 arch=(any)
 url='https://github.com/apotonick/uber'
 license=(MIT)
+provides=("ruby-uber=$pkgver")
 depends=(ruby)
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
