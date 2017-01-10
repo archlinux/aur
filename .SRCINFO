@@ -1,6 +1,6 @@
 pkgbase = bubblewrap-git
 	pkgdesc = Unprivileged sandboxing tool
-	pkgver = v0.1.4.r7.ga188753
+	pkgver = v0.1.5.r2.g9d368ee
 	pkgrel = 1
 	url = https://github.com/projectatomic/bubblewrap
 	install = bubblewrap.install
@@ -10,6 +10,7 @@ pkgbase = bubblewrap-git
 	makedepends = autoconf
 	makedepends = automake
 	makedepends = libxslt
+	makedepends = docbook-xsl
 	provides = bubblewrap
 	conflicts = bubblewrap
 	source = bubblewrap-git::git+https://github.com/projectatomic/bubblewrap
