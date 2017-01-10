@@ -2,16 +2,16 @@
 
 pkgbase=python-pysaml2
 pkgname=($pkgbase python2-pysaml2)
-pkgver=4.0.5
-pkgrel=2
+pkgver=4.4.0
+pkgrel=1
 pkgdesc='Python implementation of SAML Version 2'
 license=('Apache')
 arch=('any')
 url='https://pypi.python.org/pypi/pysaml2'
 makedepends=('python-setuptools'
              'python2-setuptools')
-source=("https://pypi.python.org/packages/source/p/pysaml2/pysaml2-${pkgver}.tar.gz")
-md5sums=('e2b8335a7490f0ca1a1818732d6cdfb1')
+source=("https://pypi.python.org/packages/b2/d8/e294546b3ef6dad5cc250939b191a5230780f6bcb1faaef0bb92fdab5308/pysaml2-4.4.0.tar.gz")
+md5sums=('401a34fd919f0f95efaa1e34a59bcbf9')
 
 prepare() {
 	cp -a "pysaml2-$pkgver"{,-python2}
