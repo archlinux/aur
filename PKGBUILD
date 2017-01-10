@@ -2,7 +2,7 @@
 pkgname=kitty-git
 pkgver=r696.0d38a2e
 pkgrel=1
-pkgdesc="A modern, hackable, featureful, OpenGL based terminal emulator" # you've missed pkgdesc which is neccessary
+pkgdesc="A modern, hackable, featureful, OpenGL based terminal emulator"
 arch=('i686' 'x86_64')
 url="https://github.com/kovidgoyal/kitty"
 license=('GPL3')
