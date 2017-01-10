@@ -1,7 +1,7 @@
 pkgbase = bibfix
 	pkgdesc = Fixes unescaped acronyms in titles in bibtex files
 	pkgver = 0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/languitar/bibfix
 	arch = any
 	license = LGPL3
