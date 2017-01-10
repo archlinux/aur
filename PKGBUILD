@@ -5,7 +5,7 @@
 _pkgname=certbot
 pkgname=${_pkgname}-user
 pkgver=0.9.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Let’s Encrypt certbot running as certbot user rather than root, with either standalone or webroot mode."
 arch=('any')
 license=('Apache')
@@ -14,7 +14,7 @@ depends=('ca-certificates' "python2-acme=${pkgver}" 'python2-configargparse' 'py
          'python2-cryptography' 'python2-pyopenssl' 'python2-mock' 'python2-parsedatetime'
          'python2-psutil' 'python2-pyrfc3339' 'python2-pythondialog' 'python2-pytz'
          'python2-requests' 'python2-setuptools' 'python2-six' 'python2-zope-component'
-         'python2-zope-interface')
+         'python2-zope-interface' 'systemd')
 checkdepends=('python2-nose')
 conflicts=('certbot')
 provides=('certbot')
@@ -41,7 +41,7 @@ check() {
 
 package() {
     cd ${_pkgname}-${pkgver}
-    python2 setup.py install --root="${pkgdir}"
+    python2 setup.py install --root="${pkgdir}" --skip-build --optimize=1
 
     install -Dm644 "${srcdir}"/${_pkgname}.tmpfiles "${pkgdir}"/usr/lib/tmpfiles.d/${_pkgname}.conf
     install -Dm644 "${srcdir}"/${_pkgname}.sysusers "${pkgdir}"/usr/lib/sysusers.d/${_pkgname}.conf

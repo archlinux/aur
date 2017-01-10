@@ -1,7 +1,7 @@
 pkgbase = certbot-user
 	pkgdesc = Let’s Encrypt certbot running as certbot user rather than root, with either standalone or webroot mode.
 	pkgver = 0.9.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://certbot.eff.org
 	install = certbot.install
 	arch = any
@@ -24,6 +24,7 @@ pkgbase = certbot-user
 	depends = python2-six
 	depends = python2-zope-component
 	depends = python2-zope-interface
+	depends = systemd
 	provides = certbot
 	conflicts = certbot
 	source = https://pypi.io/packages/source/c/certbot/certbot-0.9.3.tar.gz
