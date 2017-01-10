@@ -1,6 +1,6 @@
 # Maintainer: Dario Ostuni <another.code.996@gmail.com>
 pkgname=pota-git
-pkgver=r11.aeb5801
+pkgver=r16.efb0a12
 pkgrel=1
 pkgdesc=" Pota programming language "
 arch=('any')
