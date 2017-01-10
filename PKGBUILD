@@ -2,7 +2,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=textext-hg
-pkgver=r249.d23f6cb223ce
+pkgver=r254.9ce973f93b4b
 pkgrel=1
 pkgdesc="An inkscape extension which lets you add LaTeX equations to your drawings"
 arch=('any')
