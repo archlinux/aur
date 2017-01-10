@@ -3,7 +3,7 @@
 
 pkgname=libcd
 pkgver=5.11
-pkgrel=3
+pkgrel=4
 pkgdesc="Platform-independent graphics library"
 arch=('i686' 'x86_64')
 url="http://www.tecgraf.puc-rio.br/cd/"
@@ -27,7 +27,7 @@ md5sums=('fe722e1217412135b1be7752ee59958f'
 
 build() {
   cd "$srcdir"/cd
-  make || true
+  make FLAGS="-I/usr/include/im" LFLAGS="-L/usr/lua/5.1" || true
 }
 
 package() {
@@ -40,5 +40,5 @@ package() {
   install -m644 "$srcdir"/cd/include/* "$pkgdir"/usr/include/cd
   install -Dm644 "$srcdir"/LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
   install -d "$pkgdir"/usr/lua/5.1/
-  install -Dm644 "$srcdir"/cd/lib/Linux48_64/Lua51/*.so "$pkgdir"/usr/lua/5.1/
+  install -Dm644 "$srcdir"/cd/lib/Linux??_??/Lua51/*.so "$pkgdir"/usr/lua/5.1/
 }
