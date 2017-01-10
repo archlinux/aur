@@ -2,8 +2,8 @@
 
 pkgname=pi-hole-server
 _pkgname=pi-hole
-pkgver=2.11.1
-pkgrel=3
+pkgver=2.11.2
+pkgrel=1
 _wwwpkgname=AdminLTE
 _wwwpkgver=2.3.1
 pkgdesc='The Pi-hole is an advertising-aware DNS/Web server. Arch adaptation for lan wide DNS server.'
@@ -31,7 +31,7 @@ source=(https://github.com/$_pkgname/$_pkgname/archive/v$pkgver.tar.gz
 	blacklist.txt
 	mimic_setupVars.conf.sh)
 
-md5sums=('8e5b5a5c024cf1681c09957b93b063be'
+md5sums=('32a79fcd5d2d49228e99a493418469a1'
          '55b9d787c62ba89a8f5ae94793f632eb'
          '3acf27ca01d931db363634dbfc95a061'
          '3f1aeea43af0b192edb36b9e5484ff87'
@@ -170,12 +170,6 @@ prepare() {
   if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: sudo pihole full path (php-fpm compatibility) 7" && return 1 ; fi
   sed -i "s|sudo pihole|sudo /usr/bin/pihole|w $_ssc" "$srcdir"/$_wwwpkgname-$_wwwpkgver/scripts/pi-hole/php/loginpage.php
   if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: sudo pihole full path (php-fpm compatibility) 8" && return 1 ; fi
-
-# -----------------
-
-  # webpage.sh: line 139: ProcessDnsmasqSettings: command not found
-  sed -i "s|ProcessDnsmasqSettings|ProcessDNSSettings|w $_ssc" "$srcdir"/$_pkgname-$pkgver/advanced/Scripts/webpage.sh
-  if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: webpage.sh: line 139: ProcessDnsmasqSettings: command not found" && return 1 ; fi
 
 # -----------------
 
