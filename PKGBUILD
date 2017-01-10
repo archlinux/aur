@@ -32,7 +32,7 @@
 # /usr/lib/purr-data, so that 3rd party externals know where to find these.
 
 pkgname=purr-data
-pkgver=20170106.r3227.7ad55854
+pkgver=20170108.r3234.59c867e5
 pkgrel=1
 pkgdesc="Jonathan Wilkes' nw.js variant of Pd-L2Ork (git version)"
 url="https://git.purrdata.net/jwilkes/purr-data"
@@ -50,7 +50,7 @@ makedepends=('autoconf' 'automake' 'libtool' 'git' 'rsync')
 conflicts=('purr-data')
 install=purr-data.install
 options=('!makeflags' '!strip')
-source=("$pkgname::git+https://git.purrdata.net/jwilkes/purr-data.git#commit=7ad55854899e790f1c29677f1f111cb75d1620f0"
+source=("$pkgname::git+https://git.purrdata.net/jwilkes/purr-data.git#commit=59c867e5571258e44bbde51408699ceaa6851fea"
 	"RTcmix-pd-LCPLAY-stabilize.patch"
 	"userconfig.patch")
 md5sums=('SKIP'
@@ -156,8 +156,8 @@ package() {
   cd "$pkgdir"
   chmod -R go-w *
   chmod -R a+r *
-  chmod a-x opt/purr-data/lib/pd-l2ork/default.settings
-  find opt/purr-data/lib/pd-l2ork/bin/nw -executable -not -type d -exec chmod a+x {} +
+  chmod a-x .$(prefix)/lib/pd-l2ork/default.settings
+  find .$(prefix)/lib/pd-l2ork/bin/nw -executable -not -type d -exec chmod a+x {} +
   #find . -executable -name '*.pd_linux' -exec chmod a-x {} +
   find . -executable -name '*.pd' -exec chmod a-x {} +
   find . -executable -name '*.txt' -exec chmod a-x {} +
