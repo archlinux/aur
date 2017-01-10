@@ -1,7 +1,7 @@
 # Maintainer: <RushAur> <nojunkmails at t-online dot de>
 # Forked from surfn-icons-git. 
 pkgname=rainbow-icons-git
-pkgver=r231.7962fb4c
+pkgver=r232.847d41b2
 pkgrel=1
 pkgdesc="A customized multi-colour icon theme."
 arch=('any')
