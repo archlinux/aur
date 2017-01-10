@@ -4,12 +4,12 @@
 _gemname=dotenv
 pkgname=ruby-$_gemname-2.1
 pkgver=2.1.1
-pkgrel=2
+pkgrel=4
 pkgdesc='Loads environment variables from `.env`.'
 arch=(any)
 url='https://github.com/bkeepers/dotenv'
 license=(MIT)
-provides=('ruby-dotenv=2.1')
+provides=("ruby-dotenv=$pkgver")
 depends=(ruby)
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
