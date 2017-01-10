@@ -3,7 +3,7 @@
 _gemname=gobject-introspection
 pkgname=ruby-$_gemname
 pkgver=3.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Ruby/GObjectIntrospection is a Ruby binding of GObjectIntrospection.'
 arch=(i686 x86_64)
 url='http://ruby-gnome2.sourceforge.jp/'
