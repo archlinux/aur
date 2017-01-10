@@ -39,7 +39,7 @@ pkgver() {
 
 package() {
     cd $_pkgname
-    perl Build.PL --destdir "$pkgdir" --installdirs vendor --gtk-youtube-viewer
+    /usr/bin/perl Build.PL --destdir "$pkgdir" --installdirs vendor --gtk-youtube-viewer
     ./Build
     ./Build test
     ./Build install --install_path script=/usr/bin
