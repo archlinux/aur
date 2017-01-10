@@ -1,0 +1,12 @@
+pkgbase = portscan
+	pkgdesc = PortScan aims to check open and closed ports quickly.
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/Sup3r-Us3r/PortScan
+	install = portscan.install
+	arch = any
+	depends = python
+	source = portscan.py
+	md5sums = 61735ad7ef0026b47635d279b51a299e
+
+pkgname = portscan
