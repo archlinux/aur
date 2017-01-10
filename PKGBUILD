@@ -1,7 +1,7 @@
 # Maintainer: Mohammadreza Abdollahzadeh <morealaz at gmail dot com>
 
 pkgname='persepolis-git'
-pkgver=2.2.2_unstable.r31.g7acf4ec
+pkgver=2.3.r4.g5c58313
 pkgrel=1
 pkgdesc="A graphical front-end for aria2 download manager with lots of features (Github version)."
 arch=('any')
