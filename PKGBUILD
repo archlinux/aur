@@ -4,10 +4,10 @@
 _name=enum34
 pkgname=python-enum34
 pkgver=1.1.6
-pkgrel=1
+pkgrel=2
 pkgdesc='Python 3.4 Enum backported'
 arch=('any')
-url="http://pypi.python.org/pypi/$_name"
+url="https://pypi.python.org/pypi/$_name"
 license=('BSD')
 depends=('python')
 source=("https://pypi.python.org/packages/bf/3e/31d502c25302814a7c2f1d3959d2a3b3f78e509002ba91aea64993936876/$_name-$pkgver.tar.gz")
