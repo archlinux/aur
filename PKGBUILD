@@ -9,8 +9,8 @@ url='https://github.com/skarbat/xsysroot'
 license=('MIT')
 makedepends=('git')
 depends=('python2' 'qemu-user-static' 'binfmt-support')
-source=('git://github.com/skarbat/xsysroot')
-sha256sums=('SKIP')
+source=('git+https://github.com/skarbat/xsysroot')
+sha1sums=('SKIP')
 
 pkgver() {
 	grep __version__ $srcdir/xsysroot/xsysroot | cut -d' ' -f3
