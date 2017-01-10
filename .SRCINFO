@@ -1,7 +1,7 @@
 pkgbase = libim
 	pkgdesc = Toolkit for Digital Imaging
 	pkgver = 3.12
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.tecgraf.puc-rio.br/im/
 	arch = i686
 	arch = x86_64

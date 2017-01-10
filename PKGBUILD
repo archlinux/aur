@@ -5,7 +5,7 @@
 
 pkgname=libim
 pkgver=3.12
-pkgrel=2
+pkgrel=3
 pkgdesc="Toolkit for Digital Imaging"
 arch=('i686' 'x86_64')
 url="http://www.tecgraf.puc-rio.br/im/"
@@ -39,5 +39,5 @@ package() {
   install -m644 "$srcdir"/im/include/* "$pkgdir"/usr/include/im
   install -Dm644 "$srcdir"/LICENSE "$pkgdir"/usr/share/licenses/libim/LICENSE
   install -d "$pkgdir"/usr/lua/5.1/
-  install -Dm644 "$srcdir"/im/lib/Linux48_64/Lua51/*.so "$pkgdir"/usr/lua/5.1/
+  install -Dm644 "$srcdir"/im/lib/Linux??_??/Lua51/*.so "$pkgdir"/usr/lua/5.1/
 }
