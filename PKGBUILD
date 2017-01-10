@@ -2,7 +2,7 @@
 
 _pkgname=mutt
 pkgname="${_pkgname}-hg"
-pkgver=6793.405cbc43c3ac
+pkgver=6901.7c0e7a0769e4
 pkgrel=1
 pkgdesc="A small but very powerful text-based mail client"
 url="http://www.mutt.org/"
@@ -17,7 +17,7 @@ makedepends=('mercurial' 'gnupg' 'libxslt')
 conflicts=("${_pkgname}")
 provides=("${_pkgname}")
 
-source=("hg+http://dev.mutt.org/hg/mutt#branch=default")
+source=("hg+https://dev.mutt.org/hg/mutt#branch=default")
 md5sums=(SKIP)
 
 pkgver() {
