@@ -1,13 +1,13 @@
 pkgbase = python-anglerfish
 	pkgdesc = Helper library for Python 3 apps
-	pkgver = 1.2.4
+	pkgver = 2.2.0
 	pkgrel = 1
 	url = http://pypi.python.org/pypi/anglerfish
 	arch = any
 	license = GPLv3
 	depends = python
-	source = https://files.pythonhosted.org/packages/source/a/anglerfish/anglerfish-1.2.4.tar.gz
-	md5sums = a17fe51a8e993aa049f5459d9de0569a
+	source = https://files.pythonhosted.org/packages/source/a/anglerfish/anglerfish-2.2.0.tar.gz
+	md5sums = c927a8d39fc9181b817a77b0774deb5d
 
 pkgname = python-anglerfish
 
