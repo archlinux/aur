@@ -3,7 +3,7 @@
 
 pkgname=weboob-git
 pkgver=1.2_4_g4533794a9
-pkgrel=1
+pkgrel=2
 pkgdesc="Weboob (Web Out Of Browsers) provides several applications to interact with a lot of websites."
 url="http://weboob.org"
 license=('AGPL3')
@@ -39,7 +39,7 @@ optdepends=('gnupg: check for repository authenticity'
             'python2-nose: test suite')
 conflicts=('weboob')
 provides=('weboob')
-source=("$pkgname"::'git://git.symlink.me/pub/weboob/devel.git')
+source=("$pkgname"::'https://git.weboob.org/weboob/devel.git')
 sha256sums=('SKIP')
 
 pkgver() {
