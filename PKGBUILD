@@ -3,7 +3,7 @@
 
 pkgname=lastpass-cli
 pkgver=1.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="LastPass command line interface tool"
 arch=('i686' 'x86_64')
 url="https://lastpass.com/"
@@ -17,7 +17,7 @@ md5sums=('3757bd5822ecfba5e4ebdf90b5325657')
 
 build() {
   cd $pkgname-$pkgver
-  cmake . && make
+  cmake . -DCMAKE_INSTALL_PREFIX="/usr" && make
 }
 
 package() {
