@@ -1,7 +1,7 @@
 # Maintainer: Daniel Lima <danielm@tinyhub.tk>
 
 pkgname=luajit-2.1
-pkgver=2.1.0.beta2.r34.g344fe5f
+pkgver=2.1.0.beta2.r143.g8e5d7be
 pkgrel=1
 pkgdesc='Just-in-time compiler and drop-in replacement for Lua (v2.1 branch)'
 arch=('i686' 'x86_64')
@@ -11,8 +11,8 @@ depends=('gcc-libs')
 makedepends=('git')
 conflicts=('luajit')
 provides=('luajit')
-source=(git+http://luajit.org/git/luajit-2.0.git)
-sha256sums=('SKIP')
+source=(git+https://luajit.org/git/luajit-2.0.git)
+md5sums=('SKIP')
 
 pkgver() {
   cd $srcdir/luajit-2.0
