@@ -1,2 +1,4 @@
-/alot/
-/*.pkg.tar.xz
+*.pkg.tar.xz
+alot/
+pkg/
+src/

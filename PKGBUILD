@@ -2,17 +2,19 @@
 # Contributor: Nicolas Pouillard [https://nicolaspouillard.fr]
 # Contributor: seschwar -- contact via Arch Linux forum or AUR
 # Contributor: Ian Denhardt <ian@zenhack.net>
-# Maintainer: Joakim Reinert <mail+aur@jreinert.com>
+# Contributor: Joakim Reinert <mail+aur@jreinert.com>
+# Maintainer: Dylan Baker <dylan@pnwbakers.com>
 
 _gitname=alot
 pkgname=alot-git
-pkgver=0.3.7
-pkgrel=2
+pkgrel=3
+pkgver=r2.0c67709
 pkgdesc="terminal-based MUA for the notmuch mail system"
 arch=(any)
 url="https://github.com/pazz/alot"
-license=(GPL)
+license=('GPL3')
 depends=(notmuch
+         python2
          python2-pygpgme
          python2-magic
          python2-configobj
@@ -27,16 +29,21 @@ options=(!emptydirs)
 source=('git+https://github.com/pazz/alot.git')
 md5sums=(SKIP)
 
+pkgver() {
+  cd "${_pkgname}"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
 build() {
     cd "$srcdir/$_gitname"
 
     # The archlinux package python2-magic's egg calls itself
-    # "Magic-file-extensions", as opposed to the python-magic on pypi. The
+    # "file-magic", as opposed to the python-magic on pypi. The
     # result is that the alot executable can't find the module, so we patch
     # setup.py to fix the dependency:
     sed -i -e 's/python-magic/file-magic/' setup.py
     python2 setup.py build
-    make SPHINXBUILD=sphinx-build2 -C docs man html
+    make SPHINXBUILD=sphinx-build2 PYTHON=python2 -C docs man html
 }
 
 package() {
