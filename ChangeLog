@@ -1,0 +1,7 @@
+# Maintainer: Félicien Pillot <felicien.pillot@member.fsf.org>
+# ChangeLog file for Make7Libre
+
+	2017-01-10  Félicien Pillot <felicien.pillot@member.fsf.org>
+	* GitRepo: First commit (0.8.0)
+	* PKGBUILD: New file (from scratch)
+	* .SRCINFO: New file (generated with makepkg --printsrcinfo)
