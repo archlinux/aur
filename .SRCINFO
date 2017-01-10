@@ -6,7 +6,7 @@ pkgbase = ruby-dotenv-2.1
 	arch = any
 	license = MIT
 	depends = ruby
-	provides = dotenv=2.1
+	provides = ruby-dotenv=2.1
 	noextract = dotenv-2.1.1.gem
 	options = !emptydirs
 	source = https://rubygems.org/downloads/dotenv-2.1.1.gem
