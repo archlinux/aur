@@ -1,0 +1,15 @@
+pkgbase = ruby-word_wrap
+	pkgdesc = Simple tool for word-wrapping text
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/pazdera/word_wrap
+	arch = any
+	license = MIT
+	depends = ruby
+	noextract = word_wrap-1.0.0.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/word_wrap-1.0.0.gem
+	sha1sums = c31c4eae95d0dadaecbf911ba7ce1c6067d009b5
+
+pkgname = ruby-word_wrap
+
