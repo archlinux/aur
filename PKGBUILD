@@ -4,7 +4,7 @@
 _gemname=fastlane
 pkgname=$_gemname
 pkgver=2.7.0
-pkgrel=2
+pkgrel=3
 pkgdesc='The easiest way to automate beta deployments and releases for your iOS and Android apps'
 arch=(any)
 url='https://fastlane.tools'
@@ -12,6 +12,7 @@ license=(MIT)
 depends=(
   ruby
   'ruby-slack-notifier<2' 'ruby-slack-notifier>=1.3'
+  ruby-slack-notifier-1
   'ruby-xcodeproj<2' 'ruby-xcodeproj>=0.20'
   'ruby-xcpretty<1' 'ruby-xcpretty>=0.2.4'
   'ruby-terminal-notifier<2' 'ruby-terminal-notifier>=1.6.2'
@@ -23,6 +24,7 @@ depends=(
   'ruby-babosa<2' 'ruby-babosa>=1.0.2'
   ruby-colored
   'ruby-commander<5' 'ruby-commander>=4.4'
+  ruby-commander-4
   'ruby-excon<1' 'ruby-excon>=0.45'
   'ruby-faraday-cookie_jar>=0.0.6' 'ruby-faraday-cookie_jar<0.1'
   'ruby-fastimage>=1.6'
@@ -31,16 +33,19 @@ depends=(
   'ruby-highline<2' 'ruby-highline>=1.7.2'
   'ruby-json<3'
   'ruby-mini_magick<4.6' 'ruby-mini_magick>=4.5.1'
+  ruby-mini_magick-4.5
   ruby-multi_json
   'ruby-multi_xml<1' 'ruby-multi_xml>=0.5'
   'ruby-rubyzip<2' 'ruby-rubyzip>=1.1'
   'ruby-security=0.1.3'
   'ruby-xcpretty-travis-formatter>=0.0.3'
   'ruby-dotenv<3' 'ruby-dotenv>=2.1.1'
+  ruby-dotenv-2.1
   'ruby-bundler<2' 'ruby-bundler>=1.12'
   'ruby-faraday<1' 'ruby-faraday>=0.9'
   'ruby-faraday_middleware<1' 'ruby-faraday_middleware>=0.9'
   'ruby-activesupport<5'
+  ruby-active-support-4
   ruby-domain_name
 )
 options=(!emptydirs)
