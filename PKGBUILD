@@ -1,14 +1,15 @@
-# Maintainer: Arthur Zamarin <arthurzam@gmail.com>
 # Contributor: Stéphane Marguet (Stemp) <smarguet@gmail.com>
 # Contributor: scippio <scippio [at] berounet.cz>
 # Contributor: Angel 'angvp' Velasquez <angvp[at]archlinux.com.ve>
 # Contributor: Corrado Primier <bardo@aur.archlinux.org>
 # Contributor: Rubin Simons <rubin@xs4all.nl>
+# Contributor: Arthur Zamarin <arthurzam@gmail.com>
+# Maintainer: David Rosenstrauch <darose@darose.net>
 
 pkgname=eclipse-emf
 pkgver=2.12.0
 _reldate=201605260356
-pkgrel=1
+pkgrel=2
 pkgdesc="EMF and XSD frameworks for the Eclipse platform"
 arch=('any')
 url="http://www.eclipse.org/modeling/emf/"
