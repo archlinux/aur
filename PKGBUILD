@@ -2,7 +2,7 @@
 # Contributor: Étienne André <eti.andre@gmail.com>
 pkgname='python-fusepy'
 pkgver=2.0.4
-pkgrel=1
+pkgrel=2
 pkgdesc='Simple ctypes bindings for FUSE'
 url='https://github.com/terencehonles/fusepy'
 arch=('any')
