@@ -1,0 +1,17 @@
+pkgbase = sendxmpp-py
+	pkgdesc = sendxmpp is the XMPP equivalent of sendmail. It is an alternative to the old sendxmpp written in Perl.
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/moparisthebest/sendxmpp-py
+	arch = any
+	license = GPL3
+	depends = python-dnspython
+	depends = python-sleekxmpp
+	depends = python
+	provides = sendxmpp
+	conflicts = sendxmpp
+	source = https://codeload.github.com/moparisthebest/sendxmpp-py/tar.gz/v1.0
+	sha256sums = 50fa7fdb38291aa2d49e330f4fb627ae1bb671572fbc1682b8b82593d34c45e2
+
+pkgname = sendxmpp-py
+
