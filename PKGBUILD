@@ -2,7 +2,7 @@
 
 pkgname=autosuspend
 pkgver=0.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A daemon to suspend your server in case of inactivity"
 arch=(any)
 url="https://github.com/languitar/autosuspend"
