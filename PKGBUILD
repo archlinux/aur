@@ -2,7 +2,7 @@
 
 pkgname=fonts-meta-extended-lt
 pkgver=1
-pkgrel=2
+pkgrel=3
 pkgdesc='Extended font collection meta package, ported from Infinality (lite version).'
 arch=('any')
 url='http://bohoomil.com/doc/05-fonts/'
@@ -11,7 +11,7 @@ license=('GPL')
 depends=(
   'fonts-meta-base'
   'cantarell-fonts'
-# 'otf-oswald-ib'
+  'ttf-oswald'
   'ttf-quintessential'
   'tex-gyre-fonts'
 # 't1-cursor-ib'
@@ -21,19 +21,15 @@ depends=(
   'ttf-carlito'
   'ttf-droid'
 # 'ttf-gelasio-ib'
-# 'ttf-merriweather-ib'
-# 'ttf-merriweather-sans-ib'
+  'ttf-merriweather'
+  'ttf-merriweather-sans'
   'ttf-opensans'
-# 'ttf-signika-family-ib'
+  'ttf-signika'
   'ttf-ubuntu-font-family'
 )
 optdepends=(
-  'otf-oswald-ib'
   't1-cursor-ib'
   'ttf-gelasio-ib'
-  'ttf-merriweather-ib'
-  'ttf-merriweather-sans-ib'
-  'ttf-signika-family-ib'
 )
 provides=('ibfonts-meta-extended-lt' 'xorg-fonts-type1')
 conflicts=('ibfonts-meta-extended-lt' 'xorg-fonts-type1')
