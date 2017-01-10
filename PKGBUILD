@@ -4,6 +4,7 @@ pkgver='1.3.0'
 pkgrel=1
 source=(http://cs.psn-web.net/support/fax/common/file/Linux_ScanDriver/panamfs-scan-1.3.0-x86_64.tar.gz)
 md5sums=('2e4c844e89c2e7e0b6258be5ef52ace9')
+<<<<<<< HEAD
 #package(){
 ##! /bin/sh
 ##
@@ -366,3 +367,5 @@ md5sums=('2e4c844e89c2e7e0b6258be5ef52ace9')
 #exit 0
 #
 #}
+=======
+>>>>>>> eedc70e... Initial commit, dl-only pkgbuild
