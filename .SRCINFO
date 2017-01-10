@@ -1,0 +1,15 @@
+pkgbase = ruby-hurley
+	pkgdesc = HTTP client wrapper
+	pkgver = 0.2
+	pkgrel = 1
+	url = https://github.com/lostisland/hurley
+	arch = any
+	license = MIT
+	depends = ruby
+	noextract = hurley-0.2.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/hurley-0.2.gem
+	sha1sums = bf206761a078dcb46d09b58a57a3b93693b16c5d
+
+pkgname = ruby-hurley
+
