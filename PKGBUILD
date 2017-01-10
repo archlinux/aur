@@ -4,7 +4,7 @@
 pkgbase=python-jedihttp-git
 pkgname=(python-jedihttp-git python2-jedihttp-git)
 pkgver=r150.c376aad
-pkgrel=1
+pkgrel=2
 pkgdesc="Simple http wrapper around jedi (with yan12125's packaging patch)"
 license=('Apache')
 arch=('any')
@@ -28,7 +28,7 @@ pkgver() {
 prepare() {
     cd "${srcdir}/JediHTTP"
     patch -i ../allow-missing-vendor.patch -p1
-    ln -s ../setup.py
+    ln -sf ../setup.py
     mv jedihttp{,-main}.py
 }
 
