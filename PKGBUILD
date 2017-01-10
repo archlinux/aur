@@ -11,8 +11,7 @@ license=('MIT')
 depends=('python-munkres' 'mutagen'
          'python-setuptools' 'python-unidecode'
          'python-musicbrainzngs' 'python-yaml'
-         'python-enum34' 'python-jellyfish'
-         'python-six')
+         'python-jellyfish' 'python-six')
 makedepends=('git')
 optdepends=('python-pyacoustid: acoustic fingerprinting'
             'python-flask: web interface'
