@@ -1,15 +1,15 @@
 pkgname=dell-mgmtstat
-pkgver=8.3
+pkgver=8.4
 pkgrel=1
 pkgdesc="Dell OpenManage iDRAC Linux Remote Access Utilities (RACADM)"
 arch=(x86_64)
 url='http://en.community.dell.com/techcenter/systems-management/w/wiki/1760.openmanage-server-administrator-omsa'
 depends=(openssl libsmbios sblim-sfcc)
 conflicts=(dell-srvadmin)
-source=("http://downloads.dell.com/FOLDER03574555M/1/OM-MgmtStat-Dell-Web-LX-8.3.0-1908_A00.tar.gz"
-        "http://downloads.dell.com/FOLDER03574562M/1/OM-MgmtStat-Dell-Web-LX-8.3.0-1908_A00.tar.gz.sign")
-sha256sums=('aee506e2a0aa6122572b1661773771db11958711985f4526d02691ea665f4322'
-            '16bba8b28c45ef7a0be795199e8cbf048506f286bacf507d8539877d3c4892f0')
+source=("http://downloads.dell.com/FOLDER03909742M/1/OM-MgmtStat-Dell-Web-LX-8.4.0-2193_A00.tar.gz"
+        "http://downloads.dell.com/FOLDER03909745M/1/OM-MgmtStat-Dell-Web-LX-8.4.0-2193_A00.tar.gz.sign")
+sha256sums=('470c3701aac8e113c1e11fef815091c74d3a0a887d54ce8b91f9a5578afca1e0'
+            'dc380f13668de5b0ffa1d9d910fabb86d062a1c711ab96f2d04f3267a1c48ce6')
 validpgpkeys=('4172E2CE955A1776A5E61BB7CA77951D23B66A9D')
 options=(!strip)
 
