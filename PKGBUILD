@@ -36,7 +36,7 @@ prepare() {
      - Revert \"damage: Make damageRegionProcessPending take a damage not a drawable\"
      - OS: return 0 from check_timers, if we touched any of them
      - Glamor: Trust eglGetPlatformDisplayEXT, if it exists
-      -Present: Only call present_flip_notify if vblank->queued == FALSE
+     - Present: Only call present_flip_notify if vblank->queued == FALSE
      - AttendClient of grab-pervious client should queue to saved_ready_clients"
   patch -Np1 -i ../git-fixes.diff
 }
