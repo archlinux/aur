@@ -1,6 +1,6 @@
 pkgbase = mutt-hg
 	pkgdesc = A small but very powerful text-based mail client
-	pkgver = 6793.405cbc43c3ac
+	pkgver = 6901.7c0e7a0769e4
 	pkgrel = 1
 	url = http://www.mutt.org/
 	arch = i686
@@ -17,7 +17,7 @@ pkgbase = mutt-hg
 	depends = zlib
 	provides = mutt
 	conflicts = mutt
-	source = hg+http://dev.mutt.org/hg/mutt#branch=default
+	source = hg+https://dev.mutt.org/hg/mutt#branch=default
 	md5sums = SKIP
 
 pkgname = mutt-hg
