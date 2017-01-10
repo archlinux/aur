@@ -1,0 +1,13 @@
+pkgbase = openshift-origin
+	pkgdesc = OpenShift Origin is a platform for developing, building, and deploying containerized applications. See https://docs.openshift.org/latest for more on running OpenShift Origin.
+	pkgver = 1.5.0
+	pkgrel = 1
+	url = https://github.com/openshift/origin
+	arch = x86_64
+	license = Apache
+	depends = docker
+	source = https://github.com/openshift/origin/releases/download/v1.5.0-alpha.1/openshift-origin-server-v1.5.0-alpha.1.71d3fa9-linux-64bit.tar.gz
+	sha256sums = ec05350dc06889dca456d70252e3cb969aa6ce7ac8b873c02fac453ffd5f815f
+
+pkgname = openshift-origin
+
