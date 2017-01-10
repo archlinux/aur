@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=miniupnpc-git
-pkgver=r60.ge7068a7
+pkgver=r62.g8c9ce4d
 pkgrel=1
 pkgdesc="A small UPnP client library/tool to access Internet Gateway Devices (git)"
 arch=('i686' 'x86_64')
