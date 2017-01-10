@@ -2,11 +2,11 @@
 
 _gemname=jekyll-sitemap
 pkgname=ruby-${_gemname}
-pkgver=0.11.0
+pkgver=1.0.0
 pkgrel=1
 pkgdesc="Automatically generate a sitemap.xml for your Jekyll site."
 arch=('any')
-depends=('ruby' 'ruby-jekyll' 'ruby-addressable')
+depends=('ruby' 'ruby-jekyll')
 makedepends=('ruby-bundler' 'ruby-rspec' 'ruby-rubocop' 'ruby-jekyll-last-modified-at')
 url="https://rubygems.org/gems/${_gemname}"
 noextract=($_gemname-$pkgver.gem)
@@ -15,7 +15,7 @@ source=(
 	"https://rubygems.org/downloads/${_gemname}-${pkgver}.gem"
 )
 sha256sums=(
-	'8e9e6d54a6e52a1f1b9f8188555453d05213a8491a302f2939886cb066fa759f'
+	'5a23b7a5f01e484028c9084ce3417357cacf6fe0f5b47726e1f27d9668ae8fc4'
 )
 
 package() {
