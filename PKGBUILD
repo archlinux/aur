@@ -10,7 +10,7 @@ url='https://github.com/dnmario/gohufont-powerline'
 license=('WTFPL')
 pkgdesc="GohuFont with powerline and statusbar symbols."
 arch=('any')
-source=("git://github.com/dnmario/${_gitname}#tag=${pkgver}")
+source=("git+https://github.com/dnmario/${_gitname}#tag=${pkgver}")
 md5sums=('SKIP')
 
 pkgver() {
