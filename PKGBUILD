@@ -1,6 +1,6 @@
 # Maintainer: Greg Fitzgerald <gregf@hugops.pw>
 
-pkgname=jsonxs
+pkgname=python2-jsonxs
 pkgver=0.3
 pkgrel=1
 pkgdesc="A python library that uses path expression strings to get and set values in JSON"

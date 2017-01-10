@@ -1,4 +1,4 @@
-pkgbase = jsonxs
+pkgbase = python2-jsonxs
 	pkgdesc = A python library that uses path expression strings to get and set values in JSON
 	pkgver = 0.3
 	pkgrel = 1
@@ -6,8 +6,8 @@ pkgbase = jsonxs
 	arch = any
 	license = MIT
 	depends = python2
-	source = https://github.com/fboender/jsonxs/archive/0.3.tar.gz
+	source = https://github.com/fboender/python2-jsonxs/archive/0.3.tar.gz
 	sha512sums = b407bd6d449d4d0eefd2ad7b9afada178337dbe4512253cb5b5ece3a6eb602daf88022000dc8555e0e244de926a899c6a2654b7f7c0b6999b3ffb639f21b2e1d
 
-pkgname = jsonxs
+pkgname = python2-jsonxs
 
