@@ -13,11 +13,6 @@ sha512sums=('1a358d7004bab5a7b085d830e47555485e55a086c7fdf74e3b929d06c9f052222c4
 url='http://bmc.github.com/munkres/'
 license=('BSD')
 
-build() {
-  cd "$srcdir/munkres-$pkgver"
-  /usr/bin/python setup.py build
-}
-
 package() {
   cd "$srcdir/munkres-$pkgver"
   /usr/bin/python setup.py install --root="$pkgdir"
