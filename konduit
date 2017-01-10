@@ -1,0 +1,24 @@
+#!/bin/sh
+CACHE_DIR="$HOME/.konduit/cache"
+
+if [ -d "$HOME/jagexcache" ] && [ -f "$HOME/jagex_cl_oldschool_LIVE.dat" ] && [ -f "$HOME/random.dat" ]; then
+	echo "Jagex files already located in home directory. Is Konduit already running? If not, move Jagex files to $CACHE_DIR."
+	exit 1
+fi
+
+if [ -d "$CACHE_DIR/jagexcache" ] && [ -f "$CACHE_DIR/jagex_cl_oldschool_LIVE.dat" ] && [ -f "$CACHE_DIR/random.dat" ]; then
+	cd "$CACHE_DIR" || exit
+	mv 'jagexcache' 'jagex_cl_oldschool_LIVE.dat' 'random.dat' "$HOME" # unhide jagex files
+	cd "$HOME" || exit
+fi
+
+# run konduit
+/usr/bin/java -jar '/usr/share/java/konduit/KonduitLauncher.jar' "$@"
+
+
+if [ ! -d "$CACHE_DIR" ]; then
+	mkdir "$CACHE_DIR"
+fi
+
+cd "$HOME" || exit
+mv 'jagexcache' 'jagex_cl_oldschool_LIVE.dat' 'random.dat' "$CACHE_DIR" # rehide

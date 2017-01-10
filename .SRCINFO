@@ -1,0 +1,18 @@
+pkgbase = konduit
+	pkgdesc = The performant, safe and innovative toolkit for Oldschool RuneScape
+	pkgver = 1.38.1
+	pkgrel = 1
+	url = https://konduit.io
+	arch = any
+	license = custom
+	depends = java-runtime
+	noextract = KonduitLauncher.jar
+	source = http://cdn.konduit.io/KonduitLauncher.jar
+	source = konduit
+	source = LICENSE
+	md5sums = 98df4beb1ecf48b2d8d1c5dbf6f1ec0c
+	md5sums = 0c2072207852f157d309997dafdd4597
+	md5sums = 4f571f55d94544a09daf748c5eaa0a23
+
+pkgname = konduit
+
