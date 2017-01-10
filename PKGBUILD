@@ -7,6 +7,7 @@
 pkgname=papirus-icon-theme-git
 pkgver=r700.a79ce5a01
 pkgrel=1
+epoch=1
 pkgdesc="Papirus icon theme (git version)"
 url="https://github.com/PapirusDevelopmentTeam/${pkgname%-git}"
 arch=('any')
