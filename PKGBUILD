@@ -4,7 +4,7 @@
 
 pkgname=python-humblebundle
 pkgver=0.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="An unofficial library for querying the Humble Bundle API"
 arch=('any')
 url="https://github.com/saik0/humblebundle-python"
