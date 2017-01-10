@@ -1,9 +1,9 @@
 # Maintainer: Jingbei Li <i@jingbei.lli>
 pkgname='kaldi'
 pkgdesc='Speech recognition research toolkit'
-pkgver=r6998.f51c984
+pkgver=r7009.f646952b3
 pkgrel=1
-makedepends=('cuda' 'git')
+makedepends=('cuda' 'git' 'wget')
 depends=('python2' 'openblas-lapack')
 optdepends=('cuda:	For GPU support')
 arch=('x86_64' 'i686')
