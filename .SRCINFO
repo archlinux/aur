@@ -1,12 +1,13 @@
 pkgbase = ruby-json-1
 	pkgdesc = JSON Implementation for Ruby
 	pkgver = 1.8.3
-	pkgrel = 1
+	pkgrel = 2
 	url = http://flori.github.com/json
 	arch = i686
 	arch = x86_64
 	license = Ruby
 	depends = ruby
+	provides = ruby-json=1.8.3
 	noextract = json-1.8.3.gem
 	options = !emptydirs
 	source = https://rubygems.org/downloads/json-1.8.3.gem

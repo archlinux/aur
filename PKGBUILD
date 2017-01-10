@@ -4,11 +4,12 @@
 _gemname=json
 pkgname=ruby-$_gemname-1
 pkgver=1.8.3
-pkgrel=1
+pkgrel=2
 pkgdesc='JSON Implementation for Ruby'
 arch=(i686 x86_64)
 url='http://flori.github.com/json'
 license=(Ruby)
+provides=("ruby-json=$pkgver")
 depends=(ruby)
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
