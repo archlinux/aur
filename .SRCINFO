@@ -1,0 +1,15 @@
+pkgbase = ruby2.3-bundler
+	pkgdesc = Manages an application's dependencies through its entire life, across many machines, systematically and repeatably.
+	pkgver = 1.13.7
+	pkgrel = 1
+	url = http://bundler.io
+	arch = any
+	license = MIT
+	depends = ruby2.3
+	noextract = bundler-1.13.7.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/bundler-1.13.7.gem
+	sha256sums = a9f0c8c5cf977cadce77e6185695d4a0b956a73569a5634b15b34cc07fdb7bab
+
+pkgname = ruby2.3-bundler
+
