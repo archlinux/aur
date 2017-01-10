@@ -33,7 +33,7 @@
 
 pkgname=purr-data
 pkgver=20170108.r3234.59c867e5
-pkgrel=1
+pkgrel=2
 pkgdesc="Jonathan Wilkes' nw.js variant of Pd-L2Ork (git version)"
 url="https://git.purrdata.net/jwilkes/purr-data"
 arch=('i686' 'x86_64')
@@ -156,8 +156,8 @@ package() {
   cd "$pkgdir"
   chmod -R go-w *
   chmod -R a+r *
-  chmod a-x .$(prefix)/lib/pd-l2ork/default.settings
-  find .$(prefix)/lib/pd-l2ork/bin/nw -executable -not -type d -exec chmod a+x {} +
+  chmod a-x .$prefix/lib/pd-l2ork/default.settings
+  find .$prefix/lib/pd-l2ork/bin/nw -executable -not -type d -exec chmod a+x {} +
   #find . -executable -name '*.pd_linux' -exec chmod a-x {} +
   find . -executable -name '*.pd' -exec chmod a-x {} +
   find . -executable -name '*.txt' -exec chmod a-x {} +
