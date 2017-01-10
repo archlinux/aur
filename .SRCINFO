@@ -6,7 +6,7 @@ pkgbase = ruby-commander-4.4
 	arch = any
 	license = MIT
 	depends = ruby
-	depends = ruby-highline
+	depends = ruby-highline=1.7.2
 	provides = ruby-commander=4.4
 	noextract = commander-4.4.3.gem
 	options = !emptydirs

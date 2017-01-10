@@ -4,13 +4,13 @@
 _gemname=commander
 pkgname=ruby-$_gemname-4.4
 pkgver=4.4.3
-pkgrel=2
+pkgrel=3
 pkgdesc='The complete solution for Ruby command-line executables'
 arch=(any)
 url='https://github.com/commander-rb/commander'
 license=(MIT)
 provides=('ruby-commander=4.4')
-depends=(ruby ruby-highline)
+depends=(ruby 'ruby-highline=1.7.2')
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
