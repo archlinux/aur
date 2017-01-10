@@ -1,7 +1,7 @@
 # Maintainer: Jameson Pugh <imntreal@gmail.com>
 
 pkgname=389-ds-console
-pkgver=1.2.12
+pkgver=1.2.16
 _majorver=1.2
 pkgrel=1
 pkgdesc="The Directory Services componenet of the 389 Directory Server console for install from the Admin Server."
@@ -10,8 +10,8 @@ url="http://port389.org"
 license=('GPL')
 depends=('389-admin')
 makedepends=('java-environment')
-source=(http://directory.fedoraproject.org/sources/$pkgname-$pkgver.tar.bz2)
-sha256sums=('3b8ef3acf4c3369d9345d3b103f0db7265d9bd7874e01af58342ddb3425107a3')
+source=("http://directory.fedoraproject.org/sources/${pkgname}-${pkgver}.tar.bz2")
+sha256sums=('ee7267b1700d0f42a8f71a6f80fb02bd6c7065578201669a3838f21b514b0f7b')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
@@ -21,11 +21,19 @@ build() {
 } 
 
 package(){
+  cd "${srcdir}/${pkgname}-${pkgver}"
+
   install -d ${pkgdir}/usr/share/dirsrv/html/java
-  install -m644 ${srcdir}/${pkgname}-${pkgver}/built/package/389-ds-${pkgver}.jar ${pkgdir}/usr/share/dirsrv/html/java
-  install -m644 ${srcdir}/${pkgname}-${pkgver}/built/package/389-ds-${pkgver}_en.jar ${pkgdir}/usr/share/dirsrv/html/java
+  install -d ${pkgdir}/usr/share/dirsrv/manual/en/slapd/help
+  install -m644 built/package/389-ds-${pkgver}.jar ${pkgdir}/usr/share/dirsrv/html/java
+  install -m644 built/package/389-ds-${pkgver}_en.jar ${pkgdir}/usr/share/dirsrv/html/java
   ln -s /usr/share/dirsrv/html/java/389-ds-${pkgver}.jar ${pkgdir}/usr/share/dirsrv/html/java/389-ds-${_majorver}.jar
+  ln -s /usr/share/dirsrv/html/java/389-ds-${pkgver}.jar ${pkgdir}/usr/share/dirsrv/html/java/389-ds.jar
   ln -s /usr/share/dirsrv/html/java/389-ds-${pkgver}_en.jar ${pkgdir}/usr/share/dirsrv/html/java/389-ds-${_majorver}_en.jar
+  ln -s /usr/share/dirsrv/html/java/389-ds-${pkgver}_en.jar ${pkgdir}/usr/share/dirsrv/html/java/389-ds_en.jar
+  install -m664 help/en/tokens.map "${pkgdir}/usr/share/dirsrv/manual/en/slapd"
+  install -m664 help/en/*.html "${pkgdir}/usr/share/dirsrv/manual/en/slapd"
+  install -m664 help/en/help/*.html "${pkgdir}/usr/share/dirsrv/manual/en/slapd/help"
 }
 
 # vim:set ts=2 sw=2 et:
