@@ -1,0 +1,16 @@
+pkgbase = ttf-heuristica
+	pkgdesc = A serif latin & cyrillic font, derived from the "Adobe Utopia" font by Apanov
+	pkgver = 1.0.2
+	pkgrel = 1
+	url = http://sourceforge.net/projects/heuristica/
+	install = ttf-heuristica.install
+	arch = any
+	license = custom:SIL Open Font License v1.1
+	depends = fontconfig
+	depends = xorg-fonts-encodings
+	depends = xorg-font-utils
+	source = http://downloads.sourceforge.net/project/heuristica/heuristica-ttf-1.0.2.tar.xz
+	sha256sums = 08bf21e44941d195dceab637c3d8e22f4b5ce8490c83993cebd85d721b92553d
+
+pkgname = ttf-heuristica
+
