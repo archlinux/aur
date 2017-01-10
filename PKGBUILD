@@ -3,7 +3,7 @@
 
 pkgname=purrdata-pure
 _pkgname=pd-pure
-pkgver=0.22
+pkgver=0.23
 pkgrel=1
 pkgdesc="Loader plugin for the Pure programming language, Purr-Data version"
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ url="http://purelang.bitbucket.org/"
 depends=('purr-data' 'pure')
 license=('custom')
 source=(https://bitbucket.org/purelang/pure-lang/downloads/$_pkgname-$pkgver.tar.gz)
-md5sums=('30a44b9f1aa22c06537bbe86cd5a8e24')
+md5sums=('cd0e24d02ee4520d1646ce66cf829a3b')
 
 build() {
   cd $srcdir/$_pkgname-$pkgver
