@@ -9,13 +9,13 @@
 # Maintainer: Your Name <youremail@domain.com>
 pkgname=python2-usbrevue
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="USB Reverse-Engineering Toolkit"
 arch=(i686 x86_64)
 url="https://bitbucket.org/TeamC2011/usbrevue/"
 license=('unknown')
 groups=()
-depends=('python2' 'scapy' 'python2-pcapy' 'python2-gflags')
+depends=('python2' 'scapy' 'python2-pcapy' 'python2-gflags' 'python2-pyusb')
 makedepends=()
 provides=()
 conflicts=()
