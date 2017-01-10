@@ -1,0 +1,16 @@
+pkgbase = libbfio-git
+	pkgdesc = Library to provide basic file input/output abstraction
+	pkgver = 20161216.66eccc8
+	pkgrel = 1
+	url = https://github.com/libyal/libbfio
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = git
+	provides = libbfio-git
+	conflicts = libbfio
+	source = git+https://github.com/libyal/libbfio.git
+	sha1sums = SKIP
+
+pkgname = libbfio-git
+
