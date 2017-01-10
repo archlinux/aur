@@ -1,0 +1,20 @@
+pkgbase = sch_cake-dkms
+	pkgdesc = The CAKE scheduler, bufferbloat.net
+	pkgver = r238.032d548
+	pkgrel = 1
+	url = bufferbloat.net
+	install = sch_cake-dkms.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = dkms
+	optdepends = linux-headers: build the module against Arch kernel [requires at least one set of kernel headers]
+	optdepends = linux-lts-headers: build the module against LTS Arch kernel [requires at least one set of kernel headers]
+	provides = sch_cake
+	source = git+https://github.com/dtaht/sch_cake.git
+	source = dkms.conf.in
+	md5sums = SKIP
+	md5sums = 1e4f0c888d3be4b0703367cfad0e01b8
+
+pkgname = sch_cake-dkms
+
