@@ -1,0 +1,13 @@
+pkgbase = oaklisp-git
+	pkgdesc = Oaklisp is a portable lisp interpreter / compiler for the Oaklisp dialect of lisp.
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/barak/oaklisp
+	arch = x86_64
+	arch = i386
+	license = GPL
+	makedepends = git
+	makedepends = autoconf
+
+pkgname = oaklisp-git
+
