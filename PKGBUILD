@@ -4,31 +4,30 @@
 # Report all package issues to `https://github.com/SShrike/pkgbuilds`
 
 pkgname='gtkd'
-pkgver='3.5.0'
-pkgrel=2
+pkgver='3.5.1'
+pkgrel=1
 pkgdesc='D bindings for GTK+ and related libraries.'
 arch=('x86_64' 'i686')
 url='http://gtkd.org/'
 license=('LGPL')
-options=('staticlibs')
 depends=('liblphobos' 'gtk3')
-makedepends=('ldc') # LDC is currently required to build shared libs.
+makedepends=('ldc')
 optdepends=('pango' 'atk' 'gdk-pixbuf2' 'gtksourceview3' 'gstreamer' 'vte3' 'libpeas')
 source=("https://github.com/gtkd-developers/GtkD/archive/v${pkgver}.tar.gz")
-sha512sums=('6c083790999737ebfb969101717d88edd4355b1746b74b0c86986be4890d8551c0359266fbcd27a72040879b0c5ab99087e438ab0a7e54f883d8cd8edd85c789')
+sha512sums=('71fd514fc617a39c2aa970d02cb8e02ea017acda2bf3f5e24998f87c56718c4deb7b95128ead53ac50bc515b375f036c2b48576e1d74e7f320ee04b2b1d13c8a')
 
 build() {
   cd ${srcdir}/GtkD-${pkgver}
 
-  LDFLAGS='' DC='ldc' make all
+  LDFLAGS='' DC='ldc' make shared-libs shared-gstreamer shared-vte shared-peas
 }
 
 package() {
   cd ${srcdir}/GtkD-${pkgver}
 
-  make prefix='/usr' DESTDIR="${pkgdir}/" install install-gstreamer \
-    install-vte install-peas install-shared install-shared-gstreamer \
-    install-shared-vte install-shared-peas
+  make prefix='/usr' DESTDIR="${pkgdir}/" \
+    install-shared install-shared-gstreamer install-shared-vte install-shared-peas \
+    install-headers install-headers-gstreamer install-headers-vte install-headers-peas
 }
 
 # vim:set ts=2 sw=2 et:
