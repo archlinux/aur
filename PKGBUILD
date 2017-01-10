@@ -2,8 +2,8 @@
 # Contributor: jorge_barroso <jorge.barroso.11@gmail.com>
 # Contributor: Yonathan Dossow <ydossow@archlinux.cl>
 pkgname=389-console
-pkgver=1.1.9
-pkgrel=2
+pkgver=1.1.18
+pkgrel=1
 pkgdesc="A Java based remote management console used for managing 389 Administration Server and 389 Directory Server."
 arch=('any')
 url="http://port389.org"
@@ -11,13 +11,7 @@ license=('GPL')
 depends=('which' 'bash' 'idm-console-framework' 'java-environment')
 makedepends=('apache-ant')
 source=(http://directory.fedoraproject.org/sources/$pkgname-$pkgver.tar.bz2)
-sha1sums=('bcc15330156beab1dab57cedef838f8ec5b26988')
-
-prepare() {
-  cd "$srcdir/$pkgname-$pkgver"
-  # manpage installation is broken, disable, install manually
-  sed -i '/man.dir/d' build.xml
-}
+sha1sums=('ad6929bc9391d7b725aa8246fce5cc22225829b3')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
