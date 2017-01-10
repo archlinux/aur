@@ -1,0 +1,23 @@
+From 6fb91f2f2cc5cc2253cb5e7dfe875a94bd691a62 Mon Sep 17 00:00:00 2001
+From: Charles Bos <charlesbos1@gmail.com>
+Date: Mon, 9 Jan 2017 21:17:08 +0000
+Subject: [PATCH] increase vertical padding on modal dialogs - Adwaita
+ (Metacity 2)
+
+---
+ Adwaita/metacity-1/metacity-theme-2.xml | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/Adwaita/metacity-1/metacity-theme-2.xml b/Adwaita/metacity-1/metacity-theme-2.xml
+index a5b9b7f..9bebff1 100644
+--- a/Adwaita/metacity-1/metacity-theme-2.xml
++++ b/Adwaita/metacity-1/metacity-theme-2.xml
+@@ -91,7 +91,7 @@
+ </frame_geometry>
+ 
+ <frame_geometry name="modal" title_scale="small" hide_buttons="true" parent="normal">
+-	<distance name="title_vertical_pad" value="0"/>
++	<distance name="title_vertical_pad" value="9"/>
+ </frame_geometry>
+ 
+ <!-- drawing operations -->
