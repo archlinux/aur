@@ -1,0 +1,16 @@
+pkgbase = ruby-terminal-table
+	pkgdesc = Simple, feature rich ascii table generation library
+	pkgver = 1.7.3
+	pkgrel = 1
+	url = https://github.com/tj/terminal-table
+	arch = any
+	license = MIT
+	depends = ruby
+	depends = ruby-unicode-display_width
+	noextract = terminal-table-1.7.3.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/terminal-table-1.7.3.gem
+	sha1sums = f1c4f71bcfc43d5b65016383403205b3bac9291e
+
+pkgname = ruby-terminal-table
+
