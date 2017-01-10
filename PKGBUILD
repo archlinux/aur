@@ -3,7 +3,7 @@
 
 pkgname=scudcloud
 pkgver=1.37
-pkgrel=1
+pkgrel=2
 pkgdesc="A Slack client for Linux"
 arch=('any')
 url="https://github.com/raelgc/scudcloud"
