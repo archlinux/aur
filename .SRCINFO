@@ -1,0 +1,12 @@
+pkgbase = spyquiz
+	pkgdesc = Desafio Hacker com 30 níveis.
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/Sup3r-Us3r/Spy-Quiz
+	install = spyquiz.install
+	arch = any
+	depends = python curl sl lolcat
+	source = spyquiz.py
+	md5sums = 68491da750b80f28c42ee250ae91cc2f
+
+pkgname = spyquiz
