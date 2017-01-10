@@ -1,6 +1,6 @@
 # Maintainer: Dustin Willis Webber <dustin.webber@gmail.com>
 pkgname=i3-gnome-git
-pkgbase=i3-gnome
+_pkgbase=i3-gnome
 pkgver=5.1.r2.g55ea56b
 pkgrel=1
 pkgdesc="Starts i3 inside a gnome session."
@@ -23,18 +23,18 @@ noextract=()
 md5sums=("SKIP")
 
 pkgver() {
-  cd $pkgbase
+  cd $_pkgbase
   git describe --tags --long|sed -r "s,^[^0-9],,;s,([0-9]*-g),r\1,;s,[-_],.,g"
 }
 
 build() {
-  cd "$pkgbase"
+  cd "$_pkgbase"
 
   make
 }
 
 package() {
-  cd "$pkgbase"
+  cd "$_pkgbase"
 
   make DESTDIR="$pkgdir/" install
 }

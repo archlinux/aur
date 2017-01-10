@@ -1,4 +1,4 @@
-pkgbase = i3-gnome
+pkgbase = i3-gnome-git
 	pkgdesc = Starts i3 inside a gnome session.
 	pkgver = 5.1.r2.g55ea56b
 	pkgrel = 1
