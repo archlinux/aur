@@ -1,0 +1,15 @@
+pkgbase = ruby-uber-0.0
+	pkgdesc = Gem-authoring tools like class method inheritance in modules, dynamic options and more.
+	pkgver = 0.0.15
+	pkgrel = 1
+	url = https://github.com/apotonick/uber
+	arch = any
+	license = MIT
+	depends = ruby
+	noextract = uber-0.0.15.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/uber-0.0.15.gem
+	sha1sums = 1df119bc74d8ba07083514137e3302407cde5f94
+
+pkgname = ruby-uber-0.0
+
