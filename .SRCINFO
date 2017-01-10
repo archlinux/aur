@@ -1,0 +1,16 @@
+pkgbase = dput-ng-git
+	pkgdesc = like dput, but better
+	pkgver = 1.11
+	pkgrel = 1
+	url = http://dput-ng.debian.net/
+	arch = any
+	license = GPL
+	makedepends = python2-setuptools
+	depends = python2-debian
+	provides = dput
+	conflicts = dput
+	source = git://anonscm.debian.org/collab-maint/dputng.git
+	sha1sums = SKIP
+
+pkgname = dput-ng-git
+
