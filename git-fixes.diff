@@ -652,3 +652,71 @@ index a7ca06e..ef89045 100644
 -- 
 cgit v0.10.2
 
+From: Keith Packard <keithp@keithp.com>
+X-Patchwork-Id: 132089
+Message-Id: <20170110021441.12759-1-keithp@keithp.com>
+To: xorg-devel@lists.freedesktop.org
+Date: Mon,  9 Jan 2017 18:14:41 -0800
+
+A client which is attended while a grab is blocking execution of its
+requests needs to be placed in the saved_ready_clients list so that it
+will get scheduled once the grab terminates. Otherwise, if the client
+never sends another request, there is no way for it to be placed in
+the ready_clients list.
+
+Bugzilla: https://bugs.freedesktop.org/show_bug.cgi?id=99333
+Signed-off-by: Keith Packard <keithp@keithp.com>
+---
+ dix/dispatch.c      | 7 +++++++
+ include/dixstruct.h | 3 +++
+ os/connection.c     | 4 ++++
+ 3 files changed, 14 insertions(+)
+
+diff --git a/dix/dispatch.c b/dix/dispatch.c
+index 3d0fe26fd..ab69d34b9 100644
+--- a/dix/dispatch.c
++++ b/dix/dispatch.c
+@@ -266,6 +266,13 @@ mark_client_ready(ClientPtr client)
+         xorg_list_append(&client->ready, &ready_clients);
+ }
+ 
++/* Client has requests queued or data on the network, but awaits a server grab release */
++void mark_client_saved_ready(ClientPtr client)
++{
++    if (xorg_list_is_empty(&client->ready))
++        xorg_list_append(&client->ready, &saved_ready_clients);
++}
++
+ /* Client has no requests queued and no data on network */
+ void
+ mark_client_not_ready(ClientPtr client)
+diff --git a/include/dixstruct.h b/include/dixstruct.h
+index d71b0ac05..fd9195972 100644
+--- a/include/dixstruct.h
++++ b/include/dixstruct.h
+@@ -143,6 +143,9 @@ extern void SmartScheduleStopTimer(void);
+ /* Client has requests queued or data on the network */
+ void mark_client_ready(ClientPtr client);
+ 
++/* Client has requests queued or data on the network, but awaits a server grab release */
++void mark_client_saved_ready(ClientPtr client);
++
+ /* Client has no requests queued and no data on network */
+ void mark_client_not_ready(ClientPtr client);
+ 
+diff --git a/os/connection.c b/os/connection.c
+index a901ebf3c..a2629c8a2 100644
+--- a/os/connection.c
++++ b/os/connection.c
+@@ -1067,6 +1067,10 @@ AttendClient(ClientPtr client)
+     set_poll_client(client);
+     if (listen_to_client(client))
+         mark_client_ready(client);
++    else if (!(oc->flags & OS_COMM_IGNORED)) {
++        /* grab active, mark ready when grab goes away */
++        mark_client_saved_ready(client);
++    }
+ }
+ 
+ /* make client impervious to grabs; assume only executing client calls this */
+

@@ -4,7 +4,7 @@
 _pkgbase=xorg-server
 pkgname=('xorg-server-dev' 'xorg-server-xephyr-dev' 'xorg-server-xdmx-dev' 'xorg-server-xvfb-dev' 'xorg-server-xnest-dev' 'xorg-server-xwayland-dev' 'xorg-server-common-dev' 'xorg-server-devel-dev')
 pkgver=1.19.0 # http://lists.x.org/archives/xorg/2016-November/058437.html
-pkgrel=5 # https://git.archlinux.org/svntogit/packages.git/commit/trunk?h=packages/xorg-server&id=09caa03aed32e9d7a8d5322a75b116205ea7affb
+pkgrel=6 # https://git.archlinux.org/svntogit/packages.git/commit/trunk?h=packages/xorg-server&id=292ceb303068b172ed985891d686aa45e19398fe
 arch=('i686' 'x86_64')
 license=('custom')
 groups=('xorg')
@@ -27,16 +27,17 @@ sha256sums=('149a708b50befc2d5a40b98d45ddd2ebe0beec018e6d0c663c43bad6210e4da3'
             'SKIP'
             'ff0156309470fc1d378fd2e104338020a884295e285972cc88e250e031cc35b9'
             '2460adccd3362fefd4cdc5f1c70f332d7b578091fb9167bf88b5f91265bbd776'
-            '15ae819f97b16e88974986d71c832b99fa220e8223ccaf171513e9e4c73f84dd')
+            'f0f18685a5894a4d30669fa0b74db8f29d869b57315d8a16e093010659a3299c')
 
 prepare() {
   cd "${_pkgbase}-${pkgver}"
 
   msg2 "Apply upstream fixes:
-     Revert \"damage: Make damageRegionProcessPending take a damage not a drawable\"
-     OS: return 0 from check_timers, if we touched any of them
-     Glamor: Trust eglGetPlatformDisplayEXT, if it exists
-     Present: Only call present_flip_notify if vblank->queued == FALSE"
+     - Revert \"damage: Make damageRegionProcessPending take a damage not a drawable\"
+     - OS: return 0 from check_timers, if we touched any of them
+     - Glamor: Trust eglGetPlatformDisplayEXT, if it exists
+      -Present: Only call present_flip_notify if vblank->queued == FALSE
+     - AttendClient of grab-pervious client should queue to saved_ready_clients"
   patch -Np1 -i ../git-fixes.diff
 }
 
