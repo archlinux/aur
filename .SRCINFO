@@ -1,0 +1,14 @@
+pkgbase = ruby-babosa
+	pkgdesc = A library for creating slugs.
+	pkgver = 1.0.2
+	pkgrel = 1
+	url = http://github.com/norman/babosa
+	arch = any
+	depends = ruby
+	noextract = babosa-1.0.2.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/babosa-1.0.2.gem
+	sha1sums = 1e3301f6c9d4025a3eb0a1124406e1528c35df95
+
+pkgname = ruby-babosa
+
