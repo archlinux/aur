@@ -25,6 +25,12 @@ sha256sums=('48e9dde0f5c22dc26ff36e8d13e3dc575a1ee7558b5537a064f78a3b9dee1619'
             'f40f68205834ca53cea3372e930bfe6c2f9ecc9df3b1605df2fec63a658b2e03')
 validpgpkeys=('0392335A78083894A4301C43236E8A58C6DB4512') # Max Kellermann <max@musicpd.org>
 
+prepare() {
+    cd ${_pkgname}-${pkgver}
+
+    sed -e '/\[Service\]/a User=mpd' -e '/WantedBy=/c WantedBy=default.target' -i systemd/system/${_pkgname}.service.in
+}
+
 build() {
     cd ${_pkgname}-${pkgver}
 
@@ -113,7 +119,4 @@ package() {
     install -Dm644 "${srcdir}"/${_pkgname}.conf "${pkgdir}"/etc/${_pkgname}.conf
     install -Dm644 "${srcdir}"/${_pkgname}.tmpfiles "${pkgdir}"/usr/lib/tmpfiles.d/${_pkgname}.conf
     install -Dm644 "${srcdir}"/${_pkgname}.sysusers "${pkgdir}"/usr/lib/sysusers.d/${_pkgname}.conf
-
-    sed '/\[Service\]/a User=mpd' -i "${pkgdir}"/usr/lib/systemd/system/${_pkgname}.service
-    sed '/WantedBy=/c WantedBy=default.target' -i "${pkgdir}"/usr/lib/systemd/system/${_pkgname}.service
 }
