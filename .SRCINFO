@@ -1,6 +1,6 @@
 pkgbase = pypy3-setuptools
 	pkgdesc = Easily download, build, install, upgrade, and uninstall Python packages
-	pkgver = 28.8.0
+	pkgver = 32.3.1
 	pkgrel = 1
 	epoch = 1
 	url = http://pypi.python.org/pypi/setuptools
@@ -9,8 +9,8 @@ pkgbase = pypy3-setuptools
 	depends = pypy3
 	provides = pypy3-distribute
 	replaces = pypy3-distribute
-	source = https://pypi.io/packages/source/s/setuptools/setuptools-28.8.0.tar.gz
-	sha512sums = da7381ecf6deaaa100202165c76c1abddfe825d9ec4e05ec976a455e5abf5b00a52d4e8806fef751dd2347869adb4dffbecb899e51716cb6abc7164ec0c8a1cb
+	source = https://pypi.io/packages/source/s/setuptools/setuptools-32.3.1.zip
+	sha512sums = a88bef95affc18e09775deda6e741dd49d6272608cbefb7ccf52965eef5d7477ce3ad54ef507afcd7753c17afd8149b32be67dac4bda1cdbff05c316b1bc8f67
 
 pkgname = pypy3-setuptools
 
