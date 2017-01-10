@@ -2,7 +2,7 @@
 # Contributor: Anxo Beltrán <anxo.beltran.alvarez@gmail.com>
 
 pkgname=nextcloud-app-direct_menu
-pkgver=0.9.3
+pkgver=0.10.0
 pkgrel=1
 pkgdesc="Provide easy access to all apps in the header for NextCloud"
 arch=('any')
@@ -11,7 +11,7 @@ license=('AGPL')
 depends=('nextcloud')
 options=('!strip')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/juliushaertl/direct_menu/releases/download/${pkgver}/direct_menu.tar.gz")
-sha512sums=("468d32f4e290ba48fa306a21ece4f5a358f40926cd1ab2c6783f27e86a349d04123a0f67ef7b2e26736d10f3b70111806d7b4ee8ce6f2c95020befdee3bd5c48")
+sha512sums=("60227b4440c5380958b0d699e2e1500e7d148ff871f18fe83974e407c99351e1f2d9997819cfec6eaa101a76cff41774306e1e73f1e23a5cc3e62a9b36e13bf3")
 
 package() {
   install -d "${pkgdir}/usr/share/webapps/nextcloud/apps"
