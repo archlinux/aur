@@ -3,13 +3,13 @@
 
 pkgname=lastpass-cli
 pkgver=1.1.1
-pkgrel=2
+pkgrel=3
 pkgdesc="LastPass command line interface tool"
 arch=('i686' 'x86_64')
 url="https://lastpass.com/"
 license=('GPL2')
 depends=('openssl' 'curl' 'libxml2')
-makedepends=('asciidoc')
+makedepends=('asciidoc' 'cmake')
 optdepends=('xclip: clipboard support'
 	   'pinentry: securely read passwords')
 source=("https://github.com/lastpass/lastpass-cli/archive/v${pkgver}.tar.gz")
