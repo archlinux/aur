@@ -4,11 +4,12 @@
 _gemname=rouge
 pkgname=ruby-$_gemname-1
 pkgver=1.11.1
-pkgrel=1
+pkgrel=2
 pkgdesc='A pure-ruby colorizer based on pygments'
 arch=(any)
 url='http://rouge.jneen.net/'
 license=('MIT, 2-clause BSD')
+provides=("ruby-rouge=$pkgver")
 depends=(ruby)
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
