@@ -1,10 +1,10 @@
 # Maintainer: Jingbei Li <i@jingbei.li>
 pkgdesc='An Image toolbox for Torch.'
 pkgname='torch7-image-git'
-pkgver=1.0.1.0.r245.g7e9669f
+pkgver=1.0.1.0.r283.g674c8d1
 pkgrel=1
 makedepends=('cmake' 'git')
-depends=('torch7-git>=r819' 'libjpeg-turbo' 'libpng' 'torch7-sys')
+depends=('torch7-git>=r819' 'libjpeg-turbo' 'libpng' 'torch7-sys-git')
 conflicts=('torch7-image')
 provides=('torch7-image')
 arch=('x86_64' 'i686')
