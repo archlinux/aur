@@ -1,0 +1,16 @@
+pkgbase = ruby-representable-2.3
+	pkgdesc = Renders and parses JSON/XML/YAML documents from and to Ruby objects. Includes plain properties, collections, nesting, coercion and more.
+	pkgver = 2.3.0
+	pkgrel = 1
+	url = https://github.com/apotonick/representable/
+	arch = any
+	license = MIT
+	depends = ruby
+	depends = ruby-uber-0.0
+	noextract = representable-2.3.0.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/representable-2.3.0.gem
+	sha1sums = c9d0742d45e178b32d1e6ab294dff2a3d19ee7de
+
+pkgname = ruby-representable-2.3
+
