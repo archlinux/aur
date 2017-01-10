@@ -1,7 +1,7 @@
 # Maintainer: Donald Webster <fryfrog@gmail.com>
 # Maintainer: Devin Buhl <devin.kray@gmail.com>
 pkgname="radarr"
-pkgver="0.2.0.27"
+pkgver="0.2.0.32"
 pkgrel=1
 pkgdesc="Movie downloader for usenet and torrents."
 arch=(any)
@@ -21,9 +21,9 @@ source=("https://github.com/galli-leo/Radarr/releases/download/v${pkgver}/Radarr
         "radarr.service")
 noextract=()
 
-sha512sums=('966aa403b6785bdfc5f74204f21b5bb572969290763f6e018b1fa03111820f746e67d3dba4b6c3b5a09b48b9a45333c0713b3a9932953d28d6b7822dad699bb9'
+sha512sums=('c553a368fbd207dc7984d4ee1196c37d37c0c52335afcfe203f401572a4fae89765fd551d3b9b58eb3c9a62e039d5babd9a5822e34ffad999e6b37420b059498'
             '17c0a54de94ab6e4523ab5f3f65bd40b592cc6723acaf123db8bbf0d2c6200e4b5877878c542fe849c09b9748ab8c8887cbd94365ba431cf71fc1256f24b43ec'
-            '237a74e8ae8c968da33c44241f0b47fb3209b15ecc1962f45286adab466701d0c7be91cffc7e856951d14f1b72e565ad6fd97115bc1feb1c3bfd4f8c07f453fd')
+            '58260b3d1e0638aa2269fb81a077686c203ae638d6d93712eb0552e93b8b5f517f6d104464b119d5d38ea521e130e3ee80579113526433337f0578576917b7e1')
 
 package() {
     cd "$srcdir"

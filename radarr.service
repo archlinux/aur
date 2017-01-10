@@ -1,6 +1,6 @@
 [Unit]
 Description=Radarr Service
-After=network.target
+After=syslog.target network.target
 
 [Service]
 User=radarr
@@ -8,6 +8,8 @@ Group=radarr
 ExecStart=/usr/bin/radarr -nobrowser -data=/var/lib/radarr
 Type=simple
 TimeoutStopSec=20
+KillMode=process
+Restart=on-failure
 
 [Install]
 WantedBy=multi-user.target
