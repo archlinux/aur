@@ -2,7 +2,7 @@
 
 pkgname="colout"
 pkgver="0.5"
-pkgrel="1"
+pkgrel="2"
 pkgdesc="Color Up Arbitrary Command Output"
 arch=("any")
 url="https://nojhan.github.com/colout/"
