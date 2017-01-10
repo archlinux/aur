@@ -1,11 +1,11 @@
 # Maintainer: Kieran Colford <kieran@kcolford.com>
 pkgname=lenovo-thinkpad-yoga-11e-chromebook-git
-pkgver=r5.b08ae0e
+pkgver=r6.3456b57
 pkgrel=1
 pkgdesc="Fixes for the Lenove Yoga Thinkpad 11e Chromebook"
 arch=('any')
 url="https://github.com/kcolford/lenovo-thinkpad-yoga-11e-chromebook"
-license=('GPL')
+license=('unknown')
 groups=()
 depends=()
 makedepends=('git')
@@ -26,5 +26,5 @@ pkgver() {
 
 package() {
 	cd "$srcdir/${pkgname%-git}"
-	install -Dm644 maxtouch.cfg "$pkgdir/usr/lib/firmware/maxtouch.cfg"
+	make DESTDIR="$pkgdir" install
 }
