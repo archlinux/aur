@@ -18,18 +18,18 @@ mkdir -p $pkgdir/usr/share/licenses/$pkgname
 mkdir $pkgdir/usr/lib/
 mkdir -p $pkgdir/usr/lib/cups/filter/
 mkdir -p $pkgdir/usr/share/cups/model/panasonic/
-cp $srcdir/$pkgname-$pkgver-$arch/Version.html $pkgdir/usr/share/licenses/$pkgname/Version.html
+cp -f $srcdir/$pkgname-$pkgver-$arch/Version.html $pkgdir/usr/share/licenses/$pkgname/Version.html
 
-cp $srcdir/$pkgname-$pkgver-$arch/lib/* $pkgdir/usr/lib/
+cp -f $srcdir/$pkgname-$pkgver-$arch/lib/* $pkgdir/usr/lib/
 ln -sf L_H0JDJCZAZ.so.1.0.0 $pkgdir/usr/lib/L_H0JDJCZAZ.so.1
 ln -sf L_H0JDJCZAZ_2.so.1.0.0 $pkgdir/usr/lib/L_H0JDJCZAZ_2.so.1
 ln -sf L_H0JDJCZAZ.so.1 $pkgdir/usr/lib/L_H0JDJCZAZ.so
 ln -sf L_H0JDJCZAZ_2.so.1 $pkgdir/usr/lib/L_H0JDJCZAZ_2.so
 
-cp $srcdir/$pkgname-$pkgver-$arch/filter/*  $pkgdir/usr/lib/cups/filter/
+cp -f $srcdir/$pkgname-$pkgver-$arch/filter/*  $pkgdir/usr/lib/cups/filter/
 
 #PPD_FILES=`find ppd -name *.ppd`
-cp $srcdir/$pkgname-$pkgver-$arch/ppd/*.ppd $pkgdir/usr/share/cups/model/panasonic/
+cp -f $srcdir/$pkgname-$pkgver-$arch/ppd/*.ppd $pkgdir/usr/share/cups/model/panasonic/
 
 _INSTALL_PATH='$pkgdir/usr/share/panasonic/printer'
 mkdir -p $_INSTALL_PATH
@@ -43,20 +43,20 @@ for _file in $_DATA_FILES; do
 	else
 		if test -f $_file
 		then
-			cp $_file $_INSTALL_PATH/$_file
+			cp -f $_file $_INSTALL_PATH/$_file
 		fi
 	fi
 done
 
 # copy tools
-cp $srcdir/$pkgname-$pkgver-$arch/panautil/L_H0JDUIZAZ $_INSTALL_PATH/bin/
-cp $srcdir/$pkgname-$pkgver-$arch/panautil/L_H0JDUCZAZ $_INSTALL_PATH/bin/
+cp -f $srcdir/$pkgname-$pkgver-$arch/panautil/L_H0JDUIZAZ $_INSTALL_PATH/bin/
+cp -f $srcdir/$pkgname-$pkgver-$arch/panautil/L_H0JDUCZAZ $_INSTALL_PATH/bin/
 chmod 4755 $_INSTALL_PATH/bin/L_H0JDUCZAZ
-cp $srcdir/$pkgname-$pkgver-$arch/panautil/L_H0JDUIZAZ.png $_INSTALL_PATH/bin/
+cp -f $srcdir/$pkgname-$pkgver-$arch/panautil/L_H0JDUIZAZ.png $_INSTALL_PATH/bin/
 
   mkdir -p $pkgdir/usr/share/applications
   chown root:root $pkgdir/usr/share/applications
   chmod 755 $pkgdir/usr/share/applications
 
-  cp $srcdir/$pkgname-$pkgver-$arch/panautil/L_H0JDUIZAZ.desktop $pkgdir/usr/share/applications/
+  cp -f $srcdir/$pkgname-$pkgver-$arch/panautil/L_H0JDUIZAZ.desktop $pkgdir/usr/share/applications/
 }
