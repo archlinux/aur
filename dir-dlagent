@@ -1,0 +1,77 @@
+#! /bin/bash
+set -euf -o pipefail
+: ${DIR_DLAGENT_DEBUG:=0}
+
+usage() {
+	>&2 echo "Usage: $0 dir://dir-spec/path/to/file.txt <output>"
+	>&2 echo "Usage: $0 %u %o"
+	exit 1
+}
+
+debug() {
+	if [[ "$DIR_DLAGENT_DEBUG" -gt 0 ]]; then
+		>&2 echo "DEBUG: $@"
+	fi
+}
+
+# TODO: also use other XDG_CONFIG_DIRS
+: ${XDG_CONFIG_HOME:=$HOME/.config}
+CONFIG=$XDG_CONFIG_HOME/dir-dlagent.conf
+if [[ -e "$CONFIG" ]]; then
+	source "$CONFIG"
+fi
+
+# TODO: check that `dir=()` exists
+# TODO: validate ${dir[@]}
+
+if [[ $# -ne 2 ]]; then
+	>&2 echo "Error: got $# arguments instead of 2"
+	usage
+fi
+
+url="$1"
+out="$2"
+case "$url" in
+dir://*)
+	base_uri="${url##dir://}"
+	debug "base_uri=$base_uri"
+	;;
+*)
+	>&2 echo "Error: url does not start with dir:// : $url"
+	exit 1
+	;;
+esac
+
+case "$base_uri" in
+*/*)
+	dir_spec="${base_uri%%/*}"
+	subpath="${base_uri:${#dir_spec}}"
+	subpath="${subpath:1}"
+	debug "dir_spec=$dir_spec"
+	debug "subpath=$subpath"
+	;;
+*)
+	>&2 echo "Error: url does not contain a dir-spec : $url"
+	exit 1
+	;;
+esac
+
+for e in "${dirs[@]}"; do
+	this_base="${e%%::*}"
+	this_path="${e:${#this_base}}"
+	this_path="${this_path:2}"
+	debug "checking map '$e' => '$this_base' :: '$this_path'"
+	if [[ "${this_base}" = "${dir_spec}" ]]; then
+		src="${this_path}/${subpath}"
+		debug "Copying file: '${src}' to '${out}'"
+		cp --no-preserve=all "${src}" "${out}" || {
+			echo "Error: could not copy file from '${src}' to '${out}'"
+			exit 1
+		}
+		exit 0
+	fi
+done
+
+>&2 echo "Error: no map found for dir-spec $dir_spec in url $url"
+>&2 echo "Note: add 'dirs+=(\"$dir_spec::/my/path/here\")' to $CONFIG to fix"
+exit 1

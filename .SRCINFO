@@ -1,0 +1,13 @@
+pkgbase = dir-dlagent
+	pkgdesc = A makepkg DLAGENT which forwards requests to configured directories
+	pkgver = 1
+	pkgrel = 1
+	url = https://aur.archlinux.org/packages/dir-dlagent
+	arch = any
+	license = GPL3
+	depends = bash
+	source = dir-dlagent
+	sha1sums = f3728308f955bf748d2e713ba41712cbcf86fb31
+
+pkgname = dir-dlagent
+
