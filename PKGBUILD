@@ -1,9 +1,10 @@
-# Maintainer: Arthur Zamarin <arthurzam@gmail.com>
 # Contributor: Shanto <shanto@hotmail.com>
+# Contributor: Arthur Zamarin <arthurzam@gmail.com>
+# Maintainer: David Rosenstrauch <darose@darose.net>
 
 pkgname=eclipse-shelled
 pkgver=2.0.3
-pkgrel=3
+pkgrel=4
 pkgdesc="Superb shell script editor for Eclipse"
 arch=('any')
 url="http://shelled.sourceforge.net/"
