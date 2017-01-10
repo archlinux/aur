@@ -14,7 +14,7 @@ pkgbase = sch_cake-dkms
 	source = git+https://github.com/dtaht/sch_cake.git
 	source = dkms.conf.in
 	md5sums = SKIP
-	md5sums = 1e4f0c888d3be4b0703367cfad0e01b8
+	md5sums = 7a1c56002e8541836faf7d26be8920a5
 
 pkgname = sch_cake-dkms
 
