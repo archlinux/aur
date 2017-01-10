@@ -29,5 +29,4 @@ check() {
 package() {
     cd "$srcdir/picard"
     python2 setup.py install --root=$pkgdir --optimize=1
-    cp -r contrib/plugins/* "${pkgdir}/usr/lib/python2.7/site-packages/picard/plugins/"
 }
