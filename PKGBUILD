@@ -4,11 +4,12 @@
 _gemname=CFPropertyList
 pkgname=ruby-cfpropertylist-2.3.3
 pkgver=2.3.3
-pkgrel=1
+pkgrel=2
 pkgdesc='Read, write and manipulate both binary and XML property lists as defined by apple'
 arch=(any)
 url='http://github.com/ckruse/CFPropertyList'
 license=(MIT)
+provides=("ruby-cfpropertylist=$pkgver")
 depends=(ruby)
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
