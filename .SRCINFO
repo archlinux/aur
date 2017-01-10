@@ -1,7 +1,7 @@
 pkgbase = python-broadcast-logging
 	pkgdesc = A Python logging system handler which broadcasts log messages and a matching receiver executable.
 	pkgver = 0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/languitar/broadcast-logging
 	arch = any
 	license = LGPL3

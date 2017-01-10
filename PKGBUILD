@@ -2,7 +2,7 @@
 
 pkgname=python-broadcast-logging
 pkgver=0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A Python logging system handler which broadcasts log messages and a matching receiver executable."
 arch=(any)
 url="https://github.com/languitar/broadcast-logging"
