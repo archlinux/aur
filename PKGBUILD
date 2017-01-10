@@ -3,7 +3,7 @@
 
 pkgname=python-munkres
 pkgver=1.0.9
-pkgrel=2
+pkgrel=3
 pkgdesc='munkres algorithm for the assignment problem'
 depends=('python')
 makedepends=('python-setuptools')
@@ -15,5 +15,5 @@ license=('BSD')
 
 package() {
   cd "$srcdir/munkres-release-$pkgver"
-  /usr/bin/python setup.py install --root="$pkgdir"
+  /usr/bin/python setup.py install --root="$pkgdir" --optimize=1
 }

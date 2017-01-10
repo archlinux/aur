@@ -1,7 +1,7 @@
 pkgbase = python-munkres
 	pkgdesc = munkres algorithm for the assignment problem
 	pkgver = 1.0.9
-	pkgrel = 2
+	pkgrel = 3
 	url = http://bmc.github.com/munkres/
 	arch = any
 	license = BSD
