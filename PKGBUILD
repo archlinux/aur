@@ -3,17 +3,15 @@
 # Contributor: Sergio A. Morales <sergiomorales@archlinux.cl>
 
 pkgname=389-admin
-pkgver=1.1.42
-pkgrel=4
+pkgver=1.1.46
+pkgrel=1
 pkgdesc="389 Administration Server HTTP agent"
 arch=('i686' 'x86_64')
 url="http://directory.fedoraproject.org/"
 license=('GPL')
-depends=('389-ds-base' '389-adminutil' 'mod_nss' 'perl-mozldap' 'icu56')
-source=("http://directory.fedoraproject.org/sources/$pkgname-$pkgver.tar.bz2"
-        'dirsrv-admin.service')
-sha256sums=('4caf0671ca5f456a9778ba547c8d3e3b370005fa7bdc37b229c546d0f57850c1'
-            '4bc632960164d350c1d7d51c1c7b9361e572b855a874848e51c8b9cf79c97563')
+depends=('389-adminutil' 'mod_nss')
+source=("http://directory.fedoraproject.org/sources/$pkgname-$pkgver.tar.bz2")
+sha256sums=('6e1da6f8494bc6693cb50f77db448e3c3aa7cd96470f92ef95ed4b784e7b58fe')
 
 build() {
   cd "${pkgname}-${pkgver}"
@@ -24,9 +22,13 @@ build() {
   ./configure --disable-rpath \
               --prefix=/usr \
               --sysconfdir=/etc \
-	      --sbindir=/usr/bin \
-	      --with-ldapsdk-inc=/usr/include/mozldap \
-	      --with-ldapsdk-lib=/usr/lib/mozldap \
+	            --sbindir=/usr/bin \
+              --with-systemd \
+              --with-systemdsystemunitdir=/usr/lib/systemd/system \
+              --with-systemdsystemconfdir=/etc/systemd/system \
+              --with-systemdgroupname=389-ds-base.target \
+	            --with-ldapsdk-inc=/usr/include/mozldap \
+	            --with-ldapsdk-lib=/usr/lib/mozldap \
               --with-adminutil=/usr
 
   msg2 "Running make..."
@@ -39,9 +41,9 @@ package() {
   msg2 "Running make install..."
   make install DESTDIR="${pkgdir}"
 
-  rm -rf "${pkgdir}/etc/rc.d"
-  mkdir -p "${pkgdir}/usr/lib/systemd/system"
-  cp -f "${srcdir}/dirsrv-admin.service" "${pkgdir}/usr/lib/systemd/system/"
+  #rm -rf "${pkgdir}/etc/rc.d"
+  #mkdir -p "${pkgdir}/usr/lib/systemd/system"
+  #cp -f "${srcdir}/dirsrv-admin.service" "${pkgdir}/usr/lib/systemd/system/"
 }
 
 # vim:set ts=2 sw=2 et:
