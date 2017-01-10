@@ -1,0 +1,16 @@
+pkgbase = ruby-xcpretty-travis-formatter
+	pkgdesc = xcpretty custom formatter for TravisCI
+	pkgver = 0.0.4
+	pkgrel = 1
+	url = https://github.com/kattrali/xcpretty-travis-formatter
+	arch = any
+	license = MIT
+	depends = ruby
+	depends = ruby-xcpretty
+	noextract = xcpretty-travis-formatter-0.0.4.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/xcpretty-travis-formatter-0.0.4.gem
+	sha1sums = 09f4c460dc60e98207c480b90be50408ee69c96c
+
+pkgname = ruby-xcpretty-travis-formatter
+
