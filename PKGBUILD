@@ -4,13 +4,20 @@
 _gemname=activesupport
 pkgname=ruby-$_gemname-4
 pkgver=4.2.7.1
-pkgrel=3
+pkgrel=4
 pkgdesc='A toolkit of support libraries and Ruby core extensions extracted from the Rails framework.'
 arch=(any)
 url='http://www.rubyonrails.org'
 license=(MIT)
-provides=('ruby-activesupport=4')
-depends=(ruby 'ruby-i18n=0.7' 'ruby-json>=1.7.7' 'ruby-json=1.7' 'ruby-tzinfo=1.1' 'ruby-minitest=5.1' 'ruby-thread_safe>=0.3.4' 'ruby-thread_safe=0.3')
+provides=("ruby-activesupport=$pkgver")
+depends=(
+  ruby
+  'ruby-i18n<1' 'ruby-i18n>=0.7'
+  'ruby-json>=1.7.7' 'ruby-json<2'
+  'ruby-tzinfo<2' 'ruby-tzinfo>=1.1'
+  'ruby-minitest<6' 'ruby-minitest>=5.1'
+  'ruby-thread_safe>=0.3.4' 'ruby-thread_safe<1'
+)
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
