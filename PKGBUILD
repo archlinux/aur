@@ -5,7 +5,7 @@
 pkgname=dunst-git
 _gitname=dunst
 pkgver=1.1.0.30.g360985b.635
-pkgrel=1
+pkgrel=2
 pkgdesc="a lightweight notification-daemon - git version"
 arch=('i686' 'x86_64')
 url="http://www.knopwob.org/dunst"
@@ -17,7 +17,7 @@ fi
 makedepends=('git' 'perl')
 provides=("dunst" 'notification-daemon')
 conflicts=("dunst")
-source=('git://github.com/knopwob/dunst.git')
+source=('git+https://github.com/dunst-project/dunst')
 md5sums=('SKIP')
 options=('!makeflags')
 
