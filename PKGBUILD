@@ -3,14 +3,13 @@
 
 pkgname=zoiper
 pkgver=3.3
-pkgrel=1
+pkgrel=2
 pkgdesc="An IAX and SIP VoIP softphone"
-arch=("i686" "x86_64")
 url="http://www.zoiper.com/"
-license=("custom")
-depends=("gtk2" "alsa-lib" "libxdamage")
+arch=("i686" "x86_64")
 [ "$CARCH" = "x86_64" ] && _arch_="64" || _arch_="32"
-[ "$CARCH" = "x86_64" ] && depends=("lib32-gtk2" "lib32-alsa-lib" "lib32-libxdamage" "lib32-libsm" "lib32-pangox-compat" "lib32-libcanberra")
+license=("custom")
+depends=("gtk2" "libsm" "pangox-compat" "libcanberra")
 source=("LICENSE" "${pkgname}.desktop" "${pkgname}.png" "${pkgname}-24.png" "${pkgname}-48.png" "${pkgname}-96.png")
 
 build() {
