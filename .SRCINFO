@@ -1,0 +1,13 @@
+pkgbase = ttf-lora-cyrillic
+	pkgver = 2.000
+	pkgrel = 1
+	url = https://github.com/cyrealtype/Lora-Cyrillic
+	arch = any
+	license = custom:OFL
+	conflicts = ttf-lora-cyrillic-ibx
+	replaces = ttf-lora-cyrillic-ibx
+	source = https://github.com/cyrealtype/Lora-Cyrillic/files/520780/Lora-TTF.zip
+	sha512sums = 53ab36c8d8200959caeada7887eb9dae53017dafa79621d8e9c7f5e8057426779e17ea41b4db8de56da0843dd3036b849054a65421ea10747e36b21c02d54967
+
+pkgname = ttf-lora-cyrillic
+
