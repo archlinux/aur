@@ -11,7 +11,7 @@ url='https://github.com/supermarin/xcpretty'
 license=(MIT)
 depends=(
   ruby
-  'ruby-rouge<2' 'ruby-rogue>=1.8'
+  'ruby-rouge<2' 'ruby-rouge>=1.8'
 )
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)

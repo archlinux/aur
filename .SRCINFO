@@ -7,7 +7,7 @@ pkgbase = ruby-xcpretty
 	license = MIT
 	depends = ruby
 	depends = ruby-rouge<2
-	depends = ruby-rogue>=1.8
+	depends = ruby-rouge>=1.8
 	noextract = xcpretty-0.2.4.gem
 	options = !emptydirs
 	source = https://rubygems.org/downloads/xcpretty-0.2.4.gem
