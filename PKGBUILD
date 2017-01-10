@@ -4,12 +4,12 @@
 _gemname=xcodeproj
 pkgname=ruby-$_gemname
 pkgver=1.4.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Create and modify Xcode projects from Ruby.'
 arch=(any)
 url='https://github.com/cocoapods/xcodeproj'
 license=(MIT)
-depends=(ruby ruby-activesupport ruby-CFPropertyList ruby-claide ruby-colored ruby-nanaimo)
+depends=(ruby ruby-activesupport ruby-cfpropertylist ruby-claide ruby-colored ruby-nanaimo)
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
