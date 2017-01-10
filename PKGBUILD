@@ -4,7 +4,7 @@
 _gemname=google-api-client
 pkgname=ruby-$_gemname
 pkgver=0.9.20
-pkgrel=2
+pkgrel=3
 pkgdesc='Client for accessing Google APIs'
 arch=(any)
 url='https://github.com/google/google-api-ruby-client'
@@ -18,7 +18,7 @@ depends=(
   'ruby-hurley<1' 'ruby-hurley>=0.1'
   'ruby-googleauth<1' 'ruby-googleauth>=0.5'
   'ruby-httpclient<3' 'ruby-httpclient>=2.7'
-  'ruby-memoist<1' 'ruby-memois>=0.11'
+  'ruby-memoist<1' 'ruby-memoist>=0.11'
 )
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
