@@ -1,5 +1,5 @@
 pkgname="psi-plus-qt5-git"
-pkgver=0.16.552.550
+pkgver=0.16.571.627
 pkgrel=1
 pkgdesc="Psi+ is a powerful Jabber client (Qt, C++) designed for the Jabber power users (built with Qt 5.x)"
 url="http://psi-plus.com"
@@ -38,8 +38,7 @@ build() {
   patch -p0 < "$srcdir"/conf.diff
   ./configure --prefix=/usr \
               --libdir=/usr/lib \
-              --disable-enchant \
-              --qtdir="/usr/lib/qt"
+              --disable-enchant
   make
   patch -Rp0 < "$srcdir"/conf.diff
 }
