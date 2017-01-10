@@ -29,7 +29,7 @@ build() {
 
 package() {
 	cd $plainname
-	export PYTHONPATH="$pkgdir/usr/lib/python3.5/site-packages"
+	export PYTHONPATH="$pkgdir/usr/lib/python3.6/site-packages"
 	mkdir -p "$PYTHONPATH"
 	python3 setup.py install --prefix="$pkgdir/usr"
 	rm -rf "$pkgdir/usr/bin"
