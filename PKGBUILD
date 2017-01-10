@@ -1,7 +1,7 @@
 # Maintainer: Joseph Simone <averagejoey2000 tfwno . gf>
 pkgname=mccgdi
 pkgver="2.0.9"
-pkgrel=1
+pkgrel=2
 pkgdesc="PPD files for Panasonic Printers"
 arch=('x86_64' 'i686')
 url="panasonic.com"
