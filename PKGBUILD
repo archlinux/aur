@@ -4,7 +4,7 @@
 _gemname=fastlane
 pkgname=$_gemname
 pkgver=2.7.0
-pkgrel=4
+pkgrel=5
 pkgdesc='The easiest way to automate beta deployments and releases for your iOS and Android apps'
 arch=(any)
 url='https://fastlane.tools'
@@ -43,7 +43,8 @@ depends=(
   ruby-dotenv-2.1
   'ruby-bundler<2' 'ruby-bundler>=1.12'
   'ruby-faraday<1' 'ruby-faraday>=0.9'
-  'ruby-faraday_middleware<1' 'ruby-faraday_middleware>=0.9'
+  # 'ruby-faraday_middleware<1' 'ruby-faraday_middleware>=0.9'
+  ruby-faraday_middleware-0.10
   # 'ruby-activesupport<5'
   ruby-activesupport-4
   ruby-domain_name
