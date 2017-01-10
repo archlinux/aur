@@ -154,8 +154,14 @@ int main(int argc, char *argv[]) {
                     if( sargv == "" ) {
                         cout << "Chaine vide" << endl;
                         break;
-                    } else
+                    } else {
+                        for ( int i =  listTodo.size()-1; i >= 0 ; --i)
+                            if( listTodo.at(i).str == sargv ) {
+                                cerr << "Erreur doublon" << endl;
+                                break;
+                            }
                         listTodo.push_back(todoFromCmd(sargv));
+                    }
 
                     break;
                 }
