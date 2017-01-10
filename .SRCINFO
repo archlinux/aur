@@ -1,0 +1,13 @@
+pkgbase = eclipse-svnkit
+	pkgdesc = The only pure Java Subversion library in the world
+	pkgver = 1.8.14
+	pkgrel = 1
+	url = https://svnkit.com/index.html
+	arch = any
+	license = TMate
+	depends = eclipse
+	source = https://www.svnkit.com/org.tmatesoft.svn_1.8.14.eclipse.zip
+	md5sums = fbc0551445510d74e85f422886220e5f
+
+pkgname = eclipse-svnkit
+
