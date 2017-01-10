@@ -6,11 +6,9 @@
 # implemented using nw.js (http://nwjs.io/).
 
 # This is a "stable" snapshot of purr-data, meaning that it will be updated
-# less frequently, and ideally only after some testing. It also incorprates
-# some minor changes supposed to improve the end user experience (currently
-# this means a reduced amount of debug messages in the console window). As an
-# alternative, there's also the purr-data-git package which builds straight
-# from the latest upstream source, also available from the AUR.
+# less frequently, and ideally only after some testing. As an alternative,
+# there's also the purr-data-git package which builds straight from the latest
+# upstream source, also available from the AUR.
 
 # NOTE: This is BETA software which is still under development, so expect some
 # bugs and ongoing changes in some parts of the program and its library. If
