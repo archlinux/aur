@@ -1,16 +1,15 @@
 pkgbase = 389-adminutil
 	pkgdesc = Utility library for 389 administration
-	pkgver = 1.1.22
+	pkgver = 1.1.23
 	pkgrel = 1
 	url = http://directory.fedoraproject.org/
-	install = 389-adminutil.install
 	arch = i686
 	arch = x86_64
 	license = GPL
 	depends = 389-ds-base
 	depends = mozldap
-	source = http://directory.fedoraproject.org/sources/389-adminutil-1.1.22.tar.bz2
-	sha256sums = d6eff92baef515045a6c9f1e77e04e623b0d20306fd4507a53c5ead3ab2af9cd
+	source = http://directory.fedoraproject.org/sources/389-adminutil-1.1.23.tar.bz2
+	sha256sums = d5844b95a8bec9fb5e677e4b5c78489959386fd73d061f13b2096159c0726fec
 
 pkgname = 389-adminutil
 
