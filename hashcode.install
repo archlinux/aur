@@ -1,0 +1,16 @@
+post_install() {
+        echo "
+
+
+Para usar o HashCode basta executar -> hashcode
+------------------------------------------------
+------------------------------------------------"
+}
+post_upgrade() {
+        echo "
+
+
+Para usar o HashCode basta executar -> hashcode
+------------------------------------------------
+------------------------------------------------"
+}

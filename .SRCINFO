@@ -1,0 +1,13 @@
+pkgbase = hashcode-pt
+	pkgdesc = Tem como objetivo codificar e decodificar strings.
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/Sup3r-Us3r/HashCode
+	install = hashcode.install
+	arch = any
+	depends = python
+	source = hashcode-pt.py
+	conflicts = hashcode-en
+	md5sums = 30c0b2f24cd677e17d6aa97b74070272
+
+pkgname = hashcode-pt
