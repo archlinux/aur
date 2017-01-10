@@ -2,31 +2,47 @@
 
 pkgname=spotify-web-player
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A Spotify Web Player wrapper in Electron"
 arch=('i686' 'x86_64')
 url="https://github.com/Quacky2200/Spotify-Web-Player-for-Linux"
 license=('MIT')
-depends=('libappindicator-gtk3' 'libnotify' 'unzip' 'electron')
+depends=('libappindicator-gtk3' 'libnotify' 'unzip' 'electron' 'pepper-flash')
+makedepends=('npm')
 optdepends=('dbus: Notification and MPRIS controller support')
-conflicts=('spotify-web-player-for-linux' 'lib32-spotify-web-player-for-linux')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/Quacky2200/Spotify-Web-Player-for-Linux/archive/$pkgver.tar.gz")
-source_i686=("https://github.com/Quacky2200/Spotify-Web-Player-for-Linux/releases/download/$pkgver/node_modules_x86.zip")
-source_x86_64=("https://github.com/Quacky2200/Spotify-Web-Player-for-Linux/releases/download/$pkgver/node_modules_x64.zip")
-noextract=('node_modules_x64.zip' 'node_modules_x86.zip')
-sha256sums=('1a063926c8434908ce6ffe39324509d933bb659129616329d46528598d9bc445')
-sha256sums_i686=('e8759db701746c136293a33792b438a639da50ebd8a0b1154e6f94719a2d7140')
-sha256sums_x86_64=('020fc586b8614aac160c3b74b76ba26edc552e64523a024955ea35a788c928a4')
+conflicts=('spotify-web-player-for-linux' 'lib32-spotify-web-player-for-linux' "${pkgname}-git")
+source=("$pkgname-$pkgver.tar.gz::https://github.com/Quacky2200/Spotify-Web-Player-for-Linux/archive/$pkgver.tar.gz"
+        'use_system_flash.patch'
+        'use_system_electron.patch')
+sha256sums=('1a063926c8434908ce6ffe39324509d933bb659129616329d46528598d9bc445'
+            '2d6ec0514d4e0117284746c0885abbc15d42e091f81c20429ca28201474e6ddc'
+            'c3f2a515a3cd31fcb3c78417a6f1da6790ee797ec70e1de8f1ca3f5ad0fc5ab5')
+
+prepare() {
+	cd "$srcdir"/Spotify-Web-Player-for-Linux-${pkgver}
+	# Don't use the bundled flash plugins, use the system copy
+	patch -uNp2 -r- -i ../use_system_flash.patch
+	# Don't download a prebuilt electron, use the system copy
+	patch -uNp2 -r- -i ../use_system_electron.patch
+}
 
 package() {
-	cd "$srcdir"
-	mkdir -p "$pkgdir"/usr/lib
-	cp -ar --no-preserve=ownership "Spotify-Web-Player-for-Linux-${pkgver}" "$pkgdir"/usr/lib/spotifywebplayer
-	# Remove unnecessary scripts
-	rm "$pkgdir"/usr/lib/spotifywebplayer/{make_deb.sh,spotifywebplayer,get_prerequisites.sh,LICENSE}
+	cd "$srcdir"/Spotify-Web-Player-for-Linux-${pkgver}
+	# Remove unneeded scripts
+	rm ./{make_deb.sh,spotifywebplayer,get_prerequisites.sh,LICENSE}
+	# We use the system flash plugin, remove the bundled ones
+	rm -r plugins
 	
-	mkdir -p "$pkgdir"/usr/lib/spotifywebplayer/node_modules
-	unzip "$node_modules_*.zip" -d "$pkgdir"/usr/lib/spotifywebplayer/node_modules
+	# Fix permissions!
+	find . -type f -exec chmod 644 '{}' \;
+	find . -type d -exec chmod 755 '{}' \;
+	
+	# Install dependencies
+	npm install
+	
+	# Install the program
+	mkdir -p "$pkgdir"/usr/lib
+	cp -ar --no-preserve=ownership "${srcdir}/Spotify-Web-Player-for-Linux-${pkgver}" "$pkgdir"/usr/lib/spotifywebplayer
 	
 	# Write our own file to /usr/bin so we can use system provided electron
 	mkdir -p "$pkgdir"/usr/bin
@@ -37,7 +53,9 @@ package() {
 
 		exit 0
 	EOF
-	
+	chmod 755 "$pkgdir"/usr/bin/spotifywebplayer
+
+	# Add the icon to the pixmap directory
 	mkdir -p "${pkgdir}"/usr/share/pixmaps/
 	cp /usr/lib/spotifywebplayer/icons/spotify.png "${pkgdir}"/usr/share/pixmaps/spotifywebplayer.png
 	
@@ -65,9 +83,4 @@ package() {
 		Name=Previous
 		Exec=dbus-send --print-reply --session --dest=org.mpris.MediaPlayer2.spotifywebplayer /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Previous
 	EOF
-
-	# Fix permissions!
-	find "$pkgdir" -type f -exec chmod 644 '{}' \;
-	find "$pkgdir" -type d -exec chmod 755 '{}' \;
-	chmod 755 "$pkgdir"/usr/bin/spotifywebplayer
 }
