@@ -56,6 +56,7 @@ build() {
     -DCMAKE_INSTALL_LIBDIR=/usr/lib \
     -DCMAKE_INSTALL_LIBDIR_NOARCH=/usr/lib \
     -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_PREFIX_PATH=/usr/lib/kodi \
     ..
   make
 }
