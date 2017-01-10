@@ -4,11 +4,12 @@
 _gemname=slack-notifier
 pkgname=ruby-$_gemname-1
 pkgver=1.5.1
-pkgrel=1
+pkgrel=2
 pkgdesc='A slim ruby wrapper for posting to slack webhooks'
 arch=(any)
 url='http://github.com/stevenosloan/slack-notifier'
 license=(MIT)
+provides=("ruby-slack-notifier=$pkgver")
 depends=(ruby)
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
