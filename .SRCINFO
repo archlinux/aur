@@ -1,0 +1,13 @@
+pkgbase = i3-gnome
+	pkgdesc = Starts i3 inside a gnome session.
+	pkgver = 5.1.r2.g55ea56b
+	pkgrel = 1
+	url = https://github.com/TheMarex/i3-gnome
+	arch = any
+	license = MIT
+	conflicts = i3-gnome
+	source = git+https://github.com/TheMarex/i3-gnome.git
+	md5sums = SKIP
+
+pkgname = i3-gnome-git
+
