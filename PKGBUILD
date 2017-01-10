@@ -2,7 +2,7 @@
 
 pkgname=wtrack-git
 pkgver=0.1.dev0.g9ca27c4
-pkgrel=1
+pkgrel=2
 pkgdesc="Work time tracker"
 arch=(any)
 url="https://github.com/languitar/wtrack"
