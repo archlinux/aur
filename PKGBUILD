@@ -2,7 +2,7 @@
 
 _pkgname=recipes
 pkgname=$_pkgname-git
-pkgver=0.4.2.4.g02dc495
+pkgver=0.6.0+17+g91e79b3
 pkgrel=1
 install=$_pkgname.install
 pkgdesc="A GNOME recipes cooking book"
@@ -26,7 +26,7 @@ sha256sums=('SKIP'
 
 pkgver() {
   cd "$srcdir/$_pkgname"
-  git describe --always | sed 's|-|.|g'
+  git describe --always | sed 's|-|+|g'
 }
 
 prepare() {
