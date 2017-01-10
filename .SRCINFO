@@ -1,11 +1,11 @@
 pkgbase = python-enum34
 	pkgdesc = Python 3.4 Enum backported
 	pkgver = 1.1.6
-	pkgrel = 2
+	pkgrel = 3
 	url = https://pypi.python.org/pypi/enum34
 	arch = any
 	license = BSD
-	depends = python
+	depends = python<3.4
 	source = https://pypi.python.org/packages/bf/3e/31d502c25302814a7c2f1d3959d2a3b3f78e509002ba91aea64993936876/enum34-1.1.6.tar.gz
 	md5sums = 5f13a0841a61f7fc295c514490d120d0
 
