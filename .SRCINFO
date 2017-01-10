@@ -1,7 +1,7 @@
 pkgbase = ruby-activesupport-4
 	pkgdesc = A toolkit of support libraries and Ruby core extensions extracted from the Rails framework.
 	pkgver = 4.2.7.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.rubyonrails.org
 	arch = any
 	license = MIT
@@ -11,6 +11,7 @@ pkgbase = ruby-activesupport-4
 	depends = ruby-tzinfo
 	depends = ruby-minitest
 	depends = ruby-thread_safe
+	provides = ruby-activesupport=4
 	noextract = activesupport-4.2.7.1.gem
 	options = !emptydirs
 	source = https://rubygems.org/downloads/activesupport-4.2.7.1.gem
