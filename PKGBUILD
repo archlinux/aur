@@ -1,6 +1,6 @@
 # Maintainer: Greg Fitzgerald <gregf@hugops.pw>
 
-pkgname=ushlex
+pkgname=python2-ushlex
 pkgver=0.99
 pkgrel=1
 pkgdesc="Shlex is A lexical analyzer class for simple shell-like syntaxes."
