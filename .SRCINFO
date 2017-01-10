@@ -1,13 +1,13 @@
 pkgbase = ruby-xcodeproj
 	pkgdesc = Create and modify Xcode projects from Ruby.
 	pkgver = 1.4.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/cocoapods/xcodeproj
 	arch = any
 	license = MIT
 	depends = ruby
 	depends = ruby-activesupport
-	depends = ruby-cfpropertylist
+	depends = ruby-cfpropertylist-2.3.3
 	depends = ruby-claide
 	depends = ruby-colored
 	depends = ruby-nanaimo
