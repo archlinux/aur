@@ -1,5 +1,5 @@
 pkgname=picard-git
-pkgver=1.3.2.r473.gb0a70fe
+pkgver=1.3.2.r679.gfbf6fe09
 pkgrel=1
 pkgdesc="MusicBrainz tagging application"
 arch=('i686' 'x86_64')
