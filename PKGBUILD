@@ -5,7 +5,7 @@
 # Contributor: Lucas Saliés Brum <lucas@archlinux.com.br>
 
 pkgname=papirus-icon-theme-git
-pkgver=2.0.r9.ga79ce5a01
+pkgver=r700.a79ce5a01
 pkgrel=1
 pkgdesc="Papirus icon theme (git version)"
 url="https://github.com/PapirusDevelopmentTeam/${pkgname%-git}"
@@ -33,7 +33,6 @@ sha256sums=('SKIP')
 pkgver() {
   cd "${srcdir}/${pkgname}"
   ( set -o pipefail
-    git describe --long --tag | sed -r 's/^v//;s/([^-]*-g)/r\1/;s/-/./g' ||
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
   ) 2>/dev/null
 }
