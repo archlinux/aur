@@ -1,0 +1,13 @@
+pkgbase = hashcode-en
+	pkgdesc = Its purpose is to encode and decode strings.
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/Sup3r-Us3r/HashCode
+	install = hashcode.install
+	arch = any
+	depends = python
+	source = hashcode-en.py
+	conflicts = hashcode-pt
+	md5sums = 0c71c0b61b5615dbcb64a478b4698dee
+
+pkgname = hashcode-en
