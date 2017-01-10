@@ -2,7 +2,7 @@
 
 pkgname=kde-servicemenus-pdf
 pkgver=0.6
-pkgrel=7
+pkgrel=8
 pkgdesc="A KDE service menus for PDF documents from dolphin"
 arch=('any')
 url="http://www.egregorion.net"
@@ -20,5 +20,9 @@ package() {
   
   # fix '--caption' and message
   sed -i -r 's|(--caption[^}]*}")||g' ${pkgdir}/usr/bin/*.sh
+  
+  # fix password string
+  sed -i 's|"${usr_passwd}"|${usr_passwd}|g' ${pkgdir}/usr/bin/*.sh
+  sed -i 's|"${own_passwd}"|${own_passwd}|g' ${pkgdir}/usr/bin/*.sh
 }
 
