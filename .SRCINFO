@@ -1,6 +1,6 @@
 pkgbase = lenovo-thinkpad-yoga-11e-chromebook-git
 	pkgdesc = Fixes for the Lenove Yoga Thinkpad 11e Chromebook
-	pkgver = r6.3456b57
+	pkgver = r7.6b6a0af
 	pkgrel = 1
 	url = https://github.com/kcolford/lenovo-thinkpad-yoga-11e-chromebook
 	arch = any
