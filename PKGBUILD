@@ -1,23 +1,22 @@
-# Maintainer: Michael Lass <bevan@bi-co.net>
 # Contributor: Angel Velasquez <angvp@archlinux.org>
 # Contributor: Corrado Primier <bardo@aur.archlinux.org>
 # Contributor: G_Syme <demichan(at)mail(dot)upb(dot)de>
+# Contributor: Michael Lass <bevan@bi-co.net>
+# Maintainer: David Rosenstrauch <darose@darose.net>
  
 pkgname=eclipse-subclipse
-pkgver=1.10.9
+pkgver=4.2.2
 pkgrel=1
-_urlver=49431
 pkgdesc="Subversion integration for the Eclipse platform"
 arch=('any')
-url="http://subclipse.tigris.org/"
+url="https://github.com/subclipse/subclipse"
 license=('EPL')
 depends=('eclipse' 'subversion')
-source=(http://subclipse.tigris.org/files/documents/906/${_urlver}/site-${pkgver}.zip)
-md5sums=('8768699bbc8d6950e771c6936df08ef0')
- 
+source=(https://dl.bintray.com/subclipse/releases/subclipse/subclipse-4.2.2.zip)
+md5sums=('ebbc91a86b898c466dbde43dc499dfa1')
 
 package() {
-  _dest=${pkgdir}/usr/share/eclipse/dropins/${pkgname/eclipse-}/eclipse
+  _dest=${pkgdir}/usr/lib/eclipse/dropins/${pkgname/eclipse-}/eclipse
 
   cd ${srcdir}
 
@@ -37,5 +36,3 @@ package() {
     install -Dm644 ${_plugin} ${_dest}/${_plugin}
   done
 }
-
-# vim:set ts=2 sw=2 et:
