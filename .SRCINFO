@@ -1,7 +1,7 @@
 pkgbase = quickswitch-i3
 	pkgdesc = A python utility to quickly change to and locate windows in i3
 	pkgver = 2.6.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/OliverUv/quickswitch-for-i3
 	arch = any
 	license = custom:WTFPL

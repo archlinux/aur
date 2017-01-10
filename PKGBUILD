@@ -4,7 +4,7 @@
 _pkgname='quickswitch-for-i3'
 pkgname='quickswitch-i3'
 pkgver=2.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A python utility to quickly change to and locate windows in i3"
 arch=(any)
 url="https://github.com/OliverUv/quickswitch-for-i3"
