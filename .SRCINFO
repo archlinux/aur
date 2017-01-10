@@ -1,0 +1,18 @@
+pkgbase = python2-usbrevue
+	pkgdesc = USB Reverse-Engineering Toolkit
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://bitbucket.org/TeamC2011/usbrevue/
+	arch = i686
+	arch = x86_64
+	license = unknown
+	depends = python2
+	depends = scapy
+	depends = python2-pcapy
+	depends = python2-gflags
+	options = !emptydirs
+	source = https://github.com/fdev31/usbrevue/archive/fb01f124513c5e49ff0f8b77939c6dcf39e7b90c.zip
+	md5sums = 6557d2095ca8348b601bfb4f9fe4eeb3
+
+pkgname = python2-usbrevue
+
