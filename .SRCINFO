@@ -1,0 +1,16 @@
+pkgbase = libpff-git
+	pkgdesc = Library to access the Personal Folder File (PFF) and the Offline Folder File (OFF) format
+	pkgver = 20161215.56cdada
+	pkgrel = 1
+	url = https://github.com/libyal/libpff
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = git
+	provides = libpff-git
+	conflicts = libpff
+	source = git+https://github.com/libyal/libpff.git
+	sha1sums = SKIP
+
+pkgname = libpff-git
+
