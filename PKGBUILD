@@ -1,7 +1,7 @@
 # Maintainer: Simon Gomizelj <simongmzlj@gmail.com>
 
 pkgname=repose-git
-pkgver=7.15.g92ee037
+pkgver=7.1
 pkgrel=1
 pkgdesc="A archlinux repo building tool"
 arch=('i686' 'x86_64' 'armv7h')
