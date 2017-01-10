@@ -1,6 +1,6 @@
 # Maintainer: Dario Ostuni <another.code.996@gmail.com>
 pkgname=cotton-git
-pkgver=r66.6a5861a
+pkgver=r79.ab0fe94
 pkgrel=1
 pkgdesc="A process sandbox written in C++ "
 arch=('i686' 'x86_64' 'mips64el' 'armv6h' 'armv7h' 'arm' 'aarch64')
