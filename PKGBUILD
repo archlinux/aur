@@ -37,7 +37,7 @@ pkgver() {
 
 package() {
     cd $_pkgname
-    perl Build.PL --destdir "$pkgdir" --installdirs vendor
+    /usr/bin/perl Build.PL --destdir "$pkgdir" --installdirs vendor
     ./Build
     ./Build test
     ./Build install --install_path script=/usr/bin
