@@ -1,3 +1,5 @@
+#Maintainer Joseph Simone <averagejoey2000 at tfwno dot gf>
+#PKGBUILD currently download only, do not use.
 pkgname=panamfs-scan
 arch=(x86_64)
 pkgver='1.3.0'
