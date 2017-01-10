@@ -5,7 +5,9 @@ pkgver='0.1.1'
 pkgrel=1
 pkgdesc="C++ library to convert high-level optimization problems into canonical form."
 url="https://github.com/cvxgrp/CVXcanon"
-depends=('python')
+depends=('python'
+    'python-numpy'
+    'python-scipy')
 makedepends=('python-setuptools'
     'swig'
     'eigen')

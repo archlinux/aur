@@ -10,6 +10,8 @@ pkgbase = python-cvxcanon
 	makedepends = swig
 	makedepends = eigen
 	depends = python
+	depends = python-numpy
+	depends = python-scipy
 	source = https://github.com/cvxgrp/CVXcanon/archive/v0.1.1.tar.gz
 	md5sums = ea900f44c30596d96999aa61eab89f08
 
