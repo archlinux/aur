@@ -4,11 +4,12 @@
 _gemname=retriable
 pkgname=ruby-$_gemname-2
 pkgver=2.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Retriable is an simple DSL to retry failed code blocks with randomized exponential backoff'
 arch=(any)
 url='http://github.com/kamui/retriable'
 license=(MIT)
+provides=("ruby-retriable=$pkgver")
 depends=(ruby)
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
