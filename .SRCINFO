@@ -1,6 +1,6 @@
 pkgbase = exfalso
 	pkgdesc = GTK+ audio tag editor
-	pkgver = 3.7.1
+	pkgver = 3.8.0
 	pkgrel = 1
 	url = https://quodlibet.readthedocs.io/
 	arch = any
@@ -11,10 +11,11 @@ pkgbase = exfalso
 	depends = gtk3
 	depends = python2-gobject
 	depends = python2-cairo
-	source = https://bitbucket.org/lazka/quodlibet-files/raw/default/releases/quodlibet-3.7.1.tar.gz
-	source = https://bitbucket.org/lazka/quodlibet-files/raw/default/releases/quodlibet-3.7.1.tar.gz.sig
+	depends = python2-futures
+	source = https://bitbucket.org/lazka/quodlibet-files/raw/default/releases/quodlibet-3.8.0.tar.gz
+	source = https://bitbucket.org/lazka/quodlibet-files/raw/default/releases/quodlibet-3.8.0.tar.gz.sig
 	validpgpkeys = 0EBF782C5D53F7E5FB02A66746BD761F7A49B0EC
-	sha256sums = 1d96b1f401aa59f4800156abe63d3901f2a9979b5c9604af66ebf634c96cfc68
+	sha256sums = f9297a9c3cb2d8afd3f766ea6b18deaa6234e858a4143984bee21082bff23b5b
 	sha256sums = SKIP
 
 pkgname = exfalso

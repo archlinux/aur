@@ -2,30 +2,30 @@
 
 _pkgbase=quodlibet
 pkgname=exfalso
-pkgver=3.7.1
+pkgver=3.8.0
 pkgrel=1
 pkgdesc="GTK+ audio tag editor"
 arch=('any')
 url="https://${_pkgbase}.readthedocs.io/"
 license=('GPL2')
-depends=('mutagen' 'gtk3' 'python2-gobject' 'python2-cairo')
+depends=('mutagen' 'gtk3' 'python2-gobject' 'python2-cairo' 'python2-futures')
 makedepends=('intltool' 'gettext')
 #optdepends=('python2-musicbrainzngs: for "MusicBrainz Lookup" plugin')
 conflicts=("${pkgbase}")
 source=("https://bitbucket.org/lazka/${_pkgbase}-files/raw/default/releases/${_pkgbase}-${pkgver}.tar.gz"{,.sig})
-sha256sums=('1d96b1f401aa59f4800156abe63d3901f2a9979b5c9604af66ebf634c96cfc68' 'SKIP')
+sha256sums=('f9297a9c3cb2d8afd3f766ea6b18deaa6234e858a4143984bee21082bff23b5b' 'SKIP')
 validpgpkeys=('0EBF782C5D53F7E5FB02A66746BD761F7A49B0EC') # Christoph Reiter
 
 build () {
-  cd "${srcdir}/${_pkgbase}-${pkgver}"
+  cd ${_pkgbase}-${pkgver}
 
   python2 setup.py build
 }
 
 package_exfalso() {
-  cd "${srcdir}/${_pkgbase}-${pkgver}"
+  cd ${_pkgbase}-${pkgver}
 
-  python2 setup.py install --root="${pkgdir}"
+  python2 setup.py install --root="${pkgdir}" --skip-build --optimize=1
 
   # Remove Quod Libet
   rm    "${pkgdir}"/usr/bin/${_pkgbase}
