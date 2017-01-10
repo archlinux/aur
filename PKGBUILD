@@ -4,12 +4,16 @@
 _gemname=representable
 pkgname=ruby-$_gemname-2.3
 pkgver=2.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Renders and parses JSON/XML/YAML documents from and to Ruby objects. Includes plain properties, collections, nesting, coercion and more.'
 arch=(any)
 url='https://github.com/apotonick/representable/'
 license=(MIT)
-depends=(ruby ruby-uber-0.0)
+provides=("ruby-respresentable=$pkgver")
+depends=(
+  ruby
+  'ruby-uber<0.1' 'ruby-uber>=0.0.7'
+)
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
