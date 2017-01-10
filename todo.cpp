@@ -208,7 +208,8 @@ int main(int argc, char *argv[]) {
             case 7:  // Clean
                 {
                     for ( int i =  listTodo.size()-1; i >= 0 ; --i) {
-                        if( listTodo.at(i).etat )
+                        if( listTodo.at(i).etat == DONE_STATE ||
+                            listTodo.at(i).etat == MISSED_STATE)
                             listTodo.erase(begin(listTodo)+i);
                     }
                     break;
