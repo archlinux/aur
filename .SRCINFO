@@ -1,0 +1,14 @@
+pkgbase = vlc-sd-freebox
+	pkgdesc = Freebox TV service discovery
+	pkgver = 2.0.5
+	pkgrel = 1
+	url = https://addons.videolan.org/p/1153978/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = vlc
+	source = https://raw.githubusercontent.com/videolan/vlc/ac17dc8ac38f72aa8b01dfe9df011da2b2ba7479/share/lua/sd/freebox.lua
+	md5sums = 943db79f61ae7d5fb64c15d319a852e8
+
+pkgname = vlc-sd-freebox
+
