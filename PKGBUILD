@@ -1,5 +1,5 @@
-# Maintainer: Matt Harrison <matt@harrison.us.com>
-# Contributor: Raansu <gero3977@gmail.com>
+# Maintainer: Raansu <gero3977@gmail.com>
+# Contributor: Matt Harrison <matt@harrison.us.com>
 # Maintainer of acd_cli project: yadayada <https://github.com/yadayada>
 pkgname=acd_cli
 pkgver=0.3.2
