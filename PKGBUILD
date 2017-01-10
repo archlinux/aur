@@ -3,7 +3,7 @@
 
 _gemname=minitest
 pkgname=ruby-$_gemname
-pkgver=5.9.0
+pkgver=5.10.1
 pkgrel=1
 pkgdesc='minitest provides a complete suite of testing facilities supporting TDD, BDD, mocking, and benchmarking'
 arch=(any)
@@ -13,7 +13,7 @@ depends=(ruby)
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-sha1sums=('dd295c2cb4bca1f2c9157072cfd0494ce39dfd15')
+sha1sums=('b051ec10148076aa85f813b5e10e9e629de187d7')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
