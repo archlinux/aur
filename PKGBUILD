@@ -4,13 +4,16 @@
 _gemname=faraday_middleware
 pkgname=ruby-$_gemname-0.10
 pkgver=0.10.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Various middleware for Faraday'
 arch=(any)
 url='https://github.com/lostisland/faraday_middleware'
 license=(MIT)
-provides=('ruby-faraday_middleware=0.10')
-depends=(ruby ruby-faraday)
+provides=("ruby-faraday_middleware=$pkgver")
+depends=(
+  ruby
+  'ruby-faraday<1' 'ruby-faraday>=0.7.4'
+)
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
