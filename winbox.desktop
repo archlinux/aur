@@ -7,3 +7,4 @@ Exec=/usr/bin/winbox
 Icon=/usr/share/pixmaps/winbox.png
 Terminal=false
 Categories=Utility
+StartupWMClass=winbox.exe
