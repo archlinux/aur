@@ -1,4 +1,4 @@
-pkgbase = slop
+pkgbase = ruby-slop
 	pkgdesc = Simple Lightweight Option Parsing
 	pkgver = 4.4.1
 	pkgrel = 1
