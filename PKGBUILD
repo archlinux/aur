@@ -1,3 +1,5 @@
+# Maintainer: Daniel Lima <danielm@tinyhub.tk>
+
 pkgname=bdf-creep
 pkgdesc="A pretty sweet 4px wide pixel font with box-drawing, powerline, braille and sparklines glyphs."
 pkgver=0.31.r23.g98bbf59
@@ -5,7 +7,7 @@ pkgrel=1
 arch=('any')
 url='https://github.com/romeovs/creep'
 license=('MIT')
-source=('git://github.com/romeovs/creep.git')
+source=('git+https://github.com/romeovs/creep.git')
 md5sums=('SKIP')
 makedepends=('fontforge')
 
