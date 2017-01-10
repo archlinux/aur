@@ -21,8 +21,9 @@
 set -u
 _pkgname='cpdf'
 pkgname="${_pkgname}"
-pkgver=2.1.1; _pkghash='17372d86935f7541ae0bc7ff0b9eebb721af0cb0'
-pkgrel=2
+pkgver='2.2'
+_binver='2.1.1'; _binhash='17372d86935f7541ae0bc7ff0b9eebb721af0cb0' # version 2.1
+pkgrel=1
 pkgdesc='Coherent PDF and smpdf to manipulate PDF files including merge, encrypt, decrypt, scale, crop, rotate, bookmarks, stamp, logos, page numbers'
 arch=('x86_64' 'i686')
 url='http://community.coherentpdf.com'
@@ -33,23 +34,23 @@ conflicts=('cpdf-bin') # temporary
 options=('!makeflags' 'staticlibs')
 
 #_srcdirmast="${_pkgname}-binaries-master"; _srcmastname="${_srcdirmast}"
-_srcdirmast="${_pkgname}-binaries-${_pkghash}"; _srcmastname="${_pkgname}-binaries-${pkgver}.tar.gz"
-unset _pkghash
+_srcdirmast="${_pkgname}-binaries-${_binhash}"; _srcmastname="${_pkgname}-binaries-${_binver}.tar.gz"
+unset _binhash _binver
 
-#_srcfile="v${pkgver}"
+_srcfile="v${pkgver}"
 #_srcfile='master'
-_srcfile='8d1ee91bd2390a6eacbc087983d8afec263182db'
+#_srcfile='8d1ee91bd2390a6eacbc087983d8afec263182db'
 _srcdir="${_pkgname}-source-${_srcfile#v}"; _srcdirname="${_srcdir}"
 
 _giturl="https://github.com/johnwhitington/${_pkgname}-source"
-_verwatch=("${_giturl}/releases" "${_giturl#*github.com}/archive/v\(.*\)\.tar\.gz" 'l')
+_verwatch=("${_giturl}/releases.atom" "\s\+<title>v\([^<]\+\)</title>.*" 'f') # RSS
 source=(
   "${_srcmastname}.tar.gz::https://github.com/coherentgraphics/cpdf-binaries/archive/${_srcdirmast##*-}.tar.gz"
   "${_srcdirname}.tar.gz::${_giturl}/archive/${_srcfile}.tar.gz"
 )
 unset _srcfile _srcmastname _srcdirname
 sha256sums=('55a0de2b225413d7cda3784e6336f40f707a31b8f018c1cd24a8396df9dda65f'
-            '01c9c2534726331c93bc74cf1c5e59d9eb69105c21ad3a6a7d2fcddd28a58de0')
+            '5d8a4956cb944c27e28cae47f4fe6c6bd92472ea58f4648f17c6a45e157377c6')
 
 _pkgver_disabled() {
   set -u
@@ -84,7 +85,7 @@ package() {
 
   install -Dpm755 'cpdf' -t "${pkgdir}/usr/bin/"
   install -Dpm644 'cpdf.1' -t "${pkgdir}/usr/share/man/man1/"
-  sed -i -e "s:cpdfmanual.pdf:/usr/share/doc/${_pkgname}/&:g" "${pkgdir}/usr/share/man/man1/cpdf.1"
+  sed -e "s:cpdfmanual.pdf:/usr/share/doc/${_pkgname}/&:g" -i "${pkgdir}/usr/share/man/man1/cpdf.1"
   install -Dpm644 'cpdfmanual.pdf' -t "${pkgdir}/usr/share/doc/${_pkgname}/"
 
   install -Dpm644 "${srcdir}/${_srcdirmast}/LICENSE" -t "${pkgdir}/usr/share/licenses/${_pkgname}/"
