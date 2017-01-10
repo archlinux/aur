@@ -13,7 +13,9 @@ pkgbase = python-cvxcanon
 	depends = python-numpy
 	depends = python-scipy
 	source = https://github.com/cvxgrp/CVXcanon/archive/v0.1.1.tar.gz
+	source = use_system_eigen.patch
 	md5sums = ea900f44c30596d96999aa61eab89f08
+	md5sums = ee7c698d9fb8bdd767c96015850a6869
 
 pkgname = python-cvxcanon
 

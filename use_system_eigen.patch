@@ -1,0 +1,33 @@
+Only in CVXcanon-0.1.1-orig/build: temp.linux-x86_64-3.6
+diff -aur CVXcanon-0.1.1-orig/setup.py CVXcanon-0.1.1/setup.py
+--- CVXcanon-0.1.1-orig/setup.py	2017-01-10 13:39:21.161947185 -0500
++++ CVXcanon-0.1.1/setup.py	2017-01-10 13:39:54.981932516 -0500
+@@ -7,7 +7,7 @@
+ canon = Extension(
+     '_CVXcanon',
+     sources=['src/CVXcanon.cpp', 'src/LinOpOperations.cpp', 'src/python/CVXcanon_wrap.cpp'],
+-    include_dirs=['src/', 'src/python/', 'include/Eigen', numpy.get_include()]
++    include_dirs=['src/', 'src/python/', '/usr/include/eigen3', numpy.get_include()]
+ )
+ 
+ base_dir = os.path.dirname(__file__)
+diff -aur CVXcanon-0.1.1-orig/src/Utils.hpp CVXcanon-0.1.1/src/Utils.hpp
+--- CVXcanon-0.1.1-orig/src/Utils.hpp	2017-01-10 13:38:30.215304531 -0500
++++ CVXcanon-0.1.1/src/Utils.hpp	2017-01-10 13:40:18.425256236 -0500
+@@ -15,12 +15,12 @@
+ 
+ // Some useful defines for Matricies/etc.
+ 
+-#include "../include/Eigen/Sparse"
+-#include "../include/Eigen/Core"
++#include "Eigen/Sparse"
++#include "Eigen/Core"
+ 
+ #define NULL_MATRIX Eigen::SparseMatrix<double>(0,0)
+ 
+ typedef Eigen::Matrix<int, Eigen::Dynamic, 1> Vector;
+ typedef Eigen::SparseMatrix<double> Matrix;
+ typedef std::map<int, Matrix> CoeffMap;
+-typedef Eigen::Triplet<double> Triplet;
+\ No newline at end of file
++typedef Eigen::Triplet<double> Triplet;
