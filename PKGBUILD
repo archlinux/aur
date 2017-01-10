@@ -2,10 +2,10 @@
 pkgname=i3-gnome-git
 _pkgbase=i3-gnome
 pkgver=5.1.r2.g55ea56b
-pkgrel=1
+pkgrel=2
 pkgdesc="Starts i3 inside a gnome session."
 arch=("any")
-url="https://github.com/TheMarex/i3-gnome"
+url="https://github.com/mephux/i3-gnome"
 license=("MIT")
 groups=()
 depends=()
@@ -18,12 +18,12 @@ backup=()
 options=()
 install=
 changelog=
-source=(git+https://github.com/TheMarex/i3-gnome.git)
+source=(git+https://github.com/mephux/i3-gnome.git)
 noextract=()
 md5sums=("SKIP")
 
 pkgver() {
-  cd $_pkgbase
+  cd "$_pkgbase"
   git describe --tags --long|sed -r "s,^[^0-9],,;s,([0-9]*-g),r\1,;s,[-_],.,g"
 }
 
