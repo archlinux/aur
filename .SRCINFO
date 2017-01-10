@@ -1,0 +1,16 @@
+pkgbase = ansible-cmdb
+	pkgdesc = Generate host overview from ansible fact gathering output
+	pkgver = 1.19
+	pkgrel = 1
+	url = https://github.com/fboender/ansible-cmdb
+	arch = any
+	license = MIT
+	depends = python2
+	depends = ansible
+	depends = python2-mako
+	depends = python-ushlex
+	source = https://github.com/fboender/ansible-cmdb/archive/1.19.tar.gz
+	sha512sums = 296d97817c175c8ddfe7cf5e3be9cbc621d2af5ff08d8ed0009f7298e5e2422030a279bed8e71e54dd87a94ccd2c772a09d6538e54329af2d0009cb31c37aeb3
+
+pkgname = ansible-cmdb
+
