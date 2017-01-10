@@ -1,0 +1,15 @@
+pkgbase = ruby-rouge-1
+	pkgdesc = A pure-ruby colorizer based on pygments
+	pkgver = 1.11.1
+	pkgrel = 1
+	url = http://rouge.jneen.net/
+	arch = any
+	license = MIT, 2-clause BSD
+	depends = ruby
+	noextract = rouge-1.11.1.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/rouge-1.11.1.gem
+	sha1sums = 64d337568404bf8f761974ebf2b538418bff3d85
+
+pkgname = ruby-rouge-1
+
