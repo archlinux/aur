@@ -1,0 +1,30 @@
+pkgbase = ruby2.3
+	pkgdesc = An object-oriented language for quick and easy programming
+	pkgver = 2.3.3
+	pkgrel = 1
+	url = http://www.ruby-lang.org/en/
+	arch = i686
+	arch = x86_64
+	license = BSD
+	license = custom
+	makedepends = gdbm
+	makedepends = openssl
+	makedepends = libffi
+	makedepends = doxygen
+	makedepends = graphviz
+	makedepends = libyaml
+	makedepends = ttf-dejavu
+	makedepends = tk
+	depends = gdbm
+	depends = openssl
+	depends = libffi
+	depends = libyaml
+	depends = gmp
+	depends = zlib
+	optdepends = tk: for Ruby/TK
+	options = !emptydirs
+	source = https://cache.ruby-lang.org/pub/ruby/2.3/ruby-2.3.3.tar.xz
+	sha256sums = 1a4fa8c2885734ba37b97ffdb4a19b8fba0e8982606db02d936e65bac07419dc
+
+pkgname = ruby2.3
+
