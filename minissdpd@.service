@@ -1,0 +1,12 @@
+[Unit]
+Description=MiniSSDPd - daemon keeping track of UPnP devices up
+Documentation=man:minissdpd(8)
+After=network.target
+
+[Service]
+Type=forking
+PIDFile=/run/minissdpd.pid
+ExecStart=/usr/bin/minissdpd -s /var/run/minissdpd.sock -i %i
+
+[Install]
+WantedBy=network.target

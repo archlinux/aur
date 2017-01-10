@@ -1,0 +1,15 @@
+pkgbase = minissdpd
+	pkgdesc = MiniSSDPd - daemon keeping track of UPnP devices up
+	pkgver = 1.5
+	pkgrel = 1
+	url = http://miniupnp.free.fr/minissdpd.html
+	arch = x86_64
+	arch = i686
+	license = BSD
+	source = http://miniupnp.free.fr/files/download.php?file=minissdpd-1.5.tar.gz
+	source = minissdpd@.service
+	sha256sums = dfd637b185731e1acb412a86faa9718eb93c04ca08280541a6d22d14d1fb890f
+	sha256sums = 47a6eadc93cb759ea4030f50776bd5e71c701c38f4346df53c299a4ff51edd76
+
+pkgname = minissdpd
+
