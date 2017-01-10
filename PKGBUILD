@@ -2,7 +2,7 @@
 
 pkgname=samsungctl
 pkgver=0.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Remote control Samsung televisions via TCP/IP connection"
 arch=('any')
 url="https://github.com/Ape/samsungctl"
