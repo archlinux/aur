@@ -20,7 +20,7 @@ optdepends=('python2-pyacoustid: acoustic fingerprinting'
             'python2-pylast: lastgenre plugin')
 provides=('beets')
 conflicts=('beets')
-source=('git://github.com/beetbox/beets.git')
+source=('git+https://github.com/beetbox/beets.git')
 md5sums=('SKIP')
 
 pkgver() {

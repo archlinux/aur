@@ -21,7 +21,7 @@ pkgbase = beets-git
 	optdepends = python2-pylast: lastgenre plugin
 	provides = beets
 	conflicts = beets
-	source = git://github.com/beetbox/beets.git
+	source = git+https://github.com/beetbox/beets.git
 	md5sums = SKIP
 
 pkgname = beets-git
