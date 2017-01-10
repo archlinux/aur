@@ -2,12 +2,13 @@
 
 pkgname=draftsight
 pkgver=2017SP0
-pkgrel=1
+pkgrel=2
 pkgdesc="Freeware CAD software for your DWG/DXF files."
 arch=('x86_64')
 url="http://www.3ds.com/products/draftsight/"
 license=('custom')
-depends=('desktop-file-utils'
+depends=('alsa-lib'
+         'desktop-file-utils'
          'fontconfig'
          'gcc-libs'
          'glib2'
@@ -17,15 +18,18 @@ depends=('desktop-file-utils'
          'libgl'
          'libice'
          'libmariadbclient'
+         'libmng'
          'libpng12'
          'libsm'
          'libx11'
          'libxext'
          'libxrender'
-         'postgresql-libs'
+         'libxslt'
          'mesa'
+         'postgresql-libs'
+         'qt5-base'
+         'qt5-x11extras'
          'zlib')
-install='draftsight.install'
 source=("http://www.draftsight.com/download-linux-fedora"
         "draftsight.desktop")
 md5sums=('7052ab4354064a41bc008130df4a719b'
@@ -47,7 +51,6 @@ package()
   install -Dm644 Eula/english/eula.htm $pkgdir/usr/share/licenses/draftsight/LICENSE
   for size in "16x16" "32x32" "48x48" "64x64" "128x128"
   do
-    echo $size
     install -Dm644 Resources/pixmaps/$size/program.png $pkgdir/usr/share/icons/hicolor/$size/apps/draftsight.png
     install -Dm644 Resources/pixmaps/$size/file-dwg.png $pkgdir/usr/share/icons/hicolor/$size/mimetypes/file-dwg.png
     install -Dm644 Resources/pixmaps/$size/file-dxf.png $pkgdir/usr/share/icons/hicolor/$size/mimetypes/file-dxf.png
