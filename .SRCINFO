@@ -1,0 +1,22 @@
+pkgbase = ruby-googleauth
+	pkgdesc = Google Auth Library for Ruby
+	pkgver = 0.5.1
+	pkgrel = 1
+	url = https://github.com/google/google-auth-library-ruby
+	arch = any
+	license = Apache-2.0
+	depends = ruby
+	depends = ruby-faraday
+	depends = ruby-logging
+	depends = ruby-jwt
+	depends = ruby-memoist
+	depends = ruby-multi_json
+	depends = ruby-os
+	depends = ruby-signet
+	noextract = googleauth-0.5.1.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/googleauth-0.5.1.gem
+	sha1sums = 2eb9d9be8b8bc360a5ebda1cb0aff5eca138c4e9
+
+pkgname = ruby-googleauth
+
