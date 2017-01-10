@@ -1,15 +1,15 @@
 # Maintainer: Greg Fitzgerald <gregf@hugops.pw>
 
-pkgname=ansible-cmdb
-pkgver=1.19
+pkgname=jsonxs
+pkgver=0.3
 pkgrel=1
-pkgdesc=" Generate host overview from ansible fact gathering output"
+pkgdesc="A python library that uses path expression strings to get and set values in JSON"
 arch=('any')
-url="https://github.com/fboender/ansible-cmdb"
+url="https://github.com/fboender/jsonxs"
 license=('MIT')
-depends=('python2' 'ansible' 'python2-mako' 'python2-ushlex')
+depends=('python2')
 source=("https://github.com/fboender/${pkgname}/archive/${pkgver}.tar.gz")
-sha512sums=('296d97817c175c8ddfe7cf5e3be9cbc621d2af5ff08d8ed0009f7298e5e2422030a279bed8e71e54dd87a94ccd2c772a09d6538e54329af2d0009cb31c37aeb3')
+sha512sums=('b407bd6d449d4d0eefd2ad7b9afada178337dbe4512253cb5b5ece3a6eb602daf88022000dc8555e0e244de926a899c6a2654b7f7c0b6999b3ffb639f21b2e1d')
 
 build() {
     cd $srcdir/${pkgname}-${pkgver}

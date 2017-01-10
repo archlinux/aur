@@ -1,16 +1,13 @@
-pkgbase = ansible-cmdb
-	pkgdesc = Generate host overview from ansible fact gathering output
-	pkgver = 1.19
+pkgbase = jsonxs
+	pkgdesc = A python library that uses path expression strings to get and set values in JSON
+	pkgver = 0.3
 	pkgrel = 1
-	url = https://github.com/fboender/ansible-cmdb
+	url = https://github.com/fboender/jsonxs
 	arch = any
 	license = MIT
 	depends = python2
-	depends = ansible
-	depends = python2-mako
-	depends = python2-ushlex
-	source = https://github.com/fboender/ansible-cmdb/archive/1.19.tar.gz
-	sha512sums = 296d97817c175c8ddfe7cf5e3be9cbc621d2af5ff08d8ed0009f7298e5e2422030a279bed8e71e54dd87a94ccd2c772a09d6538e54329af2d0009cb31c37aeb3
+	source = https://github.com/fboender/jsonxs/archive/0.3.tar.gz
+	sha512sums = b407bd6d449d4d0eefd2ad7b9afada178337dbe4512253cb5b5ece3a6eb602daf88022000dc8555e0e244de926a899c6a2654b7f7c0b6999b3ffb639f21b2e1d
 
-pkgname = ansible-cmdb
+pkgname = jsonxs
 
