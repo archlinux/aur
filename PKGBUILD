@@ -3,15 +3,15 @@
 
 pkgname=idevicerestore-git
 epoch=1
-pkgver=r527.e2e83dc
+pkgver=r546.cae1734
 pkgrel=1
 pkgdesc="Restore/upgrade firmware of iOS devices"
 arch=('i686' 'x86_64')
 url="http://www.libimobiledevice.org"
 license=('LGPL3')
-depends=('libirecovery-git' 'libimobiledevice-git' 'libplist-git' 'libzip' 'openssl' 'curl')
+depends=('libirecovery-git' 'libimobiledevice-git' 'libusbmuxd-git' 'libplist-git' 'libzip' 'openssl' 'curl')
 makedepends=('git')
-source=("git://git.sukimashita.com/idevicerestore.git"
+source=("git+https://git.libimobiledevice.org/idevicerestore.git"
         "0001-configure.ac-check-for-pthreads.patch")
 sha256sums=('SKIP'
             'c259a9f977de42fbfde75ad0c9a4d813b7d39bf217ee416902409403cd6d7931')
