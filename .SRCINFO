@@ -1,12 +1,12 @@
 pkgbase = ruby-fastimage
 	pkgdesc = FastImage - Image info fast
 	pkgver = 2.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://github.com/sdsykes/fastimage
 	arch = any
 	license = MIT
 	depends = ruby
-	depends = ruby-addressable
+	depends = ruby-addressable>=2
 	noextract = fastimage-2.0.1.gem
 	options = !emptydirs
 	source = https://rubygems.org/downloads/fastimage-2.0.1.gem
