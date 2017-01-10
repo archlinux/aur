@@ -1,4 +1,4 @@
-# Maintainer: Jaryl Chng <mrciku@gmail.com
+# Maintainer: Jaryl Chng <mrciku@gmail.com>
 pkgname=libbde-git
 pkgver=20161214.4f6fd39
 pkgrel=1
