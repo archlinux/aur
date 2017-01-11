@@ -8,7 +8,7 @@ arch=('any')
 license=('unknown')
 url="https://github.com/metulburr/FloodIt"
 depends=('python2-pygame')
-source=("https://github.com/metulburr/FloodIt/archive/$pkgver.tar.gz"
+source=("$pkgname-$pkgver.tar.gz::https://github.com/metulburr/FloodIt/archive/$pkgver.tar.gz"
         "fix-savepath.patch"
         "floodit.desktop"
         "floodit")
