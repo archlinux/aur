@@ -2,7 +2,7 @@
 
 pkgname=mattersend
 pkgver=2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Library and CLI utility to send messages to mattermost's incoming webhooks"
 arch=(any)
 url="https://github.com/mtorromeo/mattersend"
