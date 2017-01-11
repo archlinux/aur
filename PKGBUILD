@@ -13,7 +13,7 @@ pkgdesc="Desktop publishing software"
 arch=('i686' 'x86_64')
 url="https://www.scribus.net/"
 license=('GPL')
-depends=('hunspell' 'libcdr' 'libcups' 'libmspub' 'libpagemaker' 'graphicsmagick'
+depends=('hunspell' 'libcdr' 'libcups' 'libmspub' 'libpagemaker'
          'libvisio' 'podofo' 'poppler' 'python2' 'qt5-declarative'
          'desktop-file-utils' 'hicolor-icon-theme' 'shared-mime-info')
 makedepends=('cmake' 'boost' 'mesa' 'qt5-tools')
@@ -40,8 +40,7 @@ build() {
     cmake ../${_pkgname}-${pkgver} \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DCMAKE_BUILD_TYPE=Release \
-        -DCMAKE_SKIP_RPATH=ON \
-        -DWANT_GRAPHICSMAGICK=1
+        -DCMAKE_SKIP_RPATH=ON
     make
 }
 
@@ -52,7 +51,7 @@ package() {
 
     cd ../${_pkgname}-${pkgver}
 
-    install -Dm644 scribus.desktop "${pkgdir}"/usr/share/applications/scribus.desktop
+    install -Dm644 scribus.desktop -t "${pkgdir}"/usr/share/applications
 
     for i in 16x16 32x32 128x128 256x256 512x512 1024x1024
     do
