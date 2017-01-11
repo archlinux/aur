@@ -8,7 +8,7 @@ _fmodex=
 
 _name=gzdoom
 pkgname=${_name}
-pkgver=2.3.0
+pkgver=2.3.1
 pkgrel=1
 pkgdesc='Advanced Doom source port with OpenGL support'
 arch=('i686' 'x86_64')
