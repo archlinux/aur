@@ -3,7 +3,7 @@
 # Contributor: Renato Silva <br.renatosilva@gmail.com>
 pkgname=mingw-w64-glib2
 pkgver=2.50.2
-pkgrel=1
+pkgrel=2
 arch=(any)
 pkgdesc="Low level core library (mingw-w64)"
 depends=(mingw-w64-gettext mingw-w64-zlib mingw-w64-libffi mingw-w64-pcre mingw-w64-freetype2)
@@ -14,6 +14,7 @@ url="http://www.gtk.org/"
 source=("http://ftp.gnome.org/pub/GNOME/sources/glib/${pkgver%.*}/glib-$pkgver.tar.xz"
 "0001-Use-CreateFile-on-Win32-to-make-sure-g_unlink-always.patch"
 "0004-glib-prefer-constructors-over-DllMain.patch"
+"0017-GSocket-Fix-race-conditions-on-Win32-if-multiple-thr.patch"
 "0027-no_sys_if_nametoindex.patch"
 "0028-inode_directory.patch"
 "revert-warn-glib-compile-schemas.patch"
@@ -21,6 +22,7 @@ source=("http://ftp.gnome.org/pub/GNOME/sources/glib/${pkgver%.*}/glib-$pkgver.t
 sha256sums=('be68737c1f268c05493e503b3b654d2b7f43d7d0b8c5556f7e4651b870acfbf5'
             'ef81e82e15fb3a71bad770be17fe4fea3f4d9cdee238d6caa39807eeea5da3e3'
             '7b099af0c562f397458542482d6d1debe437f220762aa2ed94b2e6c4d43dd8a6'
+            '8e8ee4011e39900febc8f6177dfbaeef4f73f56c34abd09f76fe023447005946'
             '5cb481295ff86c2802030984d8b2bf6a3b1dcd5e5fe7b0be68b22d9116305837'
             'f7f06a90156fe0a308412512c359072922f7f0d19dd4bed30d863db18e48940b'
             '049240975cd2f1c88fbe7deb28af14d4ec7d2640495f7ca8980d873bb710cc97'
@@ -32,6 +34,7 @@ prepare() {
   cd glib-$pkgver
   patch -Np1 -i .."/0001-Use-CreateFile-on-Win32-to-make-sure-g_unlink-always.patch"
   patch -Np1 -i ../0004-glib-prefer-constructors-over-DllMain.patch
+  patch -p1 -i ../0017-GSocket-Fix-race-conditions-on-Win32-if-multiple-thr.patch
   patch -Np1 -i ../"0027-no_sys_if_nametoindex.patch"
   patch -Np1 -i ../"0028-inode_directory.patch"
   patch -Rp1 -i ../revert-warn-glib-compile-schemas.patch
