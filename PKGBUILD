@@ -8,16 +8,15 @@ pkgdesc="Flexible music library manager and tagger - git version"
 arch=('any')
 url="http://beets.io/"
 license=('MIT')
-depends=('python2-munkres' 'mutagen'
-         'python2-setuptools' 'python2-unidecode'
-         'python2-musicbrainzngs' 'python2-yaml'
-         'python2-enum34' 'python2-jellyfish'
-         'python2-six')
+depends=('python-munkres' 'python-mutagen'
+         'python-setuptools' 'python-unidecode'
+         'python-musicbrainzngs' 'python-yaml'
+         'python-jellyfish' 'python-six')
 makedepends=('git')
-optdepends=('python2-pyacoustid: acoustic fingerprinting'
-            'python2-flask: web interface'
-            'python2-gobject: BPD audio player plugin'
-            'python2-pylast: lastgenre plugin')
+optdepends=('python-pyacoustid: acoustic fingerprinting'
+            'python-flask: web interface'
+            'python-gobject: BPD audio player plugin'
+            'python-pylast: lastgenre plugin')
 provides=('beets')
 conflicts=('beets')
 source=('git+https://github.com/beetbox/beets.git')
@@ -30,12 +29,12 @@ pkgver() {
 
 build() {
   cd ${srcdir}/beets
-  python2 setup.py build
+  python setup.py build
 }
 
 package() {
   cd ${srcdir}/beets
-  python2 setup.py install --root=${pkgdir} --optimize=1
+  python setup.py install --root=${pkgdir} --optimize=1
 
   install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 } 
