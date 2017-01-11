@@ -2,7 +2,7 @@
 
 pkgname=python-asyncssh
 pkgver=1.8.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Asynchronous SSHv2 client and server library"
 arch=(any)
 url="http://asyncssh.readthedocs.org/"
