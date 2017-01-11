@@ -1,9 +1,9 @@
 # Maintainer: zoe <chp321 at gmail dot com>
 pkgname=filecast
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 arch=('any')
-pkgdesc="Zero setup, cross platform desktop to mobile file transfer tool with GUI"
+pkgdesc="Zero setup, cross platform desktop to smartphone transfer tool with GUI - Companion app for Raccoon"
 url="http://www.onyxbits.de/filecast"
 license=('Apache')
 depends=('java-environment')
