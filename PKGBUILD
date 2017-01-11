@@ -1,7 +1,7 @@
 # Maintainer: Ivan Shapovalov <intelfx@intelfx.name>
 
 pkgbase=python-canonicaljson
-pkgname=($pkgbase python2-canonicaljson)
+pkgname=(${pkgbase} python2-canonicaljson)
 pkgver=1.0.0
 pkgrel=1
 pkgdesc='Canonical JSON'
@@ -29,12 +29,12 @@ package_python-canonicaljson() {
 	depends=('python' 'python-simplejson' 'python-frozendict')
 
 	cd "python-canonicaljson-${pkgver}"
-	python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+	python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
 }
 
 package_python2-canonicaljson() {
 	depends=('python2' 'python2-simplejson' 'python2-frozendict')
 
 	cd "python-canonicaljson-${pkgver}-python2"
-	python2 setup.py install --root="$pkgdir" --optimize=1 --skip-build
+	python2 setup.py install --root="${pkgdir}" --optimize=1 --skip-build
 }
