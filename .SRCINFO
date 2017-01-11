@@ -1,13 +1,14 @@
 pkgbase = weboob
 	pkgdesc = Web Out Of Browsers provides several applications to interact with a lot of websites.
 	pkgver = 1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://weboob.org/
 	install = weboob.install
 	arch = any
 	license = GPL
 	makedepends = python2-setuptools
 	depends = python2-pyqt5
+	depends = phonon-qt5
 	depends = python2-dateutil
 	depends = python2-prettytable
 	depends = python2-requests
