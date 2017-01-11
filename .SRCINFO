@@ -1,6 +1,6 @@
 pkgbase = jid
 	pkgdesc = JSON incremental digger (Go installer)
-	pkgver = 0.6.3
+	pkgver = 0.7.1
 	pkgrel = 1
 	url = https://github.com/simeji/jid
 	arch = any
