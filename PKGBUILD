@@ -3,7 +3,7 @@
 _pkgname=tesserwrap
 pkgname=python-$_pkgname
 pkgver=0.1.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Basic python bindings to the Tesseract C++ API"
 arch=("any")
 license=("APACHE")
