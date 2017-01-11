@@ -15,7 +15,7 @@ depends=('phonon-qt5' 'taglib' 'hicolor-icon-theme')
 makedepends=('qt5-tools')
 optdepends=('phonon-qt5-gstreamer: gstreamer backend'
             'phonon-qt5-vlc: vlc backend')
-source=("https://github.com/flaviotordini/musique/archive/$pkgver.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::https://github.com/flaviotordini/musique/archive/$pkgver.tar.gz")
 sha256sums=('82600f4e3d58900df1cc11acd77efbf11e8eac94f8c7382d57f953cadcd49d54')
 
 build() {
