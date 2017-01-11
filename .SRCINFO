@@ -1,0 +1,17 @@
+pkgbase = gnome-shell-extension-shelltile-git
+	pkgdesc = A tiling window extension for GNOME Shell
+	pkgver = 0+19+g569ddba
+	pkgrel = 1
+	url = https://extensions.gnome.org/extension/657/shelltile/
+	arch = any
+	groups = gnome-shell-extensions
+	license = GPLv2
+	makedepends = git
+	depends = gnome-shell
+	provides = gnome-shell-extension-shelltile
+	conflicts = gnome-shell-extension-shelltile
+	source = git+https://github.com/emasab/shelltile.git
+	sha256sums = SKIP
+
+pkgname = gnome-shell-extension-shelltile-git
+

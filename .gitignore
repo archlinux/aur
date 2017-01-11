@@ -1,0 +1,4 @@
+shelltile/
+pkg/
+src/
+*.pkg.tar.*
