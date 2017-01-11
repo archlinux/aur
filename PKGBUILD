@@ -1,7 +1,7 @@
 # Contributor: Xiao-Long Chen <chenxiaolong@cxl.epac.to>
 pkgname=mingw-w64-cairo
 pkgver=1.14.8
-pkgrel=1
+pkgrel=2
 pkgdesc="Cairo vector graphics library (mingw-w64)"
 arch=(any)
 url="http://cairographics.org/"
@@ -13,10 +13,12 @@ provides=($pkgname-bootstrap)
 replaces=($pkgname-bootstrap)
 conflicts=($pkgname-bootstrap)
 source=("http://cairographics.org/releases/cairo-${pkgver}.tar.xz"
+"0002-win32-Add-a-win32-boilerplate-that-uses-a-real-windo.patch"
 "0009-standalone-headers.mingw.patch"
 "0026-create-argb-fonts.all.patch"
 "0030-add-cairo-API-to-setup-Win32-surface-for-HDC.patch")
 sha1sums=('c6f7b99986f93c9df78653c3e6a3b5043f65145e'
+          'dd6eb539a1708a9c71df05679ca114d2e9d35390'
           '58c548d2791ba20dd7f6e328ff596f746df3aa10'
           '9c0e533614782a41af2c3806a43ab7fe9d6a5431'
           'c0c9546f120133b8e5b116650ba233a15a1e20c4')
@@ -28,6 +30,7 @@ prepare() {
 	patch -p1 -i ${srcdir}/0009-standalone-headers.mingw.patch
   patch -p1 -i ${srcdir}/0026-create-argb-fonts.all.patch
   patch -p1 -i ${srcdir}/0030-add-cairo-API-to-setup-Win32-surface-for-HDC.patch
+  patch -p1 -i ${srcdir}/0002-win32-Add-a-win32-boilerplate-that-uses-a-real-windo.patch
   autoreconf -fi
 }
 
