@@ -1,0 +1,14 @@
+pkgbase = revolt-git
+	pkgdesc = Better desktop integration for Riot.im (not only) for GNOME
+	pkgver = r122.ecb9f8f
+	pkgrel = 1
+	url = https://github.com/aperezdc/revolt
+	arch = any
+	license = GPL3
+	depends = python-gobject
+	depends = webkit2gtk
+	source = revolt-git::git+https://github.com/aperezdc/revolt
+	sha512sums = SKIP
+
+pkgname = revolt-git
+
