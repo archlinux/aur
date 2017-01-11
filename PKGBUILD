@@ -13,15 +13,13 @@ source=("${pkgbase}-${pkgver}.tar.gz::https://github.com/matrix-org/matrix-angul
 md5sums=('9cf2dd16d1fd34dc24c64a7efcdb2efd')
 
 build() {
-	cd "matrix-angular-sdk-$pkgver"
+	cd "matrix-angular-sdk-${pkgver}"
 	python2 setup.py build 
 }
 
 package_python2-matrix-angular-sdk() {
 	depends=('python2')
 
-	cd "matrix-angular-sdk-$pkgver"
+	cd "matrix-angular-sdk-${pkgver}"
 	python2 setup.py install --root "${pkgdir}" --optimize=1 --skip-build
 }
-
-# vim: set ts=4 sw=4 tw=0 ft=sh :
