@@ -2,11 +2,12 @@
 #PKGBUILD currently download only, do not use.
 pkgname=panamfs-scan
 arch=(x86_64)
+license=(custom:Panasonic)
 pkgver='1.3.0'
-depends=(sane)
+depends=('gcc-libs-multilib' 'gtk2' 'libusb-compat')
 optdepends=('lightdm' 'gdm')
 pkgdesc='sane drivers for Panasonic multifunction printers'
-pkgrel=2
+pkgrel=3
 source=(http://cs.psn-web.net/support/fax/common/file/Linux_ScanDriver/panamfs-scan-1.3.0-x86_64.tar.gz)
 md5sums=('2e4c844e89c2e7e0b6258be5ef52ace9')
 package(){
