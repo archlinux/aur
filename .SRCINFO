@@ -12,7 +12,7 @@ pkgbase = batify
 	provides = batify
 	conflicts = batify
 	source = https://github.com/Ventto/batify/archive/v0.9.tar.gz
-	sha256sums = SKIP
+	sha256sums = 6a33475e275c895173b234bb0f6e5b9d7e454477d4c7cdb0f0a31621bf6bfdc5
 
 pkgname = batify
 

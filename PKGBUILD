@@ -13,7 +13,7 @@ conflicts=("${pkgname}")
 makedepends=('git' 'libnotify')
 optdepends=('notification-daemon')
 source=("https://github.com/Ventto/${pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('SKIP')
+sha256sums=('6a33475e275c895173b234bb0f6e5b9d7e454477d4c7cdb0f0a31621bf6bfdc5')
 
 build() {
   cd ${pkgname}-${pkgver}
