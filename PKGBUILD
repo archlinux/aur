@@ -15,9 +15,9 @@ source=('synology-cloud-station' 'synology-cloud-station.desktop')
 md5sums=('db969c467abb89cb503c11753521c5ca'
          'ad5716993e65b96a104700ffb267da47')
 
-source_i686=(http://global.download.synology.com/download/Tools/CloudStation/3.0-${pkgver}/Linux/Installer/i686/CloudStation-Linux-Installer-${pkgver}-32bit.tgz)
+source_i686=(https://global.download.synology.com/download/Tools/CloudStationDrive/3.0-${pkgver}/Linux/Installer/i686/CloudStation-Linux-Installer-${pkgver}-32bit.tgz)
 md5sums_i686=('e65e4cdf1e6a2ccee9bc470743382419')
-source_x86_64=(http://global.download.synology.com/download/Tools/CloudStation/3.0-${pkgver}/Linux/Installer/x86_64/CloudStation-Linux-Installer-${pkgver}-64bit.tgz)
+source_x86_64=(http://global.download.synology.com/download/Tools/CloudStationDrive/3.0-${pkgver}/Linux/Installer/x86_64/CloudStation-Linux-Installer-${pkgver}-64bit.tgz)
 md5sums_x86_64=('2c0d3e41e7bc91e308e9c2eb01b9dd7f')
 
 prepare() {
