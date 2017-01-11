@@ -4,7 +4,7 @@
 _gemname=activesupport
 pkgname=ruby-$_gemname-4
 pkgver=4.2.7.1
-pkgrel=5
+pkgrel=6
 pkgdesc='A toolkit of support libraries and Ruby core extensions extracted from the Rails framework.'
 arch=(any)
 url='http://www.rubyonrails.org'
@@ -16,7 +16,7 @@ depends=(
   # 'ruby-json>=1.7.7' 'ruby-json<2'
   ruby-json-1
   'ruby-tzinfo<2' 'ruby-tzinfo>=1.1'
-  'ruby-minitest<6' 'ruby-minitest>=5.1'
+  # 'ruby-minitest<6' 'ruby-minitest>=5.1'
   'ruby-thread_safe>=0.3.4' 'ruby-thread_safe<1'
 )
 options=(!emptydirs)
