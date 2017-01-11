@@ -1,0 +1,17 @@
+pkgbase = kwestkingdom-git
+	pkgdesc = A cute 2D turn based strategy game
+	pkgver = 0.2
+	pkgrel = 3
+	url = https://github.com/drcouzelis/kwestkingdom
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = allegro4
+	provides = kwestkingdom
+	conflicts = kwestkingdom
+	source = git://github.com/drcouzelis/kwestkingdom
+	md5sums = SKIP
+
+pkgname = kwestkingdom-git
+
