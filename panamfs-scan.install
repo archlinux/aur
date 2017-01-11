@@ -1,0 +1,21 @@
+post_install() {
+_INSTALL_PATH="/usr/local/share/panasonic/scanner"
+    echo " start panasoniclpd"
+if test -f /etc/init.d/pushscan-init
+then
+	/etc/init.d/pushscan-init start
+fi
+
+$_INSTALL_PATH/bin/PanasonicMFSlpd  > /dev/null 2>&1 &
+if test "x$SUDO_USER" != "x"
+then
+	sudo -u $SUDO_USER $_INSTALL_PATH/bin/PanasonicMFSpushd  > /dev/null 2>&1 &
+else
+	if test "x$LOGNAME" != "x"
+	then
+		sudo -u $LOGNAME $_INSTALL_PATH/bin/PanasonicMFSpushd  > /dev/null 2>&1 &
+	fi
+fi
+
+
+    }
