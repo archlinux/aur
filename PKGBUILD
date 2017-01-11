@@ -13,7 +13,6 @@ makedepends=('boost')
 provides=("${_pkgname}=$pkgver")
 conflicts=("${_pkgname}")
 backup=("etc/${_pkgname}.conf")
-install=mpd.install
 source=("${url}/download/${_pkgname}/${pkgver:0:4}/${_pkgname}-${pkgver}.tar.xz"{,.sig}
         "${_pkgname}.tmpfiles"
         "${_pkgname}.sysusers"
