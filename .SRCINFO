@@ -1,0 +1,17 @@
+pkgbase = lib32-gnutls26
+	pkgdesc = gnutls26 library (current maintained debian version with .so-version 26) This is the Multilib package.
+	pkgver = 2.12.20
+	pkgrel = 8
+	url = http://www.gnutls.org/
+	arch = x86_64
+	license = LGPL3
+	depends = libgcrypt15
+	depends = libtasn1-3
+	depends = p11-kit
+	provides = lib32-gnutls26
+	conflicts = lib32-gnutls26
+	source = http://security.debian.org/debian-security/pool/updates/main/g/gnutls26//libgnutls26_2.12.20-8+deb7u5_i386.deb
+	md5sums = 08380f92802253f935415bf011f04035
+
+pkgname = lib32-gnutls26
+
