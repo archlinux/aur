@@ -18,7 +18,7 @@ build() {
 }
 
 package_python2-matrix-synapse-ldap3() {
-	depends+=('python2' 'python2-twisted' 'python2-ldap3' 'python2-service-identity')
+	depends=('python2' 'python2-twisted' 'python2-ldap3' 'python2-service-identity')
 
 	cd "matrix-synapse-ldap3-${pkgver}"
 	python2 setup.py install --root="${pkgdir}" --optimize=1 --skip-build
