@@ -2,7 +2,7 @@
 pkgname=gi
 
 pkgver=0.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Git wrapper to perform Mercurial-like short unique abbreviation searching for commands"
 arch=('any')
 url="https://bitbucket.org/gagarski/gi"
@@ -20,7 +20,7 @@ optdepends=('gi-bash-completion: for bash-completion support')
 package() {
   cd "$srcdir/$pkgname"
   git checkout $pkgver
-  python setup.py install --root="$pkgdir/" --optimize=1
+  python setup.py install --root="$pkgdir/" --prefix=/usr --optimize=1
   install -m0755 -d "$pkgdir/usr/share/licenses/$pkgname/"
   install -m0644 $srcdir/$pkgname/LICENSE "$pkgdir/usr/share/licenses/$pkgname/"
 }
