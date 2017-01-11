@@ -1,6 +1,6 @@
 pkgname=gpgunlock
 pkgver=1
-pkgrel=6
+pkgrel=7
 pkgdesc="mkinitcpio hook for cryptsetup to unlock the root partition from a passphrase encrypted
 as /rootkey.gpg, can be genreated with setbootpassword, usefull to boot from a non-encrypted usb
 key."

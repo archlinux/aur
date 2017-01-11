@@ -10,6 +10,6 @@ gpg \
         --yes -o "$gpgkey" -c "$key"
 rm "$key"
 printf '\n'
-sudo install -Dm0000 "$gpgkey" /rootkey.gpg
+sudo install -Dm0400 "$gpgkey" /rootkey.gpg
 rm "$gpgkey"
 echo "don't forget to run mkinitcpio now"
