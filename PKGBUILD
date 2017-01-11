@@ -2,16 +2,16 @@
 
 pkgbase=python-frozendict
 pkgname=(python-frozendict python2-frozendict)
-pkgver=0.6
+pkgver=1.2
 pkgrel=1
 pkgdesc='An immutable dictionary'
 license=('MIT')
 arch=('any')
-url='https://pypi.python.org/pypi/frozendict/'
+url='https://github.com/slezica/python-frozendict'
 makedepends=('python'
              'python2')
-source=("https://pypi.python.org/packages/source/f/frozendict/frozendict-${pkgver}.tar.gz")
-md5sums=('d8d6c488b81987356f674fb1c9a68ebb')
+source=("https://pypi.python.org/packages/4e/55/a12ded2c426a4d2bee73f88304c9c08ebbdbadb82569ebdd6a0c007cfd08/frozendict-1.2.tar.gz")
+md5sums=('483ce6ddfe68ca197bc123aaafebf9ab')
 
 prepare() {
 	cp -a "frozendict-${pkgver}"{,-python2}
