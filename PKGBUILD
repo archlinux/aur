@@ -2,14 +2,14 @@
 
 name=watchghost
 pkgname=$name-git
-pkgver=0.1.0.git_110.600f606
-pkgrel=1
+pkgver=0.1.0.git_121.32a7631
+pkgrel=2
 epoch=1
 pkgdesc="Your invisible but loud monitoring pet"
 arch=('any')
 url='https://gitlab.com/localg-host/watchghost/'
 license=('AGPLv3')
-depends=('python-tornado' 'python-aioftp')
+depends=('python-tornado' 'python-aioftp' 'python-asyncssh')
 makedepends=('python-setuptools')
 source=('git+https://gitlab.com/localg-host/watchghost.git')
 sha256sums=('SKIP')
