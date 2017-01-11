@@ -3,7 +3,7 @@
 
 _gemname=addressable
 pkgname=ruby-$_gemname
-pkgver=2.4.0
+pkgver=2.5.0
 pkgrel=1
 pkgdesc='URI Implementation'
 arch=(any)
@@ -13,7 +13,7 @@ depends=(ruby)
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-sha256sums=('7abfff765571b0a73549c9a9d2f7e143979cd0c252f7fa4c81e7102a973ef656')
+sha256sums=('bc5bf921b39640675fbb3484cdb45e4241b4c88d8d5a7d85a3985424ad02b9c8')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
