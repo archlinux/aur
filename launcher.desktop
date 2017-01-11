@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=QZDoom
+GenericName=Advanced Doom source port with true color renderer
+Icon=qzdoom
+Exec=qzdoom %F
+Terminal=false
+MimeType=application/x-doom-wad;
+Categories=Game;ActionGame;
