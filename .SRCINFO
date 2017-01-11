@@ -37,6 +37,8 @@ pkgbase = vtk-multi-python
 	optdepends = java-runtime: java bindings
 	optdepends = tk: tcl bindings
 	optdepends = gnuplot: plotting tools
+	optdepends = python-vtk: Python 3 API
+	optdepends = python2-vtk: Python 2 API
 	optdepends = graphviz: drawing tools
 	optdepends = openmpi: OpenMPI support
 	optdepends = qt5-x11extras
@@ -60,7 +62,7 @@ pkgbase = vtk-multi-python
 	sha1sums = a597aa42e6f623b346c16db36aea31df29bdd8da
 	sha1sums = 823f10356ddc86d22629ee5a804f22145af91b6d
 
-pkgname = vtk
+pkgname = vtk-base
 	pkgdesc = A software system for 3D computer graphics, image processing, and visualization
 
 pkgname = python2-vtk
