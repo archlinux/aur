@@ -8,6 +8,7 @@ arch=('any')
 url='https://fonts.google.com/specimen/Oswald'
 license=('custom:SIL Open Font License v1.1')
 depends=('fontconfig' 'xorg-fonts-encodings' 'xorg-font-utils')
+conflicts=('ttf-google-fonts-git')
 install="${pkgname}.install"
 source=('https://github.com/google/fonts/raw/master/ofl/oswald/Oswald-Bold.ttf'
         'https://github.com/google/fonts/raw/master/ofl/oswald/Oswald-ExtraLight.ttf'
