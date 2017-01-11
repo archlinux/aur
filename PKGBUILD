@@ -2,7 +2,7 @@
 
 _pkgname=weboob
 pkgname=weboob-headless
-pkgver=1.1
+pkgver=1.2
 pkgrel=1
 pkgdesc="Web Out Of Browsers provides several applications to interact with a lot of websites. Headless version, for use in e.g. Cozy/Kresus."
 arch=('any')
@@ -24,11 +24,16 @@ depends=('python2-dateutil'
 makedepends=('python2-setuptools')
 conflicts=('weboob')
 provides=('weboob')
-source=("https://symlink.me/attachments/download/324/${_pkgname}-${pkgver}.tar.gz")
-md5sums=('d0e0c8560c6f7eb79c309912ee1e2d13')
-sha512sums=('bdc3024f5a9c7024a23cc21e9229aa7571178d3ada794cd5056b6323fcb3e91271491b8c3da43a1c87b9f8a686037a6c0b51421181cb2ff86558294a102a9191')
+source=("https://symlink.me/attachments/download/342/${_pkgname}-${pkgver}.tar.gz")
+md5sums=('a77675b2443e4570d30f569951512b11')
+sha256sums=('1e3b7e35bd1e5d203e5d716be4a25e898aba6887b3c3b8341e3a0ce2ad8e87b0')
+
+build() {
+    cd ${_pkgname}-${pkgver}
+    python2 setup.py build --no-qt --no-hildon
+}
 
 package() {
     cd ${_pkgname}-${pkgver}
-    python2 setup.py install --no-qt --no-xdg --prefix=/usr --root="${pkgdir}"
+    python2 setup.py install --no-xdg --prefix=/usr --root="${pkgdir}" --skip-build --optimize=1
 }
