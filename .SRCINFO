@@ -1,0 +1,18 @@
+pkgbase = plop-bootmanager
+	pkgdesc = Bootloader that can boot from USB and CDROM on old machines without BIOS support
+	pkgver = 5.0.15
+	pkgrel = 1
+	url = https://www.plop.at/en/bootmanagers.html
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = unzip
+	optdepends = grub: boot menu support
+	conflicts = plpbt
+	source = https://download.plop.at/files/bootmngr/plpbt-5.0.15.zip
+	source = 80_plopboot
+	md5sums = e18c033d56ad25b3ebf057cc069cf9cd
+	md5sums = 6bf160531549e2b89b01acd508049010
+
+pkgname = plop-bootmanager
+

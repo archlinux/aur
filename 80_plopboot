@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+########################################################
+# This script generates a plpbt entry on grub.cfg      #
+# Based on the 60_memtest86+ grub script               #
+########################################################
+
+prefix="/usr"
+exec_prefix="${prefix}"
+
+datarootdir="/usr/share"
+datadir="${datarootdir}"
+
+. "${datadir}/grub/grub-mkconfig_lib"
+
+PLPBT_IMAGE="/boot/plop/plpbt.bin"
+CLASS="--class plop --class plpbt --class tool"
+
+if [ -e "${PLPBT_IMAGE}" ] && is_path_readable_by_grub "${PLPBT_IMAGE}" ; then
+    ## image exists, create menu entry
+    echo "Found Plop Boot Manager image: ${PLPBT_IMAGE}" >&2
+    _GRUB_PLOP_HINTS_STRING="$(${grub_probe} --target=hints_string ${PLPBT_IMAGE})"
+    _GRUB_PLOP_FS_UUID="$(${grub_probe} --target=fs_uuid ${PLPBT_IMAGE})"
+    _GRUB_PLOP_REL_PATH="$(make_system_path_relative_to_its_root ${PLPBT_IMAGE})"
+    cat << EOF
+if [ "\${grub_platform}" == "pc" ]; then
+    menuentry "Plop Boot Manager" ${CLASS} {
+        search --fs-uuid --no-floppy --set=root ${_GRUB_PLOP_HINTS_STRING} ${_GRUB_PLOP_FS_UUID}
+        linux16 ${_GRUB_PLOP_REL_PATH} ${GRUB_CMDLINE_PLPBT}
+    }
+fi
+EOF
+fi
