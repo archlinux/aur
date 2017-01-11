@@ -14,12 +14,10 @@ license=('GPL')
 _last_rtm_ver=0.9.11
 _last_rtm_commit=ccbf85ed42e4350af415d56b1465e83614c85ef8
 pkgver="${_last_rtm_ver}.r583.07a68db"
-pkgrel=1
+pkgrel=2
 
-depends=('agg'
-         'gtkglext'
+depends=('gtkglext'
          'libglade'
-         'libpcap'
          'libgl'
          'openal'
          'sdl'
@@ -29,7 +27,6 @@ makedepends=('autoconf'
              'automake'
              'pkg-config'
              'git'
-             #'clang'
              'lua')
 
 provides=('desmume')
@@ -59,32 +56,23 @@ prepare(){
   # we could probably just make it compile against the current lua
   sed -i 's/lua5.1/lua51/' configure.ac
 
-  # Make clang happy
-  #sed -e 's/^\([[:space:]]\+\) \(line_profile_aa& profile\)/\1 const \2/' /usr/include/agg2/agg_renderer_outline_aa.h > ../modules/osd/agg/agg_renderer_outline_aa.h
-
   ./autogen.sh
 
-  # Using clang to workaround FS#41476
-  # Not sure if we need to do this, since it seems the current codebase
-  # doesn't quite work anyway.
-  #CC=clang \
-  #CXX=clang++ \
+  # Hud causes segfault in gtk version. Wifi doesn't really work.
   CFLAGS="-O3 -march=native" \
   CXXFLAGS="-O3 -march=native" \
   ./configure \
     --prefix=/usr \
     --enable-osmesa \
     --enable-glx \
-    --enable-hud \
     --enable-openal \
-    --enable-glade \
-    --enable-wifi
+    --enable-glade
 }
 
 build() {
   cd "${srcdir}/${_pkgname}/${_builddir}"
 
-  make -j6
+  make
 }
 
 package() {
