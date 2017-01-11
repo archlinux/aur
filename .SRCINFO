@@ -1,6 +1,6 @@
 pkgbase = ty3status-git
 	pkgdesc = ty3status is an i3status replacement written in typescript with first classes support for javascript blocks.
-	pkgver = v0.5.0.r1.ge341e40
+	pkgver = 0.5.1.r2.g0d610c8
 	pkgrel = 1
 	arch = any
 	license = MIT
