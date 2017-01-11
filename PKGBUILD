@@ -2,7 +2,7 @@
 
 pkgname=python-mailer
 pkgver=0.7
-pkgrel=3
+pkgrel=4
 pkgdesc="A module that simplifies sending email."
 arch=('any')
 url='http://pypi.python.org/pypi/mailer'
