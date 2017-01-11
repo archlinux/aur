@@ -2,12 +2,12 @@
 # Maintainer: Tom Alexandrowicz <tom@alexandrowicz.ca>
 pkgname='iguanair-lirc'
 pkgver=e0cb127_e23b9d3
-pkgrel=1
+pkgrel=2
 pkgdesc="LIRC driver for IguanaIR devices"
 arch=('i686' 'x86_64')
 url="https://github.com/iguanaworks/iguanair-lirc"
 license=('GPL2')
-depends=('lirc')
+depends=('lirc' 'iguanair')
 makedepends=('git' 'cmake')
 source=("iguanair::git+https://github.com/iguanaworks/iguanair" 
         "$pkgname::git+https://github.com/iguanaworks/iguanair-lirc.git")
@@ -23,7 +23,7 @@ build() {
 
   cd $srcdir/$pkgname
   patch -p0 < $startdir/Makefile.patch
-  make IGUANADIR="$srcdir/iguanair/software/usb_ir" CFLAGS+="-I $srcdir/iguanair/software/usb_ir" CFLAGS+='-D PLUGINDOCS="\"X\""' CFLAGS+='-fPIC'
+  make IGUANADIR="$srcdir/iguanair/software/usb_ir"
 }
 package() {
   cd $pkgname
