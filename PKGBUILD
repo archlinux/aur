@@ -1,7 +1,7 @@
 # Maintainer: Aaron Abbott <aabmass at gmail dot com>
 pkgname=mycli
 pkgver=1.8.1
-pkgrel=1
+pkgrel=2
 pkgdesc='CLI for MySQL Database. With auto-completion and syntax highlighting.'
 arch=('any')
 url="https://pypi.python.org/pypi/${pkgname}"
