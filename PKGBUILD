@@ -4,8 +4,8 @@
 # Contributor: Martchus <martchus@gmx.net>
 
 pkgname=sstp-client
-pkgver=1.0.10
-pkgrel=4
+pkgver=1.0.11
+pkgrel=1
 pkgdesc="SSTP client stable revision"
 arch=("i686" "x86_64")
 url="http://sstp-client.sourceforge.net/"
@@ -23,7 +23,7 @@ source=( '50-sstp.PROFILE.sh.sample'
 
 sha1sums=( '65ad1d0700e8f52ed1e1b21433a99b5962a5a320'  
            'c3a81ad7ce4c8cdbfb53a780110e92cf64412c68'
-           '704572fcd543ca3572c68625d87cfe21296eefa2' )
+           'd76c25dfa24cf2377fa794659435c9af945205ed' )
 
 build() {
   pppd_version=(`pppd --version 2>&1 | awk '{print $3}'`)
