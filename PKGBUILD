@@ -180,6 +180,13 @@ package() {
 	patch -s "$srcdir"/$_appname-$pkgver/cocos/renderer/ccShader_Position_uColor.vert ccShader_Position_uColor.vert.patch 
 	patch -s "$srcdir"/$_appname-$pkgver/cocos/renderer/ccShader_UI_Gray.frag ccShader_UI_Gray.frag.patch
 
+	# (EXPERIMENTAL) Enable high variable precision globaly in the shaders:
+	# This can get rid of positioning and rendering artifacts but might affect performance on devices with a slow GPU.
+	# See: https://github.com/cocos2d/cocos2d-x/issues/17046 and https://github.com/cocos2d/cocos2d-x/issues/17099
+	# Until a proper patch gets developed, a simple 'sed' can set every variable from a medium precision (mediump) one to a high precision (highp) variable
+	# Use at your own risk
+	#sed -i 's/mediump/highp/g' "$srcdir"/$_appname-$pkgver/cocos/renderer/*
+
 	# Necessary libfmod symbolic link
 	mkdir -p "$pkgdir/usr/lib"
 	if [[ $CARCH == "x86_64" ]]; then
