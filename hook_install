@@ -1,0 +1,47 @@
+#!/bin/bash
+
+build() {
+    local mod
+
+    add_module dm-crypt
+    if [[ $CRYPTO_MODULES ]]; then
+        for mod in $CRYPTO_MODULES; do
+            add_module "$mod"
+        done
+    else
+        add_all_modules '/crypto/'
+    fi
+
+    if [ -d "${BUILDROOT}/.gnupg" ]; then
+	    echo "WARNING! /.gnupg exists in initramfs buildroot, deleting." > 2
+	    rm -rf "${BUILDROOT}/.gnupg"
+    fi
+
+    mkdir -p "${BUILDROOT}/.gnupg"
+    chmod 0700 "${BUILDROOT}/.gnupg"
+    echo 'pinentry-program /usr/bin/pinentry-tty' > "${BUILDROOT}/.gnupg/gpg-agent.conf"
+
+
+    add_binary "cryptsetup"
+    add_binary "dmsetup"
+    add_binary "gpg"
+    add_binary "gpg-agent"
+    add_binary "pinentry-tty"
+    add_binary "/usr/lib/gnupg/scdaemon"
+    add_file "/usr/lib/udev/rules.d/10-dm.rules"
+    add_file "/usr/lib/udev/rules.d/13-dm-disk.rules"
+    add_file "/usr/lib/udev/rules.d/95-dm-notify.rules"
+    add_file "/usr/lib/initcpio/udev/11-dm-initramfs.rules" "/usr/lib/udev/rules.d/11-dm-initramfs.rules"
+    
+    add_file "/rootkey.gpg"
+
+    add_runscript
+}
+
+help() {
+    cat <<HELPEOF
+This hook allows to unlock the root partition from /rootkey.gpg
+HELPEOF
+}
+
+# vim: set ft=sh ts=4 sw=4 et:
