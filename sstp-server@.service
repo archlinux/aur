@@ -1,0 +1,16 @@
+[Unit]
+Description=A Secure Socket Tunneling Protocol (SSTP) server.
+After=network.target
+
+[Service]
+Restart=on-failure
+
+ExecStart=/usr/bin/sstpd -f /etc/sstp-server.ini -s %i
+
+PrivateTmp=true
+PrivateDevices=true
+ProtectHome=true
+ProtectSystem=full
+
+[Install]
+WantedBy=network.target
