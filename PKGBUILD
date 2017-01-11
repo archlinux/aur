@@ -51,8 +51,6 @@ package() {
 		sed -re 's|env python$|&2.7|' -i "${file}"
 	done
 
-
-
 	install -Dm644 "contrib/systemd/log_config.yaml" \
 		"${pkgdir}/etc/synapse/log_config.yaml"
 
