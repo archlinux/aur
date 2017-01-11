@@ -1,4 +1,5 @@
-# Maintainer:  Tommaso Sardelli <lacapannadelloziotom AT gmail DOT com>
+# Maintainer: Ivan Shapovalov <intelfx@intelfx.name>
+# Contributor: Tommaso Sardelli <lacapannadelloziotom AT gmail DOT com>
 # Contributor: Philipp Joram <phijor AT t-online DOT de>
 
 pkgbase='python-axolotl'
