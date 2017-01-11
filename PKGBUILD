@@ -1,22 +1,28 @@
+# Maintainer: Sven Karsten Greiner <sven@sammyshp.de>
 # Contributor: Vladimir Cerny <blackvladimir@gmail.com>
+
 pkgname=free42
-pkgver=1.5.8f
+pkgver=1.5.12
 pkgrel=1
-pkgdesc="A complete re-implementation of the HP-42S calculator and the HP-82240 printer."
+pkgdesc="A complete re-implementation of the HP-42S calculator and the HP-82240 printer"
 arch=('i686' 'x86_64')
 url="http://thomasokken.com/free42/"
 license=('GPL')
 depends=('libxmu' 'gtk2')
 source=("http://thomasokken.com/free42/upstream/$pkgname-nologo-$pkgver.tgz")
+md5sums=('ec61fddf40d0de80f8a20ac199dab649')
 
-md5sums=('fe547945af079432507c3d0760ce3e68')
-
-build() {
-
-  cd "$srcdir/$pkgname-nologo-${pkgver}/gtk"
+prepare() {
+  cd "$srcdir/$pkgname-nologo-$pkgver/gtk"
 
   echo 'LIBS := ${LIBS} -lX11' >> Makefile
+  sed -i 's/Wno-write-strings \\/&\n\t -Wno-narrowing \\/' Makefile
+}
 
+build() {
+  cd "$srcdir/$pkgname-nologo-$pkgver/gtk"
+
+  # build both bin and dec version
   make cleaner
   make
   make clean
@@ -24,14 +30,18 @@ build() {
 }
 
 package() {
-  cd "$srcdir/$pkgname-nologo-${pkgver}/gtk"
+  cd "$srcdir/$pkgname-nologo-$pkgver/gtk"
 
-  install -d "$pkgdir/usr/bin"
-  cp free42bin "$pkgdir/usr/bin"
-  cp free42dec "$pkgdir/usr/bin"
-  echo "$pkgdir/usr/share/doc/Free42"
-  install  -d  "$pkgdir/usr/share/$pkgname"
-  cp README "$pkgdir/usr/share/$pkgname"
+  install -Dm755 free42bin "$pkgdir/usr/bin/free42bin"
+  install -Dm755 free42dec "$pkgdir/usr/bin/free42dec"
+
+  install -Dm644 README "$pkgdir/usr/share/doc/$pkgname/README_GTK"
+  install -Dm644 ../README "$pkgdir/usr/share/doc/$pkgname/README"
+
+  cd ../skins
+  for _f in *; do
+    install -Dm644 $_f "$pkgdir/usr/share/$pkgname/skins/$_f"
+  done
 }
 
 # vim:set ts=2 sw=2 et:
