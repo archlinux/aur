@@ -127,67 +127,67 @@ echo "    start install files......"
 #
 if test -f /etc/sane.d/dll.conf
 then
-	sed -i 's/^panamfs$//' /etc/sane.d/dll.conf
-	echo "panamfs" >> /etc/sane.d/dll.conf
+	sed -i 's/^panamfs$//' $pkgdir/etc/sane.d/dll.conf
+	echo "panamfs" >> $pkgdir/etc/sane.d/dll.conf
 fi
 
-cp ./sane-backend/panamfs.conf /etc/sane.d/panamfs.conf
+cp $srcdir/$pkgname-$pkgver-$arch/sane-backend/panamfs.conf $pkgdir/etc/sane.d/panamfs.conf
 chmod 0644 /etc/sane.d/panamfs.conf
 
-cp ./sane-backend/libsane-panamfs.so.$_ver $_SANELIB_PATH/libsane-panamfs.so.$_ver
+cp $srcdir/$pkgname-$pkgver-$arch/sane-backend/libsane-panamfs.so.$_ver $_SANELIB_PATH/libsane-panamfs.so.$_ver
 chmod 0755 $_SANELIB_PATH/libsane-panamfs.so.$_ver
 
-#install -m 0755 -d $_INSTALL_SANE_DATA_PATH/data/cs
+install -m 0755 -d $_INSTALL_SANE_DATA_PATH/data/cs
 mkdir -p $_INSTALL_SANE_DATA_PATH/data/cs
-cp ./sane-backend/po/sane-panamfs.cs.po $_INSTALL_SANE_DATA_PATH/data/cs/sane-panamfs.po
+cp $srcdir/$pkgname-$pkgver-$arch/sane-backend/po/sane-panamfs.cs.po $_INSTALL_SANE_DATA_PATH/data/cs/sane-panamfs.po
 chmod 0644 $_INSTALL_SANE_DATA_PATH/data/cs/sane-panamfs.po
 
 mkdir -p $_INSTALL_SANE_DATA_PATH/data/de/
-cp ./sane-backend/po/sane-panamfs.de.po $_INSTALL_SANE_DATA_PATH/data/de/sane-panamfs.po
+cp $srcdir/$pkgname-$pkgver-$arch/sane-backend/po/sane-panamfs.de.po $_INSTALL_SANE_DATA_PATH/data/de/sane-panamfs.po
 chmod 0644 $_INSTALL_SANE_DATA_PATH/data/de/sane-panamfs.po
 
 mkdir -p $_INSTALL_SANE_DATA_PATH/data/en/
-cp ./sane-backend/po/sane-panamfs.en.po $_INSTALL_SANE_DATA_PATH/data/en/sane-panamfs.po
+cp $srcdir/$pkgname-$pkgver-$arch/sane-backend/po/sane-panamfs.en.po $_INSTALL_SANE_DATA_PATH/data/en/sane-panamfs.po
 chmod 0644 $_INSTALL_SANE_DATA_PATH/data/en/sane-panamfs.po
 
 mkdir -p $_INSTALL_SANE_DATA_PATH/data/es/
-cp ./sane-backend/po/sane-panamfs.es.po $_INSTALL_SANE_DATA_PATH/data/es/sane-panamfs.po
+cp $srcdir/$pkgname-$pkgver-$arch/sane-backend/po/sane-panamfs.es.po $_INSTALL_SANE_DATA_PATH/data/es/sane-panamfs.po
 chmod 0644 $_INSTALL_SANE_DATA_PATH/data/es/sane-panamfs.po
 
 mkdir -p $_INSTALL_SANE_DATA_PATH/data/fr/
-cp ./sane-backend/po/sane-panamfs.fr.po $_INSTALL_SANE_DATA_PATH/data/fr/sane-panamfs.po
+cp $srcdir/$pkgname-$pkgver-$arch/sane-backend/po/sane-panamfs.fr.po $_INSTALL_SANE_DATA_PATH/data/fr/sane-panamfs.po
 chmod 0644 $_INSTALL_SANE_DATA_PATH/data/fr/sane-panamfs.po
 
 mkdir -p $_INSTALL_SANE_DATA_PATH/data/it/
-cp ./sane-backend/po/sane-panamfs.it.po $_INSTALL_SANE_DATA_PATH/data/it/sane-panamfs.po
+cp $srcdir/$pkgname-$pkgver-$arch/sane-backend/po/sane-panamfs.it.po $_INSTALL_SANE_DATA_PATH/data/it/sane-panamfs.po
 chmod 0644 $_INSTALL_SANE_DATA_PATH/data/it/sane-panamfs.po
 
 mkdir -p $_INSTALL_SANE_DATA_PATH/data/ja/
-cp ./sane-backend/po/sane-panamfs.ja.po $_INSTALL_SANE_DATA_PATH/data/ja/sane-panamfs.po
+cp $srcdir/$pkgname-$pkgver-$arch/sane-backend/po/sane-panamfs.ja.po $_INSTALL_SANE_DATA_PATH/data/ja/sane-panamfs.po
 chmod 0644 $_INSTALL_SANE_DATA_PATH/data/ja/sane-panamfs.po
 
 mkdir -p $_INSTALL_SANE_DATA_PATH/data/pl/
-cp ./sane-backend/po/sane-panamfs.pl.po $_INSTALL_SANE_DATA_PATH/data/pl/sane-panamfs.po
+cp $srcdir/$pkgname-$pkgver-$arch/sane-backend/po/sane-panamfs.pl.po $_INSTALL_SANE_DATA_PATH/data/pl/sane-panamfs.po
 chmod 0644 $_INSTALL_SANE_DATA_PATH/data/pl/sane-panamfs.po
 
 mkdir -p $_INSTALL_SANE_DATA_PATH/data/pt/
-cp ./sane-backend/po/sane-panamfs.pt.po $_INSTALL_SANE_DATA_PATH/data/pt/sane-panamfs.po
+cp $srcdir/$pkgname-$pkgver-$arch/sane-backend/po/sane-panamfs.pt.po $_INSTALL_SANE_DATA_PATH/data/pt/sane-panamfs.po
 chmod 0644 $_INSTALL_SANE_DATA_PATH/data/pt/sane-panamfs.po
 
 mkdir -p $_INSTALL_SANE_DATA_PATH/data/pt_PT/
-cp ./sane-backend/po/sane-panamfs.pt_PT.po $_INSTALL_SANE_DATA_PATH/data/pt_PT/sane-panamfs.po
+cp $srcdir/$pkgname-$pkgver-$arch/sane-backend/po/sane-panamfs.pt_PT.po $_INSTALL_SANE_DATA_PATH/data/pt_PT/sane-panamfs.po
 chmod 0644 $_INSTALL_SANE_DATA_PATH/data/pt_PT/sane-panamfs.po
 
 mkdir -p $_INSTALL_SANE_DATA_PATH/data/ru/
-cp ./sane-backend/po/sane-panamfs.ru.po $_INSTALL_SANE_DATA_PATH/data/ru/sane-panamfs.po
+cp $srcdir/$pkgname-$pkgver-$arch/sane-backend/po/sane-panamfs.ru.po $_INSTALL_SANE_DATA_PATH/data/ru/sane-panamfs.po
 chmod 0644 $_INSTALL_SANE_DATA_PATH/data/ru/sane-panamfs.po
 
 mkdir -p $_INSTALL_SANE_DATA_PATH/data/zh_CN/
-cp ./sane-backend/po/sane-panamfs.zh_CN.po $_INSTALL_SANE_DATA_PATH/data/zh_CN/sane-panamfs.po
+cp $srcdir/$pkgname-$pkgver-$arch/sane-backend/po/sane-panamfs.zh_CN.po $_INSTALL_SANE_DATA_PATH/data/zh_CN/sane-panamfs.po
 chmod 0644 $_INSTALL_SANE_DATA_PATH/data/zh_CN/sane-panamfs.po
 
 mkdir -p $_INSTALL_SANE_DATA_PATH/data/zh_TW/
-cp ./sane-backend/po/sane-panamfs.zh_TW.po $_INSTALL_SANE_DATA_PATH/data/zh_TW/sane-panamfs.po
+cp $srcdir/$pkgname-$pkgver-$arch/sane-backend/po/sane-panamfs.zh_TW.po $_INSTALL_SANE_DATA_PATH/data/zh_TW/sane-panamfs.po
 chmod 0644 $_INSTALL_SANE_DATA_PATH/data/zh_TW/sane-panamfs.po
 
 
