@@ -1,7 +1,7 @@
 # Maintainer: Tiago Brait <tiagobrait AT gmail DOT com>
 
 pkgname=ca-certificates-icp_br
-pkgver=20161204
+pkgver=20170111
 pkgrel=1
 pkgdesc="Brazilian government Certification Authorities"
 arch=('any')
@@ -13,7 +13,7 @@ source=(
     "icpbr_certs-${pkgver}.zip::http://acraiz.icpbrasil.gov.br/credenciadas/CertificadosAC-ICP-Brasil/ACcompactado.zip"
     )
 
-sha512sums=('87fb15199a3710dbc0e32b99dd90d6095e8e561ecbf6316f73a73f41cd1bfa896af59794f80549992fe3913805a2c4e2dc3587ae6c0b65bdaed298ab6e85942a')
+sha512sums=('dead5aa494c12fede80195988c9201082f22b425aaf4937a13d23097aabe6f1ee5facd1f87bf53d8daf99995dd1c96b0f9080a449ee892c079a438b60de02d4c')
 
 package() {
   local cert_tag='icp_br'
@@ -32,6 +32,6 @@ package() {
     #when 'tagging' the certificates
     mv "$cert" "${cert_tag}.${cert//' '/'_'}"
   done
-  install -d -m0755 $pkgdir/etc/ca-certificates/trust-source/anchors
-  install -m0644 *.crt $pkgdir/etc/ca-certificates/trust-source/anchors
+  install -d -m0755 $pkgdir/usr/share/ca-certificates/trust-source/anchors
+  install -m0644 *.crt $pkgdir/usr/share/ca-certificates/trust-source/anchors
 }
