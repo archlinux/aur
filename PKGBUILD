@@ -16,7 +16,7 @@ optdepends=('python2-notify: desktop notifications'
             'gstreamer0.10-bad-plugins: additional codecs'
             'gstreamer0.10-ugly-plugins: additional codecs'
             'gstreamer0.10-ffmpeg: ffmpeg codec')
-source=("https://github.com/jendrikseipp/pogo/archive/v$pkgver.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::https://github.com/jendrikseipp/pogo/archive/v$pkgver.tar.gz")
 sha256sums=('144beebc043a834f17580ead90d30b64274d75dda524974d40754ee8344fc6f9')
 
 prepare() {
