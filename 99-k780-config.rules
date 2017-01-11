@@ -1,1 +1,1 @@
-ATTR{idVendor}=="046d", ATTR{idProduct}=="c31f", RUN+="/usr/bin/k780swap"
+ATTR{idVendor}=="046d", ATTR{idProduct}=="c52b", RUN+="/usr/bin/k780swap", GROUP="users", MODE="0660"
