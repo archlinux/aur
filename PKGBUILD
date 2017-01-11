@@ -4,7 +4,7 @@
 
 pkgname=matterbridge-plus-bin
 pkgver=v0.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Simple bridge between Mattermost and IRC (using the Mattermost API instead of webhooks)"
 arch=('x86_64')
 

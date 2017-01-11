@@ -1,21 +1,19 @@
 pkgbase = matterbridge-plus-bin
-	pkgdesc = Simple bridge between mattermost and IRC. (Uses the mattermost API instead of webhooks)
-	pkgver = v0.3.1
-	pkgrel = 1
+	pkgdesc = Simple bridge between Mattermost and IRC (using the Mattermost API instead of webhooks)
+	pkgver = v0.4
+	pkgrel = 2
 	url = https://github.com/42wim/matterbridge-plus/
 	arch = x86_64
 	license = Apache
 	depends = mattermost
 	provides = matterbridge-plus
 	provides = matterbridge-plus-bin
-	source = https://github.com/42wim/matterbridge-plus/releases/download/v0.3.1/matterbridge-plus-linux64
-	source = https://raw.githubusercontent.com/42wim/matterbridge-plus/master/matterbridge.conf.sample
-	source = LICENSE::https://raw.githubusercontent.com/42wim/matterbridge-plus/master/LICENSE
+	source = https://github.com/42wim/matterbridge-plus/releases/download/v0.4/matterbridge-plus-linux64
+	source = https://cdn.rawgit.com/42wim/matterbridge-plus/master/matterbridge.conf.sample
 	source = matterbridge-plus.service
-	sha256sums = 13afa3c043757de9f1572a0f2d509a239ee2acc0f6e1d5448e21020e07d7a220
-	sha256sums = 3d214bf9496e3b8660a65ce50ac36f65c16b7152fd9a2badf7add17a9b0693d9
-	sha256sums = c6596eb7be8581c18be736c846fb9173b69eccf6ef94c5135893ec56bd92ba08
-	sha256sums = SKIP
+	sha512sums = 22a6769dfd7ed6e3311aa73b2dee4f9210e904bbb32d2dd9fb70240b105e305e568f24ef7a138f49852a6132b399de2148b5bc02852d4df26a25ad747e22b356
+	sha512sums = 517b4f3c2c279c76443d576bc6b5d7908e9f1342ade56b39a4a346de98e8c202c5419d2ba36469bd623f90de635edd08a7c4048aee9c66dd5878ba82cf8cec47
+	sha512sums = SKIP
 
 pkgname = matterbridge-plus-bin
 
