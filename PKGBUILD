@@ -9,8 +9,14 @@ pkgdesc='Perl Math::Random::Secure CPAN module - cryptographically-secure, cross
 arch=('any')
 url='http://search.cpan.org/dist/${cpaname}/'
 license=('GPL')
+makedepends=(
+    perl-moo
+    perl-moose
+    perl-test-sharedfork
+    perl-test-warn
+)
 depends=(perl-any-moose
-         perl-crypt-random-source-factory
+         perl-crypt-random-source
          perl-math-random-isaac
          perl-module-find)
 options=(!emptydirs)
