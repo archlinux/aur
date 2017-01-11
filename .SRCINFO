@@ -1,6 +1,6 @@
 pkgbase = python2-deeptools
 	pkgdesc = user-friendly tools for the normalization and visualization of deep-sequencing data
-	pkgver = 2.2.4
+	pkgver = 2.4.1
 	pkgrel = 1
 	url = https://github.com/fidelram/deepTools
 	arch = any
@@ -11,8 +11,8 @@ pkgbase = python2-deeptools
 	depends = python2-matplotlib
 	depends = python2-pysam
 	depends = python2-bxpython
-	source = https://github.com/fidelram/deepTools/archive/2.2.4.tar.gz
-	sha256sums = b7b4331b842fd8879d7be7a5673342863cdec426d88fb6afe8c3072d0fe56c8f
+	source = https://github.com/fidelram/deepTools/archive/2.4.1.tar.gz
+	sha256sums = 0ca24961a6c99c584f7169f4047acfb5b87bdb22c322e376a6909cdab9c05181
 
 pkgname = python2-deeptools
 	depends = 
