@@ -2,17 +2,19 @@
 
 pkgname=kryoflux
 pkgdesc="USB Floppy Controller for Software Preservation"
-pkgver=2.20
+pkgver=2.6
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.kryoflux.com"
 license=('custom')
+provides=('capsimage')
+onflicts=('capsimage')
 depends=('libusb')
 optdepends=('jre7-openjdk: for the Kryoflux GUI')
-source=("http://www.kryoflux.com/download/kryoflux_2.20_linux.tar.bz2"
+source=("http://www.kryoflux.com/download/kryoflux_${pkgver}_linux.tar.bz2"
         '80-kryoflux.rules'
         'kryoflux.conf')
-md5sums=('7f3102ba32041688cf1e5255c0b6fca3'
+md5sums=('12d57dcc9657a90c583dded553b8a2e1'
          '43ec7eb49fbdab703cafe146145fe0de'
          'ede10c48b2b1edc5c346e8814f07bcdb')
 
@@ -28,13 +30,12 @@ package() {
   cd "$srcdir/kryoflux_${pkgver}_linux"
   install -d ${pkgroot}/{bin,lib}
 
-  install dtc/${CARCH}/dtc dtc/kryoflux-ui.jar ${pkgroot}/bin
+  install dtc/${CARCH}/static/dtc dtc/kryoflux-ui.jar ${pkgroot}/bin
   cp -P dtc/${CARCH}/lib* ${pkgroot}/lib
 
   # Firmwares: choose one or the other
-  # Note that dtc is hard-coded to expect the firmware to be in /usr/local/share
-  install -D dtc/firmware.bin ${pkgdir}/usr/local/share/dtc/firmware.bin
-#  install -D dtc/firmware_fast/firmware.bin ${pkgdir}/usr/local/share/dtc/firmware.bin
+  install -D dtc/firmware_kf_usb_rosalie.bin ${pkgdir}/usr/lib/firmware/firmware_kf_usb_rosalie.bin
+  install -D dtc/firmware_fast/firmware_kf_usb_rosalie.bin ${pkgdir}/usr/lib/firmware/firmware_kf_usb_rosalie.bin
 
   # Documents
   install -d ${pkgdir}/usr/share/{licenses,doc}/kryoflux
