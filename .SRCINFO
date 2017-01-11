@@ -1,0 +1,12 @@
+pkgbase = ttf-cutive-mono
+	pkgver = 1.001
+	pkgrel = 1
+	arch = any
+	license = custom:OFL
+	source = https://github.com/vernnobile/CutiveFont/raw/master/CutiveMono/GWF-1.001/CutiveMono-Regular.ttf
+	source = https://github.com/vernnobile/CutiveFont/raw/master/CutiveMono/GWF-1.001/OFL.txt
+	sha512sums = baf0acc7ebf13087244c286445d85db0ddb57ef24685c6696e2e9cbd637493c4f50e4b2ffe44ce85190daea5533ae00a714fce716d664209b46168946bd1f491
+	sha512sums = ba9ad59388c5a862aef48d976ee7a72839b10ad9da5b74d0ca98adad7b81cabd6207e407ce914f9845fd60e272ce878f7d4b5d5d635378de5806e412fe2f2515
+
+pkgname = ttf-cutive-mono
+
