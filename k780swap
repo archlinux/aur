@@ -1,10 +1,11 @@
-#!/bin/env python2
+#!/bin/env python
 # switch k780 logitech keyboard Fn keys
 import sys
 import time
 import usb.core
 
 unifying=0xc52b
+activate = len(sys.argv) == 1
 
 IFACE=2
 # find keyboard
@@ -17,19 +18,26 @@ reattach = dev.is_kernel_driver_active(IFACE)
 if reattach:
     dev.detach_kernel_driver(IFACE)
 
+# set the right interface
+
 cfg = dev[0]
 iface = cfg[(IFACE,0)]
 
 dev.set_interface_altsetting(iface)
 
-# code
+# send frame
 
 ON=[16, 2, 12, 26, 0, 0, 0]
 OFF=[16, 2, 12, 28, 1, 0, 0]
 
-for n in range(10):
-    dev.ctrl_transfer(33, 9, 528, 2, OFF if len(sys.argv) > 1 else ON)
-    time.sleep(0.5)
+dev.ctrl_transfer(33, 9, 528, 2, ON if activate else OFF)
+
+# have to wait (Why ??) and sometimes repeat !
+
+if activate:
+    time.sleep(10)
+else:
+    time.sleep(1)
 
 dev.reset()
 if reattach:
