@@ -1,13 +1,14 @@
 # Maintainer: Campbell Barton <ideasman42@gmail.com>
 _pkgname=triskweline-code-font
 pkgname=$_pkgname
-pkgver=4.b516857
-pkgrel=2
+pkgver=5.7bbd101
+pkgrel=1
 pkgdesc="A monospaced bitmap font, modified from Triskweline for better code readability."
 arch=('any')
 url="https://github.com/ideasman42/triskweline-code-font"
 license=('CC0')
 depends=('fontconfig' 'xorg-fonts-encodings' 'xorg-font-utils')
+makedepends=('xorg-bdftopcf')
 install=$pkgname.install
 source=("git://github.com/ideasman42/$_pkgname.git")
 noextract=()
@@ -21,7 +22,11 @@ pkgver() {
 package() {
   cd "$srcdir/$_pkgname"
 
+  for f in bdf/*.bdf; do
+    bdftopcf $f -o "${f%.bdf}.pcf"
+  done
+
   install -d "$pkgdir/usr/share/fonts/local"
-  install -m644 bdf/*.bdf "$pkgdir/usr/share/fonts/local/"
+  install -m644 bdf/*.pcf "$pkgdir/usr/share/fonts/local/"
 }
 
