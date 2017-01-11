@@ -1,7 +1,7 @@
 # Maintainer: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
 
 pkgname=python-aiopg
-pkgver=0.10.0
+pkgver=0.13.0
 pkgrel=1
 pkgdesc="PostgreSQL driver for asyncio"
 arch=(any)
@@ -22,4 +22,4 @@ package() {
     install -Dm0644 LICENSE.txt "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
 
-sha256sums=('b540f8fbfcb53f9c5cc9a6b49f0fd0311eae0c076e324a4b5928ab653c5a7b3d')
+sha256sums=('04792e88cf144df94e5f55e0f9fd653b459d4c28dfdaa5bc4a5c5992067cb828')
