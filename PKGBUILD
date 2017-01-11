@@ -8,6 +8,7 @@ arch=('any')
 url='https://fonts.google.com/specimen/Quintessential'
 license=('custom:SIL Open Font License v1.1')
 depends=('fontconfig' 'xorg-fonts-encodings' 'xorg-font-utils')
+conflicts=('ttf-google-fonts-git')
 install="${pkgname}.install"
 source=('https://github.com/google/fonts/raw/master/ofl/quintessential/Quintessential-Regular.ttf'
         'https://github.com/google/fonts/raw/master/ofl/quintessential/OFL.txt')
