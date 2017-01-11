@@ -1,7 +1,7 @@
 # Maintainer: Daniel Milde <daniel at milde dot cz>
 
 pkgname=webmin
-pkgver=1.820
+pkgver=1.831
 pkgrel=1
 pkgdesc="a web-based interface for system administration"
 arch=(i686 x86_64)
@@ -9,7 +9,7 @@ license=('custom:webmin')
 url="http://www.webmin.com/"
 depends=('perl' 'perl-perl4-corelibs')
 makedepends=('perl-net-ssleay')
-backup=('etc/webmin/miniserv.conf' 'etc/webmin/miniserv.users' 'etc/webmin/config' 'etc/webmin/webmin.cats' \
+backup=('etc/webmin/miniserv.conf' 'etc/webmin/miniserv.users' 'etc/webmin/config' \
 'etc/webmin/pacman/config' \
 'etc/webmin/at/config' \
 'etc/webmin/acl/config' \
@@ -22,7 +22,6 @@ backup=('etc/webmin/miniserv.conf' 'etc/webmin/miniserv.users' 'etc/webmin/confi
 'etc/webmin/grub/config' \
 'etc/webmin/init/config' \
 'etc/webmin/ipfw/config' \
-'etc/webmin/lilo/config' \
 'etc/webmin/proc/config' \
 'etc/webmin/raid/config' \
 'etc/webmin/spam/config' \
@@ -79,9 +78,7 @@ backup=('etc/webmin/miniserv.conf' 'etc/webmin/miniserv.users' 'etc/webmin/confi
 'etc/webmin/inittab/config' \
 'etc/webmin/change-user/config' \
 'etc/webmin/postfix/config' \
-'etc/webmin/proftpd/config' \
-'etc/webmin/pserver/config' \
-'etc/webmin/dnsadmin/config' )
+'etc/webmin/proftpd/config' )
 install=webmin.install
 source=(http://downloads.sourceforge.net/sourceforge/webadmin/$pkgname-$pkgver.tar.gz
         ftp://ftp.archlinux.org/other/webmin/webmin-config.tar.bz2
@@ -116,7 +113,6 @@ package() {
   # remove init-scripts from other distros
   rm webmin-gentoo-init
   rm webmin-init
-  rm webmin-caldera-init
   rm webmin-daemon
 
   # remove update stuff to avoid problems with updating webmin,modules and themes without pacman
@@ -151,8 +147,6 @@ package() {
 
   # Add pacman menu
   cd "$srcdir"/$pkgname-$pkgver
-  cp -rf custom/ pacman
-  cp -rf mscstyle3/custom mscstyle3/pacman
   sed -i -e 's:^noconfig=0:noconfig=1:g' -e 's:^edit=1:edit=0:g' pacman/defaultacl
   sed -i -e '/desc/d' -e '/longdesc/d' pacman/module.info
   sed -i -e 's:^name=Custom:name=Pacman:g' pacman/module.info
@@ -212,7 +206,7 @@ package() {
 }
 
 
-sha256sums=('916e22225971a1aaa0d5dfe9eaa1bb7d4bf3dad6adaeb3da432d0e13120cfb48'
+sha256sums=('b4cc63a369026e4e6d8f5af7501fe101dc122d9edbdd6bb20058f8f511694ce3'
             '52a512ae2aa2fdf4e8a2a26e6bedd5a9cf9aa3cb6ab3c13e6f37d0dc71fe22b3'
             '5f14a8396a3a9e920fae530b61d080e5d0c8bf57a7bd9e179c520a3b3a58ea38'
             'a1bdc68e3b0970a5c8e5063bd882b0469664ca782b34faecee22af5c6c30dd11')
