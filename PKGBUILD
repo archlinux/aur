@@ -1,7 +1,7 @@
 # Maintainer: Bennett Piater <bennett at piater dot name>
 
 pkgname=puma
-pkgver=0.5.1
+pkgver=0.5.2
 pkgrel=1
 pkgdesc='Simple password manager'
 arch=('any')
@@ -17,7 +17,7 @@ optdepends=('zenity: for puma-add'
 
 #changelog="CHANGELOG"
 source=(https://github.com/clawoflight/$pkgname/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz{,.asc})
-sha512sums=('c5e8cbe4d9e354ffa246e13171e48df25547aa49b6c971a7be47b03a94587c2629c38d601909065f94a6bdc401a3645b557d0dd89fca7232db6c7d0a3774d5f8'
+sha512sums=('a0f4a595f9b13cef7e19717d09a08c33ecb9e6e04ca5ec732ad736543ea3933bb35e878228c0c8716a9d641f2b30c004da0750afb6175ce0cd9c57f9316158bc'
             'SKIP')
 validpgpkeys=('871F10477DB3DDED5FC447B226C7E577EF967808')
 
