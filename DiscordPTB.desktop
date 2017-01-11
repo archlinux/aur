@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Discord Canary
+Comment=All-in-one voice and text chat for gamers that's free, secure, and works on both your desktop and phone.
+GenericName=Internet Messenger
+Exec=/usr/bin/discord-canary
+Icon=/usr/share/pixmaps/discord-canary.png
+Type=Application
+StartupNotify=true
+Categories=Network;InstantMessaging;
+StartupWMClass=discord
