@@ -24,5 +24,5 @@ package_python2-setuptools_trial() {
 	python2 setup.py install --root="${pkgdir}" --optimize=1 --skip-build
 
 	install -Dm644 COPYING.SPL.txt \
-		"$pkgdir/usr/share/licenses/$pkgname/COPYING.SPL.txt"
+		"${pkgdir}/usr/share/licenses/${pkgname}/COPYING.SPL.txt"
 }
