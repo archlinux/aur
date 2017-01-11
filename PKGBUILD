@@ -10,9 +10,7 @@ url="http://mosh.mit.edu/"
 license=('GPL3')
 depends=('protobuf' 'ncurses' 'zlib' 'openssh' 'perl' 'perl-io-tty' 'libutempter')
 makedepends=('git')
-optdepends=('perl-io-socket-ip: for IPv6 support'
-            'vte-mosh-fix: to work properly in vte'
-            'vte3-mosh-fix: to work properly in vte3')
+optdepends=('perl-io-socket-ip: for IPv6 support')
 conflicts=('mosh' 'mosh-git')
 source=('git+https://github.com/rinne/mosh.git#branch=agent-forwarding-merge-20151128')
 md5sums=('SKIP')
