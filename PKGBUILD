@@ -1,6 +1,6 @@
 # Maintainer: Tom Zander
 
-pkgname=bitcoind-classic-git
+pkgname=bitcoin-classic-daemon-git
 pkgver=git
 pkgrel=1
 pkgdesc="Bitcoin Classic versions of bitcoind, bitcoin-cli, and bitcoin-tx"
