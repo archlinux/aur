@@ -4,7 +4,7 @@
 
 pkgname=mediathek
 _realname=MediathekView
-pkgver=13.0.0
+pkgver=13.0.1
 pkgrel=1
 pkgdesc="Offers access to the Mediathek of different german tv stations (ARD, ZDF, Arte, etc.)"
 arch=(any)
@@ -18,7 +18,7 @@ options=(!strip !zipman)
 source=(https://download.mediathekview.de/stabil/$_realname-$pkgver.tar.gz
         $pkgname
         $pkgname.desktop)
-md5sums=('f9ab144b5f4cf7aaaab5db6b28036c97'
+md5sums=('220f4639b623deea3eaf5e4fe7b1ae2a'
          '461b97eecd40ec40e46b66eb219c92b9'
          'bad6e1fdc948ac0e41b8535509cf944d')
 
