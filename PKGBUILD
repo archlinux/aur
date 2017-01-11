@@ -8,7 +8,7 @@ pkgdesc="Flexible music library manager and tagger - git version"
 arch=('any')
 url="http://beets.io/"
 license=('MIT')
-depends=('python-munkres' 'mutagen'
+depends=('python-munkres' 'python-mutagen'
          'python-setuptools' 'python-unidecode'
          'python-musicbrainzngs' 'python-yaml'
          'python-jellyfish' 'python-six')
