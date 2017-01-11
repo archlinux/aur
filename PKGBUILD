@@ -2,7 +2,7 @@
 
 pkgname=dislocker
 pkgver=0.6.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Read BitLocker encrypted volumes under Linux"
 arch=('i686' 'x86_64')
 url="http://www.hsc.fr/ressources/outils/dislocker"
@@ -18,6 +18,7 @@ build() {
   cd "$srcdir/$pkgname-$pkgver"
   cmake -DCMAKE_INSTALL_PREFIX=/usr \
         -Dlibdir=/usr/lib \
+        -D WARN_FLAGS:STRING="-Wall -Wextra" \
         .
   make
 }
