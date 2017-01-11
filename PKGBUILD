@@ -5,7 +5,7 @@
 # Contributor: Oliver Mader <b52@reaktor42.de>
 
 pkgbase='vtk-multi-python'
-pkgname=('vtk' 'python2-vtk' 'python-vtk')
+pkgname=('vtk-base' 'python2-vtk' 'python-vtk')
 pkgver=7.1.0
 _majorver=7.1
 pkgrel=3
@@ -17,6 +17,8 @@ makedepends=('boost' 'cmake' 'ninja' 'java-environment' 'doxygen' 'gnuplot' 'tk'
 optdepends=('java-runtime: java bindings'
             'tk: tcl bindings'
             'gnuplot: plotting tools'
+	    'python-vtk: Python 3 API'
+	    'python2-vtk: Python 2 API'
             'graphviz: drawing tools'
             'openmpi: OpenMPI support'
             'qt5-x11extras'
@@ -137,7 +139,7 @@ build() {
   ninja
 }
 
-package_vtk() {
+package_vtk-base() {
   pkgdesc='A software system for 3D computer graphics, image processing, and visualization'
 
   cd "${srcdir}/build-py3"
