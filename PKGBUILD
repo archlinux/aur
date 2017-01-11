@@ -4,7 +4,7 @@
 
 pkgname=('python-sqlparse-mycli')
 pkgver=0.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Non-validating SQL parser for Python; version for mycli in AUR'
 arch=('any')
 url=https://github.com/andialbrecht/sqlparse
