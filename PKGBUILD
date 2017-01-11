@@ -1,16 +1,17 @@
 Maintainer='Gilles Hamel <hamelg@laposte.net>'
 pkgname=weboob
 pkgver=1.2
-pkgrel=0
+pkgrel=1
 pkgdesc="Web Out Of Browsers provides several applications to interact with a lot of websites."
 arch=('any')
 url="http://weboob.org/"
 license=('GPL')
+install='weboob.install'
 depends=('python2-pyqt5' 'python2-dateutil' 'python2-prettytable'
 	 'python2-requests' 'python2-google-api-python-client'
          'python2-feedparser' 'python2-cssselect' 'python2-html2text'
          'python2-imaging' 'python2-mechanize' 'python2-simplejson'
-         'python2-lxml' 'python2-yaml' 'python2-gdata' 'python2-futures'
+         'python2-lxml' 'python2-yaml' 'python2-futures'
 	 'which')
 makedepends=('python2-setuptools')
 optdepends=('gnupg: check for repository authenticity'

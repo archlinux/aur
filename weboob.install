@@ -1,0 +1,4 @@
+post_upgrade() {
+    echo 'After a package or system installation, you should run "weboob-config update" as your login user.'
+}
+
