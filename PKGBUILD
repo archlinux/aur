@@ -1,7 +1,7 @@
 # Maintainer: drakkan <nicola.murino@gmail.com>
 pkgname=mingw-w64-openh264
 pkgver=1.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc="OpenH264 is a codec library which supports H.264 encoding and decoding (mingw-w64)"
 arch=(any)
 url="http://www.openh264.org/"
@@ -16,20 +16,21 @@ _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 
 build() {
-	export CFLAGS="-O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions --param=ssp-buffer-size=4"
-	for _arch in ${_architectures}; do
-		[[ -d "build-${_arch}" ]] && rm -rf "build-${_arch}"
- 		cp -rf "$srcdir/openh264-${pkgver}" "${srcdir}/build-${_arch}"
-	
+  export CFLAGS="-O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions --param=ssp-buffer-size=4"
+  export CXXFLAGS=${CFLAGS}
+  for _arch in ${_architectures}; do
+    [[ -d "build-${_arch}" ]] && rm -rf "build-${_arch}"
+    cp -rf "$srcdir/openh264-${pkgver}" "${srcdir}/build-${_arch}"
+
     pushd build-${_arch}	
-		if [ ${_arch} = "i686-w64-mingw32" ]; then
+    if [ ${_arch} = "i686-w64-mingw32" ]; then
       _targetarch="i686"
     else
       _targetarch="x86_64"
     fi
-		make OS=mingw_nt ARCH=${_targetarch} CC=${_arch}-gcc CXX=${_arch}-g++ AR=${_arch}-ar
-		popd	
-	done
+    make OS=mingw_nt ARCH=${_targetarch} CC=${_arch}-gcc CXX=${_arch}-g++ AR=${_arch}-ar
+    popd	
+  done
 }
 
 package() {
@@ -37,13 +38,13 @@ package() {
     cd "${srcdir}/build-${_arch}"
 
     if [ ${_arch} = "i686-w64-mingw32" ]; then
-   	  _targetarch="i686"
+      _targetarch="i686"
     else
- 			_targetarch="x86_64"
- 		fi
+      _targetarch="x86_64"
+    fi
 
-		make OS=mingw_nt ARCH=${_targetarch} CC=${_arch}-gcc CXX=${_arch}-g++ AR=${_arch}-ar DESTDIR="${pkgdir}" PREFIX="/usr/${_arch}" install
-    
+  make OS=mingw_nt ARCH=${_targetarch} CC=${_arch}-gcc CXX=${_arch}-g++ AR=${_arch}-ar DESTDIR="${pkgdir}" PREFIX="/usr/${_arch}" install
+ 
     install -Dm755 h264dec.exe "$pkgdir"/usr/${_arch}/bin/h264dec.exe
     install -Dm755 h264enc.exe "$pkgdir"/usr/${_arch}/bin/h264enc.exe
 
