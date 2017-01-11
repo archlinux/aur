@@ -1,7 +1,7 @@
 diff --git Makefile Makefile
 old mode 100755
 new mode 100644
-index c6a7f7a..71c4a69
+index c6a7f7a..8e853c7
 --- Makefile
 +++ Makefile
 @@ -18,19 +18,18 @@ PLUGINDIR       ?= $(shell pkg-config --variable=plugindir lirc-driver)
@@ -15,7 +15,7 @@ index c6a7f7a..71c4a69
  
  $(driver).so: $(driver).o
 -	gcc --shared -fpic $(LDFLAGS) -o $@ $<
-+	gcc --shared -fpic $(LDFLAGS) -o $@ $< $(IGUANADIR)/*.o
++	gcc --shared -fpic $(LDFLAGS) -o $@ $< $(IGUANADIR)/CMakeFiles/iguanaIR.dir/*.o
  
  install: $(driver).so
 -	install $< $(PLUGINDIR)

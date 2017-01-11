@@ -23,7 +23,7 @@ build() {
 
   cd $srcdir/$pkgname
   patch -p0 < $startdir/Makefile.patch
-  make IGUANADIR="$srcdir/iguanair/software/usb_ir/CMakeFiles/iguanaIR.dir/" 
+  make IGUANADIR="$srcdir/iguanair/software/usb_ir" CFLAGS+="-I $srcdir/iguanair/software/usb_ir" CFLAGS+='-D PLUGINDOCS="\"X\""' CFLAGS+='-fPIC'
 }
 package() {
   cd $pkgname
