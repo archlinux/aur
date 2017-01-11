@@ -1,6 +1,6 @@
 # Maintainer: Kobus van Schoor <pbscube at gmail dot com>
 pkgname=dotgit
-pkgver=1.3.0
+pkgver=1.3.1
 pkgrel=1
 pkgdesc="A comprehensive solution to managing your dotfiles"
 url="http://github.com/Cube777/dotgit"
