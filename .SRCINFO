@@ -7,7 +7,7 @@ pkgbase = vlc-pause-click-plugin
 	arch = x86_64
 	license = LGPL
 	depends = vlc
-	source = https://github.com/nurupo/vlc-pause-click-plugin/archive/0.3.0.tar.gz
+	source = vlc-pause-click-plugin-0.3.0.tar.gz::https://github.com/nurupo/vlc-pause-click-plugin/archive/0.3.0.tar.gz
 	sha256sums = b91797713249f4e2bbeb9b5226f7daaf8d15c700b9e0abbd2b6ba0bef7f00573
 
 pkgname = vlc-pause-click-plugin
