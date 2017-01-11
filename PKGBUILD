@@ -38,8 +38,8 @@ options=(staticlibs !emptydirs)
 sha1sums=('d3701ff23cb935e107e00174cf75d45a7a9cbdda'
           'd67694b32b8720a081fefac3a26b317b81e785c2'
           'bfcf4f87e53f81b7e6bd980e7b0137cef156f66c'
-          'a597aa42e6f623b346c16db36aea31df29bdd8da'
-	  '823f10356ddc86d22629ee5a804f22145af91b6d')
+          '823f10356ddc86d22629ee5a804f22145af91b6d'
+          'a597aa42e6f623b346c16db36aea31df29bdd8da')
 
 prepare() {
   cd "${srcdir}/VTK-${pkgver}"
