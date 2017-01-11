@@ -1,6 +1,11 @@
 # Maintainer: Marcel Korpel <marcel[dot]korpel[at]gmail>
 # Contributor: Tammer Ibrahim <t at tammeri dot net>
 
+DLAGENTS=(
+  'http::/usr/bin/curl --insecure -fLC - --retry 3 --retry-delay 3 -o %o %u'
+  'https::/usr/bin/curl -fLC - --retry 3 --retry-delay 3 -o %o %u'
+)
+
 pkgname=ttf-courier-prime
 pkgver=1.203
 pkgrel=2
@@ -9,7 +14,7 @@ arch=('any')
 url='http://quoteunquoteapps.com/courierprime/'
 license=('custom')
 depends=('fontconfig' 'xorg-fonts-encodings' 'xorg-font-utils')
-install=$pkgname.install
+#install=$pkgname.install
 source=('http://quoteunquoteapps.com/downloads/courier-prime.zip'
         'http://quoteunquoteapps.com/downloads/courier-sans.zip'
         'http://quoteunquoteapps.com/downloads/courier-code.zip')
