@@ -1,7 +1,7 @@
 pkgbase = python-aioftp
 	pkgdesc = ftp client/server for asyncio
 	pkgver = 0.6.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://pohmelie.github.io/aioftp/
 	arch = any
 	license = WTFPL
