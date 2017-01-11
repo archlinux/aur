@@ -4,9 +4,9 @@ pkgname=panamfs-scan
 arch=(x86_64)
 pkgver='1.3.0'
 depends=(sane)
-optdepends=(lightdm)
+optdepends=('lightdm' 'gdm')
 pkgdesc='sane drivers for Panasonic multifunction printers'
-pkgrel=1
+pkgrel=2
 source=(http://cs.psn-web.net/support/fax/common/file/Linux_ScanDriver/panamfs-scan-1.3.0-x86_64.tar.gz)
 md5sums=('2e4c844e89c2e7e0b6258be5ef52ace9')
 package(){
@@ -14,7 +14,7 @@ _ver=$pkgver
 _INSTALL_PATH="$pkgdir/usr/local/share/panasonic/scanner"
 _INSTALL_SANE_DATA_PATH="$pkgdir/usr/local/share/panasonic/scanner"
 _INSTALL_BIN_PATH="$pkgdir/usr/bin"
-
+mkdir -p $_INSTALL_BIN_PATH
 
 _BUILD_CPU=$arch
 _TARGET_CPU=$arch
@@ -65,21 +65,8 @@ fi
 #
 # find install dir
 #
-_SANELIB_PATH=""
-for DIR in $_SANE_PATH_SEARCH; do
-	if test -d $DIR
-	then
-		_SANELIB_PATH=$DIR
-		break
-	fi
-done
-
-if test "x$_SANELIB_PATH" = "x"
-then
-	echo "  Cannot find SANE lib path"
-	exit 1
-fi
-
+_SANELIB_PATH=$pkgdir/usr/lib/sane
+mkdir -p $pkgdir/usr/lib/sane
 
 ################################################################################
 #
@@ -107,10 +94,10 @@ then
 	fi
 fi
 
-SCRIPT=`readlink -f $0`
-SCRIPTPATH=`dirname $SCRIPT`
-PWD=`pwd`
-cd $SCRIPTPATH
+_SCRIPT=`readlink -f $0`
+_SCRIPTPATH=`dirname $_SCRIPT`
+_PWD=`pwd`
+cd $_SCRIPTPATH
 
 ################################################################################
 #
@@ -125,14 +112,15 @@ echo "    start install files......"
 #
 # sane-backend install
 #
-if test -f /etc/sane.d/dll.conf
+mkdir -p $pkgdir/etc/sane.d/
+if test -f $pkgdir/etc/sane.d/dll.conf
 then
 	sed -i 's/^panamfs$//' $pkgdir/etc/sane.d/dll.conf
 	echo "panamfs" >> $pkgdir/etc/sane.d/dll.conf
 fi
 
 cp $srcdir/$pkgname-$pkgver-$arch/sane-backend/panamfs.conf $pkgdir/etc/sane.d/panamfs.conf
-chmod 0644 /etc/sane.d/panamfs.conf
+chmod 0644 $pkgdir/etc/sane.d/panamfs.conf
 
 cp $srcdir/$pkgname-$pkgver-$arch/sane-backend/libsane-panamfs.so.$_ver $_SANELIB_PATH/libsane-panamfs.so.$_ver
 chmod 0755 $_SANELIB_PATH/libsane-panamfs.so.$_ver
@@ -191,10 +179,10 @@ cp $srcdir/$pkgname-$pkgver-$arch/sane-backend/po/sane-panamfs.zh_TW.po $_INSTAL
 chmod 0644 $_INSTALL_SANE_DATA_PATH/data/zh_TW/sane-panamfs.po
 
 
-ln -sf $_SANELIB_PATH/libsane-panamfs.so.$_ver $SANELIB_PATH/libsane-panamfs.so.1
-ln -sf $_SANELIB_PATH/libsane-panamfs.so.1 $SANELIB_PATH/libsane-panamfs.so
+ln -sf $_SANELIB_PATH/libsane-panamfs.so.$_ver $_SANELIB_PATH/libsane-panamfs.so.1
+ln -sf $_SANELIB_PATH/libsane-panamfs.so.1 $_SANELIB_PATH/libsane-panamfs.so
 
-chown root:root /etc/sane.d/panamfs.conf
+chown root:root $pkgdir/etc/sane.d/panamfs.conf
 chown root:root $_SANELIB_PATH/libsane-panamfs.so.$_ver
 
 chown root:root $_INSTALL_SANE_DATA_PATH/data/cs/sane-panamfs.po
@@ -231,21 +219,21 @@ chmod 777 $_INSTALL_PATH/data
 #
 # Copy tool and make shortcut menu
 #
-if test -d /usr/local/share/applications/
+if test -d $pkgdir/usr/local/share/applications/
 then
   echo ""
 else
-  mkdir -p /usr/local/share/applications
-  chown root:root /usr/local/share/applications
-  chmod 755 /usr/local/share/applications
+  mkdir -p $pkgdir/usr/local/share/applications
+  chown root:root $pkgdir/usr/local/share/applications
+  chmod 755 $pkgdir/usr/local/share/applications
 fi
 
-cp ./app/PanasonicMFSTools.desktop /usr/local/share/applications/PanasonicMFSTools.desktop
-chmod 0644 /usr/local/share/applications/PanasonicMFSTools.desktop
+cp $srcdir/$pkgname-$pkgver-$arch/app/PanasonicMFSTools.desktop $pkgdir/usr/local/share/applications/PanasonicMFSTools.desktop
+chmod 0644 $pkgdir/usr/local/share/applications/PanasonicMFSTools.desktop
 
-cp ./app/PanasonicMFSTools $_INSTALL_PATH/bin/PanasonicMFSTools
+cp $srcdir/$pkgname-$pkgver-$arch/app/PanasonicMFSTools $_INSTALL_PATH/bin/PanasonicMFSTools
 ln -sf $_INSTALL_PATH/bin/PanasonicMFSTools $_INSTALL_BIN_PATH/PanasonicMFSTools
-cp ./app/PanasonicMFSTools.png $_INSTALL_PATH/bin/PanasonicMFSTools.png
+cp $srcdir/$pkgname-$pkgver-$arch/app/PanasonicMFSTools.png $_INSTALL_PATH/bin/PanasonicMFSTools.png
 chmod 0644 $_INSTALL_PATH/bin/PanasonicMFSTools.png
 
 
@@ -270,24 +258,9 @@ cp $srcdir/$pkgname-$pkgver-$arch/Version.html $_INSTALL_PATH/Version.html
 
 ln -sf $_INSTALL_PATH/bin/PanasonicMFSscan $_INSTALL_BIN_PATH/PanasonicMFSscan
 
+mkdir -p $pkgdir/etc/xdg/autostart
+cp $srcdir/$pkgname-$pkgver-$arch/server/PanasonicMFSpushd.desktop $pkgdir/etc/xdg/autostart/PanasonicMFSpushd.desktop
 
-
-################################################################################
-#
-# Launch server at Login
-#
-cp $srcdir/$pkgname-$pkgver-$arch/server/PanasonicMFSpushd.desktop /etc/xdg/autostart/PanasonicMFSpushd.desktop
-
-
-################################################################################
-#
-# Launch panalpd at start os
-#
-cp $srcdir/$pkgname-$pkgver-$arch/lpd/panasoniclpd-init /etc/init.d/panasoniclpd-init
-ln -s /etc/init.d/panasoniclpd-init /etc/rc2.d/S80panasoniclpd-init
-ln -s /etc/init.d/panasoniclpd-init /etc/rc3.d/S80panasoniclpd-init
-ln -s /etc/init.d/panasoniclpd-init /etc/rc4.d/S80panasoniclpd-init
-ln -s /etc/init.d/panasoniclpd-init /etc/rc5.d/S80panasoniclpd-init
 
 
 if test -f /etc/gdm/PostSession/Default
