@@ -1,7 +1,7 @@
 pkgbase = discord-ptb
 	pkgdesc = Discord PTB linux release
 	pkgver = 0.0.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://discordapp.com/
 	install = DiscordPTB.install
 	arch = x86_64
@@ -20,7 +20,7 @@ pkgbase = discord-ptb
 	source = DiscordPTB.desktop
 	source = LICENSE
 	source = DiscordPTB.sh
-	md5sums = 2ff4b71f582b9d62eadbb487d4190d15
+	md5sums = 57dbf8949f99692919a5244a39998cc4
 	md5sums = 86acf3328debd24b95cdd037a276e059
 	md5sums = f49fa4791d8feafeef470040fb16746d
 	source_x86_64 = https://dl-ptb.discordapp.net/apps/linux/0.0.1/discord-ptb-0.0.1.tar.gz

@@ -3,7 +3,7 @@
 
 pkgname=discord-ptb
 pkgver=0.0.1
-pkgrel=2
+pkgrel=3
 pkgdesc='Discord PTB linux release'
 arch=('x86_64')
 url='https://discordapp.com/'
@@ -46,7 +46,7 @@ package() {
   # License
   install -Dm644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
-md5sums=('2ff4b71f582b9d62eadbb487d4190d15'
+md5sums=('57dbf8949f99692919a5244a39998cc4'
          '86acf3328debd24b95cdd037a276e059'
          'f49fa4791d8feafeef470040fb16746d')
 md5sums_x86_64=('97c0b016d1aace174493cb18e949abd7')
