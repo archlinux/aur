@@ -1,0 +1,32 @@
+diff --git Makefile Makefile
+old mode 100755
+new mode 100644
+index c6a7f7a..71c4a69
+--- Makefile
++++ Makefile
+@@ -18,19 +18,18 @@ PLUGINDIR       ?= $(shell pkg-config --variable=plugindir lirc-driver)
+ CONFIGDIR       ?= $(shell pkg-config --variable=configdir lirc-driver)
+ PLUGINDOCS      ?= $(shell pkg-config --variable=plugindocs lirc-driver)
+ 
+-include $(PLUGINDOCS)/plugindocs.mk
++# include $(PLUGINDOCS)/plugindocs.mk
+ 
+ $(driver).o: $(driver).c
+ 
+ $(driver).so: $(driver).o
+-	gcc --shared -fpic $(LDFLAGS) -o $@ $<
++	gcc --shared -fpic $(LDFLAGS) -o $@ $< $(IGUANADIR)/*.o
+ 
+ install: $(driver).so
+-	install $< $(PLUGINDIR)
+-	install $(driver).conf $(CONFIGDIR)
+-	install $(driver).html $(PLUGINDOCS)
+-	install -m 644 60-blacklist-kernel-iguanair.conf /etc/modprobe.d
+-	$(MAKE) update
++	install $< $(PKGDIR)$(PLUGINDIR)
++	install $(driver).conf $(PKGDIR)$(CONFIGDIR)
++	install $(driver).html $(PKGDIR)$(PLUGINDOCS)
++	install -m 644 60-blacklist-kernel-iguanair.conf $(PKGDIR)/etc/modprobe.d
+ 
+ clean:
+ 	rm -f *.o *.so

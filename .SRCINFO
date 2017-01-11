@@ -1,0 +1,18 @@
+pkgbase = iguanair-lirc
+	pkgdesc = LIRC driver for IguanaIR devices
+	pkgver = e0cb127_e23b9d3
+	pkgrel = 1
+	url = https://github.com/iguanaworks/iguanair-lirc
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	makedepends = cmake
+	depends = lirc
+	source = iguanair::git+https://github.com/iguanaworks/iguanair
+	source = iguanair-lirc::git+https://github.com/iguanaworks/iguanair-lirc.git
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = iguanair-lirc
+

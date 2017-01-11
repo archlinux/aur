@@ -1,0 +1,6 @@
+src
+pkg
+iguanair
+iguanair-lirc
+*.tar.gz
+*.tar.xz
