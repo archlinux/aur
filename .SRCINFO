@@ -1,24 +1,18 @@
 pkgbase = fahclient
 	pkgdesc = A command line client for Folding@Home
 	pkgver = 7.4.4
-	pkgrel = 1
+	pkgrel = 2
 	url = http://folding.stanford.edu/English/HomePage
-	install = fahclient.install
 	arch = i686
 	arch = x86_64
 	license = GPL3
 	depends = zlib
-	backup = etc/fahclient.cfg
-	source = fahclient.install
-	source = fahclient.syusers
 	source = fahclient.service
-	source = fahclient.cfg
-	source = https://folding.stanford.edu/releases/public/release/fahclient/centos-5.3-64bit/v7.4/fahclient-7.4.4-1.x86_64.rpm
-	md5sums = 9e9593148e4db224abf83feb872ff404
-	md5sums = 3ed48a38bd0193ce290aa3ea25062087
-	md5sums = ad32c0a782d7a7a3de9b250468d8769f
-	md5sums = ff5a4e59e92ceb98954f4c4fdf7bad39
-	md5sums = 79f8676ab46bf391ecc0e9cd54aebab5
+	sha256sums = b5cd088c7385e9387aab3fd216abbec4095978d4c3f10e874db022fa21a47ec3
+	source_i686 = https://folding.stanford.edu/releases/public/release/fahclient/centos-5.5-32bit/v7.4/fahclient-7.4.4-1.i686.rpm
+	sha256sums_i686 = 55d1b39d5e2f4acd9d81b327ebe6f0b28b55e99676796a4fac14aee661b9a20e
+	source_x86_64 = https://folding.stanford.edu/releases/public/release/fahclient/centos-5.3-64bit/v7.4/fahclient-7.4.4-1.x86_64.rpm
+	sha256sums_x86_64 = e189caecc0afea55c621c06fa0bcd43a5924d92e53b3b19126bbc1b24d29188e
 
 pkgname = fahclient
 

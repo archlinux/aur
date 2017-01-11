@@ -1,6 +1,0 @@
-post_install() {
-  systemd-sysusers fahclient.conf
-  mkdir -p /var/lib/fahclient
-
-  chown -R fahclient:fahclient /var/lib/fahclient
-}
