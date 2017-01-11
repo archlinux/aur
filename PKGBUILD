@@ -8,7 +8,7 @@ pkgdesc='Jubula plugins for Eclipse IDE to create functional GUI tests (gerrit v
 arch=('any')
 url='http://eclipse.org/jubula/'
 license=('EPL')
-depends=('eclipse>=4.3.0', 'eclipse-mylyn')
+depends=('eclipse>=4.6.0' 'eclipse-common')
 provides=('eclipse-jubula')
 conflicts=('eclipse-jubula')
 options=('!strip')

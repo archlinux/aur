@@ -5,8 +5,8 @@ pkgbase = eclipse-jubula-git
 	url = http://eclipse.org/jubula/
 	arch = any
 	license = EPL
-	depends = eclipse>=4.3.0,
-	depends = eclipse-mylyn
+	depends = eclipse>=4.6.0
+	depends = eclipse-common
 	provides = eclipse-jubula
 	conflicts = eclipse-jubula
 	options = !strip
