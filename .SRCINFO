@@ -1,6 +1,6 @@
 pkgbase = ttf-monda
 	pkgver = 1.0
-	pkgrel = 1
+	pkgrel = 2
 	arch = any
 	license = custom:OFL
 	source = https://github.com/vernnobile/mondaFont/raw/master/version1.00/Monda-Bold.ttf
