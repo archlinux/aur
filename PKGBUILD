@@ -2,10 +2,10 @@
 
 pkgname=python-pymysql
 pkgver=0.7.9
-pkgrel=1
+pkgrel=2
 pkgdesc="Pure Python MySQL Client"
 arch=(any)
-url="http://www.pymysql.org/"
+url="https://github.com/PyMySQL/PyMySQL"
 license=('BSD')
 depends=('python')
 makedepends=('python-setuptools')
