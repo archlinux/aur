@@ -1,6 +1,6 @@
 pkgbase = feed2tweet
 	pkgdesc = Parse rss feed and tweet new posts to Twitter
-	pkgver = 0.8
+	pkgver = 0.9
 	pkgrel = 1
 	url = https://github.com/chaica/feed2tweet
 	arch = any
@@ -11,8 +11,8 @@ pkgbase = feed2tweet
 	depends = python-persistentlist
 	depends = python-tweepy
 	depends = python-feedparser
-	source = https://github.com/chaica/feed2tweet/archive/0.8.tar.gz
-	md5sums = 3f0011a88d531f0fec370a5a52c4a0bc
+	source = https://github.com/chaica/feed2tweet/archive/0.9.tar.gz
+	md5sums = d6ab4f5e227252d1482471f63cc06193
 
 pkgname = feed2tweet
 

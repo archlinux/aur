@@ -1,5 +1,5 @@
 pkgname="feed2tweet"
-pkgver=0.8
+pkgver=0.9
 pkgrel=1
 pkgdesc="Parse rss feed and tweet new posts to Twitter"
 url="https://github.com/chaica/feed2tweet"
@@ -17,4 +17,4 @@ package() {
   python3 setup.py install --prefix=/usr --root="${pkgdir}"
 }
 
-md5sums=('3f0011a88d531f0fec370a5a52c4a0bc')
+md5sums=('d6ab4f5e227252d1482471f63cc06193')
