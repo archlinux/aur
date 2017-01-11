@@ -1,30 +1,31 @@
 # Maintainer: Yardena Cohen <yardenack at gmail dot com>
 
-pkgname=perl-crypt-random-source-factory
-_dist='Crypt-Random-Source'
-pkgver=0.06
+cpaname='Crypt-Random-Source'
+cpanauthor=ETHER
+pkgname=perl-crypt-random-source
+pkgver=0.12
 pkgrel=1
-pkgdesc='Load and instantiate sources of random data'
+pkgdesc='Perl Crypt::Random::Source CPAN module - load and instantiate sources of random data'
 arch=('any')
-url='http://search.cpan.org/~flora/Crypt-Random-Source-0.06/lib/Crypt/Random/Source/Factory.pm'
+url='http://search.cpan.org/dist/${cpaname}/'
 license=(GPL)
 depends=(perl)
 options=(!emptydirs)
-source=("http://search.cpan.org/CPAN/authors/id/F/FL/FLORA/Crypt-Random-Source-${pkgver}.tar.gz")
-sha512sums=('03f085e2f92abc6629440d4a47f298d652f2dcd59874ba742eb6578c2de3bcccde9af69e05cd89588702eb55b3be60bf6c34066e7c7c5ba450d4a7a0542a4623')
+source=("http://www.cpan.org/authors/id/${cpanauthor::1}/${cpanauthor::2}/${cpanauthor}/${cpaname}-${pkgver}.tar.gz")
+sha512sums=('821f464a9b344cd7e19f881acbf295a39ccf3b924f8822acb757c06f7ed2aa95fbee740b98a514dfdd24aae2dc9b5c7898751eab5bf7ea6f88218a6b162c4c34')
 
 build() {
-    cd "${srcdir}"/"${_dist}"-"${pkgver}"
+    cd "${srcdir}/${cpaname}-${pkgver}"
     perl Makefile.PL
     make
 }
 
 check() {
-    cd "${srcdir}"/"${_dist}"-"${pkgver}"
+    cd "${srcdir}/${cpaname}-${pkgver}"
     make test
 }
 
 package() {
-    cd "${srcdir}"/"${_dist}"-"${pkgver}"
+    cd "${srcdir}/${cpaname}-${pkgver}"
     make install INSTALLDIRS=vendor DESTDIR="${pkgdir}"
 }
