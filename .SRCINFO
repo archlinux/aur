@@ -13,7 +13,7 @@ pkgbase = ugene
 	depends = glu
 	depends = procps-ng
 	depends = python
-	source = https://github.com/ugeneunipro/ugene/archive/1.25.0.tar.gz
+	source = ugene-1.25.0.tar.gz::https://github.com/ugeneunipro/ugene/archive/1.25.0.tar.gz
 	sha256sums = 4b592a1a0ff5efba5dbdbee134755d957d132d85b6cedfbf6f7ba4b03bcea5ee
 
 pkgname = ugene
