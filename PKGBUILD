@@ -2,7 +2,7 @@
 
 pkgname=openambit-git
 _pkgname=openambit
-pkgver=20150825
+pkgver=20160807
 pkgrel=4
 epoch=1
 pkgdesc="Open software for the Suunto Ambit(2) - Git master branch"
@@ -15,7 +15,7 @@ makedepends=('cmake' 'gcc' 'glibc' 'qt4' 'qjson' 'zlib' 'libusb' 'libpcap')
 conflicts=('openambit')
 options=('!strip' '!emptydirs')
 
-source=("${_pkgname}::git+https://github.com/openambitproject/${_pkgname}.git")
+source=("${_pkgname}::git+https://github.com/marguslt/${_pkgname}.git#branch=mc-json")
 
 sha512sums=('SKIP')
 
