@@ -12,14 +12,14 @@ url="http://www.blockattack.net"
 license=('GPL')
 depends=('boost-libs' 'jsoncpp' 'sdl2_mixer' 'sdl2_image' 'sdl2_ttf' 'physfs' 'hicolor-icon-theme')
 makedepends=('cmake' 'boost' 'utf8cpp' 'zip')
-source=("https://github.com/blockattack/blockattack-game/archive/v$pkgver.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::https://github.com/blockattack/blockattack-game/archive/v$pkgver.tar.gz")
 sha256sums=('14ad07c196dd61ef3aa233e9060ba7aa61139123d06177d92adfea1195a6ee53')
 
 prepare() {
   cd $pkgname-game-$pkgver
 
-  sed 's/#ifndef _WIN32/#ifdef _WIN32/' \
-    -i source/code/sago/SagoSpriteHolder.cpp
+  sed -i 's/#ifndef _WIN32/#ifdef _WIN32/' \
+    source/code/sago/SagoSpriteHolder.cpp
 }
 
 build() {

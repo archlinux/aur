@@ -17,7 +17,7 @@ pkgbase = blockattack
 	depends = sdl2_ttf
 	depends = physfs
 	depends = hicolor-icon-theme
-	source = https://github.com/blockattack/blockattack-game/archive/v2.0.1.tar.gz
+	source = blockattack-2.0.1.tar.gz::https://github.com/blockattack/blockattack-game/archive/v2.0.1.tar.gz
 	sha256sums = 14ad07c196dd61ef3aa233e9060ba7aa61139123d06177d92adfea1195a6ee53
 
 pkgname = blockattack
