@@ -15,7 +15,7 @@ provides=('newlisp')
 conflicts=('newlisp')
 options=('docs' '!makeflags')
 source=("http://www.newlisp.org/downloads/development/inprogress/${_pkgname}-$pkgver.tgz")
-md5sums=('fd2b484490e259af94cdc841f2f50be0')
+md5sums=('4341b4db040470d568bc05db97700777')
 
 prepare() {
   cd "$_pkgname-$pkgver"
