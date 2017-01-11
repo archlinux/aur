@@ -9,7 +9,7 @@ url="http://insomnia.rest/"
 options=('!strip' '!upx')
 
 source=("https://downloads.insomnia.rest/linux/insomnia_${pkgver}_amd64.deb")
-md5sums=('fd0cdc24b0db67aa48a1d6a67e7a6ad8')
+md5sums=('18eba2977ab1429ba0689ba32b66c2b5')
 
 package() {
     cd "${srcdir}"
