@@ -1,10 +1,7 @@
 post_upgrade() {
+  # TODO: move user creation to systemd-sysusers
   getent group tarantool >/dev/null || groupadd --system tarantool &>/dev/null
   getent passwd tarantool >/dev/null || useradd --system -g tarantool -d /var/lib/tarantool -s /bin/false -c "Tarantool Server" tarantool &>/dev/null
-
-  if type -P systemd-tmpfiles &> /dev/null; then
-    systemd-tmpfiles --create tarantool.conf
-  fi
 
   mkdir -p /var/run/tarantool
 
