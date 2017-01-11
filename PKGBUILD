@@ -2,7 +2,7 @@
 # Maintainer: ava1ar <mail(at)ava1ar(dot)me>
 
 pkgname=mosh-sshagent-git
-pkgver=20151128
+pkgver=20170108
 pkgrel=1
 pkgdesc="Mobile shell with support for ssh-agent-forwarding and out-of-band"
 arch=('i686' 'x86_64' 'arm')
