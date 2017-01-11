@@ -5,7 +5,7 @@
 
 pkgname=firejail-extras
 pkgver=0.9.44
-pkgrel=7
+pkgrel=12
 pkgdesc="Extra profiles for firejail"
 arch=('any')
 url="https://github.com/chiraag-nataraj/firejail-profiles"
@@ -53,7 +53,8 @@ package() {
         rm   ${srcdir}/firejail-profiles/qpdfview.profile
         rm   ${srcdir}/firejail-profiles/synfigstudio.profile 
         rm   ${srcdir}/firejail-profiles/virtualbox.profile  
-        rm   ${srcdir}/firejail-profiles/luminance-hdr.profile     
+        rm   ${srcdir}/firejail-profiles/luminance-hdr.profile
+     
 
         rm   ${srcdir}/fe/7z.profile
         rm   ${srcdir}/fe/feh.profile
