@@ -41,7 +41,7 @@ pkgver() {
 
 prepare() {
 	cd synapse
-	git apply -3 "$srcdir/deps-relax-checks.patch"
+	git apply -3 "${srcdir}/deps-relax-checks.patch"
 }
 
 build() {
@@ -53,16 +53,16 @@ package() {
 	cd synapse
 	python2 setup.py install --root "${pkgdir}" --optimize=1 --skip-build
 
-	for file in "$pkgdir/usr/lib/python2.7/site-packages/synapse"/{app,push}/*.py; do
-		sed -re 's|env python$|&2.7|' -i "$file"
+	for file in "${pkgdir}/usr/lib/python2.7/site-packages/synapse"/{app,push}/*.py; do
+		sed -re 's|env python$|&2.7|' -i "${file}"
 	done
 
 	install -Dm644 "contrib/systemd/log_config.yaml" \
-		"$pkgdir/etc/synapse/log_config.yaml"
+		"${pkgdir}/etc/synapse/log_config.yaml"
 
 	install -Dm644 "contrib/systemd/synapse.service" \
-		"$pkgdir/usr/lib/systemd/system/synapse.service"
+		"${pkgdir}/usr/lib/systemd/system/synapse.service"
 
-	install -Dm644 "$srcdir/sysusers-synapse.conf" \
-		"$pkgdir/usr/lib/sysusers.d/synapse.conf"
+	install -Dm644 "${srcdir}/sysusers-synapse.conf" \
+		"${pkgdir}/usr/lib/sysusers.d/synapse.conf"
 }
