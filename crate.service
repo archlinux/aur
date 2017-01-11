@@ -5,7 +5,7 @@ After=network.target
 [Service]
 User=crate
 EnvironmentFile=-/etc/conf.d/crate
-ExecStart=/usr/share/crate/bin/crate -Des.path.conf=/etc/crate -Des.path.home=/usr/share/crate -Des.path.logs=/var/log/crate -Des.path.work=/var/lib/crate
+ExecStart=/usr/share/crate/bin/crate -Cpath.conf=/etc/crate -Cpath.home=/usr/share/crate -Cpath.logs=/var/log/crate -Cpath.work=/var/lib/crate
 
 LimitMEMLOCK=infinity
 LimitNOFILE=65535
