@@ -1,4 +1,4 @@
-# Maintainer: Alexander Rødseth <rodseth@gmail.com>
+# Maintainer: Alexander F Rødseth <xyproto@archlinux.org>
 
 pkgname=monkeyjump-git
 pkgver=a6fcea4
@@ -8,38 +8,26 @@ arch=('x86_64' 'i686')
 url='http://github.com/xyproto/monkeyjump'
 license=('GPL2')
 depends=('python2-pygame' 'gnugo')
-makedepends=('setconf' 'python2-distribute')
+makedepends=('setconf' 'python2-setuptools')
 backup=('etc/monkeyjump/gnugocmd.conf' 'etc/monkeyjump/theme.conf' 'etc/monkeyjump/keybindings.conf')
 source=('monkeyjump::git://github.com/xyproto/monkeyjump.git')
 md5sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/${pkgname%-git}"
+  cd "${pkgname%-git}"
 
   git describe --always | sed 's|-|.|g'
 }
 
 prepare() {
-  cd "$srcdir/${pkgname%-git}"
+  cd "${pkgname%-git}"
 
   setconf monkeyjump CONFDIR \"/etc/monkeyjump\"
   setconf monkeyjump THEMEDIR \"/usr/share/monkeyjump/themes\"
 }
 
-check() {
-  cd "$srcdir/${pkgname%-git}"
-
-  python2 setup.py test
-}
-
-check() {
-  cd "$srcdir/${pkgname%-git}"
-
-  python2 setup.py build
-}
-
 package() {
-  cd "$srcdir/${pkgname%-git}"
+  cd "${pkgname%-git}"
 
   python2 setup.py install --root="$pkgdir" --optimize=1
   install -Dm755 monkeyjump "$pkgdir/usr/bin/monkeyjump"
