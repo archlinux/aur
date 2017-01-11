@@ -27,49 +27,33 @@ pkgver() {
 build() {
   cd "$srcdir/bitcoinclassic"
 
-  msg2 'Building...'
   ./autogen.sh
   ./configure --prefix=/usr --with-incompatible-bdb --with-gui=no --enable-hardening \
         --enable-reduce-exports --disable-gui-tests --disable-maintainer-mode
-  make -j$(nproc)
+  make
 }
 
 check() {
-  "$srcdir/bitcoinclassic/src/test/test_bitcoin"
+  "bitcoinclassic/src/test/test_bitcoin"
 }
 
 package() {
-  cd "$srcdir/bitcoinclassic"
+  cd "bitcoinclassic"
 
-  install -Dm644 COPYING "$pkgdir/usr/share/licenses/$pkgname/COPYING"
+  install -Dm644 "contrib/debian/examples/bitcoin.conf"\
+        -t "$pkgdir/usr/share/doc/bitcoin/examples"
+  install -Dm644 "contrib/debian/manpages/bitcoind.1"\
+        -t "$pkgdir/usr/share/man/man1"
+  install -Dm644 "contrib/debian/manpages/bitcoin.conf.5"\
+        -t "$pkgdir/usr/share/man/man5"
 
-  msg2 'Installing bitcoin-daemon...'
-  install -Dm755 "$srcdir/bitcoinclassic/src/bitcoind" "$pkgdir/usr/bin/bitcoind"
-  install -Dm644 "$srcdir/bitcoinclassic/contrib/debian/examples/bitcoin.conf"\
-        "$pkgdir/usr/share/doc/bitcoin/examples/bitcoin.conf"
-  install -Dm644 "$srcdir/bitcoinclassic/contrib/debian/manpages/bitcoind.1"\
-        "$pkgdir/usr/share/man/man1/bitcoind.1"
-  install -Dm644 "$srcdir/bitcoinclassic/contrib/debian/manpages/bitcoin.conf.5"\
-        "$pkgdir/usr/share/man/man5/bitcoin.conf.5"
-
-  msg2 'Installing bitcoin.conf...'
   install -Dm 644 "$srcdir/bitcoin.conf" "$pkgdir/etc/bitcoin/bitcoin.conf.dist"
-  install -Dm 644 "$srcdir/bitcoinclassic/share/rpcuser/rpcuser.py" "$pkgdir/etc/bitcoin/rpcuser.py"
-
-  msg2 'Installing bitcoin.service...'
-  install -Dm 644 "$srcdir/bitcoinclassic/contrib/init/bitcoind.service" \
-               -t "$pkgdir/usr/lib/systemd/system"
-
-  msg2 'Installing bitcoin.logrotate...'
+  install -Dm 644 "share/rpcuser/rpcuser.py" -t "$pkgdir/etc/bitcoin"
+  install -Dm 644 "contrib/init/bitcoind.service" -t "$pkgdir/usr/lib/systemd/system"
   install -Dm 644 "$srcdir/bitcoin.logrotate" "$pkgdir/etc/logrotate.d/bitcoin"
 
-  msg2 'Installing bash completion...'
   install -Dm 644 contrib/bitcoind.bash-completion \
     "$pkgdir/usr/share/bash-completion/completions/bitcoind"
 
-  msg2 'Installing bitcoin-cli...'
-  install -Dm755 "$srcdir/bitcoinclassic/src/bitcoin-cli" "$pkgdir/usr/bin/bitcoin-cli"
-
-  msg2 'Installing bitcoin-tx...'
-  install -Dm755 "$srcdir/bitcoinclassic/src/bitcoin-tx" "$pkgdir/usr/bin/bitcoin-tx"
+  install -Dm755 "src/bitcoind" "src/bitcoin-cli" "src/bitcoin-tx" -t "$pkgdir/usr/bin"
 }
