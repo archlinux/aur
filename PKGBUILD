@@ -2,7 +2,7 @@
 
 pkgname=webmin
 pkgver=1.831
-pkgrel=1
+pkgrel=2
 pkgdesc="a web-based interface for system administration"
 arch=(i686 x86_64)
 license=('custom:webmin')
@@ -147,6 +147,7 @@ package() {
 
   # Add pacman menu
   cd "$srcdir"/$pkgname-$pkgver
+  cp -rf custom/ pacman
   sed -i -e 's:^noconfig=0:noconfig=1:g' -e 's:^edit=1:edit=0:g' pacman/defaultacl
   sed -i -e '/desc/d' -e '/longdesc/d' pacman/module.info
   sed -i -e 's:^name=Custom:name=Pacman:g' pacman/module.info
