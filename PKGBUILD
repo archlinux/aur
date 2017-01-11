@@ -8,7 +8,7 @@ arch=('i686' 'x86_64')
 license=('GPL3')
 url="https://github.com/NagyD/SDLPoP"
 depends=('sdl2_image' 'sdl2_mixer')
-source=("https://github.com/NagyD/SDLPoP/archive/v$pkgver.tar.gz"
+source=("$pkgname-$pkgver.tar.gz::https://github.com/NagyD/SDLPoP/archive/v$pkgver.tar.gz"
         "https://github.com/NagyD/SDLPoP/raw/master/data/icon.png"
         "sdlpop.desktop"
         "prince")
