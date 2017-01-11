@@ -7,7 +7,7 @@ url="https://github.com/mstraube/grub2-theme-arch-leap"
 arch=('any')
 license=('GPL' 'CCPL:by-sa')
 depends=('grub')
-source=("https://github.com/mstraube/$pkgname/archive/$pkgver.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::https://github.com/mstraube/$pkgname/archive/$pkgver.tar.gz")
 sha256sums=('ab67c35a5da28a109dbab493909ee7e1f9ad851274a42b0ff1aea03a73712100')
 
 package() {

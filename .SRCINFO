@@ -7,7 +7,7 @@ pkgbase = grub2-theme-arch-leap
 	license = GPL
 	license = CCPL:by-sa
 	depends = grub
-	source = https://github.com/mstraube/grub2-theme-arch-leap/archive/1.tar.gz
+	source = grub2-theme-arch-leap-1.tar.gz::https://github.com/mstraube/grub2-theme-arch-leap/archive/1.tar.gz
 	sha256sums = ab67c35a5da28a109dbab493909ee7e1f9ad851274a42b0ff1aea03a73712100
 
 pkgname = grub2-theme-arch-leap
