@@ -3,7 +3,7 @@
 
 pkgname=discord-ptb
 pkgver=0.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Discord PTB linux release'
 arch=('x86_64')
 url='https://discordapp.com/'

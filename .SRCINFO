@@ -1,7 +1,7 @@
 pkgbase = discord-ptb
 	pkgdesc = Discord PTB linux release
 	pkgver = 0.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://discordapp.com/
 	install = DiscordPTB.install
 	arch = x86_64
