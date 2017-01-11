@@ -4,12 +4,13 @@ pkgname=eclipse-jubula
 pkgver=4.0.0
 _eclipseName=neon
 _buildNumber=6
-pkgrel=3
+pkgrel=4
 pkgdesc='Jubula plugins for Eclipse IDE to create functional GUI tests'
 arch=('any')
 url='http://eclipse.org/jubula/'
 license=('EPL')
-depends=('eclipse>=4.3.0', 'eclipse-mylyn')
+depends=('eclipse>=4.6.0', 'eclipse-common')
+makedepends=('java-environment-common')
 options=('!strip')
 source=(
 "https://hudson.eclipse.org/jubula/job/jubula-${_eclipseName}/${_buildNumber}/artifact/org.eclipse.jubula.core/org.eclipse.jubula.repo/target/org.eclipse.jubula.repo-${pkgver}-SNAPSHOT.zip")
