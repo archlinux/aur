@@ -1,0 +1,16 @@
+pkgbase = iguanair
+	pkgdesc = user mode daemon driver for IguanaIR devices
+	pkgver = e0cb127
+	pkgrel = 1
+	url = https://github.com/iguanaworks/iguanair-lirc
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	makedepends = cmake
+	depends = lirc
+	source = iguanair::git+https://github.com/iguanaworks/iguanair
+	md5sums = SKIP
+
+pkgname = iguanair
+

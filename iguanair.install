@@ -1,0 +1,5 @@
+post_install () {
+  getent group iguanair >/dev/null || groupadd --system iguanair
+  getent passwd iguanair >/dev/null || \
+      useradd --system -c "iguana ir user" -g iguanair -s /bin/false iguanair
+}
