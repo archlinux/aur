@@ -1,14 +1,14 @@
 pkgbase = eclipse-rcp-source
 	pkgdesc = RCP sources for Eclipse IDE
-	pkgver = 4.6.1
+	pkgver = 4.6.2
 	pkgrel = 1
-	url = http://eclipse.org/pde/
+	url = http://eclipse.org/platform/
 	arch = any
 	license = EPL
 	depends = eclipse>=4.3.0
 	options = !strip
-	source = http://www.mirrorservice.org/sites/download.eclipse.org/eclipseMirror/eclipse/downloads/drops4/R-4.6.1-201609071200/org.eclipse.rcp.source-4.6.1.zip
-	sha256sums = 1e45b7a8950e4b1e3d2a5568a71f55d19ec74b9e05f5d7b8f2ac15c7c663b461
+	source = http://www.mirrorservice.org/sites/download.eclipse.org/eclipseMirror/eclipse/downloads/drops4/R-4.6.2-201611241400/org.eclipse.rcp.source-4.6.2.zip
+	sha256sums = d8603543b65ab6ef82a7a8da0e6e3fad968b9c10dd0458ed8dd4d4c0fa9ecfa2
 
 pkgname = eclipse-rcp-source
 

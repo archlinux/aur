@@ -1,19 +1,19 @@
 #Maintainer: Raimar Buehmann <raimar at buehmann dot de>
 
 pkgname=eclipse-rcp-source
-pkgver=4.6.1
-_buildTime=201609071200
+pkgver=4.6.2
+_buildTime=201611241400
 pkgrel=1
 pkgdesc='RCP sources for Eclipse IDE'
 arch=('any')
-url='http://eclipse.org/pde/'
+url='http://eclipse.org/platform/'
 license=('EPL')
 depends=('eclipse>=4.3.0')
 options=('!strip')
 source=(
 	"http://www.mirrorservice.org/sites/download.eclipse.org/eclipseMirror/eclipse/downloads/drops4/R-${pkgver}-${_buildTime}/org.eclipse.rcp.source-${pkgver}.zip"
 )
-sha256sums=('1e45b7a8950e4b1e3d2a5568a71f55d19ec74b9e05f5d7b8f2ac15c7c663b461')
+sha256sums=('d8603543b65ab6ef82a7a8da0e6e3fad968b9c10dd0458ed8dd4d4c0fa9ecfa2')
 
 package() {
   # remove binary and features folder
