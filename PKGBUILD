@@ -5,7 +5,7 @@
 pkgbase='python-pymunk'
 _libname=${pkgbase/python-/}
 pkgname=('python-pymunk' 'python2-pymunk')
-pkgver=5.0.0
+pkgver=5.1.0
 pkgrel=1
 pkgdesc="A wrapper around the 2d physics library Chipmunk"
 arch=('any')
@@ -55,4 +55,4 @@ package_python2-pymunk() {
 	install -Dm644 LICENSE.txt "$pkgdir"/usr/share/licenses/$pkgname/LICENSE.txt
 }
 
-sha256sums=('4708eb37846162c33d86f6c148c8b5c68d7cd7841be3ba792585ee10350a69ab')
+sha256sums=('83b3c6db9b556af215d5cb858b88745924afab53f0025f20e89491e65f606424')
