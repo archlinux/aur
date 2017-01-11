@@ -1,16 +1,16 @@
 # Maintainer: Pete Alexandrou (ozmartian) <pete@ozmartians.com>
 pkgname=vidcutter
-pkgver=2.0.1
+pkgver=2.2.0
 pkgrel=1
 pkgdesc="FFmpeg based video cutter & joiner with a modern PyQt5 GUI"
 arch=('any')
 license=('GPL3')
 url="http://vidcutter.ozmartians.com"
 source=(https://github.com/ozmartian/${pkgname}/archive/${pkgver}.tar.gz)
-depends=('python-pyqt5' 'qt5-multimedia' 'ffmpeg' 'python-qtawesome-git')
+depends=('python-pyqt5' 'qt5-multimedia' 'ffmpeg')
 makedepends=('git' 'sed' 'python-setuptools')
 install=${pkgname}.install
-provides=()
+provides=('vidcutter')
 conflicts=('vidcutter-git')
 md5sums=('SKIP')
 
@@ -28,5 +28,5 @@ package() {
     cd "${srcdir}/${pkgname}-${pkgver}"
     python3 setup.py install --root="${pkgdir}" --optimize=1 --skip-build
     # install -Dm644 "data/desktop/vidcutter.desktop" "${pkgdir}/usr/share/applications/vidcutter.desktop"
-    # install -Dm644 "data/pixmaps/vidcutter.png" "${pkgdir}/usr/share/pixmaps/vidcutter.png"
+    # install -Dm644 "data/icons/vidcutter.png" "${pkgdir}/usr/share/pixmaps/vidcutter.png"
 }
