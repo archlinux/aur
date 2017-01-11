@@ -12,7 +12,7 @@ makedepends=('boost' 'qt5-tools')
 provides=('bitcoin-daemon' 'bitcoin-cli' 'bitcoin-qt' 'bitcoin-tx')
 conflicts=('bitcoin-daemon' 'bitcoin-cli' 'bitcoin-qt' 'bitcoin-tx')
 install=bitcoin.install
-source=("https://github.com/bitcoinclassic/bitcoinclassic/archive/v1.2.0.tar.gz"
+source=(${pkgname}-${pkgver}.tar.gz::"https://github.com/bitcoinclassic/bitcoinclassic/archive/v1.2.0.tar.gz"
     "bitcoin.logrotate"
     "bitcoin.conf")
 sha256sums=('7f16cd27f711d7dfbdc103e79d04800a27e63ed432e3076dd34552c37710a5ac'
