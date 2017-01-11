@@ -1,34 +1,32 @@
+# Maintainer: William Gathoye <william at gathoye dot be>
 # Maintainer: David Vogt <dave at winged dot ch>
 # This PKGBUILD is maintained at https://github.com/winged/aur-packages
 
 pkgname=matterbridge-plus-bin
-_pkgname=matterbridge-plus-bin
-pkgver=v0.3.1
+pkgver=v0.4
 pkgrel=1
-pkgdesc="Simple bridge between mattermost and IRC. (Uses the mattermost API instead of webhooks)"
+pkgdesc="Simple bridge between Mattermost and IRC (using the Mattermost API instead of webhooks)"
 arch=('x86_64')
-license=('Apache')
+
 url='https://github.com/42wim/matterbridge-plus/'
+license=('Apache')
+
 depends=('mattermost')
 conflicts=()
 provides=('matterbridge-plus' 'matterbridge-plus-bin')
-makedepends=()
+
 source=(
     "https://github.com/42wim/matterbridge-plus/releases/download/$pkgver/matterbridge-plus-linux64"
-    "https://raw.githubusercontent.com/42wim/matterbridge-plus/master/matterbridge.conf.sample"
-    "LICENSE::https://raw.githubusercontent.com/42wim/matterbridge-plus/master/LICENSE"
+    "https://cdn.rawgit.com/42wim/matterbridge-plus/master/matterbridge.conf.sample"
     "matterbridge-plus.service"
     )
-sha256sums=(
-    '13afa3c043757de9f1572a0f2d509a239ee2acc0f6e1d5448e21020e07d7a220'
-    '3d214bf9496e3b8660a65ce50ac36f65c16b7152fd9a2badf7add17a9b0693d9'
-    'c6596eb7be8581c18be736c846fb9173b69eccf6ef94c5135893ec56bd92ba08'
+sha512sums=(
+    22a6769dfd7ed6e3311aa73b2dee4f9210e904bbb32d2dd9fb70240b105e305e568f24ef7a138f49852a6132b399de2148b5bc02852d4df26a25ad747e22b356 
+    517b4f3c2c279c76443d576bc6b5d7908e9f1342ade56b39a4a346de98e8c202c5419d2ba36469bd623f90de635edd08a7c4048aee9c66dd5878ba82cf8cec47
     'SKIP' # this is from our own repository...
 )
 
-
 package() {
-  install -Dm644 LICENSE                   "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   install -Dm755 matterbridge-plus-linux64 "$pkgdir/usr/bin/matterbridge-plus"
   install -Dm644 matterbridge.conf.sample  "$pkgdir/usr/share/doc/matterbridge-plus/matterbridge.conf.sample"
   install -Dm644 matterbridge-plus.service "$pkgdir/usr/lib/systemd/system/matterbridge-plus.service"
@@ -42,4 +40,3 @@ post_install() {
   echo "and configure it properly."
 }
 
-# vim:set ts=2 sw=2 et:
