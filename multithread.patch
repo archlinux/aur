@@ -1,0 +1,533 @@
+diff -Naur old/common.c new/common.c
+--- old/common.c	2017-01-10 21:44:50.904940134 -1000
++++ new/common.c	2017-01-10 21:45:41.235741807 -1000
+@@ -126,35 +126,45 @@
+ server_socket (struct in_addr addr, int port, int backlog)
+ {
+   struct sockaddr_in address;
+-  int i, s;
++  int i;
++  static int s = -1;
+ 
+-  s = socket (PF_INET, SOCK_STREAM, 0);
+-  if (s == -1)
+-    return -1;
+-  
+-  i = 1;
+-  if (setsockopt (s, SOL_SOCKET, SO_REUSEADDR, (void *)&i, sizeof i) == -1)
+-    {
+-      log_error ("server_socket: setsockopt SO_REUSEADDR: %s",
+-		 strerror (errno));
+-    }
++  log_annoying("server_socket: s=%d\n", s);
+ 
+-  memset (&address, '\0', sizeof address);
+-#if defined(__FreeBSD__) || defined(__OpenBSD__)
+-  address.sin_len = sizeof address;
+-#endif
+-  address.sin_family = PF_INET;
+-  address.sin_port = htons ((short)port);
+-  address.sin_addr = addr;
+-  
+-  if (bind (s, (struct sockaddr *)&address, sizeof (address)) == -1)
+-    {
+-      close (s);
++  if (s == -1) {
++    s = socket (PF_INET, SOCK_STREAM, 0);
++
++    if (s == -1) {
++      log_error ("server_socket: socket failed: %s", strerror (errno));
+       return -1;
+     }
++    
++    i = 1;
++    if (setsockopt (s, SOL_SOCKET, SO_REUSEADDR, (void *)&i, sizeof i) == -1)
++      {
++        log_error ("server_socket: setsockopt SO_REUSEADDR: %s",
++  		 strerror (errno));
++      }
++  
++    memset (&address, '\0', sizeof address);
++  #if defined(__FreeBSD__) || defined(__OpenBSD__)
++    address.sin_len = sizeof address;
++  #endif
++    address.sin_family = PF_INET;
++    address.sin_port = htons ((short)port);
++    address.sin_addr = addr;
++    
++    if (bind (s, (struct sockaddr *)&address, sizeof (address)) == -1)
++      {
++        log_error ("server_socket: bind failed: %s", strerror (errno));
++        close (s);
++        return -1;
++      }
++  }
+ 
+   if (listen (s, (unsigned)backlog) == -1)
+     {
++      log_error ("server_socket: listen failed: %s", strerror (errno));
+       close (s);
+       return -1;
+     } 
+@@ -409,3 +419,18 @@
+   signal (SIGPIPE, log_sigpipe);
+ }
+ #endif
++
++int do_connect_retry(struct sockaddr_in* addr, int retry_secs)
++{
++	int fd = -1;
++	
++	while (retry_secs-- > 0 && fd == -1) {
++		fd = do_connect(addr);
++		if (fd == -1) {
++			log_error ("do_connect failed: %s\n", strerror(errno));
++		}
++		sleep(1);
++	}
++	return fd;
++}
++
+diff -Naur old/configure.in new/configure.in
+--- old/configure.in	2017-01-10 21:44:50.904940134 -1000
++++ new/configure.in	2017-01-10 21:45:41.235741807 -1000
+@@ -29,6 +29,7 @@
+ dnl Checks for libraries.
+ AC_CHECK_FUNC(gethostent, , AC_CHECK_LIB(nsl, gethostent))
+ AC_CHECK_FUNC(setsockopt, , AC_CHECK_LIB(socket, setsockopt))
++AC_CHECK_LIB(pthread, pthread_create)
+ 
+ dnl Checks for header files.
+ AC_HEADER_STDC
+diff -Naur old/hts.c new/hts.c
+--- old/hts.c	2017-01-10 21:44:50.908273521 -1000
++++ new/hts.c	2017-01-10 21:54:43.479743848 -1000
+@@ -17,6 +17,7 @@
+ #include <pwd.h>
+ #include <grp.h>
+ #include <time.h>
++#include <pthread.h>
+ 
+ #include "common.h"
+ 
+@@ -39,6 +40,8 @@
+   char *user;
+ } Arguments;
+ 
++Arguments arg;
++
+ int debug_level = 0;
+ FILE *debug_file = NULL;
+ 
+@@ -290,49 +293,9 @@
+     }
+ }
+ 
+-int
+-main (int argc, char **argv)
++Tunnel* create_new_tunnel()
+ {
+-  int closed;
+-  int fd = -1;
+-  Arguments arg;
+-  Tunnel *tunnel;
+-  FILE *pid_file;
+-  uid_t uid;
+-  gid_t gid;
+-
+-  parse_arguments (argc, argv, &arg);
+-
+-  if ((debug_level == 0 || debug_file != NULL) && arg.use_daemon)
+-    daemon (0, 1);
+-
+-#ifdef DEBUG_MODE
+-  if (debug_level != 0 && debug_file == NULL)
+-    debug_file = stderr;
+-#else
+-  openlog ("hts", LOG_PID, LOG_DAEMON);
+-#endif
+-
+-  log_notice ("hts (%s) %s started with arguments:", PACKAGE, VERSION);
+-  log_notice ("  me = %s", arg.me);
+-  log_notice ("  device = %s", arg.device ? arg.device : "(null)");
+-  if (arg.host)
+-    log_notice ("  port = %s:%d", arg.host, arg.port);
+-  else
+-    log_notice ("  port = %d", arg.port);
+-  log_notice ("  forward_port = %d", arg.forward_port);
+-  log_notice ("  forward_host = %s",
+-	      arg.forward_host ? arg.forward_host : "(null)");
+-  log_notice ("  content_length = %d", arg.content_length);
+-  log_notice ("  strict_content_length = %d", arg.strict_content_length);
+-  log_notice ("  use_std = %d", arg.use_std);
+-  log_notice ("  debug_level = %d", debug_level);
+-  log_notice ("  pid_filename = %s",
+-	      arg.pid_filename ? arg.pid_filename : "(null)");
+-  log_notice ("  chroot = %s", arg.root ? arg.root : "(null)");
+-  log_notice ("  user = %s", arg.user ? arg.user : "(null)");
+-
+-  tunnel = tunnel_new_server (arg.host, arg.port, arg.content_length);
++  Tunnel* tunnel = tunnel_new_server (arg.host, arg.port, arg.content_length);
+   if (tunnel == NULL)
+     {
+       log_error ("couldn't create tunnel");
+@@ -352,97 +315,19 @@
+ 		     &arg.max_connection_age) == -1)
+     log_debug ("tunnel_setopt max_connection_age error: %s", strerror (errno));
+ 
+-#ifdef DEBUG_MODE
+-  signal (SIGPIPE, log_sigpipe);
+-#else
+-  signal (SIGPIPE, SIG_IGN);
+-#endif
+-
+-  if (arg.pid_filename != NULL)
+-    {
+-      pid_file = fopen (arg.pid_filename, "w+");
+-      if (pid_file == NULL)
+-        {
+-          fprintf (stderr, "Couldn't open pid file %s: %s\n",
+-		   arg.pid_filename, strerror (errno));
+-        }
+-      else
+-	{
+-          fprintf (pid_file, "%d\n", (int)getpid ());
+-	  if (fclose (pid_file))
+-            {
+-              fprintf (stderr, "Error closing pid file: %s\n", 
+-		       strerror (errno));
+-            }
+-         }
+-     }
+-
+-  /* If requested to change user, get new uid and gid before chroot so we */
+-  /* don't need /etc/passwd & company in the chroot jail */
+-  if (arg.user)
+-    {
+-      struct passwd *pwd = getpwnam (arg.user);
+-      if (pwd == NULL)
+-        {
+-          log_error ("couldn't find user");
+-          log_exit (1);
+-	}
+-      uid = pwd->pw_uid;
+-      gid = pwd->pw_gid;
+-      if (setgroups (0, (const gid_t *)0) < 0)
+-        {
+-          log_error ("couldn't drop supplementary groups privileges");
+-          log_exit (1);
+-	}
+-      if (setgid (gid) < 0)
+-        {
+-          log_error ("couldn't change primary group");
+-          log_exit (1);
+-	}
+-      if (initgroups (arg.user, gid) < 0)
+-        {
+-	  /* non critical error */
+-          log_error ("couldn't add supplementary groups");
+-	}
+-    }
+-
+-  /* Change root if requested */
+-  if (arg.root)
+-    {
+-      if (chroot (arg.root) < 0)
+-        {
+-          log_error ("couldn't change root");
+-          log_exit (1);
+-	}
+-      if (chdir ("/") < 0)
+-        {
+-          log_error ("couldn't change dir to new root");
+-          log_exit (1);
+-	}
+-      if (fclose (stdin) || fclose (stdout) || fclose (stderr))
+-        {
+-          log_error ("couldn't close stdin, stdout and/or stderr");
+-          log_exit (1);
+-	}
+-    }
+-
+-  /* Change user if requested */
+-  if (arg.user)
+-    {
+-      if (setuid (uid) < 0)
+-        {
+-          log_error ("couldn't change user");
+-          log_exit (1);
+-	}
+-    }
++  return tunnel;
++}
+ 
+-  for (;;)
+-    {
+-      time_t last_tunnel_write;
++void* run_connection(void* targ)
++{
++  Tunnel* tunnel;
++  int fd = -1;
++  int closed;
++  time_t last_tunnel_write;
+ 
+-      log_debug ("waiting for tunnel connection");
++  tunnel = (Tunnel*) targ;
+ 
+-      if (arg.device != NULL)
++  if (arg.device != NULL)
+ 	{
+ 	  fd = open_device (arg.device);
+ 	  log_debug ("open_device (\"%s\") = %d", arg.device, fd);
+@@ -474,13 +359,7 @@
+ 	  /* Usage of stdout (fd = 1) is checked later. */
+ 	}
+ 
+-      if (tunnel_accept (tunnel) == -1)
+-	{
+-	  log_notice ("couldn't accept connection: %s", strerror (errno));
+-	  continue;
+-	}
+-
+-      if (arg.forward_port != -1)
++  if (arg.forward_port != -1)
+ 	{
+ 	  struct sockaddr_in addr;
+ 
+@@ -491,8 +370,8 @@
+ 	      log_exit (1);
+ 	    }
+ 
+-	  fd = do_connect (&addr);
+-	  log_debug ("do_connect (\"%s:%d\") = %d",
++	  fd = do_connect_retry (&addr, 600);
++	  log_debug ("do_connect_retry (\"%s:%d\") = %d",
+ 		 arg.forward_host, arg.forward_port, fd);
+ 	  if (fd == -1)
+ 	    {
+@@ -512,15 +391,15 @@
+ 	    }
+ 	}
+ 
+-      closed = FALSE;
+-      time (&last_tunnel_write);
+-      while (!closed)
++  closed = FALSE;
++  time (&last_tunnel_write);
++  while (!closed)
+ 	{
+ 	  struct pollfd pollfd[2];
+ 	  int timeout;
+ 	  time_t t;
+ 	  int n;
+-      
++  
+ 	  pollfd[0].fd = fd;
+ 	  pollfd[0].events = POLLIN;
+ 	  pollfd[1].fd = tunnel_pollin_fd (tunnel);
+@@ -558,17 +437,103 @@
+ 	    time (&last_tunnel_write);
+ 	}
+ 
+-      log_debug ("closing tunnel");
+-      if (fd != 0)
++  log_debug ("closing tunnel");
++  if (fd != 0)
++    {
++      close (fd);
++    }
++  tunnel_close (tunnel);
++  log_notice ("disconnected from FIXME:hostname:port");
++
++  log_debug ("thread exiting");
++  return 0;
++}
++
++int
++main (int argc, char **argv)
++{
++  Tunnel *tunnel;
++  FILE *pid_file;
++  pthread_t thread;
++  int status;
++
++  parse_arguments (argc, argv, &arg);
++
++  if ((debug_level == 0 || debug_file != NULL) && arg.use_daemon)
++    daemon (0, 1);
++
++#ifdef DEBUG_MODE
++  if (debug_level != 0 && debug_file == NULL)
++    debug_file = stderr;
++#else
++  openlog ("hts", LOG_PID, LOG_DAEMON);
++#endif
++
++  log_notice ("hts (%s) %s started with arguments:", PACKAGE, VERSION);
++  log_notice ("  me = %s", arg.me);
++  log_notice ("  device = %s", arg.device ? arg.device : "(null)");
++  if (arg.host)
++    log_notice ("  port = %s:%d", arg.host, arg.port);
++  else
++    log_notice ("  port = %d", arg.port);
++  log_notice ("  forward_port = %d", arg.forward_port);
++  log_notice ("  forward_host = %s",
++	      arg.forward_host ? arg.forward_host : "(null)");
++  log_notice ("  content_length = %d", arg.content_length);
++  log_notice ("  strict_content_length = %d", arg.strict_content_length);
++  log_notice ("  use_std = %d", arg.use_std);
++  log_notice ("  debug_level = %d", debug_level);
++  log_notice ("  pid_filename = %s",
++	      arg.pid_filename ? arg.pid_filename : "(null)");
++
++#ifdef DEBUG_MODE
++  signal (SIGPIPE, log_sigpipe);
++#else
++  signal (SIGPIPE, SIG_IGN);
++#endif
++
++  if (arg.pid_filename != NULL)
++    {
++      pid_file = fopen (arg.pid_filename, "w+");
++      if (pid_file == NULL)
+         {
+-          close (fd);
++          fprintf (stderr, "Couldn't open pid file %s: %s\n",
++		   arg.pid_filename, strerror (errno));
++        }
++      else
++	{
++          fprintf (pid_file, "%d\n", (int)getpid ());
++	  if (fclose (pid_file))
++            {
++              fprintf (stderr, "Error closing pid file: %s\n", 
++		       strerror (errno));
++            }
++         }
++     }
++
++  for (;;)
++    {
++      log_debug ("creating a new tunnel");
++      tunnel = create_new_tunnel();
++
++      log_debug ("waiting for tunnel connection");
++      if (tunnel_accept (tunnel) == -1)
++	{
++	  log_notice ("couldn't accept connection: %s", strerror (errno));
++	  continue;
+ 	}
+-      tunnel_close (tunnel);
+-      log_notice ("disconnected from FIXME:hostname:port");
+-    }
+ 
++      log_debug ("creating tunnel handler thread");
++      status = pthread_create(&thread,
++				NULL,
++				run_connection,
++				tunnel);
++      if (status) {
++        log_error("Failed to create a new thread: %s (%d).\n", strerror(status), status);
++        log_exit(-1);
++      }
++    }
++ 
+   log_debug ("destroying tunnel");
+   tunnel_destroy (tunnel);
+- 
+-  log_exit (0);
+ }
+diff -Naur old/readme.txt new/readme.txt
+--- old/readme.txt	1969-12-31 14:00:00.000000000 -1000
++++ new/readme.txt	2017-01-10 21:45:41.239075193 -1000
+@@ -0,0 +1,61 @@
++Multithreaded HTS Changes
++
++
++1. Introduction
++
++I needed to make HTS multithreaded to cope with multiple client
++connections to the same server on the same port.  The idea was to keep
++the httptunnel code as is and in the main program do something like:
++
++	server_socket = new socket(ip, port);
++
++	while (true) {
++		new_socket = server_socket.listen()
++		create_tunnelling_thread(new_socket);
++	}
++
++
++2. The Changes
++
++The changes were made to httptunnel version 3.3.  Three files were
++modified: hts.c, common.c and tunnel.c.
++
++
++2.1 Changes to hts.c
++
++Added include <pthread.h>
++
++Moved declaration of Arguments arg from the main procedure to global
++scope so that new procedures could share arg.
++
++Created a new procedure called create_new_tunnel which returns a Tunnel
++struct.  This was an exact copy of the code in main in hts.c in httptunnel
++3.3 from lines 311 to 330.
++
++Created a new procedure called run_connection which takes a tunnel
++structure as a parameter.  This was a copy of lines 360 onwards: the
++code which initialises and runs the tunnel.
++
++Changed the main procedure to do argument parsing etc, as in lines 282
++to 310 and 331 to 355, and added the new loop which creates a tunnel,
++accepts connection requests and creates new threads to handle incoming
++connections.  This is slightly different to the pseudo code in the
++Introduction because the tunnel structure includes the listening port.
++
++
++2.2 Changes to common.c
++
++In the server_socket routine I have made the socket s static in such a
++way that s in only initialised the first time server_socket is called.
++Subsequent calls only listen on s and return s when an incoming connection
++request is heard.
++
++Added do_connect_retry which tries do_connect until timeout or success
++(the service I connect to is not super reliable).
++
++
++2.3 Changes to tunnel.c
++
++Changed do_connect to do_connect_retry.
++
++
+diff -Naur old/tunnel.c new/tunnel.c
+--- old/tunnel.c	2017-01-10 21:44:50.908273521 -1000
++++ new/tunnel.c	2017-01-10 21:45:41.239075193 -1000
+@@ -349,10 +349,10 @@
+       tunnel_out_disconnect (tunnel);
+     }
+ 
+-  tunnel->out_fd = do_connect (&tunnel->address);
++  tunnel->out_fd = do_connect_retry (&tunnel->address, 600);
+   if (tunnel->out_fd == -1)
+     {
+-      log_error ("tunnel_out_connect: do_connect (%d.%d.%d.%d:%u) error: %s",
++      log_error ("tunnel_out_connect: do_connect_retry (%d.%d.%d.%d:%u) error: %s",
+ 		  ntohl (tunnel->address.sin_addr.s_addr) >> 24,
+ 		 (ntohl (tunnel->address.sin_addr.s_addr) >> 16) & 0xff,
+ 		 (ntohl (tunnel->address.sin_addr.s_addr) >>  8) & 0xff,
+@@ -405,10 +405,10 @@
+       return -1;
+     }
+ 
+-  tunnel->in_fd = do_connect (&tunnel->address);
++  tunnel->in_fd = do_connect_retry (&tunnel->address, 600);
+   if (tunnel->in_fd == -1)
+     {
+-      log_error ("tunnel_in_connect: do_connect() error: %s",
++      log_error ("tunnel_in_connect: do_connect_retry() error: %s",
+ 		 strerror (errno));
+       return -1;
+     }
