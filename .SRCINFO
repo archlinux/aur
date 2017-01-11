@@ -1,7 +1,7 @@
 pkgbase = discord
 	pkgdesc = Discord Stable linux release
 	pkgver = 0.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://discordapp.com/
 	install = Discord.install
 	arch = x86_64

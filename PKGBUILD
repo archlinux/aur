@@ -3,7 +3,7 @@
 
 pkgname=discord
 pkgver=0.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Discord Stable linux release'
 arch=('x86_64')
 url='https://discordapp.com/'
@@ -27,7 +27,7 @@ md5sums_x86_64=('8356283b4e72d36955fa2589d4dd321a')
 package() {
   # Install the main files.
   install -d "${pkgdir}/opt/${pkgname}"
-  cp -a "${srcdir}/DiscordPTB/." "${pkgdir}/opt/${pkgname}"
+  cp -a "${srcdir}/Discord/." "${pkgdir}/opt/${pkgname}"
 
   # Exec bit
   chmod 755 "${pkgdir}/opt/${pkgname}/Discord"
