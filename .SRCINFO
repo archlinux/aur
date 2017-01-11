@@ -67,7 +67,7 @@ pkgname = vtk-base
 
 pkgname = python2-vtk
 	pkgdesc = Python bindings for VTK
-	depends = vtk
+	depends = vtk-base
 	depends = python2-matplotlib
 	depends = python2-twisted
 	depends = python2-autobahn
@@ -75,7 +75,7 @@ pkgname = python2-vtk
 
 pkgname = python-vtk
 	pkgdesc = Python bindings for VTK
-	depends = vtk
+	depends = vtk-base
 	depends = python-matplotlib
 	depends = python-twisted
 	depends = python-autobahn

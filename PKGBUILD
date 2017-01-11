@@ -165,7 +165,7 @@ package_vtk-base() {
 
 package_python-vtk() {
   pkgdesc='Python bindings for VTK'
-  depends=('vtk' 'python-matplotlib' 'python-twisted' 'python-autobahn' 'python-mpi4py' 'gdal' 'unixodbc')
+  depends=('vtk-base' 'python-matplotlib' 'python-twisted' 'python-autobahn' 'python-mpi4py' 'gdal' 'unixodbc')
 
   cd "${srcdir}/build-py3"
 
@@ -176,7 +176,7 @@ package_python-vtk() {
 
 package_python2-vtk() {
   pkgdesc='Python bindings for VTK'
-  depends=('vtk' 'python2-matplotlib' 'python2-twisted' 'python2-autobahn' 'python2-mpi4py')
+  depends=('vtk-base' 'python2-matplotlib' 'python2-twisted' 'python2-autobahn' 'python2-mpi4py')
 
   cd "${srcdir}/build-py2"
 
