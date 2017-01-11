@@ -2,7 +2,7 @@
 
 pkgname=getssl
 pkgver=2.00
-pkgrel=1
+pkgrel=2
 pkgdesc='Obtain SSL certificates from the letsencrypt.org ACME server. Suitable for automating the process on remote servers.'
 arch=('any')
 url='https://github.com/srvrco/getssl'
@@ -14,6 +14,11 @@ sha256sums=('SKIP')
 
 package() {
     cd "$srcdir/$pkgname"
+
     install -Dm755 getssl "$pkgdir/usr/bin/getssl"
+
+    install -dm755 "$pkgdir/usr/share/$pkgname"
+    cp -dpr --no-preserve=ownership *_scripts "$pkgdir/usr/share/$pkgname/"
+    chmod 755 -R "$pkgdir/usr/share/$pkgname/"
 }
 
