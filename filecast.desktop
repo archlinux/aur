@@ -1,0 +1,11 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=Filecast
+Comment=Zero setup, cross platform desktop to mobile file transfer tool
+Categories=Qt;KDE;GNOME;Application;Java
+Type=Application
+StartupNotify=true
+TryExec=/usr/bin/filecast
+Exec=filecast
+Icon=/usr/share/pixmaps/filecast.png
+Terminal=false
