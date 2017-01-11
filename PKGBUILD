@@ -26,7 +26,7 @@ package() {
   # if using system java you may remove the bundled jre and save about 100M
   #rm -rf ${pkgdir}/opt/${pkgname}/jre
 
-  ln -s /opt/${pkgname}/bin/${pkgname}.sh ${pkgdir}/usr/bin/${pkgname}
+  ln -s /opt/${pkgname}/bin/${_pkgname}.sh ${pkgdir}/usr/bin/${pkgname}
   install -D -m 644 ${srcdir}/jetbrains-${pkgname}.desktop ${pkgdir}/usr/share/applications/
   install -D -m 644 ${pkgdir}/opt/${pkgname}/bin/${_pkgname}.png ${pkgdir}/usr/share/pixmaps/${pkgname}.png
 
