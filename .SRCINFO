@@ -1,6 +1,6 @@
 pkgbase = ttf-cutive-mono
 	pkgver = 1.001
-	pkgrel = 1
+	pkgrel = 2
 	arch = any
 	license = custom:OFL
 	source = https://github.com/vernnobile/CutiveFont/raw/master/CutiveMono/GWF-1.001/CutiveMono-Regular.ttf
