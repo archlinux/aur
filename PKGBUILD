@@ -10,7 +10,7 @@ pkgname=${_full_name}-${_lang}
 pkgdesc="Standalone Web Browser from Mozilla — Nightly build (${_lang})"
 url="https://nightly.mozilla.org/"
 _version='53.0a1'
-pkgver=53.0a1.20161222
+pkgver=53.0a1.20170111
 pkgrel=1
 arch=('i686' 'x86_64')
 license=('MPL' 'GPL' 'LGPL')
@@ -26,11 +26,7 @@ _file_i686="${_src}-i686.tar.bz2"
 _file_x86_64="${_src}-x86_64.tar.bz2"
 _sums_i686="${_src}-i686.checksums"
 _sums_x86_64="${_src}-x86_64.checksums"
-source=(
-    'firefox-nightly.desktop'
-    'firefox-nightly-safe.desktop'
-    'vendor.js'
-)
+source=("${_full_name}"{,"-safe"}".desktop" 'vendor.js')
 source_i686=("${_url_l10n}"/{"${_file_i686}","${_sums_i686}"{,.asc}})
 source_x86_64=("${_url_l10n}"/{"${_file_x86_64}","${_sums_x86_64}"{,.asc}})
 sha512sums=(
@@ -49,30 +45,30 @@ pkgver() {
 }
 
 package() {
-  OPT_PATH="/opt/${_full_name}"
+  OPT_PATH="opt/${_full_name}"
 
   # Install the package files
-  install -d "${pkgdir}"/{usr/{bin,share/applications},opt}
-  cp -r ${_name} "${pkgdir}/${OPT_PATH}"
-  ln -s "${OPT_PATH}/${_name}" "${pkgdir}/usr/bin/${_full_name}"
+  install -d "${pkgdir}"/{usr/bin,opt}
+  cp -r ${_name} "${pkgdir}"/${OPT_PATH}
+  ln -s "/${OPT_PATH}/${_name}" "${pkgdir}"/usr/bin/${_full_name}
 
   # Install .desktop files
-  install -m644 "${srcdir}"/{${_full_name}.desktop,${_full_name}-safe.desktop} "${pkgdir}/usr/share/applications/"
+  install -Dm644 "${srcdir}"/${_full_name}{,-safe}.desktop -t "${pkgdir}"/usr/share/applications
 
   # Install icons
-  SRC_LOC="${srcdir}/${_name}/browser"
-  DEST_LOC="${pkgdir}/usr/share/icons/hicolor"
+  SRC_LOC="${srcdir}"/${_name}/browser
+  DEST_LOC="${pkgdir}"/usr/share/icons/hicolor
   for i in 16 32 48
   do
-      install -Dm644 "${SRC_LOC}/chrome/icons/default/default${i}.png" "${DEST_LOC}/${i}x${i}/apps/${_full_name}.png"
+      install -Dm644 "${SRC_LOC}"/chrome/icons/default/default${i}.png "${DEST_LOC}"/${i}x${i}/apps/${_full_name}.png
   done
-  install -Dm644 "${SRC_LOC}/icons/mozicon128.png" "${DEST_LOC}/128x128/apps/${_full_name}.png"
+  install -Dm644 "${SRC_LOC}"/icons/mozicon128.png "${DEST_LOC}"/128x128/apps/${_full_name}.png
 
   # Disable auto-updates
-  install -Dm644 "${srcdir}/vendor.js" "${pkgdir}/${OPT_PATH}/browser/defaults/preferences/vendor.js"
+  install -Dm644 "${srcdir}"/vendor.js -t "${pkgdir}"/${OPT_PATH}/browser/defaults/preferences
 
   # Use system-provided dictionaries
-  rm -rf "${pkgdir}/${OPT_PATH}"/{dictionaries,hyphenation}
-  ln -sf /usr/share/hunspell "${pkgdir}/${OPT_PATH}/dictionaries"
-  ln -sf /usr/share/hyphen "${pkgdir}/${OPT_PATH}/hyphenation"
+  rm -rf "${pkgdir}"/${OPT_PATH}/{dictionaries,hyphenation}
+  ln -sf /usr/share/hunspell "${pkgdir}"/${OPT_PATH}/dictionaries
+  ln -sf /usr/share/hyphen "${pkgdir}"/${OPT_PATH}/hyphenation
 }

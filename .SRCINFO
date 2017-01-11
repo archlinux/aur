@@ -1,6 +1,6 @@
 pkgbase = firefox-nightly-fr
 	pkgdesc = Standalone Web Browser from Mozilla — Nightly build (fr)
-	pkgver = 53.0a1.20161222
+	pkgver = 53.0a1.20170111
 	pkgrel = 1
 	url = https://nightly.mozilla.org/
 	arch = i686
@@ -28,13 +28,13 @@ pkgbase = firefox-nightly-fr
 	source_i686 = https://ftp.mozilla.org/pub/mozilla.org/firefox/nightly/latest-mozilla-central-l10n/firefox-53.0a1.fr.linux-i686.tar.bz2
 	source_i686 = https://ftp.mozilla.org/pub/mozilla.org/firefox/nightly/latest-mozilla-central-l10n/firefox-53.0a1.fr.linux-i686.checksums
 	source_i686 = https://ftp.mozilla.org/pub/mozilla.org/firefox/nightly/latest-mozilla-central-l10n/firefox-53.0a1.fr.linux-i686.checksums.asc
-	sha512sums_i686 = a7d7a694bb6e021fa10b482e299f63703773bc306084ed6bff82c883129ebc5b4a58a8d169434b4685db711f1e6d95af9f0cf2ccd76ba2072ac34f52781c740b
+	sha512sums_i686 = edfb1206e0774a6f44461ebbac9ae39a04a44b968b8ac70c95bc408e0cf3d4447d5e94c6b5ce340293bbea26f423fba9ac32d5c94eef5a251241d274ba917ca6
 	sha512sums_i686 = SKIP
 	sha512sums_i686 = SKIP
 	source_x86_64 = https://ftp.mozilla.org/pub/mozilla.org/firefox/nightly/latest-mozilla-central-l10n/firefox-53.0a1.fr.linux-x86_64.tar.bz2
 	source_x86_64 = https://ftp.mozilla.org/pub/mozilla.org/firefox/nightly/latest-mozilla-central-l10n/firefox-53.0a1.fr.linux-x86_64.checksums
 	source_x86_64 = https://ftp.mozilla.org/pub/mozilla.org/firefox/nightly/latest-mozilla-central-l10n/firefox-53.0a1.fr.linux-x86_64.checksums.asc
-	sha512sums_x86_64 = 75303320d4b86458b026b5218d797a739ec62480d1a4dc1811e615c9b381f905b97e35ad288793fbd910e3c485d1dc2e36fba5f790230a7bc0f241157f8ba167
+	sha512sums_x86_64 = 1fb798ce619aa1b317862d0adc43f7908ba5984f8c7feb187721c3cd7fe7c9d338adfdbad8fff1dd298a1043a83298fd9d120d3ff0e276f4c0db4525de69ad07
 	sha512sums_x86_64 = SKIP
 	sha512sums_x86_64 = SKIP
 
