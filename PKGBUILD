@@ -2,10 +2,10 @@
 
 pkgname=python-pyuv
 pkgver=1.3.0
-pkgrel=1
+pkgrel=2
 _libname=${pkgname/python-/}
 pkgdesc="A Python module which provides an interface to libuv."
-url="https://crate.io/packages/pyuv/"
+url="https://pyuv.readthedocs.io/"
 license=('MIT')
 arch=('i686' 'x86_64')
 depends=('python' 'libuv')
