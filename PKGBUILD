@@ -34,7 +34,7 @@ build() {
 
 package() {
   cd ${srcdir}/beets
-  python setup.py install --root=${pkgdir} --optimize=1
+  python setup.py install --root=${pkgdir} --optimize=1 --skip-build
 
   install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 } 
