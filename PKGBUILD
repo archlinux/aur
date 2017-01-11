@@ -2,7 +2,7 @@
 # Contributor: Johannes Löthberg <demizide@gmail.com>
 
 pkgname=beets-git
-pkgver=1.4.3.r3.ga2d37dd5
+pkgver=1.4.3.r29.g70fd6cb7
 pkgrel=1
 pkgdesc="Flexible music library manager and tagger - git version"
 arch=('any')
