@@ -1,7 +1,7 @@
 # Maintainer: Adria Arrufat (archdria) <adria.arrufat+AUR@protonmail.ch>
 
 pkgname=tensorflow
-pkgver=0.12.1+1600+ge4dde23d5
+pkgver=0.12.1+1738+g1e4d6f1c3
 pkgrel=1
 pkgdesc="Library for computation using data flow graphs for scalable machine learning"
 url="https://www.tensorflow.org/"
@@ -12,14 +12,9 @@ conflicts=('tensorflow' 'libtensorflow')
 makedepends=('git' 'bazel' 'python-numpy')
 optdepends=('cuda: GPU support'
             'cudnn: GPU support')
-_commit=e4dde23d58a10c9d0c14005d20d1ecdd599539ac
-source=("git+https://github.com/tensorflow/tensorflow#commit=$_commit"
-        "march_native.diff"
-        "https://bitbucket.org/eigen/eigen/raw/9ba936354ee8b73fb1966dcb2d3506387bb357f1/unsupported/Eigen/CXX11/src/Tensor/TensorContractionThreadPool.h")
-
-md5sums=('SKIP'
-         '696beeb14be1d669066ce51819eb6044'
-         '1bf688d25c599906f0ffddde97aca1ed')
+_commit=1e4d6f1c32be198a682518f1afce03c017c0aa11
+source=("git+https://github.com/tensorflow/tensorflow#commit=$_commit")
+md5sums=('SKIP')
 
 pkgver() {
   cd "${srcdir}/tensorflow"
@@ -55,15 +50,12 @@ prepare() {
   export TF_NEED_HDFS=0
   # disable OpenCL support
   export TF_NEED_OPENCL=0
+  # disable XLA JIT compiler
+  export TF_ENABLE_XLA=0
 
   # make sure the proxy variables are in all caps, otherwise bazel ignores them
   export HTTP_PROXY=`echo $http_proxy | sed -e 's/\/$//'`
   export HTTPS_PROXY=`echo $https_proxy | sed -e 's/\/$//'`
-
-  # hack to enable build with -march=native from: https://github.com/tensorflow/tensorflow/issues/6558
-  mkdir -p third_party/eigen3/unsupported/Eigen/CXX11/src/Tensor
-  cp ../TensorContractionThreadPool.h third_party/eigen3/unsupported/Eigen/CXX11/src/Tensor/TensorContractionThreadPool.h
-  patch -Np1 -i ../march_native.diff
 }
 
 build() {
