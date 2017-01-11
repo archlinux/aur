@@ -4,11 +4,11 @@ pkgname=python-dbutils
 pkgver=1.1
 pkgrel=5
 pkgdesc="DBUtils is a suite of Python modules allowing to connect in a safe and efficient way between a threaded Python application and a database. "
-url="http://www.webwareforpython.org/DBUtils"
+url="https://cito.github.io/w4py/"
 license=(Open Software License)
 depends=('python')
 arch=('any')
-source=(http://www.w4py.org/downloads/DBUtils/DBUtils-$pkgver.tar.gz LICENSE)
+source=(https://files.pythonhosted.org/packages/source/D/DBUtils/DBUtils-$pkgver.tar.gz LICENSE)
 sha256sums=('d62d1abaafdbd9245a53e9c901f4162125d0258ef8a489233dba4689cea0bff7'
             '4eeb837027209bbf68895f1461cafe1fb1817a8d1b5702dbee3b8c6ea42a9b9b')
 
