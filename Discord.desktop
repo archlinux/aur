@@ -1,8 +1,10 @@
 [Desktop Entry]
 Name=Discord
-Comment=Discord App
-Exec=discord
-Icon=discord
-StartupNotify=false
-Categories=Network;Chat;InstantMessaging
+Comment=All-in-one voice and text chat for gamers that's free, secure, and works on both your desktop and phone.
+GenericName=Internet Messenger
+Exec=/usr/bin/discord
+Icon=/usr/share/pixmaps/discord.png
 Type=Application
+StartupNotify=true
+Categories=Network;InstantMessaging;
+StartupWMClass=discord

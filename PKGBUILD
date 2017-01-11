@@ -1,55 +1,52 @@
-# Maintainer: Rock Neurotiko <miguelglafuente@gmail.com>
-# Contributor: Sergio Conde <skgsergio@gmail.com>
+# Maintainer: Cayde Dixon <me@cazzar.net>
+# Contributor: Anthony Anderson <aantony4122@gmail.com>
 
 pkgname=discord
-pkgver=0.0.8
+pkgver=0.0.1
 pkgrel=1
-pkgdesc='Discord linux App'
+pkgdesc='Discord Stable linux release'
 arch=('x86_64')
 url='https://discordapp.com/'
 provides=('discord')
-conflicts=('discord')
-license=('MIT')
+license=('custom')
 depends=('gtk2' 'gconf' 'libnotify' 'libxss' 'glibc' 'alsa-lib' 'nspr' 'nss')
-optdepends=('freetype2-infinality: If you have black screens with emojis install this.' 'libpulse: For pulseaudio support')
+optdepends=('freetype2-infinality: If you have black screens with emojis install this.' 'libpulse: For pulseaudio support' )
+
+install="Discord.install"
+source=(Discord.desktop LICENSE Discord.sh)
+source_x86_64=("https://dl.discordapp.net/apps/linux/${pkgver}/discord-${pkgver}.tar.gz")
+md5sums=('fdc9784f37b28178b2e9c498e4eebed9'
+         '86acf3328debd24b95cdd037a276e059'
+         '0dd3e753e0a96ad20de6b307bcd20b23')
+md5sums_x86_64=('8356283b4e72d36955fa2589d4dd321a')
 
 
-source=('Discord.desktop')
-source_x86_64=("https://dl-canary.discordapp.net/apps/linux/${pkgver}/discord-canary-${pkgver}.tar.gz")
-sha256sums=('0826f0a07a567d3d966563151329e3e155bf47da528f0698bd677cb46cc468de')
-sha256sums_x86_64=('7362afababed47a6c6ec114a755fdeccce247fe5de37a2e55bdb5dae639788bc')
 
+#This is always latest build, right now I do not know of a version param.
 
 package() {
-  case $CARCH in
-    'x86_64') _arch='x64';;
-  esac
+  # Install the main files.
+  install -d "${pkgdir}/opt/${pkgname}"
+  cp -a "${srcdir}/DiscordPTB/." "${pkgdir}/opt/${pkgname}"
 
-  # Install files
-  install -d "${pkgdir}/opt/discord"
-  cp -a "${srcdir}/DiscordCanary/." "${pkgdir}/opt/discord/"
+  # Exec bit
+  chmod 755 "${pkgdir}/opt/${pkgname}/Discord"
 
-  mv "${pkgdir}/opt/discord/DiscordCanary" "${pkgdir}/opt/discord/discord"
 
-  # Make binary executable
-  chmod 755 "${pkgdir}/opt/discord/discord"
-
-  # Install desktop entry
+  # Desktop Entry
   install -d "${pkgdir}/usr/share/applications"
   install "${srcdir}/Discord.desktop" "${pkgdir}/usr/share/applications"
 
-  # Create symbolic link to the main binary
+  # Main binary
   install -d "${pkgdir}/usr/bin"
-  ln -s "/opt/discord/discord" "${pkgdir}/usr/bin/discord"
+  #ln -s "/opt/${pkgname}/DiscordCanary" "${pkgdir}/usr/bin/DiscordCanary"
+  #installing from .sh due to how the tar extracts.
+  install "${srcdir}/Discord.sh" "${pkgdir}/usr/bin/discord"
 
   # Create symbolic link to the icon
   install -d "${pkgdir}/usr/share/pixmaps"
-  ln -s "/opt/${pkgname}/discord.png" "${pkgdir}/usr/share/pixmaps/discord.png"
+  ln -s "/opt/${pkgname}/discord.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
 
-  # Install license file
-  # install -Dm644 "${pkgdir}/opt/discord/LICENSE" "${pkgdir}/usr/share/licenses/discord/LICENSE"
-  # rm "${pkgdir}/opt/discord/LICENSE"
-
-  # Dirty hack... we should tell the developer to store settings in user home...
-  # chmod 666 "${pkgdir}/opt/discord/resources/app/init.json"
+  # License
+  install -Dm644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
