@@ -2,7 +2,7 @@
 
 pkgname=libclassicclient
 pkgver=7.0.0_b08
-pkgrel=1
+pkgrel=2
 pkgdesc="Gemalto & LuxTrust PKCS#11 middleware"
 url="https://www.luxtrust.lu/en/simple/225"
 arch=(i686 x86_64)
@@ -14,19 +14,25 @@ depends=(
   openssl
   pcsclite
 )
-source_i686=("https://nullroute.eu.org/tmp/2017/LuxTrust_Middleware_Ubuntu_32bit_7.0.0-b08.deb")
-source_x86_64=("https://nullroute.eu.org/tmp/2017/LuxTrust_Middleware_Ubuntu_64bit_7.0.0-b08.deb")
-sha256sums_i686=('543dc4288491e753f0b04f5a19b28fbf0952dfbdb6fa822442b6dced1ac9a949')
-sha256sums_x86_64=('e3e898bb6ff4e4da07b69231f2ad618b412aabd8be2ef94115a2f9d50aef84d9')
+source_i686=("https://www.luxtrust.lu/downloads/middleware/LuxTrust_Middleware_1.0.1_Ubuntu_32bit.tar.gz")
+source_x86_64=("https://www.luxtrust.lu/downloads/middleware/LuxTrust_Middleware_1.0.1_Ubuntu_64bit.tar.gz")
+sha256sums_i686=('e00fb014dd9f67a936b9b79b9237b988e70c7ad20d6c5325aac01761e25ef6f6')
+sha256sums_x86_64=('543683acb108ab38681a7ff54aab34c5a10da844e771e0dadca64e0e27789a8d')
 
 prepare() {
   cd "$srcdir"
 
-  bsdtar xf data.tar.xz
+  for _deb in *.deb; do
+    msg2 "Extracting $_deb with bsdtar"
+    _dir=${_deb%.deb}
+    rm -rf "$_dir" && mkdir "$_dir"
+    (cd "$_dir" && bsdtar xf "../$_deb")
+    (cd "$_dir" && bsdtar xf data.tar.*)
+  done
 }
 
 package() {
-  cd "$srcdir"
+  cd "$srcdir/Gemalto_Middleware_Ubuntu_64bit_7.0.0-b08"
 
   cp -a etc usr "$pkgdir/"
 
