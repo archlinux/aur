@@ -1,6 +1,6 @@
 # Maintainer: Chris Nixon <chris.nixon@sigma.me.uk>
 pkgname="tesseract-ocr-git"
-pkgver=3.05.00dev.r511.gdd9452c
+pkgver=4.00.00alpha.r245.g5b45e5a2
 pkgrel=1
 pkgdesc="OCR Engine developed at HP Labs and now sponsored by Google."
 arch=('i686' 'x86_64')

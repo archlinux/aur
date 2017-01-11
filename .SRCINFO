@@ -1,6 +1,6 @@
 pkgbase = tesseract-ocr-git
 	pkgdesc = OCR Engine developed at HP Labs and now sponsored by Google.
-	pkgver = 3.05.00dev.r511.gdd9452c
+	pkgver = 4.00.00alpha.r245.g5b45e5a2
 	pkgrel = 1
 	url = https://code.google.com/p/tesseract-ocr/
 	arch = i686
