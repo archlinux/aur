@@ -1,8 +1,8 @@
 # Maintainer: Lev Lybin <aur@devtrue.net>
 
 pkgname=synology-cloud-station-backup
-pkgver=4374
-_sver=4.2.1
+pkgver=4379
+_sver=4.2.2
 pkgrel=1
 pkgdesc="A backup service that allows you to back up your files from multiple client computers to a centralized Synology NAS"
 arch=('i686' 'x86_64')
@@ -11,8 +11,8 @@ license=('unknown')
 install=synology-cloud-station-backup.install
 
 source_x86_64=(https://global.download.synology.com/download/Tools/CloudStationBackup/${_sver}-${pkgver}/Ubuntu/Installer/x86_64/synology-cloud-station-backup-${pkgver}.x86_64.deb)
-md5sums_i686=('e448a6d82e9417a748b0602e5828e02e')
-md5sums_x86_64=('74436278edc59d8d8f716bd805a10a8e')
+md5sums_i686=('d6c1ab7f27d294757faf5a81b2818bad')
+md5sums_x86_64=('eda31e746cd312ec8628c381b4363767')
 source_i686=(https://global.download.synology.com/download/Tools/CloudStationBackup/${_sver}-${pkgver}/Ubuntu/Installer/i686/synology-cloud-station-backup-${pkgver}.i686.deb)
 
 prepare() {
