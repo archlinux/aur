@@ -1,4 +1,4 @@
-# Maintainer: Ivan Shapovalov <intelfx100@gmail.com>
+# Maintainer: Ivan Shapovalov <intelfx@intelfx.name>
 
 pkgbase=python-matrix-angular-sdk-git
 pkgname=('python2-matrix-angular-sdk-git')
@@ -30,5 +30,3 @@ package_python2-matrix-angular-sdk-git() {
 	cd matrix-angular-sdk
 	python2 setup.py install --root "${pkgdir}" --optimize=1 --skip-build
 }
-
-# vim: set ts=4 sw=4 tw=0 ft=sh :
