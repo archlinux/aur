@@ -29,20 +29,18 @@ package_python-frozendict() {
 	depends=('python')
 
 	cd "frozendict-${pkgver}"
-	python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+	python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
 
 	install -Dm644 LICENSE.txt \
-		"$pkgdir/usr/share/licenses/$pkgname/LICENSE.txt"
+		"${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.txt"
 }
 
 package_python2-frozendict() {
 	depends=('python2')
 
 	cd "frozendict-${pkgver}-python2"
-	python2 setup.py install --root="$pkgdir" --optimize=1 --skip-build
+	python2 setup.py install --root="${pkgdir}" --optimize=1 --skip-build
 
 	install -Dm644 LICENSE.txt \
-		"$pkgdir/usr/share/licenses/$pkgname/LICENSE.txt"
+		"${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.txt"
 }
-
-# vim: set ts=4 sw=4 tw=0 ft=sh :
