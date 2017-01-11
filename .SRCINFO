@@ -1,7 +1,7 @@
 pkgbase = eclipse-jubula-git
 	pkgdesc = Jubula plugins for Eclipse IDE to create functional GUI tests (gerrit version)
 	pkgver = 5.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://eclipse.org/jubula/
 	arch = any
 	license = EPL

@@ -3,7 +3,7 @@
 pkgname='eclipse-jubula-git'
 pkgver=5.0.0
 _buildNumber=lastStableBuild
-pkgrel=1
+pkgrel=2
 pkgdesc='Jubula plugins for Eclipse IDE to create functional GUI tests (gerrit version)'
 arch=('any')
 url='http://eclipse.org/jubula/'
