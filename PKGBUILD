@@ -3,10 +3,10 @@ pkgver=20131012
 pkgrel=1
 pkgdesc="Rake is meant to dump assets (textures, animations, notecards, scripts, etc...) from either Second Life™ or OpenSim to your local hard-drive."
 arch=(any)
-url="http://was.fm/opensim:rake"
+url="http://grimore.org/opensim/rake"
 license=("GPLv3")
 depends=(mono)
-source=("http://was.fm/_media/opensim/rake.zip"
+source=("http://grimore.org/_media/opensim/rake.zip"
 "opensim-rake.sh")
 md5sums=('53518eab4f5849f5bfaed4ba4149df5e'
          '949e23cccf789411a842cb230282d2de')
