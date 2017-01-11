@@ -4,15 +4,15 @@
 pkgbase='python-axolotl'
 pkgname=('python-axolotl' 'python2-axolotl')
 pkgver=0.1.35
-pkgrel=1
+pkgrel=2
 pkgdesc="Python port of libaxolotl"
 url="https://github.com/tgalal/python-axolotl"
 arch=('any')
 license=('GPL3')
 makedepends=('python2-setuptools' 'python2-dateutil' 'python2-protobuf' 'python2-crypto' 'python2-axolotl-curve25519'
              'python-setuptools' 'python-dateutil' 'python-protobuf' 'python-crypto' 'python-axolotl-curve25519')
-source=("${pkgbase}-${pkgver}.tar.gz::https://github.com/tgalal/${pkgbase}/archive/${pkgver}.tar.gz")
-md5sums=('3c2e0580c4dce21161a4ebdf18f4438d')
+source=("https://pypi.python.org/packages/d5/6b/cc0256a10d11f8a8868e9c8673a0edcdba438c1e92c4b66e52c6b575ca6a/python-axolotl-0.1.35.tar.gz")
+md5sums=('34c54a41fe2271caade486fc92392541')
 
 prepare() {
 	cp -a "${pkgbase}-${pkgver}"{,-python2}
@@ -30,12 +30,12 @@ package_python-axolotl() {
 	depends=('python' 'python-dateutil' 'python-protobuf' 'python-crypto' 'python-axolotl-curve25519')
 
 	cd "${pkgbase}-${pkgver}"
-	python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
+	python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
 }
 
 package_python2-axolotl() {
 	depends=('python2' 'python2-dateutil' 'python2-protobuf' 'python2-crypto' 'python2-axolotl-curve25519')
 
 	cd "${pkgbase}-${pkgver}-python2"
-	python2 setup.py install --root="$pkgdir/" --optimize=1 --skip-build
+	python2 setup.py install --root="${pkgdir}" --optimize=1 --skip-build
 }
