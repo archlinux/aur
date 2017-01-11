@@ -1,0 +1,25 @@
+From 23dd45f67da929c9558fa2566bfc3d9fd4c88e67 Mon Sep 17 00:00:00 2001
+From: Charles Bos <charlesbos1@gmail.com>
+Date: Wed, 11 Jan 2017 21:27:44 +0000
+Subject: [PATCH] do not add overlay borders to titlebar sides for maximised
+ windows as this can clip the window buttons slightly (Adwaita - Metacity 2)
+
+---
+ Adwaita/metacity-1/metacity-theme-2.xml | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/Adwaita/metacity-1/metacity-theme-2.xml b/Adwaita/metacity-1/metacity-theme-2.xml
+index 0bd177e..dbc8da3 100644
+--- a/Adwaita/metacity-1/metacity-theme-2.xml
++++ b/Adwaita/metacity-1/metacity-theme-2.xml
+@@ -48,8 +48,8 @@
+ <frame_geometry name="max" title_scale="medium" parent="normal" rounded_top_left="false" rounded_top_right="false">
+ 	<distance name="left_width" value="1" />
+ 	<distance name="right_width" value="1" />
+-	<distance name="left_titlebar_edge" value="1"/>
+-	<distance name="right_titlebar_edge" value="1"/>
++	<distance name="left_titlebar_edge" value="0"/>
++	<distance name="right_titlebar_edge" value="0"/>
+ 	<distance name="title_vertical_pad" value="9"/> <!-- 
+ 							This needs to be 1 less then the
+ 							title_vertical_pad on normal state
