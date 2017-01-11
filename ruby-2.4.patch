@@ -1,0 +1,63 @@
+diff --git a/ruby/inc/leatherman/ruby/api.hpp b/ruby/inc/leatherman/ruby/api.hpp
+index 32117c6..4f6c0ba 100644
+--- a/ruby/inc/leatherman/ruby/api.hpp
++++ b/ruby/inc/leatherman/ruby/api.hpp
+@@ -412,15 +412,11 @@ namespace leatherman {  namespace ruby {
+         /**
+          * See MRI documentation.
+          */
+-        VALUE* const rb_cFixnum;
++        VALUE* const rb_cInteger;
+         /**
+          * See MRI documentation.
+          */
+         VALUE* const rb_cFloat;
+-        /**
+-         * See MRI documentation.
+-         */
+-        VALUE* const rb_cBignum;
+ 
+         /**
+          * See MRI documentation.
+diff --git a/ruby/src/api.cc b/ruby/src/api.cc
+index 434f691..9e96e05 100644
+--- a/ruby/src/api.cc
++++ b/ruby/src/api.cc
+@@ -100,9 +100,8 @@ namespace leatherman { namespace ruby {
+         LOAD_SYMBOL(rb_cHash),
+         LOAD_SYMBOL(rb_cString),
+         LOAD_SYMBOL(rb_cSymbol),
+-        LOAD_SYMBOL(rb_cFixnum),
++        LOAD_SYMBOL(rb_cInteger),
+         LOAD_SYMBOL(rb_cFloat),
+-        LOAD_SYMBOL(rb_cBignum),
+         LOAD_SYMBOL(rb_eException),
+         LOAD_SYMBOL(rb_eArgError),
+         LOAD_SYMBOL(rb_eTypeError),
+@@ -396,12 +395,12 @@ namespace leatherman { namespace ruby {
+ 
+     bool api::is_fixednum(VALUE value) const
+     {
+-        return is_a(value, *rb_cFixnum);
++        return is_a(value, *rb_cInteger);
+     }
+ 
+     bool api::is_bignum(VALUE value) const
+     {
+-        return is_a(value, *rb_cBignum);
++        return is_a(value, *rb_cInteger);
+     }
+ 
+     bool api::is_float(VALUE value) const
+diff --git a/ruby/tests/api-test.cc b/ruby/tests/api-test.cc
+index 20bcec7..1d2cafb 100644
+--- a/ruby/tests/api-test.cc
++++ b/ruby/tests/api-test.cc
+@@ -52,7 +52,7 @@ TEST_CASE("api::is_*", "[ruby-api]") {
+         REQUIRE_FALSE(ruby.is_fixednum(ruby.eval("1.5")));
+ 
+         REQUIRE(ruby.is_bignum(ruby.eval(to_string(numeric_limits<int64_t>::max()))));
+-        REQUIRE_FALSE(ruby.is_bignum(ruby.eval("2")));
++        REQUIRE(ruby.is_bignum(ruby.eval("2")));
+         REQUIRE_FALSE(ruby.is_bignum(ruby.eval("1.5")));
+     }

@@ -2,7 +2,7 @@
 
 pkgname=leatherman
 pkgver=0.9.1
-pkgrel=3
+pkgrel=4
 pkgdesc="Collection of C++ and CMake utility libraries"
 arch=('i686' 'x86_64')
 url="https://github.com/puppetlabs/leatherman"
@@ -10,9 +10,11 @@ license=('APACHE')
 makedepends=('boost' 'cmake' 'rapidjson')
 checkdepends=('ruby')
 source=($pkgname-$pkgver.tar.gz::https://github.com/puppetlabs/leatherman/archive/$pkgver.tar.gz
-        boost-1.62.patch)
+        boost-1.62.patch
+        ruby-2.4.patch)
 md5sums=('ad1c03f759a9451b333c867ec90e4a97'
-         '18aeaac44f2b24702f04fb04535d3a3a')
+         '18aeaac44f2b24702f04fb04535d3a3a'
+         'eb63e7694bd15e779ddc7b146adaad90')
 
 prepare() {
   cd $pkgname-$pkgver
@@ -22,7 +24,10 @@ prepare() {
     $( grep -rl rb_data_object_alloc ruby )
 
   # (LTH-115) Fix Boost.Log sink initialization with Boost 1.62
-  patch -Np0 -i ../boost-1.62.patch 
+  patch -Np0 -i ../boost-1.62.patch
+
+  # (LTH-124) Fix for ruby-2.4 related API changes
+  patch -p1 -i ../ruby-2.4.patch
 }
 
 build() {
