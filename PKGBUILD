@@ -5,7 +5,7 @@ pkgbase=linux-surfacepro3-rt
 _srcname=linux-4.9
 pkgver=${_srcname#linux-}
 _rtver=rt1
-pkgrel=2.24
+pkgrel=2.25
 arch=('i686' 'x86_64')
 url="https://github.com/alyptik/linux-surfacepro3-rt"
 license=('GPL2')
@@ -51,7 +51,7 @@ sha256sums=('029098dcffab74875e086ae970e3828456838da6e0ba22ce3f64ef764f3d7f1a'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
             '0fcd0b22fe9ec58ba41b81b463f68d619b6898a5c405fb26c85237a183240371'
             'ed9b9e6efaf4f23e7ae3406322b4d1d3080e8dbc7ab3f03bcbf728ca2010e21b'
-            '86eaa80941ba3f013c9ff581f4262ca5a5346870a394db6a3a11dcdf5a840681'
+            '8626f726565a4126063d768a67b55a8f0898a794a412a1ca12de80e9b4aa1949'
             'f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c')
 
 validpgpkeys=(
