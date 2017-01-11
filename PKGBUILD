@@ -1,15 +1,15 @@
 # Maintainer: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
 
 pkgname=python-rollbar
-pkgver=0.13.3
+pkgver=0.13.9
 pkgrel=1
 pkgdesc="Easy and powerful exception tracking with rollbar"
 arch=(any)
-url="https://github.com/rollbar/pyrollbar"
+url="https://rollbar.com/docs/notifier/pyrollbar/"
 license=('MIT')
 depends=('python-requests' 'python-six')
 makedepends=('python-setuptools')
-source=("$url/archive/v$pkgver/$pkgname-$pkgver.tar.gz")
+source=("https://github.com/rollbar/pyrollbar/archive/v$pkgver/$pkgname-$pkgver.tar.gz")
 
 build() {
     cd "$srcdir"/pyrollbar-$pkgver
@@ -21,4 +21,4 @@ package() {
     python setup.py install -O1 --skip-build --root="$pkgdir"
 }
 
-sha256sums=('e11b7927f68b5711498c4fd1e31e3c723916d1263d711fa735e182615a420651')
+sha256sums=('f23f6b62496e2492f15a6bd1783dadfbbc784969210aa29bac08db1e242ceb95')
