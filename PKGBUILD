@@ -24,7 +24,7 @@ optdepends=('python2-psycopg2: PostgreSQL support (instead of built-in SQLite)'
             'python2-bleach: e-mail notifications'
             'python2-matrix-synapse-ldap3: LDAP support'
             'python2-psutil: metrics')
-source=("git://github.com/matrix-org/synapse.git#tag=v$_pkgver"
+source=("git://github.com/matrix-org/synapse.git#tag=v${_pkgver}"
         'sysusers-synapse.conf'
         'deps-relax-checks.patch')
 md5sums=('SKIP'
@@ -34,30 +34,31 @@ backup=('etc/synapse/log_config.yaml')
 install='synapse.install'
 
 prepare() {
-	cd "synapse"
-	git apply -3 "$srcdir/deps-relax-checks.patch"
-#	git am -3 < "$srcdir/deps-relax-checks.patch"
+	cd synapse
+	git apply -3 "${srcdir}/deps-relax-checks.patch"
 }
 
 build() {
-	cd "synapse"
+	cd synapse
 	python2 setup.py build 
 }
 
 package() {
-	cd "synapse"
+	cd synapse
 	python2 setup.py install --root "${pkgdir}" --optimize=1 --skip-build
 
-	for file in "$pkgdir/usr/lib/python2.7/site-packages/synapse"/{app,push}/*.py; do
-		sed -re 's|env python$|&2.7|' -i "$file"
+	for file in "${pkgdir}/usr/lib/python2.7/site-packages/synapse"/{app,push}/*.py; do
+		sed -re 's|env python$|&2.7|' -i "${file}"
 	done
 
+
+
 	install -Dm644 "contrib/systemd/log_config.yaml" \
-		"$pkgdir/etc/synapse/log_config.yaml"
+		"${pkgdir}/etc/synapse/log_config.yaml"
 
 	install -Dm644 "contrib/systemd/synapse.service" \
-		"$pkgdir/usr/lib/systemd/system/synapse.service"
+		"${pkgdir}/usr/lib/systemd/system/synapse.service"
 
-	install -Dm644 "$srcdir/sysusers-synapse.conf" \
-		"$pkgdir/usr/lib/sysusers.d/synapse.conf"
+	install -Dm644 "${srcdir}/sysusers-synapse.conf" \
+		"${pkgdir}/usr/lib/sysusers.d/synapse.conf"
 }
