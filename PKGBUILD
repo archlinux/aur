@@ -1,5 +1,5 @@
 pkgname=telegram-desktop-bin-alpha
-pkgver=0.10.26
+pkgver=0.10.27
 pkgrel=1
 pkgdesc="Official desktop version of Telegram messaging app (alpha version) - Static binaries"
 arch=('i686' 'x86_64')
