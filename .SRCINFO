@@ -6,6 +6,7 @@ pkgbase = libewf-git
 	arch = any
 	license = LGPL
 	makedepends = git
+	makedepends = pkg-config
 	provides = libewf-git
 	conflicts = libewf
 	source = git+https://github.com/libyal/libewf.git
