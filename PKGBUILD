@@ -68,8 +68,7 @@ optdepends=('libva-vdpau-driver-chromium: HW video acceleration for NVIDIA users
             'pepper-flash: PPAPI Flash Player'
             'chromium-widevine-dev: Widevine plugin (eg: Netflix) (Dev Channel)'
             #
-            'kdebase-kdialog: Needed for file dialogs in KDE4/KF5'
-            'kdialog-git: Needed for file dialogs in KF5'
+            'kdialog: Needed for file dialogs in KF5'
             #
             'kwalletmanager: Needed for storing passwords in KWallet'
             #
