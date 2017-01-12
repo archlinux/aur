@@ -1,11 +1,11 @@
 # Maintainer: gh0st <gh0st@vivaldi.net>
 
-pkgname="shift-git"
+pkgname=shift-git
 pkgver=0.r69.97461e4
 pkgrel=1
-pkgdesc='A minimalistic approach to maximum control of your Transmission. (Web UI)'
+pkgdesc="A minimalistic approach to maximum control of your Transmission. (Web UI)"
 arch=('any')
-url='https://github.com/killemov/Shift/'
+url="https://github.com/killemov/Shift/"
 license=('GPL')
 depends=('transmission-cli')
 makedepends=('git')
