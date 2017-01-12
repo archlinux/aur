@@ -1,13 +1,13 @@
 # Maintainer: John Lane <archlinux at jelmail dot com>
-# Previously: Contributor: Nathan Owe <ndowens.aur at gmail dot com>
+# Contributor: Nathan Owe <ndowens.aur at gmail dot com>
 
 pkgname=dcc
 pkgver=1.3.158
-pkgrel=1
+pkgrel=2
 pkgdesc="Distributed Checksum Clearinghouse spam tool"
 url="http://www.rhyolite.com/anti-spam/dcc/"
 arch=('i686' 'x86_64')
-license="custom"
+license=('custom')
 depends=('sh')
 source=(http://www.rhyolite.com/anti-spam/dcc/source/old/$pkgname-$pkgver.tar.Z \
 	http://www.rhyolite.com/dcc/LICENSE)
