@@ -2,7 +2,10 @@
 
 run_hook() {
 	modprobe -a -d dm-crypt >/dev/null 2>&1
-	gpg --decrypt /rootkey.gpg | cryptsetup open /dev/disk/by-partlabel/random cryptroot -d -
+    IFS=: read cryptdev cryptname <<EOF
+$cryptdevice
+EOF
+	gpg --decrypt /rootkey.gpg | cryptsetup open "$cryptdev" "$cryptname" -d -
     rm -rf /.gnupg
     /bin/killall gpg-agent scdaemon pcscd &> /dev/null
 }
