@@ -1,0 +1,13 @@
+diff --git a/generate_config b/generate_config
+index a16efd4..cf29461 100755
+--- a/generate_config
++++ b/generate_config
+@@ -56,7 +56,7 @@ mailhub=mail
+ # Where will the mail seem to come from?
+ #rewriteDomain=`echo -n $mailname`
+ # The full hostname
+-hostname=`hostname --fqdn`
++hostname=localhost.localdomain
+ EOF
+ 
+ echo
