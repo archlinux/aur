@@ -7,6 +7,7 @@ pkgbase = python-scrapy
 	license = BSD
 	makedepends = git
 	depends = python-parsel
+	depends = python-pydispatcher
 	depends = python-twisted
 	depends = libxml2
 	depends = python-w3lib

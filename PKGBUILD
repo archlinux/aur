@@ -5,8 +5,11 @@ pkgdesc="A fast high-level scraping and web crawling framework. Python 3 compati
 arch=(any)
 license=('BSD')
 url="http://scrapy.org"
-depends=('python-parsel' 'python-twisted' 'libxml2' 'python-w3lib' 'python-lxml' 'python-six' 'python-queuelib' 
-         'python-setuptools' 'python-cssselect' 'python-pyopenssl' 'python-service-identity')
+depends=('python-parsel' 'python-pydispatcher' 'python-twisted' 'libxml2'
+         'python-w3lib' 'python-lxml' 'python-six' 'python-queuelib'
+         'python-setuptools' 'python-cssselect' 'python-pyopenssl'
+         'python-service-identity'
+        )
 conflicts=('scrapy')
 makedepends=('git')
 optdepends=('ipython: for enhanced support of the interactive scraping shell')
