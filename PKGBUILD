@@ -1,7 +1,7 @@
 # Maintainer: M0Rf30
 
 pkgname=airtime-git
-pkgver=airtime.2.5.2.1.r81.g7b3d2ec11
+pkgver=2.5.2.1.81.
 pkgrel=1
 pkgdesc="Open broadcast software for scheduling and station management."
 arch=('i686' 'x86_64')
@@ -143,7 +143,7 @@ msg2 "Fixing permissions..."
 
 pkgver() {
     cd airtime
-    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+    git describe --long --tags | cut -c 9-19 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 md5sums=('SKIP'
          'f42b444b6b06268a8c8695173b55391c'
