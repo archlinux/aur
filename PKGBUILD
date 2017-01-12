@@ -3,9 +3,9 @@
 # Contributor: agnotek <agnostic.sn [at]gmail.com>
 
 pkgname=telegram-desktop-bin-dev
-pkgver=0.10.25
+pkgver=1.0.0
 pkgrel=1
-_dev=1 # If it is a dev-only version, set this to 1
+_dev=0 # If it is a dev-only version, set this to 1
 pkgdesc="Official desktop version of Telegram messaging app - Static binaries, developement version"
 arch=('i686' 'x86_64')
 url="https://desktop.telegram.org"
@@ -44,15 +44,15 @@ source_x86_64=('https://updates.tdesktop.com/tlinux/tsetup.'${pkgver}${_devsuffi
 sha256sums=('32d1597d67a7ef519367e499fcc978da4cce104e370b3787853446d93b1533d6'
             '4226167b476a75e844ddf0d429068e7e901bbde516810a7d4ca90f8405c01eef'
             'd4cdad0d091c7e47811d8a26d55bbee492e7845e968c522e86f120815477e9eb'
-            'cf079b341461e2ed439b7c6ff13d6a31b09e3840df07e9811823fc4b12a23831'
-            '0ff2bd9d21a4a265cf414778321623ca92d37d8285e2ce81941bf742a40e1a64'
-            '9d6d999cbb9d711f36840256b7704593d77c470f22f367b80bf501a0dc155887'
-            'e9570cc49fa66ebabe250598671ffab7bcdbd9875b36763481d9f796b360cf92'
-            '94e21d6e7c30ae4f09a42937c46836454b955944ca565e0427f6d7494d034f6d'
-            '4226167b476a75e844ddf0d429068e7e901bbde516810a7d4ca90f8405c01eef'
-            '2339e94c159975c81a14b6df67a5fad1be02cf032ffb953215d895d1343a3ecb')
-sha256sums_i686=('7c0b3f29b2a1fc5c42e383171c1040be37877ed3d17f5dea2141ba65baed9a2e')
-sha256sums_x86_64=('6a3fa4eee3fafc9a11b8e36b216ad5d29ffc5b307f7c0665462e51246c679ebe')
+            'fc052d1e28b68761bfb6c30ff012e54a4bba0311fc3fc470c728d028c33e9d9f'
+            '8ae874ada23687c95cbcfe7cfa4cbe1c37f097d9c96e5a836c20109d976a86c7'
+            '57d9c71074a619dbe6c361e49f4bee60b1b8c574d8b223d75e61b3744b660ed1'
+            '10507a1ddc379b00230c6f6e2bd9f94ea0c7caff9cae05335a66b4d10b7571eb'
+            '83e3e8eeecadcb3429704626d4ac80ef61ef4e06ba2c6ca2b105a4a436f33032'
+            '871f2a6d3bd9d657f8379196e51fd3117c1586e0042e9e993ae138f78b2bcd76'
+            'a9eb77ca5a428b32f6e01f62b859cce788c4c9a170dc2cd080800a9de59faa3d')
+sha256sums_i686=('6ec380faf45c4f0fbcbb1873da92a5ced6539e3abc934a39716a3e3132f87d60')
+sha256sums_x86_64=('0e1ff315760decd7137de3d87e80b799f879db6950c9944bf48b56066b973c03')
 # Some installation information
 install="$pkgname.install"
 
