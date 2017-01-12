@@ -4,16 +4,17 @@
 
 _pkgname=awesome
 pkgname=awesome-luajit-git
-pkgver=3.5.2.2180.g5aa4a16
-pkgrel=2
+pkgver=4.0.90.gf69769f7
+pkgrel=3
 pkgdesc="awesome window manager built with luajit"
 arch=('i686' 'x86_64')
 url='http://awesome.naquadah.org/'
 license=('GPL2')
-depends=('cairo' 'dbus' 'gdk-pixbuf2' 'imlib2' 'libxdg-basedir' 'libxkbcommon-x11'
+depends=('cairo' 'dbus' 'gdk-pixbuf2' 'libxdg-basedir' 'libxkbcommon-x11'
          'luajit' 'luajit-lgi' 'pango' 'startup-notification' 'xcb-util-cursor'
-         'xcb-util-keysyms' 'xcb-util-wm' 'xorg-xmessage')
-makedepends=('asciidoc' 'cmake' 'docbook-xsl' 'doxygen' 'imagemagick' 'ldoc' 'xmlto')
+         'xcb-util-keysyms' 'xcb-util-xrm' 'xcb-util-wm')
+makedepends=('asciidoc' 'cmake' 'docbook-xsl' 'git' 'imagemagick' 'ldoc'
+             'xmlto')
 optdepends=('rlwrap: readline support for awesome-client'
             'dex: autostart your desktop files'
             'vicious: widgets for the Awesome window manager')
@@ -34,12 +35,14 @@ pkgver() {
 }
 
 prepare() {
-  mkdir -p build
-  sed -i 's/^lua/luajit/' $pkgname/build-utils/lgi-check.sh
-  sed -i 's/COMMAND lua/COMMAND luajit/' $pkgname/tests/examples/CMakeLists.txt
+  cd $pkgname
+  sed -i 's/^lua\b/luajit/' build-utils/lgi-check.sh
+  sed -i 's/COMMAND lua\b/COMMAND luajit/' awesomeConfig.cmake tests/examples/CMakeLists.txt
+  sed -i 's/LUA_COV_RUNNER lua\b/LUA_COV_RUNNER luajit/' tests/examples/CMakeLists.txt
 }
 
 build() {
+  mkdir -p build
   cd build
 
   cmake ../$pkgname \
