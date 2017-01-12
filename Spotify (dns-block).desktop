@@ -1,0 +1,12 @@
+[Desktop Entry]
+Name=Spotify (dns-block)
+GenericName=Music Player
+Comment=Listen to Spotify with experimental dns ad blocking
+Icon=spotify-client
+Exec=spotify-adkiller-dns-block
+TryExec=spotify
+Terminal=false
+Type=Application
+Categories=Audio;Music;Player;AudioVideo;
+MimeType=x-scheme-handler/spotify
+StartupWMClass=spotify
