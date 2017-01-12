@@ -4,17 +4,17 @@
 # Contributor: d1t2 <dieterplex at gmail dot com>
 
 pkgname='eclipse-testng'
-pkgver='6.9.10'
-pkgdate='201512240000'
+pkgver='6.10.0'
+pkgdate='201612030230'
 pkgrel='1'
-pkgdesc='A testing framework inspired from JUnit and NUnit'
+pkgdesc='A testing framework plugin for Eclipse IDE inspired by JUnit and NUnit'
 arch=('any')
 url='http://testng.org/'
 license=('APACHE')
 depends=('eclipse>=4.5.0')
 #_url="https://github.com/cbeust/testng-eclipse/raw/master/testng-eclipse-update-site"
-_url='http://beust.com/eclipse/'
-_dest=$pkgdir/usr/lib/eclipse/dropins/${pkgname/eclipse-}/eclipse
+_url="https://dl.bintray.com/testng-team/testng-eclipse-release/updatesites/$pkgver.$pkgdate"
+_dest="$pkgdir/usr/lib/eclipse/dropins/${pkgname/eclipse-}/eclipse"
 _path="org.testng.eclipse_$pkgver.$pkgdate"
 _path2features="org.testng.eclipse.maven.feature_$pkgver.$pkgdate"
 _path2plugins="org.testng.eclipse.maven_$pkgver.$pkgdate"
@@ -26,10 +26,10 @@ source=(
 )
 noextract=(features.jar plugins.jar features2.jar plugins2.jar)
 
-sha256sums=('f66093bbc84fd457dc863b40aafb5c85f874592ca74bedf789c7e1a90f84a11f'
-            '7ea3fa3b164d64f50fc459650208bec08d71438e4e27533872e1911a0b0fe3f3'
-            'ba0ef5a84629946a7ffeab44e97ff9e0a1d0ed17f23821350dab386f7d275f7a'
-            'fdfb8e6f6a9c5d59215812b0e7cd60f9b3c567ad98f8bb3c0cb054e88900714d')
+sha256sums=('49abb6b209ee6d755ae083a6433e580b3c1d4c7e447e4c368f9a1fdcd48d2b55'
+            'e39c3b084c881ee995debcc2dde33d2b06755c81a68e5ea42c6135ef6e849e83'
+            '464afaa483badcaed8ad7b27733b64e82b7ba3794716871f09d4c67258ca0cb6'
+            '90b010bb2b86dab1fb8ce0f91c2a4e6db0a27b0f914fb6d13813bc9c843097ba')
 
 package() {
   _dest=$pkgdir/usr/lib/eclipse/dropins/${pkgname/eclipse-}/eclipse
