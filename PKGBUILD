@@ -2,7 +2,7 @@
 
 pkgname=openspades-font-unifont
 pkgver=unknown
-pkgrel=1
+pkgrel=2
 pkgdesc="GNU Unifont (Generic Unicode Font) for OpenSpades."
 url="http://openspades.yvt.jp"
 arch=('any')
