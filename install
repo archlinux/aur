@@ -1,0 +1,5 @@
+post_install() {
+    echo "the hook is called keyencrypt and is to be placed before encrypt in /etc/mkinicpio.conf HOOKS=, /rootkey.gpg can be generated with setbootpassword"
+}
+
+# vim: set ft=sh:

@@ -1,0 +1,14 @@
+#!/usr/bin/ash
+
+run_hook() {
+    rootkey=$(mktemp)
+    chmod 0000 "$rootkey"
+    gpg -o "$rootkey" --yes /rootkey.gpg
+
+    # send the now decrypted key location to cryptsetup's encrypt hook
+    cryptkey="rootfs:$rootkey"
+
+    rm -rf /.gnupg
+    /bin/killall gpg-agent scdaemon pcscd &> /dev/null
+}
+# vim: set ft=sh:

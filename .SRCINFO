@@ -1,0 +1,18 @@
+pkgbase = keyencrypt
+	pkgdesc = mkinitpio hook to decrypt /rootkey.gpg, which is then fowarded to cryptsetup's hook encrypt for root decryption, usefull to boot from a non-encrypted usb key.
+	pkgver = 1
+	pkgrel = 1
+	arch = any
+	depends = mkinitcpio
+	depends = cryptsetup
+	depends = gnupg
+	conflicts = gpgunlock
+	source = hook
+	source = hook_install
+	source = rootkey.sh
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = keyencrypt
+

@@ -1,0 +1,30 @@
+#!/bin/bash
+
+build() {
+    if [ -d "${BUILDROOT}/.gnupg" ]; then
+	    echo "WARNING! /.gnupg exists in initramfs buildroot, deleting." > 2
+	    rm -rf "${BUILDROOT}/.gnupg"
+    fi
+
+    mkdir -p "${BUILDROOT}/.gnupg"
+    chmod 0700 "${BUILDROOT}/.gnupg"
+    echo 'pinentry-program /usr/bin/pinentry-tty' > "${BUILDROOT}/.gnupg/gpg-agent.conf"
+
+
+    add_binary "gpg"
+    add_binary "gpg-agent"
+    add_binary "pinentry-tty"
+    add_binary "/usr/lib/gnupg/scdaemon"
+    
+    add_file "/rootkey.gpg"
+
+    add_runscript
+}
+
+help() {
+    cat <<HELPEOF
+    decrypt /rootkey.gpg and set encrypt's cryptkey param accordingly
+HELPEOF
+}
+
+# vim: set ft=sh:
