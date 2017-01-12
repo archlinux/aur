@@ -1,8 +1,8 @@
 # Contributor: Sergio Tridente <tioduke AT gmail DOT com>
 
 pkgname=gate
-pkgver=8.2
-_build=5482
+pkgver=8.3
+_build=5704
 pkgrel=1
 pkgdesc="GATE Developer is a development environment that provides a rich set of graphical interactive tools for the creation, measurement and maintenance of software components for processing human language."
 arch=('any')
@@ -11,7 +11,7 @@ license=('LGPL')
 depends=('java-runtime')
 options=(!strip)
 source=(http://downloads.sourceforge.net/sourceforge/${pkgname}/${pkgname}-${pkgver}-build${_build}-BIN.zip gate.desktop gate.png)
-md5sums=('61b340faf2ba741874bcbbbc990cb975'
+md5sums=('d134ccfebdece968561ab408f649b1ba'
          'a7a2cb37bf093d4b4164c7d381661f33'
          'acf3e7a9fcbdedd24589394260d56d12')
 
