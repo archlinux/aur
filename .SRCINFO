@@ -6,6 +6,7 @@ pkgbase = libbde-git
 	arch = any
 	license = LGPL
 	makedepends = git
+	makedepends = pkg-config
 	provides = libbde-git
 	conflicts = libbde
 	source = git+https://github.com/libyal/libbde.git
