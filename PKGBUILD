@@ -2,12 +2,12 @@
 
 pkgname=phive
 pkgver=0.6.2
-pkgrel=2
+pkgrel=3
 pkgdesc="The Phar Installation and Verification Environment (PHIVE)"
-arch=('i686' 'x86_64' 'armv6h' 'armv7h')
-url="http://www.jetbrains.com/phpstorm/"
+arch=('any')
+url="https://phar.io/"
 license=('BSD')
-depends=("php")
+depends=('php')
 source=("https://github.com/phar-io/phive/releases/download/${pkgver}/phive-${pkgver}.phar"
     "https://raw.githubusercontent.com/phar-io/phive/${pkgver}/LICENSE")
 sha256sums=('778b7f6aa4f968148675015a099db27d85db0076d2f2dd0d9668f08f7471e6b2'
