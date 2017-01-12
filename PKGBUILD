@@ -3,21 +3,19 @@
 
 pkgbase=python-acme
 pkgname=('python-acme' 'python2-acme')
-pkgver=0.9.3
-pkgrel=2
+pkgver=0.10.0
+pkgrel=1
 pkgdesc="ACME protocol implementation in Python"
 arch=('any')
 license=('Apache')
 url="https://github.com/letsencrypt/letsencrypt"
-makedepends=('python-setuptools' 'python2-setuptools' 'python-pyasn1' 'python2-pyasn1'
-             'python-cryptography' 'python2-cryptography' 'python-pyopenssl' 'python2-pyopenssl'
-             'python-ndg-httpsclient' 'python2-ndg-httpsclient' 'python-pyrfc3339'
-             'python2-pyrfc3339' 'python-pytz' 'python2-pytz' 'python-requests'
+makedepends=('python-setuptools' 'python2-setuptools' 'python-pyopenssl' 'python2-pyopenssl'
+             'python-pyrfc3339' 'python2-pyrfc3339' 'python-pytz' 'python2-pytz' 'python-requests'
              'python2-requests' 'python-six' 'python2-six' 'python-werkzeug' 'python2-werkzeug'
              'python-mock' 'python2-mock')
 checkdepends=('python-nose' 'python2-nose')
 source=("https://pypi.io/packages/source/a/acme/acme-$pkgver.tar.gz")
-sha512sums=('5f99b251de60f1cf91027aa8497a951c3063e802b05bfd3c81c0992ffbef26894476140a8f88eed4c72471e3fc8d2d1a4a1e43095e387456868b98acd8631ca5')
+sha512sums=('5be1d0f04b9f65392b04b261a8352a09ecc36b42b0b9a1abb688efeeff3d06457dd6c07000d25834455008675dd674a4b4688d34f3927bc4bde4c5b2c5b5961e')
 
 prepare() {
   cp -a acme-$pkgver{,-py2}
@@ -40,8 +38,7 @@ check() {
 }
 
 package_python-acme() {
-  depends=('python-setuptools' 'python-pyasn1' 'python-cryptography' 'python-pyopenssl'
-           'python-ndg-httpsclient' 'python-pyrfc3339' 'python-pytz' 'python-requests'
+  depends=('python-setuptools' 'python-pyopenssl' 'python-pyrfc3339' 'python-pytz' 'python-requests'
            'python-six' 'python-werkzeug' 'python-mock')
 
   cd acme-$pkgver
@@ -49,9 +46,8 @@ package_python-acme() {
 }
 
 package_python2-acme() {
-  depends=('python2-setuptools' 'python2-pyasn1' 'python2-cryptography' 'python2-pyopenssl'
-           'python2-ndg-httpsclient' 'python2-pyrfc3339' 'python2-pytz' 'python2-requests'
-           'python2-six' 'python2-werkzeug' 'python2-mock')
+  depends=('python2-setuptools' 'python2-pyopenssl' 'python2-pyrfc3339' 'python2-pytz'
+           'python2-requests' 'python2-six' 'python2-werkzeug' 'python2-mock')
 
   cd acme-$pkgver-py2
   python2 setup.py install --root="$pkgdir" --optimize=1
