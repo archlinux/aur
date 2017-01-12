@@ -37,5 +37,5 @@ package() {
 
   install -D "${pkgname%-git}" -t "$pkgdir"/usr/bin/
 
-  install -D -m644 "Spotify (dns-block).desktop" -t "$pkgdir"/usr/share/applications/
+  install -D -m644 "${pkgname%-git}.desktop" -t "$pkgdir"/usr/share/applications/
 }
