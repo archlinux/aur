@@ -1,9 +1,9 @@
 pkgname=ntfy-git
-pkgver=v2.0.1.r2.g30308ca
+pkgver=v2.4.0.r20.gbab1dc8
 pkgrel=1
 pkgdesc="A utility for sending push notifications to different backends (Pushover, Pushbullet, XMPP and various desktop notification systems)"
 url="https://github.com/dschep/ntfy"
-depends=('python' 'python-yaml' 'python-requests' 'python-appdirs' 'python-ruamel.yaml' 'python-setuptools')
+depends=('python' 'python-yaml' 'python-requests' 'python-appdirs' 'python-ruamel.yaml' 'python-setuptools' 'xorg-xprop')
 makedepends=('python' 'git')
 license=('GPLv3')
 arch=('any')
