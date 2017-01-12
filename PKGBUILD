@@ -1,9 +1,9 @@
 # Maintainer: Dimitrios Misdanitis <d.misdanitis@gmail.com>
 
 pkgname=yakuake-sp-git
-pkgver=v3.0.2.7.g2c081e7.focusfix
+pkgver=v3.0.2.13.g0808000.focusfix-1
 pkgrel=1
-pkgdesc="A drop-down terminal emulator based on KDE Konsole technology. (GIT version with split focus patch)"
+pkgdesc="A drop-down terminal emulator based on KDE Konsole technology. (GIT version with wrong split focus patch)"
 arch=('i686' 'x86_64')
 url='https://www.kde.org/applications/system/yakuake'
 license=('GPL')
