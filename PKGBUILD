@@ -1,8 +1,9 @@
 # Maintainer: Christian Hesse <mail@eworm.de>
 
-pkgname=vis-standalone-git
-pkgver=0.2.r632.g604c866
-pkgrel=1
+pkgbase=vis-standalone-git
+pkgname=(vis-standalone-git vis-single-git)
+pkgver=0.2.r645.ge83a9d5
+pkgrel=2
 _pkgver_libmusl=1.1.16
 _pkgver_ncurses=6.0
 _pkgver_libtermkey=0.19
@@ -12,7 +13,7 @@ pkgdesc='modern, legacy free, simple yet efficient vim-like editor - statically 
 arch=('i686' 'x86_64')
 url='http://www.brain-dump.org/projects/vis/'
 makedepends=('git')
-conflicts=('vis' 'vis-standalone')
+conflicts=('vis')
 provides=('vis')
 license=('custom:ISC')
 validpgpkeys=('836489290BB6B70F99FFDA0556BCDB593020450F'  # musl libc <musl@libc.org>
@@ -63,12 +64,22 @@ build() {
 
 	unset CFLAGS LDFLAGS
 
-	make PREFIX='/usr/' standalone
+	make PREFIX='/usr/' single
 }
 
-package() {
+package_vis-standalone-git() {
+	pkgdesc='modern, legacy free, simple yet efficient vim-like editor - statically linked - git checkout'
+
 	cd vis/
 
 	make DESTDIR="${pkgdir}" PREFIX='/usr/' install
+}
+
+package_vis-single-git() {
+	pkgdesc='modern, legacy free, simple yet efficient vim-like editor - statically linked, self-extracting - git checkout'
+
+	cd vis/
+
+	install -D -m0755 vis-single "${pkgdir}/usr/bin/vis"
 }
 
