@@ -1,0 +1,15 @@
+pkgbase = libewf-git
+	pkgdesc = Library to access the Expert Witness Compression Format (EWF)
+	pkgver = 20161109.11a3f476
+	pkgrel = 1
+	url = https://github.com/libyal/libewf
+	arch = any
+	license = LGPL
+	makedepends = git
+	provides = libewf-git
+	conflicts = libewf
+	source = git+https://github.com/libyal/libewf.git
+	sha1sums = SKIP
+
+pkgname = libewf-git
+
