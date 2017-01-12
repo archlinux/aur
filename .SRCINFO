@@ -13,9 +13,9 @@ pkgbase = capsized-hib
 	depends = gcc-libs
 	options = !strip
 	options = !upx
-	source = hib://capsized-06132013-bin
+	source = hib://capsized-12212015-bin
 	source = capsized-hib.desktop
-	md5sums = 710a25b2dc5f948f0a1cf6c6fe39690f
+	md5sums = 10515ca5f73e38151e17766cba97f3ed
 	md5sums = a6f5bc2ddf20690545cf095d59eec37b
 
 pkgname = capsized-hib
