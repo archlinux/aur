@@ -2,16 +2,16 @@
 # Maintainer: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=pari-jupyter
-pkgver=1.1.0
+pkgver=1.2.1
 pkgrel=1
 pkgdesc="Jupyter kernel for PARI"
 arch=(any)
-url="http://www.sagemath.org"
+url="https://github.com/jdemeyer/pari_jupyter"
 license=(GPL)
-depends=(pari-sage jupyter)
+depends=(pari jupyter)
 makedepends=(cython2)
-source=(http://mirrors.mit.edu/sage/spkg/upstream/pari_jupyter/pari_jupyter-$pkgver.tar.gz)
-md5sums=('80ec021034affd77cebba79eb4bc4f83')
+source=(https://pypi.io/packages/source/p/pari_jupyter/pari_jupyter-$pkgver.tar.bz2)
+md5sums=('aabbc5a2dd80cb9e4cffead763ec479e')
 
 prepare() {
   cd pari_jupyter-$pkgver
