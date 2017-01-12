@@ -2,16 +2,20 @@
 
 pkgname=gog-terraria
 pkgver=2.13.0.16
-pkgrel=1
+pkgrel=2
 pkgdesc="The very world is at your fingertips as you fight for survival, fortune, and glory."
 url="http://terraria.org/"
 license=('custom')
 arch=('i686' 'x86_64')
 depends=('sdl2')
+# If Firejail is installed, this application will be sandboxed automatically.
+optdepends=('firejail: Sandbox this game from your OS')
 source=("gog://${pkgname//-/_}_${pkgver}.sh"
-        "${pkgname}.desktop")
+        "${pkgname}.desktop"
+        "$pkgname")
 sha256sums=('0ef29ce47158ecc55e680a7dc99458b599eabd45c99200437b19f2647b254c37'
-            '815bf359c2828cdefee1e33a978a84a2ebb538450197a5792b62e382ae3e3093')
+            '815bf359c2828cdefee1e33a978a84a2ebb538450197a5792b62e382ae3e3093'
+            'ac635a42cd64aa013e2f13b375ae10c1da7fd028681134962e10349f80725995')
 
 # You need to download the gog.com installer file manually or with lgogdownloader.
 DLAGENTS+=("gog::/usr/bin/echo %u - This is is not a real URL, you need to download the GOG file manually to \"$PWD\" or setup a gog:// DLAGENT. Read this PKGBUILD for more information.")
@@ -46,11 +50,11 @@ package(){
         "${pkgdir}/opt/${pkgname}/support"
 
     # Desktop integration
-    install -Dm 644 "support/icon.png" \
+    install -Dm644 "support/icon.png" \
         "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
     install -Dm644 "docs/End User License Agreement.txt" \
         "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-    install -Dm 644 "${srcdir}/${pkgname}.desktop" \
+    install -Dm644 "${srcdir}/${pkgname}.desktop" \
         "${pkgdir}/usr/share/applications/${pkgname}.desktop"
-    ln -s "/opt/${pkgname}/start.sh" "${pkgdir}/usr/bin/${pkgname}"
+    install "$srcdir/$pkgname" "$pkgdir/usr/bin/$pkgname"
 }
