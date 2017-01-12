@@ -6,7 +6,7 @@ pkgrel=1
 pkgdesc="This is an electron client that uses Web Skype to better integrate with desktop environments found on Linux."
 arch=("any")
 url="https://github.com/stanfieldr/ghetto-skype"
-license=("GPLv3")
+license=("GPL3")
 depends=('electron')
 makedepends=('npm' 'asar')
 conflicts=('ghetto-skype')
@@ -42,13 +42,9 @@ build() {
 }
 
 package() {
-
-	install -Dm0755 -t "${pkgdir}/usr/bin" ghetto-skype
+	install -Dm0755 -t "${pkgdir}/usr/bin"                ghetto-skype
 	install -Dm0644 -t "${pkgdir}/usr/share/applications" ghetto-skype.desktop
-	install -Dm0644 -t "${pkgdir}/usr/share/licenses/ghetto-skype" "${pkgname}/LICENSE"
-
-	install -Dm0644 -t "${pkgdir}/usr/lib/ghetto-skype" ghetto-skype.asar
+	install -Dm0644 -t "${pkgdir}/usr/lib/ghetto-skype"   ghetto-skype.asar
 
 	install -Dm0644 "${pkgname}/src/assets/tray/skype.png" "${pkgdir}/usr/share/pixmaps/ghetto-skype.png"
-
 }
