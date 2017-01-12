@@ -3,9 +3,9 @@
 # Contributor: Felix Yan <felixonmars@gmail.com>
  
 pkgname=nvidia-bfq-304xx
-pkgver=304.132
+pkgver=304.134
 _extramodules=extramodules-4.8-bfq
-pkgrel=2
+pkgrel=1
 _pkgdesc="NVIDIA 304xx drivers for linux-bfq."
 pkgdesc="$_pkgdesc"
 arch=('i686' 'x86_64')
@@ -20,8 +20,8 @@ source=('disable-mtrr.patch')
 source_i686=("ftp://download.nvidia.com/XFree86/Linux-x86/${pkgver}/NVIDIA-Linux-x86-${pkgver}.run")
 source_x86_64=("ftp://download.nvidia.com/XFree86/Linux-x86_64/${pkgver}/NVIDIA-Linux-x86_64-${pkgver}-no-compat32.run")
 md5sums=('c4becf1145a139cc0121be9ad340bcd8')
-md5sums_i686=('1149ec562ba16843eb3b957ec8238de2')
-md5sums_x86_64=('671551de37d7164d3b117c854374dcec')
+md5sums_i686=('9abd7e9272382bd0e6939c3a367cc1a6')
+md5sums_x86_64=('2ecfa6bd145f673264f7977e0366e259')
 
 [[ "$CARCH" = "i686" ]] && _pkg="NVIDIA-Linux-x86-${pkgver}"
 [[ "$CARCH" = "x86_64" ]] && _pkg="NVIDIA-Linux-x86_64-${pkgver}-no-compat32"
