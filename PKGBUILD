@@ -5,7 +5,7 @@
 _pgo=0  # "1" to enable
 
 pkgname=thunderbird-beta
-pkgver=50.0b3
+pkgver=51.0b1
 _major=${pkgver/rc*}
 _build=${pkgver/*rc}
 pkgrel=1
@@ -28,7 +28,7 @@ source=("https://ftp.mozilla.org/pub/thunderbird/releases/$pkgver/source/thunder
         "$pkgname.desktop"
         "$pkgname-safe.desktop"
         'vendor.js')
-sha512sums=('95e37f2bf0ff3f880582b7ab3c56596d82a7ae72ee428c5c02c0e492cd100353751d59ce36b77c1f29279b7a1915546cc227e96dacf05f8b7eac72044cf83476'
+sha512sums=('040ef336d6661c179647e2ed24302e137e05cbf520dc25dc38e59b31499c3329c4fba991a4c20e1ea8edb45ef46b9f013935ffdb45161c8765f49a5b161d1388'
             '8f73124b10eeb0d98d68dece7fd152b771a9aac2f84268dcf82e5473183c75bea9b7ba9db153566ddad0cbf0f006b022d39762576a4303ce4330a8211edabb53'
             '62895299de6b1b55f332bc3c58c7c113640a0bc2e97d3a3800e47c20acd3af54174c1c7a7ab83778944f4e90ff5f15ca17f611d06f74ab9d9dccd3ec365f8f81'
             'fc83c23f67cc5d399bc655d2486936db3ab500bafe399a905a17a0b0f63ad9befb782fc9c07d467a65a80a00e3ce984700ec3cf60e4cb3e1b29b20954c6fa775'
