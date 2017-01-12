@@ -1,7 +1,7 @@
 pkgbase = terravox-git
 	pkgdesc = Simple heightmap Editor for Voxlap5 VXL (512x512 only) (git version)
 	pkgver = v0.0.3.c7f5d21
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/yvt/terravox
 	arch = x86_64
 	arch = i686
