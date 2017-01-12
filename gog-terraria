@@ -1,10 +1,11 @@
 #!/bin/sh
 
 run='/opt/gog-terraria/start.sh'
+cd /opt/gog-terraria/  # The launcher fails unless in its dir.
 
 if which firejail >/dev/null 2>&1 && [ -z "$FIREJAIL_IGNORE" ]; then
-  echo "Firejail detected. Running with --caps.drop=all"
-  echo "To bypass Firejail enforcement, run FIREJAIL_IGNORE=1 <program>."
+  echo "Firejail detected. Enforcing a sandbox"
+  echo "To bypass Firejail enforcement, run FIREJAIL_IGNORE=1 $run."
   firejail --caps.drop=all "$run"
 else
   "$run"

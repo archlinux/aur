@@ -9,13 +9,13 @@ license=('custom')
 arch=('i686' 'x86_64')
 depends=('sdl2')
 # If Firejail is installed, this application will be sandboxed automatically.
-optdepends=('firejail: Sandbox this game from your OS')
+optdepends=('firejail: Automatically sandbox this application from your OS')
 source=("gog://${pkgname//-/_}_${pkgver}.sh"
         "${pkgname}.desktop"
         "$pkgname")
 sha256sums=('0ef29ce47158ecc55e680a7dc99458b599eabd45c99200437b19f2647b254c37'
             '815bf359c2828cdefee1e33a978a84a2ebb538450197a5792b62e382ae3e3093'
-            'ac635a42cd64aa013e2f13b375ae10c1da7fd028681134962e10349f80725995')
+            '939f39e8b8cbb30ae95648d299008df030b6c6e8e583893da1916e024b493e5b')
 
 # You need to download the gog.com installer file manually or with lgogdownloader.
 DLAGENTS+=("gog::/usr/bin/echo %u - This is is not a real URL, you need to download the GOG file manually to \"$PWD\" or setup a gog:// DLAGENT. Read this PKGBUILD for more information.")
@@ -28,13 +28,6 @@ prepare(){
     # Therefore, a conditional into a no-op command will keep the PKGBUILD from failing
     # Of course, if you have any real problems unzipping the PKGBUILD will not abort.
     unzip -d "${srcdir}/terraria" "${pkgname//-/_}_${pkgver}.sh" || :
-    cd "${srcdir}/terraria/data/noarch"
-
-    sed -r -i \
-    's/(CURRENT_DIR="\$\( cd "\$\( dirname )'`
-      `'"\$\{BASH_SOURCE\[0\]\}"(.*$)'`
-      `'/\1$( readlink -nf "${BASH_SOURCE[0]}" )\2/' \
-    "start.sh"
 }
 
 package(){
