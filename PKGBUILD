@@ -3,13 +3,21 @@
 pkgname=singularityviewer
 pkgver=1.8.7.6866
 _pkgver=1_8_7_6866
-pkgrel=1
+pkgrel=2
 pkgdesc="A Second Life (secondlife) protocol compatible client application, used to access its service as well as a number of other such as those based upon OpenSim platform"
 url="http://www.singularityviewer.org/"
 license=('custom')
 arch=('x86_64')
-depends=('apr-util' 'gtk2' 'libgl' 'libidn' 'libjpeg-turbo' 'mesa' 'nss' 'sdl' 'glu' 'pangox-compat')
-optdepends=('libpulse: for PulseAudio support' 'alsa-lib: for ALSA support' 'nvidia-utils: for NVIDIA support' 'flashplugin: for inworld Flash support' 'gstreamer0.10: for video support, may need good, bad and ugly plugins' 'lib32-freealut: for OpenAL support')
+depends=('apr-util' 'gtk2' 'libgl' 'libidn' 'mesa' 'nss' 'sdl' 'libxss' 'lib32-libidn' 'lib32-libsndfile' 'lib32-zlib' 'gconf' 'lib32-util-linux')
+
+
+optdepends=('libpulse: for PulseAudio support' 'alsa-lib: for ALSA support'
+	'nvidia-utils: for NVIDIA support'
+	'flashplugin: for inworld Flash support'
+	'gstreamer0.10: for video support, may need good, bad and ugly plugins'
+	'lib32-freealut: for OpenAL support'
+	'openal'
+	'libxtst')
 #source_i686=("http://bitbucket.org/SingularityViewer/singularityviewer/downloads/Singularity-i686-$pkgver.tar.bz2"
 #	"singularityviewer.desktop"
 #	"singularityviewer.launcher")
