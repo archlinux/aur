@@ -10,7 +10,7 @@ pkgbase = xye
 	depends = sdl_ttf
 	depends = xdg-utils
 	source = https://downloads.sourceforge.net/xye/xye-0.12.2.tar.gz
-	source = gcc6.patch
+	source = xye-gcc6.patch
 	sha256sums = 5d7c04f37d6b4a1821594512c7ddbc8189f968e08ecfd5af55231302f2f917d8
 	sha256sums = 7b674fbfc81d7105fe667a267217f89cbe50012e06065626d778e4d4563de54f
 
