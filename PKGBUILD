@@ -9,7 +9,7 @@ arch=('i686' 'x86_64')
 pkgdesc='A safe, concurrent, practical language'
 url='http://www.rust-lang.org/'
 license=('MIT' 'Apache')
-makedepends=('libffi' 'perl' 'python2' 'curl' 'llvm' 'clang' 'haskell-pandoc' 'emacs')
+makedepends=('libffi' 'perl' 'python2' 'curl' 'llvm' 'clang' 'emacs')
 source=("http://static.rust-lang.org/dist/rustc-nightly-src.tar.gz" docs.patch)
 sha256sums=('b73f77ec274bc1ade6badc5b4fab7076c10cf122f420f89eeeaa5548f63f4feb'
             'f7e17374bf6bb5699f75d7792a7ece582144df79599956bf16df89e0ee0b41d5')
