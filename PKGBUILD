@@ -2,7 +2,7 @@
 
 pkgname=airvpn-beta-bin
 pkgver=2.11.10
-pkgrel=1
+pkgrel=2
 pkgdesc='AirVPN client "Eddie" based on OpenVPN, beta version.'
 arch=('i686' 'x86_64')
 url=https://airvpn.org/linux/
@@ -24,6 +24,7 @@ package() {
   bsdtar -xf "$srcdir/data.tar.gz"
   msg2 "Moving stuff in place..."
   install -Dm755 "$srcdir/usr/lib/AirVPN/AirVPN.exe" "$pkgdir/usr/lib/AirVPN/AirVPN.exe"
+  install -Dm644 "$srcdir/usr/lib/AirVPN/Lib.Common.dll" "$pkgdir/usr/lib/AirVPN/Lib.Common.dll"
   install -Dm644 "$srcdir/usr/lib/AirVPN/Lib.Core.dll" "$pkgdir/usr/lib/AirVPN/Lib.Core.dll"
   install -Dm644 "$srcdir/usr/lib/AirVPN/Lib.Forms.dll" "$pkgdir/usr/lib/AirVPN/Lib.Forms.dll"
   install -Dm644 "$srcdir/usr/lib/AirVPN/Platforms.Linux.dll" "$pkgdir/usr/lib/AirVPN/Platforms.Linux.dll"
