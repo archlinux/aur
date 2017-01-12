@@ -14,7 +14,7 @@ url='https://github.com/sasq64/chipmachine'
 license=('MIT')
 depends=('mpg123' 'glew' 'glfw' 'curl')
 makedepends=('cmake' 'ninja' 'vim')
-source=("https://github.com/sasq64/$pkgname/archive/v$pkgver.tar.gz"
+source=("$pkgname-$pkgver.tar.gz::https://github.com/sasq64/$pkgname/archive/v$pkgver.tar.gz"
         "apone.tar.gz::https://github.com/sasq64/apone/archive/$_aponecommit.tar.gz"
         "two-missing-std-specifiers.patch::https://github.com/sasq64/$pkgname/commit/$_patchcommit1.patch"
         "fixed-against-latest-apone.patch::https://github.com/sasq64/$pkgname/commit/$_patchcommit2.patch")
