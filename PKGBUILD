@@ -8,32 +8,24 @@
 
 _stable_branch="v3_3_x"
 pkgname=qbittorrent-stable-git
-pkgver=3.3.7.r2.g4da05e5
+pkgver=3.3.10.r0.g4eac2cab3
 pkgrel=1
 pkgdesc="An advanced BitTorrent client programmed in C++, based on Qt toolkit and libtorrent-rasterbar. Built from source."
 arch=('i686' 'x86_64')
 url="http://www.qbittorrent.org"
 license=('custom' 'GPL')
-depends=('libtorrent-rasterbar' 'qt5-base' 'desktop-file-utils' 'hicolor-icon-theme' 'xdg-utils')
+depends=('libtorrent-rasterbar-1_0-git' 'qt5-base' 'desktop-file-utils' 'hicolor-icon-theme' 'xdg-utils')
 makedepends=('boost' 'git' 'qt5-tools')
 optdepends=('python: needed for torrent search tab')
 provides=('qbittorrent')
 conflicts=('qbittorrent')
 install=${pkgname%-*-*}.install
-source=("${pkgname%-*-*}"::"git+https://github.com/qbittorrent/qBittorrent.git#branch=${_stable_branch}"
-'https://github.com/evsh/qBittorrent/commit/b5775b467ba4ebda1366b8ae0ccf664cb4292272.patch')
-sha256sums=('SKIP'
-            '30084803e4609c004252f8fb346d1406ae0ad394d5efda68c74db0af2efbe437')
+source=("${pkgname%-*-*}"::"git+https://github.com/qbittorrent/qBittorrent.git#branch=${_stable_branch}")
+sha256sums=('SKIP')
 
 pkgver() {
   cd $srcdir/${pkgname%-*-*}
   git describe --long --tags | sed 's/^release-//;s/-/.r/;s/-/./'
-}
-
-prepare() {
- cd "$srcdir/${pkgname%-*-*}"
- ## Fix bug in which log is flooded with "Network configuration has changed" messages
- patch -Np1 -i "${srcdir}/b5775b467ba4ebda1366b8ae0ccf664cb4292272.patch"
 }
 
 build() {
