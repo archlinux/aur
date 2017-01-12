@@ -2,8 +2,8 @@
 # Maintainer: David Rosenstrauch <darose@darose.net>
 
 pkgname=eclipse-pydev
-pkgver=5.1.1
-pkgrel=2
+pkgver=5.4.0
+pkgrel=1
 pkgdesc="Python IDE for Eclipse"
 url="http://pydev.org/"
 arch=('any')
@@ -12,7 +12,7 @@ depends=('java-environment>=7' 'eclipse>=3.8')
 makedepends=('unzip')
 conflicts=('eclipse-aptana')
 source=("PyDev_${pkgver}.zip::http://downloads.sourceforge.net/project/pydev/pydev/PyDev%20${pkgver}/PyDev%20${pkgver}.zip")
-md5sums=('77f6474a07cdff1280c160df0b454034')
+md5sums=('f251d62acf1b91953f22da6ff4fc673f')
 
 package () {
 
