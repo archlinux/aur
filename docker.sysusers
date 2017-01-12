@@ -1,1 +1,2 @@
+# create docker group (FS#38029)
 g docker - -

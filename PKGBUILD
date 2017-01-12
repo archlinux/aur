@@ -16,14 +16,12 @@ optdepends=('btrfs-progs: btrfs backend support'
             'lxc: lxc backend support')
 # don't strip binaries! A sha1 is used to check binary consistency.
 options=('!strip')
-install=$pkgname.install
 source=(
   "https://get.docker.com/builds/Linux/x86_64/docker-${pkgver}-ce.tgz"
   "https://github.com/moby/moby/archive/v${pkgver}-ce.tar.gz"
   "docker.sysusers")
 md5sums=('b48684ab01ba2068ca44a21da92ce169'
          '1c794272d1e25c05cdd5b5706ea23658'
-         '8cf9900ebada61f352a03465a088da34')
 
 build() {
   cd moby-$pkgver-ce

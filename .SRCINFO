@@ -3,7 +3,6 @@ pkgbase = docker-bin
 	pkgver = 17.04.0
 	pkgrel = 2
 	url = https://www.docker.com/
-	install = docker-bin.install
 	arch = x86_64
 	license = Apache
 	makedepends = go-md2man
@@ -26,7 +25,7 @@ pkgbase = docker-bin
 	source = docker.sysusers
 	md5sums = b48684ab01ba2068ca44a21da92ce169
 	md5sums = 1c794272d1e25c05cdd5b5706ea23658
-	md5sums = 8cf9900ebada61f352a03465a088da34
+	md5sums = 9a8b2744db23b14ca3cd350fdf73c179
 
 pkgname = docker-bin
 
