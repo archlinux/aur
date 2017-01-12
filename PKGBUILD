@@ -7,8 +7,8 @@
 
 _gitname=alot
 pkgname=alot-git
-pkgrel=3
-pkgver=r2.0c67709
+pkgrel=1
+pkgver=r2640.82e8cea7
 pkgdesc="terminal-based MUA for the notmuch mail system"
 arch=(any)
 url="https://github.com/pazz/alot"
@@ -30,7 +30,7 @@ source=('git+https://github.com/pazz/alot.git')
 md5sums=(SKIP)
 
 pkgver() {
-  cd "${_pkgname}"
+  cd "$srcdir/$_gitname"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
