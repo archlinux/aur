@@ -1,13 +1,13 @@
 pkgbase = ncid
 	pkgdesc = Network caller ID.
-	pkgver = 1.4
+	pkgver = 1.6
 	pkgrel = 1
 	url = http://ncid.sourceforge.net/
 	arch = i686
 	arch = x86_64
 	license = GPL3
-	source = http://downloads.sourceforge.net/project/ncid/ncid/1.4/ncid-1.4-src.tar.gz
-	md5sums = 3a97b451d5f4335fd46be97b1ab013fc
+	source = http://downloads.sourceforge.net/project/ncid/ncid/1.6/ncid-1.6-src.tar.gz
+	md5sums = 42ff6412b10f9fc05a2c2aacef86c250
 
 pkgname = ncid
 	pkgdesc = Network caller ID server.

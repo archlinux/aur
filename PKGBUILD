@@ -1,6 +1,6 @@
 pkgname=('ncid' 'ncid-client' 'ncid-tools' 'ncid-extensions' 'ncid-module-alert' 'ncid-module-initmodem' 'ncid-module-skel')
 pkgbase=ncid
-pkgver=1.4
+pkgver=1.6
 pkgrel=1
 pkgdesc="Network caller ID."
 arch=('i686' 'x86_64')
@@ -15,7 +15,7 @@ options=()
 install=
 changelog=
 source=("http://downloads.sourceforge.net/project/ncid/ncid/$pkgver/$pkgbase-$pkgver-src.tar.gz")
-md5sums=('3a97b451d5f4335fd46be97b1ab013fc')
+md5sums=('42ff6412b10f9fc05a2c2aacef86c250')
 
 build() {
 	cd "$srcdir/$pkgbase"
@@ -136,7 +136,7 @@ package_ncid-extensions() {
         mkdir -p "$pkgdir/usr/share/doc/ncid-extensions"
         mkdir -p "$pkgdir/usr/share/man/man1"
 
-        install -m 644 "$srcdir/$pkgbase/man/hangup-message.1" "$pkgdir/usr/share/man/man1"
+        install -m 644 "$srcdir/$pkgbase/man/hangup-message-skel.1" "$pkgdir/usr/share/man/man1"
         install -m 644 "$srcdir/$pkgbase/man/hangup-skel.1" "$pkgdir/usr/share/man/man1"
 
         install -m 644 "$srcdir/$pkgbase/doc/GPL.md" "$pkgdir/usr/share/doc/ncid-extensions"
