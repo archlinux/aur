@@ -4,12 +4,14 @@
 
 pkgname=pass-git
 pkgver=20170101.421
-pkgrel=1
+pkgrel=2
 pkgdesc='Stores, retrieves, generates, and synchronizes passwords securely'
 url='http://www.passwordstore.org/'
 license=('GPL2')
 arch=('any')
-depends=('bash' 'git' 'gnupg' 'grep' 'pwgen' 'tree>=1.7.0' 'xclip')
+depends=('bash' 'git' 'gnupg' 'grep' 'tree>=1.7.0' 'xclip')
+optdepends=('dmenu: for passmenu'
+            'qrencode: for QR code support')
 makedepends=('git')
 provides=('pass' 'passmenu')
 conflicts=('pass' 'passmenu')
