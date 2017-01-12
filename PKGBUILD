@@ -1,13 +1,13 @@
 # Maintainer: Lars Hagström <lars@foldspace.nu>
 pkgname=arduino-keyboardio-boards-git
-pkgver=r23.0e49d47
+pkgver=r25.4737038
 pkgrel=1
 pkgdesc="Arduino libraries for the Keyboard.io Model01"
 arch=('any')
 url="https://keyboard.io"
 license=('Unknown')
 depends=('arduino')
-source=("$pkgname"::"git+https://github.com/DonOregano/Arduino-Boards.git#branch=remove-flexible-arrays"
+source=("$pkgname"::"git+https://github.com/keyboardio/Arduino-Boards.git"
         "adapt_to_arch.patch")
 sha1sums=('SKIP'
           'e78c9ccd9e4b552a3987bd16526cfb68549c17af')

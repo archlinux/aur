@@ -1,12 +1,12 @@
 pkgbase = arduino-keyboardio-boards-git
 	pkgdesc = Arduino libraries for the Keyboard.io Model01
-	pkgver = r23.0e49d47
+	pkgver = r25.4737038
 	pkgrel = 1
 	url = https://keyboard.io
 	arch = any
 	license = Unknown
 	depends = arduino
-	source = arduino-keyboardio-boards-git::git+https://github.com/DonOregano/Arduino-Boards.git#branch=remove-flexible-arrays
+	source = arduino-keyboardio-boards-git::git+https://github.com/keyboardio/Arduino-Boards.git
 	source = adapt_to_arch.patch
 	sha1sums = SKIP
 	sha1sums = e78c9ccd9e4b552a3987bd16526cfb68549c17af
