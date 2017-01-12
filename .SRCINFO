@@ -1,0 +1,25 @@
+pkgbase = ttf-nunito
+	pkgver = 2.0
+	pkgrel = 1
+	url = https://github.com/vernnobile/NunitoFont
+	arch = any
+	license = custom:OFL
+	source = https://github.com/vernnobile/NunitoFont/raw/master/version-2.0/Nunito-Black.ttf
+	source = https://github.com/vernnobile/NunitoFont/raw/master/version-2.0/Nunito-Bold.ttf
+	source = https://github.com/vernnobile/NunitoFont/raw/master/version-2.0/Nunito-ExtraBold.ttf
+	source = https://github.com/vernnobile/NunitoFont/raw/master/version-2.0/Nunito-ExtraLight.ttf
+	source = https://github.com/vernnobile/NunitoFont/raw/master/version-2.0/Nunito-Medium.ttf
+	source = https://github.com/vernnobile/NunitoFont/raw/master/version-2.0/Nunito-Regular.ttf
+	source = https://github.com/vernnobile/NunitoFont/raw/master/version-2.0/Nunito-SemiBold.ttf
+	source = https://github.com/vernnobile/NunitoFont/raw/master/OFL.txt
+	sha512sums = 33005c4a95b011cfadecb05b41609b29cc2d8e11183329137683b2dabfcd4a05d578a1456056ee24f61ae64e355635729e7beeffb0d12b6b4df661b912c4ea4c
+	sha512sums = 6adedc19c4244a104302fee32a3db5c759b83378e5edd4f49b46b0536ff2693174cc461b941aa4dcb7c5e8868334c59effc522b2527a1c92e45cdfd6b052cb54
+	sha512sums = cfe974a8ac7fd156d06753a07f28e6ed0744a4893fd2b42ef9a9362860c6561a89d56de3e2a64242881d04896153b80d20c47794ade4567939a18431ceaf3806
+	sha512sums = 880ee3016f0cee32cc4d6194bd570d9b45238df659000e74a13669eec498afc39276e79496d5e968085bc39fbe7ec9e124e6ec24fa50731f6aca545df8542470
+	sha512sums = c47ec28f26fab864c01a7fe039fc14ab8508b5368c4d5ac906c8f7dcba19fcdd53dd0068df658038a6d48121d2d95e1b582a444d7c29f66afcb69a466767d754
+	sha512sums = fa493130739e759e03da7fa1e20c6c05bf9165bea811450f89208af37b735ef63895b276679b143c4b4c0d80b98b721206fb31e9bf79b32c212efcce981fa68d
+	sha512sums = a5f2d2cfadab72725ca5547c37bb7a3a7ccf4c04f1b68f2ca0bdce704cd900747b9f190fb2837662de8af7cad8895af2e79ea212dd627712db5aeffcac784cd5
+	sha512sums = 258f8104b35da65446eca8ab7921a2298f168349ccac1fe649470daec762e4199ed97f6490f6b74349661dd14d7659f263361ec6b3b8f851a827e2c66cee4ccb
+
+pkgname = ttf-nunito
+
