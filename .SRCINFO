@@ -1,6 +1,6 @@
 pkgbase = forked-daapd
 	pkgdesc = iTunes-compatible media server, originally intended as a rewrite of Firefly Media Server (mt-daapd).
-	pkgver = 24.1
+	pkgver = 24.2
 	pkgrel = 1
 	url = https://github.com/ejurgensen/forked-daapd
 	install = forked-daapd.install
@@ -23,7 +23,7 @@ pkgbase = forked-daapd
 	depends = protobuf-c
 	backup = etc/forked-daapd.conf
 	backup = etc/avahi/services/forked-daapd.service
-	source = https://github.com/ejurgensen/forked-daapd/archive/24.1.tar.gz
+	source = https://github.com/ejurgensen/forked-daapd/archive/24.2.tar.gz
 	source = forked-daapd.install
 	source = forked-daapd.avahi
 	source = forked-daapd.service
