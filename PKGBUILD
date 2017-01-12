@@ -11,7 +11,7 @@ depends=('spotify')
 makedepends=('git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-source=("git+$url.git" 
+source=("git+$url.git#branch=dns-block" 
         "${pkgname%-git}"
 	"Spotify (dns-block).desktop")
 sha512sums=('SKIP'
@@ -20,13 +20,11 @@ sha512sums=('SKIP'
 
 pkgver() {
   cd "${url##*/}"
-  git checkout -q dns-block
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
   cd "${url##*/}"
-  git checkout -q dns-block
 }
 
 build() {
