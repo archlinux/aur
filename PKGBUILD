@@ -1,9 +1,9 @@
-# Maintainer: 100best <jm dot 100best at gmail dot com>
+# Contributor: 100best
 
 _pkgname=epiphany
 pkgname=$_pkgname-unstable
 pkgver=3.23.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A GNOME web browser based on the WebKit rendering engine (unstable version)"
 arch=('i686' 'x86_64')
 url="https://wiki.gnome.org/Apps/Web"
