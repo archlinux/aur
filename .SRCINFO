@@ -1,6 +1,6 @@
 pkgbase = yakuake-sp-git
-	pkgdesc = A drop-down terminal emulator based on KDE Konsole technology. (GIT version with split focus patch)
-	pkgver = v3.0.2.7.g2c081e7.focusfix
+	pkgdesc = A drop-down terminal emulator based on KDE Konsole technology. (GIT version with wrong split focus patch)
+	pkgver = v3.0.2.13.g0808000.focusfix
 	pkgrel = 1
 	url = https://www.kde.org/applications/system/yakuake
 	arch = i686
