@@ -1,3 +1,10 @@
+2017-01-12 Janne Heß
+	* 4.8.0-4
+	Xen 4.8.0
+	Update all downloaded packages
+	Remove all obsolete patches
+	Apply XSA patch: 203, 204
+
 2016-09-18 John Thomson
 	* 4.7.0-3
 	Apply XSA patch: 185, 186, 187

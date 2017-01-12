@@ -1,0 +1,11 @@
+/pkg/
+/src/
+/ovmf/
+/seabios/
+/xsa*
+
+*.tar
+*.gz
+*.tgz
+*.bz2
+*.sig

@@ -1,5 +1,5 @@
 install_msg() {
-    cat << __EOF__
+	cat << __EOF__
 ===> IMPORTANT NOTICES:
 
 In order to complete the installation, and enable Xen,
@@ -31,41 +31,43 @@ __EOF__
 }
 
 upgrade_msg() {
-    cat << __EOF__
-Xen 4.7
+	cat << __EOF__
+Xen 4.8
 Release notes
-http://wiki.xen.org/wiki/Xen_Project_4.7_Release_Notes
+http://wiki.xen.org/wiki/Xen_Project_4.8_Release_Notes
 Feature list
-http://wiki.xen.org/wiki/Xen_Project_4.7_Feature_List
+http://wiki.xen.org/wiki/Xen_Project_4.8_Feature_List
 __EOF__
 
 }
 
 post_install() {
-    install_msg
-    upgrade_msg
+	install_msg
+	upgrade_msg
+	systemd-tmpfiles --create
 }
 
 post_upgrade() {
-    upgrade_msg
+	upgrade_msg
+	systemd-tmpfiles --create
 }
 
 pre_remove() {
-   systemctl stop xendomains.service
-   systemctl stop xen-watchdog.service
-   systemctl stop xenconsoled.service
-   systemctl stop xen-init-dom0.service
-   systemctl stop xen-qemu-dom0-disk-backend.service
+	systemctl stop xendomains.service
+	systemctl stop xen-watchdog.service
+	systemctl stop xenconsoled.service
+	systemctl stop xen-init-dom0.service
+	systemctl stop xen-qemu-dom0-disk-backend.service
 
-   systemctl disable xendomains.service
-   systemctl disable xen-watchdog.service
-   systemctl disable xenconsoled.service
-   systemctl disable xen-init-dom0.service
-   systemctl disable xen-qemu-dom0-disk-backend.service
+	systemctl disable xendomains.service
+	systemctl disable xen-watchdog.service
+	systemctl disable xenconsoled.service
+	systemctl disable xen-init-dom0.service
+	systemctl disable xen-qemu-dom0-disk-backend.service
 }
 
 post_remove() {
-    cat << __EOF__
+	cat << __EOF__
 ===> IMPORTANT NOTICE:
 
 In order to finish removing Xen, you will need to modify
