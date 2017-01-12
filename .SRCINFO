@@ -1,0 +1,16 @@
+pkgbase = eclipse-dltk-shelled
+	pkgdesc = Shell IDE for Eclipse
+	pkgver = 5.6
+	pkgrel = 1
+	url = http://www.eclipse.org/dltk/
+	arch = i686
+	arch = x86_64
+	license = EPL
+	depends = eclipse-dltk-core
+	optdepends = openssh
+	conflicts = eclipse-shelled
+	source = http://www.eclipse.org/downloads/download.php?r=1&file=/technology/dltk/downloads/drops/R5.6/R-5.6-201608300412/dltk-sh-R-5.6-201608300412.zip
+	md5sums = ea4cd904f6ad607d77aff96fa810b4d4
+
+pkgname = eclipse-dltk-shelled
+
