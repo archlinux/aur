@@ -11,7 +11,7 @@ url='http://www.fontspace.com/jonathan-paterson/london-tube'
 license=('Freeware')
 install='install'
 
-source=('london-tube.zip::http://dl1.fontflood.com/download.ashx?guid=c7c2913047ba4341929c4a014108d700&name=jonathan-paterson_london-tube.zip')
+source=('london-tube.zip::http://dl1.fontspace.com/download.ashx?guid=c7c2913047ba4341929c4a014108d700&name=jonathan-paterson_london-tube.zip')
 
 md5sums=('3b14704a3323fb9a4d3e30d04b734dca')
 
