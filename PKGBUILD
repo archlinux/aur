@@ -2,7 +2,7 @@
 
 _pkgname=Shift
 pkgname="shift-git"
-pkgver=0.9.9
+pkgver=0.r69.97461e4
 pkgrel=1
 pkgdesc='A minimalistic approach to maximum control of your Transmission. (Web UI)'
 arch=('i686' 'x86_64' 'any')
@@ -17,12 +17,8 @@ md5sums=('SKIP')
 
 pkgver() {
   cd "$_pkgname"
-  (
-    set -o pipefail
-    #~ The repo doesn't have any releases or other tagged commits.
-    #~ git describe --long --tag | sed -r 's/([^-]*-g)/r\1/;s/-/./g' ||
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-  )
+
+  echo "0.r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
 }
 
 prepare() {
