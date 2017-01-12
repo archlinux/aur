@@ -14,7 +14,7 @@ pkgbase = actiona
 	depends = qt5-multimedia
 	depends = opencv
 	depends = libnotify
-	source = https://github.com/Jmgr/actiona/archive/v3.9.2.tar.gz
+	source = actiona-3.9.2.tar.gz::https://github.com/Jmgr/actiona/archive/v3.9.2.tar.gz
 	sha256sums = 5e4b6f41b93a435818572b5ab1523329429ae07c18216743150306c9c1e54b25
 
 pkgname = actiona
