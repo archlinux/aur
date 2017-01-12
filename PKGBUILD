@@ -3,8 +3,8 @@
 # Jean Lucas <jean at 4ray dot co> and Reventlov <contact+aur at volcanis dot me>
 
 pkgname=searx
-pkgver=0.10.0
-pkgrel=3
+pkgver=0.11.0
+pkgrel=1
 pkgdesc="A privacy-respecting, hackable metasearch engine"
 arch=('any')
 url="https://asciimoo.github.io/searx/"
@@ -18,16 +18,16 @@ depends=('python2-flask'
         'python2-dateutil'
         'python2-pygments'
         'python2-certifi'
-        'python2-pyasn1-modules'
+        'python2-pyasn1'
         'python2-ndg-httpsclient'
         'python2-pysocks')
 conflicts=('searx-git')
 backup=('etc/searx/settings.yml')
 install=searx.install
-source=('https://github.com/asciimoo/searx/archive/v0.10.0.zip'
+source=("https://github.com/asciimoo/searx/archive/v$pkgver.zip"
         'searx.install'
         'searx.service')
-sha512sums=('2290dde2e26b8b219e8613c2c79b17a6d0ecd9170cf02b7c6cfe6bc1c0a67ca09b60c18d194e7086701218483ae0941e8e2001fd99eedc36b17a6fead7b4f4a3'
+sha512sums=('f1f28d6135ef2a8e254a700ae9ef3366fccc83f1c2c2574f4d276347304bae6aa397f5d3a4bad4f66b19b13470c6cc724eee2c68bc004a4876a7804a7c79b97a'
             'daf98a69d87dc78ea645a02146d67b0a2903b3b219edadf2e3c987c20d0751ac147b72fe185c74bfe3e0b154ed8ee4b9b503e7ca922548fad52157aada05803c'
             '354ec9c88018108ce0a652647faefaa23afb7afe53b42259a43adf9395b854d02c2b6d350b8d17cf105a9283f62aee0788f7dc96c2676f67c77941d3ef6edc0c')
 
