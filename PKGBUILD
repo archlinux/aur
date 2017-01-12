@@ -9,7 +9,7 @@
 
 pkgname=pure-ftpd
 pkgver=1.0.44
-pkgrel=1
+pkgrel=2
 pkgdesc="A secure, production-quality and standard-conformant FTP server, focused on efficiency and ease of use."
 arch=('i686' 'x86_64')
 url="http://www.pureftpd.org/"
@@ -33,7 +33,7 @@ md5sums=('8da4207c02a72267abfdf0a9fc2bf3a9'
 build() {
 	cd ${srcdir}/${pkgname}-${pkgver}
 	# Switch TLS lines to prevent config parser error
-	sed -n '1,61p;63p' src/simpleconf_ftpd.h >_ && sed -n '62p;64,1000p' src/simpleconf_ftpd.h >>_ && mv _ src/simpleconf_ftpd1.h
+	sed -n '1,61p;63p' src/simpleconf_ftpd.h >_ && sed -n '62p;64,1000p' src/simpleconf_ftpd.h >>_ && mv _ src/simpleconf_ftpd.h
 	./configure --prefix=/usr \
 	--bindir=/usr/bin \
 	--sbindir=/usr/bin \
