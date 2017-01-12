@@ -1,20 +1,19 @@
+# Maintainer: drakkan <nicola.murino@gmail.com>
 pkgname=mingw-w64-gst-plugins-base
-pkgver=1.6.0
+pkgver=1.10.2
 pkgrel=1
 pkgdesc="GStreamer Multimedia Framework Base Plugins (mingw-w64)"
 arch=(any)
 url="http://gstreamer.freedesktop.org/"
 license=('LGPL')
-makedepends=('mingw-w64-configure')
-depends=('mingw-w64-glib2' 'mingw-w64-libxml2')
+depends=('mingw-w64-glib2' 'mingw-w64-libxml2' 'mingw-w64-gstreamer')
 options=('!strip' '!buildflags' 'staticlibs')
 makedepends=(mingw-w64-configure mingw-w64-gstreamer bison flex python2)
 
-source=(${url}/src/gst-plugins-base/gst-plugins-base-${pkgver}.tar.xz)
-sha256sums=('SKIP')
+source=("${url}/src/gst-plugins-base/gst-plugins-base-${pkgver}.tar.xz")
+sha256sums=('fbc0d40fcb746d2efe2ea47444674029912f66e6107f232766d33b722b97de20')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
-
 
 build() {
   cd "${srcdir}/gst-plugins-base-${pkgver}"
@@ -26,6 +25,9 @@ build() {
       --with-package-origin="http://www.archlinux.org/" \
       --disable-examples \
 
+    # https://bugzilla.gnome.org/show_bug.cgi?id=655517
+    sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
+   
     make
     cd ..
   done
@@ -49,3 +51,5 @@ package() {
     cd ..
   done
 }
+
+# vim: ts=2 sw=2 et:
