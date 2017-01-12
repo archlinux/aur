@@ -2,7 +2,7 @@
 # Based on community/gsmartcontrol
 
 pkgname=gsmartcontrol-svn
-pkgver=r114
+pkgver=r116
 pkgrel=1
 pkgdesc="A graphical user interface for the smartctl hard disk drive health inspection tool."
 arch=('i686' 'x86_64')
