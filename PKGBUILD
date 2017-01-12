@@ -1,4 +1,5 @@
 # Maintainer: Sebastian Morr <sebastian@morr.cc>
+# Modified by Pinczakko for Mingw-w64 cross compilation to 64-bit Windows
 
 pkgname=mingw-w64-popt
 _pkgname=popt
