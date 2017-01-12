@@ -10,7 +10,7 @@
 #        'git+https://github.com/KhronosGroup/SPIRV-Cross.git#commit=5c24d99')
 
 pkgname=retroarch-git
-pkgver=1.3.6.r1588.2c0d8e8
+pkgver=1.3.6.r3740.1f90535c3
 pkgrel=1
 #epoch=1
 _gitname=RetroArch
@@ -70,7 +70,7 @@ build() {
     --disable-oss
   make
   make -C gfx/video_filters
-  make -C audio/audio_filters
+  make -C libretro-common/audio/dsp_filters
 
 }
 
@@ -82,7 +82,7 @@ package() {
 
   install -dm 755 "${pkgdir}"/usr/lib/retroarch/filters/{audio,video}
   install -m 644 gfx/video_filters/*.{filt,so} "${pkgdir}"/usr/lib/retroarch/filters/video/
-  install -m 644 audio/audio_filters/*.{dsp,so} "${pkgdir}"/usr/lib/retroarch/filters/audio/
+  install -m 644 libretro-common/audio/dsp_filters/*.{dsp,so} "${pkgdir}"/usr/lib/retroarch/filters/audio/
 
 }
 
