@@ -1,0 +1,38 @@
+pkgbase = python-manilaclient
+	pkgdesc = Python client library for Manila
+	pkgver = 1.11.0
+	pkgrel = 1
+	url = http://docs.openstack.org/developer/python-manilaclient
+	arch = any
+	license = Apache
+	makedepends = python-setuptools
+	makedepends = python2-setuptools
+	source = git+https://git.openstack.org/openstack/python-manilaclient#tag=1.11.0
+	md5sums = SKIP
+
+pkgname = python-manilaclient
+	depends = python-oslo-config
+	depends = python-oslo-log
+	depends = python-oslo-serialization
+	depends = python-oslo-utils
+	depends = python-pbr
+	depends = python-prettytable
+	depends = python-requests
+	depends = python-simplejson
+	depends = python-babel
+	depends = python-six
+	depends = python-keystoneclient
+
+pkgname = python2-manilaclient
+	depends = python2-oslo-config
+	depends = python2-oslo-log
+	depends = python2-oslo-serialization
+	depends = python2-oslo-utils
+	depends = python2-pbr
+	depends = python2-prettytable
+	depends = python2-requests
+	depends = python2-simplejson
+	depends = python2-babel
+	depends = python2-six
+	depends = python2-keystoneclient
+
