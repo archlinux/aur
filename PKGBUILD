@@ -1,8 +1,3 @@
-# $Id: PKGBUILD 160189 2016-02-04 06:03:33Z fyan $
-# Maintainer: Felix Yan <felixonmars@archlinux.org>
-# Contributor: PyroDevil <p dot devil at gmail dot com>
-# Contributor: Anibal Pacheco <apacheco.uy@gmail.com>
-
 pkgname=python-parsel
 pkgver=1.1.0
 pkgrel=1
