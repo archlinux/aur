@@ -2,7 +2,7 @@
 pkgname=cheesecutter-stereo
 _pkgname=CheeseCutter
 pkgver=2.8s
-pkgrel=1
+pkgrel=2
 pkgdesc="Tracker program for composing music for the C64 SID chip (stereo SID version)"
 arch=('x86_64')
 url="http://theyamo.kapsi.fi/ccutter/"
@@ -16,6 +16,9 @@ sha256sums=('fcdddb15829bcb561dba39a42da69847c508d31501f6121745b491d2ba168619')
 
 build() {
     cd "${srcdir}/${_pkgname}-${pkgver}-release"
+    sed -i -r 's/^COMFLAGS=/COMFLAGS=-fPIC/' Makefile
+    sed -i -r 's/^CXXFLAGS(.*)/CXXFLAGS\1 -fPIC/' Makefile
+    sed -i -r 's/\$\(CC\) -c \$< -o \$@/\$\(CC\) -fPIC -c \$< -o \$@/' Makefile
     make release
 }
 
