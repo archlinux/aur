@@ -5,8 +5,8 @@
 # All my PKGBUILDs are managed at https://github.com/eli-schwartz/pkgbuilds
 
 pkgname=qbittorrent-git
-pkgver=3.3.10.r773.g7adb1d7f8
-pkgrel=1
+pkgver=3.3.10.r801.g33ada71e4
+pkgrel=2
 pkgdesc="A bittorrent client powered by C++, Qt5 and the good libtorrent library (development version)"
 arch=('i686' 'x86_64')
 url="http://www.qbittorrent.org/"
