@@ -3,7 +3,7 @@
 # Contributor: Schala Zeal <schalaalexiazeal@gmail.com>
 
 pkgname=mingw-w64-xz
-pkgver=5.2.2
+pkgver=5.2.3
 pkgrel=1
 pkgdesc="Library and command line tools for XZ and LZMA compressed files (mingw-w64)"
 arch=('any')
@@ -13,7 +13,7 @@ makedepends=("mingw-w64-configure")
 depends=("mingw-w64-crt")
 options=(staticlibs !strip !buildflags)
 source=("$url/xz-${pkgver}.tar.gz")
-md5sums=('7cf6a8544a7dae8e8106fdf7addfa28c')
+md5sums=('ef68674fb47a8b8e741b34e429d86e9d')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
