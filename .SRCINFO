@@ -1,6 +1,6 @@
 pkgbase = next
 	pkgdesc = CGM rc Heli Flight Simulator
-	pkgver = 1.463
+	pkgver = 1.464
 	pkgrel = 1
 	url = http://www.rc-aerobatics.eu/index_e.html
 	arch = i686
@@ -10,7 +10,7 @@ pkgbase = next
 	source = http://www.cgm-online.com/secure_rc-heli-simulator/cgm-rc-heli-simulator-linux-x86-64bit.zip
 	source = next.desktop
 	source = next.sh
-	sha256sums = d558071bbafd192fa89ed681115df338d5fa7cee5e1f1ee4f7a77e6e5f72fa60
+	sha256sums = da60c81850d3f959b59f3e7d7c570fcd475cbbec3eeb62029a752cb6a46638c3
 	sha256sums = 31972ec9835d29109e490a54b49865dd69084c5552344cfe2fec9b534a5fa8a2
 	sha256sums = 167bf2f656980495a5de69cc6fb0eb1063ddf065d021525cb73cf4e10425c2d8
 
