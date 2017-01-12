@@ -3,9 +3,9 @@
 
 _pkgname=telegram-purple
 pkgname=${_pkgname}-dev-git
-pkgver=v1.2.6.r122.g6940278
+pkgver=v1.3.0.r26.gf45ed45
 pkgrel=1
-pkgdesc="Adds support for Telegram to Pidgin, Adium, Finch and other Libpurple based messengers. (1.3.0 development branch)"
+pkgdesc="Adds support for Telegram to Pidgin, Adium, Finch and other Libpurple based messengers. (1.4.0 development branch)"
 arch=('i686' 'x86_64')
 url="https://github.com/majn/telegram-purple"
 license=("GPL")
@@ -13,7 +13,7 @@ makedepends=("git" "vim")
 depends=('glib2' 'libgcrypt' 'libpurple' 'zlib' 'libwebp')
 conflict=('telegram-purple' 'telegram-purple-git')
 
-source=("git+https://github.com/majn/telegram-purple#branch=dev-1.3.0")
+source=("git+https://github.com/majn/telegram-purple#branch=dev-1.4.0")
 sha512sums=('SKIP')
 
 pkgver() {
