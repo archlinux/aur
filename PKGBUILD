@@ -2,7 +2,7 @@
 
 _pkgname=backintime
 pkgname=($_pkgname-git $_pkgname-cli-git)
-pkgver=1.1.12.r287.g17da3d8
+pkgver=1.1.12.r347.gaae32612
 pkgrel=1
 url="http://backintime.le-web.org"
 license=('GPL')
@@ -28,7 +28,7 @@ build() {
 
 check() {
   cd $_pkgname/common
-  LANG=en_US.UTF-8 make test
+  LC_ALL=en_US.UTF-8 make test
 }
 
 package_backintime-cli-git() {
@@ -45,7 +45,7 @@ package_backintime-cli-git() {
 }
 
 package_backintime-git() {
-  pkgdesc="Simple backup/snapshot system inspired by Flyback and TimeVault. QT5 GUI version."
+  pkgdesc="Simple backup/snapshot system inspired by Flyback and TimeVault. Qt5 GUI version."
   #depends=('backintime-cli'    'libnotify' 'polkit' 'python-dbus' 'python-pyqt5' 'xorg-xdpyinfo')
   depends=('backintime-cli-git' 'libnotify' 'polkit' 'python-dbus' 'python-pyqt5' 'xorg-xdpyinfo')
   optdepends=('meld: diff tool' 'kompare: diff tool'
