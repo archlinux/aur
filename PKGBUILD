@@ -1,5 +1,5 @@
 pkgname=mingw-w64-gnutls
-pkgver=3.4.4.1
+pkgver=3.4.7
 pkgrel=1
 pkgdesc="A library which provides a secure layer over a reliable transport layer (mingw-w64)"
 arch=(any)
@@ -13,13 +13,15 @@ source=(ftp://ftp.gnutls.org/gcrypt/gnutls/v3.4/gnutls-${pkgver}.tar.xz{,.sig}
         'gnutls-3.2.7-rpath.patch'
         'gnutls-3.1.11-nosrp.patch'
         'gnutls-3.3.6-default-policy.patch'
-        'gnutls-fix-external-libtasn1-detection.patch')
-md5sums=('474efaba6fd6c6c6c0ebac2a3f431946'
+        'gnutls-fix-external-libtasn1-detection.patch'
+        'fix-undefined-ref-endservent.patch')
+md5sums=('e7556cec73c8b34fd2ff0b591e24e44c'
          'SKIP'
          '291612225516234ede7e60f8b367dd8b'
          'c3a2abfe08f47d9b07f770689b0c1b39'
          'e0dba6bfe81b965a352f965b1398bcad'
-         'f90a0f01eb0f2a6b7afcc25a836eb67e')
+         'f90a0f01eb0f2a6b7afcc25a836eb67e'
+         '0841d1955f57ebadd1086ea9a3d9d1aa')
 validpgpkeys=('1F42418905D8206AA754CCDC29EE58B996865171')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
@@ -30,6 +32,7 @@ prepare() {
   patch -p1 -i ../gnutls-3.2.7-rpath.patch
   patch -p1 -i ../gnutls-3.1.11-nosrp.patch
   #patch -p1 -i ../gnutls-3.3.6-default-policy.patch
+  patch -p1 -i ../fix-undefined-ref-endservent.patch
   sed 's/gnutls_srp.c//g' -i lib/Makefile.in
   sed 's/gnutls_srp.lo//g' -i lib/Makefile.in
   rm -f lib/minitasn1/*.c lib/minitasn1/*.h
