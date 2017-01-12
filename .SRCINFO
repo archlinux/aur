@@ -6,6 +6,7 @@ pkgbase = libbfio-git
 	arch = any
 	license = LGPL
 	makedepends = git
+	makedepends = pkg-config
 	provides = libbfio-git
 	conflicts = libbfio
 	source = git+https://github.com/libyal/libbfio.git
