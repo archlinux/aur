@@ -1,9 +1,7 @@
 pkgname=gpgunlock
-pkgver=1
-pkgrel=8
-pkgdesc="mkinitcpio hook for cryptsetup to unlock the root partition from a passphrase encrypted
-as /rootkey.gpg, can be genreated with setbootpassword, usefull to boot from a non-encrypted usb
-key."
+pkgver=discontinued
+pkgrel=9
+pkgdesc="prefer https://aur.archlinux.org/packages/keyencrypt"
 arch=(any)
 depends=(mkinitcpio cryptsetup gnupg)
 source=(hook hook_install rootkey.sh)
