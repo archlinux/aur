@@ -1,0 +1,36 @@
+pkgbase = python-designateclient
+	pkgdesc = Python client library for Designate
+	pkgver = 2.4.0
+	pkgrel = 1
+	url = http://docs.openstack.org/developer/python-designateclient
+	arch = any
+	license = Apache
+	makedepends = python-setuptools
+	makedepends = python2-setuptools
+	source = git+https://git.openstack.org/openstack/python-designateclient#tag=2.4.0
+	md5sums = SKIP
+
+pkgname = python-designateclient
+	depends = python-cliff
+	depends = python-debtcollector
+	depends = python-jsonschema
+	depends = python-osc-lib
+	depends = python-oslo-utils
+	depends = python-keystoneauth1
+	depends = python-pbr
+	depends = python-requests
+	depends = python-six
+	depends = python-stevedore
+
+pkgname = python2-designateclient
+	depends = python2-cliff
+	depends = python2-debtcollector
+	depends = python2-jsonschema
+	depends = python2-osc-lib
+	depends = python2-oslo-utils
+	depends = python2-keystoneauth1
+	depends = python2-pbr
+	depends = python2-requests
+	depends = python2-six
+	depends = python2-stevedore
+
