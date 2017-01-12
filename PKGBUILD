@@ -1,17 +1,18 @@
+# Maintainer: drakkan <nicola.murino@gmail.com>
 pkgname=mingw-w64-gst-plugins-bad
-pkgver=1.6.0
+pkgver=1.10.2
 pkgrel=1
 pkgdesc="GStreamer Multimedia Framework Bad Plugins (mingw-w64)"
 arch=(any)
 url="http://gstreamer.freedesktop.org/"
 license=('LGPL')
 makedepends=('mingw-w64-configure')
-depends=('mingw-w64-glib2' 'mingw-w64-libxml2')
+depends=('mingw-w64-glib2' 'mingw-w64-libxml2' 'mingw-w64-gstreamer' 'mingw-w64-orc')
 options=('!strip' '!buildflags' 'staticlibs')
-makedepends=(mingw-w64-configure mingw-w64-gstreamer bison flex python2)
+makedepends=(mingw-w64-configure mingw-w64-gstreamer bison flex python2 mingw-w64-openh264 mingw-w64-nettle mingw-w64-opus mingw-w64-bzip2)
 
 source=(${url}/src/gst-plugins-bad/gst-plugins-bad-${pkgver}.tar.xz)
-sha256sums=('SKIP')
+sha256sums=('0795ca9303a99cc7e44dda0e6e18524de02b39892e4b68eaba488f7b9db53a3a')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
@@ -25,6 +26,9 @@ build() {
       --with-package-name="GStreamer Bad Plugins (Arch Linux)" \
       --with-package-origin="http://www.archlinux.org/" \
       --disable-examples \
+
+    # https://bugzilla.gnome.org/show_bug.cgi?id=655517
+    sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
 
     make
     cd ..
@@ -49,3 +53,5 @@ package() {
     cd ..
   done
 }
+
+# vim: ts=2 sw=2 et:
