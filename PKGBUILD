@@ -13,7 +13,7 @@ depends=('python'
          'python-numpy'
          'python-scipy'
          'python-matplotlib'
-         'python-suds'
+         'python-suds-jurko'
          'python-pandas'
          'python-beautifulsoup4'
          'python-sqlalchemy')
