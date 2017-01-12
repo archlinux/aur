@@ -3,7 +3,7 @@
 pkgname=python-sunpy-git
 _gitname=sunpy
 pkgver=0.8.dev
-pkgrel=1
+pkgrel=2
 pkgdesc="Python library for solar physics"
 arch=('i686' 'x86_64')
 url="http://www.sunpy.org/"
