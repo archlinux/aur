@@ -3,4 +3,7 @@
 # fix for users of special IM modules
 unset XMODIFIERS GTK_IM_MODULE QT_IM_MODULE
 
+# -Dawt.useSystemAAFontSettings=on will cause a crash on startup.
+_JAVA_OPTIONS="$(echo "$_JAVA_OPTIONS" | sed 's/-Dawt.useSystemAAFontSettings=on//')"
+
 java -Xmx1024M -Xms512M -jar /usr/share/technic-launcher/technic-launcher.jar
