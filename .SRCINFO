@@ -1,6 +1,6 @@
 pkgbase = mkinitcpio-gpg-encrypt
 	pkgdesc = mkinitcpio hook that adds GnuPG and smartcard support to FDE
-	pkgver = 0.2
+	pkgver = 0.5
 	pkgrel = 1
 	url = https://github.com/xdbob/mkinitcpio-gpg-encrypt
 	install = mkinitcpio-gpg-encrypt.install
@@ -8,8 +8,8 @@ pkgbase = mkinitcpio-gpg-encrypt
 	depends = gnupg
 	depends = pcsclite
 	depends = libusb-compat
-	source = https://github.com/xdbob/mkinitcpio-gpg-encrypt/archive/v0.2.tar.gz
-	sha256sums = fac4925f4b501b64826cdcd63c912cb83a09d5d4d531090133e5c4f146a36bb3
+	source = https://github.com/xdbob/mkinitcpio-gpg-encrypt/archive/v0.5.tar.gz
+	sha256sums = 1a22eab9f29fbc896a07c60ebdc0cf15eafb90525b14af790dd976d1cfd96199
 
 pkgname = mkinitcpio-gpg-encrypt
 
