@@ -2,7 +2,7 @@
 # Contributor: Nabobalis <nabil dot freij at gmail dot com>
 pkgname=python2-sunpy
 pkgver=0.7.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Python library for solar physics"
 arch=('i686' 'x86_64')
 url="http://www.sunpy.org/"
@@ -13,7 +13,7 @@ depends=('python2'
          'python2-scipy'
          'python2-pandas'
          'python2-requests'
-         'python2-suds'
+         'python2-suds-jurko'
          'python2-beautifulsoup4')
 optdepends=('python2-sqlalchemy: for the database package'
             'python2-pytest: for running tests')
