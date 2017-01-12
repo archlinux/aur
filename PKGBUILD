@@ -2,7 +2,7 @@
 # Contributor: Kaan Kasım <kaankasim88@gmail.com>
 
 pkgname=doomretro
-pkgver=2.3.8
+pkgver=2.3.9
 pkgrel=1
 pkgdesc='The classic, refined DOOM source port'
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ optdepends=('timidity++: for music playback')
 makedepends=('cmake')
 conflicts=('doom-retro-git')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/bradharding/doomretro/archive/v$pkgver.tar.gz")
-sha256sums=('610d1add455a2802f0d219f2c35f8f704f5fc6f03a7b283dd41a5b3f1462469f')
+sha256sums=('4e5bf25d79d4c91e0ffad58f04c6c02eb25037895476ba24a081738f8a208f96')
 
 build() {
   cd $pkgname-$pkgver
