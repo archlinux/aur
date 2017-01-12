@@ -4,8 +4,8 @@
 
 pkgname=dunst-git
 _gitname=dunst
-pkgver=1.1.0.30.g360985b.635
-pkgrel=2
+pkgver=1.1.0.31.g23d8755.636
+pkgrel=1
 pkgdesc="a lightweight notification-daemon - git version"
 arch=('i686' 'x86_64')
 url="http://www.knopwob.org/dunst"
