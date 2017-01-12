@@ -5,13 +5,13 @@
 
 pkgname=eclipse-dltk-shelled
 pkgver=5.6
-pkgrel=1
+pkgrel=2
 _pkgdate="201608300412"
 pkgdesc="Shell IDE for Eclipse"
 arch=('i686' 'x86_64')
 url="http://www.eclipse.org/dltk/"
 license=('EPL')
-depends=("eclipse-dltk-core")
+depends=("eclipse-dltk-core" "eclipse-linuxtools")
 optdepends=('openssh')
 conflicts=("eclipse-shelled")
 _mirror="http://www.eclipse.org/downloads/download.php?r=1&file="
