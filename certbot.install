@@ -1,4 +1,0 @@
-post_install() {
-  systemd-sysusers certbot.conf
-  systemd-tmpfiles --create certbot.conf
-}
