@@ -1,7 +1,7 @@
 pkgbase = cheesecutter
 	pkgdesc = Tracker program for composing music for the C64 SID chip
 	pkgver = 2.8
-	pkgrel = 1
+	pkgrel = 2
 	url = http://theyamo.kapsi.fi/ccutter/
 	arch = x86_64
 	license = GPL2
