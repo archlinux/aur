@@ -2,7 +2,7 @@
 
 pkgname=googler
 pkgver=2.9
-pkgrel=0
+pkgrel=1
 pkgdesc="Google Search from command line"
 arch=('any')
 url="https://github.com/jarun/googler"
