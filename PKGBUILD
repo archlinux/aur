@@ -4,31 +4,31 @@
 
 pkgbase=xorg-server-bug865
 pkgname=xorg-server-bug865
-pkgver=1.18.4
-pkgrel=1 # build first with 0.1 and then rebuild it after xf86-input-evdev rebuild
+pkgver=1.19.1
+pkgrel=1
 arch=('i686' 'x86_64')
 license=('custom')
 groups=('xorg')
 url="http://xorg.freedesktop.org"
 makedepends=('pixman' 'libx11' 'mesa' 'mesa-libgl' 'xf86driproto' 'xcmiscproto' 'xtrans' 'bigreqsproto' 'randrproto' 
              'inputproto' 'fontsproto' 'videoproto' 'presentproto' 'compositeproto' 'recordproto' 'scrnsaverproto'
-             'resourceproto' 'xineramaproto' 'libxkbfile' 'libxfont' 'renderproto' 'libpciaccess' 'libxv'
+             'resourceproto' 'xineramaproto' 'libxkbfile' 'libxfont2' 'renderproto' 'libpciaccess' 'libxv'
              'xf86dgaproto' 'libxmu' 'libxrender' 'libxi' 'dmxproto' 'libxaw' 'libdmx' 'libxtst' 'libxres'
              'xorg-xkbcomp' 'xorg-util-macros' 'xorg-font-util' 'glproto' 'dri2proto' 'libgcrypt' 'libepoxy'
              'xcb-util' 'xcb-util-image' 'xcb-util-renderutil' 'xcb-util-wm' 'xcb-util-keysyms' 'dri3proto'
-             'libxshmfence' 'libunwind')
-source=(${url}/releases/individual/xserver/xorg-server-${pkgver}.tar.bz2{,.sig}
+             'libxshmfence' 'libunwind' 'systemd' 'wayland-protocols')
+source=(https://xorg.freedesktop.org/releases/individual/xserver/xorg-server-${pkgver}.tar.bz2{,.sig}
         xvfb-run
         xvfb-run.1
         freedesktop-bug-865.patch)
 validpgpkeys=('7B27A3F1A6E18CD9588B4AE8310180050905E40C'
               'C383B778255613DFDB409D91DB221A6900000011'
               'DD38563A8A8224537D1F90E45B8A2D50A0ECD0D3')
-sha256sums=('278459b2c31d61a15655d95a72fb79930c480a6bb8cf9226e48a07df8b1d31c8'
+sha256sums=('79ae2cf39d3f6c4a91201d8dad549d1d774b3420073c5a70d390040aa965a7fb'
             'SKIP'
             'ff0156309470fc1d378fd2e104338020a884295e285972cc88e250e031cc35b9'
             '2460adccd3362fefd4cdc5f1c70f332d7b578091fb9167bf88b5f91265bbd776'
-            'dad4bbadda03db2fe7046c43d838afd5e41f98c821fdac0908f0f20493caa660')
+            'dcd7ace95b29beab7b5f4f3f31a69f4f3c46d88d6b623243c7817b162f2fcdcb')
 
 prepare() {
   cd "xorg-server-${pkgver}"
@@ -88,10 +88,10 @@ build() {
 
 package_xorg-server-bug865() {
   pkgdesc="Xorg X server with the patch for freedesktop bug 865 (need to kick hotkeys on release, not press)"
-  depends=(libepoxy libxdmcp libxfont libpciaccess libdrm pixman libgcrypt libxau xorg-server-common libxshmfence libgl xf86-input-driver)
+  depends=(libepoxy libxfont2 pixman xorg-server-common libunwind dbus libgl xf86-input-libinput)
   # see xorg-server-*/hw/xfree86/common/xf86Module.h for ABI versions - we provide major numbers that drivers can depend on
   # and /usr/lib/pkgconfig/xorg-server.pc in xorg-server-devel pkg
-  provides=('X-ABI-VIDEODRV_VERSION=20' 'X-ABI-XINPUT_VERSION=22.1' 'X-ABI-EXTENSION_VERSION=9.0' 'x-server' 'xorg-server=1.18.0')
+  provides=('X-ABI-VIDEODRV_VERSION=23' 'X-ABI-XINPUT_VERSION=24.1' 'X-ABI-EXTENSION_VERSION=10.0' 'x-server' 'xorg-server=1.19.1')
   conflicts=('nvidia-utils<=331.20' 'glamor-egl' 'xf86-video-modesetting' 'xorg-server')
   replaces=('glamor-egl' 'xf86-video-modesetting')
   install=xorg-server.install
