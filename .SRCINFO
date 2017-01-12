@@ -1,0 +1,38 @@
+pkgbase = python-troveclient
+	pkgdesc = Python client library for Trove
+	pkgver = 2.7.0
+	pkgrel = 1
+	url = http://docs.openstack.org/developer/python-troveclient
+	arch = any
+	license = Apache
+	makedepends = python-setuptools
+	makedepends = python2-setuptools
+	source = git+https://git.openstack.org/openstack/python-troveclient#tag=2.7.0
+	md5sums = SKIP
+
+pkgname = python-troveclient
+	depends = python-six
+	depends = python-simplejson
+	depends = python-requests
+	depends = python-swiftclient
+	depends = python-mistralclient
+	depends = python-pbr
+	depends = python-oslo-utils
+	depends = python-oslo-i18n
+	depends = python-keystoneauth1
+	depends = python-prettytable
+	depends = python-babel
+
+pkgname = python2-troveclient
+	depends = python2-six
+	depends = python2-simplejson
+	depends = python2-requests
+	depends = python2-swiftclient
+	depends = python2-mistralclient
+	depends = python2-pbr
+	depends = python2-oslo-utils
+	depends = python2-oslo-i18n
+	depends = python2-keystoneauth1
+	depends = python2-prettytable
+	depends = python2-babel
+
