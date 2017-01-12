@@ -1,30 +1,42 @@
 # Maintainer: koneu <koneu93 at googlemail dot com>
 
 pkgname='koneu-misc'
-pkgver='0'
+pkgver='1'
 pkgrel=0
 pkgdesc='random systemd stuff I wanted packaged'
 arch=('any')
 optdepends=('btrfs-progs: for btrfs snapshots'
 'curl: for hosts and resolvconf updates')
-source=('btrfs-snap@.service'
-'btrfs-snap@.timer'
+source=('btrfs-snap-daily@.service'
+'btrfs-snap-daily@.timer'
+'btrfs-snap-weekly@.service'
+'btrfs-snap-weekly@.timer'
+'btrfs-snap-monthly@.service'
+'btrfs-snap-monthly@.timer'
 'hosts.service'
 'hosts.timer'
 'pulseaudio.service'
 'resolvconf.service'
 'resolvconf.timer')
-md5sums=('f614ac43af79546afeda6ccb7387f095'
-'0ab8db3f58905b2bdee31685125227eb'
-'5d506d10510672d6438c31e399f36001'
-'0ab8db3f58905b2bdee31685125227eb'
-'8a636e2d607a5e83f4f5d8936f6b4844'
-'4877a74e7674a16536ef8d3c3548ea9d'
-'0ab8db3f58905b2bdee31685125227eb')
+md5sums=('a9d4154e77860db1a19d1aa6be1e81a0'
+         '0ab8db3f58905b2bdee31685125227eb'
+         '44ed4855f537154b079bee47f2d13934'
+         '76fe79faa8920e5dfa269d9c32e092d7'
+         'b1dba675932f6ef3d60f402cfac7a8e5'
+         '2d4c5cd5fbd513d250dc756c011f5fcd'
+         '5d506d10510672d6438c31e399f36001'
+         '0ab8db3f58905b2bdee31685125227eb'
+         '8a636e2d607a5e83f4f5d8936f6b4844'
+         '4877a74e7674a16536ef8d3c3548ea9d'
+         '0ab8db3f58905b2bdee31685125227eb')
 
 package() {
-	install -Dm644 "${srcdir}/btrfs-snap@.service" "${pkgdir}/usr/lib/systemd/system/btrfs-snap@.service"
-	install -Dm644 "${srcdir}/btrfs-snap@.timer" "${pkgdir}/usr/lib/systemd/system/btrfs-snap@.timer"
+	install -Dm644 "${srcdir}/btrfs-snap-daily@.service" "${pkgdir}/usr/lib/systemd/system/btrfs-snap-daily@.service"
+	install -Dm644 "${srcdir}/btrfs-snap-daily@.timer" "${pkgdir}/usr/lib/systemd/system/btrfs-snap-daily@.timer"
+	install -Dm644 "${srcdir}/btrfs-snap-weekly@.service" "${pkgdir}/usr/lib/systemd/system/btrfs-snap-weekly@.service"
+	install -Dm644 "${srcdir}/btrfs-snap-weekly@.timer" "${pkgdir}/usr/lib/systemd/system/btrfs-snap-weekly@.timer"
+	install -Dm644 "${srcdir}/btrfs-snap-monthly@.service" "${pkgdir}/usr/lib/systemd/system/btrfs-snap-monthly@.service"
+	install -Dm644 "${srcdir}/btrfs-snap-monthly@.timer" "${pkgdir}/usr/lib/systemd/system/btrfs-snap-monthly@.timer"
 	install -Dm644 "${srcdir}/hosts.service" "${pkgdir}/usr/lib/systemd/system/hosts.service"
 	install -Dm644 "${srcdir}/hosts.timer" "${pkgdir}/usr/lib/systemd/system/hosts.timer"
 	install -Dm644 "${srcdir}/pulseaudio.service" "${pkgdir}/usr/lib/systemd/system/pulseaudio.service"

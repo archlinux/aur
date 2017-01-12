@@ -1,0 +1,6 @@
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/btrfs subvolume delete /.@/%i-weekly-3
+ExecStart=/usr/bin/mv /.@/%i-weekly-2 /.@/%i-weekly-3
+ExecStart=/usr/bin/mv /.@/%i-weekly-1 /.@/%i-weekly-2
+ExecStart=/usr/bin/btrfs subvolume snapshot -r %I /.@/%i-weekly-1
