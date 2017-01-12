@@ -1,25 +1,24 @@
-# Maintainer: barchiesi <dlbarchiesi at gmail dot com>
-# Contributor: koral <koral at mailoo dot org>
+# Maintainer: Christian Rebischke <chris.rebischke[at]archlinux[dot]org>
 
-_scriptid=14758
-pkgname="vim-delimitmate"
-pkgver=2.6
+pkgname=vim-delimitmate
+pkgver=2.7
 pkgrel=1
-pkgdesc="Provides auto-balancing and some expansions for parens, quotes, etc."
-arch=(any)
-url="http://www.vim.org/scripts/script.php?script_id=2754"
-license=('unknown')
-groups=('vim-plugins')
+pkgdesc='provides insert mode auto-completion for quotes, parens, brackets, etc'
+arch=('any')
+url='https://github.com/raimondi/delimitmate'
+license=('vim-license')
 depends=('vim')
-source=(${pkgname}.vba::http://www.vim.org/scripts/download_script.php?src_id=${_scriptid})
-md5sums=('7aa765483e79095f4532835106acfbb9')
+groups=('vim-plugins')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/raimondi/delimitMate/archive/${pkgver}.tar.gz")
+sha512sums=('46798470586ed1c79abf0368c3542f77412a17c4058e6b9f471fb10e3ad212301db9fb2e2a9ff1ab1dcd53f959f79587d80f1542c479ab291c6cc01314ba5144')
 
 package() {
-    cd ${srcdir}
+  cd "${srcdir}/delimitMate-${pkgver}"
 
-    /usr/bin/vim -c ":UseVimball ." -c ":q" ${pkgname}.vba
-
-    install -Dm644 autoload/delimitMate.vim   ${pkgdir}/usr/share/vim/vimfiles//autoload/delimitMate.vim
-    install -Dm644 doc/delimitMate.txt        ${pkgdir}/usr/share/vim/vimfiles//doc/delimitMate.txt
-    install -Dm644 plugin/delimitMate.vim     ${pkgdir}/usr/share/vim/vimfiles//plugin/delimitMate.vim
+  install -d "${pkgdir}/usr/share/vim/vimfiles/"{plugin,doc,autoload}
+  install -D -m644 autoload/delimitMate.vim "${pkgdir}/usr/share/vim/vimfiles/autoload/"
+  install -D -m644 plugin/delimitMate.vim "${pkgdir}/usr/share/vim/vimfiles/plugin/"
+  install -D -m644 doc/delimitMate.txt "${pkgdir}/usr/share/vim/vimfiles/doc/"
 }
+
+# vim:set et sw=2 ts=2 tw=79:

@@ -1,14 +1,14 @@
 pkgbase = vim-delimitmate
-	pkgdesc = Provides auto-balancing and some expansions for parens, quotes, etc.
-	pkgver = 2.6
+	pkgdesc = provides insert mode auto-completion for quotes, parens, brackets, etc
+	pkgver = 2.7
 	pkgrel = 1
-	url = http://www.vim.org/scripts/script.php?script_id=2754
+	url = https://github.com/raimondi/delimitmate
 	arch = any
 	groups = vim-plugins
-	license = unknown
+	license = vim-license
 	depends = vim
-	source = vim-delimitmate.vba::http://www.vim.org/scripts/download_script.php?src_id=14758
-	md5sums = 7aa765483e79095f4532835106acfbb9
+	source = vim-delimitmate-2.7.tar.gz::https://github.com/raimondi/delimitMate/archive/2.7.tar.gz
+	sha512sums = 46798470586ed1c79abf0368c3542f77412a17c4058e6b9f471fb10e3ad212301db9fb2e2a9ff1ab1dcd53f959f79587d80f1542c479ab291c6cc01314ba5144
 
 pkgname = vim-delimitmate
 
