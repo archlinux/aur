@@ -3,7 +3,7 @@
 
 pkgname=minecraft-technic-launcher
 pkgver=4.347
-pkgrel=5
+pkgrel=6
 pkgdesc='Choose from thousands of community-made Minecraft modpacks available on the Technic Platform.'
 arch=('any')
 license=('custom')
@@ -16,7 +16,7 @@ source=("http://launcher.technicpack.net/launcher${pkgver:0:1}/${pkgver:2}/Techn
         "technic-launcher"
         "technic-launcher.desktop")
 sha256sums=('d9166ef07bb1a0880149b972d46c3e02599775132cf3125dd635b2ee714478b9'
-            'bcf657996e45b436382f401457e35d834baa1e35c0c483e7918ab6f93a2252c1'
+            '16386e5284409af1106c254c432a623ff35108f1480423b48f57247f0fd755c7'
             'bfea4300dc48adeb726b49125d05b5e65ed368cf08910ced970b1f1c571c4ecd')
 package(){
     cd "$srcdir"
