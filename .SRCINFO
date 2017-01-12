@@ -6,6 +6,7 @@ pkgbase = libpff-git
 	arch = any
 	license = LGPL
 	makedepends = git
+	makedepends = pkg-config
 	depends = libbfio-git
 	provides = libpff-git
 	conflicts = libpff
