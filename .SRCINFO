@@ -1,7 +1,7 @@
 pkgbase = eclipse-dltk-core
 	pkgdesc = Support for dynamic languages in Eclipse
-	pkgver = 5.4
-	pkgrel = 2
+	pkgver = 5.6
+	pkgrel = 1
 	url = http://www.eclipse.org/dltk/
 	arch = i686
 	arch = x86_64
@@ -15,8 +15,8 @@ pkgbase = eclipse-dltk-core
 	optdepends = eclipse-dltk-ruby
 	optdepends = eclipse-dltk-tcl
 	replaces = eclipse-dltk-core-index
-	source = http://www.eclipse.org/downloads/download.php?r=1&file=/technology/dltk/downloads/drops/R5.4/R-5.4-201602110510/dltk-core-R-5.4-201602110510.zip
-	md5sums = 6c3013400aa5cc71563d50e98e83e952
+	source = http://www.eclipse.org/downloads/download.php?r=1&file=/technology/dltk/downloads/drops/R5.6/R-5.6-201608300412/dltk-core-R-5.6-201608300412.zip
+	md5sums = 2223370ba7db23248858523659c7adcd
 
 pkgname = eclipse-dltk-core
 
