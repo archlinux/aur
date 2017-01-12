@@ -8,11 +8,12 @@ url="http://www.openturns.org/"
 depends=('libxml2' 'muparser' 'intel-tbb' 'hmat-oss' 'python-matplotlib' 'nlopt' 'r')
 makedepends=('cmake' 'swig' 'boost')
 backup=('etc/openturns/openturns.conf')
-source=("https://github.com/openturns/openturns/archive/v$pkgver.tar.gz")
-sha256sums=('a857564257fdb42a0808ef806dfdaa17265d56653634b375f57885106007f687')
+source=("https://github.com/openturns/openturns/archive/v$pkgver.tar.gz" swig3011-truediv.patch)
+sha256sums=('a857564257fdb42a0808ef806dfdaa17265d56653634b375f57885106007f687' SKIP)
 
 build() {
   cd openturns-$pkgver
+  patch -p1 -i ../swig3011-truediv.patch
   R CMD INSTALL --library=$PWD utils/rot_1.4.6.tar.gz
   export R_LIBS=$PWD
   cmake -DCMAKE_INSTALL_PREFIX=/usr \
