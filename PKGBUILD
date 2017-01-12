@@ -7,30 +7,29 @@ pkgbase=xorg-server-nosystemd
 pkgname=('xorg-server-nosystemd' 'xorg-server-xephyr-nosystemd' 'xorg-server-xdmx-nosystemd' 'xorg-server-xvfb-nosystemd'
 		 'xorg-server-xnest-nosystemd' 'xorg-server-xwayland-nosystemd' 'xorg-server-common-nosystemd' 'xorg-server-devel-nosystemd')
 _pkgbase=xorg-server
-pkgver=1.18.4
-pkgrel=2
+pkgver=1.19.1
+pkgrel=1
 arch=('i686' 'x86_64')
 license=('custom')
 groups=('xorg')
 url="http://xorg.freedesktop.org"
 makedepends=('pixman' 'libx11' 'mesa' 'mesa-libgl' 'xf86driproto' 'xcmiscproto' 'xtrans' 'bigreqsproto' 'randrproto' 
              'inputproto' 'fontsproto' 'videoproto' 'presentproto' 'compositeproto' 'recordproto' 'scrnsaverproto'
-             'resourceproto' 'xineramaproto' 'libxkbfile' 'libxfont' 'renderproto' 'libpciaccess' 'libxv'
+             'resourceproto' 'xineramaproto' 'libxkbfile' 'libxfont2' 'renderproto' 'libpciaccess' 'libxv'
              'xf86dgaproto' 'libxmu' 'libxrender' 'libxi' 'dmxproto' 'libxaw' 'libdmx' 'libxtst' 'libxres'
              'xorg-xkbcomp' 'xorg-util-macros' 'xorg-font-util' 'glproto' 'dri2proto' 'libgcrypt' 'libepoxy'
              'xcb-util' 'xcb-util-image' 'xcb-util-renderutil' 'xcb-util-wm' 'xcb-util-keysyms' 'dri3proto'
-             'libxshmfence' 'libunwind')
-source=(${url}/releases/individual/xserver/${_pkgbase}-${pkgver}.tar.bz2{,.sig}
+             'libxshmfence' 'libunwind' 'wayland-protocols')
+source=(https://xorg.freedesktop.org/releases/individual/xserver/${_pkgbase}-${pkgver}.tar.bz2{,.sig}
         xvfb-run
         xvfb-run.1)
 validpgpkeys=('7B27A3F1A6E18CD9588B4AE8310180050905E40C'
               'C383B778255613DFDB409D91DB221A6900000011'
               'DD38563A8A8224537D1F90E45B8A2D50A0ECD0D3')
-sha256sums=('278459b2c31d61a15655d95a72fb79930c480a6bb8cf9226e48a07df8b1d31c8'
+sha256sums=('79ae2cf39d3f6c4a91201d8dad549d1d774b3420073c5a70d390040aa965a7fb'
             'SKIP'
             'ff0156309470fc1d378fd2e104338020a884295e285972cc88e250e031cc35b9'
             '2460adccd3362fefd4cdc5f1c70f332d7b578091fb9167bf88b5f91265bbd776')
-
 
 build() {
   cd "${_pkgbase}-${pkgver}"
@@ -83,8 +82,7 @@ build() {
 
 package_xorg-server-common-nosystemd() {
   pkgdesc="Xorg server common files"
-  depends=('xkeyboard-config' 'xorg-xkbcomp' 'xorg-setxkbmap' 'xorg-fonts-misc'
-           'libunwind')
+  depends=('xkeyboard-config' 'xorg-xkbcomp' 'xorg-setxkbmap' 'xorg-fonts-misc')
   provides=('xorg-server-common')
   conflicts=('xorg-server-common')
   replaces=('xorg-server-common')
@@ -103,10 +101,10 @@ package_xorg-server-common-nosystemd() {
 
 package_xorg-server-nosystemd() {
   pkgdesc="Xorg X server"
-  depends=('libepoxy' 'libxdmcp' 'libxfont' 'libpciaccess' 'libdrm' 'pixman' 'libgcrypt' 'libxau' 'xorg-server-common' 'xf86-input-evdev' 'libxshmfence' 'libgl')
+  depends=('libepoxy' 'libxfont2' 'pixman' 'xorg-server-common-nosystemd' 'libunwind' 'dbus-nosystemd' 'libgl' 'xf86-input-driver')
   # see xorg-server-*/hw/xfree86/common/xf86Module.h for ABI versions - we provide major numbers that drivers can depend on
   # and /usr/lib/pkgconfig/xorg-server.pc in xorg-server-devel pkg
-  provides=('X-ABI-VIDEODRV_VERSION=20' 'X-ABI-XINPUT_VERSION=22.1' 'X-ABI-EXTENSION_VERSION=9.0' 'x-server' 'xorg-server')
+  provides=('X-ABI-VIDEODRV_VERSION=23' 'X-ABI-XINPUT_VERSION=24.1' 'X-ABI-EXTENSION_VERSION=10.0' 'x-server' 'xorg-server')
   conflicts=('nvidia-utils<=331.20' 'glamor-egl' 'xf86-video-modesetting' 'xorg-server')
   replaces=('glamor-egl' 'xf86-video-modesetting' 'xorg-server')
   install=xorg-server.install
@@ -136,7 +134,7 @@ package_xorg-server-nosystemd() {
 
 package_xorg-server-xephyr-nosystemd() {
   pkgdesc="A nested X server that runs as an X application"
-  depends=('libxfont' 'libgl' 'libepoxy' 'libgcrypt' 'libxv' 'pixman' 'xorg-server-common' 'xcb-util-image'
+  depends=('libxfont2' 'libgl' 'libepoxy' 'libunwind' 'libxv' 'pixman' 'xorg-server-common-nosystemd' 'xcb-util-image'
            'xcb-util-renderutil' 'xcb-util-wm' 'xcb-util-keysyms')
   provides=('xorg-server-xephyr')
   conflicts=('xorg-server-xephyr')
@@ -150,7 +148,7 @@ package_xorg-server-xephyr-nosystemd() {
 
 package_xorg-server-xvfb-nosystemd() {
   pkgdesc="Virtual framebuffer X server"
-  depends=('libxfont' 'libxdmcp' 'libxau' 'libgcrypt' 'pixman' 'xorg-server-common' 'xorg-xauth' 'libgl')
+  depends=('libxfont2' 'libunwind' 'pixman' 'xorg-server-common-nosystemd' 'xorg-xauth' 'libgl')
   provides=('xorg-server-xvfb')
   conflicts=('xorg-server-xvfb')
   replaces=('xorg-server-xvfb')
@@ -166,7 +164,7 @@ package_xorg-server-xvfb-nosystemd() {
 
 package_xorg-server-xnest-nosystemd() {
   pkgdesc="A nested X server that runs as an X application"
-  depends=('libxfont' 'libxext' 'libgcrypt' 'pixman' 'xorg-server-common')
+  depends=('libxfont2' 'libxext' 'libunwind' 'pixman' 'xorg-server-common-nosystemd')
   provides=('xorg-server-xnest')
   conflicts=('xorg-server-xnest')
   replaces=('xorg-server-xnest')
@@ -179,7 +177,7 @@ package_xorg-server-xnest-nosystemd() {
 
 package_xorg-server-xdmx-nosystemd() {
   pkgdesc="Distributed Multihead X Server and utilities"
-  depends=('libxfont' 'libxi' 'libgcrypt' 'libxaw' 'libxrender' 'libdmx' 'libxfixes' 'pixman' 'xorg-server-common')
+  depends=('libxfont2' 'libxi' 'libxaw' 'libxrender' 'libdmx' 'libxfixes' 'libunwind' 'pixman' 'xorg-server-common-nosystemd')
   provides=('xorg-server-xdmx')
   conflicts=('xorg-server-xdmx')
   replaces=('xorg-server-xdmx')
@@ -192,7 +190,7 @@ package_xorg-server-xdmx-nosystemd() {
 
 package_xorg-server-xwayland-nosystemd() {
   pkgdesc="run X clients under wayland"
-  depends=('libxfont' 'libepoxy' 'libgl' 'pixman' 'xorg-server-common')
+  depends=('libxfont2' 'libepoxy' 'libunwind' 'libgl' 'pixman' 'xorg-server-common-nosystemd')
   provides=('xorg-server-xwayland')
   conflicts=('xorg-server-xwayland')
   replaces=('xorg-server-xwayland')
