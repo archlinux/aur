@@ -3,43 +3,62 @@
 import sys
 import time
 import usb.core
+import atexit
 
-unifying=0xc52b
+DEVINDEX=2 # index of the device in unifying receiver
+           # 0xff for the receiver
+
+class HIDpp:
+    def __init__(self, req_type, request, value, index):
+        self.__rt = req_type
+        self.__r = request
+        self.__v = value
+        self.__i = index
+        self.dev = None
+        atexit.register(self.clean)
+
+    def clean(self):
+        self.dev.reset()
+        if self.reattach:
+            self.dev.attach_kernel_driver(self.__i)
+
+    def set_device(self, device):
+        if self.dev is not None:
+            self.clean()
+        self.dev = device
+        cfg = dev[0]
+        self.iface = cfg[(self.__i,0)]
+        self.reattach = self.dev.is_kernel_driver_active(self.__i)
+        if self.reattach:
+            dev.detach_kernel_driver(self.__i)
+
+    def send_short(self, subid, *args):
+        """
+        subid: 0-7f = reports & notifications // 80-ff = registers
+        """
+        report_id = 0x10 # short, 0x11 = long
+        data = [report_id, DEVINDEX, subid] + list(args)
+        self.dev.ctrl_transfer(self.__rt, self.__r, self.__v, self.__i, data)
+
+    def read(self):
+        return self.iface[0].read(1000, 10000)
+
 activate = len(sys.argv) == 1
 
-IFACE=2
-# find keyboard
-dev = usb.core.find(idVendor=0x046d, idProduct=unifying)
+# find unifying receiver
+dev = usb.core.find(idVendor=0x046d, idProduct=0xc52b)
 
 if dev is None:
   raise ValueError('Keyboard not found')
 
-reattach = dev.is_kernel_driver_active(IFACE)
-if reattach:
-    dev.detach_kernel_driver(IFACE)
+kbd = HIDpp(0x21, 0x9, 0x0210, 2)
 
-# set the right interface
-
-cfg = dev[0]
-iface = cfg[(IFACE,0)]
-
-dev.set_interface_altsetting(iface)
-
-# send frame
-
-ON=[16, 2, 12, 26, 0, 0, 0]
-OFF=[16, 2, 12, 28, 1, 0, 0]
-
-dev.ctrl_transfer(33, 9, 528, 2, ON if activate else OFF)
-
-# have to wait (Why ??) and sometimes repeat !
+kbd.set_device(dev)
 
 if activate:
-    time.sleep(10)
+    kbd.send_short(0x0c, 0x1e, 0, 0, 0)
 else:
-    time.sleep(1)
+    kbd.send_short(0x0c, 0x1e, 1, 0, 0)
 
-dev.reset()
-if reattach:
-    dev.attach_kernel_driver(IFACE)
-
+kbd.read()
+time.sleep(1)

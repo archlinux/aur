@@ -1,7 +1,7 @@
 # Maintainer: Fabien Devaux <fdev31@gmail.com>
 pkgname=k780-fnkeyctl
-pkgver=1
-pkgrel=3
+pkgver=2
+pkgrel=1
 pkgdesc="Logitech K780 Fn-key configuration"
 arch=('i686' 'x86_64')
 url="https://google.com"
@@ -11,7 +11,7 @@ depends=('libusb')
 source=(k780swap
 99-k780-config.rules
 k780-fnkeyctl.sh)
-sha256sums=(14bbd131bc286b56cfcf7587b4c9a9102d9faa82756332e68b244ddb17da817e
+sha256sums=(e16229978da17479bb9d4917c8abcd640893a506451350f389a3ccb6e202e5d3
 5966a4678955de2a914a4ad2156330050b5ff12be11977568a3bd62c022029a3
 98e2a3962c1d085e5e37b9b45b7a19734e3d0678554c0e1bfe12d753da860e19)
 

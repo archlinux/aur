@@ -1,7 +1,7 @@
 pkgbase = k780-fnkeyctl
 	pkgdesc = Logitech K780 Fn-key configuration
-	pkgver = 1
-	pkgrel = 3
+	pkgver = 2
+	pkgrel = 1
 	url = https://google.com
 	arch = i686
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = k780-fnkeyctl
 	source = k780swap
 	source = 99-k780-config.rules
 	source = k780-fnkeyctl.sh
-	sha256sums = 14bbd131bc286b56cfcf7587b4c9a9102d9faa82756332e68b244ddb17da817e
+	sha256sums = e16229978da17479bb9d4917c8abcd640893a506451350f389a3ccb6e202e5d3
 	sha256sums = 5966a4678955de2a914a4ad2156330050b5ff12be11977568a3bd62c022029a3
 	sha256sums = 98e2a3962c1d085e5e37b9b45b7a19734e3d0678554c0e1bfe12d753da860e19
 
