@@ -1,0 +1,13 @@
+pkgbase = ttf-wireone
+	pkgver = 1.012
+	pkgrel = 1
+	url = https://github.com/cyrealtype/Wire-One
+	arch = any
+	license = custom:OFL
+	source = https://github.com/cyrealtype/Wire-One/raw/master/WireOne.ttf
+	source = https://github.com/cyrealtype/Wire-One/raw/master/OFL.txt
+	sha512sums = 84fae083ce740e3fbdc4f4214e93a89e73fe7abf6c50e1c81e55768393ba2b0320b08cb55cf4eee331aae2f37d027dca7bb903611d23f05149f92dd808b6939b
+	sha512sums = 5a8d29a2c6673568a95bedfa0738906c4b1bac528a2903fc07fbd881b330376081569e2ee36adb54b0db11a075bad8570f6098bebe9aa4cf9330ae43d29b6fea
+
+pkgname = ttf-wireone
+
