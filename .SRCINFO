@@ -1,0 +1,18 @@
+pkgbase = shift-git
+	pkgdesc = A minimalistic approach to maximum control of your Transmission. (Web UI)
+	pkgver = 0.9.9
+	pkgrel = 1
+	url = https://github.com/killemov/Shift
+	arch = i686
+	arch = x86_64
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = transmission-cli
+	provides = Shift=0.9.9
+	conflicts = kettu-git
+	source = Shift::git+https://github.com/killemov/Shift.git
+	md5sums = SKIP
+
+pkgname = shift-git
+
