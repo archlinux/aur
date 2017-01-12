@@ -8,7 +8,7 @@ arch=('any')
 url='https://fonts.google.com/specimen/Signika'
 license=('custom:SIL Open Font License v1.1')
 depends=('fontconfig' 'xorg-fonts-encodings' 'xorg-font-utils')
-conflicts=('ttf-google-fonts-git')
+conflicts=('ttf-google-fonts-git' 'ttf-google-fonts-opinionated-git')
 install="${pkgname}.install"
 source=('https://github.com/google/fonts/raw/master/ofl/signika/Signika-Bold.ttf'
         'https://github.com/google/fonts/raw/master/ofl/signika/Signika-Light.ttf'
