@@ -9,7 +9,7 @@ license=('GPL3' 'custom')
 url="https://sourceforge.net/projects/froggix"
 depends=('python2-pygame')
 source=("https://downloads.sourceforge.net/froggix/Froggix.tar.gz"
-        "highscore-path.patch"
+        "froggix-highscore-path.patch"
         "froggix.desktop"
         "froggix.sh")
 sha256sums=('7d5426e6c64fbd44255b40ba33f39baf823f9fb4e85ad771e20c7bac0d7c6eb3'
@@ -19,7 +19,7 @@ sha256sums=('7d5426e6c64fbd44255b40ba33f39baf823f9fb4e85ad771e20c7bac0d7c6eb3'
 
 prepare() {
   cd $pkgname
-  patch -p1 < ../highscore-path.patch
+  patch -p1 < ../froggix-highscore-path.patch
 }
 
 package() {
