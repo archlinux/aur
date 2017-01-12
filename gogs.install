@@ -1,24 +1,9 @@
-post_upgrade() {
-    if hash systemd-sysusers &> /dev/null; then
-        systemd-sysusers gogs.conf
-    fi
-
-    if hash systemd-tmpfiles &> /dev/null; then
-        systemd-tmpfiles --create gogs.conf
-    fi
-}
-
 post_install() {
-	post_upgrade
-
 cat <<EOF
->>>
-	If you do not have a custom configuration files finish the setup:
+::	If you do not have a custom configuration files finish the setup:
 		1) systemctl start gogs.service
 		2) open the installation page http://localhost:3000
 	otherwise:
 		place your custom configuration files in /var/lib/gogs/custom
->>>
 EOF
-	
 }
