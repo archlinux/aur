@@ -1,9 +1,12 @@
 [Desktop Entry]
-Name=KeeeX
-Comment=Fully operational blockchain solutions for securing, chaining, sharing, signing and timestamping any kind of document, data or process with no alteration.
-Exec=KeeeX %U
-Icon=KeeeX
-MimeType=application/x-bittorrent;x-scheme-handler/magnet;
-StartupNotify=false
-Categories=Internet;
+Encoding=UTF-8
+Version=3.2.0
+Name=KeeeX ChatOps
+GenericName=KeeeX
+Exec=/opt/keeex/KeeeX
+Terminal=false
+Icon=/opt/keeex/icon.png
 Type=Application
+Categories=Application;Network;Security;
+Comment[en]=Secure file collaboration
+Comment[fr]=Collaboration sécurisée de fichiers
