@@ -2,7 +2,7 @@
 
 _modname='gbulb'
 pkgname='python-gbulb'
-pkgver=0.4
+pkgver=0.5
 pkgrel=1
 pkgdesc='Implmementation of asyncio using GLib'
 arch=('any')
@@ -13,7 +13,7 @@ depends=('python-gobject')
 optdepends=('gtk3: Gtk application integration')
 checkdepends=('python-pytest')
 source=("https://github.com/nathan-hoad/gbulb/archive/$pkgver.tar.gz")
-sha256sums=('91b60a05da3197e537525224f88ba23d951b9175a6a33d6d4565e492ab591c35')
+sha256sums=('016fb18e6d16fc345bf712e7838bb6fd620e8b5e29b4b10dc17996124033414e')
 
 check() {
     cd "$_modname-$pkgver"
