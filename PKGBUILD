@@ -1,7 +1,7 @@
 # Maintainer: M0Rf30
 
 pkgname=xen-docs
-pkgver=4.6.1
+pkgver=4.7.0
 pkgrel=1
 pkgdesc="Xen 4 (docs)"
 arch=('i686' 'x86_64')
@@ -18,5 +18,4 @@ package() {
   ./configure --prefix=/usr --disable-xen --disable-tools --disable-stubdom --enable-docs
   make DESTDIR=$pkgdir install-docs
 }
-
-md5sums=('df2d854c3c90ffeefaf71e7f868fb326')
+md5sums=('3aa4e01bf37a3a5bc8572907cb88e649')
