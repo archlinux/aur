@@ -1,8 +1,8 @@
 # Maintainer: Mohammadreza Abdollahzadeh <morealaz at gmail dot com>
 
 pkgname='persepolis'
-pkgver=2.3
-pkgrel=2
+pkgver=2.3.1
+pkgrel=1
 pkgdesc="A graphical front-end for aria2 download manager with lots of features."
 arch=('any')
 url="https://persepolisdm.github.io/"
@@ -13,7 +13,7 @@ provides=("${pkgname}" "persepolis")
 conflicts=("${pkgname}" "persepolis")
 install=$pkgname.install
 source=("${pkgname}.tar.gz::https://github.com/persepolisdm/persepolis/archive/${pkgver}.tar.gz")
-md5sums=('8ab0873b574902c3a306f0908ea1e91e')
+md5sums=('ae0ccabf57d300a74d8485dc3a58b2a7')
 
 package() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
