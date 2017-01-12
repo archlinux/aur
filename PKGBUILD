@@ -6,7 +6,7 @@
 
 pkgname=i2pd
 pkgver=2.11.0
-pkgrel=4
+pkgrel=5
 pkgdesc="Simplified C++ implementation of I2P client"
 arch=('i686' 'x86_64')
 url="https://github.com/PurpleI2P/i2pd"
@@ -78,5 +78,5 @@ package(){
 }
 
 md5sums=('813b257119c2f856c515ba81858f42a0'
-         '382cce43a405c67de55b71e9e2e3a0eb'
+         '6e9869d619464902e635e520d21a8a56'
          '384658d2792ef6433d2de70ebc9d40d4')
