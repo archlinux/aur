@@ -4,7 +4,7 @@
 
 pkgname=hyper
 pkgver=1.1.0
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="A terminal built on web technologies"
 arch=('any')
@@ -46,8 +46,11 @@ npm_or_yarn() {
 prepare() {
     cd "$pkgname-$pkgver"
 
-    # calls yarn if available, else npm
-    npm_or_yarn install
+    # # calls yarn if available, else npm
+    # npm_or_yarn install
+
+    # for now use just npm since errors have been reported
+    npm install
 }
 
 build() {
