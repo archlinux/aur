@@ -7,31 +7,31 @@
 set -u
 _pkgname='mdadm'
 pkgname="${_pkgname}-git"
-pkgver=3.3.4.r22.gccc93b3
+pkgver=4.0.r0.g25cfca3
 pkgrel=1
 pkgdesc='create, manage, and monitor Linux mdraid block device RAID arrays'
 arch=('i686' 'x86_64')
-license=('GPL')
 #url='https://github.com/neilbrown/mdadm'
 url='http://neil.brown.name/blog/mdadm'
-conflicts=('mkinitcpio<0.7' "${_pkgname}")
-provides=("${_pkgname}=${pkgver%.r*}")
-makedepends=('git')
+license=('GPL')
 depends=('glibc')
+makedepends=('git')
 #optdepends=('lvm2' 'dm-crypt' 'bcache')
+provides=("${_pkgname}=${pkgver%.r*}")
+conflicts=('mkinitcpio<0.7' "${_pkgname}")
+replaces=('raidtools')
 backup=("etc/${_pkgname}.conf")
+install="${_pkgname}.install"
 _verwatch=('ftp://ftp.kernel.org/pub/linux/utils/raid/mdadm/' 'mdadm-\(.*\)\.tar\.xz' 'f')
 _archlink="@@@::https://projects.archlinux.org/svntogit/packages.git/plain/trunk/@@@?h=packages/${_pkgname}"
 source=(# use either one, but not both. Reset with makepkg -sCf. My comparison shows these are identical, including the tags. Github is faster.
-        #"mdadm_gitnb::git://neil.brown.name/${_pkgname}"
-        "mdadm_github::git+https://github.com/neilbrown/${_pkgname}.git"
+        "mdadm_gitnb::git://neil.brown.name/${_pkgname}"
+        #"mdadm_github::git+https://github.com/neilbrown/${_pkgname}.git"
         "${_archlink//@@@/${_pkgname}.conf}"
         "${_archlink//@@@/${_pkgname}_hook}"
         "${_archlink//@@@/${_pkgname}_install}"
         "${_archlink//@@@/${_pkgname}_udev_install}"
         "mdadm_udev_hook")
-install="${_pkgname}.install"
-replaces=('raidtools')
 sha256sums=('SKIP'
             '4ce1e90690282f98e4828e11576fbd61be65e97a2cdae6c7eac7035ea5ee53e5'
             'd297b4fa6213016ec08e4f66d07cf7eb03426e4e17ab31eddfa5c5c1d82ea294'
@@ -40,8 +40,10 @@ sha256sums=('SKIP'
             'd395184617f45849cbbaf5b4ee3665ca6895a1d642e0470e9de703ce944279ca')
 
 pkgver() {
+  set -u
   cd mdadm_git*/
   git describe --long | sed -e 's/^mdadm-//g' -e 's/\([^-]*-g\)/r\1/' -e 's/-/./g'
+  set +u
 }
 
 prepare() {
