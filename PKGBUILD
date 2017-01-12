@@ -1,14 +1,14 @@
 # Maintainer: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
 
 pkgname=trojita-git
-pkgver=0.6.r147.gc5373ed
+pkgver=0.7.r155.g5a330ec1
 pkgrel=1
 pkgdesc="A fast QT IMAP e-mail client"
 arch=(i686 x86_64)
 url="http://trojita.flaska.net"
 license=('GPL')
-depends=('qt5-webkit' 'qtkeychain-qt5' 'qt5-tools' 'mimetic'
-'gpgmepp' 'xdg-utils' 'desktop-file-utils')
+depends=('qt5-webkit' 'qtkeychain' 'qt5-tools' 'qt5-svg' 'mimetic'
+'qgpgme' 'xdg-utils' 'desktop-file-utils')
 conflicts=('trojita')
 provides=('trojita')
 makedepends=('git' 'cmake' 'boost')
@@ -30,6 +30,7 @@ build() {
         -DWITH_QT5=ON \
         -DWITH_QTKEYCHAIN_PLUGIN=ON \
         -DWITH_GPGMEPP=ON \
+        -DWITH_CRYPTO_MESSAGES=ON \
         .
   make
 }
