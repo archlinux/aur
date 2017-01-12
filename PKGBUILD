@@ -7,7 +7,7 @@ _gembuilder=("install"
 _ruby="/usr/bin/ruby"
 _gem="/usr/bin/gem"
 pkgname="ruby-memoist"
-pkgver="0.14.0"
+pkgver="0.15.0"
 pkgrel=1
 pkgdesc="memoize methods invocation"
 arch=("any")
@@ -23,7 +23,7 @@ optdepends=("ruby-bundler: The best way to manage your application's dependencie
             "ruby-rake: Rake is a Make-like program implemented in Ruby (Development dependency)"
             "ruby-minitest: minitest provides a complete suite of testing facilities supporting TDD, BDD, mo... (Development dependency)")
 source=("https://rubygems.org/gems/$_gemname-$pkgver.gem")
-sha256sums=("953da0295e5e5e02655df08e368afd3e8a16ee6b9d858733036e9970a781a30d")
+sha256sums=("b838329d7fe7e067e0d0717828db529126f44b8c0c527c884d162ebb4ecba379")
 noextract=("$_gemname-$pkgver.gem")
 options=("!emptydirs")
 
