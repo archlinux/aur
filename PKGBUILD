@@ -11,7 +11,7 @@
 
 pkgname=cairo-compmgr
 pkgver=0.3.1
-pkgrel=15
+pkgrel=16
 epoch=2
 pkgdesc="A Cairo based composite manager"
 arch=(i686 x86_64)
@@ -21,7 +21,7 @@ makedepends=(gettext gtk-doc "intltool>=0.41" git)
 depends=("gtk2>=2.16.0" "vala>=0.28" libsm libgl gconf)
 options=(!libtool)
 source=(https://github.com/downloads/gandalfn/Cairo-Composite-Manager/$pkgname-$pkgver.tar.bz2
-        'https://github.com/gandalfn/Cairo-Composite-Manager/pull/4.diff'
+        '4.diff'
         'bfd_ansidecl.patch'
 )
 md5sums=('4ef285e0735b1a61b5db2205a2d8f8b3'

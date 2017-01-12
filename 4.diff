@@ -1,0 +1,46 @@
+diff --git a/src/ccm-debug.c b/src/ccm-debug.c
+index 1b4d3d7..bca7c35 100644
+--- a/src/ccm-debug.c
++++ b/src/ccm-debug.c
+@@ -56,7 +56,7 @@
+ #include <stdlib.h>
+ #include <execinfo.h>
+ #include <bfd.h>
+-#include <libiberty.h>
++#include <libiberty/libiberty.h>
+ #include <dlfcn.h>
+ #include <link.h>
+ #endif /* HAVE_EDEBUG */
+diff --git a/vapi/cairo-compmgr.vapi b/vapi/cairo-compmgr.vapi
+index c196f7b..94d2235 100644
+--- a/vapi/cairo-compmgr.vapi
++++ b/vapi/cairo-compmgr.vapi
+@@ -270,8 +270,8 @@ namespace CCM
+         public unowned CCM.Region get_geometry ();
+         public unowned CCM.Region get_primary_geometry ();
+ 
+-        public bool add_window (CCM.Window window);
+-        public void remove_window (CCM.Window window);
++        public bool add_window (CCM.Screen screen, CCM.Window window);
++        public void remove_window (CCM.Screen screen, CCM.Window window);
+         public unowned CCM.Window? find_window (X.Window xwindow);
+         public unowned CCM.Window? find_window_or_child (X.Window xwindow);
+         public unowned CCM.Window? find_window_at_pos(int x, int y);
+@@ -481,7 +481,7 @@ namespace CCM
+         public void query_frame_extends ();
+         public void query_hint_type ();
+         public void query_mwm_hints ();
+-        public void query_opacity (bool deleted);
++        public void query_opacity (CCM.Window window);
+         public void query_state ();
+         public void query_transient_for ();
+         public void query_wm_hints ();
+@@ -491,7 +491,7 @@ namespace CCM
+         public void set_alpha ();
+         public void set_opacity (float opacity);
+         public void set_opaque ();
+-        public void set_opaque_region (CCM.Region region);
++        public void set_opaque_region (CCM.Window window, CCM.Region region);
+         public bool set_state (X.Atom state_atom);
+         public bool skip_pager ();
+         public bool skip_taskbar ();

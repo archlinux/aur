@@ -1,7 +1,7 @@
 pkgbase = cairo-compmgr
 	pkgdesc = A Cairo based composite manager
 	pkgver = 0.3.1
-	pkgrel = 15
+	pkgrel = 16
 	epoch = 2
 	url = https://github.com/gandalfn/Cairo-Composite-Manager
 	arch = i686
@@ -18,7 +18,7 @@ pkgbase = cairo-compmgr
 	depends = gconf
 	options = !libtool
 	source = https://github.com/downloads/gandalfn/Cairo-Composite-Manager/cairo-compmgr-0.3.1.tar.bz2
-	source = https://github.com/gandalfn/Cairo-Composite-Manager/pull/4.diff
+	source = 4.diff
 	source = bfd_ansidecl.patch
 	md5sums = 4ef285e0735b1a61b5db2205a2d8f8b3
 	md5sums = 011074cd9687475ebf9ac93fc1f535aa
