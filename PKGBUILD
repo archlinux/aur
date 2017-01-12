@@ -3,24 +3,25 @@
 # Original Submission: Bob Finch <w9ya@qrparci.net>
 
 pkgname=xlog
-pkgver=2.0.12
-pkgrel=2
+pkgver=2.0.14
+pkgrel=1
 pkgdesc="Ham Radio general purpose logging program."
 arch=('i686' 'x86_64')
 url="http://www.nongnu.org/xlog/"
 license=('GPL3')
-depends=('gtk2>=2.12.0' 'hamlib' 'desktop-file-utils')
+depends=('gtk2>=2.12.0' 'hamlib')
 makedepends=('pkg-config>=0.9.0' 'libgnomeprint')
-optdepends=('cwdaemon: as external keyer' 'glabels: print log')
-install=xlog.install
-source=(http://download.savannah.gnu.org/releases/$pkgname/$pkgname-$pkgver.tar.gz
-	$pkgname.install)
+optdepends=(	'cwdaemon: as external keyer'
+		'glabels: print log')
+source=(http://download.savannah.gnu.org/releases/$pkgname/$pkgname-$pkgver.tar.gz)
+
+prepare() {
+	cd $srcdir/$pkgname-$pkgver
+	sed -i -e "s:icons:pixmaps:" data/pixmaps/Makefile.in
+}
 
 build() {
 	cd $srcdir/$pkgname-$pkgver
-
-	sed -i -e "s:icons:pixmaps:" data/pixmaps/Makefile.in
-
 	./configure --prefix=/usr LDFLAGS=-lm
 	make
 
@@ -35,14 +36,10 @@ build() {
 
 package() {
 	cd $srcdir/$pkgname-$pkgver
-
 	make DESTDIR=$pkgdir install
 
 	rm $pkgdir/usr/share/applications/mimeinfo.cache
 	rm $pkgdir/usr/share/pixmaps/gnome-mime-text-x-xlog.png
 }
-
-md5sums=('58707ed6ed8ea96e57a8b46c4a009f21'
-         '59746acafa70800d71269e0165ab4016')
-sha256sums=('c5666c53e67b92b49bedb5ee1a629cf62d384033af6a912dff7726995775abd4'
-            'd2a07645e26a33cdf406bf273bc9d5697043555ac236cdb6349e66e679845ebd')
+md5sums=('20284beeba3cee97e14d651121e1b900')
+sha256sums=('16407e016f9991cfe02d85e9841ced6112416e43800898be888a2cc44c368d58')
