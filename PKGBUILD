@@ -9,22 +9,23 @@ set -u
 _pkgname='pcre'
 pkgname="${_pkgname}-svn"
 _srcdir="${pkgname}"
-pkgver=8.38.r1592
+pkgver=8.40.r1675
 pkgrel=1
 pkgdesc='A regex library that implements Perl 5-style regular expressions, includes pcregrep'
 arch=('i686' 'x86_64')
 url='http://www.pcre.org/'
 license=('BSD')
 depends=('gcc-libs' 'readline' 'zlib' 'bzip2' 'bash')
-makedepends=('subversion' 'libtool')
-validpgpkeys=('45F68D54BBE23FB3039B46E59766E084FB0F43D8') # Philip Hazel
+makedepends=('subversion' 'libtool' 'patch')
+provides=("${_pkgname}=${pkgver%.r*}")
+conflicts=("${_pkgname}")
+_verwatch=('ftp://ftp.csx.cam.ac.uk/pub/software/programming/pcre/' 'pcre-\([0-9\.]\+\)\.tar\.bz2' 'f')
 _archlink="@@@::https://projects.archlinux.org/svntogit/packages.git/plain/trunk/@@@?h=packages/${_pkgname}"
 source=("${_srcdir}::svn://vcs.exim.org/${_pkgname}/code/trunk"
         "${_archlink//@@@/01-seven-security-patches.patch}")
+validpgpkeys=('45F68D54BBE23FB3039B46E59766E084FB0F43D8') # Philip Hazel
 sha256sums=('SKIP'
             'c27607ae7907d0ecfa360c1a679618475b674541cb36c366d8b58c3571ec6a79')
-provides=("${_pkgname}=${pkgver%.r*}")
-conflicts=("${_pkgname}")
 
 pkgver() {
   set -u
