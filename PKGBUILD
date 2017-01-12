@@ -12,9 +12,9 @@ url="http://stuntrally.tuxfamily.org"
 depends=('ogre>=1.9' 'mygui' 'sdl2' 'libvorbis' 'enet' 'bullet' 'openal' 'hicolor-icon-theme')
 makedepends=('cmake' 'boost')
 source=("stuntrally-$pkgver.tar.gz::https://github.com/stuntrally/stuntrally/archive/$pkgver.tar.gz"
-        "tracks-$pkgver.tar.gz::https://github.com/stuntrally/tracks/archive/$pkgver.tar.gz"
-        "bullet-2.84+.patch"
-        "gcc-6.patch")
+        "stuntrally-tracks-$pkgver.tar.gz::https://github.com/stuntrally/tracks/archive/$pkgver.tar.gz"
+        "stuntrally-bullet-2.84+.patch"
+        "stuntrally-gcc-6.patch")
 sha256sums=('8cc309d27d26f78dcc596440547d68b5e41d02ef830df2d52d38611d45ebbaca'
             '4bce700516a2a178ac04cfbf7df2887ba42225802f5a3e670f770ea01345687b'
             'af250a702886de0210516f28c8babc5c20d9cb42eda516cc808a43fa25df6d41'
@@ -24,10 +24,10 @@ prepare() {
   cd $pkgname-$pkgver
 
   # https://github.com/stuntrally/stuntrally/commit/58e9d66
-  patch -p1 -i ../bullet-2.84+.patch
+  patch -p1 -i ../stuntrally-bullet-2.84+.patch
 
   # https://github.com/stuntrally/stuntrally/commit/f7703d8
-  patch -p1 -i ../gcc-6.patch
+  patch -p1 -i ../stuntrally-gcc-6.patch
 
   # copy tracks into source directory
   mkdir data/tracks
