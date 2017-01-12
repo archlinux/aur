@@ -1,7 +1,7 @@
 # Maintainer: Timofey Titovets <nefelim4ag@gmail.com>
 
 pkgname=bees-git
-pkgver=23.5a4ff9a
+pkgver=61.5e91529
 pkgrel=1
 pkgdesc="Best-Effort Extent-Same, a btrfs deduplicator daemon"
 arch=('any')
@@ -23,13 +23,7 @@ prepare() {
 }
 
 package() {
-	mkdir -p ${pkgdir}/usr/lib/systemd/system/
-	mkdir -p ${pkgdir}/usr/bin
-	mkdir -p ${pkgdir}/etc/bees
-
-	install -Dm755 ${pkgname}/scripts/beesd				${pkgdir}/usr/bin/
-	install -Dm755 ${pkgname}/bin/bees					${pkgdir}/usr/bin/
-	install -Dm644 ${pkgname}/lib/libcrucible.so		${pkgdir}/usr/lib/
-	install -Dm644 ${pkgname}/scripts/beesd.conf.sample ${pkgdir}/etc/bees/
-	install -Dm644 ${pkgname}/scripts/beesd@.service	${pkgdir}/usr/lib/systemd/system/
+	cd "${pkgname}"
+	make install PREFIX="${pkgdir}"
+	make install_scripts PREFIX="${pkgdir}"
 }
