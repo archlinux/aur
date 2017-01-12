@@ -32,7 +32,7 @@ build() {
 package() {
   cd ncdc
   make DESTDIR="$pkgdir/" install
-  install -Dm644 COPYING "$pkgdir/usr/share/licenses/ncdc/LICENSE"
+  install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" COPYING
 }
 
 # vim:set ts=2 sw=2 et:
