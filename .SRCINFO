@@ -1,0 +1,23 @@
+pkgbase = python-oslo-context
+	pkgdesc = Oslo Log library
+	pkgver = 2.11.0
+	pkgrel = 1
+	url = https://pypi.python.org/pypi/oslo.context/2.11.0
+	arch = any
+	license = Apache
+	checkdepends = python-oslotest
+	checkdepends = python2-oslotest
+	makedepends = git
+	makedepends = python-setuptools
+	makedepends = python2-setuptools
+	makedepends = python-pbr
+	makedepends = python2-pbr
+	source = git+https://git.openstack.org/openstack/oslo.context#tag=2.11.0
+	md5sums = SKIP
+
+pkgname = python-oslo-context
+	depends = python-pbr
+
+pkgname = python2-oslo-context
+	depends = python2-pbr
+
