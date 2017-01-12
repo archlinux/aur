@@ -6,6 +6,7 @@ pkgbase = libvshadow-git
 	arch = any
 	license = LGPL
 	makedepends = git
+	depends = libbfio-git
 	provides = libvshadow-git
 	conflicts = libvshadow
 	source = git+https://github.com/libyal/libvshadow.git
