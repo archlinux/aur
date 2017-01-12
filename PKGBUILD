@@ -1,6 +1,6 @@
 # Maintainer: Vladimir Cerny <blackvladimir@gmail.com>
 pkgname=xoscope
-pkgver=2.1
+pkgver=2.2
 pkgrel=1
 pkgdesc="A digital oscilloscope using input from a sound card. This package does not support COMEDI devices."
 arch=("i686" "x86_64")
@@ -21,4 +21,4 @@ package(){
   make DESTDIR="$pkgdir" install
 }
 
-md5sums=('a8b792ebca861eddc5967b255936a6bc')
+md5sums=('468ff79d38b5645f9033b564091bfecd')
