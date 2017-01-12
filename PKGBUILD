@@ -8,7 +8,7 @@
 _gitname=alot
 pkgname=alot-git
 pkgrel=1
-pkgver=r2640.82e8cea7
+pkgver=r2644.02fe2ad8
 pkgdesc="terminal-based MUA for the notmuch mail system"
 arch=(any)
 url="https://github.com/pazz/alot"
@@ -25,7 +25,7 @@ depends=(notmuch
 makedepends=(python2-sphinx git)
 provides=(alot)
 conflicts=(alot)
-options=(!emptydirs)
+options=(!emptydirs !strip libtool staticlibs zipman)
 source=('git+https://github.com/pazz/alot.git')
 md5sums=(SKIP)
 
