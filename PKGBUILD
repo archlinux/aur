@@ -4,7 +4,7 @@
 
 pkgname=nrpe
 pkgver=3.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Nagios Remote Plugin Executor"
 arch=('i686' 'x86_64')
 license=('GPL')

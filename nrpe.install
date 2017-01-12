@@ -8,8 +8,6 @@ post_install() {
 
   grep -Pq '^nrpe\s+' /etc/services || \
     echo "nrpe             5666/tcp" >> /etc/services
-
-  systemd-tmpfiles --create /usr/lib/tmpfiles.d/nrpe.conf
 }
 
 post_upgrade() {
