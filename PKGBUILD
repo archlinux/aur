@@ -2,11 +2,11 @@
 
 pkgname=gnome-shell-extension-shelltile-git
 pkgver=0+19+g569ddba
-pkgrel=1
+pkgrel=2
 pkgdesc='A tiling window extension for GNOME Shell'
 arch=('any')
 url='https://extensions.gnome.org/extension/657/shelltile/'
-license=('GPLv2')
+license=('GPL')
 depends=('gnome-shell')
 makedepends=('git')
 conflicts=('gnome-shell-extension-shelltile')
@@ -28,7 +28,6 @@ package() {
 	local destdir="$pkgdir/usr/share/gnome-shell/extensions/$uuid"
 
 	install -Dm644 -t "$pkgdir/usr/share/glib-2.0/schemas"         schemas/*.xml
-	install -Dm644 -t "$pkgdir/usr/share/licenses/${pkgname%-git}" LICENSE
 
 	install -Dm644 -t "$destdir" *.js *.json *.css
 	find locale -type f -name '*.mo' \
