@@ -1,16 +1,14 @@
 # Maintainer: luke bonham <dada [at] archlinux [dot] info>
 
 pkgname=lain-git
-pkgver=1443.354fa23
+pkgver=1445.03cd1ab
 pkgrel=1
 pkgdesc="Layouts, Utilities and Widgets for Awesome WM"
 arch=('any')
 url="https://github.com/copycat-killer/lain"
 license=('GPL2')
 depends=('awesome')
-optdepends=('alsa-utils: for ALSA volume widgets'
-            'curl: for widgets accessing network resources'
-            'imagemagick: for mpd album art notifications')
+optdepends=('curl: for IMAP and weather widgets')
 makedepends=('git')
 provides=('lain')
 conflicts=('lain')
