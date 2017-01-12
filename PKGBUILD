@@ -5,7 +5,7 @@
 # Contributor: Lucas Saliés Brum <lucas@archlinux.com.br>
 
 pkgname=papirus-icon-theme-git
-pkgver=r700.a79ce5a01
+pkgver=r724.81a23d363
 pkgrel=1
 epoch=1
 pkgdesc="Papirus icon theme (git version)"
@@ -33,18 +33,10 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "${srcdir}/${pkgname}"
-  ( set -o pipefail
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-  ) 2>/dev/null
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
   cd "${srcdir}/${pkgname}"
-  install -dm 755 "${pkgdir}"/usr/share/icons
-  cp -dr --no-preserve='ownership' \
-    ePapirus \
-    Papirus \
-    Papirus-Light \
-    Papirus-Dark \
-    "${pkgdir}"/usr/share/icons/
+  make DESTDIR="${pkgdir}/" install
 }
