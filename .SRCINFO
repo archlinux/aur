@@ -1,7 +1,7 @@
 pkgbase = keeex
 	pkgdesc = Fully operational blockchain solutions for securing, chaining, sharing, signing and timestamping any kind of document, data or process with no alteration.
 	pkgver = 3.2
-	pkgrel = 1
+	pkgrel = 3
 	url = https://keeex.me/
 	arch = x86_64
 	license = custom
