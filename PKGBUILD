@@ -1,4 +1,4 @@
-# Maintainer: 100best <jm dot 100best at gmail dot com>
+# Contributor: 100best
 
 pkgname=openspades-font-unifont
 pkgver=unknown
