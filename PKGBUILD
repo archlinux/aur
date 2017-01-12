@@ -3,7 +3,7 @@
 
 pkgname=fingerprint-gui
 pkgver=1.09
-pkgrel=2
+pkgrel=3
 pkgdesc="Application for fingerprint-based authentication, automatically support UPEK fingerprint readers with non-free library"
 arch=('i686' 'x86_64')
 url="http://www.ullrich-online.cc/fingerprint/"
@@ -11,14 +11,17 @@ license=('GPL')
 depends=('libfprint' 'libfakekey' 'polkit-qt4' 'qca')
 optdepends=('libusb: for libbsapi')
 source=("http://www.ullrich-online.cc/fingerprint/download/${pkgname}-${pkgver}.tar.gz"
-        "fingerprint-gui-udev-path.patch")
+        "fingerprint-gui-udev-path.patch"
+        "fingerprint-gui-udev-0050.patch")
 install="${pkgname}.install"
 md5sums=('699fbdb53d652cabd3c5fdd91078da58'
-         '603612909a3d8b06d5ce4d59ebde4944')
+         '603612909a3d8b06d5ce4d59ebde4944'
+         '244a769249f2b25b8613798fc063f494')
 
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"
   patch -p1 -i "${srcdir}/fingerprint-gui-udev-path.patch"
+  patch -p1 -i "${srcdir}/fingerprint-gui-udev-0050.patch"
 }
 
 build() {
