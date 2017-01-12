@@ -1,8 +1,8 @@
-# Maintainer: 100best <jm dot 100best at gmail dot com>
+# Contributor: 100best
 
 pkgname=openspades-notofonts
 pkgver=unknown
-pkgrel=1
+pkgrel=2
 pkgdesc="Google Noto Fonts for OpenSpades."
 url="http://openspades.yvt.jp"
 arch=('any')

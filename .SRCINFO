@@ -1,7 +1,7 @@
 pkgbase = openspades-notofonts
 	pkgdesc = Google Noto Fonts for OpenSpades.
 	pkgver = unknown
-	pkgrel = 1
+	pkgrel = 2
 	url = http://openspades.yvt.jp
 	arch = any
 	license = OFL
