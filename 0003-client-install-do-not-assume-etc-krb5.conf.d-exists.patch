@@ -1,17 +1,17 @@
-From c13db8fcdf05027ac9ed27780004d0c03ecf6198 Mon Sep 17 00:00:00 2001
+From 016245420bfc0a344ddc220cef449e732f8c6a06 Mon Sep 17 00:00:00 2001
 From: Jan Cholasta <jcholast@redhat.com>
 Date: Tue, 2 Aug 2016 13:49:36 +0200
-Subject: [PATCH 3/3] client install: do not assume /etc/krb5.conf.d exists
+Subject: [PATCH] client install: do not assume /etc/krb5.conf.d exists
 
 ---
  client/ipa-client-install | 6 ++++--
  1 file changed, 4 insertions(+), 2 deletions(-)
 
 diff --git a/client/ipa-client-install b/client/ipa-client-install
-index 4a263b3..ea71076 100755
+index 74d5d8aae66877dfee9436227bd6c47b7f0fb204..0bbfdab7701c7a6200d087c06d1bdc0559c4433c 100755
 --- a/client/ipa-client-install
 +++ b/client/ipa-client-install
-@@ -1073,8 +1073,10 @@ def configure_krb5_conf(cli_realm, cli_domain, cli_server, cli_kdc, dnsok,
+@@ -1076,8 +1076,10 @@ def configure_krb5_conf(cli_realm, cli_domain, cli_server, cli_kdc, dnsok,
      krbconf.setIndent(("","  ","    "))
  
      opts = [{'name':'comment', 'type':'comment', 'value':'File modified by ipa-client-install'},
@@ -25,5 +25,5 @@ index 4a263b3..ea71076 100755
      # SSSD include dir
      if options.sssd:
 -- 
-2.7.4
+2.11.0
 

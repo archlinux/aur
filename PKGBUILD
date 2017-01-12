@@ -9,7 +9,7 @@ pkgname=(python-ipalib
          freeipa-common
          freeipa-client-common
          freeipa-client)
-pkgver=4.4.1
+pkgver=4.4.3
 pkgrel=1
 pkgdesc='The Identity, Policy and Audit system'
 arch=('i686' 'x86_64')
@@ -49,10 +49,10 @@ source=("http://freeipa.org/downloads/src/freeipa-$pkgver.tar.gz"
         0001-platform-add-Arch-Linux-platform.patch
         0002-dogtag-vault-do-not-import-pki-in-makeapi.patch
         0003-client-install-do-not-assume-etc-krb5.conf.d-exists.patch)
-sha256sums=('f5d7fbc47b6800be6edff1b62135f22dbd240fbfd3d2f72dd9bfbf2aa02be3ee'
-            'f83ce0074fcaad1cb038a1b41e29c355752aab24d97b6eae1778826c5986b109'
-            '9b294f4dd1172c5356b7526ca12657fc90c11154a32c2032e20a678fa9fcedc5'
-            '3939187f198ac317a9dfc1723037d1ae30aed4e174f3dd1fe5efbe21da07ceec')
+sha256sums=('7ab844e16ba23dff9c71d47f59f105a8b2fdb6c407a56326c32528e8e7bb0773'
+            '73bff9f3677b98c09ff45dd8e2aae7080e0f93218956b978d07346005dab7b6b'
+            'e797910b18f7ed3063a9a454b261960fda2ab133f79ee070bee16e4745489d03'
+            'bc095e230652a8b421bfd1adb546aa4e720bfe8d15f6a9d6872eccac79b3dcbc')
 
 prepare() {
     cd "${pkgbase}-${pkgver}"
@@ -296,7 +296,6 @@ package_freeipa-client() {
              'ntp'
              'krb5'
              'authconfig'
-             'pam-krb5'
              'curl>=7.21.7'
              'yp-tools'
              'xmlrpc-c>=1.27.4'

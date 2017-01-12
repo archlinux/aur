@@ -1,7 +1,7 @@
-From dc7d4d45b6057cccd17cfc872af41ad4f2a18dc7 Mon Sep 17 00:00:00 2001
+From 57f997fefd917d9d8d13b1d94982c9a9b09156f6 Mon Sep 17 00:00:00 2001
 From: Xiao-Long Chen <chenxiaolong@cxl.epac.to>
 Date: Wed, 16 Apr 2014 19:31:08 -0400
-Subject: [PATCH 1/3] platform: add Arch Linux platform
+Subject: [PATCH] platform: add Arch Linux platform
 
 This patch has been adapted from the patches provided with freeipa package
 in the Arch User Repository (AUR).
@@ -24,7 +24,7 @@ Signed-off-by: Jan Cholasta <jcholast@redhat.com>
  create mode 100644 ipaplatform/archlinux/tasks.py
 
 diff --git a/client/man/ipa-client-automount.1 b/client/man/ipa-client-automount.1
-index 5b60503..16ccbea 100644
+index 5b60503f1304d0a0b03a8862708ba126c50c7eff..16ccbeadc6a453ad43343c68b4662c089a359aaa 100644
 --- a/client/man/ipa-client-automount.1
 +++ b/client/man/ipa-client-automount.1
 @@ -29,7 +29,7 @@ The automount configuration consists of three files:
@@ -46,7 +46,7 @@ index 5b60503..16ccbea 100644
  /etc/autofs_ldap_auth.conf
  
 diff --git a/client/man/ipa-client-install.1 b/client/man/ipa-client-install.1
-index 7f490d1..5f0c379 100644
+index 26c940721413a785068b6b79622a42a816c1ef77..468695cf06c76a899ca94af4f83f818f8afdc9f2 100644
 --- a/client/man/ipa-client-install.1
 +++ b/client/man/ipa-client-install.1
 @@ -257,7 +257,7 @@ Files replaced if NTP is enabled:
@@ -69,7 +69,7 @@ index 7f490d1..5f0c379 100644
  
 diff --git a/ipaplatform/archlinux/__init__.py b/ipaplatform/archlinux/__init__.py
 new file mode 100644
-index 0000000..9da42e7
+index 0000000000000000000000000000000000000000..9da42e7b4d782ef596e8fda080b6c1994b901866
 --- /dev/null
 +++ b/ipaplatform/archlinux/__init__.py
 @@ -0,0 +1,3 @@
@@ -78,7 +78,7 @@ index 0000000..9da42e7
 +#
 diff --git a/ipaplatform/archlinux/constants.py b/ipaplatform/archlinux/constants.py
 new file mode 100644
-index 0000000..148abd8
+index 0000000000000000000000000000000000000000..148abd83f72d12263659f78326fdabd91bed5227
 --- /dev/null
 +++ b/ipaplatform/archlinux/constants.py
 @@ -0,0 +1,12 @@
@@ -96,7 +96,7 @@ index 0000000..148abd8
 +constants = ArchLinuxConstantsNamespace()
 diff --git a/ipaplatform/archlinux/paths.py b/ipaplatform/archlinux/paths.py
 new file mode 100644
-index 0000000..a7b8ea7
+index 0000000000000000000000000000000000000000..a7b8ea7b4cc959c4237a16fd68e7422bf1a359a1
 --- /dev/null
 +++ b/ipaplatform/archlinux/paths.py
 @@ -0,0 +1,22 @@
@@ -124,7 +124,7 @@ index 0000000..a7b8ea7
 +paths = ArchLinuxPathNamespace()
 diff --git a/ipaplatform/archlinux/services.py b/ipaplatform/archlinux/services.py
 new file mode 100644
-index 0000000..c0fb6fb
+index 0000000000000000000000000000000000000000..c0fb6fb9403422f2699ef1a2e5521d7871dac3a0
 --- /dev/null
 +++ b/ipaplatform/archlinux/services.py
 @@ -0,0 +1,38 @@
@@ -168,7 +168,7 @@ index 0000000..c0fb6fb
 +knownservices = ArchLinuxServices()
 diff --git a/ipaplatform/archlinux/tasks.py b/ipaplatform/archlinux/tasks.py
 new file mode 100644
-index 0000000..cae3245
+index 0000000000000000000000000000000000000000..cae3245c874bd42f326b379e6bb39573f0b52acb
 --- /dev/null
 +++ b/ipaplatform/archlinux/tasks.py
 @@ -0,0 +1,16 @@
@@ -189,7 +189,7 @@ index 0000000..cae3245
 +
 +tasks = ArchLinuxTaskNamespace()
 diff --git a/ipaplatform/setup.py.in b/ipaplatform/setup.py.in
-index 11bb757..2d355fc 100644
+index 11bb7573fd8a5c72da1c40ba4fd222fdc1a872d3..2d355fc1765b83a8b5945ab7e0b08f8781408216 100644
 --- a/ipaplatform/setup.py.in
 +++ b/ipaplatform/setup.py.in
 @@ -65,6 +65,7 @@ def setup_package():
@@ -201,5 +201,5 @@ index 11bb757..2d355fc 100644
                          "ipaplatform.fedora",
                          "ipaplatform.redhat",
 -- 
-2.7.4
+2.11.0
 
