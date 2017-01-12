@@ -1,0 +1,44 @@
+pkgbase = python-ironicclient
+	pkgdesc = Python client library for Ironic
+	pkgver = 1.9.0
+	pkgrel = 1
+	url = http://docs.openstack.org/developer/python-ironicclient
+	arch = any
+	license = Apache
+	makedepends = python-setuptools
+	makedepends = python2-setuptools
+	source = git+https://git.openstack.org/openstack/python-ironicclient#tag=1.9.0
+	md5sums = SKIP
+
+pkgname = python-ironicclient
+	depends = python-six
+	depends = python-requests
+	depends = python-yaml
+	depends = python-openstackclient
+	depends = python-prettytable
+	depends = python-oslo-utils
+	depends = python-oslo-serialization
+	depends = python-oslo-i18n
+	depends = python-osc-lib
+	depends = python-keystoneauth1
+	depends = python-jsonschema
+	depends = python-dogpile.cache
+	depends = python-appdirs
+	depends = python-pbr
+
+pkgname = python2-ironicclient
+	depends = python2-six
+	depends = python2-requests
+	depends = python2-yaml
+	depends = python2-openstackclient
+	depends = python2-prettytable
+	depends = python2-oslo-utils
+	depends = python2-oslo-serialization
+	depends = python2-oslo-i18n
+	depends = python2-osc-lib
+	depends = python2-keystoneauth1
+	depends = python2-jsonschema
+	depends = python2-dogpile.cache
+	depends = python2-appdirs
+	depends = python2-pbr
+
