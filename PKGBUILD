@@ -1,0 +1,78 @@
+# Maintainer: Jaryl Chng <mrciku@gmail.com>
+pkgname=dff-git
+pkgver=20160519.d40d46b
+pkgrel=1
+pkgdesc='A Forensics Framework coming with command line and graphical interfaces.'
+arch=('any')
+url='https://github.com/arxsys/dff'
+license=('GPL')
+provides=('dff-git')
+conflicts=('dff')
+groups=()
+depends=('qt4' 'pyqt' 'python2-pyqt4' 'python2-magic' 'python2-apsw' 'python2-pillow' 'python2-poppler-qt4' 'ffmpeg' 'libbfio-git' 'libvshadow-git' 'libpff-git' 'libewf-git' 'libbde-git')
+makedepends=('git' 'swig' 'bison' 'flex' 'tre' 'pkg-config')
+optdepends=(
+  'python2-pefile: PE files support'
+  'reglookup: registry hives support'
+  'volatility: volatile memory support'
+  'libreoffice-fresh: documents support'
+)
+options=()
+source=(
+  'git+https://github.com/arxsys/dff.git'
+  'fixes.patch'
+)
+sha256sums=(
+  'SKIP'
+  '0c2b4a3380287042fc915b81148cb900224de4a41231d30e489944be3fb4546a'
+)
+
+_gitname="dff"
+
+pkgver() {
+  cd "$srcdir/$_gitname"
+  git log -1 --format='%cd.%h' --date=short | tr -d -
+}
+
+prepare() {
+  cd "$_gitname"
+
+  # patching to python2
+  sed -i 's/\/python/\/python2/g' 'dff.py'
+  sed -i 's/\/python/\/python2/g' 'dff-gui.py'
+  sed -i 's/dff -g/dff-gui/g' 'ressources/dff.desktop'
+
+  # pull submodules
+  git submodule update --init --remote
+  git submodule foreach git checkout develop
+
+  # patching FindICU.cmake and EWF.cpp for compatibility.
+  patch -Np1 -i "${srcdir}/fixes.patch"
+}
+
+build() {
+  cd "$_gitname"
+
+  # create build folder
+  rm -rf build
+  mkdir -p build && cd build
+
+  # python2 temporary alias
+  mkdir -p bin
+  cp /usr/bin/python2 bin/python
+
+  # build process
+  PATH=./bin:$PATH cmake \
+    -Wno-dev \
+    -DCMAKE_INSTALL_PREFIX:FILEPATH=/usr \
+    ..
+  PATH=./bin:$PATH make
+}
+
+package() {
+  cd "$_gitname/build"
+  PATH=./bin:$PATH make INSTALL_ROOT="$pkgdir" DESTDIR="$pkgdir/" install
+
+  mv $pkgdir/usr/bin/dff $pkgdir/usr/bin/dff-cli
+  cp -r $pkgdir/usr/lib/python2.7/site-packages/dff $pkgdir/usr/bin/
+}
