@@ -10,7 +10,7 @@ pkgbase = spotify-adkiller-dns-block-git
 	depends = spotify
 	provides = spotify-adkiller-dns-block
 	conflicts = spotify-adkiller-dns-block
-	source = git+https://github.com/SecUpwN/Spotify-AdKiller.git
+	source = git+https://github.com/SecUpwN/Spotify-AdKiller.git#branch=dns-block
 	source = spotify-adkiller-dns-block
 	source = Spotify (dns-block).desktop
 	sha512sums = SKIP
