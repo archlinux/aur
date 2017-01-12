@@ -1,6 +1,6 @@
 pkgbase = python2-altgraph
-	pkgdesc = altgraph is a fork of graphlib: a graph (network) package for constructing graphs
-	pkgver = 0.12
+	pkgdesc = Altgraph is a fork of graphlib: a graph (network) package for constructing graphs
+	pkgver = 0.13
 	pkgrel = 1
 	url = https://pypi.python.org/pypi/altgraph
 	arch = i686
@@ -8,8 +8,8 @@ pkgbase = python2-altgraph
 	license = MIT
 	makedepends = python2-distribute
 	depends = python2
-	source = https://pypi.python.org/packages/source/a/altgraph/altgraph-0.12.tar.gz
-	sha256sums = b90db0dba36d9ece282b6a95ae3d324b63239694ce2cf2fd07d3efd7f2f7cab2
+	source = https://files.pythonhosted.org/packages/source/a/altgraph/altgraph-0.13.tar.gz
+	md5sums = 67990fbe56f4f1064f8b414463f0214f
 
 pkgname = python2-altgraph
 
