@@ -1,7 +1,7 @@
 # Maintainer: M0Rf30
 
 pkgname=airtime-git
-pkgver=airtime.2.5.2.1.r71.g4940c73
+pkgver=airtime.2.5.2.1.r81.g7b3d2ec11
 pkgrel=1
 pkgdesc="Open broadcast software for scheduling and station management."
 arch=('i686' 'x86_64')
@@ -72,33 +72,13 @@ backup=('etc/airtime/airtime.conf'
         'etc/logrotate.d/airtime-php')
 install=airtime.install
 
-source=("airtime::git+https://github.com/sourcefabric/airtime"
+source=("airtime::git+https://github.com/M0Rf30/airtime"
         'airtime-media-monitor.service'
         'airtime-liquidsoap.service'
         'airtime-playout.service'
-        'airtime.tmpfiles.conf'
-	'httpd-airtime.conf'
-	'php-errors.patch')
+        'airtime.tmpfiles.conf')
 
 branch=2.5.x
-
-prepare() {
-    cd "$srcdir/airtime"
-
-msg2 "Replacing python with python2..."    
-    grep -rl '/usr/bin/python' 'python_apps' 'utils' | xargs  sed -i "s%/usr/bin/python%/usr/bin/python2%g"
-    grep -rl 'www-data' . | xargs  sed -i "s%www-data%http%g"
-
-msg2 "Replacing airtime.conf with airtime.ini for ConfigObj compatibility..."
-    cd python_apps
-    grep -rl '/etc/airtime/airtime.conf' | xargs sed -i "s%airtime.conf%airtime.ini%g"
-    cd ../utils
-    sed -i "s%airtime.conf%airtime.ini%g" upgrade.py airtime-import/airtime-import airtime-silan
-    cd ..
-
-msg2 "Fixing login web interface aspect ( __tostring exception )..."
-    patch -Np0 -i ../php-errors.patch
-}
 
 package() {
     cd "$srcdir/airtime"
@@ -118,18 +98,15 @@ msg2 "Creating folders and fixing permissions..."
     install -d -m755 "${pkgdir}/var/log/airtime"
     install -d -m655 "${pkgdir}/etc/airtime"
     install -d -m755 "${pkgdir}/usr/share/php/"
-    
-msg2 "Installing files..."    
+
+msg2 "Installing files..."
     install -D -m644 "CREDITS" "${pkgdir}/usr/share/doc/airtime/CREDITS"
     install -D -m644 "README" "${pkgdir}/usr/share/doc/airtime/README"
     install -D -m644 "changelog" "${pkgdir}/usr/share/doc/airtime/changelog"
     install -D -m644 "LICENSE" "${pkgdir}/usr/share/doc/airtime/LICENSE"
     install -D -m644 "LICENSE_3RD_PARTY" "${pkgdir}/usr/share/licenses/airtime/LICENSE_3RD_PARTY"
     install -D -m644 "airtime_mvc/build/airtime.example.conf" "${pkgdir}/etc/airtime/airtime.example.conf"
-    install -D -m644 "airtime_mvc/build/airtime.example.conf" "${pkgdir}/etc/airtime/airtime.ini"
-
-msg2 "Replace deprecated # with ; for php comment..."
-    find "${pkgdir}/etc/airtime/airtime.example.conf" -name "*.conf" -exec sed -i -re 's/^(\s*)#(.*)/\1;\2/g' {} \;
+    install -D -m644 "airtime_mvc/build/airtime.ini" "${pkgdir}/etc/airtime/airtime.ini"
 
 msg2 "Setting up tmpfiles.d and logrotate.d..."
     install -D -m644 ../airtime.tmpfiles.conf "${pkgdir}/usr/lib/tmpfiles.d/airtime.conf"
@@ -139,10 +116,10 @@ msg2 "Setting up tmpfiles.d and logrotate.d..."
 msg2 "Symlinking Zend Framework..."
     ln -sr /usr/share/zendframework/library/ "${pkgdir}/usr/share/php/Zend"
     ln -sr /usr/share/zendframework/library "${pkgdir}/usr/share/php/libzend-framework-php"
- 
-msg2 "Copying Apache and Php confs..."    
+
+msg2 "Copying Apache and Php confs..."
     install -D -m644 "installer/php/airtime.ini" "${pkgdir}/etc/php/conf.d/airtime.ini"
-    install -D -m644 ../httpd-airtime.conf "${pkgdir}/etc/httpd/conf/extra/httpd-airtime.conf"
+    install -D -m644 "installer/apache/airtime-vhost" "${pkgdir}/etc/httpd/conf/extra/httpd-airtime.conf"
 
 msg2 "Installing systemd services..."
     install -D -m644 ../airtime-media-monitor.service "${pkgdir}/usr/lib/systemd/system/airtime-media-monitor.service"
@@ -162,21 +139,14 @@ msg2 "Setting up python packages..."
 msg2 "Fixing permissions..."
     chown -R ${web_user}:${web_user} "${pkgdir}/var/tmp/airtime"
     chown -R ${web_user}:${web_user} "${pkgdir}/var/log/airtime"
-    
-msg2 "Cleaning..."
-    rm -r "${pkgdir}/etc/init"
-    rm -r "${pkgdir}/etc/init.d"
 }
 
 pkgver() {
     cd airtime
     git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
-
 md5sums=('SKIP'
          'f42b444b6b06268a8c8695173b55391c'
          '47a2530a9f0b483d9d2bedc4a4430dec'
          '93f750480f7c49d72cdcdb10cd97c089'
-         'd9c15aaa7b1da14acc99e047f58aac66'
-         '6ee878012b7f1bdf6373ce1b7dd8ec5c'
-         'f0d4f2b5a52b130475dfe571f0186dc6')
+         'd9c15aaa7b1da14acc99e047f58aac66')
