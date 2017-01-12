@@ -1,4 +1,5 @@
 # Contributor: Jonathan Wiersma <archaur at jonw dot org>
+# Maintainer: David Rosenstrauch <darose@darose.net>
 
 pkgname=eclipse-antlr-runtime
 pkgver=3.0.0
