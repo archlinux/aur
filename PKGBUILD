@@ -1,21 +1,24 @@
-# Maintainer: Christopher Loen <christopherloen at gmail dot com>
-pyname='Scrapy'
-pkgname='python-scrapy'
-pkgver='1.1.0'
+pkgname=python-scrapy
+pkgver=1.3.0
 pkgrel=1
-pkgdesc='An open source framework for extracting the data you need from websites'
-arch=('any')
-url='http://scrapy.org/'
+pkgdesc="A fast high-level scraping and web crawling framework. Python 3 compatible version."
+arch=(any)
 license=('BSD')
-depends=('python' 'python-pydispatcher' 'python-lxml' 'python-twisted' 'python-cssselect' 'python-parsel' 'python-pyopenssl' 'python-queuelib' 'python-six' 'python-w3lib' 'python-service-identity')
-makedepends=('python-pip')
-conflicts=('python2-scrapy')
-source=('https://pypi.python.org/packages/f7/9f/237e96ffa1258f3cc8b45672fc0705e87b04c52d438737eb107510034c0a/Scrapy-1.1.0.tar.gz')
-md5sums=('48d3fd6f4594d26f6fc3bcd01f3dcc20')
-
+url="http://scrapy.org"
+depends=('python-parsel' 'python-twisted' 'libxml2' 'python-w3lib' 'python-lxml' 'python-six' 'python-queuelib' 
+         'python-setuptools' 'python-cssselect' 'python-pyopenssl' 'python-service-identity')
+conflicts=('scrapy')
+makedepends=('git')
+optdepends=('ipython: for enhanced support of the interactive scraping shell')
+source=("git+https://github.com/scrapy/scrapy.git#tag=${pkgver}")
+md5sums=('SKIP')
 
 package() {
-    cd "${srcdir}/${pyname}-${pkgver}"
-    echo :: Installing scrapy ...
-    pip3 install --prefix=/usr --isolated --root="${pkgdir}" --no-deps --ignore-installed .
+  cd "${srcdir}/scrapy"
+  python setup.py install -O1 --root="${pkgdir}"
+  
+  install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -D -m644 "README.rst" "${pkgdir}/usr/share/doc/${pkgname}/README.rst"
+  install -D -m644 "docs/intro/install.rst" "${pkgdir}/usr/share/doc/${pkgname}/INSTALL.rst"
 }
+
