@@ -4,7 +4,7 @@
 pkgname=grib_api
 pkgver=1.19.0
 _attnum=3473437
-pkgrel=1
+pkgrel=2
 pkgdesc="A program interface for encoding and decoding GRIB messages"
 arch=('i686' 'x86_64')
 url="https://software.ecmwf.int/wiki/display/GRIB/Home"
@@ -20,6 +20,7 @@ md5sums=('64a1df561339ea858558b38e5cc4d51f')
 
 build() {
   cd "$srcdir"/${pkgname}-${pkgver}-Source
+  sed -i 's/image.inmem_.*=.*1;//' src/grib_jasper_encoding.c
   mkdir -p build
   cd build
   [ -x /usr/bin/aec ] && has_aec=1 || has_aec=0
