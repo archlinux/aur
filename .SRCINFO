@@ -1,6 +1,6 @@
 pkgbase = streamlink-git
 	pkgdesc = CLI program that launches streams from various streaming services in a custom video player (livestreamer fork)
-	pkgver = 0.2.0.r14.gb145d24
+	pkgver = 0.2.0.r71.g8b710ba
 	pkgrel = 1
 	url = https://streamlink.github.io/
 	arch = any
@@ -13,6 +13,7 @@ pkgbase = streamlink-git
 	depends = python-requests
 	depends = python-setuptools
 	depends = rtmpdump
+	optdepends = ffmpeg: Required to play streams that are made up of separate audio and video streams, eg. YouTube 1080p+
 	optdepends = python-librtmp: Required by the ustreamtv plugin to be able to use non-mobile streams.
 	provides = streamlink
 	conflicts = streamlink

@@ -1,7 +1,7 @@
 # Maintainer: Josip Ponjavic <josipponjavic at gmail dot com>
 
 pkgname=streamlink-git
-pkgver=0.2.0.r14.gb145d24
+pkgver=0.2.0.r71.g8b710ba
 pkgrel=1
 pkgdesc='CLI program that launches streams from various streaming services in a custom video player (livestreamer fork)'
 arch=('any')
@@ -10,7 +10,8 @@ license=('BSD')
 depends=('python-pycryptodome' 'python-requests' 'python-setuptools' 'rtmpdump')
 checkdepends=('python-mock' 'python-pytest')
 makedepends=('git' 'python-sphinx')
-optdepends=('python-librtmp: Required by the ustreamtv plugin to be able to use non-mobile streams.')
+optdepends=('ffmpeg: Required to play streams that are made up of separate audio and video streams, eg. YouTube 1080p+'
+            'python-librtmp: Required by the ustreamtv plugin to be able to use non-mobile streams.')
 provides=('streamlink')
 conflicts=('streamlink')
 source=('git+https://github.com/streamlink/streamlink.git')
