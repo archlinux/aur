@@ -1,16 +1,16 @@
 pkgbase = ruby-highline-1.7
 	pkgdesc = HighLine is a high-level command-line IO library.
-	pkgver = 1.7.2
+	pkgver = 1.7.8
 	pkgrel = 1
 	url = https://github.com/JEG2/highline
 	arch = any
 	license = Ruby
 	depends = ruby
-	provides = ruby-highline=1.7.2
-	noextract = highline-1.7.2.gem
+	provides = ruby-highline=1.7.8
+	noextract = highline-1.7.8.gem
 	options = !emptydirs
-	source = https://rubygems.org/downloads/highline-1.7.2.gem
-	sha1sums = d7114ed98c5651b928cc7195aded7b0000e09689
+	source = https://rubygems.org/downloads/highline-1.7.8.gem
+	sha1sums = 23e27608e2fdabd7ef60ebca1fc82aa686c2e880
 
 pkgname = ruby-highline-1.7
 

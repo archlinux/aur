@@ -3,7 +3,7 @@
 
 _gemname=highline
 pkgname=ruby-$_gemname-1.7
-pkgver=1.7.2
+pkgver=1.7.8
 pkgrel=1
 pkgdesc='HighLine is a high-level command-line IO library.'
 arch=(any)
@@ -14,7 +14,7 @@ depends=(ruby)
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-sha1sums=('d7114ed98c5651b928cc7195aded7b0000e09689')
+sha1sums=('23e27608e2fdabd7ef60ebca1fc82aa686c2e880')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
