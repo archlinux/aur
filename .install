@@ -1,15 +1,23 @@
 post_install() {
-	kana-p-poison -i > /dev/null 2> /dev/null
+	/usr/lib/kana-p/utils/kana-p-poison -i > /dev/null 2> /dev/null
 }
 
 pre_upgrade() {
-	kana-p-poison -u > /dev/null 2> /dev/null
+	if [ -f /usr/lib/kana-p-poison ]; then
+		kana-p-poison -u > /dev/null 2> /dev/null
+	else
+		/usr/lib/kana-p/utils/kana-p-poison -u > /dev/null 2> /dev/null
+	fi
 }
 
 post_upgrade() {
-	kana-p-poison -i > /dev/null 2> /dev/null
+	/usr/lib/kana-p/utils/kana-p-poison -i > /dev/null 2> /dev/null
 }
 
 pre_remove() {
-	kana-p-poison -u > /dev/null 2> /dev/null
+	if [ -f /usr/lib/kana-p-poison ]; then
+		kana-p-poison -u > /dev/null 2> /dev/null
+	else
+		/usr/lib/kana-p/utils/kana-p-poison -u > /dev/null 2> /dev/null
+	fi
 }
