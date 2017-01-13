@@ -2,7 +2,7 @@
 pkgbase=parallels-tools
 pkgname=(parallels-tools parallels-tools-dkms)
 pkgver=11.2.2.32651
-pkgrel=1
+pkgrel=2
 pkgdesc="Parallels virtualization integration services & drivers"
 arch=('x86_64')
 url="https://parallels.com"
@@ -57,9 +57,8 @@ package_parallels-tools() {
 
 	mkdir -p "${pkgdir}/usr/bin"
 	mkdir -p "${pkgdir}/usr/lib"
-	mkdir -p "${pkgdir}/usr/sbin"
 	cp -r "${srcdir}"/bin/* "${pkgdir}/usr/bin"
-	cp -r "${srcdir}"/sbin/* "${pkgdir}/usr/sbin"
+	cp -r "${srcdir}"/sbin/* "${pkgdir}/usr/bin"
 	cp -r "${srcdir}"/lib/* "${pkgdir}/usr/lib"
 	install -d -m 0755 "${pkgdir}/usr/lib/xorg/modules/drivers"
 	install -d -m 0755 "${pkgdir}/usr/lib/xorg/modules/input"
