@@ -2,7 +2,7 @@
 
 pkgbase=vis-standalone-git
 pkgname=(vis-standalone-git vis-single-git)
-pkgver=0.2.r645.ge83a9d5
+pkgver=0.2.r655.g91e0c6e
 pkgrel=2
 _pkgver_libmusl=1.1.16
 _pkgver_ncurses=6.0
@@ -19,12 +19,14 @@ license=('custom:ISC')
 validpgpkeys=('836489290BB6B70F99FFDA0556BCDB593020450F'  # musl libc <musl@libc.org>
               'C52048C0C0748FEE227D47A2702353E0F7E48EDB') # Thomas Dickey <dickey@invisible-island.net>
 source=('git://github.com/martanne/vis.git'
-	"http://www.musl-libc.org/releases/musl-${_pkgver_libmusl}.tar.gz"{,.asc}
-	"http://ftp.gnu.org/gnu/ncurses/ncurses-${_pkgver_ncurses}.tar.gz"{,.sig}
-	"http://www.leonerd.org.uk/code/libtermkey/libtermkey-${_pkgver_libtermkey}.tar.gz"
-	"http://www.lua.org/ftp/lua-${_pkgver_lua}.tar.gz"
-	"http://www.inf.puc-rio.br/~roberto/lpeg/lpeg-${_pkgver_lpeg}.tar.gz")
+        'git://github.com/martanne/vis-test.git'
+        "http://www.musl-libc.org/releases/musl-${_pkgver_libmusl}.tar.gz"{,.asc}
+        "http://ftp.gnu.org/gnu/ncurses/ncurses-${_pkgver_ncurses}.tar.gz"{,.sig}
+        "http://www.leonerd.org.uk/code/libtermkey/libtermkey-${_pkgver_libtermkey}.tar.gz"
+        "http://www.lua.org/ftp/lua-${_pkgver_lua}.tar.gz"
+        "http://www.inf.puc-rio.br/~roberto/lpeg/lpeg-${_pkgver_lpeg}.tar.gz")
 sha256sums=('SKIP'
+            'SKIP'
             '937185a5e5d721050306cf106507a006c3f1f86d86cd550024ea7be909071011'
             'SKIP'
             'f551c24b30ce8bfb6e96d9f59b42fbea30fa3a6123384172f9e7284bcf647260'
@@ -35,6 +37,10 @@ sha256sums=('SKIP'
 
 prepare() {
 	cd vis/
+
+	git config --file=.gitmodules submodule.git.url ../vis-test/
+	git submodule init
+	git submodule update
 
 	mkdir -p dependency/sources/
 
@@ -62,9 +68,20 @@ pkgver() {
 build() {
 	cd vis/
 
+        # prepare test environment
+        ./configure
+        make -C test/core/
+        make -C test/util/
+
 	unset CFLAGS LDFLAGS
 
 	make PREFIX='/usr/' single
+}
+
+check() {
+	cd vis/
+
+	make -C test/
 }
 
 package_vis-standalone-git() {
