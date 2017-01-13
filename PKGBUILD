@@ -3,7 +3,7 @@
 _fontname=EmojiOneColor-SVGinOT
 pkgname=ttf-emojione-color
 pkgver=1.3
-pkgrel=2
+pkgrel=3
 pkgdesc='A color and B&W emoji SVGinOT font built from EmojiOne'
 arch=('any')
 url='https://github.com/eosrei/emojione-color-font'
@@ -29,7 +29,7 @@ package() {
 
   install -d "$pkgdir/$_fontconfigdir"
   install -d "$pkgdir/$_fonttemplatedir"
-  install "$srcdir/64-$pkgname.conf" "$pkgdir/$_fonttemplatedir"
+  install -m644 "$srcdir/64-$pkgname.conf" "$pkgdir/$_fonttemplatedir"
   ln -s "$_fonttemplatedir/64-$pkgname.conf" "$pkgdir/$_fontconfigdir/64-$pkgname.conf"
 
   install -D LICENSE-CC-BY.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
