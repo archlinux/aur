@@ -2,8 +2,8 @@
 
 pkgname=dpf-plugins-git
 pkgver=r72.5f35525
-pkgrel=1
-pkgdesc="Collection of DPF-based plugins"
+pkgrel=2
+pkgdesc="Collection of DPF-based plugins by DISTRHO. LV2, dssi and VST."
 arch=('i686' 'x86_64')
 url="http://distrho.sourceforge.net/"
 license=('GPL' 'LGPL' 'MIT' 'custom:ISC')
