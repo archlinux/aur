@@ -1,0 +1,24 @@
+pkgbase = leanote
+	pkgdesc = Knowledge, Blog, Sharing, Cooperation... all in this package
+	pkgver = 2.2.1
+	pkgrel = 1
+	url = http://github.com/leanote/desktop-app
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = electron
+	makedepends = gulp
+	depends = electron
+	provides = leanote
+	conflicts = leanote
+	source = https://github.com/leanote/desktop-app/archive/V2.2.1.tar.gz
+	source = leanote.desktop
+	source = leanote.png
+	source = leanote
+	sha256sums = e68163cb5c2edfcdd47ada1be9779a4c6066ec5819e96c1090b18dd4f5f7af2c
+	sha256sums = 8dab30fe0835432e44b5a3a1d46aebde8716a2a47ba4031cbe2a01560987aa83
+	sha256sums = 6ff24cc032dfb03fb820d5b4c3a451273e19f339ce5a727a8e39bc6115923de3
+	sha256sums = 38cc9670a73086deeb5f3f1b5932b2b489ba7db4c17d913c8357ee57cd6a547d
+
+pkgname = leanote
+
