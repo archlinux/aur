@@ -1,7 +1,7 @@
 # Maintainer: Graham Smith <gps1539 at gmail dot com>
 
 pkgname=trespass
-pkgver=0.0.2
+pkgver=0.0.3
 pkgrel=1
 pkgdesc="A secure password keeper written in python using gpg to protect account/user and user/password key value stores"
 arch=('any')
@@ -10,7 +10,7 @@ url='https://github.com/gps1539/trespass'
 depends=('python' 'python-numpy' 'gnupg')
 makedepends=()
 source=("https://raw.githubusercontent.com/gps1539/trespass/master/trespass.py")
-md5sums=('e37c77ad4e1a5f26a2bacbe2247cb4a8')
+md5sums=('bc6ee2bd0dffc315ffd4d5305dadae40')
 
 package()
 {
