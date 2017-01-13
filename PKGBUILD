@@ -2,7 +2,7 @@
 # Contributor: speps <speps at aur dot archlinux dot org>
 
 pkgname=ladish-git
-pkgver=1.r47.g5fe205f
+pkgver=1.r47.g5fe205f2
 pkgrel=1
 pkgdesc="Session management system for JACK."
 arch=('i686' 'x86_64')
