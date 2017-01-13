@@ -1,0 +1,10 @@
+post_install() {
+  echo ""
+  echo "==> ARGoS3 has already epuck librairies, so you should replace the files with the ones of this file !"
+  echo "$ sudo /usr/include/argos3/plugins/robots/e-puck/simulator/dynamics2d_epuck_model.h.pacnew /usr/include/argos3/plugins/robots/e-puck/simulator/dynamics2d_epuck_model.h"
+  echo "$ sudo /usr/include/argos3/plugins/robots/e-puck/simulator/epuck_entity.h.pacnew /usr/include/argos3/plugins/robots/e-puck/simulator/epuck_entity.h"
+  echo "$ sudo /usr/include/argos3/plugins/robots/e-puck/simulator/qtopengl_epuck.h.pacnew /usr/include/argos3/plugins/robots/e-puck/simulator/qtopengl_epuck.h"
+  echo "$ sudo /usr/lib/argos3/libargos3plugin_simulator_epuck.so.pacnew /usr/lib/argos3/libargos3plugin_simulator_epuck.so"
+  echo "==> Otherwise the new real robots, actuators and sensors definitions will not work !!"
+  echo ""
+}
