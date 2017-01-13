@@ -2,9 +2,9 @@
 
 pkgname=nordlicht-git
 _gitname=nordlicht
-pkgver=20160124
+pkgver=20170113
 pkgrel=1
-pkgdesc="Creates colorful moviebarcodes from video files, comes with a shared C library"
+pkgdesc="Creates colorful timebars from video and audio files, comes with a shared C library. Inspired by the moviebarcode tumblr."
 arch=('i686' 'x86_64')
 url="http://github.com/nordlicht/nordlicht"
 license=('GPL')
