@@ -1,7 +1,7 @@
 # Maintainer: desbma
 pkgname=python-hddfancontrol
 pkgver=1.2.5
-pkgrel=2
+pkgrel=3
 pkgdesc="Regulate fan speed according to hard drive temperature"
 arch=('any')
 _gitname='hddfancontrol'
