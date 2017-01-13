@@ -1,3 +1,4 @@
+# Maintainer: Guillaume Horel <guillaume.horel@gmail.com>
 pkgname=python-flask-mail
 _pkgname=Flask-Mail
 pkgver=0.9.1
@@ -21,4 +22,5 @@ package() {
     cd "$srcdir/${_pkgname}-${pkgver}"
 
     python setup.py install --root="${pkgdir}" --optimize=1
+    install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
