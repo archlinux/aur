@@ -3,7 +3,7 @@
 pkgname=singularityviewer-test
 pkgver=1.8.7.6905
 _pkgver=1_8_7_6905
-pkgrel=1
+pkgrel=2
 pkgdesc="An exciting client for Second Life (secondlife) and OpenSim (opensimulator), which combines the look and feel of Viewer 1.23 with the latest and greatest of available technology. (test version)"
 url="http://www.singularityviewer.org/"
 license=('custom')
@@ -23,10 +23,10 @@ provides=("singularityviewer")
 source=("http://67.170.30.149/Singularity_Test_${_pkgver}_$CARCH.tar.xz"
 	"singularityviewer.desktop"
 	"singularityviewer.launcher")
-
-md5sums=('327a4b448ce4811392ded60cb62b6632'
+md5sums=('fd49befada1aaddedd8caf2f96a9cc11'
          'b584729187e537a929c5911ed3c1e2d6'
          'eb596f5cf7b6f2d0c55c0082fb99a905')
+
 
 package() {
 cd $srcdir
