@@ -5,17 +5,17 @@
 # Based on a modified version of the gcc PKGBUILD
 
 pkgname=gcc-gcj
-pkgver=6.2.1
+pkgver=6.3.1
 pkgrel=1
 _islver=0.17
 _cloogver=0.18.4
-_commit=c2103c17
+_commit=4ca53f06ff7d346ef8021a23108f23a5406a0417
 pkgdesc="The GNU Compiler for Java"
 arch=('i686' 'x86_64')
 license=('GPL' 'LGPL')
 url="http://gcc.gnu.org"
 depends=('gtk2' 'libxtst' 'alsa-lib' 'libmpc>=0.8.1' 'classpath' 'gcc-gcj-ecj')
-makedepends=('mpfr>=2.4.2' 'elfutils' 'jack' 'zip' 'gcc=6.2.1' 'libart-lgpl' 'git')
+makedepends=('mpfr>=2.4.2' 'elfutils' 'jack' 'zip' 'gcc=6.3.1' 'libart-lgpl' 'git')
 optdepends=('python2: for running /usr/bin/aot-compile'
   'java-environment: for runnig some jars')
 options=('!libtool')
@@ -23,7 +23,7 @@ install=$pkgname.install
 source=("https://github.com/gcc-mirror/gcc/archive/${_commit}.tar.gz"
         "http://isl.gforge.inria.fr/isl-${_islver}.tar.bz2"
 	"http://www.bastoul.net/cloog/pages/download/cloog-${_cloogver}.tar.gz")
-sha512sums=('ebc37a88dcbe61310114cf9717dfa6ba05c791be96edc5de13a213ef7bc92ea28e941ff53badad16a23e4b6f25a228a46159c5942572744bc6ed5fc25d061eae'
+sha512sums=('177993bc99c1ca3a69255acee0b54529d63b9a384fcb5391d7e679c6611f9e45cea0fb5fe48bd9de1acdbe57265f9c0904b058cb17ea65e83fd66b6c66af6fe9'
             '8a2a51d8acbf966c37868fd714ee46cf0b87e1f9d8d9d3148eb2c4b331b7170916d7392fee7fa0af73988a3b8583a6e937dd643b5a574b7e61a09c5bc3347c27'
             'd35d67b08ffe13c1a010b65bfe4dd02b0ae013d5b489e330dc950bd3514defca8f734bd37781856dcedf0491ff6122c34eecb4b0fe32a22d7e6bdadea98c8c23')
 
@@ -32,7 +32,7 @@ prepare() {
   echo "and it will take a lot of time (~ hours)."
   echo "It is better to compile it using makepkg directly."
   sleep 5
-  cd "$srcdir"/gcc-${_commit}*/
+  cd "$srcdir"/gcc-${_commit}/
 
   # Link isl/cloog for in-tree builds
   ln -sf ../isl-${_islver} isl
@@ -57,7 +57,7 @@ prepare() {
 build() {
 
   # Configure and build gcc-gcj.
-  cd ${srcdir}/gcc-${_commit}*/build
+  cd ${srcdir}/gcc-${_commit}/build
 
   ../configure                          \
       --prefix=/usr                     \
@@ -87,7 +87,7 @@ build() {
 package() {
 
   # Install libjava.
-  cd ${srcdir}/gcc-${_commit}*/build
+  cd ${srcdir}/gcc-${_commit}/build
   make -j1 DESTDIR=${pkgdir} install-target-libjava
 
   # Install java-common.
