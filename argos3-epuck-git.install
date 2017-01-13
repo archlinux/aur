@@ -5,6 +5,7 @@ post_install() {
   echo "$ sudo /usr/include/argos3/plugins/robots/e-puck/simulator/epuck_entity.h.pacnew /usr/include/argos3/plugins/robots/e-puck/simulator/epuck_entity.h"
   echo "$ sudo /usr/include/argos3/plugins/robots/e-puck/simulator/qtopengl_epuck.h.pacnew /usr/include/argos3/plugins/robots/e-puck/simulator/qtopengl_epuck.h"
   echo "$ sudo /usr/lib/argos3/libargos3plugin_simulator_epuck.so.pacnew /usr/lib/argos3/libargos3plugin_simulator_epuck.so"
+  echo "$ sudo ldconfig"
   echo "==> Otherwise the new real robots, actuators and sensors definitions will not work !!"
   echo ""
 }
