@@ -2,8 +2,8 @@
 # Contributor: SpepS <dreamspepser at yahoo dot it>
 
 pkgname=vsxu-git
-pkgver=0.5.1.r50.g4a34b08
-pkgrel=2
+pkgver=0.5.1.r50.g4a34b08e
+pkgrel=1
 pkgdesc="A free to use program that lets you create and perform real-time audio visual presets."
 arch=('i686' 'x86_64')
 url="http://www.vsxu.com/"
