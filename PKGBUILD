@@ -1,7 +1,7 @@
 # Maintainer: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
 
 pkgname=mattermost
-pkgver=3.5.1
+pkgver=3.6.0
 _pkgver=${pkgver/rc/-rc}
 pkgrel=1
 pkgdesc="Open source Slack-alternative in Golang and React"
@@ -14,14 +14,15 @@ backup=('etc/webapps/mattermost/config.json')
 optdepends=('mariadb: SQL server storage'
             'percona-server: SQL server storage'
             'postgresql: SQL server storage')
-install=mattermost.install
 source=(https://github.com/mattermost/platform/archive/v$_pkgver/$pkgname-$_pkgver.tar.gz
         mattermost.service
-        mattermost-user.conf
+        user.conf
+        tmpfile.conf
         mattermost.sh)
-sha256sums=('5f5ddccd5b1aaaec4b27d6128e11b94804bcc296472f2187a37fa26d584adba2'
+sha256sums=('182a6e3206959cdbe0968c665fba71b7bafa29e0454056ca2288435031861d03'
             'b3fbb2d04e72396677b2c8e34df089ff135796f7a0e8a42d45e989773d6d5b07'
             '7cd154ed034a09f6671cab68bc9c30a7fd84e777e801e2aaf93a567cfa0dccfd'
+            '42277f740be74081126e5ac20a90bdf11cc9588f9b16e6bc1e2f6f106bedb8a6'
             '7f4993798d1a2ae9a78fed5fc3fe88d44a7a669e7ffefda7fa6a36c27c6c5840')
 
 prepare() {
@@ -74,5 +75,6 @@ package() {
   install -Dm755 bin/platform "$pkgdir"/usr/share/webapps/$pkgname/bin/platform
   install -Dm755 mattermost.sh "$pkgdir"/usr/bin/mattermost
   install -Dm644 mattermost.service "$pkgdir"/usr/lib/systemd/system/mattermost.service
-  install -Dm644 mattermost-user.conf "$pkgdir"/usr/lib/sysusers.d/mattermost.conf
+  install -Dm644 user.conf "$pkgdir"/usr/lib/sysusers.d/mattermost.conf
+  install -Dm644 tmpfile.conf "$pkgdir"/usr/lib/tmpfiles.d/mattermost.conf
 }
