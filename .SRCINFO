@@ -9,7 +9,15 @@ pkgbase = borgmatic
 	depends = borg
 	provides = borgmatic
 	source = https://torsion.org/hg/borgmatic/archive/1.0.3.tar.gz
+	source = borgmatic.service
+	source = borgmatic.timer
+	source = send-status-mail@.service
+	source = systemd-email
 	sha256sums = 81d29ba3159193b02f4c9be0d476e2342a1aa56b72cce6331474c0634c1883a3
+	sha256sums = 2292d7d3cfeb6e85fdc966da6882a3c3ae4b800e1561df7dd894b23f6acb87af
+	sha256sums = eb6991bd4a668b56552ef7c0c16e300f1eea085ae3eabdc83c85135d724c6e58
+	sha256sums = 2a5070fdbc1f7fee9de71290c77dc6a875e91fd6f4894e17305e49e24b221930
+	sha256sums = 8cb36012017f900673370129f18a0555483b727c3c939b2270a5813559455845
 
 pkgname = borgmatic
 
