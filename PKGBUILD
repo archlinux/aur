@@ -1,15 +1,17 @@
 #Maintainer Joseph Simone <averagejoey2000 at tfwno dot gf>
 #PKGBUILD currently download only, do not use.
 pkgname=panamfs-scan
-arch=(x86_64)
+arch=('x86_64' 'i686')
 license=(custom:Panasonic)
 pkgver='1.3.0'
 depends=('gcc-libs-multilib' 'gtk2' 'libusb-compat')
 optdepends=('lightdm' 'gdm')
 pkgdesc='sane drivers for Panasonic multifunction printers'
-pkgrel=3
-source=(http://cs.psn-web.net/support/fax/common/file/Linux_ScanDriver/panamfs-scan-1.3.0-x86_64.tar.gz)
-md5sums=('2e4c844e89c2e7e0b6258be5ef52ace9')
+pkgrel=4
+source_x86_64=(http://cs.psn-web.net/support/fax/common/file/Linux_ScanDriver/$pkgname-$pkgver-x86_64.tar.gz)
+source_i686=(http://cs.psn-web.net/support/fax/common/file/Linux_ScanDriver/$pkgname-$pkgver-i686.tar.gz)
+md5sums_x86_64=('2e4c844e89c2e7e0b6258be5ef52ace9')
+md5sums_i686=('38e12643725f9e6d706bc0efa88e346d')
 package(){
 _ver=$pkgver
 _INSTALL_PATH="$pkgdir/usr/local/share/panasonic/scanner"
