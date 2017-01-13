@@ -1,14 +1,14 @@
-# Maintainer: drakkan <nicola.murino@gmail.com>
+# Maintainer: drakkan <nicola dot murino at gmail.com>
 pkgname=mingw-w64-gst-plugins-base
 pkgver=1.10.2
-pkgrel=3
+pkgrel=4
 pkgdesc="GStreamer Multimedia Framework Base Plugins (mingw-w64)"
 arch=(any)
 url="http://gstreamer.freedesktop.org/"
 license=('LGPL')
 depends=('mingw-w64-glib2' 'mingw-w64-libxml2' 'mingw-w64-gstreamer' 'mingw-w64-orc')
+makedepends=('mingw-w64-configure' 'mingw-w64-gstreamer' 'mingw-w64-opus' 'mingw-w64-libvorbis' 'mingw-w64-pango' 'mingw-w64-libtheora')
 options=('!strip' '!buildflags' 'staticlibs')
-makedepends=(mingw-w64-configure mingw-w64-gstreamer bison flex python2 mingw-w64-opus mingw-w64-libvorbis mingw-w64-pango mingw-w64-libtheora mingw-w64-orc)
 
 source=("${url}/src/gst-plugins-base/gst-plugins-base-${pkgver}.tar.xz")
 sha256sums=('fbc0d40fcb746d2efe2ea47444674029912f66e6107f232766d33b722b97de20')
@@ -43,7 +43,7 @@ package() {
 
     rm $pkgdir/usr/$_arch/lib/gstreamer-1.0/*.a
     rm $pkgdir/usr/$_arch/lib/gstreamer-1.0/*.la
-    rm -rf "$pkgdir/usr/${_arch}/share/{aclocal,man}"
+    rm -rf "$pkgdir/usr/${_arch}/share/${aclocal,man,locale}"
 
     find "$pkgdir" -name '*.dll' -exec ${_arch}-strip --strip-unneeded {} \;
     find "$pkgdir" -name '*.dll' -o -name '*.a' -exec ${_arch}-strip -g {} \;
