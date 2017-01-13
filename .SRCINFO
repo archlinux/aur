@@ -1,0 +1,14 @@
+pkgbase = adtool
+	pkgdesc = Active Directory administration utility for Unix
+	pkgver = 1.3.3
+	pkgrel = 1
+	url = http://gp2x.org/adtool/
+	arch = x86_64
+	arch = i686
+	license = GPL2
+	depends = libldap
+	source = http://gp2x.org/adtool/adtool-1.3.3.tar.gz
+	md5sums = 7821eb551e0a122d934cc8f9b723f310
+
+pkgname = adtool
+
