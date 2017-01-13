@@ -4,7 +4,7 @@
 _gemname=json
 pkgname=ruby-$_gemname-1
 pkgver=1.8.5
-pkgrel=2
+pkgrel=3
 pkgdesc='JSON Implementation for Ruby'
 arch=(i686 x86_64)
 url='http://flori.github.com/json'
@@ -20,6 +20,6 @@ package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
   gem install --ignore-dependencies --no-user-install -i "$pkgdir/$_gemdir" -n "$pkgdir/usr/bin" $_gemname-$pkgver.gem
   rm "$pkgdir/$_gemdir/cache/$_gemname-$pkgver.gem"
-  install -D -m644 "$pkgdir/$_gemdir/gems/$_gemname-$pkgver/COPYING" "$pkgdir/usr/share/licenses/$pkgname/COPYING"
-  install -D -m644 "$pkgdir/$_gemdir/gems/$_gemname-$pkgver/COPYING-json-jruby" "$pkgdir/usr/share/licenses/$pkgname/COPYING-json-jruby"
+  # install -D -m644 "$pkgdir/$_gemdir/gems/$_gemname-$pkgver/COPYING" "$pkgdir/usr/share/licenses/$pkgname/COPYING"
+  # install -D -m644 "$pkgdir/$_gemdir/gems/$_gemname-$pkgver/COPYING-json-jruby" "$pkgdir/usr/share/licenses/$pkgname/COPYING-json-jruby"
 }

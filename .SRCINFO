@@ -1,7 +1,7 @@
 pkgbase = ruby-json-1
 	pkgdesc = JSON Implementation for Ruby
 	pkgver = 1.8.5
-	pkgrel = 2
+	pkgrel = 3
 	url = http://flori.github.com/json
 	arch = i686
 	arch = x86_64
