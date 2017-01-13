@@ -2,7 +2,7 @@
 
 pkgname=gog-terraria
 pkgver=2.13.0.16
-pkgrel=2
+pkgrel=3
 pkgdesc="The very world is at your fingertips as you fight for survival, fortune, and glory."
 url="http://terraria.org/"
 license=('custom')
@@ -50,5 +50,5 @@ package(){
         "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
     install -Dm644 "${srcdir}/${pkgname}.desktop" \
         "${pkgdir}/usr/share/applications/${pkgname}.desktop"
-    install "$srcdir/$pkgname" "$pkgdir/usr/bin/$pkgname"
+    install -Dm755 "$srcdir/$pkgname" "$pkgdir/usr/bin/$pkgname"
 }
