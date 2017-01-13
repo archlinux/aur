@@ -2,7 +2,7 @@
 
 pkgname='qccpack'
 pkgver="0.61"
-pkgrel=2
+pkgrel=3
 pkgdesc=''
 url='http://qccpack.sourceforge.net/'
 license=(
@@ -37,6 +37,7 @@ build() {
  cp QccPack.config.linux QccPack.config
  sed -ie "s|/usr/local/src/QccPack|$(pwd)|" QccPack.config
  sed -ie "s|QCCPACK_INSTALL = .*$|QCCPACK_INSTALL = ${pkgdir}/usr/|g" QccPack.config
+ sed -ie "s|CFLAGS = -O -Wall|CFLAGS = -msse -msse2 -msse3 -march=native -mfpmath=sse -O3 -Wall|g" QccPack.config
 
  imake
  make Makefiles
