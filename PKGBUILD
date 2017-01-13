@@ -3,8 +3,8 @@
 
 _gemname=json
 pkgname=ruby-$_gemname-1
-pkgver=1.8.3
-pkgrel=2
+pkgver=1.8.5
+pkgrel=1
 pkgdesc='JSON Implementation for Ruby'
 arch=(i686 x86_64)
 url='http://flori.github.com/json'
