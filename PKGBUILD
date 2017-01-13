@@ -1,7 +1,7 @@
 # Maintainer: drakkan <nicola dot murino at gmail.com>
 pkgname=mingw-w64-gst-plugins-base
 pkgver=1.10.2
-pkgrel=4
+pkgrel=5
 pkgdesc="GStreamer Multimedia Framework Base Plugins (mingw-w64)"
 arch=(any)
 url="http://gstreamer.freedesktop.org/"
@@ -41,9 +41,9 @@ package() {
     cd "build-${_arch}"
     make DESTDIR="${pkgdir}" install
 
-    rm $pkgdir/usr/$_arch/lib/gstreamer-1.0/*.a
-    rm $pkgdir/usr/$_arch/lib/gstreamer-1.0/*.la
-    rm -rf "$pkgdir/usr/${_arch}/share/${aclocal,man,locale}"
+    rm "$pkgdir"/usr/$_arch/lib/gstreamer-1.0/*.a
+    rm "$pkgdir"/usr/$_arch/lib/gstreamer-1.0/*.la
+    rm -rf "$pkgdir"/usr/${_arch}/share/{aclocal,man,locale}
 
     find "$pkgdir" -name '*.dll' -exec ${_arch}-strip --strip-unneeded {} \;
     find "$pkgdir" -name '*.dll' -o -name '*.a' -exec ${_arch}-strip -g {} \;
