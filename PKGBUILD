@@ -6,16 +6,16 @@
 
 pkgname=broadcom-wl-ck
 pkgver=6.30.223.271
-pkgrel=30
+pkgrel=31
 _pkgdesc='Broadcom 802.11abgn hybrid Linux networking device driver for linux-ck.'
-_extramodules="extramodules-4.8-ck"
+_extramodules="extramodules-4.9-ck"
 _kernver="$(cat /usr/lib/modules/${_extramodules}/version)"
 pkgdesc="${_pkgdesc}"
 arch=('i686' 'x86_64')
 url='https://www.broadcom.com/support/802.11'
 license=('custom')
-depends=('linux-ck>=4.8' 'linux-ck<4.9')
-makedepends=('linux-ck-headers>=4.8' 'linux-ck-headers<4.9')
+depends=('linux-ck>=4.8' 'linux-ck<4.10')
+makedepends=('linux-ck-headers>=4.9' 'linux-ck-headers<4.10')
 #replaces=()
 #groups=('ck-generic')
 source=('modprobe.d'
