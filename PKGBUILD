@@ -1,7 +1,7 @@
 # Maintainer: BlackEagle < ike DOT devolder AT gmail DOT com >
 
 pkgname=vivaldi-snapshot-ffmpeg-codecs
-pkgver=55.0.2883.76
+pkgver=56.0.2924.59
 pkgrel=1
 pkgdesc="additional support for proprietary codecs for vivaldi"
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ url="https://ffmpeg.org/"
 license=('LGPL2.1')
 depends=('gcc-libs' 'zlib')
 makedepends=(
-  'gtk2' 'libexif' 'libpulse' 'libxss' 'ninja' 'nss' 'pciutils' 'python2'
+  'gtk2' 'gtk3' 'libexif' 'libpulse' 'libxss' 'ninja' 'nss' 'pciutils' 'python2'
   'xdg-utils'
 )
 options=('!strip')
@@ -17,7 +17,7 @@ source=(
   "https://commondatastorage.googleapis.com/chromium-browser-official/chromium-$pkgver.tar.xz"
   'chromium-last-commit-position-r1.patch'
 )
-sha256sums=('b595be6fea1561e2691a8851c978262ade5bbdac4006a6ecf08502ee74f7f848'
+sha256sums=('3b34c4cef3a5017556064d246b14b69a8bd2277d8908a6e8b63c014d501ebac2'
             'd3dc397956a26ec045e76c25c57a1fac5fc0acff94306b2a670daee7ba15709e')
 
 
