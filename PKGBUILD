@@ -2,11 +2,11 @@
 # Contributor:  eadrom <eadrom@archlinux.info>
 # Contributor:  Martin Wimpress <code@flexion.org>
 
-_ver=1.15
+_ver=1.17
 _pkgbase=mozo
 pkgname="${_pkgbase}-dev"
-pkgver=${_ver}.1
-pkgrel=1
+pkgver=${_ver}.0
+pkgrel=5
 pkgdesc="MATE menu editing tool (GTK3 version)"
 url="http://mate-desktop.org"
 arch=('any')
@@ -17,7 +17,7 @@ depends=('gtk-update-icon-cache' 'mate-menus-dev' 'python2-gobject')
 makedepends=('mate-common-dev')
 groups=('mate-extra')
 source=("http://pub.mate-desktop.org/releases/${_ver}/${_pkgbase}-${pkgver}.tar.xz")
-sha1sums=('ebbee79cdfe56adcfdd12ef182f01bb39b4d3a15')
+sha1sums=('7616a8aa77cb9e23f2feca84ec92034ed1422038')
 
 prepare() {
     cd "${srcdir}/${_pkgbase}-${pkgver}"

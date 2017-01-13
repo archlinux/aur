@@ -1,7 +1,7 @@
 pkgbase = mozo-dev
 	pkgdesc = MATE menu editing tool (GTK3 version)
-	pkgver = 1.15.1
-	pkgrel = 1
+	pkgver = 1.17.0
+	pkgrel = 5
 	url = http://mate-desktop.org
 	arch = any
 	groups = mate-extra
@@ -14,8 +14,8 @@ pkgbase = mozo-dev
 	provides = mozo-gtk3
 	conflicts = mozo
 	conflicts = mozo-gtk3
-	source = http://pub.mate-desktop.org/releases/1.15/mozo-1.15.1.tar.xz
-	sha1sums = ebbee79cdfe56adcfdd12ef182f01bb39b4d3a15
+	source = http://pub.mate-desktop.org/releases/1.17/mozo-1.17.0.tar.xz
+	sha1sums = 7616a8aa77cb9e23f2feca84ec92034ed1422038
 
 pkgname = mozo-dev
 
