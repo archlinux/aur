@@ -9,8 +9,8 @@
 
 _pack=ncarray
 pkgname=octave-$_pack
-pkgver=1.0.3
-pkgrel=3
+pkgver=1.0.4
+pkgrel=1
 pkgdesc="Access a single or a collection of NetCDF files as a multi-dimensional array"
 arch=(any)
 url="http://octave.sourceforge.net/$_pack/"
@@ -25,7 +25,7 @@ install=$pkgname.install
 _archive=$_pack-$pkgver.tar.gz
 source=("http://downloads.sourceforge.net/octave/$_archive")
 noextract=("$_archive")
-md5sums=('18f563063a589871f3d6aa56a5fb8c49')
+md5sums=('797cb2398a7e7b6027f1e65094870cfd')
 
 _octave_run() {
 	octave --no-history --no-init-file --no-window-system -q -f --eval "$*"
