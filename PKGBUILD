@@ -1,15 +1,14 @@
-# Maintainer: drakkan <nicola.murino@gmail.com>
+# Maintainer: drakkan <nicola dot murino at gmail.com>
 pkgname=mingw-w64-gst-plugins-good
 pkgver=1.10.2
-pkgrel=1
+pkgrel=2
 pkgdesc="GStreamer Multimedia Framework Good Plugins (mingw-w64)"
 arch=(any)
 url="http://gstreamer.freedesktop.org/"
 license=('LGPL')
-makedepends=('mingw-w64-configure')
+makedepends=('mingw-w64-configure' 'mingw-w64-gstreamer' 'mingw-w64-libsoup' 'mingw-w64-cairo' 'mingw-w64-gdk-pixbuf2' 'mingw-w64-libjpeg-turbo' 'mingw-w64-libpng' 'mingw-w64-libvpx' 'mingw-w64-bzip2')
 depends=('mingw-w64-glib2' 'mingw-w64-libxml2' 'mingw-w64-gstreamer' 'mingw-w64-orc')
 options=('!strip' '!buildflags' 'staticlibs')
-makedepends=(mingw-w64-configure mingw-w64-gstreamer bison flex python2 mingw-w64-libsoup mingw-w64-cairo mingw-w64-gdk-pixbuf2 mingw-w64-libjpeg-turbo mingw-w64-libpng mingw-w64-libvpx mingw-w64-bzip2)
 
 source=(${url}/src/gst-plugins-good/gst-plugins-good-${pkgver}.tar.xz)
 sha256sums=('198f325bcce982dce1ebeb36929a5f430b8bf9528e0d519e18df0b29e1d23313')
@@ -43,9 +42,9 @@ package() {
     cd "build-${_arch}"
     make DESTDIR="${pkgdir}" install
 
-    rm $pkgdir/usr/$_arch/lib/gstreamer-1.0/*.a
-    rm $pkgdir/usr/$_arch/lib/gstreamer-1.0/*.la
-    rm -rf "$pkgdir/usr/${_arch}/share/{aclocal,man}"
+    rm "$pkgdir"/usr/$_arch/lib/gstreamer-1.0/*.a
+    rm "$pkgdir"/usr/$_arch/lib/gstreamer-1.0/*.la
+    rm -rf "$pkgdir"/usr/${_arch}/share/{aclocal,man,locale}
 
     find "$pkgdir" -name '*.dll' -exec ${_arch}-strip --strip-unneeded {} \;
     find "$pkgdir" -name '*.dll' -o -name '*.a' -exec ${_arch}-strip -g {} \;
