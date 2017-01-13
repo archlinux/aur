@@ -1,7 +1,7 @@
 pkgbase = pcs
 	pkgdesc = pacemaker corosync shell utility for cluster configuration
 	pkgver = 0.9.155
-	pkgrel = 1
+	pkgrel = 2
 	url = http://clusterlabs.org/
 	arch = any
 	license = GPL2
