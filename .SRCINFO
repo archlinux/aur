@@ -10,6 +10,7 @@ pkgbase = lux
 	provides = lux
 	conflicts = lux
 	source = https://github.com/Ventto/lux/archive/v1.0.tar.gz
+	sha256sums = SKIP
 
 pkgname = lux
 
