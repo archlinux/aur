@@ -4,7 +4,7 @@
 
 pkgname=telegram-desktop-bin-dev
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 _dev=0 # If it is a dev-only version, set this to 1
 pkgdesc="Official desktop version of Telegram messaging app - Static binaries, developement version"
 arch=('i686' 'x86_64')
@@ -15,6 +15,9 @@ depends=(
 	'hicolor-icon-theme'
 	'libdbus'
 	'libx11'
+)
+makedepends=(
+	'chrpath'
 )
 optdepends=(
 	'libappindicator-gtk2: to hide Telegram in the tray bar (GTK2-based desktop environment)'
@@ -27,7 +30,6 @@ replaces=('telegram-bin')
 # Sources
 source=(
 	"$pkgname.desktop"
-	"$pkgname.png"
 	tg.protocol
 	https://github.com/telegramdesktop/tdesktop/raw/master/Telegram/Resources/art/icon{16,32,48,64,128,256,512}.png
 )
@@ -42,7 +44,6 @@ source_i686=('https://updates.tdesktop.com/tlinux32/tsetup32.'${pkgver}${_devsuf
 source_x86_64=('https://updates.tdesktop.com/tlinux/tsetup.'${pkgver}${_devsuffix}'.tar.xz')
 # Checksums
 sha256sums=('32d1597d67a7ef519367e499fcc978da4cce104e370b3787853446d93b1533d6'
-            '4226167b476a75e844ddf0d429068e7e901bbde516810a7d4ca90f8405c01eef'
             'd4cdad0d091c7e47811d8a26d55bbee492e7845e968c522e86f120815477e9eb'
             'fc052d1e28b68761bfb6c30ff012e54a4bba0311fc3fc470c728d028c33e9d9f'
             '8ae874ada23687c95cbcfe7cfa4cbe1c37f097d9c96e5a836c20109d976a86c7'
@@ -68,8 +69,11 @@ package() {
 	# Program
 	install -Dm755 "$srcdir/Telegram/Telegram" "$pkgdir/usr/bin/telegram-desktop"
 
+	# Remove RPATH informations
+	chrpath --delete "$pkgdir/usr/bin/telegram-desktop"
+
 	# Desktop launcher
-	install -Dm755 "$srcdir/$pkgname.png" "$pkgdir/usr/share/pixmaps/telegram.png"
+	install -Dm755 "$srcdir/icon256.png" "$pkgdir/usr/share/pixmaps/telegram.png"
 	install -Dm755 "$srcdir/$pkgname.desktop" "$pkgdir/usr/share/applications/telegramdesktop.desktop"
 
 	# KDE4 protocol file
@@ -81,6 +85,6 @@ package() {
 	for icon_size in 16 32 48 64 128 256 512; do
 		icon_dir="$pkgdir/usr/share/icons/hicolor/${icon_size}x${icon_size}/apps"
 		install -d "$icon_dir"
-		install -m644 "$srcdir/icon${icon_size}.png" "$icon_dir/telegram-desktop.png"
+		install -m644 "$srcdir/icon${icon_size}.png" "$icon_dir/telegram.png"
 	done
 }
