@@ -57,9 +57,9 @@ package_parallels-tools() {
 
 	mkdir -p "${pkgdir}/usr/bin"
 	mkdir -p "${pkgdir}/usr/lib"
-	cp -r "${srcdir}"/bin/* "${pkgdir}/usr/bin"
+	cp -r "${srcdir}"/bin/*  "${pkgdir}/usr/bin"
 	cp -r "${srcdir}"/sbin/* "${pkgdir}/usr/bin"
-	cp -r "${srcdir}"/lib/* "${pkgdir}/usr/lib"
+	cp -r "${srcdir}"/lib/*  "${pkgdir}/usr/lib"
 	rm -rf "${pkgdir}/usr/lib/compiz"
 
 	install -d -m 0755 "${pkgdir}/usr/lib/xorg/modules/drivers"
