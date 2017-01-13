@@ -1,4 +1,5 @@
-# Maintainer: Jan Hicken <firstname [dot] lastname [at] hotmail [dot] de>
+# shellcheck disable=SC2034,SC2154
+# Maintainer: Jan Hicken <firstname [dot] lastname [at] posteo [dot] de>
 
 pkgname=networkmanager-strongswan
 _pkgname=NetworkManager-strongswan
@@ -17,7 +18,7 @@ sha256sums=('4877c6bb21867fd6e60081b313cc4ef758910448099ce41b132d804e3243b264'
 validpgpkeys=('12538F8F689B5F1F15F07BE1765FE26C6B467584') # Tobias Brunner
 
 build() {
-  cd "$_pkgname-$pkgver"
+  cd "$_pkgname-$pkgver" || exit
 
   ./configure --sysconfdir=/etc --prefix=/usr \
     --libexecdir=/usr/lib/networkmanager \
@@ -26,13 +27,12 @@ build() {
 }
 
 check() {
-  cd "$_pkgname-$pkgver"
-
+  cd "$_pkgname-$pkgver" || exit
   make check
 }
 
 package() {
-  cd "$_pkgname-$pkgver"
+  cd "$_pkgname-$pkgver" || exit
   make DESTDIR="$pkgdir" install
 }
 
