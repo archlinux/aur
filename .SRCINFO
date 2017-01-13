@@ -1,0 +1,15 @@
+pkgbase = ruby-public_suffix
+	pkgdesc = Domain name parser based on the Public Suffix List.
+	pkgver = 2.0.5
+	pkgrel = 1
+	url = https://simonecarletti.com/code/publicsuffix-ruby
+	arch = any
+	license = MIT
+	depends = ruby
+	noextract = public_suffix-2.0.5.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/public_suffix-2.0.5.gem
+	sha1sums = c241227a2f49942d07fceb4bc20a03d762f7e666
+
+pkgname = ruby-public_suffix
+
