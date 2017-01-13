@@ -1,13 +1,16 @@
 pkgbase = filebot
 	pkgdesc = The ultimate tool to rename TV/anime shows, download subtitles, and validate checksums.
 	pkgver = 4.7.7
-	pkgrel = 3
+	pkgrel = 4
 	url = http://filebot.sourceforge.net/
 	install = filebot.install
 	arch = i686
 	arch = x86_64
+	arch = arm
+	arch = armv6h
 	arch = armv7h
 	license = GPL
+	makedepends = unzip
 	depends = java-runtime>=8
 	depends = fontconfig
 	depends = chromaprint
@@ -15,20 +18,21 @@ pkgbase = filebot
 	optdepends = libmediainfo: Episode naming / Sublight usage
 	optdepends = java-p7zip-binding: Extract archives
 	optdepends = gvfs: gvfs backends
+	noextract = FileBot_4.7.7-portable.tar.xz
+	noextract = FileBot_4.7.5-portable.tar.xz
+	noextract = filebot-arch.sh
+	noextract = filebot.svg
+	noextract = filebot.desktop
 	source = http://downloads.sourceforge.net/project/filebot/filebot/FileBot_4.7.7/FileBot_4.7.7-portable.tar.xz
+	source = http://downloads.sourceforge.net/project/filebot/filebot/FileBot_4.7.5/FileBot_4.7.5-portable.tar.xz
 	source = filebot-arch.sh
 	source = filebot.svg
 	source = filebot.desktop
 	md5sums = 58d35910d5d164454c7840122a17dace
+	md5sums = 8fb4f6d1cc4a136c46e1d8bc416c6df5
 	md5sums = 3b51756c50a54447a5e6fb6c052e3453
 	md5sums = 04f46be047049448dba3f0de29fe192d
 	md5sums = f37edd0bba7570904d28ab1681c7a7f3
-	source_i686 = https://github.com/java-native-access/jna/raw/090b24870896dd719a5b5c6d2181ba0d4bb8d767/lib/native/linux-x86.jar
-	md5sums_i686 = 588794d32336fcc6029a7e6591265c79
-	source_x86_64 = https://github.com/java-native-access/jna/raw/3fa90d76f5c44523eaa619e68ad8ad81b5a0dc94/lib/native/linux-x86-64.jar
-	md5sums_x86_64 = 6e0b830e108ab05c8bdccd9902258882
-	source_armv7h = https://github.com/java-native-access/jna/raw/0547a9c3e24bd1219b54e92b3e38b14c477e21f8/lib/native/linux-arm.jar
-	md5sums_armv7h = 1c141c8ac6a659b3b593fece54270709
 
 pkgname = filebot
 
