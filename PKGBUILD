@@ -1,30 +1,38 @@
 # Maintainer graysky <graysky AT archlinux DOT us>
-# Contributor: Sergej Pupykin <pupykin.s+arch@gmail.com>
 # Contributor: BlackIkeEagle < ike DOT devolder AT gmail DOT com >
+# Contributor: DonVla <donvla@users.sourceforge.net>
+# Contributor: Ulf Winkelvos <ulf [at] winkelvos [dot] de>
+# Contributor: Ralf Barth <archlinux dot org at haggy dot org>
+# Contributor: B & monty - Thanks for your hints :)
+# Contributor: marzoul
+# Contributor: Sergej Pupykin <pupykin.s+arch@gmail.com>
 # Contributor: Brad Fanella <bradfanella@archlinux.us>
 # Contributor: [vEX] <niechift.dot.vex.at.gmail.dot.com>
 # Contributor: Zeqadious <zeqadious.at.gmail.dot.com>
-# Contributor: BlackIkeEagle < ike DOT devolder AT gmail DOT com >
 # Contributor: Bartłomiej Piotrowski <bpiotrowski@archlinux.org>
 # Contributor: Maxime Gauduin <alucryd@gmail.com>
+#
+# Original credits go to Edgar Hucek <gimli at dark-green dot com>
+# for his xbmc-vdpau-vdr PKGBUILD at https://archvdr.svn.sourceforge.net/svnroot/archvdr/trunk/archvdr/xbmc-vdpau-vdr/PKGBUILD
 
 pkgbase=kodi-pre-release
-pkgname=('kodi-pre-release' 'kodi-eventclients-pre-release')
+_suffix=pre-release
+pkgname=("kodi-$_suffix" "kodi-eventclients-$_suffix" "kodi-tools-texturepacker-$_suffix" "kodi-dev-$_suffix")
 pkgver=17.0rc3
 _codename=Krypton
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 url="http://kodi.tv"
 license=('GPL2')
 makedepends=(
-  'afpfs-ng' 'bluez-libs' 'boost' 'cmake' 'curl' 'cwiid' 'doxygen' 'git' 'glew'
+  'afpfs-ng' 'bluez-libs' 'boost' 'cmake' 'curl' 'cwiid' 'doxygen' 'glew'
   'gperf' 'hicolor-icon-theme' 'jasper' 'java-runtime' 'libaacs' 'libass'
   'libbluray' 'libcdio' 'libcec' 'libgl' 'libmariadbclient' 'libmicrohttpd'
   'libmodplug' 'libmpeg2' 'libnfs' 'libplist' 'libpulse' 'libssh' 'libva'
-  'libvdpau' 'libxrandr' 'libxslt' 'lzo' 'mesa' 'nasm' 'nss-mdns'
-  'python2-pillow' 'python2-pybluez' 'python2-simplejson' 'rtmpdump' 'sdl2'
-  'sdl_image' 'shairplay' 'smbclient' 'swig' 'taglib' 'tinyxml' 'unzip' 'upower'
-  'yajl' 'zip' 'mesa' 'dcadec' 'libcrossguid'
+  'libvdpau' 'libxrandr' 'libxslt' 'lzo' 'nasm' 'nss-mdns' 'python2-pillow'
+  'python2-pybluez' 'python2-simplejson' 'rtmpdump'
+  'shairplay' 'smbclient' 'swig' 'taglib' 'tinyxml' 'unzip' 'upower' 'yajl' 'zip'
+  'mesa' 'libcrossguid'
 )
 source=(
   "kodi-$pkgver-$_codename.tar.gz::https://github.com/xbmc/xbmc/archive/$pkgver-$_codename.tar.gz"
@@ -32,41 +40,23 @@ source=(
 sha256sums=('b285ac8fd75a8876dd55103e0764ad533f8bd95d1bf33ddf8b24500ce7a86c56')
 
 prepare() {
-  cd "$srcdir/xbmc-$pkgver-$_codename"
-
-  find -type f -name *.py -exec sed 's|^#!.*python$|#!/usr/bin/python2|' -i "{}" +
-  sed 's|^#!.*python$|#!/usr/bin/python2|' -i tools/depends/native/rpl-native/rpl
-  sed 's/python/python2/' -i tools/Linux/kodi.sh.in
-  sed 's/shell python/shell python2/' -i tools/EventClients/Makefile.in
-  # disable wiiremote due to incompatibility with bluez-5.29
-  sed '/WiiRemote/d' -i tools/EventClients/Makefile.in
-  sed '/mkdir -p $(DESTDIR)$(bindir)/i \
-install:' -i tools/EventClients/Makefile.in
-
-  # patches
+  [[ -d kodi-build ]] && rm -rf kodi-build
+  mkdir kodi-build
 }
 
 build() {
-  cd "$srcdir/xbmc-$pkgver-$_codename"
-
-  # Bootstrapping
-  MAKEFLAGS=-j1 ./bootstrap
-
-  #./configure --help
-  #return 1
-
-  # Configuring XBMC
-  export PYTHON_VERSION=2  # external python v2
-  ./configure --prefix=/usr --exec-prefix=/usr \
-    --disable-debug \
-    --enable-libbluray \
-    --with-lirc-device=/run/lirc/lircd \
-    ac_cv_lib_bluetooth_hci_devid=no \
-    ac_cv_type__Bool=yes
-
-  # Now (finally) build
-  make
+  cd "kodi-build"
+  cmake -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_INSTALL_LIBDIR=/usr/lib \
+    -DENABLE_EVENTCLIENTS=ON \
+    -DLIRC_DEVICE=/run/lirc/lircd \
+    ../"xbmc-$pkgver-$_codename"/project/cmake
+  make VERBOSE=1
+  make preinstall
 }
+
+# kodi
+# components: kodi, kodi-bin
 
 package_kodi-pre-release() {
   pkgdesc="Beta or RC versions of a media player and entertainment hub for digital media."
@@ -78,11 +68,10 @@ package_kodi-pre-release() {
   depends=(
     'python2-pillow' 'python2-pybluez' 'python2-simplejson'
     'mesa-demos' 'xorg-xdpyinfo'
-    'bluez-libs' 'fribidi' 'glew' 'hicolor-icon-theme' 'libass' 'libcdio'
+    'bluez-libs' 'fribidi' 'freetype2' 'glew' 'hicolor-icon-theme' 'libcdio'
     'libjpeg-turbo' 'libmariadbclient' 'libmicrohttpd' 'libpulse' 'libssh'
-    'libva' 'libxrandr' 'libxslt' 'lzo' 'sdl2' 'smbclient' 'taglib' 'tinyxml'
-    'yajl' 'mesa' 'dcadec' 'desktop-file-utils'
-    'libvdpau'
+    'libva' 'libvdpau' 'libxrandr' 'libxslt' 'lzo' 'smbclient' 'taglib' 'tinyxml'
+    'yajl' 'mesa' 'desktop-file-utils'
   )
   optdepends=(
     'afpfs-ng: Apple shares support'
@@ -103,14 +92,18 @@ package_kodi-pre-release() {
   conflicts=('xbmc' 'kodi' 'kodi-devel' 'kodi-git')
   replaces=('xbmc')
 
-  cd "$srcdir/xbmc-$pkgver-$_codename"
-  # Running make install
-  make DESTDIR="$pkgdir" install
+  _components=(
+  'kodi'
+  'kodi-bin'
+  )
 
-  # We will no longer support the xbmc name
-  rm "$pkgdir/usr/share/xsessions/xbmc.desktop"
-  rm "$pkgdir/usr/bin/"xbmc{,-standalone}
-  # we will leave /usr/{include,lib,share}/xbmc for now
+  cd kodi-build
+  # install eventclients
+  for _cmp in ${_components[@]}; do
+  DESTDIR="$pkgdir" /usr/bin/cmake \
+    -DCMAKE_INSTALL_COMPONENT="$_cmp" \
+     -P cmake_install.cmake
+  done
 
   # Licenses
   install -dm755 ${pkgdir}/usr/share/licenses/${pkgname}
@@ -118,15 +111,89 @@ package_kodi-pre-release() {
     mv ${pkgdir}/usr/share/doc/kodi/${licensef} \
       ${pkgdir}/usr/share/licenses/${pkgname}
   done
+
+  # python2 is being used
+  cd "$pkgdir"
+  grep -lR '#!.*python' * | while read file; do sed -s 's/\(#!.*python\)/\12/g' -i "$file"; done
 }
 
+# kodi-eventclients
+# components: kodi-eventclients-common kodi-eventclients-ps3 kodi-eventclients-wiiremote kodi-eventclients-xbmc-send
+
 package_kodi-eventclients-pre-release() {
-  pkgdesc="Kodi Event Clients"
+  pkgdesc="Kodi Event Clients (master branch)"
+  conflicts=('kodi-eventclients')
 
   depends=('cwiid')
 
-  cd "$srcdir/xbmc-$pkgver-$_codename"
+  _components=(
+    'kodi-eventclients-common'
+    'kodi-eventclients-ps3'
+    'kodi-eventclients-wiiremote'
+    'kodi-eventclients-xbmc-send'
+  )
 
-  make DESTDIR="$pkgdir" eventclients WII_EXTRA_OPTS=-DCWIID_OLD
+  cd kodi-build
+  # install eventclients
+  for _cmp in ${_components[@]}; do
+    DESTDIR="$pkgdir" /usr/bin/cmake \
+      -DCMAKE_INSTALL_COMPONENT="$_cmp" \
+      -P cmake_install.cmake
+  done
+
+  # python2 is being used
+  cd "$pkgdir"
+  grep -lR '#!.*python' * | while read file; do sed -s 's/\(#!.*python\)/\12/g' -i "$file"; done
 }
 
+# kodi-tools-texturepacker
+# components: kodi-tools-texturepacker
+
+package_kodi-tools-texturepacker-pre-release() {
+  pkgdesc="Kodi Texturepacker tool (master branch)"
+  depends=('libpng' 'giflib' 'libjpeg-turbo' 'lzo')
+
+  _components=(
+    'kodi-tools-texturepacker'
+  )
+
+  cd kodi-build
+  # install eventclients
+  for _cmp in ${_components[@]}; do
+    DESTDIR="$pkgdir" /usr/bin/cmake \
+      -DCMAKE_INSTALL_COMPONENT="$_cmp" \
+      -P cmake_install.cmake
+  done
+}
+
+# kodi-dev
+# components: kodi-addon-dev kodi-audio-dev kodi-eventclients-dev kodi-game-dev kodi-inputstream-dev kodi-peripheral-dev kodi-pvr-dev kodi-screensaver-dev kodi-visualization-dev
+
+package_kodi-dev-pre-release() {
+  pkgdesc="Kodi dev files (master branch)"
+  depends=('kodi')
+
+  _components=(
+    'kodi-addon-dev'
+    'kodi-audio-dev'
+    'kodi-eventclients-dev'
+    'kodi-game-dev'
+    'kodi-inputstream-dev'
+    'kodi-peripheral-dev'
+    'kodi-pvr-dev'
+    'kodi-screensaver-dev'
+    'kodi-visualization-dev'
+  )
+
+  cd kodi-build
+  # install eventclients
+  for _cmp in ${_components[@]}; do
+    DESTDIR="$pkgdir" /usr/bin/cmake \
+      -DCMAKE_INSTALL_COMPONENT="$_cmp" \
+      -P cmake_install.cmake
+  done
+
+  # python2 is being used
+  cd "$pkgdir"
+  grep -lR '#!.*python' * | while read file; do sed -s 's/\(#!.*python\)/\12/g' -i "$file"; done
+}
