@@ -3,10 +3,10 @@
 # Contributor: Eothred <yngve.levinsen@gmail.com> (for original spotify PKGBUILD)
 
 pkgname=spotio
-_pkgver=1.0.45.186
-_another_pkgver=g3b5036d6
-_yetanotherpkgrel64=95
-_yetanotherpkgrel32=28
+_pkgver=1.0.47.13
+_another_pkgver=gd8e05b1f
+_yetanotherpkgrel64=47
+_yetanotherpkgrel32=16
 pkgver=1.0.2_${_pkgver}.${_another_pkgver}.${_yetanotherpkgrel}
 pkgrel=1
 pkgdesc="A proof-of-concept Rdio-inspired skin for Spotify."
@@ -28,10 +28,10 @@ source=('spotify'
 sha256sums=('989920e9360cadc1a8103b8c04acf0c87cb7911eb9a09dddb0cf4708d6249d34'
 	   'af54f3b90cac46fa100b3f919a9225d10d847617d24aa9af3d832e7689f482c3'
 	   '3fdc1ebd9e64bae98cfd2bc9fc3199427bd7ec680254cd6361d9b0f4bb121134'
-	   '29935af570b45698b819bce8632cb286b043861db9ffec56228db78b2672bd52'
+	   '9386238970226faa71c99e7788abd40745cc97d306cd79498fa452fc6484437d'
 	   'SKIP')
-sha256sums_x86_64=('e19a5277ea7dee8796edcc49de07036b32cac0ce553ef2aed7416dff6bf8fb3a')
-sha256sums_i686=('8cf17f8938173bd3f5c3092345c8421c5d391aaa46839502ec547e5a57fcedf9')
+sha256sums_x86_64=('7f32e25aa7188ec74a93d240b994f1126fc034325b66ec6549e7006e05dee900')
+sha256sums_i686=('646a5e90ede734d215e807c35165796b89d68b5c3f3e0363208cc204d1146692')
 
 source_x86_64=("http://repository.spotify.com/pool/non-free/s/spotify-client/spotify-client_${_pkgver}.${_another_pkgver}-${_yetanotherpkgrel64}_amd64.deb")
 
@@ -85,7 +85,7 @@ package() {
 	find $pkgdir/usr/share/spotify/Apps/* -maxdepth 0 -type d | awk -F '' '{print "END_DIR=`basename " $0"`; cd " $0 "; zip -q -r ../$END_DIR.spa *; cd ../../../../../ ; rm -r "$0}' | bash
 
 	ln -s "/usr/bin/spotify" "${pkgdir}/usr/bin/spotio" # ok, this is actually mine
-	
+
 	JUNK=( 22 24 32 48 64 128 256 512 )
 
 	for i in "${JUNK[@]}" ; do # replace all the spotify icons with the spotio icons.
@@ -111,4 +111,3 @@ package() {
 	install -Dm644 "${srcdir}/spotio.desktop" "${pkgdir}/usr/share/applications/spotio.desktop"
 	rm "${pkgdir}/usr/share/applications/spotify.desktop" # replace the spotify .desktop file with the spotio's one.
 }
-
