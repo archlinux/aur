@@ -142,7 +142,6 @@ _provider=http://qt.mirror.constant.com/
 #_provider=https://download.qt.io
 
 # shouldn't be needed
-#-hostprefix ${_installprefix} \
 _core_configure_options="\
                  -prefix ${_installprefix} \
                  -confirm-license \
@@ -268,6 +267,7 @@ if $_target_host; then
 else
   local _configure_line="${_srcdir}/configure \
                  ${_core_configure_options} \
+                 -hostprefix ${_installprefix} \
                  -qtlibinfix "Pi${_piver}" \
                  -sysroot ${_sysroot} \
                  -device ${_mkspec} \
