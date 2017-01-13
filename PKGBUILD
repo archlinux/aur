@@ -1,7 +1,7 @@
 # Maintainer: American_Jesus <american.jesus.pt AT gmail DOT com>
 
 _pkgname=SimpleDatabaseBackup
-pkgname=keepass-plugin-simpledatabsebackup
+pkgname=keepass-plugin-simpledatabasebackup
 pkgver=1.0.6
 pkgrel=1
 pkgdesc="Create a backup for every opened KeePass database every time a database with changes is saved"
