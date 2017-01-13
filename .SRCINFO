@@ -1,0 +1,17 @@
+pkgbase = python-feather
+	pkgdesc = Fast, interoperable binary data frame storage for Python, R
+	pkgver = 0.3.1
+	pkgrel = 1
+	url = https://github.com/wesm/feather
+	arch = i686
+	arch = x86_64
+	license = Apache
+	makedepends = python-setuptools
+	makedepends = cython
+	depends = python
+	depends = python-pandas>=0.17.1
+	source = https://github.com/wesm/feather/archive/v0.3.1.tar.gz
+	md5sums = 3700893e1f21bc850c9e80446d82c185
+
+pkgname = python-feather
+
