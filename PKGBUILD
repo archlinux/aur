@@ -2,11 +2,11 @@
 # Contributor:  eadrom <eadrom@archlinux.info>
 # Contributor:  Martin Wimpress <code@flexion.org>
 
-_ver=1.15
+_ver=1.17
 _pkgbase=mate-icon-theme
 pkgname="${_pkgbase}-dev"
 pkgver=${_ver}.0
-pkgrel=1
+pkgrel=5
 pkgdesc="MATE icon theme"
 url="http://mate-desktop.org"
 arch=('any')
@@ -18,7 +18,7 @@ makedepends=('icon-naming-utils' 'mate-common-dev')
 options=(!strip !emptydirs)
 groups=('mate')
 source=("http://pub.mate-desktop.org/releases/${_ver}/${_pkgbase}-${pkgver}.tar.xz")
-sha1sums=('c83b1b4e53faf4a6991406e059192c4dc439d851')
+sha1sums=('663dc55a00fc83d65bd0a12abf0c675863002878')
 
 build() {
     cd "${srcdir}/${_pkgbase}-${pkgver}"
