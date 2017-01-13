@@ -3,15 +3,15 @@
 
 pkgname=xf86-video-amdgpu-git
 _pkgbase=xf86-video-amdgpu
-pkgver=1.1.0.r46.g73c8dc0
+pkgver=1.2.0.r20.g5f71238
 pkgrel=1
 pkgdesc="X.org amdgpu video driver"
 arch=('i686' 'x86_64')
 url="http://xorg.freedesktop.org/"
 license=('custom')
 depends=('libdrm' 'systemd' 'mesa-dri')
-makedepends=('xorg-server-devel' 'X-ABI-VIDEODRV_VERSION=20')
-conflicts=('xorg-server<1.18.0' 'X-ABI-VIDEODRV_VERSION<20' 'X-ABI-VIDEODRV_VERSION>=21' 'xf86-video-amdgpu') 
+makedepends=('xorg-server-devel' 'X-ABI-VIDEODRV_VERSION=23')
+conflicts=('xorg-server<1.18.0' 'X-ABI-VIDEODRV_VERSION<20' 'X-ABI-VIDEODRV_VERSION>23' 'xf86-video-amdgpu') 
 provides=('xf86-video-amdgpu')
 groups=('xorg-drivers' 'xorg')
 source=('xf86-video-amdgpu::git://anongit.freedesktop.org/xorg/driver/xf86-video-amdgpu#branch=master')
