@@ -3,7 +3,7 @@
 # Maintainer: zeppelinlg <zeppelinlg@gmail.com>
 
 pkgname=ocsinventory-agent
-pkgver=2.1.1
+pkgver=2.3
 pkgrel=1
 pkgdesc="Hardware and software inventory tool (client)"
 arch=('any')
@@ -15,10 +15,10 @@ depends=('dmidecode' 'pciutils' 'perl-crypt-ssleay' 'perl-xml-sax'
 optdepends=('smartmontools')
 install=${pkgname}.install
 backup=('etc/ocsinventory/ocsinventory-agent.cfg')
-source=("https://launchpad.net/ocsinventory-unix-agent/stable-2.1/$pkgver/+download/Ocsinventory-Unix-Agent-$pkgver.tar.gz"
+source=("https://github.com/OCSInventory-NG/UnixAgent/releases/download/$pkgver/Ocsinventory-Unix-Agent-$pkgver.tar.gz"
         "modules.conf" "ocsinventory-agent" "ocsinventory-agent.cfg")
-md5sums=('195960e048bfa77badc2a3df382a5a88'
-         'a2a8a3ee7018d5681403088dcd3d2c2e'
+md5sums=('9b45269454c40dc183cc2722ac5493f2'
+         '3c1235643decce6f1a29c5644d2b527b'
          '9419012794e5e134bc152cfd388d63e7'
          '3be05b06c7a6e269d9a4c74dcf239d19')
 
@@ -33,7 +33,6 @@ build() {
 package() {
   mkdir -p ${pkgdir}/var/lib/ocsinventory-agent
   mkdir -p ${pkgdir}/var/log/ocsinventory-agent
-  mkdir -p ${pkgdir}/var/run
   
   cd "$srcdir/Ocsinventory-Unix-Agent-$pkgver"
 
