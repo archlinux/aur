@@ -11,7 +11,7 @@
 
 pkgname=wine-gaming-nine
 pkgver=2.0rc4
-pkgrel=1
+pkgrel=2
 
 _pkgbasever=${pkgver/rc/-rc}
 _d3d9ver=2.0-rc2
@@ -20,7 +20,8 @@ _winesrcdir="wine-patched-staging-$_pkgbasever"
 source=("https://github.com/wine-compholio/wine-patched/archive/staging-$_pkgbasever.tar.gz"
         "https://github.com/sarnex/wine-d3d9-patches/archive/wine-d3d9-$_d3d9ver.tar.gz"
         30-win32-aliases.conf
-        heap_perf.patch
+        flex_fix.patch
+	heap_perf.patch
         increase_max_frag_samplers.patch
 	keybindings.patch
         steam.patch
@@ -29,6 +30,7 @@ source=("https://github.com/wine-compholio/wine-patched/archive/staging-$_pkgbas
 sha1sums=('b2639f4b62ac83eafbb66beff46be2cba28c08a5'
 	  '6145411f5aaa9189eeb93dc46b46e7a9e3fe2883'
           '023a5c901c6a091c56e76b6a62d141d87cce9fdb'
+	  '6d9fb35e74042233b0c0e7d6b212d2caad236b81'
           '0f4ac455436d5714a2cf0b537ed25f4fa5c1a7fd'
 	  'a84456790932fb2e7bb75ddeac86fd45b7c09e79'
           'f3febb8836f38320742a546c667106608d4c4395'
