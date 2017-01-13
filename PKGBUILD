@@ -1,3 +1,4 @@
+# Maintainer: Guillaume Horel <guillaume.horel@gmail.com>
 pkgname=('python-arch')
 _module='arch'
 pkgver='4.0'
@@ -25,4 +26,5 @@ build() {
 package() {
     cd "${srcdir}/${_module}-${pkgver}"
     python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
+    install -D -m644 LICENSE.md "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.md"
 }
