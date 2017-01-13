@@ -1,7 +1,7 @@
 pkgbase = mate-user-guide-dev
 	pkgdesc = MATE User Guide
-	pkgver = 1.15.0
-	pkgrel = 1
+	pkgver = 1.17.0
+	pkgrel = 5
 	url = http://mate-desktop.org
 	arch = any
 	groups = mate
@@ -16,8 +16,8 @@ pkgbase = mate-user-guide-dev
 	provides = mate-user-guide-gtk3
 	conflicts = mate-user-guide
 	conflicts = mate-user-guide-gtk3
-	source = http://pub.mate-desktop.org/releases/1.15/mate-user-guide-1.15.0.tar.xz
-	sha1sums = b14cab398b894c93a34ced91bd991650686e465f
+	source = http://pub.mate-desktop.org/releases/1.17/mate-user-guide-1.17.0.tar.xz
+	sha1sums = 4bc1096ed80da320f3bf946982645e269049a852
 
 pkgname = mate-user-guide-dev
 
