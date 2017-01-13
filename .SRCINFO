@@ -1,6 +1,6 @@
 pkgbase = nanoc
 	pkgdesc = A simple, flexible static site generator written in Ruby.
-	pkgver = 4.1.6
+	pkgver = 4.5.2
 	pkgrel = 1
 	url = http://nanoc.ws
 	arch = any
@@ -17,10 +17,10 @@ pkgbase = nanoc
 	provides = ruby-nanoc
 	conflicts = ruby-nanoc3
 	conflicts = ruby-nanoc
-	noextract = nanoc-4.1.6.gem
+	noextract = nanoc-4.5.2.gem
 	options = !emptydirs
-	source = https://github.com/nanoc/nanoc/archive/4.1.6.tar.gz
-	sha256sums = ed3a8ca6b1c1c946d0bace5819212d8463e0e4c82370bad663af2fbc97672c92
+	source = https://github.com/nanoc/nanoc/archive/4.5.2.tar.gz
+	sha256sums = 32cb12e9f4e4afe2cd24267983636f648679bfc4d473e9627fe72b38cee0bdf1
 
 pkgname = nanoc
 
