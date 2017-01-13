@@ -29,7 +29,7 @@ pkgver() {
 
 build() {
   cd "$_pkgname"
-  ./bootstrap.sh
+  ./autogen.sh
   ./configure --prefix=/usr
   make
 }
