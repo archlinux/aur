@@ -5,7 +5,7 @@
 _ver=1.17
 _pkgbase=mate-desktop
 pkgname="${_pkgbase}-dev"
-pkgver=${_ver}.0
+pkgver=${_ver}.1
 pkgrel=5
 pkgdesc="Library with common API for various MATE modules"
 url="http://mate-desktop.org"
@@ -16,7 +16,7 @@ license=('GPL' 'LGPL')
 depends=('dconf' 'gtk3' 'startup-notification')
 makedepends=('gobject-introspection' 'mate-common-dev' 'yelp-tools')
 source=("http://pub.mate-desktop.org/releases/${_ver}/${_pkgbase}-${pkgver}.tar.xz")
-sha1sums=('eb60fd8cd0289a86ac1e0e487e066423a6774c8f')
+sha1sums=('aed9772afe17a3577b376dbc37a597f8b36fc273')
 
 prepare() {
     cd "${srcdir}"
