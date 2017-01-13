@@ -1,0 +1,19 @@
+pkgbase = rhythmbox-plugin-rhythmboxfullscreen-git
+	pkgdesc = A full screen window for Rhythmbox.
+	pkgver = r65.a508b49
+	pkgrel = 1
+	url = https://github.com/benjaoming/rhythmbox-fullscreen
+	install = rhythmbox-plugin-rhythmboxfullscreen.install
+	arch = any
+	license = GPL2
+	makedepends = git
+	depends = rhythmbox
+	depends = python-cairo
+	provides = rhythmbox-plugin-rhythmboxfullscreen
+	conflicts = rhythmbox-plugin-rhythmboxfullscreen
+	options = !emptydirs
+	source = git://github.com/benjaoming/rhythmbox-fullscreen
+	sha256sums = SKIP
+
+pkgname = rhythmbox-plugin-rhythmboxfullscreen-git
+
