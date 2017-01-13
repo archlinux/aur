@@ -11,7 +11,7 @@
 
 pkgname=wine-gaming-nine
 pkgver=2.0rc4
-pkgrel=2
+pkgrel=3
 
 _pkgbasever=${pkgver/rc/-rc}
 _d3d9ver=2.0-rc2
@@ -139,6 +139,7 @@ prepare()
     patch -p1 < "$srcdir/wine-d3d9-patches-wine-d3d9-$_d3d9ver/wine-d3d9.patch"
     patch -p1 < ../steam.patch
     patch -p1 < ../heap_perf.patch
+    patch -p1 < ../flex_fix.patch
     
     #patch -p1 < ../increase_max_frag_samplers.patch
     
