@@ -3,27 +3,28 @@
 # Contributor: Thomas Baechler <thomas@archlinux.org>
 
 pkgname=nvidia-304xx-ck
-pkgver=304.132
-_extramodules=extramodules-4.8-ck
-pkgrel=7
+pkgver=304.134
+_extramodules=extramodules-4.9-ck
+pkgrel=1
 _pkgdesc="NVIDIA drivers for linux-ck, 304xx legacy branch."
 pkgdesc="$_pkgdesc"
 arch=('i686' 'x86_64')
 url="http://www.nvidia.com/"
-depends=('linux-ck>=4.8' 'linux-ck<4.9' 'libgl' "nvidia-304xx-utils=${pkgver}")
-makedepends=('linux-ck-headers>=4.8' 'linux-ck-headers<4.9' 'nvidia-304xx-libgl')
+depends=('linux-ck>=4.9' 'linux-ck<4.10' 'libgl' "nvidia-304xx-utils=${pkgver}")
+makedepends=('linux-ck-headers>=4.9' 'linux-ck-headers<4.10' 'nvidia-304xx-libgl')
 conflicts=('nvidia-340xx-ck' 'nvidia-ck')
 #groups=('ck-generic')
 #replaces=()
 license=('custom')
 install=readme.install
 options=(!strip)
-source=('disable-mtrr.patch')
+source=('disable-mtrr.patch'
+)
 source_i686+=("http://us.download.nvidia.com/XFree86/Linux-x86/${pkgver}/NVIDIA-Linux-x86-${pkgver}.run")
 source_x86_64+=("http://us.download.nvidia.com/XFree86/Linux-x86_64/${pkgver}/NVIDIA-Linux-x86_64-${pkgver}-no-compat32.run")
 sha256sums=('cbaa0c4e4f30d993958c079a22e0346970f99d4fda9d12379777bb16ab3306c9')
-sha256sums_i686=('d460f6ab63cc8c1f9fb89a344ad0f3ee1a90e7078b4edba78d86433e66bfd927')
-sha256sums_x86_64=('3d7c18eef3044890536b50acab76977112ea5134425b75bba10af37091879ab8')
+sha256sums_i686=('84f7891af131bb9f9a8a34401dfef4288218019406dfa4ae57b6d52b14e81c9d')
+sha256sums_x86_64=('42213765cd28078314657d3c1ba382584f09e5e57598240596021f4f76c0c443')
 [[ "$CARCH" = "i686" ]] && _pkg="NVIDIA-Linux-x86-${pkgver}"
 [[ "$CARCH" = "x86_64" ]] && _pkg="NVIDIA-Linux-x86_64-${pkgver}-no-compat32"
 
