@@ -1,0 +1,15 @@
+pkgbase = timelineproject-hg
+	pkgdesc = Aims to create a free, cross-platform application for displaying and navigating events on a timeline.
+	pkgver = 1.12.0.r5037+
+	pkgrel = 1
+	url = http://thetimelineproj.sourceforge.net/
+	arch = any
+	license = GPL3
+	makedepends = mercurial
+	depends = python2-humblewx
+	depends = wxpython
+	source = timelineproject::hg+http://hg.code.sf.net/p/thetimelineproj/main
+	md5sums = SKIP
+
+pkgname = timelineproject-hg
+
