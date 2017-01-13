@@ -2,7 +2,7 @@
 pkgbase=python-rawpy
 pkgname=('python-rawpy' 'python2-rawpy')
 pkgver=0.7.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Python wrapper for the LibRaw library"
 arch=(any)
 license=('MIT License')
@@ -27,7 +27,7 @@ build() {
 package_python2-rawpy() {
   cd "$srcdir/rawpy-$pkgver"
   echo ${pkgdir}
-  python setup.py install --root=${pkgdir} --prefix=usr --optimize=1
+  python2 setup.py install --root=${pkgdir} --prefix=usr --optimize=1
 }
 
 package_python-rawpy() {

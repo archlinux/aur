@@ -1,7 +1,7 @@
 pkgbase = python-rawpy
 	pkgdesc = Python wrapper for the LibRaw library
 	pkgver = 0.7.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://pypi.python.org/pypi/rawpy
 	arch = any
 	license = MIT License
