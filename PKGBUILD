@@ -9,8 +9,8 @@
 
 _pack=generate_html
 pkgname=octave-$_pack
-pkgver=0.1.12
-pkgrel=2
+pkgver=0.1.13
+pkgrel=1
 pkgdesc="This package provides functions for generating HTML pages that contain the help texts for a set of functions. The package is designed to be as general as possible, but also contains convenience functions for generating a set of pages for entire packages."
 arch=(any)
 url="http://octave.sourceforge.net/$_pack/"
@@ -25,7 +25,7 @@ install=$pkgname.install
 _archive=$_pack-$pkgver.tar.gz
 source=("http://downloads.sourceforge.net/octave/$_archive")
 noextract=("$_archive")
-md5sums=('36a7392fdc9723ded6784fb4e83410a4')
+md5sums=('6510b34de1cf360f84568cd87b79ba4c')
 
 _octave_run() {
 	octave --no-history --no-init-file --no-window-system -q -f --eval "$*"
