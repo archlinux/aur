@@ -1,8 +1,8 @@
-# Maintainer: Aoibhinn di Tori <email@aoibh.in>
+# Maintainer: Aoibhinn di Tori <evie@p5ych0sis.io>
 
 _pkgname=ranwhen
 pkgname=${_pkgname}-git
-pkgver=20150917
+pkgver=20170113
 pkgrel=1
 pkgdesc="Visualize when your system was running"
 url="https://github.com/p-e-w/ranwhen"
