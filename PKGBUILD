@@ -4,8 +4,8 @@
 
 pkgbase=linux-rc
 _srcname=linux-4.9
-_stable=4.9.2
-_patchver=4.9.3
+_stable=4.9.3
+_patchver=4.9.4
 pkgver=${_patchver}rc1
 _rcpatch=patch-${_patchver}-rc1
 pkgrel=1
