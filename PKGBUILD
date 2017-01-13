@@ -29,5 +29,5 @@ build() {
 package() {
   cd "${pkgname#lib32-}-${pkgver}"
   make DESTDIR="${pkgdir}" install
-  rm -rf "${pkgdir}/usr/"{include,share,lib32/*.a}
+  rm -rf "${pkgdir}/usr/"{include,share}
 }
