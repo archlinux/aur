@@ -5,9 +5,9 @@
 
 _gemname=posix-spawn
 pkgname=ruby-$_gemname
-pkgver=0.3.11
+pkgver=0.3.13
 pkgrel=1
-pkgdesc='posix_spawnp(2) for ruby'
+pkgdesc='posix-spawn uses posix_spawnp(2) for faster process spawning'
 arch=(any)
 url='http://github.com/rtomayko/posix-spawn'
 license=(MIT)
@@ -15,7 +15,7 @@ depends=(ruby)
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-sha256sums=('b932835dd6eb241b255ba51767b68a58299abbb0fb344cb874dcd23d57b75414')
+sha256sums=('5c32e71fc1773f615234ad929b2b530ab6f84e5d43af30f2caf8146de3adbdde')
 
 package() {
     local _gemdir="$(ruby -e'puts Gem.default_dir')"
