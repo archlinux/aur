@@ -2,11 +2,11 @@
 # Contributor:  eadrom <eadrom@archlinux.info>
 # Contributor:  Martin Wimpress <code@flexion.org>
 
-_ver=1.15
+_ver=1.17
 _pkgbase=mate-menus
 pkgname="${_pkgbase}-dev"
 pkgver=${_ver}.0
-pkgrel=1
+pkgrel=5
 pkgdesc="MATE menu specifications (GTK3 version)"
 url="http://mate-desktop.org"
 arch=('i686' 'x86_64')
@@ -17,7 +17,7 @@ depends=('glib2' 'python2')
 makedepends=('gobject-introspection' 'mate-common-dev')
 groups=('mate')
 source=("http://pub.mate-desktop.org/releases/${_ver}/${_pkgbase}-${pkgver}.tar.xz")
-sha1sums=('6083819d5e3e07c6317a49247fc63c178f80db86')
+sha1sums=('8ba1a8b18b65b0746946531f25588b14e4794cd3')
 
 build() {
     cd "${srcdir}/${_pkgbase}-${pkgver}"

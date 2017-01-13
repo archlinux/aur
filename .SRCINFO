@@ -1,7 +1,7 @@
 pkgbase = mate-menus-dev
 	pkgdesc = MATE menu specifications (GTK3 version)
-	pkgver = 1.15.0
-	pkgrel = 1
+	pkgver = 1.17.0
+	pkgrel = 5
 	url = http://mate-desktop.org
 	arch = i686
 	arch = x86_64
@@ -15,8 +15,8 @@ pkgbase = mate-menus-dev
 	provides = mate-menus-gtk3
 	conflicts = mate-menus
 	conflicts = mate-menus-gtk3
-	source = http://pub.mate-desktop.org/releases/1.15/mate-menus-1.15.0.tar.xz
-	sha1sums = 6083819d5e3e07c6317a49247fc63c178f80db86
+	source = http://pub.mate-desktop.org/releases/1.17/mate-menus-1.17.0.tar.xz
+	sha1sums = 8ba1a8b18b65b0746946531f25588b14e4794cd3
 
 pkgname = mate-menus-dev
 
