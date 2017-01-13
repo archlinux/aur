@@ -2,7 +2,7 @@
 
 _pkgname=mpris2controller
 pkgname=mpris2controller-git
-pkgver=0.8.r0.ga169565
+pkgver=0.8.r1.gde972c0
 pkgrel=1
 pkgdesc="A small daemon that intelligently controls MPRIS2 compatible players"
 arch=(any)
