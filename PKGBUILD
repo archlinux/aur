@@ -1,21 +1,22 @@
 pkgname=crmngr
-pkgver=1.0.0
+pkgver=2.0.0
 pkgrel=1
 pkgdesc="crmngr is a tool to aid with the management of a r10k-style control repository."
 url="https://github.com/vshn/crmngr"
-depends=('python')
-makedepends=('python-setuptools' )
+depends=('python' 'python-natsort' 'python-requests' 'git')
+makedepends=('python-setuptools')
+conflicts=('crmngr')
 license=('BSD')
 arch=('any')
-source=("https://pypi.python.org/packages/source/c/crmngr/$pkgname-$pkgver.tar.gz")
-md5sums=('fbe973f4969dba522c33c9b466a020cf')
+source=("https://files.pythonhosted.org/packages/source/c/crmngr/crmngr-$pkgver.tar.gz")
+md5sums=('553bb5b2f320a2499bb63c79021d4517')
 
 build() {
-    cd "$srcdir/$pkgname-$pkgver"
+    cd "$srcdir/crmngr-$pkgver"
     python setup.py build
 }
 
 package() {
-    cd "$srcdir/$pkgname-$pkgver"
+    cd "$srcdir/crmngr-$pkgver"
     python setup.py install --root="$pkgdir" --optimize=1 
 }
