@@ -2,11 +2,11 @@
 # Contributor:  eadrom <eadrom@archlinux.info>
 # Contributor:  Martin Wimpress <code@flexion.org>
 
-_ver=1.15
+_ver=1.17
 _pkgbase=mate-notification-daemon
 pkgname="${_pkgbase}-dev"
-pkgver=${_ver}.1
-pkgrel=1
+pkgver=${_ver}.0
+pkgrel=5
 provides=('notification-daemon' "${_pkgbase}" "${_pkgbase}-gtk3")
 pkgdesc="Notification daemon for MATE (GTK3 version)"
 url="http://mate-desktop.org"
@@ -17,7 +17,7 @@ depends=('dconf' 'dbus-glib' 'glib2' 'gtk3' 'gtk-update-icon-cache'
          'libcanberra' 'libwnck3' 'libwnck3' 'libnotify')
 makedepends=('mate-common-dev')
 source=("http://pub.mate-desktop.org/releases/${_ver}/${_pkgbase}-${pkgver}.tar.xz")
-sha1sums=('ffb3d87230fb5db38a581ddfc8199efc872cf472')
+sha1sums=('30ec1b120fb9d892edcd72d67f8a387e3e4903cc')
 
 prepare() {
     cd "${srcdir}"

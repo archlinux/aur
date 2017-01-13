@@ -1,7 +1,7 @@
 pkgbase = mate-notification-daemon-dev
 	pkgdesc = Notification daemon for MATE (GTK3 version)
-	pkgver = 1.15.1
-	pkgrel = 1
+	pkgver = 1.17.0
+	pkgrel = 5
 	url = http://mate-desktop.org
 	arch = i686
 	arch = x86_64
@@ -22,8 +22,8 @@ pkgbase = mate-notification-daemon-dev
 	provides = mate-notification-daemon-gtk3
 	conflicts = mate-notification-daemon
 	conflicts = mate-notification-daemon-gtk3
-	source = http://pub.mate-desktop.org/releases/1.15/mate-notification-daemon-1.15.1.tar.xz
-	sha1sums = ffb3d87230fb5db38a581ddfc8199efc872cf472
+	source = http://pub.mate-desktop.org/releases/1.17/mate-notification-daemon-1.17.0.tar.xz
+	sha1sums = 30ec1b120fb9d892edcd72d67f8a387e3e4903cc
 
 pkgname = mate-notification-daemon-dev
 	groups = mate
