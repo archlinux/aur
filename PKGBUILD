@@ -1,16 +1,16 @@
 # Maintainer: Ricardo Gonçalves <ricardompgoncalves@gmail.com>
 
 pkgname=qmmp-plugin-youtube
-pkgver=0.3
+pkgver=0.4
 pkgrel=1
 pkgdesc="Plugin for Qt-based Multimedia Player (Qmmp) to search and play musics directly from YouTube"
 arch=('i686' 'x86_64')
 url="https://github.com/rigon/qmmp-plugin-youtube"
 license=('GPL')
-depends=('qmmp' 'python>=3.5' 'python<3.6' 'youtube-dl' 'qjson' 'pythonqt')
+depends=('qmmp' 'python>=3.6' 'python<3.7' 'youtube-dl' 'qjson' 'pythonqt')
 makedepends=('qt5-tools' 'qt5-base' 'make' 'gcc' 'fakeroot')
 source=("https://github.com/rigon/$pkgname/archive/v$pkgver.tar.gz")
-md5sums=('a11fb33664df98e97f641dbcadc800ec')
+md5sums=('43bd3977bb80895e5aa2a042483124ef')
 
 build() {
 	cd "${pkgname}-${pkgver}"/
