@@ -5,7 +5,7 @@
 
 _pkgname=xf86-video-openchrome
 pkgname=$_pkgname-git
-pkgver=0.5.214.gf20b152
+pkgver=0.5.257.g0ea654c
 pkgrel=1
 pkgdesc='Open Source X driver for VIA IGPs'
 arch=('i686' 'x86_64')
@@ -13,9 +13,9 @@ url='http://www.freedesktop.org/wiki/Openchrome'
 license=('MIT')
 depends=('libdrm' 'libxvmc' 'xorg-server')
 optdepends=('unichrome-dri')
-makedepends=('git' 'xorg-server-devel' 'X-ABI-VIDEODRV_VERSION=20')
+makedepends=('git' 'xorg-server-devel' 'X-ABI-VIDEODRV_VERSION=23')
 provides=("$_pkgname")
-conflicts=("$_pkgname" 'X-ABI-VIDEODRV_VERSION<20' 'X-ABI-VIDEODRV_VERSION>=21')
+conflicts=("$_pkgname" 'X-ABI-VIDEODRV_VERSION<23' 'X-ABI-VIDEODRV_VERSION>=24')
 source=("git://anongit.freedesktop.org/openchrome/$_pkgname")
 sha256sums=("SKIP")
 
