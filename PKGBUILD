@@ -101,7 +101,7 @@ package_xorg-server-common-nosystemd() {
 
 package_xorg-server-nosystemd() {
   pkgdesc="Xorg X server"
-  depends=('libepoxy' 'libxfont2' 'pixman' 'xorg-server-common-nosystemd' 'libunwind' 'dbus-nosystemd' 'libgl' 'xf86-input-driver')
+  depends=('libepoxy' 'libxfont2' 'pixman' 'xorg-server-common-nosystemd' 'libunwind' 'dbus-nosystemd' 'libgl' 'xf86-input-evdev')
   # see xorg-server-*/hw/xfree86/common/xf86Module.h for ABI versions - we provide major numbers that drivers can depend on
   # and /usr/lib/pkgconfig/xorg-server.pc in xorg-server-devel pkg
   provides=('X-ABI-VIDEODRV_VERSION=23' 'X-ABI-XINPUT_VERSION=24.1' 'X-ABI-EXTENSION_VERSION=10.0' 'x-server' 'xorg-server')
