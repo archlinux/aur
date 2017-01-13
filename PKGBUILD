@@ -2,7 +2,7 @@
 
 pkgname=argos3-git
 _gitname=argos3
-pkgver=3.0.0.beta43.r6.gb16f6be
+pkgver=3.0.0.beta43.r8.g627ce75
 pkgrel=1
 
 pkgdesc="ARGoS 3 Large-scale robot simulator"
@@ -11,10 +11,9 @@ url="http://www.argos-sim.info"
 license=('MIT')
 
 depends=('freeimage>=3.15' 'qt4>=4.6' 'freeglut>=2.6.0' 'libxi' 'libxmu' 'lua' 'doxygen>=1.7.3' 'graphviz>=2.28' 'asciidoc>=8.6.2')
-makedepends=('gcc>=4.3' 'git' 'cmake>=2.6')
+makedepends=('gcc>=4.4' 'git' 'cmake>=2.8')
 
 source=('git://github.com/ilpincy/argos3.git')
-# sha256sums=('8a4f7ae34558b2b858851a233f3d0b968be1daf091ece0adc04cfa5a7b74cddc')
 md5sums=('SKIP')
 
 pkgver() {
@@ -27,7 +26,7 @@ build() {
   cd "$srcdir/$_gitname"
   mkdir build_simulator
   cd build_simulator
-  cmake -DCMAKE_INSTALL_PREFIX=/usr ../src
+  cmake -DCMAKE_INSTALL_PREFIX=/usr -DARGOS_BUILD_NATIVE=ON ../src
   make
 }
 
