@@ -1,0 +1,11 @@
+post_upgrade() {
+    printf "
+There were backwards incompatible changes concerning command names. If you
+maintain your own keys.conf, it is almost certainly broken. Please refer to the
+changelog at http://karlch.github.io/vimiv/changelog/ or the default keys.conf
+to fix it.\n\n"
+}
+
+post_install() {
+    post_upgrade
+}
