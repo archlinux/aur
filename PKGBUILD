@@ -2,7 +2,7 @@
 
 pkgname=brave-git
 _pkgname=browser-laptop
-pkgver=0.13.0.4879
+pkgver=0.13.0.4936
 pkgrel=1
 pkgdesc="A web browser that stops ads and trackers by default. Master branch."
 arch=('x86_64') # Upstream supports x86_64 only
@@ -16,9 +16,11 @@ optdepends=('cups: To print stuff'
 provides=('brave' 'brave-browser')
 conflicts=('brave')
 source=("git://github.com/brave/browser-laptop.git" 
-        'brave.desktop')
+        'brave.desktop'
+        'brave')
 sha384sums=('SKIP'
-            'f950675fb4a3f9e48374f8a2667e7a45889206a3062c8182e474143607fc26bd17e852a1ef494607dbd3ff4de325e05f')
+            'f950675fb4a3f9e48374f8a2667e7a45889206a3062c8182e474143607fc26bd17e852a1ef494607dbd3ff4de325e05f'
+            'c3a0231272b287d5741f4347bc64627e65c2bf7adb303ba8beb2584b6ca22579f080dc2bc7be5227a3100f16f1dd7023')
 
 pkgver() {
   cd "$srcdir/$_pkgname"
@@ -55,9 +57,9 @@ package() {
   # Yes, btrfs, Thanks for asking. :-)
   cp -a --reflink=auto Brave-linux-x64 "$pkgdir"/usr/lib/brave
 
-  install -d -m0755 "$pkgdir"/usr/bin
+  install -dm0755 "$pkgdir"/usr/bin
 
-  ln -s /usr/lib/brave/brave "$pkgdir"/usr/bin/brave
+  install -Dm0755 "$srcdir"/brave "$pkgdir"/usr/bin/brave
 
   install -dm0755 "$pkgdir"/usr/share/applications
 
@@ -65,7 +67,7 @@ package() {
 
   install -Dm0644 res/app.png "$pkgdir"/usr/share/pixmaps/brave.png
 
-  install -d -m0755 "$pkgdir"/usr/share/licenses/brave-git
+  install -dm0755 "$pkgdir"/usr/share/licenses/brave-git
 
   cp --reflink=auto LICENSE.txt "$pkgdir"/usr/share/licenses/brave-git/MPL2
 

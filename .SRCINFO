@@ -1,6 +1,6 @@
 pkgbase = brave-git
 	pkgdesc = A web browser that stops ads and trackers by default. Master branch.
-	pkgver = 0.13.0.4879
+	pkgver = 0.13.0.4936
 	pkgrel = 1
 	url = https://www.brave.com/
 	arch = x86_64
@@ -26,8 +26,10 @@ pkgbase = brave-git
 	conflicts = brave
 	source = git://github.com/brave/browser-laptop.git
 	source = brave.desktop
+	source = brave
 	sha384sums = SKIP
 	sha384sums = f950675fb4a3f9e48374f8a2667e7a45889206a3062c8182e474143607fc26bd17e852a1ef494607dbd3ff4de325e05f
+	sha384sums = c3a0231272b287d5741f4347bc64627e65c2bf7adb303ba8beb2584b6ca22579f080dc2bc7be5227a3100f16f1dd7023
 
 pkgname = brave-git
 
