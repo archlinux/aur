@@ -7,7 +7,7 @@ pkgver=2.1.2.r1637.ge47a2ec3
 pkgrel=1
 pkgdesc="A program that lets you manipulate digital audio waveforms"
 arch=('i686' 'x86_64')
-url="http://audacity.sourceforge.net/"
+url="http://www.audacityteam.org/"
 license=('GPL')
 depends=('desktop-file-utils'
          'ffmpeg'
