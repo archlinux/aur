@@ -1,6 +1,6 @@
 pkgbase = triskweline-code-font
 	pkgdesc = A monospaced bitmap font, modified from Triskweline for better code readability.
-	pkgver = 5.7bbd101
+	pkgver = 6.3d1d7dc
 	pkgrel = 1
 	url = https://github.com/ideasman42/triskweline-code-font
 	install = triskweline-code-font.install
