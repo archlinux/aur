@@ -1,6 +1,6 @@
 pkgbase = arm-bcm2708-linux-gnueabi
 	pkgdesc = GCC Cross Compiler Toolchain provided by RaspberryPi
-	pkgver = 14.9c3d7b6
+	pkgver = 80.d820ab9
 	pkgrel = 1
 	url = https://github.com/raspberrypi/tools/tree/master/arm-bcm2708
 	arch = i686

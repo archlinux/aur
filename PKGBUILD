@@ -13,7 +13,7 @@
 # Upstream supports i686 only
 
 pkgname=arm-bcm2708-linux-gnueabi
-pkgver=14.9c3d7b6
+pkgver=80.d820ab9
 pkgrel=1
 pkgdesc="GCC Cross Compiler Toolchain provided by RaspberryPi"
 arch=('i686')

@@ -1,0 +1,6 @@
+*.un~
+*.swp
+pkg/
+src/
+*.tar.*
+tools/
