@@ -1,7 +1,7 @@
 pkgbase = mate-polkit-dev
 	pkgdesc = PolicyKit integration for the MATE desktop (GTK3 version)
-	pkgver = 1.15.0
-	pkgrel = 1
+	pkgver = 1.17.0
+	pkgrel = 5
 	url = http://mate-desktop.org
 	arch = i686
 	arch = x86_64
@@ -15,8 +15,8 @@ pkgbase = mate-polkit-dev
 	provides = mate-polkit-gtk3
 	conflicts = mate-polkit
 	conflicts = mate-polkit-gtk3
-	source = http://pub.mate-desktop.org/releases/1.15/mate-polkit-1.15.0.tar.xz
-	sha1sums = f70a0efc5c484f265eea08f2a8315b2cfc4cb99f
+	source = http://pub.mate-desktop.org/releases/1.17/mate-polkit-1.17.0.tar.xz
+	sha1sums = 1b784f67e6595f362713749bc97e7d6deb3fcd33
 
 pkgname = mate-polkit-dev
 	groups = mate
