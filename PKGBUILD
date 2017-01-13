@@ -3,12 +3,12 @@
 
 pkgname=pcs
 pkgver=0.9.155
-pkgrel=2
+pkgrel=3
 pkgdesc='pacemaker corosync shell utility for cluster configuration'
 arch=('any')
 url='http://clusterlabs.org/'
 license=('GPL2')
-depends=('python')
+depends=('python' 'python-lxml')
 #makedepends=('ruby-bundler')
 source=("https://github.com/ClusterLabs/$pkgname/archive/$pkgver.tar.gz")
 md5sums=('5c36c47c7f2199c93716e2b4e641e919')
