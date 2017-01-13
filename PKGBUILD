@@ -4,7 +4,7 @@
 _appname=cocos2d-x
 pkgname=cocos2d-x-src
 pkgver=3.14
-pkgrel=2
+pkgrel=3
 pkgdesc="Cocos2D-X is a game engine that supports multiple platforms such as iOS, Android, WinXP/7/8, WP8, BlackBerry, MeeGo, Marmelade, WebOS, Mac OS X"
 arch=('i686' 'x86_64')
 url="http://cdn.cocos2d-x.org/"
@@ -61,6 +61,7 @@ source=(
 "ccShader_Position_uColor.frag.patch"
 "ccShader_Position_uColor.vert.patch"
 "ccShader_UI_Gray.frag.patch"
+"BugsTest.cpp.patch"
 )
 sha1sums=(
 'f510ae35c078d602d53f0c203be971d6fa4efdd3'
@@ -111,6 +112,7 @@ sha1sums=(
 'd8e81b49baec4fd9e04822e1c460dd43f85762bb'
 'ea81b894221a8cf42bd6eecd1ced44fff27ad5f4'
 'c8caec1e9626d222c67a7c883c8cb94101799956'
+'d324bb51453ecdadede650a34d66e966e0356523'
 )
 
 
@@ -179,6 +181,9 @@ package() {
 	patch -s "$srcdir"/$_appname-$pkgver/cocos/renderer/ccShader_Position_uColor.frag ccShader_Position_uColor.frag.patch 
 	patch -s "$srcdir"/$_appname-$pkgver/cocos/renderer/ccShader_Position_uColor.vert ccShader_Position_uColor.vert.patch 
 	patch -s "$srcdir"/$_appname-$pkgver/cocos/renderer/ccShader_UI_Gray.frag ccShader_UI_Gray.frag.patch
+
+	# Patch BugTests.cpp to avoid a non-bug crash. See https://github.com/cocos2d/cocos2d-x/pull/17125
+	patch -s "$srcdir"/$_appname-$pkgver/tests/cpp-tests/Classes/BugsTest/BugsTest.cpp BugsTest.cpp.patch
 
 	# (EXPERIMENTAL) Enable high variable precision globaly in the shaders:
 	# This can get rid of positioning and rendering artifacts but might affect performance on devices with a slow GPU.
