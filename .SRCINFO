@@ -1,7 +1,7 @@
 pkgbase = mate-backgrounds-dev
 	pkgdesc = Background images and data for MATE
-	pkgver = 1.15.0
-	pkgrel = 1
+	pkgver = 1.17.0
+	pkgrel = 5
 	url = http://mate-desktop.org
 	arch = any
 	groups = mate
@@ -12,8 +12,8 @@ pkgbase = mate-backgrounds-dev
 	provides = mate-backgrounds-gtk3
 	conflicts = mate-backgrounds
 	conflicts = mate-backgrounds-gtk3
-	source = http://pub.mate-desktop.org/releases/1.15/mate-backgrounds-1.15.0.tar.xz
-	sha1sums = a7929a9bcd40d14f26e1a33da6bf9d4aceadc15f
+	source = http://pub.mate-desktop.org/releases/1.17/mate-backgrounds-1.17.0.tar.xz
+	sha1sums = 6fd1f772b80da65105abe2267ea9f6fd7851434b
 
 pkgname = mate-backgrounds-dev
 
