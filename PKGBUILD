@@ -6,7 +6,7 @@ validpgpkeys=('748231EBCBD808A14F5E85D28C004C2F93481F6B')
 pkgname=storcli
 _pkgname=StorCLI
 pkgver=1.20.15
-pkgrel=2
+pkgrel=3
 _pkgrel=1
 pkgdesc="CLI program for LSI MegaRAID cards, also works with some Dell PERC RAID cards (successor to megaraid-cli)"
 arch=('i686' 'x86_64')
@@ -27,8 +27,10 @@ then
 fi
 
 # Thanks to sl1pkn07 on AUR for tracking down the actual URL for me!
+# ...Which of course no longer works. Thanks to grawity for providing the FreeBSD dist mirror link.
 #source=("https://square-r00t.net/files/arch/${pkgname}/${pkgver}_${_pkgname}.zip"
-source=("http://docs.avagotech.com/docs-and-downloads/raid-controllers/raid-controllers-common-files/${pkgver}_${_pkgname}.zip"
+#source=("http://docs.avagotech.com/docs-and-downloads/raid-controllers/raid-controllers-common-files/${pkgver}_${_pkgname}.zip"
+source=("http://ftp2.za.freebsd.org/pub/FreeBSD/distfiles/${pkgver}_${_pkgname}.zip"
 	"${pkgver}_${_pkgname}.zip.sig")
 sha512sums=('8d0bd39c005b26ad0eb3db045ae8f303eb36333b569c1be9d1e599c0845b2427f473015c4f75859dd283f8ec5072a3037f1a0810c9ad54b6b552a9c08bfdba05'
             'SKIP')
