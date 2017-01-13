@@ -19,9 +19,8 @@
 # Arch: build dependencies for the target device documented in PKGBUILD.libs
 # Fedora: systemd-devel mesa-*-devel wayland*-devel fontconfig-devel libinput-devel freetype-devel qt5-qtdeclarative-devel
 
-# Sanity
+# Sanity check
 _building=true
-if [[ -z ${startdir} ]]; then _building=false; fi
 
 # Options
 _target_host=false
@@ -35,6 +34,10 @@ _skip_web_engine=false
 _static_build=false
 _build_from_head=false
 _patching=true
+
+if [[ -z ${startdir} ]]; then
+  _building=false;
+fi
 
 # Sanity check options
 if $_target_host; then
@@ -112,7 +115,7 @@ $_float && _additional_configure_flags="$_additional_configure_flags -qreal floa
 pkgrel=6
 pkgname="qt-sdk"
 
-if [[ -n ${_piver} ]]; then
+if [[ -n ${_piver} ]] || ! $_building; then
   pkgname="${pkgname}-raspberry-pi${_piver}"
 fi
 $_static_build && pkgname="${pkgname}-static"
