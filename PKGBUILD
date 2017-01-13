@@ -1,21 +1,28 @@
-# $Id: PKGBUILD 236317 2015-04-12 19:26:30Z eric $
-# Maintainer: Proudzhu <proudzhu.fdu at gmail.com>
+# Maintainer: Bernhard Landauer <oberon@manjaro.org>
 # Contributor: Eric Bélanger <eric@archlinux.org>
 
 pkgname=audacity-git
 _pkgname=audacity
-pkgver=wx3.stable.r418.g162392e
+pkgver=2.1.2.r1637.ge47a2ec3
 pkgrel=1
 pkgdesc="A program that lets you manipulate digital audio waveforms"
 arch=('i686' 'x86_64')
 url="http://audacity.sourceforge.net/"
 license=('GPL')
-depends=('libmad' 'libid3tag' 'wxgtk' 'lame' 'lilv' 'soundtouch'
-	 'ffmpeg' 'vamp-plugin-sdk' 'sbsms' 'portsmf' 'desktop-file-utils'
-	 'webkitgtk2')
+depends=('desktop-file-utils'
+         'ffmpeg'
+         'lame'
+         'libid3tag'
+         'libmad'
+         'lilv'
+         'portsmf'
+         'sbsms'
+         'soundtouch'
+         'vamp-plugin-sdk'
+         'webkitgtk2'
+         'wxgtk')
 makedepends=('cmake' 'python2' 'twolame')
 options=('!makeflags')
-install=audacity.install
 provides=('audacity')
 conflicts=('audacity')
 source=("$_pkgname::git+https://github.com/audacity/audacity.git"
@@ -25,10 +32,7 @@ sha1sums=('SKIP'
 
 pkgver() {
   cd "$srcdir/$_pkgname"
-  ( set -o pipefail
-    git describe --long --tags 2>/dev/null | sed 's/^v//' | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-  )
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g' | cut -d'.' -f2-
 }
 
 prepare() {
