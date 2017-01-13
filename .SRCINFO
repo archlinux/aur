@@ -1,7 +1,7 @@
 pkgbase = parallels-tools
 	pkgdesc = Parallels virtualization integration services & drivers
 	pkgver = 11.2.2.32651
-	pkgrel = 1
+	pkgrel = 2
 	url = https://parallels.com
 	arch = x86_64
 	license = custom: commercial
@@ -9,6 +9,7 @@ pkgbase = parallels-tools
 	makedepends = dkms
 	depends = bash
 	depends = sh
+	depends = zlib
 	conflicts = xorg-server<1.16
 	conflicts = X-ABI-VIDEODRV_VERSION<20
 	conflicts = X-ABI-VIDEODRV_VERSION>=21

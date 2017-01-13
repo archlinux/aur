@@ -7,7 +7,7 @@ pkgdesc="Parallels virtualization integration services & drivers"
 arch=('x86_64')
 url="https://parallels.com"
 license=('custom: commercial')
-depends=(bash sh)
+depends=(bash sh zlib)
 makedepends=(dir-dlagent dkms)
 checkdepends=()
 optdepends=()
@@ -60,6 +60,8 @@ package_parallels-tools() {
 	cp -r "${srcdir}"/bin/* "${pkgdir}/usr/bin"
 	cp -r "${srcdir}"/sbin/* "${pkgdir}/usr/bin"
 	cp -r "${srcdir}"/lib/* "${pkgdir}/usr/lib"
+	rm -rf "${pkgdir}/usr/lib/compiz"
+
 	install -d -m 0755 "${pkgdir}/usr/lib/xorg/modules/drivers"
 	install -d -m 0755 "${pkgdir}/usr/lib/xorg/modules/input"
 	cp -r "${srcdir}"/xorg.${XORG_VERSION}/x-server/modules/drivers/* "${pkgdir}/usr/lib/xorg/modules/drivers"
@@ -89,6 +91,15 @@ package_parallels-tools() {
 
 	install -d -m 0755 "${pkgdir}/etc/pm/sleep.d"
 	install -m 0755 99prltoolsd-hibernate "${pkgdir}/etc/pm/sleep.d"
+
+	# These have very strange /usr/local rpaths, strip them out
+	chrpath -d "${pkgdir}/usr/lib/libglx.so.1.0.0"
+	for b in prlshprint prl_wmouse_d prlshprof prlsga prl_nettool \
+		prl_showvmcfg prlhosttime prldnd prlcc prl_snapshot prlcp \
+		prltoolsd;
+	do
+		chrpath -d "${pkgdir}/usr/bin/$b"
+	done
 }
 
 package_parallels-tools-dkms() {
