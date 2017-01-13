@@ -2,7 +2,7 @@
 # Contributer: Ivan Abdulin <elbahek@gmail.com>
 
 pkgname=xerial-sqlite-jdbc
-pkgver=3.8.11.2
+pkgver=3.16.1
 _fullname=sqlite-jdbc-${pkgver}
 pkgrel=1
 pkgdesc="Xerial implementation of SqliteJDBC"
@@ -11,7 +11,7 @@ url="https://bitbucket.org/xerial/sqlite-jdbc"
 license=('Apache')
 depends=('java-runtime')
 source=(https://bitbucket.org/xerial/sqlite-jdbc/downloads/${_fullname}.jar)
-sha256sums=('f30968b896af52baaeda4a901f6ef2629319168fa304e9747c7cfabef6c476ec')
+sha256sums=('211a0cb1694e53b7a120034ee33bd7b719bc7d0f5b619af2be26f2e5fb66e763')
 
 package() {
   install -D -m644 \
