@@ -1,0 +1,17 @@
+pkgbase = perl-pdf-labels
+	pkgdesc = This packages the perl-pdf-labels distribution, containing the PDF::Labels module!
+	pkgver = 1.8
+	pkgrel = 1
+	url = http://search.cpan.org/dist/PDF-Labels
+	arch = any
+	license = GPL
+	license = PerlArtistic
+	depends = perl-pdf-create
+	options = !emptydirs
+	options = purge
+	source = http://search.cpan.org/CPAN/authors/id/O/OW/OWEN/PDF-Labels-1.8.tar.gz
+	md5sums = 045898e035187446a5d643c832d55251
+	sha256sums = 82d38a7bba69a859b0d817abc8ad6c5e13e90c37e8c05749fb9f4d47a1930187
+
+pkgname = perl-pdf-labels
+
