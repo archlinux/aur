@@ -41,6 +41,7 @@ package(){
         "${pkgdir}/opt/${pkgname}/"
     install -Dm755 support/*.{sh,shlib} -t \
         "${pkgdir}/opt/${pkgname}/support"
+    install -Dm644 gameinfo "$pkgdir/opt/$pkgname/gameinfo"
 
     # Desktop integration
     install -Dm644 "support/icon.png" \
