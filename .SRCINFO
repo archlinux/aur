@@ -1,0 +1,16 @@
+pkgbase = imagy-xfce4
+	pkgdesc = Imagy.me screenshooter for xfce4
+	pkgver = 0.1
+	pkgrel = 1
+	url = http://imagy.me
+	arch = x86
+	arch = x86_64
+	license = MIT
+	depends = xfce4-screenshooter
+	source = imagy-xfce4
+	source = LICENSE
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = imagy-xfce4
+

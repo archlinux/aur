@@ -1,0 +1,18 @@
+#!/bin/bash
+# by Anatoly Rugalev
+
+UPLOAD_URI="http://imagy.me/upload"
+
+TMP_FILE=`xfce4-screenshooter -ro echo`
+
+if [ -n "$TMP_FILE" ]; then
+	URL=$(curl -s --form imagedata=@$TMP_FILE $UPLOAD_URI | awk '{print $1}')
+
+	echo "$URL" | xclip -selection primary
+	echo "$URL" | xclip -selection clipboard
+    
+	notify-send "Screenshot URL was copied to clipboard"
+	echo $URL
+
+	rm $TMP_FILE
+fi
