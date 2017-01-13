@@ -1,0 +1,26 @@
+pkgbase = dpf-plugins-git
+	pkgdesc = Collection of DPF-based plugins
+	pkgver = r72.5f35525
+	pkgrel = 1
+	url = http://distrho.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	license = LGPL
+	license = MIT
+	license = custom:ISC
+	makedepends = git
+	makedepends = wget
+	depends = liblo
+	depends = projectm
+	provides = dpf-plugins
+	conflicts = dpf-plugins
+	source = dpf-plugins::git://github.com/DISTRHO/DPF-Plugins
+	source = LICENSE_KARS_ISC
+	source = LICENSE_NDC_MIT
+	md5sums = SKIP
+	md5sums = 7b4d7947003bd60e5475fc61c6d014da
+	md5sums = 89d28c0ce6f25d8f0c3c4b1d5b4f0da3
+
+pkgname = dpf-plugins-git
+
