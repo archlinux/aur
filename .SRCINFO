@@ -1,15 +1,15 @@
 pkgbase = ruby-gh_inspector
 	pkgdesc = Search through GitHub issues for your project for existing issues about a Ruby Error.
-	pkgver = 1.0.2
+	pkgver = 1.0.3
 	pkgrel = 1
 	url = https://github.com/orta/gh_inspector
 	arch = any
 	license = MIT
 	depends = ruby
-	noextract = gh_inspector-1.0.2.gem
+	noextract = gh_inspector-1.0.3.gem
 	options = !emptydirs
-	source = https://rubygems.org/downloads/gh_inspector-1.0.2.gem
-	sha1sums = 4808907f6934cfef85e1b78320bd193da4214dd9
+	source = https://rubygems.org/downloads/gh_inspector-1.0.3.gem
+	sha1sums = 899c06393d45292ef04af91eb2c4c28c4592be68
 
 pkgname = ruby-gh_inspector
 

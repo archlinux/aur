@@ -3,7 +3,7 @@
 
 _gemname=gh_inspector
 pkgname=ruby-$_gemname
-pkgver=1.0.2
+pkgver=1.0.3
 pkgrel=1
 pkgdesc='Search through GitHub issues for your project for existing issues about a Ruby Error.'
 arch=(any)
@@ -13,7 +13,7 @@ depends=(ruby)
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-sha1sums=('4808907f6934cfef85e1b78320bd193da4214dd9')
+sha1sums=('899c06393d45292ef04af91eb2c4c28c4592be68')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
