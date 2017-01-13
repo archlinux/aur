@@ -1,0 +1,17 @@
+pkgbase = argos3-epuck-git
+	pkgdesc = ARGoS3 simulator library for epuck robot
+	pkgver = r12.fe0e358
+	pkgrel = 1
+	url = https://github.com/lgarattoni/argos3-epuck
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = gcc>=4.4
+	makedepends = git
+	makedepends = cmake>=2.8
+	depends = argos3-git
+	source = git://github.com/lgarattoni/argos3-epuck.git
+	md5sums = SKIP
+
+pkgname = argos3-epuck-git
+
