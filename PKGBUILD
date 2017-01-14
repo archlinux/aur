@@ -13,7 +13,7 @@ makedepends=('git' 'perl')
 provides=('keynav')
 conflicts=('keynav')
 source=("https://github.com/Streetwalrus/keynav/archive/$pkgver.tar.gz")
-md5sums=('SKIP')
+md5sums=('f6829858a97b1f9834b1ecb47e590abe')
 
 build(){
   cd $_pkgname-$pkgver
