@@ -3,12 +3,12 @@
 _pkgname=avogadrolibs
 pkgname="${_pkgname}-git"
 pkgver=1.90.0.r1252.963cbb3
-pkgrel=3
+pkgrel=4
 pkgdesc="Avogadro 2: libraries"
 url="http://openchemistry.org/projects/avogadro2"
 arch=("i686" "x86_64")
 license=("Kitware")
-depends=("glew" "vtk" "hdf5" "molequeue" "spglib" "qt5-webview")
+depends=("molequeue" "glew" "hdf5" "python" "boost" "spglib" "qt5-webview")
 makedepends=("git" "cmake" "eigen3")
 conflicts=("${_pkgname}")
 provides=("${_pkgname}")
@@ -39,6 +39,10 @@ build() {
       -DCMAKE_INSTALL_LIBDIR:PATH=lib \
       -DENABLE_TESTING:BOOL=OFF \
       -DBUILD_SHARED_LIBS:BOOL=ON \
+      -DUSE_HDF5:BOOL=ON \
+      -DUSE_VTK:BOOL=OFF \
+      -DPYTHON_EXECUTABLE:PATH=/usr/bin/python \
+      -DUSE_BOOST_PYTHON:BOOL=ON \
       .
   make
 }
