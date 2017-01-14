@@ -1,4 +1,4 @@
-# Maintainer: Sebastian Lau <archlinux _at_ slau _dot_ info>
+# Maintainer: Sebastian Lau <lauseb644 _at_ gmail _dot_ com>
 # Contributor: Low Kian Seong <kianseong@gmail.com>
 pkgname='python2-flask-genshi'
 pkgver='0.5.1'
