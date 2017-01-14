@@ -1,10 +1,10 @@
 # Maintainer : Breizh <breizh.craft.98@openmailbox.org>
 pkgname=p7
 pkgver=2.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Casio Communication Protocol 7.00 implementation"
 arch=('i686' 'x86_64')
-url="https://p7.touhey.fr/"
+url="https://p7.planet-casio.fr/"
 license=('GPL2')
 groups=()
 depends=('libusb>=1.0' 'libp7>=2.0')
@@ -17,9 +17,9 @@ backup=()
 options=()
 install=
 changelog=
-source=(https://p7.touhey.fr/pub/p7utils-${pkgver}.tar.gz)
+source=(https://p7.planet-casio.com/pub/p7utils-${pkgver}.tar.gz)
 noextract=()
-md5sums=('66d2407ee3c7f9b79bc11e7b6cd2a726')
+md5sums=('f33ada2e7ff6c943c3e01bcd61b05cf3')
 
 build() {
   cd "p7utils-$pkgver"
