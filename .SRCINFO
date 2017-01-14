@@ -1,0 +1,24 @@
+pkgbase = xf86-video-ark
+	pkgdesc = X.org ark video driver
+	pkgver = 0.7.5
+	pkgrel = 8
+	url = https://xorg.freedesktop.org/
+	arch = i686
+	arch = x86_64
+	groups = xorg-drivers
+	license = custom
+	makedepends = xorg-server-devel
+	makedepends = X-ABI-VIDEODRV_VERSION=23
+	makedepends = resourceproto
+	makedepends = scrnsaverproto
+	depends = glibc
+	conflicts = xorg-server<1.19
+	conflicts = X-ABI-VIDEODRV_VERSION<23
+	conflicts = X-ABI-VIDEODRV_VERSION>=24
+	source = https://xorg.freedesktop.org//releases/individual/driver/xf86-video-ark-0.7.5.tar.bz2
+	source = build-fix.diff
+	sha256sums = c690e046f34a393aac1c8d9616b4790e93cda60a460b00b9597d322175dbe51e
+	sha256sums = ab694ebc0820d75b7cbf58920ce8b10291f245a5f1ae82542cfa63e5765660dc
+
+pkgname = xf86-video-ark
+
