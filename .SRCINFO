@@ -1,0 +1,26 @@
+pkgbase = xf86-video-tdfx
+	pkgdesc = X.org tdfx video driver
+	pkgver = 1.4.6
+	pkgrel = 1
+	url = https://xorg.freedesktop.org/
+	arch = i686
+	arch = x86_64
+	groups = xorg-drivers
+	license = custom
+	makedepends = xorg-server-devel
+	makedepends = X-ABI-VIDEODRV_VERSION=23
+	depends = glibc
+	optdepends = tdfx-dri: DRI1 support from community repo
+	conflicts = xorg-server<1.19
+	conflicts = X-ABI-VIDEODRV_VERSION<23
+	conflicts = X-ABI-VIDEODRV_VERSION>=24
+	source = https://xorg.freedesktop.org//releases/individual/driver/xf86-video-tdfx-1.4.6.tar.bz2
+	source = https://xorg.freedesktop.org//releases/individual/driver/xf86-video-tdfx-1.4.6.tar.bz2.sig
+	source = git-fixes.patch
+	validpgpkeys = 3BB639E56F861FA2E86505690FDD682D974CA72A
+	sha256sums = 3a8a88867c40ad61f1c9a09ffd7ac64102fa821685855d50ce66c7603dcc6d37
+	sha256sums = SKIP
+	sha256sums = f0db3082cf55196492b34083005a9a57b6b532ef2d9cc6403f1b05e1a5424de0
+
+pkgname = xf86-video-tdfx
+
