@@ -7,9 +7,9 @@ arch=('x86_64')
 url='https://github.com/bil-elmoussaoui/sni-qt'
 license=('LGPL3')
 backup=('etc/xdg/sni-qt.conf')
-depends=('sni-qt-eplus' 'lib32-libdbusmenu-qt' 'lib32-qt4')
+depends=('sni-qt-patched-git' 'lib32-libdbusmenu-qt' 'lib32-qt4')
 makedepends=('cmake' 'bzr' 'gcc-multilib')
-provides=('lib32-sni-qt-patched' 'lib32-sni-qt')
+provides=('lib32-sni-qt' 'lib32-sni-qt')
 conflicts=('lib32-sni-qt-eplus' 'lib32-sni-qt')
 source=("git://github.com/bil-elmoussaoui/sni-qt.git")
 md5sums=('SKIP')
@@ -42,7 +42,4 @@ build() {
 package() {
   cd build
   make DESTDIR="${pkgdir}" install
-
-  # Install config file for apps that need "Activate" action
-  install -Dm644 "${srcdir}/${_pkgname}/debian/sni-qt.conf" "${pkgdir}/etc/xdg/sni-qt.conf"
 }
