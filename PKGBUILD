@@ -1,7 +1,7 @@
 # Maintainer: peterix@gmail.com
 
 pkgname=multimc5-git
-pkgver=0.5.r215.gfbcbddd4
+pkgver=0.4.11.r217.g0a89b04a
 pkgrel=1
 pkgdesc="Minecraft launcher with ability to manage multiple instances."
 arch=('i686' 'x86_64')
