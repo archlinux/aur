@@ -14,14 +14,17 @@ else
 fi
 options=(!strip)
 install="sorr.install"
-source=("http://www.soronline.net/downloads/sorr_5.0.orig.tar.gz"
-	"http://www.soronline.net/downloads/SORRv051_REV030.zip"
+source=("http://launchpad.net/~ubuntugames/+archive/ubuntu/games/+files/sorr_5.1.orig.tar.gz"
 	"Readme.linux"
 	"sorr-wrapper")
-sha1sums=('5c719296ab1cbc222897fba00453a18e495ee8c4'
-          '35323ee18ef7f010934501f3eae038710959399e'
+sha1sums=('c27339909ab4c4e98f2d392442dede27c4b9dc20'
           'e856777159b428b5e60b5ef78a8bbb8dd97e70fa'
           '520bc41fa8e9f60304266b8e83d8b6fcd1878963')
+
+## Old source: keep here in case it comes back online.
+# "http://www.soronline.net/downloads/sorr_5.0.orig.tar.gz"
+# "http://www.soronline.net/downloads/SORRv051_REV030.zip"
+
 
 DLAGENTS=("http::/usr/bin/curl -fLC - --retry 3 --retry-delay 3 -o %o %u --referer http://www.soronline.net")
 
@@ -36,13 +39,17 @@ package() {
 	cd "$srcdir"
 	install -dm755 "$pkgdir/opt/sorr/"
 
+	## The archive tends to change from host to host, hence the commented lines.
+
 	## Data.
-	install -m755 bgdc bgdi sorr "$pkgdir/opt/sorr/"
-	install -m644 Manual.html Readme.txt SorMaker.dat SorR.dat "$pkgdir/opt/sorr/"
+	# install -m755 bgdc bgdi sorr "$pkgdir/opt/sorr/"
+	install -m755 bgdi sorr "$pkgdir/opt/sorr/"
+	# install -m644 Manual.html Readme.txt SorMaker.dat SorR.dat "$pkgdir/opt/sorr/"
+	install -m644 manual.html Readme.txt SorMaker.dat SorR.dat "$pkgdir/opt/sorr/"
 	cp -r manual mod palettes data "$pkgdir/opt/sorr/"
 
 	## Remove junk files.
-	rm "$pkgdir/opt/sorr/manual/img/Thumbs.db"
+	# rm "$pkgdir/opt/sorr/manual/img/Thumbs.db"
 
 	## Libraries needed by the bennugd engine. WARNING: This is the most sensible
 	## part. The choice of these libraries may highly depend on the target
