@@ -19,10 +19,10 @@ source_i686=("$_repo/i686/libsystemd-$pkgver-${_spkgrel}-i686.pkg.tar.xz"
         "$_repo/i686/systemd-$pkgver-${_spkgrel}-i686.pkg.tar.xz")
 source_x86_64=("$_repo/x86_64/libsystemd-$pkgver-${_spkgrel}-x86_64.pkg.tar.xz"
         "$_repo/x86_64/systemd-$pkgver-${_spkgrel}-x86_64.pkg.tar.xz")
-sha256sums_i686=('6c9329af5749f221facd36f1cf0f065ac4522a071487414747c277b70efa7125'
-                 'ac8f895095ebe93e52bec2eb853f68498f98e48352acf20aca720599986f5c29')
-sha256sums_x86_64=('3ec899af9dee85b96e5c58c77df45e7301d58a1835ad2854fca425b2ae8a4191'
-                   '9452691b5ba4b422e4781ece876078258974bd162a46d76cd294cf3e8b571fb1')
+md5sums_i686=('70432c280dc7ffe332c95620f652e006'
+              'b8b35b554cbac726329978840adb3b98')
+md5sums_x86_64=('67aa895d79df1e20e4390565311596f2'
+                '85c2a861842f6d5a94b8a194f16e389f')
 
 package_eudev-systemd() {
     pkgdesc="systemd-sysuser and systemd-tmpfiles binary; systemd compatibility package"
