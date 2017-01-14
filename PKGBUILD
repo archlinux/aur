@@ -4,7 +4,7 @@ pkgname=cqrlog-source
 _pkgname=cqrlog
 _authorname=ok2cqr
 pkgver=1.9.0
-pkgrel=1
+pkgrel=2
 pkgdesc="An advanced ham radio logger using MariaDB - SOURCE version."
 arch=('i686' 'x86_64')
 url="http://www.cqrlog.com"
@@ -19,14 +19,13 @@ optdepends=('winkeydaemon: usb cw xmit'
 	    'masterscp: supercheckpartial files'
 	    'cty: country files'
 	    'bigcty: contest version country files'
-	    'hamlibs: rig control'
+	    'hamlib: rig control'
 	    'trustedqsl: upload logs'
 	    'hamradio-menus: XDG compliant menuing'
 	    'xplanet: gui location'
 	    'glabels: print qsl labels')
 provides=('cqrlog')
 conflicts=('cqrlog' 'cqrlog-git')
-install=${_pkgname}.install
 source=(https://github.com/${_authorname}/${_pkgname}/archive/v${pkgver}.tar.gz)
 
 prepare() {
