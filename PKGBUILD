@@ -550,6 +550,7 @@ package() {
     'mus_app_resources_strings'
     'resources'
     'views_mus_resources'
+    'headless_lib'
   )
   for i in "${_resources[@]}"; do
     install -Dm644 "${i}.pak" "${pkgdir}/usr/lib/chromium-dev/${i}.pak"
