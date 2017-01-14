@@ -19,6 +19,8 @@ package() {
   #suid sandbox
   chmod 4755 "${pkgdir}/opt/onlyoffice/desktopeditors/chrome-sandbox"
 
+  chmod +x "${pkgdir}/usr/bin/onlyoffice-desktopeditors"
+
   #fix wrong depedency
   ln -s "/usr/lib/libcurl-compat.so.4.4.0" "${pkgdir}/opt/onlyoffice/desktopeditors/converter/libcurl.so.4"
 
