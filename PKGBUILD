@@ -2,8 +2,8 @@
 
 pkgname=gajim-plugin-omemo
 _pkgname=omemo
-pkgver=1.0.0
-pkgrel=4
+pkgver=1.0.1
+pkgrel=1
 pkgdesc="Gajim plugin for OMEMO Multi-End Message and Object Encryption."
 arch=(any)
 url="https://dev.gajim.org/gajim/gajim-plugins/wikis/OmemoGajimPlugin"
