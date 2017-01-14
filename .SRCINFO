@@ -3,7 +3,6 @@ pkgbase = ttf-carlito
 	pkgver = 20130920
 	pkgrel = 1
 	url = https://code.google.com/p/chromium/issues/detail?id=280557
-	install = ttf.install
 	arch = any
 	license = custom:OFL
 	depends = fontconfig

@@ -10,7 +10,6 @@ license=('custom:OFL')
 url='https://code.google.com/p/chromium/issues/detail?id=280557'
 depends=('fontconfig' 'xorg-fonts-encodings' 'xorg-font-utils')
 provides=('ttf-font')
-install=ttf.install
 source=("http://commondatastorage.googleapis.com/chromeos-localmirror/distfiles/crosextrafonts-carlito-$pkgver.tar.gz"
         30-0-carlito.conf)
 md5sums=('c74b7223abe75949b4af367942d96c7a'
