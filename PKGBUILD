@@ -3,7 +3,7 @@
 
 _pkgname=spectacle
 pkgname=${_pkgname}-light
-pkgver=16.12.0
+pkgver=16.12.1
 pkgrel=1
 pkgdesc="KDE screenshot capture utility, without purpose"
 arch=('i686' 'x86_64')
@@ -16,7 +16,7 @@ conflicts=('kdegraphics-ksnapshot' 'kscreengenie' 'spectacle')
 replaces=('kdegraphics-ksnapshot' 'kscreengenie')
 groups=('kde-applications' 'kdegraphics')
 source=("http://download.kde.org/stable/applications/${pkgver}/src/${_pkgname}-${pkgver}.tar.xz"{,.sig})
-sha256sums=('31d4b00da13c9cc68b2d8f3c4633cba8e4ba82f819d3edac87aecd4fa70f31b3' 'SKIP')
+sha256sums=('57e03741f52803896beaa2f0e914941fa9d4cef1dfbf2baf8aa825c8beabb7de' 'SKIP')
 validpgpkeys=('CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7') # Albert Astals Cid <aacid@kde.org>
 
 prepare() {
