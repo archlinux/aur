@@ -4,7 +4,7 @@ pkgbase="python-theano"
 pkgname=("python-theano" "python2-theano")
 _pkgname="Theano"
 pkgver="0.8.2"
-pkgrel="5"
+pkgrel="6"
 pkgdesc='Definition and optimized evaluation of mathematical expressions on Numpy arrays.'
 arch=('any')
 url='http://www.deeplearning.net/software/theano/'
@@ -22,6 +22,7 @@ optdepends=('python-sympy: Recommended'
             'python-scikit-sparse'
             'python-mpi4py: minimal support for opencl'
             'python2-sympy'
+            'python2-scipy'
             'python2-pycuda'
             'python2-pydot-ng'
             'python2-pydot'
