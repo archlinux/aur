@@ -6,13 +6,13 @@
 pkgbase=virtualbox-modules-lqx
 pkgname=('virtualbox-host-modules-lqx' 'virtualbox-guest-modules-lqx')
 pkgver=5.1.12
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 url='http://virtualbox.org'
 license=('GPL')
 makedepends=('linux-lqx-headers' "virtualbox-host-dkms>=$pkgver" "virtualbox-guest-dkms>=$pkgver" 'dkms')
 
-_extramodules=extramodules-4.8-lqx
+_extramodules=extramodules-4.9-lqx
 _kernver="$(cat /usr/lib/modules/${_extramodules}/version)"
 
 build() {
@@ -30,7 +30,7 @@ build() {
 package_virtualbox-host-modules-lqx() {
 	pkgdesc='Host kernel modules for VirtualBox running under Linux-lqx.'
 	license=('GPL')
-	depends=('linux-lqx>=4.8' 'linux-lqx<4.9')
+	depends=('linux-lqx>=4.9' 'linux-lqx<4.10')
 	install=host.install
 
 	install -dm755 "$pkgdir/usr/lib/modules/$_extramodules"
@@ -43,7 +43,7 @@ package_virtualbox-host-modules-lqx() {
 package_virtualbox-guest-modules-lqx() {
 	pkgdesc='Guest kernel modules for VirtualBox running under Linux-lqx.'
 	license=('GPL')
-	depends=('linux-lqx>=4.8' 'linux-lqx<4.9')
+	depends=('linux-lqx>=4.9' 'linux-lqx<4.10')
 	install=guest.install
 
 	install -dm755 "$pkgdir/usr/lib/modules/$_extramodules"
@@ -52,3 +52,4 @@ package_virtualbox-guest-modules-lqx() {
 	find "$pkgdir" -name '*.ko' -exec gzip -9 {} +
 	sed -i -e "s/EXTRAMODULES='.*'/EXTRAMODULES='$_extramodules'/" "$startdir/guest.install"
 }
+
