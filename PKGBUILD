@@ -12,7 +12,7 @@ provides=('liblogcpp')
 depends=('qt5-base')
 makedepends=('cmake' 'git')
 source=("git+https://github.com/nullptrT/liblogcpp.git#tag=$pkgver")
-sha512sums=('')
+sha512sums=('SKIP')
 
 
 
