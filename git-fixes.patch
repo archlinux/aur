@@ -1,0 +1,204 @@
+From 92d10d5d6882c3db6695a8fff83c88fbaaa27a33 Mon Sep 17 00:00:00 2001
+From: "Eric S. Raymond" <esr@thyrsus.com>
+Date: Thu, 23 Aug 2012 12:46:03 -0400
+Subject: [PATCH 1/4] Fix malformed list syntax.
+
+TP without a body shouldn't really be used for an item list. Fixing this
+makes structural translation to DocBook possible.
+
+Signed-off-by: Eric S. Raymond <esr@thyrsus.com>
+---
+ man/s3.man | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/man/s3.man b/man/s3.man
+index 9109c2a..732e4f3 100644
+--- a/man/s3.man
++++ b/man/s3.man
+@@ -50,9 +50,9 @@ driver supports PCI video cards based on the following S3 chips:
+ 
+ .PP
+ Also driver supports the following RAMDACs:
+-.TP 12
++.IP 12
+ .B IBM 524, IBM 524A, IBM 526, IBM 526DB
+-.TP 12
++.IP 12
+ .B TI ViewPoint 3025 
+ 
+ .SH DESCRIPTION
+-- 
+2.10.2
+
+
+From ed0fbfd27609e897c42d7ab316481a9504746233 Mon Sep 17 00:00:00 2001
+From: Gaetan Nadon <memsize@videotron.ca>
+Date: Tue, 7 Jan 2014 16:28:58 -0500
+Subject: [PATCH 2/4] Remove mibstore.h
+
+As it was done in numerous other drivers. Fixes compile error.
+
+Tested-by: Trevor Woerner <trevor.woerner@linaro.org>
+Signed-off-by: Gaetan Nadon <memsize@videotron.ca>
+---
+ src/s3_driver.c | 2 --
+ 1 file changed, 2 deletions(-)
+
+diff --git a/src/s3_driver.c b/src/s3_driver.c
+index 61242ad..85763ba 100644
+--- a/src/s3_driver.c
++++ b/src/s3_driver.c
+@@ -52,7 +52,6 @@
+ #include "compiler.h"
+ #include "mipointer.h"
+ #include "micmap.h"
+-#include "mibstore.h"
+ #include "fb.h"
+ #include "inputstr.h"
+ #include "shadowfb.h"
+@@ -822,7 +821,6 @@ static Bool S3ScreenInit(SCREEN_INIT_ARGS_DECL)
+ 	fbPictureInit (pScreen, 0, 0);
+ 	S3DGAInit(pScreen);
+ 
+-        miInitializeBackingStore(pScreen);
+         xf86SetBackingStore(pScreen);
+ 
+ 	/* framebuffer manager setup */
+-- 
+2.10.2
+
+
+From 7b454358082fc07985878fc92b902d7534144cae Mon Sep 17 00:00:00 2001
+From: Alan Coopersmith <alan.coopersmith@oracle.com>
+Date: Sat, 12 Mar 2016 10:54:22 -0800
+Subject: [PATCH 3/4] When checking malloc for success, it helps to use ==
+ NULL, instead of =
+
+Fixes gcc 5.3 compiler warning:
+s3_bios.c: In function 'find_bios_string':
+s3_bios.c:49:2: warning: suggest parentheses around assignment used as
+    truth value [-Wparentheses]
+  if (bios = NULL)
+    ^
+
+[Tested by compiling only, as I have no S3 hardware, but clearly no one
+ else has tested this code since commit c41a1188ce53 in 2009, as it would
+ be segfaulting if run.]
+
+Signed-off-by: Alan Coopersmith <alan.coopersmith@oracle.com>
+---
+ src/s3_bios.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/s3_bios.c b/src/s3_bios.c
+index 323e2ce..1c7c5fe 100644
+--- a/src/s3_bios.c
++++ b/src/s3_bios.c
+@@ -46,7 +46,7 @@ static unsigned char *find_bios_string(ScrnInfoPtr pScrn, int BIOSbase,
+ 	S3Ptr pS3 = S3PTR(pScrn);
+ 
+ 	bios = malloc(BIOS_BSIZE);
+-	if (bios = NULL)
++	if (bios == NULL)
+ 		return NULL;
+ 
+ 	if (!init) {
+-- 
+2.10.2
+
+
+From 82bd67a255fb45847d8a10811641bc0b203ba864 Mon Sep 17 00:00:00 2001
+From: Alan Coopersmith <alan.coopersmith@oracle.com>
+Date: Thu, 17 Mar 2016 10:27:51 -0700
+Subject: [PATCH 4/4] s3_bios.c: Simplify code for choosing between 16000 &
+ 16000 for RefClock
+
+Signed-off-by: Alan Coopersmith <alan.coopersmith@oracle.com>
+---
+ src/s3_bios.c | 68 +----------------------------------------------------------
+ 1 file changed, 1 insertion(+), 67 deletions(-)
+
+diff --git a/src/s3_bios.c b/src/s3_bios.c
+index 1c7c5fe..262d40a 100644
+--- a/src/s3_bios.c
++++ b/src/s3_bios.c
+@@ -29,75 +29,9 @@
+ #include "config.h"
+ #endif
+ 
+-#include "xf86.h"
+-#include "xf86_OSproc.h"
+-#include "compiler.h"
+-
+ #include "s3.h"
+ 
+-
+-static unsigned char *find_bios_string(ScrnInfoPtr pScrn, int BIOSbase,
+-				       char *match1, char *match2)
+-{
+-	static unsigned char *bios;
+-	static int init=0;
+-	int i, j, l1, l2, ret;
+-
+-	S3Ptr pS3 = S3PTR(pScrn);
+-
+-	bios = malloc(BIOS_BSIZE);
+-	if (bios == NULL)
+-		return NULL;
+-
+-	if (!init) {
+-		init = 1;
+-#ifndef XSERVER_LIBPCIACCESS
+-		if (xf86ReadDomainMemory(pS3->PciTag, BIOSbase, BIOS_BSIZE, bios) != BIOS_BSIZE)
+-			goto error;
+-#else
+-		ret = pci_device_read_rom(pS3->PciInfo, bios);
+-		if (ret) {
+-			xf86DrvMsg(pScrn->scrnIndex, X_WARNING,
+-				"libpciaccess failed to read video BIOS: %s\n",
+-				strerror(-ret));
+-		        goto error;
+-		}
+-#endif
+-		if ((bios[0] != 0x55) || (bios[1] != 0xaa))
+-			goto error;
+-	}
+-	if (match1 == NULL)
+-		goto error;
+-
+-	l1 = strlen(match1);
+-	if (match2 != NULL)
+-		l2 = strlen(match2);
+-	else
+-		l2 = 0;
+-
+-	for (i=0; i<BIOS_BSIZE; i++)
+-		if (bios[i] == match1[0] && !memcmp(&bios[i], match1, l1)) {
+-			if (match2 == NULL)
+-				return &bios[i+l1];
+-			else
+-				for(j=i+l1; (j<BIOS_BSIZE-l2) && bios[j]; j++)
+-					if (bios[j] == match2[0] &&
+-					    !memcmp(&bios[j], match2, l2))
+-						return &bios[j+l2];
+-		}
+-error:
+-	free(bios);
+-	return NULL;
+-}
+-
+-
+ int S3GetRefClock(ScrnInfoPtr pScrn)
+ {
+-	int RefClock = 16000;	/* default */
+-
+-	if (find_bios_string(pScrn, BIOS_BASE, "Number Nine Visual Technology",
+-					"Motion 771") != NULL)
+-		RefClock = 16000;
+-
+-	return RefClock;
++	return 16000;
+ }
+-- 
+2.10.2
+
