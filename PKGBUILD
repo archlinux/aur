@@ -1,12 +1,12 @@
 # Maintainer: oliver < a t >  first . in-berlin . de
 pkgname=camlpdf
-pkgver=2.1.1
-pkgrel=2
+pkgver=2.2
+pkgrel=1
 pkgdesc="PDF-processing-library for OCaml"
 arch=('i686' 'x86_64')
 license=('LGPL')
 source=(https://github.com/johnwhitington/camlpdf/archive/v$pkgver.tar.gz)
-md5sums=('a3df80d071cc8d13ed119f9826941361')
+md5sums=('051400c4753eb788044fe4450f0b5174')
 url="https://github.com/johnwhitington/camlpdf"
 depends=('glibc')
 makedepends=('ocaml-findlib')
