@@ -1,13 +1,13 @@
 pkgbase = emacs-yasnippet
 	pkgdesc = Yet another snippet extension for Emacs
-	pkgver = 0.10.0
+	pkgver = 0.11.0
 	pkgrel = 1
 	url = https://github.com/joaotavora/yasnippet
 	arch = any
 	license = MIT
 	depends = emacs
-	source = https://github.com/joaotavora/yasnippet/archive/0.10.0.tar.gz
-	sha256sums = 3817fb04dc3a333e315fb5b50f8403620dc953d9c8494598e1b8a12843fa3ba8
+	source = https://github.com/joaotavora/yasnippet/archive/0.11.0.tar.gz
+	sha256sums = 05c7d47be7296add65519e2ed4f588120a60290635ebdb1a3e2b01376735b195
 
 pkgname = emacs-yasnippet
 
