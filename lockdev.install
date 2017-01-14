@@ -1,8 +1,0 @@
-post_install() {
-  systemd-sysusers "/usr/lib/sysusers.d/lockdev.conf"
-  systemd-tmpfiles --create "/usr/lib/tmpfiles.d/lockdev.conf"
-}
-
-post_upgrade() {
-  post_install
-}
