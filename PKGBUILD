@@ -10,7 +10,7 @@ license=('GPL2')
 depends=('libcap' 'libnl' 'net-snmp' 'readline' 'ncurses' 'perl')
 options=('!buildflags')
 validpgpkeys=('C1B5C3ED3000F2BFCD66F3B76FE57CA8C1A4AEA6') # Quagga Release Signing Key
-source=("http://download.savannah.gnu.org/releases/$pkgname/$pkgname-$pkgver.tar.gz"{,.asc}
+source=("https://download.savannah.gnu.org/releases/$pkgname/$pkgname-$pkgver.tar.gz"{,.asc}
         'quagga.sysusers'
         'quagga.tmpfiles'
         'babeld.service'
