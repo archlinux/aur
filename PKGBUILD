@@ -14,7 +14,7 @@ source=('http://www.cgm-online.com/secure_rc-heli-simulator/cgm-rc-heli-simulato
         'next.desktop'
         'next.sh')
 
-sha256sums=('da60c81850d3f959b59f3e7d7c570fcd475cbbec3eeb62029a752cb6a46638c3'
+sha256sums=('4e5e28ab456bed0a42b43b5e7a401dbc901dd019b04d6753601a0a076f46049f'
             '31972ec9835d29109e490a54b49865dd69084c5552344cfe2fec9b534a5fa8a2'
             '167bf2f656980495a5de69cc6fb0eb1063ddf065d021525cb73cf4e10425c2d8')
 
