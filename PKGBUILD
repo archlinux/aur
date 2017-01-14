@@ -4,7 +4,7 @@ pkgbase="python-theano"
 pkgname=("python-theano" "python2-theano")
 _pkgname="Theano"
 pkgver="0.8.2"
-pkgrel="4"
+pkgrel="5"
 pkgdesc='Definition and optimized evaluation of mathematical expressions on Numpy arrays.'
 arch=('any')
 url='http://www.deeplearning.net/software/theano/'
@@ -25,7 +25,7 @@ optdepends=('python-sympy: Recommended'
             'python2-pycuda'
             'python2-pydot-ng'
             'python2-pydot'
-            'python2-mmpi4py')
+            'python2-mpi4py')
 source=("http://pypi.python.org/packages/30/3d/2354fac96ca9594b755ec22d91133522a7db0caa0877165a522337d0ed73/Theano-${pkgver}.tar.gz")
 sha256sums=('7463c8f7ed1a787bf881f36d38a38607150186697e7ce7e78bfb94b7c6af8930')
          
