@@ -555,11 +555,10 @@ package() {
   for i in "${_resources[@]}"; do
     install -Dm644 "${i}.pak" "${pkgdir}/usr/lib/chromium-dev/${i}.pak"
   done
+  find resources -type f -name "*" -exec install -Dm644 '{}' "${pkgdir}/usr/lib/chromium-dev/{}" \;
 
   # Install locales.
   find locales -type f -name "*.pak" -exec install -Dm644 '{}' "${pkgdir}/usr/lib/chromium-dev/{}" \;
-  find resources -type f -name "*" -exec install -Dm644 '{}' "${pkgdir}/usr/lib/chromium-dev/{}" \;
-  (cd "${pkgdir}/usr/lib/chromium-dev"; ln -s locales remote_locales)
 
   # Install icons.
   for _size in 16 22 24 32 48 128 256; do
