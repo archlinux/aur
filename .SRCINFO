@@ -1,6 +1,6 @@
 pkgbase = eudev
 	pkgver = 3.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.gentoo.org/proj/en/eudev/
 	arch = i686
 	arch = x86_64
@@ -32,7 +32,7 @@ pkgname = eudev
 	depends = util-linux
 	optdepends = eudev-systemd: makes packages compiled with systemd features run
 	optdepends = udev-openrc: udev starup scripts for openrc
-	provides = udev=220
+	provides = udev=232
 	backup = etc/udev/udev.conf
 
 pkgname = libeudev
@@ -40,7 +40,7 @@ pkgname = libeudev
 	depends = glib2
 	depends = glibc
 	optdepends = libeudev-systemd: systemd client libraries
-	provides = libudev=220
+	provides = libudev=232
 	provides = libudev.so
 	conflicts = libudev.so
 

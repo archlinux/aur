@@ -3,12 +3,12 @@
 # Contributor: Alexey D. <lq07829icatm@rambler.ru>
 # Contributor: Ivailo Monev <xakepa10@gmail.com>
 
-_udev_ver=220
+_udev_ver=232
 
 pkgbase=eudev
 pkgname=( 'eudev' 'libeudev')
 pkgver=3.2.1
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 url="http://www.gentoo.org/proj/en/eudev/"
 license=('GPL')
