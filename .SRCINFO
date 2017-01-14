@@ -1,0 +1,15 @@
+pkgbase = todolist-git
+	pkgdesc = A light-weight and simple task manager based upon GTD
+	pkgver = r84.c3c8817
+	pkgrel = 1
+	url = https://http://todolist.site/
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	depends = go
+	options = !strip
+	source = git+https://github.com/gammons/todolist
+	sha256sums = SKIP
+
+pkgname = todolist-git
+
