@@ -1,0 +1,341 @@
+From fc78fe98222b0204b8a2872a529763d6fe5048da Mon Sep 17 00:00:00 2001
+From: Adam Jackson <ajax@redhat.com>
+Date: Tue, 25 Sep 2012 08:54:49 -0400
+Subject: [PATCH 1/5] Remove mibstore.h
+
+Signed-off-by: Adam Jackson <ajax@redhat.com>
+---
+ src/g80_driver.c   | 2 --
+ src/nv_driver.c    | 1 -
+ src/nv_include.h   | 3 ---
+ src/riva_driver.c  | 1 -
+ src/riva_include.h | 3 ---
+ 5 files changed, 10 deletions(-)
+
+diff --git a/src/g80_driver.c b/src/g80_driver.c
+index cc4e197..719b96c 100644
+--- a/src/g80_driver.c
++++ b/src/g80_driver.c
+@@ -34,7 +34,6 @@
+ #include <xf86Resources.h>
+ #endif
+ #include <mipointer.h>
+-#include <mibstore.h>
+ #include <micmap.h>
+ #include <xf86cmap.h>
+ #include <fb.h>
+@@ -833,7 +832,6 @@ G80ScreenInit(SCREEN_INIT_ARGS_DECL)
+         }
+     }
+ 
+-    miInitializeBackingStore(pScreen);
+     xf86SetBackingStore(pScreen);
+     xf86SetSilkenMouse(pScreen);
+ 
+diff --git a/src/nv_driver.c b/src/nv_driver.c
+index 6dad6e5..8f35334 100644
+--- a/src/nv_driver.c
++++ b/src/nv_driver.c
+@@ -2550,7 +2550,6 @@ NVScreenInit(SCREEN_INIT_ARGS_DECL)
+     if (!pNv->NoAccel)
+ 	NVAccelInit(pScreen);
+     
+-    miInitializeBackingStore(pScreen);
+     xf86SetBackingStore(pScreen);
+     xf86SetSilkenMouse(pScreen);
+ 
+diff --git a/src/nv_include.h b/src/nv_include.h
+index fb190bf..f174eef 100644
+--- a/src/nv_include.h
++++ b/src/nv_include.h
+@@ -24,9 +24,6 @@
+ /* All drivers initialising the SW cursor need this */
+ #include "mipointer.h"
+ 
+-/* All drivers implementing backing store need this */
+-#include "mibstore.h"
+-
+ #include "micmap.h"
+ 
+ #include "xf86DDC.h"
+diff --git a/src/riva_driver.c b/src/riva_driver.c
+index e0667ef..759501e 100644
+--- a/src/riva_driver.c
++++ b/src/riva_driver.c
+@@ -1168,7 +1168,6 @@ RivaScreenInit(SCREEN_INIT_ARGS_DECL)
+     if (!pRiva->NoAccel)
+ 	RivaAccelInit(pScreen);
+     
+-    miInitializeBackingStore(pScreen);
+     xf86SetBackingStore(pScreen);
+     xf86SetSilkenMouse(pScreen);
+ 
+diff --git a/src/riva_include.h b/src/riva_include.h
+index f2c5302..c7aeef7 100644
+--- a/src/riva_include.h
++++ b/src/riva_include.h
+@@ -22,9 +22,6 @@
+ /* All drivers initialising the SW cursor need this */
+ #include "mipointer.h"
+ 
+-/* All drivers implementing backing store need this */
+-#include "mibstore.h"
+-
+ #include "micmap.h"
+ 
+ #include "xf86DDC.h"
+-- 
+2.10.2
+
+
+From 49ee1c26ea982e302169c949ebd0abb9d8ef362c Mon Sep 17 00:00:00 2001
+From: Jeremy White <jwhite@codeweavers.com>
+Date: Thu, 21 Mar 2013 08:59:06 -0700
+Subject: [PATCH 2/5] Include xf86Modes.h to use functions from
+ hw/xfree86/modes/xf86Modes.c.
+
+Signed-off-by: Jeremy White <jwhite@codeweavers.com>
+Reviewed-by: Robert Morell <rmorell@nvidia.com>
+Reviewed-by: Aaron Plattner <aplattner@nvidia.com>
+Signed-off-by: Aaron Plattner <aplattner@nvidia.com>
+---
+ src/nv_include.h | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/src/nv_include.h b/src/nv_include.h
+index f174eef..72c74d5 100644
+--- a/src/nv_include.h
++++ b/src/nv_include.h
+@@ -27,6 +27,7 @@
+ #include "micmap.h"
+ 
+ #include "xf86DDC.h"
++#include "xf86Modes.h"
+ 
+ #include "vbe.h"
+ 
+-- 
+2.10.2
+
+
+From 0b6619fec39fada995646fb95bb25e72d3c9a491 Mon Sep 17 00:00:00 2001
+From: Egbert Eich <eich@freedesktop.org>
+Date: Tue, 13 Aug 2013 20:36:59 +0200
+Subject: [PATCH 3/5] init: Initialize VGA IOBase before using it
+
+The NV driver did never set the VGA IOBase for those registers which
+have different addresses dependent whether the VGA engine is running in
+mono or color mode.
+This has not been detected as the VGA mode and font save/restore
+functions initialize this value themselves.
+
+Signed-off-by: Egbert Eich <eich@freedesktop.org>
+Reviewed-by: Mark Kettenis <kettenis@openbsd.org>
+---
+ src/nv_setup.c | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/src/nv_setup.c b/src/nv_setup.c
+index 203e7b2..92ca3ec 100644
+--- a/src/nv_setup.c
++++ b/src/nv_setup.c
+@@ -491,6 +491,8 @@ NVCommonSetup(ScrnInfoPtr pScrn)
+ 
+     pNv->Television = FALSE;
+ 
++    vgaHWGetIOBase(pVga);
++
+     if(!pNv->twoHeads) {
+        pNv->CRTCnumber = 0;
+        if((monitorA = NVProbeDDC(pScrn, 0))) {
+-- 
+2.10.2
+
+
+From 38d888e0f377bf28373b55c3250c39ab5f8c95b3 Mon Sep 17 00:00:00 2001
+From: Matthieu Herrb <matthieu@herrb.eu>
+Date: Mon, 18 Nov 2013 21:14:42 +0100
+Subject: [PATCH 4/5] Fix shadow framebuffer implementation.
+
+Makes it possible to run the nv driver without XAA on cards where
+EXA is not supported.
+
+Signed-off-by: Matthieu Herrb <matthieu@herrb.eu>
+Reviewed-by: Adam Jackson <ajax@redhat.com>
+---
+ src/nv_driver.c | 44 +++++++++++++++++++++++++++++++++++++++++---
+ src/nv_local.h  |  1 +
+ src/nv_proto.h  |  1 +
+ src/nv_shadow.c | 11 +++++++++++
+ src/nv_type.h   |  2 ++
+ 5 files changed, 56 insertions(+), 3 deletions(-)
+
+diff --git a/src/nv_driver.c b/src/nv_driver.c
+index 8f35334..3a74038 100644
+--- a/src/nv_driver.c
++++ b/src/nv_driver.c
+@@ -2066,7 +2066,7 @@ NVPreInit(ScrnInfoPtr pScrn, int flags)
+ 
+     /* Load shadowfb if needed */
+     if (pNv->ShadowFB) {
+-	if (!xf86LoadSubModule(pScrn, "shadowfb")) {
++	if (!xf86LoadSubModule(pScrn, "shadow")) {
+ 	    xf86FreeInt10(pNv->pInt);
+ 	    NVFreeRec(pScrn);
+ 	    return FALSE;
+@@ -2374,6 +2374,44 @@ NVDPMSSet(ScrnInfoPtr pScrn, int PowerManagementMode, int flags)
+   hwp->writeCrtc(hwp, 0x1A, crtc1A);
+ }
+ 
++static Bool
++NVCreateScreenResources(ScreenPtr pScreen)
++{
++	ScrnInfoPtr pScrn = xf86ScreenToScrn(pScreen);
++	NVPtr pNv = NVPTR(pScrn);
++	PixmapPtr pPixmap;
++	Bool ret;
++
++	pScreen->CreateScreenResources = pNv->CreateScreenResources;
++	ret = pScreen->CreateScreenResources(pScreen);
++	pScreen->CreateScreenResources = NVCreateScreenResources;
++
++	if (!ret)
++		return FALSE;
++
++	pPixmap = pScreen->GetScreenPixmap(pScreen);
++
++	if (!shadowAdd(pScreen, pPixmap, NVShadowUpdate,
++		NULL, 0, NULL)) {
++		return FALSE;
++	}
++	return TRUE;
++}
++
++static Bool
++NVShadowInit(ScreenPtr pScreen)
++{
++	ScrnInfoPtr pScrn = xf86ScreenToScrn(pScreen);
++	NVPtr pNv = NVPTR(pScrn);
++
++	if (!shadowSetup(pScreen))
++		return FALSE;
++	pNv->CreateScreenResources = pScreen->CreateScreenResources;
++	pScreen->CreateScreenResources = NVCreateScreenResources;
++
++	return TRUE;
++}
++
+ 
+ /* Mandatory */
+ 
+@@ -2595,8 +2633,8 @@ NVScreenInit(SCREEN_INIT_ARGS_DECL)
+                           "Driver rotation enabled, RandR disabled\n");
+            }
+ 	}
+-
+-	ShadowFBInit(pScreen, refreshArea);
++        pNv->refreshArea = refreshArea;
++	NVShadowInit(pScreen);
+     }
+ 
+     if(pNv->FlatPanel)
+diff --git a/src/nv_local.h b/src/nv_local.h
+index a0b5e41..8ff8aa1 100644
+--- a/src/nv_local.h
++++ b/src/nv_local.h
+@@ -32,6 +32,7 @@
+ #include "compiler.h"
+ #include "xf86_OSproc.h"
+ 
++#include "shadow.h"
+ /*
+  * Typedefs to force certain sized values.
+  */
+diff --git a/src/nv_proto.h b/src/nv_proto.h
+index 0e9fdcc..ff764cf 100644
+--- a/src/nv_proto.h
++++ b/src/nv_proto.h
+@@ -49,6 +49,7 @@ int  NVShowHideCursor(NVPtr,int);
+ void NVLockUnlock(NVPtr,int);
+ 
+ /* in nv_shadow.c */
++void NVShadowUpdate (ScreenPtr pScreen, shadowBufPtr pBuf);
+ void NVRefreshArea(ScrnInfoPtr pScrn, int num, BoxPtr pbox);
+ void NVRefreshArea8(ScrnInfoPtr pScrn, int num, BoxPtr pbox);
+ void NVRefreshArea16(ScrnInfoPtr pScrn, int num, BoxPtr pbox);
+diff --git a/src/nv_shadow.c b/src/nv_shadow.c
+index 3946448..58db331 100644
+--- a/src/nv_shadow.c
++++ b/src/nv_shadow.c
+@@ -13,6 +13,17 @@
+ #include "shadowfb.h"
+ #include "servermd.h"
+ 
++void
++NVShadowUpdate (ScreenPtr pScreen, shadowBufPtr pBuf)
++{
++    RegionPtr damage = DamageRegion(pBuf->pDamage);
++    ScrnInfoPtr pScrn;
++    pScrn = xf86ScreenToScrn(pScreen);
++
++    (NVPTR(pScrn))->refreshArea (pScrn, REGION_NUM_RECTS(damage),
++	REGION_RECTS(damage));
++}
++
+ 
+ void
+ NVRefreshArea(ScrnInfoPtr pScrn, int num, BoxPtr pbox)
+diff --git a/src/nv_type.h b/src/nv_type.h
+index 65a6a55..e705d4c 100644
+--- a/src/nv_type.h
++++ b/src/nv_type.h
+@@ -133,6 +133,8 @@ typedef struct {
+     int                 numDGAModes;
+     Bool                DGAactive;
+     int                 DGAViewportStatus;
++    CreateScreenResourcesProcPtr CreateScreenResources;
++    RefreshAreaFuncPtr refreshArea;
+     void		(*PointerMoved)(SCRN_ARG_TYPE arg, int x, int y);
+     ScreenBlockHandlerProcPtr BlockHandler;
+     CloseScreenProcPtr  CloseScreen;
+-- 
+2.10.2
+
+
+From 42e260a7ab630fdfa4664f467dad25e7178ff809 Mon Sep 17 00:00:00 2001
+From: Adam Jackson <ajax@redhat.com>
+Date: Tue, 19 Jul 2016 10:03:56 -0400
+Subject: [PATCH 5/5] Adapt Block/WakeupHandler signature for ABI 23
+
+Signed-off-by: Adam Jackson <ajax@redhat.com>
+---
+ src/compat-api.h | 8 ++++++++
+ 1 file changed, 8 insertions(+)
+
+diff --git a/src/compat-api.h b/src/compat-api.h
+index 0a87cf5..62d9481 100644
+--- a/src/compat-api.h
++++ b/src/compat-api.h
+@@ -78,11 +78,19 @@
+ 
+ #define SCREEN_INIT_ARGS_DECL ScreenPtr pScreen, int argc, char **argv
+ 
++#if ABI_VIDEODRV_VERSION >= SET_ABI_VERSION(23, 0)
++#define BLOCKHANDLER_ARGS_DECL ScreenPtr arg, pointer pTimeout
++#define BLOCKHANDLER_ARGS arg, pTimeout
++
++#define WAKEUPHANDLER_ARGS_DECL ScreenPtr arg, unsigned long result
++#define WAKEUPHANDLER_ARGS arg, result
++#else
+ #define BLOCKHANDLER_ARGS_DECL ScreenPtr arg, pointer pTimeout, pointer pReadmask
+ #define BLOCKHANDLER_ARGS arg, pTimeout, pReadmask
+ 
+ #define WAKEUPHANDLER_ARGS_DECL ScreenPtr arg, unsigned long result, pointer read_mask
+ #define WAKEUPHANDLER_ARGS arg, result, read_mask
++#endif
+ 
+ #define CLOSE_SCREEN_ARGS_DECL ScreenPtr pScreen
+ #define CLOSE_SCREEN_ARGS pScreen
+-- 
+2.10.2
+

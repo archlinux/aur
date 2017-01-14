@@ -1,0 +1,22 @@
+pkgbase = xf86-video-nv
+	pkgdesc = X.org nv video driver
+	pkgver = 2.1.20
+	pkgrel = 8
+	url = https://xorg.freedesktop.org/
+	arch = i686
+	arch = x86_64
+	groups = xorg-drivers
+	license = custom
+	makedepends = xorg-server-devel
+	makedepends = X-ABI-VIDEODRV_VERSION=23
+	depends = glibc
+	conflicts = xorg-server<1.19
+	conflicts = X-ABI-VIDEODRV_VERSION<23
+	conflicts = X-ABI-VIDEODRV_VERSION>=24
+	source = https://xorg.freedesktop.org//releases/individual/driver/xf86-video-nv-2.1.20.tar.bz2
+	source = git-fixes.patch
+	sha256sums = 8395f65501f16f9cbaae8f598b02c6f18e78f4d3d30a08cb8d547dc2e00c10bf
+	sha256sums = f4deb2b8f8acbbe901a25a8e9e0f29de80a63b62189ea00c95143be69f5fa87b
+
+pkgname = xf86-video-nv
+
