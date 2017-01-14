@@ -8,7 +8,7 @@ pkgdesc="runtime for axoloti"
 arch=(any)
 url="http://www.axoloti.com"
 license=(GPL)
-depends=(libsystemd)
+depends=(systemd libsystemd)
 makedepends=(libtool automake autoconf unzip)
 provides=(axoloti-runtime=$pkgver)
 conflicts=(axoloti-runtime)
