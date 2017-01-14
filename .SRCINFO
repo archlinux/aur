@@ -1,0 +1,17 @@
+pkgbase = lua-archive-git
+	pkgdesc = Lua module to manipulate compressed file formats via libarchive
+	pkgver = 0.r5.gbc0929b
+	pkgrel = 1
+	url = https://github.com/hadess/lua-archive
+	arch = i686
+	arch = x86_64
+	license = custom:MIT
+	makedepends = cmake
+	makedepends = make
+	depends = lua
+	depends = libarchive
+	source = lua-archive-git::git+https://github.com/hadess/lua-archive
+	sha512sums = SKIP
+
+pkgname = lua-archive-git
+
