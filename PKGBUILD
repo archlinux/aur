@@ -2,7 +2,7 @@
 
 pkgname="liblogcpp-qt"
 pkgver=1.9.0
-pkgrel=4
+pkgrel=5
 pkgdesc="A intuitive and highly customizable LGPL library for logging with C++. (with support for QString)"
 arch=('x86_64' 'i686' 'armv6h' 'armv7h')
 url="https://github.com/nullptrT/liblogcpp.git"
