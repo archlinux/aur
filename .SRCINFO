@@ -1,0 +1,13 @@
+pkgbase = makedev
+	pkgdesc = The ubiquitous script to create static device nodes
+	pkgver = 3.23_1
+	pkgrel = 2
+	url = http://people.redhat.com/nalin/MAKEDEV/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	source = http://people.redhat.com/nalin/MAKEDEV/MAKEDEV-3.23-1.tar.gz
+	md5sums = 554faf6cbc9a84e4bd58ccfa32d74e2f
+
+pkgname = makedev
+
