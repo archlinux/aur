@@ -1,7 +1,7 @@
 # Maintainer: Campbell Barton <ideasman42@gmail.com>
 _pkgname=triskweline-code-font
 pkgname=$_pkgname
-pkgver=6.3d1d7dc
+pkgver=7.ee35ac6
 pkgrel=1
 pkgdesc="A monospaced bitmap font, modified from Triskweline for better code readability."
 arch=('any')
