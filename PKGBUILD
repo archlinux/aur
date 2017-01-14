@@ -16,7 +16,7 @@ _language_vala_modern_ver=0.3.2
 _terminal_fusion_ver=2.4.3
 
 pkgname=${_pkgname}-editor-${_version}
-_pkgrel=0
+_pkgrel=1
 _pkgver=1.14.0
 pkgver="${_pkgver}.beta${_pkgrel}.m${_language_gfm2_ver}"
 _ver=$_pkgver-beta${_pkgrel}
@@ -32,7 +32,7 @@ conflicts=('atom-editor-beta-bin' 'atom-editor-beta-arch')
 install=atom.install
 source=("${_pkgname}-${_pkgver}-${_version}${_pkgrel}.tar.gz::$url/archive/v${_pkgver}-${_version}${_pkgrel}.tar.gz"
 "${_pkgname}-${_version}.desktop")
-sha256sums=('f654f456bba4ec906a715521001906e0ba2ec18f3f96aabd2d8c377e2dc2e5ac'
+sha256sums=('484290203107061049146aa512225a696e0e916be83e626e4cd07f4967f8ffd7'
             'c62faaf2f50cddb1a834ccb33c95724076d2859c88baac7d9d676bc9c3afc8c6')
 
 prepare() {
