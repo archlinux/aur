@@ -2,13 +2,13 @@
 
 _gitname=axoloti-runtime
 pkgname=${_gitname}-git
-pkgver=1.0.11.r59.g7c29b09c
-pkgrel=1
+pkgver=1.0.11.r61.g6a05b1c2
+pkgrel=2
 pkgdesc="runtime for axoloti"
 arch=(any)
 url="http://www.axoloti.com"
 license=(GPL)
-makedepends=(libtool automake autoconf)
+makedepends=(libtool automake autoconf unzip)
 provides=(axoloti-runtime=$pkgver)
 conflicts=(axoloti-runtime)
 options=('!strip')
