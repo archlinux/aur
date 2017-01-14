@@ -1,0 +1,21 @@
+pkgbase = sni-qt-patched-git
+	pkgdesc = Qt4 plugin which turns all QSystemTrayIcon into StatusNotifierItems. Hardcode-Tray version
+	pkgver = r.
+	pkgrel = 1
+	url = https://github.com/bil-elmoussaoui/sni-qt
+	arch = i686
+	arch = x86_64
+	license = LGPL3
+	makedepends = cmake
+	makedepends = git
+	depends = libdbusmenu-qt4
+	provides = sni-qt-patched
+	provides = sni-qt
+	conflicts = sni-qt-eplus
+	conflicts = sni-qt
+	backup = etc/xdg/sni-qt.conf
+	source = git://github.com/bil-elmoussaoui/sni-qt.git
+	md5sums = SKIP
+
+pkgname = sni-qt-patched-git
+
