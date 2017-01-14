@@ -4,13 +4,13 @@
 
 pkgname=sume-git
 _pkgbasename=sume
-pkgver=0.1.0.r19.g3861520
+pkgver=0.1.0.r27.gdc83723
 pkgrel=1
 pkgdesc="Surface metrology command line tool and library."
 arch=('i686' 'x86_64')
 url="https://github.com/darenk/sume"
 license=('GPL')
-depends=('pkg-config' 'cpio' 'libpng' 'zlib' 'libarchive' 'xz' 'libxml2' 'mhash')
+depends=('pkg-config' 'cpio' 'imagemagick' 'libpng' 'zlib' 'libarchive' 'xz' 'libxml2' 'mhash')
 provides=($_pkgname)
 conflicts=(${_pkgbasename})
 
