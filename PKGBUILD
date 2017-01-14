@@ -1,7 +1,7 @@
 # Maintainer: Graham Smith <gps1539 at gmail dot com>
 
 pkgname=trespass
-pkgver=0.0.
+pkgver=0.0.4
 pkgrel=1
 pkgdesc="A secure password keeper written in python using gpg to protect account/user and user/password key value stores"
 arch=('any')
