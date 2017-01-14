@@ -1,7 +1,7 @@
 pkgbase = lib32-eudev
 	pkgdesc = The userspace dev tools (udev) forked by Gentoo (32-bit)
 	pkgver = 3.2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://dev.gentoo.org/~blueness/eudev
 	arch = x86_64
 	license = GPL
@@ -15,10 +15,9 @@ pkgbase = lib32-eudev
 	depends = lib32-glib2
 	depends = lib32-glibc
 	depends = eudev-systemdcompat
-	provides = lib32-udev=220
-	provides = lib32-systemd=220
+	provides = lib32-udev=232
+	provides = lib32-systemd=232
 	conflicts = lib32-systemd
-	conflicts = libudev.so
 	options = !makeflags
 	options = !libtool
 	source = http://dev.gentoo.org/~blueness/eudev/eudev-3.2.tar.gz
