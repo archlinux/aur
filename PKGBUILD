@@ -5,7 +5,7 @@
 
 pkgname=mate-calc
 pkgver=1.17.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Calculator for the Mate desktop environment"
 url="http://mate-desktop.org"
 arch=('i686' 'x86_64')
@@ -16,7 +16,7 @@ options=('!emptydirs')
 groups=('mate-extra')
 conflicts=(mate-calc galculator mate-calc-git)
 replaces=(mate-calc)
-provides=('mate-calc')
+provides=('mate-calc' galculatore)
 source=("http://pub.mate-desktop.org/releases/1.17/${pkgname}-${pkgver}.tar.xz")
 sha1sums=('c793118595cd370ccca9875880e0e6760f6c5a08')
 install=${pkgname}.install
