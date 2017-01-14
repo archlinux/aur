@@ -20,7 +20,7 @@ _enable_vaapi=0        # Patch for VAAPI HW acceleration NOTE: don't work in som
 ## -- Package and components information -- ##
 ##############################################
 pkgname=chromium-dev
-pkgver=57.0.2970.0
+pkgver=57.0.2979.0
 _launcher_ver=3
 pkgrel=1
 pkgdesc="The open-source project behind Google Chrome (Dev Channel)"
@@ -53,8 +53,6 @@ makedepends=('libexif'
              'python2-beautifulsoup4'
              'python2-html5lib'
              'python2-simplejson'
-             'python2-jinja'
-             'python2-ply'
              'subversion'
              'yasm'
              'git'
@@ -82,7 +80,6 @@ source=( #"https://gsdview.appspot.com/chromium-browser-official/chromium-${pkgv
         'BUILD.gn'
         # Patch form Gentoo
         'https://raw.githubusercontent.com/gentoo/gentoo/master/www-client/chromium/files/chromium-system-ffmpeg-r4.patch'
-        'https://raw.githubusercontent.com/gentoo/gentoo/master/www-client/chromium/files/chromium-system-jinja-r14.patch'
         # Misc Patches
         "enable_vaapi_on_linux_${pkgver}.diff::https://raw.githubusercontent.com/saiarcot895/chromium-ubuntu-build/f02f22cdc0923ab18c44dc46dda0942e078b870d/debian/patches/enable_vaapi_on_linux.diff"
         "specify-max-resolution_${pkgver}.patch::https://raw.githubusercontent.com/saiarcot895/chromium-ubuntu-build/f02f22cdc0923ab18c44dc46dda0942e078b870d/debian/patches/specify-max-resolution.patch"
@@ -90,7 +87,6 @@ source=( #"https://gsdview.appspot.com/chromium-browser-official/chromium-${pkgv
         'minizip.patch'
         # Patch from crbug (chromium bugtracker)
         'chromium-widevine-r1.patch'
-        'https://codereview.chromium.org/download/issue2574633002_1.diff'
         )
 sha256sums=( #"$(curl -sL https://gsdview.appspot.com/chromium-browser-official/chromium-55.0.2873.0.tar.xz.hashes | grep sha256 | cut -d ' ' -f3)"
             "$(curl -sL https://commondatastorage.googleapis.com/chromium-browser-official/chromium-${pkgver}.tar.xz.hashes | grep sha256 | cut -d ' ' -f3)"
@@ -99,7 +95,6 @@ sha256sums=( #"$(curl -sL https://gsdview.appspot.com/chromium-browser-official/
             'c7d9974834fc3803b5f1a1d310ff391306964caaabc807a62f8e5c3d38526ee6'
             # Patch form Gentoo
             'e3c474dbf3822a0be50695683bd8a2c9dfc82d41c1524a20b4581883c0c88986'
-            'a9cb08fbac8ffcf6371edd7ab67833efd42c5b92938f1e2e7922d1d22d226db8'
             # Misc Patches
             'c958fa44a24f5a5f6ab126a2497da324a9a3e21365a872051e9e141c39d09598'
             '4c08d787b069585db652a5920432eb9aab7572422fe4f49f49a60157060ee205'
@@ -107,7 +102,6 @@ sha256sums=( #"$(curl -sL https://gsdview.appspot.com/chromium-browser-official/
             '95ba939b9372e533ecbcc9ca034f3e9fc6621d3bddabb57c4d092ea69fa6c840'
             # Patch from crbug (chromium bugtracker)
             '0d537830944814fe0854f834b5dc41dc5fc2428f77b2ad61d4a5e76b0fe99880'
-            '9e6e09ccbb44345bd13e1acd4429fa5a7837fef4d8c27a2ed7e67e21bb1df207'
             )
 options=('!strip')
 install=chromium-dev.install
@@ -228,6 +222,7 @@ _keeplibs=(
   'third_party/hunspell'
   'third_party/iccjpeg'
   'third_party/inspector_protocol'
+  'third_party/jinja2'
   'third_party/jstemplate'
   'third_party/khronos'
   'third_party/leveldatabase'
@@ -245,6 +240,7 @@ _keeplibs=(
   'third_party/libxml/chromium'
   'third_party/lss'
   'third_party/lzma_sdk'
+  'third_party/markupsafe'
   'third_party/mesa'
   'third_party/modp_b64'
   'third_party/mt19937ar'
@@ -263,6 +259,7 @@ _keeplibs=(
   'third_party/pdfium/third_party/libpng16'
   'third_party/pdfium/third_party/libtiff'
   'third_party/pdfium/third_party/zlib_v128'
+  'third_party/ply'
   'third_party/polymer'
   'third_party/protobuf'
   'third_party/protobuf/third_party/six'
@@ -394,7 +391,6 @@ prepare() {
   msg2 "Patching the sources"
   # Patch sources from Gentoo.
   patch -p1 -i "${srcdir}/chromium-system-ffmpeg-r4.patch"
-  patch -p1 -i "${srcdir}/chromium-system-jinja-r14.patch"
 
   # Misc Patches:
   if [ "${_enable_vaapi}" = 1 ]; then
@@ -416,12 +412,8 @@ prepare() {
   # https://crbug.com/473866
   patch -p0 -i "${srcdir}/chromium-widevine-r1.patch"
   sed 's|@WIDEVINE_VERSION@|The Cake Is a Lie|g' -i "third_party/widevine/cdm/stub/widevine_cdm_version.h"
-  
-  # https://crbug.com/668446
-  patch -p1 -i "${srcdir}/issue2574633002_1.diff"
 
-  ##
-  # Fix libpng errors.
+  # Try to fix libpng errors.
   msg2 "Attempt for fix libpng errors"
   for _path in 'chrome/app/theme' 'chrome/renderer' 'ui'; do
     pushd "${_path}" &> /dev/null
