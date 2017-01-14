@@ -17,7 +17,7 @@ backup=()
 options=()
 install=
 changelog=
-source=(https://p7.touhey.fr/pub/${pkgname}-${pkgver}.tar.gz)
+source=(https://p7.planet-casio.com/pub/${pkgname}-${pkgver}.tar.gz)
 noextract=()
 md5sums=('e17e017f4728ec09efce0f67d08537c4')
 

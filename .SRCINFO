@@ -12,7 +12,7 @@ pkgbase = libp7
 	makedepends = gzip>=1.6
 	makedepends = binutils>=2.25
 	depends = libusb>=1.0
-	source = https://p7.touhey.fr/pub/libp7-2.0.tar.gz
+	source = https://p7.planet-casio.com/pub/libp7-2.0.tar.gz
 	md5sums = e17e017f4728ec09efce0f67d08537c4
 
 pkgname = libp7
