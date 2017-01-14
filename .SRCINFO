@@ -1,12 +1,14 @@
 pkgbase = numix-cinnamon-transparent-git
-        pkgdesc = Transparent version of Numix-Cinnamon Theme with shorter window list's tab
-        pkgver = 2.6.r69.dd371a4
-        pkgrel = 1
-        url = https://github.com/edoz90/numix-cinnamon-transparent
-        arch = any
-        license = AGPL3
-        depends = git
-        source = git+https://github.com/edoz90/numix-cinnamon-transparent.git
-        md5sums = SKIP
+	pkgdesc = A Numix Theme for cinnamon; transparent and compact version
+	pkgver = r70.2ed7bd7
+	pkgrel = 1
+	url = https://github.com/edoz90/numix-cinnamon-transparent
+	arch = any
+	license = AGPL3
+	makedepends = git
+	depends = cinnamon
+	source = numix-cinnamon-transparent-git::git+https://github.com/edoz90/numix-cinnamon-transparent.git#commit=2ed7bd7c24d88b348712d4a72e0059570410b563
+	md5sums = SKIP
 
 pkgname = numix-cinnamon-transparent-git
+
