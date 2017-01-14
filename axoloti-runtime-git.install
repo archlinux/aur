@@ -1,0 +1,3 @@
+echo '##### compiling firmware... #####'
+cd /opt/axoloti-runtime/platform_linux
+BUILDDIR=/opt/axoloti-runtime/firmware/build ./compile_firmware.sh

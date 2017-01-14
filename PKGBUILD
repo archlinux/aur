@@ -13,6 +13,7 @@ makedepends=(libtool automake autoconf unzip)
 provides=(axoloti-runtime=$pkgver)
 conflicts=(axoloti-runtime)
 options=('!strip')
+install="$pkgname.install"
 
 _chibios_version=2.6.9
 _chibios=ChibiOS_${_chibios_version}
@@ -59,10 +60,6 @@ build() {
     make install
     make clean
     ldd "$srcdir/$_gitname/platform_linux/bin/dfu-util"
-
-    echo '##### compiling firmware... #####'
-    cd "$srcdir/$_gitname/platform_linux"
-    BUILDDIR="$srcdir/$_gitname/firmware/build" ./compile_firmware.sh
 }
 
 pkgver() {
