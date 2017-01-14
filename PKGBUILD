@@ -3,13 +3,13 @@
 
 _pkgname=archiso
 pkgname="${_pkgname}-git"
-pkgver=27.1.g43a8571
+pkgver=29.0.gbee1295
 pkgrel=1
 pkgdesc="Arch Linux livecd/liveusb generation scripts"
 arch=('any')
 url="http://archlinux.org"
 license=('GPL')
-depends=('libisoburn' 'squashfs-tools' 'dosfstools' 'lynx' 'arch-install-scripts')
+depends=('libisoburn' 'squashfs-tools' 'btrfs-progs' 'dosfstools' 'lynx' 'arch-install-scripts')
 optdepends=('qemu: quickly test isos')
 makedepends=('git')
 provides=('archiso')
