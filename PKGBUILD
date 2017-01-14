@@ -2,13 +2,13 @@
 
 _pkgname=avogadrolibs
 pkgname="${_pkgname}-git"
-pkgver=0.8.0.r1006.cbc0dfc
-pkgrel=2
+pkgver=1.90.0.r1252.963cbb3
+pkgrel=3
 pkgdesc="Avogadro 2: libraries"
 url="http://openchemistry.org/projects/avogadro2"
 arch=("i686" "x86_64")
 license=("Kitware")
-depends=("libgl" "glew" "qt5-base" "vtk" "hdf5" "molequeue")
+depends=("glew" "vtk" "hdf5" "molequeue" "spglib" "qt5-webview")
 makedepends=("git" "cmake" "eigen3")
 conflicts=("${_pkgname}")
 provides=("${_pkgname}")
@@ -22,6 +22,13 @@ pkgver() {
          "${_parent_ver}" \
          "$(git rev-list --count HEAD)" \
          "$(git rev-parse --short HEAD)"
+}
+
+prepare() {
+  cd "${srcdir}/${_pkgname}"
+
+  # Find spglib
+  sed -i 's|NAMES spglib)|NAMES spglib symspg)|' cmake/FindSpglib.cmake
 }
 
 build() {
