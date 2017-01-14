@@ -1,7 +1,7 @@
 # Maintainer: Luca Weiss <luca (at) z3ntu (dot) xyz>
 
 pkgname=polychromatic
-pkgver=0.3.5
+pkgver=0.3.6
 pkgrel=1
 pkgdesc='A graphical front end for managing Razer peripherals under GNU/Linux.'
 arch=('any')
@@ -10,10 +10,10 @@ source=("$pkgname-v$pkgver.tar.gz::https://github.com/lah7/polychromatic/archive
 url='https://github.com/lah7/polychromatic'
 makedepends=('rsync')
 depends=('python' 'hicolor-icon-theme' 'python-razer')
-sha512sums=('9d7304fb08ee1214b818111e42862154faac554fbccd16144bd4960b9062dc0543d3542a550deb1b2adb8527190bf137cb3dba3520bbe4de27437daea34e1b05')
+sha512sums=('d73e3ea0a0933a6344a556293e506d864aaae8e00311198a54efe6654da6e3eece8b3799b27f9d7baa5dae179a53be97256550c490719484cd80f42432a7dff0')
 
 package() {  
-  _pythondir=$(python -c 'import sys; print(sys.path[-1])')
+  _pythondir=$(python -c "from distutils.sysconfig import get_python_lib; print(get_python_lib())")
 
   cd $srcdir/polychromatic-$pkgver
 
