@@ -1,3 +1,21 @@
-echo '##### compiling firmware... #####'
-cd /opt/axoloti-runtime/platform_linux
-BUILDDIR=/opt/axoloti-runtime/firmware/build ./compile_firmware.sh
+compile_firmware() {
+    echo '##### compiling firmware... #####'
+    cd /opt/axoloti-runtime/platform_linux
+    BUILDDIR=/opt/axoloti-runtime/firmware/build ./compile_firmware.sh
+}
+
+remove_firmware() {
+    rm -rf /opt/axoloti-runtime/firmware/build
+}
+
+post_install() {
+    compile_firmware
+}
+
+post_upgrade() {
+    compile_firmware
+}
+
+pre_remove() {
+    remove_firmware
+}
