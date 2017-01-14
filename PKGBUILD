@@ -19,12 +19,6 @@ _commit=bb3e16481c14cf2bf161d9ff0e396500ab373ddb
 source=("git+$url#tag=$_commit")
 sha256sums=('SKIP')
 
-prepare() {
-  cd ldc
-  # Won't function with the current patch version, hop back to the expected version.
-  sed -i 's/DMDFE_PATCH_VERSION   71/DMDFE_PATCH_VERSION   70/' CMakeLists.txt
-}
-
 pkgver() {
   cd ldc
   ( set -o pipefail
