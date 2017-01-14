@@ -15,7 +15,7 @@ source=("foo_playcount.fb2k-component::https://www.foobar2000.org/components/vie
 md5sums=('1699e277414cedf2def7df6c3f3f2e54')
 
 # bypass dynamic download link
-DLAGENTS=('https::/usr/bin/wget -nd -r -l 1 -A fb2k-component %u')
+DLAGENTS=('https::/usr/bin/wget -nd -rl1 -A fb2k-component')
 
 package() {
 	# shellcheck disable=SC2154

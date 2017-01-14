@@ -1,4 +1,4 @@
-pkgbase = foobar2000-playcount-bin
+pkgbase = foobar2000-component-playcount-bin
 	pkgdesc = Collects playback statistics for your music
 	pkgver = 3.0.2
 	pkgrel = 1
@@ -7,8 +7,10 @@ pkgbase = foobar2000-playcount-bin
 	license = unknown
 	makedepends = wget
 	depends = foobar2000>=1.1.0
+	conflicts = foobar2000-playcount-bin
+	replaces = foobar2000-playcount-bin
 	source = foo_playcount.fb2k-component::https://www.foobar2000.org/components/view/foo_playcount
 	md5sums = 1699e277414cedf2def7df6c3f3f2e54
 
-pkgname = foobar2000-playcount-bin
+pkgname = foobar2000-component-playcount-bin
 
