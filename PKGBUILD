@@ -2,7 +2,7 @@
 # Contributor: Luca Lemmo <luca at linux dot com>
 
 pkgname=flent-git
-pkgver=0.15.0.r5.352a9f5
+pkgver=1.0.0.r1.525c8e6
 pkgrel=1
 pkgdesc='The FLExible Network Tester.'
 arch=('any')
