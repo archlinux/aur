@@ -5,18 +5,18 @@
 
 pkgname=python2-gunicorn
 _pkgname=gunicorn
-pkgver=19.4.1
+pkgver=19.6.0
 pkgrel=1
 pkgdesc='WSGI HTTP Server for UNIX'
-arch=(any)
+arch=('x86_64' 'i686' 'armv7h' 'armv6h')
 url='http://gunicorn.org/'
-license=(MIT)
-depends=(python2)
-makedepends=(python2-distribute)
-provides=(gunicorn-python2)
-conflicts=(gunicorn-python2)
+license=('MIT')
+depends=('python2')
+makedepends=('python2-distribute')
+provides=('gunicorn-python2')
+conflicts=('gunicorn-python2')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/benoitc/${_pkgname}/archive/${pkgver}.tar.gz")
-sha256sums=('81899db60828fdd0377f1e6618859459af0cd151b70baf90ca3c76cabaf3cfe1')
+sha256sums=('1e0de4957bea60bfcff5215664bdfc3cf02c78e2aae9586766a9b4b437aebbb0')
 
 package() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
