@@ -1,8 +1,9 @@
-# Maintainer: Andy Weidenbaum <archbaum@gmail.com>
+# Maintainer: Marco Pompili <aur@emarcs.org>
+# Contributor: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=nodejs-ungit
 _npmname=ungit
-pkgver=0.10.3
+pkgver=1.0.0
 pkgrel=1
 pkgdesc="Git made easy"
 arch=('i686' 'x86_64')
