@@ -1,37 +1,49 @@
 # Maintainer: Karl-Felix Glatzer <karl.glatzer@gmx.de>
 
 pkgname=mingw-w64-libbluray
-pkgver=0.9.2
+pkgver=0.9.3.r84.05c9fdec
 pkgrel=1
 pkgdesc='Library to access Blu-Ray disks for video playback (mingw-w64)'
 arch=('any')
 url='http://www.videolan.org/developers/libbluray.html'
 license=('LGPL2.1')
-depends=('mingw-w64-crt' 'mingw-w64-libxml2' 'mingw-w64-freetype2' 'mingw-w64-fontconfig')
+depends=('mingw-w64-crt' 'mingw-w64-fontconfig' 'mingw-w64-freetype2' 'mingw-w64-libxml2')
 options=(!strip !buildflags !libtool staticlibs)
-makedepends=('mingw-w64-gcc' 'mingw-w64-pkg-config')
-#makedepends=('mingw-w64-gcc' 'mingw-w64-pkg-config' 'apache-ant')
-#optdepends=('java-environment: for BD-J library')
-source=(ftp://ftp.videolan.org/pub/videolan/libbluray/$pkgver/libbluray-$pkgver.tar.bz2
-        'configure.patch')
-md5sums=('836b2de16547776bf2726166cf796f13'
-         '023893d9ed7127b9fbaf895f83c28c4b')
+makedepends=('git' 'mingw-w64-configure' 'mingw-w64-gcc' 'mingw-w64-pkg-config')
+#makedepends=('apache-ant' 'git' 'mingw-w64-configure' 'mingw-w64-gcc' 'mingw-w64-pkg-config')
+#optdepends=('java-environment: BD-J library')
+_commit_libbluray='05c9fdececbff43561f8d8ca704e7e2203bdd5a8'
+_commit_libudfread='64ac239e7aa741ad3e2e2d48eafd6e26fb202ee7'
+source=("git+https://git.videolan.org/git/libbluray.git#commit=${_commit_libbluray}"
+        "git+https://git.videolan.org/git/libudfread.git#commit=${_commit_libudfread}"
+        "configure.patch")
+sha256sums=('SKIP'
+            'SKIP'
+            '04d9cbf34886cb26f94927e9aa8e5a4f6bf19fc83c7aabdb8358171a777e9da8')
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
+pkgver() {
+  cd libbluray
+
+  git describe | sed 's/-/.r/; s/-g/./'
+}
+
 prepare() {
-  cd ${srcdir}/libbluray-${pkgver}
+  cd ${srcdir}/libbluray
+
+  git submodule init contrib/libudfread
+  git config submodule.contrib/udfread.url ../libudfread
+  git submodule update contrib/libudfread
 
   patch -Np1 < ../configure.patch
-  autoreconf
+  ./bootstrap
 }
 
 build() {
   for _arch in ${_architectures}; do
-    mkdir -p ${srcdir}/build-${_arch} && cd ${srcdir}/build-${_arch}
+    mkdir -p ${srcdir}/libbluray/build-${_arch} && cd ${srcdir}/libbluray/build-${_arch}
 
-    unset LDFLAGS CPPFLAGS
-    ${srcdir}/libbluray-$pkgver/configure --prefix=/usr/${_arch} \
-      --host=${_arch} \
+    ${_arch}-configure \
       --disable-examples \
       --disable-bdjava
     make
@@ -40,7 +52,7 @@ build() {
 
 package() {
   for _arch in ${_architectures}; do
-    cd ${srcdir}/build-${_arch}
+    cd ${srcdir}/libbluray/build-${_arch}
 
     make DESTDIR="$pkgdir" install
     ${_arch}-strip -x -g ${pkgdir}/usr/${_arch}/bin/*.dll
