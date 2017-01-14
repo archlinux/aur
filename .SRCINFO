@@ -1,0 +1,21 @@
+pkgbase = xf86-video-tseng
+	pkgdesc = X.org tseng video driver
+	pkgver = 1.2.5
+	pkgrel = 8
+	url = https://xorg.freedesktop.org/
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = xorg-server-devel
+	makedepends = X-ABI-VIDEODRV_VERSION=23
+	depends = glibc
+	conflicts = xorg-server<1.19
+	conflicts = X-ABI-VIDEODRV_VERSION<23
+	conflicts = X-ABI-VIDEODRV_VERSION>=24
+	source = https://xorg.freedesktop.org//releases/individual/driver/xf86-video-tseng-1.2.5.tar.bz2
+	source = git-fixes.patch
+	sha256sums = c06dc5205f627e5afc795ecfa75e18d2d1db4e1f1f195fd017dad60854407819
+	sha256sums = 8a337e2bab9a5ee7ba15dde6665abcfa9559d769074873cb2a85cc86716bd5da
+
+pkgname = xf86-video-tseng
+
