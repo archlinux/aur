@@ -10,7 +10,6 @@ license=('Apache')
 url='https://code.google.com/p/chromium/issues/detail?id=168879'
 depends=('fontconfig' 'xorg-fonts-encodings' 'xorg-font-utils')
 provides=('ttf-font')
-install=ttf.install
 source=("http://commondatastorage.googleapis.com/chromeos-localmirror/distfiles/crosextrafonts-$pkgver.tar.gz"
         30-0-caladea.conf)
 md5sums=('368f114c078f94214a308a74c7e991bc'

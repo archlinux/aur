@@ -3,7 +3,6 @@ pkgbase = ttf-caladea
 	pkgver = 20130214
 	pkgrel = 1
 	url = https://code.google.com/p/chromium/issues/detail?id=168879
-	install = ttf.install
 	arch = any
 	license = Apache
 	depends = fontconfig
