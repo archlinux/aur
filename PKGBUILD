@@ -14,7 +14,7 @@
 #
 
 pkgname=ejabberd-git
-pkgver=16.09.16.g15ebb79
+pkgver=16.12.27.gce42b6be
 pkgrel=1
 pkgdesc="Jabber server written in Erlang"
 arch=('x86_64' 'i686')
@@ -52,19 +52,21 @@ source=("${pkgname}::git+https://github.com/processone/ejabberd#branch=master"
 	"p1_pgsql::git+https://github.com/processone/p1_pgsql"
 	"p1_utils::git+https://github.com/processone/p1_utils"
 	"p1_xmlrpc::git+https://github.com/processone/p1_xmlrpc"
-	"protobuffs::git+https://github.com/basho/erlang_protobuffs"
+	"protobuffs::git+https://github.com/basho/erlang_protobuffs#commit=0d22220a8e56adab129836d6ff582a9bca103a0c"
 	"rebar_elixir_plugin::git+https://github.com/processone/rebar_elixir_plugin"
-	"riakc::git+https://github.com/basho/riak-erlang-client"
-	"riak_pb::git+https://github.com/basho/riak_pb"
+	"riakc::git+https://github.com/basho/riak-erlang-client#commit=261df630afe4a998e099a8ab209a2dc7419f85de"
+	"riak_pb::git+https://github.com/basho/riak_pb#commit=9ca2395f9d6464b82bab466bbdca410cb85a0ac7"
 	"samerlib::git+https://github.com/processone/samerlib"
 	"sqlite3::git+https://github.com/processone/erlang-sqlite3"
 	"stringprep::git+https://github.com/processone/stringprep"
 	"stun::git+https://github.com/processone/stun"
+	"xmpp::git+https://github.com/processone/xmpp"
 	"${pkgname%%-git}.logrotate"
 	"ejabberd.service"
 	"sysuser.conf"
 	"rebar.config.patch")
 md5sums=('SKIP'
+         'SKIP'
          'SKIP'
          'SKIP'
          'SKIP'
@@ -112,9 +114,9 @@ prepare() {
   for i in eredis esip goldrush jiffy lager meck p1_oauth2 cache_tab \
 	iconv ezlib fast_tls fast_xml fast_yaml hamcrest luerl moka p1_mysql \
 	p1_pam p1_pgsql p1_utils p1_xmlrpc protobuffs rebar_elixir_plugin \
-	riakc riak_pb sqlite3 samerlib stringprep stun; do
+	riakc riak_pb sqlite3 samerlib stringprep stun xmpp; do
     rm -rf "$srcdir/${pkgname}/deps/$i"
-    mv $srcdir/$i "$srcdir/${pkgname}/deps"
+    mv "$srcdir/$i" "$srcdir/${pkgname}/deps"
   done
   rm -rf "$srcdir/${pkgname}/deps/elixir"
   patch -p1 < ../rebar.config.patch

@@ -1,6 +1,6 @@
 pkgbase = ejabberd-git
 	pkgdesc = Jabber server written in Erlang
-	pkgver = 16.09.16.g15ebb79
+	pkgver = 16.12.27.gce42b6be
 	pkgrel = 1
 	url = http://www.ejabberd.im/
 	install = ejabberd.install
@@ -47,18 +47,20 @@ pkgbase = ejabberd-git
 	source = p1_pgsql::git+https://github.com/processone/p1_pgsql
 	source = p1_utils::git+https://github.com/processone/p1_utils
 	source = p1_xmlrpc::git+https://github.com/processone/p1_xmlrpc
-	source = protobuffs::git+https://github.com/basho/erlang_protobuffs
+	source = protobuffs::git+https://github.com/basho/erlang_protobuffs#commit=0d22220a8e56adab129836d6ff582a9bca103a0c
 	source = rebar_elixir_plugin::git+https://github.com/processone/rebar_elixir_plugin
-	source = riakc::git+https://github.com/basho/riak-erlang-client
-	source = riak_pb::git+https://github.com/basho/riak_pb
+	source = riakc::git+https://github.com/basho/riak-erlang-client#commit=261df630afe4a998e099a8ab209a2dc7419f85de
+	source = riak_pb::git+https://github.com/basho/riak_pb#commit=9ca2395f9d6464b82bab466bbdca410cb85a0ac7
 	source = samerlib::git+https://github.com/processone/samerlib
 	source = sqlite3::git+https://github.com/processone/erlang-sqlite3
 	source = stringprep::git+https://github.com/processone/stringprep
 	source = stun::git+https://github.com/processone/stun
+	source = xmpp::git+https://github.com/processone/xmpp
 	source = ejabberd.logrotate
 	source = ejabberd.service
 	source = sysuser.conf
 	source = rebar.config.patch
+	md5sums = SKIP
 	md5sums = SKIP
 	md5sums = SKIP
 	md5sums = SKIP
