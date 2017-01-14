@@ -1,6 +1,6 @@
 # Maintainer: Colin Duquesnoy <colin.duquesnoy@gmail.com>
 pkgname=mellowplayer
-pkgver=2.2.2
+pkgver=2.2.3
 pkgrel=2
 pkgdesc="Open source and cross-platform desktop application that runs web-based music streaming 
          services in its own window and provides integration with your desktop."
@@ -12,7 +12,7 @@ makedepends=('qt5-tools')
 optdepends=('pepper-flash: needed for Deezer and Spotify')
 source=("https://github.com/ColinDuquesnoy/MellowPlayer/archive/${pkgver}.tar.gz")
 install="mellowplayer.install"
-md5sums=('53d7a3d386c95962a58c1937aa80dfbe')
+md5sums=('e9072ea0522ccbacda622ea7e62a8042')
 
 build() {
   cd $srcdir/MellowPlayer-${pkgver}
