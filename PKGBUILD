@@ -1,7 +1,7 @@
 # Maintainer: Anna Ivanova <kalterfx@gmail.com>
 
 pkgname=systemd-guest-user
-pkgver=11.f6ff740
+pkgver=13.7db882f
 pkgrel=1
 url='https://github.com/kalterfive/systemd-guest-user'
 pkgdesc='A simple systemd configurations for guest user support'
