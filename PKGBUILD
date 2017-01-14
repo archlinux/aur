@@ -12,7 +12,7 @@ url='http://virtualbox.org'
 license=('GPL')
 makedepends=('linux-bfq-headers' "virtualbox-host-dkms>=$pkgver" "virtualbox-guest-dkms>=$pkgver" 'dkms')
 
-_extramodules=extramodules-4.8-bfq
+_extramodules=extramodules-4.9-bfq
 _kernver="$(cat /usr/lib/modules/${_extramodules}/version)"
 
 build() {
@@ -30,7 +30,7 @@ build() {
 package_virtualbox-host-modules-bfq() {
 	pkgdesc='Host kernel modules for VirtualBox running under Linux-bfq.'
 	license=('GPL')
-	depends=('linux-bfq>=4.8' 'linux-bfq<4.9')
+	depends=('linux-bfq>=4.9' 'linux-bfq<4.10')
 	install=host.install
 
 	install -dm755 "$pkgdir/usr/lib/modules/$_extramodules"
@@ -43,7 +43,7 @@ package_virtualbox-host-modules-bfq() {
 package_virtualbox-guest-modules-bfq() {
 	pkgdesc='Guest kernel modules for VirtualBox running under Linux-bfq.'
 	license=('GPL')
-	depends=('linux-bfq>=4.8' 'linux-bfq<4.9')
+	depends=('linux-bfq>=4.9' 'linux-bfq<4.10')
 	install=guest.install
 
 	install -dm755 "$pkgdir/usr/lib/modules/$_extramodules"
@@ -52,3 +52,5 @@ package_virtualbox-guest-modules-bfq() {
 	find "$pkgdir" -name '*.ko' -exec gzip -9 {} +
 	sed -i -e "s/EXTRAMODULES='.*'/EXTRAMODULES='$_extramodules'/" "$startdir/guest.install"
 }
+
+
