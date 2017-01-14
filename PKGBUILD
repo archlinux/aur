@@ -10,8 +10,8 @@
 
 _pkgname=playonlinux5
 pkgname=$_pkgname-git
-pkgver=r1409.8cb20ab7
-pkgrel=3
+pkgver=r1486.178b8e1a
+pkgrel=1
 epoch=2
 pkgdesc="GUI for managing Windows programs under linux (development version based on Java)"
 arch=('any')
@@ -28,7 +28,7 @@ source=(
 sha256sums=(
 	'SKIP'
 	'4703fc813fb18d3e414cc1483f03cb3c0c306e5725b7681b3dbc43fb7f6630de'
-	'4fc408312c26aee5ea0c2aba922025b4fba0503b274df2912a7b3934ec1df125'
+	'a9a9c3d5ba3e9ebdbfe8153813a068ad703794bc6c9a4c6862a9a4c437ad2157'
 	)
 
 pkgver() {
@@ -47,8 +47,6 @@ build() {
   if (( $(archlinux-java get | cut -d "-" -f2) >= 8 )); then
 	JAVA_VER=$(archlinux-java get)
 	export JAVA_HOME="/usr/lib/jvm/${JAVA_VER}"
-  else
-	export JAVA_HOME=$(ls /usr/lib/jvm/java-{8,9}-*/bin/javac 2>/dev/null | cut -d "/" -f-5 | head -1)
   fi
 
   # Build
