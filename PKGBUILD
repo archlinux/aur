@@ -1,6 +1,6 @@
 # Maintainer: Pantelis Panayiotou <p.panayiotou@gmail.com>
 pkgname=openprinting-ppds-pxlmono-ricoh
-pkgver=20160606
+pkgver=20161206
 pkgrel=1
 pkgdesc="PPD files for Ricoh's PCL monochrome printers, supplied by Ricoh"
 arch=('any')
@@ -9,8 +9,8 @@ license=('MIT')
 depends=(cups ghostscript)
 conflicts=(ppd-ricohh)
 install=driver.install
-source=('https://www.openprinting.org/download/printdriver/components/lsb3.2/main/RPMS/noarch/openprinting-ppds-pxlmono-ricoh-20160606-1lsb3.2.noarch.rpm')
-md5sums=('04171fa7e29dacda59ab2eed014aa23d')
+source=('https://www.openprinting.org/download/printdriver/components/lsb3.2/main/RPMS/noarch/openprinting-ppds-pxlmono-ricoh-20161206-1lsb3.2.noarch.rpm')
+sha256sums=('516d828c24b799c89722f371fabaec966e2c0e1cd7712c5b7d34a3adbb70d61a')
 
 package() {
   install -d $pkgdir/usr/share/cups/model/Ricoh $pkgdir/usr/share/doc/openprinting-ppds-pxlmono-ricoh
