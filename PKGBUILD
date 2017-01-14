@@ -2,8 +2,8 @@
 pkgname=monit-git
 pkgver=release.5.20.0.r32.070a1ac
 pkgrel=1
-pkgdesc=""
-arch=('i686' 'x86_64')
+pkgdesc="Utility for managing and monitoring Unix systems"
+arch=('any')
 url="http://mmonit.com/monit/"
 license=('AGPL')
 groups=()
