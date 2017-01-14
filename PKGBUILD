@@ -2,7 +2,7 @@
 
 pkgname=anydesk
 pkgver=2.6.1
-pkgrel=1
+pkgrel=2
 pkgdesc="'AnyDesk Free' is an All-In-One Software for Remote Support"
 arch=('i686' 'x86_64')
 url="http://anydesk.de/"
@@ -19,6 +19,10 @@ sha256sums_x86_64=('448d4ca9bdd801891c78f4ebd8d24cfbdc79445cb5120b8ea49b52c36a6e
 package() {
     cd "${pkgdir}"
     tar xf "${srcdir}/data.tar.gz"
+    #
+    # Remove CRLF from these files as gnome doesn't seem to like this
+    sed -i 's/\r$//' etc/xdg/autostart/anydesk.desktop usr/share/applications/anydesk.desktop usr/share/pixmaps/anydesk.xpm
+    #
     # If you want to keep the autostart mode, comment next line
     rm -rf etc/
 }
