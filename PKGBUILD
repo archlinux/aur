@@ -15,7 +15,7 @@ license=('BSD')
 depends=('ldc' 'lib32-curl' 'lib32-gcc-libs')
 makedepends=('git' 'llvm' 'libconfig' 'cmake')
 #source=("git+$url#tag=v${pkgver}")
-_commit=a95f90f5172fa0c82cd4f6ff48ebb34464c90ea5
+_commit=bb3e16481c14cf2bf161d9ff0e396500ab373ddb
 source=("git+$url#tag=$_commit")
 sha256sums=('SKIP')
 
@@ -44,7 +44,7 @@ build() {
     -DBUILD_SHARED_LIBS=ON \
     ..
 
-  make
+  make -j 4
 }
 
 package() {
