@@ -1,0 +1,11 @@
+post_install() {
+    groupadd razer
+    post_remove
+    echo "Don't forget to add yourself to the razer group"
+}
+
+post_remove() {
+    echo "Reloading udev rules"
+    udevadm control --reload
+    udevadm trigger
+}
