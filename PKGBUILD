@@ -4,7 +4,7 @@
 
 _gemname=builder
 pkgname=ruby-$_gemname
-pkgver=3.2.2
+pkgver=3.2.3
 pkgrel=1
 pkgdesc='Builders for MarkUp.'
 arch=(any)
@@ -14,7 +14,7 @@ depends=(ruby)
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-sha1sums=('0ee99b207f9994864c2a21ce24be26eddafee7f1')
+sha1sums=('5cd6a92e6360279ec1e5c2456372f1709df9a6b2')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
