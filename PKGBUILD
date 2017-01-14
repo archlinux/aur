@@ -2,7 +2,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=bibtool
-pkgver=2.66
+pkgver=2.67
 pkgrel=1
 pkgdesc="Command line manipulation of BibTeX files."
 arch=('i686' 'x86_64')
@@ -10,8 +10,8 @@ url="http://www.gerd-neugebauer.de/software/TeX/BibTool/en/"
 license=('GPL')
 depends=('texlive-bin')
 makedepends=('tar')
-source=(http://mirrors.ctan.org/biblio/bibtex/utils/bibtool/BibTool-$pkgver.tar.gz)
-md5sums=('f5c171db5cc2c1ffaa2ee853b586e8bf')
+source=(http://www.gerd-neugebauer.de/software/TeX/BibTool/BibTool-$pkgver.tar.gz)
+md5sums=('c14d5a162a0e28cc6d69fc4333b59713')
 noextract=("BibTool-$pkgver.tar.gz")
 
 build() {
