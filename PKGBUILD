@@ -1,10 +1,10 @@
 # Maintainer : Breizh <breizh.craft.98@openmailbox.org>
 pkgname=libp7
 pkgver=2.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Casio Communication Protocol 7.00 implementation"
 arch=('i686' 'x86_64')
-url="https://p7.touhey.fr/"
+url="https://p7.planet-casio.com"
 license=('GPL2')
 groups=()
 depends=('libusb>=1.0')

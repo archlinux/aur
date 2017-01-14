@@ -1,8 +1,8 @@
 pkgbase = libp7
 	pkgdesc = Casio Communication Protocol 7.00 implementation
 	pkgver = 2.0
-	pkgrel = 2
-	url = https://p7.touhey.fr/
+	pkgrel = 3
+	url = https://p7.planet-casio.com
 	arch = i686
 	arch = x86_64
 	license = GPL2
