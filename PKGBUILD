@@ -15,7 +15,7 @@ source=("foo_texttools.zip::https://www.foobar2000.org/components/view/foo_textt
 md5sums=('29f4b0ded57db27b806b0943ebb239bb')
 
 # bypass dynamic download link
-DLAGENTS=('https::/usr/bin/wget -nd -r -l 1 -A zip %u')
+DLAGENTS=('https::/usr/bin/wget -nd -rl1 -A zip')
 
 package() {
 	# shellcheck disable=SC2154
