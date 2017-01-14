@@ -1,11 +1,11 @@
 pkgbase = python-hddfancontrol
 	pkgdesc = Regulate fan speed according to hard drive temperature
 	pkgver = 1.2.5
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/desbma/hddfancontrol
 	arch = any
 	license = GPL
-	makedepends = python-pip
+	makedepends = python-setuptools
 	depends = python
 	depends = python-daemon
 	depends = hdparm
