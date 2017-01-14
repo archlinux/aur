@@ -1,6 +1,6 @@
 pkgbase = pentmenu
 	pkgdesc = A bash script inspired by pentbox.
-	pkgver = 1.3.2
+	pkgver = 1.3.3
 	pkgrel = 1
 	url = https://github.com/GinjaChris/pentmenu
 	arch = any
@@ -14,8 +14,8 @@ pkgbase = pentmenu
 	depends = stunnel
 	depends = nmap
 	depends = whois
-	source = https://github.com/GinjaChris/pentmenu/archive/1.3.2.tar.gz
-	sha512sums = a12a815f69ad2acf8c463c15ba5a920217f3597f4ad57ba2961bdcb671605c5937f46f3e9706a4c3f9f2273dc70559a841c0a5223ba8236040beef7b8626ccb4
+	source = https://github.com/GinjaChris/pentmenu/archive/1.3.3.tar.gz
+	sha512sums = d7754460eeadded1d29d5c625239b424390be9be25c175bcb173f4b60b37a69287f40912888c8e68706f8dbd30b3d2831459f12bc087dea40b5fb05e83c49211
 
 pkgname = pentmenu
 
