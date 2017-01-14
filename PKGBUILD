@@ -4,12 +4,12 @@
 
 pkgname=wazzuf-ripper
 pkgver=5.7
-pkgrel=3
+pkgrel=4
 pkgdesc="Wazzuf Ripper is a software to rip various media as DVD and Blu-ray to .mkv file(s)."
 arch=(any)
 license=('GPL3')
 url="http://wazzuf-ripper.lokizone.net/"
-depends=('mplayer' 'mencoder' 'zenity' 'gksu' 'imdb-cli' 'bdchapters' 'mkvtoolnix-cli' 'tsmuxer-cli-ng'
+depends=('mplayer' 'mencoder' 'zenity' 'gksu' 'imdb-cli' 'bdchapters' 'mkvtoolnix-cli' 'tsmuxer-ng-cli-bin'
 	 'mediainfo' 'lame' 'vorbis-tools' 'ogmtools' 'p7zip' 'imagemagick' 'libdvdcss' 'lsdvd')
 optdepends=('vlc: video dumping support'
             'cdrkit: genisoimage - DVD to iso file suppport'
@@ -22,4 +22,5 @@ package() {
     cd "$srcdir/$pkgname-$pkgver"
 
   make DESTDIR="$pkgdir/" install
+  ln -s /usr/bin/tsmuxer ${pkgdir}/usr/bin/tsMuxeR
 }
