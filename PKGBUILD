@@ -15,7 +15,7 @@ replaces=('greenisland')
 makedepends=('git' 'extra-cmake-modules' 'xcb-util-cursor' 'libxcursor')
 
 _gitroot="git://github.com/greenisland/greenisland.git"
-_gitbranch=develop
+_gitbranch=master
 _gitname=greenisland
 source=(${_gitname}::${_gitroot}#branch=${_gitbranch})
 md5sums=('SKIP')
