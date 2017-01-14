@@ -1,0 +1,22 @@
+pkgbase = xf86-video-mach64
+	pkgdesc = X.org mach64 video driver
+	pkgver = 6.9.5
+	pkgrel = 3
+	url = https://xorg.freedesktop.org/
+	arch = i686
+	arch = x86_64
+	groups = xorg-drivers
+	license = custom
+	makedepends = xorg-server-devel
+	makedepends = X-ABI-VIDEODRV_VERSION=23
+	depends = glibc
+	optdepends = mach64-dri: DRI1 support from community repo
+	conflicts = xorg-server<1.19
+	conflicts = X-ABI-VIDEODRV_VERSION<23
+	conflicts = X-ABI-VIDEODRV_VERSION>=24
+	options = !emptydirs
+	source = https://xorg.freedesktop.org//releases/individual/driver/xf86-video-mach64-6.9.5.tar.bz2
+	sha256sums = 3e98985b6e044189efd42342862208f472881c25debf22230a1d54a96d71b41f
+
+pkgname = xf86-video-mach64
+
