@@ -1,8 +1,8 @@
 # Maintainer: Alexandre Filgueira <faidoc@gmail.com>
 
 pkgname=antergos-wallpapers
-pkgver=0.6
-pkgrel=2
+pkgver=0.7
+pkgrel=1
 pkgdesc="The default wallpapers for Antergos"
 arch=('any')
 url="http://www.antergos.com"
