@@ -1,0 +1,23 @@
+pkgbase = xf86-video-glint
+	pkgdesc = X.org GLINT/Permedia video driver
+	pkgver = 1.2.8
+	pkgrel = 8
+	url = https://xorg.freedesktop.org/
+	arch = i686
+	arch = x86_64
+	groups = xorg-drivers
+	license = custom
+	makedepends = xorg-server-devel
+	makedepends = X-ABI-VIDEODRV_VERSION=23
+	makedepends = xf86dgaproto
+	depends = glibc
+	conflicts = xorg-server<1.19
+	conflicts = X-ABI-VIDEODRV_VERSION<23
+	conflicts = X-ABI-VIDEODRV_VERSION>=24
+	source = https://xorg.freedesktop.org//releases/individual/driver/xf86-video-glint-1.2.8.tar.bz2
+	source = git-fixes.patch
+	sha256sums = 657f883bb3a4e4278399eba73840862c3642706ae8b0a4798ec97a31b3524221
+	sha256sums = e14a3739c43ceaa13212c31286133d92854dd67884b7bb6188a854b939455110
+
+pkgname = xf86-video-glint
+
