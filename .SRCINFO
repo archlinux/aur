@@ -1,0 +1,22 @@
+pkgbase = xf86-video-s3virge
+	pkgdesc = X.org S3 Virge video driver
+	pkgver = 1.10.7
+	pkgrel = 3
+	url = https://xorg.freedesktop.org/
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = xorg-server-devel
+	makedepends = X-ABI-VIDEODRV_VERSION=23
+	depends = glibc
+	conflicts = xorg-server<1.19
+	conflicts = X-ABI-VIDEODRV_VERSION<23
+	conflicts = X-ABI-VIDEODRV_VERSION>=24
+	source = https://xorg.freedesktop.org//releases/individual/driver/xf86-video-s3virge-1.10.7.tar.bz2
+	source = https://xorg.freedesktop.org//releases/individual/driver/xf86-video-s3virge-1.10.7.tar.bz2.sig
+	validpgpkeys = 3BB639E56F861FA2E86505690FDD682D974CA72A
+	sha256sums = 5dbe68de05483f902fdc48e97ce8d9fdd1d2ade14cb53c0c3642f0259f65a4da
+	sha256sums = SKIP
+
+pkgname = xf86-video-s3virge
+
