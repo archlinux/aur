@@ -1,4 +1,4 @@
-# Maintainer: Sebastian Lau <archlinux _at_ slau _dot_ info>
+# Maintainer: Sebastian Lau <lauseb644 _at_ gmail _dot_ com>
 # Contributor: Caleb Cushing <xenoterracide@gmail.com>
 # Contributor: Romain Schmitz <slopjong .at. slopjong .dot. de>
 # Forked from Phillipe Smith <phillipe@archlinux.com.br>

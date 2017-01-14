@@ -1,8 +1,4 @@
 post_install() {
-    update-desktop-database /usr/share/applications
-    update-mime-database /usr/share/mime
-    gtk-update-icon-cache -t /usr/share/icons/
-
     if !( test -e /usr/lib/astah-professional/astah_professional_license.xml ); then
     cat <<-EndOfMessage
 
