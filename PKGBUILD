@@ -2,14 +2,13 @@
 
 pkgname=quagga
 pkgver=1.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc='BGP/OSPF/ISIS/RIP/RIPNG routing daemon suite'
 arch=('i686' 'x86_64')
 url='http://www.quagga.net'
 license=('GPL2')
 depends=('libcap' 'libnl' 'net-snmp' 'readline' 'ncurses' 'perl')
 options=('!buildflags')
-install=quagga.install
 validpgpkeys=('C1B5C3ED3000F2BFCD66F3B76FE57CA8C1A4AEA6') # Quagga Release Signing Key
 source=("http://download.savannah.gnu.org/releases/$pkgname/$pkgname-$pkgver.tar.gz"{,.asc}
         'quagga.sysusers'
