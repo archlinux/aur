@@ -2,9 +2,9 @@
 # Contributor: Low Kian Seong <kianseong@gmail.com>
 pkgname='python2-flask-genshi'
 pkgver='0.5.1'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='An extension to Flask for easy Genshi templating.'
-arch=('any')
+arch=('x86_64' 'i686')
 url='http://pypi.python.org/pypi/Flask-Genshi/'
 license=('BSD')
 depends=('python2-flask' 'python2-genshi')
