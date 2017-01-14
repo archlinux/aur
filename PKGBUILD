@@ -1,31 +1,32 @@
 # Maintainer: GordonGR <ntheo1979@gmail.com>
 
 pkgname=singularityviewer-test
-pkgver=1.8.7.6905
-_pkgver=1_8_7_6905
-pkgrel=2
+pkgver=1.8.7.6915
+_pkgver=1_8_7_6915
+pkgrel=1
 pkgdesc="An exciting client for Second Life (secondlife) and OpenSim (opensimulator), which combines the look and feel of Viewer 1.23 with the latest and greatest of available technology. (test version)"
 url="http://www.singularityviewer.org/"
 license=('custom')
 arch=('x86_64')
-depends=('apr-util' 'gtk2' 'libgl' 'libidn' 'mesa' 'nss' 'sdl' 'libxss' 'lib32-libidn' 'lib32-libsndfile' 'lib32-zlib' 'gconf' 'lib32-util-linux')
+depends=('apr-util' 'gtk2' 'libgl' 'libidn' 'mesa' 'sdl' 'glu' 'pangox-compat' 'gconf' 'libxss' 'libxrandr' 'libxcomposite' 'libgl' 'lib32-zlib' 'libcups' 'atk' 'lib32-util-linux' 'lib32-libidn' 'libxcursor' 'libxtst')
 optdepends=(
 	'libpulse: for PulseAudio support'
 	'alsa-lib: for ALSA support'
+	'lib32-alsa-lib: for ALSA support'
 	'nvidia-utils: for NVIDIA support' 
 	'flashplugin: for inworld Flash support' 
 	'gstreamer0.10: for video support, may need good, bad and ugly plugins'
 	'lib32-freealut: for OpenAL support'
-	'openal'
-	'libxtst')
+	'openal')
 conflicts=("singularityviewer" "singularityviewer-alpha")
 provides=("singularityviewer")
 source=("http://67.170.30.149/Singularity_Test_${_pkgver}_$CARCH.tar.xz"
 	"singularityviewer.desktop"
 	"singularityviewer.launcher")
-md5sums=('fd49befada1aaddedd8caf2f96a9cc11'
+md5sums=('f4d3cabff96cfe725dd781b66db059cf'
          'b584729187e537a929c5911ed3c1e2d6'
          'eb596f5cf7b6f2d0c55c0082fb99a905')
+
 
 
 package() {
