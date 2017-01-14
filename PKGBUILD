@@ -2,7 +2,7 @@
 #			Jake <ja.ke@posteo.de>
 
 pkgname=next
-pkgver=1.464
+pkgver=1.465
 pkgrel=1
 pkgdesc="CGM rc Heli Flight Simulator"
 arch=('i686' 'x86_64')

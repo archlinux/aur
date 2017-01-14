@@ -1,6 +1,6 @@
 pkgbase = next
 	pkgdesc = CGM rc Heli Flight Simulator
-	pkgver = 1.464
+	pkgver = 1.465
 	pkgrel = 1
 	url = http://www.rc-aerobatics.eu/index_e.html
 	arch = i686
