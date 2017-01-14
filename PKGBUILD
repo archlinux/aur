@@ -2,7 +2,7 @@
 
 pkgname=webqqircd-git
 _pkgname=webqqircd
-pkgver=r1.f8565e3
+pkgver=r25.3892627
 pkgrel=1
 pkgdesc="IRC server capable of controlling WebQQ (w.qq.com)"
 arch=('i686' 'x86_64')
@@ -13,9 +13,9 @@ optdepends=("python-ipython: pretty error messages with the '-d' option")
 makedepends=('git')
 provides=('webqqircd')
 conflicts=('webqqircd')
-source=('git+https://github.com/MaskRay/webqqircd.git' webqqircd.service install)
-install=install
-md5sums=('SKIP' 'SKIP' 'SKIP')
+source=('git+https://github.com/MaskRay/webqqircd.git' webqqircd.install)
+install="$_pkgname.install"
+md5sums=('SKIP' 'SKIP')
 
 pkgver() {
   cd "$_pkgname"

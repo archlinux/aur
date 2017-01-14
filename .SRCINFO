@@ -1,9 +1,9 @@
 pkgbase = webqqircd-git
 	pkgdesc = IRC server capable of controlling WebQQ (w.qq.com)
-	pkgver = r1.7e50702
+	pkgver = r25.3892627
 	pkgrel = 1
 	url = https://github.com/MaskRay/webqqircd
-	install = install
+	install = webqqircd.install
 	arch = i686
 	arch = x86_64
 	license = MIT
@@ -13,9 +13,7 @@ pkgbase = webqqircd-git
 	provides = webqqircd
 	conflicts = webqqircd
 	source = git+https://github.com/MaskRay/webqqircd.git
-	source = webqqircd.service
-	source = install
-	md5sums = SKIP
+	source = webqqircd.install
 	md5sums = SKIP
 	md5sums = SKIP
 
