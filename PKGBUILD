@@ -3,13 +3,13 @@
 _pkgname=avogadro2
 pkgname="${_pkgname}-git"
 _gitname=avogadroapp
-pkgver=0.8.0.r306.83a3654
-pkgrel=1
+pkgver=1.90.0.r351.be6a31f
+pkgrel=2
 pkgdesc="Avogadro 2: graphical application"
 url="http://openchemistry.org/projects/avogadro2"
 arch=("i686" "x86_64")
 license=("Kitware")
-depends=("libgl" "glew" "qt5-base" "vtk" "hdf5" "avogadrolibs")
+depends=("avogadrolibs")
 makedepends=("git" "cmake" "eigen3")
 install=avogadro2.install
 conflicts=("${_pkgname}")
