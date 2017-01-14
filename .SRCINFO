@@ -1,16 +1,16 @@
 pkgbase = nvidia-304xx-lqx
 	pkgdesc = NVIDIA 304xx drivers for linux-lqx.
 	pkgver = 304.134
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.nvidia.com/
 	install = nvidia-304xx-lqx.install
 	arch = i686
 	arch = x86_64
 	license = custom
-	makedepends = linux-lqx-headers>=4.8
-	makedepends = linux-lqx-headers<4.9
-	depends = linux-lqx>=4.8
-	depends = linux-lqx<4.9
+	makedepends = linux-lqx-headers>=4.9
+	makedepends = linux-lqx-headers<4.10
+	depends = linux-lqx>=4.9
+	depends = linux-lqx<4.10
 	depends = nvidia-304xx-libgl
 	depends = nvidia-304xx-utils=304.134
 	conflicts = nvidia-lqx
