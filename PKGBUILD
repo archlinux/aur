@@ -1,6 +1,6 @@
 # Maintainer: Maarten van Gompel <proycon at anaproy dot nl>
 pkgname=frogdata
-pkgver=0.12
+pkgver=0.12.1
 pkgrel=1
 pkgdesc="Data for Frog. Frog is an integration of memory-based natural language processing (NLP) modules developed for Dutch."
 arch=('any')
@@ -11,8 +11,8 @@ options=(!libtool)
 _gituser="LanguageMachines"
 _gitname="frogdata"
 url="http://languagemachines.github.io/frog"
-source=(https://github.com/LanguageMachines/frogdata/archive/v0.12.tar.gz)
-md5sums=(d77f91d7fb545aa22052abbbfd98abab)
+source=(https://github.com/LanguageMachines/frogdata/archive/v0.12.1.tar.gz)
+md5sums=(9dd64f360088182ec934dc5f6e50c91e)
 
 build() {
   cd $srcdir/$pkgname-$pkgver
