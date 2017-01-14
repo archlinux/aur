@@ -11,7 +11,6 @@ pkgbase = fontconfig-ubuntu
 	makedepends = docbook2x
 	depends = expat
 	depends = freetype2
-	optdepends = freetype2-ubuntu: for Ubuntu font rendering
 	provides = fontconfig=2.11.94
 	conflicts = fontconfig
 	options = !libtool
