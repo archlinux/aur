@@ -31,8 +31,8 @@ build() {
 
 package() {
     export GOPATH=$srcdir/go/
-    mkdir -p $pkgdir/bin
-    cp $GOPATH/bin/todolist $pkgdir/bin/
+    mkdir -p $pkgdir/usr/bin
+    cp $GOPATH/bin/todolist $pkgdir/usr/bin/
 }
 
 pkgver() {
