@@ -1,0 +1,13 @@
+pkgbase = foobar2000-texttools-bin
+	pkgdesc = Adds customizable context menu commands for copying information about the selected tracks to clipboard
+	pkgver = 1.0.5
+	pkgrel = 1
+	url = https://www.foobar2000.org/components/view/foo_texttools
+	arch = any
+	license = unknown
+	depends = foobar2000
+	source = foobar2000-texttools-bin-1.0.5.zip::https://www.dropbox.com/s/6rzhmgw8y8sibv5/foo_texttools.zip
+	md5sums = 29f4b0ded57db27b806b0943ebb239bb
+
+pkgname = foobar2000-texttools-bin
+
