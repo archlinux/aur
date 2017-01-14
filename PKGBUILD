@@ -3,9 +3,9 @@
 _gitname=axoloti-runtime
 pkgname=${_gitname}-git
 pkgver=1.0.11.r61.g6a05b1c2
-pkgrel=2
+pkgrel=3
 pkgdesc="runtime for axoloti"
-arch=(any)
+arch=(x86_64)
 url="http://www.axoloti.com"
 license=(GPL)
 depends=(systemd libsystemd)
