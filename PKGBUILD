@@ -3,7 +3,7 @@
 _gitname=axoloti-runtime
 pkgname=${_gitname}-git
 pkgver=1.0.11.r61.g6a05b1c2
-pkgrel=3
+pkgrel=4
 pkgdesc="runtime for axoloti"
 arch=(x86_64)
 url="http://www.axoloti.com"
@@ -75,4 +75,5 @@ package() {
     cp -r "$srcdir/$_gitname/CMSIS" "$pkgdir/opt/$_gitname/CMSIS"
     rm -rf "$pkgdir/opt/$_gitname/platform_linux/arm-none-eabi/lib/"{armv6-m,armv7-ar,armv7-m}
     rm -rf "$pkgdir/opt/$_gitname/platform_linux/lib/gcc/arm-none-eabi/4.9.3/"{armv6-m,armv7-ar,armv7-m}
+    install -Dm755 "$srcdir/$_gitname/platform_linux/compile_firmware.sh" "$pkgdir/opt/$_gitname/platform_linux/compile_firmware.sh"
 }
