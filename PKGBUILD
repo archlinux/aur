@@ -1,4 +1,4 @@
-# Maintainer: Sebastian Lau <archlinux@slau.info>
+# Maintainer: Sebastian Lau <lauseb644 _at_ gmail _dot_ com>
 # Contributor: TBA
 
 pkgname=kodi-standalone-socket-activation
