@@ -4,13 +4,13 @@
 # Contributor: Dave Reisner <dreisner@archlinux.org>
 # Contributor: Tom Gundersen <teg@jklm.no>
 
-_spkgrel=4
+_spkgrel=7
 _repo=http://mirror.netcologne.de/archlinux/core/os
 
 pkgbase=eudev-systemdcompat
 pkgname=('eudev-systemd' 'libeudev-systemd')
-pkgver=231
-pkgrel=11
+pkgver=232
+pkgrel=1
 arch=('i686' 'x86_64')
 license=('GPL2')
 groups=('base' 'base-openrc')
