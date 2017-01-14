@@ -8,6 +8,7 @@ pkgdesc="runtime for axoloti"
 arch=(any)
 url="http://www.axoloti.com"
 license=(GPL)
+depends=(libudev)
 makedepends=(libtool automake autoconf unzip)
 provides=(axoloti-runtime=$pkgver)
 conflicts=(axoloti-runtime)
