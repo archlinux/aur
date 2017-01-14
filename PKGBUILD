@@ -2,7 +2,7 @@
 
 pkgname=libqb-git
 _pkgname=libqb
-pkgver=1.0.59.gb67f8ff
+pkgver=1.0.1.17.g75345a0
 pkgrel=1
 pkgdesc='Library with the primary purpose of providing high performance client server reusable features'
 arch=("i686" "x86_64")
