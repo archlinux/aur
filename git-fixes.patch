@@ -1,0 +1,187 @@
+From a4e406c20ab0590214f779c2319ac7b92594a606 Mon Sep 17 00:00:00 2001
+From: Connor Behan <connor.behan@gmail.com>
+Date: Sun, 23 Aug 2015 11:46:37 -0400
+Subject: [PATCH 1/3] Check for drawables before compositing
+
+This should prevent a crash when something like Cairo tries to composite
+a solid picture.
+
+Signed-off-by: Connor Behan <connor.behan@gmail.com>
+---
+ src/smi_exa.c | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/src/smi_exa.c b/src/smi_exa.c
+index 70298ed..67a6fdd 100644
+--- a/src/smi_exa.c
++++ b/src/smi_exa.c
+@@ -623,6 +623,10 @@ SMI_PrepareComposite(int op, PicturePtr pSrcPicture, PicturePtr pMaskPicture, Pi
+ {
+     ScrnInfoPtr pScrn = xf86ScreenToScrn(pDst->drawable.pScreen);
+     SMIPtr pSmi = SMIPTR(pScrn);
++
++    if (!pSrc) return FALSE;
++    if (!pSrcPicture->pDrawable) return FALSE;
++
+     int src_pitch = exaGetPixmapPitch(pSrc) / (pSrc->drawable.bitsPerPixel >> 3);
+     int dst_pitch = exaGetPixmapPitch(pDst) / (pDst->drawable.bitsPerPixel >> 3);
+ 
+-- 
+2.10.2
+
+From 647e5a93d9387e3bc8d2c8569e3a5f996acfb169 Mon Sep 17 00:00:00 2001
+From: Thomas Klausner <wiz@NetBSD.org>
+Date: Mon, 14 Sep 2015 18:36:32 +0200
+Subject: [PATCH 2/3] Use X11/Xarch.h for endian detection.
+
+Reviewed-by: Connor Behan <connor.behan@gmail.com>
+---
+ src/smi.h        |  1 +
+ src/smi_driver.c |  2 +-
+ src/smi_xaa.c    | 18 +++++++++---------
+ 3 files changed, 11 insertions(+), 10 deletions(-)
+
+diff --git a/src/smi.h b/src/smi.h
+index 5e44892..2742c8d 100644
+--- a/src/smi.h
++++ b/src/smi.h
+@@ -34,6 +34,7 @@ authorization from the XFree86 Project and Silicon Motion.
+ 
+ #include <string.h>
+ #include <stdio.h>
++#include <X11/Xarch.h>
+ 
+ #include "xf86.h"
+ #include "xf86_OSproc.h"
+diff --git a/src/smi_driver.c b/src/smi_driver.c
+index 2568637..8949cae 100644
+--- a/src/smi_driver.c
++++ b/src/smi_driver.c
+@@ -487,7 +487,7 @@ SMI_PreInit(ScrnInfoPtr pScrn, int flags)
+     if (pScrn->depth > 8) {
+ 	/* The defaults are OK for us */
+ 	rgb zeros = {0, 0, 0};
+-#if __BYTE_ORDER == __BIG_ENDIAN
++#if X_BYTE_ORDER == X_BIG_ENDIAN
+ 	rgb masks = {0xff00,0xff0000,0xff000000};
+ #else
+ 	rgb masks = {0, 0, 0};
+diff --git a/src/smi_xaa.c b/src/smi_xaa.c
+index a878098..cd861a1 100644
+--- a/src/smi_xaa.c
++++ b/src/smi_xaa.c
+@@ -211,7 +211,7 @@ SMI_SetupForScreenToScreenCopy(ScrnInfoPtr pScrn, int xdir, int ydir, int rop,
+     ENTER();
+     DEBUG("xdir=%d ydir=%d rop=%02X trans=%08X\n", xdir, ydir, rop, trans);
+ 
+-#if __BYTE_ORDER == __BIG_ENDIAN
++#if X_BYTE_ORDER == X_BIG_ENDIAN
+     if (pScrn->depth >= 24)
+ 	trans = lswapl(trans);
+ #endif
+@@ -296,7 +296,7 @@ SMI_SetupForSolidFill(ScrnInfoPtr pScrn, int color, int rop,
+ 		   | SMI_BITBLT
+ 		   | SMI_START_ENGINE;
+ 
+-#if __BYTE_ORDER == __BIG_ENDIAN
++#if X_BYTE_ORDER == X_BIG_ENDIAN
+     if (pScrn->depth >= 24) {
+ 	/* because of the BGR values are in the MSB bytes,
+ 	 * 'white' is not possible and -1 has a different meaning.
+@@ -408,7 +408,7 @@ SMI_SetupForCPUToScreenColorExpandFill(ScrnInfoPtr pScrn, int fg, int bg,
+     ENTER();
+     DEBUG("fg=%08X bg=%08X rop=%02X\n", fg, bg, rop);
+ 
+-#if __BYTE_ORDER == __BIG_ENDIAN
++#if X_BYTE_ORDER == X_BIG_ENDIAN
+     if (pScrn->depth >= 24) {
+ 	/* see remark elswere */
+ 	if (fg == 0x7FFFFFFF)
+@@ -431,7 +431,7 @@ SMI_SetupForCPUToScreenColorExpandFill(ScrnInfoPtr pScrn, int fg, int bg,
+ 	WRITE_DPR(pSmi, 0x18, ~fg);
+ 	WRITE_DPR(pSmi, 0x20, fg);
+     } else {
+-#if __BYTE_ORDER == __BIG_ENDIAN
++#if X_BYTE_ORDER == X_BIG_ENDIAN
+ 	if (bg == 0xFFFFFF7F)
+ 	    bg = -1;
+ #endif
+@@ -498,7 +498,7 @@ SMI_SetupForMono8x8PatternFill(ScrnInfoPtr pScrn, int patx, int paty, int fg,
+     DEBUG("patx=%08X paty=%08X fg=%08X bg=%08X rop=%02X\n",
+ 	  patx, paty, fg, bg, rop);
+ 
+-#if __BYTE_ORDER == __BIG_ENDIAN
++#if X_BYTE_ORDER == X_BIG_ENDIAN
+     if (pScrn->depth >= 24) {
+ 	if (fg == 0x7FFFFFFF)
+ 	    fg = -1;
+@@ -524,7 +524,7 @@ SMI_SetupForMono8x8PatternFill(ScrnInfoPtr pScrn, int patx, int paty, int fg,
+ 	WRITE_DPR(pSmi, 0x34, patx);
+ 	WRITE_DPR(pSmi, 0x38, paty);
+     } else {
+-#if __BYTE_ORDER == __BIG_ENDIAN
++#if X_BYTE_ORDER == X_BIG_ENDIAN
+ 	if (bg == 0xFFFFFF7F)
+ 	    bg = -1;
+ #endif
+@@ -582,7 +582,7 @@ SMI_SetupForColor8x8PatternFill(ScrnInfoPtr pScrn, int patx, int paty, int rop,
+ 		   | SMI_COLOR_PATTERN
+ 		   | SMI_START_ENGINE;
+ 
+-#if __BYTE_ORDER == __BIG_ENDIAN
++#if X_BYTE_ORDER == X_BIG_ENDIAN
+     if (pScrn->depth >= 24)
+ 	trans_color = lswapl(trans_color);
+ #endif
+@@ -666,7 +666,7 @@ SMI_SetupForImageWrite(ScrnInfoPtr pScrn, int rop, unsigned int planemask,
+     DEBUG("rop=%02X trans_color=%08X bpp=%d depth=%d\n",
+ 	  rop, trans_color, bpp, depth);
+ 
+-#if __BYTE_ORDER == __BIG_ENDIAN
++#if X_BYTE_ORDER == X_BIG_ENDIAN
+     if (pScrn->depth >= 24)
+ 	trans_color = lswapl(trans_color);
+ #endif
+@@ -675,7 +675,7 @@ SMI_SetupForImageWrite(ScrnInfoPtr pScrn, int rop, unsigned int planemask,
+ 		   | SMI_START_ENGINE;
+ 
+     if (trans_color != -1) {
+-#if __BYTE_ORDER == __BIG_ENDIAN
++#if X_BYTE_ORDER == X_BIG_ENDIAN
+ 	if (trans_color == 0xFFFFFF7F)
+ 	    trans_color = -1;
+ #endif
+-- 
+2.10.2
+
+From e67f3949648c20e16ac756ae28ea4a2b4a1d0f4c Mon Sep 17 00:00:00 2001
+From: Adam Jackson <ajax@redhat.com>
+Date: Tue, 19 Jul 2016 10:03:56 -0400
+Subject: [PATCH 3/3] Adapt Block/WakeupHandler signature for ABI 23
+
+Signed-off-by: Adam Jackson <ajax@redhat.com>
+---
+ src/compat-api.h | 5 +++++
+ 1 file changed, 5 insertions(+)
+
+diff --git a/src/compat-api.h b/src/compat-api.h
+index 6bc946f..89976e4 100644
+--- a/src/compat-api.h
++++ b/src/compat-api.h
+@@ -75,8 +75,13 @@
+ 
+ #define SCREEN_INIT_ARGS_DECL ScreenPtr pScreen, int argc, char **argv
+ 
++#if ABI_VIDEODRV_VERSION >= SET_ABI_VERSION(23, 0)
++#define BLOCKHANDLER_ARGS_DECL ScreenPtr arg, pointer pTimeout
++#define BLOCKHANDLER_ARGS arg, pTimeout
++#else
+ #define BLOCKHANDLER_ARGS_DECL ScreenPtr arg, pointer pTimeout, pointer pReadmask
+ #define BLOCKHANDLER_ARGS arg, pTimeout, pReadmask
++#endif
+ 
+ #define CLOSE_SCREEN_ARGS_DECL ScreenPtr pScreen
+ #define CLOSE_SCREEN_ARGS pScreen
+-- 
+2.10.2
+
