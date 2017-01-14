@@ -6,7 +6,7 @@
 
 pkgname=demorse
 pkgver=1.2
-pkgrel=3
+pkgrel=4
 pkgdesc="console application for decoding Morse code signals into text."
 arch=('i686' 'x86_64')
 url="http://www.qsl.net/5b4az/pkg/morse/demorse/demorse.html"
@@ -35,5 +35,5 @@ package() {
 	install -dm755 "${pkgdir}/usr/share/doc/${pkgname}"
 	install -m644 README doc/* "${pkgdir}/usr/share/doc/${pkgname}"
 }
-md5sums=('d4800b759ef4c8ffb6e73d173bcd563b')
-sha256sums=('48228b121f4df3bcd735a7c60871d9bea1c7f066da78c6f74e28694b8300a4ab')
+md5sums=('9ada5fc36f317367fbfd6438c406b9f8')
+sha256sums=('cc4f962afb3fc4b4f65cc7ce362147022bf993bc2e85e349d7b6b4656a06c43c')
