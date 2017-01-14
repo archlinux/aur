@@ -1,0 +1,23 @@
+pkgbase = xf86-input-acecad
+	pkgdesc = X.Org acecad tablet input driver
+	pkgver = 1.5.0
+	pkgrel = 9
+	url = http://xorg.freedesktop.org/
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = xorg-server-devel
+	makedepends = X-ABI-XINPUT_VERSION=22.1
+	makedepends = resourceproto
+	makedepends = scrnsaverproto
+	depends = sysfsutils
+	conflicts = xorg-server<1.16
+	conflicts = X-ABI-XINPUT_VERSION<22.1
+	conflicts = X-ABI-XINPUT_VERSION>=23
+	source = http://xorg.freedesktop.org//releases/individual/driver/xf86-input-acecad-1.5.0.tar.bz2
+	source = assign-local-private-after-allocating.patch
+	sha1sums = 410cee68e4435dc95774fb389fcefae1b2ffe3d1
+	sha1sums = 9301020b0ef3c6f2081e957481a88d2e187a7973
+
+pkgname = xf86-input-acecad
+
