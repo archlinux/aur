@@ -10,10 +10,6 @@ arch=('i686' 'x86_64')
 url="https://www.broadcom.com/support/download-search/?pf=Wireless+LAN+Infrastructure"
 license=('custom')
 depends=('dkms')
-optdepends=('linux-headers: build modules against the Arch kernel'
-            'linux-lts-headers: build modules against the LTS kernel'
-            'linux-zen-headers: build modules against the ZEN kernel'
-            'linux-grsec-headers: build modules against the GRSEC kernel')
 conflicts=('broadcom-wl')
 install=broadcom-wl-dkms.install
 source=('broadcom-wl-dkms.conf'
