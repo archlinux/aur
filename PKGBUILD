@@ -8,7 +8,7 @@ arch=('any')
 url="http://www.antergos.com"
 license=('CCPL:by-nc-sa')
 source=("http://repo.antergos.info/antergos/x86_64/${pkgname}-${pkgver}-${pkgrel}-${arch}.pkg.tar.xz")
-sha256sums=('f76d8f84db2e16dbd33e9455ac5acd03131a7aaa425705242e960d708a75e2c7')
+sha256sums=('264e8ae7c7aae28c647055becd0979056236a97cfba5f1f62724c209705b8cbe')
 
 package() {
   cd "${srcdir}"
