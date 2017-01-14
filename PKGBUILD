@@ -4,14 +4,14 @@
  
 pkgname=nvidia-bfq
 pkgver=375.26
-_extramodules=extramodules-4.8-bfq
-pkgrel=1
+_extramodules=extramodules-4.9-bfq
+pkgrel=2
 _pkgdesc="NVIDIA drivers for linux-bfq."
 pkgdesc="$_pkgdesc"
 arch=('i686' 'x86_64')
 url="http://www.nvidia.com/"
-depends=('linux-bfq>=4.8' 'linux-bfq<4.9' "nvidia-libgl" "nvidia-utils=${pkgver}")
-makedepends=('linux-bfq-headers>=4.8' 'linux-bfq-headers<4.9')
+depends=('linux-bfq>=4.9' 'linux-bfq<4.10' "nvidia-libgl" "nvidia-utils=${pkgver}")
+makedepends=('linux-bfq-headers>=4.9' 'linux-bfq-headers<4.10')
 conflicts=('nvidia-bfq-304xx' 'nvidia-bfq-340xx')
 license=('custom')
 install=nvidia-bfq.install
