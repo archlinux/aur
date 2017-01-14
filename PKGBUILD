@@ -1,4 +1,4 @@
-pkgname=sni-qt-patched-git
+pkgname=lib32-sni-qt-patched-git
 _pkgname=sni-qt
 pkgver=r.
 pkgrel=1
@@ -9,7 +9,7 @@ license=('LGPL3')
 backup=('etc/xdg/sni-qt.conf')
 depends=('sni-qt-eplus' 'lib32-libdbusmenu-qt' 'lib32-qt4')
 makedepends=('cmake' 'bzr' 'gcc-multilib')
-provides=('lib32-sni-qt-eplus' 'lib32-sni-qt')
+provides=('lib32-sni-qt-patched' 'lib32-sni-qt')
 conflicts=('lib32-sni-qt-eplus' 'lib32-sni-qt')
 source=("git://github.com/bil-elmoussaoui/sni-qt.git")
 md5sums=('SKIP')
