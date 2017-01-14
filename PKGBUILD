@@ -5,7 +5,7 @@
 
 pkgname=mate-calc
 pkgver=1.17.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Calculator for the Mate desktop environment"
 url="http://mate-desktop.org"
 arch=('i686' 'x86_64')
@@ -13,12 +13,12 @@ license=('LGPL' 'GPL')
 depends=('gtk3')
 makedepends=('flex' 'bison' 'mate-common' 'perl-xml-parser' 'yelp-tools')
 options=('!emptydirs')
-groups=('mate-extra')
-conflicts=(mate-calc galculator mate-calc-git)
-replaces=(mate-calc)
-provides=('mate-calc' galculatore)
+groups=('mate-extra-gtk3')
+conflicts=(galculator mate-calc-git)
+replaces=(galculator)
+provides=('mate-calc' galculator)
 source=("http://pub.mate-desktop.org/releases/1.17/${pkgname}-${pkgver}.tar.xz")
-sha1sums=('c793118595cd370ccca9875880e0e6760f6c5a08')
+sha1sums=('6ae665c68d492ef965d0b7f7bdd0e58318cf75ba')
 install=${pkgname}.install
 
 build() {
@@ -32,4 +32,4 @@ package() {
     cd "${srcdir}/${pkgname}-${pkgver}"
     make DESTDIR="${pkgdir}" install
 }
-sha1sums=('6ae665c68d492ef965d0b7f7bdd0e58318cf75ba')
+
