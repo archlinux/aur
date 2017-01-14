@@ -6,7 +6,7 @@
 
 pkgname=gcc-gcj
 pkgver=6.3.1
-pkgrel=1
+pkgrel=2
 _islver=0.17
 _cloogver=0.18.4
 _commit=4ca53f06ff7d346ef8021a23108f23a5406a0417
