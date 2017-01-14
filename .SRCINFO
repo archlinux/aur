@@ -1,16 +1,16 @@
 pkgbase = emacs-undo-tree
 	pkgdesc = Replace Emacs' undo system with an intuitive tree-based system.
-	pkgver = 0.6.4
+	pkgver = 0.6.6
 	pkgrel = 1
-	url = http://www.dr-qubit.org/emacs.php#undo-tree
+	url = http://www.dr-qubit.org/tags/computing-code-emacs.html
 	install = emacs-undo-tree.install
 	arch = any
 	license = GPL
 	depends = emacs
 	provides = emacs-undo-tree
 	conflicts = emacs-undo-tree
-	source = http://www.dr-qubit.org/undo-tree/undo-tree-0.6.4.el
-	sha1sums = 117764e599bcacd3e364e071854f53aeec33ef09
+	source = emacs-undo-tree::git+http://www.dr-qubit.org/git/undo-tree.git#tag=release/0.6.6
+	sha256sums = SKIP
 
 pkgname = emacs-undo-tree
 
