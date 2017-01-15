@@ -10,8 +10,7 @@ url="http://octoprint.org/"
 license=('AGPL3')
 depends=('python2-virtualenv' )
 optdepends=('ffmpeg: timelapse support'
-            'mjpg-streamer: stream images from webcam'
-            'v4l-mjpg-stream: stream images from a Video4Linux capable camera')
+            'mjpg-streamer: stream images from webcam')
 provides=('octoprint')
 conflicts=('octoprint')
 install="octoprint.install"
