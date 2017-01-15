@@ -1,8 +1,8 @@
 # Maintainer: Juraj Fiala <doctorjellyface at riseup dot net>
 
 pkgname=fonts-meta-extended-lt
-pkgver=1
-pkgrel=3
+pkgver=2
+pkgrel=1
 pkgdesc='Extended font collection meta package, ported from Infinality (lite version).'
 arch=('any')
 url='http://bohoomil.com/doc/05-fonts/'
@@ -34,3 +34,9 @@ optdepends=(
 provides=('ibfonts-meta-extended-lt' 'xorg-fonts-type1')
 conflicts=('ibfonts-meta-extended-lt' 'xorg-fonts-type1')
 replaces=('xorg-fonts-type1') 
+source=('30-infinality-aliases.conf::https://gist.github.com/cryzed/4f64bb79e80d619866ee0b18ba2d32fc/raw/bd073b52365393f9f0718425271825fc27b218f7/local.conf')
+md5sums=('bb04a521a7702c963790666f16013d1c')
+
+package() {
+  install -Dm644 -t "${pkgdir}/etc/fonts/conf.avail" 30-infinality-aliases.conf
+}
