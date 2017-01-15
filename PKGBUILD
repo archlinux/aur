@@ -4,7 +4,7 @@
 pkgname=python-gpgauth
 pkgver=0.1
 pkgrel=1
-pkgdesc="This module allows easy access to gpgauth's key management, encryption and signature functionality from Python programs." 
+pkgdesc="a python library for GPG-based challenge/response 2-factor authentication in web applications "
 url="https://github.com/charliewolf/python-gpgauth"
 license=("Tequilaware")
 arch=("any")

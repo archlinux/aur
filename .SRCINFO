@@ -1,5 +1,5 @@
 pkgbase = python-gpgauth
-	pkgdesc = This module allows easy access to gpgauth's key management, encryption and signature functionality from Python programs.
+	pkgdesc = a python library for GPG-based challenge/response 2-factor authentication in web applications
 	pkgver = 0.1
 	pkgrel = 1
 	url = https://github.com/charliewolf/python-gpgauth
