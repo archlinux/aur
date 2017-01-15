@@ -4,12 +4,12 @@
 _gemname=addressable
 pkgname=ruby-$_gemname
 pkgver=2.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc='URI Implementation'
 arch=(any)
 url='https://github.com/sporkmonger/addressable'
 license=('Apache License 2.0')
-depends=(ruby)
+depends=(ruby ruby-public_suffix)
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
