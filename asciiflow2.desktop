@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=ASCIIFlow2
+Comment=ASCII Flow chart editor
+Exec=asciiflow2
+Icon=asciiflow2
+Terminal=false
+Type=Application
+Categories=Office
