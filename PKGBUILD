@@ -1,10 +1,10 @@
 # Maintainer: Josh Mandle <difarem@gmail.com>
 pkgname=lmms-orgmaker-samples
 pkgver=0925
-pkgrel=1
+pkgrel=2
 pkgdesc="The set of samples used in Cave Story and other Pixel games."
 arch=(any)
-url="http://www.cavestory.org/pixels-works/pxtone-collage.php"
+url="http://studiopixel.sakura.ne.jp/pxtone/index.html"
 license=('BSD')
 depends=(lmms)
 makedepends=()
@@ -17,7 +17,7 @@ backup=()
 options=()
 install=
 changelog=
-source=(http://homepage2.nifty.com/rochet/binaries/pxtone_$pkgver.zip)
+source=(http://studiopixel.sakura.ne.jp/binaries/pxtone_$pkgver.zip)
 noextract=()
 md5sums=('caa267b0255e2c10f62dbea236c317f3')
 validpgpkeys=()

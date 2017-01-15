@@ -1,12 +1,12 @@
 pkgbase = lmms-orgmaker-samples
 	pkgdesc = The set of samples used in Cave Story and other Pixel games.
 	pkgver = 0925
-	pkgrel = 1
-	url = http://www.cavestory.org/pixels-works/pxtone-collage.php
+	pkgrel = 2
+	url = http://studiopixel.sakura.ne.jp/pxtone/index.html
 	arch = any
 	license = BSD
 	depends = lmms
-	source = http://homepage2.nifty.com/rochet/binaries/pxtone_0925.zip
+	source = http://studiopixel.sakura.ne.jp/binaries/pxtone_0925.zip
 	md5sums = caa267b0255e2c10f62dbea236c317f3
 
 pkgname = lmms-orgmaker-samples
