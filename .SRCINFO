@@ -1,6 +1,6 @@
 pkgbase = kde-now-git
 	pkgdesc = Google Now alternative for the Plasma Desktop
-	pkgver = r172.a895335
+	pkgver = r174.6a45b94
 	pkgrel = 1
 	url = http://www.kde.org
 	arch = i686

@@ -2,7 +2,7 @@
 
 _gitname=kde-now
 pkgname=$_gitname-git
-pkgver=r172.a895335
+pkgver=r174.6a45b94
 pkgrel=1
 pkgdesc='Google Now alternative for the Plasma Desktop'
 arch=(i686 x86_64)
@@ -37,5 +37,5 @@ package() {
   cd build
   make DESTDIR="$pkgdir" install
 
-  rm -r "$pkgdir"/build
+  rm -fr "$pkgdir"/build
 }
