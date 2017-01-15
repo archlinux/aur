@@ -37,7 +37,7 @@ optdepends=('libxslt: for XML based formats (fb2,etc)'
 	    'aspell-en: English stemming support')
 conflicts=('recoll')
 source=("http://www.lesbonscomptes.com/$_pkgname/$_pkgname-${pkgver/_/}.tar.gz")
-md5sums=('afb5dc53b9d2ac0c6bdaeb9cbd399c78')
+md5sums=('cf96aac590707790cb8a9a64f6ff8d7b')
 
 prepare() {
   cd "$srcdir/$_pkgname-${pkgver/_/}"
