@@ -20,7 +20,7 @@ _suffix=pre-release
 pkgname=("kodi-$_suffix" "kodi-eventclients-$_suffix" "kodi-tools-texturepacker-$_suffix" "kodi-dev-$_suffix")
 pkgver=17.0rc3
 _codename=Krypton
-pkgrel=2
+pkgrel=3
 arch=('i686' 'x86_64')
 url="http://kodi.tv"
 license=('GPL2')
@@ -60,14 +60,9 @@ build() {
 
 package_kodi-pre-release() {
   pkgdesc="Beta or RC versions of a media player and entertainment hub for digital media."
-
-  # depends expected for kodi plugins:
-  # 'python2-pillow' 'python2-pybluez' 'python2-simplejson'
-  # depends expeced in FEH.py
-  # 'mesa-demos' 'xorg-xdpyinfo'
   depends=(
-    'python2-pillow' 'python2-pybluez' 'python2-simplejson'
-    'mesa-demos' 'xorg-xdpyinfo'
+    'python2-pillow'                       'python2-simplejson'
+                  'xorg-xdpyinfo'
     'bluez-libs' 'fribidi' 'freetype2' 'glew' 'hicolor-icon-theme' 'libcdio'
     'libjpeg-turbo' 'libmariadbclient' 'libmicrohttpd' 'libpulse' 'libssh'
     'libva' 'libvdpau' 'libxrandr' 'libxslt' 'lzo' 'smbclient' 'taglib' 'tinyxml'
@@ -76,17 +71,18 @@ package_kodi-pre-release() {
   optdepends=(
     'afpfs-ng: Apple shares support'
     'bluez: Blutooth support'
+    'python2-pybluez: Bluetooth support'
     'libnfs: NFS shares support'
     'libplist: AirPlay support'
     'libcec: Pulse-Eight USB-CEC adapter support'
     'lirc: Remote controller support'
+    'lsb-release: log distro information in crashlog'
     'pulseaudio: PulseAudio support'
     'shairplay: AirPlay support'
     'udisks: Automount external drives'
     'unrar: Archives support'
     'unzip: Archives support'
     'upower: Display battery level'
-    'lsb-release: log distro information in crashlog'
   )
   provides=('xbmc' 'kodi')
   conflicts=('xbmc' 'kodi' 'kodi-devel' 'kodi-git')
