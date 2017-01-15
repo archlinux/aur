@@ -1,6 +1,6 @@
 pkgbase = screensaver-off
 	pkgdesc = Utility to disable screensaver
-	pkgver = 0.0.3
+	pkgver = 0.0.4
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/Gonzih/screensaver-off.rs
@@ -15,7 +15,7 @@ pkgbase = screensaver-off
 	optdepends = dmenu: default launcher
 	optdepends = way-cooler-bg: draws a background for Way Cooler
 	backup = etc/way-cooler/init.lua
-	source = screensaver-off::git+https://github.com/Gonzih/screensaver-off.rs.git#tag=v0.0.3
+	source = screensaver-off::git+https://github.com/Gonzih/screensaver-off.rs.git#tag=v0.0.4
 	md5sums = SKIP
 
 pkgname = screensaver-off
