@@ -1,7 +1,7 @@
 # Maintainer: Crotok <crotok [at] mailbox [dot] org>
 
 pkgname=streamstudio-bin
-pkgver=3.8.3
+pkgver=3.9
 pkgrel=1
 pkgdesc="Provide a popcorntime clone for streaming movies directly from T411, Cpasbien, Songza, Twitch, Piratebay, Youtube and Dailymotion"
 arch=('x86_64' 'i686')
@@ -13,7 +13,7 @@ provides=('streamstudio')
 conflicts=('streamstudio')
 options=('!strip')
 install="streamstudio.install"
-sha256sums=('4b99707d0a50012584e35cb4c222dcab03375cc1bac9e1bb655f38327e49b710'
+sha256sums=('0d5a96710d327de6e6f9e3923d6d7fe2312f2f67f9245a0b40f722f33463667e'
             'b082d39935fd289695ad9a10c9adc3cbe9963555cd410d1d83ceb9055463275b'
             '4dc8715a81bfd1297f99b3e5f41f9f50936bbf7779b9bc4ef9231261053b76ea')
 
@@ -21,10 +21,10 @@ _platform='64'
 
 if [ "$CARCH" = 'i686' ]; then
   _platform='32'
-  sha256sums[0]='47e5452cf47214c574b83fe62cb13290f84b1beccdf5a84610dae5483bd4163b'
+  sha256sums[0]='a9a6070e3ec3630ddaa4ff3d5b766ee4a9cc44e2523da6a992b626fd63e8460d'
 fi
 
-source=("https://download.streamstudio.cc/streamstudio-${_platform}.zip"
+source=("https://github.com/crotok/streamstudio-releases/raw/master/releases/${pkgver}/streamstudio-${_platform}.zip"
         "streamstudio.desktop"
         "streamstudio.install")
 
@@ -40,27 +40,27 @@ package() {
   install -dm755 "${pkgdir}/usr/share"
 
   # Program
-  echo "${pkgdir}/opt/${pkgname}/"
-  install -Dm755 "${srcdir}/streamstudio" "${pkgdir}/opt/${pkgname}/"
-  install -Dm644 "${srcdir}/nw_100_percent.pak" "${pkgdir}/opt/${pkgname}/"
-  install -Dm644 "${srcdir}/nw_200_percent.pak" "${pkgdir}/opt/${pkgname}/"
-  install -Dm644 "${srcdir}/resources.pak" "${pkgdir}/opt/${pkgname}/"
-  install -Dm644 "${srcdir}/ffmpeg" "${pkgdir}/opt/${pkgname}/"
-  install -Dm644 "${srcdir}/org.freedesktop.streamstudio.policy" "${pkgdir}/opt/${pkgname}/"
-  install -Dm644 "${srcdir}/icudtl.dat" "${pkgdir}/opt/${pkgname}/"
-  install -Dm644 "${srcdir}/natives_blob.bin" "${pkgdir}/opt/${pkgname}/"
-  install -Dm644 "${srcdir}/snapshot_blob.bin" "${pkgdir}/opt/${pkgname}/"
-  install -Dm644 "${srcdir}/package.json" "${pkgdir}/opt/${pkgname}/"
-  install -Dm644 "${srcdir}/config.html" "${pkgdir}/opt/${pkgname}/"
-  install -Dm644 "${srcdir}/index.html" "${pkgdir}/opt/${pkgname}/"
-  install -Dm644 "${srcdir}/playlist.html" "${pkgdir}/opt/${pkgname}/"
-  install -Dm644 "${srcdir}/selectdir.html" "${pkgdir}/opt/${pkgname}/"
-  install -Dm644 "${srcdir}/update.html" "${pkgdir}/opt/${pkgname}/"
-  install -Dm644 "${srcdir}/warning.html" "${pkgdir}/opt/${pkgname}/"
-  install -Dm644 "${srcdir}/VERSION" "${pkgdir}/opt/${pkgname}/"
-  install -Dm644 "${srcdir}/gpl-2.0.txt" "${pkgdir}/opt/${pkgname}/"
   install -Dm644 "${srcdir}/1204.sh" "${pkgdir}/opt/${pkgname}/"
   install -Dm644 "${srcdir}/CHANGELOG" "${pkgdir}/opt/${pkgname}/"
+  install -Dm644 "${srcdir}/config.html" "${pkgdir}/opt/${pkgname}/"
+  install -Dm644 "${srcdir}/credits.html" "${pkgdir}/opt/${pkgname}/"
+  install -Dm644 "${srcdir}/ffmpeg" "${pkgdir}/opt/${pkgname}/"
+  install -Dm644 "${srcdir}/gpl-2.0.txt" "${pkgdir}/opt/${pkgname}/"
+  install -Dm644 "${srcdir}/icudtl.dat" "${pkgdir}/opt/${pkgname}/"
+  install -Dm644 "${srcdir}/index.html" "${pkgdir}/opt/${pkgname}/"
+  install -Dm644 "${srcdir}/natives_blob.bin" "${pkgdir}/opt/${pkgname}/"
+  install -Dm644 "${srcdir}/nw_100_percent.pak" "${pkgdir}/opt/${pkgname}/"
+  install -Dm644 "${srcdir}/nw_200_percent.pak" "${pkgdir}/opt/${pkgname}/"
+  install -Dm644 "${srcdir}/org.freedesktop.streamstudio.policy" "${pkgdir}/opt/${pkgname}/"
+  install -Dm644 "${srcdir}/package.json" "${pkgdir}/opt/${pkgname}/"
+  install -Dm644 "${srcdir}/playlist.html" "${pkgdir}/opt/${pkgname}/"
+  install -Dm644 "${srcdir}/resources.pak" "${pkgdir}/opt/${pkgname}/"
+  install -Dm644 "${srcdir}/selectdir.html" "${pkgdir}/opt/${pkgname}/"
+  install -Dm644 "${srcdir}/snapshot_blob.bin" "${pkgdir}/opt/${pkgname}/"
+  install -Dm755 "${srcdir}/streamstudio" "${pkgdir}/opt/${pkgname}/"
+  install -Dm644 "${srcdir}/update.html" "${pkgdir}/opt/${pkgname}/"
+  install -Dm644 "${srcdir}/VERSION" "${pkgdir}/opt/${pkgname}/"
+  install -Dm644 "${srcdir}/warning.html" "${pkgdir}/opt/${pkgname}/"
 
   # Directories
   cp -a "${srcdir}/css" "${pkgdir}/opt/${pkgname}/"
