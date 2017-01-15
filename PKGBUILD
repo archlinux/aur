@@ -19,7 +19,7 @@ _jdk_build=14
 _tuxjdk_ver=03
 pkgver=${_java_ver}.${_jdk_update}.${_tuxjdk_ver}
 _repo_ver=jdk${_java_ver}u${_jdk_update}-b${_jdk_build}
-pkgrel=2
+pkgrel=3
 arch=('i686' 'x86_64')
 url='https://github.com/tuxjdk/tuxjdk'
 license=('custom')
@@ -36,6 +36,7 @@ source=(jdk8u-${_repo_ver}.tar.gz::${_url_src}/archive/${_repo_ver}.tar.gz
         jaxp-${_repo_ver}.tar.gz::${_url_src}/jaxp/archive/${_repo_ver}.tar.gz
         langtools-${_repo_ver}.tar.gz::${_url_src}/langtools/archive/${_repo_ver}.tar.gz
         nashorn-${_repo_ver}.tar.gz::${_url_src}/nashorn/archive/${_repo_ver}.tar.gz
+        tuxjdk_quilt_script.patch
         https://github.com/tuxjdk/tuxjdk/archive/${pkgver}.tar.gz)
 
 sha256sums=('19bc6028c18dd1993f734dc49991c181138e2e85ead42354d7236fb3c6169e16'
@@ -46,6 +47,7 @@ sha256sums=('19bc6028c18dd1993f734dc49991c181138e2e85ead42354d7236fb3c6169e16'
             '63eff7fe1f6a0dd7ec0c450724a403dcff986e026b5b9ae9ac46edc7222f798c'
             '374d12d1434172c775f0ecd944d0a903cd56264a4c9d5ef0be038715e47e67fd'
             '76a18e240a8498c8d2a3a261b7845c8062dbf85941425adcd96f9e879141b3e6'
+            '23d22c21424785a7bc615a90a37fcdf03937704e95cf32eebd1d9c203486f6b0'
             '418a9b7fdec14947cb038df4fdf2371215b26130dc0dec2ba891a212f8806a3c')
 
 case "${CARCH}" in
@@ -64,6 +66,9 @@ _nonheadless=(bin/policytool
               lib/${_JARCH}/libsplashscreen.so)
 
 prepare() {
+  cd "${srcdir}/${_tuxjdkdir}"
+  patch -p1 < "${srcdir}/tuxjdk_quilt_script.patch"
+
   cd "${srcdir}/jdk8u-${_repo_ver}"
 
   for subrepo in corba hotspot jdk jaxws jaxp langtools nashorn

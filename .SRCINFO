@@ -1,6 +1,6 @@
 pkgbase = tuxjdk
 	pkgver = 8.92.03
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/tuxjdk/tuxjdk
 	arch = i686
 	arch = x86_64
@@ -25,6 +25,7 @@ pkgbase = tuxjdk
 	source = jaxp-jdk8u92-b14.tar.gz::http://hg.openjdk.java.net/jdk8u/jdk8u/jaxp/archive/jdk8u92-b14.tar.gz
 	source = langtools-jdk8u92-b14.tar.gz::http://hg.openjdk.java.net/jdk8u/jdk8u/langtools/archive/jdk8u92-b14.tar.gz
 	source = nashorn-jdk8u92-b14.tar.gz::http://hg.openjdk.java.net/jdk8u/jdk8u/nashorn/archive/jdk8u92-b14.tar.gz
+	source = tuxjdk_quilt_script.patch
 	source = https://github.com/tuxjdk/tuxjdk/archive/8.92.03.tar.gz
 	sha256sums = 19bc6028c18dd1993f734dc49991c181138e2e85ead42354d7236fb3c6169e16
 	sha256sums = 287edac284f4b97f48a14fea331455c3807bcffd51612278decb0ac265303069
@@ -34,6 +35,7 @@ pkgbase = tuxjdk
 	sha256sums = 63eff7fe1f6a0dd7ec0c450724a403dcff986e026b5b9ae9ac46edc7222f798c
 	sha256sums = 374d12d1434172c775f0ecd944d0a903cd56264a4c9d5ef0be038715e47e67fd
 	sha256sums = 76a18e240a8498c8d2a3a261b7845c8062dbf85941425adcd96f9e879141b3e6
+	sha256sums = 23d22c21424785a7bc615a90a37fcdf03937704e95cf32eebd1d9c203486f6b0
 	sha256sums = 418a9b7fdec14947cb038df4fdf2371215b26130dc0dec2ba891a212f8806a3c
 
 pkgname = tuxjdk
