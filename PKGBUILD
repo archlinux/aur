@@ -2,7 +2,7 @@
 # Maintainer: Oguz Bektas <xorond@gmail.com>
 
 pkgname=pentmenu
-pkgver=1.3.3
+pkgver=1.3.4
 pkgrel=1
 groups=('archstrike' 'archstrike-misc')
 arch=('any')
@@ -11,7 +11,7 @@ url="https://github.com/GinjaChris/pentmenu"
 license=('GPL3')
 depends=('bash' 'hping' 'openbsd-netcat' 'openssl' 'stunnel' 'nmap' 'whois')
 source=("https://github.com/GinjaChris/pentmenu/archive/$pkgver.tar.gz")
-sha512sums=('d7754460eeadded1d29d5c625239b424390be9be25c175bcb173f4b60b37a69287f40912888c8e68706f8dbd30b3d2831459f12bc087dea40b5fb05e83c49211')
+sha512sums=('1016468fdf93423d8c1867fb046fa3dfdd6cee5f1835234be349e4b52a08750665010454e30bc8db3dc610f2611291968a803d0a0fa27163bd4c511adb3828f8')
 
 package() {
   cd $pkgname-$pkgver
