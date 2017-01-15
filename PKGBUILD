@@ -2,8 +2,8 @@
 # Contributor: Dean Galvin <deangalvin3@gmail.com>
 pkgname="home-assistant"
 pkgdesc='Home Assistant is an open-source home automation platform running on Python 3'
-pkgver=0.35.3
-pkgrel=2
+pkgver=0.36
+pkgrel=1
 url="https://home-assistant.io/"
 license=('MIT')
 arch=('any')
@@ -15,11 +15,9 @@ optdepends=('git: install component requirements from github'
             'net-tools: necessary for nmap discovery')
 conflicts=('python-home-assistant' 'python-home-assistant-git')
 source=("https://github.com/${pkgname}/${pkgname}/archive/${pkgver}.tar.gz"
-        "home-assistant.service"
-        "0001-Add-version-test-for-monkey_patch_asyncio-5127.patch")
-sha256sums=('300158ba1f455a04dd0f86a73424f68b2243f73e0e13d1720be72d323be7867a'
-            'd5363dd4dc136182bef5d0e48d4e9674642025d83c55ca2ef48d4ac401c72a8c'
-            'cba2ca1a9a7fcbc1125164b7d601f806a8099f193458f451f5431373fad8501c')
+"home-assistant.service")
+sha256sums=('88be6e24f372c589086825f9a2042f73650f816e2f5e6295625fbb7d5077cf74'
+            'd5363dd4dc136182bef5d0e48d4e9674642025d83c55ca2ef48d4ac401c72a8c')
 backup=('var/lib/hass/configuration.yaml')
 install='hass.install'
 
@@ -27,15 +25,8 @@ prepare() {
   cd ${srcdir}/${pkgname}-${pkgver}
   set -e
 
-  # package for voluptuous is more recent on AUR
-  replace 'voluptuous==0.9.2' 'voluptuous>=0.9.3,<1' setup.py
-
   # typing package is a backport of standard library < 3.5
   replace 'typing>=3,<4' '' setup.py
-
-  replace 'aiohttp==1.1.6' 'aiohttp>=1.1.5' setup.py
-
-  patch -p1 -i ${srcdir}/0001-Add-version-test-for-monkey_patch_asyncio-5127.patch
 }
 
 replace() {
