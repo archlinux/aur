@@ -2,7 +2,7 @@
 
 pkgname=adchpp
 pkgver=2.12.1
-pkgrel=1
+pkgrel=2
 pkgdesc="ADCH++ is a hub software for the ADC network."
 url='http://adchpp.sourceforge.net'
 arch=('i686' 'x86_64')
@@ -17,7 +17,8 @@ makedepends=('scons'
              'asciidoc'
              )
 backup=('etc/adchpp/Script.xml'
-        'etc/adchpp/adchpp.xml')
+        'etc/adchpp/adchpp.xml'
+        )
 source=("http://downloads.sourceforge.net/project/adchpp/Releases/ADCH%2B%2B%202.12/${pkgver}/adchpp_${pkgver}_source.tar.gz"
         'adchpp.sh'
         'adchpp.service'
@@ -26,16 +27,18 @@ source=("http://downloads.sourceforge.net/project/adchpp/Releases/ADCH%2B%2B%202
         'http://data.gpo.zugaina.org/klondike/net-p2p/adchpp/files/adchpp-2.8.0-fix_config_paths.patch'
         'http://data.gpo.zugaina.org/klondike/net-p2p/adchpp/files/adchpp-2.11.0-fix_cflags.patch'
         'https://dl.dropboxusercontent.com/u/6596386/adchpp-2.9.0-fix_store_files_in_config_dir_access.guard_plugin.patch'
-        'https://dl.dropboxusercontent.com/u/6596386/adchpp-2.9.0-fix_log_path.patch')
-sha1sums=('5c69f0bda7c5ce17518a10710b35bef07d5a5b1a'
-          'd903e8241dec8e6c96b741f52a43a75894471cf7'
-          'b834071b7bd39effcdc6bdeaa61f3e877757583b'
-          'd8c98ccc13ffda1c68bd1d356f51ae99dd1a5ba2'
-          '7f270a8803871e6b25b9ed15d60ba765df9e3741'
-          'e2e396e0542df153a312c0b43275a321511d0209'
-          '04c2bba95ab80d56a0e56fa9cd3f0b2edce88e23'
-          'c201970be161b01d30a4c6761235f47aad9fec4e'
-          '1e40351b4be6441979229d63210b43817c9819bf')
+        'https://dl.dropboxusercontent.com/u/6596386/adchpp-2.9.0-fix_log_path.patch'
+        )
+sha256sums=('ee839daa4d392e01da204475d625f92050ba3370a3a20c5288d8d37e7dcbcbb6'
+            '408dace5cbe39f93b814b517250ba0ca5729f2d01e2183a467c5acdbbefb78f2'
+            'a538ea4dbbbf2f0519f28ac070750d951828902d1c7df658718158f85bf7d524'
+            '926f5200487aeba02a4bfb5b110653d33865f1e4320b191385aec3c936f1681d'
+            'a561c8eeeb9f94518b95a231fdbd12ba35d8099fce4930b445e7a6a618ecc60b'
+            '7a112f77e3d995a102703b85230610643f69cd4f99b35fcb22c3edc7c5e7a85b'
+            '7ae9129d2c4480c3b82bdfc487adc59bc3025ca924fb6ee3b161373b0c7ca4d7'
+            '682ead52a680847550d65c96b4008a32252977e55cb1a904eadb60c565a3b248'
+            '7e0f8a76678e9ddd598217f2de6d38261540b03208474ebca6c928c4f563c703'
+            )
 install=adchpp.install
 
 [ "$CARCH" = "i686" ] && _arch="x86"

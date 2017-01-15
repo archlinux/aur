@@ -9,9 +9,6 @@ post_install() {
 }
 
 post_upgrade() {
-  systemd-sysusers adchpp.conf
-  systemd-tmpfiles --create adchpp.conf
-
   install -dm744 -o adchpp -g adchpp /var/log/adchpp
   install -dm744 -o adchpp -g adchpp /var/lib/adchpp
 }
