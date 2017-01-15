@@ -12,7 +12,7 @@ provides=("${pkgname}")
 conflicts=("${pkgname}")
 makedepends=('help2man')
 source=("https://github.com/Ventto/lux/archive/v${pkgver}.tar.gz")
-sha256sums=('93a2e5b4d94c701d067a0800acbca31a53dd1f9429196c01510748ef68ddbd05')
+sha256sums=('SKIP')
 
 build() {
   cd ${srcdir}/${pkgname}-${pkgver}
