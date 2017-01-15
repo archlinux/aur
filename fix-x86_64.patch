@@ -1,0 +1,155 @@
+--- src/block.cc	2009-08-16 21:59:05.000000000 +0200
++++ src/block.cc.orig	2009-08-16 21:58:02.000000000 +0200
+@@ -124,7 +124,7 @@
+ 	l = cfg->rules;
+ 	rulist = (rule **)xmalloc(sizeof(rule *) * l);
+ 	n_rules = 0; again = 1;
+-	while((int)(rulist[n_rules] = --again ? rulist[n_rules-1]
++	while((long)(rulist[n_rules] = --again ? rulist[n_rules-1]
+ 					 : next_rule(file, vars, &again)) > END_OF_RULES) {
+ //		rulist[n_rules]->set_dbg_tag(file);
+ 		if (++n_rules == l) {
+@@ -133,7 +133,7 @@
+ 		}
+ 	}
+ 	if (again > 1) diatax("Badly placed count");
+-	if (rulist[n_rules] != terminator) switch ((int)rulist[n_rules]) {
++	if (rulist[n_rules] != terminator) switch ((long)rulist[n_rules]) {
+ 		case END_OF_BLOCK:  diatax("No block to terminate");
+ 		case END_OF_CHOICE: diatax("No choice to terminate");
+ 		case END_OF_SWITCH: diatax("No length-based switch to terminate");
+@@ -546,8 +546,8 @@
+ {
+ 	try {
+ 		rule *r = parse_rule(file, vars, count);
+-		if ((int)r > END_OF_RULES) return r;
+-		if ((int)r < END_OF_RULES) diatax("No rule follows a conditional rule");
++		if ((long)r > END_OF_RULES) return r;
++		if ((long)r < END_OF_RULES) diatax("No rule follows a conditional rule");
+ 		shriek(811, fmt("No rule follows a conditional rule at the end of %s", file->current_file));
+ 	} catch (any_exception *e) {
+ 		if (e->code / 10 != 81) throw e;
+--- src/common.h.orig	2009-08-16 22:34:36.000000000 +0200
++++ src/common.h	2009-08-16 22:35:38.000000000 +0200
+@@ -94,8 +94,8 @@
+ #define U_INHERIT	125
+ #define U_VOID		120
+ 
+-extern int unused_variable;
+-#define unuse(x) (unused_variable = (int)(x));
++extern long unused_variable;
++#define unuse(x) (unused_variable = (long)(x));
+ 
+ extern const bool is_monolith;
+ 
+--- src/hashtmpl.cc.orig	2009-08-16 22:28:39.000000000 +0200
++++ src/hashtmpl.cc	2009-08-16 22:30:06.000000000 +0200
+@@ -362,7 +362,7 @@
+ 	        tmp += strcspn(key, WHITESPACE);
+ 		if (*tmp) *tmp++ = 0;		//terminate the key and go on
+ 		value = tmp += strspn(tmp, WHITESPACE);
+-		if (!*value) switch ((int)no_data) {
++		if (!*value) switch ((long)no_data) {
+ /*			
+ 			case DATA_EQUALS_KEY: value = key; break;
+ 			case DATA_OBLIGATORY: hash_shriek("No value specified in %s, line %d",filename,l); */
+--- src/interf.cc.orig	2009-08-16 22:39:44.000000000 +0200
++++ src/interf.cc	2009-08-16 22:41:33.000000000 +0200
+@@ -64,7 +64,7 @@
+ 
+ charxlat *esctab = NULL;
+ 
+-int unused_variable;
++long unused_variable;
+ 
+ void *xmall_ptr_holder;
+ 
+--- src/options.cc.orig	2009-08-16 22:09:37.000000000 +0200
++++ src/options.cc	2009-08-16 22:12:01.000000000 +0200
+@@ -77,7 +77,7 @@
+ 	}
+ }
+ 
+-#define  LANGS_OFFSET   ((int)&((configuration *)NULL)->langs)
++#define  LANGS_OFFSET   ((long)&((configuration *)NULL)->langs)
+ #define  LANGS_LENGTH   ((*cfg)->n_langs * sizeof(void *))
+ 
+ void cow_configuration(configuration **cfg)
+@@ -538,7 +538,7 @@
+  *	The order of cowing cfg, lang and voice, is important.
+  */
+ 
+-#define  VOICES_OFFSET  ((int)&((lang *)NULL)->voices)
++#define  VOICES_OFFSET  ((long)&((lang *)NULL)->voices)
+ #define  VOICES_LENGTH  (this_lang->n_voices * sizeof(void *))
+ 
+ bool set_option(option *o, const char *value)
+--- src/options.lst.orig	2009-08-16 22:13:53.000000000 +0200
++++ src/options.lst	2009-08-16 22:16:51.000000000 +0200
+@@ -112,7 +112,7 @@
+ #define CHARSET    O_CHARSET
+ #define DEBUG_AREA O_DBG_AREA
+ 
+-#define OPTION(member,name,type,default) {"C:" name + 2, type, OS_CFG, A_PUBLIC, A_PUBLIC, true, false, (int)&((configuration *)NULL)->member},
++#define OPTION(member,name,type,default) {"C:" name + 2, type, OS_CFG, A_PUBLIC, A_PUBLIC, true, false, (long)&((configuration *)NULL)->member},
+ 
+ #define OPTIONAGGR(x) 
+ #define OPTIONITEM(w,x,y,z) OPTION (w,x,y,z)
+@@ -126,7 +126,7 @@
+ #define LNG_OPTION(member,member_lang,name,type,default)  OPTION(member,name,type,default)
+ 
+ #define OPTIONARRAY(member, name, type, default, number) {"C:" name + 2, type, OS_CFG, \
+-		A_PUBLIC, A_PUBLIC, true, true, (int)&((configuration *)NULL)->member},
++		A_PUBLIC, A_PUBLIC, true, true, (long)&((configuration *)NULL)->member},
+ #define LNG_OPTIONARRAY(member, name, type, default, number)  \
+ 		OPTIONARRAY(member, name, type, default, number)
+ 
+@@ -205,16 +205,16 @@
+ #define OPTIONAGGRENDS
+ 
+ // #define LNG_OPTIONAGGR(x) 
+-// #define LNG_OPTIONITEM(member,name,type,default) {"L:" name + 2, type, OS_LANG, A_PUBLIC, A_PUBLIC, true, false, (int)&((lang *)NULL)->member}, 
++// #define LNG_OPTIONITEM(member,name,type,default) {"L:" name + 2, type, OS_LANG, A_PUBLIC, A_PUBLIC, true, false, (long)&((lang *)NULL)->member}, 
+ // #define LNG_OPTIONAGGRENDS 
+ 
+ #define OPTION(w,x,y,z)
+-#define VOICE_OPTION(member,member_voice,name,type,default)   {"L:" name + 2, type, OS_LANG, A_PUBLIC, A_PUBLIC, true, false, (int)&((lang *)NULL)->member_voice},
+-#define LNG_OPTION(member,member_lang,name,type,default)  {"L:" name + 2, type, OS_LANG, A_PUBLIC, A_PUBLIC, true, false, (int)&((lang *)NULL)->member_lang},
++#define VOICE_OPTION(member,member_voice,name,type,default)   {"L:" name + 2, type, OS_LANG, A_PUBLIC, A_PUBLIC, true, false, (long)&((lang *)NULL)->member_voice},
++#define LNG_OPTION(member,member_lang,name,type,default)  {"L:" name + 2, type, OS_LANG, A_PUBLIC, A_PUBLIC, true, false, (long)&((lang *)NULL)->member_lang},
+ 
+ #define OPTIONARRAY(member, name, type, default, number)
+ #define LNG_OPTIONARRAY(member, name, type, default, number) {"L:" name + 2, type, OS_LANG, \
+-		A_PUBLIC, A_PUBLIC, true, true, (int)&((lang *)NULL)->member},
++		A_PUBLIC, A_PUBLIC, true, true, (long)&((lang *)NULL)->member},
+ 
+ 
+ #undef CONFIG_LANG_DESCRIBE
+@@ -287,7 +287,7 @@
+ // #define LNG_OPTIONITEM(w,x,y,z) OPTIONITEM(w,x,y,z)
+ // #define LNG_OPTIONAGGRENDS OPTIONAGGRENDS
+ 
+-#define VOICE_OPTION(member,member_voice,name,type,default)  {"V:" name + 2, type, OS_VOICE, A_PUBLIC, A_PUBLIC, true, false, (int)&((voice *)NULL)->member_voice},
++#define VOICE_OPTION(member,member_voice,name,type,default)  {"V:" name + 2, type, OS_VOICE, A_PUBLIC, A_PUBLIC, true, false, (long)&((voice *)NULL)->member_voice},
+ 
+ #undef CONFIG_VOICE_DESCRIBE
+ 
+--- src/waveform.cc	2009-08-16 22:24:12.000000000 +0200
++++ src/waveform.cc.orig	2009-08-16 22:22:42.000000000 +0200
+@@ -664,14 +664,14 @@
+ inline char *
+ wavefm::get_ophase_buff(const w_ophase *p)
+ {
+-	char *tmp = (char *)this + (int)p->buff;
++	char *tmp = (char *)this + (long)p->buff;
+ 	return p->inlined ? tmp : *(char **)tmp;
+ }
+ 
+ inline int
+ wavefm::get_ophase_len(const w_ophase *p)
+ {
+-	return (p->inlined ? (int)p->len : *(int *)((char *)this + (int)p->len)) + p->adjustment;
++	return (p->inlined ? (long)p->len : *(int *)((char *)this + (long)p->len)) + p->adjustment;
+ }
+ 
+ inline bool

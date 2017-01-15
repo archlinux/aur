@@ -1,0 +1,51 @@
+#cmakedefine FORGET_CHARSETS
+
+#cmakedefine HAVE_BOOL
+#cmakedefine HAVE_SOCKLEN_T
+#cmakedefine HAVE_REG_EEND
+#cmakedefine HAVE_RM_SO
+#cmakedefine HAVE_TEMPL_INST
+#cmakedefine BROKEN_ENUM_BITFIELDS
+
+#cmakedefine HAVE_STRINGS_H
+#cmakedefine HAVE_STRING_H
+#cmakedefine HAVE_IO_H
+#cmakedefine HAVE_RX_H
+#cmakedefine HAVE_REGEX_H
+#cmakedefine HAVE_ERRNO_H
+#cmakedefine HAVE_WAIT_H
+#cmakedefine HAVE_UNISTD_H
+#cmakedefine HAVE_UNIX_H
+#cmakedefine HAVE_SIGNAL_H
+#cmakedefine HAVE_SYSLOG_H
+#cmakedefine HAVE_TIME_H
+#cmakedefine HAVE_SYS_SOUNDCARD_H
+#cmakedefine HAVE_SYS_AUDIO_H
+#cmakedefine HAVE_SYS_STAT_H
+#cmakedefine HAVE_SYS_IOCTL_H
+#cmakedefine HAVE_SYS_SOCKET_H
+#cmakedefine HAVE_SYS_SELECT_H
+#cmakedefine HAVE_SYS_TIME_H
+#cmakedefine HAVE_SYS_TYPES_H
+#cmakedefine HAVE_SYS_TERMIOS_H
+#cmakedefine HAVE_NETDB_H
+#cmakedefine HAVE_NETINET_IN_H
+#cmakedefine HAVE_LINUX_KD_H
+#cmakedefine HAVE_SYS_KERNEL_H
+#cmakedefine HAVE_SYS_NAME_H
+#cmakedefine HAVE_FCNTL_H
+
+#cmakedefine HAVE_STRERROR
+#cmakedefine HAVE_STRDUP
+#cmakedefine HAVE_FORK
+#cmakedefine HAVE_GETEGID
+#cmakedefine HAVE_STRCASECMP
+#cmakedefine HAVE_STRICMP
+#cmakedefine HAVE_GETHOSTNAME
+#cmakedefine HAVE_GETTIMEOFDAY
+#cmakedefine HAVE_QNX_NAME_ATTACH
+#cmakedefine HAVE_ABORT
+
+#cmakedefine HAVE_LIBSOCKET
+#cmakedefine HAVE_LIBLNSL
+
