@@ -1,0 +1,15 @@
+pkgbase = php-ev
+	pkgdesc = PHP extension for interfacing with MessagePack
+	pkgver = 1.0.4
+	pkgrel = 1
+	url = https://bitbucket.org/osmanov/pecl-ev
+	arch = i686
+	arch = x86_64
+	license = New BSD
+	depends = php
+	backup = etc/php/conf.d/ev.ini
+	source = http://pecl.php.net/get/ev-1.0.4.tgz
+	sha256sums = 13804cb70e39a0abc014b45230a990ff046d748a9d806feca9ac511516be4f61
+
+pkgname = php-ev
+
