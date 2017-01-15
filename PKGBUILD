@@ -1,6 +1,6 @@
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=neatroff-git
-pkgver=r437.0b264c8
+pkgver=r442.ac60e4b
 pkgrel=1
 epoch=
 pkgdesc="An implementation of troff typesetting system in C programming language."
