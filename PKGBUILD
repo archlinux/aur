@@ -1,7 +1,7 @@
 # Maintainer: Vinícius dos Santos Oliveira <vini.ipsmaker@gmail.com>
 pkgname=way-cooler-git
-pkgver=v0.4.1.r3.gb08b575
-pkgrel=2
+pkgver=v0.4.2.r35.ga4dd326
+pkgrel=1
 epoch=1
 pkgdesc="Customizeable Wayland compositor written in Rust"
 arch=('i686' 'x86_64')
@@ -45,6 +45,9 @@ package() {
 
   mkdir -p "$pkgdir/etc/way-cooler"
   cp "$srcdir/$pkgname/config/init.lua" "$pkgdir/etc/way-cooler"
+
+  mkdir -p "$pkgdir/usr/share/wayland-sessions"
+  cp "$srcdir/$pkgname/way-cooler.desktop" "$pkgdir/usr/share/wayland-sessions"
 }
 
 # vim:set ts=2 sw=2 et:
