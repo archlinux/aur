@@ -9,9 +9,6 @@ post_install() {
 }
 
 post_upgrade() {
-  systemd-sysusers adchpp-lan.conf
-  systemd-tmpfiles --create adchpp-lan.conf
-
   install -dm744 -o adchpp-lan -g adchpp-lan /var/log/adchpp-lan
   install -dm744 -o adchpp-lan -g adchpp-lan /var/lib/adchpp-lan
 }

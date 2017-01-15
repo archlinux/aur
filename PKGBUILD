@@ -7,13 +7,20 @@ pkgdesc="ADC protocol hub made by the people behind DC++ and modified for use at
 url="http://dc4lan.sourceforge.net/"
 arch=('i686' 'x86_64')
 license=("GPL")
-depends=('ruby' 'python2')
-makedepends=('scons' 'swig' 'bzr' 'asciidoc')
+depends=('ruby'
+         'python2'
+         )
+makedepends=('scons'
+             'swig'
+             'bzr'
+             'asciidoc'
+             )
 provides=('adchpp-lan')
 conflicts=('adchpp-lan')
 backup=('etc/adchpp-lan/Script.xml'
-        'etc/adchpp-lan/adchpp.xml')
-source=('bzr+lp:adchpp-lan'
+        'etc/adchpp-lan/adchpp.xml'
+        )
+source=('adhpp-lan::bzr+https://code.launchpad.net/~dc4lan/adchpp-lan/trunk'
         'adchpp-lan.sh'
         'adchpp-lan-bzr.service'
         'adchpp-lan-bzr.tmpfile'
@@ -21,16 +28,19 @@ source=('bzr+lp:adchpp-lan'
         'http://data.gpo.zugaina.org/klondike/net-p2p/adchpp-lan/files/adchpp-lan-2.8.0-fix_config_paths.patch'
         'http://data.gpo.zugaina.org/klondike/net-p2p/adchpp-lan/files/adchpp-lan-2.9.0-fix_cflags.patch'
         'https://dl.dropboxusercontent.com/u/6596386/adchpp-2.9.0-fix_store_files_in_config_dir_access.guard_plugin.patch'
-        'https://dl.dropboxusercontent.com/u/6596386/adchpp-2.9.0-fix_log_path.patch')
-sha1sums=('SKIP'
-          '62bc056021e20f7d6f0c37b732725254dbf8c750'
-          '244df0f64a2f336b14bd4452db5934462bbeca83'
-          '1921baaeedcd859a85b59e1ff60757a48294dd14'
-          '5ad8bde64b2ff8ce1094e39762eb59c69e1f5dc9'
-          'e2e396e0542df153a312c0b43275a321511d0209'
-          '4f6729ce3dce178d7f7c87af768ca9830069316a'
-          'c201970be161b01d30a4c6761235f47aad9fec4e'
-          '1e40351b4be6441979229d63210b43817c9819bf')
+        'https://dl.dropboxusercontent.com/u/6596386/adchpp-2.9.0-fix_log_path.patch'
+        )
+sha256sums=('SKIP'
+            '3d2a86fefc42ad585cf0f07cce35013cd9e101d74bdd023dd745a9b23a04dd8d'
+            '94504789a526aeb7abd0318a6fe94c82ae5e987ad5af488919dffc37fd8d8e4b'
+            '752430b16d7001fae6b0db3c06543a70237ee34f800564797a1706c2a43921f5'
+            'e8f3b35aa02313149f17f36a74f3a3ec2899a3abb02509c85b0ac35c8faa891e'
+            '7a112f77e3d995a102703b85230610643f69cd4f99b35fcb22c3edc7c5e7a85b'
+            'c0b8b3c47fd2cc64b56f0b6c1c4e4869649b91e0469768215f47bca528beec8c'
+            '682ead52a680847550d65c96b4008a32252977e55cb1a904eadb60c565a3b248'
+            '7e0f8a76678e9ddd598217f2de6d38261540b03208474ebca6c928c4f563c703'
+            )
+
 install="adchpp-lan-bzr.install"
 
 [ "$CARCH" = "i686" ] && _arch="x86"
@@ -59,7 +69,10 @@ prepare() {
       -e "s|%%ADCHPPSHARE%%|/usr/share/adchpp-lan|g" \
       -e "s|%%ADCHPPETC%%|/etc/adchpp-lan|g" \
       -e "s|%%ADCHPPLOG%%|/var/log/adchpp-lan|g" \
-      -i etc/adchpp.xml -i etc/Script.xml -i rbutil/adchpp.rb -i pyutil/adchpp.py
+      -i etc/adchpp.xml \
+      -i etc/Script.xml \
+      -i rbutil/adchpp.rb \
+      -i pyutil/adchpp.py
 
   # Ugly patch: set path for volatile files created by lua scripts
   sed -e "/luadchpp.)/a-- set path of volatile files\nlocal varfilepath = \"/var/lib/adchpp-lan/\"\n" \
