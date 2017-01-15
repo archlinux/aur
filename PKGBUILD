@@ -31,7 +31,8 @@ source=(http://ftpmirror.gnu.org/gnuzilla/${pkgver}/${pkgname}-${_pkgver}.tar.bz
         icecat-safe.desktop
         vendor.js
         gcc6-fix-compilation-for-IceCat.patch
-        firefox-gcc-6.0.patch)
+        firefox-gcc-6.0.patch
+		icu_configure.patch)
 
 sha256sums=('8163e5bc53f69d9f9b0fc5e9f95fae33da8139ae0f902756751cadbaa27e6ee9'
             'SKIP'
@@ -40,7 +41,8 @@ sha256sums=('8163e5bc53f69d9f9b0fc5e9f95fae33da8139ae0f902756751cadbaa27e6ee9'
             '190577ad917bccfc89a9bcafbc331521f551b6f54e190bb6216eada48dcb1303'
             '4b50e9aec03432e21b44d18c4c97b2630bace606b033f7d556c9d3e3eb0f4fa4'
             '329cf6753d29ae64a4336a8a76ee71f0d331a39132159401e4d11de65b708a07'
-            '4d1e1ddabc9e975ed39f49e134559a29e01cd49439e358233f1ede43bf5a52bf')
+            '4d1e1ddabc9e975ed39f49e134559a29e01cd49439e358233f1ede43bf5a52bf'
+            'ef2a7c41685f8e371d47909bf4cc071a349ef09b1421ab523c94057d85ca8f07')
 
 validpgpkeys=(A57369A8BABC2542B5A0368C3C76EED7D7E04784) # Ruben Rodriguez (GNU IceCat releases key) <ruben@gnu.org>
 
@@ -55,6 +57,9 @@ prepare() {
   # Compilation fix (FS#49243 and FS#49363), internet and Thunderbird package
   patch -Np1 -i $srcdir/gcc6-fix-compilation-for-IceCat.patch
   patch -Np1 -i $srcdir/firefox-gcc-6.0.patch
+
+  # without fixing this, the build throws errors that it's unable to extract the icu version number from uvernum.h and aborts (Thanks jghodd)
+  patch -Np0 -i ${srcdir}/icu_configure.patch
 
   msg2 "Starting build..."
 
