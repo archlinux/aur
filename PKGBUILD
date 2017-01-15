@@ -3,9 +3,9 @@
 
 pkgname=multimc5
 pkgver=0.5.0
+pkgrel=2
 __pkgver_libnbtplusplus=multimc-${pkgver}
 __install_dir="/usr/lib/multimc5"
-pkgrel=1
 pkgdesc="Minecraft launcher with ability to manage multiple instances."
 arch=('i686' 'x86_64')
 url="http://multimc.org/"
@@ -52,7 +52,10 @@ package() {
     "${pkgdir}/usr/lib/multimc5/bin/libMultiMC_logic.so"
   install -D libMultiMC_rainbow.so \
     "${pkgdir}/${__install_dir}/bin/libMultiMC_rainbow.so"
-  install -D libMultiMC_gui.so ${pkgdir}/${__install_dir}/bin/libMultiMC_gui.so
+  install -D libMultiMC_gui.so \
+    "${pkgdir}/${__install_dir}/bin/libMultiMC_gui.so"
+  install -D libMultiMC_nbt++.so \
+    "${pkgdir}/${__install_dir}/bin/libMultiMC_nbt++.so"
   install -D "${srcdir}/multimc5.sh" "${pkgdir}/usr/bin/multimc5"
   install -D \
     "${srcdir}/MultiMC5-${pkgver}/application/resources/multimc/scalable/multimc.svg" \
