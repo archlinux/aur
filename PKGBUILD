@@ -1,6 +1,6 @@
 pkgname=powerline-i3-git
 pkgver=1.2.3
-pkgrel=1
+pkgrel=2
 pkgdesc="The ultimate statusline/prompt utility. A fork containing more features for the i3 window manager."
 arch=('i686' 'x86_64')
 url="https://github.com/ph111p/powerline"
@@ -26,7 +26,7 @@ makedepends=(
   'python-setuptools'
 )
 provides=('powerline-i3')
-conflicts=('powerline', 'python-powerline')
+conflicts=('powerline' 'python-powerline')
 install=$pkgname.install
 
 source=("git://github.com/ph111p/powerline.git")
