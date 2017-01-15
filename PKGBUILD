@@ -5,7 +5,7 @@
 # Contributor: Jon Nordby <jononor@gmail.com>
 
 pkgname=lib32-libwebp
-pkgver=0.5.1
+pkgver=0.5.2
 pkgrel=1
 pkgdesc='WebP library'
 arch=('x86_64')
@@ -14,7 +14,7 @@ license=('BSD')
 depends=('lib32-glibc' 'libwebp')
 makedepends=('gcc-multilib')
 source=("https://storage.googleapis.com/downloads.webmproject.org/releases/webp/libwebp-${pkgver}.tar.gz"{,.asc})
-sha256sums=('6ad66c6fcd60a023de20b6856b03da8c7d347269d76b1fd9c3287e8b5e8813df'
+sha256sums=('b75310c810b3eda222c77f6d6c26b061240e3d9060095de44b2c1bae291ecdef'
             'SKIP')
 validpgpkeys=('6B0E6B70976DE303EDF2F601F9C3D6BDB8232B5D') # WebP release signing key
 
