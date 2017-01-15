@@ -1,0 +1,80 @@
+--- dvc-snapshot/texinfo/dvc-intro.texinfo	2011-04-23 03:28:05.000000000 +0200
++++ dvc/texinfo/dvc-intro.texinfo	2017-01-15 15:07:38.598057000 +0100
+@@ -14,7 +14,7 @@
+ 
+ @smallexample
+ @group
+-  Copyright (C) 2007 - 2011 Stephen Leake
++  Copyright (C) 2007 - 2012 Stephen Leake
+   Permission is granted to copy, distribute and/or modify this document
+   under the terms of the GNU Free Documentation License, Version 1.2
+   or any later version published by the Free Software Foundation;
+@@ -294,10 +294,6 @@
+ @item xmtn-propagate-multiple
+ Supervises propagating several workspaces.
+ 
+-@item xmtn-sync-sync
+-Syncs the local database with a remote database, then runs
+-xmtn-sync-review.
+-
+ @item xmtn-sync-review
+ Reviews saved output of a command-line @command{mtn automate sync},
+ displays branches that have been transferred. This is useful for syncs
+@@ -391,14 +387,14 @@
+ to allow commit, update preview, or merge with
+ conflict resolution.
+ 
+-@itemx update ``to''
++@item update ``to''
+ Update the specified workspace to the current head revision (must be
+ merged). This bypasses the @dfn{xmtn-multi-status} buffer, and
+ therefore does not provide for update preview. It does allow for
+ update review.
+ 
+ @item ignore local changes ``from''
+-@item ignore local changes ``to''
++@itemx ignore local changes ``to''
+ Don't show @dfn{need commit}; assume the workspace is
+ committed. Useful when you know that any local changes won't interfere
+ with the propagate.
+@@ -461,10 +457,10 @@
+ appropriate). This is often convenient when you know the workspace has
+ no local changes.
+ 
+-@itemx brief
++@item brief
+ Show the first line of the changelog for each revision received.
+ 
+-@itemx full
++@item full
+ Show the complete changelog for each revision received.
+ 
+ @item clean
+@@ -709,7 +705,8 @@
+ 
+ @item R
+ Rename a missing to an unknown file. The two files must be marked
+-first, and they must be the only files marked.
++first, and they must be the only files marked. This operation is just
++bookkeeping; it does not affect the actual disk files.
+ 
+ @item t
+ Create an entry in the @code{*dvc-log-edit*} for the current diff.
+@@ -902,7 +899,7 @@
+ @itemx left: drop
+ Resolve one side of a duplicate name conflict by dropping it.
+ 
+-@itemx drop
++@item drop
+ Resolve an orphaned node conflict by dropping it.
+ 
+ @item right: rename
+@@ -920,7 +917,7 @@
+ 
+ The other side must be dropped or renamed.
+ 
+-@itemx left file
++@item left file
+ Resolve a content conflict by specifying a file. The file defaults to
+ the current workspace file.
+ 

@@ -1,0 +1,5 @@
+post_install() {
+  echo "Add"
+  echo "(add-to-list 'load-path \"/usr/share/emacs/site-lisp/dvc\")"
+  echo "to your .emacs"
+}
