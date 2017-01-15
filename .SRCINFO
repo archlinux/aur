@@ -17,7 +17,7 @@ pkgbase = samba-mounter-git
 	depends = kio
 	depends = ki18n
 	depends = solid
-	provides = samba-mounter
+	provides = samba-mounter samba-mounter-frameworks-git
 	source = git://anongit.kde.org/scratch/afiestas/samba-mounter.git
 	sha256sums = SKIP
 

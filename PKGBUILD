@@ -12,7 +12,7 @@ arch=('i686' 'x86_64')
 license=('GPL')
 depends=('kauth' 'cifs-utils' 'smbclient' 'kcmutils' 'kconfig' 'kio' 'ki18n' 'solid')
 makedepends=('cmake' 'git' 'extra-cmake-modules')
-provides=('samba-mounter')
+provides=('samba-mounter' 'samba-mounter-frameworks-git')
 
 source=("git://anongit.kde.org/scratch/afiestas/samba-mounter.git")
 sha256sums=('SKIP')
