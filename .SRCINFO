@@ -1,13 +1,13 @@
 pkgbase = pxtone-collage
 	pkgdesc = A set of tools for creating or playing pxtone files and other pxtone-related formats.
 	pkgver = 0925
-	pkgrel = 1
-	url = http://www.cavestory.org/pixels-works/pxtone-collage.php
+	pkgrel = 2
+	url = http://studiopixel.sakura.ne.jp/pxtone/index.html
 	arch = any
 	license = BSD
 	makedepends = gendesk
 	depends = wine
-	source = http://homepage2.nifty.com/rochet/binaries/pxtone_0925.zip
+	source = http://studiopixel.sakura.ne.jp/binaries/pxtone_0925.zip
 	source = pxtone-collage.png
 	source = pxtone-noise.png
 	source = pxtone-voice.png

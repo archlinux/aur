@@ -1,10 +1,10 @@
 # Maintainer: Josh Mandle <difarem@gmail.com>
 pkgname=pxtone-collage
 pkgver=0925
-pkgrel=1
+pkgrel=2
 pkgdesc="A set of tools for creating or playing pxtone files and other pxtone-related formats."
 arch=(any)
-url="http://www.cavestory.org/pixels-works/pxtone-collage.php"
+url="http://studiopixel.sakura.ne.jp/pxtone/index.html"
 license=('BSD')
 depends=(wine)
 makedepends=(gendesk)
@@ -17,7 +17,7 @@ backup=()
 options=()
 install=
 changelog=
-source=(http://homepage2.nifty.com/rochet/binaries/pxtone_$pkgver.zip
+source=(http://studiopixel.sakura.ne.jp/binaries/pxtone_$pkgver.zip
 		pxtone-collage.png pxtone-noise.png pxtone-voice.png pxtone-player.png
 		pxtone-collage pxtone-noise pxtone-voice pxtone-player launcher)
 noextract=()
