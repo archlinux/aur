@@ -1,0 +1,9 @@
+@@ -54,6 +54,8 @@ EOF
+             allow-discards)
+                 cryptargs="${cryptargs} --allow-discards"
+                 ;;
++            header=*)
++                cryptargs="${cryptargs} --header=${cryptopt#header=}"
+             *)
+                 echo "Encryption option '${cryptopt}' not known, ignoring." >&2
+                 ;;
