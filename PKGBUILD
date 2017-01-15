@@ -2,7 +2,7 @@
 
 pkgname=pacli-simple-git
 pkgver=1.2
-pkgrel=2
+pkgrel=3
 pkgdesc="A simple and interative Bash Frontend for Pacman/Yaourt"
 arch=(any)
 url="https://github.com/excalibur1234/pacli-simple"
@@ -20,5 +20,5 @@ md5sums=('SKIP')
 
 package () {
 	cd "$srcdir"
-        install -Dm755 "$srcdir/$pkgname/pacli" "$pkgdir/usr/bin/pacli"
+        install -Dm755 "$srcdir/pacli-simple/pacli" "$pkgdir/usr/bin/pacli"
 }
