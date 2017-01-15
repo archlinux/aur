@@ -11,7 +11,7 @@
 _pkgname=playonlinux5
 pkgname=$_pkgname-git
 pkgver=r1486.178b8e1a
-pkgrel=3
+pkgrel=4
 epoch=2
 pkgdesc="GUI for managing Windows programs under linux (development version based on Java)"
 arch=('any')
@@ -44,9 +44,11 @@ build() {
 
   # Set environment
   # Use path to Java 8 for users not defaulted to Java 8 yet
-  if (( $(archlinux-java get | cut -d "-" -f2) >= 8 )); then
+  if (( $(archlinux-java get | cut -d "-" -f2) < 8 )); then
 	JAVA_VER=$(archlinux-java get)
 	export JAVA_HOME="/usr/lib/jvm/${JAVA_VER}"
+  else
+	export JAVA_HOME=$(ls /usr/lib/jvm/java-{8,9}-*/bin/javac 2>/dev/null | cut -d "/" -f-5 | head -1)
   fi
 
   # Build
