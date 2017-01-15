@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond < yahoo-com: danielbermond >
 
 pkgname=wine-staging-git
-pkgver=1.9.23.r0.g5403b21+wine.1.9.23.r0.g02d7230
+pkgver=2.0.rc4.r19.ga90497bd+wine.2.0.rc5.r0.g3c54d4fb69
 pkgrel=1
 pkgdesc="A compatibility layer for running Windows programs (staging branch, Git version)"
 arch=('i686' 'x86_64')
@@ -106,11 +106,15 @@ else
 fi
 
 pkgver() {
-	cd "${srcdir}"
+	cd "${srcdir}/${pkgname}"
+	_staging_tag="$(git tag | sort -r | head -n1 | sed 's/-/./g;s/^v//')"
+	_staging_version="$(git describe --long \
+	                             | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//' \
+	                             | sed "s/^latest.release/${_staging_tag}/")"
+	cd "${srcdir}/wine-git"
+	_wine_version="$(git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g')"
 	
-	printf "%s+%s" \
-	    "$(cd ${pkgname} && git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g' | cut -c2-)" \
-	    "$(cd wine-git   && git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g')"
+	printf "%s+%s" "$_staging_version" "$_wine_version"
 }
 
 prepare() {
