@@ -17,11 +17,13 @@ provides=(python3-graph-tool)
 conflicts=(python3-graph-tool)
 replaces=(python3-graph-tool)
 options=(!libtool)
-source=("http://downloads.skewed.de/graph-tool/graph-tool-$pkgver.tar.bz2")
-sha256sums=('eba1090f94b0434890beedaf0c100dd0fc77e41ebfe29b4725d76cadb82099af')
-
+source=("http://downloads.skewed.de/graph-tool/graph-tool-$pkgver.tar.bz2"
+        "0001-Fix-dlopen-flags-problem-with-Python-3.6.patch")
+sha256sums=('eba1090f94b0434890beedaf0c100dd0fc77e41ebfe29b4725d76cadb82099af'
+            'a594d8f0c6b7abc6357bc25e2e4b87bf92710ebab0f240d70cffd936d94cc7cd')
 prepare() {
   cd "$srcdir/graph-tool-$pkgver"
+  patch -p1 -i $srcdir/0001-Fix-dlopen-flags-problem-with-Python-3.6.patch
   ./configure --enable-openmp --prefix=/usr --docdir="/usr/share/doc/$pkgname"
 }
 
