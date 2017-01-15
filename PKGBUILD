@@ -3,14 +3,14 @@
 
 pkgname=transmission-gtk-git
 _pkgname=transmission
-pkgver=2.92.r112.ga23cd29f0
+pkgver=2.92.r116.ga3654c65a
 pkgrel=1
 pkgdesc="Fast, easy, and free BitTorrent client (GTK+ GUI)(Git version from github repository)"
 arch=('i686' 'x86_64')
 url="http://www.transmissionbt.com/"
 license=('MIT')
-depends=('curl' 'libevent' 'gtk3' 'desktop-file-utils' 'hicolor-icon-theme')
-makedepends=('intltool' 'git')
+depends=('curl' 'libevent' 'gtk3')
+makedepends=('intltool' 'git' 'cmake')
 optdepends=('notification-daemon: Desktop notification support'
   	    'transmission-cli: daemon and web support')
 provides=(transmission-gtk)
@@ -32,14 +32,22 @@ build() {
   cd $srcdir/$_pkgname
   # working around this bug : https://github.com/transmission/transmission/issues/66
   rm m4/glib-gettext.m4
-  # cmake will be used when I get it to work :)
-  ./autogen.sh --prefix=/usr --disable-cli --disable-daemon
+  # cmake part added thanks to glitsj16.
+  mkdir -p build
+  cd build
+  cmake .. -DCMAKE_INSTALL_PREFIX=/usr \
+  -DCMAKE_BUILD_TYPE=Release \
+  -DENABLE_CLI=OFF \
+  -DENABLE_DAEMON=OFF \
+  -DENABLE_GTK=ON \
+  -DENABLE_QT=OFF
   make
 }
 
 package() {
-  cd $srcdir/$_pkgname
+  cd $srcdir/$_pkgname/build
   make -C gtk DESTDIR="$pkgdir" install
   make -C po DESTDIR="$pkgdir" install
+  cd $srcdir/$_pkgname/
   install -D -m644 COPYING "$pkgdir/usr/share/licenses/$pkgname/COPYING"
 }
