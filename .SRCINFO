@@ -1,6 +1,6 @@
 pkgbase = power.sh
 	pkgdesc = tiny automated power settings
-	pkgver = 4
+	pkgver = 5
 	pkgrel = 1
 	arch = any
 	license = CC0
@@ -11,7 +11,7 @@ pkgbase = power.sh
 	source = power.sh.rules
 	source = power.sh.service
 	source = power.sh.sleep.service
-	md5sums = e34798a8dc4ddd540baf52b12e9462f6
+	md5sums = 88a44b488f8a86e30168ecbf2164adb1
 	md5sums = 8e6f9e2586f43e9031df9c65e0643c96
 	md5sums = 1a16e384fee99a45f8fc59eaaa71d8f6
 	md5sums = 07a8380291782b467d60bc6b78769120

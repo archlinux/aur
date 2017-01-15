@@ -7,6 +7,7 @@ case "$1" in
 		echo '1' | tee /sys/module/snd_hda_intel/parameters/power_save_controller \
 			/sys/module/*/parameters/power_save
 		echo 'auto' | tee $(find /sys/devices -type f -path '*/power/control')
+		echo 'on' | tee /sys/bus/usb/devices/*-*/power/control
 		;;
 
 	0)

@@ -1,14 +1,14 @@
 # Maintainer: koneu <koneu93 at googlemail dot com>
 
 pkgname='power.sh'
-pkgver='4'
+pkgver='5'
 pkgrel=1
 pkgdesc='tiny automated power settings'
 license=('CC0')
 source=('power.sh' 'power.sh.rules' 'power.sh.service' 'power.sh.sleep.service')
 depends=('systemd' 'sh' 'findutils')
 arch=('any')
-md5sums=('e34798a8dc4ddd540baf52b12e9462f6'
+md5sums=('88a44b488f8a86e30168ecbf2164adb1'
          '8e6f9e2586f43e9031df9c65e0643c96'
          '1a16e384fee99a45f8fc59eaaa71d8f6'
          '07a8380291782b467d60bc6b78769120')
