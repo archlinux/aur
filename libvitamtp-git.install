@@ -10,8 +10,6 @@ ${green}==>${all_off} To use qcma as normal user you have to add yourself into $
 }
 
 post_install() {
-  systemd-sysusers vitamtp.conf
-
   _instructions
 }
 

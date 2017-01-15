@@ -2,7 +2,7 @@
 # Contributor: codestation <codestation404@gmail.com>
 
 pkgname=libvitamtp-git
-pkgver=v2.5.9.0.g7ab537a
+pkgver=v2.5.9.2.g09b50f7
 pkgrel=1
 pkgdesc="Library to interact with Vita's USB MTP protocol. (GIT version"
 arch=('i686' 'x86_64')
