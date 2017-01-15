@@ -1,24 +1,28 @@
 # Maintainer: Jonathan Liu <net147@gmail.com>
 pkgname=ddrutility
-pkgver=2.7
+pkgver=2.8
 pkgrel=1
 pkgdesc="Set of utilities for use with GNU ddrescue to aid with data recovery"
 arch=('i686' 'x86_64')
 url="http://sourceforge.net/projects/ddrutility/"
 license=('GPL3')
 depends=('bash')
-install="$pkgname.install"
 source=("http://downloads.sourceforge.net/project/$pkgname/$pkgname-$pkgver.tar.gz")
-md5sums=('687b1864ca2fc960f88051f1fd9ab1ce')
+md5sums=('95293d6ab4290919e3a6efb31e326434')
+
+prepare() {
+  cd "$pkgname-$pkgver"
+  sed -i 's#/usr/local#/usr#g' makefile
+}
 
 build() {
-	cd "$srcdir/$pkgname-$pkgver"
-	./configure --prefix=/usr
-	make
+  cd "$pkgname-$pkgver"
+  make
 }
 
 package() {
-	cd "$srcdir/$pkgname-$pkgver"
-	make DESTDIR="$pkgdir/" install
-    rmdir "$pkgdir/usr/share/aclocal"
+  cd "$pkgname-$pkgver"
+  make DESTDIR="$pkgdir" install
 }
+
+# vim:set ts=2 sw=2 et:
