@@ -1,7 +1,7 @@
 # Maintainer: bartus <aur@bartus.33mail.com>
 pkgname=meshlab
 pkgver=2016.12
-pkgrel=2
+pkgrel=3
 pkgdesc="System for processing and editing of unstructured 3D models arising in 3D scanning (qt5 version)"
 arch=('i686' 'x86_64')
 url="http://www.meshlab.net"
@@ -12,6 +12,7 @@ depends=('bzip2' 'muparser' 'levmar' 'lib3ds' 'desktop-file-utils' 'glu' 'mpir' 
 install="${pkgname}.install"
 source=("git+https://github.com/cnr-isti-vclab/meshlab.git#tag=v2016.12"
         "git+https://github.com/cnr-isti-vclab/vcglib.git#tag=v1.0.1"
+        "screened_poisson.patch"
         "plugin_dir.patch"
         "shaders_dir.patch"
         "external.patch"
@@ -27,6 +28,7 @@ source=("git+https://github.com/cnr-isti-vclab/meshlab.git#tag=v2016.12"
         "meshlab.desktop")
 md5sums=('SKIP'
          'SKIP'
+         'd9c9e9160ee16694a225819ee4598be4'
          'f13d58ca07fa74b3d7c8f7f9d4ee6a93'
          '753dd4753081ddb428f4db8eaefe9009'
          '038494125d7bd422074fc5635c5579ca'
@@ -73,6 +75,8 @@ prepare() {
   patch -Np0 -i plugin_dir.patch
   msg "move shaders to /usr/share/meshlab/shaders"
   patch -Np0 -i shaders_dir.patch
+  msg "fix screened poisson linux compilation"
+  patch -Np0 -i screened_poisson.patch
 }
 
 build() {
