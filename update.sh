@@ -11,9 +11,7 @@ set +e
 makepkg -s
 set -e
 
-checksum=$(sha256sum $VERSION.tar.gz | awk '{print $1}')
-
-sed -i -re "s/^sha256sums=.*$/sha256sums=('$checksum'/" PKGBUILD
+updpkgsums
 
 makepkg -si
 
