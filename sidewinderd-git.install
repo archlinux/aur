@@ -1,0 +1,7 @@
+post_install() {
+  echo "  > Please change the user in /etc/sidewinderd.conf."
+  echo "  > Don't forget to enable sidewinderd:"
+  echo "  > 'systemctl enable sidewinderd.service'"
+  echo "  > Start sidewinderd now:"
+  echo "  > 'systemctl start sidewinderd.service'"
+}
