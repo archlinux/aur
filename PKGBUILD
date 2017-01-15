@@ -1,7 +1,7 @@
 # Maintainer: D. Can Celasun <dcelasun[at]gmail[dot]com>
 
 pkgname=visual-studio-code-insiders
-pkgver=1.8.0.1481623033
+pkgver=1.9.0.1484290715
 pkgrel=1
 pkgdesc="Editor for building and debugging modern web and cloud applications (insiders version)"
 arch=('x86_64' 'i686')
@@ -16,9 +16,9 @@ source_i686=(code_ia32_${pkgver}.tar.gz::https://vscode-update.azurewebsites.net
               ${pkgname}.desktop
               )
 md5sums_x86_64=('e6a907dfb5dde127723c0a9a85719fc9'
-                'b651208fbd97e7f9e25795399657ecdf')
+                '0b89723c1a9af40ca16dfc90e7eeb1da')
 md5sums_i686=('0bc8fc4cbbbbbd03dce37a9e8e2bf2b0'
-              'b651208fbd97e7f9e25795399657ecdf')
+              '0b89723c1a9af40ca16dfc90e7eeb1da')
 pkgver() {
     if [ "${CARCH}" = "x86_64" ]; then
         IFS='/' read -ra ADDR <<< $(curl -ILs -o /dev/null -w %{url_effective} https://vscode-update.azurewebsites.net/latest/linux-x64/insider); echo "${ADDR[5]}" | sed 's/code-insider-//g' | sed 's/_amd64.tar.gz//g' | sed 's/-/./g'

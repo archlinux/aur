@@ -1,5 +1,4 @@
 [Desktop Entry]
-Categories=Development;
 Exec=/usr/bin/code-insiders %f
 Icon=visual-studio-code
 Terminal=false
@@ -7,6 +6,6 @@ Type=Application
 StartupWMClass=code
 Name=Visual Studio Code Insiders
 Comment=Editor for building and debugging modern web and cloud applications
-Categories=Development;WebDevelopment;IDE;
+Categories=Development;WebDevelopment;IDE;Utilities;
 StartupNotify=true
 Name[en_US]=Visual Studio Code Insiders
