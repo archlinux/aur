@@ -1,6 +1,6 @@
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=neatmkfn-git
-pkgver=r81.26b0c81
+pkgver=r88.6b8e528
 pkgrel=1
 epoch=
 pkgdesc="Generate font descriptions for neatroff"
