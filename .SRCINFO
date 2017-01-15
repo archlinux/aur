@@ -1,7 +1,7 @@
 pkgbase = gnome-shell-extension-topicons-plus-git
 	pkgdesc = Shows legacy tray icons on top.
-	pkgver = 18.r0.g05dd314
-	pkgrel = 2
+	pkgver = 19.r0.g7cd6989
+	pkgrel = 1
 	url = https://extensions.gnome.org/extension/1031/topicons/
 	arch = any
 	groups = gnome-shell-extensions
