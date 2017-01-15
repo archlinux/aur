@@ -1,5 +1,5 @@
 pkgbase = pushpin
-	pkgdesc = Reverse proxy for realitme web services
+	pkgdesc = Reverse proxy for realtime web services
 	pkgver = 1.14.0
 	pkgrel = 1
 	url = https://github.com/fanout/pushpin

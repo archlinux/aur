@@ -3,7 +3,7 @@
 pkgname=pushpin
 pkgver=1.14.0
 pkgrel=1
-pkgdesc="Reverse proxy for realitme web services"
+pkgdesc="Reverse proxy for realtime web services"
 arch=('x86_64' 'i686')
 url="https://github.com/fanout/$pkgname"
 license=('MIT')
