@@ -1,7 +1,7 @@
 
 pkgname=nginx-mainline-passenger
-pkgver=1.11.1
-pkgrel=4
+pkgver=1.11.8
+pkgrel=1
 pkgdesc='Lightweight HTTP server and IMAP/POP3 proxy server, mainline release, including support for Phusion Passenger as a static module.'
 arch=('i686' 'x86_64')
 url='http://nginx.org'
@@ -22,13 +22,15 @@ backup=('etc/nginx/fastcgi.conf'
 install=nginx.install
 provides=('nginx')
 conflicts=('nginx')
-source=($url/download/nginx-$pkgver.tar.gz
+source=($url/download/nginx-$pkgver.tar.gz{,.asc}
         service
         logrotate
         nginx.conf)
-md5sums=('0f3900165b11c417854535f3538913cb'
+validpgpkeys=('B0F4253373F8F6F510D42178520A9993A1C052F8') # Maxim Dounin <mdounin@mdounin.ru>
+md5sums=('8f68f49b6db510e567bba9e0c271a3ac'
+         'SKIP'
          'ce9a06bcaf66ec4a3c4eb59b636e0dfd'
-         '3441ce77cdd1aab6f0ab7e212698a8a7'
+         'd6a6d4d819f03a675bacdfabd25aa37e'
          'd0283e8ebaa61ffa7a458e7aca512911')
 
 _common_flags=(
@@ -46,6 +48,7 @@ _common_flags=(
   --with-http_mp4_module
   --with-http_realip_module
   --with-http_secure_link_module
+  --with-http_slice_module
   --with-http_ssl_module
   --with-http_stub_status_module
   --with-http_sub_module
@@ -58,6 +61,9 @@ _common_flags=(
 )
 
 _mainline_flags=(
+  --with-stream_ssl_preread_module
+  --with-stream_geoip_module
+  --with-stream_realip_module
 )
 
 _passenger_flags=(
@@ -98,8 +104,11 @@ package() {
     -i "$pkgdir"/etc/nginx/nginx.conf
 
   rm "$pkgdir"/etc/nginx/*.default "$pkgdir"/etc/nginx/nginx.conf
+  
+  # Install custom configuration:
   install -Dm644 ../nginx.conf "$pkgdir"/etc/nginx/
-
+  
+  # Create sites directory:
   mkdir "$pkgdir"/etc/nginx/sites
 
   install -d "$pkgdir"/var/lib/nginx
