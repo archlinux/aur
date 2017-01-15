@@ -51,7 +51,7 @@ _build() {
 }
 
 package_quassel-client-git() {
-  depends=('kdebase-lib')
+  depends=('kdebase-runtime')
   pkgdesc='KDE-based distributed IRC client (client only)'
   provides=('quassel-client')
   conflicts=('quassel-client')
@@ -125,7 +125,7 @@ package_quassel-core-git() {
 
 package_quassel-git() {
   pkgdesc='KDE-based IRC client (monolithic version)'
-  depends=('kdebase-lib')
+  depends=('kdebase-runtime')
 
   _prepare_build
 

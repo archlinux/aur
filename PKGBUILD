@@ -9,15 +9,14 @@ pkgname=("${pkgbase}-git"
          "${pkgbase}-core-git"
         )
 
-pkgver=0.12.0.314.g97a9b164
+pkgver=0.12.0.323.gc732df9a
 pkgrel=1
 url='http://quassel-irc.org'
 license=('GPL')
 arch=('i686' 'x86_64' 'arm')
 makedepends=('git' 'cmake' 'automoc4' 'extra-cmake-modules' 'qt5-tools' 'knotifyconfig')
 source=(
-  'git+https://github.com/quassel/quassel.git'
- #'git://git.quassel-irc.org/quassel.git'
+ 'git://git.bandsal.at/quassel.git'
 )
 md5sums=('SKIP')
 
@@ -51,7 +50,7 @@ _build() {
 }
 
 package_quassel-client-git() {
-  depends=('kdebase-lib')
+  depends=('kdebase-runtime')
   pkgdesc='KDE-based distributed IRC client (client only)'
   provides=('quassel-client')
   conflicts=('quassel-client')
@@ -125,7 +124,7 @@ package_quassel-core-git() {
 
 package_quassel-git() {
   pkgdesc='KDE-based IRC client (monolithic version)'
-  depends=('kdebase-lib')
+  depends=('kdebase-runtime')
 
   _prepare_build
 
