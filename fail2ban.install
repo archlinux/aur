@@ -1,0 +1,3 @@
+post_install() {
+  usr/bin/systemd-tmpfiles --create fail2ban.conf
+}

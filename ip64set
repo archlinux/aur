@@ -1,0 +1,30 @@
+#!/bin/bash
+# ipset switch
+LINE=$*
+LINE6=`echo $LINE | sed s/f2b-/f2b6-/`
+
+RESULT=`echo $LINE | egrep " ([0-9]{1,3}\.){3}[0-9]{1,3}" | wc -l`
+RESULT6=`echo $LINE | egrep "(::[A-Fa-f0-9])|((:[A-Fa-f0-9]{1,4}){2,})" | wc -l `
+
+if [ $RESULT -eq "1" ]; then
+  # IPv4
+  ipset $LINE
+  ERRCODE=$?
+
+elif [ $RESULT6 -eq "1" ]; then
+  # IPv6
+  ipset $LINE6
+  ERRCODE=$?
+
+else
+  # IPv4 + IPv6
+  ipset $LINE
+  ERRCODE=$?
+  ipset $LINE6
+  if [ $? -ge "1" ]; then
+    ERRCODE=$?
+  fi
+
+fi
+
+exit $ERRCODE

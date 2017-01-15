@@ -1,0 +1,29 @@
+#!/bin/bash
+# iptables/ip6tables switch
+LINE=$*
+
+RESULT=`echo $LINE | egrep " ([0-9]{1,3}\.){3}[0-9]{1,3}" | wc -l`
+RESULT6=`echo $LINE | egrep "(::[A-Fa-f0-9])|((:[A-Fa-f0-9]{1,4}){2,})" | wc -l `
+
+if [ $RESULT -eq "1" ]; then
+  # IPv4
+  iptables $LINE
+  ERRCODE=$?
+
+elif [ $RESULT6 -eq "1" ]; then
+  # IPv6
+  ip6tables $LINE
+  ERRCODE=$?
+
+else
+  # IPv4 + IPv6
+  iptables $LINE
+  ERRCODE=$?
+  ip6tables $LINE
+  if [ $? -ge "1" ]; then
+    ERRCODE=$?
+  fi
+
+fi
+
+exit $ERRCODE
