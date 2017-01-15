@@ -4,7 +4,7 @@
 
 pkgname=uhub
 pkgver=0.5.0
-pkgrel=5
+pkgrel=6
 pkgdesc="A hub for the ADC network."
 arch=('i686' 'x86_64')
 license=('GPL')
@@ -14,18 +14,23 @@ depends=('python2'
          )
 makedepends=('cmake')
 source=("http://www.extatic.org/downloads/uhub/${pkgname}-${pkgver}-src.tar.bz2"
+        'systemd.patch::https://github.com/janvidar/uhub/commit/70f2a43f676cdda5961950a8d9a21e12d34993f8.patch'
         'uhub.service'
         'uhub.tmpfiles'
-        'uhub.sysuser')
-sha1sums=('f9ef93efd605b13aa3d8d93ae2cb3229b463d2bf'
-          'a72699fb05ba6ad48a3ff0d18d8ef2904c29c6a5'
-          'fa06f77fe35eee8dea6c8d2be81486a2ecc35a5b'
-          'e964b2e946a5662f61f806d0181c8b83834ac688')
+        'uhub.sysuser'
+        )
+sha256sums=('4596250446414e765c62fe81976041c927ea714dc6116792fd33760ac49798f5'
+            '039582eee0d99351212df47b9ad6a94443d8bc05b7f7289d63fffd19014ea561'
+            '4bf39c6265d53e1b08385c8e339c9d7b4449637c29688b1bcd2091e5c2b6c9df'
+            '36645ca1faeb2e1bf12edf736c68e8b70c12aa6dbe3f710acc7823d1addb9050'
+            'dfb3d51d95ef90e49b62cfa49d6a2cef58fb1f119f1d357f76ab1953000e5079'
+            )
 backup=('etc/uhub/motd.txt'
         'etc/uhub/plugins.conf'
         'etc/uhub/rules.txt'
         'etc/uhub/uhub.conf'
-        'etc/uhub/users.conf')
+        'etc/uhub/users.conf'
+        )
 install=uhub.install
 
 prepare() {
@@ -34,6 +39,9 @@ prepare() {
       -i "uhub-${pkgver}/doc/plugins.conf" \
       -i "uhub-${pkgver}/doc/init.d.RedHat/etc/logrotate.d/uhub"
   for i in $(find "uhub-${pkgver}/tools" -type f -name '*.py'); do sed 's|python|python2|g' -i ${i}; done
+
+  cd "uhub-${pkgver}"
+  patch -p1 -i "${srcdir}/systemd.patch"
 }
 
 build() {

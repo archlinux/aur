@@ -16,11 +16,6 @@ post_install() {
 }
 
 post_upgrade() {
-
-  systemd-sysusers uhub.conf
-
-  systemd-tmpfiles --create uhub.conf
-
   install -dm744 -o uhub -g uhub /var/log/uhub
   install -dm744 -o uhub -g uhub /var/lib/uhub
 }
