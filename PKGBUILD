@@ -1,13 +1,12 @@
-# $Id: PKGBUILD 274760 2016-08-28 01:55:59Z heftig $
+# $Id$
 # Maintainer: Jan de Groot <jgc@archlinux.org>
 # Maintainer: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 # Contributor: Tom Gundersen <teg@jklm.no>
 # Contributor: Link Dupont <link@subpop.net>
 
 pkgname=dbus-x11
-_pkgname=dbus
-pkgver=1.10.10
-pkgrel=3
+pkgver=1.10.14
+pkgrel=1
 pkgdesc="Freedesktop.org message bus system"
 url="https://wiki.freedesktop.org/www/Software/dbus/"
 arch=(i686 x86_64)
@@ -15,24 +14,29 @@ license=(GPL custom)
 provides=('libdbus' 'dbus')
 conflicts=('libdbus' 'dbus')
 replaces=(libdbus)
-depends=(libsystemd expat dbus-docs)
-makedepends=(systemd xmlto docbook-xsl python yelp-tools doxygen)
-source=(https://dbus.freedesktop.org/releases/$_pkgname/$_pkgname-$pkgver.tar.gz{,.asc}
+depends=(libsystemd expat)
+makedepends=(systemd xmlto docbook-xsl python yelp-tools doxygen git libx11)
+_commit=449d6b313d2023360cf0af063cf23232901dd00b  # tags/dbus-1.10.14^0
+source=("git+https://anongit.freedesktop.org/git/dbus/dbus#commit=$_commit"
         0001-Drop-Install-sections-from-user-services.patch)
-sha256sums=('9d8f1d069ab4d1a0255d7b400ea3bcef4430c42e729b1012abb2890e3f739a43'
-            'SKIP'
+sha256sums=('SKIP'
             '48135124680bd9ea2d7d2bd2a9f457608d97bd9aa7cb4f4396e26a1c2c91af3e')
 validpgpkeys=('DA98F25C0871C49A59EAFF2C4DE8FF2A63C7CC90'  # Simon McVittie <simon.mcvittie@collabora.co.uk>
               '3C8672A0F49637FE064AC30F52A43A1E4B77B059') # Simon McVittie <simon.mcvittie@collabora.co.uk>
 
+pkgver() {
+  cd ${pkgname%-*}
+  git describe --tags | sed 's/^dbus-//;s/-/+/g'
+}
+
 prepare() {
-  cd $_pkgname-$pkgver
+  cd ${pkgname%-*}
   patch -Np1 -i ../0001-Drop-Install-sections-from-user-services.patch
-  autoreconf -fvi
+  NOCONFIGURE=1 ./autogen.sh
 }
 
 build() {
-  cd $_pkgname-$pkgver
+  cd ${pkgname%-*}
   ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var \
       --libexecdir=/usr/lib/dbus-1.0 --with-dbus-user=dbus \
       --with-system-pid-file=/run/dbus/pid \
@@ -47,19 +51,19 @@ build() {
 }
 
 check() {
-  cd $_pkgname-$pkgver
+  cd ${pkgname%-*}
   make check
 }
 
 package() {
-  cd $_pkgname-$pkgver
+  cd ${pkgname%-*}
 
   make DESTDIR="$pkgdir" install
 
   rm -r "$pkgdir/var/run"
 
-  install -Dm644 COPYING "$pkgdir/usr/share/licenses/$_pkgname/COPYING"
+  install -Dm644 COPYING "$pkgdir/usr/share/licenses/${pkgname%-*}/COPYING"
 
   # Split docs
-  rm -r "$pkgdir/usr/share/doc"
+  mv "$pkgdir/usr/share/doc" "$srcdir"
 }
