@@ -1,7 +1,7 @@
 # Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=ktorrent-git
-pkgver=5.0.1.r2296.3d5742a
+pkgver=5.0.1.r2303.b0c17fb9
 pkgrel=1
 pkgdesc="A powerful BitTorrent client. (GIT version)"
 arch=('i686' 'x86_64')
@@ -38,12 +38,8 @@ optdepends=('kplotting: for stats plugin'
             )
 provides=('ktorrent')
 conflicts=('ktorrent')
-source=('git://anongit.kde.org/ktorrent.git'
-        'kf5kross.patch'
-        )
-sha256sums=('SKIP'
-            'b7f35f74ee2b68a7ebd22ce161e60c52efda36ebceda8cc9dabbadf827f302c0'
-            )
+source=('git://anongit.kde.org/ktorrent.git')
+sha256sums=('SKIP')
 
 pkgver() {
   cd ktorrent
@@ -53,9 +49,6 @@ pkgver() {
 
 prepare() {
   mkdir -p build
-
-  cd ktorrent
-  patch -p1 -i "${srcdir}/kf5kross.patch"
 }
 
 build() {
@@ -65,7 +58,9 @@ build() {
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DKDE_INSTALL_LIBDIR=lib \
     -DBUILD_TESTING=OFF \
-    -DWITH_SYSTEM_GEOIP=ON
+    -DWITH_SYSTEM_GEOIP=ON \
+    -DENABLE_IPFILTER_PLUGIN=OFF
+
   make
 }
 
