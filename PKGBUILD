@@ -1,7 +1,7 @@
 # Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=ktorrent-git
-pkgver=5.0.1.r2303.b0c17fb9
+pkgver=5.0.1.r2304.992b62fc
 pkgrel=1
 pkgdesc="A powerful BitTorrent client. (GIT version)"
 arch=('i686' 'x86_64')
@@ -58,8 +58,7 @@ build() {
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DKDE_INSTALL_LIBDIR=lib \
     -DBUILD_TESTING=OFF \
-    -DWITH_SYSTEM_GEOIP=ON \
-    -DENABLE_IPFILTER_PLUGIN=OFF
+    -DWITH_SYSTEM_GEOIP=ON
 
   make
 }
