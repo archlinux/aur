@@ -1,7 +1,7 @@
 pkgbase = recoll-with-recollq
-	pkgdesc = Full text search tool based on Xapian backend
-	pkgver = 1.22.3
-	pkgrel = 2
+	pkgdesc = Full text search tool based on Xapian backend - this version includes recollq
+	pkgver = 1.22.4
+	pkgrel = 1
 	url = http://www.lesbonscomptes.com/recoll/
 	arch = i686
 	arch = x86_64
@@ -28,7 +28,7 @@ pkgbase = recoll-with-recollq
 	optdepends = perl-image-exiftool: EXIF data from raw files
 	optdepends = aspell-en: English stemming support
 	conflicts = recoll
-	source = http://www.lesbonscomptes.com/recoll/recoll-1.22.3.tar.gz
+	source = http://www.lesbonscomptes.com/recoll/recoll-1.22.4.tar.gz
 	md5sums = afb5dc53b9d2ac0c6bdaeb9cbd399c78
 
 pkgname = recoll-with-recollq
