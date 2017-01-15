@@ -1,7 +1,7 @@
 # Maintainer: Karl-Felix Glatzer <karl.glatzer@gmx.de>
 pkgname=mingw-w64-libvpx
-pkgver=1.6.0
-pkgrel=2
+pkgver=1.6.1
+pkgrel=1
 pkgdesc="VP8 and VP9 codec (mingw-w64)"
 arch=('any')
 url="http://www.webmproject.org/"
@@ -11,7 +11,7 @@ options=(!strip !buildflags staticlibs)
 makedepends=('mingw-w64-gcc' 'yasm' 'git')
 source=(libvpx-$pkgver.tar.gz::https://github.com/webmproject/libvpx/archive/v$pkgver.tar.gz
         'configure.patch')
-sha256sums=('e2fc00c9f60c76f91a1cde16a2356e33a45b76a5a5a1370df65fd57052a4994a'
+sha256sums=('cda8bb6f0e4848c018177d3a576fa83ed96d762554d7010fe4cfb9d70c22e588'
             '73ffee7c361682e6483b2209b2a55887c29c23174b994229bbe0642e09214093')
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
