@@ -24,7 +24,7 @@ if [ "$CARCH" = 'i686' ]; then
   sha256sums[0]='a9a6070e3ec3630ddaa4ff3d5b766ee4a9cc44e2523da6a992b626fd63e8460d'
 fi
 
-source=("https://github.com/crotok/streamstudio-releases/raw/master/releases/${pkgver}/streamstudio-${_platform}.zip"
+source=("https://download.streamstudio.cc/streamstudio-${_platform}.zip"
         "streamstudio.desktop"
         "streamstudio.install")
 
