@@ -10,7 +10,6 @@ pkgbase = encryptpad
 	depends = qt5-base
 	depends = hicolor-icon-theme
 	depends = zlib
-	depends = botan-stable
 	options = !makeflags
 	source = https://github.com/evpo/EncryptPad/releases/download/v0.3.2.5/encryptpad0_3_2_3_src.tar.gz
 	source = https://github.com/evpo/EncryptPad/releases/download/v0.3.2.5/encryptpad0_3_2_3_src.tar.gz.asc

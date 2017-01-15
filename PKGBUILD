@@ -8,7 +8,7 @@ pkgdesc="Minimalist secure text editor and binary encryptor that implements RFC 
 arch=(i686 x86_64)
 url="https://github.com/evpo/${_pkgname}"
 license=('GPL2')
-depends=('qt5-base' 'hicolor-icon-theme' 'zlib' 'botan-stable')
+depends=('qt5-base' 'hicolor-icon-theme' 'zlib')
 makedepends=('git')
 options=('!makeflags')
 validpgpkeys=('634BFC0CCC426C74389D89310F1CFF71A2813E85')
@@ -21,7 +21,7 @@ prepare() {
 
 build() {
   cd "$srcdir/encryptpad$(echo -n $pkgver | sed -r 's/\./_/g')_src"
-  ./configure.sh --all --use-system-libs
+  ./configure.sh --all
 }
 
 package() {
