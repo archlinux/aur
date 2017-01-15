@@ -1,0 +1,14 @@
+[Unit]
+Description=3D Printing Web Server
+After=network.target
+
+[Service]
+User=octoprint
+Group=octoprint
+Type=simple
+ExecStart=/usr/bin/octoprint
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
+
