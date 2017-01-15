@@ -1,26 +1,35 @@
 # Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=uhub-git
-pkgver=0.5.0.23.gdc80644
+pkgver=0.5.0.26.g90d05c9
 pkgrel=1
 pkgdesc="A hub for the ADC network. (GIT Version)"
 arch=('i686' 'x86_64')
 license=('LGPL')
-url="http://www.uhub.org/"
-depends=('libsystemd' 'python2')
-makedepends=('cmake' 'git')
+url='http://www.uhub.org'
+depends=('libsystemd'
+         'python2'
+         )
+makedepends=('cmake'
+             'git'
+             )
 source=('git+https://github.com/janvidar/uhub.git'
+        'uhub.sysuser'
         'uhub.service'
-        'uhub.tmpfiles')
-sha1sums=('SKIP'
-          'a72699fb05ba6ad48a3ff0d18d8ef2904c29c6a5'
-          'fa06f77fe35eee8dea6c8d2be81486a2ecc35a5b')
+        'uhub.tmpfiles'
+        )
+sha256sums=('SKIP'
+            'dfb3d51d95ef90e49b62cfa49d6a2cef58fb1f119f1d357f76ab1953000e5079'
+            '4bf39c6265d53e1b08385c8e339c9d7b4449637c29688b1bcd2091e5c2b6c9df'
+            '36645ca1faeb2e1bf12edf736c68e8b70c12aa6dbe3f710acc7823d1addb9050'
+            )
 install=uhub-git.install
 backup=('etc/uhub/motd.txt'
         'etc/uhub/plugins.conf'
         'etc/uhub/rules.txt'
         'etc/uhub/uhub.conf'
-        'etc/uhub/users.conf')
+        'etc/uhub/users.conf'
+        )
 
 pkgver() {
   cd uhub
@@ -41,6 +50,7 @@ build() {
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DSYSTEMD_SUPPORT=ON
+
   make
 }
 
@@ -49,9 +59,9 @@ package() {
   install -Dm644 uhub/doc/users.conf "${pkgdir}/etc/uhub/users.conf"
   touch "${pkgdir}/etc/uhub/motd.txt"
 
-  install -Dm644 ../uhub.service "${pkgdir}/usr/lib/systemd/system/uhub.service"
-  install -Dm644 ../uhub.tmpfiles "${pkgdir}/usr/lib/tmpfiles.d/uhub.conf"
-  install -Dm644 ../uhub.sysuser "${pkgdir}/usr/lib/sysusers.d/uhub.conf"
+  install -Dm644 uhub.service "${pkgdir}/usr/lib/systemd/system/uhub.service"
+  install -Dm644 uhub.tmpfiles "${pkgdir}/usr/lib/tmpfiles.d/uhub.conf"
+  install -Dm644 uhub.sysuser "${pkgdir}/usr/lib/sysusers.d/uhub.conf"
 
   install -Dm644 uhub/doc/init.d.RedHat/etc/logrotate.d/uhub "${pkgdir}/etc/logrotate.d/uhub"
 
