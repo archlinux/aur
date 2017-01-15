@@ -2,13 +2,13 @@
 
 pkgname=ttf-merriweather
 pkgver=1.583
-pkgrel=1
+pkgrel=2
 pkgdesc='A typeface that is pleasant to read on screens by Sorkin Type Co'
 arch=('any')
 url='https://fonts.google.com/specimen/Merriweather'
 license=('custom:SIL Open Font License v1.1')
 depends=('fontconfig' 'xorg-fonts-encodings' 'xorg-font-utils')
-conflicts=('ttf-google-fonts-git' 'ttf-google-fonts-opinionated-git')
+conflicts=('ttf-google-fonts-git' 'ttf-google-fonts-opinionated-git' 'ttf-merriweather-ib')
 install="${pkgname}.install"
 source=('https://github.com/google/fonts/raw/master/ofl/merriweather/Merriweather-Black.ttf'
         'https://github.com/google/fonts/raw/master/ofl/merriweather/Merriweather-BlackItalic.ttf'
@@ -27,7 +27,7 @@ sha256sums=('af3e0584567c1c4c65132740df5d4b276d906b74ebe77ec38c0d9bd1db2c10be'
             'c2edab6e8962dd88fd4f39d598f77066d9d0c8f213bbc7f4e2abb524b028ed31'
             'e7b49e08cf8ab822490ed067d40a9e06691b94877d56d5ced8384fb5f5571a5b'
             '4e3867110091c1220b4d370c8ecef935724b59292a4a54a8b63d9d911e01f560'
-            'cc9992063cd0f818e6d754453c43b34907055422b06858b2c7bc82d690a0bccf')
+            'SKIP')
 
 package() {
   install -dm 755 "${pkgdir}/usr/share/fonts/TTF"
