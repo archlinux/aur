@@ -11,6 +11,7 @@ url='http://kwooty.sourceforge.net'
 license=('GPL')
 depends=('kdelibs4support'
          'kcmutils'
+         'kdesignerplugin'
          'hicolor-icon-theme'
          )
 makedepends=('git'
@@ -24,7 +25,7 @@ optdepends=('unrar: automatic RAR-archive extraction'
 conflicts=('kwooty')
 provides=('kwooty')
 source=('git://anongit.kde.org/kwooty#branch=frameworks')
-sha1sums=('SKIP')
+sha256sums=('SKIP')
 
 pkgver() {
   cd kwooty
@@ -44,6 +45,7 @@ build() {
     -DKDE_INSTALL_LIBDIR=lib \
     -DKDE_INSTALL_USE_QT_SYS_PATHS=ON \
     -DBUILD_TESTING=OFF
+    
   make
 }
 
