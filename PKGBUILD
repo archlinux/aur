@@ -10,8 +10,8 @@
 
 _pkgname=playonlinux5
 pkgname=$_pkgname-git
-pkgver=r1489.21c3c626
-pkgrel=1
+pkgver=r1491.09432248
+pkgrel=2
 epoch=2
 pkgdesc="GUI for managing Windows programs under linux (development version based on Java)"
 arch=('any')
@@ -44,10 +44,18 @@ build() {
 
   # Set environment
   # Use path to Java 8 for users not defaulted to Java 8 yet
-  if (( $(archlinux-java get | cut -d "-" -f2) < 8 )); then
-	export JAVA_HOME=$(ls /usr/lib/jvm/java-{8,9}-*/bin/javac 2>/dev/null | cut -d "/" -f-5 | awk '/-8-openjdk/')
-  else
-	export JAVA_HOME=$(ls /usr/lib/jvm/java-{8,9}-*/bin/javac 2>/dev/null | cut -d "/" -f-5 | awk '/-8-jdk/')
+  if [[ $(archlinux-java get | cut -d "-" -f2) < 8 ]]; then
+
+	# test for openjdk, fall back on oracle jdk if not present
+	openjdk=$(ls /usr/lib/jvm/java-8-*/bin/javac 2>/dev/null | cut -d "/" -f-5 | awk '/-8-openjdk/')
+	oraclejdk=$(ls /usr/lib/jvm/java-8-*/bin/javac 2>/dev/null | cut -d "/" -f-5 | awk '/-8-jdk/')
+
+	if [[ "${openjdk}" != "" ]]; then
+		export JAVA_HOME=$(ls /usr/lib/jvm/java-8-*/bin/javac 2>/dev/null | cut -d "/" -f-5 | awk '/-openjdk/')
+	elif [[ "${oraclejdk}" != "" ]]; then
+		export JAVA_HOME=$(ls /usr/lib/jvm/java-8-*/bin/javac 2>/dev/null | cut -d "/" -f-5 | awk '/-jdk/')
+	fi
+
   fi
 
   # Build
