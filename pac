@@ -12,7 +12,7 @@ __author__ = 'Ricardo Band'
 __copyright__ = 'Copyright 2017, Ricardo band'
 __credits__ = ['Ricardo Band']
 __license__ = 'MIT'
-__version__ = '1.0.1'
+__version__ = '1.0.2'
 __maintainer__ = 'Ricardo Band'
 __email__ = 'email@ricardo.band'
 
@@ -131,7 +131,7 @@ def parse_num(numbers: str):
     for n in numbers.split(' '):
         if '-' in n:
             start, end = n.split('-')
-            if !(start.isdecimal() and end.isdecimal()):
+            if not (start.isdecimal() and end.isdecimal()):
                 sys.exit(f'{start} or {end} is not a number')
             # TODO: I'm pretty sure this can be optimized
             for i in list(range(int(start) - 1, int(end))):
