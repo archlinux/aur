@@ -12,8 +12,8 @@
 
 pkgname=recoll-with-recollq
 _pkgname=recoll
-pkgver=1.22.3
-pkgrel=2
+pkgver=1.22.4
+pkgrel=1
 pkgdesc="Full text search tool based on Xapian backend - this version includes recollq"
 arch=('i686' 'x86_64')
 url="http://www.lesbonscomptes.com/recoll/"
