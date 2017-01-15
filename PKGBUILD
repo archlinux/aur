@@ -7,7 +7,7 @@ pkgname='ros-indigo-gazebo-plugins'
 pkgver='2.6.1'
 _pkgver_patch=0
 arch=('any')
-pkgrel=1
+pkgrel=0
 license=('BSD, Apache 2.0')
 
 ros_makedepends=(ros-indigo-geometry-msgs
