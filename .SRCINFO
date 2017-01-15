@@ -1,8 +1,8 @@
 pkgbase = pacli-simple-git
 	pkgdesc = A simple and interative Bash Frontend for Pacman/Yaourt
 	pkgver = 1.2
-	pkgrel = 1
-	url = https://github.com/excalibur1234/pacli-simple-git
+	pkgrel = 2
+	url = https://github.com/excalibur1234/pacli-simple
 	arch = any
 	license = GPL3
 	makedepends = git
@@ -13,7 +13,7 @@ pkgbase = pacli-simple-git
 	optdepends = update-notifier: Automatically get notified when updates are available
 	provides = pacli
 	conflicts = pacli
-	source = git://github.com/excalibur1234/pacli-simple-git
+	source = git://github.com/excalibur1234/pacli-simple
 	md5sums = SKIP
 
 pkgname = pacli-simple-git
