@@ -1,6 +1,6 @@
 pkgbase = powerline-i3-git
 	pkgdesc = The ultimate statusline/prompt utility. A fork containing more features for the i3 window manager.
-	pkgver = 1.2.1
+	pkgver = 1.2.3
 	pkgrel = 1
 	url = https://github.com/ph111p/powerline
 	install = powerline-i3-git.install
@@ -19,6 +19,8 @@ pkgbase = powerline-i3-git
 	optdepends = python-pyalsaaudio: volume segment
 	optdepends = python-psutil: cpu load segment
 	optdepends = python-pygit2: better git performance of the vcs segment
+	optdepends = python-google-api-python-client: Google Calendar support for the appoints segment
+	optdepends = python-gflags: Google Calendar support for the appoints segment
 	provides = powerline-i3
 	conflicts = powerline,
 	conflicts = python-powerline
