@@ -11,7 +11,7 @@ _instructions() {
   ${blue}->${all_off} You also need to specify amuleweb password.
      Please follow ${bold}https://wiki.archlinux.org/index.php/AMule${all_off} for more information.
   ${blue}->${all_off} Service '${bold}amule${all_off}' can be started as '${bold}systemctl start amule${all_off}'.
-  ${blue}->${all_off} Service '${bold}amule@${all_off}' (by user) can be started as '${bold}systemctl start amule@${all_off}'
+  ${blue}->${all_off} Service '${bold}amule@${all_off}' (by user) can be started as '${bold}systemctl start amule@USER${all_off}'
   ${blue}->${all_off} Service '${bold}amuleweb${all_off}' can be started as '${bold}systemctl start amuleweb${all_off}'.\n"
 }
 
@@ -45,8 +45,6 @@ post_upgrade() {
   if [ -d /var/lib/amuled ]; then
     _instructions_if_amuled_exist
   fi
-
-  systemd-sysusers amule.conf
 
   install -dm744 -o amule -g amule /var/lib/amule
 }
