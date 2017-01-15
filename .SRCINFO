@@ -28,7 +28,7 @@ pkgbase = linux-bld
 	source = http://algo.ing.unimo.it/people/paolo/disk_sched/patches/4.8.0-v8r4/0002-block-introduce-the-BFQ-v7r11-I-O-sched-to-be-ported.patch
 	source = http://algo.ing.unimo.it/people/paolo/disk_sched/patches/4.8.0-v8r4/0003-block-bfq-add-Early-Queue-Merge-EQM-to-BFQ-v7r11-to-.patch
 	source = http://algo.ing.unimo.it/people/paolo/disk_sched/patches/4.8.0-v8r4/0004-Turn-BFQ-v7r11-into-BFQ-v8r4-for-4.8.0.patch
-	source = https://raw.githubusercontent.com/sirlucjan/aur/master/linux-bfq/0005-BFQ-update-to-v8r7.patch
+	source = https://github.com/linusw/linux-bfq/compare/f6547d1...f211d5c.patch
 	source = https://raw.githubusercontent.com/rmullick/bld-patches/master/BLD-4.8.patch
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
@@ -48,7 +48,7 @@ pkgbase = linux-bld
 	sha256sums = c8d17a7893d5780fd0c90311470160dcc842b81621b30671150e2e3224be86d2
 	sha256sums = e47ea5b1c2f20cfade4e6a85bff1320dac84ac638e48ef4eec7285fe9e1e1def
 	sha256sums = c3c96e304aef378f0cc6e1fb18eeabe176e6ba918d13060c105f3d8cabc85f59
-	sha256sums = cf440c1156a6d4ff8060dd4393297c8ffc5417f1f7cd21007370b8e94a4790c0
+	sha256sums = 536b8557afab5e6c482a7c588bf3cf59d8f3dfc25abf5f554ee06b1b2558d2fd
 	sha256sums = 16a5d04bbd76d2dc79473b83af434aa54a72f41f0677823c0381762f75ccb33c
 
 pkgname = linux-bld

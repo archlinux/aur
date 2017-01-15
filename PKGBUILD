@@ -38,7 +38,7 @@ source=("http://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         "${_bfqpath}/0003-block-bfq-add-Early-Queue-Merge-EQM-to-BFQ-${_bfqversion_old}-to-.patch"
         "${_bfqpath}/0004-Turn-BFQ-${_bfqversion_old}-into-BFQ-${_bfqversion}-for-${_pkgver2}.patch"
         # patches from https://github.com/linusw/linux-bfq/commits/bfq-v8
-        "https://raw.githubusercontent.com/sirlucjan/aur/master/linux-bfq/0005-BFQ-update-to-v8r7.patch"
+        "https://github.com/linusw/linux-bfq/compare/f6547d1...f211d5c.patch"
         # main BLD patch
         "https://raw.githubusercontent.com/rmullick/bld-patches/master/${_BLDpatch}"
         )
@@ -59,7 +59,7 @@ sha256sums=('3e9150065f193d3d94bcf46a1fe9f033c7ef7122ab71d75a7fb5a2f0c9a7e11a'
             'c8d17a7893d5780fd0c90311470160dcc842b81621b30671150e2e3224be86d2'
             'e47ea5b1c2f20cfade4e6a85bff1320dac84ac638e48ef4eec7285fe9e1e1def'
             'c3c96e304aef378f0cc6e1fb18eeabe176e6ba918d13060c105f3d8cabc85f59'
-            'cf440c1156a6d4ff8060dd4393297c8ffc5417f1f7cd21007370b8e94a4790c0'
+            '536b8557afab5e6c482a7c588bf3cf59d8f3dfc25abf5f554ee06b1b2558d2fd'
             '16a5d04bbd76d2dc79473b83af434aa54a72f41f0677823c0381762f75ccb33c')
 
 validpgpkeys=(
@@ -98,7 +98,7 @@ prepare() {
   patch -Np1 -i "${srcdir}/${_gcc_patch}"
 
   msg "Patching source with BFQ patches"
-  for p in $(ls ${srcdir}/000*BFQ*.patch); do
+  for p in $(ls ${srcdir}/000*BFQ*.patch ${srcdir}/f6547d1...f211d5c.patch); do
       patch -Np1 -i "$p"
   done
 
