@@ -29,7 +29,7 @@ pkgbase = recoll-with-recollq
 	optdepends = aspell-en: English stemming support
 	conflicts = recoll
 	source = http://www.lesbonscomptes.com/recoll/recoll-1.22.4.tar.gz
-	md5sums = afb5dc53b9d2ac0c6bdaeb9cbd399c78
+	md5sums = cf96aac590707790cb8a9a64f6ff8d7b
 
 pkgname = recoll-with-recollq
 
