@@ -1,0 +1,8 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=jotasync
+Exec=/usr/bin/jotasync
+Icon=jotasync
+Categories=System;
+Keywords=sync;rsync;backup
