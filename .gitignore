@@ -3,3 +3,5 @@ pkg
 *.xz
 *.zip
 *.png
+*.md
+yabs.sh
