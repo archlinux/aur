@@ -1,15 +1,20 @@
 pkgname=mldonkey-ed2kad-daemon-git
-pkgver=3.1.4.244.gcca5f2d
+pkgver=3.1.4.249.gf8d595df
 pkgrel=1
-pkgdesc='A multi-network P2P client. Daemon function, only ED2K/KAD (GIT Version)'
+pkgdesc="A multi-network P2P client. Daemon function, only ED2K/KAD. (GIT Version)"
 arch=('i686' 'x86_64')
-url="http://mldonkey.sourceforge.net/"
+url='http://mldonkey.sourceforge.net'
 license=('GPL')
-depends=('bzip2' 'miniupnpc' 'libnatpmp' 'file')
-makedepends=('camlp4' 'git')
+depends=('bzip2'
+         'miniupnpc'
+         'libnatpmp'
+         'file'
+         )
+makedepends=('camlp4'
+             'git'
+             )
 conflicts=('mldonkey')
 provides=('mldonkey')
-install="mldonkey-daemon.install"
 source=('git+http://repo.or.cz/r/mldonkey.git#branch=next'
         'mldonkey.logrotate'
         'mldonkey.service'
@@ -22,6 +27,8 @@ sha1sums=('SKIP'
           '5384a01d909b45ea09112bbeca7b225efc90bed8'
           'c6e4bb5dbca6e3e0a2942e6e2483b0d688f7ecdb'
           'f7ca95475ae9c65260aa45d30ce7af4c6d2ef280')
+install=mldonkey-daemon.install
+
 pkgver() {
   cd mldonkey
   echo "$(git describe --long --tags | tr - . | sed 's|release.||g')"
@@ -29,9 +36,18 @@ pkgver() {
 
 build() {
   cd mldonkey
-  ./configure --prefix=/usr --enable-minimum --enable-upnp-natpmp --enable-bzip2 --enable-magic --enable-donkeysui --disable-rpath --enable-checks --enable-pthread
+  ./configure \
+    --prefix=/usr \
+    --enable-minimum \
+    --enable-upnp-natpmp \
+    --enable-bzip2 \
+    --enable-magic \
+    --enable-donkeysui \
+    --disable-rpath \
+    --enable-checks \
+    --enable-pthread
   make depend
-  make
+  make -j1
   make utils
 }
 

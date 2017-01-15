@@ -29,9 +29,6 @@ post_install() {
 }
 
 post_upgrade() {
-  systemd-sysusers mldonkey.conf
-  systemd-tmpfiles --create mldonkey.conf
-
   if [ ! -f /var/lib/mldonkey/.mldonkey/downloads.ini ]; then
     _downloads_ini_not_found
   fi
