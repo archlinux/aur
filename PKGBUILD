@@ -2,13 +2,13 @@
 
 pkgname=ttf-merriweather-sans
 pkgver=1.006
-pkgrel=1
+pkgrel=2
 pkgdesc='A sans-serif typeface that is pleasant to read on screens by Sorkin Type Co'
 arch=('any')
 url='https://fonts.google.com/specimen/Merriweather+Sans'
 license=('custom:SIL Open Font License v1.1')
 depends=('fontconfig' 'xorg-fonts-encodings' 'xorg-font-utils')
-conflicts=('ttf-google-fonts-git' 'ttf-google-fonts-opinionated-git')
+conflicts=('ttf-google-fonts-git' 'ttf-google-fonts-opinionated-git' 'ttf-merriweather-sans-ib')
 install="${pkgname}.install"
 source=('https://github.com/google/fonts/raw/master/ofl/merriweathersans/MerriweatherSans-Bold.ttf'
         'https://github.com/google/fonts/raw/master/ofl/merriweathersans/MerriweatherSans-BoldItalic.ttf'
@@ -27,7 +27,7 @@ sha256sums=('9b17d0769b7f16eae06168007dfe129ca1be4e582d972949103daf9be393ba87'
             '296f4c55d4df693b2ee8240184b2d8ff655c5f32944597f7733965dc76840d40'
             'ff3b59fa8aca71e75e9aa329bf1e67bcf2fb4f5fa23edefba010c024941229f7'
             'd8ca7e8e39b7e486d7545a0bbefdfe08dfd9b2ddaa672be07f48b16c46dbc24b'
-            '22c4588bdc14621220ba14515d52041d1312541e034a15d1f5c2a88fc6075276')
+            'SKIP')
 
 package() {
   install -dm 755 "${pkgdir}/usr/share/fonts/TTF"
