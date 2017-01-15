@@ -1,0 +1,29 @@
+From 52f6fe3e0638691e910b668a1eaf6d6c80b48eec Mon Sep 17 00:00:00 2001
+From: Brandon Weeks <bweeks@google.com>
+Date: Tue, 3 Jan 2017 08:47:33 -0800
+Subject: [PATCH] Add version test for monkey_patch_asyncio() (#5127)
+
+* Add version test for monkey_patch_asyncio()
+
+* Update __main__.py
+---
+ homeassistant/__main__.py | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/homeassistant/__main__.py b/homeassistant/__main__.py
+index 510b98b6b..d9ab410b7 100644
+--- a/homeassistant/__main__.py
++++ b/homeassistant/__main__.py
+@@ -356,7 +356,8 @@ def try_to_restart() -> None:
+ 
+ def main() -> int:
+     """Start Home Assistant."""
+-    monkey_patch_asyncio()
++    if sys.version_info[:3] < (3, 5, 3):
++        monkey_patch_asyncio()
+ 
+     validate_python()
+ 
+-- 
+2.11.0
+
