@@ -3,7 +3,7 @@
 
 pkgname=openlp
 pkgver=2.4.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Church presentation software."
 arch=('any')
 url='http://openlp.org/'
@@ -29,7 +29,7 @@ package() {
   python setup.py install --root="$pkgdir/" --optimize=1
   mv "$pkgdir/usr/bin/openlp"{.py,}
 
-  echo "$pkgver" > "$pkgdir/usr/lib/python3.5/site-packages/openlp/.version"
+  echo "$pkgver" > "$pkgdir/usr/lib/python3.6/site-packages/openlp/.version"
 
   install -Dm0755 "$srcdir/openlp.sh" "$pkgdir/etc/profile.d/openlp.sh"
   install -Dm0644 "resources/openlp.desktop" "$pkgdir/usr/share/applications/openlp.desktop"
