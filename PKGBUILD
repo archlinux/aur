@@ -1,9 +1,9 @@
-# Maintainer: Thomas Berryhill <tb01110100@gmail.com>
-# Contributor: Bastien Dejean <baskerville@lavabit.com>
+# Maintainer: Thomas Berryhill <oats@oatberry.me>
+# Contributor: Bastien Dejean <nihilhill@gmail.com>
 
 _pkgname=xdo
 pkgname=${_pkgname}-git
-pkgver=0
+pkgver=0.5.4
 pkgrel=1
 pkgdesc='Small X utility to perform elementary actions on windows'
 arch=('i686' 'x86_64')
