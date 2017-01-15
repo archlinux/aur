@@ -1,0 +1,4 @@
+clickhouse-*.pkg.tar.xz
+pkg/
+src/
+v*.tar.gz
