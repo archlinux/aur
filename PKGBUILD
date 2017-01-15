@@ -1,22 +1,20 @@
 # Maintainer: Juliette Monsel <j_4321@protonmail.com>
 pkgname=bracelet-generator
-pkgver=1.3.1
-pkgrel=4
-pkgdesc="A friendship bracelet pattern designer"
+pkgver=1.4.0
+pkgrel=1
+pkgdesc="Friendship bracelet pattern designer"
 arch=('any')
-url="http://braceletgenerator.sourceforge.net/index.html"
+url="https://braceletgenerator.sourceforge.io/"
 license=('GPL3')
-depends=('python2' 'tk' 'python-pillow' 'gettext' 'desktop-file-utils')
+makedepends=('python-setuptools' )
+depends=('tk' 'python-pillow' 'gettext' 'desktop-file-utils' 'shared-mime-info')
 optdepends=('ghostscript: export pattern to .png or .jpeg',
             'zenity: nicer file browser and color chooser')
-install=$pkgname.install
-#changelog=
-source=("$pkgname-$pkgver-archlinux-src.tar.xz::https://sourceforge.net/projects/braceletgenerator/files/BraceletGenerator-1.3/$pkgname-$pkgver-archlinux-src.tar.xz/download")
-sha512sums=('36aaf73c6112bdcfda2fa7e3c1454ca6d57acf92cce8bf9b2c2b13638db521681ce857e99ad7bbbe32fbe667e47821fbe4d43bac51533b8d230ead1581704c49')
+source=("$pkgname-$pkgver-src.tar.xz::https://sourceforge.net/projects/braceletgenerator/files/BraceletGenerator-1.4/$pkgname-$pkgver-src.tar.xz/download")
+sha512sums=('5d97d3c970cdf649f9f2ab39b81301b54f931af001ea2b793b340960d3ec1823321211a7576594a0f564963379a318ed9fb2c2f76d796a393b88ddc7c5bba83a')
 package() {
     cd "$srcdir/$pkgname-$pkgver"
     python3 setup.py install --root="$pkgdir/" --prefix=/usr --optimize=1;
-    install -D -m644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-    install -D -m644 $pkgname.desktop "${pkgdir}/usr/share/applications/$pkgname.desktop"
-    install -D -m644 $pkgname.svg "${pkgdir}/usr/share/pixmaps/$pkgname.svg"
+    install -D -m644 COPYING.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    install -D -m644 bracelet-generator.sharedmimeinfo  "${pkgdir}/usr/share/mime/packages/bracelet-generator.xml"
 }
