@@ -1,7 +1,7 @@
 # Maintainer: Marcus Behrendt <marcus dot behrendt dot eightysix(in numbers) at bigbrothergoogle dot com
 
 pkgname=arc-kde-git
-pkgver=20161202
+pkgver=20170112
 pkgrel=1
 pkgdesc='Arc customization mainly for Plasma 5 (git version)'
 arch=('any')
