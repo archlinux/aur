@@ -1,5 +1,5 @@
 pkgname=litecoin-bin
-pkgver=0.10.4.0
+pkgver=0.13.2
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.litecoin.org/"
@@ -7,13 +7,14 @@ license=('MIT')
 pkgdesc="Peer-to-peer digital currency, official binary release (includes litecoin-qt and litecoind)"
 
 if [ ${CARCH} == 'x86_64' ]; then
-  _bits=64
-  sha256sums=(2d98c30ab2ab1c1846fe59f162c297485a81f94e87ae43d60582c6559a3d4e60)
+  _pkg_arch=x86_64
+  sha256sums=(63c82a4d0d526b1d058c74e7da12186ae47dd86616ce95b195263e1fda2ee230)
 else
-  _bits=32
-  sha256sums=(af9740393a35103ca3e5256bae082975894fa12f0d416438f73d2b8f1372aed2)
+  _pkg_arch=i686-pc
+  sha256sums=(b96830643e8df764c6569249fa860bc5ecefcfac312530e1bb79d367e74e88a7)
 fi
-source=(https://download.litecoin.org/litecoin-$pkgver/linux/litecoin-$pkgver-linux$_bits.tar.gz)
+
+source=(https://download.litecoin.org/litecoin-$pkgver/linux/litecoin-$pkgver-$_pkg_arch-linux-gnu.tar.gz)
 
 options=('!strip')
 depends=(
@@ -37,7 +38,7 @@ depends=(
   qt4
   util-linux
   zlib
-) 
+)
 
 package() {
   cd "$srcdir/litecoin-$pkgver/bin"
