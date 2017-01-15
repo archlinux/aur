@@ -1,7 +1,7 @@
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=vim-fzf
-pkgver=0.15.9
+pkgver=0.16.0
 pkgrel=1
 pkgdesc="Fuzzy finder for Vim, inspired by ctrlp.vim and the likes"
 arch=('any')
@@ -10,7 +10,7 @@ groups=('vim-plugins')
 url="https://github.com/junegunn/fzf"
 license=('MIT')
 source=($pkgname-$pkgver.tar.gz::https://codeload.github.com/junegunn/${pkgname##vim-}/tar.gz/$pkgver)
-sha256sums=('58069729ee67f94cf31bf62b1734a70db323f1c4367bbffaa9edf9ec9cb5a075')
+sha256sums=('1c6902c5985475f410cbfefc6887ec519fd54d90b84710dd65e1ca562e8611a4')
 install=vimdoc.install
 
 prepare() {
