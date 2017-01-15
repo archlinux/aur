@@ -3,8 +3,7 @@
 # Contributor: ilikenwf
 # Contributor: American_Jesus
 pkgname=palemoon-beta
-pkgver=27.0.0_beta3
-_tagver=27.0.0b3r2
+pkgver=27.1.0b2
 pkgrel=1
 pkgdesc="Open source web browser based on Firefox focusing on efficiency."
 arch=('i686' 'x86_64')
@@ -20,18 +19,18 @@ optdepends=('libpulse: PulseAudio audio driver'
             'gst-libav: h.264 support'
             'gst-plugins-good: h.264 support')
 conflicts=('palemoon' 'palemoon-bin')
-source=(git+"https://github.com/MoonchildProductions/Pale-Moon#tag=$_tagver" #pm-proper
-        #git+"https://github.com/MoonchildProductions/Tycho#tag=Tycho_alpha2" #tycho
-        mozconfig.in)
+#source=(git+"https://github.com/MoonchildProductions/Pale-Moon#tag=$_tagver" #pm-proper
+source=(git+"https://github.com/MoonchildProductions/Pale-Moon#tag=$pkgver"
+        mozconfig.in
+        sed.patch)
 md5sums=('SKIP'
-         'beec8aa0c30d66b42e52667d0ccfce62')
+         'beec8aa0c30d66b42e52667d0ccfce62'
+         '048a6f60fe43e5c3e066fe9181e1a078')
 
 prepare() {
   sed 's#%SRCDIR%#'"$srcdir"'#g' mozconfig.in > mozconfig
   cd Pale-Moon
-
-  chmod -R +x build/autoconf/* python/*
-  find . -name '*.sh' -exec chmod +x {} \;
+  patch -p1 -i "$srcdir/sed.patch"
 }
 
 build() {
