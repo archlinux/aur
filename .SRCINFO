@@ -1,0 +1,15 @@
+pkgbase = otf-yanone-kaffeesatz
+	pkgdesc = The free OpenType Yanone Kaffeesatz font
+	pkgver = 1.0
+	pkgrel = 1
+	url = http://www.yanone.de/typedesign/kaffeesatz/
+	install = otf-yanone-kaffeesatz.install
+	arch = any
+	license = Creative Commons
+	depends = fontconfig
+	depends = xorg-font-utils
+	source = https://www.yanone.de/2015/data/UIdownloads/Yanone%20Kaffeesatz.zip
+	md5sums = e1bb666675f715e0c01ceb086a7784cb
+
+pkgname = otf-yanone-kaffeesatz
+
