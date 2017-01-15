@@ -2,13 +2,13 @@
 
 pkgname=ttf-oswald
 pkgver=4.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Sans-serif typeface from Google by Vernon Adams'
 arch=('any')
 url='https://fonts.google.com/specimen/Oswald'
 license=('custom:SIL Open Font License v1.1')
 depends=('fontconfig' 'xorg-fonts-encodings' 'xorg-font-utils')
-conflicts=('ttf-google-fonts-git' 'ttf-google-fonts-opinionated-git')
+conflicts=('ttf-google-fonts-git' 'ttf-google-fonts-opinionated-git' 'otf-oswald-ib')
 install="${pkgname}.install"
 source=('https://github.com/google/fonts/raw/master/ofl/oswald/Oswald-Bold.ttf'
         'https://github.com/google/fonts/raw/master/ofl/oswald/Oswald-ExtraLight.ttf'
@@ -23,7 +23,7 @@ sha256sums=('31a2557166d9fe95edecdf6366c0135999d81a8aac72b13aa083068bd98c57de'
             '04a9261c6a8aa293d355e78879aa3ad85b179e710431c12cb0abaf05d6d3db23'
             '22cfdd1e22e48479992ca4a7e673a50905d5cdbc68413893d8106eb99e53e979'
             '30b8ce6f334bc354078bbd966a8d6d7c01bf6201e75b6994997ca0afd48aa5f8'
-            'fac1ddc0a0264245b37fe869ffcd92befc93129633525c545dab06ae8e22aa99')
+            'SKIP')
 
 package() {
   install -dm 755 "${pkgdir}/usr/share/fonts/TTF"
