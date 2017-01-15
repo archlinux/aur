@@ -2,7 +2,7 @@
 
 pkgname=visual-studio-code
 pkgver=1.8.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Editor for building and debugging modern web and cloud applications (official binary version)"
 arch=('x86_64' 'i686')
 url="https://code.visualstudio.com/"
