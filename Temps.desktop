@@ -7,4 +7,3 @@ Terminal=false
 Type=Application
 StartupNotify=true
 Categories=Utility;Core;
-Name[fr_BE]=Temps.desktop
