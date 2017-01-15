@@ -2,32 +2,27 @@
 
 pkgname=kodi-addon-screensaver-apple-aerial
 _pkgname=screensaver.atv4
-pkgver=r27.49f1d19
-pkgrel=2
+_commit=62806cd4ffe7aee4d91a988151cf96443704292d
+pkgver=1.3.3
+pkgrel=1
 pkgdesc="The Apple TV4 aerial screensaver for kodi"
-arch=('i686' 'x86_64')
+arch=('any')
 url='https://github.com/enen92/screensaver.atv4'
 license=('GPL')
 depends=('kodi')
 makedepends=('git')
-source=("git://github.com/enen92/screensaver.atv4")
-sha256sums=('SKIP')
+source=("$pkgname-$pkgver.zip::https://codeload.github.com/enen92/screensaver.atv4/zip/$_commit")
+sha256sums=('44f57dfe2816064054327fea84666edac8d8819fe7af010dffa5b1bcd993dffe')
 install=readme.install
-
-pkgver() {
-  cd "$_pkgname"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
 
 package() {
   install -dm755 "$pkgdir/usr/share/kodi/addons"
   install -dm755 "$pkgdir/usr/share/licenses/$_pkgname"
-  cp -a "$srcdir/$_pkgname" "$pkgdir/usr/share/kodi/addons/$_pkgname"
+  cp -a "$srcdir/$_pkgname-$_commit" "$pkgdir/usr/share/kodi/addons/$_pkgname"
 
   # clean up
   rm -rf "$pkgdir/usr/share/kodi/addons/$_pkgname/.git"
   rm -f "$pkgdir/usr/share/kodi/addons/$_pkgname/resources/.DS_Store"
-  rm -f "$pkgdir/usr/share/kodi/addons/$_pkgname/changelog.txt"
   rm -f "$pkgdir/usr/share/kodi/addons/$_pkgname/README.md"
   mv "$pkgdir/usr/share/kodi/addons/$_pkgname/LICENSE" "$pkgdir/usr/share/licenses/$_pkgname"
 
