@@ -2,7 +2,7 @@
 
 _pkgname=spotify-web-player
 pkgname=${_pkgname}-git
-pkgver=1.0.0.r16.g6741b98
+pkgver=1.0.35.r0.gd3587fc
 pkgrel=1
 pkgdesc="A Spotify Web Player wrapper in Electron"
 arch=('i686' 'x86_64')
@@ -11,12 +11,12 @@ license=('MIT')
 depends=('libappindicator-gtk3' 'libnotify' 'unzip' 'electron' 'pepper-flash')
 makedepends=('npm')
 optdepends=('dbus: Notification and MPRIS controller support')
-conflicts=('spotify-web-player-for-linux' 'lib32-spotify-web-player-for-linux' "$_pkgname")
+conflicts=("$_pkgname")
 provides=("$_pkgname")
 source=("$_pkgname::git+https://github.com/Quacky2200/Spotify-Web-Player-for-Linux.git"
         'use_system_flash.patch')
 sha256sums=('SKIP'
-            'd76e487e96c54503e4c0e51d3f291bb18b1c10afa385b7306587562679bc9593')
+            'c3f8aceb2cc7e323d61303b191c4a717fdd0c54a3655f9e52f5976c6c2224732')
 
 pkgver() {
 	cd "${srcdir}/${_pkgname}"
@@ -27,43 +27,41 @@ prepare() {
 	cd "${srcdir}/${_pkgname}"
 	# Don't need to get an electron package since we're using the system's
 	sed -i '/^[\ ]*"electron":/d' package.json
-	sed -i '/plugins\/libpepflashplayer/d' package.json
-	
+
 	# Use the system's flash plugin
 	patch -uNp2 -r- -i ../use_system_flash.patch
 }
-	
+
 package() {
 	cd "${srcdir}/${_pkgname}"
-
-	# Remove unnecessary scripts
-	rm ./{make_deb.sh,spotifywebplayer,get_prerequisites.sh,LICENSE}
+	# We use the system flash plugin, remove the bundled ones
 	rm -fr ./plugins
-	
+
 	# Fix permissions!
 	find . -type f -exec chmod 644 '{}' \;
 	find . -type d -exec chmod 755 '{}' \;
-	
+
 	# Get additional modules
-	npm install
-	
+	HOME=~/.electron-gyp npm install
+	npm rebuild --runtime=electron --target=$( electron --version | sed 's:^v::' ) --build-from-source
+
 	cd "${srcdir}"
 	mkdir -p "$pkgdir"/usr/lib
 	cp -ar --no-preserve=ownership "${_pkgname}" "$pkgdir"/usr/lib/spotifywebplayer
-	
+
 	# Write our own file to /usr/bin so we can use system provided electron
 	mkdir -p "$pkgdir"/usr/bin
 	cat >> "$pkgdir"/usr/bin/spotifywebplayer <<- EOF
 		#!/bin/bash
 
-		electron --app=/usr/lib/spotifywebplayer "$@"
+		electron --app=/usr/lib/spotifywebplayer "\$@"
 
 		exit 0
 	EOF
-	
+
 	mkdir -p "${pkgdir}"/usr/share/pixmaps/
-	cp /usr/lib/spotifywebplayer/icons/spotify.png "${pkgdir}"/usr/share/pixmaps/spotifywebplayer.png
-	
+	cp "${pkgdir}"/usr/lib/spotifywebplayer/icons/spotify.png "${pkgdir}"/usr/share/pixmaps/spotifywebplayer.png
+
 	# No desktop file provided
 	mkdir -p "$pkgdir"/usr/share/applications
 	cat >> "$pkgdir"/usr/share/applications/spotifywebplayer.desktop <<- EOF

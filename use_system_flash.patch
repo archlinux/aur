@@ -1,5 +1,6 @@
---- ./spotify-web-player.orig/plugins.js	2017-01-10 09:24:31.151739419 -0500
-+++ ./spotify-web-player/plugins.js	2017-01-10 09:26:04.268406758 -0500
+diff -Naur ./Spotify-Web-Player-for-Linux-1.0.35.orig/plugins.js ./Spotify-Web-Player-for-Linux-1.0.35/plugins.js
+--- ./spotify-web-player.orig/plugins.js	2017-01-15 08:51:13.419962696 -0500
++++ ./spotify-web-player/plugins.js	2017-01-15 08:51:56.469961941 -0500
 @@ -8,23 +8,8 @@
  	/**
   	 * Pepper Flash Player & Widevine are required plugins for Spotify Web Player to play music
@@ -22,7 +23,7 @@
 - 	}
 -	app.commandLine.appendSwitch('ppapi-flash-path', `${__dirname.replace(`${path.sep}app.asar`, '')}/plugins/${pluginName}`);
 +
-+	app.commandLine.appendSwitch('ppapi-flash-path', '/usr/lib/PepperFlash/libpepflashplayer.so');
+++	app.commandLine.appendSwitch('ppapi-flash-path', '/usr/lib/PepperFlash/libpepflashplayer.so');
  	//Optionally specify flash version, for example, v17.0.0.169
  	//app.commandLine.appendSwitch('ppapi-flash-version', '20.0.0.306');
  	//These may be necessary when Spotify decides to move to pure HTML5 DRM
