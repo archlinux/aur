@@ -16,9 +16,6 @@ source=("https://github.com/evpo/EncryptPad/releases/download/v${pkgver}/encrypt
 
 sha1sums=('SKIP' 'SKIP')
 
-prepare() {
-}
-
 build() {
   cd "$srcdir/encryptpad$(echo -n $pkgver | sed -r 's/\./_/g')_src"
   ./configure.sh --all
