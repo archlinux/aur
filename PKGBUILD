@@ -2,7 +2,7 @@
 
 _gemname=twitter
 pkgname=ruby-$_gemname
-pkgver=5.15.0
+pkgver=6.0.0
 pkgrel=1
 pkgdesc='A Ruby interface to the Twitter API.'
 arch=(any)
@@ -12,7 +12,7 @@ depends=(ruby ruby-addressable ruby-buftok ruby-equalizer ruby-faraday ruby-http
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-sha256sums=('71856f234ab671c26c787f07032ce98acbc345c8fbb3194668f8de14a404bb41')
+sha256sums=('c5e9eb87d222532c556c92e57d2812ef9ee5afb80c9e6c4f392b5bfeff0d0dc2')
 
 package() {
   cd "$srcdir"
