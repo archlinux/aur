@@ -2,7 +2,7 @@
 # Maintainer: Dmitry Bilunov <kmeaw@yandex-team.ru>
 
 pkgname=clickhouse
-pkgver=1.1.54127
+pkgver=1.1.54133
 pkgrel=1
 pkgdesc='An open-source column-oriented database management system that allows generating analytical data reports in real time'
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ license=('Apache')
 depends=('ncurses' 'readline' 'unixodbc' 'termcap')
 makedepends=('poco' 'cmake' 'gcc>=6.2')
 source=(https://github.com/yandex/ClickHouse/archive/v$pkgver-stable.tar.gz clickhouse-server.service)
-md5sums=('541a803c9a856390dd207e320eafc7fe'
+md5sums=('6b9913bbd813c9cd7e6f833feeb12d8a'
          'f9f5663b0a9a58e99f481efe9d193e85')
 backup=('etc/clickhouse-client/config.xml' 'etc/clickhouse-server/config.xml' 'etc/clickhouse-server/users.xml')
 install=$pkgname.install
