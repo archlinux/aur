@@ -1,33 +1,30 @@
-# This is an example PKGBUILD file. Use this as a start to creating your own,
-# and remove these comments. For more information, see 'man PKGBUILD'.
-# NOTE: Please fill out the license field for your package! If it is unknown,
-# then please put 'unknown'.
-
 # PKGBUILD prototype location: /usr/share/pacman/PKGBUILD.proto
 # .install prototype location: /usr/share/pacman/proto.install
 # Example: https://github.com/archlinuxarm/PKGBUILDs/blob/master/aur/libcrossguid-git/PKGBUILD
 # Git pkgver() examples: https://wiki.archlinux.org/index.php/VCS_package_guidelines#The_pkgver.28.29_function
 
+# Uses taner1's newer fork (allows setting fan speeds from 40% to 100%)
+
 # Maintainer: Tech Guy Software <techguy100official at gmail dot com>
 pkgname=clevo-indicator-git
-pkgver=r17.fa0a7af
-pkgrel=4
+pkgver=r19.c59790a
+pkgrel=5
 #epoch=
-pkgdesc="Command-line fan control utility for Clevo laptops"
+pkgdesc="Command-line and system tray fan control utility for Clevo laptops"
 arch=('x86_64')
-url="https://github.com/SkyLandTW/clevo-indicator"
+url="https://github.com/taner1/clevo-indicator"
 license=('custom:Unlicense')
 #groups=()
-depends=('libappindicator-gtk3')
-makedepends=('git')
+depends=()
+optdepends=('libappindicator-gtk3: tray icon support')
+makedepends=('git' 'gcc')
 provides=('clevo-indicator')
 #conflicts=()
 #replaces=()
 #backup=()
 #options=()
-install=clevo-indicator-git.install
 changelog=README.md
-source=("${pkgname%}::git+https://github.com/SkyLandTW/clevo-indicator.git")
+source=("${pkgname%}::git+https://github.com/taner1/clevo-indicator.git")
 md5sums=('SKIP')
 #noextract=()
 #validpgpkeys=()
@@ -35,44 +32,43 @@ md5sums=('SKIP')
 pkgver() {
 	# Return most recent git revisions and shortened MD5 from package directory
 	# as a formatted string
-	cd "$srcdir"/$pkgname
+	cd "$srcdir"/"$pkgname"
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
-prepare() {
-	cd "$pkgname"
-	#patch -p1 -i "$srcdir/$pkgname-$pkgver.patch"
-}
-
-build() {
-	cd "$pkgname"
-	#./configure --prefix=/usr
-}
-
 package() {
-    # make from source and install to /usr/local/bin
-	cd "$pkgname"
-	make install
+    # make from source and install built binary to fakeroot $pkgdir/usr/bin
+    echo "--> Compiling from source and adding to fakeroot \$pkgdir/usr/bin..."
+	cd "$srcdir"/"$pkgname"
+	
+	# We are not using the package's makefile for install, it uses sudo. Instead just compile using gcc,
+    # copy the clevo-indicator binary in $srcdir/$pkgname/bin/clevo-indicator and copy to $pkgdir/usr/bin/clevo-indicator using install command
+    mkdir -p bin
     
-    # the package's makefile installs to /usr/local/bin, we don't want that, there is no option other than to move it or create a separate fork of the project
-    # https://bbs.archlinux.org/viewtopic.php?id=158031
+    # Fixes from: https://ubuntuforums.org/showthread.php?t=2053347 and https://stackoverflow.com/questions/10721623/echo-style-appending-but-to-the-beginning-of-a-file
+    # This fixes the issue with the tray indicator on GTK3 and KDE! (since libappindicator works with KDE)
+    # look into clevo-indicator.c file for correct gcc testing command
+    mkdir -p "$pkgdir/usr/bin"
+    gcc src/clevo-indicator.c -o bin/clevo-indicator `pkg-config --cflags --libs appindicator3-0.1` -lm
+	install -m 555 "bin/clevo-indicator" "$pkgdir/usr/bin/clevo-indicator"
+	
+	# copy Unlicense license to fakeroot /usr/share/licenses/clevo-indicator-git
+	echo "--> Installing license to fakeroot \$pkgdir/usr/share/licenses/clevo-indicator-git..."
+	mkdir -p "$pkgdir/usr/share/licenses/clevo-indicator-git"
+	cp LICENSE "$pkgdir/usr/share/licenses/clevo-indicator-git"
+	
+	# stickybit flags (sudo if user runs the command) - required for the tray icon to work - root will be the owner after install, so the stickybit will work
+	# https://unix.stackexchange.com/questions/79395/how-does-the-sticky-bit-work
+	chmod u+s $pkgdir/usr/bin/clevo-indicator
+	
+	# LEGACY - v1 to v2 (do not use package's makefile since it uses sudo!)
+	# the package's makefile installs to /usr/local/bin, we don't want that
     # per the AUR package etiquette, /usr/bin is preferred
+	# ${DSTDIR}/bin/ in the Makefile -- make install to fakeroot /usr and the file will install to /usr/bin
+	#make DSTDIR="$pkgdir/usr" install
+	# change owner since makefile automatically runs as root
+	#chown $(whoami) $pkgdir/usr/bin/clevo-indicator
+	#chmod +wx $pkgdir/usr/bin/clevo-indicator
 	
-	# move clevo-indicator binary to /usr/bin for execution 
-	# in command line
-	echo "--> Removing existing binaries..."
-	sudo rm -f "/usr/bin/clevo-indicator"
-	
-	echo "--> Moving built binary to /usr/bin..."
-	sudo mv /usr/local/bin/clevo-indicator /usr/bin/
-	
-	echo "--> Installation successful! Run the fan control utility using the command \"clevo-indicator\" as the root user."
+	echo "--> Packaging successful! After install, run the fan control utility using the command \"clevo-indicator\" and a tray icon will appear."
 }
-
-# makepkgclean() {
-#	echo "--> Cleaning up files created by makepkg..."
-#	makepkg -Code
-#	echo "--> Removing command-line script/binary from /usr/local/bin directory..."
-#	cd "/usr/local/bin"
-#	sudo rm -rf "$pkgname"
-#}
