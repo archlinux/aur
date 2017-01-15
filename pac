@@ -12,7 +12,7 @@ __author__ = 'Ricardo Band'
 __copyright__ = 'Copyright 2017, Ricardo band'
 __credits__ = ['Ricardo Band']
 __license__ = 'MIT'
-__version__ = '1.0.2'
+__version__ = '1.1.0'
 __maintainer__ = 'Ricardo Band'
 __email__ = 'email@ricardo.band'
 
@@ -153,11 +153,14 @@ def install(numbers: list, packages: list):
 
 if __name__ == '__main__':
     if len(sys.argv) > 1:
-        entries = search(' '.join(sys.argv[1:]))
-        present(entries)
-        numbers = input('\33[93m==>\33[0m ')
-        numbers = parse_num(numbers)
-        install(numbers, entries)
+        if sys.argv[1].startswith('-S') or sys.argv[1].startswith('-Q'):
+            call(f"pacaur {' '.join(sys.argv[1:])}", shell=True)
+        else:
+            entries = search(' '.join(sys.argv[1:]))
+            present(entries)
+            numbers = input('\33[93m==>\33[0m ')
+            numbers = parse_num(numbers)
+            install(numbers, entries)
     else:
         call('pacaur -Syu', shell=True)
 
