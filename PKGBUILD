@@ -6,12 +6,12 @@
 
 pkgname=monotone
 pkgver=1.1
-pkgrel=3
+pkgrel=4
 pkgdesc='A free distributed version control system'
 arch=('i686' 'x86_64')
 url='http://www.monotone.ca/'
 license=('GPL')
-depends=('pcre' 'lua' 'botan-1.10' 'sqlite3' 'libidn' 'zlib')
+depends=('pcre' 'lua' 'botan1.10' 'sqlite3' 'libidn' 'zlib')
 makedepends=('boost')
 source=("http://www.monotone.ca/downloads/1.1/monotone-${pkgver}.tar.bz2")
 sha1sums=('2b97559b252decaee3a374b81bf714cf33441ba3')
