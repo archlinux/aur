@@ -7,10 +7,10 @@ _version=2.2.4
 pkgname=nextcloud-client-git
 _name=${pkgname/\-git/}
 pkgver=2.2.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Nextloud client for linux"
 arch=('i686' 'x86_64')
-url="http://nextcloud.org/"
+url="https://nextcloud.com/"
 license=('GPL2')
 depends=('qtkeychain' 'qt5-webkit' 'hicolor-icon-theme' 'xdg-utils')
 optdepends=(
@@ -29,7 +29,7 @@ source=(
 )
 sha256sums=(
   'SKIP'
-  '2dc7fdad6c7577548585e977ba6d148bdb3f35c55b79d05d0043773af09d661e'
+  '590d44296e12dd4389dc2bbd100b1f680f5ef6dee381469748525fd34af32009'
 )
 
 pkgver() {
