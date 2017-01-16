@@ -1,0 +1,15 @@
+pkgbase = nodejs-dockerlint
+	pkgdesc = A linter for Dockerfiles
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/RedCoolBeans/dockerlint
+	arch = any
+	license = MIT
+	makedepends = npm
+	depends = nodejs
+	noextract = dockerlint-.tgz
+	source = http://registry.npmjs.org/dockerlint/-/dockerlint-0.2.0.tgz
+	sha512sums = 8afa551af7024aba97965b5f5c305f00d7b805f5b47aa62612f5162eba20b28f07cf23d1d2efd234cb7281c28ef8448346bd52df2b4a0db84c1c055a67110e4c
+
+pkgname = nodejs-dockerlint
+
