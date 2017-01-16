@@ -2,7 +2,7 @@ _npmname=angular-cli
 _npmver=1.0.0-beta.25
 pkgname=angular-cli # All lowercase
 pkgver=1.0.0_beta.25
-pkgrel=1
+pkgrel=2
 pkgdesc="CLI tool for Angular"
 arch=(any)
 url="https://github.com/angular/angular-cli"
@@ -11,7 +11,7 @@ depends=('nodejs' 'npm' )
 optdepends=()
 source=(http://registry.npmjs.org/$_npmname/-/$_npmname-$_npmver.tgz)
 noextract=($_npmname-$_npmver.tgz)
-sha1sums=(1133907d860e44a837e41e42c3eec7e5a841af68)
+sha1sums=(ffe9069c980682a9148bd3bc82b5d3f229579265)
 options=(!strip)
 
 package() {
