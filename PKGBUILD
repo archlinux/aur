@@ -7,82 +7,25 @@ pkgver='1.3.0'
 depends=('gcc-libs-multilib' 'gtk2' 'libusb-compat')
 optdepends=('lightdm' 'gdm')
 pkgdesc='sane drivers for Panasonic multifunction printers'
-pkgrel=4
+pkgrel=5
 source_x86_64=(http://cs.psn-web.net/support/fax/common/file/Linux_ScanDriver/$pkgname-$pkgver-x86_64.tar.gz)
 source_i686=(http://cs.psn-web.net/support/fax/common/file/Linux_ScanDriver/$pkgname-$pkgver-i686.tar.gz)
 md5sums_x86_64=('2e4c844e89c2e7e0b6258be5ef52ace9')
 md5sums_i686=('38e12643725f9e6d706bc0efa88e346d')
 package(){
 _ver=$pkgver
-_INSTALL_PATH="$pkgdir/usr/local/share/panasonic/scanner"
-_INSTALL_SANE_DATA_PATH="$pkgdir/usr/local/share/panasonic/scanner"
+_INSTALL_PATH="$pkgdir/usr/share/panasonic/scanner"
+_INSTALL_SANE_DATA_PATH="$pkgdir/usr/share/panasonic/scanner"
 _INSTALL_BIN_PATH="$pkgdir/usr/bin"
 mkdir -p $_INSTALL_BIN_PATH
 
 _BUILD_CPU=$arch
 _TARGET_CPU=$arch
 
-################################################################################
-#
-# check can install to thie system
-#
-_CAN_INSTALL=no
-_SANE_PATH_SEARCH="/usr/lib/sane"
-
-case $_TARGET_CPU in
-	i[345]86)
-		case $_BUILD_CPU in
-			i386)
-				_CAN_INSTALL=yes
-			;;
-		esac
-	;;
-	i686)
-		case $_BUILD_CPU in
-			i[36]86)
-				_CAN_INSTALL=yes
-			;;
-		esac
-	;;
-	x86_64)
-		case $_BUILD_CPU in
-			x86_64)
-				_CAN_INSTALL=yes
-			;;
-		esac
-		_SANE_PATH_SEARCH="$_SANE_PATH_SEARCH $pkgdir/usr/lib64/sane"
-	;;
-	*)
-	;;
-esac
-
-
-if test "x$_CAN_INSTALL" != "xyes"; then
-	echo "This package is built for $_BUILD_CPU cpu, can not install to $_TARGET_CPU system"
-    exit 1
-fi
-
-
-
-################################################################################
-#
 # find install dir
 #
 _SANELIB_PATH=$pkgdir/usr/lib/sane
 mkdir -p $pkgdir/usr/lib/sane
-
-################################################################################
-#
-# echo informations
-#
-
-echo
-echo "    start <Panasonic MFS Scanner ($_BUILD_CPU)> install......"
-
-################################################################################
-#
-# check and execute uninstall shell script
-#
 
 if test -f $_INSTALL_PATH/uninstall-driver
 then
@@ -102,19 +45,7 @@ _SCRIPTPATH=`dirname $_SCRIPT`
 _PWD=`pwd`
 cd $_SCRIPTPATH
 
-################################################################################
-#
-# echo informations
-#
 
-echo "    start install files......"
-
-
-
-################################################################################
-#
-# sane-backend install
-#
 mkdir -p $pkgdir/etc/sane.d/
 if test -f $pkgdir/etc/sane.d/dll.conf
 then
@@ -202,13 +133,6 @@ chown root:root $_INSTALL_SANE_DATA_PATH/data/ru/sane-panamfs.po
 chown root:root $_INSTALL_SANE_DATA_PATH/data/zh_CN/sane-panamfs.po
 chown root:root $_INSTALL_SANE_DATA_PATH/data/zh_TW/sane-panamfs.po
 
-################################################################################
-
-
-################################################################################
-#
-# make install dir
-#
 mkdir -p $_INSTALL_PATH/
 mkdir -p $_INSTALL_PATH/bin
 mkdir -p $_INSTALL_PATH/conf
@@ -218,21 +142,17 @@ chmod 777 $_INSTALL_PATH/conf
 chmod 777 $_INSTALL_PATH/data
 
 
-################################################################################
-#
-# Copy tool and make shortcut menu
-#
-if test -d $pkgdir/usr/local/share/applications/
+if test -d $pkgdir/usr/share/applications/
 then
   echo ""
 else
-  mkdir -p $pkgdir/usr/local/share/applications
-  chown root:root $pkgdir/usr/local/share/applications
-  chmod 755 $pkgdir/usr/local/share/applications
+  mkdir -p $pkgdir/usr/share/applications
+  chown root:root $pkgdir/usr/share/applications
+  chmod 755 $pkgdir/usr/share/applications
 fi
 
-cp $srcdir/$pkgname-$pkgver-$arch/app/PanasonicMFSTools.desktop $pkgdir/usr/local/share/applications/PanasonicMFSTools.desktop
-chmod 0644 $pkgdir/usr/local/share/applications/PanasonicMFSTools.desktop
+cp $srcdir/$pkgname-$pkgver-$arch/app/PanasonicMFSTools.desktop $pkgdir/usr/share/applications/PanasonicMFSTools.desktop
+chmod 0644 $pkgdir/usr/share/applications/PanasonicMFSTools.desktop
 
 cp $srcdir/$pkgname-$pkgver-$arch/app/PanasonicMFSTools $_INSTALL_PATH/bin/PanasonicMFSTools
 ln -sf $_INSTALL_PATH/bin/PanasonicMFSTools $_INSTALL_BIN_PATH/PanasonicMFSTools
@@ -246,11 +166,6 @@ _DATA_FILES=$srcdir/$pkgname-$pkgver-$arch/app/res/*
 cp -r $_DATA_FILES $_INSTALL_PATH/data/
 chmod -R 777 $_INSTALL_PATH/data/
 
-
-################################################################################
-#
-# Copy files
-#
 cp $srcdir/$pkgname-$pkgver-$arch/lpd/PanasonicMFSlpd $_INSTALL_PATH/bin/PanasonicMFSlpd
 cp $srcdir/$pkgname-$pkgver-$arch/server/PanasonicMFSpushd $_INSTALL_PATH/bin/PanasonicMFSpushd
 cp $srcdir/$pkgname-$pkgver-$arch/killserver/killpanasonicmfspushd $_INSTALL_PATH/bin/killpanasonicmfspushd
@@ -265,9 +180,6 @@ mkdir -p $pkgdir/etc/xdg/autostart
 cp $srcdir/$pkgname-$pkgver-$arch/server/PanasonicMFSpushd.desktop $pkgdir/etc/xdg/autostart/PanasonicMFSpushd.desktop
 
 
-
-if test -f /etc/gdm/PostSession/Default
-then
 	sed -i "s|^$_INSTALL_PATH/bin/killpanasonicmfspushd$||" /etc/gdm/PostSession/Default
 	echo "$_INSTALL_PATH/bin/killpanasonicmfspushd" >> /etc/gdm/PostSession/Default
 
@@ -279,16 +191,9 @@ then
 
 	sed -i 's/^exit 0$//' /etc/gdm/PostSession/Default
 	echo "exit 0" >> /etc/gdm/PostSession/Default
-fi
 
 
-if test -f /etc/lightdm/lightdm.conf
-then
 	_CLEANSCRIPT=`grep session-cleanup-script= /etc/lightdm/lightdm.conf`
 
-	if test "x$_CLEANSCRIPT" = "x"
-	then
 		sed -i "/\[SeatDefaults\]/a\session-cleanup-script=$_INSTALL_PATH/bin/killpanasonicmfspushd.sh" /etc/lightdm/lightdm.conf
-	fi
-fi
 }
