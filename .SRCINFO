@@ -1,10 +1,10 @@
 pkgbase = ntrviewer-git
 	pkgdesc = PC Viewer for NTR CFW's streaming feature
 	pkgver = r23.4af3190
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/44670/NTRViewer
 	arch = x86_64
-	license = GPLv2
+	license = GPL3
 	makedepends = git
 	makedepends = make
 	depends = sdl
