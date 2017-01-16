@@ -3,7 +3,7 @@
 pkgname='blink'
 _reponame='blink-qt'
 pkgver='2.0.0'
-pkgrel='2'
+pkgrel='3'
 pkgdesc='A state of the art, easy to use SIP client'
 arch=('any')
 url='http://icanblink.com'
