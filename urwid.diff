@@ -1,0 +1,28 @@
+diff -crB st-git-20140208/st.c changes/st.c
+*** st-git-20140208/st.c	2017-01-15 20:36:50.558038189 -0500
+--- changes/st.c	2017-01-15 20:37:46.207860982 -0500
+***************
+*** 2477,2487 ****
+  			term.esc = ESC_START;
+  			return;
+  		case '\016': /* SO */
+! 			term.charset = 0;
+  			tselcs();
+  			return;
+  		case '\017': /* SI */
+! 			term.charset = 1;
+  			tselcs();
+  			return;
+  		case '\032': /* SUB */
+--- 2477,2487 ----
+  			term.esc = ESC_START;
+  			return;
+  		case '\016': /* SO */
+! 			term.charset = 1;
+  			tselcs();
+  			return;
+  		case '\017': /* SI */
+! 			term.charset = 0;
+  			tselcs();
+  			return;
+  		case '\032': /* SUB */

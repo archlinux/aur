@@ -1,0 +1,11 @@
+post_install() {
+	echo '-- xurls and open are two scripts required for url launching'
+	echo '-- download them and put them in your $PATH'
+	echo '-- see http://st.suckless.org/patches/externalpipe for more details'
+	echo '-- Dont forget to configure ~/.openrc'
+	echo '-- Shift PgUp/PgDown for the scrollback'
+}
+
+post_remove() {
+	echo '-- You may want to remove open and xurls from your $PATH'
+}

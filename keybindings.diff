@@ -1,0 +1,10 @@
+--- a/config.def.h	2014-02-27 21:53:35.633013972 -0500
++++ b/config.def.h	2014-02-27 22:03:07.396583130 -0500
+@@ -113,6 +113,7 @@
+ 	{ ShiftMask,            XK_Insert,      selpaste,       {.i =  0} },
+ 	{ MODKEY|ShiftMask,     XK_Insert,      clippaste,      {.i =  0} },
+ 	{ MODKEY,               XK_Num_Lock,    numlock,        {.i =  0} },
++	{ ShiftMask,		XK_F5,		externalpipe,	{ .s = "xurls | dmenu -l 10 | xargs -rn1 surf" } },
+ 	{ ShiftMask,		XK_Page_Up,	kscrollup,	{.i = -1} },
+ 	{ ShiftMask,		XK_Page_Down,	kscrolldown,	{.i = -1} },
+ };

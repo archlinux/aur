@@ -1,0 +1,121 @@
+From 7982a2d238925028b45d5143db470e408b97469a Mon Sep 17 00:00:00 2001
+From: Rob Pilling <robpilling@gmail.com>
+Date: Fri, 20 Dec 2013 12:40:55 +0000
+Subject: [PATCH] Add externalpipe() for piping out screen text
+
+---
+ st.c |   74 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++------
+ 1 file changed, 68 insertions(+), 6 deletions(-)
+
+diff --git a/st.c b/st.c
+index 4fb3311..adef257 100644
+--- a/st.c
++++ b/st.c
+@@ -299,6 +299,7 @@ typedef union {
+ 	unsigned int ui;
+ 	float f;
+ 	const void *v;
++	const char *s;
+ } Arg;
+ 
+ typedef struct {
+@@ -313,6 +314,7 @@ static void clippaste(const Arg *);
+ static void numlock(const Arg *);
+ static void selpaste(const Arg *);
+ static void xzoom(const Arg *);
++static void externalpipe(const Arg *);
+ 
+ /* Config.h for applying patches and the configuration. */
+ #include "config.h"
+@@ -1204,15 +1206,22 @@ execsh(void) {
+ void
+ sigchld(int a) {
+ 	int stat = 0;
++	pid_t r;
+ 
+-	if(waitpid(pid, &stat, 0) < 0)
+-		die("Waiting for pid %hd failed: %s\n", pid, SERRNO);
++	r = wait(&stat);
++	if(r < 0)
++		die("wait(): %s\n", SERRNO);
+ 
+-	if(WIFEXITED(stat)) {
+-		exit(WEXITSTATUS(stat));
+-	} else {
+-		exit(EXIT_FAILURE);
++	if(r == pid){
++		/* _the_ sub porcess */
++		if(WIFEXITED(stat)) {
++			exit(WEXITSTATUS(stat));
++		} else {
++			exit(EXIT_FAILURE);
++		}
+ 	}
++
++	/* something else we've forked out */
+ }
+ 
+ void
+@@ -2928,6 +2937,59 @@ xzoom(const Arg *arg) {
+ }
+ 
+ void
++externalpipe(const Arg *arg)
++{
++	int to[2]; /* 0 = read, 1 = write */
++	pid_t child;
++	int y, x;
++	void (*oldsigpipe)(int);
++
++	if(pipe(to) == -1)
++		return;
++
++	/* sigchld() handles this */
++	switch((child = fork())){
++		case -1:
++			close(to[0]), close(to[1]);
++			return;
++		case 0:
++			/* child */
++			close(to[1]);
++			dup2(to[0], STDIN_FILENO); /* 0<&to */
++			close(to[0]);
++			execvp(
++					"sh",
++					(char *const []){
++						"/bin/sh",
++						"-c",
++						(char *)arg->s,
++						0
++					});
++			exit(127);
++	}
++
++	/* parent */
++	close(to[0]);
++	/* ignore sigpipe for now, in case child exits early */
++	oldsigpipe = signal(SIGPIPE, SIG_IGN);
++
++	for(y = 0; y < term.row; y++){
++		for(x = 0; x < term.col; x++){
++			if(write(to[1], term.line[y][x].c, 1) == -1)
++				goto done;
++		}
++		if(write(to[1], "\n", 1) == -1)
++			break;
++	}
++
++done:
++	close(to[1]);
++
++	/* restore */
++	signal(SIGPIPE, oldsigpipe);
++}
++
++void
+ xinit(void) {
+ 	XGCValues gcvalues;
+ 	Cursor cursor;
+-- 
+1.7.10.4
+

@@ -1,0 +1,33 @@
+pkgbase = st-essential-patches
+	pkgdesc = st with scrollback and url launching patches
+	pkgver = 20140208
+	pkgrel = 1
+	url = http://git.suckless.org/st/
+	install = st-essential-patches.install
+	arch = i686
+	arch = x86_64
+	arch = armv7h
+	license = MIT
+	makedepends = ncurses
+	makedepends = libxext
+	makedepends = git
+	depends = libxft
+	optdepends = dmenu: display and filter urls
+	optdepends = otf-fira-mono
+	provides = st
+	conflicts = st
+	source = st-git-20140208.tar.gz
+	source = st-scrollback.diff
+	source = st-0.4.1-externalpipe.diff
+	source = keybindings.diff
+	source = st.info
+	source = urwid.diff
+	md5sums = d5728622534060b7d641882d6cb3cce7
+	md5sums = c8b7d887a3466c4953df6705778d4bb6
+	md5sums = a159d04cafa90d7e7cbb8d5f58d8d038
+	md5sums = bd5a8a797ae88c3dc3a6b7fa99c21453
+	md5sums = cebdfef86237e46936cc5aab47cfcca2
+	md5sums = 6b9d5536bb032930a7223c4e9e54e998
+
+pkgname = st-essential-patches
+
