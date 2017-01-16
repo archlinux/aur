@@ -14,6 +14,7 @@ license=('GPL2' 'CCPL')
 depends=("gtk2>=${_gtk2_min}"
          "gtk3>=${_gtk3_min}.9"
          "gtk3<=${_gtk3_max}.99"
+         'gdk-pixbuf2>=2.21.0'
          'gtk-engines>=2.21.0'
          'gtk-engine-murrine>=0.98.1'
          'cantarell-fonts')
