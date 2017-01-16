@@ -1,7 +1,7 @@
 # Maintainer: Mohammadreza Abdollahzadeh <morealaz at gmail dot com>
 
 pkgname='persepolis'
-pkgver=2.3.1
+pkgver=2.3.2
 pkgrel=1
 pkgdesc="A graphical front-end for aria2 download manager with lots of features."
 arch=('any')
@@ -11,9 +11,8 @@ depends=('aria2' 'vorbis-tools' 'libnotify' 'python' 'python-pyqt5' 'python-requ
 optdepends=('firefox-flashgot: for integrating with firefox.')
 provides=("${pkgname}" "persepolis")
 conflicts=("${pkgname}" "persepolis")
-install=$pkgname.install
 source=("${pkgname}.tar.gz::https://github.com/persepolisdm/persepolis/archive/${pkgver}.tar.gz")
-md5sums=('ae0ccabf57d300a74d8485dc3a58b2a7')
+md5sums=('78d4c67274407b680364c56cdfc2bb37')
 
 package() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
