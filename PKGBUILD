@@ -2,22 +2,22 @@
 # Maintainer: Aaron Ali <t0nedef@causal.ca>
 
 pkgname=klayout
-pkgver=0.24.8
+pkgver=0.24.9
 pkgrel=2
 pkgdesc="High Performance Layout Viewer And Editor. Support of GDS and OASIS files."
 arch=('i686' 'x86_64')
 url="http://www.klayout.org/"
 license=('GPL')
-depends=('qt4' 'ruby')
+depends=('qt4' 'ruby2.3')
 source=(
-	http://www.klayout.org/downloads/klayout-${pkgver}.tar.gz
+	http://www.klayout.org/downloads/source/klayout-${pkgver}.tar.gz
 	klayoutEditor.desktop
 	klayoutViewer.desktop
 )
 build() {
 	cd "$srcdir/klayout-${pkgver}"
 	build_opt="-qt /usr -qtinc /usr/include/qt4 -qtbin /usr/lib/qt4/bin -bin $pkgdir/usr/bin
-		-rblib /usr/lib/libruby.so -rbinc /usr/include/ruby-2.3.0/"
+		-rblib /opt/ruby2.3/lib/libruby.so -rbinc /opt/ruby2.3/include/ruby-2.3.0/"
 	case ${CARCH} in
 		i686)
 			sh build.sh $build_opt -platform linux-32-gcc-release
@@ -35,6 +35,6 @@ package() {
 	install -D -m 644 klayoutViewer.desktop ${pkgdir}/usr/share/applications/klayoutViewer.desktop
 }
 #
-md5sums=('6e36f6c2af158f07b22f110e0ed439b1'
+md5sums=('00c31e05030ac650544473b93d905a14'
          '6f4fffcd97759c57c4c7378634f7bfeb'
          '524300704fa165cca800c82a9d6351b0')
