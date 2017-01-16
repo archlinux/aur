@@ -2,10 +2,10 @@
 
 # Maintainer: Christopher Reimer <mail+vdr4arch[at]c-reimer[dot]de>
 pkgname=vdr-graphlcd
-pkgver=20130127
-_gitver=5b5bf594f026fbcba2e31b423b43a2e5e45fd471
+pkgver=20161021
+_gitver=1c445913fab4cf61f190e1d861ffb58460bef8b0
 _vdrapi=2.2.0
-pkgrel=14
+pkgrel=1
 pkgdesc="VDR Plugin to support graphical LC displays"
 url="http://projects.vdr-developer.org/projects/show/graphlcd"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
