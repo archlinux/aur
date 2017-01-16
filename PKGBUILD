@@ -5,7 +5,7 @@
 pkgbase=systemd-git
 pkgname=('systemd-git' 'libsystemd-git' 'systemd-sysvcompat-git')
 pkgdesc="systemd from git"
-pkgver=232.r485.g4b2419165
+pkgver=232.r595.g8171bcc70
 pkgrel=1
 branch='master'
 arch=('i686' 'x86_64')
@@ -14,7 +14,7 @@ makedepends=('acl' 'cryptsetup' 'docbook-xsl' 'gperf' 'lz4' 'xz' 'pam' 'libelf'
              'intltool' 'iptables' 'kmod' 'libcap' 'libidn' 'libgcrypt'
              'libmicrohttpd' 'libxslt' 'util-linux' 'linux-api-headers'
              'python-lxml' 'quota-tools' 'shadow' 'gnu-efi-libs' 'git')
-options=('strip')
+options=('strip' '!distcc' '!ccache')
 source=("systemd-git::git://github.com/systemd/systemd.git#branch=${branch}"
         'initcpio-hook-udev'
         'initcpio-install-systemd'
