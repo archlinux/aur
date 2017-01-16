@@ -2,12 +2,13 @@
 
 pkgname=u2f-udev-rules-git
 pkgver=r177.c32e7a6
-pkgrel=1
+pkgrel=2
 pkgdesc="UDEV file for U2F devices"
 arch=('any')
 url="https://github.com/Yubico/libu2f-host"
 license=('GPL3')
 depends=('udev')
+conflicts=('libu2f-host-git')
 source=('git+https://github.com/Yubico/libu2f-host'
 	'u2f-udev-rules.install')
 sha512sums=('SKIP'
