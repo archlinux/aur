@@ -1,3 +1,8 @@
+2016-12-23  André Silva  <emulatorman@parabola.nu>
+
+	* linux-libre-4.9_gnu-1
+	* Disabled CONFIG_MTD_NAND_NANDSIM [12]
+
 2016-11-16  André Silva  <emulatorman@parabola.nu>
 
 	* linux-libre-4.8.8_gnu-1
@@ -57,18 +62,18 @@
 2014-08-24  André Silva  <emulatorman@parabola.nu>
 
 	* linux-libre-3.16.1.gnu-1.1
-	* Changed upstream format based on the source code.
+	* Changed upstream format based on the source code
 	* Disabled CONFIG_LOCALVERSION_AUTO
 
 2013-07-15  André Silva  <emulatorman@parabola.nu>
 
         * linux-libre-3.10.1-1
-        * Removed linux-libre-kmod-alx package from Parabola due which CONFIG_ALX module was implemented by default in the kernel.
+        * Removed linux-libre-kmod-alx package from Parabola due which CONFIG_ALX module was implemented by default in the kernel
 
 2013-04-30  André Silva  <emulatorman@parabola.nu>
 
         * linux-libre-3.9-2
-        * Removed CONFIG_STUB_POULSBO module from the config files.
+        * Removed CONFIG_STUB_POULSBO module from the config files
 
 2012-12-19  André Silva  <emulatorman@parabola.nu>
 
@@ -107,3 +112,4 @@
 [9] https://labs.parabola.nu/issues/1000
 [10] https://labs.parabola.nu/issues/1062
 [11] https://labs.parabola.nu/issues/1143
+[12] https://labs.parabola.nu/issues/1143#note-7
