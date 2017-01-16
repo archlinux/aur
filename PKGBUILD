@@ -5,8 +5,8 @@ true && pkgname=(linux-mainline-usermode linux-mainline-usermode-modules)
 pkgbase=linux-mainline-usermode
 _kernelname=${pkgbase#linux}
 _srcname=linux-4.9
-_patchname=patch-4.10-rc3
-pkgver=4.10rc3
+_patchname=patch-4.10-rc4
+pkgver=4.10rc4
 pkgrel=1
 pkgdesc="User mode Linux-mainline kernel and modules"
 arch=('i686' 'x86_64')
@@ -22,9 +22,9 @@ source=(
 	"config-i686" "config-x86_64"
     )
 sha256sums=('029098dcffab74875e086ae970e3828456838da6e0ba22ce3f64ef764f3d7f1a'
-            'cc5f910e05edbc4b4cd16beca39274d49c96954d09447101bd477725158b49eb'
-         'f001a5860c927c14e12eb6c4c09ad22e57834a0f44d71c9516bc2c2f6f1a290f'
-         '2a786756a47a52b77ae4bffb31eadd60a7a717c2e3544a315f1cfe9ba9091f30')
+            '95b8a31b423d4eb33af0963de41a1a657baf8f06ebfa02bcffd14c4dc3b1a167'
+            'f001a5860c927c14e12eb6c4c09ad22e57834a0f44d71c9516bc2c2f6f1a290f'
+            '2a786756a47a52b77ae4bffb31eadd60a7a717c2e3544a315f1cfe9ba9091f30')
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
               '647F28654894E3BD457199BE38DBBDC86092693E' # Greg Kroah-Hartman
