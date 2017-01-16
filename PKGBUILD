@@ -3,7 +3,7 @@
 
 pkgname=wrs-vxworks-headers
 pkgver=6.3
-pkgrel=11
+pkgrel=12
 pkgdesc="The VxWorks 6.3 Headers"
 arch=(any)
 url="http://firstforge.wpi.edu/sf/projects/c--11_toochain"
@@ -31,7 +31,7 @@ package() {
   cp -dpr --no-preserve=ownership gccdist/WindRiver/vxworks-6.3/target/h/wrn/coreip/. ${pkgdir}/usr/powerpc-wrs-vxworks/wind_base/target/h
 
   mkdir -p ${pkgdir}/usr/powerpc-wrs-vxworks/usr
-  ln -s ${pkgdir}/usr/powerpc-wrs-vxworks/sys-include ${pkgdir}/usr/powerpc-wrs-vxworks/usr/include
+  ln -s /usr/powerpc-wrs-vxworks/sys-include ${pkgdir}/usr/powerpc-wrs-vxworks/usr/include
 
   # Clean up headers
   sed '/ENTRY(_start)/d' < gccdist/WindRiver/vxworks-6.3/target/h/tool/gnu/ldscripts/link.OUT > ${pkgdir}/usr/powerpc-wrs-vxworks/share/ldscripts/dkm.ld
