@@ -3,7 +3,7 @@
 pkgname=yokadi
 pkgver=1.1.1
 pkgrel=1
-pkgdesc="Not your grandma TODO list"
+pkgdesc="Command line oriented, sqlite powered, todo list"
 url="http://yokadi.github.io"
 arch=('any')
 depends=('python-sqlalchemy' 'python-dateutil' 'hicolor-icon-theme')
