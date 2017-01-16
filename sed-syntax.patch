@@ -1,0 +1,12 @@
+diff -u a/configure b/configure
+--- a/configure	2015-11-20 19:37:24.000000000 +0100
++++ b/configure	2017-01-16 15:52:05.273024056 +0100
+@@ -24301,7 +24301,7 @@
+             sed -n 's/^[ 	]*MULFUNC_PROLOGUE(\(.*\))/\1/p' $tmp_file ;
+             sed -n 's/^[ 	]*PROLOGUE(\([^,]*\).*)/\1/p' $tmp_file ;
+             sed -n 's/^;[ 	]*PROLOGUE(\([^,]*\).*)/\1/p' $tmp_file ;
+-            sed -n 's/[^G]*GLOBAL_FUNC[:space:]*\(.*\)/\1/p' $tmp_file ;
++            sed -n 's/[^G]*GLOBAL_FUNC[[:space:]]*\(.*\)/\1/p' $tmp_file ;
+           `
+           for gmp_tmp in $gmp_ep; do
+             cat >>confdefs.h <<_ACEOF
