@@ -9,8 +9,8 @@
 # Based on linux package
 
 pkgbase=linux-libre-pck
-_pkgbasever=4.8-gnu
-_pkgver=4.8.14-gnu
+_pkgbasever=4.9-gnu
+_pkgver=4.9.3-gnu
 _pckpatchver=pck1
 
 _replacesarchkernel=('linux-zen')
@@ -57,45 +57,35 @@ source=("https://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgbasever}/l
         '0005-net-smsc95xx-Allow-mac-address-to-be-set-as-a-parame.patch'
         '0006-ARM-TLV320AIC23-SoC-Audio-Codec-Fix-errors-reported-.patch'
         '0007-set-default-cubietruck-led-triggers.patch'
-        '0008-USB-armory-support.patch'
-        '0009-ARM-dts-imx6ul-pico-hobbit-Add-Wifi-support.patch'
-        '0010-exynos4412-odroid-set-higher-minimum-buck2-regulator.patch'
-        '0011-usb-musb-Call-pm_runtime-from-musb_gadget_queue.patch'
-        '0012-phy-twl4030-usb-better-handle-musb_mailbox-failure.patch'
-        '0013-Revert-gpu-drm-omapdrm-dss-of-add-missing-of_node_pu.patch')
-sha256sums=('d54e0f8a27e24f3666c19b395c19dba194635db26929c89e78ffa4b2b0e8ca3a'
+        '0008-exynos4412-odroid-set-higher-minimum-buck2-regulator.patch')
+sha512sums=('885eb0a7fab45dc749acb4329b4330a43b704df2d5f2f5aac1811503c132ca53ca49452f9b1cc80b0826c7a4962dbe4937aecb697aa823b2543ba2cabc704816'
             'SKIP'
-            '8f0b878ba934bd11e2297653fe6b7a38058d6a8d5ae223713070744822851b0c'
+            'df4408961165279f45611374e86d817de84c164b93c125d8a0fbee2535a5bbdfef3c40e629541024428257b56105284fe50d402c496ca42b4202fb57e61f65a9'
             'SKIP'
-            '82c07314713b85f57d0b482c0beedb9569d775d693180ef7010456acbb2d5439'
+            '28a4a987f9f3588df8035f392497d2e69300fcf63ff4594ca21fadb1f9c7d7fe8d1e10c2c07395cd95cabe4c87a3251a448ec45e5ae66ea08aad91b6f5be2945'
             'SKIP'
-            'bfd4a7f61febe63c880534dcb7c31c5b932dde6acf991810b41a939a93535494'
+            '13cb5bc42542e7b8bb104d5f68253f6609e463b6799800418af33eb0272cc269aaa36163c3e6f0aacbdaaa1d05e2827a4a7c4a08a029238439ed08b89c564bb3'
             'SKIP'
-            '13bd7a8d9ed6b6bc971e4cd162262c5a20448a83796af39ce394d827b0e5de74'
+            '267295aa0cea65684968420c68b32f1a66a22d018b9d2b2c1ef14267bcf4cb68aaf7099d073cbfefe6c25c8608bdcbbd45f7ac8893fdcecbf1e621abdfe9ecc1'
             'SKIP'
-            '6de8a8319271809ffdb072b68d53d155eef12438e6d04ff06a5a4db82c34fa8a'
+            '7a3716bfe3b9f546da309c7492f3e08f8f506813afeb1c737a474c83313d5c313cf4582b65215c2cfce3b74d9d1021c96e8badafe8f6e5b01fe28d2b5c61ae78'
             'SKIP'
-            '91c14126584e53e236df63f979815f7283ab34143dac63532ee8bd0b59b8cedf'
-            '0f7ec066d08655ceba752003ab524924df11336660b54dd3cb7dd7d4a221296c'
-            '26d0d21d1ba864d3a493dfe570cfe62e05dc222622fa29979429c0511bd50cd0'
-            '834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0'
-            'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
-            '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
-            'f1e9e280b9ed8c5e12c8a6fd6dcfd638137ef6555d0dd5e28dbd8ad93ff81fe0'
+            '74f85c01d42382c983578bb21bf4ee705963c73f7a3bd4aab1ce674f71a63dee18adbf1afcd792793f9172875a732e2d5d1ac82c17d5524360fa55f9712da7fe'
+            '90e2b791be43726e82cd836440f93f105690883485830b18419a4d7b4703ecc80ad0f4f6ee824ea6db7f165279ad090771cb2215e55265af04d1e6640aa4d0b0'
+            'e4c85cfe5cf0fc5b380511a565606a850d0a820ae2ffebfe0078bc29823844acaa5739f66de30d1506c400ec22f5d771c6b5d544f085a409322cf28bb1fadebb'
+            'd6faa67f3ef40052152254ae43fee031365d0b1524aa0718b659eb75afc21a3f79ea8d62d66ea311a800109bed545bc8f79e8752319cd378eef2cbd3a09aba22'
+            '2dc6b0ba8f7dbf19d2446c5c5f1823587de89f4e28e9595937dd51a87755099656f2acec50e3e2546ea633ad1bfd1c722e0c2b91eef1d609103d8abdc0a7cbaf'
+            'd9d28e02e964704ea96645a5107f8b65cae5f4fb4f537e224e5e3d087fd296cb770c29ac76e0ce95d173bc420ea87fb8f187d616672a60a0cae618b0ef15b8c8'
+            '72d92d0a48ecdecf82799f09004946e1b2de69a4e0b42d7a9bdcf41ab38b61657df3e30e0c9f86c707f44cec93ab21a78f0a7195d806671c220edc578cffe857'
             'SKIP'
-            '7afa5fee84694004ef486f674142dc2e457241b28be6088e59458ad9d1f14d2d'
-            '0c87fd84f364b4cd597c5bd1154bac65fe4870ab9ef2a4044858a4fc78845026'
-            '61a95b91b8accbe8a2ad189cecf2ede0dd811e62d8d8fd24bbe17295f3c77895'
-            '6017d33afa7bd661f9d4af6f828c9c84b0be12a189df9b1d67ec1bb96d2e3230'
-            '08d93085f05bcc91a24492533f6fbc6b34f0574512d8e7751e41af99aa900a6a'
-            '2240cb4b63dd4432cc7bc21b1aad9d2ac4bde14763e8f1e06b139d61bfddeac8'
-            'c229fb5d02d3083e627576a46dfc67b29489d578df17e61552b4d428bec8f491'
-            '42c3506b13665da5c7e817fe3fd68659e96b2639edb665a6a8d753143f2297c2'
-            'd585e6173b6d9155ff1a7d5c9d34ffb5e3cf591efb50e0e7d525365eba7c4208'
-            'faf659377105cb80de9c8f7e3e60e354ab0aa934b8df36ca575fe42b5bea73a1'
-            '1d077e7c1512b2bde305c9fd9df1476f52e3528c7339b2b8e6481855f51c00f7'
-            '12c6f37b6d33153f8bf75600321aacc6a36f6121af7bf849add68613314980ec'
-            '85be324fcf08e627a0b9b86d1e3d91ab670b8b57342a3b34ad1c730ce4cddffd')
+            'ccf18eb2c3d33a57871cbadd5ad825d2f2f489e69c54c7293b160abdc3e9e5c6a664ba7926a617d31affcf20b7ecb4e8de54fa78438c574aa1b257f686faade9'
+            '69f13bb2e353727acbe39034978729272511c6578aa2faf8c829e1bb89c22e769262289b76d93254314304ebd7547c45cdc8ba6afc278444a8fd09f71dff9757'
+            '47038a476ff90d7106e1ce2cf5dd3f2c356c75ab8cefc6901f8eddcbf7cd0f23c44f6ce96b2b3d57a6e3f30bdd5192cf3e75759277ab0ac6fbb179423f2431a0'
+            '75513d1d6dfeb6425763dc8fe8d7f607ddd11d2a8397230333a4e556b303ceb7e68bfdb26d0a10f4b557ef13adbf54c3aab00f5b493772a94b5cd87d143663c4'
+            '37df06631772200edc7e5a4450719155156a781e9a475383283627f6f1b8cbe94db6ba2e2fbc59107ea288846b56881b892e9b21d3d899b974fad4226c4def10'
+            '73916b59fd8f269ce2831d9a0710f503b9cd1004d94caf9e061ebff870a115cc8455409040574a609473e48c60b2f0b833c907327dacb085509e615c27dd463f'
+            'eef5d8161edcc9817832de2000ad30320507a1e16fc321fb2b97dd2d159825b8f924cd29e5a4ffa29c339c8727f106730e6b6858c50d8afe7a5000629507badd'
+            'b3aad9fd9292122fd3227f05d54742731bf4d6d57aaac680b34eca19597dfb56a7f54c7ad54f37cfc2ec7f622fbd90abe7f288f11f8eb98278ab07df32cf890a')
 validpgpkeys=(
               '474402C8C582DAFBE389C427BCB7CF877E7D47A7' # Alexandre Oliva
               'C92BAA713B8D53D3CAE63FC9E6974752F9704456' # André Silva
@@ -135,12 +125,7 @@ prepare() {
     patch -p1 -i "${srcdir}/0005-net-smsc95xx-Allow-mac-address-to-be-set-as-a-parame.patch"
     patch -p1 -i "${srcdir}/0006-ARM-TLV320AIC23-SoC-Audio-Codec-Fix-errors-reported-.patch"
     patch -p1 -i "${srcdir}/0007-set-default-cubietruck-led-triggers.patch"
-    patch -p1 -i "${srcdir}/0008-USB-armory-support.patch"
-    patch -p1 -i "${srcdir}/0009-ARM-dts-imx6ul-pico-hobbit-Add-Wifi-support.patch"
-    patch -p1 -i "${srcdir}/0010-exynos4412-odroid-set-higher-minimum-buck2-regulator.patch"
-    patch -p1 -i "${srcdir}/0011-usb-musb-Call-pm_runtime-from-musb_gadget_queue.patch"
-    patch -p1 -i "${srcdir}/0012-phy-twl4030-usb-better-handle-musb_mailbox-failure.patch"
-    patch -p1 -i "${srcdir}/0013-Revert-gpu-drm-omapdrm-dss-of-add-missing-of_node_pu.patch"
+    patch -p1 -i "${srcdir}/0008-exynos4412-odroid-set-higher-minimum-buck2-regulator.patch"
   fi
 
   # add freedo as boot logo
@@ -190,7 +175,7 @@ build() {
 
 _package() {
   pkgdesc="The ${pkgbase^} kernel and modules with a handful of awesome features not merged into mainline [AUFS, BFQ, BFS, Knock, UKSM]"
-  [ "${pkgbase}" = "linux-libre" ] && groups=('base')
+  [ "${pkgbase}" = "linux-libre" ] && groups=('base' 'base-openrc')
   depends=('coreutils' 'linux-libre-firmware' 'kmod')
   optdepends=('crda: to set the correct wireless channels of your country'
               'systemd-knock: to use system and service manager with TCP Stealth support'
