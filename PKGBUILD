@@ -2,7 +2,7 @@
 
 pkgname=inkslides-git
 pkgdesc="Forked and improved version of inkscapeslide-git"
-pkgver=r25.8e77203
+pkgver=r35.fe6cb77
 pkgrel=1
 arch=('i686' 'x86_64')
 license=('mit')
@@ -25,5 +25,5 @@ build() {
 
 package() {
   cd "$srcdir/$_gitname"
-  install -D -m755 inkslides.py "${pkgdir}/usr/bin/inkslides"
+  python setup.py install --root="$pkgdir/" --prefix=/usr --optimize=1
 } 
