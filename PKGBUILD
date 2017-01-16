@@ -1,12 +1,11 @@
 # Maintainer: Tom Richards <tom@tomrichards.net>
-# https://github.com/t-richards/aur-texworks
 # Contributor: Dan Vratil <dan@progdan.cz>
 # Contributor: Erdbeerkaese <erdbeerkaese@gmx.net>
 # Contributor: Michael Pfeuti
 
 pkgname=texworks
 pkgver=0.6.1
-pkgrel=1
+pkgrel=2
 pkgdesc='A TeX IDE inspired by TeXShop.'
 arch=('i686' 'x86_64')
 url='http://tug.org/texworks'
@@ -18,7 +17,6 @@ optdepends=('texlive-core: Support for typesetting'
 makedepends=('cmake' 'hardening-wrapper' 'lua' 'python' 'qt5-tools')
 provides=('texworks')
 conflicts=('texworks-svn')
-install=texworks.install
 source=("https://github.com/TeXworks/${pkgname}/archive/release-${pkgver}.tar.gz")
 sha256sums=('6b8ed503633f18d04086002d837b5c306b0bffbf548161c803d287bc6a6446ae')
 
