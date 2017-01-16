@@ -8,7 +8,7 @@ pkgrel=1
 depends=('sdl' 'libjpeg-turbo' 'ffmpeg')
 makedepends=('git' 'make')
 arch=('x86_64')
-license=('GPLv2')
+license=('GPL3')
 md5sums=('SKIP'
          '302594045b78df63fbc3c6e798318c5c')
 pkgver=r23.4af3190
