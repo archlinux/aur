@@ -1,7 +1,7 @@
 # Maintainer: Alex Kubica <alexkubicail@gmail.com>
 # Contributor: Manoel Vilela <manoel_vilela@engineer.com>
 _name=mal
-_tag=v0.2.2
+_tag=v0.2.3
 pkgname=python-mal-git
 pkgver=r137.b2afa77
 pkgrel=1
