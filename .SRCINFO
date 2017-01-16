@@ -1,0 +1,21 @@
+pkgbase = remacs-git
+	pkgdesc = GNU Emacs. Master development branch.
+	pkgver = 26.0.50.128338
+	pkgrel = 1
+	url = http://www.gnu.org/software/emacs/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = cargo
+	depends = gpm
+	depends = m17n-lib
+	depends = alsa-lib
+	depends = imagemagick
+	depends = gtk3
+	depends = giflib
+	source = remacs-git::git+https://github.com/Wilfred/remacs.git
+	md5sums = SKIP
+
+pkgname = remacs-git
+
