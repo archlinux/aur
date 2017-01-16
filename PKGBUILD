@@ -9,9 +9,9 @@
 # http://wiki.playonlinux.com/index.php/Building_PlayOnLinux_5
 
 _pkgname=playonlinux5
-pkgname=$_pkgname-git
+pkgname=${_pkgname}-git
 pkgver=r1491.09432248
-pkgrel=2
+pkgrel=3
 epoch=2
 pkgdesc="GUI for managing Windows programs under linux (development version based on Java)"
 arch=('any')
@@ -21,7 +21,7 @@ makedepends=('git' 'maven' 'java-openjfx' 'java-environment>=8')
 depends=('wine' 'java-runtime>=8')
 options=(!strip)
 source=(
-	"$_pkgname::git://github.com/PlayOnLinux/POL-POM-5.git"
+	"${_pkgname}::git://github.com/PlayOnLinux/POL-POM-5.git"
 	'PlayOnLinux5.desktop'
 	'PlayOnLinux.sh'
 	)
@@ -32,7 +32,7 @@ sha256sums=(
 	)
 
 pkgver() {
-  cd "$_pkgname"
+  cd "${_pkgname}"
   ( set -o pipefail
     git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
@@ -40,20 +40,21 @@ pkgver() {
 }
 
 build() {
-  cd "$_pkgname"
+  cd "${_pkgname}"
 
   # Set environment
-  # Use path to Java 8 for users not defaulted to Java 8 yet
-  if [[ $(archlinux-java get | cut -d "-" -f2) < 8 ]]; then
+  # Set JAVA_HOME to include Java 8 for users not defaulted to Java 8 yet
+  if (( $(archlinux-java get | cut -d "-" -f2) < 8 )) || [[ ! -f /usr/bin/javac ]]; then
 
 	# test for openjdk, fall back on oracle jdk if not present
-	openjdk=$(ls /usr/lib/jvm/java-8-*/bin/javac 2>/dev/null | cut -d "/" -f-5 | awk '/-8-openjdk/')
-	oraclejdk=$(ls /usr/lib/jvm/java-8-*/bin/javac 2>/dev/null | cut -d "/" -f-5 | awk '/-8-jdk/')
+	# Take the highest sorted version of either (head -1) so that versions above 8 will be selected
+	openjdk=$(ls /usr/lib/jvm/java-{8,9}-*/bin/javac 2>/dev/null | cut -d "/" -f-5 | awk '/-openjdk/' | head -1)
+	oraclejdk=$(ls /usr/lib/jvm/java-{8,9}-*/bin/javac 2>/dev/null | cut -d "/" -f-5 | awk '/-jdk/' | head -1)
 
-	if [[ "${openjdk}" != "" ]]; then
-		export JAVA_HOME=$(ls /usr/lib/jvm/java-8-*/bin/javac 2>/dev/null | cut -d "/" -f-5 | awk '/-openjdk/')
-	elif [[ "${oraclejdk}" != "" ]]; then
-		export JAVA_HOME=$(ls /usr/lib/jvm/java-8-*/bin/javac 2>/dev/null | cut -d "/" -f-5 | awk '/-jdk/')
+	if [[ "${openjdk}" ]]; then
+		export JAVA_HOME="${openjdk}"
+	elif [[ "${oraclejdk}" ]]; then
+		export JAVA_HOME="${oraclejdk}"
 	fi
 
   fi
@@ -66,16 +67,16 @@ build() {
 package() {
 
   # Extract
-  install -d "$pkgdir/opt/"
-  bsdtar -xf "$_pkgname/phoenicis-dist/target/phoenicis-dist.zip"
-  cp -r phoenicis-dist/ "$pkgdir/opt/$_pkgname/"
+  install -d "${pkgdir}/opt/"
+  bsdtar -xf "${_pkgname}/phoenicis-dist/target/phoenicis-dist.zip"
+  cp -r phoenicis-dist/ "${pkgdir}/opt/${_pkgname}/"
 
   # Launcher
-  install -Dm755 "PlayOnLinux.sh"  "$pkgdir/usr/bin/$_pkgname"
+  install -Dm755 "PlayOnLinux.sh"  "${pkgdir}/usr/bin/${_pkgname}"
 
   # Icon + Desktop
-  install -Dm644 "$srcdir/$_pkgname/phoenicis-javafx/target/classes/com/playonlinux/javafx/views/common/playonlinux.png" \
-                 "$pkgdir/usr/share/pixmaps/$_pkgname.png"
-  install -Dm644 PlayOnLinux5.desktop "$pkgdir/usr/share/applications/$_pkgname.desktop"
+  install -Dm644 "$srcdir/${_pkgname}/phoenicis-javafx/target/classes/com/playonlinux/javafx/views/common/playonlinux.png" \
+                 "${pkgdir}/usr/share/pixmaps/${_pkgname}.png"
+  install -Dm644 PlayOnLinux5.desktop "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
 
 }
