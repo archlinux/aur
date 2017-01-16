@@ -5,7 +5,7 @@
 pkgname=runescape-launcher
 pkgver=2.2.2
 pkgrel=7
-_pkgbump=26
+_pkgbump=27
 pkgdesc="RuneScape Game Client (NXT)"
 arch=(x86_64)
 license=(custom)
@@ -23,7 +23,7 @@ provides=(runescape-launcher-nxt)
 source=("wrapper.sh")
 source_x86_64=("${pkgname}_${pkgver}-${_pkgbump}_amd64.deb::https://content.runescape.com/downloads/ubuntu/pool/non-free/r/$pkgname/${pkgname}_${pkgver}_amd64.deb")
 sha256sums=('d20151c9111a77e753954638eb60f1b4ec0d2c86e173041dcd95bb7b309d5b12')
-sha256sums_x86_64=('207a2a17c9405bd63dd98c69892cfa9d66cb262bbe016161a653099280847602')
+sha256sums_x86_64=('4f4cc7e24e64737614df187c94ef186383e628f4610fa5462c5d1935ef179b59')
 prepare() {
     mkdir -p "$srcdir/$pkgname-$pkgver-$_pkgbump"
     cd "$srcdir/$pkgname-$pkgver-$_pkgbump"
