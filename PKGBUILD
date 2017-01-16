@@ -1,8 +1,7 @@
 # Maintainer: Ben Wolsieffer <benwolsieffer@gmail.com>
 pkgname=qdriverstation
-_pkgver=16.08
-pkgver=16.08
-pkgrel=2
+pkgver=17.01
+pkgrel=1
 pkgdesc="Open source clone of the FRC Driver Station"
 arch=('i686' 'x86_64')
 url="https://github.com/FRC-Utilities/QDriverStation"
@@ -15,29 +14,29 @@ conflicts=("${pkgname-git}")
 replaces=()
 backup=()
 options=()
-source=("https://github.com/FRC-Utilities/QDriverStation/archive/v${_pkgver}.tar.gz")
+source=("https://github.com/FRC-Utilities/QDriverStation/archive/v${pkgver}.tar.gz")
 noextract=()
-md5sums=('558474c67d8a270aad7c9a8681ed3401')
+md5sums=('5fa418e991cb4df65093a502c9ccf3a1')
 
-extractdir="QDriverStation-${_pkgver}"
+_extractdir="QDriverStation-${pkgver}"
 
 prepare() {
-	cd "$srcdir/${extractdir}"
+	cd "$srcdir/${_extractdir}"
 }
 
 build() {
-	cd "$srcdir/${extractdir}"
+	cd "$srcdir/${_extractdir}"
 	qmake-qt5
 	make
 }
 
 check() {
-	cd "$srcdir/${extractdir}"
+	cd "$srcdir/${_extractdir}"
 	make -k check
 }
 
 package() {
-	cd "$srcdir/${extractdir}"
+	cd "$srcdir/${_extractdir}"
 	make INSTALL_ROOT="$pkgdir/" install
 
 	# Install MIT license
