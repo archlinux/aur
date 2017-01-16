@@ -1,15 +1,15 @@
 pkgbase = ruby-dotenv-2.1
 	pkgdesc = Loads environment variables from `.env`.
-	pkgver = 2.1.1
-	pkgrel = 4
+	pkgver = 2.1.2
+	pkgrel = 1
 	url = https://github.com/bkeepers/dotenv
 	arch = any
 	license = MIT
 	depends = ruby
-	provides = ruby-dotenv=2.1.1
-	noextract = dotenv-2.1.1.gem
+	provides = ruby-dotenv=2.1.2
+	noextract = dotenv-2.1.2.gem
 	options = !emptydirs
-	source = https://rubygems.org/downloads/dotenv-2.1.1.gem
+	source = https://rubygems.org/downloads/dotenv-2.1.2.gem
 	sha1sums = bd591b8b36dc49b2b960a240e74cfc6807695c4b
 
 pkgname = ruby-dotenv-2.1
