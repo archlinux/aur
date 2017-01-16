@@ -9,14 +9,14 @@
 _pkgname=gitlab
 pkgname=gitlab-ee
 pkgver=8.15.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Project management and code hosting application"
 arch=('i686' 'x86_64')
 url="https://gitlab.com/gitlab-org/gitlab-ce/tree/master#README"
 license=('MIT')
 conflicts=('gitlab')
 provides=('gitlab')
-depends=('ruby' 'git' 'ruby-bundler' 'gitlab-workhorse' 'openssh' 'redis' 'libxslt' 'icu' 'nodejs')
+depends=('ruby2.3' 'git' 'ruby2.3-bundler' 'gitlab-workhorse' 'openssh' 'redis' 'libxslt' 'icu' 'nodejs')
 makedepends=('cmake' 'postgresql' 'mariadb')
 optdepends=('postgresql: database backend'
             'mysql: database backend'
@@ -45,10 +45,10 @@ source=("${pkgname}-${pkgver}.tar.bz2::https://gitlab.com/gitlab-org/gitlab-ee/r
         lighttpd.conf.example)
 install='gitlab.install'
 sha512sums=('c76cd3011a24b182ee5d73f1806ec6335465fbd63c55296ff87650617e63fa98b26f2f2df9e1ede07c3701279a6ede3daf6d943d1d86e80a32e45c7f464e4b6c'
-            '1464ca9399b627bb8bd286608b4ad93feca6bc54c7e63c98180744e710295508a89a1a34c412b82e3eaad9308a82b2ea2483ae0f0b1e1149c24b17ab0d126f69'
-            '9844b8e42e8d50e6eac54711fb8c9745d506560676e0b8d5f1c42fb5177b9b4bac5c0d3c6a673d9e54f4b5e21056627db1d434c5c76d4f3ede8cc15a109f3cb6'
-            'e74f54224e7fd5f24c3459f34649ce5fddc70886faf7eb8520513d8715b3c17452aab62676b779c136ba576193a09ae3a5471abe51013d7ecd8b37d6e0acd393'
-            '97b566751405ad46204f9d42e835a20aa330436929674913acfb35a2a1fdce06975f15db4f83708ec5d1ab4509b6d34f1bc23e43f0db1bf28073c4bd865cb007'
+            '56cce150645ef74fa42a6100c8bc7689c4012579e1f3ba237c06c367b121246b39e968044615fa21c4757bc8e9d06f37f8ac8d39aa8b808c758e716857553f66'
+            '52651e4a5dd2d632e31b7275283f9b8ab2c32c4d56b63d17bd843f300e273e382e339e5aed66222b1b2279273357cbb73aa38119f04784fe380d1550346f1ff3'
+            '79cfb8ee740ab30f970c3113659b8349128abeae5e32cc81bb905f89a6db9941b7778040a094b884262daf020f66a1aee49a12d34fbb94efce6ade946bb4625b'
+            'c097a26d1c24f120967ae457f9008df06af0cd2662306410d8e3f6cc4b5772416125fcd3c895bc35872251060083e8c95b37455b8d20154518d8c467625291eb'
             'c11d2c59da8325551a465227096e8d39b0e4bcd5b1db21565cf3439e431838c04bc00aa6f07f4d493f3f47fd6b4e25aeb0fe0fc1a05756064706bf5708c960ec'
             'c519a51d31300074ea12594fbcc8e9610d991ef04b1dac94d93a2b201df3465999cc7c6ac7f3896e02b117c2366d61dea1ef2f6b9cd7b18998385a7f26e5700f'
             'abacbff0d7be918337a17b56481c84e6bf3eddd9551efe78ba9fb74337179e95c9b60f41c49f275e05074a4074a616be36fa208a48fc12d5b940f0554fbd89c3'
@@ -117,15 +117,15 @@ build() {
   msg "Fetching bundled gems..."
   # Gems will be installed into vendor/bundle
 
-  bundle config build.nokogiri --use-system-libraries
-  bundle install -j$(nproc) --no-cache --deployment --without development test aws
+  bundle-2.3 config build.nokogiri --use-system-libraries
+  bundle-2.3 install -j$(nproc) --no-cache --deployment --without development test aws
 
   # We'll temporarily stick this in here so we can build the assets
   cp config/database.yml.postgresql.orig config/database.yml
   cp config/resque.yml.example config/resque.yml
   sed -i 's/url.*/nope.sock/g' config/resque.yml
 
-  bundle exec rake assets:precompile RAILS_ENV=production --trace
+  bundle-2.3 exec rake assets:precompile RAILS_ENV=production --trace
 
   # After building assets, clean this up again
   rm config/database.yml config/database.yml.postgresql.orig
@@ -168,6 +168,10 @@ package() {
   ln -fs /etc/webapps/gitlab-shell/secret "${pkgdir}${_datadir}/.gitlab_shell_secret"
 
   sed -i "s|require_relative '../lib|require '${_datadir}/lib|" config/application.rb
+
+  # Fix for ruby-2.3 and bundle-2.3
+  sed -i "s|bundle|bundle-2.3|g" "${pkgdir}${_datadir}/lib/tasks/gitlab/check.rake"
+  grep -rl "bin/env ruby" "${pkgdir}${_datadir}" | xargs sed -i "s|bin/env ruby$|bin/env ruby-2.3|g"
 
   # Install config files
   for config_file in application.rb gitlab.yml unicorn.rb resque.yml; do
