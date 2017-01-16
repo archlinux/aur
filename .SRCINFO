@@ -1,6 +1,6 @@
 pkgbase = graphicsmagick-imagemagick-compat
 	pkgdesc = Image processing tools providing ImageMagick interface
-	pkgver = 1.0
+	pkgver = 1.3.25
 	pkgrel = 1
 	url = http://packages.debian.org/sid/graphicsmagick-imagemagick-compat
 	arch = any

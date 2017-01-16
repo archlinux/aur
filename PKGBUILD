@@ -1,5 +1,5 @@
 pkgname=graphicsmagick-imagemagick-compat
-pkgver=1.0
+pkgver=1.3.25
 pkgrel=1
 pkgdesc="Image processing tools providing ImageMagick interface"
 arch=(any)
@@ -51,6 +51,20 @@ package() {
   do
     install -m 644 ${i} "${MAN}"
   done
+
+  # Symlink expected IMagick libraries to GMagick equivalents.
+  mkdir "$pkgdir/usr/lib"
+  ln -sr GraphicsMagick-1.3.25 "$pkgdir/usr/lib/ImageMagick-6.9.7"
+  ln -s libGraphicsMagick++.so "$pkgdir/usr/lib/libMagick++-6.Q16HDRI.so"
+  ln -s libGraphicsMagick++.so "$pkgdir/usr/lib/libMagick++-6.Q16HDRI.so.7"
+  ln -s libGraphicsMagick++.so "$pkgdir/usr/lib/libMagick++-6.Q16HDRI.so.7.0.0"
+  ln -s libGraphicsMagick.so "$pkgdir/usr/lib/libMagickCore-6.Q16HDRI.so"
+  ln -s libGraphicsMagick.so "$pkgdir/usr/lib/libMagickCore-6.Q16HDRI.so.3"
+  ln -s libGraphicsMagick.so "$pkgdir/usr/lib/libMagickCore-6.Q16HDRI.so.3.0.0"
+  ln -s libGraphicsMagickWand.so "$pkgdir/usr/lib/libMagickWand-6.Q16HDRI.so"
+  ln -s libGraphicsMagickWand.so "$pkgdir/usr/lib/libMagickWand-6.Q16HDRI.so.3"
+  ln -s libGraphicsMagickWand.so "$pkgdir/usr/lib/libMagickWand-6.Q16HDRI.so.3.0.0"
+
 }
 
 # vim:set ts=2 sw=2 et:
