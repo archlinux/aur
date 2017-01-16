@@ -2,7 +2,7 @@
 
 _gitname=darling
 pkgname=$_gitname-git
-pkgver=r1374.2536b7d
+pkgver=r1477.73eb79b1
 pkgrel=1
 pkgdesc="A Darwin/OS X emulation layer for Linux"
 arch=('x86_64') # Can only be built on x86_64 systems
@@ -29,13 +29,12 @@ prepare() {
 	sed -i 's|url = ../|url = https://github.com/darlinghq/|g' .gitmodules
 	git submodule update --init --recursive
 
-	msg2 "Forbid libexec use..."
-	sed -i 's|${CMAKE_INSTALL_PREFIX}/libexec/darling|${CMAKE_INSTALL_PREFIX}/share/darling/prefix|g' src/darling-config.h.in
-	find . -name CMakeLists.txt -exec sed -i 's|libexec/darling|${CMAKE_INSTALL_PREFIX}/share/darling/prefix|g' {} \;
+	#msg2 "Forbid libexec use..."
+	#sed -i 's|${CMAKE_INSTALL_PREFIX}/libexec/darling|${CMAKE_INSTALL_PREFIX}/share/darling/prefix|g' src/darling-config.h.in
+	#find . -name CMakeLists.txt -exec sed -i 's|libexec/darling|${CMAKE_INSTALL_PREFIX}/share/darling/prefix|g' {} \;
 
 	msg2 "Make build directories..."
 	mkdir -pv "build/"{i386,x86-64}
-	sed -i 's/lib64/lib/' Toolchain-x86_64.cmake
 }
 
 build() {
@@ -64,8 +63,4 @@ package() {
 	cd "$srcdir/$_gitname/build/x86-64"
 	msg2 "Install 64-bit build..."
 	make DESTDIR="$pkgdir" install
-
-	# Hotfixes
-	rm -rf "$pkgdir/bin"
-	chmod 4755 "$pkgdir/usr/bin/darling"
 }
