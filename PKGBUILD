@@ -1,17 +1,17 @@
 # Maintainer: Polichronucci <nick at discloud dot eu>
 
 pkgname=owncloud-app-ocsms
-pkgver=1.10.1
+pkgver=1.11.4
 pkgrel=1
 pkgdesc="Push your Android SMS to your ownCloud instance."
 arch=('any')
-url="https://github.com/nerzhul/ocsms"
+url="https://github.com/nextcloud/ocsms"
 license=('AGPL')
 depends=('owncloud')
 makedepends=()
 options=('!strip')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/nerzhul/ocsms/archive/v${pkgver}.tar.gz")
-sha512sums=('5824fdd6284c4260b97cdba7cbc7c9c644e8e3f58159a04e5eace646d5f0c9f72cbf5ab14746a3fcf440dcfaaf785c8b7914eca70bdc60d434a84881c81edb03')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/nextcloud/ocsms/archive/${pkgver}.tar.gz")
+sha512sums=('6a6e6d543e034be2425766cfbfd084681a7d400b28db1b31c9b87b331663fc37a118830042cd8722dc68022c44383b8c9aa8ff6096d67e2105a3e1a37f230289')
 
 package() {
   install -d "${pkgdir}/usr/share/webapps/owncloud/apps"
