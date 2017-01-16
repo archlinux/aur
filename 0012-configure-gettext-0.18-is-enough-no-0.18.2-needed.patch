@@ -1,0 +1,25 @@
+From 6237d4dddc5d9998d025ddf019a09c4bcd4fa217 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Sebastian=20Dr=C3=B6ge?= <sebastian.droege@collabora.co.uk>
+Date: Mon, 8 Apr 2013 11:55:55 +0200
+Subject: [PATCH 12/16] configure: gettext 0.18 is enough, no 0.18.2 needed
+
+---
+ configure.ac | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/configure.ac b/configure.ac
+index 843ef9f..e89815f 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -155,7 +155,7 @@ AC_SUBST(GETTEXT_PACKAGE)
+ AC_DEFINE_UNQUOTED(GETTEXT_PACKAGE, "$GETTEXT_PACKAGE", [GETTEXT package name])
+ AC_DEFINE_UNQUOTED(LOCALEDIR, "${prefix}/share/locale", [String catalog location])
+ AM_GNU_GETTEXT([external])
+-AM_GNU_GETTEXT_VERSION([0.18.2])
++AM_GNU_GETTEXT_VERSION([0.18])
+ 
+ dnl -------------------------------
+ dnl Check for native thread support
+-- 
+2.1.4
+

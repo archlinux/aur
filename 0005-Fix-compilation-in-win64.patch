@@ -1,0 +1,28 @@
+From c801963c33c8e0af15a00f8a733aa83cf9eca297 Mon Sep 17 00:00:00 2001
+From: Andoni Morales Alastruey <ylatuya@gmail.com>
+Date: Tue, 6 Mar 2012 23:53:38 +0100
+Subject: [PATCH 05/16] Fix compilation in win64
+
+---
+ libvisual/lv_cpu.c | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/libvisual/lv_cpu.c b/libvisual/lv_cpu.c
+index 867bcf2..fe09752 100644
+--- a/libvisual/lv_cpu.c
++++ b/libvisual/lv_cpu.c
+@@ -115,7 +115,11 @@ static void sigfpe_handler_sse( int signal, struct sigcontext sc )
+ LONG CALLBACK win32_sig_handler_sse(EXCEPTION_POINTERS* ep)
+ {
+ 	if(ep->ExceptionRecord->ExceptionCode==EXCEPTION_ILLEGAL_INSTRUCTION){
++#ifdef _WIN64
++		ep->ContextRecord->Rip +=3;
++#else
+ 		ep->ContextRecord->Eip +=3;
++#endif
+ 		__lv_cpu_caps.hasSSE=0;       
+ 		return EXCEPTION_CONTINUE_EXECUTION;
+ 	}
+-- 
+2.1.4
+

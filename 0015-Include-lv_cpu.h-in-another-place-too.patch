@@ -1,0 +1,24 @@
+From 29d92e9733db27d2b4143c27c7ff43bba9f67d39 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Sebastian=20Dr=C3=B6ge?= <sebastian@centricular.com>
+Date: Mon, 22 Sep 2014 11:02:06 +0300
+Subject: [PATCH 15/16] Include lv_cpu.h in another place too
+
+---
+ libvisual/lv_math.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/libvisual/lv_math.c b/libvisual/lv_math.c
+index cfae316..da15b74 100644
+--- a/libvisual/lv_math.c
++++ b/libvisual/lv_math.c
+@@ -30,6 +30,7 @@
+ 
+ #include "lv_bits.h"
+ #include "lv_math.h"
++#include "lv_cpu.h"
+ 
+ /* This file is getting big and bloated because of the large chunks of simd code. When all is in place we'll take a serious
+  * look how we can reduce this. For example by using macros for common blocks. */
+-- 
+2.1.4
+

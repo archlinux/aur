@@ -1,0 +1,43 @@
+From 328509681f4a506b830f0de032d788c68e2ee685 Mon Sep 17 00:00:00 2001
+From: Andoni Morales Alastruey <ylatuya@gmail.com>
+Date: Tue, 6 Mar 2012 17:36:59 +0100
+Subject: [PATCH 03/16] Add long long check for win64
+
+---
+ configure.ac | 6 +++++-
+ 1 file changed, 5 insertions(+), 1 deletion(-)
+
+diff --git a/configure.ac b/configure.ac
+index cd944f8..e21483a 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -330,6 +330,7 @@ AC_SUBST(LV_THREAD_CFLAGS)
+ AC_CHECK_SIZEOF(short)
+ AC_CHECK_SIZEOF(int)
+ AC_CHECK_SIZEOF(long)
++AC_CHECK_SIZEOF(long long)
+ AC_CHECK_SIZEOF(size_t)
+                                                                                                                
+ dnl Try to figure out whether visual_size should be long or int
+@@ -345,6 +346,9 @@ $ac_cv_sizeof_int)
+ $ac_cv_sizeof_long)
+   visual_size_type=long
+   ;;
++$ac_cv_sizeof_long_long)
++  visual_size_type='long long'
++  ;;
+ *)  AC_MSG_ERROR([No type matching size_t in size])
+ 	;;
+ esac
+@@ -801,7 +805,7 @@ echo >>$outfile
+    lv_have_threads=$have_threads
+    lv_enable_threads=$enable_threads
+ 
+-case $visual_size_type in
++case "$visual_size_type" in
+ short)
+   visual_size_format='"hu"'
+   ;;
+-- 
+2.1.4
+

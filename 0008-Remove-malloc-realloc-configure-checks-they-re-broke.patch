@@ -1,0 +1,27 @@
+From f4e61c5b501a108384506559a9efd7cd982d863f Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Sebastian=20Dr=C3=B6ge?= <sebastian.droege@collabora.co.uk>
+Date: Wed, 22 Aug 2012 16:07:39 +0200
+Subject: [PATCH 08/16] Remove malloc/realloc configure checks, they're broken
+
+---
+ configure.ac | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index e21483a..9550558 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -139,8 +139,8 @@ AC_MSG_RESULT($lv_have_gnuc_varargs)
+ AC_C_BIGENDIAN(bigendian=yes, bigendian=no, )
+ 
+ # Checks for library functions.
+-AC_FUNC_MALLOC
+-AC_FUNC_REALLOC
++# AC_FUNC_MALLOC
++# AC_FUNC_REALLOC
+ AC_FUNC_SELECT_ARGTYPES
+ AC_CHECK_FUNCS([gettimeofday usleep nanosleep select memset sqrt strdup strndup sysconf sched_setscheduler])
+ 
+-- 
+2.1.4
+

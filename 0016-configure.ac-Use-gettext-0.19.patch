@@ -1,0 +1,25 @@
+From cd15f0482252ae3568e106bf15e6bc95aa46fb1c Mon Sep 17 00:00:00 2001
+From: Edward Hervey <bilboed@bilboed.com>
+Date: Fri, 13 Feb 2015 12:49:31 +0100
+Subject: [PATCH 16/16] configure.ac: Use gettext 0.19
+
+---
+ configure.ac | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/configure.ac b/configure.ac
+index e89815f..f8a1e9d 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -155,7 +155,7 @@ AC_SUBST(GETTEXT_PACKAGE)
+ AC_DEFINE_UNQUOTED(GETTEXT_PACKAGE, "$GETTEXT_PACKAGE", [GETTEXT package name])
+ AC_DEFINE_UNQUOTED(LOCALEDIR, "${prefix}/share/locale", [String catalog location])
+ AM_GNU_GETTEXT([external])
+-AM_GNU_GETTEXT_VERSION([0.18])
++AM_GNU_GETTEXT_VERSION([0.19])
+ 
+ dnl -------------------------------
+ dnl Check for native thread support
+-- 
+2.1.4
+

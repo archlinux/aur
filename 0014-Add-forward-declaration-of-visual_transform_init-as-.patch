@@ -1,0 +1,26 @@
+From a43b6f7746ab2ef4e4ce5160ebaaccc9c082456e Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Sebastian=20Dr=C3=B6ge?= <sebastian@centricular.com>
+Date: Mon, 22 Sep 2014 11:01:36 +0300
+Subject: [PATCH 14/16] Add forward declaration of visual_transform_init() as
+ required
+
+---
+ libvisual/lv_transform.c | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/libvisual/lv_transform.c b/libvisual/lv_transform.c
+index c763768..1ffe03a 100644
+--- a/libvisual/lv_transform.c
++++ b/libvisual/lv_transform.c
+@@ -41,6 +41,8 @@ static int transform_dtor (VisObject *object);
+ 
+ static VisTransformPlugin *get_transform_plugin (VisTransform *transform);
+ 
++int visual_transform_init (VisTransform *transform, const char *transformname);
++
+ 
+ static int transform_dtor (VisObject *object)
+ {
+-- 
+2.1.4
+

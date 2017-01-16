@@ -1,0 +1,51 @@
+From 3115b039b3c334f7a7ef97c582c4cf22a65ddd35 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Sebastian=20Dr=C3=B6ge?= <sebastian.droege@collabora.co.uk>
+Date: Sat, 2 Mar 2013 19:27:19 +0100
+Subject: [PATCH 10/16] Only #define inline and friends if they're not defined
+ yet
+
+---
+ libvisual/lv_defines.h | 24 ++++++++++++++++++------
+ 1 file changed, 18 insertions(+), 6 deletions(-)
+
+diff --git a/libvisual/lv_defines.h b/libvisual/lv_defines.h
+index adf10fb..3cd104e 100644
+--- a/libvisual/lv_defines.h
++++ b/libvisual/lv_defines.h
+@@ -63,15 +63,27 @@
+ 
+ /* Compiler specific optimalization macros */
+ #if __GNUC__ >= 3
+-# define inline			inline __attribute__ ((always_inline))
+-# define __malloc		__attribute__ ((malloc))
+-# define __packed		__attribute__ ((packed))
++# ifndef inline
++#  define inline		inline __attribute__ ((always_inline))
++#endif
++# ifndef __malloc
++#  define __malloc		__attribute__ ((malloc))
++# endif
++# ifndef __packed
++#  define __packed		__attribute__ ((packed))
++# endif
+ # define VIS_LIKELY(x)		__builtin_expect (!!(x), 1)
+ # define VIS_UNLIKELY(x)	__builtin_expect (!!(x), 0)
+ #else
+-# define inline			/* no inline */
+-# define __malloc		/* no malloc */
+-# define __packed		/* no packed */
++# ifndef inline
++#  define inline		/* no inline */
++# endif
++# ifndef __malloc
++#  define __malloc		/* no malloc */
++# endif
++# ifndef __packed
++#  define __packed		/* no packed */
++# endif
+ # define VIS_LIKELY(x)		(x)
+ # define VIS_UNLIKELY(x)	(x)
+ #endif
+-- 
+2.1.4
+
