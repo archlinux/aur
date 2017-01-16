@@ -1,12 +1,12 @@
 # Maintainer: Anatoly Rugalev <anatoly.rugalev g-mail>
 
 pkgname=imagy-xfce4
-pkgver=0.1
+pkgver=0.2
 pkgrel=1
 url="http://imagy.me"
 pkgdesc="Imagy.me screenshooter for xfce4"
 arch=('x86' 'x86_64')
-depends=('xfce4-screenshooter')
+depends=('xfce4-screenshooter' 'xclip')
 source=('imagy-xfce4' 'LICENSE')
 md5sums=('SKIP' 'SKIP')
 license=('MIT')
