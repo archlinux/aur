@@ -10,7 +10,7 @@ _minor=9
 _basekernel=${_major}.${_minor}
 _srcname=linux-${_major}.${_minor}
 pkgbase=linux-pf
-_pfrel=2
+_pfrel=3
 _kernelname=-pf
 _pfpatchhome="http://pf.natalenko.name/sources/${_basekernel}/"
 _pfpatchname="patch-${_basekernel}${_kernelname}${_pfrel}"
@@ -84,7 +84,7 @@ source=("ftp://www.kernel.org/pub/linux/kernel/v${_major}.x/linux-${_basekernel}
 	'change-default-console-loglevel.patch'
 	"${_pfpatchhome}${_pfpatchname}.xz"	# the -pf patchset
         "git+$_aufs3#branch=aufs$_major.$_minor"
-        "uksm-$_major.$_minor.patch"::"http://kerneldedup.org/download/uksm/0.1.2.5/uksm-0.1.2.5-for-v$_major.$_minor.patch"
+        "uksm-$_major.$_minor.patch"::"http://kerneldedup.org/download/uksm/0.1.2.5/uksm-0.1.2.5-for-v$_major.$_minor.1+.patch"
         "99-linux-pf.hook"
         '0001-x86-fpu-Fix-invalid-FPU-ptrace-state-after-execve.patch'
        )
@@ -715,12 +715,12 @@ pkgdesc="Linux kernel and modules with the pf-kernel patch [-ck patchset (BFS in
 
 # makepkg -g >>PKGBUILD
 sha256sums=('029098dcffab74875e086ae970e3828456838da6e0ba22ce3f64ef764f3d7f1a'
-            '61bb7eaf001893a01185570d157aa4e1b01adc10fcbb7edcad548b0fc3a80a07'
-            '79012bea34656c9130f58d163f23cedd1cf981689e2e1532bab7c6caf734c882'
+            '733b092bbcbb2d07dd891c77eb257104c04f21794ccec07af20b962ff81999af'
+            '377dd6e6675ec34a81bad6f3d651e23dd06b459e09320d6e6bbf4ac5507359c2'
             '82d660caa11db0cd34fd550a049d7296b4a9dcd28f2a50c81418066d6e598864'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
-            '970006c03f917f8494dbad78de5866adf5651ad27ef27eea56738eef5ae2898d'
+            '35dd5f638273b7197aa6d0efe34f758bca312e65a784293ee95a603a78d3556f'
             'SKIP'
-            '7bf7954c425dc5a1d73f9c634d95d19e800da465d0015a5b592deb77803b3cc1'
+            '91ae8ac0cd2086067e0ccac28d360d9ed0b3e845f584ff9af8e21e098db7bd72'
             'df07e00e8581fe282a5b92be9ee9bb37910eae3d2cc43eeb41df736b9f531f02'
             '3e955e0f1aae96bb6c1507236adc952640c9bd0a134b9995ab92106a33dc02d9')
