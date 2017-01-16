@@ -10,27 +10,24 @@
 # -Increase fragment samplers threshold (see https://bugs.winehq.org/show_bug.cgi?id=41213 ) OPTIONAL
 
 pkgname=wine-gaming-nine
-pkgver=2.0rc4
-pkgrel=3
+pkgver=2.0rc5
+pkgrel=1
 
 _pkgbasever=${pkgver/rc/-rc}
-_d3d9ver=2.0-rc2
 _winesrcdir="wine-patched-staging-$_pkgbasever"
 
 source=("https://github.com/wine-compholio/wine-patched/archive/staging-$_pkgbasever.tar.gz"
-        "https://github.com/sarnex/wine-d3d9-patches/archive/wine-d3d9-$_d3d9ver.tar.gz"
+        "https://github.com/sarnex/wine-d3d9-patches/archive/wine-d3d9-$_pkgbasever.tar.gz"
         30-win32-aliases.conf
-        flex_fix.patch
 	heap_perf.patch
         increase_max_frag_samplers.patch
 	keybindings.patch
         steam.patch
         wbemprox_query_v2.patch
         )
-sha1sums=('b2639f4b62ac83eafbb66beff46be2cba28c08a5'
-	  '6145411f5aaa9189eeb93dc46b46e7a9e3fe2883'
+sha1sums=('e9eca2bbb587968577562af5c236deabd7b5da63'
+	  'cf263ccd80464c158217b1f058bc42258b340d0f'
           '023a5c901c6a091c56e76b6a62d141d87cce9fdb'
-	  '6d9fb35e74042233b0c0e7d6b212d2caad236b81'
           '0f4ac455436d5714a2cf0b537ed25f4fa5c1a7fd'
 	  'a84456790932fb2e7bb75ddeac86fd45b7c09e79'
           'f3febb8836f38320742a546c667106608d4c4395'
@@ -135,11 +132,10 @@ prepare()
 {
     cd wine-patched-staging-$_pkgbasever
 
-    patch -p1 < "$srcdir/wine-d3d9-patches-wine-d3d9-$_d3d9ver/staging-helper.patch" #for wine-staging
-    patch -p1 < "$srcdir/wine-d3d9-patches-wine-d3d9-$_d3d9ver/wine-d3d9.patch"
+    patch -p1 < "$srcdir/wine-d3d9-patches-wine-d3d9-$_pkgbasever/staging-helper.patch" #for wine-staging
+    patch -p1 < "$srcdir/wine-d3d9-patches-wine-d3d9-$_pkgbasever/wine-d3d9.patch"
     patch -p1 < ../steam.patch
     patch -p1 < ../heap_perf.patch
-    patch -p1 < ../flex_fix.patch
     
     #patch -p1 < ../increase_max_frag_samplers.patch
     
