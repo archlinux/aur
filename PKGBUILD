@@ -3,7 +3,7 @@
 pkgbase="python-keras-git"
 pkgname=("python-keras-git" "python2-keras-git")
 _pkgname="keras"
-pkgver=0.2.0.r189.g50467e3
+pkgver=1.2.0.r106.ge54d7951
 pkgrel=1
 pkgdesc="Theano-based Deep Learning library (convnets, recurrent neural networks, and more)"
 arch=('i686' 'x86_64')
@@ -44,12 +44,16 @@ build() {
 
 package_python2-keras-git() {
   depends=('python2' 'python2-numpy' 'python2-scipy' 'python2-theano' 'python2-h5py')
+  provides=('python2-keras')
+  conflicts=('python2-keras')
   cd "$srcdir/${_pkgname}-py2"
   python2 setup.py install --root="$pkgdir"/ --optimize=1
 }
 
 package_python-keras-git() {
   depends=('python' 'python-numpy' 'python-scipy' 'python-theano' 'python-h5py')
+  provides=('python-keras')
+  conflicts=('python-keras')
   cd "$srcdir/${_pkgname}"
   python setup.py install --root="$pkgdir"/ --optimize=1
 }
