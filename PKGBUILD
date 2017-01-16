@@ -5,7 +5,7 @@ _gtk3_max='4.0'
 _theme_name=Adapta
 _gtk2_min='2.24.30'
 _github="adapta-project/${pkgname}"
-pkgver="3.89.2.88"
+pkgver="3.89.2.109"
 pkgrel=1
 pkgdesc="An adaptive Gtk+ theme based on Material Design Guidelines."
 arch=(any)
@@ -29,6 +29,7 @@ optdepends=('ttf-roboto: The recommended font'
             'paper-icon-theme: A fitting icon theme'
             'gnome-tweak-tool: A graphical tool to tweak gnome settings'
             'adapta-backgrounds: The corresponding backgrounds project'
+            'telegram-desktop>=1.0.0: The Telegram desktop client'
             "unity>=7.4.0: Ubuntu's Unity desktop")
 makedepends=('glib2>=2.48.0'
              'libxml2'
@@ -38,7 +39,7 @@ makedepends=('glib2>=2.48.0'
              'parallel')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
 #        "${pkgname}-${pkgver}.tar.gz.asc::${url}/releases/download/${pkgver}/${pkgname}-${pkgver}.tar.gz.asc")
-sha256sums=('938b55b11aa9f69ceac6a3836901d2889292e535b7776cb26b15200ff1773d79')
+sha256sums=('dc8d43fc752d43f578f415859134d24590832adb133a13a54256b89b05a65344')
 
 build() {
     cd "${pkgname}-${pkgver}"
