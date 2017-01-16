@@ -1,4 +1,5 @@
 # Maintainer : Michael DeGuzis <mdeguzis@gmail.com>
+# Contributor: Det <aur.archlinux.org/account/Det>
 # Contributor: Nick Shvelidze <captain@pirrate.me>
 # Contributor: Justin Dray <justin@dray.be>
 # Contributor: Laurent Carlier <lordheavym@gmail.com>
@@ -11,7 +12,7 @@
 _pkgname=playonlinux5
 pkgname=${_pkgname}-git
 pkgver=r1491.09432248
-pkgrel=3
+pkgrel=4
 epoch=2
 pkgdesc="GUI for managing Windows programs under linux (development version based on Java)"
 arch=('any')
@@ -46,15 +47,16 @@ build() {
   # Set JAVA_HOME to include Java 8 for users not defaulted to Java 8 yet
   if (( $(archlinux-java get | cut -d "-" -f2) < 8 )) || [[ ! -f /usr/bin/javac ]]; then
 
-	# test for openjdk, fall back on oracle jdk if not present
+	# test for openjdk, fall back on other jdks if not found
 	# Take the highest sorted version of either (head -1) so that versions above 8 will be selected
-	openjdk=$(ls /usr/lib/jvm/java-{8,9}-*/bin/javac 2>/dev/null | cut -d "/" -f-5 | awk '/-openjdk/' | head -1)
-	oraclejdk=$(ls /usr/lib/jvm/java-{8,9}-*/bin/javac 2>/dev/null | cut -d "/" -f-5 | awk '/-jdk/' | head -1)
+	_openjdk=$(ls /usr/lib/jvm/java-{8,9}-openjdk/bin/javac 2>/dev/null | cut -d "/" -f-5)
 
-	if [[ "${openjdk}" ]]; then
-		export JAVA_HOME="${openjdk}"
-	elif [[ "${oraclejdk}" ]]; then
-		export JAVA_HOME="${oraclejdk}"
+	if [[ "${_openjdk}" ]]; then
+		# choose the first one available
+		export JAVA_HOME="${_openjdk[0]}"
+	else
+		# fall back to other JDKs
+		export JAVA_HOME=$(ls /usr/lib/jvm/java-{8,9}-*/bin/javac 2>/dev/null | cut -d "/" -f-5 | head -1)
 	fi
 
   fi
