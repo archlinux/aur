@@ -1,18 +1,20 @@
 # Maintainer: icasdri <icasdri at gmail dot com>
+# Maintainer: hexchain <i@hexchain.org>
 
-_pypi_name=mypy-lang
+_pypi_name=mypy
 pkgbase=python-${_pypi_name}
 #pkgname=(python-${_pypi_name} python2-${_pypi_name})
 pkgname=$pkgbase
-pkgver=0.4.6
+pkgver=0.470
 pkgrel=1
 pkgdesc='Optional static typing for Python 2 and 3'
 url="https://github.com/python/mypy"
 arch=('any')
 license=('MIT')
-optdepends=('python-typed-ast')
-source=("https://pypi.io/packages/source/${_pypi_name:0:1}/${_pypi_name}/${_pypi_name}-${pkgver}.tar.gz")
-sha256sums=('65322cf3466282947184271792b9f63153872896e958047708d8927864f4fb19')
+provides=('python-mypy-lang')
+conflicts=('python-mypy-lang')
+depends=('python-typed-ast')
+source=("https://github.com/python/mypy/archive/v${pkgver}.tar.gz")
 
 build() {
     cd "${srcdir}/${_pypi_name}-${pkgver}"
@@ -21,5 +23,7 @@ build() {
 
 package() {
     cd "${srcdir}/${_pypi_name}-${pkgver}"
+    install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
     python setup.py install --root="${pkgdir}" --optimize=1
 }
+sha256sums=('e17506ff9d6b011896187dadd30cb5905bc3129737b5ef67e0a506f8655ce686')
