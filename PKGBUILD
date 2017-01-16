@@ -1,6 +1,6 @@
 # Maintainer: Irvine <irvinemcminn_at_that gmail_place>
 pkgname=firejail-apparmor
-pkgver=0.9.44.4
+pkgver=0.9.44.6
 pkgrel=1
 pkgdesc="Apparmor support for Firejail"
 arch=('i686' 'x86_64')
@@ -9,8 +9,8 @@ license=('GPL2')
 depends=('apparmor-profiles' 'apparmor-utils')
 provides=('firejail')
 conflicts=('firejail')
-source=("https://sourceforge.net/projects/firejail/files/firejail/firejail-0.9.44.4.tar.xz/download")
-sha1sums=('710de2e9791142edcc6ab46b64d595e09ff4071d')
+source=("https://sourceforge.net/projects/firejail/files/firejail/firejail-0.9.44.6.tar.xz/download")
+sha1sums=('8e86fdd17f9e37ea623498550b2b201201c788d3')
 
 
 
