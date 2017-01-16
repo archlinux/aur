@@ -1,0 +1,14 @@
+pkgbase = boxes-git
+	pkgdesc = Text mode box and comment drawing filter
+	pkgver = 294
+	pkgrel = 1
+	url = http://boxes.thomasjensen.com/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	conflicts = boxes
+	source = git://github.com/ascii-boxes/boxes.git
+	md5sums = SKIP
+
+pkgname = boxes-git
+
