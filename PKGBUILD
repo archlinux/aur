@@ -13,7 +13,7 @@ depends=('python'
 makedepends=(
     'cython'
     'python-setuptools')
-license=('BSD')
+license=('custom:University of Illinois/NCSA Open Source License')
 arch=('i686' 'x86_64')
 source=("https://github.com/bashtage/arch/archive/${pkgver}.tar.gz")
 md5sums=('9a98f2cd94fb2f8272fb5a2cad439ffc')
