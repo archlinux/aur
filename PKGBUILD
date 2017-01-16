@@ -1,6 +1,6 @@
 # Maintainer: Chad "crossroads1112" Sharp <crossroads1112@riseup.net>
 pkgname=lumina-desktop
-pkgver=1.1.0
+pkgver=1.2.0
 pkgrel=1
 my_pkgrel=p1
 pkgfullname="${pkgname%-*}-${pkgver}-${my_pkgrel}"
@@ -15,8 +15,7 @@ conflicts=("lumina-de-git" "lumina-desktop-git" "insight-fm")
 provides=("${pkgname%-*}" "insight-fm")
 install="${pkgname%-*}.install"
 source=("https://github.com/trueos/lumina/archive/v${pkgver}-${my_pkgrel}.tar.gz")
-md5sums=('603a9eef649979813a29b681a3396a50')
-
+sha512sums=('8490e2b0f2fa08b2d63ec688f9993771ea935129a2947ef7bfa1874424cbede6d8877083ce90658c283858e67397383b5bab536388e9222b440015ebdf8b2919')
 
 build(){
     cd "$srcdir/${pkgfullname}"
