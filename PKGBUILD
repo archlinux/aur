@@ -1,7 +1,7 @@
 # Maintainer: JKA Network (JoseluCross, Kprkpr, Yukialba) <contacto@jkanetwork.com>
 pkgname=x-tools-armv6-bin
-pkgver=20160713
-pkgrel=2
+pkgver=20170116
+pkgrel=1
 pkgdesc="crosstool-ng toolchain - x-tools package for armv6h compiling"
 arch=('x86_64')
 url="https://archlinuxarm.org/wiki/Distcc_Cross-Compiling"

@@ -1,7 +1,7 @@
 pkgbase = x-tools-armv6-bin
 	pkgdesc = crosstool-ng toolchain - x-tools package for armv6h compiling
-	pkgver = 20160713
-	pkgrel = 2
+	pkgver = 20170116
+	pkgrel = 1
 	url = https://archlinuxarm.org/wiki/Distcc_Cross-Compiling
 	install = x-tools-armv6-bin.install
 	arch = x86_64
