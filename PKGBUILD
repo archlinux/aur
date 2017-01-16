@@ -4,7 +4,7 @@
 _gemname=dotenv
 pkgname=ruby-$_gemname-2.1
 pkgver=2.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Loads environment variables from `.env`.'
 arch=(any)
 url='https://github.com/bkeepers/dotenv'
@@ -14,7 +14,7 @@ depends=(ruby)
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-sha1sums=('bd591b8b36dc49b2b960a240e74cfc6807695c4b')
+sha1sums=('cbf730122747f19c68b98ce1232e88db298aea45')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
