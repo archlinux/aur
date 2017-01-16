@@ -1,6 +1,6 @@
 pkgname=powerline-i3-git
-pkgver=1.2.3
-pkgrel=2
+pkgver=1.2.4
+pkgrel=1
 pkgdesc="The ultimate statusline/prompt utility. A fork containing more features for the i3 window manager."
 arch=('i686' 'x86_64')
 url="https://github.com/ph111p/powerline"
