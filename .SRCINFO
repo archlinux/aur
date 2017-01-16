@@ -1,0 +1,13 @@
+pkgbase = wbox
+	pkgdesc = HTTP testing tool
+	pkgver = 5
+	pkgrel = 1
+	url = http://www.hping.org/wbox/
+	arch = i686
+	arch = x86_64
+	license = BSD
+	source = http://www.hping.org/wbox/wbox-5.tar.gz
+	md5sums = a95ca2c69982db10704b5ed482c9c722
+
+pkgname = wbox
+
