@@ -1,6 +1,6 @@
 # Maintainer: JKA Network (JoseluCross, Kprkpr, Yukialba) <contacto@jkanetwork.com>
 pkgname=x-tools-armv7-bin
-pkgver=20160713
+pkgver=20170116
 pkgrel=1
 pkgdesc="crosstool-ng toolchain - x-tools package for armv7h compiling"
 arch=('x86_64')
