@@ -7,7 +7,7 @@
 
 pkgname=vlmc-git
 epoch=1
-pkgver=0.4342.c9987f1
+pkgver=0.4358.9ad256c1
 pkgrel=1
 pkgdesc="VideoLAN Movie Creator, a simple and user-friendly video editor"
 arch=('i686' 'x86_64')
