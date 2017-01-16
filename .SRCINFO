@@ -1,0 +1,31 @@
+pkgbase = python-git-remote-dropbox-git
+	pkgdesc = Use a Dropbox (shared) folder as a true Git remote
+	pkgver = r29.27cb825
+	pkgrel = 1
+	url = https://github.com/anishathalye/git-remote-dropbox
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	makedepends = python2-setuptools
+	makedepends = git
+	source = git+https://github.com/anishathalye/git-remote-dropbox.git
+	sha256sums = SKIP
+
+pkgname = python-git-remote-dropbox-git
+	depends = python-dropbox
+	depends = git
+	depends = dropbox
+	provides = python-git-remote-dropbox
+	conflicts = python-git-remote-dropbox
+	conflicts = python2-git-remote-dropbox
+	conflicts = python2-git-remote-dropbox-git
+
+pkgname = python2-git-remote-dropbox-git
+	depends = python2-dropbox
+	depends = git
+	depends = dropbox
+	provides = python2-git-remote-dropbox
+	conflicts = python-git-remote-dropbox
+	conflicts = python2-git-remote-dropbox
+	conflicts = python-git-remote-dropbox-git
+
