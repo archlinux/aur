@@ -3,7 +3,7 @@
 # Contributor: Julien Deswaef (juego) <juego@requiem4tv.com>
 
 pkgname=python-tensorflow-git
-pkgver=0.12.1+1738+g1e4d6f1c3
+pkgver=0.12.1+1875+g9830ed87d
 pkgrel=1
 
 pkgdesc="Open source software library for numerical computation using data flow graphs."
@@ -22,7 +22,7 @@ source=("git+https://github.com/tensorflow/tensorflow")
 md5sums=('SKIP')
 
 pkgver() {
-  cd "${srcdir}/tensorflow"
+  cd ${srcdir}/tensorflow
   git describe --tags | sed 's/-/+/g'
 }
 
@@ -65,21 +65,16 @@ prepare() {
   export TF_NEED_OPENCL=0
   # disable XLA JIT compiler
   export TF_ENABLE_XLA=0
+  # enable jemalloc support
+  export TF_NEED_JEMALLOC=1
 
   # make sure the proxy variables are in all caps, otherwise bazel ignores them
   export HTTP_PROXY=`echo $http_proxy | sed -e 's/\/$//'`
   export HTTPS_PROXY=`echo $https_proxy | sed -e 's/\/$//'`
-
-  # hack to enable build with -march=native from: https://github.com/tensorflow/tensorflow/issues/6558
-  # mkdir -p third_party/eigen3/unsupported/Eigen/CXX11/src/Tensor
-  # cp ../TensorContractionThreadPool.h third_party/eigen3/unsupported/Eigen/CXX11/src/Tensor/TensorContractionThreadPool.h
-  # patch -Np1 -i ../march_native.diff
 }
 
 build() {
-  echo "Make sure your .bazelrc points to the correct workspace, e.g. %workspace%:/opt/bazel/base_workspace."
-
-  cd "${srcdir}/tensorflow"
+  cd ${srcdir}/tensorflow
 
   ./configure
   bazel build -c opt ${_build_opts} --copt=-march=native //tensorflow/tools/pip_package:build_pip_package
@@ -89,7 +84,7 @@ build() {
 }
 
 package() {
-  cd "${srcdir}/tensorflow"
+  cd ${srcdir}/tensorflow
 
   TMP_PKG=`find $srcdir/tmp -name "tensor*.whl"`
   pip install --ignore-installed --upgrade --root $pkgdir/ $TMP_PKG --no-dependencies
