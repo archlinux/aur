@@ -1,12 +1,8 @@
 # $Id$
-# Maintainer: archaurwiki <archaurwiki at i2pmail dot org>
-# Contributor: Alexander Rødseth <rodseth@gmail.com>
-# Contributor: Angel Velasquez <angvp@archlinux.org>
-# Contributor: Douglas Soares de Andrade <douglas@archlinux.org>
-# Contributor: d'Ronin <daronin@2600.com>
-# Contributor: Hexchain Tong <richard0053@gmail.com>
+# Maintainer: Evgeny Pokhilko <software@evpo.net>
+# Contributor:
 
-pkgname=botan-stable
+pkgname=botan
 pkgver=1.10.13
 pkgrel=1
 pkgdesc='Crypto library written in C++'
