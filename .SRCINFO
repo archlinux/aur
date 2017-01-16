@@ -10,9 +10,12 @@ pkgbase = ahoviewer-git
 	depends = curl>=7.16.0
 	depends = gtkmm>=2.20.0
 	depends = glibmm>=2.36.0
-	depends = pugixml
+	depends = libxml2
+	depends = libconfig>=1.5
 	optdepends = gstreamer
 	optdepends = gst-plugins-bad
+	optdepends = gst-plugins-good
+	optdepends = libsecret
 	optdepends = libunrar
 	optdepends = libzip
 	source = git://github.com/ahodesuka/ahoviewer

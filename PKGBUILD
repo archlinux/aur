@@ -7,8 +7,8 @@ pkgdesc="A GTK2 image viewer, manga reader, and booru browser."
 arch=('i686' 'x86_64')
 url="http://github.com/ahodesuka/ahoviewer"
 license=('MIT')
-depends=('curl>=7.16.0' 'gtkmm>=2.20.0' 'glibmm>=2.36.0' 'pugixml')
-optdepends=('gstreamer' 'gst-plugins-bad' 'libunrar' 'libzip')
+depends=('curl>=7.16.0' 'gtkmm>=2.20.0' 'glibmm>=2.36.0' 'libxml2' 'libconfig>=1.5')
+optdepends=('gstreamer' 'gst-plugins-bad' 'gst-plugins-good' 'libsecret' 'libunrar' 'libzip')
 makedepends=('git')
 source=("git://github.com/ahodesuka/ahoviewer")
 md5sums=('SKIP')
@@ -20,7 +20,7 @@ pkgver() {
 
 build() {
   cd 'ahoviewer'
-  ./bootstrap
+  ./bootstrap --prefix=/usr
   make
 }
 
