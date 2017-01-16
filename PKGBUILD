@@ -2,9 +2,9 @@
 
 pkgbase=python-binary-memcached
 pkgname=('python-binary-memcached' 'python2-binary-memcached')
-pkgver=0.25.0
-_commit=4b51d7b2a4cb41c918fd2932f67d59fe9fea5ea5
-pkgrel=2
+pkgver=0.26.0
+_commit=422a32ac00616a37f348350544b7b1c3ac8c1108
+pkgrel=1
 arch=('any')
 pkgdesc='A pure python module to access memcached via its binary protocol with SASL auth support'
 url='https://github.com/jaysonsantos/python-binary-memcached'
