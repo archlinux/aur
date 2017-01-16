@@ -1,8 +1,7 @@
 # $Id$
 # Maintainer: Evgeny Pokhilko <software@evpo.net>
-# Contributor:
 
-pkgname=botan
+pkgname=botan-stable
 pkgver=1.10.13
 pkgrel=1
 pkgdesc='Crypto library written in C++'

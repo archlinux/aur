@@ -1,4 +1,4 @@
-pkgbase = botan
+pkgbase = botan-stable
 	pkgdesc = Crypto library written in C++
 	pkgver = 1.10.13
 	pkgrel = 1
