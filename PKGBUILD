@@ -21,5 +21,5 @@ package() {
   fi
   cd $pkgdir
   bsdtar -xf $rpmfile
-  mv $pkgdir/usr/lib64 $pkgdir/usr/lib
+  [[ "${CARCH}" = 'x86_64' ]] && mv $pkgdir/usr/lib64 $pkgdir/usr/lib
 }
