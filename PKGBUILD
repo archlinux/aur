@@ -6,7 +6,7 @@
 
 pkgname=nas
 pkgver=1.9.4
-pkgrel=3
+pkgrel=4
 pkgdesc='Network Audio System is a network transparent, client/server audio transport system. Provides libaudio2.so.'
 arch=('i686' 'x86_64')
 url='http://radscan.com/nas.html'
@@ -34,7 +34,7 @@ build() {
 package() {
   	cd ${pkgname}-${pkgver}
 
-  	make DESTDIR=${pkgdir} USRLIBDIR=/usr/lib install
+  	make DESTDIR=${pkgdir} USRLIBDIR=/usr/lib LDLIBS=-lfl install
 	chmod 644 ${pkgdir}/usr/include/audio/*
 
 # Remove static libraries
