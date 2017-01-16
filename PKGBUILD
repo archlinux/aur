@@ -9,7 +9,7 @@ url="https://github.com/aaugustin/websockets"
 license=('custom:BSD')
 depends=('python')
 source=("$pkgver.tar.gz::https://github.com/aaugustin/websockets/archive/$pkgver.tar.gz")
-md5sums=('97643620ddb773db37cedda8462d62c1')
+sha256sums=('cc6620f33b5d68f7f36cc82f2fb947a92f572f569c3f905b232bcf81623e6128')
 
 package() {
     cd "$srcdir"/websockets-$pkgver
