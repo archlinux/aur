@@ -4,7 +4,7 @@
 # Contributor: metzen <metzen@gmail.com>
 
 pkgname=logmein-hamachi
-pkgver=2.1.0.165
+pkgver=2.1.0.174
 pkgrel=1
 pkgdesc="A zero-configuration VPN service"
 url="https://www.vpn.net/linux"
@@ -13,10 +13,10 @@ license=("custom")
 conflicts=("hamachi")
 replaces=("hamachi")
 options=("!strip")
-[ "${CARCH}" == "i686" ] && _filearch_=x86 && sha1sums=('0dcd0777fe5257b0869bb57e9d273a95f39d251b' '2b8052f91bb47beac1fdab0c0c455a36f8876671')
-[ "${CARCH}" == "x86_64" ] && _filearch_=x64 && sha1sums=('83c111ddd7a019b96d1ac1b39863be0fa5072e94' '2b8052f91bb47beac1fdab0c0c455a36f8876671')
-[ "${CARCH}" == "arm" ] && _filearch_=armel && sha1sums=('793aea2396b3f828a05dcf56f0a3e522873a70d4' '2b8052f91bb47beac1fdab0c0c455a36f8876671')
-[ "${CARCH}" == "armv7h" ] && _filearch_=armhf && sha1sums=('5f672132abb657c72fa22669d6ef8bf921e9f18b' '2b8052f91bb47beac1fdab0c0c455a36f8876671')
+[ "${CARCH}" == "i686" ] && _filearch_=x86 && sha1sums=('20cc7a0a4c5fb61a5f6769e4d8fff5dab9293e3e' '2b8052f91bb47beac1fdab0c0c455a36f8876671')
+[ "${CARCH}" == "x86_64" ] && _filearch_=x64 && sha1sums=('dafb47d24d44dd7bd3a80a81b62a297f497f52a5' '2b8052f91bb47beac1fdab0c0c455a36f8876671')
+[ "${CARCH}" == "arm" ] && _filearch_=armel && sha1sums=('328ea87a2f371163a90b9d7518417e5acbcb2da5' '2b8052f91bb47beac1fdab0c0c455a36f8876671')
+[ "${CARCH}" == "armv7h" ] && _filearch_=armhf && sha1sums=('dbd32d89063e2ab72b7e51f5706d0d25586d767b' '2b8052f91bb47beac1fdab0c0c455a36f8876671')
 
 source=("https://www.vpn.net/installers/${pkgname}-${pkgver}-${_filearch_}.tgz" "systemd")
 
