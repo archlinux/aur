@@ -1,14 +1,14 @@
 pkgbase = prosody-mod-onions
 	pkgdesc = s2s communication through TOR
-	pkgver = 20151014
+	pkgver = 20161104
 	pkgrel = 1
 	url = https://modules.prosody.im/mod_onions.html
 	arch = any
 	license = MIT
 	depends = prosody
 	depends = lua51-bitop
-	source = https://hg.prosody.im/prosody-modules/raw-file/720b291cb340/mod_onions/mod_onions.lua
-	sha512sums = 60a2eec49a9305ab55185a642195827a50891213f1c70a320aa33116e360f38f13d31491c4a9fb6b55260292694e57b58c94d66ec442709a455ab45d8eafd25b
+	source = https://hg.prosody.im/prosody-modules/raw-file/2df32ac11b31/mod_onions/mod_onions.lua
+	sha512sums = e5951aaef2c3278978df543975478e1d900e1be1f84d24546015e086f05ffee1c56818b4857410a71e7d1ad107f48b681ebc91ba757500a837e1a2d9809a1f93
 
 pkgname = prosody-mod-onions
 
