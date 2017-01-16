@@ -1,9 +1,8 @@
-# Maintainer Ethan Apodaca <papodaca at gmail dot com>
-# Contributer Justin Gross <jgross.biz@gmail.com>
+# Maintainer Justin Gross <jgross.biz@gmail.com>
 # Upstream URL: https://github.com/officert/mongotron
 
 pkgname=mongotron-bin
-pkgver=1.0.0.alpha4
+pkgver=1.0.0.alpha5
 pkgrel=1
 pkgdesc="Chrome-based mongo db management tool - Precompiled binary from official repository"
 arch=("x86_64")
@@ -16,10 +15,10 @@ install=$pkgname.install
 
 sha256sums=("bb19bb92859ffd1c35f98cff6380dac43529800654cb9097742a0075ca2e4eeb"
             "9fe12f1bc573f5d431fcc8f9ca3ed17fc1e1d30248ae3b58209fc53084ae0a4e"
-            "f21afda7b24acdb441dc5c6c51d4ec63a684f27349dea942586367c08c627a87")
+            "ca27567006e3ffa7dea9f9fe7e99a63290a1c9acb880241acb1be37a238e0dff")
 source=("${pkgname}.desktop"
         "${pkgname}.install"
-        "https://github.com/officert/mongotron/releases/download/1.0.0-alpha.4/Mongotron-linux-x64.zip")
+        "https://github.com/officert/mongotron/releases/download/1.0.0-alpha.5/Mongotron-linux-x64.zip")
 
 build() {
   mkdir -p "tmp-build"
