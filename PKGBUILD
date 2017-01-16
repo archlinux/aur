@@ -2,7 +2,7 @@
 
 pkgname=rocketchat-client
 pkgver=2.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="The Ultimate Open Source Web Chat Platform"
 arch=('x86_64')
 license=('The MIT License (MIT)')
@@ -24,5 +24,7 @@ package() {
 	chmod 755 $pkgdir/usr
 	chmod 755 $pkgdir/usr/share
 	chmod 755 $pkgdir/usr/share/applications
+
+	ln -s /opt/Rocket.Chat+/rocketchat /usr/local/bin
 }
 
