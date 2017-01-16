@@ -1,13 +1,14 @@
-# Maintainer: megadriver <megadriver at gmx dot com>
-# Contributor: Christian Berendt <christian@suppentopf.net>
+# Maintainer: stitran <tristan dot zuerl at gmx dot net
+# Contributor: megadriver <megadriver at gmx dot com>
+# Contributor: Christian Berendt <christian at suppentopf dot net>
 
 pkgname=boxes
 pkgver=1.1.2
-pkgrel=3
+pkgrel=4
 pkgdesc="Text mode box and comment drawing filter"
 url="http://boxes.thomasjensen.com/"
 arch=('i686' 'x86_64')
-license=('GPL')
+license=('GPL2')
 source=("https://github.com/ascii-boxes/boxes/archive/v$pkgver.zip")
 md5sums=('4951b407b478ac42f7efc0ece4d5e355')
 
