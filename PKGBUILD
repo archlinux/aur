@@ -2,7 +2,7 @@
 
 pkgname='persepolis-git'
 pkgver=2.3.2.r0.gdc628d0
-pkgrel=1
+pkgrel=2
 pkgdesc="A graphical front-end for aria2 download manager with lots of features (Github version)."
 arch=('any')
 url="https://persepolisdm.github.io/"
@@ -12,7 +12,6 @@ makedepends=('git')
 optdepends=('firefox-flashgot: for integrating with firefox')
 provides=("${pkgname}" "persepolis")
 conflicts=("${pkgname}" "persepolis")
-install=$pkgname.install
 source=("${pkgname}::git+https://github.com/persepolisdm/persepolis.git")
 md5sums=('SKIP')
 
