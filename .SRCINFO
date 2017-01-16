@@ -1,7 +1,7 @@
 pkgbase = openpht
 	pkgdesc = OpenPHT is a community driven fork of Plex Home Theater
 	pkgver = 1.7.1.137
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/RasPlex/OpenPHT/
 	arch = i686
 	arch = x86_64
@@ -74,7 +74,7 @@ pkgbase = openpht
 	source = fribidi.patch
 	source = plexhometheater.desktop
 	sha256sums = e1b324a5ebb42d3a6f011592ff3dad0c4f08b3e937ff77977d3aa2ac51f8d415
-	sha256sums = dc6bd394c07a2ececbb2f8c53cb54afd5d78f7c00a0b34acab3e71217da085fb
+	sha256sums = 8a2d9ac55bc4e05520a9dc5893bb19c5e0e28991dbcdd9b4af5feaec20fc4f2d
 	sha256sums = 966edfa84fa09cf9c54281dff2adfd6fad41309b17893511e7cf01dc85def1ea
 	sha256sums = 354429ce7dcafaa8b619b000000f4f4f8fc0a1545b9656f6beb9f85ebb8f4e41
 

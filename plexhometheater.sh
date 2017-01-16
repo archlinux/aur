@@ -1,5 +1,5 @@
 #!/bin/sh
 
-export XBMC_BIN_HOME='/usr/lib/plexhometheater'
+export XBMC_BIN_HOME='/usr/lib/openpht'
 export XBMC_HOME='/usr/share/plexhometheater'
-exec plexhometheater
+exec /usr/lib/openpht/plexhometheater
