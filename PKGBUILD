@@ -5,7 +5,7 @@ pkgver=20161016.c2269e8
 pkgrel=1
 pkgdesc="QtQuick and Wayland based shell for convergence"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
-url='http://liri.io'
+url='https://liri.io'
 license=('GPL3')
 depends=('qt5-tools' 'qt5-wayland' 'qt5-accountsservice-git'
          'pam' 'greenisland-git' 'vibe-git' 'liri-workspace-git')
@@ -17,7 +17,7 @@ provides=('liri-shell')
 groups=('liri-git')
 
 _gitroot="git://github.com/lirios/shell.git"
-_gitbranch=release/0.9.0
+_gitbranch=master
 _gitname=shell
 source=(${_gitname}::${_gitroot}#branch=${_gitbranch})
 md5sums=('SKIP')
