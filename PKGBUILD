@@ -24,7 +24,7 @@ optdepends=('kde-cli-tools: for KDE Plasma5 support in xdg-open'
             'perl-x11-protocol: Perl X11 protocol used in xdg-screensaver')
 provides=($_pkgname)
 conflicts=($_pkgname)
-source=(http://portland.freedesktop.org/download/$_pkgname-$pkgver.tar.gz{,.asc}
+source=(https://portland.freedesktop.org/download/$_pkgname-$pkgver.tar.gz{,.asc}
         support_for_KDE_Frameworks_5.6.diff
         mimeo-detection.diff)
 md5sums=('2d0aec6037769a5f138ff404b1bb4b15'
