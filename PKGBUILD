@@ -24,9 +24,9 @@ source_x86_64=("https://dist.torproject.org/torbrowser/${pkgver}/tor-browser-lin
 source+=(tor-browser.desktop
          tor-browser.png
          tor-browser.sh)
-sha512sums_i686=('8a406bc8e29bae7f5b7e88809fc69d2a193445da538604aa65421672dd001d349ef77e773da534121a31fdcd9591c12979c127acc4d812defcb9b2e41ac7b60e'
+sha256sums_i686=('275968cbbcdd66f6c5e8bd7dc2d32cf287d2a58093dbe1c29eb10c480871787f'
                  'SKIP')
-sha512sums_x86_64=('6b8fbff298522be610e7330899794242bf0d2b93bba865dfc58a7aeee23aee70c0167a3ec55b2312bec3c93fe2ad1f1770be8e4236d34a74de90a25a816f639e'
+sha256sums_x86_64=('1cf078282ea4050ff14c12da3838dbc9b040b60cd18182805afd1339c5d95ee8'
                    'SKIP')
 sha512sums+=('3bb1b255b75178bf8b002e3e7da448c5b6427561fce6552f95ffdd00f75755a916a5f0057440917eece52f164d9ddf1cbb6ba91f2430553a73c94cf23d6a7618'
            '236338469e13b4991c2abb94d4844d0149bb98094f1661b0a41256df0400cfe9904882117aae9edbea9261d99aea42745e03d745b523243d9a75fa5151062e18'

@@ -37,12 +37,12 @@ pkgbase = tor-browser-bin
 	sha512sums = 54ba3df337f07b3072636bf42b255de26eddde773e82f7588c4ed9cf29c20ea5522c460855151036dad307dc023c76266e57f530352bb129b6afef95bf28c038
 	source_i686 = https://dist.torproject.org/torbrowser/6.0.8/tor-browser-linux32-6.0.8_en-US.tar.xz
 	source_i686 = https://dist.torproject.org/torbrowser/6.0.8/tor-browser-linux32-6.0.8_en-US.tar.xz.asc
-	sha512sums_i686 = 8a406bc8e29bae7f5b7e88809fc69d2a193445da538604aa65421672dd001d349ef77e773da534121a31fdcd9591c12979c127acc4d812defcb9b2e41ac7b60e
-	sha512sums_i686 = SKIP
+	sha256sums_i686 = 275968cbbcdd66f6c5e8bd7dc2d32cf287d2a58093dbe1c29eb10c480871787f
+	sha256sums_i686 = SKIP
 	source_x86_64 = https://dist.torproject.org/torbrowser/6.0.8/tor-browser-linux64-6.0.8_en-US.tar.xz
 	source_x86_64 = https://dist.torproject.org/torbrowser/6.0.8/tor-browser-linux64-6.0.8_en-US.tar.xz.asc
-	sha512sums_x86_64 = 6b8fbff298522be610e7330899794242bf0d2b93bba865dfc58a7aeee23aee70c0167a3ec55b2312bec3c93fe2ad1f1770be8e4236d34a74de90a25a816f639e
-	sha512sums_x86_64 = SKIP
+	sha256sums_x86_64 = 1cf078282ea4050ff14c12da3838dbc9b040b60cd18182805afd1339c5d95ee8
+	sha256sums_x86_64 = SKIP
 
 pkgname = tor-browser-bin
 
