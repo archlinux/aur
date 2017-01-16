@@ -5,8 +5,8 @@ pkgname=vdr-duplicates
 pkgver=0.1.0
 _vdrapi=2.2.0
 pkgrel=2
-pkgdesc="displays the status of all available dvb devices"
-url="http://www.u32.de/vdr.html"
+pkgdesc="Shows duplicate recordings"
+url="http://tolleri.net/vdr/plugins/"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
 license=('GPL2')
 depends=('gcc-libs' "vdr-api=${_vdrapi}")
