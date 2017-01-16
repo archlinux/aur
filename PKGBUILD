@@ -1,12 +1,12 @@
 # Maintainer: drakkan <nicola.murino at gmail dot com>
 pkgname=mingw-w64-libkate
 pkgver=0.4.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A karaoke and text codec for embedding in ogg (mingw-w64)"
 arch=('any')
 url="http://libkate.googlecode.com/"
 license=('BSD')
-makedepends=('mingw-w64-configure' 'bison')
+makedepends=('mingw-w64-configure')
 depends=('mingw-w64-crt' 'mingw-w64-libogg' 'mingw-w64-libpng')
 options=('!strip' '!buildflags' 'staticlibs')
 source=("http://downloads.xiph.org/releases/kate/libkate-${pkgver}.tar.gz")
