@@ -4,7 +4,7 @@ After=network.target
 
 [Service]
 User=camisole
-ExecStart=/usr/bin/python -m camisole --logging=info serve
+ExecStart=/usr/bin/camisole --logging=info serve
 
 [Install]
 WantedBy=multi-user.target
