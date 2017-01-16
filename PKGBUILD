@@ -12,7 +12,6 @@
 _name=firefox
 _channel=nightly
 pkgname="${_name}-${_channel}"
-pkgname=firefox-nightly
 pkgdesc='Standalone web browser from mozilla.org, nightly build'
 url='http://www.mozilla.org/projects/firefox'
 pkgver=53.0a1.20161116
