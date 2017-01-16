@@ -1,6 +1,6 @@
 _gitname="camisole"
 pkgname=camisole-git
-pkgver=0.1.r5.gea9e996
+pkgver=0.1.r36.gf097975
 pkgrel=1
 pkgdesc="An asyncio-based source compiler and test runner."
 arch=('any')
@@ -26,10 +26,12 @@ optdepends=('esotope-bfc-git: compile Brainfuck sources'
             'php: compile PHP sources')
 source=("git+${url}.git"
         'camisole.service'
-        'sysusers.conf')
+        'sysusers.conf'
+        '_camisole')
 sha1sums=('SKIP'
-          '29fc46a441a1c75cc635ed209bde983d2a61d696'
-          '52da2781a8d90d00d2d78b02f6e593340191de84')
+          '41c3fd543d03dbb0ae750140e0175a82af833347'
+          '52da2781a8d90d00d2d78b02f6e593340191de84'
+          'ea2412e9068571af19537b8d1f448f1fc0c29f05')
 install=${pkgname}.install
 
 pkgver() {
@@ -42,4 +44,6 @@ package() {
     python setup.py install --root="${pkgdir}" || return 1
     install -Dm644 "${srcdir}/sysusers.conf" "${pkgdir}/usr/lib/sysusers.d/${_gitname}.conf"
     install -Dm644 "${srcdir}/camisole.service" "${pkgdir}/usr/lib/systemd/system/${_gitname}.service"
+    install -m0755 -d "$pkgdir"/usr/share/zsh/site-functions
+    install -m0644 "${srcdir}/_camisole" "$pkgdir"/usr/share/zsh/site-functions
 }

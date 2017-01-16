@@ -1,0 +1,49 @@
+#compdef camisole
+
+_camisole () {
+  local curcontext=$curcontext state line
+  local -a help_opts
+  help_opts=('(- :)'{-h,--help}'[display help]')
+  typeset -a opts
+  typeset -A opt_args
+
+  opts=($help_opts \
+    '*'{-m,--module=}'[extra module to load]:module:_python_modules' \
+    '(-l --logging)'{-l,--logging=}'[logging level]:logging level:(critical fatal error warn warning info debug notset)'
+    )
+
+  _arguments -s -S -C $opts \
+    '(-): :->command' \
+    '(-)*:: :->opt-or-arg' && return
+
+  case $state in
+    (command)
+      local -a commands
+      commands=(
+        'serve:start HTTP server' \
+        'languages:check for working/failing languages')
+      _describe -t commands command commands && ret=0
+    ;;
+    (opt-or-arg)
+      curcontext=${curcontext%:*}-$line[1]:
+      case $line[1] in
+        (serve)
+          opts=(
+            '(-h --host)'{-h+,--host=}'[server host]:host' \
+            '(-p --port)'{-p+,--port=}'[server port]:port'
+            )
+        ;;
+        (languages)
+          opts=($help_opts \
+            '(-vv)-v[verbose mode]' \
+            '(-v)-vv[very verbose mode]'
+            )
+        ;;
+      esac
+    ;;
+  esac
+  _arguments -s -S $opts && ret=0
+  return ret
+}
+
+_camisole "$@"
