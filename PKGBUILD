@@ -46,45 +46,43 @@ _use_current=
 ### Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-ck-fbcondecor
-_srcname=linux-4.8
-pkgver=4.8.16
+_srcname=linux-4.9
+pkgver=4.9.4
 pkgrel=1
-_ckpatchversion=8
+_ckpatchversion=1
 arch=('i686' 'x86_64')
 url="https://wiki.archlinux.org/index.php/Linux-ck"
 license=('GPL2')
 makedepends=('kmod' 'inetutils' 'bc' 'libelf')
 options=('!strip')
-_ckpatchname="patch-4.8-ck${_ckpatchversion}"
+_ckpatchname="patch-4.9-ck${_ckpatchversion}"
 _gcc_patch='enable_additional_cpu_optimizations_for_gcc_v4.9+_kernel_v3.15+.patch'
 source=("http://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
 	"https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.sign"
 	"http://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.xz"
 	"https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.sign"
-	"http://ck.kolivas.org/patches/4.0/4.8/4.8-ck${_ckpatchversion}/${_ckpatchname}.xz"
+	"http://ck.kolivas.org/patches/4.0/4.9/4.9-ck${_ckpatchversion}/${_ckpatchname}.xz"
 	"http://repo-ck.com/source/gcc_patch/${_gcc_patch}.gz"
         # the main kernel config files
-        'config.x86_64' 'config'
+        'config' 'config.x86_64'
         # pacman hook for initramfs regeneration
         '99-linux.hook'
         # standard config files for mkinitcpio ramdisk
         'linux.preset'
         'change-default-console-loglevel.patch'
-        'net_handle_no_dst_on_skb_in_icmp6_send.patch'
         '0001-x86-fpu-Fix-invalid-FPU-ptrace-state-after-execve.patch'
-	'fbcondecor-4.8.patch')
-sha256sums=('3e9150065f193d3d94bcf46a1fe9f033c7ef7122ab71d75a7fb5a2f0c9a7e11a'
+	'fbcondecor-4.9.patch')
+sha256sums=('029098dcffab74875e086ae970e3828456838da6e0ba22ce3f64ef764f3d7f1a'
             'SKIP'
-            'e9f2af4023ddf126045599805053efa804b35e6b3e86f05b6301a01bf8735bb8'
+            'ce711beba69745c5203a9e50ae5147c8d97ef084679a67cbb39e0090d2dcffe2'
             'SKIP'
-            'cea596c606da2125946154a0121ea0516583f659ad823c93669ad5d25bbc3ef7'
-            '161819332ceff392151c3a25d7fdf93c103e649cbf7003fbc9a97e0c536bab0d'
-            '23a944ba94ab6a04f4611f698f170246ad39bdaadd6a12349a38db5c9a946542'
-            'bd47c99d2dcbb2a35fb9997f891935d29749d6ee4b458e9ffb68f45e17052b30'
+            '5b9d8f4ef73f87e8595de66ccc38bad86e290fd9453bd536b9cc950f5344b82d'
+            'c26b4b76ca3b3dc864e1470001b46f65e007252e984e9b3c6cc8e90a18b7317f'
+            '5bf061a3717879de87205858d8aea75f8a9612ccc8bbba0767a8230091d3a734'
+            '0e2bd5840560ab98becd9254cd16f6c501a09a4957fb0a8ca8580ef3dfeb640e'
             '834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
-            'b595a1588bafb3d732841cd1b73633970706914f57f2d215c9f1494212d13989'
             '3e955e0f1aae96bb6c1507236adc952640c9bd0a134b9995ab92106a33dc02d9'
             '0671b52ba9498ba2027fa643ba0e3b524696b358fe983fbad1c586f9446a17a6')
 validpgpkeys=(
@@ -98,9 +96,6 @@ prepare() {
 
   # add upstream patch
   patch -p1 -i "${srcdir}/patch-${pkgver}"
-
-  # https://bugzilla.kernel.org/show_bug.cgi?id=189851
-  patch -p1 -i "${srcdir}/net_handle_no_dst_on_skb_in_icmp6_send.patch"
 
   # Revert a commit that causes memory corruption in i686 chroots on our
   # build server ("valgrind bash" immediately crashes)
@@ -124,7 +119,7 @@ prepare() {
 
   # Patch source to enable frame buffer decorations.
   msg "Patching source with fbcondecor patch."
-  patch -Np1 -i "${srcdir}/fbcondecor-4.8.patch"
+  patch -Np1 -i "${srcdir}/fbcondecor-4.9.patch"
 
   # Clean tree and copy ARCH config over
   make mrproper
@@ -231,8 +226,8 @@ build() {
 }
 
 _package() {
-  pkgdesc="The ${pkgbase/linux/Linux} kernel and modules with the ck8 patchset featuring MuQSS CPU scheduler v0.144 and the fbcondecor framebuffer decoration support."
-  #_Kpkgdesc="The ${pkgbase/linux/Linux} kernel and modules with the ck8 patchset featuring MuQSS CPU scheduler v0.144 and the fbcondecor framebuffer decoration support."
+  pkgdesc="The ${pkgbase/linux/Linux} kernel and modules with the ck1 patchset featuring MuQSS CPU scheduler v0.150 and the fbcondecor framebuffer decoration support."
+  #_Kpkgdesc="The ${pkgbase/linux/Linux} kernel and modules with the ck1 patchset featuring MuQSS CPU scheduler v0.150 and the fbcondecor framebuffer decoration support."
   #pkgdesc="${_Kpkgdesc}"
   depends=('coreutils' 'linux-firmware' 'kmod' 'mkinitcpio>=0.7')
   optdepends=('crda: to set the correct wireless channels of your country')
