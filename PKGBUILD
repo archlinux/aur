@@ -4,7 +4,7 @@
 pkgbase=linux-lts-selinux
 #pkgbase=linux-lts-custom
 _srcname=linux-4.4
-pkgver=4.4.37
+pkgver=4.4.43
 pkgrel=1
 arch=('i686' 'x86_64')
 url="https://www.kernel.org/"
@@ -19,20 +19,18 @@ source=(https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.{xz,sign}
         # standard config files for mkinitcpio ramdisk
         "$pkgbase.preset"
         change-default-console-loglevel.patch
-        0001-sdhci-revert.patch
-	fix_race_condition_in_packet_set_ring.diff)
+        0001-sdhci-revert.patch)
 # https://www.kernel.org/pub/linux/kernel/v4.x/sha256sums.asc
 sha256sums=('401d7c8fef594999a460d10c72c5a94e9c2e1022f16795ec51746b0d165418b2'
             'SKIP'
-            '1dfa256765585bf85a17b7129d717761e12338c654a3a3a803f1d967ccfa54f3'
+            '000017fb4d658c95fff9754b1409952c177fef2567eacb9386c86a4060ab27ff'
             'SKIP'
             'a77182fa8011f68567f857e88b140f0164c1c2fb8aae46e20f885a885e295079'
             '531d6394acb1c27e00ee74cbb62386a6d058f5381746b2b971da44cf7bb530bb'
             'bec776deea68c4412f48047aaa39be32d509de3fd0bfe6ad28128a167cafae09'
             '86c1443fc1b3bece35666a5cdc385ae36a4eb1267ba27c79eb24d049787ae560'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
-            '5313df7cb5b4d005422bd4cd0dae956b2dadba8f3db904275aaf99ac53894375'
-            '0723a76690e3b1c37b80b52f3406ae0d5394d7ee086cc46082f9409221995c85')
+            '5313df7cb5b4d005422bd4cd0dae956b2dadba8f3db904275aaf99ac53894375')
 
 validpgpkeys=('ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds <torvalds@linux-foundation.org>
               '647F28654894E3BD457199BE38DBBDC86092693E' # Greg Kroah-Hartman (Linux kernel stable release signing key) <greg@kroah.com>
@@ -44,10 +42,6 @@ prepare() {
 
   # add upstream patch
   patch -p1 -i "${srcdir}/patch-${pkgver}"
-
-  # fix a race condition that allows to gain root
-  # https://marc.info/?l=linux-netdev&m=148054660230570&w=2
-  patch -p1 -i "${srcdir}/fix_race_condition_in_packet_set_ring.diff"
 
   # add latest fixes from stable queue, if needed
   # http://git.kernel.org/?p=linux/kernel/git/stable/stable-queue.git
