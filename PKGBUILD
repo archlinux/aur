@@ -164,8 +164,8 @@ fi
 
 # Are you use gnome-keyring/gnome?.
 _gnome_keyring=false
-if [ -e /usr/lib/security/pam_gnome_keyring.so ]; then
-  depends+=('gnome-keyring')
+if [ -e /usr/lib/libgnome-keyring.so.0 ]; then
+  depends+=('libgnome-keyring')
   _gnome_keyring=true
 fi
 
@@ -597,4 +597,15 @@ package() {
     strip $STRIP_BINARIES "${pkgdir}/usr/lib/chromium-dev/"{chromium-dev,chrome-sandbox,chromedriver}
     strip $STRIP_SHARED "${pkgdir}/usr/lib/chromium-dev/"lib{widevinecdmadapter,clearkeycdm}.so
   fi
+
+  # Try to fix libpng errors. (second attemp)
+  for _path in "${pkgdir}/usr/lib/chromium-dev/resources/inspector/Images"; do
+    pushd "${_path}" &> /dev/null
+    export IFS=$'\n'
+    for i in $(find . -name '*.png' -type f); do
+      mogrify "${i}" &> /dev/null
+    done
+    export IFS=' '
+    popd &> /dev/null
+  done
 }
