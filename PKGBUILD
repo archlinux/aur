@@ -10,9 +10,9 @@
 
 pkgbase=linux-libre-rt
 _pkgbasever=4.8-gnu
-_pkgver=4.8.11-gnu
+_pkgver=4.8.15-gnu
 _rtbasever=4.8
-_rtpatchver=rt7
+_rtpatchver=rt10
 
 _replacesarchkernel=('linux%') # '%' gets replaced with _kernelname
 _replacesoldkernels=() # '%' gets replaced with _kernelname
@@ -21,7 +21,7 @@ _replacesoldmodules=() # '%' gets replaced with _kernelname
 _srcname=linux-${_pkgbasever%-*}
 _archpkgver=${_pkgver%-*}_${_rtpatchver}
 pkgver=${_pkgver//-/_}.${_rtpatchver}
-pkgrel=2
+pkgrel=1
 rcnrel=armv7-x4
 arch=('i686' 'x86_64' 'armv7h')
 url="https://rt.wiki.kernel.org/"
@@ -48,7 +48,6 @@ source=("https://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgbasever}/l
         # standard config files for mkinitcpio ramdisk
         'linux.preset'
         'change-default-console-loglevel.patch'
-        'fix_race_condition_in_packet_set_ring.diff'
         '0001-usb-serial-gadget-no-TTY-hangup-on-USB-disconnect-WI.patch'
         '0002-fix-Atmel-maXTouch-touchscreen-support.patch'
         # armv7h patches
@@ -67,42 +66,41 @@ source=("https://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgbasever}/l
         '0011-usb-musb-Call-pm_runtime-from-musb_gadget_queue.patch'
         '0012-phy-twl4030-usb-better-handle-musb_mailbox-failure.patch'
         '0013-Revert-gpu-drm-omapdrm-dss-of-add-missing-of_node_pu.patch')
-sha256sums=('d54e0f8a27e24f3666c19b395c19dba194635db26929c89e78ffa4b2b0e8ca3a'
+sha512sums=('728da6c27bd73a41866d37c82bfdc350a3bff59e15291e80a94af9e0b7b4401ea161da4c2ec4d8fc25d30c35becd85624ac32d068afff4c12ee7790c5649da2d'
             'SKIP'
-            '4485fe9df1be80a5095b8662233a5c7e9a82afb1fe11f9f97475036bb94a972f'
+            'b37a6f02244f3b8cfb45a34c468a33b0444410e42f392e0df297a1a0e774ed47ff5503bc6627788fcb3b7ddcbfece9ee0d4fdf8c5f59172c142cec2ca48f9cf3'
             'SKIP'
-            'f258a256ebdb51ceabbe1e482706756437c7113c6d987025203468bfb8601f9a'
+            '8894497ea625a2f9a553074879dcb06ddcb789c7aa9006a8d3f2961e364104c67ac81e198b7b9c9f105b6d4c6cbdd3e89ecb089b3946acc8cdba2c24e40efd40'
             'SKIP'
-            'bfd4a7f61febe63c880534dcb7c31c5b932dde6acf991810b41a939a93535494'
+            '13cb5bc42542e7b8bb104d5f68253f6609e463b6799800418af33eb0272cc269aaa36163c3e6f0aacbdaaa1d05e2827a4a7c4a08a029238439ed08b89c564bb3'
             'SKIP'
-            '13bd7a8d9ed6b6bc971e4cd162262c5a20448a83796af39ce394d827b0e5de74'
+            '267295aa0cea65684968420c68b32f1a66a22d018b9d2b2c1ef14267bcf4cb68aaf7099d073cbfefe6c25c8608bdcbbd45f7ac8893fdcecbf1e621abdfe9ecc1'
             'SKIP'
-            '6de8a8319271809ffdb072b68d53d155eef12438e6d04ff06a5a4db82c34fa8a'
+            '7a3716bfe3b9f546da309c7492f3e08f8f506813afeb1c737a474c83313d5c313cf4582b65215c2cfce3b74d9d1021c96e8badafe8f6e5b01fe28d2b5c61ae78'
             'SKIP'
-            'cde14ecb6628addddce0854e1d6ff87df1627d56dc56b03a64fa957eb821b10f'
-            'c45f0960bca7e0e063d41e0691eefb5cf9db85fdbf35bb6243881d5a32f7f870'
-            'ca8d75011d7eb130c7502083d9f36fe07974a7c656daeb5d3b3e129d00fbf25e'
-            '834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0'
-            'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
-            '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
-            'ad1ee95f906f88d31fcdb9273cd08e02e8eda177449f0c98dc1bff8cbf1483c2'
-            '0376bd5efa31d4e2a9d52558777cebd9f0941df8e1adab916c868bf0c05f2fc3'
-            '351fd96be8cd5ebd0435c0a8a978673fc023e3b1026085e67f86d815b2285e25'
-            '20b46f54f296f553b75b53f7a1e3dd88c8d84fb92ce839916a243e39fd2f3940'
+            'ce017d630ae6ef4ee7cca4ef2b601784ba4e69d02a6192d8cb062ffd92e25209ab687619cff5f1b6a01fe6cdf1a4b728e09008840692bdab339a8e083173451a'
+            'c94247a86305e955a51a3f8cdf1fed7ec99b04c034f6bd7f4e833d5f3216692706fa8b3f3015f9de21729727315e8c919d00aec12815dfe1171475258734d4a5'
+            '62fddb459a8b6ef41421044e4b1ab08670b0224fe9e099ad246b7ed24969ab131336eb4fc6c9162ef2a4491380f6654e868dcfc50734461e15a63125c59174dc'
+            'd6faa67f3ef40052152254ae43fee031365d0b1524aa0718b659eb75afc21a3f79ea8d62d66ea311a800109bed545bc8f79e8752319cd378eef2cbd3a09aba22'
+            '2dc6b0ba8f7dbf19d2446c5c5f1823587de89f4e28e9595937dd51a87755099656f2acec50e3e2546ea633ad1bfd1c722e0c2b91eef1d609103d8abdc0a7cbaf'
+            'd9d28e02e964704ea96645a5107f8b65cae5f4fb4f537e224e5e3d087fd296cb770c29ac76e0ce95d173bc420ea87fb8f187d616672a60a0cae618b0ef15b8c8'
+            '02af4dd2a007e41db0c63822c8ab3b80b5d25646af1906dc85d0ad9bb8bbf5236f8e381d7f91cf99ed4b0978c50aee37cb9567cdeef65b7ec3d91b882852b1af'
+            'b8fe56e14006ab866970ddbd501c054ae37186ddc065bb869cf7d18db8c0d455118d5bda3255fb66a0dde38b544655cfe9040ffe46e41d19830b47959b2fb168'
+            'fbafe14e3e1a8699e2531230ced96252636620bf42fc8c5d9544999ed65dd8430fe10e0a18a71c712a37f182f76d5b07dfe1b9c92d9b5c93527b1466b50ced5b'
             'SKIP'
-            '858eac5f4aadb7a4157a36b31d101d75d841a9c58199e580201d8305356044e3'
-            'eee25f5fa6e6b0fb3d5ab913521af67adf788b8613cad1b6d38711261f70646f'
-            'ece5581c6b19073ccb191a6c49d50cd17ff61916ab53c7eb3039e5ecbcf2d0e3'
-            '0b7f588d1bccef7ac116f4d64e8877aefdf9099f16177a75ffc0c1bcd5d2fff9'
-            '9b504e544345119660fc50875decc1b9ee59ca9783bc5b466461410b307974f2'
-            '1b2eb7f52cf0f5481bdaca484cbd3175b2e472e63e46887cc0ed003e39e57ff3'
-            'c7bba5a22db69e50ea8c7c7abc6bb8d133a30b27b2e7d77fc1f7e435f328366a'
-            'f485923217433862978af1029d6d0573b39d6779796fb8f85ab4d588466ec0d2'
-            '5b21335a3a23345f8296e9258c20f7d70d9668a771019f4ea52eda3e916915b5'
-            '616970b049d597e994930d323c5a5efdd3e1344275c53792840a1898a52bb5dd'
-            '9b0afd186edf6dae0fe0c89ca1c83e5cfa207640859d5c560defead6897478b2'
-            'e565ff56ec6b4dcb43a45cb4d79060d5311e6363f6f0dcfe209cb0efb49df65c'
-            '10055949d09efc74b1586df4d74531910b551a8a8e047ab3800942881e97c974')
+            'b529e23fe03a2960dc54c8dd07ad5ce5ab92bb87339384556d3a63041690b19fa8279070455dd2cc666538d08a2383363fb78e6333992b56e662480abd06e345'
+            'd0247beaac78a7d513b376e8644e5affae6651166ed6abc29501339eb8b0e57121575881a527bf0ed2ba9c4c8daafa1d27e07dd6ddcdccc242d474fb73217091'
+            '3ada1d222c22afb430dd73a77712785fbc5f01335bdb4ce488d47bae9996beb2139a4b32f350e5405dbec62699540a7e4f1be576b4a28d85423e0861360549b8'
+            'e7defca3c835ee254c8ec0de1ddb4bfae41626467ec29f3171cabb887cb34cb09e752f725cb8cc3f3adbe64e404ecc31a47a16ba17e2be172b944fef90fcb217'
+            '223d3bf4f125898ef134b9caef6dbca0f4be0ef601818ad30bf2419cf339d87c2563782de03ffca87840d04e86dcdffa414aa6b762b3b37f2ca5d6c286320641'
+            '2661119afa6d3b36459c0a4dcf444900089be33d525ebd9bc7639404441eb1e14980c59cb41c1ea5cf4e9f11aa40e26b7a9ab66e3c9fda379a2ad3f742780cef'
+            '807b8f5a2b0b6e3e0dddb9a2aef24d925f19429d58971f7a1e5d2538d7202ab96c99432445bafe10147a516c3932ed4b1ac44b61ccbf628ae00d3f9ad874a752'
+            '28d5c780950f8316d7b70b88152cbb77aa437749a117c25721f417362d936b139c5c450d4e462fe46e64f7dfcb5c74ff68b069a0eef98e5a13fa0b7f04e41e29'
+            'be425b9d0145cc17f0a629d877c53a49c76b859a05a7dfe58c94f1a9ebd5bec6929d15671edc8316dd750f16e356aa57c98f717b7979e56cd5a94dc8df88f809'
+            '0db5b91718bd03cf1e3358b9e35b04dadd6ff55b10445ee2e115a635123f423f80d472e51b7b054886296fb5b4816c4abee5fc60357d4055cd29eb64d2aa0a8d'
+            '759bfdd52f925a107bd623d50113dcdde57edfec577f2f41df9e9e5bb68d2bc64ba404816040c3ef15c684b932ec7e2d42dd3ecbbe1a544d745ed2d4f4aee448'
+            'c99f692fc98420f399449af57f63ca3829cde6710ce97ad0c3d9559ebd7ec91115573411cce241b521cc41730dbc2f532bd63540753c9220711d07c9e7f23db8'
+            '6c36dee67aecf776afca58e6b5a36c428366dccf8d4be9b2fa54b0740fb12fdec27911391926129244d138abebde6b0442c5126f3a3275875a3f92fd2149b1e2')
 validpgpkeys=(
               '474402C8C582DAFBE389C427BCB7CF877E7D47A7' # Alexandre Oliva
               'C92BAA713B8D53D3CAE63FC9E6974752F9704456' # André Silva
@@ -161,10 +159,6 @@ prepare() {
   install -m644 -t drivers/video/logo \
     "${srcdir}/logo_linux_"{clut224.ppm,vga16.ppm,mono.pbm}
 
-  # fix a race condition that allows to gain root
-  # https://marc.info/?l=linux-netdev&m=148054660230570&w=2
-  patch -p1 -i "${srcdir}/fix_race_condition_in_packet_set_ring.diff"
-
   # add latest fixes from stable queue, if needed
   # http://git.kernel.org/?p=linux/kernel/git/stable/stable-queue.git
 
@@ -217,7 +211,7 @@ build() {
 
 _package() {
   pkgdesc="The ${pkgbase^} kernel and modules with realtime preemption"
-  [ "${pkgbase}" = "linux-libre" ] && groups=('base')
+  [ "${pkgbase}" = "linux-libre" ] && groups=('base' 'base-openrc')
   depends=('coreutils' 'linux-libre-firmware' 'kmod')
   optdepends=('crda: to set the correct wireless channels of your country')
   provides=("${_replacesarchkernel[@]/%/=${_archpkgver}}")
