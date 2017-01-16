@@ -4,8 +4,4 @@ post_install() {
 
 post_upgrade() {
   systemd-sysusers ejabberd.conf
-  echo "!!! ejabberd user changed to predefined jabber(uid=17)"
-  echo "!!! check file permission and ownership in"
-  echo "!!!   /etc/ejabberd/"
-  echo "!!!   /var/{lib,log}/ejabberd/"
 }

@@ -65,41 +65,41 @@ source=("${pkgname}::git+https://github.com/processone/ejabberd#branch=master"
 	"ejabberd.service"
 	"sysuser.conf"
 	"rebar.config.patch")
-md5sums=('SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'fc4874c824c9bb203c7f7e9a391285b5'
-         '2253e277a6b3fae5124219c0aafa1089'
-         'be2fa3c15c92a9c2b9b6b7a3957d5c3a'
-         'd3f3e0db5306dc1eb4fa9c22ee34e81b')
+sha256sums=('SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'a2d5b500d31c64a6a76effaad4335521161ec135d0f5706a9419acfedbffdbc8'
+            '3b5d43138fc11433da529910278de017ebab02bb3c34aafac4aa1adba29cb58f'
+            '2910ff12700cfe9c2fe73f4b7dfbc8c974fdb7f51c000fc754020548b737560b'
+            '90e33c351adadfc39ec3b44cc8f13d0526393295d7b847a0d8f4bc69d8db664e')
 
 pkgver() {
   cd "${srcdir}/${pkgname}"
@@ -128,6 +128,7 @@ build() {
   cd "$srcdir/${pkgname%%-git}-$pkgver"
   [ -x configure ] || ./autogen.sh
   ./configure \
+    --enable-user=jabber \
     --prefix=/usr \
     --sysconfdir=/etc \
     --sbindir=/usr/bin \
