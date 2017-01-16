@@ -3,7 +3,7 @@
 
 _target=powerpc-wrs-vxworks
 pkgname=${_target}-gdb
-pkgver=7.11.1
+pkgver=7.12
 pkgrel=1
 pkgdesc="The GNU Debugger (${_target})"
 arch=('i686' 'x86_64')
@@ -14,7 +14,7 @@ conflicts=('gdb-powerpc-wrs-vxworks')
 provides=('gdb-powerpc-wrs-vxworks')
 options=('!strip' 'libtool' '!zipman' 'staticlibs')
 source=(http://ftp.gnu.org/gnu/gdb/gdb-"${pkgver}".tar.xz)
-sha512sums=('f80ec6c8a0f0b54c8b945666e875809174402b7e121efb378ebac931a91f9a1cc0048568f8e2f42ae8ae2392ff8d144c2e51d41c7398935017450aaf29838360')
+sha512sums=('f610338b3a24dfb387c295431d806a0c1375e8ce51b8dd8bbfd2efc4612d0c0ed40ad4393508afca0071eca70688f62bc4f199da5e75ad16f64d91c3bc046033')
 
 build() {
   cd "${srcdir}/gdb-${pkgver}"
