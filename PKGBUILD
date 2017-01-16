@@ -3,7 +3,7 @@
 # Maintainer: Christopher Reimer <mail+vdr4arch[at]c-reimer[dot]de>
 pkgname=serdisplib
 pkgver=1.97.9
-pkgrel=6
+pkgrel=7
 pkgdesc="Library to drive displays with built-in controllers"
 url="http://serdisplib.sourceforge.net/"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
@@ -14,7 +14,7 @@ source=("http://sourceforge.net/projects/serdisplib/files/serdisplib/$pkgver/$pk
         '99-serdisplib.rules')
 md5sums=('130552ec60d01e974712a60274f34de7'
          '6661faa31c7bff7fe5138604dc9fd3b9'
-         'f32b8a39b91b7badf14c22f189327803')
+         'ee2c17141cec151a9acc68c56506f2d1')
 
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"
