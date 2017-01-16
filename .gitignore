@@ -1,0 +1,6 @@
+.*
+!.SRCINFO
+!.gitignore
+
+*.xz
+libu2f-host
