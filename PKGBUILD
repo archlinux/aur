@@ -2,7 +2,7 @@
 
 pkgname=grumpy-git
 _pkgname=grumpy
-pkgver=r71.61bd06c
+pkgver=r123.08f9c2e
 pkgrel=1
 pkgdesc="Grumpy is a Python to Go source code transcompiler and runtime."
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ url="https://github.com/google/grumpy"
 license=('Apache')
 provides=('grumpy')
 conflicts=('grumpy')
-depends=('glibc' 'go' 'python2')
+depends=('go' 'python2')
 makedepends=('git' 'go' 'python2')
 source=("git+https://github.com/google/grumpy.git")
 md5sums=('SKIP')
@@ -23,23 +23,21 @@ pkgver() {
 
 prepare() {
     cd "$srcdir/grumpy"
-    sed -i -e "s|@python|@python2|" -e "s|@pip|@pip2|" Makefile
-    sed -i -e "1 s|python|python2|" tools/*
 }
 
 build() {
     cd "$srcdir/grumpy"
-    make
-    find . -name "*.d" -delete
+    make PYTHON=python2
 }
 
-check() {
-    cd "$srcdir/grumpy"
-    make test
-}
+# check() {
+#     cd "$srcdir/grumpy"
+#     make PYTHON=python2 test
+# }
 
 package() {
     cd "$srcdir/grumpy/build"
+    find . -name "*.d" -delete
     install -dm755 "$pkgdir/usr"
     install -dm755 "$pkgdir/usr/lib/go"
     cp -rv --no-preserve='ownership' bin lib "$pkgdir/usr/"
