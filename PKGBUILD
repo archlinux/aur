@@ -1,7 +1,7 @@
 # Maintainer:Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=bzr-bzr
-pkgver=2.8.0dev1.6619
+pkgver=2.7.0.6621
 pkgrel=1
 pkgdesc="A decentralized revision control system (bazaar) from launchpad"
 arch=('i686' 'x86_64')
@@ -12,12 +12,12 @@ optdepends=('python2-paramiko: SFTP support')
 makedepends=('bzr' 'pyrex')
 provides=('bzr')
 conflicts=('bzr')
-source=('bazaar::bzr+https+urllib://code.launchpad.net/~bzr-pqm/bzr/bzr.dev/')
+source=('bazaar::bzr+https+urllib://code.launchpad.net/~bzr-pqm/bzr/2.7')
 md5sums=('SKIP')
 
 pkgver() {
   cd bazaar
-  printf "2.8.0dev1.%s" "$(bzr revno)"
+  printf "2.7.0.%s" "$(bzr revno)"
 }
 
 prepare() {
