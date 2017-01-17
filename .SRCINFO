@@ -1,8 +1,8 @@
 pkgbase = eiffelstudio-bin
 	pkgdesc = IDE for the Eiffel programming language (opensource edition)
-	pkgver = 16.05.98969
+	pkgver = 17.01.99700
 	pkgrel = 1
-	url = https://www.eiffel.com/eiffelstudio/
+	url = https://www.eiffel.org/downloads/
 	arch = i686
 	arch = x86_64
 	license = GPL
@@ -15,10 +15,10 @@ pkgbase = eiffelstudio-bin
 	source = estudio.profile
 	md5sums = babf4e2957285cad811ae51e03e5cbd9
 	sha256sums = 3b5f56cf15ad160284ba49db0928b2fff5132cfbc56f7c3c1ac7289ee5bc93fc
-	source_i686 = http://downloads.sourceforge.net/project/eiffelstudio/EiffelStudio%2016.05/Build_98969/Eiffel_16.05_gpl_98969-linux-x86.tar.bz2
-	sha256sums_i686 = 223e4fe844cc5b31e1b50325b94fd879643c9ba2f6ca1fc1648d33a790b53b46
-	source_x86_64 = http://downloads.sourceforge.net/project/eiffelstudio/EiffelStudio%2016.05/Build_98969/Eiffel_16.05_gpl_98969-linux-x86-64.tar.bz2
-	sha256sums_x86_64 = 26e57c9f6ae2003f717b126cb7e44a9bd6e3f8d4ee48c50eee81918d8af353e6
+	source_i686 = http://downloads.sourceforge.net/project/eiffelstudio/EiffelStudio%2017.01/Build_99700/Eiffel_17.01_gpl_99700-linux-x86.tar.bz2
+	sha256sums_i686 = 9bb2d1003f2bcf44540c713ae2b1aabda4dcf4227033dabcbc4cf15b1f5645cf
+	source_x86_64 = http://downloads.sourceforge.net/project/eiffelstudio/EiffelStudio%2017.01/Build_99700/Eiffel_17.01_gpl_99700-linux-x86-64.tar.bz2
+	sha256sums_x86_64 = 62f35ef8fd6c072ab7350719b27eccf10175776d9c180318355f9e2c1dff201e
 
 pkgname = eiffelstudio-bin
 

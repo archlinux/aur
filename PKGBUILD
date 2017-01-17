@@ -1,13 +1,13 @@
 # Maintainer: ntruessel <ntruessel@njsm.de>
 pkgname=eiffelstudio-bin
-_major=16
-_minor=05
-_build=98969
+_major=17
+_minor=01
+_build=99700
 pkgver=${_major}.${_minor}.${_build}
 pkgrel=1
 pkgdesc="IDE for the Eiffel programming language (opensource edition)"
 arch=("i686" "x86_64")
-url="https://www.eiffel.com/eiffelstudio/"
+url="https://www.eiffel.org/downloads/"
 license=("GPL")
 depends=("gtk2" "libxtst" "gcc")
 provides=("eiffelstudio")
@@ -17,9 +17,9 @@ source=("estudio.profile")
 md5sums=("babf4e2957285cad811ae51e03e5cbd9")
 sha256sums=('3b5f56cf15ad160284ba49db0928b2fff5132cfbc56f7c3c1ac7289ee5bc93fc')
 source_x86_64=("http://downloads.sourceforge.net/project/eiffelstudio/EiffelStudio%20${_major}.${_minor}/Build_${_build}/Eiffel_${_major}.${_minor}_gpl_${_build}-linux-x86-64.tar.bz2")
-sha256sums_x86_64=('26e57c9f6ae2003f717b126cb7e44a9bd6e3f8d4ee48c50eee81918d8af353e6')
+sha256sums_x86_64=('62f35ef8fd6c072ab7350719b27eccf10175776d9c180318355f9e2c1dff201e')
 source_i686=("http://downloads.sourceforge.net/project/eiffelstudio/EiffelStudio%20${_major}.${_minor}/Build_${_build}/Eiffel_${_major}.${_minor}_gpl_${_build}-linux-x86.tar.bz2")
-sha256sums_i686=('223e4fe844cc5b31e1b50325b94fd879643c9ba2f6ca1fc1648d33a790b53b46')
+sha256sums_i686=('9bb2d1003f2bcf44540c713ae2b1aabda4dcf4227033dabcbc4cf15b1f5645cf')
 
 prepare() {
 	# remove windows files and folders
