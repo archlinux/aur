@@ -1,4 +1,4 @@
-# Maintainer: 100best <jm dot 100best at gmail dot com>
+# Maintainer: Adrià Arrufat (archdria) <adria dot arrufat at protonmail ldot ch>
 
 pkgname=libhttpseverywhere
 pkgrel=1
