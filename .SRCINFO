@@ -3,12 +3,12 @@ pkgbase = light-locker-settings
 	pkgver = master
 	pkgrel = 1
 	url = https://github.com/Antergos/light-locker-settings
-	arch = x86_64
-	arch = x86
+	arch = any
 	license = GPL
 	depends = light-locker
 	depends = python-psutil
 	depends = python
+	optdepends = xfce4-power-manager>=1.3.0: Sync settings with XFCE4
 	source = https://github.com/Antergos/light-locker-settings/archive/master.zip
 	md5sums = 600dcfb665cb45cee58d793057e68e72
 
