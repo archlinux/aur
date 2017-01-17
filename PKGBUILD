@@ -27,7 +27,7 @@ package() {
 	install -d ${pkgdir}/usr/lib/systemd/system || return 1
 	install -d ${pkgdir}/usr/share/licenses/${pkgname}
 
-	PREFIX=${pkgdir}/usr RPM_BUILD_ROOT=${pkgdir} make install || return 1
+	BUILDDIR=${srcdir}/${pkgname}-${pkgver}/build PREFIX=${pkgdir}/usr RPM_BUILD_ROOT=${pkgdir} make install || return 1
 
 	install -m755 ../{maradns,maradns-zoneserver}.service ${pkgdir}/usr/lib/systemd/system
 	install -m644 COPYING ${pkgdir}/usr/share/licenses/${pkgname}
