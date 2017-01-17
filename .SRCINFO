@@ -1,0 +1,16 @@
+pkgbase = light-locker-settings
+	pkgdesc = A simple GUI configuration utility for light-locker
+	pkgver = master
+	pkgrel = 1
+	url = https://github.com/Antergos/light-locker-settings
+	arch = x86_64
+	arch = x86
+	license = GPL
+	depends = light-locker
+	depends = python-psutil
+	depends = python
+	source = https://github.com/Antergos/light-locker-settings/archive/master.zip
+	md5sums = 600dcfb665cb45cee58d793057e68e72
+
+pkgname = light-locker-settings
+
