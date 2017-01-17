@@ -2,7 +2,7 @@
 
 pkgname=jotasync
 pkgver=0.2.8
-pkgrel=2
+pkgrel=3
 pkgdesc="rsync GUI with integrated scheduler"
 arch=('any')
 url="http://jotasync.trixon.se/"
@@ -45,5 +45,5 @@ package() {
 	desktop-file-install $pkgname.desktop --dir "$pkgdir/usr/share/applications/"
 
 	# remove version from filename
-	#mv "$pkgdir/usr/share/java/jotasync/jotasync-${pkgver}.jar" "$pkgdir/usr/share/java/jotasync/jotasync.jar"
+	mv "$pkgdir/usr/share/java/jotasync/jotasync-${pkgver}.jar" "$pkgdir/usr/share/java/jotasync/jotasync.jar"
 }

@@ -1,7 +1,7 @@
 pkgbase = jotasync
 	pkgdesc = rsync GUI with integrated scheduler
 	pkgver = 0.2.8
-	pkgrel = 2
+	pkgrel = 3
 	url = http://jotasync.trixon.se/
 	arch = any
 	license = Apache
