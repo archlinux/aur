@@ -1,6 +1,6 @@
 pkgbase = krita-git
 	pkgdesc = A free digital painting application. Digital Painting, Creative Freedom! (GIT Version)
-	pkgver = 3.0.91.728.gc29fa1bacd
+	pkgver = 3.0.91.730.g57fe954707
 	pkgrel = 1
 	url = http://www.krita.org
 	arch = i686
