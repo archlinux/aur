@@ -1,0 +1,20 @@
+pkgbase = telegram-cli-bin
+	pkgdesc = Telegram messenger CLI
+	pkgver = 1222
+	pkgrel = 1
+	url = https://github.com/vysheng/tg
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	depends = libconfig
+	depends = libevent
+	depends = lua
+	depends = jansson
+	depends = lua52
+	provides = telegram-cli
+	conflicts = telegram-cli
+	source = telegram-cli-1222::https://valtman.name/files/telegram-cli-1222
+	sha256sums = SKIP
+
+pkgname = telegram-cli-bin
+
