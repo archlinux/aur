@@ -1,7 +1,7 @@
 pkgbase = dnssec-trigger
 	pkgdesc = Reconfigures the local unbound DNS server to use DNSSEC enabled forwarders
 	pkgver = 0.13
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.nlnetlabs.nl/projects/dnssec-trigger/
 	arch = i686
 	arch = x86_64

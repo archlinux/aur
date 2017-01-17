@@ -4,7 +4,7 @@
 
 pkgname=dnssec-trigger
 pkgver=0.13
-pkgrel=1
+pkgrel=2
 pkgdesc="Reconfigures the local unbound DNS server to use DNSSEC enabled forwarders"
 arch=('i686' 'x86_64')
 url="http://www.nlnetlabs.nl/projects/dnssec-trigger/"
@@ -46,6 +46,7 @@ package() {
   cp "$srcdir/dnssec-triggerd-keygen.service" "$pkgdir/usr/lib/systemd/system/"
   rm -f "$pkgdir/etc/xdg/autostart/dnssec-trigger-panel.desktop"
   rm -rf "$pkgdir/var"
+  rm -f "$pkgdir/usr/share/icons/hicolor/icon-theme.cache"
 }
 
 # vim: ts=2:sw=2:et
