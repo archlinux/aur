@@ -1,9 +1,9 @@
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=muforth-git
-pkgver=r1828.5ef26ac
+pkgver=r1928.e40b64d
 pkgrel=1
 epoch=
-pkgdesc="A simple, indirect-threaded Forth, written in C; for target compiling; runs on Linux, BSD, OSX, and Cygwin."
+pkgdesc="A simple, indirect-threaded Forth, written in C."
 arch=('i686' 'x86_64')
 url="https://github.com/nimblemachines/muforth"
 url="http://muforth.nimblemachines.com/"
@@ -29,11 +29,15 @@ pkgver() {
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
+prepare() {
+  cd "$srcdir/$pkgname/src"
+  sed -i 21s@.*@top="/usr/lib/muforth"@ configure.sh
+  sed -i 40s@\${top}@$(dirname $(pwd))@ configure.sh
+}
+
 build() {
   cd "$srcdir/$pkgname/src"
-  #./configure.sh
-  #make all
-  #make install-vim
+  ./configure.sh
   ./dual-build.sh
 }
 
