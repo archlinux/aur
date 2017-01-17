@@ -1,7 +1,7 @@
 pkgbase = neard
 	pkgdesc = Intel's Near Field Communication manager
 	pkgver = 0.16
-	pkgrel = 1
+	pkgrel = 2
 	url = https://01.org/linux-nfc/
 	arch = i686
 	arch = x86_64
@@ -9,7 +9,6 @@ pkgbase = neard
 	makedepends = automake
 	makedepends = autoconf>=2.60
 	makedepends = libtool
-	depends = glibc
 	depends = dbus>=1.2
 	depends = libnl
 	depends = glib2>=2.28
