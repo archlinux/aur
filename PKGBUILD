@@ -2,7 +2,7 @@
 pkgname='qbe-git'
 pkgdesc='Small embeddable C compiler backend'
 pkgver=r1005.2b4ece6
-pkgrel=1
+pkgrel=2
 url='http://c9x.me/compile/'
 license=('custom:MIT')
 arch=('x86_64')
@@ -23,6 +23,11 @@ pkgver () {
 build () {
 	cd "${pkgname}"
 	make
+}
+
+check () {
+	cd "${pkgname}"
+	make check
 }
 
 package (){
