@@ -1,7 +1,7 @@
 # Maintainer: Luca Weiss <luca (at) z3ntu (dot) xyz>
 
 pkgname=riot-web
-pkgver=0.9.5
+pkgver=0.9.6
 pkgrel=1
 pkgdesc="A glossy Matrix collaboration client for the desktop."
 arch=("any")
@@ -21,6 +21,12 @@ sha512sums=('SKIP'
             '48ec620b07fc57de790abdb1f01048825fa7864d22d3f3494055b3919538868ac9c48048d94ad1655f93da595cc1a06a625170aa070979f98a9d39b5ded34cae'
             'bf88f617f7327b73e10d452c4f316f39e999874c25c6eac124036a28508c9ecadcc15e9540c4297903f1bac88cc580c48f69220c455369a8a21eef688071966b'
             '9bc5c155384bb6d17c9007e9fb17c644db0b86e7c4ca03396d845bdc2916ddf906570bdeca9133d6f09e6920531e742aed31738b4ad77196fdd48e54784d50cf')
+
+prepare() {
+  if [ -d $srcdir/riot-web/webapp/ ]; then
+    rm -rf $srcdir/riot-web/webapp/ # The bundle.*.js.map files in this directory accumulate with new versions, so delete the folder.
+  fi
+}
 
 build() {
 #  cd $srcdir/vector-v$pkgver
