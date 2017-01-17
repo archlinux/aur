@@ -1,0 +1,19 @@
+--- enchant-1.6.1.r74.e412b19/configure	2017-01-17 13:42:47.705009200 +0330
++++ enchant-1.6.1.r74.e412b19.new/configure	2017-01-17 13:42:44.788385224 +0330
+@@ -2511,7 +2511,6 @@
+ ac_compiler_gnu=$ac_cv_c_compiler_gnu
+ 
+ 
+-1.6.1
+ 
+ am__api_version='1.15'
+ 
+@@ -19039,7 +19038,7 @@
+ $as_echo "yes" >&6; }
+ 	build_zemberek=yes
+ fi
+-
++build_zemberek=no
+ 
+ 
+ 
