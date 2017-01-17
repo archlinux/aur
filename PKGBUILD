@@ -10,7 +10,8 @@ depends=('ghostscript' 'poppler-glib' 'djvulibre' 'desktop-file-utils' 'gsetting
 
 makedepends=('git' 'mate-common' 'yelp-tools')
 optdepends=('nemo: nemo extension (must be enabled at compile time)'
-    'caja-extensions-common: caja extension (must be enabled at compile time)')
+    'caja-extensions-common: caja extension (must be enabled at compile time)'
+    'gtk3-print-backends: printer support in gtk3 apps')
 provides=($_pkgname)
 conflicts=('xreader-git')
 url='https://github.com/linuxmint/xreader'
