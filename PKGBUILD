@@ -1,9 +1,9 @@
-# Contributor: Spider.007 <archlinux AT spider007 DOT net>
+# Contributor: tunght13488 <tunght13488 PLUS archlinux AT gmail DOT com>
 pkgname=kibana4
 _pkgname=kibana
 pkgver=4.6.4
 pkgrel=1
-pkgdesc="browser based analytics and search dashboard for Elasticsearch. Please note; this package replaces the distributed precompiled binary 'node'"
+pkgdesc="browser based analytics and search dashboard for Elasticsearch. Please note; this package replaces the distributed precompiled binary 'node' (this is a fork from kibana which is on v5)"
 arch=('any')
 url="https://www.elastic.co/products/kibana"
 license=('apache')
