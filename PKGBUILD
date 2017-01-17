@@ -35,12 +35,11 @@ check() {
 
   # When using a clean chroot,
   # one has to choose a proper locale to run the tests
-  if [ "${LANG}" == "C" ]
-  then
-    export LANG=$(locale -a | grep utf8 | head -n1)
+  if [ "${LANG}" == "C" ]; then
+    LANG=$(locale -a | grep utf8 | head -n1) py.test
+  else
+    py.test
   fi
-
-  py.test
 }
 
 package() {
