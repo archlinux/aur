@@ -4,14 +4,14 @@ pkgver=master
 pkgrel=1
 epoch=
 pkgdesc="A simple GUI configuration utility for light-locker"
-arch=("x86_64" "x86")
+arch=("any")
 url="https://github.com/Antergos/light-locker-settings"
 license=('GPL')
 groups=()
 depends=("light-locker" "python-psutil" "python")
 makedepends=()
 checkdepends=()
-optdepends=()
+optdepends=("xfce4-power-manager>=1.3.0: Sync settings with XFCE4")
 provides=()
 conflicts=()
 replaces=()
