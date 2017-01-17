@@ -11,25 +11,22 @@ optdepends=('libxinerama' 'libxrandr')
 makedepends=('git')
 provides=('libtu' 'libextl' 'notion')
 conflicts=('notion')
-#backup=()
-#options=()
-#install=
 source=('notion::git+https://github.com/raboof/notion.git')
 md5sums=('SKIP')
 
 pkgver() {
-	cd "$srcdir/notion"
-	printf "%s" "$(git describe --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
+    cd "$srcdir/notion"
+    printf "%s" "$(git describe --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
 }
 
 build() {
-	cd "$srcdir/notion"
-	export PREFIX=/usr
+    cd "$srcdir/notion"
+    export PREFIX=/usr
     export ETCDIR=/etc/notion
     make
 }
 
 package() {
-	cd "$srcdir/notion"
-	make DESTDIR="$pkgdir/" install
+    cd "$srcdir/notion"
+    make DESTDIR="$pkgdir/" install
 }
