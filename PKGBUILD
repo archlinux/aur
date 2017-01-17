@@ -1,8 +1,9 @@
 # Maintainer: spider-mario <spidermario@free.fr>
 # Contributor: Andrzej Giniewicz <gginiu@gmail.com>
 pkgname=rubber-git
-pkgver=1.4.13.g675bfe3
+pkgver=1.4.r776.675bfe3
 pkgrel=1
+epoch=1
 pkgdesc="A wrapper for LaTeX and friends, latest git version."
 arch=('any')
 url="https://launchpad.net/rubber"
@@ -17,8 +18,10 @@ sha512sums=('SKIP')
 
 pkgver() {
   cd rubber
-  git tag -f 1.4 2f47fb0fda47ee12a17a172c3d6fdebae9f53a5d
-  git describe --tags | tr - .
+  printf "%s.r%d.%s" \
+    "$(perl -ne 'if (/^Version (?<v>[\d\.]+)/a) {print $+{v}; last}' NEWS)" \
+    "$(git rev-list --count HEAD)" \
+    "$(git rev-parse --short HEAD)"
 }
 
 build() {
