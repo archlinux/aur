@@ -1,5 +1,5 @@
 pkgbase = kibana4
-	pkgdesc = browser based analytics and search dashboard for Elasticsearch. Please note; this package replaces the distributed precompiled binary 'node'
+	pkgdesc = browser based analytics and search dashboard for Elasticsearch. Please note; this package replaces the distributed precompiled binary 'node' (this is a fork from kibana which is on v5)
 	pkgver = 4.6.4
 	pkgrel = 1
 	url = https://www.elastic.co/products/kibana
