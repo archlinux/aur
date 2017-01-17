@@ -21,7 +21,7 @@ sha256sums=(
 
 pkgver() {
 	cd "tidb-latest-linux-amd64"
-	echo "0.0.1.$(./bin/tidb-server -v |grep 'Time:' | cut -c18-36| sed 's/[ :-]//g')"
+	echo "0.0.1.$(./bin/tidb-server -V |grep 'Time:' | cut -c18-36| sed 's/[ :-]//g')"
 }
 
 prepare() {
