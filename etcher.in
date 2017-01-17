@@ -5,4 +5,4 @@
 DESKTOPINTEGRATION=no
 export DESKTOPINTEGRATION
 
-exec /usr/share/etcher/Etcher-$realver-linux-$a.appimage
+exec /usr/share/etcher/##AppImage##
