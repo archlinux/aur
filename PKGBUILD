@@ -1,4 +1,4 @@
-# Maintainer: Rihards Skuja <rskuja@gmail.com>
+# Maintainer: rhssk
 pkgname=when-changed-git
 pkgver=0.r62.7a2df66
 pkgrel=1
