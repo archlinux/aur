@@ -11,7 +11,7 @@ license=('CCPL')
 
 install='darkmod.install'
 
-makedepends=('unzip')
+makedepends=('unzip' 'xterm')
 [ "$CARCH" == i686   ] && depends=('glew' 'libpng' 'libjpeg-turbo' 'libpng12' 'curl' 'libxxf86vm' 'libpulse')
 
 [ "$CARCH" == x86_64 ] && depends=('lib32-glew' 'lib32-libpng' 'lib32-libjpeg-turbo' 'lib32-libpng12' 'lib32-curl' 'lib32-libxxf86vm' 'lib32-libpulse' 'lib32-alsa-plugins')

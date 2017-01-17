@@ -8,6 +8,7 @@ pkgbase = darkmod
 	arch = x86_64
 	license = CCPL
 	makedepends = unzip
+	makedepends = xterm
 	depends = lib32-glew
 	depends = lib32-libpng
 	depends = lib32-libjpeg-turbo
