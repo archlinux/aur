@@ -2,8 +2,8 @@
 
 pkgname=('python-odfpy-git' 'python2-odfpy-git' 'odfpy-git')
 pkgbase='python-odfpy-git'
-pkgver=1.3.3
-pkgrel=2
+pkgver=1.3.4
+pkgrel=1
 arch=('any')
 url="https://github.com/eea/odfpy.git"
 license=('GPL')
