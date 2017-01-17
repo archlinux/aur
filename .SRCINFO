@@ -1,8 +1,8 @@
 pkgbase = nodejs-testee
-	pkgdesc = An implementation of the LiveReload server in Node.js
+	pkgdesc = Run your QUnit, Mocha or Jasmine tests from the command line with any browser
 	pkgver = 0.3.0
-	pkgrel = 1
-	url = https://github.com/napcs/node-livereload/
+	pkgrel = 2
+	url = https://github.com/bitovi/testee/
 	arch = any
 	license = MIT
 	depends = nodejs
