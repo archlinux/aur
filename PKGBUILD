@@ -1,9 +1,10 @@
 # Maintainer: Mantas Mikulėnas <grawity@gmail.com>
 # Maintainer: Cedric Staub <cs+aur@cssx.cc>
+# Maintainer: Felix Morgner <felix.morgner@gmail.com>
 
 pkgname=dnssec-trigger
-pkgver=0.12
-pkgrel=2
+pkgver=0.13
+pkgrel=1
 pkgdesc="Reconfigures the local unbound DNS server to use DNSSEC enabled forwarders"
 arch=('i686' 'x86_64')
 url="http://www.nlnetlabs.nl/projects/dnssec-trigger/"
@@ -14,7 +15,7 @@ backup=('etc/dnssec.conf'
 source=(http://www.nlnetlabs.nl/downloads/dnssec-trigger/$pkgname-$pkgver.tar.gz
         dnssec-triggerd.service
         dnssec-triggerd-keygen.service)
-sha256sums=('1cafd9ec296edc1d17b9ed2a98e06c7057c80ef1dbd6d45dbfa11991d3703535'
+sha256sums=('d8418e6456263229acebdd7d32d43b1e8571f599fdff2f71a023dcad6882b631'
             'c8ed3ef4ec9cba0bd00f47bfbf0e59c318130615aca4370bc597d98365445be9'
             '831f2cf40687325d50fcc11a74050198d9a24f230749e3570cf9153abf3db12e')
 
