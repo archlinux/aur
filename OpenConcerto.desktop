@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Encoding=UTF-8
+Terminal=false
+Categories=Office
+Path=/opt/openconcerto
+Exec=sh /opt/openconcerto/OpenConcerto.sh
+Name=OpenConcerto
+Icon=openconcerto.png
