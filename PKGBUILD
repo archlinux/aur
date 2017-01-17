@@ -3,7 +3,7 @@
 
 pkgname=proftpd
 pkgver=1.3.5d
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc='High-performance, scalable FTP server'
 arch=('x86_64' 'i686')
@@ -12,7 +12,6 @@ license=('GPL')
 depends=('libmariadbclient' 'postgresql-libs' 'libcap' 'pam')
 backup=('etc/proftpd.conf')
 options=('!emptydirs')
-install=${pkgname}.install
 source=("ftp://ftp.proftpd.org/distrib/source/${pkgname}-${pkgver}.tar.gz"
         'proftpd.logrotate' 'proftpd.service'
         'proftpd.tmpfiles')
