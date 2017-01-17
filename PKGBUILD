@@ -10,8 +10,8 @@ license=('GPL2')
 depends=('libxml2' 'glib2')
 makedepends=('intltool' 'pkgconfig')
 install=shared-mime-info.install
-url="http://freedesktop.org/Software/shared-mime-info"
-source=(http://freedesktop.org/~hadess/${pkgname}-${pkgver}.tar.xz
+url="https://freedesktop.org/Software/shared-mime-info"
+source=(https://freedesktop.org/~hadess/${pkgname}-${pkgver}.tar.xz
         update-mime-database.hook)
 md5sums=('c6fea618f135b3b8e676c84cd9153917'
          'fc48155d8fb2147b8fc72597e79936b4')
