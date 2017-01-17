@@ -1,7 +1,7 @@
 # Maintainer: Christopher Arndt <aur -at- chrisarndt -dot- de>
 
 pkgname=giada
-pkgver=0.13.1
+pkgver=0.13.2
 pkgrel=1
 pkgdesc="A looper, drum machine, sequencer, live sampler and plugin host"
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ source=("${pkgname}-${pkgver}-src.tar.gz::http://www.giadamusic.com/download/gra
         "$pkgname.desktop"
         "$pkgname.png")
 install="$pkgname.install"
-md5sums=('f0f1497429149ff66721118c97e572c2'
+md5sums=('c0e25f8e7bb9406cb74c06361716bebe'
          '06238158680470ab01fbbeb33353e58e'
          'f9b6e4233890720af50c536c4b2c92c0')
 
@@ -23,7 +23,8 @@ prepare() {
   # src/deps/juce/juce_audio_processors/format_types/juce_VST3Headers.h
   msg2 "Fixing VST3 SDK include paths in JUCE sources..."
   for file in \
-      src/deps/juce/juce_audio_processors/format_types/juce_VSTPluginFormat.cpp
+      src/deps/juce/modules/juce_audio_processors/format_types/juce_VSTPluginFormat.cpp \
+      src/deps/juce/modules/juce_audio_plugin_client/VST3/juce_VST3_Wrapper.cpp
   do
     sed -i -e 's|pluginterfaces/vst2.x/|vst36/pluginterfaces/vst2.x/|g' "$file"
   done
