@@ -1,6 +1,6 @@
 pkgbase = teamdrive
 	pkgdesc = Keeps data synchronised between various computers automatically.
-	pkgver = 4.3.0.1630
+	pkgver = 4.3.1.1630
 	pkgrel = 1
 	url = http://www.teamdrive.com/
 	arch = x86_64
