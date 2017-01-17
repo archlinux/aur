@@ -1,7 +1,7 @@
 # Maintainer: tequa 
 pkgname=eltclsh
-pkgver=1.15
-pkgrel=2
+pkgver=1.16
+pkgrel=1
 epoch=
 pkgdesc="eltclsh (editline tcl shell) is an interactive shell for the TCL programming language"
 arch=('i686' 'x86_64' 'armv7h')
@@ -19,15 +19,12 @@ backup=()
 options=()
 install=
 changelog=
-source=("http://distfiles.openrobots.org/eltclsh/$pkgname-$pkgver.tar.gz"
-        "editline_wchar.patch")
+source=("http://distfiles.openrobots.org/eltclsh/$pkgname-$pkgver.tar.gz")
 noextract=()
-md5sums=('17f1f16ac44dff76a451fe62d8f4f8fd'
-         'b6afc7dca1fe52d899886bf46652493a')
+md5sums=('a13130374265b871ff17fdec357aee60')
 validpgpkeys=()
 
 build() {
-    cat "${srcdir}/editline_wchar.patch" | patch -p1
 	cd "$pkgname-$pkgver"
 	./configure --prefix=/usr
 	make
