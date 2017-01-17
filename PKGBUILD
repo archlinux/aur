@@ -7,7 +7,7 @@ pkgname=leap-motion-driver
 _major=2.3.1
 _build=31549
 pkgver=${_major}
-pkgrel=3
+pkgrel=4
 pkgdesc="The Leap Motion Driver"
 arch=('i686' 'x86_64')
 url="https://developer.leapmotion.com/downloads"
@@ -24,7 +24,7 @@ source=(Leap_Motion_Setup_Linux_$_major.tgz::https://warehouse.leapmotion.com/ap
 install=leap-sdk.install
 
 package() {
-  cd ${srcdir}/Leap_Motion_*
+  cd ${srcdir}/Leap_Motion_Installer_Packages_release_public_linux
 
   if [ "$CARCH" == 'x86_64' ]; then
     bsdtar xf Leap-${_major}+${_build}-x64.deb
