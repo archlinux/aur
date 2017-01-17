@@ -1,0 +1,24 @@
+pkgbase = hex-git
+	pkgdesc = MPD client
+	pkgver = r22.233a69e
+	pkgrel = 1
+	url = https://github.com/pjanouch/hex
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = cmake
+	makedepends = pkg-config
+	makedepends = git
+	makedepends = help2man
+	depends = readline
+	depends = ncurses
+	depends = libunistring
+	depends = lua
+	provides = hex
+	conflicts = hex
+	options = zipman
+	source = git+https://github.com/pjanouch/hex.git
+	md5sums = SKIP
+
+pkgname = hex-git
+
