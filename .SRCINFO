@@ -13,7 +13,6 @@ pkgbase = pulseaudio-dlna-git
 	depends = python2-docopt
 	depends = python2-requests
 	depends = python2-setproctitle
-	depends = python2-gobject2
 	depends = python2-protobuf
 	depends = python2-notify2
 	depends = python2-psutil

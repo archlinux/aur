@@ -11,7 +11,7 @@ license=('GPL3')
 conflicts=('pulseaudio-dlna')
 provides=('pulseaudio-dlna')
 depends=('dbus-glib' 'python2-pip' 'python2-dbus' 'python2-docopt'
-		 'python2-requests' 'python2-setproctitle' 'python2-gobject2'
+		 'python2-requests' 'python2-setproctitle' 
 		 'python2-protobuf' 'python2-notify2' 'python2-psutil'
 		 'python2-futures' 'python2-chardet' 'python2-netifaces'
 		 'python2-lxml' 'python2-zeroconf' 'python2-netaddr')
