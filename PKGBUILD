@@ -2,7 +2,7 @@
 # Contributor: jiribb <jiribb@gmail.com>
 # Contributor: David Spicer <azleifel at googlemail dot com>
 # Contributor: Andrew Brouwers
-# Contributor: ponsfoot @ AUR
+# Contributor: ponsfoot <cabezon dot hashimoto at gmail dot com>
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgbase=handbrake-git
@@ -56,8 +56,8 @@ package_handbrake-gtk-git() {
               'gst-plugins-good: For Preview Window'
               'gst-plugins-ugly: For Preview Window'
               'gst-libav: For Preview Window')
-  provides=('handbrake-gtk')
-  conflicts=('handbrake-gtk')
+  provides=('handbrake-gtk' 'handbrake')
+  conflicts=('handbrake-gtk' 'handbrake')
 
   cd "$srcdir"/"$_gitname"
   make -C "build" DESTDIR="$pkgdir/" install
