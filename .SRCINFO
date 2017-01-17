@@ -1,0 +1,20 @@
+pkgbase = kube-develop
+	pkgdesc = A modern groupware client based on QtQuick and Sink (development branch)
+	pkgver = r537.859f30d
+	pkgrel = 1
+	url = https://kube.kde.org/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = extra-cmake-modules
+	makedepends = git
+	depends = sink-develop
+	depends = messagelib
+	depends = qgpgme
+	provides = kube
+	conflicts = kube
+	source = git://anongit.kde.org/kube.git#branch=dev/imapsync
+	sha256sums = SKIP
+
+pkgname = kube-develop
+
