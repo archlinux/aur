@@ -3,7 +3,7 @@
 pkgbase=python2-fedmsg
 pkgname=('python-fedmsg' 'python2-fedmsg')
 pkgver=0.18.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Utilities used around Fedora Infrastructure to send and receive messages'
 arch=(any)
 url='https://fedmsg.readthedocs.org/'
@@ -28,6 +28,9 @@ package_python2-fedmsg() {
 
   python2 setup.py install --root="$pkgdir" --optimize=1
   install -D -m644 LICENSE $pkgdir/usr/share/licenses/$pkgname/LICENSE
+  for file in $(ls "${pkgdir}/usr/bin"); do
+    mv "${pkgdir}/usr/bin/$file" "${pkgdir}/usr/bin/${file}-python2"
+  done
 }
 
 # vim:set ts=2 sw=2 et:
