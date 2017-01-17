@@ -10,7 +10,11 @@ url="https://www.openconcerto.org/"
 conflicts=('openconcerto')
 depends=('jre7-openjdk' 'jre8-openjdk' 'jre7-openjdk-headless' 'jre8-openjdk-headless')
 
-source=("http://www.openconcerto.org/fr/telechargement/betas/${pkgver}/openconcerto-${pkgver}.deb")
+source=("http://www.openconcerto.org/fr/telechargement/betas/${pkgver}/openconcerto-${pkgver}.deb"
+        "OpenConcerto-Caisse.desktop"
+        "OpenConcerto-Configuration.desktop"
+        "OpenConcerto.desktop")
+
 sha256sums=('06c49847683c09c84d82adfd847cff68aec9d2e42e5d540e5388ac9aae46fcee'
             '904b7a2837c4d2dc4242fb43d41150f8a4e5d9d06d9ea7ede811950f680e05ff'
             '95c53e1494e7424d8a37fea79e3b9b29c3efb0da95bce72867086c067657917d'
