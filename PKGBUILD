@@ -1,5 +1,5 @@
 pkgname=powerline-i3-git
-pkgver=1.2.7
+pkgver=1.2.8
 pkgrel=1
 pkgdesc="The ultimate statusline/prompt utility. A fork containing more features for the i3 window manager."
 arch=('i686' 'x86_64')
@@ -20,7 +20,6 @@ optdepends=(
   'python-psutil: cpu load segment'
   'python-pygit2: better git performance of the vcs segment'
   'python-google-api-python-client: Google Calendar support for the appoints segment'
-  'python-gflags: Google Calendar support for the appoints segment'
 )
 makedepends=(
   'python-setuptools'
