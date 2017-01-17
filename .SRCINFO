@@ -1,0 +1,15 @@
+pkgbase = nodejs-testee
+	pkgdesc = An implementation of the LiveReload server in Node.js
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/napcs/node-livereload/
+	arch = any
+	license = MIT
+	depends = nodejs
+	depends = npm
+	noextract = testee-0.3.0.tgz
+	source = https://registry.npmjs.org/testee/-/testee-0.3.0.tgz
+	sha1sums = 1a28a5a8847baab5ce8cbde60e79e9fe11ea7cbe
+
+pkgname = nodejs-testee
+
