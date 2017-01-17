@@ -1,4 +1,4 @@
-# $Id: PKGBUILD 272771 2016-08-01 13:45:48Z bisson $
+# $Id: PKGBUILD 285009 2017-01-01 08:40:34Z bisson $
 # Maintainer (Arch): Gaetan Bisson <bisson@archlinux.org>
 # Contributor (Arch): Aaron Griffin <aaron@archlinux.org>
 # Contributor (Arch): judd <jvinet@zeroflux.org>
@@ -7,8 +7,8 @@
 
 _pkgname=openssh
 pkgname=openssh-knock
-pkgver=7.3p1
-_knockpatchver=7.3p1
+pkgver=7.4p1
+_knockpatchver=7.4p1
 pkgrel=1
 pkgdesc='Free version of the SSH connectivity tools, with support for stealth TCP sockets'
 url='http://www.openssh.org/portable.html'
@@ -31,8 +31,8 @@ source=("http://ftp.openbsd.org/pub/OpenBSD/OpenSSH/portable/${_pkgname}-${pkgve
         'sshd.socket'
         'sshd.conf'
         'sshd.pam')
-sha1sums=('bfade84283fcba885e2084343ab19a08c7d123a5' 'SKIP'
-          '241cc911cec1895c2e2ea26a2e3a65e34b946659' 'SKIP'
+sha1sums=('2330bbf82ed08cf3ac70e0acf00186ef3eeb97e0' 'SKIP'
+          '308b74f10fbf435cdfe5d5b1528685b05eca5953' 'SKIP'
           'caaa801da59a5d14c0c29c43e9de5fef281ea03e'
           '6a0ff3305692cf83aca96e10f3bb51e1c26fccda'
           'ec49c6beba923e201505f5669cea48cad29014db'
@@ -64,7 +64,6 @@ build() {
 		--with-privsep-user=nobody \
 		--with-kerberos5=/usr \
 		--with-xauth=/usr/bin/xauth \
-		--with-mantype=man \
 		--with-md5-passwords \
 		--with-pid-dir=/run \
 
@@ -74,10 +73,10 @@ build() {
 check() {
 	cd "${srcdir}/${_pkgname}-${pkgver}"
 
-	make tests || true
-	# hard to suitably test connectivity:
-	# - fails with /bin/false as login shell
-	# - fails with firewall activated, etc.
+#	make tests
+
+	# Connectivity tests will fail with makechrootpkg since
+	# it runs as nobody which has /bin/false as login shell.
 }
 
 package() {
