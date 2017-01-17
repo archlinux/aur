@@ -1,6 +1,6 @@
 pkgbase = dnssec-trigger
 	pkgdesc = Reconfigures the local unbound DNS server to use DNSSEC enabled forwarders
-	pkgver = 0.12
+	pkgver = 0.13
 	pkgrel = 1
 	url = http://www.nlnetlabs.nl/projects/dnssec-trigger/
 	arch = i686
@@ -11,12 +11,14 @@ pkgbase = dnssec-trigger
 	depends = unbound
 	backup = etc/dnssec.conf
 	backup = etc/dnssec-trigger/dnssec-trigger.conf
-	source = http://www.nlnetlabs.nl/downloads/dnssec-trigger/dnssec-trigger-0.12.tar.gz
+	source = http://www.nlnetlabs.nl/downloads/dnssec-trigger/dnssec-trigger-0.13.tar.gz
 	source = dnssec-triggerd.service
 	source = dnssec-triggerd-keygen.service
-	sha256sums = 1cafd9ec296edc1d17b9ed2a98e06c7057c80ef1dbd6d45dbfa11991d3703535
+	source = gtk-update-icon-cache-invocation.patch
+	sha256sums = d8418e6456263229acebdd7d32d43b1e8571f599fdff2f71a023dcad6882b631
 	sha256sums = c8ed3ef4ec9cba0bd00f47bfbf0e59c318130615aca4370bc597d98365445be9
 	sha256sums = 831f2cf40687325d50fcc11a74050198d9a24f230749e3570cf9153abf3db12e
+	sha256sums = b0201b13682e865f01e536c8316ea9fc29a33a072aa757de737163acad8720fb
 
 pkgname = dnssec-trigger
 
