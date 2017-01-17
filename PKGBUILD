@@ -8,7 +8,7 @@
 
 pkgbase=python-matplotlib2
 pkgname=('python2-matplotlib2' 'python-matplotlib2')
-pkgver=2.0.0rc2
+pkgver=2.0.0
 pkgrel=1
 pkgdesc="A python plotting library, making publication quality plots"
 arch=('i686' 'x86_64')
@@ -26,7 +26,7 @@ makedepends=('python2-pytz' 'python2-numpy' 'python2-pyqt4' 'python-pytz' 'pytho
              'python2-setuptools' 'python-cycler' 'python2-cycler')
 source=("$pkgbase-$pkgver.tar.gz::https://github.com/matplotlib/matplotlib/archive/v$pkgver.tar.gz"
         setup.cfg)
-sha512sums=('4eba9268307d95345a5e848bfbd257a19cec79d35dba2bd1409f2acb9e059d3229e712e0d67cccd375a7d301184be2777e5114a5c5506b0b1050ffab7eef1016'
+sha512sums=('b0e6d91aee5f91e0155c9e6716eef1a7e1fb907daeb93d603709142b749878fd758e42fe3707ac73c3d87959c6a35126c9e17c08ef78c5734106fafdf198f304'
             '493a08914755d7d27d98025fc309f19cc3ec45e777fc81a56fa50430f90c0b39c2f66c2a01f6fd14a2e351005151365a25d2ab71ae2e80a54c6f57ceeacea35b')
 
 prepare() {
@@ -73,7 +73,7 @@ check() {
 
    cd "$srcdir"/matplotlib-${pkgver}-test
    (
-     export PYTHONPATH="$PWD/build/lib.linux-$CARCH-3.5:$PYTHONPATH"
+     export PYTHONPATH="$PWD/build/lib.linux-$CARCH-3.6:$PYTHONPATH"
      python -c "from matplotlib import font_manager"
      rm -rf ../tmp_test_dir && mkdir ../tmp_test_dir && cd ../tmp_test_dir
      xvfb-run -a -s "+extension GLX +extension RANDR +render -screen 0 1280x1024x24" \
