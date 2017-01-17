@@ -1,7 +1,7 @@
 # Maintainer: Eric Engestrom <aur [at] engestrom [dot] ch>
 
 pkgname=tldr-git
-pkgver=r39.fb7be27
+pkgver=r110.0e54281
 pkgrel=1
 pkgdesc="C++ command line client for tldr"
 arch=('i686' 'x86_64' 'armv6h')
@@ -19,11 +19,11 @@ pkgver() {
 }
 
 build() {
-  cd "$srcdir/$(basename $url)/src"
+  cd "$srcdir/$(basename $url)"
   make
 }
 
 package() {
-  cd "$srcdir/$(basename $url)/src"
+  cd "$srcdir/$(basename $url)"
   install -Dm755 tldr "$pkgdir/usr/bin/tldr"
 }
