@@ -1,0 +1,22 @@
+From 794889803f749a94bb885b59c62826628ec577e9 Mon Sep 17 00:00:00 2001
+From: Andrea Fagiani <andfagiani@gmail.com>
+Date: Sun, 9 Oct 2016 21:44:15 +0200
+Subject: [PATCH] fix the sound option
+
+---
+ lib/method/PACMethod_xfreerdp.pm | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/lib/method/PACMethod_xfreerdp.pm b/lib/method/PACMethod_xfreerdp.pm
+index 02adf90..3b53aa0 100644
+--- a/lib/method/PACMethod_xfreerdp.pm
++++ b/lib/method/PACMethod_xfreerdp.pm
+@@ -254,7 +254,7 @@ sub _parseOptionsToCfg {
+ 	$txt .= ' /shell ' . $$hash{startupshell} if $$hash{startupshell} ne '';
+ 	$txt .= ' /d:' . $$hash{domain} if $$hash{domain} ne '';
+ 	$txt .= ' +clipboard' if $$hash{redirClipboard};
+-	$txt .= ' +sound:sys:alsa' if $$hash{redirSound};
++        $txt .= ' /sound:sys:alsa' if $$hash{redirSound};
+ 	$txt .= ' /cert-ignore' if $$hash{ignoreCert};
+ 	$txt .= ' -authentication' if $$hash{noAuth};
+ 	$txt .= ' -fast-path' if $$hash{nofastPath};
