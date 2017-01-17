@@ -26,6 +26,6 @@ build() {
 package() {
     cd "$srcdir/${pkgname%-VCS}"
     install -D -m644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-    install -D -m644 bin/glslViewer "$pkgdir/usr/local/bin/glslviewer"
-    install -D -m644 bin/glslLoader "$pkgdir/usr/local/bin/glslloader"
+    install -D -m755 bin/glslViewer "$pkgdir/usr/local/bin/glslviewer"
+    install -D -m755 bin/glslLoader "$pkgdir/usr/local/bin/glslloader"
 }
