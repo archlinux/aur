@@ -1,3 +1,5 @@
 /*.png
 /*.xz
 /*.zip
+/pkg/
+/src/
