@@ -22,6 +22,7 @@ _build_stubdom=${build_stubdom:-false}
 
 _xen_version='4.8.0'
 _xen_major_version='4'
+_xen_minor_version='8'
 # grep -R 'UPSTREAM_REVISION' src/xen-*/Config.mk
 _git_tag_seabios='#tag=rel-1.10.0'
 _git_tag_ovmf='#tag=bc54e50e0fe03c570014f363b547426913e92449'
@@ -47,7 +48,7 @@ fi
 
 pkgname=xen
 pkgver="${_xen_version}"
-pkgrel=1
+pkgrel=2
 pkgdesc='Virtual Machine Hypervisor & Tools'
 url='http://www.xenproject.org/'
 license=('GPL2')
@@ -343,11 +344,14 @@ package() {
 	msg2 'Cleaning up...'
 
 	# Hypervisor symlinks
-	rm -f boot/xen{,-${_xen_major_version},-${_xen_version}{,-rc}}.gz
+	rm -f boot/xen{,-${_xen_major_version}{,.${_xen_minor_version}}}.{gz,efi}
 
 	# Documentation cleanup ( see xen-docs package )
 	rm -rf usr/share/doc
 	rm -rf usr/share/man
+
+	# Temporary directories
+	rmdir run/xen run/xenstored
 
 	# sysvinit scripts
 	rm -rf etc/init.d
