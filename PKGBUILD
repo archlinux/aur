@@ -36,6 +36,6 @@ build() {
 }
 
 package() {
-  cd "${srcdir}/sink/"
+  cd "${srcdir}/sink/build"
   make DESTDIR="$pkgdir" install
 }
