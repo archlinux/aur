@@ -3,18 +3,20 @@
 _pkgname="simple-obfs"
 pkgname="simple-obfs-git"
 pkgdesc="A simple obfusacting tool, designed as plugin server of shadowsocks."
-pkgver=r9.4461e1f
+pkgver=v0.0.2.r14.g6956a6a
 pkgrel=1
 arch=(x86_64)
 license=("GPL3")
 url="https://github.com/shadowsocks/simple-obfs"
 source=("git+https://github.com/shadowsocks/simple-obfs.git")
 depends=('libsodium' 'libev' 'udns')
+provides=("simple-obfs")
+conflicts=("simple-obfs")
 
 pkgver() {
     cd "$_pkgname"
     ( set -o pipefail
-      git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+      git describe --tags --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
       printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
     )
 }
