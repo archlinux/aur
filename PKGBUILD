@@ -1,6 +1,6 @@
 # Maintainer: Jameson Pugh <imntreal@gmail.com>
 
-pkgbase=python-fedmsg
+pkgbase=python2-fedmsg
 pkgname=('python-fedmsg' 'python2-fedmsg')
 pkgver=0.18.2
 pkgrel=1
