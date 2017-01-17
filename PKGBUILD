@@ -16,7 +16,7 @@ makedepends=('git' 'go')
 
 prepare() {
   cd "$srcdir"
-  GOPATH="$srcdir" go get -v -u -d ${_gourl}
+  GOPATH="$srcdir" go get -v -u ${_gourl}
 }
 
 pkgver() {
