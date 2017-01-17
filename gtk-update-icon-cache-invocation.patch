@@ -1,0 +1,21 @@
+diff -aur dnssec-trigger-0.13/Makefile.in dnssec-trigger-0.13-new/Makefile.in
+--- dnssec-trigger-0.13/Makefile.in	2015-12-08 14:14:54.000000000 +0100
++++ dnssec-trigger-0.13-new/Makefile.in	2017-01-17 10:31:58.583378596 +0100
+@@ -468,7 +468,7 @@
+ 	$(INSTALL) -c -m 644 $(srcdir)/panel/status-icon-alert.svg $(DESTDIR)/usr/share/icons/hicolor/scalable/apps/dnssec-trigger-alert.svg
+ 	$(INSTALL) -c -m 644 $(srcdir)/panel/status-icon.png $(DESTDIR)/usr/share/icons/hicolor/64x64/apps/dnssec-trigger.png
+ 	$(INSTALL) -c -m 644 $(srcdir)/panel/status-icon-alert.png $(DESTDIR)/usr/share/icons/hicolor/64x64/apps/dnssec-trigger-alert.png
+-	gtk-update-icon-cache $(DESTDIR)/usr/share/icons/hicolor
++	gtk-update-icon-cache -t $(DESTDIR)/usr/share/icons/hicolor
+ endif
+ 	if test -n "$(xdg_autostart_dir)"; then \
+ 		$(INSTALL) -m 755 -d $(DESTDIR)$(xdg_autostart_dir) ; \
+@@ -484,7 +484,7 @@
+ 	rm -f $(DESTDIR)/usr/share/icons/hicolor/scalable/apps/dnssec-trigger-alert.svg
+ 	rm -f $(DESTDIR)/usr/share/icons/hicolor/64x64/apps/dnssec-trigger.png
+ 	rm -f $(DESTDIR)/usr/share/icons/hicolor/64x64/apps/dnssec-trigger-alert.png
+-	gtk-update-icon-cache $(DESTDIR)/usr/share/icons/hicolor
++	gtk-update-icon-cache -t $(DESTDIR)/usr/share/icons/hicolor
+ endif
+ 	if test -n "$(xdg_autostart_dir)"; then \
+ 		rm -f $(DESTDIR)$(xdg_autostart_dir)/dnssec-trigger-panel.desktop ; fi

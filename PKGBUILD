@@ -14,13 +14,16 @@ backup=('etc/dnssec.conf'
         'etc/dnssec-trigger/dnssec-trigger.conf')
 source=(http://www.nlnetlabs.nl/downloads/dnssec-trigger/$pkgname-$pkgver.tar.gz
         dnssec-triggerd.service
-        dnssec-triggerd-keygen.service)
+        dnssec-triggerd-keygen.service
+        gtk-update-icon-cache-invocation.patch)
 sha256sums=('d8418e6456263229acebdd7d32d43b1e8571f599fdff2f71a023dcad6882b631'
             'c8ed3ef4ec9cba0bd00f47bfbf0e59c318130615aca4370bc597d98365445be9'
-            '831f2cf40687325d50fcc11a74050198d9a24f230749e3570cf9153abf3db12e')
+            '831f2cf40687325d50fcc11a74050198d9a24f230749e3570cf9153abf3db12e'
+            'b0201b13682e865f01e536c8316ea9fc29a33a072aa757de737163acad8720fb')
 
 prepare() {
   cd "$srcdir/$pkgname-$pkgver"
+  patch -p1 -i "$srcdir/gtk-update-icon-cache-invocation.patch"
   sed -i "s!/usr/libexec/!/usr/lib/$pkgname/!g" 01-dnssec-trigger.in
 }
 
