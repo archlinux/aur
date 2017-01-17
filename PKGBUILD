@@ -2,7 +2,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=rust-nightly
-pkgver=1.16.0_2017.01.16
+pkgver=1.16.0_2017.01.17
 pkgrel=1
 arch=('i686' 'x86_64')
 pkgdesc='A safe, concurrent, practical language'
@@ -10,7 +10,7 @@ url='http://www.rust-lang.org/'
 license=('MIT' 'Apache')
 makedepends=('libffi' 'perl' 'python2' 'curl')
 source=("http://static.rust-lang.org/dist/rustc-nightly-src.tar.gz")
-md5sums=('0644f03c4e1dca40e02d423b98e72bd5')
+md5sums=('416d6638103d081990f995a5394fa302')
 options=('!makeflags' 'staticlibs' '!strip' '!emptydirs')
 conflicts=('rust')
 provides=('rust')
