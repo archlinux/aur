@@ -11,7 +11,9 @@ pkgbase = glslviewer-git
 	provides = glslviewer-git
 	conflicts = glslviewer-git
 	source = glslviewer-git::git+https://github.com/patriciogonzalezvivo/glslViewer
+	source = floating_wm_workaround.patch
 	md5sums = SKIP
+	md5sums = 0d5e68722253fd33a25e57d7e2405a5c
 
 pkgname = glslviewer-git
 

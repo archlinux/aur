@@ -10,12 +10,19 @@ depends=('glfw')
 makedepends=('git')
 provides=("${pkgname%-VCS}")
 conflicts=("${pkgname%-VCS}")
-source=("$pkgname::git+https://github.com/patriciogonzalezvivo/glslViewer")
-md5sums=('SKIP')
+source=("$pkgname::git+https://github.com/patriciogonzalezvivo/glslViewer"
+        'floating_wm_workaround.patch')
+md5sums=('SKIP'
+         '0d5e68722253fd33a25e57d7e2405a5c')
 
 pkgver() {
     cd "$srcdir/${pkgname%-VCS}"
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+prepare() {
+    cd "$srcdir/${pkgname%-VCS}"
+    patch -p1 -i "$srcdir/floating_wm_workaround.patch"
 }
 
 build() {
