@@ -1,9 +1,10 @@
 # Maintainer: bartus <aur@bartus.33mail.com>
 
 _pkgname="mitsuba"
+_py3ver=`python3 --version | grep -oP '(?<= )\d\.\d'`
 pkgname="${_pkgname}-git"
 pkgver=v0.5.0.r160.g87efb7d6
-pkgrel=1
+pkgrel=2
 pkgdesc="Mitsuba physically based renderer."
 url="http://mitsuba-renderer.org/"
 license=("GPL3")
@@ -13,9 +14,11 @@ makedepends=("gcc5" "eigen" "scons" "git")
 provides=("mitsuba")
 conflicts=("mitsuba" "mitsuba-hg")
 source=("${_pkgname}::git+https://www.mitsuba-renderer.org/repos/mitsuba.git"
-        "python3.5.patch")
+        "python3.5.patch"
+	"eigen3.3.1.patch")
 sha256sums=('SKIP'
-            '168f562ead644857a21d5880cc57b5aeb17207068fb9de520d375ccfcba3fc04')
+            '168f562ead644857a21d5880cc57b5aeb17207068fb9de520d375ccfcba3fc04'
+            '6948f7eede4db6246db8c843e61b37b409d86b56b8f567a770d3431aaa6e4e6d')
 
 
 pkgver() {
@@ -25,7 +28,6 @@ pkgver() {
 
 
 prepare() {
-    export _py3ver=`python3 --version | grep -oP '(?<= )\d\.\d'`
     cd "${_pkgname}"
     cp build/config-linux-gcc.py config.py
     ## use gcc5 as gcc6 is not supported at this time
@@ -37,6 +39,8 @@ prepare() {
     ## update GLINCLUDE path to refere to glew-1.13.0 as mitsuba wont build with glew 2.0.0
     sed -i "/XERCESLIB/aGLINCLUDE      = ['/usr/include/glew-1.13.0']" config.py
     patch -Np1 -i ${srcdir}/python3.5.patch 
+    patch -Np1 -i ${srcdir}/eigen3.3.1.patch
+
 }
 
 build() {
@@ -80,3 +84,4 @@ package() {
 	install -m644 include/mitsuba/hw/* ${pkgdir}/usr/include/mitsuba/hw
 	install -m644 include/mitsuba/bidir/* ${pkgdir}/usr/include/mitsuba/bidir
 }
+# vim:set ts=2 sw=2 et:
