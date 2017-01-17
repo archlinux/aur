@@ -1,8 +1,8 @@
 # Maintainer: Reto Kaiser <reto@retokaiser.com>
 
 pkgname=intellij-idea-ue-bundled-jre
-pkgver=2016.3.2
-_buildver=163.10154.41
+pkgver=2016.3.3
+_buildver=163.11103.6
 pkgrel=1
 pkgdesc="Jetbrains IDE for Java and other programming languages. This packages contains a bundled JRE."
 arch=('i686' 'x86_64')
@@ -15,7 +15,7 @@ options=(!strip)
 source=("https://download.jetbrains.com/idea/ideaIU-$pkgver.tar.gz"
         'jetbrains-idea.desktop'
 )
-sha256sums=('aa636eb6ad9fe048c7ec1334ca5e23abc7004c8c12f28b531c2c89a67e49ed8e'
+sha256sums=('95871c9a8aed1bd8992ff493fbc5fc31674b18ef3cd509eb8f2e5650b3419eaf'
             'fe26083eb313a977112f6571fb97ff369d48bbfabfde18c1339168662c666ca3'
 )
 package() {
