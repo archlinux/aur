@@ -1,7 +1,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=tex2page-git
-pkgver=20170108
+pkgver=20170116
 pkgrel=1
 pkgdesc="Lisp program for making Web pages from TeX documents"
 arch=('any')
@@ -31,6 +31,7 @@ build() {
 }
 
 check() {
+  LANG=C
   cd "${pkgname%-git}"
   # run the generated program to build html-docs, also a good test
   ./${pkgname%-git} index
