@@ -1,5 +1,5 @@
 pkgname=mingw-w64-sonnet
-pkgver=5.29.0
+pkgver=5.30.0
 pkgrel=1
 arch=(any)
 pkgdesc="Spelling framework for Qt5 (mingw-w64)"
@@ -12,7 +12,7 @@ optdepends=("mingw-w64-aspell: spell checking via aspell"
 options=(staticlibs !strip !buildflags)
 url="https://community.kde.org/Frameworks"
 source=("http://download.kde.org/stable/frameworks/${pkgver%.*}/sonnet-${pkgver}.tar.xz")
-md5sums=('be646b39a16a2b848540715f6407f377')
+md5sums=('e98954ffcadcc3f32cf528fd8358e9eb')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
