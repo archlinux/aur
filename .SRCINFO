@@ -3,7 +3,6 @@ pkgbase = darkmod
 	pkgver = 2.04
 	pkgrel = 1
 	url = http://www.thedarkmod.com/
-	install = darkmod.install
 	arch = i686
 	arch = x86_64
 	license = CCPL

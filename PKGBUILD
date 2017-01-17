@@ -9,8 +9,6 @@ arch=('i686' 'x86_64')
 url="http://www.thedarkmod.com/"
 license=('CCPL')
 
-install='darkmod.install'
-
 makedepends=('unzip' 'xterm')
 [ "$CARCH" == i686   ] && depends=('glew' 'libpng' 'libjpeg-turbo' 'libpng12' 'curl' 'libxxf86vm' 'libpulse')
 
