@@ -144,6 +144,7 @@ _provider=http://qt.mirror.constant.com/
 # shouldn't be needed
 _core_configure_options="\
                  -prefix ${_installprefix} \
+                 -optimized-tools \
                  -confirm-license \
                  -opensource \
                  -v \
