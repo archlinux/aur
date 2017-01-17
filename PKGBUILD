@@ -31,4 +31,7 @@ package() {
 
 	install -m755 ../{maradns,maradns-zoneserver}.service ${pkgdir}/usr/lib/systemd/system
 	install -m644 COPYING ${pkgdir}/usr/share/licenses/${pkgname}
+	
+	mv ${pkgdir}/usr/sbin/* ${pkgdir}/usr/bin
+	rm -r ${pkgdir}/usr/sbin
 }
