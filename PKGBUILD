@@ -3,12 +3,12 @@
 
 pkgname=razer-daemon
 pkgver=1.1.6
-pkgrel=2
+pkgrel=3
 pkgdesc="A daemon for controlling razer-driver"
 arch=('any')
 url="https://github.com/terrycain/razer_drivers"
 license=('GPLv3')
-depends=('razer-driver-dkms' 'python' 'python-dbus' 'python-gobject' 'python-setproctitle' 'xautomation' 'xdotool' 'libdbus' 'python-notify2')
+depends=('razer-driver-dkms' 'python' 'python-dbus' 'python-gobject' 'python-setproctitle' 'xautomation' 'xdotool' 'libdbus' 'python-notify2' 'python-pyudev')
 makedepends=('git')
 optdepends=('python-razer: python library for controlling the daemon')
 install=${pkgname}.install
