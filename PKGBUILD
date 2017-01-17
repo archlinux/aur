@@ -2,7 +2,7 @@
 
 _pkgname="mitsuba"
 pkgname="${_pkgname}-git"
-pkgver=v0.5.0.r160.g87efb7d
+pkgver=v0.5.0.r160.g87efb7d6
 pkgrel=1
 pkgdesc="Mitsuba physically based renderer."
 url="http://mitsuba-renderer.org/"
@@ -15,7 +15,7 @@ conflicts=("mitsuba" "mitsuba-hg")
 source=("${_pkgname}::git+https://www.mitsuba-renderer.org/repos/mitsuba.git"
         "python3.5.patch")
 sha256sums=('SKIP'
-            '7f25d33a750466d41d24c2a9b1e0b4a679c5a4345e993f98bf9de04efde1b9e1')
+            '168f562ead644857a21d5880cc57b5aeb17207068fb9de520d375ccfcba3fc04')
 
 
 pkgver() {
