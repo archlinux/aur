@@ -27,6 +27,7 @@ source=(
     "swift-corelibs-libdispatch-${_swiftver}.tar.gz::https://github.com/apple/swift-corelibs-libdispatch/archive/swift-${_swiftver}.tar.gz"
     "swift-integration-tests-${_swiftver}.tar.gz::https://github.com/apple/swift-integration-tests/archive/swift-${_swiftver}.tar.gz"
     "swift-sphinx2.patch" "xar-1.6.patch" "build-script.patch"
+    "swift-init-CachedVFile.patch"
 )
 sha256sums=('e69764cb3d83d7209f21c2af448ae39e6612df28e37b7a3ceffa9c24f19ca0cc'
             '194f66f522aa349061ae682bab18fa3fffe146da30e30f2d9f4b811fd544f8eb'
@@ -41,7 +42,8 @@ sha256sums=('e69764cb3d83d7209f21c2af448ae39e6612df28e37b7a3ceffa9c24f19ca0cc'
             '90cb9573f22ed62d49ffff4de0e92fefdb3044a7e19391bbc14a63cc4f0ca27b'
             '93bbe769666aab15b15d12e2423f213b39d6c47237eafc781569698c8367535f'
             'df27c2bfeaed6335f49a8815b0b296fd5acc331a6a9361a40f7dfc69a7518da6'
-            '9f2512df8c495e2b8bf19fe213e951cdd17df9207538ceb8ab59a30bd6a18e3f')
+            '9f2512df8c495e2b8bf19fe213e951cdd17df9207538ceb8ab59a30bd6a18e3f'
+            '2543e6b4ee21e090eb7f67e07594ac95122eb5b275e1976ededa9ef71f3d8652')
 
 prepare() {
     # Use python2 where appropriate
@@ -77,6 +79,9 @@ prepare() {
 
     # Typo in build-script
     ( cd "${srcdir}/swift" && patch -p1 -i "${srcdir}/build-script.patch" )
+
+    # Fix for missing initialization
+    ( cd "${srcdir}/swift" && patch -p1 -i "${srcdir}/swift-init-CachedVFile.patch" )
 }
 
 build() {
