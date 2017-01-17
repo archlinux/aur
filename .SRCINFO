@@ -1,0 +1,13 @@
+pkgbase = pearpc-git
+	pkgver = 0.6pre
+	pkgrel = 2
+	url = http://pearpc.sourceforge.net
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = libx11
+	source = https://github.com/sebastianbiallas/pearpc/archive/master.zip
+	md5sums = SKIP
+
+pkgname = pearpc-git
+
