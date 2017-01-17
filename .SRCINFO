@@ -1,7 +1,7 @@
 pkgbase = fail2ban6
 	pkgdesc = Bans IPs after too many failed authentication attempts (IPv6 supported based on crycode patch)
 	pkgver = 0.9.6
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.fail2ban.org/
 	install = fail2ban.install
 	arch = any
@@ -34,7 +34,7 @@ pkgbase = fail2ban6
 	md5sums = 1bb20dcd9db96e95c79cfe1e77f823dd
 	md5sums = 7785327e2fae4b051be7a82e97318010
 	md5sums = 6119045904445c559e9e53cb1a9c5fb0
-	md5sums = 699c29dfec7528da62ccaecbdc263f6e
+	md5sums = ecf4c03116e4570281f8e0f87d5b489b
 
 pkgname = fail2ban6
 

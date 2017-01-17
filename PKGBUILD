@@ -8,7 +8,7 @@
 
 pkgname=fail2ban6
 pkgver=0.9.6
-pkgrel=1
+pkgrel=2
 provides=(fail2ban)
 conflicts=(fail2ban)
 pkgdesc='Bans IPs after too many failed authentication attempts (IPv6 supported based on crycode patch)'
@@ -37,7 +37,7 @@ md5sums=('8758789d40366f5e212b4e6b629297d1'
          '1bb20dcd9db96e95c79cfe1e77f823dd'
          '7785327e2fae4b051be7a82e97318010'
          '6119045904445c559e9e53cb1a9c5fb0'
-         '699c29dfec7528da62ccaecbdc263f6e')
+         'ecf4c03116e4570281f8e0f87d5b489b')
 
 check() {
   cd fail2ban-$pkgver
