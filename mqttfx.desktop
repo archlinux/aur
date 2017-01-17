@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=MQTT.fx
+Comment=A MQTT Client written in Java based on Eclipse Paho
+Exec=/opt/MQTTfx/MQTTfx %U
+Icon=MQTTfx
+Type=Application
+StartupNotify=true
