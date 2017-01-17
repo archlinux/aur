@@ -2,8 +2,11 @@ post_install() {
     #chmod g+s "/opt/osu/game/"
     #chmod g+w "/opt/osu/game/"
     update-desktop-database -q
-    echo "To run this game, you have to be in 'games' group"
-    echo "Use 'sudo gpasswd -a YOUR_USERNAME games'"
+    #echo "To run this game, you have to be in 'games' group"
+    #echo "Use 'sudo gpasswd -a YOUR_USERNAME games'"
+    #echo
+    echo "If you want to install optional dependencies, run:"
+    echo "/opt/osu/osulauncher install-optional"
     echo
     echo "If you experience sound lag with alsa, you might try to add something like"
     echo "http://pastebin.com/djQGVmHf in your $HOME/.asoundrc (or /etc/asound.conf)"

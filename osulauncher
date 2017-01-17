@@ -34,22 +34,35 @@ function doinstall {
     echo "Do NOT install Mono (press cancel)!"
     wine hh || exit 1
     echo "Wineprefix created successfully!"
-    echo "Installing .NET 4.0 and gdi"
+    echo "Installing .NET 4.5"
     if [ -z "$(which winetricks)" ]
     then
         echo "Installation failed. Please install winetricks."
         read
         exit 1
     fi
-    winetricks dotnet40 gdiplus || (doremove && exit 1)
-    echo ".NET 4.0 and gdi instlled successfully!"
+    winetricks dotnet45 || (doremove && exit 1)
+    echo ".NET 4.5 installed successfully!"
     echo
     echo "Applying some settings..."
     winetricks ddr=opengl fontsmooth=rgb sound=alsa strictdrawordering=enabled
     regedit /opt/osu/directsound-latency.reg
     echo "All done! Running osu! updater..."
-    sleep 10
-    wine /opt/osu/game/osu\!install.exe
+    sleep 1
+    cp "/opt/osu/game/osu!install.exe" "$WINEPREFIX/osu!install.exe"
+    wine "$WINEPREFIX/osu!install.exe"
+}
+
+function doinstalloptional {
+    if [ ! -d "$WINEPREFIX" ]
+    then
+        doinstall
+    fi
+
+    echo "Installing optional dependencies for osu!"
+    echo
+
+    winetricks gdiplus corefonts cjkfonts
 }
 
 function doremove {
@@ -61,6 +74,11 @@ function doremove {
 case "$1" in
 "install")
  doinstall
+ exit 0
+ ;;
+
+"install-optional")
+ doinstalloptional
  exit 0
  ;;
 
@@ -102,10 +120,4 @@ then
     fi
 fi
 
-if [ "$1" == "fullscreen" ]
-then
-    RES="$(xrandr | grep +0 | awk '{print $3}' | sed 's/+0+0//')"
-    vblank_mode=0 wine explorer /desktop=osu,$RES /opt/osu/game/osu\!.exe $@
-else
-    vblank_mode=0 wine /opt/osu/game/osu\!.exe $@
-fi
+vblank_mode=0 wine "$WINEPREFIX/drive_c/users/$USER/Local Settings/Application Data/osu!/osu!.exe" $@

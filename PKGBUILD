@@ -1,22 +1,20 @@
-# Maintainer: ValdikSS <iam@valdikss.org.ru>
+# Maintainer: emersion <contact@emersion.fr>
 # Contributor: ValdikSS <iam@valdikss.org.ru>
 
 pkgname=osu
-pkgver=20160123
+pkgver=20170118
 pkgrel=1
 
 source=("http://m1.ppy.sh/r/osu!install.exe"
 	"directsound-latency.reg"
 	"osu.desktop"
-	"osu-fullscreen.desktop"
 	"osulauncher"
 	"osu.png")
 
 md5sums=('SKIP'
          '1d285eb3a5bdb6a70da89116dec18441'
-         'd9749afe35fdd440e560d03b0a20a695'
-         '31bada75b7fe984395423c877d9bd036'
-         'b627b6247932f614446b1b1993b4f3cc'
+         'd6b3671e708e76152453e7e17bdfd919'
+         'e476890981d4ece50b676f7e95c6d07d'
          '33164b758af5645efca61a99f6ddd342')
 
 pkgdesc="Freeware rhythm video game"
@@ -32,7 +30,6 @@ package() {
     cd "$srcdir"
 
     install -Dm644 osu.desktop "$pkgdir/usr/share/applications/osu.desktop"
-    install -Dm644 osu-fullscreen.desktop "$pkgdir/usr/share/applications/osu-fullscreen.desktop"
     install -Dm644 osu.png "$pkgdir/opt/osu/osu.png"
     install -Dm644 directsound-latency.reg "$pkgdir/opt/osu/directsound-latency.reg"
     install -Dm755 osulauncher "$pkgdir/opt/osu/"
