@@ -1,7 +1,7 @@
 # Maintainer: koneu <koneu93 at googlemail dot com>
 
 pkgname='koneu-misc'
-pkgver='2'
+pkgver='1'
 pkgrel=0
 pkgdesc='random systemd stuff I wanted packaged'
 arch=('any')
@@ -24,7 +24,7 @@ md5sums=('a9d4154e77860db1a19d1aa6be1e81a0'
          '76fe79faa8920e5dfa269d9c32e092d7'
          'b1dba675932f6ef3d60f402cfac7a8e5'
          '2d4c5cd5fbd513d250dc756c011f5fcd'
-         'f98499f946bd9ee36c08addab5f471e0'
+         '5d506d10510672d6438c31e399f36001'
          '0ab8db3f58905b2bdee31685125227eb'
          '8a636e2d607a5e83f4f5d8936f6b4844'
          '4877a74e7674a16536ef8d3c3548ea9d'
