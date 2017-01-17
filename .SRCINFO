@@ -1,6 +1,6 @@
 pkgbase = sink-develop
 	pkgdesc = Development branch of Akonadi replacement sink
-	pkgver = r1410.889bda7
+	pkgver = r1438.48cb4a2
 	pkgrel = 1
 	url = https://github.com/KDE/sink
 	arch = i686
@@ -14,7 +14,7 @@ pkgbase = sink-develop
 	depends = flatbuffers
 	provides = sink
 	conflicts = sink
-	source = git://anongit.kde.org/sink.git#branch=develop
+	source = git://anongit.kde.org/sink.git#branch=dev/imapsync
 	sha256sums = SKIP
 
 pkgname = sink-develop

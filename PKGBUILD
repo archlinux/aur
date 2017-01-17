@@ -2,7 +2,7 @@
 # Maintainer: Jameson Pugh <imntreal@gmail.com>
 
 pkgname=sink-develop
-pkgver=r1410.889bda7
+pkgver=r1438.48cb4a2
 pkgrel=1
 pkgdesc='Development branch of Akonadi replacement sink'
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ depends=('qt5-base' 'kimap2-git' 'kasync-git' 'flatbuffers')
 makedepends=('extra-cmake-modules' 'git')
 conflicts=(sink)
 provides=(sink)
-source=("git://anongit.kde.org/sink.git#branch=develop")
+source=("git://anongit.kde.org/sink.git#branch=dev/imapsync")
 sha256sums=('SKIP')
 
 pkgver() {
@@ -21,13 +21,15 @@ pkgver() {
 }
 
 prepare() {
-  cd "${srcdir}/sink"
+  cd "${srcdir}"
   mkdir -p build
+  cd "${srcdir}/sink"
+  sed -i -e '/querytest/d' tests/CMakeLists.txt
 }
 
 build() { 
-  cd "${srcdir}/sink/build"
-  cmake .. \
+  cd "${srcdir}/build"
+  cmake "${srcdir}/sink" \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_BUILD_TYPE=Release \
     -DLIB_INSTALL_DIR=lib \
@@ -36,6 +38,6 @@ build() {
 }
 
 package() {
-  cd "${srcdir}/sink/build"
+  cd "${srcdir}/build"
   make DESTDIR="$pkgdir" install
 }
