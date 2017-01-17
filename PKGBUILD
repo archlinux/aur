@@ -1,7 +1,7 @@
 _pkgname=frida
 pkgname=python-$_pkgname
 pkgver=9.0.6
-pkgrel=2
+pkgrel=3
 pkgdesc="Inject JavaScript to explore native apps on Windows, Mac, Linux, iOS and Android. Python 3 version from PyPi"
 arch=('i686' 'x86_64') # setup.py downloads pre-built binary components, so it doesn't work on ARM (yet).
 url="http://www.frida.re"
@@ -23,6 +23,10 @@ build() {
 package() {
   cd "$srcdir/$_pkgname-$pkgver"
   python setup.py install --root=$pkgdir --optimize=1 --skip-build
+
+  # Ugly hack because frida-python is built against 3.5 but Arch uses 3.6
+  install -d "$pkgdir/usr/lib"
+  ln -s "libpython3.6m.so.1.0" "$pkgdir/usr/lib/libpython3.5m.so.1.0"
 
   cd "$srcdir"
   install -d "$pkgdir/usr/share/licenses/$pkgname"
