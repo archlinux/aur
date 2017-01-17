@@ -1,9 +1,4 @@
-# This is an example PKGBUILD file. Use this as a start to creating your own,
-# and remove these comments. For more information, see 'man PKGBUILD'.
-# NOTE: Please fill out the license field for your package! If it is unknown,
-# then please put 'unknown'.
-
-# Maintainer: Your Name <youremail@domain.com>
+# Maintainer: Mellich <mellich@gmx.net>
 pkgname=light-locker-settings
 pkgver=master
 pkgrel=1
@@ -29,21 +24,11 @@ noextract=()
 md5sums=('600dcfb665cb45cee58d793057e68e72')
 validpgpkeys=()
 
-#prepare() {
-#	cd "$pkgname-$pkgver"
-#	patch -p1 -i "$srcdir/$pkgname-$pkgver.patch"
-#}
-
 build() {
 	cd "$srcdir/$pkgname-$pkgver"
 	./configure --prefix=/usr
 	make
 }
-
-#check() {
-#	cd "$pkgname-$pkgver"
-#	make -k check
-#}
 
 package() {
 	cd "$srcdir/$pkgname-$pkgver"
