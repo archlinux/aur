@@ -1,10 +1,10 @@
 # Maintainer: Quey-Liang Kao<s101062801@m101.nthu.edu.tw>
 
 pkgname=hifive1-sdk-git
-pkgver=r50.61ac13f
+pkgver=r71.b2ed074
 pkgrel=1
 pkgdesc="The Official SDK of the RISC-V-based HiFive Board"
-depends=('libunistring>=0.9.7')
+depends=('libunistring>=0.9.7' 'flex<=2.6.1')
 makedepends=('git')
 arch=('x86_64')
 source=("git+https://github.com/sifive/freedom-e-sdk.git")
