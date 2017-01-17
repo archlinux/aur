@@ -1,13 +1,14 @@
+# Maintainer: Marco Scarpetta <marcoscarpetta02@gmail.com>
 # Maintainer: Jameson Pugh <imntreal@gmail.com>
 
 pkgname=sink-develop
-pkgver=r1220.64bba04
+pkgver=r1410.889bda7
 pkgrel=1
 pkgdesc='Development branch of Akonadi replacement sink'
 arch=('i686' 'x86_64')
 url='https://github.com/KDE/sink'
 license=('GPL')
-depends=('qt5-base' 'kimap')
+depends=('qt5-base' 'kimap2-git' 'kasync-git' 'flatbuffers')
 makedepends=('extra-cmake-modules' 'git')
 conflicts=(sink)
 provides=(sink)
@@ -22,7 +23,6 @@ pkgver() {
 prepare() {
   cd "${srcdir}/sink"
   mkdir -p build
-  sed -i -e '/inspectiontest/d' -e '/maildirresourcetest/d' tests/CMakeLists.txt
 }
 
 build() { 
@@ -36,6 +36,6 @@ build() {
 }
 
 package() {
-  cd "${srcdir}/sink/build"
+  cd "${srcdir}/sink/"
   make DESTDIR="$pkgdir" install
 }
