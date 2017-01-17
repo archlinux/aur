@@ -1,5 +1,5 @@
 pkgbase = hex-git
-	pkgdesc = MPD client
+	pkgdesc = Hex viewer
 	pkgver = r22.233a69e
 	pkgrel = 1
 	url = https://github.com/pjanouch/hex
