@@ -7,7 +7,7 @@ pkgbase="python-numpy-mkl"
 pkgname="python-numpy-mkl"
 true && pkgname=('python-numpy-mkl' 'python2-numpy-mkl')
 #pkgname=('python-numpy')
-pkgver=1.11.3
+pkgver=1.12.0
 pkgrel=1
 pkgdesc="Scientific tools for Python compiled with intel mkl"
 arch=('i686' 'x86_64')
@@ -17,16 +17,16 @@ url="http://numpy.scipy.org/"
 depends=( 'intel-mkl' 'python' 'python2'  )
 makedepends=( 'python-setuptools' 'python2-setuptools' 'intel-compiler-base' 'intel-fortran-compiler'  'python-nose' 'python2-nose' )
 
-source=( https://github.com/numpy/numpy/archive/v1.11.3.tar.gz 
+source=( https://github.com/numpy/numpy/archive/v${pkgver}.tar.gz 
 	  'site64.cfg' 'site32.cfg' 'intel.py' 'intelccompiler.py' '__init__2.py.patch' '__init__3.py.patch' )
 
-md5sums=( '2025c9a18c836702a82262e1a04a3fbc' 
-	  'e100a52fd644eb4a84217b3b7cce441a' 
-	  '86934d30d5ba2fa6b938f58b284690f0' 
-	  '5c116163f3309d774d183504ea662c67' 
-	  'e01a59fb867cbf3b44a30ec71953a710'
-	  'b50692cecf5ff9439f29753bf53961f7'
-	  'b50692cecf5ff9439f29753bf53961f7'
+sha256sums=( 'edec8d62882bef688a0cfd6b79987a722d26028238b6120b47974da58824ad08' 
+             '894e325c342511c29b98ec84b11e23f5e807f3088a7910e1d64279c626b5c898' 
+             'be10bb0e5f42e3511f2bbd536707744c0da943ed9d4dc8b981a23daa617e80d3' 
+             'f2c6fa043b8c888f6df672a6031c3a4917909230236b725c6ce7e924a6d01462' 
+             'a3faf52563f265b8adbb912c6acf969787a9d423e960c877ea9abd128976f814'
+             '257adf2130c2cde081da61ac38d3fbce0c352d9b4af206d89d7a7e77c54b264a'
+             '257adf2130c2cde081da61ac38d3fbce0c352d9b4af206d89d7a7e77c54b264a'
 )
 
 build() {
