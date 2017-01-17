@@ -3,7 +3,7 @@
 
 _pkgname=xdo
 pkgname=${_pkgname}-git
-pkgver=0.5.4
+pkgver=0
 pkgrel=1
 pkgdesc='Small X utility to perform elementary actions on windows'
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ depends=('libxcb' 'xcb-util-wm')
 makedepends=('git')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
-source=("git://github.com/baskerville/${_pkgname}.git")
+source=("git+https://github.com/baskerville/${_pkgname}.git")
 md5sums=('SKIP')
 
 pkgver() {
