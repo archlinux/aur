@@ -2,7 +2,7 @@
 
 pkgname=dmusic-plugin-neteasecloudmusic-git
 _pkgname=dmusic-plugin-neteasecloudmusic
-pkgver=20151113
+pkgver=20170108
 pkgrel=1
 pkgdesc="NeteaseCloudMusic Plugin for Deepin Music Player"
 arch=("any")
