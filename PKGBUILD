@@ -1,6 +1,6 @@
 # Maintainer: Alex Forencich <alex@alexforencich.com>
 pkgname=(python-usbtmc-git python2-usbtmc-git)
-pkgver=0.7.r17.g98549db
+pkgver=0.8.r0.g008052b
 pkgrel=1
 pkgdesc="A Python USBTMC driver for controlling instruments over USB."
 arch=('any')

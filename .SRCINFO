@@ -1,6 +1,6 @@
 pkgbase = python-usbtmc-git
 	pkgdesc = A Python USBTMC driver for controlling instruments over USB.
-	pkgver = 0.7.r17.g98549db
+	pkgver = 0.8.r0.g008052b
 	pkgrel = 1
 	url = https://github.com/python-ivi/python-usbtmc
 	arch = any
