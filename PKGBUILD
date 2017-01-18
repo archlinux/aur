@@ -24,7 +24,8 @@ build() {
   patch -Np1 -i ${srcdir}/../transparency.patch
   ./configure --prefix=/usr --disable-alsaconf --sbindir=/usr/bin \
     --with-udev-rules-dir=/usr/lib/udev/rules.d \
-    --with-systemdsystemunitdir=/usr/lib/systemd/system
+    --with-systemdsystemunitdir=/usr/lib/systemd/system \
+    --disable-rst2man
   make
   # fix udev rules genaration
   cd alsactl
