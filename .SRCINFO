@@ -1,7 +1,7 @@
 pkgbase = bluemindo
 	pkgdesc = Ergonomic and modern music player designed for audiophiles
 	pkgver = 1.0rc1
-	pkgrel = 2
+	pkgrel = 3
 	url = http://bluemindo.codingteam.net
 	arch = any
 	license = GPL3
@@ -9,6 +9,7 @@ pkgbase = bluemindo
 	depends = python-dbus
 	depends = python-beautifulsoup4
 	depends = python-pytaglib
+	depends = gtk3
 	optdepends = pulseaudio: PulseAudio support
 	optdepends = gst-plugins-good: PulseAudio support and good codecs
 	optdepends = gst-plugins-bad: additional codecs
