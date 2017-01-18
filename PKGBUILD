@@ -8,6 +8,11 @@ pkgdesc="QEMU with pc-lite system"
 arch=(x86_64)
 url="https://github.com/01org/qemu-lite"
 license=('GPLv2')
+depends=('libcacard'
+        'pixman'
+        'vde2'
+        'virglrenderer'
+        'numactl')
 makedepends=('python2')
 conflicts=('qemu')
 source=(https://github.com/01org/qemu-lite/archive/${pkgver}${__postfix_ver}.tar.gz)
