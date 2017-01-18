@@ -1,0 +1,13 @@
+pkgbase = nosegrind-font
+	pkgdesc = Font that looks like graffiti
+	pkgver = 1
+	pkgrel = 1
+	url = http://www.dafont.com/nosegrind.font
+	arch = any
+	license = custom
+	makedepends = zip
+	source = nosegrind.zip::http://dl.dafont.com/dl/?f=nosegrind
+	sha256sums = bcce4b973c44b94d4f779a510a128a9b3a4d11231eeb106bafbe8e0e0985dd50
+
+pkgname = nosegrind-font
+
