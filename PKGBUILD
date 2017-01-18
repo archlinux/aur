@@ -28,6 +28,7 @@ package() {
   make DESTDIR=$pkgdir install
   rm $pkgdir/usr/include/{cblas.h,tinystr.h,tinyxml.h}
   rm $pkgdir/usr/lib/libtinyxml.so
+  rm -rf $pkgdir/usr/examples
 }
 
 md5sums=('02c46e904d40bba6b308065db34c1ad7')
