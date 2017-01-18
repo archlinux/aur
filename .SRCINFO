@@ -1,6 +1,6 @@
 pkgbase = python-pyusb-git
 	pkgdesc = Easy USB access from Python
-	pkgver = 1.0.0.r15.g2b09e55
+	pkgver = 1.0.0.r18.g1f66ccd
 	pkgrel = 1
 	url = http://sourceforge.net/apps/trac/pyusb/
 	arch = any
