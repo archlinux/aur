@@ -21,14 +21,11 @@ package() {
   tar -xf data.tar.xz -C "${pkgdir}"
 
   install -d -m755 "${pkgdir}/opt/MQTTfx"
-  
   install -d -m755 "${pkgdir}/usr/bin"
   install -d -m755 "${pkgdir}/usr/share/applications"
   install -d -m755 "${pkgdir}/usr/share/icons/hicolor/128x128/apps"
   
   ln -s "/opt/MQTTfx/MQTTfx" "${pkgdir}/usr/bin/mqttfx"
   ln -s "/opt/MQTTfx/MQTTfx.png" "${pkgdir}/usr/share/icons/hicolor/128x128/apps/mqttfx.png"
-
-  install -d -m755 "${pkgdir}/usr/share/icons/hicolor/128x128/apps"
   install -D -m644 "mqttfx.desktop" "${pkgdir}/usr/share/applications/mqttfx.desktop"
 }
