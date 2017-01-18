@@ -2,11 +2,11 @@
 # Maintainer: Luca Weiss <luca (at) z3ntu (dot) xyz>
 
 pkgname=openfx-io
-pkgver=2.1.9
+pkgver=2.2.0
 pkgrel=1
 arch=("i686" "x86_64")
 pkgdesc="A set of Readers/Writers plugins written using the OpenFX standard"
-url="https://github.com/MrKepzie/openfx-io/tree/Natron-$pkgver"
+url="https://github.com/MrKepzie/openfx-io"
 license=("GPL2")
 depends=("seexpr1" "openimageio" "ffmpeg") 
 #depends=("opencolorio" "openexr" "openimageio" "ffmpeg" "boost-libs")
@@ -16,11 +16,12 @@ source=("$pkgname::git+https://github.com/MrKepzie/openfx-io.git#tag=Natron-$pkg
         'git+https://github.com/MrKepzie/SequenceParsing'
         'git+https://github.com/devernay/openfx-supportext.git'
         'git+https://github.com/MrKepzie/tinydir')
-md5sums=('SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP')
+sha512sums=('SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP')
+
 _bits=32 ; [[ "$CARCH" = 'x86_64' ]] && _bits=64
 
 prepare() {
