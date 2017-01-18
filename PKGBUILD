@@ -1,5 +1,5 @@
 pkgname=alacritty-git
-pkgver=0.1.0.353
+pkgver=0.1.0.361
 pkgrel=1
 pkgdesc="A cross-platform, GPU enhanced terminal emulator"
 arch=('x86_64' 'i686')
@@ -20,9 +20,6 @@ pkgver() {
 
 build() {
     cd $pkgname
-	if which rustup >/dev/null; then
-		rustup override set nightly
-	fi
 	cargo update
 	cargo build --release
 }
