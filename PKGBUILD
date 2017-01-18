@@ -15,12 +15,12 @@ license=('custom:Oracle')
 optdepends=("java-runtime>=$_major: Run the examples"
             "java-environment>=$_major: Compile and run the examples")
 options=('!strip')
-source=("http://download.oracle.com/otn-pub/java/jdk/$pkgver-$_build/jdk-$pkgver-docs-all.zip"
-        "http://download.oracle.com/otn-pub/java/javafx/$_major.0.$_minor-$_build/javafx-$pkgver-apidocs.zip"
+source=("http://download.oracle.com/otn-pub/java/jdk/$pkgver-$_build/e9e7ea248e2c4826b92b3f075a80e441/jdk-$pkgver-docs-all.zip"
+        "http://download.oracle.com/otn-pub/java/javafx/$_major.0.$_minor-$_build/e9e7ea248e2c4826b92b3f075a80e441/javafx-$pkgver-apidocs.zip"
         'LICENSE-Documentation'
         'LICENSE-Oracle-Legal-Notices')
-md5sums=('477d9862374177c810b0b7d73b4f1e53'
-         '477d9862374177c810b0b7d73b4f1e53'
+md5sums=('20c9eb630e5db0c32b7b34b4e6e9ffb2'
+         '3fdcbe83b01a6c7b962a539be4a11485'
          '4d54057ca75b691366977dab2277e869'
          '3137397f4dba13f4a79157819af583a3')
 
