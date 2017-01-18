@@ -2,10 +2,10 @@
 pkgname=pyocd
 _pkgname=pyOCD
 pkgver=0.8.1a1
-pkgrel=1
+pkgrel=2
 pkgdesc="Python On Chip Debugger and programmer for ARM Cortex-M microcontrollers using CMSIS-DAP"
 url="https://github.com/mbedmicro/pyocd"
-depends=('python2' 'python2-setuptools' 'python2-pyusb' 'python2-intelhex' 'python2-enum34' 'python2-websocket-client' 'python2-backports.ssl_match_hostname')
+depends=('python2' 'python2-setuptools' 'python2-pyusb' 'python2-intelhex' 'python2-enum34' 'python2-websocket-client' 'python2-backports.ssl_match_hostname' 'python2-future')
 optdepends=()
 license=('Apache')
 arch=('any')
