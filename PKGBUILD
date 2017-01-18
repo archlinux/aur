@@ -1,7 +1,7 @@
 # Maintainer: Christian Hesse <mail@eworm.de>
 
 pkgname=mysql-router
-pkgver=2.0.3
+pkgver=2.0.4
 pkgrel=1
 pkgdesc='Lightweight middleware that provides transparent routing between your application and any backend MySQL Servers'
 arch=('i686' 'x86_64')
@@ -9,11 +9,10 @@ url='http://dev.mysql.com/downloads/router/'
 license=('GPL')
 makedepends=('cmake' 'doxygen' 'libmariadbclient')
 backup=('etc/mysql/router.ini')
-install=mysql-router.install
 validpgpkeys=('A4A9406876FCBD3C456770C88C718D3B5072E1F5')
 source=("http://cdn.mysql.com/Downloads/MySQL-Router/${pkgname}-${pkgver}.tar.gz"{,.asc}
         'mysqlrouter.sysusers')
-sha256sums=('a57ce397d9635ac5a3867e6fc77a6efa52cc7d0b35d796509967a1655a613e86'
+sha256sums=('c56ccd028c2429c8daff74050a37010f596634aef6844a7539175951eeb4b80a'
             'SKIP'
             '8db8c99262320402b4c2e811c960291fec4a2c951bbdc0564e615f50b4f85cac')
 
