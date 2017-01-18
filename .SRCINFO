@@ -1,0 +1,18 @@
+pkgbase = getmail-passwordeval
+	pkgdesc = A POP3 mail retriever with reliable Maildir and command delivery (with passwordeval patch).
+	pkgver = 4.53.0
+	pkgrel = 1
+	url = http://pyropus.ca/software/getmail
+	arch = any
+	license = GPL
+	depends = python2
+	optdepends = python2-gnomekeyring: for storing passwords in gnome-keyring
+	provides = getmail
+	conflicts = getmail
+	source = http://pyropus.ca/software/getmail/old-versions/getmail-4.53.0.tar.gz
+	source = 0001-Added-passwordeval-option-and-documentation.patch
+	sha256sums = 282596fe33b5a24b3aefe5b268f57efbcdd5b980478901418045b481636f92ab
+	sha256sums = 0bdaaa3f2ada33b32b5861eef71a5290d478a67b7cda90e2aadc598876dda7ad
+
+pkgname = getmail-passwordeval
+
