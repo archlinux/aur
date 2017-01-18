@@ -1,17 +1,17 @@
 # NiceHash equihash miner. Tromp GPU/CUDAsolver build
 # Maintainer: Sebastian Stammler <echo c2ViQGhkZG4uc3BhY2UK|base64 -d>
-_pkgname=nheqminer-cuda
-pkgname=${_pkgname}-git
-pkgver=0.4b.r0.geb37570
+_flavour="cuda"
+pkgname="nheqminer-${_flavour}-git"
+pkgver=0.5c.r1.gb9900ff
 pkgrel=1
-pkgdesc="zcash equihash miner by NiceHash. Tromp GPU/CUDA solver build."
+pkgdesc="zcash equihash miner by NiceHash. Djezo GPU/CUDA solver build."
 arch=('x86_64')
 url="https://github.com/nicehash/nheqminer/"
 license=('MIT')
 depends=('boost' 'cuda')
 makedepends=('git' 'cmake')
 optdepends=('zcash: zcash node and tools')
-source=("${pkgname}::git+https://github.com/nicehash/nheqminer.git#branch=Linux")
+source=("${pkgname}::git+https://github.com/nicehash/nheqminer.git")
 md5sums=('SKIP')
 
 pkgver() {
@@ -19,10 +19,12 @@ pkgver() {
   git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
-_binary="nheqminer_cuda_tromp"
-_build_dir="Linux_cmake/${_binary}"
+_build_dir="build_${_flavour}"
 build() {
-  cd "${pkgname}/${_build_dir}"
+  # Fix hardcoded sources path
+  sed -ie 's#\.\.\/nheqminer#\.\.\/'"${pkgname}"'#g' "${pkgname}/CMakeLists.txt"
+  mkdir -p ${_build_dir}
+  cd ${_build_dir}
   # Since we don't use make install, skip setting RPATH in the binary
   # and use gcc-5 for compilation. Add COMPUTE=30 (or similar) right after
   # 'cmake' if you need to change nvidia compute version of your card(s)
@@ -32,12 +34,14 @@ build() {
     -DCMAKE_CXX_COMPILER=/usr/bin/g++-5 \
     -DCMAKE_RANLIB=/usr/bin/gcc-ranlib-5 \
     -DCMAKE_AR=/usr/bin/gcc-ar-5 \
-    .
+    -DUSE_CUDA_DJEZO=true \
+    -DUSE_CPU_XENONCAT=false \
+    ../${pkgname}
+
   make -j $(nproc)
 }
 
 package() {
-  cd "${pkgname}"
-  install -D -m755 "${_build_dir}/${_binary}" -t "${pkgdir}/usr/bin/"
-  install -D -m644 LICENSE_MIT -t "${pkgdir}/usr/share/licenses/${pkgname}/"
+  install -D -m755 "${_build_dir}/nheqminer" -t "${pkgdir}/usr/bin/nheqminer_${_flavour}"
+  install -D -m644 "${pkgname}/LICENSE_MIT" -t "${pkgdir}/usr/share/licenses/${pkgname}/"
 }

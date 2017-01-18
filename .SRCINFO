@@ -1,6 +1,6 @@
 pkgbase = nheqminer-cuda-git
-	pkgdesc = zcash equihash miner by NiceHash. Tromp GPU/CUDA solver build.
-	pkgver = 0.4b.r0.geb37570
+	pkgdesc = zcash equihash miner by NiceHash. Djezo GPU/CUDA solver build.
+	pkgver = 0.5c.r1.gb9900ff
 	pkgrel = 1
 	url = https://github.com/nicehash/nheqminer/
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = nheqminer-cuda-git
 	depends = boost
 	depends = cuda
 	optdepends = zcash: zcash node and tools
-	source = nheqminer-cuda-git::git+https://github.com/nicehash/nheqminer.git#branch=Linux
+	source = nheqminer-cuda-git::git+https://github.com/nicehash/nheqminer.git
 	md5sums = SKIP
 
 pkgname = nheqminer-cuda-git
