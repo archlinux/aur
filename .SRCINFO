@@ -1,0 +1,15 @@
+pkgbase = typingtest-git
+	pkgdesc = A typing test program desktop program with customizability
+	pkgver = v1.0.0.r0.16c3f2b
+	pkgrel = 1
+	url = https://github.com/laelath/typingtest
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = cmake
+	depends = gtk3
+	source = typingtest-git::git+https://github.com/laelath/typingtest.git
+	md5sums = SKIP
+
+pkgname = typingtest-git
+
