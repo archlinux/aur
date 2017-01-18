@@ -3,7 +3,7 @@
 # Contributor: Julien Deswaef (juego) <juego@requiem4tv.com>
 
 pkgname=python-tensorflow-git
-pkgver=0.12.1+1875+g9830ed87d
+pkgver=0.12.1+1934+g27fca7d32
 pkgrel=1
 
 pkgdesc="Open source software library for numerical computation using data flow graphs."
@@ -67,6 +67,8 @@ prepare() {
   export TF_ENABLE_XLA=0
   # enable jemalloc support
   export TF_NEED_JEMALLOC=1
+  # set up architecture dependent optimization flags
+  export CC_OPT_FLAGS="-march=native"
 
   # make sure the proxy variables are in all caps, otherwise bazel ignores them
   export HTTP_PROXY=`echo $http_proxy | sed -e 's/\/$//'`
@@ -77,7 +79,7 @@ build() {
   cd ${srcdir}/tensorflow
 
   ./configure
-  bazel build -c opt ${_build_opts} --copt=-march=native //tensorflow/tools/pip_package:build_pip_package
+  bazel build -c opt ${_build_opts} --copt=${CC_OPT_FLAGS} //tensorflow/tools/pip_package:build_pip_package
 
   msg2 "Building pip package..."
   bazel-bin/tensorflow/tools/pip_package/build_pip_package ${srcdir}/tmp
