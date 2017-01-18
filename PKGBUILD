@@ -2,11 +2,11 @@
 
 pkgname=concierge
 pkgver=0.2.2
-pkgrel=2
+pkgrel=3
 pkgdesc='Think SASS for SSH config files'
 license=('MIT')
 url='https://github.com/9seconds/concierge'
-depends=('python-inotify-simple' 'python-enum34')
+depends=('python-inotify-simple')
 makedepends=('python-setuptools')
 optdepends=('concierge-jinja: jinja2 support in your templates'
             'concierge-mako: mako support in your templates')
@@ -16,7 +16,13 @@ arch=('any')
 options=(!emptydirs)
 install=concierge.install
 
-package(){
+prepare() {
+  cd $srcdir/${pkgname}-$pkgver
+  sed -i 14d setup.py
+  sed -i 's/^\([ ]*\)"inotify_simple",$/\1"inotify_simple"/' setup.py
+}
+
+package() {
   cd $srcdir/${pkgname}-$pkgver
   python setup.py install --root=$pkgdir
 }
