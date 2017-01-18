@@ -2,7 +2,7 @@
 # Contributor: Özgür Sarıer <echo b3pndXJzYXJpZXIxMDExNjAxMTE1QGdtYWlsLmNvbQo= | base64 -d>
 
 pkgname=natron
-pkgver=2.1.9
+pkgver=2.2.0
 pkgrel=1
 pkgdesc="Open source compositing software. Node-graph based. Similar in functionalities to Adobe After Effects and Nuke by The Foundry."
 arch=("i686" "x86_64")
@@ -20,13 +20,13 @@ source=("$pkgname::git+https://github.com/MrKepzie/Natron.git#tag=$pkgver"
         "https://github.com/MrKepzie/OpenColorIO-Configs/archive/Natron-v${pkgver%.*}.tar.gz"
         "config.pri")
 sha512sums=('SKIP'
-           'SKIP'
-           'SKIP'
-           'SKIP'
-           'SKIP'
-           'SKIP'
-           '5ee7b561703acb0489953867887c06e9b70ffc729d59a1686aace54b87a3c2736d87484d992c713d5bf464f6a9cf6332631825090fcaf834289d1126cd0ea0b9'
-           '48017b7b9cd1854064b9ddffecedef89a4d38070f9a7d2cd506aad481a8061c5cffe5e5c84fc9b0ac5216fc99e093481db367e91ce52cb2a8a66223c4209402a')
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'f31f3f74315545cec23c266b0391c325143666333c876631f2cfc9030c50670194f18a2763ffe9733dfe4073ae6ac2c95ad14089622dc02d0fa1ddcfaf99ede7'
+            '48017b7b9cd1854064b9ddffecedef89a4d38070f9a7d2cd506aad481a8061c5cffe5e5c84fc9b0ac5216fc99e093481db367e91ce52cb2a8a66223c4209402a')
 
 prepare() {
   cd "$srcdir/$pkgname"
