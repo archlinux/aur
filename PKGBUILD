@@ -10,7 +10,7 @@ depends=('go' 'python2')
 makedepends=('go' 'python2' 'git')
 license=('Apache')
 options=('!strip')
-source=("git+https://github.com/google/grumpy.git"
+source=("git+https://github.com/google/grumpy.git#commit=35d1202"
         'makefile.patch')
 md5sums=('SKIP'
          '1a73c49f15cd1ab978e5cacd0ea84ecb')
