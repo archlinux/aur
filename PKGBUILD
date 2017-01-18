@@ -3,13 +3,12 @@
 
 pkgname=ttf-niceandripe
 pkgver=1.0
-pkgrel=5
+pkgrel=6
 pkgdesc='Some fonts * Hand by Nice and Ripe Ltd'
 arch=('any')
 license=('custom: Free for personal use')
 url='http://www.niceandripe.com/fonts/'
 depends=('fontconfig' 'xorg-fonts-encodings' 'xorg-font-utils')
-install=ttf.install
 source=("hand_of_sean-${pkgver}.zip::http://img.dafont.com/dl/?f=hand_of_sean"
 	"tidy_hand-${pkgver}.zip::http://img.dafont.com/dl/?f=tidy_hand"
 	"seans_other_hand-${pkgver}.zip::http://img.dafont.com/dl/?f=seans_other_hand")
