@@ -1,7 +1,7 @@
 pkgbase = mpis
 	pkgdesc = Script allows to configure the system, install some applications for a regular work day thinked in developers, gamers,and more.
-	pkgver = 0.2a
-	pkgrel = 1.1
+	pkgver = 1.1.1
+	pkgrel = 2.0
 	url = https://kernelpanicblog.wordpress.com
 	arch = i686
 	arch = x86_64
@@ -9,8 +9,8 @@ pkgbase = mpis
 	makedepends = python-setuptools
 	depends = python3
 	options = !emptydirs
-	source = https://github.com/KernelPanicBlog/MPIS/archive/0.2a.tar.gz
-	md5sums = 24fe3d1681275e4e833e3e0ef5b34a5d
+	source = https://github.com/KernelPanicBlog/MPIS/archive/1.1.1.tar.gz
+	md5sums = 912869d844a4ce9184e2782ffe3602fc
 
 pkgname = mpis
 
