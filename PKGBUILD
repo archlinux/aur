@@ -1,10 +1,10 @@
 # Maintainer: Fabien Devaux <fdev31@gmail.com>
 pkgname=blender-plugin-pbr-materials
 pkgver=2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Collection of PBR materials"
 url="http://3dwolf.weebly.com/materials.html"
-license=("GPL")
+license=("CCPL")
 arch=('any')
 depends=('blender')
 groups=('blender')

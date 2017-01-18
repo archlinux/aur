@@ -1,11 +1,11 @@
 pkgbase = blender-plugin-pbr-materials
 	pkgdesc = Collection of PBR materials
 	pkgver = 2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://3dwolf.weebly.com/materials.html
 	arch = any
 	groups = blender
-	license = GPL
+	license = CCPL
 	makedepends = unzip
 	depends = blender
 	source = http://3dwolf.weebly.com/uploads/2/9/9/4/29944523/pbr_materials.zip
