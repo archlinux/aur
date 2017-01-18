@@ -1,30 +1,44 @@
-# Maintainer: ultraviolet <ultravioletnanokitty@gmail.com>
-
+# Maintainer: Shoghi Cervantes <shoghi@mojang.com>
+# Maintainer: Thomas Guimbretiere <profmobius@mojang.com>
 pkgname=minecraft-launcher
-pkgver=latest
-pkgrel=4
-pkgdesc="Launcher for Minecraft, a game about building with blocks in an infinite world."
-arch=(any)
-license=('custom')
-url="http://www.minecraft.net/"
-depends=('java-runtime' 'xorg-server-utils' 'openal')
-conflicts=('minecraft')
-source=(minecraft-launcher https://s3.amazonaws.com/Minecraft.Download/launcher/Minecraft.jar
-         minecraft.desktop minecraft.png minecraft-launcher.install)
-md5sums=('90cbd7a01441784bd0cdcb7c99a41265'
-         '85273e24404cc6865805f951487b8a1e'
-         'd43c7f36641f561d6506e06ba4782bd3'
-         'b2c25797bf513a5ee215dd90b4b828e3'
-         'a9cdf3f04808232fb6e9bb5c6d094815')
-install='minecraft-launcher.install'
+pkgver=2.0.579
+pkgrel=1
+pkgdesc="Official Minecraft Launcher"
+arch=('x86_64')
+url="https://mojang.com/"
+license=('All rights reserved')
+depends=('java-runtime=8' 'icu57')
+source=(
+https://launcher.mojang.com/mc-staging/launcher/linux/5f8adda8401888c37be5e3c91b2f369fea3bacf2/x86_64/minecraft-launcher-2.0.579.tar.gz
+minecraft-launcher.desktop
+minecraft-launcher.svg
+)
+sha256sums=(
+'3f37baa7eb7e3096a6ab2bce3da5ec4eb3a7edc6989e47ee34db9910ba04b523'
+'e1029b0a36cef916c58262e6b41b75defd83327ec41e5b372f9861d663007857'
+'35c2bcaeb09fa4b8864e9422fd66bf60847706f8b4400ec4a66ba6436b101f71'
+)
 
-package() {
-    cd "$srcdir" || return 1
+build() {
 
-    install -D -m755 "${srcdir}/minecraft-launcher"         "${pkgdir}/usr/bin/minecraft-launcher"
-    install -D -m644 "${srcdir}/Minecraft.jar"     "${pkgdir}/usr/share/minecraft/minecraft.jar"
+  cd "$srcdir/$pkgname-$pkgver"
 
-    # Desktop launcher with icon
-    install -D -m644 "${srcdir}/minecraft.desktop" "${pkgdir}/usr/share/applications/minecraft.desktop"
-    install -D -m644 "${srcdir}/minecraft.png"     "${pkgdir}/usr/share/pixmaps/minecraft.png"
+}
+
+package ()
+
+{
+
+  cd "$pkgdir"
+
+  mkdir -p "opt"
+  mkdir -p "usr/bin"
+
+  install -Dm644 "$srcdir/minecraft-launcher.svg"    "$pkgdir/usr/share/icons/hicolor/symbolic/apps/minecraft-launcher.svg"
+
+   install -Dm644 "$srcdir/minecraft-launcher.desktop"    "$pkgdir/usr/share/applications/minecraft-launcher.desktop"
+
+  cp -Rv "$srcdir/$pkgname-$pkgver" "$pkgdir/opt/$pkgname"
+  ln -s "/opt/$pkgname/minecraft-launcher.sh" "$pkgdir/usr/bin/minecraft-launcher"
+
 }

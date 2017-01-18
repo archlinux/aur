@@ -1,25 +1,18 @@
 pkgbase = minecraft-launcher
-	pkgdesc = Launcher for Minecraft, a game about building with blocks in an infinite world.
-	pkgver = latest
-	pkgrel = 4
-	url = http://www.minecraft.net/
-	install = minecraft-launcher.install
-	arch = any
-	license = custom
-	depends = java-runtime
-	depends = xorg-server-utils
-	depends = openal
-	conflicts = minecraft
-	source = minecraft-launcher
-	source = https://s3.amazonaws.com/Minecraft.Download/launcher/Minecraft.jar
-	source = minecraft.desktop
-	source = minecraft.png
-	source = minecraft-launcher.install
-	md5sums = 90cbd7a01441784bd0cdcb7c99a41265
-	md5sums = 85273e24404cc6865805f951487b8a1e
-	md5sums = d43c7f36641f561d6506e06ba4782bd3
-	md5sums = b2c25797bf513a5ee215dd90b4b828e3
-	md5sums = a9cdf3f04808232fb6e9bb5c6d094815
+	pkgdesc = Official Minecraft Launcher
+	pkgver = 2.0.579
+	pkgrel = 1
+	url = https://mojang.com/
+	arch = x86_64
+	license = All rights reserved
+	depends = java-runtime=8
+	depends = icu57
+	source = https://launcher.mojang.com/mc-staging/launcher/linux/5f8adda8401888c37be5e3c91b2f369fea3bacf2/x86_64/minecraft-launcher-2.0.579.tar.gz
+	source = minecraft-launcher.desktop
+	source = minecraft-launcher.svg
+	sha256sums = 3f37baa7eb7e3096a6ab2bce3da5ec4eb3a7edc6989e47ee34db9910ba04b523
+	sha256sums = e1029b0a36cef916c58262e6b41b75defd83327ec41e5b372f9861d663007857
+	sha256sums = 35c2bcaeb09fa4b8864e9422fd66bf60847706f8b4400ec4a66ba6436b101f71
 
 pkgname = minecraft-launcher
 
