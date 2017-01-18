@@ -14,6 +14,6 @@ source=("https://github.com/KernelPanicBlog/MPIS/archive/${pkgver}.tar.gz")
 md5sums=("912869d844a4ce9184e2782ffe3602fc")
 
 package() {
-  cd "$srcdir/MPIS-1.0"
+  cd "$srcdir/MPIS-${pkgver}"
   python3 setup.py install --prefix=/usr --root="$pkgdir/" --optimize=1
 }
