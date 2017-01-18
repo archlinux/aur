@@ -2,7 +2,7 @@
 
 pkgname=piqueserver-git
 _pkgname=piqueserver
-pkgver=0.1867.91af2a9
+pkgver=0.1869.433221c
 pkgrel=1
 pkgdesc="an Ace of Spades 0.75 server based on PySnip"
 arch=('any')
@@ -10,7 +10,7 @@ url="https://github.com/piqueserver/${_pkgname}"
 license=('GPL3')
 depends=('cython2' 'python2-twisted' 'python2-jinja' 'python2-pillow' 'python2-zope-interface')
 optdepends=('python2-geoip: to use the "from" command'
-            'python2-crypot: ssh'
+            'python2-crypto: ssh'
             'python2-pyasn1: ssh')
 makedepends=('git')
 source=("${pkgname}"::"git://github.com/piqueserver/${_pkgname}.git")
