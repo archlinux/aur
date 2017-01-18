@@ -4,13 +4,13 @@
 pkgname=networkmanager-l2tp
 _pkgname=network-manager-l2tp
 pkgver=1.2.4
-pkgrel=1
+pkgrel=2
 pkgdesc="L2TP support for NetworkManager"
 arch=('i686' 'x86_64')
 url="https://github.com/nm-l2tp/NetworkManager-l2tp"
 license=('GPL2')
-depends=('gtk2' 'gconf' 'libgnome-keyring' 'intltool' 'networkmanager>=1.1.0'
-'libnm-glib>=1.1.0' 'ppp>=2.4.7')
+depends=('gtk2' 'gconf' 'libgnome-keyring' 'intltool' 'networkmanager>=1.2.0'
+'libnm-glib>=1.2.0' 'ppp>=2.4.7' 'xl2tpd')
 optdepends=('openswan')
 options=()
 makedepends=()
