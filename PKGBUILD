@@ -9,7 +9,7 @@ arch=('any')
 url='https://github.com/carnager/buku_run'
 provides=('buku_run')
 license=('GPL')
-depends=('gawk' 'buku-git' 'rofi')
+depends=('gawk' 'buku' 'rofi')
 makedepends=('git')
 source=("git+https://github.com/carnager/${_pkgname}.git")
 
