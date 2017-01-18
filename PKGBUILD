@@ -1,6 +1,6 @@
 # Maintainer: Jon Eyolfson <jon@eyl.io>
 pkgname=emacs-rust-mode
-pkgver=r282
+pkgver=r286
 pkgrel=1
 pkgdesc="A major Emacs mode for editing Rust source code"
 arch=('any')
