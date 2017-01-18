@@ -65,7 +65,7 @@ prepare() {
 build() {
   cd ${srcdir}/tensorflow
   ./configure
-  bazel build -c opt ${_build_opts} --copt=$(CC_OPT_FLAGS) tensorflow:libtensorflow_c.so
+  bazel build -c opt ${_build_opts} --copt=${CC_OPT_FLAGS} tensorflow:libtensorflow_c.so
   # copy the built library out of the bazel directory
   cp -f bazel-bin/tensorflow/libtensorflow_c.so .
 }
