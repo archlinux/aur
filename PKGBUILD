@@ -5,7 +5,7 @@
 pkgbase=('bitmonero-git')
 pkgname=('bitmonero-git' 'libmonero-wallet-git')
 _gitname='monero'
-pkgver=0.10.0
+pkgver=0.10.1
 pkgrel=1
 arch=('x86_64' 'i686' 'armv7h')
 url="https://getmonero.org/"
