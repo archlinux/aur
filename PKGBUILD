@@ -3,7 +3,7 @@
 
 pkgname=cwdaemon
 _author=acerion
-pkgver=0.10.2.4
+pkgver=0.10.2
 #.r4.g44f36eb
 pkgrel=1
 pkgdesc="Ham Radio Morse Code transmitter - text input is sent via udp port 6789."
@@ -19,7 +19,7 @@ source=("$pkgname::git+https://github.com/$_author/$pkgname#branch=master"
 pkgver() {
 	cd "$pkgname"
 
-	git describe --long | sed -r 's/-([0-9,a-g,A-G]{7}.*)//' | sed 's/-/./'
+	git describe --long | sed -r 's/-([0-9,a-g,A-G].*)//'
 #	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 
 }

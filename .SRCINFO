@@ -1,7 +1,7 @@
 pkgbase = cwdaemon
 	pkgdesc = Ham Radio Morse Code transmitter - text input is sent via udp port 6789.
-	pkgver = 0.10.2.4
-	pkgrel = 2
+	pkgver = 0.10.2
+	pkgrel = 1
 	url = http://cwdaemon.sourceforge.net
 	arch = i686
 	arch = x86_64
