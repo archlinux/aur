@@ -1,0 +1,29 @@
+pkgbase = python-html5lib-9x07
+	pkgdesc = A Python HTML parser/tokenizer based on the WHATWG HTML5 spec (v0.9999999 as dep for bleach)
+	pkgver = 0.9999999
+	pkgrel = 1
+	url = https://github.com/html5lib
+	arch = any
+	license = MIT
+	checkdepends = python-six
+	checkdepends = python-pytest
+	checkdepends = python-lxml
+	checkdepends = python2-lxml
+	checkdepends = python-mock
+	makedepends = python2
+	makedepends = python
+	makedepends = unzip
+	makedepends = python-webencodings
+	makedepends = python2-webencodings
+	depends = python
+	depends = python-six
+	depends = python-webencodings
+	provides = python-html5lib=0.9999999
+	conflicts = python-html5lib
+	source = python-html5lib-0.9999999.tar.gz::https://github.com/html5lib/html5lib-python/archive/0.9999999.tar.gz
+	source = LICENSE
+	md5sums = 2ca78b1ec5852779bc121a97da6e8d4d
+	md5sums = 838c366f69b72c5df05c96dff79b35f2
+
+pkgname = python-html5lib-9x07
+
