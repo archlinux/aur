@@ -1,6 +1,6 @@
 # Maintainer: Yuri Iozzelli <y.iozzelli@gmail.com>
 pkgname=python-llvmlite-bin
-pkgver=0.13.0
+pkgver=0.15.0
 pkgrel=1
 epoch=
 pkgdesc="A lightweight LLVM python binding for writing JIT compilers"
@@ -11,11 +11,11 @@ groups=()
 depends=("python")
 provides=("python-llvmlite")
 conflicts=("python-llvmlite")
-source=("https://anaconda.org/numba/llvmlite/$pkgver/download/linux-64/llvmlite-$pkgver-py35_0.tar.bz2")
-md5sums=('ca51ff181f85b1a073ca15fd598cc0b8')
+source=("https://anaconda.org/numba/llvmlite/$pkgver/download/linux-64/llvmlite-$pkgver-py36_0.tar.bz2")
+md5sums=('92e0538f2339ec2daf37e165b22bfeba')
 
 package() {
-	  cd "$srcdir/lib/python3.5/site-packages"
-	  mkdir -p "$pkgdir/usr/lib/python3.5/site-packages/"
-	  cp -r * "$pkgdir/usr/lib/python3.5/site-packages/"
+	  cd "$srcdir/lib/python3.6/site-packages"
+	  mkdir -p "$pkgdir/usr/lib/python3.6/site-packages/"
+	  cp -r * "$pkgdir/usr/lib/python3.6/site-packages/"
 }
