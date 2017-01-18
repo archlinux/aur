@@ -6,9 +6,9 @@ pkgrel=1
 pkgdesc='Grumpy is a Python to Go source code transcompiler and runtime'
 arch=('x86_64' 'i686')
 url='https://github.com/google/grumpy'
-license=('Apache')
 depends=('go' 'python2')
-makedepends=('git' 'go' 'python2')
+makedepends=('go' 'python2' 'git')
+license=('Apache')
 options=('!strip')
 source=("git+https://github.com/google/grumpy.git"
         'makefile.patch')
