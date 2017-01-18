@@ -1,7 +1,7 @@
 # Maintainer: Eisfreak7 <eisfreak7@gmail.com>
 
 pkgname=xtitle
-pkgver=0.4.1
+pkgver=0.4.2
 pkgrel=1
 pkgdesc='Outputs X window titles'
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ depends=('libxcb' 'xcb-util-wm' 'xcb-util')
 provides=("${pkgname}")
 conflicts=("${pkgname}" "${pkgname}-git")
 source=("https://www.github.com/baskerville/${pkgname}/archive/${pkgver}.tar.gz")
-md5sums=('be2a878cf65cae56023918e8964fb893')
+md5sums=('78c531089280b5b88a77ca06b6c74dd2')
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"

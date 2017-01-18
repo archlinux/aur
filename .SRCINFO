@@ -1,6 +1,6 @@
 pkgbase = xtitle
 	pkgdesc = Outputs X window titles
-	pkgver = 0.4.1
+	pkgver = 0.4.2
 	pkgrel = 1
 	url = https://github.com/baskerville/xtitle
 	arch = i686
@@ -12,8 +12,8 @@ pkgbase = xtitle
 	provides = xtitle
 	conflicts = xtitle
 	conflicts = xtitle-git
-	source = https://www.github.com/baskerville/xtitle/archive/0.4.1.tar.gz
-	md5sums = 4441a643be4674baf39f96d421d92b7e
+	source = https://www.github.com/baskerville/xtitle/archive/0.4.2.tar.gz
+	md5sums = be2a878cf65cae56023918e8964fb893
 
 pkgname = xtitle
 
