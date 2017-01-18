@@ -1,6 +1,6 @@
 # Maintainer: Flat <Flat@imo.uto.moe>
 pkgname=parallel-rust
-pkgver=0.10.5
+pkgver=0.10.6
 pkgrel=1
 pkgdesc="Inspired by GNU Parallel, a command-line CPU load balancer written in Rust."
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ optdepends=('dash: increased performance over sh')
 provides=('parallel')
 conflicts=('parallel')
 source=("https://github.com/mmstick/parallel/archive/$pkgver.tar.gz")
-md5sums=('f8d971db61da61bb40d0a584f6f055a2')
+md5sums=('0bffd98885d54c446413f430097bed1a')
 
 prepare() {
   CARGO_HOME=$srcdir/rust RUSTUP_HOME=$srcdir/rust rustup default nightly
