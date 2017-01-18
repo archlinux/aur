@@ -1,0 +1,35 @@
+# Maintainer: Samuel Walladge <samuel@swalladge.id.au>
+
+pkgname=piqueserver-git
+_pkgname=piqueserver
+pkgver=0.1867.91af2a9
+pkgrel=1
+pkgdesc="an Ace of Spades 0.75 server based on PySnip"
+arch=('any')
+url="https://github.com/piqueserver/${_pkgname}"
+license=('GPL3')
+depends=('cython2' 'python2-twisted' 'python2-jinja' 'python2-pillow' 'python2-zope-interface')
+optdepends=('python2-geoip: to use the "from" command'
+            'python2-crypot: ssh'
+            'python2-pyasn1: ssh')
+makedepends=('git')
+source=("${pkgname}"::"git://github.com/piqueserver/${_pkgname}.git")
+md5sums=('SKIP')
+
+pkgver() {
+  cd "${srcdir}/${pkgname}"
+  echo "0.$(git rev-list --count HEAD).$(git describe --always)"
+}
+
+## if needed
+# build() {
+#   cd "${srcdir}/${pkgname}"
+#   python setup.py build
+# }
+
+package() {
+  cd "${srcdir}/${pkgname}"
+  python2 setup.py install --root="${pkgdir}" --optimize=1
+}
+
+# vim:set ts=2 sw=2 et:
