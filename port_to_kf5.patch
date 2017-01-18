@@ -1,7 +1,7 @@
-diff -Naur a/CMakeLists.txt b/CMakeLists.txt
---- a/CMakeLists.txt	2015-02-01 12:00:27.000000000 +0800
-+++ b/CMakeLists.txt	2015-11-21 09:27:00.302301775 +0800
-@@ -1,18 +1,35 @@
+diff -Naur kuser-16.08.3/CMakeLists.txt kuser-16.08.3.new/CMakeLists.txt
+--- kuser-16.08.3/CMakeLists.txt	2015-11-15 01:32:18.000000000 +0800
++++ kuser-16.08.3.new/CMakeLists.txt	2017-01-16 21:13:11.000000000 +0800
+@@ -2,18 +2,35 @@
  project(kuser)
  
  # search packages used by KDE
@@ -40,8 +40,8 @@ diff -Naur a/CMakeLists.txt b/CMakeLists.txt
 +#find_package(KdepimLibs REQUIRED)
  
  include(CheckFunctionExists)
- include(CheckLibraryExists)
-@@ -25,7 +42,7 @@
+ include(CheckIncludeFiles)
+@@ -27,7 +44,7 @@
  add_subdirectory(doc)
  
  # use the project-specific _SOURCE_DIR variable (set by the project() call above), Alex
@@ -50,18 +50,18 @@ diff -Naur a/CMakeLists.txt b/CMakeLists.txt
  
  set(KU_HOMEDIR_PERM 0700 CACHE STRING "Default home directory permissions")
  set(KU_MAILBOX_GID 0 CACHE STRING "Default GID of the created mbox file")
-@@ -86,7 +103,7 @@
+@@ -88,7 +105,7 @@
  
  kde4_add_executable(kuser ${kuser_SRCS})
  
--target_link_libraries(kuser ${KDE4_KIO_LIBS} ${KDE4_KLDAP_LIBS} kntlm)
+-target_link_libraries(kuser ${KDE4_KIO_LIBS} ${KDE4_KLDAP_LIBS} ${KDE4_TARGET_PREFIX}kntlm)
 +target_link_libraries(kuser KF5::KDELibs4Support KF5::KIONTLM KF5::Ldap)
  if(HAVE_CRYPT_LIBRARY)
  	target_link_libraries(kuser crypt)
  endif(HAVE_CRYPT_LIBRARY)
-diff -Naur a/ku_adduser.cpp b/ku_adduser.cpp
---- a/ku_adduser.cpp	2015-02-01 12:00:27.000000000 +0800
-+++ b/ku_adduser.cpp	2015-11-21 08:31:06.847312512 +0800
+diff -Naur kuser-16.08.3/ku_adduser.cpp kuser-16.08.3.new/ku_adduser.cpp
+--- kuser-16.08.3/ku_adduser.cpp	2015-11-15 01:32:18.000000000 +0800
++++ kuser-16.08.3.new/ku_adduser.cpp	2017-01-16 21:13:11.000000000 +0800
 @@ -46,9 +46,10 @@
    QGroupBox *group = new QGroupBox(frontpage);
    group->setTitle(i18n("New Account Options"));
@@ -76,9 +76,9 @@ diff -Naur a/ku_adduser.cpp b/ku_adduser.cpp
  
    createhome = new QCheckBox(i18n("Create home folder"), 0);
    createhome->setChecked(true);
-diff -Naur a/ku_configdlg.cpp b/ku_configdlg.cpp
---- a/ku_configdlg.cpp	2015-02-01 12:00:27.000000000 +0800
-+++ b/ku_configdlg.cpp	2015-11-21 09:21:47.051765092 +0800
+diff -Naur kuser-16.08.3/ku_configdlg.cpp kuser-16.08.3.new/ku_configdlg.cpp
+--- kuser-16.08.3/ku_configdlg.cpp	2015-11-15 01:32:18.000000000 +0800
++++ kuser-16.08.3.new/ku_configdlg.cpp	2017-01-16 21:13:11.000000000 +0800
 @@ -40,12 +40,12 @@
  #include "ui_ku_ldapsamba.h"
  #include "ui_ku_passwordpolicy.h"
@@ -113,9 +113,9 @@ diff -Naur a/ku_configdlg.cpp b/ku_configdlg.cpp
    mProg->setValue( 0 );
    mProg->setMaximum( 1 );
    mProg->setAutoClose( false );
-diff -Naur a/ku_configdlg.h b/ku_configdlg.h
---- a/ku_configdlg.h	2015-02-01 12:00:27.000000000 +0800
-+++ b/ku_configdlg.h	2015-11-21 08:33:13.020282105 +0800
+diff -Naur kuser-16.08.3/ku_configdlg.h kuser-16.08.3.new/ku_configdlg.h
+--- kuser-16.08.3/ku_configdlg.h	2015-11-15 01:32:18.000000000 +0800
++++ kuser-16.08.3.new/ku_configdlg.h	2017-01-16 21:13:11.000000000 +0800
 @@ -44,7 +44,7 @@
  class KU_ConfigDlg : public KConfigDialog {
    Q_OBJECT
@@ -125,9 +125,9 @@ diff -Naur a/ku_configdlg.h b/ku_configdlg.h
    ~KU_ConfigDlg();
  private:
    QProgressDialog *mProg;
-diff -Naur a/ku_edituser.cpp b/ku_edituser.cpp
---- a/ku_edituser.cpp	2015-02-01 12:00:27.000000000 +0800
-+++ b/ku_edituser.cpp	2015-11-21 08:23:26.194420990 +0800
+diff -Naur kuser-16.08.3/ku_edituser.cpp kuser-16.08.3.new/ku_edituser.cpp
+--- kuser-16.08.3/ku_edituser.cpp	2015-11-15 01:32:18.000000000 +0800
++++ kuser-16.08.3.new/ku_edituser.cpp	2017-01-16 21:13:11.000000000 +0800
 @@ -349,13 +349,13 @@
    KPageDialog( parent)
  
@@ -159,9 +159,9 @@ diff -Naur a/ku_edituser.cpp b/ku_edituser.cpp
    setModal(true);
    setFaceType(KPageDialog::Tabbed);
  
-diff -Naur a/ku_global.cpp b/ku_global.cpp
---- a/ku_global.cpp	2015-02-01 12:00:27.000000000 +0800
-+++ b/ku_global.cpp	2015-11-21 08:42:38.675674127 +0800
+diff -Naur kuser-16.08.3/ku_global.cpp kuser-16.08.3.new/ku_global.cpp
+--- kuser-16.08.3/ku_global.cpp	2015-11-15 01:32:18.000000000 +0800
++++ kuser-16.08.3.new/ku_global.cpp	2017-01-16 21:13:11.000000000 +0800
 @@ -63,7 +63,7 @@
    delete mGroups;
  
@@ -171,9 +171,9 @@ diff -Naur a/ku_global.cpp b/ku_global.cpp
    switch ( mCfg->source() ) {
      case KU_PrefsBase::EnumSource::Files:
        mUsers = new KU_UserFiles( mCfg );
-diff -Naur a/ku_global.h b/ku_global.h
---- a/ku_global.h	2015-02-01 12:00:27.000000000 +0800
-+++ b/ku_global.h	2015-11-21 08:41:15.347639261 +0800
+diff -Naur kuser-16.08.3/ku_global.h kuser-16.08.3.new/ku_global.h
+--- kuser-16.08.3/ku_global.h	2015-11-15 01:32:18.000000000 +0800
++++ kuser-16.08.3.new/ku_global.h	2017-01-16 21:13:11.000000000 +0800
 @@ -24,6 +24,7 @@
  
  #include "ku_user.h"
@@ -182,9 +182,9 @@ diff -Naur a/ku_global.h b/ku_global.h
  
  class KU_Global {
  public:
-diff -Naur a/ku_groupldap.cpp b/ku_groupldap.cpp
---- a/ku_groupldap.cpp	2015-02-01 12:00:27.000000000 +0800
-+++ b/ku_groupldap.cpp	2015-11-21 09:25:54.004086092 +0800
+diff -Naur kuser-16.08.3/ku_groupldap.cpp kuser-16.08.3.new/ku_groupldap.cpp
+--- kuser-16.08.3/ku_groupldap.cpp	2015-11-15 01:32:18.000000000 +0800
++++ kuser-16.08.3.new/ku_groupldap.cpp	2017-01-16 21:13:11.000000000 +0800
 @@ -29,16 +29,16 @@
  KU_GroupLDAP::KU_GroupLDAP( KU_PrefsBase *cfg ) : KU_Groups( cfg )
  {
@@ -206,9 +206,9 @@ diff -Naur a/ku_groupldap.cpp b/ku_groupldap.cpp
      QString binddn = mCfg->ldapbinddn();
      if ( !binddn.isEmpty() )
        mUrl.setExtension( QLatin1String( "bindname" ),binddn );
-diff -Naur a/ku_main.cpp b/ku_main.cpp
---- a/ku_main.cpp	2015-02-01 12:00:27.000000000 +0800
-+++ b/ku_main.cpp	2015-11-21 08:26:47.874965120 +0800
+diff -Naur kuser-16.08.3/ku_main.cpp kuser-16.08.3.new/ku_main.cpp
+--- kuser-16.08.3/ku_main.cpp	2015-11-15 01:32:18.000000000 +0800
++++ kuser-16.08.3.new/ku_main.cpp	2017-01-16 21:13:11.000000000 +0800
 @@ -33,15 +33,19 @@
  #include "ku_misc.h"
  #include "ku_mainwidget.h"
@@ -232,9 +232,9 @@ diff -Naur a/ku_main.cpp b/ku_main.cpp
    aboutData.addAuthor(ki18n("Denis Perchine"), ki18n("kuser author"),
      "dyp@perchine.com", "http://www.perchine.com/dyp/");
    aboutData.addAuthor(ki18n("Szombathelyi György"), ki18n("kuser author"),
-diff -Naur a/ku_mainwidget.cpp b/ku_mainwidget.cpp
---- a/ku_mainwidget.cpp	2015-02-01 12:00:27.000000000 +0800
-+++ b/ku_mainwidget.cpp	2015-11-21 08:12:19.394633989 +0800
+diff -Naur kuser-16.08.3/ku_mainwidget.cpp kuser-16.08.3.new/ku_mainwidget.cpp
+--- kuser-16.08.3/ku_mainwidget.cpp	2015-11-15 01:32:18.000000000 +0800
++++ kuser-16.08.3.new/ku_mainwidget.cpp	2017-01-16 21:13:11.000000000 +0800
 @@ -48,13 +48,13 @@
    init();
    mv->slotTabChanged();
@@ -251,9 +251,21 @@ diff -Naur a/ku_mainwidget.cpp b/ku_mainwidget.cpp
  }
  
  KU_MainWidget::~KU_MainWidget()
-diff -Naur a/ku_userldap.cpp b/ku_userldap.cpp
---- a/ku_userldap.cpp	2015-02-01 12:00:27.000000000 +0800
-+++ b/ku_userldap.cpp	2015-11-21 09:25:03.072903905 +0800
+diff -Naur kuser-16.08.3/kuser.desktop kuser-16.08.3.new/kuser.desktop
+--- kuser-16.08.3/kuser.desktop	2015-11-15 01:32:18.000000000 +0800
++++ kuser-16.08.3.new/kuser.desktop	2017-01-18 16:05:42.000000000 +0800
+@@ -156,7 +156,7 @@
+ GenericName[zh_CN]=用户管理程序
+ GenericName[zh_HK]=用戶管理員
+ GenericName[zh_TW]=使用者管理程式
+-Exec=kuser %i -caption %c
++Exec=dbus-run-session kuser %i -caption %c
+ Icon=kuser
+ Type=Application
+ X-DocPath=kuser/index.html
+diff -Naur kuser-16.08.3/ku_userldap.cpp kuser-16.08.3.new/ku_userldap.cpp
+--- kuser-16.08.3/ku_userldap.cpp	2015-11-15 01:32:18.000000000 +0800
++++ kuser-16.08.3.new/ku_userldap.cpp	2017-01-16 21:13:11.000000000 +0800
 @@ -37,16 +37,16 @@
    schemaversion = 0;
  
