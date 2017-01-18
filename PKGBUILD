@@ -1,5 +1,5 @@
 pkgname=mingw-w64-tools
-pkgver=5.0.0
+pkgver=5.0.1
 _pkgver=${pkgver/rc/-rc}
 pkgrel=1
 pkgdesc="MinGW-w64 utilities"
@@ -9,7 +9,7 @@ license=("GPL3" "LGPL2")
 groups=(mingw-w64)
 options=(!libtool !emptydirs)
 source=("http://sourceforge.net/projects/mingw-w64/files/mingw-w64/mingw-w64-release/mingw-w64-v${_pkgver}.tar.bz2")
-md5sums=('c9f4bb72a87d9be2cc98e0d7e1868c88')
+md5sums=('7a8ef5770151c1dd51bcf8af5e33adc4')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
