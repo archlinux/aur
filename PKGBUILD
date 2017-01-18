@@ -1,12 +1,12 @@
 # Maintainer: Jonne Haß <me@jhass.eu>
 pkgname='diaspora-postgresql-git'
-pkgver=0.6.2.0.r94.g6a13860
+pkgver=0.6.2.0.r147.ga0bfe6ffb
 pkgrel=1
 pkgdesc="A distributed privacy aware social network (development head) (PostgreSQL)"
 arch=('i686' 'x86_64')
 url="https://diasporafoundation.org"
 license=('AGPL3')
-depends=('ruby' 'ruby-bundler' 'redis' 'imagemagick' 'libxslt' 'net-tools' 'gsfonts' 'postgresql-libs')
+depends=('ruby2.3' 'ruby2.3-bundler' 'redis' 'imagemagick' 'libxslt' 'net-tools' 'gsfonts' 'postgresql-libs')
 optdepends=('postgresql: Database server')
 makedepends=('nodejs')
 conflicts=('diaspora-mysql' 'diaspora-postgresql' 'diaspora-mysql-git')
@@ -50,9 +50,9 @@ _reset_ruby() {
 }
 
 build() {
-  _bundle=bundle
-  _ruby=ruby
-  _rake=rake
+  _bundle=bundle-2.3
+  _ruby=ruby-2.3
+  _rake=rake-2.3
   _builddir=$srcdir/build
 
   _reset_ruby
@@ -91,8 +91,8 @@ build() {
 }
 
 package() {
-  _bundle=bundle
-  _ruby=ruby
+  _bundle=bundle-2.3
+  _ruby=ruby-2.3
   _builddir=$srcdir/build
 
   msg "Copy contents to package directory"
@@ -136,7 +136,7 @@ package() {
 
 sha256sums=('SKIP'
             'aae126c4b1bcba6265d3d925dc3845bb034defa5606385c22dfb053111b57685'
-            '0d9f3aea98f4d43607eb37cbe030fbee27888f41fb8799308db33991e11d024d'
+            'd10f10439e56c38a9960e7cd481c7b44a68bc0ecf7c88b91d9cafb454aa6ffd0'
             '7128024976c95d511d8995c472907fe0b8c36fe5b45fef57fc053e3fadcae408'
             '77cb2529eacef2d1e77aad5daf21856f67097d6342f230e5dd5057f753932bfa'
             '29cfd5116e919d8851ff70b8b82af8d4a6c8243a9d1ca555981a1a695e2d7715')
