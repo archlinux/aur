@@ -1,8 +1,8 @@
-# Maintainer: Thomas Schneider <maxmusterm@gmail.com>
+# Maintainer: Tomasz Paś <kierek93@gmail.com>
 
 pkgname=libretro-mupen64plus-git
 _gitname=mupen64plus-libretro
-pkgver=4135.ba9f101
+pkgver=4407.bdb19214
 pkgrel=1
 pkgdesc="libretro implementation of mupen64plus with dynarec (even for rpi)"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
@@ -11,6 +11,7 @@ license=('custom' 'GPL' 'LGPL')
 makedepends=('git')
 source=("${_gitname}::git://github.com/libretro/${_gitname}.git"
 	"https://raw.github.com/libretro/libretro-super/master/dist/info/mupen64plus_libretro.info")
+groups=('libretro')
 
 md5sums=('SKIP'
 	 'SKIP')
@@ -34,6 +35,6 @@ build() {
 }
 
 package() {
-  install -Dm644 "${srcdir}/mupen64plus_libretro.info" "${pkgdir}/usr/lib/libretro/libretro-mupen64plus.info"
+  install -Dm644 "${srcdir}/mupen64plus_libretro.info" "${pkgdir}/usr/share/libretro/info/libretro-mupen64plus.info"
   install -Dm644 "${_gitname}/mupen64plus_libretro.so" "${pkgdir}/usr/lib/libretro/libretro-mupen64plus.so"
 }
