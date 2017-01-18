@@ -7,8 +7,8 @@ pkgdesc="Ciao - Cloud Integrated Advanced Orchestrator"
 arch=('x86_64' 'i686')
 url="https://github.com/01org/ciao"
 license=('Apache')
-depends=('go')
-makedepends=('git')
+makedepends=('git', 'go')
+depends=('ceph', 'qemu', 'libisoburn', 'psmisc')
 options=('!strip' '!emptydirs')
 _gourl=github.com/01org/ciao
 
