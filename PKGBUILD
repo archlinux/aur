@@ -3,7 +3,7 @@
 
 pkgname=photoqt
 pkgver=1.5.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Fast and highly configurable image viewer with a simple and nice interface."
 arch=('any')
 url="http://photoqt.org/"
@@ -14,7 +14,7 @@ optdepends=('libqpsd-git: PSB/PSD support'
 makedepends=('cmake' 'qt5-tools')
 install=$pkgname.install
 source=(http://photoqt.org/pkgs/$pkgname-$pkgver.tar.gz)
-md5sums=('76631e1362bc416dda879371be66c23c')
+md5sums=('2809c745892a4c593da74a8f0092256d')
 
 prepare() {
   cd $srcdir/$pkgname-$pkgver
