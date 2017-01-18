@@ -25,7 +25,8 @@ release: prepare
 	set -e; \
 	MD5_AMD64=`md5sum tmp/kubectl_amd64 | awk '{print $$1}'`; \
 	MD5_386=`md5sum tmp/kubectl_386 | awk '{print $$1}'`; \
-	sed -i.bak -r -e "s/md5sums_i686=.*/md5sums_i686=('$${MD5_386}')/g" \
+	sed -i.bak -r -e "s/pkgver=.*/pkgver=$${VERSION}/g" \
+        -e "s/md5sums_i686=.*/md5sums_i686=('$${MD5_386}')/g" \
         -e "s/md5sums_x86_64=.*/md5sums_x86_64=('$${MD5_AMD64}')/g" PKGBUILD; \
 	makepkg --printsrcinfo > .SRCINFO; \
 	makepkg; \
