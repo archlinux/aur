@@ -1,7 +1,7 @@
 # Maintainer: Remi Gacogne <rgacogne-arch at coredump dot fr>
 
 pkgname=getdns
-pkgver=0.9.0
+pkgver=1.0.0
 pkgrel=1
 pkgdesc="A modern asynchronous DNS API"
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ depends=('libev' 'libevent' 'libidn' 'libuv' 'unbound')
 source=("https://getdnsapi.net/dist/${pkgname}-${pkgver}.tar.gz"
 	"https://getdnsapi.net/dist/${pkgname}-${pkgver}.tar.gz.asc"
 )
-sha256sums=('b6b73a501ee79c0fafb0721023eb3a5d0e1bfa047fbe65302db278cb956bd1fe'
+sha256sums=('a0460269c6536501a7c0af9bc97f9339e05a012f8191d5c10f79042aa62f9e96'
             'SKIP')
 validpgpkeys=('DC34EE5DB2417BCC151E5100E5F8F8212F77A498' # Willem Toorop <willem@nlnetlabs.nl>
 )
