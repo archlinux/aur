@@ -5,13 +5,12 @@
 
 pkgname=ttf-mgopen
 pkgver=1.1
-pkgrel=12
+pkgrel=13
 pkgdesc="TrueType fonts containing glyphs for the Latin and Greek alphabet"
 arch=('any')
 url="https://web.archive.org/web/20120409173416/http://www.zvr.gr/typo/mgopen/index"
 license=('custom')
 depends=('fontconfig' 'xorg-font-utils')
-install=ttf.install
 source=(http://ftp.debian.org/debian/pool/main/f/fonts-mgopen/fonts-mgopen_$pkgver.orig.tar.bz2
         license.txt)
 sha256sums=('c612a978a3c0c0dc469d1eb9364b35afad5dbc7cb3fa2523bc4fad6708474cb4'
