@@ -1,7 +1,7 @@
 # Maintainer: Constantin Lorenz <Cons27773964@aol.com>
 
 pkgname=sandboxed-tor-browser # '-bzr', '-git', '-hg' or '-svn'
-pkgver=0.0.2.r39.g7f6bd55
+pkgver=0.0.2.r42.g60f4cb4
 pkgrel=1
 pkgdesc="A sandboxed version of the Tor Browser, currently in alpha!"
 arch=('x86_64')
