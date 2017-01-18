@@ -51,8 +51,7 @@ def search(search_term: str) -> list:
 
     """
     result: List[dict] = []
-    p = run(['pacaur', '-Ss', search_term], stdout=PIPE)
-    out: str = p.stdout.decode()
+    out: str = run(['pacaur', '-Ss', search_term], stdout=PIPE).stdout
     entry: dict = {}
 
     for line in out.decode().split('\n'):
@@ -154,7 +153,7 @@ def install(numbers: list, packages: list):
 
 if __name__ == '__main__':
     if len(sys.argv) > 1:
-        if sys.argv[1].startswith('-S') or sys.argv[1].startswith('-Q'):
+        if sys.argv[1][:2] in ['-S', '-Q', '-R']:
             call(f"pacaur {' '.join(sys.argv[1:])}", shell=True)
         else:
             entries = search(' '.join(sys.argv[1:]))

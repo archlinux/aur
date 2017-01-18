@@ -1,6 +1,6 @@
 # Maintainer: Ricardo Band <email@ricardo.band>
 pkgname=pac
-pkgver=1.1.1
+pkgver=1.2.0
 pkgrel=1
 epoch=1
 pkgdesc="Small wrapper around pacaur to mimic yaourts search feature"
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('python>=3.6.0')
 source=('pac')
 noextract=('pac')
-sha256sums=('666ba165dbf4c4b15a19f3f6cf701068055905f8f5e72e00d4b122e849ac351c')
+sha256sums=('b8a0ba2a2abd81f1c500afefa9071778b18614ea3e27fb00f6b58580206c1744')
 
 package() {
     install -dm 755 "$pkgdir"/usr/bin/
