@@ -1,0 +1,11 @@
+--- examples/Makefile.am	2017-01-17 02:13:53.753614165 -0700
++++ examples/Makefile.am	2017-01-17 02:16:34.331538590 -0700
+@@ -20 +20 @@
+-noinst_PROGRAMS = example
++bin_PROGRAMS = example
+@@ -25 +25 @@
+-# example_CPPFLAGS =
++example_CPPFLAGS = -I$(top_srcdir)/src/
+@@ -27 +27 @@
+-# example_LDADD =
++example_LDADD = ${LIBCW_LIBS}

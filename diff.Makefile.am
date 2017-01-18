@@ -1,15 +1,21 @@
---- Makefile.am	2013-12-17 15:06:00.000000000 -0700
-+++ Makefile.am	2015-01-20 16:42:26.459618573 -0700
-@@ -19 +19 @@
+--- Makefile.am	2017-01-16 16:58:55.192035682 -0700
++++ Makefile.am	2017-01-17 01:38:14.327267806 -0700
+@@ -46 +46 @@
 -	$(mkinstalldirs) $(DESTDIR)$(pkgdatadir)
 +	$(mkinstalldirs) $(DESTDIR)$(pkgdatadir)/test
-@@ -27 +27,4 @@
--	$(INSTALL_SCRIPT) $(srcdir)/test/cwtest.sh $(DESTDIR)$(pkgdatadir)
-+	$(INSTALL_SCRIPT) $(srcdir)/test/cwtest.sh $(DESTDIR)$(pkgdatadir)/test
-+	$(INSTALL_SCRIPT) $(srcdir)/test/cwtest.pl $(DESTDIR)$(pkgdatadir)/test
-+	$(INSTALL_SCRIPT) $(srcdir)/test/cwtest2.pl $(DESTDIR)$(pkgdatadir)/test
-+	$(INSTALL_SCRIPT) $(srcdir)/test/cwtest3.pl $(DESTDIR)$(pkgdatadir)/test
-@@ -30 +33,2 @@
--	$(INSTALL_DATA) $(srcdir)/test/cwtest.c $(DESTDIR)$(pkgdatadir)
-+	$(INSTALL_DATA) $(srcdir)/test/cwtest.c $(DESTDIR)$(pkgdatadir)/test
-+	$(INSTALL_DATA) $(srcdir)/test/hanging.c $(DESTDIR)$(pkgdatadir)/test
+@@ -54,3 +54,3 @@
+-	$(INSTALL_SCRIPT) $(srcdir)/examples/example.sh $(DESTDIR)$(pkgdatadir)
+-	$(INSTALL_SCRIPT) $(srcdir)/examples/example.pl $(DESTDIR)$(pkgdatadir)
+-	$(INSTALL_SCRIPT) $(srcdir)/cwsetup.sh $(DESTDIR)$(pkgdatadir)
++	$(INSTALL_SCRIPT) $(srcdir)/examples/example.sh $(DESTDIR)$(pkgdatadir)/test
++	$(INSTALL_SCRIPT) $(srcdir)/examples/example.pl $(DESTDIR)$(pkgdatadir)/test
++	$(INSTALL_SCRIPT) $(srcdir)/cwsetup.sh $(DESTDIR)$(pkgdatadir)/test
+@@ -58,4 +58,4 @@
+-	$(INSTALL_DATA) $(srcdir)/examples/README $(DESTDIR)$(pkgdatadir)
+-	$(INSTALL_DATA) $(srcdir)/examples/example.c $(DESTDIR)$(pkgdatadir)
+-	$(INSTALL_DATA) $(srcdir)/examples/Makefile.am $(DESTDIR)$(pkgdatadir)
+-	$(INSTALL_DATA) $(srcdir)/examples/Makefile.in $(DESTDIR)$(pkgdatadir)
++	$(INSTALL_DATA) $(srcdir)/examples/README $(DESTDIR)$(pkgdatadir)/test
++	$(INSTALL_DATA) $(srcdir)/examples/example.c $(DESTDIR)$(pkgdatadir)/test
++	$(INSTALL_DATA) $(srcdir)/examples/Makefile.am $(DESTDIR)$(pkgdatadir)/test
++	$(INSTALL_DATA) $(srcdir)/examples/Makefile.in $(DESTDIR)$(pkgdatadir)/test
