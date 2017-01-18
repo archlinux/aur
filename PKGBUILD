@@ -16,8 +16,8 @@ conflicts=('octoprint')
 install="octoprint.install"
 source=("https://github.com/foosel/OctoPrint/archive/${pkgver}.tar.gz"
         'octoprint.service')
-md5sums=('47e2cb669e7a34eb86e8ebeb2922d80a'
-         '595f95a619906aeee50de7699951f4a8')
+sha256sums=('bb411acd719176a222cacbf5ce66b80686eef43ee56ead312ffa719df1c5f44b'
+            '7f7aa02075901d7501a03bda082f050ba5862e58034f0216b5a76d2a25135d3a')
 
 
 package() {
