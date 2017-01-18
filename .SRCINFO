@@ -1,14 +1,16 @@
 pkgbase = python-gitlab
 	pkgdesc = Interact with GitLab API
-	pkgver = 0.9.2
+	pkgver = 0.18
 	pkgrel = 1
-	url = ttps://github.com/gpocentek/python-gitlab
+	url = https://github.com/gpocentek/python-gitlab
 	arch = any
 	license = LGPLv3
 	depends = python
+	depends = python-requests
+	depends = python-six
 	options = !emptydirs
-	source = https://pypi.python.org/packages/source/p/python-gitlab/python-gitlab-0.9.2.tar.gz
-	md5sums = 0c2e4d281cd86b58337dbe83915a9d53
+	source = https://github.com/gpocentek/python-gitlab/archive/0.18.tar.gz
+	md5sums = 68b8cefc5028e41dd1a564b211b15cb6
 
 pkgname = python-gitlab
 
