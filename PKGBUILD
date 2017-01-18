@@ -2,27 +2,27 @@
 # Maintainer: Luca Weiss <luca (at) z3ntu (dot) xyz>
 
 pkgname=openfx-arena
-pkgver=2.1.9
+pkgver=2.2.0
 pkgrel=1
 arch=("i686" "x86_64")
 pkgdesc="Extra OpenFX plugins for Natron"
-url="https://github.com/olear/openfx-arena/tree/Natron-$pkgver"
+url="https://github.com/olear/openfx-arena"
 license=("GPL2")
 makedepends=("git")
 depends=("imagemagick" "libcdr" "librsvg" "libtool" "libzip" "opencolorio" "poppler-glib")
 depends_x86_64=("gcc-libs-multilib")
-source=("$pkgname::git://github.com/olear/openfx-arena.git#tag=Natron-$pkgver"
+source=("$pkgname::git+https://github.com/olear/openfx-arena.git#tag=Natron-$pkgver"
         "git+https://github.com/devernay/openfx.git"
         "git+https://github.com/devernay/openfx-supportext.git"
         "git+https://github.com/MrKepzie/openfx-io.git"
         "git+https://github.com/MrKepzie/SequenceParsing"
         "git+https://github.com/MrKepzie/tinydir")
-md5sums=("SKIP"
-         "SKIP"
-         "SKIP"
-         "SKIP"
-         "SKIP"
-         "SKIP")
+md5sums=('SKIP'
+         'SKIP'
+         'SKIP'
+         'SKIP'
+         'SKIP'
+         'SKIP')
 
 prepare() {
   cd "$srcdir/$pkgname"
