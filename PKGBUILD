@@ -2,7 +2,7 @@
 
 _pkgname=whoneeds
 pkgname=${_pkgname}-git
-pkgver=r6.ca4e025
+pkgver=r7.c8f4725
 pkgrel=1
 pkgdesc="A fast whoneeds implemention in Python for Arch Linux"
 arch=('any')
