@@ -13,8 +13,8 @@ source=("http://m1.ppy.sh/r/osu!install.exe"
 
 md5sums=('SKIP'
          '1d285eb3a5bdb6a70da89116dec18441'
-         'd6b3671e708e76152453e7e17bdfd919'
-         'e476890981d4ece50b676f7e95c6d07d'
+         '3cb400cea5e9bff628f89c17a5f33f99'
+         '96c8752ee88bc458180899a15d8b4309'
          'a0289f4f499640bfb3b39bf393140b03')
 
 pkgdesc="Freeware rhythm video game"
@@ -23,7 +23,7 @@ arch=(i686 x86_64)
 license=(custom)
 install=osu.install
 
-depends=(wine xterm winetricks)
+depends=(wine winetricks)
 depends_x86_64=(lib32-alsa-lib lib32-gnutls)
 
 package() {

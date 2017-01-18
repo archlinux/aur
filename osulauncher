@@ -111,13 +111,8 @@ esac
 
 if [ ! -d "$WINEPREFIX" ]
 then
-    if [ ! -t 0 ]
-    then
-        xterm -e "/opt/osu/osulauncher install"
-    else
-        doinstall
+    doinstall
     exit 0
-    fi
 fi
 
 vblank_mode=0 wine "$WINEPREFIX/drive_c/users/$USER/Local Settings/Application Data/osu!/osu!.exe" $@
