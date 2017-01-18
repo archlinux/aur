@@ -1,7 +1,7 @@
 # Maintainer: Conor Anderson <conor@conr.ca>
 pkgname=wire-desktop
 _pkgname=wire
-pkgver=2.11.2686
+pkgver=2.11.2687
 pkgrel=2
 pkgdesc='Modern, private messenger. Based on Electron.'
 arch=('x86_64' 'i686')
@@ -9,10 +9,10 @@ url='https://wire.com/'
 license=('GPL3')
 conflicts=('wire-desktop-bin')
 depends=('alsa-lib' 'gconf' 'gtk2' 'libxss' 'libxtst' 'nss')
-makedepends=('gendesk' 'grunt-cli' 'npm' 'python2' 'yarn')
+makedepends=('gendesk' 'grunt-cli' 'npm' 'python2')
 provides=('wire-desktop')
 source=("${pkgver}.tar.gz::https://github.com/wireapp/wire-desktop/archive/release/"$pkgver".tar.gz")        
-sha256sums=('4776b902c3845b20c9cc19be450aa302f8c503f65a7aa30c92d56ee59edacd8c')
+sha256sums=('3d5c517933a28a0957961db8f1fb2b2ded795c28e1c045346afd7354b69c0e70')
 
 prepare() {
   gendesk -f -n --name=Wire --pkgname="${_pkgname}" --pkgdesc="${pkgdesc}" --exec="${_pkgname}" --categories="Network"
@@ -20,7 +20,7 @@ prepare() {
 
 build() {
   cd "${srcdir}/${pkgname}-release-${pkgver}"
-  yarn
+  npm install
   grunt 'clean:linux' 'update-keys' 'release-prod'
   if [ $CARCH == 'x86_64' ]; then
     node_modules/.bin/build --linux --x64 --dir
