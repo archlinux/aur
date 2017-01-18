@@ -3,7 +3,7 @@
 _flavour="cpu"
 pkgname="nheqminer-${_flavour}-git"
 pkgver=0.5c.r1.gb9900ff
-pkgrel=1
+pkgrel=2
 pkgdesc="zcash equihash miner by NiceHash. Xenoncat CPU solver build."
 arch=('x86_64')
 url="https://github.com/nicehash/nheqminer/"
@@ -39,7 +39,6 @@ build() {
 }
 
 package() {
-  #cd "${pkgname}"
-  install -D -m755 "${_build_dir}/nheqminer" -t "${pkgdir}/usr/bin/nheqminer_${_flavour}"
+  install -D -m755 "${_build_dir}/nheqminer" "${pkgdir}/usr/bin/nheqminer_${_flavour}"
   install -D -m644 "${pkgname}/LICENSE_MIT" -t "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
