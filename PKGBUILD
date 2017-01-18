@@ -3,13 +3,12 @@
 
 pkgname=ttf-unifont
 pkgver=9.0.06
-pkgrel=2
+pkgrel=3
 pkgdesc="TrueType version of the GNU Unifont"
 url="http://unifoundry.com/unifont.html"
 arch=('any')
 license=('GPL')
 depends=('fontconfig' 'xorg-fonts-encodings' 'xorg-font-utils')
-install=$pkgname.install
 source=("http://unifoundry.com/pub/unifont-$pkgver/unifont-$pkgver.tar.gz")
 md5sums=('64d1aef1ab02212294ef22fde3cb71f2')
 
