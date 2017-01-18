@@ -1,13 +1,16 @@
 pkgbase = python-vxi11
 	pkgdesc = A Python VXI-11 driver for controlling instruments over Ethernet.
-	pkgver = 0.8
+	pkgver = 0.9
 	pkgrel = 1
 	url = https://github.com/python-ivi/python-vxi11
 	arch = any
 	license = MIT
-	depends = python
-	source = python-vxi11-0.8.tar.gz::https://github.com/python-ivi/python-vxi11/archive/v0.8.tar.gz
-	md5sums = 46db7d4d6c93ae0bcafd23958010f3df
+	source = python-vxi11-0.9.tar.gz::https://github.com/python-ivi/python-vxi11/archive/v0.9.tar.gz
+	sha256sums = 0a342c5bee00d1af9456b2a18d75adb60171feba0a98399fb3938e6f64348427
 
 pkgname = python-vxi11
+	depends = python
+
+pkgname = python2-vxi11
+	depends = python2
 
