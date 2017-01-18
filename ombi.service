@@ -1,0 +1,15 @@
+[Unit]
+Description=Ombi
+After=network.target
+
+[Service]
+User=ombi
+Group=ombi
+WorkingDirectory=/opt/ombi
+Type=simple
+ExecStart=/usr/bin/mono /opt/ombi/PlexRequests.exe -p 3579
+Restart=always
+TimeoutStopSec=30
+
+[Install]
+WantedBy=multi-user.target
