@@ -1,7 +1,7 @@
 # Maintainer: Joseph Simone <averagejoey2000 tfwno . gf>
 pkgname=mccgdi
 pkgver="2.0.9"
-pkgrel=6
+pkgrel=7
 pkgdesc="PPD files for Panasonic Printers"
 arch=('x86_64' 'i686')
 url="panasonic.com"
@@ -72,19 +72,20 @@ for _file in $_PPD_FILES; do
 	_file=`basename $_file`
 done
 
-# copy SPC & RCT files
-_DATA_FILES=`find $srcdir/$pkgname-$pkgver-$arch/data`
-for _file in $_DATA_FILES; do
-	if test -d $_file
-	then
-		mkdir -p $_INSTALL_PATH/$_file
-	else
-		if test -f $_file
-		then
-			cp $_file $_INSTALL_PATH/$_file
-		fi
-	fi
-done
+## copy SPC & RCT files
+#_DATA_FILES=`find $srcdir/$pkgname-$pkgver-$arch/data`
+#for _file in $_DATA_FILES; do
+#	if test -d $_file
+#	then
+#		mkdir -p $_INSTALL_PATH/$_file
+#	else
+#		if test -f $_file
+#		then
+#			cp $_file $_INSTALL_PATH/$_file
+#		fi
+#	fi
+#done
+cp -rf $srcdir/$pkgname-$pkgver-$arch/data/* $pkgdir/usr/share/panasonic/printer/data*
 # copy tools
 cp $srcdir/$pkgname-$pkgver-$arch/panautil/L_H0JDUIZAZ $_INSTALL_PATH/bin/
 cp $srcdir/$pkgname-$pkgver-$arch/panautil/L_H0JDUCZAZ $_INSTALL_PATH/bin/
