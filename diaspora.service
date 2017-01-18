@@ -6,7 +6,7 @@ After=mariadb.service
 User=diaspora
 WorkingDirectory=/usr/share/webapps/diaspora
 Environment=RAILS_ENV=production
-ExecStart=/usr/share/webapps/diaspora/script/server
+ExecStart=/bin/bash -lc '/usr/share/webapps/diaspora/script/server'
 Restart=always
 StandardInput=null
 KillMode=control-group
