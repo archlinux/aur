@@ -9,8 +9,6 @@ pkgdesc="A font family for book production in the tradition of beautiful oldstyl
 arch=('any')
 url="https://github.com/skosch/Crimson/"
 license=('OFL')
-depends=('fontconfig' 'xorg-fonts-encodings' 'xorg-font-utils')
-install=crimson-text.install
 source=("$pkgname".zip::'https://github.com/skosch/Crimson/archive/master.zip')
 md5sums=('SKIP')
 
