@@ -2,8 +2,8 @@
 
 pkgbase=vis-standalone-git
 pkgname=(vis-standalone-git vis-single-git)
-pkgver=0.2.r655.g91e0c6e
-pkgrel=2
+pkgver=0.2.r680.g9be67f7
+pkgrel=1
 _pkgver_libmusl=1.1.16
 _pkgver_ncurses=6.0
 _pkgver_libtermkey=0.19
@@ -12,7 +12,8 @@ _pkgver_lpeg=1.0.0
 pkgdesc='modern, legacy free, simple yet efficient vim-like editor - statically linked - git checkout'
 arch=('i686' 'x86_64')
 url='http://www.brain-dump.org/projects/vis/'
-makedepends=('git')
+makedepends=('git' 'libtermkey')
+checkdepends=('vim')
 conflicts=('vis')
 provides=('vis')
 license=('custom:ISC')
