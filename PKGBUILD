@@ -1,6 +1,6 @@
 # Maintainer: Alex Forencich <alex@alexforencich.com>
 pkgname=(python-pyusb-git python2-pyusb-git)
-pkgver=1.0.0.r15.g2b09e55
+pkgver=1.0.0.r18.g1f66ccd
 pkgrel=1
 pkgdesc="Easy USB access from Python"
 arch=('any')
