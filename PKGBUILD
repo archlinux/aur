@@ -1,8 +1,7 @@
-# Maintainer: fbabetto
-# Contributor:  Leslie P. Polzer <polzer at stardawn dot org>
+# Maintainer: belst <aur at bel dot st>
 _pkgbasename=minizip
 pkgname=lib32-minizip
-pkgver=1.2.8
+pkgver=1.2.11
 pkgrel=1
 pkgdesc="ZIP file extraction library (32-bit)"
 url="http://www.winimage.com/zLibDll/minizip.html"
@@ -11,9 +10,8 @@ arch=('x86_64')
 makedepends=('gcc-multilib' 'libtool-multilib')
 options=(!libtool)
 depends=('lib32-glibc' "$_pkgbasename" 'lib32-zlib')
-source=("http://zlib.net/current/zlib-${pkgver}.tar.gz")
-md5sums=('44d667c142d7cda120332623eab69f40')
-sha1sums=('a4d316c404ff54ca545ea71a27af7dbc29817088')
+source=("http://zlib.net/zlib-${pkgver}.tar.gz")
+sha256sums=('c3e5e9fdd5004dcb542feda5ee4f0ff0744628baf8ed2dd5d66f8ca1197cb1a1')
 
 build() {
   export CC="gcc -m32"
