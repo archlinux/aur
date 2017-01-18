@@ -6,12 +6,12 @@
 _gemname=activemodel
 pkgname=ruby-$_gemname
 pkgver=5.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc='A toolkit for building modeling frameworks (part of Rails).'
 arch=(any)
 url='http://www.rubyonrails.org'
 license=(MIT)
-depends=(ruby ruby-activesupport ruby-builder)
+depends=(ruby ruby-activesupport)
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
