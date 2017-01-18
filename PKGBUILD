@@ -2,13 +2,13 @@
 
 pkgname=ciao
 pkgver=82
-pkgrel=2
+pkgrel=3
 pkgdesc="Ciao - Cloud Integrated Advanced Orchestrator"
 arch=('x86_64' 'i686')
 url="https://github.com/01org/ciao"
 license=('Apache')
 makedepends=('git' 'go')
-depends=('ceph' 'qemu' 'libisoburn' 'psmisc')
+depends=('ceph' 'qemu' 'libisoburn' 'psmisc' 'docker')
 options=('!strip' '!emptydirs')
 _gourl=github.com/01org/ciao
 
