@@ -5,7 +5,7 @@
 _ver=1.17
 _pkgbase=marco
 pkgname="${_pkgbase}-dev"
-pkgver=${_ver}.0
+pkgver=${_ver}.1
 pkgrel=5
 pkgdesc="A window manager for MATE"
 url="http://mate-desktop.org"
@@ -19,7 +19,7 @@ makedepends=('mate-common-dev' 'yelp-tools')
 optdepends=('yelp: for reading MATE help documents')
 groups=('mate')
 source=("http://pub.mate-desktop.org/releases/${_ver}/${_pkgbase}-${pkgver}.tar.xz")
-sha1sums=('d8d165f75618a02eaa5a89b86c4e2c7ee4995d2f')
+sha1sums=('1b764bd470ec25c29b6e4843502a09984abb5427')
 
 prepare() {
     cd "${srcdir}"
