@@ -3,7 +3,7 @@
 
 pkgname=ds4drv
 pkgver=0.5.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Sony DualShock 4 Userspace Driver"
 arch=('any')
 url="https://github.com/chrippa/ds4drv"
