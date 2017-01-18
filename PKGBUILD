@@ -2,20 +2,22 @@
 # Maintainer: Luca Weiss <luca (at) z3ntu (dot) xyz>
 
 pkgname=openfx-misc
-pkgver=2.1.9
+pkgver=2.2.0
 pkgrel=1
 arch=("i686" "x86_64")
 pkgdesc="Miscellaneous OpenFX plugins"
-url="https://github.com/devernay/openfx-misc/tree/Natron-$pkgver"
+url="https://github.com/devernay/openfx-misc"
 license=("GPL2")
 makedepends=("git")
-depends=("libgl" "gcc-libs-multilib")
-source=("$pkgname::git://github.com/devernay/openfx-misc.git#tag=Natron-$pkgver"
+depends=("libgl")
+depends_x86_64=("gcc-libs-multilib")
+source=("$pkgname::git+https://github.com/devernay/openfx-misc.git#tag=Natron-$pkgver"
         "git+https://github.com/devernay/openfx.git"
         "git+https://github.com/devernay/openfx-supportext.git")
-md5sums=("SKIP"
-         "SKIP"
-         "SKIP")
+sha512sums=('SKIP'
+            'SKIP'
+            'SKIP')
+
 _bits=32 ; [[ "$CARCH" = 'x86_64' ]] && _bits=64
 
 prepare() {
