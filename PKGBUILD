@@ -1,7 +1,7 @@
 # Maintainer: Jingbei Li <i@jingbei.lli>
 pkgname='kaldi'
 pkgdesc='Speech recognition research toolkit'
-pkgver=r7009.f646952b3
+pkgver=r7024.f7b2fe754
 pkgrel=1
 makedepends=('cuda' 'git' 'wget' 'subversion')
 depends=('python2' 'openblas-lapack')
@@ -53,8 +53,6 @@ build () {
 		--cudatk-dir=/opt/cuda
 	make depend
 	make
-
-	make test
 }
 
 package () {
