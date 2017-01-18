@@ -8,14 +8,14 @@ pkgdesc="Nuvoton module for nct677x chips not yet supported in the kernel."
 arch=('i686' 'x86_64')
 url="https://github.com/groeck/nct6775"
 license=('GPLv2')
-depends=('linux>=4.8' 'linux<4.9')
-makedepends=('linux-headers' 'git')
+depends=('linux>=4.9' 'linux<4.10')
+makedepends=('linux-headers>=4.9' 'linux-headers<4.10' 'git')
 source=("git://github.com/groeck/nct6775.git")
 md5sums=('SKIP')
 install=readme.install
 
-_extramodules="extramodules-4.8-ARCH"
-_kernver="$(cat /usr/lib/modules/${_extramodules}/version)"
+_extramodules="extramodules-4.9-ARCH"
+_kernver="4.9.4-1-ARCH"
 
 pkgver() {
 	cd ${_pkgname}
