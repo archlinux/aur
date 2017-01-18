@@ -1,7 +1,7 @@
 pkgbase = mqttfx-bin
   pkgdesc = A MQTT Client written in Java based on Eclipse Paho
   pkgver = 1.2.1
-  pkgrel = 1
+  pkgrel = 2
   url = http://mqttfx.jfx4ee.org
   arch = x86_64
   license = Apache

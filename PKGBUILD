@@ -1,7 +1,7 @@
 # Maintainer: Arctic Ice Studio <development@arcticicestudio.com>
 pkgname=mqttfx-bin
 pkgver=1.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A MQTT Client written in Java based on Eclipse Paho"
 arch=('x86_64')
 url="http://mqttfx.jfx4ee.org"
