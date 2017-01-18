@@ -1,6 +1,6 @@
 # Maintainer: Thomas Wucher <arch (at) thomaswucher (dot) de>
 pkgname=stress-ng
-pkgver=0.07.05
+pkgver=0.07.15
 pkgrel=1
 pkgdesc="stress-ng will stress test a computer system in various selectable ways"
 arch=('i686' 'x86_64' 'armv7h' 'armv6h' 'aarch64')
@@ -9,7 +9,7 @@ license=('GPL')
 depends=()
 makedepends=('')
 source=("http://kernel.ubuntu.com/~cking/tarballs/${pkgname}/${pkgname}-${pkgver}.tar.gz")
-md5sums=('4945acdad9a9c59e47cc02127ff85406')
+md5sums=('ae5ef0e99e1a5eb15dc68bbb860393c2')
 
 build() {
   cd "${pkgname}-${pkgver}"
