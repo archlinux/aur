@@ -29,9 +29,10 @@ package() {
 
 	BUILDDIR=${srcdir}/${pkgname}-${pkgver}/build PREFIX=${pkgdir}/usr RPM_BUILD_ROOT=${pkgdir} make install || return 1
 
-	install -m755 ../{maradns,maradns-zoneserver}.service ${pkgdir}/usr/lib/systemd/system
+	install -m644 ../{maradns,maradns-zoneserver}.service ${pkgdir}/usr/lib/systemd/system
 	install -m644 COPYING ${pkgdir}/usr/share/licenses/${pkgname}
 	
 	mv ${pkgdir}/usr/sbin/* ${pkgdir}/usr/bin
+	mv ${pkgdir}/etc/{dwood3rc,mararc} ${pkgdir}/etc/maradns
 	rm -r ${pkgdir}/usr/sbin
 }
