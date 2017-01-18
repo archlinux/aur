@@ -1,7 +1,7 @@
 # Maintainer: Ricardo Vieira <ricardo.vieira@tecnico.ulisboa.pt>
 
 pkgname=budgie-desktop-git
-pkgver=v10.2.7.r48.g5ac04ae
+pkgver=v10.2.9.r4.gb1778b1
 pkgrel=1
 pkgdesc="Simple GTK3 desktop experience"
 arch=('i686' 'x86_64')
@@ -30,11 +30,6 @@ build() {
 	cd "$srcdir/$pkgname"
         ./autogen.sh --prefix=/usr
 	make
-}
-
-check() {
-	cd "$srcdir/$pkgname"
-	make -k check
 }
 
 package() {
