@@ -1,13 +1,13 @@
 # Maintainer: Tom van der Lee <t0m.vd.l33@gmail.com>
 pkgname=liquidprompt-git
 pkgver=v_1.9.r6.gdbe3c15
-pkgrel=1
-pkgdesc="A useful adaptive prompt for Bash & Zsh: master branch"
+pkgrel=2
+pkgdesc="A useful adaptive prompt for Bash & Zsh"
 arch=("any")
 url="https://github.com/nojhan/liquidprompt"
 license=("AGPLv3")
-conflicts=("liquidprompt-devel-git"
-	   "liquidprompt")
+conflicts=("liquidprompt")
+replaces=("liquidprompt-devel-git")
 depends=("ncurses"
 	 "grep"
 	 "gawk"
