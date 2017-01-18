@@ -3,7 +3,7 @@
 # Contributor: Brenton Horne <brentonhorne77@gmail.com>
 
 pkgname=rodeo
-pkgver=2.4.10
+pkgver=2.5.2
 pkgrel=3
 pkgdesc="A data science IDE for Python"
 url='https://www.yhat.com/products/rodeo'
@@ -11,7 +11,7 @@ arch=('x86_64')
 depends=('jupyter' 'gconf')
 license=('AGPL3')
 install=rodeo.install
-md5sums_x86_64=('c99fed637b4f755d727fa1568a6d7119')
+md5sums_x86_64=('e3288e7bae6ff83ec1048fc42cb509e6')
 # https://github.com/yhat/rodeo/releases/download/v2.4.10/rodeo-2.4.10-amd64.deb
 source_x86_64=("https://github.com/yhat/rodeo/releases/download/v$pkgver/rodeo-$pkgver-amd64.deb")
 
