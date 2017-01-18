@@ -1,0 +1,13 @@
+pkgbase = deft-dkms
+	pkgdesc = A Linux loadable kernel module for the Elecom DEFT series finger operated trackballs
+	pkgver = 1.0.2
+	pkgrel = 1
+	url = https://github.com/cpetrov/deft
+	arch = any
+	license = GPL3
+	depends = dkms
+	source = https://github.com/cpetrov/deft/releases/download/v1.0.2/deft-1.0.2.tar.xz
+	md5sums = 0fad5631b1a88554abca71362989d5b8
+
+pkgname = deft-dkms
+
