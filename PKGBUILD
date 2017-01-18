@@ -34,10 +34,10 @@ package() {
 
   go build
   
-  msg2 "Install binary file"
+  msg2 "Installing binary file"
   install -Dm755 "$GOPATH"/bin/${_repo} $pkgdir/usr/bin/${_pkgname}-next
 
-  msg2 "Install systemd service"
+  msg2 "Installing systemd service"
   install -Dm644 $srcdir/${_pkgname}.service $pkgdir/usr/lib/systemd/system/${_pkgname}-next.service
   
   msg2 "Symlinking for gui launch"
